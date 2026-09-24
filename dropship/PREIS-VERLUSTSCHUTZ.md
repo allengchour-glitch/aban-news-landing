@@ -1,35 +1,35 @@
-# Preis-Verlustschutz — scharf 2026-09-24 12:55 UTC
+# Preis-Verlustschutz — scharf 2026-09-24 20:44 UTC
 
 Regel: Preis ≥ Mindestpreis bei **25% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **2209** · Varianten gehoben: **3513** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.17× · Varianten ohne EK (nicht geprüft): 4
-- geschrieben: 2209 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **1456** · Varianten gehoben: **23121** · gesperrt (Faktor > 2.0): 352
+- Median-Faktor der Hebungen: 1.30× · Varianten ohne EK (nicht geprüft): 128446
+- geschrieben: 1456 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Kurzes Schneewittchenkostüm | 38.00 | 31.78 | **44.90** | 1.18× |
-| Trainingsjacke Retro Mann · Gr. XL | 30.50 | 26.48 | **37.90** | 1.24× |
-| Kostüm Charleston Kleid silber | 48.00 | 37.62 | **52.90** | 1.10× |
-| Kostüm Piratin Grösse 152 · Gr. 152cm | 48.00 | 44.86 | **63.90** | 1.33× |
-| Kostüm Hexe Magie schwarz | 58.00 | 44.86 | **63.90** | 1.10× |
-| Ghost Kostüm mit Maske | 68.00 | 52.43 | **73.90** | 1.09× |
-| Kostüm Strichmännchen Dame | 48.90 | 45.51 | **63.90** | 1.31× |
-| Kostüm Squid Game | 52.00 | 41.62 | **58.90** | 1.13× |
-| Kinderkostüm Cauldron Cutie Hexe | 45.50 | 42.70 | **60.90** | 1.34× |
-| Kinderkostüm Batman | 34.50 | 30.81 | **43.90** | 1.27× |
-| Kinderkostüm Peppa Fairy Dress | 51.50 | 49.19 | **69.90** | 1.36× |
-| Kostüm Tigerlady | 45.00 | 37.29 | **52.90** | 1.18× |
-| Kinderkostüm Phantom of Darkness | 33.50 | 29.73 | **41.90** | 1.25× |
-| Kinderkostüm Joker Comic | 34.50 | 30.81 | **43.90** | 1.27× |
-| Kostüm PJ Masks Catboy | 48.00 | 43.02 | **60.90** | 1.27× |
-| Kostüm Rubble Paw Patrol | 42.90 | 39.24 | **55.90** | 1.30× |
-| Kostüm Sassy Mad Hatter | 57.50 | 55.67 | **78.90** | 1.37× |
-| Babykostüm Ninja Turtles | 44.90 | 41.83 | **58.90** | 1.31× |
-| Kostüm Pokemon Pikachu Anzug | 58.00 | 54.70 | **76.90** | 1.33× |
-| Kostüm Ninja Turtles Grösse M | 64.90 | 62.81 | **88.90** | 1.37× |
-| Kinderkostüm Starlight Witch Hexe | 35.90 | 31.78 | **44.90** | 1.25× |
-| Kostüm Batman Classic | 52.50 | 50.27 | **70.90** | 1.35× |
-| Kinderkostüm Cheeky Bat | 35.90 | 31.78 | **44.90** | 1.25× |
-| Kostüm Batman Dark Knight | 52.50 | 50.27 | **70.90** | 1.35× |
-| Kostüm Catwoman | 48.00 | 45.40 | **63.90** | 1.33× |
+| Doppelwandiger Plastikbecher mit Trageband | 16.90 | 20.25 | **28.90** | 1.71× |
+| Kinder Schneestiefel aus Leder | 17.90 | 13.05 | **18.90** | 1.06× |
+| Kinder-Sneaker aus Baumwolle | 15.90 | 11.97 | **17.90** | 1.13× |
+| Breiter Haushalts-Organizer mit 35 Fächern | 28.90 | 39.24 | **55.90** | 1.93× |
+| Warme Herren-Overall mit Fleece | 21.90 | 25.54 | **36.90** | 1.68× |
+| Jungen Sneaker | 15.90 | 11.52 | **16.90** | 1.06× |
+| Unterwäsche- & Strumpfbox (Standard/High) | 15.90 | 14.49 | **20.90** | 1.31× |
+| Velours-Laufschuhe für Kinder | 15.90 | 14.78 | **21.90** | 1.38× |
+| Wasserdichte Jungenstiefel | 15.90 | 11.87 | **17.90** | 1.13× |
+| Herren-Cargo-Hosen, gerade geschnitten | 31.90 | 29.83 | **42.90** | 1.34× |
+| Hempf-Waschbehälter | 30.90 | 32.81 | **46.90** | 1.52× |
+| Wasserdichte Kinderschuhe | 14.90 | 10.60 | **15.90** | 1.07× |
+| Herren Kletter- und Camp-Camouflagehose | 30.90 | 29.92 | **42.90** | 1.39× |
+| Kuschelweiche Kinderschuhe | 15.90 | 12.16 | **17.90** | 1.13× |
+| Herren-Cargo-Hosen mit mehreren Taschen | 18.90 | 20.78 | **29.90** | 1.58× |
+| Vierfach Schuhregal staubdicht für Eingangsberei | 17.90 | 20.10 | **28.90** | 1.61× |
+| Herren Freizeit-Hosen | 15.90 | 13.20 | **18.90** | 1.19× |
+| Retro-Khaki-Overall | 17.90 | 15.17 | **21.90** | 1.22× |
+| Retro Schreibtischkalender | 15.90 | 15.58 | **22.90** | 1.44× |
+| Trendige Herren Joggerhose, lockere Passform | 16.90 | 15.03 | **21.90** | 1.30× |
+| Herren- Basketball-Trainingsoberteil | 14.90 | 11.91 | **17.90** | 1.20× |
+| Pet Army Kurzarm-Shirt | 15.90 | 11.57 | **16.90** | 1.06× |
+| Romantische Atmosphäre Ölmalerei | 15.90 | 13.46 | **19.90** | 1.25× |
+| Grosses Kartenetui für Herren | 19.90 | 14.06 | **20.90** | 1.05× |
+| Handbemaltes Matcha-Set 8-teilig | 35.90 | 31.58 | **44.90** | 1.25× |
