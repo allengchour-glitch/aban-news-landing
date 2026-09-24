@@ -19609,3 +19609,4 @@ gid://shopify/Product/15493777719681	Farbe	gid://shopify/ProductOptionValue/1233
 gid://shopify/Product/15497429254529	Farbe	gid://shopify/ProductOptionValue/12366703329665	1 color	Farbton 1	2026-09-24T04:49Z
 gid://shopify/Product/15497429254529	Farbe	gid://shopify/ProductOptionValue/12366703362433	2 color	Farbton 2	2026-09-24T04:49Z
 gid://shopify/Product/15497429254529	Farbe	gid://shopify/ProductOptionValue/12366703395201	3 color	Farbton 3	2026-09-24T04:49Z
+gid://shopify/Product/15512270340481	Farbe	gid://shopify/ProductOptionValue/12466261131649	Leuchtendrot	Leuchtendes Rot	2026-09-24T08:13Z
