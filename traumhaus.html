@@ -1557,7 +1557,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(h>0){
       var dA=Math.hypot(x-60,z>-100?z+100:(z<-246?z+246:0));                 /* Schenkel x=60 */
       var dB=Math.hypot(x>60?x-60:(x<20?x-20:0),z+246);                      /* Schenkel z=-246 */
-      var dS=Math.min(dA,dB),tS=(dS-22)/26;
+      /* ⚠️ 22 m reichten nicht (Runde 97, probe-bergstrasse: 99 Strassenpunkte am Bauernhof UNTER dem Netz,
+         bis +0,033 ueber dem Belag — Bild k34-bauernhof-oben, Wiese quer ueber Landstrasse und Anschluss).
+         Die Dreiecke sind am Fuss 8 m tief, aber bis 29 m breit (48 Winkel auf r ~220): ein Eckpunkt 23 m
+         neben der Fahrbahn traegt noch Hang und zieht die Flaeche ueber den Asphalt. 34 m = Breite + Luft. */
+      var dS=Math.min(dA,dB),tS=(dS-34)/26;
       if(tS<1)h*=(tS<=0?0:tS*tS*(3-2*tS));}
     return h;
   };
@@ -3158,6 +3162,18 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
         /* 🚌 Die Bushaltestelle der Suedstrasse (Wartehaeuschen bei x -8, Nordseite) bekommt
            ihre Bucht im Parkstreifen: x -19…3 bleibt dort frei von Parkfeldern. */
         if(zc>0&&zs<zc)SEG=[[-60,25.6],[-26.1,13.4],[20,25.6],[60,25.6]];
+        /* 🚸 FUSSGAENGERSTREIFEN FREIHALTEN (Runde 97, probe-strichzeb: 8 Stellplatz-Striche IM Streifen,
+           dazu parkten der Lieferwagen bei x 63 und der Kombi bei x 61 darauf). Die Streifen liegen 16 m
+           neben jeder Kreuzung (x = ±RX±16), die Segmente ±60 liefen quer darueber. Frei bleiben der
+           Streifen (±2,4) und 3 m davor und danach (SSV: kein Halten 5 m vor dem Streifen — hier ohne
+           Fahrtrichtung beidseits, das Segment ist ohnehin kurz). Reste unter 4,6 m entfallen. */
+        var ZEBX=[-RX-16,-RX+16,RX-16,RX+16],ZFREI=5.4,SEG2=[];
+        SEG.forEach(function(sg9){var T=[[sg9[0]-sg9[1]/2,sg9[0]+sg9[1]/2]];
+          ZEBX.forEach(function(zx){var N=[];T.forEach(function(t){
+            if(t[1]<=zx-ZFREI||t[0]>=zx+ZFREI){N.push(t);return;}
+            if(t[0]<zx-ZFREI)N.push([t[0],zx-ZFREI]);if(t[1]>zx+ZFREI)N.push([zx+ZFREI,t[1]]);});T=N;});
+          T.forEach(function(t){if(t[1]-t[0]>=4.6)SEG2.push([(t[0]+t[1])/2,t[1]-t[0]]);});});
+        SEG=SEG2;
         SEG.forEach(function(seg){
           /* Die Striche teilen das Segment auf, statt in festen 5,2-m-Schritten
              darueber hinauszulaufen — sonst haengt der letzte wieder in der Kreuzung. */
@@ -3386,11 +3402,18 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
       var dx=sg*pz,dz=-sg*px;if(dx*rx+dz*rz<0){dx=-rx;dz=-rz;}else{dx=rx;dz=rz;}
       var L9=lang/2+0.8,lq=-(dx*qx+dz*qz>=0?1:-1)*L9;
       /* bei schraeger Fahrbahn wandert deren Rand quer mit — das Schild rueckt um diesen Versatz nach aussen */
-      function stelle(l9){var qs=hb+0.76+Math.max(0,sg*l9*drift);return [x+px*sg*qs+qx*l9,z+pz*sg*qs+qz*l9];}
-      var P=stelle(lq),um=false;
+      function stelle(l9,aus){var qs=hb+0.76+(aus||0)+Math.max(0,sg*l9*drift);return [x+px*sg*qs+qx*l9,z+pz*sg*qs+qz*l9];}
       /* ⚠️ T-EINMUENDUNG (Runde 96, probe-schild 4 von 60) und STADTRING-MUENDUNG (Runde 97): liegt der Platz
-         auf einer Fahrbahn, kommt das Schild auf die andere Seite des Streifens, weiter der Spur zugewandt. */
-      if(window._aufStrasse(P[0],P[1],0.35)){lq=-lq;P=stelle(lq);um=true;}
+         auf einer Fahrbahn, kommt das Schild auf die andere Seite des Streifens, weiter der Spur zugewandt.
+         ⚠️ ZWEI MUENDUNGEN AN EINER STELLE (Runde 97, probe-schild 1 von 94: Zubringer 300 Grad und
+         Bauernhof-Anschluss verlassen den Stadtring beide bei x 60): dort liegen BEIDE Plaetze auf Asphalt.
+         Dann ruecken sie in 0,5-m-Schritten weiter vom Streifen weg (hoechstens 2 m, bleibt auf dem Gehweg)
+         — zuerst auf der richtigen Seite, dann umgeklappt. Die Reihenfolge laesst alle bisher freien
+         Schilder, wo sie waren. */
+      var P=null,um=false;
+      [0,0.5,1,1.5,2].some(function(au){return [[lq,false],[-lq,true]].some(function(v){
+        var Q=stelle(v[0],au);if(window._aufStrasse(Q[0],Q[1],0.35))return false;P=Q;um=v[1];return true;});});
+      if(!P)P=stelle(lq);
       var ry=Math.atan2(-dx,-dz);                                              /* +z-Flaeche der Tafel zur ankommenden Spur */
       _zebSetz(Z.p,P[0],0,P[1],0);
       _zebSetz(Z.t,P[0],0,P[1],ry);
@@ -3623,10 +3646,14 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var SZr=GH*CS/2+12;                                   /* Hauptstrassen-Mitte z=±58 */
     /* Hauptstrassen (16 m breit -> Rand ±7.5), Luecken an den Kreuzungen x=±RX */
     [-SZr,SZr].forEach(function(zc){[-HS_PARK,HS_PARK].forEach(function(o){
-      linie(-RL/2,RL/2,[[-RX,7],[RX,7]],true,zc+o);});});
+      /* 🚸 + Luecken an den vier Fussgaengerstreifen (x = ±RX±16, halbe Laenge 2,4 + 0,5 Luft): die Randlinie
+         lief durch alle acht Streifen der Hauptstrassen (Runde 97, probe-strichzeb). */
+      linie(-RL/2,RL/2,[[-RX,7],[RX,7],[-RX-16,2.9],[-RX+16,2.9],[RX-16,2.9],[RX+16,2.9]],true,zc+o);});});
     /* Querstrassen (10 m -> Rand ±4.6), Luecken an den Hauptkreuzungen */
     [-RX,RX].forEach(function(xc){[-4.6,4.6].forEach(function(o){
-      linie(-SZr-11,SZr+11,[[-SZr,8.5],[SZr,8.5]],false,xc+o);});});
+      /* 🚸 + Luecken an den inneren Streifen z = ±(SZr-16); die aeusseren (±74) liegen hinter dem Linienende ±69 —
+         dort KEINE Luecke eintragen, linie() zoege das Stueck davor sonst bis 71,1 ueber das Ende hinaus. */
+      linie(-SZr-11,SZr+11,[[-SZr,8.5],[SZr,8.5],[-SZr+16,2.9],[SZr-16,2.9]],false,xc+o);});});
     /* Ring (9 m -> Rand ±3.75). Nord/Sued: Luecken an den Zubringern x=±RX und
        (Sued) an Parkplatz-Ein-/Ausfahrt x=11/25; West: Luecke Strandzufahrt z=-30;
        Ecken bleiben frei (Radius 4.5). */
@@ -5029,9 +5056,12 @@ setTimeout(function baueVerkehr(){
      Zwei Wagen je Segment, nicht am Segmentende (dort sind die Stellplatz-Striche). */
   (function parkstreifenWagen(){
     var PM=(HS_PARK+HS_BORD)/2, ZS=SZ+12+PM, ZN=-(SZ+12)+PM;      /* Sued: +64,8 · Nord: -51,2 */
-    var SLOTS=[[52,ZS,0,"th37_limousine.glb",0xd06a4a],[63,ZS,0,"th37_lieferwagen.glb",0x4a7ad0],
-               [50,ZN,Math.PI,"th37_limousine.glb",0x4a7ad0],[61,ZN,Math.PI,"th37_kombi.glb",0xd06a4a],
-               [-68,ZN,Math.PI,"th37_lieferwagen.glb",0x4a7ad0],[-55,ZN,Math.PI,"th37_sportwagen.glb",0xd06a4a]];
+    /* 🚸 Runde 97: 63 (ZS) und 61 (ZN) standen auf dem Fussgaengerstreifen bei x 62, -68 in seiner
+       Freihaltezone bei -62. Jetzt mittig in den Feldern, die parkstreifen() um die Streifen herum laesst
+       (47,2…56,6 in zwei Feldern, 67,4…72,8 in einem; im Westen gespiegelt). */
+    var SLOTS=[[49.55,ZS,0,"th37_limousine.glb",0xd06a4a],[70.1,ZS,0,"th37_lieferwagen.glb",0x4a7ad0],
+               [49.55,ZN,Math.PI,"th37_limousine.glb",0x4a7ad0],[70.1,ZN,Math.PI,"th37_kombi.glb",0xd06a4a],
+               [-70.1,ZN,Math.PI,"th37_lieferwagen.glb",0x4a7ad0],[-54.25,ZN,Math.PI,"th37_sportwagen.glb",0xd06a4a]];
     SLOTS.forEach(function(P){
       ladeWagen(P[3],function(tpl){if(!tpl)return;var m=tpl.clone(true);
         /* Dasselbe wie beim fahrenden Verkehr: nur das Lackmaterial klonen. */
@@ -6309,6 +6339,9 @@ setTimeout(function baueGebaeude(){
     for(var m=0;m<Math.floor(laenge/9);m++){
       var mo=-laenge/2+5+m*9;
       if(J9.some(function(j){return Math.abs(_mitte+mo-j)<TRIM;}))continue;   /* nicht durch die Einmuendung */
+      /* 🚸 und nicht durch den Streifen neben der Einmuendung (Runde 97, probe-strichzeb: 5 Viertel, Bild
+         k31-t-gegenueber). _zebV = [zj-2,7, zj+2,7], der Strich ist 3 m lang. */
+      if(_zebV.some(function(g){return _mitte+mo+1.5>g[0]-0.2&&_mitte+mo-1.5<g[1]+0.2;}))continue;
       var st=new THREE.Mesh(new THREE.PlaneGeometry(laengs?3:0.15,laengs?0.15:3),mM);
       st.rotation.x=-Math.PI/2;st.position.set(VX+(laengs?mo:0),0.005,VZ+(laengs?0:mo));scene.add(st);}
     /* 3) Anbindung an die Ringstrasse */
@@ -9391,7 +9424,11 @@ setTimeout(function baueGebaeude(){
       pl.rotation.x=-Math.PI/2;pl.position.set(DX,-0.002,SW+4);pl.receiveShadow=true;scene.add(pl);
       [-9,9].forEach(function(px){
         bau("th35_laterne_schmiede.glb",4.2,DX+px,0,SW+6.6,0,false,null,true);});
-      bau("th36_obelisk.glb",4.2,DX,0,SW+6.6,0,false,null,true);
+      /* ⚠️ NICHT AUF DER ACHSE (Runde 97, Bild k32-kathedrale-tor): seit der Vorplatz 6 m nach Norden rueckte,
+         steht das Tor (Pfeiler x DX-4…-3 und DX+1…+2, z SW+8,5…9,5) 0,7 m vor dem Obelisken — er fuellte die
+         4 m Durchgang fast ganz (rechts 0 m frei). Jetzt links neben der Achse, zwischen Laterne (DX-9) und
+         Portalsaeule (DX-5,2): 1 m zur Laterne, 1,6 m zur Saeule, das Tor frei bis zur Treppe. */
+      bau("th36_obelisk.glb",4.2,DX-6,0,SW+6.6,0,false,null,true);
       /* ⚠️ Die Westbank (DX-11) stand gemessen NICHT auf DZ+14, sondern 6,3 m
          weiter suedlich auf z -69,8 — mitten in bd_house_b (x -69,4…-65,6,
          z -75,0…-69,2), 24 Mesh-Paare. Nicht die Platzierung war schuld,
@@ -9712,7 +9749,7 @@ setTimeout(function baueGebaeude(){
          Suedreihe des Bahnhofs-Parkplatzes, der BEHINDERTENSTELLPLATZ (blaue Flaeche, th-autoboden
          meldete "wasser #436ebd" unter dem Taxi). Jetzt Plaetze 9 und 10 derselben Reihe (die
          einzigen freien, GEMESSEN: belegt sind 1,2,3,7,8), gelb markiert, Schriftzug in der Gasse. */
-      var tM=new THREE.MeshStandardMaterial({color:0xe2c23a,roughness:0.8});tM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(tM);
+      var tM=new THREE.MeshStandardMaterial({color:0xe8b73a,roughness:0.8});tM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(tM);   /* Runde 97: gelb, nicht _markMats (dort nach dem ersten Abend grau) */
       var tl=new THREE.Mesh(new THREE.PlaneGeometry(5.8,0.2),tM);
       tl.rotation.x=-Math.PI/2;tl.position.set(37.6,0.0045,94.1);scene.add(tl);
       var cv=document.createElement("canvas");cv.width=128;cv.height=48;var c=cv.getContext("2d");

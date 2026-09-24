@@ -1,5 +1,5 @@
 /* Sonde: Sichtbarkeit und Instanzzahl der vier Uebergangs-InstancedMeshes, Spieler an zwei Orten. */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_zebsicht_tmp.html'
 mitSonden('traumhaus.html', {
   geh: `function(x,z){var s=sims[meinSi()]||sims[0];s.x=x;s.z=z;followSim=null;camTx=x;camTz=z;updCam();return true;}`,

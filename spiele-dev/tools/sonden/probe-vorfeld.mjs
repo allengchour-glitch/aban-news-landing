@@ -1,5 +1,5 @@
 /* Sonde: Weltkaesten der Flughafen-Fahrzeuge/Bauten (th25_) und der Camping-Wohnmobile. */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_vorfeld_tmp.html'
 mitSonden('traumhaus.html', {
   kaesten: `function(){var out=[];var bb=new THREE.Box3(),s=new THREE.Vector3();

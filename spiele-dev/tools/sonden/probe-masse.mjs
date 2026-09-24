@@ -1,5 +1,5 @@
 /* Sonde: geladene Grundflaeche (w x d) je Modell bei Zielhoehe h — wie bau() skaliert (h / Boxhoehe). */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const L = JSON.parse(process.argv[2])
 const TMP = '_probe_masse_tmp.html'
 mitSonden('traumhaus.html', {

@@ -1,5 +1,5 @@
 /* Messgeraet: Objektdichte je 40-m-Zelle (window._gebaeude + Strassenzellen), Welt +-460. */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_dichte_tmp.html'
 mitSonden('traumhaus.html', {
   dichte: `function(){var C=40,H=460,N=Math.ceil(2*H/C),Z={},S={};

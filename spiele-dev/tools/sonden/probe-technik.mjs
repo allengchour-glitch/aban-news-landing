@@ -1,5 +1,5 @@
 /* Sonde: Weltkaesten der Technikpark-Objekte + alles, was auf dem Flugfeld (Bahn+Vorfeld) steht. */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_technik_tmp.html'
 mitSonden('traumhaus.html', {
   technik: `function(){var out=[];var bb=new THREE.Box3(),c=new THREE.Vector3(),s=new THREE.Vector3();

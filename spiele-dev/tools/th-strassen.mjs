@@ -30,7 +30,7 @@
  * mit einem Querschnitt nachsehen, bevor man etwas verschiebt.
  *
  * ⚠️ BEWEGLICHES VORHER AUSSCHLIESSEN (verkehr, busRec, _landbus, fussg, npcs, sims,
- * polizei). Ohne diese Liste sind zwei Drittel der Funde fahrende Autos, die dort
+ * polizei, _zug). Ohne diese Liste sind zwei Drittel der Funde fahrende Autos, die dort
  * hingehoeren. Rehe und Hasen laufen ebenfalls ueber die Strasse; die bleiben als
  * Rauschen stehen und sind am Namen (`animal-…`) zu erkennen.
  */
@@ -94,6 +94,10 @@ const sonde = `function(MINH){
   try{markiere(sims);}catch(e){}
   try{markiere(polizei);}catch(e){}
   try{if(busRec&&busRec.mesh)busRec.mesh.traverse(function(c){beweglich.add(c);});}catch(e){}
+  /* 🚆 Der Zug (window._zug) quert den Stadtring West bei z 112 auf einem Bahnuebergang. Stand er dort
+     zufaellig beim Messen, meldete das Werkzeug 4 „Cube043…" auf dem Stadtring (Runde 97) — 35 m Zug
+     im Band, aber er gehoert dort hin. */
+  try{if(window._zug&&window._zug.mesh)window._zug.mesh.traverse(function(c){beweglich.add(c);});}catch(e){}
   var w=new THREE.Vector3(), bb=new THREE.Box3(), karte={};
   /* ⚠️ INSTANZIERTES WAR UNSICHTBAR — und das ist kein Randfall. GEMESSEN: 212
      InstancedMeshes mit zusammen 6991 Instanzen (Parkzaun, Weidezaun, Landebahn,

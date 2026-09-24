@@ -1,5 +1,5 @@
 /* Sonde: was steht am Zebrastreifen (257.4|-140) und (-285|-257.4)? Alle Objekte, deren Weltkasten den Bereich schneidet. */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_zebra_tmp.html'
 mitSonden('traumhaus.html', {
   amZebra: `function(R){var out=[];var bb=new THREE.Box3();

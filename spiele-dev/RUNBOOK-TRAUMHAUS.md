@@ -7288,3 +7288,88 @@ Enden hört der Gehweg auf, sonst nichts — kein Schild, keine Platte, nichts, 
 | probe-schild: Schilder vor dem Streifen und dem Verkehr zugewandt | — | **60 von 60** (erster Lauf 56: vier Eck-Schilder an T-Einmündungen 0,3 m in der durchgehenden Fahrbahn → andere Streifenseite) |
 Bilder: `spiele-dev/screenshots/r96-*.png` (Vorher/Nachher Hauptstrasse, Querstrasse, Gewerbe, Neustadt-Stich,
 Freizeitpark, Burgdorf; Schild nah).
+
+## Runde 97 · 🚸 Übergänge weiter (User: „weiter" nach „übergänge schöner")
+
+**Vorher gemessen — erst das Messgerät geschärft.** th-kante meldete nach Runde 96 „Lücke 6, ohne Gehweg 8"
+und sah drei Dinge nicht: (a) eine überhängende Baumkrone über dem Gehweg zählte als „Lücke grün" (Südstrasse),
+(b) die vier Zubringer-Stücke zwischen Querstrasse und Ring hatten gar kein Band, (c) es gab keine Frage „endet
+hier ein Gehweg an einer Einmündung, ohne dass ein Übergang weiterführt?". Neu: überhängende Treffer
+(`min.y > 0,5`) übersprungen, Bänder Zubringer-Nord/-Süd Ost/West, Trottoirüberfahrten (`_ueberfahrten`) als
+eigene Klasse, und Abschnitt **EINMÜNDUNGEN (gebündelt)**: Schnitte in Einmündungen, auf 12 m gebündelt, gelten
+als versorgt, wenn ein Übergang in 10 m liegt (Gegenprobe Quer-Ost/Südstrasse (78|50) muss versorgt sein).
+Geschärfter Ausgangsstand: **Schnitte 1085 · ohne Bordstein 28 · Lücke 22 · ohne Gehweg 7 · Einmündungen ohne
+Übergang 13 von 27** (Ring an allen sechs Zubringer-Mündungen, Strandzufahrt, Anschlüsse über die Landstrasse).
+
+**Gebaut:**
+- **Übergänge an allen Mündungen des Stadtrings** (Zubringer 30/60/120/240/300/330°, Querstrassen, Strandzufahrt):
+  `stueck(…, luecken)` nimmt Einträge `[von, bis, {breite, schraeg}]`, schneidet Gehweg und Bordstein auf, legt
+  1,2-m-Rampen (3 cm) und wünscht einen Übergang auf der Gehweglinie (Länge 2,2 statt 4,8).
+- **Schräge Übergänge** über die Landstrasse (r 200) an den Viertel-Anschlüssen: `_zebraAllg(…, {schraeg})`
+  schert die Streifen parallel zur Fahrbahn (nicht flacher als 20°), das Schild rückt um den Längsversatz der
+  schrägen Kante nach aussen. Je Gehwegseite der eigene Schnittpunkt mit r 200, `_ringStrichLuecke` nimmt die
+  Mittellinie dort heraus.
+- **Trottoirüberfahrt** Querstrasse West / Strandzufahrt: der Gehweg läuft durch, der Stein ist auf 3 cm abgesenkt
+  (Runde 93 hatte dort eine offene Einmündung ohne Übergang).
+- **Viertel-Einmündungen nur auf der Seite der Einmündung offen** — vorher war die Lücke in BEIDE Gehwege
+  geschnitten, gegenüber lief der Bordstein vor 5 m Wiese weiter (sechs T-Einmündungen).
+- **Zubringer Nord/Süd:** Bordstein und Gehweg lagen auf der Ring-Aussenkante (x ±107,4), weil `stueck` den
+  näheren Ring-Mittelpunkt nahm → `mitte` wird übergeben.
+- **Kathedrale 6 m nach Norden** (DOM_Z −22 → −28): Zaun und Pfeiler standen 2,7 m in der Ost-Ausfallstrasse,
+  der Obelisk auf der Bordsteinlinie (th-kante „Lücke" bei (147|−5)).
+- **Übergänge der Ringe erst nach den Vierteln** (`window._nachVierteln(fn)`: wartet auf das letzte Viertel,
+  höchstens 15 s): vorher wusste `_aufStrasse` beim Bau noch nichts vom Bauernhof-Anschluss, ein Schild stand
+  auf dessen Asphalt.
+- **Teil 3 — was die Fotos danach zeigten:**
+  - **Markierungen im Streifen** (neue Sonde `probe-strichzeb`, 29 Funde): Randlinien liefen durch alle Streifen
+    der Haupt- und Querstrassen → Lücken ±2,9 m; die Parkfelder ±60 lagen quer über den Streifen bei x ±62 —
+    und darauf **parkierten Lieferwagen (x 63) und Kombi (x 61)** → Segmente um den Streifen ±5,4 m gekürzt,
+    Wagen mittig in die verbleibenden Felder; Mittelstrich der Viertelstrassen im Streifen neben der Einmündung
+    (fünf Viertel, Bild k31-t-gegenueber) → Strich entfällt dort.
+  - **Letztes falsches Schild** (Zubringer 300° und Bauernhof-Anschluss verlassen den Ring an derselben Stelle,
+    x 60 — beide Schildplätze auf Asphalt): Plätze rücken in 0,5-m-Schritten (höchstens 2 m) vom Streifen weg,
+    zuerst auf der richtigen Seite, dann umgeklappt; alle bisher freien Schilder bleiben, wo sie waren.
+  - **Wiese über der Kreuzung am Bauernhof** (Bild k34-bauernhof-oben): das Bergnetz hat am Fuss Dreiecke von
+    8 × 29 m; ein Eckpunkt 23 m neben dem Anschluss trug noch Hang und zog die Fläche bis +0,033 m über den Belag
+    (Sonde `probe-bergstrasse`: 99 Strassenpunkte verdeckt). Schneise in `gelaendeH` 22 → 34 m.
+  - **Obelisk im Kathedralen-Tor:** nach dem Umzug stand er 0,7 m hinter dem 4 m breiten Tor, rechts blieb kein
+    Durchgang → links neben die Achse (DX−6).
+  - **Taxistand-Gelb** hing in `_markMats` (nach dem ersten Abend grau) → `_gelbMats`.
+  - **th-strassen** schliesst den Zug aus (`window._zug`): am Bahnübergang Stadtring West zählte er sonst als
+    vier „Cube…" auf der Fahrbahn.
+
+**Lehren:**
+1. **Ein Messgerät, das überhängende Kronen als Loch im Gehweg zählt, schickt einen zum falschen Ort.** Erst die
+   Treffer ansehen (`probe-wer`: Eltern-Kette, Kasten), dann bauen. Dasselbe für th-strassen: die „Cubes" auf dem
+   Stadtring waren der Zug am Bahnübergang.
+2. **Sonden dürfen nicht nach `visible` filtern.** Die Sichtweiten-Pflege (`_vdListe`) schaltet alles Ferne aus —
+   `probe-strichzeb` sah im ersten Lauf keines der Viertel, obwohl das Foto den Strich zeigte. Die Gegenprobe
+   darum mit einem UNSICHTBAR geschalteten künstlichen Strich am letzten Übergang.
+3. **Eine Gegenprobe, die nicht ausschlägt, ist der Befund.** probe-bergstrasse: erst das falsche Netz (mehrere
+   `userData.gelaende`, das erste ist ein Kettenberg), dann bewegte das Anheben nichts (`matrixAutoUpdate` aus →
+   `updateMatrix()`). Erst danach waren „0 verdeckt" und „99 verdeckt" Zahlen.
+4. **Reihenfolge ist Geometrie.** Was beim Bau per `_aufStrasse` fragt, muss nach allem gebaut werden, was
+   Strassen anlegt — sonst ist die Antwort die eines halben Welt-Stands (`_nachVierteln`).
+5. **Wer etwas verschiebt, prüft die neuen Nachbarn.** Die Kathedrale 6 m nördlicher löste den Zaun in der
+   Strasse — und stellte den Obelisken ins Tor.
+6. **Ein grobes Netz braucht eine Schneise breiter als ein Dreieck** — sonst liegt die Fläche zwischen zwei
+   Rasterpunkten über dem Belag, obwohl die Höhenfunktion dort 0 sagt.
+7. **InstancedMesh-Kapazität zählt still:** zu klein, und die letzten Instanzen fehlen ohne Fehlermeldung
+   (probe-schild vergleicht gezeichnete Tafeln mit den Einträgen). Streifen 800, Felder/Pfähle/Tafeln je 160.
+8. **Fotos mit `body>*:not(canvas)` ausblenden versteckt auch die 3D-Leinwand**, wenn sie in einem Container
+   liegt — die Bilder zeigten nur Himmelblau und die Minikarte. Draufsicht: `b` bis 1,3, ohne HUD-Trick.
+
+**Endzahlen Runde 97:**
+| Werkzeug | Runde 96 (geschärft) | Runde 97 |
+|---|---|---|
+| th-kante: Schnitte · ohne Bordstein · Lücke · ohne Gehweg | 1085 · 28 · 22 · 7 | **1089 · 0 · 0 · 0** |
+| th-kante: Übergänge · nicht abgesenkt · Einmündungen ohne Übergang | 30 · 0 · 13 von 27 | **47 · 0 · 0 von 14** (Gegenprobe (78\|50) versorgt ✓) |
+| probe-schild: zugewandt + frei + nah · gezeichnet | 60/60 (Runde 96) | **94/94 · 94 von 94** (Kapazität 160; Zwischenstand 93: Doppelmündung x 60) |
+| probe-strichzeb: Markierungen im Streifen | — | **29 → 0** (Gegenprobe 2/2) |
+| probe-bergstrasse: Strassenpunkte unter dem Bergnetz | — | **99 → 0** (Gegenprobe +0,3 m: 1147 von 1927) |
+| th-strassen (Stellen auf dem Belag) | 94 | **74** (Zug ausgeschlossen, Schild vom Stadtring, Kathedrale aus der Ausfallstrasse) |
+| th-pruef: Modelle · Korridor · steckt | 1001 · 0 · 2 | **1001 · 0 · 2** · bestanden |
+| th-echt: Paare · echte Durchdringungen | 16 · 6 | **16 · 6** |
+| th-autoboden | 0 · 0 · 0 · 0,2 % · 0/120 · 0 | **0 · 0 · 0 · 0,2 % · 0/120 · 0** (Parkplätze ohne Zufahrt 0, schief 0) |
+Bilder: `spiele-dev/screenshots/r97-*.png` (vorher/nachher: Querstrasse West, Ring Süd, Ring Nord, Landstrasse am
+Gewerbe, T-Einmündung Freizeitpark, Bauernhof von oben, Kathedralen-Tor; nachher: Hauptstrasse x ±62 mit Parkfeldern).

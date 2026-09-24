@@ -1,5 +1,5 @@
 /* Sonde: Materialien der Zelt-Modelle (sv_tent, cc0_tent) — warum sieht man nur Stangen? */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_zelt_tmp.html'
 mitSonden('traumhaus.html', {
   zelte: `function(){var out=[];

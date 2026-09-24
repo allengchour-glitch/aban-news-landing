@@ -42,6 +42,24 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
 - `probe-uebergaenge.mjs` — alle registrierten Übergänge (`window._uebergaenge`) mit Lage, Richtung, Breite.
 - `probe-zebsicht.mjs` — Spieler an drei Orten, `visible`/`count` der vier Übergangs-InstancedMeshes: Beleg, dass
   `nieAusblenden` nötig war (Streifen verschwanden ab 130 m vom Ursprung, Schilder ab 34 m).
-- `probe-schild.mjs` — jedes Schild dem Übergang über die GEOMETRIE zuordnen (3,2 m längs, hb+0,76 quer — der
-  „nächste" Übergang war an T-Einmündungen der falsche), dann: Tafel dem ankommenden Verkehr zugewandt
-  (Rechtsverkehr aus `ROUTEN`) und auf keiner Fahrbahn (`_aufViertelWeg` + Haupt-/Querstrassen-Bänder).
+- `probe-schild.mjs` — (Runde 97 neu geschrieben) liest `window._uebSchilder`, das `_zebraAllg` je Schild
+  schreibt: [x, z, ry, Übergang, Fahrtrichtung dx/dz, umgeklappt]. Geprüft: Tafel der ankommenden Spur
+  zugewandt, auf keiner Fahrbahn (`_aufStrasse`, 0,35 m Reserve), nah am Streifen, und ob ALLE Instanzen
+  gezeichnet sind (bei zu kleiner Kapazität fallen die letzten still weg). Die erste Fassung ordnete über die
+  Geometrie zu — an T-Einmündungen war der „nächste" Übergang der falsche.
+
+**Runde 97 (Übergänge weiter):**
+- `probe-strichzeb.mjs` — liegt eine weisse Markierung (`_markMats`, Meshes und Instanzen) in einem
+  Fussgängerstreifen? Fand 29: Randlinien durch alle Streifen der Haupt- und Querstrassen, Stellplatz-Striche
+  (und zwei parkierte Wagen) auf den Streifen bei x ±62, Mittelstriche in fünf Vierteln. ⚠️ Nicht nach
+  `visible` filtern — die Sichtweiten-Pflege schaltet alles Ferne aus, der erste Lauf sah die Viertel nicht.
+  Gegenprobe: zwei künstliche, UNSICHTBAR geschaltete Striche (Übergang 0 und der letzte).
+- `probe-bergstrasse.mjs` — Strahlen auf Landstrasse, Bauernhof-Anschluss und -Strasse: trifft der Strahl
+  zuerst das Bergnetz und darunter Belag? Fand 99 (Wiese quer über der Kreuzung am Bauernhof).
+  ⚠️ Gegenprobe hebt das Netz um 0,3 m — dafür `updateMatrix()`, statische Netze haben `matrixAutoUpdate`
+  aus; und das GRÖSSTE `userData.gelaende`-Netz nehmen, nicht das erste (Kettenberge).
+- `probe-umkreis.mjs x0 x1 z0 z1` — alle Objekte der obersten Ebene in einem Rechteck mit Weltkasten
+  (Beleg: Obelisk 0,7 m hinter dem 4 m breiten Kathedralen-Tor).
+- `probe-wer.mjs '[[x,z,r],…]'` — alle Meshes an Punkten, mit Eltern-Kette; mit `ZEB=<i>` dazu Übergang i und
+  seine Schilder. Hat gezeigt: die „Cubes" auf dem Stadtring West waren der Zug am Bahnübergang (th-strassen
+  schliesst `_zug` jetzt aus).

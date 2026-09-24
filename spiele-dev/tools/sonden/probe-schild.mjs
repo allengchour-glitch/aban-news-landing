@@ -5,7 +5,7 @@
      frei       — steht auf keiner Fahrbahn (window._aufStrasse mit 0,35 m Reserve; zweite, unabhaengige Meinung: th-strassen)
      nah        — hoechstens halbe Uebergangsbreite + 3,5 m vom Streifen entfernt
    Dazu: sind ALLE Instanzen gezeichnet (count = Anzahl Eintraege)? Mit zu kleiner Kapazitaet fallen die letzten still weg. */
-import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen } from '../th-lib.mjs'
 const TMP = '_probe_schild_tmp.html'
 mitSonden('traumhaus.html', {
   schilder: `function(){var S=window._uebSchilder||[],U=window._uebergaenge||[],out=[];
