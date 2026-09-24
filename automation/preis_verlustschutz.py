@@ -188,7 +188,10 @@ def main():
     # Varianten mit Ledger-Quittung überspringen, statt jedes Produkt erneut live zu lesen.
     quittiert = set()
     if os.path.exists(LEDGER):
-        quittiert = {z.split("\t", 1)[0] for z in open(LEDGER, encoding="utf-8") if z.strip()}
+        # Nur Quittungen von HEUTE: der Skip ist Fortsetzung nach einem Neustart, kein Freibrief. Steigt der EK
+        # später (CJ-Kosten-Nachtrag, Fortura-Feed), muss die Variante am nächsten Tag wieder geprüft werden.
+        quittiert = {t[0] for t in (z.rstrip("\n").split("\t") for z in open(LEDGER, encoding="utf-8"))
+                     if len(t) > 5 and t[5] == HEUTE}
     stopp = threading.Event()
 
     def bearbeite(i, pid):

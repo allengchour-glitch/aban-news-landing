@@ -416,6 +416,18 @@ if [ -f "$K_REPO/dropship/_kategorie_stand.json" ] && [ -f "$REPO_AUTO/kategorie
   fi
 fi
 
+# ── 3d. Preis-Verlustschutz-Nachlauf (24.09.2026, Betreiber «nie verlust»): 22'609 Produkte unter dem 25-%-Boden.
+# Im Aufseher steht der Lauf am ENDE der Tagesliste (≈48 Wächter × 5 s + massen_slot) — nach jedem stündlichen
+# Container-Neustart blieben ihm nur 10–15 Minuten (gemessen: 500–900 Produkte je Stunde statt ~6'000). Darum startet
+# JEDER Keepalive ihn sofort, bis sein Log FERTIG zeigt. Dieselbe Sperre wie im Aufseher (fd 9 auf
+# /tmp/lock_preis_verlustschutz.lock) → nie doppelt; das Skript setzt über sein Ledger fort und liest live vor jedem Schreiben.
+if [ -f /tmp/kost28.jsonl ] && [ -f "$REPO_AUTO/preis_verlustschutz.py" ] \
+   && ! tail -n 3 /tmp/preis_verlustschutz.log 2>/dev/null | grep -q '^FERTIG' \
+   && ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2 == "automation/preis_verlustschutz.py" {n++} END {exit(n?0:1)}'; then
+  echo "PREIS-NACHLAUF: nicht FERTIG → Start"
+  ( cd "$K_REPO" && starte preis_verlustschutz bash -c "exec 9>/tmp/lock_preis_verlustschutz.lock; flock -n 9 || exit 0; SCHARF=1 EXPORT=/tmp/kost28.jsonl exec python3 automation/preis_verlustschutz.py" )
+fi
+
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
 
 # 📦 VERSAND-AMPEL (09.09.2026): Meldet Sendungen, die eine NUMMER haben, aber nie losgefahren
