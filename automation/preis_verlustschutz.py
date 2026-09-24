@@ -142,6 +142,10 @@ def schreibe(p, heben, sperren):
             return f"Draft nicht bestätigt: {e['userErrors']}"
         gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
             {"id": p["id"], "t": ["verlust-auto-draft", "marge-verlust-draft", "verlust-rabatt25"]})
+    return quittiere(p, heben, sperren, draft)
+
+
+def quittiere(p, heben, sperren, draft=False):
     with SCHLOSS, open(LEDGER, "a") as fh:
         for v, preis, ek, neu, streich in heben:
             fh.write(f"{v['id'].split('/')[-1]}\theben\t{preis:.2f}\t{neu:.2f}\t{ek:.2f}\t{HEUTE}\t{p['handle']}\n")
@@ -196,7 +200,18 @@ def main():
             try:
                 f = schreibe(p, heben, sperren)
             except Exception as e:
-                f = f"Ausnahme: {str(e)[:120]}"
+                # 24.09.: «Remote end closed connection» (http.client.RemoteDisconnected) fängt gql() nicht ab — die
+                # Mutation kann trotzdem angekommen sein. Nie blind wiederholen: live neu planen; ist nichts mehr
+                # offen, war der Schreibvorgang erfolgreich (Ledger aus dem ursprünglichen Plan), sonst einmal neu.
+                try:
+                    time.sleep(5)
+                    p2, h2, s2, g2 = plane(pid)
+                    if g2 or not (h2 or s2):
+                        f = quittiere(p, heben, sperren)
+                    else:
+                        f = schreibe(p2, h2, s2)
+                except Exception as e2:
+                    f = f"Ausnahme: {str(e)[:80]} / nach Neuplanung: {str(e2)[:80]}"
             with SCHLOSS:
                 if f:
                     st["fehler"] += 1; fehler.append((pid, f)); print(f"  ⛔ {p['title'][:50]} — {f}", flush=True)
