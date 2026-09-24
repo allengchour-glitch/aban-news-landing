@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 00:52 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 01:02 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **12'057**
-- Optionen mit englischen Werten (Kandidaten): 1'384
+- Produkte gesehen: **12'654**
+- Optionen mit englischen Werten (Kandidaten): 1'420
 - Optionen übersetzt: **17** · Werte übersetzt: **29**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 7'011
+- Werte mit unbekanntem Wort (unverändert): 7'190
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 35
+- übersprungen «kleidungsstueck-im-wert»: 36
 - übersprungen «kollision-nach-uebersetzung»: 24
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -118,5 +118,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 262, `light` 238, `color` 183, `degrees` 159, `shell` 81, `skin` 78, `high` 68, `rope` 66, `feet` 62, `to` 61, `mother` 61, `three` 59, `⟨satzbau:material-vor-farbe⟩` 57, `no` 56, `size` 55, `surface` 53, `core` 53, `dark` 49, `electric` 48, `line` 48, `hat` 47, `powder` 47, `for` 45, `of` 44, `case` 43, `bag` 43, `buckle` 42, `perforated` 42, `inner` 41, `years` 40, `acupuncture` 40, `opp` 39, `belt` 38, `lens` 38, `bear` 38, `father` 38, `tea` 37, `generation` 37, `adjustable` 37, `magnetic` 36, `suit` 35, `old` 35, `person` 35, `carbon` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `plush` 30, `⟨satzbau:nomen-vor-farbe⟩` 30, `eyelets` 30, `button` 30, `iphone13` 29, `ice` 28, `batteries` 28, `mom` 28, `lamp` 28, `mushroom` 27, `full` 26, `simple` 26, `insert` 26
+`⟨satzbau:adjektiv-vor-nomen⟩` 263, `light` 239, `color` 189, `degrees` 159, `shell` 81, `skin` 78, `to` 70, `high` 69, `rope` 66, `feet` 62, `mother` 61, `three` 59, `⟨satzbau:material-vor-farbe⟩` 57, `no` 56, `size` 55, `surface` 53, `core` 53, `dark` 49, `electric` 48, `line` 48, `hat` 47, `powder` 47, `inner` 47, `for` 45, `of` 44, `case` 43, `bag` 43, `buckle` 42, `perforated` 42, `years` 40, `acupuncture` 40, `belt` 39, `opp` 39, `tea` 38, `lens` 38, `bear` 38, `father` 38, `generation` 37, `cup` 37, `adjustable` 37, `magnetic` 36, `suit` 35, `⟨satzbau:nomen-vor-farbe⟩` 35, `old` 35, `person` 35, `carbon` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `plush` 30, `eyelets` 30, `button` 30, `winding` 30, `iphone13` 29, `ice` 28, `batteries` 28, `little` 28, `mom` 28, `lamp` 28, `mushroom` 27
 
