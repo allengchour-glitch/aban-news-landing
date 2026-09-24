@@ -71,6 +71,8 @@ mitSonden('traumhaus.html', {
           var t=Math.min(e.tief,lokal(MA[a].n,MB[c].b),lokal(MB[c].n,MA[a].b));
           if(t>0.05){paare++;if(t>tiefste)tiefste=t;}}}
       out.push({a:bb[i].n, b:bb[j].n,
+        ax:+bb[i].w.position.x.toFixed(0), az:+bb[i].w.position.z.toFixed(0),
+        bx:+bb[j].w.position.x.toFixed(0), bz:+bb[j].w.position.z.toFixed(0),
         kasten:+gr.tief.toFixed(1), mesh:+tiefste.toFixed(2), meshPaare:paare,
         meshA:MA.length, meshB:MB.length});}
     out.sort(function(p,q){return q.mesh-p.mesh||q.kasten-p.kasten;});
@@ -85,7 +87,7 @@ console.log(`Davon ${echt.length} mit echter Mesh-Durchdringung, ${L.length - ec
 console.log('  Kasten   Mesh  Paare   A                              B')
 for (const o of L)
   console.log(`  ${String(o.kasten).padStart(5)} m ${String(o.mesh || '—').padStart(6)} ${String(o.meshPaare).padStart(6)}   ` +
-    `${o.a.padEnd(30).slice(0, 30)} ${o.b}`)
+    `${o.a.padEnd(30).slice(0, 30)} ${o.b}   (${o.ax}|${o.az}) / (${o.bx}|${o.bz})`)
 console.log('\n"Mesh —" heisst: die Gruppen-Kaesten ueberlappen, kein einziges Mesh tut es.')
 console.log(`JS-Fehler: ${jsFehler.length}`)
 await browser.close()

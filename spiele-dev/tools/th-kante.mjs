@@ -76,8 +76,11 @@ mitSonden('traumhaus.html', {
         {n:"Quer-Ost",a:"x",c:RX,h:5.05,von:-SZr+10,bis:SZr-10},{n:"Quer-West",a:"x",c:-RX,h:5.05,von:-SZr+10,bis:SZr-10},
         {n:"Ring-Sued",a:"z",c:118,h:4.5,von:-104,bis:104},{n:"Ring-Nord",a:"z",c:-100,h:4.5,von:-104,bis:104},
         {n:"Ring-Ost",a:"x",c:112,h:4.5,von:-92,bis:110},{n:"Ring-West",a:"x",c:-112,h:4.5,von:-92,bis:110},
-        {n:"Strandzufahrt",a:"z",c:-30,h:4.8,von:-130,bis:-82},
-        {n:"Achterbahn-West",a:"z",c:173,h:4.2,von:-186,bis:-106},{n:"Achterbahn-Sued",a:"x",c:-190,h:4.2,von:178,bis:202}];
+        /* land: Landstrassen ohne Gehweg (gewollt) — werden gemessen, aber nicht in die Kennzahlen gezaehlt.
+           bahn: die Seite, auf der der Bahndamm liegt (Ring-Sued innen: Schotter statt Gehweg, gewollt). */
+        {n:"Strandzufahrt",a:"z",c:-30,h:4.8,von:-130,bis:-82,land:true},
+        {n:"Achterbahn-West",a:"z",c:173,h:4.2,von:-186,bis:-106,land:true},{n:"Achterbahn-Sued",a:"x",c:-190,h:4.2,von:178,bis:202,land:true}];
+      B[4].bahn=-1;   /* Ring-Sued, Seite -1 = innen (z < 118) */
       (window._viertelBaender?window._viertelBaender():[]).forEach(function(b){B.push({n:"Viertel "+(b.n||"?"),a:b.a,c:b.c,h:4.5,von:b.von+8,bis:b.bis-8});});
       (window._anschluesse||[]).forEach(function(b){B.push({n:"Anschluss "+b.n,a:b.a,c:b.c,h:4.5,von:b.von+8,bis:b.bis-8});});
       return B;}
@@ -85,7 +88,7 @@ mitSonden('traumhaus.html', {
     if(was==="kanten"){
       var out=[],OFF=[-0.4,0.08,0.2,0.35,0.7,1.2,1.8];
       baender().forEach(function(b){
-        var r={n:b.n,schnitte:0,ohneBord:[],luecke:[],ohneGehweg:[],bordH:[],gehH:[]};
+        var r={n:b.n,schnitte:0,ohneBord:[],luecke:[],ohneGehweg:[],bordH:[],gehH:[],land:!!b.land,bahndamm:0};
         /* ⚠️ Ein Messgeraet, das Bauteile als Fehler zaehlt, treibt die Arbeit in die falsche
            Richtung (Runbook-Lehre 3): an einem Zebrastreifen IST der Bordstein abgesenkt und die
            Gehwegplatte auf 3 cm — das ist der Zweck, kein Befund. Querschnitte, die in einen
@@ -97,6 +100,7 @@ mitSonden('traumhaus.html', {
         r.uebergang=0;
         for(var l=b.von;l<=b.bis;l+=9){
           [-1,1].forEach(function(seite){
+            if(b.bahn===seite){r.bahndamm++;return;}
             var S=OFF.map(function(o){var q=b.c+seite*(b.h+o),x=b.a==="z"?l:q,z=b.a==="z"?q:l;var u=unten(x,z);u.o=o;return u;});
             if(S[0].k!=="asphalt"&&S[0].k!=="hell")return;          /* hier ist keine Fahrbahn (Luecke im Band, Kreuzung) */
             var kx=b.a==="z"?l:b.c+seite*b.h,kz=b.a==="z"?b.c+seite*b.h:l;
@@ -138,14 +142,18 @@ const gBord = Math.max(...G.slice(0, 3).map((u) => u.y || 0))
 console.log(`Gegenprobe Suedstrasse (20|66,1..66,4): Bordstein-Oberkante ${gBord} m, Gehweg ${G[3].y} m ${G[3].k}`)
 if (gBord < 0.09) { console.log('💥 GEGENPROBE FEHLGESCHLAGEN — das Werkzeug sieht den bekannten Bordstein nicht.'); await browser.close(); aufraeumen(TMP); process.exit(2) }
 const R = await K('kanten')
-let sOhneBord = 0, sLuecke = 0, sOhneGeh = 0, sSchnitte = 0
+let sOhneBord = 0, sLuecke = 0, sOhneGeh = 0, sSchnitte = 0, sLand = 0
 console.log('\nKANTE je Band (Querschnitte alle 9 m, beide Seiten):')
 for (const r of R) {
-  sOhneBord += r.ohneBord.length; sLuecke += r.luecke.length; sOhneGeh += r.ohneGehweg.length; sSchnitte += r.schnitte
+  /* Landstrassen (Strand, Achterbahn) haben gewollt keinen Gehweg — sie stehen in der Liste, aber nicht
+     in den Kennzahlen; sonst treibt das Mass die Arbeit in die falsche Richtung (Runbook-Lehre 3). */
+  if (r.land) { sLand += r.ohneBord.length + r.ohneGehweg.length + r.luecke.length }
+  else { sOhneBord += r.ohneBord.length; sLuecke += r.luecke.length; sOhneGeh += r.ohneGehweg.length }
+  sSchnitte += r.schnitte
   const mB = r.bordH.length ? (r.bordH.reduce((a, b) => a + b, 0) / r.bordH.length).toFixed(2) : '-'
   const mG = r.gehH.length ? (r.gehH.reduce((a, b) => a + b, 0) / r.gehH.length).toFixed(2) : '-'
-  const ok = !r.ohneBord.length && !r.luecke.length && !r.ohneGehweg.length
-  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}`)
+  const ok = r.land || (!r.ohneBord.length && !r.luecke.length && !r.ohneGehweg.length)
+  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}${r.land ? ' · Landstrasse ohne Gehweg (gewollt, nicht gezaehlt)' : ''}${r.bahndamm ? ` · ${r.bahndamm} Schnitte Bahndamm-Seite ausgelassen` : ''}`)
   if (ALLE) { if (r.ohneBord.length) console.log('       ohne Bordstein: ' + r.ohneBord.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' '))
     if (r.luecke.length) console.log('       Luecke: ' + r.luecke.slice(0, 12).map((p) => `(${p[0]}|${p[1]}) +${p[2]} ${p[3]}`).join(' '))
     if (r.ohneGehweg.length) console.log('       ohne Gehweg: ' + r.ohneGehweg.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' ')) }
@@ -154,6 +162,6 @@ const U = await K('uebergaenge')
 const uSchlecht = U.filter((u) => !u.abgesenkt)
 console.log(`\nUEBERGAENGE (window._uebergaenge): ${U.length}, davon ohne abgesenkten Bordstein ${uSchlecht.length}`)
 for (const u of uSchlecht.slice(0, 20)) console.log(`   (${u.x}|${u.z}) ${u.quer ? 'ueber Strasse in x' : 'ueber Strasse in z'}  Bordstein-Oberkanten ${u.bord.join(' / ')} m`)
-console.log(`\nKENNZAHLEN: Schnitte ${sSchnitte} · ohne Bordstein ${sOhneBord} · Luecke ${sLuecke} · ohne Gehweg ${sOhneGeh} · Uebergaenge ${U.length}, nicht abgesenkt ${uSchlecht.length}`)
+console.log(`\nKENNZAHLEN: Schnitte ${sSchnitte} · ohne Bordstein ${sOhneBord} · Luecke ${sLuecke} · ohne Gehweg ${sOhneGeh} · Uebergaenge ${U.length}, nicht abgesenkt ${uSchlecht.length}  (Landstrassen ohne Gehweg: ${sLand} Befunde, gewollt)`)
 console.log('JS-Fehler:', jsFehler.length, jsFehler.slice(0, 3).join(' | '))
 await browser.close(); aufraeumen(TMP)

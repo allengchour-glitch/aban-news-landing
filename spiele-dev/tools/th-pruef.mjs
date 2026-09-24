@@ -29,11 +29,16 @@ const tmp = '_pruef_tmp.html'
 
 const SONDE = `function(){
   var K=window._KORRIDORE||[];
-  function korr(b){
+  /* Parkstreifen (Runde 93, wie th-strassen): die Hauptstrassen haben einen Parkstreifen 5,75…7,9 m
+     von der Mitte (HS_PARK…HS_BORD). Ein Fahrzeug, das ganz jenseits von 5,3 m steht, parkt dort
+     gewollt — kein Befund. Alles andere (und jedes Nicht-Fahrzeug) zaehlt wie bisher. */
+  function istFahrzeug(w){var d=(w.userData&&w.userData.datei)||"";return /th7_|th37_|th50_|th_auto|taxi|lieferwagen|polizei/i.test(d);}
+  function korr(b,w){
     for(var i=0;i<K.length;i++){var k=K[i],l=k[1]==="x";
       var aMin=l?b.min.x:b.min.z,aMax=l?b.max.x:b.max.z;
       if(aMax<k[3]-1||aMin>k[4]+1)continue;
       var qMin=l?b.min.z:b.min.x,qMax=l?b.max.z:b.max.x;
+      if(w&&/^Haupt/.test(k[0])&&istFahrzeug(w)&&Math.min(Math.abs(qMin-k[2]),Math.abs(qMax-k[2]))>=5.3&&(qMin>k[2])===(qMax>k[2]))continue;
       var ue=Math.min(qMax,k[2]+k[5])-Math.max(qMin,k[2]-k[5]);
       if(ue>0.4)return {n:k[0],ue:+ue.toFixed(1)};}
     return null;}
@@ -47,7 +52,7 @@ const SONDE = `function(){
     var b=new THREE.Box3().setFromObject(w);
     if(!isFinite(b.min.x)||b.max.y-b.min.y<0.45)return;   /* flache Deko darf am Rand liegen */
     bb.push({b:b,d:datei(w),x:+w.position.x.toFixed(0),z:+w.position.z.toFixed(0)});
-    var k=korr(b);
+    var k=korr(b,w);
     if(k)auf.push([+w.position.x.toFixed(0),+w.position.z.toFixed(0),k.ue,k.n]);});
   var paare=[];
   for(var a=0;a<bb.length;a++)for(var c=a+1;c<bb.length;c++){

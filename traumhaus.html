@@ -1528,6 +1528,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var c1=Math.cos(G.grat),s1=Math.sin(G.grat);
     h=Math.max(h,kuppe(G.x+c1*G.rad*0.46,G.z+s1*G.rad*0.46,G.hoch*0.62,G.rad*0.52));
     h=Math.max(h,kuppe(G.x-c1*G.rad*0.52,G.z-s1*G.rad*0.52,G.hoch*0.48,G.rad*0.46));
+    /* 🛣️ STRASSENSCHNEISE (Runde 93). Der Bauernhof-Anschluss (x 60, z -100…-246) und seine Ecke
+       zur Bauernhof-Strasse (z -246, x 20…60) laufen in den Fuss dieses Berges: GEMESSEN
+       (probe-berghoehe) 0,15 m bei z -215, 3,6 m bei -229, 10,3 m bei -245; die Weltfahrt endete
+       mit dem Auto IM Gelaende (welt-083). Innerhalb 22 m um die Fahrbahn ist die Hoehe 0, bis
+       48 m steigt sie weich an. ⚠️ 22 m, nicht 6: das Bergnetz ist hier ~20 m grob (48 Winkel
+       auf r ~150), eine engere Schneise laege zwischen zwei Rasterpunkten und der Belag bliebe
+       unter der interpolierten Flaeche. Die Funktion ist auch die Begehbarkeit — Auto und
+       Netz sehen dieselbe Schneise. */
+    if(h>0){
+      var dA=Math.hypot(x-60,z>-100?z+100:(z<-246?z+246:0));                 /* Schenkel x=60 */
+      var dB=Math.hypot(x>60?x-60:(x<20?x-20:0),z+246);                      /* Schenkel z=-246 */
+      var dS=Math.min(dA,dB),tS=(dS-22)/26;
+      if(tS<1)h*=(tS<=0?0:tS*tS*(3-2*tS));}
     return h;
   };
   (function grosserBerg(){
@@ -3085,17 +3098,24 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        und die Ring-Gehwege liefen dort als 5-cm-Platte quer ueber ihre Fahrbahn. Schraeg gekreuzt ist
        die Muendung 2·4,8/sin60 = 11,1 m breit; halbe Breite + Bordstein = 5,9. Dazu die Ein- und
        Ausfahrt des Bahnhofs-Parkplatzes (x 11 / 25) im inneren Sued-Gehweg. */
-    var ZMO=[[64.7,5.9],[-64.7,5.9]],ZMS=[[68.1,5.9],[-68.1,5.9]],ZMN=[[57.7,5.9],[-57.7,5.9]],QZ=[[-RX,5.3],[RX,5.3]];
+    /* ⚠️ NACHGEMESSEN (th-kante nach Teil 4): die Luecke gehoert NUR in den AEUSSEREN Gehweg — der
+       Zubringer-Belag beginnt in der Ringmitte, der innere Gehweg wird nie gekreuzt (Loch bei (±58|-96),
+       (108|70)). Und sie ist dort zentriert, wo die Speiche die GEHWEGLINIE schneidet, nicht die
+       Ringmitte: Ost z = 117,6·tan30 = 67,9 (statt 64,7), Sued x = 123,6/tan60 = 71,4, Nord 61,0 —
+       2,6…3,3 m daneben lag Gruen zwischen Asphalt und Platte ((117|61) +0,08). Halbe Breite: die
+       Fahrbahn (4,2) trifft die Linie unter 30 Grad → 4,85, plus Luft = 5,2. */
+    var T30=Math.tan(Math.PI/6),T60=Math.tan(Math.PI/3),HZ=5.2;
+    var ZMO=[[117.6*T30,HZ],[-117.6*T30,HZ]],ZMS=[[123.6/T60,HZ],[-123.6/T60,HZ]],ZMN=[[105.6/T60,HZ],[-105.6/T60,HZ]],QZ=[[-RX,5.3],[RX,5.3]];
     mitLuecken(-AUS,AUS,ZMN,true,-105.6,0.052);                                   // Ring Nord aussen
-    mitLuecken(-INN,INN,QZ.concat(ZMN),true,-94.4,0.052);                         // Ring Nord innen
-    mitLuecken(-INN,INN,QZ.concat(ZMS,[[11,3.4],[25,3.4]]),true,112.4,0.052);     // Ring Sued innen
+    mitLuecken(-INN,INN,QZ,true,-94.4,0.052);                                     // Ring Nord innen (kein Zubringer)
+    mitLuecken(-INN,INN,QZ.concat([[11,3.4],[25,3.4]]),true,112.4,0.052);         // Ring Sued innen (Bahnhof-Zufahrt)
     mitLuecken(-AUS,AUS,ZMS,true,123.6,0.052);                                    // Ring Sued aussen
     var zA0=RGZ_N-5.6, zA1=RGZ_S+5.6, zI0=RGZ_N+5.6, zI1=RGZ_S-5.6;
     /* Die Strandzufahrt (z = -30) quert den West-Ring — beide West-Gehwege
        brauchen dort ebenfalls eine Luecke, sonst endet auch sie an einer Kante. */
     mitLuecken(zA0,zA1,[-30],false,-117.6,0.054);                   // Ring West aussen
     mitLuecken(zI0,zI1,[-30],false,-106.4,0.054);                   // Ring West innen
-    mitLuecken(zI0,zI1,ZMO,false,106.4,0.054);  mitLuecken(zA0,zA1,ZMO,false,117.6,0.054);  // Ring Ost (Bordsteine kommen aus stueck)
+    mitLuecken(zI0,zI1,[],false,106.4,0.054);  mitLuecken(zA0,zA1,ZMO,false,117.6,0.054);  // Ring Ost: Luecke nur aussen (Bordsteine kommen aus stueck)
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
         /* Fruehere Laenge |RGZ_N+SZ9+23|-6 endete bei z = -97 und damit 1,1 m
@@ -6031,7 +6051,13 @@ setTimeout(function baueGebaeude(){
             von:(waag?Math.min(x1,x2):Math.min(z1,z2)),bis:(waag?Math.max(x1,x2):Math.max(z1,z2))});   /* fuer th-kante */
           var st=new THREE.Mesh(new THREE.PlaneGeometry(waag?len:SW,waag?SW:len),
                                 waag?strMatH.clone():strMatV.clone());
-          st.rotation.x=-Math.PI/2;st.position.set(mx,-0.004,mz);st.receiveShadow=true;scene.add(st);
+          /* ⚠️ HOEHE (Runde 93, Bild k6-muendung-300-nah): mit -0,004 lag der Anschluss-Belag UEBER dem
+             Ring-Belag (-0,0042 … -0,0086) — an der Muendung zeichnete sich seine Fahrbahn als helles
+             Parallelogramm quer ueber der Ring-Spur ab (der Bauernhof-Anschluss teilt sich die Muendung
+             mit dem Zubringer 300 Grad). -0,0098 liegt unter jeder Strasse (Ring, Haupt-, Quer- und
+             Viertelstrasse -0,003) und ueber Viertel-Platten (-0,012): in der Kreuzung verdeckt ihn die
+             andere Fahrbahn, dazwischen ist er da. */
+          st.rotation.x=-Math.PI/2;st.position.set(mx,-0.0098,mz);st.receiveShadow=true;scene.add(st);
           /* ⚠️ Kreuzt das Stueck die Landstrasse (r 200)? Dann enden die Gehwege 5,7 m vor
              der Fahrbahnmitte statt quer ueber den Asphalt zu laufen, und der Ring bekommt
              an der Stelle eine Luecke in seinen Mittelstrichen (Bild (200|0), Runde 92). */
@@ -8197,6 +8223,7 @@ setTimeout(function baueGebaeude(){
         var hh=bergH(pH[0]+hu*Math.cos(winkel)+hv*Math.sin(winkel),pH[1]-hu*Math.sin(winkel)+hv*Math.cos(winkel));
         if(hh>hMax)hMax=hh;if(hh<hMin)hMin=hh;}
       var HY=Math.round((hMax+0.6)*10)/10,hsH=Math.max(6,HY-hMin+3);
+      window._huette={x:pH[0],z:pH[1],HY:HY,hMax:hMax,hMin:hMin,hsH:hsH};   /* fuer Sonden */
       var hSock=new THREE.Mesh(new THREE.CylinderGeometry(8.5,12,hsH,7),felsSockelM);
       hSock.position.set(pH[0],HY-hsH/2,pH[1]);hSock.rotation.y=winkel;hSock.userData.traegt=1;
       hSock.receiveShadow=true;hSock.castShadow=true;scene.add(hSock);
