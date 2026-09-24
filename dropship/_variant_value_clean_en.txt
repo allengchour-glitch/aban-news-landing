@@ -19606,3 +19606,6 @@ gid://shopify/Product/15490614559105	Farbe	gid://shopify/ProductOptionValue/1230
 gid://shopify/Product/15492326687105	Farbe	gid://shopify/ProductOptionValue/12319176196481	Retroblau	Retro-Blau	2026-09-24T03:46Z
 gid://shopify/Product/15493057118593	Farbe	gid://shopify/ProductOptionValue/12323319873921	Retrorot	Retro-Rot	2026-09-24T03:57Z
 gid://shopify/Product/15493777719681	Farbe	gid://shopify/ProductOptionValue/12330657579393	Retroblau	Retro-Blau	2026-09-24T03:57Z
+gid://shopify/Product/15497429254529	Farbe	gid://shopify/ProductOptionValue/12366703329665	1 color	Farbton 1	2026-09-24T04:49Z
+gid://shopify/Product/15497429254529	Farbe	gid://shopify/ProductOptionValue/12366703362433	2 color	Farbton 2	2026-09-24T04:49Z
+gid://shopify/Product/15497429254529	Farbe	gid://shopify/ProductOptionValue/12366703395201	3 color	Farbton 3	2026-09-24T04:49Z
