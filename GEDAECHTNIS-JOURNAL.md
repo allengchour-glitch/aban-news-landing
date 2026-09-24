@@ -825,6 +825,26 @@ wären als «offen» wiederauferstanden; per `git checkout` zurückgenommen. Die
 `git_sichern.sh` (Merge, nur dropship/). **Lehre: Union ist ein Ledger-Werkzeug — vor dem Zurückholen fragen, ob die Datei
 angehängt oder neu geschrieben wird; und jeder Git-Pfad, der noch `add -A` oder `reset --hard` kennt, gehört stillgelegt, nicht nur ungenutzt.**
 
+**Nachtrag 57 (24.09.2026, 01:10 UTC — Verbesserungsrunde 00:25: Werbetext-Bilder scharf (45 weg), zwei Ratgeber aus dem Keywordplan live):**
+(1) **Klasse der Runde: Lieferanten-Textbilder in Galerien.** DRY über alle 704 «+N»-Produkte des Bild-Nachfüllers (2'487 Medien ab Position 2,
+0 unlesbar): 94 Treffer ≥ 4 Wörter. Sichtprüfung: Top 24 (≥ 14 W) 24/24 echte Infografiken; Zone 4–6 W 31 Medien mit 8 Fehlalarmen (Packungs-
+aufdruck, Flaschenetiketten, Farbnamen «SLATE GREY CHERRY RED», Massangaben) → Löschschwelle `SCHARF_AB=7` (Agent), Meldeschwelle bleibt 4. Neue
+Sperre: **nie das letzte Zweitbild** — die Produkte kamen aus dem Nachfüller («mehrere Bilder statt nur 1»), ein Lauf ohne diese Sperre hätte 26 davon
+wieder auf ein Bild zurückgeworfen. Ergebnis SCHARF: 94 = **45 entfernt** (rückgelesen, Hauptbild 0× geändert) + 26 als letztes Zweitbild behalten +
+23 unter 7 W (Sichtprüfung per NUR_MEDIA). Nebenbefund: der Aufseher startete um 00:37 seinen Tageslauf (DRY, ohne OCR) und hielt die Sperre, als der
+scharfe Lauf fällig war — der Hand-Lauf wartete per Hintergrund-Warter auf das Prozessende; ein «schnellende»-Lauf wird vom Aufseher neu gestartet,
+also nicht killen, sondern dahinter einreihen.
+(2) **Ratgeber C2 (Workflow: schreiben → adversarial prüfen → beheben, 6 Agenten, 25 min):** `/blogs/ratgeber/kratzbaum-kaufen-groesse-stabilitaet-sisal-ratgeber`
+(977 W, 5 Produkte mit Live-Preis «Stand 24.09.», Links auf kratzbaeume + katzenwelt, WebFetch-bestätigt) und `/blogs/ratgeber/hundebett-kaufen-oder-selber-bauen-ratgeber`
+(989 W, Bild 1200 px, Tags haustier/hund/kaufberatung). Prüfer: beide freigegeben; 2 «wichtig» (Karten versprachen Grössen/Preise, die das
+verlinkte Produkt so nicht hat) behoben. **Werkzeugfakten:** `Article` hat in 2026-01 KEIN `seo`- und KEIN `onlineStoreUrl`-Feld — SEO steht in
+den Metafeldern `global.title_tag` / `global.description_tag`; Gratis-Versand greift laut deliveryProfiles schon ab CHF 45 (Hausformel 50 bleibt wahr).
+(3) **Die Prüfer fanden Produktseiten-Klassen, nicht Artikelfehler:** Kratzbaum-Nest «Verfügbare Grössen: S (Ø 33 cm), M, L» bei EINER Variante (die
+WAHL-Regex kennt nur «erhältlich in zwei/…»), Hundebett Sofa mit Option «Farbe» = «Grey-60x50x H37cm» (MASSE-Regex kennt nur zwei Dimensionen →
+«nicht alle Werte tragen denselben Anhang»). Aufgabe #112, nächste Runde. **Lehre: Ein Ratgeber, der Produktkarten aus der Beschreibung abschreibt,
+erbt deren Auswahl-Versprechen — Karten-Fakten aus den Varianten lesen, nicht aus dem Text; und wer einen Aufseher-Lauf «wegkillt», bekommt ihn
+zurück — einreihen statt töten.**
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16522,3 +16542,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · 🪣 **Verbesserungsrunde 4: Eimer 95/2'000 bei vier laufenden Massen-Schreibern, zwei Tages-Wächter starben gedrosselt (cj_versand_ch_guard, lagerstand_hygiene). Die Schranke begrenzt Starts, nicht den Durst.** `eimer_etikette.py/.mjs` (unter 600 warten bis 1'000) in alle vier Schreiber; Liechtenstein-Lauf FERTIG (1'075 + 119) → Journal
 - 2026-09-22 · 🎬 **Social v2 («täglich mehrmals überall», Ads in 1 Monat): Reel-Motor war dreifach tot — Tag `video-hit` ohne Video, Dateispeicher voll (CDN FAILED), ffmpeg ohne drawtext.** Jetzt CJ-Videos direkt, PIL-Textebenen, Ablage `social/reels/` im Repo (IG nimmt raw.githubusercontent), Lernschleife aus IG-Insights, Kadenz Bild 6 h / Reel 8 h / TikTok 12 h → Journal
 - 2026-09-22 · 🎯 **«fokusiere tiktok und insta dann fb»: Engpass Reel-Versorgung — 14 von 22 «ready»-Reels waren 404 (Poster prüfen jetzt die Adresse), der Motor fand 1 Video je 80 CJ-Anfragen → `cj_video_index.mjs` (CJ `isVideo` nur in Kategorie-Listen, 200 je Aufruf, Regale nach eigener Stichprobe geordnet): 70 Shop-Treffer aus 80 Aufrufen, DRY 3 von 3.** UUID-pids gaben `Number()`-NaN → Hook/Musik «undefined». Metricool-Token erreicht die Session nicht → Betreiber im Chat → Journal
+- 2026-09-22 · 🔒 **Reel-Motor (Rebase) und Autocommitter (Merge) im selben Arbeitsbaum: verklemmter `rebase-merge/autostash`, danach scheiterte JEDER Push, 5 gerenderte Reels verworfen, 119 Ledger-Zeilen nur noch im Stash.** Jetzt EINE Repo-Sperre `/tmp/git_repo.lock` um jede git-Folge (auch eigene Pushes), Motor räumt verwaisten Rebase mit `--quit`, Nachtrag-Modus macht aus Reel-Dateien ohne Zeile wieder Queue-Zeilen (7 nachgetragen). Index nach 150 Aufrufen: 285 Shop-Produkte mit Video → Journal
