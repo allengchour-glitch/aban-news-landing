@@ -73,10 +73,14 @@ const sonde = `function(MINH){
       if(Math.abs(q-b.c)<b.h&&l>b.von&&l<b.bis)return b.n;}
     var r=Math.hypot(x,z);
     if(Math.abs(r-RINGR)<RINGH)return "Landstrasse";
-    if(r>=RAD0&&r<=RAD1)
+    /* Seit Runde 93 beginnt jeder Zubringer an der Ring-AUSSENKANTE (zubR0: 30/330 Grad bei
+       r 136,5, 60/120 bei 143,5, 240/300 bei 122,7), nicht mehr bei 123 — was innerhalb liegt,
+       gehoert dem Stadtring und wird dort gezaehlt. */
+    if(r<=RAD1)
       for(var g=0;g<SPEICHEN.length;g++){
         var a=SPEICHEN[g]*Math.PI/180;
-        if(Math.abs(x*Math.sin(a)-z*Math.cos(a))<SPH){
+        var r0=(typeof zubR0==="function")?zubR0(SPEICHEN[g]):RAD0;
+        if(r>=r0&&Math.abs(x*Math.sin(a)-z*Math.cos(a))<SPH){
           /* nur die richtige Haelfte der Geraden */
           if(x*Math.cos(a)+z*Math.sin(a)>0)return "Zubringer "+SPEICHEN[g]+"\\u00b0";}}
     return null;}

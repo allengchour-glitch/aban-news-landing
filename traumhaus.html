@@ -4017,13 +4017,18 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,2.6,5),stdMat(0x3a3a42,0.4));ant.position.set(w*0.1,h+1.8,w*0.1);g.add(ant);
     g.position.set(x,0,z);scene.add(g);addSolid(x,z,w+0.4,w+0.4,null);} /* 🧱 Hochhaus solide */
   // Downtown-Cluster jenseits des Flusses: dichte Skyline statt verstreuter Einzeltuerme
-  [[-64,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
+  /* ⚠️ ZWEI TUERME STANDEN AUF DEN ZUBRINGERN (Runde 93, th-strassen): (-64|-116) mitten auf dem
+     Zubringer 240 Grad (Mitte dort x -67, Fahrbahn -71…-63) und (72|-112), das wegVonStrasse wegen
+     der Querstrasse (x 78, Zone ±10,5) nach 67,5 schob — auf den Zubringer 300 Grad (Mitte 64,7,
+     Fahrbahn 60…69; Weltfahrt: „steckt fest bei (62|-111)"). wegVonStrasse kennt die Zubringer
+     nicht. Beide jetzt ausserhalb der Querstrassen-Zone (|x-78| ≥ 10,5) und der Speichen. */
+  [[-92,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
    [-14,-118,16,8,0x9caabe],[-2,-106,9,6,0x8ea6ba],[10,-119,19,8,0x98a6ba],[22,-108,12,7,0x8ea2b4],
    /* ⚠️ DREI TUERME STANDEN AUF STRASSEN (Runde 93, th-strassen + Weltfahrt „steckt fest bei
       (57|-139)"): (58|-115) und (62|-134) auf dem Bauernhof-Anschluss (x 60, Fahrbahn 55,5…64,5),
       (64|-100) auf dem Nord-Ring (z -100 ± 4,5). Der Anschluss kam nach den Tuermen dazu, und
       turm() prueft keine Fahrbahn. Jetzt westlich bzw. oestlich davon, nicht am Fluss. */
-   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[50,-123,17,8,0x9caebe],[72,-112,12,7,0x8ca0b2],
+   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[50,-123,17,8,0x9caebe],[92,-113,12,7,0x8ca0b2],
    [-65,-98,14,7,0x96a6b8],[44,-135,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   [[-98,44,14,8,0xa0b0c0],[100,76,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
@@ -6760,8 +6765,16 @@ setTimeout(function baueGebaeude(){
       ZUB.forEach(function(gr9){
         var aa=gr9*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa);
         var qx=-sa, qz=ca;                       // quer zur Fahrtrichtung
-        var zr9=zubRing(gr9), r0=zr9.r, r1=ZR1, hb=window._zubBreite;   /* Belag ab Ringmitte (Runde 93) */
+        var zr9=zubRing(gr9), rU=zr9.r, r0=zr9.rx+0.3, r1=ZR1, hb=window._zubBreite;
         function pkt(rr9,q9,hh9){return [ca*rr9+qx*q9, hh9, sa*rr9+qz*q9];}
+        /* MUENDUNG (Runde 93, Bild k2-ring-zubringer): der Belag ab Ringmitte lag mit HD 0,004 UEBER
+           dem Ring-Belag (-0,003…-0,008) — ein helleres Parallelogramm quer ueber der Ring-Spur.
+           Das Stueck Ringmitte…Aussenkante+0,3 liegt jetzt auf -0,010: im Ring verdeckt es der
+           Ring-Belag, davor schliesst es die Keile, die der schraege Anschnitt (30/60 Grad) an
+           der geraden Ringkante laesst. Ab r0 dann der normale Belag auf HD. */
+        var HU=-0.010;
+        quadOben(pos,idx, pkt(rU,-hb(rU),HU), pkt(rU,hb(rU),HU), pkt(r0,hb(r0),HU), pkt(r0,-hb(r0),HU), uvs,
+                 [rU/KM,0], [rU/KM,2*hb(rU)/KM], [r0/KM,2*hb(r0)/KM], [r0/KM,0]);
         /* In Abschnitten, sonst kann die Breite unterwegs gar nicht wachsen. */
         var N9=16;
         for(var s9=0;s9<N9;s9++){
@@ -8171,15 +8184,35 @@ setTimeout(function baueGebaeude(){
          sind mit visible=W9() saisonal. Ein fester Kollider waere im Sommer eine
          unsichtbare Wand auf dem Marktplatz — schlimmer als das Hindurchlaufen.
          WORLD_SOLIDS kennt kein Entfernen, ein saisonaler Kollider geht also nicht. */
-      var pH=aufTerrasse(-6.5,-4);  bau("th26_berghuette.glb",4.4,pH[0],BERGY,pH[1],winkel+0.5,false,
-        function(w){stationSolid(w,pH[0],pH[1]);},true);
-      /* ⚠️ GIPFELKREUZ UND FELSEN STANDEN IM STATIONSHAUS (Runde 93, th-echt: 72 / 88 / 75
-         Mesh-Paare). Das Haus ist 17 m breit (lx ±8,5) und 27,5 m lang (lz ±13,75) — die
-         Terrasse 24 x 34 (±12 / ±17). Frei ist also nur der Streifen lx 8,5…12 beidseits.
-         Kreuz (5,2 m Fuss) und Felsen (3,6 m) stehen jetzt dort, an der Terrassenkante. */
-      var pK=aufTerrasse(10.4,-6);   bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],winkel+Math.PI/2,false,null,true);
-      var pF=aufTerrasse(10.4,8);    bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,null,true);
-      var pF2=aufTerrasse(-10.4,9);  bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,null,true);
+      /* 🏠 BERGHUETTE AUF EIGENEM SOCKEL (Runde 93). GEMESSEN (Sonde probe-berg.mjs, Soll aus
+         aufTerrasse gegen Ist aus position): die Huette ist 12,8 x 12,8 m gross. Bei (-6,5|-4)
+         stand sie IM Stationshaus (Grundriss lx ±8,5 / lz ±11,8, Sonde probe-station.mjs), und
+         freiRaeumen schob sie 14 m den Hang hinab (Soll 333,9|98,5 → Ist 319,8|98,5). Auf die
+         Terrassenstreifen neben dem Haus (3,5 m seitlich, 5,2 m an den Enden) passt sie nicht.
+         Jetzt jenseits des Bergendes der Terrasse (lz 17) auf einer eigenen Platte in der dort
+         gemessenen Gelaendehoehe, mit Felssockel wie die Station; `fest`, damit sie nichts mehr
+         verschiebt. */
+      var pH=aufTerrasse(0,25),hMax=0,hMin=1e9;
+      for(var hu=-7;hu<=7.01;hu+=3.5)for(var hv=-7;hv<=7.01;hv+=3.5){
+        var hh=bergH(pH[0]+hu*Math.cos(winkel)+hv*Math.sin(winkel),pH[1]-hu*Math.sin(winkel)+hv*Math.cos(winkel));
+        if(hh>hMax)hMax=hh;if(hh<hMin)hMin=hh;}
+      var HY=Math.round((hMax+0.6)*10)/10,hsH=Math.max(6,HY-hMin+3);
+      var hSock=new THREE.Mesh(new THREE.CylinderGeometry(8.5,12,hsH,7),felsSockelM);
+      hSock.position.set(pH[0],HY-hsH/2,pH[1]);hSock.rotation.y=winkel;hSock.userData.traegt=1;
+      hSock.receiveShadow=true;hSock.castShadow=true;scene.add(hSock);
+      var hPl=new THREE.Mesh(new THREE.BoxGeometry(15,0.3,15),stdMat(0x8f9aa6,0.8));
+      hPl.userData.traegt=1;hPl.position.set(pH[0],HY+0.15,pH[1]);hPl.rotation.y=winkel;hPl.receiveShadow=true;scene.add(hPl);
+      bau("th26_berghuette.glb",4.4,pH[0],HY+0.3,pH[1],winkel+0.5,false,
+        function(w){w.userData.fest=1;stationSolid(w,pH[0],pH[1]);},true);
+      /* ⚠️ GIPFELKREUZ UND FELSEN: erst standen sie im Stationshaus (th-echt 72/88/75 Paare), dann
+         auf dem 3,5-m-Seitenstreifen — zu schmal fuer 5,2 m Kreuzfuss und 4,6 m Felsen, und
+         freiRaeumen schob sie aus dem WELT-Kasten des schraegen Hauses (32 x 29 m!) ueber die
+         Terrassenkante hinaus. Jetzt am Bergende der Terrasse (Streifen lz 11,8…17, 5,2 m breit:
+         Kreuz bei 14,4 sitzt genau), `fest`, und th-echt misst seit Runde 93 im lokalen Rahmen. */
+      function festHalten(w){w.userData.fest=1;}
+      var pK=aufTerrasse(0,14.4);    bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],winkel,false,festHalten,true);
+      var pF=aufTerrasse(7.5,14.4);  bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,festHalten,true);
+      var pF2=aufTerrasse(-7.5,14.4);bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,festHalten,true);
       window._seilbahn={tal:TAL,berg:BERG,taly:TALY,bergy:BERGY,seilh:SEILH,
                         qx:qx,qz:qz,spur:SPUR,winkel:winkel,gond:gond,laenge:laenge};
       /* GEMESSENE Grundflaeche statt geschaetzter: das Modell ist 20.6 x 11.5 x 33.3 und
@@ -15427,7 +15460,15 @@ function gpsStrasse(x,z){
    Flaechen, die das GPS schon kannte, sperren jetzt auch Auto und Spielfigur (Bruecken und
    der Damm der Landstrasse bleiben frei, wie beim GPS). */
 function imWasser(x,z){
-  if(x<-233)return true;                                       // Meer (der Strand bleibt frei)
+  /* ⚠️ „x < -233" WAR DIE PLATTENMITTE, NICHT DAS UFER (Runde 93, Ortsfoto „Meer": die Figur stand
+     100 m draussen auf dem Wasser). Die Meerplatte ist 200 x 340 um (-232|0), reicht also von
+     x -332 bis -132 und z ±170; der Sand (-135…-121) liegt darueber. Wasser ist alles westlich
+     von -135 innerhalb der Platte. Frei bleiben der Wendeplatz am Strand (-132|-30, r 9,4),
+     der Steg (z ~70) und der Faehranleger (z ~100), beide bis x -148. */
+  if(x<-135&&Math.abs(z)<168.5){
+    if(Math.hypot(x+132,z+30)<9.6)return false;
+    if(x>-148.5&&(Math.abs(z-70)<4.5||Math.abs(z-100)<9.5))return false;
+    return true;}
   var sr9=Math.hypot(x,z-146);                                 // Seepark-See: die ECHTE Uferkurve (seeR), nicht der 26-m-Kreis des GPS
   if(sr9<(window._seeUfer?window._seeUfer(Math.atan2(z-146,x)):13))return true;
   if(z>-97&&z<-84&&x<82&&Math.abs(x+78)>7&&Math.abs(x+112)>7&&Math.abs(x-78)>7)return true; // Fluss, Bruecken frei

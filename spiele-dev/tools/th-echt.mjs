@@ -40,16 +40,36 @@ mitSonden('traumhaus.html', {
       w.traverse(function(n){
         if(!n.isMesh||!n.geometry)return;
         var b=new THREE.Box3().setFromObject(n);
-        if(isFinite(b.min.x))L.push(b);});
+        if(isFinite(b.min.x))L.push({b:b,n:n});});
       w.__mb=L;return L;}
+    /* ⚠️ GEDREHTE BAUWERKE (Runde 93): der Welt-Kasten eines um 58 Grad gedrehten 17 x 27-m-Hauses ist
+       32 x 29 m — Gipfelkreuz und Felsen standen laut Welt-Kasten "3,3 m im Stationshaus", obwohl sie
+       neben der Wand standen. Darum zusaetzlich im LOKALEN Rahmen jedes Meshes messen (Ecken des
+       fremden Kastens nach lokal, gegen geometry.boundingBox): zwei Kaesten, die sich wirklich
+       schneiden, tun das in jedem Rahmen — die kleinste der drei Tiefen ist die ehrliche. */
+    var _c=new THREE.Vector3(),_lb=new THREE.Box3(),_p=new THREE.Vector3(),_q=new THREE.Quaternion(),_s=new THREE.Vector3();
+    function lokal(node,weltBox){
+      var g=node.geometry;if(!g.boundingBox)g.computeBoundingBox();var la=g.boundingBox;
+      _lb.makeEmpty();
+      for(var k=0;k<8;k++){_c.set(k&1?weltBox.max.x:weltBox.min.x,k&2?weltBox.max.y:weltBox.min.y,k&4?weltBox.max.z:weltBox.min.z);
+        node.worldToLocal(_c);_lb.expandByPoint(_c);}
+      var ox=Math.min(la.max.x,_lb.max.x)-Math.max(la.min.x,_lb.min.x),
+          oy=Math.min(la.max.y,_lb.max.y)-Math.max(la.min.y,_lb.min.y),
+          oz=Math.min(la.max.z,_lb.max.z)-Math.max(la.min.z,_lb.min.z);
+      if(ox<=0||oy<=0||oz<=0)return 0;
+      node.matrixWorld.decompose(_p,_q,_s);
+      var d=[ox*Math.abs(_s.x),oy*Math.abs(_s.y),oz*Math.abs(_s.z)].sort(function(a,b){return a-b;});
+      return d[1];}   /* wie ueber(): die zweitkleinste Achse ist nicht die duenne (Hoehen-)Richtung */
     var out=[];
     for(var i=0;i<bb.length;i++)for(var j=i+1;j<bb.length;j++){
       var gr=ueber(bb[i].b,bb[j].b);
       if(!gr||gr.x<=1.0||gr.z<=1.0||gr.y<=1.0)continue;
       var MA=meshBoxen(bb[i].w),MB=meshBoxen(bb[j].w),tiefste=0,paare=0;
       for(var a=0;a<MA.length;a++)for(var c=0;c<MB.length;c++){
-        var e=ueber(MA[a],MB[c]);
-        if(e&&e.tief>0.05&&e.y>0.05){paare++;if(e.tief>tiefste)tiefste=e.tief;}}
+        var e=ueber(MA[a].b,MB[c].b);
+        if(e&&e.tief>0.05&&e.y>0.05){
+          var t=Math.min(e.tief,lokal(MA[a].n,MB[c].b),lokal(MB[c].n,MA[a].b));
+          if(t>0.05){paare++;if(t>tiefste)tiefste=t;}}}
       out.push({a:bb[i].n, b:bb[j].n,
         kasten:+gr.tief.toFixed(1), mesh:+tiefste.toFixed(2), meshPaare:paare,
         meshA:MA.length, meshB:MB.length});}

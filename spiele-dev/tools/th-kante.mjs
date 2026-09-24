@@ -86,10 +86,24 @@ mitSonden('traumhaus.html', {
       var out=[],OFF=[-0.4,0.08,0.2,0.35,0.7,1.2,1.8];
       baender().forEach(function(b){
         var r={n:b.n,schnitte:0,ohneBord:[],luecke:[],ohneGehweg:[],bordH:[],gehH:[]};
+        /* ⚠️ Ein Messgeraet, das Bauteile als Fehler zaehlt, treibt die Arbeit in die falsche
+           Richtung (Runbook-Lehre 3): an einem Zebrastreifen IST der Bordstein abgesenkt und die
+           Gehwegplatte auf 3 cm — das ist der Zweck, kein Befund. Querschnitte, die in einen
+           registrierten Uebergang (window._uebergaenge) fallen, werden hier uebersprungen und
+           gezaehlt; die Uebergaenge prueft der eigene Lauf unten (abgesenkt ja/nein). */
+        var UEB=window._uebergaenge||[];
+        function imUebergang(px,pz){for(var i=0;i<UEB.length;i++){var u=UEB[i],br=(u[3]||4.8)/2+0.4,hb=(u[4]||8.05)+0.6;
+          if(u[2]?(Math.abs(px-u[0])<br&&Math.abs(pz-u[1])<hb):(Math.abs(pz-u[1])<br&&Math.abs(px-u[0])<hb))return true;}return false;}
+        r.uebergang=0;
         for(var l=b.von;l<=b.bis;l+=9){
           [-1,1].forEach(function(seite){
             var S=OFF.map(function(o){var q=b.c+seite*(b.h+o),x=b.a==="z"?l:q,z=b.a==="z"?q:l;var u=unten(x,z);u.o=o;return u;});
             if(S[0].k!=="asphalt"&&S[0].k!=="hell")return;          /* hier ist keine Fahrbahn (Luecke im Band, Kreuzung) */
+            var kx=b.a==="z"?l:b.c+seite*b.h,kz=b.a==="z"?b.c+seite*b.h:l;
+            if(imUebergang(kx,kz)){r.uebergang++;return;}
+            /* Einmuendung: Asphalt bis 1,8 m hinter der Kante = die Fahrbahn einer anderen Strasse
+               (Zubringer-Muendung, Querstrasse, Zufahrt). Dort gibt es keinen Bordstein — gewollt. */
+            if(S[5].k==="asphalt"&&S[6].k==="asphalt"){r.einmuendung=(r.einmuendung||0)+1;return;}
             r.schnitte++;
             var bord=Math.max(S[1].y||0,S[2].y||0,S[3].y||0),geh=S[5].y||0;
             var lk=S.slice(1,6).filter(function(u){return u.k==="gruen"||u.k==="erde";});
@@ -131,7 +145,7 @@ for (const r of R) {
   const mB = r.bordH.length ? (r.bordH.reduce((a, b) => a + b, 0) / r.bordH.length).toFixed(2) : '-'
   const mG = r.gehH.length ? (r.gehH.reduce((a, b) => a + b, 0) / r.gehH.length).toFixed(2) : '-'
   const ok = !r.ohneBord.length && !r.luecke.length && !r.ohneGehweg.length
-  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m`)
+  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}`)
   if (ALLE) { if (r.ohneBord.length) console.log('       ohne Bordstein: ' + r.ohneBord.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' '))
     if (r.luecke.length) console.log('       Luecke: ' + r.luecke.slice(0, 12).map((p) => `(${p[0]}|${p[1]}) +${p[2]} ${p[3]}`).join(' '))
     if (r.ohneGehweg.length) console.log('       ohne Gehweg: ' + r.ohneGehweg.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' ')) }
