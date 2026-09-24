@@ -48,7 +48,9 @@ FARBE_DE = {v.lower() for v in FARBE.values()}
 
 SPEICHER = re.compile(r'^(.*\S)[-–]\s*(\d{1,4}\s?[GT]B)$', re.I)
 INHALT = re.compile(r'^(.*\S)[-–]\s*(\d{1,5}\s?(?:ML|L))$', re.I)
-MASSE = re.compile(r'^(.*\S)[-–]\s*(\d{1,4}\s?[xX×]\s?\d{1,4}\s?(?:cm|mm)?)$')
+# 24.09.: dritte Dimension mit optionalem «H» und Leerzeichen — «Grey-60x50x H37cm», «Light Gray-80X120X45cm» (Hundebett Sofa,
+# Prüfer der Ratgeber): 21 Produkte am Options-Export vom 21.09., die das Zwei-Dimensionen-Muster übersprang.
+MASSE = re.compile(r'^(.*\S)[-–]\s*(\d{1,4}\s?[xX×]\s?\d{1,4}(?:\s?[xX×]\s?H?\s?\d{1,4})?\s?(?:cm|mm)?)$')
 ZAHL = re.compile(r'^(.*\S)[-–]\s*(\d{1,2})$')
 # ⚠️ 23.08.2026 — 36 Produkte tragen eine Option, deren NAME den Fehler zugibt:
 # «Farbe & Grösse», «Ausführung & Grösse». Die Werte lauten «Black And Blue-S M»,
@@ -121,6 +123,10 @@ def zerlegen(werte):
                 schwanz = re.sub(r'\bInner\s+Length\b', 'Innenlänge', schwanz, flags=re.I)
             else:
                 schwanz = schwanz.replace(" ", "")
+                if muster is MASSE:
+                    # 24.09.: «80X120X45cm» und «80x120x45cm» sind EINE Grösse — ohne Vereinheitlichung entstanden
+                    # vier Grössen aus zwei (Küchenmatte, DRY-Lauf). Typografisches × für die Kundin.
+                    schwanz = re.sub(r'[xX×]', '×', schwanz)
             teile[w] = (m.group(1).strip(), schwanz)
         if teile is None:
             continue
