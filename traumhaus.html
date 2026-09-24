@@ -4559,6 +4559,13 @@ function zubRing(gr){var a=gr*Math.PI/180,ca=Math.cos(a),sa=Math.sin(a),K=[];
   if(sa>0.01)K.push({r:118/sa,rx:122.5/sa});if(sa<-0.01)K.push({r:-100/sa,rx:-104.5/sa});
   K.sort(function(p,q){return p.r-q.r;});return K[0];}
 function zubR0(gr){return zubRing(gr).rx+2;}
+/* Radius, bei dem die Seitenlinie eines Zubringers (Querversatz q, links negativ) die Ring-AUSSENKANTE
+   schneidet — die Kante ist eine Gerade (x = ±116,5 bzw. z = 122,5 / -104,5), die Speiche trifft sie
+   schraeg, also liegt der Schnitt je Seite bei einem anderen Radius (30 Grad: ±2,4 m). */
+function zubKante(gr,q){var a=gr*Math.PI/180,ca=Math.cos(a),sa=Math.sin(a),qx=-sa,qz=ca,K=[];
+  if(ca>0.01)K.push((116.5-qx*q)/ca);if(ca<-0.01)K.push((-116.5-qx*q)/ca);
+  if(sa>0.01)K.push((122.5-qz*q)/sa);if(sa<-0.01)K.push((-104.5-qz*q)/sa);
+  return Math.min.apply(null,K);}
 setTimeout(function baueVerkehr(){
   var SZ=GH*CS/2;
   /* 🚗 Mehr Verkehr (User): Die Hauptstrassen sind jetzt 16 m breit und tragen je Richtung
@@ -6791,16 +6798,17 @@ setTimeout(function baueGebaeude(){
       ZUB.forEach(function(gr9){
         var aa=gr9*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa);
         var qx=-sa, qz=ca;                       // quer zur Fahrtrichtung
-        var zr9=zubRing(gr9), rU=zr9.r, r0=zr9.rx+0.3, r1=ZR1, hb=window._zubBreite;
+        var zr9=zubRing(gr9), r1=ZR1, hb=window._zubBreite;
         function pkt(rr9,q9,hh9){return [ca*rr9+qx*q9, hh9, sa*rr9+qz*q9];}
-        /* MUENDUNG (Runde 93, Bild k2-ring-zubringer): der Belag ab Ringmitte lag mit HD 0,004 UEBER
-           dem Ring-Belag (-0,003…-0,008) — ein helleres Parallelogramm quer ueber der Ring-Spur.
-           Das Stueck Ringmitte…Aussenkante+0,3 liegt jetzt auf -0,010: im Ring verdeckt es der
-           Ring-Belag, davor schliesst es die Keile, die der schraege Anschnitt (30/60 Grad) an
-           der geraden Ringkante laesst. Ab r0 dann der normale Belag auf HD. */
-        var HU=-0.010;
-        quadOben(pos,idx, pkt(rU,-hb(rU),HU), pkt(rU,hb(rU),HU), pkt(r0,hb(r0),HU), pkt(r0,-hb(r0),HU), uvs,
-                 [rU/KM,0], [rU/KM,2*hb(rU)/KM], [r0/KM,2*hb(r0)/KM], [r0/KM,0]);
+        /* MUENDUNG (Runde 93, Bilder k2-ring-zubringer, k8-ring-sued): der Belag ab Ringmitte lag
+           mit HD 0,004 UEBER dem Ring-Belag (-0,004…-0,009) — ein helleres Parallelogramm quer
+           ueber der Ring-Spur; ein tiefer gelegtes Unterlage-Stueck (-0,010) schimmerte im
+           Software-Renderer trotzdem durch. Jetzt beginnt der Belag GENAU auf der Ring-Aussenkante:
+           die Anfangskante ist schraeg (je Seite ihr eigener Radius, zubKante), es gibt weder
+           Ueberlappung noch Keil. Ab r0 (hinter dem laengeren Schnitt) die geraden Abschnitte. */
+        var rL=zubKante(gr9,-hb(zr9.rx)), rR=zubKante(gr9,hb(zr9.rx)), r0=Math.max(rL,rR)+0.3;
+        quadOben(pos,idx, pkt(rL,-hb(rL),HD), pkt(rR,hb(rR),HD), pkt(r0,hb(r0),HD), pkt(r0,-hb(r0),HD), uvs,
+                 [rL/KM,0], [rR/KM,2*hb(rR)/KM], [r0/KM,2*hb(r0)/KM], [r0/KM,0]);
         /* In Abschnitten, sonst kann die Breite unterwegs gar nicht wachsen. */
         var N9=16;
         for(var s9=0;s9<N9;s9++){
@@ -6942,15 +6950,18 @@ setTimeout(function baueGebaeude(){
            dieselbe Unterteilung wie beim Belag. */
         var zp=[],zi=[],zuv=[],hbz=window._zubBreite;
         ZUB.forEach(function(gr){
-          var A=achse(gr),r0b=zubRing(gr).rx+0.3;   /* Bankett erst hinter der Ring-Aussenkante (Runde 93) */
+          var A=achse(gr);
           function pk(rr,q){return [A.ca*rr+A.qx*q, HB2, A.sa*rr+A.qz*q];}
-          for(var s8=0;s8<16;s8++){
-            var ra=r0b+(r1-r0b)*s8/16, rb=r0b+(r1-r0b)*(s8+1)/16;
-            [-1,1].forEach(function(sd){
+          [-1,1].forEach(function(sd){
+            /* je Seite erst hinter der Ring-Aussenkante (Runde 93): auf der spitzen Seite schneidet die
+               Speiche die Kante 2,4 m spaeter — ein gemeinsamer Start laege dort als Kies in der Ring-Spur */
+            var hb0=hbz(zubRing(gr).rx),r0b=Math.max(zubKante(gr,sd*hb0),zubKante(gr,sd*(hb0+1.5)))+0.3;
+            for(var s8=0;s8<16;s8++){
+              var ra=r0b+(r1-r0b)*s8/16, rb=r0b+(r1-r0b)*(s8+1)/16;
               quadOben(zp,zi, pk(ra,sd*hbz(ra)), pk(ra,sd*(hbz(ra)+1.5)),
                               pk(rb,sd*(hbz(rb)+1.5)), pk(rb,sd*hbz(rb)), zuv,
-                       [ra/KM,0], [ra/KM,1.5/KM], [rb/KM,1.5/KM], [rb/KM,0]);});
-          }
+                       [ra/KM,0], [ra/KM,1.5/KM], [rb/KM,1.5/KM], [rb/KM,0]);}
+          });
         });
         mesh(zp,zi,betMat(0x9a9384,0.98),zuv);
         /* Leitpfosten entlang der Zubringer, als EINE InstancedMesh.
@@ -6965,10 +6976,10 @@ setTimeout(function baueGebaeude(){
         var M4=new THREE.Matrix4(),Q4=new THREE.Quaternion(),
             P4=new THREE.Vector3(),S4=new THREE.Vector3(1,1,1),n4=0;
         ZUB.forEach(function(gr){
-          var A=achse(gr),r0p=zubRing(gr).rx+0.3;
+          var A=achse(gr),hb0=hbz(zubRing(gr).rx);
           for(var k=1;k<=pro;k++){
-            var rr=r0p+k*(r1-r0p)/(pro+1);
             [-1,1].forEach(function(sd){
+              var r0p=zubKante(gr,sd*(hb0+1.1))+0.3, rr=r0p+k*(r1-r0p)/(pro+1);   /* je Seite hinter der Ringkante */
               var p=P(A,rr,sd*(hbz(rr)+1.1));   // folgt der Trompete wie das Bankett
               P4.set(p[0],0.5,p[1]);
               im.setMatrixAt(n4++,M4.compose(P4,Q4,S4));});
@@ -8228,9 +8239,15 @@ setTimeout(function baueGebaeude(){
           var hh=bergH(p[0]+hu*Math.cos(winkel)+hv*Math.sin(winkel),p[1]-hu*Math.sin(winkel)+hv*Math.cos(winkel));
           if(hh>mx)mx=hh;if(hh<mn)mn=hh;}
         return {max:mx,min:mn};}
+      /* ⚠️ ZWEITE MESSUNG (probe-berg4): seitlich (lx ±22) liegt das Gelaende auf 7 m — 36 m UNTER
+         der Terrasse; die Station steht an einer Steilwand, die Hoehenlinie laeuft nicht laengs lx.
+         Darum zwoelf Richtungen im Abstand 24 m abtasten (ohne den Talsektor, dort haengen Seil
+         und Stuetzen) und die nehmen, deren Hoehe der Terrasse am naechsten kommt. */
       var pH=null,hMax=0,hMin=1e9;
-      [[22,-2],[-22,-2]].forEach(function(lp){var q=aufTerrasse(lp[0],lp[1]),h=hoehenUm(q);
-        if(!pH||Math.abs(h.max+0.6-BERGY)<Math.abs(hMax+0.6-BERGY)){pH=q;hMax=h.max;hMin=h.min;}});
+      for(var kH=0;kH<12;kH++){var phH=kH*Math.PI/6,lxH=24*Math.cos(phH),lzH=24*Math.sin(phH);
+        if(lzH<-10)continue;
+        var qH=aufTerrasse(lxH,lzH),hH=hoehenUm(qH);
+        if(!pH||Math.abs(hH.max+0.6-BERGY)<Math.abs(hMax+0.6-BERGY)){pH=qH;hMax=hH.max;hMin=hH.min;}}
       var HY=Math.round((hMax+0.6)*10)/10,hsH=Math.max(6,HY-hMin+3);
       window._huette={x:pH[0],z:pH[1],HY:HY,hMax:hMax,hMin:hMin,hsH:hsH};   /* fuer Sonden */
       var hSock=new THREE.Mesh(new THREE.CylinderGeometry(8.5,12,hsH,7),felsSockelM);
