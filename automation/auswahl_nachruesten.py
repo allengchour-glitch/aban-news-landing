@@ -66,6 +66,9 @@ def werte(keys):
     de = [farbe_deutsch(r) for r in rest]
     if all(de) and len(set(de)) == len(de):
         return "Farbe", de
+    # Reine Konfektionsgrössen (Nagel-Tips XS–L): Option «Grösse», Reihenfolge wie bei CJ.
+    if all(re.fullmatch(r"(?:X{0,3}S|M|X{0,3}L)", r.upper()) for r in rest):
+        return "Grösse", [r.upper() for r in rest]
     if all(CODE.match(r) for r in rest):
         return "Design", [r.upper().replace(" ", "") for r in rest]
     return None, f"keine reinen Farb-/Codewerte: {rest[:5]}"
