@@ -2832,8 +2832,10 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   /* ⚠️ amp 0,2 (Runde 94, Bild k11-meer-insel): der Teich-Animator daempft nur Rand-Vertices (|x|,|y| > 11 m);
      die MITTE der 200 x 340-m-Platte kraeuselte mit voller Amplitude ±0,16 um -0,04 und tauchte bis -0,20 —
      UNTER die Fernebene (-0,08). Dort schaute 100 m vor dem Strand eine gruene Sechseck-"Insel" aus dem
-     Wasser, mal da, mal weg. Mit 0,2 bleibt der tiefste Punkt bei -0,072. */
-  window._wasser.push({mesh:meer,geo:meerG,base:meerG.attributes.position.array.slice(),amp:0.2}); /* kräuselt mit dem Teich-Animator */
+     Wasser, mal da, mal weg. Mit 0,2 lag der tiefste Punkt bei -0,072 — immer noch unter dem weissen
+     Fern-Overlay (-0,06), das dann als heller Keil durchschaute (Bild k13-meer-insel). 0,1: tiefster Punkt
+     -0,056, ueber allem, was unter dem Meer liegt. */
+  window._wasser.push({mesh:meer,geo:meerG,base:meerG.attributes.position.array.slice(),amp:0.1}); /* kräuselt mit dem Teich-Animator */
   var sand=new THREE.Mesh(new THREE.PlaneGeometry(14,340),stdMat(0xd8c48e,0.95));
   sand.rotation.x=-Math.PI/2;sand.position.set(-128,-0.02,0);sand.receiveShadow=true;scene.add(sand);
   if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",7,140,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ ~2u/Kachel statt 7-8u — sonst wirken die Sandwellen riesig */ /* 🏖️ KI-Textur (Pollinations, gratis) */
@@ -7652,8 +7654,13 @@ setTimeout(function baueGebaeude(){
         bau("th5_parkbank.glb",0.9,PX2+p[1]*6,0,p[0],p[1]>0?Math.PI/2:-Math.PI/2,false,null);});
       /* Westen: Quartiersplatz mit Bushalte und Parkplatz */
       var WX=-56;
-      bau("th5_bushaltestelle.glb",3.2,WX-8,0,10,Math.PI/2,false,null);
-      bau("th5_telefonzelle.glb",2.4,WX-8,0,2,0,false,null);
+      /* ⚠️ WARTEHAEUSCHEN UND TELEFONZELLE STANDEN IM PARKPLATZ (Runde 94, Bild k12-quartiersplatz): (WX-8|10)
+         und (WX-8|2) liegen genau auf der Grenze Fahrgasse/Stellplaetze (x -64,5) — von hinten ein grauer
+         Klotz zwischen den Wagen. Jetzt auf dem Gruenstreifen noerdlich des Platzes (z 17 / 22), gemessen
+         frei (th-umfeld), x -67,5 = ausserhalb des Strassenkorridors (bis -70) und dort, wohin wegVonStrasse
+         ohnehin schiebt. */
+      bau("th5_bushaltestelle.glb",3.2,WX-11.5,0,17,Math.PI/2,false,null);
+      bau("th5_telefonzelle.glb",2.4,WX-11.5,0,22,0,false,null);
       bau("th6_brunnen_trog.glb",1.1,WX+2,0,0,0,false,null);  addSolid(WX+2,0,3,3);
       bau("th3_bushalte.glb",3.0,WX-8,0,-10,Math.PI/2,false,null);
       bau("th6_stromkasten.glb",1.5,WX+6,0,-16,0,false,null);
