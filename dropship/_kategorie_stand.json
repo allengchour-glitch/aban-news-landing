@@ -1,15 +1,17 @@
 {
- "stand": "2026-09-24T05:14Z",
- "gescannt": 188,
- "ohne_kategorie_vorher": 188,
- "gesetzt": 11,
- "ohne_kategorie_nachher": 177,
+ "stand": "2026-09-24T05:09Z",
+ "gescannt": 647,
+ "ohne_kategorie_vorher": 647,
+ "gesetzt": 0,
+ "ohne_kategorie_nachher": 647,
  "fehler": 0,
  "unbekannte_typen": {
-  "Trend-Gadget": 111,
-  "Trend-Produkt": 61,
+  "Trend-Gadget": 371,
+  "Trend-Produkt": 260,
+  "Kinder": 6,
+  "Schweizer Editionen": 5,
   "Selbst gestalten": 4,
-  "Kinder": 1
+  "Anime": 1
  },
  "scharf": true
 }
