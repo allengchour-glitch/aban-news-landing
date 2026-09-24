@@ -90,7 +90,7 @@ TABELLE = {
 # auf Electronics (554 davon Klemmbausteine/3D-Holzpuzzles), «Aufbewahrung & Organizer» auf Storage (1'271 ohne
 # Ordnungswort: Wasserkocher, Saugroboter, Barhocker). Fuer diese Typen entscheidet jetzt der TITEL; passt keine
 # Regel, wird NICHT geraten (Produkt bleibt ohne Kategorie und steht im Bericht).
-SAMMELTYPEN = {"Trend-Gadget", "Trend-Produkt", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
+SAMMELTYPEN = {"Trend-Gadget", "Trend-Produkt", "Kinder", "Schweizer Editionen", "Anime", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
                "Aufbewahrung & Ordnung", "Geschenkset", "Haushalt & Wohnen", "Home & Living", "Wohnen & Dekoration",
                "Sommer-Gadget", "Outdoor & Gadget", "Tech-Gadget", "Haushalt", "Haushalt & Hobby"}
 import re as _re
@@ -124,6 +124,7 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"aufbewahrung|organizer|\bbox\b|korb|regal|halter\b|ablage|behälter|kiste|schublade|dose\b|haken\b|ordnung", "hg-10-16"),
     # 24.09.2026 — zweite Welle fuer «Trend-Produkt»/«Trend-Gadget» (511 ohne Treffer). Niedrigerer Vorrang als alles oben;
     # Wortfallen: Tier-HAAR ≠ Haarpflege, AUTO-matisch ≠ Auto, Kleider-BÜGEL ≠ Kleid, Schw-ESTER ≠ Weste.
+    (r"fahne\w*|flagge\w*|lampion\w*|wimpel", "ae-3-2"),
     (r"fusselroller|tierhaar-?entferner", "hg-10"),
     (r"tierhaar|fellpflege|dampfbürste für tiere", "ap-2"),
     (r"lipp\w*|lip\s?(plumper|gloss|balm|oil)", "hb-3-2-6"),
@@ -165,6 +166,8 @@ _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 SAMMEL_FALLBACK = {t: TABELLE.get(t) for t in SAMMELTYPEN}
 SAMMEL_FALLBACK["Trend-Gadget"] = None
 SAMMEL_FALLBACK["Trend-Produkt"] = None   # 24.09.: 260 aktive, nie als Sammeltyp gefuehrt → Titelregeln griffen gar nicht
+for _t in ("Kinder", "Schweizer Editionen", "Anime"):   # 24.09.: Kleinsttypen ohne Tabellenwert — nur per Titel, sonst offen
+    SAMMEL_FALLBACK[_t] = None
 
 
 def ziel_fuer(typ, titel):
