@@ -776,3 +776,5 @@ h:herren-armbanduhr-casual-business-quarz-899776
 h:t-sport-uhrenarmband-verbindungssteg-582400
 15522109522305
 h:bobo-bird-holz-quarzuhr-fur-damen-und-herren-7c3a5c
+15522116567425
+h:smartwatch-mit-herzfrequenz-und-ip67-13eb7b
