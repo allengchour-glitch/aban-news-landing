@@ -28374,3 +28374,4 @@ gid://shopify/Product/15454248698241	CHF 9.95	9 Varianten	Dünne, durchsichtige 
 gid://shopify/Product/15454248731009	CHF 42.48	1 Varianten	Taktisches Werkzeug-Set
 gid://shopify/Product/15454248796545	CHF 17.51	5 Varianten	Stretch-Jeans, cropped, mittlere Weite
 gid://shopify/Product/15454248829313	CHF 13.12	1 Varianten	Taktische Handy-Tasche
+gid://shopify/Product/15454248862081	CHF 10.01	1 Varianten	Kätzchen-Schüttelspielzeug
