@@ -348,3 +348,11 @@
 2026-09-24T04:25:07Z	SCHREIB	gid://shopify/Product/15493706580353	st-michael-distressed-zip-up-hoodie-616100	USED-TEXT	beschreibung	Used-Effekten,	Vintage-Effekten,	ok
 2026-09-24T04:25:09Z	SCHREIB	gid://shopify/Product/15493778145665	retro-straight-jeans-mit-used-look-628400	USED-TEXT	beschreibung	Used-Look	Vintage-Look	ok
 2026-09-24T04:25:11Z	SCHREIB	gid://shopify/Product/15493865931137	slim-fit-used-look-jeans-fur-herren-616600	USED-TEXT	beschreibung	Used-Look | Used-Look	Vintage-Look | Vintage-Look	ok
+2026-09-24T04:25:13Z	SCHREIB	gid://shopify/Product/15493874418049	heavyweight-kapuzenjacke-im-used-look-631300	USED-TEXT	beschreibung	Used-Look.	Vintage-Look.	ok
+2026-09-24T04:25:15Z	SCHREIB	gid://shopify/Product/15493895324033	used-look-jeans-fur-herren-600800	USED-TEXT	beschreibung	Used-Look | Used-Optik | Used-Look	Vintage-Look | Vintage-Optik | Vintage-Look	ok
+2026-09-24T04:25:17Z	SCHREIB	gid://shopify/Product/15502303756673	laser-silber-rippband-75mm-50-yards-026496	EINZEL	beschreibung	hochwertige Laser-Silber-Rippband | Laser-Silber-Glanz | Laser-Silber-Effekt	goldene Ripsband mit Hologramm-Glanz | holografischen Goldglanz | holografischem Gold-Effekt	ok
+2026-09-24T04:25:19Z	SCHREIB	gid://shopify/Product/15502483030401	herren-langarmhemd-im-used-look-620200	USED-TEXT	beschreibung	Used-Look.	Vintage-Look.	ok
+2026-09-24T04:25:50Z	UEBERSPRUNGEN	gid://shopify/Product/15506142265729	retro-ohrringe-im-used-look-mit-kettendetail-626900	USED-TEXT	beschreibung			text-sperre-belegt
+2026-09-24T04:26:00Z	UEBERSPRUNGEN	gid://shopify/Product/15510929506689	1-zoll-zapfpistole-fur-diesel-und-benzin-257024	EINZEL	beschreibung			text-sperre-belegt
+2026-09-24T04:26:11Z	UEBERSPRUNGEN	gid://shopify/Product/15512293572993	biden-herrenuhr-ultraflach-mit-kalender-611776	EINZEL	beschreibung			text-sperre-belegt
+2026-09-24T04:26:21Z	UEBERSPRUNGEN	gid://shopify/Product/15520406274433	twill-umhangetasche-im-used-look-676544	USED-TEXT	beschreibung			text-sperre-belegt
