@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:10:16Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:13:08Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1806** in 507 Produkten
-- Treffer (≥ 4 Wörter): **76** in 72 Produkten
+- Medien geprüft: **1897** in 532 Produkten
+- Treffer (≥ 4 Wörter): **77** in 73 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -87,5 +87,6 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Aromadiffuser mit Bluetooth-Lautsprecher `15453772054913` | [70519926358401](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6b661dca-68bb-46ab-9c96-283608958bcb.jpg) | 4 | LAVENDER TEA TREE PEPPERMINT | offen |
 | Aromadiffuser mit Bluetooth-Lautsprecher `15453772054913` | [70519926423937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f9ba349-5338-4d29-b0f4-431da4976b6c.jpg) | 4 | LAVENDER TEA TREE PEPPERMINT | offen |
 | Keramik-Futternapf für Hunde, grosse Kapazität `15453774283137` | [70618524909953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2490125b-fbbf-45af-8793-098578110a85_trans.jpg) | 4 | Free Single bowl rack | offen |
+| Geschlossene Katzen-Toilette `15453787554177` | [69926757761409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ce2b38c-d07e-471f-bf87-c523816c64f8_trans.jpg) | 4 | Flowerpot cat litter box | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
