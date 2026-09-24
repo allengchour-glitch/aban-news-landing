@@ -7095,3 +7095,115 @@ nächsten Strassenzelle (24 Richtungen), jeder Wagen ganz im Rechteck und in Sta
 
 Bilder: `spiele-dev/screenshots/r93-*.png` (Vorher: Figur auf dem Meer, Auto im Berg, Hütte auf dem
 Felsturm · Nachher: abgesenkte Zebras, T-Einmündungen, Ring-Mündung Ost, Zubringer 300° ohne Türme).
+
+
+## Runde 94 · ✨ Schöner (User: „weiter schöner machen")
+
+Vorgehen: 14 Orte aus der **Spielkamera schräg** (nicht von oben) fotografiert (`serie.mjs`, r 16–40,
+Neigung 0,55–0,7), die hässlichsten Stellen benannt, je Stelle Ursache gemessen, geändert, Nachher-Bild.
+Bilder `spiele-dev/screenshots/r94-*.png`.
+
+**Gefunden und behoben:**
+- **Landstrasse, Zubringer, Strand- und Achterbahn-Zufahrt, Quartiersplatz, Bergweg sahen aus wie
+  Betonplatten** — heller und mit Fugenraster, anders als die Stadtstrassen. Ursache: alle nutzten `betMat`,
+  und dessen Struktur (`_strukTex("beton")`) hat **Fugenlinien alle 32 px**; das Kiesbankett ebenso.
+  Neue Helfer `asphMat` (Körnung der Stadtstrassen aus `_roadTex`, 6 m je Kachel) und `kiesMat`
+  (Körnung ohne Fugen). Beide geben je Aufruf ein eigenes Material, teilen die Textur — `repeat` nur über
+  `kacheln()` (klont die map).
+- **Grüne Sechseck-„Insel" 100 m vor dem Strand** (mal da, mal weg): der Teich-Animator dämpft nur
+  Rand-Vertices (|x|,|y| > 11 m) — die Mitte der 200 × 340-m-Meerplatte kräuselte mit voller Amplitude
+  ±0,16 um −0,04 und tauchte bis −0,20, **unter die Fernebene (−0,08)**. `amp` je Wasserfläche; Meer 0,1
+  (tiefster Punkt −0,056, über dem weissen Fern-Overlay bei −0,06 — mit 0,2 schaute der noch als heller
+  Keil durch).
+- **Dunkle Linie quer über die Landstrasse an der Kreuzung (200|0):** der Ring lief von 0 bis **6,283** rad,
+  nicht bis 2π — 0,000185 rad × 200 m = ein **3,7-cm-Spalt** an der Naht, durch den der tiefere
+  Anschluss-Belag schaute. `TAU` im ganzen Block.
+- **Spielclub von oben ein Holzparkett mit zwölf Fugen** — `th34_decke` ist eine Decke, kein Dach. Kiesdach
+  in hellem Attika-Rahmen darüber; von innen bleibt die Holzdecke.
+- **Berghütte auf einem 33-m-Felsturm:** „Höhe am nächsten an der Terrasse" wählte einen Punkt mit 30 m
+  Spanne (31,8 oben, 2,2 unten). Jetzt der **flachste Grund im Umkreis** (24/30 m, 24 Richtungen, ohne
+  Talsektor; Spanne 5 m), Sockel nur so hoch wie der Hang (7,8 m).
+- **Wartehäuschen und Telefonzelle standen im Parkplatz** (Grenze Fahrgasse/Stellplätze) — von hinten ein
+  grauer Klotz zwischen den Wagen. Auf den gemessen freien Grünstreifen nördlich des Platzes.
+
+**Regeln:**
+1. **Ein Material, das überall gleich aussehen soll, muss aus derselben Textur kommen.** Sechs
+   Strassenstücke nutzten die Beton-Struktur, weil `betMat` bequem war — die Fugen sah man erst aus der
+   Spielkamera.
+2. **Wasser darf nie unter das liegen, was unter dem Wasser liegt.** Amplitude gegen die Höhenstaffelung
+   rechnen (Fernebene −0,08, Overlay −0,06), nicht nach Gefühl.
+3. **6,283 ist nicht 2π.** Wer einen Kreis schliesst, nimmt `Math.PI*2`; sonst bleibt ein Spalt an der Naht.
+4. **„Am nächsten an der Zielhöhe" ist das falsche Kriterium für einen Bauplatz am Hang** — es findet
+   den steilsten Punkt. Gesucht ist die kleinste Spanne unter der Grundfläche.
+- **Zubringer-Bankett und Leitpfosten liefen bis zur Aussenkante der Landstrasse** (th-strassen: 4–6 Pfosten
+  im Landstrassen-Band) — `r1 = R+HB` war die Ring-Aussenkante. Beide enden jetzt 1 m vor der Innenkante.
+
+
+## Runde 95 · 🌍 Grösser, viele Sachen (User: „grösser und viele sachen")
+
+**Erst gemessen:** `probe-dichte.mjs` (Objekte je 40-m-Zelle, Welt ±460, Wasser/Berg markiert) zeigte die Welt als
+dichten Kern x −140…220 / z −100…180 mit vier **leeren** Zonen: Osten (x 260…450, z −200…−60), Südosten
+(x 240…450, z 300…430), Nordwesten (x −460…−140, z −460…−330) und das Meer (200 × 340 m Blau mit zwei
+Booten). Dazu: **546 der 903 Modelle im Repo waren unbenutzt** (Skript: Referenzen in der HTML gegen `models/`).
+
+**Gebaut (alles über den bestehenden Generator `viertel()`, nichts von Hand gezeichnet):**
+| Ort | Lage | Inhalt | Anschluss |
+|---|---|---|---|
+| 🏙️ Neustadt | (370|−140) | Rathaus, Bibliothek, Kino, Einkaufszentrum, Museum, Hotel (th10/th9) | Stich von der Gewerbe-Strasse bei z −140 |
+| 🛰️ Technikpark | (405|−260) | Tankstelle, Restaurant, Roboter gross/klein, Wasserturm, Container, 2 Satellitenschüsseln, Generator, Drohne (nf/th20/th10/th9) | Verlängerung der Flughafen-Strasse |
+| 🏰 Burgdorf | (−300|−390) | Burg, Scheune, Haus, Schmiede, Sägewerk, Turmhaus, Stall, Windmühle, Stadthaus, Werkstatt, Fachwerk, Turm (bd/building) | vom Westende der Zoo-Strasse 140 m nach Norden |
+| 🏕️ Bergsee-Camping | (330|360) | Wasserfall, Höhleneingang, Bergsee, Hängebrücke, Grillplatz, 2 Wohnmobile, 4 Zelte, Feuer, Holz, Laube, Wegweiser (th26/th40/sv/cc0) | Verlängerung der Freizeitpark-Strasse |
+| 🏴‍☠️ Pirateninsel | (−250|90) im Meer | Sand, Leuchtturm, 6 Palmen, 2 Kanonen, Schatzkiste, Fässer, Kiste, Flagge, Zelt, Feuer, Steg, Piratenschiff (wiegt sich), Wrack (wc/pr) | keiner (Kulisse; Kurse von Segelboot x −151 und Frachter x −157…−149 geprüft) |
+
+Dazu **Blumenwiesen (80 Flecken) und Pilze (40)** als je EINE InstancedMesh, ein **Aussenring der Streuung**
+(r 200…440: 110 Bäume, 70 Büsche, 40 Findlinge, 60 Blumenfelder — mit Filter gegen Meer und Berge, die
+`freiPlatz` nicht kennt), Fernebene 900 → 1200 m, grosse Karte auf −400…460 / −450…420, Kartenmarken und
+Lieferziele für die vier Viertel.
+
+**Generator-Befunde dabei (beide seit Monaten drin):**
+- **`setback` ist ein Mittelpunkt-Abstand.** Bei Vierteln mit Strasse längs z werden die Bauten um 90°
+  gedreht — ihre Tiefe zur Strasse ist dann `w`, nicht `d`. Post und Polizeiwache (32 m) standen mit der
+  Mitte 18,9 m neben der Strassenmitte → Fassade 1,3 m IN der Fahrbahn, Parkgarage 3 m (th-strassen hatte
+  das seit Runde 92 als „6× polizeiwache" gemeldet; ich hielt es für Modell-Ursprünge am Rand). Jetzt
+  mindestens Gehweg-Aussenkante + 2,5 m + halbe Tiefe.
+- **Ein Viertel weiss nichts vom Anschluss des Nachbarn.** `cfg.nachbarn = [[Koordinate, Seite]]` gibt der
+  Strasse dieselbe Lücke (Gehweg, Bordstein, Striche) und dieselben zwei Übergänge wie beim eigenen Anschluss.
+  Gewerbe (Neustadt) und Zoo (Burgdorf) tragen das.
+
+**Lehren:**
+1. **Masse aus der GELADENEN Box, nie aus den Rohdaten.** `bd_*`, `th23_*`, `nf_*` tragen Knoten-Transformationen:
+   die Accessor-Box liegt bis Faktor 3 daneben, `nf_satellite` hat den Ursprung 19 m ausserhalb seiner Box.
+   `probe-masse.mjs` lädt jedes Modell wie `bau()` und gibt w/d bei Zielhöhe.
+2. **Ein Viertel ist so breit wie sein `w`, nicht wie seine Strasse.** Neustadt wich 50 m aus, weil das
+   Gewerbe-Viertel 96 m breit ist (Strasse nur in der Mitte) — th-viertel zeigt es, das Bild nicht.
+3. **Kachelnähte sitzen in der Textur, nicht in der Fläche.** `sand.jpg` hatte Nähte, `kiesMat` danach auch
+   (Bild k17-pirateninsel: Gitter auf dem Inselsand). Ursache in `_strukTex`: die 2-px-Körner wurden am
+   Kachelrand abgeschnitten, bei RepeatWrapping lag darum an jeder Grenze eine dünnere Linie. `pt()` zeichnet
+   Randkörner um 128 px versetzt mit — Beton, Kies und Erde sind jetzt nahtlos.
+4. **Streuen ist eine Reihenfolge-Frage.** Der Aussenring war nach ~50 ms fertig, die Viertel entstehen bei
+   260 ms, Bahn und Vorfeld später — `freiPlatz` kannte die neuen Strassen noch nicht: Baum auf dem Vorfeld
+   (293,7|−159,9), Baum auf der Flughafen-Anbindung (248|−190), Busch auf der Camping-Anbindung, Krone auf dem
+   Neustadt-Stich (th-strassen, Sonde probe-technik). Feste Wartezeit (1,5 s) reichte im Headless-Lauf NICHT
+   (Timer feuern dort Sekunden später, Baum bei 314,8|−150,9) → der Aussenring wartet jetzt auf den Eintrag des
+   letzten Viertels (Bauernhof) in `VIERTEL`, kennt das Flugfeld aus dem Flughafen-Eintrag und lässt
+   Beton-Plätze (boden „platz") frei.
+5. **Perspektive täuscht, die Sonde nicht.** Im Schrägbild schienen Wasserturm und Satellitenschüssel des
+   Technikparks auf dem Gehweg zu stehen; gemessen (probe-technik, Weltkästen) sind es 9,4 bzw. 21 m von der
+   Strassenmitte — hohe Objekte wandern im Bild zur Strasse. Erst messen, dann verschieben.
+6. **Nie zwei Instanzen desselben Werkzeugs gleichzeitig.** Zwei parallele `th-pruef`-Läufe (eine Kette aus der
+   Zeit vor dem Kontext-Schnitt, eine neue) teilen dieselbe Temp-Datei; die eine räumte sie auf, während die
+   andere lud → „799 Modelle, 36 im Korridor" — ein Artefakt, kein Befund. Vor dem Start `ps` nach laufenden
+   Ketten fragen.
+7. **Vorfeld 64 → 50 m:** mit Neustadt bei x 320 ragte das Vorfeld 3 m in die Platte; jetzt 4 m Wiese dazwischen
+   (ein 1-m-Streifen sähe aus wie ein Riss). Und der Gewerbe-Randbaum (294|−160) stand seit Runde 92 auf dem
+   Vorfeld, das die Nordost-Ecke der Gewerbe-Platte überdeckt — zweimal an derselben Stelle gemessen, also kein
+   Zufall (Streu wäre zufällig). `freiQuer −160` nur für die Randbäume; die Bauzeile bleibt.
+8. **Ein `nachbarn`-Eintrag braucht ein Gegenstück.** th-kante: die Übergänge (257,4|−140) und (−285|−257,4)
+   liefen gegen den vollen 12-cm-Stein — der Nachbar (Gewerbe/Zoo) zeichnet den Zebrastreifen bei 7,4 m,
+   der Anschluss-Schenkel des neuen Viertels liess aber nur 7 m Lücke und senkte nichts ab (das gab es nur
+   am eigenen T-Ende). `cfg.anschlussT:true` behandelt das A-Ende wie ein T-Ende (Lücke 10 m, Stein 4,5…10 m
+   abgesenkt). Dazu standen Bank und Abfalleimer des Gewerbe-Viertels (11-m-Takt) genau an den Zebra-Enden:
+   `viertelMoeblieren` fragt jetzt `_aufViertelWeg` (alle Bänder inkl. Gehweg).
+9. **„Autos gehören nicht auf Rasen" gilt auch auf dem Camping.** th-autoboden fand die zwei Wohnmobile im
+   Grünen (Viertelboden „rasen"). `bauten[].stellplatz:true` legt eine Kiesfläche (Bau + 1,2 m rundum) auf die
+   Platte — ein Generator-Merkmal, keine Handkoordinate (die Wohnmobile stehen, wo der Laufcursor sie hinsetzt).

@@ -6145,6 +6145,12 @@ setTimeout(function baueGebaeude(){
          beide mit Trottoir und Mittelstreifen — befahrbar wie die uebrigen Strassen. */
       (function anbindung(){
         var a=cfg.anschluss,ax=a[0],az=a[1];
+        /* 🛣️ GERADE WEITER (Runde 95, Bild k19-camping-zufahrt): beginnt der Anschluss am ENDE der Strasse
+           eines Nachbarn (Camping hinter dem Freizeitpark, Technikpark hinter dem Flughafen), ist das keine
+           Einmuendung — mit den 7 m Vorlauf fuer eine kreuzende Fahrbahn fehlten Gehweg und Bordstein auf
+           beiden Seiten fuer 7 m, eine Kerbe im Strassenrand ohne Grund. `cfg.anschlussGerade` laesst
+           Gehweg, Bordstein und Striche direkt an der Nachbarstrasse beginnen. */
+        var vorlauf=cfg.anschlussGerade?0:7;
         function segment(x1,z1,x2,z2,trimA,trimB,istT,istTA){
           /* trimA/trimB (Runde 93): Meter, um die Gehweg und Bordstein an diesem Ende zurueckbleiben,
              weil dort eine andere Fahrbahn liegt (aeussere Strasse 7, Ecke des L-Wegs 4,5,
@@ -6217,14 +6223,14 @@ setTimeout(function baueGebaeude(){
            Knick schon innerhalb der Strasse, entfaellt er. */
         if(Math.abs(VX-ax)>2&&Math.abs(VZ-az)>2){
           if(laengs){var ex9=VX-Math.sign(VX-ax)*(laenge/2-0.5),ecke9=Math.abs(ex9-ax)>2&&Math.sign(ex9-ax)===Math.sign(VX-ax);
-            segment(ax,az,ax,VZ,7,ecke9?4.5:4.7,!ecke9,!!cfg.anschlussT);                           /* Strasse laeuft in x */
+            segment(ax,az,ax,VZ,vorlauf,ecke9?4.5:4.7,!ecke9,!!cfg.anschlussT);                           /* Strasse laeuft in x */
             if(ecke9)segment(ax,VZ,ex9,VZ,6.9,0,false);}
           else      {var ez9=VZ-Math.sign(VZ-az)*(laenge/2-0.5),ecke8=Math.abs(ez9-az)>2&&Math.sign(ez9-az)===Math.sign(VZ-az);
-            segment(ax,az,VX,az,7,ecke8?4.5:4.7,!ecke8,!!cfg.anschlussT);                           /* Strasse laeuft in z */
+            segment(ax,az,VX,az,vorlauf,ecke8?4.5:4.7,!ecke8,!!cfg.anschlussT);                           /* Strasse laeuft in z */
             if(ecke8)segment(VX,az,VX,ez9,6.9,0,false);}}
-        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,7,0,false,!!cfg.anschlussT);}   /* gerade, auf der Strassenlinie */
-        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,7,0,false,!!cfg.anschlussT);}
-        else segment(ax,az,VX,VZ,7,4.7,true,!!cfg.anschlussT);   /* gerade, senkrecht in die Strasse */
+        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,vorlauf,0,false,!!cfg.anschlussT);}   /* gerade, auf der Strassenlinie */
+        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,vorlauf,0,false,!!cfg.anschlussT);}
+        else segment(ax,az,VX,VZ,vorlauf,4.7,true,!!cfg.anschlussT);   /* gerade, senkrecht in die Strasse */
       })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
        damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
@@ -6386,7 +6392,7 @@ setTimeout(function baueGebaeude(){
     var _go = viertel({name:"Gewerbe Rietli",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
       freiQuer:[-160,-140],nachbarn:[[-140,1]],   /* Runde 95: Einmuendung der Neustadt (Osten) bei z -140;
          -160 nur fuer die Randbaeume: der Ost-Randbaum (294|-160) stand auf dem Flughafen-Vorfeld, das seit
-         Runde 92 die Nordost-Ecke dieser Platte (x 266…298, z -168…-153) ueberdeckt. Die Bauzeile aendert
+         Runde 92 die Nordost-Ecke dieser Platte (x 267…298, z -168…-153) ueberdeckt. Die Bauzeile aendert
          sich dadurch nicht (der -140-Korridor schiebt den ersten Bau ohnehin auf denselben Platz). */
       anschluss:[112,0],abstand:13,luecke:10,rand:14,
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
@@ -6748,7 +6754,7 @@ setTimeout(function baueGebaeude(){
        und Generator haben einen Ursprung ausserhalb der Box (Sonde: x 16…23) — darum von Hand mit
        Versatz, nicht ueber den Generator. */
     var _tp=viertel({name:"Technikpark",x:405,z:-260,w:80,d:70,achse:"x",boden:"platz",
-      anschluss:[355,-260],abstand:6,luecke:6,rand:8,
+      anschluss:[355,-260],anschlussGerade:true,abstand:6,luecke:6,rand:8,   /* Ende der Flughafen-Strasse (x 355) */
       bauten:[{file:"th20_tankstelle.glb",   h:6,  w:23.2,d:20.5},
               {file:"th10_restaurant.glb",   h:5,  w:20.8,d:18.5},
               {file:"nf_robot_large.glb",    h:7,  w:8.6, d:2.5,tuer:false},
@@ -6785,7 +6791,7 @@ setTimeout(function baueGebaeude(){
        (396|201), gegenueber Grillplatz, Wohnmobile und Zelte. Gerade Verlaengerung der
        Freizeitpark-Strasse (Ostende 225|360, tatsaechliche Lage). */
     var _cp=viertel({name:"Bergsee-Camping",x:330,z:360,w:150,d:90,achse:"x",boden:"rasen",
-      anschluss:[225,360],abstand:5,luecke:6,rand:10,
+      anschluss:[225,360],anschlussGerade:true,abstand:5,luecke:6,rand:10,   /* Ende der Freizeitpark-Strasse (x 225, z 360 = echte Lage) */
       bauten:[{file:"th26_wasserfall.glb",    h:18, w:35,  d:30.9,tuer:false},
               {file:"th16_grillplatz.glb",    h:2.1,w:11.4,d:11.5,tuer:false},
               {file:"th26_hoehleneingang.glb",h:14, w:27.3,d:31.6,tuer:false},
