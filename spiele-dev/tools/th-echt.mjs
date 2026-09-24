@@ -39,6 +39,15 @@ mitSonden('traumhaus.html', {
       var L=[];w.updateMatrixWorld(true);
       w.traverse(function(n){
         if(!n.isMesh||!n.geometry)return;
+        /* 🧩 ZUSAMMENGEFASST (Runde 99): ein Mesh je Material traegt in userData.teile die Kaesten seiner
+           Einzelteile (6 Zahlen je Teil, im Rahmen des Meshes). Ohne sie waere der ganze Materialblock EIN
+           Kasten — die T-Form des Oberleitungsmasts (s. oben) waere wieder ein Klotz. Je Teil ein Ersatzknoten
+           mit dem Rahmen des Meshes; lokal() braucht nur geometry.boundingBox, matrixWorld, worldToLocal. */
+        var T=n.userData&&n.userData.teile;
+        if(T){for(var k=0;k+5<T.length;k+=6){var lb=new THREE.Box3(new THREE.Vector3(T[k],T[k+1],T[k+2]),new THREE.Vector3(T[k+3],T[k+4],T[k+5]));
+            var p=new THREE.Object3D();p.matrixWorld.copy(n.matrixWorld);p.geometry={boundingBox:lb};
+            var wb=lb.clone().applyMatrix4(n.matrixWorld);if(isFinite(wb.min.x))L.push({b:wb,n:p});}
+          return;}
         var b=new THREE.Box3().setFromObject(n);
         if(isFinite(b.min.x))L.push({b:b,n:n});});
       w.__mb=L;return L;}

@@ -2190,7 +2190,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
             m.rotation.y=(K.seite<0?Math.PI/2:-Math.PI/2)+(K.a%3-1)*0.02;
             m.traverse(function(nn){if(nn.isMesh)nn.castShadow=true;});
             m.userData.datei=PARK_MODELLE[i%PARK_MODELLE.length];
-            scene.remove(K.g);scene.add(m);});});
+            scene.remove(K.g);scene.add(m);if(window._zfStatisch)window._zfStatisch(m);});});
       })(0);
       /* Bordstein aussen; Sued-Kante mit zwei Luecken fuer Ein-/Ausfahrt */
       var kM=betMat(0xd0cdc4,0.9);
@@ -2760,7 +2760,131 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      ⚠️ WER DIESE LISTE AENDERT: th-ruckler liest sie aus der Quelle und richtet seine
      Wartezeit danach. Es gibt keine zweite Stelle, die nachgezogen werden muss. */
   [16000,26000,40000,60000,90000,150000].forEach(function(ms){setTimeout(_aufwaermen,ms);});
-  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_aufwaermen();}
+  /* 🧩 ZUSAMMENFASSEN JE MATERIAL (Runde 99, User: „flimmert die ganze map fast, gefuehlte 10 fps").
+     GEMESSEN (probe-bildlast, Handy-Pfad): an der Kreuzung (78|58) 2'300 Zeichenaufrufe je Bild, bei Zoom 90
+     8'700. Die Modelle der Welt bestehen aus 53'451 Teilen — ein Theater aus 970, ein Doppelhaus aus 317 —,
+     jedes Teil ein eigener Aufruf, obwohl sie zusammen nur eine Handvoll Materialien tragen (Theater 10).
+     Zusammengefasst je Modell und Material bleiben 16'159 (probe-aufrufe-herkunft / Sparrechnung).
+     WAS NICHT: alles unter einem `_bewegt`-Knoten oder `animiert`, die Fahrgeschaefte (FAHRTEN suchen ihre
+     beweglichen Teile zur Laufzeit GEOMETRISCH — Riesenrad, Freifall, Autoscooter), Durchsichtiges (braucht
+     die Sortierung je Teil), Teile mit mehreren Materialien, Skinning, Morphs, eigenen userData, Kindern oder
+     eigenem onBeforeRender, und Unsichtbares (ausser dem, was nur die Entfernungs-Ausblendung verborgen hat).
+     Alle Laufzeit-Durchlaeufe dieser Datei waehlen ueber MATERIALIEN (Fenster, Glas, Neon, Lack) — die bleiben
+     dieselben Objekte, nur in weniger Meshes. Schattenwurf gehoert in den Schluessel, sonst wuerfen die von
+     `_schattenSparen` abgeschalteten Kleinteile wieder Schatten.
+     Nur `bau()`-Modelle (`_ausBau`). Geometrie in Modell-Koordinaten (w-lokal): entwirren/freiRaeumen
+     verschieben w, das Zusammengefasste faehrt mit. Gleich gebaute Kopien teilen die Geometrie (Hash ueber
+     Teile, Materialien und Lage), sonst waechst der Speicher mit jeder Kopie.
+     Fuer Werkzeuge: `userData.teile` = je Teil ein Kasten im w-Rahmen (6 Zahlen) — th-echt misst weiter
+     Teil gegen Teil. `window._keinZusammenfassen` schaltet alles ab (Vergleichsmessungen).
+     In Scheiben von ~12 ms, damit der eine Durchgang auf dem Handy nicht als Ruckler auffaellt. */
+  var _zfCache={},_zfLaeuft=false,_zfLeer=new THREE.Mesh().onBeforeRender;
+  if(/[?&]ohneZF\b/.test(location.search))window._keinZusammenfassen=true;   /* Vergleich mit/ohne (probe-zusammen) */
+  /* Weitere Modelle, die NICHT ueber bau() kommen, aber still stehen (Parkplaetze): hier anmelden. */
+  window._zfStatisch=function(o){if(!o)return;o._ausBau=1;(window._zfExtra=window._zfExtra||[]).push(o);};
+  /* userData: `name` setzt der GLTF-Lader, `_vdC/_vdR/_vdBB` der Verdecker (_vdAufbau) — beides kein Grund,
+     ein Teil einzeln zu lassen. Jeder andere Schluessel gehoert jemandem, der das Teil wiederfinden will.
+     (Erster Lauf: 0 von 53'451 Teilen zusammengefasst — alle trugen diese drei.) */
+  function _zfUdOk(u){for(var k in u)if(k!=="name"&&k!=="_vdC"&&k!=="_vdR"&&k!=="_vdBB")return false;return true;}
+  function _zfSig(g){var a=g.attributes;if(!a.position||g.groups.length||g.drawRange.start||g.drawRange.count!==Infinity)return null;
+    if(g.morphAttributes&&Object.keys(g.morphAttributes).length)return null;
+    var n=Object.keys(a).sort(),s=[];
+    for(var i=0;i<n.length;i++){var at=a[n[i]];
+      if(at.isInterleavedBufferAttribute||!(at.array instanceof Float32Array)||n[i]==="tangent")return null;
+      s.push(n[i]+at.itemSize+(at.normalized?"n":""));}
+    return s.join(",");}
+  function _zfBaue(L,inv){
+    var namen=Object.keys(L[0].geometry.attributes),NV=0,NI=0;
+    L.forEach(function(m){var g=m.geometry,c=g.attributes.position.count;NV+=c;NI+=g.index?g.index.count:c;});
+    var arr={};namen.forEach(function(nm){arr[nm]=new Float32Array(NV*L[0].geometry.attributes[nm].itemSize);});
+    var idx=NV>65535?new Uint32Array(NI):new Uint16Array(NI),teile=new Float32Array(L.length*6),ov=0,oi=0;
+    var M=new THREE.Matrix4(),N=new THREE.Matrix3(),v=new THREE.Vector3(),bx=new THREE.Box3();
+    L.forEach(function(m,mi){var g=m.geometry,c=g.attributes.position.count;
+      M.multiplyMatrices(inv,m.matrixWorld);N.getNormalMatrix(M);
+      namen.forEach(function(nm){var at=g.attributes[nm],sz=at.itemSize,src=at.array,dst=arr[nm],i;
+        if(nm==="position")for(i=0;i<c;i++){v.set(src[i*3],src[i*3+1],src[i*3+2]).applyMatrix4(M);dst[(ov+i)*3]=v.x;dst[(ov+i)*3+1]=v.y;dst[(ov+i)*3+2]=v.z;}
+        else if(nm==="normal")for(i=0;i<c;i++){v.set(src[i*3],src[i*3+1],src[i*3+2]).applyMatrix3(N).normalize();dst[(ov+i)*3]=v.x;dst[(ov+i)*3+1]=v.y;dst[(ov+i)*3+2]=v.z;}
+        else dst.set(src.subarray(0,c*sz),ov*sz);});
+      var ix=g.index?g.index.array:null,n=ix?g.index.count:c,flip=M.determinant()<0;
+      for(var j=0;j+2<n;j+=3){var a0=ix?ix[j]:j,a1=ix?ix[j+1]:j+1,a2=ix?ix[j+2]:j+2;
+        if(flip){var t=a1;a1=a2;a2=t;}idx[oi++]=a0+ov;idx[oi++]=a1+ov;idx[oi++]=a2+ov;}
+      if(!g.boundingBox)g.computeBoundingBox();bx.copy(g.boundingBox).applyMatrix4(M);
+      teile[mi*6]=bx.min.x;teile[mi*6+1]=bx.min.y;teile[mi*6+2]=bx.min.z;teile[mi*6+3]=bx.max.x;teile[mi*6+4]=bx.max.y;teile[mi*6+5]=bx.max.z;
+      ov+=c;});
+    var neu=new THREE.BufferGeometry();
+    namen.forEach(function(nm){var at=L[0].geometry.attributes[nm];neu.setAttribute(nm,new THREE.BufferAttribute(arr[nm],at.itemSize,at.normalized));});
+    neu.setIndex(new THREE.BufferAttribute(idx.subarray(0,oi),1));neu.computeBoundingSphere();neu.computeBoundingBox();
+    return {g:neu,teile:teile};}
+  function _zfModell(w,lodM,fahr,maxV,fahrzeug){
+    w._zf=1;
+    if(!w.parent||fahr.indexOf(w)>=0)return [0,0];
+    if(!fahrzeug&&(w._bewegt||w.userData.animiert||w.userData.nieAusblenden))return [0,0];
+    w.updateMatrixWorld(true);
+    var inv=new THREE.Matrix4().copy(w.matrixWorld).invert(),T={},keys=[],h=w.children.length,M=new THREE.Matrix4();
+    (function geh(o){for(var i=0;i<o.children.length;i++){var c=o.children[i];
+      if(c._bewegt||(c.userData&&c.userData.animiert))continue;
+      /* ⚠️ JEDER Knoten mit fremden userData samt Unterbaum weg — nicht nur Meshes: die Raeder haengen in
+         Drehgruppen (`piv.userData.rad`, _raederVon), die Meshes darin sind unmarkiert. Ohne diese Zeile waeren
+         sie in die Karosserie geschmolzen und haetten sich nicht mehr gedreht. */
+      if(!_zfUdOk(c.userData))continue;
+      if(!c.visible&&!lodM.has(c))continue;
+      if(c.isMesh&&!c.isInstancedMesh&&!c.isSkinnedMesh&&c.geometry&&c.geometry.isBufferGeometry&&c.material&&!Array.isArray(c.material)
+         &&!c.material.transparent&&!c.material.wireframe&&!c.morphTargetInfluences&&!c.children.length&&c.frustumCulled
+         &&c.onBeforeRender===_zfLeer&&_zfUdOk(c.userData)){
+        var sig=_zfSig(c.geometry);
+        if(sig){var k=c.material.uuid+"|"+sig+"|"+(c.castShadow?1:0)+(c.receiveShadow?1:0)+"|"+c.renderOrder+"|"+c.layers.mask;
+          if(!T[k]){T[k]=[];keys.push(k);}T[k].push(c);
+          M.multiplyMatrices(inv,c.matrixWorld);
+          for(var q=0;q<16;q++)h=Math.imul(h,31)+Math.round(M.elements[q]*1000)|0;
+          for(var q2=0;q2<8;q2++)h=Math.imul(h,31)+c.geometry.uuid.charCodeAt(q2)+c.material.uuid.charCodeAt(q2)*7|0;}}
+      if(c.children.length)geh(c);}})(w);
+    var ck=(w.userData.datei||"")+"|"+h+"|"+keys.length,C=_zfCache[ck],vorher=0,nachher=0,neuC=C?null:{};
+    keys.forEach(function(k){var L=T[k];if(L.length<2)return;
+      var stuecke=[],akt=[],nv=0;
+      L.forEach(function(m){var c=m.geometry.attributes.position.count;if(akt.length&&nv+c>maxV){stuecke.push(akt);akt=[];nv=0;}akt.push(m);nv+=c;});
+      if(akt.length)stuecke.push(akt);
+      stuecke.forEach(function(S,si){if(S.length<2)return;
+        var r=C?C[k+"#"+si]:null;if(C&&!r)return;
+        if(!r){r=_zfBaue(S,inv);neuC[k+"#"+si]=r;}
+        var mm=new THREE.Mesh(r.g,S[0].material);
+        mm.castShadow=S[0].castShadow;mm.receiveShadow=S[0].receiveShadow;mm.renderOrder=S[0].renderOrder;mm.layers.mask=S[0].layers.mask;
+        mm.matrixAutoUpdate=false;mm.userData.teile=r.teile;mm.userData.zusammen=S.length;
+        w.add(mm);mm.updateMatrixWorld(true);
+        S.forEach(function(m){if(m.parent)m.parent.remove(m);});
+        vorher+=S.length;nachher++;});});
+    if(neuC)_zfCache[ck]=neuC;
+    return [vorher,nachher];}
+  function _zusammenfassen(){
+    if(window._keinZusammenfassen||_zfLaeuft)return;
+    _zfLaeuft=true;
+    var G=(window._gebaeude||[]).concat(window._zfExtra||[]),i=0,st=window._zfStat=window._zfStat||{modelle:0,vorher:0,nachher:0,ms:0,laeufe:0};
+    var uint=renderer.capabilities.isWebGL2||!!renderer.extensions.get("OES_element_index_uint"),maxV=uint?500000:65000;
+    var fahr=(typeof FAHRTEN!=="undefined"?FAHRTEN:[]).map(function(f){return f.w;});
+    var lodM=new Set((typeof _lodKlein!=="undefined"?_lodKlein:[]).map(function(e){return e.m;})),geaendert=false;
+    st.laeufe++;
+    (function scheibe(){var t0=performance.now();
+      try{
+        while(i<G.length&&performance.now()-t0<12){var w=G[i++];
+          if(!w||w._zf||!w._ausBau)continue;
+          var r=_zfModell(w,lodM,fahr,maxV);if(r[0]){st.modelle++;st.vorher+=r[0];st.nachher+=r[1];geaendert=true;}}
+      }catch(e){console.warn("zusammenfassen",e);i=G.length;}
+      st.ms+=performance.now()-t0;
+      if(i<G.length){setTimeout(scheibe,30);return;}
+      _zfLaeuft=false;window._zfFertig=performance.now();
+      /* Der LOD-Index kennt noch die entfernten Einzelteile — neu aufbauen (einmal, 40–50 ms). */
+      if(geaendert&&typeof lodAufbau==="function"&&_lodBereit)lodAufbau();
+      /* ebenso die Verdecker-Liste (Kronen/Daecher durchsichtig, wenn sie die Figur verdecken) */
+      if(geaendert&&typeof _vdAufbau==="function"&&typeof _vdBauten!=="undefined"&&_vdBauten>0)_vdAufbau();})();}
+  window._zusammenfassen=_zusammenfassen;
+  /* 🚗 Fahrende Wagen (Verkehr): sie fahren als GANZES — innerhalb eines Wagens ist alles starr bis auf die Raeder
+     (eigene Drehgruppen mit userData.rad, s. oben). Gemessen: an der Kreuzung ~700 der 1'700 Aufrufe von
+     Bewegtem, ein th37-Wagen hat ~50 Teile. Sofort beim Anlegen, einzeln. */
+  window._zfFahrzeug=function(m){if(window._keinZusammenfassen||!m||m._zf)return;
+    try{var uint=renderer.capabilities.isWebGL2||!!renderer.extensions.get("OES_element_index_uint");
+      var r=_zfModell(m,new Set(),[],uint?500000:65000,true);
+      var st=window._zfStat=window._zfStat||{modelle:0,vorher:0,nachher:0,ms:0,laeufe:0};
+      st.wagen=(st.wagen||0)+1;st.wagenVorher=(st.wagenVorher||0)+r[0];st.wagenNachher=(st.wagenNachher||0)+r[1];}catch(e){console.warn("zusammenfassen Wagen",e);}};
+  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_zusammenfassen();_aufwaermen();}
   /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
      VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
      aendert, verschiebt nur eine Zahl: die Weltmatrix wird nie neu gerechnet, das
@@ -5089,7 +5213,8 @@ setTimeout(function baueVerkehr(){
       var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045),datei:id,
                raeder:_raederVon(m),radMass:m.scale.x};   /* Radius der Raeder steht in Modell-Metern */
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
-      scene.add(m);verkehr.push(rec);});});
+      scene.add(m);verkehr.push(rec);
+      if(window._zfFahrzeug)window._zfFahrzeug(m);});});   /* Runde 99: ~50 Teile je Wagen -> je Material eins */
   // Bus prozedural (OeV): gelb, Fensterband, faehrt Suedstrasse, haelt an der Haltestelle
   var bg=new THREE.Group();
   var korpus=new THREE.Mesh(new THREE.BoxGeometry(8,2.4,2.4),stdMat(0xf0b83a,0.5));
@@ -5186,7 +5311,8 @@ setTimeout(function baueVerkehr(){
         var b2=new THREE.Box3().setFromObject(m);
         m.position.set(P[0],-b2.min.y+0.02,P[1]);m.rotation.y=P[2];
         m.userData.datei=P[3];
-        m.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(m);});
+        m.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(m);
+        if(window._zfStatisch)window._zfStatisch(m);});   /* Runde 99: Parkstreifen an der Kreuzung, je Wagen ~50 Teile */
     });
   })();
   // ---- Fahrender Zug ----
@@ -5968,6 +6094,7 @@ setTimeout(function baueGebaeude(){
     root.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     w.userData.datei=file;   /* fuer Zaehlungen/Debug: welches Modell steckt in dieser Gruppe */
+    w._ausBau=1;             /* Runde 99: darf je Material zusammengefasst werden (_zusammenfassen) */
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);
     _ladeFertigEins();});}
 
@@ -15163,6 +15290,7 @@ function updCam(){
       _ey=1.42+Math.max(window._camHebung||0, _me._gelH||0);
       if(_me.mesh&&_me.mesh.visible)_me.mesh.visible=false; /* eigenen Körper ausblenden (sonst Blick in den Kopf) */}
     var _pit=(0.8-camB)*0.9;
+    if(camera.near!==0.1){camera.near=0.1;camera.updateProjectionMatrix();}   /* Ich-Sicht: Boden und Waende sind nah */
     camera.position.set(_ex,_ey,_ez);
     camera.lookAt(_ex+Math.sin(_yaw)*Math.cos(_pit),_ey+Math.sin(_pit),_ez+Math.cos(_yaw)*Math.cos(_pit));
     return;}
@@ -15171,7 +15299,17 @@ function updCam(){
   var _hb=Math.max(window._camHebung||0,
                    (followSim&&followSim._gelH)||(sims[meinSi()]&&sims[meinSi()]._gelH)||0);
   camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2+_hb,camTz+Math.cos(camA)*Math.cos(camB)*camR);
-  camera.lookAt(camTx,0.6+_hb,camTz);}
+  camera.lookAt(camTx,0.6+_hb,camTz);
+  /* 📏 NEAR FOLGT DEM ZOOM (Runde 99, User: „flimmert die ganze map fast"). near stand fest auf 0,1 m — fuer die
+     Ich-Sicht noetig, fuer eine Kamera 14…135 m ueber dem Boden aber ein Tiefenpuffer, der fast alles fuer die ersten
+     Meter verbraucht: Genauigkeit ~ Entfernung² / (near · 2^24) = 1,2 mm auf 45 m, 7 mm auf 110 m (mit 16 Bit, wie
+     manche Handys liefern, 30 cm). Fahrbahn (-0,003), Anschluesse (-0,0098), Viertelplatten (-0,012) und
+     Eck-Asphalt (-0,001) liegen 2…7 mm uebereinander — sie stritten um jeden Bildpunkt, und beim Bewegen wanderte das
+     Muster als Flimmern ueber jede Strasse (probe-tiefenstreit: Stadtmitte 10 % der Bildpunkte). camR·0,05 (0,7 m
+     bei Zoom 14, 2,2 m bei 44, 6 m ab 120) laesst nichts Sichtbares weg — die Kamera steht mindestens 7 m vom Ziel —
+     und macht die Tiefe auf 45 m 22-mal genauer. Nur bei spuerbarer Aenderung neu rechnen. */
+  var _nr=Math.max(0.1,Math.min(6,camR*0.05));
+  if(Math.abs(camera.near-_nr)>_nr*0.08){camera.near=_nr;camera.updateProjectionMatrix();}}
 /* ═══════ 🎢 ACHTERBAHN FAHREN (Ego-Perspektive, koop-tauglich) ═══════════════════
    Der Zug laeuft ueber den Rundkurs; Geschwindigkeit haengt von der Hoehe ab (bergab
    schneller, bergauf langsamer), mit Kettenlift-Mindesttempo, damit er nie haengen

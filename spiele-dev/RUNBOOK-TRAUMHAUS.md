@@ -7462,3 +7462,97 @@ Viertel-Einmündung; nachher: Ecke von oben, Ost-Ausfallstrasse, zwei L-Knicke; 
 Der Müllwagen auf dem Zubringer 60° streift den Sportplatz (th-autoboden seit Runde 95 1–3 Proben im Grünen, diesmal
 „Erde" = Laufbahn); th-strassen führt dort Flutlichtmast und Ballfangzaun im Band — ein Umbau des Sportplatzes wäre
 eine eigene Runde.
+
+## Runde 99 · 📉 Flimmern und ~10 fps (User: „flimmert die ganze map fast, gefühlte 10 fps")
+
+**Erst geklärt, WAS der User spielt:** die Live-Seite ist `main` (Stand Runde 88, bis auf eingefügte SEO-/Cloudflare-
+Zeilen identisch); dieser PR hat keine Vorschau (Deploy nur von `main`). Das Flimmern und die Bildrate sind also live —
+und der PR wäre ohne diese Runde SCHWERER gewesen: th-tempo Handy-Pfad `main` 29,1 ms / 175 Aufrufe, PR 38,5 ms / 309.
+
+### 1. Flimmern = Tiefenstreit, weil near 0,1 m war
+Die Spielkamera hatte fest `near 0,1` (für die Ich-Sicht nötig) bei 14…135 m Abstand zum Boden. Genauigkeit des
+Tiefenpuffers ≈ Entfernung² / (near · 2²⁴): 1,2 mm auf 45 m, 7 mm auf 110 m — und mit 16 Bit, wie manche Handys sie
+liefern, 30 cm. Fahrbahn (−0,003), Anschlüsse (−0,0098), Viertelplatten (−0,012) und Eck-Asphalt (−0,001) liegen 2…7 mm
+übereinander: sie stritten um jeden Bildpunkt, und beim Bewegen wanderte das Muster über jede Strasse.
+**Neu:** near folgt dem Zoom (`camR · 0,05`, 0,1…6 m; Ich-Sicht 0,1) in `updCam`.
+**Messgerät `probe-tiefenstreit`:** dasselbe Bild mit dem near des Spiels und mit near 3 m — jeder Bildpunkt, der sich
+ändert, hat seinen Gewinner nur wegen fehlender Tiefengenauigkeit. Anteil Bildpunkte mit Tiefenstreit (sechs Punkte): `main` 1,93 %, PR vorher 2,63 % (Stadtmitte 10,3 %, Viertel Gewerbe
+3,6 %), **nachher 0,43 %** (Kreuzung/Ring/nah 0,00 %). Gegenprobe (Magenta 1 mm unter der Fahrbahn, near 0,1): 87 → 14'004.
+
+Drei Fehlversuche mit der Sonde, alle an einer Gegenprobe entlarvt:
+- **Versatz-Vergleich** (zwei Bilder mit 3 cm versetzter Kamera, wie th-flacker): sah den Streit kaum — die
+  Asphaltschichten haben fast dieselbe Farbe, und 3 cm verschieben das Muster nur.
+- **Gegenprobe auf exakt gleicher Höhe** blieb stumm: gleich hohe Flächen streiten NICHT (gleiche Tiefe je Bildpunkt,
+  LessEqual → die später gezeichnete gewinnt immer). Tiefenstreit braucht einen KLEINEN Abstand, keinen Nullabstand.
+- **Magenta-Falle mit 0 Bildpunkten auch 5 cm über der Fahrbahn:** die Kamera stand beim ersten Aufruf noch woanders.
+  Seither prüft die Sonde, dass das Ziel in der Bildmitte liegt.
+Rest in der Stadtmitte (~2 %) ist keine Tiefe, sondern Mischreihenfolge zweier durchsichtiger Ebenen (three.js sortiert
+Durchsichtiges nach projizierter Tiefe, die von near abhängt).
+
+### 2. ~10 fps = Zeichenaufrufe: die Modelle bestanden aus 53'451 Einzelteilen
+`probe-bildlast` (feste Kamerapunkte, eigener render(), Median aus 5) zeigte bis zu 9'417 Aufrufe je Bild (Zoom 90) auf
+`main`. `probe-aufrufe-herkunft`: an der Kreuzung ein Doppelhaus 293 Aufrufe, geparkte Wagen 212, Blumenrabatten 103.
+Die Blender-Modelle bestehen aus Hunderten Einzelteilen (Theater 970) mit einer Handvoll Materialien (Theater 10).
+**Neu: `_zusammenfassen()`** in `_spaetEinfrieren` (also jedes Mal, wenn das Laden zur Ruhe kommt): je `bau()`-Modell
+alle statischen Teile desselben Materials zu EINEM Mesh (w-lokal, Normalen mitgedreht, Spiegelungen umgedreht).
+Ausgeschlossen: `_bewegt`/`animiert`, Fahrgeschäfte (`FAHRTEN` suchen ihre beweglichen Teile zur Laufzeit geometrisch
+und hängen sie per `attach` um — die drei einzigen `attach`-Stellen der Datei), Durchsichtiges, Mehrfachmaterial,
+Skinning/Morphs, Kinder, eigenes onBeforeRender, fremde userData-Schlüssel. Schattenwurf im Schlüssel (sonst würfen die
+von `_schattenSparen` abgeschalteten Kleinteile wieder). Gleiche Kopien teilen die Geometrie (Hash über Lage, Teile,
+Materialien). In Scheiben von 12 ms. Danach LOD-Index und Verdecker-Liste neu. Parkplätze (`ladeWagen`, nicht `bau()`)
+über `window._zfStatisch`. `?ohneZF` schaltet es ab. **46'869 Teile aus 641 Modellen → 3'101 Meshes, 705 ms**
+in zwei Läufen (Scheiben). Dazu `window._zfFahrzeug` für die 33 Verkehrswagen: 1'918 Teile → 147 Meshes.
+
+Fallen dabei:
+- **0 von 53'451 Teilen im ersten Lauf:** jedes Teil trug userData (`name` vom GLTF-Lader, `_vdC/_vdR` vom Verdecker).
+  „Keine userData" war als Sicherheitsregel gedacht und schloss alles aus — erlaubt sind jetzt genau diese Schlüssel.
+- **Doppelhaus trotzdem 293:** die Sonde mass bei 60 s, das Haus kam später. Die Welt baut sich bis ~180 s auf;
+  `probe-bildlast`/`-herkunft`/`-zusammen` warten jetzt mit `warteAufRuhe`.
+- **„11,9 % anders" am Freizeitpark:** der Verdecker machte nach dem Neuaufbau das Dach über der (von der Sonde dorthin
+  gestellten) Figur durchsichtig — so gewollt. Die Sonde schaltet ihn für die Fotos ab: 0,00 %.
+**Sichtprüfung `probe-zusammen`** (eine Seite, `?ohneZF`, fotografieren, zusammenfassen, dieselben Punkte noch einmal;
+Bewegtes und Durchsichtiges ausgeblendet): Freizeitpark 2'351 → 329 Aufrufe bei **0,00 %** anderen
+Bildpunkten, Stadtmitte 0,00 %, Gewerbe 0,05 %, nah 0,04 %, Ring 0,40 %, Kreuzung 1,57 %, weit 2,17 % — die Unterschiede
+sind HINZUGEKOMMENE Kleinteile in der Ferne (vorher entfernungs-ausgeblendet), nichts fehlt (Bilder angesehen).
+Bilder: `spiele-dev/screenshots/r99-{kreuzung,weit,freizeitpark}-{einzelteile,zusammengefasst}.png` (statische Welt,
+Bewegtes/Durchsichtiges ausgeblendet).
+**th-echt** liest `userData.teile` (Kasten je Einzelteil) — sonst wäre die T-Form des Oberleitungsmasts wieder ein Klotz.
+**Verkehr:** die Räder hängen in Drehgruppen (`piv.userData.rad`), deren Meshes unmarkiert sind. Die erste Fassung prüfte
+userData nur an Meshes und wäre in die Radgruppen abgestiegen — jetzt fällt JEDER Knoten mit fremden Schlüsseln samt
+Unterbaum heraus. Nachgeprüft: 33 Wagen, alle Räder am Wagen, alle drehen sich.
+**Nebenbefund Stadthaus:** Gruppenkästen vor/nach verglichen (in einer Seite) — `th8_stadthaus_offen` schrumpfte von
+20,6 × 20,6 auf 12,5 × 10,6 m. Kein Verlust: das Dach ist ein vierseitiger Kegel, um 45° gedreht; `Box3.setFromObject`
+dreht den KASTEN des Kegels mit und bläht das Haus um √2 auf. Zusammengefasst zählen die echten Eckpunkte. Die zwei
+Ahorne, die th-pruef seit Runde 93 als „steckt im Stadthaus" meldete, standen nie darin (th-pruef steckt 2 → **0**).
+
+### Lehren
+1. **Erst fragen, welchen Stand der User sieht.** Die Klage galt der Live-Seite; ohne diese Prüfung hätte ich den PR
+   gegen sich selbst optimiert.
+2. **near ist der Tiefenpuffer.** Ein Wert, der für die nächste Kamera passt (Ich-Sicht), ruiniert die weiteste.
+3. **Eine Sicherheitsregel, die alles ausschliesst, ist ein stummes Messgerät.** Zuerst zählen, WIE VIEL sie
+   ausschliesst — hier 100 %.
+4. **th-tempo vergleicht Startansichten.** Die sind seit Runde 89 verschieden; Stände vergleicht `probe-bildlast`.
+5. **Erst messen, wenn die Welt fertig ist.** Sie baut sich bis ~180 s auf; ein Vergleich bei 60 s misst Ladezeitpunkte
+   (Doppelhaus „293 Aufrufe" war nicht zusammengefasst, weil noch nicht geladen). `warteAufRuhe` kostet 3 min — lohnt.
+6. **Ein kleineres Mass ist nicht immer ein Verlust.** Der schrumpfende Stadthaus-Kasten sah nach fehlenden Teilen aus
+   und war die Korrektur eines seit Runde 93 gemeldeten Artefakts. Ansehen, welches Teil den Rand
+   bestimmt, bevor man repariert.
+
+**Endzahlen Runde 99:**
+| Messung | `main` (live, fertige Welt) | PR vor Runde 99 (⚠️ bei ~60 s, Welt unfertig) | PR nachher (fertige Welt) |
+|---|---|---|---|
+| probe-tiefenstreit gesamt (Stadtmitte) | 1,93 % (10,4 %) | 2,63 % (10,3 %) | **0,43 %** (2,1 % = Mischreihenfolge, s. oben) |
+| probe-bildlast Aufrufe Kreuzung · Stadtmitte · Ring · weit · Gewerbe · nah | 2'214 · 356 · 1'718 · 8'753 · 737 · 515 | 2'360 · 392 · 1'874 · 8'419 · 881 · 423 | **1'475 · 261 · 829 · 2'507 · 521 · 266** |
+| Summe der sechs Punkte | 14'293 | 14'349 | **5'859 (−59 % zu main)** |
+| Dreiecke Kreuzung · Stadtmitte · weit | 323k · 168k · 1'271k | 344k · 228k · 1'243k | 420k · 277k · 1'042k |
+| th-bewegt · th-fahrt | — | — | alles Angemeldete bewegt sich · 11 Fahrgeschäfte, 0 ohne Bewegung |
+| th-gta · th-bauen | — | 21/21 · 22/22 | 21/21 · 22/22 |
+| th-pruef (Modelle · Korridor · steckt) | — | 1001 · 0 · 2 | 1001 · 0 · **0** (Kasten-Artefakt weg, s. oben) |
+| th-echt (Paare · echt) | — | 16 · 6 | 17 · 7 (neu: Ahorn × Spielturm 0,16 m, Lage-Streuung) |
+| th-kante · probe-stufen · probe-schild | — | 0/0/0, 48 · 0/0, 16/16 · 96 | unverändert |
+| th-strassen · th-autoboden | — | 68 · 0/1/0 | 61 · 0/0/0, Verkehr grün 0,1 %, Polizei 0/120 |
+| th-flimmern (stille Kamera) | — | kein Umschalten | kein Umschalten |
+
+⚠️ SwiftShader-Millisekunden (Summe PR −8 % zu main) sind Füllraten-Werte, keine Gerätewerte — auf dem Handy zählen
+die Aufrufe. Offen: `probe-aufrufe-herkunft` an der Kreuzung — der Rest sind prozedurale Kleinteile (Boxen/Zylinder
+einzelner Farben, je 10…60) und Bodenmarkierungen; die liessen sich nach demselben Muster je Zelle zusammenfassen.

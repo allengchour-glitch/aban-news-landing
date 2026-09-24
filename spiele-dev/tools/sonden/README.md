@@ -83,3 +83,16 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   `render()`, einmal mit, einmal ohne alle Meshes mit `userData[FLAG]` (Env `FLAG`, Standard `r98`). th-pruef ist dafür
   kein Mass: es liest `renderer.info` nach dem LETZTEN Durchgang und meldete für denselben Stand 198, 228 und 294.
   Runde 98: 331 Teile, +32 Aufrufe an einer Hauptkreuzung (+3 %), +18 nah, +8 Ost-Ausfall, 0 aus der Höhe.
+
+**Runde 99 (Flimmern + ~10 fps):**
+- `probe-tiefenstreit.mjs [quelle.html]` — Tiefenstreit mit der SPIELKAMERA: dasselbe Bild mit dem near des Spiels und
+  mit near 3 m (`REF`), jeder Bildpunkt, der sich ändert, zählt. Sechs feste Punkte, prüft, dass das Ziel in der
+  Bildmitte liegt. Gegenprobe: Magenta-Fläche 1 mm unter der Fahrbahn mit near 0,1. ⚠️ Gleich hohe Flächen streiten
+  nicht (LessEqual) — eine Gegenprobe auf exakt gleicher Höhe ist stumm. Rest bei durchsichtigen Ebenen = Mischreihenfolge.
+- `probe-bildlast.mjs [a.html] [b.html]` — Renderzeit (Median aus 5, SwiftShader — nur Verhältnisse), Aufrufe, Dreiecke an
+  sechs festen Punkten, zwei Stände nebeneinander; erzwingt `lodTakt` am Punkt und wartet `warteAufRuhe` (die Welt baut
+  sich bis ~180 s auf). `BAENDER=1`: Aufrufe nach Entfernung und Art (Modell/prozedural/Instanzen).
+- `probe-aufrufe-herkunft.mjs [a.html] [b.html]` — welche Herkunft (Modelldatei, Geometrie+Farbe) wie viele Aufrufe macht;
+  mit zweiter Datei die grössten Zuwächse. `TOP=n`, `SCHNELL=1` ohne Ruhe-Warten.
+- `probe-zusammen.mjs [quelle.html]` — ändert `_zusammenfassen()` das Bild? Eine Seite mit `?ohneZF`, fotografieren,
+  zusammenfassen, dieselben sieben Punkte noch einmal; Bewegtes, Durchsichtiges und der Verdecker aus. Bilder nach `$OUT`.
