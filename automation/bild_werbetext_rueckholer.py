@@ -40,8 +40,18 @@ AUFRUF:
                                                                         Etiketten (SLATE GREY CHERRY RED, Rose Gold Eye Shadow) → zweite
                                                                         Sichtung, nicht blind. Nie das letzte Zweitbild (Sperre im Lauf).
   NUR_BERICHT=1 python3 …                                               Bericht + Kontaktbogen aus dem Ledger neu bauen
-Umgebung: TAKT (Sekunden je OCR, Standard 1.0), CAP (Produkte je Lauf, Standard 0 = alle), WORTGRENZE (4).
+Umgebung: TAKT (Sekunden je OCR, Standard 1.0), CAP (Produkte je Lauf, Standard 0 = alle), WORTGRENZE (4),
+SCHARF_AB (Wörter, ab denen SCHARF=1 ohne NUR_MEDIA löscht; Standard 7 — s. u.).
 Sperre /tmp/bild_werbetext_rueckholer.lock — ein zweiter Lauf beendet sich sofort.
+
+GEEICHT AM VOLLEN DRY-LAUF (24.09. 00:31 UTC, 704 Produkte, 2'487 Medien, 95 Treffer, 0 unlesbar, 20× Eimer-Wartezeit):
+Verteilung 0 W: 2'237 · 1–3 W: 156 · 4–6 W: 31 · ≥7 W: 64. Sichtprüfung zweier Kontaktbögen: die 24 Treffer ab 14 Wörtern
+sind 24/24 Werbe-/Feature-Overlays; in der Zone 4–6 Wörter waren 8 von 31 FEHLALARME — Verpackungsaufdruck (Lidschatten),
+Flaschenetiketten (3× ätherische Öle «LAVENDER TEA TREE PEPPERMINT»), Massangabe («56 mandala templates Size 90×90»),
+Variantenangabe («red silver / One size fits all»), Farbnamen unter einem Markenposter, Text IM Bildinhalt (Bildschirm-Szene).
+Diese Klassen sind für die Kundin nützlich oder unvermeidbar (Google verbietet WERBE-Overlays, keine Etiketten).
+→ Die Meldeschwelle bleibt 4 (der Nachfüller lehnt beim ANHÄNGEN weiter ab 4 ab, das ist billig); das LÖSCHEN im
+Bestand geschieht ohne NUR_MEDIA erst ab SCHARF_AB=7. Die Zone 4–6 ist Sichtprüfung je Medium (NUR_MEDIA=<id,…>).
 """
 import datetime, fcntl, io, json, os, subprocess, sys, time
 # Tesseract startet je Aufruf eigene OpenMP-Threads — bei parallelen Wächtern trieb das die Last auf 16 (23.09.).
@@ -62,11 +72,34 @@ GEPRUEFT = os.path.join(ROOT, "dropship", "_bild_werbetext_geprueft.txt")
 ENTFERNT = os.path.join(ROOT, "dropship", "_bild_werbetext_entfernt.txt")
 BERICHT = os.path.join(ROOT, "dropship", "BILD-WERBETEXT.md")
 BOGEN = os.path.join(ROOT, "dropship", "bild_werbetext_kontaktbogen.jpg")
+# Titel-Cache (produkt_id → Titel): der Bericht wird aus dem Ledger neu gebaut — auch vom täglichen Aufseher-Lauf,
+# der die Produkte erst nach und nach besucht. Ohne Cache standen im committeten Bericht (24.09. 00:34) IDs statt Titel.
+TITEL = os.path.join(ROOT, "dropship", "_bild_werbetext_titel.json")
+# Ergebnis der Sichtprüfung vom 24.09. — steht IM Generator, weil jeder Neubau den Bericht ganz überschreibt (ein von Hand
+# angehängter Abschnitt ging um 00:34:55 durch den Aufseher-Lauf verloren).
+EICHUNG = """## Sichtprüfung (24.09.2026, 00:35 UTC) — Eichung der Schwelle
+
+Voller DRY-Lauf 23./24.09.: 704 Produkte, **2'487 Medien geprüft, 95 Treffer (in 90 Produkten), 0 unlesbar**, 1 entfernt
+(Diffusor 69926701629825, Betreiber-bestätigt). Verteilung: 0 W 2'237 · 1–3 W 156 · 4–6 W 31 · 7–13 W 33 · ≥14 W 31.
+
+- **Kontaktbogen der 24 Top-Treffer (≥14 Wörter): 24/24 echte Werbe-/Feature-Overlays** (Feature-Listen, Slogans,
+  Sprechblasen, «Free Gift»-Badges) — 0 Fehlalarme.
+- **Zone 4–6 Wörter (31 Medien): 23 echt, 8 Fehlalarme (26 %)** — Verpackungsaufdruck (Lidschatten 69926687244673),
+  Flaschenetiketten (ätherische Öle 70519926358401, 70519926423937), Massangabe («56 mandala templates Size 90×90»
+  70519571939713, 70519572005249), Variantenangabe («red silver / One size fits all» 69926689997185), Farbnamen unter einem
+  Markenposter (69926291833217), Text im Bildinhalt (Bildschirm-Szene 70551630807425). Etiketten und Angaben, keine Overlays.
+- **Geschätzte Fehlalarmquote gesamt: ~8–13 %** (8 gesehene von 95; Zone 7–13 Wörter nicht einzeln gesichtet).
+
+**Regel daraus:** Meldeschwelle bleibt 4 (der Nachfüller lehnt beim Anhängen weiter ab 4 ab). Löschen im Bestand ohne
+Medienliste erst ab **`SCHARF_AB=7`** (64 Medien, erwartet ≤ 2 Fehlalarme); die Zone 4–6 nur nach Sichtprüfung per
+`NUR_MEDIA=<id,…>`. Nichts ist scharf gelöscht ausser dem Diffusor-Medium.
+"""
 SPERRE = "/tmp/bild_werbetext_rueckholer.lock"
 SCHARF = os.environ.get("SCHARF") == "1"
 NUR_BERICHT = os.environ.get("NUR_BERICHT") == "1"
 TAKT = float(os.environ.get("TAKT", "1.0"))
 CAP = int(os.environ.get("CAP", "0"))
+SCHARF_AB = int(os.environ.get("SCHARF_AB", "7"))   # Löschschwelle ohne NUR_MEDIA (Eichung im Kopf)
 PID = "gid://shopify/Product/"
 MID = "gid://shopify/MediaImage/"
 
@@ -156,6 +189,20 @@ def bericht(titel_von):
     unlesbar = [z for z in zeilen if z[2] == "-1"]
     produkte = {z[0] for z in zeilen}
     treffer_produkte = {z[0] for z in treffer}
+    # Titel: Cache lesen, was der Lauf weiss dazu, fehlende Titel NUR für Treffer-Produkte nachholen, Cache schreiben.
+    cache = {}
+    if os.path.exists(TITEL):
+        try:
+            cache = json.load(open(TITEL, encoding="utf-8"))
+        except Exception:
+            cache = {}
+    cache.update({k: v for k, v in titel_von.items() if v})
+    for pid in sorted(treffer_produkte - {k for k, v in cache.items() if v}):
+        p = medien(pid)
+        cache[pid] = (p or {}).get("title") or ""
+    titel_von = cache
+    with open(TITEL, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=0, sort_keys=True)
     heute = jetzt()
     L = [f"# Bild-Werbetext in Nicht-Hauptbildern — Stand {heute}", "",
          f"Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` ({len(kandidaten())} Produkte). "
@@ -177,7 +224,7 @@ def bericht(titel_von):
                  f"| {n} | {text[:70]} | {stand} |")
     if not treffer:
         L.append("| — | — | — | — | — |")
-    L += ["", f"Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`", ""]
+    L += ["", f"Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`", "", EICHUNG]
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write("\n".join(L))
     # Kontaktbogen: 6 Spalten, Kachel 300 px, Beschriftung darunter.
@@ -209,10 +256,7 @@ def main():
     except OSError:
         print("läuft schon (Sperre) — Ende", flush=True); return
     titel_von = {}
-    if NUR_BERICHT:
-        for z in ledger_lesen(GEPRUEFT):
-            if z[0] not in titel_von:
-                p = medien(z[0]); titel_von[z[0]] = (p or {}).get("title", "")
+    if NUR_BERICHT:   # Titel aus dem Cache; nur fehlende Treffer-Titel werden in bericht() nachgeholt.
         print("Bericht: geprüft %d · Treffer %d · unlesbar %d · entfernt %d" % bericht(titel_von), flush=True); return
 
     geprueft = {z[1]: z for z in ledger_lesen(GEPRUEFT) if len(z) >= 5}
@@ -280,6 +324,16 @@ def main():
                 print(f"   ↩️ letztes Zweitbild behalten: Pos{behalten[1]} ({behalten[2]} W) — Produkt hätte sonst nur das Hauptbild",
                       flush=True)
         if raus and SCHARF:
+            # Ohne ausdrückliche Medienliste nur die eindeutige Zone löschen (Eichung: 4–6 Wörter = 8 von 31 Fehlalarme).
+            if not NUR_MEDIA:
+                zurueck = [r for r in raus if r[2] < SCHARF_AB]
+                for _, pos, w, t, _ in zurueck:
+                    print(f"   · Pos{pos} {w}W «{t[:40]}» bleibt (unter SCHARF_AB={SCHARF_AB}, Sichtprüfung nötig)", flush=True)
+                raus = [r for r in raus if r[2] >= SCHARF_AB]
+                if not raus:
+                    if n % 25 == 0 or n == len(liste):
+                        bericht(titel_von)
+                    continue
             mids = [r[0] for r in raus]
             ok, fehler = loeschen(pid, mids)
             if fehler:
