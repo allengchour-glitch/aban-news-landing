@@ -56,7 +56,7 @@ TESTWORTE = {"test", "testbewertung", "testreview", "probelauf", "probe", "asdf"
 # das erste Muster kannte nur die nackte Form → 1'331 Fehlalarme im ersten Lauf.
 IMPORT_ADRESSE = re.compile(r"^(cj-import(\+[a-z0-9]+)?|importiert\+[a-z0-9]+)@luxestyle\.ch$", re.I)
 TESTDOMAIN = re.compile(r"(^|\.)(example\.(com|org|net|invalid)|invalid|test|local|localhost)$", re.I)
-NAME_OK = {"verifizierter käufer", "verifizierter kaeufer", "verified buyer", "anonym", "anonymous"}
+NAME_OK = {"verifizierter käufer", "verifizierter kaeufer", "verified buyer", "anonym", "anonymous", "käufer:in beim lieferanten"}
 
 VORGANG = """## Vorgang 22.09.2026 — die Testbewertung
 

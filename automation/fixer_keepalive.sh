@@ -699,7 +699,7 @@ while true; do
       # Produkten (Trefferchance auf ein sichtbares ~0,3 %); von 187 Produkten in den Startseiten-
       # Reihen hatten nur 23 eine Bewertung. bewertungen_prio.py baut die Arbeitsliste, der Ledger
       # des Importers macht sie über Container-Neustarts hinweg fortsetzbar.
-      ( cd "$REPO" && setsid sh -c 'python3 automation/bewertungen_prio.py >> "'"$RV2"'" 2>&1; . /tmp/judgeme.env; . /tmp/cj_creds.env 2>/dev/null; . /tmp/dienste.env 2>/dev/null; . /tmp/secrets_env.sh 2>/dev/null; export CJ_EMAIL="${CJ_EMAIL:-$(cat /tmp/cj_email 2>/dev/null)}" CJ_API_KEY="${CJ_API_KEY:-$(cat /tmp/cj_apikey 2>/dev/null)}"; P=dropship/_bewertungen_prio.txt; if [ -s "$P" ]; then ONLY="$(head -150 "$P" | paste -sd, -)" LIMIT=150 MIN_SCORE=4 PER=8 /opt/node22/bin/node automation/cj_reviews_import.mjs; else LIMIT=120 MIN_SCORE=4 PER=6 /opt/node22/bin/node automation/cj_reviews_import.mjs; fi' >> "$RV2" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid sh -c 'python3 automation/bewertungen_prio.py >> "'"$RV2"'" 2>&1; . /tmp/judgeme.env; . /tmp/cj_creds.env 2>/dev/null; . /tmp/dienste.env 2>/dev/null; . /tmp/secrets_env.sh 2>/dev/null; export CJ_EMAIL="${CJ_EMAIL:-$(cat /tmp/cj_email 2>/dev/null)}" CJ_API_KEY="${CJ_API_KEY:-$(cat /tmp/cj_apikey 2>/dev/null)}"; P=dropship/_bewertungen_prio.txt; if [ -s "$P" ]; then ONLY="$(head -150 "$P" | paste -sd, -)" LIMIT=150 MIN_SCORE=1 PER=8 /opt/node22/bin/node automation/cj_reviews_import.mjs; else LIMIT=120 MIN_SCORE=1 PER=6 /opt/node22/bin/node automation/cj_reviews_import.mjs; fi' >> "$RV2" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) cj-bewertungen gestartet"
     fi
   fi

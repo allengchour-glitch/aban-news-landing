@@ -42,12 +42,18 @@ const PER = Math.max(1, parseInt(process.env.PER || '6', 10) || 6);
 // Kommentare unter 1 Stern gibt es nicht; 1 heisst also: ALLE nehmen.
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '1', 10) || 1));
 const DRY = process.env.DRY_RUN === '1';
+// 24.09.2026 NACHHOLEN=1: Der Tagesstarter lief mit MIN_SCORE=4 und quittierte ganze Produkte — die schlechteren Kommentare
+// kamen nie nach (10'976 Bewertungen, nur 38 unter 4★). Dieser Modus holt fuer die Produkte aus
+// dropship/_bewertungen_nachholen.txt (bewertungen_nachholen_liste.py: Bewertungen vorhanden, KEINE unter 4★) genau die
+// CJ-Kommentare mit hoechstens MAX_SCORE (Vorgabe 3) Sternen. Eigenes Ledger, der Haupt-Ledger bleibt unberuehrt.
+const NACHHOLEN = process.env.NACHHOLEN === '1';
+const MAX_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MAX_SCORE || (NACHHOLEN ? '3' : '5'), 10) || 5));
 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const SHOP_API = '2026-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
 const TOKEN_FILE = '/tmp/cj_token.json';
-const LEDGER = 'dropship/cj_reviews_done.txt';
+const LEDGER = process.env.NACHHOLEN === '1' ? 'dropship/cj_reviews_nachgeholt.txt' : 'dropship/cj_reviews_done.txt';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // ── Guards (No-op statt Fehler) ──
@@ -158,7 +164,8 @@ async function translateDE(texts) {
     let t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
     t = t.replace(/^```(json)?/i, '').replace(/```$/, '').trim();
     const arr = JSON.parse(t);
-    if (Array.isArray(arr) && arr.length === texts.length) return arr.map((s, i) => (s && String(s).trim()) || texts[i]);
+    // 24.09.2026: Schweizer Schreibweise — Gemini schreibt «Größe»; im ganzen Shop gilt ss (Hausregel, 0 ß).
+    if (Array.isArray(arr) && arr.length === texts.length) return arr.map((s, i) => ((s && String(s).trim()) || texts[i]).replace(/ß/g, 'ss'));
   } catch (e) { console.error('  Übersetzung fehlgeschlagen, nutze Original:', e.message); }
   return texts;
 }
@@ -166,7 +173,9 @@ async function translateDE(texts) {
 // ── Judge.me POST ──
 async function jmPost(pid, r) {
   const body = { shop_domain: JM_DOMAIN, platform: 'shopify', id: pid,
-    name: r.name || 'Verifizierter Käufer',
+    // 24.09.2026: Ersatzname war «Verifizierter Käufer» — falsch: diese Person hat NICHT bei uns gekauft, und Judge.me
+    // zeigt keinen Herkunftshinweis. Die Startseite strich «verifizierte Bewertungen» schon am 15.09. aus demselben Grund.
+    name: r.name || 'Käufer:in beim Lieferanten',
     // ⚠️ 04.09.2026: Hier stand `cj-import+<zufall>@luxestyle.ch` — eine ERFUNDENE Adresse
     // je Bewertung. Judge.me spiegelt seine Rezensenten nach Klaviyo, und Klaviyo rechnet
     // nach PROFILEN ab: gemessen tragen 1'482 von 1'724 Bewertungen (86 %) so eine Adresse,
@@ -273,17 +282,20 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       await sleep(CJ_SLEEP);
       const list = cr?.data?.list || cr?.data?.comments || cr?.data?.content || cr?.data?.commentList || (Array.isArray(cr?.data) ? cr.data : []);
       if (DEBUG) console.log(`    [DEBUG] comments(${cjpid}): result=${cr?.result} dataKeys=${cr?.data && typeof cr.data === 'object' ? Object.keys(cr.data).join(',') : typeof cr?.data} listLen=${Array.isArray(list) ? list.length : 'n/a'}${cr?.message ? ' msg=' + cr.message : ''}`);
+      // 24.09.2026: CJ liefert denselben Kommentar teils doppelt («Sieht schlechter aus als auf den Bildern» 2×) → einmal.
+      const _schon = new Set();
       const picked = (list || [])
-        .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
+        .filter(c => { const k = (c.comment || '').trim().toLowerCase().replace(/\s+/g, ' '); if (_schon.has(k)) return false; _schon.add(k); return true; })
+        .filter(c => Number(c.score) >= MIN_SCORE && Number(c.score) <= MAX_SCORE && (c.comment || '').trim().length >= 8)
         .slice(0, PER);
-      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
+      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ${MIN_SCORE}–${MAX_SCORE}★-Kommentare bei CJ → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
       let sent = 0;
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
         const rev = {
-          name: (c.commentUser || '').trim() || 'Verifizierter Käufer',
+          name: (c.commentUser || '').trim() || 'Käufer:in beim Lieferanten',
           rating: Number(c.score) || 5,
           body: bodiesDE[i] || c.comment.trim(),
           created_at: (c.commentDate || '').slice(0, 10) || undefined,
