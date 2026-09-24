@@ -65,7 +65,9 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 MODUS = os.environ.get("MODUS", "produkt")
 QUELLE = os.environ.get("QUELLE", "hype-jetzt")
 ANZAHL = int(os.environ.get("ANZAHL", "1"))
-SLIDES = int(os.environ.get("SLIDES", "6"))
+# 24.09.2026 (Betreiber: «warum nicht mehr bilder in karusell»): Instagram erlaubt 20 Slides, gebaut wurden hoechstens 6
+# (Hook + 4 Produktbilder + CTA). Fuer FORMAT=ig jetzt bis 8; TikTok bleibt bei 6.
+SLIDES = int(os.environ.get("SLIDES") or ("8" if os.environ.get("FORMAT") == "ig" else "6"))
 DRY = os.environ.get("DRY") == "1"
 NUR_HANDLES = [h.strip() for h in os.environ.get("NUR_HANDLES", "").split(",") if h.strip()]
 MAX_PREIS = float(os.environ.get("MAX_PREIS") or 0) or None
@@ -153,6 +155,10 @@ SPERR_TAGS = {"bild-zu-klein", "medizinprodukt-pruefen", "18plus", "raucher",
               "waffengesetz-verboten", "nicht-bewerben", "nicht-live-moebel-sperrig",
               "niedrig-bewertet-nicht-bewerben", "nur-onlineshop", "duplikat-auto-draft"}
 MIN_KANTE = 700        # unter 700 px sieht ein 1080er Slide ausgefranst aus
+# 24.09.2026: Die Kuerbis-Suessigkeitenschale hat 12 Dateien = 6 Motive; drei Motive (Kerzen-Szene, Unterseite, Massfoto)
+# gibt es NUR als 600x600 — sie fielen raus, das Karussell hatte 4 statt 7 Slides. Bilder ab MIN_KANTE_NOTFALL fuellen
+# jetzt auf, stehen aber immer HINTER allen grossen (der Hook-Slide bleibt ein grosses Bild).
+MIN_KANTE_NOTFALL = int(os.environ.get("MIN_KANTE_NOTFALL", "600"))
 MIN_PREIS = 15.0
 
 
@@ -238,11 +244,11 @@ def bilder(p):
     for i, m in enumerate((p.get("media") or {}).get("nodes") or []):
         im = (m or {}).get("image") or {}
         u, w, h = im.get("url"), im.get("width") or 0, im.get("height") or 0
-        if not u or min(w, h) < MIN_KANTE:
+        if not u or min(w, h) < MIN_KANTE_NOTFALL:
             continue
         ist_jpg = ".png" not in u.split("?")[0].lower()
         quadrat = 0.95 <= (w / h) <= 1.05
-        rang = (2 if ist_jpg and quadrat else 1 if ist_jpg else 0)
+        rang = (2 if ist_jpg and quadrat else 1 if ist_jpg else 0) + (3 if min(w, h) >= MIN_KANTE else 0)
         bewertet.append((-rang, i, u))
     bewertet.sort()
     return [u for _, _, u in bewertet]
@@ -271,7 +277,12 @@ def geeignet(p, mindest_bilder):
             return False
     except Exception:
         return False
-    return len(bilder(p)) >= mindest_bilder
+    # 24.09.2026: Kleine Bilder (MIN_KANTE_NOTFALL) duerfen nur AUFFUELLEN — mindestens ein Bild ab MIN_KANTE muss
+    # da sein, sonst waere der Hook-Slide ein hochgezogenes 600er-Bild.
+    gross = sum(1 for m in ((p.get("media") or {}).get("nodes") or [])
+                if min(((m or {}).get("image") or {}).get("width") or 0,
+                       ((m or {}).get("image") or {}).get("height") or 0) >= MIN_KANTE)
+    return gross >= 1 and len(bilder(p)) >= mindest_bilder
 
 
 def schon_verwendet():
@@ -584,11 +595,32 @@ def _ahash(pfad):
         return None
 
 
+def _farbe(pfad):
+    """Mittlere Farbe der Bildmitte (RGB). 24.09.2026: aHash rechnet in Graustufen — das Kleid in Blau, Weinrot, Braun
+    und Aprikose (gleiche Pose) galt als EIN Motiv, das Karussell hatte 2 statt 7 Produktbilder."""
+    try:
+        im = Image.open(pfad).convert("RGB")
+        w, h = im.size
+        return im.crop((w // 4, h // 4, 3 * w // 4, 3 * h // 4)).resize((1, 1), Image.LANCZOS).getpixel((0, 0))
+    except Exception:
+        return None
+
+
+def _gleich(a, b):
+    """Doppel nur, wenn Form (aHash <= 6) UND Farbe (Abstand <= 12) gleich sind."""
+    (ha, fa), (hb, fb) = a, b
+    if ha is None or hb is None or bin(ha ^ hb).count("1") > 6:
+        return False
+    if fa is None or fb is None:
+        return True
+    return sum((x - y) ** 2 for x, y in zip(fa, fb)) ** 0.5 <= 12   # gemessen: echte Doppel 0–4, Weinrot vs. Braun 25
+
+
 def bau_produkt(p, benutzt):
     # 23.09.2026 (Kontaktbogen Süssigkeitenschale): Slide 2 und 3 waren dasselbe CJ-Motiv unter zwei Dateinamen —
     # die Dateiname-Wache sieht das nicht. Deshalb mehr Bilder holen als gebraucht und nahezu gleiche (aHash <= 6)
     # auslassen; so tragen «mehrere Bilder» auch mehrere Ansichten.
-    urls = bilder(p)[:SLIDES + 3]
+    urls = bilder(p)[:SLIDES * 2 + 2]      # Doppel-Motive sind haeufig (Kuerbisschale: 12 Dateien, 6 Motive)
     tmp, hashes = [], []
     for i, u in enumerate(urls):
         if len(tmp) >= SLIDES - 1:
@@ -596,12 +628,11 @@ def bau_produkt(p, benutzt):
         z = f"/tmp/_ttk_{i}.img"
         if not lade(u, z):
             continue
-        h = _ahash(z)
-        if h is not None and any(bin(h ^ x).count("1") <= 6 for x in hashes):
+        h = (_ahash(z), _farbe(z))
+        if any(_gleich(h, x) for x in hashes):
             print(f"      (Bild {i + 1} gleicht einem frueheren Slide — ausgelassen)")
             continue
-        if h is not None:
-            hashes.append(h)
+        hashes.append(h)
         tmp.append(z)
     if len(tmp) < 3:
         return None
