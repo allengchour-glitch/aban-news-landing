@@ -90,7 +90,7 @@ TABELLE = {
 # auf Electronics (554 davon Klemmbausteine/3D-Holzpuzzles), «Aufbewahrung & Organizer» auf Storage (1'271 ohne
 # Ordnungswort: Wasserkocher, Saugroboter, Barhocker). Fuer diese Typen entscheidet jetzt der TITEL; passt keine
 # Regel, wird NICHT geraten (Produkt bleibt ohne Kategorie und steht im Bericht).
-SAMMELTYPEN = {"Trend-Gadget", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
+SAMMELTYPEN = {"Trend-Gadget", "Trend-Produkt", "Kinder", "Schweizer Editionen", "Anime", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
                "Aufbewahrung & Ordnung", "Geschenkset", "Haushalt & Wohnen", "Home & Living", "Wohnen & Dekoration",
                "Sommer-Gadget", "Outdoor & Gadget", "Tech-Gadget", "Haushalt", "Haushalt & Hobby"}
 import re as _re
@@ -119,8 +119,43 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"handtuch|badetuch", "hg-15-4-1"),
     (r"wasserkocher|pfanne|kochtopf|\btopf\b|messbecher|schneidebrett|küchen\w*", "hg-11"),
     (r"lampe|leuchte|nachtlicht|lichterkette|led-licht|\bled\b", "hg-13"),
+    (r"smart\s?-?watch|smartuhr|fitness-?tracker|fitnessuhr", "aa-6-12"),
     (r"\b(usb|akku|bluetooth|kopfhörer|lautsprecher|powerbank|ladegerät|ladekabel|kabel|smart\w*|kamera|projektor|beamer|mikrofon|adapter)\b", "el"),
     (r"aufbewahrung|organizer|\bbox\b|korb|regal|halter\b|ablage|behälter|kiste|schublade|dose\b|haken\b|ordnung", "hg-10-16"),
+    # 24.09.2026 — zweite Welle fuer «Trend-Produkt»/«Trend-Gadget» (511 ohne Treffer). Niedrigerer Vorrang als alles oben;
+    # Wortfallen: Tier-HAAR ≠ Haarpflege, AUTO-matisch ≠ Auto, Kleider-BÜGEL ≠ Kleid, Schw-ESTER ≠ Weste.
+    (r"fahne\w*|flagge\w*|lampion\w*|wimpel", "ae-3-2"),
+    (r"fusselroller|tierhaar-?entferner", "hg-10"),
+    (r"tierhaar|fellpflege|dampfbürste für tiere", "ap-2"),
+    (r"lipp\w*|lip\s?(plumper|gloss|balm|oil)", "hb-3-2-6"),
+    (r"sonnenbrille|\bbrille\b", "aa-2-27"),
+    (r"(?<!reinigungs)(?<!wasch)handschuh\w*|schal\b|gürtel", "aa-2"),
+    (r"armreif|(hals|liebes|fuss|arm)kette|\bkette\b", "aa-6"),
+    (r"feuerzeug|aschenbecher", "hg-19"),
+    (r"\b(hut|mütze|beanie|cap|kappe)\b|baseballcap", "aa-2-17"),
+    (r"anklet|fusskett|tassel-?schmuck|pendel\w*\b", "aa-6"),
+    (r"baby|neugeboren|strampler|kinderwagen|schnuller|windel|lätzchen|krabbel", "bt"),
+    (r"\bauto(?:-|\b)|\bkfz\b|fahrzeug|lenkrad|autositz|scheibenwischer", "vp-1"),
+    (r"luftbefeuchter|diffus[eo]r|luftreiniger|ventilator|(?<!be)lüfter|staubsauger|entfeuchter|heizgerät|heizer\b|wasserkocher|befeuchter|feuchter\b|air\s?fryer|heissluftfritteuse", "hg-9"),
+    (r"ohrhörer|earbuds|headset|kopfhörer|lautsprecher|soundbar", "el-2"),
+    (r"gaming|controller|konsole|joystick", "el-18"),
+    (r"tastatur|(?<!fleder)maus\b|handy\w*|iphone|smartphone|ladestation|wlan|wi-?fi|kamera|tablet|ladeger|powerbank|türklingel|drohne|walkie|\bfunk\w*|gimbal|selfie|stativ|projektor|adapter\b|drucker", "el"),
+    (r"(jacke|hosen?|shorts|hemd|mantel|overall|pullover|sweatshirt|kleid|shirt|bluse|weste|leggings|pyjama|pajama|unterwäsche|socken|anzug|strampler|cardigan|tunika|outfits?|jumpsuit|top)\b", "aa-1"),
+    (r"(?<!tier)(?<!tier-)haar\w*|glätter|lockenstab|föhn|haartrockner|glätteisen", "hb-3-10"),
+    (r"wimpern|augenbrauen|pinzette|kosmetik-?pinsel|schminkpinsel|make-?up-?(pinsel|schwamm)|nagel\w*", "hb-3-2-5"),
+    (r"gesicht\w*|\bhaut\w*|poren\w*|nasenreiniger|creme|serum|peeling|schönheitsmaske|gesichtsmaske|reinigungsbürste", "hb-3-2-9"),
+    (r"(trink|wasser|thermo|sport|tee)flasche|thermos|tumbler|\btasse\b|becher\b|entsafter|mixer\b|shaker|knoblauchpresse|gemüse\w*|schale\b|warmhalteplatte|messerschärfer|sprühflasche|wasserspender|küchenhelfer", "hg-11"),
+    (r"tasche\b|taschen\b|duffel\w*|\bbag\b|geldbörse|portemonnaie|brieftasche|clutch|kartenetui", "lb"),
+    (r"kissen|bettwäsche|bettlaken|bettdecke|kuscheldecke|\bdecke\b|matratze", "hg-15"),
+    (r"vorhang|gardine|teppich|wanddeko|wandbild|bilderrahmen|\bdeko\b|deko-|dekoration|kerze|figur\b|statue|\bspiegel\b|wandspiegel|weihnacht\w*|girlande", "hg-3"),
+    (r"werkzeug|schraub\w*|bohr\w*|zange|multitool|messgerät|messschieber|wasserwaage", "ha-15"),
+    (r"garten|pflanz\w*|blumentopf|bewässerung|gießkanne|giesskanne", "hg-12-1"),
+    (r"ukulele|gitarre|klavier|keyboard|trommel|mundharmonika", "ae-2-8"),
+    (r"spielzeug|puppe|\bspiel\b|kreisel|seifenblase|rennwagen|\bdrift\b", "tg-5"),
+    (r"camping|zelt|wander\w*|fahrrad\w*|angel\w*|\bsport\w*|golf|tennis|ski\b", "sg"),
+    (r"stift|notizbuch|schreibtisch|büro\w*|kalender|etikett", "os"),
+    (r"badezimmer|dusch\w*|\bbad\b|toilette|seifenspender|zahnpasta|dispenser", "hg-1"),
+    (r"putz\w*|reinig\w*|fusselroller|mopp|besen|wäsche\w*", "hg-10"),
 ]
 _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 
@@ -130,6 +165,9 @@ _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 # Aufbewahrung ohne Regeltreffer ist meist doch Ordnung (Kabel-Tray, Kompressionsbeutel, Auto-Staufach).
 SAMMEL_FALLBACK = {t: TABELLE.get(t) for t in SAMMELTYPEN}
 SAMMEL_FALLBACK["Trend-Gadget"] = None
+SAMMEL_FALLBACK["Trend-Produkt"] = None   # 24.09.: 260 aktive, nie als Sammeltyp gefuehrt → Titelregeln griffen gar nicht
+for _t in ("Kinder", "Schweizer Editionen", "Anime"):   # 24.09.: Kleinsttypen ohne Tabellenwert — nur per Titel, sonst offen
+    SAMMEL_FALLBACK[_t] = None
 
 
 def ziel_fuer(typ, titel):

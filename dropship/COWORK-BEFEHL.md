@@ -4,6 +4,19 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## 🆕 24.09. 05:25 UTC — Rabattcodes aufräumen (Preisentscheid, ~5 Min) · empfohlen, nicht dringend
+**Gemessen (Admin-API, alle Seiten):** 76 aktive Rabattcodes. Eingelöst wurde je nur **WELCOME10 (2×)**. **19 Codes mit 20–25 % haben
+kein Enddatum und wurden nie benutzt** — sie kosten nichts, bis einer auf einer Gutscheinseite landet; dann gilt er auf jede Bestellung,
+auch auf Ware mit knapper Marge (der Verlust-Wächter kennt nur den Listenpreis, keine Codes). Dazu **DE10** und **AT10** für Länder,
+die der Shop nicht mehr beliefert.
+
+Die 19: BUNDLE20 · BEAUTYDUO · TIKTOK20 · WELCOMEBACK20 · GIFT20 · BDAY20 · FREUNDE20 · GO20 · MOTHERSDAY20 · FRIENDS20 · BABY20 ·
+INFLUENCER25 · WEDDING25 · FIRST20 · VIP20 · BESTSELLER20 · INFLUENCER20 · AMBASSADOR25 · SOMMER20
+
+**Vorschlag:** Shopify → Rabatte → diese 19 + DE10 + AT10 deaktivieren (nicht löschen; Wiedereinschalten = 1 Klick). WELCOME10 und
+die 10-%-Codes bleiben. Sag «rabatte aus», dann erledige ich es per API und lese jeden Code zurück — oder nenne die, die bleiben sollen.
+Ich ändere Rabatte nicht ohne dein Wort, weil sie Preise sind.
+
 ## 🆕 23.09. 18:55 UTC — Instagram-Bio-Link auf «Gerade auf Instagram» (1 Min) · ⏰ Meta-Zugang bis 05.10.
 
 **K — Bio-Link:** Jede Caption sagt «Link im Profil», der Link führte aber auf die Startseite — dort steht das gezeigte

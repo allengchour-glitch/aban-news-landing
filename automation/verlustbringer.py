@@ -222,14 +222,24 @@ def verlust_live(p):
     vs = ((p.get("variants") or {}).get("nodes") or [])
     if not vs:
         return None
-    paare = []
+    paare, ohne = [], []
     for v in vs:
         uc = ((v.get("inventoryItem") or {}).get("unitCost") or {}).get("amount")
         if uc is None:
-            return None
+            ohne.append(float(v.get("price") or 0)); continue
         paare.append((float(v.get("price") or 0), float(uc)))
+    if not paare:
+        return None
+    if ohne:
+        # 24.09.2026 GESCHWISTER-REGEL (eng): «Herren Business-Schuh» 55 Varianten, 25 mit EK (25.64–28.90) zu CHF 18.90,
+        # 30 Farbvarianten desselben Modells ohne EK zum GLEICHEN Preis — der Lauf blieb stundenlang «unklar», das Produkt
+        # verkaufte weiter mit CHF −7 je Paar. Fehlende EK werden nur dann als Verlust gewertet, wenn ALLE bekannten Varianten
+        # Verlust sind UND keine unbekannte Variante teurer verkauft wird als die teuerste bekannte. Sonst bleibt «unbekannt»
+        # (3-in-1 Heissluftkamm: Gold CHF 27.90 ohne EK neben Rosa CHF 14.90 → bleibt unklar, richtig so).
+        if not all(netto(pr, uc, VERSAND) <= 0 for pr, uc in paare) or max(ohne) > max(pr for pr, _ in paare):
+            return None
     alle = all(netto(pr, uc, VERSAND) <= 0 for pr, uc in paare)
-    return alle, min(pr for pr, _ in paare), max(uc for _, uc in paare)
+    return alle, min(pr for pr, _ in paare + [(x, 0) for x in ohne]), max(uc for _, uc in paare)
 
 
 def draften(gid):

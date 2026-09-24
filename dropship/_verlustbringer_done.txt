@@ -1328,3 +1328,4 @@ gid://shopify/Product/15500403212673	2026-09-23T12:08Z	draft	14.90	20.66	Keramik
 gid://shopify/Product/15448925962625	2026-09-23T12:08Z	draft	15.90	21.65	Chenille Kissenhülle oder Kissen mit Füllung
 gid://shopify/Product/15448929403265	2026-09-23T12:08Z	draft	15.90	21.63	Mini Haarglättungsbürste kabellos
 gid://shopify/Product/15449427018113	2026-09-23T21:47Z	draft	14.90	34.59	Armgrip-Trainingsgerät flexibel einstellbar
+gid://shopify/Product/15450740654465	2026-09-24T05:15Z	draft	18.90	28.90	Herren Business-Schuh aus Leder
