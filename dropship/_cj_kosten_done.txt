@@ -28702,3 +28702,15 @@ gid://shopify/Product/15454507958657	CHF 22.52	1 Varianten	Retro-Denim-Umhänget
 gid://shopify/Product/15454508089729	CHF 8.13	1 Varianten	Warmes Sweater für haarlose Katzen
 gid://shopify/Product/15454508188033	CHF 17.64	1 Varianten	LED-Weste für Hunde
 gid://shopify/Product/15454508679553	CHF 11.89	1 Varianten	Wasserdichter Poncho für Hunde
+gid://shopify/Product/15454508745089	CHF 13.39	1 Varianten	Atmungsaktive Faltbare Tiertasche
+gid://shopify/Product/15454508843393	CHF 12.16	1 Varianten	Fahrradsattel-Tasche
+gid://shopify/Product/15454509465985	CHF 16.83	1 Varianten	Hunde-Halsband, I-förmig, bruchsicher
+gid://shopify/Product/15454509859201	CHF 13.68	1 Varianten	Wasserdichte Regenjacke für Hunde
+gid://shopify/Product/15454510088577	CHF 18.40	1 Varianten	Hunde-Halfter mit Seil
+gid://shopify/Product/15454510416257	CHF 12.75	1 Varianten	Kleidung für Haustiere zur Desinfektion
+gid://shopify/Product/15454510580097	CHF 16.72	1 Varianten	Crossbody-Tasche Unisex
+gid://shopify/Product/15454576673153	CHF 27.31	11 Varianten	Stahlkappen-Sneaker
+gid://shopify/Product/15454576836993	CHF 18.39	56 Varianten	Outdoor-Wanderschuhe mit Anti-Rutschsohle
+gid://shopify/Product/15454577262977	CHF 13.25	1 Varianten	Mountainbike-Helm mit Insektenschutz
+gid://shopify/Product/15454577328513	CHF 12.06	6 Varianten	Hohe, elastische Damenhosen mit Taschen
+gid://shopify/Product/15454577590657	CHF 14.75	1 Varianten	Unisex-Fahrradhelm für Erwachsene
