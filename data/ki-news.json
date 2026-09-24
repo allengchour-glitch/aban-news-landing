@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-23T21:35:24Z",
+ "stand": "2026-09-24T09:17:22Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,20 +18,68 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Enveda secures $311M to bring more nature-derived AI drugs into clinical trials",
-   "u": "https://techcrunch.com/2026/09/23/enveda-secures-311m-to-bring-more-nature-derived-ai-drugs-into-clinical-trials/",
+   "t": "Umfrage: Widerstand der US-Amerikaner gegen KI-Datencenter wächst",
+   "u": "https://www.golem.de/news/umfrage-widerstand-der-us-amerikaner-gegen-ki-datencenter-waechst-2609-213389.html",
+   "q": "Golem",
+   "d": "2026-09-24T08:23:02Z",
+   "s": "Donald Trump findet KI-Datencenter gut, die US-Amerikaner eher nicht - auch Republikaner tendieren verstärkt zu negativen Ansichten. (Rechenzentrum, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | Raus aus Adobes Creative Cloud: Acht Photoshop-Alternativen im Praxischeck",
+   "u": "https://www.heise.de/ratgeber/Raus-aus-Adobes-Creative-Cloud-Acht-Photoshop-Alternativen-im-Praxischeck-11453137.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-09-24T08:15:00Z",
+   "s": "Abo-Frust, Cloud-Zwang, KI-Bedenken: Wir zeigen, was Photoshop-Alternativen wie Affinity, ACDSee, GIMP und Co. wirklich leisten.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Angriff auf Australien: OpenAI-Agent hat sich in Regierungsportal gehackt",
+   "u": "https://www.golem.de/news/australien-openai-agent-hat-sich-in-regierungsportal-gehackt-2609-213388.html",
+   "q": "Golem",
+   "d": "2026-09-24T08:08:02Z",
+   "s": "Ein KI-Agent von OpenAI sollte australische Gesundheitsstatistiken recherchieren. Dabei ist er aber zu weit gegangen und hat geschützte Daten abgerufen. (OpenAI, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Diese KI erstellt keinen Text, sie trifft Entscheidungen: Wie Jev funktioniert – und welche Alternativen es gibt",
+   "u": "https://t3n.de/news/jev-ki-modell-entscheidungen-kev-1764845/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-24T08:00:00Z",
+   "s": "Mit Jev sorgt erneut ein KI-Modell für Wirbel. Das Besondere: Es erzeugt keinen Text, sondern trifft Entscheidungen – und zwar schnell. Wie das funktioniert, woweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Tamagotchi trifft KI-Agent: Meta kündigt KI-Gadget Muse Charm an",
+   "u": "https://www.heise.de/news/Tamagotchi-trifft-KI-Agent-Meta-kuendigt-KI-Gadget-Muse-Charm-an-11463998.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-24T07:09:00Z",
+   "s": "Meta hat mit Muse Charm ein neues KI-Gadget für seinen Agenten Muse vorgestellt. Das Gerät soll als tragbarer Begleiter für den Alltag dienen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Weniger Struggle, mehr Struktur: Wie KI bei Präsentationen hilft",
+   "u": "https://t3n.de/news/mehr-struktur-wie-ki-bei-praesentationen-hilft-prompt-vorlage-1764867/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-24T07:00:41Z",
+   "s": "Präsentationen kosten Zeit und Nerven, dazu verlierst du dich leicht in Details. Mit KI soll die Erstellung schneller gelingen und das Ergebnis mehr überzeugen. Den passenden Prompt und Tipps zur Anwe…",
+   "sprache": "de"
+  },
+  {
+   "t": "Everything new coming to Meta’s AI agent Muse",
+   "u": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
    "q": "TechCrunch AI",
-   "d": "2026-09-23T19:31:28Z",
-   "s": "The round valued the AI biotech at $2 billion. It is currently testing drugs that treat skin conditions and preserve weight loss after stopping GLP-1s.",
+   "d": "2026-09-24T01:13:32Z",
+   "s": "CEO Mark Zuckerberg kicked off the company’s annual Connect event in Menlo Park on Wednesday with a keynote that made one thing clear: Meta is going all-in on Muse. It's even coming to Meta's AI glass…",
    "sprache": "en"
   },
   {
-   "t": "Für KI-Wearables: Neuer Snapdragon-Soundchip kommt mit besserer NPU",
-   "u": "https://www.golem.de/news/fuer-ki-wearables-neuer-snapdragon-soundchip-kommt-mit-besserer-npu-2609-213342.html",
-   "q": "Golem",
-   "d": "2026-09-23T19:30:02Z",
-   "s": "Der neue Snapdragon Sound Elite Gen 2 soll eine bis zu doppelt so starke KI-Leistung als der Vorgänger bringen. Gedacht ist er für Wearables, auch Smart Glasses. (Snapdragon Summit 2026, KI)",
-   "sprache": "de"
+   "t": "Meta made a Tamagotchi-like wearable for its Muse AI agent",
+   "u": "https://techcrunch.com/2026/09/23/meta-made-a-tamagotchi-like-wearable-for-its-muse-ai-agent/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-24T00:46:17Z",
+   "s": "The tiny hardware device creates another mobile home for its AI agent Muse.",
+   "sprache": "en"
   },
   {
    "t": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
@@ -48,54 +96,6 @@
    "d": "2026-09-23T18:00:00Z",
    "s": "We’re expanding Google Beam to five new countries, and partnering with Industrious for an extended network.",
    "sprache": "en"
-  },
-  {
-   "t": "ChatGPT mobile app gets voice-based agentic features",
-   "u": "https://techcrunch.com/2026/09/23/chatgpt-mobile-app-gets-voice-based-agentic-features/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-23T17:00:00Z",
-   "s": "Pro and Plus users will be able to use the Work tab on their phones to complete agentic tasks.",
-   "sprache": "en"
-  },
-  {
-   "t": "KI: SAP-Entwickler sollen vor Ort bei Bayer und H&M Probleme lösen",
-   "u": "https://www.golem.de/news/ki-sap-entwickler-sollen-vor-ort-bei-bayer-und-h-m-probleme-loesen-2609-213373.html",
-   "q": "Golem",
-   "d": "2026-09-23T16:56:02Z",
-   "s": "Um praxistaugliche KI-Funktionen schneller auf den Markt zu bringen, lässt SAP seine Entwickler in kleinen Einheiten bei Großkonzernen programmieren, etwa bei Kunden wie Bayer oder H&M. (SAP, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Bundestags-KI: Eigener Chatbot soll Schatten-KI im Parlament ablösen",
-   "u": "https://www.heise.de/news/Bundestags-KI-Eigener-Chatbot-soll-Schatten-KI-im-Parlament-abloesen-11463718.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-23T16:31:00Z",
-   "s": "Eine maßgeschneiderte KI-Lösung soll Abgeordneten und Verwaltung die Arbeit erleichtern und gleichzeitig strikte Datenschutzstandards im Parlament garantieren.",
-   "sprache": "de"
-  },
-  {
-   "t": "Das Blue Yeti bekommt nach 17 Jahren einen offiziellen Nachfolger",
-   "u": "https://www.heise.de/news/Das-Blue-Yeti-bekommt-nach-17-Jahren-einen-offiziellen-Nachfolger-11463646.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-23T16:01:00Z",
-   "s": "Logitech will KI in einem USB-Mikrofon unterbringen. Gedacht ist es auch für „ASMRtists“, die um das Mikrofon herum rascheln.",
-   "sprache": "de"
-  },
-  {
-   "t": "Two years of OpenAI Academy",
-   "u": "https://openai.com/index/two-years-of-openai-academy",
-   "q": "OpenAI",
-   "d": "2026-09-23T16:00:00Z",
-   "s": "Marking two years of OpenAI Academy and bringing AI skills to even more communities.",
-   "sprache": "en"
-  },
-  {
-   "t": "Das vertrackte Alignment: Wie KI menschliche Werte lernt – und warum das nicht alles absichern kann",
-   "u": "https://t3n.de/news/alignment-ki-menschliche-werte-absichern-1764021/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-23T15:55:00Z",
-   "s": "Damit KI keinen Schaden anrichtet, soll sie menschliche Werte und Regeln berücksichtigen. Um das künftig noch besser zu gewährleisten, greifen Forschende sogar weiterlesen auf t3n.de",
-   "sprache": "de"
   }
  ]
 }
