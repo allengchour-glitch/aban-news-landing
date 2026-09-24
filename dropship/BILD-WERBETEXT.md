@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T05:20:45Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T05:22:33Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: textbild, 14314 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2544** in 697 Produkten
-- Treffer (≥ 4 Wörter): **102** in 97 Produkten
+- Medien geprüft: **2615** in 711 Produkten
+- Treffer (≥ 4 Wörter): **124** in 102 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **46**
 
@@ -12,6 +12,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Produkt | Medium | Wörter | Gelesen | Stand |
 |---|---|---|---|---|
 | Smart Detector Kamera-Finder `15477388476801` | [70319928377729](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2650e5c6-8afb-4031-ab0a-28cf15e78253_trans.jpg) | 60 | Upgraded Camera Intelligent Detector Pinhole Camera Infrared Night | offen |
+| Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061284737](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94a0e0da-1f2f-47ce-ad2f-33ec82e8fea7_water_trans.jpg) | 48 | Convenient advantages are visible open insulated cup operation | offen |
 | Heizbare Winterhaube für Fahrrad & Ski `15453769859457` | [69926690554241](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1722437663757307904.jpg) | 35 | hea Resist the cold Cheeks feel hot two | offen |
 | Velo-Scheinwerfer mit Welleninduktion `15448957223297` | [69862628753793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ec0a3dc-5ff7-4919-9833-ca59f27106b0_trans.jpg) | 34 | Smart gesture sensing Wave sensor lighting switch When | ENTFERNT |
 | Fahrradhelm für sicheres Radfahren `15453769073025` | [69926689276289](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7069a30b-403b-43cf-9d90-e5b3dbb7eea6_trans.jpg) | 31 | adjust the wrapping floating adjustment system design The | ENTFERNT |
@@ -19,9 +20,12 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | ENTFERNT |
 | Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
+| Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69650083316097](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edelstahl-trinkflasche-hydro-570-ml-edit.jpg) | 23 | Stainless Steel Tea Storage Drink tea with peace | offen |
 | Magnetische Sportbrille für Helm `15453768810881` | [69926688948609](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94d8c59c-9774-43ab-b99c-f851e81e0a74.jpg) | 22 | SAFE TRAVEL Thousands safety safe the critical moment | ENTFERNT |
 | Pinguin-Tuch zum Abwischen `15453791093121` | [69926763987329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2591efa5-f7fd-4ddc-a6e2-fb67637ca6b7_trans.jpg) | 21 | Not easy shed hair Caring for the quality | ENTFERNT |
 | Faltbarer Joystick mit Display-Fernbedienung `15433464250753` | [69712351560065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/406f332f-0d28-4363-b23b-80bd80122925_fine.jpg) | 21 | Remote control with screen and foldable joystick disassembly | ENTFERNT |
+| SouthMoon Mugwort Bein-Patches `15448822907265` | [69861107401089](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/271cdf1d-42bb-4d8d-a235-4901202c9bb1.jpg) | 21 | legs easily not easy stick your figure Post | offen |
+| Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69551858450817](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30121526-a689-45d1-9ed4-91e88a11b644_water_trans.jpg) | 21 | Stainless Steel Tea Storage Drink tea with peace | offen |
 | Holziges Raumfeuchtigkeitsgerät `15453772153217` | [69926698451329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/92451689-d71f-4c27-be0d-757de9de3bc5_trans.jpg) | 20 | Enjoy sweet sleep Light tone humidification company does | ENTFERNT |
 | Magnetische falsche Wimpern mit Seifenhalter `15453769138561` | [69926689341825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/139c7f2f-5dd6-4bde-8996-51550972abd7_fine.jpg) | 19 | Added magnetic groove Adsorbed eyelashes Upward curved clip | offen |
 | Sommer-Schlafsack für Baby & Kleinkind `15453792534913` | [69926765855105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba293841-75d1-444d-9134-e6bf7cc99b53_trans.jpg) | 19 | Soft bamboo cotton Breathable and comfortable Infant sleeping | offen |
@@ -36,6 +40,8 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Velvet-Matte Lippenstift-Linierer `15453767074177` | [69926686130561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c08c8d05-8ba3-41b6-a369-2e2983da3f17.jpg) | 15 | BARVENA Comfortable weightless formula that flake feather Glides | ENTFERNT |
 | RGB-Kopfhörerständer mit E-Sports-Rhythmusbeleuc `15433464217985` | [69712351527297](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b9775a1-fe5c-4ca0-974f-79ccfb2d8ecd_trans.jpg) | 15 | USB powered Directly connect USB interface Power supply | ENTFERNT |
 | Nagelfräser-Bit aus Wolframstahl `15502471266689` | [70562975351169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/398099cc-fa5b-442d-8379-7dae455303e5_fine.jpg) | 15 | Conical ball head Titanium nitride coating Cross teeth | offen |
+| SouthMoon Mugwort Bein-Patches `15448822907265` | [69861107433857](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/19215726-4098-45ba-bc77-72141ebf1369.jpg) | 15 | Lower Body Treatment Patch RESHAPE FIRM BEAUTIFUL LEG | offen |
+| SouthMoon Mugwort Bein-Patches `15448822907265` | [69861107499393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ef928716-2b0b-4e28-84ec-6ab4df493aa2.jpg) | 15 | Lower Body Treatment Patch RESHAPE FIRM BEAUTIFUL LEG | offen |
 | Kamera-Drohne mit Hinderniserkennung `15453744628097` | [69926295536001](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc914a48-36f7-4072-b53a-203bf305c567.jpg) | 14 | Powerful brushless power Equipped with four and brushless | offen |
 | Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | ENTFERNT |
 | Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | ENTFERNT |
@@ -62,6 +68,12 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Riser-Feeder für alle ausser der ersten Generati `15453765206401` | [69926640910721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65973e16-3272-4f06-9003-f5e32af55817_trans.jpg) | 9 | Eat without looking down Take good care your | ENTFERNT |
 | Kinder Make-up Set `15453767139713` | [69926686294401](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b0776a0-752e-4c5a-9a91-b4a22423d4c7_fine.jpg) | 9 | Professional Makeup Box Exquisite Makeup Set Fulfills Princess | ENTFERNT |
 | Mechanische Tastatur mit 104 Tasten, USB-C, Blue `15433463562625` | [69712350609793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/25ec0b48-2713-49f3-a7c0-6b9e3a8e6627_trans.jpg) | 9 | Mechanical Blue Switch Key Line Separation RGB Mechanical | ENTFERNT |
+| Wasserdichte Kissenfüllung `15453782049153` | [69926733840769](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f8335203-ad57-4add-9dae-383f48da0e95_water.jpg) | 9 | Feel Plush fill delivers the perfect balance softness | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212459905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dbc09567-52b7-41cc-94fc-6d9e3e799f51.jpg) | 9 | ZESUNMEI ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212558209](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9b6a3c94-4453-48c7-8e8c-8076a77fe81f.jpg) | 9 | ZESUNMEI ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212623745](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/874ce055-f6ed-48f3-9ff5-27ae00a1ed47.jpg) | 9 | ZESUNMEI ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212754817](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/217f5f7e-0dfa-4a82-b9f3-9d2cf6c6572c.jpg) | 9 | ZESUNMEI ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212853121](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2caa2e48-c29a-4328-8ad9-a73a56493b1a.jpg) | 9 | ZESUNMEI ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | ENTFERNT |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
@@ -70,6 +82,11 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Elektrisches Lichttherapiegerät zur Hautverjüngu `15501006209409` | [70551637721473](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24dd1c96-9e2a-41ff-962f-d2eae9739428_trans.jpg) | 8 | Beauty and hairdressing set Source Factory Fully qualified | ENTFERNT |
 | Katzen Diamond Painting Set `15500982747521` | [70551398777217](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f98c7cb0-6d42-431a-ad1d-1b4b12421f6f.jpg) | 8 | The Larger The Size The Better The Effect | ENTFERNT |
 | Leine für grosse Hunde `15453789913473` | [69926760939905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad9a91c-e656-473e-8577-8c6cf28b0447_trans.jpg) | 8 | Effectively absorbs the impact force when the dog | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212427137](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/902ad0f8-1c30-4901-a481-7ad3fd8ad5a6.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212492673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6e47148d-c3d0-44a1-868f-7fec8bc8a18e.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212590977](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b53e81f2-ce74-4956-8e2d-d2da1f48adc4.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212656513](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ef79df43-a5d1-4cce-b6d7-bbf0531b169a.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212689281](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c9f3f711-86fd-42f1-b423-efcb03708798.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | ENTFERNT |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | ENTFERNT |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | ENTFERNT |
@@ -80,12 +97,16 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202119047](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a0d2fd3-4711-4501-9c60-74424edacb94_trans.jpg) | 7 | Switch Android HID Available all major platforms | ENTFERNT |
 | Dunkelgraues Kissen mit Geometrischem Jacquard `15497525657985` | [77265204478343](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402130306220324700.jpg) | 7 | HINYEATEX FRONT SIDE PILLOW BACK SIDE PILLOW | ENTFERNT |
 | Edelstahl-Lunchbox mit Fächern `15453794042241` | [69926768476545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68bbba85-f279-47d1-96c7-6a8cc21b83e0_trans.jpg) | 7 | Portable Insulation Bag More Comfortable Carry Outdoors | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212394369](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7611a66e-3e66-481b-b647-3cad8a3440c1.jpg) | 7 | Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212820353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d16136c0-c77b-45c6-bd2c-307fd3cee636.jpg) | 7 | Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
+| Wasserfeste Maniküre `15452675244417` | [69904212885889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c2d356f-2e71-40ce-8bc8-68b7272deb4c.jpg) | 7 | Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
 | Integrierte Fahrradhelm-Brille `15453769695617` | [69926689997185](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a09141-2e5f-46ec-a9ff-9fae95b110ae.jpg) | 6 | red silver One size fits all | offen |
 | Nixie-Röhrenuhr mit Wecker aus Walnussholz `15501005291905` | [70551630807425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/640bcf9f-7da6-4b62-8469-9399beef9d90.jpg) | 6 | GERALDINI MUUTO ESIGN THE SOLACE SOAKING | offen |
 | Kauenset für Hunde `15453794107777` | [69926768574849](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ff594967-2e75-4732-b025-8e79c783bf96_fine.jpg) | 6 | Teeth firm and ith meaty aroma | offen |
+| Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061251969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0146b03d-9d8d-4c56-a411-7dea5e6f1758_water_trans.jpg) | 6 | utdoor Travel ion open with ATASAW | offen |
 | Stiller Aroma Diffusor für Zuhause & Büro `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
@@ -99,6 +120,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Intelligentes Katzen Spielgerät `15453763568001` | [69926634553729](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1baa639f-bcce-4c7d-b212-3af84f3cc456_trans.jpg) | 5 | Stimulate hunting instinct random teasing | offen |
 | Bissfeste Elektro-Jump-Ball für Katzen & Hunde `15453763600769` | [69926634586497](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8f18ab6f-9391-4eea-95bb-31d929e1fa27_trans.jpg) | 5 | Agile without rules Directional scrolling | offen |
 | Katzen-Spielzeug mit Futter-Feeder `15453772480897` | [70519928619393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/706a908f-a6f9-4761-bb6e-19107db87d57_trans.jpg) | 5 | PET TOY Open the Cover | offen |
+| Inline-Skate-Set für Kids `15453781557633` | [69926731776385](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22712a88-427a-4d84-b10f-6edb2551ccb4_trans.jpg) | 5 | material Hard shell crash protection | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
