@@ -3,6 +3,17 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-24-3",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus dropship/_pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 3 von 6 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-24T13:18:09.823Z",
+  "dauer_s": 0,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 0, quittiert 6, offen 0",
+      "nichts offen"
+    ],
+    "bilder": []
+  }
 }
