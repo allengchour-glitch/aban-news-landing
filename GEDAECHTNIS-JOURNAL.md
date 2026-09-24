@@ -790,6 +790,31 @@ halloween-2026 → halloween, geschenke-unter-30 → 🎁-geschenke-bis-chf-30.
 **Lehre: «Publiziert» ist erst eine Web-Adresse, wenn der Kanal Online Store heisst; ein bestehender Redirect ist eine Aussage
 über sein Ziel, kein «ok»; und wer abmeldet, bevor der Redirect steht, öffnet ein 404-Fenster — auch wenn es diesmal leer blieb.**
 
+**Nachtrag 55 (24.09.2026, 00:05 UTC — Keywordplan nach @ecomfabio: 5 Agenten, 59 Minuten, 12 SEO-Felder live, Prüfer 4 : 0):**
+(1) Betreiber-Link 23.09. (TikTok @ecomfabio «Keywords ziehen. Konkurrenz analysieren. Fertigen Keywordplan bauen») → Workflow
+`keywordplan-luxestyle` (Messen: Nachfrage / Ernte / Konkurrenz parallel → Bauen → adversarial Prüfen). Ergebnis `dropship/KEYWORDPLAN-2026-09.md`
+(56 KB): A Ausgangslage (Google 551 Sitzungen/90 T = einziger Kanal mit Checkouts neben direct; Kollektionen als Google-Landeseite 18 Sitzungen/90 T;
+0 gtag/GA4 im Theme), B 18 Cluster aus 4'600 Suggest-Keywords (607 WebFetch-Aufrufe, Suggest-Rang statt Volumen), C1 12 Kollektions-SEO-Titel und
+-Beschreibungen GESCHRIEBEN + rückgelesen (katzenwelt → «Katzenspielzeug, Kratzbaum & Katzenzubehör kaufen», hundewelt, sneaker, herrenuhren,
+lockenstab, gaming-tastatur, bluetooth-kopfhörer, yogamatte, plüschtiere, zierkissen, leinenhemden), C2 zehn Ratgeber-Themen, C3 sechs Lücken-
+Kollektionen + Sortimentslücken (Vakuumierer, Adventskalender, Lichterketten), D Google-Ads-Skizze OHNE Start, E sieben Betreiber-Klicks.
+(2) **Was nicht messbar war, steht als solches drin:** Suchvolumen/CPC (Semrush ohne Einheiten, kein Ads-Konto), Google-SERP (alle Suchmaschinen aus dem
+Container gesperrt; nur search.ch mit .ch-Index-Bias). Suggest-Rang 1–3 als Nachfragehinweis ist die ehrliche Ersatzgrösse, keine Zahl.
+(3) **Prüfer (59 Handles + 21 Zähler + ShopifyQL nachgemessen): 12/12 SEO-Felder byteweise live, alle Zähler EXACT, 0 Schäden — vier Textstellen
+widerlegt:** halloween-2026 stand noch als Landeseite (seit 23:35 ein 301), «353 veröffentlicht» waren 350, die Negativliste kannte
+ricardo/tutti/anibis/occasion nicht (die Schweizer Marktplätze!), «test/testsieger» standen gleichzeitig als Ziel-Keyword und als Negativ, und die
+Semrush-Zeile hatte keine Rohdatei (Aufruf aus der Hauptsession, nie abgelegt). Alle vier im Plan korrigiert. Dazu hielt der Nachfrage-Agent die
+gedrafteten Google-Landeseiten (Dry Bag 82, Rizinus-Wickel 55 Sitzungen) für 404 — beide tragen einen 301 auf ein aktives Ersatzprodukt.
+**Lehre: Jede fremde Zahl braucht Marke UND Rohdatei — der Prüfer konnte alles nachmessen, was eine Rohdatei hatte, und musste die eine ohne
+(Semrush) als unbelegt streichen; eine Negativliste für die Schweiz beginnt bei ricardo und tutti; und DRAFT ist erst 404, wenn kein Redirect steht.**
+(4) Nachtrag 00:05 UTC — C3 umgesetzt: `automation/keyword_kollektionen.py` (DRY-Standard, Textprüfungen Eszett/Sie/CH-Lager/65/155/USP,
+Kanäle zur Laufzeit von `katzenwelt` gelesen) legte sechs Smart-Collections an und publizierte sie in 6 Kanälen: midikleider 142 aktiv,
+vorhaenge 138 (CONTAINS Vorhang ODER Gardine — der tokenweise Titelzähler sagte 58, der Substring-Treffer ist mehr als doppelt so gross),
+wanddeko 75, kratzbaeume 47, hundebetten 24, haengematten 18 (NOT_CONTAINS Katze/Yoga nach Sichtprobe: Katzen-Hängematte und
+Yoga-Hängemattenstoff standen neben Garten-Hängematten). Sichtprobe je Kollektion: 0 Titel ohne Stichwort. `kollektion_doppel.py` DRY: 0 Doppel
+bei 526 Kollektionen. Offen: Menü-Platz und interne Links aus den C2-Ratgebern.
+
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16486,3 +16511,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · 🔒 **Reparierer wartete blockierend auf den Text-Lock des Stundenlaufs — in einem Container, der stündlich stirbt, ist Warten ein Nie.** `LOCK_NB` mit kurzem Probieren + Aufseher-Tor `flock -n lock_produkttext.lock true` vor dem Start → Journal
 - 2026-09-22 · 🪣 **Verbesserungsrunde 4: Eimer 95/2'000 bei vier laufenden Massen-Schreibern, zwei Tages-Wächter starben gedrosselt (cj_versand_ch_guard, lagerstand_hygiene). Die Schranke begrenzt Starts, nicht den Durst.** `eimer_etikette.py/.mjs` (unter 600 warten bis 1'000) in alle vier Schreiber; Liechtenstein-Lauf FERTIG (1'075 + 119) → Journal
 - 2026-09-22 · 🎬 **Social v2 («täglich mehrmals überall», Ads in 1 Monat): Reel-Motor war dreifach tot — Tag `video-hit` ohne Video, Dateispeicher voll (CDN FAILED), ffmpeg ohne drawtext.** Jetzt CJ-Videos direkt, PIL-Textebenen, Ablage `social/reels/` im Repo (IG nimmt raw.githubusercontent), Lernschleife aus IG-Insights, Kadenz Bild 6 h / Reel 8 h / TikTok 12 h → Journal
+- 2026-09-22 · 🎯 **«fokusiere tiktok und insta dann fb»: Engpass Reel-Versorgung — 14 von 22 «ready»-Reels waren 404 (Poster prüfen jetzt die Adresse), der Motor fand 1 Video je 80 CJ-Anfragen → `cj_video_index.mjs` (CJ `isVideo` nur in Kategorie-Listen, 200 je Aufruf, Regale nach eigener Stichprobe geordnet): 70 Shop-Treffer aus 80 Aufrufen, DRY 3 von 3.** UUID-pids gaben `Number()`-NaN → Hook/Musik «undefined». Metricool-Token erreicht die Session nicht → Betreiber im Chat → Journal

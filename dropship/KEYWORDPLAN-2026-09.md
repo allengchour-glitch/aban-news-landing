@@ -33,8 +33,11 @@ hier NICHT messbar (Semrush ohne API-Einheiten, Google Ads Keyword-Planner ohne 
   E-Scooter-Ladegerät 21.90, Gemüseschneider 15.90, Reise-Hängematte 14.90, zwei Kleider 13.41. 4 behaltene externe Kunden (CLAUDE.md, Zählregel customer.id).
 - **Länder 30 T (GEMESSEN):** CH 627 von 1'069 (58.7 %); US 125 + CN 98 (21 %) wahrscheinlich Bots/Proxys; DE 62 = Verkehr ohne Versandoption (Markt nur CH).
 - **Semrush (QUELLE domain_rank ch, 23.09.):** luxestyle.ch Rang 1'157'996, 536 organische Keywords, geschätzter Traffic 0. Keine API-Einheiten für Volumen/CPC.
+  ⚠️ Prüfer 24.09.: der Aufruf kam aus der Hauptsession per MCP (10 Einheiten), es liegt KEINE Rohdatei ab — die Zahl ist nicht reproduzierbar und keine
+  Entscheidungsgrundlage; beim nächsten Plan Rohantwort nach `scratchpad/keywordplan/semrush.json` ablegen oder die Zeile streichen.
 - **Katalog (GEMESSEN Admin-GraphQL 2026-01, 23.09. 23:25 UTC):** 50'003 aktive Produkte (`productsCount(status:active, limit:null)` EXACT), 520 Kollektionen,
-  353 im Onlineshop veröffentlicht; ch-lager 2'408 aktiv — konzentriert in blitzversand-schweiz (100 %), kostueme-ch-lager (99.8 %), halloween (79 %),
+  350 im Onlineshop veröffentlicht (Prüfer 24.09.; um 23:25 waren es 353, seither halloween-2026, geschenke-unter-30 und fitness-sub
+  abgemeldet + 301 — `automation/kollektion_doppel.py`); ch-lager 2'408 aktiv — konzentriert in blitzversand-schweiz (100 %), kostueme-ch-lager (99.8 %), halloween (79 %),
   party-deko-ch (61/61), ft-pluesch (225/318); fast alle anderen Kollektionen 0–2 %.
 - **Tracking (GEMESSEN, Theme MAIN 426 Dateien, Regex gtag(|googletagmanager|AW-|G-|GTM-|UA-):** 0 Treffer — kein Google-Ads-Tag, kein GA4 im Theme.
   Vorhanden: TikTok-Pixel (consent-gated), Microsoft Clarity, Kanal «Google & YouTube». Ob die Google-App ein App-Pixel (Conversion/GA4) setzt, ist per
@@ -419,6 +422,11 @@ harry potter, essie, essence, gisou, kerastase, rituals, purelei, xiaomi, chicco
 clipart, zeichnen, malen, ausdrucken, kostenlos, gratis, gebraucht, mieten, spenden, entsorgen, kreuzworträtsel, bedeutung, englisch, job, kurs, test,
 testsieger, stiftung warentest, kassensturz. Orte ausserhalb CH: berlin, hamburg, köln, münchen, wien, dresden, deutschland, holland, niederlande, usa,
 pakistan. Hausregel-Klassen: messer, klinge, dessous, erotik, intimbereich, arzneimittel, joint, gothic (Kostüm-Grenzfall, prüfen).
+**Nachtrag Prüfer 24.09. — Schweizer Marktplätze/Occasion fehlten in den 617:** ricardo, tutti, anibis, occasion, wish, microspot, conforama, pfister,
+second hand, pdf (vor dem Start in die Kampagnen-Negativliste; kaufland/obi/hornbach sind DE-Händler ohne CH-Bezug, schaden aber nicht).
+**Widerspruch aufgelöst:** «test», «testsieger», «kassensturz», «stiftung warentest» bleiben in Phase 1 NEGATIV — die kommerziellen Test-Keywords aus B
+(hundebett test, lockenstab testsieger, futterautomat testsieger, bluetooth kopfhörer test) sind Vergleichsabsicht und gehören in Ratgeber (C2), nicht
+in die manuelle Search-Kampagne mit CHF 10–30/Tag. D2 wirbt damit nur transaktional; «kommerziell» in D2 ist gestrichen zu lesen.
 
 ### D4. Budgetszenarien (CHF/Tag) — OHNE erfundene CPCs
 
