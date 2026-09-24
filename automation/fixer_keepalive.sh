@@ -355,7 +355,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -427,6 +427,10 @@ while true; do
     # 23.09.: herbst_kuratieren nur RAEUMEN (Sperr-Tags raus, nach 30.11. Tag weg) — Neuaufnahmen nur in betreuten Laeufen.
     [ "$L" = herbst_kuratieren ] && EXP="NUR_RAEUMEN=1"
     if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
+    # 24.09.2026 Betreiber «ändere preise so das ich nie verlust mache» → Entscheid «Codes bleiben, Preise decken 25 %»:
+    # jeder Preis muss den grössten Code (25 %) plus Gratisversand tragen. Nur heben; Faktor > 2 → Variante DENY statt
+    # absurdem Preis. Fortsetzbar über das Ledger, FERTIG erst wenn alle Kandidaten durch sind (dann Tageslauf).
+    if [ "$L" = preis_verlustschutz ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 EXPORT=/tmp/kost28.jsonl"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
     # uebersprungen, im ganzen Container gab es nicht einmal ein Log. Er liest jetzt die
@@ -474,7 +478,7 @@ while true; do
     # Massen-Schreiber (Stunden je Lauf) in eine EIGENE Spur mit 1 Platz — auf der Tages-Spur belegten
     # produkttexte_du_form und variant_value_clean am 23.09. beide Plaetze ueber Stunden.
     SPUR=""
-    case " produkttexte_du_form variant_value_clean kategorie_wache " in
+    case " produkttexte_du_form variant_value_clean kategorie_wache preis_verlustschutz " in
       *" $L "*) SPUR="SCHRANKE_NAME=massen_slot SCHRANKE_PLAETZE=1" ;;
     esac
     # 24.09.2026: Sechs Tageswächter sind nach EINEM sauberen Durchgang fertig, schreiben aber keine FERTIG-Zeile — das Tor
