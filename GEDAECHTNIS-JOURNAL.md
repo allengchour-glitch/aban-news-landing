@@ -16464,6 +16464,9 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-23 · 🖼️ **Verbesserungsrunde 5: Bild-Poster fragte nie, ob die Ware kaufbar ist — 3 von 73 August-Zeilen bewarben DRAFTs (Link = 404); `social_queue_saeubern.py` hatte seit 03.09. keinen Starter.** Jetzt `produktAktiv()` im Bild-Poster (ACTIVE+onlineStoreUrl), Reiniger täglich im Aufseher, prüft auch «ohne Onlineshop». Alte Throttle-Tracebacks in /tmp-Logs sind Vergangenheit (nur letzte Zeilen zählen) → Journal Nachtrag 27
+- 2026-09-23 · 🎠 **«insta karusell brauchen»: erstes IG-Karussell live (DdnlCi-jkth + FB-Album) — der Slide-Bauer hatte 31 Sets für den toten PC-Poster gelagert, IG verlangt 4:5.** `tiktok_karussell.py FORMAT=ig` (1080×1350, eigene Bildfenster), `ig_karussell_post.mjs` (Wachen wie die Reel-Poster, pusht fehlende Slides selbst), Autopilot 24 h, Aufseher baut täglich 2 + montags Top. **Ein Bauer ohne Poster ist ein Lager** → Journal Nachtrag 25
+- 2026-09-23 · 📐 **Betreiber-Screenshot: Titel/Preis der Reels lagen unter TikToks Caption, Marke unter der Suchleiste — die Textebene kannte die Plattform-Oberfläche nicht.** `overlay.py` sichere Zone (200–1440, Fusstexte links der Knopfleiste), Video bei y=600, UI-Schablone als Prüfbild, `NEU_RENDERN=1` baut die 23 wartenden Reels neu. «CHF 50» war richtig (Warenwert; 45 = intern nach Rabatt) → Journal Nachtrag 24
 
 > CLAUDE.md muss unter ~70 KB bleiben. Diese 79 Einzeilen standen dort im Index «📚 Jüngste Lehren» und sind hier
 > VERBATIM abgelegt (Reihenfolge wie im Index, neueste zuerst). Volltexte, wo vorhanden, unter dem jeweiligen
