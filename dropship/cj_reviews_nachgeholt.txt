@@ -992,3 +992,5 @@ h:sofauberzug-pure-color-fur-alle-jahreszeiten-945472
 h:magnetische-mini-wireless-ladestation-6ccb56
 15493835489665
 h:powerbank-mit-digitalanzeige-10000-mah-a8e0c2
+15493836308865
+h:orico-5-port-usb-ladestation-40w-581136
