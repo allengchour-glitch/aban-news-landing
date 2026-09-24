@@ -1,31 +1,26 @@
-/* Sonde: je Schild Lage und Tafel-Normale gegen die Fahrtrichtung der Spur, auf der es steht (Lane-Tabelle). */
+/* Sonde (Runde 97): jedes Schild aus window._uebSchilder gegen seinen Uebergang pruefen.
+   Eintrag je Schild (vom Baustein _zebraAllg geschrieben): [x, z, ry, Index des Uebergangs, dx, dz, umgeklappt].
+   (dx|dz) = Fahrtrichtung der Spur, der das Schild gilt. Geprueft:
+     zugewandt  — die Tafel (+z-Flaeche, Normale (sin ry | cos ry)) zeigt der ankommenden Spur entgegen (Skalarprodukt > 0,9)
+     frei       — steht auf keiner Fahrbahn (window._aufStrasse mit 0,35 m Reserve; zweite, unabhaengige Meinung: th-strassen)
+     nah        — hoechstens halbe Uebergangsbreite + 3,5 m vom Streifen entfernt
+   Dazu: sind ALLE Instanzen gezeichnet (count = Anzahl Eintraege)? Mit zu kleiner Kapazitaet fallen die letzten still weg. */
 import { mitSonden, spielOeffnen, aufraeumen } from '/home/user/aban-news-landing/spiele-dev/tools/th-lib.mjs'
 const TMP = '_probe_schild_tmp.html'
 mitSonden('traumhaus.html', {
-  schilder: `function(){var out=[];var T=null;scene.children.forEach(function(o){if(o.isInstancedMesh&&o.instanceMatrix.count===80&&Array.isArray(o.material))T=o;});
-    if(!T)return "keine Tafeln";var M=new THREE.Matrix4(),p=new THREE.Vector3(),n=new THREE.Vector3();
-    var U=window._uebergaenge||[];
-    for(var i=0;i<T.count;i++){T.getMatrixAt(i,M);p.setFromMatrixPosition(M);n.set(0,0,1).transformDirection(M);
-      /* Zuordnung ueber die Geometrie: laengs der Streifenachse 3,2 m, quer dazu hb+0,76 — der NAECHSTE
-         Uebergang war an T-Einmuendungen der falsche (zwei Uebergaenge 12 m auseinander, Schild dazwischen). */
-      var u=null,bd=1e9;U.forEach(function(q){var ax=q[2]?Math.abs(p.x-q[0]):Math.abs(p.z-q[1]),ac=q[2]?Math.abs(p.z-q[1]):Math.abs(p.x-q[0]);
-        var d=Math.abs(ax-3.2)+Math.abs(ac-(q[4]+0.76));if(d<bd){bd=d;u=q;}});
-      if(!u||bd>0.5)continue;var quer=u[2],dx=p.x-u[0],dz=p.z-u[1];
-      /* Rechtsverkehr: Strasse laengs x: Spur bei +z faehrt +x (kommt von -x). Strasse laengs z: Spur bei +x faehrt -z (kommt von +z). */
-      var kommtVon=quer?(dz>0?-1:1):(dx>0?1:-1);   /* Vorzeichen der Achse, aus der der Verkehr kommt */
-      var vor=quer?Math.sign(dx)===kommtVon:Math.sign(dz)===kommtVon;   /* Schild VOR dem Streifen aus Fahrersicht */
-      var blick=quer?Math.sign(n.x)===kommtVon:Math.sign(n.z)===kommtVon; /* Tafel schaut dem Verkehr entgegen */
-      var aufWeg=!!(window._aufViertelWeg&&window._aufViertelWeg(p.x,p.z,0.35));
-      var RX9=(typeof RX!=="undefined")?RX:78;
-      var aufHaupt=(Math.abs(Math.abs(p.z)-58)<8.3&&Math.abs(p.x)<RX9+30)||(Math.abs(Math.abs(p.x)-RX9)<5.3&&Math.abs(p.z)<80);
-      out.push([+p.x.toFixed(1),+p.z.toFixed(1),quer,blick,!(aufWeg||aufHaupt)]);}
-    return out;}`
+  schilder: `function(){var S=window._uebSchilder||[],U=window._uebergaenge||[],out=[];
+    S.forEach(function(e){var x=e[0],z=e[1],ry=e[2],u=U[e[3]],dx=e[4],dz=e[5];
+      var nx=Math.sin(ry),nz=Math.cos(ry),zu=(nx*(-dx)+nz*(-dz))>0.9;
+      var frei=!window._aufStrasse(x,z,0.35),nah=!!u&&Math.hypot(x-u[0],z-u[1])<(u[4]||5)+3.5;
+      out.push([x,z,zu,frei,nah,!!e[6],e[3]]);});
+    var T=null,P=null;scene.children.forEach(function(o){if(o.isInstancedMesh&&Array.isArray(o.material)&&o.material.length===6)T=o;});
+    return {n:S.length,u:U.length,tafeln:T?T.count:-1,kap:T?T.instanceMatrix.count:-1,list:out};}`
 }, TMP)
 const { browser, page } = await spielOeffnen(TMP, { warten: 30000 })
 await page.waitForTimeout(6000)
 const r = await page.evaluate(() => window.__th.schilder())
 await browser.close(); aufraeumen(TMP)
-if (typeof r === 'string') { console.log(r); process.exit(1) }
-const falsch = r.filter(e => !(e[3] && e[4]))
-console.log(`${r.length} Schilder zugeordnet · dem Verkehr zugewandt UND auf keiner Fahrbahn: ${r.length - falsch.length} · falsch: ${falsch.length}`)
-for (const e of falsch) console.log('   ', JSON.stringify(e), '[x,z,quer,zumVerkehr,keineFahrbahn]')
+const falsch = r.list.filter((e) => !(e[2] && e[3] && e[4]))
+console.log(`${r.u} Uebergaenge · ${r.n} Schilder · gezeichnete Tafeln ${r.tafeln} (Kapazitaet ${r.kap})${r.tafeln === r.n ? ' ✓' : ' ✗ FEHLEN'}`)
+console.log(`zugewandt + frei + nah: ${r.n - falsch.length} · falsch: ${falsch.length} · umgeklappt (auf die andere Streifenseite): ${r.list.filter((e) => e[5]).length}`)
+for (const e of falsch) console.log('   ', JSON.stringify(e), '[x,z,zugewandt,frei,nah,umgeklappt,Uebergang]')

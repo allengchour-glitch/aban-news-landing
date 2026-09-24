@@ -78,6 +78,11 @@ mitSonden('traumhaus.html', {
       for(var i=0;i<H.length;i++){var hi=H[i];if(!hi.face)continue;
         var nrm=hi.face.normal.clone().transformDirection(hi.object.matrixWorld);if(nrm.y<0.6)continue;
         var bx=new THREE.Box3().setFromObject(hi.object),gr=Math.max(bx.max.x-bx.min.x,bx.max.z-bx.min.z);
+        /* ⚠️ UEBERHAENGENDES IST KEIN BODEN (Runde 97, th-strahl bei (41|66,8)): ein Kronen-Kegel eines
+           Strassenbaums (3 x 0,55 x 3, Unterkante 2,1 m) hing ueber dem Gehweg; er war niedriger als 0,6 m,
+           galt also nicht als „objekt", und seine hellgruene Farbe machte aus dem Gehweg eine „Luecke gruen".
+           Was mit seiner Unterkante ueber 0,5 m schwebt (Kronen, Schildtafeln, Leitungen), wird uebersprungen. */
+        if(bx.min.y>0.5)continue;
         if(bx.max.y-bx.min.y>0.6&&gr<40)return {y:+hi.point.y.toFixed(3),k:"objekt"};   /* Laterne, Bank, Haus — nicht der Belag */
         return {y:+hi.point.y.toFixed(3),k:klasse(hi)};}
       return {y:null,k:"nichts"};}
@@ -88,6 +93,10 @@ mitSonden('traumhaus.html', {
         {n:"Quer-Ost",a:"x",c:RX,h:5.05,von:-SZr+10,bis:SZr-10},{n:"Quer-West",a:"x",c:-RX,h:5.05,von:-SZr+10,bis:SZr-10},
         {n:"Ring-Sued",a:"z",c:118,h:4.5,von:-104,bis:104},{n:"Ring-Nord",a:"z",c:-100,h:4.5,von:-104,bis:104},
         {n:"Ring-Ost",a:"x",c:112,h:4.5,von:-92,bis:110},{n:"Ring-West",a:"x",c:-112,h:4.5,von:-92,bis:110},
+        /* Runde 97: die Zubringer Nord/Sued (Fortsetzung der Querstrassen bis zum Stadtring, 9 m breit) waren in
+           keinem Band — th-strahl fand dort Gehwegplatten OHNE Bordstein und die zugehoerigen Steine bei x ±107,4. */
+        {n:"Zubringer-Nord-Ost",a:"x",c:RX,h:4.5,von:-92,bis:-68},{n:"Zubringer-Nord-West",a:"x",c:-RX,h:4.5,von:-92,bis:-68},
+        {n:"Zubringer-Sued-Ost",a:"x",c:RX,h:4.5,von:68,bis:108},{n:"Zubringer-Sued-West",a:"x",c:-RX,h:4.5,von:68,bis:108},
         /* land: Landstrassen ohne Gehweg (gewollt) — werden gemessen, aber nicht in die Kennzahlen gezaehlt.
            bahn: die Seite, auf der der Bahndamm liegt (Ring-Sued innen: Schotter statt Gehweg, gewollt). */
         {n:"Strandzufahrt",a:"z",c:-30,h:4.8,von:-130,bis:-82,land:true},
@@ -117,9 +126,13 @@ mitSonden('traumhaus.html', {
             if(S[0].k!=="asphalt"&&S[0].k!=="hell")return;          /* hier ist keine Fahrbahn (Luecke im Band, Kreuzung) */
             var kx=b.a==="z"?l:b.c+seite*b.h,kz=b.a==="z"?b.c+seite*b.h:l;
             if(imUebergang(kx,kz)){r.uebergang++;return;}
+            /* Trottoirueberfahrt (Runde 97): der Gehweg laeuft ueber eine Einfahrt durch, der Randstein ist dort
+               auf 3 cm abgesenkt — gewollt, kein „ohne Bordstein". Die Einfahrten melden sich in window._ueberfahrten. */
+            if((window._ueberfahrten||[]).some(function(u){return kx>u[0]&&kx<u[1]&&kz>u[2]&&kz<u[3];})){r.ueberfahrt=(r.ueberfahrt||0)+1;return;}
             /* Einmuendung: Asphalt bis 1,8 m hinter der Kante = die Fahrbahn einer anderen Strasse
                (Zubringer-Muendung, Querstrasse, Zufahrt). Dort gibt es keinen Bordstein — gewollt. */
-            if(S[5].k==="asphalt"&&S[6].k==="asphalt"){r.einmuendung=(r.einmuendung||0)+1;return;}
+            if(S[5].k==="asphalt"&&S[6].k==="asphalt"){r.einmuendung=(r.einmuendung||0)+1;
+              (r.einmPunkte=r.einmPunkte||[]).push([+kx.toFixed(1),+kz.toFixed(1)]);return;}
             r.schnitte++;
             var bord=Math.max(S[1].y||0,S[2].y||0,S[3].y||0),geh=S[5].y||0;
             var lk=S.slice(1,6).filter(function(u){return u.k==="gruen"||u.k==="erde";});
@@ -165,7 +178,7 @@ for (const r of R) {
   const mB = r.bordH.length ? (r.bordH.reduce((a, b) => a + b, 0) / r.bordH.length).toFixed(2) : '-'
   const mG = r.gehH.length ? (r.gehH.reduce((a, b) => a + b, 0) / r.gehH.length).toFixed(2) : '-'
   const ok = r.land || (!r.ohneBord.length && !r.luecke.length && !r.ohneGehweg.length)
-  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}${r.land ? ' · Landstrasse ohne Gehweg (gewollt, nicht gezaehlt)' : ''}${r.bahndamm ? ` · ${r.bahndamm} Schnitte Bahndamm-Seite ausgelassen` : ''}`)
+  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}${r.ueberfahrt ? ` · ${r.ueberfahrt} Ueberfahrt` : ''}${r.land ? ' · Landstrasse ohne Gehweg (gewollt, nicht gezaehlt)' : ''}${r.bahndamm ? ` · ${r.bahndamm} Schnitte Bahndamm-Seite ausgelassen` : ''}`)
   if (ALLE) { if (r.ohneBord.length) console.log('       ohne Bordstein: ' + r.ohneBord.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' '))
     if (r.luecke.length) console.log('       Luecke: ' + r.luecke.slice(0, 12).map((p) => `(${p[0]}|${p[1]}) +${p[2]} ${p[3]}`).join(' '))
     if (r.ohneGehweg.length) console.log('       ohne Gehweg: ' + r.ohneGehweg.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' ')) }
@@ -174,6 +187,28 @@ const U = await K('uebergaenge')
 const uSchlecht = U.filter((u) => !u.abgesenkt)
 console.log(`\nUEBERGAENGE (window._uebergaenge): ${U.length}, davon ohne abgesenkten Bordstein ${uSchlecht.length}`)
 for (const u of uSchlecht.slice(0, 20)) console.log(`   (${u.x}|${u.z}) ${u.quer ? 'ueber Strasse in x' : 'ueber Strasse in z'}  Bordstein-Oberkanten ${u.bord.join(' / ')} m`)
-console.log(`\nKENNZAHLEN: Schnitte ${sSchnitte} · ohne Bordstein ${sOhneBord} · Luecke ${sLuecke} · ohne Gehweg ${sOhneGeh} · Uebergaenge ${U.length}, nicht abgesenkt ${uSchlecht.length}  (Landstrassen ohne Gehweg: ${sLand} Befunde, gewollt)`)
+/* 🚸 EINMUENDUNGEN OHNE UEBERGANG (Runde 97, User: „weiter" nach „übergänge schöner").
+   Wo der Gehweg an einer einmuendenden Fahrbahn endet, muss der Fussgaenger hinueber — ein Gehweg,
+   der an einer Fahrbahn einfach aufhoert, ist genau der Uebergang, der fehlt. Die Einmuendungs-Schnitte
+   oben (Asphalt bis 1,8 m hinter der Kante) werden zu Muendungen gebuendelt (< 12 m), je Muendung wird
+   ein registrierter Uebergang in 10 m gesucht. Landstrassen (land) zaehlen nicht: dort gibt es gewollt
+   keinen Gehweg, also auch keinen, der enden koennte. */
+const MP = []
+for (const r of R) if (!r.land) for (const p of (r.einmPunkte || [])) MP.push({ x: p[0], z: p[1], n: r.n })
+const MU = []
+for (const p of MP) { const c = MU.find((m) => Math.hypot(m.x - p.x, m.z - p.z) < 12)
+  if (c) { c.x = (c.x * c.k + p.x) / (c.k + 1); c.z = (c.z * c.k + p.z) / (c.k + 1); c.k++; if (!c.n.includes(p.n)) c.n.push(p.n) } else MU.push({ x: p.x, z: p.z, k: 1, n: [p.n] }) }
+const UX = U.map((u) => [u.x, u.z])
+/* ⚠️ 14 -> 10 m (Runde 97): mit 14 m galt die Muendung der Strandzufahrt in die Querstrasse West (-83|-30)
+   als „versorgt" — durch den Streifen 13 m daneben, der die QUERSTRASSE quert, nicht die Zufahrt. Die
+   Gegenprobe (78|50) liegt 8 m von ihrem Streifen. */
+const ohneUeb = MU.filter((m) => !UX.some((u) => Math.hypot(u[0] - m.x, u[1] - m.z) < 10))
+/* Gegenprobe: die Muendung der Querstrasse Ost in die Suedstrasse (78|50) hat die Uebergaenge (78|42)
+   und (62|58)/(94|58) — sie MUSS als versorgt gelten, sonst misst das Werkzeug falsch. */
+const gQ = MU.find((m) => Math.hypot(m.x - 78, m.z - 50) < 12)
+console.log(`\nEINMUENDUNGEN (gebuendelt): ${MU.length}, davon ohne Uebergang in 10 m: ${ohneUeb.length}` +
+  `   · Gegenprobe Quer-Ost/Suedstrasse (78|50): ${gQ ? (UX.some((u) => Math.hypot(u[0] - gQ.x, u[1] - gQ.z) < 10) ? 'versorgt ✓' : 'NICHT versorgt ✗') : 'nicht gefunden ✗'}`)
+for (const m of ohneUeb.slice(0, 40)) console.log(`   (${m.x.toFixed(0)}|${m.z.toFixed(0)})  ${m.k} Schnitte  ${m.n.join(' + ')}`)
+console.log(`\nKENNZAHLEN: Schnitte ${sSchnitte} · ohne Bordstein ${sOhneBord} · Luecke ${sLuecke} · ohne Gehweg ${sOhneGeh} · Uebergaenge ${U.length}, nicht abgesenkt ${uSchlecht.length} · Einmuendungen ohne Uebergang ${ohneUeb.length}/${MU.length}  (Landstrassen ohne Gehweg: ${sLand} Befunde, gewollt)`)
 console.log('JS-Fehler:', jsFehler.length, jsFehler.slice(0, 3).join(' | '))
 await browser.close(); aufraeumen(TMP)
