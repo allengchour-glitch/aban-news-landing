@@ -113,7 +113,9 @@ pruefe('VERHAFTET-Einblendung mit grauem Bild', /an/.test(bn.k) && /grayscale/.t
 pruefe('Zeitlupe waehrend der Einblendung', zf < 1, 'Faktor ' + zf)
 await page.waitForTimeout(4000)
 const bn2 = await page.evaluate(() => ({ k: document.getElementById('gtaBanner').className, f: document.querySelector('canvas').style.filter }))
-pruefe('Einblendung und Grau verschwinden wieder', !/an/.test(bn2.k) && !bn2.f, JSON.stringify(bn2))
+/* Seit Runde 93 stellt gtaBanner den GRUNDFILTER des Spiels wieder her (saturate/contrast) statt ihn zu
+   loeschen — vorher war das Bild nach der ersten Einblendung flau. Weg muss nur das Grau sein. */
+pruefe('Einblendung und Grau verschwinden wieder', !/an/.test(bn2.k) && !/grayscale/.test(bn2.f), JSON.stringify(bn2))
 pruefe('Zeitlupe endet', (await th('zeit')) === 1)
 
 if (BILDER) { await th('bannerHalten'); await bild('3-verhaftet'); await th('bannerWeg') }

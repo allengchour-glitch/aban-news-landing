@@ -858,7 +858,7 @@ var WORLD_POIS=[
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Stadtpark"],[96,14,"⛲","Brunnmatt"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
-  [96,-33,"🏰","Sunnehalde"],[-96,18,"🏰","Rebhalde"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
+  [96,-33,"🏰","Sunnehalde"],[-96,18,"🏰","Rebhalde"],[10,139,"⛵","Seepark"],[-131,-56,"🌊","Meer"],   /* am Strand (Strandkoerbe z -46…-67), nicht 100 m draussen in der Meerplatten-Mitte (Runde 93) */
   [172,0,"🏢","Gewerbe Rietli"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Bürgli"],
   /* Die drei Viertel dieser Charge hatten keine Marke — sie standen in der Welt, aber
      auf der Karte war dort nichts, und kein Lieferauftrag fuehrte hin. Ein Viertel, das
@@ -2832,11 +2832,13 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
      10 in z — also von x -134 (Wendeplatz am Strand) bis x -78 (West-Strasse). */
   zuf.rotation.x=-Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
   /* 🅿️ Wendeplatz am Strand statt abrupt endender Fahrbahn */
-  var wp=new THREE.Mesh(new THREE.CircleGeometry(9,24),betMat(0x6b6b72,0.9));
-  wp.rotation.x=-Math.PI/2;wp.position.set(-132,-0.0025,-30);wp.receiveShadow=true;scene.add(wp); /* ans WESTENDE der Zufahrt (-134..-78), nicht mittendrauf */
+  /* ⚠️ r 9 um x -132 ragte 6 m ueber den Sand (-135…-121) aufs Wasser (Bild k3-strand-wendeplatz, Runde 93).
+     r 7 um -128 liegt genau zwischen Sandkante und Ring-Gehweg (-119,2). */
+  var wp=new THREE.Mesh(new THREE.CircleGeometry(7,24),betMat(0x6b6b72,0.9));
+  wp.rotation.x=-Math.PI/2;wp.position.set(-128,-0.0025,-30);wp.receiveShadow=true;scene.add(wp); /* ans WESTENDE der Zufahrt (-134..-78), nicht mittendrauf */
   for(var _pk=0;_pk<7;_pk++){var _pa=Math.PI*0.55+_pk*(Math.PI*0.9/6); /* Poller zur MEER-Seite (West) */
     var _pl=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.9,7),stdMat(0xd8d2c4,0.7));
-    _pl.position.set(-132+Math.cos(_pa)*9.4,0.45,-30+Math.sin(_pa)*9.4);_pl.castShadow=true;scene.add(_pl);}
+    _pl.position.set(-128+Math.cos(_pa)*7.4,0.45,-30+Math.sin(_pa)*7.4);_pl.castShadow=true;scene.add(_pl);}
   /* Eisenbahnbrücke bei z=-30: Pfeiler + Fahrbahn + Schienen + Geländer */
   var BX0=-128,BX1=-320,BY=3.4,bl=BX0-BX1;
   var deck=new THREE.Mesh(new THREE.BoxGeometry(bl,0.5,3.6),betMat(0x9a948a,0.85));
@@ -8874,7 +8876,9 @@ setTimeout(function baueGebaeude(){
       _il._ti=0;_il._max=L9[4];nachtLampen.push(_il);});
     bau("th8_markthalle_offen.glb",11,-26,0,95,Math.PI/2,false);
     bau("th8_stadthaus_offen.glb",9.2,-46,0,80,Math.PI,false);
-    bau("th8_laden_offen.glb",3.9,-24,0,74,-Math.PI/2,false);
+    /* 3,9 -> 3,5 m (Runde 93): mit 9,6 m Breite steckte der Laden 1,08 m im Gasthaus, zwischen Gasthaus (-23,1)
+       und Werkstatt (-13,3) sind nur 9,8 m — der Entwirrer fand keinen Platz (ohnePlatz). 10 % kleiner passt er. */
+    bau("th8_laden_offen.glb",3.5,-19,0,76,-Math.PI/2,false);
     bau("th8_werkstatt_offen.glb",5.3,-6,0,88,Math.PI,false);
     /* ⛪ KATHEDRALE — auf das verfuegbare Band zugeschnitten statt verschoben.
        GEMESSEN: auf 21 m Hoehe ist th8_kirche_offen 33 x 28 m. Zwischen dem
@@ -15524,7 +15528,7 @@ function imWasser(x,z){
      von -135 innerhalb der Platte. Frei bleiben der Wendeplatz am Strand (-132|-30, r 9,4),
      der Steg (z ~70) und der Faehranleger (z ~100), beide bis x -148. */
   if(x<-135&&Math.abs(z)<168.5){
-    if(Math.hypot(x+132,z+30)<9.6)return false;
+    if(Math.hypot(x+128,z+30)<7.6)return false;
     if(x>-148.5&&(Math.abs(z-70)<4.5||Math.abs(z-100)<9.5))return false;
     return true;}
   var sr9=Math.hypot(x,z-146);                                 // Seepark-See: die ECHTE Uferkurve (seeR), nicht der 26-m-Kreis des GPS
