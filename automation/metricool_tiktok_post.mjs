@@ -121,7 +121,15 @@ if (process.env.PRUEFEN === '1') {
     const st = String(prov.status || p.status || '').toUpperCase();
     if (st === 'PUBLISHED' && prov.publicUrl) { row[idx.post_url] = `metricool:${mid} ${NETZ}:${prov.publicUrl}`; ok++; console.log(`   ✅ ${get(row, 'id')} veroeffentlicht: ${prov.publicUrl}`); }
     else if (/ERROR|FAIL|REJECT|CANCEL/.test(st)) { row[idx.status] = FEHLER; row[idx.post_url] = `metricool-fehler:${mid} ${st} ${String(prov.detailedStatus || prov.error || '').slice(0, 120)}`; fehler++; console.log(`   ⚠️ ${get(row, 'id')} FEHLER: ${st} ${prov.detailedStatus || ''}`); }
-    else { const alter = (Date.now() - Date.parse(get(row, 'posted_at') || 0)) / 3600000; wartet++; console.log(`   ${get(row, 'id')}: ${st || 'ohne Status'} (${alter.toFixed(1)} h seit Planung)${alter > 2 ? ' ⚠️ ueberfaellig' : ''}`); }
+    else {
+      // 24.09.: «ueberfaellig» misst ab dem GEPLANTEN Sendetermin (publicationDate aus dem Planer), nicht ab der Planung —
+      // Bestzeit-Posts (z. B. 10:05 CH) standen sonst um 06:00 als «2.1 h ueberfaellig» im Log, obwohl nichts offen war.
+      const pd = p.publicationDate && (p.publicationDate.dateTime || p.publicationDate);
+      const termin = pd ? Date.parse(String(pd).replace(' ', 'T')) : Date.parse(get(row, 'posted_at') || 0);
+      const seit = (Date.now() - termin) / 3600000; wartet++;
+      const lage = seit < 0 ? `Termin in ${(-seit).toFixed(1)} h` : `${seit.toFixed(1)} h nach Termin${seit > 2 ? ' ⚠️ ueberfaellig' : ''}`;
+      console.log(`   ${get(row, 'id')}: ${st || 'ohne Status'} (${lage})`);
+    }
   }
   if (ok || fehler) writeLedger();
   console.log(`PRUEFEN: ${ok} veroeffentlicht, ${fehler} Fehler, ${wartet} offen`);
