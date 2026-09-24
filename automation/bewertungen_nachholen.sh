@@ -11,13 +11,15 @@ export SHOPIFY_ADMIN_TOKEN="${SHOPIFY_ADMIN_TOKEN:-$(cat /tmp/cj_shop_token.txt 
 L=dropship/_bewertungen_nachholen.txt; Q=dropship/cj_reviews_nachgeholt.txt
 touch "$Q"
 [ -s "$L" ] || python3 automation/bewertungen_nachholen_liste.py || { echo "PAUSE: Liste nicht baubar"; exit 2; }
+# Das Ledger führt Zahl-IDs (Import-Wache) UND «h:<handle>» (für diese Liste) — die Liste nennt Handles.
+offen() { sed -n 's/^h://p' "$Q" | grep -vxFf - "$L"; }
 while :; do
-  H=$(grep -vxFf "$Q" "$L" | head -100 | paste -sd,)
+  H=$(offen | head -100 | paste -sd,)
   [ -z "$H" ] && break
-  echo "### Paket $(date -u +%H:%M) · offen $(grep -cvxFf "$Q" "$L")"
+  echo "### Paket $(date -u +%H:%M) · offen $(offen | wc -l)"
   OUT=$(NACHHOLEN=1 MIN_SCORE=1 ONLY="$H" LIMIT=100 PER=8 /opt/node22/bin/node automation/cj_reviews_import.mjs 2>&1)
   echo "$OUT" | grep -E "^Fertig|✗|keine Punkte|Nichts zu tun" | tail -5
   # Kein Fortschritt (Punkte leer, Auth weg) → Pause statt Endlosschleife; der Aufseher versucht es später erneut.
   if ! echo "$OUT" | grep -qE "^✓|0 echte|keine CJ-pid|keine SKU"; then echo "PAUSE: kein Fortschritt in diesem Paket"; exit 2; fi
 done
-echo "FERTIG $(date -u +%FT%TZ): Nachholen abgeschlossen ($(wc -l < "$Q") Produkte)"
+echo "FERTIG $(date -u +%FT%TZ): Nachholen abgeschlossen ($(grep -c '^h:' "$Q") Produkte)"

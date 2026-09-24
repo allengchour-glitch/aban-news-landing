@@ -72,6 +72,9 @@ const SPERR = new Set(['nicht-bewerben', 'nur-onlineshop', '18plus', 'raucher', 
   'medizinprodukt-pruefen', 'marken-pruefen', 'lizenz-risiko', 'lizenz-nicht-bewerben', 'adult-nicht-bewerben', 'gmc-adult-pull',
   'messer-nicht-bewerben', 'smoke-zubehoer', 'waffe-pruefen', 'verdeckte-ueberwachung', 'google-policy-flag', 'arzneimittel-ohne-zulassung']);
 const HEIL = /schmerz|heil|migräne|krampfader|fettverbrenn|abnehmen|cellulite|arthr|rheuma|diabetes|entgift|detox|blutdruck|haarausfall|schnarch|inkontinenz/i;
+// 24.09.2026: Lizenzfiguren nicht selbst bewerben (echte Fortura-Ware darf verkauft, aber nicht mit geschützter Figur
+// gepinnt werden) — am Titel, weil Plüsch/Ballone/Perücken keinen Lizenz-Tag tragen (Gleichlauf tiktok_karussell.py).
+const LIZENZ_FIGUR = /\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu)\b/i;
 // Board-Zuordnung: erstes passendes Muster gewinnt (Reihenfolge = Spezifität).
 const BOARDS = [
   // Haustier zuerst (sonst «Hundekissen» → Schlaf, «Katzenspielzeug» → Geschenk). Fallen: «Katzenauge»-Brille,
@@ -208,6 +211,7 @@ for (const quelle of QUELLEN) {
     const grund = p.status !== 'ACTIVE' ? 'nicht aktiv' : !p.onlineStoreUrl ? 'nicht im Onlineshop' : !p.publishedOnPublication ? 'nicht im Pinterest-Kanal'
       : p.images.nodes.length < 2 ? '<2 Bilder' : parseFloat(p.priceRangeV2.minVariantPrice.amount) < 19 ? 'unter CHF 19'
       : tags.some(t => SPERR.has(t)) ? 'Sperr-Tag' : HEIL.test(p.title) ? 'Heilwort im Titel'
+      : LIZENZ_FIGUR.test(p.title) ? 'Lizenzfigur im Titel'
       : gepinnt.has(p.handle) ? 'schon gepinnt' : karussellHandles.has(p.handle) ? 'schon als Karussell beworben' : postSeen(bild.url) ? 'Bild schon gepostet'
       : (bild.width && Math.min(bild.width, bild.height || bild.width) < 600) ? 'Bild zu klein'
       : bildtextAlle.has(p.handle) ? 'Lieferantentext in allen Bildern (OCR, _uebersprungen.tsv)'

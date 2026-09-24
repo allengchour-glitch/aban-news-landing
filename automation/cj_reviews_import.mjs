@@ -194,6 +194,9 @@ async function jmPost(pid, r) {
 }
 
 const numId = (gid) => String(gid).split('/').pop();
+// NACHHOLEN quittiert zusätzlich den Handle («h:…»): bewertungen_nachholen.sh führt seine Liste nach Handles und fand
+// die Zahlen-IDs nie — jedes Paket nach dem ersten meldete «Nichts zu tun» (24.09.). Eine «h:»-Zeile ist nie eine Zahl-ID.
+const quittiere = (pidNum, handle) => fs.appendFileSync(LEDGER, pidNum + '\n' + (NACHHOLEN && handle ? `h:${handle}\n` : ''));
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 
 (async () => {
@@ -264,7 +267,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
     const cjSku = rawSku.replace(/^CJ-/i, '').trim();
-    if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
+    if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} } continue; }
     try {
       const resolved = await resolvePid(cjSku);
       const cjpid = resolved?.pid;
@@ -274,7 +277,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         // dieselbe Falle wie beim Kosten-Backfill am 20.08. («falsch quittierte Zeilen»).
         if (punkteLeer) { console.log(`· ${p.handle}: pid unbekannt und keine Punkte → später erneut`); continue; }
         console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`);
-        if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} }
+        if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} }
         continue;
       }
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
@@ -288,7 +291,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         .filter(c => { const k = (c.comment || '').trim().toLowerCase().replace(/\s+/g, ' '); if (_schon.has(k)) return false; _schon.add(k); return true; })
         .filter(c => Number(c.score) >= MIN_SCORE && Number(c.score) <= MAX_SCORE && (c.comment || '').trim().length >= 8)
         .slice(0, PER);
-      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ${MIN_SCORE}–${MAX_SCORE}★-Kommentare bei CJ → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
+      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ${MIN_SCORE}–${MAX_SCORE}★-Kommentare bei CJ → skip`); if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} } continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
       let sent = 0;
@@ -307,7 +310,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         await sleep(700);
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
-      if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} }
+      if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} }
     } catch (e) { fails++; console.error(`✗ ${p.handle}: ${e.message}`); }
   }
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
