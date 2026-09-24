@@ -336,7 +336,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -458,10 +458,24 @@ while true; do
     case " produkttexte_du_form variant_value_clean kategorie_wache " in
       *" $L "*) SPUR="SCHRANKE_NAME=massen_slot SCHRANKE_PLAETZE=1" ;;
     esac
+    # 24.09.2026: Sechs Tageswächter sind nach EINEM sauberen Durchgang fertig, schreiben aber keine FERTIG-Zeile — das Tor
+    # oben hielt sie deshalb für unfertig und startete sie bei JEDEM Tick neu (Log-Enden identisch dreifach, OCR stündlich).
+    # Für diese Liste setzt der Aufseher die Zeile nach Exit 0 selbst. NICHT für Wächter, die FERTIG bewusst weglassen,
+    # solange Arbeit offen ist (verlustbringer, versand_jenachland …) — die bleiben ausserhalb der Liste.
+    NACH=""
+    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen " in
+      *" $L "*) NACH=1 ;;
+    esac
     date +%s > "/tmp/_start_$L"
+    if [ -n "$NACH" ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP $SPUR bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py && echo \"FERTIG \$(date -u +%FT%TZ) (Tageslauf sauber beendet, Aufseher)\"" \
+          >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
+    else
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP $SPUR exec bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
+    fi
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
   done

@@ -54,7 +54,10 @@ SHOP = "au3j0y-hq.myshopify.com"
 API = f"https://{SHOP}/admin/api/2026-01/graphql.json"
 REPO = os.path.dirname(HIER)
 LEDGER = os.path.join(REPO, "dropship", "_koll_seo_laengen.txt")
-SPERRE = "/tmp/lock_koll_seo_laengen.lock"
+# 24.09.2026: NICHT dieselbe Datei wie der Aufseher. Er startet jeden Tageswächter unter `flock /tmp/lock_<name>.lock`
+# (fd 9, an Python vererbt) — die eigene Sperre auf DERSELBEN Datei fand sich selbst: 36 Starts seit dem 23.09., jeder
+# «läuft schon (Sperre belegt) — nichts getan». Eigene Datei = Schutz gegen Handstart neben dem Aufseher bleibt.
+SPERRE = "/tmp/lock_koll_seo_laengen_intern.lock"
 
 DESC_GRENZE, DESC_ZIEL = 160, 155
 TITEL_GRENZE, TITEL_ZIEL = 70, 65
