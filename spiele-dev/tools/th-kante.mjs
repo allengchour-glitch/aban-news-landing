@@ -33,8 +33,20 @@ mitSonden('traumhaus.html', {
     function boden(){
       if(W.B)return W.B;
       var G={},immer=[],bb=new THREE.Box3(),C=8;
+      /* ⚠️ BEWEGTES AUSLASSEN (Runde 93): in der vollen Reihe stand ein Passant genau auf dem Zebra
+         (78|42) — die Probe mass 0,78 m "Bordstein" und meldete den Uebergang als nicht abgesenkt.
+         Verkehr, Fussgaenger, Bewohner, Polizei, Bus, Boote sind kein Belag (wie th-strassen). */
+      var bew=new Set();function mark(arr){(arr||[]).forEach(function(o){var m=o&&(o.mesh||o.w||o);
+        if(m&&m.traverse)m.traverse(function(c){bew.add(c);});});}
+      try{mark(verkehr);}catch(e){} try{mark(fussg);}catch(e){} try{mark(sims);}catch(e){} try{mark(npcs);}catch(e){}
+      try{mark(polizei);}catch(e){} try{mark(window._landbus);}catch(e){} try{mark(window._boote);}catch(e){}
+      try{if(busRec&&busRec.mesh)busRec.mesh.traverse(function(c){bew.add(c);});}catch(e){}
+      try{if(window.autoRec&&window.autoRec.mesh)window.autoRec.mesh.traverse(function(c){bew.add(c);});}catch(e){}
+      try{if(window.TAXI&&window.TAXI.gast)window.TAXI.gast.traverse(function(c){bew.add(c);});}catch(e){}
+      /* Tiere (window._tiere.land: Schafe, Kuehe … — ein 1-m-"body" stand auf dem Zebra (78|42)) */
+      try{if(window._tiere){mark(window._tiere.land);mark(window._tiere.enten);}}catch(e){}
       scene.traverse(function(n){
-        if(!(n.isMesh||n.isInstancedMesh)||!n.geometry||n.isSprite)return;
+        if(!(n.isMesh||n.isInstancedMesh)||!n.geometry||n.isSprite||bew.has(n))return;
         var m=n.material;if(!m)return;var m0=Array.isArray(m)?m[0]:m;
         if(m0.visible===false||(m0.transparent&&m0.opacity<0.05))return;
         if(n===window._wolkenSchatten||(m0.transparent&&m0.depthWrite===false))return;
