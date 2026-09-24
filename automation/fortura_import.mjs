@@ -182,8 +182,10 @@ for (const rec of recs.slice(0, LIMIT)) {
   if (vkEmpf > 0 && vkEmpf < MIN_VK && ve <= 1) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   // Verkaufspreis: UVP (VP2) ist der Markt-Anker → daran ausrichten, NIE unter EK+Versand+Marge.
   // Nur wenn keine UVP vorhanden: EK*Faktor. (2.2× würde sonst über die UVP schießen = unverkäuflich.)
-  const floor = ekNetto + SHIP_CH + MIN_MARGIN;
-  let price = vkEmpf > 0 ? Math.max(vkEmpf, floor) : Math.max(ekNetto * MARKUP, floor);
+  // ⚠️ 24.09.2026: VP1/VP2 sind STÜCKpreise, verkauft wird aber das ganze Bündel (VE) — hier stand `ekNetto + …` und
+  // `vkEmpf`, also Rosen «72 Stück» für CHF 16.90 bei 68.40 Einkauf. Jetzt beides × VE.
+  const floor = ekNetto * ve + SHIP_CH + MIN_MARGIN;
+  let price = vkEmpf > 0 ? Math.max(vkEmpf * ve, floor) : Math.max(ekNetto * ve * MARKUP, floor);
   price = Math.round(price*20)/20;               // auf 0.05 runden (CH)
   if (!isFinite(price) || price <= 0) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
 
@@ -229,7 +231,9 @@ for (const rec of recs.slice(0, LIMIT)) {
     seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – schnelle CH-Lieferung aus der Schweiz, Gratis-Versand ab CHF 50.`.slice(0,320) },
     productOptions: [{ name: 'Titel', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Titel', name: 'Standard' }], price: price.toFixed(2),
-      inventoryItem: { sku: `fortura-${art}`.slice(0,70), tracked: true }, inventoryPolicy: 'DENY',
+      // 24.09.2026: EK gleich beim Anlegen (VP1 × VE + DPD, × 1.081 — Shop nicht MWST-pflichtig); ohne ihn kann
+      // preis_verlustschutz.py die Variante nicht schützen (fortura_ek_nachtragen.py hat 4'036 Altvarianten nachgetragen).
+      inventoryItem: { sku: `fortura-${art}`.slice(0,70), tracked: true, ...(ekNetto > 0 ? { cost: ((ekNetto * ve + SHIP_CH) * 1.081).toFixed(2) } : {}) }, inventoryPolicy: 'DENY',
       inventoryQuantities: [{ locationId: LOC, name: 'available', quantity: stock }] }],
     files: img ? [{ originalSource: img, contentType: 'IMAGE' }] : [],
   };

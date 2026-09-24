@@ -355,7 +355,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -431,6 +431,9 @@ while true; do
     # jeder Preis muss den grössten Code (25 %) plus Gratisversand tragen. Nur heben; Faktor > 2 → Variante DENY statt
     # absurdem Preis. Fortsetzbar über das Ledger, FERTIG erst wenn alle Kandidaten durch sind (dann Tageslauf).
     if [ "$L" = preis_verlustschutz ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 EXPORT=/tmp/kost28.jsonl"; fi
+    # 24.09.2026: Fortura-EK aus dem Feed (VP1 × VE + DPD, × 1.081) — ohne EK schützt preis_verlustschutz nichts.
+    # Feed: fortura_bestand_taeglich.sh legt /tmp/fortura_feed_neu.csv täglich ab. Nur Varianten OHNE EK.
+    if [ "$L" = fortura_ek_nachtragen ]; then { [ -f /tmp/fortura_feed_neu.csv ] && [ -f /tmp/kost28.jsonl ]; } || continue; EXP="SCHARF=1"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
     # uebersprungen, im ganzen Container gab es nicht einmal ein Log. Er liest jetzt die
