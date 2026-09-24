@@ -90885,3 +90885,17 @@
 56156427420033	heben	46.90	56.90	40.04	2026-09-24	kosmetikkoffer-mit-spiegel-und-beleuchtung-618800
 56156427944321	heben	20.90	25.90	17.85	2026-09-24	futter-und-trinknapf-automat-709184
 56156427977089	heben	19.90	23.90	16.39	2026-09-24	kinder-fernglas-mit-nachtsicht-und-licht-515904
+56156428075393	heben	25.90	31.90	22.16	2026-09-24	neckholder-mesh-kleid-mit-hoher-taille-620300
+56156428108161	heben	25.90	31.90	22.16	2026-09-24	neckholder-mesh-kleid-mit-hoher-taille-620300
+56156428140929	heben	25.90	31.90	22.16	2026-09-24	neckholder-mesh-kleid-mit-hoher-taille-620300
+56156428173697	heben	25.90	31.90	22.16	2026-09-24	neckholder-mesh-kleid-mit-hoher-taille-620300
+56156428206465	heben	25.90	31.90	22.16	2026-09-24	neckholder-mesh-kleid-mit-hoher-taille-620300
+56156428239233	heben	25.90	31.90	22.16	2026-09-24	neckholder-mesh-kleid-mit-hoher-taille-620300
+56156428042625	heben	41.90	49.90	35.14	2026-09-24	verstellbarer-futter-und-wassernapf-aus-edelst-121856
+56156428272001	heben	19.90	23.90	16.82	2026-09-24	magnetisches-silikon-etui-mit-stander-632500
+56156428304769	heben	28.90	34.90	24.29	2026-09-24	klavierdeckel-dampfer-aus-aluminiumlegierung-678528
+56156428337537	heben	25.90	31.90	21.89	2026-09-24	anti-schling-napf-fur-haustiere-121664
+56156428370305	heben	23.90	28.90	20.40	2026-09-24	mehrstockiger-medikamenten-organizer-aus-pet-607200
+56156428403073	heben	30.90	36.90	25.90	2026-09-24	jacquard-a-linien-midikleid-mit-hoher-taille-608300
+56156428435841	heben	30.90	36.90	25.90	2026-09-24	jacquard-a-linien-midikleid-mit-hoher-taille-608300
+56156428468609	heben	30.90	36.90	25.90	2026-09-24	jacquard-a-linien-midikleid-mit-hoher-taille-608300
