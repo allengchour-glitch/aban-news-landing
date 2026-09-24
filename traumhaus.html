@@ -714,16 +714,21 @@ function stdMat(c,rough,einzeln,metal){
 /* Blech, Mast, Schiene, Gelaender: eine Zeile statt vier Zahlen an 20 Stellen. */
 function metallM(c,rough){return stdMat(c,rough!==undefined?rough:0.35,false,0.7);}
 // Prozedurale Struktur-Texturen gegen flache Einfarb-Flaechen
+/* ⚠️ NAHTLOS (Runde 95, Bild k17-pirateninsel): die 2-px-Punkte wurden am Kachelrand abgeschnitten,
+   bei RepeatWrapping lag darum an jeder Kachelgrenze eine duennere Linie — auf dem Inselsand
+   (44 m / 9 Kacheln, heller Grund) ein sichtbares Gitter. `pt()` zeichnet Randpunkte zusaetzlich um
+   128 px versetzt, so laeuft die Koernung ueber die Kante weiter. Gilt fuer Beton, Kies und Erde. */
 function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+  function pt(x,y,w,h){c.fillRect(x,y,w,h);if(x+w>128)c.fillRect(x-128,y,w,h);if(y+h>128)c.fillRect(x,y-128,w,h);if(x+w>128&&y+h>128)c.fillRect(x-128,y-128,w,h);}
   c.fillStyle="#9a9a9a";c.fillRect(0,0,128,128);
-  if(kind==="beton"){for(var i=0;i<2600;i++){var v=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v)+","+(120+v)+","+(118+v)+",0.35)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}
+  if(kind==="beton"){for(var i=0;i<2600;i++){var v=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v)+","+(120+v)+","+(118+v)+",0.35)";pt(Math.random()*128,Math.random()*128,2,2);}
     c.strokeStyle="rgba(90,90,90,.35)";c.lineWidth=1.5;for(var l=32;l<128;l+=32){c.beginPath();c.moveTo(0,l);c.lineTo(128,l);c.stroke();}}
-  if(kind==="kies"){for(var k9=0;k9<2600;k9++){var v9=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v9)+","+(120+v9)+","+(118+v9)+",0.35)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}}   /* wie Beton, aber OHNE Plattenfugen */
+  if(kind==="kies"){for(var k9=0;k9<2600;k9++){var v9=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v9)+","+(120+v9)+","+(118+v9)+",0.35)";pt(Math.random()*128,Math.random()*128,2,2);}}   /* wie Beton, aber OHNE Plattenfugen */
   if(kind==="blatt"){c.fillStyle="#8a9a7a";c.fillRect(0,0,128,128);
     for(var b=0;b<3200;b++){var g2=(Math.random()*70)|0;c.fillStyle="rgba("+(40+(g2>>1))+","+(85+g2)+","+(35+(g2>>1))+",0.5)";
       c.beginPath();c.arc(Math.random()*128,Math.random()*128,1.4+Math.random()*1.6,0,6.283);c.fill();}}
   if(kind==="erde"){c.fillStyle="#8a7a5c";c.fillRect(0,0,128,128);
-    for(var e=0;e<2400;e++){var t2=(Math.random()*46)|0;c.fillStyle="rgba("+(110+t2)+","+(95+t2)+","+(64+(t2>>1))+",0.4)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}}
+    for(var e=0;e<2400;e++){var t2=(Math.random()*46)|0;c.fillStyle="rgba("+(110+t2)+","+(95+t2)+","+(64+(t2>>1))+",0.4)";pt(Math.random()*128,Math.random()*128,2,2);}}
   var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t;}
 var _texBeton=null,_texBlatt=null,_texErde=null;
 function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
@@ -2399,15 +2404,39 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     /* 🌳 AUSSENRING (Runde 95): die Streuung endete bei r ≈ 190 — um Neustadt, Burgdorf, Technikpark und
        Camping (r 380…450) stand nichts als Wiese. Zweiter Ring 200…440 m; freiPlatz kennt die Viertel,
        Strassen und Felder, aber nicht das Meer und die Berge — darum der Filter davor. */
+    /* ⚠️ GEMESSEN (Sonde probe-technik + th-strassen, Runde 95 Teil 5): ein Baum stand auf dem
+       Vorfeld (293,7|-159,9), einer auf der Flughafen-Anbindung (248|-190), ein Busch auf der
+       Camping-Anbindung (227,9|356,9), eine Krone auf dem Neustadt-Stich (295|-144). Ursache ist
+       die REIHENFOLGE: `streu` verteilt in Haeppchen von 15 je Bild und ist nach ~50 ms fertig —
+       die Viertel entstehen aber erst bei 260 ms, Bahn und Vorfeld bei 260+900 ms. `freiPlatz`
+       fragt `_aufViertelWeg`, das zu diesem Zeitpunkt die neuen Strassen noch gar nicht kennt.
+       Darum wartet der Aussenring, bis das LETZTE Viertel (Bauernhof, Ende des 260-ms-Blocks) in
+       `VIERTEL` steht — nicht auf eine feste Zeit: im Headless-Lauf (Sonde probe-technik, zweiter
+       Durchgang) stand bei 1,5 s noch ein Baum am Vorfeldrand (314,8|-150,9), weil die Timer dort
+       Sekunden spaeter feuern. Dann kennt er alle Baender, das Flugfeld (Rechteck aus dem
+       Flughafen-Eintrag: Bahn FZ+62, Module ±70,4 m, Befeuerung -8, Vorfeld bis +46) und die
+       Beton-Plaetze (boden "platz" — dort gehoeren keine Felsen und Blumenfelder hin). */
+    function viertelListe(){return (window._viertelSolver&&window._viertelSolver.VIERTEL)||[];}
+    function flugfeld(){var V=viertelListe();
+      for(var i=0;i<V.length;i++)if(V[i].name==="Flughafen")return {x0:V[i].x-70.4,x1:V[i].x+70.4,z0:V[i].z+62-8,z1:V[i].z+62+46};
+      return window._flugfeld||null;}
     function draussen(fn){return function(x,z){
       if(window.imWasser&&window.imWasser(x,z))return;
       if(window._bergHoehe&&window._bergHoehe(x,z)>0.4)return;
       if(Math.hypot(x,z)>445)return;
+      var F=flugfeld();
+      if(F&&x>F.x0-3&&x<F.x1+3&&z>F.z0-3&&z<F.z1+3)return;
+      var V=viertelListe();
+      for(var i=0;i<V.length;i++){var g=V[i];
+        if(g.cfg&&g.cfg.boden==="platz"&&Math.abs(x-g.x)<g.w/2+3&&Math.abs(z-g.z)<g.d/2+3)return;}
       fn(x,z);};}
-    streu(_n(110),200,440,draussen(function(x,z){baum2(x,z,0.8+Math.random()*1.0);}),1);
-    streu(_n(70),200,440,draussen(busch),0);
-    streu(_n(40),200,440,draussen(findling),0);
-    streu(_n(60),200,440,draussen(blumenfeld),0);
+    setTimeout(function aussenring(){
+      if(!viertelListe().some(function(g){return g.name==="Bauernhof";})){setTimeout(aussenring,250);return;}
+      streu(_n(110),200,440,draussen(function(x,z){baum2(x,z,0.8+Math.random()*1.0);}),1);
+      streu(_n(70),200,440,draussen(busch),0);
+      streu(_n(40),200,440,draussen(findling),0);
+      streu(_n(60),200,440,draussen(blumenfeld),0);
+    },600);
     /* ⚠️ DIESE SCHLEIFE HAT NIE EIN BUESCHEL GESETZT — nachgerechnet, nicht vermutet.
        Sie streute auf einen Ring mit `sr9 = 19 + Math.random()*4`, also Radius 19…23 um die
        Seemitte (0|146). Der Torwaechter war `freiPlatz(sx9,sz9,0)`, und dort steht:
@@ -6116,7 +6145,7 @@ setTimeout(function baueGebaeude(){
          beide mit Trottoir und Mittelstreifen — befahrbar wie die uebrigen Strassen. */
       (function anbindung(){
         var a=cfg.anschluss,ax=a[0],az=a[1];
-        function segment(x1,z1,x2,z2,trimA,trimB,istT){
+        function segment(x1,z1,x2,z2,trimA,trimB,istT,istTA){
           /* trimA/trimB (Runde 93): Meter, um die Gehweg und Bordstein an diesem Ende zurueckbleiben,
              weil dort eine andere Fahrbahn liegt (aeussere Strasse 7, Ecke des L-Wegs 4,5,
              Viertelstrasse 4,7 = bis an deren Gehwegkante). istT: das B-Ende muendet senkrecht in die
@@ -6144,7 +6173,11 @@ setTimeout(function baueGebaeude(){
             if(window._ringStrichLuecke)window._ringStrichLuecke(kx,kz);else (window._ringLueckeWunsch=window._ringLueckeWunsch||[]).push([kx,kz]);}
           var teile=kr===null?[[a0,a1]]:[[a0,kr-5.7],[kr+5.7,a1]];
           var vorw=waag?(x1<x2):(z1<z2), tA=vorw?trimA:trimB, tB=vorw?trimB:trimA;   /* welches Ende ist a0? */
-          var tTa=(!vorw&&istT), tTb=(vorw&&istT);                                  /* liegt das T-Ende bei a0 oder a1? */
+          /* 🚸 istTA (Runde 95, th-kante): muendet das A-Ende senkrecht in die Strasse eines NACHBARN
+             (dessen `nachbarn`-Eintrag zeichnet dort den Zebrastreifen bei 7,4 m), braucht es dieselbe
+             Behandlung wie das T-Ende — Uebergaenge (257,4|-140) und (-285|-257,4) liefen sonst gegen
+             den vollen 12-cm-Stein, weil trimA nur 7 m Luecke liess und nichts absenkte. */
+          var tTa=(!vorw&&istT)||(vorw&&istTA), tTb=(vorw&&istT)||(!vorw&&istTA);   /* liegt ein T-Ende bei a0 oder a1? */
           /* am T-Ende reicht die Luecke bis hinter den Zebrastreifen (10 m); die 3-cm-Platte
              darunter setzt bordsteinKante mit dem "ab"-Stein */
           if(tA)teile=teile.map(function(t){return [Math.max(t[0],a0+(tTa?10:tA)),t[1]];});
@@ -6184,14 +6217,14 @@ setTimeout(function baueGebaeude(){
            Knick schon innerhalb der Strasse, entfaellt er. */
         if(Math.abs(VX-ax)>2&&Math.abs(VZ-az)>2){
           if(laengs){var ex9=VX-Math.sign(VX-ax)*(laenge/2-0.5),ecke9=Math.abs(ex9-ax)>2&&Math.sign(ex9-ax)===Math.sign(VX-ax);
-            segment(ax,az,ax,VZ,7,ecke9?4.5:4.7,!ecke9);                           /* Strasse laeuft in x */
+            segment(ax,az,ax,VZ,7,ecke9?4.5:4.7,!ecke9,!!cfg.anschlussT);                           /* Strasse laeuft in x */
             if(ecke9)segment(ax,VZ,ex9,VZ,6.9,0,false);}
           else      {var ez9=VZ-Math.sign(VZ-az)*(laenge/2-0.5),ecke8=Math.abs(ez9-az)>2&&Math.sign(ez9-az)===Math.sign(VZ-az);
-            segment(ax,az,VX,az,7,ecke8?4.5:4.7,!ecke8);                           /* Strasse laeuft in z */
+            segment(ax,az,VX,az,7,ecke8?4.5:4.7,!ecke8,!!cfg.anschlussT);                           /* Strasse laeuft in z */
             if(ecke8)segment(VX,az,VX,ez9,6.9,0,false);}}
-        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,7,0,false);}   /* gerade, auf der Strassenlinie */
-        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,7,0,false);}
-        else segment(ax,az,VX,VZ,7,4.7,true);   /* gerade, senkrecht in die Strasse */
+        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,7,0,false,!!cfg.anschlussT);}   /* gerade, auf der Strassenlinie */
+        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,7,0,false,!!cfg.anschlussT);}
+        else segment(ax,az,VX,VZ,7,4.7,true,!!cfg.anschlussT);   /* gerade, senkrecht in die Strasse */
       })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
        damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
@@ -6229,6 +6262,12 @@ setTimeout(function baueGebaeude(){
       else{bz=VZ-laenge/2+pos;bx=VX+seite*sb9;}
       /* Schauseite (Tuer) zeigt in three.js nach -z -> zur Strasse drehen */
       var rot=laengs?(seite>0?Math.PI:0):(seite>0?-Math.PI/2:Math.PI/2);
+      /* 🅿️ STELLPLATZ (Runde 95, th-autoboden: zwei Wohnmobile „im Gruenen" auf dem Camping-Rasen —
+         User-Regel „Autos gehoeren nicht auf Rasen" gilt auch dort). `stellplatz:true` legt eine
+         Kiesflaeche (Bau + 1,2 m rundum) auf die Viertelplatte (-0,012 -> -0,009, unter dem Anschluss-Belag). */
+      if(b.stellplatz){var spW=(laengs?bw:bd)+2.4,spD=(laengs?bd:bw)+2.4;
+        var sp9=new THREE.Mesh(new THREE.PlaneGeometry(spW,spD),kacheln(kiesMat(0x9c9384,0.98),spW,spD,3));
+        sp9.rotation.x=-Math.PI/2;sp9.position.set(bx,-0.009,bz);sp9.receiveShadow=true;scene.add(sp9);}
       /* 🐛 Die im cfg angegebenen Masse sind Schaetzwerte — die geladenen Modelle sind oft
          breiter. Der Generator merkt sich darum jedes Gebaeude und rueckt sie nach dem
          Laden anhand der ECHTEN Bounding-Box auseinander (siehe entzerren()). */
@@ -6345,7 +6384,10 @@ setTimeout(function baueGebaeude(){
        verschiebt aber auch den Bauernhof, dessen Aecker, Zaeune, Traktor und Heuballen
        auf festen Koordinaten liegen. Das ist eine eigene Runde wert. */
     var _go = viertel({name:"Gewerbe Rietli",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
-      freiQuer:[-140],nachbarn:[[-140,1]],   /* Runde 95: Einmuendung der Neustadt (Osten) bei z -140 */
+      freiQuer:[-160,-140],nachbarn:[[-140,1]],   /* Runde 95: Einmuendung der Neustadt (Osten) bei z -140;
+         -160 nur fuer die Randbaeume: der Ost-Randbaum (294|-160) stand auf dem Flughafen-Vorfeld, das seit
+         Runde 92 die Nordost-Ecke dieser Platte (x 266…298, z -168…-153) ueberdeckt. Die Bauzeile aendert
+         sich dadurch nicht (der -140-Korridor schiebt den ersten Bau ohnehin auf denselben Platz). */
       anschluss:[112,0],abstand:13,luecke:10,rand:14,
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
          richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
@@ -6694,7 +6736,7 @@ setTimeout(function baueGebaeude(){
        Fuss der Kuppe (456|-67). Jetzt x 370 / w 100 (320…420): 22 m hinter dem Gewerbe, vor der Kuppe
        (bei z -95 beginnt ihr Fuss erst bei x 410); sechs Bauten statt acht. */
     viertel({name:"Neustadt",x:370,z:-140,w:100,d:90,achse:"x",boden:"platz",
-      anschluss:[250.5,-140],abstand:8,luecke:6,rand:8,
+      anschluss:[250.5,-140],anschlussT:true,abstand:8,luecke:6,rand:8,   /* anschlussT: Gegenstueck zu Gewerbe.nachbarn */
       bauten:[{file:"th10_rathaus.glb",        h:12,w:20.3,d:17.9},
               {file:"th10_bibliothek.glb",     h:10,w:22.4,d:17.9},
               {file:"th10_kino.glb",           h:8, w:25.4,d:22.6},
@@ -6726,7 +6768,7 @@ setTimeout(function baueGebaeude(){
        Anschluss: vom Westende der Zoo-Strasse (-285|-250, tatsaechliche Lage) 140 m nach Norden; der
        Zoo traegt dafuer nachbarn. Frei gemessen: x -460…-140, z -460…-330 (Berg -378|-244 endet bei -319). */
     viertel({name:"Burgdorf",x:-300,z:-390,w:150,d:90,achse:"x",boden:"kies",
-      anschluss:[-285,-250],freiQuer:[-285],abstand:6,luecke:7,rand:12,   /* freiQuer: der Turm stand sonst in der T-Einmuendung */
+      anschluss:[-285,-250],anschlussT:true,freiQuer:[-285],abstand:6,luecke:7,rand:12,   /* anschlussT: Gegenstueck zu Zoo.nachbarn */   /* freiQuer: der Turm stand sonst in der T-Einmuendung */
       bauten:[{file:"building_castle.glb",   h:22, w:21.6,d:23.5},
               {file:"bd_barn.glb",           h:7,  w:9,   d:9.6},
               {file:"bd_house_c.glb",        h:6,  w:10.8,d:11.9},
@@ -6747,9 +6789,9 @@ setTimeout(function baueGebaeude(){
       bauten:[{file:"th26_wasserfall.glb",    h:18, w:35,  d:30.9,tuer:false},
               {file:"th16_grillplatz.glb",    h:2.1,w:11.4,d:11.5,tuer:false},
               {file:"th26_hoehleneingang.glb",h:14, w:27.3,d:31.6,tuer:false},
-              {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false},
+              {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false, stellplatz:true},
               {file:"th26_bergsee.glb",       h:5.7,w:24,  d:20.8,tuer:false},
-              {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false},
+              {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false, stellplatz:true},
               {file:"th26_haengebruecke.glb", h:4.3,w:6.6, d:24.3,tuer:false},
               {file:"cc0_tent.glb",           h:2.2,w:2.5, d:2.5, tuer:false}]});
     if(_cp){(function(){var cx=_cp.x,cz=_cp.z;   /* Zelte, Feuer, Holz zwischen den Wohnmobilen (Suedseite) */
@@ -6776,11 +6818,19 @@ setTimeout(function baueGebaeude(){
          der Flughafen hatte Bahn und Bauten, aber keine Standflaeche. Beton zwischen Bahnkante
          (z BAHN+8, die Bahnbefeuerung reicht bis +8) und dem Gehweg der Anbindung (z BAHN+47);
          Standlinie unter dem Rumpf, Haltebalken, weisse Vorfeldkante zur Bahn. */
-      var VF=new THREE.Mesh(new THREE.PlaneGeometry(64,36),betMat(0x9d9da2,0.95));
-      VF.rotation.x=-Math.PI/2;VF.position.set(FX-9,-0.006,BAHN+27);VF.receiveShadow=true;scene.add(VF);
+      /* ⚠️ 64 -> 50 m (Runde 95): mit Neustadt bei x 320…420 ragte das 64-m-Vorfeld (x 259…323)
+         3 m in die Neustadt-Platte. 50 m um FX-8 (x 267…317) reicht — GEMESSEN (Sonde probe-vorfeld,
+         Weltkaesten): Tragflaechen 268…292, Tankwagen 300…308, Gepaeckwagen 308…316 (beide liegen trotz
+         rot 1,57 laengs x), Ostlinie 308. Bis zur Platte bleiben 3 m Wiese (ein 1-m-Streifen saehe aus
+         wie ein Riss). Erster Anlauf mit FX-16 (259…309) liess den Gepaeckwagen im Gras stehen
+         (th-autoboden) — beim Schmalermachen die OSTKANTE halten, nicht die Westkante.
+         Rechteck fuer die Streu-Sperre merken. */
+      var VF=new THREE.Mesh(new THREE.PlaneGeometry(50,36),betMat(0x9d9da2,0.95));
+      VF.rotation.x=-Math.PI/2;VF.position.set(FX-8,-0.006,BAHN+27);VF.receiveShadow=true;scene.add(VF);
+      window._flugfeld={x0:FX-70.4,x1:FX+70.4,z0:BAHN-8,z1:BAHN+46};
       var vfM=new THREE.MeshStandardMaterial({color:0xe2c23a,roughness:0.8});vfM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfM);
       var vfW=new THREE.MeshStandardMaterial({color:0xe8e8e0,roughness:0.8});vfW.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfW);
-      [[FX-20,BAHN+27,0.3,34,vfM],[FX-20,BAHN+22,3.2,0.3,vfM],[FX-9,BAHN+9.6,64,0.2,vfW],[FX+8,BAHN+27,0.2,34,vfW]].forEach(function(L){
+      [[FX-20,BAHN+27,0.3,34,vfM],[FX-20,BAHN+22,3.2,0.3,vfM],[FX-8,BAHN+9.6,50,0.2,vfW],[FX+8,BAHN+27,0.2,34,vfW]].forEach(function(L){
         var l=new THREE.Mesh(new THREE.PlaneGeometry(L[2],L[3]),L[4]);
         l.rotation.x=-Math.PI/2;l.position.set(L[0],0.004,L[1]);scene.add(l);});
       bau("th25_flugzeug.glb",       8,  FX-20,0,BAHN+22, 0,   false,null,true);
@@ -7585,6 +7635,11 @@ setTimeout(function baueGebaeude(){
         for(var s2=-1;s2<=1;s2+=2){
           var x=laengs?(v.x+t):(v.x+s2*off), z=laengs?(v.z+s2*off):(v.z+t);
           if(typeof imBau==="function"&&imBau(x,z))continue;
+          /* 🚸 Runde 95 (th-kante, Sonde probe-zebra): Bank (258,5|-145) und Abfalleimer (258,5|-134) des
+             Gewerbe-Viertels standen genau an den Enden des Zebrastreifens ueber den Neustadt-Stich —
+             der 11-m-Takt kennt keine Wege, die spaeter durch das Viertel fuehren. Alle Baender
+             (Viertelstrassen + Anschluesse, mit Gehweg) sind zu diesem Zeitpunkt bekannt. */
+          if(window._aufViertelWeg&&window._aufViertelWeg(x,z,3))continue;
           var m=satz[i++%satz.length];
           bau(m[0],m[1],x,0,z,laengs?(s2>0?Math.PI:0):(s2>0?-Math.PI/2:Math.PI/2),false,null,true);
           n++;}}
