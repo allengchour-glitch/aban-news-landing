@@ -36,5 +36,8 @@ SoundFont: `/usr/share/sounds/sf2/FluidR3_GM.sf2`
 
 ## Genres bisher (automation/music/)
 luxe-liquid-dnb ✅(freigegeben) · luxe-cinematic-house · luxe-orchestra · luxe-lounge-sax · luxe-premium ·
-luxe-hype-pro. NEUES Genre: Agent-Recherche → build_<genre>_midi.py → render.sh. Marken-Video:
+luxe-hype-pro · **luxe-celtic-epic** (24.09., keltisch-episches Anime-Abenteuer, Lead-Spur + Gemini-Hörschleife). NEUES Genre: Agent-Recherche → build_<genre>_midi.py → render.sh. Marken-Video:
 ffmpeg Logo + showwaves-Waveform (vertikal 1080x1920) → YouTube.
+
+## Hörschleife (24.09.2026)
+Kein Ohr im Container → MP3 an Gemini-Audio (Prompt: Mix-Balance, Dynamik, 5 Verbesserungen mit Zeitstempeln), Spektrogramm (`showspectrumpic`) + RMS je Abschnitt. Gemini für Mix gut, für «klingt wie Stück X» unzuverlässig (widersprüchliche Treffer) — Originalität sichert die eigene Komposition, nicht ein KI-Urteil.

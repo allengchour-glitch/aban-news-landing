@@ -28228,3 +28228,11 @@ gid://shopify/Product/15507730661761	CHF 24.08	16 Varianten	Outdoor Freizeit-Sch
 gid://shopify/Product/15507730694529	CHF 24.67	12 Varianten	Herren Freizeit-Sneaker im Hong Kong Stil
 gid://shopify/Product/15448114135425	CHF 20.40	4 Varianten	Eleganter Jumpsuit mit Woll-Applikationen
 gid://shopify/Product/15448114168193	CHF 18.16	36 Varianten	Gemusterter Langarm-Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448114233729	CHF 15.13	30 Varianten	Damen weiter Jumpsuit mit Trägern
+gid://shopify/Product/15448114299265	CHF 15.13	4 Varianten	Denim-Latzhose im Loose-Fit
+gid://shopify/Product/15448114332033	CHF 19.63	42 Varianten	Lockerer Jumpsuit mit weitem Bein und Spaghettiträ
+gid://shopify/Product/15448114463105	CHF 19.04	42 Varianten	Ärmelloser Jumpsuit mit weitem Bein – S-Dark Brown
+gid://shopify/Product/15448114561409	CHF 16.66	36 Varianten	Eleganter V-Ausschnitt Jumpsuit für Damen
+gid://shopify/Product/15448114594177	CHF 15.59	35 Varianten	Leinen-Jumpsuit mit weitem Bein und V-Ausschnitt
+gid://shopify/Product/15448114626945	CHF 15.33	30 Varianten	Ärmelloser Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448114659713	CHF 18.38	36 Varianten	Eleganter Langarm-Jumpsuit mit weitem Bein

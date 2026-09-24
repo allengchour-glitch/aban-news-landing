@@ -38,6 +38,8 @@ const MEDIEN = 'social/reels';
 const BRANCH = 'claude/luxestyle-status-tztnn1';
 const RAW = `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/${BRANCH}/${MEDIEN}/`;
 const MUSIC = ['luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-house1.wav', 'luxe-hype-pro.mp3', 'luxe-liquid-dnb.wav', 'luxe-orchestra.wav'];
+// 24.09.2026 Betreiber «fairy tail theme anime musik das finde ich super»: eigenes Stück luxe-celtic-epic.wav
+// (keltisch-episch, Melodie neu komponiert, produce/build_celtic_epic_midi.py) in Gadget/Fitness/Haustier/Kinder.
 // Musik v2 (23.09.2026, Betreiber «verbessere musik»): Stück nach Warengruppe statt pid % 6, alle 12 eigenen Stücke
 // (die drei Kevin-MacLeod-Stücke bleiben draussen — CC BY verlangt eine Quellenangabe in jeder Caption), Einstieg am
 // gemessenen Energie-Fenster (automation/music/_einstiege.json, automation/music/einstiege.py) statt beim Intro,
@@ -46,12 +48,12 @@ const STIMMUNG = {
   beauty:   ['luxe-lounge-sax.wav', 'luxe-premium.wav', 'luxe-cinematic-house.wav', 'luxe-house2.wav'],
   schmuck:  ['luxe-premium.wav', 'luxe-lounge-sax.wav', 'luxe-cinematic-house.wav', 'luxe-orchestra.wav'],
   mode:     ['luxe-house1.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-hype-pro.mp3'],
-  gadget:   ['luxe-hype-pro.mp3', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb.wav', 'luxe-hype1.wav'],
-  fitness:  ['luxe-hype1.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype-pro.mp3'],
+  gadget:   ['luxe-celtic-epic.wav', 'luxe-hype-pro.mp3', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb.wav', 'luxe-hype1.wav'],
+  fitness:  ['luxe-celtic-epic.wav', 'luxe-hype1.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype-pro.mp3'],
   home:     ['luxe-house1.wav', 'luxe-lounge-sax.wav', 'luxe-premium.wav', 'luxe-cinematic-house.wav'],
   kueche:   ['luxe-house2.wav', 'luxe-house1.wav', 'luxe-lounge-sax.wav', 'luxe-hype2.wav'],
-  haustier: ['luxe-hype2.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-house1.wav'],
-  kinder:   ['luxe-hype2.wav', 'luxe-house2.wav', 'luxe-orchestra.wav', 'luxe-cinematic-house.wav'],
+  haustier: ['luxe-celtic-epic.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-house1.wav'],
+  kinder:   ['luxe-celtic-epic.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-orchestra.wav', 'luxe-cinematic-house.wav'],
 };
 const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())];
 const VERLAUF = 'social/_musik_verlauf.txt';

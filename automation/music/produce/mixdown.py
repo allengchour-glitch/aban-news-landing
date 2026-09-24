@@ -26,7 +26,9 @@ if kicks not in ('-',''):
         i=int(kt*SR)
         end=min(i+dur,n); gain[i:end]=np.minimum(gain[i:end],shape[:end-i])
 # Musik + Reese werden geduckt; Drums + FX voll
-mix = (M+0.9*R)*gain + 1.0*D + 0.55*F
+# MIX_DRUMS/MIX_FX: Anteil je Genre (Celtic Epic 24.09.: Lead muss über den Drums stehen, Default wie bisher 1.0/0.55)
+import os
+mix = (M+0.9*R)*gain + float(os.environ.get('MIX_DRUMS','1.0'))*D + float(os.environ.get('MIX_FX','0.55'))*F
 mix/=(np.max(np.abs(mix))+1e-9); mix*=0.9
 wav.write(out,SR,(mix*32767).astype(np.int16))
 print('mixdown+sidechain:',out)
