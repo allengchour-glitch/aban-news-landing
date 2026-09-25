@@ -1,5 +1,17 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 📱 25.09. 21:30 UTC · Android-App (Branch `claude/luxstyle-play-store-app-rjuxbz`) — was der Shop ihr jetzt schuldet
+
+Gegengeprüft an der echten Storefront-API (ohne Token, von hier): alle 7 fest eingebauten Kollektionen liefern Ware
+(`damen-mode`, `sub-halsketten`, `sub-taschen`, `premium-geschenke`, Saison `neu-eingetroffen`/`sommer`/`jacken-outdoor`,
+je 12/12 kaufbar), Rückgabe 30 Tage stimmt mit der Richtlinie. Zwei Dinge sind ab jetzt an die App GEBUNDEN:
+- **Diese 7 Handles nie umbenennen, abmelden oder per 301 umleiten** — die API folgt keinem Redirect, die Reihe wäre
+  leer bis ein App-Update durch die Play-Prüfung ist. `kollektion_doppel.py` gibt ihnen jetzt +1000 (`APP_HANDLES`).
+- **Gratis-Versand ≥ 45 bleibt** — `CartRepository.FREE_SHIPPING_CHF = 45` und der Store-Eintrag versprechen «ab CHF 45».
+  Wer die Regel auf 50 stellt, macht App und Play-Eintrag falsch (zusätzlich zum Einspruch vom 22.09.).
+Offen, nur Betreiber: Play-Entwicklerkonto (25 USD, Ausweis; privat = geschlossener Test 12 Tester × 14 Tage),
+Upload-Schlüssel `luxestyle-upload.jks` sicher aufbewahren, Test auf echtem Handy bis TWINT.
+
 ## 🔄 25.09. 17:40 UTC · Gedächtnis-Abgleich über alle LuxeStyle-Branches (Cloud-Session `claude/luxestyle-status-tztnn1`)
 
 **Übernommen (40 Dateien, nur fehlende, byte-gleich aus `claude/selbststaendiges-lernen-h48e6m`):** Skill `werbevideo`,
