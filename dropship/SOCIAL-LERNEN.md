@@ -1,6 +1,6 @@
-# Social-Lernen — Stand 2026-09-24 22:08 UTC
+# Social-Lernen — Stand 2026-09-25 04:26 UTC
 
-Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 60 · TikTok 19 · Pinterest 70 → **94 Inhalte**; 7 zu junge Posts nicht gezählt.
+Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 61 · TikTok 19 · Pinterest 73 → **98 Inhalte**; 17 zu junge Posts nicht gezählt.
 
 **So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +5 als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + 3)): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×1.68. **n** = Inhalte. **Belastbar erst ab n ≥ 3** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.
 
@@ -10,13 +10,13 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 60 · TikTok 19 · Pint
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
+| haustier | 5 | 1.22 | 1.49 | ja |
 | gadget | 5 | 1.19 | 1.13 | ja |
-| schmuck | 16 | 1.14 | 1.10 | ja |
-| allgemein | 29 | 1.08 | 1.05 | ja |
-| haustier | 5 | 1.05 | 1.00 | ja |
-| home | 14 | 1.05 | 0.92 | ja |
-| beauty | 10 | 1.04 | 0.86 | ja |
-| fitness | 4 | 1.01 | 0.99 | ja |
+| schmuck | 16 | 1.13 | 1.10 | ja |
+| allgemein | 30 | 1.07 | 1.05 | ja |
+| home | 16 | 1.03 | 0.86 | ja |
+| fitness | 5 | 1.02 | 1.00 | ja |
+| beauty | 10 | 1.02 | 0.79 | ja |
 | mode | 10 | 0.90 | 0.96 | ja |
 
 ### Hooks
@@ -27,16 +27,16 @@ _Noch keiner mit n ≥ 3._
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| pinterest 06–09 | 60 | 1.25 | 1.00 | ja |
+| pinterest 06–09 | 60 | 1.23 | 0.98 | ja |
 | instagram 18–21 | 9 | 1.19 | 1.14 | ja |
 | instagram 06–09 | 5 | 1.17 | 1.05 | ja |
 | tiktok 09–12 | 8 | 1.15 | 1.03 | ja |
+| pinterest 15–18 | 5 | 1.10 | 1.00 | ja |
 | instagram 12–15 | 6 | 1.03 | 1.02 | ja |
 | instagram 00–03 | 8 | 1.02 | 1.00 | ja |
-| pinterest 15–18 | 5 | 1.00 | 1.00 | ja |
 | instagram 15–18 | 5 | 0.95 | 0.95 | ja |
-| instagram 21–24 | 9 | 0.92 | 1.10 | ja |
-| instagram 09–12 | 17 | 0.86 | 0.95 | ja |
+| instagram 21–24 | 9 | 0.91 | 1.10 | ja |
+| instagram 09–12 | 17 | 0.86 | 0.90 | ja |
 | tiktok 18–21 | 9 | 0.67 | 0.79 | ja |
 
 ### Musik
@@ -53,13 +53,13 @@ _Noch keiner mit n ≥ 3._
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
+| haustier | 5 | 1.22 | 1.49 | ja |
 | gadget | 5 | 1.19 | 1.13 | ja |
-| schmuck | 16 | 1.14 | 1.10 | ja |
-| allgemein | 29 | 1.08 | 1.05 | ja |
-| haustier | 5 | 1.05 | 1.00 | ja |
-| home | 14 | 1.05 | 0.92 | ja |
-| beauty | 10 | 1.04 | 0.86 | ja |
-| fitness | 4 | 1.01 | 0.99 | ja |
+| schmuck | 16 | 1.13 | 1.10 | ja |
+| allgemein | 30 | 1.07 | 1.05 | ja |
+| home | 16 | 1.03 | 0.86 | ja |
+| fitness | 5 | 1.02 | 1.00 | ja |
+| beauty | 10 | 1.02 | 0.79 | ja |
 | kinder | 1 | 0.96 | 0.86 | vorläufig |
 | mode | 10 | 0.90 | 0.96 | ja |
 
@@ -68,21 +68,23 @@ _Noch keiner mit n ≥ 3._
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | pinterest 09–12 | 2 | 1.68 | 3.68 | vorläufig |
-| pinterest 06–09 | 60 | 1.25 | 1.00 | ja |
+| pinterest 06–09 | 60 | 1.23 | 0.98 | ja |
+| pinterest 12–15 | 1 | 1.19 | 2.00 | vorläufig |
 | instagram 18–21 | 9 | 1.19 | 1.14 | ja |
 | instagram 06–09 | 5 | 1.17 | 1.05 | ja |
 | tiktok 06–09 | 1 | 1.16 | 1.82 | vorläufig |
+| pinterest 18–21 | 2 | 1.15 | 1.41 | vorläufig |
 | tiktok 09–12 | 8 | 1.15 | 1.03 | ja |
+| pinterest 15–18 | 5 | 1.10 | 1.00 | ja |
 | instagram 12–15 | 6 | 1.03 | 1.02 | ja |
 | instagram 00–03 | 8 | 1.02 | 1.00 | ja |
-| tiktok 15–18 | 1 | 1.00 | 1.02 | vorläufig |
-| pinterest 18–21 | 2 | 1.00 | 1.00 | vorläufig |
-| pinterest 15–18 | 5 | 1.00 | 1.00 | ja |
-| pinterest 12–15 | 1 | 1.00 | 1.00 | vorläufig |
+| tiktok 15–18 | 1 | 1.01 | 1.03 | vorläufig |
+| pinterest 00–03 | 1 | 0.96 | 0.83 | vorläufig |
 | instagram 15–18 | 5 | 0.95 | 0.95 | ja |
-| instagram 21–24 | 9 | 0.92 | 1.10 | ja |
-| instagram 03–06 | 1 | 0.88 | 0.60 | vorläufig |
-| instagram 09–12 | 17 | 0.86 | 0.95 | ja |
+| pinterest 03–06 | 2 | 0.93 | 0.83 | vorläufig |
+| instagram 03–06 | 2 | 0.91 | 0.79 | vorläufig |
+| instagram 21–24 | 9 | 0.91 | 1.10 | ja |
+| instagram 09–12 | 17 | 0.86 | 0.90 | ja |
 | tiktok 18–21 | 9 | 0.67 | 0.79 | ja |
 
 ### Hooks
@@ -99,7 +101,7 @@ _Noch keiner mit n ≥ 3._
 | Wimpernlift-Kit Jetzt bei LuxeStyle — CHF 24.90. Blitzversan | 1 | 1.07 | 1.29 | vorläufig |
 | Wasserfescht & edel: 1 oder 2? Welä passt zu dir? Schrib's! | 1 | 1.06 | 1.27 | vorläufig |
 | Dini Tasse, din Spruch — sälber gestaltet, perfekts Geschänk | 1 | 1.04 | 1.18 | vorläufig |
-| Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt | 1 | 1.00 | 1.02 | vorläufig |
+| Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt | 1 | 1.01 | 1.03 | vorläufig |
 | Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend Jet | 1 | 1.00 | 0.98 | vorläufig |
 | Welä Ohrring nimmsch — 1 oder 2? Schrib's i d Kommentär! Spe | 1 | 0.99 | 0.95 | vorläufig |
 | Kerzenlicht-Aromadiffuser Jetzt bei LuxeStyle — CHF 14.90. S | 1 | 0.96 | 0.86 | vorläufig |
@@ -112,18 +114,18 @@ _Noch keiner mit n ≥ 3._
 
 | Kanal Format | n | Median-Score |
 |---|---:|---:|
-| instagram bild | 45 | 16 |
+| instagram bild | 46 | 16 |
 | instagram reel | 13 | 37.6 |
 | instagram karussell | 2 | 13 |
 | tiktok reel | 19 | 303 |
-| pinterest pin | 51 | 3 |
+| pinterest pin | 54 | 3.5 |
 | pinterest pin-video | 19 | 8 |
 
 ## Stärkste 5 (gegen den eigenen Kanal-Median)
-- ×8.00 (Score 247, Median 12) · pinterest pin-video · Dis eigete Täschli 🐱 — Motiv ufladä, fertig isch dis Unikat. 💾 Speic · https://www.instagram.com/reel/DbbLU08kr4i/
+- ×8.00 (Score 249, Median 12) · pinterest pin-video · Dis eigete Täschli 🐱 — Motiv ufladä, fertig isch dis Unikat. 💾 Speic · https://www.instagram.com/reel/DbbLU08kr4i/
 - ×8.00 (Score 125, Median 4) · pinterest pin · Drei traumhafte Ohrring-Paare, hypoallergen und sanft zu deinen Ohren  · https://www.instagram.com/p/DbWd5w_kso0/
 - ×8.00 (Score 230, Median 8) · pinterest pin-video · Das isch LuxeStyle 🇨🇭 Premium-Mode, Schmuck u Beauty us de Schwiz —  · https://www.instagram.com/reel/DaqQVciD6ni/
-- ×8.00 (Score 1907, Median 8) · pinterest pin-video · Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz — fair im  · https://www.instagram.com/reel/Danrc0ukq1R/
+- ×8.00 (Score 1908, Median 8) · pinterest pin-video · Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz — fair im  · https://www.instagram.com/reel/Danrc0ukq1R/
 - ×7.78 (Score 65, Median 4) · pinterest pin · Statement am Handgelenk 🔗 Cuban-Link-Armband, Edelstahl & wasserfest. · https://www.instagram.com/p/DbVMG4okgei/
 
 ## Schwächste 5
