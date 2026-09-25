@@ -93,3 +93,19 @@
 2026-09-23T20:07:24Z	gid://shopify/Product/15523906224513	google-policy-flag	Google & YouTube	intelligenter-intimreiniger-fur-die-frau-723136
 2026-09-23T20:07:25Z	gid://shopify/Product/15524929175937	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	runder-aschenbecher-aus-keramik-2cef8b
 2026-09-25T03:28:20Z	gid://shopify/Product/15497378038145	google-policy-flag	Google & YouTube	portable-auto-waschburste-4-teilig-605000
+2026-09-25T10:46:43Z	gid://shopify/Product/15413739684225	niedrig-bewertet-nicht-bewerben	Google & YouTube	sommerkleid-armellos-damen-tailliert-elegant-schwarz
+2026-09-25T10:46:44Z	gid://shopify/Product/15446071640449	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	straffendes-pflegeol-fur-den-intimbereich-mit-460097
+2026-09-25T10:46:45Z	gid://shopify/Product/15446272639361	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	led-laser-offroad-scheinwerfer-638301
+2026-09-25T10:46:46Z	gid://shopify/Product/15447898915201	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	lederriemen-mit-kette-fur-damen-625100
+2026-09-25T10:46:47Z	gid://shopify/Product/15447936893313	google-policy-flag, nicht-google-bewerben	Google & YouTube	aurora-nahtlose-ultra-dunne-strumpfhose-622000
+2026-09-25T10:46:47Z	gid://shopify/Product/15447978115457	adult-nicht-bewerben, gmc-adult-pull	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	perlenbesetztes-neckholder-minikleid-988098
+2026-09-25T10:46:48Z	gid://shopify/Product/15448019796353	google-policy-flag, nicht-google-bewerben	Google & YouTube	gestricktes-langarmhemd-mit-falten-optik-267522
+2026-09-25T10:46:49Z	gid://shopify/Product/15448022974849	google-policy-flag, nicht-google-bewerben	Google & YouTube	langes-strickjackchen-mit-lochmuster-866818
+2026-09-25T10:46:50Z	gid://shopify/Product/15448030183809	adult-nicht-bewerben, gmc-adult-pull	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	off-shoulder-strandbluse-mit-seitenschlitz-490113
+2026-09-25T10:46:51Z	gid://shopify/Product/15448076190081	google-policy-flag, nicht-google-bewerben	Google & YouTube	elegantes-bikini-set-mit-hohem-kragen-589058
+2026-09-25T10:46:52Z	gid://shopify/Product/15448077795713	google-policy-flag, nicht-google-bewerben	Google & YouTube	pailletten-body-chain-top-613400
+2026-09-25T10:46:53Z	gid://shopify/Product/15448111284609	google-policy-flag, nicht-google-bewerben	Google & YouTube	halter-body-mit-v-ausschnitt-636400
+2026-09-25T10:46:54Z	gid://shopify/Product/15448111415681	google-policy-flag, nicht-google-bewerben	Google & YouTube	eleganter-skinny-jumpsuit-mit-reissverschluss-630700
+2026-09-25T10:46:55Z	gid://shopify/Product/15448114725249	google-policy-flag, nicht-google-bewerben	Google & YouTube	armelloser-jumpsuit-mit-engem-oberteil-und-wei-615400
+2026-09-25T10:46:56Z	gid://shopify/Product/15448116068737	google-policy-flag, nicht-google-bewerben	Google & YouTube	nahtloser-v-ausschnitt-yoga-jumpsuit-606000
+2026-09-25T10:46:57Z	gid://shopify/Product/15448525111681	google-policy-flag, nicht-google-bewerben	Google & YouTube	eng-anliegender-jumpsuit-mit-rundhals-624000
