@@ -33199,3 +33199,5 @@ gid://shopify/Product/15478824993153	CHF 11.37	1 Varianten	Gepolstertes Kissen m
 gid://shopify/Product/15479005675905	CHF 18.87	1 Varianten	Mini Waschbecher
 gid://shopify/Product/15479005905281	CHF 24.07	1 Varianten	Mini Waschmaschine
 gid://shopify/Product/15479007347073	CHF 10.24	1 Varianten	Elegant Embroidered Kissenbezug
+gid://shopify/Product/15479007379841	CHF 7.03	1 Varianten	Titanium Stahl Armband
+gid://shopify/Product/15479007510913	CHF 10.46	1 Varianten	Wabi-Sabi Sofakissenbezug mit Stickerei
