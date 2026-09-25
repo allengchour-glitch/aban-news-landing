@@ -32622,3 +32622,5 @@ gid://shopify/Product/15476180910465	CHF 14.02	45 Varianten	Bedruckter Hoodie f�
 gid://shopify/Product/15476184187265	CHF 13.49	99 Varianten	Hoodie mit 3D Digital Katzen-Print für Paare
 gid://shopify/Product/15476184318337	CHF 17.29	72 Varianten	Herren Hoodie mit Reissverschluss & Print
 gid://shopify/Product/15476184580481	CHF 20.84	4 Varianten	Herren Hoodie mit Ripped-Design
+gid://shopify/Product/15476184678785	CHF 50.45	15 Varianten	Vintage Langarmshirt im Lagenlook für Herren
+gid://shopify/Product/15476184711553	CHF 11.46	24 Varianten	Lässiger Hoodie mit Letter-Print
