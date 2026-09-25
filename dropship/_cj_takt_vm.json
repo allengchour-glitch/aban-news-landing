@@ -1,15 +1,14 @@
 {
  "host": "vm",
- "stunde": "2026-09-25T04:00Z",
- "stand": "2026-09-25T04:08:31Z",
+ "stunde": "2026-09-25T05:00Z",
+ "stand": "2026-09-25T05:08:36Z",
  "fenster_min": 60,
- "summe": 111,
+ "summe": 1179,
  "skripte": {
-  "cj_kosten_backfill.mjs": 91,
-  "cj_fulfill_engine.py": 10,
-  "versand_stillstand.py": 4,
-  "cj_zahlung_offen.py": 4,
-  "cj_order_watch.py": 1,
+  "cj_kosten_backfill.mjs": 1136,
+  "cj_fulfill_engine.py": 24,
+  "cj_zahlung_offen.py": 10,
+  "versand_stillstand.py": 8,
   "cj_video_index.mjs": 1
  }
 }
