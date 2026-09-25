@@ -31155,3 +31155,7 @@ gid://shopify/Product/15466918773121	CHF 16.16	21 Varianten	Karohemd im amerikan
 gid://shopify/Product/15466918838657	CHF 12.50	35 Varianten	Herren Freizeithose mit Reissverschluss
 gid://shopify/Product/15466920116609	CHF 7.75	1 Varianten	Serpent Skull Anhänger aus Edelstahl
 gid://shopify/Product/15466920182145	CHF 51.27	1 Varianten	Dach-Reparaturflicken, wasserdicht
+gid://shopify/Product/15467017372033	CHF 7.12	9 Varianten	Personalisierter Stahlring
+gid://shopify/Product/15467017437569	CHF 8.08	1 Varianten	Eleganter Tasselschmuck
+gid://shopify/Product/15467017503105	CHF 17.98	32 Varianten	Langarm-Kleid mit Taschen
+gid://shopify/Product/15467017535873	CHF 16.10	36 Varianten	Kunststoffkleid · Damen
