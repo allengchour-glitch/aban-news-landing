@@ -79,6 +79,31 @@ def _lese(g):
     return raus
 
 
+# 25.09.2026 (Betreiber-Screenshot IG-Profil): «LED multifunctional desk lamp · Three levels of brightness» und «Beige/BEIGE»
+# standen gut lesbar im Bild — die Ganzbild-Lesart las 0 Wörter (1× wie 2×): Tesseracts Seitenaufteilung scheitert an
+# hellem Text auf unruhigem Fotohintergrund. Derselbe Text, als Ausschnitt vergrössert (psm 6), las sich sofort.
+# KACHELN=1 liest zusätzlich 2×2 überlappende Kacheln (je auf ≥1400 px vergrössert, psm 6) und zählt die Vereinigung.
+# Opt-in wie ZWEILESARTEN: die Queue-/Backfill-Wächter behalten ihre geeichte Lesart. Nutzer: Bild-Poster (Social).
+KACHELN = os.environ.get("KACHELN") == "1"
+
+def _kacheln(g):
+    gef = []
+    w, h = g.size
+    for (x0, y0) in ((0, 0), (0.45, 0), (0, 0.45), (0.45, 0.45)):
+        k = g.crop((int(x0 * w), int(y0 * h), int((x0 + 0.55) * w), int((y0 + 0.55) * h)))
+        s = max(1.0, 1400 / max(k.size))
+        k = k.resize((int(k.width * s), int(k.height * s)), Image.LANCZOS)
+        d = pytesseract.image_to_data(k, config="--psm 6", output_type=pytesseract.Output.DICT)
+        for wort, konf in zip(d["text"], d["conf"]):
+            try:
+                kf = float(konf)
+            except (TypeError, ValueError):
+                continue
+            wt = (wort or "").strip()
+            if kf >= SICHERHEIT and WORT.match(wt):
+                gef.append(wt)
+    return gef
+
 def woerter(bild):
     """Gibt die sicher gelesenen Wörter zurück (mind. 3 Buchstaben)."""
     if isinstance(bild, (bytes, bytearray)):
@@ -97,6 +122,11 @@ def woerter(bild):
             zwei = _lese(bild.resize((int(bild.width * s), int(bild.height * s)), Image.LANCZOS))
             if len(zwei) > len(raus):
                 raus = zwei
+    if KACHELN:
+        # Vereinigung ohne Doppelzählung überlappender Kacheln (gleiches Wort, gleiche Schreibung)
+        k = list(dict.fromkeys(_kacheln(bild)))
+        if len(k) > len(raus):
+            raus = k
     return raus
 
 

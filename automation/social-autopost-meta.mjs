@@ -20,6 +20,7 @@
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
 import fs from 'node:fs';
+import { execFileSync as _exf } from 'node:child_process';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
          produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang } from './post_guard.mjs';
@@ -269,6 +270,25 @@ for(const next of ready.slice(0, MAX)){
     continue;
   }
   if(pa.ok === null){ console.log(`   ⚠️ Produkt nicht pruefbar (${pa.grund}) → Zeile bleibt ready, naechster Lauf`); continue; }
+  // ⛔ ZEHNTE SCHICHT (25.09.2026, Betreiber-Screenshot IG-Profil): Lieferanten-Werbetext IM BILD. Das Lampenbild mit
+  // «LED multifunctional desk lamp · Three levels of brightness» ging am 24.09. raus. Keine Schicht las das Bild; der
+  // vorhandene Detektor (Ganzbild-OCR) las dort 0 Wörter. Jetzt: bildtext_pruefen mit KACHELN=1 (2×2 Ausschnitte,
+  // geeicht 25.09.: Lampe 15 Wörter, saubere Posts ≤ 3). Ab WORTGRENZE (4) → «text-im-bild-skip».
+  // −1 (unlesbar) heisst unbekannt, nicht sauber → Zeile bleibt ready.
+  {
+    let n = -1;
+    try {
+      const raus = _exf('python3', [new URL('./bildtext_pruefen.py', import.meta.url).pathname, '--url', imageUrl],
+        { encoding: 'utf8', timeout: 120000, env: { ...process.env, KACHELN: '1' } });
+      n = parseInt(String(raus).trim().split('\n').pop(), 10);
+    } catch {}
+    if (Number.isNaN(n) || n < 0) { console.log(`   ⚠️ Bildtext nicht lesbar → Zeile bleibt ready: ${next[idx.id]}`); continue; }
+    if (n >= 4) {
+      console.log(`   ⛔ ${n} Wörter Lieferantentext im Bild → text-im-bild-skip: ${next[idx.id]}`);
+      if(!DRY){ next[idx.status] = 'text-im-bild-skip'; fs.writeFileSync(CSV, serialize(rows)); }
+      continue;
+    }
+  }
   const fbCaption = fbText(caption, pa.url, 'bild');
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);

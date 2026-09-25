@@ -931,7 +931,8 @@ def beat_raster(musik, einstieg, dauer_max, cache_ordner=None):
 # ================================================================================================ 2 PLAN
 ZONEN = {
     # organisch: Betreiber-Screenshot 23.09. (TikTok/IG-Oberflaeche), Knopfleiste x > 930 bei y 950-1500 (overlay.py)
-    'organisch': dict(oben=200, unten=1440, links=0, rechts=1080, fuss_rechts=930, cx=ov.CX_FUSS),
+    # oben=ov.KOPF_Y (25.09.: 200 → 250, IG-Profilraster schneidet auf 3:4 = y 240-1680, Reel-Symbol bei y 270-355)
+    'organisch': dict(oben=ov.KOPF_Y, unten=1440, links=0, rechts=1080, fuss_rechts=930, cx=ov.CX_FUSS),
     # Meta-Anzeigen: 14 % oben, 35 % unten, 6 % seitlich frei (Meta Ads Guide Reels)
     'meta': dict(oben=269, unten=1248, links=65, rechts=1015, fuss_rechts=1015, cx=540),
 }
