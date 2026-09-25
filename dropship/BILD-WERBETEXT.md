@@ -1,4 +1,4 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-25T05:05:27Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-25T05:06:51Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 704 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
