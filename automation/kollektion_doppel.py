@@ -67,8 +67,17 @@ def sauberer_handle(h):
     return bool(re.fullmatch(r"[a-z0-9-]+", h))
 
 
+# 📱 25.09.2026: Die Android-App (Branch claude/luxstyle-play-store-app-rjuxbz, HomeScreen.kt RAILS +
+# seasonFor) fragt diese Handles FEST ueber die Storefront-API ab. Ein 301 hilft ihr nicht — die API folgt
+# keinem Redirect, `collection(handle:)` liefert dann null und die Reihe bleibt leer, bis ein App-Update
+# durch die Play-Pruefung ist. Deshalb gewinnt ein App-Handle jede Doppel-Gruppe.
+APP_HANDLES = {"damen-mode", "sub-halsketten", "sub-taschen", "premium-geschenke",
+               "neu-eingetroffen", "sommer", "jacken-outdoor"}
+
+
 def punkte(c, menu, start, rot):
     h = c["handle"]; p = 0; gr = []
+    if h in APP_HANDLES: p += 1000; gr.append("android-app")
     if c.get("online"): p += 200; gr.append("online store")
     if h in menu: p += 100; gr.append("menü")
     if h in start: p += 50; gr.append("startseite")
