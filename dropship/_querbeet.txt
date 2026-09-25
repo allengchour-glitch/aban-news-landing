@@ -71,3 +71,6 @@ gid://shopify/Product/15524900831617	2026-09-24	Elektronik & Technik
 gid://shopify/Product/15496936423809	2026-09-24	Gaming
 gid://shopify/Product/15493857051009	2026-09-24	Auto & KFZ-Zubehör
 gid://shopify/Product/15509382791553	2026-09-24	Handy-Zubehör
+gid://shopify/Product/15525478203777	2026-09-25	Uhren
+gid://shopify/Product/15525275533697	2026-09-25	Beauty & Pflege
+gid://shopify/Product/15503163752833	2026-09-25	Parfum & Düfte
