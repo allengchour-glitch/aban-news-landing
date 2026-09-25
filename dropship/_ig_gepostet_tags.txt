@@ -10,3 +10,10 @@
 2026-09-23T21:28Z	gid://shopify/Product/15408458170753	+	ig-seit-2026-09-23	bambus-aufbewahrungssystem-modular
 2026-09-24T05:10Z	gid://shopify/Product/15411555533185	+	ig-seit-2026-09-24	smartwatch-pro-1-78-amoled-herzfrequenz-fitness-tracker-bluetooth
 2026-09-24T05:54Z	gid://shopify/Product/15480340251009	+	ig-seit-2026-09-24	sprechende-kurbis-sussigkeitenschale-727424
+2026-09-25T05:05Z	gid://shopify/Product/15411564446081	+	ig-seit-2026-09-24	mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf
+2026-09-25T05:05Z	gid://shopify/Product/15411565035905	+	ig-seit-2026-09-24	sunset-projektor-led-lampe-stimmungslicht-usb-16-farben-fur-foto-deko
+2026-09-25T05:05Z	gid://shopify/Product/15411565429121	+	ig-seit-2026-09-24	elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln
+2026-09-25T05:05Z	gid://shopify/Product/15412299661697	+	ig-seit-2026-09-25	kuhlmatte-fur-hunde-katzen-ice-silk-selbstkuhlend-waschbar
+2026-09-25T05:05Z	gid://shopify/Product/15522242527617	+	ig-seit-2026-09-24	schwimmboje-mit-doppelairbag-rucksack-782336
+2026-09-25T05:05Z	gid://shopify/Product/15524697014657	+	ig-seit-2026-09-24	smartwatch-mit-touchscreen-herzfrequenz-und-sp-118592
+2026-09-25T05:05Z	gid://shopify/Product/15480284578177	+	ig-seit-2026-09-25	farbprojektionslampe-619700
