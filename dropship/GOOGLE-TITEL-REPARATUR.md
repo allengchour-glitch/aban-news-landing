@@ -16,41 +16,29 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-24T04:26:21Z — SCHARF
+## Letzter Lauf 2026-09-25T00:35:32Z — SCHARF
 
-Gescannt 50003 aktive von 50003 (EXACT); Wächter-Stand 19 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 84x gewartet, 803 s gesamt.
+Gescannt 49888 aktive von 49888 (EXACT); Wächter-Stand 19 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
-| used-look-jeans-mit-leicht-ausgestelltem-bein-621700 | USED-TEXT | Beschreibung | ok |
-| herren-jeansjacke-im-used-look-609500 | USED-TEXT | Beschreibung | ok |
-| erhohende-board-schuhe-im-used-look-605300 | USED-TEXT | Beschreibung | ok |
-| ombre-t-shirt-mit-used-look-602800 | USED-TEXT | Beschreibung | ok |
-| herren-hoodie-im-used-look-633500 | USED-TEXT | Beschreibung | ok |
-| patchwork-wide-leg-jeans-im-used-look-612400 | USED-TEXT | Beschreibung | ok |
-| rebellious-washed-distressed-short-sleeve-top-633300 | USED-TEXT | Beschreibung | ok |
-| herren-jeans-im-used-look-636600 | USED-TEXT | Beschreibung | ok |
-| used-look-patchwork-jeans-fur-herren-625300 | USED-TEXT | Beschreibung | ok |
-| st-michael-distressed-zip-up-hoodie-616100 | USED-TEXT | Beschreibung | ok |
-| retro-straight-jeans-mit-used-look-628400 | USED-TEXT | Beschreibung | ok |
-| slim-fit-used-look-jeans-fur-herren-616600 | USED-TEXT | Beschreibung | ok |
-| heavyweight-kapuzenjacke-im-used-look-631300 | USED-TEXT | Beschreibung | ok |
-| used-look-jeans-fur-herren-600800 | USED-TEXT | Beschreibung | ok |
-| laser-silber-rippband-75mm-50-yards-026496 | EINZEL | Beschreibung | ok |
-| herren-langarmhemd-im-used-look-620200 | USED-TEXT | Beschreibung | ok |
-| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung | text-sperre-belegt |
-| 1-zoll-zapfpistole-fur-diesel-und-benzin-257024 | EINZEL | Beschreibung | text-sperre-belegt |
-| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung | text-sperre-belegt |
-| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung | text-sperre-belegt |
+| portable-auto-waschburste-4-teilig-605000 | POLICY | +google-policy-drogen,google-policy-flag | ok |
+| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung | ok |
+| 1-zoll-zapfpistole-fur-diesel-und-benzin-257024 | EINZEL | Beschreibung | ok |
+| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung | ok |
+| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung | ok |
 
 ## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
 
-- eleganter-wollmantel-fur-damen-601200: Title under review
+- reflektierendes-hundehalsband-mit-cartoon-must-614100: Inappropriate title
+- slim-fit-jeans-in-lila-schwarz-606200: Inappropriate title
+- stahlarmband-mit-fallschirmschlie-e-618900: Inappropriate title
+- stylische-crossbody-bag-aus-rindsleder-639500: Inappropriate title
+- vintage-boho-damenkleid-615700: Inappropriate title
 
 ## Ledger gesamt
 
-44 Produkte mit rückgelesenen Änderungen; 4 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+45 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -98,6 +86,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - kompakter-zigarrenkasten-627900: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - menstruationscup-fur-frauen-625600: typ Wellness & Gesundheit; tags_dazu google-policy-flag,google-policy-titel,intimpflege
 - multifunktionaler-aschenbecher-mit-luftreinige-617900: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- portable-auto-waschburste-4-teilig-605000: tags_dazu google-policy-drogen,google-policy-flag
 - portabler-luftreiniger-aschenbecher-437952: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - runder-aschenbecher-aus-keramik-2cef8b: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - schockresistenter-schutz-625600: typ Handy-Zubehör
@@ -107,9 +96,49 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
 
-Noch offene Beschreibungen:
+## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
 
-- retro-ohrringe-im-used-look-mit-kettendetail-626900: USED
-- 1-zoll-zapfpistole-fur-diesel-und-benzin-257024: EINZEL
-- biden-herrenuhr-ultraflach-mit-kalender-611776: EINZEL
-- twill-umhangetasche-im-used-look-676544: USED
+- zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: keine Google-Meldung
+- used-look-jeans-mit-leicht-ausgestelltem-bein-621700: keine Google-Meldung
+- taktisches-outdoor-stativ-faltbar-ausziehbar-519234: keine Google-Meldung
+- herren-jeansjacke-im-used-look-609500: keine Google-Meldung
+- portabler-luftreiniger-aschenbecher-437952: keine Google-Meldung
+- erhohende-board-schuhe-im-used-look-605300: keine Google-Meldung
+- strandtuch-kleid-new-style-f6bb03: keine Google-Meldung
+- multifunktionaler-aschenbecher-mit-luftreinige-617900: keine Google-Meldung
+- menstruationscup-fur-frauen-625600: keine Google-Meldung
+- keramik-aschenbecher-mit-spiral-muster-629100: keine Google-Meldung
+- aschenbecher-mit-deckel-602700: keine Google-Meldung
+- ombre-t-shirt-mit-used-look-602800: keine Google-Meldung
+- schockresistenter-schutz-625600: keine Google-Meldung
+- herren-hoodie-im-used-look-633500: keine Google-Meldung
+- distressed-washed-denim-jeans-615500: keine Google-Meldung
+- patchwork-wide-leg-jeans-im-used-look-612400: keine Google-Meldung
+- sassy-distressed-hoodie-625300: keine Google-Meldung
+- loose-fit-wide-leg-hose-im-used-look-614900: keine Google-Meldung
+- rebellious-washed-distressed-short-sleeve-top-633300: keine Google-Meldung
+- herren-jeans-im-used-look-636600: keine Google-Meldung
+- used-look-patchwork-jeans-fur-herren-625300: keine Google-Meldung
+- st-michael-distressed-zip-up-hoodie-616100: keine Google-Meldung
+- retro-straight-jeans-mit-used-look-628400: keine Google-Meldung
+- slim-fit-used-look-jeans-fur-herren-616600: keine Google-Meldung
+- heavyweight-kapuzenjacke-im-used-look-631300: keine Google-Meldung
+- used-look-jeans-fur-herren-600800: keine Google-Meldung
+- elektronischer-auto-aschenbecher-mit-ladefunkt-629500: keine Google-Meldung
+- auberginen-zigarrenanzunder-mit-doppelflamme-947328: keine Google-Meldung
+- elektronisches-zigarren-hygrometer-619800: keine Google-Meldung
+- kompakter-zigarrenkasten-627900: keine Google-Meldung
+- eisige-meeresoberflache-607000: keine Google-Meldung
+- laser-silber-rippband-75mm-50-yards-026496: keine Google-Meldung
+- herren-langarmhemd-im-used-look-620200: keine Google-Meldung
+- spiral-pipe-atomizer-fur-trockene-krauter-467392: keine Google-Meldung
+- baustein-luxuslimousine-auf-raedern-334528: keine Google-Meldung
+- retro-ohrringe-im-used-look-mit-kettendetail-626900: keine Google-Meldung
+- 1-zoll-zapfpistole-fur-diesel-und-benzin-257024: keine Google-Meldung
+- biden-herrenuhr-ultraflach-mit-kalender-611776: keine Google-Meldung
+- biden-herren-quarzuhr-hohl-leger-052544: keine Google-Meldung
+- k68-signal-detektor-46ae1c: keine Google-Meldung
+- twill-umhangetasche-im-used-look-676544: keine Google-Meldung
+- smarter-aschenbecher-mit-luftreiniger-fur-auto-042304: keine Google-Meldung
+- intelligenter-intimreiniger-fur-die-frau-723136: keine Google-Meldung
+- runder-aschenbecher-aus-keramik-2cef8b: keine Google-Meldung
