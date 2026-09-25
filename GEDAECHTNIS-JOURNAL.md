@@ -949,6 +949,17 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 84 (25.09.2026) — 💤 Still gestorben: ein Neustart hinterlässt keine Fehlerzeile
+Ampel 12:22 «FORTURA-BESTAND 1 T alt». Der Tageslauf hatte um 02:10 den Feed geladen und starb beim Container-Neustart —
+ohne Traceback, ohne Schlusszeile, Sperrdatei auf totem PID. Das Tor setzt seinen Anspruch VOR dem Lauf (richtig gegen
+Doppelstarts, Lehre 21.09.) und `absturz_nachholen` (Nachtrag 65) sucht Traceback/Error — also galt der Tag als erledigt,
+nächster Versuch nach 20 h. Neu: `still_gestorben LOG` (letzte Schreibung vor dem Container-Start + keine FERTIG/PAUSE-Zeile,
+≤ 3×/Tag), zugeschaltet nur an Toren mit UNBEDINGTER Schlusszeile (Fortura-Bestand, Wahlversprechen). Gemessen über 47
+Tor-Logs: 20 ohne Schlusszeile, aber die meisten Skripte schreiben FERTIG nur bedingt — dort wäre das Fehlen kein Beweis.
+**Lehren:** (1) Bei stündlichen Neustarts ist «still gestorben» der Normalfall, nicht Traceback. (2) Ein Nachhol-Signal
+braucht einen Vertrag: nur wer IMMER eine Schlusszeile schreibt, darf an ihrem Fehlen gemessen werden. (3) Container-
+Startzeit (`/proc/uptime`) ist der Beweis, dass ein Prozess vor ihr nicht mehr läuft.
+
 ### Nachtrag 83 (25.09.2026) — 🏆 «weltklasse»: die Saison-Reihe stand auf Platz 17, und eine Kollektion zählt Entwürfe mit
 Betreiber «weltklasse luxestyle machen». Zwei Befunde: (a) Die Halloween-Reihe war als erste WECHSEL-Reihe auf Platz 17 von 25 —
 die Rotation setzte den Saisonkatalog richtig, aber nie die POSITION. Regel 6 in `homepage_katalog_rotation.py` stellt sie im
@@ -16685,3 +16696,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🔗 **«Direktlinks kommentieren bei jedem Post»: klickbar nur auf Facebook (IG/TikTok nein, Shorts seit 08/2023 nein, Pinterest = Pin selbst) → `fb_link_kommentar.mjs` (Link aus Text/Queue/Caption, FB-Reel = Post+Reel → Doppel-Sperre), 7 live, Autopilot 30 Min.** Erst prüfen, wo der Link wirkt → Journal Nachtrag 42
 - 2026-09-23 · 🔑 **Social-Messung umgesetzt (1): Karussell-Slides `01.jpg` kollidierten im gemeinsamen Ledger (jedes 2. Set = «Doppelpost») → `mediaKey` mit Set-Ordner; Kristall-Quittung lag im Autostash (nur `igLiveHas` schützte) → nachgetragen + 573 Ledger-Zeilen per Union; Klingenregel englisch + «Messer mit Hülle» = Klinge im Paket (14 neu, 0 weg, 6 gedraftet); Kollektion «Gerade auf Instagram» für den Bio-Link.** Ein Zubehörwort im Titel ist kein Zubehör im Paket; Diff über den Voll-Export statt nur Kanarienvögel → Journal Nachtrag 43
 - 2026-09-23 · 🧬 **Konfliktmarker im Repo: `autocommit.sh` liess einen gescheiterten Merge offen, der nächste `add -A dropship/`+commit schloss ihn MIT Markern ab (Server, 3 Commits) → `_kategorie_stand.json` unlesbar. Jetzt Auflösen je Dateiart (Ledger Union, Zustand eigene, Code Abbruch) + Marker-Sperre vor dem Push, Durchlauf `--einmal` (Server übernimmt ohne Neustart).** Wer automatisch merged, erkennt den offenen Merge VOR dem nächsten `add` → Journal Nachtrag 44
+- 2026-09-23 · 🔓 **Social-Max integriert + zwei Sperr-Klassen an der Wurzel: Stimme wäre per edge-tts (keine Werbelizenz) bei 50 % live gegangen → opt-in; `rebase.autoStash` liess «unmerged» Dateien ohne MERGE_HEAD → `git_sichern.sh` (Merge, kein Autostash) für Motor/Committer/mich; Deadlock Text-Sperre ⟷ Shopify-Schranke (6 Wächter bis 3 h) → wer fd 8 hält, wartet nie; Heilversprechen-Vollscan 26 (23 entschärft, 3 gedraftet).** Sperren in fester Reihenfolge; neue Fähigkeit mit Rechtsfrage startet aus → Journal Nachtrag 45

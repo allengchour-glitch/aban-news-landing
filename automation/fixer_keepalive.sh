@@ -67,6 +67,26 @@ absturz_nachholen() {
   return 0
 }
 
+# still_gestorben LOG — 25.09.2026: Der Container startet ~stündlich neu. Ein Tageslauf, der dabei stirbt,
+# hinterlässt KEINE Fehlerzeile (absturz_nachholen sieht nur Traceback/Error) — und weil der Anspruch
+# (touch) VOR dem Start gesetzt wird, gilt der Tag als erledigt. Gemessen: Fortura-Bestandsabgleich
+# 25.09. 02:10 geladen, beim Neustart gestorben, nächster Versuch erst nach 20 h → Bestand 30 h alt.
+# NUR für Jobs, deren LETZTE Zeile IMMER FERTIG oder PAUSE ist (sonst beweist das Fehlen nichts):
+# letzte Schreibung vor dem Container-Start + keine Schlusszeile = gestorben. Höchstens 3×/Tag.
+still_gestorben() {
+  local log="$1" boot z n
+  [ -f "$log" ] || return 1
+  boot=$(( $(date +%s) - $(cut -d. -f1 /proc/uptime) ))
+  [ "$(stat -c %Y "$log")" -lt "$boot" ] || return 1
+  tail -n 3 "$log" | grep -qE "FERTIG|PAUSE" && return 1
+  z="/tmp/_still_$(basename "$log" .log)_$(date -u +%Y%m%d)"
+  n=$(cat "$z" 2>/dev/null); case "$n" in (''|*[!0-9]*) n=0 ;; esac
+  [ "$n" -lt 3 ] || return 1
+  echo $(( n + 1 )) > "$z"
+  echo "$(date -u +%H:%M) Still gestorben (Container-Neustart) → nachholen: $(basename "$log") (Versuch $(( n + 1 ))/3)"
+  return 0
+}
+
 dreht_sich_im_kreis() {
   local n="$1" start="/tmp/_start_$1" zaehler="/tmp/_schnellende_$1" gemeckert="/tmp/_kreis_gemeldet_$1"
   if [ -f "$start" ]; then
@@ -1018,7 +1038,7 @@ while true; do
   WV=/tmp/wahlversprechen.log
   if [ -f "$REPO/automation/wahlversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WV" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WV"; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WV" || still_gestorben "$WV"; then
       touch "$WV"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # ⚠️ MIT FIX=1, aber bewusst eng: Der Lauf fasst NUR reine Absaetze und eindeutige
       # Listenpunkte an, nie einen Absatz mit Auszeichnung, und schreibt jede Streichung ins
@@ -1522,7 +1542,7 @@ KLT=/tmp/test_klingen_tor.log
     echo "$(date -u +%H:%M) Bewertungen nachholen: fortgesetzt"
   fi
   FB=/tmp/fortura_bestand.stamp
-  if [ -f /tmp/fortura_env.sh ] && [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] \
+  if [ -f /tmp/fortura_env.sh ] && { [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] || still_gestorben /tmp/fortura_bestand.log; } \
      && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fortura_bestand_taeglich\.sh$/ {f=1} END{exit(f?0:1)}'; then
     touch "$FB"
     ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> /tmp/fortura_bestand.log 2>&1 & )
