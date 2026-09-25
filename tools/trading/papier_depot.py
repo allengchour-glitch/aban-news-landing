@@ -248,7 +248,7 @@ def dt_gegenprobe(tage_n=60):
     """Rückblick: ehrlich ~50 % richtig, mit Kenntnis des Tagesschlusses ~100 %."""
     ok = True
     for sym, name in DT.MAERKTE.items():
-        alle = DT.sitzungen(DT.stunden(sym, offline=True))
+        alle = DT.handelstage(sym, offline=True)
         ehrlich, leck = dt_neu(name), dt_neu(name)
         for k in range(len(alle) - tage_n, len(alle)):
             fertig, heute = alle[:k], alle[k][0]
@@ -313,7 +313,7 @@ def main() -> int:
     heute = dt_heute()
     for sym, name in DT.MAERKTE.items():
         try:
-            alle_s = DT.sitzungen(DT.stunden(sym, args.offline))
+            alle_s = DT.handelstage(sym, args.offline)
         except Exception as ex:
             print(f"  Daytrading {name}: keine Stundenkurse ({ex}) — heute übersprungen")
             continue
