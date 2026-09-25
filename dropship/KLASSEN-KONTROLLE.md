@@ -1,11 +1,11 @@
-# Klassen-Kontrolle (VOLLSCAN, 50003 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 49888 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## USA-Lieferzusage im Text — 343
+## USA-Lieferzusage im Text — 755 (waehrend des Laufs 980 gezaehlt, seither repariert)
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
 
@@ -38,9 +38,9 @@ Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
 - `15412302020993` Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)
 - `15412302414209` Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
 - `15412302512513` Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
-- … und 318 weitere
+- … und 730 weitere
 
-## EU-Lieferzusage im Text — 343
+## EU-Lieferzusage im Text — 751 (waehrend des Laufs 980 gezaehlt, seither repariert)
 
 Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
 
@@ -73,9 +73,9 @@ Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
 - `15412302020993` Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)
 - `15412302414209` Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
 - `15412302512513` Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
-- … und 318 weitere
+- … und 726 weitere
 
-## «Produktdetails» doppelt — 300
+## «Produktdetails» doppelt — 89
 
 Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
 
@@ -83,16 +83,47 @@ Reparatur: `automation/produktdetails_vereinen.py`
 
 Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 
+- `15421620257153` Keil-Sandalen «Capri» · Geflochten, Espadrille-Look
+- `15422040277377` Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
+- `15422401479041` Sommer-Playsuit «Marigold» · Blüten-Print, Träger
+- `15422403051905` Plateau-Pumps «Wild» · Leoparden-Print, Knöchelriemen
+- `15422786535809` Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt
+- `15422787453313` Mary-Jane-Ballerina «Dolce» · Lack, mit Riemchen
+- `15422788272513` Mule-Sandalette «Nodo» · Drapiert, Spitze Form
+- `15422795088257` Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer
+- `15422811439489` Unisex T-Shirt – Selbst gestalten
+- `15422815699329` Unisex Hoodie – Selbst gestalten
+- `15422857642369` Klassisches Unisex T-Shirt – Selbst gestalten
+- `15422912332161` Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen
+- `15422933500289` Herren-Set «Costa» · Kapuzen-Shirt + Jogger
+- `15422934647169` Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz
+- `15422934909313` Leinen-Set «Lino» · Weste + Weite Hose
+- `15422937563521` Tennis-Kleid «Match» · Plissee, integrierte Shorts
+- `15422937792897` Stiletto-Sandalette «Gala» · Violett, Knöchelriemen
+- `15422939267457` Boardshorts mit Allover-Druck – Selbst gestalten
+- `15422943822209` Einteiliger Allover-Badeanzug – Selbst gestalten
+- `15422945034625` Allover-Yoga-Leggings – Selbst gestalten
+- `15422949130625` Recycelter Unisex Allover-Pullover – Selbst gestalten
+- `15422953062785` Hoodie bedrucken · recycelter Unisex Allover-Hoodie selbst gestalten
+- `15422956798337` Unisex Allover-Bomberjacke – Selbst gestalten
+- `15422958338433` Kleid mit Schlitz und Allover-Druck – Selbst gestalten
+- `15422959518081` Recycelte Allover-Jogginghosen – Selbst gestalten
+- … und 64 weitere
+
+## Floskel «hochwertiges Material» — 118
+
+Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
+
+Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
+
+Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
+
 - `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
 - `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
-- `15412752155009` Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
 - `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
 - `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
-- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
-- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
 - `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
 - `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
-- `15412911964545` 2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose
 - `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
 - `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
 - `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
@@ -105,12 +136,16 @@ Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 - `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
 - `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
 - `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
-- `15413023113601` Herren-Strickshirt «Riviera» – Cord-Kurzarm
 - `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
-- `15413025145217` Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
-- … und 275 weitere
+- `15413074985345` Sommer-Top «Sole» – V-Neck mit Knopfleiste
+- `15413083242881` Boho Resort-Set · 2-teilig (Top & Hose)
+- `15413083832705` Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
+- `15413084062081` Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2026)
+- `15413724873089` Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
+- `15413726282113` Jumpsuit mit Blazer-Kragen · Damen, chic & uni
+- … und 93 weitere
 
-## Sie-Anrede im Produkttext — 6
+## Sie-Anrede im Produkttext — 5
 
 Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.
 
@@ -118,14 +153,13 @@ Reparatur: `offen — chargenweise, Diffs lesen`
 
 Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 
-- `15470030717313` Fasnachts-Bonbons 10 kg (Preis pro kg) · 10 Stück
 - `15480281497985` Hochdruckreiniger-Schaumkanone aus Messing
 - `15497457566081` RC Quadcopter Drohne für Luft, Land und Wasser
 - `15503233745281` Manueller Eisrasierer für Zuhause
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Auswahl-Versprechen bei EINER Variante — 1724 (waehrend des Laufs 1839 gezaehlt, seither repariert)
+## Auswahl-Versprechen bei EINER Variante — 1692
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -154,9 +188,9 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448911020417` Bluetooth MP3-Player mit Touchscreen
 - `15448913871233` Lederrucksack für Herren
 - `15448918622593` Ma Pi Brusttasche aus Echtleder
-- `15448919212417` Grosse Retro Herren Schulter- und Reisetasche
 - `15448921571713` Minimalistischer Teppich, schmutzabweisend
 - `15448922915201` Festlicher Sofakissenbezug mit Tiermotiven
 - `15448923013505` Retro Kissenbezug mit botanischem Jacquard-Muster
-- … und 1699 weitere
+- `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
+- … und 1667 weitere
 
