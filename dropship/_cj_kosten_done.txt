@@ -30258,3 +30258,6 @@ gid://shopify/Product/15459741106561	CHF 32.69	12 Varianten	Elektrische Lunchbox
 gid://shopify/Product/15459741172097	CHF 16.96	3 Varianten	Blumenkleid mit Bauchfreihaltung
 gid://shopify/Product/15459741204865	CHF 38.92	7 Varianten	Edelstahltopf
 gid://shopify/Product/15459741335937	CHF 14.52	6 Varianten	Fischereischrank
+gid://shopify/Product/15459741368705	CHF 14.25	3 Varianten	Rüschen-Hemd · Damen
+gid://shopify/Product/15459741434241	CHF 34.35	9 Varianten	Nachtlicht aus Holz und Resin
+gid://shopify/Product/15459741467009	CHF 17.65	6 Varianten	Lace-Up-Bluse in Kaschmir-Optik
