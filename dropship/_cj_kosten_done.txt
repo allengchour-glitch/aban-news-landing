@@ -30775,3 +30775,19 @@ gid://shopify/Product/15463581680001	CHF 12.50	40 Varianten	Sleeless Kleid · Da
 gid://shopify/Product/15463582040449	CHF 14.47	80 Varianten	Figurbetontes A-Linien Maxikleid mit V-Ausschnitt
 gid://shopify/Product/15463582368129	CHF 41.34	98 Varianten	Minimalistisches One-Shoulder Abendkleid
 gid://shopify/Product/15463582663041	CHF 10.59	96 Varianten	V-Ausschnitt Freizeitkleid Kurzarm
+gid://shopify/Product/15463582957953	CHF 14.60	1 Varianten	Gesichts- und Nackenpflegegerät mit Vibrationsmass
+gid://shopify/Product/15463583056257	CHF 13.69	5 Varianten	Elegantes Halterneck-Kleid mit 3D-Muster
+gid://shopify/Product/15463583187329	CHF 20.56	12 Varianten	Enganliegendes Strickkleid mit Rollkragen
+gid://shopify/Product/15463583711617	CHF 16.62	12 Varianten	Strandkleid mit Schnürung und Print
+gid://shopify/Product/15463584498049	CHF 14.94	78 Varianten	Figurbetonter Freizeit-Cardigan mit Reissverschlus
+gid://shopify/Product/15463584924033	CHF 104.13	1 Varianten	Elegante gelbe Keramikvase
+gid://shopify/Product/15463584989569	CHF 17.47	12 Varianten	Gestreifter Pullover im Casual Loose Fit
+gid://shopify/Product/15463585218945	CHF 8.08	1 Varianten	Global Locator Ultra-dünner Anti-Verlust-Alarm
+gid://shopify/Product/15463585284481	CHF 16.68	49 Varianten	Freizeit-Pullover mit Rundhals und langen Ärmeln
+gid://shopify/Product/15463585317249	CHF 8.94	1 Varianten	Hunde-Winterjacke aus Wolle
+gid://shopify/Product/15463585513857	CHF 11.57	1 Varianten	Teddy-Hundejacke für Herbst und Winter
+gid://shopify/Product/15463585644929	CHF 14.47	40 Varianten	Unifarbener Hoodie mit doppelter Kapuze
+gid://shopify/Product/15463586038145	CHF 9.50	1 Varianten	Teddy Hundejacke wasserdicht
+gid://shopify/Product/15463586431361	CHF 12.20	5 Varianten	Bodycon Minirock mit Reissverschluss & Spitze
+gid://shopify/Product/15463586890113	CHF 10.82	8 Varianten	A-Linien Rock mit Gürtel im Hahnentrittmuster
+gid://shopify/Product/15463587250561	CHF 8.10	1 Varianten	SIKAI Schutzglas für GPW 2. Gen.
