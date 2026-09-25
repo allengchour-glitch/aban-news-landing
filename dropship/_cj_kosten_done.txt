@@ -32125,3 +32125,14 @@ gid://shopify/Product/15473422369153	CHF 16.50	3 Varianten	Fuchsohr-Haarschmuck
 gid://shopify/Product/15473422532993	CHF 20.53	10 Varianten	Sterling Silber Ring
 gid://shopify/Product/15473433149825	CHF 17.58	1 Varianten	Luftreiniger & Befeuchter
 gid://shopify/Product/15473433379201	CHF 18.89	12 Varianten	Drehbarer Tischspiegel im europäischen Stil
+gid://shopify/Product/15473433510273	CHF 20.64	28 Varianten	Kunstleder-Kopfteilbezug, waschfrei
+gid://shopify/Product/15473433608577	CHF 34.71	1 Varianten	Digitaler Organizer, gross (wasserabweisend)
+gid://shopify/Product/15473433674113	CHF 10.35	20 Varianten	Baumwoll-Kissenbezug mit Spitze
+gid://shopify/Product/15473433706881	CHF 20.03	1 Varianten	Decke mit Ärmeln und grossen Taschen
+gid://shopify/Product/15473433739649	CHF 36.74	1 Varianten	Feuerfeste, wasserdichte Faltbox mit Schloss
+gid://shopify/Product/15473433772417	CHF 25.67	1 Varianten	Retro-Strickdecke mit Tigermotiv
+gid://shopify/Product/15473433837953	CHF 31.88	1 Varianten	Faltbare, waschbare Spielmatte für Kinder
+gid://shopify/Product/15473433870721	CHF 74.82	33 Varianten	Tencel Satin-Bettwäsche-Set, 4-teilig
+gid://shopify/Product/15473433903489	CHF 63.16	1 Varianten	Kindersitz für Velos, mit Armlehne und Schutzbügel
+gid://shopify/Product/15473433969025	CHF 29.91	12 Varianten	Wasserdichter, atmungsaktiver Schonbezug
+gid://shopify/Product/15473434001793	CHF 99.51	4 Varianten	Multifunktionaler Plüsch-Sessel für Zuhause
