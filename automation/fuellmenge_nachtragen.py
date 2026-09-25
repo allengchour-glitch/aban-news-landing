@@ -41,6 +41,7 @@ KEINE_FLUESSIGKEIT = re.compile(r"gemälde|malerei|spiegel|haarschneide|glättei
                                 r"luftbefeuchter|humidifier|sprayer|nebler|massagegerät|porenreiniger|kapseln|"
                                 r"feuerzeug|palette|stift|puder|kugel|pflaster|maske\b|stick", re.I)
 MENGE_DA = re.compile(r"\d+(?:[.,]\d+)?\s?(?:ml|cl|l|liter)\b|füllmenge|inhalt:\s*\d", re.I)
+SET_TITEL = re.compile(r"\bset\b|\bstk\b|stück|\bpack\b|\d+\s?[x×]\s?\d|\(\d+", re.I)
 GRAMM_TITEL = re.compile(r"\d+(?:[.,]\d+)?\s?g\b", re.I)
 
 ML = re.compile(r"(\d{1,4}(?:[.,]\d{1,2})?)\s?m[lI1]\b", re.I)
@@ -181,6 +182,8 @@ def main():
         h = n["handle"]
         wert, sicher, belege = lesen(n)
         freigabe = gesichtet.get(h)
+        if sicher and SET_TITEL.search(n["title"]):
+            sicher = False  # Set/Mehrstück: «30 ml» wäre die Einzelmenge — nur nach Sichtung
         ziel = freigabe or (wert if sicher else None)
         status = "sicher (ml+oz)" if sicher else ("gesichtet" if freigabe else ("Vorschlag — sichten" if wert else "nichts lesbar"))
         if ziel and WRITE and led.get(h) != f"ok {ziel}":
@@ -197,7 +200,7 @@ def main():
         elif led.get(h, "").startswith("ok"):
             status += " · schon geschrieben"
         zeilen.append((h, n["title"], ziel or wert or "—", status, "; ".join(belege)[:160]))
-        print(f"  {status:40} {wert or '—':8} {h}", flush=True)
+        print(f"  {status:40} {ziel or wert or '—':8} {h}", flush=True)
     with open(BERICHT, "w", encoding="utf-8") as fh:
         fh.write(f"# Füllmenge fehlt — Stand {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())}\n\n")
         fh.write(f"Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: {len(ks)} aktive Kosmetik-Flüssigprodukte ohne "

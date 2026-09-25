@@ -355,7 +355,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -405,6 +405,9 @@ while true; do
     # Dazu CAP hoch: die Klasse ist am 08.09. mit 996 gemessen worden, der Standard-CAP haette
     # sie in Tagesscheiben zerlegt.
     if [ "$L" = versand_jenachland ]; then EXP="QUELLE=live CAP=1200"; fi
+    # fuellmenge_nachtragen (25.09.2026): schreibt NUR ml+oz-bestätigte Werte und dropship/_fuellmenge_gesichtet.json;
+    # nimmt die Text-Sperre selbst (LOCK_NB) — deshalb nicht in der TXTLOCK-Liste.
+    [ "$L" = fuellmenge_nachtragen ] && EXP="WRITE=1"
     # liechtenstein_raus (22.09.2026, Weg B): Seiten + Rechtstexte jeden Lauf (Wache gegen Rueckkehr der
     # Phrase), Produkte in Tagesscheiben; steht VOR produkttexte_du_form, damit es nach einem Neustart den
     # Text-Lock zuerst bekommt — der Du-Form-Lauf haelt ihn sonst die ganze Stunde.
