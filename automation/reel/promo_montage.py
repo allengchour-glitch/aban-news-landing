@@ -383,8 +383,9 @@ def text_breite(d, s, f):
 
 
 # ---------------------------------------------------------------- Szenen-Ebenen (einmal gerendert)
-KARTE = 820
-KX, KY = (W - KARTE) // 2, 350          # Karte 350..1170, Fussfeld 1180..1440 (sichere Zone)
+KARTE = 780
+# 25.09.: Kopfleiste jetzt ov.KOPF_Y 250-380 (IG-Profilraster 3:4) → Karte 395..1175, Fussfeld 1180..1440
+KX, KY = (W - KARTE) // 2, 395
 FUSS_Y = 1180
 
 

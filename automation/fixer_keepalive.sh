@@ -600,6 +600,16 @@ while true; do
         >> /tmp/fb_caption_korrektur.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start fb_caption_korrektur (täglich)"
   fi
+  # 🗑️ IG AUFRÄUMEN (Betreiber 25.09.2026: «lösche die post die nicht passen automatisch»). Gründe TEXT (Lieferantentext
+  # im Lieferantenbild, ≥ 5 Wörter), PRODUKT (nicht mehr kaufbar, nur sicher zugeordnet), DOPPEL (behält den besten).
+  # Schutz: > 500 Aufrufe nie, < 6 h nie, 5 je Tag, 45 s Takt, Abbruch beim ersten Meta-Sperrhinweis. Ledger _ig_geloescht.txt.
+  if [ ! -f /tmp/ig_aufraeumen_$(date -u +%F) ] && [ -f "$REPO/automation/ig_aufraeumen.mjs" ] && [ -s /tmp/meta_page_token ]; then
+    touch "/tmp/ig_aufraeumen_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_ig_aufraeumen.lock; flock -n 9 || exit 0; SCHARF=1 timeout 3000 /opt/node22/bin/node automation/ig_aufraeumen.mjs" \
+        >> /tmp/ig_aufraeumen.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start ig_aufraeumen (täglich, max 5)"
+  fi
   # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
   # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15
   # geprüften Kandidaten kam bei allen 15 `productVideo: null` zurück. Ein Lauf über den

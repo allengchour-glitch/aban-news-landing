@@ -949,6 +949,35 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 89 (25.09.2026) — 📱 IG-Profil «fix»: Reel-Cover im 3:4-Raster abgeschnitten, Lieferantentext im Bildpost
+**Betreiber-Screenshot vom IG-Profil.** Die Kacheln habe ich per Graph-API den Posts zugeordnet.
+**Gemessen.**
+- (1) Das Profilraster schneidet Reels auf 3:4, sichtbar sind also y 240–1680. Unsere Kopfleiste lag bei 200 (Text ab 226,
+  deshalb war LUXESTYLE halb weg). Die Hook-Zeile ab 350 lief unter das Reel-Symbol der Kachel (x ≈ 890–1015, y ≈ 270–355):
+  «Kleines Upgrade, grosse…», «Warum hat das niemand…».
+- (2) Die Emojis im Hook (👀) wurden im Bild zu «□», weil DejaVu keine Emoji-Glyphen hat.
+- (3) Der Bildpost vom 24.09. zeigte «LED multifunctional desk lamp · Three levels of brightness». Der Bild-Poster hatte neun
+  Schichten, keine davon las das Bild. Der vorhandene Detektor `bildtext_pruefen` las dort 0 Wörter (1× wie 2×), weil
+  Tesseracts Seitenaufteilung an hellem Text auf Foto scheitert. Als Ausschnitt vergrössert las er es sofort.
+**Getan.**
+- `overlay.py`: KOPF_Y 250, HOOK_Y 400, `ohne_emoji()` in wrap/text_c/text_cx. `schnitt.py` übernimmt oben=ov.KOPF_Y.
+  `promo_montage.py`: Karte 780 bei y 395. Probe-Render mit simuliertem Kachel-Zuschnitt: Logo ganz, Hook unter dem Symbol.
+- `bildtext_pruefen.py` hat die Option `KACHELN=1` (2×2 überlappende Ausschnitte, psm 6). Geeicht: Lampe 15 Wörter, saubere Posts
+  ≤ 3. Die Schwelle 4 bleibt.
+- `social-autopost-meta.mjs` hat eine ZEHNTE SCHICHT: ab 4 Wörtern gilt `text-im-bild-skip`; unlesbar heisst, die Zeile bleibt ready.
+  Die Queue hat 58 wartende Zeilen, 1 Treffer (Panda-Handyhalter), 0 Fehlalarme.
+- 45 wartende Reels tragen noch das alte Layout. `NEU_RENDERN=1` scheitert, weil der CJ-Videohost per Proxy gesperrt ist (Probe
+  0402F562: curl-Fehler). Deshalb setzt `meta_reel_post.mjs` für Reels mit altem Layout `thumb_offset: 3500`: Der Hook ist bis 3,2 s
+  eingeblendet, das Kachelcover zeigt danach Produkt, Titel und Preis. Ob ein Reel alt ist, entscheidet die Commit-Zeit der Repo-Datei
+  (nicht die mtime, die setzt git beim Auschecken neu) gegen `LAYOUT_NEU_AB` 2026-09-25T18:15Z; CDN-Reels richten sich nach dem Datum.
+**Nicht behebbar von hier:** Das Cover eines veröffentlichten Reels kann die API nicht ändern, und Löschen ist hier gesperrt.
+Die zwei alten Cover und die Lampe bleiben stehen oder werden vom Betreiber in der App archiviert. «Beige» (ein Farbwort)
+liegt unter der Schwelle, mit Absicht.
+**Lehren.**
+1. **Eine sichere Zone gilt je Oberfläche.** Die TikTok-Zone (200–1440) ist nicht die IG-Profilzone (240–1680 und Kachelsymbol).
+   Wer ein Layout baut, prüft jede Fläche, auf der es erscheint.
+2. **Ein Detektor, der 0 meldet, muss an einem bekannten Positivfall geeicht sein.** Sonst ist 0 kein Grün.
+
 ### Nachtrag 88 (25.09.2026) — 🔄 Gedächtnis der anderen Sessions geladen: 40 Lern-Dateien, zwei Kollisionen gemessen
 **Auftrag:** «lade lern memory von andere session für update».
 **Gemessen.** Vier LuxeStyle-Branches mit eigenen Commits seit dem 20.09.:
@@ -964,8 +993,11 @@ Wer nur den Diff gegen UNSEREN Branch liest, sieht bei den main-basierten Branch
   Vorhandene Skills nicht überschrieben.
 - Versandschwelle live gemessen: 45 aktiv, mit Absicht; der «Widerspruch» der App-Session ist keiner.
 - Metricool-Plan der ads-Session geprüft: Threads verletzt den Stopp vom 07.07., 6 von 12 Produkten waren im Juni
-  schon auf IG, und keiner der Posts steht in unseren Ledgern. Das habe ich dem Betreiber zur Entscheidung vorgelegt;
-  Eintrag in SHARED-MEMORY.
+  schon auf IG, und keiner der Posts steht in unseren Ledgern. Der Betreiber hat «Bereinigen» gewählt:
+  bei 6 Posts Threads entfernt (nur noch IG+FB), 4 Wiederholungen als Entwurf zurückgestellt. Das 5. Update (Costa)
+  hat der Betreiber abgelehnt; es bleibt unverändert. Eintrag in SHARED-MEMORY.
+  Metricool-Falle: `updateScheduledPost` vergibt eine NEUE id (die uuid bleibt) und überschreibt den ganzen Post. Deshalb
+  immer den vollständigen Inhalt mitschicken.
 **Lehren.**
 1. **Fremde Sessions am selben Konto umgehen jede Doppelpost-Sperre, die nur im eigenen Ledger nachsieht.** Die
    Plattform-Wahrheit (`igLiveHas`) greift erst nach dem Post. Vor jeder Planungsrunde also `getScheduledPosts`
@@ -16769,3 +16801,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · ⛔ **Meta sperrte nach 120 Löschungen + 7 Caption-Korrekturen («Spam»): Schreiber müssen eine Sperre als Stoppsignal lesen (`fb_caption_korrektur.mjs` bricht ab, 45 s Takt, täglich weiter). Server-Platte 100 % durch `git gc` auf fast voller Platte (+3 GB alte `tmp_pack`-Reste) → `server/platte-schlank.sh`: erst Reste/Verwaistes löschen, dann verpacken.** → Journal Nachtrag 47
 - 2026-09-23 · 🔑 **US-Damengrössen «14W…26W» wurden Watt (142 Werte, 8 Produkte) → `_vorbereiten`-Marke + Optionskontext, 143 repariert; GitHubs Push-Schutz fing eine aus dem Chat kopierte Schlüssel-Gegenprobe in `wartung.test.mjs` ab → synthetisch, Commits neu geschrieben; Server-Wartung nach 19 Prüfer-Befunden (Allowlist-Crontab, Entropie-Schwärzen, Journal-Filter, Sperre/trap/Stash-Schutz).** `wert_de()`=None heisst «nicht ändern», nicht «verworfen»; Testdaten nie aus dem Chat → Journal Nachtrag 48
 - 2026-09-23 · 🧾 **Kollektionen: «Nach Preis sortiert» entging der Regex (5 Kollektionen, «0 von 11» war falsches Grün), 12 tote Marken ausserhalb der Liste, SKU-Leck baby-kids → 12 Bausteine nach Messung der echten Ware, Vollscan 353: 0/0; Server-gc ohne Gewinn (echte Historie), /opt/luxe/repo von cron benutzt; Zapfventil-Hauptbild getauscht (Google zielt aufs Bild); «Geschenke bis 30» von 50'291 auf Tag geschenk eingegrenzt.** Eine Prüfung über die Planliste findet nur, was im Plan steht → Journal Nachtrag 49
+- 2026-09-23 · 🪣 **CJ-Punkte-Eimer um 16:36 leer (123'710) — Varianten-Wache hämmerte 2'095× weiter, jetzt Exit 3 bei 16900500; Netz-Politik sperrt CJ-Bildhosts + TikTok (Proxy 403) → Kanarienvogel vor jedem Fremdhost-Lauf, 403 ≠ tote Ware; Semrush ohne Einheiten; Bild-Ledger verlor 50 Zeilen (offener WriteStream vs. Rebase → appendFileSync je Zeile); Halloween: 40 ungetaggte, zwei Kollektionen, 0 Posts.** Ein Tagesbudget ohne Verteilung frisst der erste Läufer → Journal Nachtrag 50

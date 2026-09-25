@@ -16,6 +16,7 @@ def font(p, s):
     return ImageFont.truetype(p, s)
 
 def text_c(draw, y, s, f, fill, shadow=True):
+    s = ohne_emoji(s)
     w = draw.textlength(s, font=f)
     x = (W - w) / 2
     if shadow: draw.text((x + 2, y + 3), s, font=f, fill=(0, 0, 0, 160))
@@ -28,8 +29,15 @@ def spaced(draw, y, s, f, fill, sp=6):
         draw.text((x + 2, y + 3), ch, font=f, fill=(0, 0, 0, 150)); draw.text((x, y), ch, font=f, fill=fill)
         x += draw.textlength(ch, font=f) + sp
 
+def ohne_emoji(s):
+    """DejaVu hat keine Emoji-Glyphen: 👀 wurde im Bild zu einem leeren Kästchen «□» (Probe-Render 25.09.2026).
+    Emojis gehören in die Caption, nicht ins Bild. Entfernt Zeichen ausserhalb der BMP, Variationsselektoren und ZWJ."""
+    import re
+    s = re.sub(r"[\U00010000-\U0010FFFF☀-➿︎️‍]", "", s or "")
+    return re.sub(r"\s{2,}", " ", s).strip()
+
 def wrap(draw, s, f, maxw, maxlines=2):
-    words, lines, cur = s.split(), [], ""
+    words, lines, cur = ohne_emoji(s).split(), [], ""
     for w in words:
         t = (cur + " " + w).strip()
         if draw.textlength(t, font=f) <= maxw: cur = t
@@ -47,13 +55,19 @@ def wrap(draw, s, f, maxw, maxlines=2):
 # Das alte Fussfeld (1530-1920) lag exakt unter der Caption: Titel und Preis waren im Screenshot unlesbar,
 # die Kopfleiste (0-190) unter der Suchleiste. Alles Wichtige steht jetzt zwischen 200 und 1470 px und
 # Fusszeile/Preis sind auf die linke Mitte (CX_FUSS) zentriert, damit die Knopfleiste nichts verdeckt.
-KOPF_Y = 200            # Kopfleiste 200-330
-HOOK_Y = 350            # Hook-Box ab 350
+# ⚠️ 25.09.2026 (Betreiber-Screenshot des IG-Profils): Im PROFILRASTER schneidet Instagram Reels auf 3:4 zu, also
+# y 240-1680. Die alte Kopfleiste (Text ab 226) war oben halb abgeschnitten. Das Reel-Symbol der Kachel liegt bei etwa
+# x 890-1015 und y 270-355 und verdeckte die alte Hook-Zeile ab 350 («Kleines Upgrade, grosse…»). Deshalb beginnt
+# die Kopfleiste bei 250 und der Hook unter dem Symbol bei 400. Die Kopfleiste darf das Symbol überdecken, denn ihr
+# Text steht mittig.
+KOPF_Y = 250            # Kopfleiste 250-380
+HOOK_Y = 400            # Hook-Box ab 400 (2 Zeilen: bis 600 = Oberkante Videoband in make_reel.sh)
 FUSS_Y = 1170           # Fussfeld 1170-1440 (Video liegt bei 600-1162, siehe make_reel.sh)
 FUSS_ENDE = 1440
 CX_FUSS = 470           # Mitte der Textzone links der Knopfleiste (0-940)
 
 def text_cx(draw, cx, y, s, f, fill, shadow=True):
+    s = ohne_emoji(s)
     w = draw.textlength(s, font=f)
     x = cx - w / 2
     if shadow: draw.text((x + 2, y + 3), s, font=f, fill=(0, 0, 0, 160))
