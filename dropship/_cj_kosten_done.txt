@@ -33186,3 +33186,16 @@ gid://shopify/Product/15478819553665	CHF 13.21	1 Varianten	Diamond Painting Holz
 gid://shopify/Product/15478819717505	CHF 8.51	1 Varianten	5D Diamond Painting: Märchenmondboot
 gid://shopify/Product/15478819946881	CHF 41.59	1 Varianten	Grosser Rucksack für Business und Reise
 gid://shopify/Product/15478819979649	CHF 7.21	1 Varianten	Diamond Painting Katze
+gid://shopify/Product/15478820241793	CHF 7.21	1 Varianten	5D Diamond Painting: Halloween Totenkopf
+gid://shopify/Product/15478820340097	CHF 31.48	1 Varianten	Sportliche Crossbody-Brusttasche aus Leder
+gid://shopify/Product/15478820635009	CHF 7.21	1 Varianten	Halloween 5D Diamond Painting (klein)
+gid://shopify/Product/15478820798849	CHF 12.09	1 Varianten	Diamond Painting „Skelett Frau“
+gid://shopify/Product/15478820864385	CHF 10.04	1 Varianten	Fliegende Hexe
+gid://shopify/Product/15478821028225	CHF 22.47	1 Varianten	Feuerdrache Diamond Painting
+gid://shopify/Product/15478821126529	CHF 17.82	1 Varianten	Diamond Painting: Landwirtschaftlicher Traktor
+gid://shopify/Product/15478821192065	CHF 11.49	1 Varianten	Fantasy-Auge Diamond Painting (70x50 cm)
+gid://shopify/Product/15478824862081	CHF 53.38	1 Varianten	Fixer Anti-Rutsch Sofaüberwurf aus Chenille
+gid://shopify/Product/15478824993153	CHF 11.37	1 Varianten	Gepolstertes Kissen mit Kontrastfarben & Quasten
+gid://shopify/Product/15479005675905	CHF 18.87	1 Varianten	Mini Waschbecher
+gid://shopify/Product/15479005905281	CHF 24.07	1 Varianten	Mini Waschmaschine
+gid://shopify/Product/15479007347073	CHF 10.24	1 Varianten	Elegant Embroidered Kissenbezug
