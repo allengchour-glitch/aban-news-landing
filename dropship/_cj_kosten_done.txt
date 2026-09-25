@@ -29518,3 +29518,7 @@ gid://shopify/Product/15455729353089	CHF 24.24	36 Varianten	Slimfit-Hosen
 gid://shopify/Product/15455729385857	CHF 15.82	60 Varianten	Sommeroben
 gid://shopify/Product/15455729451393	CHF 8.96	12 Varianten	DIY Kreuzstich Landschaft Cartoon 40x40 cm
 gid://shopify/Product/15455729582465	CHF 16.68	30 Varianten	Sonnenschutzpullover mit Kragen und Kurzärmel
+gid://shopify/Product/15455729746305	CHF 5.98	3 Varianten	Bambus-Fächer
+gid://shopify/Product/15455729811841	CHF 7.85	1 Varianten	Einfach Lederkordelarmband mit Edelstahl
+gid://shopify/Product/15455729975681	CHF 8.14	9 Varianten	Rote Samt-Juwelierbox mit Doppelöffnung
+gid://shopify/Product/15455730041217	CHF 17.18	4 Varianten	Retro-Edles Schmuckkästchen multifunktional
