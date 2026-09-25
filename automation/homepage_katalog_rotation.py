@@ -113,6 +113,19 @@ def umbauen(t, tag):
         if secs[k]["settings"].get("collection") != h:
             notizen.append(f"{k}: {secs[k]['settings'].get('collection')} -> {h}")
             secs[k]["settings"]["collection"] = h
+    # 6. Saison-Reihe nach oben (25.09.2026, Betreiber «weltklasse luxestyle machen»): Halloween lief als erste
+    #    Wechsel-Reihe auf Platz 17 von 25 — auf dem Handy (77 % der Sitzungen) scrollt dorthin kaum jemand.
+    #    Im Saisonfenster steht die Reihe mit dem Saison-Katalog direkt unter der Herbst-/Trend-Reihe.
+    md = (tag.month, tag.day)
+    for h in [h for h, von, bis in SAISON if von <= md <= bis][:1]:
+        k = next((w for w in WECHSEL if w in secs and secs[w]["settings"].get("collection") == h), None)
+        anker = next((a for a in ("pl_herbst", "pl_trends") if a in t["order"] and a != k), None)
+        if k and anker:
+            rest = [x for x in t["order"] if x != k]
+            rest.insert(rest.index(anker) + 1, k)
+            if rest != t["order"]:
+                notizen.append(f"{k} ({h}): Platz {t['order'].index(k) + 1} -> {rest.index(k) + 1} (Saison nach oben)")
+                t["order"] = rest
     return json.dumps(t, sort_keys=True) != vorher, notizen
 
 
@@ -157,6 +170,8 @@ def selbsttest():
     fc = {t["sections"][k]["settings"]["collection"] for k in FEST}
     pruefe(len(set(wc)) == len(WR) and not (set(wc) & fc), f"{len(WR)} verschiedene Wechsel-Kataloge, keiner doppelt zu festen: {wc}")
     pruefe("halloween" in wc, "Saison: Halloween steht im September vorne")
+    hk = next(k for k in WR if t["sections"][k]["settings"]["collection"] == "halloween")
+    pruefe(t["order"].index(hk) == t["order"].index("pl_herbst") + 1, f"Saison: Halloween-Reihe ({hk}) direkt unter pl_herbst")
     ge2, n2 = umbauen(t, tag)
     pruefe(not ge2 and not n2, "Gegenprobe: zweiter Lauf am selben Tag aendert nichts (idempotent)")
     ge3, n3 = umbauen(t, tag + datetime.timedelta(days=1))
