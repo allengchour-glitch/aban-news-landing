@@ -151,6 +151,17 @@ ERSATZ_RE = [
 # seit dem Morgen offen. Titel brauchen eigene Ersätze (ERSATZ_RE «Fettverbrennung→Ausdauer» ergibt im Titel Unsinn:
 # «Massage mit Ausdauer»). Feste Paare zuerst, danach vorsichtige Muster; passt nichts, bleibt der Titel offen im Bericht.
 TITEL_ERSATZ = [
+    # 25.09.2026: Krankheitsbegriffe im Titel (Akne/Narben/Chloasma/Hallux) — Kosmetik darf keine Krankheit behandeln (VKos);
+    # Titel stehen auf Google, in der Suche und auf jeder Karte. Ersatz beschreibt Hauttyp/Passform, keine Wirkung.
+    ("Grüner Tee-Klebepflege mit Akne- und Fettkontrolle", "Grüner Tee-Klebepflege für unreine, glänzende Haut"),
+    ("Elektrischer Mitesser- und Akne-Sauger", "Elektrischer Mitesser-Sauger"),
+    ("Teebaum Akne Gesichtstonic", "Teebaum Gesichtstonic für unreine Haut"),
+    ("Nacht-Akne-Patches mit Teebaumöl", "Nacht-Pickelpatches mit Teebaumöl"),
+    ("Akne Hautpflege-Set", "Hautpflege-Set für unreine Haut"),
+    ("Anti-Akne Pflegeset für strahlende Haut", "Pflegeset für unreine Haut"),
+    ("Hautregenerationscreme 50g gegen Narben", "Pflegende Hautcreme · 50 g"),
+    ("Creme für Chloasma und Sommersprossen", "Gesichtscreme für einen ebenmässigen Teint"),
+    ("Weite Damen-Schuhe für Hallux-Valgus", "Weite Damen-Schuhe mit breitem Vorfussbereich"),
     ("Vakuum-Cupping-Massage mit Fettverbrennung & Anti-Cellulite", "Vakuum-Cupping-Massagegerät für Körper & Haut"),
     ("Körperformungsgerät zur Fettverbrennung", "Körperformungsgerät für das Training zuhause"),
     ("Smartes Springseil für Fitness & Fettverbrennung", "Smartes Springseil für Fitness & Ausdauer"),
@@ -208,10 +219,13 @@ MUSTER = re.compile(
     r"|Schmerzlinderung|Linderung (?:von |der )?(?:\w+ )?(?:Schmerz|Beschwerd|Verspannung)|lindert (?:Nacken|Rücken|Kopf|Muskel|Gelenk)\w*"
     r"|erleichtert (?:das|die) Atm|Nebenhöhle|Nasennebenhöhle|lindert \w*[Hh]usten|\bbei (?:Erkältung|Grippe|Husten|Asthma)"
     r"|Schlaflosigkeit (?:zu )?(?:überwinden|bekämpfen|lindern)|bei Schlafstörungen (?:zu )?helfen|gegen Schlafstörungen"
-    r"|beugt Kopfverformung|Depression|Angstzuständ", re.I)
+    r"|beugt Kopfverformung|Depression|Angstzuständ"
+    # 25.09.2026: Hautkrankheiten/Krankheitsbilder mit WORTGRENZE — ohne sie trafen «S-chwarze» (warze) und «Voll-narbe-nleder»
+    # 138 von 150 Titeln (Kanarienvögel im Trockenlauf).
+    r"|\b(?:Akne|Narben|Chloasma|Melasma|Neurodermitis|Psoriasis|Schuppenflechte|Ekzem\w*|Nagelpilz|Fu(?:ss|ß)pilz|Krampfadern)\b|Anti-Akne|Akne-", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
-    r"|Ratgeber:|nicht für medizinische|selbst heilt|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
+    r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
     # Tiere: Wundkragen (Heilung nach OP ist der Zweck), Fellbuersten/Plueschtiere/Pinsel (Haarausfall = Haare im Haus/Borsten),
     # Naepfe (Tiere mit Arthritis), Ergaenzungsfutter (Verdauung/Immunsystem beim Tier)
     r"|leck|Wunde|Operation|Halskrause|Kragen|Halsring|Genesung|Borsten|Pinsel|Plüsch|haarausfallfrei|Fell|Katze|Hund|Haustier|Tier|Vierbeiner|Zuhause|Wohnung|im Haus"
