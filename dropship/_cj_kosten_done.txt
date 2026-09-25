@@ -30803,3 +30803,7 @@ gid://shopify/Product/15463670415745	CHF 59.41	1 Varianten	Automatischer Aroma-L
 gid://shopify/Product/15463670514049	CHF 13.29	1 Varianten	Kleiner Nachtlicht-Luftbefeuchter mit Spray
 gid://shopify/Product/15463670612353	CHF 22.75	1 Varianten	V-Face Lifting Gerät mit Mikrostrom & Licht
 gid://shopify/Product/15463671005569	CHF 16.48	4 Varianten	Ultraschall-Hautschaufel Reinigungsgerät
+gid://shopify/Product/15463688601985	CHF 19.57	4 Varianten	Weisses Langarm-Kleid
+gid://shopify/Product/15463688864129	CHF 23.98	11 Varianten	Halter-Top Kleid · Damen
+gid://shopify/Product/15463689093505	CHF 20.04	6 Varianten	Barock-Chiffonkleid mit Blumenmuster
+gid://shopify/Product/15463689355649	CHF 15.84	9 Varianten	Ärmelloses A-Linien Maxikleid für Damen
