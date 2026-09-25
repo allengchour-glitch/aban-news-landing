@@ -10,5 +10,7 @@
     <string name="offline_text">Prüfe dein WLAN oder die mobilen Daten und versuche es nochmals.</string>
     <string name="offline_retry">Nochmals versuchen</string>
     <string name="no_app_for_link">Keine App gefunden, die diesen Link öffnen kann.</string>
+    <string name="share">Produkt teilen</string>
+    <string name="share_via">Teilen über</string>
     <string name="exit_hint">Nochmals zurück zum Schliessen</string>
 </resources>

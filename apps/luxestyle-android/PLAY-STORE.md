@@ -11,6 +11,8 @@ Eine native Android-Hülle um luxestyle.ch (Kotlin, WebView), mit eigenen Bedien
 - Checkout, Kundenkonto (`account.luxestyle.com.co`) und Shop Pay bleiben in der App;
   TWINT/PayPal-Apps, Mail, Telefon, Instagram usw. öffnen die passende App
 - Datei-Upload funktioniert (Motiv-Editor „selbst gestalten")
+- Teilen-Knopf auf Produktseiten (oben rechts, damit er die klebende Warenkorb-Leiste unten nicht
+  verdeckt) → Android-Teilen-Menü; der Link trägt `utm_source=app_share` statt der App-Kennung
 - `luxestyle.ch`-Links aus Newsletter/Social können direkt in der App öffnen
 - Zugriffe tragen `utm_source=android_app` → in Shopify-Analytics als eigene Quelle sichtbar;
   User-Agent endet auf `LuxeStyleApp/<Version>`
@@ -29,7 +31,7 @@ LUXE_KEYSTORE_PATH=… LUXE_KEYSTORE_PASSWORD=… ./gradlew bundleRelease   # si
 Oder auf GitHub: Actions → **„LuxeStyle Android-App bauen"** → Run workflow (nur manuell).
 Das AAB liegt danach als Artefakt am Lauf. Braucht die Secrets unten.
 
-Geprüft am 2026-09-25 im Container: Build grün, 3/3 Unit-Tests, Lint 0 Fehler,
+Geprüft am 2026-09-25 im Container: Build grün, 5/5 Unit-Tests, Lint 0 Fehler,
 AAB signiert (Zertifikat SHA-256 `2b10e7bf…0a94b9`). **Nicht** auf einem echten Gerät/Emulator
 getestet (Container ohne KVM) → vor dem Einreichen einmal über „Interner Test" aufs eigene Handy.
 
@@ -70,6 +72,10 @@ verloren, kann man ihn in der Play Console zurücksetzen lassen (dauert einige T
 6. **Geschlossener Test** (nur privates Konto): 12 Tester einladen, 14 Tage laufen lassen,
    dann „Produktionszugriff beantragen".
 7. **Produktion** → Release einreichen → Prüfung durch Google (meist 1–7 Tage).
+
+## Bibliotheks-Versionen
+Bewusst auf dem getesteten Stand (core 1.16, material 1.12 …). Die neuesten (core 1.19 usw.) verlangen
+compileSdk 37 + ein neueres Android-Gradle-Plugin — erst zusammen mit einem AGP-Update anheben.
 
 ## Nächste Versionen
 Workflow starten (Versionsname erhöhen) → AAB-Artefakt → Play Console → neuer Release.

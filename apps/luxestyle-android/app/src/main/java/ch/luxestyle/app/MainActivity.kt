@@ -29,6 +29,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progress: LinearProgressIndicator
     private lateinit var offline: View
     private lateinit var nav: BottomNavigationView
+    private lateinit var share: FloatingActionButton
 
     private var fileCallback: ValueCallback<Array<Uri>>? = null
     private var lastBackPress = 0L
@@ -59,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         progress = findViewById(R.id.progress)
         offline = findViewById(R.id.offline)
         nav = findViewById(R.id.nav)
+        share = findViewById(R.id.share)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root)) { v, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
@@ -74,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         swipe.setOnChildScrollUpCallback { _, _ -> web.scrollY > 0 }
         swipe.setOnRefreshListener { web.reload() }
         findViewById<View>(R.id.retry).setOnClickListener { retry() }
+        share.setOnClickListener { shareCurrent() }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -163,6 +167,7 @@ class MainActivity : AppCompatActivity() {
             override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
                 progress.visibility = View.VISIBLE
                 syncNav(url)
+                share.visibility = if (isProductPage(url)) View.VISIBLE else View.GONE
             }
 
             override fun onPageFinished(view: WebView, url: String) {
@@ -289,6 +294,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Teilt die aktuelle Produktseite (WhatsApp, Instagram, Mail …) mit sauberem Link. */
+    private fun shareCurrent() {
+        val url = web.url ?: return
+        val title = web.title?.substringBefore(" – ")?.substringBefore(" | ")?.trim().orEmpty()
+        val text = listOf(title, shareUrl(url)).filter { it.isNotEmpty() }.joinToString("\n")
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, text)
+            if (title.isNotEmpty()) putExtra(Intent.EXTRA_SUBJECT, title)
+        }
+        openExternal(Intent.createChooser(send, getString(R.string.share_via)))
+    }
+
     private fun showOffline(show: Boolean) {
         offline.visibility = if (show) View.VISIBLE else View.GONE
     }
@@ -313,6 +331,21 @@ class MainActivity : AppCompatActivity() {
             "shop.app",
             "shopifycdn.com",
         )
+
+        /** Nur echte Produktseiten des Shops bekommen den Teilen-Knopf. */
+        fun isProductPage(url: String): Boolean {
+            val m = Regex("^https://([^/?#]+)(/[^?#]*)?").find(url) ?: return false
+            return isShopHost(m.groupValues[1]) && m.groupValues[2].contains("/products/")
+        }
+
+        /** Geteilter Link: ohne Tracking-Anhängsel der App, dafür als App-Weiterempfehlung markiert. */
+        fun shareUrl(url: String): String {
+            val base = url.substringBefore('#').substringBefore('?')
+            val keep = url.substringBefore('#').substringAfter('?', "").split('&')
+                .filter { it.isNotEmpty() && !it.startsWith("utm_") }
+            val params = keep + listOf("utm_source=app_share", "utm_medium=social")
+            return base + "?" + params.joinToString("&")
+        }
 
         fun isShopHost(host: String?) = host != null && host.lowercase() in SHOP_HOSTS
 

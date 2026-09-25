@@ -17,6 +17,7 @@ Was die App kann:
 • Warenkorb und Kundenkonto immer eine Berührung entfernt
 • Bezahlen mit TWINT, Karte oder Klarna
 • Bestellungen und Sendungsverfolgung im Kundenkonto
+• Lieblingsstücke mit einem Tipp per WhatsApp, Instagram oder Mail teilen
 • Shop-Links aus Newsletter und Social Media öffnen direkt in der App
 
 Einkaufen bei LuxeStyle:

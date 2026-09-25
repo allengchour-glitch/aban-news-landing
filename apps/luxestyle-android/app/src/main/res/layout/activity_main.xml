@@ -33,6 +33,20 @@
             app:trackColor="@android:color/transparent"
             app:trackThickness="2dp" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/share"
+            android:src="@drawable/ic_share"
+            android:visibility="gone"
+            app:backgroundTint="@color/luxe_ink"
+            app:fabSize="mini"
+            app:tint="#FFFFFF" />
+
         <LinearLayout
             android:id="@+id/offline"
             android:layout_width="match_parent"
