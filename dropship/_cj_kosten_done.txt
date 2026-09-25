@@ -33447,3 +33447,4 @@ gid://shopify/Product/15479416979841	CHF 29.04	40 Varianten	Herren Canvas Loafer
 gid://shopify/Product/15479417012609	CHF 18.16	1 Varianten	Rutschfester Parkstopper für Autoreifen (4er-Set)
 gid://shopify/Product/15479417045377	CHF 19.36	1 Varianten	Smartwatch T98 mit Bluetooth-Anruf und Gesundheits
 gid://shopify/Product/15479417176449	CHF 7.72	1 Varianten	Tragbares kabelloses Google Watch Ladegerät
+gid://shopify/Product/15479417209217	CHF 10.45	1 Varianten	Ersatz-Stoffbezug für Auto-Reinigungsbürste
