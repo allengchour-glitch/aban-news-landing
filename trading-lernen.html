@@ -24,6 +24,8 @@
 {"@type":"Question","name":"Lohnt sich Daytrading mit Gold oder Silber?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test auf zwei Jahren Stundenkerzen nicht belastbar. Bei Gold machte der Bot ohne Kosten +19 %, mit 0.05 % Kosten pro Trade −7 %. Silber kam auf +20.8 %, aber ein Münzwurf schaffte dasselbe in 14 von 100 Fällen, bei einem Einbruch von −55 %. Die Kosten fallen bei jedem Trade an und fressen den Vorsprung."}}
 ,
 {"@type":"Question","name":"Welcher Trading-Stil ist der beste?","acceptedAnswer":{"@type":"Answer","text":"Keiner schlägt einfaches Halten verlässlich. In unserem Stil-Labor mit neun Stilen auf acht Märkten seit 2000 hatte Swing (nach drei Minus-Tagen kaufen) den höchsten Skill: im Schnitt besser als 80 % der Zufallsstrategien mit gleicher Marktzeit. Mehr Geld als Halten verdiente Swing trotzdem auf keinem Markt, weil das Geld nur 10 % der Zeit investiert war. Ausbruch-Strategien (Turtle) lagen mit 34 % unter dem Zufall."}}
+,
+{"@type":"Question","name":"Bleibt ein Trading-Stil gut, der früher funktioniert hat?","acceptedAnswer":{"@type":"Answer","text":"Meistens nicht. Wir haben neun Stile auf acht Märkten in zwei Hälften geteilt, meist vor und nach 2013. Trendfolge fiel im Schnitt von 80 % auf 40 % Skill. Wer pro Markt den besten Stil der ersten Hälfte weiter handelte, verdiente danach nur auf einem von acht Märkten mehr als mit einfachem Halten. Am stabilsten war Swing auf Aktien, aber auch dort mit weniger Rendite als Halten."}}
 ]}
 </script>
 <style>
@@ -211,7 +213,31 @@ footer a{color:var(--muted)}
 </div>
 <div class="kasten warn">
   <p><b>Skill ist nicht gleich Geld.</b> Swing hat den höchsten Skill (80 %, auf S&amp;P 500, SMI, Nestlé und EUR/CHF über 95 %). Kurzfristige Rücksetzer erholen sich dort also tatsächlich öfter als zufällig. Trotzdem verdient Swing auf keinem der acht Märkte mehr als einfaches Halten, weil das Geld nur 10 % der Zeit investiert ist. Umgekehrt ist Ausbruch (Turtle) mit 34 % schlechter als Zufall.</p>
-  <p class="klein">Und Vorsicht mit einzelnen hohen Werten: neun Stile auf acht Märkten sind 72 Versuche. Rein zufällig landen davon einige über 95 %. Gegenprobe: ein Stil, der den nächsten Tag kennt, kommt überall auf 100 %, Münzwürfe liegen im Schnitt bei 47–53 %. Gemessen am 23.09.2026, Code: <code>tools/trading/stil_labor.py</code>, Daten: <a href="/data/stil-labor.json">stil-labor.json</a>.</p>
+  <p class="klein">Und Vorsicht mit einzelnen hohen Werten: neun Stile auf acht Märkten sind 72 Versuche. Rein zufällig landen davon etwa 4 über 95 %, gemessen sind es 12. Ob solche Werte auch später halten, prüft der nächste Abschnitt. Gegenprobe: ein Stil, der den nächsten Tag kennt, kommt überall auf 100 %, Münzwürfe liegen im Schnitt bei 47–53 %. Gemessen am 23.09.2026, Code: <code>tools/trading/stil_labor.py</code>, Daten: <a href="/data/stil-labor.json">stil-labor.json</a>.</p>
+</div>
+
+<h2 id="haltbar">Hält der Skill? Erste Hälfte gegen zweite Hälfte</h2>
+<p>Ein hoher Skill über 25 Jahre kann Glück sein. Die ehrlichere Frage lautet: Wer in der ersten Hälfte gut war, ist es danach auch noch? Dafür haben wir jede Kursreihe halbiert (meist 2013, bei EUR/CHF Ende 2014, bei Bitcoin 2020) und den Skill in beiden Hälften getrennt gemessen, mit denselben Regeln und denselben Kosten.</p>
+<div class="tab"><table>
+  <thead><tr><th>Stil</th><th>Skill erste Hälfte</th><th>Skill zweite Hälfte</th><th>Beispiel</th></tr></thead>
+  <tbody>
+    <tr><td>Swing</td><td>77 %</td><td>73 %</td><td>S&amp;P 500 100 % → 100 %</td></tr>
+    <tr><td>Buy the Dip</td><td>65 %</td><td>64 %</td><td>Gold 81 % → 76 %</td></tr>
+    <tr><td>Saison: Sell in May</td><td>69 %</td><td>61 %</td><td>S&amp;P 500 92 % → 30 %</td></tr>
+    <tr><td>Monatswechsel</td><td>81 %</td><td>52 %</td><td>Bitcoin 98 % → 40 %</td></tr>
+    <tr><td>Momentum</td><td>68 %</td><td>48 %</td><td>SMI 98 % → 2 %</td></tr>
+    <tr><td>Trendfolge</td><td>80 %</td><td>40 %</td><td>SMI 98 % → 7 %</td></tr>
+    <tr><td>Mean Reversion</td><td>69 %</td><td>40 %</td><td>Nestlé 100 % → 25 %</td></tr>
+    <tr><td>Ausbruch (Turtle)</td><td>46 %</td><td>39 %</td><td>Bitcoin 98 % → 90 %</td></tr>
+    <tr><td>Ruhige Phasen</td><td>48 %</td><td>29 %</td><td>Silber 97 % → 8 %</td></tr>
+  </tbody>
+</table></div>
+<p class="klein">Schnitt über acht Märkte. Die Werte je Markt stehen im <a href="/data/stil-haltbar.json">Datensatz</a>.</p>
+<div class="kasten warn">
+  <p><b>Meistens hält er nicht.</b> Trendfolge fiel im Schnitt von 80 % auf 40 %, auf dem SMI von 98 % auf 7 %. Über alle 72 Paare hängen erste und zweite Hälfte kaum zusammen: Die Rangkorrelation liegt bei +0.17 (1 hiesse gleiche Reihenfolge, 0 gar kein Zusammenhang), p = 0.08, von Zufall nicht zu unterscheiden. Von 37 Paaren mit mindestens 80 % in der ersten Hälfte blieben 8 so hoch. Ohne jeden Zusammenhang wären es 6.</p>
+  <p><b>Der Trader-Test:</b> Pro Markt den besten Stil der ersten Hälfte auswählen und weiter handeln. In der zweiten Hälfte hatte diese Auswahl im Schnitt 59 % Skill. Mehr verdient und dabei im Verhältnis zum Risiko besser als Halten: auf 1 von 8 Märkten (Öl).</p>
+  <p><b>Was bleibt:</b> Swing auf Aktien und EUR/CHF (S&amp;P 500 100 % → 100 %, SMI 86 % → 92 %, Nestlé 91 % → 88 %). Kurze Rücksetzer erholen sich dort seit 25 Jahren öfter als zufällig. Geld bringt das trotzdem kaum: Auf dem S&amp;P 500 machte Swing in der zweiten Hälfte +2.7 % pro Jahr, Halten +12.3 %.</p>
+  <p class="klein">Gegenprobe mit demselben Test: 72 Münzwurf-Stile zeigen keinen Zusammenhang (+0.07, mittlerer Skill 54 %). 72 Stile, die an 0–8 % der Tage den nächsten Tag kennen, zeigen einen deutlichen (+0.52, p &lt; 0.001). Echtes Können würde der Test also erkennen. Gemessen am 25.09.2026, Code: <code>tools/trading/stil_haltbar.py</code>, Daten: <a href="/data/stil-haltbar.json">stil-haltbar.json</a>.</p>
 </div>
 
 <div class="kasten gut" id="pruefstand">
@@ -304,6 +330,7 @@ Die Regeln aus unserem Bot-Test: Signal erst am nächsten Tag handeln. Kosten ei
 <details><summary>Wie viel Geld brauche ich zum Anfangen?</summary><p>Zum Lernen: keins. Das Übungsdepot kostet nichts. Mit echtem Geld nur einen Betrag, dessen vollständigen Verlust du verkraftest — und erst, wenn deine Strategie im Übungsdepot über Monate besser war als kaufen und halten.</p></details>
 <details><summary>Lohnt sich Daytrading mit Gold oder Silber?</summary><p>In unserem Test auf zwei Jahren Stundenkerzen nicht belastbar. Bei Gold machte der Bot ohne Kosten +19 %, mit 0.05 % Kosten pro Trade −7 %. Silber kam auf +20.8 %, aber ein Münzwurf schaffte dasselbe in 14 von 100 Fällen, bei einem Einbruch von −55 %. Die Kosten fallen bei jedem Trade an und fressen den Vorsprung.</p></details>
 <details><summary>Welcher Trading-Stil ist der beste?</summary><p>Keiner schlägt einfaches Halten verlässlich. In unserem Stil-Labor mit neun Stilen auf acht Märkten seit 2000 hatte Swing (nach drei Minus-Tagen kaufen) den höchsten Skill: im Schnitt besser als 80 % der Zufallsstrategien mit gleicher Marktzeit. Mehr Geld als Halten verdiente Swing trotzdem auf keinem Markt, weil das Geld nur 10 % der Zeit investiert war. Ausbruch-Strategien (Turtle) lagen mit 34 % unter dem Zufall.</p></details>
+<details><summary>Bleibt ein Trading-Stil gut, der früher funktioniert hat?</summary><p>Meistens nicht. Wir haben neun Stile auf acht Märkten in zwei Hälften geteilt, meist vor und nach 2013. Trendfolge fiel im Schnitt von 80 % auf 40 % Skill. Wer pro Markt den besten Stil der ersten Hälfte weiter handelte, verdiente danach nur auf einem von acht Märkten mehr als mit einfachem Halten. Am stabilsten war Swing auf Aktien, aber auch dort mit weniger Rendite als Halten.</p></details>
 <details><summary>Ist das eine Anlageempfehlung?</summary><p>Nein. Diese Seite erklärt, wie man lernt und wie man ehrlich prüft. Sie empfiehlt keine Wertpapiere, keinen Broker und keine Strategie.</p></details>
 
 <div class="kasten">
