@@ -7556,3 +7556,110 @@ Ahorne, die th-pruef seit Runde 93 als „steckt im Stadthaus" meldete, standen 
 ⚠️ SwiftShader-Millisekunden (Summe PR −8 % zu main) sind Füllraten-Werte, keine Gerätewerte — auf dem Handy zählen
 die Aufrufe. Offen: `probe-aufrufe-herkunft` an der Kreuzung — der Rest sind prozedurale Kleinteile (Boxen/Zylinder
 einzelner Farben, je 10…60) und Bodenmarkierungen; die liessen sich nach demselben Muster je Zelle zusammenfassen.
+
+## Runde 100 · 🧩 Weiter (User: „weiter" nach Runde 99)
+
+Auftrag verstanden als: den Rest aus Runde 99 angehen („an der Kreuzung bleiben ~1'000 Aufrufe aus prozeduralen
+Kleinteilen und Bodenmarkierungen"). Unterwegs fanden die Gegenproben vier alte Fehler, die mit Aufrufen nichts zu tun
+haben, aber sichtbar sind — der grösste davon: **auf `main` steht die Sonne nur am Startpunkt richtig.**
+
+### 1. Erst gemessen, WER die Aufrufe macht
+`probe-aufrufe-herkunft ART=1 HERK=1` (neu: hängt sich vor dem Weltaufbau an `scene.add` und nennt die Baufunktion):
+an der Kreuzung (78|58) 1'483 Aufrufe = Gruppen prozedural 502 (Dorfhäuser `haus` 141, Blumenfelder 132, Zäune
+`einfriedung` 63, Café 34, Laternen 26, Rathaus 21, Brunnen 15 …), bewegt 426, Modelle 277, **Boden lose 204**
+(Bordsteine `box`, Keile `_keil`, Plattenränder `tr`, Linien `randl`, Parkfelder …), Instanzen 26.
+
+### 2. Weltgruppen und lose Bodenteile zusammenfassen — per AUSSCHLUSSLISTE
+`_zfKandidaten()` sammelt bei jedem `_zusammenfassen()`:
+- jede **eingefrorene Gruppe** direkt in der Szene ohne fremde userData (also keine Modelle, keine Figuren, nichts
+  `nieAusblenden`/`animiert`/`fest`), ohne Baumodus (Wände, Böden, Möbel, eigenes Auto, Haustier, Vorschau), ohne
+  Wintermarkt und ohne die Parkbucht beim Autohaus (rückt in den ersten 95 s mit),
+- jedes **flache lose Mesh** am Boden (≤ 0,35 m hoch, Oberkante ≤ 0,4 m) — je **48-m-Zelle und Material** zu einem Mesh,
+  Ursprung im Mittelpunkt der Teile (für die Entfernungs-Ausblendung). Höhere lose Teile bleiben einzeln: über eine
+  Zelle zusammengefasst wären Masten und Felsen für den Verdecker ein „grosser Bau" und für th-strassen ein
+  Zellmittelpunkt.
+Warum eine Ausschlussliste und nicht jede Baufunktion einzeln: zusammenfassen INNERHALB einer Gruppe lässt alles
+gültig, was die Gruppe als Ganzes betrifft (entfernen, verschieben, ein-/ausblenden — Stadtfest, Wintermarkt,
+Immobilien-Flagge), und Materialien bleiben dieselben Objekte (Nachtfenster, Ampeln, Laternen). Kaputt ginge nur, was
+ein EINZELNES Kind später anfasst. Das ist zweifach geprüft:
+1. jede `.visible=`, `.material=` und `.remove(`-Stelle der Datei gelesen,
+2. **`probe-anfasser`**: lädt mit `?ohneZF`, macht aus `visible`/`material` jedes Kandidaten-Teils eine Falle, notiert
+   Lage, Elternteil und Eckpunkte, spielt Abend, Nacht mit Stadtfest, Regen, Schnee, Winter, Baumodus.
+   Ergebnis: **0 verschoben, 0 entfernt, 0 Eckpunkte, 0 Setter-Aufrufe** (ausser Aufwärmen, das sofort zurücksetzt).
+   Gegenprobe (ein Teil unsichtbar, eins verschoben, Eckpunkte geändert): alle drei gemeldet.
+
+**Falle 1 — `BoxGeometry` hat Gruppen.** Der erste Lauf fasste fast nichts zusammen: `_zfSig` lehnte jede Geometrie mit
+`groups` ab, und Box (6) und Zylinder (3) bringen sie immer mit — ein Dorfhaus besteht nur daraus. Mit EINEM Material
+zeichnet three.js die Gruppen gar nicht einzeln (renderBufferDirect bekommt `group = null`), sie dürfen wegfallen.
+Gefunden, weil `probe-zusammen` (Seite mit `?ohneZF`, dann zusammenfassen) Kreuzung 943 zeigte, `probe-bildlast`
+(normales Spiel) aber 1'428 — die Zahl im Normalbetrieb ist die, die zählt.
+**Falle 3 — Scheiben gegen LOD.** Die 79 Blumenfelder (948 Teile, 141 Aufrufe an der Kreuzung) blieben trotzdem
+einzeln: das Zusammenfassen läuft in Scheiben über viele Bilder und nahm die LOD-Liste als Momentaufnahme am Anfang.
+Baute `lodAufbau` dazwischen neu auf und blendete aus, waren die Stängel „unsichtbar, aber nicht vom LOD" — weg.
+Jetzt trägt jedes Teil die Marke selbst (`_lodM`). Belegt: ein zweiter Lauf von Hand fasste sie sofort zusammen.
+**Falle 2 — die Sichtprüfung verglich einen kaputten Vorher-Stand.** `probe-zusammen` meldete an der Kreuzung 2,41 %
+andere Bildpunkte: Baumkronen und eine Telefonzelle 13–20 m neben der Figur, die VORHER fehlten. Ein Leerlauf ohne
+Zusammenfassen (`LEER=1`, neu) blieb bei 0,01 % — also kein Zeiteffekt. Strahl durch die Bildpunkte: die Teile waren
+da, aber unsichtbar geschaltet … vom Entfernungs-Ausblenden, das sie für 97 m entfernt hielt (Abschnitt 3).
+**Das gilt rückwirkend auch für Runde 99:** „die Unterschiede sind hinzugekommene ferne Kleinteile" war falsch gedeutet —
+es waren zum grossen Teil fälschlich ausgeblendete NAHE Teile im Vorher-Bild.
+
+### 3. Entfernungs-Ausblendung: rechnete mit veralteter Lage, und der Zoom nahm zu viel weg
+- `lodAufbau` merkt sich die Lage jedes Kleinteils EINMAL; `entwirren`/`freiRaeumen` schieben Modelle danach noch um bis
+  zu 90 m. **`probe-lodlage`** (neu, Gegenprobe: ein Eintrag um 50 m versetzt): `main` 1'617 von 10'485 Einträgen
+  veraltet, **266 Teile an der Kreuzung dadurch unsichtbar** (Pappeln, Ahorne: Stämme ohne Krone). `lodTakt` liest die
+  Lage jetzt aus der Weltmatrix.
+- Beim Herauszoomen verschwanden Teile unter 2,2 m schon ab 38 m (Zoom 90) — dort noch ~13 Bildpunkte gross. Sichtbar
+  wurde es, als der LOD-Index nach dem Zusammenfassen vollständig war: das **ganze Wirtshaus** (lauter Teile unter 2,2 m),
+  Bäume und die geparkten Autos fehlten in der Weitsicht. Auf `main` standen sie nur, weil sie nach dem letzten
+  `lodAufbau` geladen und nie erfasst wurden. Jetzt schrumpfen nur noch die winzigen (< 0,55 m) mit dem Zoom.
+
+### 4. Eingefroren, aber im Code weiterbewegt (Nebenfund von probe-anfasser)
+`_einfrieren` setzt `matrixAutoUpdate=false` für alles ohne `_bewegt`. Wer danach `.position` setzt, bewegt nur eine Zahl.
+`probe-anfasser` sucht jetzt jedes eingefrorene Objekt, dessen Lage von seiner Matrix abweicht:
+- **Ziel der Sonne** (65 m daneben): loop() setzt es jedes Bild auf die Kamera, aber `updateMatrixWorld()` rechnet bei
+  eingefrorenem Objekt die lokale Matrix nicht nach. Das Licht zog mit, das Ziel stand am Startpunkt — die Richtung
+  kippte mit der Entfernung. **`probe-sonne`** um 12:00: `main` 64,5° am Start, **14° an der Kreuzung, 7° im Gewerbe,
+  8° am Freizeitpark** (Spannweite 57°); PR überall 64,5°. Auf `main` liegt also überall ausser am Start Abendlicht:
+  blasse Farben, flach einfallende Sonne, und die Schatten-Box steht neben dem Spieler — keine Schatten
+  (Bilder `r100-sonne-{kreuzung,gewerbe}-{main,pr}.png`).
+- **Regen/Schnee** (folgt der Kamera; fiel nur um den Startpunkt), **Vögel** (kreisen; standen), **Ring unter der
+  eigenen Figur** (blieb 40,7 m zurück), **Brunnenstrahlen** (`main`: in den Daten wächst ein Strahl von 1,42 auf 1,70,
+  die Matrix bleibt bei 1,32 — sie standen still) — alle in `_bewegtMarkieren` bzw. beim Anlegen markiert.
+  Dazu die **Parkbucht beim Autohaus** (neu in diesem PR, gibt es auf `main` nicht): `_nachRuecken` zog nur den Wagen nach.
+
+### 5. Schatten aufs Texelraster
+Jetzt, wo die Schatten-Box überall um den Spieler steht, fällt ihr Kriechen auf: Licht und Ziel folgen der Kamera
+stufenlos, das Raster der Schattenkarte liegt jedes Bild um Bruchteile eines Texels anders, Schattenkanten wandern
+beim Gehen. `_sonneAufKamera` verschiebt Licht UND Ziel quer zur Lichtrichtung aufs Texelraster (Achsen der
+Schattenkamera wie `Object3D.lookAt`). **`probe-schattenkriechen`** (Kamera steht, nur das Ziel wandert in 2-cm-Schritten):
+ohne Raster ändert sich bei JEDEM Schritt rund 0,14 % der Bildpunkte um bis zu 32 Farbstufen (Farbsumme), mit Raster
+**0 von 10 Schritten** (grösste Abweichung 1 = Rauschen). Erste Fassung der Sonde zählte erst ab 24 Farbstufen — die
+Gegenprobe blieb stumm (PCF-weiche Kanten ändern sich nur leicht), also Schwelle 3 und die grösste Abweichung dazu.
+
+### Zahlen
+| Messung (fertige Welt) | `main` (live) | PR Runde 99 | **PR Runde 100** |
+|---|---|---|---|
+| probe-bildlast Aufrufe Kreuzung · Stadtmitte · Ring · weit · Gewerbe · nah | 2'165 · 349 · 1'664 · 8'807 · 734 · 482 | 1'475 · 261 · 829 · 2'507 · 521 · 266 | **1'194 · 239 · 635 · 2'661 · 499 · 231** |
+| Summe der sechs Punkte | 14'201 | 5'859 | **5'459 (−62 % zu main)** |
+| Blumenfelder an der Kreuzung (probe-aufrufe-herkunft) | – | 132 (141 nach Teil 1) | **37** |
+| Sonnen-Höhenwinkel 12:00, Spannweite über 5 Orte (probe-sonne) | **57,1°** (64,5° … 7,4°) | 57,1° | **0,0°** |
+| Teile an der Kreuzung fälschlich LOD-unsichtbar (probe-lodlage) | 187–266 | 0 (Zufall) | **0** |
+| Eingefroren, aber bewegt (probe-anfasser; `main` einzeln belegt) | Sonnenziel, Brunnenstrahlen (+ gleicher Code: Regen, Vögel, Ring) | 12 (Sonnenziel, Regen, 9 Vögel, Ring) | **0** |
+| Schattenkanten-Kriechen je 2-cm-Schritt (probe-schattenkriechen) | – | 10 von 10 | **0 von 10** |
+
+Die Weitsicht (Zoom 90) hat 150 Aufrufe mehr als Runde 99 — das ist der Preis dafür, dass Wirtshaus, Bäume und geparkte
+Autos beim Herauszoomen stehen bleiben (Abschnitt 3).
+**Prüfreihe:** th-bewegt alles bewegt · th-fahrt 11/0 · th-gta 21/21 · th-bauen 22/22 · th-pruef 1001/0/0 bestanden ·
+th-echt 6 echte Durchdringungen (wie Runde 99) · th-kante 0/0/0, 48 Übergänge, Einmündungen 0/14 · probe-stufen 0/0,
+Ecken 16/16 · probe-schild 96/96 · th-strassen 66 · th-autoboden 0/0/0, Verkehr 0,1 %, Polizei 0/120 · th-flimmern kein
+Umschalten · probe-tiefenstreit 0,39 % · probe-anfasser 0 · probe-zusammen nah ≤ 0,26 %, weit 2,0 % · html-validate 0 Fehler.
+
+### Lehren
+1. **Die Zahl im NORMALBETRIEB messen, nicht nur im Versuchsaufbau.** `probe-zusammen` fasst in einer `?ohneZF`-Seite
+   von Hand zusammen und zeigte −52 % an der Kreuzung; im Spiel griffen die Weltgruppen gar nicht (BoxGeometry-Gruppen).
+2. **Ein Vorher-Bild ist nur so gut wie der Vorher-Zustand.** Erst ein Leerlauf (nichts ändern, zweimal fotografieren),
+   dann ein Strahl durch die geänderten Bildpunkte — sonst schreibt man einem Fix zu, was ein alter Fehler war.
+3. **Einfrieren braucht eine Gegenprüfung auf „bewegt sich trotzdem".** Sechs Arten von Objekten liefen seit dem Einfrieren falsch,
+   eins davon (das Sonnenziel) veränderte das Licht der ganzen Karte. `probe-anfasser` findet diese Klasse jetzt
+   automatisch.
