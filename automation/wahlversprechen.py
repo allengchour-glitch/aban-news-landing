@@ -24,7 +24,7 @@ import json, os, re, subprocess, sys, time
 
 TOK = open('/tmp/cj_shop_token.txt').read().strip()
 URL = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
-BERICHT = 'dropship/WAHLVERSPRECHEN.md'
+BERICHT = os.environ.get('BERICHT', 'dropship/WAHLVERSPRECHEN.md')   # 25.09.: Ad-hoc-Listenläufe überschrieben den Gesamtbericht → BERICHT=/tmp/…
 LEDGER = 'dropship/_wahlversprechen.txt'
 CAP = int(os.environ.get('CAP', '4000'))
 SEIT = os.environ.get('SEIT', '')
@@ -73,7 +73,16 @@ WAHL = re.compile(
     r'(?:[\wäöüß]+en\s+|[\wäöüß]+e\s+)?'
     r'(?:Farb(?:en|varianten|kombinationen|t[öo]nen|ausf[üu]hrungen|optionen)|'
     r'Gr[öo]ssen(?:varianten)?|Stilrichtungen|Designs|Motiven|Mustern|L[äa]ngen|'
-    r'Ausf[üu]hrungen|Varianten|Modellen|Versionen)(?![\wäöüß])', re.I)
+    r'Ausf[üu]hrungen|Varianten|Modellen|Versionen)(?![\wäöüß])'
+    # 25.09.2026: MOTIV-ALTERNATIVEN. Die «Vintage Teetasse» (eine Variante, CHF 32.90) sagt «Mit Blumen- oder
+    # Pfingstrosenmotiv» — welches kommt, entscheidet der Lieferant. Am Voll-Export (30'190 Produkte mit EINER Variante)
+    # 43 Roh-Treffer, davon trägt die Bindestrich-Form («Dinosaurier- oder Enten-Design», «Herz-, Tropfen- oder
+    # Glockenmuster») 21, gelesen: 17 echte Wahlen, 4 Fehlalarme («erinnert an Schlangen- oder Bambusmuster»,
+    # «mit Zahlen- oder Buchstabenmustern belegen»). Die elidierte Vorsilbe (Wort-Bindestrich vor «oder») ist das Signal.
+    # Nicht erfasst (bewusst): «Ob Schleifen, Sterne … oder Leopardenmuster» — das beschreibt den Set-Inhalt.
+    r'|(?<!erinnert an )(?<!erinnert an schimmernde )\b[\wäöüß]+-(?:,\s*[\wäöüß]+-)*\s+oder\s+[\wäöüß]+-?(?:design|motiv|muster)(?:e|en|n|s)?(?![-\wäöüß])(?!\s+zu\s+belegen)'
+    r'|(?:erh[äa]ltlich|verf[üu]gbar|lieferbar|wahlweise)\s+(?:in|mit|im)\s+(?:(?:einem|einer|den|der)\s+)?[\wäöüß]+\s+oder\s+[\wäöüß-]*(?:design|motiv|muster)\w*'
+    r'|wahlweise\s+mit\s+[\wäöüß-]+\s+oder\s+[\wäöüß-]+', re.I)
 
 def gql(q, v=None):
     gedrosselt, i = 0, 0
