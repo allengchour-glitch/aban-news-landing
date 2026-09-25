@@ -91,9 +91,35 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🟢 UND EIN AUFMUNTERNDER BEFUND: jede erstattete Bestellung betrifft ein Produkt, das heute DRAFT
   ist** (BigBuy-Sperrgut, zwei Kopfhörer, das Taschenmesser). **Die Aufräumarbeit der Vorsessions hat
   also gewirkt** — der Katalog enthält die Fehlerquellen nicht mehr.
+- **💰 DREI DER PRODUKTE, DIE SICH TATSÄCHLICH VERKAUFEN, STANDEN UNTER DER ZIELMARGE** — und das
+  ist die teuerste Stelle im Katalog, weil dort echtes Geld durchläuft. **Geändert (live):
+  3 Produkte / 41 Varianten, 3/3 nachgemessen.** E-Scooter-Ladegerät 25.90→**34.90** (EK 18.01,
+  Marge 22,7→42,7 PROZENT) · Blumenkleid 18.90/19.90→**24.90** (EK 12.85–13.82, 22,6–24,6→38,3–42,7)
+  · Leinen-Set «Provence» 36 Var. 34.90→**39.90** (EK 20.27, 35,5→43,6). Vier Kontrollprodukte
+  (Gemüseschneider, Midikleid, beide Hängematten-Stufen) waren bereits in Ordnung — unangetastet.
+- **⚠️ EIN NEBENBEFUND DES GEDÄCHTNISSES WAR EINE FEHLDEUTUNG.** Der 13.09. notierte: „die
+  Reise-Hängematte hatte für **dieselbe Ware** 14.90 bis 51.90 bei identischem EK 16.92" — eigene
+  Runde wert. Ich wollte das glätten. **Die Variantennamen sagen etwas anderes: die teuren heissen
+  `Grey300x140cm` und `Green300x140cm` und tragen eine GRÖSSE**, die günstigen nur Farben. Es ist
+  keine identische Ware, sondern eine grössere Hängematte (63,8 PROZENT Marge). **Preise bleiben.**
+  Ohne den Blick auf die Variantennamen hätte ich einen gesunden Preis gesenkt.
+- **⚠️ FEHLALARM IM EIGENEN PRÜFGERÄT:** es meldete beim E-Scooter „alter Preis NOCH DA" (25.90
+  neben 34.90). Nachgemessen enthält der Seitenquelltext `"price":2590` **gar nicht** mehr und
+  `"price":3490` genau einmal. Zwei Erklärungen kommen in Frage — eine zwischengespeicherte Fassung
+  oder ein **Empfehlungsblock mit fremden Produkten**, deren Preise das Gerät mitzählte — und beide
+  führen zur selben Lehre: **die Prüfung „alter Preis weg" gehört an die Produktdaten
+  (`/products/<handle>.js`), die Prüfung „neuer Preis sichtbar" an die gerenderte Seite.** Umgebaut,
+  danach 3/3 sauber. **Und: vor „Fehlschlag" melden immer ein zweites Mal messen.**
 - **🎬 Produktvideos für genau diese sieben gerendert** mit `automation/produkt_werbevideo.mjs`
   (Produkt ab Sekunde 0, Preis im Bild, Marke am Ende, je eine Musik- und eine Clean-Fassung plus
   Deckblatt). Braucht keine Zugangsdaten.
+- **🔴 EIGENER DEFEKT, gefunden und behoben: drei Videos trugen VERALTETE PREISE.** Ich hatte
+  gerendert, **bevor** ich die Preise anhob — Leinen-Set 34.90 statt 39.90, Blumenkleid 18.90 statt
+  24.90, E-Scooter 25.90 statt 34.90. **Ein Werbevideo mit einem Preis, den der Shop nicht mehr hat,
+  ist irreführend, nicht bloss veraltet.** Die drei sind neu gerendert, und **alle sieben gegen den
+  Shop geprüft: 7 aktuell, 0 veraltet.** **Regel jetzt im Skill `werbevideo`: in einem Arbeitsgang
+  erst die Preise setzen, dann rendern** — und nach jeder späteren Preisänderung die betroffenen
+  Videos neu rendern.
 
 **📌 2026-09-23 (🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo):**
 - **Auftrag:** „lerne noch wie man bilder in video macht für super werbung video und teile memory."

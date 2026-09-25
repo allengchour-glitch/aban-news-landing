@@ -57,6 +57,19 @@ Text im Bild, Musik `automation/music/luxe-premium.wav`.**
 - **Zwei Tonspuren ausgeben:** `<name>.mp4` mit Musik (FB/Ads) und `<name>-clean.mp4` mit leisem
   Tonbett (TikTok/IG). **Trend-Sounds dürfen nie ins File gebrannt werden**, die legt die App drüber.
 
+## Der Preis im Bild bindet das Video an den Preis im Shop
+
+`produkt_werbevideo.mjs` brennt den Preis in **jedes** Segment — gewollt, weil die meisten Aufrufe
+ohne Ton laufen. Die Kehrseite: **jede Preisänderung macht das Video falsch.**
+
+**GEMESSEN 25.09.:** sieben Videos gerendert, danach drei Preise angehoben — die drei Videos trugen
+sofort falsche Preise (34.90 statt 39.90 · 18.90 statt 24.90 · 25.90 statt 34.90). Ein Werbevideo
+mit einem Preis, den der Shop nicht mehr hat, ist **irreführend, nicht bloss veraltet.**
+
+**Regel: in einem Arbeitsgang erst die Preise setzen, dann rendern** — und nach jeder späteren
+Preisänderung die Videos der betroffenen Produkte neu rendern. Die Prüfung ist billig: der Renderer
+gibt den verwendeten Preis aus, `/products/<handle>.js` liefert den aktuellen.
+
 ## Und die wichtigste: hinsehen
 
 Ein grüner Selbsttest beweist nur, dass der Code tut, was der Test prüft. **Ob der Test das Richtige
