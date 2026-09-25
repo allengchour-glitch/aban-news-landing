@@ -95,6 +95,7 @@ tar -cf - \
   --exclude='./luxestyle-shop' \
   --exclude='./mediakit' \
   --exclude='./tools' \
+  --exclude='./content' \
   --exclude='./automation' \
   --exclude='./server' \
   --exclude='./linkedin' \
@@ -119,6 +120,9 @@ test -f _site/_headers   && echo "_headers ok"
 # Tolerant: bricht den Build nicht ab, falls node fehlt.
 ( command -v node >/dev/null 2>&1 && node automation/inject-engine.mjs _site ) || echo "inject-engine übersprungen (node fehlt)"
 
+# Bezahlte Produkt-Quellen (content/packs) dürfen NIE öffentlich werden — sie werden nur als
+# geschützte ZIPs (downloads/kits, gehashter Name) nach verifizierter Zahlung ausgeliefert.
+if [ -e _site/content ]; then echo "FEHLER: content/ ist im Deploy (bezahlte Produkte öffentlich) — Abbruch." >&2; exit 1; fi
 echo "Dateien im Deploy: $(find _site -type f | wc -l)"
 echo "Dateien > 24 MiB (müssen 0 sein):"
 find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true
