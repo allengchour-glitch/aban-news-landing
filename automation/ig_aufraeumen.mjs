@@ -124,6 +124,31 @@ function bildWoerter(url) {
   } catch { return -1; }
 }
 
+// ── Facebook-Seite: Zwillinge der IG-Beiträge (der Autopilot postet Bild/Reel auf beide Kanäle) ────────────────────
+const SEITE = '1049840534888592';
+const fbPosts = [];
+{ let w = `${SEITE}/posts?fields=id,message,created_time&limit=100`;
+  while (w && fbPosts.length < 1500) {
+    const d = await g(w); if (d.error) { console.log('⚠️ FB-Liste nicht lesbar → Facebook bleibt unangetastet:', d.error.message); break; }
+    fbPosts.push(...(d.data || []));
+    const n = d.paging?.next; w = n ? n.replace(/^https:\/\/graph\.facebook\.com\/v[\d.]+\//, '').replace(/[&?]access_token=[^&]+/, '') : '';
+  } }
+const fnorm = s => String(s || '').toLowerCase().replace(/[^a-z0-9äöü]+/g, ' ').trim().slice(0, 40);
+function fbZwilling(p) {
+  const k = fnorm(p.caption); if (k.length < 20) return { notiz: 'FB: Caption zu kurz für Zuordnung' };
+  const t = Date.parse(p.timestamp);
+  const tr = fbPosts.filter(f => fnorm(f.message).startsWith(k) && Math.abs(Date.parse(f.created_time) - t) <= 3 * 3.6e6);
+  if (tr.length === 1) return { id: tr[0].id, notiz: '' };
+  return { notiz: tr.length ? `FB: ${tr.length} Treffer → unangetastet` : 'FB: kein Zwilling' };
+}
+// Gelöscht = die ID antwortet mit Fehler 100 (IG, Reel) oder 10 (Seiten-Post, Lehre 23.09.). Jeder andere Zustand = noch da.
+async function weg(id) {
+  const r = await g(`${id}?fields=id`);
+  // gemessen 25.09.: IG gelöscht = 100/33 «Unsupported get request»; FB gelöscht = 10 «Object does not exist»; existierend = OK
+  const e = r.error; if (!e) return false;
+  return (e.code === 100 && e.error_subcode === 33) || /does not exist/i.test(e.message || '');
+}
+
 // ── 3. Gründe sammeln ─────────────────────────────────────────────────────────────────────────────────────────────
 const jetzt = Date.now();
 const info = [];
@@ -183,12 +208,19 @@ for (const x of kandidaten) {
     continue;
   }
   await warte(5000);
-  const nach = await g(`${IG}/media?fields=id&limit=100`);
-  const nochDa = (nach.data || []).some(m => m.id === x.p.id);
-  if (nochDa) { console.log('      ⚠️ DELETE ohne Fehler, aber noch im Listing → nicht als gelöscht quittiert'); continue; }
-  fs.appendFileSync(LEDGER, `${new Date().toISOString()}\tgeloescht\t${x.p.id}\t${x.gruende.join(' + ')}\t${x.p.permalink}\t${x.aufrufe}\t${kurz.replace(/\t/g, ' ')}\n`);
+  // Rücklesen über die ID selbst. Die erste Fassung suchte in den neuesten 100 des Listings, dort steht ein Juni-Post aber
+  // ohnehin nicht → er wäre IMMER als «gelöscht» quittiert worden (gefunden 25.09. vor dem ersten Juni-Kandidaten).
+  if (!(await weg(x.p.id))) { console.log('      ⚠️ DELETE ohne Fehler, aber noch lesbar → nicht als gelöscht quittiert'); continue; }
+  // Facebook-Zwilling: gleicher Textanfang, ≤ 3 h Abstand, GENAU einer — sonst bleibt Facebook unangetastet.
+  const zw = fbZwilling(x.p); let fbNotiz = zw.notiz;
+  if (zw.id) {
+    const rf = await g(zw.id, { method: 'DELETE' });
+    if (rf.error) { fbNotiz = `FB-Fehler: ${rf.error.message.slice(0, 80)}`; if (SPERRE.test(rf.error.message || '')) { console.log('⛔ Sperrhinweis von Meta (FB) → Lauf beendet'); break; } }
+    else { await warte(3000); fbNotiz = (await weg(zw.id)) ? `FB ${zw.id} gelöscht` : `FB ${zw.id}: DELETE ohne Fehler, noch lesbar`; }
+  }
+  fs.appendFileSync(LEDGER, `${new Date().toISOString()}\tgeloescht\t${x.p.id}\t${x.gruende.join(' + ')}\t${x.p.permalink}\t${x.aufrufe}\t${kurz.replace(/\t/g, ' ')}\t${x.p.timestamp}\t${fbNotiz}\n`);
   geloescht++; budget--;
-  console.log('      ✅ gelöscht (nicht mehr im Listing)');
+  console.log(`      ✅ gelöscht (ID nicht mehr lesbar) · ${fbNotiz}`);
   await warte(45000);   // Takt wie fb_caption_korrektur (Spam-Schutz)
 }
 console.log(`FERTIG ${new Date().toISOString()}: ${geloescht} gelöscht${SCHARF ? '' : ' (DRY)'} · ${kandidaten.length} Kandidaten`);

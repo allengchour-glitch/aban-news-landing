@@ -967,8 +967,18 @@ Ledger `dropship/_ig_geloescht.txt`.
   überspringt weiterhin ab 4, denn Überspringen ist umkehrbar.
 **Erster scharfer Lauf 18:21 UTC: 5 gelöscht, alle mit Lieferantentext:** Jade-Roller, 2× LED-Lampe (darunter die aus dem Screenshot),
 Diffuser, Smartwatch (auch DRAFT). 43 Kandidaten bleiben: 26 PRODUKT, 13 DOPPEL, Rest TEXT. Sie gehen mit 5 je Tag weg.
+**Nachtrag «weiter» (25.09., 19:40 UTC).**
+- Facebook-Zwillinge: Der Autopilot postet auf IG und FB, deshalb löscht der Aufräumer jetzt auch den FB-Zwilling. Zwilling
+  heisst: gleicher Textanfang (40 Zeichen), höchstens 3 h Abstand und GENAU ein Treffer, sonst bleibt FB unangetastet. Die 5
+  Zwillinge der schon gelöschten IG-Posts sind nachgeholt und zurückgelesen. Beim Jade-Roller blieb der ältere FB-Doppel
+  vom 28.07. bewusst stehen, weil er nicht der Zwilling ist.
+- **Fehler im eigenen Rücklesen gefunden, bevor er wirken konnte:** Die erste Fassung suchte die gelöschte ID in den neuesten
+  100 des Listings. Ein Juni-Post steht dort ohnehin nicht und wäre IMMER als «gelöscht» quittiert worden. Jetzt fragt
+  `weg()` die ID selbst ab. Gemessen: IG gelöscht = 100/33, FB gelöscht = 10 «Object does not exist», bestehend = OK. Nur
+  diese Antworten zählen; ein Code 10 kann auch «fehlende Berechtigung» heissen.
 **Lehren.**
-1. **Beim Löschen ist «nicht gefunden» kein Beweis.** Nur eine eindeutige ID, die fehlt, zählt.
+1. **Beim Löschen ist «nicht gefunden» kein Beweis.** Nur eine eindeutige ID, die fehlt, zählt. Das gilt auch fürs
+   Rücklesen: Eine Liste der neuesten N beweist nichts über ältere Objekte.
 2. **Jeder Löschgrund braucht einen Trockenlauf mit Sichtprüfung der Randfälle**, und die Schwelle für Irreversibles liegt
    höher als die für Umkehrbares.
 
