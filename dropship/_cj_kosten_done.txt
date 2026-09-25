@@ -30967,3 +30967,9 @@ gid://shopify/Product/15466005660033	CHF 18.76	32 Varianten	Elegantes Samtkleid 
 gid://shopify/Product/15466006020481	CHF 16.69	16 Varianten	Elegantes Trägerkleid mit Seitenschlitz
 gid://shopify/Product/15466006315393	CHF 16.16	15 Varianten	Elegantes Hemdkleid mit Seitenschlitz
 gid://shopify/Product/15466008215937	CHF 21.51	42 Varianten	Herren Fleecejacke mit Stehkragen und Reissverschl
+gid://shopify/Product/15466010050945	CHF 12.76	28 Varianten	Mädchen-Babyschuhe mit weicher Sohle
+gid://shopify/Product/15466010608001	CHF 13.12	30 Varianten	Mädchen Lederimitat-Schuhe mit Klettverschluss
+gid://shopify/Product/15466010902913	CHF 12.58	40 Varianten	Mädchen Prinzessin Leder-Ballerinas mit Klettversc
+gid://shopify/Product/15466011197825	CHF 14.64	30 Varianten	Gestreifte Winterstiefel für Kinder mit Klettversc
+gid://shopify/Product/15466011558273	CHF 13.65	16 Varianten	Warme Winter-Hausschuhe für Kinder
+gid://shopify/Product/15466011853185	CHF 14.08	30 Varianten	Atmungsaktive Mesh-Schuhe für Mädchen
