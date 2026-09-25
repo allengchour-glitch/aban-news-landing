@@ -34,7 +34,11 @@ from pathlib import Path
 
 DATEN = Path.cwd() / "daten"
 BERICHT = Path.cwd() / "daytrading-bericht.md"
-MAERKTE = {"GC=F": "Gold", "SI=F": "Silber", "CL=F": "Öl (WTI)", "ES=F": "S&P 500 (Future)", "BTC-USD": "Bitcoin"}
+ROHSTOFFE = {"GC=F": "Gold", "SI=F": "Silber", "CL=F": "Öl (WTI)", "ES=F": "S&P 500 (Future)", "BTC-USD": "Bitcoin"}
+# Einzelaktien: US-Börse 6,5 h = 7 Stundenkerzen, SIX 8,5 h = 9 → eigene Mindestlänge (sonst fällt jeder US-Tag raus)
+AKTIEN = {"AAPL": "Apple", "NVDA": "Nvidia", "TSLA": "Tesla", "MSFT": "Microsoft", "AMZN": "Amazon",
+          "NESN.SW": "Nestlé", "NOVN.SW": "Novartis", "RO.SW": "Roche", "UBSG.SW": "UBS"}
+MAERKTE = {**ROHSTOFFE, **AKTIEN}
 KOSTEN = 0.0005
 LERN, TEST = 120, 20
 
@@ -52,16 +56,20 @@ def stunden(sym, offline):
     return json.loads(datei.read_text())
 
 
-def sitzungen(kerzen):
+def sitzungen(kerzen, mind=8):
     """Kerzen nach Handelstag gruppieren; zu kurze Tage (Feiertage, Randstücke) fallen raus."""
     tage = OrderedDict()
     for t, o, c in kerzen:
         tag = (datetime.fromtimestamp(t, timezone.utc) + timedelta(hours=2)).date()
         tage.setdefault(tag, []).append((o, c))
-    return [(k, v) for k, v in tage.items() if len(v) >= 8]
+    return [(k, v) for k, v in tage.items() if len(v) >= mind]
 
 
 # ───────────── Regeln: liefern (Richtung, Einstiegskurs) oder (0, None) — nur geschlossene Kerzen ─────────────
+def handelstage(sym, offline):
+    return sitzungen(stunden(sym, offline), 6 if sym in AKTIEN else 8)
+
+
 def folgen(tag, K, gegen=False):
     oeffnung, kurs = tag[0][0], tag[K - 1][1]
     if kurs == oeffnung:
@@ -91,7 +99,10 @@ def ergebnis(tag, regel, kosten):
     richtung, einstieg = regel(tag)
     if not richtung:
         return 0.0, None
-    r = richtung * (tag[-1][1] / einstieg - 1) - kosten
+    bewegung = tag[-1][1] / einstieg - 1
+    r = richtung * bewegung - kosten
+    if bewegung == 0:
+        return r, None  # Schluss exakt auf dem Einstieg (grobe Kursschritte): weder richtig noch falsch
     return r, r > 0
 
 
@@ -103,9 +114,9 @@ def sharpe(xs):
     return m / sd * math.sqrt(252) if sd else 0.0
 
 
-def walk_forward(tage, kosten):
+def walk_forward(tage, kosten, versatz=0):
     out, treffer, wahl = [], [], []
-    i = LERN
+    i = LERN + versatz
     while i + TEST <= len(tage):
         lern = tage[i - LERN:i]
         beste = max(REGELN, key=lambda rg: sharpe([ergebnis(t, rg[1], kosten)[0] for _, t in lern]))
@@ -147,6 +158,18 @@ def zufall_p(tage, mit, n=2000):
     return treffer / n
 
 
+def stabilitaet(tage):
+    """Dasselbe Verfahren mit allen 20 möglichen Startpunkten der Test-Blöcke. Ein Ergebnis, das nur bei
+    einem Startpunkt gut aussieht, ist Zufall der Einteilung. Liefert (schlechtester, Median, bester) pro Jahr."""
+    werte = []
+    for v in range(TEST):
+        x, _, _ = walk_forward(tage, KOSTEN, v)
+        if x:
+            werte.append((1 + gesamt(x)[0]) ** (252 / len(x)) - 1)
+    werte.sort()
+    return werte[0], werte[len(werte) // 2], werte[-1], sum(w > 0 for w in werte) / len(werte)
+
+
 def gesamt(xs):
     w, spitze, dd = 1.0, 1.0, 0.0
     for x in xs:
@@ -162,7 +185,14 @@ def main() -> int:
     args = ap.parse_args()
     zeilen = []
     for sym, name in MAERKTE.items():
-        tage = sitzungen(stunden(sym, args.offline))
+        try:
+            tage = handelstage(sym, args.offline)
+        except Exception as ex:  # ein Markt ohne Kurse darf die anderen nicht stoppen
+            print(f"  {name}: keine Stundenkurse ({ex}) — übersprungen")
+            continue
+        if len(tage) < LERN + TEST:
+            print(f"  {name}: nur {len(tage)} Handelstage, zu kurz für Lernen + Testen — übersprungen")
+            continue
         a, z = gegenprobe(tage)
         if not (a > 0.97 and 0.44 < z < 0.56):
             print(f"✖ GEGENPROBE {name}: Zukunft {a:.1%}, Zufall {z:.1%} — Messgerät kaputt, Abbruch.")
@@ -177,11 +207,13 @@ def main() -> int:
         from collections import Counter
         haeufig = Counter(wahl).most_common(1)[0][0]
         pw = zufall_p(tage, mit)
+        st = stabilitaet(tage)
         zeilen.append((name, tage[0][0], tage[-1][0], len(tage), len(mit), a, z, sum(tr) / len(tr), gehandelt,
-                       g_ohne, g_mit, dd_mit, g_long, haeufig, sharpe(mit), pw))
+                       g_ohne, g_mit, dd_mit, g_long, haeufig, sharpe(mit), pw, st))
         print(f"{name:17} {len(mit)} ungesehene Tage · Gegenprobe ok (Zukunft {a:.0%}, Zufall {z:.0%}) · "
               f"Trades richtig {sum(tr)/len(tr):.1%} · ohne Kosten {g_ohne:+.1%} · mit Kosten {g_mit:+.1%} · "
-              f"immer long {g_long:+.1%} · Münzwurf gleich gut in {pw:.0%}")
+              f"immer long {g_long:+.1%} · Münzwurf gleich gut in {pw:.0%} · pro Jahr je nach Start "
+              f"{st[0]:+.0%} bis {st[2]:+.0%}, im Plus bei {st[3]:.0%} der Startpunkte")
     bericht(zeilen)
     return 0
 
@@ -191,15 +223,18 @@ def bericht(z):
          f"Stand {date.today().isoformat()} · `python3 daytrading_test.py` · kein echtes Geld.", "",
          "Stundenkerzen der letzten ~2 Jahre. Jede Position wird am selben Tag geschlossen. Die Regel für die",
          "nächsten 20 Tage wählt der Bot auf den 120 Tagen davor; gezählt werden nur diese ungesehenen Tage.", "",
-         "| Markt | ungesehene Tage | Trades richtig | ohne Kosten | mit 0.05 % Kosten | schlimmster Einbruch | immer long (Tag) | Münzwurf gleich gut | häufigste Regel |",
-         "|---|---:|---:|---:|---:|---:|---:|---:|---|"]
-    for n, von, bis, nt, nu, a, zf, tr, geh, go, gm, dd, gl, h, sh, pw in z:
-        L.append(f"| {n} | {nu} | {tr:.1%} | {go:+.1%} | {gm:+.1%} | {dd:.0%} | {gl:+.1%} | {pw:.0%} | {h} |")
+         "| Markt | ungesehene Tage | Trades richtig | ohne Kosten | mit 0.05 % Kosten | schlimmster Einbruch | immer long (Tag) | Münzwurf gleich gut | pro Jahr je nach Startpunkt | im Plus | häufigste Regel |",
+         "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|"]
+    for n, von, bis, nt, nu, a, zf, tr, geh, go, gm, dd, gl, h, sh, pw, st in z:
+        L.append(f"| {n} | {nu} | {tr:.1%} | {go:+.1%} | {gm:+.1%} | {dd:.0%} | {gl:+.1%} | {pw:.0%} | "
+                 f"{st[0]:+.0%} bis {st[2]:+.0%} | {st[3]:.0%} | {h} |")
     L += ["", "Gegenprobe pro Markt: eine Regel, die den Tagesschluss kennt, trifft "
           + ", ".join(f"{n} {a:.0%}" for n, *_r in z for a in [_r[4]]) + "; Zufall um 50 %.", "",
           "## Was das heisst", "",
           "„Münzwurf gleich gut“: Anteil von 2000 Zufalls-Richtungen an denselben Tagen, die mindestens so viel",
           "verdienen wie der Bot. Über 5 % heisst: das Ergebnis ist mit Glück erklärbar.", "",
+          "„Je nach Startpunkt“: dasselbe Verfahren, nur die 20-Tage-Blöcke um 0 bis 19 Tage verschoben.",
+          "„im Plus“: bei wie vielen der 20 Startpunkte nach Kosten ein Gewinn herauskommt.", "",
           "Ohne Kosten sieht Daytrading oft harmlos aus. Mit realistischen Kosten zahlt man bei jedem Trade —",
           "bei einem Trade pro Tag rund 250-mal im Jahr. Genau dort verlieren die meisten.", "",
           "Keine Anlageberatung.", ""]
