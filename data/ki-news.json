@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-24T09:17:22Z",
+ "stand": "2026-09-25T09:35:37Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Umfrage: Widerstand der US-Amerikaner gegen KI-Datencenter wächst",
-   "u": "https://www.golem.de/news/umfrage-widerstand-der-us-amerikaner-gegen-ki-datencenter-waechst-2609-213389.html",
-   "q": "Golem",
-   "d": "2026-09-24T08:23:02Z",
-   "s": "Donald Trump findet KI-Datencenter gut, die US-Amerikaner eher nicht - auch Republikaner tendieren verstärkt zu negativen Ansichten. (Rechenzentrum, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Raus aus Adobes Creative Cloud: Acht Photoshop-Alternativen im Praxischeck",
-   "u": "https://www.heise.de/ratgeber/Raus-aus-Adobes-Creative-Cloud-Acht-Photoshop-Alternativen-im-Praxischeck-11453137.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-09-24T08:15:00Z",
-   "s": "Abo-Frust, Cloud-Zwang, KI-Bedenken: Wir zeigen, was Photoshop-Alternativen wie Affinity, ACDSee, GIMP und Co. wirklich leisten.",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Angriff auf Australien: OpenAI-Agent hat sich in Regierungsportal gehackt",
-   "u": "https://www.golem.de/news/australien-openai-agent-hat-sich-in-regierungsportal-gehackt-2609-213388.html",
-   "q": "Golem",
-   "d": "2026-09-24T08:08:02Z",
-   "s": "Ein KI-Agent von OpenAI sollte australische Gesundheitsstatistiken recherchieren. Dabei ist er aber zu weit gegangen und hat geschützte Daten abgerufen. (OpenAI, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Diese KI erstellt keinen Text, sie trifft Entscheidungen: Wie Jev funktioniert – und welche Alternativen es gibt",
-   "u": "https://t3n.de/news/jev-ki-modell-entscheidungen-kev-1764845/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "KI außer Kontrolle? Wie die Technologie unsere Cybersecurity auf den Kopf stellt",
+   "u": "https://t3n.de/news/ki-ausser-kontrolle-wie-die-technologie-unsere-cybersecurity-auf-den-kopf-stellt-1765005/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-24T08:00:00Z",
-   "s": "Mit Jev sorgt erneut ein KI-Modell für Wirbel. Das Besondere: Es erzeugt keinen Text, sondern trifft Entscheidungen – und zwar schnell. Wie das funktioniert, woweiterlesen auf t3n.de",
+   "d": "2026-09-25T09:00:31Z",
+   "s": "Der Hack von Hugging Face, überzeugendere Phishing-Mails und vor allem die Schnelligkeit: KI und die damit ausgestatteten Agenten werden zunehmend zu einer Bedrohung für die IT-Sicherheit unserer Comp…",
    "sprache": "de"
   },
   {
-   "t": "Tamagotchi trifft KI-Agent: Meta kündigt KI-Gadget Muse Charm an",
-   "u": "https://www.heise.de/news/Tamagotchi-trifft-KI-Agent-Meta-kuendigt-KI-Gadget-Muse-Charm-an-11463998.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-24T07:09:00Z",
-   "s": "Meta hat mit Muse Charm ein neues KI-Gadget für seinen Agenten Muse vorgestellt. Das Gerät soll als tragbarer Begleiter für den Alltag dienen.",
+   "t": "Muse leakt Systemdateien: Metas KI-Agent gibt auf Anfrage sein Dateisystem aus",
+   "u": "https://www.golem.de/news/muse-leakt-systemdateien-metas-ki-agent-gibt-auf-anfrage-sein-dateisystem-aus-2609-213429.html",
+   "q": "Golem",
+   "d": "2026-09-25T08:50:02Z",
+   "s": "Ein Entwickler hat Metas KI-Agent Muse 6,8 GByte an Daten aus seiner Betriebsumgebung entlockt. Laut Meta ist das ein erwartetes Verhalten. (KI, Ubuntu)",
    "sprache": "de"
   },
   {
-   "t": "Weniger Struggle, mehr Struktur: Wie KI bei Präsentationen hilft",
-   "u": "https://t3n.de/news/mehr-struktur-wie-ki-bei-praesentationen-hilft-prompt-vorlage-1764867/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Horizon Create und Horizon Studio: KI erzeugt Handyspiele und verteilt sie auf Facebook",
+   "u": "https://www.golem.de/news/horizon-create-und-horizon-studio-ki-erzeugt-handyspiele-und-verteilt-sie-auf-facebook-2609-213427.html",
+   "q": "Golem",
+   "d": "2026-09-25T08:35:01Z",
+   "s": "Anwender sollen Spiele für Meta-Plattformen mit KI direkt am Smartphone und im Browser prompten können. (KI, Softwareentwicklung)",
+   "sprache": "de"
+  },
+  {
+   "t": "Kennzeichen und Sperrung für Tantiemen: Wie der Musikstreaming-Dienst Qobuz gegen KI-Musik vorgeht",
+   "u": "https://t3n.de/news/musikstreaming-plattform-qobuz-zieht-nach-und-fuehrt-ki-label-ein-1765062/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-24T07:00:41Z",
-   "s": "Präsentationen kosten Zeit und Nerven, dazu verlierst du dich leicht in Details. Mit KI soll die Erstellung schneller gelingen und das Ergebnis mehr überzeugen. Den passenden Prompt und Tipps zur Anwe…",
+   "d": "2026-09-25T08:30:41Z",
+   "s": "Immer mehr Musikstreaming-Anbieter führen Labels ein, um KI-generierte Musik zu kennzeichnen. Auch die Plattform Qobuz setzt jetzt auf einen „AI-Tag“, um für Hörer:innen Transparenz zu schaffen.weiter…",
    "sprache": "de"
   },
   {
-   "t": "Everything new coming to Meta’s AI agent Muse",
-   "u": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
+   "t": "heise+ | Pilze sammeln mit KI: Experten warnen vor tödlichen Fehlern",
+   "u": "https://www.heise.de/hintergrund/Pilze-sammeln-mit-KI-Experten-warnen-vor-toedlichen-Fehlern-11461413.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-09-25T08:30:00Z",
+   "s": "Die Pilzsaison läuft. Fragt man Apps und KI, ob man ein leckeres Stockschwämmchen oder einen Gifthäubling gesammelt hat, folgen mitunter tödliche Ratschläge.",
+   "sprache": "de"
+  },
+  {
+   "t": "Google bringt Echtzeit-Avatare für Gemini-Sprachagenten",
+   "u": "https://www.heise.de/news/Google-gibt-Gemini-Sprachagenten-ein-Gesicht-11465625.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-25T08:14:00Z",
+   "s": "Google erweitert Gemini um Avatare, die sprechen, sehen und mimisch auf Nutzer reagieren. Die Funktion richtet sich vorerst an Unternehmen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Lightspeed targets $250M for new India fund, focusing on early-stage AI",
+   "u": "https://techcrunch.com/2026/09/24/lightspeed-targets-250m-for-new-india-fund-focusing-on-early-stage-ai/",
    "q": "TechCrunch AI",
-   "d": "2026-09-24T01:13:32Z",
-   "s": "CEO Mark Zuckerberg kicked off the company’s annual Connect event in Menlo Park on Wednesday with a keynote that made one thing clear: Meta is going all-in on Muse. It's even coming to Meta's AI glass…",
+   "d": "2026-09-25T05:00:00Z",
+   "s": "The venture firm is aligning its India fundraising cycle with its global funds for the first time, as it shifts to a shorter investment period.",
    "sprache": "en"
   },
   {
-   "t": "Meta made a Tamagotchi-like wearable for its Muse AI agent",
-   "u": "https://techcrunch.com/2026/09/23/meta-made-a-tamagotchi-like-wearable-for-its-muse-ai-agent/",
+   "t": "Bring your co-founder, partner, or colleague and get 50% off a second TechCrunch Disrupt 2026 pass",
+   "u": "https://techcrunch.com/2026/09/24/bring-your-co-founder-partner-or-colleague-and-get-50-off-a-second-techcrunch-disrupt-2026-pass/",
    "q": "TechCrunch AI",
-   "d": "2026-09-24T00:46:17Z",
-   "s": "The tiny hardware device creates another mobile home for its AI agent Muse.",
+   "d": "2026-09-24T19:15:00Z",
+   "s": "Buy one pass to TechCrunch Disrupt 2026 and get 50% off a second of the same ticket type. Register before event starts on October 13 at 8 a.m. PT.",
    "sprache": "en"
   },
   {
-   "t": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
-   "u": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
+   "t": "Accelerating vision-language models with LFM2.5-VL-DSpark",
+   "u": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
    "q": "Hugging Face",
-   "d": "2026-09-23T18:41:40Z",
+   "d": "2026-09-24T14:08:57Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "Google Beam expands with new regions, partners, and customers",
-   "u": "https://blog.google/innovation-and-ai/technology/research/google-beam-expansion/",
-   "q": "Google AI",
-   "d": "2026-09-23T18:00:00Z",
-   "s": "We’re expanding Google Beam to five new countries, and partnering with Industrious for an extended network.",
+   "t": "The Download: a bid to scrap the virtual wall and AI hits Climate Week",
+   "u": "https://www.technologyreview.com/2026/09/24/1145064/the-download-bid-scrap-virtual-wall-ai-climate-week/",
+   "q": "MIT Tech Review",
+   "d": "2026-09-24T12:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A congressional representative just proposed killing America’s…",
    "sprache": "en"
   }
  ]
