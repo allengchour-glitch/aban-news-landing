@@ -29592,3 +29592,8 @@ gid://shopify/Product/15455760482689	CHF 17.11	56 Varianten	Herren Langarm-Basis
 gid://shopify/Product/15455760580993	CHF 9.65	32 Varianten	Herren-Casual Plaid-Print Polo-Shirt
 gid://shopify/Product/15455760679297	CHF 20.54	12 Varianten	Edgy Vintage-Stil Kurzarm-Shirt
 gid://shopify/Product/15455760744833	CHF 10.67	4 Varianten	Wand-Hängetasche für Organisation
+gid://shopify/Product/15455760777601	CHF 9.25	24 Varianten	Wellenmuster Cardigan
+gid://shopify/Product/15455760875905	CHF 7.53	1 Varianten	Kasten für Manschettenknöpfe
+gid://shopify/Product/15455760974209	CHF 10.82	6 Varianten	Retro-T-Shirt für Herren
+gid://shopify/Product/15455761105281	CHF 48.06	1 Varianten	Anti-Rutsch-Bodenmatte 60x120 cm Dreckresistent
+gid://shopify/Product/15455761236353	CHF 13.96	1 Varianten	Smart-Lichtrecorder
