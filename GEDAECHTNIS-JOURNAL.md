@@ -949,6 +949,29 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 88 (25.09.2026) — 🔄 Gedächtnis der anderen Sessions geladen: 40 Lern-Dateien, zwei Kollisionen gemessen
+**Auftrag:** «lade lern memory von andere session für update».
+**Gemessen.** Vier LuxeStyle-Branches mit eigenen Commits seit dem 20.09.:
+- `selbststaendiges-lernen-h48e6m`: Werbevideo aus Produktbildern, Hook-Messung (57 von 107 Reels zeigen in den ersten
+  2,7 s nur das Logo), Helm-/Schutzausrüstungs-Preise nur gehoben, Sternchen-Falle;
+- `luxstyle-play-store-app-rjuxbz`: Android-App auf der Storefront-API;
+- `luxstyle-ads-search-5i68xa`: Klaviyo läuft, 72 FAILED-Dateien gelöscht, Metricool-Plan;
+- `fervent-ritchie`: nur main-Merges.
+Wer nur den Diff gegen UNSEREN Branch liest, sieht bei den main-basierten Branches 400 Dateien Rauschen (Spiele-Runbooks).
+**Deshalb Diff ab `merge-base origin/main <branch>`**, dann bleiben die eigenen Commits übrig.
+**Getan.**
+- 40 fehlende Dateien byte-gleich übernommen (Skill `werbevideo`, Werkzeuge, LERNEN-Berichte, Vault). Geheimnis-Scan 0.
+  Vorhandene Skills nicht überschrieben.
+- Versandschwelle live gemessen: 45 aktiv, mit Absicht; der «Widerspruch» der App-Session ist keiner.
+- Metricool-Plan der ads-Session geprüft: Threads verletzt den Stopp vom 07.07., 6 von 12 Produkten waren im Juni
+  schon auf IG, und keiner der Posts steht in unseren Ledgern. Das habe ich dem Betreiber zur Entscheidung vorgelegt;
+  Eintrag in SHARED-MEMORY.
+**Lehren.**
+1. **Fremde Sessions am selben Konto umgehen jede Doppelpost-Sperre, die nur im eigenen Ledger nachsieht.** Die
+   Plattform-Wahrheit (`igLiveHas`) greift erst nach dem Post. Vor jeder Planungsrunde also `getScheduledPosts`
+   lesen, und zwar über ALLE Netzwerke.
+2. **Eine übernommene «feste Regel» einer anderen Session ist eine Behauptung**, bis man sie misst (Versand 50 ⇄ 45).
+
 ### Nachtrag 87 (25.09.2026) — 🔁 Ein Wächter draftet, keiner holt zurück: 77 lieferbare Entwürfe, 73 zurück
 **Gemessen.** Die «4 Aufseher» dieser Runde waren Unter-Shells DESSELBEN Aufsehers (gleiche SID 459, Kinder
 cj_kosten_backfill/Bewertungen). `engine_keepalive` zählt korrekt nur Sitzungsleiter (pid==sid), falsch war MEINE
@@ -16745,3 +16768,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🗑️ **«JA fb löschen»: 120 FB-Beiträge weg (DOPPEL/PRODUKT/TON), 23 mit nur falscher Caption bleiben stehen. Der Lauf meldete «92 Fehler»: gelöschte Seiten-Posts antworten beim Rücklesen mit Code 10, nicht 100 → Wahrheit = Seiten-Listing; `fb_qualitaet_loeschen.mjs`.** Scharfe Läufe voll ins Log, nie durch `tail` → Journal Nachtrag 46
 - 2026-09-23 · ⛔ **Meta sperrte nach 120 Löschungen + 7 Caption-Korrekturen («Spam»): Schreiber müssen eine Sperre als Stoppsignal lesen (`fb_caption_korrektur.mjs` bricht ab, 45 s Takt, täglich weiter). Server-Platte 100 % durch `git gc` auf fast voller Platte (+3 GB alte `tmp_pack`-Reste) → `server/platte-schlank.sh`: erst Reste/Verwaistes löschen, dann verpacken.** → Journal Nachtrag 47
 - 2026-09-23 · 🔑 **US-Damengrössen «14W…26W» wurden Watt (142 Werte, 8 Produkte) → `_vorbereiten`-Marke + Optionskontext, 143 repariert; GitHubs Push-Schutz fing eine aus dem Chat kopierte Schlüssel-Gegenprobe in `wartung.test.mjs` ab → synthetisch, Commits neu geschrieben; Server-Wartung nach 19 Prüfer-Befunden (Allowlist-Crontab, Entropie-Schwärzen, Journal-Filter, Sperre/trap/Stash-Schutz).** `wert_de()`=None heisst «nicht ändern», nicht «verworfen»; Testdaten nie aus dem Chat → Journal Nachtrag 48
+- 2026-09-23 · 🧾 **Kollektionen: «Nach Preis sortiert» entging der Regex (5 Kollektionen, «0 von 11» war falsches Grün), 12 tote Marken ausserhalb der Liste, SKU-Leck baby-kids → 12 Bausteine nach Messung der echten Ware, Vollscan 353: 0/0; Server-gc ohne Gewinn (echte Historie), /opt/luxe/repo von cron benutzt; Zapfventil-Hauptbild getauscht (Google zielt aufs Bild); «Geschenke bis 30» von 50'291 auf Tag geschenk eingegrenzt.** Eine Prüfung über die Planliste findet nur, was im Plan steht → Journal Nachtrag 49
