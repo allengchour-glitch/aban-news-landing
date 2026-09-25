@@ -31767,3 +31767,55 @@ gid://shopify/Product/15472050143617	CHF 16.66	8 Varianten	Freizeitkleid mit Blu
 gid://shopify/Product/15472050176385	CHF 12.22	60 Varianten	Wasserdichtes dreieckiges Sonnensegel für Aussenbe
 gid://shopify/Product/15472050241921	CHF 18.71	5 Varianten	Figurschmeichelndes Kleid mit asymmetrischem Saum
 gid://shopify/Product/15472050274689	CHF 11.31	8 Varianten	Wasserdichter Dry Bag mit Blumenprint, 10L
+gid://shopify/Product/15472050307457	CHF 17.37	1 Varianten	Tragbarer Multifunktions-Entsafter für Zuhause
+gid://shopify/Product/15472050340225	CHF 16.05	4 Varianten	Tie-Dye A-Linien Strickkleid für Damen
+gid://shopify/Product/15472050372993	CHF 8.96	3 Varianten	Minimalistische Laterne im Bücherregal-Design
+gid://shopify/Product/15472050438529	CHF 20.25	5 Varianten	Spitzenbesetztes Trägerkleid mit hoher Taille
+gid://shopify/Product/15472050471297	CHF 55.13	1 Varianten	Karosserie-Zangen-Set für Ausbesserungen
+gid://shopify/Product/15472050504065	CHF 15.54	5 Varianten	Boho-Minikleid mit Print und Volants
+gid://shopify/Product/15472050536833	CHF 45.78	4 Varianten	Alien-Teppich für Sofa und Couchtisch
+gid://shopify/Product/15472050569601	CHF 12.73	5 Varianten	Elegantes Polka-Dot A-Linien Kleid
+gid://shopify/Product/15472050602369	CHF 8.96	1 Varianten	Feuchtigkeitsspendende Tuchmaske
+gid://shopify/Product/15472050635137	CHF 12.81	8 Varianten	Französisches Chic-Kleid mit Spitze und Taillensch
+gid://shopify/Product/15472050667905	CHF 56.05	14 Varianten	Kühlende Sommerdecke mit Sojafaserfüllung
+gid://shopify/Product/15472058597761	CHF 8.84	4 Varianten	Hollow-Out Wheel Uhr, wasserdicht, Stahlband
+gid://shopify/Product/15472058663297	CHF 14.15	4 Varianten	Gestreiftes Faux-Zweiteiler Slim-Fit Kleid
+gid://shopify/Product/15472058696065	CHF 17.11	2 Varianten	Kurzes Strickkleid mit Geometrischem Muster
+gid://shopify/Product/15472058761601	CHF 23.87	18 Varianten	Elegantes Plissée-Kleid mit ausgestellten Ärmeln
+gid://shopify/Product/15472058827137	CHF 21.75	6 Varianten	Elegantes Etuikleid mit Spitze und A-Linien-Rock
+gid://shopify/Product/15472058859905	CHF 32.23	42 Varianten	Sommerdecke aus Baumwolle und Sojafasern
+gid://shopify/Product/15472058892673	CHF 21.61	1 Varianten	Gourde Armband mit Moissanit Steinen
+gid://shopify/Product/15472058925441	CHF 11.01	40 Varianten	Business-Freizeit Hemd knitterfrei
+gid://shopify/Product/15472058958209	CHF 19.16	1 Varianten	RF-Haarpflegekamm mit EMS-Mikrostrom
+gid://shopify/Product/15472058990977	CHF 15.04	2 Varianten	S925 Silber Halskette Minimalistische Goldkette
+gid://shopify/Product/15472059023745	CHF 19.91	45 Varianten	Freizeit-Shirt mit Knopfärmeln
+gid://shopify/Product/15472059089281	CHF 12.87	1 Varianten	LED-Stirnlampe, wasserdicht, Flugzeug-Stil
+gid://shopify/Product/15472059122049	CHF 12.07	5 Varianten	Leichtes Leinenhemd für Herren
+gid://shopify/Product/15472059154817	CHF 33.57	1 Varianten	Faltbare, abschliessbare Aufbewahrungsbox
+gid://shopify/Product/15472059187585	CHF 14.48	1 Varianten	Geschenk-Uhr aus Bambus mit Wecker & Thermo
+gid://shopify/Product/15472059220353	CHF 30.47	16 Varianten	Smart Heiz-Hoodie mit Dual-Control
+gid://shopify/Product/15472059253121	CHF 19.20	6 Varianten	Plüschtier-Hüte für Haustiere
+gid://shopify/Product/15472059285889	CHF 9.76	99 Varianten	Gestreiftes Kurzarmshirt für Herren
+gid://shopify/Product/15472059318657	CHF 11.54	98 Varianten	Legeres Kurzarm-Polohemd mit Revers
+gid://shopify/Product/15472059351425	CHF 7.05	8 Varianten	Halsband Käfer-Design für Katzen & kleine Hunde
+gid://shopify/Product/15472059384193	CHF 9.34	24 Varianten	Hunde-Laufleine mit Stahlseil
+gid://shopify/Product/15472059416961	CHF 21.50	3 Varianten	Elegantes Spitzenkleid mit Schlitz
+gid://shopify/Product/15472059449729	CHF 28.34	42 Varianten	Damen A-Linien Kleid mit ausgestellten Ärmeln
+gid://shopify/Product/15472059482497	CHF 78.75	1 Varianten	Multifunktionaler Armtrainer mit Widerstand
+gid://shopify/Product/15472059515265	CHF 23.87	6 Varianten	Elegantes rückenfreies Maxikleid
+gid://shopify/Product/15472059548033	CHF 16.99	4 Varianten	Halterneck Jacquard Midi-Kleid
+gid://shopify/Product/15472059580801	CHF 24.19	7 Varianten	Elegantes Rundhals-Kleid mit Bindeband
+gid://shopify/Product/15472059613569	CHF 19.89	6 Varianten	Elegantes Blumenkleid mit Quadrathals
+gid://shopify/Product/15472059646337	CHF 16.25	18 Varianten	Elegantes, figurbetontes Strickkleid mit hohem Bun
+gid://shopify/Product/15472059679105	CHF 19.07	6 Varianten	Elegantes ärmelloses A-Linien-Minikleid
+gid://shopify/Product/15472059711873	CHF 24.59	9 Varianten	Ärmelloses Strickkleid für Damen
+gid://shopify/Product/15472059744641	CHF 20.33	18 Varianten	Elegantes A-Linien Maxikleid mit Spaghettiträgern
+gid://shopify/Product/15472059777409	CHF 11.75	80 Varianten	Lässiges Leinenhemd für Damen
+gid://shopify/Product/15472059810177	CHF 15.19	66 Varianten	Western Fransenhemd aus Wildlederimitat
+gid://shopify/Product/15472062431617	CHF 18.46	3 Varianten	Strapless A-Linie Kleid
+gid://shopify/Product/15472062497153	CHF 16.65	5 Varianten	Gelbes Blumenkleid
+gid://shopify/Product/15472062529921	CHF 21.78	6 Varianten	Eleganter A-Linien Midi-Rock mit Schlitz
+gid://shopify/Product/15472062595457	CHF 19.86	6 Varianten	Elegantes Spitzenkleid mit Spaghettiträgern
+gid://shopify/Product/15472062628225	CHF 23.87	21 Varianten	Off-Shoulder Kleid mit geradem Schnitt
+gid://shopify/Product/15472062693761	CHF 20.33	35 Varianten	Elegantes Puffärmel-Maxikleid zum Schnüren
+gid://shopify/Product/15472062759297	CHF 25.12	6 Varianten	Langarm-Kleid mit Druck
