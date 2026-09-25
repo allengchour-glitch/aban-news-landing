@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget-Rechner Schweiz: Wie viel monatlich zurücklegen? · aban news</title>
+<meta name="description" content="Gratis-Budgetrechner für die Schweiz: rechnet Steuern, Franchise und Jahresrechnungen auf den Monat um und zeigt, wie viel du monatlich zurücklegen musst und wie viel übrig bleibt. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/budget-rechner-schweiz.html">
+<meta property="og:title" content="Budget-Rechner Schweiz: Wie viel monatlich zurücklegen?">
+<meta property="og:description" content="Steuern, Franchise und Jahresrechnungen auf den Monat umgerechnet. Gratis, lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/budget-rechner-schweiz.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Budget-Rechner Schweiz", "url": "https://abannews.com/budget-rechner-schweiz.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "de-CH", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"}, "description": "Rechnet Jahresrechnungen wie Steuern und Franchise auf den Monat um und zeigt die nötige monatliche Rückstellung.", "publisher": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wie viel sollte ich monatlich für die Steuern zurücklegen?", "acceptedAnswer": {"@type": "Answer", "text": "Am einfachsten: die letzte Steuerrechnung (Kanton, Gemeinde und Bund zusammen) durch 12 teilen und diesen Betrag jeden Monat per Dauerauftrag auf ein separates Konto überweisen. Nach einer Lohnerhöhung, einem Umzug oder einer Heirat neu schätzen."}}, {"@type": "Question", "name": "Was gehört in ein Budget in der Schweiz?", "acceptedAnswer": {"@type": "Answer", "text": "Neben Miete, Krankenkasse und Lebensmitteln vor allem die Posten, die nur einmal im Jahr kommen: Steuern, Franchise und Selbstbehalt, Hausrat- und Haftpflichtversicherung, die Radio- und TV-Gebühr, Ferien und Geschenke. Genau diese bringen viele Budgets aus dem Gleichgewicht."}}, {"@type": "Question", "name": "Wie hoch sollte die Notreserve sein?", "acceptedAnswer": {"@type": "Answer", "text": "Üblich sind drei Monate der festen Ausgaben auf einem Sparkonto, nicht investiert. Erst danach lohnt es sich, zu investieren oder Schulden schneller zu tilgen."}}, {"@type": "Question", "name": "Wie viel darf die Miete kosten?", "acceptedAnswer": {"@type": "Answer", "text": "Als Faustregel höchstens ein Drittel des Nettoeinkommens. Alles darüber macht das Budget eng, weil in der Schweiz auch Krankenkasse und Steuern einen grossen Teil beanspruchen."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--rot:#b91c1c}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--rot:#f87171}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:8px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt);padding:9px 15px}
+.hero{padding:36px 0 6px}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2)}
+h2{font-size:1.3rem;margin:30px 0 10px;letter-spacing:-.01em}
+p,ul{margin:10px 0}ul{padding-left:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:.82rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+.out{margin-top:16px}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kachel{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kachel .z{font-size:1.45rem;font-weight:800;font-variant-numeric:tabular-nums}
+.urteil{border-left:4px solid var(--amber-dk);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:12px}
+.warn{border-left:4px solid var(--rot)}
+.note{color:var(--muted);font-size:.84rem}
+.produkt{border:1px solid var(--line);border-left:4px solid var(--gut);border-radius:14px;background:var(--card);padding:18px;margin:26px 0}
+.produkt ul{margin:8px 0 14px}
+details{border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:8px 0;background:var(--card)}
+summary{font-weight:700;cursor:pointer}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<div class="wrap">
+  <section class="hero">
+    <h1>Budget-Rechner Schweiz: Wie viel monatlich zurücklegen?</h1>
+    <p>Die Steuerrechnung, die Franchise, die Hausrat-Prämie: Sie kommen einmal im Jahr und reissen dann ein Loch ins Konto. Der Rechner verteilt sie auf den Monat und zeigt, was wirklich übrig bleibt. Alles rechnet in deinem Browser.</p>
+  </section>
+
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div><label for="lohn">Nettolohn pro Monat</label><input id="lohn" type="number" min="0" step="100" value="5800"></div>
+      <div><label for="dreizehn">13. Monatslohn (CHF, 0 = keiner)</label><input id="dreizehn" type="number" min="0" step="100" value="5800"></div>
+      <div><label for="miete">Miete inkl. Nebenkosten</label><input id="miete" type="number" min="0" step="50" value="1850"></div>
+      <div><label for="kk">Krankenkasse pro Monat</label><input id="kk" type="number" min="0" step="10" value="420"></div>
+      <div><label for="steuern">Steuern pro Jahr</label><input id="steuern" type="number" min="0" step="100" value="8400"></div>
+      <div><label for="jahr">Übrige Jahresrechnungen</label><input id="jahr" type="number" min="0" step="100" value="2700"></div>
+      <div><label for="monat">Übrige Ausgaben pro Monat</label><input id="monat" type="number" min="0" step="50" value="1640"></div>
+    </div>
+    <p class="note">Übrige Jahresrechnungen: Franchise, Versicherungen, Radio- und TV-Gebühr, Ferien, Geschenke. Übrige Ausgaben pro Monat: Essen, Handy, ÖV, Freizeit, Sparen.</p>
+    <div class="out" id="out" aria-live="polite"></div>
+  </section>
+
+  <h2>Das Rückstellungskonto: der wichtigste Trick</h2>
+  <p>In der Schweiz werden die Steuern bei den meisten nicht vom Lohn abgezogen. Sie kommen als Rechnung, oft mehrere tausend Franken auf einmal. Wer sie nicht jeden Monat zurücklegt, zahlt sie mit dem Dispo oder der Kreditkarte, zu 10 % Zins oder mehr.</p>
+  <ul>
+    <li>Ein zweites Konto eröffnen, nur für Rechnungen.</li>
+    <li>Einen Dauerauftrag direkt nach dem Lohneingang, genau über den Betrag, den der Rechner zeigt.</li>
+    <li>Alle Jahresrechnungen von diesem Konto bezahlen.</li>
+  </ul>
+
+  <section class="produkt" id="budget-plan">
+    <p><b>Jeden Posten einzeln planen: der Budget-Plan Schweiz.</b></p>
+    <ul>
+      <li>Alle Einnahmen und Ausgaben mit dem richtigen Takt: monatlich, pro Quartal, halbjährlich, jährlich</li>
+      <li><b>Rückstellung pro Posten:</b> wie viel für Steuern, Franchise, Ferien einzeln zurückzulegen ist</li>
+      <li><b>Muss, Kann, Sparen</b> im Vergleich mit der 50/30/20-Regel, Warnung bei zu hohen Wohnkosten</li>
+      <li><b>Notreserve:</b> Ziel aus deinen festen Kosten und wie viele Monate du bis dahin brauchst</li>
+      <li>Export als Excel-Datei oder PDF, dazu eine Anleitung mit Tipps zum Steuern-Schätzen</li>
+    </ul>
+    <p class="note">Eine HTML-Datei, läuft offline in jedem Browser, auch auf dem Handy. Deine Zahlen bleiben auf deinem Gerät. Planungshilfe, keine Finanzberatung.</p>
+    <a class="btn" id="plan-kauf" href="/shop.html">Budget-Plan Schweiz — CHF 19</a>
+    <p class="note">Sofort-Download nach der Zahlung. <a href="/agb.html">AGB &amp; Widerruf</a> · Schulden dazu? <a href="/schulden-oder-investieren.html">Schulden tilgen oder investieren</a></p>
+  </section>
+
+  <h2>Häufige Fragen</h2>
+  <details><summary>Wie viel sollte ich monatlich für die Steuern zurücklegen?</summary><p>Am einfachsten: die letzte Steuerrechnung (Kanton, Gemeinde und Bund zusammen) durch 12 teilen und diesen Betrag jeden Monat per Dauerauftrag auf ein separates Konto überweisen. Nach einer Lohnerhöhung, einem Umzug oder einer Heirat neu schätzen.</p></details>
+  <details><summary>Was gehört in ein Budget in der Schweiz?</summary><p>Neben Miete, Krankenkasse und Lebensmitteln vor allem die Posten, die nur einmal im Jahr kommen: Steuern, Franchise und Selbstbehalt, Hausrat- und Haftpflichtversicherung, die Radio- und TV-Gebühr, Ferien und Geschenke. Genau diese bringen viele Budgets aus dem Gleichgewicht.</p></details>
+  <details><summary>Wie hoch sollte die Notreserve sein?</summary><p>Üblich sind drei Monate der festen Ausgaben auf einem Sparkonto, nicht investiert. Erst danach lohnt es sich, zu investieren oder Schulden schneller zu tilgen.</p></details>
+  <details><summary>Wie viel darf die Miete kosten?</summary><p>Als Faustregel höchstens ein Drittel des Nettoeinkommens. Alles darüber macht das Budget eng, weil in der Schweiz auch Krankenkasse und Steuern einen grossen Teil beanspruchen.</p></details>
+
+  <p class="note" style="margin-top:20px">Passt dazu: <a href="/schulden-oder-investieren.html">Schulden tilgen oder investieren</a> · <a href="/nettolohn-rechner-schweiz.html">Nettolohn-Rechner</a> · <a href="/sparziel-rechner.html">Sparziel-Rechner</a> · <a href="/saeule-3a-rechner.html">Säule-3a-Rechner</a></p>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) · Planungshilfe, keine Finanzberatung ·
+  <a href="/online-tools.html">Alle Tools</a> · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script id="engine">
+/*ENGINE-START*/
+// Budget-Plan Schweiz — Rechen-Engine (ohne Oberfläche, in Node testbar). Beträge in CHF.
+(function (root) {
+  "use strict";
+  // Wie oft pro Jahr fällt ein Posten an?
+  var PRO_JAHR = { monat: 12, quartal: 4, halbjahr: 2, jahr: 1 };
+  // Gruppen für 50/30/20: bedarf = muss, wunsch = kann, sparen = Sparen/Tilgen
+  function monatlich(p) { return (+p.betrag || 0) * (PRO_JAHR[p.takt] || 12) / 12; }
+
+  function auswerten(plan) {
+    var ein = (plan.einnahmen || []).reduce(function (a, p) { return a + monatlich(p); }, 0);
+    var gruppen = { bedarf: 0, wunsch: 0, sparen: 0 }, rueck = 0, wohnen = 0, fix = 0, posten = [];
+    (plan.ausgaben || []).forEach(function (p) {
+      var m = monatlich(p);
+      gruppen[p.gruppe || "bedarf"] += m;
+      if (p.takt && p.takt !== "monat") rueck += m;       // nicht monatlich bezahlt → monatlich zurücklegen
+      if (p.wohnen) wohnen += m;
+      if ((p.gruppe || "bedarf") === "bedarf") fix += m;
+      posten.push({ name: p.name, monat: m, gruppe: p.gruppe || "bedarf" });
+    });
+    var aus = gruppen.bedarf + gruppen.wunsch + gruppen.sparen;
+    var rest = ein - aus;
+    var reserveZiel = 3 * fix;
+    var reserve = +plan.reserve || 0;
+    var sparMonat = gruppen.sparen + Math.max(rest, 0);
+    var monateBisReserve = reserve >= reserveZiel ? 0 : (sparMonat > 0 ? Math.ceil((reserveZiel - reserve) / sparMonat) : null);
+    var q = function (x) { return ein > 0 ? x / ein : 0; };
+    return {
+      einnahmen: ein, ausgaben: aus, rest: rest, gruppen: gruppen,
+      anteile: { bedarf: q(gruppen.bedarf), wunsch: q(gruppen.wunsch), sparen: q(gruppen.sparen + Math.max(rest, 0)) },
+      rueckstellung: rueck, wohnquote: q(wohnen), reserveZiel: reserveZiel, monateBisReserve: monateBisReserve,
+      posten: posten.sort(function (a, b) { return b.monat - a.monat; })
+    };
+  }
+  var api = { auswerten: auswerten, monatlich: monatlich, PRO_JAHR: PRO_JAHR };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.BudgetEngine = api;
+})(this);
+
+/*ENGINE-END*/
+</script>
+<script>
+(function(){
+  var E=window.BudgetEngine,$=function(id){return document.getElementById(id)};
+  function n(id){var v=parseFloat($(id).value);return isNaN(v)||v<0?0:v}
+  function chf(x){return "CHF "+Math.round(x).toLocaleString("de-CH")}
+  function render(){
+    var plan={einnahmen:[{betrag:n("lohn"),takt:"monat"},{betrag:n("dreizehn"),takt:"jahr"}],ausgaben:[
+      {name:"Miete",betrag:n("miete"),takt:"monat",gruppe:"bedarf",wohnen:true},{name:"Krankenkasse",betrag:n("kk"),takt:"monat",gruppe:"bedarf"},
+      {name:"Steuern",betrag:n("steuern"),takt:"jahr",gruppe:"bedarf"},{name:"Jahresrechnungen",betrag:n("jahr"),takt:"jahr",gruppe:"bedarf"},
+      {name:"Übriges",betrag:n("monat"),takt:"monat",gruppe:"bedarf"}]};
+    var r=E.auswerten(plan);
+    if(!r.einnahmen){$("out").innerHTML='<p class="note">Nettolohn eingeben.</p>';return}
+    var h='<div class="kacheln"><div class="kachel"><b>Monatlich zurücklegen</b><div class="z">'+chf(r.rueckstellung)+'</div>für Steuern und Jahresrechnungen</div>'
+      +'<div class="kachel"><b>'+(r.rest>=0?'Bleibt übrig':'Fehlt')+'</b><div class="z">'+chf(Math.abs(r.rest))+'</div>pro Monat, nach allem</div>'
+      +'<div class="kachel"><b>Wohnkosten</b><div class="z">'+Math.round(r.wohnquote*100)+' %</div>des Einkommens</div></div>';
+    h+='<p class="urteil'+(r.rest<0?' warn':'')+'">'+(r.rest<0?'<b>Das Budget geht nicht auf:</b> Jeden Monat fehlen '+chf(-r.rest)+'. Beginne bei den grössten Posten, die du ändern kannst.':'Richte einen <b>Dauerauftrag über '+chf(r.rueckstellung)+'</b> auf ein separates Konto ein. Dann sind Steuern und Jahresrechnungen bezahlt, wenn sie kommen.')
+      +(r.wohnquote>1/3?' Die Miete liegt über einem Drittel des Einkommens, das macht das Budget eng.':'')+'</p>';
+    $("out").innerHTML=h;
+  }
+  ["lohn","dreizehn","miete","kk","steuern","jahr","monat"].forEach(function(id){$(id).addEventListener("input",render)});
+  render();
+  fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[]}).then(function(l){
+    var p=(l||[]).filter(function(x){return x.slug==='budget-plan'})[0],a=$("plan-kauf");
+    if(p&&p.buy&&a){a.href=p.buy;a.rel='noopener';a.textContent='Budget-Plan Schweiz kaufen — '+p.price;}
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

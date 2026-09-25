@@ -62,6 +62,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-25 (🛒 3. Produkt „Budget-Plan Schweiz" CHF 19):** Offline-Rechner `content/packs/de/budget-plan/`
+(Takt monatlich–jährlich → monatliche Rückstellung für Steuern/Franchise/Jahresrechnungen, Muss/Kann/Sparen, Notreserve),
+Gratis-Seite `budget-rechner-schweiz.html`, Engine `tools/budget/engine.js` (7 Tests), Build `tools/budget/build.py`.
+Verkauf wie immer: Katalog-Eintrag → `stripe-shop.yml` starten → Link kommt automatisch auf die Seite.
+
 **📌 2026-09-25 (🛒 2. Produkt „Schulden-Plan Schweiz" CHF 27 + 🔒 LECK: `content/` war öffentlich):**
 - **Nach YouTube-Rezept** (Alex, „selling $27 ai digital products"): Nische Schulden → Offline-Rechner
   `content/packs/de/schulden-plan/schulden-plan.html` (Lawine/Schneeball, tilgen vs. investieren, Break-even,
