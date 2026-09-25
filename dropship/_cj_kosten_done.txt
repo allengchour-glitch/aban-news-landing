@@ -32960,3 +32960,5 @@ gid://shopify/Product/15478428598657	CHF 18.04	3 Varianten	Hug Chicken drehbarer
 gid://shopify/Product/15478428696961	CHF 24.46	3 Varianten	Damenring mit grünem Moosachat
 gid://shopify/Product/15478428729729	CHF 16.27	24 Varianten	Herren Sport Hoodie mit Half-Zip
 gid://shopify/Product/15478428795265	CHF 13.74	1 Varianten	8-teiliges Messbecher- und Löffel-Set
+gid://shopify/Product/15478428893569	CHF 7.51	5 Varianten	Opalring mit Blüten-Design
+gid://shopify/Product/15478428926337	CHF 12.97	36 Varianten	Gemusterter Fleece-Kapuzenpullover für Herren
