@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Schulden-Plan Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#b45309;--akz-lt:#fde9c8;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e7dfd2;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--rot:#b91c1c}
+@media(prefers-color-scheme:dark){:root{--akz:#fbbf24;--akz-lt:#5a4422;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--rot:#f87171}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(24px,4.5vw,32px);letter-spacing:-.02em;line-height:1.15}
+h2{font-size:1.2rem;margin:0 0 10px}
+.sub{color:var(--ink2);margin:6px 0 18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+input,select{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+td input{min-width:84px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.haupt{background:var(--akz);border-color:var(--akz);color:#fff;font-weight:700}
+button.x{padding:6px 10px;color:var(--muted)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.zahl{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.gut{color:var(--gut)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:12px}
+.warn{border-left:4px solid var(--rot);padding:10px 14px;background:var(--field);border-radius:8px;margin:10px 0}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.klein{font-size:.82rem;color:var(--muted)}
+tbody tr.frei td{color:var(--gut);font-weight:700}
+@media(max-width:560px){#schuldtab thead{display:none}#schuldtab tr{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px 8px;padding:10px 0;border-bottom:1px solid var(--line)}
+#schuldtab td{border:0;padding:0;text-align:left}#schuldtab td:first-child{grid-column:1/-1}
+#schuldtab td[data-l]::before{content:attr(data-l);display:block;font-size:.72rem;color:var(--muted);font-weight:700}#schuldtab td input{min-width:0}#schuldtab td:last-child{align-self:end}}
+@media print{button,.leiste,.noprint{display:none!important}body{background:#fff}.box{border-color:#ccc}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Schulden-Plan Schweiz</h1>
+<p class="sub">Trag deine Schulden ein. Der Plan zeigt, in welcher Reihenfolge du sie am günstigsten los wirst, wann du schuldenfrei bist und ob sich zusätzliches Geld eher zum Tilgen oder zum Investieren eignet. Alles rechnet in diesem Browser, nichts wird verschickt.</p>
+
+<section class="box">
+<h2>1 · Deine Schulden</h2>
+<div class="scroll"><table id="schuldtab">
+<thead><tr><th>Bezeichnung</th><th>Offen (CHF)</th><th>Zins % p. a.</th><th>Rate pro Monat</th><th></th></tr></thead>
+<tbody id="liste"></tbody>
+</table></div>
+<div class="leiste"><button id="neu">+ Schuld hinzufügen</button><button id="beispiel">Beispiel laden</button><button id="leeren">Alles leeren</button></div>
+<p class="hint">Zins: effektiver Jahreszins aus dem Vertrag. Rate: was du heute mindestens zahlst. Leasing: Restbetrag und Leasingrate eintragen.</p>
+</section>
+
+<section class="box">
+<h2>2 · Dein Spielraum</h2>
+<div class="grid">
+<div><label for="extra">Extra pro Monat (CHF)</label><input id="extra" type="number" min="0" step="10" value="300"><p class="hint">zusätzlich zu den Raten</p></div>
+<div><label for="jahre">Horizont (Jahre)</label><input id="jahre" type="number" min="1" max="40" value="10"></div>
+<div><label for="steuer">Grenzsteuersatz (%)</label><input id="steuer" type="number" min="0" max="50" value="0"><p class="hint">nur wenn du Schuldzinsen abziehst, sonst 0</p></div>
+<div><label>Depotrendite p. a.: tief / mittel / hoch</label><div style="display:flex;gap:6px"><input id="r1" type="number" step="0.5" value="0" aria-label="tiefe Rendite"><input id="r2" type="number" step="0.5" value="4" aria-label="mittlere Rendite"><input id="r3" type="number" step="0.5" value="7" aria-label="hohe Rendite"></div><p class="hint">Annahmen, keine Prognose</p></div>
+</div>
+</section>
+
+<section class="box" id="ergebnis"></section>
+
+<section class="box">
+<h2>5 · Monatsplan</h2>
+<p class="klein">Mit der gewählten Methode und dem Extra-Betrag. Grün: Monat, in dem eine Schuld getilgt ist.</p>
+<div class="scroll"><table id="plan"></table></div>
+<div class="leiste noprint"><button id="csv">Plan als CSV (Excel)</button><button onclick="window.print()">Drucken / als PDF</button></div>
+</section>
+
+<p class="klein">Schulden-Plan Schweiz 1.0 · aban news · Modellrechnung ohne Gebühren, Verzugszinsen und Steuern auf Erträgen. Keine Finanz- oder Schuldenberatung. Kostenlose Beratung: Schuldenberatung Schweiz, schulden.ch.</p>
+</div>
+
+<script>
+// Schulden-Plan Schweiz — Rechen-Engine (ohne Oberfläche, auch in Node testbar).
+// Alle Beträge in CHF, Zinsen in Prozent pro Jahr, monatliche Verzinsung.
+(function (root) {
+  "use strict";
+
+  // Reihenfolge der Extra-Zahlungen: Lawine = höchster Zins zuerst, Schneeball = kleinster Betrag zuerst.
+  function ordnung(schulden, methode) {
+    var idx = schulden.map(function (_, i) { return i; });
+    return idx.sort(function (a, b) {
+      var A = schulden[a], B = schulden[b];
+      if (methode === "schneeball") return A.betrag - B.betrag || B.zins - A.zins;
+      return B.zins - A.zins || A.betrag - B.betrag;
+    });
+  }
+
+  // Monat für Monat: Zins auflaufen, Mindestraten zahlen, dann Extra + frei gewordene Raten nach Reihenfolge.
+  // strategie: "tilgen" (Extra geht in die Schulden) oder "investieren" (Extra geht ins Depot).
+  // rendite: erwartete Depotrendite in % pro Jahr. steuer: Grenzsteuersatz 0..1 (Schuldzinsabzug), 0 = aus.
+  // monate: Horizont. Nach Tilgung aller Schulden fliesst das ganze Budget ins Depot (in beiden Strategien).
+  function simuliere(schulden, opt) {
+    var methode = opt.methode || "lawine", extra = +opt.extra || 0, monate = opt.monate || 600;
+    var rMon = Math.pow(1 + (+opt.rendite || 0) / 100, 1 / 12) - 1, steuer = +opt.steuer || 0;
+    var s = schulden.map(function (d) { return { name: d.name, rest: +d.betrag, zins: +d.zins, rate: +d.rate, frei: null }; });
+    var reihe = ordnung(schulden, methode);
+    var budget = s.reduce(function (a, d) { return a + d.rate; }, 0) + extra;
+    var depot = 0, zinsen = 0, plan = [], problem = null, schuldenfrei = null;
+    for (var m = 1; m <= monate; m++) {
+      var zinsMonat = 0;
+      s.forEach(function (d) {
+        if (d.rest <= 0) return;
+        var z = d.rest * d.zins / 100 / 12;
+        d.rest += z; zinsMonat += z;
+      });
+      zinsen += zinsMonat * (1 - steuer);
+      depot += zinsMonat * steuer; // Steuerersparnis aus dem Schuldzinsabzug fliesst ins Depot
+      depot *= 1 + rMon;
+      var frei = opt.strategie === "investieren" ? budget - extra : budget;
+      s.forEach(function (d) {
+        if (d.rest <= 0) return;
+        var p = Math.min(d.rate, d.rest); d.rest -= p; frei -= p;
+      });
+      for (var k = 0; k < reihe.length && frei > 0.005; k++) {
+        var d = s[reihe[k]];
+        if (d.rest <= 0) continue;
+        var q = Math.min(frei, d.rest); d.rest -= q; frei -= q;
+      }
+      if (opt.strategie === "investieren") frei += extra;
+      depot += Math.max(frei, 0);
+      var offen = 0;
+      s.forEach(function (d) {
+        if (d.rest <= 0.005 && d.frei === null) { d.rest = 0; d.frei = m; }
+        offen += Math.max(d.rest, 0);
+      });
+      plan.push({ monat: m, offen: offen, zinsen: zinsMonat, depot: depot });
+      if (offen <= 0.005 && schuldenfrei === null) schuldenfrei = m;
+      if (m === 12 && problem === null) {
+        s.forEach(function (d) {
+          if (d.rest > 0 && d.rate <= d.rest * d.zins / 100 / 12) problem = d.name;
+        });
+      }
+    }
+    var restSchuld = s.reduce(function (a, d) { return a + Math.max(d.rest, 0); }, 0);
+    return { schuldenfrei: schuldenfrei, zinsen: zinsen, depot: depot, restSchuld: restSchuld,
+             vermoegen: depot - restSchuld, plan: plan, einzeln: s, problem: problem };
+  }
+
+  // Ab welcher Depotrendite lohnt sich Investieren statt Tilgen? (Halbierungssuche, 0..30 %)
+  function breakEven(schulden, opt) {
+    var tief = -5, hoch = 30;
+    function diff(r) {
+      var o = Object.assign({}, opt, { rendite: r });
+      return simuliere(schulden, Object.assign({}, o, { strategie: "investieren" })).vermoegen
+           - simuliere(schulden, Object.assign({}, o, { strategie: "tilgen" })).vermoegen;
+    }
+    if (diff(hoch) < 0) return null;
+    for (var i = 0; i < 40; i++) {
+      var mid = (tief + hoch) / 2;
+      if (diff(mid) > 0) hoch = mid; else tief = mid;
+    }
+    return (tief + hoch) / 2;
+  }
+
+  function schnittZins(schulden, steuer) {
+    var sum = schulden.reduce(function (a, d) { return a + (+d.betrag); }, 0);
+    if (!sum) return 0;
+    return schulden.reduce(function (a, d) { return a + d.betrag * d.zins; }, 0) / sum * (1 - (+steuer || 0));
+  }
+
+  var api = { simuliere: simuliere, breakEven: breakEven, ordnung: ordnung, schnittZins: schnittZins };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.SchuldenEngine = api;
+})(this);
+
+</script>
+<script>
+(function(){
+  "use strict";
+  var E=window.SchuldenEngine,K="schulden-plan-v1";
+  var BEISPIEL=[{name:"Kreditkarte",betrag:3200,zins:12,rate:120},{name:"Kleinkredit",betrag:15000,zins:7.9,rate:350},{name:"Auto-Leasing",betrag:9000,zins:4.9,rate:280},{name:"Darlehen Familie",betrag:2000,zins:0,rate:50}];
+  var st={schulden:BEISPIEL.slice(),extra:300,jahre:10,steuer:0,r:[0,4,7],methode:"lawine"};
+  try{var g=JSON.parse(localStorage.getItem(K)||"null");if(g&&g.schulden)st=g}catch(e){}
+  var $=function(id){return document.getElementById(id)};
+  function chf(x){return "CHF "+Math.round(x).toLocaleString("de-CH")}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function datum(m){if(m===null)return "nicht absehbar";var d=new Date();d.setMonth(d.getMonth()+m);return d.toLocaleDateString("de-CH",{month:"long",year:"numeric"})}
+  function dauer(m){if(m===null)return "nie";var j=Math.floor(m/12),r=m%12;return (j?j+" J. ":"")+(r?r+" Mt.":"")}
+  function speichern(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  function liste(){
+    $("liste").innerHTML=st.schulden.map(function(d,i){
+      return '<tr><td data-l="Bezeichnung"><input data-i="'+i+'" data-k="name" value="'+esc(d.name)+'" aria-label="Bezeichnung"></td>'
+        +'<td data-l="Offen (CHF)"><input data-i="'+i+'" data-k="betrag" type="number" min="0" step="100" value="'+d.betrag+'" aria-label="Offener Betrag"></td>'
+        +'<td data-l="Zins % p. a."><input data-i="'+i+'" data-k="zins" type="number" min="0" step="0.1" value="'+d.zins+'" aria-label="Zins"></td>'
+        +'<td data-l="Rate pro Monat"><input data-i="'+i+'" data-k="rate" type="number" min="0" step="10" value="'+d.rate+'" aria-label="Rate"></td>'
+        +'<td><button class="x" data-weg="'+i+'" aria-label="Schuld entfernen">✕</button></td></tr>'}).join("");
+  }
+  function opts(extra){return{extra:extra,monate:st.jahre*12,steuer:st.steuer/100,methode:st.methode}}
+  function rechnen(){
+    var S=st.schulden.filter(function(d){return d.betrag>0});
+    var box=$("ergebnis");
+    if(!S.length){box.innerHTML="<p>Trag oben mindestens eine Schuld ein.</p>";$("plan").innerHTML="";return}
+    var lang={monate:1200};
+    var l=E.simuliere(S,Object.assign(opts(st.extra),lang,{methode:"lawine",strategie:"tilgen"}));
+    var s=E.simuliere(S,Object.assign(opts(st.extra),lang,{methode:"schneeball",strategie:"tilgen"}));
+    var ohne=E.simuliere(S,Object.assign(opts(0),lang,{strategie:"tilgen"}));
+    var h="<h2>3 · Reihenfolge: Lawine oder Schneeball?</h2>";
+    if(l.problem||ohne.problem)h+='<p class="warn"><b>Achtung:</b> Bei „'+esc(l.problem||ohne.problem)+'“ deckt die Rate nicht einmal die Zinsen. Diese Schuld wächst, bis du mehr zahlst. Das hat Vorrang vor allem anderen.</p>';
+    h+='<div class="kacheln">'
+      +'<div class="kachel"><b>Lawine · höchster Zins zuerst</b><div class="zahl">'+dauer(l.schuldenfrei)+'</div>schuldenfrei: '+datum(l.schuldenfrei)+'<br>Zinskosten: '+chf(l.zinsen)+'</div>'
+      +'<div class="kachel"><b>Schneeball · kleinste Schuld zuerst</b><div class="zahl">'+dauer(s.schuldenfrei)+'</div>schuldenfrei: '+datum(s.schuldenfrei)+'<br>Zinskosten: '+chf(s.zinsen)+'</div>'
+      +'<div class="kachel"><b>Nur Mindestraten</b><div class="zahl">'+dauer(ohne.schuldenfrei)+'</div>schuldenfrei: '+datum(ohne.schuldenfrei)+'<br>Zinskosten: '+chf(ohne.zinsen)+'</div></div>';
+    var sp=s.zinsen-l.zinsen;
+    h+='<p class="urteil">'+(sp>1?'Die Lawine spart dir <b>'+chf(sp)+'</b> Zinsen gegenüber dem Schneeball. Der Schneeball bringt dafür früher ein erstes Erfolgserlebnis: die kleinste Schuld ist nach '+dauer(Math.min.apply(0,s.einzeln.map(function(d){return d.frei===null?1e9:d.frei})))+' weg.':'Bei deinen Schulden macht die Reihenfolge kaum einen Unterschied. Nimm die Methode, bei der du eher dranbleibst.')
+      +' Der Extra-Betrag von '+chf(st.extra)+' spart gegenüber den Mindestraten <b>'+chf(ohne.zinsen-l.zinsen)+'</b> Zinsen.</p>'
+      +'<div class="leiste noprint"><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="radio" name="m" value="lawine" style="width:auto"'+(st.methode==="lawine"?" checked":"")+'> Plan nach Lawine</label><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="radio" name="m" value="schneeball" style="width:auto"'+(st.methode==="schneeball"?" checked":"")+'> Plan nach Schneeball</label></div>';
+    h+="<h2 style='margin-top:18px'>4 · Extra-Geld: tilgen oder investieren?</h2>";
+    var sicher=E.schnittZins(S,st.steuer/100);
+    h+='<p>Jeder Franken, den du tilgst, bringt dir sicher rund <b>'+sicher.toFixed(1)+' %</b> pro Jahr, nämlich den Zins, den du nicht mehr zahlst'+(st.steuer?' (nach Steuerabzug)':'')+'. Ein Depot bringt vielleicht mehr, vielleicht weniger.</p>';
+    h+='<p class="klein">Vermögen nach '+st.jahre+' Jahren (Depot minus Restschuld), je nach Depotrendite:</p><div class="scroll"><table><thead><tr><th>Rendite</th><th>Tilgen</th><th>Investieren</th><th>Vorteil</th></tr></thead><tbody>';
+    st.r.forEach(function(r){
+      var o=Object.assign(opts(st.extra),{rendite:r});
+      var a=E.simuliere(S,Object.assign({},o,{strategie:"tilgen"})),b=E.simuliere(S,Object.assign({},o,{strategie:"investieren"}));
+      var d=b.vermoegen-a.vermoegen;
+      h+='<tr><td>'+r+' %</td><td>'+chf(a.vermoegen)+'</td><td>'+chf(b.vermoegen)+'</td><td class="'+(d>0?"gut":"rot")+'">'+(d>0?"Invest. +":"Tilgen +")+Math.round(Math.abs(d)).toLocaleString("de-CH")+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    var be=E.breakEven(S,opts(st.extra));
+    h+='<p class="urteil">'+(be===null?'Investieren schlägt das Tilgen bei keiner realistischen Rendite.':'Investieren lohnt sich erst ab einer Depotrendite von <b>'+be.toFixed(1)+' % pro Jahr</b>, nach allen Kosten und jedes Jahr, auch in schlechten. ')
+      +(be!==null&&be>5?'Das ist mehr, als ein breites Aktiendepot langfristig verlässlich bringt. <b>Tilgen ist hier die bessere Wahl.</b>':be!==null&&be<2?'Deine Schulden sind günstig. Wer eine Notreserve hat und Kursschwankungen aushält, kann investieren.':be!==null?'Das ist ein Grenzfall. Tilgen ist die sichere Wahl, Investieren eine Wette mit leicht positivem Erwartungswert.':'')
+      +' Zuerst gilt aber: eine Notreserve von etwa drei Monatsausgaben auf dem Konto, bevor du tilgst oder investierst.</p>';
+    box.innerHTML=h;
+    box.querySelectorAll('input[name=m]').forEach(function(x){x.onchange=function(){st.methode=x.value;speichern();rechnen()}});
+    var p=E.simuliere(S,Object.assign(opts(st.extra),{monate:Math.min(1200,(l.schuldenfrei||120)+1),strategie:"tilgen"}));
+    var frei={};p.einzeln.forEach(function(d){if(d.frei!==null)frei[d.frei]=(frei[d.frei]?frei[d.frei]+", ":"")+d.name});
+    var rows=p.plan.filter(function(x){return x.monat<=Math.max(12,(p.schuldenfrei||120))});
+    $("plan").innerHTML='<thead><tr><th>Monat</th><th>noch offen</th><th>Zinsen im Monat</th><th>getilgt</th></tr></thead><tbody>'
+      +rows.map(function(x){return '<tr'+(frei[x.monat]?' class="frei"':'')+'><td>'+x.monat+' · '+datum(x.monat)+'</td><td>'+chf(x.offen)+'</td><td>'+chf(x.zinsen)+'</td><td>'+esc(frei[x.monat]||"")+'</td></tr>'}).join("")+'</tbody>';
+    window.__plan=rows.map(function(x){return [x.monat,datum(x.monat),x.offen.toFixed(2),x.zinsen.toFixed(2),frei[x.monat]||""]});
+  }
+  document.addEventListener("input",function(e){
+    var t=e.target,i=t.getAttribute("data-i");
+    if(i!==null){var k=t.getAttribute("data-k");st.schulden[+i][k]=k==="name"?t.value:(+t.value||0)}
+    else if(t.id==="extra")st.extra=+t.value||0;
+    else if(t.id==="jahre")st.jahre=Math.min(40,Math.max(1,+t.value||1));
+    else if(t.id==="steuer")st.steuer=Math.min(50,Math.max(0,+t.value||0));
+    else if(/^r[123]$/.test(t.id))st.r[+t.id[1]-1]=+t.value||0;
+    else return;
+    speichern();rechnen();
+  });
+  document.addEventListener("click",function(e){
+    var w=e.target.getAttribute&&e.target.getAttribute("data-weg");
+    if(w!==null&&w!==undefined){st.schulden.splice(+w,1);speichern();liste();rechnen()}
+  });
+  $("neu").onclick=function(){st.schulden.push({name:"Neue Schuld",betrag:1000,zins:8,rate:50});speichern();liste();rechnen()};
+  $("beispiel").onclick=function(){st.schulden=BEISPIEL.map(function(d){return Object.assign({},d)});speichern();liste();rechnen()};
+  $("leeren").onclick=function(){st.schulden=[];speichern();liste();rechnen()};
+  $("csv").onclick=function(){
+    var z=[["Monat","Datum","noch offen CHF","Zinsen CHF","getilgt"]].concat(window.__plan||[]);
+    var csv="﻿"+z.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(";")}).join("\r\n");
+    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="schulden-plan.csv";a.click();
+  };
+  $("extra").value=st.extra;$("jahre").value=st.jahre;$("steuer").value=st.steuer;$("r1").value=st.r[0];$("r2").value=st.r[1];$("r3").value=st.r[2];
+  liste();rechnen();
+})();
+</script>
+</body>
+</html>
