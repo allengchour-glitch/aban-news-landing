@@ -25,17 +25,13 @@ Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne
 (`CartRepository.FREE_SHIPPING_CHF`, so steht es aktiv im Versandprofil; das Shop-Banner sagt „ab 50").
 Reihen: `RAILS` und `seasonFor()` in `HomeScreen.kt`.
 
-Warum keine TWA: Shopify liefert `/.well-known/assetlinks.json` fest als `[]`.
-
 ## Bauen und prüfen
 ```bash
 cd apps/luxestyle-android
 ./gradlew testReleaseUnitTest lintRelease bundleRelease   # + LUXE_KEYSTORE_PATH/_PASSWORD für Signatur
 LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*Tour*' --tests '*StoreShots*'
 ```
-Der zweite Befehl ist ein **Rundgang durch die echte App mit echten Shopdaten** (Robolectric +
-Roborazzi) → Bilder in `screens/`. Ersetzt den fehlenden Emulator; Store-Bilder kommen von dort.
-Auf GitHub: Actions → „LuxeStyle Android-App bauen" (nur manuell).
+Der zweite Befehl rendert die echte App mit echten Shopdaten (Robolectric + Roborazzi) nach `screens/`.
 
 Geprüft 2026-09-25: 26/26 Tests (+ Beschreibungs-Check gegen 214 echte Produkte mit `LUXE_DESCS`), Rundgang 24 Bilder ok, Lint 0 Fehler, R8-Release ok.
 **Auf einem echten Handy noch nicht** → vor dem Einreichen „Interner Test".
@@ -62,6 +58,11 @@ Secrets für den Workflow: `LUXE_KEYSTORE_B64` (= `base64 -w0 luxestyle-upload.j
 6. **Geschlossener Test** (nur privates Konto), dann Produktionszugriff beantragen.
 7. **Produktion** einreichen → Google prüft (meist 1–7 Tage).
 
-## Nächste Versionen
-Workflow mit höherem Versionsnamen → AAB → Play Console. Produkte, Preise, Menü und Kollektionen
-kommen live aus Shopify – dafür braucht es kein App-Update.
+## Updates
+- **Ohne App-Update:** Produkte, Preise, Menü, Kollektionen, Bilder, Beschreibungen kommen live aus Shopify.
+- **App-Update:** Actions → „LuxeStyle Android-App bauen" → Versionsname (z. B. 1.0.1), Spur, Neuigkeiten.
+  versionCode zählt selbst. `production` landet als Entwurf (ein Klick „Freigeben").
+- **Einmalig für automatisches Hochladen** (nach der ersten Hand-Hochladung):
+  1. Google Cloud Console → Projekt → „IAM → Dienstkonten" → Dienstkonto anlegen → Schlüssel (JSON).
+  2. Play Console → „Nutzer und Berechtigungen" → Dienstkonto-E-Mail einladen, Rechte: Releases verwalten.
+  3. GitHub-Secret `PLAY_SERVICE_ACCOUNT_JSON` = Inhalt der JSON-Datei.

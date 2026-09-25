@@ -8,6 +8,16 @@ on:
         description: "Versionsname, z. B. 1.0.1"
         required: true
         default: "1.0.0"
+      track:
+        description: "Play-Spur: keine = nur bauen, internal, alpha (geschlossener Test), production"
+        required: true
+        default: "keine"
+        type: choice
+        options: [keine, internal, alpha, production]
+      neuigkeiten:
+        description: "Was ist neu (erscheint im Play Store, max. 500 Zeichen)"
+        required: false
+        default: "Fehlerbehebungen und Verbesserungen."
 
 jobs:
   build:
@@ -53,3 +63,25 @@ jobs:
           name: luxestyle-${{ inputs.version_name }}-${{ github.run_number }}
           path: apps/luxestyle-android/app/build/outputs/bundle/release/app-release.aab
           if-no-files-found: error
+
+      # Hochladen zu Google Play – braucht das Secret PLAY_SERVICE_ACCOUNT_JSON (siehe PLAY-STORE.md).
+      # Die allererste Version muss einmal von Hand in der Play Console hochgeladen werden.
+      - name: Neuigkeiten für Play
+        if: inputs.track != 'keine'
+        env:
+          TEXT: ${{ inputs.neuigkeiten }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/whatsnew"
+          printf '%s' "$TEXT" | head -c 500 > "$RUNNER_TEMP/whatsnew/whatsnew-de-CH"
+
+      - name: Zu Google Play hochladen
+        if: inputs.track != 'keine'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: ch.luxestyle.app
+          releaseFiles: apps/luxestyle-android/app/build/outputs/bundle/release/app-release.aab
+          track: ${{ inputs.track }}
+          # Produktion als Entwurf: in der Play Console mit einem Klick freigeben
+          status: ${{ inputs.track == 'production' && 'draft' || 'completed' }}
+          whatsNewDirectory: ${{ runner.temp }}/whatsnew
