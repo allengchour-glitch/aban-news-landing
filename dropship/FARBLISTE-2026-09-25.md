@@ -14,3 +14,9 @@
 - `wahlversprechen.py`: Farbliste in WAHL + `farbinhalt()` (Anzahl davor / Set-Titel) in Kandidatensuche und Bereinigung.
 - `klassen_kontrolle.py`: dieselbe Form in der Klasse «Auswahl-Versprechen bei EINER Variante» → täglich in der Arbeitsliste.
 - Scharfer Lauf über die 571 (Text-Sperre, Bericht separat) — Ergebnis unten.
+
+## Ergebnis scharfer Lauf (25.09. ~17:20 UTC)
+**571 geprüft, 559 gemeldet, 535 bereinigt** (Ledger `dropship/_wahlversprechen.txt`); 24 tragen die Farbliste in einem Satz
+mit weiterer Aussage und bleiben für eine Hand liegen. Rücklesen der letzten 3: Farbliste weg, Text sonst intakt.
+Nachzügler «Faltbare TPE Yoga Matte» (nach dem Export geändert) einzeln bereinigt. Neue Fälle kommen über
+`klassen_kontrolle` → Arbeitsliste → täglicher Lauf.
