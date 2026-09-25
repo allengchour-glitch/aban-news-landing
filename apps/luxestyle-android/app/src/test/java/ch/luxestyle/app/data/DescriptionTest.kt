@@ -87,3 +87,21 @@ class PriceDropTest {
         assertNull(priceDrop(null, 10.0))
     }
 }
+
+class QuickAddTest {
+    private fun card(variants: String) = Parse.card(
+        Json.parseToJsonElement(
+            """{"id":"p","handle":"h","title":"t","availableForSale":true,
+               "priceRange":{"minVariantPrice":{"amount":"30.9","currencyCode":"CHF"}},
+               "variants":{"nodes":$variants}}""",
+        ).jsonObject,
+    )!!
+
+    @Test
+    fun nurBeiGenauEinerLieferbarenAusfuehrung() {
+        assertEquals("v1", card("""[{"id":"v1","availableForSale":true}]""").quickVariant)
+        assertNull(card("""[{"id":"v1","availableForSale":false}]""").quickVariant) // ausverkauft
+        assertNull(card("""[{"id":"v1","availableForSale":true},{"id":"v2","availableForSale":true}]""").quickVariant) // Grösse wählen
+        assertNull(card("[]").quickVariant)
+    }
+}

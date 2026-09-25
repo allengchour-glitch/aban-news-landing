@@ -88,7 +88,13 @@ private fun CartContent(c: Cart) {
     fun change(line: CartLine, qty: Int) {
         busy = line.id
         scope.launch {
-            runCatching { shop.cart.setQuantity(line.id, qty) }.onFailure { nav.toast(friendly(it)) }
+            runCatching { shop.cart.setQuantity(line.id, qty) }
+                .onSuccess {
+                    if (qty <= 0) nav.toast("Aus dem Warenkorb entfernt", "Rückgängig") {
+                        scope.launch { runCatching { shop.cart.add(line.variantId, line.quantity) }.onFailure { nav.toast(friendly(it)) } }
+                    }
+                }
+                .onFailure { nav.toast(friendly(it)) }
             busy = null
         }
     }

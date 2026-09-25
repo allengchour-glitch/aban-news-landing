@@ -21,7 +21,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -64,6 +66,7 @@ const val WELCOME_CODE = "WELCOME10"
 
 private val RAILS = listOf("damen-mode", "sub-halsketten", "sub-taschen", "premium-geschenke")
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
     val shop = LocalShop.current
@@ -74,6 +77,8 @@ fun HomeScreen() {
     val liked by shop.wishlist.items.collectAsState()
     val recent by shop.recent.items.collectAsState()
 
+    // Nach unten ziehen: Reihen neu laden, die sichtbaren bleiben so lange stehen
+    PullToRefreshBox(isRefreshing = home.refreshing, onRefresh = home.retry, modifier = Modifier.fillMaxSize()) {
     LazyColumn(Modifier.fillMaxSize().testTag("home"), contentPadding = PaddingValues(bottom = 24.dp)) {
         item { TopBar() }
         item { SearchPill { nav.search() } }
@@ -104,6 +109,7 @@ fun HomeScreen() {
                 item { Footer() }
             }
         }
+    }
     }
 }
 

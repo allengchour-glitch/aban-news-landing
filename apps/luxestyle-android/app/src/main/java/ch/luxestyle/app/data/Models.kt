@@ -26,6 +26,8 @@ data class ProductCard(
     val price: Money,
     val compareAt: Money?,
     val available: Boolean,
+    /** Variante für „direkt in den Warenkorb" – nur bei Produkten mit genau einer lieferbaren Ausführung. */
+    val quickVariant: String? = null,
 ) {
     val discountPercent: Int?
         get() = compareAt?.takeIf { it.amount > price.amount }

@@ -41,6 +41,8 @@ object Parse {
             price = price,
             compareAt = money(o.o("compareAtPriceRange").o("maxVariantPrice"))?.takeIf { it.amount > price.amount },
             available = o.b("availableForSale"),
+            quickVariant = o.o("variants").a("nodes").singleOrNull()?.obj()
+                ?.takeIf { it.b("availableForSale") }?.s("id"),
         )
     }
 

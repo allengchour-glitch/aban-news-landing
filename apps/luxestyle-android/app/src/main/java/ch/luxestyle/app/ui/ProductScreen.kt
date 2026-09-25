@@ -43,6 +43,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
@@ -84,6 +86,7 @@ private fun ProductDetail(p: Product) {
     val shop = LocalShop.current
     val nav = LocalNav.current
     val scope = rememberCoroutineScope()
+    val haptic = LocalHapticFeedback.current
     val wish by shop.wishlist.items.collectAsState()
     var selection by rememberSaveable(p.handle) { mutableStateOf(p.defaultSelection()) }
     val variant = p.variantFor(selection)
@@ -239,7 +242,10 @@ private fun ProductDetail(p: Product) {
                         adding = true
                         scope.launch {
                             runCatching { shop.cart.add(v.id) }
-                                .onSuccess { nav.toast("Im Warenkorb", "Ansehen") { nav.cart() } }
+                                .onSuccess {
+                                    haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                                    nav.toast("Im Warenkorb", "Ansehen") { nav.cart() }
+                                }
                                 .onFailure { nav.toast(friendly(it)) }
                             adding = false
                         }

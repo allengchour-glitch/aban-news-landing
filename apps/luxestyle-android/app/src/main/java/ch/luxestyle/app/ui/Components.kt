@@ -50,6 +50,10 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -74,22 +78,27 @@ sealed interface Load<out T> {
     data class Err(val message: String) : Load<Nothing>
 }
 
-class Loader<T>(val state: Load<T>, val retry: () -> Unit)
+class Loader<T>(val state: Load<T>, val refreshing: Boolean = false, val retry: () -> Unit)
 
+/** Einmalige Abfrage. `retry` nach einem Erfolg lädt im Hintergrund neu und behält die alten Daten sichtbar. */
 @Composable
 fun <T> rememberLoad(vararg keys: Any?, block: suspend () -> T): Loader<T> {
     var attempt by remember(*keys) { mutableIntStateOf(0) }
+    var refreshing by remember(*keys) { mutableStateOf(false) }
     val state by produceState<Load<T>>(Load.Loading, *keys, attempt) {
-        value = Load.Loading
-        value = try {
-            Load.Ok(block())
+        val keep = attempt > 0 && value is Load.Ok<*> // neue Schlüssel = neue Daten, nie die alten zeigen
+        if (keep) refreshing = true else value = Load.Loading
+        try {
+            value = Load.Ok(block())
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            Load.Err(friendly(e))
+            if (!keep) value = Load.Err(friendly(e))
+        } finally {
+            refreshing = false
         }
     }
-    return Loader(state) { attempt++ }
+    return Loader(state, refreshing) { attempt++ }
 }
 
 fun friendly(t: Throwable): String = when (t) {
@@ -224,6 +233,7 @@ fun ProductTile(
                 Badge("−$it %", LocalLuxe.current.sale, Modifier.align(Alignment.TopStart).padding(8.dp))
             }
             HeartButton(liked, onLike, Modifier.align(Alignment.TopEnd).padding(6.dp))
+            card.quickVariant?.let { QuickAdd(card, it, Modifier.align(Alignment.BottomEnd).padding(8.dp)) }
             if (!card.available) {
                 Box(
                     Modifier.align(Alignment.BottomStart).padding(8.dp).clip(Radius.Small)
@@ -243,6 +253,35 @@ fun ProductTile(
             Spacer(Modifier.height(4.dp))
             Text(it, style = MaterialTheme.typography.labelMedium, color = LocalLuxe.current.sale, modifier = Modifier.padding(horizontal = 2.dp))
         }
+    }
+}
+
+/** Ein Tipp legt Produkte mit nur einer Ausführung direkt in den Warenkorb. */
+@Composable
+private fun QuickAdd(card: ProductCard, variantId: String, modifier: Modifier) {
+    val shop = LocalShop.current
+    val nav = LocalNav.current
+    val haptic = LocalHapticFeedback.current
+    val scope = rememberCoroutineScope()
+    var busy by remember { mutableStateOf(false) }
+    Box(
+        modifier.size(36.dp).clip(CircleShape).background(MaterialTheme.colorScheme.primary)
+            .clickable(enabled = !busy, role = Role.Button, onClickLabel = "${card.title} in den Warenkorb") {
+                busy = true
+                scope.launch {
+                    runCatching { shop.cart.add(variantId) }
+                        .onSuccess {
+                            haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                            nav.toast("Im Warenkorb", "Ansehen") { nav.cart() }
+                        }
+                        .onFailure { nav.toast(friendly(it)) }
+                    busy = false
+                }
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        if (busy) CircularProgressIndicator(Modifier.size(16.dp), color = MaterialTheme.colorScheme.onPrimary, strokeWidth = 2.dp)
+        else Icon(painterResource(R.drawable.ic_plus), "In den Warenkorb", Modifier.size(18.dp), tint = MaterialTheme.colorScheme.onPrimary)
     }
 }
 

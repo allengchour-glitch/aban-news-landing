@@ -226,7 +226,8 @@ class Storefront(
         private const val CARD = """fragment Card on Product { id handle title availableForSale
             featuredImage { url altText width height }
             priceRange { minVariantPrice { amount currencyCode } }
-            compareAtPriceRange { maxVariantPrice { amount currencyCode } } }"""
+            compareAtPriceRange { maxVariantPrice { amount currencyCode } }
+            variants(first: 2) { nodes { id availableForSale } } }"""
         private const val COLL = """fragment Coll on Collection { handle title description image { url altText width height } }"""
         private const val CART = """fragment CartF on Cart { id checkoutUrl totalQuantity
             cost { subtotalAmount { amount currencyCode } totalAmount { amount currencyCode } }

@@ -181,6 +181,37 @@ class ScreenTour : TourBase() {
     }
 
     @Test
+    fun schnellkaufUndRueckgaengig() {
+        start()
+        go("https://luxestyle.ch/collections/sub-halsketten")
+        waitForPrices(); settle()
+        shot("15-halsketten-schnellkauf")
+        rule.onAllNodesWithContentDescription("In den Warenkorb").onFirst().performClick()
+        waitFor("Im Warenkorb"); settle(1500)
+        shot("15b-schnellkauf-hinzugefuegt")
+        go("https://luxestyle.ch/cart")
+        waitFor("Zur Kasse"); settle()
+        rule.onAllNodesWithContentDescription("Entfernen").onFirst().performClick()
+        waitFor("Rückgängig"); settle(800)
+        shot("16-entfernt-rueckgaengig")
+    }
+
+    /** Systemschrift 130 % – bricht nichts um oder ab? */
+    @Test
+    @Config(fontScale = 1.3f)
+    fun grosseSchrift() {
+        start()
+        shot("17-start-grosse-schrift")
+        go("https://luxestyle.ch/products/elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben")
+        waitFor("In den Warenkorb"); settle()
+        scrollTo("product", "Grössentabelle"); settle(1500)
+        shot("17b-produkt-grosse-schrift")
+        go("https://luxestyle.ch/collections/sub-kleider")
+        waitForPrices(); settle()
+        shot("17c-kollektion-grosse-schrift")
+    }
+
+    @Test
     @Config(qualifiers = "w412dp-h892dp-night-xxhdpi")
     fun dunkel() {
         start()

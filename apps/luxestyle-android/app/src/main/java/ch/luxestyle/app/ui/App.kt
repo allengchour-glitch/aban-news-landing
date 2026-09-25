@@ -36,6 +36,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -200,7 +202,13 @@ private fun BottomBar(controller: NavHostController, route: String) {
                             Icon(painterResource(tab.icon), tab.label, Modifier.size(24.dp))
                         }
                     },
-                    label = { Text(tab.label, style = MaterialTheme.typography.labelSmall) },
+                    label = {
+                        // Fünf Beschriftungen passen nur bis ~115 % Systemschrift nebeneinander
+                        val d = LocalDensity.current
+                        CompositionLocalProvider(LocalDensity provides Density(d.density, d.fontScale.coerceAtMost(1.15f))) {
+                            Text(tab.label, style = MaterialTheme.typography.labelSmall, maxLines = 1, softWrap = false)
+                        }
+                    },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = c.secondary, selectedTextColor = c.secondary,
                         unselectedIconColor = LocalLuxe.current.muted, unselectedTextColor = LocalLuxe.current.muted,
