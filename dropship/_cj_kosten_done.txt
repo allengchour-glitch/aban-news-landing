@@ -31549,3 +31549,52 @@ gid://shopify/Product/15470351810945	CHF 7.61	5 Varianten	Rote Blütenhalskette
 gid://shopify/Product/15470351876481	CHF 42.82	10 Varianten	Baby-Nest mit Neigung
 gid://shopify/Product/15470351909249	CHF 7.95	3 Varianten	Ballet-Style Halskette
 gid://shopify/Product/15470351942017	CHF 14.58	2 Varianten	Multifunktionsspiegel
+gid://shopify/Product/15470351974785	CHF 6.95	4 Varianten	Obst-Nackchen · Damen
+gid://shopify/Product/15470352007553	CHF 9.32	1 Varianten	Schmuckkasten mit LED-Licht
+gid://shopify/Product/15470352040321	CHF 7.80	1 Varianten	Blumen-Ohrclip · Damen
+gid://shopify/Product/15470352073089	CHF 13.30	8 Varianten	Wasserdichter Camping-Teppich
+gid://shopify/Product/15470352105857	CHF 7.61	1 Varianten	Goldplattierte Ohrringe
+gid://shopify/Product/15470352171393	CHF 7.44	1 Varianten	Unregelmässige Ohrringe
+gid://shopify/Product/15470352236929	CHF 7.20	2 Varianten	Korallen-Fischli & Muschel Ohrringe
+gid://shopify/Product/15470352269697	CHF 7.44	1 Varianten	Goldene Dreifach-Creolen aus Edelstahl
+gid://shopify/Product/15470352302465	CHF 7.61	4 Varianten	Vergoldete Edelstahl-Ohrringe im Old Money Stil
+gid://shopify/Product/15470352335233	CHF 25.13	15 Varianten	Elegantes Off-Shoulder Gabardine Maxikleid
+gid://shopify/Product/15470352368001	CHF 17.06	10 Varianten	Trägerkleid mit Blumenprint
+gid://shopify/Product/15470358987137	CHF 7.44	3 Varianten	Lebkuchenhaus Kette
+gid://shopify/Product/15470359019905	CHF 7.03	4 Varianten	Mond & Stern Medaillon-Halskette
+gid://shopify/Product/15470359085441	CHF 7.77	5 Varianten	Wolken-Anhänger Halskette
+gid://shopify/Product/15470359118209	CHF 7.17	12 Varianten	Halskette "Monatsblume" mit runder Box
+gid://shopify/Product/15470359150977	CHF 6.95	4 Varianten	Layered Zirkonia-Halskette mit Hufeisen-Schliff
+gid://shopify/Product/15470359216513	CHF 6.95	12 Varianten	Blumen-Halskette im Retro-Stil
+gid://shopify/Product/15470359249281	CHF 10.52	6 Varianten	Krafttraining Zugriemen
+gid://shopify/Product/15470359282049	CHF 7.09	1 Varianten	Dreamy Katze-Halskette
+gid://shopify/Product/15470359314817	CHF 22.82	3 Varianten	Grundschulrucksack – Ergonomisch & Leicht
+gid://shopify/Product/15470359380353	CHF 7.77	3 Varianten	Halskette mit aufklappbarem Medaillon
+gid://shopify/Product/15470359445889	CHF 6.85	12 Varianten	Kupferkette Geburtsblume Dezember
+gid://shopify/Product/15470359478657	CHF 6.95	12 Varianten	Geburtsblumen-Halskette mit Monatsblüte
+gid://shopify/Product/15470359544193	CHF 7.12	2 Varianten	Halskette mit tropfenförmigem Anhänger
+gid://shopify/Product/15470359576961	CHF 7.15	4 Varianten	Vergoldete Edelstahl-Ohrstecker
+gid://shopify/Product/15470359642497	CHF 6.95	2 Varianten	Ocean Coral Muschel-Ohrringe
+gid://shopify/Product/15470359675265	CHF 31.03	1 Varianten	Smarter Futterspender 3L für Haustiere
+gid://shopify/Product/15470359740801	CHF 7.44	1 Varianten	Loving-heart Lace Ohrringe
+gid://shopify/Product/15470359773569	CHF 7.44	2 Varianten	Tropische Fisch-Ohrringe im Office-Stil
+gid://shopify/Product/15470359871873	CHF 58.62	1 Varianten	Schneidebrett aus massivem Nussbaumholz
+gid://shopify/Product/15470359937409	CHF 27.04	3 Varianten	USB Ventilator mit Digitalanzeige & Kühlfunktion
+gid://shopify/Product/15470367244673	CHF 9.57	8 Varianten	Zirkon-Armband aus Edelstahl
+gid://shopify/Product/15470367277441	CHF 6.95	2 Varianten	Mond- oder Sonnen-Halskette aus Edelstahl
+gid://shopify/Product/15470367310209	CHF 7.28	3 Varianten	Herz-Medaillon-Halskette
+gid://shopify/Product/15470367572353	CHF 9.29	48 Varianten	Elegantes Langarmshirt mit Knopfleiste
+gid://shopify/Product/15470367637889	CHF 11.47	54 Varianten	Hoodie mit Print für Damen
+gid://shopify/Product/15470367670657	CHF 17.98	30 Varianten	Wende-Fleece-Cardigan mit Kapuze
+gid://shopify/Product/15470368096641	CHF 46.66	13 Varianten	Elegantes figurbetontes Midi-Abendkleid
+gid://shopify/Product/15470368129409	CHF 15.22	4 Varianten	Schwarzes Off-Shoulder Midikleid für Damen
+gid://shopify/Product/15470368194945	CHF 35.72	6 Varianten	Elegantes, tailliertes Neckholder-Abendkleid
+gid://shopify/Product/15470368260481	CHF 21.42	30 Varianten	Tailliertes Langarm-Midikleid mit V-Ausschnitt
+gid://shopify/Product/15470368358785	CHF 61.26	4 Varianten	Off-Shoulder Plisseekleid mit hoher Taille
+gid://shopify/Product/15470368457089	CHF 42.43	4 Varianten	Stoppuhr mit grossem Display und Zyklus-Timer
+gid://shopify/Product/15470368489857	CHF 17.52	5 Varianten	Elegantes, rückenfreies Schlitzkleid mit Strass
+gid://shopify/Product/15470368653697	CHF 22.99	1 Varianten	Doppelkopf-Gartenhacken-Set aus Stahl
+gid://shopify/Product/15470368686465	CHF 26.82	5 Varianten	Off-Shoulder Paillettenkleid mit fliessenden Bände
+gid://shopify/Product/15470368850305	CHF 16.93	1 Varianten	3-teiliger Jäter mit Holzgriff
+gid://shopify/Product/15470368883073	CHF 20.10	5 Varianten	Off-Shoulder Midikleid mit Rüschen und Print
+gid://shopify/Product/15470368915841	CHF 9.26	1 Varianten	Erfrischendes Mundwasser für unterwegs
