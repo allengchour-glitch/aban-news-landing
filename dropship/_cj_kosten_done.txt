@@ -31855,3 +31855,6 @@ gid://shopify/Product/15472066920833	CHF 19.04	36 Varianten	Corduroy-Button Kapu
 gid://shopify/Product/15472066986369	CHF 17.32	15 Varianten	Samtener Rollkragenpullover für Damen
 gid://shopify/Product/15472067117441	CHF 19.42	4 Varianten	Eleganter Minirock aus Spandex mit Falten
 gid://shopify/Product/15472067150209	CHF 17.85	8 Varianten	Denim Minirock mit asymmetrischem Saum
+gid://shopify/Product/15472067182977	CHF 12.16	10 Varianten	High-Waist Bodycon Jupe mit Stufen
+gid://shopify/Product/15472067248513	CHF 17.87	30 Varianten	Cardigan mit 3/4-Ärmeln & weite Hosen
+gid://shopify/Product/15472217194881	CHF 12.37	1 Varianten	Perlenarmband · Damen
