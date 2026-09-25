@@ -21,3 +21,8 @@
 
 ## OFFEN
 - «Inappropriate image» (442) bleibt als Klasse bestehen: Googles Bildurteil ist nicht vorhersagbar; kein Bildertausch auf Verdacht.
+
+## Nachtrag: Tierschutz-Wächter (gleiche Klasse)
+Lief ebenfalls nur über 3 Tage Neuware. Jetzt Wochen-Vollrunde mit Stempel nach Erfolg. Erste Vollrunde 25.09.:
+704 aktive Kandidaten (Vorauswahl über Funktionswörter: Halsband, Anti-Bell, Hundezaun …), **0 Befunde**.
+Weitere Fenster-Läufe (bewusst so gelassen): Farbcode-Optionswerte (kosmetisch, nur Neuware), Google-Ads-Kuration (Ads aus).
