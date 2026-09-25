@@ -33,6 +33,7 @@
                 <data android:host="luxestyle.ch" />
                 <data android:host="www.luxestyle.ch" />
             </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
         </activity>
 
         <activity

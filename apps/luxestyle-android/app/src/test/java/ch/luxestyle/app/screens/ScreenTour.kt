@@ -5,7 +5,10 @@ import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.isDialog
+import androidx.compose.ui.test.performImeAction
+import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
@@ -154,6 +157,27 @@ class ScreenTour : TourBase() {
         rule.onAllNodesWithText("Merkliste").onFirst().performClick()
         settle(800)
         shot("10-merkliste-leer")
+    }
+
+    @Test
+    fun groessenUndSuche() {
+        start()
+        go("https://luxestyle.ch/products/elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben")
+        waitFor("In den Warenkorb"); settle()
+        scrollTo("product", "Grössentabelle"); settle(1500)
+        shot("13-produkt-groesse")
+        rule.onAllNodesWithText("Grössentabelle").onFirst().performClick()
+        settle(2000)
+        rule.onAllNodes(isDialog()).onFirst().captureRoboImage("$out/13b-groessentabelle.png")
+
+        go("luxestyle://suche") // wie der App-Shortcut
+        settle(1500)
+        rule.onNode(hasSetTextAction()).performTextInput("leinen")
+        rule.onNode(hasSetTextAction()).performImeAction()
+        waitFor("Treffer"); settle()
+        rule.onAllNodesWithContentDescription("Leeren").onFirst().performClick()
+        settle(800)
+        shot("14-suche-verlauf")
     }
 
     @Test

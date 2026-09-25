@@ -123,6 +123,16 @@ class Storefront(
         return Parse.product(d.o("product")) ?: throw ShopException("Produkt nicht gefunden")
     }
 
+    /** Aktueller Stand gemerkter Produkte (Preis, Verfügbarkeit); gelöschte fehlen in der Antwort. */
+    suspend fun cards(ids: List<String>): List<ProductCard> {
+        if (ids.isEmpty()) return emptyList()
+        val d = run(
+            """query N(${'$'}ids: [ID!]!) { nodes(ids: ${'$'}ids) { ... on Product { ...Card } } } $CARD""",
+            buildJsonObject { put("ids", buildJsonArray { ids.take(250).forEach { add(JsonPrimitive(it)) } }) },
+        )
+        return d.a("nodes").mapNotNull { it.obj()?.let(Parse::card) }
+    }
+
     suspend fun recommendations(productId: String): List<ProductCard> {
         val d = run(
             """query R(${'$'}id: ID!) { productRecommendations(productId: ${'$'}id) { ...Card } } $CARD""",

@@ -6,6 +6,7 @@ sealed interface Destination {
     data class Collection(val handle: String) : Destination
     data class Search(val query: String) : Destination
     data object Cart : Destination
+    data object Wishlist : Destination
     data object Home : Destination
     data class Web(val url: String) : Destination
 }
@@ -36,7 +37,15 @@ object Links {
         return isShopHost(host) && path.contains("/products/")
     }
 
+    /** App-Shortcuts (lange auf das Symbol drücken). */
+    private val APP_LINKS = mapOf(
+        "luxestyle://suche" to Destination.Search(""),
+        "luxestyle://merkliste" to Destination.Wishlist,
+        "luxestyle://warenkorb" to Destination.Cart,
+    )
+
     fun destination(url: String): Destination {
+        APP_LINKS[url]?.let { return it }
         val (host, path, query) = split(url) ?: return Destination.Web(url)
         if (!isShopHost(host)) return Destination.Web(url)
         Regex("/products/([^/]+)").find(path)?.let { return Destination.Product(it.groupValues[1]) }

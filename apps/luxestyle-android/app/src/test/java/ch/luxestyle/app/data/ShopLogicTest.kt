@@ -150,6 +150,7 @@ class ShopLogicTest {
         assertEquals("Lieferung ca. 10–20 Werktage", deliveryNote("Lieferung Schweiz ca. 10–20 Werktage"))
         assertNull(deliveryNote("Versand nur in die Schweiz"))
         assertNull(deliveryNote("Bei Schäden bei der Lieferung ersetzen wir es"))
+        assertEquals("Lieferung ca. 10–20 Werktage", deliveryNote("📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span>· Direktversand</span>"))
     }
 
     @Test

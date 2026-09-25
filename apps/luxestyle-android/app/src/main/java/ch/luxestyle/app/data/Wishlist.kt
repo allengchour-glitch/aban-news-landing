@@ -13,8 +13,42 @@ import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 
-/** Merkliste nur auf dem Gerät – kein Konto nötig. */
-class Wishlist(prefs: SharedPreferences) : CardList(prefs, "wishlist_v1", max = 200)
+/** Wie viel günstiger als beim Merken (null = nicht günstiger; Rappen-Rundungen zählen nicht). */
+fun priceDrop(likedAt: Double?, now: Double): Double? = likedAt?.let { it - now }?.takeIf { it >= 0.05 }
+
+/**
+ * Merkliste nur auf dem Gerät – kein Konto nötig.
+ * Merkt sich den Preis beim Speichern, damit die App zeigen kann, wenn ein Stück günstiger wurde.
+ */
+class Wishlist(private val prefs: SharedPreferences) : CardList(prefs, "wishlist_v1", max = 200) {
+    private val _likedAt = MutableStateFlow(loadPrices())
+    /** Handle → Preis zum Zeitpunkt des Merkens. */
+    val likedAt: StateFlow<Map<String, Double>> = _likedAt.asStateFlow()
+
+    override fun toggle(card: ProductCard) {
+        val adding = !contains(card.handle)
+        super.toggle(card)
+        _likedAt.value = if (adding) _likedAt.value + (card.handle to card.price.amount) else _likedAt.value - card.handle
+        savePrices()
+    }
+
+    /** Frische Shopdaten übernehmen; nicht mehr gefundene Produkte gelten als ausverkauft. */
+    fun update(fresh: List<ProductCard>) {
+        val byId = fresh.associateBy { it.id }
+        replaceAll(items.value.map { old -> byId[old.id] ?: old.copy(available = false) })
+    }
+
+    private fun savePrices() = prefs.edit {
+        putString(PRICES, JsonObject(_likedAt.value.mapValues { JsonPrimitive(it.value) }).toString())
+    }
+
+    private fun loadPrices(): Map<String, Double> = runCatching {
+        (Json.parseToJsonElement(prefs.getString(PRICES, null) ?: return@runCatching null) as JsonObject)
+            .mapValues { (it.value as JsonPrimitive).content.toDouble() }
+    }.getOrNull() ?: items.value.associate { it.handle to it.price.amount } // Merkliste von vor dieser Version
+
+    private companion object { const val PRICES = "wishlist_prices_v1" }
+}
 
 /** Zuletzt angesehene Produkte (neueste zuerst, höchstens 12). */
 class RecentlyViewed(prefs: SharedPreferences) : CardList(prefs, "recent_v1", max = 12) {
@@ -28,7 +62,7 @@ open class CardList(private val prefs: SharedPreferences, private val key: Strin
 
     fun contains(handle: String) = _items.value.any { it.handle == handle }
 
-    fun toggle(card: ProductCard) {
+    open fun toggle(card: ProductCard) {
         if (contains(card.handle)) {
             _items.value = _items.value.filterNot { it.handle == card.handle }
             save()
@@ -39,6 +73,11 @@ open class CardList(private val prefs: SharedPreferences, private val key: Strin
 
     protected fun put(card: ProductCard) {
         _items.value = (listOf(card) + _items.value.filterNot { it.handle == card.handle }).take(max)
+        save()
+    }
+
+    protected fun replaceAll(list: List<ProductCard>) {
+        _items.value = list
         save()
     }
 
@@ -75,4 +114,26 @@ open class CardList(private val prefs: SharedPreferences, private val key: Strin
             )
         }
     }
+}
+
+/** Letzte Suchbegriffe (neueste zuerst, höchstens 8) – nur auf dem Gerät. */
+class RecentSearches(private val prefs: SharedPreferences) {
+    private val _items = MutableStateFlow(load())
+    val items: StateFlow<List<String>> = _items.asStateFlow()
+
+    fun add(query: String) {
+        val q = query.trim().takeIf { it.length >= 2 } ?: return
+        _items.value = (listOf(q) + _items.value.filterNot { it.equals(q, ignoreCase = true) }).take(8)
+        save()
+    }
+
+    fun clear() { _items.value = emptyList(); save() }
+
+    private fun save() = prefs.edit { putString(KEY, buildJsonArray { _items.value.forEach { add(JsonPrimitive(it)) } }.toString()) }
+
+    private fun load(): List<String> = runCatching {
+        (Json.parseToJsonElement(prefs.getString(KEY, "[]")!!) as JsonArray).map { (it as JsonPrimitive).content }
+    }.getOrDefault(emptyList())
+
+    private companion object { const val KEY = "searches_v1" }
 }

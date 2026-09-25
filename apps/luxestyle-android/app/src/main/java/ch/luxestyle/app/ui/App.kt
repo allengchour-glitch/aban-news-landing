@@ -91,6 +91,7 @@ class Nav(
         is Destination.Collection -> collection(d.handle)
         is Destination.Search -> search(d.query)
         Destination.Cart -> cart()
+        Destination.Wishlist -> tab(Tab.WISH.route)
         Destination.Home -> home()
         is Destination.Web -> web(d.url)
     }

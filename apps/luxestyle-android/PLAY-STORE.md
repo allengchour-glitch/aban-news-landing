@@ -10,7 +10,10 @@ Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne
   Bild-Kacheln, Kollektion mit Unterkategorien, Sortierung, Preis-/Lieferbar-Filter und Nachladen,
   Produkt mit Galerie + Vollbild-Zoom + Varianten (unkaufbare ausgegraut) + „Passt dazu", Suche mit
   Vorschlägen, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode (WELCOME10 per Tipp) und
-  Gratis-Versand-Balken. Produktseite zeigt die Lieferzeit aus dem Beschreibungstext.
+  Gratis-Versand-Balken. Produktseite zeigt die Lieferzeit und die Grössentabelle als echte Tabelle
+  (beides aus dem Beschreibungstext, gewählte Grösse markiert). Merkliste zeigt, wenn ein Stück seit dem
+  Merken günstiger wurde. Letzte Suchen, App-Shortcuts (Suche, Merkliste, Warenkorb).
+- Beschreibungen ohne Werbekästen, Emoji und „Gratis-Versand ab 50" (die App zeigt ihre geprüften Angaben).
 - **Web (`WebActivity`):** nur Kasse, Kundenkonto, Rechtstexte. TWINT/PayPal/Mail öffnen die passende App.
 - Warenkorb trägt das Attribut `_quelle = android_app`, Web-Aufrufe `utm_source=android_app`,
   geteilte Links `utm_source=app_share`.
@@ -32,7 +35,7 @@ Der zweite Befehl ist ein **Rundgang durch die echte App mit echten Shopdaten** 
 Roborazzi) → Bilder in `screens/`. Ersetzt den fehlenden Emulator; Store-Bilder kommen von dort.
 Auf GitHub: Actions → „LuxeStyle Android-App bauen" (nur manuell).
 
-Geprüft 2026-09-25: 20/20 Tests, Rundgang 15 Bilder ok, Lint 0 Fehler, R8-Release ok.
+Geprüft 2026-09-25: 25/25 Tests (+ Beschreibungs-Check gegen 214 echte Produkte mit `LUXE_DESCS`), Rundgang 18 Bilder ok, Lint 0 Fehler, R8-Release ok.
 **Auf einem echten Handy noch nicht** → vor dem Einreichen „Interner Test".
 
 ## Upload-Schlüssel

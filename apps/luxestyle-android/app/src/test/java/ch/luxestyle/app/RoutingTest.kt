@@ -31,6 +31,8 @@ class RoutingTest {
         assertEquals(Destination.Collection("sommer"), Links.destination("https://www.luxestyle.ch/collections/sommer"))
         assertEquals(Destination.Search("rotes kleid"), Links.destination("https://luxestyle.ch/search?q=rotes+kleid"))
         assertEquals(Destination.Cart, Links.destination("https://luxestyle.ch/cart"))
+        assertEquals(Destination.Wishlist, Links.destination("luxestyle://merkliste"))
+        assertEquals(Destination.Search(""), Links.destination("luxestyle://suche"))
         assertEquals(Destination.Home, Links.destination("https://luxestyle.ch/"))
         assertEquals(Destination.Home, Links.destination("https://luxestyle.ch"))
         // Kasse, Rechtstexte, fremde Seiten → Web

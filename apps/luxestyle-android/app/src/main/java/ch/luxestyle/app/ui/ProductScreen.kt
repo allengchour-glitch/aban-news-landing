@@ -53,6 +53,7 @@ import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Product
 import ch.luxestyle.app.data.cleanDescription
 import ch.luxestyle.app.data.deliveryNote
+import ch.luxestyle.app.data.sizeGuide
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 
@@ -91,8 +92,11 @@ private fun ProductDetail(p: Product) {
     var adding by remember { mutableStateOf(false) }
     val recs = rememberLoad(p.id) { shop.api.recommendations(p.id) }
     var viewer by remember { mutableStateOf<Int?>(null) }
+    val guide = remember(p.handle) { sizeGuide(p.descriptionHtml) }
+    var showGuide by rememberSaveable(p.handle) { mutableStateOf(false) }
     LaunchedEffect(p.handle) { shop.recent.seen(p.toCard()) }
     viewer?.let { start -> ImageViewer(images, start) { viewer = null } }
+    if (showGuide && guide != null) SizeGuideSheet(guide, selection[SIZE_OPTION]) { showGuide = false }
 
     // Erst wenn man selbst eine Variante wählt, springt die Galerie zum passenden Bild –
     // beim Öffnen bleibt das Titelbild vorne.
@@ -164,9 +168,21 @@ private fun ProductDetail(p: Product) {
             p.options.forEach { opt ->
                 item(key = "opt-" + opt.name) {
                     Column(Modifier.padding(horizontal = 20.dp).padding(bottom = 18.dp)) {
-                        Row {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(opt.name, style = MaterialTheme.typography.titleSmall)
                             selection[opt.name]?.let { Text(": $it", style = MaterialTheme.typography.bodyMedium, color = LocalLuxe.current.muted) }
+                            Spacer(Modifier.weight(1f))
+                            if (guide != null && opt.name == SIZE_OPTION) {
+                                Row(
+                                    Modifier.clip(Radius.Small).clickable(onClickLabel = "Grössentabelle öffnen") { showGuide = true }
+                                        .padding(horizontal = 4.dp, vertical = 4.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    Icon(painterResource(R.drawable.ic_ruler), null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(18.dp))
+                                    Spacer(Modifier.width(6.dp))
+                                    Text("Grössentabelle", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
+                                }
+                            }
                         }
                         Gap(10)
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -233,6 +249,8 @@ private fun ProductDetail(p: Product) {
         }
     }
 }
+
+private const val SIZE_OPTION = "Grösse"
 
 @Composable
 private fun Assurance(@DrawableRes icon: Int, text: String) {

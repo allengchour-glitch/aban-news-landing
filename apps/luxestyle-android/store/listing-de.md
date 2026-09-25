@@ -16,9 +16,10 @@ Stöbern
 • Sortieren nach Beliebtheit, Neuheit oder Preis, Filter nach Preis und Lieferbarkeit
 • Suche mit Vorschlägen schon beim Tippen
 • Produktbilder im Vollbild, mit zwei Fingern zoomen
+• Grössentabelle direkt beim Produkt, deine Grösse markiert
 
 Merken und teilen
-• Merkliste ohne Konto – bleibt auf deinem Handy
+• Merkliste ohne Konto – bleibt auf deinem Handy und zeigt, wenn ein Stück günstiger wurde
 • Zuletzt angesehene Stücke auf der Startseite
 • Lieblingsstücke per WhatsApp, Instagram oder Mail teilen
 

@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,8 +41,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Filters
+import ch.luxestyle.app.data.Money
 import ch.luxestyle.app.data.MenuItem
 import ch.luxestyle.app.data.PriceBand
+import ch.luxestyle.app.data.priceDrop
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -214,6 +217,11 @@ fun WishlistScreen() {
     val shop = LocalShop.current
     val nav = LocalNav.current
     val items by shop.wishlist.items.collectAsState()
+    val likedAt by shop.wishlist.likedAt.collectAsState()
+    // Preise und Verfügbarkeit auffrischen – still, ohne Ladeanzeige
+    LaunchedEffect(Unit) {
+        runCatching { shop.api.cards(shop.wishlist.items.value.map { it.id }) }.onSuccess { shop.wishlist.update(it) }
+    }
     Column(Modifier.fillMaxSize()) {
         ScreenTitle("Merkliste")
         if (items.isEmpty()) {
@@ -238,7 +246,11 @@ fun WishlistScreen() {
             }
             items(items.size, key = { items[it].handle }) { i ->
                 val card = items[i]
-                ProductTile(card, liked = true, onLike = { shop.wishlist.toggle(card) }, onClick = { nav.product(card.handle) })
+                val drop = priceDrop(likedAt[card.handle], card.price.amount)
+                ProductTile(
+                    card, liked = true, onLike = { shop.wishlist.toggle(card) }, onClick = { nav.product(card.handle) },
+                    note = drop?.let { "Seit dem Merken ${Money(it, card.price.currency).format()} günstiger" },
+                )
             }
         }
     }

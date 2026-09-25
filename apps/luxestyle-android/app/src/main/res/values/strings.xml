@@ -7,4 +7,7 @@
     <string name="no_app_for_link">Keine App gefunden, die diesen Link öffnen kann.</string>
     <string name="close">Schliessen</string>
     <string name="secure">Sichere Verbindung</string>
+    <string name="shortcut_search">Suche</string>
+    <string name="shortcut_wishlist">Merkliste</string>
+    <string name="shortcut_cart">Warenkorb</string>
 </resources>

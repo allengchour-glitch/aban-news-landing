@@ -23,4 +23,5 @@ class Shop(context: Context) {
         menuCache ?: api.menu().also { menuCache = it }
     }
     val recent = RecentlyViewed(prefs)
+    val searches = RecentSearches(prefs)
 }

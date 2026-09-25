@@ -208,6 +208,7 @@ fun ProductTile(
     onLike: () -> Unit,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    note: String? = null,
 ) {
     Column(modifier.clickable(role = Role.Button, onClick = onClick)) {
         Box(Modifier.fillMaxWidth().aspectRatio(0.8f).clip(Radius.Card).background(LocalLuxe.current.card)) {
@@ -238,6 +239,10 @@ fun ProductTile(
         )
         Spacer(Modifier.height(4.dp))
         Box(Modifier.padding(horizontal = 2.dp)) { Price(card.price, card.compareAt) }
+        note?.let {
+            Spacer(Modifier.height(4.dp))
+            Text(it, style = MaterialTheme.typography.labelMedium, color = LocalLuxe.current.sale, modifier = Modifier.padding(horizontal = 2.dp))
+        }
     }
 }
 

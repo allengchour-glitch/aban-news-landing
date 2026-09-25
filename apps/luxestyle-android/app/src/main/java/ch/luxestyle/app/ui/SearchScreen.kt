@@ -28,6 +28,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -74,6 +75,7 @@ fun SearchScreen(initial: String) {
         if (q.isBlank()) return
         text = q
         submitted = q.trim()
+        shop.searches.add(q)
         total = null
         focus.clearFocus()
     }
@@ -168,6 +170,21 @@ fun SearchScreen(initial: String) {
                 },
             )
             else -> Column(Modifier.padding(horizontal = 20.dp, vertical = 8.dp)) {
+                val recent by shop.searches.items.collectAsState()
+                if (recent.isNotEmpty()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Zuletzt gesucht", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
+                        Text(
+                            "Löschen", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.clip(Radius.Small).clickable(onClickLabel = "Suchverlauf löschen") { shop.searches.clear() }.padding(6.dp),
+                        )
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        recent.forEach { q -> ChoiceChip(q, selected = false) { submit(q) } }
+                    }
+                    Spacer(Modifier.height(28.dp))
+                }
                 Text("Beliebt", style = MaterialTheme.typography.titleLarge)
                 Spacer(Modifier.height(12.dp))
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
