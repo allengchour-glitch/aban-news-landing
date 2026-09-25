@@ -82,7 +82,28 @@ WAHL = re.compile(
     # Nicht erfasst (bewusst): «Ob Schleifen, Sterne … oder Leopardenmuster» — das beschreibt den Set-Inhalt.
     r'|(?<!erinnert an )(?<!erinnert an schimmernde )\b[\wäöüß]+-(?:,\s*[\wäöüß]+-)*\s+oder\s+[\wäöüß]+-?(?:design|motiv|muster)(?:e|en|n|s)?(?![-\wäöüß])(?!\s+zu\s+belegen)'
     r'|(?:erh[äa]ltlich|verf[üu]gbar|lieferbar|wahlweise)\s+(?:in|mit|im)\s+(?:(?:einem|einer|den|der)\s+)?[\wäöüß]+\s+oder\s+[\wäöüß-]*(?:design|motiv|muster)\w*'
-    r'|wahlweise\s+mit\s+[\wäöüß-]+\s+oder\s+[\wäöüß-]+', re.I)
+    r'|wahlweise\s+mit\s+[\wäöüß-]+\s+oder\s+[\wäöüß-]+'
+    # 25.09.2026: FARBLISTE MIT DOPPELPUNKT — die Grössen-Form (24.09.) hatte kein Gegenstück für Farben. Am Voll-Export
+    # 951 aktive Produkte mit EINER Variante: «Verfügbare Farben: Violett, Grau, Ice Ink Blau» (Yogamatte), «Farben: Blau,
+    # Grau, Grau mit Pfotenabdruck» (Kratzbaum). Fehlalarme sind Set-Inhalte («Neun Farben: …» an einer Lidschatten-Palette)
+    # → farbinhalt() prüft Anzahl davor und Set-Titel, siehe unten.
+    r'|verf[üu]gbare?\s+farben?\s*:|(?<![\wäöüß])farben\s*:\s*[^.\n]{0,80}(?:,|/| und | oder )', re.I)
+
+FARBDOPPEL = re.compile(r'farben?\s*:', re.I)
+ANZAHL_VOR = re.compile(r'(?<![\d.,x×*])\b(?:\d+|[Zz]wei|[Dd]rei|[Vv]ier|[Ff][üu]nf|[Ss]echs|[Ss]ieben|[Aa]cht|[Nn]eun|[Zz]ehn|[Ee]lf|[Zz]w[öo]lf)\s+(?:[a-zäöüß]+(?:e|en|er)\s+)?$')
+SET_TITEL = re.compile(r'Palette|\bSet\b|-Set\b|\bKit\b|Sortiment|Stifte|Marker|Kreiden|Buntstift|Pinsel|Aquarell|'
+                       r'Lidschatten|Farbkasten|\d+\s*(?:Stück|Stk|tlg|teilig)|\bPack\b|Mehrfarbig', re.I)
+
+def farbinhalt(text, m, titel=''):
+    """True = die Farbliste beschreibt den INHALT (Palette, Set, «Neun Farben:»), keine Wahl."""
+    if not FARBDOPPEL.search(m.group(0)):
+        return False
+    if ANZAHL_VOR.search(text[max(0, m.start() - 25):m.start()]):
+        return True               # «Neun Farben:», «12 verschiedenen Farben:» — im Zweifel Inhalt, nicht anfassen
+    # «Verfügbare Farben:» ist auch an einem Set eine Wahl (Stahlbox-Set, Badetuch-Set); nur die blosse Form zählt dort als Inhalt.
+    return bool(SET_TITEL.search(titel or '')) and not re.match(r'verf[üu]gbare?', m.group(0), re.I)
+
+AKT_TITEL = ''
 
 def gql(q, v=None):
     gedrosselt, i = 0, 0
@@ -198,6 +219,8 @@ for p in quelle:
         m = WAHL.search(txt)
         if not m:
             continue
+        if farbinhalt(txt, m, a.get('title')):
+            continue          # 25.09.: Farbliste = Set-/Paletten-Inhalt
         # ⚠️ 15.09.2026: Diese Zeile stand VOR dem `if m` — bei jedem Produkt ohne Treffer,
         # also bei fast jedem, warf sie AttributeError und der ganze Lauf brach ab. Eingebaut
         # am 09.09., seither lief der Waechter SECHS TAGE lang keine einzige Sekunde durch,
@@ -346,7 +369,7 @@ def bereinige(html):
         inhalt = re.sub(r'<[^>]+>', ' ', m.group(1))
         inhalt = re.sub(r'\s+', ' ', inhalt).strip()
         f = WAHL.search(inhalt)
-        if f and (BESCHREIBEND.search(inhalt) or SETINHALT.search(inhalt)):
+        if f and (BESCHREIBEND.search(inhalt) or SETINHALT.search(inhalt) or farbinhalt(inhalt, f, AKT_TITEL)):
             return m.group(0)
         # ⚠️ 03.09.2026: Die Anteils-Regel allein ist seit der Muster-Erweiterung UNSICHER.
         # «Erhältlich in den Farben Blau und Grün, ideal für unterwegs» — der Kopf ist 24 von
@@ -383,7 +406,7 @@ def bereinige(html):
         for s_ in saetze(innen):
             k = re.sub(r'\s+', ' ', s_).strip()
             f = WAHL.search(k)
-            if f and (BESCHREIBEND.search(k) or SETINHALT.search(k)):
+            if f and (BESCHREIBEND.search(k) or SETINHALT.search(k) or farbinhalt(k, f, AKT_TITEL)):
                 raus.append(s_); continue
             if f and k and treffer_anteil(k, f) >= GRENZE:
                 weg.append(k[:70]); continue
@@ -419,6 +442,7 @@ if FIX and treffer:
             h = ((d.get('data') or {}).get('product') or {}).get('descriptionHtml') or ''
             if not h:
                 continue
+            AKT_TITEL = t
             neu, weg = bereinige(h)
             if not weg or neu == h:
                 continue          # traegt den Satz nicht -> bleibt stehen und wird gemeldet

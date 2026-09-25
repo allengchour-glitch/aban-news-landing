@@ -236,7 +236,9 @@ KLASSEN = [
      'automation/wahlversprechen.py  (meldet; FIX=1 nur fuer eindeutige Faelle)',
      lambda t, h, tg, vc: vc == 1 and bool(re.search(
          r'erhältlich in (?:den )?(?:versch|verschiedenen|mehreren|\d|zwei|drei|vier|fünf)'
-         r'|verf[üu]gbare?\s+gr[öo]ssen?\s*:|\bgr[öo]ssen\s*:\s*[^.\n]{0,60}(?:,|/| und | oder )', h, re.I))),
+         r'|verf[üu]gbare?\s+gr[öo]ssen?\s*:|\bgr[öo]ssen\s*:\s*[^.\n]{0,60}(?:,|/| und | oder )'
+         # 25.09.2026: Farbliste mit Doppelpunkt (951 am Voll-Export) — Set-/Paletten-Ausnahmen entscheidet wahlversprechen.py
+         r'|verf[üu]gbare?\s+farben?\s*:|(?<![\wäöüß])farben\s*:\s*[^.\n]{0,80}(?:,|/| und | oder )', h, re.I))),
 ]
 
 

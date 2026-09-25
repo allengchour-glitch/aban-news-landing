@@ -369,7 +369,9 @@ Herrenhemden (2×), Sneaker (3×), Nägel (2×), Geschenke (20+).
 | 11 (Reserve) | Powerbank im Handgepäck: Regeln für Flüge ab der Schweiz | powerbank handgepäck (7) | `elektronik-laden` |
 | 12 (Reserve) | Hängematte aufhängen: Abstand, Höhe und Befestigung | hängematte aufhängen (10) | Lücke → siehe C3 |
 
-**Stand 24.09. 20:00 UTC:** Nr. 1–6 und Nr. 10 live (Nr. 10 `/blogs/ratgeber/kuscheltiere-waschen-plueschtiere-ratgeber`, 1'226 W, 5 Karten mit Altersangabe, Kollektionslink auf die Tag-Ansicht `/collections/ft-pluesch/ch-lager` — ungefiltert zeigt ft-pluesch oben Sofabezüge und Katzenangeln). Offen: Nr. 7 (Hoodie, POD — Editor heilig), 8, 9, 11, 12.
+**Stand 24.09. 20:00 UTC:** Nr. 1–6 und Nr. 10 live (Nr. 10 `/blogs/ratgeber/kuscheltiere-waschen-plueschtiere-ratgeber`, 1'226 W, 5 Karten mit Altersangabe, Kollektionslink auf die Tag-Ansicht `/collections/ft-pluesch/ch-lager` — ungefiltert zeigt ft-pluesch oben Sofabezüge und Katzenangeln). Offen: Nr. 7 (Hoodie, POD — Editor heilig), 11, 12.
+**25.09. 16:55 UTC:** Nr. 8 live — `/blogs/ratgeber/nagellack-entfernen-ohne-aceton-entsorgen` (743 W, Hausmittel ehrlich eingeordnet, Gel-Lack-Grenze, CH-Entsorgung nach Gemeinde; 2 Karten: Peel-off-Lack, Glasfeile). Dampf-Nagellackentferner NICHT verlinkt: «passend für unterschiedliche Steckdosenstandards» bei 1 Variante → Google-Kanal raus, Tag `stecker-unklar`, Auswahl-Liste; Maniküre-Set «Ausführungen A bis H» ebenso auf die Liste.
+**25.09. 16:40 UTC:** Nr. 9 live — `/blogs/ratgeber/yogamatte-reinigen-ratgeber` (753 W, Material-Tabelle TPE/PVC/Naturkautschuk/PU/Kork, 4 Karten nur mit Produktfeld-Fakten; Yoga-Handtuch bewusst NICHT verlinkt: Text verspricht drei Farben bei einer Variante). Beim Schreiben gefunden: Farbliste mit Doppelpunkt fehlte dem Wahlversprechen-Wächter → `dropship/FARBLISTE-2026-09-25.md`.
 
 Schreibregeln: keine Heilversprechen, keine Fremdmarken, Preise nur live aus dem Shop (Phantom-Preis-Falle, Task #30), Produktlinks nur auf ACTIVE +
 onlineStoreUrl (Phantom-Produkt-Falle, Task #7), du-Form, kein Eszett, Markt nur Schweiz.
@@ -378,7 +380,7 @@ onlineStoreUrl (Phantom-Produkt-Falle, Task #7), du-Form, kein Eszett, Markt nur
 
 | Keyword-Lücke | Belegte Ware | Vorschlag Regel (Smart Collection) | Bemerkung |
 |---|---|---|---|
-| moissanit ring kaufen | 95 Moissanit-Titel aktiv, Kollektion `moissanit-schmuck` = 5 aktiv, MANUAL ohne Regel | `moissanit-schmuck` auf Regel `TITLE CONTAINS Moissanit` umstellen | grösste Lücke; search.ch zeigt nur 2 Nischen-Shops |
+| moissanit ring kaufen | 95 Moissanit-Titel aktiv, Kollektion `moissanit-schmuck` = 5 aktiv, MANUAL ohne Regel | `moissanit-schmuck` auf Regel `TITLE CONTAINS Moissanit` umstellen | grösste Lücke; search.ch zeigt nur 2 Nischen-Shops · **✅ 25.09.:** manuelle Kollektion lässt sich nicht umstellen → neue Smart-Kollektion `moissanit` (TITLE CONTAINS Moissanit, ohne Detektor/Tester), alte `moissanit-schmuck` 301 + abgemeldet; live 94 Artikel statt 5 (WebFetch) |
 | midikleid kaufen / schweiz | 142 Midikleid-Titel (125 in sub-kleider) | neue Kollektion `midikleider`: `TITLE CONTAINS Midikleid` | Suggest-Rang 1 für kaufen/schweiz/günstig |
 | kratzbaum kaufen / xxl | 41 Kratzbaum-Titel | neue Kollektion `kratzbaeume`: `TITLE CONTAINS Kratzbaum` | katzenwelt trägt das Wort jetzt im SEO-Titel |
 | hundebett kaufen / xxl | 23 Hundebett-Titel | neue Kollektion `hundebetten`: `TITLE CONTAINS Hundebett` | hundewelt trägt das Wort jetzt im SEO-Titel |
