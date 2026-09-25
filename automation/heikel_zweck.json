@@ -35,6 +35,16 @@
    "n": "werkzeug-pistole-keine-schusswaffe",
    "re": "Klebepistole|Hei[sß]kleb|Nagelpistole|Spr[üu]hpistole|Lackierpistole|Farbpistole|Waschpistole|Druckluftpistole|Silikonpistole|Schaumpistole|Sahnepistole|Fettpresse|Pistolengriff|Hochdruck|Wasserpistole|Massagepistole|Hei[sß]luftpistole|Ausschaumpistole|Elektropistole",
    "warum": "«Pistole» ist im Deutschen ein Griff-Formfaktor, keine Waffe: Heissklebepistole, Nagelspray-, Sprüh- und Waschpistole, Gaming-Pistolengriff, Massagepistole. Genau diese Compound-Falle hat der Prüflauf am 20.08.2026 gemeldet (Hochdruckreiniger-Pistole, Gaming-Pistolengriff, Nagelspray-Pistole) — ohne diese Sperre draftet die Regel unten halbe Werkzeug- und Beauty-Abteilungen."
+  },
+  {
+   "n": "mp5-medienformat",
+   "re": "MP5-?Player|Infotainment|Autoradio|Multimedia|Car-?Play|Media-?Player",
+   "warum": "25.09.2026 Vollrunde: «MP5» ist auch ein Video-/Medienformat für Autoradios («Auto-MP5-Player mit 7-Zoll-Bildschirm», «Automobil-Infotainment-System») — beide trafen \\bMP-?5\\b der Schusswaffen-Regel."
+  },
+  {
+   "n": "seifenblasen-spielzeug",
+   "re": "Seifenblasen|Bubble",
+   "warum": "25.09.2026 Vollrunde: «Seifenblasen-Maschinenpistole» traf «Maschinenpistole» — ein buntes Kinderspielzeug mit 69 Blasenlöchern und Lichtern, keine Nachbildung einer echten Schusswaffe."
   }
  ],
  "treffer": [
