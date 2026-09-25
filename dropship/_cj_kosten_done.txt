@@ -30475,3 +30475,8 @@ gid://shopify/Product/15460288037249	CHF 10.87	32 Varianten	Waschbare Inkontinen
 gid://shopify/Product/15460288430465	CHF 44.27	1 Varianten	Plastik-Müllbehälter mit Babyverschluss
 gid://shopify/Product/15460288561537	CHF 18.90	1 Varianten	Holz-Armbanduhr BOBO BIRD
 gid://shopify/Product/15460439589249	CHF 15.41	60 Varianten	Sonnenschutzplane
+gid://shopify/Product/15460439622017	CHF 12.66	60 Varianten	Sofa-Kissen
+gid://shopify/Product/15460522295681	CHF 11.91	5 Varianten	Weisser Pullover · Damen
+gid://shopify/Product/15460522361217	CHF 14.52	5 Varianten	Patchwork-Faux-Sweater
+gid://shopify/Product/15460522393985	CHF 14.55	3 Varianten	Farbblock-Sweater
+gid://shopify/Product/15460522426753	CHF 13.24	3 Varianten	Korean Style Cardigan
