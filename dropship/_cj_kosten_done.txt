@@ -31986,3 +31986,6 @@ gid://shopify/Product/15472550478209	CHF 17.29	5 Varianten	Hoodie · Herren
 gid://shopify/Product/15472550576513	CHF 17.87	9 Varianten	Saugfähiges Baumwoll-Gauze Badetuch · 90 × 180 cm
 gid://shopify/Product/15472563782017	CHF 22.66	20 Varianten	Herren Relaxed-Fit Straight-Leg Freizeithose
 gid://shopify/Product/15472564175233	CHF 17.09	8 Varianten	Künstliche Kamelien
+gid://shopify/Product/15472663593345	CHF 30.50	29 Varianten	Flache Sneaker
+gid://shopify/Product/15472687776129	CHF 35.93	3 Varianten	Outdoor-Smartwatch
+gid://shopify/Product/15472688136577	CHF 13.21	12 Varianten	Kauspielball
