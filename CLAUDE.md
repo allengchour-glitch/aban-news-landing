@@ -72,12 +72,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   aus + bricht ab, falls `_site/content` existiert (Gegenprobe: Wächter rc=1).
 - **Falle build.py:** Regex „bis zum nächsten `</script>`" hat bei leerem Engine-Block das FOLGENDE Skript (die ganze
   Oberfläche) gelöscht → jetzt Marken `/*ENGINE-START*/…/*ENGINE-END*/`, idempotent geprüft.
-- Kauf-Links beider Produkte warten weiter auf den echten Stripe-Key (GitHub-Secret). **Keine Werbung vorher.**
+- ✅ **25.09. Stripe-Key im GitHub-Secret ersetzt (User)** → `stripe-shop.yml` legte beide Links an: Prüfstand
+  `buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p` (CHF 29), Schulden-Plan `buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q` (CHF 27). Neue
+  Produkte = Katalog-Eintrag + Workflow starten, sonst nichts. Werbung erst nach erstem Test-Kauf (Download prüfen).
 
 **📌 2026-09-24 (🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks):**
 - **Produkt:** `content/packs/de/strategie-pruefstand/` (Python-Kit, Katalog `data/kit-catalog.json`,
   standalone). Verkaufskasten auf `trading-lernen.html` holt den Kauf-Link aus `data/shop-products.json`.
-- **🟡 KAUF-LINK FEHLT NOCH — nur User:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
+- **✅ (erledigt 25.09., s. oben) — früher:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
   (Stripe 403 `secret_key_required`, vermutlich `pk_…`). Richtiger Key: `sk_live_…` oder eingeschränkt
   `rk_live_…` mit Schreibrecht auf Products, Prices, Payment Links. Danach `stripe-shop.yml` starten →
   Link wird angelegt, committet, deployt (kein `[skip ci]` mehr). Cloudflare hat den richtigen Key
