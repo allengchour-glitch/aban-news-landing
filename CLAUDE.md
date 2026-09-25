@@ -167,9 +167,25 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   belegt vorher die **Lückenlosigkeit** der Variantennummern (`erste + (n-1)*32768 === letzte`,
   25 Produkte bestätigt) — so kann der Fehler vom 19.09. („zwölf geplant, zehn gesendet") nicht
   wiederkehren.
-- **📊 BILANZ ALLER SECHS BLÖCKE: 161 Schutzprodukte gemessen → 93 Produkte / 827 Varianten live
+- **✅ SIEBTER BLOCK (25.09.), der Rest der Schutzausrüstung — und diesmal war fast alles in
+  Ordnung:** Schutzhandschuhe, Warnwesten, Schutzbrillen, Gehörschutz, Knieschoner einzeln über
+  Wortanfänge gesucht (Gegenprobe `title:zzzgibtesnichtwort*` → 0). Von 7 mit bekanntem Einkauf
+  waren **6 bereits über dem Ziel und 0 im Verlust** — die beste Quote aller sieben Blöcke.
+  Geändert wurde genau eins: **Schutzbrille S.W.A.T 23.90 → 29.90** (EK 16.43, Marge 23,6 → 38,9
+  PROZENT), an der echten Seite nachgemessen (29.90 da, 23.90 weg, erfundener Wert schlägt nicht an).
+- **⚠️ DREI OHNE EINKAUFSPREIS = ÜBERSPRUNGEN, NICHT „in Ordnung":** Elektr. Schutzhandschuhe
+  doppelseitig isoliert (14.90), Kühlende Warnweste 14 Var. (20.90), Gehörschutz-Röhrchen (17.90).
+  **Kein `unitCost` heisst unbekannt** — die Regel überspringt sie, statt eine Marge zu erfinden.
+  ⚠️ Der erste Fall ist zusätzlich für die Normen-Frage vorzumerken: **isolierende Handschuhe für
+  Elektroarbeiten sind PSA der Kategorie III** (Norm-Familie EN 60903 / IEC 60903) — dieselbe Klasse
+  wie Helme und Atemschutz, nur mit eigener Norm.
+- **🔑 DIE STREUUNG ZWISCHEN DEN BLÖCKEN IST DAMIT ENDGÜLTIG BELEGT:** Arbeitsschutz-Schuhe
+  29 Verluste von 30 · Velohelme 11 von 32 · Reit/Ski/Motorrad 8 von 22 · Fahrradhelme 1 von 33 ·
+  dieser Block **0 von 7**. **Eine Gruppe sagt nichts über die nächste** — wer aus einer auf den
+  Katalog schliesst, liegt in beide Richtungen falsch.
+- **📊 BILANZ ALLER SIEBEN BLÖCKE: 168 Schutzprodukte gemessen → 94 Produkte / 828 Varianten live
   korrigiert**, jedes einzelne an der Kundenseite nachgemessen (22/22 · 10/10 · 19/19 · 14/14 ·
-  10/10 · 27/27 · 1/1).
+  10/10 · 27/27 · 1/1 · 1/1).
 
 **📌 2026-09-20, zweite Runde (⭐ DER FÜHRENDE STERN WIRD WEGGEWORFEN — es sind 123 Helme, nicht 32):**
 - **Auftrag:** Dauerauftrag („weiter"). Voller Bericht: **`dropship/LERNEN-STERNCHEN-FALLE-2026-09-20.md`**.
