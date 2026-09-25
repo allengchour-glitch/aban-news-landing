@@ -418,7 +418,7 @@
   "depot_chf": 80181.97,
   "halten_chf": 80215.26
  },
- "stand": "2026-09-25T17:54:59Z",
+ "stand": "2026-09-25T18:09:49Z",
  "daytrading": {
   "hinweis": "Regel wird morgens eingefroren und gilt erst ab der nächsten Sitzung. Kosten 0.05 % pro Trade.",
   "maerkte": {
@@ -591,12 +591,183 @@
      "treffer": 0.0,
      "rendite": -0.003317680204723339
     }
+   },
+   "AAPL": {
+    "name": "Apple",
+    "konto": 10000.0,
+    "regel": "Erste 3 Std. umkehren",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "NVDA": {
+    "name": "Nvidia",
+    "konto": 10000.0,
+    "regel": "Erste 2 Std. folgen",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 2 Std. folgen"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "TSLA": {
+    "name": "Tesla",
+    "konto": 10000.0,
+    "regel": "Erste 3 Std. umkehren",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "MSFT": {
+    "name": "Microsoft",
+    "konto": 10000.0,
+    "regel": "Erste 3 Std. umkehren",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "AMZN": {
+    "name": "Amazon",
+    "konto": 10000.0,
+    "regel": "Erste 1 Std. folgen",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 1 Std. folgen"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "NESN.SW": {
+    "name": "Nestlé",
+    "konto": 10000.0,
+    "regel": "Erste 3 Std. umkehren",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "NOVN.SW": {
+    "name": "Novartis",
+    "konto": 10000.0,
+    "regel": "Ausbruch aus 1-Std.-Spanne",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Ausbruch aus 1-Std.-Spanne"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "RO.SW": {
+    "name": "Roche",
+    "konto": 10000.0,
+    "regel": "Ausbruch aus 2-Std.-Spanne",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Ausbruch aus 2-Std.-Spanne"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "UBSG.SW": {
+    "name": "UBS",
+    "konto": 10000.0,
+    "regel": "Erste 2 Std. umkehren",
+    "gilt_ab": "2026-09-26",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-26",
+      "regel": "Erste 2 Std. umkehren"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
    }
   },
   "gesamt": {
    "trades": 5,
    "treffer": 0.4,
-   "depot_chf": 49490.77
+   "depot_chf": 139490.77
   }
  },
  "stil_vorwaerts": {
@@ -1390,7 +1561,7 @@
    "datum": "2026-09-25",
    "bot": 80181.97,
    "halten": 80215.26,
-   "daytrading": 49490.77
+   "daytrading": 139490.77
   }
  ]
 }
