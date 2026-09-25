@@ -31159,3 +31159,5 @@ gid://shopify/Product/15467017372033	CHF 7.12	9 Varianten	Personalisierter Stahl
 gid://shopify/Product/15467017437569	CHF 8.08	1 Varianten	Eleganter Tasselschmuck
 gid://shopify/Product/15467017503105	CHF 17.98	32 Varianten	Langarm-Kleid mit Taschen
 gid://shopify/Product/15467017535873	CHF 16.10	36 Varianten	Kunststoffkleid · Damen
+gid://shopify/Product/15467017601409	CHF 13.80	10 Varianten	Strukturiertes Slipdress mit Perlenriemen
+gid://shopify/Product/15467017634177	CHF 12.50	16 Varianten	Geripptes Langarm-Freizeitkleid für Damen
