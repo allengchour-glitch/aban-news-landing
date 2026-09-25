@@ -31451,3 +31451,6 @@ gid://shopify/Product/15468734841217	CHF 15.87	12 Varianten	Herren Kurzarmhemd m
 gid://shopify/Product/15468734873985	CHF 7.03	1 Varianten	Halskette Geschenkbox mit Schleife, zum Öffnen
 gid://shopify/Product/15468735234433	CHF 67.29	1 Varianten	Kinder-Trolley mit Muster – 18 Zoll
 gid://shopify/Product/15468735267201	CHF 7.77	1 Varianten	Bemaltes Korb-Pendel
+gid://shopify/Product/15468735299969	CHF 17.55	28 Varianten	Herren Strick-Cardigan Weste
+gid://shopify/Product/15468735332737	CHF 7.61	1 Varianten	Donut-Halskette mit Taschenuhr
+gid://shopify/Product/15468735365505	CHF 7.97	1 Varianten	Yoland Schwertpflegeöl – Rostschutz für Klingen
