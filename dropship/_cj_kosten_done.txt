@@ -32619,3 +32619,6 @@ gid://shopify/Product/15476180779393	CHF 14.66	1 Varianten	Körbchen aus Baumwol
 gid://shopify/Product/15476180812161	CHF 26.99	1 Varianten	Grosser Aufbewahrungskorb für Haushalt & Freizeit
 gid://shopify/Product/15476180844929	CHF 15.47	8 Varianten	Lässiges Sweatshirt mit Pflanzenprint
 gid://shopify/Product/15476180910465	CHF 14.02	45 Varianten	Bedruckter Hoodie für Herren
+gid://shopify/Product/15476184187265	CHF 13.49	99 Varianten	Hoodie mit 3D Digital Katzen-Print für Paare
+gid://shopify/Product/15476184318337	CHF 17.29	72 Varianten	Herren Hoodie mit Reissverschluss & Print
+gid://shopify/Product/15476184580481	CHF 20.84	4 Varianten	Herren Hoodie mit Ripped-Design
