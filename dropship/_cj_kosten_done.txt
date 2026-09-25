@@ -29584,3 +29584,6 @@ gid://shopify/Product/15455759597953	CHF 7.86	5 Varianten	Ohrenreiniger mit 8-te
 gid://shopify/Product/15455759663489	CHF 26.38	3 Varianten	Reise-Rucksack mit Trocken-Feucht-Trennung
 gid://shopify/Product/15455759860097	CHF 6.97	3 Varianten	Perlengeschmückter offener Titanstahl-Armband
 gid://shopify/Product/15455760089473	CHF 14.52	35 Varianten	Chinesischer Cardigan mit Knopfleiste und Sonnenfa
+gid://shopify/Product/15455760122241	CHF 7.21	30 Varianten	Cuban-Kette mit Anhänger
+gid://shopify/Product/15455760187777	CHF 39.79	6 Varianten	Herren Slim-fit Mittel Reversjacke
+gid://shopify/Product/15455760286081	CHF 27.35	21 Varianten	Herren Winterjacke mit Stehkragen
