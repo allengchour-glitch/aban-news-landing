@@ -31437,3 +31437,6 @@ gid://shopify/Product/15468700434817	CHF 19.89	18 Varianten	High-Waist Jeans mit
 gid://shopify/Product/15468732744065	CHF 7.12	1 Varianten	Sternenarmband mit Zirkonia-Pavé
 gid://shopify/Product/15468732842369	CHF 13.28	1 Varianten	Retro Herrenuhr mit Prägung und Krallendesign
 gid://shopify/Product/15468733694337	CHF 16.15	6 Varianten	Plissierter Strickrock mit hoher Taille
+gid://shopify/Product/15468734022017	CHF 76.93	1 Varianten	Kindertrolley mit Cartoon-Print
+gid://shopify/Product/15468734120321	CHF 16.39	1 Varianten	Elastischer Kofferschutz mit Tiermotiven
+gid://shopify/Product/15468734218625	CHF 25.29	1 Varianten	Multifunktionale Reise-Aufbewahrungstasche
