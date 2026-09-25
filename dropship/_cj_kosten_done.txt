@@ -29257,3 +29257,7 @@ gid://shopify/Product/15455518654849	CHF 7.75	12 Varianten	Weiche Babyschuhe aus
 gid://shopify/Product/15455518720385	CHF 65.87	1 Varianten	Keramik Vase Dekoration
 gid://shopify/Product/15455518818689	CHF 11.13	51 Varianten	Kinder-Webbing-Sandalen
 gid://shopify/Product/15455518884225	CHF 26.12	1 Varianten	Keramik-Vase im Origami-Stil
+gid://shopify/Product/15455518949761	CHF 12.94	1 Varianten	Badetuch-Set mit Logodruck
+gid://shopify/Product/15455519572353	CHF 27.71	1 Varianten	3-teiliges Kochset für unterwegs
+gid://shopify/Product/15455519998337	CHF 18.67	1 Varianten	Bunte Streifen-Badetücher aus Baumwolle
+gid://shopify/Product/15455520031105	CHF 18.96	48 Varianten	Regen-Laufschuhe mit weicher Sohle
