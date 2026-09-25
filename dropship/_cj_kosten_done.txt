@@ -33569,3 +33569,6 @@ gid://shopify/Product/15479435952513	CHF 30.85	42 Varianten	Spitze Stiletto-Stie
 gid://shopify/Product/15479436018049	CHF 21.41	16 Varianten	Chunky-Heel Ankle Boots für Damen
 gid://shopify/Product/15479436050817	CHF 18.34	40 Varianten	Elegante High-Heel Boots mit Chunky-Absatz
 gid://shopify/Product/15479436149121	CHF 16.86	45 Varianten	Sock-Style Boots mit Chunky-Heel
+gid://shopify/Product/15479436181889	CHF 39.13	48 Varianten	Herren Business-Lederschuhe mit Absatzerhöhung
+gid://shopify/Product/15479436214657	CHF 19.42	13 Varianten	Mary Jane Pumps mit moderatem Absatz
+gid://shopify/Product/15479436280193	CHF 18.68	27 Varianten	Modische Casual Sandalen mit hohem Absatz
