@@ -62,6 +62,9 @@ td{white-space:nowrap}td:first-child{white-space:normal}
 .balken{position:relative;height:10px;border-radius:999px;background:var(--cream);overflow:hidden;margin:6px 0}
 .balken i{display:block;height:100%;background:var(--amber)}
 .balken s{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink2);text-decoration:none}
+.kurve{width:100%;height:auto;display:block;margin:6px 0}.kurve text{font-size:17px;fill:var(--muted)}
+.kurve path{fill:none;stroke-width:2.5;stroke-linejoin:round}.kurve .k-bot{stroke:var(--amber-dk)}.kurve .k-halten{stroke:var(--muted);stroke-dasharray:5 4}
+.leg{display:inline-block;width:18px;height:0;border-top:3px solid var(--amber-dk);vertical-align:middle}.leg.k-halten{border-top:3px dashed var(--muted)}
 .skills{list-style:none;margin:10px 0 0}.skills li{margin:8px 0}
 .skills label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
 .skills input{margin-top:6px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--amber-dk)}
@@ -157,6 +160,26 @@ footer a{color:var(--muted)}
   function chf(n){return 'CHF '+Math.round(n).toLocaleString('de-CH')}
   function pz(n){return n==null?'—':(n*100).toFixed(1)+' %'}
   function dat(t){var d=new Date(t);return isNaN(d)?t:d.toLocaleDateString('de-CH')}
+    function kurve(v){
+      if(v.length<2)return '<p class="klein">Die Verlaufskurve erscheint ab dem zweiten Buchungstag.</p>';
+      var W=480,H=200,P=4,werte=[];v.forEach(function(x){werte.push(x.bot,x.halten)});
+      var lo=Math.min.apply(0,werte),hi=Math.max.apply(0,werte);if(hi-lo<1){hi+=1;lo-=1}
+      var X=function(i){return P+i*(W-P-8)/(v.length-1)},Y=function(w){return 26+(hi-w)*(H-70)/(hi-lo)};
+      var pfad=function(k){return v.map(function(x,i){return (i?'L':'M')+X(i).toFixed(1)+' '+Y(x[k]).toFixed(1)}).join(' ')};
+      return '<h3>Verlauf: Bot gegen einfach halten</h3><svg class="kurve" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Depotwert des Bots und des Halte-Depots über die Zeit">'
+        +'<text x="'+(W-8)+'" y="'+(Y(hi)-6)+'" text-anchor="end">'+chf(hi)+'</text><text x="'+(W-8)+'" y="'+(Y(lo)+18)+'" text-anchor="end">'+chf(lo)+'</text>'
+        +'<path class="k-halten" d="'+pfad('halten')+'"/><path class="k-bot" d="'+pfad('bot')+'"/>'
+        +'<text x="'+P+'" y="'+(H-6)+'">'+esc(dat(v[0].datum))+'</text><text x="'+(W-8)+'" y="'+(H-6)+'" text-anchor="end">'+esc(dat(v[v.length-1].datum))+'</text></svg>'
+        +'<p class="klein"><span class="leg k-bot"></span> Bot &nbsp; <span class="leg k-halten"></span> einfach halten · alle acht Märkte zusammen</p>';
+    }
+    function stile(st){
+      if(!st||!st.gesamt)return '';
+      var h=st.halten_chf||0,z=Object.keys(st.gesamt).map(function(n){var g=st.gesamt[n];
+        return '<tr><td>'+esc(n)+'</td><td>'+Math.round((st.vorab[n]||0)*100)+' %</td><td>'+(g.tage?Math.round(g.richtig/g.tage*100)+' %':'—')+'</td><td>'+chf(g.konto)+'</td><td>'+g.tage+'</td></tr>'}).join('');
+      return '<h3>Vorwärtstest der neun Stile</h3><p class="klein">Seit '+esc(dat(st.start))+' laufen alle neun Stile aus dem Stil-Labor auf allen acht Märkten weiter, je CHF 10\'000 pro Markt. Die linke Zahl wurde <b>vor</b> dem ersten Vorwärtstag festgehalten. Hält der Rückblick, sollten Stile mit hohem Skill auch vorwärts vorne liegen.</p>'
+        +'<div class="tab"><table><thead><tr><th>Stil</th><th>Skill im Rückblick</th><th>vorwärts richtig</th><th>Depot</th><th>Markttage</th></tr></thead><tbody>'+z
+        +'<tr><td><b>einfach halten</b></td><td></td><td></td><td><b>'+chf(h)+'</b></td><td></td></tr></tbody></table></div>';
+    }
   fetch('/data/papierdepot.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
     var m=d.maerkte||{},k=Object.keys(m);if(!k.length)throw 0;
     var zeilen=k.map(function(s){var x=m[s],e=x.entscheid||{},st=x.statistik||{};
@@ -172,7 +195,7 @@ footer a{color:var(--muted)}
       +'<div class="tab"><table><thead><tr><th>Markt</th><th>heute</th><th>richtig</th><th>Bot-Depot</th><th>einfach halten</th><th>Tage</th><th>gewählte Regel</th></tr></thead><tbody>'+zeilen
       +'<tr><td><b>Gesamt</b></td><td></td><td><b>'+pz(g.treffer)+'</b></td><td><b>'+chf(g.depot_chf||0)+'</b></td><td><b>'+chf(g.halten_chf||0)+'</b></td><td><b>'+tage+'</b></td><td></td></tr></tbody></table></div>'
       +'<p class="klein">'+(tage<250?'Noch zu früh für ein Urteil: nach '+tage+' abgerechneten Markttagen ist jede Trefferquote vor allem Zufall. Aussagekräftig wird es nach vielen Monaten.':'Nach '+tage+' abgerechneten Markttagen: Vergleiche Bot-Depot und „einfach halten".')
-      +(alt?' <b>Die tägliche Buchung ist seit mehreren Tagen ausgefallen.</b>':'')+' Spielgeld, keine Anlageberatung.</p>'+dth;
+      +(alt?' <b>Die tägliche Buchung ist seit mehreren Tagen ausgefallen.</b>':'')+' Spielgeld, keine Anlageberatung.</p>'+kurve(d.verlauf||[])+dth+stile(d.stil_vorwaerts);
   }).catch(function(){box.innerHTML='<p class="klein">Das Übungsdepot ist gerade nicht erreichbar.</p>'});
 })();
 </script>
