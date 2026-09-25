@@ -380,7 +380,7 @@ onlineStoreUrl (Phantom-Produkt-Falle, Task #7), du-Form, kein Eszett, Markt nur
 
 | Keyword-Lücke | Belegte Ware | Vorschlag Regel (Smart Collection) | Bemerkung |
 |---|---|---|---|
-| moissanit ring kaufen | 95 Moissanit-Titel aktiv, Kollektion `moissanit-schmuck` = 5 aktiv, MANUAL ohne Regel | `moissanit-schmuck` auf Regel `TITLE CONTAINS Moissanit` umstellen | grösste Lücke; search.ch zeigt nur 2 Nischen-Shops |
+| moissanit ring kaufen | 95 Moissanit-Titel aktiv, Kollektion `moissanit-schmuck` = 5 aktiv, MANUAL ohne Regel | `moissanit-schmuck` auf Regel `TITLE CONTAINS Moissanit` umstellen | grösste Lücke; search.ch zeigt nur 2 Nischen-Shops · **✅ 25.09.:** manuelle Kollektion lässt sich nicht umstellen → neue Smart-Kollektion `moissanit` (TITLE CONTAINS Moissanit, ohne Detektor/Tester), alte `moissanit-schmuck` 301 + abgemeldet; live 94 Artikel statt 5 (WebFetch) |
 | midikleid kaufen / schweiz | 142 Midikleid-Titel (125 in sub-kleider) | neue Kollektion `midikleider`: `TITLE CONTAINS Midikleid` | Suggest-Rang 1 für kaufen/schweiz/günstig |
 | kratzbaum kaufen / xxl | 41 Kratzbaum-Titel | neue Kollektion `kratzbaeume`: `TITLE CONTAINS Kratzbaum` | katzenwelt trägt das Wort jetzt im SEO-Titel |
 | hundebett kaufen / xxl | 23 Hundebett-Titel | neue Kollektion `hundebetten`: `TITLE CONTAINS Hundebett` | hundewelt trägt das Wort jetzt im SEO-Titel |
