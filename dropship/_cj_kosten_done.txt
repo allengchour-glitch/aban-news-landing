@@ -32123,3 +32123,4 @@ gid://shopify/Product/15473389011329	CHF 20.52	5 Varianten	Patchwork Wide-leg Je
 gid://shopify/Product/15473389076865	CHF 27.54	2 Varianten	Etagere Metall Rund, 4 Fächer
 gid://shopify/Product/15473422369153	CHF 16.50	3 Varianten	Fuchsohr-Haarschmuck
 gid://shopify/Product/15473422532993	CHF 20.53	10 Varianten	Sterling Silber Ring
+gid://shopify/Product/15473433149825	CHF 17.58	1 Varianten	Luftreiniger & Befeuchter
