@@ -30604,3 +30604,12 @@ gid://shopify/Product/15460673094017	CHF 10.14	24 Varianten	Vintage T-Shirt mit 
 gid://shopify/Product/15460673126785	CHF 10.51	9 Varianten	Herren bedrucktes Freizeit-Shirt, Kurzarm
 gid://shopify/Product/15460673159553	CHF 11.57	28 Varianten	Retro T-Shirt aus Wildlederimitat für Herren
 gid://shopify/Product/15460673192321	CHF 11.96	40 Varianten	Loose-fit Herren-Shirt im japanischen Stil
+gid://shopify/Product/15460701634945	CHF 18.00	18 Varianten	Schlanke A-Linie-Kleid
+gid://shopify/Product/15460701667713	CHF 19.06	9 Varianten	Elegantes Satin-Trägerkleid
+gid://shopify/Product/15460701766017	CHF 7.87	1 Varianten	Herz-Halskette im Retro-Stil
+gid://shopify/Product/15460701798785	CHF 30.50	8 Varianten	Herren Retro Jacquard Cardigan
+gid://shopify/Product/15460701831553	CHF 43.59	1 Varianten	Tragbares Teekset aus Titan mit Schale und Tablett
+gid://shopify/Product/15460701929857	CHF 14.45	1 Varianten	Dayi Lithium-Batterie Dieselpumpe
+gid://shopify/Product/15460702749057	CHF 10.16	6 Varianten	Spitzenbesetztes V-Ausschnitt Kleid
+gid://shopify/Product/15460702945665	CHF 7.56	1 Varianten	LED-Stirnlampe mit Bewegungssensor
+gid://shopify/Product/15460709663105	CHF 15.43	20 Varianten	V-Ausschnitt Midi-Kleid
