@@ -31751,3 +31751,19 @@ gid://shopify/Product/15472047751553	CHF 108.90	1 Varianten	Künstliche Weihnach
 gid://shopify/Product/15472047784321	CHF 12.50	6 Varianten	French Press Kaffeebereiter aus Borosilikatglas
 gid://shopify/Product/15472047817089	CHF 19.44	2 Varianten	Katzenpfoten-Massagebürste für die Kopfhaut
 gid://shopify/Product/15472047849857	CHF 28.91	30 Varianten	Sonnensegel mit Zubehör für Aussenbereiche
+gid://shopify/Product/15472049750401	CHF 24.12	6 Varianten	Blumenmuster-Rock-Set
+gid://shopify/Product/15472049783169	CHF 27.51	70 Varianten	Vintage Langarm-Kleid mit Stehkragen
+gid://shopify/Product/15472049815937	CHF 20.97	6 Varianten	Elegantes ärmelloses Maxikleid mit Rundhals
+gid://shopify/Product/15472049848705	CHF 29.49	12 Varianten	Blumiges langes Damen-Kleid
+gid://shopify/Product/15472049881473	CHF 21.74	36 Varianten	Elegantes Hemdblusenkleid mit Schnürung
+gid://shopify/Product/15472049914241	CHF 13.39	5 Varianten	Boho-Kleid mit Ethno-Print und A-Linie
+gid://shopify/Product/15472049947009	CHF 13.34	5 Varianten	Vielseitiges Taillenkleid mit Schleifendetail
+gid://shopify/Product/15472049979777	CHF 15.52	4 Varianten	Rückenfreies Neckholder-Kleid
+gid://shopify/Product/15472050012545	CHF 14.15	5 Varianten	Voluminöses Tüllkleid mit Taillenbetonung
+gid://shopify/Product/15472050045313	CHF 13.36	4 Varianten	Retro-Minikleid mit Streifen & Puffärmeln
+gid://shopify/Product/15472050078081	CHF 18.35	5 Varianten	Figurbetontes Maxikleid mit V-Ausschnitt
+gid://shopify/Product/15472050110849	CHF 29.79	5 Varianten	Digitales Kindermikroskop für draussen
+gid://shopify/Product/15472050143617	CHF 16.66	8 Varianten	Freizeitkleid mit Blumenmuster
+gid://shopify/Product/15472050176385	CHF 12.22	60 Varianten	Wasserdichtes dreieckiges Sonnensegel für Aussenbe
+gid://shopify/Product/15472050241921	CHF 18.71	5 Varianten	Figurschmeichelndes Kleid mit asymmetrischem Saum
+gid://shopify/Product/15472050274689	CHF 11.31	8 Varianten	Wasserdichter Dry Bag mit Blumenprint, 10L
