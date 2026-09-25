@@ -7663,3 +7663,80 @@ Umschalten · probe-tiefenstreit 0,39 % · probe-anfasser 0 · probe-zusammen na
 3. **Einfrieren braucht eine Gegenprüfung auf „bewegt sich trotzdem".** Sechs Arten von Objekten liefen seit dem Einfrieren falsch,
    eins davon (das Sonnenziel) veränderte das Licht der ganzen Karte. `probe-anfasser` findet diese Klasse jetzt
    automatisch.
+
+## Runde 101 · 📐 Platzierung passend (User: „jetzt spiel weiter" → „platzierung passend machen")
+
+Erst selbst gespielt (`th-spielfahrt r101`: Stadtrunde, Landstrasse, Bauernhof, Flughafen, sechs Orte zu Fuss), dann
+jeden Befund mit einer Sonde belegt, geändert und nachgemessen. Der zweite User-Satz kam mitten in der Runde und traf
+genau das, was die Bilder zeigten: Dinge stehen, wo sie nicht hingehören.
+
+### 1. Möbel gerader Grösse standen eine halbe Zelle neben ihrer Belegung (seit Runde 89 als offen notiert)
+`furnCells` belegt bei Breite/Tiefe 2 die Zellen `gx … gx+1`, gebaut wurde auf `cx(gx)`. **`probe-moebelversatz`:
+30 von 30 Fällen genau 1 m daneben**; das Himmelbett ragte 0,96 m in die Nachbarzelle, der Teich 0,92, das
+Designer-Sofa 0,82; in der Villa-Vorlage steckte das Sofa 6 cm in der Wand (`probe-villamoebel`), und die grüne
+Vorschau zeigte eine andere Stelle als die belegte.
+- Neu `furnMitte(def,gx,gy,rot)` / `fMitte(f)`: Mitte der Belegung (bei gerader Seite +CS/2). Modell, Vorschau,
+  Plopp, Möbellicht, Auswahlring, Sitz-/Liegepunkt (`arrive`, Bett +0,3 relativ dazu), „nächstes Möbel", Beet-Ernte,
+  Liebes-Möbel, Hochzeit am Rosenbogen und die Tippflächen (Herd/Teich/Stereo) nehmen sie.
+- **Belegung, Speicherstand und Netz bleiben gx/gy.** Ein alter Spielstand lädt dieselben Felder, nur das Bild rückt
+  auf sie. Autos und Hund haben keine Belegung (nicht in `furn`) und bleiben auf der Ankerzelle.
+- `furnMass` zentriert den Grundriss von `norm`-Modellen auf die Zellmitte: der Zimmerfarn hat seinen Drehpunkt
+  0,46 m neben der Pflanze und ragte 0,48 m hinaus.
+- Nachher: gerade 0/30 versetzt, 0 ragt · ungerade 0/140 · Villa: 0 in Wand, 0 in anderem Möbel, 0 ragt.
+**Falle:** die erste Gegenprobe von `probe-moebelversatz` blieb stumm — das verschobene Modell ist eingefroren
+(`_einfrieren`), `position.x += 1` ändert ohne `updateMatrix()` nichts am Bild. Dieselbe Klasse wie Runde 100, Abschnitt 4.
+
+### 2. Quartiersplatz: Bushalte-Tafel im Stellplatz des Taxis (Spielfahrt r101-35, r101-10)
+Aus der Spielkamera sah es aus wie ein Picknicktisch unter einem gelben Auto. `probe-wasda` nannte es:
+`th3_bushalte` bei (−64|−10), Kasten x −64,8…−63,1 / z −11,7…−8,4 — im Stall z −11…−8. Runde 94 hatte
+Wartehäuschen und Telefonzelle verlegt, die Tafel übersehen. Jetzt (−67,5|25,9) auf dem Grünstreifen hinter der
+Telefonzelle (frei laut `probe-wasda`).
+
+### 3. Bahnhof-Parkplatz neu eingepasst — fünf Fehler an einer Stelle
+Der Platz (36 × 16, x 7…43 / z 89…105) war nach Nachbarn gemessen, die es so nicht mehr gibt. `probe-parkfrei` +
+`probe-wasda` + Fotos von oben (`r101-bahnhofplatz-vorher`, `-umfeld-vorher`, `-nord-vorher`, `-nordkante`):
+1. **Bahnhof th41 bis x 10,4** — der Platz lag 3,4 m darin, der Kassenautomat (6,8|103,6) IM Bahnhofsgebäude.
+2. **Rathaus-Sockel bis z 90,0** — die Südreihe begann bei 89: SUV und Kompakt 0,5 m im Sockel, das Taxi am Taxistand
+   ebenso, und zwei Bäume des Grünstreifens standen IM Rathaus.
+3. **Warteplatz** (Pflaster 8 × 7, Trinkbrunnen, Bank, Vogeltränke bei (17,5|98), älter als der grosse Platz) mitten in
+   Fahrgasse und Nordreihe — auf dem Foto der hellgraue Fleck mit Bank zwischen den Autos.
+4. **Zwei Laternenmasten in der 5,6-m-Fahrgasse** (13|97 gleich hinter der Einfahrt, 37|97).
+5. **Zufahrten:** die Einfahrt x 8…14 lief unter Bahnsteig und Bahnsteigdach, in der Ausfahrt x 22…28 stand der
+   Fahrleitungsmast (24|110) — und beide Bänder waren zugeparkt (GT auf Nordplatz 0, Limousine auf Nordplatz 5).
+Neu (alles aus `PX/PZ/PW/PD`, `window._bahnPP` für die Abschnitte weiter unten):
+- Platz x 11…43, z 90,6…104,2; Bordstein 0,5 m ringsum, ganz ausserhalb von Bahnhof und Rathaus.
+- **Beide Zufahrten im einzigen freien Streifen zum Ring** (x 32…42,5: zwischen Signal x 29 und Signal x 44, ohne Mast
+  und Bahnsteig), Pfeile hinein/hinaus; die Nordreihe hat 6 Plätze und endet davor. Gassenpfeile zeigen zur Ausfahrt.
+- **Warteplatz = Insel an der Bahnhofs-Ostwand** (x 11…14,6) mit Inselkante; Brunnen, Bank, Vogeltränke darauf.
+  Angemeldet (`_parkplaetze`) wird nur die Stellfläche.
+- Behindertenplatz = Südplatz 0 (nächst dem Bahnhof); Südplatz 3 = Lieferwagen der Werkstatt (`_bahnPP.platz(-1,3)`
+  statt fester 25/91,6); Südplatz 7/8 = Taxistand (`window._taxiStand`); x 40…43 bleibt Reststreifen für die Laterne
+  (41,7|91,6) aus der Laternenkette. Masten auf den Stirn-Bordsteinen, Kassenautomat auf dem Nord-Bordstein an der
+  Einfahrt, Grünstreifen + drei Bäume nur westlich des Rathauses.
+- Nicht angefasst: die Zufahrt quert das Gleis (z 110,7…113,3) ohne Bahnübergang-Ausstattung — das war schon so;
+  eine Schranke passt dort nicht (Ring 1,5 m hinter der Schiene, s. Schranken-Kommentar). Eigene Runde.
+
+### 4. Rettungswagen im Hochhaus — ein alter Messfehler
+`probe-parkfrei` (A): `th49_rettungswagen` (11,5|−121) steckte im Skyline-Turm (10|−119), Kasten x 6…14 / z −123…−115.
+Die Wagen standen einmal richtig UNTER dem Vordach der Notaufnahme (KZ+8, „dafür ist es gebaut"). Eine spätere Runde las
+den Hüllkasten MIT Vordach (z −143,7…−125,6) als Baukörper, meldete „6 m in der Notaufnahme" und schob sie auf KZ+15 —
+in den Turm. Der Kollider sagt es richtig: Baukörper bis z −132,5, darüber 6,9 m Vordach. Jetzt KZ+8,3.
+**Lehre:** Hüllbox ≠ Baukörper. Ein Vordach, ein Portikus, ein Ausleger gehören zur Box, aber nicht zur Wand.
+
+### 5. Die Sonden selbst — dreimal nachgeschärft
+1. **Unsichtbar ≠ nicht da.** Die ersten Läufe fanden Brunnen, Bank und Vogeltränke im Parkplatz NICHT — die
+   Entfernungs-Ausblendung (`_lodM`) und die Gruppen-Sichtprüfung (`_gsAus`) hatten sie ausgeschaltet, weil die Figur am
+   Start steht. Die Sonden schalten beides für die Messung ein und danach zurück.
+2. **Ein Objekt ist kein Quader.** Mit einer Gesamtbox je Objekt „steckten" die Rettungswagen unter dem Vordach in der
+   Notaufnahme; Hofasphalt und Markierung (0…6 cm) zählten als Hindernis. Jetzt Teil für Teil, nur Bodenhöhe.
+3. **Zusammengefasste Parkwagen** haben keinen eigenen Grundriss mehr → `probe-parkfrei` lädt mit `?ohneZF`.
+
+### Zahlen
+| Messung | vorher | nachher |
+|---|---|---|
+| probe-moebelversatz: gerade Grösse versetzt > 0,3 m · ragt > 0,3 m | 30/30 · 6 | **0 · 0** |
+| probe-moebelversatz: ungerade versetzt/ragt (Zimmerfarn) | 2 · 2 | **0 · 0** |
+| probe-villamoebel: in Wand · in Möbel · ragt | 1 · 0 · 0 | **0 · 0 · 0** |
+| probe-parkfrei A: geparkte Autos mit Hindernis im Grundriss | Taxi×Bushalte, Taxi×Rathaus, Rettungswagen×Turm (+ SUV/Kompakt×Rathaus, nicht `fest`) | **0 von 15** |
+| probe-parkfrei B: Hindernisse auf Parkplätzen | Bahnhof 8 (Rathaus, Bahnhof, Brunnen, Bank, Tränke, 2 Masten, Automat) · Quartiersplatz 2 | **nur die 2 Randlaternen (gewollt)** |
+| th-autoboden: Grün/Erde/Objekt · Verkehr grün · Polizei · Parkplätze ohne Zufahrt/schief/raus | – | 0/0/0 · 0,2 % · 0/120 · 0/0/0 (Bahnhof-Zufahrt über das neue Band) |

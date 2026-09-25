@@ -991,8 +991,8 @@ function wegVonStrasse(x,z){
      [25,97] war die MITTE des Parkplatzes: `var PX=25,PZ=97,PW=36,PD=16` — und
      zwar mitten in der 5,6 m breiten Fahrgasse zwischen den beiden Stellreihen.
      Ein 6,5 m hoher Mast mit 0,36 m Fuss dort, wo rangiert wird. Jetzt am Ostende
-     der Suedreihe: die Stellplaetze reichen von x 9,6 bis 40,4 (`R0 + N*RB`), der
-     Belag bis 43 — dazwischen liegt der Reststreifen, auf dem eine Laterne in
+     der Suedreihe: die Stellplaetze reichen von x 14,8 bis 40,0 (`R0 + NS*RB`, Runde 101 neu
+     eingepasst), der Belag bis 43 — dazwischen liegt der Reststreifen, auf dem eine Laterne in
      jedem echten Parkhaus steht.
      [0,146] war die MITTE DES SEES. `wegVonStrasse()` haelt Laternen aus der
      Fahrbahn, aber nicht aus dem Wasser; die Uferlinie ist `seeR(a)` = 9,1…16,9 m,
@@ -2153,29 +2153,46 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     (function parkplatz(){
       /* 🅿️ User: „parkplatz viel groesser, man sollte platz haben zum fahren hinten
          vorne und seite und eine ein- und ausfahrt".
-         Die Nachbarn sind IM SPIEL gemessen (nicht geraten): bei z=105.6 beginnt die
-         Gebaeudezeile vor der Ringstrasse (Turmbau x 30.4..41.6), suedlich bei z=88.1
-         endet das Gebaeude (26,80), oestlich bei x=44.5 steht die Litfass-Gruppe.
-         Der Platz nutzt das Maximum dazwischen: 36 x 16 (vorher 26 x 18 mit Bauten
-         darin). Layout: Stellreihen an Nord- und Suedkante, 5.6 m Fahrgasse in der
-         Mitte, Ein- UND Ausfahrt als Asphaltbaender durch die Gebaeudeluecke
-         (x 5.6..30.4) zur Ringstrasse, mit Pfeilen und Bordstein-Luecken. */
-      var PX=25,PZ=97,PW=36,PD=16;
-      var pl=new THREE.Mesh(new THREE.PlaneGeometry(PW,PD),strMatH.clone());
-      pl.rotation.x=-Math.PI/2;pl.position.set(PX,-0.004,PZ);pl.receiveShadow=true;scene.add(pl);
+         🧭 RUNDE 101 (User: „platzierung passend machen") — NEU EINGEPASST. Der Platz war 36 x 16
+         (x 7…43, z 89…105) nach Nachbarn gemessen, die es so nicht mehr gibt; spaeter kamen
+         Bahnhof th41, Bahnsteig, Fahrleitung und das Rathaus-Nachmessen dazu. Gemessen
+         (probe-parkfrei, probe-wasda, Spielfahrt r101-34):
+           * Bahnhof th41 reicht bis x 10,4 — der Platz lag 3,4 m darin, der Kassenautomat (6,8|103,6) IM Haus;
+           * Rathaus-Sockel bis z 90,0 — Suedreihe 1 m darin: SUV, Kompakt und das Taxi am Taxistand
+             steckten 0,5 m im Sockel, zwei Baeume des Gruenstreifens standen IM Rathaus;
+           * der Warteplatz mit Trinkbrunnen, Bank und Vogeltraenke (17,5|98, aelter als der grosse Platz)
+             lag mitten in Fahrgasse und Nordreihe;
+           * Einfahrt x 8…14 lief unter Bahnsteig und Bahnsteigdach durch, in der Ausfahrt x 22…28 stand
+             der Fahrleitungsmast (24|110) — und BEIDE Baender waren zugeparkt (GT auf Nordplatz 0,
+             Limousine auf Nordplatz 5).
+         Jetzt: Platz x 11…43, z 90,6…104,2. Beide Zufahrten im einzigen freien Streifen zum Ring
+         (x 32…42,5: zwischen Signal x 29 und Signal x 44, ohne Mast und Bahnsteig); die Nordreihe
+         endet davor (6 Plaetze). Der Warteplatz ist die Insel an der Bahnhofswand (x 11…14,6) —
+         dort wartet man ohnehin. Der Behindertenplatz ist der Platz naechst dem Bahnhof. */
+      var PX=27,PZ=97.4,PW=32,PD=13.6;
+      var INS1=14.6;                                         /* Warteplatz-Insel x 11…14,6 */
+      var RB=2.8,RT=4.5,R0=14.8,NS=9,NN=6;                   /* Stellplaetze: Sued 9, Nord 6 (vor den Zufahrten) */
+      /* x 40…43 hinter der Suedreihe bleibt Reststreifen: dort steht die Laterne (41,7|91,6) aus der Laternenkette */
+      var EIN=34.5,AUS=40,BB=5;                              /* Zufahrtsbaender x 32…37 und 37,5…42,5 */
+      var ZS=PZ-(PD/2-RT/2),ZN=PZ+(PD/2-RT/2);               /* Mitte der Sued- und der Nordreihe */
+      window._bahnPP={PX:PX,PZ:PZ,PW:PW,PD:PD,INS0:PX-PW/2,INS1:INS1,R0:R0,RB:RB,RT:RT,NS:NS,ZS:ZS,ZN:ZN,
+        platz:function(seite,idx){return [R0+RB/2+idx*RB,seite<0?ZS:ZN];}};   /* Mitte eines Stellplatzes — fuer Wagen anderer Abschnitte */
+      var pl=new THREE.Mesh(new THREE.PlaneGeometry(PX+PW/2-INS1,PD),strMatH.clone());
+      pl.rotation.x=-Math.PI/2;pl.position.set((INS1+PX+PW/2)/2,-0.004,PZ);pl.receiveShadow=true;scene.add(pl);
       var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
       (window._markMats=window._markMats||[]).push(mM);
-      var RB=2.8,RT=5.2,N=11,R0=PX-(N*RB)/2;
-      [-1,1].forEach(function(seite){                       /* Reihen an den Kanten */
-        var zr=PZ+seite*(PD/2-RT/2);
-        for(var b=0;b<=N;b++){
+      [[ZS,NS],[ZN,NN]].forEach(function(r){               /* Reihen an den Kanten */
+        for(var b=0;b<=r[1];b++){
           var st=new THREE.Mesh(new THREE.PlaneGeometry(0.2,RT),mM);
-          st.rotation.x=-Math.PI/2;st.position.set(R0+b*RB,0.004,zr);scene.add(st);}});
+          st.rotation.x=-Math.PI/2;st.position.set(R0+b*RB,0.004,r[0]);scene.add(st);}});
       var AF=[0xc23b32,0x2f6fb8,0xe8e4dc,0x3a3f47,0x4e9a5a,0xd8a83a,0x8a5ad0],parkKaesten=[];
-      (window._parkplaetze=window._parkplaetze||[]).push({n:"Bahnhof",x:PX,z:PZ,w:PW,d:PD,achse:"z"});
-      for(var a=0;a<10;a++){
-        var seite=a%2?1:-1, idx=(a*3+1)%N;
-        var ax=R0+RB/2+idx*RB, az=PZ+seite*(PD/2-RT/2);
+      /* angemeldet wird nur die Stellflaeche — die Insel ist Gehweg, kein Parkplatz */
+      (window._parkplaetze=window._parkplaetze||[]).push({n:"Bahnhof",x:(INS1+PX+PW/2)/2,z:PZ,w:PX+PW/2-INS1,d:PD,achse:"z"});
+      /* Belegung: Sued 0 = Behindertenplatz, Sued 3 = Lieferwagen der Werkstatt, Sued 7/8 = Taxistand, Nord 4 frei */
+      var BELEGT=[[-1,1],[1,0],[-1,2],[1,1],[-1,4],[1,2],[-1,5],[1,3],[-1,6],[1,5]];
+      for(var a=0;a<BELEGT.length;a++){
+        var seite=BELEGT[a][0],idx=BELEGT[a][1];
+        var ax=R0+RB/2+idx*RB, az=seite<0?ZS:ZN;
         var g=new THREE.Group();
         var k=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.85,4.0),new THREE.MeshStandardMaterial({color:AF[(a*3)%AF.length],roughness:0.35,metalness:0.3}));
         k.position.y=0.75;k.castShadow=true;g.add(k);
@@ -2211,56 +2228,59 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
             m.userData.datei=PARK_MODELLE[i%PARK_MODELLE.length];
             scene.remove(K.g);scene.add(m);if(window._zfStatisch)window._zfStatisch(m);});});
       })(0);
-      /* Bordstein aussen; Sued-Kante mit zwei Luecken fuer Ein-/Ausfahrt */
-      var kM=betMat(0xd0cdc4,0.9);
-      var EIN=11,AUS=25;                                    /* beide in der Gebaeudeluecke 5.6..30.4 */
+      /* Bordstein ringsum (0,5 m, ganz AUSSERHALB von Bahnhof und Rathaus); Nordkante mit EINER Luecke fuer
+         beide Zufahrten */
+      var kM=betMat(0xd0cdc4,0.9),KB=0.5;
       function bord(x,z,w,d){var kb=new THREE.Mesh(new THREE.BoxGeometry(w,0.18,d),kM);
         kb.position.set(x,0.09,z);kb.receiveShadow=true;scene.add(kb);}
-      bord(PX,PZ-PD/2-0.4,PW+1.6,0.8);
-      bord(PX-PW/2-0.4,PZ,0.8,PD+1.6); bord(PX+PW/2+0.4,PZ,0.8,PD+1.6);
-      var s0=PX-PW/2,s1=EIN-3,s2=EIN+3,s3=AUS-3,s4=AUS+3,s5=PX+PW/2;
-      bord((s0+s1)/2,PZ+PD/2+0.4,s1-s0,0.8);
-      bord((s2+s3)/2,PZ+PD/2+0.4,s3-s2,0.8);
-      bord((s4+s5)/2,PZ+PD/2+0.4,s5-s4,0.8);
-      /* Zufahrtsbaender bis zur Ringstrassen-Fahrbahn (z=113.5) + Pfeile */
-      [EIN,AUS].forEach(function(zx,zi){
-        var band=new THREE.Mesh(new THREE.PlaneGeometry(6,9),strMatH.clone());
-        band.rotation.x=-Math.PI/2;band.position.set(zx,-0.0035,PZ+PD/2+4.6);band.receiveShadow=true;scene.add(band);
+      var X0=PX-PW/2,X1=PX+PW/2,Z0=PZ-PD/2,Z1=PZ+PD/2,L0=EIN-BB/2,L1=AUS+BB/2;
+      bord(PX,Z0-KB/2,PW+2*KB,KB);
+      bord(X0-KB/2,PZ,KB,PD);bord(X1+KB/2,PZ,KB,PD);
+      bord((X0-KB+L0)/2,Z1+KB/2,L0-X0+KB,KB);
+      bord((L1+X1+KB)/2,Z1+KB/2,X1+KB-L1,KB);
+      /* Insel-Kante zwischen Warteplatz und Stellflaeche */
+      var ik=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.14,PD),kM);ik.position.set(INS1+0.1,0.07,PZ);ik.receiveShadow=true;scene.add(ik);
+      /* Zufahrtsbaender vom Platz bis zur Ringstrassen-Fahrbahn (z 113,5) + Pfeile: EIN hinein (Sued), AUS hinaus (Nord) */
+      [EIN,AUS].forEach(function(zx,zi){var lg=113.6-Z1;
+        var band=new THREE.Mesh(new THREE.PlaneGeometry(BB,lg),strMatH.clone());
+        band.rotation.x=-Math.PI/2;band.position.set(zx,-0.0035,Z1+lg/2);band.receiveShadow=true;scene.add(band);
         var pf=new THREE.Mesh(new THREE.PlaneGeometry(0.5,2.4),mM);
-        pf.rotation.x=-Math.PI/2;pf.position.set(zx,0.005,PZ+PD/2+3.4);scene.add(pf);
+        pf.rotation.x=-Math.PI/2;pf.position.set(zx,0.005,Z1+3.0);scene.add(pf);
         var sp=new THREE.Mesh(new THREE.PlaneGeometry(1.3,0.5),mM);
         sp.rotation.x=-Math.PI/2;sp.rotation.z=zi?Math.PI/4:-Math.PI/4;
-        sp.position.set(zx,0.005,PZ+PD/2+2.2);scene.add(sp);});
-      /* Gruenstreifen + Baumreihe an der Nordkante */
-      var gruen=new THREE.Mesh(new THREE.PlaneGeometry(PW-4,1.6),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
-      gruen.rotation.x=-Math.PI/2;gruen.position.set(PX,0.006,PZ-PD/2-1.6);gruen.receiveShadow=true;scene.add(gruen);
-      for(var tb=0;tb<4;tb++)baum2(PX-13.5+tb*9,PZ-PD/2-1.7,0.62);
+        sp.position.set(zx,0.005,Z1+(zi?4.0:1.8));scene.add(sp);});
+      /* Gruenstreifen + Baumreihe an der Suedkante — nur bis vor das Rathaus (x 29,5) */
+      var GX1=29.0,gruen=new THREE.Mesh(new THREE.PlaneGeometry(GX1-X0,1.7),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
+      gruen.rotation.x=-Math.PI/2;gruen.position.set((X0+GX1)/2,0.006,Z0-KB-0.85);gruen.receiveShadow=true;scene.add(gruen);
+      [15.5,21,26.5].forEach(function(bx){baum2(bx,Z0-KB-0.85,0.62);});
       /* 🅿️ Ausstattung wie auf einem echten Parkplatz (User: "parkplaetze schoener"):
-         Richtungspfeile in der Einbahn-Fahrgasse, ein markierter Behindertenplatz,
+         Richtungspfeile in der Fahrgasse (zur Ausfahrt), ein markierter Behindertenplatz,
          Beleuchtung und ein Kassenautomat an der Einfahrt. */
       var gasseP=new THREE.Shape();
       gasseP.moveTo(-0.28,-1.5);gasseP.lineTo(0.28,-1.5);gasseP.lineTo(0.28,0.45);
       gasseP.lineTo(0.8,0.45);gasseP.lineTo(0,1.5);gasseP.lineTo(-0.8,0.45);
       gasseP.lineTo(-0.28,0.45);gasseP.closePath();
       var gG=new THREE.ShapeGeometry(gasseP);
-      [14,20,26,32].forEach(function(ax9){                /* Einbahn: Einfahrt 11 → Ausfahrt 25 */
+      [19,25,31].forEach(function(ax9){                   /* Richtung Ausfahrt (Osten) */
         var pf9=new THREE.Mesh(gG,mM);
         pf9.rotation.x=-Math.PI/2;pf9.rotation.z=-Math.PI/2;   /* Spitze nach +x */
         pf9.scale.setScalar(0.72);                             /* in voller Groesse dominierten sie den Platz */
         pf9.position.set(ax9,0.006,PZ);scene.add(pf9);});
-      /* Behindertenstellplatz: blaue Flaeche mit weissem Zeichen, erster Platz */
+      /* Behindertenstellplatz: blaue Flaeche mit weissem Zeichen, Suedplatz 0 (naechst dem Bahnhof) */
       var bhF=new THREE.Mesh(new THREE.PlaneGeometry(RB-0.3,RT-0.3),
         new THREE.MeshStandardMaterial({color:0x2f5fae,roughness:0.9}));
-      bhF.rotation.x=-Math.PI/2;bhF.position.set(R0+RB/2,0.005,PZ-(PD/2-RT/2));scene.add(bhF);
+      bhF.rotation.x=-Math.PI/2;bhF.position.set(R0+RB/2,0.005,ZS);scene.add(bhF);
       var bcv=document.createElement("canvas");bcv.width=bcv.height=64;
       var bcx=bcv.getContext("2d");bcx.fillStyle="#ffffff";bcx.font="52px sans-serif";
       bcx.textAlign="center";bcx.textBaseline="middle";bcx.fillText("♿",32,34);
       var bhZ=new THREE.Mesh(new THREE.PlaneGeometry(1.8,1.8),
         new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(bcv),transparent:true}));
-      bhZ.rotation.x=-Math.PI/2;bhZ.position.set(R0+RB/2,0.0065,PZ-(PD/2-RT/2));scene.add(bhZ);
+      bhZ.rotation.x=-Math.PI/2;bhZ.position.set(R0+RB/2,0.0065,ZS);scene.add(bhZ);
       /* Beleuchtung + Kassenautomat — prozedural: `bau()` ist in diesem Abschnitt
-         noch nicht definiert (es entsteht erst weiter unten mit den Haeusern). */
-      [PX-12,PX+12].forEach(function(lx9){
+         noch nicht definiert (es entsteht erst weiter unten mit den Haeusern).
+         ⚠️ Runde 101 (probe-parkfrei): die Masten standen bei x PX±12 MITTEN in der Fahrgasse
+         (13|97 gleich hinter der alten Einfahrt). Jetzt auf den Bordsteinen der beiden Stirnseiten. */
+      [X0-KB/2,X1+KB/2].forEach(function(lx9){
         var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.16,5.2,8),metallM(0x4a4f55));
         mast.position.set(lx9,2.6,PZ);mast.castShadow=true;scene.add(mast);
         var kopf=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.22,0.5),metallM(0x3a3f45));
@@ -2271,14 +2291,17 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         /* dorfFenster entsteht erst weiter unten — deshalb erst pruefen, dann eintragen. */
         if(typeof dorfFenster!=="undefined"&&dorfFenster)dorfFenster.push(lamp.material);
         else (window._nachtLampenSpaet=window._nachtLampenSpaet||[]).push(lamp.material);});
-      var aut=new THREE.Mesh(new THREE.BoxGeometry(0.55,1.45,0.42),stdMat(0x6a7078,0.6));
-      aut.position.set(EIN-4.2,0.73,PZ+PD/2-1.4);aut.castShadow=true;scene.add(aut);
+      /* Kassenautomat an der Einfahrt: auf dem Bordstein hinter Nordplatz 5, neben dem Einfahrtsband,
+         Gesicht zur Einfahrt (+x). War bei (6,8|103,6) — im Bahnhofsgebaeude. */
+      var AX=R0+NN*RB,AZ=Z1+KB/2;   /* auf dem Nord-Bordstein, gleich westlich der Einfahrt */
+      var aut=new THREE.Mesh(new THREE.BoxGeometry(0.42,1.45,0.55),stdMat(0x6a7078,0.6));
+      aut.position.set(AX,0.73,AZ);aut.castShadow=true;scene.add(aut);
       var autF=new THREE.Mesh(new THREE.PlaneGeometry(0.4,0.5),
         new THREE.MeshStandardMaterial({color:0x22262c,roughness:0.3}));
-      autF.position.set(EIN-4.2,1.05,PZ+PD/2-1.185);scene.add(autF);
+      autF.rotation.y=Math.PI/2;autF.position.set(AX+0.215,1.05,AZ);scene.add(autF);
       /* Keine Voll-Kollider: nur die beiden Stellreihen, die Fahrgasse bleibt frei. */
-      addSolid(PX,PZ-(PD/2-RT/2),N*RB+0.6,RT*0.9);
-      addSolid(PX,PZ+(PD/2-RT/2),N*RB+0.6,RT*0.9);
+      addSolid(R0+NS*RB/2,ZS,NS*RB+0.6,RT*0.9);
+      addSolid(R0+NN*RB/2,ZN,NN*RB+0.6,RT*0.9);
     })();
     /* 📱 Auf dem Handy zwei Drittel der Streu-Objekte — die Landschaft bleibt voll,
        aber es sind hunderte Draw-Calls weniger. */
@@ -8505,7 +8528,11 @@ setTimeout(function baueGebaeude(){
       bau("th5_bushaltestelle.glb",3.2,WX-11.5,0,17,Math.PI/2,false,null);
       bau("th5_telefonzelle.glb",2.4,WX-11.5,0,22,0,false,null);
       bau("th6_brunnen_trog.glb",1.1,WX+2,0,0,0,false,null);  addSolid(WX+2,0,3,3);
-      bau("th3_bushalte.glb",3.0,WX-8,0,-10,Math.PI/2,false,null);
+      /* ⚠️ Runde 101 (Spielfahrt r101-35): die Bushalte-Tafel stand bei (WX-8|-10) = (-64|-10) IM Stellplatz
+         des Taxis — Wagen und Tafel ineinander (probe-parkfrei). Runde 94 hatte Wartehaeuschen und
+         Telefonzelle verlegt, die Tafel uebersehen. Jetzt hinter der Telefonzelle auf dem Gruenstreifen
+         (x -67,5 wie die beiden, z 24,2…27,5; frei laut probe-wasda). */
+      bau("th3_bushalte.glb",3.0,WX-11.5,0,25.9,Math.PI/2,false,null);
       bau("th6_stromkasten.glb",1.5,WX+6,0,-16,0,false,null);
       [-22,-14,-6,2,10,18].forEach(function(pz,i){        // Hecke als Platzkante
         bau("th6_hecke_modul.glb",1.3,WX+9,0,pz,0,false,null);});
@@ -10144,29 +10171,35 @@ setTimeout(function baueGebaeude(){
       bau("th35_laterne_schmiede.glb",4.2,5.5,0,93.3,0,false,null,true);
       bau("th35_pflanzschale.glb",0.8,-3.3,0,93.1,0,false,null,true);
       bau("th35_pflanzschale.glb",0.8,3.3,0,93.1,0,false,null,true);
-      /* Ostflaeche neben dem Bahnhof: kleiner Warteplatz mit Brunnen und Bank */
-      var op=new THREE.Mesh(new THREE.PlaneGeometry(8,7),betMat(0xd6cfc0,0.9));
-      op.rotation.x=-Math.PI/2;op.position.set(17.5,-0.001,98);op.receiveShadow=true;scene.add(op);
-      bau("th36_trinkbrunnen.glb",1.6,16,0,98,0,false,null,true);
-      bau("th35_bank_zier.glb",1.0,19.5,0,98,-Math.PI/2,false,null,true);
-      bau("th36_vogeltraenke.glb",1.1,15,0,100.3,0,false,null,true);
+      /* Warteplatz mit Brunnen und Bank. ⚠️ Runde 101: lag bei (17,5|98) — seit der Parkplatz vergroessert
+         wurde MITTEN in dessen Fahrgasse und Nordreihe (probe-parkfrei, Spielfahrt r101-34). Jetzt die Insel
+         an der Bahnhofs-Ostwand (x 11…14,6), die der Parkplatz dafuer freilaesst (window._bahnPP). */
+      var BP=window._bahnPP||{INS0:11,INS1:14.6,PZ:97.4,PD:13.6},WX9=(BP.INS0+BP.INS1)/2;
+      var op=new THREE.Mesh(new THREE.PlaneGeometry(BP.INS1-BP.INS0,BP.PD),betMat(0xd6cfc0,0.9));
+      op.rotation.x=-Math.PI/2;op.position.set(WX9,0.002,BP.PZ);op.receiveShadow=true;scene.add(op);
+      bau("th36_trinkbrunnen.glb",1.6,WX9,0,BP.PZ-2.4,0,false,null,true);
+      bau("th35_bank_zier.glb",1.0,WX9,0,BP.PZ+1.2,-Math.PI/2,false,null,true);
+      bau("th36_vogeltraenke.glb",1.1,WX9,0,BP.PZ+4.6,0,false,null,true);
       /* 🚕 TAXISTAND (Runde 92). Die "Taxibucht" lag auf (11|91,4) — das ist Platz 0 der
          Suedreihe des Bahnhofs-Parkplatzes, der BEHINDERTENSTELLPLATZ (blaue Flaeche, th-autoboden
          meldete "wasser #436ebd" unter dem Taxi). Jetzt Plaetze 9 und 10 derselben Reihe (die
          einzigen freien, GEMESSEN: belegt sind 1,2,3,7,8), gelb markiert, Schriftzug in der Gasse. */
       var tM=new THREE.MeshStandardMaterial({color:0xe8b73a,roughness:0.8});tM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(tM);   /* Runde 97: gelb, nicht _markMats (dort nach dem ersten Abend grau) */
-      var tl=new THREE.Mesh(new THREE.PlaneGeometry(5.8,0.2),tM);
-      tl.rotation.x=-Math.PI/2;tl.position.set(37.6,0.0045,94.1);scene.add(tl);
+      /* Runde 101: Taxistand = die letzten zwei Plaetze der Suedreihe des neu eingepassten Platzes (window._bahnPP) */
+      var TP=window._bahnPP||{R0:14.8,RB:2.8,RT:4.5,NS:10,ZS:92.85},TX=TP.R0+(TP.NS-1)*TP.RB,TZ=TP.ZS+TP.RT/2;
+      window._taxiStand=[TP.R0+(TP.NS-1.5)*TP.RB,TP.ZS];
+      var tl=new THREE.Mesh(new THREE.PlaneGeometry(2*TP.RB-0.2,0.2),tM);
+      tl.rotation.x=-Math.PI/2;tl.position.set(TX,0.0045,TZ);scene.add(tl);
       var cv=document.createElement("canvas");cv.width=128;cv.height=48;var c=cv.getContext("2d");
       c.fillStyle="#e2c23a";c.font="bold 34px sans-serif";c.textAlign="center";c.fillText("TAXI",64,37);
       var tm=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1),
         new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
-      tm.rotation.x=-Math.PI/2;tm.position.set(37.6,0.006,95.2);   /* ohne z-Drehung: lesbar aus der Gasse (Bild nach-bahnhof stand kopf) */scene.add(tm);
+      tm.rotation.x=-Math.PI/2;tm.position.set(TX,0.006,TZ+1.1);   /* ohne z-Drehung: lesbar aus der Gasse (Bild nach-bahnhof stand kopf) */scene.add(tm);
     })();
     /* ⚠️ MODELLACHSE GEMESSEN (GLB-Boxen): th7_taxi und th7_lieferwagen sind LAENGS Z (4,3 / 4,8 m),
        th_auto_* laengs x. Mit pi/2 lagen Taxi und Lieferwagen quer ueber 1,5 Stellplaetze (Bild
        nach-bahnhof) — die Bodenmessung sah das nicht, weil alles darunter Asphalt war. */
-    bau("th7_taxi.glb",1.7,36.2,0,91.6,0,false,function(w){w.userData.fest=1;},true);   /* Taxistand, Platz 9, Nase in z wie die Stellplaetze */
+    bau("th7_taxi.glb",1.7,window._taxiStand[0],0,window._taxiStand[1],0,false,function(w){w.userData.fest=1;},true);   /* Taxistand, vorletzter Suedplatz, Nase in z wie die Stellplaetze */
     /* ⚠️ (12|55) war FAHRBAHN der Suedstrasse; `wegVonStrasse` schob den Wagen daraufhin bis
        (10|44,5) — in den Vorgarten. Jetzt im Parkstreifen (Platz 7,2…12,3 des Segments 20),
        laengs, Nase nach Westen wie die Spur daneben; ohneSchutz, damit ihn nichts wegschiebt. */
@@ -10199,8 +10232,10 @@ setTimeout(function baueGebaeude(){
     /* ⚠️ (4|80) war Rasen, und der Wagen steckte mit der vorderen Haelfte in der ueberdachten
        Bude davor (th-umfeld: Kollider x 3…8 / z 75…80,6, Pfosten (4,3|78,8) im Wagenkasten).
        Oestlich der Werkstatt liegen nur 3 m Rasen bis zum Gehweg — kein Platz fuer einen Hof.
-       Jetzt Platz 5 der Suedreihe des Bahnhofs-Parkplatzes (frei, gemessen wie beim Taxi). */
-    bau("th7_lieferwagen.glb",2.5,25,0,91.6,0,false,function(w){w.userData.fest=1;},true);      /* Platz 5, laengs z */
+       Jetzt Platz 5 der Suedreihe des Bahnhofs-Parkplatzes (frei, gemessen wie beim Taxi).
+       Runde 101: der Platz ist neu eingepasst — Suedplatz 3, aus window._bahnPP statt fester Zahl. */
+    var _lw=window._bahnPP?window._bahnPP.platz(-1,3):[24.6,92.85];
+    bau("th7_lieferwagen.glb",2.5,_lw[0],0,_lw[1],0,false,function(w){w.userData.fest=1;},true);      /* laengs z */
     bau("th6_papierkorb.glb",0.9,2,0,90,0,false);
     /* ⚠️ -35 statt -33: die Westkante des Wirtshauses liegt auf x -32,9, die
        Laterne stand also 10 cm davor. Der Entzerrer schob sie daraufhin 1,5 m
@@ -10607,8 +10642,14 @@ setTimeout(function baueGebaeude(){
     for(var w9=0;w9<2;w9++)
       /* ⚠️ KZ+8 setzte beide Wagen mit 6 m IN die Notaufnahme (Kasten
          z -143,7…-125,6). KZ+15 stellt sie davor auf den Vorfahrtsplatz —
-         1,6 m vor der Fassade, wie an einer echten Rettungszufahrt. */
-      fest("th49_rettungswagen.glb",2.68,KX+11.5+w9*6.0,KZ+15,-Math.PI/2);
+         1,6 m vor der Fassade, wie an einer echten Rettungszufahrt.
+         ⚠️⚠️ RUNDE 101 — DAS WAR EIN MESSFEHLER, und er stellte den ersten Wagen IN EIN HOCHHAUS:
+         der „Kasten" z -143,7…-125,6 ist die Huellbox MIT Vordach; der Baukoerper (Kollider oben,
+         16 x 11) endet bei z -132,5, darueber liegen 6,9 m Vordach — genau dafuer war KZ+8 gedacht
+         (siehe Kommentar davor: lichte Hoehe 4,40). Bei KZ+15 (z -124,4…-117,7) stand Wagen 1 im
+         Skyline-Turm (10|-119), Kasten x 6…14 / z -123…-115 (probe-parkfrei). Jetzt KZ+8,3: Heck 1,5 m
+         vor dem Baukoerper, ganz auf dem Hof (bis z -124), unter dem Vordach. */
+      fest("th49_rettungswagen.glb",2.68,KX+11.5+w9*6.0,KZ+8.3,-Math.PI/2);
     /* Wartebaenke vor dem Klinikeingang (Vordachkante liegt auf z -126,0).
        Raster 1,90 wie im Generator vermerkt. */
     for(var b9=0;b9<3;b9++)
@@ -13472,7 +13513,7 @@ function applyFurn(id,gx,gy,rot,fid){
       for(var bl=0;bl<5;bl++){var blatt=new THREE.Mesh(new THREE.SphereGeometry(0.09,7,5),stdMat(0x3aa03a,0.55));
         var ba=bl/5*6.283;blatt.position.set(Math.cos(ba)*0.12,0.3+bl*0.06,Math.sin(ba)*0.12);blatt.scale.set(1.4,0.5,0.6);blatt.rotation.y=ba;kr.add(blatt);}
       kr.position.set(-0.35+gx2*0.7,0.05,-0.35+gy2*0.7);kr.scale.setScalar(0.06);gg.add(kr);krauts.push(kr);}
-    gg.position.set(cx(gx),0.01,cz(gy));scene.add(gg);
+    var _mg=furnMitte(def,gx,gy,rot);gg.position.set(_mg[0],0.01,_mg[1]);scene.add(gg);
     furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:gg,busy:false,grow:1,wachs:0,krauts:krauts,glow:pl2,lv:arguments[5]||1});
     return;}
   if(def.teich){ // Gartenteich: Wasser + Steinrand + Seerose
@@ -13487,7 +13528,7 @@ function applyFurn(id,gx,gy,rot,fid){
     blatt9.position.set(0.5,0.13,-0.4);tg.add(blatt9);
     var blume9=new THREE.Mesh(new THREE.SphereGeometry(0.09,8,6),stdMat(0xf0a8c8,0.5));
     blume9.position.set(0.5,0.2,-0.4);tg.add(blume9);
-    tg.position.set(cx(gx),0.01,cz(gy));scene.add(tg);
+    var _mt=furnMitte(def,gx,gy,rot);tg.position.set(_mt[0],0.01,_mt[1]);scene.add(tg);
     furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:tg,busy:false,teich:1,lv:arguments[5]||1});
     return;}
   if(def.stereo){ // Stereoanlage: Boombox auf Ständer, leuchtendes Display
@@ -13501,7 +13542,7 @@ function applyFurn(id,gx,gy,rot,fid){
       memb.rotation.x=Math.PI/2;memb.position.set(sx,0.8,0.22);sg.add(memb);});
     var disp=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.12,0.02),new THREE.MeshStandardMaterial({color:0x30e0c0,emissive:0x20c0a0,emissiveIntensity:1.1}));
     disp.position.set(0,0.95,0.21);sg.add(disp);
-    sg.position.set(cx(gx),0.01,cz(gy));sg.rotation.y=rot*Math.PI/2;scene.add(sg);
+    var _ms=furnMitte(def,gx,gy,rot);sg.position.set(_ms[0],0.01,_ms[1]);sg.rotation.y=rot*Math.PI/2;scene.add(sg);
     furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:sg,busy:false,stereo:1,lv:arguments[5]||1});
     return;}
   if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
@@ -13512,7 +13553,7 @@ function applyFurn(id,gx,gy,rot,fid){
     for(var bx=0;bx<3;bx++)for(var by=0;by<3;by++){
       var sp3=new THREE.Mesh(new THREE.SphereGeometry(0.11,8,6),stdMat(0x3a8a3a,0.6));
       sp3.position.set(-0.5+bx*0.5,0.24,-0.5+by*0.5);sp3.scale.setScalar(0.05);bg.add(sp3);sprossen.push(sp3);}
-    bg.position.set(cx(gx),0.01,cz(gy));scene.add(bg);
+    var _mb=furnMitte(def,gx,gy,rot);bg.position.set(_mb[0],0.01,_mb[1]);scene.add(bg);
     var brec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:bg,busy:false,beet:1,wachs:0,sprossen:sprossen,lv:arguments[5]||1};
     furn.push(brec);return;}
   if(def.pet){ // Hund läuft frei mit, nicht als Möbel im Raster
@@ -13528,15 +13569,16 @@ function applyFurn(id,gx,gy,rot,fid){
   /* 🩹 Schwarm-4: wurde der Datensatz waehrend des Ladens geloescht (Verkauf/Umbau/loadSnapshot),
      haengte der Callback trotzdem ein unantippbares Geister-Modell (+ ggf. PointLight) in die Szene. */
   loadTH(id,function(tpl){if(!tpl||furn.indexOf(rec)<0)return;
-    var m=tpl.clone(true);m.position.set(cx(gx),0.012,cz(gy));m.rotation.y=rot*Math.PI/2;
+    var _mm=furnMitte(def,gx,gy,rot);
+    var m=tpl.clone(true);m.position.set(_mm[0],0.012,_mm[1]);m.rotation.y=rot*Math.PI/2;
     furnMass(m,def);
     // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Grösse passt (1 Einheit = 1m, Zelle 2m)
-    scene.add(m);rec.mesh=m;plopFx(m,cx(gx),cz(gy));
+    scene.add(m);rec.mesh=m;plopFx(m,_mm[0],_mm[1]);
     if(rec.lv>1){var cv7=document.createElement("canvas");cv7.width=128;cv7.height=64;var c7=cv7.getContext("2d");
       c7.font="44px sans-serif";c7.textAlign="center";c7.fillText(rec.lv>2?"⭐⭐":"⭐",64,48);
       var sp7=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv7),transparent:true,depthWrite:false}));
       sp7.scale.set(1.1,0.55,1);sp7.position.y=1.6;m.add(sp7);}
-    if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,def.light===2?13:7,2);pl.position.set(cx(gx),def.light===2?4.2:1.7,cz(gy));scene.add(pl);rec.plight=pl;} /* 💡 Kandelaber leuchtet hoch+weit, weicher Rand (decay 2) */
+    if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,def.light===2?13:7,2);pl.position.set(_mm[0],def.light===2?4.2:1.7,_mm[1]);scene.add(pl);rec.plight=pl;} /* 💡 Kandelaber leuchtet hoch+weit, weicher Rand (decay 2) */
   });}
 /* Groesse und Bodenhoehe eines Moebelmodells. Steht hier EINMAL, weil die Bau-Vorschau
    (refreshGhost) dasselbe Modell in derselben Groesse zeigen muss — zwei Kopien dieser
@@ -13550,7 +13592,11 @@ function furnMass(m,def){
     if(!isFinite(k9)||k9<=0)k9=1;
     m.scale.setScalar(k9);
     var bb10=new THREE.Box3().setFromObject(m);
-    m.position.y=-bb10.min.y+0.012;}
+    m.position.y=-bb10.min.y+0.012;
+    /* Grundriss auf die Zellmitte: der Zimmerfarn hat seinen Drehpunkt 0,46 m neben der
+       Pflanze und ragte 0,48 m in die Nachbarzelle (probe-moebelversatz, Runde 101). Das
+       Modell ist hier noch nicht in der Szene — die Box liegt im Rahmen des Traegers. */
+    m.position.x-=(bb10.min.x+bb10.max.x)/2-m.position.x;m.position.z-=(bb10.min.z+bb10.max.z)/2-m.position.z;}
   if(def.korr){m.scale.multiplyScalar(def.korr);
     var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}}
 function removeFurnAt(gx,gy,ohneGeld){
@@ -13568,6 +13614,20 @@ function removeFurnAt(gx,gy,ohneGeld){
         else{geld+=Math.round(f.def.cost*(1+0.6*((f.lv||1)-1))*0.5);geldSend();}}
       furn.splice(i,1);updHUD();return true;}}
   return false;}
+/* 📐 MITTE DER BELEGUNG (Runde 101, User: „platzierung passend machen"). furnCells belegt bei
+   gerader Breite/Tiefe die Zellen gx … gx+1 — gebaut wurde das Modell aber auf der Mitte der
+   Ankerzelle cx(gx). Alle 30 Faelle gerader Groesse (Bett, Sofa, Tisch, Teich, Kueche …) standen
+   damit genau 1 m neben ihren Feldern: das Himmelbett ragte 0,96 m in die Nachbarzelle, das
+   Sofa der Villa 6 cm in die Wand, und die gruene Vorschau zeigte eine andere Stelle als die
+   belegte (probe-moebelversatz). Modell, Vorschau, Sitz-/Liegepunkt, Tippflaeche und
+   Auswahlring nehmen jetzt diese Mitte. Belegung, Speicherstand und Netz bleiben gx/gy —
+   ein alter Spielstand laedt dieselben Felder, nur das Bild rueckt auf sie.
+   Autos und Hund haben keine Belegung (nicht in furn) und bleiben auf der Ankerzelle. */
+function furnMitte(def,gx,gy,rot){var s=(def&&def.size)||[1,1],w=s[0],d=s[1];
+  if(!def||def.car||def.pet)return [cx(gx),cz(gy)];
+  if((rot||0)%2===1){var t=w;w=d;d=t;}
+  return [cx(gx)+(w%2===0?CS/2:0),cz(gy)+(d%2===0?CS/2:0)];}
+function fMitte(f){return furnMitte(f.def,f.gx,f.gy,f.rot);}
 function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
   if(f.rot%2===1){var t=w;w=d;d=t;}
   var cells=[];
@@ -13642,7 +13702,7 @@ function editShow(f9){
   var eb=document.getElementById("editBar");eb.style.display="flex";
   if(editRing){scene.remove(editRing);}
   editRing=new THREE.Mesh(new THREE.RingGeometry(0.9,1.15,24),new THREE.MeshBasicMaterial({color:0x4a90e8,transparent:true,opacity:0.75,side:THREE.DoubleSide}));
-  editRing.rotation.x=-Math.PI/2;editRing.position.set(cx(f9.gx),0.03,cz(f9.gy));scene.add(editRing);}
+  editRing.rotation.x=-Math.PI/2;var _mr=fMitte(f9);editRing.position.set(_mr[0],0.03,_mr[1]);scene.add(editRing);}
 function editHide(){
   editSel=null;editMove=false;
   document.getElementById("editBar").style.display="none";
@@ -14346,7 +14406,7 @@ function findFurnFor(need,s){
   var px=s?s.x:0,pz=s?s.z:0;
   for(var i=0;i<furn.length;i++){var f=furn[i];
     if(!f.def.use||f.def.use.need!==need||f.busy)continue;
-    var d=Math.hypot(cx(f.gx)-px,cz(f.gy)-pz);
+    var _mf=fMitte(f),d=Math.hypot(_mf[0]-px,_mf[1]-pz);
     if(d<bd){bd=d;best=f;}}
   return best;}
 var NEEDS=[["hunger","🍽️"],["energie","😴"],["spass","🎉"],["hygiene","🚿"]];
@@ -14397,8 +14457,9 @@ function arrive(s){
   if(!s.target){s.state="idle";s.pose="stand";return;}
   var f=s.target,u=f.def.use;
   s.state="use";s.pose=u.pose;s.useT=u.dur;
-  if(u.pose!=="stand"){s.x=cx(f.gx);s.z=cz(f.gy);s.rot=f.rot*Math.PI/2;}
-  if(f.id==="bett")s.z=cz(f.gy)+ (f.rot%2===0?0.3:0);
+  var _ma=fMitte(f);
+  if(u.pose!=="stand"){s.x=_ma[0];s.z=_ma[1];s.rot=f.rot*Math.PI/2;}
+  if(f.id==="bett")s.z=_ma[1]+(f.rot%2===0?0.3:0);
 }
 function simUse(s,dt){
   var f=s.target;if(!f){s.state="idle";return;}
@@ -14548,7 +14609,7 @@ function updBeete(dt){
         if(f3.wachs>0.85)sp4.material.color.setHex(0xe8722a);});}
     else{ // reif: Bewohner in der Naehe erntet
       for(var si2=0;si2<sims.length;si2++){var s5=sims[si2];
-        if(s5.mesh.visible&&Math.hypot(s5.x-cx(f3.gx),s5.z-cz(f3.gy))<2.4){
+        if(s5.mesh.visible&&Math.hypot(s5.x-fMitte(f3)[0],s5.z-fMitte(f3)[1])<2.4){
           f3.wachs=0;f3.sprossen.forEach(function(sp6){sp6.scale.setScalar(0.05);sp6.material.color.setHex(0x3a8a3a);});
           var ertrag=Math.round((35+skills.arbeit.lv*8)*stufenBonus());verdiene(ertrag);stats.ernten++;stats.ernteLager=(stats.ernteLager||0)+1;geldSend(); /* 🩹 Schwarm-4: Lager (verkaufbar) getrennt von der Lebenszeit-Statistik */
           s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
@@ -14981,8 +15042,8 @@ function updLove(dt){
   var gain=0;
   if(d<3)gain+=0.25;
   for(var i=0;i<furn.length;i++){var f2=furn[i];
-    if(f2.def.love&&Math.hypot(a.x-cx(f2.gx),a.z-cz(f2.gy))<3.5&&Math.hypot(b.x-cx(f2.gx),b.z-cz(f2.gy))<3.5){gain+=0.9;
-      if(Math.random()<0.008){simEmoji(a,"🥂");simEmoji(b,"😍");hearts(cx(f2.gx),cz(f2.gy));}break;}}
+    if(f2.def.love){var _ml=fMitte(f2);if(Math.hypot(a.x-_ml[0],a.z-_ml[1])<3.5&&Math.hypot(b.x-_ml[0],b.z-_ml[1])<3.5){gain+=0.9;
+      if(Math.random()<0.008){simEmoji(a,"🥂");simEmoji(b,"😍");hearts(_ml[0],_ml[1]);}break;}}}
   liebe=Math.min(100,liebe+gain*dt*(1+0.15*(skills.liebe.lv-1)));
   loveEvT-=dt;
   if(loveEvT<=0){
@@ -14995,7 +15056,7 @@ function updLove(dt){
       var bogen=null;for(var j=0;j<furn.length;j++)if(furn[j].def.wed)bogen=furn[j];
       if(bogen){loveEvT=10;
         [a,b].forEach(function(s2,k){zielFrei(s2);s2.state="idle";
-          s2.x=cx(bogen.gx)+(k?0.6:-0.6);s2.z=cz(bogen.gy)+0.7;s2.rot=Math.PI;s2.pose="stand";});
+          var _mw=fMitte(bogen);s2.x=_mw[0]+(k?0.6:-0.6);s2.z=_mw[1]+0.7;s2.rot=Math.PI;s2.pose="stand";});
         loveEvent("hochzeit");skillXp("liebe",5);return;}
       else if(Math.random()<0.3){loveEvT=6;simEmoji(a,"💒");simEmoji(b,"🌹");}}
     if(verheiratet&&kinder.length<3&&liebe>=90&&frei&&Math.random()<0.5){loveEvT=15;
@@ -16748,7 +16809,8 @@ function ghostFollow(px,py){
   if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||(gdef&&gdef.paint)){
     var e=nearestEdge(c);ghost.position.set(e.wx,0,e.wz);ghost.rotation.y=e.d===1?Math.PI/2:0;
     ghostOk=gdef&&gdef.paint?!!walls[e.x+","+e.y+","+e.d]:inL;}
-  else{ghost.position.set(cx(c.gx),ghost.position.y*0+(curItem.indexOf("boden")===0||curItem==="zimmer"?0.03:0),cz(c.gy));
+  else{var _mv=(gdef&&gdef.size&&curItem.indexOf("boden")!==0&&curItem!=="zimmer")?furnMitte(gdef,c.gx,c.gy,curRot):[cx(c.gx),cz(c.gy)];
+    ghost.position.set(_mv[0],ghost.position.y*0+(curItem.indexOf("boden")===0||curItem==="zimmer"?0.03:0),_mv[1]);
     var _box=ghost.children[0];
     if(ghost.isGroup){ghost.rotation.y=0;if(_box)_box.rotation.y=curRot%2===1?Math.PI/2:0;}   /* Moebel: das Modell ist schon gedreht gebaut */
     else if(curRot%2===1)ghost.rotation.y=Math.PI/2;else ghost.rotation.y=0;
@@ -16775,9 +16837,10 @@ function tapAt(px,py){
       if(n9.typ!=="katze"&&Math.hypot(n9.x-c0.pt.x,n9.z-c0.pt.z)<1.5&&!MG.on&&!KOCH.on&&!ANGEL.on&&!TANZ.on){
         taschendieb(n9);return;}}}
     if(c0){for(var fi2=0;fi2<furn.length;fi2++){var f2=furn[fi2];
-      if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}
-      if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}
-      if(f2.id==="stereo"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){tanzStart();return;}}
+      var _mk=fMitte(f2),_dk=Math.hypot(_mk[0]-c0.pt.x,_mk[1]-c0.pt.z);
+      if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&_dk<1.5){kochStart();return;}
+      if(f2.id==="teich"&&_dk<2.2){angelStart();return;}
+      if(f2.id==="stereo"&&_dk<1.5){tanzStart();return;}}
       /* 💃 Die Tanzflaeche im Spielclub startet dasselbe Minispiel wie die Stereoanlage
          zu Hause. Der Club war bis hierher reine Kulisse: man konnte hinein, aber nichts
          tun. Dieselbe Bedienung wie ueberall sonst (tippen, nicht drueberlaufen) — ein

@@ -118,3 +118,19 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
 - `probe-schattenkriechen.mjs [quelle.html]` — Rechner-Pfad (Schatten an), Kamera steht, nur Licht+Ziel wandern in
   2-cm-Schritten (`_sonneAufKamera`): wie oft ändert sich das Bild? Mit Texelraster nur bei ganzen Texeln (≤ 2 auf 20 cm);
   Gegenprobe `ohneRaster` muss bei fast jedem Schritt anschlagen.
+
+**Runde 101 (User: „jetzt spiel weiter" + „platzierung passend machen"):**
+- `probe-moebelversatz.mjs` — jedes Katalog-Möbel (ohne Autos, Hund, Bauwerkzeuge) in Drehung 0 und 1 an eine Zelle
+  gesetzt: Hüllbox des Modells gegen das Rechteck seiner Belegung (`furnCells`) — Versatz der Mitten und wie weit es
+  hinausragt. Vorher: alle 30 Fälle gerader Grösse genau 1 m daneben (Himmelbett ragte 0,96 m, Teich 0,92 m), der
+  Zimmerfarn 0,46 m (Drehpunkt neben der Pflanze). Gegenprobe: ein Sessel um 1 m verschoben (eingefroren →
+  `updateMatrix()` selbst, sonst sieht die Sonde nichts).
+- `probe-villamoebel.mjs` — stempelt die Villa-Vorlage und prüft jedes Möbel gegen Wände (Zellkanten, 16 cm), andere
+  Möbel und die eigene Belegung. Vorher: das Sofa 6 cm in der Wand.
+- `probe-parkfrei.mjs` — (A) steckt etwas IN einem geparkten Auto (`userData.fest` + Autoname)? (B) steht etwas über
+  0,4 m auf einem angemeldeten Parkplatz (`window._parkplaetze`)? Teil für Teil geprüft (ein Vordach auf Pfosten ist
+  kein Quader), nur Teile auf Bodenhöhe (unter 1,2 m beginnend, über 0,3 m hoch), ohne Lichtschein; LOD- und
+  Sichtfeld-ausgeblendete Teile werden für die Messung eingeblendet (`_lodM`, `_gsAus`). Läuft mit `?ohneZF`, damit
+  zusammengefasste Parkwagen einzeln bleiben. Gegenprobe: 1-m-Kasten im ersten geparkten Auto.
+- `probe-wasda.mjs <x0> <z0> <x1> <z1> [warte]` — ALLES, was einen Ausschnitt schneidet (auch Autos, Deko, Laternen),
+  mit Datei/Name, Lage, Drehung, Kasten, Höhe, Merkmalen; unbenannte Gruppen mit ihren ersten Bauteilen und Farben.
