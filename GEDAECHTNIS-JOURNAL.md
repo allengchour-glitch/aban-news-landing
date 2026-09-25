@@ -949,6 +949,20 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 86 (25.09.2026) — 🎨 Die Grössen-Form ohne Farben-Zwilling: 951 Farblisten bei einer Variante
+Beim Schreiben des Ratgebers «Yogamatte reinigen» versprachen drei von sechs Kandidaten-Matten «Verfügbare Farben: Violett, Grau,
+Ice Ink Blau» bzw. «Farben: Violett, Mintblau, …» — bei EINER Variante. Der Wahlversprechen-Wächter hatte am 24.09. die
+Doppelpunkt-Form für GRÖSSEN gelernt («Verfügbare Grössen: S, M, L»), das Gegenstück für FARBEN fehlte. Voll-Export: 951 roh,
+571 echt nach zwei Ausnahmen — Anzahl direkt vor «Farben» («Neun Farben:» = Palette, «12 verschiedenen Farben:» = Set) und blosse
+«Farben:» an Set-/Paletten-Titeln; «Verfügbare Farben:» bleibt auch an einem Set eine Wahl (Stahlbox-Set). Erste Fassung der
+Anzahl-Regel schloss Masse mit ein («45 x 45 cm Verfügbare Farben», «10 000 mAh Farben») → nur Zahl + optionales klein
+geschriebenes Adjektiv DIREKT vor «Farben». Simulation 25 Live-Texte: 24 × genau eine reine Listenzeile, 1 × unverändert.
+Nebenbei: Teetasse (Bild 6er-Box, Text 1 Tasse, 650 g) und Dampf-Nagellackentferner (Stecker US/EU/AU/UK bei 1 Variante) aus
+dem Google-Kanal bis zur CJ-Klärung nach dem 28.09.; Moissanit-Kollektion war MANUELL mit 5 von 95 → neue Smart-Kollektion + 301.
+**Lehren:** (1) Wer einer Regel eine Form beibringt (Grössen:), prüft sofort die Geschwister (Farben:, Designs:, Modelle:).
+(2) Ein Ratgeber ist ein Audit: jede Karte zwingt dazu, die Produktseite wirklich zu lesen. (3) Eine Ausnahme-Regel erst an
+ihren Ausnahmen lesen — die erste Anzahl-Regel schützte Masse statt Paletten.
+
 ### Nachtrag 85 (25.09.2026) — 🔫 Waffen-Wächter sah seit der Grind-Pause nur 1 Seite — und der geteilte Export hat keinen Text
 Anlass: Google «Inappropriate image» 442. Kontaktbogen: meist Googles unvorhersagbares Bildurteil (Wäsche, Totenköpfe, Flammen),
 darunter aber ein Feuerzeug in PISTOLENFORM — Titel «Faltbares Sturmfeuerzeug mit Jet-Flamme», kein Waffenwort. Der Wächter lief
@@ -16709,3 +16723,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🧬 **Konfliktmarker im Repo: `autocommit.sh` liess einen gescheiterten Merge offen, der nächste `add -A dropship/`+commit schloss ihn MIT Markern ab (Server, 3 Commits) → `_kategorie_stand.json` unlesbar. Jetzt Auflösen je Dateiart (Ledger Union, Zustand eigene, Code Abbruch) + Marker-Sperre vor dem Push, Durchlauf `--einmal` (Server übernimmt ohne Neustart).** Wer automatisch merged, erkennt den offenen Merge VOR dem nächsten `add` → Journal Nachtrag 44
 - 2026-09-23 · 🔓 **Social-Max integriert + zwei Sperr-Klassen an der Wurzel: Stimme wäre per edge-tts (keine Werbelizenz) bei 50 % live gegangen → opt-in; `rebase.autoStash` liess «unmerged» Dateien ohne MERGE_HEAD → `git_sichern.sh` (Merge, kein Autostash) für Motor/Committer/mich; Deadlock Text-Sperre ⟷ Shopify-Schranke (6 Wächter bis 3 h) → wer fd 8 hält, wartet nie; Heilversprechen-Vollscan 26 (23 entschärft, 3 gedraftet).** Sperren in fester Reihenfolge; neue Fähigkeit mit Rechtsfrage startet aus → Journal Nachtrag 45
 - 2026-09-23 · 🗑️ **«JA fb löschen»: 120 FB-Beiträge weg (DOPPEL/PRODUKT/TON), 23 mit nur falscher Caption bleiben stehen. Der Lauf meldete «92 Fehler»: gelöschte Seiten-Posts antworten beim Rücklesen mit Code 10, nicht 100 → Wahrheit = Seiten-Listing; `fb_qualitaet_loeschen.mjs`.** Scharfe Läufe voll ins Log, nie durch `tail` → Journal Nachtrag 46
+- 2026-09-23 · ⛔ **Meta sperrte nach 120 Löschungen + 7 Caption-Korrekturen («Spam»): Schreiber müssen eine Sperre als Stoppsignal lesen (`fb_caption_korrektur.mjs` bricht ab, 45 s Takt, täglich weiter). Server-Platte 100 % durch `git gc` auf fast voller Platte (+3 GB alte `tmp_pack`-Reste) → `server/platte-schlank.sh`: erst Reste/Verwaistes löschen, dann verpacken.** → Journal Nachtrag 47
