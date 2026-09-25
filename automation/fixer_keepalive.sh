@@ -1843,13 +1843,14 @@ JSON
       touch "$MZ"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # 25.09.2026: Nur-Neuimporte (3 Tage) prüfte seit der Grind-Pause 0 Produkte je Lauf — zurückgeholte und nachträglich
       # geänderte Altware lief nie durch (Hallux-Schiene, Hämorrhoidenkissen). Einmal je 7 Tage deshalb der GANZE Bestand.
-      MZ_SEIT=$(date -u -d '3 days ago' +%F); MZ_VOLL="$REPO/dropship/_medizin_voll_stand.txt"
+      MZ_SEIT=$(date -u -d '3 days ago' +%F); MZ_VOLL="$REPO/dropship/_medizin_voll_stand.txt"; MZ_STEMPEL=/dev/null
       MZ_LETZT=$(cat "$MZ_VOLL" 2>/dev/null || echo 2000-01-01)
       if [ "$(date -u -d "$MZ_LETZT" +%s 2>/dev/null || echo 0)" -lt "$(date -u -d '7 days ago' +%s)" ]; then
-        MZ_SEIT=2020-01-01; date -u +%F > "$MZ_VOLL"
+        MZ_SEIT=2020-01-01; MZ_STEMPEL="$MZ_VOLL"
       fi
-      ( cd "$REPO" && SEIT=$MZ_SEIT setsid python3 \
-          automation/medizin_zweck_guard.py >> "$MZ" 2>&1 9>&- & )
+      # Stempel erst nach Exit 0 (25.09.2026, Nachtrag 84 — ein Neustart mitten in der Vollrunde verschob sie sonst um 7 Tage).
+      ( cd "$REPO" && setsid bash -c "SEIT=$MZ_SEIT python3 automation/medizin_zweck_guard.py && date -u +%F > '${MZ_STEMPEL:-/dev/null}'" \
+          >> "$MZ" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) medizin_zweck_guard gestartet"
     fi
   fi
@@ -1886,8 +1887,18 @@ JSON
     ALTER=$(( $(date +%s) - $(stat -c %Y "$UW" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$UW"; then
       touch "$UW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
-      ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) EXPORT=/nonexistent setsid python3 \
-          automation/ueberwachung_waffen_guard.py >> "$UW" 2>&1 9>&- & )
+      # 25.09.2026: Nur-Neuimporte (3 Tage) prüften seit der Grind-Pause 1 Seite je Lauf — Altware mit neuer Regel
+      # (Feuerzeug in Pistolenform, Titel ohne Waffenwort) lief nie durch; der geteilte /tmp/export.jsonl trägt KEINEN
+      # Beschreibungstext (0 von 49'892), Textanker-Regeln wären dort blind. Einmal je 7 Tage deshalb der GANZE Bestand
+      # live. Stempel erst NACH erfolgreichem Lauf (Exit 0): ein Container-Neustart mitten in der Runde (Nachtrag 84)
+      # verschiebt sie sonst um eine Woche.
+      UW_SEIT=$(date -u -d '3 days ago' +%F); UW_VOLL="$REPO/dropship/_waffen_voll_stand.txt"; UW_STEMPEL=/dev/null
+      UW_LETZT=$(cat "$UW_VOLL" 2>/dev/null || echo 2000-01-01)
+      if [ "$(date -u -d "$UW_LETZT" +%s 2>/dev/null || echo 0)" -lt "$(date -u -d '7 days ago' +%s)" ]; then
+        UW_SEIT=2020-01-01; UW_STEMPEL="$UW_VOLL"
+      fi
+      ( cd "$REPO" && setsid bash -c "SEIT=$UW_SEIT EXPORT=/nonexistent python3 automation/ueberwachung_waffen_guard.py && date -u +%F > '$UW_STEMPEL'" \
+          >> "$UW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet"
     fi
   fi

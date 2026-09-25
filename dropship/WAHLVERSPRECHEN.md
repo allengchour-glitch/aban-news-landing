@@ -2019,10 +2019,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in drei Grössen (S, M, L) und den Farben…»
 - `15512270406017` · Tisch-Organizer für Teetassen und Sets
   - «…Erhältlich in verschiedenen Ausführungen…»
-- `15512280236417` · Audrey Snowy Kissenhülle oder Kissen
-  - «…in verschiedenen Grössen…»
-- `15512282333569` · Snooze-Katze Plüschtier-Kissen
-  - «…in verschiedenen Grössen…»
 - `15512282628481` · 3-teiliges Samt-Bettwäsche-Set für den Winter
   - «…Erhältlich in verschiedenen Grössen…»
 - `15512282792321` · Doppelseitiger Rasierklingenhalter aus Metall
@@ -2045,8 +2041,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei charmanten Designs…»
 - `15512346886529` · Niedliches Schleifen-Geschirr für Welpen
   - «…Erhältlich in drei ansprechenden Farben…»
-- `15512410784129` · Hundegeschirr-Set mit Leine
-  - «…in verschiedenen Grössen…»
 - `15512412029313` · Hand-Halteseil Leine mit P-Kette
   - «…Erhältlich in verschiedenen Farben…»
 - `15512412684673` · Hundegeschirr mit Leine, bedruckt
@@ -2077,8 +2071,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei Grössen…»
 - `15516215574913` · Ausbruchsicheres Geschirr für Katzen
   - «…Erhältlich in verschiedenen ansprechenden Farben…»
-- `15516215837057` · Samtenes Haustierhalsband mit Zugseil
-  - «…in vier Grössen…»
 - `15516218130817` · Moissanite Ring aus rhodiniertem 925er Silber
   - «…Erhältlich in den Grössen…»
 - `15516218884481` · Brusttasche für Herren im Camouflage-Look
@@ -2091,8 +2083,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Farben…»
 - `15516233761153` · Doppelführleine für Hunde
   - «…Erhältlich in drei Grössen und drei attraktiven Farben…»
-- `15516233892225` · Taktische Outdoor-Hundeweste mit Leinen
-  - «…in verschiedenen Grössen…»
 - `15516234645889` · Retro Canvas Rucksack für Herren (20-35L)
   - «…Erhältlich in verschiedenen Farben…»
 - `15516234776961` · Sport-Rucksack 30L
@@ -2117,8 +2107,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Längen…»
 - `15517579870593` · Universal Halteklammer mit Feinjustierung
   - «…Erhältlich in drei Ausführungen…»
-- `15517622960513` · Halsband-Leinen-Set mit Schleife
-  - «…in verschiedenen Grössen…»
 - `15517644456321` · Smartwatch Outdoor Sport Laufen
   - «…Erhältlich in verschiedenen Farben…»
 - `15517644751233` · Hunde-Baumwolljacke mit Reissverschluss
@@ -2145,6 +2133,8 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Ausführungen…»
 - `15518558060929` · Plüschtier-Rucksack für Kinder
   - «…Erhältlich in zwei Grössen…»
+- `15518576673153` · Hundeleine mit Cartoon-Muster
+  - «…Teddy-, Fuchs- oder Koala-Motiven…»
 - `15518596333953` · INS Baumwoll-Brustgeschirr für Hunde
   - «…Erhältlich in vier ansprechenden Farben…»
 - `15518600429953` · Edelstahl-Eis-Sieb für Cocktails
@@ -2159,28 +2149,22 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in vier ansprechenden Farbvarianten…»
 - `15519822676353` · Halsband- und Leinen-Set Graffiti
   - «…Erhältlich in verschiedenen Grössen…»
-- `15519822872961` · Handgeflochtenes Armband für Apple Watch
-  - «…in verschiedenen Grössen…»
 - `15519823593857` · Leuchtende LED-Hundeleine mit USB-Ladefunktion
   - «…Erhältlich in verschiedenen attraktiven Farben…»
 - `15519823692161` · Halsband- und Leinen-Set mit Cartoon-Muster
   - «…Erhältlich in verschiedenen Grössen…»
 - `15519824183681` · Halsband, Leine & Fliege für Hunde – Baby Elephant
   - «…Erhältlich in verschiedenen Grössen…»
-- `15519830573441` · Holz-Wippe: Waldtiere oder Dinosaurier
+- `15519830573441` · Holz-Wippe mit Tiermotiv für Kinder
   - «…Erhältlich in zwei ansprechenden Designs…»
 - `15519830835585` · Reise-Rucksack aus Canvas
   - «…Erhältlich in verschiedenen Farben…»
 - `15519833784705` · Hundeleine für Training & Tracking
   - «…Erhältlich in zwei praktischen Längen…»
-- `15519837684097` · LED-Sattelgeschirr für Hunde
-  - «…in verschiedenen Grössen…»
 - `15519837815169` · Katzengeschirr im Westen-Stil
   - «…Erhältlich in den Farbkombinationen…»
 - `15519840010625` · Multifunktionale Schlägertasche mit Schuhfach
   - «…Erhältlich in verschiedenen Farbkombinationen…»
-- `15520169099649` · Rollregal mit Holzgriffen
-  - «…in zwei Grössen…»
 - `15520169689473` · Spiegelkasten-Seitenregal, 3er- oder 4er-Set
   - «…Erhältlich in vier Farben…»
 - `15520395985281` · Aktentasche aus echtem Leder für Herren
@@ -2215,8 +2199,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in verschiedenen Grössen…»
 - `15521218691457` · Muschel Kissen Plüschtier
   - «…in drei Grössen…»
-- `15521220723073` · Kissenhülle aus Cord
-  - «…Erhältlich in den Farben…»
 - `15521229144449` · Halsband und Leine für Hunde, Samt, Hellviolett
   - «…Erhältlich in verschiedenen Grössen…»
 - `15521229275521` · Futterlöffel mit Bambusgriff
@@ -2235,8 +2217,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Mustern…»
 - `15521243824513` · Checkerboard Bärenherz-Nägel zum Aufkleben
   - «…Erhältlich in drei Grössen…»
-- `15521244381569` · Handgemachte Kunstnägel für Schwangerschaft
-  - «…in verschiedenen Grössen…»
 - `15521249395073` · Kawaii Katzen Rucksack für Schule & Freizeit
   - «…Erhältlich in verschiedenen Farben…»
 - `15521251033473` · Outdoor Wanderrucksack 30L
@@ -2281,8 +2261,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Farben…»
 - `15522165522817` · Glitzerndes Strass-Geschirr für Haustiere
   - «…Erhältlich in verschiedenen Grössen und Farben…»
-- `15522165752193` · LED-Brustgeschirr für Hunde
-  - «…in vier Farben…»
 - `15522166047105` · Vintage-Vase aus Emaille-Glas
   - «…in verschiedenen Grössen…»
 - `15522166309249` · Anti-Kipp Napf für gesunde Haltung
@@ -2295,8 +2273,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Grössen…»
 - `15522194456961` · Smartwatch mit Bluetooth-Anrufen & Blutsauerstoff
   - «…Erhältlich in verschiedenen Farben…»
-- `15522210611585` · Abnehmbare Kunstnägel mit UV-Schutz
-  - «…Erhältlich in den Designs…»
 - `15522211037569` · Alice Wonderland aufklebbare Nägel
   - «…Erhältlich in drei Designs…»
 - `15522213921153` · Fashion Rucksack für Schüler und Studenten
@@ -2349,8 +2325,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Ausführungen…»
 - `15523086434689` · Smartwatch & TWS Bluetooth Headset 2-in-1
   - «…Erhältlich in verschiedenen Ausführungen…»
-- `15523116810625` · Hundeleine mit Schaumstoffgriff
-  - «…in verschiedenen Farben…»
 - `15523128967553` · Nylon Business Rucksack mit USB-Ladefunktion
   - «…in zwei Grössen…»
 - `15523129131393` · Hundegeschirr mit Anti-Zug-Funktion
@@ -2403,8 +2377,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in vier Grössen…»
 - `15523863527809` · Nagelclipper für Senioren – 5,7 cm & 8 cm
   - «…in zwei Grössen…»
-- `15523864445313` · Maniküre-Set mit 10 Nagelstücken und Kleber
-  - «…in verschiedenen Grössen…»
 - `15524862919041` · Hundeleine Okinawa, elastisch und ausziehbar
   - «…Erhältlich in zwei Längen…»
 - `15525201871233` · Abdeckstift

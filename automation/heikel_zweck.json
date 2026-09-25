@@ -131,6 +131,15 @@
     "Doppelstock\\b|Kampf(?:sport)?-?st(?:ock|äbe|öcke)\\b|Two-?Section-?(?:Stick|Staff)|Performance-?Stick",
     "Kampfsport|Martial|Nunchak|Warrior|Selbstverteidigung|Kette verbunden|Seil verbunden|Schwungtechnik"
    ]
+  },
+  {
+   "n": "waffennachbildung-alltagsgegenstand",
+   "_": "25.09.2026: «Faltbares Sturmfeuerzeug mit Jet-Flamme» — ein Feuerzeug in Pistolenform (Bild: schwarze Handfeuerwaffe mit Flamme), im Titel kein Waffenwort, Google meldete «Inappropriate image». Nachbildungen, die mit echten Feuerwaffen verwechselt werden können, fallen in der Schweiz unter das Waffengesetz (Art. 4 Abs. 1 lit. g WG). Zweiter Anker Pflicht: «Pistolen-Design» allein traf im Probelauf einen Akku-Elektroschrauber (Werkzeug-Griffform).",
+   "alle": [
+    "Pistolen-?(?:form|optik)|pistolenf[öo]rmig|in (?:der )?Form einer (?:Pistole|Revolver|Handgranate|Granate)|Revolver-?form|Granaten-?form|gun[- ]shaped?|pistol[- ]shaped?",
+    "Feuerzeug|Lighter|Anz[üu]nder|Flaschen[öo]ffner|Kugelschreiber|Schl[üu]sselanh[äa]nger|Wasserspender|Seifenspender"
+   ],
+   "warum": "Alltagsgegenstand in Waffenform: nicht der Gegenstand ist das Problem, sondern die Verwechselbarkeit mit einer echten Schusswaffe (öffentlicher Raum, Polizei). Wir werben nicht damit (Google-Kanal raus, Tag waffe-pruefen); DRAFT nur nach Bildprüfung."
   }
  ]
 }
