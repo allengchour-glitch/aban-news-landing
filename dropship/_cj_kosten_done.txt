@@ -33710,3 +33710,9 @@ gid://shopify/Product/15479469998465	CHF 51.60	1 Varianten	M99 Smartwatch mit gr
 gid://shopify/Product/15479470064001	CHF 41.85	1 Varianten	Montessori Puzzle: Pinyin & Silbenstruktur
 gid://shopify/Product/15479470096769	CHF 135.68	1 Varianten	Phantom Butterfly SSD 128GB/512GB SATA3.0
 gid://shopify/Product/15479470129537	CHF 15.35	15 Varianten	Keilsandalen mit Klettverschluss
+gid://shopify/Product/15479470162305	CHF 7.37	1 Varianten	IwatchS10 Silikonarmband mit Litschi-Muster
+gid://shopify/Product/15479470195073	CHF 15.92	1 Varianten	Farbige Instagram-Style Holz-Ornamente & Lernspiel
+gid://shopify/Product/15479470260609	CHF 26.77	1 Varianten	Mobile SSD Ultra-dünn
+gid://shopify/Product/15479470293377	CHF 19.73	14 Varianten	Spitzen-Slipper mit Schleife und Keilabsatz
+gid://shopify/Product/15479470358913	CHF 31.23	1 Varianten	Intelligente Outdoor-Sportuhr mit GPS
+gid://shopify/Product/15479470391681	CHF 18.18	1 Varianten	Holz-Angelspiel für Kinder
