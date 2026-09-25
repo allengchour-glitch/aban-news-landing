@@ -7744,7 +7744,9 @@ in den Turm. Der Kollider sagt es richtig: Baukörper bis z −132,5, darüber 6
 **Prüfreihe (Endstand, jedes Werkzeug allein):** th-bauen 22/22 · th-pruef bestanden (1001 Modelle, Korridor 0,
 fehlend 0, JS 0; „steckt drin" 2 = die Rettungswagen unter dem Vordach, siehe unten) · th-kante 0/0/0, 48 Übergänge,
 Einmündungen 0/14 · th-autoboden 0/0/0, 0,2 %, 0/120, Parkplätze mit Zufahrt · html-validate 0 Fehler (56 Warnungen,
-unverändert).
+unverändert). Gegen den Stand vor Runde 101 (`897662b` kurz eingesetzt, danach aus dem Commit zurückgeholt):
+th-strassen 66 → **64** · th-echt dieselben **7** echten Durchdringungen vorher wie nachher (Runde 100 meldete 6 —
+Streuung des Werkzeugs; keine davon betrifft etwas aus Runde 101), neu nur die zwei Rettungswagen-Paare als „Mesh —".
 **th-pruef „steckt drin" ist eine Kandidatenliste, kein Befund** (so steht es im Werkzeug): die Kastenregel kann „unter
 einem Vordach" nicht von „in einer Wand" unterscheiden. Die zwei Rettungswagen stehen zu 82 % im Hüllkasten der
 Notaufnahme — th-echt: „Mesh —", kein einziges Bauteil-Paar; probe-parkfrei Teil für Teil: 0. Und umgekehrt: den ECHTEN
