@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-25T05:12:01Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-25T05:12:15Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 704 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2622** in 711 Produkten
-- Treffer (≥ 4 Wörter): **129** in 107 Produkten
+- Medien geprüft: **2624** in 711 Produkten
+- Treffer (≥ 4 Wörter): **131** in 109 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -32,6 +32,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Sommer-Schlafsack für Baby & Kleinkind `15453792534913` | [69926765855105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba293841-75d1-444d-9134-e6bf7cc99b53_trans.jpg) | 19 | Soft bamboo cotton Breathable and comfortable Infant sleeping | offen |
 | Bein-Druck Dumbbell Stange für Beinheben & Muske `15453792469377` | [69926765822337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd047f6d-62fe-46ee-b92d-fa16894d4d1f_trans.jpg) | 18 | Jianxiang Cast iron material NBR Foam Detachable Factory | ENTFERNT |
 | Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | ENTFERNT |
+| Baby Anti-Schreck Kissen `15453778870657` | [69926718275969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9da8281b-246a-470d-89db-9caafda33504.jpg) | 18 | Smart Bionic Patting Sleep Fall Asleep with Gentle | offen |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
 | Lesekissen mit Armlehne und Getränkehalter `15453793976705` | [69926768411009](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3576b19c-7aef-4e9a-8f0c-1ec78a026d2b.jpg) | 17 | Shoulder Pressure Elhow Pressuree Leg Pressure After Use | ENTFERNT |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
@@ -126,6 +127,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Bissfeste Elektro-Jump-Ball für Katzen & Hunde `15453763600769` | [69926634586497](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8f18ab6f-9391-4eea-95bb-31d929e1fa27_trans.jpg) | 5 | Agile without rules Directional scrolling | offen |
 | Katzen-Spielzeug mit Futter-Feeder `15453772480897` | [70519928619393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/706a908f-a6f9-4761-bb6e-19107db87d57_trans.jpg) | 5 | PET TOY Open the Cover | offen |
 | Inline-Skate-Set für Kids `15453781557633` | [69926731776385](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22712a88-427a-4d84-b10f-6edb2551ccb4_trans.jpg) | 5 | material Hard shell crash protection | ENTFERNT |
+| Magnetische Kühlschrank-Marker `15453779034497` | [69926719095169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b7925275-5a1b-4a5a-ba07-0319761fa6b1.jpg) | 5 | not just keep moving forward | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
