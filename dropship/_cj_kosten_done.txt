@@ -32102,3 +32102,6 @@ gid://shopify/Product/15473085284737	CHF 17.38	6 Varianten	Cropped Straight-Leg 
 gid://shopify/Product/15473085317505	CHF 9.76	3 Varianten	Flying Squirrel Backlit 24GBT Bluetooth Set-Top Bo
 gid://shopify/Product/15473085383041	CHF 19.42	15 Varianten	High-Waist Vintage Jeans für Damen
 gid://shopify/Product/15473085415809	CHF 32.58	6 Varianten	Magnetisches Fliegengitter für Fenster
+gid://shopify/Product/15473085481345	CHF 24.06	6 Varianten	Washed Irregular Jeans für Damen
+gid://shopify/Product/15473085514113	CHF 9.47	5 Varianten	Kartenetui aus Aluminium
+gid://shopify/Product/15473085546881	CHF 14.58	4 Varianten	Flammen-Aroma-Diffusor mit Luftbefeuchter
