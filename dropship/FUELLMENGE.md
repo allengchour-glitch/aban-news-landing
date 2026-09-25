@@ -1,6 +1,6 @@
-# Füllmenge fehlt — Stand 2026-09-25 01:01 UTC
+# Füllmenge fehlt — Stand 2026-09-25 01:13 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 169 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 31 · Text-Sperre belegt: 1
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 138 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 1 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
@@ -9,23 +9,6 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | 50 ml | Vorschlag — sichten | 50 @ d1c8ff1d-6c86-49b1-b4ee-60e040e0f0d3.jpg; 50 @ 29e06320-c409-4a47-8431-e1d00c98dc60.jpg; 50 @ eace5441-3694-41ab-a12f-96842a3de8ca.jpg; 50 @ 9f33a78a-9764- |
 | [WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials](https://luxestyle.ch/products/wnp-3-hyaluronsaure-serum-ultra-hydrating-vial-606800) | 5 ml | Vorschlag — sichten | 5 @ 46e26515-4ba9-48b0-b1b2-2c6424632e9e_trans.jpg |
 | [Straffendes Serum & Feuchtigkeitscreme Set](https://luxestyle.ch/products/straffendes-serum-feuchtigkeitscreme-set-604900) | 30 ml | Vorschlag — sichten | 30 30 1.01 1.01 @ 29d78e6d-757f-4af4-8197-e50df6680ff2.jpg |
-| [Dazzling Star Glitter Spray](https://luxestyle.ch/products/dazzling-star-glitter-spray-258370) | 30 ml | gesichtet · geschrieben | 30 @ eeca061f-828c-44a9-96ad-abd332181d22.jpg |
-| [Jasmine Fragrance Parfüm](https://luxestyle.ch/products/jasmine-fragrance-parfum-839361) | 100 ml | gesichtet · geschrieben | 100 @ 3da0bb2d-19b1-4fa4-9ad5-984cc994c663.jpg; 100 @ 54e65258-9462-407f-9780-91f727555712.jpg; 100 34 @ 551fc5a6-b8ea-4e93-8c51-98124ac27a5f.jpg |
-| [Fruchtiges Glanz-Lippenöl](https://luxestyle.ch/products/fruchtiges-glanz-lippenol-421826) | 5 ml | gesichtet · geschrieben | 5 @ ba0e0ef2-c635-446a-b5b9-864e6d3a2a01.jpg; 5 5 @ 2896296a-009b-4b1b-852e-f9b0954f3326.jpg; 5 @ b266dcf3-be58-4c82-8532-9d5bfd258fbe.jpg |
-| [Holiday Roaming Eau de Parfum – blumig-fruchtig](https://luxestyle.ch/products/holiday-roaming-eau-de-parfum-blumig-fruchtig-977793) | 50 ml | gesichtet · geschrieben | 50 7 @ 90c6eedf-f741-4569-b490-509a0e2abfb4.jpg; 50 @ 919e6d2a-4f7f-4c5a-aa96-480f5db02d11.jpg |
-| [Selbstbräunungstropfen mit Hyaluronsäure](https://luxestyle.ch/products/selbstbraunungstropfen-mit-hyaluronsaure-121409) | 30 ml | gesichtet · geschrieben | 30 10 @ 4f4c0527-a645-458f-bfb0-1a170d1fd2d0.jpg |
-| [DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50](https://luxestyle.ch/products/dr-meinaier-sussholz-serum-anti-aging-lsf-50-154306) | 120 ml | gesichtet · geschrieben | 20 @ 5805d81b-d80d-4f38-aabd-7691687ed5af.jpg |
-| [Süssholz-Gesichtsserum mit Vitamin C & Retinol](https://luxestyle.ch/products/sussholz-gesichtsserum-mit-vitamin-c-retinol-721473) | 120 ml | gesichtet · geschrieben | 20 @ 04ec437c-2a34-4758-bdc2-26d58df09a37.jpg |
-| [Lakritz-Wurzel Anti-Aging Serum LSF 50](https://luxestyle.ch/products/lakritz-wurzel-anti-aging-serum-lsf-50-572354) | 120 ml | gesichtet · geschrieben | 20 @ b39421e5-5e04-4f94-8f88-ecf7341b35c5.jpg |
-| [DR Japan Sakura Lotion](https://luxestyle.ch/products/dr-japan-sakura-lotion-477826) | 100 ml | gesichtet · geschrieben | 100 @ a4fc8961-707c-4e1a-befc-6c9a49694c8f.jpg; 100 @ a868379a-6368-4785-946a-51cc2b7befaa.jpg |
-| [Collagen-Verstärkende Multi-Effekt-Lotion](https://luxestyle.ch/products/collagen-verstarkende-multi-effekt-lotion-326081) | 100 ml | gesichtet · geschrieben | 100 @ 43fadf2e-a7f2-498a-bd6c-a89c479aace1.jpg |
-| [Multifunktionaler Toner mit Anti-Falten-Effekt](https://luxestyle.ch/products/multifunktionaler-toner-mit-anti-falten-effekt-597441) | 100 ml | gesichtet · geschrieben | 100 @ 0ff91102-adef-4c6f-b352-87d49cb50719.jpg |
-| [Leichtes Sonnenschutz-Lotion](https://luxestyle.ch/products/leichtes-sonnenschutz-lotion-637300) | 50 ml | gesichtet · geschrieben | 50 @ dc202140-0dc6-4f27-ba02-927bd52c5cdc_fine.jpg |
-| [Moocare Aromatherapie-Öl (20 Stk.)](https://luxestyle.ch/products/moocare-aromatherapie-ol-20-stk-628100) | 20 × 5 ml | gesichtet · geschrieben | 5 0.17 @ 506fc51d-a04c-4861-993a-5c5eec67d54e.jpg; 5 0.17 @ 8c3ce887-5573-4f16-b5d0-694112f8b4ad.jpg |
-| [Wimpern- & Augenbrauen-Serum](https://luxestyle.ch/products/wimpern-augenbrauen-serum-620200) | 6 ml Serum + 50 g Augencreme | gesichtet · geschrieben | 6 @ 5754961f-3a3c-43fe-b240-92d3f6fa25d0_fine.jpg; 6 @ e833c2d6-3b10-4cd1-bf85-9c4d4d080b67_fine.jpg |
-| [Parfüm-Öl Middle East Dubai](https://luxestyle.ch/products/parfum-ol-middle-east-dubai-615900) | 15 ml | gesichtet · geschrieben | 15 @ 42e1e458-069f-40be-9788-a4667aa8c121.jpg |
-| [Haarpflegeöl für kräftiges Haar](https://luxestyle.ch/products/haarpflegeol-fur-kraftiges-haar-623600) | 120 ml | gesichtet · geschrieben | 120 @ 1375de0e-a9ed-48a0-be81-4e83c360865b.jpg |
-| [Feuchtigkeitsspendende Körpercreme](https://luxestyle.ch/products/feuchtigkeitsspendende-korpercreme-617800) | 150 ml | gesichtet · geschrieben | 150 @ 5f8af2e3-6847-4d4e-b369-3be32d77ddc6.jpg; 150 150 @ 082e427b-7503-4917-9f20-a619f2d0eb36.jpg; 150 @ 0ea3be73-99be-4a53-bef4-1182ad035ff9.jpg |
 | [DR Reismilch Gesichtsreiniger](https://luxestyle.ch/products/dr-reismilch-gesichtsreiniger-919106) | — | nichts lesbar |  |
 | [DR Reis Milch Gesichtswasser](https://luxestyle.ch/products/dr-reis-milch-gesichtswasser-405762) | — | nichts lesbar |  |
 | [Azelaic Acid & Niacinamide Serum](https://luxestyle.ch/products/azelaic-acid-niacinamide-serum-741570) | — | nichts lesbar |  |
@@ -160,18 +143,4 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Rainbow Highlighter Jelly Gel](https://luxestyle.ch/products/rainbow-highlighter-jelly-gel-28c4aa) | — | nichts lesbar |  |
 | [Focallure Abdeckcreme](https://luxestyle.ch/products/focallure-abdeckcreme-5f9003) | — | nichts lesbar |  |
 | [3D-Fibre Mascara mit Kollagen-Gel · 2 Stück](https://luxestyle.ch/products/3d-fibre-mascara-mit-kollagen-gel-2-stuck-7269a0) | — | nichts lesbar |  |
-| [Temperaturregulierende Sonnencreme Foundation](https://luxestyle.ch/products/temperaturregulierende-sonnencreme-foundation-630400) | 30 ml | sicher (ml+oz) · Text-Sperre belegt | 30 1 @ 8730f96b-cf53-4262-80d6-0a5b47b41479.jpg |
-| [Eau de Parfum für Damen, fruchtig-floral](https://luxestyle.ch/products/eau-de-parfum-fur-damen-fruchtig-floral-315586) | 100 ml | sicher (ml+oz) · geschrieben | 100 @ cb3ad14f-bd9e-42e5-9236-18929ec89264.jpg; 34 @ ec56bbb7-4ee4-4b64-ad1a-52b7b8dce606.jpg; 34 @ d41b8d5e-95f4-420d-95f8-4e0dafdc36a6.jpg; 100 3.4 @ 789ee18b |
-| [Glitzer-Spray für strahlende Haut](https://luxestyle.ch/products/glitzer-spray-fur-strahlende-haut-436033) | 60 ml | sicher (ml+oz) · geschrieben | 60 2 @ b25afe60-e0a5-4e63-b573-8c9ea20d0a32.jpg; 60 @ 12e9a756-98db-4d9f-aace-c5ec1b936d9c.jpg; 60 @ 91bab568-3de1-4082-adc7-86de2e05b863.jpg |
-| [Brustpump-Spray für Stillzeit](https://luxestyle.ch/products/brustpump-spray-fur-stillzeit-114817) | 118 ml | sicher (ml+oz) · geschrieben | 118 4 4 @ b68cc5ab-7785-4182-bba7-2e8185acb8ef.jpg; 118 118 4 4 @ 9615a78c-40b7-4da5-829f-a3de593b0752.jpg; 4 @ 41af08f0-5a74-4bef-b40a-1f78f2c8362d.jpg |
-| [Eau de Toilette für Herren – Frisch & Subtil](https://luxestyle.ch/products/eau-de-toilette-fur-herren-frisch-subtil-419970) | 100 ml | sicher (ml+oz) · geschrieben | 100 3.4 @ 30801aaa-c059-49a1-8425-8fe2075d047a.png; 100 3.4 @ 96931e8b-076f-44fd-a1ff-de74624b4185.png; 100 3.4 @ 7d27eff4-a54a-4ae9-afcf-b36c286049c2.png; 100  |
-| [Tunmate Marokkanisches Arganöl](https://luxestyle.ch/products/tunmate-marokkanisches-arganol-331778) | 60 ml | sicher (ml+oz) · geschrieben | 60 2.02 @ 5da4b433-15c4-4f17-b794-0d883fb49484.jpg |
-| [Tunmate Rizinusöl](https://luxestyle.ch/products/tunmate-rizinusol-382081) | 60 ml | sicher (ml+oz) · geschrieben | 60 2.02 @ 9f9c7336-67ad-4fd6-8b9e-c66d5b458dec.jpg; 2.02 @ 7a81251b-9081-46b4-89d3-d8e5b987e975.jpg |
-| [Tunmate Batana Haaröl](https://luxestyle.ch/products/tunmate-batana-haarol-920705) | 60 ml | sicher (ml+oz) · geschrieben | 2.02 @ 6ea54298-05c0-4029-8589-d21eb09621ac.jpg; 60 2.02 @ 087a58d0-43ee-4efb-844b-95d3c9f32054.jpg |
-| [Tunmate Teebaum Haaröl](https://luxestyle.ch/products/tunmate-teebaum-haarol-948801) | 60 ml | sicher (ml+oz) · geschrieben | 2 @ da5b667c-22d1-4858-81e7-9a32537347f2.jpg; 60 2.02 @ 948089ab-3e75-44a6-a4ea-03340f9697a4.jpg; 2.02 @ 74a23b6d-81eb-4537-bd36-c72d153c0bde.jpg; 2.02 @ 49b728 |
-| [24k Anti-Aging Augenserum für straffe Augen](https://luxestyle.ch/products/24k-anti-aging-augenserum-fur-straffe-augen-440386) | 30 ml | sicher (ml+oz) · geschrieben | 30 @ e5a8c251-95e0-4088-96f4-cfa3b35183b4.jpg; 30 1.01 @ 9e1a0dd1-cbb9-4e82-9898-090c7e21b854.jpg |
-| [Rosen Feuchtigkeitsserum für das Gesicht](https://luxestyle.ch/products/rosen-feuchtigkeitsserum-fur-das-gesicht-627700) | 60 ml | sicher (ml+oz) · geschrieben | 60 2 2 @ e7b68e40-b486-4f06-81c7-a35cafb00121.jpg |
-| [Kunstblut-Spray](https://luxestyle.ch/products/kunstblut-spray-609100) | 50 ml | sicher (ml+oz) · geschrieben | 50 @ 79186634-0e4e-4ff1-8fde-3108292c86d2.jpg; 50 @ f109c0dd-e7ec-4b01-9ef9-c0d2572ae0e0.jpg; 1.69 @ 8ac901f9-edb1-4721-ade2-a0072e44cfc1.jpg; 50 1.69 @ 1d5bd18 |
-| [Fixierspray für langanhaltendes Make-up](https://luxestyle.ch/products/fixierspray-fur-langanhaltendes-make-up-625300) | 100 ml | sicher (ml+oz) · geschrieben | 100 3.38 @ c3e9c23e-5ef0-4028-968d-fa73873230c6.jpg |
-| [Milder Gesichtsreiniger mit Grünkohl-Extrakt](https://luxestyle.ch/products/milder-gesichtsreiniger-mit-grunkohl-extrakt-626900) | 237 ml | sicher (ml+oz) · geschrieben | 237 8 @ 083151f6-e4d7-4f46-9ee1-1511daa6f571.jpg; 237 8 @ dc9c784b-4afa-4d17-9505-d60c87c14ee9.jpg; 237 8 @ 331d12ff-eaab-4df0-bf30-12594e064505.jpg |
-| [Feuchtigkeitsspendender PRO Balsam](https://luxestyle.ch/products/feuchtigkeitsspendender-pro-balsam-d3b014) | 25 ml | sicher (ml+oz) · geschrieben | 25 0.84 @ 1780813553690.jpg |
+| [Temperaturregulierende Sonnencreme Foundation](https://luxestyle.ch/products/temperaturregulierende-sonnencreme-foundation-630400) | 30 ml | sicher (ml+oz) · geschrieben | 30 1 @ 8730f96b-cf53-4262-80d6-0a5b47b41479.jpg |
