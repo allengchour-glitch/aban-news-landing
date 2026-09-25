@@ -32205,3 +32205,5 @@ gid://shopify/Product/15474467176833	CHF 16.98	56 Varianten	Langarm-Poloshirt
 gid://shopify/Product/15474467242369	CHF 20.22	6 Varianten	Schwarzes StrickOberteil
 gid://shopify/Product/15474467373441	CHF 31.66	15 Varianten	Herren-Lumberjack-Hosen
 gid://shopify/Product/15474478973313	CHF 17.34	5 Varianten	Grau-Weiss Karo Jacke
+gid://shopify/Product/15474479071617	CHF 13.05	10 Varianten	Herren Langarm-Unterhemd
+gid://shopify/Product/15474479235457	CHF 10.66	2 Varianten	Schwarze Tropfenohrringe
