@@ -976,6 +976,9 @@ Diffuser, Smartwatch (auch DRAFT). 43 Kandidaten bleiben: 26 PRODUKT, 13 DOPPEL,
   100 des Listings. Ein Juni-Post steht dort ohnehin nicht und wäre IMMER als «gelöscht» quittiert worden. Jetzt fragt
   `weg()` die ID selbst ab. Gemessen: IG gelöscht = 100/33, FB gelöscht = 10 «Object does not exist», bestehend = OK. Nur
   diese Antworten zählen; ein Code 10 kann auch «fehlende Berechtigung» heissen.
+**Betreiber «fix» → «Rest jetzt löschen» (19:55–20:16 UTC):** 37 weitere IG-Posts gelöscht, mit 30 FB-Zwillingen; 7 ohne
+FB-Zwilling (Juni-Posts nur auf IG). 0 Fehler, keine Meta-Warnung. Heute insgesamt 42 IG und 35 FB. Offen ist nur der
+Gua-Sha-Doppel vom 25.09. (jünger als 6 h), er geht beim nächsten Tageslauf.
 **Lehren.**
 1. **Beim Löschen ist «nicht gefunden» kein Beweis.** Nur eine eindeutige ID, die fehlt, zählt. Das gilt auch fürs
    Rücklesen: Eine Liste der neuesten N beweist nichts über ältere Objekte.
