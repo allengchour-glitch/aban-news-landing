@@ -31747,3 +31747,7 @@ gid://shopify/Product/15472047587713	CHF 10.94	60 Varianten	Leichtes Hunde-Brust
 gid://shopify/Product/15472047620481	CHF 15.21	4 Varianten	Patchwork-Rock mit Spitze und Stickerei
 gid://shopify/Product/15472047653249	CHF 13.48	1 Varianten	Ovale S925 Sterling Silber Ohrstecker mit Moissani
 gid://shopify/Product/15472047718785	CHF 17.82	4 Varianten	Elegante hellblaue Slim-Fit Jeans für Damen
+gid://shopify/Product/15472047751553	CHF 108.90	1 Varianten	Künstliche Weihnachtsbaum-Dekoration
+gid://shopify/Product/15472047784321	CHF 12.50	6 Varianten	French Press Kaffeebereiter aus Borosilikatglas
+gid://shopify/Product/15472047817089	CHF 19.44	2 Varianten	Katzenpfoten-Massagebürste für die Kopfhaut
+gid://shopify/Product/15472047849857	CHF 28.91	30 Varianten	Sonnensegel mit Zubehör für Aussenbereiche
