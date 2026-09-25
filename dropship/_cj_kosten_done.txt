@@ -32136,3 +32136,5 @@ gid://shopify/Product/15473433870721	CHF 74.82	33 Varianten	Tencel Satin-Bettwä
 gid://shopify/Product/15473433903489	CHF 63.16	1 Varianten	Kindersitz für Velos, mit Armlehne und Schutzbügel
 gid://shopify/Product/15473433969025	CHF 29.91	12 Varianten	Wasserdichter, atmungsaktiver Schonbezug
 gid://shopify/Product/15473434001793	CHF 99.51	4 Varianten	Multifunktionaler Plüsch-Sessel für Zuhause
+gid://shopify/Product/15473434165633	CHF 14.03	52 Varianten	Kuschelige Coral Fleece Decke
+gid://shopify/Product/15473434198401	CHF 39.83	16 Varianten	Faux-Fur-Decke im Tie-Dye-Look
