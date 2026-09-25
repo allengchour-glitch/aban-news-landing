@@ -7740,3 +7740,14 @@ in den Turm. Der Kollider sagt es richtig: Baukörper bis z −132,5, darüber 6
 | probe-parkfrei A: geparkte Autos mit Hindernis im Grundriss | Taxi×Bushalte, Taxi×Rathaus, Rettungswagen×Turm (+ SUV/Kompakt×Rathaus, nicht `fest`) | **0 von 15** |
 | probe-parkfrei B: Hindernisse auf Parkplätzen | Bahnhof 8 (Rathaus, Bahnhof, Brunnen, Bank, Tränke, 2 Masten, Automat) · Quartiersplatz 2 | **nur die 2 Randlaternen (gewollt)** |
 | th-autoboden: Grün/Erde/Objekt · Verkehr grün · Polizei · Parkplätze ohne Zufahrt/schief/raus | – | 0/0/0 · 0,2 % · 0/120 · 0/0/0 (Bahnhof-Zufahrt über das neue Band) |
+
+**Prüfreihe (Endstand, jedes Werkzeug allein):** th-bauen 22/22 · th-pruef bestanden (1001 Modelle, Korridor 0,
+fehlend 0, JS 0; „steckt drin" 2 = die Rettungswagen unter dem Vordach, siehe unten) · th-kante 0/0/0, 48 Übergänge,
+Einmündungen 0/14 · th-autoboden 0/0/0, 0,2 %, 0/120, Parkplätze mit Zufahrt · html-validate 0 Fehler (56 Warnungen,
+unverändert).
+**th-pruef „steckt drin" ist eine Kandidatenliste, kein Befund** (so steht es im Werkzeug): die Kastenregel kann „unter
+einem Vordach" nicht von „in einer Wand" unterscheiden. Die zwei Rettungswagen stehen zu 82 % im Hüllkasten der
+Notaufnahme — th-echt: „Mesh —", kein einziges Bauteil-Paar; probe-parkfrei Teil für Teil: 0. Und umgekehrt: den ECHTEN
+Fall (Wagen im Skyline-Turm) hat th-pruef nie gemeldet — die Regel prüft nur „klein in mindestens 6× so gross", der Turm
+(8,6 × 8,6 m) ist nur 4,7× so gross wie der Wagen. **Lehre:** Wer auf eine Kasten-Meldung hin etwas verschiebt, ohne
+Teil für Teil nachzusehen, kann einen richtigen Standort gegen einen falschen tauschen — genau so kam der Wagen in den Turm.
