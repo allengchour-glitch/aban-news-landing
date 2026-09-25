@@ -163,5 +163,13 @@
     "price_cents": 2900,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "schulden-plan",
+    "title": "Schulden-Plan Schweiz: tilgen oder investieren",
+    "desc": "Alle Schulden in einem Plan: Lawine oder Schneeball, schuldenfrei-Datum, gesparte Zinsen und die Rendite, ab der Investieren gewinnt. Offline-Rechner mit Monatsplan und Anleitung. Keine Finanzberatung.",
+    "price_cents": 2700,
+    "currency": "chf",
+    "standalone": true
   }
 ]
