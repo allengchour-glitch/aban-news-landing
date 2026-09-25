@@ -152,5 +152,19 @@
     "link": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o",
     "cents": 1900,
     "currency": "chf"
+  },
+  "strategie-pruefstand": {
+    "product": "prod_VKLLZBJ5VGjpSU",
+    "price": "price_1UJgfCRXvVMyfaIrvfTgokcu",
+    "link": "https://buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p",
+    "cents": 2900,
+    "currency": "chf"
+  },
+  "schulden-plan": {
+    "product": "prod_VKLLTbbtN9AXFQ",
+    "price": "price_1UJgfCRXvVMyfaIrVaj6RjP7",
+    "link": "https://buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q",
+    "cents": 2700,
+    "currency": "chf"
   }
 }
