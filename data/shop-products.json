@@ -167,5 +167,12 @@
     "desc": "Alle Schulden in einem Plan: Lawine oder Schneeball, schuldenfrei-Datum, gesparte Zinsen und die Rendite, ab der Investieren gewinnt. Offline-Rechner mit Monatsplan und Anleitung. Keine Finanzberatung.",
     "price": "CHF 27",
     "buy": "https://buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q"
+  },
+  {
+    "slug": "budget-plan",
+    "title": "Budget-Plan Schweiz: nie mehr von der Steuerrechnung überrascht",
+    "desc": "Alle Einnahmen und Ausgaben mit Takt (monatlich bis jährlich), monatliche Rückstellung für Steuern und Jahresrechnungen, Muss/Kann/Sparen, Notreserve. Offline-Rechner mit Anleitung. Keine Finanzberatung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N"
   }
 ]
