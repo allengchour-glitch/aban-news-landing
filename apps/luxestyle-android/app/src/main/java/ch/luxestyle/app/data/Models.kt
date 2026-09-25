@@ -79,7 +79,7 @@ data class ProductPage(val products: List<ProductCard>, val cursor: String?, val
 
 data class CollectionInfo(val handle: String, val title: String, val description: String, val image: Image?)
 
-data class MenuItem(val title: String, val url: String, val children: List<MenuItem>) {
+data class MenuItem(val title: String, val url: String, val children: List<MenuItem>, val image: Image? = null) {
     /** Handle der Kollektion, falls der Menüpunkt auf eine zeigt. */
     val collectionHandle: String? get() = Regex("/collections/([^/?#]+)").find(url)?.groupValues?.get(1)
 }
@@ -110,6 +110,19 @@ data class Cart(
     val lines: List<CartLine>,
     val discountCodes: List<Pair<String, Boolean>>,
 )
+
+/** Preis-Stufen für den Filter (CHF). */
+enum class PriceBand(val label: String, val min: Double?, val max: Double?) {
+    UNDER_25("Bis CHF 25", null, 25.0),
+    FROM_25("CHF 25–50", 25.0, 50.0),
+    FROM_50("CHF 50–100", 50.0, 100.0),
+    OVER_100("Ab CHF 100", 100.0, null),
+}
+
+/** Aktive Filter einer Liste; wird zu Shopify-`ProductFilter`-Eingaben. */
+data class Filters(val price: PriceBand? = null, val onlyAvailable: Boolean = false) {
+    val isEmpty get() = price == null && !onlyAvailable
+}
 
 data class Suggestions(val queries: List<String>, val products: List<ProductCard>)
 

@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Product
 import ch.luxestyle.app.data.cleanDescription
+import ch.luxestyle.app.data.deliveryNote
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 
@@ -182,7 +183,8 @@ private fun ProductDetail(p: Product) {
             }
             item {
                 Column(Modifier.padding(horizontal = 20.dp).fillMaxWidth().clip(Radius.Card).background(MaterialTheme.colorScheme.surfaceVariant).padding(16.dp)) {
-                    Assurance(R.drawable.ic_truck, "Gratis-Versand in der Schweiz ab CHF 45")
+                    deliveryNote(p.descriptionHtml)?.let { Assurance(R.drawable.ic_truck, it) }
+                    Assurance(R.drawable.ic_bag, "Gratis-Versand in der Schweiz ab CHF 45")
                     Assurance(R.drawable.ic_return, "30 Tage Rückgabe")
                     Assurance(R.drawable.ic_shield, "Sicher bezahlen mit TWINT, Karte oder Klarna")
                 }

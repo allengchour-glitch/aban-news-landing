@@ -48,6 +48,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
+import ch.luxestyle.app.data.Filters
 import ch.luxestyle.app.data.Storefront.Sort
 import ch.luxestyle.app.data.Suggestions
 import coil3.compose.AsyncImage
@@ -64,6 +65,7 @@ fun SearchScreen(initial: String) {
     var text by rememberSaveable(initial) { mutableStateOf(initial) }
     var submitted by rememberSaveable(initial) { mutableStateOf(initial) }
     var sort by rememberSaveable { mutableStateOf(Sort.FEATURED) }
+    var filters by remember { mutableStateOf(Filters()) }
     var total by remember { mutableStateOf<Int?>(null) }
     var suggestions by remember { mutableStateOf<Suggestions?>(null) }
     val requester = remember { FocusRequester() }
@@ -147,8 +149,8 @@ fun SearchScreen(initial: String) {
                 }
             }
             submitted.isNotBlank() -> ProductGrid(
-                key = submitted to sort,
-                load = { cursor -> shop.api.search(submitted, sort, cursor).also { total = it.first }.second },
+                key = Triple(submitted, sort, filters),
+                load = { cursor -> shop.api.search(submitted, sort, cursor, filters).also { total = it.first }.second },
                 onOpen = { nav.product(it.handle) },
                 header = {
                     item(span = { GridItemSpan(maxLineSpan) }) {
@@ -159,7 +161,8 @@ fun SearchScreen(initial: String) {
                                     style = MaterialTheme.typography.bodyMedium, color = LocalLuxe.current.muted,
                                 )
                             }
-                            SortRow(sort, listOf(Sort.FEATURED, Sort.PRICE_ASC, Sort.PRICE_DESC)) { sort = it }
+                            SortRow(sort, listOf(Sort.FEATURED, Sort.PRICE_ASC, Sort.PRICE_DESC), edge = 0.dp) { sort = it }
+                            FilterRow(filters, edge = 0.dp) { filters = it }
                         }
                     }
                 },

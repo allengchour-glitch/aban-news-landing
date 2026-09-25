@@ -13,7 +13,7 @@ LuxeStyle ist der Schweizer Online-Shop für Damenmode, Schmuck, Taschen, Uhren 
 
 Stöbern
 • Alle Kategorien aus dem Shop – Kleider, Halsketten, Taschen, Jacken und mehr
-• Sortieren nach Beliebtheit, Neuheit oder Preis
+• Sortieren nach Beliebtheit, Neuheit oder Preis, Filter nach Preis und Lieferbarkeit
 • Suche mit Vorschlägen schon beim Tippen
 • Produktbilder im Vollbild, mit zwei Fingern zoomen
 
@@ -48,7 +48,7 @@ Shopping
 |---|---|---|
 | App-Symbol | `icon-512.png` | 512×512 |
 | Feature-Grafik | `feature-graphic-1024x500.png` | 1024×500 |
-| Smartphone-Screenshots | `store-1-start.jpg` … `store-5-suche.jpg` | 1080×1919 |
+| Smartphone-Screenshots | `store-1-start.jpg` … `store-6-kategorien.jpg` | 1080×1919 |
 
 Die Screenshots sind echte Bildschirme der App mit echten Shopdaten, erzeugt mit
 `LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*StoreShots*'`.

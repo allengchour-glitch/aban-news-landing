@@ -257,6 +257,18 @@ private fun DiscountBox(c: Cart) {
                     .padding(horizontal = 16.dp, vertical = 10.dp),
             ) { Text("Einlösen", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onPrimary) }
         }
+        if (c.discountCodes.none { it.second }) {
+            Gap(10)
+            Row(
+                Modifier.clip(Radius.Pill).border(1.dp, MaterialTheme.colorScheme.secondary, Radius.Pill)
+                    .clickable(enabled = !busy) { code = WELCOME_CODE; apply() }
+                    .padding(horizontal = 14.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text("Erste Bestellung? ", style = MaterialTheme.typography.bodySmall, color = LocalLuxe.current.muted)
+                Text("$WELCOME_CODE einlösen (−10 %)", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.secondary)
+            }
+        }
         c.discountCodes.filter { it.second }.forEach { (codeName, _) ->
             Gap(8)
             Row(verticalAlignment = Alignment.CenterVertically) {

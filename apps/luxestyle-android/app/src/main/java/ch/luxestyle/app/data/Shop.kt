@@ -1,6 +1,7 @@
 package ch.luxestyle.app.data
 
 import android.content.Context
+import kotlinx.coroutines.sync.withLock
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -14,5 +15,12 @@ class Shop(context: Context) {
     private val prefs = context.getSharedPreferences("luxestyle", Context.MODE_PRIVATE)
     val cart = CartRepository(api, prefs)
     val wishlist = Wishlist(prefs)
+
+    // Menü ändert sich selten → einmal pro App-Start laden
+    private val menuLock = kotlinx.coroutines.sync.Mutex()
+    private var menuCache: List<MenuItem>? = null
+    suspend fun menu(): List<MenuItem> = menuLock.withLock {
+        menuCache ?: api.menu().also { menuCache = it }
+    }
     val recent = RecentlyViewed(prefs)
 }

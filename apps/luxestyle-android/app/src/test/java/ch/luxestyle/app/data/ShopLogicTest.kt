@@ -142,4 +142,23 @@ class ShopLogicTest {
         val c = ProductCard("1", "kleid", "Kleid", Image("https://cdn.shopify.com/a.jpg"), Money(34.9), Money(49.9), true)
         assertEquals(c, CardList.decode(CardList.encode(c)))
     }
+
+    @Test
+    fun lieferzeitAusDemVertrauensKasten() {
+        assertEquals("Lieferung ca. 10–20 Werktage", deliveryNote("<div style='x'>🚚 Lieferung 10–20 Werktage · 🔄 30 Tage</div>"))
+        assertEquals("Lieferung ca. 10–20 Tage", deliveryNote("Lieferung ca. 10-20 Tage"))
+        assertEquals("Lieferung ca. 10–20 Werktage", deliveryNote("Lieferung Schweiz ca. 10–20 Werktage"))
+        assertNull(deliveryNote("Versand nur in die Schweiz"))
+        assertNull(deliveryNote("Bei Schäden bei der Lieferung ersetzen wir es"))
+    }
+
+    @Test
+    fun filterWerdenZuShopifyEingaben() {
+        assertEquals("[]", Storefront.filterInputs(Filters()).toString())
+        assertEquals(
+            """[{"price":{"max":25.0}},{"available":true}]""",
+            Storefront.filterInputs(Filters(PriceBand.UNDER_25, onlyAvailable = true)).toString(),
+        )
+        assertEquals("""[{"price":{"min":100.0}}]""", Storefront.filterInputs(Filters(PriceBand.OVER_100)).toString())
+    }
 }

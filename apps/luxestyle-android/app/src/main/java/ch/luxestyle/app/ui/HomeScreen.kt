@@ -41,11 +41,13 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
-import ch.luxestyle.app.data.CollectionInfo
 import ch.luxestyle.app.data.HomeData
 import ch.luxestyle.app.data.MenuItem
 import ch.luxestyle.app.data.ProductCard
-import coil3.compose.AsyncImage
+import androidx.compose.foundation.Image
+import androidx.compose.ui.BiasAlignment
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 import java.util.Calendar
 
 /** Saison-Kollektion fürs Titelbild – wechselt von selbst mit dem Kalender. */
@@ -58,6 +60,8 @@ fun seasonFor(month: Int): Pair<String, String> = when (month) {
 }
 
 /** Mode zuerst: Reihen, die zum Shop passen (Kollektionen mit Technik/Haustier bleiben in den Kategorien). */
+const val WELCOME_CODE = "WELCOME10"
+
 private val RAILS = listOf("damen-mode", "sub-halsketten", "sub-taschen", "premium-geschenke")
 
 @Composable
@@ -66,19 +70,24 @@ fun HomeScreen() {
     val nav = LocalNav.current
     val (seasonHandle, seasonLabel) = androidx.compose.runtime.remember { seasonFor(Calendar.getInstance().get(Calendar.MONTH) + 1) }
     val home = rememberLoad("home") { shop.api.home(seasonHandle, RAILS.filter { it != seasonHandle }) }
-    val menu = rememberLoad("menu") { shop.api.menu() }
+    val menu = rememberLoad("menu") { shop.menu() }
     val liked by shop.wishlist.items.collectAsState()
     val recent by shop.recent.items.collectAsState()
 
     LazyColumn(Modifier.fillMaxSize().testTag("home"), contentPadding = PaddingValues(bottom = 24.dp)) {
         item { TopBar() }
         item { SearchPill { nav.search() } }
+        // Titelbild ist fest in der App: erscheint sofort, auch bei langsamem Netz
+        item {
+            val season = (home.state as? Load.Ok)?.value?.season
+            Hero(seasonLabel) { nav.collection(seasonHandle, season?.title) }
+        }
+        (menu.state as? Load.Ok)?.value?.let { items -> item { CategoryChips(items) } }
+        item { WelcomeBand() }
         when (val s = home.state) {
-            Load.Loading -> item { HeroSkeleton() }
-            is Load.Err -> item { Box(Modifier.height(420.dp)) { ErrorState(s.message, home.retry) } }
+            Load.Loading -> item { RailSkeleton() }
+            is Load.Err -> item { Box(Modifier.height(320.dp)) { ErrorState(s.message, home.retry) } }
             is Load.Ok -> {
-                s.value.season?.let { season -> item { Hero(season, seasonLabel) { nav.collection(season.handle, season.title) } } }
-                (menu.state as? Load.Ok)?.value?.let { items -> item { CategoryChips(items) } }
                 item { Promises() }
                 if (recent.size >= 2) {
                     item(key = "recent") {
@@ -136,36 +145,65 @@ private fun SearchPill(onClick: () -> Unit) {
 }
 
 @Composable
-private fun Hero(c: CollectionInfo, label: String, onClick: () -> Unit) {
+private fun Hero(season: String, onClick: () -> Unit) {
     Box(
-        Modifier.padding(horizontal = 16.dp).fillMaxWidth().aspectRatio(0.95f).clip(Radius.Card)
-            .background(MaterialTheme.colorScheme.surfaceVariant).clickable(role = Role.Button, onClick = onClick),
+        Modifier.padding(horizontal = 16.dp).fillMaxWidth().aspectRatio(0.82f).clip(Radius.Card)
+            .clickable(role = Role.Button, onClickLabel = "$season entdecken", onClick = onClick),
     ) {
-        c.image?.let {
-            AsyncImage(it.sized(1080), c.title, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
-        }
+        Image(
+            painterResource(R.drawable.hero_editorial), null,
+            contentScale = ContentScale.Crop, alignment = BiasAlignment(-0.05f, -0.4f),
+            modifier = Modifier.fillMaxSize(),
+        )
         Box(
             Modifier.fillMaxSize().background(
-                Brush.verticalGradient(0.45f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.62f)),
+                Brush.verticalGradient(0.5f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.55f)),
             ),
         )
-        Column(Modifier.align(Alignment.BottomStart).padding(20.dp)) {
-            Text(label.uppercase(), style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.85f))
-            Spacer(Modifier.height(6.dp))
-            Text(c.title, style = MaterialTheme.typography.displaySmall, color = Color.White)
-            Spacer(Modifier.height(14.dp))
+        Column(Modifier.align(Alignment.BottomStart).padding(22.dp)) {
+            Text("${season.uppercase()} · SCHWEIZER SHOP", style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.9f))
+            Spacer(Modifier.height(8.dp))
+            Text("Premium-Style.\nSchweizer Shop.", style = MaterialTheme.typography.displaySmall, color = Color.White)
+            Spacer(Modifier.height(16.dp))
             Box(
-                Modifier.clip(Radius.Pill).background(Color.White).padding(horizontal = 20.dp, vertical = 11.dp),
-            ) { Text("Jetzt entdecken", style = MaterialTheme.typography.labelLarge, color = Color(0xFF2B2B2B)) }
+                Modifier.clip(Radius.Pill).background(Color.White).padding(horizontal = 22.dp, vertical = 12.dp),
+            ) { Text("$season entdecken", style = MaterialTheme.typography.labelLarge, color = Color(0xFF2B2B2B)) }
         }
     }
 }
 
+/** Neukunden-Rabatt sichtbar machen – der Code ist im Shop aktiv (10 %, einmal pro Kunde). */
 @Composable
-private fun HeroSkeleton() {
-    Column(Modifier.padding(horizontal = 16.dp)) {
-        Shimmer(Modifier.fillMaxWidth().aspectRatio(0.95f).clip(Radius.Card))
-        Spacer(Modifier.height(24.dp))
+private fun WelcomeBand() {
+    val nav = LocalNav.current
+    val clipboard = LocalClipboardManager.current
+    Row(
+        Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp).fillMaxWidth().clip(Radius.Card)
+            .background(MaterialTheme.colorScheme.primary)
+            .clickable(role = Role.Button, onClickLabel = "Code kopieren") {
+                clipboard.setText(AnnotatedString(WELCOME_CODE))
+                nav.toast("Code kopiert – im Warenkorb mit einem Tipp einlösbar")
+            }
+            .padding(horizontal = 18.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text("−10 % auf deine erste Bestellung", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.onPrimary)
+            Spacer(Modifier.height(2.dp))
+            Text("Einfach an der Kasse einlösen", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.75f))
+        }
+        Box(
+            Modifier.clip(Radius.Small).border(1.dp, MaterialTheme.colorScheme.secondary, Radius.Small)
+                .padding(horizontal = 10.dp, vertical = 6.dp),
+        ) { Text(WELCOME_CODE, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onPrimary) }
+    }
+}
+
+@Composable
+private fun RailSkeleton() {
+    Column(Modifier.padding(horizontal = 16.dp, vertical = 24.dp)) {
+        Shimmer(Modifier.fillMaxWidth(0.5f).height(22.dp).clip(Radius.Small))
+        Spacer(Modifier.height(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             repeat(2) { TileSkeleton(Modifier.weight(1f)) }
         }

@@ -1,6 +1,7 @@
 package ch.luxestyle.app.screens
 
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasText
@@ -56,6 +57,30 @@ abstract class TourBase {
 
     protected fun shot(name: String) = rule.onRoot().captureRoboImage("$out/$name.png")
 
+    /** Wartet, bis Produktpreise („CHF 17.90") sichtbar sind – nicht nur die Filter-Chips. */
+    protected fun waitForPrices(min: Int = 2, timeout: Long = 40_000) {
+        val price = SemanticsMatcher("preis") { n ->
+            n.config.getOrNull(SemanticsProperties.Text).orEmpty().any { Regex("^CHF \\d+\\.\\d\\d$").matches(it.text) }
+        }
+        rule.waitUntil(timeout) {
+            rule.mainClock.advanceTimeBy(250)
+            rule.onAllNodes(price).fetchSemanticsNodes().size >= min
+        }
+    }
+
+    /** Scrollt, sobald der Eintrag existiert (Daten laden asynchron). */
+    protected fun scrollTo(tag: String, text: String, timeout: Long = 40_000) {
+        val end = System.currentTimeMillis() + timeout
+        while (true) {
+            try {
+                rule.onNodeWithTag(tag).performScrollToNode(hasText(text, substring = true)); return
+            } catch (e: AssertionError) {
+                if (System.currentTimeMillis() > end) throw e
+                settle(500)
+            }
+        }
+    }
+
     protected fun go(url: String) { links.tryEmit(url); rule.waitForIdle() }
 
     protected fun start() {
@@ -68,7 +93,7 @@ abstract class TourBase {
                 .build()
         }
         rule.setContent { LuxeTheme { LuxeApp(app.shop, links) } }
-        waitFor("Jetzt entdecken")
+        waitFor("entdecken"); waitFor("WELCOME10")
         settle()
     }
 
@@ -81,7 +106,7 @@ class ScreenTour : TourBase() {
     fun rundgang() {
         start()
         shot("01-start")
-        rule.onNodeWithTag("home").performScrollToNode(hasText("Halsketten", substring = true))
+        scrollTo("home", "Halsketten")
         settle()
         shot("02-start-reihen")
 
@@ -118,10 +143,14 @@ class ScreenTour : TourBase() {
     fun kategorienUndLeereZustaende() {
         start()
         rule.onAllNodesWithText("Kategorien").onFirst().performClick()
-        waitFor("Damen"); settle(1000)
-        rule.onAllNodesWithText("Damen").onFirst().performClick()
-        settle(1500)
+        waitFor("Bereiche"); settle()
         shot("09-kategorien")
+        rule.onAllNodesWithText("Damen").onFirst().performClick()
+        waitFor("Empfohlen"); settle()
+        shot("09b-damen-unterkategorien")
+        rule.onAllNodesWithText("Bis CHF 25").onFirst().performClick()
+        waitForPrices(); settle()
+        shot("09c-filter-bis-25")
         rule.onAllNodesWithText("Merkliste").onFirst().performClick()
         settle(800)
         shot("10-merkliste-leer")
@@ -145,6 +174,7 @@ class StoreShots : TourBase() {
     @Test
     fun playStore() {
         start()
+        settle()
         shot("store-1-start")
         go("https://luxestyle.ch/collections/sub-kleider")
         waitFor("Empfohlen"); settle()
@@ -160,5 +190,8 @@ class StoreShots : TourBase() {
         go("https://luxestyle.ch/search?q=halskette")
         waitFor("Treffer"); settle()
         shot("store-5-suche")
+        rule.onAllNodesWithText("Kategorien").onFirst().performClick()
+        waitFor("Bereiche"); settle()
+        shot("store-6-kategorien")
     }
 }

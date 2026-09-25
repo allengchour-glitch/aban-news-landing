@@ -67,27 +67,36 @@ class Storefront(
 
     suspend fun menu(): List<MenuItem> {
         val d = run("""query Menu { menu(handle: "main-menu") { items { title url items { title url } } } }""")
-        return Parse.menu(d.o("menu").a("items"))
+        val items = Parse.menu(d.o("menu").a("items"))
+        // Bilder der Hauptkategorien in einer zweiten, gebündelten Abfrage
+        val handles = items.mapNotNull { it.collectionHandle }.distinct()
+        if (handles.isEmpty()) return items
+        val q = handles.mapIndexed { i, h -> "c$i: collection(handle: \"$h\") { image { url altText width height } }" }
+        val img = runCatching { run("query Img { ${q.joinToString(" ")} }") }.getOrNull()
+        return items.map { m ->
+            val i = handles.indexOf(m.collectionHandle)
+            m.copy(image = img?.o("c$i")?.o("image")?.let(Parse::image))
+        }
     }
 
-    suspend fun collection(handle: String, sort: Sort, after: String?): Pair<CollectionInfo?, ProductPage> {
+    suspend fun collection(handle: String, sort: Sort, after: String?, filters: Filters = Filters()): Pair<CollectionInfo?, ProductPage> {
         val d = run(
-            """query C(${'$'}h: String!, ${'$'}after: String) { collection(handle: ${'$'}h) { ...Coll
-              products(first: 24, after: ${'$'}after, sortKey: ${sort.key}, reverse: ${sort.reverse}) {
+            """query C(${'$'}h: String!, ${'$'}after: String, ${'$'}f: [ProductFilter!]) { collection(handle: ${'$'}h) { ...Coll
+              products(first: 24, after: ${'$'}after, sortKey: ${sort.key}, reverse: ${sort.reverse}, filters: ${'$'}f) {
                 nodes { ...Card } pageInfo { hasNextPage endCursor } } } } $COLL $CARD""",
-            vars("h" to handle, "after" to after),
+            withFilters(vars("h" to handle, "after" to after), filters),
         )
         val c = d.o("collection") ?: throw ShopException("Kategorie nicht gefunden")
         return Parse.collection(c) to Parse.page(c.o("products"))
     }
 
-    suspend fun search(query: String, sort: Sort, after: String?): Pair<Int, ProductPage> {
+    suspend fun search(query: String, sort: Sort, after: String?, filters: Filters = Filters()): Pair<Int, ProductPage> {
         val key = if (sort == Sort.PRICE_ASC || sort == Sort.PRICE_DESC) "PRICE" else "RELEVANCE"
         val d = run(
-            """query S(${'$'}q: String!, ${'$'}after: String) {
-              search(query: ${'$'}q, first: 24, after: ${'$'}after, types: PRODUCT, sortKey: $key, reverse: ${sort == Sort.PRICE_DESC}) {
+            """query S(${'$'}q: String!, ${'$'}after: String, ${'$'}f: [ProductFilter!]) {
+              search(query: ${'$'}q, first: 24, after: ${'$'}after, types: PRODUCT, sortKey: $key, reverse: ${sort == Sort.PRICE_DESC}, productFilters: ${'$'}f) {
                 totalCount nodes { ... on Product { ...Card } } pageInfo { hasNextPage endCursor } } } $CARD""",
-            vars("q" to query, "after" to after),
+            withFilters(vars("q" to query, "after" to after), filters),
         )
         val s = d.o("search")
         return s.i("totalCount") to Parse.page(s)
@@ -168,6 +177,9 @@ class Storefront(
     private fun line(variantId: String, quantity: Int) =
         buildJsonObject { put("merchandiseId", variantId); put("quantity", quantity) }
 
+    private fun withFilters(base: JsonObject, f: Filters): JsonObject =
+        JsonObject(base + ("f" to filterInputs(f)))
+
     private fun vars(vararg pairs: Pair<String, String?>): JsonObject = buildJsonObject {
         pairs.forEach { (k, v) -> put(k, v?.let { JsonPrimitive(it) } ?: kotlinx.serialization.json.JsonNull) }
     }
@@ -181,6 +193,19 @@ class Storefront(
     }
 
     companion object {
+        /** Filter → Shopify `ProductFilter`-Liste (Preis in CHF, Lieferbarkeit). */
+        fun filterInputs(f: Filters) = buildJsonArray {
+            f.price?.let { band ->
+                add(buildJsonObject {
+                    put("price", buildJsonObject {
+                        band.min?.let { put("min", it) }
+                        band.max?.let { put("max", it) }
+                    })
+                })
+            }
+            if (f.onlyAvailable) add(buildJsonObject { put("available", true) })
+        }
+
         /** Hängt `@inContext(country: CH, language: DE)` hinter den Operationsnamen (Preise in CHF, Texte DE). */
         fun withSwissContext(query: String): String {
             val m = Regex("""^\s*(query|mutation)\s+\w+(\([^)]*\))?""").find(query) ?: return query

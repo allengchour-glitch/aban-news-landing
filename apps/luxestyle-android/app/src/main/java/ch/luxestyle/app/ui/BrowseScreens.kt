@@ -36,9 +36,22 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
+import ch.luxestyle.app.data.Filters
 import ch.luxestyle.app.data.MenuItem
+import ch.luxestyle.app.data.PriceBand
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import coil3.compose.AsyncImage
 import ch.luxestyle.app.data.Storefront.Sort
 
 @Composable
@@ -63,15 +76,20 @@ fun ScreenTitle(title: String, back: Boolean = false, trailing: @Composable () -
 @Composable
 fun CategoriesScreen() {
     val shop = LocalShop.current
-    val menu = rememberLoad("menu") { shop.api.menu() }
+    val nav = LocalNav.current
+    val menu = rememberLoad("menu") { shop.menu() }
     Column(Modifier.fillMaxSize()) {
         ScreenTitle("Kategorien")
         LoadContent(menu) { items ->
-            var open by rememberSaveable { mutableStateOf<String?>(null) }
-            LazyColumn(contentPadding = PaddingValues(bottom = 24.dp)) {
-                items(items, key = { it.url }) { item ->
-                    CategoryRow(item, expanded = open == item.url) { open = if (open == item.url) null else item.url }
-                    HorizontalDivider(Modifier.padding(horizontal = 20.dp), color = LocalLuxe.current.line)
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 24.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                items(items.size, key = { items[it].url }) { i ->
+                    val m = items[i]
+                    CategoryTile(m) { m.collectionHandle?.let { nav.collection(it, m.title) } }
                 }
             }
         }
@@ -79,50 +97,59 @@ fun CategoriesScreen() {
 }
 
 @Composable
-private fun CategoryRow(item: MenuItem, expanded: Boolean, toggle: () -> Unit) {
-    val nav = LocalNav.current
-    val turn by animateFloatAsState(if (expanded) 90f else 0f, label = "turn")
-    Column {
-        Row(
-            Modifier.fillMaxWidth().clickable(role = Role.Button) {
-                if (item.children.isEmpty()) item.collectionHandle?.let { nav.collection(it, item.title) } else toggle()
-            }.padding(horizontal = 20.dp, vertical = 18.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(item.title, style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
-            Icon(
-                painterResource(R.drawable.ic_chevron), null, tint = LocalLuxe.current.muted,
-                modifier = Modifier.size(20.dp).rotate(turn),
-            )
+private fun CategoryTile(item: MenuItem, onClick: () -> Unit) {
+    Box(
+        Modifier.fillMaxWidth().aspectRatio(0.86f).clip(Radius.Card)
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .clickable(role = Role.Button, onClick = onClick),
+    ) {
+        item.image?.let {
+            AsyncImage(it.sized(540), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
         }
-        AnimatedVisibility(expanded) {
-            Column(Modifier.padding(start = 20.dp, end = 20.dp, bottom = 12.dp)) {
-                SubRow("Alles aus ${item.title}", strong = true) { item.collectionHandle?.let { nav.collection(it, item.title) } }
-                item.children.forEach { child ->
-                    SubRow(child.title) { child.collectionHandle?.let { nav.collection(it, child.title) } }
-                }
+        Box(
+            Modifier.fillMaxSize().background(
+                Brush.verticalGradient(0.45f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.6f)),
+            ),
+        )
+        Column(Modifier.align(Alignment.BottomStart).padding(14.dp)) {
+            Text(item.title, style = MaterialTheme.typography.titleLarge, color = Color.White, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            if (item.children.isNotEmpty()) {
+                Text(
+                    "${item.children.size} Bereiche", style = MaterialTheme.typography.bodySmall,
+                    color = Color.White.copy(alpha = 0.8f),
+                )
             }
         }
     }
 }
 
 @Composable
-private fun SubRow(text: String, strong: Boolean = false, onClick: () -> Unit) {
-    Text(
-        text,
-        style = if (strong) MaterialTheme.typography.titleSmall else MaterialTheme.typography.bodyLarge,
-        color = if (strong) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onSurface,
-        modifier = Modifier.fillMaxWidth().clip(Radius.Small).clickable(onClick = onClick).padding(vertical = 10.dp, horizontal = 4.dp),
-    )
-}
-
-@Composable
-fun SortRow(sort: Sort, options: List<Sort> = Sort.entries, onSort: (Sort) -> Unit) {
+fun SortRow(sort: Sort, options: List<Sort> = Sort.entries, edge: Dp = 16.dp, onSort: (Sort) -> Unit) {
     LazyRow(
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        contentPadding = PaddingValues(horizontal = edge, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(options) { s -> ChoiceChip(s.label, selected = s == sort) { onSort(s) } }
+    }
+}
+
+/** Preis-Stufen und „nur lieferbar" als Chips – mehr Filter pflegt der Shop derzeit nicht sauber. */
+@Composable
+fun FilterRow(filters: Filters, edge: Dp = 16.dp, onChange: (Filters) -> Unit) {
+    LazyRow(
+        contentPadding = PaddingValues(horizontal = edge, vertical = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        item {
+            ChoiceChip("Nur lieferbar", selected = filters.onlyAvailable) {
+                onChange(filters.copy(onlyAvailable = !filters.onlyAvailable))
+            }
+        }
+        items(PriceBand.entries) { band ->
+            ChoiceChip(band.label, selected = filters.price == band) {
+                onChange(filters.copy(price = if (filters.price == band) null else band))
+            }
+        }
     }
 }
 
@@ -131,20 +158,35 @@ fun CollectionScreen(handle: String, initialTitle: String) {
     val shop = LocalShop.current
     val nav = LocalNav.current
     var sort by rememberSaveable { mutableStateOf(Sort.FEATURED) }
+    var filters by remember { mutableStateOf(Filters()) }
     var title by rememberSaveable { mutableStateOf(initialTitle) }
     var description by rememberSaveable { mutableStateOf("") }
+    val menu = (rememberLoad("menu") { shop.menu() }.state as? Load.Ok)?.value
+    // Unterkategorien aus dem Shop-Menü, falls diese Kollektion dort Kinder hat
+    val children = menu?.firstOrNull { it.collectionHandle == handle }?.children.orEmpty()
     Column(Modifier.fillMaxSize()) {
         ScreenTitle(title.ifEmpty { " " }, back = true)
         ProductGrid(
-            key = handle to sort,
+            key = Triple(handle, sort, filters),
             load = { cursor ->
-                val (info, page) = shop.api.collection(handle, sort, cursor)
+                val (info, page) = shop.api.collection(handle, sort, cursor, filters)
                 info?.let { if (title.isEmpty()) title = it.title; description = it.description }
                 page
             },
             onOpen = { nav.product(it.handle) },
             header = {
-                if (description.isNotBlank()) {
+                if (children.isNotEmpty()) {
+                    item(span = { GridItemSpan(maxLineSpan) }) {
+                        LazyRow(
+                            contentPadding = PaddingValues(bottom = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            items(children, key = { it.url }) { c ->
+                                ChoiceChip(c.title, selected = false) { c.collectionHandle?.let { nav.collection(it, c.title) } }
+                            }
+                        }
+                    }
+                } else if (description.isNotBlank()) {
                     item(span = { GridItemSpan(maxLineSpan) }) {
                         Text(
                             description, style = MaterialTheme.typography.bodyMedium, color = LocalLuxe.current.muted,
@@ -153,10 +195,16 @@ fun CollectionScreen(handle: String, initialTitle: String) {
                     }
                 }
                 item(span = { GridItemSpan(maxLineSpan) }) {
-                    SortRow(sort, listOf(Sort.FEATURED, Sort.BEST, Sort.NEW, Sort.PRICE_ASC, Sort.PRICE_DESC)) { sort = it }
+                    Column {
+                        SortRow(sort, listOf(Sort.FEATURED, Sort.BEST, Sort.NEW, Sort.PRICE_ASC, Sort.PRICE_DESC), edge = 0.dp) { sort = it }
+                        FilterRow(filters, edge = 0.dp) { filters = it }
+                    }
                 }
             },
-            empty = { EmptyState(R.drawable.ic_grid, "Gerade leer", "In dieser Kategorie ist im Moment nichts.") },
+            empty = {
+                if (filters.isEmpty) EmptyState(R.drawable.ic_grid, "Gerade leer", "In dieser Kategorie ist im Moment nichts.")
+                else EmptyState(R.drawable.ic_grid, "Nichts mit diesen Filtern", "Lockere die Filter etwas.", "Filter entfernen") { filters = Filters() }
+            },
         )
     }
 }

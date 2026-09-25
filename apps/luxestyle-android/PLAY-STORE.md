@@ -5,10 +5,12 @@ Stand 2026-09-25. Paket-ID **`ch.luxestyle.app`**, Version 1.0.0 (versionCode 1)
 ## Was die App ist
 Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne Token, Shopify erlaubt
 öffentliches Lesen und den Warenkorb. Preise immer in CHF (`@inContext(country: CH)`).
-- **Nativ:** Start (Saison-Titelbild wechselt mit dem Kalender, Reihen Damen-Mode/Halsketten/Taschen/
-  Geschenke, zuletzt angesehen), Kategorien aus dem Shop-Menü, Kollektion mit Sortierung und Nachladen,
+- **Nativ:** Start (Titelbild der Webseite fest in der App, Saison-Knopf wechselt mit dem Kalender,
+  WELCOME10-Band, Reihen Damen-Mode/Halsketten/Taschen/Geschenke, zuletzt angesehen), Kategorien als
+  Bild-Kacheln, Kollektion mit Unterkategorien, Sortierung, Preis-/Lieferbar-Filter und Nachladen,
   Produkt mit Galerie + Vollbild-Zoom + Varianten (unkaufbare ausgegraut) + „Passt dazu", Suche mit
-  Vorschlägen, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode und Gratis-Versand-Balken.
+  Vorschlägen, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode (WELCOME10 per Tipp) und
+  Gratis-Versand-Balken. Produktseite zeigt die Lieferzeit aus dem Beschreibungstext.
 - **Web (`WebActivity`):** nur Kasse, Kundenkonto, Rechtstexte. TWINT/PayPal/Mail öffnen die passende App.
 - Warenkorb trägt das Attribut `_quelle = android_app`, Web-Aufrufe `utm_source=android_app`,
   geteilte Links `utm_source=app_share`.
@@ -30,7 +32,7 @@ Der zweite Befehl ist ein **Rundgang durch die echte App mit echten Shopdaten** 
 Roborazzi) → Bilder in `screens/`. Ersetzt den fehlenden Emulator; Store-Bilder kommen von dort.
 Auf GitHub: Actions → „LuxeStyle Android-App bauen" (nur manuell).
 
-Geprüft 2026-09-25: 18/18 Tests, Rundgang 13 Bilder ok, Lint 0 Fehler, R8-Release ok.
+Geprüft 2026-09-25: 20/20 Tests, Rundgang 15 Bilder ok, Lint 0 Fehler, R8-Release ok.
 **Auf einem echten Handy noch nicht** → vor dem Einreichen „Interner Test".
 
 ## Upload-Schlüssel

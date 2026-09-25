@@ -1,6 +1,17 @@
 package ch.luxestyle.app.data
 
 /**
+ * Lieferzeit aus dem Vertrauens-Kasten der Beschreibung („Lieferung 10–20 Werktage").
+ * Der Kasten selbst wird entfernt, die Angabe zeigt die App dann sichtbar oben an.
+ */
+fun deliveryNote(html: String): String? {
+    val m = Regex("Lieferung\\s+(?:Schweiz\\s+)?(?:ca\\.\\s*)?(\\d+\\s*[–-]\\s*\\d+)\\s*(Werktage|Tage)")
+        .find(html) ?: return null
+    val range = m.groupValues[1].replace(Regex("\\s*[–-]\\s*"), "–")
+    return "Lieferung ca. $range ${m.groupValues[2]}"
+}
+
+/**
  * Macht Shopify-Beschreibungen app-tauglich: Vertrauens-Kästen mit Inline-Style (die App zeigt ihre eigenen),
  * Skripte, Bilder und Tabellen-Layouts raus; Listen als „•"-Zeilen, Zwischentitel fett.
  */
