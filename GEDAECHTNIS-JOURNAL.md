@@ -949,6 +949,17 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 83 (25.09.2026) — 🏆 «weltklasse»: die Saison-Reihe stand auf Platz 17, und eine Kollektion zählt Entwürfe mit
+Betreiber «weltklasse luxestyle machen». Zwei Befunde: (a) Die Halloween-Reihe war als erste WECHSEL-Reihe auf Platz 17 von 25 —
+die Rotation setzte den Saisonkatalog richtig, aber nie die POSITION. Regel 6 in `homepage_katalog_rotation.py` stellt sie im
+Fenster direkt unter die Herbst-Reihe (live 17→5). (b) «10 gleichnamige Paare in Halloween» sah nach Dubletten aus — 6 echte
+Fortura-Doppel waren aber längst DRAFT; die Kollektion (230) zählt Entwürfe mit. Der aktive Vollexport (49'888) hatte genau
+EIN Produktpaar mit gleicher Fortura-SKU, und das war schlimmer als ein Doppel: «Hexe Magie · Gr. 128cm» führte als 140 cm das
+Falbala-Kostüm (andere EAN) unter Hexen-Foto → DRAFT + 301 aufs volle Set.
+**Lehren:** (1) Saisonal richtig heisst Inhalt UND Platz — wer den Katalog rotiert, muss auch die Position prüfen. (2) Eine
+Kollektionszahl ist kein Schaufenster: Dubletten erst an `status:ACTIVE` messen. (3) Gleiche SKU in zwei aktiven Produkten
+zuerst auf FREMDE Varianten prüfen (EAN je Variante), nicht nur auf Doppel.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16672,3 +16683,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🎵 **Server-Agent tot = Platte voll durch Voll-Klon (5 GB Historie + Reels) → `server/luxe-agent-schlank.sh` (flach+sparse, Patch statt Rebase). Musik v2: Stück nach Warengruppe, Einstieg am Energie-Fenster statt Intro, −14 LUFS, keine Wiederholung unter 3.** Wer ins Repo schreibt, füllt jede Platte, die es klont → Journal Nachtrag 41
 - 2026-09-23 · 🔗 **«Direktlinks kommentieren bei jedem Post»: klickbar nur auf Facebook (IG/TikTok nein, Shorts seit 08/2023 nein, Pinterest = Pin selbst) → `fb_link_kommentar.mjs` (Link aus Text/Queue/Caption, FB-Reel = Post+Reel → Doppel-Sperre), 7 live, Autopilot 30 Min.** Erst prüfen, wo der Link wirkt → Journal Nachtrag 42
 - 2026-09-23 · 🔑 **Social-Messung umgesetzt (1): Karussell-Slides `01.jpg` kollidierten im gemeinsamen Ledger (jedes 2. Set = «Doppelpost») → `mediaKey` mit Set-Ordner; Kristall-Quittung lag im Autostash (nur `igLiveHas` schützte) → nachgetragen + 573 Ledger-Zeilen per Union; Klingenregel englisch + «Messer mit Hülle» = Klinge im Paket (14 neu, 0 weg, 6 gedraftet); Kollektion «Gerade auf Instagram» für den Bio-Link.** Ein Zubehörwort im Titel ist kein Zubehör im Paket; Diff über den Voll-Export statt nur Kanarienvögel → Journal Nachtrag 43
+- 2026-09-23 · 🧬 **Konfliktmarker im Repo: `autocommit.sh` liess einen gescheiterten Merge offen, der nächste `add -A dropship/`+commit schloss ihn MIT Markern ab (Server, 3 Commits) → `_kategorie_stand.json` unlesbar. Jetzt Auflösen je Dateiart (Ledger Union, Zustand eigene, Code Abbruch) + Marker-Sperre vor dem Push, Durchlauf `--einmal` (Server übernimmt ohne Neustart).** Wer automatisch merged, erkennt den offenen Merge VOR dem nächsten `add` → Journal Nachtrag 44
