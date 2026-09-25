@@ -31542,3 +31542,6 @@ gid://shopify/Product/15470351548801	CHF 7.44	3 Varianten	Quadratischer Anhänge
 gid://shopify/Product/15470351581569	CHF 12.33	2 Varianten	Gartenstake
 gid://shopify/Product/15470351614337	CHF 8.36	6 Varianten	Perlen-Armband und Halskette
 gid://shopify/Product/15470351647105	CHF 95.52	1 Varianten	Betonstempel
+gid://shopify/Product/15470351679873	CHF 7.61	3 Varianten	Frucht-Necklace · Damen
+gid://shopify/Product/15470351712641	CHF 69.77	2 Varianten	Solar-Reinigungsbürste
+gid://shopify/Product/15470351745409	CHF 7.77	2 Varianten	Regenbogen-Halskette

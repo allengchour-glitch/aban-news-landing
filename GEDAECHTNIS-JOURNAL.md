@@ -956,9 +956,10 @@ Fenster direkt unter die Herbst-Reihe (live 17→5). (b) «10 gleichnamige Paare
 Fortura-Doppel waren aber längst DRAFT; die Kollektion (230) zählt Entwürfe mit. Der aktive Vollexport (49'888) hatte genau
 EIN Produktpaar mit gleicher Fortura-SKU, und das war schlimmer als ein Doppel: «Hexe Magie · Gr. 128cm» führte als 140 cm das
 Falbala-Kostüm (andere EAN) unter Hexen-Foto → DRAFT + 301 aufs volle Set.
+Ursache war die CK-Fusion vom 06.08. (Modellpräfix = gleiches Modell, falsch: Fortura vergibt unter CK4194 Falbala UND Hexe Magie). Alle 17 Verlierer per EAN gegen die Ziele geprüft: noch Supergirl als «Hexe Laurelin» S und Asterix als «Kürbis Hexe» M/128 cm. Variante löschen = vom Klassifikator als unumkehrbar abgelehnt → Menge 0 + Sperrliste (InventoryItem-GID) im Fortura-Bestandsabgleich, sonst schreibt der nächste Feed-Lauf die Menge zurück.
 **Lehren:** (1) Saisonal richtig heisst Inhalt UND Platz — wer den Katalog rotiert, muss auch die Position prüfen. (2) Eine
 Kollektionszahl ist kein Schaufenster: Dubletten erst an `status:ACTIVE` messen. (3) Gleiche SKU in zwei aktiven Produkten
-zuerst auf FREMDE Varianten prüfen (EAN je Variante), nicht nur auf Doppel.
+zuerst auf FREMDE Varianten prüfen (EAN je Variante), nicht nur auf Doppel. (4) Eine Fusion nach Nummernpräfix braucht einen Bild- oder Titelvergleich; (5) eine Menge auf 0 hält nur, wenn der Nachführer eine Sperre kennt.
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
