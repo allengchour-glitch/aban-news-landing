@@ -18,3 +18,5 @@
 15496498184577	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	Mini HD-Überwachungskamera mit Nachtsicht
 15517526032769	ueberwachung	kamera-zum-diskreten-platzieren	tag:verdeckte-ueberwachung	Digitaler Recorder im Armbanduhr-Design
 15522152415617	waffe	waffe-gegen-menschen	tag:waffe-pruefen	Taschenmesser für Survival und Selbstverteidigung
+15448841978241	waffe	waffennachbildung-alltagsgegenstand	google-kanal-entfernt,tag:waffe-pruefen	Faltbares Sturmfeuerzeug mit Jet-Flamme
+15501006799233	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	IR-Nachtsicht-Kamera-Stift mit Bildschirm

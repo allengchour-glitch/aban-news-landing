@@ -949,6 +949,17 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 85 (25.09.2026) — 🔫 Waffen-Wächter sah seit der Grind-Pause nur 1 Seite — und der geteilte Export hat keinen Text
+Anlass: Google «Inappropriate image» 442. Kontaktbogen: meist Googles unvorhersagbares Bildurteil (Wäsche, Totenköpfe, Flammen),
+darunter aber ein Feuerzeug in PISTOLENFORM — Titel «Faltbares Sturmfeuerzeug mit Jet-Flamme», kein Waffenwort. Der Wächter lief
+täglich mit `EXPORT=/nonexistent SEIT=3 Tage` = 1 Seite Neuware; `/tmp/export.jsonl` hätte ohnehin nicht geholfen: 0 von 49'892
+Zeilen mit descriptionHtml. Vollrunde live (498 Seiten): 5 Treffer, 2 echt (Feuerzeug, Aufnahme-Stift «diskret festhalten»),
+3 Fehltreffer («MP5» = Autoradio-Videoformat ×2, Seifenblasen-Maschinenpistole). Neue Regel + 2 Sperren in heikel_zweck.json,
+Wochen-Vollrunde mit Stempel NACH Exit 0 (auch für den Medizin-Wächter nachgezogen).
+**Lehren:** (1) Jeder Wächter mit SEIT-Fenster ist seit der Grind-Pause ein Wächter über nichts — die Frage heisst «wie viele
+Seiten hat der letzte Lauf gesehen?». (2) Ein Modellkürzel als Waffenanker braucht eine Sperrliste für seine anderen Bedeutungen
+(MP5, M16-Schraube, Glocke). (3) Stempel für seltene Vollrunden erst nach Erfolg — bei stündlichen Neustarts sonst eine Woche verloren.
+
 ### Nachtrag 84 (25.09.2026) — 💤 Still gestorben: ein Neustart hinterlässt keine Fehlerzeile
 Ampel 12:22 «FORTURA-BESTAND 1 T alt». Der Tageslauf hatte um 02:10 den Feed geladen und starb beim Container-Neustart —
 ohne Traceback, ohne Schlusszeile, Sperrdatei auf totem PID. Das Tor setzt seinen Anspruch VOR dem Lauf (richtig gegen
@@ -16697,3 +16708,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🔑 **Social-Messung umgesetzt (1): Karussell-Slides `01.jpg` kollidierten im gemeinsamen Ledger (jedes 2. Set = «Doppelpost») → `mediaKey` mit Set-Ordner; Kristall-Quittung lag im Autostash (nur `igLiveHas` schützte) → nachgetragen + 573 Ledger-Zeilen per Union; Klingenregel englisch + «Messer mit Hülle» = Klinge im Paket (14 neu, 0 weg, 6 gedraftet); Kollektion «Gerade auf Instagram» für den Bio-Link.** Ein Zubehörwort im Titel ist kein Zubehör im Paket; Diff über den Voll-Export statt nur Kanarienvögel → Journal Nachtrag 43
 - 2026-09-23 · 🧬 **Konfliktmarker im Repo: `autocommit.sh` liess einen gescheiterten Merge offen, der nächste `add -A dropship/`+commit schloss ihn MIT Markern ab (Server, 3 Commits) → `_kategorie_stand.json` unlesbar. Jetzt Auflösen je Dateiart (Ledger Union, Zustand eigene, Code Abbruch) + Marker-Sperre vor dem Push, Durchlauf `--einmal` (Server übernimmt ohne Neustart).** Wer automatisch merged, erkennt den offenen Merge VOR dem nächsten `add` → Journal Nachtrag 44
 - 2026-09-23 · 🔓 **Social-Max integriert + zwei Sperr-Klassen an der Wurzel: Stimme wäre per edge-tts (keine Werbelizenz) bei 50 % live gegangen → opt-in; `rebase.autoStash` liess «unmerged» Dateien ohne MERGE_HEAD → `git_sichern.sh` (Merge, kein Autostash) für Motor/Committer/mich; Deadlock Text-Sperre ⟷ Shopify-Schranke (6 Wächter bis 3 h) → wer fd 8 hält, wartet nie; Heilversprechen-Vollscan 26 (23 entschärft, 3 gedraftet).** Sperren in fester Reihenfolge; neue Fähigkeit mit Rechtsfrage startet aus → Journal Nachtrag 45
+- 2026-09-23 · 🗑️ **«JA fb löschen»: 120 FB-Beiträge weg (DOPPEL/PRODUKT/TON), 23 mit nur falscher Caption bleiben stehen. Der Lauf meldete «92 Fehler»: gelöschte Seiten-Posts antworten beim Rücklesen mit Code 10, nicht 100 → Wahrheit = Seiten-Listing; `fb_qualitaet_loeschen.mjs`.** Scharfe Läufe voll ins Log, nie durch `tail` → Journal Nachtrag 46
