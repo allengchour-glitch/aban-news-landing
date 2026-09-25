@@ -143,11 +143,17 @@ python3 daytrading_test.py
 ```
 
 Er testet neun Tagesregeln (der ersten Stunde folgen, gegen sie setzen, Ausbruch aus der
-Anfangs-Spanne) auf Stundenkerzen der letzten zwei Jahre für Gold, Silber, Öl, S&P-500-Future und
-Bitcoin. Die Regel wählt der Test jeweils auf 120 Tagen und handelt damit die nächsten 20
-ungesehenen Tage. Das Ergebnis landet in `daytrading-bericht.md`.
+Anfangs-Spanne) auf Stundenkerzen der letzten zwei Jahre: Gold, Silber, Öl, S&P-500-Future, Bitcoin
+und neun Aktien (Apple, Nvidia, Tesla, Microsoft, Amazon, Nestlé, Novartis, Roche, UBS). Die Regel
+wählt der Test jeweils auf 120 Tagen und handelt damit die nächsten 20 ungesehenen Tage. Das
+Ergebnis landet in `daytrading-bericht.md`.
 
-Märkte ändern: In `daytrading_test.py` oben die Zeile `MAERKTE = {...}` anpassen (Yahoo-Symbole).
+**Stabilitätsprüfung:** Derselbe Test läuft mit allen 20 möglichen Startpunkten der Blöcke. Die
+Spalte „im Plus“ zeigt, bei wie vielen davon nach Kosten ein Gewinn bleibt. Ein gutes Ergebnis bei
+nur einem Startpunkt ist Zufall der Einteilung.
+
+Märkte ändern: In `daytrading_test.py` oben `ROHSTOFFE = {...}` und `AKTIEN = {...}` anpassen
+(Yahoo-Symbole). Aktien brauchen mindestens 6 Stundenkerzen pro Tag, US-Börsen haben nur 7.
 
 ## 7. Unsere eigenen Ergebnisse
 

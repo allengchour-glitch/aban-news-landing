@@ -101,7 +101,7 @@ jobs:
           ZONE=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             "https://api.cloudflare.com/client/v4/zones?name=abannews.com" | python3 -c "import json,sys;r=json.load(sys.stdin).get('result') or [];print(r[0]['id'] if r else '')")
           if [ -z "$ZONE" ]; then echo "::warning::Zone abannews.com nicht lesbar (Token ohne Zone:Read) — Cache nicht geleert."; exit 0; fi
-          git ls-files '*.md' | grep -v '^downloads/' | python3 -c "
+          { git ls-files '*.md' | grep -v '^downloads/'; git ls-files 'content/*'; } | python3 -c "
           import json,sys
           urls=['https://abannews.com/'+l.strip() for l in sys.stdin if l.strip()]
           for i in range(0,len(urls),30): print(json.dumps({'files':urls[i:i+30]}))" > /tmp/purge.jsonl

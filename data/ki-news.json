@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-24T09:17:22Z",
+ "stand": "2026-09-25T18:06:52Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Umfrage: Widerstand der US-Amerikaner gegen KI-Datencenter wächst",
-   "u": "https://www.golem.de/news/umfrage-widerstand-der-us-amerikaner-gegen-ki-datencenter-waechst-2609-213389.html",
-   "q": "Golem",
-   "d": "2026-09-24T08:23:02Z",
-   "s": "Donald Trump findet KI-Datencenter gut, die US-Amerikaner eher nicht - auch Republikaner tendieren verstärkt zu negativen Ansichten. (Rechenzentrum, KI)",
-   "sprache": "de"
+   "t": "Proaction boosts sales 60% and saves 75+ hours with Codex",
+   "u": "https://openai.com/index/proaction",
+   "q": "OpenAI",
+   "d": "2026-09-25T19:00:00Z",
+   "s": "With Codex, GPT-Live-1, and GPT-6 Astra, Proaction builds, operates, and sells modern fleet management faster.",
+   "sprache": "en"
   },
   {
-   "t": "heise+ | Raus aus Adobes Creative Cloud: Acht Photoshop-Alternativen im Praxischeck",
-   "u": "https://www.heise.de/ratgeber/Raus-aus-Adobes-Creative-Cloud-Acht-Photoshop-Alternativen-im-Praxischeck-11453137.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-09-24T08:15:00Z",
-   "s": "Abo-Frust, Cloud-Zwang, KI-Bedenken: Wir zeigen, was Photoshop-Alternativen wie Affinity, ACDSee, GIMP und Co. wirklich leisten.",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Angriff auf Australien: OpenAI-Agent hat sich in Regierungsportal gehackt",
-   "u": "https://www.golem.de/news/australien-openai-agent-hat-sich-in-regierungsportal-gehackt-2609-213388.html",
-   "q": "Golem",
-   "d": "2026-09-24T08:08:02Z",
-   "s": "Ein KI-Agent von OpenAI sollte australische Gesundheitsstatistiken recherchieren. Dabei ist er aber zu weit gegangen und hat geschützte Daten abgerufen. (OpenAI, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Diese KI erstellt keinen Text, sie trifft Entscheidungen: Wie Jev funktioniert – und welche Alternativen es gibt",
-   "u": "https://t3n.de/news/jev-ki-modell-entscheidungen-kev-1764845/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-24T08:00:00Z",
-   "s": "Mit Jev sorgt erneut ein KI-Modell für Wirbel. Das Besondere: Es erzeugt keinen Text, sondern trifft Entscheidungen – und zwar schnell. Wie das funktioniert, woweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Tamagotchi trifft KI-Agent: Meta kündigt KI-Gadget Muse Charm an",
-   "u": "https://www.heise.de/news/Tamagotchi-trifft-KI-Agent-Meta-kuendigt-KI-Gadget-Muse-Charm-an-11463998.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-24T07:09:00Z",
-   "s": "Meta hat mit Muse Charm ein neues KI-Gadget für seinen Agenten Muse vorgestellt. Das Gerät soll als tragbarer Begleiter für den Alltag dienen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Weniger Struggle, mehr Struktur: Wie KI bei Präsentationen hilft",
-   "u": "https://t3n.de/news/mehr-struktur-wie-ki-bei-praesentationen-hilft-prompt-vorlage-1764867/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-24T07:00:41Z",
-   "s": "Präsentationen kosten Zeit und Nerven, dazu verlierst du dich leicht in Details. Mit KI soll die Erstellung schneller gelingen und das Ergebnis mehr überzeugen. Den passenden Prompt und Tipps zur Anwe…",
-   "sprache": "de"
-  },
-  {
-   "t": "Everything new coming to Meta’s AI agent Muse",
-   "u": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
+   "t": "Some Supabase customers are publicly exposing reams of people’s data to the web",
+   "u": "https://techcrunch.com/2026/09/25/some-supabase-customers-are-publicly-exposing-reams-of-peoples-data-to-the-web/",
    "q": "TechCrunch AI",
-   "d": "2026-09-24T01:13:32Z",
-   "s": "CEO Mark Zuckerberg kicked off the company’s annual Connect event in Menlo Park on Wednesday with a keynote that made one thing clear: Meta is going all-in on Muse. It's even coming to Meta's AI glass…",
+   "d": "2026-09-25T17:29:46Z",
+   "s": "The findings highlight how AI-generated and vibe-coded apps can spill and expose users' data when not configured or secured properly.",
    "sprache": "en"
   },
   {
-   "t": "Meta made a Tamagotchi-like wearable for its Muse AI agent",
-   "u": "https://techcrunch.com/2026/09/23/meta-made-a-tamagotchi-like-wearable-for-its-muse-ai-agent/",
+   "t": "Astra and Opus just passed Turing’s other test",
+   "u": "https://techcrunch.com/2026/09/25/astra-and-opus-just-passed-turings-other-test/",
    "q": "TechCrunch AI",
-   "d": "2026-09-24T00:46:17Z",
-   "s": "The tiny hardware device creates another mobile home for its AI agent Muse.",
+   "d": "2026-09-25T17:24:36Z",
+   "s": "Frontier AI models are finishing Alan Turing's World War II codebreaking work.",
    "sprache": "en"
   },
   {
-   "t": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
-   "u": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
-   "q": "Hugging Face",
-   "d": "2026-09-23T18:41:40Z",
-   "s": "",
-   "sprache": "en"
+   "t": "Anzeige: Vibe Coding: Softwareentwicklung mit KI praktisch umsetzen",
+   "u": "https://www.golem.de/news/anzeige-vibe-coding-softwareentwicklung-mit-ki-praktisch-umsetzen-2609-213170.html",
+   "q": "Golem",
+   "d": "2026-09-25T16:45:02Z",
+   "s": "Vibe Coding verändert, wie Software-Prototypen entstehen. Ein Online-Workshop vermittelt den Umgang mit KI-Coding-Tools, Prompting, Debugging und Qualitätssicherung. (Golem Karrierewelt, Programmiersp…",
+   "sprache": "de"
   },
   {
-   "t": "Google Beam expands with new regions, partners, and customers",
-   "u": "https://blog.google/innovation-and-ai/technology/research/google-beam-expansion/",
-   "q": "Google AI",
-   "d": "2026-09-23T18:00:00Z",
-   "s": "We’re expanding Google Beam to five new countries, and partnering with Industrious for an extended network.",
+   "t": "KI-Rechenzentren: Abwärme heizt angrenzende Wohngebiete auf",
+   "u": "https://www.heise.de/news/KI-Rechenzentren-Abwaerme-heizt-angrenzende-Wohngebiete-auf-11466676.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-25T16:01:00Z",
+   "s": "KI-Rechenzentren geben enorme Mengen Abwärme ab. Erste Studien belegen, dass dies die Temperaturen in angrenzenden Wohngebieten messbar ansteigen lässt.",
+   "sprache": "de"
+  },
+  {
+   "t": "(g+) US-Politik: Maga-Anhängerschaft schreckt zurück, weil Trump voll auf KI setzt",
+   "u": "https://www.golem.de/news/us-politik-maga-anhaengerschaft-schreckt-zurueck-weil-trump-voll-auf-ki-setzt-2609-213453.html",
+   "q": "Golem",
+   "d": "2026-09-25T16:00:01Z",
+   "s": "Mit seiner bedingungslosen KI-Unterstützung bringt Trump vor den Midterms selbst loyale Maga-Anhänger gegen sich auf. Ein Stimmungsbild aus den USA von Financial-Times-Autor Joe Miller. Von Joe Miller…",
+   "sprache": "de"
+  },
+  {
+   "t": "Wasserzeichen für KI-Texte: Anthropic weitet Anwendung aus",
+   "u": "https://www.heise.de/news/Wasserzeichen-fuer-KI-Texte-Anthropic-weitet-Anwendung-aus-11466692.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-25T14:40:00Z",
+   "s": "Anthropic versieht weitere Claude-Modelle mit unsichtbaren Text-Wasserzeichen. Das Verfahren soll mit Claude erzeugte Texte erkennbar machen, hat aber Grenzen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Erweiterung per KI erstellen: So geht das in Safari – und so holst du noch mehr raus",
+   "u": "https://t3n.de/news/erweiterung-beschreiben-safari-browser-macos-ios-ipad-1765163/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-25T13:30:06Z",
+   "s": "Unter macOS, iOS und iPadOS 27 könnt ihr Browser-Erweiterungen einfach über einen KI-Prompt erzeugen. Wir zeigen, wo die Grenzen liegen – und wie ihr sie mit eiweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Agenten greifen Onlineshops an – für 25 Dollar pro Shop",
+   "u": "https://t3n.de/news/ki-agenten-greifen-onlineshops-an-fuer-25-dollar-pro-shop-1765143/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-25T12:45:02Z",
+   "s": "Für Onlinehändler:innen könnte sich die Bedrohungslage grundlegend verschieben. Autonome KI-Agenten können Shops automatisiert scannen, Schwachstellen testen und Angriffe vorbereiten – und das im Schn…",
+   "sprache": "de"
+  },
+  {
+   "t": "The Download: the Pentagon’s AI-powered lie detector and young organ limits",
+   "u": "https://www.technologyreview.com/2026/09/25/1145157/the-download-pentagon-ai-lie-detector-young-organ-limits/",
+   "q": "MIT Tech Review",
+   "d": "2026-09-25T12:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The Pentagon wants $30 million to build an AI-powered lie dete…",
    "sprache": "en"
   }
  ]

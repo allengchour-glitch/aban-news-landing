@@ -62,6 +62,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-25 (🛒 2. Produkt „Schulden-Plan Schweiz" CHF 27 + 🔒 LECK: `content/` war öffentlich):**
+- **Nach YouTube-Rezept** (Alex, „selling $27 ai digital products"): Nische Schulden → Offline-Rechner
+  `content/packs/de/schulden-plan/schulden-plan.html` (Lawine/Schneeball, tilgen vs. investieren, Break-even,
+  Schuldzinsabzug) + Gratis-Seite `schulden-oder-investieren.html` + 3 Meta-Anzeigen `docs/werbung/schulden-plan/`.
+  EINE Engine `tools/schulden/engine.js` (6 Tests `test_engine.js`), `tools/schulden/build.py` baut Produkt + Seite.
+- **🔒 `content/packs/` wurde mitdeployt:** `abannews.com/content/packs/de/strategie-pruefstand/pruefstand.py` = 200
+  (bezahltes Produkt gratis). `.md` löschte der Build, `.py`/`.html` nicht. Fix: `build-pages.sh` schliesst `./content`
+  aus + bricht ab, falls `_site/content` existiert (Gegenprobe: Wächter rc=1).
+- **Falle build.py:** Regex „bis zum nächsten `</script>`" hat bei leerem Engine-Block das FOLGENDE Skript (die ganze
+  Oberfläche) gelöscht → jetzt Marken `/*ENGINE-START*/…/*ENGINE-END*/`, idempotent geprüft.
+- Kauf-Links beider Produkte warten weiter auf den echten Stripe-Key (GitHub-Secret). **Keine Werbung vorher.**
+
 **📌 2026-09-25 (📱 LuxeStyle Android-App — native, Google Play bereit):**
 - `apps/luxestyle-android/` = **native Compose-App auf der Shopify Storefront API ohne Token**
   (`au3j0y-hq.myshopify.com/api/2025-07/graphql.json`: Menü, Kollektionen, Suche, Produkte, Cart gehen
