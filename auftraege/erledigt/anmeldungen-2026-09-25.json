@@ -1,0 +1,8 @@
+{
+  "typ": "skript",
+  "skript": "anmeldungen_pruefen.mjs",
+  "id": "anmeldungen-2026-09-25",
+  "warum": "Von sechs Diensten ist nach der Statuspruefung vom 18.09. genau EINER echt angemeldet (Pinterest 200; Shopify 403, BigBuy 403, CJ 404, TikTok nein, Google unmoeglich). Laeuft diese eine Anmeldung ab, wird JEDER Browser-Auftrag still wertlos — und niemand merkt es, weil eine abgelaufene Sitzung aussieht wie eine normale Seite. Woechentlich, rein lesend. Meldet sich die Lage, wird die Landkarte in dropship/HETZNER-SERVER.md nachgezogen. [wiederkehrend, alle 7 Tag(e)]",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
