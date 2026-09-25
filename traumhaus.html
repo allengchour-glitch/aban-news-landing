@@ -2528,6 +2528,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     (verkehr||[]).forEach(function(v){if(v.mesh)v.mesh._bewegt=true;
       (v.kopf||[]).concat(v.heck||[]).forEach(function(sp){if(sp)sp._bewegt=true;});});
     (window._wasser||[]).forEach(function(w){if(w.mesh)w.mesh._bewegt=true;});
+    /* 🩹 Runde 100: die sechs Wasserstrahlen des Brunnens (updBrunnen hebt und streckt sie) fehlten hier —
+       sie haengen in der Brunnengruppe, und `_einfrieren` friert jeden unmarkierten Nachfahren mit ein. */
+    ((window._brunnen||{}).jets||[]).forEach(function(j){if(j){j._bewegt=true;j.matrixAutoUpdate=true;}});
+    /* 🩹 Runde 100 (probe-anfasser, „eingefroren, aber im Code weiterbewegt"):
+       * das ZIEL DER SONNE — loop() setzt es jedes Bild auf die Kamera, aber `updateMatrixWorld()` rechnet bei
+         eingefrorenem Objekt die lokale Matrix nicht nach: es blieb bei (-67|43) stehen, waehrend das Licht mit der
+         Kamera zog. An der Kreuzung kam die Sonne dadurch fast waagrecht (Richtung und Schatten-Box kippen mit der
+         Entfernung zum Startpunkt),
+       * Regen/Schnee (folgt der Kamera — fiel sonst nur um den Startpunkt),
+       * die Voegel (kreisen). */
+    [typeof sun!=="undefined"&&sun&&sun.target,typeof partSys!=="undefined"&&partSys,
+     window._voegel&&window._voegel[0]&&window._voegel[0].sp.parent]
+      .forEach(function(o){if(o&&o!==scene){o._bewegt=true;o.matrixAutoUpdate=true;}});
     (fussg||[]).forEach(function(f){if(f.mesh)f.mesh._bewegt=true;});
     (sims||[]).forEach(function(s2){if(s2&&s2.mesh)s2.mesh._bewegt=true;});
     (polizei||[]).forEach(function(p2){if(p2.mesh)p2.mesh._bewegt=true;});
@@ -2786,7 +2799,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      ein Teil einzeln zu lassen. Jeder andere Schluessel gehoert jemandem, der das Teil wiederfinden will.
      (Erster Lauf: 0 von 53'451 Teilen zusammengefasst — alle trugen diese drei.) */
   function _zfUdOk(u){for(var k in u)if(k!=="name"&&k!=="_vdC"&&k!=="_vdR"&&k!=="_vdBB")return false;return true;}
-  function _zfSig(g){var a=g.attributes;if(!a.position||g.groups.length||g.drawRange.start||g.drawRange.count!==Infinity)return null;
+  /* ⚠️ `groups` NICHT ablehnen (Runde 100): BoxGeometry bringt 6 Gruppen mit, Zylinder 3 — ein Dorfhaus bestand zu
+     100 % daraus, und probe-zfstat zeigte 1'019 erfasste Weltgruppen, von denen fast keine zusammengefasst wurde.
+     Mit EINEM Material (alle Aufrufer pruefen das vorher) zeichnet three.js die Gruppen gar nicht einzeln, sondern
+     die ganze Geometrie in einem Aufruf — die Gruppen aendern am Bild nichts, sie duerfen wegfallen. */
+  function _zfSig(g){var a=g.attributes;if(!a.position||g.drawRange.start||g.drawRange.count!==Infinity)return null;
     if(g.morphAttributes&&Object.keys(g.morphAttributes).length)return null;
     var n=Object.keys(a).sort(),s=[];
     for(var i=0;i<n.length;i++){var at=a[n[i]];
@@ -2854,22 +2871,95 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         vorher+=S.length;nachher++;});});
     if(neuC)_zfCache[ck]=neuC;
     return [vorher,nachher];}
+  /* 🧩 RUNDE 100 (User: „weiter" nach Runde 99): die Welt, die NICHT aus Modellen besteht.
+     GEMESSEN (probe-aufrufe-herkunft ART=1 HERK=1, fertige Welt): an der Kreuzung (78|58) blieben 1'483 Aufrufe,
+     davon 502 in selbstgebauten Gruppen (Dorfhaeuser 141, Blumenfelder 132, Zaeune 63, Cafe 34, Laternen 26 …)
+     und 204 in losen Bodenteilen direkt in der Szene (Bordsteine, Keile, Plattenraender, Linien, Parkfelder).
+     Beides stand ausserhalb von Runde 99, die nur `bau()`-Modelle kannte.
+     WARUM EINE AUSSCHLUSSLISTE STATT JEDE BAUFUNKTION EINZELN: zusammenfassen INNERHALB einer Gruppe laesst
+     alles gueltig, was die Gruppe als Ganzes betrifft (entfernen, verschieben, ein-/ausblenden — Stadtfest,
+     Wintermarkt, Immobilien-Flagge), und Materialien bleiben dieselben Objekte (Nachtfenster, Ampeln, Laternen).
+     Kaputt ginge nur, was ein EINZELNES KIND spaeter anfasst. Geprueft: jede `.visible=`, `.material=`,
+     `.remove(`-Stelle der Datei (keine trifft ein Kind einer statischen Gruppe ausser den Brunnenstrahlen, jetzt
+     `_bewegt`), dazu probe-anfasser.mjs, die jedes Kandidaten-Teil ueber Tag, Nacht, Fest, Winter, Regen und
+     Baumodus beobachtet.
+     Nicht dabei: alles Nicht-Eingefrorene (Laufzeit-Objekte, Bewegtes), fremde userData (nieAusblenden,
+     animiert, raeder, fest …), Modelle ohne `_ausBau`, und was der Spieler baut (Waende, Boeden, Moebel,
+     eigenes Auto, Haustier, Vorschau). */
+  function _zfWeltKandidaten(){
+    var aus=new Set(),G=[],L=[],bb=new THREE.Box3();
+    function nimm(o){if(o)aus.add(o);}
+    try{Object.keys(wallMeshes).forEach(function(k){nimm(wallMeshes[k]);});Object.keys(floorMeshes).forEach(function(k){nimm(floorMeshes[k]);});}catch(e){}
+    try{furn.forEach(function(f){nimm(f.mesh);});}catch(e){}
+    try{nimm(ghost);nimm(editRing);nimm(gridHelper);nimm(typeof haustier!=="undefined"&&haustier&&haustier.mesh);}catch(e){}
+    nimm(window.autoRec&&window.autoRec.mesh);
+    (window._winterTeile||[]).forEach(nimm);
+    (window._goWagen||[]).forEach(function(q){nimm(q.bucht);});   /* rueckt in den ersten 95 s mit seinem Wagen */
+    scene.children.forEach(function(o){
+      if(o._zf||o._ausBau||aus.has(o)||o._bewegt||o.matrixAutoUpdate!==false||!_zfUdOk(o.userData))return;
+      if(o.isGroup){if(o.children.length)G.push(o);return;}
+      /* Lose Teile: nur FLACHES am Boden (Bordstein, Platte, Linie). Hoehere lose Teile ueber eine 48-m-Zelle
+         zusammenzufassen, machte aus Masten und Felsen einen „grossen Bau" fuer den Verdecker und aus ihrer Lage
+         einen Zellmittelpunkt fuer th-strassen — beides bliebe unbemerkt falsch. */
+      if(!o.isMesh||o.isInstancedMesh||o.isSkinnedMesh||!o.geometry)return;
+      bb.setFromObject(o);if(bb.isEmpty()||bb.max.y-bb.min.y>0.35||bb.max.y>0.4||bb.min.y<-0.6)return;
+      L.push(o);});
+    return {G:G,L:L};}
+  window._zfKandidaten=_zfWeltKandidaten;   /* probe-anfasser */
+  /* Lose Bodenteile je 48-m-Zelle und Material zu EINEM Mesh (Lage: Mittelpunkt der Teile, damit die
+     Entfernungs-Ausblendung einen sinnvollen Ursprung hat). */
+  function _zfLoseEimer(L,lodM){
+    var B={},keys=[],c=new THREE.Vector3(),bb=new THREE.Box3();
+    L.forEach(function(m){
+      if(!m.parent||m._zf)return;m._zf=1;
+      if(!m.visible&&!lodM.has(m))return;
+      if(!m.geometry.isBufferGeometry||!m.material||Array.isArray(m.material)||m.material.transparent||m.material.wireframe
+         ||m.morphTargetInfluences||m.children.length||!m.frustumCulled||m.onBeforeRender!==_zfLeer)return;
+      var sig=_zfSig(m.geometry);if(!sig)return;
+      bb.setFromObject(m);bb.getCenter(c);
+      var k=Math.floor(c.x/48)+","+Math.floor(c.z/48)+"|"+m.material.uuid+"|"+sig+"|"+(m.castShadow?1:0)+(m.receiveShadow?1:0)+"|"+m.renderOrder+"|"+m.layers.mask;
+      if(!B[k]){B[k]=[];keys.push(k);}B[k].push({m:m,x:c.x,z:c.z});});
+    return keys.map(function(k){return B[k];}).filter(function(E){return E.length>1;});}
+  function _zfLoseBaue(E,maxV){
+    var stuecke=[],akt=[],nv=0,vorher=0,nachher=0;
+    E.forEach(function(e){var n=e.m.geometry.attributes.position.count;if(akt.length&&nv+n>maxV){stuecke.push(akt);akt=[];nv=0;}akt.push(e);nv+=n;});
+    if(akt.length)stuecke.push(akt);
+    stuecke.forEach(function(S){if(S.length<2)return;
+      var cx=0,cz=0;S.forEach(function(e){cx+=e.x;cz+=e.z;});cx/=S.length;cz/=S.length;
+      var T=new THREE.Matrix4().makeTranslation(cx,0,cz),inv=new THREE.Matrix4().makeTranslation(-cx,0,-cz);
+      var M=S.map(function(e){return e.m;}),r=_zfBaue(M,inv),m0=M[0];
+      var mm=new THREE.Mesh(r.g,m0.material);
+      mm.castShadow=m0.castShadow;mm.receiveShadow=m0.receiveShadow;mm.renderOrder=m0.renderOrder;mm.layers.mask=m0.layers.mask;
+      mm.matrix.copy(T);mm.matrix.decompose(mm.position,mm.quaternion,mm.scale);mm.matrixAutoUpdate=false;
+      mm.userData.teile=r.teile;mm.userData.zusammen=S.length;mm._zf=1;
+      scene.add(mm);mm.updateMatrixWorld(true);
+      M.forEach(function(m){if(m.parent)m.parent.remove(m);});
+      vorher+=S.length;nachher++;});
+    return [vorher,nachher];}
   function _zusammenfassen(){
     if(window._keinZusammenfassen||_zfLaeuft)return;
     _zfLaeuft=true;
+    var KW=_zfWeltKandidaten();
+    KW.G.forEach(function(o){o._ausBau=1;(window._zfExtra=window._zfExtra||[]).push(o);});
     var G=(window._gebaeude||[]).concat(window._zfExtra||[]),i=0,st=window._zfStat=window._zfStat||{modelle:0,vorher:0,nachher:0,ms:0,laeufe:0};
+    st.welt=(st.welt||0)+KW.G.length;
     var uint=renderer.capabilities.isWebGL2||!!renderer.extensions.get("OES_element_index_uint"),maxV=uint?500000:65000;
     var fahr=(typeof FAHRTEN!=="undefined"?FAHRTEN:[]).map(function(f){return f.w;});
     var lodM=new Set((typeof _lodKlein!=="undefined"?_lodKlein:[]).map(function(e){return e.m;})),geaendert=false;
+    var LE=null,li=0;
     st.laeufe++;
     (function scheibe(){var t0=performance.now();
       try{
         while(i<G.length&&performance.now()-t0<12){var w=G[i++];
           if(!w||w._zf||!w._ausBau)continue;
           var r=_zfModell(w,lodM,fahr,maxV);if(r[0]){st.modelle++;st.vorher+=r[0];st.nachher+=r[1];geaendert=true;}}
-      }catch(e){console.warn("zusammenfassen",e);i=G.length;}
+        if(i>=G.length){
+          if(!LE)LE=_zfLoseEimer(KW.L,lodM);
+          while(li<LE.length&&performance.now()-t0<12){var r2=_zfLoseBaue(LE[li++],maxV);
+            if(r2[0]){st.loseVorher=(st.loseVorher||0)+r2[0];st.loseNachher=(st.loseNachher||0)+r2[1];geaendert=true;}}}
+      }catch(e){console.warn("zusammenfassen",e);i=G.length;LE=LE||[];li=LE.length;}
       st.ms+=performance.now()-t0;
-      if(i<G.length){setTimeout(scheibe,30);return;}
+      if(i<G.length||!LE||li<LE.length){setTimeout(scheibe,30);return;}
       _zfLaeuft=false;window._zfFertig=performance.now();
       /* Der LOD-Index kennt noch die entfernten Einzelteile — neu aufbauen (einmal, 40–50 ms). */
       if(geaendert&&typeof lodAufbau==="function"&&_lodBereit)lodAufbau();
@@ -6996,7 +7086,7 @@ setTimeout(function baueGebaeude(){
             for(var n9=0;n9<8&&!frei9(q,alle);n9++)q.w.position.z+=q.dir*6;
             /* Nach dem zweiten Einfrier-Lauf ist matrixAutoUpdate aus — eine reine
                Positionszuweisung waere dann nur noch eine Zahl ohne Bild. */
-            if(q.w.position.z!==vor9){if(q.bucht)q.bucht.position.z=q.w.position.z;if(window._nachRuecken)window._nachRuecken(q.w);}});},2000);
+            if(q.w.position.z!==vor9){if(q.bucht)q.bucht.position.z=q.w.position.z;if(window._nachRuecken){window._nachRuecken(q.w);if(q.bucht)window._nachRuecken(q.bucht);}}});},2000);
         setTimeout(function(){clearInterval(_t9);},95000);})();
       /* Die Stadthaeuser haengen am Ostviertel, ihre Kartenmarke stand aber fest auf
          (172|60) — also 60 m noerdlich des WUNSCH-Orts. Gleicher Versatz, echte Lage. */
@@ -8455,6 +8545,7 @@ setTimeout(function baueGebaeude(){
           var w=new THREE.Group();w.add(r);
           w.position.set(x,y,z);w.rotation.y=rot||0;scene.add(w);
           w.userData.fest=1;                       /* Raster-Teile nie vom Entwirrer verschieben */
+          w._ausBau=1;                             /* Runde 100: zusammenfassen wie bau()-Modelle (102 Module, 1'035 Teile) */
           (window._gebaeude=window._gebaeude||[]).push(w);});}
       /* ⚠️ Die Platzsuche prüft Gebäude-Kästen und Strassen, aber KEIN Wasser — der
          erste Wurf stellte das Beispielhaus mitten in den Seepark-See (Seemitte
@@ -16020,7 +16111,10 @@ function updEigenRing(dt){
     _eigenRing=new THREE.Mesh(new THREE.RingGeometry(0.85,1.25,40),new THREE.MeshBasicMaterial({color:0xffc542,transparent:true,opacity:0.5,depthWrite:false}));
     _eigenRing.rotation.x=-Math.PI/2;_eigenRing.renderOrder=3;scene.add(_eigenRing);
     _eigenRingDunkel=new THREE.Mesh(new THREE.RingGeometry(1.25,1.5,40),new THREE.MeshBasicMaterial({color:0x2a1c00,transparent:true,opacity:0.34,depthWrite:false}));
-    _eigenRingDunkel.rotation.x=-Math.PI/2;_eigenRingDunkel.renderOrder=2;scene.add(_eigenRingDunkel);}
+    _eigenRingDunkel.rotation.x=-Math.PI/2;_eigenRingDunkel.renderOrder=2;scene.add(_eigenRingDunkel);
+    /* 🩹 Runde 100: beide Ringe folgen der Figur jedes Bild — ohne Marke fror `_einfrieren` sie beim naechsten
+       Lauf ein, und der Ring blieb liegen, wo die Figur zu dem Zeitpunkt stand (probe-anfasser: 40,7 m daneben). */
+    _eigenRing._bewegt=true;_eigenRingDunkel._bewegt=true;}
   var an=running&&me&&me.mesh&&me.mesh.visible&&!fahren&&!egoMode&&!buildMode;
   _eigenRing.visible=!!an;if(_eigenRingDunkel)_eigenRingDunkel.visible=!!an;
   if(!an)return;
@@ -18912,11 +19006,23 @@ function lodTakt(px,pz){
      Grenze ist ohnehin schon ein bewusster Handel, nicht Physik. Wuerde man sie
      mitskalieren, verschwaenden bei Zoom 135 Objekte ab 42 m, die auf dem Schirm noch
      rund zehn Bildpunkte gross sind — ein sichtbarer Verlust statt eines Gewinns.
-     Also: kleine und winzige mit dem Zoom, mittlere fest. */
-  var AN_F=78*78*_z2, AUS_F=82*82*_z2, AN_N=34*34*_z2, AUS_N=37*37*_z2,
+     Also: kleine und winzige mit dem Zoom, mittlere fest.
+     ⚠️ RUNDE 100: NUR NOCH DIE WINZIGEN (< 0,55 m) mit dem Zoom. Dieselbe Rechnung gilt schon fuer die kleinen
+     (0,55–2,2 m): bei Zoom 90 lag ihre Grenze bei 38 m, ein 2-m-Teil ist dort ~110 m von der Kamera und noch
+     ~13 Bildpunkte gross. Sichtbar wurde das erst, als nach dem Zusammenfassen der LOD-Index vollstaendig war
+     (probe-zusammen „weit", Bilder angesehen): das ganze Wirtshaus bd_inn (lauter Teile unter 2,2 m), Baeume
+     und die geparkten Autos verschwanden beim Herauszoomen. Auf main standen sie nur, weil sie nach dem
+     letzten lodAufbau geladen und nie erfasst wurden. Die Aufrufe, die das kostet, hat das Zusammenfassen
+     laengst eingespielt (probe-bildlast „Weit (90)"). */
+  var AN_F=78*78, AUS_F=82*82, AN_N=34*34*_z2, AUS_N=37*37*_z2,
       AN_M=130*130, AUS_M=138*138;
+  /* ⚠️ LAGE AUS DER WELTMATRIX, NICHT AUS DEM MERKZETTEL (Runde 100). `e.x/e.z` stammen aus lodAufbau — danach
+     schieben entwirren/freiRaeumen Modelle noch um bis zu 90 m (mit `_nachRuecken`, die Weltmatrix stimmt also).
+     GEMESSEN (probe-lodlage.mjs, fertige Welt): auf main 1'617 von 10'485 Eintraegen veraltet, an der Kreuzung
+     (78|58) 266 Teile deshalb UNSICHTBAR, obwohl sie 20–40 m neben der Figur standen (Pappeln, Ahorne: Staemme
+     ohne Krone). Zwei Zahlen mehr je Eintrag und achtem Bild — dafuer stimmt die Entscheidung immer. */
   for(var i=0;i<_lodKlein.length;i++){
-    var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz,d2=dx*dx+dz*dz;
+    var e=_lodKlein[i],_el=e.m.matrixWorld.elements,dx=_el[12]-px,dz=_el[14]-pz,d2=dx*dx+dz*dz;
     var an=e.mittel?AN_M:(e.nah?AN_N:AN_F), aus=e.mittel?AUS_M:(e.nah?AUS_N:AUS_F);
     var sicht=e.m.visible ? d2<aus : d2<an;
     if(e.m.visible!==sicht)e.m.visible=sicht;

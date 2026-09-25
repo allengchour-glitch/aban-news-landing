@@ -96,3 +96,25 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   mit zweiter Datei die grössten Zuwächse. `TOP=n`, `SCHNELL=1` ohne Ruhe-Warten.
 - `probe-zusammen.mjs [quelle.html]` — ändert `_zusammenfassen()` das Bild? Eine Seite mit `?ohneZF`, fotografieren,
   zusammenfassen, dieselben sieben Punkte noch einmal; Bewegtes, Durchsichtiges und der Verdecker aus. Bilder nach `$OUT`.
+  `LEER=1`: Gegenprobe ohne Zusammenfassen — was sich in den Minuten zwischen beiden Fotoreihen von selbst ändert.
+
+**Runde 100 (weiter: Weltgruppen, lose Bodenteile, alte Einfrier-/LOD-Fehler):**
+- `probe-aufrufe-herkunft.mjs` `ART=1` — grobe Klassen je Punkt (bewegt / Modell / Instanzen / durchsichtig / Boden lose /
+  Mesh lose / Gruppe prozedural) und die grössten Gruppen; mit `HERK=1` hängt sie sich vor dem Weltaufbau an `scene.add`
+  und nennt je Klasse die BAUFUNKTION (Dorfhaus, Blumenfeld, Bordstein …) statt einer Farbe.
+- `probe-gruppen-herkunft.mjs [quelle.html]` — alle Nicht-Modell-Gruppen der Szene nach Baufunktion (Meshes, Materialien,
+  bewegt); `LOSE=1` dazu die losen Meshes direkt in der Szene (flach/hoch), `JSON=pfad` schreibt jede Gruppe mit Lage.
+- `probe-anfasser.mjs [quelle.html]` — fasst ein Code nach dem Aufbau noch ein EINZELNES Teil an, das Runde 100
+  zusammenfasst? Lädt mit `?ohneZF`, nimmt genau `_zfKandidaten()`, macht `visible`/`material` zu Fallen, notiert Lage,
+  Elternteil, Eckpunkte; spielt Abend, Nacht (Stadtfest), Regen, Schnee, Winter, Baumodus. Ausgenommen als Aufrufer:
+  LOD, gruppenSicht, Verdecker, Aufwärmen. Nebenbei: jedes eingefrorene Objekt, dessen Lage von seiner Matrix abweicht
+  (so fielen Sonnenziel, Regen, Vögel und der Ring unter der Figur auf). Gegenprobe: ein Teil unsichtbar, eins verschoben,
+  Eckpunkte geändert — alle drei müssen gemeldet werden.
+- `probe-lodlage.mjs [a.html] [b.html]` — rechnet das Entfernungs-Ausblenden mit der echten Lage? Zählt LOD-Einträge, deren
+  gemerkte Lage > 1 m von der Weltmatrix abweicht, und die an der Kreuzung deshalb fälschlich unsichtbaren Teile.
+  Gegenprobe: ein Eintrag künstlich um 50 m versetzt.
+- `probe-sonne.mjs [a.html] [b.html]` — Höhenwinkel und Richtung des Sonnenlichts (aus den Weltmatrizen) an fünf Punkten
+  um 12:00; Soll überall gleich. `main`: 64,5° am Start, 14° an der Kreuzung, 7° im Gewerbe.
+- `probe-schattenkriechen.mjs [quelle.html]` — Rechner-Pfad (Schatten an), Kamera steht, nur Licht+Ziel wandern in
+  2-cm-Schritten (`_sonneAufKamera`): wie oft ändert sich das Bild? Mit Texelraster nur bei ganzen Texeln (≤ 2 auf 20 cm);
+  Gegenprobe `ohneRaster` muss bei fast jedem Schritt anschlagen.

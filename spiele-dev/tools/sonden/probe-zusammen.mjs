@@ -40,10 +40,16 @@ await warteAufRuhe(page, { minSekunden: 150 }); await page.waitForTimeout(12000)
 async function hin(k) { let p = [9, 9]; for (let i = 0; i < 4 && (Math.abs(p[0]) > 0.15 || Math.abs(p[1]) > 0.15); i++) { p = await page.evaluate((v) => window.__th.kam(...v), k); await page.waitForTimeout(1500) } }
 const vor = {}
 for (const [n, ...k] of P) { await hin(k); const f = await page.evaluate(() => window.__th.foto()); await page.evaluate((x) => window.__th.merke(x), n); vor[n] = f.calls; writeFileSync(`${OUT}/zf-${n}-vor.png`, Buffer.from(f.bild.split(',')[1], 'base64')) }
+/* LEER=1: Gegenprobe ohne Zusammenfassen — zeigt, was sich in den Minuten zwischen den beiden Fotoreihen OHNE
+   Zutun aendert (spaet erscheinende Objekte, Tageszeit). Erst was darueber liegt, geht aufs Zusammenfassen. */
+if (process.env.LEER) console.log('LEERLAUF: nichts zusammengefasst')
+else {
 const v0 = await page.evaluate(() => window.__th.zf())
 for (let i = 0; i < 60; i++) { const st = await page.evaluate(() => window.__th.zfStand()); if (st.fertig > v0) break; await page.waitForTimeout(1000) }
 const st = await page.evaluate(() => window.__th.zfStand())
-console.log(`zusammengefasst: ${st.stat.vorher} Teile aus ${st.stat.modelle} Modellen → ${st.stat.nachher} Meshes (${Math.round(st.stat.ms)} ms)`)
+console.log(`zusammengefasst: ${st.stat.vorher} Teile aus ${st.stat.modelle} Modellen → ${st.stat.nachher} Meshes (${Math.round(st.stat.ms)} ms)` +
+  (st.stat.loseVorher ? ` · lose Bodenteile ${st.stat.loseVorher} → ${st.stat.loseNachher}` : '') + (st.stat.welt ? ` · davon Weltgruppen ${st.stat.welt}` : ''))
+}
 for (const [n, ...k] of P) {
   await hin(k); const f = await page.evaluate(() => window.__th.foto()); writeFileSync(`${OUT}/zf-${n}-nach.png`, Buffer.from(f.bild.split(',')[1], 'base64'))
   const r = await page.evaluate((x) => window.__th.vergleich(x), n)
