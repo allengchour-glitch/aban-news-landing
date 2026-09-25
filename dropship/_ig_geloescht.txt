@@ -3,3 +3,8 @@
 2026-09-25T18:18:47.301Z	geloescht	18123736009681354	TEXT 15 Wörter im Bild	https://www.instagram.com/p/DdrLJiHlH7a/	23	Gemütliches Licht für lange Abende am Schreibtisch – mit 3 H
 2026-09-25T18:19:40.439Z	geloescht	17909187675491085	TEXT 5 Wörter im Bild	https://www.instagram.com/p/DdmhalZFAvs/	25	Verwandle dein Zuhause in eine pure Wohlfühloase mit unserem
 2026-09-25T18:20:32.898Z	geloescht	18127134991735091	TEXT 22 Wörter im Bild + PRODUKT DRAFT, ohne Onlineshop	https://www.instagram.com/p/DbWQMHCFG28/	32	Dein Fitness-Upgrade ist da: AMOLED-Display, über 100 Sportm
+2026-09-25T19:28:50.904Z	fb-zwilling	1049840534888592_122140138311350792	Zwilling von IG 18283559443290808 (TEXT)			Jade Roller
+2026-09-25T19:29:44.937Z	fb-zwilling	1049840534888592_122125676835350792	Zwilling von IG 17899497708544870 (TEXT)			LED-Lampe dimmbar
+2026-09-25T19:30:39.051Z	fb-zwilling	1049840534888592_122140518933350792	Zwilling von IG 18123736009681354 (TEXT)			LED-Schreibtischlampe
+2026-09-25T19:31:32.784Z	fb-zwilling	1049840534888592_122139992853350792	Zwilling von IG 17909187675491085 (TEXT)			Aroma-Diffuser
+2026-09-25T19:32:26.137Z	fb-zwilling	1049840534888592_122125807617350792	Zwilling von IG 18127134991735091 (TEXT)			Smartwatch

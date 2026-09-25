@@ -601,7 +601,8 @@ while true; do
     echo "$(date -u +%H:%M) start fb_caption_korrektur (täglich)"
   fi
   # 🗑️ IG AUFRÄUMEN (Betreiber 25.09.2026: «lösche die post die nicht passen automatisch»). Gründe TEXT (Lieferantentext
-  # im Lieferantenbild, ≥ 5 Wörter), PRODUKT (nicht mehr kaufbar, nur sicher zugeordnet), DOPPEL (behält den besten).
+  # im Lieferantenbild, ≥ 5 Wörter), PRODUKT (nicht mehr kaufbar, nur sicher zugeordnet), DOPPEL (behält den besten);
+  # der FB-Zwilling (gleicher Textanfang, ≤ 3 h, genau einer) geht mit.
   # Schutz: > 500 Aufrufe nie, < 6 h nie, 5 je Tag, 45 s Takt, Abbruch beim ersten Meta-Sperrhinweis. Ledger _ig_geloescht.txt.
   if [ ! -f /tmp/ig_aufraeumen_$(date -u +%F) ] && [ -f "$REPO/automation/ig_aufraeumen.mjs" ] && [ -s /tmp/meta_page_token ]; then
     touch "/tmp/ig_aufraeumen_$(date -u +%F)"
