@@ -1330,3 +1330,6 @@ gid://shopify/Product/15448929403265	2026-09-23T12:08Z	draft	15.90	21.63	Mini Ha
 gid://shopify/Product/15449427018113	2026-09-23T21:47Z	draft	14.90	34.59	Armgrip-Trainingsgerät flexibel einstellbar
 gid://shopify/Product/15450740654465	2026-09-24T05:15Z	draft	18.90	28.90	Herren Business-Schuh aus Leder
 gid://shopify/Product/15454193877377	2026-09-24T10:11Z	draft	14.90	41.49	3-in-1 Heissluftkamm
+gid://shopify/Product/15454002020737	2026-09-25T06:12Z	draft	29.90	138.66	Titan-Wok mit Flachboden
+gid://shopify/Product/15454001856897	2026-09-25T06:13Z	draft	19.90	117.68	Wohnzimmer Teppich
+gid://shopify/Product/15454001758593	2026-09-25T06:13Z	draft	15.90	95.81	Velour-Teppich schwarz-weiss

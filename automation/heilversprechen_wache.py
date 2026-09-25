@@ -147,6 +147,57 @@ ERSATZ_RE = [
     (re.compile(r"(?:kann |könnte )?die Durchblutung (?:zu )?fördern"), "die Haut sanft massieren"),
     (re.compile(r"die Haut sanft massieren und (?=die Feuchtigkeitsversorgung)"), "die Haut sanft massieren und "),
 ]
+ERSATZ += [
+    # 25.09.2026 Krankheitsbezug (Akne/Narben/Chloasma/Krampfadern), 28 aktive Produkte, jede Phrase am ganzen Satz gelesen
+    # (dropship/KRANKHEITSBEZUG-2026-09-25.md). Abdecken bleibt Kosmetik (Wort ersetzt); behandeln/bekämpfen → Pflege/Reinigung.
+    ('kaschiert zuverlässig dunkle Augenringe, Akne und andere Hautunreinheiten', 'kaschiert zuverlässig dunkle Augenringe, Pickel und andere Hautunreinheiten'),
+    ('Sie hilft, das Erscheinungsbild von Schwangerschaftsstreifen und alten Narben zu mindern und verbessert raue, fahle Haut.', 'Sie pflegt die Haut an Stellen mit Dehnungsstreifen und macht raue, fahle Haut geschmeidiger.'),
+    ('Effektive Reparatur von Schwangerschaftsstreifen und alten Narben', 'Pflege für Haut mit Dehnungsstreifen'),
+    ("Das Men's Special Oil Control Blackhead Removing Acne Facial Cleanser ist ein universeller Gesichtsreiniger für Männer, der für die Entfernung von Kopfhaut und Akne geeignet ist.", 'Dieser universelle Gesichtsreiniger für Männer ist für fettige Haut mit Mitessern und Pickeln gedacht.'),
+    ('<li>Keine speziellen Kosmetikzwecke</li>\n', ''),
+    ('speziell für zu Akne neigende Haut entwickelt', 'speziell für zu Unreinheiten neigende Haut entwickelt'),
+    ('Diese Akne-Patches wurden speziell für die Anwendung über Nacht entwickelt, um gezielt Hautunreinheiten zu behandeln', 'Diese Pickelpatches wurden speziell für die Anwendung über Nacht entwickelt und decken einzelne Hautunreinheiten ab'),
+    ('unterstützt sie die Regeneration der Haut und hilft, das Erscheinungsbild von Narben zu verbessern', 'pflegt sie die Haut und spendet Feuchtigkeit'),
+    ('Unterstützt die Hautregeneration und hilft, Narben zu verblassen', 'Zieht gut ein und hinterlässt ein gepflegtes Hautgefühl'),
+    ('Poren zu reinigen, Akne und Mitesser zu entfernen', 'Poren zu reinigen und Mitesser zu entfernen'),
+    ('Es entfernt effektiv Mitesser, Akne und andere Unreinheiten', 'Es entfernt effektiv Mitesser und andere Unreinheiten'),
+    ('Entfernt Mitesser und Akne', 'Entfernt Mitesser'),
+    ('hilft es, Mitesser, Akne und überschüssiges Hautfett effektiv zu entfernen', 'hilft es, Mitesser und überschüssiges Hautfett zu entfernen'),
+    ('Dieses Gerät zur Entfernung von Mitessern und Akne nutzt', 'Dieses Gerät zur Entfernung von Mitessern nutzt'),
+    ('Es entfernt effektiv Fett, Mitesser und Akne und sorgt', 'Es entfernt Fett und Mitesser und sorgt'),
+    ('Entfernt Fett, Mitesser, Akne und Weissköpfchen', 'Entfernt Fett, Mitesser und Weissköpfchen'),
+    ('Die Creme ist speziell für die Pflege von Haut mit Chloasma und Sommersprossen entwickelt.', 'Die Creme ist für die Pflege von Haut mit Sommersprossen und ungleichmässigem Teint entwickelt.'),
+    ('reduziert Hautunreinheiten wie Mitesser und Akne', 'reduziert Hautunreinheiten wie Mitesser und Pickel'),
+    ('Akne-Male ab', 'Pickelmale ab'),
+    ('Sommersprossen und Akne-Malen', 'Sommersprossen und Pickelmalen'),
+    ('speziell für die Pflege von zu Akne neigender Haut entwickelt und bietet eine gezielte Behandlung für verschiedene Körperbereiche', 'speziell für die Pflege von zu Unreinheiten neigender Haut entwickelt und bietet Pflege für verschiedene Körperbereiche'),
+    ('Taillen-Akne-Gel', 'Taillen-Pflegegel'),
+    ('Hüft-Akne-Creme', 'Hüft-Pflegecreme'),
+    ('Rücken-Akne-Patch', 'Rücken-Pflegepatch'),
+    ('Dieses umfassende Anti-Akne Pflegeset wurde speziell entwickelt', 'Dieses umfassende Pflegeset wurde speziell entwickelt'),
+    ('wirken synergetisch, um Akne zu bekämpfen und die Hautbarriere zu stärken', 'sind aufeinander abgestimmt und pflegen die Hautbarriere'),
+    ('Falten zu reduzieren, Akne zu bekämpfen und Pigmentflecken aufzuhellen', 'das Hautbild zu verfeinern und den Teint aufzuhellen'),
+    ('Reduziert Falten und bekämpft Akne', 'Verfeinert das Hautbild'),
+    ('Hilft bei der Minderung von Akne und Aknemalen', 'Pflegt Haut mit Unreinheiten und Pickelmalen'),
+    (' und gleichzeitig Bakterienwachstum um über 99% hemmen', ''),
+    ('Er ist besonders geeignet für Personen mit trockener Haut, Akne, empfindlicher Haut sowie nach medizinischen Behandlungen oder bei Milbenallergien.', 'Er fühlt sich besonders auf trockener und empfindlicher Haut angenehm an.'),
+    ('<li>Hemmt Bakterienwachstum um über 99%</li>\n', ''),
+    ('Ideal für trockene Haut, Akne, empfindliche Haut, nach medizinischen Behandlungen und bei Milbenallergie', 'Angenehm für trockene und empfindliche Haut'),
+    ('Hilft, Falten zu reduzieren und Akne zu klären', 'Pflegt die Haut und verfeinert das Hautbild'),
+    ('Verbessert das Hautbild und mildert Narben', 'Für ein ebenmässigeres Hautbild'),
+    ('Drei Intensitätsstufen für individuelle Behandlungen', 'Drei Intensitätsstufen für individuelle Anwendungen'),
+    ('Mitesser, Komedonen und Akne effektiv zu entfernen', 'Mitesser und Komedonen zu entfernen'),
+    ('Zur Entfernung von Mitessern, Pickeln und Akne', 'Zur Entfernung von Mitessern und Pickeln'),
+    ('das Erscheinungsbild von Akne und Hautunreinheiten zu verbessern', 'das Erscheinungsbild von Hautunreinheiten zu verbessern'),
+    ('Mischhaut oder zu Akne neigend', 'Mischhaut oder zu Unreinheiten neigend'),
+    ('Unterstützt die Entfernung von Akne und Hautunreinheiten', 'Unterstützt die Reinigung bei Hautunreinheiten'),
+    ('Zusätzlich kann es zur Linderung von Müdigkeit und zur Reduzierung von Falten eingesetzt werden.', 'Die Vibrationsmassage wirkt dabei angenehm belebend.'),
+    ('Hilft bei der Reduzierung von Falten und lindert Müdigkeit', 'Belebende Vibrationsmassage'),
+    ('Mitesser und Akne effektiv zu entfernen', 'Mitesser zu entfernen'),
+    ('Diese Creme wurde entwickelt, um das Erscheinungsbild von Besenreisern und Krampfadern zu mindern.', 'Diese Creme pflegt müde, beanspruchte Beine.'),
+    ('Reduziert das Erscheinungsbild von Krampfadern', 'Erfrischendes Pflegegefühl für die Beine'),
+    ('Verbessert das Erscheinungsbild von Hautunreinheiten und Narben', 'Pflegt Haut mit Unreinheiten'),
+]
 # 22.09.2026 (Verbesserungsrunde): TITEL wurden bisher nur GEMELDET, nie geschrieben — drei «Fettverbrennung»-Titel standen
 # seit dem Morgen offen. Titel brauchen eigene Ersätze (ERSATZ_RE «Fettverbrennung→Ausdauer» ergibt im Titel Unsinn:
 # «Massage mit Ausdauer»). Feste Paare zuerst, danach vorsichtige Muster; passt nichts, bleibt der Titel offen im Bericht.
@@ -162,6 +213,7 @@ TITEL_ERSATZ = [
     ("Hautregenerationscreme 50g gegen Narben", "Pflegende Hautcreme · 50 g"),
     ("Creme für Chloasma und Sommersprossen", "Gesichtscreme für einen ebenmässigen Teint"),
     ("Weite Damen-Schuhe für Hallux-Valgus", "Weite Damen-Schuhe mit breitem Vorfussbereich"),
+    ("Schwarzer Kopfhaut-Entferner für Männer", "Mitesser-Gesichtsreiniger für Männer"),
     ("Vakuum-Cupping-Massage mit Fettverbrennung & Anti-Cellulite", "Vakuum-Cupping-Massagegerät für Körper & Haut"),
     ("Körperformungsgerät zur Fettverbrennung", "Körperformungsgerät für das Training zuhause"),
     ("Smartes Springseil für Fitness & Fettverbrennung", "Smartes Springseil für Fitness & Ausdauer"),
@@ -225,7 +277,7 @@ MUSTER = re.compile(
     r"|\b(?:Akne|Narben|Chloasma|Melasma|Neurodermitis|Psoriasis|Schuppenflechte|Ekzem\w*|Nagelpilz|Fu(?:ss|ß)pilz|Krampfadern)\b|Anti-Akne|Akne-", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
-    r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
+    r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Beschaffenheit des Holzes|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
     # Tiere: Wundkragen (Heilung nach OP ist der Zweck), Fellbuersten/Plueschtiere/Pinsel (Haarausfall = Haare im Haus/Borsten),
     # Naepfe (Tiere mit Arthritis), Ergaenzungsfutter (Verdauung/Immunsystem beim Tier)
     r"|leck|Wunde|Operation|Halskrause|Kragen|Halsring|Genesung|Borsten|Pinsel|Plüsch|haarausfallfrei|Fell|Katze|Hund|Haustier|Tier|Vierbeiner|Zuhause|Wohnung|im Haus"

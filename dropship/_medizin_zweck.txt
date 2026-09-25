@@ -15,3 +15,4 @@ gid://shopify/Product/15499217961345	wundauflage-warenart	2026-08-14	Hydrokolloi
 gid://shopify/Product/15450780762497	wundauflage-warenart	2026-07-07	391-teiliges Erste-Hilfe-Set für Notfälle
 gid://shopify/Product/15450833453441	hallux-korrektur	2026-07-07	Hallux Valgus Korrektor Schiene
 gid://shopify/Product/15503133475201	haemorrhoiden	2026-08-18	3U Hämorrhoidenkissen
+gid://shopify/Product/15524022059393	narbenpflaster	2026-09-22	Silikon-Narbenpflaster
