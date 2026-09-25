@@ -32088,3 +32088,10 @@ gid://shopify/Product/15473084334465	CHF 10.00	60 Varianten	Persönlicher Steinr
 gid://shopify/Product/15473084531073	CHF 41.26	4 Varianten	Elegantes V-Ausschnitt Kleid
 gid://shopify/Product/15473084563841	CHF 15.61	15 Varianten	Gestreiftes Midikleid für Damen
 gid://shopify/Product/15473084596609	CHF 23.68	56 Varianten	UV-Schutz Sommerkleid mit Taillenbetonung
+gid://shopify/Product/15473084694913	CHF 33.20	10 Varianten	Vintage-Look-Jeans, gewaschen
+gid://shopify/Product/15473084793217	CHF 31.68	6 Varianten	Retro Distressed Bootcut Jeans mit Invertiertem Bu
+gid://shopify/Product/15473084825985	CHF 24.48	6 Varianten	Distressed Patchwork Jeans im Street Style
+gid://shopify/Product/15473084891521	CHF 18.43	5 Varianten	High-Waist Jeans mit Schleife & Strass
+gid://shopify/Product/15473084924289	CHF 19.94	16 Varianten	Weite Damen-Jeans mit Rüschensaum
+gid://shopify/Product/15473085022593	CHF 25.10	15 Varianten	Vintage Wide-Leg Jeans für grosse Grössen
+gid://shopify/Product/15473085088129	CHF 27.67	4 Varianten	Schubladen-Organizer für Kosmetik

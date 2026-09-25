@@ -1865,8 +1865,15 @@ JSON
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TS"; then
       touch "$TS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
-      ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) setsid python3 \
-          automation/tierschutz_guard.py >> "$TS" 2>&1 9>&- & )
+      # 25.09.2026: wie Medizin/Waffen — Nur-Neuimporte sehen seit der Grind-Pause fast nichts; je 7 Tage der GANZE Bestand,
+      # Stempel erst nach Exit 0 (Nachtrag 84/85).
+      TS_SEIT=$(date -u -d '3 days ago' +%F); TS_VOLL="$REPO/dropship/_tierschutz_voll_stand.txt"; TS_STEMPEL=/dev/null
+      TS_LETZT=$(cat "$TS_VOLL" 2>/dev/null || echo 2000-01-01)
+      if [ "$(date -u -d "$TS_LETZT" +%s 2>/dev/null || echo 0)" -lt "$(date -u -d '7 days ago' +%s)" ]; then
+        TS_SEIT=2020-01-01; TS_STEMPEL="$TS_VOLL"
+      fi
+      ( cd "$REPO" && setsid bash -c "SEIT=$TS_SEIT python3 automation/tierschutz_guard.py && date -u +%F > '$TS_STEMPEL'" \
+          >> "$TS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tierschutz_guard gestartet"
     fi
   fi
