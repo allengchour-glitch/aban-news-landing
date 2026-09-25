@@ -670,6 +670,25 @@ var LAMP_MAX=6;       /* 💡 gleichzeitig brennende Punktlichter — siehe Ausw
 
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 scene.add(sun.target);   /* das Ziel muss in der Szene haengen, sonst wandert die Schatten-Box nicht mit */
+/* 🌗 SCHATTEN AUF DEM TEXELRASTER (Runde 100). Licht und Ziel folgen der Kamera stufenlos (loop). Dann liegt das
+   Raster der Schattenkarte jedes Bild um Bruchteile eines Texels anders auf der Welt, und jede Schattenkante
+   „kriecht" beim Gehen — ein Flimmern genau dort, wo Schatten scharf sind (Hauskanten auf dem Asphalt).
+   Bis Runde 100 fiel das kaum auf: das Sonnen-Ziel war eingefroren (s. _bewegtMarkieren), die Schatten-Box stand
+   fast immer neben dem Spieler. Jetzt, wo sie ueberall stimmt, gehoert sie aufs Raster.
+   Verschoben wird nur QUER zur Lichtrichtung, und zwar Licht und Ziel um dasselbe Stueck — die Richtung bleibt
+   genau dieselbe. Die Achsen sind die der Schattenkamera (Object3D.lookAt: z = Licht − Ziel, x = oben × z,
+   y = z × x). Gemessen mit probe-schattenkriechen.mjs (Kamera steht, nur das Ziel wandert in 2-cm-Schritten). */
+var _srZ=new THREE.Vector3(),_srX=new THREE.Vector3(),_srY=new THREE.Vector3(),_srO=new THREE.Vector3(0,1,0);
+function _sonneAufKamera(cx,cz,px,py,pz,ohneRaster){
+  sun.target.position.set(cx,0,cz);sun.position.set(cx+px,py,cz+pz);
+  if(!ohneRaster){
+    var sc=sun.shadow.camera,s=(sc.right-sc.left)/sun.shadow.mapSize.x;
+    _srZ.set(px,py,pz).normalize();_srX.crossVectors(_srO,_srZ).normalize();_srY.crossVectors(_srZ,_srX);
+    var t=sun.target.position,a=t.dot(_srX),b=t.dot(_srY),da=Math.round(a/s)*s-a,db=Math.round(b/s)*s-b;
+    t.addScaledVector(_srX,da).addScaledVector(_srY,db);
+    sun.position.addScaledVector(_srX,da).addScaledVector(_srY,db);}
+  sun.target.updateMatrixWorld();}
+window._sonneAufKamera=_sonneAufKamera;   /* probe-schattenkriechen */
 sun.castShadow=_schattenAn;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);
 /* 🐛 Schwarze Flecken mit ausgefransten Raendern = Schatten-Akne: grosse flache Flaechen
    (Rasen, Fahrbahn) beschatten sich selbst, weil ihre Tiefe in der Schattenkarte minimal
@@ -2844,7 +2863,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
          Drehgruppen (`piv.userData.rad`, _raederVon), die Meshes darin sind unmarkiert. Ohne diese Zeile waeren
          sie in die Karosserie geschmolzen und haetten sich nicht mehr gedreht. */
       if(!_zfUdOk(c.userData))continue;
-      if(!c.visible&&!lodM.has(c))continue;
+      /* ⚠️ `c._lodM` statt nur der Momentaufnahme lodM (Runde 100): das Zusammenfassen laeuft in Scheiben ueber viele
+         Bilder. Baut lodAufbau dazwischen neu auf und blendet aus, sind Teile unsichtbar, die in der Momentaufnahme
+         fehlen — sie blieben einzeln. Gemessen: 79 Blumenfelder, 948 Teile, 0 zusammengefasst (141 Aufrufe an der
+         Kreuzung); ein zweiter Lauf fasste sie sofort zusammen. */
+      if(!c.visible&&!lodM.has(c)&&!c._lodM)continue;
       if(c.isMesh&&!c.isInstancedMesh&&!c.isSkinnedMesh&&c.geometry&&c.geometry.isBufferGeometry&&c.material&&!Array.isArray(c.material)
          &&!c.material.transparent&&!c.material.wireframe&&!c.morphTargetInfluences&&!c.children.length&&c.frustumCulled
          &&c.onBeforeRender===_zfLeer&&_zfUdOk(c.userData)){
@@ -2912,7 +2935,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var B={},keys=[],c=new THREE.Vector3(),bb=new THREE.Box3();
     L.forEach(function(m){
       if(!m.parent||m._zf)return;m._zf=1;
-      if(!m.visible&&!lodM.has(m))return;
+      if(!m.visible&&!lodM.has(m)&&!m._lodM)return;
       if(!m.geometry.isBufferGeometry||!m.material||Array.isArray(m.material)||m.material.transparent||m.material.wireframe
          ||m.morphTargetInfluences||m.children.length||!m.frustumCulled||m.onBeforeRender!==_zfLeer)return;
       var sig=_zfSig(m.geometry);if(!sig)return;
@@ -18368,9 +18391,7 @@ function loop(now){
        die Box auf dem Handy auf ±60 m verkleinert habe — sobald der Spieler weiter weg war,
        lag alles ausserhalb der Box und wurde komplett schwarz (User-Screenshot).
        Licht UND Ziel wandern jetzt mit der Kamera mit, die Box ist immer um den Spieler. */
-    sun.target.position.set(camTx,0,camTz);
-    sun.target.updateMatrixWorld();
-    sun.position.set(camTx+Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,camTz+18); // tiefer bei Daemmerung -> lange Schatten
+    _sonneAufKamera(camTx,camTz,Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
     renderer.toneMappingExposure=(0.62+dayA*0.36)*wDim; // 0.34 war zu dunkel zum Spielen
     /* 🌙 DIE NACHT WAR TAGHELL — und diese eine Zeile war der Grund.
        `scene.environmentIntensity` gibt es erst ab three.js r163; geladen ist
@@ -18926,6 +18947,7 @@ function lodAufbau(){
        Nach dem Einbau der Fenster- und Tuerdetails stiegen die Aufrufe von 270
        auf 1148 — deshalb verschwindet dieses Kleinzeug schon ab 34 m. */
     _lodKlein.push({m:n,x:mitte.x,z:mitte.z,nah:(r<0.55),mittel:(r>2.2)});
+    n._lodM=1;   /* _zusammenfassen: „unsichtbar, weil nur entfernungs-ausgeblendet" — am Teil selbst, s. dort */
   });
   _lodBereit=true;
   return _lodKlein.length;
