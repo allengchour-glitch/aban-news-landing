@@ -33901,3 +33901,4 @@ gid://shopify/Product/15479625613697	CHF 9.12	1 Varianten	Tennis-Schläger für 
 gid://shopify/Product/15479625712001	CHF 16.77	1 Varianten	Sitzkissen für Autofahrten
 gid://shopify/Product/15479625744769	CHF 35.06	1 Varianten	NS Dual Gamepad mit Handschlaufe
 gid://shopify/Product/15479625777537	CHF 199.50	1 Varianten	Ganzjahres-Leder-Sitzkissen Universal
+gid://shopify/Product/15479625908609	CHF 11.62	1 Varianten	Tanz- & Fitness-Armbänder für Switch Joy-Con
