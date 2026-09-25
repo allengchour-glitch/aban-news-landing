@@ -964,8 +964,11 @@ Wer nur den Diff gegen UNSEREN Branch liest, sieht bei den main-basierten Branch
   Vorhandene Skills nicht überschrieben.
 - Versandschwelle live gemessen: 45 aktiv, mit Absicht; der «Widerspruch» der App-Session ist keiner.
 - Metricool-Plan der ads-Session geprüft: Threads verletzt den Stopp vom 07.07., 6 von 12 Produkten waren im Juni
-  schon auf IG, und keiner der Posts steht in unseren Ledgern. Das habe ich dem Betreiber zur Entscheidung vorgelegt;
-  Eintrag in SHARED-MEMORY.
+  schon auf IG, und keiner der Posts steht in unseren Ledgern. Der Betreiber hat «Bereinigen» gewählt:
+  bei 6 Posts Threads entfernt (nur noch IG+FB), 4 Wiederholungen als Entwurf zurückgestellt. Das 5. Update (Costa)
+  hat der Betreiber abgelehnt; es bleibt unverändert. Eintrag in SHARED-MEMORY.
+  Metricool-Falle: `updateScheduledPost` vergibt eine NEUE id (die uuid bleibt) und überschreibt den ganzen Post. Deshalb
+  immer den vollständigen Inhalt mitschicken.
 **Lehren.**
 1. **Fremde Sessions am selben Konto umgehen jede Doppelpost-Sperre, die nur im eigenen Ledger nachsieht.** Die
    Plattform-Wahrheit (`igLiveHas`) greift erst nach dem Post. Vor jeder Planungsrunde also `getScheduledPosts`

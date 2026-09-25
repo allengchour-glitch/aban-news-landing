@@ -23,8 +23,14 @@ notiert, es ist aber keiner. **Bitte NICHT auf 50 umstellen.**
 - (2) **6 von 12 Produkten wurden im Juni schon auf IG gepostet** (Gua-Sha 10.06., Marco, Onyx, Costa, Roma, Stella). Das
   verstösst gegen das Doppelpost-Verbot vom 06.07.
 - (3) Die Posts stehen in keinem unserer Ledger (`_posted_media.txt` / `posts_image.csv`); `igLiveHas()` sieht sie erst hinterher.
-Entscheid liegt beim Betreiber (gefragt 25.09.). Bis dahin gilt: **keine neuen Metricool-IG/FB/Threads-Posts ausserhalb von
-`post_guard.mjs`**. Wer dort einplant, trägt die Produkte in `dropship/_posted_media.txt` ein.
+**Betreiber-Entscheid 25.09. «Bereinigen», umgesetzt 17:40 UTC per `updateScheduledPost` (jede Antwort rückgelesen):**
+- Threads entfernt bei den 6 neuen Produkten: Gala (28.09.), Cloud (01.10.), Lino (02.10.), Porto (04.10.), Serpent (05.10.),
+  Amalfi (06.10.). Sie posten nur noch auf IG+FB.
+- Als Entwurf zurückgestellt (`draft:true`, ohne Threads): Marco, Onyx, Stella und Roma. Sie wurden im Juni schon gepostet.
+- **Costa (29.09., IG+FB+Threads) ist UNVERÄNDERT.** Der Betreiber hat genau dieses Update abgelehnt; nicht erneut anfassen.
+- Unsere eigenen Queue-Zeilen zu allen 11 Produkten stehen auf `dead-url-skip`. Unser Autopilot postet sie also nicht doppelt.
+Regel ab jetzt: **Neue Metricool-IG/FB-Posts nur nach `getScheduledPosts` UND nach dem Abgleich mit `posts_image.csv`
+und `_posted_media.txt`. Keine Threads.**
 
 ## ⚖️ Einsprüche 22.09. (Cloud-Session `claude/luxestyle-status-tztnn1`, nach Gegenprüfung von 46 Fremd-Behauptungen)
 
