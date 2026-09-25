@@ -68,6 +68,33 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
+- **Auftrag:** Dauerauftrag / `/loop` — Produktvideos für die Verkaufsschlager rendern. **Bevor ich
+  ein Video für das falsche Produkt baue, habe ich gemessen, WAS sich wirklich verkauft.** Gut so.
+- **🔴 KORREKTUR AM GEDÄCHTNIS: das „zweimal bestellte Fuda-Taschenmesser" ist kein Verkaufsschlager.**
+  Der Block vom 13.09. führt es als Beleg für die neue `BEST_SELLING`-Sortierung („vorn stehen jetzt
+  das zweimal bestellte Fuda-Taschenmesser"). **GEMESSEN an den Bestellungen selbst: #1016 und #1017
+  sind BEIDE `REFUNDED`, und das Produkt steht auf `DRAFT`.** Es ist weder Geld geblieben noch ist es
+  kaufbar. **„Zweimal bestellt" ist wahr und trotzdem irreführend — eine Bestellung ist kein Verkauf,
+  solange sie erstattet wurde.** Wer Verkaufsschlager nennt, filtert auf `financial_status:paid`
+  **und** prüft den Produktstatus, sonst baut man Werbung für etwas, das niemand kaufen kann.
+- **🔴 ZWEI ECHTE VERKÄUFER FEHLTEN GANZ:** **#1018 E-Scooter Lithium-Akku Ladegerät** (CHF 28.90,
+  07.09., bezahlt **und** erfüllt — die **jüngste** Bestellung überhaupt) und **#1012 Interaktives
+  Katzenspielzeug** (32.90, 09.08.) stehen in **keinem** Stand-Block, obwohl die Verkäuferliste
+  mehrfach zitiert wurde.
+- **✅ DIE GEMESSENE LISTE (bezahlt · erfüllt · Produkt noch ACTIVE), Stand 25.09.:**
+  #1018 E-Scooter-Ladegerät 28.90 · #1015 Gemüseschneider 22.90 · #1014 Leinen-Set «Provence» 41.90 ·
+  #1013 Midikleid + Blumenkleid 33.82 · #1012 Katzenspielzeug 32.90 · #1011 Reise-Hängematte 21.90.
+  **Sieben Produkte, alle CHF 21.90–41.90, alle CJ-Kleinware** — die Regel aus §9 des Runbooks
+  („was sich erfüllen lässt, ist CJ-Kleinware mit echter `CJ-`-SKU, CHF 20–45") ist damit erneut
+  bestätigt, diesmal ohne Ausnahme.
+- **🟢 UND EIN AUFMUNTERNDER BEFUND: jede erstattete Bestellung betrifft ein Produkt, das heute DRAFT
+  ist** (BigBuy-Sperrgut, zwei Kopfhörer, das Taschenmesser). **Die Aufräumarbeit der Vorsessions hat
+  also gewirkt** — der Katalog enthält die Fehlerquellen nicht mehr.
+- **🎬 Produktvideos für genau diese sieben gerendert** mit `automation/produkt_werbevideo.mjs`
+  (Produkt ab Sekunde 0, Preis im Bild, Marke am Ende, je eine Musik- und eine Clean-Fassung plus
+  Deckblatt). Braucht keine Zugangsdaten.
+
 **📌 2026-09-23 (🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo):**
 - **Auftrag:** „lerne noch wie man bilder in video macht für super werbung video und teile memory."
   Voller Bericht: **`dropship/LERNEN-BILD-ZU-VIDEO-2026-09-23.md`**. Neuer Skill: **`.claude/skills/werbevideo/`**.
