@@ -16002,3 +16002,4 @@ gid://shopify/Product/15470013743489	16->0	Wurfbeutel / Konfettitasche
 gid://shopify/Product/15470016299393	17->0	Schaumstoffpinsel 4 Stk.
 gid://shopify/Product/15470018888065	86->0	Tischdecke Boneshine Fever
 gid://shopify/Product/15470076920193	191->0	Ticketsabroller Metall
+gid://shopify/Product/15453787652481	11->0	Intelligentes Glas mit Touch-Steuerung

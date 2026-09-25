@@ -75678,3 +75678,9 @@ gid://shopify/Product/15515288371585	titel	2026-09-25	titel-entschaerft
 gid://shopify/Product/15521322533249	titel	2026-09-25	titel-entschaerft
 gid://shopify/Product/15521322926465	titel	2026-09-25	titel-entschaerft
 gid://shopify/Product/15454333600129	titel	2026-09-25	titel-entschaerft
+gid://shopify/Product/15506534793601	text	2026-09-25	krankheitsbezug-entschaerft
+gid://shopify/Product/15521322533249	text	2026-09-25	krankheitsbezug-entschaerft
+gid://shopify/Product/15502557151617	text	2026-09-25	krankheitsbezug-entschaerft
+gid://shopify/Product/15521322926465	text	2026-09-25	krankheitsbezug-entschaerft
+gid://shopify/Product/15493706187137	text	2026-09-25	krankheitsbezug-entschaerft
+gid://shopify/Product/15515288371585	text	2026-09-25	krankheitsbezug-entschaerft

@@ -108,6 +108,11 @@
    "n": "haemorrhoiden",
    "re": "H[äa]morrhoid\\w*",
    "warum": "25.09.2026: «3U Hämorrhoidenkissen» — ein Kissen, das für ein Krankheitsbild «speziell entwickelt» ist, hat eine medizinische Zweckbestimmung. Vollprobelauf 51'336: genau 1 Treffer, kein Fehlalarm."
+  },
+  {
+   "n": "narbenpflaster",
+   "re": "Narben[- ]?(?:pflaster|gel|silikon|band)\\w*|Silikon[- ]?Narben\\w*",
+   "warum": "25.09.2026: «Silikon-Narbenpflaster» — Silikon-Narbenauflagen sind Medizinprodukte (Narbenbehandlung). Vollprobelauf 51'336: genau 1 Treffer."
   }
  ]
 }
