@@ -966,6 +966,10 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
   ≤ 3. Die Schwelle 4 bleibt.
 - `social-autopost-meta.mjs` hat eine ZEHNTE SCHICHT: ab 4 Wörtern gilt `text-im-bild-skip`; unlesbar heisst, die Zeile bleibt ready.
   Die Queue hat 58 wartende Zeilen, 1 Treffer (Panda-Handyhalter), 0 Fehlalarme.
+- 45 wartende Reels tragen noch das alte Layout. `NEU_RENDERN=1` scheitert, weil der CJ-Videohost per Proxy gesperrt ist (Probe
+  0402F562: curl-Fehler). Deshalb setzt `meta_reel_post.mjs` für Reels mit altem Layout `thumb_offset: 3500`: Der Hook ist bis 3,2 s
+  eingeblendet, das Kachelcover zeigt danach Produkt, Titel und Preis. Ob ein Reel alt ist, entscheidet die Commit-Zeit der Repo-Datei
+  (nicht die mtime, die setzt git beim Auschecken neu) gegen `LAYOUT_NEU_AB` 2026-09-25T18:15Z; CDN-Reels richten sich nach dem Datum.
 **Nicht behebbar von hier:** Das Cover eines veröffentlichten Reels kann die API nicht ändern, und Löschen ist hier gesperrt.
 Die zwei alten Cover und die Lampe bleiben stehen oder werden vom Betreiber in der App archiviert. «Beige» (ein Farbwort)
 liegt unter der Schwelle, mit Absicht.

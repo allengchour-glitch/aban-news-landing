@@ -260,7 +260,24 @@ let igPermalink = '';
 { // Einwilligungs-Bedingung der Kundin: ihr Material nur MIT Markierung (04.09.2026).
   const fehlt = markierungFehlt(url, text, cand[idx.id]);
   if (fehlt) { console.error('⛔', fehlt); cand[idx.status] = 'markierung-fehlt'; writeLedger(); process.exit(3); } }
-const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true' });
+// 25.09.2026 (Betreiber-Screenshot IG-Profil): Im Profilraster schneidet IG Reels auf 3:4, also y 240–1680, und das Reel-Symbol
+// liegt über y 270–355. Reels, die VOR der Layout-Korrektur (overlay.py KOPF_Y 250 / HOOK_Y 400) gebaut wurden, zeigen auf dem
+// Cover (Frame 0) ein halb abgeschnittenes LUXESTYLE und einen Hook unter dem Symbol. Neu rendern geht nicht (CJ-Videohost per
+// Proxy gesperrt). Deshalb nehmen alte Reels das Cover bei 3,5 s: Der Hook ist bis 3,2 s eingeblendet, danach zeigt die Kachel
+// Produkt, Titel und Preis. Neue Reels behalten Frame 0 samt Hook.
+const LAYOUT_NEU_AB = Date.parse(process.env.LAYOUT_NEU_AB || '2026-09-25T18:15:00Z');
+const altesLayout = (() => {
+  const m = /social\/reels\/([^/?#]+\.mp4)/.exec(url);            // Repo-Reel: Dateizeit ist die Wahrheit
+  if (m && fs.existsSync(`social/reels/${m[1]}`)) {
+    try {   // git setzt die mtime beim Auschecken neu → Commit-Zeit der Datei, nicht die Dateizeit
+      const t = Date.parse(String(_exf('git', ['log', '-1', '--format=%cI', '--', `social/reels/${m[1]}`], { encoding: 'utf8' })).trim());
+      if (!Number.isNaN(t)) return t < LAYOUT_NEU_AB;
+    } catch {}
+  }
+  return (cand[idx.scheduled_date] || '').trim().slice(0, 10) <= '2026-09-25';   // CDN-Reels: alle vor der Korrektur gebaut
+})();
+const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true', ...(altesLayout ? { thumb_offset: '3500' } : {}) });
+if (altesLayout) console.log('   Cover bei 3,5 s (Reel mit altem Layout, Hook im Raster sonst abgeschnitten)');
 if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 for (let a = 0; a < 30; a++) {
   await sleep(8000);
