@@ -22,7 +22,7 @@
 import fs from 'node:fs';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
+         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -177,7 +177,7 @@ const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
 
-const ready = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.image_url]||'').trim());
+const ready = nachVorrang(data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.image_url]||'').trim()), r => `/products/${(r[idx.id]||'').trim()} ${r[idx.caption]||''}`);   // 25.09. Saison-Vorrang (Herbst) zuerst — id = Handle (Bild-Captions tragen keinen Link)
 if(ready.length===0){ console.log('Kein Bild mit status=ready — nichts zu tun.'); process.exit(0); }
 
 console.log(`Konfigurierte Kanäle: ${configured.join('+')||'(keine, DRY)'} · ready: ${ready.length} · MAX_PER_RUN: ${MAX}`);

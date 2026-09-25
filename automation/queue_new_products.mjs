@@ -62,6 +62,10 @@ function existingHandles(csvText) {
   const set = new Set();
   const re = /\/products\/([a-z0-9-]+)/gi; let m;
   while ((m = re.exec(csvText))) set.add(m[1].toLowerCase());
+  // 25.09.2026: Seit die Captions «Link in Bio» statt /products/-Link tragen (23.09.), stand der Handle NUR noch in der
+  // id-Spalte — die Sperre sah ihn nicht, und derselbe Hoodie wurde zweimal eingereiht. Jetzt auch die erste Spalte.
+  const idRe = /^([a-z0-9-]+),\d{4}-\d{2}-\d{2},/gim;
+  while ((m = idRe.exec(csvText))) set.add(m[1].toLowerCase());
   return set;
 }
 
@@ -94,7 +98,8 @@ function ladenZeile(tags) {
 function caption(title, handle, pt, price, tags) {
   const chf = price ? `CHF ${Number(price).toFixed(2).replace(/\.00$/, '.–')}` : '';
   const t = String(title).replace(/\s+[–—]\s+.*$/, '').replace(/\s+-\s+.*$/, '').replace(/\s*[·|].*$/, '').trim();
-  return `${t}${chf ? ` · ${chf}` : ''}\n${ladenZeile(tags)}\nJetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio\n\n${hashtags(pt)}`;
+  const saison = process.env.VORRANG_TAG ? (process.env.SAISON_ZEILE || '🍂 Herbst-Favorit') + '\n' : '';   // 25.09. Saison-Nachschub
+  return `${saison}${t}${chf ? ` · ${chf}` : ''}\n${ladenZeile(tags)}\nJetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio\n\n${hashtags(pt)}`;
 }
 
 (async () => {
@@ -105,7 +110,9 @@ function caption(title, handle, pt, price, tags) {
   const have = existingHandles(csv);
 
   // zuletzt angelegte ACTIVE cj-real Produkte
-  const d = await shopify(`query{ products(first:50, query:"status:active AND tag:cj-real", sortKey:CREATED_AT, reverse:true){
+  // 25.09.2026: VORRANG_TAG=herbst-2026 → Saison-Ware statt der neuesten CJ-Produkte (Herbst stand in 0 von 56 wartenden Bild-Posts).
+  const VT = (process.env.VORRANG_TAG || '').replace(/[^a-z0-9-]/gi, '');
+  const d = await shopify(`query{ products(first:${VT ? 250 : 50}, query:"status:active AND tag:${VT || 'cj-real'}", sortKey:CREATED_AT, reverse:true){
       nodes{ title handle productType tags featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`);
   const prods = balanceByCategory(d.products?.nodes || [], p => `${p.title} ${p.productType||''} ${p.handle||''}`);
 

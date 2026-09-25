@@ -97,6 +97,16 @@ while true; do
       fi
       touch "$MARKE_NACHSCHUB"
     fi
+    # 25.09.2026 «herbstsachen auf sozial pushen»: Saison-Nachschub unabhaengig vom Gesamtvorrat — liegen weniger als 4
+    # wartende Bild-Posts mit Vorrang-Handle (dropship/_social_vorrang.txt) in der Queue, werden bis 4 Herbstartikel eingereiht.
+    # Der Poster zieht sie vor (post_guard.nachVorrang); die Kadenz (BILD_ABSTAND) bleibt dieselbe.
+    if [ -s dropship/_social_vorrang.txt ] && faellig "$MARKE_NACHSCHUB.saison" "$NACHSCHUB_ABSTAND"; then
+      VR=$(python3 -c "import csv;h={l.split('\t')[0] for l in open('dropship/_social_vorrang.txt') if l.strip()};print(sum(1 for r in csv.DictReader(open('social/posts_image.csv',encoding='utf-8')) if r.get('status')=='ready' and ((r.get('id') or '') in h or any('/products/'+x in (r.get('caption') or '') for x in h))))" 2>/dev/null || echo 99)
+      if [ "$VR" -lt 4 ]; then
+        SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" VORRANG_TAG=herbst-2026 QUEUE_MAX=$((4 - VR)) $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Saison-Nachschub fehlgeschlagen"
+      fi
+      touch "$MARKE_NACHSCHUB.saison"
+    fi
     if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
       echo "$(date -u +%H:%M) Bildpost fällig"
       if MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then
