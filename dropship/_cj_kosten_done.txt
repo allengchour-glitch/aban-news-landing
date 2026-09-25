@@ -32095,3 +32095,6 @@ gid://shopify/Product/15473084891521	CHF 18.43	5 Varianten	High-Waist Jeans mit 
 gid://shopify/Product/15473084924289	CHF 19.94	16 Varianten	Weite Damen-Jeans mit Rüschensaum
 gid://shopify/Product/15473085022593	CHF 25.10	15 Varianten	Vintage Wide-Leg Jeans für grosse Grössen
 gid://shopify/Product/15473085088129	CHF 27.67	4 Varianten	Schubladen-Organizer für Kosmetik
+gid://shopify/Product/15473085120897	CHF 22.06	5 Varianten	High-Waist Wide-Leg Jeans für Damen
+gid://shopify/Product/15473085186433	CHF 19.08	4 Varianten	Washed Straight-Leg Commuter Jeans
+gid://shopify/Product/15473085251969	CHF 13.46	1 Varianten	M.2 SSD Aluminium Gehäuse
