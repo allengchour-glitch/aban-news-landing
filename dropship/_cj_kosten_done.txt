@@ -31598,3 +31598,17 @@ gid://shopify/Product/15470368686465	CHF 26.82	5 Varianten	Off-Shoulder Paillett
 gid://shopify/Product/15470368850305	CHF 16.93	1 Varianten	3-teiliger Jäter mit Holzgriff
 gid://shopify/Product/15470368883073	CHF 20.10	5 Varianten	Off-Shoulder Midikleid mit Rüschen und Print
 gid://shopify/Product/15470368915841	CHF 9.26	1 Varianten	Erfrischendes Mundwasser für unterwegs
+gid://shopify/Product/15470368948609	CHF 13.97	28 Varianten	Ärmelloses Retro-Ferienkleid im French-Style
+gid://shopify/Product/15470369014145	CHF 12.69	20 Varianten	Etuikleid mit Rüschensaum
+gid://shopify/Product/15470369046913	CHF 10.85	2 Varianten	Smartes Ohrenschmalz-Entfernungsset P3
+gid://shopify/Product/15470369079681	CHF 20.23	12 Varianten	Warmes Fleece Pyjama-Set mit Kapuze
+gid://shopify/Product/15470369112449	CHF 43.15	2 Varianten	Wireless HDMI Transmitter für TV
+gid://shopify/Product/15470369145217	CHF 16.84	1 Varianten	Gestreiftes Strickkleid mit halbem Rollkragen
+gid://shopify/Product/15470369177985	CHF 32.07	3 Varianten	Kinderwagen-Ventilator mit Schwenkkopf
+gid://shopify/Product/15470369210753	CHF 13.27	3 Varianten	Langes Damenkleid mit farbigem Print
+gid://shopify/Product/15470369243521	CHF 30.48	24 Varianten	Elegantes A-Linien Midikleid mit Puffärmeln
+gid://shopify/Product/15470369407361	CHF 22.72	24 Varianten	Elegantes A-Linien-Kleid mit Broschen-Gürtel
+gid://shopify/Product/15470369505665	CHF 20.04	16 Varianten	Elegantes trägerloses Satin-Abendkleid
+gid://shopify/Product/15470369538433	CHF 10.72	6 Varianten	Ärmelloses rückenfreies Kleid mit Bindeband
+gid://shopify/Product/15470369636737	CHF 21.61	24 Varianten	Elegantes Sommerkleid mit Blumenmuster
+gid://shopify/Product/15470369735041	CHF 24.39	20 Varianten	Elegantes A-Linien Abendkleid mit Volants
