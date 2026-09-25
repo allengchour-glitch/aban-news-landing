@@ -31615,3 +31615,5 @@ gid://shopify/Product/15470369735041	CHF 24.39	20 Varianten	Elegantes A-Linien A
 gid://shopify/Product/15470375371137	CHF 13.62	6 Varianten	Loose-Fit Hemd · Herren
 gid://shopify/Product/15470375633281	CHF 14.38	8 Varianten	Zweihundeleine
 gid://shopify/Product/15470375928193	CHF 13.85	15 Varianten	Kapuzenkleid mit Tasche
+gid://shopify/Product/15470375993729	CHF 19.37	8 Varianten	Chiffon-Kleid · Damen
+gid://shopify/Product/15470376026497	CHF 23.41	20 Varianten	Elegantes Schnürkleid mit langen Ärmeln
