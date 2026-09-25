@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-23T21:35:24Z",
+ "stand": "2026-09-25T09:35:37Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Enveda secures $311M to bring more nature-derived AI drugs into clinical trials",
-   "u": "https://techcrunch.com/2026/09/23/enveda-secures-311m-to-bring-more-nature-derived-ai-drugs-into-clinical-trials/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-23T19:31:28Z",
-   "s": "The round valued the AI biotech at $2 billion. It is currently testing drugs that treat skin conditions and preserve weight loss after stopping GLP-1s.",
-   "sprache": "en"
-  },
-  {
-   "t": "Für KI-Wearables: Neuer Snapdragon-Soundchip kommt mit besserer NPU",
-   "u": "https://www.golem.de/news/fuer-ki-wearables-neuer-snapdragon-soundchip-kommt-mit-besserer-npu-2609-213342.html",
-   "q": "Golem",
-   "d": "2026-09-23T19:30:02Z",
-   "s": "Der neue Snapdragon Sound Elite Gen 2 soll eine bis zu doppelt so starke KI-Leistung als der Vorgänger bringen. Gedacht ist er für Wearables, auch Smart Glasses. (Snapdragon Summit 2026, KI)",
+   "t": "KI außer Kontrolle? Wie die Technologie unsere Cybersecurity auf den Kopf stellt",
+   "u": "https://t3n.de/news/ki-ausser-kontrolle-wie-die-technologie-unsere-cybersecurity-auf-den-kopf-stellt-1765005/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-25T09:00:31Z",
+   "s": "Der Hack von Hugging Face, überzeugendere Phishing-Mails und vor allem die Schnelligkeit: KI und die damit ausgestatteten Agenten werden zunehmend zu einer Bedrohung für die IT-Sicherheit unserer Comp…",
    "sprache": "de"
   },
   {
-   "t": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
-   "u": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
+   "t": "Muse leakt Systemdateien: Metas KI-Agent gibt auf Anfrage sein Dateisystem aus",
+   "u": "https://www.golem.de/news/muse-leakt-systemdateien-metas-ki-agent-gibt-auf-anfrage-sein-dateisystem-aus-2609-213429.html",
+   "q": "Golem",
+   "d": "2026-09-25T08:50:02Z",
+   "s": "Ein Entwickler hat Metas KI-Agent Muse 6,8 GByte an Daten aus seiner Betriebsumgebung entlockt. Laut Meta ist das ein erwartetes Verhalten. (KI, Ubuntu)",
+   "sprache": "de"
+  },
+  {
+   "t": "Horizon Create und Horizon Studio: KI erzeugt Handyspiele und verteilt sie auf Facebook",
+   "u": "https://www.golem.de/news/horizon-create-und-horizon-studio-ki-erzeugt-handyspiele-und-verteilt-sie-auf-facebook-2609-213427.html",
+   "q": "Golem",
+   "d": "2026-09-25T08:35:01Z",
+   "s": "Anwender sollen Spiele für Meta-Plattformen mit KI direkt am Smartphone und im Browser prompten können. (KI, Softwareentwicklung)",
+   "sprache": "de"
+  },
+  {
+   "t": "Kennzeichen und Sperrung für Tantiemen: Wie der Musikstreaming-Dienst Qobuz gegen KI-Musik vorgeht",
+   "u": "https://t3n.de/news/musikstreaming-plattform-qobuz-zieht-nach-und-fuehrt-ki-label-ein-1765062/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-25T08:30:41Z",
+   "s": "Immer mehr Musikstreaming-Anbieter führen Labels ein, um KI-generierte Musik zu kennzeichnen. Auch die Plattform Qobuz setzt jetzt auf einen „AI-Tag“, um für Hörer:innen Transparenz zu schaffen.weiter…",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | Pilze sammeln mit KI: Experten warnen vor tödlichen Fehlern",
+   "u": "https://www.heise.de/hintergrund/Pilze-sammeln-mit-KI-Experten-warnen-vor-toedlichen-Fehlern-11461413.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-09-25T08:30:00Z",
+   "s": "Die Pilzsaison läuft. Fragt man Apps und KI, ob man ein leckeres Stockschwämmchen oder einen Gifthäubling gesammelt hat, folgen mitunter tödliche Ratschläge.",
+   "sprache": "de"
+  },
+  {
+   "t": "Google bringt Echtzeit-Avatare für Gemini-Sprachagenten",
+   "u": "https://www.heise.de/news/Google-gibt-Gemini-Sprachagenten-ein-Gesicht-11465625.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-25T08:14:00Z",
+   "s": "Google erweitert Gemini um Avatare, die sprechen, sehen und mimisch auf Nutzer reagieren. Die Funktion richtet sich vorerst an Unternehmen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Lightspeed targets $250M for new India fund, focusing on early-stage AI",
+   "u": "https://techcrunch.com/2026/09/24/lightspeed-targets-250m-for-new-india-fund-focusing-on-early-stage-ai/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-25T05:00:00Z",
+   "s": "The venture firm is aligning its India fundraising cycle with its global funds for the first time, as it shifts to a shorter investment period.",
+   "sprache": "en"
+  },
+  {
+   "t": "Bring your co-founder, partner, or colleague and get 50% off a second TechCrunch Disrupt 2026 pass",
+   "u": "https://techcrunch.com/2026/09/24/bring-your-co-founder-partner-or-colleague-and-get-50-off-a-second-techcrunch-disrupt-2026-pass/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-24T19:15:00Z",
+   "s": "Buy one pass to TechCrunch Disrupt 2026 and get 50% off a second of the same ticket type. Register before event starts on October 13 at 8 a.m. PT.",
+   "sprache": "en"
+  },
+  {
+   "t": "Accelerating vision-language models with LFM2.5-VL-DSpark",
+   "u": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
    "q": "Hugging Face",
-   "d": "2026-09-23T18:41:40Z",
+   "d": "2026-09-24T14:08:57Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "Google Beam expands with new regions, partners, and customers",
-   "u": "https://blog.google/innovation-and-ai/technology/research/google-beam-expansion/",
-   "q": "Google AI",
-   "d": "2026-09-23T18:00:00Z",
-   "s": "We’re expanding Google Beam to five new countries, and partnering with Industrious for an extended network.",
+   "t": "The Download: a bid to scrap the virtual wall and AI hits Climate Week",
+   "u": "https://www.technologyreview.com/2026/09/24/1145064/the-download-bid-scrap-virtual-wall-ai-climate-week/",
+   "q": "MIT Tech Review",
+   "d": "2026-09-24T12:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A congressional representative just proposed killing America’s…",
    "sprache": "en"
-  },
-  {
-   "t": "ChatGPT mobile app gets voice-based agentic features",
-   "u": "https://techcrunch.com/2026/09/23/chatgpt-mobile-app-gets-voice-based-agentic-features/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-23T17:00:00Z",
-   "s": "Pro and Plus users will be able to use the Work tab on their phones to complete agentic tasks.",
-   "sprache": "en"
-  },
-  {
-   "t": "KI: SAP-Entwickler sollen vor Ort bei Bayer und H&M Probleme lösen",
-   "u": "https://www.golem.de/news/ki-sap-entwickler-sollen-vor-ort-bei-bayer-und-h-m-probleme-loesen-2609-213373.html",
-   "q": "Golem",
-   "d": "2026-09-23T16:56:02Z",
-   "s": "Um praxistaugliche KI-Funktionen schneller auf den Markt zu bringen, lässt SAP seine Entwickler in kleinen Einheiten bei Großkonzernen programmieren, etwa bei Kunden wie Bayer oder H&M. (SAP, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Bundestags-KI: Eigener Chatbot soll Schatten-KI im Parlament ablösen",
-   "u": "https://www.heise.de/news/Bundestags-KI-Eigener-Chatbot-soll-Schatten-KI-im-Parlament-abloesen-11463718.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-23T16:31:00Z",
-   "s": "Eine maßgeschneiderte KI-Lösung soll Abgeordneten und Verwaltung die Arbeit erleichtern und gleichzeitig strikte Datenschutzstandards im Parlament garantieren.",
-   "sprache": "de"
-  },
-  {
-   "t": "Das Blue Yeti bekommt nach 17 Jahren einen offiziellen Nachfolger",
-   "u": "https://www.heise.de/news/Das-Blue-Yeti-bekommt-nach-17-Jahren-einen-offiziellen-Nachfolger-11463646.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-23T16:01:00Z",
-   "s": "Logitech will KI in einem USB-Mikrofon unterbringen. Gedacht ist es auch für „ASMRtists“, die um das Mikrofon herum rascheln.",
-   "sprache": "de"
-  },
-  {
-   "t": "Two years of OpenAI Academy",
-   "u": "https://openai.com/index/two-years-of-openai-academy",
-   "q": "OpenAI",
-   "d": "2026-09-23T16:00:00Z",
-   "s": "Marking two years of OpenAI Academy and bringing AI skills to even more communities.",
-   "sprache": "en"
-  },
-  {
-   "t": "Das vertrackte Alignment: Wie KI menschliche Werte lernt – und warum das nicht alles absichern kann",
-   "u": "https://t3n.de/news/alignment-ki-menschliche-werte-absichern-1764021/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-23T15:55:00Z",
-   "s": "Damit KI keinen Schaden anrichtet, soll sie menschliche Werte und Regeln berücksichtigen. Um das künftig noch besser zu gewährleisten, greifen Forschende sogar weiterlesen auf t3n.de",
-   "sprache": "de"
   }
  ]
 }
