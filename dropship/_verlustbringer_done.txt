@@ -1333,3 +1333,84 @@ gid://shopify/Product/15454193877377	2026-09-24T10:11Z	draft	14.90	41.49	3-in-1 
 gid://shopify/Product/15454002020737	2026-09-25T06:12Z	draft	29.90	138.66	Titan-Wok mit Flachboden
 gid://shopify/Product/15454001856897	2026-09-25T06:13Z	draft	19.90	117.68	Wohnzimmer Teppich
 gid://shopify/Product/15454001758593	2026-09-25T06:13Z	draft	15.90	95.81	Velour-Teppich schwarz-weiss
+gid://shopify/Product/15454853005697	2026-09-25T07:13Z	schon-DRAFT	15.90	92.40	Edles Besteck-Set aus Edelstahl
+gid://shopify/Product/15448923079041	2026-09-25T07:13Z	draft	15.90	85.71	Chenille Kissenbezug mit Kontraststreifen
+gid://shopify/Product/15455617253761	2026-09-25T07:13Z	draft	18.90	86.92	Aromaplasterset
+gid://shopify/Product/15449168806273	2026-09-25T07:13Z	draft	43.90	108.78	20-Zoll Handgepäck-Trolley mit Frontöffnung
+gid://shopify/Product/15454384750977	2026-09-25T07:13Z	draft	38.90	102.49	Keramik-Luftbefeuchter mit Blumenmotiv
+gid://shopify/Product/15455486968193	2026-09-25T07:13Z	draft	32.90	95.90	Blackhead-Entferner mit 3 Stufen & 1 Mio. Leica-Linse
+gid://shopify/Product/15455657001345	2026-09-25T07:13Z	draft	66.90	120.15	Bambusgewebte Pendelleuchte – Ideal für Restaurants & Teeläd
+gid://shopify/Product/15454384914817	2026-09-25T07:13Z	draft	67.90	119.85	Tischbrunnen Dekoration
+gid://shopify/Product/15455518720385	2026-09-25T07:13Z	draft	14.90	65.87	Keramik Vase Dekoration
+gid://shopify/Product/15455656280449	2026-09-25T07:13Z	draft	32.90	77.97	Einzelzelt für Trekking und Grenzreisen
+gid://shopify/Product/15455516852609	2026-09-25T07:13Z	draft	20.90	65.65	Katzenbett für alle Jahreszeiten
+gid://shopify/Product/15454852186497	2026-09-25T07:13Z	draft	21.90	66.59	Programmierbare Fahrradlichter für E-Bikes
+gid://shopify/Product/15455651168641	2026-09-25T07:13Z	draft	60.90	103.54	Dicken Matratzenauflage
+gid://shopify/Product/15454506484097	2026-09-25T07:13Z	draft	14.90	57.28	Plüsch-Tier Überraschungsbox
+gid://shopify/Product/15455682494849	2026-09-25T07:13Z	draft	17.90	59.93	Bärentatze Pet-Bett
+gid://shopify/Product/15454470766977	2026-09-25T07:13Z	draft	27.90	69.70	Silberfaser-Bettlaken mit Erdung
+gid://shopify/Product/15455504925057	2026-09-25T07:13Z	draft	44.90	86.63	Solar-Wandlampe Outdoor wasserdicht
+gid://shopify/Product/15455521210753	2026-09-25T07:14Z	draft	42.90	82.51	Keramik Obstteller Nordic
+gid://shopify/Product/15454001660289	2026-09-25T07:14Z	draft	39.90	76.50	Runder Teppich
+gid://shopify/Product/15454270947713	2026-09-25T07:14Z	draft	47.90	83.36	Wanduhr mit UV-Design
+gid://shopify/Product/15454852874625	2026-09-25T07:14Z	draft	43.90	78.30	Ziehbarer Mikrowellen- und Doppelschichtofen-Aufbewahrungsst
+gid://shopify/Product/15454647484801	2026-09-25T07:14Z	draft	15.90	49.23	Kühlpad für Tiere
+gid://shopify/Product/15454002512257	2026-09-25T07:14Z	draft	16.90	50.10	Anti-Haft-Pfanne für Induktion und Gas
+gid://shopify/Product/15455650840961	2026-09-25T07:14Z	draft	15.90	48.69	Elegante Doppelseitige Seidendecke mit Kühleffekt
+gid://shopify/Product/15454646010241	2026-09-25T07:14Z	draft	21.90	53.06	Fussheizkissen für den Schreibtisch
+gid://shopify/Product/15455373459841	2026-09-25T07:14Z	draft	17.90	48.34	Wasserfester & rutschfester Eingangsmatte
+gid://shopify/Product/15453768253825	2026-09-25T07:14Z	draft	15.90	45.68	Digitale Malerei ohne Rahmen
+gid://shopify/Product/15455161581953	2026-09-25T07:14Z	draft	33.90	61.48	Nordisch-Stil Glas Fruchtschale fürs Wohnzimmer
+gid://shopify/Product/15454915658113	2026-09-25T07:14Z	draft	26.90	54.46	Moderne Deckenleuchte
+gid://shopify/Product/15455677022593	2026-09-25T07:14Z	draft	30.90	58.23	Drohne mit HD-Aufnahme & autom. Rückkehr
+gid://shopify/Product/15455657460097	2026-09-25T07:14Z	draft	47.90	75.17	Kabellose Autowaschpistole
+gid://shopify/Product/15454303617409	2026-09-25T07:14Z	draft	15.90	42.86	Chenille Sofaüberzug Blumenmuster
+gid://shopify/Product/15455745999233	2026-09-25T07:14Z	draft	34.90	60.96	Modernes LED-Wandlicht für Treppen
+gid://shopify/Product/15455765922177	2026-09-25T07:14Z	draft	26.90	52.59	Geflochtener Aufbewahrungskorb
+gid://shopify/Product/15454271406465	2026-09-25T07:14Z	draft	24.90	48.14	RC Stunt Auto 4WD
+gid://shopify/Product/15455759401345	2026-09-25T07:14Z	draft	16.90	39.05	Aufblasbare Wasserrutsche Matte
+gid://shopify/Product/15455037817217	2026-09-25T07:14Z	draft	16.90	38.45	Kurzgardine mit Häkelstickerei
+gid://shopify/Product/15455515378049	2026-09-25T07:14Z	draft	36.90	57.82	3-teiliger Violetter Blumen-und Vogelmuster Betttuch mit 3D-
+gid://shopify/Product/15454269866369	2026-09-25T07:14Z	draft	15.90	36.31	Nachtsicht Überwachungskamera mit Bewegungserkennung
+gid://shopify/Product/15455516000641	2026-09-25T07:14Z	draft	41.90	61.74	Intelligente Futtermaschine für Haustiere
+gid://shopify/Product/15455516557697	2026-09-25T07:15Z	draft	21.90	41.71	Katzenbett Sofa Plüsch
+gid://shopify/Product/15455518589313	2026-09-25T07:15Z	draft	15.90	35.43	Keramik Hut-Teller
+gid://shopify/Product/15454916018561	2026-09-25T07:15Z	draft	29.90	48.58	Automatischer 5-in-1 Haarwickler mit Negative Ionen & Volume
+gid://shopify/Product/15454644306305	2026-09-25T07:15Z	draft	22.90	41.43	Sofa-Kissen aus Cordura
+gid://shopify/Product/15455516328321	2026-09-25T07:15Z	draft	27.90	46.37	Multifunktionale Geschirrhalterung
+gid://shopify/Product/15455650611585	2026-09-25T07:15Z	draft	15.90	34.21	Universeller Sofabezug Einfach Modern
+gid://shopify/Product/15455518359937	2026-09-25T07:15Z	draft	20.90	38.97	Japanische Nudelschüssel
+gid://shopify/Product/15455650939265	2026-09-25T07:15Z	draft	37.90	55.85	Bettwäsche-Set
+gid://shopify/Product/15455038636417	2026-09-25T07:15Z	draft	14.90	31.91	Kinderzimmer Vorhang rosa Häschen
+gid://shopify/Product/15454335402369	2026-09-25T07:15Z	draft	19.90	36.80	Zwei-Rad-Sportsschuhe
+gid://shopify/Product/15455036014977	2026-09-25T07:15Z	draft	14.90	31.39	Sitzkissen-Set mit Rückenstütze
+gid://shopify/Product/15455531139457	2026-09-25T07:15Z	draft	14.90	29.91	Kompaktes Reinigungsgerät mit Saugeffekt und Blaulicht
+gid://shopify/Product/15455649857921	2026-09-25T07:15Z	draft	15.90	30.65	4-Saisons-Chenille-Sitzkissen
+gid://shopify/Product/15455518523777	2026-09-25T07:15Z	draft	15.90	30.64	Dickes Badehandtuch-Set
+gid://shopify/Product/15455640420737	2026-09-25T07:15Z	draft	15.90	30.29	Sofa-Bezug Set
+gid://shopify/Product/15455038407041	2026-09-25T07:15Z	draft	14.90	28.41	Doppel-Schicht Vorhang mit Spitze
+gid://shopify/Product/15455517147521	2026-09-25T07:15Z	draft	20.90	32.90	Kaktus-Kletterstange für Katzen
+gid://shopify/Product/15455682232705	2026-09-25T07:15Z	draft	17.90	29.46	Jungen-Laufschuhe Jinjiang
+gid://shopify/Product/15455682888065	2026-09-25T07:15Z	draft	18.90	30.35	Kinderstiefel für Herbst und Winter
+gid://shopify/Product/15455824511361	2026-09-25T07:15Z	draft	15.90	27.32	Badezimmer-Aufbewahrungsshelf
+gid://shopify/Product/15454916968833	2026-09-25T07:15Z	draft	17.90	29.31	Solar Gartengestalt
+gid://shopify/Product/15454576673153	2026-09-25T07:15Z	draft	15.90	27.31	Stahlkappen-Sneaker
+gid://shopify/Product/15454743331201	2026-09-25T07:15Z	draft	18.90	30.09	Wanderschuhe
+gid://shopify/Product/15455036572033	2026-09-25T07:15Z	draft	15.90	26.86	Stauraum-Organizer (staubdicht)
+gid://shopify/Product/15455587074433	2026-09-25T07:16Z	draft	18.90	29.32	Doppelte 304-Stahl Lunchbox für Studenten
+gid://shopify/Product/15454852383105	2026-09-25T07:16Z	draft	19.90	29.96	Wasserdichte Leder-Schuhe
+gid://shopify/Product/15455682855297	2026-09-25T07:16Z	draft	18.90	28.72	Kinderstiefel im britischen Stil Herbst/Winter
+gid://shopify/Product/15455161909633	2026-09-25T07:16Z	draft	15.90	25.63	Luxus-Cafetischdecke mit französisch-minimalistischem Design
+gid://shopify/Product/15454333829505	2026-09-25T07:16Z	draft	14.90	23.25	Hohlkehlsandalen mit PU-Lining
+gid://shopify/Product/15454249058689	2026-09-25T07:16Z	draft	17.90	25.84	Bienenkostüm für Haustiere
+gid://shopify/Product/15455824839041	2026-09-25T07:16Z	draft	17.90	25.78	Herren-Rundhals-Baselayer
+gid://shopify/Product/15455373853057	2026-09-25T07:16Z	draft	15.90	23.70	Runder Badevorleger mit Lotus-Teich & Koi-Design
+gid://shopify/Product/15455513411969	2026-09-25T07:16Z	draft	14.90	22.57	Kettlebell-Handle
+gid://shopify/Product/15455035785601	2026-09-25T07:16Z	draft	15.90	23.48	Dicker Leinen Duschvorhang wasserdicht schimmelresistent ohn
+gid://shopify/Product/15455513543041	2026-09-25T07:16Z	draft	15.90	22.98	Rattan-Kühlkissen mit Nackenstütze
+gid://shopify/Product/15455521341825	2026-09-25T07:16Z	draft	15.90	22.71	Runder, geräucherter Becher
+gid://shopify/Product/15454852940161	2026-09-25T07:16Z	draft	16.90	23.42	Wandregal für Gemüse
+gid://shopify/Product/15455759499649	2026-09-25T07:16Z	kein-verlust-live	15.90	14.81	Type-C Multiport-Hub
+gid://shopify/Product/15455513608577	2026-09-25T07:16Z	draft	15.90	21.97	Handgefertigte Farbenfrohe Bürsten-Decke
+gid://shopify/Product/15454501437825	2026-09-25T07:16Z	draft	14.90	20.71	Reflektierendes Band
+gid://shopify/Product/15455520719233	2026-09-25T07:16Z	draft	14.90	20.67	Glas-Topf mit 2-fach Griff

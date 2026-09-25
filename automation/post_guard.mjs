@@ -225,3 +225,24 @@ export function preisVeraltet(caption = '', min = NaN, max = NaN) {
   const aus = [...rein.matchAll(/CHF\s?(\d+[.,]\d{2})\b/g)].map(m => parseFloat(m[1].replace(',', '.'))).filter(x => !(x >= min - 0.005 && x <= max + 0.005));
   return aus.length ? `Caption ${aus.join('/')} ≠ live ${min.toFixed(2)}–${max.toFixed(2)}` : '';
 }
+
+// 25.09.2026 «herbstsachen auf sozial pushen»: SAISON-VORRANG fuer alle Poster. dropship/_social_vorrang.txt traegt Zeilen
+// «handle<TAB>JJJJ-MM-TT» (geschrieben von social_saison_vorrang.py aus den Herbst-Favoriten). Wartende Zeilen, deren Caption
+// einen dieser Handles verlinkt, kommen ZUERST dran — nur die Reihenfolge, nie die Kadenz; alle anderen Sperren gelten weiter.
+// Gemessen vorher: 0 von 107 wartenden Reel-/Bild-Posts waren Herbstartikel (Nachschub nahm nur die neuesten CJ-Produkte).
+export function vorrangHandles(datei = 'dropship/_social_vorrang.txt') {
+  try {
+    const heute = new Date().toISOString().slice(0, 10);
+    return new Set(fs.readFileSync(datei, 'utf8').split('\n').map(z => z.split('\t'))
+      .filter(([h, bis]) => h && h.trim() && (!bis || bis.trim() >= heute)).map(([h]) => h.trim().toLowerCase()));
+  } catch { return new Set(); }
+}
+export function istVorrang(caption = '', set = vorrangHandles()) {
+  const m = String(caption).toLowerCase().match(/\/products\/([a-z0-9-]+)/g) || [];
+  return m.some(x => set.has(x.slice(10)));
+}
+export function nachVorrang(rows, captionVon, set = vorrangHandles()) {
+  if (!set.size) return rows;
+  const v = rows.filter(r => istVorrang(captionVon(r), set));
+  return [...v, ...rows.filter(r => !v.includes(r))];
+}
