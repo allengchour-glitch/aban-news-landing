@@ -166,7 +166,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Regel: Massen-Tag/Titel-Änderungen IMMER erst DRY mit Ausgabe prüfen; Wortformen deutsch
    denken (Schleife/Schleifer, Rock/ROCK); Fashion-Guard-Ausnahmen mitführen.
 10. **⛔ Social-Doppelpost-Verbot (User 2026-07-06) — Kurzfassung, fünf Schichten im Journal 2026-07-26 ⛔:** IMMER nur NEUES posten; Profil + `automation/reels_seed.csv`-Ledger prüfen (nur status=ready, nach Post → posted); gleiches Produkt/Video nie zweimal, auch nicht plattformübergreifend. **⛔ THREADS-STOPP (07.07.)**. Autopilot IG+FB: `automation/meta_reel_post.mjs` (Seite 1049840534888592, IG 17841480560863361, Token `/tmp/meta_page_token`, IG-ID `/tmp/meta_ig_id`); vor Post prüfen, dass das Produkt noch ACTIVE ist.
-   **Regel für JEDEN Poster:** `postLock()`+`seen()`+`mark()` aus `post_guard.mjs` — EIN Lock (`/tmp/ig_post.lock`), EIN Ledger (`_posted_media.txt`), nie ein eigener Lockfile; erst claimen (`posting`), DANN posten, Ledger SOFORT nach IG-`media_publish` (vor dem langsamen FB-Schritt); Inhalts-Sperre über Video-Basenames (plattformübergreifend); **`igLiveHas()` fragt VOR dem Post die letzten 25 IG-Posts** (Plattform-Wahrheit schlägt jeden Ledger; gilt für Reel- UND Bild-Poster); nie dasselbe Video in zwei Queues (`dedup_queues.mjs`). Meta-Token ~60 Tage; Posts >500 Views nie löschen; Live-Löschen geht nur lokal/PC. **`dropship/_SOCIAL_STOPP` (17.09.–22.09.) hat der Betreiber am 22.09. selbst gelöscht → Poster laufen wieder; ein neuer Stopp wird nur vom Betreiber gesetzt oder entfernt.**
+   **Regel für JEDEN Poster:** `postLock()`+`seen()`+`mark()` aus `post_guard.mjs` — EIN Lock (`/tmp/ig_post.lock`), EIN Ledger (`_posted_media.txt`), nie ein eigener Lockfile; erst claimen (`posting`), DANN posten, Ledger SOFORT nach IG-`media_publish` (vor dem langsamen FB-Schritt); Inhalts-Sperre über Video-Basenames (plattformübergreifend); **`igLiveHas()` fragt VOR dem Post die letzten 25 IG-Posts** (Plattform-Wahrheit schlägt jeden Ledger; gilt für Reel- UND Bild-Poster); nie dasselbe Video in zwei Queues (`dedup_queues.mjs`). Meta-Token ~60 Tage; Posts >500 Views nie löschen; Live-Löschen läuft seit 25.09. auf Betreiber-Auftrag über `ig_aufraeumen.mjs` (IG+FB-Zwilling, 5/Tag, nur mit Grund). **`dropship/_SOCIAL_STOPP` (17.09.–22.09.) hat der Betreiber am 22.09. selbst gelöscht → Poster laufen wieder; ein neuer Stopp wird nur vom Betreiber gesetzt oder entfernt.**
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
    (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
    Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche
@@ -424,8 +424,8 @@ Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_
 - **Captions:** Bild-Queue + Reel-Engine tragen «🔗 luxestyle.ch · Link in Bio» (IG-Link nicht klickbar → Bio).
   ✅ IG-Bio-Link GESETZT (gemessen 22.09.: `website` = luxestyle.ch). ⚠️ TikTok-Bio-Link NICHT gesetzt (0× `bioLink`
   im Profil-HTML) → Betreiber-Klick. Meta-Seiten-Token ohne Ablauf, aber **Datenzugang endet 05.10.2026 18:50 UTC**.
-- **⛔ Live-Post-LÖSCHEN geht NICHT aus der Session** (Classifier blockt, kein Permission-Override) → User nutzt
-  `delete_ig_dups.mjs` lokal / PC-Claude, oder löscht manuell.
+- **🗑️ Live-Post-LÖSCHEN (Stand 25.09.):** Betreiber «lösche die post die nicht passen automatisch» → `automation/ig_aufraeumen.mjs`
+  (Aufseher täglich, Gründe TEXT/PRODUKT/DOPPEL, FB-Zwilling, >500 Aufrufe nie, 5/Tag; Journal Nachtrag 90). Die alte Zeile «geht NICHT» ist überholt.
 
 ## 🤖 Voll-Autonomie-Stack LIVE (2026-07-28 «mache alles auto die webseite»)
 - **Stündliche Routine** `trig_01Uy3zVefXbzCZn9Dr2qvkwh` feuert automatisch in DIESE Session → startet tote Engines
