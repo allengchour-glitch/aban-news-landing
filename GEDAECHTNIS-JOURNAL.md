@@ -949,6 +949,29 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 90 (25.09.2026) — 🗑️ «lösche die post die nicht passen automatisch»: IG-Aufräumer mit drei Gründen und fünf Schutzregeln
+**Auftrag des Betreibers, ausdrücklich.** Die IG-API kann löschen (`DELETE /<media-id>`, `instagram_manage_contents`, Facebook-Login).
+**Gebaut:** `automation/ig_aufraeumen.mjs`, DRY als Vorgabe, `SCHARF=1`. Tageslauf im Aufseher: `/tmp/ig_aufraeumen.log`,
+Ledger `dropship/_ig_geloescht.txt`.
+- Gründe: TEXT (Lieferantenbild mit ≥ 5 Wörtern, OCR in Kacheln), PRODUKT (nicht mehr kaufbar, nur bei sicherer Zuordnung),
+  DOPPEL (je Shopify-Produkt bleibt der Beitrag ohne eigenen Grund mit den meisten Aufrufen stehen).
+- Schutz: nie über 500 Aufrufe, nie jünger als 6 h, nie mit unlesbaren Aufrufen; höchstens 5 je Tag; 45 s Takt; Abbruch beim
+  Meta-Sperrhinweis; ein Beitrag gilt erst als gelöscht, wenn er im Listing fehlt.
+**Drei Trockenläufe, drei Fehlerklassen gefunden, bevor irgendetwas gelöscht wurde.**
+- (1) «Produkt existiert nicht mehr» über einen HANDLE war falsch. Alte Queue-IDs wie «meta-roma-ig» sind keine Handles, deshalb
+  stand der aktive Blazer Roma auf der Liste. Jetzt gilt nur noch eine Produkt-ID als Beweis; ein nicht gefundener Handle
+  bedeutet unklar, und der Post bleibt.
+- (2) Die TEXT-Regel traf unsere EIGENEN Juni-Gestaltungen (`wt-*`, `post-*`, `*-text-*`, Repo-Renders). Jetzt prüft sie nur
+  Lieferantenbilder. Das Bild liest sie von unserem Shopify-Quellbild, weil der IG-CDN von hier gesperrt ist (−1).
+- (3) Der Sichtbogen zeigte das «Pois»-Armband mit 4 «Wörtern» aus dem Stoffmuster, also Schwelle 5 fürs Löschen. Der Poster
+  überspringt weiterhin ab 4, denn Überspringen ist umkehrbar.
+**Erster scharfer Lauf 18:21 UTC: 5 gelöscht, alle mit Lieferantentext:** Jade-Roller, 2× LED-Lampe (darunter die aus dem Screenshot),
+Diffuser, Smartwatch (auch DRAFT). 43 Kandidaten bleiben: 26 PRODUKT, 13 DOPPEL, Rest TEXT. Sie gehen mit 5 je Tag weg.
+**Lehren.**
+1. **Beim Löschen ist «nicht gefunden» kein Beweis.** Nur eine eindeutige ID, die fehlt, zählt.
+2. **Jeder Löschgrund braucht einen Trockenlauf mit Sichtprüfung der Randfälle**, und die Schwelle für Irreversibles liegt
+   höher als die für Umkehrbares.
+
 ### Nachtrag 89 (25.09.2026) — 📱 IG-Profil «fix»: Reel-Cover im 3:4-Raster abgeschnitten, Lieferantentext im Bildpost
 **Betreiber-Screenshot vom IG-Profil.** Die Kacheln habe ich per Graph-API den Posts zugeordnet.
 **Gemessen.**
@@ -16802,3 +16825,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🔑 **US-Damengrössen «14W…26W» wurden Watt (142 Werte, 8 Produkte) → `_vorbereiten`-Marke + Optionskontext, 143 repariert; GitHubs Push-Schutz fing eine aus dem Chat kopierte Schlüssel-Gegenprobe in `wartung.test.mjs` ab → synthetisch, Commits neu geschrieben; Server-Wartung nach 19 Prüfer-Befunden (Allowlist-Crontab, Entropie-Schwärzen, Journal-Filter, Sperre/trap/Stash-Schutz).** `wert_de()`=None heisst «nicht ändern», nicht «verworfen»; Testdaten nie aus dem Chat → Journal Nachtrag 48
 - 2026-09-23 · 🧾 **Kollektionen: «Nach Preis sortiert» entging der Regex (5 Kollektionen, «0 von 11» war falsches Grün), 12 tote Marken ausserhalb der Liste, SKU-Leck baby-kids → 12 Bausteine nach Messung der echten Ware, Vollscan 353: 0/0; Server-gc ohne Gewinn (echte Historie), /opt/luxe/repo von cron benutzt; Zapfventil-Hauptbild getauscht (Google zielt aufs Bild); «Geschenke bis 30» von 50'291 auf Tag geschenk eingegrenzt.** Eine Prüfung über die Planliste findet nur, was im Plan steht → Journal Nachtrag 49
 - 2026-09-23 · 🪣 **CJ-Punkte-Eimer um 16:36 leer (123'710) — Varianten-Wache hämmerte 2'095× weiter, jetzt Exit 3 bei 16900500; Netz-Politik sperrt CJ-Bildhosts + TikTok (Proxy 403) → Kanarienvogel vor jedem Fremdhost-Lauf, 403 ≠ tote Ware; Semrush ohne Einheiten; Bild-Ledger verlor 50 Zeilen (offener WriteStream vs. Rebase → appendFileSync je Zeile); Halloween: 40 ungetaggte, zwei Kollektionen, 0 Posts.** Ein Tagesbudget ohne Verteilung frisst der erste Läufer → Journal Nachtrag 50
+- 2026-09-23 · 🖼️ **Bild-Nachfüller v2: «unklar» (464/593) war der leere CJ-Eimer, «not found» der falsche Endpunkt (AZ = Varianten-SKU → `variantSku=`, 200 mit 5 Bildern), Bildhost per Proxy 403 → PAUSE statt «nichts-brauchbar», Ledger je Zeile + Datum, Rücklesen READY/FAILED, Welle 2 «/w2» selbstmessend.** Nicht-200 lesen, nicht zählen → Journal Nachtrag 51
