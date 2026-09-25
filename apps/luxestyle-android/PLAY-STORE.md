@@ -3,77 +3,58 @@
 Stand 2026-09-25. Paket-ID **`ch.luxestyle.app`**, Version 1.0.0 (versionCode 1), targetSdk 36.
 
 ## Was die App ist
-Eine native Android-Hülle um luxestyle.ch (Kotlin, WebView), mit eigenen Bedienteilen:
-- untere Navigationsleiste: Start · Kategorien · Suche · Warenkorb · Konto (markiert sich beim Surfen mit)
-- Startbild (Splash) im Markenlook, eigenes App-Symbol
-- „Keine Verbindung"-Seite mit „Nochmals versuchen" statt Chrome-Fehlerseite
-- Zum Neuladen herunterziehen, Ladebalken, Zurück-Taste blättert im Shop, zweimal Zurück schliesst
-- Checkout, Kundenkonto (`account.luxestyle.com.co`) und Shop Pay bleiben in der App;
-  TWINT/PayPal-Apps, Mail, Telefon, Instagram usw. öffnen die passende App
-- Datei-Upload funktioniert (Motiv-Editor „selbst gestalten")
-- Teilen-Knopf auf Produktseiten (oben rechts, unten klebt die Warenkorb-Leiste), Link mit `utm_source=app_share`
-- `luxestyle.ch`-Links aus Newsletter/Social können direkt in der App öffnen
-- Zugriffe tragen `utm_source=android_app` → in Shopify-Analytics als eigene Quelle sichtbar;
-  User-Agent endet auf `LuxeStyleApp/<Version>`
+Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne Token, Shopify erlaubt
+öffentliches Lesen und den Warenkorb. Preise immer in CHF (`@inContext(country: CH)`).
+- **Nativ:** Start (Saison-Titelbild wechselt mit dem Kalender, Reihen Damen-Mode/Halsketten/Taschen/
+  Geschenke, zuletzt angesehen), Kategorien aus dem Shop-Menü, Kollektion mit Sortierung und Nachladen,
+  Produkt mit Galerie + Vollbild-Zoom + Varianten (unkaufbare ausgegraut) + „Passt dazu", Suche mit
+  Vorschlägen, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode und Gratis-Versand-Balken.
+- **Web (`WebActivity`):** nur Kasse, Kundenkonto, Rechtstexte. TWINT/PayPal/Mail öffnen die passende App.
+- Warenkorb trägt das Attribut `_quelle = android_app`, Web-Aufrufe `utm_source=android_app`,
+  geteilte Links `utm_source=app_share`.
+- Hell und dunkel, Marken-Palette Creme/Tinte/Bronze, drei Eckenradien, Strich-Ikonen, kein Emoji.
 
-Warum keine „TWA" (Trusted Web Activity): dafür müsste `luxestyle.ch/.well-known/assetlinks.json`
-unseren Schlüssel enthalten. Shopify liefert dort fest `[]` aus und lässt die Datei nicht ändern →
-eine TWA würde oben immer eine Browser-Adressleiste zeigen.
+**Shop-Regeln im Code** (bei Änderung im Admin mitziehen): Gratis-Versand CH ab **CHF 45**
+(`CartRepository.FREE_SHIPPING_CHF`, so steht es aktiv im Versandprofil; das Shop-Banner sagt „ab 50").
+Reihen: `RAILS` und `seasonFor()` in `HomeScreen.kt`.
 
-## Bauen
+Warum keine TWA: Shopify liefert `/.well-known/assetlinks.json` fest als `[]`.
+
+## Bauen und prüfen
 ```bash
 cd apps/luxestyle-android
-export ANDROID_HOME=…            # SDK mit platforms;android-36 + build-tools;36.0.0
-./gradlew testReleaseUnitTest lintRelease assembleDebug        # ohne Schlüssel
-LUXE_KEYSTORE_PATH=… LUXE_KEYSTORE_PASSWORD=… ./gradlew bundleRelease   # signiertes AAB
+./gradlew testReleaseUnitTest lintRelease bundleRelease   # + LUXE_KEYSTORE_PATH/_PASSWORD für Signatur
+LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*Tour*' --tests '*StoreShots*'
 ```
-Oder auf GitHub: Actions → **„LuxeStyle Android-App bauen"** → Run workflow (nur manuell).
-Das AAB liegt danach als Artefakt am Lauf. Braucht die Secrets unten.
+Der zweite Befehl ist ein **Rundgang durch die echte App mit echten Shopdaten** (Robolectric +
+Roborazzi) → Bilder in `screens/`. Ersetzt den fehlenden Emulator; Store-Bilder kommen von dort.
+Auf GitHub: Actions → „LuxeStyle Android-App bauen" (nur manuell).
 
-Geprüft am 2026-09-25 im Container: Build grün, 5/5 Unit-Tests, Lint 0 Fehler,
-AAB signiert (Zertifikat SHA-256 `2b10e7bf…0a94b9`). **Nicht** auf einem echten Gerät/Emulator
-getestet (Container ohne KVM) → vor dem Einreichen einmal über „Interner Test" aufs eigene Handy.
+Geprüft 2026-09-25: 18/18 Tests, Rundgang 13 Bilder ok, Lint 0 Fehler, R8-Release ok.
+**Auf einem echten Handy noch nicht** → vor dem Einreichen „Interner Test".
 
-## Upload-Schlüssel (WICHTIG)
-Der Schlüssel `luxestyle-upload.jks` + Passwort wurden in der Claude-Session erzeugt und dem User
-als Datei übergeben — **nie ins Repo** (ist öffentlich). Sicher aufbewahren (Passwort-Manager).
-Für den GitHub-Workflow als Secrets setzen:
-- `LUXE_KEYSTORE_B64` = `base64 -w0 luxestyle-upload.jks`
-- `LUXE_KEYSTORE_PASSWORD` = das Passwort
+## Upload-Schlüssel
+`luxestyle-upload.jks` + Passwort wurden dem User als Datei übergeben — **nie ins Repo**.
+Secrets für den Workflow: `LUXE_KEYSTORE_B64` (= `base64 -w0 luxestyle-upload.jks`),
+`LUXE_KEYSTORE_PASSWORD`. Verloren → in der Play Console zurücksetzen lassen (einige Tage).
 
-Mit Play App Signing verwaltet Google den eigentlichen App-Schlüssel; geht der Upload-Schlüssel
-verloren, kann man ihn in der Play Console zurücksetzen lassen (dauert einige Tage).
-
-## Was nur der User machen kann (Reihenfolge)
-1. **Entwicklerkonto** auf <https://play.google.com/console/signup> — einmalig 25 USD,
-   Ausweis-Prüfung. ⚠️ **Privates Konto** (nach Nov. 2023 erstellt): vor der Veröffentlichung
-   **geschlossener Test mit mind. 12 Testern, 14 Tage am Stück**. **Organisationskonto** (braucht
-   D-U-N-S-Nummer der Firma, gratis bei Dun & Bradstreet) ist davon ausgenommen.
-2. **App erstellen**: Name „LuxeStyle – Mode & Schmuck CH", Standardsprache Deutsch (Schweiz),
-   App, kostenlos.
-3. **Interner Test** → neuer Release → `app-release.aab` hochladen → sich selbst als Tester →
-   App aufs Handy, einmal durchklicken (Kauf bis Zahlungsseite, TWINT-Sprung, Konto-Login).
-4. **Store-Eintrag**: Texte + Grafiken aus `store/` (siehe `store/listing-de.md`).
-5. **App-Inhalte** (Formulare in der Play Console), empfohlene Antworten:
-   - Datenschutzerklärung: `https://luxestyle.ch/policies/privacy-policy`
-   - Werbung: Nein (die App zeigt keine Werbeanzeigen)
-   - App-Zugriff: „Alle Funktionen ohne besondere Zugangsdaten verfügbar"
-   - Zielgruppe: 18+ (Shop mit Zahlungen)
-   - Inhaltsaltersfreigabe (IARC): Kategorie „Shopping"; keine Gewalt/Sex/Drogen;
-     „Nutzer können physische Waren kaufen" = Ja
-   - Datensicherheit — die App selbst speichert nichts, aber der Shop in der App erhebt Daten.
-     Anzugeben: **Persönliche Infos** (Name, E-Mail, Adresse, Telefon) — Zweck Bestellabwicklung,
-     Kontoverwaltung; **Finanzinfos** (Kaufverlauf; Zahlungsdaten verarbeitet Shopify/TWINT);
-     **App-Aktivität / Geräte-IDs** über Shop-Analytik und Werbe-Pixel (Shopify, TikTok, Klaviyo) —
-     Zweck Analyse, Marketing. Übertragung verschlüsselt: Ja. Löschung auf Anfrage: Ja
-     (info@luxestyle.ch).
-   - Finanzfunktionen / Gesundheit / Behörden: Nein
-6. **Geschlossener Test** (nur privates Konto): 12 Tester einladen, 14 Tage laufen lassen,
-   dann „Produktionszugriff beantragen".
-7. **Produktion** → Release einreichen → Prüfung durch Google (meist 1–7 Tage).
-
-Bibliotheken bleiben auf dem getesteten Stand: die neuesten brauchen compileSdk 37 + neueres AGP.
+## Was nur der User machen kann
+1. **Entwicklerkonto** <https://play.google.com/console/signup> — 25 USD, Ausweis. ⚠️ **Privates
+   Konto:** vorher geschlossener Test mit **12 Testern, 14 Tage**. **Organisationskonto** (D-U-N-S,
+   gratis) ist ausgenommen.
+2. **App erstellen**: „LuxeStyle – Mode & Schmuck CH", Deutsch (Schweiz), kostenlos.
+3. **Interner Test** → AAB hochladen → auf dem Handy: Produkt → Warenkorb → Kasse bis TWINT, Konto-Login.
+4. **Store-Eintrag** aus `store/` (`listing-de.md`).
+5. **App-Inhalte**, empfohlene Antworten:
+   - Datenschutz: `https://luxestyle.ch/policies/privacy-policy` · Werbung: Nein · Zugriff: ohne Login
+   - Zielgruppe 18+ · IARC: Shopping, keine Gewalt/Sex/Drogen, „kauft physische Waren" = Ja
+   - Datensicherheit: Merkliste/zuletzt angesehen bleiben **nur auf dem Gerät** (nicht erhoben).
+     Erhoben über die Shop-Kasse: **Persönliche Infos** (Name, E-Mail, Adresse, Telefon – Bestellung,
+     Konto), **Finanzinfos** (Kaufverlauf; Zahlung via Shopify/TWINT), **App-Aktivität** (Shop-Analytik,
+     Pixel). Verschlüsselt: Ja. Löschung: Ja (info@luxestyle.ch).
+6. **Geschlossener Test** (nur privates Konto), dann Produktionszugriff beantragen.
+7. **Produktion** einreichen → Google prüft (meist 1–7 Tage).
 
 ## Nächste Versionen
-Workflow starten (Versionsname erhöhen) → AAB-Artefakt → Play Console → neuer Release.
-Inhalte (Produkte, Preise, Texte) ändern sich **ohne** App-Update, weil die App den Live-Shop zeigt.
+Workflow mit höherem Versionsnamen → AAB → Play Console. Produkte, Preise, Menü und Kollektionen
+kommen live aus Shopify – dafür braucht es kein App-Update.

@@ -62,17 +62,19 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-09-25 (📱 LuxeStyle Android-App für Google Play gebaut):**
-- `apps/luxestyle-android/` (Kotlin-WebView-Hülle + native Navigationsleiste, Paket `ch.luxestyle.app`,
-  targetSdk 36). Alles Weitere: `apps/luxestyle-android/PLAY-STORE.md`. Workflow `luxestyle-android.yml`
-  (nur manuell) baut das signierte AAB, braucht Secrets `LUXE_KEYSTORE_B64` + `LUXE_KEYSTORE_PASSWORD`.
-- **Keine TWA möglich:** Shopify liefert `/.well-known/assetlinks.json` fest als `[]`.
-- **Container-Fallen:** Maven Central gibt über den Proxy 429 → Gradle mit Init-Skript auf den
-  Google-Spiegel `maven-central.storage-download.googleapis.com/maven2/` zeigen. Chromium/Playwright
-  kennt die Proxy-CA erst nach `certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n ccr-proxy -i /root/.ccr/agent-proxy-ca.crt`
-  (libnss3-tools). Kein KVM → kein Emulator-Test.
-- **🟡 Nur User:** Play-Entwicklerkonto (25 USD; privates Konto = 12 Tester × 14 Tage geschlossener Test),
-  Upload-Schlüssel sicher aufbewahren, AAB hochladen, App-Inhalte-Formulare.
+**📌 2026-09-25 (📱 LuxeStyle Android-App — native, Google Play bereit):**
+- `apps/luxestyle-android/` = **native Compose-App auf der Shopify Storefront API ohne Token**
+  (`au3j0y-hq.myshopify.com/api/2025-07/graphql.json`: Menü, Kollektionen, Suche, Produkte, Cart gehen
+  tokenlos; **Metafelder/Bewertungen NICHT** → „unauthenticated_read_metafields"). Nur Kasse/Konto im Web.
+  Alles Weitere: `apps/luxestyle-android/PLAY-STORE.md`. Workflow `luxestyle-android.yml` (manuell).
+- **Kein Emulator im Container → Rundgang per Robolectric+Roborazzi mit echten Shopdaten:**
+  `LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*Tour*'` → `screens/`. Falle: Robolectric kann
+  Androids `ImageDecoder` nicht → im Test Coil mit `imageDecoderEnabled(false)`.
+- **Shop-Wahrheit geprüft (Admin):** Gratis-Versand CH aktiv **ab CHF 45** (sonst CHF 7; Regel „ab 50" ist
+  deaktiviert, das Shop-Banner sagt trotzdem „ab 50"). WELCOME10 aktiv bis 31.12.2027, 10 %, 1×/Kunde.
+- **Container-Fallen:** Maven Central 429 → Gradle-Init-Skript auf `maven-central.storage-download.googleapis.com/maven2/`.
+  Chromium kennt die Proxy-CA erst nach `certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n ccr-proxy -i /root/.ccr/agent-proxy-ca.crt`.
+- **🟡 Nur User:** Play-Konto (25 USD; privat = 12 Tester × 14 Tage), Upload-Schlüssel aufbewahren, AAB hochladen.
 
 **📌 2026-09-24 (🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks):**
 - **Produkt:** `content/packs/de/strategie-pruefstand/` (Python-Kit, Katalog `data/kit-catalog.json`,

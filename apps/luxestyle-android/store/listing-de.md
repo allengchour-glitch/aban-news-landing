@@ -6,22 +6,30 @@ Zum Kopieren in die Play Console → „Hauptseite des Store-Eintrags".
 LuxeStyle – Mode & Schmuck CH
 
 ## Kurzbeschreibung (max. 80 Zeichen)
-Mode, Schmuck und Accessoires aus dem Schweizer Shop. Mit TWINT bezahlen.
+Mode, Schmuck und Taschen aus dem Schweizer Shop. Merkliste, TWINT, Klarna.
 
 ## Vollständige Beschreibung (max. 4000 Zeichen)
-LuxeStyle ist der Schweizer Online-Shop für Damenmode, Schmuck, Taschen, Sonnenbrillen und Wohn-Accessoires. Mit der App hast du den Shop direkt auf dem Startbildschirm.
+LuxeStyle ist der Schweizer Online-Shop für Damenmode, Schmuck, Taschen, Uhren und Wohn-Accessoires. Die App ist schnell, schlicht und für den Daumen gemacht.
 
-Was die App kann:
-• Alle Kategorien auf einen Blick – Kleider, Schmuck, Taschen, Uhren, Deko und mehr
-• Suche mit Filtern nach Grösse, Farbe und Preis
-• Warenkorb und Kundenkonto immer eine Berührung entfernt
-• Bezahlen mit TWINT, Karte oder Klarna
+Stöbern
+• Alle Kategorien aus dem Shop – Kleider, Halsketten, Taschen, Jacken und mehr
+• Sortieren nach Beliebtheit, Neuheit oder Preis
+• Suche mit Vorschlägen schon beim Tippen
+• Produktbilder im Vollbild, mit zwei Fingern zoomen
+
+Merken und teilen
+• Merkliste ohne Konto – bleibt auf deinem Handy
+• Zuletzt angesehene Stücke auf der Startseite
+• Lieblingsstücke per WhatsApp, Instagram oder Mail teilen
+
+Einkaufen
+• Warenkorb mit Rabattcode und Anzeige, wie viel bis zum Gratis-Versand fehlt
+• Bezahlen mit TWINT, Karte oder Klarna über die sichere Shopify-Kasse
 • Bestellungen und Sendungsverfolgung im Kundenkonto
-• Lieblingsstücke mit einem Tipp per WhatsApp, Instagram oder Mail teilen
-• Shop-Links aus Newsletter und Social Media öffnen direkt in der App
+• Heller und dunkler Modus
 
 Einkaufen bei LuxeStyle:
-• Gratis-Versand in der Schweiz ab CHF 50
+• Gratis-Versand in der Schweiz ab CHF 45
 • 30 Tage Rückgabe
 • –10 % auf die erste Bestellung mit dem Code WELCOME10
 
@@ -29,9 +37,6 @@ Fragen zur Bestellung? Schreib uns an info@luxestyle.ch.
 
 ## Kategorie
 Shopping
-
-## Tags (Play Console schlägt vor, max. 5)
-Shopping · Mode · Schmuck
 
 ## Kontakt
 - E-Mail: info@luxestyle.ch
@@ -43,6 +48,7 @@ Shopping · Mode · Schmuck
 |---|---|---|
 | App-Symbol | `icon-512.png` | 512×512 |
 | Feature-Grafik | `feature-graphic-1024x500.png` | 1024×500 |
-| Smartphone-Screenshots | `screenshot-1-home.png` … `screenshot-4-suche.png` | 1080×1920 |
+| Smartphone-Screenshots | `store-1-start.jpg` … `store-5-suche.jpg` | 1080×1919 |
 
-Die Screenshots zeigen den echten Shop (luxestyle.ch, mobil) mit der Navigationsleiste der App.
+Die Screenshots sind echte Bildschirme der App mit echten Shopdaten, erzeugt mit
+`LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*StoreShots*'`.

@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LuxeStyle</string>
-    <string name="nav_home">Start</string>
-    <string name="nav_shop">Kategorien</string>
-    <string name="nav_search">Suche</string>
-    <string name="nav_cart">Warenkorb</string>
-    <string name="nav_account">Konto</string>
     <string name="offline_title">Keine Verbindung</string>
     <string name="offline_text">Prüfe dein WLAN oder die mobilen Daten und versuche es nochmals.</string>
     <string name="offline_retry">Nochmals versuchen</string>
     <string name="no_app_for_link">Keine App gefunden, die diesen Link öffnen kann.</string>
-    <string name="share">Produkt teilen</string>
-    <string name="share_via">Teilen über</string>
-    <string name="exit_hint">Nochmals zurück zum Schliessen</string>
+    <string name="close">Schliessen</string>
+    <string name="secure">Sichere Verbindung</string>
 </resources>

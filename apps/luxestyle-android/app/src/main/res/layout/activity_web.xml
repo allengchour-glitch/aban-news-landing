@@ -7,6 +7,51 @@
     android:background="@color/surface"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="16dp">
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/close"
+            android:src="@drawable/ic_close"
+            app:tint="?android:textColorPrimary" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:fontFamily="serif"
+            android:maxLines="1"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/lock"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="@string/secure"
+            android:src="@drawable/ic_lock"
+            android:visibility="gone"
+            app:tint="@color/luxe_bronze" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/luxe_line" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -32,20 +77,6 @@
             app:indicatorColor="@color/luxe_bronze"
             app:trackColor="@android:color/transparent"
             app:trackThickness="2dp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="12dp"
-            android:contentDescription="@string/share"
-            android:src="@drawable/ic_share"
-            android:visibility="gone"
-            app:backgroundTint="@color/luxe_ink"
-            app:fabSize="mini"
-            app:tint="#FFFFFF" />
 
         <LinearLayout
             android:id="@+id/offline"
@@ -93,20 +124,4 @@
                 app:cornerRadius="999dp" />
         </LinearLayout>
     </FrameLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/luxe_line" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/surface"
-        app:itemActiveIndicatorStyle="@null"
-        app:itemIconTint="@color/nav_item"
-        app:itemTextColor="@color/nav_item"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav" />
 </LinearLayout>
