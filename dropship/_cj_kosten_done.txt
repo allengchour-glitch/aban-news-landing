@@ -31521,3 +31521,24 @@ gid://shopify/Product/15470077018497	CHF 11.81	4 Varianten	Duschvorhang Polyeste
 gid://shopify/Product/15470077313409	CHF 20.32	16 Varianten	Luxus-Vorhang
 gid://shopify/Product/15470077575553	CHF 9.48	60 Varianten	TV-Staubabdeckung
 gid://shopify/Product/15470078165377	CHF 11.71	5 Varianten	Schwarz-Weiss Cartoon Vorhang
+gid://shopify/Product/15470078329217	CHF 9.94	9 Varianten	Boho-Tüllvorhang
+gid://shopify/Product/15470343913857	CHF 25.43	1 Varianten	Samtstoff Stoff
+gid://shopify/Product/15470350598529	CHF 7.28	17 Varianten	Böser Auge Halskette
+gid://shopify/Product/15470350631297	CHF 6.93	2 Varianten	Bunt schimmerndes Halsband
+gid://shopify/Product/15470350664065	CHF 21.66	2 Varianten	Weiter Sweater · Damen
+gid://shopify/Product/15470350696833	CHF 13.84	5 Varianten	Rundhals-Pullover
+gid://shopify/Product/15470350860673	CHF 22.22	8 Varianten	Asymmetrischer Karo-Rock
+gid://shopify/Product/15470351024513	CHF 11.76	95 Varianten	Elastischer Hochtaillenrock
+gid://shopify/Product/15470351221121	CHF 7.44	5 Varianten	Diamant-Kettenarmband
+gid://shopify/Product/15470351253889	CHF 26.09	4 Varianten	Blaue Chenille Vorhänge
+gid://shopify/Product/15470351286657	CHF 6.87	2 Varianten	Zylindrische Halskette
+gid://shopify/Product/15470351319425	CHF 7.09	3 Varianten	Tropfenformiger Diamant-Halsketten-Schmuck
+gid://shopify/Product/15470351352193	CHF 7.25	1 Varianten	Herz-Schluesselanhanger
+gid://shopify/Product/15470351417729	CHF 7.64	1 Varianten	Apfel-Halskette · Damen
+gid://shopify/Product/15470351450497	CHF 10.45	12 Varianten	Anti-Rutsch-Matte
+gid://shopify/Product/15470351483265	CHF 6.93	5 Varianten	Trockenblumen-Halskette
+gid://shopify/Product/15470351516033	CHF 16.11	2 Varianten	Hundeschale-Halter
+gid://shopify/Product/15470351548801	CHF 7.44	3 Varianten	Quadratischer Anhänger
+gid://shopify/Product/15470351581569	CHF 12.33	2 Varianten	Gartenstake
+gid://shopify/Product/15470351614337	CHF 8.36	6 Varianten	Perlen-Armband und Halskette
+gid://shopify/Product/15470351647105	CHF 95.52	1 Varianten	Betonstempel

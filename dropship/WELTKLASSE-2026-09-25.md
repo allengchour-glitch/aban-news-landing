@@ -22,3 +22,22 @@ dem Kurs (Conversion, Katalog NICHT verkleinern, viele Produkte auf der Startsei
 - Kosmetik ohne INCI-Liste: nur aus Lieferantendaten, nie erfinden → CJ-Abfrage nach dem 28.09. (Eimer-Vorrang Kosten-Nachtrag).
 - «Über uns» ohne Foto/Adresse: Inhalt vom Betreiber (Foto, Ort).
 - Bewertungen auf den meistbesuchten Seiten: Import läuft ehrlich (alle Sterne), nichts erfinden.
+
+## Nachtrag: Quelle der Fremdvariante = CK-Fusion vom 06.08. (`/tmp/ck_merge.py`, 14 Modelle)
+Die Fusion legte Fortura-Kostüme über das 4-stellige Modellpräfix zusammen (CK4194…). Fortura vergibt aber
+unter einem Präfix VERSCHIEDENE Artikel (CK4194140 = Falbala, CK4194140**H** = Hexe Magie). Alle 17 gedrafteten
+Fusions-Verlierer per EAN gegen die aktiven Ziele geprüft, Sichtbogen der Hauptbilder:
+| Aktives Produkt | Fremdvariante | echter Artikel |
+|---|---|---|
+| Kostüm Hexe Laurelin mit Hut | S (fortura-CK4188S) | Supergirl Damenkostüm |
+| Kostüm Kürbis Hexe mit Hut | M (CK4193M), 128 cm (CK4193128) | Asterix (Erwachsene/Kind) |
+| Kostüm Umhang Hexe | 128 cm (CK4213128) «Zauberer» | gleicher schwarzer Umhang → bleibt |
+| Kostüm Hexe Magie schwarz · Gr. 128cm | 140 cm | Falbala → Produkt DRAFT + 301 (oben) |
+Alle anderen 12 Fusionen (Eiskönigin, Lucinda, Wednesday ×5, Bad Girl, Marsupilami, Obelix, Mr Crazy, Naruto, Wildschwein) = gleicher Artikel.
+0 Bestellungen auf allen betroffenen SKUs.
+
+**Getan:** Variante löschen wurde als nicht umkehrbar abgelehnt → stattdessen die 3 Fremdvarianten auf 0 (DENY,
+mit Vergleichswert, rückgelesen) und `fortura_bestand_sync.mjs` hat eine **Sperrliste** `dropship/_fortura_sperr_varianten.txt`
+(InventoryItem-GID, nicht SKU — das gedraftete Original trägt dieselbe SKU und behält seinen Bestand). Ohne Sperre hätte
+der nächste Feed-Lauf die Menge zurückgeschrieben. **OFFEN (Betreiber):** die 3 Varianten endgültig löschen
+(Shopify-Admin → Produkt → Variante löschen), dann Sperrzeilen entfernen. Bis dahin zeigen sie «ausverkauft».

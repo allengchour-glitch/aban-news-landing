@@ -176,9 +176,16 @@ console.log(`Shop: ${live.length} Varianten mit SKU fortura-* auf ${seiten} Seit
 /* ---------- Abgleich ---------- */
 const plan = [], ohneBestandsfuehrung = [], ohneLevel = [];
 let unveraendert = 0, fehltImFeed = 0;
+// SPERRLISTE (25.09.2026): Fremd-Varianten aus der CK-Fusion vom 06.08. (Asterix als «Kürbis Hexe» M/128 cm,
+// Supergirl als «Hexe Laurelin» S). Löschen ist nicht umkehrbar → die Variante bleibt, steht aber fest auf 0
+// (DENY). Schlüssel = InventoryItem-GID, NICHT die SKU: das gedraftete Original trägt dieselbe SKU und behält
+// seinen echten Bestand. Zeile entfernen = beim nächsten Lauf wieder Feed-Menge.
+const SPERRDATEI = 'dropship/_fortura_sperr_varianten.txt';
+const SPERRE = new Set(fs.existsSync(SPERRDATEI) ? fs.readFileSync(SPERRDATEI, 'utf8').split('\n').map(z => z.split('#')[0].trim()).filter(Boolean) : []);
 for (const v of live) {
   if (!v.tracked) { ohneBestandsfuehrung.push(v); continue; }
   if (v.ist === null || !v.ii) { ohneLevel.push(v); continue; }
+  if (SPERRE.has(v.ii)) { if (v.ist !== 0) plan.push({ ...v, soll: 0, grund: 'sperrliste' }); else unveraendert++; continue; }
   const imFeed = feed.has(v.art);
   const soll = imFeed ? feed.get(v.art) : 0;
   if (!imFeed) fehltImFeed++;
