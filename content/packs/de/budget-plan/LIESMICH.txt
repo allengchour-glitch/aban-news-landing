@@ -1,0 +1,10 @@
+Budget-Plan Schweiz 1.0 — aban news
+
+Inhalt
+  budget-plan.html  der Plan: im Browser öffnen (Doppelklick), läuft offline
+  ANLEITUNG.md      Start in 10 Minuten, Rückstellungskonto, Steuern schätzen, Notreserve
+
+Nutzung privat erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Planungshilfe, keine Finanzberatung.
+
+© aban news, abannews.com · hallo@abannews.com
