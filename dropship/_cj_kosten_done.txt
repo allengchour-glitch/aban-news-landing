@@ -32124,3 +32124,4 @@ gid://shopify/Product/15473389076865	CHF 27.54	2 Varianten	Etagere Metall Rund, 
 gid://shopify/Product/15473422369153	CHF 16.50	3 Varianten	Fuchsohr-Haarschmuck
 gid://shopify/Product/15473422532993	CHF 20.53	10 Varianten	Sterling Silber Ring
 gid://shopify/Product/15473433149825	CHF 17.58	1 Varianten	Luftreiniger & Befeuchter
+gid://shopify/Product/15473433379201	CHF 18.89	12 Varianten	Drehbarer Tischspiegel im europäischen Stil
