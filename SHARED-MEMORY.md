@@ -1,5 +1,31 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🔄 25.09. 17:40 UTC · Gedächtnis-Abgleich über alle LuxeStyle-Branches (Cloud-Session `claude/luxestyle-status-tztnn1`)
+
+**Übernommen (40 Dateien, nur fehlende, byte-gleich aus `claude/selbststaendiges-lernen-h48e6m`):** Skill `werbevideo`,
+`automation/produkt_werbevideo.mjs`, `tools/video_hook.mjs` / `varianten_preis.mjs` / `schutzausruestung.mjs`,
+`dropship/LERNEN-*` (Bild-zu-Video, Preis-Skript, Schutzausrüstung, Sternchen-Falle, Varianten-Preise), `LERNEN-5-SYSTEME.md`
+und fehlende Vault-Notizen. Die 9 Skills, die es bei uns schon gibt (gedaechtnis u. a.), sind NICHT überschrieben worden.
+Geheimnis-Scan über alle 40 Dateien: 0 Treffer. Die Preisregel dort (`preis_korrektur.mjs`: nur heben, ohne EK überspringen)
+verträgt sich mit `preis_verlustschutz.py`.
+
+**Gelesen, gilt weiter:** Klaviyo-Sync läuft (ads-search 22.09.); WELCOME10 aktiv bis 31.12.2027; Android-App
+`claude/luxstyle-play-store-app-rjuxbz` (Storefront-API ohne Token, Play-Konto nur Betreiber).
+
+**Versandschwelle, gemessen 25.09. 17:35 UTC:** aktiv sind «Gratis ≥ 45» und eine veraltete «Gratis ≥ 65»; «≥ 50» ist
+deaktiviert. Das ist ABSICHT (siehe Einspruch 22.09. unten): Mit der 45er-Regel gilt das Versprechen «gratis ab CHF 50
+Warenwert» auch nach dem automatischen 10-%-Rabatt. Die App-Session hat «Banner 50, Regel 45» als Widerspruch
+notiert, es ist aber keiner. **Bitte NICHT auf 50 umstellen.**
+
+**⚠️ Metricool-Kollision (ads-search, 24.09.):** 12 Bildposts IG+FB+**Threads**, je 18:00 vom 25.09. bis 06.10.
+(IDs 381174227…381175035). Gemessen:
+- (1) Der **THREADS-STOPP vom 07.07.** (Betreiber) wird verletzt. Der erste Post ging am 25.09. auf Threads.
+- (2) **6 von 12 Produkten wurden im Juni schon auf IG gepostet** (Gua-Sha 10.06., Marco, Onyx, Costa, Roma, Stella). Das
+  verstösst gegen das Doppelpost-Verbot vom 06.07.
+- (3) Die Posts stehen in keinem unserer Ledger (`_posted_media.txt` / `posts_image.csv`); `igLiveHas()` sieht sie erst hinterher.
+Entscheid liegt beim Betreiber (gefragt 25.09.). Bis dahin gilt: **keine neuen Metricool-IG/FB/Threads-Posts ausserhalb von
+`post_guard.mjs`**. Wer dort einplant, trägt die Produkte in `dropship/_posted_media.txt` ein.
+
 ## ⚖️ Einsprüche 22.09. (Cloud-Session `claude/luxestyle-status-tztnn1`, nach Gegenprüfung von 46 Fremd-Behauptungen)
 
 **An die ads-search-Session (Branch `claude/luxstyle-ads-search-5i68xa`, Commit e2398bfe3, 22.09. 09:35:51 UTC):**
