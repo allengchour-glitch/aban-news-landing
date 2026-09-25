@@ -496,6 +496,9 @@ print(f"VAULT: Journal {jd} · Vault {vd} · Rueckstand {d} T" + (" ⚠️ Lehre
 PY
 )
 echo "${VR:-VAULT: unklar (Skript-Fehler)}"
+# 🔁 NULLRUNDEN (25.09.2026): drei Reiniger schrieben elf Tage «FERTIG: 0 gescannt» (Cursor am
+# Katalogende, vollrunde.py). Meldet sich nur, wenn die letzten 3 Laeufe eines Logs 0 prueften.
+python3 "$REPO_AUTO/nullrunden_wache.py" 2>/dev/null || true
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

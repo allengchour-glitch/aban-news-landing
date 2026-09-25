@@ -22,6 +22,8 @@ eine leere Beschreibung ist bei Google schlimmer als eine mit Werbung.
 DRY=1 zeigt die geplanten Änderungen, ohne zu speichern.
 """
 import json, os, re, subprocess, time
+import sys as _sys; _sys.path.insert(0, "/home/user/aban-news-landing/automation")
+import vollrunde
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -119,7 +121,7 @@ def saeubern(html):
 
 def main():
     st = "/tmp/promoclean_cursor.txt"
-    cur = open(st).read().strip() or None if os.path.exists(st) else None
+    cur = None if DRY else vollrunde.start(st)  # 25.09.: Cursor am Katalogende zurueck (vollrunde.py)
     done = set()
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0] for l in open(LEDGER)}
@@ -159,10 +161,12 @@ def main():
         if n % 1000 < 100:
             print(f"  gescannt {n} | bereinigt {geaendert} | übersprungen {zu_kurz}", flush=True)
         if not pg["pageInfo"]["hasNextPage"]:
+            if not DRY:
+                vollrunde.fertig(st)
             break
         cur = pg["pageInfo"]["endCursor"]
         if not DRY:
-            open(st, "w").write(cur)
+            vollrunde.weiter(st, cur)
     print(f"{'(DRY) ' if DRY else ''}FERTIG: {n} gescannt, {geaendert} bereinigt, {zu_kurz} übersprungen")
 
 

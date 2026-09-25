@@ -5,6 +5,8 @@ Strategie: Hat das Produkt ein ANDERES Medium mit >=500x500, wird das zum Hauptb
 Resumable ueber /tmp/bildklein_cursor.txt.
 """
 import json,subprocess,time,re,os
+import sys as _sys; _sys.path.insert(0, "/home/user/aban-news-landing/automation")
+import vollrunde
 TOK=open("/tmp/cj_shop_token.txt").read().strip()
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
@@ -30,7 +32,7 @@ MV='''mutation($id:ID!,$m:[MoveInput!]!){ productReorderMedia(id:$id, moves:$m){
 TAG='mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}'
 
 st="/tmp/bildklein_cursor.txt"
-cur=open(st).read().strip() or None if os.path.exists(st) else None
+cur=vollrunde.start(st)  # 25.09.: Cursor am Katalogende wird zurueckgesetzt (vollrunde.py)
 n=0; fixed=0; hopeless=0
 while True:
     d=gql(Q,{"c":cur})
@@ -58,6 +60,6 @@ while True:
             gql(TAG,{"id":p["id"],"t":["bild-zu-klein"]})
             time.sleep(0.15)
     if n % 600 < 60: print(f"gescannt {n} | umsortiert {fixed} | ohne Ersatz {hopeless}",flush=True)
-    if not pg["pageInfo"]["hasNextPage"]: break
-    cur=pg["pageInfo"]["endCursor"]; open(st,"w").write(cur)
+    if not pg["pageInfo"]["hasNextPage"]: vollrunde.fertig(st); break
+    cur=pg["pageInfo"]["endCursor"]; vollrunde.weiter(st,cur)
 print(f"FERTIG: {n} gescannt, {fixed} Hauptbilder getauscht, {hopeless} ohne grosses Bild (Tag bild-zu-klein)")

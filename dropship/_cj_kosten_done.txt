@@ -33705,3 +33705,8 @@ gid://shopify/Product/15479469769089	CHF 16.97	16 Varianten	Offene Sandalen für
 gid://shopify/Product/15479469834625	CHF 28.40	1 Varianten	Smartwatch für Herzfrequenz, Schlaf & Blutsauersto
 gid://shopify/Product/15479469867393	CHF 12.74	1 Varianten	DIY Tierperlen-Set
 gid://shopify/Product/15479469900161	CHF 287.85	1 Varianten	M.2 NVMe SSD 128 GB für Laptop & Desktop
+gid://shopify/Product/15479469932929	CHF 15.27	27 Varianten	Transparente Chunky-Heel Sandalen für Damen
+gid://shopify/Product/15479469998465	CHF 51.60	1 Varianten	M99 Smartwatch mit grossem AMOLED-Display
+gid://shopify/Product/15479470064001	CHF 41.85	1 Varianten	Montessori Puzzle: Pinyin & Silbenstruktur
+gid://shopify/Product/15479470096769	CHF 135.68	1 Varianten	Phantom Butterfly SSD 128GB/512GB SATA3.0
+gid://shopify/Product/15479470129537	CHF 15.35	15 Varianten	Keilsandalen mit Klettverschluss
