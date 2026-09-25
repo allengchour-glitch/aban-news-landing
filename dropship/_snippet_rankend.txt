@@ -3779,3 +3779,66 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15448881987969	Die LED Nachttischlampe Musiknote ist ein stilvolles und modernes Gadget für jedes Zuhause. Kompakte Grösse (245x185x55mm).
 15448882151809	Steuere dein Smartphone bequem und sicher während der Fahrt mit diesem Bluetooth-Controller. Hergestellt aus robustem ABS und Silikon.
 15448882184577	Diese schwarze Ersatz-Fernbedienung wurde speziell für die SKY Q Set-Top-Box in Grossbritannien entwickelt. Übertragungsdistanz von mindestens 10 Metern.
+15448882315649	Verliere nie wieder deine Wertgegenstände! Kompaktes Design (27 x 44 x 9 mm).
+15448882413953	Diese Universal-Fernbedienung ist ein echtes Multitalent für dein Garagentor. Kopiert über 90% der gängigen Garagentor-Fernbedienungen.
+15448882643329	Diese universelle Funkfernbedienung ist ein praktisches Gadget für die Steuerung verschiedener Geräte. Kabelloser Fernschalter.
+15448882839937	Diese kompakte Bluetooth-Fernbedienung in Ringform ist dein neuer smarter Begleiter. Musiksteuerung (D01 Pro).
+15448882872705	Diese handliche Bluetooth Air Mouse ist ein multifunktionales Trackpad, das speziell für die Nutzung mit Mobiltelefonen und Tablets entwickelt wurde.
+15448882938241	Dieser intelligente Garagentor-Controller macht dein Zuhause smarter.
+15448883003777	Steuere deine Geräte bequem von unterwegs: Der Wi-Fi Graffiti 5-in-1 Tuya Controller ermöglicht die einfache Bedienung via Smartphone-App.
+15448883036545	Dieser kabellose Wassersensor ist eine intelligente Ergänzung für dein Smart Home. Kabelloser Wassersensor für Smart Homes.
+15448883200385	Diese WLAN-Funksteckdose macht dein Zuhause smarter.
+15448883298689	Diese mechanische TV-Fernbedienung ist kompatibel mit verschiedenen Samsung TV-Modellen.
+15448883528065	Schütze dein Fahrzeug effektiv mit diesem induktiven Diebstahlschutzsystem. Arbeitet mit 370 MHz (anpassbar auf 315/433 MHz).
+15448883560833	Dieses kabellose GPS-Halsband wurde speziell für die Ortung von Nutztieren wie Rindern, Schafen und Pferden entwickelt. GPS-Ortungsgenauigkeit von 5 m.
+15448883659137	Der kompakte GPS-Tracker wurde speziell für Welpen und Kätzchen entwickelt, um dir stets Gewissheit über ihren Aufenthaltsort zu geben.
+15448883757441	Dieses schwarze Food-Thermometer ist ein praktischer Helfer in jeder Küche.
+15448883822977	Dieser innovative Nackenventilator bietet eine erfrischende Brise, wo immer du bist. Geräuschpegel unter 36 dB.
+15448883888513	Diese Universal-Kopierfernbedienung ist ein praktisches Gadget für die Steuerung verschiedener Geräte. Nennspannung: DC12V.
+15448884085121	Dieses kabellose Ladepad mit Qi Standard ermöglicht dir das bequeme Aufladen deines Smartphones. Kabelloses Laden nach Qi Standard.
+15448884117889	Diese stilvolle Wanduhr im schlichten, modernen Design fügt sich nahtlos in jedes Zuhause ein.
+15448884248961	Diese integrierte Solar-Strassenleuchte ist ideal für die Beleuchtung von ländlichen Höfen und Wegen. Lange Lebensdauer von 50'000 Stunden.
+15448884380033	Die Ouliyuan Lugx Nagelpoliermaschine ist ein praktisches Set für die Nagelpflege.
+15448884478337	Dieses 6er-Set Ultraschall-Schädlingsvertreiber schützt dein Zuhause effektiv vor einer Vielzahl von Plagegeistern. Frequenzbereich: 25-65 kHz.
+15448884543873	Diese intelligenten, elektrischen Jalousien mit integriertem Solarpanel und 15-Kanal-Fernbedienung bieten eine moderne Lösung für dein Zuhause.
+15448884674945	Diese elektrische Jalousie bietet intelligenten Sonnenschutz und lässt sich bequem per Fernbedienung steuern. Inklusive 15-Kanal-Fernbedienung.
+15448884707713	Diese digitale Körperwaage im eleganten Blau ist nicht nur ein praktisches Gadget, sondern auch eine stilvolle Ergänzung für dein Badezimmer, Schlafzimmer …
+15448884740481	Diese kabellose Espressomaschine ist dein idealer Begleiter für unterwegs und zu Hause. Selbstheizsystem erhitzt Wasser in 5–6 Minuten auf 90℃.
+15448884806017	Dieser vielseitige Ventilator sorgt für angenehme Kühlung in verschiedenen Umgebungen. 2 einstellbare Windgeschwindigkeiten (sanft oder stark).
+15448884838785	Diese intelligente Digitalwaage bietet mehr als nur die Gewichtsmessung. Robuste Oberfläche aus 4mm gehärtetem Glas.
+15448884969857	Dieser universelle Gitarrenständer von 5 Core sorgt dafür, dass deine Instrumente sicher, organisiert und spielbereit sind.
+15448885297537	Verbessere dein Audio-Erlebnis mit diesem professionellen dynamischen Mikrofon. Nierencharakteristik für klare Stimmaufnahme.
+15448885363073	Das kabelgebundene 5 Core Gesangsmikrofon wurde für klare und unterhaltsame Gesangseinlagen zu Hause, auf Partys und bei Familienfeiern entwickelt.
+15448885756289	Dieser vielseitige Noten- und Buchständer aus Metall ist ideal für Musiker, Studenten und alle, die eine ergonomische Lesehilfe benötigen.
+15448887656833	Das 5 Core XLR Dynamische Metallmikrofon ist ideal für Gesangsaufnahmen und fängt den Quellklang präzise ein.
+15448888541569	Der 5 Core Noten- und Buchständer aus Metall ist ein vielseitiges und robustes Gadget für Musiker, Studenten und alle, die eine stabile Halterung für …
+15448890769793	Dieses Mini-Handfunkgerät ist ein praktischer Begleiter für alle, die eine zuverlässige Kommunikation benötigen.
+15448891064705	Diese kabellose Vertikalmaus wurde speziell entwickelt, um eine gesunde Hand- und Armhaltung zu fördern. 3 einstellbare DPI-Stufen (800/1200/1600).
+15448891097473	Die vielseitige Wärmelampe wurde speziell für die Bedürfnisse von Geflügel wie Hühnern, Enten und Gänsen sowie Haustieren wie Katzen und Hunden entwickelt.
+15448891163009	Verleih deinen AirPods einen frischen Look mit diesem transparenten Liquid Soft Case. Kompatibel mit AirPods der 4. Generation.
+15448891261313	Verleih deiner Tastatur einen Hauch von Nostalgie mit diesen Retro Music Tastenkappen.
+15448891392385	Dieser Vogelbad-Heizer wurde speziell für den Aussenbereich entwickelt und sorgt dafür, dass deine gefiederten Freunde auch bei kälteren Temperaturen …
+15448891457921	Das K12 Portable KTV Bluetooth Speaker Set verwandelt jeden Ort in deine persönliche Karaoke-Bühne. 10W Hochleistungslautsprecher für kräftigen Sound.
+15448891720065	Der Multicolor 3D-Druckstift MP01 von Jier ermöglicht kreatives Gestalten in drei Dimensionen. Kompatibel mit 1.75mm ABS- und PLA-Filament.
+15448891752833	Der Mehrfarben-3D-Druckstift von Jier, Modell MP01, ermöglicht kreatives Gestalten in drei Dimensionen. Einstellbarer Temperaturbereich von 130–230 °C.
+15448891916673	Dieser kabellose 3D-Stift ermöglicht Kindern kreatives, dreidimensionales Zeichnen. Kabelloses Design für maximale Bewegungsfreiheit.
+15448891982209	Dieser 3D-Druckstift ist ideal für kreative Köpfe und junge Bastler. Leichtes Design (65g) für einfache Handhabung.
+15448892047745	Dieses hochwertige TPU-Filament ist ideal für den schnellen Prototypenbau und andere 3D-Druckanwendungen.
+15448892080513	Entfesseln Sie Ihre Kreativität mit diesem vielseitigen 3D-Druckstift, der sich ideal für DIY-Kreationen und Graffitimalerei eignet.
+15448892113281	Der 3D-Druckstift ermöglicht dir kreatives Gestalten im dreidimensionalen Raum. Einstellbare Spinn-Geschwindigkeit (1-6).
+15448892178817	Der 3D Mal- und Graffiti-Stift eröffnet neue Dimensionen für kreative Entfaltung.
+15448892539265	Dieses exquisite Armreif vereint Retro-Chic mit modernem Glanz. 18K vergoldet für langanhaltenden Glanz.
+15448892735873	Dieses elegante Armband im Vintage-Stil ist ein luxuriöses Accessoire für jeden Anlass. 18K vergoldet.
+15448893063553	Dieses exquisite Armband im Retro-Stil verleiht deinem Handgelenk eine luxuriöse Note.
+15448893227393	Dieses exquisite Armband im Western-Stil ist ein Premium-Schmuckstück, das Eleganz und modernen Trend vereint.
+15448893587841	Dieses filigrane Armband im koreanischen Stil ist ein handgefertigtes Schmuckstück, das Eleganz und feine Handwerkskunst vereint.
+15448894046593	Dieser elegante Armreif ist ein zeitloses Schmuckstück, das jedem Outfit eine besondere Note verleiht. 18K vergoldet.
+15448894275969	Dieses luxuriöse Armband ist ein echter Blickfang und passt perfekt zu jedem Outfit. 18K Gold Filled Material.
+15448894570881	Dieses elegante Armband kombiniert geometrische Formen mit dem Glanz von Zirkonia und verleiht deinem Handgelenk einen Hauch von Luxus.
+15448895095169	Dieser Armreif im K-Fashion-Stil ist ein echter Hingucker.
+15448895553921	Dieses minimalistische Armband mit geometrischen Formen ist ein vielseitiges Schmuckstück für den Alltag.
+15448895684993	Dieses filigrane Armband im Vintage-Stil ist ein exquisites Handgelenk-Accessoire.
+15448895881601	Dieser Armreif im K-Fashion-Stil besticht durch sein poliertes Finish und die eisblauen Zirkonia-Steine, die für einen eleganten Glanz sorgen.
+15448896176513	Dieser trendige Armreif im Ins-Stil ist ein modisches Statement-Piece für dein Handgelenk.
+15448896340353	Dieses elegante Armband mit Rhombus-Zirkonen ist ein vielseitiges Accessoire für Frauen.
+15448896569729	Dieses vergoldete Armband mit ovaler Zirkonia-Schnalle vereint Vintage-Charme mit modernem Chic. 18K vergoldet für langanhaltenden Glanz.
