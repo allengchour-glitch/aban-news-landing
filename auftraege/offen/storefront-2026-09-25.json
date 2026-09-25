@@ -1,6 +1,0 @@
-{
-  "typ": "skript",
-  "skript": "storefront_wahrheit.mjs",
-  "id": "storefront-2026-09-25",
-  "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]"
-}
