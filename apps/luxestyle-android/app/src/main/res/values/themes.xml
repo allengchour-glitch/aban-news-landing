@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LuxeStyle" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/luxe_bronze</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">@color/luxe_ink</item>
+        <item name="android:windowBackground">@color/surface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.LuxeStyle.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/luxe_ink</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.LuxeStyle</item>
+    </style>
+</resources>
