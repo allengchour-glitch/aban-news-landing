@@ -29261,3 +29261,6 @@ gid://shopify/Product/15455518949761	CHF 12.94	1 Varianten	Badetuch-Set mit Logo
 gid://shopify/Product/15455519572353	CHF 27.71	1 Varianten	3-teiliges Kochset für unterwegs
 gid://shopify/Product/15455519998337	CHF 18.67	1 Varianten	Bunte Streifen-Badetücher aus Baumwolle
 gid://shopify/Product/15455520031105	CHF 18.96	48 Varianten	Regen-Laufschuhe mit weicher Sohle
+gid://shopify/Product/15455520719233	CHF 20.67	1 Varianten	Glas-Topf mit 2-fach Griff
+gid://shopify/Product/15455520817537	CHF 5.92	1 Varianten	Schwarzes Innenraum-Bürsten-Set mit langen Borsten
+gid://shopify/Product/15455520850305	CHF 9.39	1 Varianten	Haartrocknende Mikrofaser-Kappe
