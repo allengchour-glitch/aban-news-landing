@@ -949,6 +949,26 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 87 (25.09.2026) — 🔁 Ein Wächter draftet, keiner holt zurück: 77 lieferbare Entwürfe, 73 zurück
+**Gemessen.** Die «4 Aufseher» dieser Runde waren Unter-Shells DESSELBEN Aufsehers (gleiche SID 459, Kinder
+cj_kosten_backfill/Bewertungen). `engine_keepalive` zählt korrekt nur Sitzungsleiter (pid==sid), falsch war MEINE
+Messung. Die echte Klasse fand sich im Log von `lagerstand_hygiene`: «aktive Produkte mit Bestand 0: 100» hiess
+`first:100` ohne Seitenwechsel. Es sind 222; das einzige unkaufbare lag auf Seite 3. Schwerer wog der Blick
+zurück: Von 154 Entwürfen dieses Wächters hatten 77 wieder Bestand (Fortura hebt Mengen an, draftet/aktiviert aber
+nie, mit Absicht). Keiner hatte einen EK, denn EK-Nachtrag und Preisschutz lesen nur ACTIVE. 72 lagen unter dem
+25-%-Boden.
+**Getan.** Paginierung. Fall C «Rückweg» im selben Wächter, mit diesen Toren: Ledger, Tag, kaufbar, kein fremder
+Sperr-Tag, Klingenregel, keine Weiterleitung, keine SKU in einem anderen AKTIVEN Produkt, EK vorhanden, Preis auf
+`boden(ek)` (≤ 2×). EK aus dem Feed per Mini-Export nachgetragen; zwei Bündeltitel korrigiert (HARIBO 150 Stück,
+Diadem 2 Stück). 73 zurück, alle rückgelesen. 4 bleiben bewusst Entwurf. Bericht:
+`dropship/AUSVERKAUFT-RUECKWEG-2026-09-25.md`.
+**Lehren.**
+1. **Wer einen Zustand herstellt, muss ihn auch aufheben.** Ein «vorläufiger» Entwurf ohne Rückweg ist endgültig.
+2. **Wächter, die nur ACTIVE lesen, bilden eine stille Lücke für alles, was zurückkommt.** Wer ein Produkt aktiviert,
+   muss deren Regeln selbst prüfen (EK, Preisboden, Klinge, Bündeltitel).
+3. **`first:N` ohne `hasNextPage` ist eine Stichprobe, keine Prüfung.** Das gilt auch für «0 gefunden».
+4. **Prozesse über SID zählen, nicht über argv:** Unter-Shells tragen dieselbe Kommandozeile.
+
 ### Nachtrag 86 (25.09.2026) — 🎨 Die Grössen-Form ohne Farben-Zwilling: 951 Farblisten bei einer Variante
 Beim Schreiben des Ratgebers «Yogamatte reinigen» versprachen drei von sechs Kandidaten-Matten «Verfügbare Farben: Violett, Grau,
 Ice Ink Blau» bzw. «Farben: Violett, Mintblau, …» — bei EINER Variante. Der Wahlversprechen-Wächter hatte am 24.09. die
@@ -16724,3 +16744,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-23 · 🔓 **Social-Max integriert + zwei Sperr-Klassen an der Wurzel: Stimme wäre per edge-tts (keine Werbelizenz) bei 50 % live gegangen → opt-in; `rebase.autoStash` liess «unmerged» Dateien ohne MERGE_HEAD → `git_sichern.sh` (Merge, kein Autostash) für Motor/Committer/mich; Deadlock Text-Sperre ⟷ Shopify-Schranke (6 Wächter bis 3 h) → wer fd 8 hält, wartet nie; Heilversprechen-Vollscan 26 (23 entschärft, 3 gedraftet).** Sperren in fester Reihenfolge; neue Fähigkeit mit Rechtsfrage startet aus → Journal Nachtrag 45
 - 2026-09-23 · 🗑️ **«JA fb löschen»: 120 FB-Beiträge weg (DOPPEL/PRODUKT/TON), 23 mit nur falscher Caption bleiben stehen. Der Lauf meldete «92 Fehler»: gelöschte Seiten-Posts antworten beim Rücklesen mit Code 10, nicht 100 → Wahrheit = Seiten-Listing; `fb_qualitaet_loeschen.mjs`.** Scharfe Läufe voll ins Log, nie durch `tail` → Journal Nachtrag 46
 - 2026-09-23 · ⛔ **Meta sperrte nach 120 Löschungen + 7 Caption-Korrekturen («Spam»): Schreiber müssen eine Sperre als Stoppsignal lesen (`fb_caption_korrektur.mjs` bricht ab, 45 s Takt, täglich weiter). Server-Platte 100 % durch `git gc` auf fast voller Platte (+3 GB alte `tmp_pack`-Reste) → `server/platte-schlank.sh`: erst Reste/Verwaistes löschen, dann verpacken.** → Journal Nachtrag 47
+- 2026-09-23 · 🔑 **US-Damengrössen «14W…26W» wurden Watt (142 Werte, 8 Produkte) → `_vorbereiten`-Marke + Optionskontext, 143 repariert; GitHubs Push-Schutz fing eine aus dem Chat kopierte Schlüssel-Gegenprobe in `wartung.test.mjs` ab → synthetisch, Commits neu geschrieben; Server-Wartung nach 19 Prüfer-Befunden (Allowlist-Crontab, Entropie-Schwärzen, Journal-Filter, Sperre/trap/Stash-Schutz).** `wert_de()`=None heisst «nicht ändern», nicht «verworfen»; Testdaten nie aus dem Chat → Journal Nachtrag 48
