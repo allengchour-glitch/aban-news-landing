@@ -32962,3 +32962,8 @@ gid://shopify/Product/15478428729729	CHF 16.27	24 Varianten	Herren Sport Hoodie 
 gid://shopify/Product/15478428795265	CHF 13.74	1 Varianten	8-teiliges Messbecher- und Löffel-Set
 gid://shopify/Product/15478428893569	CHF 7.51	5 Varianten	Opalring mit Blüten-Design
 gid://shopify/Product/15478428926337	CHF 12.97	36 Varianten	Gemusterter Fleece-Kapuzenpullover für Herren
+gid://shopify/Product/15478429024641	CHF 14.54	2 Varianten	4-in-1 Rasierer Set für Sie & Ihn
+gid://shopify/Product/15478429057409	CHF 7.03	1 Varianten	Just Breathe Ring für Damen
+gid://shopify/Product/15478429254017	CHF 43.70	1 Varianten	Keramik Teekannen-Set im Vintage-Stil
+gid://shopify/Product/15478430040449	CHF 11.03	30 Varianten	Tank Dress mit U-Ausschnitt & Farbblock-Design
+gid://shopify/Product/15478430761345	CHF 121.06	1 Varianten	Smarter Deckenventilator mit RGB-Licht
