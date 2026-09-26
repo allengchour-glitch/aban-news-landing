@@ -34415,3 +34415,9 @@ gid://shopify/Product/15480562811265	CHF 18.85	1 Varianten	Sportlicher Lenkradbe
 gid://shopify/Product/15480563073409	CHF 10.51	1 Varianten	Magnetische Wireless Power Bank für Smartwatches
 gid://shopify/Product/15480563302785	CHF 29.78	1 Varianten	Mini Karaoke Sound Box mit integriertem Bluetooth 
 gid://shopify/Product/15480563335553	CHF 39.30	1 Varianten	PD 140W Laptop Power Bank 25000 mAh
+gid://shopify/Product/15480563597697	CHF 21.52	1 Varianten	Ultradünne Powerbank mit Farbdisplay & MagSafe
+gid://shopify/Product/15480563892609	CHF 111.67	1 Varianten	Multifunktionales Mikrofon mit Rauschunterdrückung
+gid://shopify/Product/15480564089217	CHF 32.76	1 Varianten	High-Power Powerbank mit Farbdisplay
+gid://shopify/Product/15480564154753	CHF 57.45	1 Varianten	Bluetooth Speaker mit Dual-Mikrofon
+gid://shopify/Product/15480564351361	CHF 14.87	1 Varianten	Kabellose Powerbank mit Kabel und Magnet
+gid://shopify/Product/15480564613505	CHF 16.16	1 Varianten	Ultra-dünne 10000 mAh Powerbank mit Digitalanzeige
