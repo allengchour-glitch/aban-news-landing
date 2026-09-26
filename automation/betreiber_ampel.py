@@ -758,10 +758,41 @@ def iban_grep():
     return f"🏦 BANKANGABE im Repo ({len(treffer)}): " + ", ".join(sorted(treffer)[:5]) + " — sofort entfernen (Repo ist oeffentlich)"
 
 
+# Zugangsdateien, ohne die ein Teil des Betriebs blind ist. Nur NAMEN werden gemeldet, nie Inhalte.
+ZUGAENGE = [(TOKPFAD, "Shop-Token (Bestell-Ampel, Waechter, Poster-Pruefung)"),
+            ("/tmp/meta_page_token", "Meta-Token (Instagram/Facebook)"),
+            ("/tmp/cj_token.json", "CJ-Token (Bestellungen, Zahlung)")]
+
+
+def zugang_weg():
+    """26.09.2026: Nach einem frischen Container (Klon von main, /tmp leer) endete main() still, weil der
+    Shop-Token fehlte — die Ampel schwieg genau dann, als Posten, Bestell-Ampel und Waechter blind waren
+    (letzter Bildpost 06:10, 12:12 «Kein Shop-Token → No-op»). Fehlender Zugang ist ein Befund, keine Ruhe."""
+    weg = [was for pfad, was in ZUGAENGE if not (os.path.exists(pfad) and os.path.getsize(pfad) > 0)]
+    if not weg:
+        return None
+    if AUF_SERVER:
+        weg = [w for w in weg if not w.startswith("Meta")]   # Meta-Posting laeuft nur in der Cloud-Sitzung
+        if not weg:
+            return None
+    return ("⛔ ZUGANG WEG: " + ", ".join(weg) +
+            " — Secrets als Umgebungsvariablen setzen (SHOPIFY_CLIENT_ID/_SECRET) oder Schluessel im Chat geben")
+
+
 def main():
-    if not os.path.exists(TOKPFAD):
-        return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), kollektion_doppel_offen(), fortura_bestand_alter(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    ohne_token = not os.path.exists(TOKPFAD)
+    # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
+    MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, server_waechter, judgeme_verdacht, iban_grep)
+    teile = [zugang_weg()]
+    for f in pruefungen:
+        if ohne_token and f in MIT_TOKEN:
+            continue
+        try:
+            teile.append(f())
+        except Exception as e:           # eine kaputte Pruefung darf die Ampel nicht zum Schweigen bringen
+            teile.append(f"{f.__name__}: unklar ({type(e).__name__})")
+    teile = [t for t in teile if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
