@@ -949,6 +949,19 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 97 (26.09.2026, 12:40 UTC) — ⛔ Frischer Container: Ampel schwieg genau dann, als alles blind war
+
+**Gemessen:** 12:09 UTC neuer Container — Repo ein flacher Klon von `main` unter unserem Branchnamen (CJ-Ledger 7'588), `/tmp` leer,
+Umgebung ohne `SHOPIFY_CLIENT_*`/`CJ_*` (nur Metricool). Branch per `checkout -B … origin/…` zurückgesetzt (Baum sauber, nichts verloren).
+Folgen: kein Bildpost seit 06:10, YouTube/Pinterest «Kein Shop-Token → No-op», IG/FB pausiert, Bestell-Ampel «unklar». Alle Post-Quittungen
+der letzten 30 h stammen aus der Cloud, keine vom Hetzner-Server → Posten hängt allein am Cloud-Container. Tresor ohne Shop-Token unlesbar.
+Die Betreiber-Ampel gab **gar nichts** aus: `main()` hatte `if not os.path.exists(TOKPFAD): return`.
+**Getan:** `zugang_weg()` meldet fehlende Zugänge («⛔ ZUGANG WEG», nur Namen); 19/25 Prüfungen laufen ohne Token weiter (AST-Analyse,
+welche `gql` brauchen); jede Prüfung einzeln in try → «unklar» statt Ampel-Ende. Gegenprobe 3/3. Bericht `dropship/ZUGANG-WEG-2026-09-26.md`.
+Einwertige Ledger gegen `main` geprüft (Union-Risiko beim Vorspulen): 25 von 329, keine Abweichung.
+**Lehre:** Eine Ampel, die bei fehlender Voraussetzung still endet, meldet den schlimmsten Zustand als «alles ruhig».
+Fehlt der Zugang, ist genau das die erste Zeile.
+
 ### Nachtrag 96 (26.09.2026, 10:00 UTC) — 🧩 «was das»: Startseiten-Reihe zeigte Muster-T-Shirts «Produkttitel CHF 19.99»
 
 **Gemessen:** Betreiber-Screenshot (Besuch aus Facebook) zeigte die Reihe «Vorgestellte Produkte» mit Horizon-Platzhaltern.
