@@ -5078,3 +5078,7 @@ gid://shopify/Product/15448892408193	1790388507	ok	5 Shop / 5 CJ / 0 fehlend / 0
 gid://shopify/Product/15448892539265	1790388507	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448892735873	1790388507	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448892834177	1790388507	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448887001473	1790406542	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
+gid://shopify/Product/15448893063553	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448893227393	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448893391233	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
