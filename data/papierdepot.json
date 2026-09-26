@@ -159,14 +159,14 @@
   "BTC-USD": {
    "name": "Bitcoin",
    "konto": 10000.0,
-   "halten": 10026.39223775009,
+   "halten": 9950.092229711836,
    "wechsel": 0,
    "entscheid": {
-    "basis_datum": "2026-09-25",
-    "kurs": 84669.5390625,
+    "basis_datum": "2026-09-26",
+    "kurs": 84025.2109375,
     "position": 0,
     "regel": "Momentum 250 Tage",
-    "zeit": "2026-09-25T09:38:22Z"
+    "zeit": "2026-09-26T09:22:47Z"
    },
    "prognosen": [
     {
@@ -182,6 +182,13 @@
      "position": 0,
      "rendite": 0.016,
      "richtig": false
+    },
+    {
+     "basis": "2026-09-25",
+     "tag": "2026-09-26",
+     "position": 0,
+     "rendite": -0.00761,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -196,13 +203,19 @@
      "konto": 10000.0,
      "halten": 10026.39,
      "position": 0
+    },
+    {
+     "datum": "2026-09-26",
+     "konto": 10000.0,
+     "halten": 9950.09,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 2,
-    "treffer": 0.5,
+    "tage": 3,
+    "treffer": 0.6666666666666666,
     "rendite": 0.0,
-    "halten_rendite": 0.0026392237750090253,
+    "halten_rendite": -0.004990777028816451,
     "max_einbruch": 0.0,
     "wechsel": 0
    }
@@ -413,31 +426,31 @@
   }
  },
  "gesamt": {
-  "tage": 16,
-  "treffer": 0.5625,
+  "tage": 17,
+  "treffer": 0.5882352941176471,
   "depot_chf": 80181.97,
-  "halten_chf": 80215.26
+  "halten_chf": 80138.96
  },
- "stand": "2026-09-25T18:09:49Z",
+ "stand": "2026-09-26T09:22:51Z",
  "daytrading": {
   "hinweis": "Regel wird morgens eingefroren und gilt erst ab der nächsten Sitzung. Kosten 0.05 % pro Trade.",
   "maerkte": {
    "GC=F": {
     "name": "Gold",
-    "konto": 10005.892062769968,
+    "konto": 9996.26018834724,
     "regel": "Ausbruch aus 3-Std.-Spanne",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
-     {
-      "ab": "2026-09-24",
-      "regel": "Ausbruch aus 3-Std.-Spanne"
-     },
      {
       "ab": "2026-09-25",
       "regel": "Ausbruch aus 3-Std.-Spanne"
      },
      {
       "ab": "2026-09-26",
+      "regel": "Ausbruch aus 3-Std.-Spanne"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Ausbruch aus 3-Std.-Spanne"
      }
     ],
@@ -447,31 +460,37 @@
       "regel": "Ausbruch aus 3-Std.-Spanne",
       "rendite": 0.000589,
       "richtig": true
+     },
+     {
+      "tag": "2026-09-25",
+      "regel": "Ausbruch aus 3-Std.-Spanne",
+      "rendite": -0.000963,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-09-24",
+    "gebucht_bis": "2026-09-25",
     "statistik": {
-     "trades": 1,
-     "treffer": 1.0,
-     "rendite": 0.0005892062769967676
+     "trades": 2,
+     "treffer": 0.5,
+     "rendite": -0.0003739811652759828
     }
    },
    "SI=F": {
     "name": "Silber",
-    "konto": 9897.171914896819,
+    "konto": 9983.319147555303,
     "regel": "Erste 1 Std. umkehren",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
-     {
-      "ab": "2026-09-24",
-      "regel": "Erste 1 Std. umkehren"
-     },
      {
       "ab": "2026-09-25",
       "regel": "Erste 1 Std. umkehren"
      },
      {
       "ab": "2026-09-26",
+      "regel": "Erste 1 Std. umkehren"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 1 Std. umkehren"
      }
     ],
@@ -481,31 +500,37 @@
       "regel": "Erste 1 Std. umkehren",
       "rendite": -0.010283,
       "richtig": false
+     },
+     {
+      "tag": "2026-09-25",
+      "regel": "Erste 1 Std. umkehren",
+      "rendite": 0.008704,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-09-24",
+    "gebucht_bis": "2026-09-25",
     "statistik": {
-     "trades": 1,
-     "treffer": 0.0,
-     "rendite": -0.010282808510318153
+     "trades": 2,
+     "treffer": 0.5,
+     "rendite": -0.001668085244469708
     }
    },
    "CL=F": {
     "name": "Öl (WTI)",
-    "konto": 9619.43882224806,
+    "konto": 9694.119718602713,
     "regel": "Ausbruch aus 3-Std.-Spanne",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
-     {
-      "ab": "2026-09-24",
-      "regel": "Ausbruch aus 3-Std.-Spanne"
-     },
      {
       "ab": "2026-09-25",
       "regel": "Ausbruch aus 3-Std.-Spanne"
      },
      {
       "ab": "2026-09-26",
+      "regel": "Ausbruch aus 3-Std.-Spanne"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Ausbruch aus 3-Std.-Spanne"
      }
     ],
@@ -515,31 +540,37 @@
       "regel": "Ausbruch aus 3-Std.-Spanne",
       "rendite": -0.038056,
       "richtig": false
+     },
+     {
+      "tag": "2026-09-25",
+      "regel": "Ausbruch aus 3-Std.-Spanne",
+      "rendite": 0.007764,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-09-24",
+    "gebucht_bis": "2026-09-25",
     "statistik": {
-     "trades": 1,
-     "treffer": 0.0,
-     "rendite": -0.03805611777519402
+     "trades": 2,
+     "treffer": 0.5,
+     "rendite": -0.030588028139728718
     }
    },
    "ES=F": {
     "name": "S&P 500 (Future)",
-    "konto": 10001.439564685428,
+    "konto": 10050.234271574769,
     "regel": "Ausbruch aus 2-Std.-Spanne",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
-     {
-      "ab": "2026-09-24",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
      {
       "ab": "2026-09-25",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      },
      {
       "ab": "2026-09-26",
+      "regel": "Ausbruch aus 2-Std.-Spanne"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      }
     ],
@@ -549,31 +580,37 @@
       "regel": "Ausbruch aus 2-Std.-Spanne",
       "rendite": 0.000144,
       "richtig": true
+     },
+     {
+      "tag": "2026-09-25",
+      "regel": "Ausbruch aus 2-Std.-Spanne",
+      "rendite": 0.004879,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-09-24",
+    "gebucht_bis": "2026-09-25",
     "statistik": {
-     "trades": 1,
+     "trades": 2,
      "treffer": 1.0,
-     "rendite": 0.0001439564685428163
+     "rendite": 0.005023427157476945
     }
    },
    "BTC-USD": {
     "name": "Bitcoin",
-    "konto": 9966.823197952766,
+    "konto": 9891.162546907164,
     "regel": "Erste 2 Std. folgen",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
-     {
-      "ab": "2026-09-24",
-      "regel": "Ausbruch aus 3-Std.-Spanne"
-     },
      {
       "ab": "2026-09-25",
       "regel": "Erste 2 Std. folgen"
      },
      {
       "ab": "2026-09-26",
+      "regel": "Erste 2 Std. folgen"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 2 Std. folgen"
      }
     ],
@@ -583,23 +620,33 @@
       "regel": "Ausbruch aus 3-Std.-Spanne",
       "rendite": -0.003318,
       "richtig": false
+     },
+     {
+      "tag": "2026-09-25",
+      "regel": "Erste 2 Std. folgen",
+      "rendite": -0.007591,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-09-24",
+    "gebucht_bis": "2026-09-25",
     "statistik": {
-     "trades": 1,
+     "trades": 2,
      "treffer": 0.0,
-     "rendite": -0.003317680204723339
+     "rendite": -0.010883745309283599
     }
    },
    "AAPL": {
     "name": "Apple",
     "konto": 10000.0,
     "regel": "Erste 3 Std. umkehren",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 3 Std. umkehren"
      }
     ],
@@ -615,10 +662,14 @@
     "name": "Nvidia",
     "konto": 10000.0,
     "regel": "Erste 2 Std. folgen",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 2 Std. folgen"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 2 Std. folgen"
      }
     ],
@@ -634,10 +685,14 @@
     "name": "Tesla",
     "konto": 10000.0,
     "regel": "Erste 3 Std. umkehren",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 3 Std. umkehren"
      }
     ],
@@ -653,10 +708,14 @@
     "name": "Microsoft",
     "konto": 10000.0,
     "regel": "Erste 3 Std. umkehren",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 3 Std. umkehren"
      }
     ],
@@ -672,10 +731,14 @@
     "name": "Amazon",
     "konto": 10000.0,
     "regel": "Erste 1 Std. folgen",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 1 Std. folgen"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 1 Std. folgen"
      }
     ],
@@ -691,10 +754,14 @@
     "name": "Nestlé",
     "konto": 10000.0,
     "regel": "Erste 3 Std. umkehren",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 3 Std. umkehren"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 3 Std. umkehren"
      }
     ],
@@ -710,10 +777,14 @@
     "name": "Novartis",
     "konto": 10000.0,
     "regel": "Ausbruch aus 1-Std.-Spanne",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Ausbruch aus 1-Std.-Spanne"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Ausbruch aus 1-Std.-Spanne"
      }
     ],
@@ -729,10 +800,14 @@
     "name": "Roche",
     "konto": 10000.0,
     "regel": "Ausbruch aus 2-Std.-Spanne",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Ausbruch aus 2-Std.-Spanne"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      }
     ],
@@ -748,10 +823,14 @@
     "name": "UBS",
     "konto": 10000.0,
     "regel": "Erste 2 Std. umkehren",
-    "gilt_ab": "2026-09-26",
+    "gilt_ab": "2026-09-27",
     "einfrierungen": [
      {
       "ab": "2026-09-26",
+      "regel": "Erste 2 Std. umkehren"
+     },
+     {
+      "ab": "2026-09-27",
       "regel": "Erste 2 Std. umkehren"
      }
     ],
@@ -765,9 +844,9 @@
    }
   },
   "gesamt": {
-   "trades": 5,
-   "treffer": 0.4,
-   "depot_chf": 139490.77
+   "trades": 10,
+   "treffer": 0.5,
+   "depot_chf": 139615.1
   }
  },
  "stil_vorwaerts": {
@@ -1058,90 +1137,90 @@
    },
    "BTC-USD": {
     "halten": {
-     "konto": 9990.0,
-     "basis": "2026-09-25",
-     "kurs": 83703.40625
+     "konto": 10028.407383548085,
+     "basis": "2026-09-26",
+     "kurs": 84025.2109375
     },
     "stile": {
      "Trendfolge": {
-      "konto": 9990.0,
+      "konto": 10028.407383548085,
       "pos": 1,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
-      "richtig": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
+      "richtig": 1,
       "wechsel": 1
      },
      "Momentum": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
       "richtig": 0,
       "wechsel": 0
      },
      "Ausbruch (Turtle)": {
-      "konto": 9990.0,
+      "konto": 10028.407383548085,
       "pos": 1,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
-      "richtig": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
+      "richtig": 1,
       "wechsel": 1
      },
      "Mean Reversion": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
       "richtig": 0,
       "wechsel": 0
      },
      "Buy the Dip": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
       "richtig": 0,
       "wechsel": 0
      },
      "Swing": {
-      "konto": 9990.0,
+      "konto": 10028.407383548085,
       "pos": 1,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
-      "richtig": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
+      "richtig": 1,
       "wechsel": 1
      },
      "Saison: Sell in May": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
       "richtig": 0,
       "wechsel": 0
      },
      "Monatswechsel": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
       "richtig": 0,
       "wechsel": 0
      },
      "Ruhige Phasen": {
-      "konto": 9990.0,
+      "konto": 10028.407383548085,
       "pos": 1,
-      "basis": "2026-09-25",
-      "kurs": 83703.40625,
-      "tage": 0,
-      "richtig": 0,
+      "basis": "2026-09-26",
+      "kurs": 84025.2109375,
+      "tage": 1,
+      "richtig": 1,
       "wechsel": 1
      }
     }
@@ -1509,52 +1588,52 @@
   },
   "gesamt": {
    "Trendfolge": {
-    "konto": 79940.0,
-    "tage": 0,
-    "richtig": 0
+    "konto": 79978.41,
+    "tage": 1,
+    "richtig": 1
    },
    "Momentum": {
     "konto": 79930.0,
-    "tage": 0,
+    "tage": 1,
     "richtig": 0
    },
    "Ausbruch (Turtle)": {
-    "konto": 79970.0,
-    "tage": 0,
-    "richtig": 0
+    "konto": 80008.41,
+    "tage": 1,
+    "richtig": 1
    },
    "Mean Reversion": {
     "konto": 79990.0,
-    "tage": 0,
+    "tage": 1,
     "richtig": 0
    },
    "Buy the Dip": {
     "konto": 79980.0,
-    "tage": 0,
+    "tage": 1,
     "richtig": 0
    },
    "Swing": {
-    "konto": 79990.0,
-    "tage": 0,
-    "richtig": 0
+    "konto": 80028.41,
+    "tage": 1,
+    "richtig": 1
    },
    "Saison: Sell in May": {
     "konto": 80000.0,
-    "tage": 0,
+    "tage": 1,
     "richtig": 0
    },
    "Monatswechsel": {
     "konto": 80000.0,
-    "tage": 0,
+    "tage": 1,
     "richtig": 0
    },
    "Ruhige Phasen": {
-    "konto": 79920.0,
-    "tage": 0,
-    "richtig": 0
+    "konto": 79958.41,
+    "tage": 1,
+    "richtig": 1
    }
   },
-  "halten_chf": 79920.0
+  "halten_chf": 79958.41
  },
  "verlauf": [
   {
@@ -1562,6 +1641,12 @@
    "bot": 80181.97,
    "halten": 80215.26,
    "daytrading": 139490.77
+  },
+  {
+   "datum": "2026-09-26",
+   "bot": 80181.97,
+   "halten": 80138.96,
+   "daytrading": 139615.1
   }
  ]
 }
