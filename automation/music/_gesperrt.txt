@@ -1,0 +1,2 @@
+# Gesperrte Musikstücke — eines je Zeile, danach Tab + Datum + Grund. Gelesen von cj_video_reel_engine.mjs und reel/promo_montage.py.
+luxe-lounge-sax.wav	2026-09-26	Betreiber: «musik finde ich scheisse vom neuen post» (TikTok Küchenhelfer-Set 26.09. 10:38, Track per Hüllkurven-Korrelation 1.50 vs. nächster 0.45 bestimmt)

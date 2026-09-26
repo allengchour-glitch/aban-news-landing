@@ -55,6 +55,12 @@ const STIMMUNG = {
   haustier: ['luxe-celtic-epic.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-house1.wav'],
   kinder:   ['luxe-celtic-epic.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-orchestra.wav', 'luxe-cinematic-house.wav'],
 };
+// 26.09.2026: Sperrliste automation/music/_gesperrt.txt (Betreiber mag luxe-lounge-sax nicht). Gilt fuer JEDE Wahl unten —
+// Warengruppen-Pool, Gesamt-Pool und den alten MUSIC-Rueckfall.
+const GESPERRT = new Set((() => { try { return fs.readFileSync('automation/music/_gesperrt.txt', 'utf8').split('\n')
+  .filter(z => z.trim() && !z.startsWith('#')).map(z => z.split('\t')[0].trim()); } catch { return []; } })());
+for (const k of Object.keys(STIMMUNG)) STIMMUNG[k] = STIMMUNG[k].filter(m => !GESPERRT.has(m));
+for (let i = MUSIC.length - 1; i >= 0; i--) if (GESPERRT.has(MUSIC[i])) MUSIC.splice(i, 1);
 const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())];
 const VERLAUF = 'social/_musik_verlauf.txt';
 function musikWahl(th, pid) {
