@@ -68,6 +68,58 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-26 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 Katzenprodukte, 300 gemessen, 196 korrigiert):**
+- **Auftrag:** Dauerauftrag / `/loop` — die nächste ungemessene Katalogklasse nach der Preisregel messen.
+  Gewählt: **Haustier**, weil einer der sieben echten Verkäufer ein Katzenspielzeug ist (#1012).
+- **🔴 DIE KLASSE IST UM EINE GRÖSSENORDNUNG GRÖSSER ALS ALLES BISHERIGE.** GEMESSEN mit
+  `productsCount` (liest `title:`, Gegenprobe `title:zzzgibtesnichtwort*` → **0**): **`katzen*` 806
+  aktive Produkte · `hunde*` 1640 · `haustier*` 508 · `kratz*` 90 · `napf*` 56.** Zum Vergleich: die
+  **gesamte** Schutzausrüstung waren 168 Produkte über sieben Blöcke. **Dieser Block misst die ERSTEN
+  300 der 806 Katzenprodukte** — der Rest ist offen, und „die Katzen sind durch" wäre gelogen.
+- **⚠️ `tier*` IST EIN FALSCHER FREUND und hätte die Messung vergiftet:** die Abfrage liefert
+  100 Treffer, und die ersten zwölf sind **Rucksack, Poncho, Handschuhe, Sweatshirt, Hoodie, Leggings
+  und Pyjama mit TIERMOTIV** — kein einziger Tierbedarf. Aufgefallen **nur, weil ich die Titel gelesen
+  habe statt der Zahl.** `katzen*` und `hunde*` waren dagegen sauber: von 200 geprüften Titeln trug
+  **keiner** das Wort nicht. **Regel: nach der Wortanfang-Suche erst ein paar Titel lesen, dann die
+  Treffermenge eine Klasse nennen.**
+- **💰 BEFUND ÜBER DIE 300: 1310 Varianten, 1148 mit bekanntem Einkauf, 259 in Ordnung,
+  798 unter dem Ziel, 91 mit Faktor über 3.** Nach Produkten: **197 von 300 betroffen.**
+- **✅ GEÄNDERT (live): 196 Produkte / 798 Varianten**, `userErrors` in allen acht Teilen leer,
+  **alle 196 an der echten Kundenseite nachgemessen (196/196, null Abweichungen).**
+  Die schlimmsten Verlustfälle: Erhöhter Futternapf 15.90 bei EK 23.91 (**−67,1 PROZENT**) →
+  44.90 · Katzenfestes Sofaüberwurf 18.90/27.19 (−59,8) → 49.90 · Faltbarer Katzenkäfig
+  72.90/104.68 (−59,5) → 189.90. Am oberen Ende stehen echte Möbel: Katzenbäume, Edelstahl-
+  Toiletten und Futterautomaten mit Einkauf 65–111, deren Preis nur um Faktor 1,2–1,3 steigt.
+- **🔑 NEUE VERFEINERUNG DER REGEL: der Preis wird JE VARIANTE gerechnet**, nicht je Produkt —
+  `neu = max(heutiger Preis, zielpreis(Einkauf DIESER Variante))`. **Gemessene Folge: 168 der 196
+  Produkte bekamen trotzdem genau EINEN Preis** (ihre Einkäufe liegen beieinander), **28 eine
+  Preisstaffel** — genau die, deren Einkauf mit der Grösse steigt. Ein Produkt je Variante zu bepreisen
+  verteuert die kleinen Grössen nicht mehr grundlos. Der **Faktor-Deckel 3 gilt ebenfalls je Variante**,
+  darum kann ein Produkt gesetzte und gemeldete Varianten zugleich haben.
+- **⛔ 7 PRODUKTE NUR GEMELDET, NICHT GESETZT (Faktor über 3 = falsch importiert):**
+  Tofu-Katzenstreu 46.90 bei EK 181.30 (**−329,5 PROZENT**, Faktor 7,0) · Chenille-Sofabezug
+  20.90/69.48 (Faktor 6,0) · Intelligenter Rollball 93.90/299.32 (5,7) · Kuscheliges Haustierbett
+  18.90/52.69 (5,0) · Katzenfestes Einheitssofaüberwurf 25.90/55.11 (3,9) · Universeller
+  Kratzerschutz 20.90/40.15 (3,6) · Erhöhter Futternapf 20.90/35.93 (3,1).
+  **Damit sind es dreizehn Faktor-über-3-Fälle für den User.**
+- **🛠️ GEBAUT `tools/preis_nachmessen.mjs` (16 Selbsttests)** — das Prüfgerät der letzten
+  Runde lag in `/tmp` und war weg. Jetzt fest im Werkzeugkasten: prüft **je Variante** gegen
+  `/products/<handle>.js` (ohne Zugangsdaten), vergleicht **ganzzahlig in Rappen** (44.9 und 44.90 sind
+  derselbe Preis), meldet eine unbekannte Variante als **unbekannt statt „in Ordnung"**, und behandelt
+  **429/430/503 als „warte"**, nicht als „fehlt". **Gegenprobe zweimal belegt:** im Selbsttest schlägt
+  ein absichtlich falscher Sollwert aus, und an der echten Seite meldete das Gerät mit erfundenen
+  Werten **0 von 3** — mit den echten **196 von 196**.
+- **⚠️ EIN PRODUKT WURDE BEIM VERSCHICKEN BEWUSST ÜBERSPRUNGEN — und nachgereicht.** Der
+  Hoodie mit 84 Varianten passte nicht mit in seinen Teil; **eine Auslassung, die man nicht aufschreibt,
+  ist ein stiller Verlust** (genau der Fehler vom 19.09.). Er ging als eigene Mutation raus. Dasselbe
+  beim 99-Varianten-Hoodie: dessen Variantenzahl wurde **einzeln nachgefragt (`variantsCount` = 99)**,
+  weil 99 verdächtig nah an der Abfragegrenze 100 liegt — er war vollständig.
+- **🟡 NUR DER USER, und es wiegt hier schwerer als je zuvor:** `SHOPIFY_SHOP` /
+  `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. **Bei 806 Katzen- und 1640 Hundeprodukten ist
+  Handarbeit keine Strategie mehr** — `automation/preis_korrektur.mjs` liegt seit dem 19.09. fertig da
+  und wartet auf genau diese drei Werte (löst zusätzlich die schlanke Startseite und Video an die PDP).
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
 - **Auftrag:** Dauerauftrag / `/loop` — Produktvideos für die Verkaufsschlager rendern. **Bevor ich
   ein Video für das falsche Produkt baue, habe ich gemessen, WAS sich wirklich verkauft.** Gut so.
