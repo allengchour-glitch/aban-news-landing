@@ -1086,17 +1086,30 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
                                         transparent:true,opacity:0.9,depthWrite:false}));
       mm.rotation.x=-Math.PI/2;mm.position.set(x,hoehe||0.012,z);
       mm.receiveShadow=true;scene.add(mm);return mm;}
-    /* Kiesauffahrt vom Gehweg (z 27) bis zum Stellplatz. Sie endet bewusst VOR der
-       Mitte: eine Auffahrt, die im Nichts ausläuft, sieht falsch aus — eine, die auf
-       einem Stellplatz endet, sieht nach „hier kann gebaut werden" aus. */
-    band(ZX, 20.5, 4.0, 13, 0xc9bfa6);
-    band(ZX, 12.0, 7.0, 5.0, 0xc2b79c);          /* Stellplatz 7 x 5 m */
-    /* Parzellengrenze als duenne Schnurlinie, aber NUR an den Laengsseiten. Kein Zaun —
+    /* ⚠️ DIE AUFFAHRT LAG NEBEN DER EINFAHRT — NACHGERECHNET UND IM BILD GESEHEN.
+       Die Hecke laesst im Norden eine Oeffnung frei, damit man auf sein Grundstueck
+       kommt: sie reicht von x = -5,1 bis x = 6,4, ihre Mitte liegt bei x = 0,65.
+       Die Auffahrt stand aber bei x = 7 und war 4 m breit — sie lief also auf 2,6 m
+       Breite IN DIE HECKE. Und sie begann erst bei z = 27, also innerhalb der Grenze:
+       ein grauer Streifen, der nirgendwo anfing und nirgendwo hinfuehrte. Auf dem
+       Bild aus Spielerhoehe sieht man genau das — eine graue Flaeche, die in der
+       Wiese schwebt.
+       Jetzt liegt sie in der Oeffnung (x = 0,65), ist schmaler (2,4 statt 4 m) und
+       beginnt AUSSERHALB der Hecke (z = 30), sodass sie sichtbar hereinfuehrt.
+       Der Stellplatz ist weg: 35 m² Kies mitten auf der Wiese, ohne Zufahrt und ohne
+       Haus, waren genau der „graue Haken", den der User bemaengelt hat. */
+    var OEFF=0.65;
+    band(OEFF, 23.0, 2.4, 14, 0xc9bfa6);
+    /* Parzellengrenze als duenne Schnurlinie — jetzt auf ALLEN VIER Seiten. Kein Zaun,
        der naehme die Sicht aufs eigene Haus und stuende im Bauraster.
-       ⚠️ Nord und Sued brauchen KEINE Linie: dort liegen bereits die Gehwegstreifen
-       auf z ±27 (gemessen mit th-flaeche). Eine zweite Markierung an derselben Stelle
-       ist im Bild nicht zu unterscheiden und nur ein Objekt mehr. */
+       ⚠️ Hier stand einmal „Nord und Sued brauchen keine Linie, dort liegen ja die
+       Gehwegstreifen auf z ±27". Diese Gehwegstreifen sind der 654 m² grosse
+       Betonring, der in derselben Runde entfernt wurde — ohne Ersatz waere die Grenze
+       dort unmarkiert. Die Nordseite wird an der Einfahrt unterbrochen. */
     [[-39,54,0.25],[39,54,0.25]].forEach(function(q){band(q[0],0,q[2],q[1],0xe8e2d2,0.014);});
+    band(0,-27,78,0.25,0xe8e2d2,0.014);
+    band(-22.6,27,32.8,0.25,0xe8e2d2,0.014);
+    band(22.6,27,32.8,0.25,0xe8e2d2,0.014);
   })();
   /* ⚠️ Zwischen der nahen Wiese (204x152) und der Fern-Ebene (600x600 mit nur
      40 Blotches) lag ein breiter Ring, den praktisch keine Variation erreichte —
@@ -7118,13 +7131,17 @@ setTimeout(function baueGebaeude(){
          plus Hecke aussen. Ohne das steht man vor einer Wiese und weiss nicht, wo
          man bauen darf — das Gitter sieht man ja nur im Baumodus. */
       var BW=BAUW*CS/2+3, BH=BAUH*CS/2+3;
-      var wegM=betMat(0xcfc7b6,0.92);
-      [[2*BW+4,2.4,0,-BH],[2*BW+4,2.4,0,BH]].forEach(function(p){
-        var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
-        m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
-      [[2.4,2*BH,-BW,0],[2.4,2*BH,BW,0]].forEach(function(p){
-        var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
-        m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
+      /* ⚠️ DER GEPFLASTERTE RUNDWEG IST WEG — 654 m² BETON UM EIN GRUNDSTUECK VON
+         4'212 m². Hier lief ein 2,4 m breites Betonband um das ganze Baufenster
+         (2 x 197 m² laengs, 2 x 130 m² quer). Gemessen mit th-rand waren das 85 % der
+         gesamten Versiegelung auf dem Grundstueck. Der User: „in mitte gefaellt mir
+         nicht die objekten rundum" — auf Nachfrage ausdruecklich der graue Ring.
+         Im Bild von oben las sich das Grundstueck dadurch wie eine Laufbahn.
+         ⚠️ SEIN ZWECK BLEIBT ERFUELLT: er sollte zeigen, wo man bauen darf, weil man
+         das Baugitter nur im Baumodus sieht. Das leistet die Hecke, die ohnehin rings
+         herum steht, und zusaetzlich die duenne Schnurlinie auf allen vier Seiten
+         (siehe bauplatz()). Gegengeprueft mit th-rand: groesste Luecke in der Hecke
+         bleibt unter 8 m, das Baufenster bleibt frei. */
       /* 🌳 HECKE AM GRUNDSTUECK — INSTANZIERT, und das aus zwei gemessenen Gruenden.
          1. SIE WAR KEINE HECKE, sondern eine Reihe einzelner Bloecke: das Modul ist
             2,31 m breit, das Raster stand auf 4,0 — zwischen je zwei Modulen klafften
@@ -7137,13 +7154,36 @@ setTimeout(function baueGebaeude(){
          Raster ist gratis. Das Modell wird EINMAL geladen, seine Meshes werden aus der
          Vorlage herausgerechnet (Gruppen-Matrix invertiert, damit Skalierung und
          Boden-Versatz erhalten bleiben), danach verschwindet die Vorlage wieder. */
-      var heckenStellen=[];
+      /* 🌿 EINE HECKE IST KEIN ZAUN — HIER STAND EIN WALL AUS EINEM EINZIGEN MODUL.
+         Gemessen (th-rand): 94 Module, 28 davon in EINER ununterbrochenen Reihe,
+         EINE Pflanzenart, Hoehenspanne nur Faktor 1,37. Im Bild aus Spielerhoehe liest
+         sich das als gruene Mauer aus Bausteinen — der User: „in mitte gefaellt mir
+         nicht die objekten rundum".
+         Jetzt bekommt jeder Platz eine ROLLE: die meisten bleiben Hecke, etwa jeder
+         vierte wird ein bluehender Busch, und rund jeder zehnte bleibt LEER.
+         ⚠️ DREI REGELN, DAMIT DIE GRENZE LESBAR BLEIBT — sie ist der einzige Hinweis
+         darauf, wo man bauen darf (das Baugitter sieht man nur im Baumodus):
+           1. Nie zwei Luecken nebeneinander (Mindestabstand drei Plaetze).
+           2. Keine Luecke am Anfang oder Ende einer Reihe — sonst franst die Ecke aus.
+           3. Die Rolle kommt aus dem Platz-Index, nicht aus Math.random(): die Welt
+              muss bei jedem Laden gleich aussehen (Koop, Bildvergleiche). */
+      function _rolle(i){var v=Math.sin(i*45.233+9.17)*13758.5453;return v-Math.floor(v);}
+      var seiten=[[],[],[],[]];
       for(var hx=-BW+4;hx<=BW-4;hx+=2.3){
-        if(Math.abs(hx)>5)heckenStellen.push([hx,BH+2.4,0]);
-        heckenStellen.push([hx,-BH-2.4,0]);}
+        if(Math.abs(hx)>5)seiten[0].push([hx,BH+2.4,0]);
+        seiten[1].push([hx,-BH-2.4,0]);}
       for(var hz=-BH+4;hz<=BH-4;hz+=2.3){
-        heckenStellen.push([-BW-2.4,hz,Math.PI/2]);
-        heckenStellen.push([BW+2.4,hz,Math.PI/2]);}
+        seiten[2].push([-BW-2.4,hz,Math.PI/2]);
+        seiten[3].push([BW+2.4,hz,Math.PI/2]);}
+      var heckenStellen=[],buschStellen=[];
+      seiten.forEach(function(reihe,si){
+        var letzte=-9;
+        reihe.forEach(function(st,i){
+          var v=_rolle(si*97+i);
+          if(v<0.11&&i>0&&i<reihe.length-1&&i-letzte>=3){letzte=i;return;}
+          if(v<0.30){buschStellen.push(st);return;}
+          heckenStellen.push(st);});});
+      bauViele("th4_busch_blueten.glb",1.15,buschStellen);
       bau("th6_hecke_modul.glb",1.3,heckenStellen[0][0],0,heckenStellen[0][1],heckenStellen[0][2],false,
         function(w){
           w.updateMatrixWorld(true);
@@ -7167,9 +7207,15 @@ setTimeout(function baueGebaeude(){
             for(var i=0;i<heckenStellen.length;i++){
               var st=heckenStellen[i];
               var a=_wuchs(i,1),b=_wuchs(i,2),c=_wuchs(i,3);
-              R.makeRotationY(st[2]+(c-0.5)*0.14);
-              T.makeTranslation(st[0]+(a-0.5)*0.12,0,st[1]+(b-0.5)*0.12);
-              SK.makeScale(1+a*0.06, 0.85+b*0.33, 0.92+c*0.18);
+              /* ⚠️ DIE LAENGE BLEIBT >= 1,0 — das Modul ist 2,31 m breit und steht im
+                 2,3-m-Raster. Wuerde sie schrumpfen, risse die Hecke ueberall auf, und
+                 zwar unkontrolliert: Luecken sollen dort entstehen, wo die Rolle sie
+                 vorsieht, nicht als Nebenwirkung der Streuung. Hoehe und Tiefe duerfen
+                 dagegen weit ausschlagen — Faktor 1,37 vorher war im Bild nicht zu
+                 sehen, jetzt fast 2. */
+              R.makeRotationY(st[2]+(c-0.5)*0.34);
+              T.makeTranslation(st[0]+(a-0.5)*0.10,0,st[1]+(b-0.5)*0.10);
+              SK.makeScale(1+a*0.16, 0.72+b*0.72, 0.86+c*0.40);
               M.multiplyMatrices(T,R);M.multiply(SK);M.multiply(t.l);
               im.setMatrixAt(i,M);}
             im.instanceMatrix.needsUpdate=true;
