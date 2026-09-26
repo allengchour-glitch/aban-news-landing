@@ -1,44 +1,101 @@
-15406765801857	Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
-15408457744769	Premium Bambus Aroma Diffuser 300ml
-15408457941377	Rosenquarz Gua Sha Set
-15408457974145	Jade Roller Premium Doppelseitig
-15408458006913	Kristall-Set 3-teilig
-15408458072449	Cellulite Massage Roller
-15408458170753	Bambus Aufbewahrungssystem Modular
-15408458236289	Bambus Kosmetik-Organizer Premium
-15408458563969	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
-15411554320769	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
-15411554910593	Aromadiffusor Holzmaserung
-15411555533185	Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
-15411556614529	Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
-15411563823489	Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
-15411564446081	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
-15411565035905	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
-15411565429121	Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
-15412297007489	LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balkon
-15412297073025	Solar Camping-Laterne im Vintage-Look – wiederaufladbar, IP44 wetterfest
-15412299661697	Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (waschbar)
-15412299760001	Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
-15412301922689	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
-15412302020993	Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)
 15412302414209	Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
-15412302512513	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
+15412302512513	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichte
 15412304707969	Übersetzer-Kopfhörer – 144 Sprachen, Echtzeit, Bluetooth 5.3
 15412304773505	Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser
 15412304806273	Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)
-15412304871809	Komfort-Fahrradsattel XXL – extrabreit, gefedert, ergonomisch gepolstert
-15412306215297	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar, gegen müde Augen
+15412304871809	Komfort-Fahrradsattel XXL – extrabreit, gefedert, ergonomisch gepolste
+15412306215297	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar, gegen müde A
 15412306608513	16-in-1 Gemüseschneider – Multi-Hobel, Würfler & Slicer
-15412306772353	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle Box
+15412306772353	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle 
 15412307100033	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung, wasserabweisend
-15412307657089	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helligkeitsstufen
-15412361593217	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlafzimmer
-15412408615297	Monitor-Lichtleiste mit Bewegungssensor – blendfreies Schreibtischlicht, USB
+15412307657089	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helligkeitsstuf
+15412361593217	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlaf
+15412408615297	Monitor-Lichtleiste mit Bewegungssensor – blendfreies Schreibtischlich
 15412432175489	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+15422823465345	Keramik-Tasse – Selbst gestalten
+15422849188225	Dad-Cap – Selbst gestalten
+15422854463873	Alltags-Umhängetasche – Selbst gestalten
+15422857642369	Klassisches Unisex T-Shirt – Selbst gestalten
+15422912332161	Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen
+15422915445121	Herren-Slip-on «Sail» · Canvas, leichte Sohle
+15422931927425	Herren-Slides «Porto» · Cross-Strap, Wildleder-Optik
+15422933500289	Herren-Set «Costa» · Kapuzen-Shirt + Jogger
+15422934647169	Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz
+15422934909313	Leinen-Set «Lino» · Weste + Weite Hose
+15422937563521	Tennis-Kleid «Match» · Plissee, integrierte Shorts
+15422937760129	Statement-Ohrringe «Onyx» · Geometrisch, Schwarz
+15422937792897	Stiletto-Sandalette «Gala» · Violett, Knöchelriemen
+15422939267457	Boardshorts mit Allover-Druck – Selbst gestalten
+15422939988353	Hardcase iPhone®-Hülle mit MagSafe® – Selbst gestalten
+15422940447105	Edelstahl Trinkflasche mit Strohhalm – Selbst gestalten
+15422942609793	Kiss-Cut Aufkleber – Selbst gestalten
+15422943822209	Einteiliger Allover-Badeanzug – Selbst gestalten
+15422945034625	Allover-Yoga-Leggings – Selbst gestalten
+15422946083201	Allover-Rucksack – Selbst gestalten
+15422946804097	Transparente iPhone®-Hülle – Selbst gestalten
+15422949130625	Recycelter Unisex Allover-Pullover – Selbst gestalten
+15422950474113	Allover-Stoffbeutel – Selbst gestalten
+15422953062785	Hoodie bedrucken · recycelter Unisex Allover-Hoodie selbst gestalten
+15422956798337	Unisex Allover-Bomberjacke – Selbst gestalten
+15422958338433	Kleid mit Schlitz und Allover-Druck – Selbst gestalten
+15422959518081	Recycelte Allover-Jogginghosen – Selbst gestalten
+15422960501121	Allover-Sport-BH – Selbst gestalten
+15422970134913	Gua-Sha-Set «Jade» · Massage-Tool & Rosehip-Öl
+15422970167681	Strick-Cape «Aria» · Solid, Poncho-Optik
+15422985765249	Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell
+15422985798017	Strickblumen-Strauss «Fleur» · Handgestrickt, ewig
+15423895830913	Bügeltransfer – selbst gestalten
+15427142812033	Schweiz-Poster «Grüezi» – Mundart-Kunstdruck
+15427150578049	Schweiz-Poster «Bähnli» · Vintage Travel-Kunstdruck
+15427150643585	Schweiz-Poster «Alpen-Panorama» · Berg-Kunstdruck
+15427150774657	Schweiz-Poster «Edelweiss» · Botanischer Kunstdruck
+15427151004033	Schweiz-Poster «Fondue» · Retro-Küchen-Kunstdruck
+15427152970113	Schweiz-Poster «Chalet» · Winter-Berg-Kunstdruck
+15427166568833	Schweiz-Poster «Edelweiss & Enzian» · Art-Nouveau-Druck
+15427167355265	Schweiz-Poster «Alpenkuh» · Kunstdruck mit Blumenkranz
+15427167945089	Schweiz-Poster «Alpsee» · See-Spiegelung-Kunstdruck
+15427170828673	Schweiz-Poster «Matterhorn» · Sonnenuntergang-Kunstdruck
+15427182330241	Poster zum Selbstgestalten
+15427217195393	Magnet zum Selbstgestalten
+15427217228161	Schweiz-Magnet «Matterhorn»
+15427217260929	Schweiz-Magnet «Grüezi mitenand»
+15427217293697	Schweiz-Magnet «Merci vilmal»
+15427217326465	Schweiz-Magnet «Schweizer Herz»
+15427217359233	Schweiz-Magnet «Kuhglocke»
+15427217392001	Schweiz-Magnet «Fondue»
+15427229942145	Schweiz-Sticker «Matterhorn» · 1 Stück
+15427229974913	Schweiz-Sticker «Edelwyss» · 1 Stück
+15427230007681	Schweiz-Sticker «Schwiizerchrüz» · 1 Stück
+15427230040449	Schweiz-Sticker «Schwiizer Härz» · 1 Stück
+15427230073217	Schweiz-Sticker «Fondue» · 1 Stück
+15427230105985	Schweiz-Sticker «Raclette» · 1 Stück
+15427230138753	Schweiz-Sticker «Alphorn» · 1 Stück
+15427230171521	Schweiz-Sticker «Grüezi mitenand» · 1 Stück
+15427230204289	Schweiz-Sticker «Merci vilmal» · 1 Stück
+15427230237057	Schweiz-Sticker «Hoi zäme» · 1 Stück
+15427230269825	Schweiz-Sticker «Steinbock» · 1 Stück
+15427230302593	Schweiz-Sticker «Murmeli» · 1 Stück
+15427230368129	Schweiz-Poster «Matterhorn»
+15427230433665	Schweiz-Poster «Chalet»
+15427230466433	Schweiz-Poster «Schweizer Kuh»
+15427230499201	Schweiz-Poster «Edelweiss»
+15427230531969	Schweiz-Poster «Edelweiss-Muster»
+15427230564737	Schweiz-Poster «Fondue»
+15427230597505	Schweiz-Poster «Gondelbahn»
+15427230630273	Schweiz-Poster «Grüezi»
+15427230663041	Schweiz-Poster «Bergsee»
+15427235905921	Sticker «Alien Green» · 1 Stück
+15427235938689	Sticker «Alpaca» · 1 Stück
+15427235971457	Sticker «Anime Cat Wink» · 1 Stück
+15427236036993	Sticker «Anime Eyes» · 1 Stück
+15427236069761	Sticker «Art Cow Save» · 1 Stück
+15427236102529	Sticker «Art Mountains» · 1 Stück
+15427236135297	Sticker «Art Veggies» · 1 Stück
 15427236168065	Sticker «Axolotl» · 1 Stück
 15427236200833	Sticker «Camera» · 1 Stück
 15427236233601	Sticker «Coffee» · 1 Stück
 15427236266369	Sticker «Explorer» · 1 Stück
+15427236299137	Sticker «Festival» · 1 Stück
 15427236331905	Sticker «Music» · 1 Stück
 15427236364673	Sticker «Skate» · 1 Stück
 15427236495745	Sticker «Surf» · 1 Stück
@@ -151,7 +208,6 @@
 15427240952193	Sticker «Llama» · 1 Stück
 15427240984961	Sticker «Wave» · 1 Stück
 15427241017729	Sticker «Lollipop» · 1 Stück
-15427241050497	Sticker «Lotus Zen» · 1 Stück
 15427241083265	Sticker «Macaron» · 1 Stück
 15427241116033	Sticker «Magical Wand» · 1 Stück
 15427241148801	Sticker «Matcha» · 1 Stück
@@ -162,7 +218,6 @@
 15427241312641	Sticker «Moon Phases» · 1 Stück
 15427241345409	Sticker «Mouse» · 1 Stück
 15427241378177	Sticker «Narwhal» · 1 Stück
-15427241443713	Sticker «Nebula Swirl» · 1 Stück
 15427241476481	Sticker «Ocean Wave» · 1 Stück
 15427241542017	Sticker «Octopus» · 1 Stück
 15427241574785	Sticker «Otter» · 1 Stück
