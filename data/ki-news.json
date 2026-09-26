@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-25T18:06:52Z",
+ "stand": "2026-09-26T09:20:14Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,76 +18,76 @@
  "fenster_h": 72,
  "items": [
   {
+   "t": "Anzeige: HP OmniBook 7 Copilot+ Laptop für unter 900 Euro",
+   "u": "https://www.golem.de/news/anzeige-hp-omnibook-7-copilot-laptop-fuer-unter-900-euro-2609-213445.html",
+   "q": "Golem",
+   "d": "2026-09-26T08:40:02Z",
+   "s": "Das HP OmniBook 7 kombiniert ein großes 17-Zoll-Display mit moderner KI-Performance. Amazon bietet den Copilot+ Laptop aktuell mit satten 260 Euro Rabatt an. (Technik/Hardware)",
+   "sprache": "de"
+  },
+  {
+   "t": "139.000 Treffer, ein Kandidat: KI-Filter entlarvt vermeintliches Alien-Signal",
+   "u": "https://t3n.de/news/ki-filter-entlarvt-alien-signal-1765246/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-26T08:27:44Z",
+   "s": "Bei der Suche nach Hinweisen auf extraterrestrische Technologien produzieren irdische Strahlungsquellen permanent Stördaten. Eine neu entwickelte Filtermethode zeigt nun auf, wie sich echte astronomis…",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Choke: Bill Gates warnt vor tödlicher Waffe",
+   "u": "https://www.golem.de/news/ki-choke-bill-gates-warnt-vor-toedlicher-waffe-2609-213461.html",
+   "q": "Golem",
+   "d": "2026-09-26T08:25:02Z",
+   "s": "Bill Gates drängt den US-Kongress zu strengen KI-Regularien. Während Donald Trump jede Aufsicht ablehnt, entdecken Sicherheitsforscher alarmierende Lücken. (Bill Gates, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Der unsichtbare Preis von ChatGPT: Warum zu viel Entlastung im Job unglücklich macht",
+   "u": "https://t3n.de/news/sinn-job-ki-psychologin-1756442/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-26T07:45:00Z",
+   "s": "Viele Beschäftigte lassen KI bereits Texte schreiben, Code produzieren oder Recherchen übernehmen. Was kurzfristig nach Effizienzgewinn aussieht, hat der Psychoweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Developer-Häppchen – Google KI-Abos, GitLab-Lücken und VS-Code-Agenten",
+   "u": "https://www.heise.de/news/Developer-Haeppchen-Google-erweitert-KI-Abos-und-GitLab-fixt-kritische-Luecken-11464142.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-26T05:46:00Z",
+   "s": "Kleine, aber interessante Meldungshäppchen vom News-Buffet zu Laravel, Symfony, PyPy, Azul, Google, GitLab, Sublime Text und VS Code.",
+   "sprache": "de"
+  },
+  {
+   "t": "Laptop zu, Agent arbeitet weiter: Docker Sandboxes ziehen in die Cloud",
+   "u": "https://www.heise.de/news/Laptop-zu-Agent-arbeitet-weiter-Docker-Sandboxes-ziehen-in-die-Cloud-11466464.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-26T05:12:00Z",
+   "s": "Docker bietet jetzt Cloud Sandboxes für Coding-Agenten an. Längere Aufgaben können so vom Laptop in die Cloud verlagert werden.",
+   "sprache": "de"
+  },
+  {
+   "t": "At Meta Connect, the company’s smart glasses were everywhere",
+   "u": "https://techcrunch.com/2026/09/25/at-meta-connect-the-companys-smart-glasses-were-everywhere/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-26T01:08:57Z",
+   "s": "The company behind Facebook and Instagram wants to keep consumers connected to the digital world via its ever-growing line of smart glasses.",
+   "sprache": "en"
+  },
+  {
+   "t": "Crusoe abandons $1.25B plan to use Boom turbines at AI data centers",
+   "u": "https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-25T23:11:10Z",
+   "s": "Boom Supersonic CEO Blake Scholl said the company's new stationary power plants were no longer in Crusoe's near-term plans.",
+   "sprache": "en"
+  },
+  {
    "t": "Proaction boosts sales 60% and saves 75+ hours with Codex",
    "u": "https://openai.com/index/proaction",
    "q": "OpenAI",
    "d": "2026-09-25T19:00:00Z",
    "s": "With Codex, GPT-Live-1, and GPT-6 Astra, Proaction builds, operates, and sells modern fleet management faster.",
    "sprache": "en"
-  },
-  {
-   "t": "Some Supabase customers are publicly exposing reams of people’s data to the web",
-   "u": "https://techcrunch.com/2026/09/25/some-supabase-customers-are-publicly-exposing-reams-of-peoples-data-to-the-web/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-25T17:29:46Z",
-   "s": "The findings highlight how AI-generated and vibe-coded apps can spill and expose users' data when not configured or secured properly.",
-   "sprache": "en"
-  },
-  {
-   "t": "Astra and Opus just passed Turing’s other test",
-   "u": "https://techcrunch.com/2026/09/25/astra-and-opus-just-passed-turings-other-test/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-25T17:24:36Z",
-   "s": "Frontier AI models are finishing Alan Turing's World War II codebreaking work.",
-   "sprache": "en"
-  },
-  {
-   "t": "Anzeige: Vibe Coding: Softwareentwicklung mit KI praktisch umsetzen",
-   "u": "https://www.golem.de/news/anzeige-vibe-coding-softwareentwicklung-mit-ki-praktisch-umsetzen-2609-213170.html",
-   "q": "Golem",
-   "d": "2026-09-25T16:45:02Z",
-   "s": "Vibe Coding verändert, wie Software-Prototypen entstehen. Ein Online-Workshop vermittelt den Umgang mit KI-Coding-Tools, Prompting, Debugging und Qualitätssicherung. (Golem Karrierewelt, Programmiersp…",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Rechenzentren: Abwärme heizt angrenzende Wohngebiete auf",
-   "u": "https://www.heise.de/news/KI-Rechenzentren-Abwaerme-heizt-angrenzende-Wohngebiete-auf-11466676.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-25T16:01:00Z",
-   "s": "KI-Rechenzentren geben enorme Mengen Abwärme ab. Erste Studien belegen, dass dies die Temperaturen in angrenzenden Wohngebieten messbar ansteigen lässt.",
-   "sprache": "de"
-  },
-  {
-   "t": "(g+) US-Politik: Maga-Anhängerschaft schreckt zurück, weil Trump voll auf KI setzt",
-   "u": "https://www.golem.de/news/us-politik-maga-anhaengerschaft-schreckt-zurueck-weil-trump-voll-auf-ki-setzt-2609-213453.html",
-   "q": "Golem",
-   "d": "2026-09-25T16:00:01Z",
-   "s": "Mit seiner bedingungslosen KI-Unterstützung bringt Trump vor den Midterms selbst loyale Maga-Anhänger gegen sich auf. Ein Stimmungsbild aus den USA von Financial-Times-Autor Joe Miller. Von Joe Miller…",
-   "sprache": "de"
-  },
-  {
-   "t": "Wasserzeichen für KI-Texte: Anthropic weitet Anwendung aus",
-   "u": "https://www.heise.de/news/Wasserzeichen-fuer-KI-Texte-Anthropic-weitet-Anwendung-aus-11466692.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-25T14:40:00Z",
-   "s": "Anthropic versieht weitere Claude-Modelle mit unsichtbaren Text-Wasserzeichen. Das Verfahren soll mit Claude erzeugte Texte erkennbar machen, hat aber Grenzen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Erweiterung per KI erstellen: So geht das in Safari – und so holst du noch mehr raus",
-   "u": "https://t3n.de/news/erweiterung-beschreiben-safari-browser-macos-ios-ipad-1765163/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-25T13:30:06Z",
-   "s": "Unter macOS, iOS und iPadOS 27 könnt ihr Browser-Erweiterungen einfach über einen KI-Prompt erzeugen. Wir zeigen, wo die Grenzen liegen – und wie ihr sie mit eiweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Agenten greifen Onlineshops an – für 25 Dollar pro Shop",
-   "u": "https://t3n.de/news/ki-agenten-greifen-onlineshops-an-fuer-25-dollar-pro-shop-1765143/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-25T12:45:02Z",
-   "s": "Für Onlinehändler:innen könnte sich die Bedrohungslage grundlegend verschieben. Autonome KI-Agenten können Shops automatisiert scannen, Schwachstellen testen und Angriffe vorbereiten – und das im Schn…",
-   "sprache": "de"
   },
   {
    "t": "The Download: the Pentagon’s AI-powered lie detector and young organ limits",
