@@ -737,3 +737,6 @@
 15530180903297	kein-grosses-bild-bei-cj
 15530181001601	kein-grosses-bild-bei-cj
 15530181132673	kein-grosses-bild-bei-cj
+15469895680385	kein-grosses-bild-bei-cj
+15469918388609	kein-grosses-bild-bei-cj
+15469918486913	kein-grosses-bild-bei-cj
