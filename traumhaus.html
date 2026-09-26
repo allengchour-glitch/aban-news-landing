@@ -9994,7 +9994,15 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
     var _dd=an.head-an.dreh; _dd=Math.atan2(Math.sin(_dd),Math.cos(_dd));
     var _dm=4.0*dt; an.dreh+=Math.max(-_dm,Math.min(_dm,_dd));
     var _anx=an.x+Math.sin(an.dreh)*an.sp*dt,_anz=an.z+Math.cos(an.dreh)*an.sp*dt; /* 🐄 nicht durch Gebaeude */
-    if(inSolid(_anx,_anz))an.head+=2.4+Math.random();else{an.x=_anx;an.z=_anz;}
+    /* ⚠️ DER AUSWEICHDREH DARF NUR EINMAL AUSGELOEST WERDEN, NICHT IN JEDEM
+       BLOCKIERTEN BILD. Vorher war das harmlos: die Richtung folgte dem Ziel sofort,
+       das Tier lief im naechsten Bild weg. Seit die Drehung Zeit braucht, steht es
+       waehrenddessen an der Wand — und `head` waere in JEDEM dieser Bilder um weitere
+       2,4 rad gewachsen. Das Ziel liefe davon, waehrend die tatsaechliche Drehung mit
+       4 rad/s hinterherkommt: das Tier hinge an der Wand und wuerde sich endlos drehen.
+       Darum nur nachlegen, wenn die vorige Drehung im Wesentlichen abgeschlossen ist. */
+    if(inSolid(_anx,_anz)){ if(Math.abs(_dd)<0.25)an.head+=2.4+Math.random(); }
+    else{an.x=_anx;an.z=_anz;}
     /* ⚠️ DIE WELTGRENZE GALT AUCH FUER ORTSGEBUNDENE TIERE — und die Koppel des
        Bauernhofs liegt bei z = -227, weit ausserhalb. Die fuenf Koppel-Tiere steuerten
        also seit Einfuehrung des Viertels auf ihr `home` zu und wurden bei z = -108 hart
