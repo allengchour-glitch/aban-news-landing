@@ -34753,3 +34753,5 @@ gid://shopify/Product/15481712902529	CHF 26.27	1 Varianten	Smartwatch mit Videoa
 gid://shopify/Product/15481712968065	CHF 10.91	1 Varianten	Powerbank für Heizwesten & Kleinlektronik
 gid://shopify/Product/15481713000833	CHF 23.64	1 Varianten	Tragbarer 12V Auto-Kompressor mit Licht
 gid://shopify/Product/15481713066369	CHF 16.36	1 Varianten	3-in-1 Powerbank mit AC-Stecker, 10'000 mAh
+gid://shopify/Product/15481713099137	CHF 16.51	1 Varianten	Oarmio Powerbank 20000 mAh
+gid://shopify/Product/15481713131905	CHF 29.31	1 Varianten	Solar Powerbank, faltbar, 20000 mAh
