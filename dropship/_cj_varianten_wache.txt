@@ -5082,3 +5082,9 @@ gid://shopify/Product/15448887001473	1790406542	unklar	CJ-Code 1602003: Variant 
 gid://shopify/Product/15448893063553	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448893227393	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448893391233	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448893587841	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448893718913	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448894046593	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448894275969	1790406542	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448894570881	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448894734721	1790406542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
