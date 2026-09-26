@@ -16040,3 +16040,5 @@ gid://shopify/Product/15525494587777	13->0	Kinder-Isolierflasche 550 ml
 gid://shopify/Product/15525499896193	17->0	Anti-Schlingnapf für Hunde
 gid://shopify/Product/15525502157185	10->0	Quarzuhr für Damen mit Farbverlauf
 gid://shopify/Product/15525508841857	20->0	Multifunktionaler Sandsack für das Krafttraining
+gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
