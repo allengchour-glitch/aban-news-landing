@@ -34973,3 +34973,6 @@ gid://shopify/Product/15481818612097	CHF 74.07	20 Varianten	Retro Business Sanda
 gid://shopify/Product/15481818677633	CHF 27.08	1 Varianten	RC Motorrad für Kinder, elektrisch
 gid://shopify/Product/15481818710401	CHF 17.13	18 Varianten	Sommer Sandalen mit Drehverschluss
 gid://shopify/Product/15481818808705	CHF 10.07	1 Varianten	Schwimmender Leucht-Marktstand (Akku)
+gid://shopify/Product/15481818874241	CHF 7.40	1 Varianten	Elektrischer Zappel-Fisch für Katzen
+gid://shopify/Product/15481818907009	CHF 27.95	28 Varianten	Retro Strand-Sandalen für Herren
+gid://shopify/Product/15481819005313	CHF 30.72	1 Varianten	Ferngesteuerter Amphibien-Kipper
