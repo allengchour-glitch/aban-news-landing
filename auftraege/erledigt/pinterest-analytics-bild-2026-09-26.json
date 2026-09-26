@@ -1,0 +1,15 @@
+{
+  "id": "pinterest-analytics-bild-2026-09-26",
+  "typ": "screenshot",
+  "url": "https://analytics.pinterest.com/overview/?time_frame=last_30_days",
+  "ganze_seite": true,
+  "stand": "ok",
+  "begonnen": "2026-09-26T08:46:42.260Z",
+  "dauer_s": 4.1,
+  "ergebnis": {
+    "ziel": "https://analytics.pinterest.com/overview/?time_frame=last_30_days&age=all&aggregation=last30d&board_metric=IMPRESSION&board_id=&claimed_account_type=all&content_type=all&device_type=all&gender=all&include_curated=created&include_realtime=true&pin_format=all&pin_metric=ENGAGEMENT&primary_metric=IMPRESSION&recent_pins=false&selected_split=NO_SPLIT&source_type=all",
+    "status": 200,
+    "mobil": false,
+    "datei": "auftraege/ergebnis/pinterest-analytics-bild-2026-09-26.png"
+  }
+}
