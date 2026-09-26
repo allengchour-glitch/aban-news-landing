@@ -34850,3 +34850,9 @@ gid://shopify/Product/15481774637441	CHF 15.34	1 Varianten	AI-Übersetzungs-Kopf
 gid://shopify/Product/15481774670209	CHF 23.79	14 Varianten	Mary Jane Sandalen mit Blockabsatz
 gid://shopify/Product/15481774702977	CHF 17.55	1 Varianten	Wasserdichter USB 3.0 Stick 64 GB für Musik & Date
 gid://shopify/Product/15481774735745	CHF 7.69	1 Varianten	Bluetooth Kopfhörer-Etui aus Nussholz
+gid://shopify/Product/15481774768513	CHF 62.19	1 Varianten	Smart Voice Recorder mit One-Key-Aufnahme
+gid://shopify/Product/15481774801281	CHF 15.17	18 Varianten	Spitze Sandalette mit Riemchen und Blockabsatz
+gid://shopify/Product/15481774899585	CHF 23.42	90 Varianten	Elegante High Heels mit Riemchen
+gid://shopify/Product/15481774932353	CHF 13.41	1 Varianten	Over-Ear Bluetooth Kopfhörer mit Katzenohren
+gid://shopify/Product/15481774965121	CHF 35.90	60 Varianten	Pumps mit Riemen und Chunky-Absatz
+gid://shopify/Product/15481775063425	CHF 7.13	1 Varianten	3D Surround HD Bluetooth Sport-Kopfhörer
