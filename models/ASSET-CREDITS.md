@@ -390,3 +390,19 @@ Litfaßsäule, Briefkasten (CH), Hydrant, Bushäuschen, Blumenkübel · Picknick
 14 weitere Eigenwerke (39 Agenten, 0 Fehler, 14/14 QA bestanden): Birke, Tanne, Herbst-Ahorn,
 große Eiche, Blüten-Busch · Stopp-/Tempo-30-Schild, moderne Laterne, Mülleimer, Holzzaun,
 Vogelhaus · Bogenbrücke, Schwan, Sonnenschirm.
+
+## Charge 50 — GTA-Wagen (Quaternius „Cars Pack", CC0 1.0) — selbst bearbeitet, 2026-09-23
+Quelle: https://quaternius.com/packs/cars.html → öffentlicher Google-Drive-Ordner
+`1fKlbDry77iY8KlEoxzUxIAZQL_XhzWlA` (Unterordner „Blends", License.txt = CC0 1.0 Universal,
+„LowPoly Models by @Quaternius"). Keine Namensnennung nötig, hier trotzdem vermerkt.
+
+Bearbeitet in Blender (bpy 4.2) mit `tools/assets/mk_th50_gta_wagen.py` — das Skript holt die
+Quelldateien selbst und baut alles reproduzierbar neu:
+- **th50_streife** (aus Cop): Schweizer Lackierung statt US-Schwarz-Weiss — weiss, blau/leuchtgelbes
+  Karomuster (per Strahl auf die Flanke gelegt), 3D-Schriftzug „POLIZEI" (auf der Flankennormale),
+  Lichtbalken getrennt in `BlaulichtL`/`BlaulichtR` (blinken im Spiel abwechselnd).
+- **th50_taxi**, **th50_limousine2**, **th50_kompakt**, **th50_coupe**, **th50_gt**, **th50_suv**:
+  neue PBR-Materialien mit Spielnamen (`SdLack` wird im Verkehr umgefärbt, `SdScheibe` Glas,
+  `SdLichtVorn/Hinten` leuchtend), eigene Lackfarben, Hinterräder aus EINEM Netz in zwei getrennt
+  (sonst findet `_raederAnlegen` nur 3 statt 4 Räder), Front auf +x, Unterkante 0.
+- Je Wagen GLB (158–309 kB) + STL in `models/stl/`.
