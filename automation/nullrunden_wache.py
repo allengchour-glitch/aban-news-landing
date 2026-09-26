@@ -29,8 +29,13 @@ def pruefe(pfad, n=3):
             zeilen = f.read().decode("utf-8", "replace").splitlines()
     except OSError:
         return 0
-    fertig = [z for z in zeilen if JEDE_FERTIG.search(z)]
+    idx = [i for i, z in enumerate(zeilen) if JEDE_FERTIG.search(z)]
+    fertig = [zeilen[i] for i in idx]
     if len(fertig) < n:
+        return 0
+    # Eine Cursor-Freigabe (vollrunde.fertig ohne volle Runde) im Fenster der letzten n Laeufe
+    # ist eine erklaerte Null, kein Befund.
+    if any("CURSOR-FREI" in z for z in zeilen[idx[-n]:]):
         return 0
     letzte = fertig[-n:]
     if all(MUSTER.search(z) for z in letzte):
