@@ -16,25 +16,20 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-25T00:35:32Z — SCHARF
+## Letzter Lauf 2026-09-26T08:11:43Z — SCHARF
 
-Gescannt 49888 aktive von 49888 (EXACT); Wächter-Stand 19 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 49871 aktive von 49871 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| portable-auto-waschburste-4-teilig-605000 | POLICY | +google-policy-drogen,google-policy-flag | ok |
-| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung | ok |
-| 1-zoll-zapfpistole-fur-diesel-und-benzin-257024 | EINZEL | Beschreibung | ok |
-| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung | ok |
-| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung | ok |
+| zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
 
 ## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
 
-- reflektierendes-hundehalsband-mit-cartoon-must-614100: Inappropriate title
+- kinder-martin-boots-mit-seitenreissverschluss-624200: Inappropriate title
 - slim-fit-jeans-in-lila-schwarz-606200: Inappropriate title
 - stahlarmband-mit-fallschirmschlie-e-618900: Inappropriate title
-- stylische-crossbody-bag-aus-rindsleder-639500: Inappropriate title
-- vintage-boho-damenkleid-615700: Inappropriate title
+- weihnachtsbaum-print-hausanzug-625100: Inappropriate title
 
 ## Ledger gesamt
 
@@ -98,47 +93,4 @@ Typ-/Tag-Korrekturen (rückgelesen):
 
 ## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
 
-- zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: keine Google-Meldung
-- used-look-jeans-mit-leicht-ausgestelltem-bein-621700: keine Google-Meldung
-- taktisches-outdoor-stativ-faltbar-ausziehbar-519234: keine Google-Meldung
-- herren-jeansjacke-im-used-look-609500: keine Google-Meldung
-- portabler-luftreiniger-aschenbecher-437952: keine Google-Meldung
-- erhohende-board-schuhe-im-used-look-605300: keine Google-Meldung
-- strandtuch-kleid-new-style-f6bb03: keine Google-Meldung
-- multifunktionaler-aschenbecher-mit-luftreinige-617900: keine Google-Meldung
-- menstruationscup-fur-frauen-625600: keine Google-Meldung
-- keramik-aschenbecher-mit-spiral-muster-629100: keine Google-Meldung
-- aschenbecher-mit-deckel-602700: keine Google-Meldung
-- ombre-t-shirt-mit-used-look-602800: keine Google-Meldung
-- schockresistenter-schutz-625600: keine Google-Meldung
-- herren-hoodie-im-used-look-633500: keine Google-Meldung
-- distressed-washed-denim-jeans-615500: keine Google-Meldung
-- patchwork-wide-leg-jeans-im-used-look-612400: keine Google-Meldung
-- sassy-distressed-hoodie-625300: keine Google-Meldung
-- loose-fit-wide-leg-hose-im-used-look-614900: keine Google-Meldung
-- rebellious-washed-distressed-short-sleeve-top-633300: keine Google-Meldung
-- herren-jeans-im-used-look-636600: keine Google-Meldung
-- used-look-patchwork-jeans-fur-herren-625300: keine Google-Meldung
-- st-michael-distressed-zip-up-hoodie-616100: keine Google-Meldung
-- retro-straight-jeans-mit-used-look-628400: keine Google-Meldung
-- slim-fit-used-look-jeans-fur-herren-616600: keine Google-Meldung
-- heavyweight-kapuzenjacke-im-used-look-631300: keine Google-Meldung
-- used-look-jeans-fur-herren-600800: keine Google-Meldung
-- elektronischer-auto-aschenbecher-mit-ladefunkt-629500: keine Google-Meldung
-- auberginen-zigarrenanzunder-mit-doppelflamme-947328: keine Google-Meldung
-- elektronisches-zigarren-hygrometer-619800: keine Google-Meldung
-- kompakter-zigarrenkasten-627900: keine Google-Meldung
-- eisige-meeresoberflache-607000: keine Google-Meldung
-- laser-silber-rippband-75mm-50-yards-026496: keine Google-Meldung
-- herren-langarmhemd-im-used-look-620200: keine Google-Meldung
-- spiral-pipe-atomizer-fur-trockene-krauter-467392: keine Google-Meldung
-- baustein-luxuslimousine-auf-raedern-334528: keine Google-Meldung
-- retro-ohrringe-im-used-look-mit-kettendetail-626900: keine Google-Meldung
-- 1-zoll-zapfpistole-fur-diesel-und-benzin-257024: keine Google-Meldung
-- biden-herrenuhr-ultraflach-mit-kalender-611776: keine Google-Meldung
-- biden-herren-quarzuhr-hohl-leger-052544: keine Google-Meldung
-- k68-signal-detektor-46ae1c: keine Google-Meldung
-- twill-umhangetasche-im-used-look-676544: keine Google-Meldung
-- smarter-aschenbecher-mit-luftreiniger-fur-auto-042304: keine Google-Meldung
-- intelligenter-intimreiniger-fur-die-frau-723136: keine Google-Meldung
-- runder-aschenbecher-aus-keramik-2cef8b: keine Google-Meldung
+- portable-auto-waschburste-4-teilig-605000: keine Google-Meldung

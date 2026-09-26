@@ -405,3 +405,5 @@
 2026-09-25T00:35:31Z	NACHMESSUNG	gid://shopify/Product/15522242953601	smarter-aschenbecher-mit-luftreiniger-fur-auto-042304	-	google		keine Google-Meldung	ok
 2026-09-25T00:35:32Z	NACHMESSUNG	gid://shopify/Product/15523906224513	intelligenter-intimreiniger-fur-die-frau-723136	-	google		keine Google-Meldung	ok
 2026-09-25T00:35:32Z	NACHMESSUNG	gid://shopify/Product/15524929175937	runder-aschenbecher-aus-keramik-2cef8b	-	google		keine Google-Meldung	ok
+2026-09-26T08:11:43Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
+2026-09-26T08:11:43Z	NACHMESSUNG	gid://shopify/Product/15497378038145	portable-auto-waschburste-4-teilig-605000	-	google		keine Google-Meldung	ok
