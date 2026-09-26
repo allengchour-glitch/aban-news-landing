@@ -86,3 +86,5 @@ pid:15412299661697
 slug:geflochtener-aufbewahrungskorb
 slug:kurzer-fleece-kapuzenpullover-fur-damen
 slug:usb-aroma-diffusor-mit-befeuchter
+slug:martin-ankle-boots-im-britischen-casual-stil
+slug:damen-hoodie-bequem-mit-taschen-und-langarm
