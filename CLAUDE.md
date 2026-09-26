@@ -69,7 +69,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - **WELCOME10 = ACTIVE bis 2027-12-31** (10 %, Code funktioniert). Alte „bis 31.08.2026"-Notiz veraltet, längst verlängert.
   - **Bild-QA sauber:** 0 FAILED-Dateien. **Preis-QA sauber:** 0 aktive Produkte mit Preis 0.
   - Echte externe Käufer bisher: **4** (Raia, Schnabel, Herger, Schutz) — Rest sind User-Tests. Engpass bleibt **Traffic**.
-- **📲 METRICOOL LIVE (2026-09-24):** Connector verbunden, Marke **`blogId 6227837`** (TZ Europe/Zurich; IG `luxestyle.ch`,
+- **⛔ METRICOOL-AUTO DIESER SESSION GESTOPPT (User 2026-09-26: „stop die auto, andere Session macht"):**
+  **Social-Posting via Metricool macht AUSSCHLIESSLICH die andere Session** (`luxestyle-status-tztnn1`).
+  Diese/Dropship-Sessions planen dort **NICHTS** mehr ein. Meine 11 offenen IG/FB-Posts auf **Entwurf** gesetzt
+  (nicht gelöscht, Metricool-API kann nicht löschen); Gua-Sha 25.09. war schon veröffentlicht. Kein Nachfüllen.
+- **📲 METRICOOL LIVE (2026-09-24, inzwischen GESTOPPT – s. oben):** Connector verbunden, Marke **`blogId 6227837`** (TZ Europe/Zurich; IG `luxestyle.ch`,
   FB `1049840534888592`, Threads, Pinterest `luxestyleCH`, TikTok, YouTube). **12 Posts eingeplant** (25.09.–06.10.,
   18:00, **IG+FB+Threads**, IDs 381174227…381175035). **KOLLISIONSREGEL:** Session `luxestyle-status-tztnn1` postet
   bereits via Metricool **Pinterest-Pins + TikTok-Reels + YouTube-Shorts** → diese Session macht NUR **IG/FB/Threads**.
