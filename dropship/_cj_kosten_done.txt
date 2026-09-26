@@ -34747,3 +34747,9 @@ gid://shopify/Product/15481712542081	CHF 17.34	1 Varianten	Magnetische Powerbank
 gid://shopify/Product/15481712640385	CHF 11.33	1 Varianten	Mini Powerbank – Abnehmbare Zylinderzellen
 gid://shopify/Product/15481712673153	CHF 12.28	1 Varianten	Powerbank 10000 mAh mit integriertem Kabel
 gid://shopify/Product/15481712771457	CHF 12.50	1 Varianten	Super Fast Charge Powerbank
+gid://shopify/Product/15481712836993	CHF 12.05	1 Varianten	Magnetischer Powerbank
+gid://shopify/Product/15481712869761	CHF 13.98	1 Varianten	Kompakte Powerbank mit integriertem Kabel
+gid://shopify/Product/15481712902529	CHF 26.27	1 Varianten	Smartwatch mit Videoanruf und Kamera
+gid://shopify/Product/15481712968065	CHF 10.91	1 Varianten	Powerbank für Heizwesten & Kleinlektronik
+gid://shopify/Product/15481713000833	CHF 23.64	1 Varianten	Tragbarer 12V Auto-Kompressor mit Licht
+gid://shopify/Product/15481713066369	CHF 16.36	1 Varianten	3-in-1 Powerbank mit AC-Stecker, 10'000 mAh

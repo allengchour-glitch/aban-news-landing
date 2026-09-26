@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **43'230**
-- Optionen mit englischen Werten (Kandidaten): 2'796
+- Produkte gesehen: **43'828**
+- Optionen mit englischen Werten (Kandidaten): 2'820
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'947
+- Werte mit unbekanntem Wort (unverändert): 15'148
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 67
 - übersprungen «kollision-nach-uebersetzung»: 40
@@ -139,5 +139,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 650, `⟨satzbau:adjektiv-vor-nomen⟩` 564, `light` 440, `color` 379, `shell` 162, `degrees` 159, `size` 145, `⟨satzbau:material-vor-farbe⟩` 142, `core` 137, `surface` 130, `powder` 123, `⟨satzbau:nomen-nomen⟩` 113, `no` 109, `shoes` 109, `diamond` 108, `skin` 106, `high` 104, `to` 102, `three` 97, `belt` 93, `bag` 93, `code` 91, `four` 90, `french` 89, `rain` 88, `case` 87, `dark` 82, `opp` 81, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `bottom` 74, `spring` 72, `dual` 71, `cloth` 71, `base` 70, `chain` 68, `petal` 68, `half` 67, `autumn` 66, `little` 65, `net` 63, `strap` 62, `feet` 62, `mother` 61, `cherry` 60, `of` 60, `tea` 58, `one` 57, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `rice` 51, `person` 51, `fold` 51, `lens` 50
+`inner` 650, `⟨satzbau:adjektiv-vor-nomen⟩` 572, `light` 440, `color` 379, `shell` 162, `degrees` 159, `size` 145, `⟨satzbau:material-vor-farbe⟩` 143, `core` 137, `surface` 130, `powder` 123, `⟨satzbau:nomen-nomen⟩` 114, `no` 109, `shoes` 109, `diamond` 108, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 93, `bag` 93, `code` 91, `four` 90, `french` 89, `rain` 88, `case` 87, `dark` 82, `opp` 81, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `bottom` 74, `spring` 72, `dual` 71, `cloth` 71, `base` 70, `chain` 68, `petal` 68, `half` 67, `autumn` 66, `little` 65, `net` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `tea` 58, `one` 57, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `rice` 52, `yarn` 52, `person` 51
 
