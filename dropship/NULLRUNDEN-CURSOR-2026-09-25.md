@@ -28,3 +28,14 @@
 - Nicht geplante Cursor-Skripte ohne Rücksetzen (farbcode_clean, gmc_scan_fix, google_feed_cull,
   handle_dup_scan, orphan_scan, preis_lager_scan, qa_sweep8, versand_widerspruch_fix) laufen nicht —
   vor einem Wiederbeleben auf `vollrunde.py` umstellen.
+
+## Nachtrag 26.09. 01:20 UTC — Fehlalarm der eigenen Wache
+- Die Wache meldete die drei Reiniger nach der Freigabe weiter: die letzten 3 FERTIG-Zeilen blieben
+  Nullen, weil die Freigabe selbst eine «FERTIG: 0» schreibt und danach in der Cloud kein voller Lauf kam.
+- Gemessen (CJ-Takt-Zeitstempel 25./26.09.): Der Cloud-Container lebt nach einer Routine-Runde ohne
+  Arbeit **genau ~5 min** (21:09–21:13, 22:08–22:13, 23:08–23:13, 00:08–00:13); längere Fenster nur, wenn
+  eine Session arbeitet. Die Tages-Reiniger laufen dauerhaft auf dem Hetzner-Aufseher (80 Commits
+  `luxe-waechter` in 24 h) — die Cloud-Logs sehen davon nichts.
+- Fix: `vollrunde.fertig()` schreibt bei einer Freigabe `CURSOR-FREI`; `nullrunden_wache.py` wertet
+  eine Null-Serie mit dieser Markierung im Fenster nicht als Befund (3 synthetische Fälle grün).
+  Die drei Cloud-Logs tragen die Markierung nachgetragen (Freigabe 25.09. 20:30 UTC).

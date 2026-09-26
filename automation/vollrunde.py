@@ -64,4 +64,10 @@ def fertig(pfad):
             os.remove(f)
     if voll:
         open(_stempel(pfad), "w").write(str(time.time()))
+    else:
+        # Markierung fuer nullrunden_wache.py: die folgende «FERTIG: 0» ist die Freigabe eines
+        # haengenden Cursors, keine blinde Runde. Ohne sie meldete der Waechter die drei
+        # Reiniger nach der Freigabe vom 25.09. weiter — in der Cloud, wo der Container nach
+        # jeder Routine nur ~5 min lebt, womoeglich fuer immer.
+        print("CURSOR-FREI: haengender Cursor geloest, naechster Lauf beginnt vorne", flush=True)
     return voll
