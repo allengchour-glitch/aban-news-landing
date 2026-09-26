@@ -149,10 +149,12 @@ while true; do
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_TIKTOK" "$TIKTOK_ABSTAND"; then
     echo "$(date -u +%H:%M) TikTok-Post faellig (Metricool)"
     # 23.09.: DIREKTLINK_TEXT=1 — TikTok-Profil hat keinen Bio-Link (erst ab 1'000 Followern), «(Link in Bio)» war falsch.
-    if DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; then
-      touch "$MARKE_TIKTOK"
-    else
-      echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
+    DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; RC=$?
+    # 26.09.2026: Exit 3 = Kandidat quittiert/uebersprungen (Preis veraltet, Produkt nicht kaufbar), KEIN Post → Marke bleibt
+    # alt, der naechste Durchlauf versucht den naechsten Kandidaten. Vorher gab der Poster 0 zurueck und der Termin war 12 h weg.
+    if [ "$RC" = 0 ]; then touch "$MARKE_TIKTOK"
+    elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) TikTok: Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
+    else echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
     fi
   fi
   # YouTube Shorts ueber Metricool (23.09.): gleicher Poster, NETZ=youtube; Nachmessen wie bei TikTok.
@@ -163,7 +165,10 @@ while true; do
     fi
     if faellig "$MARKE_YOUTUBE" "$YOUTUBE_ABSTAND"; then
       echo "$(date -u +%H:%M) YouTube-Short faellig (Metricool)"
-      if NETZ=youtube DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; then touch "$MARKE_YOUTUBE"; else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
+      NETZ=youtube DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; RC=$?   # 3 = uebersprungen (s. TikTok)
+      if [ "$RC" = 0 ]; then touch "$MARKE_YOUTUBE"
+      elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) YouTube: Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
+      else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
     fi
     if faellig "$MARKE_PINTEREST" "$PINTEREST_ABSTAND"; then
       echo "$(date -u +%H:%M) Pinterest-Pin faellig (Metricool)"

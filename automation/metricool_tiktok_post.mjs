@@ -175,10 +175,13 @@ const pa = await produktAktiv(get(cand, 'id'));
 if (!pa.ok) {
   console.error(`⛔ Kein Post — Produkt nicht kaufbar/pruefbar (${pa.grund}): ${get(cand, 'id')}`);
   if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
-  process.exit(0);
+  // 26.09.2026: Exit 3 statt 0 — «übersprungen, kein Post» (dieselbe Regel wie meta_reel_post.mjs seit 23.09.). Mit 0 setzte
+  // social_autopilot.sh die 12-h-Marke, als waere gepostet worden: TikTok + YouTube lagen 25.09. 15:10 und 26.09. 04:08 je
+  // einen ganzen Termin still, obwohl 17 postbare Reels warteten.
+  process.exit(3);
 }
 { const pv = preisVeraltet(get(cand, 'caption'), pa.min, pa.max);   // 24.09.2026: eingebrannter Preis ≠ Live-Preis
-  if (pv) { console.error(`⛔ Kein Post — Preis veraltet (${pv}): ${get(cand, 'id')}`); if (!DRY) { cand[idx.status] = 'preis-veraltet-skip'; writeLedger(); } process.exit(0); } }
+  if (pv) { console.error(`⛔ Kein Post — Preis veraltet (${pv}): ${get(cand, 'id')}`); if (!DRY) { cand[idx.status] = 'preis-veraltet-skip'; writeLedger(); } process.exit(3); } }   // 3 = uebersprungen (s. oben)
 const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hashtags');
 // ── 23.09.2026 Paket «direktlink» — VORBEREITET, standardmaessig AUS. Ohne die Schalter bleibt der Body byte-gleich.
 //  DIREKTLINK_TEXT=1: die Caption-Zeile «🔗 luxestyle.ch/products/… (Link in Bio)» ist auf TikTok FALSCH (Profil ohne
