@@ -110,6 +110,44 @@ def status_von(ids):
                     pass
     return out
 
+def status_von_handles(handles):
+    """26.09.2026: Reel-Zeilen heissen «cjreel-<CJ-Produktnummer>» — die Ziffern am Ende sind die CJ-ID, keine
+    Shopify-ID. status_von() bekam fuer sie `null` zurueck und fällte darum weder «produkt-weg» noch
+    «preis-veraltet»: gemessen 26.09. 04:30 UTC 42 von 42 wartenden Reels ungeprueft, waehrend die Poster
+    (sie lesen den Produktlink der Caption) zwei veraltete Preise erst beim Posten fanden — jeder kostete einen
+    Post-Termin. Hier derselbe Schluessel wie in den Postern: der Handle aus «/products/<handle>».
+    Rueckgabe {"h:<handle>": status}; PREIS bekommt dieselben Schluessel."""
+    out = {}
+    hs = sorted({h for h in handles if h})
+    for i in range(0, len(hs), 40):
+        q = " OR ".join(f'handle:"{h}"' for h in hs[i:i+40])
+        d = gql("query($q:String!){products(first:50,query:$q){nodes{handle status onlineStoreUrl "
+                "priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}}}}}", {"q": q})
+        for n in (((d.get("data") or {}).get("products") or {}).get("nodes") or []):
+            k = "h:" + n["handle"]
+            out[k] = n["status"] if n.get("onlineStoreUrl") else "OHNE-ONLINESHOP"
+            pr = n.get("priceRangeV2") or {}
+            try:
+                PREIS[k] = (float(pr["minVariantPrice"]["amount"]), float(pr["maxVariantPrice"]["amount"]))
+            except (KeyError, TypeError, ValueError):
+                pass
+        # Ein Handle, den die Suche nicht findet, bekommt KEIN Urteil (Tippfehler, umbenannt, Suche verzoegert) —
+        # «nicht gefunden» ist kein Beweis fuer «weg» (Lehre 25.09., ig_aufraeumen).
+    return out
+
+
+def produkt_schluessel(zid, cap):
+    """Handle aus dem Produktlink der Caption hat Vorrang; die Ziffern-ID nur bei Nicht-Reel-Zeilen (Bild-Posts tragen
+    die Shopify-ID am Ende). Liefert (schluessel, art) mit art 'h' oder 'pid' oder (None, None)."""
+    h = re.search(r"/products/([a-z0-9][a-z0-9-]*)", cap or "")
+    if h:
+        return "h:" + h.group(1), "h"
+    if (zid or "").startswith("cjreel-"):
+        return None, None
+    m = re.search(r"(\d{12,})\s*$", zid or "")
+    return (m.group(1), "pid") if m else (None, None)
+
+
 gepostet = set()
 if os.path.exists("dropship/_posted_produkte.txt"):
     gepostet = {l.strip() for l in open("dropship/_posted_produkte.txt", encoding="utf-8") if l.strip()}
@@ -149,15 +187,16 @@ for datei in DATEIEN:
     with open(datei, newline="", encoding="utf-8") as f:
         rd = csv.DictReader(f); felder = rd.fieldnames; rows = list(rd)
     ready = [r for r in rows if (r.get("status") or "").strip() == "ready"]
-    pids = [ (re.search(r"(\d{12,})\s*$", r.get("id") or "") or [None,None])[1] for r in ready ]
-    live = status_von([p for p in pids if p])
+    schl = [produkt_schluessel(r.get("id"), r.get("caption")) for r in ready]
+    live = status_von([k for k, a in schl if a == "pid"])
+    live.update(status_von_handles([k[2:] for k, a in schl if a == "h"]))
     gesehen = set(gepostet)
     n = Counter()
     for r in ready:
         medium = (r.get("image_url") or r.get("video_url") or r.get("url") or "")
         cap    = r.get("caption") or ""
         zid    = r.get("id") or ""
-        pid    = (re.search(r"(\d{12,})\s*$", zid) or [None,None])[1]
+        pid    = produkt_schluessel(zid, cap)[0]
         k      = produkt_key(cap, zid)
         neu = None
         if "abannews.com" in medium:                      neu = "dead-url-skip"
