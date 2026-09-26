@@ -949,6 +949,14 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 95 (26.09.2026, 09:05 UTC) — 🎷 «Musik finde ich scheisse» → Sperrliste; Pinterest seit ~22.09. fast unsichtbar
+
+**Musik:** Den Track im neuesten Post (TikTok Küchenhelfer-Set 10:38) per Hüllkurven-Korrelation bestimmt: luxe-lounge-sax.wav (1.50 gegen nächstbesten 0.45) — der Verlauf `social/_musik_verlauf.txt` kannte das Reel nicht, Messen statt Nachschlagen. Neu `automation/music/_gesperrt.txt`, gelesen von `cj_video_reel_engine.mjs` (alle Pools + Rückfall) und `promo_montage.py`; keine Warengruppe leer. Wartende Reels geprüft (17 + 5 vom CDN, dort erst per curl laden — ffmpeg über HTTPS scheitert am Proxy): 3 mit Sax → nur Tonspur gegen luxe-house1 getauscht (Bild kopiert), nachgemessen Sax 0.4 / house1 0.7, im Repo abgelegt (CDN-Speicher voll).
+
+**Pinterest:** Metricool-API (Zugang der Poster, kein Konnektor nötig) — 94 eigene Pins, 4 ausgehende Klicks, die 36 Pins seit 21.09. zusammen 26 Impressionen. Pinterest-Analytics über den Hetzner-Browser (Auftrag seite_text + screenshot, 4 s): 54k Impressionen/30 T (−26 %), Spitze 13.–14.09., seit ~22.09. nahe null — zeitgleich mit 11 Browser-Pins am 22.09. und 4 Metricool-Pins/Tag ab 23.09. Drosselung vermutet, nicht bewiesen; Kadenz ist Betreiber-Vorgabe → Entscheid offen.
+
+**Lehre:** Wenn ein Konnektor Freigabe braucht, zuerst fragen, ob ein Skript denselben Zugang schon hat (Metricool-Token der Poster) — und für Plattform-UIs gibt es den eingeloggten Server-Browser.
+
 ### Nachtrag 94 (26.09.2026, 08:45 UTC) — ⏳ «Übersprungen» meldete Erfolg: TikTok lag 42 h still
 
 **Gemessen:** Letzter TikTok-Post 24.09. 14:20; die Termine 25.09. 15:10 und 26.09. 04:08 endeten mit «Preis veraltet» — und trotzdem stand die 12-h-Marke auf 04:08. `metricool_tiktok_post.mjs` beendete sich beim Überspringen mit Exit 0, `social_autopilot.sh` las 0 als «gepostet». Der Reel-Poster für IG/FB hat die Regel «Exit 3 = übersprungen» seit dem 23.09.; der Metricool-Poster, am 22./23.09. danebengebaut, bekam sie nie.
