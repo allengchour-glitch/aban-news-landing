@@ -118,6 +118,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. **Bei 806 Katzen- und 1640 Hundeprodukten ist
   Handarbeit keine Strategie mehr** — `automation/preis_korrektur.mjs` liegt seit dem 19.09. fertig da
   und wartet auf genau diese drei Werte (löst zusätzlich die schlanke Startseite und Video an die PDP).
+- **✅ ZWEITER KATZEN-BLOCK (Seiten 4 und 5 der 806): 45 Produkte / 45 Varianten**, `userErrors` leer,
+  **45/45 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  **0 Verlustfälle, 0 Faktor-über-3** — alle 45 lagen im Band 20,7–37,9 PROZENT, also unter dem Ziel
+  aber über dem Einkauf. Grösste Fälle: Katzen-Kratzbaum Emoji 93.90 bei EK 67.02 (20,7 PROZENT) →
+  124.90 · Simulation Katzenrucksack 93.90/66.82 → 119.90 · Fruchtball 58.90/41.89 → 79.90.
+- **⚠️ UND EINE KORREKTUR AN MEINER EIGENEN BEOBACHTUNG, noch in derselben Runde.** Seite 4 hatte
+  **genau 1 von 100** Produkten mit Einkaufspreis, und ich war dabei, daraus „die neuere
+  Importgeneration hat keine Einkaufspreise" zu machen. **Seite 5 gemessen: 76 von 100 haben einen.**
+  Seite 4 war der Ausreisser, nicht die Regel. **Eine Seite ist keine Stichprobe** — dieselbe Klasse
+  wie das alphabetische Artefakt vom 23.09. Beide Seiten tragen übrigens dasselbe SKU-Schema
+  (`CJ-<pid>`, 100 von 100) und liegen zwei Tage auseinander (12.–14.08.), das erklärt es also nicht.
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
 
 **📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
