@@ -34200,3 +34200,7 @@ gid://shopify/Product/15480338743681	CHF 6.90	1 Varianten	Magnetische Teleskop-H
 gid://shopify/Product/15480338776449	CHF 28.93	1 Varianten	Magnetische Handyhalterung mit Stativ
 gid://shopify/Product/15480338940289	CHF 14.64	1 Varianten	Faltbares Tablet-Kissen für gemütlichen Komfort
 gid://shopify/Product/15480339038593	CHF 32.24	1 Varianten	Faltbarer Laptop-Ständer mit Kühlfunktion
+gid://shopify/Product/15480339104129	CHF 12.60	1 Varianten	Magnetische kabellose Handyhalterung fürs Auto
+gid://shopify/Product/15480339169665	CHF 7.87	1 Varianten	Magnetischer Handyhalter aus Aluminiumlegierung
+gid://shopify/Product/15480339202433	CHF 16.09	1 Varianten	Linienfolger Roboter-Spielzeug
+gid://shopify/Product/15480339399041	CHF 13.07	1 Varianten	Smartphone-Halterung fürs Auto, magnetisch
