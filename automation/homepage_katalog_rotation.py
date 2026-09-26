@@ -40,7 +40,7 @@ WECHSEL = ["pl_kinder", "pl_tech_gadgets", "pl_senioren", "pl_spass_gadgets", "p
 SAISON_FEST = [("pl_herbst", "herbst-favoriten", (9, 22), (11, 30))]
 UMBENENNEN = ("budget_unter25", "pl_herbst", "product_list_topseller")   # alt, neu, einmalig danach einreihen
 # Pool: veroeffentlichte Kataloge mit >= ~300 Produkten, die NICHT in einer festen Reihe stehen (gemessen 14.09.).
-POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "werkzeug-maschinen", "sub-uhren",
+POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "werkzeug-maschinen", "uhren",
         "aufbewahrung-sub", "hundewelt", "buero-schreibwaren", "parfum-duefte", "outdoor-garten",
         "klemmbausteine-bausaetze", "sub-reise", "gaming", "basteln-diy", "katzenwelt", "party-deko-ch",
         "handy-zubehoer", "sub-baby-kids", "auto-kfz-zubehoer", "beauty-pflege", "kostueme-ch-lager",
@@ -48,6 +48,9 @@ POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "w
 # Reihenfolge bewusst: Hunde(8)/Katzen(16)/Haustier(24) liegen >= 8 auseinander -> nie zwei Tier-Reihen an einem Tag
 # 23.09. 23:30: «halloween» statt «halloween-2026» — beide Kollektionen trugen dieselbe Regel (Tag halloween, 230 Produkte);
 # das Menü zeigt auf /collections/halloween (6 Kanäle, längerer Text), die 2026er ist abgemeldet + 301.
+# ⚠️ 26.09.2026: hier stand «sub-uhren» — seit einem Doppel-Aufraeumen im Online Store ABGEMELDET (301 -> uhren).
+# Die Reihe zeigte dann Shopifys Platzhalter «Vorgestellte Produkte» mit Muster-T-Shirts «Produkttitel CHF 19.99»
+# (Betreiber-Screenshot aus Facebook). Deshalb prueft main() jetzt jeden Katalog live (sichtbar_live).
 SAISON = [("halloween", (9, 1), (10, 31)), ("weihnachten-2026", (10, 15), (12, 26))]
 
 
@@ -56,14 +59,17 @@ def saison_fest_heute(tag):
     return {k: h for k, h, von, bis in SAISON_FEST if von <= md <= bis}
 
 
-def pool_heute(tag):
-    """Saison-Kataloge zuerst, dann der Pool um den Tages-Offset gedreht — 8 verschiedene."""
+def pool_heute(tag, sichtbar=None):
+    """Saison-Kataloge zuerst, dann der Pool um den Tages-Offset gedreht — 8 verschiedene.
+    sichtbar: Menge live sichtbarer Handles (None = alle, fuer den Selbsttest ohne Netz)."""
     md = (tag.month, tag.day)
     vorne = [h for h, von, bis in SAISON if von <= md <= bis]
     n = len(POOL); rot = tag.toordinal() % n
     reihe = vorne + [POOL[(rot + i) % n] for i in range(n)]
     aus, seen = [], set()
     for h in reihe:
+        if sichtbar is not None and h not in sichtbar:
+            continue
         if h not in seen:
             aus.append(h); seen.add(h)
         if len(aus) == len(WECHSEL):
@@ -71,7 +77,7 @@ def pool_heute(tag):
     return aus
 
 
-def umbauen(t, tag):
+def umbauen(t, tag, sichtbar=None):
     """Wendet alle Regeln auf das Template-Dict an. Gibt (geaendert:bool, notizen:list) zurueck."""
     notizen = []; vorher = json.dumps(t, sort_keys=True)
     secs, order = t["sections"], t["order"]
@@ -108,7 +114,7 @@ def umbauen(t, tag):
             secs[k]["settings"]["collection"] = h
     # 3. Wechsel-Reihen
     fest_colls = {secs[k]["settings"].get("collection") for k in list(FEST) + list(sf) if k in secs}
-    heute = [h for h in pool_heute(tag) if h not in fest_colls]
+    heute = [h for h in pool_heute(tag, sichtbar) if h not in fest_colls]
     for k, h in zip([w for w in WECHSEL if w in secs and w not in sf], heute):
         if secs[k]["settings"].get("collection") != h:
             notizen.append(f"{k}: {secs[k]['settings'].get('collection')} -> {h}")
@@ -136,6 +142,19 @@ def gql(q, v=None):
                         "-H", "Content-Type: application/json", "--data-binary", "@-"],
                        input=json.dumps({"query": q, "variables": v or {}}), capture_output=True, text=True)
     return json.loads(r.stdout)
+
+
+def sichtbar_live(handles):
+    """Handles, die im Online Store veroeffentlicht sind und >= MAX Produkte haben. Sonst rendert Horizon
+    Platzhalter («Vorgestellte Produkte», «Produkttitel CHF 19.99») statt Ware."""
+    ok = set()
+    for h in sorted(handles):
+        c = gql('query($h:String!){collectionByHandle(handle:$h){productsCount{count} resourcePublicationsV2(first:20){nodes{isPublished publication{name}}}}}',
+                {"h": h}).get("data", {}).get("collectionByHandle")
+        if c and c["productsCount"]["count"] >= MAX and any(
+                n["isPublished"] and n["publication"]["name"] == "Online Store" for n in c["resourcePublicationsV2"]["nodes"]):
+            ok.add(h)
+    return ok
 
 
 def selbsttest():
@@ -186,6 +205,12 @@ def selbsttest():
     for d in range(len(POOL)):
         alle |= set(pool_heute(tag + datetime.timedelta(days=d)))
     pruefe(set(POOL) <= alle, f"ueber {len(POOL)} Tage kommt JEDER Pool-Katalog dran")
+    # 26.09.: ein abgemeldeter Katalog darf nie in eine Wechsel-Reihe
+    t_s = copy.deepcopy(t); tag_s = tag + datetime.timedelta(days=2)
+    gesperrt = set(pool_heute(tag_s)) - {"halloween"}
+    umbauen(t_s, tag_s, sichtbar=(set(POOL) | {h for h, _, _ in SAISON}) - gesperrt)
+    wc_s = {t_s["sections"][k]["settings"]["collection"] for k in WR}
+    pruefe(not (wc_s & gesperrt) and len(wc_s) == len(WR), f"unsichtbare Kataloge ({len(gesperrt)}) werden uebersprungen, Reihen trotzdem voll")
     print("SELBSTTEST BESTANDEN" if not fehler else f"SELBSTTEST FEHLGESCHLAGEN ({fehler})")
     return fehler
 
@@ -199,7 +224,20 @@ def main():
     m = re.match(r"^(/\*.*?\*/\s*)", raw, flags=re.S); pre = m.group(1) if m else ""
     t = json.loads(raw[len(pre):])
     tag = datetime.date.today()
-    ge, notizen = umbauen(t, tag)
+    alle = set(POOL) | {h for h, _, _ in SAISON} | {h for _, h, _, _ in SAISON_FEST} | {
+        s["settings"].get("collection") for s in t["sections"].values() if s.get("type") == "product-list"}
+    alle.discard(None); alle.discard("")
+    sichtbar = sichtbar_live(alle)
+    if len(sichtbar) < len(alle) // 2:   # Abfrage kaputt (Token/Netz) -> lieber nichts drehen als alles sperren
+        print(f"FEHLER: nur {len(sichtbar)} von {len(alle)} Katalogen als sichtbar gemessen — Lauf abgebrochen"); sys.exit(1)
+    unsichtbar = sorted(alle - sichtbar)
+    if unsichtbar:
+        print(f"  ⚠️ unsichtbar/leer im Online Store (werden uebersprungen): {', '.join(unsichtbar)}")
+    ge, notizen = umbauen(t, tag, sichtbar)
+    # Feste Reihen dreht die Rotation nicht — ein unsichtbarer Katalog dort ist ein Befund fuer den Menschen.
+    for k, s in t["sections"].items():
+        if s.get("type") == "product-list" and s["settings"].get("collection") not in sichtbar:
+            print(f"  ⚠️ PLATZHALTER-GEFAHR: {k} zeigt {s['settings'].get('collection')} (nicht sichtbar)")
     for n in notizen: print("  " + n)
     if not ge:
         print(f"{tag} unveraendert (schon auf Stand)"); return
