@@ -57,7 +57,32 @@ mitSonden('traumhaus.html', {
     return out;}`,
 }, TMP)
 
-const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000 })
+const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 15000 })
+
+/* ⚠️ AUF DAS EREIGNIS WARTEN, NICHT AUF EINE FRIST (Runbook-Regel 4).
+   Hier standen feste 55 s. GEMESSEN, warum das nicht reicht: dieselbe Spieldatei
+   liefert je nach Auslastung der Maschine voellig verschiedene Zahlen.
+
+       ohne Last                   9
+       im Torlauf                 11 bis 16
+       zwei Laeufe gleichzeitig   30
+
+   Und zwar auf BEIDEN Seiten: `main` ergab unter derselben Last 29, der Zweig 30.
+   Die Zahl misst also die Auslastung, nicht die Welt. Der Grund ist bekannt: die
+   Kette nach dem Laden (freiRaeumen -> entwirren -> _spaetEinfrieren) haengt am
+   LETZTEN geladenen Modell, nicht an einer Uhr. Wer nach 55 s misst, waehrend die
+   Maschine beschaeftigt ist, protokolliert eine Welt, die noch geraderueckt.
+   Genau dieses Messgeraet hat deshalb schon zweimal falschen Alarm geschlagen
+   (Runde 88: 9 -> 19; Runde 90: 9 -> 16).
+   Jetzt wird gewartet, bis nichts mehr laedt, und danach die 6,5 s der Kette. */
+for (let i = 0; i < 90; i++) {
+  const offen = await page.evaluate(() => window._ladeOffen)
+  if (offen === 0) break
+  await page.waitForTimeout(2000)
+}
+/* \u26a0\ufe0f 9 s reichten unter Last NICHT (30 -> 11, nicht 9): die Kette selbst laeuft
+   auf der beschaeftigten Maschine langsamer. 20 s sind gemessen genug. */
+await page.waitForTimeout(20000)
 const L = await page.evaluate(() => window.__th.echt())
 const echt = L.filter((o) => o.meshPaare > 0)
 console.log(`${L.length} Paare, deren GRUPPEN-Kaesten sich um >1 m schneiden.`)
