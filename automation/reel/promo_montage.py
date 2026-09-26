@@ -58,7 +58,7 @@ CACHE = "/tmp/promo_montage_cache"
 VARIANTEN = {
     "a": {
         "datei": "promo_hoodie_herbst_a.mp4",
-        "musik": "luxe-lounge-sax.wav", "einstieg": 0,
+        "musik": "luxe-premium.wav", "einstieg": 0,   # 26.09.: lounge-sax gesperrt (automation/music/_gesperrt.txt)
         "hook": ("Herbst ist", "Hoodie-Zeit"), "emoji": "\U0001F342",
         "produkte": [
             {"handle": "relaxed-fit-hoodie-cosy-mit-fell-panel-kordelzug", "name": "Relaxed-Fit Hoodie «Cosy»", "bilder": [3, 2]},

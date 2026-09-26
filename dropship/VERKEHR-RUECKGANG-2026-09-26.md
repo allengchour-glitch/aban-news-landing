@@ -30,3 +30,15 @@ Warenkorb-Zulagen je Woche: 2 · 6 · 1 · 7 · 1. Kasse erreicht in den letzten
 2. Eigene Aufrufe ausblenden: Betreiber-IP bzw. Gerät in Shopify als intern markieren ist nicht möglich; stattdessen
    Messung auf Quellen mit Absender (Google, Pinterest, Facebook) stützen.
 3. Werbung bleibt laut Betreiber-Plan für ~Oktober vorgesehen; ohne sie ist Google Gratis-Einträge der stabilste Kanal.
+
+## Nachtrag 09:00 UTC — Pinterest gemessen (Metricool-API + Hetzner-Browser in der Pinterest-Analytics)
+- **Metricool (eigene Pins, Zugang der Poster):** 94 Pins seit Juli, zusammen **4 ausgehende Klicks**. Die 36 Pins der
+  Woche ab 21.09. haben zusammen **26 Impressionen**; die Juli-Pins hatten 1'955 bzw. 612.
+- **Pinterest-Analytics (Server, eingeloggt, 27.08.–26.09.):** 54'080 Impressionen (−26 %), 69 ausgehende Klicks (+25 %),
+  157 Seitenaufrufe, 0 Checkouts. Verlauf (Bild `dropship/pinterest-analytics-2026-09-26.png`): ~2'000/Tag Ende August,
+  Spitze ~8'000/Tag am 13.–14.09., danach Absturz; **seit ~22.09. nahe null**.
+- **Zeitlicher Zusammenhang, nicht bewiesen:** Am 22.09. setzte der Browser-Agent 11 Pins an einem Tag, ab 23.09.
+  kommen 4 Metricool-Pins pro Tag dazu. Ein neues Konto mit plötzlichem Pin-Schwall wird von Pinterest oft gedrosselt.
+- Der Katalog ist vollständig im Pinterest-Kanal (49'764 aktive Produkte) — daran liegt es nicht.
+- **Kadenz nicht geändert** (Pins alle 6 h = Betreiber-Vorgabe). Entscheid Betreiber: Pin-Kadenz senken/pausieren, um
+  die Drosselung zu testen, oder weiterlaufen lassen.
