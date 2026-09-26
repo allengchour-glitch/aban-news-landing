@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App-Shortcut: Creme-Kreis mit Bronze-Strich (aus ic_heart) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp" android:viewportWidth="48" android:viewportHeight="48">
+    <path android:pathData="M24,0 A24,24 0 1,1 23.99,0 Z" android:fillColor="#F7F3EE" />
+    <group android:translateX="12" android:translateY="12">
+        <path android:pathData="M12,20 C12,20 4,14.6 4,9.2 A4,4 0 0,1 12,7.4 A4,4 0 0,1 20,9.2 C20,14.6 12,20 12,20 Z" android:strokeColor="@color/luxe_bronze" android:strokeWidth="1.7"
+        android:strokeLineCap="round" android:strokeLineJoin="round" android:fillColor="#00000000" />
+    </group>
+</vector>

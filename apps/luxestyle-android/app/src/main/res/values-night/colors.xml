@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="surface">#1C1B1A</color>
+    <color name="luxe_line">#33302C</color>
+    <color name="luxe_muted">#A39D96</color>
+</resources>
