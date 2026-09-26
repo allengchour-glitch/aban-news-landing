@@ -949,6 +949,19 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 96 (26.09.2026, 10:00 UTC) — 🧩 «was das»: Startseiten-Reihe zeigte Muster-T-Shirts «Produkttitel CHF 19.99»
+
+**Gemessen:** Betreiber-Screenshot (Besuch aus Facebook) zeigte die Reihe «Vorgestellte Produkte» mit Horizon-Platzhaltern.
+Die Wechsel-Reihe `product_list_L3EDnA` zeigte auf `sub-uhren` (3'657 Produkte), die seit einem früheren Doppel-Aufräumen
+NICHT im Online Store veröffentlicht ist (nur Inbox + POS, 301 → `uhren`). Horizon findet dann keine Kollektion und rendert Muster.
+Ursache: `homepage_katalog_rotation.py` hatte `sub-uhren` im POOL und prüfte nie, ob ein Katalog sichtbar ist.
+Alle 40 Kataloge (Startseite + Pool + Saison) gemessen: nur dieser eine unsichtbar.
+**Getan:** POOL `sub-uhren` → `uhren`; `sichtbar_live()` prüft vor jedem Lauf Veröffentlichung im Online Store + ≥ 8 Produkte,
+unsichtbare werden übersprungen, feste Reihen mit unsichtbarem Katalog melden «PLATZHALTER-GEFAHR»; Abbruch, wenn weniger als die Hälfte
+sichtbar gemessen wird (kaputte Abfrage ≠ alles sperren). Selbsttest um einen Fall erweitert (bestanden), live geschrieben, WebFetch: keine Platzhalter.
+**Lehre:** Wer eine Kollektion abmeldet oder umleitet, muss alle Stellen kennen, die ihren Handle als Text tragen (Theme-Sektionen,
+Rotations-Pools, Menüs). Der sicherere Weg ist der Leser: jede Stelle, die einen Handle einsetzt, prüft beim Einsetzen die Sichtbarkeit.
+
 ### Nachtrag 95 (26.09.2026, 09:05 UTC) — 🎷 «Musik finde ich scheisse» → Sperrliste; Pinterest seit ~22.09. fast unsichtbar
 
 **Musik:** Den Track im neuesten Post (TikTok Küchenhelfer-Set 10:38) per Hüllkurven-Korrelation bestimmt: luxe-lounge-sax.wav (1.50 gegen nächstbesten 0.45) — der Verlauf `social/_musik_verlauf.txt` kannte das Reel nicht, Messen statt Nachschlagen. Neu `automation/music/_gesperrt.txt`, gelesen von `cj_video_reel_engine.mjs` (alle Pools + Rückfall) und `promo_montage.py`; keine Warengruppe leer. Wartende Reels geprüft (17 + 5 vom CDN, dort erst per curl laden — ffmpeg über HTTPS scheitert am Proxy): 3 mit Sax → nur Tonspur gegen luxe-house1 getauscht (Bild kopiert), nachgemessen Sax 0.4 / house1 0.7, im Repo abgelegt (CDN-Speicher voll).
