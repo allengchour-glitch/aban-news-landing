@@ -9982,7 +9982,18 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
   for(var j=0;j<T.land.length;j++){var an=T.land[j];an.turnT-=dt;
     if(an.turnT<=0){an.turnT=2+Math.random()*3;an.head+=(Math.random()-0.5)*1.5;}
     if(an.home&&Math.hypot(an.x-an.home.x,an.z-an.home.z)>an.home.r)an.head=Math.atan2(an.home.x-an.x,an.home.z-an.z);
-    var _anx=an.x+Math.sin(an.head)*an.sp*dt,_anz=an.z+Math.cos(an.head)*an.sp*dt; /* 🐄 nicht durch Gebaeude */
+    /* 🐄 TIERE DREHEN SICH JETZT AUCH, STATT ZU SPRINGEN. `an.head` ist das ZIEL
+       der Blickrichtung — gesetzt beim Zufallsschlenker (alle 2-5 s), beim Anstossen an
+       ein Gebaeude (+2,4 rad, also rund 140°) und an der Weltgrenze (+180°). Alle drei
+       wurden bisher SOFORT wirksam: das Tier stand im selben Augenblick andersherum.
+       `an.dreh` ist die tatsaechliche Richtung und folgt dem Ziel mit hoechstens
+       4 rad/s — langsamer als beim Menschen, ein Tier dreht sich behaebiger.
+       Gelaufen wird nach `an.dreh`, nicht nach `an.head`: sonst liefe das Tier bereits
+       in die neue Richtung, waehrend der Koerper noch in die alte schaut. */
+    if(an.dreh===undefined)an.dreh=an.head;
+    var _dd=an.head-an.dreh; _dd=Math.atan2(Math.sin(_dd),Math.cos(_dd));
+    var _dm=4.0*dt; an.dreh+=Math.max(-_dm,Math.min(_dm,_dd));
+    var _anx=an.x+Math.sin(an.dreh)*an.sp*dt,_anz=an.z+Math.cos(an.dreh)*an.sp*dt; /* 🐄 nicht durch Gebaeude */
     if(inSolid(_anx,_anz))an.head+=2.4+Math.random();else{an.x=_anx;an.z=_anz;}
     /* ⚠️ DIE WELTGRENZE GALT AUCH FUER ORTSGEBUNDENE TIERE — und die Koppel des
        Bauernhofs liegt bei z = -227, weit ausserhalb. Die fuenf Koppel-Tiere steuerten
@@ -9998,7 +10009,7 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
         an.z=an.home.z+(an.z-an.home.z)*_hr/Math.hypot(an.x-an.home.x,an.z-an.home.z);}
     }else{
       var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}}
-    an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0);
+    an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.dreh+(an.yaw||0);
     var lg=an.mesh.userData.legs;if(lg){var sw=Math.sin(an.walkT)*0.5;lg[0].rotation.x=sw;lg[3].rotation.x=sw;lg[1].rotation.x=-sw;lg[2].rotation.x=-sw;}}}
 // ---- Heissluftballon, der über die Stadt zieht ----
 setTimeout(function baueBallon(){
@@ -13027,15 +13038,59 @@ function useCell(f){var u=f.def.use,off=u.off||[0,0];
   var ox=off[0],oy=off[1];
   for(var r=0;r<f.rot;r++){var t=ox;ox=-oy;oy=t;}
   return [f.gx+ox,f.gy+oy];}
+/* 🚶 GEHEN STATT SCHALTEN — GEMESSEN, WAS VORHER WAR.
+   th-bewegung ruft simWalk mit festem Zeitschritt 1/60 s auf und protokolliert jeden
+   Schritt. Das Ergebnis der alten Fassung war eindeutig:
+
+       groesste Drehung in EINEM Schritt : 89,8°
+       Schritte mit Drehung ueberhaupt   : 1
+       Schritte zum Anfahren             : 1
+       Schritte zum Anhalten             : 2
+
+   Die ganze Kurve passierte in einer Sechzigstelsekunde, und die Figur ging in einem
+   Schritt von 0 auf 2,6 m/s. Das ist kein Koerper, das ist ein Schalter. Im Quelltext
+   stand es wortwoertlich: `s.rot=Math.atan2(dx,dz)` setzt die Richtung sofort,
+   `var spd=2.6` kennt kein Anfahren.
+
+   ⚠️ WARUM NICHT "pro Bild" GEMESSEN WIRD: dieser Container rendert 2 bis 6 Bilder
+   pro Sekunde. Bei einem halben Sekundenschritt sehen eine saubere Drehung und ein
+   Sprung gleich aus. Darum wird die Logik mit festem dt geprueft, nicht das Bild.
+
+   Drei Aenderungen, und die dritte ist die, die man sonst vergisst:
+     1. Die Drehung ist auf 7,5 rad/s begrenzt — eine 90°-Kurve dauert jetzt gut
+        zwei Zehntelsekunden statt eines Augenblicks.
+     2. Tempo mit Beschleunigung: Anfahren 5,5 m/s², Bremsen 7 m/s². Vor dem LETZTEN
+        Wegpunkt wird ausgerollt, statt auf der Stelle zu stoppen.
+     3. ⚠️ DIE SCHRITTANIMATION MUSS MITZIEHEN. Vorher lief sie mit fester Rate
+        (dt*9); solange das Tempo konstant 2,6 war, fiel das nicht auf. Sobald die
+        Figur anfaehrt und ausrollt, wuerde sie bei fester Rate ueber den Boden
+        GLEITEN. Die Rate haengt jetzt am Tempo: 3,46 je m/s — genau der alte Wert
+        (9 / 2,6), also sieht volles Tempo aus wie bisher.
+
+   Solange die Figur noch quer steht, laeuft sie gebremst los (Faktor ueber den
+   Restwinkel). Sonst wuerde sie seitwaerts zum Ziel schweben, waehrend sich der
+   Koerper noch dreht. */
 function simWalk(s,dt){
   if(!s.path.length){arrive(s);return;}
   var nxt=s.path[0],txx=cx(nxt[0]),tzz=cz(nxt[1]);
   var dx=txx-s.x,dz=tzz-s.z,d=Math.hypot(dx,dz);
-  var spd=2.6;
   if(d<0.08){s.path.shift();return;}
-  s.x+=dx/d*spd*dt;s.z+=dz/d*spd*dt;
-  s.rot=Math.atan2(dx,dz);s.walkT+=dt*9;}
+  var VOLL=2.6;
+  /* Vor dem letzten Wegpunkt ausrollen, sonst mit vollem Tempo weiter. */
+  var ziel=(s.path.length===1)?Math.max(0.45,Math.min(VOLL,d*2.2)):VOLL;
+  if(s._v===undefined)s._v=0;
+  var a=(ziel>s._v)?5.5:7.0;
+  s._v+=Math.max(-a*dt,Math.min(a*dt,ziel-s._v));
+  /* Drehen mit begrenzter Rate statt Sprung. */
+  var soll=Math.atan2(dx,dz),dr=soll-(s.rot||0);
+  dr=Math.atan2(Math.sin(dr),Math.cos(dr));
+  var maxDr=7.5*dt;
+  s.rot=(s.rot||0)+Math.max(-maxDr,Math.min(maxDr,dr));
+  var v=s._v*Math.max(0.25,1-Math.abs(dr)/2.2);
+  s.x+=dx/d*v*dt;s.z+=dz/d*v*dt;
+  s.walkT+=dt*3.46*v;}
 function arrive(s){
+  s._v=0;   /* beim naechsten Losgehen wieder von null anfahren, nicht aus dem Stand springen */
   if(!s.target){s.state="idle";s.pose="stand";return;}
   var f=s.target,u=f.def.use;
   s.state="use";s.pose=u.pose;s.useT=u.dur;
