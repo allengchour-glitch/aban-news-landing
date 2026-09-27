@@ -35473,3 +35473,14 @@ gid://shopify/Product/15484908863873	CHF 151.47	1 Varianten	44-teiliges Kühlerd
 gid://shopify/Product/15484908929409	CHF 34.98	1 Varianten	Aufblasbare Wasserliege für Pool und See
 gid://shopify/Product/15484909027713	CHF 16.14	1 Varianten	Faszienring-Massagegerät – Handlich & Effektiv
 gid://shopify/Product/15484909093249	CHF 13.13	1 Varianten	CarPlay-Adapter für Android Infotainment
+gid://shopify/Product/15484909191553	CHF 48.19	1 Varianten	Handgefertigter Zisha Orchideentopf
+gid://shopify/Product/15484909224321	CHF 28.31	1 Varianten	Handgemachter Zisha Orchideentopf
+gid://shopify/Product/15484909289857	CHF 22.38	1 Varianten	Yixing Zisha Blumentopf im Vintage-Stil
+gid://shopify/Product/15484909355393	CHF 8.04	1 Varianten	Farbklemmen mit biegsamem Magnetfuss
+gid://shopify/Product/15484922888577	CHF 19.59	24 Varianten	Elegantes Freizeitkleid mit langen Ärmeln
+gid://shopify/Product/15484923838849	CHF 15.18	20 Varianten	Midi-Kleid mit 3/4-Ärmeln und Mesh
+gid://shopify/Product/15484924658049	CHF 16.82	40 Varianten	Elegantes V-Neck Kleid mit Laternenärmeln
+gid://shopify/Product/15484924756353	CHF 12.36	5 Varianten	Elegantes Kleid für besondere Anlässe
+gid://shopify/Product/15484928917889	CHF 14.36	10 Varianten	Elegantes Vintage Color-Block Damenkleid
+gid://shopify/Product/15484929540481	CHF 13.23	18 Varianten	Ruffles Fishtail-Kleid
+gid://shopify/Product/15484930589057	CHF 12.83	9 Varianten	Damen-Kleid mit Patchwork-Print
