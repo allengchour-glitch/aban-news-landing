@@ -16,9 +16,9 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-26T08:11:43Z — SCHARF
+## Letzter Lauf 2026-09-27T21:14:41Z — SCHARF
 
-Gescannt 49871 aktive von 49871 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 49871 aktive von 49871 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
@@ -90,7 +90,3 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
-
-## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
-
-- portable-auto-waschburste-4-teilig-605000: keine Google-Meldung
