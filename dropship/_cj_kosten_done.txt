@@ -35919,3 +35919,13 @@ gid://shopify/Product/15486568726913	CHF 12.66	14 Varianten	Herren Hoodie mit St
 gid://shopify/Product/15486569382273	CHF 15.46	15 Varianten	Luftiges Kurzarm-Stricktop für Herren
 gid://shopify/Product/15486576230785	CHF 53.60	1 Varianten	Business Laptop Rucksack – wasserdicht
 gid://shopify/Product/15486576525697	CHF 31.26	1 Varianten	Wasserdichter Gaming-Rucksack für Freizeit
+gid://shopify/Product/15486742528385	CHF 69.32	1 Varianten	LED Deckenleuchte
+gid://shopify/Product/15486743708033	CHF 11.26	1 Varianten	DIY Tier-Kürbis-Nähset
+gid://shopify/Product/15486744789377	CHF 59.97	1 Varianten	Chenille Sofaüberzug – rutschfest & vielseitig
+gid://shopify/Product/15486745379201	CHF 9.32	1 Varianten	Getränkehalter für Kinder
+gid://shopify/Product/15486925734273	CHF 8.64	1 Varianten	Olivengrüner Diamant-Armband
+gid://shopify/Product/15486927044993	CHF 7.48	1 Varianten	Hohler Schmuckarmband
+gid://shopify/Product/15486927634817	CHF 7.67	1 Varianten	Einfacher Frauenknöchel-Schmuck
+gid://shopify/Product/15487310070145	CHF 18.79	1 Varianten	Obsidian Kristall Armband
+gid://shopify/Product/15487310791041	CHF 7.11	1 Varianten	Edler Buchstabenarmband
+gid://shopify/Product/15487313183105	CHF 20.23	1 Varianten	Blumen-Schmuckarmband
