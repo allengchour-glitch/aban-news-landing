@@ -14294,3 +14294,4 @@ gid://shopify/Product/15525510021505	matte	Rattanmatte und Eisseiden-Kissenbezug
 gid://shopify/Product/15525512413569	uhr	Bluetooth Sportuhr mit Runddisplay
 gid://shopify/Product/15525512774017	armband	Metall-Uhrenarmband mit Strasssteinen
 gid://shopify/Product/15525513527681	uhr	F64 Smart Armbanduhr mit Bluetooth
+gid://shopify/Product/15515288371585	creme	Gesichtscreme für einen ebenmässigen Teint
