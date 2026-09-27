@@ -35647,3 +35647,7 @@ gid://shopify/Product/15485494198657	CHF 7.87	1 Varianten	Muschelhalskette aus K
 gid://shopify/Product/15485494460801	CHF 7.73	1 Varianten	Halskette mit Würfel-Anhänger
 gid://shopify/Product/15485494624641	CHF 8.59	1 Varianten	Raven Rose Ohrringe – Süss & Kantig
 gid://shopify/Product/15485495804289	CHF 14.05	60 Varianten	3D Retro Muster A-Linien-Kleid für Damen
+gid://shopify/Product/15485496066433	CHF 15.41	4 Varianten	Mini-Kleid mit Stehkragen und Cut-Out
+gid://shopify/Product/15485496295809	CHF 13.36	72 Varianten	Elegantes Freizeitkleid mit A-Linie
+gid://shopify/Product/15485496525185	CHF 15.30	8 Varianten	Spitzenkleid mit V-Ausschnitt & Rückenausschnitt
+gid://shopify/Product/15485496852865	CHF 31.38	4 Varianten	Vintage Polka-Dot Tube-Top Kleid
