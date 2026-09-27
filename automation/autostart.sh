@@ -22,8 +22,18 @@ fi
 
 running(){ pgrep -f "$1" >/dev/null 2>&1; }
 
+# 27.09.2026: Grind-Pause auch hier. autostart.sh brach bisher ohne SHOPIFY_CLIENT_ID sofort ab — seit die Variablen
+# in der Umgebung stehen, lief es durch und startete beim Sitzungsstart cj_perpetual + cj_queue_runner, obwohl der
+# Betreiber den Grind am 14.09. pausiert hat. Dieselben Schalter wie engine_keepalive.sh:
+# dropship/_GRIND_PAUSE_BIS (UTC-Epoche in der Zukunft) ODER dropship/_GRIND_RUNNER_ZAHL = 0 → kein CJ-Import.
+GRIND_AUS=0
+PB_A=dropship/_GRIND_PAUSE_BIS; GRZ_A=$(cat dropship/_GRIND_RUNNER_ZAHL 2>/dev/null | tr -dc '0-9')
+if [ -f "$PB_A" ] && [ "$(tr -dc 0-9 < "$PB_A")" -gt "$(date -u +%s)" ] 2>/dev/null; then GRIND_AUS=1; fi
+[ "$GRZ_A" = "0" ] && GRIND_AUS=1
+[ "$GRIND_AUS" = "1" ] && log "Grind pausiert (dropship/_GRIND_PAUSE_BIS / _GRIND_RUNNER_ZAHL) → kein CJ-Perpetual, kein Queue-Runner."
+
 # ── 1. CJ-Perpetual (Dauer-Import, PRIORITY aus Env oder Default) ──
-if [ -s /tmp/cj_token.json ] && ! running 'cj_perpetual.mjs'; then
+if [ "$GRIND_AUS" = "0" ] && [ -s /tmp/cj_token.json ] && ! running 'cj_perpetual.mjs'; then
   CJT=$(python3 -c "import json;print(json.load(open('/tmp/cj_token.json'))['accessToken'])")
   CJ_TOKEN="$CJT" WAREHOUSE="${WAREHOUSE:-DE}" \
     PRIORITY="${PRIORITY:-cjelektronik,cjgadgets,gaming,cjdamen,cjherren,kueche,cjhome}" \
@@ -54,7 +64,7 @@ fi
 # ── 2b. CJ voll gas (Dauerauftrag User 2026-07-10: «bei reset cj und bigbuy wieder voll gas») ──
 #        Queue-Runner arbeitet automation/cj_search_queue.txt ab (4er-Batches, #done-Marker),
 #        danach Kategorie-Fill CAP=60. Braucht /tmp/cj_token.json (sonst No-op).
-if [ -s /tmp/cj_token.json ] && ! running 'cj_queue_runner.sh' && ! running 'cj_sku_import.mjs' && ! running 'cj_category_fill.mjs'; then
+if [ "$GRIND_AUS" = "0" ] && [ -s /tmp/cj_token.json ] && ! running 'cj_queue_runner.sh' && ! running 'cj_sku_import.mjs' && ! running 'cj_category_fill.mjs'; then
   if [ ! -x /tmp/cj_queue_runner.sh ] && [ -f automation/cj_queue_runner.sh ]; then
     cp automation/cj_queue_runner.sh /tmp/cj_queue_runner.sh && chmod +x /tmp/cj_queue_runner.sh
   fi
