@@ -36812,3 +36812,6 @@ gid://shopify/Product/15492266393985	CHF 17.72	1 Varianten	Lordosenstützkissen 
 gid://shopify/Product/15492283728257	CHF 25.89	1 Varianten	Versteckte Leckerlis
 gid://shopify/Product/15492283761025	CHF 18.98	1 Varianten	Kauspielzeug
 gid://shopify/Product/15492283793793	CHF 8.62	1 Varianten	Saugtier Spielzeug
+gid://shopify/Product/15492283859329	CHF 7.21	1 Varianten	Minz-Trauben-Katzenspielzeug zum Zahnen
+gid://shopify/Product/15492284547457	CHF 11.61	1 Varianten	Edelstahl-Frühstücksbecher mit Deckel
+gid://shopify/Product/15492285399425	CHF 7.48	1 Varianten	Farbwechselnde Abdeck-Foundation
