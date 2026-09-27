@@ -5,7 +5,7 @@
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## USA-Lieferzusage im Text — 504 (waehrend des Laufs 810 gezaehlt, seither repariert)
+## USA-Lieferzusage im Text — 636 (waehrend des Laufs 891 gezaehlt, seither repariert)
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
 
@@ -13,34 +13,34 @@ Reparatur: `automation/versandaussagen_wahrheit.py  (QUELLE=live IGNORIERE_LEDGE
 
 Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
 
-- `15427244556673` Sticker «Nostress» · 1 Stück
-- `15427244589441` Sticker «Plantpowered» · 1 Stück
-- `15427244622209` Sticker «Selfcare» · 1 Stück
-- `15427244654977` Sticker «Staywild» · 1 Stück
-- `15427244720513` Sticker «Sunshine» · 1 Stück
-- `15427244753281` Sticker «Traumschoen» · 1 Stück
-- `15427244786049` Sticker «Vegan» · 1 Stück
-- `15427244818817` Sticker «Wildfree» · 1 Stück
-- `15427244851585` Sticker «Youmatter» · 1 Stück
-- `15427244884353` Sticker «Tiger» · 1 Stück
-- `15427244917121` Sticker «Toucan» · 1 Stück
-- `15427244949889` Sticker «Ufo» · 1 Stück
-- `15427244982657` Sticker «Vinyl Record» · 1 Stück
-- `15427245015425` Sticker «Volleyball» · 1 Stück
-- `15427245048193` Sticker «Wolf» · 1 Stück
-- `15427245080961` Sticker «Y2k Butterfly» · 1 Stück
-- `15427245113729` Sticker «Yoga Pose» · 1 Stück
-- `15427245146497` Sticker «Zebra» · 1 Stück
-- `15427245179265` Sticker «Zodiac Aquarius» · 1 Stück
-- `15427245212033` Sticker «Zodiac Aries» · 1 Stück
-- `15427245244801` Sticker «Zodiac Cancer» · 1 Stück
-- `15427245277569` Sticker «Zodiac Capricorn» · 1 Stück
-- `15427245343105` Sticker «Zodiac Gemini» · 1 Stück
-- `15427245375873` Sticker «Zodiac Leo» · 1 Stück
-- `15427245408641` Sticker «Zodiac Libra» · 1 Stück
-- … und 479 weitere
+- `15427239674241` Sticker «Flower Daffodil» · 1 Stück
+- `15427239707009` Sticker «Flower Dandelion» · 1 Stück
+- `15427239739777` Sticker «Flower Hibiscus» · 1 Stück
+- `15427239772545` Sticker «Flower Lavender» · 1 Stück
+- `15427239805313` Sticker «Flower Lily» · 1 Stück
+- `15427239838081` Sticker «Flower Orchid» · 1 Stück
+- `15427239870849` Sticker «Flower Peony» · 1 Stück
+- `15427239903617` Sticker «Flower Poppy» · 1 Stück
+- `15427239936385` Sticker «Flower Tulip» · 1 Stück
+- `15427239969153` Sticker «Fries» · 1 Stück
+- `15427240001921` Sticker «Frog2» · 1 Stück
+- `15427240034689` Sticker «Galaxy Heart» · 1 Stück
+- `15427240067457` Sticker «Game Controller» · 1 Stück
+- `15427240100225` Sticker «Gamer Headset» · 1 Stück
+- `15427240132993` Sticker «Gecko» · 1 Stück
+- `15427240165761` Sticker «Ghost» · 1 Stück
+- `15427240198529` Sticker «Gift Box» · 1 Stück
+- `15427240231297` Sticker «Giraffe» · 1 Stück
+- `15427240264065` Sticker «Goat» · 1 Stück
+- `15427240296833` Sticker «Golf» · 1 Stück
+- `15427240329601` Sticker «Grapes» · 1 Stück
+- `15427240362369` Sticker «Hamster» · 1 Stück
+- `15427240395137` Sticker «Headphones» · 1 Stück
+- `15427240427905` Sticker «Hedgehog» · 1 Stück
+- `15427240493441` Sticker «Hippo» · 1 Stück
+- … und 611 weitere
 
-## EU-Lieferzusage im Text — 501 (waehrend des Laufs 810 gezaehlt, seither repariert)
+## EU-Lieferzusage im Text — 632 (waehrend des Laufs 891 gezaehlt, seither repariert)
 
 Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
 
@@ -48,34 +48,34 @@ Reparatur: `automation/versandaussagen_wahrheit.py`
 
 Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
 
-- `15427244654977` Sticker «Staywild» · 1 Stück
-- `15427244720513` Sticker «Sunshine» · 1 Stück
-- `15427244753281` Sticker «Traumschoen» · 1 Stück
-- `15427244786049` Sticker «Vegan» · 1 Stück
-- `15427244818817` Sticker «Wildfree» · 1 Stück
-- `15427244851585` Sticker «Youmatter» · 1 Stück
-- `15427244884353` Sticker «Tiger» · 1 Stück
-- `15427244917121` Sticker «Toucan» · 1 Stück
-- `15427244949889` Sticker «Ufo» · 1 Stück
-- `15427244982657` Sticker «Vinyl Record» · 1 Stück
-- `15427245015425` Sticker «Volleyball» · 1 Stück
-- `15427245048193` Sticker «Wolf» · 1 Stück
-- `15427245080961` Sticker «Y2k Butterfly» · 1 Stück
-- `15427245113729` Sticker «Yoga Pose» · 1 Stück
-- `15427245146497` Sticker «Zebra» · 1 Stück
-- `15427245179265` Sticker «Zodiac Aquarius» · 1 Stück
-- `15427245212033` Sticker «Zodiac Aries» · 1 Stück
-- `15427245244801` Sticker «Zodiac Cancer» · 1 Stück
-- `15427245277569` Sticker «Zodiac Capricorn» · 1 Stück
-- `15427245343105` Sticker «Zodiac Gemini» · 1 Stück
-- `15427245375873` Sticker «Zodiac Leo» · 1 Stück
-- `15427245408641` Sticker «Zodiac Libra» · 1 Stück
-- `15427245441409` Sticker «Zodiac Pisces» · 1 Stück
-- `15427245474177` Sticker «Zodiac Sagittarius» · 1 Stück
-- `15427245506945` Sticker «Zodiac Scorpio» · 1 Stück
-- … und 476 weitere
+- `15427239805313` Sticker «Flower Lily» · 1 Stück
+- `15427239838081` Sticker «Flower Orchid» · 1 Stück
+- `15427239870849` Sticker «Flower Peony» · 1 Stück
+- `15427239903617` Sticker «Flower Poppy» · 1 Stück
+- `15427239936385` Sticker «Flower Tulip» · 1 Stück
+- `15427239969153` Sticker «Fries» · 1 Stück
+- `15427240001921` Sticker «Frog2» · 1 Stück
+- `15427240034689` Sticker «Galaxy Heart» · 1 Stück
+- `15427240067457` Sticker «Game Controller» · 1 Stück
+- `15427240100225` Sticker «Gamer Headset» · 1 Stück
+- `15427240132993` Sticker «Gecko» · 1 Stück
+- `15427240165761` Sticker «Ghost» · 1 Stück
+- `15427240198529` Sticker «Gift Box» · 1 Stück
+- `15427240231297` Sticker «Giraffe» · 1 Stück
+- `15427240264065` Sticker «Goat» · 1 Stück
+- `15427240296833` Sticker «Golf» · 1 Stück
+- `15427240329601` Sticker «Grapes» · 1 Stück
+- `15427240362369` Sticker «Hamster» · 1 Stück
+- `15427240395137` Sticker «Headphones» · 1 Stück
+- `15427240427905` Sticker «Hedgehog» · 1 Stück
+- `15427240493441` Sticker «Hippo» · 1 Stück
+- `15427240526209` Sticker «Horse» · 1 Stück
+- `15427240558977` Sticker «Hotdog» · 1 Stück
+- `15427240624513` Sticker «Hummingbird» · 1 Stück
+- `15427240657281` Sticker «Ice Hockey» · 1 Stück
+- … und 607 weitere
 
-## «Produktdetails» doppelt — 61
+## «Produktdetails» doppelt — 150
 
 Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
 
@@ -108,9 +108,9 @@ Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 - `15413023113601` Herren-Strickshirt «Riviera» – Cord-Kurzarm
 - `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
 - `15413025145217` Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
-- … und 36 weitere
+- … und 125 weitere
 
-## Floskel «hochwertiges Material» — 62
+## Floskel «hochwertiges Material» — 124
 
 Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
 
@@ -143,7 +143,7 @@ Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
 - `15413083242881` Boho Resort-Set · 2-teilig (Top & Hose)
 - `15413083832705` Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
 - `15413084062081` Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2026)
-- … und 37 weitere
+- … und 99 weitere
 
 ## Sie-Anrede im Produkttext — 5
 
