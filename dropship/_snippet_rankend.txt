@@ -4100,3 +4100,28 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15448929239425	Dieses Kissenbezug-Set aus reiner Baumwolle ist eine Bereicherung für jedes Schlafzimmer. Aus reiner Baumwolle gefertigt.
 15448929436033	Der kabellose USB-Glätt- und Lockenkamm ist dein idealer Begleiter für vielseitiges Haarstyling. Kabelloser USB-Betrieb für maximale Flexibilität.
 15448929468801	Dieses Glätteisen kombiniert schnelles Styling mit einer innovativen Kaltluftfunktion. Leistungsstarke 1365W.
+15448929796481	Dieses vielseitige 2-in-1 Gerät vereint Föhn und Lockenstab in einem.
+15448929862017	Die Ionen-Glättbürste ist ein vielseitiges Styling-Gerät, das für geschmeidiges und glänzendes Haar sorgt. Kompatibel mit 110-220V Spannungen.
+15448929993089	Dieses vielseitige 2-in-1-Gerät kombiniert Föhn und Stylingbürste in einem.
+15448930124161	Die kabellose Ionen-Glättbürste ist ein praktisches Beauty-Gerät für alle, die Wert auf glattes und geschmeidiges Haar legen.
+15448930189697	Dieser kabellose Haarglätter mit Anionen-Technologie schützt dein Haar vor Schäden und sorgt für ein geschmeidiges Styling. Leistung: 40W.
+15448930255233	Der kabellose Anionen-Glättkamm ist dein idealer Begleiter für unterwegs. Kabelloser Betrieb dank Lithium-Akku.
+15448930386305	Der kabellose Anionen-Glättkamm ist dein idealer Begleiter für unterwegs. Kabelloses Design für maximale Flexibilität.
+15448930451841	Der Anion-Haarstyler mit 38mm Rollstab ermöglicht vielseitiges Styling von glatt bis lockig. Neun Temperatureinstellungen von 110 bis 200 Grad.
+15448930517377	Der Hair Stick ist dein Geheimnis für eine makellose Frisur und bändigt mühelos abstehende Härchen.
+15448930550145	Verleih deinem Haar im Handumdrehen eine neue Farbe mit diesem temporären Haarfarbspray. 30ml Inhalt.
+15448930746753	Dieses vielseitige Styling-Tool ist perfekt für unterwegs und ermöglicht es dir, im Handumdrehen sowohl glatte Looks als auch schwungvolle Locken zu …
+15448930812289	Kreiere mühelos wunderschöne Wellen und Locken mit diesem kabellosen Lockenstab. Kabelloser Betrieb dank integriertem 5000mAh Lithium-Akku.
+15448930877825	Der kabellose 2-in-1 Glätt- und Stylingkamm ist dein idealer Begleiter für unterwegs. Kabelloser Betrieb dank Lithium-Akku.
+15448930976129	Dieses multifunktionale 2-in-1 Gerät vereint Haartrockner und Glätteisen in einem. Nennleistung von 300 Watt.
+15448931041665	Dieser elektrische Haarglätter wurde speziell für den Einsatz im Salon oder für anspruchsvolles Haarstyling zuhause entwickelt. Leistungsstark mit 80 W.
+15448931303809	Dieser vielseitige 2-in-1 Haarglätter kombiniert Glätten und Stylen in einem handlichen Gerät. Leistungsstarker 1500W bürstenloser Motor.
+15448931467649	Kreiere im Handumdrehen voluminöse Styles oder glattes Haar mit dieser rotierenden Warmluftbürste. Leistung: 1000 W.
+15448931697025	Dieser kabellose 2-in-1 Haarstyler ist Lockenstab und Glätteisen in einem Gerät. Kabelloser Betrieb dank Lithium-Akku.
+15448931729793	Dieses vielseitige 2-in-1-Gerät ermöglicht dir sowohl glattes Haar als auch schwungvolle Locken.
+15448931795329	Das kabellose Glätteisen ist der perfekte Begleiter für unterwegs. Kabelloser Betrieb dank integriertem Lithium-Akku.
+15448931893633	Dieses vielseitige 2-in-1-Gerät vereint Glättbürste und Lockenstab in einem praktischen Tool.
+15448931926401	Dieses kabellose 2-in-1 Gerät ist perfekt für unterwegs und ermöglicht dir sowohl glattes als auch lockiges Haar zu stylen. Nennleistung: 35W.
+15448932057473	Diese doppellagige Schlafhaube aus luxuriösem Charmeuse-Satin ist ideal für die Pflege deiner Haare während des Schlafs.
+15448932221313	Dieser professionelle Lockenstab mit 38mm Durchmesser zaubert mühelos glänzende Beach Waves.
+15448932385153	Dieser automatische Lockenstab mit 32mm Durchmesser zaubert mühelos atemberaubende Wellen.
