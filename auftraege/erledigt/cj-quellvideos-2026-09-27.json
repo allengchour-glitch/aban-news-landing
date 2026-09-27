@@ -17,6 +17,26 @@
       "url": "https://download-only-api.cjdropshipping.com/624d24c0c92171eda0e06732b78e0102/507e29b9d9a4410693b3eac3584485c7-05c640ee56d790e23808508988195faf-ld.mp4"
     }
   ],
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-27T21:17:10.706Z",
+  "dauer_s": 41.8,
+  "ergebnis": {
+    "videos": [
+      {
+        "name": "reiserucksack",
+        "bytes": 6962259,
+        "datei": "auftraege/ergebnis/cj-quellvideos-2026-09-27-reiserucksack.mp4"
+      },
+      {
+        "name": "lederrucksack",
+        "bytes": 6044114,
+        "datei": "auftraege/ergebnis/cj-quellvideos-2026-09-27-lederrucksack.mp4"
+      },
+      {
+        "name": "eierschuettler",
+        "bytes": 7347401,
+        "datei": "auftraege/ergebnis/cj-quellvideos-2026-09-27-eierschuettler.mp4"
+      }
+    ]
+  }
 }
