@@ -12,3 +12,4 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 | 2 | Daunen-Winterdecke | `daunen-winterdecke-892032` |
 | 1 | Netz-Mikrofonständer-Set | `netz-mikrofonstander-set-91e89e` |
 | 1 | Winter Mid-Calf Stiefel aus Faux Fell | `winter-mid-calf-stiefel-aus-faux-fell-146241` |
+| 1 | Paul Hewitt Armband «R-23M» | `paul-hewitt-armband-r-23m-s0397548` |

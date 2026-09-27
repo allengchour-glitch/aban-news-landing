@@ -423,7 +423,7 @@ Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_
   `/tmp/social_autopilot.sh` (postet alle 4h 1 Bild + Reel-wenn-fällig, liest Token aus /tmp).
 - **Captions:** Bild-Queue + Reel-Engine tragen «🔗 luxestyle.ch · Link in Bio» (IG-Link nicht klickbar → Bio).
   ✅ IG-Bio-Link GESETZT (gemessen 22.09.: `website` = luxestyle.ch). ⚠️ TikTok-Bio-Link NICHT gesetzt (0× `bioLink`
-  im Profil-HTML) → Betreiber-Klick. Meta-Seiten-Token ohne Ablauf, aber **Datenzugang endet 05.10.2026 18:50 UTC**.
+  im Profil-HTML) → Betreiber-Klick. Meta-Seiten-Token ohne Ablauf, **Datenzugang endet 05.10.2026 18:50 UTC und wird NICHT erneuert** (Betreiber 27.09.) → Autopilot postet IG/FB dann über Metricool.
 - **🗑️ Live-Post-LÖSCHEN (Stand 25.09.):** Betreiber «lösche die post die nicht passen automatisch» → `automation/ig_aufraeumen.mjs`
   (Aufseher täglich, Gründe TEXT/PRODUKT/DOPPEL, FB-Zwilling, >500 Aufrufe nie, 5/Tag; Journal Nachtrag 90). Die alte Zeile «geht NICHT» ist überholt.
 
@@ -502,6 +502,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-27 · 📴 **«meta brauch nicht habe ja metricool»: Bildpost + Karussell haben jetzt einen Metricool-Weg (Entwurf 1/8 Bilder auf IG+FB getestet und gelöscht), Autopilot schaltet bei `data_access_expires_at` selbst um (`/me` sagt nach Ablauf evtl. weiter ok), Kaufbar-Prüfung tokenlos; Nebenfund: Saison-Zeilen ohne Shopify-ID bekamen auf FB die Startseite → Zeilen-ID = Handle.** Ablaufdatum ≠ Fehlercode → Journal Nachtrag 100
 - 2026-09-27 · 🏆 **«jeder Post ein Meisterwerk»: `meisterwerk_tor.py` vor jedem Reel-Post (Hook ≥3 in der 1. Sekunde, ≤50 % Standbild, ≥1080×1920, 6–35 s, −30…−8 LUFS) — 8/14 gepostete fielen durch, die 2 heute geplanten gelöscht (eine Diashow mit Bildpreis 4.90 bei live 15.90); Kaufbar-Prüfung über die TOKENLOSE Storefront API (von der Play-Store-App-Session).** Bildpreis per OCR prüfen = nächste Klasse → Journal Nachtrag 99
 - 2026-09-27 · 📊 **Betreiber: «du bist metricool master und sozial master … analysiert was am besten ist» → 30-T-Messung über Metricool: TikTok Median 272/Post, YouTube 91, IG 17, FB 1–2, Pinterest 0 (44 Pins, 0 Klicks) → TikTok 12→8 h, Pinterest 6→24 h (delegierter Entscheid), IG+FB über Metricool ohne Meta-Token, 11 fremde Entwürfe gelöscht.** Nächste Klasse: TikTok-Hook (1,8 s von 11 s) → `dropship/SOCIAL-ANALYSE-2026-09-27.md`
 - 2026-09-27 · 🔑 **Zugänge da, aber ungenutzt: FORTURA_FTP_* standen in der Umgebung, 4 Skripte lasen nur `/tmp/fortura_env.sh` → Keepalive schreibt die Datei aus der Umgebung (Feed 20'148 Zeilen); Metricool-TikTok/YouTube brach ohne Shop-Token ab (37 h still) → Kaufbar-Prüfung über öffentliche `/products/<handle>.js`, 404 ohne Ledger-Urteil; SHOPIFY_CLIENT_* fehlen weiter (Pinterest, IG/FB, Bestell-Ampel).** Zugang dort suchen, wo er heute liegt → Journal Nachtrag 98

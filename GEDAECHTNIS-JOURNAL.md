@@ -6,6 +6,30 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 100 — 27.09.2026 · «meta brauch nicht habe ja metricool»: IG/FB-Bild und Karussell über Metricool
+
+**Anlass:** Die Ampel mahnte täglich «Meta-Datenzugang endet 05.10. — Betreiber erneuert im Graph-Explorer». Der Betreiber
+will das nicht: Metricool ist verbunden (IG luxestyle.ch, FB-Seite 1049840534888592).
+
+**Gemessen:** Ohne Meta-Token hatte nur das REEL einen Metricool-Weg (27.09. früher). Bildpost (`social-autopost-meta.mjs`)
+und Karussell (`ig_karussell_post.mjs`) wären ab 05.10. still gewesen. Zudem meldet `/me` nach Ablauf des *Datenzugangs*
+nicht zwingend einen Fehler — der Autopilot hätte Meta weiter für gültig gehalten und Posts wären gescheitert.
+
+**Getan:**
+- Beide Poster haben einen Metricool-Weg (`WEG=metricool` oder automatisch ohne Meta-Token): IG und FB je eine Planung
+  (FB behält seinen klickbaren Produktlink), `instagramData.type=POST`, Karussell = mehrere `media`. Vorher je ein Entwurf
+  mit 1 und 8 Bildern auf IG und FB angelegt und gelöscht (200/200).
+- Kaufbar-Prüfung ohne Shop-Token über die tokenlose Storefront API (Bild: per Produkt-ID; Karussell: per Handle).
+- **Nebenfund:** Saison-Zeilen der Bild-Queue heissen `<handle>-<6 Ziffern>` ohne Shopify-ID → keine Kaufbar-Prüfung, Facebook
+  bekam die Startseite. Die Zeilen-ID IST der Handle → jetzt Prüfung + Produktlink (DRY: Overknee-Stiefel → /products/…-621200).
+- Autopilot: `data_access_expires_at` ≤ jetzt → `META_OK=0` (Status `datenzugang-abgelaufen`); Nachschub vor die Meta-Weiche
+  gezogen (braucht nur den Shop-Token); Metricool-Zweig postet Bild + Reel + Karussell.
+- Ampel ruft nur noch, wenn Metricool fehlt. Routine `trig_013HUsEqgHvrSVwBuVe4hse7` umgebaut: 06.10. Nachmessung statt Erinnerung.
+
+**Lehre:** Ein Ablaufdatum ist kein Fehlercode. Wer die Gültigkeit mit einem Aufruf prüft, der nach Ablauf weiter «ok» sagt,
+merkt den Ausfall erst an gescheiterten Posts → das Datum selbst prüfen. Und: bevor man den Betreiber um einen Zugang bittet,
+fragen, ob ein anderer verbundener Dienst denselben Kanal schon bedient.
+
 ## 2026-09-22 · 🌐 «webseite ist a und o, optimiere alles und produkten auch» — erst die 953 besuchten Seiten, dann der ganze Katalog
 
 **Messung 1 — wo Menschen ankommen (60 Tage, 845 aktive Produktseiten, 1'510 Sitzungen):** Sie-Form 222 ·
