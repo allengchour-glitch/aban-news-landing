@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-27 20:04 UTC, Stand 2026-09-27 20:34 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-27 20:04 UTC, Stand 2026-09-27 20:35 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **4'854**
-- Optionen mit englischen Werten (Kandidaten): 678
+- Produkte gesehen: **5'452**
+- Optionen mit englischen Werten (Kandidaten): 726
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'010
+- Werte mit unbekanntem Wort (unverändert): 3'277
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 27
-- übersprungen «kollision-nach-uebersetzung»: 15
+- übersprungen «kollision-nach-uebersetzung»: 16
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -50,6 +50,7 @@
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 - `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert; Gray Brown → Grau-Braun
+- `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -96,5 +97,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 159, `light` 108, `color` 88, `⟨satzbau:adjektiv-vor-nomen⟩` 61, `mother` 61, `core` 53, `hat` 46, `to` 45, `rope` 44, `lens` 38, `father` 38, `for` 37, `high` 35, `generation` 34, `shell` 32, `powder` 32, `no` 30, `years` 30, `old` 30, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `tea` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `suit` 21, `nail` 21, `surface` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `handle` 20, `cocoa` 20, `comfortable` 20, `⟨satzbau:material-vor-farbe⟩` 19, `number` 19, `deer` 19, `belt` 18, `carbon` 18, `one` 18, `clothing` 18, `face` 17, `pad` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `full` 15, `ice` 15, `buckle` 15, `milk` 15, `background` 15, `waist` 15
+`degrees` 159, `light` 108, `color` 100, `⟨satzbau:adjektiv-vor-nomen⟩` 63, `mother` 61, `shell` 53, `core` 53, `hat` 46, `to` 45, `rope` 44, `case` 38, `lens` 38, `father` 38, `high` 37, `for` 37, `generation` 34, `powder` 33, `no` 30, `surface` 30, `years` 30, `old` 30, `adjustable` 29, `mom` 28, `bag` 26, `insert` 26, `crotch` 26, `dog` 25, `belt` 24, `tea` 24, `batteries` 24, `dad` 24, `of` 23, `stone` 22, `face` 22, `electric` 22, `housing` 22, `suit` 21, `nail` 21, `one` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `handle` 20, `cocoa` 20, `comfortable` 20, `⟨satzbau:material-vor-farbe⟩` 19, `number` 19, `deer` 19, `carbon` 18, `noodles` 18, `clothing` 18, `ice` 17, `waist` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `pad` 16, `three` 16, `gallium` 16, `nitride` 16, `sunglasses` 16
 

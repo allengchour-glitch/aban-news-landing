@@ -35736,3 +35736,8 @@ gid://shopify/Product/15485690085761	CHF 17.11	10 Varianten	V-Ausschnitt Häkels
 gid://shopify/Product/15485690216833	CHF 11.41	25 Varianten	Langarm V-Neck Top Slim-Fit
 gid://shopify/Product/15485690347905	CHF 12.15	25 Varianten	Waffle-Strick Langarmshirt mit Rückenknöpfen
 gid://shopify/Product/15485690478977	CHF 14.57	30 Varianten	Samt-Bluse mit Schnürung und Ballonärmeln
+gid://shopify/Product/15485690544513	CHF 10.54	4 Varianten	Rüschenbluse im französischen Stil
+gid://shopify/Product/15485690708353	CHF 16.86	5 Varianten	Edle Off-Shoulder Bluse im Zweiteiler-Look
+gid://shopify/Product/15485691920769	CHF 12.52	4 Varianten	Kariertes Kurzarmhemd für Herren
+gid://shopify/Product/15485692051841	CHF 12.80	36 Varianten	Herren Sport T-Shirt Langarm – Sommer
+gid://shopify/Product/15485692215681	CHF 9.50	48 Varianten	Lässiges Kurzarm-Shirt aus Baumwoll-Mix
