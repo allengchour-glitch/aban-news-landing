@@ -129,6 +129,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Seite 4 war der Ausreisser, nicht die Regel. **Eine Seite ist keine Stichprobe** — dieselbe Klasse
   wie das alphabetische Artefakt vom 23.09. Beide Seiten tragen übrigens dasselbe SKU-Schema
   (`CJ-<pid>`, 100 von 100) und liegen zwei Tage auseinander (12.–14.08.), das erklärt es also nicht.
+- **✅ DRITTER KATZEN-BLOCK (Seite 6): 59 Produkte / 59 Varianten**, `userErrors` leer, **59/59 an der
+  echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**. Diese Seite trug bei
+  **100 von 100** Produkten einen Einkaufspreis, alle in CHF — **41 waren bereits in Ordnung.**
+  Wieder **0 Verlustfälle und 0 Faktor-über-3**, das Band lag bei 21,1–37,9 PROZENT. Grösste Fälle:
+  Keramik-Trinkbrunnen 54.90 bei EK 38.96 → 69.90 · Katzenbauch-Kissen 55.90/39.64 → 74.90 ·
+  Wasserbecken 58.90/41.67 → 74.90.
+- **📊 STAND DER KLASSE: 500 der 806 Katzenprodukte gemessen → 300 Produkte / 902 Varianten live
+  korrigiert**, jedes an der Kundenseite nachgemessen (196/196 · 45/45 · 59/59). **Die Verlustfälle
+  stecken alle im ersten Block** (Seiten 1–3, IDs 15446–15493); Seiten 4–6 (IDs 15493–15502) hatten
+  **keinen einzigen** — dort ist nur die Zielmarge nicht erreicht. **Auch das ist wieder die
+  Block-Streuung: die Importcharge entscheidet, nicht die Kategorie.**
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
 
 **📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
