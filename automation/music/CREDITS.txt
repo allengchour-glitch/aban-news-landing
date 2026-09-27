@@ -78,3 +78,4 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 — LIZENZIERT (KI-Produktion, lizenzfrei laut Anbieter, keine Namensnennung) — echte Instrumente statt GM-SoundFont:
 - luxe-epic-anime.wav     (episches Anime-Abenteuer, Fiedel + Tin Whistle, E-Gitarren, Live-Drums, Orchester, ~173 BPM; vidIQ
   vidiq_generate_music 27.09.2026, 25 Credits; Betreiber 27.09.: «musik ist viel besser geworden»; gemastert −12.9 LUFS / −1.4 dBTP)
+- luxe-adventure-uplift.wav  (episches Orchester-Abenteuer, Streicher + Blechbläser + Holzbläser + Pauken, instrumental, 136 BPM; vidIQ vidiq_generate_music (lizenzfrei laut Anbieter); blind 27.09.: Orchester 10, episch 10, Klang echt 10, ~136 BPM; gemastert -14.5 LUFS / -2.7 dBTP; aufgenommen mit musik_aufnehmen.py)

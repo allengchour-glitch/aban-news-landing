@@ -61,6 +61,13 @@ const STIMMUNG = {
   haustier: ['luxe-epic-anime.wav', 'luxe-celtic-epic.wav', 'luxe-anime-opening.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-house1.wav'],
   kinder:   ['luxe-epic-anime.wav', 'luxe-celtic-epic.wav', 'luxe-anime-opening.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-orchestra.wav', 'luxe-cinematic-house.wav'],
 };
+// 28.09.2026 Betreiber: «musik jetzt nur epischer guter sound instrumental orchester odr so» → JEDE Warengruppe nur noch
+// epische Orchester-Stücke. Blind bewertet (Gemini, Orchester/episch/Klang echt 0–10): adventure-uplift 10/10/10,
+// epic-anime 9/9/9, orchestra 9/9/8. Durchgefallen: anime-battle (Metal), celtic-rock, fashion-elegant (Synth), celtic-epic («Polka»).
+// Die alten Pools bleiben oben stehen (Rückweg), gelten aber nicht, solange EPISCH_NUR gilt.
+const EPISCH = ['luxe-adventure-uplift.wav', 'luxe-epic-anime.wav', 'luxe-orchestra.wav'];
+const EPISCH_NUR = true;
+if (EPISCH_NUR) { for (const k of Object.keys(STIMMUNG)) STIMMUNG[k] = [...EPISCH]; MUSIC.splice(0, MUSIC.length, ...EPISCH); }
 // 26.09.2026: Sperrliste automation/music/_gesperrt.txt (Betreiber mag luxe-lounge-sax nicht). Gilt fuer JEDE Wahl unten —
 // Warengruppen-Pool, Gesamt-Pool und den alten MUSIC-Rueckfall.
 const GESPERRT = new Set((() => { try { return fs.readFileSync('automation/music/_gesperrt.txt', 'utf8').split('\n')

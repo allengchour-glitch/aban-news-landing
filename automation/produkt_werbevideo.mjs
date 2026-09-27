@@ -228,7 +228,7 @@ async function bauen(handle) {
   const ziel = Number(process.env.ZIEL_S || 12);
   const maxBilder = Number(process.env.MAX_BILDER || 5);
   const ausgabe = process.env.AUSGABE || 'reels';
-  const musik = process.env.MUSIK || 'automation/music/luxe-premium.wav';
+  const musik = process.env.MUSIK || 'automation/music/luxe-epic-anime.wav'   // 28.09.: nur episch (Betreiber);
   if (!fs.existsSync(musik)) { console.error(`Musik fehlt: ${musik}`); return null; }
 
   const p = await holeJson(`${SHOP}/products/${handle}.js`);
