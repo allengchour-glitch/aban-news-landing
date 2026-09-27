@@ -224,7 +224,18 @@ def musik_plan(var):
     ac = np.correlate(flux, flux, "full")[len(flux) - 1:]
     idx = np.arange(len(ac))
     bpm = max(np.arange(90, 165, 0.25), key=lambda b: sum(np.interp(60 / b * fps * k, idx, ac) for k in (1, 2, 4)))
+    # 27.09.2026: Tempo aus CREDITS.txt, wenn eingetragen — die Suche oben endet bei 165 BPM, luxe-epic-anime hat ~173
+    # (librosa/Autokorrelation verschaetzen sich laut schnitt.py bei 5 von 12 Stuecken). Schnelle Stuecke: Schnitte im Halbtakt.
+    try:
+        cr = open(os.path.join(REPO, "automation", "music", "CREDITS.txt"), encoding="utf-8").read()
+        m = re.search(r"-\s+" + re.escape(var["musik"]) + r"\b[^\n]*?~?(\d{2,3})\s*BPM", cr)
+        if m:
+            bpm = float(m.group(1))
+    except OSError:
+        pass
     per = 60 / bpm
+    while per < 0.32:
+        per *= 2
     tl = len(flux) / fps
     phase = max(np.arange(0, per, 0.005), key=lambda ph: np.interp(np.arange(ph, tl, per) * fps, np.arange(len(flux)), flux).sum())
     # Musik so anschneiden, dass ein Beat genau auf t=0 faellt → alle Schnitte liegen auf k*per
@@ -239,7 +250,9 @@ def zeitplan(n_prod, per, bilder_je):
     for k in range(n_prod):
         b0 = intro_beats + k * bpp
         t0, t1 = b0 * per, (b0 + bpp) * per
-        schalt = [t0] + ([(b0 + math.ceil(bpp / 2)) * per] if bilder_je[k] > 1 else [])
+        # 27.09.2026 (Betreiber «schnelle bildwechsel»): alle gewaehlten Bilder, gleichmaessig auf die Schlaege verteilt
+        nb = max(1, min(bilder_je[k], bpp // 2))
+        schalt = sorted({(b0 + round(i * bpp / nb)) * per for i in range(nb)})
         szenen.append(("produkt", t0, t1, {"k": k, "bildwechsel": schalt}))
     szenen.append(("outro", (intro_beats + n_prod * bpp) * per, DAUER, {}))
     return szenen
@@ -318,6 +331,9 @@ class Laub:
 
     def __init__(self, seed, art="laub"):
         rnd = random.Random(seed)
+        if art == "keine":   # 27.09.: Themen-Sets ohne Saison (Gadgets, Küche …) — keine fallenden Blätter
+            self.blaetter = []
+            return
         if art == "sterne":   # 23.09.: Kuscheltiere — Funkeln statt Herbstlaub
             stern, funkel = emoji_bild("\u2B50", 100), emoji_bild("\u2728", 100)
             sprites = [stern, funkel, tint(funkel, (1.0, 0.95, 0.75)), tint(stern, (1.0, 0.9, 0.8))]
@@ -518,7 +534,9 @@ def stimme_rendern(var, tmp):
 
 # ---------------------------------------------------------------- Renderer
 def render(var_name, var, out_dir, dry=False, probe_dir=None):
-    print(f"── Variante {var_name}: {var['datei']}")
+    global DAUER
+    DAUER = float(var.get("dauer", 15.0))   # 27.09.2026: laengere Sammel-Videos (Betreiber «kannst ja längere videos machen»)
+    print(f"── Variante {var_name}: {var['datei']} ({DAUER:.0f} s)")
     produkte, _ = lade_produkte(var)
     for p in produkte:
         print(f"   ✓ {p['preis']:>14}  {p['name']}  ({p['url']})")
@@ -739,6 +757,7 @@ def main():
     ap.add_argument("--variante", default="")
     ap.add_argument("--out-dir", default=os.path.join(REPO, "social", "reels"))
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--json", help="Variante aus JSON-Datei (montage_auswahl.py), statt aus VARIANTEN")
     ap.add_argument("--messen"); ap.add_argument("--pruefen")
     ap.add_argument("--frames-dir", default=os.path.join(tempfile.gettempdir(), "promo_montage_frames"))
     a = ap.parse_args()
@@ -746,6 +765,11 @@ def main():
         sys.exit(pruefen(a.pruefen))
     if a.messen:
         sys.exit(0 if messen(a.messen, a.frames_dir)["ok"] else 2)
+    if a.json:
+        var = json.load(open(a.json, encoding="utf-8"))
+        name = os.path.splitext(os.path.basename(a.json))[0]
+        VARIANTEN[name] = var
+        a.variante = name
     namen = [v.strip().lower() for v in a.variante.split(",") if v.strip()] or list(VARIANTEN)
     fehl = 0
     for n in namen:

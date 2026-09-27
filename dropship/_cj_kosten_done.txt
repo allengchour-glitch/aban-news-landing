@@ -36631,3 +36631,8 @@ gid://shopify/Product/15492035019137	CHF 7.20	1 Varianten	Dopamin-Halskette mit 
 gid://shopify/Product/15492035084673	CHF 29.69	1 Varianten	Eleganter 925er Silberring mit 3 Karat Moissanit
 gid://shopify/Product/15492035346817	CHF 16.70	40 Varianten	Off-Shoulder Polka-Dot Maxikleid
 gid://shopify/Product/15492035379585	CHF 19.67	4 Varianten	Etuikleid mit Raffung, One-Shoulder & Strass
+gid://shopify/Product/15492035445121	CHF 18.39	4 Varianten	Farbenfrohes Neckholder-Kleid
+gid://shopify/Product/15492035477889	CHF 18.03	4 Varianten	Pailletten-Spitzen Maxikleid
+gid://shopify/Product/15492035543425	CHF 16.11	8 Varianten	Halterneck Minikleid aus Chiffon
+gid://shopify/Product/15492035576193	CHF 17.36	8 Varianten	Pailletten-Minikleid mit Neckholder
+gid://shopify/Product/15492035608961	CHF 18.93	8 Varianten	Neckholder-Kleid mit Spitze
