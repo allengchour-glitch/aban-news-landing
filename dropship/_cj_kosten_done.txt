@@ -36061,3 +36061,7 @@ gid://shopify/Product/15489662189953	CHF 28.87	1 Varianten	Plüsch-Kaninchen-Kop
 gid://shopify/Product/15489662288257	CHF 25.67	1 Varianten	Silberne BH-Körbchen-Halter
 gid://shopify/Product/15489700954497	CHF 25.09	36 Varianten	Laufschuhe mit Hoehe
 gid://shopify/Product/15489701216641	CHF 16.23	44 Varianten	Outdoor-Schuhe
+gid://shopify/Product/15489701478785	CHF 28.87	12 Varianten	Graffiti Sneaker
+gid://shopify/Product/15489701675393	CHF 37.18	5 Varianten	Leichtes Laufschuh-Modell
+gid://shopify/Product/15489702068609	CHF 23.78	54 Varianten	Wasserdichte Martin Stiefel
+gid://shopify/Product/15489829831041	CHF 13.66	16 Varianten	Gestreifte Sneaker
