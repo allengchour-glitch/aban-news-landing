@@ -959,6 +959,10 @@ der Poster brach mit «kein Shop-Token» ab (Kaufbar-Prüfung nur über die Admi
 getestet, 20'148 Zeilen. `metricool_tiktok_post.mjs`: ohne Token Prüfung über die öffentliche `/products/<handle>.js`
 (200 + available, Preise für `preisVeraltet`); ohne Handle/bei Fehler kein Post, ein 404 schreibt nichts ins Ledger (Bot-Cache).
 DRY: «Storefront kaufbar (ohne Token)», Body gebaut. Pinterest braucht den Token weiterhin zur Produktauswahl.
+**Nachtrag (Betreiber «metricool push über sozial»):** Metricool hat FB, IG, Threads, Pinterest, TikTok, YouTube verbunden →
+`NETZ=instagram` plant ein Reel auf Instagram + Facebook (type REEL, ohne Threads); der Autopilot nimmt diesen Weg, wenn der
+Meta-Token fehlt (gleiche Marke, 8 h). Storefront antwortete beim 2. Abruf mit 429 → 4 Versuche mit 10/20/30 s. DRY: Body korrekt.
+In Metricool liegen 8 fremde ENTWÜRFE (IG/FB, einer mit Threads) — Entwürfe veröffentlichen nicht, bewusst unberührt.
 **Lehre:** Wenn der Betreiber «ist doch da» sagt, zuerst die Namen messen — und dann prüfen, ob jedes Skript den Zugang
 auch dort sucht, wo er jetzt liegt (Umgebung statt Datei). Eine Prüfung, die nur einen Weg kennt, macht aus einem
 fehlenden Token einen Totalausfall.

@@ -50,7 +50,10 @@ const BASE = 'https://app.metricool.com/api';
 // Metricool hat sechs Kanaele verbunden (FB, IG, TikTok, Pinterest, YouTube, Threads); YouTube lag brach.
 // Threads bleibt aus (Hausregel 07.07.). Alle Wachen (Lock, Ledger, Produkt aktiv, Adresse) gelten je Netz.
 const NETZ = (process.env.NETZ || 'tiktok').toLowerCase();
-if (!['tiktok', 'youtube'].includes(NETZ)) { console.error(`NETZ=${NETZ} nicht unterstuetzt (tiktok|youtube)`); process.exit(1); }
+// 27.09.2026 (Betreiber «metricool push über sozial»): NETZ=instagram plant das Reel auf Instagram UND Facebook ueber
+// Metricool — der Weg, wenn der Meta-Seiten-Token fehlt (frischer Container). Ein Video, zwei Kanaele desselben Konzerns,
+// wie der Graph-Poster (IG + FB-Zwilling). Threads bleibt draussen (Hausregel 07.07.).
+if (!['tiktok', 'youtube', 'instagram'].includes(NETZ)) { console.error(`NETZ=${NETZ} nicht unterstuetzt (tiktok|youtube|instagram)`); process.exit(1); }
 const POSTED = `posted-${NETZ}`, FEHLER = `${NETZ}-fehler`;
 // Beste Stunde aus Metricools eigener Auswertung (/v2/scheduler/besttimes/{netz}) statt «jetzt + 10 Min»:
 // innerhalb der naechsten FENSTER_H Stunden die Stunde mit dem hoechsten Wert. Scheitert die Abfrage → jetzt + VORLAUF.
@@ -154,8 +157,14 @@ if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nir
 function storefrontPruefung(caption) {
   const m = /\/products\/([a-z0-9][a-z0-9-]*)/i.exec(caption || '');
   if (!m) return { ok: false, grund: 'kein Shop-Token und kein Produkt-Link in der Caption' };
-  const r = spawnSync('curl', ['-s', '--max-time', '25', '-w', '\n%{http_code}', `https://luxestyle.ch/products/${m[1]}.js`], { encoding: 'utf8' });
-  const teile = (r.stdout || '').trim().split('\n'); const code = teile.pop();
+  // 429 = Drossel des Storefront (gemessen 27.09. beim zweiten Abruf binnen Minuten) → warten und bis zu 4x wiederholen.
+  let teile = [], code = '';
+  for (let a = 0; a < 4; a++) {
+    const r = spawnSync('curl', ['-s', '--max-time', '25', '-w', '\n%{http_code}', `https://luxestyle.ch/products/${m[1]}.js`], { encoding: 'utf8' });
+    teile = (r.stdout || '').trim().split('\n'); code = teile.pop();
+    if (code !== '429') break;
+    spawnSync('sleep', [String(10 * (a + 1))]);
+  }
   if (code !== '200') return { ok: false, grund: `Storefront HTTP ${code || 'keine Antwort'} (ohne Token, kein Urteil)` };
   try {
     const p = JSON.parse(teile.join('\n'));
@@ -235,13 +244,16 @@ const ytTitel = (() => { const m = /«([^»]{4,})»/.exec(caption); const t = (m
 const ytTags = (tags || '').split(/[,\s]+/).filter(Boolean).map(t => t.replace(/^#/, '')).slice(0, 12);
 if (NETZ === 'youtube') console.log(`  YouTube-Titel: ${ytTitel}`);
 function bauBody(media) {
-  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: [{ network: NETZ }], media: [media],
+  const netze = NETZ === 'instagram' ? [{ network: 'instagram' }, { network: 'facebook' }] : [{ network: NETZ }];
+  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: netze, media: [media],
                  autoPublish: true, draft: false, shortener: false };
   // TikTok verlangt die Kennzeichnung von Werbung fuer die eigene Marke (Content-Disclosure «Your brand»).
   if (NETZ === 'tiktok') body.tiktokData = { autoPublish: true, commercialContentOwnBrand: true, commercialContentThirdParty: false };
   if (NETZ === 'tiktok' && DL_STICKER && linkUtm) body.tiktokData.articleLink = { url: linkUtm, title: 'Zum Produkt' };
   if (NETZ === 'youtube') body.youtubeData = { title: ytTitel, type: 'short', privacy: 'public', category: 'HOWTO_STYLE',
                                                madeForKids: false, notifySubscribers: true, isAiGeneratedContent: false, tags: ytTags };
+  if (NETZ === 'instagram') { body.instagramData = { autoPublish: true, type: 'REEL', showReelOnFeed: true, isAiGenerated: false };
+                              body.facebookData = { type: 'REEL' }; }
   if (SMARTLINK_ID && linkUtm) body.smartLinkData = { targetUrl: linkUtm, ids: [Number(SMARTLINK_ID)] };
   return body;
 }
