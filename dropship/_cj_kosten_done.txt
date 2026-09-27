@@ -36663,3 +36663,39 @@ gid://shopify/Product/15492085776769	CHF 11.14	1 Varianten	Mini USB Stick 4GB 8G
 gid://shopify/Product/15492085973377	CHF 17.14	1 Varianten	EAGET T1 Micro SD Speicherkarte
 gid://shopify/Product/15492086071681	CHF 10.24	1 Varianten	Faltbarer Sonnen- und Regenschirm
 gid://shopify/Product/15492086301057	CHF 6.20	1 Varianten	Präzisions-Winkel für Holzbearbeitung
+gid://shopify/Product/15492086563201	CHF 17.90	1 Varianten	USB Lötkolben für Reparaturen
+gid://shopify/Product/15492086825345	CHF 9.54	1 Varianten	Mini-Hand-Siegelgerät, USB-C aufladbar
+gid://shopify/Product/15492087087489	CHF 9.40	1 Varianten	Elektrischer Hornhautentferner für seidig glatte F
+gid://shopify/Product/15492087447937	CHF 23.89	1 Varianten	Alu-Dreieckswinkel für präzises Holzhandwerk
+gid://shopify/Product/15492088529281	CHF 8.52	1 Varianten	Kontur-Stick Set für multidimensionales Contouring
+gid://shopify/Product/15492090757505	CHF 45.99	1 Varianten	Holzregal mit 4 Ebenen
+gid://shopify/Product/15492091019649	CHF 27.10	1 Varianten	Kabel-Organizer mit Deckel und Rollen/Füssen
+gid://shopify/Product/15492091347329	CHF 31.74	1 Varianten	Smarter Aroma Diffuser für Bars und Hotels
+gid://shopify/Product/15492091937153	CHF 7.82	1 Varianten	Magnetisches Silikonarmband für Apple Watch
+gid://shopify/Product/15492092232065	CHF 16.62	1 Varianten	Memory Foam Kissenbezug, Eiskühlend (Paar)
+gid://shopify/Product/15492092494209	CHF 34.99	1 Varianten	PGM Golfschläger (Holz) für Damen und Herren
+gid://shopify/Product/15492095771009	CHF 10.49	1 Varianten	Präzisions-Wasserwaage aus Aluminium
+gid://shopify/Product/15492096033153	CHF 11.18	1 Varianten	Winkel Lineal 4-in-1 Orange
+gid://shopify/Product/15492096295297	CHF 13.98	1 Varianten	Dreieck-Lineal aus Aluminiumlegierung
+gid://shopify/Product/15492096590209	CHF 40.98	1 Varianten	Holzbearbeitungs-Bohrlehre für gerade Löcher
+gid://shopify/Product/15492096852353	CHF 29.56	1 Varianten	ToolkitRC WM150 Leistungsmesser 50V 150A
+gid://shopify/Product/15492097147265	CHF 49.83	1 Varianten	Profi Golf-Entfernungsmesser & Monokular
+gid://shopify/Product/15492097409409	CHF 100.61	1 Varianten	Stossfestes Manometer aus Edelstahl
+gid://shopify/Product/15492097900929	CHF 10.67	1 Varianten	Digitaler Neigungsmesser und Winkelmesser
+gid://shopify/Product/15492097933697	CHF 12.33	1 Varianten	3-in-1 Winkel- und Lochlehre für Holz
+gid://shopify/Product/15492098392449	CHF 12.28	1 Varianten	Stahlbandmass, 10 Meter, sturzsicher
+gid://shopify/Product/15492098457985	CHF 9.46	1 Varianten	Schraubenzieher-Set, magnetisch, phosphatiert
+gid://shopify/Product/15492098687361	CHF 8.70	1 Varianten	Abisolierzange für Elektriker
+gid://shopify/Product/15492098752897	CHF 60.76	1 Varianten	Kabellose elektrische Gartenschere mit Akku
+gid://shopify/Product/15492098982273	CHF 82.17	1 Varianten	Digitaler 6-in-1 pH-Meter Wassertester
+gid://shopify/Product/15492099441025	CHF 52.42	1 Varianten	Digitales Isolationsmessgerät
+gid://shopify/Product/15492099735937	CHF 5.95	1 Varianten	Holzmaserung Boden Reparaturstift
+gid://shopify/Product/15492100260225	CHF 33.65	1 Varianten	Digitales Bügelmessschrauben-Set
+gid://shopify/Product/15492100456833	CHF 5.58	1 Varianten	Gerades Edelstahl-Lineal (15, 20, 30, 50 cm)
+gid://shopify/Product/15492101013889	CHF 10.86	1 Varianten	Digitaler Neigungsmesser mit Magnetfuss
+gid://shopify/Product/15492101276033	CHF 15.34	1 Varianten	Zeichenstift-Set für Schule und Büro
+gid://shopify/Product/15492127850881	CHF 50.25	64 Varianten	Flache Schuhe mit Schleife
+gid://shopify/Product/15492127883649	CHF 18.43	18 Varianten	Retro Plateau-Sandalen für Damen
+gid://shopify/Product/15492127916417	CHF 15.08	24 Varianten	High-Top Stoffschuhe mit Blumenmuster
+gid://shopify/Product/15492127949185	CHF 28.99	10 Varianten	Geflochtene Plateau-Sandalen im Römer-Stil
+gid://shopify/Product/15492127981953	CHF 15.00	25 Varianten	Französische Flats mit Nieten
