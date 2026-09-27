@@ -37135,3 +37135,5 @@ gid://shopify/Product/15493113512321	CHF 9.90	1 Varianten	Komfortables Armband a
 gid://shopify/Product/15493113577857	CHF 24.76	1 Varianten	Hip-Hop Quarzuhr für Herren mit Strass-Zifferblatt
 gid://shopify/Product/15493119246721	CHF 21.07	1 Varianten	Feuerzange
 gid://shopify/Product/15493119312257	CHF 5.29	1 Varianten	Werkzeug für Fahrrad-Freilaufmontage
+gid://shopify/Product/15493119345025	CHF 31.46	36 Varianten	Radsport-Schuhe
+gid://shopify/Product/15493119377793	CHF 19.63	1 Varianten	Crimpzange für Dupont-Stecker
