@@ -35237,3 +35237,10 @@ gid://shopify/Product/15483936113025	CHF 12.56	2 Varianten	Kinder-Moskitonetz-Ze
 gid://shopify/Product/15483936276865	CHF 6.82	4 Varianten	Edelstahl-Armband
 gid://shopify/Product/15483936342401	CHF 6.59	17 Varianten	Mini Bibel-Anhanger
 gid://shopify/Product/15483936375169	CHF 13.93	1 Varianten	Wasserdichte Outdoor-Solarlampe · Solar oder Batte
+gid://shopify/Product/15484294791553	CHF 18.55	1 Varianten	Laptop-Kühler
+gid://shopify/Product/15484294955393	CHF 8.32	1 Varianten	Magnetischer Telefonhalter
+gid://shopify/Product/15484295020929	CHF 8.32	1 Varianten	Magnetischer Phone-Halter
+gid://shopify/Product/15484295152001	CHF 18.47	1 Varianten	Magnetischer Halter
+gid://shopify/Product/15484295381377	CHF 10.22	1 Varianten	Doppelseitiger Saugglocken-Halter
+gid://shopify/Product/15484354920833	CHF 7.40	1 Varianten	Kunstnagel-Sticker
+gid://shopify/Product/15484355838337	CHF 27.85	1 Varianten	Smart Roboter-Hund
