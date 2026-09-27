@@ -36815,3 +36815,5 @@ gid://shopify/Product/15492283793793	CHF 8.62	1 Varianten	Saugtier Spielzeug
 gid://shopify/Product/15492283859329	CHF 7.21	1 Varianten	Minz-Trauben-Katzenspielzeug zum Zahnen
 gid://shopify/Product/15492284547457	CHF 11.61	1 Varianten	Edelstahl-Frühstücksbecher mit Deckel
 gid://shopify/Product/15492285399425	CHF 7.48	1 Varianten	Farbwechselnde Abdeck-Foundation
+gid://shopify/Product/15492285661569	CHF 7.15	1 Varianten	Feuchtigkeitsspendender Lipgloss
+gid://shopify/Product/15492285792641	CHF 7.40	1 Varianten	Falsche Wimpern 3D
