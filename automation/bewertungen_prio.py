@@ -25,7 +25,9 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "dropship", "cj_reviews_done.txt")
 ZIEL = os.path.join(REPO, "dropship", "_bewertungen_prio.txt")
 # Reihen der Startseite und die grossen Welten — was die Kundin zuerst sieht.
-SICHTBAR = ["hype-jetzt", "bestseller", "neu-eingetroffen", "blitzversand-highlights", "damen-mode",
+# 27.09.2026: Saison-Reihen stehen seit 24./25.09. auf Startseiten-Platz 2 und 5 (Herbst, Halloween) — sie fehlten hier:
+# Herbst-Favoriten 117 aktive CJ-Produkte, 3 mit Bewertung, 32 nie geprueft.
+SICHTBAR = ["herbst-favoriten", "halloween", "hype-jetzt", "bestseller", "neu-eingetroffen", "blitzversand-highlights", "damen-mode",
             "wohnen-dekoration", "fur-ihn", "schmuck-uhren", "schuhe-sneaker", "sub-baby-kids",
             "elektronik-technik", "handy-zubehoer", "gaming", "sub-haustier", "beauty-pflege",
             "auto-kfz-zubehoer", "querbeet", "sub-kueche", "uhren", "sub-taschen"]
