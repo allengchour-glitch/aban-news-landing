@@ -36701,3 +36701,7 @@ gid://shopify/Product/15492127949185	CHF 28.99	10 Varianten	Geflochtene Plateau-
 gid://shopify/Product/15492127981953	CHF 15.00	25 Varianten	Französische Flats mit Nieten
 gid://shopify/Product/15492128014721	CHF 16.36	16 Varianten	Leoparden-Print Slingback Flats mit Schnalle
 gid://shopify/Product/15492128047489	CHF 25.37	24 Varianten	Sheepskin French Bow Gentle Ballet Flats
+gid://shopify/Product/15492128080257	CHF 29.88	9 Varianten	Echtleder Low-Top Schuhe für Damen
+gid://shopify/Product/15492128113025	CHF 20.31	24 Varianten	Schnürschuhe mit Plateauabsatz
+gid://shopify/Product/15492128145793	CHF 18.96	12 Varianten	Mary Jane Pumps mit Keilabsatz
+gid://shopify/Product/15492128178561	CHF 17.81	30 Varianten	Bestickte Mesh Flats mit eckiger Zehenpartie
