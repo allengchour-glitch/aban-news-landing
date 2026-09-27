@@ -15,7 +15,7 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 2. [~] 22:24 wartende Posts geprüft: 0 bewerben die 3 ausgelisteten (Schaukelgeist, 2 Sojawachskerzen); Endbericht folgt. **Ausgelistete Ware:** Lauf `cj_ausgelistet_sichtbar.py` auswerten (Bericht `dropship/CJ-AUSGELISTET-SICHTBAR.md`);
    ausgelistete Artikel aus wartenden Social-Posts nehmen (reels_seed.csv / posts_image.csv / ig_karussell.csv → Status
    `produkt-nicht-aktiv`), damit kein Post ein totes Produkt bewirbt.
-3. [ ] **Faktenblock-Nachtrag** (CJ-Merkmale in die Produktseite): Fortschritt messen (`_cj_specs_done.txt`), Stichprobe 5
+3. [x] ✅ 22:45 Stichprobe 5 live (WebFetch): 5/5 deutsch, Material passt zum Titel (Holz/Bambus, PU/Metall), 1 Widerspruch Gewicht (Uhr «ca. 100 g» vs. Text «148 g» — CJ productWeight vs. Groq-Text); «Patentleder», «Neuzeitbox», «geglühte Sohle» stehen im ALTEN Groq-Text, nicht im Block. Ledger 998. **Faktenblock-Nachtrag** (CJ-Merkmale in die Produktseite): Fortschritt messen (`_cj_specs_done.txt`), Stichprobe 5
    neue Blöcke per WebFetch ansehen (Material/Masse deutsch, keine Floskel, keine falsche Grösse).
 4. [x] ✅ 22:25 Formatprüfung eingebaut (ohne mediaCount → PAUSE «kein Urteil», DRY bestätigt). **cj_bild_backfill-Zählfehler:** meldet «45'333 mit ≤ 1 Bild» aus `/tmp/export.jsonl` (Export OHNE Medien) —
    Stichprobe 120 aktive CJ: 119 mit ≥ 3 Bildern. Kandidaten nur aus einem Export MIT Medienzahl (format_ok-Prüfung), sonst
@@ -23,7 +23,7 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 5. [x] ✅ 22:50 Herbst-Sammelvideo (6 Produkte, 24 s, Hook 6.46, Preise live ok) an Betreiber geschickt, liegt in social/montage_proben/ — posten nach OK. Gadgets: Pool fast nur Smartwatches + Werbetext-Bilder → Thema Herbst. **Sammel-Video (mehrere Produkte, 24 s, Musik luxe-epic-anime):** `montage_auswahl.py` lief in die Zeitgrenze (OCR bei
    Last 24) → Bildtext-Prüfung nur für die gewählten Bilder mit Cache, Pool kleiner; erstes Video «Gadgets» rendern,
    Kontaktbogen per Read prüfen, Preis-Metadatum `--pruefen`, dem Betreiber schicken. Posten erst nach seinem OK.
-6. [ ] **Hype-Recherche (Dauerauftrag):** Web-Suche Trends Ende September 2026 → `automation/hype_kuratieren.py` THEMEN +
+6. [x] ✅ 22:40 QUELLE 27.09.: Trends bestätigt (Hunde-Trinkflasche, Sternenhimmel-Projektor, UV-Reiniger, Qi2-Ladestation); neu «AquaBrush» (Sprüh-Haarbürste) Bestand 0 (Kanarienvogel Haarbürste = 3), Peeling-Seren abgelehnt; THEMEN unverändert. **Hype-Recherche (Dauerauftrag):** Web-Suche Trends Ende September 2026 → `automation/hype_kuratieren.py` THEMEN +
    QUELLE (Datum) aktualisieren, am Bestand messen, Kanarienvögel, Lauf.
 7. [ ] **Schnitt-Proben:** die zwei übrigen CJ-Quellvideos (Reiserucksack 16:9, Lederrucksack 9:16) mit `schnitt.py` +
    luxe-epic-anime schneiden, Tor muss bestehen, Kontaktbogen prüfen → als Proben bereitlegen (nicht posten).
@@ -35,3 +35,6 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 - 22:25 Punkt 4 erledigt; Punkt 5: montage_auswahl prüft nur noch ≤ 5 Bilder je Kandidat (Abbruch bei genug) — Lauf läuft.
 - 22:50 Punkt 5: Sammelvideo Herbst fertig (Intro-Karten fliegen auf den Beat ein: Hook 0.98 → 6.46; Füllwort-Namen «mit/aus/im» gekürzt).
 - 22:52 Ausgelistet-Lauf 1: 645 geprüft, 2 ausgelistet, 205 ohne Urteil = Varianten-SKUs als pid abgefragt → korrigiert, Lauf 2 läuft.
+- 22:44 Halloween-Sammelvideo (Betreiber «halloween sachen, auch fortune sachen / kostüme»): 3 Kostüme + 3 Deko, Hook 7.37, Preise live ok, an Betreiber geschickt (social/montage_proben/). Auswahl-Fixes: Kostüm = «Kostüm» im Titel (Produkttyp allein gab nur Zubehör), Lizenzfiguren gesperrt (Pennywise/Hagrid/PJ Masks …), Lebensmittel gesperrt («Trolli Dracula» = Gummibärchen). Fortura-Kostüme ohne Lizenz und mit Halloween-Bezug: Ghost/Hexe/Sensemann/Spider Witch — Auswahl nahm die bewerteten/textfreien zuerst.
+- 22:40 ⛔ GRIND-LECK: `schulstart_lauf.sh` importierte seit Container-Start (20:40) über cj_sku_import (Fertig-Marker nur in /tmp → nach Neustart weg), trotz Grind-Pause. Gestoppt; Pause-Prüfung in schulstart_lauf.sh UND cj_runner_template.sh (engines_up.sh startet die Runner ohne Prüfung).
+
