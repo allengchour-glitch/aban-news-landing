@@ -140,6 +140,19 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   stecken alle im ersten Block** (Seiten 1–3, IDs 15446–15493); Seiten 4–6 (IDs 15493–15502) hatten
   **keinen einzigen** — dort ist nur die Zielmarge nicht erreicht. **Auch das ist wieder die
   Block-Streuung: die Importcharge entscheidet, nicht die Kategorie.**
+- **✅ VIERTER KATZEN-BLOCK (Seite 7): 83 Produkte / 105 Varianten**, `userErrors` in allen drei Teilen
+  leer, **83/83 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  Die schlechteste Seite bisher nach Quote: **nur 16 von 100 waren in Ordnung**, 121 von 122 Varianten
+  trugen einen Einkaufspreis (alle CHF). Wieder **0 Verlustfälle und 0 Faktor-über-3** — das Band lag
+  bei 20,7–37,9 PROZENT. Die Seite ist fast vollständig **Näpfe, Trinkbrunnen und Futterautomaten**:
+  Futterautomat mit Kamera 98.90 bei EK 70.60 → 129.90 · Keramik-Trinkbrunnen Kaktus 86.90/61.56 →
+  114.90 · Keramik-Doppelnapf 47.90/33.87 → 64.90.
+- **⚠️ DREI PRODUKTE KAMEN ZUERST ALS „unerreichbar (429)" ZURÜCK — und das ist kein Fehlschlag.**
+  Das Prüfgerät weist Drosselung getrennt aus (Regel vom 20.09.), also 80/83 im ersten Lauf. Die drei
+  einzeln nachgemessen: **3/3 bestätigt**. Hätte das Gerät 429 als „Variante fehlt" gezählt, stünde
+  hier eine erfundene Fehlerquote.
+- **📊 STAND DER KLASSE: 600 der 806 Katzenprodukte gemessen → 383 Produkte / 1007 Varianten live
+  korrigiert** (196/196 · 45/45 · 59/59 · 83/83 nachgemessen).
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
 
 **📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
