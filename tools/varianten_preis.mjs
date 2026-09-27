@@ -118,6 +118,45 @@ export function zielpreis(kosten, ziel = ZIEL_NACH_GUTSCHEIN) {
   return preisLeiter(Math.max(300, noetig + 10)).find((p) => p >= noetig) ?? null;
 }
 
+/**
+ * Rohmarge EINER Variante nach dem Gutschein. `null` bei unbekanntem Einkaufspreis —
+ * eine Marge ohne Kostenbasis waere geraten.
+ */
+export function margeNachGutschein(preis, kosten) {
+  if (kosten === null || !Number.isFinite(kosten) || kosten <= 0) return null;
+  if (!Number.isFinite(preis) || preis <= 0) return null;
+  const erloes = preis * (1 - GUTSCHEIN);
+  return (erloes - kosten) / erloes;
+}
+
+/**
+ * Die EINE Preisentscheidung je Variante — damit kein Blockskript sie neu erfindet.
+ *
+ * ⚠️ WARUM ES DIESE FUNKTION GIBT (teuer gelernt am 20.09., wiederholt am 27.09.):
+ * `zielpreis(ek) > preis` ist NICHT dasselbe wie "Marge unter Ziel". Ein Preis kann
+ * zwischen zwei Sprossen der Leiter stehen und das Ziel trotzdem erfuellen. Am 27.09.
+ * haette ein handgeschriebenes Blockskript auf Seite 1 der Hundeprodukte **7 Varianten
+ * mit 40,7 PROZENT Marge angehoben** — gesunde Preise, angefasst fuer nichts. Die
+ * Entscheidung haengt an der GEMESSENEN MARGE, nie an der Sprossenlage.
+ *
+ * Rueckgabe: { art, neu, marge }
+ *   art 'unbekannt'   — kein Einkaufspreis: ueberspringen, keine Marge erfinden
+ *   art 'in_ordnung'  — Ziel erfuellt oder Zielpreis nicht hoeher: nicht anfassen
+ *   art 'setzen'      — anheben auf `neu`
+ *   art 'melden'      — Zielpreis ueber dem `deckel`-fachen: falsch importiert,
+ *                       gehoert einem Menschen, wird NICHT gesetzt
+ */
+export function entscheid(preis, kosten, { ziel = ZIEL_NACH_GUTSCHEIN, deckel = 3 } = {}) {
+  const marge = margeNachGutschein(preis, kosten);
+  if (marge === null) return { art: 'unbekannt', neu: null, marge: null };
+  if (marge >= ziel) return { art: 'in_ordnung', neu: null, marge };
+  const neu = zielpreis(kosten, ziel);
+  if (neu === null) return { art: 'unbekannt', neu: null, marge };
+  if (neu <= preis) return { art: 'in_ordnung', neu: null, marge };
+  if (neu > preis * deckel) return { art: 'melden', neu, marge };
+  return { art: 'setzen', neu, marge };
+}
+
 /** Median. Eine leere Liste hat keinen Median — dann `null`, nicht 0. */
 export function median(werte) {
   const w = werte.filter((x) => x !== null && Number.isFinite(x)).sort((a, b) => a - b);
@@ -214,6 +253,36 @@ function selbsttest() {
   pruefe('leeres Kostenfeld wird null', gelesen[0].kosten_max === null);
   pruefe('Variantenzahl wird gelesen', gelesen[0].varianten === 3);
 
+  // --- entscheid(): die Regel an EINER Stelle (Lehre 20.09. + 27.09.)
+  pruefe('kein Einkaufspreis ergibt unbekannt, nicht in_ordnung',
+    entscheid(19.90, null).art === 'unbekannt');
+  pruefe('Einkaufspreis 0 ergibt unbekannt',
+    entscheid(19.90, 0).art === 'unbekannt');
+  pruefe('Marge schon ueber Ziel wird NICHT angefasst (der Fehlgriff vom 27.09.)',
+    entscheid(15.90, 8.49).art === 'in_ordnung');
+  pruefe('und zwar obwohl zielpreis() hoeher liegt als der Preis',
+    zielpreis(8.49) > 15.90 && entscheid(15.90, 8.49).art === 'in_ordnung');
+  pruefe('diese Variante hatte gemessen 40,7 Prozent',
+    Math.abs(margeNachGutschein(15.90, 8.49) * 100 - 40.7) < 0.1);
+  pruefe('Marge unter Ziel wird angehoben',
+    entscheid(15.90, 10.19).art === 'setzen');
+  pruefe('und zwar auf die naechste Sprosse',
+    entscheid(15.90, 10.19).neu === 19.90);
+  pruefe('Verlustfall wird gesetzt, nicht uebersprungen',
+    entscheid(26.90, 41.30).art === 'setzen' && entscheid(26.90, 41.30).neu === 74.90);
+  pruefe('Faktor ueber 3 wird gemeldet statt gesetzt',
+    entscheid(16.90, 49.32).art === 'melden');
+  pruefe('ein gemeldeter Fall traegt trotzdem den Zielpreis zum Nachlesen',
+    entscheid(16.90, 49.32).neu > 0);
+  pruefe('knapp ueber dem Ziel wird nicht angefasst (Grenze liegt bei EK 11.1042)',
+    entscheid(19.90, 11.10).art === 'in_ordnung');
+  pruefe('GEGENPROBE die Grenze schlaegt aus: ein Rappen mehr Einkauf kippt es',
+    entscheid(19.90, 11.20).art === 'setzen');
+  pruefe('idempotent: der neue Preis wird nicht erneut angehoben',
+    entscheid(entscheid(15.90, 10.19).neu, 10.19).art === 'in_ordnung');
+  pruefe('nie senken: ein gesunder hoher Preis bleibt',
+    entscheid(199.90, 10.00).art === 'in_ordnung');
+
   console.log(`${ok} Pruefungen bestanden, ${fehler.length} gescheitert`);
   for (const f of fehler) console.log('  ✗ ' + f);
   return fehler.length === 0;
@@ -232,6 +301,7 @@ function bericht(datei) {
   const saetze = lies(readFileSync(datei, 'utf8'));
   const a = auswertung(saetze);
   const pz = (x) => (x === null ? 'unbekannt' : x.toFixed(1) + ' %');
+
 
   console.log(`\nDatei: ${datei}`);
   console.log(`Produkte: ${a.produkte} · mit Einkaufspreis ${a.mit_kosten} · ohne ${a.ohne_kosten} (UNBEKANNT, nicht 0)`);

@@ -68,6 +68,73 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-27, zweite Runde (🐕 DIE HUNDEKLASSE BEGINNT — und mein eigenes Blockskript wollte gesunde Preise anheben):**
+- **Auftrag:** Dauerauftrag / `/loop` plus „lerne für andere session". Katzen sind abgeschlossen
+  (806/806), nächste Klasse `hund*`.
+- **🔎 KLASSENGRENZE GEMESSEN, und `hunde*` war zu eng: `hund*` = 1694 aktive Produkte, `hunde*`
+  nur 1640** — 54 Produkte heissen „für den Hund" statt „für Hunde". Dazu 2351 gesamt, also
+  711 Entwürfe. Der naheliegende falsche Freund ist geprüft: **`title:hundert*` → 0 Treffer**, die
+  Wortanfang-Suche fängt also kein „Hundert". Die ersten 30 Titel gelesen: **30 von 30 echter
+  Hundebedarf**, keine Tiermotiv-Kleidung wie bei `tier*`.
+- **🔴 DER WICHTIGSTE FUND DIESER RUNDE IST EIN FEHLER IN MEINEM EIGENEN VORGEHEN.** Mein
+  handgeschriebenes Blockskript entschied nach `zielpreis(ek) > preis` — und wollte damit auf
+  Seite 1 **sieben Varianten mit 40,7 PROZENT Marge anheben**, also Preise, die das Ziel von 38
+  längst erfüllen. Es ist **genau die Unschärfe, die am 20.09. in `automation/preis_korrektur.mjs`
+  behoben wurde** (15 → 30 Selbsttests): ein Preis kann zwischen zwei Sprossen der Leiter stehen
+  und gesund sein. **Die Korrektur steckte im Katalogskript, nicht in den Blockskripten** — und
+  jede Runde schreibt ihr Blockskript neu.
+- **✅ SELBSTPRÜFUNG ÜBER ALLE 1148 GESETZTEN KATZEN-VARIANTEN: 0 zu Unrecht angefasst.** Jede lag
+  wirklich unter dem Ziel. **Das war aber Glück, nicht Sorgfalt:** die Katzenbänder endeten bei
+  37,9 PROZENT, die Lücke zwischen „Ziel erfüllt" und „Sprosse höher" kam dort nie vor. Bei den
+  Hunden kommt sie vor. Gegenprobe des Prüfkriteriums mitgeliefert: eine Variante mit 19.90 bei
+  EK 5.00 hat 72,1 PROZENT und wäre als Fehlgriff erkannt worden.
+- **🛠️ BEHOBEN AN DER WURZEL: `tools/varianten_preis.mjs` exportiert jetzt `entscheid(preis, kosten)`**
+  (24 → **38 Selbsttests**) und gibt `unbekannt` / `in_ordnung` / `setzen` / `melden` zurück. Damit
+  liegt die Regel an **einer** Stelle und kein Blockskript erfindet sie neu. Im Werkzeugkasten-Skill
+  eingetragen. Geprüft sind u. a.: kein Einkaufspreis → unbekannt statt in Ordnung · Marge über Ziel
+  wird nicht angefasst, **auch wenn `zielpreis()` höher liegt** · Verlustfall wird gesetzt ·
+  Faktor über 3 wird gemeldet · **idempotent** · nie senken.
+- **⚠️ UND DIE NEUEN TESTS WAREN ZUERST WIRKUNGSLOS: sie landeten im falschen Funktionsblock und
+  liefen nie.** Die Ausgabe blieb bei „24 Prüfungen bestanden, 0 gescheitert" — **grün, weil nichts
+  geprüft wurde.** Aufgefallen nur, weil ich die Zahl nachgezählt habe statt „0 gescheitert" zu
+  glauben. Dieselbe Klasse wie der 23.09. („ein grüner Selbsttest beweist nur, dass der Code tut,
+  was der Test prüft") — hier eine Stufe schlimmer: **er bewies gar nichts.**
+- **⚠️ DANACH FIEL EIN TEST UM — und er hatte recht, nicht der Code.** Mein Grenzwert EK 11.1067
+  lag schon unter dem Ziel. **Nachgerechnet liegt die Grenze bei EK 11.1042 (exakt 38,0000
+  PROZENT):** 11.10 → 38,0235 · 11.11 → 37,9676 · 11.20 → 37,4651. Testwert korrigiert, Regel nicht
+  gelockert.
+- **✅ ERSTER HUNDE-BLOCK (Seite 1 von 1694): 34 Produkte / 42 Varianten**, `userErrors` in beiden
+  Teilen leer, **34/34 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten
+  **0/3**. Von 71 Varianten: **28 in Ordnung, 42 angehoben, 1 ohne Einkaufspreis (übersprungen,
+  nicht „in Ordnung"), 0 Faktor-über-3.**
+- **🔑 DIESE SEITE SIEHT VÖLLIG ANDERS AUS ALS DIE KATZENSEITEN — und bestätigt die Chargen-Regel
+  erneut.** Der Faktor Preis/Einkauf streut hier von **0,651 bis 4,384** (Median 1,708); Katzenseite 8
+  lag geschlossen bei 1,408–1,477. **Ein Verlustfall: Hüteball für Hunde mit Griffen 45 cm, eine
+  Variante 26.90 bei EK 41.30 (−70,6 PROZENT) → 74.90**, während die Schwestervariante mit 34.90 bei
+  EK 24.27 gesund aussieht — **dasselbe Produkt, zwei Welten, und eine Messung je Produkt hätte den
+  Verlust verschluckt.** Weitere grosse Fälle: Agility-Trainingsset 98.90 bei EK 70.46 → 129.90 ·
+  Erhöhtes Hundebett mit Sonnendach 140.90/100.06 → 179.90 · Hundebett «Cooling Cot» 106.90/75.64 →
+  139.90 · Hunde Tennisball Futterspender 53.90/37.85 → 69.90.
+- **⚠️ Die 50 Produkte mussten von Hand übertragen werden** (die Abfrageantwort landete diesmal nicht
+  als Datei auf der Platte). **Deshalb wurden alle 42 Zielvarianten Ziffer für Ziffer gegen die
+  Abfrage geprüft, bevor gesendet wurde** — ein vertippter Einkaufspreis erzeugt einen falschen
+  Zielpreis, den die Nachmessung an der Kundenseite anschliessend brav bestätigen würde. Die
+  Nachmessung prüft, dass der Shop zeigt was geplant war, nicht dass der Plan richtig war.
+- **📊 STAND: 50 von 1694 Hundeprodukten gemessen → 34 Produkte / 42 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block1-2026-09-27.csv`. Cursor für Seite 2:
+  `eyJsYXN0X2lkIjoxNTQ0ODk0NzYyMjI3MywibGFzdF92YWx1ZSI6MTU0NDg5NDc2MjIyNzN9`.
+- **🟡 NUR DER USER, und bei 1694 Hundeprodukten ist es keine Bequemlichkeit mehr:** `SHOPIFY_SHOP` /
+  `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. Handarbeit schafft 50 Produkte je Block;
+  `automation/preis_korrektur.mjs` läuft in einem Durchgang über den ganzen Katalog und trägt die
+  Margen-Regel korrekt. **Dieselben drei Werte lösen zusätzlich die schlanke Startseite und Video an
+  die Produktseite.**
+- **CI:** 33 grüne Cloudflare-Pages-Deploys auf `2e77653`, darunter `dropshipping-radar`, das am
+  20.09. rot war — **jetzt grün, ohne Zutun.** Die drei roten `Workers Builds` (aban-news-landing,
+  ki-verzeichnis, aban-a) sind unverändert der Fall vom 12.09.: keiner der fünf Worker im Repo heisst
+  so, es gibt keine Konfiguration, nur per Cloudflare-Dashboard lösbar. Stand-down-Kommentar steht
+  seit dem 20.09. an PR #2514 — **kein zweiter.**
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-26/27 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 KATZENPRODUKTE VOLLSTÄNDIG, 489 korrigiert):**
 - **Auftrag:** Dauerauftrag / `/loop` — die nächste ungemessene Katalogklasse nach der Preisregel messen.
   Gewählt: **Haustier**, weil einer der sieben echten Verkäufer ein Katzenspielzeug ist (#1012).
