@@ -134,3 +134,29 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   zusammengefasste Parkwagen einzeln bleiben. Gegenprobe: 1-m-Kasten im ersten geparkten Auto.
 - `probe-wasda.mjs <x0> <z0> <x1> <z1> [warte]` — ALLES, was einen Ausschnitt schneidet (auch Autos, Deko, Laternen),
   mit Datei/Name, Lage, Drehung, Kasten, Höhe, Merkmalen; unbenannte Gruppen mit ihren ersten Bauteilen und Farben.
+
+**Runde 102 (User: „gestallte alles besser um"):**
+- `probe-luftbild.mjs <ordner> [r] [neigung] [nur=Name,Name]` — JEDER Ort der Karte (`WORLD_POIS`, von `marke()`
+  auf die echte Lage nachgezogen, dazu das Grundstück) aus der Spielkamera schräg von oben, die Figur steht mit dort
+  (Entfernungs-Ausblendung hängt am Spieler). 35 Bilder in ~6 min; das Werkzeug urteilt nicht. Aus diesen Bildern
+  kamen alle Befunde der Runde. Gelegentlich bleibt ein Bild schwarz (Bildschirmfoto im Moment eines Übergangs) —
+  dann den Ort mit `nur=` einzeln wiederholen.
+- `probe-gedraenge.mjs [grenze=1.5] [x0 z0 x1 z1]` — welche Bauten (≥ 3 m hoch, Grundriss ≥ 16 m²) stehen näher als
+  `grenze` beieinander? Abstand aus den Bauteil-Kästen, die AUF dem Boden stehen (unter 1 m beginnend, über 1 m
+  reichend — Vordach, Ausleger, Dachüberstand zählen nicht). th-echt misst nur Durchdringung, th-pruef nur
+  „steckt drin"; ein 20-cm-Spalt zwischen zwei fremden Häusern ist keins von beiden. `?ohneZF` als Standard;
+  `ZF=1` misst so, wie der Spieler lädt; `QUELLE=datei.html` gegen einen älteren Stand. Gegenprobe: zwei Bauten auf
+  0,3 m zusammengerückt.
+- `probe-randbaum.mjs` — stehen die Randbäume jedes Viertels im eigenen Viertel-Rechteck (w in x, d in z)? Findet
+  die baum2-Bäume an beiden möglichen Formelstellen (quer VW und quer VD, 4 m Fang) und meldet, was draussen steht
+  und worin (anderes Viertel, Bau, Wasser, Kollider). ⚠️ Nach der Korrektur fängt die ALTE Formelstelle zufällig
+  Streubäume des Aussenrings — die 8 „draussen" im Nachher-Lauf sind solche, keine Randbäume. Gegenprobe:
+  Viertelmitte drinnen, 30 m vor der Südkante draussen.
+- `probe-stabil.mjs [schwelle]` — lädt das Spiel zweimal und vergleicht die Lage aller bau()-Modelle je Datei.
+  Gegenprobe: im zweiten Lauf ein Modell um 3 m versetzt. `QUELLE=` wie oben.
+- `probe-springen.mjs [ab] [bis] [schritt]` — bewegt sich in EINEM Lauf nach `ab` Sekunden noch etwas Ruhendes
+  (ohne `_bewegt`)? Gegenprobe: ein Modell vor der letzten Messung um 2 m versetzt.
+  ⚠️ Beide sagten für Stand 101 und 102 „stabil" (nur Bus, Gondeln, Segelboot unterschieden sich) — die drei Lagen
+  der Tramhaltestelle aus drei Läufen stammten aus Läufen, die PARALLEL zu anderen Sonden liefen. Unter Last kommen
+  die GLB-Dateien in anderer Reihenfolge an, und der Entwirrer entscheidet anders: genau das, was ein langsameres
+  oder schnelleres Gerät tut. Was man sehen soll, gehört darum `fest`.

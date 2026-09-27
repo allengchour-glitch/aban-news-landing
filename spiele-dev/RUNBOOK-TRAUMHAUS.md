@@ -7753,3 +7753,52 @@ Notaufnahme — th-echt: „Mesh —", kein einziges Bauteil-Paar; probe-parkfre
 Fall (Wagen im Skyline-Turm) hat th-pruef nie gemeldet — die Regel prüft nur „klein in mindestens 6× so gross", der Turm
 (8,6 × 8,6 m) ist nur 4,7× so gross wie der Wagen. **Lehre:** Wer auf eine Kasten-Meldung hin etwas verschiebt, ohne
 Teil für Teil nachzusehen, kann einen richtigen Standort gegen einen falschen tauschen — genau so kam der Wagen in den Turm.
+
+## Runde 102 · 🏛️ Umgestaltung (User: „gestallte alles besser um" · dann „ultracode aktiviert")
+
+Erst die ganze Welt angeschaut, nicht nur die üblichen sechs Orte: `probe-luftbild` fotografiert jeden der 35
+Kartenorte aus der Spielkamera (schräg, Figur steht dort). Dann je Befund eine Sonde, die Änderung, die Gegenprobe.
+
+### 1. Der Altstadt-Kern war eine Baustelle zwischen vier Wänden
+Auf dem Luftbild lag ein gelber Turmdrehkran quer über Markthalle und Laden, dazwischen Rohbau, Gerüst, Bagger,
+Container, Lager, Zaun — alles in einem Block von 14,7 × 16 m zwischen Schule (Ostwand x −47,1), Stadthaus
+(Nordwand z 90,3), Markthalle (Westwand x −32,4) und Gleisband (z 110,8). Neun Korrekturkommentare im Code
+erzählten die Geschichte: der Rohbau 10 cm an der Schulwand, der Container nacheinander in der Markthalle, im
+Klettergerüst und im Stadthaus, sieben Zaunfelder in Häusern, der Kranfuss 1,9 m vor dem Ring. **`probe-gedraenge`**
+(neu: Abstand zweier Bauten aus den Bauteil-Kästen AUF dem Boden, nicht aus der Hüllbox) fand 19 Paare unter 1,5 m in
+der ganzen Welt — fünf davon in diesem Block, dazu der Baustellen-LKW, der in der 3,3-m-Gasse zwischen Stadthaus und
+Markthalle das Wirtshaus berührte (0 m) und die Markthalle (0,58 m).
+- **Baustelle weg, Altstadtplatz hin:** Zierbrunnen (th35) in der Mitte, zwei Bänke zu ihm, zwei Ahorne an den
+  Nordecken, Laterne, zwei Kübel — alles `fest`, heller Plattenbelag genau zwischen den vier Wänden (die Erdfläche
+  der Baustelle lag vorher bis unter die halbe Markthalle und 2 m ins Gleisband). Das Markthallen-Tor liegt ohnehin
+  auf dieser Seite (Kollider-Tür x −34,5).
+- **Der Kran arbeitet jetzt an der Ost-Baustelle** (180|150), wo die Stadt wächst: Rohbau 1,5 m nach Westen, Kran im
+  freigewordenen 5,3-m-Streifen vor dem Ostzaun (Fuss 4,2 × 4,2 gemessen, 0,6 m zum Rohbau, 0,55 m zum Zaun),
+  Materialstapel quer in den Oststreifen, Mischer 1 m nach Süden (nach dem Rohbau-Umzug 0,02 m an dessen Ecke → 1,26 m).
+  Dort stand vorher ein Randbaum IM Rohbau — siehe 2.
+- **Tramhaltestelle** wanderte ohne `fest` von Lauf zu Lauf ((−78|108), (−60|105), (−63|92) — zweimal an der Schulwand);
+  jetzt fest auf x −42 zwischen den Masten −60/−24, am neuen Platz. **Wirtshaus** fest (war z 71,5 oder 74,4 je nach
+  Lauf, Front 1,9 m im Korridor der Südstrasse → z 74, Front 69,4), **Laden** fest (z 76 oder 78 → 78; sein Kollider
+  stand seit jeher auf (−24|74), zur Hälfte im Wirtshaus, die Osthälfte des Ladens war durchlaufbar → auf den
+  Modellkasten), **Werkstatt** fest (Rückwand 0,3 m vor dem Bahnhofsportal → 1,5 m nach Süden, Kollider mit).
+  Bank aus der 2,8-m-Gasse und Bank vor dem Gerüst: beide an den Brunnen. Pylonen und LKW entfallen.
+
+### 2. Die Randbäume der Viertel standen bei zehn von elf Vierteln nicht am Rand
+`viertel()` setzt je Seite alle 12 m einen Baum quer zur Strasse auf `VW/2 − 4`. VW ist aber die x-Ausdehnung
+(Bodenplatte `PlaneGeometry(VW,VD)`) — bei einem Viertel längs x (zehn von elf) ist quer die Tiefe VD. Die Reihe landete
+(VW−VD)/2 m ausserhalb: Chilbiplatz 30 m (ein Baum im Rohbau der Ost-Baustelle, Luftbild), Sportpark 68 m (16 Bäume
+im Freizeitpark), Freizeitpark 110 m (8 im Chilbiplatz, 5 davon in Bowlingbahn und Nachtclub). Neue Sonde
+`probe-randbaum`: **201 von 265 Randbäumen ausserhalb ihres Viertels, 25 in fremden Vierteln/Bauten** → jetzt
+`Q9 = laengs ? VD : VW`, dazu `_randBaeumeRaeumen()` nach dem letzten Modell (zwei Bäume standen im
+Höhleneingang des Campings, das die Sonde erst nach dem Laden sehen kann): nachher 0 ausserhalb, 0 in etwas anderem.
+**Falle in der Sonde selbst:** die erste Fassung vertauschte bei „längs z" w und d — dieselbe Verwechslung wie im Spiel,
+nur andersherum — und meldete beim Gewerbe 4 Bäume „draussen", die drinnen standen. Erst die Gegenprobe (30 m vor der
+Südkante muss „draussen" sein: ✗ 0) hat es gezeigt. Ein Messgerät, das denselben Denkfehler hat wie das Gemessene,
+misst nichts.
+
+### 3. Was ist „stabil"?
+`probe-stabil` (zwei Läufe, alle bau()-Modelle) und `probe-springen` (ein Lauf, 35…155 s) sagen für Stand 101 UND 102
+„nur Bus, Gondeln, Segelboot verschieden" — die drei Lagen der Haltestelle kamen aus Läufen, die PARALLEL zu anderen
+Sonden liefen. Unter Last treffen die GLB-Dateien in anderer Reihenfolge ein, und der Entwirrer entscheidet anders —
+also genau das, was ein schnelleres oder langsameres Gerät tut. **Lehre:** was der Spieler sehen soll, gehört `fest`
+auf eine gemessene Lage; und eine Sonde, die Positionen meldet, darf nicht neben einer anderen laufen.

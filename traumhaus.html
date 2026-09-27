@@ -1863,8 +1863,18 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var st=new THREE.Mesh(_stammG,_stammM);st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(_kronG[c],_kronM[c%2]);
       kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
-    b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);}
+    b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);return b;}
   window._baum2=baum2;   /* der Quartier-Generator liegt in einem anderen Scope */
+  /* Runde 102: Randbaeume der Viertel, die im fertigen Bau oder Kollider stehen, wieder wegnehmen.
+     Kasten je Bau um 0,3 m eingezogen — ein Baum, der an der Hauswand steht, bleibt. */
+  window._randBaeumeRaeumen=function(){var L=window._randBaeume||[];if(!L.length)return 0;
+    var bb=new THREE.Box3(),K=[],weg=0;
+    (window._gebaeude||[]).forEach(function(g){if(!g.parent)return;bb.setFromObject(g);if(bb.isEmpty()||bb.max.y-bb.min.y<2.5)return;
+      K.push([bb.min.x+0.3,bb.max.x-0.3,bb.min.z+0.3,bb.max.z-0.3]);});
+    window._randBaeume=L.filter(function(b){var x=b.position.x,z=b.position.z;
+      var drin=(typeof inSolid==="function"&&inSolid(x,z))||K.some(function(k){return x>k[0]&&x<k[1]&&z>k[2]&&z<k[3];});
+      if(drin){scene.remove(b);weg++;}return !drin;});
+    return weg;};
   /* ⚠️ Baeume/Felsen/Heuballen bewusst NICHT solide. moveSim() prueft nur achsenweise und
      bleibt an einem Hindernis einfach stehen — es weicht nicht aus. ~290 zusaetzliche kleine
      Kollider im Umland waeren lauter Stolperfallen fuer die wandernden Bewohner.
@@ -5011,20 +5021,15 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
          statt am Gebaeude. */
       /* Der Kiosk-Kollider zieht mit dem Modell um (siehe tankAusbau unten). */
     })();
-    /* ---- BAUSTELLE mit Kran (die Stadt waechst) ----
-       ⚠️ Hier war alles prozedural: der Turmdrehkran ein Balken auf einem Balken,
-       der Rohbau eine Kiste mit drei Platten darin, der Bauzaun sieben
-       durchscheinende Bretter. Die Teile stehen jetzt als `th46_*` weiter unten;
-       hier bleibt nur die Erdflaeche — und die groesser, weil die neuen Bauteile
-       mehr Platz brauchen. */
-    (function baustelle(){
-      var g=new THREE.Group();
-      /* 30 x 22 statt 36 x 28: die groessere Flaeche griff im Spiel auf die
-         Nachbargrundstuecke ueber (Screenshot). */
-      var gr=new THREE.Mesh(new THREE.PlaneGeometry(30,22),
-        new THREE.MeshStandardMaterial({color:0x6b5c44,roughness:1,envMapIntensity:0.14}));
-      gr.rotation.x=-Math.PI/2;gr.position.y=0.014;gr.receiveShadow=true;g.add(gr);
-      g.position.set(-30,0,102);scene.add(g);
+    /* ---- ALTSTADTPLATZ-BELAG (Runde 102) ----
+       Hier lag die Erdflaeche der Altstadt-Baustelle: 30 x 22 um (-30|102), also x -45…-15 / z 91…113 —
+       unter der halben Markthalle hindurch und 2 m ins Gleis-/Ringband. Die Baustelle ist weg (siehe
+       altstadtplatz weiter unten); an ihrer Stelle ein heller Plattenbelag, der genau den Platz deckt:
+       Schulwand x -47,1 bis Markthalle x -32,4, Stadthaus z 90,3 bis vor die Haltestelle z 106,4.
+       Heller als das Kopfsteinpflaster ringsum, damit man den Platz als Platz liest. */
+    (function altstadtplatzBelag(){
+      var gr=new THREE.Mesh(new THREE.PlaneGeometry(14.7,16.1),betMat(0xd2cabb,0.9));
+      gr.rotation.x=-Math.PI/2;gr.position.set(-39.75,0.02,98.35);gr.receiveShadow=true;scene.add(gr);
     })();
   })();
   // ---- Laternen-Reihen (Glow-Pool statt PointLight: billig) ----
@@ -6201,6 +6206,9 @@ setTimeout(function baueGebaeude(){
     clearTimeout(window._ladeFinalT);
     window._ladeFinalT=setTimeout(function(){
       if(window._freiRaeumen){try{window._freiRaeumen();window._entwirren();}catch(e){}}
+      /* Runde 102: Randbaeume der Viertel stehen erst jetzt gegen die fertigen Bauten (die GLBs kommen
+         spaeter als viertel() die Reihe setzt) — probe-randbaum: zwei im Hoehleneingang des Campings. */
+      if(window._randBaeumeRaeumen){try{window._randBaeumeRaeumen();}catch(e){}}
       /* ⚠️ GEMESSEN: `_spaetEinfrieren()` laeuft EINMAL bei 9 s — alles, was danach
          fertig laedt, behaelt matrixAutoUpdate=true fuer immer. Nach der Wiederbelebung
          der drei Viertel waren das 456 Objekte mit 14'563 Knoten, deren Weltmatrix in
@@ -7003,16 +7011,27 @@ setTimeout(function baueGebaeude(){
         var ko=new THREE.Mesh(new THREE.SphereGeometry(0.24,9,7),window._lampKopf||stdMat(0xffe9c0,0.3));
         ko.position.y=5.7;kg.add(ko);
         kg.position.set(lx,0,lz);scene.add(kg);});}
+    /* ⚠️ RUNDE 102 — DIE RANDBAEUME STANDEN BEI ZEHN VON ELF VIERTELN NICHT AM RAND.
+       Quer zur Strasse stand hier `VW/2 - 4`. VW ist die Ausdehnung in x (die Bodenplatte ist
+       PlaneGeometry(VW,VD) — w in x, d in z, gleich wie das Viertel liegt). Bei einem Viertel
+       laengs z ist x die Querrichtung, das passt. Bei einem laengs x (zehn von elf) ist die
+       Querrichtung z, also VD — und die Reihe landete (VW-VD)/2 Meter AUSSERHALB:
+       Chilbiplatz 30 m (ein Baum IM Rohbau der Ost-Baustelle, Luftbild Runde 102),
+       Sportpark 68 m (16 Baeume im Freizeitpark), Freizeitpark 110 m (8 im Chilbiplatz,
+       5 davon in Bowlingbahn und Nachtclub). probe-randbaum: 204 von 268 Randbaeumen
+       ausserhalb ihres Viertels. */
+    var Q9=laengs?VD:VW;
     for(var t2=0;t2<Math.floor(laenge/12);t2++){
       var to=-laenge/2+8+t2*12;
-      [-VW/2+4,VW/2-4].forEach(function(o3){
+      [-Q9/2+4,Q9/2-4].forEach(function(o3){
         var tx=laengs?VX+to:VX+o3,tz=laengs?VZ+o3:VZ+to;
         if(laengs){tx=VX+to;tz=VZ+o3;}else{tx=VX+o3;tz=VZ+to;}
         /* Runde 95: kein Randbaum, wo ein Weg das Viertel quert (freiQuer/Nachbar-Einmuendung) —
            der Gewerbe-Randbaum stand im Neustadt-Stich (th-strassen: Krone bei (294|-136)) */
         var tw9=laengs?tx:tz;
         if((cfg.freiQuer||[]).concat(J9).some(function(q){return Math.abs(tw9-q)<9;}))return;
-        if(window._baum2)window._baum2(tx,tz,0.8+((t2*3)%3)*0.14);});}
+        var bm9=window._baum2?window._baum2(tx,tz,0.8+((t2*3)%3)*0.14):null;
+        if(bm9)(window._randBaeume=window._randBaeume||[]).push(bm9);});}
     /* 6) Kartenmarke und Lieferziel an die TATSAECHLICHE Lage haengen. Beide standen
        fest im Quelltext. Beim Bauernhof zeigten sie jahrelang auf einen Acker, weil
        das Viertel ueberhaupt nicht gebaut wurde — der Lieferauftrag "Bauernhof" fuehrte
@@ -9552,7 +9571,14 @@ setTimeout(function baueGebaeude(){
      nicht aus der Huellbox. Auf Tueren geprueft: allseitig geschlossen, kein Spalt
      breiter als 0,5 m — sie bekommt darum einen vollen Kollider ohne Durchlass. */
   addSolid(20.2,293.5,15.3,15.2);
-  bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
+  /* Wirtshaus (Suedzeile). ⚠️ Runde 102: auf (-28|68) mit wegVonStrasse landete es auf z 71,5, und der
+     Entwirrer schob es je nach Ladezeit noch auf 74,4 (probe-gedraenge mit und ohne ?ohneZF: zwei Lagen).
+     Dazu 0,3 m neben dem Laden (Ostwand x -22,9) und am Baustellen-LKW. Jetzt fest, 8,0 statt 8,5 hoch
+     (Grundriss 9,2 statt 9,8) und 0,4 m nach Westen: 0,9 m zum Laden, 2,7 m Gasse zum Stadthaus (x -35,7).
+     z 74 statt 71,5: der Korridor der Suedstrasse reicht bis z 68,8 (KORRIDORE, Mitte 58 ± 10,8) — auf 71,5
+     stand die Front 1,9 m darin (th-pruef), und genau deshalb hatte der Korridor-Schieber das Haus in
+     manchen Laeufen auf 74,4 gesetzt. Front jetzt auf z 69,4. */
+  bau("bd_inn.glb",8.0,-28.4,0,74,Math.PI,false,function(w){w.userData.fest=1;},true);
   bau("bd_house_a.glb",5.5,68,0,-67,0,false);             // Nordzeile Ost-Ende (neben der Stadtzeile)
   bau("bd_house_b.glb",5.5,-72,0,-67,0,false);            // Nordzeile West-Ende (neben der Stadtzeile)
   /* 🌬️ Die Muehle stand zwischen Ringstrasse und Hochhaeusern — sie gehoert aufs Feld
@@ -9670,21 +9696,21 @@ setTimeout(function baueGebaeude(){
          (-41|101, 13x10) — die Annahme, dort sei frei, war schlicht falsch. */
       [[-16,70],[-16,102],[-50,70],[-52,88]].forEach(function(P8,i8){
         bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false,function(w8){w8.userData.fest=1;});});
-      bau("th5_parkbank.glb",0.9,-33,0,72,0,false);
-    /* ⚠️ -31,5 statt -33: seit die Baustelle ihr Fassadengeruest an der
-       OSTwand des Rohbaus hat (x -34,8), reicht es bis -33,1 in die
-       Altstadtgasse. Zwischen Wand und Bank blieb kein Meter — eine
-       Geruestbohle lief durch die Sitzlatten. Die Bank rueckt auf die
-       andere Gassenseite; ihre Laterne bei (-33|102) bleibt. */
-    bau("th5_parkbank.glb",0.9,-31.5,0,100,Math.PI,false);
+    /* Runde 102: die Bank auf (-33|72) stand in der 2,8-m-Gasse zwischen Stadthaus und Wirtshaus, die
+       zweite auf (-31,5|100) war vor dem Baustellen-Geruest in die Markthalle ausgewichen (Kasten x -32,4…).
+       Beide sitzen jetzt am Brunnen des Altstadtplatzes (altstadtplatz); die Laterne (-33|102) bleibt. */
       bau("th5_laterne_altstadt.glb",4.5,-16,0,86,0,false);bau("th5_laterne_altstadt.glb",4.5,-50,0,86,0,false);
-      bau("th6_papierkorb.glb",0.9,-29,0,67,0,false);   /* war z 74: stand 15 Mesh-Paare tief in bd_inn (Kasten z 69,5…79,3) */
+      bau("th6_papierkorb.glb",0.9,-29,0,67.9,0,false,null,true);   /* war z 74: 15 Mesh-Paare in bd_inn; Runde 102: z 67,9 vor der Suedwand (Wirtshaus fest auf z 74, Kasten ab 69,4) */
     })();
     /* 🧱 Kollider zu den begehbaren Gebaeuden (Masse aus models/TH5-ASSETS.md; rot=PI/2 dreht B/T) */
     addSolid(-26,95,17,25,{a:"x",at:-34.5,c:95,w:4.5});     /* Markthalle: Tor an der -x-Seite */
     addSolid(-46,80,12.8,10.8,{a:"z",at:85.4,c:-46,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
-    addSolid(-24,74,8.6,9.6,{a:"x",at:-19.7,c:74,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
-    addSolid(-6,88,14.8,12.8,{a:"z",at:94.4,c:-6,w:4.5});   /* Werkstatt: Tor +z (rot=PI) */
+    /* Laden: Tuer +x (rot=-PI/2). ⚠️ Runde 102: der Kollider stand auf (-24|74) — das Modell stand auf (-19|76).
+       Der alte Kollider lag zur Haelfte IM Wirtshaus, und durch die
+       Osthaelfte des Ladens lief man hindurch. Jetzt auf dem Modellkasten (Laden fest auf z 78: Kasten
+       x -22,9…-14,4 / z 73,6…84,3), 0,2 m eingezogen. */
+    addSolid(-18.65,78.95,8.1,10.3,{a:"x",at:-14.6,c:78.95,w:3.0});
+    addSolid(-6,86.5,14.8,12.8,{a:"z",at:92.9,c:-6,w:4.5});   /* Werkstatt: Tor +z (rot=PI); Runde 102: z 88 → 86,5 mit dem Modell */
     /* ⚠️ HIER STAND DER KOLLIDER DER KATHEDRALE — mit DOM_X, DOM_Z und DOM_SW,
        die erst gut hundert Zeilen SPAETER zugewiesen werden (var DOM_X=146,
        DOM_Z=-22, …). `var` hebt die Deklaration hoch, nicht den Wert: hier waren
@@ -9786,8 +9812,15 @@ setTimeout(function baueGebaeude(){
     bau("th8_stadthaus_offen.glb",9.2,-46,0,80,Math.PI,false);
     /* 3,9 -> 3,5 m (Runde 93): mit 9,6 m Breite steckte der Laden 1,08 m im Gasthaus, zwischen Gasthaus (-23,1)
        und Werkstatt (-13,3) sind nur 9,8 m — der Entwirrer fand keinen Platz (ohnePlatz). 10 % kleiner passt er. */
-    bau("th8_laden_offen.glb",3.5,-19,0,76,-Math.PI/2,false);
-    bau("th8_werkstatt_offen.glb",5.3,-6,0,88,Math.PI,false);
+    /* ⚠️ Runde 102: auf z 76 ragte der Laden (Kasten z 71,6…82,3) in die Krone des festen Ahorns (-16|70,
+       Krone bis z 73), und der Entwirrer schob ihn je nach Lauf auf z 78 — oder liess ihn stehen (probe-wasda
+       zweimal, zwei Lagen). Jetzt fest auf z 78: 0,6 m zur Krone, 1,3 m zur Markthalle (z 85,6). */
+    bau("th8_laden_offen.glb",3.5,-19,0,78,-Math.PI/2,false,function(w){w.userData.fest=1;},true);
+    /* ⚠️ Runde 102: auf z 88 lag die Rueckwand 0,3 m vor dem Bahnhofsportal (th41_bahnhof fest auf z 99,
+       Sockel ab z 93,1; probe-gedraenge). 1,5 m nach Sueden und fest — nach Sueden ist bis zum Laden
+       (Nordkante z 82,3, aber x erst ab -14,4) und zum Poller (0|84) Platz, zum Vorplatz-Band z 93,1 bleiben 0,3 m
+       mehr als vorher und zum Portal 1,8 m. */
+    bau("th8_werkstatt_offen.glb",5.3,-6,0,86.5,Math.PI,false,function(w){w.userData.fest=1;},true);
     /* ⛪ KATHEDRALE — auf das verfuegbare Band zugeschnitten statt verschoben.
        GEMESSEN: auf 21 m Hoehe ist th8_kirche_offen 33 x 28 m. Zwischen dem
        Sperrband der Nordstrasse (bis z = -68.8) und dem Fluss (Wasser -94..-87)
@@ -10212,17 +10245,17 @@ setTimeout(function baueGebaeude(){
        ist 0,5 m breit, der LKW 2,6 — hier gibt es keinen Stand mehr, seit die
        Tankstelle den Hallenhof bekommen hat. Er faehrt jetzt zur Baustelle im
        Norden, wo im gemessen freien Nordstreifen (z 106,9…109,5) Platz ist. */
-    /* Der LKW macht im Nordstreifen Platz fuers Materiallager und steht jetzt
-       in der Einfahrt — der 3,3-m-Luecke zwischen Stadthauswand (x -35,7) und
-       Markthalle (x -32,4), der einzigen Oeffnung, die die Baustelle nach
-       Sueden ueberhaupt hat. */
-    bau("th7_lkw.glb",3.7,-34,0,82,0,false);
+    /* Runde 102: der LKW stand zuletzt in der 3,3-m-Gasse zwischen Stadthaus (x -35,7) und Markthalle
+       (x -32,4), als Baustellen-LKW an der Einfahrt — und beruehrte dort das Wirtshaus (probe-gedraenge 0 m)
+       und die Markthalle (0,58 m). Die Altstadt-Baustelle ist weg (siehe altstadtplatz), die Gasse ist
+       jetzt der Zugang zum Platz. Der LKW entfaellt: auf dem Hof der Ost-Baustelle stehen schon Bagger,
+       Radlader, Mischer und Container, und einen freien Stand fuer 10,6 m gibt es dort nicht. */
     bau("th7_denkmal.glb",5.3,68,0,92,Math.PI,false);
     /* ➕ "mehr sachen": Reserven verbaut */
     bau("th5_bushaltestelle.glb",2.5,30,0,-55.8,0,false);          /* 2. Haltestelle an der Nordstrasse */
     bau("th6_kiosk.glb",2.6,-16.5,0,93,Math.PI/2,false,null,true); /* Kiosk an den Platz-Westrand — stand halb im Weg */
     bau("th6_brunnen_trog.glb",0.9,-92,0,-44,0.3,false);           /* Traenke am Bauernhof */
-    bau("th6_pylonen.glb",0.6,-35,0,87,0.6,false);                 /* war (-24|96): das ist die Markthalle, 9 Mesh-Paare. Jetzt an der Baustellen-Einfahrt. */
+    /* th6_pylonen standen an der Baustellen-Einfahrt (-35|87) — mit der Baustelle weg (Runde 102). */
     bau("th6_schild_stop.glb",2.4,-74,0,-54,0,false);
     bau("th6_hydrant.glb",0.8,24,0,55.6,0,false);
     bau("th5_baum_ahorn.glb",4.7,20,0,63,0.7,false);bau("th5_baum_ahorn.glb",4.7,34,0,63,1.9,false);bau("th5_baum_ahorn.glb",4.7,-20,0,63,0.2,false);
@@ -10366,7 +10399,11 @@ setTimeout(function baueGebaeude(){
      Paare, th46_baucontainer 25). Danach GEMESSEN statt geraten — Belegung entlang
      z = 108 fuer x -100..100, 126 Bauwerke im Band: die breitesten Luecken liegen bei
      x = -78 und x = +78 mit je 8 m Luft zum naechsten Nachbarn (einem Signal). */
-  bau("th17_tramhaltestelle.glb",3.0,-78,0,108,Math.PI,false,null,true);
+  /* ⚠️ Runde 102: OHNE `fest` wanderte sie — probe-gedraenge fand sie je nach Lauf auf (-78|108),
+     (-60,1|105,2) und (-62,9|92), zweimal an der Schulwand (0,36 bzw. 0,98 m). Seit die Altstadt-Baustelle
+     weg ist, ist der Wunschort von damals frei: x -42 mittig zwischen den Masten -60 und -24 (18 m zu
+     beiden), direkt am neuen Altstadtplatz. Jetzt fest — ein Wartehaeuschen wandert nicht. */
+  bau("th17_tramhaltestelle.glb",3.0,-42,0,108,Math.PI,false,function(w){w.userData.fest=1;},true);
   /* ── 🏪 Charge 48: Marktplatz ───────────────────────────────────────────────
      Der Platz bei (26|67) war ein Kartenpunkt mit zwei Ahornbaeumen. Das Rathaus
      steht bei (40|84) und zeigt seinen Portikus nach Sueden auf diesen Platz —
@@ -10478,105 +10515,36 @@ setTimeout(function baueGebaeude(){
       /* (Gartenstueck entfaellt — siehe Messkommentar oben.) */
     });
   })();
-  /* ── 🏗️ Charge 46: Baustelle ────────────────────────────────────────────────
-     Der Turmdrehkran SCHWENKT: sein Ausleger liegt im Modell mittig ueber der
-     Mastachse, damit genau das geht (siehe Dateikopf von mk_th46_baustelle.py).
-     Ein Baukran, der stillsteht, ist ein Mast mit Querbalken. */
-  (function baustelleAusbau(){
-    /* ⚠️ GEMESSEN, nicht geschaetzt: bei BX = -30 lag der Rohbau (x -41,2…-28,8)
-       um 3,6 m ueber der offenen Markthalle th8 (x -32,4…-19,6), und der Bagger
-       (x -30,6…-23,4 | z 90,7…95,3) stand MITTEN DARIN. Die Ueberschneidung
-       Markthalle x Baukran war mit 7,2 m die groesste der ganzen Karte.
-       BX = -36 raeumt den Rohbau frei; der Bagger zieht auf die Westseite des
-       Platzes. Was vom Kran ueber der Halle bleibt, ist der Ausleger auf 21 m —
-       der gehoert dorthin, ein Kran arbeitet ueber Nachbardaecher hinweg.
-       ⚠️ NACHTRAG: Der letzte Satz war eine BEHAUPTUNG, keine Messung — und er
-       war falsch. Mesh fuer Mesh nachgeprueft (spiele-dev/tools/th-3d.mjs) standen
-       auch die beiden MASTBEINE (Cylinder001/003, y 0,60…20,00) und die
-       Fussplatte (Cube108, y 0,00…0,60) in einem Hallenbauteil, das von y 0,00
-       bis 4,88 reicht: 12 Meshes steckten fest, nicht nur der Ausleger.
-       Wer schreibt "was bleibt, ist nur das Dach drueber", muss die y-Werte
-       daneben legen — eine Ueberschneidung in x/z sagt darueber nichts. */
-    var BX=-36, BZ=102;
-    function fest(datei,hoehe,x,z,ry,cb){
-      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
-    }
-    fest("th46_rohbau.glb",11.44,BX-5,BZ-1,Math.PI);
-    addSolid(BX-5,BZ-1,13.0,10.0);
-    /* ⚠️ Der Kran bewegt sich, gehoert also NIE in den Sichtbarkeits-Index:
-       der wird einmal aus den Ladepositionen gebaut (Lehre aus Charge 40). */
-    /* BX+8|BZ+5 statt BX+9|BZ+3: gemessen der naechste Stand, auf dem KEIN Bauteil
-       unterhalb 6 m mehr klemmt (49 Meshes geprueft, vorher 12 fest, jetzt 0).
-       Der Ausleger darf weiter ueber die Halle schwenken — nur der Turm muss
-       neben ihr stehen. Nach Norden bleiben bis zum Ring-Band (ab z 110,8)
-       1,9 m Luft: Kranfuss reicht dann bis z 108,9. */
-    fest("th46_baukran.glb",26.52,BX+8,BZ+5,0,function(w){
-      w.userData.nieAusblenden=true; w._bewegt=true; window._baukran=w;});
-    /* ⚠️ Erst standen die vier Geruestfelder auf BZ+5,4 — das ist 1,7 m NORDLICH
-       der Rohbaukante (Tiefe 9,4 um BZ-1), sie klebten also an nichts, und eines
-       lag ausserdem im Kollider des Nachbargebaeudes. Ein Fassadengeruest steht
-       an der Fassade: jetzt an der Westwand, Wandseite zum Rohbau.
-       Die Wandseite liegt auf Blender -y, in three.js also +z; aus der Normalen
-       (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
-    /* ⚠️ ZWEITE KORREKTUR, gemessen. Die Westwand geht NICHT: Schule (Ostwand
-       x -47,1) und Rohbau (Westwand x -47,2) stehen Ruecken an Ruecken, dazwischen
-       sind 10 cm. Das 1,7 m tiefe Geruest stand damit komplett IN der Schule —
-       352 Mesh-Paare, 5,70 m gemeinsame Hoehe. Der Kommentar darueber stimmte
-       ("Geruest gehoert an die Fassade"), die Fassade war nur die falsche.
-       Ein Platzloeser ueber Modelle UND Fahrbahnbaender findet genau zwei freie
-       Stellen; beide liegen an der OSTWAND (x -34,8). Die Wandseite muss dann
-       nach -x zeigen: Normale (sin rotY, cos rotY) = (-1,0) -> rotY = -pi/2. */
-    for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX+1.9,BZ-6.6+k*2.5,-Math.PI/2);
-    /* ⚠️ BX-8|BZ-9 und das Materiallager auf BX-9|BZ-9 lagen EINEN Meter
-       auseinander — der Bagger stand mittendrin, 39 seiner Meshes steckten in
-       fremder Geometrie. Zwei Dinge aus derselben Zeile abzuleiten und nur die
-       x-Zahl zu variieren, reicht nicht; die Kisten sind 7,2 bzw. 6,8 m breit.
-       BX-2|BZ-10 ist der naechste gemessen freie Stand: suedlich des Rohbau-
-       Kolliders (z 96…106) und oestlich am Lager vorbei (dessen Kante x -41,4). */
-    /* ⚠️ Nachgezogen, als die Schule 2,6 m nach Sueden rueckte: ihre Ostwand
-       liegt jetzt auf x -47,1 und beruehrte das Materiallager. Lager und Bagger
-       ruecken zusammen nach Osten — gemessen bleiben 0,6 m zur Schulwand,
-       1,0 m zwischen Lager und Bagger. */
-    /* ⚠️ Nach dem Zaun-Umbau ist der Hofstreifen nur noch 12 x 5 m gross
-       (Zaun z 91,1 / Rohbau z 96,3 / Schule x -47,1 / Geruest x -35,1). Lager
-       UND Bagger passen dort nicht mehr nebeneinander — 6,8 + 7,2 = 14 m auf
-       12 m Breite. Der Bagger bleibt im Hof (er gehoert an die Baugrube), das
-       Lager zieht in den Nordstreifen. */
-    fest("th46_bagger.glb",3.73,BX-3.7,BZ-8.5,-0.5);
-    /* ⚠️ Auf BX+11 stand der Container in der Markthalle (3,6 m), danach auf
-       BX-12 im KLETTERGERUEST des Pausenhofs (x -54,6…-48,6): 77 Mesh-Paare.
-       "Alles Bewegliche nach Westen" war zu einfach — im Westen liegt die Schule.
-       Gemessen gibt es INNERHALB des Bauzauns keinen freien Stand mehr fuer
-       6,2 x 3,6 m; die naechste freie Flaeche liegt quer gedreht suedlich davon.
-       Dort steht er jetzt, direkt an der Einfahrt — wie ein Buerocontainer, den
-       man ans Tor stellt, weil der Platz drinnen voll ist. */
-    /* ⚠️ DRITTE Korrektur, gemessen. "Suedlich vom Bauzaun, an der Einfahrt"
-       war (-39,5|87,5) — und damit MITTEN IM STADTHAUS (Kasten x -56,3…-35,7 /
-       z 69,7…90,3), das dort seit jeher steht. Suedlich des Zauns gibt es fuer
-       6,2 x 3,6 m keinen freien Stand: westlich die Schule, oestlich beginnt
-       nach 3,3 m die Markthalle.
-       Frei ist der Nordstreifen der Baustelle: zwischen der Rohbau-Nordkante
-       (z 105,7) und dem Ring-S-Band (ab z 110,8) liegen 5,1 m ueber die ganze
-       Breite. Dort stehen jetzt Container UND der Baustellen-LKW. */
-    fest("th46_baucontainer.glb",2.90,BX-9,BZ+6.3,0);
-    fest("th46_materiallager.glb",1.20,BX-1,BZ+6,0);
-    fest("th46_mischer.glb",1.36,BX-14,BZ+6,0.7);
-    /* ⚠️ Der Suedzaun lief von x -50 bis -22 auf z 89,5 — und SIEBEN seiner neun
-       Felder standen damit in einem Gebaeude: vier im Stadthaus (Kasten
-       x -56,3…-35,7 / z 69,7…90,3), drei in der Markthalle (x -32,4…-19,6 /
-       z 85,6…104,4). Kein Werkzeug hat das je gemeldet: ein Zaunfeld ist 0,40 m
-       duenn, th-pruef siebt bei 1,00 m und th-3d bei 0,50 m. Gefunden hat es
-       erst der neue "Steckt drin"-Test (Anteil der Grundflaeche statt Tiefe).
-       Die Baustelle hat nach Sueden schlicht keine 28 m Front: zwischen
-       Stadthauswand (x -35,7) und Markthalle (x -32,4) sind 3,3 m — das ist die
-       Einfahrt. Der Zaun steht jetzt NOERDLICH der Stadthauswand (z 90,9) und
-       endet vor der Markthalle; die beiden Haeuser sind die uebrigen Grenzen. */
-    for(var z9=0;z9<5;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-11.1,0);
-    /* ⚠️ KEIN Westzaun mehr. Er lief auf x -51,8 — und die Schule reicht bis
-       x -47,1: sechs Zaunfelder standen also 4,5 m tief IN der Schulhauswand.
-       Zwischen Schule (-47,1) und Rohbau (-47,2) sind 10 cm, dort passt kein
-       Zaun hin. Die Schulhauswand IST die Westgrenze der Baustelle — so wird an
-       einer Brandwand auch in Wirklichkeit gebaut. */
+  /* ── 🏛️ Runde 102: ALTSTADTPLATZ statt Baustelle ─────────────────────────────
+     Hier stand seit Charge 46 eine Baustelle (Rohbau, Turmdrehkran, Geruest, Bagger, Lager, Zaun).
+     Ueber neun Korrekturkommentare wurde sie zwischen Schule (Ostwand x -47,1), Stadthaus (Nordwand
+     z 90,3), Markthalle (Westwand x -32,4) und Gleisband (z 110,8) hin- und hergeschoben: der Rohbau
+     10 cm an der Schulwand, der Container zuerst in der Markthalle, dann im Klettergeruest, dann im
+     Stadthaus, sieben Zaunfelder in Haeusern, der Kranfuss 1,9 m vor dem Ring, und der Ausleger
+     schwenkte ueber die Markthalle (Luftbild Runde 102, probe-luftbild: ein gelber Kran quer ueber den
+     Daechern). probe-gedraenge: fuenf der elf ungewollt zu dichten Paare der ganzen Welt lagen in
+     diesem einen Block.
+     Eine Baustelle gehoert dorthin, wo die Stadt waechst — die Ost-Baustelle (180|150) hat Platz und
+     bekommt den Kran (siehe dort). Hier entsteht, was der Altstadt fehlte: ein Platz.
+       · Zierbrunnen in der Mitte, zwei Baenke zu ihm hin, zwei Ahorne an den Nordecken, Kuebel im Sueden.
+       · Die Markthalle hat ihr Tor ohnehin auf der Westseite (Kollider-Tuer bei x -34,5) — auf diesen Platz.
+       · Zugang von Sueden durch die 3,3-m-Gasse zwischen Stadthaus (x -35,7) und Markthalle (x -32,4),
+         die frei bleibt; nach Norden die Tramhaltestelle (x -42, siehe dort), die frueher keinen Platz hatte.
+     Der Platz liegt auf dem Altstadt-Pflaster (altstadtPlatz(): x -55…3, z 65…107), braucht also keinen
+     eigenen Belag. Alles `fest`: der Entwirrer darf Platzmoebel nicht auseinanderschieben. */
+  (function altstadtplatz(){
+    var PX=-39.75, PZ=98.2;   /* Mitte zwischen Schulwand -47,1 und Markthalle -32,4; Stadthaus 90,3 … Haltestelle 106,6 */
+    function fest(datei,hoehe,x,z,ry){bau(datei,hoehe,x,0,z,ry||0,false,function(w){w.userData.fest=true;},true);}
+    fest("th35_brunnen_zier.glb",2.2,PX,PZ,0);                 /* 3,32 m Durchmesser auf 2,56 → rund 2,9 m */
+    addSolid(PX,PZ,2.9,2.9);
+    /* Schauseite (Sitzseite) auf -z ohne Drehung (TH5-ASSETS): die Suedbank schaut mit pi nach +z zum Brunnen. */
+    fest("th5_parkbank.glb",0.9,PX,PZ-4.2,Math.PI);
+    fest("th5_parkbank.glb",0.9,PX,PZ+4.0,0);
+    fest("th5_baum_ahorn.glb",4.4,-44.8,103.8,0.4);            /* Krone ⌀ 3,6: 0,5 m zur Schulwand */
+    fest("th5_baum_ahorn.glb",4.4,-35.2,103.8,2.1);            /* und 1,4 m zur Markthalle */
+    fest("th5_laterne_altstadt.glb",4.5,-46.4,94.0,0);
+    fest("th6_blumenkuebel.glb",0.7,-45.6,91.3,0);
+    fest("th6_blumenkuebel.glb",0.7,-37.2,91.3,0);             /* die Gasse x -35,7…-32,4 bleibt frei */
   })();
   /* ── 🏥 Charge 49: Klinik und Rettungsdienst ────────────────────────────────
      Die Stadt hatte Feuerwache und Polizei, aber kein Krankenhaus — im Code nach
@@ -10855,6 +10823,9 @@ setTimeout(function baueGebaeude(){
      Die zweite Baustelle bleibt: 221 m von der ersten entfernt, im anderen Stadtteil,
      mit anderen Modellen — eine wachsende Stadt baut an mehreren Stellen. Aber sie
      ist eine ERGAENZUNG, keine Erstausstattung.
+     ⚠️ Runde 102: die erste ist weg (dort ist jetzt der Altstadtplatz) — diese ist die einzige,
+     und sie hat von dort den Turmdrehkran uebernommen. */
+  /*
      ⚠️ ZWEIMAL AM MASS GESCHEITERT, bevor der Ort stimmte. th21_rohbau ist kein
      Haeuschen: bau() skaliert ueber die HOEHE, und auf 9 m misst der Rohbau 33,8 x
      33,8 m im Grundriss. Der erste Versuch stellte ihn auf einen 24 x 18 m grossen
@@ -10878,11 +10849,17 @@ setTimeout(function baueGebaeude(){
        war mit 7,3 m schmaler als die Maschinen tief sind — Bagger und Radlader
        standen gemessen AUF der Zaunlinie. Auf 6,0 misst der Rohbau 22,5 x 22,5, und
        mit Mitte auf BZ+4,5 bleiben 8,75 m Hof. */
-    fest("th21_rohbau.glb",6.0,0,4.5,0);
-    addSolid(BX,BZ+4.5,11.25,11.25);    /* 🧱 sonst laeuft man durch den Rohbau */
+    /* ⚠️ Runde 102: 1,5 m nach Westen (dx 0 → -1,5), damit zwischen Rohbau-Ostwand (x 189,75) und Ostzaun
+       (x 195,1) ein 5,3-m-Streifen fuer den TURMDREHKRAN frei wird. Der Kran stand bis Runde 102 auf der
+       Altstadt-Baustelle zwischen Schule und Markthalle (siehe altstadtplatz); sein Fuss ist 4,2 x 4,2 m
+       (Fussplatte 3,6 + Ballast, gemessen am Modell). Hier arbeitet er, wo die Stadt waechst. */
+    fest("th21_rohbau.glb",6.0,-1.5,4.5,0);
+    addSolid(BX-1.5,BZ+4.5,11.25,11.25);    /* 🧱 sonst laeuft man durch den Rohbau */
     /* Geruest an der Suedfassade des Rohbaus (z = BZ-8,2). Es LEHNT an der Wand —
        die kleine Ueberschneidung ist gewollt, wie bei den Kaimauer-Modulen. */
-    for(var g=0;g<3;g++) fest("th21_geruest_modul.glb",5.5,-7+g*7,-7.0,0);
+    for(var g=0;g<3;g++) fest("th21_geruest_modul.glb",5.5,-8.5+g*7,-7.0,0);
+    bau("th46_baukran.glb",26.52,BX+12.45,0,BZ+12.5,0,false,function(w){w.userData.fest=true;
+      w.userData.nieAusblenden=true; w._bewegt=true; window._baukran=w;},true);
     /* Hof im Sueden: Maschinen und Material zwischen Zaun (z BZ-15,5) und Rohbau */
     /* Quer gestellt: laengs ist der Container 8,6 m tief, der Hof nur 8,35 m —
        gemessen ragte er 0,8 m ueber die Zaunlinie hinaus. */
@@ -10893,9 +10870,13 @@ setTimeout(function baueGebaeude(){
        (0,13 m) und das Geruest (0,07 m) — schlechter als die 0,04 m am Zaun, die er
        auf dx 13 hat. Auf einem Bauhof stehen Maschinen an der Absperrung; unter 0,2 m
        ist das Kontakt, keine Durchdringung. */
-    fest("th21_betonmischer.glb",3.6,13,-9,1.9);
+    /* Runde 102: dz -9 → -10. Seit der Rohbau 1,5 m nach Westen rueckte, lag seine Suedostecke 0,02 m am
+       Mischer (probe-gedraenge Teil fuer Teil); ein Meter nach Sueden gibt 1,1 m Luft zur Suedwand. */
+    fest("th21_betonmischer.glb",3.6,13,-10,1.9);
     fest("th21_betonrohre.glb",1.2,13,-3,0.4);
-    fest("th21_materialstapel.glb",1.4,-13,-4,0);
+    /* Runde 102: Materialstapel vom Weststreifen (dx -13, dort steht jetzt der Rohbau) in den Oststreifen,
+       quer (3,3 x 4,9), zwischen Betonrohren und Kranfuss. */
+    fest("th21_materialstapel.glb",1.4,12.4,4.5,Math.PI/2);
     /* Bauzaun rundum, Luecke im Sueden als Zufahrt (dx -2…+2) */
     for(var b=0;b<6;b++){var bx=-15+b*6; if(Math.abs(bx)<=3)continue;   /* Zufahrt */
       fest("th21_bauzaun_modul.glb",2.0,bx,-15.5,0);}
