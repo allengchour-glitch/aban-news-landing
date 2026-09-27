@@ -12,3 +12,9 @@
   4 × 12 s an den Betreiber: 1 `luxe-anime-battle` (~174 BPM) · 2 `luxe-adventure-uplift` (Schätzung ~185, Prompt 140 — vor
   Rotation Tempo prüfen) · 3 `luxe-fashion-elegant` (~120, für Beauty/Schmuck) · 4 `luxe-celtic-rock` (~160).
   Freigabe → `python3 produce/musik_aufnehmen.py _probe/<name>.wav <name> "<beschreibung>" [--bpm N]` (ohne --probe) + Pools.
+- 28.09.2026 Betreiber: «musik jetzt nur epischer guter sound instrumental orchester odr so» → blind bewertet (Gemini, ohne Hinweis,
+  Orchester/episch/Klang echt 0–10): ✅ `luxe-adventure-uplift` 10/10/10 → aufgenommen (Tempo 136 BPM, 7 Abschnitte ±0,01 s; der
+  Kick-Test irrte, Orchester hat keinen durchgehenden Kick) · ❌ `luxe-anime-battle` (Symphonic Metal, Orchester 0) · ❌ `luxe-celtic-rock`
+  (Folkrock, Klang 6) · ❌ `luxe-fashion-elegant` (Synth-Streicher). Rotation jetzt NUR: adventure-uplift, epic-anime, orchestra
+  (`EPISCH` in cj_video_reel_engine.mjs). 7 wartende Reels (House/DnB, erkannt mit produce/musik_erkennen.py) per
+  reel/musik_tauschen.py auf die drei Stücke umgestellt, Tor 7/7.
