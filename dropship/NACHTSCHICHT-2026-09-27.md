@@ -20,7 +20,7 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 4. [x] ✅ 22:25 Formatprüfung eingebaut (ohne mediaCount → PAUSE «kein Urteil», DRY bestätigt). **cj_bild_backfill-Zählfehler:** meldet «45'333 mit ≤ 1 Bild» aus `/tmp/export.jsonl` (Export OHNE Medien) —
    Stichprobe 120 aktive CJ: 119 mit ≥ 3 Bildern. Kandidaten nur aus einem Export MIT Medienzahl (format_ok-Prüfung), sonst
    «kein Urteil».
-5. [ ] **Sammel-Video (mehrere Produkte, 24 s, Musik luxe-epic-anime):** `montage_auswahl.py` lief in die Zeitgrenze (OCR bei
+5. [x] ✅ 22:50 Herbst-Sammelvideo (6 Produkte, 24 s, Hook 6.46, Preise live ok) an Betreiber geschickt, liegt in social/montage_proben/ — posten nach OK. Gadgets: Pool fast nur Smartwatches + Werbetext-Bilder → Thema Herbst. **Sammel-Video (mehrere Produkte, 24 s, Musik luxe-epic-anime):** `montage_auswahl.py` lief in die Zeitgrenze (OCR bei
    Last 24) → Bildtext-Prüfung nur für die gewählten Bilder mit Cache, Pool kleiner; erstes Video «Gadgets» rendern,
    Kontaktbogen per Read prüfen, Preis-Metadatum `--pruefen`, dem Betreiber schicken. Posten erst nach seinem OK.
 6. [ ] **Hype-Recherche (Dauerauftrag):** Web-Suche Trends Ende September 2026 → `automation/hype_kuratieren.py` THEMEN +
@@ -33,3 +33,5 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 - 22:30 Plan angelegt. Nachprüfung beworbene CJ-Ware läuft (bisher 2 ausgelistet: Sojawachskerzen Zitrus/Holz + Orchidee,
   Herbst-Favoriten → DRAFT). Faktenblock-Lauf LIMIT 400 gestartet.
 - 22:25 Punkt 4 erledigt; Punkt 5: montage_auswahl prüft nur noch ≤ 5 Bilder je Kandidat (Abbruch bei genug) — Lauf läuft.
+- 22:50 Punkt 5: Sammelvideo Herbst fertig (Intro-Karten fliegen auf den Beat ein: Hook 0.98 → 6.46; Füllwort-Namen «mit/aus/im» gekürzt).
+- 22:52 Ausgelistet-Lauf 1: 645 geprüft, 2 ausgelistet, 205 ohne Urteil = Varianten-SKUs als pid abgefragt → korrigiert, Lauf 2 läuft.
