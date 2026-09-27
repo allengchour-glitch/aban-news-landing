@@ -68,7 +68,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-09-26/27 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 Katzenprodukte, 700 gemessen, 483 korrigiert):**
+**📌 2026-09-26/27 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 KATZENPRODUKTE VOLLSTÄNDIG, 489 korrigiert):**
 - **Auftrag:** Dauerauftrag / `/loop` — die nächste ungemessene Katalogklasse nach der Preisregel messen.
   Gewählt: **Haustier**, weil einer der sieben echten Verkäufer ein Katzenspielzeug ist (#1012).
 - **🔴 DIE KLASSE IST UM EINE GRÖSSENORDNUNG GRÖSSER ALS ALLES BISHERIGE.** GEMESSEN mit
@@ -183,9 +183,30 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **⚠️ UND EIN FEHLALARM IN MEINEM EIGENEN SUCHMUSTER:** `/schal/` fing „Wasser**schal**e",
   „Katzen**schal**e" und „Kratz**schal**e" als Kleidungsstück. Fehlende Wortgrenze — **dieselbe Klasse
   wie `3to4` → `3to 4` vom 12.09.** Drei der sieben Treffer waren also meine Erfindung.
-- **📊 STAND DER KLASSE: 700 der 806 Katzenprodukte gemessen → 483 Produkte / 1142 Varianten live
+- **📊 STAND DER KLASSE: 800 der 806 Katzenprodukte gemessen → 483 Produkte / 1142 Varianten live
   korrigiert** (196/196 · 45/45 · 59/59 · 83/83 · 100/100 nachgemessen). Daten:
-  `dropship/preise-katzen-block5-2026-09-27.csv`. **106 offen, danach `hunde*` mit 1640.**
+  `dropship/preise-katzen-block5-2026-09-27.csv`. **Restliche 6 im nächsten Block.**
+- **✅ SECHSTER KATZEN-BLOCK (Seite 9) — UND DAMIT IST DIE KLASSE VOLLSTÄNDIG: 6 Produkte /
+  6 Varianten**, `userErrors` leer, **6/6 an der echten Kundenseite nachgemessen**, Gegenprobe mit
+  erfundenen Werten **0/3**. Alle sechs betroffen, 0 in Ordnung, 0 Faktor-über-3, Band 21,8–23,8
+  PROZENT, Faktoren 1,420–1,458 — **genau das auf Seite 8 gemessene Band.** Tierfussabdruck-Pad
+  25.90 bei EK 17.76 → 34.90 · Tofu Katzenstreu 29.90/20.54 → 39.90 · Anti-Schling-Futternapf
+  26.90/18.83 → 34.90 · zwei Brustgeschirre und ein Zugseil je → 34.90.
+- **🔴 EIGENER ZÄHLFEHLER IM GEDÄCHTNIS AUFGEDECKT — und er hätte eine ganze Seite Arbeit doppelt
+  gemacht.** `hasNextPage` war nach diesen 6 Produkten **false**, die gemerkte Zahl sagte aber „106
+  offen". Nachgerechnet: die Blöcke deckten Seiten 1–3 (300) · 4–5 (200) · 6 (100) · 7 (100) · 8 (100)
+  = **800**, nicht 700. Die Zeile „500 der 806" nach Block 3 war bereits um 100 zu niedrig und hat
+  sich durch drei Stand-Blöcke fortgepflanzt (500 → 600 → 700). **Die Gegenprobe, die es entscheidet:
+  800 + 6 = 806 und `productsCount(title:katzen* AND status:active)` = 806 — die Summe schliesst
+  exakt.** Zusätzlich belegt: 806 aktiv + 330 Entwürfe = 1136 = `title:katzen*` ohne Statusfilter,
+  0 archiviert, Unsinn-Filter 0. **Lehre: eine laufende Summe über mehrere Sitzungen ist erst belegt,
+  wenn sie gegen die Gesamtzahl aufgeht** — sonst wandert ein Fehler mit und die nächste Sitzung
+  misst Seiten neu, die längst erledigt sind.
+- **📊 KLASSE KATZE ABGESCHLOSSEN: 806 von 806 gemessen → 489 Produkte / 1148 Varianten live
+  korrigiert**, jede einzelne an der Kundenseite nachgemessen (196/196 · 45/45 · 59/59 · 83/83 ·
+  100/100 · 6/6, null Abweichungen). **13 Faktor-über-3-Fälle bleiben beim User.**
+  Daten: `dropship/preise-katzen-block6-2026-09-27.csv`. **Nächste Klasse: `hunde*` mit 1640 aktiven
+  Produkten — doppelt so gross wie alles bisher Gemessene zusammen.**
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
 
 **📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
