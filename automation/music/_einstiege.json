@@ -44,9 +44,18 @@
    46.75
   ]
  },
+ "luxe-dnb-drive.wav": {
+  "dauer": 48.5,
+  "lufs": -14.0,
+  "einstiege": [
+   27.75,
+   16.75,
+   33.25
+  ]
+ },
  "luxe-house1.wav": {
   "dauer": 16.5,
-  "lufs": -11.2,
+  "lufs": -14.6,
   "einstiege": [
    0.25,
    3.25
@@ -54,7 +63,7 @@
  },
  "luxe-house2.wav": {
   "dauer": 16.2,
-  "lufs": -11.1,
+  "lufs": -14.5,
   "einstiege": [
    0.25,
    4.25
@@ -70,21 +79,21 @@
  },
  "luxe-hype1.wav": {
   "dauer": 13.8,
-  "lufs": -11.7,
+  "lufs": -14.9,
   "einstiege": [
    2.0
   ]
  },
  "luxe-hype2.wav": {
   "dauer": 14.2,
-  "lufs": -13.4,
+  "lufs": -16.6,
   "einstiege": [
    2.25
   ]
  },
  "luxe-hype3.wav": {
   "dauer": 13.6,
-  "lufs": -11.0,
+  "lufs": -14.2,
   "einstiege": [
    1.75
   ]

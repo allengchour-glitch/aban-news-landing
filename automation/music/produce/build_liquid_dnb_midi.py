@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# v5 27.09.2026 (Betreiber «drum and base? mache orginale musik besser»; blinde Gemini-Kritik 5/10: Kick weich, Hats
+# statisch, Pad-Mitten matschig, wenig Glue): Punch-Kick über dem 808, Hats mit Velocity-Kurve + Swing, render.sh:
+# Mitten-EQ + Glue, mixdown SC_TIEFE. Render: MIX_DRUMS=1.15 SC_TIEFE=0.6 bash render.sh liquid_dnb
 # LuxeStyle Producer — LIQUID DnB v4 VOCAL (Ref: AFTERGLOW Vocal Mix). 174 BPM, a-Moll, WARM, ELEKTRONISCHE Perc (808/Clap/Rim, kein akust. Kit).
 # + Choir/Voice-Hook (aah-Vocals), lush Reverb, weicher Groove.
 # Struktur (48 Takte ~66s): Intro 1-8 (Rhodes+Pad, kein Drum, Sub-Andeutung) · Build 9-16 (gefilterter
@@ -34,7 +37,9 @@ def hum(t): return t + random.randint(-6, 6)          # Micro-Timing (menschlich
 def is_two_step(t0, vel_k):
     # AKZENTE: Kick 1 = Downbeat-Betonung (voll), Kick "3-and" etwas leichter
     D(t0 + 0*S, 'k808', min(127, vel_k + 8))           # Betonung Zz1
+    D(t0 + 0*S, 'kick', 96)                             # v5 (27.09.): Punch-Kick drübergelegt (Kritik «Kick zu weich»)
     D(t0 + 10*S, 'k808', vel_k - 10)                    # leichter
+    D(t0 + 10*S, 'kick', 78)
     # Snare/Clap: Zz2 & Zz4 STARK betont (der Backbeat), Layer für Punch
     for sn in (4, 12):
         D(t0 + sn*S, 'clap', 118)
@@ -43,9 +48,10 @@ def is_two_step(t0, vel_k):
     for g in (7, 11, 15): D(hum(t0 + g*S + 14), 'rim', 34)
     D(t0 + 6*S, 'perc', 44)
     # Hats: Offbeats betont, Onbeats sehr leise (Dynamik statt flach)
+    # v5 (27.09., Kritik «Hats statisch, MIDI-Grid»): Velocity-Kurve je Takt + Zufall ±7, Pegel −4, Swing auf den 16teln
     for h in range(16):
-        if h % 2 == 1: D(hum(t0 + h*S + 12), 'hat', 46) # Offbeat = betont
-        elif h % 4 == 0: D(hum(t0 + h*S), 'hat', 22)    # dezenter Onbeat-Tick
+        if h % 2 == 1: D(hum(t0 + h*S + 18), 'hat', 38 + (6 if h in (3, 11) else 0) + random.randint(-7, 7)) # Offbeat, geswingt
+        elif h % 4 == 0: D(hum(t0 + h*S), 'hat', 18 + random.randint(-4, 4))    # dezenter Onbeat-Tick
 
 for b in range(NBARS):
     voic, bs, hook = PROG[b % 4]
