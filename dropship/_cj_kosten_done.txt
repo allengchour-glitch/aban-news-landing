@@ -35929,3 +35929,73 @@ gid://shopify/Product/15486927634817	CHF 7.67	1 Varianten	Einfacher Frauenknöch
 gid://shopify/Product/15487310070145	CHF 18.79	1 Varianten	Obsidian Kristall Armband
 gid://shopify/Product/15487310791041	CHF 7.11	1 Varianten	Edler Buchstabenarmband
 gid://shopify/Product/15487313183105	CHF 20.23	1 Varianten	Blumen-Schmuckarmband
+gid://shopify/Product/15487313412481	CHF 9.82	1 Varianten	Emerald-Schmuckarmband
+gid://shopify/Product/15487313707393	CHF 16.12	1 Varianten	Edelstahl Armband
+gid://shopify/Product/15487314100609	CHF 7.74	1 Varianten	Naturstein Evil Eye Armband geflochten
+gid://shopify/Product/15487315214721	CHF 10.83	1 Varianten	Geburtsstein-Klassenring mit Zirkonia
+gid://shopify/Product/15487316492673	CHF 17.54	1 Varianten	Klassischer Schulring mit Zirkonia-Einlagen
+gid://shopify/Product/15487524274561	CHF 7.26	1 Varianten	Quilted Aufbewahrungsbox
+gid://shopify/Product/15487525388673	CHF 9.02	1 Varianten	Gewürzglas mit Löffel
+gid://shopify/Product/15487525716353	CHF 98.00	1 Varianten	Multifunktionales Abtropfgestell für Spülbecken
+gid://shopify/Product/15487526764929	CHF 47.17	1 Varianten	Titan-Stieltopf, beschichtungsfrei
+gid://shopify/Product/15487527649665	CHF 87.90	1 Varianten	Exquisites Acryl Mahjong-Set, rot-blau
+gid://shopify/Product/15487648629121	CHF 8.72	1 Varianten	Tiger Eye Armband
+gid://shopify/Product/15487649972609	CHF 17.82	1 Varianten	Himalaya Bergkristall Perlenarmband
+gid://shopify/Product/15487650627969	CHF 7.14	1 Varianten	Punk-Fang-Ring-Set
+gid://shopify/Product/15487651447169	CHF 7.22	1 Varianten	Eleganter Zirkonring mit Vier-Krappenfassung
+gid://shopify/Product/15487652102529	CHF 11.57	1 Varianten	Liebes-Geburtsstein-Ring mit Gravur
+gid://shopify/Product/15487652626817	CHF 7.31	1 Varianten	Herrenring mit Flammen-Totem und Gold-Finish
+gid://shopify/Product/15487653249409	CHF 17.54	1 Varianten	Geburtsstein Personalisierter Schnitzring
+gid://shopify/Product/15487653839233	CHF 24.70	1 Varianten	Personalisierter gravierter Damen-College-Ring
+gid://shopify/Product/15487654920577	CHF 12.36	1 Varianten	Kupferring mit Geburtsstein für Damen
+gid://shopify/Product/15487888425345	CHF 35.99	24 Varianten	Geschlossene Sandalen
+gid://shopify/Product/15487889604993	CHF 13.23	40 Varianten	Dicksohlige Sandalen
+gid://shopify/Product/15487890784641	CHF 16.56	6 Varianten	Hohe Sandalen mit Riemen
+gid://shopify/Product/15487892423041	CHF 16.88	63 Varianten	Keilabsatz-Sandalen mit Riemchen
+gid://shopify/Product/15487893373313	CHF 13.40	48 Varianten	Keilabsatz-Sandalen mit Peep-Toe
+gid://shopify/Product/15487894716801	CHF 15.66	27 Varianten	Elegante Pumps mit Schleife und flachem Absatz
+gid://shopify/Product/15487895470465	CHF 17.46	8 Varianten	Elegante Blockabsatz-Schuhe im British-Stil
+gid://shopify/Product/15487896846721	CHF 14.94	72 Varianten	Damen Outdoor Sandalen mit Schleife
+gid://shopify/Product/15488007373185	CHF 42.35	1 Varianten	Gesichtsmaske mit LED
+gid://shopify/Product/15488008192385	CHF 36.56	1 Varianten	Aroma Diffuser 2.5L
+gid://shopify/Product/15488008454529	CHF 26.05	1 Varianten	Aromatherapie-Gerät
+gid://shopify/Product/15488009142657	CHF 36.47	1 Varianten	5-in-1 Ultraschall-Gesichtsreinigungsgerät
+gid://shopify/Product/15488389742977	CHF 20.27	12 Varianten	Figurformendes Kleid
+gid://shopify/Product/15488390693249	CHF 17.39	4 Varianten	Kleines Bodycon-Kleid
+gid://shopify/Product/15488391381377	CHF 14.13	6 Varianten	Elegantes Unterkleid
+gid://shopify/Product/15488500629889	CHF 11.17	1 Varianten	Schmuckaufbewahrungsbox
+gid://shopify/Product/15488501449089	CHF 8.45	1 Varianten	Solarseil-Lichterkette
+gid://shopify/Product/15488501842305	CHF 35.21	1 Varianten	Schmuckkasten mit edlem Design
+gid://shopify/Product/15488502202753	CHF 16.75	1 Varianten	Wandhaken aus Eisen
+gid://shopify/Product/15488502825345	CHF 42.50	1 Varianten	Hammer aus Karbonstahl, geschmiedet
+gid://shopify/Product/15488619741569	CHF 25.02	14 Varianten	Leder-Slipper · Herren
+gid://shopify/Product/15488620364161	CHF 28.41	44 Varianten	Leichte Slip-on Loafers für Herren
+gid://shopify/Product/15488622297473	CHF 39.37	21 Varianten	Business-Casual Slipper aus Vollnarbenleder
+gid://shopify/Product/15488746062209	CHF 22.39	1 Varianten	Tragbarer Saftpresser
+gid://shopify/Product/15488747504001	CHF 45.90	1 Varianten	Gewürzgläser-Set aus Borosilikatglas mit Bambus
+gid://shopify/Product/15488748257665	CHF 66.14	1 Varianten	Teleskop-Organizer für Gewürze & Flaschen
+gid://shopify/Product/15488855671169	CHF 10.82	1 Varianten	Dünne Armbanduhr · Mesh-Band elegant
+gid://shopify/Product/15488856260993	CHF 14.65	1 Varianten	Multifunktions-Chronograph Quarzuhr
+gid://shopify/Product/15488856850817	CHF 11.00	1 Varianten	Sportliche Multifunktions-Quarzuhr für Herren
+gid://shopify/Product/15488857211265	CHF 8.44	1 Varianten	Minimalistische Quarzuhr – leicht & elegant
+gid://shopify/Product/15488857768321	CHF 13.42	1 Varianten	Sternenhimmel Armbanduhr mit Glitzer und Strass
+gid://shopify/Product/15488858456449	CHF 11.71	1 Varianten	Holz-Taschenuhr mit rauer Kette
+gid://shopify/Product/15489102938497	CHF 18.37	6 Varianten	Lockere Damen-Tunika
+gid://shopify/Product/15489103200641	CHF 29.93	12 Varianten	Rüschen-Kleid · Damen
+gid://shopify/Product/15489103528321	CHF 43.20	16 Varianten	Elegantes Abendkleid
+gid://shopify/Product/15489104347521	CHF 17.71	25 Varianten	Eleganter Patchwork-Rock mit Schleife
+gid://shopify/Product/15489104773505	CHF 14.90	48 Varianten	Samt-Pullover mit Kapuze und Kordelzug
+gid://shopify/Product/15489105133953	CHF 21.29	15 Varianten	Denim-Patchwork Rollkragen-Pullover im Lagenlook
+gid://shopify/Product/15489105428865	CHF 17.19	3 Varianten	Rollkragenpullover im Oversize-Look
+gid://shopify/Product/15489105953153	CHF 25.50	2 Varianten	Retro Strickpullover mit Reissverschluss
+gid://shopify/Product/15489325367681	CHF 11.59	72 Varianten	Herren Slimfit-Anzug
+gid://shopify/Product/15489325760897	CHF 23.08	48 Varianten	Herren Business Jacket
+gid://shopify/Product/15489326383489	CHF 15.88	42 Varianten	Casual T-Shirt · Herren
+gid://shopify/Product/15489418035585	CHF 24.20	1 Varianten	Sitzkissen aus Leder
+gid://shopify/Product/15489424130433	CHF 16.41	18 Varianten	Strand-Sandalen mit Steinen
+gid://shopify/Product/15489427603841	CHF 11.57	1 Varianten	Engel Flügel Ring
+gid://shopify/Product/15489428128129	CHF 11.73	1 Varianten	Goldener Armband · Damen
+gid://shopify/Product/15489428455809	CHF 7.67	1 Varianten	Stainless Steel Choker
+gid://shopify/Product/15489433043329	CHF 9.64	30 Varianten	Sommerbluse · Damen
+gid://shopify/Product/15489433469313	CHF 14.17	30 Varianten	Bluse mit Ruffles
+gid://shopify/Product/15489435468161	CHF 18.60	3 Varianten	Eleganter Strickpullover mit Farbstreifen
