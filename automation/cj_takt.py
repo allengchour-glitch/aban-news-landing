@@ -55,7 +55,9 @@ def _lesen():
 # niemand wartet laenger als VORRANG_MAX_S (Standard 90 min).
 VORRANG_DATEI = "/tmp/cj_vorrang"
 VORRANG_SKRIPTE = ("cj_kosten_backfill",)
-IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bestell", "cj_takt")
+# 27.09.2026 (#1019): cj_ausgelistet_sichtbar schützt Bestellungen (ausgelistete, aber beworbene Ware) — wartete hinter
+# dem Kosten-Nachtrag (Vorrang, bis 90 min) und kam nie an die Reihe. ≤ ~700 Aufrufe/Tag.
+IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bestell", "cj_takt", "cj_ausgelistet")
 VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
 
 
