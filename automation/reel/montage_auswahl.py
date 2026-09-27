@@ -110,7 +110,14 @@ def main():
             kw.add("uhr-familie")
         if (k["typ"] and k["typ"] in typen) or (kw & kernwoerter):
             continue
-        ok_bilder = [i for i, im in k["bilder"] if textfrei(im["url"])][: a.bilder]
+        # 27.09.: nach genug sauberen Bildern aufhören (vorher wurden ALLE bis zu 12 Bilder je Kandidat per OCR geprüft —
+        # bei Last 24 lief die Auswahl in die 28-min-Grenze); höchstens 5 Bilder je Kandidat ansehen.
+        ok_bilder = []
+        for i, im in k["bilder"][:5]:
+            if textfrei(im["url"]):
+                ok_bilder.append(i)
+                if len(ok_bilder) >= a.bilder:
+                    break
         if len(ok_bilder) < 2:
             print(f"   – {k['handle']}: zu wenig textfreie Bilder")
             continue

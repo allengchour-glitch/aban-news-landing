@@ -265,6 +265,14 @@ async function main() {
   if (!CJT) { log('kein CJ-Token — Lauf endet'); return; }
   const done = ledgerLesen();
   const w1 = [], w2 = [];
+  // ⚠️ 27.09.2026: /tmp/export.jsonl ist eine GETEILTE Datei — am 27.09. lag dort der Kosten-Export (Produktzeilen ohne
+  // mediaCount, dazu Variantenzeilen). Ohne das Feld zählte jedes Produkt als «0 Bilder»: «45'333 mit ≤ 1 Bild», während
+  // eine Stichprobe von 120 aktiven CJ-Produkten 119 mit ≥ 3 Bildern fand. Fehlt mediaCount → kein Urteil (Lehre 24.09.:
+  // geteilte Datei = Format prüfen, nicht Alter).
+  const probe = fs.readFileSync(EXPORT, 'utf8').split('\n').slice(0, 400).filter(z => z.includes('"title"'));
+  if (!probe.length || !probe.some(z => z.includes('"mediaCount"'))) {
+    log(`PAUSE: ${EXPORT} trägt kein mediaCount (anderes Export-Format) — KEIN Urteil über Bildzahlen`); return;
+  }
   for (const zeile of fs.readFileSync(EXPORT, 'utf8').split('\n')) {
     if (!zeile.trim()) continue;
     let p; try { p = JSON.parse(zeile); } catch { continue; }

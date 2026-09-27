@@ -12,12 +12,12 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 
 1. [ ] **Bestellungen:** #1019 — Kundin-Antwort in Gmail lesen (from:alicia.riedi@powersurf.li); NICHTS senden, nur melden.
    Neue Bestellung → sofort `cj_order_engine.py` (USD_CHF per WebSearch, Frankfurter/ER-API gesperrt) + Ausgelistet-Prüfung.
-2. [ ] **Ausgelistete Ware:** Lauf `cj_ausgelistet_sichtbar.py` auswerten (Bericht `dropship/CJ-AUSGELISTET-SICHTBAR.md`);
+2. [~] 22:24 wartende Posts geprüft: 0 bewerben die 3 ausgelisteten (Schaukelgeist, 2 Sojawachskerzen); Endbericht folgt. **Ausgelistete Ware:** Lauf `cj_ausgelistet_sichtbar.py` auswerten (Bericht `dropship/CJ-AUSGELISTET-SICHTBAR.md`);
    ausgelistete Artikel aus wartenden Social-Posts nehmen (reels_seed.csv / posts_image.csv / ig_karussell.csv → Status
    `produkt-nicht-aktiv`), damit kein Post ein totes Produkt bewirbt.
 3. [ ] **Faktenblock-Nachtrag** (CJ-Merkmale in die Produktseite): Fortschritt messen (`_cj_specs_done.txt`), Stichprobe 5
    neue Blöcke per WebFetch ansehen (Material/Masse deutsch, keine Floskel, keine falsche Grösse).
-4. [ ] **cj_bild_backfill-Zählfehler:** meldet «45'333 mit ≤ 1 Bild» aus `/tmp/export.jsonl` (Export OHNE Medien) —
+4. [x] ✅ 22:25 Formatprüfung eingebaut (ohne mediaCount → PAUSE «kein Urteil», DRY bestätigt). **cj_bild_backfill-Zählfehler:** meldet «45'333 mit ≤ 1 Bild» aus `/tmp/export.jsonl` (Export OHNE Medien) —
    Stichprobe 120 aktive CJ: 119 mit ≥ 3 Bildern. Kandidaten nur aus einem Export MIT Medienzahl (format_ok-Prüfung), sonst
    «kein Urteil».
 5. [ ] **Sammel-Video (mehrere Produkte, 24 s, Musik luxe-epic-anime):** `montage_auswahl.py` lief in die Zeitgrenze (OCR bei
@@ -32,3 +32,4 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 ## Protokoll
 - 22:30 Plan angelegt. Nachprüfung beworbene CJ-Ware läuft (bisher 2 ausgelistet: Sojawachskerzen Zitrus/Holz + Orchidee,
   Herbst-Favoriten → DRAFT). Faktenblock-Lauf LIMIT 400 gestartet.
+- 22:25 Punkt 4 erledigt; Punkt 5: montage_auswahl prüft nur noch ≤ 5 Bilder je Kandidat (Abbruch bei genug) — Lauf läuft.
