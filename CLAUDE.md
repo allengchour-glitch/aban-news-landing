@@ -68,7 +68,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-09-26 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 Katzenprodukte, 300 gemessen, 196 korrigiert):**
+**📌 2026-09-26/27 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 Katzenprodukte, 700 gemessen, 483 korrigiert):**
 - **Auftrag:** Dauerauftrag / `/loop` — die nächste ungemessene Katalogklasse nach der Preisregel messen.
   Gewählt: **Haustier**, weil einer der sieben echten Verkäufer ein Katzenspielzeug ist (#1012).
 - **🔴 DIE KLASSE IST UM EINE GRÖSSENORDNUNG GRÖSSER ALS ALLES BISHERIGE.** GEMESSEN mit
@@ -153,6 +153,39 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   hier eine erfundene Fehlerquote.
 - **📊 STAND DER KLASSE: 600 der 806 Katzenprodukte gemessen → 383 Produkte / 1007 Varianten live
   korrigiert** (196/196 · 45/45 · 59/59 · 83/83 nachgemessen).
+- **✅ FÜNFTER KATZEN-BLOCK (Seite 8): 100 Produkte / 135 Varianten**, `userErrors` in allen vier Teilen
+  leer, **100/100 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  **Die erste Seite, auf der KEIN EINZIGES Produkt in Ordnung war: 135 von 135 Varianten mit
+  Einkaufspreis (alle CHF), 0 in Ordnung, 100 von 100 Produkten betroffen, 0 Faktor-über-3.**
+  Grösste Fälle: Futterstation für Katzen 75.90 bei EK 53.89 → 99.90 · Keramiknapf 44.90/31.84 →
+  59.90 · Faltbares Katzenbett mit Plüsch 56.90/40.31 → 74.90.
+- **🔑 UND DAMIT IST DIE IMPORT-BEPREISUNG ERSTMALS ALS FORMEL GEMESSEN, nicht mehr nur vermutet.**
+  Das Margenband dieser Seite ist absurd eng — **21,1 bis 24,8 PROZENT** — und der Quotient
+  Preis/Einkauf liegt bei **1,4084 bis 1,4769**. Geprüft: **„Einkauf × 1,415, aufgerundet auf das
+  nächste `n.90`" reproduziert 124 der 135 alten Preise (91,9 PROZENT)**, Gegenprobe mit Faktor 2,50
+  trifft **0 von 135**. Ein fester Aufschlag von 1,415 ergibt nach WELCOME10 rechnerisch 21,5 PROZENT
+  Marge — **deshalb war die ganze Seite unter dem Ziel, per Konstruktion und nicht aus Versehen.**
+- **⚠️ ZWEI EIGENE FEHLANNAHMEN AUF DEM WEG DORTHIN, beide von der Messung gestoppt.** (1) Ich habe
+  zuerst gegen die Leiter `x4.90/x9.90` gerechnet und kam auf 32 Prozent — **die alten Preise stehen
+  gar nicht auf dieser Leiter** (75.90, 56.90, 37.90, 33.90), sondern auf *jedem* `n.90`. Die Leiter
+  ist unsere Preisregel, nicht die des Importeurs; wer sein eigenes Raster in fremde Daten liest,
+  misst sich selbst. (2) Ich wollte daraus „der ganze Katalog ist mit 1,42 bepreist" machen:
+  **über alle 1142 Katzen-Varianten trifft der beste Einzelfaktor nur 51 PROZENT.** Die Trefferquote
+  steigt Block für Block — **36 · 42 · 58 · 73 · 92 Prozent** — also hat **jede Importcharge ihren
+  eigenen festen Aufschlag** um 1,40–1,43, und es gibt keinen Katalogfaktor. Genau die Streuung, die
+  seit dem 20.09. behauptet war, jetzt mit einer Zahl dahinter.
+- **⚠️ `katzen*` IST ZU 97 PROZENT SAUBER, NICHT ZU 100 — kleine Korrektur an meiner eigenen Aussage
+  vom 26.09.** Auf Seite 8 sind **3 von 100** Katzen-*Motiv* statt Tierbedarf: S925-Silber-Katzenring,
+  High Heel mit Katzen-Anhänger, Kawaii-Katzen-Rucksack für die Schule. Das ist derselbe Mechanismus
+  wie bei `tier*`, nur selten statt überall — „von 200 Titeln trug keiner das Wort nicht" war wahr und
+  beschreibt trotzdem nicht, ob es Tierbedarf ist. **An den Preisen ändert das nichts** (eine Marge ist
+  eine Marge), nur an der Beschriftung der Klasse.
+- **⚠️ UND EIN FEHLALARM IN MEINEM EIGENEN SUCHMUSTER:** `/schal/` fing „Wasser**schal**e",
+  „Katzen**schal**e" und „Kratz**schal**e" als Kleidungsstück. Fehlende Wortgrenze — **dieselbe Klasse
+  wie `3to4` → `3to 4` vom 12.09.** Drei der sieben Treffer waren also meine Erfindung.
+- **📊 STAND DER KLASSE: 700 der 806 Katzenprodukte gemessen → 483 Produkte / 1142 Varianten live
+  korrigiert** (196/196 · 45/45 · 59/59 · 83/83 · 100/100 nachgemessen). Daten:
+  `dropship/preise-katzen-block5-2026-09-27.csv`. **106 offen, danach `hunde*` mit 1640.**
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
 
 **📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
