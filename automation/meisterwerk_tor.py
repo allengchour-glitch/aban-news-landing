@@ -12,6 +12,9 @@ enthaelt aber auch aeltere Reels, die nie durch ein Tor gingen. Dieses Tor misst
   HOOK     Bewegung in der ersten Sekunde (mittlere Bilddifferenz, 96x170 Graustufen, 15 fps) ≥ MIN_HOOK
            — ein Standbild oder ein langsamer Titel-Einstieg ist kein Hook
   STILL    Anteil fast stehender Sekunden ≤ 50 % (Diashow aus Standbildern = billig)
+  PREIS    (nur mit PREIS_SOLL="15.90,…" = CHF-Preise aus der Caption) jeder im Bild eingebrannte Preis (OCR, 3 Frames)
+           muss in der Caption stehen — die Caption prueft post_guard.preisVeraltet gegen den Live-Preis, das Bild
+           prueft niemand sonst (27.09.: Diashow mit Bildpreis 4.90 bei Live 15.90). Ohne tesseract/Treffer: kein Urteil.
 
   python3 automation/meisterwerk_tor.py <datei|url> [...]   → je Datei eine JSON-Zeile {ok, gruende, werte}
   Exit 0 = alle bestanden, 4 = mindestens eine durchgefallen, 2 = nicht messbar (dann KEIN Post — kein Urteil ist kein Ja).
@@ -61,8 +64,31 @@ def messen(pfad):
     return dict(breite=w, hoehe=h, dauer=round(dauer, 1), lufs=ton, hook=round(hook, 2), still=round(still, 2))
 
 
+def bildpreise(pfad, dauer):
+    """CHF-artige Betraege (mit Rappen, ab 5.00) aus drei Frames — leere Menge = kein Urteil."""
+    if not subprocess.run(["sh", "-c", "command -v tesseract"], capture_output=True).stdout.strip():
+        return None
+    funde = set()
+    for t in sorted({1.5, max(1.5, dauer / 2), max(1.5, dauer - 1.5)}):
+        f = tempfile.NamedTemporaryFile(suffix=".png", delete=False).name
+        try:
+            subprocess.run([FF, "-y", "-loglevel", "error", "-ss", f"{t:.2f}", "-i", pfad, "-frames:v", "1", f], timeout=120)
+            if os.path.getsize(f) > 1000:
+                txt = subprocess.run(["tesseract", f, "-", "--psm", "11"], capture_output=True, text=True, timeout=120).stdout
+                funde |= {f"{float(x.replace(',', '.')):.2f}" for x in re.findall(r"(?<![\d.,])(\d{1,4}[.,]\d{2})(?![\d])", txt)
+                          if float(x.replace(',', '.')) >= 5}
+        finally:
+            os.unlink(f)
+    return funde
+
+
 def urteil(v):
     g = []
+    soll = {f"{float(x.replace(',', '.')):.2f}" for x in os.environ.get("PREIS_SOLL", "").split(",") if x.strip()}
+    if soll and v.get("bildpreise"):
+        fremd = sorted(set(v["bildpreise"]) - soll)
+        if fremd:
+            g.append(f"BILDPREIS {','.join(fremd)} ≠ Caption {','.join(sorted(soll))}")
     if v["breite"] < 1080 or v["hoehe"] < 1920 or abs(v["breite"] / v["hoehe"] - 9 / 16) > 0.02:
         g.append(f"FORMAT {v['breite']}x{v['hoehe']}")
     if not 6 <= v["dauer"] <= 35:
@@ -85,6 +111,9 @@ def main(args):
             p, tmp = lokal(q)
             try:
                 v = messen(p)
+                if os.environ.get("PREIS_SOLL"):
+                    bp = bildpreise(p, v["dauer"])
+                    v["bildpreise"] = sorted(bp) if bp else []
             finally:
                 if tmp:
                     os.unlink(p)

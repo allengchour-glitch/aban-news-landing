@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 101 — 27.09.2026 · Bildpreis-Tor: eingebrannter Preis ≠ Caption bei 2 von 3 CDN-Reels
+
+**Gemessen:** OCR (tesseract, 3 Frames) auf 17 Reels + 2 Karussells. Repo-Reels 14/14 und Karussells 2/2 stimmig; von 3
+wartenden CDN-Reels aus dem Juli zeigten 2 einen alten Preis im Bild (CHF 5.90 bei Caption 15.90, 7.90 bei 14.90). Der
+Preisschutz (24.09.) hob Shop-Preis und Caption; `preisVeraltet` sah deshalb nichts — das Video blieb alt.
+**Getan:** `meisterwerk_tor.py` PREIS-Prüfung (`PREIS_SOLL` = CHF-Preise der Caption, Bildbeträge mit Rappen ≥ 5), beide
+Reel-Poster reichen die Caption-Preise durch. Kanarienvogel richtig/falsch bestanden, 0 Fehlalarme auf 6 sauberen Reels.
+**Lehre:** Wer einen Wert an zwei Orten ausliefert (Text und Bild), muss beide prüfen — eine Korrektur, die nur einen Ort
+erreicht (Caption), macht die Prüfung des anderen nötig, nicht überflüssig. Bericht: `dropship/BILDPREIS-TOR-2026-09-27.md`.
+
 ## 📌 Nachtrag 100 — 27.09.2026 · «meta brauch nicht habe ja metricool»: IG/FB-Bild und Karussell über Metricool
 
 **Anlass:** Die Ampel mahnte täglich «Meta-Datenzugang endet 05.10. — Betreiber erneuert im Graph-Explorer». Der Betreiber
@@ -16793,6 +16803,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-24 · 🎠 **«warum nicht mehr bilder in karusell»: Kürbis-Set 4 Slides — 3 Motive nur als 600 px (MIN_KANTE 700), Kleid in 4 Farben galt dem Graustufen-aHash als 1 Motiv. IG jetzt bis 8 Slides, 600er füllen hinter den grossen auf, Doppel = gleiche Form UND Farbe (Schwelle 12, an echten Paaren geeicht); 5 wartende Sets neu: 4× 8 Slides.** Ein Doppel-Filter muss sehen, was die Betrachterin sieht → Journal Nachtrag 62
 - 2026-09-24 · ⭐ **«bewertungen push»: erst ehrlich, dann mehr — 10'976 Bewertungen, nur 38 unter 4★, weil der Tagesstarter `MIN_SCORE=4` setzte (Skript-Standard seit 23.08. = alle, UWG); Ersatzname «Verifizierter Käufer» war falsch → Starter alle Stufen, Nachhol-Modus 1–3★ für 2'072 Produkte. Fortura-Bestand 34 Tage eingefroren (hing am pausierten Import-Runner) → 3'847 Varianten nachgeführt, 248 auf 0, eigener Tagesstarter. Aufseher-Tor kannte keinen ISO-Zeitstempel vor FERTIG.** Bei jeder Regel auch die Aufrufer lesen → Journal Nachtrag 61
 - 2026-09-24 · 🧾 **Post-Quittung lag im Stash: `repo_vorspulen.sh` spielte nur `dropship/*.txt` zurück, der Smartwatch-Bildpost 02:13 (IG DdpyPQLFFjb) stand im Repo als `ready` → Link-in-Bio/FB-Link ohne Produkt. `quittung_rueckspiel.py` (vorwärts, unter Post-Lock, nur verlustfrei schreibbare CSVs) läuft jetzt im Vorspulen; Ampel misst fehlende Quittungen statt Stashes. «Trend-Produkt» war nie Sammeltyp → zweite Regelwelle, 8 Wortfallen im Trockenlauf (Multi-FUNK-tion, Spiegelglanz, Lippenglanz-STIFT …), 459 kategorisiert, 188 bewusst offen.** Eine Queue mit Status-Spalte ist ein Ledger → Journal Nachtrag 60
 - 2026-09-24 · 📚 **Ratgeber-Runde 2 live (Halloween-Deko 997 W, Katzenspielzeug 1'010 W); Prüfer-Befunde behoben (Skelett-Karte bei Bestand 1 → Fakten + Ersatzlink, «Hersteller» → «Lieferantenlager»); Prüfer-«offen» selbst gebaut: `ratgeber_ohne_ware.py` Klasse C (ausverkauft DENY), `kategorie_wache.py` Halloween-Titelregel, 13 Produkte umkategorisiert.** Karte sagt nur, was ein Produktfeld belegt; ein leerer neuer Wächter braucht einen synthetischen Test → Journal Nachtrag 59

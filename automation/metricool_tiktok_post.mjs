@@ -219,7 +219,8 @@ if (!pa.ok) {
 // 8 von 14 geposteten Reels hatten einen stehenden Einstieg — genau die Klasse, die TikTok (Ø 1,8 s von 11 s) verliert.
 { const vu = get(cand, 'video_url'); const lm = /\/social\/reels\/([^/?#]+\.mp4)/.exec(vu);
   const quelle = lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu;
-  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000 });
+  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000,
+    env: { ...process.env, PREIS_SOLL: [...String(get(cand, 'caption') || '').matchAll(/CHF\s*(\d{1,4}[.,]\d{2})/g)].map(m => m[1]).join(',') } });   // 27.09.: Bildpreis = Caption-Preis
   if (t.status !== 0) {
     const zeile = (t.stdout || '').trim().split('\n').pop() || (t.stderr || '').slice(-120);
     console.error(`⛔ Kein Post — Meisterwerk-Tor: ${zeile.slice(0, 220)}`);

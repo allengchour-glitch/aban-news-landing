@@ -35571,3 +35571,79 @@ gid://shopify/Product/15485395337601	CHF 11.77	1 Varianten	Eleganter Ring mit ge
 gid://shopify/Product/15485395370369	CHF 8.95	1 Varianten	Boho-Ohrringe mit Quasten und Reisperlen
 gid://shopify/Product/15485395403137	CHF 11.36	1 Varianten	Elegante Ohrhaken mit Perlen
 gid://shopify/Product/15485395468673	CHF 7.23	1 Varianten	Handgemachte Ohrringe mit Naturstein im Ethno-Stil
+gid://shopify/Product/15485395501441	CHF 12.34	1 Varianten	Ohrhaken "Ethno-Blume" aus 925er Sterlingsilber
+gid://shopify/Product/15485395534209	CHF 15.78	1 Varianten	Ohrstecker Rose Sterling Silber
+gid://shopify/Product/15485395599745	CHF 9.27	1 Varianten	S925 Sterling Silber Camellia Perlen-Ohrstecker
+gid://shopify/Product/15485395796353	CHF 13.36	20 Varianten	Elegantes ärmelloses Schlitzkleid
+gid://shopify/Product/15485395861889	CHF 21.48	14 Varianten	Satin Neckholder-Kleid im französischen Stil
+gid://shopify/Product/15485395894657	CHF 10.57	12 Varianten	Nachthemd mit Spaghettiträgern – diverse Muster
+gid://shopify/Product/15485395960193	CHF 25.30	12 Varianten	Sport-Rock mit integrierten Shorts
+gid://shopify/Product/15485395992961	CHF 11.77	5 Varianten	Elegantes Damenkleid mit Print und Taillengürtel
+gid://shopify/Product/15485407068545	CHF 35.31	96 Varianten	Rückenfreies Abendkleid
+gid://shopify/Product/15485407166849	CHF 16.05	10 Varianten	Kurzes V-Ausschnitt-Kleid
+gid://shopify/Product/15485407199617	CHF 12.60	5 Varianten	Etuikleid mit V-Ausschnitt & Rüschenärmeln
+gid://shopify/Product/15485407265153	CHF 14.50	8 Varianten	Rüschenkleid mit Spitze
+gid://shopify/Product/15485407330689	CHF 13.10	42 Varianten	Sexy Neckholder Minikleid
+gid://shopify/Product/15485407396225	CHF 17.07	9 Varianten	Retro Polka-Dot Neckholder Minikleid
+gid://shopify/Product/15485407494529	CHF 17.68	1 Varianten	Spitzenbluse mit Reverskragen und langen Ärmeln
+gid://shopify/Product/15485407527297	CHF 15.61	36 Varianten	Western Cowboy Wildleder Fransen Langarmshirt
+gid://shopify/Product/15485407592833	CHF 13.25	24 Varianten	Stehkragen Pullover mit halber Knopfleiste
+gid://shopify/Product/15485407625601	CHF 12.29	30 Varianten	Samtiges V-Neck Langarmshirt mit Falten
+gid://shopify/Product/15485407691137	CHF 10.83	10 Varianten	Damenbluse mit langen Ärmeln · Slim Fit
+gid://shopify/Product/15485407789441	CHF 54.38	96 Varianten	Leder- und Fellmantel mit Fleecefutter
+gid://shopify/Product/15485407854977	CHF 10.48	24 Varianten	Bedrucktes Kurzarmhemd für Herren
+gid://shopify/Product/15485407920513	CHF 11.87	48 Varianten	Sommerhemd Langarm Slim Fit
+gid://shopify/Product/15485408182657	CHF 12.07	21 Varianten	Herren Langarmhemd mit Plaid-Muster
+gid://shopify/Product/15485412278657	CHF 11.67	1 Varianten	Kompaktes Anti-Diebstahl Kartenetui
+gid://shopify/Product/15485413261697	CHF 16.38	1 Varianten	Retro Business-Lederportemonnaie aus Vollnarbenled
+gid://shopify/Product/15485423747457	CHF 11.61	1 Varianten	Becher
+gid://shopify/Product/15485424042369	CHF 14.31	1 Varianten	Gewürzglas mit Metallverarbeitung
+gid://shopify/Product/15485424107905	CHF 12.07	1 Varianten	Halskissen Memory Foam
+gid://shopify/Product/15485424173441	CHF 63.95	1 Varianten	Aluminium-Stativ für Theodolit
+gid://shopify/Product/15485424828801	CHF 31.48	1 Varianten	Boho Wandteppich mit Quasten
+gid://shopify/Product/15485424927105	CHF 39.76	1 Varianten	Rutschfester Chenille Sofabezug für jede Jahreszei
+gid://shopify/Product/15485424992641	CHF 25.97	1 Varianten	Vielseitiges Sofa-Kissen für jede Jahreszeit
+gid://shopify/Product/15485425123713	CHF 54.02	1 Varianten	Wasserdichter Sofa-Schutzbezug
+gid://shopify/Product/15485425156481	CHF 62.70	1 Varianten	Patchwork Sofa-Kissen aus Chenille
+gid://shopify/Product/15485425254785	CHF 63.35	1 Varianten	Wasserfester Sofaüberzug aus Fuzzy-Garn
+gid://shopify/Product/15485425287553	CHF 74.40	1 Varianten	Sofa-Überwurf Rutschfest Gestreift
+gid://shopify/Product/15485425418625	CHF 25.90	1 Varianten	Sofa Kissen aus Kaninchenplüsch
+gid://shopify/Product/15485425516929	CHF 52.27	1 Varianten	Rutschfester Stretch-Sofabezug – All-inclusive
+gid://shopify/Product/15485425648001	CHF 24.01	1 Varianten	Sofa-Kissen aus gemütlichem Coral Fleece
+gid://shopify/Product/15485425680769	CHF 34.45	1 Varianten	Rasierer- und Pinselhalter aus Edelstahl
+gid://shopify/Product/15485425779073	CHF 21.88	1 Varianten	Sofa-Kissen aus Eisseide
+gid://shopify/Product/15485425877377	CHF 31.74	96 Varianten	Profi-Fahrradschuhe für Damen und Herren
+gid://shopify/Product/15485454680449	CHF 7.43	1 Varianten	Moderne Leinwand
+gid://shopify/Product/15485454778753	CHF 6.88	1 Varianten	DIY Laser Diamond Painting
+gid://shopify/Product/15485454844289	CHF 13.56	1 Varianten	Retro Wandposter
+gid://shopify/Product/15485454942593	CHF 65.00	1 Varianten	Abstrakte Linien Wandbild
+gid://shopify/Product/15485455008129	CHF 8.21	1 Varianten	5D Diamond Painting
+gid://shopify/Product/15485455040897	CHF 8.38	1 Varianten	DIY Diamond Painting Notizbuch
+gid://shopify/Product/15485455106433	CHF 10.20	1 Varianten	Stick-Set Blumen & Tiere für Anfänger
+gid://shopify/Product/15485455466881	CHF 8.26	24 Varianten	Warme Baby Winterstiefel mit Cartoon-Motiven
+gid://shopify/Product/15485455597953	CHF 21.64	75 Varianten	Kinder Winterstiefel aus Leder mit Fell
+gid://shopify/Product/15485455630721	CHF 12.62	40 Varianten	Kinder Hausschuhe Pinguin
+gid://shopify/Product/15485456974209	CHF 13.32	30 Varianten	Kinder Sportsandalen mit Buchstabenmuster
+gid://shopify/Product/15485457006977	CHF 13.21	22 Varianten	Kinder-Strandschuhe mit Klettverschluss
+gid://shopify/Product/15485457072513	CHF 11.25	22 Varianten	Sommer Sandalen für Kinder mit Klettverschluss
+gid://shopify/Product/15485457105281	CHF 16.07	32 Varianten	Kinder Soft-Sohlen Bachlaufschuhe
+gid://shopify/Product/15485457170817	CHF 12.55	28 Varianten	Mädchen Sportschuhe mit weicher Sohle
+gid://shopify/Product/15485457269121	CHF 13.87	60 Varianten	Kinder-Outdoorsandalen mit geschlossener Zehenpart
+gid://shopify/Product/15485457400193	CHF 8.61	2 Varianten	Preppy-Style Leder-Schuhe mit Riemen
+gid://shopify/Product/15485457432961	CHF 16.14	30 Varianten	Kinder Leder-Halbschuhe mit Klettverschluss
+gid://shopify/Product/15485457760641	CHF 15.51	36 Varianten	Warme, wasserdichte Schneestiefel für Kinder
+gid://shopify/Product/15485457826177	CHF 22.80	44 Varianten	Gefütterte Schneestiefel für Kinder
+gid://shopify/Product/15485479321985	CHF 9.10	1 Varianten	Herrenuhr mit Doppelanzeige
+gid://shopify/Product/15485479453057	CHF 15.08	1 Varianten	Dynamisches Mikrofon
+gid://shopify/Product/15485489643905	CHF 24.70	85 Varianten	Casual Peep-Toe Sandalen mit Absatz
+gid://shopify/Product/15485489873281	CHF 38.52	12 Varianten	Vintage Knight Ankle Boots für Damen
+gid://shopify/Product/15485490069889	CHF 24.90	18 Varianten	Kniehohe Reitstiefel mit Samtfutter
+gid://shopify/Product/15485490200961	CHF 21.67	30 Varianten	Chunky-Heel High Heels mit spitzer Zehe
+gid://shopify/Product/15485490364801	CHF 21.67	40 Varianten	Spitze Slip-on Pumps mit Chunky-Absatz
+gid://shopify/Product/15485490528641	CHF 23.55	32 Varianten	Peep-Toe Sandalen mit Blockabsatz und Schleife
+gid://shopify/Product/15485491020161	CHF 24.66	9 Varianten	Stiletto-Pumps mit Riemchen und spitzer Zehe
+gid://shopify/Product/15485494067585	CHF 10.94	1 Varianten	Armband Goldener Sonnenstein Orange-Rot
+gid://shopify/Product/15485494198657	CHF 7.87	1 Varianten	Muschelhalskette aus Keramik für Damen
+gid://shopify/Product/15485494460801	CHF 7.73	1 Varianten	Halskette mit Würfel-Anhänger
+gid://shopify/Product/15485494624641	CHF 8.59	1 Varianten	Raven Rose Ohrringe – Süss & Kantig
+gid://shopify/Product/15485495804289	CHF 14.05	60 Varianten	3D Retro Muster A-Linien-Kleid für Damen

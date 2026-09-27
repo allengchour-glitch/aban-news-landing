@@ -241,7 +241,8 @@ async function promoPruefen(postId, videoUrl, caption) {
 // 27.09.2026 Meisterwerk-Tor (wie metricool_tiktok_post.mjs): keine Reels mit stehendem Einstieg, Diashow, falschem Format/Ton.
 { const vu = cand[idx.video_url]; const lm = /\/social\/reels\/([^/?#]+\.mp4)/.exec(vu);
   const quelle = lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu;
-  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000 });
+  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000,
+    env: { ...process.env, PREIS_SOLL: [...String(cand[idx.caption] || '').matchAll(/CHF\s*(\d{1,4}[.,]\d{2})/g)].map(m => m[1]).join(',') } });   // 27.09.: Bildpreis = Caption-Preis
   if (t.status !== 0) {
     console.error(`⛔ Kein Post — Meisterwerk-Tor: ${((t.stdout || '').trim().split('\n').pop() || '').slice(0, 220)}`);
     if (!DRY && t.status === 4) { cand[idx.status] = 'meisterwerk-tor-skip'; writeLedger(); }
