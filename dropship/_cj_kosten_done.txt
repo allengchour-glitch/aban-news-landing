@@ -36636,3 +36636,7 @@ gid://shopify/Product/15492035477889	CHF 18.03	4 Varianten	Pailletten-Spitzen Ma
 gid://shopify/Product/15492035543425	CHF 16.11	8 Varianten	Halterneck Minikleid aus Chiffon
 gid://shopify/Product/15492035576193	CHF 17.36	8 Varianten	Pailletten-Minikleid mit Neckholder
 gid://shopify/Product/15492035608961	CHF 18.93	8 Varianten	Neckholder-Kleid mit Spitze
+gid://shopify/Product/15492035674497	CHF 16.48	4 Varianten	Elegantes Maxikleid mit Schlitz und Falten
+gid://shopify/Product/15492035707265	CHF 15.30	8 Varianten	Gestricktes Patchwork-Kleid mit Spitze
+gid://shopify/Product/15492035772801	CHF 16.27	16 Varianten	Asymmetrisches Bodycon-Kleid mit Schlitz
+gid://shopify/Product/15492035805569	CHF 20.80	8 Varianten	Pailletten Neckholder Maxikleid
