@@ -36863,3 +36863,9 @@ gid://shopify/Product/15492397138305	CHF 28.43	18 Varianten	Leichte Casual-Schuh
 gid://shopify/Product/15492438065537	CHF 58.64	1 Varianten	Elektronische Hundezuendung
 gid://shopify/Product/15492438262145	CHF 22.13	1 Varianten	Bellenkontrollhalsband
 gid://shopify/Product/15492520083841	CHF 73.56	1 Varianten	Wasserfilterbeutel 6L
+gid://shopify/Product/15492520444289	CHF 6.71	1 Varianten	Lötpaste für BGA-Reparaturen
+gid://shopify/Product/15492520870273	CHF 7.29	1 Varianten	Mini-Schirm für Sonne und Regen
+gid://shopify/Product/15492521263489	CHF 12.02	1 Varianten	Leder Schweisser-Beinschoner gegen Funken und Spri
+gid://shopify/Product/15492521460097	CHF 46.86	1 Varianten	Spanngerät für Stacheldrahtzäune
+gid://shopify/Product/15492521951617	CHF 14.94	1 Varianten	Dachankerhalterung für Absturzsicherung
+gid://shopify/Product/15492522606977	CHF 8.47	1 Varianten	Fahrradkettenzange zum Öffnen und Schliessen
