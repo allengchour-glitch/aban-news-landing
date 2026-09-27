@@ -36657,3 +36657,4 @@ gid://shopify/Product/15492070801793	CHF 15.97	12 Varianten	Herren Straight-Slit
 gid://shopify/Product/15492071096705	CHF 20.38	6 Varianten	Retro Distressed Scythe Jeans für Herren
 gid://shopify/Product/15492071588225	CHF 14.90	6 Varianten	Kurze Washed Denim Jeans für Herren
 gid://shopify/Product/15492072735105	CHF 59.15	1 Varianten	Reisetasche mit Nieten, gross
+gid://shopify/Product/15492080075137	CHF 22.17	1 Varianten	Doppelstöckiger Korb für Zwiebeln, Ingwer, Knoblau
