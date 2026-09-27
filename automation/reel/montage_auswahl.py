@@ -81,7 +81,7 @@ def main():
     if os.path.exists(LEDGER):
         fertig = {z.split("\t")[1] for z in open(LEDGER, encoding="utf-8") if "\t" in z}
     kand, cur = [], None
-    for _ in range(6):
+    for _ in range(10):
         d = pm.gql(Q, {"q": th["q"], "c": cur})["products"]
         for p in d["nodes"]:
             preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
@@ -93,7 +93,7 @@ def main():
                 continue
             rc = int((p.get("metafield") or {}).get("value") or 0)
             kand.append({"handle": p["handle"], "titel": p["title"], "typ": (p.get("productType") or "").lower(), "preis": preis, "bewertungen": rc, "bilder": bilder})
-        if not d["pageInfo"]["hasNextPage"] or len(kand) >= 60:
+        if not d["pageInfo"]["hasNextPage"] or len(kand) >= 160:
             break
         cur = d["pageInfo"]["endCursor"]
     kand.sort(key=lambda k: -k["bewertungen"])
@@ -101,7 +101,13 @@ def main():
     # je Produkttyp höchstens eins, und kein gemeinsames Kernwort (≥ 6 Buchstaben) mit einem schon gewählten Titel.
     wahl, typen, kernwoerter = [], set(), set()
     for k in kand:
-        kw = {w for w in pm.norm(k["titel"]).split() if len(w) >= 6}
+        # Hauptwort = erstes grossgeschriebenes Wort mit ≥ 4 Buchstaben ohne Zahl («F64 Smart Armbanduhr» → «smart»,
+        # «Kinder Smartwatch» → «kinder»); dazu Uhr-/Watch-Familie zusammengefasst. Die erste Fassung (alle Wörter ≥ 6)
+        # sperrte über «bluetooth»/«anschluss» fast alles (Lauf 27.09.: nur 2 von 60 Kandidaten).
+        haupt = next((w for w in k["titel"].split() if w[:1].isupper() and len(w) >= 4 and not any(c.isdigit() for c in w)), k["titel"].split()[0])
+        kw = {pm.norm(haupt).strip()}
+        if re.search(r"uhr|watch", pm.norm(k["titel"])):
+            kw.add("uhr-familie")
         if (k["typ"] and k["typ"] in typen) or (kw & kernwoerter):
             continue
         ok_bilder = [i for i, im in k["bilder"] if textfrei(im["url"])][: a.bilder]

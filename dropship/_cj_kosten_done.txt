@@ -36658,3 +36658,8 @@ gid://shopify/Product/15492071096705	CHF 20.38	6 Varianten	Retro Distressed Scyt
 gid://shopify/Product/15492071588225	CHF 14.90	6 Varianten	Kurze Washed Denim Jeans für Herren
 gid://shopify/Product/15492072735105	CHF 59.15	1 Varianten	Reisetasche mit Nieten, gross
 gid://shopify/Product/15492080075137	CHF 22.17	1 Varianten	Doppelstöckiger Korb für Zwiebeln, Ingwer, Knoblau
+gid://shopify/Product/15492084924801	CHF 21.50	1 Varianten	C28 Smartwatch Outdoor Sportuhr
+gid://shopify/Product/15492085776769	CHF 11.14	1 Varianten	Mini USB Stick 4GB 8GB 16GB
+gid://shopify/Product/15492085973377	CHF 17.14	1 Varianten	EAGET T1 Micro SD Speicherkarte
+gid://shopify/Product/15492086071681	CHF 10.24	1 Varianten	Faltbarer Sonnen- und Regenschirm
+gid://shopify/Product/15492086301057	CHF 6.20	1 Varianten	Präzisions-Winkel für Holzbearbeitung
