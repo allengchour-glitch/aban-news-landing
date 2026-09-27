@@ -1,6 +1,6 @@
-# Füllmenge fehlt — Stand 2026-09-25 01:13 UTC
+# Füllmenge fehlt — Stand 2026-09-27 22:14 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 138 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 1 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 137 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
@@ -110,7 +110,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Erdbeer Hautverjüngungscreme](https://luxestyle.ch/products/erdbeer-hautverjungungscreme-600200) | — | nichts lesbar |  |
 | [Concealer Basic Beauty Creme](https://luxestyle.ch/products/concealer-basic-beauty-creme-600300) | — | nichts lesbar |  |
 | [Biotin Haarserum](https://luxestyle.ch/products/biotin-haarserum-610100) | — | nichts lesbar |  |
-| [Nacht-Akne-Patches mit Teebaumöl](https://luxestyle.ch/products/nacht-akne-patches-mit-teebaumol-184512) | — | nichts lesbar |  |
+| [Nacht-Pickelpatches mit Teebaumöl](https://luxestyle.ch/products/nacht-akne-patches-mit-teebaumol-184512) | — | nichts lesbar |  |
 | [Lippenbalsam-Set «Summer Butter» · Mini, für alle Hauttypen](https://luxestyle.ch/products/mini-summer-butter-lip-balm-suit-606600) | — | nichts lesbar |  |
 | [Ultraschall-Zahnreiniger mit LED](https://luxestyle.ch/products/ultraschall-zahnreiniger-mit-led-38b921) | — | nichts lesbar |  |
 | [Auto-Luftreiniger mit Anionen-Technologie](https://luxestyle.ch/products/auto-luftreiniger-mit-anionen-technologie-3c1fd2) | — | nichts lesbar |  |
@@ -143,4 +143,3 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Rainbow Highlighter Jelly Gel](https://luxestyle.ch/products/rainbow-highlighter-jelly-gel-28c4aa) | — | nichts lesbar |  |
 | [Focallure Abdeckcreme](https://luxestyle.ch/products/focallure-abdeckcreme-5f9003) | — | nichts lesbar |  |
 | [3D-Fibre Mascara mit Kollagen-Gel · 2 Stück](https://luxestyle.ch/products/3d-fibre-mascara-mit-kollagen-gel-2-stuck-7269a0) | — | nichts lesbar |  |
-| [Temperaturregulierende Sonnencreme Foundation](https://luxestyle.ch/products/temperaturregulierende-sonnencreme-foundation-630400) | 30 ml | sicher (ml+oz) · geschrieben | 30 1 @ 8730f96b-cf53-4262-80d6-0a5b47b41479.jpg |
