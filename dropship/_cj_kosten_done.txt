@@ -35914,3 +35914,8 @@ gid://shopify/Product/15486566269313	CHF 14.56	35 Varianten	Corduroy Freizeitblu
 gid://shopify/Product/15486566629761	CHF 16.05	4 Varianten	Romantische Chiffon-Bluse mit Spitze
 gid://shopify/Product/15486566924673	CHF 15.14	4 Varianten	Spitzenbluse mit Lochstickerei
 gid://shopify/Product/15486567252353	CHF 12.65	5 Varianten	Retro Polka-Dot Langarmshirt mit Stehkragen
+gid://shopify/Product/15486568366465	CHF 24.36	28 Varianten	Loose-Fit Daunen-Kapuzenweste für Herren
+gid://shopify/Product/15486568726913	CHF 12.66	14 Varianten	Herren Hoodie mit Stehkragen und Reissverschluss
+gid://shopify/Product/15486569382273	CHF 15.46	15 Varianten	Luftiges Kurzarm-Stricktop für Herren
+gid://shopify/Product/15486576230785	CHF 53.60	1 Varianten	Business Laptop Rucksack – wasserdicht
+gid://shopify/Product/15486576525697	CHF 31.26	1 Varianten	Wasserdichter Gaming-Rucksack für Freizeit
