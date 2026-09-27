@@ -35497,3 +35497,8 @@ gid://shopify/Product/15485009723777	CHF 25.69	1 Varianten	Herren Schultertasche
 gid://shopify/Product/15485009789313	CHF 19.71	1 Varianten	Handgepäck Reisetasche
 gid://shopify/Product/15485009887617	CHF 52.25	1 Varianten	Herren Umhängetasche aus Crazy Horse Leder
 gid://shopify/Product/15485009920385	CHF 25.33	1 Varianten	Taktische Herren-Tragetasche für Outdoor
+gid://shopify/Product/15485009953153	CHF 31.70	1 Varianten	Echtleder Umhängetasche für Herren
+gid://shopify/Product/15485010018689	CHF 27.04	1 Varianten	Brust-Schultertasche aus Leder
+gid://shopify/Product/15485010149761	CHF 26.40	1 Varianten	Brusttasche aus Vollnarbenleder für Herren
+gid://shopify/Product/15485010215297	CHF 15.16	1 Varianten	Lässige Reise-Bauchtasche aus Leder für Herren
+gid://shopify/Product/15485043540353	CHF 193.17	1 Varianten	Rechteckige Tontopf
