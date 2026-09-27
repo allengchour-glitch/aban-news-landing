@@ -36736,3 +36736,5 @@ gid://shopify/Product/15492131684737	CHF 8.09	1 Varianten	Ohrringe mit weisser M
 gid://shopify/Product/15492131717505	CHF 50.62	1 Varianten	Klassische Moissanit Ohrstecker (S925 Silber)
 gid://shopify/Product/15492131815809	CHF 17.63	1 Varianten	Moissanit Ohrclips mit gedrehtem Design
 gid://shopify/Product/15492131914113	CHF 7.23	1 Varianten	Ohrhänger mit Marquise-Diamanten & mehreren Lagen
+gid://shopify/Product/15492132503937	CHF 22.64	8 Varianten	Trägerloses A-Linien-Kleid im French-Stil
+gid://shopify/Product/15492132602241	CHF 14.71	4 Varianten	Neckholder Bodycon Minikleid mit Raffung

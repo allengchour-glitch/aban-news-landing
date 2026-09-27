@@ -1,0 +1,75 @@
+{
+ "datei": "montage_halloween_2026-09-27.mp4",
+ "musik": "luxe-epic-anime.wav",
+ "einstieg": 0,
+ "dauer": 24.0,
+ "hook": [
+  "Halloween",
+  "Kostüme & Deko"
+ ],
+ "emoji": "🎃",
+ "gattung": "Halloween-Hits",
+ "deko": "laub",
+ "titel": "LuxeStyle Halloween-Hits",
+ "thema": "halloween",
+ "produkte": [
+  {
+   "handle": "kostum-skelett-mit-tutu-fgsspc2355",
+   "name": "Kostüm Skelett mit Tutu",
+   "bilder": [
+    0,
+    1,
+    2
+   ],
+   "kostuem": true
+  },
+  {
+   "handle": "lustiges-teddy-cape-geist-kostum-669504",
+   "name": "Lustiges Teddy Cape Geist Kostüm",
+   "bilder": [
+    0,
+    1,
+    2
+   ],
+   "kostuem": true
+  },
+  {
+   "handle": "dinosaurier-skelett-kostum-fur-haustiere-607600",
+   "name": "Dinosaurier-Skelett Kostüm",
+   "bilder": [
+    0,
+    1,
+    2
+   ],
+   "kostuem": true
+  },
+  {
+   "handle": "aufblasbarer-leuchtender-fga975036",
+   "name": "Aufblasbare Leuchtdekoration",
+   "bilder": [
+    0,
+    1
+   ],
+   "kostuem": false
+  },
+  {
+   "handle": "gruselpuppe-50-cm-weiss-fga910036",
+   "name": "Gruselpuppe 50 cm weiss",
+   "bilder": [
+    0,
+    1
+   ],
+   "kostuem": false
+  },
+  {
+   "handle": "gotischer-kopfschmuck-schwarz-fgack13679",
+   "name": "Gotischer Kopfschmuck schwarz",
+   "bilder": [
+    0,
+    1,
+    2
+   ],
+   "kostuem": false
+  }
+ ]
+}
