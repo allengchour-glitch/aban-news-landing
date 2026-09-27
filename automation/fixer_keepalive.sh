@@ -1819,7 +1819,7 @@ JSON
       # waere weg (der Lauf finge von vorn an) und die mtime waere frisch (12-Stunden-Tor).
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_cj_specs_backfill.lock; flock -n 9 || exit 0; exec > \"$SB\" 2>&1; \
-           LIMIT=30 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" 9>&- & )
+           LIMIT=400 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" 9>&- & )   # 27.09.: 30 → 400 (Prio-Liste um 45k erweitert, Betreiber «push die infos von cj auch in shop»)
       echo "$(date -u +%H:%M) cj_specs_backfill gestartet ($SB_OFFEN offen)"
     fi
   fi
