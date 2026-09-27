@@ -949,6 +949,17 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 99 (27.09.2026, 20:10 UTC) — 🏆 «jeder Post ein Meisterwerk» + tokenlose Storefront API (von der App-Session gelernt)
+
+**Gemessen:** Metricool 30 T — TikTok Median 272, YouTube 91, IG 17, FB 1–2, Pinterest 0 (44 Pins, 0 Klicks); TikTok Ø 1,8 s von 11 s angesehen.
+`meisterwerk_tor.py` (Bewegung 1. Sekunde, Standbild-Anteil, Format, Dauer, LUFS): 3/11 wartende und 8/14 gepostete Reels mit
+stehendem Einstieg. Die zwei für heute geplanten fielen durch; Sichtprüfung des IG-Reels: Diashow **mit Bildpreis CHF 4.90 bei Live 15.90**.
+**Getan:** beide aus Metricool gelöscht, Tor in beide Reel-Poster, 5 Reels gesperrt; Kadenz TikTok 8 h / Pinterest 24 h (delegiert);
+11 fremde Metricool-Entwürfe gelöscht (Auftrag); numpy in die Selbstheilung; Kaufbar-Prüfung über die **Storefront API ohne Token**
+(`au3j0y-hq.myshopify.com/api/2025-07/graphql.json`, availableForSale + Preise, frisch vom Ursprung) — aus `apps/luxestyle-android` der Play-Store-Session.
+**Lehren:** (1) Ein Preis-Wächter, der nur die Caption liest, übersieht den eingebrannten Bildpreis. (2) Fremde Sessions lösen
+Probleme, die man selbst noch als «Token fehlt» führt — vor dem Warten auf Zugänge deren Code nach öffentlichen Wegen durchsuchen.
+
 ### Nachtrag 98 (27.09.2026, 19:35 UTC) — 🔑 «1 ist doch? und metricool? fortuna ftp auch»: vorhandene Zugänge wurden nicht genutzt
 
 **Gemessen (nur Namen, nie Werte):** in der Umgebung stehen `METRICOOL_*`, `FORTURA_FTP_USER/_PW`, `AZURE_SPEECH_KEY` — aber NICHT
@@ -16758,6 +16769,9 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-24 · 📚 **Ratgeber-Runde 2 live (Halloween-Deko 997 W, Katzenspielzeug 1'010 W); Prüfer-Befunde behoben (Skelett-Karte bei Bestand 1 → Fakten + Ersatzlink, «Hersteller» → «Lieferantenlager»); Prüfer-«offen» selbst gebaut: `ratgeber_ohne_ware.py` Klasse C (ausverkauft DENY), `kategorie_wache.py` Halloween-Titelregel, 13 Produkte umkategorisiert.** Karte sagt nur, was ein Produktfeld belegt; ein leerer neuer Wächter braucht einen synthetischen Test → Journal Nachtrag 59
+- 2026-09-24 · 📏 **Zwei Klassen aus der Ratgeber-Prüfung: «Verfügbare Grössen: S, M, L» bei einer Variante (812 am Vollexport, 452 bereinigt, Regex in wahlversprechen + klassen_kontrolle) und drei Dimensionen im Farbwert («Grey-60x50x H37cm», 21 Produkte, 19 getrennt, X/x/× vereinheitlicht).** Neue Regex erst an den Treffern lesen — die erste Fassung zählte 497 Faktenblock-Zeilen mit → Journal Nachtrag 58
+- 2026-09-24 · 🖼️ **Werbetext-Bilder scharf: 94 Treffer → 45 entfernt (≥7 W, Sichtprüfung 24/24), 26 als letztes Zweitbild behalten (Nachfüller-Arbeit bleibt), 23 unter 7 W zur Sichtung; Aufseher-Tageslauf hielt die Sperre → einreihen statt killen. Zwei Ratgeber (Kratzbaum, Hundebett) per Workflow live, Prüfer fand Produktseiten-Klassen (Grössen im Text bei einer Variante, drei Dimensionen im Farbwert).** `Article` hat kein seo/onlineStoreUrl → Metafelder; Karten-Fakten aus Varianten, nicht aus dem Text → Journal Nachtrag 57
 - 2026-09-23 · 🖼️ **Verbesserungsrunde 5: Bild-Poster fragte nie, ob die Ware kaufbar ist — 3 von 73 August-Zeilen bewarben DRAFTs (Link = 404); `social_queue_saeubern.py` hatte seit 03.09. keinen Starter.** Jetzt `produktAktiv()` im Bild-Poster (ACTIVE+onlineStoreUrl), Reiniger täglich im Aufseher, prüft auch «ohne Onlineshop». Alte Throttle-Tracebacks in /tmp-Logs sind Vergangenheit (nur letzte Zeilen zählen) → Journal Nachtrag 27
 - 2026-09-23 · 🎠 **«insta karusell brauchen»: erstes IG-Karussell live (DdnlCi-jkth + FB-Album) — der Slide-Bauer hatte 31 Sets für den toten PC-Poster gelagert, IG verlangt 4:5.** `tiktok_karussell.py FORMAT=ig` (1080×1350, eigene Bildfenster), `ig_karussell_post.mjs` (Wachen wie die Reel-Poster, pusht fehlende Slides selbst), Autopilot 24 h, Aufseher baut täglich 2 + montags Top. **Ein Bauer ohne Poster ist ein Lager** → Journal Nachtrag 25
 - 2026-09-23 · 📐 **Betreiber-Screenshot: Titel/Preis der Reels lagen unter TikToks Caption, Marke unter der Suchleiste — die Textebene kannte die Plattform-Oberfläche nicht.** `overlay.py` sichere Zone (200–1440, Fusstexte links der Knopfleiste), Video bei y=600, UI-Schablone als Prüfbild, `NEU_RENDERN=1` baut die 23 wartenden Reels neu. «CHF 50» war richtig (Warenwert; 45 = intern nach Rabatt) → Journal Nachtrag 24

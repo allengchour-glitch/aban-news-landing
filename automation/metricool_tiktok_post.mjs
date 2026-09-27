@@ -155,22 +155,27 @@ if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nir
 // Token-Weg: ohne Handle oder bei Fehler KEIN Post (Exit 3), und ein 404 schreibt nichts ins Ledger — unsere IP kann
 // eine veraltete Cache-Kopie sehen, ein Urteil «existiert nicht mehr» faellt deshalb nur mit Token.
 function storefrontPruefung(caption) {
+  // 27.09.2026 (von der Play-Store-App-Session gelernt): die Shopify STOREFRONT API liest ohne Token, frisch vom
+  // Ursprung (myshopify-Domain, kein Bot-Cache unserer IP, keine 429 der Storefront-Seiten) — availableForSale + Preise.
   const m = /\/products\/([a-z0-9][a-z0-9-]*)/i.exec(caption || '');
   if (!m) return { ok: false, grund: 'kein Shop-Token und kein Produkt-Link in der Caption' };
-  // 429 = Drossel des Storefront (gemessen 27.09. beim zweiten Abruf binnen Minuten) → warten und bis zu 4x wiederholen.
-  let teile = [], code = '';
-  for (let a = 0; a < 4; a++) {
-    const r = spawnSync('curl', ['-s', '--max-time', '25', '-w', '\n%{http_code}', `https://luxestyle.ch/products/${m[1]}.js`], { encoding: 'utf8' });
-    teile = (r.stdout || '').trim().split('\n'); code = teile.pop();
-    if (code !== '429') break;
-    spawnSync('sleep', [String(10 * (a + 1))]);
+  const q = JSON.stringify({ query: `{ product(handle:"${m[1]}"){ availableForSale onlineStoreUrl priceRange{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }` });
+  for (let a = 0; a < 3; a++) {
+    const r = spawnSync('curl', ['-s', '--max-time', '25', '-H', 'Content-Type: application/json', '-d', q,
+      'https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json'], { encoding: 'utf8' });
+    try {
+      const d = JSON.parse(r.stdout || '');
+      if (d && d.data) {
+        const p = d.data.product;
+        if (!p) return { ok: false, grund: 'Storefront API: Produkt nicht veroeffentlicht (ohne Token, kein Urteil)' };
+        return { ok: !!p.availableForSale, grund: `Storefront API ${p.availableForSale ? 'kaufbar' : 'nicht verfuegbar'} (ohne Token)`,
+                 url: p.onlineStoreUrl || `https://luxestyle.ch/products/${m[1]}`,
+                 min: parseFloat(p.priceRange.minVariantPrice.amount), max: parseFloat(p.priceRange.maxVariantPrice.amount) };
+      }
+    } catch {}
+    spawnSync('sleep', [String(5 * (a + 1))]);
   }
-  if (code !== '200') return { ok: false, grund: `Storefront HTTP ${code || 'keine Antwort'} (ohne Token, kein Urteil)` };
-  try {
-    const p = JSON.parse(teile.join('\n'));
-    return { ok: !!p.available, grund: `Storefront ${p.available ? 'kaufbar' : 'nicht verfuegbar'} (ohne Token)`,
-             url: `https://luxestyle.ch/products/${m[1]}`, min: (p.price_min ?? p.price) / 100, max: (p.price_max ?? p.price) / 100 };
-  } catch { return { ok: false, grund: 'Storefront-Antwort unlesbar (ohne Token)' }; }
+  return { ok: false, grund: 'Storefront API nicht erreichbar (ohne Token, kein Urteil)' };
 }
 
 // Produkt noch kaufbar? (gleiche Regel wie meta_reel_post.mjs)
@@ -209,6 +214,18 @@ if (!pa.ok) {
 }
 { const pv = preisVeraltet(get(cand, 'caption'), pa.min, pa.max);   // 24.09.2026: eingebrannter Preis ≠ Live-Preis
   if (pv) { console.error(`⛔ Kein Post — Preis veraltet (${pv}): ${get(cand, 'id')}`); if (!DRY) { cand[idx.status] = 'preis-veraltet-skip'; writeLedger(); } process.exit(3); } }   // 3 = uebersprungen (s. oben)
+// 27.09.2026 Betreiber «mache keine billige einfache post, jeder soll ein meisterwerk sein»: Meisterwerk-Tor an der
+// fertigen Datei (Format, Dauer, Ton, Bewegung in der 1. Sekunde, Standbild-Anteil). Gemessen: 3 von 11 wartenden und
+// 8 von 14 geposteten Reels hatten einen stehenden Einstieg — genau die Klasse, die TikTok (Ø 1,8 s von 11 s) verliert.
+{ const vu = get(cand, 'video_url'); const lm = /\/social\/reels\/([^/?#]+\.mp4)/.exec(vu);
+  const quelle = lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu;
+  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000 });
+  if (t.status !== 0) {
+    const zeile = (t.stdout || '').trim().split('\n').pop() || (t.stderr || '').slice(-120);
+    console.error(`⛔ Kein Post — Meisterwerk-Tor: ${zeile.slice(0, 220)}`);
+    if (!DRY && t.status === 4) { cand[idx.status] = 'meisterwerk-tor-skip'; writeLedger(); }
+    process.exit(3);   // 3 = uebersprungen: naechster Durchlauf nimmt das naechste Reel
+  } }
 const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hashtags');
 // ── 23.09.2026 Paket «direktlink» — VORBEREITET, standardmaessig AUS. Ohne die Schalter bleibt der Body byte-gleich.
 //  DIREKTLINK_TEXT=1: die Caption-Zeile «🔗 luxestyle.ch/products/… (Link in Bio)» ist auf TikTok FALSCH (Profil ohne

@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
-import { execFileSync as _exf } from 'node:child_process';
+import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
 function ersterErreichbare(liste, urlVon, statusSetzen) {
   for (const r of liste) {
@@ -238,6 +238,15 @@ async function promoPruefen(postId, videoUrl, caption) {
     if (pv) { console.error(`⛔ Kein Post — Preis veraltet (${pv}): ${cand[idx.id]}`); if (!DRY) { cand[idx.status] = 'preis-veraltet-skip'; writeLedger(); } process.exit(3); } }
   console.log(`  Produkt: ${pa.grund}`);
 }
+// 27.09.2026 Meisterwerk-Tor (wie metricool_tiktok_post.mjs): keine Reels mit stehendem Einstieg, Diashow, falschem Format/Ton.
+{ const vu = cand[idx.video_url]; const lm = /\/social\/reels\/([^/?#]+\.mp4)/.exec(vu);
+  const quelle = lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu;
+  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000 });
+  if (t.status !== 0) {
+    console.error(`⛔ Kein Post — Meisterwerk-Tor: ${((t.stdout || '').trim().split('\n').pop() || '').slice(0, 220)}`);
+    if (!DRY && t.status === 4) { cand[idx.status] = 'meisterwerk-tor-skip'; writeLedger(); }
+    process.exit(3);
+  } }
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
 const fbTextReel = fbText(text, shopUrl, 'reel');   // FB: klickbarer Produktlink statt «(Link in Bio)»
