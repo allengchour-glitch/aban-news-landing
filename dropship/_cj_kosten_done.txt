@@ -36168,3 +36168,12 @@ gid://shopify/Product/15490775613825	CHF 13.60	1 Varianten	Bernsteinarmband für
 gid://shopify/Product/15490775712129	CHF 7.95	1 Varianten	Vergoldeter Zirkonia-Ring mit Geburtsstein
 gid://shopify/Product/15490775777665	CHF 7.42	1 Varianten	Exklusive runde Anhänger-Halskette
 gid://shopify/Product/15490775843201	CHF 7.11	1 Varianten	Dopamine Buchstaben-Halskette für Frauen
+gid://shopify/Product/15490777055617	CHF 8.72	1 Varianten	Titan-Stahl Ohrringe «Geometrische Muster»
+gid://shopify/Product/15490777121153	CHF 7.87	1 Varianten	Halskette mit personalisiertem Anhänger
+gid://shopify/Product/15490777317761	CHF 16.75	15 Varianten	Ärmelloses Midikleid mit Hemdkragen
+gid://shopify/Product/15490777350529	CHF 25.80	12 Varianten	Elegantes Feen-Kleid aus Baumwolle
+gid://shopify/Product/15490788622721	CHF 15.18	8 Varianten	Yoga-Body · Damen
+gid://shopify/Product/15490788688257	CHF 14.85	5 Varianten	Blaues Streifenkleid
+gid://shopify/Product/15490788753793	CHF 18.37	9 Varianten	Enger, figurbetoner Kleid
+gid://shopify/Product/15490788819329	CHF 18.55	40 Varianten	Samtkleid mit langen Ärmeln und Schlitz
+gid://shopify/Product/15490788917633	CHF 18.39	4 Varianten	Elegante V-Neck Bluse mit Spitze und Lochstickerei

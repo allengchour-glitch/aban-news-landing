@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **42'631**
-- Optionen mit englischen Werten (Kandidaten): 2'775
+- Produkte gesehen: **45'023**
+- Optionen mit englischen Werten (Kandidaten): 2'861
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'906
+- Werte mit unbekanntem Wort (unverändert): 15'232
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 66
-- übersprungen «kollision-nach-uebersetzung»: 40
+- übersprungen «kleidungsstueck-im-wert»: 68
+- übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -93,6 +93,7 @@
 - `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
 - `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
 - `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -139,5 +140,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 650, `⟨satzbau:adjektiv-vor-nomen⟩` 555, `light` 440, `color` 378, `shell` 162, `degrees` 159, `size` 145, `⟨satzbau:material-vor-farbe⟩` 142, `core` 137, `surface` 130, `powder` 123, `⟨satzbau:nomen-nomen⟩` 113, `no` 109, `shoes` 109, `diamond` 108, `skin` 103, `to` 102, `high` 101, `three` 97, `belt` 93, `bag` 93, `code` 91, `french` 89, `rain` 88, `case` 87, `four` 87, `dark` 82, `opp` 81, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `spring` 72, `bottom` 72, `dual` 71, `cloth` 71, `base` 70, `chain` 68, `petal` 68, `half` 67, `autumn` 66, `little` 65, `net` 63, `strap` 62, `feet` 62, `mother` 61, `cherry` 60, `of` 60, `tea` 58, `one` 57, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `rice` 51, `person` 51, `fold` 51, `lens` 50
+`inner` 650, `⟨satzbau:adjektiv-vor-nomen⟩` 575, `light` 440, `color` 387, `shell` 162, `degrees` 159, `size` 145, `⟨satzbau:material-vor-farbe⟩` 144, `core` 137, `surface` 130, `powder` 123, `⟨satzbau:nomen-nomen⟩` 114, `no` 109, `diamond` 109, `shoes` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `bag` 93, `code` 91, `four` 90, `french` 89, `rain` 88, `case` 87, `dark` 82, `opp` 81, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `bottom` 75, `spring` 72, `cloth` 72, `dual` 71, `chain` 70, `base` 70, `petal` 68, `half` 67, `autumn` 66, `little` 65, `net` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 58, `one` 57, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `rice` 52, `yarn` 52
 

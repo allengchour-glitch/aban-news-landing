@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 104 — 27.09.2026 · «hört sich beschissen an … nimm instrumente wie top sounds»: GM-SoundFont ist die Decke
+
+**Befund:** Jede eigene Produktion (FluidR3-GM-SoundFont) bleibt klanglich billig — Mix-Runden verbessern Balance, nicht
+die Instrumente. `luxe-dnb-drive.wav` gesperrt. Kein ElevenLabs-Zugang in der Umgebung. **vidIQ `vidiq_generate_music`**
+(angebunden, 25 Credits/Stück, 140 Credits Guthaben, erneuert 24.10.) liefert echte Produktion: Probe «episches Anime»
+gewinnt den blinden A/B gegen die eigene GM-Fassung (8.5/10); TP +0.1 → gemastert −1.4 dBTP. Liegt in
+`automation/music/_probe/` — **erst nach Betreiber-Freigabe in Rotation** (Geschmack entscheidet der Betreiber, nicht die KI).
+**Lehre:** Wenn der Klang selbst das Problem ist, hilft kein Mix — Werkzeugklasse wechseln, und die Probe zuerst dem
+Menschen vorspielen, der sie beurteilt hat.
+
 ## 📌 Nachtrag 103 — 27.09.2026 · «drum and base? mache orginale musik besser»: Begrenzer war wirkungslos, blinder A/B
 
 **Gemessen:** Blinde Gemini-Kritik liquid-dnb 5/10 (Kick weich, Hats starr, Mitten matschig). v5 (Punch-Kick, Hats mit
