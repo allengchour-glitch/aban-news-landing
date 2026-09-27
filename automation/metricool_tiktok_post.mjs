@@ -21,7 +21,7 @@
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
-import { execFileSync as _exf } from 'node:child_process';
+import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
 function ersterErreichbare(liste, urlVon, statusSetzen) {
   for (const r of liste) {
@@ -146,6 +146,24 @@ const _reihe = nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(g
 const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { if (DRY) return; r[idx.status] = st; writeLedger(); });
 if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde.'); process.exit(0); }
 
+// 27.09.2026: Ohne Shop-Token (frischer Container, SHOPIFY_CLIENT_* nicht in der Umgebung) lag TikTok/YouTube 37 h still,
+// obwohl der Metricool-Zugang da war. Ersatz: die OEFFENTLICHE Produktseite /products/<handle>.js — 200 + available =
+// veroeffentlicht und kaufbar, Preise in Rappen. Handle aus der Caption (wie social_queue_saeubern). Strenger als der
+// Token-Weg: ohne Handle oder bei Fehler KEIN Post (Exit 3), und ein 404 schreibt nichts ins Ledger — unsere IP kann
+// eine veraltete Cache-Kopie sehen, ein Urteil «existiert nicht mehr» faellt deshalb nur mit Token.
+function storefrontPruefung(caption) {
+  const m = /\/products\/([a-z0-9][a-z0-9-]*)/i.exec(caption || '');
+  if (!m) return { ok: false, grund: 'kein Shop-Token und kein Produkt-Link in der Caption' };
+  const r = spawnSync('curl', ['-s', '--max-time', '25', '-w', '\n%{http_code}', `https://luxestyle.ch/products/${m[1]}.js`], { encoding: 'utf8' });
+  const teile = (r.stdout || '').trim().split('\n'); const code = teile.pop();
+  if (code !== '200') return { ok: false, grund: `Storefront HTTP ${code || 'keine Antwort'} (ohne Token, kein Urteil)` };
+  try {
+    const p = JSON.parse(teile.join('\n'));
+    return { ok: !!p.available, grund: `Storefront ${p.available ? 'kaufbar' : 'nicht verfuegbar'} (ohne Token)`,
+             url: `https://luxestyle.ch/products/${m[1]}`, min: (p.price_min ?? p.price) / 100, max: (p.price_max ?? p.price) / 100 };
+  } catch { return { ok: false, grund: 'Storefront-Antwort unlesbar (ohne Token)' }; }
+}
+
 // Produkt noch kaufbar? (gleiche Regel wie meta_reel_post.mjs)
 async function produktAktiv(postId) {
   // 23.09.2026: v2-Reels tragen die CJ-pid (18–19-stellig oder UUID), v1 die Shopify-ID (13–14-stellig) — siehe meta_reel_post.
@@ -154,7 +172,7 @@ async function produktAktiv(postId) {
   if (!m) return { ok: true, grund: 'keine Produkt-ID im Reel-Namen' };
   const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
   const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
-  if (!tok) return { ok: false, grund: 'kein Shop-Token' };
+  if (!tok) return storefrontPruefung(get(cand, 'caption'));
   for (let a = 0; a < 3; a++) {
     try {
       const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method: 'POST',
