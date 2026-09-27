@@ -35402,3 +35402,7 @@ gid://shopify/Product/15484613558657	CHF 20.92	1 Varianten	Mikrofaser Badetuch, 
 gid://shopify/Product/15484625158529	CHF 94.50	1 Varianten	Faltbarer Regiestuhl aus Aluminium
 gid://shopify/Product/15484626141569	CHF 10.04	1 Varianten	Rosenbox mit Drehfunktion
 gid://shopify/Product/15484626600321	CHF 93.84	1 Varianten	E-Gitarre mit 24 Bünden und Flammen-Design
+gid://shopify/Product/15484627026305	CHF 14.92	1 Varianten	Magnetischer Smartphone-Griff für Filmer
+gid://shopify/Product/15484627419521	CHF 10.94	1 Varianten	LED Lichtervorhang «Santa Claus»
+gid://shopify/Product/15484627812737	CHF 46.62	1 Varianten	Faltbare, schnelltrocknende Tischmatte
+gid://shopify/Product/15484628107649	CHF 76.56	1 Varianten	Nordische Tischleuchte für Wohn- & Schlafzimmer
