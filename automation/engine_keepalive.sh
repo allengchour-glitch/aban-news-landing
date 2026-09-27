@@ -70,6 +70,12 @@ if [ -n "${FORTURA_FTP_USER:-}" ] && [ -n "${FORTURA_FTP_PW:-}" ] && [ ! -s /tmp
   ( umask 077; printf 'export FORTURA_FTP_USER=%q\nexport FORTURA_FTP_PW=%q\n' "$FORTURA_FTP_USER" "$FORTURA_FTP_PW" > /tmp/fortura_env.sh )
   echo "$(date -u +%H:%M) Fortura-Zugang aus Umgebungsvariablen bereitgestellt"
 fi
+# 27.09.2026 (#1019): cj_verfuegbarkeit.py + cj_order_engine.py lesen /tmp/_cjtok — im frischen Container fehlte die Datei,
+# der Verfügbarkeits-Wächter lief 20:07 als «No-op», und ein bei CJ ausgelistetes Produkt wurde um 21:27 verkauft.
+# Ist /tmp/cj_token.json da (Tresor/autostart), wird _cjtok daraus geschrieben.
+if [ ! -s /tmp/_cjtok ] && [ -s /tmp/cj_token.json ]; then
+  ( umask 077; python3 -c "import json;print(json.load(open('/tmp/cj_token.json'))['accessToken'],end='')" > /tmp/_cjtok 2>/dev/null ) || rm -f /tmp/_cjtok
+fi
 
 # zaehle <muster> — argv-basiert. Die eigene bash -c-Hülle hat argv1="-c" und matcht nie.
 zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' | wc -l; }
