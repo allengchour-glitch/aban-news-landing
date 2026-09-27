@@ -35400,3 +35400,5 @@ gid://shopify/Product/15484612772225	CHF 95.02	1 Varianten	Kuschelige, wärmende
 gid://shopify/Product/15484613132673	CHF 10.07	1 Varianten	Multifunktionaler Waffelstrick-Stillponcho
 gid://shopify/Product/15484613558657	CHF 20.92	1 Varianten	Mikrofaser Badetuch, ultrafein & saugfähig
 gid://shopify/Product/15484625158529	CHF 94.50	1 Varianten	Faltbarer Regiestuhl aus Aluminium
+gid://shopify/Product/15484626141569	CHF 10.04	1 Varianten	Rosenbox mit Drehfunktion
+gid://shopify/Product/15484626600321	CHF 93.84	1 Varianten	E-Gitarre mit 24 Bünden und Flammen-Design
