@@ -8880,3 +8880,4 @@ gid://shopify/Product/15408458006913	ersetzt
 gid://shopify/Product/15408458072449	ersetzt
 gid://shopify/Product/15408458170753	ersetzt
 gid://shopify/Product/15411554320769	ersetzt
+gid://shopify/Product/15411564446081	ersetzt
