@@ -36713,3 +36713,7 @@ gid://shopify/Product/15492128899457	CHF 23.11	4 Varianten	Trägerloses Spitzen-
 gid://shopify/Product/15492128932225	CHF 17.03	8 Varianten	Trägerloses Satin-Minikleid mit Blumenmuster
 gid://shopify/Product/15492128964993	CHF 20.10	4 Varianten	Elegantes Satin-Kleid mit langen Ärmeln
 gid://shopify/Product/15492128997761	CHF 21.62	8 Varianten	Pailletten Bandeau-Kleid, figurbetont
+gid://shopify/Product/15492130177409	CHF 62.56	1 Varianten	Messerblock aus Massivholz
+gid://shopify/Product/15492130210177	CHF 46.20	1 Varianten	Solar Outdoor Überwachungskamera mit WLAN
+gid://shopify/Product/15492130242945	CHF 21.32	1 Varianten	Multifunktionale, tragbare Aufbewahrungsbox
+gid://shopify/Product/15492130505089	CHF 7.03	1 Varianten	Anti-Beschlag & Hydrophobes Spray für Autoscheiben
