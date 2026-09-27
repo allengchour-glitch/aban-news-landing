@@ -53,6 +53,12 @@ hole_token() {
 }
 
 while true; do
+  # 27.09.2026: Grind-Pause auch im Runner selbst (vorher nur bei den Startern — engines_up.sh startet cj_runner2-5 ohne
+  # Prüfung, und schulstart_lauf.sh importierte nach einem Neustart 2 h lang trotz Pause). Warten statt importieren.
+  PBF=dropship/_GRIND_PAUSE_BIS
+  if [ -f "$PBF" ] && [ "$(tr -dc 0-9 < "$PBF")" -gt "$(date -u +%s)" ] 2>/dev/null; then
+    echo "$(date +%T) GRIND-PAUSE — Runner wartet 10 min" >> "$LOG"; sleep 600; continue
+  fi
   TOK=$(hole_token)
   pick=$(( (i % N) + 1 ))
   eval "G=\${$pick}"

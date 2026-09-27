@@ -22,6 +22,13 @@ if grep -q "cj:2608140735271620000" "$LEDGER" 2>/dev/null \
   echo "SCHULSTART FERTIG — Rucksäcke, Varianten und Such-Posten erledigt"
   exit 0
 fi
+# 27.09.2026: Grind-Pause gilt auch hier. Die Fertig-Marker lagen nur in /tmp; nach dem Container-Neustart startete dieser
+# Lauf die Such-Posten neu und importierte 2 h lang über cj_sku_import — bei pausiertem Grind und vollem Dateispeicher.
+PBF="$REPO/dropship/_GRIND_PAUSE_BIS"
+if [ -f "$PBF" ] && [ "$(tr -dc 0-9 < "$PBF")" -gt "$(date -u +%s)" ] 2>/dev/null; then
+  echo "SCHULSTART PAUSE — Grind pausiert bis $(date -u -d @"$(tr -dc 0-9 < "$PBF")" +%d.%m.%Y), kein Import"
+  exit 0
+fi
 if [ -f "$MARKE" ]; then
   ALTER=$(( $(date +%s) - $(stat -c %Y "$MARKE") ))
   [ "$ALTER" -lt 1800 ] && exit 0
