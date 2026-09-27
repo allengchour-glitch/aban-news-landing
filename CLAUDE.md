@@ -53,6 +53,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 - **🌐 Browser-Agent (FEST, User 2026-06-12):** Der User hat **Brave + Playwright-MCP auf seinem PC-Claude**
   eingerichtet (Setup: `dropship/BROWSER-AGENT-SETUP.md`, Port 9222, Meta Business Suite eingeloggt).
+  **⚠️ KORRIGIERT 2026-09-27: „Cloud-Sessions haben KEINEN Browser" STIMMT NICHT.** Gemessen:
+  Chromium 141 liegt ausführbar unter `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`,
+  `playwright` **global** in `/opt/node22/lib/node_modules`, und eine echte Produktseite lädt mit
+  HTTP 200. Die Hürde ist das Proxy-Zertifikat → gelöst in **`tools/browser.mjs`** (12 Selbsttests).
+  **Für Browser-Aufgaben ohne Anmeldung also NICHT mehr an den PC delegieren.** Instagram, TikTok-
+  und Meta-Oberflächen verlangen eine Anmeldung — dafür bleibt der PC-Weg richtig.
   **Cloud-Sessions haben KEINEN Browser** — für Browser-Aufgaben (IG/FB aufräumen, Web-UI-Klicks) den User
   bitten, den Auftrag an seinen PC-Claude zu geben, ODER falls ein Browser-MCP in der Session auftaucht, direkt
   nutzen. **Dauerauftrag: IMMER maximal autonom arbeiten** — nicht fragen, machen; nur echte User-Klicks
@@ -68,6 +74,55 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-27, dritte Runde (🔓 DIE CLOUD-SESSION HAT DOCH EINEN BROWSER — ein TikTok-Tipp hat ein Gedächtnis-Verbot gekippt):**
+- **Auftrag:** ein TikTok-Link vom User. Voller Bericht:
+  **`dropship/LERNEN-MCP-KONNEKTOREN-2026-09-27.md`**.
+- **Inhalt geholt wie im Skill `recherchieren`:** `@aiagentgeorg/video/7690216229704912160`, 49 s,
+  **7770 Aufrufe, 197 Likes, 80 Kommentare**, deutsche **ASR-Untertitelspur** (1800 Bytes WebVTT).
+  Empfohlen werden vier Konnektoren: **Perplexity** (Recherche), **Firecrawl** (Webseiten
+  auslesen), **Playwright** (echter Browser), **Composio** (hunderte Apps). Der Schluss
+  („kommentiere MCP") ist Reichweiten-Mechanik, kein Inhalt.
+- **🔓 DIE GEGENPROBE AM EIGENEN BESTAND HAT EINEN SATZ GEKIPPT, DER SEIT DEM 12.06. IN
+  GROSSBUCHSTABEN IM GEDÄCHTNIS STEHT: „Cloud-Sessions haben KEINEN Browser" IST FALSCH.**
+  GEMESSEN: **Chromium 141.0.7390.37** liegt ausführbar unter
+  `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`, **`playwright` liegt GLOBAL** in
+  `/opt/node22/lib/node_modules` — darum scheitert ein blosses `import "playwright"` aus dem
+  Projekt, und **genau das erklärt die Notiz vom 11.09.** („Playwright ist nicht vorinstalliert").
+  Eine echte Produktseite lädt mit **HTTP 200** und rendert.
+- **⚠️ DIE HÜRDE WAR DAS ZERTIFIKAT, und der bequeme Ausweg wäre der falsche gewesen.** Der
+  Agent-Proxy bricht TLS auf, Chromium 141 bringt seinen **eigenen** Wurzelspeicher mit —
+  System-Trust und die NSS-Datenbank unter `~/.pki/nssdb` helfen ihm nicht
+  (`ERR_CERT_AUTHORITY_INVALID`). **`ignoreHTTPSErrors` hätte die Prüfung GANZ abgeschaltet**,
+  dann gilt jede Seite als echt, auch eine untergeschobene. Stattdessen wird über
+  `--ignore-certificate-errors-spki-list` **genau den dokumentierten Anthropic-Proxy-CAs**
+  vertraut, mit SPKI-Fingerabdruck aus `/root/.ccr/ca-bundle.crt`.
+- **🛠️ GEBAUT `tools/browser.mjs` (12 Selbsttests).** `ansehen(url, {erwartet, verboten, bild})`
+  liefert Status, Titel, **gerenderten** Text und Screenshot und nimmt die Gegenprobe mit.
+  Zwei Selbsttests sichern genau die Versuchung ab: **die Prüfung darf nicht pauschal abgeschaltet
+  werden**, und ein Unsinn-Wert darf nicht als Fingerabdruck durchgehen. **Echter Lauf statt nur
+  grüner Selbsttests** (Lehre 23.09.): Agility-Trainingsset → HTTP 200, der heute gesetzte Preis
+  **129.90 im gerenderten Text gefunden**, alter Preis 98.90 und Unsinn-Wert 777.77 **nicht**.
+- **👀 UND DER ERSTE SCREENSHOT ZEIGTE SOFORT ZWEI MÄNGEL, DIE IM QUELLTEXT NICHT STEHEN:** die
+  Produktbilder tragen **englischen Werbetext** („LOW MAINTENANCE", „Easy to clean pet hair",
+  „Wear-resistant material") in einem Shop, der auf Deutsch verkauft — Lieferantenbilder, die
+  niemand angesehen hat, und **kein Textwerkzeug findet sie, weil der Text im Bild steht.** Dazu
+  liegt ein **Cookie-Banner mobil über Titel und Preisbereich**. ⚠️ Beides ist an **einer** Seite
+  gesehen — eine Beobachtung, keine Klassenaussage. Vor einer Zahl erst über den Katalog messen.
+- **📋 DIE VIER EMPFEHLUNGEN, EHRLICH EINGEORDNET (GEMESSEN über `ListConnectors` und das
+  Verzeichnis):** das Konto hat **vier** Konnektoren — Google Drive (verbunden), Shopify
+  (verbunden), Google Calendar (nicht verbunden), **TikTok Ads (`connect_incomplete`)**. Von den
+  vier genannten existiert im Verzeichnis **nur Firecrawl**, nicht installiert; Perplexity,
+  Playwright und Composio tauchen gar nicht auf. **Punkt 3 des Videos ist hier also bereits
+  erfüllt — ohne Konnektor, ohne Abo, ohne PC.**
+- **⚠️ Firecrawl löst die Instagram-Sackgasse vom 20.09. vermutlich NICHT:** Instagram liefert an
+  nicht angemeldete Abrufer grundsätzlich eine leere Hülle, das ist keine Frage des
+  Auslesewerkzeugs. Ungeprüft, aber nicht als Hoffnung ins Gedächtnis schreiben.
+- **🟡 NEUER NEBENBEFUND FÜR DEN USER, und er betrifft Werbegeld: der Konnektor „TikTok Ads" steht
+  auf `connect_incomplete`** — angefangen, nicht fertig verbunden. Das Gedächtnis führt
+  „TikTok-Pixel + Conversion-Kampagne" seit dem 13.06. als einen der drei User-Klicks. Ob es
+  dieselbe Baustelle ist, ist **nicht geprüft** — nachsehen lohnt.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-27, zweite Runde (🐕 DIE HUNDEKLASSE BEGINNT — und mein eigenes Blockskript wollte gesunde Preise anheben):**
 - **Auftrag:** Dauerauftrag / `/loop` plus „lerne für andere session". Katzen sind abgeschlossen
   (806/806), nächste Klasse `hund*`.
