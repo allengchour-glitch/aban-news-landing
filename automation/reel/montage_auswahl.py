@@ -35,7 +35,8 @@ THEMEN = {
                   "gattung": "Herbst-Favoriten", "musik": "luxe-epic-anime.wav", "deko": "laub"},
     # 27.09.2026 (Betreiber «halloween sachen, auch fortune sachen, kostüme etc»): Kostüme erlaubt (nur hier), Fortura (CH-Lager,
     # 1–2 Werktage) zuerst. Messer/Waffen-Requisiten und Lizenzfiguren bleiben gesperrt (VERBOTEN + MARKE).
-    "halloween": {"q": "status:active tag:halloween", "preis": (14.9, 80), "hook": ["Halloween", "ist bald da"], "emoji": "\U0001F383",
+    "halloween": {"q": 'status:active (tag:halloween OR title:*Kostüm*)', "preis": (14.9, 80),
+                  "hook": ["Halloween", "Kostüme & Deko"], "kostuem_min": 3, "emoji": "\U0001F383",
                   "gattung": "Halloween-Hits", "musik": "luxe-epic-anime.wav", "deko": "laub", "kostuem_ok": True, "fortura_zuerst": True},
     "fitness":   {"q": "status:active tag:fitness", "preis": (14.9, 50), "hook": ["Fit werden", "zu Hause"], "emoji": "\U0001F4AA",
                   "gattung": "Fitness-Helfer", "musik": "luxe-epic-anime.wav", "deko": "keine"},
@@ -43,6 +44,15 @@ THEMEN = {
 VERBOTEN = re.compile(r"\b(kostüm|kostum|erotik|sexy|dessous|messer|klinge|machete|dolch|schwert|therapie|heil\w*|"
                       r"schmerz\w*|medizin\w*|perücke|perucke|lizenz|set\s*\d{2,})", re.I)
 
+HALLOWEEN_WORT = re.compile(r"(?i)geist|gespenst|ghost|hexe|witch|vampir|dracula|skelett|zombie|horror|grusel|kürbis|kurbis|mumie|teufel|tod|sensen|sensemann|halloween|spinne|fledermaus|werwolf|blut|gothic")
+# 27.09.: Lizenzfiguren bewerben wir nicht selbst (Regel 24.09., tiktok_karussell.LIZENZ_FIGUR) — erweitert um die
+# Figuren, die in Fortura-Kostümtiteln stehen («Kostüm ES Klassik Clown» = Pennywise, Hagrid, PJ Masks …); «clown» ist
+# darum kein Halloween-Wort mehr (einziger Treffer war Pennywise).
+LIZENZ_FIGUR = re.compile(r"\b(?:batman|batgirl|robin classic|joker|superman|supergirl|wonder ?woman|catwoman|spider-?man|marvel|"
+                          r"avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|pikachu|bulbasaur|hello kitty|sanrio|"
+                          r"kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|hagrid|dumbledore|voldemort|hermine|"
+                          r"wednesday|addams|morticia|naruto|super mario|sonic|minecraft|paw patrol|pj masks|ninja turtles|"
+                          r"squid game|blues clues|top gun|labubu|pennywise)\b|\bKostüm ES\b", re.I)
 VERBOTEN_KOSTUEM_OK = re.compile(VERBOTEN.pattern.replace("kostüm|kostum|", "").replace("perücke|perucke|", ""), re.I)
 
 Q = """query($q:String!,$c:String){ products(first:40, after:$c, query:$q, sortKey:CREATED_AT, reverse:true){
@@ -106,13 +116,25 @@ def main():
                     or not th["preis"][0] <= preis <= th["preis"][1] or pm.MARKE.search(p["title"] + " " + " ".join(p["tags"]))
                     or (VERBOTEN_KOSTUEM_OK if th.get("kostuem_ok") else VERBOTEN).search(p["title"])):
                 continue
+            # Kostüme ohne Halloween-Tag nur mit Halloween-Bezug im Titel (Piraten/Fasnacht bleiben draussen)
+            # Kostüm = «Kostüm» im Titel. Der Produkttyp allein wählte im ersten Lauf nur Zubehör (Krallen, Kreissäge, Gehstock).
+            ist_kostuem = re.search(r"(?i)kost[üu]m", p["title"])
+            if LIZENZ_FIGUR.search(p["title"]):
+                continue
+            # 27.09.: «Trolli Dracula» (Typ «Süsswaren & Esswaren») = Gummibärchen einer Fremdmarke — Lebensmittel werben wir nicht.
+            if re.search(r"(?i)süsswaren|esswaren|lebensmittel|getränk", p.get("productType") or ""):
+                continue
+            if th.get("kostuem_ok") and ist_kostuem and "halloween" not in p["tags"] and not HALLOWEEN_WORT.search(p["title"]):
+                continue
             rc = int((p.get("metafield") or {}).get("value") or 0)
             sku = ((p.get("variants") or {}).get("nodes") or [{}])[0].get("sku") or ""
-            kand.append({"handle": p["handle"], "titel": p["title"], "fortura": sku.lower().startswith("fortura"), "typ": (p.get("productType") or "").lower(), "preis": preis, "bewertungen": rc, "bilder": bilder})
+            kand.append({"handle": p["handle"], "titel": p["title"], "kostuem": bool(ist_kostuem), "fortura": sku.lower().startswith("fortura"), "typ": (p.get("productType") or "").lower(), "preis": preis, "bewertungen": rc, "bilder": bilder})
         if not d["pageInfo"]["hasNextPage"] or len(kand) >= 160:
             break
         cur = d["pageInfo"]["endCursor"]
     kand.sort(key=lambda k: (-(k["fortura"] if th.get("fortura_zuerst") else 0), -k["bewertungen"]))
+    if th.get("kostuem_min"):   # Betreiber «kostüme etc»: die ersten Plätze gehen an Kostüme, danach gemischt
+        kand.sort(key=lambda k: (0 if k["kostuem"] else 1))
     # 27.09.2026 (erster Lauf: 3 von 6 «Gadgets» waren Smartwatches — Betreiber will «ganz verschieden»):
     # je Produkttyp höchstens eins, und kein gemeinsames Kernwort (≥ 6 Buchstaben) mit einem schon gewählten Titel.
     wahl, typen, kernwoerter = [], set(), set()
@@ -124,7 +146,11 @@ def main():
         kw = {pm.norm(haupt).strip()}
         if re.search(r"uhr|watch", pm.norm(k["titel"])):
             kw.add("uhr-familie")
-        if (k["typ"] and k["typ"] in typen) or (kw & kernwoerter):
+        n_kost = sum(1 for w in wahl if w.get("kostuem"))
+        if th.get("kostuem_min") and k["kostuem"]:
+            if n_kost >= th["kostuem_min"] or (kw & kernwoerter):
+                continue   # Quote voll → Rest für Deko; Kostüme teilen einen Produkttyp, darum hier nur das Kernwort
+        elif (k["typ"] and k["typ"] in typen) or (kw & kernwoerter):
             continue
         # 27.09.: nach genug sauberen Bildern aufhören (vorher wurden ALLE bis zu 12 Bilder je Kandidat per OCR geprüft —
         # bei Last 24 lief die Auswahl in die 28-min-Grenze); höchstens 5 Bilder je Kandidat ansehen.
@@ -138,7 +164,7 @@ def main():
             print(f"   – {k['handle']}: zu wenig textfreie Bilder")
             continue
         typen.add(k["typ"]); kernwoerter |= kw
-        wahl.append({"handle": k["handle"], "name": kurzname(k["titel"]), "bilder": ok_bilder})
+        wahl.append({"handle": k["handle"], "name": kurzname(k["titel"]), "bilder": ok_bilder, "kostuem": k["kostuem"]})
         print(f"   ✓ {k['preis']:6.2f}  ★{k['bewertungen']:<3} {k['titel'][:60]}  → Bilder {ok_bilder}")
         if len(wahl) >= a.n:
             break
