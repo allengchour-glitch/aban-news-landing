@@ -6,6 +6,19 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 105 — 27.09.2026 · #1019: bei CJ ausgelistet, verkauft trotzdem — der Wächter prüft nur einmal
+
+**Gemessen:** #1019 (neue externe Kundin, Maienfeld, CHF 23.11, «Leuchtender Halloween-Schaukelgeist») → `cj_order_engine`
+legte LX1019 an ($16.22, Marge CHF 9.67). CJ-Konsole: «Produkt entfernt»; API `product/query` → 1602002 «removed from
+shelves». Ursachen: (1) `cj_verfuegbarkeit.py` prüft jedes Produkt EINMAL (49'097 «schon geprüft») — später ausgelistete
+Ware bleibt grün; (2) im frischen Container fehlte `/tmp/_cjtok` → Wächter 20:07 «No-op». CJ-Ersatz: keiner (ähnliche $34–42).
+Fortura: CE91772 «Geist mit LED zum Hängen weiss 50 cm», CH-Lager 105, VP1 2.60.
+**Getan:** Produkt DRAFT + `cj-entfernt`; Keepalive schreibt `/tmp/_cjtok`; `cj_ausgelistet_sichtbar.py` prüft beworbene
+Kollektionen (≤ 200 je Kollektion) neu; Mail-Entwurf (Ersatz oder Rückerstattung, ohne Antwort bis 30.09. → Rückerstattung),
+Bestellnotiz, Erinnerung `trig_012kYaszCdk4cdmoiNsiF8j6` (30.09. 07:30). Kurs: USD/CHF-Dienste gesperrt → `USD_CHF` per WebSearch.
+**Eigener Fehler:** `productUpdate(tags:)` ERSETZT alle Tags — aus Export 20:08 zurückgeholt; immer `tagsAdd`.
+**Lehre:** Ein Einmal-Prüfer sieht keine späteren Änderungen — was verkauft wird, muss wiederholt geprüft werden.
+
 ## 📌 Nachtrag 104 — 27.09.2026 · «hört sich beschissen an … nimm instrumente wie top sounds»: GM-SoundFont ist die Decke
 
 **Befund:** Jede eigene Produktion (FluidR3-GM-SoundFont) bleibt klanglich billig — Mix-Runden verbessern Balance, nicht
@@ -16845,6 +16858,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-25 · 🧴 **Füllmenge fehlte bei 169 Kosmetik-Flüssigprodukten (Rizinusöl = meistbesuchte Landeseite, nur Versandgewicht) → `fuellmenge_nachtragen.py` liest die Verpackung (OCR), schreibt automatisch nur bei ml+fl-oz-Übereinstimmung, sonst Sichtliste; Sichtung fand «20 ml» statt 120 ml ×3 und «5 ml» = 1.5 ml; 31 live, Tageslauf.** OCR-Zahl nie ohne zweite Einheit glauben → Journal Nachtrag 78
 - 2026-09-24 · 🔌 **Konnektoren gemessen: Metricool-MCP liest Analytik (TikTok Ø 1 s von 11 s), Dropbox privat + keine Binär-Uploads, vidIQ ohne Kanal, Coupler leer (braucht Search Console/GA4), Porter nicht in der Sitzung.** «Verbunden» ≠ Daten → Journal Nachtrag 64
 - 2026-09-24 · 🎨 **«weiter polishen»: «Herstellerlager» an 3 Quellen + 711 Texten + 13 Seiten + Versand-Richtlinie → «Lieferantenlager» (Nachzählung 0); Bewertungs-Nachholer fand nie seine Quittungen (Ledger Zahl-ID, Liste Handle → «h:»-Zeilen, 1'934 offen); Lizenzfiguren (53 Fortura) nicht selbst bewerben (Karussell+Pinterest am Titel); «Wasserfeste Maniküre» 14 Designs bei 1 Variante → echte Auswahl (`auswahl_nachruesten.py`, nur mit vorhandenen Bildern, WebFetch bestätigt); «36 Farben … Set» = 36 Einzelfarben bei CJ → Titel für Mensch.** Liste und Ledger brauchen denselben Schlüssel; viele Bilder beweisen keine Auswahl → Journal Nachtrag 63
 - 2026-09-24 · 🎠 **«warum nicht mehr bilder in karusell»: Kürbis-Set 4 Slides — 3 Motive nur als 600 px (MIN_KANTE 700), Kleid in 4 Farben galt dem Graustufen-aHash als 1 Motiv. IG jetzt bis 8 Slides, 600er füllen hinter den grossen auf, Doppel = gleiche Form UND Farbe (Schwelle 12, an echten Paaren geeicht); 5 wartende Sets neu: 4× 8 Slides.** Ein Doppel-Filter muss sehen, was die Betrachterin sieht → Journal Nachtrag 62
