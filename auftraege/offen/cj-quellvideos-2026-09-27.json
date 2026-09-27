@@ -1,0 +1,7 @@
+{ "id": "cj-quellvideos-2026-09-27", "typ": "skript", "skript": "cj_quellvideo_holen.mjs",
+  "warum": "Betreiber 27.09.: «weiss nicht ob du perfekte passende video schneiden kannst, schnelle bildwechsel» — Rohmaterial für eine Probe mit schnitt.py (Schnitt auf den Kick, luxe-epic-anime.wav); die Cloud erreicht den CJ-Download nicht (Proxy 403).",
+  "videos": [
+    { "name": "reiserucksack", "url": "https://download-only-api.cjdropshipping.com/c0ee31d0546871efbff24531858c0102/5dd6f4c89aa14dbca6ca8eeec3c7b372-484a0bcb0880fac785aeeda960f7114d-ld.mp4" },
+    { "name": "lederrucksack", "url": "https://download-only-api.cjdropshipping.com/101fc0bb039771ef8e155420848d0102/01e195e8e03c4f09816e249f8ab0fd83-6c8ab1608893144dfab784337a58eab0-ld.mp4" },
+    { "name": "eierschuettler", "url": "https://download-only-api.cjdropshipping.com/624d24c0c92171eda0e06732b78e0102/507e29b9d9a4410693b3eac3584485c7-05c640ee56d790e23808508988195faf-ld.mp4" }
+  ] }
