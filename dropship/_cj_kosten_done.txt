@@ -36177,3 +36177,7 @@ gid://shopify/Product/15490788688257	CHF 14.85	5 Varianten	Blaues Streifenkleid
 gid://shopify/Product/15490788753793	CHF 18.37	9 Varianten	Enger, figurbetoner Kleid
 gid://shopify/Product/15490788819329	CHF 18.55	40 Varianten	Samtkleid mit langen Ärmeln und Schlitz
 gid://shopify/Product/15490788917633	CHF 18.39	4 Varianten	Elegante V-Neck Bluse mit Spitze und Lochstickerei
+gid://shopify/Product/15490788983169	CHF 17.85	4 Varianten	Denim Hemd mit Kordelzug für Damen
+gid://shopify/Product/15490789015937	CHF 14.58	16 Varianten	Ärmelloser Colorblock Strickpullover
+gid://shopify/Product/15490789081473	CHF 25.42	3 Varianten	Halb-Knopf Pullover mit Patchwork-Karo
+gid://shopify/Product/15490789114241	CHF 9.71	11 Varianten	Legerer Cardigan für Frühling & Herbst
