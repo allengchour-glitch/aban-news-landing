@@ -36181,3 +36181,4 @@ gid://shopify/Product/15490788983169	CHF 17.85	4 Varianten	Denim Hemd mit Kordel
 gid://shopify/Product/15490789015937	CHF 14.58	16 Varianten	Ärmelloser Colorblock Strickpullover
 gid://shopify/Product/15490789081473	CHF 25.42	3 Varianten	Halb-Knopf Pullover mit Patchwork-Karo
 gid://shopify/Product/15490789114241	CHF 9.71	11 Varianten	Legerer Cardigan für Frühling & Herbst
+gid://shopify/Product/15490789147009	CHF 12.91	16 Varianten	V-Ausschnitt Bluse mit langen Ärmeln
