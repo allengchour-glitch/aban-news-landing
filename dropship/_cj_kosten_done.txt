@@ -35409,3 +35409,6 @@ gid://shopify/Product/15484628107649	CHF 76.56	1 Varianten	Nordische Tischleucht
 gid://shopify/Product/15484628730241	CHF 16.66	1 Varianten	Elektrische Haarglättbürste
 gid://shopify/Product/15484629254529	CHF 31.01	1 Varianten	I5PRO Drohne mit HD-Kamera und Fernsteuerung
 gid://shopify/Product/15484697411969	CHF 10.84	1 Varianten	Gurtablage aus Massivholz
+gid://shopify/Product/15484698395009	CHF 11.70	1 Varianten	Drachen-Bücherstütze "Dragon Flame"
+gid://shopify/Product/15484698722689	CHF 87.01	1 Varianten	Faltbarer Outdoor-Stuhl aus Aluminiumlegierung
+gid://shopify/Product/15484699640193	CHF 8.26	1 Varianten	Wärmendes Nacken- und Schulterkissen
