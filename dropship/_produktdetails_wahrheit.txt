@@ -69329,3 +69329,17 @@
 15412916060545	material-floskel-entfernt	Sommerkleid «Savanna» – Western-Style Midi
 15412918190465	material-floskel-entfernt	Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
 15412919402881	material-floskel-entfernt	Etuikleid «Lumea» – Cut-Out Sheath
+15412919533953	material-floskel-entfernt	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+15412919566721	material-floskel-entfernt	Schnürkleid «Noir» – Schleifen-Detail
+15412919763329	material-floskel-entfernt	Off-Shoulder-Kleid «Brise» – locker & ärmellos
+15412969144705	material-floskel-entfernt	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+15412969406849	material-floskel-entfernt	T-Shirt-Kleid «Casa» – locker mit Print
+15413023015297	material-floskel-entfernt	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+15413024915841	material-floskel-entfernt	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+15413074985345	material-floskel-entfernt	Sommer-Top «Sole» – V-Neck mit Knopfleiste
+15413083242881	material-floskel-entfernt	Boho Resort-Set · 2-teilig (Top & Hose)
+15413083832705	material-floskel-entfernt	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
+15413084062081	material-floskel-entfernt	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet 
+15413084160385	material-floskel-entfernt	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
+15413724873089	material-floskel-entfernt	Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
+15413725102465	material-floskel-entfernt	Cropped Blazer · Damen, mit Pailletten-Detail

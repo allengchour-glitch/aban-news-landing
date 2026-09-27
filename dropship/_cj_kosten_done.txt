@@ -36160,3 +36160,11 @@ gid://shopify/Product/15490774827393	CHF 35.62	16 Varianten	Denim-Stiefel mit Ni
 gid://shopify/Product/15490774892929	CHF 42.75	40 Varianten	Chunky-Heel Retro Western Mid-Calf Boots
 gid://shopify/Product/15490774925697	CHF 13.56	18 Varianten	Elegante High Heels aus Lederimitat
 gid://shopify/Product/15490774991233	CHF 20.73	12 Varianten	Atmungsaktive Mesh Dad Sneaker
+gid://shopify/Product/15490775089537	CHF 23.30	12 Varianten	Damen Pantoletten mit 9cm Plateausohle
+gid://shopify/Product/15490775417217	CHF 7.48	1 Varianten	Armband mit gedrehtem Draht-Design
+gid://shopify/Product/15490775482753	CHF 8.08	1 Varianten	Doppellagiges Kettchen-Armband
+gid://shopify/Product/15490775548289	CHF 13.28	1 Varianten	Vollbesetztes Armband mit Magnetverschluss
+gid://shopify/Product/15490775613825	CHF 13.60	1 Varianten	Bernsteinarmband für Damen und Herren
+gid://shopify/Product/15490775712129	CHF 7.95	1 Varianten	Vergoldeter Zirkonia-Ring mit Geburtsstein
+gid://shopify/Product/15490775777665	CHF 7.42	1 Varianten	Exklusive runde Anhänger-Halskette
+gid://shopify/Product/15490775843201	CHF 7.11	1 Varianten	Dopamine Buchstaben-Halskette für Frauen
