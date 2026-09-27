@@ -8959,3 +8959,4 @@ gid://shopify/Product/15412969406849	ersetzt
 gid://shopify/Product/15412976681345	ersetzt
 gid://shopify/Product/15412976714113	ersetzt
 gid://shopify/Product/15412976746881	ersetzt
+gid://shopify/Product/15412976845185	ersetzt
