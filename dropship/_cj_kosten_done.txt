@@ -35484,3 +35484,4 @@ gid://shopify/Product/15484924756353	CHF 12.36	5 Varianten	Elegantes Kleid für 
 gid://shopify/Product/15484928917889	CHF 14.36	10 Varianten	Elegantes Vintage Color-Block Damenkleid
 gid://shopify/Product/15484929540481	CHF 13.23	18 Varianten	Ruffles Fishtail-Kleid
 gid://shopify/Product/15484930589057	CHF 12.83	9 Varianten	Damen-Kleid mit Patchwork-Print
+gid://shopify/Product/15484930752897	CHF 18.95	40 Varianten	Freizeitkleid mit Reissverschluss-Taschen
