@@ -18,6 +18,7 @@ from kollektionstexte_nachbessern import gql  # noqa: E402
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAG = os.environ.get("TAG", "herbst-2026")
 BIS = os.environ.get("BIS", "2026-11-30")
+EXTRA_TAGS = [t for t in os.environ.get("EXTRA_TAGS", "kunden-liebling,ersatz-wickelset-0928").split(",") if t]
 HANDLES = os.path.join(REPO, "dropship/_social_vorrang.txt")
 REEL = os.path.join(REPO, "dropship/_reel_vorrang.txt")
 
@@ -27,18 +28,25 @@ def main():
         open(HANDLES, "w").close()
         print(f"FERTIG: Saison vorbei ({BIS}) — Vorrangliste geleert")
         return
-    hs, pids, c = [], [], None
-    while True:
-        r = gql('query($q:String!,$c:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
-                'nodes{handle variants(first:1){nodes{sku}}}}}', {"q": f"tag:{TAG} status:active", "c": c})["products"]
-        for n in r["nodes"]:
-            hs.append(n["handle"])
-            m = re.match(r"CJ-([0-9A-Za-z-]{10,})", (n["variants"]["nodes"] or [{}])[0].get("sku") or "")
-            if m:
-                pids.append(m.group(1))
-        if not r["pageInfo"]["hasNextPage"]:
-            break
-        c = r["pageInfo"]["endCursor"]
+    hs, pids = [], []
+    # 28.09.2026 (Betreiber «push mehr etwas das leute kaufen»): zusätzlich die nachweislich gekauften Artikel (Tag
+    # kunden-liebling, gesetzt aus ShopifyQL «orders GROUP BY product_title») und der Ersatz für die meistbesuchte Seite
+    # (ersatz-wickelset-0928). Sie stehen VOR der Saison-Ware; die Saison-Zählung «0 Produkte → nicht überschreiben» gilt weiter.
+    for tag in EXTRA_TAGS + [TAG]:
+        c = None
+        while True:
+            r = gql('query($q:String!,$c:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
+                    'nodes{handle variants(first:1){nodes{sku}}}}}', {"q": f"tag:{tag} status:active", "c": c})["products"]
+            for n in r["nodes"]:
+                if n["handle"] in hs:
+                    continue
+                hs.append(n["handle"])
+                m = re.match(r"CJ-([0-9A-Za-z-]{10,})", (n["variants"]["nodes"] or [{}])[0].get("sku") or "")
+                if m:
+                    pids.append(m.group(1))
+            if not r["pageInfo"]["hasNextPage"]:
+                break
+            c = r["pageInfo"]["endCursor"]
     if not hs:
         print("⚠️ 0 Produkte mit Tag — Vorrangliste NICHT überschrieben (Messfehler ≠ leere Saison)")
         return
