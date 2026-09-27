@@ -36705,3 +36705,5 @@ gid://shopify/Product/15492128080257	CHF 29.88	9 Varianten	Echtleder Low-Top Sch
 gid://shopify/Product/15492128113025	CHF 20.31	24 Varianten	Schnürschuhe mit Plateauabsatz
 gid://shopify/Product/15492128145793	CHF 18.96	12 Varianten	Mary Jane Pumps mit Keilabsatz
 gid://shopify/Product/15492128178561	CHF 17.81	30 Varianten	Bestickte Mesh Flats mit eckiger Zehenpartie
+gid://shopify/Product/15492128211329	CHF 21.95	18 Varianten	Retro Pumps mit moderatem Absatz
+gid://shopify/Product/15492128276865	CHF 24.81	9 Varianten	Warme sportliche Schuhe für Herbst und Winter
