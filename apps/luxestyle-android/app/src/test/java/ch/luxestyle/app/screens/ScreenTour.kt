@@ -146,9 +146,14 @@ class ScreenTour : TourBase() {
     fun kategorienUndLeereZustaende() {
         start()
         rule.onAllNodesWithText("Kategorien").onFirst().performClick()
-        waitFor("Bereiche"); settle()
+        waitFor("Alles ansehen"); settle(6000)
         shot("09-kategorien")
+        rule.onAllNodesWithText("Schmuck & Uhren").onFirst().performClick()
+        settle(12000)
+        shot("09a-kategorien-schmuck")
         rule.onAllNodesWithText("Damen").onFirst().performClick()
+        settle(1500)
+        rule.onAllNodesWithText("Alles ansehen").onFirst().performClick()
         waitFor("Empfohlen"); settle()
         shot("09b-damen-unterkategorien")
         rule.onAllNodesWithText("Bis CHF 25").onFirst().performClick()
@@ -194,6 +199,19 @@ class ScreenTour : TourBase() {
         rule.onAllNodesWithContentDescription("Entfernen").onFirst().performClick()
         waitFor("Rückgängig"); settle(800)
         shot("16-entfernt-rueckgaengig")
+    }
+
+    @Test
+    fun kategoriePfad() {
+        start()
+        go("https://luxestyle.ch/products/hoodie-langarmshirt-fur-damen-614400")
+        waitFor("In den Warenkorb"); waitFor("Strick & Pullover"); settle()
+        shot("18-produkt-kategoriepfad")
+        scrollTo("product", "Mehr aus"); settle(3000)
+        shot("18b-mehr-aus")
+        go("https://luxestyle.ch/collections/damen-strick-pullover")
+        waitForPrices(); settle()
+        shot("18c-unterkategorie-nachbarn")
     }
 
     /** Systemschrift 130 % – bricht nichts um oder ab? */
@@ -246,7 +264,7 @@ class StoreShots : TourBase() {
         waitFor("Treffer"); settle()
         shot("store-5-suche")
         rule.onAllNodesWithText("Kategorien").onFirst().performClick()
-        waitFor("Bereiche"); settle()
+        waitFor("Alles ansehen"); settle(6000)
         shot("store-6-kategorien")
     }
 }

@@ -54,7 +54,9 @@ import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Product
 import ch.luxestyle.app.data.cleanDescription
+import ch.luxestyle.app.data.breadcrumb
 import ch.luxestyle.app.data.deliveryNote
+import ch.luxestyle.app.data.Storefront.Sort
 import ch.luxestyle.app.data.sizeGuide
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
@@ -94,6 +96,14 @@ private fun ProductDetail(p: Product) {
     val pager = rememberPagerState { images.size.coerceAtLeast(1) }
     var adding by remember { mutableStateOf(false) }
     val recs = rememberLoad(p.id) { shop.api.recommendations(p.id) }
+    val menu = (rememberLoad("menu") { shop.menu() }.state as? Load.Ok)?.value
+    val path = remember(menu, p.handle) { menu?.let { breadcrumb(it, p.collections) }.orEmpty() }
+    val category = path.lastOrNull()
+    // „Mehr aus …": Bestseller derselben Unterkategorie, ohne das offene Produkt
+    val more = rememberLoad(p.id, category?.collectionHandle) {
+        val h = category?.collectionHandle ?: return@rememberLoad emptyList()
+        shop.api.collection(h, Sort.BEST, null).second.products.filter { it.id != p.id }.take(12)
+    }
     var viewer by remember { mutableStateOf<Int?>(null) }
     val guide = remember(p.handle) { sizeGuide(p.descriptionHtml) }
     var showGuide by rememberSaveable(p.handle) { mutableStateOf(false) }
@@ -152,6 +162,10 @@ private fun ProductDetail(p: Product) {
             }
             item {
                 Column(Modifier.padding(horizontal = 20.dp, vertical = 20.dp)) {
+                    if (path.isNotEmpty()) {
+                        Breadcrumb(path, lastIsCurrent = false)
+                        Gap(6)
+                    }
                     Text(p.title, style = MaterialTheme.typography.headlineMedium)
                     Gap(12)
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -213,6 +227,12 @@ private fun ProductDetail(p: Product) {
             (recs.state as? Load.Ok)?.value?.takeIf { it.isNotEmpty() }?.let { cards ->
                 item {
                     SectionHeader("Passt dazu")
+                    Rail(cards, wish.map { it.handle }.toSet())
+                }
+            }
+            if (category != null) (more.state as? Load.Ok)?.value?.takeIf { it.isNotEmpty() }?.let { cards ->
+                item {
+                    SectionHeader("Mehr aus ${category.title}", "Alle") { category.collectionHandle?.let { nav.collection(it, category.title) } }
                     Rail(cards, wish.map { it.handle }.toSet())
                 }
             }

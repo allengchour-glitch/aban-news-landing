@@ -45,6 +45,7 @@ import ch.luxestyle.app.data.Money
 import ch.luxestyle.app.data.MenuItem
 import ch.luxestyle.app.data.PriceBand
 import ch.luxestyle.app.data.priceDrop
+import ch.luxestyle.app.data.menuPath
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -73,56 +74,6 @@ fun ScreenTitle(title: String, back: Boolean = false, trailing: @Composable () -
             modifier = Modifier.weight(1f),
         )
         trailing()
-    }
-}
-
-@Composable
-fun CategoriesScreen() {
-    val shop = LocalShop.current
-    val nav = LocalNav.current
-    val menu = rememberLoad("menu") { shop.menu() }
-    Column(Modifier.fillMaxSize()) {
-        ScreenTitle("Kategorien")
-        LoadContent(menu) { items ->
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 24.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-            ) {
-                items(items.size, key = { items[it].url }) { i ->
-                    val m = items[i]
-                    CategoryTile(m) { m.collectionHandle?.let { nav.collection(it, m.title) } }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun CategoryTile(item: MenuItem, onClick: () -> Unit) {
-    Box(
-        Modifier.fillMaxWidth().aspectRatio(0.86f).clip(Radius.Card)
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .clickable(role = Role.Button, onClick = onClick),
-    ) {
-        item.image?.let {
-            AsyncImage(it.sized(540), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
-        }
-        Box(
-            Modifier.fillMaxSize().background(
-                Brush.verticalGradient(0.45f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.6f)),
-            ),
-        )
-        Column(Modifier.align(Alignment.BottomStart).padding(14.dp)) {
-            Text(item.title, style = MaterialTheme.typography.titleLarge, color = Color.White, maxLines = 2, overflow = TextOverflow.Ellipsis)
-            if (item.children.isNotEmpty()) {
-                Text(
-                    "${item.children.size} Bereiche", style = MaterialTheme.typography.bodySmall,
-                    color = Color.White.copy(alpha = 0.8f),
-                )
-            }
-        }
     }
 }
 
@@ -165,8 +116,11 @@ fun CollectionScreen(handle: String, initialTitle: String) {
     var title by rememberSaveable { mutableStateOf(initialTitle) }
     var description by rememberSaveable { mutableStateOf("") }
     val menu = (rememberLoad("menu") { shop.menu() }.state as? Load.Ok)?.value
-    // Unterkategorien aus dem Shop-Menü, falls diese Kollektion dort Kinder hat
-    val children = menu?.firstOrNull { it.collectionHandle == handle }?.children.orEmpty()
+    // Weg im Shop-Menü: eigene Unterkategorien – oder, wenn es keine gibt, die Nachbarn zum Wechseln
+    val path = menu?.let { menuPath(it, handle) }.orEmpty()
+    val self = path.lastOrNull()
+    val children = self?.children.orEmpty()
+    val siblings = if (children.isEmpty() && path.size >= 2) path[path.size - 2].children else emptyList()
     Column(Modifier.fillMaxSize()) {
         ScreenTitle(title.ifEmpty { " " }, back = true)
         ProductGrid(
@@ -178,14 +132,26 @@ fun CollectionScreen(handle: String, initialTitle: String) {
             },
             onOpen = { nav.product(it.handle) },
             header = {
-                if (children.isNotEmpty()) {
+                if (path.size >= 2) {
+                    item(span = { GridItemSpan(maxLineSpan) }) { Breadcrumb(path, lastIsCurrent = true) }
+                }
+                if (children.isNotEmpty() || siblings.isNotEmpty()) {
                     item(span = { GridItemSpan(maxLineSpan) }) {
+                        val chips = children.ifEmpty { siblings }
+                        val state = androidx.compose.foundation.lazy.rememberLazyListState(
+                            (chips.indexOfFirst { it.collectionHandle == handle } - 1).coerceAtLeast(0),
+                        )
                         LazyRow(
+                            state = state,
                             contentPadding = PaddingValues(bottom = 8.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
-                            items(children, key = { it.url }) { c ->
-                                ChoiceChip(c.title, selected = false) { c.collectionHandle?.let { nav.collection(it, c.title) } }
+                            items(chips, key = { it.url }) { c ->
+                                val here = c.collectionHandle == handle
+                                ChoiceChip(c.title, selected = here) {
+                                    // Nachbarn tauschen die Seite aus, statt den Zurück-Stapel zu füllen
+                                    if (!here) c.collectionHandle?.let { nav.collection(it, c.title, replace = siblings.isNotEmpty()) }
+                                }
                             }
                         }
                     }

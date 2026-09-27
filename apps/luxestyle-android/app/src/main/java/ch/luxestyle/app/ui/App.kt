@@ -67,8 +67,12 @@ class Nav(
     private val launch: (suspend () -> Unit) -> Unit,
 ) {
     fun product(handle: String) = controller.navigate("product/${Uri.encode(handle)}")
-    fun collection(handle: String, title: String? = null) =
-        controller.navigate("collection/${Uri.encode(handle)}?title=${Uri.encode(title.orEmpty())}")
+    fun collection(handle: String, title: String? = null, replace: Boolean = false) {
+        val current = controller.currentBackStackEntry?.destination?.id
+        controller.navigate("collection/${Uri.encode(handle)}?title=${Uri.encode(title.orEmpty())}") {
+            if (replace && current != null) popUpTo(current) { inclusive = true }
+        }
+    }
     fun search(query: String? = null) = tab("search?q=${Uri.encode(query.orEmpty())}")
     fun cart() = tab(Tab.CART.route)
     fun home() = tab(Tab.HOME.route)

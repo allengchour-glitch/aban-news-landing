@@ -105,3 +105,27 @@ class QuickAddTest {
         assertNull(card("[]").quickVariant)
     }
 }
+
+class BreadcrumbTest {
+    private fun m(h: String, vararg kids: MenuItem) = MenuItem(h, "https://luxestyle.ch/collections/$h", kids.toList())
+    private val menu = listOf(
+        m("damen-mode", m("t-shirts-tops"), m("damen-strick-pullover")),
+        m("sub-baby-kids", m("sub-haustier", m("hundebetten"))),
+        m("premium-geschenke", m("unter-chf-25")),
+    )
+
+    @Test
+    fun wieDieWebseite() {
+        // echte Kollektionsreihenfolge des Damen-Hoodies aus dem Shop
+        val c = listOf("damen-mode", "unter-chf-25", "damen-strick-pullover", "t-shirts-tops")
+        assertEquals(listOf("damen-mode", "damen-strick-pullover"), breadcrumb(menu, c).map { it.title })
+    }
+
+    @Test
+    fun dritteEbeneUndRueckfall() {
+        assertEquals(listOf("sub-baby-kids", "sub-haustier", "hundebetten"), breadcrumb(menu, listOf("hundebetten")).map { it.title })
+        assertEquals(listOf("premium-geschenke", "unter-chf-25"), breadcrumb(menu, listOf("unter-chf-25")).map { it.title })
+        assertEquals(emptyList<String>(), breadcrumb(menu, listOf("gibts-nicht")).map { it.title })
+        assertEquals(listOf("damen-mode", "damen-strick-pullover"), menuPath(menu, "damen-strick-pullover")!!.map { it.title })
+    }
+}

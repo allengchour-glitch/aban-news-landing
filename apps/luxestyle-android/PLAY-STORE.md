@@ -7,7 +7,8 @@ Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne
 öffentliches Lesen und den Warenkorb. Preise immer in CHF (`@inContext(country: CH)`).
 - **Nativ:** Start (Titelbild der Webseite fest in der App, Saison-Knopf wechselt mit dem Kalender,
   WELCOME10-Band, Reihen Damen-Mode/Halsketten/Taschen/Geschenke, zuletzt angesehen), Kategorien als
-  Bild-Kacheln, Kollektion mit Unterkategorien, Sortierung, Preis-/Lieferbar-Filter und Nachladen,
+  Übersicht (Bereiche links, Unterkategorien mit Bild rechts), Kategorie-Pfad wie die Webseite,
+  „Mehr aus …", Kollektion mit Unterkategorien, Sortierung, Preis-/Lieferbar-Filter und Nachladen,
   Produkt mit Galerie + Vollbild-Zoom + Varianten (unkaufbare ausgegraut) + „Passt dazu", Suche mit
   Vorschlägen, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode (WELCOME10 per Tipp) und
   Gratis-Versand-Balken. Produktseite zeigt die Lieferzeit und die Grössentabelle als echte Tabelle
@@ -34,7 +35,7 @@ LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*Tour*' --tests '*StoreS
 Der zweite Befehl rendert die echte App mit echten Shopdaten (Robolectric + Roborazzi) nach `screens/`.
 
 Geprüft 2026-09-25: 26/26 Tests (+ Beschreibungs-Check gegen 214 echte Produkte mit `LUXE_DESCS`), Rundgang 24 Bilder ok, Lint 0 Fehler, R8-Release ok.
-**Auf einem echten Handy noch nicht** → vor dem Einreichen „Interner Test".
+Auf echtem Handy (interner Test, 27.09.): Start, Warenkorb, Kasse bis TWINT, Konto-Login ok.
 
 ## Upload-Schlüssel
 `luxestyle-upload.jks` + Passwort wurden dem User als Datei übergeben — **nie ins Repo**.

@@ -66,7 +66,7 @@ class Storefront(
     }
 
     suspend fun menu(): List<MenuItem> {
-        val d = run("""query Menu { menu(handle: "main-menu") { items { title url items { title url } } } }""")
+        val d = run("""query Menu { menu(handle: "main-menu") { items { title url items { title url items { title url } } } } }""")
         val items = Parse.menu(d.o("menu").a("items"))
         // Bilder der Hauptkategorien in einer zweiten, gebündelten Abfrage
         val handles = items.mapNotNull { it.collectionHandle }.distinct()
@@ -116,6 +116,7 @@ class Storefront(
             """query P(${'$'}h: String!) { product(handle: ${'$'}h) { id handle title descriptionHtml
               options { name optionValues { name } }
               images(first: 12) { nodes { url altText width height } }
+              collections(first: 40) { nodes { handle } }
               variants(first: 100) { nodes { id title availableForSale price { amount currencyCode }
                 compareAtPrice { amount currencyCode } selectedOptions { name value } image { url altText width height } } } } }""",
             vars("h" to handle),
@@ -131,6 +132,20 @@ class Storefront(
             buildJsonObject { put("ids", buildJsonArray { ids.take(250).forEach { add(JsonPrimitive(it)) } }) },
         )
         return d.a("nodes").mapNotNull { it.obj()?.let(Parse::card) }
+    }
+
+    /** Bild je Kollektion; ohne eigenes Bild das des ersten Produkts. */
+    suspend fun collectionImages(handles: List<String>): Map<String, Image?> {
+        if (handles.isEmpty()) return emptyMap()
+        val q = handles.mapIndexed { i, h ->
+            "c$i: collection(handle: ${JsonPrimitive(h)}) { image { url altText width height } " +
+                "products(first: 1) { nodes { featuredImage { url altText width height } } } }"
+        }
+        val d = run("query Img { ${q.joinToString(" ")} }")
+        return handles.withIndex().associate { (i, h) ->
+            val c = d.o("c$i")
+            h to (Parse.image(c.o("image")) ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
+        }
     }
 
     suspend fun recommendations(productId: String): List<ProductCard> {

@@ -23,5 +23,14 @@ class Shop(context: Context) {
         menuCache ?: api.menu().also { menuCache = it }
     }
     val recent = RecentlyViewed(prefs)
+
+    // Kategorie-Bilder ändern sich selten → pro App-Start einmal je Kollektion
+    private val imageCache = mutableMapOf<String, Image?>()
+    private val imageLock = kotlinx.coroutines.sync.Mutex()
+    suspend fun collectionImages(handles: List<String>): Map<String, Image?> = imageLock.withLock {
+        val missing = handles.filter { it !in imageCache }.distinct()
+        if (missing.isNotEmpty()) missing.chunked(20).forEach { imageCache.putAll(api.collectionImages(it)) }
+        handles.associateWith { imageCache[it] }
+    }
     val searches = RecentSearches(prefs)
 }

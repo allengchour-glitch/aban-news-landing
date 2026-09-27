@@ -91,11 +91,12 @@ object Parse {
             images = o.nodes("images").mapNotNull { image(it) },
             options = options,
             variants = variants,
+            collections = o.nodes("collections").mapNotNull { it.s("handle") },
         )
     }
 
     fun menu(items: List<JsonElement>): List<MenuItem> = items.mapNotNull { it.obj() }.map {
-        MenuItem(cleanTitle(it.s("title").orEmpty()), it.s("url").orEmpty(), menu(it.a("items")))
+        MenuItem(cleanTitle(stripEmoji(it.s("title").orEmpty())), it.s("url").orEmpty(), menu(it.a("items")))
     }.filter { it.title.isNotEmpty() && it.collectionHandle != null }
 
     fun cart(o: JsonObject?): Cart? {

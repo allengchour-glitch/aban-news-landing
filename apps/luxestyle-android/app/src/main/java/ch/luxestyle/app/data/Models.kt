@@ -55,6 +55,8 @@ data class Product(
     val images: List<Image>,
     val options: List<ProductOption>,
     val variants: List<Variant>,
+    /** Kollektionen in Shop-Reihenfolge – daraus entsteht der Kategorie-Pfad. */
+    val collections: List<String> = emptyList(),
 ) {
     val url: String get() = "https://luxestyle.ch/products/$handle"
 
