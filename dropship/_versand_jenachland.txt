@@ -9165,3 +9165,4 @@ gid://shopify/Product/15427236921729	ersetzt
 gid://shopify/Product/15427236987265	ersetzt
 gid://shopify/Product/15427237020033	ersetzt
 gid://shopify/Product/15427237052801	ersetzt
+gid://shopify/Product/15427237216641	ersetzt
