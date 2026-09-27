@@ -35397,3 +35397,6 @@ gid://shopify/Product/15484611625345	CHF 8.46	1 Varianten	Waffelpiqué-Kissenbez
 gid://shopify/Product/15484611985793	CHF 30.98	1 Varianten	Wolkenkissen für Nackenstütze und besseren Schlaf
 gid://shopify/Product/15484612379009	CHF 20.47	1 Varianten	Satin-Look Spannbettlaken aus Eisseide
 gid://shopify/Product/15484612772225	CHF 95.02	1 Varianten	Kuschelige, wärmende Decke
+gid://shopify/Product/15484613132673	CHF 10.07	1 Varianten	Multifunktionaler Waffelstrick-Stillponcho
+gid://shopify/Product/15484613558657	CHF 20.92	1 Varianten	Mikrofaser Badetuch, ultrafein & saugfähig
+gid://shopify/Product/15484625158529	CHF 94.50	1 Varianten	Faltbarer Regiestuhl aus Aluminium
