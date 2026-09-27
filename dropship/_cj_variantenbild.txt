@@ -4524,3 +4524,6 @@ gid://shopify/Product/15450829586817	bild-urls-tot
 gid://shopify/Product/15450829685121	bild-urls-tot
 gid://shopify/Product/15450829750657	bild-urls-tot
 gid://shopify/Product/15450829881729	bild-urls-tot
+gid://shopify/Product/15450829914497	bild-urls-tot
+gid://shopify/Product/15450830012801	bild-urls-tot
+gid://shopify/Product/15450830045569	bild-urls-tot

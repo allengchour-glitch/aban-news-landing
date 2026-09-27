@@ -36699,3 +36699,4 @@ gid://shopify/Product/15492127883649	CHF 18.43	18 Varianten	Retro Plateau-Sandal
 gid://shopify/Product/15492127916417	CHF 15.08	24 Varianten	High-Top Stoffschuhe mit Blumenmuster
 gid://shopify/Product/15492127949185	CHF 28.99	10 Varianten	Geflochtene Plateau-Sandalen im Römer-Stil
 gid://shopify/Product/15492127981953	CHF 15.00	25 Varianten	Französische Flats mit Nieten
+gid://shopify/Product/15492128014721	CHF 16.36	16 Varianten	Leoparden-Print Slingback Flats mit Schnalle
