@@ -54,6 +54,8 @@ sox "$RAW" "$REV" reverb $RVB norm -2 2>/dev/null
 case "$GENRE" in
   liquid_dnb) EXTRA="bass=g=5:f=65," ;;
   *house*|*hype*) EXTRA="bass=g=4:f=70," ;;
+  # 27.09.2026 Anime Opening v2 (Gemini-Kritik): Härte 8–12 kHz −2.5, Mulm 300 Hz −2, Kontur 3 kHz +1.5, Stereobreite.
+  anime_opening) EXTRA="equalizer=f=10000:t=q:w=1:g=-2.5,equalizer=f=300:t=q:w=1.2:g=-2,equalizer=f=3000:t=q:w=1:g=1.5,extrastereo=m=1.25,bass=g=4:f=75," ;;
   *)                          EXTRA="" ;;
 esac
 ffmpeg -hide_banner -loglevel error -y -i "$REV" \

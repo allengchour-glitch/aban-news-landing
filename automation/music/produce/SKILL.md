@@ -36,8 +36,12 @@ SoundFont: `/usr/share/sounds/sf2/FluidR3_GM.sf2`
 
 ## Genres bisher (automation/music/)
 luxe-liquid-dnb ✅(freigegeben) · luxe-cinematic-house · luxe-orchestra · luxe-lounge-sax · luxe-premium ·
-luxe-hype-pro · **luxe-celtic-epic** (24.09., keltisch-episches Anime-Abenteuer, Lead-Spur + Gemini-Hörschleife). NEUES Genre: Agent-Recherche → build_<genre>_midi.py → render.sh. Marken-Video:
+luxe-hype-pro · **luxe-celtic-epic** (24.09., keltisch-episches Anime-Abenteuer, Lead-Spur + Gemini-Hörschleife) ·
+**luxe-anime-opening** (27.09., J-Rock-Opening 176 BPM, KEIN Intro — Hook ab Sekunde 0, Gemini v1 6/10 → v3 9/10;
+EQ/Stereo je Genre im Mastering-`case` von render.sh). ⚠️ Jedes neue Stück in `CREDITS.txt` (ORIGINAL-Abschnitt, mit ~BPM)
+eintragen und `einstiege.py` laufen lassen — `reel/schnitt.py` lehnt Stücke ohne CREDITS-Zeile ab (celtic-epic fehlte 3 Tage). NEUES Genre: Agent-Recherche → build_<genre>_midi.py → render.sh. Marken-Video:
 ffmpeg Logo + showwaves-Waveform (vertikal 1080x1920) → YouTube.
 
 ## Hörschleife (24.09.2026)
-Kein Ohr im Container → MP3 an Gemini-Audio (Prompt: Mix-Balance, Dynamik, 5 Verbesserungen mit Zeitstempeln), Spektrogramm (`showspectrumpic`) + RMS je Abschnitt. Gemini für Mix gut, für «klingt wie Stück X» unzuverlässig (widersprüchliche Treffer) — Originalität sichert die eigene Komposition, nicht ein KI-Urteil.
+Kein Ohr im Container → MP3 an Gemini-Audio (Prompt: Mix-Balance, Dynamik, 5 Verbesserungen mit Zeitstempeln), Spektrogramm (`showspectrumpic`) + RMS je Abschnitt. Gemini für Mix gut (A/B zweier Fassungen im selben Aufruf ist aussagekräftiger als Einzelnoten; wer die Änderungen
+im Prompt nennt, bekommt ein geschöntes Urteil — «genau wie beschrieben»), für «klingt wie Stück X» unzuverlässig (widersprüchliche Treffer) — Originalität sichert die eigene Komposition, nicht ein KI-Urteil.

@@ -6,6 +6,21 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 102 — 27.09.2026 · «vielleicht kannst du musik noch besser machen»: Anime-Opening + zwei Messfallen
+
+**Gemessen:** Alle 16 Stücke technisch sauber (Sample-Spitzen ≤ 0,95 bei eigenen, kein Clipping). Meine erste Auswertung
+meldete +4 dBTP bei fünf Stücken — falsch gelesene ebur128-Zeilen; die Gegenprobe über die Samples (numpy) widerlegte es.
+Einstiege sind seit 23.09. auf das energiereichste Fenster gelegt. Einziges Lob des Betreibers: keltisch-episch (Anime);
+einzige Sperre: Lounge-Sax. Das gelobte Stück gab es nur einmal, Mode/Home/Küche hatten den Sax-Platz.
+**Getan:** `luxe-anime-opening.wav` (E-Dur, 176 BPM, Royal-Road-Folge IV–V–iii–vi, Melodie neu komponiert, kein Intro —
+erste Sekunde RMS = Stück-Mittel). Hörschleife Gemini: v1 6/10 («MIDI-haft, Lead leise, Hats scharf») → v2 (Hats −12,
+Streicher zurück, EQ/Stereo) → v3 9/10 (Drums 0.85, Bass +4 dB). −13,1 LUFS, Spitze −2,4 dBFS. In 7 Warengruppen-Pools.
+**Nebenfund:** `luxe-celtic-epic.wav` stand nicht in `CREDITS.txt` → `reel/schnitt.py` (Promo-Montagen) hätte es
+abgelehnt; der Reel-Motor (make_reel.sh) prüft CREDITS nicht und nutzte es. Beide nachgetragen, Whitelist-Test ok.
+**Lehren:** (1) Eine auffällige Messzahl erst mit einem zweiten Messweg bestätigen, bevor man «repariert».
+(2) Hörschleife: A/B im selben Aufruf; wer dem KI-Hörer sagt, was geändert wurde, bekommt Bestätigung statt Urteil.
+(3) Wer ein Stück einbaut, trägt es in JEDE Freigabeliste ein, die ein Verbraucher liest — nicht nur in die eigene.
+
 ## 📌 Nachtrag 101 — 27.09.2026 · Bildpreis-Tor: eingebrannter Preis ≠ Caption bei 2 von 3 CDN-Reels
 
 **Gemessen:** OCR (tesseract, 3 Frames) auf 17 Reels + 2 Karussells. Repo-Reels 14/14 und Karussells 2/2 stimmig; von 3
@@ -16803,6 +16818,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-24 · 🎨 **«weiter polishen»: «Herstellerlager» an 3 Quellen + 711 Texten + 13 Seiten + Versand-Richtlinie → «Lieferantenlager» (Nachzählung 0); Bewertungs-Nachholer fand nie seine Quittungen (Ledger Zahl-ID, Liste Handle → «h:»-Zeilen, 1'934 offen); Lizenzfiguren (53 Fortura) nicht selbst bewerben (Karussell+Pinterest am Titel); «Wasserfeste Maniküre» 14 Designs bei 1 Variante → echte Auswahl (`auswahl_nachruesten.py`, nur mit vorhandenen Bildern, WebFetch bestätigt); «36 Farben … Set» = 36 Einzelfarben bei CJ → Titel für Mensch.** Liste und Ledger brauchen denselben Schlüssel; viele Bilder beweisen keine Auswahl → Journal Nachtrag 63
 - 2026-09-24 · 🎠 **«warum nicht mehr bilder in karusell»: Kürbis-Set 4 Slides — 3 Motive nur als 600 px (MIN_KANTE 700), Kleid in 4 Farben galt dem Graustufen-aHash als 1 Motiv. IG jetzt bis 8 Slides, 600er füllen hinter den grossen auf, Doppel = gleiche Form UND Farbe (Schwelle 12, an echten Paaren geeicht); 5 wartende Sets neu: 4× 8 Slides.** Ein Doppel-Filter muss sehen, was die Betrachterin sieht → Journal Nachtrag 62
 - 2026-09-24 · ⭐ **«bewertungen push»: erst ehrlich, dann mehr — 10'976 Bewertungen, nur 38 unter 4★, weil der Tagesstarter `MIN_SCORE=4` setzte (Skript-Standard seit 23.08. = alle, UWG); Ersatzname «Verifizierter Käufer» war falsch → Starter alle Stufen, Nachhol-Modus 1–3★ für 2'072 Produkte. Fortura-Bestand 34 Tage eingefroren (hing am pausierten Import-Runner) → 3'847 Varianten nachgeführt, 248 auf 0, eigener Tagesstarter. Aufseher-Tor kannte keinen ISO-Zeitstempel vor FERTIG.** Bei jeder Regel auch die Aufrufer lesen → Journal Nachtrag 61
 - 2026-09-24 · 🧾 **Post-Quittung lag im Stash: `repo_vorspulen.sh` spielte nur `dropship/*.txt` zurück, der Smartwatch-Bildpost 02:13 (IG DdpyPQLFFjb) stand im Repo als `ready` → Link-in-Bio/FB-Link ohne Produkt. `quittung_rueckspiel.py` (vorwärts, unter Post-Lock, nur verlustfrei schreibbare CSVs) läuft jetzt im Vorspulen; Ampel misst fehlende Quittungen statt Stashes. «Trend-Produkt» war nie Sammeltyp → zweite Regelwelle, 8 Wortfallen im Trockenlauf (Multi-FUNK-tion, Spiegelglanz, Lippenglanz-STIFT …), 459 kategorisiert, 188 bewusst offen.** Eine Queue mit Status-Spalte ist ein Ledger → Journal Nachtrag 60
