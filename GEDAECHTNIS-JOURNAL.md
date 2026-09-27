@@ -949,6 +949,24 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 98 (27.09.2026, 19:35 UTC) — 🔑 «1 ist doch? und metricool? fortuna ftp auch»: vorhandene Zugänge wurden nicht genutzt
+
+**Gemessen (nur Namen, nie Werte):** in der Umgebung stehen `METRICOOL_*`, `FORTURA_FTP_USER/_PW`, `AZURE_SPEECH_KEY` — aber NICHT
+`SHOPIFY_CLIENT_ID/_SECRET`. Trotzdem stand zweierlei still, obwohl der Zugang da war:
+(1) Fortura: vier Skripte lesen nur `/tmp/fortura_env.sh`; die Ampel meldete «FORTURA-ZUGANG WEG». (2) TikTok/YouTube über Metricool:
+der Poster brach mit «kein Shop-Token» ab (Kaufbar-Prüfung nur über die Admin-API) → 37 h ohne Post.
+**Getan:** `engine_keepalive.sh` schreibt `/tmp/fortura_env.sh` aus den Umgebungsvariablen (600, `%q`, nie ausgegeben) — Feed-Login
+getestet, 20'148 Zeilen. `metricool_tiktok_post.mjs`: ohne Token Prüfung über die öffentliche `/products/<handle>.js`
+(200 + available, Preise für `preisVeraltet`); ohne Handle/bei Fehler kein Post, ein 404 schreibt nichts ins Ledger (Bot-Cache).
+DRY: «Storefront kaufbar (ohne Token)», Body gebaut. Pinterest braucht den Token weiterhin zur Produktauswahl.
+**Nachtrag (Betreiber «metricool push über sozial»):** Metricool hat FB, IG, Threads, Pinterest, TikTok, YouTube verbunden →
+`NETZ=instagram` plant ein Reel auf Instagram + Facebook (type REEL, ohne Threads); der Autopilot nimmt diesen Weg, wenn der
+Meta-Token fehlt (gleiche Marke, 8 h). Storefront antwortete beim 2. Abruf mit 429 → 4 Versuche mit 10/20/30 s. DRY: Body korrekt.
+In Metricool liegen 8 fremde ENTWÜRFE (IG/FB, einer mit Threads) — Entwürfe veröffentlichen nicht, bewusst unberührt.
+**Lehre:** Wenn der Betreiber «ist doch da» sagt, zuerst die Namen messen — und dann prüfen, ob jedes Skript den Zugang
+auch dort sucht, wo er jetzt liegt (Umgebung statt Datei). Eine Prüfung, die nur einen Weg kennt, macht aus einem
+fehlenden Token einen Totalausfall.
+
 ### Nachtrag 97 (26.09.2026, 12:40 UTC) — ⛔ Frischer Container: Ampel schwieg genau dann, als alles blind war
 
 **Gemessen:** 12:09 UTC neuer Container — Repo ein flacher Klon von `main` unter unserem Branchnamen (CJ-Ledger 7'588), `/tmp` leer,

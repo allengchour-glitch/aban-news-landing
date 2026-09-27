@@ -136,6 +136,17 @@ while true; do
       fi
     fi
 
+  else
+    # 27.09.2026 (Betreiber «metricool push über sozial»): ohne Meta-Token lag Instagram/Facebook 37 h still, obwohl beide
+    # in Metricool verbunden sind. Dann plant Metricool das Reel auf IG + FB — gleiche Marke, gleicher Abstand (8 h),
+    # gleiche Wachen (Lock, Ledger, kaufbar, Preis). Bildposts/Karussell haben noch keinen Metricool-Weg.
+    if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
+      echo "$(date -u +%H:%M) Reel faellig (Metricool, Instagram + Facebook — Meta-Token fehlt)"
+      NETZ=instagram $NODE automation/metricool_tiktok_post.mjs; RC=$?
+      if [ "$RC" = 0 ]; then touch "$MARKE_REEL"
+      elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) Reel (Metricool): Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
+      else echo "$(date -u +%H:%M) Reel (Metricool) fehlgeschlagen (Exit $RC, Marke bleibt alt)"; fi
+    fi
   fi   # META_OK
 
   # 23.09.: Nachmessen — «posted-tiktok» heisst nur GEPLANT; der Planer sagt, ob es veroeffentlicht wurde.
