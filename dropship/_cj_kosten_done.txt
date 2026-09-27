@@ -35904,3 +35904,13 @@ gid://shopify/Product/15486453645697	CHF 8.93	1 Varianten	Doppelstein-Ring, verg
 gid://shopify/Product/15486454268289	CHF 11.09	1 Varianten	Verstellbarer Ring mit schimmerndem Zirkonia
 gid://shopify/Product/15486454923649	CHF 6.81	1 Varianten	Bohemian-Stil Wellenring
 gid://shopify/Product/15486562730369	CHF 16.90	3 Varianten	Tailliertes Maxikleid mit Print
+gid://shopify/Product/15486564106625	CHF 20.94	49 Varianten	Midi-Strickkleid mit Stehkragen und langen Ärmeln
+gid://shopify/Product/15486564598145	CHF 20.62	15 Varianten	Off-Shoulder Gestreiftes Kurzarmkleid
+gid://shopify/Product/15486564925825	CHF 14.24	30 Varianten	Elegantes Damenkleid mit geometrischem Muster
+gid://shopify/Product/15486565187969	CHF 22.27	15 Varianten	Bohemian-Kleid mit V-Ausschnitt
+gid://shopify/Product/15486565646721	CHF 18.54	10 Varianten	Chiffon Maxi-Abendkleid mit One-Shoulder-Design
+gid://shopify/Product/15486565941633	CHF 14.09	30 Varianten	Cardigan-Shirt · Damen
+gid://shopify/Product/15486566269313	CHF 14.56	35 Varianten	Corduroy Freizeitbluse für Damen
+gid://shopify/Product/15486566629761	CHF 16.05	4 Varianten	Romantische Chiffon-Bluse mit Spitze
+gid://shopify/Product/15486566924673	CHF 15.14	4 Varianten	Spitzenbluse mit Lochstickerei
+gid://shopify/Product/15486567252353	CHF 12.65	5 Varianten	Retro Polka-Dot Langarmshirt mit Stehkragen
