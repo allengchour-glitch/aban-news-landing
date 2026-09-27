@@ -23,7 +23,7 @@ LEADMID="/tmp/${GENRE}_lead.mid"
 if [ -f "$LEADMID" ]; then
   fluidsynth -ni -g 0.9 -r 44100 "$SF" "$LEADMID" -F "/tmp/${GENRE}_lead_raw.wav" 2>/dev/null
   ffmpeg -hide_banner -loglevel error -y -i "$RAW" -i "/tmp/${GENRE}_lead_raw.wav" -filter_complex \
-    "[1:a]equalizer=f=2500:t=q:w=1.2:g=3,volume=${LEAD_GAIN:-1.5}[l];[0:a][l]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95" \
+    "[1:a]equalizer=f=2500:t=q:w=1.2:g=3,volume=${LEAD_GAIN:-1.5}[l];[0:a][l]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95:level=0" \
     -ar 44100 "/tmp/${GENRE}_mitlead.wav" && RAW="/tmp/${GENRE}_mitlead.wav"
 fi
 
@@ -45,6 +45,7 @@ case "$GENRE" in
   orchestra|premium)      RVB="40 55 100" ;;
   celtic_epic)            RVB="30 50 95" ;;
   liquid_dnb)             RVB="45 60 100" ;;
+  dnb_drive)              RVB="18 40 80" ;;
   *house*)                RVB="20 40 85" ;;
   *)                      RVB="28 48 92" ;;
 esac
@@ -52,15 +53,18 @@ sox "$RAW" "$REV" reverb $RVB norm -2 2>/dev/null
 
 # Mastering (Bass-Boost nur bei Bass-Genres)
 case "$GENRE" in
-  liquid_dnb) EXTRA="bass=g=5:f=65," ;;
+  # 27.09.2026 v5: Pad-Mitten −2 dB @ 550 Hz, Matsch −1.5 @ 250, Präsenz +1.2 @ 1.6 kHz, Kick-Attack +1.5 @ 4 kHz
+  # v2 (blinde Kritik v1 7/10: Bass schwach, zu hell): Sub +3, 150 Hz +2, Kick 100 Hz +1.5, Box 300 −1.5, Höhen −1.5 ab 8 kHz
+  dnb_drive) EXTRA="bass=g=7:f=55,equalizer=f=150:t=q:w=1:g=2,equalizer=f=100:t=q:w=1.5:g=1.5,equalizer=f=300:t=q:w=1.2:g=-1.5,equalizer=f=450:t=q:w=1:g=-2,equalizer=f=3500:t=q:w=1.2:g=1.5,treble=g=-1.5:f=8000," ;;
+  liquid_dnb) EXTRA="bass=g=5:f=65,equalizer=f=550:t=q:w=1:g=-2,equalizer=f=250:t=q:w=1.2:g=-1.5,equalizer=f=1600:t=q:w=1:g=1.2,equalizer=f=4000:t=q:w=1.5:g=1.5," ;;
   *house*|*hype*) EXTRA="bass=g=4:f=70," ;;
   # 27.09.2026 Anime Opening v2 (Gemini-Kritik): Härte 8–12 kHz −2.5, Mulm 300 Hz −2, Kontur 3 kHz +1.5, Stereobreite.
   anime_opening) EXTRA="equalizer=f=10000:t=q:w=1:g=-2.5,equalizer=f=300:t=q:w=1.2:g=-2,equalizer=f=3000:t=q:w=1:g=1.5,extrastereo=m=1.25,bass=g=4:f=75," ;;
   *)                          EXTRA="" ;;
 esac
 ffmpeg -hide_banner -loglevel error -y -i "$REV" \
-  -af "acompressor=threshold=-18dB:ratio=3:attack=6:release=160:makeup=3,${EXTRA}highpass=f=30,loudnorm=I=${LUFS:--14}:TP=-1.2,alimiter=limit=0.93" \
-  -ar 44100 "$OUT" 2>/dev/null
+  -af "acompressor=threshold=-18dB:ratio=3:attack=6:release=160:makeup=3,${EXTRA}highpass=f=30,loudnorm=I=${LUFS:--14}:TP=-1.2,aresample=176400,alimiter=limit=0.89:attack=1:release=60:level=0,aresample=44100" \
+  -ar 44100 "$OUT" 2>/dev/null   # 27.09.: Limiter 4× überabgetastet + level=0 (ffmpeg-Standard level=1 hebt danach wieder auf 0 dBFS an = Begrenzer wirkungslos, DnB v5 +0.4 dBTP)
 # Stille am Ende kappen (24.09.2026): Reverb-/Synth-Nachlauf liess 8–11 s Leere stehen — auf Reels ein toter Schluss.
 # Hörbares Ende = letzte Stelle über −45 dB (50-ms-Fenster), +1 s, Ausblenden über 2.5 s.
 ENDE=$(python3 -c "

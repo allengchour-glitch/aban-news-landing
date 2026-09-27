@@ -42,7 +42,8 @@ const MUSIC = ['luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-house1.w
 // (keltisch-episch, Melodie neu komponiert, produce/build_celtic_epic_midi.py) in Gadget/Fitness/Haustier/Kinder.
 // 27.09.2026 «vielleicht kannst du musik noch besser machen»: zweites Stück in der gelobten Richtung, luxe-anime-opening.wav
 // (Anime-Opening/J-Rock, 176 BPM, kein Intro), in Mode/Gadget/Fitness/Home/Küche/Haustier/Kinder — ersetzt dort den
-// gesperrten Sax-Platz; Beauty/Schmuck bleiben ruhig (Premium/Cinematic).
+// gesperrten Sax-Platz; Beauty/Schmuck bleiben ruhig (Premium/Cinematic). Dazu luxe-dnb-drive.wav (Dancefloor-DnB, Drop ab 0 s)
+// in Gadget/Fitness/Mode (Betreiber «drum and base?»).
 // Musik v2 (23.09.2026, Betreiber «verbessere musik»): Stück nach Warengruppe statt pid % 6, alle 12 eigenen Stücke
 // (die drei Kevin-MacLeod-Stücke bleiben draussen — CC BY verlangt eine Quellenangabe in jeder Caption), Einstieg am
 // gemessenen Energie-Fenster (automation/music/_einstiege.json, automation/music/einstiege.py) statt beim Intro,
@@ -50,9 +51,9 @@ const MUSIC = ['luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-house1.w
 const STIMMUNG = {
   beauty:   ['luxe-lounge-sax.wav', 'luxe-premium.wav', 'luxe-cinematic-house.wav', 'luxe-house2.wav'],
   schmuck:  ['luxe-premium.wav', 'luxe-lounge-sax.wav', 'luxe-cinematic-house.wav', 'luxe-orchestra.wav'],
-  mode:     ['luxe-anime-opening.wav', 'luxe-house1.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-hype-pro.mp3'],
-  gadget:   ['luxe-celtic-epic.wav', 'luxe-anime-opening.wav', 'luxe-hype-pro.mp3', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb.wav', 'luxe-hype1.wav'],
-  fitness:  ['luxe-anime-opening.wav', 'luxe-celtic-epic.wav', 'luxe-hype1.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype-pro.mp3'],
+  mode:     ['luxe-anime-opening.wav', 'luxe-dnb-drive.wav', 'luxe-house1.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-hype-pro.mp3'],
+  gadget:   ['luxe-celtic-epic.wav', 'luxe-anime-opening.wav', 'luxe-dnb-drive.wav', 'luxe-hype-pro.mp3', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb.wav', 'luxe-hype1.wav'],
+  fitness:  ['luxe-anime-opening.wav', 'luxe-dnb-drive.wav', 'luxe-celtic-epic.wav', 'luxe-hype1.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype-pro.mp3'],
   home:     ['luxe-anime-opening.wav', 'luxe-house1.wav', 'luxe-lounge-sax.wav', 'luxe-premium.wav', 'luxe-cinematic-house.wav'],
   kueche:   ['luxe-anime-opening.wav', 'luxe-house2.wav', 'luxe-house1.wav', 'luxe-lounge-sax.wav', 'luxe-hype2.wav'],
   haustier: ['luxe-celtic-epic.wav', 'luxe-anime-opening.wav', 'luxe-hype2.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-house1.wav'],

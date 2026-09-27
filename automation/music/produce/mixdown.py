@@ -2,7 +2,7 @@
 # Pro-Mixdown mit SIDECHAIN-Pumpen (User «richtiges dj zeug»): duckt Musik+Bass im Kick-Takt = der
 # atmende EDM-Pump. Summiert Musik(ge-sidechained) + Drums + Reese + FX. Drums bleiben ungeduckt.
 # Aufruf: python3 mixdown.py <music.wav> <drums.wav|-> <reese.wav|-> <fx.wav|-> <kicktimes.txt|-> <out.wav>
-import sys, numpy as np, scipy.io.wavfile as wav
+import os, sys, numpy as np, scipy.io.wavfile as wav
 SR=44100
 def load(p):
     if p=='-' or not p: return np.zeros(1)
@@ -19,7 +19,8 @@ M,D,R,F=pad(M),pad(D),pad(R),pad(F)
 gain=np.ones(n)
 if kicks not in ('-',''):
     dur=int(0.18*SR)
-    shape=1-0.5*np.exp(-np.linspace(0,4,dur))   # 0.35 → 1.0
+    tiefe=float(os.environ.get('SC_TIEFE','0.5'))   # 27.09.: Pump-Tiefe je Genre (Default wie bisher 0.5)
+    shape=1-tiefe*np.exp(-np.linspace(0,4,dur))
     for line in open(kicks):
         try: kt=float(line.split()[0])
         except: continue

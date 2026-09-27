@@ -6,10 +6,37 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 104 — 27.09.2026 · «hört sich beschissen an … nimm instrumente wie top sounds»: GM-SoundFont ist die Decke
+
+**Befund:** Jede eigene Produktion (FluidR3-GM-SoundFont) bleibt klanglich billig — Mix-Runden verbessern Balance, nicht
+die Instrumente. `luxe-dnb-drive.wav` gesperrt. Kein ElevenLabs-Zugang in der Umgebung. **vidIQ `vidiq_generate_music`**
+(angebunden, 25 Credits/Stück, 140 Credits Guthaben, erneuert 24.10.) liefert echte Produktion: Probe «episches Anime»
+gewinnt den blinden A/B gegen die eigene GM-Fassung (8.5/10); TP +0.1 → gemastert −1.4 dBTP. Liegt in
+`automation/music/_probe/` — **erst nach Betreiber-Freigabe in Rotation** (Geschmack entscheidet der Betreiber, nicht die KI).
+**Lehre:** Wenn der Klang selbst das Problem ist, hilft kein Mix — Werkzeugklasse wechseln, und die Probe zuerst dem
+Menschen vorspielen, der sie beurteilt hat.
+
+## 📌 Nachtrag 103 — 27.09.2026 · «drum and base? mache orginale musik besser»: Begrenzer war wirkungslos, blinder A/B
+
+**Gemessen:** Blinde Gemini-Kritik liquid-dnb 5/10 (Kick weich, Hats starr, Mitten matschig). v5 (Punch-Kick, Hats mit
+Kurve + Swing, Mitten-EQ, SC-Tiefe) im blinden A/B (Reihenfolge zufällig, keine Angabe was neu ist): 1× alt besser,
+dann 3 Läufe: 2× gleich, 1× neu → **kein klarer Gewinn, alte (Juli freigegebene) Fassung bleibt.** Dieselbe alte Datei
+bekam einzeln 5/10 und im Vergleich 9/10 — ein einzelnes KI-Urteil ist Rauschen; nur Mehrheit über ≥3 blinde Läufe zählt.
+**Echter Fund:** `render.sh` begrenzte mit `alimiter=limit=0.93` — ffmpegs Standard `level=1` hebt danach wieder auf
+0 dBFS an: der Begrenzer war in JEDEM Render wirkungslos (DnB v5 +0.4 dBTP trotz Limit). Jetzt `level=0` + 4× Überabtastung
+(−0.2 dBTP). Gleiches in der Lead-Spur-Zeile. Die fünf Mono-Hype/House-Stücke (+3.7 … +4.3 dBTP) neu gemastert → −1.3 … −1.5.
+**Neu:** `luxe-dnb-drive.wav` (Dancefloor-DnB 174 BPM, Fis-Moll, Drop ab 0 s, Reese + Kick/Snare-Two-Step, Hook neu
+komponiert) — blinde Kritik v1 7/10 (Bass schwach, zu hell) → v2 (Sub +3, Höhen −1.5) gewinnt 2 von 3 blinden A/B;
+−14.0 LUFS, −1.1 dBTP; in Gadget/Fitness/Mode.
+**Werkzeug:** `automation/music/produce/hoerprobe.py` (kritik / ab — blind, zufällige Reihenfolge, Urteil auf Dateinamen).
+**Lehren:** (1) Ein Parameter, der «begrenzt», kann still wieder anheben — Ausgang messen, nicht dem Namen glauben.
+(2) Gegenprobe mit anderem Kanal-Layout ist keine Gegenprobe: Mono → Stereo = −3 dB. (3) KI-Hörer: blind + Mehrheit.
+
 ## 📌 Nachtrag 102 — 27.09.2026 · «vielleicht kannst du musik noch besser machen»: Anime-Opening + zwei Messfallen
 
-**Gemessen:** Alle 16 Stücke technisch sauber (Sample-Spitzen ≤ 0,95 bei eigenen, kein Clipping). Meine erste Auswertung
-meldete +4 dBTP bei fünf Stücken — falsch gelesene ebur128-Zeilen; die Gegenprobe über die Samples (numpy) widerlegte es.
+**Gemessen:** ~~Alle 16 Stücke technisch sauber~~ **KORRIGIERT am selben Abend:** die «Gegenprobe» dekodierte mit `-ac 2` —
+Mono → Stereo senkt jeden Kanal um 3 dB (0,95 → 0,67). ebur128 hatte recht: luxe-house1/2 + luxe-hype1/2/3 lagen bei
++3,7 … +4,3 dBTP (Zwischen-Sample-Spitzen, 4× überabgetastet +0,9 … +1,3 dB). Neu gemastert (siehe Nachtrag 103).
 Einstiege sind seit 23.09. auf das energiereichste Fenster gelegt. Einziges Lob des Betreibers: keltisch-episch (Anime);
 einzige Sperre: Lounge-Sax. Das gelobte Stück gab es nur einmal, Mode/Home/Küche hatten den Sax-Platz.
 **Getan:** `luxe-anime-opening.wav` (E-Dur, 176 BPM, Royal-Road-Folge IV–V–iii–vi, Melodie neu komponiert, kein Intro —
@@ -16818,6 +16845,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-24 · 🔌 **Konnektoren gemessen: Metricool-MCP liest Analytik (TikTok Ø 1 s von 11 s), Dropbox privat + keine Binär-Uploads, vidIQ ohne Kanal, Coupler leer (braucht Search Console/GA4), Porter nicht in der Sitzung.** «Verbunden» ≠ Daten → Journal Nachtrag 64
 - 2026-09-24 · 🎨 **«weiter polishen»: «Herstellerlager» an 3 Quellen + 711 Texten + 13 Seiten + Versand-Richtlinie → «Lieferantenlager» (Nachzählung 0); Bewertungs-Nachholer fand nie seine Quittungen (Ledger Zahl-ID, Liste Handle → «h:»-Zeilen, 1'934 offen); Lizenzfiguren (53 Fortura) nicht selbst bewerben (Karussell+Pinterest am Titel); «Wasserfeste Maniküre» 14 Designs bei 1 Variante → echte Auswahl (`auswahl_nachruesten.py`, nur mit vorhandenen Bildern, WebFetch bestätigt); «36 Farben … Set» = 36 Einzelfarben bei CJ → Titel für Mensch.** Liste und Ledger brauchen denselben Schlüssel; viele Bilder beweisen keine Auswahl → Journal Nachtrag 63
 - 2026-09-24 · 🎠 **«warum nicht mehr bilder in karusell»: Kürbis-Set 4 Slides — 3 Motive nur als 600 px (MIN_KANTE 700), Kleid in 4 Farben galt dem Graustufen-aHash als 1 Motiv. IG jetzt bis 8 Slides, 600er füllen hinter den grossen auf, Doppel = gleiche Form UND Farbe (Schwelle 12, an echten Paaren geeicht); 5 wartende Sets neu: 4× 8 Slides.** Ein Doppel-Filter muss sehen, was die Betrachterin sieht → Journal Nachtrag 62
 - 2026-09-24 · ⭐ **«bewertungen push»: erst ehrlich, dann mehr — 10'976 Bewertungen, nur 38 unter 4★, weil der Tagesstarter `MIN_SCORE=4` setzte (Skript-Standard seit 23.08. = alle, UWG); Ersatzname «Verifizierter Käufer» war falsch → Starter alle Stufen, Nachhol-Modus 1–3★ für 2'072 Produkte. Fortura-Bestand 34 Tage eingefroren (hing am pausierten Import-Runner) → 3'847 Varianten nachgeführt, 248 auf 0, eigener Tagesstarter. Aufseher-Tor kannte keinen ISO-Zeitstempel vor FERTIG.** Bei jeder Regel auch die Aufrufer lesen → Journal Nachtrag 61

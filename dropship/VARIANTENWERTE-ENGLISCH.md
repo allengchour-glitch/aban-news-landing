@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-27 20:04 UTC, Stand 2026-09-27 20:54 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-27 20:04 UTC, Stand 2026-09-27 21:06 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **24'606**
-- Optionen mit englischen Werten (Kandidaten): 2'309
+- Produkte gesehen: **46'216**
+- Optionen mit englischen Werten (Kandidaten): 2'898
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 12'765
+- Werte mit unbekanntem Wort (unverändert): 15'349
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 50
-- übersprungen «kollision-nach-uebersetzung»: 34
+- übersprungen «kleidungsstueck-im-wert»: 69
+- übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -40,6 +40,14 @@
 - `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
 - `15489629618561` [Ausführung] **Herren Kapuzen-Mantel, dick wattiert** — weste: Conventional | Hooded | Vest
 - `15491406987649` [Farbe] **Hoodie und Hose im Set** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers
+- `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
+- `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
+- `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
+- `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
+- `15500261392769` [Ausführung] **Schlichter Baumwoll-Top** — weste: Vest | Short
+- `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
+- `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Black Cardigan-Plus Size L | Black Cardigan-Plus Size XL | Black Cardigan-Plus Size 2XL | Black Cardigan-Plus Size 3XL | Black Cardigan-Plus Size 4XL | Black Cardigan | Sleeveless Floral Skirt-Plus Size L | Sleeveless Floral Skirt-Plus Size XL
+- `15506707251585` [Farbe] **Hemd und Hose mit Taillengürtel** — hose, oberteil: 689 White Shirt | 690 White Trousers
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -79,6 +87,13 @@
 - `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
 - `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: Black-US9 → Schwarz-US9; Black → Schwarz; White-US9 → Weiss-US9; White → Weiss
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
+- `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
+- `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
+- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
+- `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
+- `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
+- `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -125,5 +140,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 512, `light` 428, `inner` 369, `color` 302, `shell` 162, `degrees` 159, `core` 137, `surface` 124, `⟨satzbau:material-vor-farbe⟩` 115, `powder` 109, `diamond` 108, `no` 106, `high` 101, `skin` 98, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `belt` 79, `four` 78, `rope` 70, `base` 69, `dual` 69, `petal` 68, `chain` 67, `dark` 67, `size` 62, `feet` 62, `half` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `electric` 55, `one` 55, `plush` 55, `little` 54, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `cloud` 47, `cat` 46, `sheet` 46, `night` 46, `for` 46, `about` 46
+`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 576, `light` 442, `color` 389, `shell` 162, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 147, `size` 145, `core` 137, `surface` 130, `powder` 124, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 112, `no` 109, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `bag` 93, `code` 91, `four` 90, `french` 89, `rain` 88, `case` 87, `dark` 82, `opp` 81, `bottom` 79, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `cloth` 73, `spring` 72, `dual` 71, `chain` 70, `base` 70, `petal` 68, `half` 67, `little` 66, `autumn` 66, `net` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 58, `one` 57, `plush` 56, `electric` 55, `night` 54, `rice` 53, `face` 52, `line` 52, `background` 52
 
