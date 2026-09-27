@@ -36869,3 +36869,8 @@ gid://shopify/Product/15492521263489	CHF 12.02	1 Varianten	Leder Schweisser-Bein
 gid://shopify/Product/15492521460097	CHF 46.86	1 Varianten	Spanngerät für Stacheldrahtzäune
 gid://shopify/Product/15492521951617	CHF 14.94	1 Varianten	Dachankerhalterung für Absturzsicherung
 gid://shopify/Product/15492522606977	CHF 8.47	1 Varianten	Fahrradkettenzange zum Öffnen und Schliessen
+gid://shopify/Product/15492663902593	CHF 17.67	50 Varianten	Kabelstrick-Pullover
+gid://shopify/Product/15492664557953	CHF 16.93	5 Varianten	Damen Strick-Cardigan mit Knopfleiste
+gid://shopify/Product/15492665049473	CHF 18.25	12 Varianten	Jacquard Color-Block Strick-Cardigan für Damen
+gid://shopify/Product/15492665377153	CHF 19.05	12 Varianten	Bequemer Strickpullover mit Zopfmuster
+gid://shopify/Product/15492665639297	CHF 13.45	16 Varianten	Damen Strickpullover mit Rundhals und Farbblock-St
