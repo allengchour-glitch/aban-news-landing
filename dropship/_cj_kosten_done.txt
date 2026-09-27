@@ -37161,3 +37161,6 @@ gid://shopify/Product/15493151654273	CHF 9.65	1 Varianten	Fdgao 15W Kabelloses L
 gid://shopify/Product/15493151752577	CHF 51.80	10 Varianten	Herren Teflon-Repellent Sakko
 gid://shopify/Product/15493151850881	CHF 10.01	1 Varianten	Gesteppter Kissenbezug aus Baumwolle
 gid://shopify/Product/15493151883649	CHF 10.09	1 Varianten	Kabelloses 15W Ladegerät aus Stoff und Aluminium
+gid://shopify/Product/15493151949185	CHF 20.39	48 Varianten	Herren Strickmantel mit Stehkragen
+gid://shopify/Product/15493151981953	CHF 12.64	1 Varianten	Japanisches Katzen-Sitzkissen mit Memory Foam
+gid://shopify/Product/15493152014721	CHF 7.83	1 Varianten	10 Meerjungfrauen-Make-up-Pinsel mit Fischschuppen
