@@ -1,6 +1,6 @@
 # LuxeStyle Android-App → Google Play
 
-Stand 2026-09-25. Paket-ID **`ch.luxestyle.app`**, Version 1.0.0 (versionCode 1), targetSdk 36.
+Stand 2026-09-25. Paket-ID **`luxestyle.ch`** (so in der Play Console angelegt), Version 1.0.0 (versionCode 100), targetSdk 36.
 
 ## Was die App ist
 Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne Token, Shopify erlaubt

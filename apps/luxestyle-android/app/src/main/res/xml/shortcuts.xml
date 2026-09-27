@@ -4,16 +4,16 @@
     <shortcut android:shortcutId="suche" android:enabled="true" android:icon="@drawable/shortcut_search"
         android:shortcutShortLabel="@string/shortcut_search">
         <intent android:action="android.intent.action.VIEW" android:data="luxestyle://suche"
-            android:targetPackage="ch.luxestyle.app" android:targetClass="ch.luxestyle.app.MainActivity" />
+            android:targetPackage="luxestyle.ch" android:targetClass="ch.luxestyle.app.MainActivity" />
     </shortcut>
     <shortcut android:shortcutId="merkliste" android:enabled="true" android:icon="@drawable/shortcut_heart"
         android:shortcutShortLabel="@string/shortcut_wishlist">
         <intent android:action="android.intent.action.VIEW" android:data="luxestyle://merkliste"
-            android:targetPackage="ch.luxestyle.app" android:targetClass="ch.luxestyle.app.MainActivity" />
+            android:targetPackage="luxestyle.ch" android:targetClass="ch.luxestyle.app.MainActivity" />
     </shortcut>
     <shortcut android:shortcutId="warenkorb" android:enabled="true" android:icon="@drawable/shortcut_bag"
         android:shortcutShortLabel="@string/shortcut_cart">
         <intent android:action="android.intent.action.VIEW" android:data="luxestyle://warenkorb"
-            android:targetPackage="ch.luxestyle.app" android:targetClass="ch.luxestyle.app.MainActivity" />
+            android:targetPackage="luxestyle.ch" android:targetClass="ch.luxestyle.app.MainActivity" />
     </shortcut>
 </shortcuts>

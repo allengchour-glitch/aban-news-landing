@@ -54,8 +54,8 @@ jobs:
           LUXE_KEY_ALIAS: upload
           LUXE_VERSION_NAME: ${{ inputs.version_name }}
         run: |
-          # Jede Play-Version braucht einen höheren versionCode; 1 ist die erste Hand-Hochladung.
-          export LUXE_VERSION_CODE=$((GITHUB_RUN_NUMBER + 1))
+          # Jede Play-Version braucht einen höheren versionCode; 100 ist die erste Hand-Hochladung.
+          export LUXE_VERSION_CODE=$((GITHUB_RUN_NUMBER + 100))
           ./gradlew --no-daemon testReleaseUnitTest lintRelease bundleRelease
 
       - uses: actions/upload-artifact@v4
@@ -79,7 +79,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: ch.luxestyle.app
+          packageName: luxestyle.ch
           releaseFiles: apps/luxestyle-android/app/build/outputs/bundle/release/app-release.aab
           track: ${{ inputs.track }}
           # Produktion als Entwurf: in der Play Console mit einem Klick freigeben
