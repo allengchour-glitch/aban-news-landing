@@ -34,6 +34,29 @@ const RAW = `https://raw.githubusercontent.com/allengchour-glitch/aban-news-land
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const STOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
+// 27.09.2026 (Betreiber: «meta brauch nicht habe ja metricool»): Meta-Datenzugang endet 05.10. und wird nicht erneuert.
+// Ohne Meta-Token (oder WEG=metricool) plant dieser Poster das Karussell ueber Metricool (IG: mehrere Bilder = Karussell,
+// FB: Mehrfachfoto-Beitrag mit Produktlink). Getestet 27.09. mit Entwurf + Loeschen.
+const MC_TOKEN = process.env.METRICOOL_USER_TOKEN || (() => { try { return (/METRICOOL_USER_TOKEN=([^\s'"]+)/.exec(fs.readFileSync('/tmp/metricool.env', 'utf8')) || [])[1] || ''; } catch { return ''; } })();
+const MC_Q = `userId=${process.env.METRICOOL_USER_ID || '4801419'}&blogId=${process.env.METRICOOL_BLOG_ID || '6227837'}`;
+const VIA_MC = !!MC_TOKEN && (process.env.WEG === 'metricool' || !TOK);
+async function mcNorm(url) {
+  const n = await fetch(`https://app.metricool.com/api/actions/normalize/image/url?url=${encodeURIComponent(url)}&${MC_Q}`, { headers: { 'X-Mc-Auth': MC_TOKEN } });
+  const nt = await n.text();
+  let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data === 'string' ? j.data : '') || (typeof j === 'string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g, ''); }
+  if (!n.ok || !norm) throw new Error(`Metricool normalize ${n.status}: ${nt.slice(0, 120)}`);
+  return norm;
+}
+async function mcPlan(media, text, netz) {
+  const body = { publicationDate: { dateTime: new Date(Date.now() + 4 * 60e3).toISOString().slice(0, 19), timezone: 'UTC' }, text,
+                 providers: [{ network: netz }], media, autoPublish: true, draft: false, shortener: false };
+  if (netz === 'instagram') body.instagramData = { autoPublish: true, type: 'POST' };
+  if (netz === 'facebook') body.facebookData = { type: 'POST' };
+  const r = await fetch(`https://app.metricool.com/api/v2/scheduler/posts?${MC_Q}`, { method: 'POST', headers: { 'X-Mc-Auth': MC_TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const rt = await r.text();
+  if (!r.ok) throw new Error(`Metricool plan ${netz} ${r.status}: ${rt.slice(0, 200)}`);
+  try { const j = JSON.parse(rt); return String(j.data?.id || j.id || '?'); } catch { return '?'; }
+}
 
 // 23.09.2026 (Audit-Befund 18): Facebook hat keine Bio, ein Link im FB-Text ist direkt klickbar. Das FB-Album bekommt
 // die Produktseite (onlineStoreUrl, Top-Sets: Startseite) mit UTM; Instagram behaelt seine Caption. Gleiche Funktion
@@ -115,7 +138,24 @@ async function gql(q, v) {
   return null;
 }
 async function produktLive(handle) {
-  if (!STOK) return { ok: false, grund: 'kein Shop-Token' };
+  if (!STOK) {
+    // 27.09.2026: tokenlose Storefront API (frisch vom Ursprung) statt Abbruch.
+    for (let a = 0; a < 3; a++) {
+      try {
+        const r = await fetch(`https://${SHOP}/api/2025-07/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: `query($h:String!){ product(handle:$h){ availableForSale onlineStoreUrl title priceRange{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`, variables: { h: handle } }) });
+        const d = await r.json();
+        if (d && d.data) {
+          const p = d.data.product;
+          if (!p) return { ok: false, grund: 'Storefront API: nicht veroeffentlicht (ohne Token kein Urteil)' };
+          return { ok: !!p.availableForSale && !!p.onlineStoreUrl, grund: `Storefront API ${p.availableForSale ? 'kaufbar' : 'nicht verfuegbar'} (ohne Token)`, title: p.title, url: p.onlineStoreUrl || '',
+                   min: parseFloat(p.priceRange.minVariantPrice.amount), max: parseFloat(p.priceRange.maxVariantPrice.amount) };
+        }
+      } catch {}
+      await schlaf(2000 * (a + 1));
+    }
+    return { ok: false, grund: 'kein Shop-Token, Storefront API nicht erreichbar' };
+  }
   const d = await gql(`query($h:String!){ productByHandle(handle:$h){ status onlineStoreUrl title priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`, { h: handle });
   if (!d) return { ok: false, grund: 'Shopify nicht erreichbar' };
   const p = d.productByHandle; if (!p) return { ok: false, grund: 'Produkt existiert nicht mehr' };
@@ -192,6 +232,32 @@ if (DRY) {
   console.log('[DRY] wuerde jetzt IG-Karussell + FB-Album posten (nichts gepostet, nichts geschrieben).');
   console.log(`── Instagram-Caption ──\n${caption}\n── Facebook-Text ──\n${fbCaption}`);
   process.exit(0);
+}
+if (VIA_MC) {
+  const release = postLock(20);
+  setzen(cand, 'status', 'posting'); setzen(cand, 'posted_at', new Date().toISOString()); writeLedger();
+  let igPid = '';
+  try {
+    const media = []; for (const b of bilder) { media.push(await mcNorm(b)); await schlaf(500); }
+    igPid = await mcPlan(media, caption, 'instagram');
+    for (const b of bilder) postMark(b);                       // Ledger SOFORT nach IG
+    for (const h of handles) produktMerken(caption, h);
+    for (const t of familienDesSets(cand, caption, handles).values()) familieMerken(t, 'karussell');
+    setzen(cand, 'status', 'posted-ig'); setzen(cand, 'post_url', `metricool:${igPid}`); writeLedger();
+    console.log(`✅ IG-Karussell ueber Metricool geplant ${igPid}`);
+    try {
+      const fbPid = await mcPlan(media, fbCaption, 'facebook');
+      setzen(cand, 'status', 'posted-ig-fb'); setzen(cand, 'post_url', `metricool:${igPid} metricool:${fbPid}`); writeLedger();
+      console.log(`✅ FB-Beitrag ueber Metricool geplant ${fbPid}`);
+    } catch (e) { console.error(`⚠️ FB fehlgeschlagen (IG ist geplant): ${e.message}`); }
+  } catch (e) {
+    if (!igPid) { setzen(cand, 'status', 'ready'); setzen(cand, 'posted_at', ''); writeLedger(); }
+    console.error('✗ Karussell (Metricool) fehlgeschlagen:', String(e.message || e)); release(); process.exit(1);
+  }
+  release();
+  fs.appendFileSync('dropship/_karussell_done.txt', `${new Date().toISOString()}\tmetricool:${igPid}\t${get(cand, 'slug')}\n`);
+  pushen([CSV, 'dropship/_karussell_done.txt', 'dropship/_posted_media.txt'], `IG-Karussell geplant (Metricool): ${get(cand, 'slug')} [skip ci]`);
+  console.log('FERTIG.'); process.exit(0);
 }
 if (!IG_ID || !TOK) { console.error('⛔ IG_USER_ID / META_ACCESS_TOKEN fehlen.'); process.exit(1); }
 if (await igLiveHas(caption)) { console.log('⛔ Auf IG bereits live (Caption-Signatur) → posted-dup-live'); setzen(cand, 'status', 'posted-dup-live'); writeLedger(); process.exit(0); }

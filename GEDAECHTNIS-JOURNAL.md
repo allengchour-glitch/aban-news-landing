@@ -6,6 +6,30 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 100 — 27.09.2026 · «meta brauch nicht habe ja metricool»: IG/FB-Bild und Karussell über Metricool
+
+**Anlass:** Die Ampel mahnte täglich «Meta-Datenzugang endet 05.10. — Betreiber erneuert im Graph-Explorer». Der Betreiber
+will das nicht: Metricool ist verbunden (IG luxestyle.ch, FB-Seite 1049840534888592).
+
+**Gemessen:** Ohne Meta-Token hatte nur das REEL einen Metricool-Weg (27.09. früher). Bildpost (`social-autopost-meta.mjs`)
+und Karussell (`ig_karussell_post.mjs`) wären ab 05.10. still gewesen. Zudem meldet `/me` nach Ablauf des *Datenzugangs*
+nicht zwingend einen Fehler — der Autopilot hätte Meta weiter für gültig gehalten und Posts wären gescheitert.
+
+**Getan:**
+- Beide Poster haben einen Metricool-Weg (`WEG=metricool` oder automatisch ohne Meta-Token): IG und FB je eine Planung
+  (FB behält seinen klickbaren Produktlink), `instagramData.type=POST`, Karussell = mehrere `media`. Vorher je ein Entwurf
+  mit 1 und 8 Bildern auf IG und FB angelegt und gelöscht (200/200).
+- Kaufbar-Prüfung ohne Shop-Token über die tokenlose Storefront API (Bild: per Produkt-ID; Karussell: per Handle).
+- **Nebenfund:** Saison-Zeilen der Bild-Queue heissen `<handle>-<6 Ziffern>` ohne Shopify-ID → keine Kaufbar-Prüfung, Facebook
+  bekam die Startseite. Die Zeilen-ID IST der Handle → jetzt Prüfung + Produktlink (DRY: Overknee-Stiefel → /products/…-621200).
+- Autopilot: `data_access_expires_at` ≤ jetzt → `META_OK=0` (Status `datenzugang-abgelaufen`); Nachschub vor die Meta-Weiche
+  gezogen (braucht nur den Shop-Token); Metricool-Zweig postet Bild + Reel + Karussell.
+- Ampel ruft nur noch, wenn Metricool fehlt. Routine `trig_013HUsEqgHvrSVwBuVe4hse7` umgebaut: 06.10. Nachmessung statt Erinnerung.
+
+**Lehre:** Ein Ablaufdatum ist kein Fehlercode. Wer die Gültigkeit mit einem Aufruf prüft, der nach Ablauf weiter «ok» sagt,
+merkt den Ausfall erst an gescheiterten Posts → das Datum selbst prüfen. Und: bevor man den Betreiber um einen Zugang bittet,
+fragen, ob ein anderer verbundener Dienst denselben Kanal schon bedient.
+
 ## 2026-09-22 · 🌐 «webseite ist a und o, optimiere alles und produkten auch» — erst die 953 besuchten Seiten, dann der ganze Katalog
 
 **Messung 1 — wo Menschen ankommen (60 Tage, 845 aktive Produktseiten, 1'510 Sitzungen):** Sie-Form 222 ·
@@ -16769,6 +16793,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-24 · ⭐ **«bewertungen push»: erst ehrlich, dann mehr — 10'976 Bewertungen, nur 38 unter 4★, weil der Tagesstarter `MIN_SCORE=4` setzte (Skript-Standard seit 23.08. = alle, UWG); Ersatzname «Verifizierter Käufer» war falsch → Starter alle Stufen, Nachhol-Modus 1–3★ für 2'072 Produkte. Fortura-Bestand 34 Tage eingefroren (hing am pausierten Import-Runner) → 3'847 Varianten nachgeführt, 248 auf 0, eigener Tagesstarter. Aufseher-Tor kannte keinen ISO-Zeitstempel vor FERTIG.** Bei jeder Regel auch die Aufrufer lesen → Journal Nachtrag 61
+- 2026-09-24 · 🧾 **Post-Quittung lag im Stash: `repo_vorspulen.sh` spielte nur `dropship/*.txt` zurück, der Smartwatch-Bildpost 02:13 (IG DdpyPQLFFjb) stand im Repo als `ready` → Link-in-Bio/FB-Link ohne Produkt. `quittung_rueckspiel.py` (vorwärts, unter Post-Lock, nur verlustfrei schreibbare CSVs) läuft jetzt im Vorspulen; Ampel misst fehlende Quittungen statt Stashes. «Trend-Produkt» war nie Sammeltyp → zweite Regelwelle, 8 Wortfallen im Trockenlauf (Multi-FUNK-tion, Spiegelglanz, Lippenglanz-STIFT …), 459 kategorisiert, 188 bewusst offen.** Eine Queue mit Status-Spalte ist ein Ledger → Journal Nachtrag 60
 - 2026-09-24 · 📚 **Ratgeber-Runde 2 live (Halloween-Deko 997 W, Katzenspielzeug 1'010 W); Prüfer-Befunde behoben (Skelett-Karte bei Bestand 1 → Fakten + Ersatzlink, «Hersteller» → «Lieferantenlager»); Prüfer-«offen» selbst gebaut: `ratgeber_ohne_ware.py` Klasse C (ausverkauft DENY), `kategorie_wache.py` Halloween-Titelregel, 13 Produkte umkategorisiert.** Karte sagt nur, was ein Produktfeld belegt; ein leerer neuer Wächter braucht einen synthetischen Test → Journal Nachtrag 59
 - 2026-09-24 · 📏 **Zwei Klassen aus der Ratgeber-Prüfung: «Verfügbare Grössen: S, M, L» bei einer Variante (812 am Vollexport, 452 bereinigt, Regex in wahlversprechen + klassen_kontrolle) und drei Dimensionen im Farbwert («Grey-60x50x H37cm», 21 Produkte, 19 getrennt, X/x/× vereinheitlicht).** Neue Regex erst an den Treffern lesen — die erste Fassung zählte 497 Faktenblock-Zeilen mit → Journal Nachtrag 58
 - 2026-09-24 · 🖼️ **Werbetext-Bilder scharf: 94 Treffer → 45 entfernt (≥7 W, Sichtprüfung 24/24), 26 als letztes Zweitbild behalten (Nachfüller-Arbeit bleibt), 23 unter 7 W zur Sichtung; Aufseher-Tageslauf hielt die Sperre → einreihen statt killen. Zwei Ratgeber (Kratzbaum, Hundebett) per Workflow live, Prüfer fand Produktseiten-Klassen (Grössen im Text bei einer Variante, drei Dimensionen im Farbwert).** `Article` hat kein seo/onlineStoreUrl → Metafelder; Karten-Fakten aus Varianten, nicht aus dem Text → Journal Nachtrag 57

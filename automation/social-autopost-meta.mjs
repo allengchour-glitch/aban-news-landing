@@ -41,6 +41,36 @@ const TH_TOK = process.env.THREADS_ACCESS_TOKEN || '';
 // Threads bekommt stattdessen 1 gesprächigen Text-Post/Tag (automation/threads-text-post.mjs).
 const SKIP_THREADS = process.env.SKIP_THREADS === '1';
 
+// 27.09.2026 (Betreiber: «meta brauch nicht habe ja metricool»): der Meta-Datenzugang endet am 05.10. und wird NICHT
+// erneuert. Ohne Meta-Token (oder mit WEG=metricool) plant dieser Poster denselben Bildpost ueber Metricool auf
+// Instagram und Facebook — zwei Planungen, damit Facebook seinen klickbaren Produktlink behaelt. Alle Wachen
+// (Lock, Ledger, Produkt-/Familien-Sperre, kaufbar, Bildtext) bleiben dieselben; getestet 27.09. mit Entwurf + Loeschen.
+function mcTokenLesen(){
+  if (process.env.METRICOOL_USER_TOKEN) return process.env.METRICOOL_USER_TOKEN;
+  try { const m = /METRICOOL_USER_TOKEN=([^\s'"]+)/.exec(fs.readFileSync('/tmp/metricool.env','utf8')); if (m) return m[1]; } catch {}
+  return '';
+}
+const MC_TOKEN = mcTokenLesen();
+const MC_USER = process.env.METRICOOL_USER_ID || '4801419';
+const MC_BLOG = process.env.METRICOOL_BLOG_ID || '6227837';
+const VIA_MC = !!MC_TOKEN && (process.env.WEG === 'metricool' || (!IG_TOK && !FB_TOK));
+async function mcPlan(imageUrl, text, netz){
+  const q = `userId=${MC_USER}&blogId=${MC_BLOG}`;
+  const n = await fetch(`https://app.metricool.com/api/actions/normalize/image/url?url=${encodeURIComponent(imageUrl)}&${q}`, { headers:{ 'X-Mc-Auth':MC_TOKEN } });
+  const nt = await n.text();
+  let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data==='string' ? j.data : '') || (typeof j==='string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g,''); }
+  if(!n.ok || !norm){ console.error(`Metricool normalize (${netz}):`, n.status, nt.slice(0,160)); return false; }
+  const body = { publicationDate:{ dateTime:new Date(Date.now()+4*60e3).toISOString().slice(0,19), timezone:'UTC' }, text,
+                 providers:[{ network:netz }], media:[norm], autoPublish:true, draft:false, shortener:false };
+  if(netz==='instagram') body.instagramData = { autoPublish:true, type:'POST' };
+  if(netz==='facebook') body.facebookData = { type:'POST' };
+  const r = await fetch(`https://app.metricool.com/api/v2/scheduler/posts?${q}`, { method:'POST', headers:{ 'X-Mc-Auth':MC_TOKEN, 'Content-Type':'application/json' }, body:JSON.stringify(body) });
+  const rt = await r.text();
+  if(!r.ok){ console.error(`Metricool plan (${netz}):`, r.status, rt.slice(0,200)); return false; }
+  let id=''; try { const j = JSON.parse(rt); id = String(j.data?.id || j.id || ''); } catch {}
+  console.log(`${netz}: ueber Metricool geplant`, id); return `metricool:${id||'?'}`;
+}
+
 const COLS = ['id','scheduled_date','image_url','caption','platforms','status','posted_at','post_url'];
 
 // --- minimal CSV (RFC-4180-ish, identisch zu post-next-reel.mjs) ---
@@ -107,6 +137,7 @@ async function waitContainer(statusUrl){
   return false; // Timeout → trotzdem 1 Publish-Versuch unten
 }
 async function postIG(imageUrl, caption){
+  if(VIA_MC){ const f = markierungFehlt(imageUrl, caption); if(f){ console.error('⛔', f); return false; } return mcPlan(imageUrl, caption, 'instagram'); }
   if(!IG_ID || !IG_TOK) return null;
   // Einwilligungs-Bedingung der Kundin: ihr Material nur MIT Markierung (04.09.2026).
   const fehlt = markierungFehlt(imageUrl, caption);
@@ -120,6 +151,7 @@ async function postIG(imageUrl, caption){
   console.log('IG: gepostet', p.j.id); return p.j.id;
 }
 async function postFB(imageUrl, caption){
+  if(VIA_MC) return mcPlan(imageUrl, caption, 'facebook');
   if(!FB_ID || !FB_TOK) return null;
   // Page-Access-Token auto-holen: User-Token → /me/accounts → Page-Token mit pages_manage_posts.
   // Nötig weil ein normaler User-Token aus dem Graph-API-Explorer "publish_actions" triggert (deprecated).
@@ -166,7 +198,7 @@ async function postThreads(imageUrl, caption){
 }
 
 // --- Hauptlauf ---------------------------------------------------------------------
-const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
+const configured = VIA_MC ? ['IG (Metricool)','FB (Metricool)'] : [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
 if(configured.length===0 && !DRY){
   console.log('Kein Meta-Kanal konfiguriert (IG/FB/Threads Secrets fehlen) → No-op. Setze THREADS_ACCESS_TOKEN etc.');
   process.exit(0);
@@ -204,10 +236,47 @@ async function igLiveHas(caption){
 // ok:true kaufbar · ok:false nicht kaufbar (DRAFT/ARCHIVED/ohne Onlineshop/geloescht) · ok:null nicht pruefbar
 async function produktAktiv(zeilenId){
   const m = /(\d{12,})\s*$/.exec(String(zeilenId||'').trim());
-  if(!m) return { ok:true, grund:'keine Produkt-ID in der Zeile' };
+  if(!m){
+    // 27.09.2026: Saison-Zeilen (queue_new_products VORRANG_TAG) tragen «<handle>-<6 Ziffern>» statt der Produkt-ID → vorher
+    // weder Kaufbar-Pruefung noch Produktlink (Facebook bekam die Startseite). Handle ueber die tokenlose Storefront API.
+    const roh = String(zeilenId||'').trim();
+    for(const h of [...new Set([roh, roh.replace(/-\d{1,8}$/,'')])]){       // Zeilen-ID = Handle (auch mit Ziffern-Endung)
+      if(!/^[a-z0-9][a-z0-9-]{3,}$/.test(h) || /^(kimi|brand|marke)-/.test(h)) continue;
+      for(let a=0;a<3;a++){
+        try{
+          const r = await fetch('https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json', { method:'POST', headers:{ 'Content-Type':'application/json' },
+            body: JSON.stringify({ query:`{ product(handle:"${h}"){ availableForSale onlineStoreUrl } }` }) });
+          const d = await r.json();
+          if(d && d.data){
+            const p = d.data.product;
+            if(!p) break;                                   // kein Produkt unter diesem Handle → naechste Fassung / Markenpost
+            return { ok: !!p.availableForSale && !!p.onlineStoreUrl, grund:`Handle ${h}: ${p.availableForSale?'kaufbar':'nicht verfuegbar'}`, url: p.onlineStoreUrl||'' };
+          }
+        }catch{}
+        await new Promise(x=>setTimeout(x, 2000*(a+1)));
+      }
+    }
+    return { ok:true, grund:'keine Produkt-ID in der Zeile' };
+  }
   const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
   const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt','utf8') : '')).trim();
-  if(!tok) return { ok:null, grund:'kein Shop-Token' };
+  if(!tok){
+    // 27.09.2026: ohne Shop-Token die tokenlose Storefront API (frisch vom Ursprung, gleiche Produkt-ID) statt «nicht pruefbar».
+    for(let a=0;a<3;a++){
+      try{
+        const r = await fetch(`https://${shop}/api/2025-07/graphql.json`, { method:'POST', headers:{ 'Content-Type':'application/json' },
+          body: JSON.stringify({ query:`{ product(id:"gid://shopify/Product/${m[1]}"){ availableForSale onlineStoreUrl } }` }) });
+        const d = await r.json();
+        if(d && d.data){
+          const p = d.data.product;
+          if(!p) return { ok:null, grund:'Storefront API: nicht veroeffentlicht (ohne Token kein Urteil)' };
+          return { ok: !!p.availableForSale && !!p.onlineStoreUrl, grund:`Storefront API ${p.availableForSale?'kaufbar':'nicht verfuegbar'} (ohne Token)`, url: p.onlineStoreUrl||'' };
+        }
+      }catch{}
+      await new Promise(x=>setTimeout(x, 2000*(a+1)));
+    }
+    return { ok:null, grund:'kein Shop-Token, Storefront API nicht erreichbar' };
+  }
   for(let a=0;a<3;a++){
     try{
       const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method:'POST', headers:{ 'X-Shopify-Access-Token':tok, 'Content-Type':'application/json' },

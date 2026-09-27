@@ -35237,3 +35237,168 @@ gid://shopify/Product/15483936113025	CHF 12.56	2 Varianten	Kinder-Moskitonetz-Ze
 gid://shopify/Product/15483936276865	CHF 6.82	4 Varianten	Edelstahl-Armband
 gid://shopify/Product/15483936342401	CHF 6.59	17 Varianten	Mini Bibel-Anhanger
 gid://shopify/Product/15483936375169	CHF 13.93	1 Varianten	Wasserdichte Outdoor-Solarlampe · Solar oder Batte
+gid://shopify/Product/15484294791553	CHF 18.55	1 Varianten	Laptop-Kühler
+gid://shopify/Product/15484294955393	CHF 8.32	1 Varianten	Magnetischer Telefonhalter
+gid://shopify/Product/15484295020929	CHF 8.32	1 Varianten	Magnetischer Phone-Halter
+gid://shopify/Product/15484295152001	CHF 18.47	1 Varianten	Magnetischer Halter
+gid://shopify/Product/15484295381377	CHF 10.22	1 Varianten	Doppelseitiger Saugglocken-Halter
+gid://shopify/Product/15484354920833	CHF 7.40	1 Varianten	Kunstnagel-Sticker
+gid://shopify/Product/15484355838337	CHF 27.85	1 Varianten	Smart Roboter-Hund
+gid://shopify/Product/15484368257409	CHF 20.75	18 Varianten	Stiletto Mules · Damen
+gid://shopify/Product/15484368322945	CHF 11.93	63 Varianten	Strand-Sandalen · Damen
+gid://shopify/Product/15484368388481	CHF 24.58	24 Varianten	Cowboy-Reitstiefel
+gid://shopify/Product/15484368486785	CHF 14.69	40 Varianten	Flatternde Damen-Slipper
+gid://shopify/Product/15484368552321	CHF 20.57	27 Varianten	Französische Pumps
+gid://shopify/Product/15484368683393	CHF 18.92	12 Varianten	Weiche Slipper · Damen
+gid://shopify/Product/15484368748929	CHF 38.43	45 Varianten	Hohe Sneaker · Damen
+gid://shopify/Product/15484368814465	CHF 20.19	6 Varianten	Schlangenmuster-Mules
+gid://shopify/Product/15484368880001	CHF 21.47	24 Varianten	Französische Woven-Schuhe
+gid://shopify/Product/15484368945537	CHF 16.22	24 Varianten	Glitzer-Sandalen · Damen
+gid://shopify/Product/15484369011073	CHF 15.73	24 Varianten	Handgewebte Mules
+gid://shopify/Product/15484369600897	CHF 22.13	18 Varianten	Suede Pumps · Damen
+gid://shopify/Product/15484369830273	CHF 65.58	4 Varianten	Leder Slip-On Schuhe
+gid://shopify/Product/15484369928577	CHF 24.81	20 Varianten	Leichtlaufende Sneaker
+gid://shopify/Product/15484388147585	CHF 70.43	1 Varianten	Racing Drohne mit Display
+gid://shopify/Product/15484388245889	CHF 11.42	1 Varianten	Farbwechsel-Controller
+gid://shopify/Product/15484389491073	CHF 16.57	1 Varianten	Paar-Armband · Damen
+gid://shopify/Product/15484389556609	CHF 8.47	1 Varianten	Abalone-Muschel-Armband · Naturperlmutt
+gid://shopify/Product/15484389589377	CHF 7.02	1 Varianten	Roter Schmuckarmband
+gid://shopify/Product/15484389720449	CHF 7.75	1 Varianten	Antiker 3-Reihen Armreif
+gid://shopify/Product/15484389753217	CHF 10.83	1 Varianten	Geburtsteinsring · Damen
+gid://shopify/Product/15484389884289	CHF 17.74	1 Varianten	Rücken-Schmuckkette
+gid://shopify/Product/15484389949825	CHF 11.56	1 Varianten	Hüftkettchen aus Metall
+gid://shopify/Product/15484389982593	CHF 8.42	1 Varianten	Bunte Kristall-Halskette mit Natursteinperlen
+gid://shopify/Product/15484390048129	CHF 6.90	1 Varianten	Schmuck-Set mit Halskette, Armband und Ohrringen
+gid://shopify/Product/15484390211969	CHF 8.39	1 Varianten	Quadratische Edelstahl-Ohrstecker für Damen
+gid://shopify/Product/15484390343041	CHF 18.92	1 Varianten	Personalisierte Retro-Ohrringe mit Quaste
+gid://shopify/Product/15484390441345	CHF 8.30	1 Varianten	Vintage Asymmetrische Ohrringe Gold-Kupfer
+gid://shopify/Product/15484390736257	CHF 12.23	1 Varianten	Mechanische Skelett-Uhr für Herren
+gid://shopify/Product/15484397715841	CHF 13.66	1 Varianten	Business-Freizeit Quarz-Herrenuhr wasserdicht
+gid://shopify/Product/15484397879681	CHF 16.79	1 Varianten	Retro Flip-Open Mechanische Taschenuhr
+gid://shopify/Product/15484398207361	CHF 17.49	4 Varianten	Kurzes Bodycon-Kleid mit V-Ausschnitt und Stickere
+gid://shopify/Product/15484398272897	CHF 18.58	5 Varianten	Maxikleid mit Tropenmuster
+gid://shopify/Product/15484398469505	CHF 13.23	5 Varianten	Rückenfreies Neckholder-Kleid mit Schlitz
+gid://shopify/Product/15484398502273	CHF 15.37	5 Varianten	Strickkleid mit Rundhals und A-Linien-Rock
+gid://shopify/Product/15484398567809	CHF 16.00	25 Varianten	V-Ausschnitt Freizeitkleid Unifarben
+gid://shopify/Product/15484398698881	CHF 16.49	1 Varianten	Resortkleid mit Geometermuster
+gid://shopify/Product/15484398797185	CHF 20.40	8 Varianten	Elegantes Pailletten Midi-Kleid
+gid://shopify/Product/15484398862721	CHF 11.40	10 Varianten	Sommerliches Chiffonkleid mit Blumenprint
+gid://shopify/Product/15484399059329	CHF 16.28	40 Varianten	A-Linien Trägerkleid mit Taillenschnürung
+gid://shopify/Product/15484399157633	CHF 14.66	30 Varianten	Französisches V-Ausschnitt Kleid mit Rüschenärmeln
+gid://shopify/Product/15484399223169	CHF 15.84	20 Varianten	Elegantes Etui-Kleid mit Stehkragen
+gid://shopify/Product/15484399288705	CHF 19.87	4 Varianten	Etuikleid aus transparentem Stoff
+gid://shopify/Product/15484419867009	CHF 24.12	1 Varianten	Fahrrad-Rucksack
+gid://shopify/Product/15484419998081	CHF 19.31	1 Varianten	Rucksack «Alpaka» · Nylon
+gid://shopify/Product/15484420063617	CHF 33.65	1 Varianten	Grosse Sport- und Reisetasche
+gid://shopify/Product/15484420161921	CHF 90.02	1 Varianten	Rucksack aus Crazy Horse Leder für Herren
+gid://shopify/Product/15484420227457	CHF 37.24	1 Varianten	Grosser, wasserdichter Kühlrucksack
+gid://shopify/Product/15484420718977	CHF 63.26	1 Varianten	Lederrucksack für Alltag und Reisen
+gid://shopify/Product/15484421276033	CHF 61.61	1 Varianten	Business Travel Rucksack – 19 Zoll, wasserdicht
+gid://shopify/Product/15484421505409	CHF 17.29	1 Varianten	Multifunktionaler Wanderrucksack 18L
+gid://shopify/Product/15484421669249	CHF 47.64	1 Varianten	Multifunktionaler Business Rucksack
+gid://shopify/Product/15484421702017	CHF 38.81	1 Varianten	Business Rucksack für Pendler und Reisen
+gid://shopify/Product/15484421964161	CHF 40.10	1 Varianten	Multifunktionaler XXL Rucksack für Damen
+gid://shopify/Product/15484422324609	CHF 32.30	1 Varianten	Retro Schulterrucksack aus Echtleder
+gid://shopify/Product/15484422553985	CHF 40.64	1 Varianten	Baby-Kopfkissen für Neugeborene
+gid://shopify/Product/15484422619521	CHF 16.95	1 Varianten	Baby- und Kinderkissen mit Trennwand
+gid://shopify/Product/15484422685057	CHF 22.48	1 Varianten	Atmungsaktives Silikonkissen für Kinder
+gid://shopify/Product/15484422914433	CHF 35.52	1 Varianten	Baby-Kopfkissen mit Hirsekissen
+gid://shopify/Product/15484424454529	CHF 28.60	1 Varianten	Wolkenkissen für Nacken- und Wirbelsäulenstütze
+gid://shopify/Product/15484424520065	CHF 16.57	1 Varianten	Dekokissen mit Tiermuster oder geometrischem Desig
+gid://shopify/Product/15484424683905	CHF 50.92	1 Varianten	Baby Seitenkissen Beruhigendes Bonbon
+gid://shopify/Product/15484424847745	CHF 17.91	1 Varianten	Baby-Stillkissen mit Neigung
+gid://shopify/Product/15484424946049	CHF 25.80	1 Varianten	Baby-Rückenstützkissen Candy
+gid://shopify/Product/15484425077121	CHF 31.48	1 Varianten	Babykissen zur Kopfformkorrektur
+gid://shopify/Product/15484425240961	CHF 14.02	1 Varianten	Niedliches Seepferdchen-Kissen für Kinder
+gid://shopify/Product/15484425306497	CHF 20.53	1 Varianten	Tragbarer Blackout-Vorhang mit Saugnäpfen
+gid://shopify/Product/15484425437569	CHF 68.23	1 Varianten	Bettwäsche-Set aus Baumwolle, gestreift
+gid://shopify/Product/15484425535873	CHF 23.20	1 Varianten	Gewichtete Schlafmaske mit Ohrstöpseln
+gid://shopify/Product/15484425896321	CHF 63.01	1 Varianten	Gestreifte Baumwoll-Bettwäsche, vorgewaschen
+gid://shopify/Product/15484426322305	CHF 17.07	1 Varianten	Kuschelkissen Lamm, Welpe & Kätzchen
+gid://shopify/Product/15484426420609	CHF 14.53	1 Varianten	7-teiliges Plüsch-Welpenspielzeug-Set mit Sound
+gid://shopify/Product/15484426486145	CHF 14.19	1 Varianten	Smart Pet Anti-Bell-Gerät, wasserdicht
+gid://shopify/Product/15484426649985	CHF 14.09	1 Varianten	Hunde-Leine aus Vollleder mit Messing-Details
+gid://shopify/Product/15484427108737	CHF 23.99	1 Varianten	Nylon-Leine 2.5 cm breit
+gid://shopify/Product/15484427174273	CHF 15.89	1 Varianten	Hüftgurt-Hundeleine mit verstellbarem Gurt
+gid://shopify/Product/15484427305345	CHF 37.31	1 Varianten	Hundegeschirr & Leine mit Ausbruchschutz
+gid://shopify/Product/15484486091137	CHF 107.63	1 Varianten	Katzenvilla
+gid://shopify/Product/15484488155521	CHF 40.24	1 Varianten	Wandmontierte Katzenplattform aus Massivholz
+gid://shopify/Product/15484488221057	CHF 63.39	1 Varianten	Vier-Jahreszeiten Katzenbett aus Holz
+gid://shopify/Product/15484488384897	CHF 103.19	1 Varianten	Katzenbaum mit drehbarer Plattform
+gid://shopify/Product/15484488548737	CHF 86.21	1 Varianten	Halbgeschlossene Katzentoilette, abnehmbar
+gid://shopify/Product/15484489892225	CHF 11.96	1 Varianten	Hundeschwimmweste
+gid://shopify/Product/15484490187137	CHF 15.32	1 Varianten	Hunde-Brusttasche für Velo und Spaziergänge
+gid://shopify/Product/15484492677505	CHF 21.72	1 Varianten	Isolierende Pool-Abdeckung
+gid://shopify/Product/15484494741889	CHF 16.63	1 Varianten	Interaktives Katzen-Spielzeug, rotierend
+gid://shopify/Product/15484498280833	CHF 131.32	1 Varianten	Gas-Druckkochtopf aus Edelstahl
+gid://shopify/Product/15484498379137	CHF 31.89	1 Varianten	Schneidebrett aus Akazienholz
+gid://shopify/Product/15484498477441	CHF 49.37	1 Varianten	Schneidebrett aus Olivenholz
+gid://shopify/Product/15484498641281	CHF 39.97	1 Varianten	Isolierbecher 650 ml
+gid://shopify/Product/15484499853697	CHF 13.76	1 Varianten	All-Season Schlafmaske mit Glaskügelchen
+gid://shopify/Product/15484500181377	CHF 98.39	1 Varianten	Retro Wandregal aus Massivholz
+gid://shopify/Product/15484500246913	CHF 14.03	1 Varianten	Faltbarer Picknick- und Einkaufshelfer
+gid://shopify/Product/15484500443521	CHF 25.77	1 Varianten	Ovaler Eiskübel aus Zinnblech
+gid://shopify/Product/15484500509057	CHF 10.38	1 Varianten	Trinkblase für Outdoor-Aktivitäten
+gid://shopify/Product/15484500607361	CHF 16.68	1 Varianten	Kühl- und Picknicktasche 10L
+gid://shopify/Product/15484500640129	CHF 67.25	1 Varianten	Salatschleuder mit Gemüseschneider
+gid://shopify/Product/15484500738433	CHF 11.58	1 Varianten	Küchen-Ölfleckenreiniger
+gid://shopify/Product/15484521251201	CHF 28.30	1 Varianten	Velvet-Duschkabinen-Vorhang
+gid://shopify/Product/15484521644417	CHF 17.70	1 Varianten	Leder-Aufbewahrungsbox
+gid://shopify/Product/15484521677185	CHF 34.24	1 Varianten	Dunnschaum Matratze
+gid://shopify/Product/15484522365313	CHF 43.31	1 Varianten	Mehrlagige Musselindecke aus Baumwolle
+gid://shopify/Product/15484523118977	CHF 13.55	20 Varianten	Kinder-Sneakers mit Klettverschluss
+gid://shopify/Product/15484523250049	CHF 14.71	24 Varianten	Kinder-Halbsandalen mit Klettverschluss
+gid://shopify/Product/15484523774337	CHF 16.41	36 Varianten	Atmungsaktive Sandalen für Kinder im Korean-Style
+gid://shopify/Product/15484524102017	CHF 10.23	1 Varianten	Magnetische Handyhalterung für Sport & Golf
+gid://shopify/Product/15484525281665	CHF 13.39	1 Varianten	Universal Armlehnenpolster für Mittelkonsole
+gid://shopify/Product/15484580921729	CHF 14.37	18 Varianten	Bequeme Sandalen für Sommerkleider
+gid://shopify/Product/15484582625665	CHF 36.23	14 Varianten	Vintage Schnürschuhe für Herren
+gid://shopify/Product/15484587114881	CHF 10.05	1 Varianten	Halskette aus Titanstahl mit Muschel-Anhänger
+gid://shopify/Product/15484587671937	CHF 8.14	1 Varianten	Vielseitige Zirkon-Halskette für Damen
+gid://shopify/Product/15484588228993	CHF 7.04	1 Varianten	Blumenanhänger mit farbigen Edelsteinen
+gid://shopify/Product/15484591276417	CHF 12.48	5 Varianten	Elegantes, tailliertes Midi-Kleid mit kurzen Ärmel
+gid://shopify/Product/15484591669633	CHF 12.96	30 Varianten	Ärmelloses Midi-Kleid mit Patchwork-Design
+gid://shopify/Product/15484591997313	CHF 19.81	8 Varianten	Langes Kleid mit Schlitz und Cut-Out
+gid://shopify/Product/15484592521601	CHF 17.72	70 Varianten	Gemütliches Nachthemd mit Dreiviertelärmeln
+gid://shopify/Product/15484592947585	CHF 18.56	40 Varianten	Elegantes, hochgeschlossenes Plissee-Kleid
+gid://shopify/Product/15484593242497	CHF 16.40	15 Varianten	Midi-Kleid mit V-Ausschnitt und Blumenmuster
+gid://shopify/Product/15484593930625	CHF 9.33	7 Varianten	Elegante Morgenrobe aus Eisseide
+gid://shopify/Product/15484594454913	CHF 17.58	3 Varianten	Elegantes Strickkleid mit Spitze und Neckholder
+gid://shopify/Product/15484595175809	CHF 44.47	8 Varianten	Off-Shoulder Mesh Trägerloses Maxikleid
+gid://shopify/Product/15484595503489	CHF 15.18	4 Varianten	Figurbetontes A-Linien Kleid im Ethno-Stil
+gid://shopify/Product/15484595863937	CHF 24.13	7 Varianten	Langes A-Linien-Kleid mit Rundhals und Print
+gid://shopify/Product/15484597272961	CHF 21.55	28 Varianten	Herren Stretch Langarmshirt, schnelltrocknend
+gid://shopify/Product/15484597698945	CHF 14.46	18 Varianten	Mittelalterliches Performance-Hemd für Herren
+gid://shopify/Product/15484598026625	CHF 13.50	90 Varianten	Herren Langarmhemd aus Oxford-Baumwolle
+gid://shopify/Product/15484598452609	CHF 16.11	42 Varianten	Herren Bademantel aus Baumwolle für Herbst & Winte
+gid://shopify/Product/15484598813057	CHF 34.26	10 Varianten	Retro-Mantel mit Reissverschluss und Hahnentrittmu
+gid://shopify/Product/15484599173505	CHF 17.13	24 Varianten	Leichte Kapuzenjacke für Herren
+gid://shopify/Product/15484599501185	CHF 38.34	10 Varianten	Eleganter Langarm-Blazer mit Anzugkragen
+gid://shopify/Product/15484599796097	CHF 24.64	24 Varianten	Herren Strickjacke Korean Style
+gid://shopify/Product/15484600156545	CHF 23.07	5 Varianten	Nieten Weste für Herren
+gid://shopify/Product/15484600516993	CHF 19.62	18 Varianten	Herren Bikerweste aus Kunstleder
+gid://shopify/Product/15484600910209	CHF 21.26	72 Varianten	Herren Strick-Cardigan mit Schalkragen
+gid://shopify/Product/15484601336193	CHF 17.57	12 Varianten	Kühlende Outdoor- und Arbeitsweste mit Ventilator
+gid://shopify/Product/15484603105665	CHF 21.78	1 Varianten	Herren Business Umhängetasche
+gid://shopify/Product/15484603793793	CHF 57.15	1 Varianten	Schulter- und Umhängetasche aus Vollnarbenleder
+gid://shopify/Product/15484604187009	CHF 24.52	1 Varianten	Crossbody Freizeittasche mit viel Stauraum
+gid://shopify/Product/15484604612993	CHF 15.97	1 Varianten	Casual Tote Bag für Herren
+gid://shopify/Product/15484605006209	CHF 24.18	1 Varianten	Grosse Yoga Sport Umhängetasche
+gid://shopify/Product/15484605235585	CHF 38.80	1 Varianten	Crazy Horse Leder Umhängetasche für Herren
+gid://shopify/Product/15484605661569	CHF 20.67	1 Varianten	Taktische wasserdichte Beintasche für Herren
+gid://shopify/Product/15484606644609	CHF 43.11	1 Varianten	Multifunktionale Sport- & Freizeittasche
+gid://shopify/Product/15484607758721	CHF 55.67	1 Varianten	Hochwertige Crossbody Bag aus Rindsleder
+gid://shopify/Product/15484608250241	CHF 19.54	1 Varianten	Brust- und Hüfttasche aus Vollnarbenleder
+gid://shopify/Product/15484608676225	CHF 27.22	1 Varianten	Leder-Bauchtasche Vintage Hellbraun
+gid://shopify/Product/15484610281857	CHF 11.52	1 Varianten	Marokkanischer Kissenbezug mit Geometrie-Muster
+gid://shopify/Product/15484610838913	CHF 28.30	1 Varianten	Baby-Nestchen mit Anti-Druck-Matratze
+gid://shopify/Product/15484611199361	CHF 43.97	1 Varianten	Musselin Baumwolldecke mit Pflanzenmuster
+gid://shopify/Product/15484611625345	CHF 8.46	1 Varianten	Waffelpiqué-Kissenbezug mit Rüschen
+gid://shopify/Product/15484611985793	CHF 30.98	1 Varianten	Wolkenkissen für Nackenstütze und besseren Schlaf
+gid://shopify/Product/15484612379009	CHF 20.47	1 Varianten	Satin-Look Spannbettlaken aus Eisseide
+gid://shopify/Product/15484612772225	CHF 95.02	1 Varianten	Kuschelige, wärmende Decke
+gid://shopify/Product/15484613132673	CHF 10.07	1 Varianten	Multifunktionaler Waffelstrick-Stillponcho
+gid://shopify/Product/15484613558657	CHF 20.92	1 Varianten	Mikrofaser Badetuch, ultrafein & saugfähig
+gid://shopify/Product/15484625158529	CHF 94.50	1 Varianten	Faltbarer Regiestuhl aus Aluminium
+gid://shopify/Product/15484626141569	CHF 10.04	1 Varianten	Rosenbox mit Drehfunktion
+gid://shopify/Product/15484626600321	CHF 93.84	1 Varianten	E-Gitarre mit 24 Bünden und Flammen-Design

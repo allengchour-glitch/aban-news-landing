@@ -27,7 +27,7 @@ Website ersetzen durch:
 (Live geprüft 23.09. 18:50 UTC: Seite zeigt Damenuhr, Futterspender, EMS-Massagegerät, Solar-Lautsprecher, Gua-Sha-Set,
 Aroma-Diffuser.) Der Profil-Link ist per API nicht setzbar.
 
-**L — Meta-Datenzugang erneuern, spätestens 04.10.:** `debug_token` sagt: der Zugang des Seiten-Tokens endet am
+**~~L — Meta-Datenzugang erneuern~~ ✅ ENTFÄLLT (27.09., Betreiber «meta brauch nicht habe ja metricool»; der Autopilot schaltet bei Ablauf auf Metricool um).** Alt: `debug_token` sagt: der Zugang des Seiten-Tokens endet am
 **05.10.2026 18:50 UTC**. Danach posten Instagram/Facebook nichts mehr (TikTok/YouTube/Pinterest über Metricool laufen
 weiter). Graph-Explorer → App «1680844973132194» → Seiten-Token neu erzeugen → im Chat geben. Die Ampel zählt die Tage.
 
@@ -81,7 +81,7 @@ auf GitHub direkt in `main` löschen** (1 Klick, kein Force-Push). Messung danac
 zwei Zweige, auf die der Hetzner-Agent pusht bzw. die der Deploy-Poller alle 3 Min hart zurücksetzt. Ohne dein Ja bleibt es
 beim Live-Entfernen.
 
-**D · Meta-Datenzugang endet 05.10.2026 18:50 UTC (22.09. gemessen: `data_access_expires_at`).** Der Seiten-Token selbst
+**~~D~~ ✅ ENTFÄLLT 27.09. (Metricool übernimmt IG/FB) · Meta-Datenzugang endet 05.10.2026 18:50 UTC (22.09. gemessen: `data_access_expires_at`).** Der Seiten-Token selbst
 läuft nicht ab, aber der Datenzugang schon — vorher in Meta Business (Graph-Explorer / App 1680844973132194) erneuern und mir
 den neuen Token im Chat geben, sonst stehen IG- und FB-Poster ab dem 05.10. still. Erinnerung ist als Routine gesetzt.
 

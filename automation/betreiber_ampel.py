@@ -584,9 +584,12 @@ def social_meta_live():
         ende = d.get("data_access_expires_at") or 0
         if ende:
             tage = (ende - jetzt.timestamp()) / 86400
-            if tage < 14:
+            # 27.09.2026 Betreiber: «meta brauch nicht habe ja metricool» — Zugang wird NICHT erneuert; der Autopilot
+            # schaltet bei Ablauf auf Metricool um (Bild, Reel, Karussell). Gerufen wird nur, wenn Metricool fehlt.
+            mc = os.environ.get("METRICOOL_USER_TOKEN") or os.path.exists("/tmp/metricool.env")
+            if tage < 14 and not mc:
                 teile.append(f"{'⛔' if tage < 3 else '⚠️'} META-DATENZUGANG endet in {tage:.0f} Tagen "
-                             f"({datetime.datetime.utcfromtimestamp(ende):%d.%m. %H:%M} UTC) — Betreiber erneuert im Graph-Explorer")
+                             f"({datetime.datetime.utcfromtimestamp(ende):%d.%m. %H:%M} UTC) und Metricool-Zugang fehlt")
     except Exception as e:
         teile.append(f"IG: unklar ({type(e).__name__})")
     try:

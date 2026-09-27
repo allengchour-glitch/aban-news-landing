@@ -1,6 +1,6 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 26.09.2026 04:28 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 27.09.2026 20:08 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher

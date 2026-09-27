@@ -73,10 +73,39 @@ while true; do
       echo "$(date -u +%H:%M)    → neues Nutzer-Token nötig; Instagram/Facebook pausieren, Metricool-Kanäle laufen weiter."
       META_OK=0
     else
-      echo "gueltig $(date -u +%FT%TZ)" > /tmp/meta_token_status
+      # 27.09.2026 (Betreiber «meta brauch nicht habe ja metricool»): der Datenzugang endet 05.10. und wird nicht erneuert.
+      # Danach antwortet /me evtl. weiter ohne Fehler, Posten scheitert aber → ab Ablauf gilt Meta als aus, Metricool uebernimmt.
+      ENDE=$(curl -s --max-time 20 "https://graph.facebook.com/v21.0/debug_token?input_token=$TOKEN&access_token=$TOKEN" \
+        | python3 -c "import sys,json;print(int((json.load(sys.stdin).get('data') or {}).get('data_access_expires_at') or 0))" 2>/dev/null || echo 0)
+      if [ "${ENDE:-0}" -gt 0 ] && [ "$ENDE" -le "$(date +%s)" ]; then
+        echo "datenzugang-abgelaufen" > /tmp/meta_token_status
+        META_OK=0
+      else
+        echo "gueltig $(date -u +%FT%TZ)" > /tmp/meta_token_status
+      fi
     fi
   fi
 
+  # 27.09.2026: Nachschub braucht nur den Shop-Token, nicht Meta — vor die Weiche gezogen, damit die Bild-Queue
+  # auch auf dem Metricool-Weg Stoff bekommt.
+  # NACHSCHUB (22.09.): Bild-Queue aus neuen Produkten (nie gepostet), damit «mehrmals taeglich» Stoff hat
+  if faellig "$MARKE_NACHSCHUB" "$NACHSCHUB_ABSTAND"; then
+    READY=$(awk -F',' 'NR>1 && $0 ~ /,ready,/' social/posts_image.csv | wc -l)
+    if [ "$READY" -lt 12 ]; then
+      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" QUEUE_MAX=6 $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Nachschub fehlgeschlagen"
+    fi
+    touch "$MARKE_NACHSCHUB"
+  fi
+  # 25.09.2026 «herbstsachen auf sozial pushen»: Saison-Nachschub unabhaengig vom Gesamtvorrat — liegen weniger als 4
+  # wartende Bild-Posts mit Vorrang-Handle (dropship/_social_vorrang.txt) in der Queue, werden bis 4 Herbstartikel eingereiht.
+  # Der Poster zieht sie vor (post_guard.nachVorrang); die Kadenz (BILD_ABSTAND) bleibt dieselbe.
+  if [ -s dropship/_social_vorrang.txt ] && faellig "$MARKE_NACHSCHUB.saison" "$NACHSCHUB_ABSTAND"; then
+    VR=$(python3 -c "import csv;h={l.split('\t')[0] for l in open('dropship/_social_vorrang.txt') if l.strip()};print(sum(1 for r in csv.DictReader(open('social/posts_image.csv',encoding='utf-8')) if r.get('status')=='ready' and ((r.get('id') or '') in h or any('/products/'+x in (r.get('caption') or '') for x in h))))" 2>/dev/null || echo 99)
+    if [ "$VR" -lt 4 ]; then
+      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" VORRANG_TAG=herbst-2026 QUEUE_MAX=$((4 - VR)) $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Saison-Nachschub fehlgeschlagen"
+    fi
+    touch "$MARKE_NACHSCHUB.saison"
+  fi
   if [ "$META_OK" = 1 ]; then
     export IG_USER_ID="$(cat /tmp/meta_ig_id 2>/dev/null)"
     export FB_PAGE_ID="${FB_PAGE_ID:-1049840534888592}"
@@ -88,24 +117,6 @@ while true; do
     # LERNEN (22.09.): Zahlen der letzten Posts lesen → social/_lernen.json (Hook-/Themen-Gewichte) + Bericht
     if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
       $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
-    fi
-    # NACHSCHUB (22.09.): Bild-Queue aus neuen Produkten (nie gepostet), damit «mehrmals taeglich» Stoff hat
-    if faellig "$MARKE_NACHSCHUB" "$NACHSCHUB_ABSTAND"; then
-      READY=$(awk -F',' 'NR>1 && $0 ~ /,ready,/' social/posts_image.csv | wc -l)
-      if [ "$READY" -lt 12 ]; then
-        SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" QUEUE_MAX=6 $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Nachschub fehlgeschlagen"
-      fi
-      touch "$MARKE_NACHSCHUB"
-    fi
-    # 25.09.2026 «herbstsachen auf sozial pushen»: Saison-Nachschub unabhaengig vom Gesamtvorrat — liegen weniger als 4
-    # wartende Bild-Posts mit Vorrang-Handle (dropship/_social_vorrang.txt) in der Queue, werden bis 4 Herbstartikel eingereiht.
-    # Der Poster zieht sie vor (post_guard.nachVorrang); die Kadenz (BILD_ABSTAND) bleibt dieselbe.
-    if [ -s dropship/_social_vorrang.txt ] && faellig "$MARKE_NACHSCHUB.saison" "$NACHSCHUB_ABSTAND"; then
-      VR=$(python3 -c "import csv;h={l.split('\t')[0] for l in open('dropship/_social_vorrang.txt') if l.strip()};print(sum(1 for r in csv.DictReader(open('social/posts_image.csv',encoding='utf-8')) if r.get('status')=='ready' and ((r.get('id') or '') in h or any('/products/'+x in (r.get('caption') or '') for x in h))))" 2>/dev/null || echo 99)
-      if [ "$VR" -lt 4 ]; then
-        SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" VORRANG_TAG=herbst-2026 QUEUE_MAX=$((4 - VR)) $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Saison-Nachschub fehlgeschlagen"
-      fi
-      touch "$MARKE_NACHSCHUB.saison"
     fi
     if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
       echo "$(date -u +%H:%M) Bildpost fällig"
@@ -139,13 +150,26 @@ while true; do
   else
     # 27.09.2026 (Betreiber «metricool push über sozial»): ohne Meta-Token lag Instagram/Facebook 37 h still, obwohl beide
     # in Metricool verbunden sind. Dann plant Metricool das Reel auf IG + FB — gleiche Marke, gleicher Abstand (8 h),
-    # gleiche Wachen (Lock, Ledger, kaufbar, Preis). Bildposts/Karussell haben noch keinen Metricool-Weg.
+    # gleiche Wachen (Lock, Ledger, kaufbar, Preis).
     if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
       echo "$(date -u +%H:%M) Reel faellig (Metricool, Instagram + Facebook — Meta-Token fehlt)"
       NETZ=instagram $NODE automation/metricool_tiktok_post.mjs; RC=$?
       if [ "$RC" = 0 ]; then touch "$MARKE_REEL"
       elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) Reel (Metricool): Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
       else echo "$(date -u +%H:%M) Reel (Metricool) fehlgeschlagen (Exit $RC, Marke bleibt alt)"; fi
+    fi
+    # 27.09.2026: Bildpost + Karussell ebenfalls ueber Metricool (gleiche Poster, gleiche Wachen, Weg per WEG=metricool).
+    if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; }; then
+      if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
+        echo "$(date -u +%H:%M) Bildpost faellig (Metricool, Instagram + Facebook)"
+        if WEG=metricool MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then touch "$MARKE_BILD"
+        else echo "$(date -u +%H:%M) Bildpost (Metricool) fehlgeschlagen (Marke bleibt alt)"; fi
+      fi
+      if faellig "$MARKE_KARUSSELL" "$KARUSSELL_ABSTAND"; then
+        echo "$(date -u +%H:%M) Karussell faellig (Metricool, Instagram + Facebook)"
+        if WEG=metricool $NODE automation/ig_karussell_post.mjs; then touch "$MARKE_KARUSSELL"
+        else echo "$(date -u +%H:%M) Karussell (Metricool) fehlgeschlagen (Marke bleibt alt)"; fi
+      fi
     fi
   fi   # META_OK
 
