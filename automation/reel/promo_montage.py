@@ -582,6 +582,15 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
                 sp, cx, cy, rot = fan[j]
                 dx = (-1 if rot < 0 else 1 if rot > 0 else 0) * 26 * ease(u)
                 dy = -14 * math.sin(math.pi * u) - (10 * ease(u) if rot == 0 else 0)
+                # 27.09.2026 (Meisterwerk-Tor: HOOK 0.98 < 3 — stehende Karten in der ersten Sekunde): Karten fliegen
+                # auf den Beat herein (links, rechts, unten; je ~0.35 s versetzt). Erst danach der ruhige Schwebe-Drift.
+                if var.get("intro_flug", True):
+                    rein = ease((t + 0.22 - j * 0.35) / 0.3)   # erste Karte ab Bild 0 sichtbar (Vorschaubild zeigt ein Produkt)
+                    if rein <= 0:
+                        continue
+                    weg = 1 - rein
+                    dx += (-1000 if j == 0 else 1000 if j == 1 else 0) * weg
+                    dy += (1100 if j == 2 else 0) * weg
                 ov_alpha(img, sp, int(cx + dx - sp.width / 2), int(cy + dy - sp.height / 2))
             img.alpha_composite(intro); img.alpha_composite(kopf0, (0, ov.KOPF_Y))
             laub.zeichne(img, t, True)

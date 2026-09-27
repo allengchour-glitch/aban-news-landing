@@ -54,6 +54,15 @@ def kurzname(titel, maxlen=34):
         if len(" ".join(out + [x])) > maxlen:
             break
         out.append(x)
+    # 27.09.: gekürzter Titel → vor dem letzten Füllwort enden («Martin Ankle Boots im britischen» → «Martin Ankle Boots»)
+    fuell = re.compile(r"(?i)^(mit|aus|im|in|für|fur|und|von|zum|zur|am|an|auf|ohne)$")
+    if len(out) < len(w):
+        idx = [k for k, x in enumerate(out) if fuell.match(x)]
+        if idx and idx[-1] >= 1:
+            out = out[:idx[-1]]
+    # 27.09.: nie mit einem Füllwort enden («USB-Heizkissen mit», «Kapuzen-Sweatshirt aus» — erstes Render)
+    while out and re.fullmatch(r"(?i)mit|aus|im|in|für|fur|und|von|zum|zur|der|die|das|den|dem|am|an|auf|ohne|&|–|-|„[^“]*", out[-1]):
+        out.pop()
     return " ".join(out) or w[0][:maxlen]
 
 
