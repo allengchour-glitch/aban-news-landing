@@ -1096,6 +1096,20 @@ while true; do
   # vollstreckt, ist keine Sicherung — diese Zeile vollstreckt es taeglich.
   # FIX=1 ist hier richtig: die Ware kann nicht ausgeliefert werden, jeder Tag im
   # Verkauf ist eine Geisterbestellung in Wartestellung. Gedraftet wird, nie geloescht.
+  # 27.09.2026 (#1019): Beworbene CJ-Ware täglich auf «bei CJ ausgelistet» nachprüfen. cj_verfuegbarkeit.py prüft jedes
+  # Produkt nur EINMAL — der Halloween-Schaukelgeist war beim Import lieferbar, wurde später ausgelistet und am 27.09.
+  # verkauft. Ausgelistet → DRAFT + cj-entfernt (tagsAdd). Braucht /tmp/_cjtok (Keepalive schreibt es); ohne Token
+  # Exit 2 «KEIN Urteil» statt «0 ausgelistet».
+  CAW=/tmp/cj_ausgelistet_sichtbar.log
+  if [ -f "$REPO/automation/cj_ausgelistet_sichtbar.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$CAW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CAW"; then
+      touch "$CAW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_cj_ausgelistet.lock; flock -n 9 || exit 0; exec >> \"$CAW\" 2>&1; \
+           exec python3 automation/cj_ausgelistet_sichtbar.py" 9>&- & )
+    fi
+  fi
   KLW=/tmp/klinge_ch_wache.log
   if [ -f "$REPO/automation/klinge_ch_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KLW" 2>/dev/null || echo 0) ))
@@ -1805,7 +1819,7 @@ JSON
       # waere weg (der Lauf finge von vorn an) und die mtime waere frisch (12-Stunden-Tor).
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_cj_specs_backfill.lock; flock -n 9 || exit 0; exec > \"$SB\" 2>&1; \
-           LIMIT=30 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" 9>&- & )
+           LIMIT=400 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" 9>&- & )   # 27.09.: 30 → 400 (Prio-Liste um 45k erweitert, Betreiber «push die infos von cj auch in shop»)
       echo "$(date -u +%H:%M) cj_specs_backfill gestartet ($SB_OFFEN offen)"
     fi
   fi

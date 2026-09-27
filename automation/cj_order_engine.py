@@ -132,6 +132,9 @@ FARBE_EN = {"schwarz":"black","weiss":"white","rot":"red","blau":"blue","gruen":
             "silber":"silver","marineblau":"navy","tuerkis":"turquoise","weinrot":"wine"}
 
 
+AUSGELISTET = "⛔ bei CJ AUSGELISTET (1602002) — nicht lieferbar: Ersatz (z. B. Fortura) oder Rückerstattung, Produkt → DRAFT"
+
+
 def vid_fuer(sku, variant_title):
     """Shopify-SKU + gewaehlte Variante -> passende CJ-Varianten-ID.
 
@@ -156,6 +159,8 @@ def vid_fuer(sku, variant_title):
         if not re.fullmatch(r'[A-Za-z0-9._ -]{6,40}', vsku):
             return None, f"SKU «{s}» passt zu keinem CJ-Schema"
         d = cj(f"/api2.0/v1/product/query?variantSku={urllib.parse.quote(vsku)}")
+        if str(d.get("code")) == "1602002":
+            return None, AUSGELISTET
         data = d.get("data")
         vs = (data or {}).get("variants") or [] if isinstance(data, dict) else []
         if not vs:
@@ -166,6 +171,11 @@ def vid_fuer(sku, variant_title):
         return None, f"variantSku «{vsku}» nicht eindeutig ({len(exakt)} Treffer)"
 
     # Form (a): numerische pid
+    # 27.09.2026 (#1019): variant/query liefert auch für AUSGELISTETE Produkte noch Varianten — LX1019 wurde angelegt,
+    # CJ lehnte erst beim Übergeben ab («Produkt entfernt»). Deshalb zuerst product/query: 1602002 = ausgelistet.
+    chk = cj(f"/api2.0/v1/product/query?pid={m.group(1)}")
+    if str(chk.get("code")) == "1602002":
+        return None, AUSGELISTET
     d = cj(f"/api2.0/v1/product/variant/query?pid={m.group(1)}")
     vs = d.get("data") or []
     if not vs:
