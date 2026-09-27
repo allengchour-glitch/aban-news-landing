@@ -36707,3 +36707,9 @@ gid://shopify/Product/15492128145793	CHF 18.96	12 Varianten	Mary Jane Pumps mit 
 gid://shopify/Product/15492128178561	CHF 17.81	30 Varianten	Bestickte Mesh Flats mit eckiger Zehenpartie
 gid://shopify/Product/15492128211329	CHF 21.95	18 Varianten	Retro Pumps mit moderatem Absatz
 gid://shopify/Product/15492128276865	CHF 24.81	9 Varianten	Warme sportliche Schuhe für Herbst und Winter
+gid://shopify/Product/15492128309633	CHF 15.04	27 Varianten	Herren Vintage Slide Sandalen
+gid://shopify/Product/15492128571777	CHF 6.83	1 Varianten	Bohemian Halskette mit Holzperlen
+gid://shopify/Product/15492128899457	CHF 23.11	4 Varianten	Trägerloses Spitzen-Maxikleid
+gid://shopify/Product/15492128932225	CHF 17.03	8 Varianten	Trägerloses Satin-Minikleid mit Blumenmuster
+gid://shopify/Product/15492128964993	CHF 20.10	4 Varianten	Elegantes Satin-Kleid mit langen Ärmeln
+gid://shopify/Product/15492128997761	CHF 21.62	8 Varianten	Pailletten Bandeau-Kleid, figurbetont
