@@ -379,15 +379,20 @@ def ov_alpha(dst, src, x, y):
 
 
 def kenburns(src, groesse, u, richtung, punch=0.0, fokus_y=0.42):
-    """Quadratischer Ausschnitt mit weichem Zoom/Pan (Sub-Pixel). u in [0,1], punch = kurzer Zoom-Stoss am Schnitt."""
+    """Ausschnitt mit weichem Zoom/Pan (Sub-Pixel). u in [0,1], punch = kurzer Zoom-Stoss am Schnitt.
+    groesse = Seitenlänge (quadratisch) oder (breite, hoehe) — 28.09.: Karte 1000×865 statt 780² (Betreiber «bilder zu klein»)."""
+    gw, gh = (groesse, groesse) if isinstance(groesse, int) else groesse
     sw, sh = src.size
     seite = min(sw, sh)
     z = 1.0 + 0.075 * (u if richtung % 2 == 0 else 1 - u) + punch
-    c = seite / z
+    c = seite / z                       # Breite des Ausschnitts
+    ch = c * gh / gw                    # Höhe (bei breiter Karte etwas flacher)
+    if ch > sh:
+        ch = sh / z; c = ch * gw / gh
     cx = sw / 2 + (0.03 * seite * (u - 0.5) * (1 if richtung % 3 else -1))
     cy = (sh / 2 if sh <= sw else sh * fokus_y + (seite / 2) * (1 - 2 * fokus_y)) + 0.02 * seite * (u - 0.5)
-    cx = min(max(cx, c / 2), sw - c / 2); cy = min(max(cy, c / 2), sh - c / 2)
-    return src.transform((groesse, groesse), Image.EXTENT, (cx - c / 2, cy - c / 2, cx + c / 2, cy + c / 2), resample=Image.BICUBIC)
+    cx = min(max(cx, c / 2), sw - c / 2); cy = min(max(cy, ch / 2), sh - ch / 2)
+    return src.transform((gw, gh), Image.EXTENT, (cx - c / 2, cy - ch / 2, cx + c / 2, cy + ch / 2), resample=Image.BICUBIC)
 
 
 def font(p, s):
@@ -399,10 +404,13 @@ def text_breite(d, s, f):
 
 
 # ---------------------------------------------------------------- Szenen-Ebenen (einmal gerendert)
-KARTE = 780
-# 25.09.: Kopfleiste jetzt ov.KOPF_Y 250-380 (IG-Profilraster 3:4) → Karte 395..1175, Fussfeld 1180..1440
-KX, KY = (W - KARTE) // 2, 395
-FUSS_Y = 1180
+# 25.09.: Kopfleiste jetzt ov.KOPF_Y 250-380 (IG-Profilraster 3:4).
+# 28.09. (Betreiber «bilder zentraler? mehr fläche? sonst zu klein?»): Karte 780×780 → 1000×865 (+42 % Fläche),
+# Fussfeld kompakter 1268..1440 — sichere Zone (200..1440) bleibt, darunter liegt die App-Beschriftung.
+KARTE_B, KARTE_H = 1000, 865
+KARTE = KARTE_B
+KX, KY = (W - KARTE_B) // 2, 395
+FUSS_Y = 1268
 
 
 def kopfleiste(n=None, gesamt=None):
@@ -432,12 +440,15 @@ def fussfeld(p):
     d.rectangle((0, 0, W, im.height), fill=(18, 12, 8, 175))
     d.rectangle((ov.CX_FUSS - 100, 14, ov.CX_FUSS + 100, 18), fill=GOLD + (255,))
     fT = font(ov.F_BOLD, 46)
-    zeilen = ov.wrap(d, p["name"], fT, 800, 2)
-    y = 30 if len(zeilen) == 2 else 52
+    zeilen = ov.wrap(d, p["name"], fT, 900, 1)
+    if ov.wrap(d, p["name"], fT, 900, 2) != zeilen:        # passt nicht in eine Zeile → kleiner, zwei Zeilen
+        fT = font(ov.F_BOLD, 38); zeilen = ov.wrap(d, p["name"], fT, 900, 2)
+    zh = 46 if len(zeilen) == 2 else 56
+    y = 26 if len(zeilen) == 2 else 32
     for z in zeilen:
-        ov.text_cx(d, ov.CX_FUSS, y, z, fT, (255, 255, 255, 255)); y += 56
-    fP = font(ov.F_BOLD, 68)
-    ov.text_cx(d, ov.CX_FUSS, y + 6, p["preis"], fP, GOLD + (255,))
+        ov.text_cx(d, ov.CX_FUSS, y, z, fT, (255, 255, 255, 255)); y += zh
+    fP = font(ov.F_BOLD, 64 if len(zeilen) == 2 else 68)
+    ov.text_cx(d, ov.CX_FUSS, y + 2, p["preis"], fP, GOLD + (255,))
     return im, zeilen
 
 
@@ -550,10 +561,10 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
     quellen = [[bild(u) for u in p["bild_urls"]] for p in produkte]
     grund = verlauf()
     bgs = [hintergrund(grund, q[0]) for q in quellen]
-    maske = runde_maske(KARTE, KARTE, 34)
-    sch, pad = schatten(KARTE, KARTE, 34)
-    rahmen = Image.new("RGBA", (KARTE, KARTE), (0, 0, 0, 0))
-    ImageDraw.Draw(rahmen).rounded_rectangle((1, 1, KARTE - 2, KARTE - 2), radius=34, outline=GOLD + (200,), width=3)
+    maske = runde_maske(KARTE_B, KARTE_H, 34)
+    sch, pad = schatten(KARTE_B, KARTE_H, 34)
+    rahmen = Image.new("RGBA", (KARTE_B, KARTE_H), (0, 0, 0, 0))
+    ImageDraw.Draw(rahmen).rounded_rectangle((1, 1, KARTE_B - 2, KARTE_H - 2), radius=34, outline=GOLD + (200,), width=3)
     koepfe = [kopfleiste(i + 1, len(produkte)) for i in range(len(produkte))]
     kopf0 = kopfleiste()
     fuesse = []
@@ -592,11 +603,11 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
                     dx += (-1000 if j == 0 else 1000 if j == 1 else 0) * weg
                     dy += (1100 if j == 2 else 0) * weg
                 ov_alpha(img, sp, int(cx + dx - sp.width / 2), int(cy + dy - sp.height / 2))
+            laub.zeichne(img, t, True)   # 28.09.: Blätter unter den Text (nie über Hook/Preis)
             img.alpha_composite(intro); img.alpha_composite(kopf0, (0, ov.KOPF_Y))
-            laub.zeichne(img, t, True)
             return img
         if typ == "outro":
-            img = grund.copy(); laub.zeichne(img, t, False)
+            img = grund.copy(); laub.zeichne(img, t, False); laub.zeichne(img, t, True)   # 28.09.: Blätter unter den Text
             dt = t - t0
             for i, (y, z) in enumerate(oz):
                 st = ease((dt - i * 0.09) / 0.22)
@@ -613,7 +624,6 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
                         kk.putalpha(k.split()[3].point(lambda v, s=st: int(v * s)))
                     ov_alpha(img, kk, x, int(y + 40 * (1 - st)))
             img.alpha_composite(kopf0, (0, ov.KOPF_Y))
-            laub.zeichne(img, t, True)
             return img
         k = info["k"]; wechsel = info["bildwechsel"]
         bi = max(i for i, x in enumerate(wechsel) if x <= t + 1e-6)
@@ -622,14 +632,15 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
         u = (t - b0) / max(0.01, b1 - b0)
         dts = t - b0
         punch = 0.06 * (1 - ease(dts / 0.22)) if dts < 0.22 else 0.0
-        karte = kenburns(quellen[k][bi], KARTE, u, k * 2 + bi, punch).convert("RGBA")
+        karte = kenburns(quellen[k][bi], (KARTE_B, KARTE_H), u, k * 2 + bi, punch).convert("RGBA")
         karte.putalpha(maske); karte.alpha_composite(rahmen)
         img.alpha_composite(sch, (KX - pad, KY - pad)); img.alpha_composite(karte, (KX, KY))
+        # 28.09.: vordere Blätter VOR Kopf- und Fussfeld zeichnen — vorher flog ein Blatt über den Preis («CHF 44.¤0»).
+        laub.zeichne(img, t, True)
         img.alpha_composite(koepfe[k], (0, ov.KOPF_Y))
         stufe = fuesse[k][min(len(fuesse[k]) - 1, int((t - t0) * FPS))]
         yoff = int(22 * (1 - ease((t - t0) / 0.23)))
         ov_alpha(img, stufe, 0, FUSS_Y + yoff)
-        laub.zeichne(img, t, True)
         return img
 
     manifest = {"v": 1, "variante": var_name, "erstellt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

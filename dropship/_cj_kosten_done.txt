@@ -36809,3 +36809,6 @@ gid://shopify/Product/15492264821121	CHF 19.28	35 Varianten	Distressed Jeans fü
 gid://shopify/Product/15492264853889	CHF 21.16	14 Varianten	Herren American-Style Gradient Jeans
 gid://shopify/Product/15492266262913	CHF 8.75	1 Varianten	Tauchgurt mit Schnallen-Gewichtstasche
 gid://shopify/Product/15492266393985	CHF 17.72	1 Varianten	Lordosenstützkissen für erholsamen Schlaf
+gid://shopify/Product/15492283728257	CHF 25.89	1 Varianten	Versteckte Leckerlis
+gid://shopify/Product/15492283761025	CHF 18.98	1 Varianten	Kauspielzeug
+gid://shopify/Product/15492283793793	CHF 8.62	1 Varianten	Saugtier Spielzeug
