@@ -26,10 +26,10 @@ NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
 REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
 KARUSSELL_ABSTAND=${KARUSSELL_ABSTAND:-86400}   # 23.09.: 1 Instagram-Karussell je Tag (Betreiber «insta karusell brauchen»), FB-Album dazu
-TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-43200}   # 12 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
+TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-28800}   # 8 h (27.09.2026, Betreiber «du bist metricool master … analysiert was am besten ist»: TikTok Median 272 Aufrufe/Post = bester Kanal; vorher 12 h)
 # 23.09.2026 «metricool maximal nutzen»: YouTube Shorts und Pinterest ueber denselben Metricool-Zugang.
 YOUTUBE_ABSTAND=${YOUTUBE_ABSTAND:-43200} # 12 h zwischen zwei YouTube Shorts (eigenes Reel je Post, Bestzeit-Planung)
-PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-21600}  # 6 h zwischen zwei Produkt-Pins (Direktlink aufs Produkt, UTM)
+PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-86400}  # 24 h (27.09.2026: 44 Pins in 30 T = 55 Impressionen, 0 Klicks, 0 Merken → 1/Tag als Drossel-Test; vorher 6 h)
 MARKE_YOUTUBE=/tmp/_autopilot_letztes_youtube
 MARKE_PINTEREST=/tmp/_autopilot_letzter_pin
 LERN_ABSTAND=${LERN_ABSTAND:-21600}       # alle 6 h: Instagram-Zahlen lesen, Gewichte fuer Hooks/Themen schreiben

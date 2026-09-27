@@ -34,6 +34,8 @@ REPO=$(dirname "$REPO_AUTO")   # 23.09.: Zeile 454 nutzte $REPO, ohne dass es je
 # der Symlink zeigte ins Leere und die TikTok-Werkzeuge standen still. Beide werden deshalb
 # bei Bedarf NEU INSTALLIERT, nicht nur verlinkt.
 python3 -c "import PIL" 2>/dev/null || pip install -q pillow >/dev/null 2>&1
+# 27.09.2026: numpy fehlte im frischen Container — schnitt.py (Reel-Schnitt) und meisterwerk_tor.py (Qualitaetstor vor jedem Post) brauchen es.
+python3 -c "import numpy" 2>/dev/null || pip install -q numpy >/dev/null 2>&1
 # ⚠️ 17.09.: Derselbe Fall eine Etage tiefer. `hauptbild_ohne_text.py` liest Text AUS Bildern
 # (bildtext_pruefen -> pytesseract -> /usr/bin/tesseract). Beides fehlte, und der Waechter
 # ist deshalb **1230 Mal hintereinander** mit ModuleNotFoundError gestorben, ohne dass es

@@ -949,6 +949,17 @@ Lehre: **Wer Preise ändert, macht jede Stelle ungültig, die den Preis eingebra
 
 **Nachtrag 82 (25.09.2026, 09:10 UTC — Motiv-Wahl ohne Auswahl):** Aus der Teetasse (Bild 4 Tassen, geliefert 1, «Blumen- oder Pfingstrosenmotiv» bei einer Variante) gemessen: 43 Roh-Treffer in 30'190 Ein-Varianten-Produkten; der Wahlversprechen-Wächter kannte Motiv-Alternativen nicht. Signal ist die elidierte Vorsilbe («Dinosaurier- oder Enten-Design»): 21 Treffer, 17 echt. Muster erweitert, Kanarienvögel ausgeschlossen, 16 Texte bereinigt, 1 Titel. **Falle:** ein Ad-hoc-Lauf mit kleiner LISTE schrieb den Gesamtbericht neu (2'396 Zeilen weg) — ein Werkzeug mit festem Berichtspfad darf man nicht für Ausschnitte benutzen, ohne den Pfad umzulenken → `BERICHT=`-Umgebung. Bericht `dropship/MOTIV-WAHL-2026-09-25.md`.
 
+### Nachtrag 99 (27.09.2026, 20:10 UTC) — 🏆 «jeder Post ein Meisterwerk» + tokenlose Storefront API (von der App-Session gelernt)
+
+**Gemessen:** Metricool 30 T — TikTok Median 272, YouTube 91, IG 17, FB 1–2, Pinterest 0 (44 Pins, 0 Klicks); TikTok Ø 1,8 s von 11 s angesehen.
+`meisterwerk_tor.py` (Bewegung 1. Sekunde, Standbild-Anteil, Format, Dauer, LUFS): 3/11 wartende und 8/14 gepostete Reels mit
+stehendem Einstieg. Die zwei für heute geplanten fielen durch; Sichtprüfung des IG-Reels: Diashow **mit Bildpreis CHF 4.90 bei Live 15.90**.
+**Getan:** beide aus Metricool gelöscht, Tor in beide Reel-Poster, 5 Reels gesperrt; Kadenz TikTok 8 h / Pinterest 24 h (delegiert);
+11 fremde Metricool-Entwürfe gelöscht (Auftrag); numpy in die Selbstheilung; Kaufbar-Prüfung über die **Storefront API ohne Token**
+(`au3j0y-hq.myshopify.com/api/2025-07/graphql.json`, availableForSale + Preise, frisch vom Ursprung) — aus `apps/luxestyle-android` der Play-Store-Session.
+**Lehren:** (1) Ein Preis-Wächter, der nur die Caption liest, übersieht den eingebrannten Bildpreis. (2) Fremde Sessions lösen
+Probleme, die man selbst noch als «Token fehlt» führt — vor dem Warten auf Zugänge deren Code nach öffentlichen Wegen durchsuchen.
+
 ### Nachtrag 98 (27.09.2026, 19:35 UTC) — 🔑 «1 ist doch? und metricool? fortuna ftp auch»: vorhandene Zugänge wurden nicht genutzt
 
 **Gemessen (nur Namen, nie Werte):** in der Umgebung stehen `METRICOOL_*`, `FORTURA_FTP_USER/_PW`, `AZURE_SPEECH_KEY` — aber NICHT
