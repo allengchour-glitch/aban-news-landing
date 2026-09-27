@@ -1,26 +1,21 @@
 # TikTok posten — Auftrag für Cowork
 
-> ### ℹ️ Posten ist frei — ein Rest bleibt offen
+> # ⛔ AUFGABE 0 — ZUERST, sonst nicht posten
 >
-> Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer
-> Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft
-> mehr ins Leere — die Zuschauerin findet den Shop im Bio.
-> Gemessen: 555 Follower · 66 Videos · 266 Likes.
+> **Im Profil steht weder ein Link noch die Adresse.** Der letzte Slide jedes
+> Beitrags sagt aber «Link in Bio» — wer jetzt postet, schickt jede Zuschauerin
+> ins Leere. Setz wenigstens diesen Text ins Bio (Profil → Profil bearbeiten →
+> Biografie), dann sind die Beiträge frei:
 >
-> **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):
-> Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil
-> bearbeiten» kennt nur Name, Anmeldename, Biografie, Pronomen. Es kommt über
-> **Einstellungen → Konto → Unternehmensverifizierung**: dort den Firmennachweis
-> hochladen (UID-Registerauszug von uid.admin.ch oder Zefix-Auszug).
-> ⚠️ Nur **JPEG/JPG/PNG**, kein PDF — den Auszug als Screenshot speichern,
-> farbig, unter 10 MB, mit dem vollständigen rechtsgültigen Firmennamen.
-> ⚠️ Nicht zu verwechseln mit «Verifizierung» (blauer Haken) — die verlangt
-> Presseartikel und ist für uns aussichtslos.
+> ```
+> Mode · Beauty · Wohnen · Technik 🇨🇭
+> luxestyle.ch · -10% mit WELCOME10
+> ```
 
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
-**Profil am 2026-09-18 gemessen:** 555 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
+**Profil am 2026-09-27 gemessen:** ? Follower · ? Videos · ? Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,
@@ -256,7 +251,9 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ---
 
-## 9. `vakuumierer-kabellos-lebensmittel`
+## 9. `vakuumierer-kabellos-lebensmittel`  ⛔ GESPERRT
+
+⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im Onlineshop — der Beitrag würde auf eine tote Seite führen.
 
 **Caption:**
 

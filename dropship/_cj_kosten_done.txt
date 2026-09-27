@@ -35434,3 +35434,5 @@ gid://shopify/Product/15484873408897	CHF 23.39	6 Varianten	Weiss-blaues Streifen
 gid://shopify/Product/15484873900417	CHF 12.50	64 Varianten	V-Ausschnitt Sommer-Slip-Kleid
 gid://shopify/Product/15484874424705	CHF 14.21	20 Varianten	Ärmelloses Maxi-Kleid mit Rundhals und Patchwork
 gid://shopify/Product/15484874948993	CHF 20.80	6 Varianten	Fishtail-Kleid mit Puffärmeln und eckigem Ausschni
+gid://shopify/Product/15484875276673	CHF 20.40	5 Varianten	Retro-Mini-Kleid · Damen
+gid://shopify/Product/15484875637121	CHF 21.84	15 Varianten	Strickkleid Slim-Fit mit Kapuze und Halbrock
