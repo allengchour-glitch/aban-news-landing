@@ -1,0 +1,67 @@
+{
+ "datei": "montage_herbst_2026-09-27.mp4",
+ "musik": "luxe-epic-anime.wav",
+ "einstieg": 0,
+ "dauer": 24.0,
+ "hook": [
+  "Herbst-Favoriten",
+  "für dich"
+ ],
+ "emoji": "🍂",
+ "gattung": "Herbst-Favoriten",
+ "deko": "laub",
+ "titel": "LuxeStyle Herbst-Favoriten",
+ "thema": "herbst",
+ "produkte": [
+  {
+   "handle": "heizjacke-mit-usb-anschluss-907264",
+   "name": "Heizjacke mit USB-Anschluss",
+   "bilder": [
+    0,
+    2
+   ]
+  },
+  {
+   "handle": "usb-heizkissen-mit-graphen-technologie-acad9f",
+   "name": "USB-Heizkissen",
+   "bilder": [
+    0,
+    1
+   ]
+  },
+  {
+   "handle": "gefuttertes-kapuzen-sweatshirt-aus-baumwolle-607800",
+   "name": "Gefüttertes Kapuzen-Sweatshirt",
+   "bilder": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "handle": "usb-aroma-diffusor-mit-befeuchter-465152",
+   "name": "USB Aroma Diffusor mit Befeuchter",
+   "bilder": [
+    0
+   ]
+  },
+  {
+   "handle": "martin-ankle-boots-im-britischen-casual-stil-600000",
+   "name": "Martin Ankle Boots",
+   "bilder": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "handle": "gusseisen-teekessel-diamond-1000ml-622400",
+   "name": "Gusseisen Teekessel „Diamond“",
+   "bilder": [
+    0,
+    1,
+    2
+   ]
+  }
+ ]
+}

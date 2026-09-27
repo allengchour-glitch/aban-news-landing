@@ -33,15 +33,21 @@ THEMEN = {
                   "gattung": "Tier-Favoriten", "musik": "luxe-epic-anime.wav", "deko": "sterne"},
     "herbst":    {"q": "status:active tag:herbst-2026", "preis": (14.9, 60), "hook": ["Herbst-Favoriten", "für dich"], "emoji": "\U0001F342",
                   "gattung": "Herbst-Favoriten", "musik": "luxe-epic-anime.wav", "deko": "laub"},
+    # 27.09.2026 (Betreiber «halloween sachen, auch fortune sachen, kostüme etc»): Kostüme erlaubt (nur hier), Fortura (CH-Lager,
+    # 1–2 Werktage) zuerst. Messer/Waffen-Requisiten und Lizenzfiguren bleiben gesperrt (VERBOTEN + MARKE).
+    "halloween": {"q": "status:active tag:halloween", "preis": (14.9, 80), "hook": ["Halloween", "ist bald da"], "emoji": "\U0001F383",
+                  "gattung": "Halloween-Hits", "musik": "luxe-epic-anime.wav", "deko": "laub", "kostuem_ok": True, "fortura_zuerst": True},
     "fitness":   {"q": "status:active tag:fitness", "preis": (14.9, 50), "hook": ["Fit werden", "zu Hause"], "emoji": "\U0001F4AA",
                   "gattung": "Fitness-Helfer", "musik": "luxe-epic-anime.wav", "deko": "keine"},
 }
 VERBOTEN = re.compile(r"\b(kostüm|kostum|erotik|sexy|dessous|messer|klinge|machete|dolch|schwert|therapie|heil\w*|"
                       r"schmerz\w*|medizin\w*|perücke|perucke|lizenz|set\s*\d{2,})", re.I)
 
+VERBOTEN_KOSTUEM_OK = re.compile(VERBOTEN.pattern.replace("kostüm|kostum|", "").replace("perücke|perucke|", ""), re.I)
+
 Q = """query($q:String!,$c:String){ products(first:40, after:$c, query:$q, sortKey:CREATED_AT, reverse:true){
   pageInfo{ hasNextPage endCursor }
-  nodes{ handle title productType status onlineStoreUrl tags priceRangeV2{ minVariantPrice{ amount } }
+  nodes{ handle title productType status onlineStoreUrl tags variants(first:1){ nodes{ sku } } priceRangeV2{ minVariantPrice{ amount } }
          metafield(namespace:"reviews", key:"rating_count"){ value }
          media(first:12){ nodes{ mediaContentType ... on MediaImage{ image{ url width height } } } } } } }"""
 
@@ -54,6 +60,15 @@ def kurzname(titel, maxlen=34):
         if len(" ".join(out + [x])) > maxlen:
             break
         out.append(x)
+    # 27.09.: gekürzter Titel → vor dem letzten Füllwort enden («Martin Ankle Boots im britischen» → «Martin Ankle Boots»)
+    fuell = re.compile(r"(?i)^(mit|aus|im|in|für|fur|und|von|zum|zur|am|an|auf|ohne)$")
+    if len(out) < len(w):
+        idx = [k for k, x in enumerate(out) if fuell.match(x)]
+        if idx and idx[-1] >= 1:
+            out = out[:idx[-1]]
+    # 27.09.: nie mit einem Füllwort enden («USB-Heizkissen mit», «Kapuzen-Sweatshirt aus» — erstes Render)
+    while out and re.fullmatch(r"(?i)mit|aus|im|in|für|fur|und|von|zum|zur|der|die|das|den|dem|am|an|auf|ohne|&|–|-|„[^“]*", out[-1]):
+        out.pop()
     return " ".join(out) or w[0][:maxlen]
 
 
@@ -89,14 +104,15 @@ def main():
                       if min(m["image"]["width"], m["image"]["height"]) >= 560]
             if (p["status"] != "ACTIVE" or not p["onlineStoreUrl"] or p["handle"] in fertig or len(bilder) < 2
                     or not th["preis"][0] <= preis <= th["preis"][1] or pm.MARKE.search(p["title"] + " " + " ".join(p["tags"]))
-                    or VERBOTEN.search(p["title"])):
+                    or (VERBOTEN_KOSTUEM_OK if th.get("kostuem_ok") else VERBOTEN).search(p["title"])):
                 continue
             rc = int((p.get("metafield") or {}).get("value") or 0)
-            kand.append({"handle": p["handle"], "titel": p["title"], "typ": (p.get("productType") or "").lower(), "preis": preis, "bewertungen": rc, "bilder": bilder})
+            sku = ((p.get("variants") or {}).get("nodes") or [{}])[0].get("sku") or ""
+            kand.append({"handle": p["handle"], "titel": p["title"], "fortura": sku.lower().startswith("fortura"), "typ": (p.get("productType") or "").lower(), "preis": preis, "bewertungen": rc, "bilder": bilder})
         if not d["pageInfo"]["hasNextPage"] or len(kand) >= 160:
             break
         cur = d["pageInfo"]["endCursor"]
-    kand.sort(key=lambda k: -k["bewertungen"])
+    kand.sort(key=lambda k: (-(k["fortura"] if th.get("fortura_zuerst") else 0), -k["bewertungen"]))
     # 27.09.2026 (erster Lauf: 3 von 6 «Gadgets» waren Smartwatches — Betreiber will «ganz verschieden»):
     # je Produkttyp höchstens eins, und kein gemeinsames Kernwort (≥ 6 Buchstaben) mit einem schon gewählten Titel.
     wahl, typen, kernwoerter = [], set(), set()

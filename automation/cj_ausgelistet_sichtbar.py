@@ -42,11 +42,14 @@ def gql(q, v=None):
 
 
 def cj_status(pid, tok):
-    """'weg' (1602002), 'ok' (Produkt geliefert) oder None (kein Urteil)."""
+    """'weg' (1602002), 'ok' (Produkt geliefert) oder None (kein Urteil).
+    27.09.: Zwei SKU-Formen — «CJ-<Zahl/UUID>» = Produkt-ID (?pid=), «CJ-CJYD…AZ» = Varianten-SKU (?variantSku=). Der erste
+    Lauf fragte beide als pid: 205 von 645 «ohne Urteil» (CJ: 1602001 «Product not found: pid:CJYD…»)."""
+    feld = "pid" if re.fullmatch(r"[0-9]{10,}|[0-9A-Fa-f-]{30,}", pid) else "variantSku"
     for a in range(3):
         takt()
         out = subprocess.run(["curl", "-s", "--max-time", "40", "-H", f"CJ-Access-Token: {tok}",
-                              f"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid={pid}"], capture_output=True, text=True).stdout
+                              f"https://developers.cjdropshipping.com/api2.0/v1/product/query?{feld}={pid}"], capture_output=True, text=True).stdout
         try:
             j = json.loads(out)
         except Exception:
