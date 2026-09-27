@@ -243,6 +243,12 @@ export function istVorrang(caption = '', set = vorrangHandles()) {
 }
 export function nachVorrang(rows, captionVon, set = vorrangHandles()) {
   if (!set.size) return rows;
+  // 28.09.2026: Reihenfolge der Vorrangliste zählt (Set behält die Einfügereihenfolge) — nachweislich gekaufte Artikel
+  // stehen in der Datei vor der Saison-Ware und sollen auch zuerst gepostet werden; innerhalb gleicher Stufe bleibt die Queue-Folge.
+  const rang = new Map([...set].map((h, i) => [h, i]));
+  const stufe = r => Math.min(...(String(captionVon(r)).toLowerCase().match(/\/products\/([a-z0-9-]+)/g) || [])
+    .map(x => rang.has(x.slice(10)) ? rang.get(x.slice(10)) : Infinity), Infinity);
   const v = rows.filter(r => istVorrang(captionVon(r), set));
-  return [...v, ...rows.filter(r => !v.includes(r))];
+  const vs = v.map((r, i) => [stufe(r), i, r]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
+  return [...vs, ...rows.filter(r => !v.includes(r))];
 }

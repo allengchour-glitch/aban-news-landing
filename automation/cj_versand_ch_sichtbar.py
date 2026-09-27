@@ -19,7 +19,8 @@ _sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
 from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-CJT = open("/tmp/cj_token_shared.txt").read().strip()
+from cj_versand_ch_guard import _cj_token  # 28.09.: Ausweichkette statt nur cj_token_shared.txt (fehlt bei pausiertem Grind)
+CJT = _cj_token()
 FIX = os.environ.get("FIX") == "1"
 LIMIT = int(os.environ.get("LIMIT", "2000"))
 LEDGER = "dropship/_cj_versand_ch_pruef.txt"

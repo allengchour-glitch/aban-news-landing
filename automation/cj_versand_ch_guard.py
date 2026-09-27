@@ -24,7 +24,19 @@ DRY=1 meldet nur. REVIVE=1 holt zurück, was inzwischen wieder versendbar ist.
 import json, os, re, subprocess, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-CJT = open("/tmp/cj_token_shared.txt").read().strip()
+def _cj_token():
+    """28.09.2026: nur /tmp/cj_token_shared.txt (schreiben die Grind-Runner) — im frischen Container bei pausiertem Grind fehlt
+    sie, das Modul brach beim Import ab (auch besuchte_seiten_lieferbar.py). Reihenfolge: shared → _cjtok → cj_token.json."""
+    for f in ("/tmp/cj_token_shared.txt", "/tmp/_cjtok"):
+        if os.path.exists(f) and open(f).read().strip():
+            return open(f).read().strip()
+    try:
+        return json.load(open("/tmp/cj_token.json"))["accessToken"]
+    except Exception:
+        return ""
+
+
+CJT = _cj_token()
 DRY = os.environ.get("DRY") == "1"
 REVIVE = os.environ.get("REVIVE") == "1"
 MINPREIS = float(os.environ.get("MINPREIS", "100"))
