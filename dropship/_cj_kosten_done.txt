@@ -36817,3 +36817,4 @@ gid://shopify/Product/15492284547457	CHF 11.61	1 Varianten	Edelstahl-Frühstück
 gid://shopify/Product/15492285399425	CHF 7.48	1 Varianten	Farbwechselnde Abdeck-Foundation
 gid://shopify/Product/15492285661569	CHF 7.15	1 Varianten	Feuchtigkeitsspendender Lipgloss
 gid://shopify/Product/15492285792641	CHF 7.40	1 Varianten	Falsche Wimpern 3D
+gid://shopify/Product/15492303880577	CHF 28.84	16 Varianten	Platform-Stiefel · Damen
