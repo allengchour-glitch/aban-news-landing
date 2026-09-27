@@ -60,6 +60,14 @@ if [ ! -x /usr/local/bin/ffprobe ] && [ -f "$REPO_AUTO/ffprobe_ersatz.py" ]; the
   chmod +x /usr/local/bin/ffprobe
   echo "$(date -u +%H:%M) ffprobe-Ersatz bereitgestellt"
 fi
+# 27.09.2026: Fortura-Zugang aus den Umgebungsvariablen. Der Betreiber hat FORTURA_FTP_USER/_PW in den
+# Claude-Einstellungen hinterlegt, aber vier Skripte (Feed, Bestand, Aufseher, Ampel) lesen nur
+# /tmp/fortura_env.sh — nach jedem frischen Container meldete die Ampel «FORTURA-ZUGANG WEG», obwohl er da war.
+# Werte werden nie ausgegeben; %q quotiert Sonderzeichen im Passwort.
+if [ -n "${FORTURA_FTP_USER:-}" ] && [ -n "${FORTURA_FTP_PW:-}" ] && [ ! -s /tmp/fortura_env.sh ]; then
+  ( umask 077; printf 'export FORTURA_FTP_USER=%q\nexport FORTURA_FTP_PW=%q\n' "$FORTURA_FTP_USER" "$FORTURA_FTP_PW" > /tmp/fortura_env.sh )
+  echo "$(date -u +%H:%M) Fortura-Zugang aus Umgebungsvariablen bereitgestellt"
+fi
 
 # zaehle <muster> — argv-basiert. Die eigene bash -c-Hülle hat argv1="-c" und matcht nie.
 zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' | wc -l; }
