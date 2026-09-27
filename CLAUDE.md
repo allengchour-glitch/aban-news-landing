@@ -74,6 +74,41 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-27, vierte Runde (🐕 HUNDE SEITE 2 — ein erfundener Cursor sieht aus wie „fertig"):**
+- **Auftrag:** Dauerauftrag / `/loop`, Seite 2 der 1694 Hundeprodukte.
+- **✅ GEÄNDERT (live): 30 Produkte / 186 Varianten**, `userErrors` in allen vier Teilen leer,
+  **alle 30 an der echten Kundenseite nachgemessen (28/28 und 2/2)**, Gegenprobe mit erfundenen
+  Werten schlägt bei **allen** an. Band der Ausgangsmargen 20,8–36,5 PROZENT, **0 Verlustfälle,
+  0 Faktor-über-3, 0 ohne Einkaufspreis.** Grösste Fälle: Hunde-WC mit Kunstrasen 129.90 bei
+  EK 92.59 → 169.90 · Reha-Sofa-Kissen für gelähmte Hunde 72.90/47.80 → 89.90 · Hundeleine
+  25.90/18.20 → 34.90 · Beissfestes Oxford-Spielzeug 30.90/21.21 → 39.90.
+- **🔑 DIE PREISENTSCHEIDUNG KAM DIESMAL AUS `entscheid()`**, nicht aus einem neu geschriebenen
+  Kriterium — genau der Fehler der Vorrunde. Ergebnis: **61 von 113 Varianten waren bereits in
+  Ordnung** und blieben unangetastet.
+- **⚠️ ZWEI PRODUKTE LIEFEN IN DIE ABFRAGEGRENZE und wurden zuerst zurückgehalten:** die 3-in-1
+  Trinkflasche (**55 Varianten**, 50 geliefert) und der personalisierbare Harnisch (**99
+  Varianten**, 50 geliefert). Regel vom 22.09.: eine Zahl, die an einer Abfragegrenze entsteht,
+  ist kein Messwert.
+- **🔴 UND DABEI EINE NEUE FALLE, die gefährlicher ist als sie aussieht: ICH HABE DEN CURSOR
+  GERATEN — und ein erfundener Cursor liefert eine LEERE Seite mit `hasNextPage: false`.** Das ist
+  von „es gibt nichts mehr" **nicht zu unterscheiden**. Hätte ich das geglaubt, wären 5 bzw. 49
+  Varianten stillschweigend unbepreist geblieben, und der Stand-Block hätte „vollständig"
+  behauptet. **Dieselbe Klasse wie die geratene Collection-ID vom 13.09.: Cursor und IDs werden
+  abgefragt, nie geraten.** Der echte Cursor kam aus `pageInfo { endCursor }`.
+- **✅ Danach die Lückenlosigkeit der Variantennummern belegt** (Technik vom 22.09.):
+  `erste + (n-1)*32768 === letzte` stimmt für **beide** Produkte exakt (55 und 99). Damit liessen
+  sich die 154 Varianten-IDs **rechnen statt abtippen** — und erste wie letzte erzeugte ID
+  stimmen mit der Abfrage überein.
+- **📊 Die beiden grossen Produkte allein: 134 Varianten geändert.** Beim Harnisch waren **alle 99**
+  betroffen (16.90 bei EK 11.54 = 24,1 PROZENT → 24.90); bei der Trinkflasche **35 von 55** — die
+  Varianten zu 24.90 und 26.90 erfüllten das Ziel bereits und blieben stehen. **Ein Produkt mit
+  einheitlichem Einkauf, aber fünf verschiedenen Preisen, ist genau der Fall, für den die
+  Entscheidung je Variante gebaut wurde.**
+- **📊 STAND: 100 von 1694 Hundeprodukten gemessen → 64 Produkte / 228 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block2-2026-09-27.csv`. Cursor für Seite 3:
+  `eyJsYXN0X2lkIjoxNTQ0OTQ1MjI0OTQ3MywibGFzdF92YWx1ZSI6MTU0NDk0NTIyNDk0NzN9`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-27, dritte Runde (🔓 DIE CLOUD-SESSION HAT DOCH EINEN BROWSER — ein TikTok-Tipp hat ein Gedächtnis-Verbot gekippt):**
 - **Auftrag:** ein TikTok-Link vom User. Voller Bericht:
   **`dropship/LERNEN-MCP-KONNEKTOREN-2026-09-27.md`**.
