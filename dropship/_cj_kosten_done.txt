@@ -36742,3 +36742,4 @@ gid://shopify/Product/15492132635009	CHF 22.09	8 Varianten	Elegantes Neckholder-
 gid://shopify/Product/15492132733313	CHF 17.62	16 Varianten	Pailletten-Minikleid mit One-Shoulder-Träger
 gid://shopify/Product/15492132831617	CHF 13.67	8 Varianten	Chiffonbluse mit Schleife und Puffärmeln
 gid://shopify/Product/15492132929921	CHF 15.57	6 Varianten	Romantisches Spitzen-Top mit V-Ausschnitt und Rüsc
+gid://shopify/Product/15492132995457	CHF 14.77	7 Varianten	Geblümte Rüschenbluse im Lolita-Stil
