@@ -36239,3 +36239,25 @@ gid://shopify/Product/15491163750785	CHF 9.63	1 Varianten	Bluetooth Lautsprecher
 gid://shopify/Product/15491163783553	CHF 10.90	1 Varianten	Multi-Kartenhalter aus Metall
 gid://shopify/Product/15491248652673	CHF 13.56	36 Varianten	Weichsohlige Sandalen
 gid://shopify/Product/15491381789057	CHF 16.40	40 Varianten	Damen Slip-on Loafer
+gid://shopify/Product/15491382444417	CHF 28.25	66 Varianten	Herrenschuhe mit Flachsohle
+gid://shopify/Product/15491382641025	CHF 28.75	44 Varianten	Herren Leder-Sneaker
+gid://shopify/Product/15491382772097	CHF 29.24	44 Varianten	Bequeme Sneaker · Herren
+gid://shopify/Product/15491383067009	CHF 27.35	22 Varianten	Herren Stiefel
+gid://shopify/Product/15491384476033	CHF 7.64	1 Varianten	Eleganter Stahl-Armband
+gid://shopify/Product/15491384607105	CHF 17.00	1 Varianten	Bernsteinfriedensknopf-Armband
+gid://shopify/Product/15491384770945	CHF 18.75	1 Varianten	Bernstein-Armband im Freiform
+gid://shopify/Product/15491384934785	CHF 1323.71	1 Varianten	Mozanit Tennisarmband
+gid://shopify/Product/15491385033089	CHF 8.74	1 Varianten	Mandala Armband · Damen
+gid://shopify/Product/15491385196929	CHF 11.25	1 Varianten	Grüner Quarz-Armband
+gid://shopify/Product/15491385360769	CHF 12.66	1 Varianten	Stahlarmband mit Tiermotiv
+gid://shopify/Product/15491385524609	CHF 8.47	1 Varianten	Stahlring mit zwei Namen
+gid://shopify/Product/15491385655681	CHF 6.84	1 Varianten	Rechteckiger Zirkonring
+gid://shopify/Product/15491385917825	CHF 9.23	1 Varianten	Farbenfroher Geburtsteinschmuck-Ring
+gid://shopify/Product/15491386081665	CHF 8.62	1 Varianten	Vier-Stein Ring · Damen
+gid://shopify/Product/15491386343809	CHF 11.04	1 Varianten	Personalisierbarer, versilberter Geburtsstein-Ring
+gid://shopify/Product/15491387425153	CHF 18.01	5 Varianten	Retro Mesh-Kleid mit Leo-Print und Schlitz
+gid://shopify/Product/15491387523457	CHF 15.24	40 Varianten	Elegantes A-Linien-Kleid mit V-Ausschnitt
+gid://shopify/Product/15491387916673	CHF 16.94	25 Varianten	Gestreiftes Patchwork Hemdkleid mit Schlitz
+gid://shopify/Product/15491388113281	CHF 19.25	3 Varianten	Französisches Spitzenkleid
+gid://shopify/Product/15491388277121	CHF 16.15	30 Varianten	Kurzarmkleid mit Schnürung und Print
+gid://shopify/Product/15491388473729	CHF 14.86	3 Varianten	Elegantes Neckholder-Kleid
