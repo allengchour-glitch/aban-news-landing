@@ -35487,3 +35487,13 @@ gid://shopify/Product/15484930589057	CHF 12.83	9 Varianten	Damen-Kleid mit Patch
 gid://shopify/Product/15484930752897	CHF 18.95	40 Varianten	Freizeitkleid mit Reissverschluss-Taschen
 gid://shopify/Product/15484930818433	CHF 16.87	6 Varianten	Neckholder Minikleid mit V-Ausschnitt
 gid://shopify/Product/15484930949505	CHF 19.20	17 Varianten	Damen Etuikleid mit Rüschenärmeln
+gid://shopify/Product/15484931998081	CHF 16.66	40 Varianten	Kapuzenpullover-Kleid für Damen
+gid://shopify/Product/15484932555137	CHF 14.57	9 Varianten	Langes Blumenkleid für Damen
+gid://shopify/Product/15484932784513	CHF 19.45	4 Varianten	Elegantes Satin-Kleid mit Puffärmeln
+gid://shopify/Product/15484932850049	CHF 15.32	48 Varianten	Boho-Kleid mit Blumenmuster und ausgestellten Ärme
+gid://shopify/Product/15484932915585	CHF 18.25	30 Varianten	Gestreiftes Hoodie-Kleid mit lockerer Passform
+gid://shopify/Product/15484933046657	CHF 13.93	3 Varianten	Lässiges ausgestelltes Kleid
+gid://shopify/Product/15485009723777	CHF 25.69	1 Varianten	Herren Schultertasche
+gid://shopify/Product/15485009789313	CHF 19.71	1 Varianten	Handgepäck Reisetasche
+gid://shopify/Product/15485009887617	CHF 52.25	1 Varianten	Herren Umhängetasche aus Crazy Horse Leder
+gid://shopify/Product/15485009920385	CHF 25.33	1 Varianten	Taktische Herren-Tragetasche für Outdoor
