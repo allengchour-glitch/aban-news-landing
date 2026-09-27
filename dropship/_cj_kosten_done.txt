@@ -36235,3 +36235,7 @@ gid://shopify/Product/15491160768897	CHF 21.79	60 Varianten	Herren Outdoor Halbs
 gid://shopify/Product/15491160834433	CHF 23.70	33 Varianten	Handgenähte Outdoor-Freizeitschuhe für Herren
 gid://shopify/Product/15491160867201	CHF 14.60	20 Varianten	Herren XXL Outdoor-Sandalen
 gid://shopify/Product/15491160899969	CHF 26.68	30 Varianten	Herren Outdoor-Sandalen Übergrössen
+gid://shopify/Product/15491163750785	CHF 9.63	1 Varianten	Bluetooth Lautsprecher-Tasche
+gid://shopify/Product/15491163783553	CHF 10.90	1 Varianten	Multi-Kartenhalter aus Metall
+gid://shopify/Product/15491248652673	CHF 13.56	36 Varianten	Weichsohlige Sandalen
+gid://shopify/Product/15491381789057	CHF 16.40	40 Varianten	Damen Slip-on Loafer
