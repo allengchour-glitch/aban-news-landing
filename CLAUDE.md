@@ -74,6 +74,38 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-27, fünfte Runde (🐕 HUNDE SEITE 3 — die Antwort kam als DATEI, also null Abtippen):**
+- **Auftrag:** Dauerauftrag / `/loop`, Seite 3 der 1694 Hundeprodukte.
+- **🔑 DER GRÖSSTE UNTERSCHIED ZU DEN VORRUNDEN IST KEIN BEFUND, SONDERN EIN WEG: die Abfrageantwort
+  war mit 62 410 Zeichen zu gross für den Kontext und wurde vom Werkzeug ALS DATEI ABGELEGT**
+  (`tool-results/…txt`). Damit liess sich alles mit `jq` und einem Node-Skript verarbeiten —
+  **kein einziger Wert von Hand übertragen**, anders als auf den Seiten 1 und 2. Das ist der
+  saubere Weg für grosse Seiten: **lieber mehr Felder abfragen und die Datei auswerten, als
+  weniger abfragen und abtippen.**
+- **✅ GEÄNDERT (live): 34 Produkte / 167 Varianten**, `userErrors` in allen vier Teilen leer,
+  **34/34 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  Von 345 Varianten: **124 in Ordnung, 167 angehoben, 4 gemeldet, 0 ohne Einkaufspreis, 0 nicht-CHF.**
+  Band der angehobenen 20,9–37,4 PROZENT. Grösste Fälle: Erhöhter Hundenapf mit 2 Edelstahl-Näpfen
+  138.90 bei EK 98.85 → 179.90 · Elektronisches Hunde-Spielzeug 51.90/36.88 → 69.90 · Hundebett
+  Warmer Schlafsack 51.90/36.75 → 69.90 · Hundebett Sofa 66.90/47.01 → 84.90.
+- **⛔ 4 VARIANTEN NUR GEMELDET (Faktor über 3), und sie zeigen die Regel je Variante im Reinzustand:**
+  **Hundebett Warmer Schlafsack** hat bei EINEM Einkaufspreis von 36.75 Varianten zu 18.90, 21.90,
+  22.90 **und** 51.90 — die drei billigen liegen bei **−116,0 / −86,5 / −78,3 PROZENT** und sprengen
+  den Deckel (Faktor 3,7 / 3,2 / 3,1), die teure wurde normal auf 69.90 gesetzt. **Dasselbe Produkt
+  ist also gleichzeitig gesetzt und gemeldet** — genau wofür der Deckel je Variante gebaut wurde.
+  Dazu **Tragbarer Hunde-Kotgreifer** 14.90 bei EK 23.33 (−74,0 PROZENT, Faktor 3,0).
+  **Damit sind es siebzehn Faktor-über-3-Fälle für den User.**
+- **⚠️ EIN PRODUKT LIEF IN DIE ABFRAGEGRENZE und wurde zurückgehalten:** LED-Halsband Leopard-Muster,
+  **60 Varianten, 50 geliefert**. Über den **echten** Cursor aus `pageInfo { endCursor }` nachgeholt
+  (nicht geraten, Lehre der Vorrunde): die restlichen 10 tragen wie die ersten 50 **14.90 bei
+  EK 5.63**. **Alle 60 liegen damit bei 58–61 PROZENT Marge — das Produkt ist gesund, nichts zu
+  ändern.** Gemessen statt angenommen; ohne das Nachholen hätte hier „zurückgehalten, offen"
+  gestanden.
+- **📊 STAND: 150 von 1694 Hundeprodukten gemessen → 98 Produkte / 395 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block3-2026-09-27.csv`. Cursor für Seite 4:
+  `eyJsYXN0X2lkIjoxNTQ1MDg0OTgzNzQ0MSwibGFzdF92YWx1ZSI6MTU0NTA4NDk4Mzc0NDF9`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-27, vierte Runde (🐕 HUNDE SEITE 2 — ein erfundener Cursor sieht aus wie „fertig"):**
 - **Auftrag:** Dauerauftrag / `/loop`, Seite 2 der 1694 Hundeprodukte.
 - **✅ GEÄNDERT (live): 30 Produkte / 186 Varianten**, `userErrors` in allen vier Teilen leer,
