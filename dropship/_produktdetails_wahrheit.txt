@@ -69391,3 +69391,41 @@
 15427279552897	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Braunvieh»
 15427279618433	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Buenzli»
 15427279683969	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Cervelat»
+15427279782273	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chalet»
+15427279880577	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chuchichaeschtli»
+15427279978881	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Edelweiss»
+15427280077185	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Eidgenoss»
+15427280142721	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Enzian»
+15427280208257	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Es Git Nu Eis Zueri»
+15427280306561	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fasnacht Mask»
+15427280339329	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Feierabig»
+15427280404865	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue»
+15427280470401	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gaell»
+15427280568705	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gopfertami»
+15427280634241	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gruezi»
+15427280732545	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Haeee»
+15427280765313	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Haerzlech»
+15427280830849	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Heidi»
+15427280929153	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Hoi»
+15427280961921	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Matterhorn»
+15427281027457	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Merci»
+15427281092993	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Murmeli»
+15427281191297	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Postauto Horn»
+15427281256833	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Prosit»
+15427281355137	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Raclette»
+15427281420673	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Sali»
+15427281453441	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Schoggi Bar»
+15427281518977	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Steinbock»
+15427281617281	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Army Knife»
+15427281682817	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Cross Badge»
+15427281715585	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Znueni»
+15427281781121	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue» · Modell 2
+15427281879425	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Matterhorn» · Modell 2
+15427281912193	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Chocolate»
+15427282010497	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Cowbell»
+15427282141569	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Grüezi»
+15427282207105	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Hoi» · Modell 2
+15427282305409	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Merci» · Modell 2
+15427283157377	material-floskel-entfernt	T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv
+15429997724033	farbe-floskel-entfernt,material-floskel-entfernt	King & Queen Partner-Shirts · Couple T-Shirts 👑
+15429997822337	farbe-floskel-entfernt,material-floskel-entfernt	Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍

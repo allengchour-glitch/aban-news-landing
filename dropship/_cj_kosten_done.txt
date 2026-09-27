@@ -36182,3 +36182,18 @@ gid://shopify/Product/15490789015937	CHF 14.58	16 Varianten	Ärmelloser Colorblo
 gid://shopify/Product/15490789081473	CHF 25.42	3 Varianten	Halb-Knopf Pullover mit Patchwork-Karo
 gid://shopify/Product/15490789114241	CHF 9.71	11 Varianten	Legerer Cardigan für Frühling & Herbst
 gid://shopify/Product/15490789147009	CHF 12.91	16 Varianten	V-Ausschnitt Bluse mit langen Ärmeln
+gid://shopify/Product/15490789179777	CHF 20.25	44 Varianten	Handgemachter Quasten-Pullover aus Nerzfell
+gid://shopify/Product/15490831253889	CHF 13.61	50 Varianten	Karoschuh aus Leinwand
+gid://shopify/Product/15490831319425	CHF 24.27	12 Varianten	Lauflernschuhe Weiss
+gid://shopify/Product/15490831384961	CHF 11.71	30 Varianten	Mädchen Halbschuhe mit weicher Sohle
+gid://shopify/Product/15490846491009	CHF 38.35	1 Varianten	Wasserdichte Outdoor-Tasche
+gid://shopify/Product/15490846654849	CHF 63.25	1 Varianten	Outdoor Rucksack 40L
+gid://shopify/Product/15490846916993	CHF 45.33	1 Varianten	Leichter Wanderrucksack mit grossem Volumen
+gid://shopify/Product/15490871001473	CHF 17.43	1 Varianten	Nagelbad-Pulver-Set
+gid://shopify/Product/15490871820673	CHF 9.13	1 Varianten	Nagelverlängerungs-Gel-Kit, 15ml
+gid://shopify/Product/15490872377729	CHF 9.84	1 Varianten	Einfarbiger UV/LED Nagellack
+gid://shopify/Product/15490872770945	CHF 9.67	1 Varianten	Nagellack-Set: Base, Matt & Glanz
+gid://shopify/Product/15490873196929	CHF 21.16	1 Varianten	Maniküre 3D Spray Paint Gel – 12 Farben Set
+gid://shopify/Product/15490893021569	CHF 46.52	1 Varianten	Edelstahl Schneidebrett
+gid://shopify/Product/15490893185409	CHF 36.91	1 Varianten	Edelstahl-Besteck-Set · 8-teilig
+gid://shopify/Product/15490893218177	CHF 73.95	1 Varianten	Titanium Antihaft-Bratpfanne für Zuhause
