@@ -36601,3 +36601,33 @@ gid://shopify/Product/15492019224961	CHF 12.15	1 Varianten	Keramikbecher
 gid://shopify/Product/15492023091585	CHF 7.51	1 Varianten	Herzförmige Schmuckbox
 gid://shopify/Product/15492023124353	CHF 6.99	1 Varianten	Reise-Schmuckbox mit Reissverschluss
 gid://shopify/Product/15492023157121	CHF 50.94	1 Varianten	Front-Trunk Aufbewahrungsbeutel
+gid://shopify/Product/15492023189889	CHF 17.95	1 Varianten	Rechteckige Acryl-Spardose
+gid://shopify/Product/15492023222657	CHF 15.07	1 Varianten	Mücken- und Insektenlampe mit Licht
+gid://shopify/Product/15492023255425	CHF 65.78	1 Varianten	Extra-langes SL-Track Massagekissen
+gid://shopify/Product/15492023288193	CHF 26.47	1 Varianten	Smarter Wi-Fi Aroma Diffuser für Zuhause
+gid://shopify/Product/15492023320961	CHF 9.16	1 Varianten	Spülmaschinen Reinigungs- und Deo-Tabs
+gid://shopify/Product/15492023353729	CHF 12.17	1 Varianten	Spülmaschinen-Tabs mit Minzextrakt (24 Stk.)
+gid://shopify/Product/15492023386497	CHF 12.11	1 Varianten	Induktions-Brillenlampe für Outdoor-Aktivitäten
+gid://shopify/Product/15492023419265	CHF 15.17	1 Varianten	Futterball für Hunde – robust & kaubeständig
+gid://shopify/Product/15492023943553	CHF 28.31	1 Varianten	Gesundheits-Smartwatch mit Körperanalyse
+gid://shopify/Product/15492024172929	CHF 10.95	1 Varianten	Beheizbare Weste Powerbank
+gid://shopify/Product/15492024271233	CHF 7.63	1 Varianten	Magnetische Kartenhülle mit Ständer
+gid://shopify/Product/15492029940097	CHF 15.67	39 Varianten	Plateau-Sandalen mit Chunky-Absatz
+gid://shopify/Product/15492029972865	CHF 15.59	56 Varianten	Elegante High-Heel-Sandalen
+gid://shopify/Product/15492030038401	CHF 59.54	42 Varianten	Niche Stiletto-heel Sandalen
+gid://shopify/Product/15492030071169	CHF 59.54	98 Varianten	Modische offene Pantoletten mit hohem Absatz
+gid://shopify/Product/15492030136705	CHF 22.85	24 Varianten	Mary Jane Plateau-Wedge mit verstecktem Absatz
+gid://shopify/Product/15492030169473	CHF 18.75	28 Varianten	Retro-Freizeitsneaker für Frühling und Herbst
+gid://shopify/Product/15492030202241	CHF 38.27	18 Varianten	Bequeme Canvas Mary Jane Flats
+gid://shopify/Product/15492030267777	CHF 14.18	27 Varianten	Warme Baumwoll-Hausschuhe für Damen
+gid://shopify/Product/15492030464385	CHF 6.95	1 Varianten	Fotorahmen-Halskette im Retro-Stil
+gid://shopify/Product/15492034691457	CHF 7.11	1 Varianten	Buchstaben-Halskette
+gid://shopify/Product/15492034756993	CHF 7.11	1 Varianten	Kugelkettchen Halskette
+gid://shopify/Product/15492034789761	CHF 8.46	1 Varianten	Kettenhalsband mit Buchstaben
+gid://shopify/Product/15492034855297	CHF 8.46	1 Varianten	Englische Buchstaben Halskette
+gid://shopify/Product/15492034920833	CHF 8.46	1 Varianten	Halskette mit Initialen – Kupfer, Kreuzkette
+gid://shopify/Product/15492034953601	CHF 7.20	1 Varianten	Dopamine Buchstabenkette für Damen
+gid://shopify/Product/15492035019137	CHF 7.20	1 Varianten	Dopamin-Halskette mit Initialen
+gid://shopify/Product/15492035084673	CHF 29.69	1 Varianten	Eleganter 925er Silberring mit 3 Karat Moissanit
+gid://shopify/Product/15492035346817	CHF 16.70	40 Varianten	Off-Shoulder Polka-Dot Maxikleid
+gid://shopify/Product/15492035379585	CHF 19.67	4 Varianten	Etuikleid mit Raffung, One-Shoulder & Strass
