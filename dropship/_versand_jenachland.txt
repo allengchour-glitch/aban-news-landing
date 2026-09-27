@@ -8874,3 +8874,4 @@ gid://shopify/Product/15445834629505	ersetzt
 gid://shopify/Product/15446016065921	ersetzt
 gid://shopify/Product/15446016557441	ersetzt
 gid://shopify/Product/15446021144961	ersetzt
+gid://shopify/Product/15408457744769	ersetzt
