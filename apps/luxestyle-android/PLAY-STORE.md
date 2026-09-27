@@ -10,7 +10,7 @@ Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne
   Übersicht (Bereiche links, Unterkategorien mit Bild rechts), Kategorie-Pfad wie die Webseite,
   „Mehr aus …", Kollektion mit Unterkategorien, Sortierung, Preis-/Lieferbar-Filter und Nachladen,
   Produkt mit Galerie + Vollbild-Zoom + Varianten (unkaufbare ausgegraut) + „Passt dazu", Suche mit
-  Vorschlägen, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode (WELCOME10 per Tipp) und
+  Vorschlägen + Kategorien + Sprachsuche, Merkliste ohne Konto, Warenkorb mit Mengen, Rabattcode (WELCOME10 per Tipp) und
   Gratis-Versand-Balken. Produktseite zeigt die Lieferzeit und die Grössentabelle als echte Tabelle
   (beides aus dem Beschreibungstext, gewählte Grösse markiert). Merkliste zeigt, wenn ein Stück seit dem
   Merken günstiger wurde. Letzte Suchen, App-Shortcuts (Suche, Merkliste, Warenkorb). „+" auf der

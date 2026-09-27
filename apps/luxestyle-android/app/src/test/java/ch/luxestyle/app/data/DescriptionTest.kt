@@ -107,7 +107,7 @@ class QuickAddTest {
 }
 
 class BreadcrumbTest {
-    private fun m(h: String, vararg kids: MenuItem) = MenuItem(h, "https://luxestyle.ch/collections/$h", kids.toList())
+    private fun m(h: String, vararg kids: MenuItem) = MenuItem(h, "https://luxestyle.ch/collections/${h.lowercase().replace(" ", "-")}", kids.toList())
     private val menu = listOf(
         m("damen-mode", m("t-shirts-tops"), m("damen-strick-pullover")),
         m("sub-baby-kids", m("sub-haustier", m("hundebetten"))),
@@ -126,6 +126,31 @@ class BreadcrumbTest {
         assertEquals(listOf("sub-baby-kids", "sub-haustier", "hundebetten"), breadcrumb(menu, listOf("hundebetten")).map { it.title })
         assertEquals(listOf("premium-geschenke", "unter-chf-25"), breadcrumb(menu, listOf("unter-chf-25")).map { it.title })
         assertEquals(emptyList<String>(), breadcrumb(menu, listOf("gibts-nicht")).map { it.title })
+        // echtes Sommerkleid: nur in damen-mode + Werbe-Kollektionen → Damen › Kleider statt „Geschenke unter 100"
+        val kleidMenu = listOf(
+            MenuItem("Damen", "https://luxestyle.ch/collections/damen-mode", listOf(m("Taschen & Rucksäcke"), m("Kleider"), m("Midikleider"))),
+            MenuItem("Geschenke", "https://luxestyle.ch/collections/premium-geschenke", listOf(m("geschenke-unter-100-franken"))),
+        )
+        assertEquals(
+            listOf("Damen", "Kleider"),
+            breadcrumb(kleidMenu, listOf("neu", "damen-mode", "geschenke-unter-100-franken"), "Elegantes Sommerkleid A-Linie").map { it.title },
+        )
+        assertEquals(listOf("Damen"), breadcrumb(kleidMenu, listOf("damen-mode"), "Seidenschal").map { it.title })
         assertEquals(listOf("damen-mode", "damen-strick-pullover"), menuPath(menu, "damen-strick-pullover")!!.map { it.title })
+    }
+}
+
+class SearchSuggestTest {
+    @Test
+    fun nurKategorienMitDemSuchwort() {
+        // echte Shopify-Antwort auf „kleid"
+        val hits = listOf(
+            CollectionHit("sub-kleider", "Kleider"),
+            CollectionHit("elektronik-kleinteile", "Elektronik-Zubehör & Kleinteile"),
+            CollectionHit("baby-kleinkind", "Baby & Kleinkind"),
+        )
+        assertEquals(listOf("sub-kleider"), relevantCollections("kleid", hits).map { it.handle })
+        assertEquals(listOf("sub-kleider"), relevantCollections("Kleider ", hits).map { it.handle })
+        assertEquals(emptyList<String>(), relevantCollections("kl", hits).map { it.handle }) // zu kurz
     }
 }

@@ -169,6 +169,9 @@ class ScreenTour : TourBase() {
         start()
         go("https://luxestyle.ch/products/elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben")
         waitFor("In den Warenkorb"); settle()
+        waitFor("Kleider"); settle(1500) // Kategorie-Pfad ist geladen, das Layout steht
+        // Grössen-Zeile liegt sonst unter der Kaufleiste → bis zum Liefer-Kasten scrollen
+        scrollTo("product", "Gratis-Versand in der Schweiz"); settle(800)
         scrollTo("product", "Grössentabelle"); settle(1500)
         shot("13-produkt-groesse")
         rule.onAllNodesWithText("Grössentabelle").onFirst().performClick()
@@ -212,6 +215,24 @@ class ScreenTour : TourBase() {
         go("https://luxestyle.ch/collections/damen-strick-pullover")
         waitForPrices(); settle()
         shot("18c-unterkategorie-nachbarn")
+    }
+
+    @Test
+    fun sucheNeu() {
+        start()
+        go("luxestyle://suche")
+        settle(1500)
+        shot("19-suche-leer")
+        rule.onNode(hasSetTextAction()).performTextInput("kleid")
+        waitFor("Kategorie"); settle(3000)
+        shot("19b-suche-vorschlaege")
+        rule.onNode(hasSetTextAction()).performTextInput("er")
+        rule.onNode(hasSetTextAction()).performImeAction()
+        waitFor("Treffer"); waitForPrices(); settle()
+        shot("19c-suche-treffer-kategorien")
+        go("https://luxestyle.ch/search?q=sonnenbrile")
+        waitForPrices(); settle()
+        shot("19d-suche-tippfehler")
     }
 
     /** Systemschrift 130 % – bricht nichts um oder ab? */

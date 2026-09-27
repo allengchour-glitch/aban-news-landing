@@ -130,8 +130,15 @@ object Parse {
         )
     }
 
-    fun suggestions(o: JsonObject?): Suggestions = Suggestions(
+    fun suggestions(o: JsonObject?, query: String = ""): Suggestions = Suggestions(
         queries = o.a("queries").mapNotNull { it.obj().s("text") },
         products = o.a("products").mapNotNull { it.obj()?.let(::card) },
+        collections = relevantCollections(
+            query,
+            o.a("collections").mapNotNull { c ->
+                val h = c.obj().s("handle") ?: return@mapNotNull null
+                CollectionHit(h, cleanTitle(stripEmoji(c.obj().s("title").orEmpty())))
+            },
+        ),
     )
 }

@@ -369,6 +369,9 @@ fun ProductGrid(
     if (items.isEmpty() && !loading && error == null && !hasNext) { empty(); return }
     if (items.isEmpty() && error != null) { ErrorState(error!!) { error = null; retry++ }; return }
 
+    val scope = rememberCoroutineScope()
+    val farDown by remember(key) { derivedStateOf { grid.firstVisibleItemIndex > 10 } }
+    Box(Modifier.fillMaxSize()) {
     LazyVerticalGrid(
         state = grid,
         columns = GridCells.Adaptive(160.dp),
@@ -396,6 +399,20 @@ fun ProductGrid(
                 }
             }
         }
+    }
+    // Lange Listen: mit einem Tipp zurück nach oben
+    androidx.compose.animation.AnimatedVisibility(
+        visible = farDown,
+        modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp),
+        enter = androidx.compose.animation.fadeIn(), exit = androidx.compose.animation.fadeOut(),
+    ) {
+        Surface(shape = CircleShape, color = MaterialTheme.colorScheme.primary, shadowElevation = 6.dp) {
+            Box(
+                Modifier.size(44.dp).clickable(role = Role.Button, onClickLabel = "Nach oben") { scope.launch { grid.animateScrollToItem(0) } },
+                contentAlignment = Alignment.Center,
+            ) { Icon(painterResource(R.drawable.ic_up), "Nach oben", Modifier.size(20.dp), tint = MaterialTheme.colorScheme.onPrimary) }
+        }
+    }
     }
 }
 

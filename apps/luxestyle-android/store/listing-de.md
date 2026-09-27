@@ -14,7 +14,7 @@ LuxeStyle ist der Schweizer Online-Shop für Damenmode, Schmuck, Taschen, Uhren 
 Stöbern
 • Alle Kategorien aus dem Shop – Kleider, Halsketten, Taschen, Jacken und mehr
 • Sortieren nach Beliebtheit, Neuheit oder Preis, Filter nach Preis und Lieferbarkeit
-• Suche mit Vorschlägen schon beim Tippen
+• Suche mit Vorschlägen und passenden Kategorien schon beim Tippen, auch per Sprache
 • Produktbilder im Vollbild, mit zwei Fingern zoomen
 • Grössentabelle direkt beim Produkt, deine Grösse markiert
 

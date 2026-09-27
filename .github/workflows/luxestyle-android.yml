@@ -54,8 +54,8 @@ jobs:
           LUXE_KEY_ALIAS: upload
           LUXE_VERSION_NAME: ${{ inputs.version_name }}
         run: |
-          # Jede Play-Version braucht einen höheren versionCode; 100 und 101 kamen von Hand.
-          export LUXE_VERSION_CODE=$((GITHUB_RUN_NUMBER + 101))
+          # Jede Play-Version braucht einen höheren versionCode; 100–102 kamen von Hand.
+          export LUXE_VERSION_CODE=$((GITHUB_RUN_NUMBER + 102))
           ./gradlew --no-daemon testReleaseUnitTest lintRelease bundleRelease
 
       - uses: actions/upload-artifact@v4

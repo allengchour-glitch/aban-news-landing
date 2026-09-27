@@ -97,7 +97,7 @@ private fun ProductDetail(p: Product) {
     var adding by remember { mutableStateOf(false) }
     val recs = rememberLoad(p.id) { shop.api.recommendations(p.id) }
     val menu = (rememberLoad("menu") { shop.menu() }.state as? Load.Ok)?.value
-    val path = remember(menu, p.handle) { menu?.let { breadcrumb(it, p.collections) }.orEmpty() }
+    val path = remember(menu, p.handle) { menu?.let { breadcrumb(it, p.collections, p.title) }.orEmpty() }
     val category = path.lastOrNull()
     // „Mehr aus …": Bestseller derselben Unterkategorie, ohne das offene Produkt
     val more = rememberLoad(p.id, category?.collectionHandle) {

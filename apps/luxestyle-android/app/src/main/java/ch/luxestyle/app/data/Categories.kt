@@ -11,10 +11,12 @@ fun menuPath(menu: List<MenuItem>, handle: String): List<MenuItem>? {
 
 /**
  * Kategorie-Pfad für ein Produkt, wie ihn die Webseite zeigt („Damen › Strick & Pullover").
- * Reihenfolge der Kollektionen des Produkts entscheidet; bevorzugt werden Unterkategorien,
- * deren Hauptkategorie das Produkt ebenfalls enthält (nicht „Geschenke unter CHF 25").
+ * 1. Unterkategorie, deren Hauptbereich das Produkt auch enthält (Reihenfolge des Produkts zählt)
+ * 2. sonst der Hauptbereich – ergänzt um die Unterkategorie, die im Produkttitel vorkommt
+ *    („Sommerkleid" → Damen › Kleider)
+ * 3. erst dann Werbe-Kollektionen wie „Geschenke unter CHF 100"
  */
-fun breadcrumb(menu: List<MenuItem>, productCollections: List<String>): List<MenuItem> {
+fun breadcrumb(menu: List<MenuItem>, productCollections: List<String>, productTitle: String = ""): List<MenuItem> {
     val set = productCollections.toSet()
     val paths = allPaths(menu).filter { it.size >= 2 }
     for (h in productCollections) {
@@ -22,9 +24,21 @@ fun breadcrumb(menu: List<MenuItem>, productCollections: List<String>): List<Men
             .maxByOrNull { it.size }?.let { return it }
     }
     for (h in productCollections) {
+        val top = menu.firstOrNull { it.collectionHandle == h } ?: continue
+        val child = top.children.firstOrNull { titleMentions(productTitle, it.title) }
+        return listOfNotNull(top, child)
+    }
+    for (h in productCollections) {
         paths.filter { it.last().collectionHandle == h }.maxByOrNull { it.size }?.let { return it }
     }
-    return menu.firstOrNull { it.collectionHandle in set }?.let { listOf(it) } ?: emptyList()
+    return emptyList()
+}
+
+/** „Kleider" steckt in „Sommerkleid": erstes Wort der Kategorie, Endung gekürzt, mindestens 5 Buchstaben. */
+internal fun titleMentions(productTitle: String, category: String): Boolean {
+    val word = category.lowercase().split(Regex("[^\\p{L}]+")).firstOrNull { it.isNotEmpty() } ?: return false
+    val title = productTitle.lowercase()
+    return (0..2).map { word.dropLast(it) }.filter { it.length >= 5 }.any { title.contains(it) }
 }
 
 private fun allPaths(items: List<MenuItem>, prefix: List<MenuItem> = emptyList()): List<List<MenuItem>> =

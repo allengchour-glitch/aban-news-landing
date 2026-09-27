@@ -94,7 +94,8 @@ class Storefront(
         val key = if (sort == Sort.PRICE_ASC || sort == Sort.PRICE_DESC) "PRICE" else "RELEVANCE"
         val d = run(
             """query S(${'$'}q: String!, ${'$'}after: String, ${'$'}f: [ProductFilter!]) {
-              search(query: ${'$'}q, first: 24, after: ${'$'}after, types: PRODUCT, sortKey: $key, reverse: ${sort == Sort.PRICE_DESC}, productFilters: ${'$'}f) {
+              search(query: ${'$'}q, first: 24, after: ${'$'}after, types: PRODUCT, sortKey: $key, reverse: ${sort == Sort.PRICE_DESC},
+                productFilters: ${'$'}f, prefix: LAST, unavailableProducts: LAST) {
                 totalCount nodes { ... on Product { ...Card } } pageInfo { hasNextPage endCursor } } } $CARD""",
             withFilters(vars("q" to query, "after" to after), filters),
         )
@@ -104,11 +105,11 @@ class Storefront(
 
     suspend fun suggest(query: String): Suggestions {
         val d = run(
-            """query P(${'$'}q: String!) { predictiveSearch(query: ${'$'}q, limit: 6, types: [PRODUCT, QUERY]) {
-              queries { text } products { ...Card } } } $CARD""",
+            """query P(${'$'}q: String!) { predictiveSearch(query: ${'$'}q, limit: 6, types: [PRODUCT, QUERY, COLLECTION]) {
+              queries { text } collections { handle title } products { ...Card } } } $CARD""",
             vars("q" to query),
         )
-        return Parse.suggestions(d.o("predictiveSearch"))
+        return Parse.suggestions(d.o("predictiveSearch"), query)
     }
 
     suspend fun product(handle: String): Product {

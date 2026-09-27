@@ -21,8 +21,8 @@ android {
         applicationId = "luxestyle.ch" // so in der Play Console angelegt, nicht mehr änderbar
         minSdk = 24
         targetSdk = 36
-        versionCode = (System.getenv("LUXE_VERSION_CODE") ?: "101").toInt()
-        versionName = System.getenv("LUXE_VERSION_NAME") ?: "1.0.1"
+        versionCode = (System.getenv("LUXE_VERSION_CODE") ?: "102").toInt()
+        versionName = System.getenv("LUXE_VERSION_NAME") ?: "1.0.2"
     }
 
     signingConfigs {

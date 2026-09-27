@@ -128,7 +128,23 @@ data class Filters(val price: PriceBand? = null, val onlyAvailable: Boolean = fa
     val isEmpty get() = price == null && !onlyAvailable
 }
 
-data class Suggestions(val queries: List<String>, val products: List<ProductCard>)
+data class CollectionHit(val handle: String, val title: String)
+
+data class Suggestions(
+    val queries: List<String>,
+    val products: List<ProductCard>,
+    val collections: List<CollectionHit> = emptyList(),
+)
+
+/**
+ * Shopify schlägt Kategorien schon bei gleichem Wortanfang vor („kleid" → „Kleinteile").
+ * Behalten wird nur, was das Suchwort wirklich enthält.
+ */
+fun relevantCollections(query: String, hits: List<CollectionHit>): List<CollectionHit> {
+    val words = query.lowercase().split(Regex("\\s+")).filter { it.length >= 3 }
+    if (words.isEmpty()) return emptyList()
+    return hits.filter { h -> words.all { h.title.lowercase().contains(it) } }.distinctBy { it.handle }.take(4)
+}
 
 /** Emoji und Zierzeichen am Anfang von Menü-Titeln weg („🎁 Geschenke" → „Geschenke"). */
 fun cleanTitle(title: String): String =
