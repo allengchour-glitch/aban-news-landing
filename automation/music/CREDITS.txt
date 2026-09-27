@@ -74,3 +74,7 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
   (make_reel.sh normalisiert je Reel auf −14 LUFS). Komposition unverändert.
 - luxe-dnb-drive.wav      (Dancefloor-Drum-and-Bass, ~174 BPM, Fis-Moll, KEIN Intro — Drop ab Sekunde 0; build_dnb_drive_midi.py, Render:
   MIX_DRUMS=1.1 SC_TIEFE=0.65 LEAD_GAIN=1.3 bash render.sh dnb_drive; blinde Hörprobe v1 7/10, v2 gewinnt 2 von 3 blinden A/B)
+
+— LIZENZIERT (KI-Produktion, lizenzfrei laut Anbieter, keine Namensnennung) — echte Instrumente statt GM-SoundFont:
+- luxe-epic-anime.wav     (episches Anime-Abenteuer, Fiedel + Tin Whistle, E-Gitarren, Live-Drums, Orchester, ~173 BPM; vidIQ
+  vidiq_generate_music 27.09.2026, 25 Credits; Betreiber 27.09.: «musik ist viel besser geworden»; gemastert −12.9 LUFS / −1.4 dBTP)
