@@ -7802,3 +7802,75 @@ misst nichts.
 Sonden liefen. Unter Last treffen die GLB-Dateien in anderer Reihenfolge ein, und der Entwirrer entscheidet anders —
 also genau das, was ein schnelleres oder langsameres Gerät tut. **Lehre:** was der Spieler sehen soll, gehört `fest`
 auf eine gemessene Lage; und eine Sonde, die Positionen meldet, darf nicht neben einer anderen laufen.
+
+### 4. Ultracode: zehn Regionen parallel gesichtet, jeder Befund adversarial geprüft
+User: „ultracode aktiviert". Zwei Workflows: (1) je Region ein Finder (Luftbilder + `probe-wasda` + Code lesen)
+und je Befund ein Skeptiker, der ihn per Code-Kommentar (Absicht?), `th-ort` (Kasten-Artefakt?) und Messung am
+Zielort (frei?) zu widerlegen hatte — **57 Befunde, 56 bestätigt, 1 widerlegt** (Pappel am Glockenturm-Sockel: im
+Bild nicht als Fehler sichtbar); (2) zwölf Code-Gruppen **nacheinander** eingebaut (eine Datei — nie zwei Schreiber),
+jede Gruppe mit eigener Nachmessung. Was dabei herauskam, nach Ursache:
+- **Vorhügel auf Vierteln und Strassen (10 Befunde):** die Vorhügel-Schleife kannte nur „nicht ins Meer". Apotheke
+  bis zum Erdgeschoss im Gras, Sportpark-Strasse 40 m unter einer Kuppe, Zoo-Strasse und Bauernhof-Anschluss im
+  Hügel, Talstation der Seilbahn in einer Kuppe. Jetzt allgemeine Regel statt zehn ifs: jede Kugel mit Bodenkreis in
+  `window._vorhuegel`, `_vorhuegelRaeumen` nach den Vierteln (Bodenkreis gegen Viertelplatte + 6 m, gegen
+  `_aufViertelWeg`, und < 45 m zur Achterbahn-Station). **16 von 20 Kugeln** fallen — sechs mehr als gemeldet
+  (u. a. v23 mitten in der Gewerbe-Platte). Damit passte auch das **Café** ins Gewerbe (neunter Bau, fiel mit
+  „passt nicht mehr" heraus): `gegenseite:true` versucht die andere Zeile — nur dort, gemessen; global hätte es
+  in Burgdorf zwei Bauten an ungemessene Plätze geschoben.
+- **Marktplatz/Stadtpark:** ein Wohnblock `block(60,SZ+44)` mitten auf der Park-Platte (Wimpelkette durchs 1. OG,
+  Nordfront in der Feuerwache), das Einzelhaus `haus(64)` auf dem Park-Zugangsweg (Brunnen und vier Pappeln als
+  Klumpen an seinem Zaun), Eiche/Fichte/Ahorn/Hecke im Rathaus-Korpus, ein Ahorn mit Stamm im Picknicktisch
+  (kopierter Parametersatz), einer in der Kettenlaterne, die Park-Wippe auf dem Rathaus-Vorplatz. Alles gemessen
+  gestrichen oder fest gesetzt. **Folgefund beim Nachmessen:** `streu()` würfelt mit `Math.random`, und der Park
+  war in `freiPlatz` nie gesperrt — nur die Kollider des Blocks und des Hauses hielten die Streubäume fern; nach
+  deren Abriss stand im ersten Lauf ein Streubaum in der Wippe → Sperrfläche x 28…88 / z 69…96.
+- **Bahnhof:** Schwellen liefen durch die Parkplatz-Zufahrten (jetzt Lücke x 30,5…44 wie an ±78; Beweis über eine
+  Vertex-Sonde, weil `probe-wasda` die 240-m-Gleisgruppe ausfiltert) · zwei Mastbauarten 1,5 m hintereinander bei
+  ±24 (th17-Reihe auf [−96,−60,60,96]).
+- **Sunnehalde:** der auf der Karte angepriesene Spielplatz lag in der 7,5-m-Lücke zwischen zwei Villen hinter
+  deren Hecke, die Sandplatte 4 bzw. 6,5 m unter den Häusern, das Karussell im 26-m-Turm. Spielplatz samt Platte zum
+  th16-Set im Quartierspark (57|−2), Karussell fest auf (101|88).
+- **West:** Brückenfels lag 6,6 m auf dem Sandstrand über dem Wendeplatz (BX0 −128 → −140, Zug-Wende mit
+  `max:BX0−19` ohne Umdrehen — die Wagen sprangen beim Wenden 3,7 m in die Luft) · 32-m-Turm in der Flussmitte
+  (`wegVonStrasse` schob ihn vom Nord-Ring genau ins Wasser) · 32-m-Turm im Villenviertel Rebhalde · Laternen im
+  Fluss (Ring-Nord-Reihe: jeder Punkt näher als 9,5 m an der Ringmitte wurde ins Wasser geschoben), auf dem Strand
+  (Ring-West) und in Dorfhäuschen (Querstrassen-Reihe auf der Hausachse x −89) → Punkte mit drittem Feld „ohne
+  wegVonStrasse" auf gemessenen Gehweg-Lagen · Wohnblock 1,3 m im Fluss · Segelboot fuhr durch den Tunnelfels und
+  ins Frachterheck (Kurs −10…64).
+- **Seepark:** **alles am See war gespiegelt** — `seeR(φ)` wurde in Weltkoordinaten mit falschem Vorzeichen benutzt
+  (Wassermesh mit `rotation.x = −π/2` liegt auf z = 146 − sin a·r, also `seeR(−φ)`): zwei Bänke und zwei Steine im
+  Wasser, Bank und Laterne auf dem Rundweg, Schilf bis 6,7 m im See, `imWasser` sperrte den Nordweg als unsichtbare
+  Wand. **Und die Messgeräte hatten denselben Spiegel** (`th-see`, `th-laternen` meldeten „0 an Land") — jetzt
+  `uf(−a)`, mitgezogen. Steg lag komplett auf dem Rundweg (jetzt radial, 3 m über dem Wasser); Stadthaus mit der
+  Ostwand im Zubringer-Asphalt; Ring-Laterne und eine 9-m-Schranke mitten in der Zubringer-Mündung.
+- **Sportpark:** Achterbahn-Zug schwebte 2,5 m über dem Bahnsteig und steckte im Stationsdach (Kurve abgesenkt,
+  P[0] y 0,2 statt 2 — nicht der Hochbahnsteig, in dem der Spieler gestanden hätte) · Eishalle real 43,6 × 30,9 statt
+  deklariert 24 × 17: Baum in der Südwand, Bank und Eimer 0,6 m dahinter (`viertelMoeblieren` mit `sperr`).
+- **Freizeitpark:** Neonschild NACHTCLUB stand an der Bowlingbahn, CASINO 46 m vom Casino am Strassenrand — feste
+  Zahlen vom 04.09., seit dem Solver-Umbau an der falschen Stelle; jetzt relativ zur echten Viertelmitte. Die zwei
+  Kassenhäuschen standen 18 m hinter dem Tor auf dem Kies (Wunsch-z statt echter Lage; jetzt nach den Vierteln).
+- **Bauernhof/Zoo:** alle Gehege leer (fester 15-s-Timer fand die th24-GLBs noch nicht — `zoo.bauten` war bei 63 s
+  leer, bei 72 s voll → Tiere hängen am Schlusslauf; dabei zweiter Fund: die Hasen schwebten auf dem Streichelzoo-
+  DACH, weil „höchster flacher Quader" das Dach war) · Saatreihen liefen unter Scheune, Silo, Stall und Gewächshaus
+  durch (Felder je Zeile schmaler) · vier Waldbäume in der Koppel (`freiPlatz` kannte den Hofausbau nicht) ·
+  Randbäume quer durch die Äcker (`randBaeume:false`) · Zoo-Möbelsatz: 6er-Satz sortierte sich nach Seiten (Süd
+  immer Index 0/2/4) → neun identische Bänke gegenüber neun Eimern und fünf `th31_schild_rund` — das ist kein
+  Verkehrsschild, sondern der **Ritter-Rundschild** aus Charge 30.
+- **Flughafen/Neustadt:** dieselbe Paritätsfalle (fünf Rundschilde in Reihe, ein Bauzaunfeld quer auf dem
+  Hangar-Zugangsweg) → 5er-Satz ohne Bauzaun; 34 m nackte Platte hinter Tower und Radarturm (`rand` 14 → 22);
+  Neustadt hatte **null Kleinteile** (entstand nach der Möbel-Messung von Runde 95) → 14 von Hand, fest, weil der
+  11-m-Takt den Hotel-Zugangsweg trifft.
+- **Burgdorf/Spielclub/Grosser Berg:** **Burgdorf war vom Ortsmittelpunkt aus eine leere Kiesfläche** — fünf der
+  zwölf Häuser tauchten erst unter 34 m auf: `lodAufbau` nahm die LOKALE Knotenskala (`n.scale`) statt der Weltskala
+  aus der Weltmatrix, ein kleiner Knoten in einem grossen, skalierten Wrapper galt als winzig. Jetzt Achsvektoren der
+  `matrixWorld` → bd_house_c 0/5 → 5/5, bd_smithy 0/8 → 8/8, bd_stable 0/8 → 8/8 (Sonde mit `warteAufRuhe`).
+  **Nebenwirkung, gewollt:** alle bau()-Modelle mit Knotenskala werden jetzt nach echtem Weltradius eingestuft.
+  Doppelmast am Spielclub (Ringlaterne 121,5 neben Club-Laterne 122 → 126). Gipfel: 48-Strahlen-„Windrad" kam vom
+  Exponenten 0,80 (Ring 1 bei 18 m) plus `flatShading`; Exponent 1,0 + Glattschattierung. Die „schwarze Zacke" bleibt:
+  sie ist das Ende des Fahrweg-Bands am 52°-Hang (eigene Band-Sonde), und die Bergwege sind tangential statt radial
+  verbreitert (7 m Fahrweg rendert als 35-cm-Linie) — eigene Runde.
+**Lehren aus dem Workflow:** (1) Ein Skeptiker, der messen MUSS (Zielort frei?), fand in 20 von 56 Fällen einen
+besseren Ort als der Finder — die Widerlegungsquote war klein, die Korrekturquote gross. (2) Der Entwirrer und
+`wegVonStrasse` sind die häufigste Ursache: „Code sagt A, Spiel zeigt B" kam in 14 Befunden vor. (3) Zwei
+Messgeräte trugen denselben Fehler wie das Gemessene (See-Spiegel) — ein Messgerät braucht eine eigene Gegenprobe
+gegen die Welt, nicht gegen die Formel.

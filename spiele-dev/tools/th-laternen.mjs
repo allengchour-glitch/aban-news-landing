@@ -8,7 +8,11 @@
  *
  * Geprueft wird gegen die Geometrie, aus der See und Parkplatz wirklich entstehen:
  *   See       `seeR(a) = 13 + sin(3a)*1.8 + cos(5a+1.3)*1.2 + sin(2a+0.7)*0.9`  um (0|146)
+ *             ⚠️ in WELT-Peilung φ = atan2(z−146, x) gilt seeR(−φ): das Wassermesh liegt mit rotation.x=-π/2
+ *             auf z = 146 − sin a·r (Runde 102 — vorher pruefte dieses Geraet gegen den gespiegelten See)
  *   Parkplatz `PX=25, PZ=97, PW=36, PD=16`, Stellreihen x 9,6…40,4, Fahrgasse ±2,8 um z=97
+ *   Sand      PlaneGeometry(14,340) um x -128 → x -135…-121, |z| < 170   (Runde 102: zwei West-Ring-Masten standen darauf)
+ *   Fluss     `machWasser(200,7,-20,-90.5)` → x -120…80, z -94…-87        (Runde 102: sieben Nord-Ring-Masten standen darin)
  *
  * Aufruf:  node spiele-dev/tools/th-laternen.mjs
  */
@@ -20,11 +24,13 @@ const sonde = `function(){
   var PX=25,PZ=97,PW=36,PD=16,BAY0=9.6,BAY1=40.4,GASSE=2.8;
   P.forEach(function(p){
     var x=p[0],z=p[1],grund=[];
-    var a=Math.atan2(z-146,x), d=Math.hypot(x,z-146), ufer=seeR(a);
+    var a=Math.atan2(z-146,x), d=Math.hypot(x,z-146), ufer=seeR(-a);   /* seeR(−φ), s. Kopf (Runde 102) */
     if(d<ufer)grund.push("IM SEE, "+(ufer-d).toFixed(1)+" m vom Ufer");
     if(Math.abs(x-PX)<PW/2&&Math.abs(z-PZ)<PD/2){
       if(Math.abs(z-PZ)<GASSE)grund.push("in der FAHRGASSE des Parkplatzes");
       else if(x>BAY0&&x<BAY1)grund.push("auf einem STELLPLATZ");}
+    if(x<-121&&x>-135&&Math.abs(z)<170)grund.push("auf dem STRAND (Sand x -135…-121)");
+    if(x>-120&&x<80&&z>-94&&z<-87)grund.push("IM FLUSS (z -94…-87)");
     if(grund.length)R.push({x:+x.toFixed(1),z:+z.toFixed(1),grund:grund.join(" + ")});});
   return {gesamt:P.length,fehler:R};}`
 

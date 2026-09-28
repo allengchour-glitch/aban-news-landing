@@ -893,7 +893,7 @@ var WORLD_POIS=[
   [-58,-78,"⛪","Kathedrale"],[-136,-196,"🌬️","Windmühle"],[-40,-196,"🚜","Bauernhof"],
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Stadtpark"],[96,14,"⛲","Brunnmatt"],
-  [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
+  [57,-3,"🛝","Spielplatz"],   /* Runde 102: Spielplatz liegt im Quartierspark beim th16-Set, nicht mehr zwischen den Sunnehalde-Villen */[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Sunnehalde"],[-96,18,"🏰","Rebhalde"],[10,139,"⛵","Seepark"],[-131,-56,"🌊","Meer"],   /* am Strand (Strandkoerbe z -46…-67), nicht 100 m draussen in der Meerplatten-Mitte (Runde 93) */
   [172,0,"🏢","Gewerbe Rietli"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Bürgli"],
   /* Die drei Viertel dieser Charge hatten keine Marke — sie standen in der Welt, aber
@@ -983,9 +983,40 @@ function wegVonStrasse(x,z){
   var RXl=RX+11,SZl=GH*CS/2+12,SZo=SZl+11;
   var pts=[];
   for(var x=-96;x<=96;x+=26){pts.push([x,SZo],[x,-SZo]);}          // Nord-/Suedstrasse, beidseitig
-  for(var z=-84;z<=84;z+=26){pts.push([RXl,z],[-RXl,z]);}          // Querstrassen
-  for(var xr=-104;xr<=104;xr+=34){pts.push([xr,-93],[xr,125]);}    // Ringstrasse Nord/Sued
-  for(var zr=-80;zr<=100;zr+=34){pts.push([119,zr],[-119,zr]);}    // Ringstrasse West/Ost
+  /* ⚠️ Runde 102 — drei Reihen standen GEMESSEN auf dem falschen Grund, weil wegVonStrasse (RM 9,5 ab Ringmitte,
+     MQ 10,5 ab Querstrasse, M 13,5 ab Hauptstrasse) den Fuss (r 0,36) viel weiter schiebt, als er braucht.
+     Ein drittes Feld p[2]=1 heisst „Lage fest, kein wegVonStrasse" — nur fuer einzeln gemessene Punkte:
+     · Querstrasse WEST (x -89 = Achse der Dorfhaus-Reihe haus(-(RX+11),…)): (-89|-6) stand MITTEN im Haeuschen
+       (-89|-6), (-89|44,5) im Haeuschen (-89|44) (Koepfe ragten aus dem Dach), (-89|-44,5) in der Suedwand des
+       Haeuschens (-89|-42). Ersatz auf der West-Gehwegplatte (Buffer #d4d1c8 x -85,5…-70,5): (-84,1|-6) frei;
+       (-84,1|46) statt 44,5 (dort liegt die Zebra-Rampenplatte z 44,4…44,7), Plattenstueck 44,7…47,1;
+       (-84,1|-46,7) statt -44,5 (Rampe -44,7…-44,4, weisse Markierung -46,2…-45,6), Platte bis -47,1.
+       Die uebrigen Punkte der Reihe bleiben bei wegVonStrasse (z -58 laege sonst in der Sued-Hauptstrasse,
+       z -32 in der Strandzufahrt-Luecke). Ostseite (89|-6)/(89|20) rechnerisch ebenso in Haeuschen — dort erst
+       messen (th-umfeld 76 -14 95 26), nicht Teil dieser Runde.
+     · Ring NORD (z -93): raus(z,-100,9.5) machte daraus z -90,5 = Flussmitte (machWasser z -94…-87) — sieben
+       Masten im Wasser. Jetzt fest auf der Gehweg-MITTE z -94,4 (ringTrottoirs: RGZ_N+5,6, Platte -95,4…-93,4):
+       Fuss voll auf der Platte, 0,64 m vom Wasserrand. x -70 → -71 (2,6-m-Streifen zwischen Zubringer-Platte
+       -71,4 und Turmkasten -68,8), x -2 → -6 (Brueckendeck x -4,5…4,5), x -36 → -40 (th-umfeld -46 -100 -30 -86:
+       bei -36 ragte der 3,2-m-Ausleger 0,9 m in die Oberkante der Westwand des Wohnblocks (-30|-90,5), Kasten
+       x -35,3…-24,8 — der Block steht selbst im Fluss, eigener Befund; bei -40 Karte frei, Kollider erst ab -35).
+       Die 22 Ufer-Findlinge (s. dort) wuerfeln auf derselben Linie z -94,4 und halten seit Runde 102 1,8 m
+       Abstand zu diesen Achsen. Ring SUED (z 125) bleibt wie bisher.
+     · Ring WEST (x -119): raus(x,-112,9.5) schob auf -121,5 = auf den Sand (-135…-121), neben Strandkorb (-127|-46)
+       und Rettungsturm (-129|-72). Fest auf -119: Fuss -119,36…-118,64 neben der Gehwegplatte (-118,6), 1,6 m vor
+       dem Sand; th-umfeld x -122…-116 / z -84…104 ist bei x -119 frei (nur z -34…-27 belegt, Strandzufahrt).
+       Ring OST bleibt bei wegVonStrasse: (119|22) laege sonst im Kasten der th48_markthalle. */
+  for(var z=-84;z<=84;z+=26){pts.push([RXl,z]);
+    if(z===-58)pts.push([-84.1,-46.7,1]);else if(z===-6)pts.push([-84.1,-6,1]);else if(z===46)pts.push([-84.1,46,1]);
+    else pts.push([-RXl,z]);}                                        // Querstrassen (West: 3 Punkte fest)
+  /* ⚠️ Runde 102, Ring SUED x -70: wegVonStrasse schob [-70,125] nur auf z 127,5 — es kennt die sechs
+     Diagonal-Zubringer aus landstrasse() nicht (dieselbe Luecke wie bei den Tuermen, Runde 93). Genau dort
+     muendet der Zubringer 120° (Belag bei z 127,5 x -78,45…-68,75): der Mast stand 1,25 m innerhalb der
+     Ostkante auf der Fahrbahn, hinter dem Fussgaengerstreifen, neben der Ortstafel. Jetzt x -62 (→ -62|127,5):
+     2,5 m oestlich des Belags, Ortstafel-Kasten (-66.1|126.9) endet bei -65,4, Beispielhaus beginnt z 131,7,
+     Ring-Gehweg endet z 124,6. Bleibt bei wegVonStrasse (nur die z-Verschiebung greift). */
+  for(var xr=-104;xr<=104;xr+=34){pts.push([xr===-70?-71:(xr===-2?-6:(xr===-36?-40:xr)),-94.4,1],[xr===-70?-62:xr,125]);}    // Ringstrasse Nord (fest) / Sued (x -70 → -62, s. o.)
+  for(var zr=-80;zr<=100;zr+=34){pts.push([119,zr],[-119,zr,1]);}  // Ringstrasse Ost / West (fest)
   /* ⚠️ ZWEI DIESER SECHS STANDEN AUF DEM FALSCHEN UNTERGRUND — gemessen im Spiel,
      nicht geschaetzt (th-laternen.mjs).
      [25,97] war die MITTE des Parkplatzes: `var PX=25,PZ=97,PW=36,PD=16` — und
@@ -1001,23 +1032,30 @@ function wegVonStrasse(x,z){
      von der Sued-Ringstrasse, die sonst unbeleuchtet blieb. */
   pts.push([68,87],[-4,78],[-33,86],[41.7,91.6],[7.5,128],[-24,74]);   // Plaetze, Parkplatz, Seepark-Zufahrt
   /* 💡 SPIELCLUB — EIN EINZIGES LICHT IN 13,6 m. Die Laternenkette folgt dem
-     Stadtraster und endet bei |x| = 119; der Club steht auf (126|102), knapp
+     Stadtraster und endet bei |x| = 119; der Club steht auf (128|102), knapp
      ausserhalb. GEMESSEN um 22 Uhr, Kamera am Club: EIN Punktlicht im Umkreis von
      25 m, 13,6 m entfernt — der Eingang selbst lag allein im Hemisphaerenlicht
-     (nachts 0,26). Jetzt drei, davon zwei in 11,7 m, die den Eingang flankieren.
+     (nachts 0,26). Jetzt drei, davon zwei in 10,2 und 11,7 m, die den Eingang flankieren.
      ⚠️ MEINE ERSTE ZAHL WAR FALSCH: der erste Lauf meldete NULL Lichter und stand
      damit in einer frueheren Fassung dieses Kommentars. Der Pool vergibt seine
      Lichter aber nach KAMERAPOSITION, und die Kamera stand beim Spielerhaus — am
      Club brannte darum folgerichtig nichts. Vorher und Nachher muessen von
      derselben Stelle aus gemessen werden, sonst vergleicht man zwei Orte.
-     Zwei Masten flankieren den Eingang (Tuer auf 128|96, Suedseite): z = 92 liegt
+     Zwei Masten flankieren den Eingang (Tuer auf 130|96 = CX+2, Suedseite): z = 92 liegt
      4 m vor der Wand, ausserhalb des Kollibers (z 95,5…108,5) und 8 m noerdlich der
-     naechsten Fahrbahn. ⚠️ KEIN neues Lichtobjekt — nur zwei Eintraege in der
-     Positionsliste. Der Pool vergibt weiter genau LAMP_MAX Lichter an die naechsten
+     naechsten Fahrbahn.
+     ⚠️ DER WESTLICHE MAST STAND AUF x 122 — EIN DOPPELMAST (Runde 102). Die Ringkette endet
+     nicht bei 119: wegVonStrasse schiebt [119,90] auf (121,5|90), und genau das ist das oben
+     gemessene eine Licht in 13,6 m. Der Mast auf (122|92) stand 2,06 m daneben (probe-wasda:
+     zwei Masten h 6,81, Kaesten x 121,1…121,9 und 121,6…122,4), im Bild vier Koepfe auf einem
+     Fleck. Dazu war der Club von CX 126 auf 128 gerueckt (Tuer 130), die Masten sassen -8/+4 m
+     zur Tuer. Jetzt 126 und 134 = ±4 m um die Tuer, 4,9 m zur Ringlaterne; (126|92) ist frei
+     (th-umfeld: kein Belag, kein Kollider; naechste Nachbarn Baum 123,3|95,2, Busch 127,5|87,2).
+     ⚠️ KEIN neues Lichtobjekt — nur zwei Eintraege in der Positionsliste. Der Pool vergibt weiter genau LAMP_MAX Lichter an die naechsten
      Masten; die Zahl gleichzeitig brennender Punktlichter bleibt unveraendert und der
      Shader wird nicht neu gebaut (die Lehre aus #2368/#2387). Gemessen: Laternen
      174 -> 176, alle auf tragfaehigem Grund, zahlWechsel weiterhin 0. */
-  pts.push([122,92],[134,92]);
+  pts.push([126,92],[134,92]);
   var _lampPoolTexC=null;
   function _lampPoolTex(){
     if(_lampPoolTexC)return _lampPoolTexC;
@@ -1038,10 +1076,10 @@ function wegVonStrasse(x,z){
   window._lampGlows=window._lampGlows||[];
   window._lampPos=[];
   pts.forEach(function(p){
-    var q=wegVonStrasse(p[0],p[1]);                                 // nie in der Fahrbahn
+    var q=p[2]?[p[0],p[1]]:wegVonStrasse(p[0],p[1]);                // nie in der Fahrbahn — ausser p[2]=1 (einzeln gemessene Lage, Runde 102)
     var px=q[0],pz=q[1];
     window._lampPos.push([px,pz]);
-    var kg=new THREE.Group();
+    var kg=new THREE.Group();   /* kein userData.fest: Laternen liegen nicht in _gebaeude (Entwirrer), und fremdes userData nimmt sie aus _zusammenfassen (_zfUdOk) */
     var fu=new THREE.Mesh(fuG,mMat);fu.position.y=0.3;kg.add(fu);
     var ma=new THREE.Mesh(maG,mMat);ma.position.y=3.4;kg.add(ma);
     var qa=new THREE.Mesh(qaG,mMat);qa.position.y=6.4;kg.add(qa);
@@ -1507,8 +1545,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Figur. Damit koennen Bild und Begehbarkeit gar nicht auseinanderlaufen —
      der klassische Fehler bei begehbarem Gelaende.
 
-     Profil: 190 m auf 300 m Radius mit Exponent 1,5. Mittlere Neigung rund 31
-     Grad — steil genug fuer einen Berg, flach genug zum Hochlaufen. */
+     Profil: 170 m auf 200 m Radius mit Exponent 1,5 (GBERG; urspruenglich 190 auf 300,
+     s. u.). Mittlere Neigung rund 40 Grad — steil genug fuer einen Berg, flach genug
+     zum Hochlaufen. */
   /* ⚠️ ERST STAND ER BEI (60|-330) MIT RADIUS 300 — und griff damit bis z = -30
      aus, also mitten in die Stadt. Im Bild standen die Hochhaeuser im Hang, und
      schlimmer: `gelaendeH` lieferte im Nordteil der Stadt bis zu 50 m, waehrend
@@ -1578,7 +1617,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var dB=Math.hypot(x>60?x-60:(x<20?x-20:0),z+246);                      /* Schenkel z=-246 */
       /* ⚠️ 22 m reichten nicht (Runde 97, probe-bergstrasse: 99 Strassenpunkte am Bauernhof UNTER dem Netz,
          bis +0,033 ueber dem Belag — Bild k34-bauernhof-oben, Wiese quer ueber Landstrasse und Anschluss).
-         Die Dreiecke sind am Fuss 8 m tief, aber bis 29 m breit (48 Winkel auf r ~220): ein Eckpunkt 23 m
+         Die Dreiecke sind am Fuss 10 m tief (seit Runde 102 gleichmaessige Ringe, vorher 8 m), aber bis 29 m
+         breit (48 Winkel auf r ~220): ein Eckpunkt 23 m
          neben der Fahrbahn traegt noch Hang und zieht die Flaeche ueber den Asphalt. 34 m = Breite + Luft. */
       var dS=Math.min(dA,dB),tS=(dS-34)/26;
       if(tS<1)h*=(tS<=0?0:tS*tS*(3-2*tS));}
@@ -1590,8 +1630,25 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     for(var ri=0;ri<=NR;ri++){
       /* Raster bis 1,32*rad: der Grundriss ist jetzt eine Ellipse mit Nebengipfeln
          und reicht weiter als der Grundradius. Punkte ausserhalb liefern Hoehe 0
-         und bilden einen flachen Saum — besser als ein abgeschnittener Grat. */
-      var rr=G.rad*1.32*Math.pow(ri/NR,0.80);
+         und bilden einen flachen Saum — besser als ein abgeschnittener Grat.
+         ⚠️ GLEICHMAESSIGE RINGE STATT Math.pow(ri/NR,0.80) (Runde 102, Grosser Berg). Mit dem
+         Exponenten 0,80 lag der erste Ring erst bei 19,5 m: der Gipfel bestand aus 48
+         Faecherdreiecken vom Apex (170 m) hinunter auf 146 m, mit Flatshading ein schwarz-
+         weisses Windrad um den 8,5-m-Teller. GEMESSEN (Normalen-Sonde): Lambert-Spruenge
+         benachbarter Faecherdreiecke bis 0,48, eine Kerbe 0,74→-0,18 = die schwarze Zacke
+         neben dem Teller; Schneekappe nur bis Ring 2 (~35 m), ab Ring 3 Fels 0,16–0,21 = der
+         dunkle „Kraterrand". Jetzt Ring 1 bei 10 m (gemessen 9,5–10,8): die Faecherspitzen ragen
+         1,65 m ueber den Teller, die Schneekappe verlaeuft ueber fuenf Ringe (Rot-Mittel je Ring
+         0,95/0,95/0,86/0,56/0,31/0,20 statt 0,95/0,79/0,45/0,28/Fels). Am Fuss werden die Dreiecke
+         10 statt 8 m tief — probe-bergstrasse danach: 0 von 1933 Belagpunkten verdeckt, Gegenprobe
+         1153 (schlaegt an), wie vorher.
+         ⚠️ DAS WINDRAD BLIEB DAMIT TROTZDEM (Fotos vorher/nachher deckungsgleich): die Rippen haengen
+         nur vom Winkel ab, die Lambert-Folge von Ring 1 ist die von Ring 0 — der Streifen laeuft
+         durch alle Ringe, nicht nur durch den Faecher. Behoben erst durch flatShading:false am
+         Material (unten). Die SCHWARZE ZACKE neben dem Teller ist etwas Drittes: das Ende des
+         Fahrweg-Bands (band(), r 14–20 m, Asphalt-Dreiecke bis 9,7 m² mit Normale-y 0,32–0,64 auf
+         dem 52°-Hang, sonnenabgewandt) — Nebenbefund, nicht Teil dieser Aenderung. */
+      var rr=G.rad*1.32*(ri/NR);
       for(var ai=0;ai<NA;ai++){
         var aa=ai/NA*6.283;
         /* Gratrippen wie bei der Kette, aber flacher — der Berg soll begehbar
@@ -1632,8 +1689,14 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       cc[v*3]=c0;cc[v*3+1]=c1;cc[v*3+2]=c2;
     }
     g.setAttribute("color",new THREE.BufferAttribute(cc,3));
+    /* ⚠️ flatShading:false (Runde 102): die Rippen (mod/kerbe) haengen nur vom Winkel ab, der
+       Lambert-Wert jeder Winkelspalte ist in Ring 0, 1, 2 gleich (Normalen-Sonde) — mit Flatshading
+       also ein Windrad aus 48 Strahlen um den Gipfel, das mit dem feineren Raster nicht verschwand.
+       Foto th-blick 60 -420 150 1.25 danach: Strahlen weg, weicher Schneeverlauf; von Sueden
+       (60 -250 220 0.7) ein glatter statt facettierter Berg. Die Kettenberge (Z. ~1302) bleiben
+       facettiert — bewusst nur dieser eine Berg, weil nur hier die Rippen radial vom Gipfel laufen. */
     var bm=new THREE.Mesh(g,new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,
-                                                            flatShading:true,envMapIntensity:0.2}));
+                                                            flatShading:false,envMapIntensity:0.2}));
     bm.userData.gelaende=1; bm.userData.nieAusblenden=1; bm.frustumCulled=false;
     bm.receiveShadow=true; scene.add(bm);
 
@@ -1690,16 +1753,33 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   })();
   /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
+    window._vorhuegel=[];
     for(var v=0;v<26;v++){
       /* Die Vorhuegel sind der Uebergang von der Ebene ins Gebirge — sie muessen
-         mit dem Guertel mitwandern, sonst stehen sie mitten im neuen Vorland. */
+         mit dem Guertel mitwandern, sonst stehen sie mitten im neuen Vorland.
+         ⚠️ Runde 102: Genau das taten sie trotzdem. Der Guertel r 248…291 ist inzwischen bebaut (Gewerbe
+         Rietli, Seilbahn-Talstation, Sportpark, Freizeitpark, Zoo, Bauernhof, Achterbahn-Station), und diese
+         Schleife kennt die Viertel nicht — die stehen erst ~260 ms spaeter, und der Viertel-Solver kennt
+         umgekehrt die Kugeln nicht (bergGitter() zaehlt nur Netze >= 20 m, die Kuppen sind 0,3…9,2 m).
+         GEMESSEN (probe-wasda/th-ort): v25 begrub im Gewerbe Rietli Parkbank 1,74 m, Laterne 1,22 m und
+         Lieferwagen 1,13 m; v24 die Apotheke bis 1,69 m; v0 die Talstations-Ecke 1,27 m; v5 (Kuppe 7 m) lag
+         quer ueber der Sportpark-Strasse, v7 auf Tennis- und Eishalle, v8 auf dem Strassenende, v9 als
+         0,3-m-Scheibe 22 m neben der Achterbahn-Station, v17 (7,8 m) auf dem Ostende der Zoo-Strasse, v19 um
+         die th38-Scheune, v20 (9,2 m) auf der L-Ecke des Bauernhof-Anschlusses. Darum wird hier nur gebaut
+         und gemerkt (window._vorhuegel mit Bodenkreis r_o); `_vorhuegelRaeumen` nimmt ueber `_nachVierteln`
+         jede Kugel wieder weg, die eine Viertelplatte, eine Viertel-/Anschlussstrasse oder die Station trifft. */
       var av=v/26*6.283+0.11,rv=248+((v*31)%44);
       var vr=18+((v*11)%16);
       var vx=Math.cos(av)*rv,vz=Math.sin(av)*rv;
       if(vx<-120&&Math.abs(vz)<170)continue;      // nicht ins Meer
       var vh=new THREE.Mesh(new THREE.SphereGeometry(vr,10,6,0,6.283,0,Math.PI/2),vhM);
-      vh.userData.gelaende=1;vh.position.set(vx,-4-((v*3)%5),vz);
-      vh.scale.y=0.3+((v%3)*0.07);vh.receiveShadow=true;scene.add(vh);}
+      var vy=-4-((v*3)%5),vs=0.3+((v%3)*0.07);
+      vh.userData.gelaende=1;vh.position.set(vx,vy,vz);
+      vh.scale.y=vs;vh.receiveShadow=true;scene.add(vh);
+      /* Bodenkreis: Halbkugel r=vr um (vx|vy|vz), in y auf vs gestaucht — am Boden y=0 liegt der
+         Kreis bei r_o = sqrt(vr^2 - (vy/vs)^2); 0 heisst ganz unter dem Boden (v3, v6, v16, v18). */
+      var vq=(vy/vs)*(vy/vs),vro=vq<vr*vr?Math.sqrt(vr*vr-vq):0;
+      window._vorhuegel.push({m:vh,v:v,x:vx,z:vz,r:vro,kuppe:vy+vs*vr});}
   })();
   // Sanfte Huegelkette am Rand (grosse flache Halbkugeln)
   var hTex=grasTex.clone();hTex.needsUpdate=true;hTex.repeat.set(6,4);
@@ -1771,6 +1851,14 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      namens `rad()`, und die Enten schwammen nach der Notiz »See-Rand liegt bei
      ~11…16« — echt sind 9,1…16,9. Zwei Ableitungen derselben Form laufen
      auseinander; hier gibt es ab jetzt nur diese eine. */
+  /* ⚠️ VORZEICHEN (Runde 102, gemessen): Wasser, Sandring und Rundweg sind Meshes mit rotation.x=-π/2 —
+     lokal (cos a, sin a)·seeR(a) landet in der Welt auf (x, 146 − sin a·r). Der Uferradius in WELT-Peilung
+     φ = atan2(z−146, x) ist darum seeR(−φ), nicht seeR(φ). Gegenprobe: Suedrand z 161,4 = 146+seeR(3π/2),
+     Ostrand x 13,9 = seeR(0), Nordrand z 133,5 = 146−0,866·seeR(π/3). Alles, was in Weltkoordinaten rechnet
+     (Ufersteine, Schilfguertel, Schilfinseln, Baenke/Laternen/Baeume der Promenade, Enten, imWasser, die
+     Messgeraete th-see/th-laternen), stand bis Runde 102 an der Ost-West-Achse gespiegelt: zwei Baenke und
+     zwei Steine im See, Schilf bis 6,4 m im Wasser, Bank + Laterne quer auf dem Weg. Diese Aufrufer rechnen
+     jetzt z = 146 − sin·r bzw. seeR(−φ); die drei Meshes bleiben, wie sie sind. */
   function seeR(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;}
   window._seeUfer=seeR; window._seeMitte={x:0,z:146};
   (function machSee(x,z){
@@ -1812,9 +1900,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       function rnd(){sd=(sd*16807)%2147483647;return sd/2147483647;}
       for(var b=0;b<74;b++){
         var ab=rnd()*Math.PI*2;
-        if(Math.sin(ab)<-0.45)continue;                /* Promenadenseite aussparen */
+        if(Math.sin(ab)>0.45)continue;                 /* Promenadenseite (Vorplatz, z<146) aussparen — Vorzeichen s. seeR (Runde 102) */
         var rb=seeR(ab)+0.35+rnd()*0.7;
-        var bx=x+Math.cos(ab)*rb, bz=z+Math.sin(ab)*rb;
+        var bx=x+Math.cos(ab)*rb, bz=z-Math.sin(ab)*rb;   /* z − sin wie das Wassermesh (Runde 102: 9 von 51 Bueschel standen im See, 20 auf dem Weg) */
         for(var h=0;h<5;h++){
           halme.push([bx+(rnd()-0.5)*1.5, bz+(rnd()-0.5)*1.5,
                       1.5+rnd()*1.3, (rnd()-0.5)*0.3, rnd()*3.14]);}
@@ -1838,8 +1926,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   see.rotation.x=-Math.PI/2;see.position.set(0,-0.03,146);scene.add(see);
   // Ufersteine folgen der echten Uferkurve (knapp ausserhalb des Wassers)
   for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;
-    if(Math.sin(sa)<-0.45)continue;   /* Promenadenseite aussparen wie das Schilf — Stein 7 lag auf dem Vorplatz (Runde 93) */
-    var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=146+Math.sin(sa)*(seeR(sa)+1.0);
+    if(Math.sin(sa)>0.45)continue;    /* Promenadenseite (Vorplatz, z<146) aussparen wie das Schilf — Stein 7 lag auf dem Vorplatz (Runde 93); Vorzeichen seit Runde 102 wie das Wassermesh */
+    var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=146-Math.sin(sa)*(seeR(sa)+1.0);   /* ⚠️ Runde 102: mit „146+sin" lagen Stein (0.1|156.5) 4,9 m und (12.9|141.6) 0,5 m im Wasser (s. seeR) */
     stein.position.set(0+Math.cos(sa)*(seeR(sa)+1.0),0.04,stz);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
   // Viele Baeume rings um die Stadt (prozedural, gestreut)
   /* Geometrien + Materialien EINMAL bauen und teilen — vorher bekam jeder der ~400
@@ -1866,14 +1954,21 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);return b;}
   window._baum2=baum2;   /* der Quartier-Generator liegt in einem anderen Scope */
   /* Runde 102: Randbaeume der Viertel, die im fertigen Bau oder Kollider stehen, wieder wegnehmen.
-     Kasten je Bau um 0,3 m eingezogen — ein Baum, der an der Hauswand steht, bleibt. */
-  window._randBaeumeRaeumen=function(){var L=window._randBaeume||[];if(!L.length)return 0;
+     Kasten je Bau um 0,3 m eingezogen — ein Baum, der an der Hauswand steht, bleibt.
+     ⚠️ Auch die STREUBAEUME (streu() → baum2, per Math.random gesetzt) laufen mit: probe-wasda -65 245 -15 290
+     fand einen 7 m hohen Streubaum mit dem Stamm IN der Suedwand der Eishalle (-29,6|253,9) — freiPlatz() kannte
+     nur den 24x17-Schaetzkollider, die geladene Huelle ist 43,6x30,9. Erkannt werden sie als Gruppen, deren
+     erstes Kind den Stamm mit _stammM traegt (so baut baum2). */
+  window._randBaeumeRaeumen=function(){var L=window._randBaeume||[],S=[];
+    scene.children.forEach(function(o){if(o.isGroup&&o.children.length&&o.children[0].material===_stammM&&L.indexOf(o)<0)S.push(o);});
+    if(!L.length&&!S.length)return 0;
     var bb=new THREE.Box3(),K=[],weg=0;
     (window._gebaeude||[]).forEach(function(g){if(!g.parent)return;bb.setFromObject(g);if(bb.isEmpty()||bb.max.y-bb.min.y<2.5)return;
       K.push([bb.min.x+0.3,bb.max.x-0.3,bb.min.z+0.3,bb.max.z-0.3]);});
-    window._randBaeume=L.filter(function(b){var x=b.position.x,z=b.position.z;
-      var drin=(typeof inSolid==="function"&&inSolid(x,z))||K.some(function(k){return x>k[0]&&x<k[1]&&z>k[2]&&z<k[3];});
-      if(drin){scene.remove(b);weg++;}return !drin;});
+    function drin(b){var x=b.position.x,z=b.position.z;
+      return (typeof inSolid==="function"&&inSolid(x,z))||K.some(function(k){return x>k[0]&&x<k[1]&&z>k[2]&&z<k[3];});}
+    window._randBaeume=L.filter(function(b){var d=drin(b);if(d){scene.remove(b);weg++;}return !d;});
+    S.forEach(function(b){if(drin(b)){scene.remove(b);weg++;}});
     return weg;};
   /* ⚠️ Baeume/Felsen/Heuballen bewusst NICHT solide. moveSim() prueft nur achsenweise und
      bleibt an einem Hindernis einfach stehen — es weicht nicht aus. ~290 zusaetzliche kleine
@@ -1889,11 +1984,46 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var V=(window._viertelSolver&&window._viertelSolver.VIERTEL)||[];
     if(!V.some(function(g){return g.name==="Bauernhof";})&&n9++<60){setTimeout(warte,250);return;}
     fn();})();};
+  /* ⛰️ Runde 102: Vorhuegel im bebauten Vorland wegnehmen (Ursache und Messwerte stehen an der
+     Vorhuegel-Schleife oben). EINE Regel statt zehn Einzelfaelle — weg ist jede Kugel, deren Bodenkreis r_o
+       (1) eine Viertelplatte (VIERTEL: x±w/2, z±d/2) plus 6 m Rand schneidet — auch eine ganz vergrabene
+           Kugel (r_o 0, Kuppe unter 0) mit Mitte auf der Platte: unsichtbar, aber probe-wasda listete v18
+           unter dem Bauernhof als "Mesh/0 h 7,2" und wuerde sie wieder melden,
+       (2) eine Viertel- oder Anschlussstrasse trifft (Mitte + 12 Randpunkte gegen _aufViertelWeg, pad 3;
+           so faellt v20, dessen Kreis keine Platte, aber die L-Ecke des Bauernhof-Anschlusses trifft),
+       (3) oder naeher als 45 m an der Achterbahn-Station (-190|212) liegt (v9: 22,2 m; v8 bleibt mit 72,7 m).
+     Kein Ersatzort: die Vorhuegel sind reine Uebergangsdeko, der Grosse Berg leistet den Uebergang dort selbst. */
+  window._vorhuegelRaeumen=function(){var L=window._vorhuegel||[];if(!L.length)return 0;
+    var V=(window._viertelSolver&&window._viertelSolver.VIERTEL)||[],weg=0,liste=[];
+    function platte(h){for(var i=0;i<V.length;i++){var g=V[i];
+        var dx=Math.max(g.x-g.w/2-6-h.x,0,h.x-(g.x+g.w/2+6)),dz=Math.max(g.z-g.d/2-6-h.z,0,h.z-(g.z+g.d/2+6));
+        if(dx*dx+dz*dz<=h.r*h.r)return "Platte "+g.name;}return null;}   /* <= : r_o 0 (ganz vergraben) zaehlt mit der Mitte */
+    function weg9(h){if(!window._aufViertelWeg)return null;
+      var t=window._aufViertelWeg(h.x,h.z,3);if(t)return t;
+      for(var k=0;k<12;k++){var a=k/12*6.283;t=window._aufViertelWeg(h.x+Math.cos(a)*h.r,h.z+Math.sin(a)*h.r,3);if(t)return t;}
+      return null;}
+    window._vorhuegel=L.filter(function(h){
+      var grund=(Math.hypot(h.x+190,h.z-212)<45?"Achterbahn-Station":null)||platte(h)||weg9(h);
+      if(grund){scene.remove(h.m);weg++;liste.push("v"+h.v+" ("+h.x.toFixed(0)+"|"+h.z.toFixed(0)+", r_o "+h.r.toFixed(1)+") "+grund);}
+      return !grund;});
+    window._vorhuegelWeg=weg;window._vorhuegelWegListe=liste;   /* fuer Sonden nachlesbar */
+    console.log("Vorhuegel: "+weg+" im Vorland entfernt"+(weg?" — "+liste.join("; "):""));
+    return weg;};
+  window._nachVierteln(window._vorhuegelRaeumen);
   function freiPlatz(x,z,pad){
     pad=pad||0;
     if(x<-116)return false;                                                    // Meer + Strand (Baeume standen im Wasser)
     if(x>118&&x<166&&z>3&&z<37)return false;                                   // 🩹 Schwarm-7: Wochenmarkt (142|20)
     if(x>26&&x<80&&z>136&&z<176)return false;                                  // 🩩 Schwarm-7: Sportplatz (53|155)
+    /* 🏛️ Markt-Platz, Rathaus-Vorplatz und Markt-Park samt Eingangsstreifen (Runde 102, probe-wasda 28 60 75 100):
+       die Streuung kannte diese gestaltete Flaeche nicht — sie war nur zufaellig durch die Kollider des
+       Wohnblocks (60|90) und des Einzelhauses (64|77) abgedeckt. Kaum waren beide weg, stand ein Streubaum
+       IN der Wippe (59,7|83,6), einer am Brunnen auf dem Zugangsweg (65,9|75,5), Blumen im Brunnenbecken
+       (63,7|76,9), ein Busch um die Kettenlaterne (60|71,5), und auf dem Marktpflaster Streubaeume neben der
+       Laterne (34|71,5). `streu()` wuerfelt mit Math.random — bei jedem Start anders — darum hier als
+       Sperrflaeche wie Seepark, Sportplatz und Kirchhof: Pflaster x 28…52 / z 65,5…78,5, Park-Platte
+       x 50…86 / z 78…96, dazwischen der Gehwegstreifen ab z 69 (Laternen, Briefkasten, Ortsschild, Pappel). */
+    if(x>28-pad&&x<88+pad&&z>69-pad&&z<96+pad)return false;
     if(x>122&&x<170&&z>-60&&z<4)return false;                                  // Kirchhof am Ost-Tor (146|-28, Runde 97 6 m noerdlicher): Zaun + Freiraum ringsum
     /* Klinikareal (0|-128), Charge 49. Hier als Rechteck und nicht ueber
        `window.KLINIK`: freiPlatz wird von der Allee schon gerufen, bevor der
@@ -1933,6 +2063,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        gestreute Objekte bleiben ungeschuetzt. */
     var _S8=window._viertelSolver;
     if(_S8&&_S8.fahrbahn&&_S8.fahrbahn(x-pad,x+pad,z-pad,z+pad))return false;
+    /* 🐄 Bauernhof-Hofausbau (Koppel, Huehnerstall, Futtertrog) oestlich der Kiesplatte — Runde 102, gesetzt in
+       hofausbau() (260 ms), folgt dem Viertel, falls es erneut ausweicht. Der Waldsaum (1400 ms) sieht die Sperre;
+       frueher gestreute Objekte bleiben wie bei `fahrbahn` ungeschuetzt. */
+    var HA=window._hofausbau;
+    if(HA&&x>HA[0]-pad&&x<HA[1]+pad&&z>HA[2]-pad&&z<HA[3]+pad)return false;
     /* 🛣️ Viertelstrassen und Anschlusswege. Die entstehen erst 260 ms nach dem Laden,
        das Streuen laeuft aber in Haeppchen ueber viele Bilder weiter — der weitaus
        groesste Teil faellt also in die Zeit, in der die Wege schon stehen. Vorher
@@ -2029,13 +2164,18 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var sitzG=new THREE.BoxGeometry(1.8,0.12,0.5),lehnG=new THREE.BoxGeometry(1.8,0.5,0.1),
           beinG=new THREE.BoxGeometry(0.12,0.42,0.45),mastG=new THREE.CylinderGeometry(0.07,0.09,3.2,7),
           kopfG=new THREE.SphereGeometry(0.22,10,8);
-      for(var b=0;b<10;b++){var ab=b/10*6.283+0.35,rb=rad(ab)+3.0;
-        var bx=SX+Math.cos(ab)*rb,bz=SZ2+Math.sin(ab)*rb;
+      /* ⚠️ Runde 102 (gemessen): „SZ2 + sin" war zum Wassermesh gespiegelt (s. seeR) — Bank (-0.4|158.4) 3,0 m
+         und (8.2|135.6) 2,1 m im See, Bank (-15.6|150.5) + Laterne (-15.5|140.3) quer auf dem Weg. Und rb = r+3,0
+         ist die WEG-MITTE (Weg r+1,6…r+4,4): nur mit dem Vorzeichen-Fix staenden alle zehn mitten auf dem
+         2,8-m-Weg. Darum r+4,9 = Grasstreifen hinter der Aussenkante (Bank 0,5 tief → 0,25 m Luft zum Weg),
+         Sitzflaeche zum See gedreht (ab − π/2; mit +π/2 saesse man mit dem Ruecken zum Wasser). */
+      for(var b=0;b<10;b++){var ab=b/10*6.283+0.35,rb=rad(ab)+4.9;
+        var bx=SX+Math.cos(ab)*rb,bz=SZ2-Math.sin(ab)*rb;
         if(b%2===0){var bg2=new THREE.Group();
           var si=new THREE.Mesh(sitzG,holzM);si.position.y=0.46;si.castShadow=true;bg2.add(si);
           var le=new THREE.Mesh(lehnG,holzM);le.position.set(0,0.72,-0.2);bg2.add(le);
           [-0.78,0.78].forEach(function(ox){var be=new THREE.Mesh(beinG,holzM);be.position.set(ox,0.21,0);bg2.add(be);});
-          bg2.position.set(bx,0,bz);bg2.rotation.y=-ab+Math.PI/2;scene.add(bg2);}
+          bg2.position.set(bx,0,bz);bg2.rotation.y=ab-Math.PI/2;scene.add(bg2);}   /* Lehne (lokal −z) vom See weg, Blick aufs Wasser (Runde 102) */
         else{var lg2=new THREE.Group();
           var ma=new THREE.Mesh(mastG,mastM);ma.position.y=1.6;lg2.add(ma);
           var ko=new THREE.Mesh(kopfG,new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
@@ -2044,7 +2184,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           lg2.position.set(bx,0,bz);scene.add(lg2);}}
       /* Ein paar Baeume hinter dem Weg */
       for(var t=0;t<14;t++){var at=t/14*6.283+0.9,rt=rad(at)+6.5+((t*5)%3);
-        baum2(SX+Math.cos(at)*rt,SZ2+Math.sin(at)*rt,0.8+((t*3)%4)*0.12);}
+        baum2(SX+Math.cos(at)*rt,SZ2-Math.sin(at)*rt,0.8+((t*3)%4)*0.12);}   /* z − sin (Runde 102): Baum 2 (-3.9|163) und Baum 10 (11.7|131.4) standen AUF dem Weg; jetzt 2,1…4,1 m dahinter */
     })();
     (function ufer(){ /* weicher Rand statt harter Wasserkante */
       var uM=new THREE.MeshStandardMaterial({color:0x6f7a4e,roughness:1,envMapIntensity:0.18});
@@ -2057,8 +2197,16 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
          trifft, wird auf die nachstliegende Seite daneben gesetzt. */
       function _weg(v,mitte,rand){var d=v-mitte;if(Math.abs(d)>=rand)return v;
         return mitte+(d<0?-rand:rand);}
-      for(var i=0;i<22;i++){var ux=-118+Math.random()*196,uz2=(Math.random()<0.5?-94.4:-86.6)+(Math.random()-0.5)*1.4;
-        ux=_weg(_weg(_weg(ux,-112,6.2),-78,6.2),78,6.2);
+      /* ⚠️ Runde 102 (probe-wasda -60 -100 108 -85): die Nord-Ring-Laternen stehen jetzt fest auf z -94,4 — genau
+         auf dieser Wuerfel-Linie (uz2 -94,4 ±0,7). Ein Findling (k bis 0,8) lag beim ersten Lauf 0,3 m neben dem
+         Laternenfuss (-36|-94,4), und bei jedem Laden woanders. Darum auf dem Nordufer 1,8 m Abstand zu den sieben
+         Laternen-Achsen (Fuss r 0,36 + Findling r 0,8 + Reserve); wer nach 20 Wuerfen keinen Platz findet, faellt aus. */
+      var LATN=[-104,-71,-40,-6,32,66,100];
+      for(var i=0;i<22;i++){var ux,uz2=(Math.random()<0.5?-94.4:-86.6)+(Math.random()-0.5)*1.4,t9;
+        for(t9=0;t9<20;t9++){ux=-118+Math.random()*196;
+          ux=_weg(_weg(_weg(ux,-112,6.2),-78,6.2),78,6.2);
+          if(uz2>-90||LATN.every(function(lx){return Math.abs(ux-lx)>=1.8;}))break;}
+        if(t9===20)continue;
         var k=0.3+Math.random()*0.5;
         var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:i%2?0x6a6558:0x565043,roughness:1}));
         st.position.set(ux,k*0.4,uz2);st.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);st.castShadow=true;scene.add(st);}
@@ -2515,7 +2663,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Ausstattung des Sees selbst, so wie die Promenade und die Ufersteine. */
     for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283;
       var sr9=seeR(sa9)-0.8;
-      schilf(0+Math.cos(sa9)*sr9, 146+Math.sin(sa9)*sr9);}
+      schilf(0+Math.cos(sa9)*sr9, 146-Math.sin(sa9)*sr9);}   /* z − sin: Weltlage wie das Wassermesh (Runde 102 — vorher Inseln bis 6,4 m im See, 7 auf dem Rundweg; s. seeR) */
   }
   /* 📱 PERFORMANCE: Die Szene hat ueber 2000 Objekte. three.js rechnet fuer jedes in jedem
      Frame die Weltmatrix neu — auf dem Handy ist das die groesste CPU-Last, obwohl sich
@@ -3061,8 +3209,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        beiden Sued-Zubringer (x = ±RX): 0,16 m hohe Schwellen mitten auf der
        Fahrbahn. An einem echten Uebergang liegt die Strasse buendig zwischen den
        Schienen — also dort keine Schwellen, sondern eine ebene Platte. */
+    /* ⚠️ Runde 102: die Bahnhof-Zufahrten EIN/AUS (Baender x 32…37 und 37,5…42,5, siehe EIN/AUS/BB
+       beim Parkplatz) queren das Gleis hier ebenfalls — sie entstanden NACH dieser Ausnahme, die nur
+       ±RX kannte. GEMESSEN: 6 Schwellen (31,8 / 34 / 36,2 / 38,4 / 40,6 / 42,8; 120 Schwellen-Vertices
+       im Band) lagen 0,16 m hoch mitten auf beiden Fahrspuren, waehrend ±78 die Luecke hat. Zweite
+       Ausnahme 30,5…44 = 1,5 m Rand beidseits der Baender; es bleiben nur die flachen Schienen. */
     for(var s3=-120;s3<120;s3+=2.2){
-      if(Math.abs(Math.abs(s3)-RX)<5.6)continue;
+      if(Math.abs(Math.abs(s3)-RX)<5.6||(s3>30.5&&s3<44))continue;
       var schw=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.16,0.6),stdMat(0x5a4230,0.85));schw.position.set(s3,0.08,0);g.add(schw);}
     /* KEINE Deckplatte am Uebergang: ein 0,16 m hoher Quader las sich von oben
        wie eine Stufe quer ueber die Fahrbahn — schlimmer als die Schwellen.
@@ -3209,7 +3362,13 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
     var _pl=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.9,7),stdMat(0xd8d2c4,0.7));
     _pl.position.set(-128+Math.cos(_pa)*7.4,0.45,-30+Math.sin(_pa)*7.4);_pl.castShadow=true;scene.add(_pl);}
   /* Eisenbahnbrücke bei z=-30: Pfeiler + Fahrbahn + Schienen + Geländer */
-  var BX0=-128,BX1=-320,BY=3.4,bl=BX0-BX1;
+  /* ⚠️ Runde 102 (probe-wasda -180 -100 -60 45, th-umfeld -172 -50 -118 -10): mit BX0=-128 lag der Tunnelfels
+     (Mitte BX0-14, Fussradius x 13,6) mit der Ostkante auf -128,4 — 6,6 m auf dem Sand (-135…-121) und ueber der
+     Westhaelfte des Wendeplatzes (r 7 um -128); 5 der 7 Poller steckten unter bis zu 9 m Fels, das Deckende ragte
+     1,6 m aus der Felsflanke ueber die Platzmitte. Die Absicht „Felsinsel IM Wasser" stand nur im Kommentar.
+     BX0=-140: Felsfuss x -167,6…-140,4 = 5,4 m vor der Sandkante, Deckende 1,6 m innerhalb der Flanke, Portal
+     -165, Pfeiler -308…-152 (Schritt 22,3) — im Zielrechteck nur Wasser und die Brueckenteile selbst. */
+  var BX0=-140,BX1=-320,BY=3.4,bl=BX0-BX1;
   var deck=new THREE.Mesh(new THREE.BoxGeometry(bl,0.5,3.6),betMat(0x9a948a,0.85));
   deck.position.set((BX0+BX1)/2,BY,-30);deck.castShadow=true;deck.receiveShadow=true;scene.add(deck);
   var schM=new THREE.MeshStandardMaterial({color:0x3c3f45,roughness:0.35,metalness:0.7});
@@ -3258,8 +3417,15 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   var kamin=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.22,0.7,8),stdMat(0x22252a,0.4));kamin.position.set(-1.5,1.9,0);lok.add(kamin);
   zug.add(lok);
   [0x3a6ab0,0xd8a03a,0x3a8a5a].forEach(function(c,i){var w=wagen(c,3.6);w.position.x=4.9+i*4.3;zug.add(w);});
-  zug.position.set(BX0-10,BY+0.28,-30);scene.add(zug);
-  window._seeZug={g:zug,x:BX0-10,dir:-1,min:BX1+10,max:BX0-6,speed:9}; /* 🩹 _zug war schon vergeben (alter Stadt-Zug {mesh,pos}) → Kollision crashte den Loop */
+  /* ⚠️ Runde 102 (zug-wende-sonde: Welt-Huellboxen gegen die Fels-Oberkante per Raycast): mit max=BX0-6 stand
+     beim Wenden nur die Lok in der Ostflanke — die drei Wagen (lokal +4,9…+15,3) sprangen durch den Flip um die
+     Lok (rotation.y 0 ↔ PI in loop()) 3,7 m hoch in die Luft ueber Wendeplatz und Gruenstreifen, ohne Deck
+     darunter, und rollten 1,35 s rueckwaerts in den Fels. Jetzt max=BX0-19: Lok -161,3…-156,7, letzter Wagen
+     -147,3…-143,7, alle Teile mit ≥0,85 m Reserve im Fels (bei BX0-17,5 ragten gemessen noch ~0,5 m Dach aus der
+     Flanke). Die Wende laeuft OHNE Umdrehen (Pendelzug schiebt zurueck) — das behebt zugleich den Sprung am
+     Westende, wo der Flip Wagen 2/3 5,3 m ueber das Deckende -320 hinaus warf. Start x=BX0-19 liegt in min…max. */
+  zug.position.set(BX0-19,BY+0.28,-30);scene.add(zug);
+  window._seeZug={g:zug,x:BX0-19,dir:-1,min:BX1+10,max:BX0-19,speed:9}; /* 🩹 _zug war schon vergeben (alter Stadt-Zug {mesh,pos}) → Kollision crashte den Loop */
 })();
 /* 🛣️ Hauptstrassen 10 -> 16 m: die Querstrassen koennen nicht breiter werden (bei x=±78
    liegt 6 m daneben schon die Grundstuecksgrenze bei 72), aber Nord- und Suedstrasse haben
@@ -3862,7 +4028,11 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
       c.putImageData(d,0,0);
       var nt=new THREE.CanvasTexture(cv);nt.flipY=false;nt.encoding=n.material.map.encoding;
       n.material=n.material.clone();n.material.map=nt;n.material.needsUpdate=true;}});
-    [[-94,-80],[94,-80],[-60,88],[60,88]].forEach(function(p,i){ // weg von den Kreuzungen — Erdteller-Riesen dominierten die Ecken
+    /* ⚠️ Runde 102 (th-ort -92 -82, probe-wasda): der erste Riese stand auf (-94|-80) = im Grundriss des Wohnblocks
+       block(-92,-80) — Stamm 1,5 m innerhalb der Westwand, Krone stiess durchs Flachdach. Jetzt (-100|-77):
+       naechstes Objekt Busch (-98,6|-77,8, 0,7 m hoch), Krone 2,5 m zum Ring-W-Band (ab -104,8), 2,2 m zur
+       Blockwand (-95,5). */
+    [[-100,-77],[94,-80],[-60,88],[60,88]].forEach(function(p,i){ // weg von den Kreuzungen — Erdteller-Riesen dominierten die Ecken
       var t=g.scene.clone(true);var box=new THREE.Box3().setFromObject(t),sz=new THREE.Vector3();box.getSize(sz);
       var k=(7+i%2*2)/(sz.y||1);t.scale.setScalar(k);
       var b2=new THREE.Box3().setFromObject(t);t.position.set(p[0],-b2.min.y-0.02,p[1]);
@@ -4409,9 +4579,14 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
   // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
   var seed=1;
   [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-31,0,seed++);});
-  [64].forEach(function(hx){haus(hx,SZ+31,Math.PI,seed++);}); /* Die Suedseite ist inzwischen
-     Stadtzentrum (Altstadt, Ladenzeile, Rathaus, Marktplatz, Park) — dort ist nur noch ein
-     Bauplatz frei. Wohnen findet im Norden statt, das gibt beiden Seiten Luft. */ // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
+  seed++; /* Die Suedseite ist inzwischen Stadtzentrum (Altstadt, Ladenzeile, Rathaus, Marktplatz, Park);
+     Wohnen findet im Norden statt, das gibt beiden Seiten Luft. Bis Runde 102 stand hier noch EIN Einzelhaus
+     haus(64,SZ+31) = (64|77) als „letzter freier Bauplatz" — ⚠️ gemessen (probe-wasda 52 64 74 84, th-umfeld):
+     sein Zaunkasten x 60,2…67,8 / z 71,4…79,1 lag auf dem 5-m-Zugangsweg des Markt-Parks (x 65,5…70,5) und
+     6 m vor der Kartenmarke „Stadtpark" (68|68); Brunnen, Pappeln und Ortsschild wurden von wegVonStrasse
+     genau darauf geschoben. Haus gestrichen; `seed++` bleibt, damit die Reihen bei x ±89 ihre Seeds behalten
+     (Achtung: der Eintrag fehlt jetzt in window._immo, die Kauf-Indizes danach ruecken um 1 vor). */
+     // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
   /* 🏡 VILLENPARZELLEN AUSSPAREN. Die Villen stehen bei (-96|8), (-96|28),
      (96|-22) und (96|-44) und haben je eine Parzelle von 18 x 14 m — auf der
      Strassenseite endet sie genau bei x = -+89. Genau dort stand diese Reihe:
@@ -4506,7 +4681,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var st9=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.03,0.22,4),heckM);
       st9.position.set(bl.position.x,0.09,bl.position.z);scene.add(st9);}}
   [-38,-26,-14,-2,10,22,34].forEach(function(hx){vorgarten(hx,-SZ-31,1);});    // Nordreihe -> Strasse im Sueden(+z)
-  [64].forEach(function(hx){vorgarten(hx,SZ+31,-1);});             // Suedreihe -> Strasse im Norden(-z)
+  /* Suedreihe: kein Vorgarten mehr — das Einzelhaus (64|77) ist seit Runde 102 weg (s. Haeuserzeilen oben). */
   /* 🚶 Hinterhof-Gehweg zwischen Haeuserzeile (±(SZ+31)) und 2. Reihe (±(SZ+47)):
      der Streifen dazwischen war blanke Wiese (User: „hinten auch ... gehweg?"). */
   (function hinterweg(){
@@ -4597,8 +4772,16 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
      dazwischen liegt jetzt der Hinterhof-Weg (User: „hinten auch mehr abstand ... und gehweg"). */
   block(-30,-SZ-47,0,3,10,7,0xcfc4b0);block(-14,-SZ-48,0,4,9,7,0xb8c0c8);
   block(4,-SZ-47,0,3,11,7,0xd8cabc);block(22,-SZ-48,0,4,8,7,0xc4b8a8);
-  block(-92,-82,Math.PI/2,3,12,7,0xccc2b4);block(92,90,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen (±78); z verschoben, steckte in den Reihenhaeusern
-  block(-60,SZ+42,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+44,-Math.PI/2,3,9,7,0xc8bcae);
+  /* ⚠️ Runde 102 (probe-wasda -104 -90 -84 -70, th-ort -92 -82): block(-92,-82) stand mit der Suedwand 1 m im
+     Fluss (machWasser z -94…-87, Kasten bis -88,3) — der Fluss kam spaeter in diesen Korridor. Mit z -80 liegt der
+     Kasten bei -86,3…-73,8: 0,7 m vor dem Wasser, 0,5 m vor der Tannenkrone (-90|-71,5). */
+  block(-92,-80,Math.PI/2,3,12,7,0xccc2b4);block(92,90,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen (±78); z verschoben, steckte in den Reihenhaeusern
+  block(-60,SZ+42,Math.PI/2,3,9,7,0xd0c8ba);
+  /* ⚠️ Runde 102 (probe-wasda 40 72 64 98, th-ort 60 90, th-umfeld): hier stand block(60,SZ+44,…) = (60|90),
+     ein 3-stoeckiger Wohnblock MITTEN auf der Park-Platte des Markt-Parks (x 50…86 / z 78…96): die Wimpelkette
+     z 90,5 lief durchs 1. OG, das Nordende steckte 2 m in der Feuerwache (56|100), die Sandkasten-Ecke im
+     Sockel. Der Block ist aus der „2. Ring"-Zeit, aelter als Park, Marktdeko und Feuerwache — gestrichen,
+     kein Ersatz noetig (block(92,90) steht bereits oestlich der Querstrasse). */
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
     var kirchM=stdMat(0xe8e2d4,0.85,true);   /* einzeln: bekommt Backstein nachgeladen */
@@ -4722,8 +4905,17 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       (64|-100) auf dem Nord-Ring (z -100 ± 4,5). Der Anschluss kam nach den Tuermen dazu, und
       turm() prueft keine Fahrbahn. Jetzt westlich bzw. oestlich davon, nicht am Fluss. */
    [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[50,-123,17,8,0x9caebe],[92,-113,12,7,0x8ca0b2],
-   [-65,-98,14,7,0x96a6b8],[44,-135,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
-  [[-98,44,14,8,0xa0b0c0],[100,76,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+   /* ⚠️ Runde 102 (probe-wasda -100 -125 -55 -100, th-ort -65 -90.5): hier stand [-65,-98,14,7] — Code-Lage z -98
+      auf der Nord-Ring-Fahrbahn, wegVonStrasse (RM 9,5) schob den 32-m-Turm auf z -90,5 = exakt die Flussmitte
+      (machWasser z -94…-87), Wasser lief beidseits am Sockel. Noerdlich des Rings ist zwischen th7-Modulbau
+      (-90|-112) und Zubringer 240° kein Platz (wegVonStrasse drueckt x -88,5…-67,5 in einen von beiden) —
+      gestrichen, die Skyline hat 13 weitere Tuerme. */
+   [44,-135,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+  /* ⚠️ Runde 102 (probe-wasda, th-ort -98 44, th-umfeld -112 28 -80 62): hier stand auch [-98,44,14,8] — ein
+     32-m-Glasturm im Villenviertel Rebhalde, 5,6 m noerdlich der Walm-Villa (-96|28) und 1,2 m neben dem 3,9 m
+     hohen Dorfhaeuschen (-89|44); die Dorfhaus-Reihe zaehlt z 44 ausdruecklich als „frei". Kein Kommentar, kein
+     POI, kein Lieferziel — gestrichen, dort bleibt Rasen. (100|76) liegt ausserhalb dieser Region, ungeprueft. */
+  [[100,76,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
   // ---- Villen-Viertel: grosse Parzellen mit richtigen Haeusern an den Querstrassen ----
   (function villenViertel(){
@@ -5707,6 +5899,14 @@ function baueSchranken(){
   var G=[];
   [78,-78].forEach(function(gx){
     [-1,1].forEach(function(seite){
+      /* ⚠️ Runde 102 (gemessen): die Schranke suedlich des Gleises bei x=-78 (-71,5|124,5) stand mitten in der
+         Muendung des Zubringers 120° — Achse bei z 124,5 auf x -71,9, Belag -76,7…-67,0, th-umfeld Zeile 124
+         '=' von x -77 bis -68 — ein 9-m-Mast im Fussgaengerstreifen der Ortseinfahrt. Die Querstrasse x=-78
+         endet am Ring (Zubringer N/S nur z<118); suedlich davon gibt es keine Strasse, die sie sichern koennte.
+         Der Verkehr kommt von Norden und wird von der Schranke z 108,8 gehalten; updSchranken haelt die Wagen
+         ueber _schrankenZu, nicht ueber das Mesh — darum weglassen, nicht verschieben (auf der Wiese hinter dem
+         Stadthaus, ohne Gleis und Strasse, waere sie wieder ein Ding am falschen Ort). */
+      if(gx===-78&&seite>0)return;
       var g=new THREE.Group();
       var sock=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.7,0.9),betMat(0xb8b2a6,0.9));
       sock.position.y=0.35;sock.castShadow=true;g.add(sock);
@@ -5733,7 +5933,8 @@ function baueSchranken(){
          Ring laeuft hier nur 6 m hinter dem Gleis, zwischen Schiene und Ringkante
          bleiben 1,5 m: auf dieser Seite passt keine Schranke ans Gleis. Sie gehoert
          darum VOR die Einmuendung, also hinter den Ring (z=124,5 -> 6,5 vom Ring,
-         2 m ausserhalb des Belags). Die Sued-Schranke bleibt bei 108,8. */
+         2 m ausserhalb des Belags). Die Schranke bei z 108,8 bleibt. ⚠️ Bei x=-78 gibt es seit Runde 102
+         nur noch die bei 108,8 (s. o.): z 124,5 laege dort in der Muendung des Zubringers 120°. */
       g.position.set(gx+seite*6.5,0,seite>0?124.5:108.8);
       g.rotation.y=seite>0?Math.PI:0;
       scene.add(g);
@@ -6166,7 +6367,9 @@ setTimeout(function baueTiere(){
       root.scale.setScalar(zielH/(sz.y||1));
       var b2=new THREE.Box3().setFromObject(root);root.position.y=-b2.min.y;
       root.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
-      var w=new THREE.Group();w.userData.nieAusblenden=true;w._bewegt=true;w.add(root);cb(w);});} /* 🩹 Schwarm-4: Tiere wandern — nie LOD/einfrieren */
+      var w=new THREE.Group();w.userData.nieAusblenden=true;w._bewegt=true;w.add(root);
+      w.userData.datei=file;   /* fuer Zaehlungen/Debug wie bei bau(): probe-wasda nannte die Tiere sonst nur "Scene" (Runde 102) */
+      cb(w);});} /* 🩹 Schwarm-4: Tiere wandern — nie LOD/einfrieren */
   window._ladeTier=ladeTier;   /* auch spaetere Laeufe brauchen ihn (Zoo-Gehege) */
   window._tiere.land.forEach(function(rec,i){var dog=i%2===0;
     ladeTier(dog?"an_dog.glb":"an_cat.glb",dog?0.72:0.5,function(w){if(!w)return;
@@ -6209,6 +6412,9 @@ setTimeout(function baueGebaeude(){
       /* Runde 102: Randbaeume der Viertel stehen erst jetzt gegen die fertigen Bauten (die GLBs kommen
          spaeter als viertel() die Reihe setzt) — probe-randbaum: zwei im Hoehleneingang des Campings. */
       if(window._randBaeumeRaeumen){try{window._randBaeumeRaeumen();}catch(e){}}
+      /* Runde 102: die Zoo-Tiere erst hier, nach dem letzten Ruecken der Gehege — der feste 15-s-Timer fand die
+         th24-Bauten nie (zoo.bauten bei 63 s leer, bei 72 s voll; _zooTiere blieb 0). Siehe `_zooTiereSetzen`. */
+      if(window._zooTiereSetzen){try{window._zooTiereSetzen();}catch(e){}}
       /* ⚠️ GEMESSEN: `_spaetEinfrieren()` laeuft EINMAL bei 9 s — alles, was danach
          fertig laedt, behaelt matrixAutoUpdate=true fuer immer. Nach der Wiederbelebung
          der drei Viertel waren das 456 Objekte mit 14'563 Knoten, deren Weltmatrix in
@@ -6901,7 +7107,6 @@ setTimeout(function baueGebaeude(){
       var seite=(i%2)?1:-1,k=String(seite);
       var bw=b.w||10,bd=b.d||8;
       var vor=laengs?bw:bd;                              // Ausdehnung entlang der Strasse
-      var pos=cur[k]+vor/2;
       /* 🛣️ LUECKE FUER DEN ANSCHLUSS DES NACHBARN. Ein Viertel weiss beim Bauen nichts
          von den Wegen, die spaeter durch es hindurchfuehren — der Freizeitpark-Anschluss
          laeuft bei x = 0 quer durch die Nordzeile des Sportparks, und dort stand die
@@ -6912,12 +7117,30 @@ setTimeout(function baueGebaeude(){
          nicht den Weg um die Bauzeile herum, sondern eine Luecke IN die Bauzeile.
          Genau das macht `cfg.freiQuer`: Weltkoordinaten laengs der Strasse, an denen
          kein Gebaeude stehen darf. Der Laufcursor springt hinter den Korridor. */
-      (cfg.freiQuer||[]).forEach(function(wq){
-        var hb9=(cfg.freiBreite===undefined?13:cfg.freiBreite);
-        var lq=wq-(laengs?VX:VZ)+laenge/2;               // Weltmass -> Laufmass
-        if(pos-vor/2<lq+hb9&&pos+vor/2>lq-hb9){cur[k]=lq+hb9;pos=cur[k]+vor/2;}});
+      function laufmass(kk){var p=cur[kk]+vor/2;          // Laufmass der Baumitte auf Zeile kk
+        (cfg.freiQuer||[]).forEach(function(wq){
+          var hb9=(cfg.freiBreite===undefined?13:cfg.freiBreite);
+          var lq=wq-(laengs?VX:VZ)+laenge/2;               // Weltmass -> Laufmass
+          if(p-vor/2<lq+hb9&&p+vor/2>lq-hb9)p=lq+hb9+vor/2;});
+        return p;}
+      var pos=laufmass(k),ende9=laenge-(cfg.rand||14);
+      /* ⚠️ GEGENSEITE VOR DEM AUFGEBEN (Runde 102, probe-wasda 255 -60 300 0 / th-umfeld): im Gewerbe
+         Rietli plant das cfg 9 Bauten, gebaut wurden 8 — das Cafe (Index 8, Westzeile) endete bei Laufmass
+         177,4 > 166 und fiel hier still heraus, seit der -140-Korridor (freiQuer, Runde 95) den ersten
+         Westbau um 27 m nach hinten schiebt. Auf der Ostzeile blieb hinter dem Reihenhaus (z -53,8) bis
+         zur Einmuendung (z -2) 52 m Platte leer, und die Kartenmarke "Buergli" zeigte auf rohen Beton.
+         Mit `cfg.gegenseite` kommt ein Bau, der auf seiner Zeile nicht mehr passt, auf die andere, wenn
+         er dort noch vor dem Rand endet (Cafe: Laufmass 130,6, Ende 135,7) — erst sonst faellt er weg.
+         Der Cursor der Zeile, auf der nichts gebaut wurde, bleibt stehen.
+         NUR AUF WUNSCH (Opt-in), gemessen an der Konsole: ohne Schalter fielen auch im Freizeitpark
+         3 Bauten (Imbisswagen, Imbissbude, Schiessbude) und im Burgdorf 1 (building_fachwerk) heraus.
+         Global angewandt aendert die Regel im Freizeitpark nichts (auch die Gegenseite ist voll), im
+         Burgdorf aber stellt sie das Fachwerkhaus auf (-253,8|-376,4) und schiebt building_turm 15 m
+         nach (-240,5|-378,2) — beides ungemessene Plaetze, darum dort bewusst nicht eingeschaltet. */
+      if(pos+vor/2>ende9){var k2=String(-seite),pos2=cfg.gegenseite?laufmass(k2):null;
+        if(pos2===null||pos2+vor/2>ende9){console.warn("Viertel "+cfg.name+": "+b.file+" passt nicht mehr");return;}
+        seite=-seite;k=k2;pos=pos2;}
       cur[k]=pos+vor/2+(cfg.luecke===undefined?14:cfg.luecke);
-      if(pos+vor/2>laenge-(cfg.rand||14)){console.warn("Viertel "+cfg.name+": "+b.file+" passt nicht mehr");return;}
       /* ⚠️ SETBACK IST EIN MITTELPUNKT-ABSTAND (Runde 95, th-strassen/th-umfeld): Post und Polizeiwache
          im Gewerbeviertel (Strasse laengs z) standen mit ihrer Mitte 18,9 m neben der Strassenmitte —
          ihre Tiefe ZUR Strasse ist aber die 32-m-Seite (w, weil um 90 Grad gedreht): die Fassade
@@ -7021,7 +7244,10 @@ setTimeout(function baueGebaeude(){
        5 davon in Bowlingbahn und Nachtclub). probe-randbaum: 204 von 268 Randbaeumen
        ausserhalb ihres Viertels. */
     var Q9=laengs?VD:VW;
-    for(var t2=0;t2<Math.floor(laenge/12);t2++){
+    /* ⚠️ Runde 102: `randBaeume:false` laesst die Reihe ganz aus. Beim Bauernhof standen die 14 Randbaeume
+       (probe-wasda -92 -292 -10 -200: z -205 und -287, x -92…16, Raster 12) 4 m INNERHALB der Aecker
+       (Nordfelder bis z -201, Suedfelder bis -293) direkt auf den Saatreihen — dort SIND die Aecker der Rand. */
+    if(cfg.randBaeume!==false)for(var t2=0;t2<Math.floor(laenge/12);t2++){
       var to=-laenge/2+8+t2*12;
       [-Q9/2+4,Q9/2-4].forEach(function(o3){
         var tx=laengs?VX+to:VX+o3,tz=laengs?VZ+o3:VZ+to;
@@ -7067,6 +7293,9 @@ setTimeout(function baueGebaeude(){
          Runde 92 die Nordost-Ecke dieser Platte (x 267…298, z -168…-153) ueberdeckt. Die Bauzeile aendert
          sich dadurch nicht (der -140-Korridor schiebt den ersten Bau ohnehin auf denselben Platz). */
       anschluss:[112,0],abstand:13,luecke:10,rand:14,vorlaufBord:{frei:4.76,ab:7.7},   /* Runde 98: Stein beginnt am Ring-Aussenstein (4,5 + 0,26), abgesenkt unter dem Streifen auf der Ring-Gehweglinie (bis 7,7 = 2 m hinter seiner Mitte 117,6) */
+      gegenseite:true,   /* Runde 102: das Cafe (letzter Bau) passt seit dem -140-Korridor nicht mehr auf die Westzeile
+         (Ende 177,4 > 166) und kommt auf die Ostzeile hinter das Reihenhaus, (268,8|-37,4) — gemessen mit
+         probe-wasda 255 -60 300 0; Erklaerung an der Regel in viertel() ("GEGENSEITE VOR DEM AUFGEBEN"). */
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
          richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
          Parkgarage 20x15 statt real 54.7x37, Bank 16x12 statt 33.9x26.6, Post
@@ -7295,19 +7524,40 @@ setTimeout(function baueGebaeude(){
        Huelle. Die zehn bleiben deshalb bewusst im Archiv, bis es entweder ein offenes
        Clubmodell oder einen echten Innenraum gibt — sie hier zu verstecken waere
        schlechter als sie liegen zu lassen.
-       ⚠️ Positionen aus der WELT gelesen (nicht aus dem Wunsch, #2353): Nachtclub steht
-       auf (155,2|198,8) mit Tuer nach Norden bei z = 209, Casino auf (112,8|237,8) mit
-       Tuer nach Sueden bei z = 224,3. Die Viertelstrasse belegt z 215,5…224,5 — die
-       Moebel bleiben davor bzw. dahinter, sonst stehen sie auf der Fahrbahn. */
+       ⚠️ DER WUNSCHORT IST NICHT DER STANDORT (Runde 102, dieselbe Falle wie bei parkDeko).
+       Hier standen feste Zahlen vom 04.09., als das Viertel noch am Wunschort (160|220) lag:
+       Nachtclub (155,2|198,8), Casino (112,8|237,8). Zwei Tage spaeter wurde „Sportpark Sued"
+       auf w 220 verbreitert, seither weicht der Chilbiplatz 40 m nach Osten aus. GEMESSEN
+       (probe-wasda): Viertelmitte (200|220), Bowlingbahn (155,3|197,7), Nachtclub (195,2|200,9)
+       Huelle x 183,7…206,7 z 190,7…210,1 mit Tuerweg (195,2|208,2), Casino (152,8|242,4)
+       Huelle x 139…166,6 z 231,8…257,9 mit Tuerweg (152,8|231,8). Das NACHTCLUB-Schild samt
+       Kordeln stand darum vor der BOWLINGBAHN (Schild 1,9 m in deren Huellbox), das
+       CASINO-Schild 46 m westlich des Casinos auf dem Suedgehweg der Anschlussstrasse,
+       ausserhalb des Viertels — ein Neonschild vor nichts.
+       Lage jetzt relativ zur ECHTEN Viertelmitte (Versaetze aus der Sonde, Viertel bei (200|220)):
+         Nachtclub-Schild (188,5|211,6): Kasten z 211,3…211,9 = 1,2 m vor der Huellkante 210,1,
+           0,2 m vor dem Kollider (211,1), 1,0 m westlich der Parklaterne (192|211,5); Kordeln
+           (192|212,2)/(198|212,2) lassen den Tuerweg x 194,1…196,3 frei, 0,6 m vor der
+           Strassenlaterne (200|212,6); Gehweg der Viertelstrasse erst ab z 213,1.
+         Casino-Schild (146,5|230,6) auf einer Linie mit den Kordeln (149,5|230,6)/(156|230,6):
+           1,2 m vor der Huellkante 231,8, Tuerweg x 151,7…153,9 frei, Muelleimer (148|228,5) und
+           Bank (159|228,5) ohne Kastenueberschneidung; Viertelstrasse z 215,5…224,5, Gehweg bis 226,9.
+       Die Versaetze gelten fuer die heutige Bautenreihe (rand 14, luecke 12, Reihenfolge
+       bowling/casino/nachtclub/spielhalle/theater) — aendert sich die, sind sie neu zu messen.
+       userData.fest, damit der Entwirrer die Teile nicht je nach Ladereihenfolge verschiebt. */
     setTimeout(function clubDeko(){
-      bau("th14_neonschild_gross.glb",4,  149.5,0,208.5,0,      false,
-        function(w9){neonSchrift(w9,["NACHTCLUB","ab 22 Uhr"],"#ff5fb0");},true);
-      bau("th14_samtkordel.glb",     1.1, 152.0,0,210.5,0,      false,null,true);
-      bau("th14_samtkordel.glb",     1.1, 158.5,0,210.5,0,      false,null,true);
-      bau("th14_neonschild_gross.glb",4,  106.5,0,226.5,Math.PI,false,
-        function(w9){neonSchrift(w9,["CASINO","Einlass ab 18"],"#f2c14e");},true);
-      bau("th14_samtkordel.glb",     1.1, 109.5,0,226.0,0,      false,null,true);
-      bau("th14_samtkordel.glb",     1.1, 116.0,0,226.0,0,      false,null,true);
+      var L=(window._viertelSolver&&window._viertelSolver.VIERTEL)||[],cp=null;
+      for(var i=0;i<L.length;i++)if(L[i].name==="Chilbiplatz")cp=L[i];
+      var CX=cp?cp.x:200, CZ=cp?cp.z:220;                    /* echte Viertelmitte, nicht der Wunsch */
+      function festH(w9){w9.userData.fest=1;}
+      bau("th14_neonschild_gross.glb",4,  CX-11.5,0,CZ-8.4, 0,      false,
+        function(w9){festH(w9);neonSchrift(w9,["NACHTCLUB","ab 22 Uhr"],"#ff5fb0");},true);
+      bau("th14_samtkordel.glb",     1.1, CX-8.0, 0,CZ-7.8, 0,      false,festH,true);
+      bau("th14_samtkordel.glb",     1.1, CX-2.0, 0,CZ-7.8, 0,      false,festH,true);
+      bau("th14_neonschild_gross.glb",4,  CX-53.5,0,CZ+10.6,Math.PI,false,
+        function(w9){festH(w9);neonSchrift(w9,["CASINO","Einlass ab 18"],"#f2c14e");},true);
+      bau("th14_samtkordel.glb",     1.1, CX-50.5,0,CZ+10.6,0,      false,festH,true);
+      bau("th14_samtkordel.glb",     1.1, CX-44.0,0,CZ+10.6,0,      false,festH,true);
     },1100);
     /* 🦓 ZOO. Die fuenf th24-Modelle waren die zweite Gruppe aus der Inventur, die nie
        aufgestellt wurde. Drei Gehege statt einem: der Reihen-Generator setzt jeden
@@ -7343,13 +7593,25 @@ setTimeout(function baueGebaeude(){
        bekam („eine leere Koppel liest sich als vergessener Zaun").
        Das Spiel hat keine exotischen Modelle, aber Wildschwein, Reh, Fuchs und Hase —
        also ein Heimattierpark statt Safari. Ehrlicher als nichts.
-       ⚠️ ERST BEI 15 s. `entzerren()` rueckt die Bauzeilen bei 14 s noch zurecht; wer
-       vorher die Gehege ausliest, bindet die Tiere an eine Position, die es danach nicht
-       mehr gibt. Und die Lage kommt aus `zoo.bauten[].w.position`, nicht aus einer
-       eigenen Rechnung — die waere die naechste Wunschort-Falle.
-       `freiRaeumen()` (15,5 s) fasst sie nicht an: Tiere laufen nicht ueber `bau()` und
-       stehen darum nicht in `window._gebaeude`. */
-    setTimeout(function zooTiere(){
+       ⚠️ Runde 102 — DER FESTE 15-s-TIMER FAND KEINE GEHEGE, alle Gehege blieben leer (probe-wasda: kein an_*
+       im Zoo, _zooTiere = 0). Gemessen als Zeitreihe: zoo.bauten war bei 63 s noch leer und bei 72 s voll —
+       bau() fuellt g.bauten und userData.datei erst im GLB-Callback, und die th24-GLBs stehen hinter 56 MB
+       anderer Modelle in der Warteschlange; `_ladeOffen` erreicht 0 fruehestens bei 28 s. Die Tiere haengen
+       darum am SCHLUSSLAUF (`_ladeFertigEins`, 2,5 s nach der letzten Ladung, direkt nach freiRaeumen/
+       entwirren/_randBaeumeRaeumen): erst dann sind die Gehege endgueltig gerueckt — Viertel-Bauten haben kein
+       `userData.fest`, und `home` ist eine feste Weltkoordinate. Kommt ein Schlusslauf zu frueh (Gehege fehlen
+       noch), gibt die Funktion zurueck und der naechste ruft sie wieder; nach dem ersten Erfolg sperrt `_zooTiere`.
+       Die Lage kommt weiter aus `zoo.bauten[].w.position`, nicht aus einer eigenen Rechnung — die waere die
+       naechste Wunschort-Falle. `freiRaeumen()` fasst die Tiere nicht an: sie laufen nicht ueber `bau()` und
+       stehen darum nicht in `window._gebaeude`.
+       ⚠️ BODENHOEHE GEMESSEN: die Gehege-Bodenplatte liegt oben bei y 0,264, der Streichelzoo-Boden bei 0,338
+       (GLB-Quader x Skala). `ladeTier` setzt die Fuesse auf y 0 und `updTiere` schreibt position.y ABSOLUT —
+       Wildschwein und Reh staenden 26 cm im Boden, der 42 cm hohe Hase zu 80 %. Darum `bodenOben(w)` je Bau
+       (hoechster flacher Quader > 4 x 4 m, < 0,5 m dick, der AM BODEN liegt: min.y < 0,6) als `y0` in den
+       Tier-Datensatz. ⚠️ Ohne die Boden-Bedingung gewann beim Streichelzoo sein flaches Dach (Oberkante 3,5 m)
+       und die drei Hasen schwebten auf Dachhoehe — nachgemessen (probe-r102-zootiere), erst dann behoben. */
+    window._zooTiereSetzen=function(){
+      if(window._zooTiere)return;
       var V=(window._viertelSolver||{}).VIERTEL||[], zoo=null;
       for(var i=0;i<V.length;i++)if(V[i].name==="Zoo")zoo=V[i];
       if(!zoo||!window._ladeTier||!window._tiere)return;
@@ -7358,30 +7620,34 @@ setTimeout(function baueGebaeude(){
         var d=(b.w&&b.w.userData&&b.w.userData.datei)||"";
         if(String(d).indexOf("th24_gehege")>=0)geh.push(b.w);
         if(String(d).indexOf("th24_streichelzoo")>=0)streichel=b.w;});
+      if(geh.length<3||!streichel)return;          /* Bauten noch nicht da -> der naechste Schlusslauf */
+      function bodenOben(w){var t=0;w.traverse(function(n){if(!n.isMesh)return;
+        var b=new THREE.Box3().setFromObject(n),s=new THREE.Vector3();b.getSize(s);
+        if(s.x>4&&s.z>4&&s.y<0.5&&b.min.y<0.6)t=Math.max(t,b.max.y);});return t;}
       /* Gehege ist 13,2 x 10,7 — Radius 4 haelt die Tiere sichtbar drinnen. */
       var ART=[["an_boar.glb",0.85,0.45],["an_deer.glb",1.05,0.50],["an_fox.glb",0.55,0.70]];
       geh.forEach(function(w,gi){
-        var a=ART[gi%ART.length], gx=w.position.x, gz=w.position.z;
+        var a=ART[gi%ART.length], gx=w.position.x, gz=w.position.z, gy=bodenOben(w);
         [0,1].forEach(function(k){
           window._ladeTier(a[0],a[1],function(m){if(!m)return;scene.add(m);
-            window._tiere.land.push({mesh:m,x:gx+(k?2.2:-2.2),z:gz+(k?1.6:-1.6),
+            window._tiere.land.push({mesh:m,x:gx+(k?2.2:-2.2),z:gz+(k?1.6:-1.6),y0:gy,
               head:k*2.1,sp:a[2],turnT:2+k,walkT:k,yaw:Math.PI,home:{x:gx,z:gz,r:4}});});});});
       /* Streichelzoo (23,5 x 21): Hasen, die man auch anfassen wuerde. */
-      if(streichel){var sx=streichel.position.x, sz=streichel.position.z;
-        [0,1,2].forEach(function(k){
-          window._ladeTier("an_rabbit.glb",0.42,function(m){if(!m)return;scene.add(m);
-            window._tiere.land.push({mesh:m,x:sx-3+k*3,z:sz-2+k*2,head:k*1.4,sp:1.6,
-              turnT:1.5+k,walkT:k,yaw:Math.PI,hop:0.18,home:{x:sx,z:sz,r:6}});});});}
-      window._zooTiere=geh.length*2+(streichel?3:0);
-    },15000);
+      var sx=streichel.position.x, sz=streichel.position.z, sy=bodenOben(streichel);
+      [0,1,2].forEach(function(k){
+        window._ladeTier("an_rabbit.glb",0.42,function(m){if(!m)return;scene.add(m);
+          window._tiere.land.push({mesh:m,x:sx-3+k*3,z:sz-2+k*2,y0:sy,head:k*1.4,sp:1.6,
+            turnT:1.5+k,walkT:k,yaw:Math.PI,hop:0.18,home:{x:sx,z:sz,r:6}});});});
+      window._zooTiere=geh.length*2+3;
+    };
     /* ✈️ FLUGHAFEN. Der letzte grosse Posten aus der Inventur: neun th25-Modelle, die in
        keinen Reihen-Generator passen, weil eine LANDEBAHN dazugehoert. Zweiteilig geloest —
        Gebaeude als Viertel, Bahn und Vorfeld daneben, beide an der ECHTEN Viertelmitte.
        ⚠️ MASSE GEMESSEN (`th-mass.mjs`): Terminal 40,8x27,2 · Hangar 37,4x27,7 ·
        Tower 7,5x7,5 (h 22) · Radarturm 8,7x4,9 (h 18). Laengere Bauzeile
-       Terminal+Tower = 48,3 m plus eine Luecke, passt in die 82 m Netto-Laenge.
+       Terminal+Tower = 48,3 m plus eine Luecke, passt in die 66 m Netto-Laenge (rand 22).
        ⚠️ UND EINE LUECKE IM SOLVER, die man kennen muss: `viertelMass` prueft nur das
-       Netto-Rechteck der BAUZEILEN (hier 82 x 67,3). Alles, was daneben liegt — Bahn,
+       Netto-Rechteck der BAUZEILEN (hier 66 x 67,3). Alles, was daneben liegt — Bahn,
        Vorfeld, Flugzeug — ist fuer `viertelPasst()` unsichtbar und muss von Hand
        geprueft werden (th-strassen + th-3d). Die Bahn liegt darum bewusst auf der
        gleichen Achse wie die Viertelstrasse, nur weiter aussen. */
@@ -7392,8 +7658,15 @@ setTimeout(function baueGebaeude(){
        den der Solver nicht sieht. 18 Plaetze erfuellen beides, alle weit draussen;
        der naechste ist (300|-260), r = 397. Fuer einen Flughafen ist das passend.
        Anschluss ans Suedende der Gewerbe-Ost-Strasse (x = 250, endet bei z = -168). */
+    /* ⚠️ Runde 102 (probe-wasda 320 -310 356 -210, th-blick 338 -262 r70): mit rand 14 begannen beide Bauzeilen
+       am Westrand (x 259); hinter Tower (Ostkante 321,3) und Radarturm (317,2) blieben 34 bzw. 38 m nackte Platte
+       bis zum Technikpark-Anschluss (355) — kein Bau, je eine Laterne und ein Kleinteil. rand 22 rueckt beide Zeilen
+       8 m nach Osten (gemessen: Terminal 267…307,8, Tower 321,8…329,3; Hangar 267…304,4, Radarturm 320,3…325,2 —
+       er steht ry 270°, also 4,9 m breit): Ostrest 25,7/29,8 m, Westrest 22 m, Anschluss-Luecke 243,1…256,9
+       bleibt frei, die Viertelmitte bleibt (300|-260). Der Radarturm-Zugangsweg (x 321,6…323,9) faellt damit auf
+       den Moebel-Takt 323 — s. `sperr` bei viertelMoeblieren(v("Flughafen")). */
     var _fh = viertel({name:"Flughafen",x:300,z:-260,w:110,d:100,achse:"x",boden:"platz",
-      anschluss:[250,-168],abstand:14,luecke:14,rand:14,
+      anschluss:[250,-168],abstand:14,luecke:14,rand:22,
       bauten:[{file:"th25_terminal.glb", h:12,w:40.8,d:27.2},
               {file:"th25_hangar.glb",   h:14,w:37.4,d:27.7},
               {file:"th25_tower.glb",    h:22,w: 7.5,d: 7.5},
@@ -8311,7 +8584,7 @@ setTimeout(function baueGebaeude(){
        je Seite (TO = 5,8 in viertel()). Gesetzt wird ab 8,5 m von der Mittelachse —
        hinter dem Gehweg, vor der Bauzeile (setback = TO + abstand, also >= 18 m).
        Jede Stelle wird vorher mit `imBau` geprueft; was belegt ist, faellt aus. */
-    function viertelMoeblieren(v,satz,abstandVonAchse){
+    function viertelMoeblieren(v,satz,abstandVonAchse,sperr){
       if(!v)return 0;
       var laengs=v.laengs, laenge=laengs?v.w:v.d, off=abstandVonAchse||8.5, n=0, i=0;
       for(var t=-laenge/2+12;t<=laenge/2-12;t+=11){
@@ -8323,6 +8596,11 @@ setTimeout(function baueGebaeude(){
              der 11-m-Takt kennt keine Wege, die spaeter durch das Viertel fuehren. Alle Baender
              (Viertelstrassen + Anschluesse, mit Gehweg) sind zu diesem Zeitpunkt bekannt. */
           if(window._aufViertelWeg&&window._aufViertelWeg(x,z,3))continue;
+          /* ⚠️ Runde 102 (probe-wasda -65 245 -15 290): imBau kennt nur den Schaetzkollider eines Baus (Eishalle
+             24x17), die geladene Huelle ist 43,6x30,9 — die Suedwand steht bei z 253,5, nur 0,6 m hinter dem
+             Gehweg. Bank und zwei Abfalleimer der Nordreihe (z 254,5) landeten in der Wand, und entwirren() schob
+             sie 4 m nach Sueden auf die Bordsteinkante (z 250,5). `sperr(x,z,v)` nimmt solche Takte vorher heraus. */
+          if(sperr&&sperr(x,z,v))continue;
           var m=satz[i++%satz.length];
           bau(m[0],m[1],x,0,z,laengs?(s2>0?Math.PI:0):(s2>0?-Math.PI/2:Math.PI/2),false,null,true);
           n++;}}
@@ -8334,19 +8612,62 @@ setTimeout(function baueGebaeude(){
          zum Ort gehoert. Alle Modelle liegen schon im Repo. */
       viertelMoeblieren(v("Sportpark Sued"),
         [["lp_parkbank.glb",0.9],["th4_muelleimer.glb",0.9],["th33_blumenrabatte.glb",0.9],
-         ["lp_parkbank.glb",0.9],["th2_gartenbank.glb",0.8],["th4_muelleimer.glb",0.9]]);
+         ["lp_parkbank.glb",0.9],["th2_gartenbank.glb",0.8],["th4_muelleimer.glb",0.9]],
+        /* Eishallen-Front (Runde 102, gemessen): Huelle x −61,8…−18,2 in der Nordreihe (z > Achse),
+           Viertel steht bei (0|246) → Takte x −54, −43, −32, −21 entfallen dort. */
+        8.5,function(x,z,v){return z>v.z&&x>v.x-62&&x<v.x-18;});
+      /* ⚠️ Runde 102 (probe-wasda -290 -275 -115 -225): der 6er-Satz sortierte sich nach SEITEN — die Schleife
+         vergibt Index i++ je Stelle, Sued zuerst, dann Nord, also Sued immer 0/2/4 und Nord 1/3/5: Nordzeile
+         z -241,5 = 9x Abfalleimer + 5x th31_schild_rund, Suedzeile -258,5 = 9x Bank + 5x Rabatte. Und
+         `th31_schild_rund` ist KEIN Verkehrsschild, sondern der Ritter-Rundschild aus Charge 30 (Waffen-Props,
+         TH5-ASSETS §1y) — 1,6 m hoch, alle 33 m an der Zoostrasse. Jetzt 7 Eintraege (ungerade: beide Seiten
+         bekommen alle Typen, hoechstens eine Wiederholung) und die Rabatten auf Index 1 und 5, damit kein Beet
+         unter den Laternenmasten bei x -260,7/-139,3 landet (naechster Mast >= 5,1 m). */
       viertelMoeblieren(v("Zoo"),
-        [["lp_parkbank.glb",0.9],["th4_muelleimer.glb",0.9],["th33_blumenrabatte.glb",0.9],
-         ["th31_schild_rund.glb",1.6],["lp_parkbank.glb",0.9],["th4_muelleimer.glb",0.9]]);
+        [["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],["th4_muelleimer.glb",0.9],
+         ["lp_parkbank.glb",0.9],["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],
+         ["th4_muelleimer.glb",0.9]]);
+      /* ⚠️ Runde 102 (probe-wasda 250 -275 345 -245, th-ort 300 -230 70): der 6er-Satz lief in dieselbe
+         Paritaetsfalle wie im Zoo — und weil der Slot (257|-251,5) im Anschluss-Korridor uebersprungen wird,
+         kippte sie so, dass die Terminal-Seite (z -268,5) fuenf identische th31_schild_rund in Reihe (x 268, 290,
+         301, 323, 334) und keine einzige Bank bekam, die Hangar-Seite (z -251,5) alle drei Baenke und beide
+         Bauzaeune. Ein Bauzaunfeld (279|-251,5, 3,4 m breit) stand dabei quer auf dem 2,2-m-Zugangsweg zur
+         Hangar-Tuer (1,5 m Ueberlappung, 2,0 der 3,2 m Tueroeffnung verdeckt), das zweite (312|-251,5) 0,1 m
+         neben dem Radarturm-Weg — ein Baustellenzaun ohne Baustelle. Jetzt 5 Eintraege (ungerade: beide Seiten
+         sehen alle Typen) ohne Bauzaun. Mit rand 22 (s. viertel Flughafen) liegt der Radarturm-Zugangsweg bei
+         x 321,6…323,9 (Turm ry 270°, nur 4,9 m breit), der Takt (323|-251,5) traefe ihn mittig — `sperr` nimmt
+         ihn heraus. Reihenfolge mit beiden Spruengen (257 und 323 Hangar-Seite) nachgerechnet, je Seite keine
+         zwei gleichen Nachbarn: Terminal Bank·Schild·Eimer·Bank·Eimer·Bank·Schild·Eimer, Hangar
+         Eimer·Bank·Schild·Eimer·Bank·Eimer; auf den Zugangswegen (Terminal 286,3…288,5, Tower 324,4…326,7,
+         Hangar 284,6…286,8) steht nichts, naechstes Stueck >= 0,6 m daneben. */
       viertelMoeblieren(v("Flughafen"),
-        [["th4_muelleimer.glb",0.9],["th31_schild_rund.glb",1.6],["lp_parkbank.glb",0.9],
-         ["th4_muelleimer.glb",0.9],["th21_bauzaun_modul.glb",2.0],["th31_schild_rund.glb",1.6]]);
+        [["lp_parkbank.glb",0.9],["th31_schild_rund.glb",1.6],["th4_muelleimer.glb",0.9],
+         ["th4_muelleimer.glb",0.9],["lp_parkbank.glb",0.9]],
+        8.5,function(x,z,v){return z>v.z&&x>321&&x<324.5;});
       viertelMoeblieren(v("Gewerbe Rietli"),
         [["th6_muellcontainer.glb",1.2],["th4_muelleimer.glb",0.9],["th2_gartenbank.glb",0.8],
          ["lp_parkbank.glb",0.9],["th6_muellcontainer.glb",1.2],["th4_muelleimer.glb",0.9]]);
       viertelMoeblieren(v("Chilbiplatz"),
         [["th4_muelleimer.glb",0.9],["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],
          ["th4_muelleimer.glb",0.9],["th33_parklaterne.glb",5.4],["lp_parkbank.glb",0.9]]);
+      /* 🏙️ NEUSTADT (Runde 102, probe-wasda 320 -185 420 -95): 0 Kleinteile — das Viertel entstand in Runde 95
+         NACH der Messung oben und fehlte in dieser Liste; zwischen Rathaus, Kino, Museum, Bibliothek,
+         Einkaufszentrum und Hotel lag nur die nackte beige Platte (th-blick 370 -140 r60). Von Hand statt ueber
+         viertelMoeblieren, weil der 11-m-Takt den Slot (398|-131,5) mitten auf den Hotel-Zugangsweg (x 396,8…399,1)
+         setzen wuerde und die Rabatte (4,0 x 2,2 m) bei (343|-148,5) die Laterne (345|-147,4) bzw. bei
+         (365|-131,5) die Huelle des Einkaufszentrums (z -130,6) schnitte — der Takt kennt weder Zugangswege noch
+         Laternen. Lagen relativ zur ECHTEN Mitte (nv = 370|-140), Nord ry 0, Sued ry PI wie im Generator; fest,
+         damit der Entwirrer nichts je nach Ladereihenfolge verschiebt, ohneSchutz wie im Generator.
+         Nord z -148,5: Rabatte 332 (Rathaus-Kollider endet -149,6), Eimer 343 (1,6 m zur Laterne 345), Bank 354,
+         Eimer 365 (0,7 m zum Kino-Weg 365,9), Bank 376, Rabatte 387 (Museum-Weg 393,2), Eimer 398.
+         Sued z -131,5: Bank 332 (Bibliothek-Kollider -131,15), Eimer 343, Rabatte 353,4 (in der Luecke Bibliothek
+         350,4…Einkaufszentrum 356,4), Bank 365, Bank 376, Eimer 387, Eimer 402 (Hotel-Weg endet 399,1). */
+      (function neustadtMoebel(){var nv=v("Neustadt");if(!nv)return;
+        function f9(f,x,z,ry){bau(f,0.9,x,0,z,ry,false,function(w){w.userData.fest=1;},true);}
+        var B="lp_parkbank.glb",E="th4_muelleimer.glb",R="th33_blumenrabatte.glb";
+        [[R,-38],[E,-27],[B,-16],[E,-5],[B,6],[R,17],[E,28]].forEach(function(p){f9(p[0],nv.x+p[1],nv.z-8.5,0);});
+        [[B,-38],[E,-27],[R,-16.6],[B,-5],[B,6],[E,17],[E,32]].forEach(function(p){f9(p[0],nv.x+p[1],nv.z+8.5,Math.PI);});
+      })();
     },600);
     /* 🏘️ VERKEHR AUF DIE VIERTELSTRASSEN. Die Platzhalter-Routen (siehe ROUTEN) tragen
        nur den Namen des Viertels; erst hier steht fest, WO es tatsaechlich liegt —
@@ -8627,7 +8948,14 @@ setTimeout(function baueGebaeude(){
       /* 2) Stadthaus 12 x 4, zwei Geschosse, Flachdach: EG Laden mit Schaufenstern
             und Tür, OG Wohnungen mit Balkon. Front zeigt nach Süden (+z), also rot π. */
       (function stadthaus(){
-        var HX=-86,HZ=134;
+        /* ⚠️ Runde 102 (gemessen): mit HX -86 stand die Ostwand (x -80) 0,9…2,9 m IM Asphalt des Zubringers 120°
+           — Achse bei z 132/134/136 auf x -76,2/-77,4/-78,5, halbe Breite 4,2, Belag-Westrand also -81,1/-82,3/-83,4;
+           in der th-umfeld-Karte ueberdruckte der Haus-Kollider die Korridorzellen x -83…-80 der Zeilen 131–136.
+           Das Haus kam VOR dem Zubringer (Runde 93); die Platzsuche „nicht auf Strasse" galt damals. HX -93:
+           Haus x -99…-87, SO-Ecke 3,1 m senkrecht neben dem Belag (mit 1,5-m-Bankett 1,6 m); probe-wasda
+           -106..-84/124..144 zeigt dort nur die Ring-Laterne (-104|127.5, Kasten z ≤127,9 = 4,1 m von der Wand)
+           und einen Busch (-95|140.6, 1,9 m suedlich des Kolliders). Alle 34 Module + addSolid haengen an HX. */
+        var HX=-93,HZ=134;
         [["th34_wand_schaufenster.glb",-4],["th34_wand_tuer.glb",0],["th34_wand_schaufenster.glb",4]]
           .forEach(function(m){modul(m[0],HX+m[1],0,HZ+2,Math.PI);});
         [["th34_wand_fenster.glb",-4],["th34_wand_fenster.glb",0],["th34_wand_voll.glb",4]]
@@ -8824,6 +9152,7 @@ setTimeout(function baueGebaeude(){
          Am echten Werkzeug nachgeprueft: 12 -> 18 (x=15) -> 10 (x=-25) -> 5 (x=60).
          Der Weg wird dadurch laenger; er ist dafuer frei. */
       anschluss:[60,-100],abstand:16,luecke:20,rand:20,
+      randBaeume:false,   /* Runde 102: die Aecker reichen bis zur Viertelkante — die Randbaum-Reihen (z -205/-287) standen in den Saatreihen */
       bauten:[{file:"th18_scheune.glb",h:10,w:20,d:14},
               {file:"th18_stall.glb",h:5.5,w:16,d:11},
               {file:"th18_silo.glb",h:12,w:6,d:6,tuer:false},
@@ -8831,17 +9160,28 @@ setTimeout(function baueGebaeude(){
               {file:"th18_windrad.glb",h:22,w:6,d:6,tuer:false},
               {file:"th18_wassertank.glb",h:4,w:4,d:4,tuer:false}]});
     var BHDX=(_bh?_bh.x:-40)+40, BHDZ=(_bh?_bh.z:-196)+196;   /* Versatz zum Wunschort */
-    /* Felder + Zaun + Geraete rund um den Hof */
+    /* Felder + Zaun + Geraete rund um den Hof.
+       ⚠️ Runde 102 — DIE BAUZEILEN STANDEN IM ACKER. Die Felder lagen auf ±34 mit 26 m Tiefe (z VZ-47…VZ-21 und
+       VZ+19…VZ+45), die Bauzeilen von viertel() aber bei VZ∓21,8 (setback = TO+abstand): die Scheune (Huelle
+       z -279,4…-256,8, Suedwand -278) deckte fuenf Saatreihen, Silo und Windrad je eine; im Norden standen Stall
+       (-229,3…-219) und Gewaechshaus (-229…-219,4) 8 m tief im Feld, der Wassertank auf der Reihe -225
+       (probe-wasda -100 -300 50 -195, Fotos r102-hof-suedzeile/-nordzeile). Nach Sueden ist kein Platz (Grosser
+       Berg ab z -293: gelaendeH (17|-293) = 1,17 m), nach Norden keiner (Landstrassen-Belag bis z -204,2).
+       Darum die Felder SCHMALER, nicht verschoben: Suedfelder Mitte -41, Tiefe 12 (z -293…-281, 1,6 m Luft zur
+       Scheunen-Huelle), Reihen -291,2/-288,4/-285,6/-282,8; Nordfelder Mitte +37, Tiefe 16 (z -217…-201, 2 m
+       Luft zur Stall-Nordwand), Reihen -215,5/-212,7/-209,9/-207,1 — eine fuenfte Reihe bei -204,3 laege im
+       GPS-Band der Landstrasse (r >= 204,8), darum nur vier. f = [dx, dz, tiefe, erste Reihe ab Mitte]. */
     (function felder(){
       var FX=-40+BHDX,FZ=-196+BHDZ;
-      [[-64,-34],[-30,-34],[6,-34],[42,-34],[-64,32],[-30,32],[6,32],[42,32]].forEach(function(f,i){
+      [[-64,-41,12,-4.2],[-30,-41,12,-4.2],[6,-41,12,-4.2],[42,-41,12,-4.2],
+       [-64,37,16,-6.5],[-30,37,16,-6.5],[6,37,16,-6.5],[42,37,16,-6.5]].forEach(function(f,i){
         var ackerM=new THREE.MeshStandardMaterial({color:i%2?0x8a6b46:0x7d6140,roughness:1,envMapIntensity:0.12});
-        var a=new THREE.Mesh(new THREE.PlaneGeometry(30,26),ackerM);
+        var a=new THREE.Mesh(new THREE.PlaneGeometry(30,f[2]),ackerM);
         a.rotation.x=-Math.PI/2;a.position.set(FX+f[0],-0.008,FZ+f[1]);a.receiveShadow=true;scene.add(a);
-        for(var r=0;r<9;r++){                       // Saatreihen
+        for(var r=0;r<4;r++){                       // Saatreihen: vier je Feld, Abstand 2,8
           var rm=new THREE.Mesh(new THREE.BoxGeometry(28,0.12,0.5),
             new THREE.MeshStandardMaterial({color:i%2?0x6f8a44:0x5e7c3c,roughness:0.95}));
-          rm.position.set(FX+f[0],0.06,FZ+f[1]-11+r*2.8);scene.add(rm);}});
+          rm.position.set(FX+f[0],0.06,FZ+f[1]+f[3]+r*2.8);scene.add(rm);}});
       bau("th18_traktor.glb",3.0,FX-8,0,FZ-46,0.6,false,null,true);
       bau("th18_anhaenger.glb",2.0,FX+2,0,FZ-46,0.6,false,null,true);
       bau("th18_heuballen.glb",1.6,FX+20,0,FZ-44,1.2,false,null,true);
@@ -8876,6 +9216,13 @@ setTimeout(function baueGebaeude(){
          Torluecke im Norden, in der das Hoftor steht. Die Luecke ist 4,90 breit —
          das Tor misst 4,78, ein Modul waeren 2,50: zwei Module weniger, nicht eins. */
       var KX0=18.0+BHDX, KX1=43.0+BHDX, KZ0=-186.0+BHDZ, KZ1=-168.0+BHDZ, TOR=30.5+BHDX;
+      /* ⚠️ Runde 102: der Waldsaum streute VIER Nadelbaeume in die Koppel und zwei in den Zaun (Instanz-Abfrage
+         x 15…46 / z -240…-215: wald_baum_stamm bei (30,6|-225,9), (37,9|-222,2), (34,7|-232,8), (42,1|-229)).
+         Seit w 170 -> 120 endet die Kiesplatte bei x = 20, die Koppel (x 18…43) liegt auf der Wiese; der Saum
+         meidet Viertel nur bis v.w/2+10 = x 30, und `freiPlatz` kannte den Hofausbau nicht. Das Rechteck haengt
+         am GEBAUTEN Viertel (BHDX/BHDZ), nicht an festen Zahlen — gemessen heute x 15…46, z -267…-215
+         (Koppel, Huehnerstall (26|-261), Futtertrog, Hoftor); th-umfeld dort nur ".", keine Strasse, kein Wasser. */
+      window._hofausbau=[KX0-3,KX1+3,SUED-6,KZ1+3];
       var wzStellen=[];
       for(var x=KX0+1.25;x<KX1;x+=2.5){
         wzStellen.push([x,KZ0,0]);
@@ -8890,11 +9237,20 @@ setTimeout(function baueGebaeude(){
     })();
     /* 🎢 ACHTERBAHN neben dem Freizeitpark — fahrbar, mit Ego-Perspektive.
        Geschlossener Catmull-Rom-Rundkurs, Schienen als Tubes, Stuetzen bis zum Boden,
-       Zug aus 4 Wagen. Einsteigen an der Station; die Kamera haengt sich an den Wagen. */
+       Zug aus 4 Wagen. Einsteigen an der Station; die Kamera haengt sich an den Wagen.
+       ⚠️ Runde 102 (Sonde: _coaster.zug.position, Kaesten von Zug, Dach und Bahnsteig): mit P[0]=[0,2,-22] lag
+       die Schiene an der Station bei y 2,8 — der Zug schwebte 2,5 m ueber dem 0,5 m hohen Bahnsteig und steckte
+       mit den Wagenkaesten (y 3,05…4,35) in der Dachplatte (3,43…3,77), die Sitze standen UEBER dem Dach.
+       Deshalb die Kurve an der Station abgesenkt (Dach, Pfosten, Bahnsteig, addSolid unveraendert):
+       P[0] 2→0,2 (Schiene 1,0), P[9] 2→0,8, P[1] 4→3. Gemessen danach: Kurvenminimum im Bahnsteig-Grundriss
+       0,87 bei (-192,8|211,9) → Schienen-Unterkante 0,74 = 24 cm ueber der Bahnsteigkante 0,5; Zug-Kasten
+       y 1,22…2,53 → Stufe ~0,7, Sitze und Ego-Auge (1,42 + 0,97) unter der Dach-Unterkante 3,43; die Stuetze
+       bei (-190|212) entfaellt (Kurve im Bahnsteig < 2,2), Laenge 153,8 → 154,4 m. P[9] tiefer als 0,8 drueckt
+       die Schiene in den Bahnsteig (0,5 → 0 cm Luft). */
     (function achterbahn(){
       var CX=-190,CZ=234;
-      var P=[[0,2,-22],[16,4,-18],[24,9,-6],[22,16,8],[10,20,18],[-6,17,22],[-20,11,14],
-             [-26,6,0],[-22,3,-12],[-10,2,-20]];
+      var P=[[0,0.2,-22],[16,3,-18],[24,9,-6],[22,16,8],[10,20,18],[-6,17,22],[-20,11,14],
+             [-26,6,0],[-22,3,-12],[-10,0.8,-20]];
       var pts=P.map(function(p){return new THREE.Vector3(CX+p[0],p[1]+0.8,CZ+p[2]);});
       var kurve=new THREE.CatmullRomCurve3(pts,true,"catmullrom",0.5);
       var schM=new THREE.MeshStandardMaterial({color:0xd8443a,roughness:0.45,metalness:0.35});
@@ -8936,7 +9292,11 @@ setTimeout(function baueGebaeude(){
         kp.position.y=0.75;kp.castShadow=true;wg.add(kp);
         var sitz=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.4,0.6),stdMat(0x2a2e34,0.7));
         sitz.position.set(0,1.25,-0.4);wg.add(sitz);
-        wg.position.z=w*2.7;zugG.add(wg);}
+        /* ⚠️ Runde 102 (th-ort -190 212 10 alles): mit z=w*2,7 hingen alle vier Wagen VOR dem Zug-Ursprung —
+           an der Station x −191,3…−180,7, das Dach endet bei −183,5, der letzte Wagen stand 2,8 m im Freien.
+           Jetzt um den Ursprung zentriert (x ≈ −195,3…−184,7, unter dem Dach −196,5…−183,5); die Figur haengt
+           in updCoaster an der Weltlage von Wagen 0, nicht mehr am Ursprung. */
+        wg.position.z=(w-1.5)*2.7;zugG.add(wg);}
       scene.add(zugG);
       window._coaster={kurve:kurve,zug:zugG,t:0,v:0,CX:CX,CZ:CZ,faehrt:false,mit:false};
       addSolid(CX,CZ-22,13,6,{a:"z",at:CZ-19.2,c:CX,w:6});   /* Station solide, Zugang offen */
@@ -9589,23 +9949,36 @@ setTimeout(function baueGebaeude(){
       window._muehle=root2;});},true);
   addSolid(-136,-196,7,7,null);   /* 🧱 Muehlenturm solide */
   // ---- 16 selbstgebaute Blender-Props (th3_*, vom Agenten-Schwarm prozedural erstellt) ----
-  // Spielplatz neben dem Brunnen-Park (Osten)
-  /* 🛝 Der Spielplatz ragte in Gehweg und Laternenmast. Jetzt ein Stueck weiter oestlich
-     komplett auf dem Rasen, mit eigener Sandflaeche darunter. */
+  // Spielplatz im Quartierspark (Osten, westlich der Querstrasse) — beim th16-Set (PX2=56)
+  /* ⚠️ Runde 102 (th-umfeld 85 -42 111 -10, probe-wasda 80 -42 108 -10, th-blick 98 -30 45 0.9):
+     der Spielplatz lag seit Charge 47 ZWISCHEN den beiden Sunnehalde-Villen (96|-22) und
+     (96|-40,5), hinter deren Heckenzug x 87. Die 26 x 18-Sandplatte (x 85…111 / z -39…-21)
+     lief 6,5 m unter die Walmvilla (Kasten z -28,1…-15,9) und 4 m unter die Giebelvilla
+     (z -46…-35) und ragte oestlich der Haeuser als kahles 9 x 18-Rechteck heraus; der
+     Sandkasten (97|-29) stand 0,4 m, das Karussell (103|-23) 0,7 m vor Villenwaenden, die
+     Wippe (Code x 84, bau() schob auf 88,5) im Villen-Vorgarten am Fuss der Eingangstreppe.
+     Der alte Kommentar hier („ragte in Gehweg und Laternenmast, jetzt weiter oestlich auf dem
+     Rasen") stammte aus der Zeit VOR den Villen — sie wurden auf den Spielplatz gesetzt.
+     Der Stadtplan („Osten: Quartierspark mit Spielplatz") weist den Spielplatz beim th16-Set
+     aus (Spielturm 60|2, Schaukel 58|-8, Wippe 50|-8, Sandkasten 50|2) — dorthin verlegt.
+     Zielort gemessen (probe-wasda 44 -16 74 8): Platte 22 x 16 bei (57|-2) = x 46…68 /
+     z -10…6; Gehweg der Querstrasse ab 70,5 (2,5 m), Eichenkrone (54|-14) bis z -10,6,
+     Ahornkrone (62|8) ab z 5,1 (Stamm bei z 8), Hydrant (44|0) draussen, Baufenster x ±36 und
+     Rundweg x 39 nicht beruehrt. Alle Geraete fest + ohneSchutz (|x-78| ≥ 11, ausserhalb des
+     wegVonStrasse-Bands). th3-Sandkasten und th3-Wippe gestrichen: das th16-Set hat beide. */
   (function spielRasen(){
-    var sm=new THREE.Mesh(new THREE.PlaneGeometry(26,18),
+    var sm=new THREE.Mesh(new THREE.PlaneGeometry(22,16),
       new THREE.MeshStandardMaterial({color:0xd6c08c,roughness:1,envMapIntensity:0.14}));
-    sm.rotation.x=-Math.PI/2;sm.position.set(98,0.004,-30);sm.receiveShadow=true;scene.add(sm);})();
-  bau("th3_rutsche.glb",2.6,92,0,-32,Math.PI/2,false);
-  bau("th3_schaukel.glb",2.3,102,0,-30,0,false);
-  /* ⚠️ z -29 statt -25: die Villenparzelle (96|-22) reicht seit Charge 47 mit
-     dem Modell (12 x 11, also z -27,5…-16,5) weiter nach Sueden als die alte
-     prozedurale Kiste — der Sandkasten lag danach IM Haus (5 Mesh-Paare ab
-     y 0). Vier Meter nach Sueden ist der naechste gemessen freie Stand, und
-     die Sandflaeche (z -39…-21) traegt ihn dort genauso. */
-  bau("th3_sandkasten.glb",0.55,97,0,-29,0,false);
-  bau("th3_wippe.glb",1.25,84,0,-26,Math.PI/2,false);   /* war x 91: stand in th47_villa_walm (Kasten x 88,7…101) */
-  bau("th3_karussell.glb",1.3,103,0,-23,0,false);
+    sm.rotation.x=-Math.PI/2;sm.position.set(57,0.004,-2);sm.receiveShadow=true;scene.add(sm);})();
+  /* Rutsche (48|-4): Kasten x 46,2…49,8 / z -4,5…-3,5 — th16-Wippe (Kasten z ≤ -6,8) 2,3 m,
+     Parkbank (50|0) 2,7 m, Hydrant (44|0) 2,2 m. */
+  bau("th3_rutsche.glb",2.6,48,0,-4,Math.PI/2,false,function(w){w.userData.fest=true;},true);
+  /* Schaukel (66|-9): Kasten x 64,7…67,3 / z -9,6…-8,4 — th16-Schaukel (Kasten x ≤ 60) 4,7 m,
+     Laternenmast (70,3|0) 3,0 m, Gehweg 70,5 → 3,2 m. */
+  bau("th3_schaukel.glb",2.3,66,0,-9,0,false,function(w){w.userData.fest=true;},true);
+  /* Karussell (67|-2): Kasten x 66,1…67,9 / z -2,9…-1,1 — Spielturm-Huelle (x ≤ 64,1) 2,0 m,
+     Laternenmast 2,4 m, Gehweg 2,6 m. */
+  bau("th3_karussell.glb",1.3,67,0,-2,0,false,function(w){w.userData.fest=true;},true);
   // Markt-Platz (Suedzeile)
   /* 🎪 User: „stand passt nicht dort, eher bei Freizeitpark" — die zwei Buden standen
      verloren zwischen Parkplatz und Bahn. Jetzt flankieren sie die Park-Zufahrt. */
@@ -9615,13 +9988,26 @@ setTimeout(function baueGebaeude(){
     pb.rotation.x=-Math.PI/2;pb.position.set(68,-0.008,87);pb.receiveShadow=true;scene.add(pb);
     var weg=new THREE.Mesh(new THREE.PlaneGeometry(5,26),betMat(0xcfc8b8,0.9));
     weg.rotation.x=-Math.PI/2;weg.position.set(68,-0.009,68);weg.receiveShadow=true;scene.add(weg); /* Weg von der Strasse zum Platz */
-    bau("th4_eiche.glb",7.2,50,0,80,0.4,false);bau("th4_eiche.glb",6.8,88,0,82,1.7,false);
-    bau("th4_ahorn.glb",5.4,46,0,80,2.1,false);bau("th4_ahorn.glb",5.2,86,0,95,0.9,false);
+    /* ⚠️ Runde 102 (probe-wasda 40 72 64 98, th-ort, Foto): der Park-Westrand x 46…50 liegt seit dem
+       Rathaus-Ausbau IN dessen Huelle (Sockel x 29,5…50,5 / z 78…90, Korpus bis x 49,75). Gemessen:
+       Eiche (50|80) — Stammfuss (Ø 3 m) im Sockel, 3,5 m Krone im Korpus, sichtbar aus der Ostwand. Kein
+       freier Ersatzort: zwischen Bank (z 79,3) und Sandkasten (z 82,2) liegen 2,9 m, weiter westlich reicht
+       die Krone (r 3,3) wieder in die Wand → gestrichen. Ahorn (46|80) komplett im Korpus (vom Entwirrer
+       nach 44 geschoben, immer noch innen) → gestrichen. Bluetenbusch (50|88) zu 90 % im Sockel → auf
+       (51,5|88), gemessen frei (Kasten x 50,9…52,1: Sockelkante 0,4 m, Brezelstand (54|86) 1,3 m, Bank
+       (54|88) 1,6 m, Laterne (52|91) 2,1 m), fest. */
+    bau("th4_eiche.glb",6.8,88,0,82,1.7,false);
+    bau("th4_ahorn.glb",5.2,86,0,95,0.9,false);
     bau("th4_birke.glb",5.0,58,0,78,1.2,false);bau("th4_birke.glb",5.3,80,0,78,2.6,false);
     bau("th3_picknick.glb",0.85,58,0,76,0.5,false);bau("th3_picknick.glb",0.85,82,0,93,-0.7,false);
-    bau("th4_busch_blueten.glb",1.1,50,0,88,0,false);bau("th4_busch_blueten.glb",1.15,87,0,89,1,false);
+    bau("th4_busch_blueten.glb",1.1,51.5,0,88,0,false,function(w){w.userData.fest=true;});bau("th4_busch_blueten.glb",1.15,87,0,89,1,false);
     /* ── th5: Park-/Strassen-Moblierung (Asset-Session) ── */
-    bau("th5_parkbrunnen.glb",2.2,74,0,74,0,false);
+    /* ⚠️ Runde 102 (probe-wasda 52 64 74 84, th-ort 67.5 74): der Brunnen (74|74) lag im Querstrassen-Band
+       und wurde auf (67,5|74) geschoben — Becken (r 1,9) in der Nordost-Ecke des Einzelhauses (64|77) und
+       auf dessen Zaun. Jetzt fest auf (63,5|76,5), gemessen frei (Kasten x 61,6…65,4 / z 74,6…78,4): der
+       Zugangsweg x 65,5 bleibt voll frei, Kuebel (60|79) 1,2 m, Kuebel (67,5|79) 1,7 m, Picknick (58|76)
+       2,4 m, Birke (58|78) 2,2 m, Schaukel (66|84) 3,3 m; keine Strasse, kein Kollider (Haus weg), kein Wasser. */
+    bau("th5_parkbrunnen.glb",2.2,63.5,0,76.5,0,false,function(w){w.userData.fest=true;});
     /* ⚠️ GEMESSEN: die OESTLICHE Reihe stand im Spiel nirgends dort, wo sie hier
        steht. Alles mit x 80 oder 84 landete auf x 88,5 — und damit im
        th16_spielturm bei (89,7|76,3): Bank 21 Mesh-Paare, Laterne 18.
@@ -9643,19 +10029,44 @@ setTimeout(function baueGebaeude(){
     bau("th5_laterne_altstadt.glb",4.5,88.5,0,83.5,0,false,function(w){w.userData.fest=true;},true);
     bau("th5_laterne_altstadt.glb",4.5,52,0,93,0,false);
     bau("th5_laterne_altstadt.glb",4.5,88.5,0,91.5,0,false,function(w){w.userData.fest=true;},true);
-    bau("th5_baum_pappel.glb",7.0,63,0,60,0,false);bau("th5_baum_pappel.glb",7.0,73,0,60,0.5,false);
-    bau("th5_baum_pappel.glb",7.0,63,0,68,1.1,false);bau("th5_baum_pappel.glb",7.0,73,0,68,1.7,false);
-    bau("th5_baum_ahorn.glb",4.7,48,0,78,0.4,false);bau("th5_baum_ahorn.glb",4.7,88,0,78,1.3,false);
-    bau("th5_ortsschild.glb",2.4,64,0,58,Math.PI,false,function(w9){
-      schildText(w9,[_naechsterOrt(64,58)],{gross:104});});
+    /* ⚠️ Runde 102 (probe-wasda 52 64 74 84, th-ort 61 71.5): die vier Pappeln standen im Code auf Fahrbahn
+       und Gehweg der Suedstrasse (z 60/68 < 68,5) bzw. im Querstrassen-Band (x 73); wegVonStrasse schob sie
+       auf z 71,5 / x 67,5 — eine in den Kopf der Kettenlaterne (60|71,5), die uebrigen als Klumpen mit Birke
+       und Ortsschild auf den Vorgartenzaun des Einzelhauses (64|77). Es bleibt EINE Pappel, gemessen auf
+       (63|69,8): Laternenkopf x 61,5 → 0,5 m zur Krone (x 62…64), Stamm 1 m ausserhalb des Sued-Bands;
+       fest + ohneSchutz (|69,8-58| < 13,5, sonst schiebt bau() sie zurueck auf die Laternenlinie). Die
+       drei anderen sind gestrichen: der Eingangsstreifen z 68,2/71,2 ist die planmaessige wohnstrassen()-
+       Begruenung (Baum/Laterne im Wechsel), und (67,5|71,5) ist die Mitte des 5-m-Zugangswegs. */
+    bau("th5_baum_pappel.glb",7.0,63,0,69.8,0,false,function(w){w.userData.fest=true;},true);
+    /* ⚠️ Runde 102 (probe-wasda 28 60 75 100): dieser Ahorn stand im Code auf (48|78) = Sockelkante des
+       Rathauses (Sockel z 78…90, Korpus-Ecke 49,75|78,75) — im Spiel aber immer auf (48|74), weil der
+       Entwirrer ihn von Eiche (50|80), Ahorn (46|80) und den Heckenmodulen wegschob. Das Rathaus selbst
+       kennt er nicht (kein _gebaeude-Eintrag). Ohne diese Nachbarn blieb er auf 78: Stammfuss 0,3 m im
+       Sockel, Krone 0,4 m in der Korpus-Ecke. Darum fest auf der gemessenen Lage (48|74): Blumenrabatte
+       (48|70,6) 0,2 m zur Krone, Laterne (45|71,5) 0,5 m, Eichen-Krone (42|73) 0,3 m, Sockel 1,8 m. */
+    bau("th5_baum_ahorn.glb",4.7,48,0,74,0.4,false,function(w){w.userData.fest=true;});bau("th5_baum_ahorn.glb",4.7,88,0,78,1.3,false);
+    /* ⚠️ Runde 102 (probe-wasda 52 64 74 84): das Ortsschild (64|58) lag in der MITTE der Hauptstrasse und
+       wurde auf (64|71,5) = Gartenweg des Einzelhauses geschoben. Jetzt fest + ohneSchutz am Gehwegrand
+       westlich des Park-Zugangswegs, (61|69,5): Tafel 2 m breit (x 60…62), Gehwegkante z 68,5 → 0,9 m,
+       Kettenlaterne (60|71,5) Kasten z >= 71,1 → 1,5 m, Pappel-Stamm (63|69,8) 1 m hinter der Tafelkante
+       (auf (62,5|69,5) haette der Stamm die Tafel beruehrt), Zugangsweg x 65,5 → 3,5 m. Text bleibt
+       _naechsterOrt(64,58) = „Stadtpark" (POI 68|68), passt zum Eingang. */
+    bau("th5_ortsschild.glb",2.4,61,0,69.5,Math.PI,false,function(w9){
+      w9.userData.fest=true;schildText(w9,[_naechsterOrt(64,58)],{gross:104});},true);
     bau("th5_telefonzelle.glb",2.7,73,0,57,Math.PI,false);
     bau("th5_poller.glb",1.05,68,0,56,0,false);
     bau("th5_marktstand.glb",1.5,60,0,302,0,false); /* 🎪 vom Parkplatzrand an die Freizeitpark-Zufahrt */
     /* ── th6: Stadt-Kleinzeug ── */
     bau("th6_papierkorb.glb",0.9,58,0,80,0,false);bau("th6_papierkorb.glb",0.9,78,0,88,0,false);
     bau("th6_blumenkuebel.glb",0.7,60,0,79,0,false);bau("th6_blumenkuebel.glb",0.7,76,0,79,0,false);
-    [80,83,86,89].forEach(function(hz9){bau("th6_hecke_modul.glb",1.1,48,0,hz9,Math.PI/2,false);});
-    bau("th6_fichte.glb",5.5,46,0,90,0,false);bau("th6_fichte.glb",5.5,90,0,84,1,false);
+    /* ⚠️ Runde 102 (probe-wasda 40 72 64 98): vier Heckenmodule x 48 (z 80…89) standen komplett im
+       Rathaus-Korpus (Wand x 49,75); zwischen Sockelkante 50,5 und den Laternen x 52 bleibt kein Platz
+       fuer eine Hecke → gestrichen. Die Fichte (46|90) steckte 0,85 m in der Nordwand (Stamm auf der
+       Sockelkante z 90). (53|90) ist NICHT frei (die Laterne steht gemessen auf (52|91): 1,4 m, in der
+       Krone r 1,6; Bankkasten (54|88) 0,3 m in der Krone) → (46|92,3): Kronenkasten x 44,4…47,6 /
+       z 90,7…93,9, Sockelkante z 90 → 0,7 m, Rathaus-Kollider z 90,25 → 0,45 m, Feuerwache-Westwand
+       x 48,5 → 0,9 m, Lichtmast (41,7|91,6) 1,0 m, th-umfeld dort ohne Strasse/Kollider; fest + ohneSchutz. */
+    bau("th6_fichte.glb",5.5,46,0,92.3,0,false,function(w){w.userData.fest=true;},true);bau("th6_fichte.glb",5.5,90,0,84,1,false);
     bau("th6_billboard.glb",6.0,0,0,-84,Math.PI,false);
     /* ── th8: BEGEHBARE Gebäude (Altstadt-Band West; Tür = -z → rot dreht sie zur Strasse) ── */
     /* 🏘️ ALTSTADT — 2026-07-28 komplett vom BAUGRUNDSTUECK heruntergeholt.
@@ -9705,6 +10116,9 @@ setTimeout(function baueGebaeude(){
     /* 🧱 Kollider zu den begehbaren Gebaeuden (Masse aus models/TH5-ASSETS.md; rot=PI/2 dreht B/T) */
     addSolid(-26,95,17,25,{a:"x",at:-34.5,c:95,w:4.5});     /* Markthalle: Tor an der -x-Seite */
     addSolid(-46,80,12.8,10.8,{a:"z",at:85.4,c:-46,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
+    /* Wirtshaus bd_inn (fest auf (-28,4|74), 8,0 hoch → Grundriss 9,2 x 8,9): th-mauern (Runde 102) fand es OHNE
+       Kollider — autoKollider laeuft, bevor das GLB da ist. Tuer +z wie beim Stadthaus (rot=PI). */
+    addSolid(-28.4,74,9.2,8.9,{a:"z",at:78.45,c:-28.4,w:3.0});
     /* Laden: Tuer +x (rot=-PI/2). ⚠️ Runde 102: der Kollider stand auf (-24|74) — das Modell stand auf (-19|76).
        Der alte Kollider lag zur Haelfte IM Wirtshaus, und durch die
        Osthaelfte des Ladens lief man hindurch. Jetzt auf dem Modellkasten (Laden fest auf z 78: Kasten
@@ -10258,7 +10672,13 @@ setTimeout(function baueGebaeude(){
     /* th6_pylonen standen an der Baustellen-Einfahrt (-35|87) — mit der Baustelle weg (Runde 102). */
     bau("th6_schild_stop.glb",2.4,-74,0,-54,0,false);
     bau("th6_hydrant.glb",0.8,24,0,55.6,0,false);
-    bau("th5_baum_ahorn.glb",4.7,20,0,63,0.7,false);bau("th5_baum_ahorn.glb",4.7,34,0,63,1.9,false);bau("th5_baum_ahorn.glb",4.7,-20,0,63,0.2,false);
+    /* ⚠️ Runde 102 (th-ort 34 71.5, probe-wasda 14 59 44 76): der Aufruf (34|63) lag auf der Fahrbahn der
+       Suedstrasse; wegVonStrasse schob ihn auf (34|71,5) — PUNKTGLEICH mit der prozeduralen Laterne der
+       Kette (x = -96+26k, z 69 → 71,5): Mast im Stammkegel, Leuchtkoepfe ueber der Krone, dazu Briefkasten
+       (33,2|71,2) und Muelleimer (34,4|71,2) am Stamm. Der Streifen hat mit Eiche (42|73) und Ahorn (48|74)
+       schon zwei Baeume → gestrichen. (20|63) landet ebenso auf z 71,5, dort nur 0,2 m Kronenueberlappung
+       mit dem Zeilen-Ahorn (16|71,9) — unveraendert gelassen. */
+    bau("th5_baum_ahorn.glb",4.7,20,0,63,0.7,false);bau("th5_baum_ahorn.glb",4.7,-20,0,63,0.2,false);
     bau("th6_fichte.glb",5.5,-70,0,60,0.5,false);bau("th6_fichte.glb",5.2,-60,0,66,1.4,false);
     bau("th5_poller.glb",1.05,0,0,84,0,false);                     /* war z 90: stand in th8_werkstatt_offen, 6 Mesh-Paare */
     bau("th6_billboard.glb",6.0,46,0,-84,Math.PI,false);
@@ -10285,11 +10705,20 @@ setTimeout(function baueGebaeude(){
   bau("th3_hydrant.glb",0.8,30,0,50.3,0,false);
   bau("th3_bushalte.glb",2.1,-15,0,49.7,0,false);
   bau("th3_blumenkuebel.glb",0.7,0,0,50.2,0,false);
-  bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
+  /* ⚠️ Runde 102: hier stand ein zweiter Kuebel bei (84|-31) — als Gehwegdeko der Querstrasse gemeint,
+     aber bau() schob x 84 auf 88,5 (|84-78| < 10,5), also in den Vorgarten der Walmvilla (96|-22) neben
+     die Laterne (89|-32), zusammen mit der dorthin geschobenen Spielplatz-Wippe. Mit der Verlegung des
+     Spielplatzes in den Quartierspark gestrichen. */
   // See: Steg + Ruderboot
   /* Der Steg lag frei MITTEN im Wasser (10,139 = 9.9 m von der Seemitte) — Deko aus
-     der Zeit, als der See woanders lag. Jetzt am Suedost-Ufer, radial ins Wasser. */
-  bau("th3_steg.glb",0.8,14.5,0,135,Math.PI/4+Math.PI/2,false,null,true);
+     der Zeit, als der See woanders lag. Danach (14.5|135, rotY 3π/4) am Nordost-Ufer.
+     ⚠️ Runde 102, gemessen an 648 Welt-Scheiteln: dort lag der Steg radial r 17,2…19,2 von der Seemitte,
+     also komplett auf dem Rundweg (r 16,9…19,7), 1,9 m VOR dem Wasser (Ufer in dieser Peilung seeR(0,65)
+     = 15,3) — und rotY 3π/4 legte die Laengsachse PARALLEL zum Ufer (Kompass-Peilung 135° mit rotation.y
+     verwechselt). Jetzt (11.7|137.1) mit rotY 0.65 = atan2(8.9,11.7): lokal x zeigt genau auf die Radiale
+     Seemitte→Steg; radial r 12,3…17,1 → 3,0 m ueber dem Wasser, Landende 0,2 m in der Weg-Innenkante (16,9).
+     Sonnenschirm (13|135) bleibt am Landende, Mast 0,17 m neben dem Deck. ohneSchutz bleibt (Lage = Code). */
+  bau("th3_steg.glb",0.8,11.7,0,137.1,0.65,false,function(w){w.userData.fest=1;},true);   /* fest: Entwirrer soll ihn nie vom Ufer schieben */
   bau("th3_ruderboot.glb",0.55,-91,-0.04,80,0.6,false);
   // Park: Picknicktische
   bau("th3_picknick.glb",0.85,62,0,-32,0.4,false);
@@ -10298,9 +10727,18 @@ setTimeout(function baueGebaeude(){
   // Birken-Hain am See
   bau("th4_birke.glb",5.2,-70,0,64,0.3,false);bau("th4_birke.glb",4.8,-110,0,62,1.1,false);bau("th4_birke.glb",5.5,-68,0,70,2.2,false);   /* war (-100|98) — das ist seit Charge 42 die Turnhalle */
   // Tannen-Gruppe Nordwesten + Norden
-  bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",6.6,-80,0,-84,1.5,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
+  bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
+  /* ⚠️ Runde 102 (th-umfeld -104 -90 -84 -70): diese Tanne war auf (-80|-84) gesetzt — im Querstrassen-Band
+     (|x+78|<10,5), wegVonStrasse schob sie 8,5 m nach Westen auf -88,5 = in die Ostwand/Balkone des Wohnblocks
+     (-92|-80). Fest auf (-99|-84): Krone x -101…-97 / z -86…-82, 1,5 m westlich der Blockwand am Ufer, frei. */
+  bau("th4_tanne.glb",6.6,-99,0,-84,1.5,false,function(w){w.userData.fest=true;},true);
   // Herbst-Ahorne + grosse Eichen als Landmarks
-  bau("th4_ahorn.glb",5.1,58,0,76,0.5,false);bau("th4_ahorn.glb",5.4,-34,0,-80,1.8,false);
+  /* ⚠️ Runde 102 (probe-wasda 50 71 64 80, th-ort 58 76): der erste Ahorn dieser Zeile stand mit Lage UND
+     Drehung (58|76, 0,5 rad) exakt im Picknicktisch des Markt-Parks (riesenPark, dieselben Zahlen — ein
+     kopierter Parametersatz): Stammkegel h 3 m durch die Tischplatte, Krone in der Birke (58|78). Gestrichen;
+     die Birke bleibt als Schattenbaum, das dichte Umfeld (Bank 56|79, Papierkorb 58|80, Kuebel 60|79) laesst
+     keine zweite 3,6-m-Krone frei. */
+  bau("th4_ahorn.glb",5.4,-34,0,-80,1.8,false);
   bau("th4_eiche.glb",7.4,0,0,-82,0.9,false);/* ⚠️ Hier stand eine Einzel-Eiche (z 74): KOMPLETT im Stadthaus (-46|80,
      Box z 70…90). Ausweichen unmoeglich — zwischen Haupt-S-Band (bis z 68,8)
      und den neuen, tieferen Hausboxen (ab 69,7) liegen 0,9 m. Wie beim
@@ -10331,9 +10769,21 @@ setTimeout(function baueGebaeude(){
   // Spielplatz + Park-Ausstattung im grossen Park
   bau("th16_spielturm.glb",4.2,88,0,76,5.9,false);   /* war z=72: ragte 1.1 m ins Suedstrassen-Band */
   bau("th16_schaukel.glb",2.6,66,0,84,4.0,false);
-  bau("th16_wippe.glb",1.0,46,0,72,5.1,false);
+  /* ⚠️ Runde 102 (probe-wasda 50 74 70 94, th-umfeld 52 76 68 92): die Wippe stand als einziges Spielgeraet
+     auf dem gepflasterten Rathaus-Vorplatz (46|72) — ein Solver-Treffer, kein Spielplatz. Jetzt fest im Park
+     bei Sandkasten und Schaukel, (60|83,5): Kasten x 58,6…61,4 / z 82,8…84,2, Sandkasten bis x 57,8 → 0,8 m,
+     Schaukel ab x 63,8 → 2,4 m, Papierkorb (58|80) 2,7 m, Wimpel z 82 haengen auf y >= 2,95 (Wippe h 1). */
+  bau("th16_wippe.glb",1.0,60,0,83.5,5.1,false,function(w){w.userData.fest=true;});
   bau("th16_sandkasten.glb",0.5,56,0,84,2.3,false);
-  bau("th16_karussell_klein.glb",2.2,88,0,80,5.6,false);
+  /* ⚠️ Runde 102 (probe-wasda 40 -60 125 100, th-ort 95.9 80 12 alles, th-blick 96 80 40 0.9): das Karussell
+     stand mit der halben Scheibe im prozeduralen Hochhaus turm(100,76) (Kasten x 96,2…103,8 / z 72,2…79,9,
+     26 m hoch, Huelle = Baukoerper). Code (88|80) ≠ Spiel (95,9|80): wegVonStrasse schob x 88 auf 88,5
+     (|88-78| < 10,5), dort steckte es in der festen Parkbank (88,5|80,5), und der Entwirrer schob es 7,4 m
+     nach Osten in den Turm — der Turm ist eine prozedurale Group (addSolid), steht nicht in _gebaeude und ist
+     fuer den Entwirrer unsichtbar. Jetzt fest suedlich des Turms auf (101|88): th-ort 101 88 5 alles = frei,
+     Turmkoerper z ≤ 79,5 → 5,3 m, Blumen (99,8|85,2) 3 m, Mesh/0 (99,1|92,6) 4,6 m, Ringstrasse ab x 108;
+     ausserhalb aller wegVonStrasse-Baender (|101-78| = 23, |101-112| = 11). */
+  bau("th16_karussell_klein.glb",2.2,101,0,88,5.6,false,function(w){w.userData.fest=true;},true);
   bau("th16_blumenbeet.glb",0.6,96,0,68,0.2,false);
   // Seepark: Pavillon, Beete, Grillplatz, Birken, Spielecke
   bau("th16_pavillon.glb",4.0,8,0,174,2.6,false);
@@ -10353,7 +10803,15 @@ setTimeout(function baueGebaeude(){
     [[RX,SZk],[RX,-SZk],[-RX,SZk],[-RX,-SZk]].forEach(function(K,i){
       var sx=K[0]>0?-1:1,sz=K[1]>0?-1:1;
       bau("th6_ampel.glb",3.4,K[0]+sx*6.4,0,K[1]+sz*6.4,i*1.57,false);
-      if(i%2===0)bau("th6_litfasssaeule.glb",3.0,K[0]-sx*6.4,0,K[1]+sz*6.4,0,false);});
+      /* ⚠️ Runde 102 (probe-wasda, th-ort -89 44.5, th-umfeld -95 40 -78 55): die West-Saeule (i=2) ist an der
+         Kreuzungsecke (-84,4|51,6) gesetzt, bau() ohne ohneSchutz klemmt sie per wegVonStrasse auf (-88,5|44,5)
+         = IN das Dorfhaeuschen (-89|44). Erster Ersatz (-87|48,7) auf der Sued-Gehwegplatte — aber die Platte
+         (z 47,5…68,5) liegt IM Korridor der Suedstrasse (KORRIDORE: 58 ± 10,8), th-pruef meldete „1,3 m in
+         Haupt S". Jetzt fest auf (-94,5|45,5): Wiese an der Ecke (th-umfeld -104 36 -80 52: Karte dort frei,
+         Haeuschen-Kollider x -91…-88 / z 42…45 → 2 m Luft, Gehwegplatte ab z 47,5 → 1,3 m), ausserhalb aller
+         Korridore. Ost-Saeule (88,5|44,5) steht rechnerisch frei vom Haus (89|40), belassen. */
+      if(i===2)bau("th6_litfasssaeule.glb",3.0,-94.5,0,45.5,0,false,function(w){w.userData.fest=true;},true);
+      else if(i%2===0)bau("th6_litfasssaeule.glb",3.0,K[0]-sx*6.4,0,K[1]+sz*6.4,0,false);});
   })();
   /* 🚂 Bahnuebergang: die Gleise bei z=112 kreuzten die Zubringer bei x=±78 ohne alles —
      jetzt Signalmasten beidseits, dazu Oberleitung und eine Tramhaltestelle am Bahnhof. */
@@ -10376,21 +10834,31 @@ setTimeout(function baueGebaeude(){
      Ring, x=±72 in den Zubringern, x=0 in der Seepark-Stichstrasse. Jetzt nur noch
      Positionen mit >=9 m Abstand zu jeder Querachse. */
   /* ⚠️ BEKANNTER REST, bewusst so: der Ausleger ist auf 7,5 m Hoehe 11,2 m breit
-     und laeuft LAENGS ueber Gleis und Bahnsteig. Sein Kasten schneidet darum die
-     Bahnsteigkante und das vor der Feuerwache geparkte Loeschfahrzeug — der
-     MASTFUSS steht bei beiden frei (>= 0,75 m), das Metall haengt 6 m darueber.
+     und laeuft LAENGS ueber Gleis und Bahnsteig. Sein Kasten schneidet darum das
+     vor der Feuerwache geparkte Loeschfahrzeug (Mast x 60) — der MASTFUSS steht
+     frei (>= 0,75 m), das Metall haengt 6 m darueber.
      Wer das "aufraeumt", indem er den Mast verschiebt, macht es kaputt. */
-  [-96,-60,-24,24,60,96].forEach(function(mx){
+  /* ⚠️ Runde 102: ±24 GESTRICHEN. GEMESSEN (probe-wasda 14 100 34 118): th17 (24|108,5, Kasten
+     x 18,4…29,6 z 105,6…109) und th41_fahrleitungsmast (24|110, Kasten z 109,6…112,5) standen 1,5 m
+     hintereinander auf derselben x-Achse — zwei Masten verschiedener Bauart Schulter an Schulter am
+     Bahnsteigende, ebenso bei -24. Der Draht liegt auf z 112 (eine 236-m-Box, unabhaengig von dieser
+     Liste); der th17-Kasten endet bei z 109 und trug ihn dort nie, der th41-Ausleger endet auf 112,55
+     ueber der Gleismitte. Damit war th17 bei ±24 seit Charge 41 (th41-Reihe ±24/±5,5) funktionslos.
+     Nebeneffekt: die Ueberschneidung des th17-Arms mit der Bahnsteigkante (x 15…21) entfaellt.
+     Stuetzweiten jetzt -96/-60 (th17) · -24/-5,5/5,5/24 (th41) · 60/96 (th17). */
+  [-96,-60,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,bahnFest,true);});
   /* Die Haltestelle bleibt bewusst OHNE fest: sie ist Strassenmoebel und darf
      ausweichen — festgenagelt stand sie auf dem Mastfuss bei x -24. */
-  /* ⚠️ x -20 WAR VIER METER VOM MASTFUSS (Masten bei -96,-60,-24,24,60,96).
+  /* ⚠️ x -20 WAR VIER METER VOM MASTFUSS (Masten damals bei -96,-60,-24,24,60,96 — th17 ±24 seit Runde 102 gestrichen,
+     bei -24 steht nur noch th41 auf z 110).
      GEMESSEN (th-echt): th17_oberleitungsmast schneidet die Haltestelle mit echten
      Mesh-Paaren, 1,03 m tief — und weil die Haltestelle absichtlich ohne `fest`
      steht und ausweichen darf, traf sie in einem zweiten Lauf stattdessen
      th8_werkstatt_offen (1,18 m, 18 Paare). Sie hatte schlicht keinen Platz.
      -42 liegt mittig zwischen den Masten -60 und -24: 18 m nach beiden Seiten. */
-  /* ⚠️ x -20 WAR VIER METER VOM MASTFUSS (Masten bei -96,-60,-24,24,60,96).
+  /* ⚠️ x -20 WAR VIER METER VOM MASTFUSS (Masten damals bei -96,-60,-24,24,60,96 — th17 ±24 seit Runde 102 gestrichen,
+     bei -24 steht nur noch th41 auf z 110).
      GEMESSEN (th-echt): der Oberleitungsmast schnitt die Haltestelle mit echten
      Mesh-Paaren, 1,03 m tief; weil sie absichtlich ohne `fest` steht und ausweichen
      darf, traf sie im naechsten Lauf stattdessen th8_werkstatt_offen (18 Paare). Sie
@@ -10401,7 +10869,7 @@ setTimeout(function baueGebaeude(){
      x = -78 und x = +78 mit je 8 m Luft zum naechsten Nachbarn (einem Signal). */
   /* ⚠️ Runde 102: OHNE `fest` wanderte sie — probe-gedraenge fand sie je nach Lauf auf (-78|108),
      (-60,1|105,2) und (-62,9|92), zweimal an der Schulwand (0,36 bzw. 0,98 m). Seit die Altstadt-Baustelle
-     weg ist, ist der Wunschort von damals frei: x -42 mittig zwischen den Masten -60 und -24 (18 m zu
+     weg ist, ist der Wunschort von damals frei: x -42 mittig zwischen th17 -60 und th41 -24 (18 m zu
      beiden), direkt am neuen Altstadtplatz. Jetzt fest — ein Wartehaeuschen wandert nicht. */
   bau("th17_tramhaltestelle.glb",3.0,-42,0,108,Math.PI,false,function(w){w.userData.fest=1;},true);
   /* ── 🏪 Charge 48: Marktplatz ───────────────────────────────────────────────
@@ -10733,7 +11201,12 @@ setTimeout(function baueGebaeude(){
        Ein Boot, das sich nur wiegt, faehrt nicht — und ein Hafen, in dem sich
        nichts fortbewegt, ist ein Standbild mit Wellengang. */
     [["th45_fischerboot.glb",5.20,KX-7.5,-0.59,12,0.9,null],
-     ["th45_segelboot.glb", 8.29,KX-18.0,-0.44,10,1.3,{von:-70,bis:78,sp:3.4}]
+     /* ⚠️ Runde 102 (Raycast am Felsmesh, probe-wasda x -162…-140 / z -46…74): Kurs -70…78 auf x -151 lief
+        zweimal je Runde durch den Tunnelfels (Rumpf ueber ~18 m im Fels, Mastspitze aus der Kuppe) und unter dem
+        Brueckendeck (y 3,4, Mast 8,6 m) hindurch, am Nordende 5,3 m ins Heck des Frachters (z 75,9…108).
+        -10…64: Kasten z -13,2…67,2 = 1,95 m vor dem Felskasten (-15,1), 8,7 m vor dem Frachterheck, sonst nur
+        Wasser — gilt auch fuer den nach Westen verschobenen Fels (seine z-Ausdehnung bleibt). */
+     ["th45_segelboot.glb", 8.29,KX-18.0,-0.44,10,1.3,{von:-10,bis:64,sp:3.4}]
     ].forEach(function(b9,i9){
       bau(b9[0],b9[1],b9[2],b9[3],b9[4],Math.PI/2,false,function(w){
         w.userData.fest=true; w.userData.nieAusblenden=true; w._bewegt=true;
@@ -10888,18 +11361,30 @@ setTimeout(function baueGebaeude(){
      Wartehaeuschen ohne Bus (39) und der Sportpark ohne Sportplatz (44). Die
      Kasse aus Charge 44 passt hier ohne neues Modell.
 
-     ⚠️ Das Viertel setzt seine Bauten prozedural und `entzerren()` rueckt sie
-     danach noch. Der Eingang ist der ERSTE Bau der Liste und landet damit auf
-     der -z-Seite der Viertelstrasse bei (Viertelmitte - Laenge/2 + Rand + Breite/2
-     | z - abstand) = (60 - 165 + 20 + 14 | 330 - 18). Wer sich darauf verlaesst,
-     sollte die Zahl aus dem Generator ableiten und nicht abmessen. */
-  (function parkkasse(){
-    var EX=60-165+20+14, EZ=330-18;
+     ⚠️ DER WUNSCHORT IST NICHT DER STANDORT (Runde 102, wie bei parkDeko). Hier stand
+     fest `EZ=330-18` — das Wunsch-z des Freizeitparks und „abstand" als Kantenmass.
+     Beides falsch: `viertelOrt()` weicht aus, der Park steht GEMESSEN auf z 360, und
+     setback ist ein MITTELPUNKTS-Abstand (TO 5,8 + abstand 18 = 23,8, Runde 95). Der
+     Eingang ist der ERSTE Bau der Liste und landet auf der -z-Seite der Viertelstrasse
+     bei (Viertelmitte - Laenge/2 + Rand + Breite/2 | z - 23,8) = (-71|336,2), Huelle
+     z 331,2…341,2 (probe-wasda). Die beiden Kassen standen so bei z 318 — 18 m NOERDLICH
+     der Tormitte auf dem Kies zwischen Randbaeumen und Tor, Schalter zur Baumreihe.
+     Jetzt vor dem Tor bei z = Tormitte + 11,8 = 348: Kasten z 346,3…349,7, 5,1 m vor der
+     Tor-Suedkante 341,2, 3,4 m vor dem Gehweg 353,1; Zugangsweg x -72,1…-69,9 bleibt bei
+     ±9,5 frei, Strassenlaternen (-79,6|352,6)/(-54,2|352,6) 2,7 m vor dem Kasten.
+     NICHT Tormitte + 6 (342,2): der Kasten laege 0,5 m im Tor-Kollider (Zeilen bis z 341).
+     Der Block laeuft als setTimeout NACH dem Setzen der Viertel (260-ms-Callback) und holt
+     den Park per Name (Muster moebelKahleViertel): `_fp` ist in diesem Scope nicht
+     sichtbar, und synchron waere das Viertel noch gar nicht gesetzt. */
+  setTimeout(function parkkasse(){
+    var L=(window._viertelSolver&&window._viertelSolver.VIERTEL)||[],fp=null;
+    for(var i=0;i<L.length;i++)if(L[i].name==="Freizeitpark")fp=L[i];
+    var EX=(fp?fp.x:60)-165+20+14, EZ=(fp?fp.z:330)-23.8;   /* Tormitte, gemessen (-71|336,2) */
     [-1,1].forEach(function(sd){
-      bau("th44_kasse.glb",3.09,EX+sd*9.5,0,EZ+6.0,0,false,
+      bau("th44_kasse.glb",3.09,EX+sd*9.5,0,EZ+11.8,0,false,
           function(w){w.userData.fest=true;},true);
     });
-  })();
+  },700);
   /* ── ⚽ Charge 44: Sportplatz im Ostteil des Sportparks ──────────────────────
      Der Sportpark hatte fuenf Hallen und einen Basketballplatz, aber kein
      Spielfeld. Ein volles 96x66-Feld passt nirgends hin: eine Belegungskarte
@@ -11069,7 +11554,7 @@ setTimeout(function baueGebaeude(){
          Also LAENGS zur Front geparkt: 3,0 m Breite passen auf den Vorplatz,
          und so stehen Loeschfahrzeuge vor einer Wache ohnehin. */
       /* ⚠️ Das oestliche Fahrzeug stand auf x 60,3 — genau dort, wo der
-         Oberleitungsmast steht (Reihe bei z 108,5, Positionen …,-24,24,60,96).
+         Oberleitungsmast steht (Reihe bei z 108,5, Positionen -96,-60,60,96 — ±24 seit Runde 102 nur th41).
          Beide Wagen ruecken nach Westen, damit der Mastfuss frei bleibt:
          Kaesten 42,6…50,3 und 51,6…59,3, Mast bei x 60 mit 0,75 m Luft. */
       fest("th43_loeschfahrzeug.glb",3.24,56+(t?-0.6:-9.6),108.0,0);
@@ -11362,7 +11847,7 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
         an.z=an.home.z+(an.z-an.home.z)*_hr/Math.hypot(an.x-an.home.x,an.z-an.home.z);}
     }else{
       var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}}
-    an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0);
+    an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,(an.y0||0)+Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0); /* y0: Oberkante der Gehege-Bodenplatte (Runde 102) */
     var lg=an.mesh.userData.legs;if(lg){var sw=Math.sin(an.walkT)*0.5;lg[0].rotation.x=sw;lg[3].rotation.x=sw;lg[1].rotation.x=-sw;lg[2].rotation.x=-sw;}}}
 // ---- Heissluftballon, der über die Stadt zieht ----
 setTimeout(function baueBallon(){
@@ -11581,9 +12066,12 @@ function updEnten(dt,now){
          `seeR(a)` = 9,1…16,9 — an den engsten Stellen also fast 2 m enger als
          angenommen. Der feste Deckel 10,5 liess die Enten dort ans Land waten,
          und der aeusserste Ring (r = 9,7) tat es auch ohne Ziel: gemessen 1,1 %
-         aller Proben, bis 0,33 m im Gras. Jetzt fragt beides die Uferlinie. */
+         aller Proben, bis 0,33 m im Gras. Jetzt fragt beides die Uferlinie —
+         seit Runde 102 mit gedrehter Peilung seeR(−φ), weil das Wassermesh gespiegelt liegt (s. seeR):
+         vorher endete das Wasser bei Peilung 53° schon bei r 10,4, die Enten durften bis 13,9 (3,5 m
+         auf der Promenade), beim freien Kreisen bei 268° bis 5,0 m auf den Weg. */
       var zx=E.ziel.x-E.SEE.x,zz=E.ziel.z-E.SEE.z,zl=Math.hypot(zx,zz)||1;
-      var zGrenze=Math.max(3,_ufer(Math.atan2(zz,zx))-1.4);
+      var zGrenze=Math.max(3,_ufer(Math.atan2(-zz,zx))-1.4);   /* −zz: Weltpeilung → seeR(−φ) (Runde 102) */
       var tx=E.SEE.x+zx/zl*Math.min(zGrenze,zl),tz=E.SEE.z+zz/zl*Math.min(zGrenze,zl);
       var dx=tx-en.x+Math.sin(i*2.1)*0.9,dz=tz-en.z+Math.cos(i*1.7)*0.9,dl=Math.hypot(dx,dz);
       if(dl>0.4){en.x+=dx/dl*1.5*dt;en.z+=dz/dl*1.5*dt;en.rot=Math.atan2(dx,dz);}
@@ -11591,7 +12079,7 @@ function updEnten(dt,now){
     }else{
       en.a+=en.sp*dt;
       /* Der Kreis wird zur Uferform gestaucht, wo der See enger ist als der Ring. */
-      var rr9=Math.min(en.r,Math.max(2,_ufer(en.a)-1.0));
+      var rr9=Math.min(en.r,Math.max(2,_ufer(-en.a)-1.0));   /* −en.a: zweiter Aufrufer, gleiche Spiegelung (Runde 102) */
       en.x=E.SEE.x+Math.cos(en.a)*rr9;en.z=E.SEE.z+Math.sin(en.a)*rr9;
       en.rot=Math.atan2(Math.cos(en.a)*(en.sp>0?1:-1),-Math.sin(en.a)*(en.sp>0?1:-1));
     }
@@ -14794,7 +15282,7 @@ var liefer=null;
    waechst mit der Strecke (`lohn = (40 + t*1,6 + weg*0,5) * bonus`), lange Ziele zahlen
    sich also selbst. Die Koordinaten sind Startwerte; `marke()` zieht sie auf die echte
    Lage nach, sobald das Viertel steht. */
-var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnmatt",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Rietli",172,0],
+var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",57,-3],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnmatt",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Rietli",172,0],
   ["Chilbiplatz",160,220],["Zoo",-200,-250],["Flughafen",300,-260],["Spielclub",126,102],
   ["Neustadt",370,-140],["Technikpark",405,-260],["Burgdorf",-300,-390],["Bergsee-Camping",330,360]];
 document.getElementById("lieferBtn").onclick=function(){
@@ -15489,12 +15977,15 @@ function updCoaster(dt,now){
   var neig=Math.asin(Math.max(-1,Math.min(1,tan.y)));
   C.zug.rotation.x=-neig;
   if(C.mit){                                     // Spieler sitzt im ersten Wagen
+    /* Runde 102: die Wagen sind um den Zug-Ursprung zentriert (achterbahn()), Wagen 0 steht 4,05 m dahinter —
+       Figur und Kamera haengen deshalb an SEINER Weltlage; am Ursprung saesse man zwischen Wagen 1 und 2. */
+    var w0=C.zug.children[0]?C.zug.children[0].getWorldPosition(C._w0||(C._w0=new THREE.Vector3())):pos;
     var me=sims[meinSi()]||sims[0];
-    if(me){me.x=pos.x;me.z=pos.z;me.rot=Math.atan2(tan.x,tan.z);me.pose="sit";
+    if(me){me.x=w0.x;me.z=w0.z;me.rot=Math.atan2(tan.x,tan.z);me.pose="sit";
       /* Der Schwarm hat gemeldet: die Mitfahrt uebernahm nur x/z, nie die Hoehe —
          die Ego-Fahrt blieb am Boden, waehrend der Zug 20 m hoch fuhr. */
-      if(me.mesh)me.mesh.position.y=pos.y;me._hoehe=pos.y;}
-    camTx=pos.x;camTz=pos.z;window._camHebung=pos.y;
+      if(me.mesh)me.mesh.position.y=w0.y;me._hoehe=w0.y;}
+    camTx=w0.x;camTz=w0.z;window._camHebung=w0.y;
     if(!egoMode){camRT=Math.max(14,Math.min(camRT,20));}
     updCam();}
   if(MPs&&mpHost&&C.faehrt){C.netT=(C.netT||0)-dt;
@@ -16509,7 +17000,7 @@ function imWasser(x,z){
     if(x>-148.5&&(Math.abs(z-70)<4.5||Math.abs(z-100)<9.5))return false;
     return true;}
   var sr9=Math.hypot(x,z-146);                                 // Seepark-See: die ECHTE Uferkurve (seeR), nicht der 26-m-Kreis des GPS
-  if(sr9<(window._seeUfer?window._seeUfer(Math.atan2(z-146,x)):13))return true;
+  if(sr9<(window._seeUfer?window._seeUfer(Math.atan2(146-z,x)):13))return true;   /* ⚠️ Runde 102: 146−z = seeR(−φ), s. seeR — vorher sperrte der Nordweg bei x=0 ab z 130,6 als unsichtbare Wand, suedlich lief man 6 m ins Wasser */
   if(z>-97&&z<-84&&x<82&&Math.abs(x+78)>7&&Math.abs(x+112)>7&&Math.abs(x-78)>7)return true; // Fluss, Bruecken frei
   return false;}
 window.imWasser=imWasser;
@@ -18375,7 +18866,7 @@ function loop(now){
       for(var _lk=0;_lk<_kand.length;_lk++)_kand[_lk].visible=(_lk<LAMP_MAX);}
     if(window._seeZug){var _z=window._seeZug;_z.x+=_z.dir*_z.speed*dt; /* 🚂 Brücken-Zug pendelt (eigener Global — _zug gehört dem Stadt-Zug) */
       if(_z.x<_z.min){_z.x=_z.min;_z.dir=1;}else if(_z.x>_z.max){_z.x=_z.max;_z.dir=-1;}
-      _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
+      _z.g.position.x=_z.x;} /* ⚠️ Runde 102: kein rotation.y-Flip mehr — er drehte die Gruppe um die Lok, die Wagen sprangen 3,7 m hoch ueber den Wendeplatz (Ost) bzw. 5,3 m uebers Deckende (West); Pendelzug schiebt zurueck (Messwerte bei _seeZug) */
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
     if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;
       if(immo.length){var miete=Math.round(immo.length*150*stufenBonus());geld+=miete;geldSend();updHUD();hint("Miete: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
@@ -18970,7 +19461,17 @@ function lodAufbau(){
     for(var a=n;a;a=a.parent){if(a.userData&&a.userData.nieAusblenden)return;}
     if(!n.geometry.boundingSphere)n.geometry.computeBoundingSphere();
     kugel=n.geometry.boundingSphere;if(!kugel)return;
-    var sk=Math.max(Math.abs(n.scale.x),Math.abs(n.scale.y),Math.abs(n.scale.z));
+    /* ⚠️ WELTSKALA STATT n.scale (Runde 102, Burgdorf). GLB-Bauten tragen ihre Groesse in
+       ELTERNKNOTEN: bau() skaliert den Modell-Root, das Mesh selbst hat Skala 1 und eine
+       Geometrie-Kugel von 0,01–0,03 m. Mit n.scale landeten darum 5–9 m hohe Haeuser in der
+       Stufe „nah" (r < 0,55) und verschwanden ab 34 m. GEMESSEN (Figur -300|-390, Zoom 55,
+       nach lodAufbau): bd_house_c 0/5 Meshes sichtbar, bd_smithy 0/8, bd_stable 0/8,
+       bd_tower_house 0/6, bd_town_house 0/7 — Weltskala aus matrixWorld 171–598, rWelt 6–7 m;
+       Burgdorf war vom Ortsmittelpunkt aus eine leere Kiesflaeche, bd_sawmill (Zoom 110) fehlte
+       schon aus 17,6 m, die 22-m-Burg blendete ab 78 m aus. Darum die Skala als Laenge der drei
+       Achsvektoren der Weltmatrix (Spalten 1–3); Spalte 4 liefert unten die Position. */
+    var _e=n.matrixWorld.elements;
+    var sk=Math.max(Math.hypot(_e[0],_e[1],_e[2]),Math.hypot(_e[4],_e[5],_e[6]),Math.hypot(_e[8],_e[9],_e[10]));
     var r=kugel.radius*sk;
     /* ⚠️ DIE GRENZE LAG BEI 2,2 m — alles darueber blieb auf JEDE Entfernung stehen.
        Gemessen sind das 3'051 Meshes zwischen 2,2 und 4 m (Kioske, kleine Baeume,
@@ -18985,7 +19486,7 @@ function lodAufbau(){
     /* Weltposition direkt aus der Matrix (Spalte 4) statt getWorldPosition — das
        dekomponiert die ganze Matrix samt Quaternion, fuer 55'000 Meshes messbar teurer.
        Die Matrizen sind zu diesem Zeitpunkt aktuell (render laeuft jedes Bild). */
-    var _e=n.matrixWorld.elements;mitte.set(_e[12],_e[13],_e[14]);
+    mitte.set(_e[12],_e[13],_e[14]);
     /* Zwei Stufen: Winziges (Sprossen, Griffe, Torlatten, Fensterbaenke) ist nur
        aus der Naehe ueberhaupt lesbar, kostet aber je einen vollen Zeichenaufruf.
        Nach dem Einbau der Fenster- und Tuerdetails stiegen die Aufrufe von 270
