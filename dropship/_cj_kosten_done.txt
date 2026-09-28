@@ -38936,3 +38936,10 @@ gid://shopify/Product/15493922423169	CHF 14.41	1 Varianten	Vier Jahreszeiten Hol
 gid://shopify/Product/15493922521473	CHF 17.89	1 Varianten	Schulrucksack für Alltag und Reisen
 gid://shopify/Product/15493922652545	CHF 44.66	1 Varianten	Business Rucksack Oxford Stoff 19 Zoll
 gid://shopify/Product/15493922718081	CHF 15.97	1 Varianten	Japanisches GT-Sportcoupé · Modellauto
+gid://shopify/Product/15493922783617	CHF 37.17	1 Varianten	Samtkissen für Sofa, Stuhl oder Boden
+gid://shopify/Product/15493923045761	CHF 33.83	1 Varianten	Leichter Business Rucksack für Reise und Alltag
+gid://shopify/Product/15493923111297	CHF 46.33	1 Varianten	RC Panzer Geländefahrzeug mit Schussfunktion
+gid://shopify/Product/15493923176833	CHF 14.18	1 Varianten	Vielseitiges Hufeisen-Stuhlkissen
+gid://shopify/Product/15493923406209	CHF 36.14	1 Varianten	Wanderrucksack 60L – Ultraleicht & Ergonomisch
+gid://shopify/Product/15493923471745	CHF 27.47	1 Varianten	Ferngesteuertes Verformungs-Kletterfahrzeug
+gid://shopify/Product/15493923635585	CHF 29.57	1 Varianten	Essstuhl-Kissen, abnehmbar & waschbar
