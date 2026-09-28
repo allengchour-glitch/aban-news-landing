@@ -1,0 +1,11 @@
+{
+ "id": "kundenmail-1019-probe",
+ "typ": "skript",
+ "skript": "shopify_kunde_mailen.mjs",
+ "warum": "Betreiber 28.09.: Erinnerung #1019 von info@luxestyle.ch (Gmail-Konnektor kann nur privat senden). Stufe 1 = PROBE, nichts wird gesendet.",
+ "bestellung": "19063546085767",
+ "an_sha256": "55123f1290fc3de6410dbd61947856434f213bd9fd3cd7d309832e9a50da392c",
+ "betreff": "Erinnerung: Ihre Bestellung #1019 bei LuxeStyle – kurze Rückmeldung",
+ "text": "Guten Tag\n\nWir haben Ihnen am Sonntagabend zu Ihrer Bestellung #1019 geschrieben – vielleicht ist die Nachricht im Spam gelandet, darum hier nochmals kurz von unserer Shop-Adresse:\n\nDer bestellte «Leuchtende Halloween-Schaukelgeist» ist bei unserem Lieferanten leider nicht mehr verfügbar. Sie können wählen:\n\n1) Ersatz aus unserem Schweizer Lager: ein leuchtender LED-Hängegeist (weiss, 50 cm, Batterien inklusive), Lieferung in 2–3 Werktagen, ohne Mehrkosten.\n2) Volle Rückerstattung von CHF 23.11.\n\nAntworten Sie einfach mit «1» oder «2». Ohne Antwort bis Mittwoch, 30. September, erstatten wir den vollen Betrag automatisch zurück.\n\nHerzliche Grüsse\nIhr LuxeStyle-Team\ninfo@luxestyle.ch",
+ "senden": false
+}
