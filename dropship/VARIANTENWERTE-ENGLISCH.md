@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-28 17:09 UTC, Stand 2026-09-28 18:23 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-28 17:09 UTC, Stand 2026-09-28 19:09 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **30'656**
-- Optionen mit englischen Werten (Kandidaten): 2'445
+- Produkte gesehen: **31'856**
+- Optionen mit englischen Werten (Kandidaten): 2'502
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'553
+- Werte mit unbekanntem Wort (unverändert): 13'863
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 56
-- übersprungen «kollision-nach-uebersetzung»: 36
+- übersprungen «kleidungsstueck-im-wert»: 57
+- übersprungen «kollision-nach-uebersetzung»: 37
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -85,6 +85,7 @@
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 - `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
 - `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
+- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -130,5 +131,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 530, `inner` 487, `light` 431, `color` 309, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 111, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `belt` 92, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `spring` 71, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `autumn` 66, `⟨satzbau:nomen-nomen⟩` 65, `half` 64, `net` 63, `feet` 62, `mother` 61, `buckle` 60, `of` 60, `code` 59, `tea` 57, `yards` 57, `little` 56, `plush` 56, `electric` 55, `one` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47
+`⟨satzbau:adjektiv-vor-nomen⟩` 536, `inner` 507, `light` 434, `color` 315, `shell` 162, `degrees` 159, `core` 137, `size` 129, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 120, `powder` 111, `⟨satzbau:nomen-nomen⟩` 108, `no` 108, `diamond` 108, `high` 101, `skin` 100, `three` 97, `to` 96, `belt` 92, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 80, `code` 79, `yards` 77, `rope` 75, `spring` 71, `dual` 71, `dark` 69, `base` 69, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `buckle` 60, `of` 60, `cherry` 59, `tea` 57, `one` 56, `little` 56, `plush` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `bottom` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49, `suit` 48, `space` 48
 
