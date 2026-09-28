@@ -15,4 +15,4 @@ Proxy 403 aus der Cloud, bekannt seit 27.09.). Fix: Server-Weg im Motor — gesp
 Kandidaten stoppt der Lauf (spart CJ-Punkte). Erster Auftrag 04:43 (Hundegeschirr, Dampfkochtopf, Fischschuppen-Entferner), gepusht.
 
 **Beide Runner/Motoren neu gestartet** (Bash liest Skripte stückweise — laufende Kopie auf geänderter Datei).
-**OFFEN:** Quittung des Servers abwarten; dann baut der nächste Lauf die 3 Reels (Tor prüft wie immer).
+**ERGEBNIS 04:52:** Server-Quittung «ok» (3 Videos, 3,6–4,8 MB) → Motor-Lauf: 3 neue Reels (Musik adventure-uplift / epic-anime / orchestra), CJ gefragt 3. Tor: Hundegeschirr ok (Hook 4.5), Dampfkochtopf ok (6.56), Fischschuppen-Entferner fällt durch (Hook 0.44, Standbild 91 % — Quellvideo fast statisch; der Poster sortiert es beim Posten aus). Queue ready 4 → 7.
