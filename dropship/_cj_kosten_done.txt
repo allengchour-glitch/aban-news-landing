@@ -38943,3 +38943,4 @@ gid://shopify/Product/15493923176833	CHF 14.18	1 Varianten	Vielseitiges Hufeisen
 gid://shopify/Product/15493923406209	CHF 36.14	1 Varianten	Wanderrucksack 60L – Ultraleicht & Ergonomisch
 gid://shopify/Product/15493923471745	CHF 27.47	1 Varianten	Ferngesteuertes Verformungs-Kletterfahrzeug
 gid://shopify/Product/15493923635585	CHF 29.57	1 Varianten	Essstuhl-Kissen, abnehmbar & waschbar
+gid://shopify/Product/15493923701121	CHF 24.46	1 Varianten	3D Stereoskopischer Rucksack für Kinder
