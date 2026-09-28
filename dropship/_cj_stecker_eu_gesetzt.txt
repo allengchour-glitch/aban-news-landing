@@ -77,3 +77,10 @@
 15493916918145	eu-sku-gesetzt:CJBJMRTF00229-Black-EU	2026-09-28	Lockenstab & Glätteisen mit Keramikheizung
 15493929042305	unklar:farbe-unbekannt	2026-09-28	Handdampfglätter, multifunktional
 15493929828737	eu-sku-gesetzt:CJZN112672802BY	2026-09-28	Tragbares Mini-Reisebügeleisen
+15493935038849	unklar:farbe-unbekannt	2026-09-28	Glätteisen und Lockenstab 2-in-1
+15493935333761	unklar:farbe-unbekannt	2026-09-28	Automatischer Lockenstab mit Goldkeramik
+15493935563137	eu-sku-gesetzt:CJBJMRTF00166-Blue-EU	2026-09-28	2-in-1 Glätteisen mit Farb-Schutz
+15495027097985	unklar:farbe-unbekannt	2026-09-28	140W USB-C Laptop-Netzteil
+15495067140481	eu-sku-gesetzt:CJYD217016202BY	2026-09-28	Sky Innovation IMAX B6 V2 Ladegerät
+15495087522177	eu-sku-gesetzt:CJBJMRTF00119-EU	2026-09-28	Lockenstab mit Turmalin-Keramikbeschichtung
+15495120617857	eu-sku-gesetzt:CJBJMRTF00083-EU	2026-09-28	Glitzerndes Titanium-Glätteisen für trockenes Haar
