@@ -37849,3 +37849,5 @@ gid://shopify/Product/15493809406337	CHF 12.03	32 Varianten	Atmungsaktive Freize
 gid://shopify/Product/15493809439105	CHF 16.49	1 Varianten	Keramik Saucen-Set «Apfel»
 gid://shopify/Product/15493809471873	CHF 18.17	1 Varianten	Geister-Piratenschiff Bausteine-Set
 gid://shopify/Product/15493809504641	CHF 32.27	2 Varianten	Doppel-Rollschuhe für Kinder
+gid://shopify/Product/15493809537409	CHF 21.51	1 Varianten	Keramik Saucenschälchen-Set mit Cartoon-Motiv
+gid://shopify/Product/15493809602945	CHF 42.88	1 Varianten	Sternen-Teleskop Bausatz
