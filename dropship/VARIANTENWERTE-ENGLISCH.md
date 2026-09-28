@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-28 17:09 UTC, Stand 2026-09-28 17:13 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-28 17:09 UTC, Stand 2026-09-28 17:22 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **6'631**
-- Optionen mit englischen Werten (Kandidaten): 803
+- Produkte gesehen: **9'024**
+- Optionen mit englischen Werten (Kandidaten): 1'046
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'571
+- Werte mit unbekanntem Wort (unverändert): 4'977
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 32
-- übersprungen «kollision-nach-uebersetzung»: 17
+- übersprungen «kleidungsstueck-im-wert»: 33
+- übersprungen «kollision-nach-uebersetzung»: 18
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -35,6 +35,7 @@
 - `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Long sleeves | Vest | Off shoulder
 - `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
 - `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
+- `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -57,6 +58,7 @@
 - `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert; Gray Brown → Grau-Braun
 - `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
 - `15449065718145` [Farbe] corduroy-weste-im-preppy-stil-fur-herren-635500: Deep Coffee → Dunkelkaffeebraun; Green Coffee → Grün-Kaffeebraun
+- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -102,5 +104,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 159, `light` 140, `color` 104, `⟨satzbau:adjektiv-vor-nomen⟩` 64, `mother` 61, `shell` 53, `core` 53, `to` 52, `hat` 46, `rope` 44, `for` 42, `case` 38, `lens` 38, `father` 38, `high` 37, `years` 35, `old` 35, `generation` 34, `powder` 34, `no` 30, `surface` 30, `adjustable` 29, `mom` 28, `bag` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `belt` 25, `carbon` 25, `dog` 25, `cocoa` 25, `tea` 24, `batteries` 24, `dad` 24, `perforated` 24, `of` 23, `stone` 22, `face` 22, `electric` 22, `housing` 22, `suit` 21, `nail` 21, `one` 21, `bear` 21, `yadan` 21, `handle` 20, `comfortable` 20, `⟨satzbau:material-vor-farbe⟩` 19, `number` 19, `deer` 19, `milk` 18, `three` 18, `noodles` 18, `clothing` 18, `full` 17, `ice` 17, `waist` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `pad` 16
+`light` 196, `⟨satzbau:adjektiv-vor-nomen⟩` 164, `degrees` 159, `color` 127, `shell` 77, `rope` 61, `mother` 61, `core` 53, `to` 52, `surface` 49, `hat` 46, `high` 44, `case` 43, `for` 43, `powder` 41, `dark` 41, `years` 40, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `magnetic` 36, `no` 35, `old` 35, `bag` 34, `size` 33, `tea` 30, `bear` 30, `eyelets` 30, `adjustable` 29, `belt` 28, `carbon` 28, `mom` 28, `suit` 27, `mushroom` 27, `⟨satzbau:material-vor-farbe⟩` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `flame` 25, `dog` 25, `cocoa` 25, `stone` 24, `nail` 24, `milk` 24, `regular` 24, `batteries` 24, `⟨satzbau:adjektivfolge⟩` 24, `dad` 24, `perforated` 24, `button` 24, `buckle` 23, `face` 23, `of` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22
 

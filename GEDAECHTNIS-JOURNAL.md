@@ -6,6 +6,17 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🔑 Alle Zugänge als Umgebungsvariablen — was geht, was das Netz sperrt (17:20)
+GEMESSEN nach dem Neustart 17:17: 16/16 neue Variablen da. Getestet (nur lesend, keine Werte ausgegeben): Groq ×3 = 200, Gemini 200,
+DeepSeek 200, Printful 200 (Store 18288470 = shopify), Judge.me privat 200 (öffentlicher Token 403 beim Zählen — nur für Widgets gedacht),
+CJ getAccessToken 200 (der alte Token bleibt gültig). **Gesperrt vom Cloud-Proxy:** Kimi (moonshot.ai/.cn, Tunnel 403) und **Zoho
+SMTP/IMAP** (465/993 TLS-Reset, 587 Zeitüberschreitung). Laut /root/.ccr/README gehen nur HTTPS-Port 443 durch, nicht umgehen.
+GETAN: `engine_keepalive.sh` schreibt fehlende /tmp-Zugangsdateien aus der Umgebung (secrets_env.sh, cj_creds.env, dienste.env,
+judgeme.env, zoho_app_pw; 600, idempotent, getestet) und holt den CJ-Token selbst, wenn /tmp/cj_token.json fehlt. Ein frischer Container
+ist damit kein Stillstand mehr.
+OFFEN (Betreiber): Mails von info@luxestyle.ch aus der Cloud nur über Gmail «Senden als» info@luxestyle.ch (Zoho-SMTP mit demselben
+App-Passwort, als Standard). Dann trägt jede Konnektor-Mail die Shop-Adresse.
+
 ## 2026-09-28 · 🔇 Wächter der #1019-Klasse verschluckte seinen Abbruchgrund (Verbesserungsrunde 16:25)
 GEMESSEN: `zweites_gehirn --wacht` meldete 1 NEU: `cj_ausgelistet_sichtbar.py` gql() hatte `except Exception: pass` und endete mit
 «Shopify nicht erreichbar». Eine Drossel (429), ein abgelaufenes Token (401) oder ein GraphQL-Fehler sahen damit gleich aus.
