@@ -1114,3 +1114,13 @@ gid://shopify/Product/15453781262721	nicht-versendbar	Luxus-Schubladen-Organizer
 gid://shopify/Product/15458646884737	ok	Modernes Kunstgefäss Glasierte Fruchtschale
 gid://shopify/Product/15452683370881	ok	Universeller Halb-Autorestsitz 5-Sitzer
 gid://shopify/Product/15496360886657	ok	Kupfer Wasserhahn ausziehbar für Küche und Bad
+gid://shopify/Product/15501845496193	ok	Tortoise-Eisenkochtopf
+gid://shopify/Product/15452680323457	nicht-versendbar	Faltbarer Strandstuhl
+gid://shopify/Product/15453785391489	ok	Kratzposten für Katzen
+gid://shopify/Product/15454013129089	nicht-versendbar	18-Zoll-Multifunktionskoffer mit Vollöffnung
+gid://shopify/Product/15478024667521	ok	Mahjong-Spielset aus Acryl
+gid://shopify/Product/15504157016449	ok	Rückenstützkissen für Sofa und Bett
+gid://shopify/Product/15450755137921	nicht-versendbar	Waschmaschinen-Zwischenbaurahmen mit Auszug
+gid://shopify/Product/15452680257921	nicht-versendbar	Gartenrandsteine
+gid://shopify/Product/15453898834305	ok	Akazienholz Schneidbrett
+gid://shopify/Product/15470351647105	nicht-versendbar	Betonstempel
