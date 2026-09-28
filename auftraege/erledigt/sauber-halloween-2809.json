@@ -1,0 +1,17 @@
+{
+  "id": "sauber-halloween-2809",
+  "typ": "screenshot",
+  "url": "https://luxestyle.ch/collections/halloween",
+  "mobil": true,
+  "ganze_seite": true,
+  "warum": "Betreiber 28.09.: «mach webseite sauber» — Optik von echter Besucher-IP messen",
+  "stand": "ok",
+  "begonnen": "2026-09-28T19:24:35.181Z",
+  "dauer_s": 6.3,
+  "ergebnis": {
+    "ziel": "https://luxestyle.ch/collections/halloween",
+    "status": 200,
+    "mobil": true,
+    "datei": "auftraege/ergebnis/sauber-halloween-2809.png"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "sauber-produkt-2809",
+  "typ": "screenshot",
+  "url": "https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken",
+  "mobil": true,
+  "ganze_seite": true,
+  "warum": "Betreiber 28.09.: «mach webseite sauber» — Optik von echter Besucher-IP messen",
+  "stand": "ok",
+  "begonnen": "2026-09-28T19:24:47.209Z",
+  "dauer_s": 5.2,
+  "ergebnis": {
+    "ziel": "https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken",
+    "status": 200,
+    "mobil": true,
+    "datei": "auftraege/ergebnis/sauber-produkt-2809.png"
+  }
+}
