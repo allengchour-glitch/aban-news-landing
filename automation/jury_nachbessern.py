@@ -17,8 +17,9 @@ Ablauf je Zeile (einmal je Zeile, Ledger dropship/_jury_nachbesserung.tsv):
   4. Zeile bekommt neues Bild + Caption + «ready» — nur wenn sie in der Datei NOCH «jury-skip» ist (nachgelesen,
      atomar; Lehre Lost Update 28.09.). Der Poster prüft vor dem Post ohnehin noch einmal (gleicher Cache).
 
-  python3 automation/jury_nachbessern.py              → Trockenlauf (urteilt, schreibt nichts in die Queue)
-  SCHARF=1 python3 automation/jury_nachbessern.py     → schreiben;  MAX=n Zeilen je Lauf (Standard 12)
+  DRY=1 python3 automation/jury_nachbessern.py        → Trockenlauf (urteilt, schreibt nichts in die Queue)
+  python3 automation/jury_nachbessern.py              → schreiben;  MAX=n Zeilen je Lauf (Standard 12)
+  Täglich im Aufseher (fixer_keepalive.sh, direkt nach social_queue_saeubern, das die Sperren setzt).
 """
 import csv, json, os, re, subprocess, sys, time, urllib.request
 
@@ -26,7 +27,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(REPO)
 Q = "social/posts_image.csv"
 LEDGER = "dropship/_jury_nachbesserung.tsv"
-SCHARF = os.environ.get("SCHARF") == "1"
+SCHARF = os.environ.get("DRY") != "1"   # Hauskonvention: DRY=1 zeigt nur (Aufseher ruft ohne Variablen)
 MAX = int(os.environ.get("MAX", "12"))
 VERSUCHE = int(os.environ.get("VERSUCHE", "4"))
 NICHT_REPARIERBAR = {"heilversprechen", "waffe", "anstoessig"}

@@ -80,3 +80,19 @@ GETAN:
 OFFEN (nicht behoben, gemessen): `post_guard.lock()` beendet einen Poster bei fremdem Lock mit **Exit 0** — der
 Autopilot setzt dann die Takt-Marke wie nach einem Post (Klasse Nachtrag 94). Tritt nur bei parallelen Postern auf
 (Autopilot ruft seriell) — nächster Kandidat einer Runde.
+
+## Nachtrag 20:50 UTC — gesperrt heisst nicht verloren: `jury_nachbessern.py` (Betreiber «mehr verbessern»)
+
+GEMESSEN: 32 Bildposts auf `jury-skip`, 28 davon aus der Kimi-Queue. Die Begründungen fielen in zwei reparierbare Klassen:
+**BILD** (englischer Lieferantentext wie «8.5 Inches», «Sonic Sweeping Vibration Toothbrush», «Simple fashion & creative»)
+und **CAPTION** (Kimi versprach «Mondstein», «Reise-Rucksack», «7-Chakra Wickelarmband», was das Bild nicht zeigt).
+
+GETAN: `automation/jury_nachbessern.py` — je gesperrter Zeile das Produkt über die tokenlose Storefront API holen, die
+ersten zwei Caption-Zeilen aus dem ECHTEN Shopify-Titel + Live-Preis bauen (keine KI), dann altes Bild und bis zu 3 weitere
+Produktbilder (≥ 600 px, nie schon gepostet) der Jury vorlegen; der erste bestandene Kandidat geht zurück auf `ready`
+(nachgelesen, atomar, nur wenn die Zeile noch `jury-skip` ist). K.-o. heilversprechen/waffe/anstoessig bleibt gesperrt.
+Ledger `dropship/_jury_nachbesserung.tsv` (je Zeile ein Versuch). Täglich im Aufseher direkt nach dem Säuberer.
+
+Ergebnis: **23 von 32 repariert** (16 mit anderem Bild, 7 nur mit ehrlicher Caption), 5 ohne bestandenen Kandidaten,
+4 ohne Produkt-ID. Bild-Queue ready 34 → 57. Sichtprüfung Kontaktbogen der 16 neuen Bilder: alle sauber, kein
+Lieferantentext (Markenname auf Zifferblatt/Sohle = Ware selbst).
