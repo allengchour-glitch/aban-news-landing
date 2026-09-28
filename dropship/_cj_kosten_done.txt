@@ -38592,3 +38592,5 @@ gid://shopify/Product/15493865275777	CHF 13.42	1 Varianten	Fluoro-Kautschuk Armb
 gid://shopify/Product/15493865308545	CHF 11.96	1 Varianten	Wasserdichte Herrenuhr mit arabischem Zifferblatt
 gid://shopify/Product/15493865374081	CHF 23.44	1 Varianten	Zwei-Geschmacks Hot Pot, 32cm, mit Glasdeckel
 gid://shopify/Product/15493865439617	CHF 17.04	1 Varianten	Geschenkset: Uhr, Portemonnaie, Gürtel, Brille
+gid://shopify/Product/15493865472385	CHF 17.96	1 Varianten	Multifunktionale, wasserdichte Herren- Quarzuhr
+gid://shopify/Product/15493865505153	CHF 26.83	1 Varianten	Fritteuse mit Sieb und Glasdeckel
