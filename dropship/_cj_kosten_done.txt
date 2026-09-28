@@ -39706,3 +39706,4 @@ gid://shopify/Product/15495086899585	CHF 17.11	18 Varianten	Stiletto High Heels 
 gid://shopify/Product/15495086965121	CHF 13.71	24 Varianten	Sportliche Casual-Sandalen für Damen
 gid://shopify/Product/15495086997889	CHF 23.67	1 Varianten	Kabelloser Mini-Haarglätter
 gid://shopify/Product/15495087030657	CHF 14.48	12 Varianten	Minikleid mit Taillenbetonung
+gid://shopify/Product/15495087063425	CHF 28.92	1 Varianten	Interaktiver Plüschhund mit Sprachsteuerung
