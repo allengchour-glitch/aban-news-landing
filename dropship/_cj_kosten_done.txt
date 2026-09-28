@@ -41072,3 +41072,4 @@ gid://shopify/Product/15495771685249	CHF 16.66	20 Varianten	Trendiges V-Neck Fle
 gid://shopify/Product/15495771750785	CHF 12.59	21 Varianten	Sommer-Polo-Shirt
 gid://shopify/Product/15495771783553	CHF 8.62	1 Varianten	Bestickter Kissenbezug mit Fransen
 gid://shopify/Product/15495771816321	CHF 13.26	1 Varianten	3-teiliges WC-Set mit Anti-Rutsch-Matte
+gid://shopify/Product/15495771881857	CHF 12.37	7 Varianten	Retro-Print Langarmshirt für Herren
