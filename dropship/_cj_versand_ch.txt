@@ -1148,3 +1148,7 @@ gid://shopify/Product/15458641052033	ok	Wasserdichter Wind- und Wärmeschutz-Sof
 gid://shopify/Product/15479379034497	ok	Hochdruckreiniger für Auto und Haushalt
 gid://shopify/Product/15449127747969	nicht-versendbar	Mond & Sterne Katzenbaum mit 4 Ebenen – Blau
 gid://shopify/Product/15451917418881	nicht-versendbar	Katzenbaum mit 4 Ebenen, Mond & Sterne – Lila
+gid://shopify/Product/15503133311361	ok	Futterautomat mit Kamera für Kleintiere
+gid://shopify/Product/15448943755649	nicht-versendbar	Erhöhtes, auslaufsicheres Katzenklo
+gid://shopify/Product/15447610982785	ok	Multifunktionaler Rucksack mit doppelten Schultergurten
+gid://shopify/Product/15449601180033	nicht-versendbar	Doppelseitiges Meditationskissen mit Extra-Polsterung
