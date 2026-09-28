@@ -39996,3 +39996,4 @@ gid://shopify/Product/15495115047297	CHF 6.90	1 Varianten	Plüsch-Elefant Handyh
 gid://shopify/Product/15495115080065	CHF 10.00	1 Varianten	Gel-Nagellack für feine Linien (3er-Set)
 gid://shopify/Product/15495115112833	CHF 20.51	1 Varianten	USB-Fahrradlicht mit 3 LEDs
 gid://shopify/Product/15495115178369	CHF 8.69	1 Varianten	Hunde-Plüschtier mit Beissring
+gid://shopify/Product/15495115309441	CHF 8.25	1 Varianten	Interaktives Plüsch-Hundespielzeug mit Sound
