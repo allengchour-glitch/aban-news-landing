@@ -134,17 +134,20 @@ async function cjVideo(pid) {
 
 // ---------------------------------------------------------------- Text
 const VERBOTEN = /kost[uü]m|erotik|sex|dildo|vibrator|messer|klinge|schwert|tabak|vape|e-?zigarette|waffe|airsoft/i;
+// 28.09.2026: Wortgrenzen (Betreiber-Screenshot TikTok: «Dein Zuhause, gemütlicher» auf einem LEDerrucksack — «led» traf «Leder»;
+// Trockenrad/Schnelltrocknend → «rock», Strick-Cape → «cap», Frottee → «tee»). Gegenprobe an 49'836 Titeln: 2'118 wechseln, davon
+// 934 Leder-Artikel home→mode; «uhr»/«kind» bleiben ohne Grenze (Uhrenbox, Lauflernschuhe wären sonst verloren).
 function thema(t) {
   const s = t.toLowerCase();
   if (/hund|katze|haustier|welpe|\bpet\b/.test(s)) return 'haustier';
   if (/fitness|yoga|training|hantel|widerstand|faszien|sport/.test(s)) return 'fitness';
-  if (/küche|kuchen|mixer|kaffee|tee|entsafter|grill|messbecher|topf|pfanne/.test(s)) return 'kueche';
+  if (/küche|kuchen|mixer|kaffee|\btee(?!licht)|entsafter|grill|messbecher|topf|pfanne/.test(s)) return 'kueche';
   if (/kind|baby|kleinkind|spielzeug|lern/.test(s)) return 'kinder';
-  if (/lampe|licht|led|deko|vase|kerze|diffuser|aroma|kissen|decke|organizer|regal/.test(s)) return 'home';
+  if (/lampe|licht|\bled\b|deko|vase|kerze|diffuser|aroma|kissen|decke|organizer|regal/.test(s)) return 'home';
   if (/beamer|projektor|kopfhörer|kopfhoerer|lautsprecher|ladegerät|kabel|usb|bluetooth|smart|kamera|drohne|gadget|tracker|hülle|huelle/.test(s)) return 'gadget';
-  if (/serum|gua|roller|creme|pflege|haar|nagel|wimper|augenbraue|makeup|make-up|massage|beauty|glätt/.test(s)) return 'beauty';
-  if (/kette|ohrring|armreif|armband|\bring\b|schmuck|anhänger|uhr/.test(s)) return 'schmuck';
-  if (/kleid|rock|bluse|hose|jacke|mantel|hoodie|shirt|pullover|sneaker|schuh|tasche|rucksack|gürtel|schal|cap|mütze/.test(s)) return 'mode';
+  if (/serum|\bgua\b|roller|creme|pflege|haar|nagel|wimper|augenbraue|makeup|make-up|massage|beauty|glätt/.test(s)) return 'beauty';
+  if (/kette|ohrring|ohrhänger|armreif|armband|\bring\b|schmuck|anhänger|uhr/.test(s)) return 'schmuck';
+  if (/kleid|rock\b|bluse|hose|jacke|mantel|hoodie|shirt|hemd|pullover|cardigan|strick|sneaker|schuh|stiefel|sandal|ballerina|tasche|rucksack|gürtel|schal|cap\b|mütze/.test(s)) return 'mode';
   return 'allgemein';
 }
 const HOOKS = {
