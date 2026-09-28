@@ -38896,3 +38896,4 @@ gid://shopify/Product/15493916197249	CHF 7.12	1 Varianten	Lederarmband mit Dreie
 gid://shopify/Product/15493916393857	CHF 22.89	51 Varianten	Kinder-Sneakers mit Sternenmuster und weicher Sohl
 gid://shopify/Product/15493916459393	CHF 20.85	1 Varianten	Multifunktionaler Warmluft-Haarstyler
 gid://shopify/Product/15493916524929	CHF 21.84	1 Varianten	Smartwatch für Kinder mit Herzfrequenzmessung
+gid://shopify/Product/15493916590465	CHF 14.09	4 Varianten	Midi-Kleid mit Blumenmuster und Viereck-Ausschnitt
