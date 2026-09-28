@@ -1132,3 +1132,5 @@ gid://shopify/Product/15503089566081	nicht-versendbar	Deckenventilator-Lampe «L
 gid://shopify/Product/15453783654785	ok	Inline-Skates für Männer und Frauen
 gid://shopify/Product/15481713688961	nicht-versendbar	Multifunktionaler Rollkoffer mit USB-Port
 gid://shopify/Product/15504120119681	ok	Reisekoffer aus Aluminiumlegierung mit Zahlenschloss
+gid://shopify/Product/15448945623425	nicht-versendbar	Agility-Trainingsset für Hunde, verstellbar
+gid://shopify/Product/15453894443393	ok	Automatischer Futterautomat für Hunde & Katzen 4L/6L
