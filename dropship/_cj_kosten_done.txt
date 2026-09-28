@@ -40823,3 +40823,10 @@ gid://shopify/Product/15495230423425	CHF 7.91	1 Varianten	Polygel-Set mit 3 Farb
 gid://shopify/Product/15495230521729	CHF 19.29	14 Varianten	Bequeme Leder-Sandalen mit Klettverschluss
 gid://shopify/Product/15495230587265	CHF 50.00	1 Varianten	Kabellose Kaffeemühle mit USB-Ladefunktion
 gid://shopify/Product/15495230718337	CHF 20.59	9 Varianten	Mesh Sandalen mit hohem Absatz und eckiger Spitze
+gid://shopify/Product/15495230751105	CHF 10.53	1 Varianten	Profi-Gel für Nageldesign – Grosse Flasche
+gid://shopify/Product/15495230783873	CHF 21.05	1 Varianten	Rechteckige Antihaft-Backform mit Grillrost
+gid://shopify/Product/15495230816641	CHF 45.79	1 Varianten	Mini-Selfie-Drohne mit 6-Achsen-Gyroskop
+gid://shopify/Product/15495230914945	CHF 37.35	1 Varianten	JY018 Mini-Drohne mit WLAN-Kamera
+gid://shopify/Product/15495231766913	CHF 7.05	1 Varianten	Tiger Eye Leopard Print Kunstnägel
+gid://shopify/Product/15495231799681	CHF 106.82	1 Varianten	Saucen- und Milchtopf aus 304 Edelstahl
+gid://shopify/Product/15495231832449	CHF 18.33	1 Varianten	Mini Quadrocopter mit vier Achsen
