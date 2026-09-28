@@ -39524,3 +39524,5 @@ gid://shopify/Product/15495026606465	CHF 8.81	1 Varianten	2-in-1 Polier- und Lic
 gid://shopify/Product/15495026672001	CHF 33.23	1 Varianten	Sicherheitshelm mit integrierter Brille
 gid://shopify/Product/15495026803073	CHF 11.96	1 Varianten	4-in-1 Auto-Ladegerät mit Sternenhimmel-Ambiente
 gid://shopify/Product/15495026901377	CHF 222.70	1 Varianten	Silikon Fussmodell für Nageldesign
+gid://shopify/Product/15495027032449	CHF 24.14	1 Varianten	Transparente Leuchtquarz-Uhr aus Acryl
+gid://shopify/Product/15495027097985	CHF 21.17	1 Varianten	140W USB-C Laptop-Netzteil
