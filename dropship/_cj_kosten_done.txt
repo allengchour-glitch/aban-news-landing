@@ -39925,3 +39925,4 @@ gid://shopify/Product/15495111541121	CHF 34.36	1 Varianten	Kleiner Katzen-Kratzb
 gid://shopify/Product/15495111606657	CHF 14.57	6 Varianten	Ärmelloses Off-Shoulder Maxi-Kleid
 gid://shopify/Product/15495111639425	CHF 15.91	1 Varianten	NGC Wireless Controller für Wii
 gid://shopify/Product/15495111672193	CHF 26.26	1 Varianten	Hanfseil-Spielball für Katzen
+gid://shopify/Product/15495111737729	CHF 17.67	12 Varianten	Off Shoulder Longsleeve Kleid
