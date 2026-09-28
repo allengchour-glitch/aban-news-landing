@@ -38725,3 +38725,5 @@ gid://shopify/Product/15493873762689	CHF 6.04	1 Varianten	Sportkamera Metall-Ada
 gid://shopify/Product/15493873795457	CHF 11.09	1 Varianten	Sippy Cup mit Skala, hitzebeständig
 gid://shopify/Product/15493873828225	CHF 13.81	10 Varianten	3D Hoodie für Herren
 gid://shopify/Product/15493873860993	CHF 6.58	1 Varianten	Multifunktionale wasserdichte Steckdose für Wohnmo
+gid://shopify/Product/15493873893761	CHF 12.05	1 Varianten	Dragon Sword Kelch – Drachenform Weinglas
+gid://shopify/Product/15493873926529	CHF 25.24	12 Varianten	Vintage Kapuzenpullover aus reiner Baumwolle
