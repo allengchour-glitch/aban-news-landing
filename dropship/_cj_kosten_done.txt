@@ -38594,3 +38594,6 @@ gid://shopify/Product/15493865374081	CHF 23.44	1 Varianten	Zwei-Geschmacks Hot P
 gid://shopify/Product/15493865439617	CHF 17.04	1 Varianten	Geschenkset: Uhr, Portemonnaie, Gürtel, Brille
 gid://shopify/Product/15493865472385	CHF 17.96	1 Varianten	Multifunktionale, wasserdichte Herren- Quarzuhr
 gid://shopify/Product/15493865505153	CHF 26.83	1 Varianten	Fritteuse mit Sieb und Glasdeckel
+gid://shopify/Product/15493865537921	CHF 14.58	30 Varianten	Herren Lammwoll-Pullover mit Stehkragen
+gid://shopify/Product/15493865570689	CHF 13.82	1 Varianten	Smart-Armband mit Herzfrequenz- und Blutsauerstoff
+gid://shopify/Product/15493865603457	CHF 19.63	1 Varianten	Quarz-Armbanduhr mit Kalenderfunktion
