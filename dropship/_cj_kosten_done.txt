@@ -39439,3 +39439,4 @@ gid://shopify/Product/15494892880257	CHF 41.61	6 Varianten	Casual Langarmhemd f√
 gid://shopify/Product/15494892913025	CHF 29.10	1 Varianten	Diamond Painting: Rund- oder Quadrat-Steine
 gid://shopify/Product/15494893044097	CHF 8.58	1 Varianten	Kupfer-Armband Vintage Hohl-Design
 gid://shopify/Product/15494893076865	CHF 7.65	1 Varianten	DIY Diamond Painting Weihnachtsbaum (2er-Set)
+gid://shopify/Product/15494893142401	CHF 13.84	14 Varianten	Leichter Cardigan aus Baumwoll-Leinen f√ºr Herren
