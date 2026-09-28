@@ -24,3 +24,4 @@
 2026-09-28T12:36:40.363Z	luxe-orchestra.wav	18	haustier	cjreel-1430437322624733184	stimme:nein	anteil
 2026-09-28T12:38:13.012Z	luxe-adventure-uplift.wav	41	gadget	cjreel-2408230650431612000	stimme:nein	anteil
 2026-09-28T12:39:36.625Z	luxe-epic-anime.wav	23.25	home	cjreel-1405419812154380288	stimme:nein	anteil
+2026-09-28T14:18:49.509Z	luxe-adventure-uplift.wav	45.5	kueche	cjreel-1772618405682618368	stimme:nein	anteil
