@@ -39684,3 +39684,6 @@ gid://shopify/Product/15495084114305	CHF 7.18	1 Varianten	Mascara Pflege-Lösung
 gid://shopify/Product/15495084147073	CHF 30.07	1 Varianten	Ferngesteuerter Roboter für Kinder
 gid://shopify/Product/15495084179841	CHF 41.31	14 Varianten	Retro-Sandalen mit Chunky-Absatz
 gid://shopify/Product/15495084212609	CHF 39.49	40 Varianten	Leichte Outdoor-Sandalen für den Sommer
+gid://shopify/Product/15495084245377	CHF 23.58	1 Varianten	Intelligenter Roboter mit Fernbedienung
+gid://shopify/Product/15495086309761	CHF 23.22	3 Varianten	Denim Patchwork Plissiertes Langarm-Kleid
+gid://shopify/Product/15495086342529	CHF 15.06	1 Varianten	Elektrisches Dinosaurier-Spielzeug
