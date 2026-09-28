@@ -40059,3 +40059,4 @@ gid://shopify/Product/15495117668737	CHF 9.43	1 Varianten	10er-Set professionell
 gid://shopify/Product/15495117701505	CHF 10.12	1 Varianten	Retro Schmuckkästchen im Burg-Stil
 gid://shopify/Product/15495117734273	CHF 20.44	12 Varianten	Elegantes V-Ausschnitt Midi-Kleid mit Gürtel
 gid://shopify/Product/15495117767041	CHF 14.82	1 Varianten	10-teiliges Make-up Pinselset „Pretty Waist“
+gid://shopify/Product/15495117832577	CHF 37.78	1 Varianten	Lovewood Serviertablett Vintage
