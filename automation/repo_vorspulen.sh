@@ -32,10 +32,18 @@ import re
 # Gemessen: Shopify nimmt den verklebten Zeiger an, liest aber nur den ERSTEN — stand bisher immer der neueste vorne (Union
 # hängt hinten an), also kein Verlust; die Datei wuchs aber je Restore, und ein alter Zeiger vorne setzt den Lauf still
 # zurück. Diese Dateien behalten die origin-Fassung.
-ZUSTAND = re.compile(r"cursor|zeiger|_pos\.txt$|_stand\.txt$", re.I)
+ZUSTAND = re.compile(r"cursor|zeiger|_pos\.txt$|_stand\.txt$|_seit\.txt$|_page\.txt$", re.I)
+# 28.09.2026 (2): Name allein reicht nicht — _heilversprechen_seit.txt trug «…48Z2026-09-25T00:26:28Z2026-09-23…» (3 Stempel
+# verklebt, 25.–27.09.). Zusätzlich am INHALT: stehen origin UND Snapshot je aus genau EINEM Einzelwert (Zahl, Datum/Stempel,
+# Zeiger-Token), ist es eine Zustandsdatei → origin behalten. Wächter: automation/zustand_verklebt.py (Keepalive).
+EINWERT = re.compile(r"^(\d+|\d{4}-\d\d-\d\d(T[\d:.]+Z?)?|[A-Za-z0-9+/=_-]{20,})$")
+def einwert(pfad):
+    z = [l.strip() for l in open(pfad, errors="ignore").read().splitlines() if l.strip()]
+    return len(z) == 1 and bool(EINWERT.match(z[0]))
 for f in os.listdir(snap):
     repo = os.path.join("dropship", f)
     if not os.path.exists(repo) or ZUSTAND.search(f): continue
+    if einwert(repo) and einwert(os.path.join(snap, f)): continue
     have = set(open(repo, errors="ignore").read().splitlines())
     neu = [l for l in open(os.path.join(snap, f), errors="ignore").read().splitlines()
            if l.strip() and l not in have and "cj-ohne-antwort" not in l]

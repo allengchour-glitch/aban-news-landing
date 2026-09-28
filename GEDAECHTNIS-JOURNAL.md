@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🧷 Zustandsdatei am Inhalt erkennen, nicht am Namen (Verbesserungsrunde 08:25)
+GEMESSEN: `HEILVERSPRECHEN.md` zeigte den Filter `updated_at:>2026-09-25T20:29:48Z2026-09-25T00:26:28Z2026-09-23T22:11:04Z`,
+die Stempeldatei war vom 25.09. bis 27.09. verklebt (git 23eeb461c). Ursache wie morgens bei den Cursor-Dateien: die Ledger-Union in
+`repo_vorspulen.sh`. Der Morgen-Fix listete Namen (cursor|zeiger|_pos|_stand), `_seit` und `_page` fehlten. GETAN: Inhaltsregel (beide
+Seiten genau ein Einzelwert → origin behalten), Wächter `automation/zustand_verklebt.py` im Keepalive (8/8 Kanarienvögel, echte
+Fassung gemeldet, live 0). Nebenbei: `fortura_bestand_taeglich.sh` dreht nach einem Fehlschlag den Stempel zurück (Wiederholung in 2 h
+statt 20 h). Der Lauf um 20:10 war an fehlendem Shopify-Zugang gescheitert, danach war der Bestand 3 T alt; nach dem Neustart wurden 638 Varianten nachgeführt.
+LEHRE: Wer eine Klasse über Dateinamen abfängt, fängt nur die Namen, die er gerade kennt. Die Eigenschaft (ein Wert) prüfen.
+
 ## 📌 Nachtrag 105 — 27.09.2026 · #1019: bei CJ ausgelistet, verkauft trotzdem — der Wächter prüft nur einmal
 
 **Gemessen:** #1019 (neue externe Kundin, Maienfeld, CHF 23.11, «Leuchtender Halloween-Schaukelgeist») → `cj_order_engine`
