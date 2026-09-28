@@ -38944,3 +38944,4 @@ gid://shopify/Product/15493923406209	CHF 36.14	1 Varianten	Wanderrucksack 60L �
 gid://shopify/Product/15493923471745	CHF 27.47	1 Varianten	Ferngesteuertes Verformungs-Kletterfahrzeug
 gid://shopify/Product/15493923635585	CHF 29.57	1 Varianten	Essstuhl-Kissen, abnehmbar & waschbar
 gid://shopify/Product/15493923701121	CHF 24.46	1 Varianten	3D Stereoskopischer Rucksack für Kinder
+gid://shopify/Product/15493923832193	CHF 90.39	1 Varianten	Vielseitiger Kompressionsrucksack für Reisen
