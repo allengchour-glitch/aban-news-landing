@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="luxe_ink">#2B2B2B</color>
+    <color name="luxe_bronze">#8B6F4E</color>
+    <color name="luxe_muted">#8A8580</color>
+    <color name="luxe_line">#E6E0D8</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="ic_launcher_background">#2B2B2B</color>
+</resources>
