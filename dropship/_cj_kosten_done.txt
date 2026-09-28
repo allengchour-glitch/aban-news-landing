@@ -41056,3 +41056,10 @@ gid://shopify/Product/15495748092289	CHF 21.29	4 Varianten	Elegantes ärmelloses
 gid://shopify/Product/15495748190593	CHF 51.79	1 Varianten	Cartoon Hunde-Sitzkissen für Kinder
 gid://shopify/Product/15495748223361	CHF 14.25	1 Varianten	Plüschtier Avocado
 gid://shopify/Product/15495748256129	CHF 10.93	12 Varianten	Etuikleid Satin mit Spitze
+gid://shopify/Product/15495748321665	CHF 9.62	1 Varianten	Goldenes Plüschkissen mit Quasten
+gid://shopify/Product/15495748354433	CHF 8.27	1 Varianten	Pilz Tibetisches Futter Vocal Spielzeug-Set für Hu
+gid://shopify/Product/15495748387201	CHF 26.33	15 Varianten	Retro Denim V-Ausschnitt Rüschenkleid
+gid://shopify/Product/15495748747649	CHF 14.61	30 Varianten	Elegantes Polka-Dot Maxikleid mit Schnürung
+gid://shopify/Product/15495748813185	CHF 15.65	28 Varianten	Langärmliges A-Linien Hemdkleid mit Reverskragen
+gid://shopify/Product/15495748911489	CHF 15.15	10 Varianten	Elegantes A-Linien Kleid mit Farbverlauf
+gid://shopify/Product/15495748977025	CHF 16.56	15 Varianten	Maxirock mit Blumenprint und Plisseefalten

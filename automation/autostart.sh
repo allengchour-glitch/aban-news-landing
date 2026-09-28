@@ -3,7 +3,7 @@
 # Secrets kommen aus der Umgebung (Claude-Code-Environment-Variablen) oder /tmp-Caches:
 #   SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET  (Pflicht für alles)
 #   BIGBUY_API_KEY                              (BigBuy-Import)
-#   GROQ_API_KEY / GROQ_API_KEY2                (DE-Titel/Texte)
+#   GROQ_API_KEY / GROQ_API_KEY2 / GROQ_API_KEY3                (DE-Titel/Texte)
 #   CJ_EMAIL / CJ_API_KEY  ODER  /tmp/cj_token.json  (CJ-Import)
 # Aufruf: bash automation/autostart.sh   (mehrfach aufrufbar — startet nur, was fehlt)
 cd "$(dirname "$0")/.." || exit 1

@@ -12,7 +12,7 @@
 // Der Parser nimmt das JSON zwischen erster «{» und letzter «}» — Fences oder Vorspann sind egal.
 
 import { floskelZaehler, VERBOTEN, beginntMitDies } from './cj_copy_prompt.mjs';
-const KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || '')].map(s => s.trim()).filter(Boolean);
+const KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || ''), (process.env.GROQ_API_KEY3 || process.env.GROQ_API_KEY_3 || '')].map(s => s.trim()).filter(Boolean);
 
 export const GROQ_MODELLE = [
   { model: 'openai/gpt-oss-20b', body: { reasoning_effort: 'low', max_tokens: 1500 } },
