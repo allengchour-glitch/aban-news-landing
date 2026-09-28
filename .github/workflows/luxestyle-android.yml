@@ -14,10 +14,6 @@ on:
         default: "keine"
         type: choice
         options: [keine, internal, alpha, production]
-      neuigkeiten:
-        description: "Was ist neu (erscheint im Play Store, max. 500 Zeichen)"
-        required: false
-        default: "Fehlerbehebungen und Verbesserungen."
 
 jobs:
   build:
@@ -66,14 +62,6 @@ jobs:
 
       # Hochladen zu Google Play – braucht das Secret PLAY_SERVICE_ACCOUNT_JSON (siehe PLAY-STORE.md).
       # Die allererste Version muss einmal von Hand in der Play Console hochgeladen werden.
-      - name: Neuigkeiten für Play
-        if: inputs.track != 'keine'
-        env:
-          TEXT: ${{ inputs.neuigkeiten }}
-        run: |
-          mkdir -p "$RUNNER_TEMP/whatsnew"
-          printf '%s' "$TEXT" | head -c 500 > "$RUNNER_TEMP/whatsnew/whatsnew-de-CH"
-
       - name: Zu Google Play hochladen
         if: inputs.track != 'keine'
         uses: r0adkll/upload-google-play@v1
@@ -84,4 +72,3 @@ jobs:
           track: ${{ inputs.track }}
           # Produktion als Entwurf: in der Play Console mit einem Klick freigeben
           status: ${{ inputs.track == 'production' && 'draft' || 'completed' }}
-          whatsNewDirectory: ${{ runner.temp }}/whatsnew
