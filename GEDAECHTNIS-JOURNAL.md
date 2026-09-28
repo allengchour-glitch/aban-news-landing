@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 📧 Gmail «Senden als» info@ eingerichtet — der Konnektor sendet trotzdem als Hauptadresse (17:37)
+Betreiber hat den Alias info@luxestyle.ch (smtp.zoho.eu:465) eingerichtet. Testmail über den Gmail-Konnektor an ihn selbst:
+Absender = allengchour@gmail.com. Der Konnektor hat kein From-Feld, und die Gmail-API nimmt ohne From-Header die Hauptadresse,
+nicht den Standard-Alias. Der Alias nützt also nur beim Senden in der Gmail-Oberfläche (Absender-Auswahl). Für #1019 liegt deshalb ein
+ENTWURF bereit (Betreiber stellt den Absender um und sendet). Dauerweg für automatische Mails von info@: Zoho-Mail-REST-API über 443
+(OAuth Self Client, ZohoMail.messages.CREATE), da SMTP/IMAP (465/587/993) vom Cloud-Proxy gesperrt sind.
+
 ## 2026-09-28 · 🔑 Alle Zugänge als Umgebungsvariablen — was geht, was das Netz sperrt (17:20)
 GEMESSEN nach dem Neustart 17:17: 16/16 neue Variablen da. Getestet (nur lesend, keine Werte ausgegeben): Groq ×3 = 200, Gemini 200,
 DeepSeek 200, Printful 200 (Store 18288470 = shopify), Judge.me privat 200 (öffentlicher Token 403 beim Zählen — nur für Widgets gedacht),
