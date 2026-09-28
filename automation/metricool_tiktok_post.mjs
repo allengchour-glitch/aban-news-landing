@@ -250,7 +250,8 @@ const SMARTLINK_ID = (process.env.MC_SMARTLINK_ID || '').trim();
 const produktUrl = (pa.url || '').replace(/^http:\/\//, 'https://');
 const linkUtm = produktUrl ? `${produktUrl}?utm_source=${NETZ}&utm_medium=social&utm_campaign=${NETZ === 'youtube' ? 'short' : 'reel'}&utm_content=${encodeURIComponent(id)}` : '';
 function captionMitDirektlink(c) {
-  if (!produktUrl) return c;
+  // 28.09.2026: Sammelvideos haben keine Produkt-URL — «(Link in Bio)» ist auf TikTok/YouTube trotzdem falsch (kein Bio-Link).
+  if (!produktUrl) return c.replace(/\s*\(Link in Bio\)/g, '').replace(/🔗 luxestyle\.ch\//g, NETZ === 'youtube' ? '🔗 https://luxestyle.ch/' : '🔗 luxestyle.ch/');
   const zeile = NETZ === 'youtube' ? `🔗 ${produktUrl}` : `🔗 ${produktUrl.replace(/^https:\/\//, '')}`;
   const alt = /^.*luxestyle\.ch\/products\/[\w%-]+.*$/m;
   return alt.test(c) ? c.replace(alt, zeile) : `${c}\n${zeile}`;
