@@ -7874,3 +7874,112 @@ besseren Ort als der Finder — die Widerlegungsquote war klein, die Korrekturqu
 `wegVonStrasse` sind die häufigste Ursache: „Code sagt A, Spiel zeigt B" kam in 14 Befunden vor. (3) Zwei
 Messgeräte trugen denselben Fehler wie das Gemessene (See-Spiegel) — ein Messgerät braucht eine eigene Gegenprobe
 gegen die Welt, nicht gegen die Formel.
+
+## Runde 103 · 📱🎯 Handy + langes, süchtiges Spiel (User: „handy spiel optimieren, gutes langes süchtiges spiel draus machen")
+
+Zwei Fragen, beide erst gemessen: **Was hält den Spieler, und wo hört es auf?** und **Was kostet der Start auf dem Handy?**
+
+### 1. Die Sog-Kurve — gemessen, nicht gefühlt (`probe-sog`)
+Die Sonde liest jede Formel aus der Quelle (Regex auf die Zeile; fehlt sie, bricht sie ab) und spielt 60 Spieltage
+(1 Spieltag = 1440 Minuten ÷ 4 je Sekunde = **360 s echt**; der Kommentar „1 Spielminute = 0,5 s" war veraltet) für
+einen gemütlichen und einen aktiven Spieler durch. Jede Tätigkeit kostet echte Sekunden, die Deckel je Tag gelten
+(4 Lieferungen, 5 Taxifahrten, 3 Missionen), Ausgaben gehen erst in Möbel bis zur nächsten Stufe, dann in Häuser, Autos.
+
+**Vorher:**
+| | gemütlich | aktiv |
+|---|---|---|
+| Stufe 1 / 3 / 5 (Palast) | Tag 4 / 12 / 20 = 24 / 72 / **120 min** | genau gleich |
+| Tage ohne Neues (von 60) | 34 | 36 |
+| längste Lücke | 17 Tage (102 min) | 19 Tage (114 min) |
+| Bargeld nach 6 h, nichts mehr zu kaufen | 205'000 $ | 342'000 $ |
+| Freischaltungen an Stufe 4 / 5 | 0 / 0 | 0 / 0 |
+
+Der Befund in einem Satz: **nicht das Geld bremst, sondern der 4-Tage-Takt der Abnahme** — beide Spielertypen stehen
+nach 120 Minuten im Palast, und die Kopfzeile sagt „alles erreicht". Danach gibt es nur noch Karriere-Level alle 20
+Tage und die skalierten Endlos-Aufträge; die Bürgermeister-Erfolge „Immobilien-Hai" & Co. waren mit 15 Dorfhäusern
+zwar erreichbar, aber niemand hatte einen Grund, hinzugehen.
+
+**Eingebaut (jede Zahl mit der Sonde gegengerechnet, zwei Würfe):**
+- **🎖️ Bürgerrang** — eine Punktezahl aus allem, was das Spiel ohnehin zählt (Aufträge ×4, Erfolge ×3, entdeckte
+  Orte ×2, Häuser ×3, Ausbauten ×2, Karriere ×3, Wohnstufe ×5, Abnahmen ×2, Missions-Serie). Neun Ränge, jeder mit
+  Prämie (400 $ × Rang) und **+3 % auf alle Einnahmen** (über `stufenBonus`, wie die Wohnstufe). Nach dem Palast
+  zeigt die Kopfzeile den Rang mit Punktestand und nächster Schwelle. ⚠️ Erster Wurf (12/30/…/500) war nach 4–6 h
+  durch — die Sonde zeigte „Legende" an Tag 39. Jetzt 15/45/100/180/300/460/700/1000: Stadtpräsident nach ~6 h
+  aktivem Spiel, Legende und Ikone bleiben offen.
+- **🧭 Entdecker-Album** — 33 Kartenorte, jeder erste Besuch (22 m) zahlt 100 $ × Bonus und zählt; Erfolge bei
+  10/25/allen, Tagesmission „Entdecke 2 neue Orte" mit Marker auf dem nächsten unentdeckten Ort, Zeile im 🏆-Panel
+  („als nächstes: 🎢 Achterbahn (312 m)"). Die halbe Welt — Burgdorf, Zoo, Flughafen, Camping — hatte vorher für den
+  Fortschritt keinen Wert.
+- **🏗️ Haus-Ausbau** — gekaufte Dorfhäuser bis Stufe 5, Preis 1,5 × Hauspreis × 2^(Stufe−1), Miete +50 % je Stufe;
+  Knopf neben dem eigenen Haus, Flagge wächst mit. Das ist die Geldsenke, die oben fehlte (mit drei Stufen sass der
+  aktive Spieler noch auf 690'000 $ — zweiter Wurf).
+- **🕰️ Willkommen zurück** — `saveGame` schreibt einen Zeitstempel (nicht `snapshot()`, sonst wäre der Umweg
+  speichern→laden nie gleich); wer ≥ 30 min weg war, bekommt 120 $ + halbe Tagesmiete je Stunde, höchstens 8 h.
+- **⭐ Stufe 4 und 5 schalten frei:** Grosse Küchenzeile + Lounge-Sofa (4), Hotelbett + Chef-Schreibtisch (5);
+  `ERSATZ` für die Villa-Vorlage ergänzt.
+- 8 neue Erfolge (mit Fortschrittsbalken), 2 neue Tagesmissionen — beides NUR am Ende der Listen (Pool-Index im
+  Spielstand); Koop: Gast bekommt `{t:"immoLv"}`.
+
+**Nachher (dieselbe Sonde, dieselben Annahmen):**
+| | gemütlich | aktiv |
+|---|---|---|
+| Tage ohne Neues (von 60) | **3** | **1** |
+| längste Lücke | 1 Tag | 1 Tag |
+| Rang nach 6 h | Vizepräsident (355 Pkt, Tag 45) | Stadtpräsident (469 Pkt, Tag 58) |
+| Bargeld nach 6 h (Häuser noch ausbaubar) | 88'000 $ | 227'000 $ |
+| Freischaltungen an Stufe 4 / 5 | 2 / 2 | 2 / 2 |
+
+Die Stufenleiter selbst ist unverändert (Palast bleibt bei 120 min — sie ist der Einstieg, nicht das Spiel).
+
+### 2. Der Handy-Start (`th-laden handy`, `probe-ladenah`)
+**Gemessen vorher:** 523 Dateien, 178,6 MB, davon 379 Modelle mit 174,0 MB. Erstes Modell nach 0,2 s, die Hälfte
+nach **40 s**, das letzte nach 56 s; Welt fertig bei 62 s. Der Hauptfaden war in Summe **61 s blockiert** (17 Blockaden
+über 0,1 s, die längste **13,8 s**) — das ist der GLB-Parser, nicht das Netz. Die Bedienoberfläche selbst ist sauber:
+`th-hud` 3 Formate × 3 Modi, 0 Befunde.
+Die Reihenfolge war die Dateireihenfolge: Zoo und Flughafen kamen so früh wie das Haus nebenan, und nach dem Klick
+auf „Solo bauen" gingen alle 379 Anfragen auf einmal raus (Deckel 1e9) — die nahe Welt (305 Bauten in 120 m um den
+Start) war darum genauso spät fertig wie die ganze: Hälfte 40 s, alles 56 s.
+
+**Eingebaut:** jeder `bau()`-Auftrag trägt seine Entfernung zum Figurenstart (−67|43); die Ladeschlange nimmt immer den
+nächsten (Figuren weiter zuerst, Möbel/Wagen ohne Ort bei 60 m; ein näherer Ort zieht einen schon eingereihten
+Auftrag vor), und nach dem Start bleibt ein Deckel (gemessen: 64) statt unbegrenzt — sonst hat die Reihenfolge
+keine Wirkung. `?ladeAlt` schaltet für Vergleiche auf die alte Reihenfolge.
+
+**Nachher** (`probe-ladenah`, jeder Lauf allein — ⚠️ zwei Läufe nebeneinander verfälschen genau diese Zahlen, und die
+Sonde selbst wird vom Hauptfaden-Stau gebremst, ±5 s):
+
+| Deckel nach dem Start | nahe Hälfte | nah fertig | alles fertig |
+|---|---|---|---|
+| unbegrenzt (alt) | 40 s | 56 s | 56 s |
+| **64 (gewählt)** | **31 s** | **51 s** | 65 s |
+| 32 | 31 s | 51 s | 71 s |
+| 16 | 41 s | 52 s | 82 s |
+| 8 | 46 s | 63 s | 112 s |
+
+Mit 64 stehen die ersten nahen Bauten nach ~21 s (alt: 0 nach 26 s), die Hälfte 9 s früher, alle 5 s früher —
+bezahlt mit 9 s späterem Weltende (32 kostete 15 s bei gleichem Gewinn; 64 ist die weiteste Zahl, bei der die
+Reihenfolge noch trägt) (und damit später laufendem `entwirren`/`_spaetEinfrieren`). Ein enger Deckel
+macht ALLES später, auch das Nahe: die Parser-Blockaden bleiben dieselben, nur das Netz steht dazwischen still.
+Was diese Runde NICHT löst: die 174 MB selbst und die 61 s Parser-Blockade — das braucht kleinere Modelle
+(Draco/meshopt) oder echtes Nachladen nach Entfernung, und Letzteres bricht die Kette nach dem Laden
+(freiRaeumen/entwirren/Zoo/Randbäume hängen an der LETZTEN Datei). Eigene Runde.
+
+### 3. Werkzeuge (siehe `sonden/README.md`)
+`probe-sog`, `probe-ladenah`, `probe-r103`. Funktionsprüfung im Spiel (`probe-r103`): 15 Häuser, 9 Ränge, 34 Orte; Ort entdeckt +100 $, Gegenprobe 300 m daneben
+nichts; 5 Ausbauten 3600/7200/14400/28800 $, sechster verweigert, Miete 150 → 450, Flagge ×2,4; Rang 0 → 3 zahlt
+genau einmal; Kopfzeile nach dem Palast „🏛️ Stadtrat · 198/300 → 🎩"; Spielstand il/rg/zt, Umweg speichern→laden
+erhält Ausbau und Rang; Sperren Stufe 4/5 an vier Einträgen; 53 Erfolge / 16 Missionen ohne Wurf.
+`th-speichern`: 40 Felder, 30 Böden / 22 Wände / 6 Möbel, verlustfrei. `th-erfolge`: jeder gelesene Zähler wird
+geschrieben, keine Bedingung wirft, kein Erfolg beim Start erfüllt — ⚠️ der ERSTE Lauf meldete 16 „unerreichbare"
+Zähler (auch alte wie `stats.lieferungen`): meine angefügten Listeneinträge hatten das schliessende `];` an die
+letzte Zeile geklebt; das Werkzeug sucht das Listenende als eigene Zeile und dehnte seine Ausschlusszone bis zur
+nächsten — echte Schreibstellen fielen hinein. Listenende wieder auf eigene Zeile, Wiederholung: 0 solche Befunde.
+Offen bleibt eine Zeile der Rahmenprobe („mehr als ein Viertel der Bilder fällt aus" unter injiziertem Wurf), die
+im ersten Lauf noch „keine Aussage" hiess — 10 Bilder je 4 s im Software-Renderer, ein Bild sind 10 %.
+
+### Lehren
+1. **Eine Fortschrittsleiter, die von der Uhr statt vom Spieler getaktet ist, endet für alle gleichzeitig.** Die Abnahme
+   alle 4 Tage machte Geld bedeutungslos — die Sonde hat das in einer Zeile gezeigt, was 14 Runden Bauen nicht sahen.
+2. **Zahlen für Belohnungsleitern erst simulieren, dann eintragen.** Beide ersten Würfe (Rang-Schwellen, Ausbau-Stufen)
+   waren um den Faktor 2–3 daneben; jeder Wurf kostete zehn Sekunden Sonde statt eine Woche Spielerzeit.
+3. **„Alles auf einmal anfordern" ist keine Priorität.** Eine sortierte Schlange ohne Deckel ist eine unsortierte.
