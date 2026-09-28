@@ -37571,3 +37571,8 @@ gid://shopify/Product/15493716935041	CHF 39.11	1 Varianten	AI Lang Automatikuhr 
 gid://shopify/Product/15493716967809	CHF 10.68	98 Varianten	Freizeit-Langarmshirt für Herren
 gid://shopify/Product/15493717000577	CHF 14.09	1 Varianten	Magnetische Bausteine für kreatives Spielen
 gid://shopify/Product/15493717033345	CHF 68.87	1 Varianten	Klassische Leucht-Automatikuhr mit Saphirglas
+gid://shopify/Product/15493717098881	CHF 16.15	18 Varianten	Herren Langarm Pullover Rundhals
+gid://shopify/Product/15493717131649	CHF 10.18	1 Varianten	Kreativer Baustein-Displayrahmen
+gid://shopify/Product/15493717164417	CHF 13.05	1 Varianten	Hanging Chain Mechanische Armbanduhr
+gid://shopify/Product/15493717262721	CHF 18.09	1 Varianten	Panzer Modell Bausteine Set
+gid://shopify/Product/15493717295489	CHF 15.69	1 Varianten	Mechanische Herrenuhr im Fashion-Stil
