@@ -5230,3 +5230,4 @@ gid://shopify/Product/15448953520513	1790625542	ok	4 Shop / 4 CJ / 0 fehlend / 0
 gid://shopify/Product/15448953684353	1790625542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448953782657	1790625542	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448953815425	1790625542	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448953880961	1790625542	ok	21 Shop / 21 CJ / 0 fehlend / 0 DENY
