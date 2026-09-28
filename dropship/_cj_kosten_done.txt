@@ -39731,3 +39731,4 @@ gid://shopify/Product/15495087751553	CHF 17.26	1 Varianten	Glättungs- & Bartkam
 gid://shopify/Product/15495087784321	CHF 19.52	1 Varianten	Wasserdichter Business Rucksack für Herren
 gid://shopify/Product/15495087817089	CHF 19.08	1 Varianten	Automatischer Haarstyler mit Keramik-Heizelement
 gid://shopify/Product/15495087849857	CHF 21.38	1 Varianten	Business Casual Rucksack
+gid://shopify/Product/15495087915393	CHF 29.61	48 Varianten	Offroad Wander- und Laufschuhe mit weicher Sohle
