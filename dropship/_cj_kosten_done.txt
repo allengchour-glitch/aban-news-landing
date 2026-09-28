@@ -39130,3 +39130,4 @@ gid://shopify/Product/15494123127169	CHF 28.16	1 Varianten	GPS-Tracker für Kind
 gid://shopify/Product/15494123422081	CHF 36.03	1 Varianten	Computer-Rucksack für Alltag und Reisen
 gid://shopify/Product/15494123946369	CHF 11.44	1 Varianten	Elektrischer Simulationsvogel für Katzen
 gid://shopify/Product/15494124208513	CHF 46.97	1 Varianten	Trolley-Schulrucksack mit Rollen
+gid://shopify/Product/15494125126017	CHF 25.39	1 Varianten	Outdoor Rucksack für Uni, Reise und Berg
