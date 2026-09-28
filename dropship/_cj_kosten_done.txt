@@ -40063,3 +40063,4 @@ gid://shopify/Product/15495117832577	CHF 37.78	1 Varianten	Lovewood Serviertable
 gid://shopify/Product/15495117865345	CHF 13.77	25 Varianten	Elegantes Spitzen-Patchwork Kleid mit Rundhals
 gid://shopify/Product/15495117930881	CHF 20.45	1 Varianten	Automatischer Make-up Pinselreiniger mit USB
 gid://shopify/Product/15495117963649	CHF 17.96	24 Varianten	Strand-Sandalen mit Cut-Outs
+gid://shopify/Product/15495117996417	CHF 29.68	1 Varianten	Mehrzweck-Vorratsdose mit Deckel
