@@ -375,6 +375,13 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
+  # 28.09.2026: preisboden + farbwerte_zusammengesetzt lesen /tmp/export.jsonl (status, priceRangeV2) — nach einem Ad-hoc-
+  # Export im falschen Format (Tag-Export vom 27.09. 20:08) starben beide je Lauf an KeyError 'status', bis zu 24 h lang,
+  # weil hype_export_bauen nur einmal täglich im Hype-Lauf prüft. Deshalb hier: Format falsch → sofort neu bauen (unter Sperre).
+  if [ -f "$REPO/automation/hype_export_bauen.py" ] && ! ( cd "$REPO" && python3 -c "import sys;sys.path.insert(0,'automation');import hype_export_bauen as h;sys.exit(0 if h.format_ok('/tmp/export.jsonl') else 1)" 2>/dev/null ); then
+    ( cd "$REPO" && flock -n /tmp/lock_hype_export.lock python3 automation/hype_export_bauen.py >> /tmp/hype_export_bauen.log 2>&1 )
+    echo "$(date -u +%H:%M) export.jsonl im falschen Format → neu gebaut"
+  fi
   for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen social_saison_vorrang; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
