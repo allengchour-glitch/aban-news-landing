@@ -1,4 +1,4 @@
-# Social-Lernen — Stand 2026-09-28 14:16 UTC
+# Social-Lernen — Stand 2026-09-28 14:18 UTC
 
 Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 51 · TikTok 12 · Pinterest 103 → **114 Inhalte**; 6 zu junge Posts nicht gezählt.
 
