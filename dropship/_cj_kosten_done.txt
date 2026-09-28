@@ -40855,3 +40855,6 @@ gid://shopify/Product/15495233339777	CHF 34.41	18 Varianten	Trendige Sport-Freiz
 gid://shopify/Product/15495233372545	CHF 14.19	1 Varianten	Graphen-Drohnen-Lithium-Akku 14.8V 1000mAh
 gid://shopify/Product/15495233438081	CHF 9.64	1 Varianten	20-teiliges Make-up Pinselset mit Tasche
 gid://shopify/Product/15495233470849	CHF 14.38	21 Varianten	Leichte, atmungsaktive Herren-Sneaker
+gid://shopify/Product/15495233536385	CHF 49.50	1 Varianten	Kupfer Rückspülfilter für Haushalt
+gid://shopify/Product/15495233569153	CHF 12.90	1 Varianten	Make-up Pinselset "Christmas Moose"
+gid://shopify/Product/15495234257281	CHF 22.29	16 Varianten	Derby Loafers im Britischen Casual-Stil
