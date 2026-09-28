@@ -39994,3 +39994,5 @@ gid://shopify/Product/15495114981761	CHF 8.78	1 Varianten	Plüsch-Katzenspielzeu
 gid://shopify/Product/15495115014529	CHF 11.64	1 Varianten	Nail Basic Gel-Set
 gid://shopify/Product/15495115047297	CHF 6.90	1 Varianten	Plüsch-Elefant Handyhüllen-Hundespielzeug
 gid://shopify/Product/15495115080065	CHF 10.00	1 Varianten	Gel-Nagellack für feine Linien (3er-Set)
+gid://shopify/Product/15495115112833	CHF 20.51	1 Varianten	USB-Fahrradlicht mit 3 LEDs
+gid://shopify/Product/15495115178369	CHF 8.69	1 Varianten	Hunde-Plüschtier mit Beissring
