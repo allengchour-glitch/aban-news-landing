@@ -5,6 +5,43 @@
   "url": "https://www.tiktok.com/@sebastiankauffmann/video/7687330842636537121",
   "bilder_alle_s": 5,
   "warum": "Betreiber-Link 28.09. «Claude 5 besten Plugins»: welche fuenf Plugins nennt das Video (Untertitel + Folien)?",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-28T20:58:09.934Z",
+  "dauer_s": 9.4,
+  "ergebnis": {
+    "ziel": "https://www.tiktok.com/@sebastiankauffmann/video/7687330842636537121",
+    "kanal": "sebastiankauffmann",
+    "name": "Sebastian",
+    "caption": "Tag 227 🚀. Claude 5 besten Plugins. #claude #anthropic #ai #buildinpublic #business ",
+    "dauer_s": 64,
+    "erstellt": "1789846191",
+    "stats": {
+      "diggCount": 1145,
+      "shareCount": 235,
+      "commentCount": 145,
+      "playCount": 28200,
+      "collectCount": "1836"
+    },
+    "untertitel": [
+      {
+        "sprache": "deu-DE",
+        "text": "öffne nie wieder dein Claude bevor du nicht diese 5 Plugins installiert hast, öffne nie wieder dein Claude bevor du nicht diese 5 Plugins installiert hast, 1tens oh my clot Code mit über 39.000 get up Stars. das macht Aus deinem clot 1 komplettes Entwickler Team mit über 19 Agenten, die deine Projekte zusammenbauen, planen und am Ende noch mal auf Qualität prüfen. 2tens graphify mit über 115.000 get up Stars. das baut einmal 1 komplettes Second Brain auf deinem clot auf, damit clot nich immer wieder alles neu einlesen und erklärt bekommen muss und spart dir gleichzeitig bis zu 70 Prozent deiner Token. 3tens das SEO Plug in, damit verwandelst du deinen clot in eine komplette SEO Agentur, das dafür sorgt, dass deine Website bei Google ganz oben gerankt wird. 4. Superpowers mit über 250.000 Stars. das gibt deinem Plot 1 komplettes strukturiertes Arbeitssystem und sorgt genau dafür, dass dein Plot nie wieder mit voller Überzeugung am Ziel vorbeiarbeitet. und 5tens hyperframes, durch hyperframes machst du dein Chlor zu einem kompletten Video Produktionsstudio, das für dich Motion Graphics und alle möglichen Animationen baut und sogar mit dem richtigen System komplette Videos schneidet. also wenn du die Installationsanleitung für alle 5 direkt zugeschickt haben möchtest schreib Plug in die Kommentare und ich schick dir alles direkt zu."
+      }
+    ],
+    "bilder": [
+      "tiktok-plugins-20260928-t01.png",
+      "tiktok-plugins-20260928-t06.png",
+      "tiktok-plugins-20260928-t11.png",
+      "tiktok-plugins-20260928-t16.png",
+      "tiktok-plugins-20260928-t21.png",
+      "tiktok-plugins-20260928-t26.png",
+      "tiktok-plugins-20260928-t31.png",
+      "tiktok-plugins-20260928-t36.png",
+      "tiktok-plugins-20260928-t41.png",
+      "tiktok-plugins-20260928-t46.png",
+      "tiktok-plugins-20260928-t51.png",
+      "tiktok-plugins-20260928-t56.png",
+      "tiktok-plugins-20260928-t61.png"
+    ]
+  }
 }
