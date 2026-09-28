@@ -1708,3 +1708,5 @@ gid://shopify/Product/15491515187585	2026-09-28T17:21Z	schon-DRAFT	22.90	32.04	E
 gid://shopify/Product/15480283103617	2026-09-28T17:21Z	kein-verlust-live	21.90	30.94	Retro Casual Outdoor Lederstiefel mit Reissverschluss
 gid://shopify/Product/15480164614529	2026-09-28T17:21Z	schon-DRAFT	14.90	23.92	Freizeit-Sneaker mit dicker Sohle
 gid://shopify/Product/15481712050561	2026-09-28T17:21Z	schon-DRAFT	15.90	24.86	Sonnenblenden-Organizer für Auto & LKW
+gid://shopify/Product/15483890499969	2026-09-28T17:21Z	schon-DRAFT	14.90	23.82	Ferngesteuertes Auto
+gid://shopify/Product/15472337420673	2026-09-28T17:21Z	kein-verlust-live	15.90	26.64	Herren Hoodie im Vintage-Look
