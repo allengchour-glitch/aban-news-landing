@@ -38597,3 +38597,9 @@ gid://shopify/Product/15493865505153	CHF 26.83	1 Varianten	Fritteuse mit Sieb un
 gid://shopify/Product/15493865537921	CHF 14.58	30 Varianten	Herren Lammwoll-Pullover mit Stehkragen
 gid://shopify/Product/15493865570689	CHF 13.82	1 Varianten	Smart-Armband mit Herzfrequenz- und Blutsauerstoff
 gid://shopify/Product/15493865603457	CHF 19.63	1 Varianten	Quarz-Armbanduhr mit Kalenderfunktion
+gid://shopify/Product/15493865636225	CHF 40.18	1 Varianten	Elektrische Kaffeemühle, tragbar
+gid://shopify/Product/15493865668993	CHF 7.70	1 Varianten	Schutzhülle für Smartwatch, Full Diamond Cut-out
+gid://shopify/Product/15493865701761	CHF 23.30	1 Varianten	Topfdeckelhalter, faltbar, vertikal
+gid://shopify/Product/15493865734529	CHF 22.86	28 Varianten	Vintage Kapuzenpullover aus Baumwolle
+gid://shopify/Product/15493865800065	CHF 16.65	33 Varianten	Herren Jeans Straight Loose Business
+gid://shopify/Product/15493865832833	CHF 10.64	1 Varianten	Stuhlkissen «Blaues Blütenmuster»
