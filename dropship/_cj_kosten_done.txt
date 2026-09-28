@@ -37392,3 +37392,6 @@ gid://shopify/Product/15493478908289	CHF 18.73	1 Varianten	Outdoor-Bergsteigerru
 gid://shopify/Product/15493479006593	CHF 87.40	1 Varianten	Motorrad-Hartschalenrucksack, 15L erweiterbar
 gid://shopify/Product/15493479203201	CHF 15.22	1 Varianten	Business Travel Rucksack Gross
 gid://shopify/Product/15493479367041	CHF 18.96	1 Varianten	Business Laptop-Rucksack mit grosser Kapazität
+gid://shopify/Product/15493498700161	CHF 11.58	1 Varianten	Kompaktes Wireless Powerbank
+gid://shopify/Product/15493498765697	CHF 18.80	1 Varianten	Umhängetasche mit Ladefunktion und Diebstahlschutz
+gid://shopify/Product/15493498798465	CHF 32.86	1 Varianten	Ersatz-Ladegerät für Xiaomi E-Scooter · M365, Pro,
