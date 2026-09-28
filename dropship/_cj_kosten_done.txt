@@ -40110,3 +40110,6 @@ gid://shopify/Product/15495120028033	CHF 10.54	1 Varianten	Horror Zombie Maske
 gid://shopify/Product/15495120126337	CHF 22.72	42 Varianten	Suede Business-Casual Loafers
 gid://shopify/Product/15495120257409	CHF 21.34	1 Varianten	DIY Diamond Painting Set «Schlafzimmer-Deko»
 gid://shopify/Product/15495120290177	CHF 50.07	1 Varianten	Multifunktions-Induktionskochfeld
+gid://shopify/Product/15495120322945	CHF 26.70	27 Varianten	Slip-on Loafer mit Quasten
+gid://shopify/Product/15495120388481	CHF 73.18	1 Varianten	Induktionskochfeld 3500W – Energiesparend
+gid://shopify/Product/15495120421249	CHF 20.07	12 Varianten	Stylische Freizeit-Sneakers im British-Style
