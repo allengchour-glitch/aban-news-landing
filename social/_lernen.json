@@ -1,19 +1,19 @@
 {
-  "stand": "2026-09-28T08:10:30.523Z",
+  "stand": "2026-09-28T14:18:06.198Z",
   "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
   "fenster_tage": 90,
   "k_glaettung": 3,
   "min_n": 3,
   "beobachtungen": {
     "instagram": 51,
-    "tiktok": 13,
+    "tiktok": 12,
     "pinterest": 103,
-    "zu_jung": 5
+    "zu_jung": 6
   },
-  "inhalte": 115,
-  "posts": 167,
+  "inhalte": 114,
+  "posts": 166,
   "musik_verlauf": {
-    "zeilen": 14,
+    "zeilen": 26,
     "verknuepfte_inhalte": 0
   },
   "quellen_fehler": [],
@@ -98,9 +98,9 @@
     },
     "Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt": {
       "n": 1,
-      "gewicht": 1.02,
-      "vorsprung": 0.022,
-      "median_rel": 1.09,
+      "gewicht": 1.01,
+      "vorsprung": 0.011,
+      "median_rel": 1.04,
       "belastbar": false
     },
     "Kleines Teil, grosse Wirkung": {
@@ -192,7 +192,7 @@
     "haustier": {
       "n": 7,
       "gewicht": 1.49,
-      "vorsprung": 0.402,
+      "vorsprung": 0.398,
       "median_rel": 2,
       "belastbar": true
     },
@@ -224,17 +224,17 @@
       "median_rel": 1,
       "belastbar": true
     },
+    "allgemein": {
+      "n": 26,
+      "gewicht": 1.09,
+      "vorsprung": 0.083,
+      "median_rel": 1,
+      "belastbar": true
+    },
     "home": {
       "n": 22,
       "gewicht": 1.05,
       "vorsprung": 0.047,
-      "median_rel": 1,
-      "belastbar": true
-    },
-    "allgemein": {
-      "n": 27,
-      "gewicht": 1.04,
-      "vorsprung": 0.043,
       "median_rel": 1,
       "belastbar": true
     },
@@ -255,8 +255,8 @@
     "mode": {
       "n": 14,
       "gewicht": 0.93,
-      "vorsprung": -0.07,
-      "median_rel": 0.98,
+      "vorsprung": -0.069,
+      "median_rel": 0.99,
       "belastbar": true
     }
   },
@@ -270,9 +270,9 @@
     },
     "instagram 00–03": {
       "n": 3,
-      "gewicht": 1.42,
-      "vorsprung": 0.351,
-      "median_rel": 1.16,
+      "gewicht": 1.41,
+      "vorsprung": 0.344,
+      "median_rel": 1.13,
       "belastbar": true
     },
     "instagram 15–18": {
@@ -320,8 +320,8 @@
     "instagram 18–21": {
       "n": 6,
       "gewicht": 1.18,
-      "vorsprung": 0.165,
-      "median_rel": 1.06,
+      "vorsprung": 0.167,
+      "median_rel": 1.07,
       "belastbar": true
     },
     "instagram 12–15": {
@@ -334,7 +334,7 @@
     "instagram 06–09": {
       "n": 8,
       "gewicht": 1.11,
-      "vorsprung": 0.106,
+      "vorsprung": 0.105,
       "median_rel": 1.1,
       "belastbar": true
     },
@@ -354,10 +354,17 @@
     },
     "tiktok 15–18": {
       "n": 1,
-      "gewicht": 1.02,
-      "vorsprung": 0.022,
-      "median_rel": 1.09,
+      "gewicht": 1.01,
+      "vorsprung": 0.011,
+      "median_rel": 1.04,
       "belastbar": false
+    },
+    "tiktok 09–12": {
+      "n": 5,
+      "gewicht": 1,
+      "vorsprung": 0.004,
+      "median_rel": 1,
+      "belastbar": true
     },
     "instagram 21–24": {
       "n": 5,
@@ -380,17 +387,10 @@
       "median_rel": 0.9,
       "belastbar": true
     },
-    "tiktok 09–12": {
-      "n": 6,
-      "gewicht": 0.88,
-      "vorsprung": -0.123,
-      "median_rel": 1,
-      "belastbar": true
-    },
     "tiktok 18–21": {
       "n": 5,
       "gewicht": 0.7,
-      "vorsprung": -0.35,
+      "vorsprung": -0.351,
       "median_rel": 0.91,
       "belastbar": true
     }
@@ -409,8 +409,8 @@
       "median_score": 15
     },
     "tiktok reel": {
-      "n": 13,
-      "median_score": 285
+      "n": 12,
+      "median_score": 298.5
     },
     "pinterest pin-video": {
       "n": 26,
