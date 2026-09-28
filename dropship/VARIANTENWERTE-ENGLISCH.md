@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **33'654**
-- Optionen mit englischen Werten (Kandidaten): 2'543
+- Produkte gesehen: **34'250**
+- Optionen mit englischen Werten (Kandidaten): 2'556
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'041
+- Werte mit unbekanntem Wort (unverändert): 14'064
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 59
 - übersprungen «kollision-nach-uebersetzung»: 37
@@ -133,5 +133,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 536, `inner` 528, `light` 434, `color` 324, `shell` 162, `degrees` 159, `size` 140, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 120, `powder` 115, `⟨satzbau:nomen-nomen⟩` 111, `no` 108, `diamond` 108, `to` 102, `high` 101, `skin` 100, `three` 97, `belt` 92, `bag` 91, `shoes` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 80, `code` 79, `yards` 79, `rope` 75, `spring` 71, `dual` 71, `dark` 69, `base` 69, `petal` 68, `chain` 67, `dinosaur` 66, `autumn` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `buckle` 60, `of` 60, `cherry` 59, `little` 59, `tea` 57, `one` 56, `plush` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `bottom` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49
+`⟨satzbau:adjektiv-vor-nomen⟩` 537, `inner` 528, `light` 434, `color` 326, `shell` 162, `degrees` 159, `size` 140, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 120, `powder` 115, `⟨satzbau:nomen-nomen⟩` 111, `no` 108, `diamond` 108, `to` 102, `high` 101, `skin` 101, `three` 97, `bag` 93, `shoes` 93, `belt` 92, `rain` 88, `case` 87, `french` 84, `four` 82, `opp` 81, `code` 79, `yards` 79, `rope` 75, `spring` 72, `dual` 71, `dark` 69, `base` 69, `petal` 68, `chain` 67, `dinosaur` 66, `autumn` 66, `half` 66, `net` 63, `feet` 62, `buckle` 61, `mother` 61, `of` 60, `cherry` 59, `little` 59, `tea` 57, `one` 56, `plush` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `bottom` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49
 
