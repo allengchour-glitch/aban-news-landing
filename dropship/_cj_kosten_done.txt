@@ -40036,3 +40036,26 @@ gid://shopify/Product/15495116718465	CHF 14.30	4 Varianten	Tailliertes Strickkle
 gid://shopify/Product/15495116751233	CHF 15.35	1 Varianten	Make-up Pinselset mit Holzgriff
 gid://shopify/Product/15495116784001	CHF 8.10	1 Varianten	Pinselset für präzises Make-up (Elefant)
 gid://shopify/Product/15495116816769	CHF 19.08	4 Varianten	Colorblock V-Neck Strickkleid mit Schnürung
+gid://shopify/Product/15495116915073	CHF 17.81	4 Varianten	Elegantes A-Linien Mesh-Kleid mit Leo-Print
+gid://shopify/Product/15495116947841	CHF 16.09	16 Varianten	Baotou Chunky-Sohle Sandalen Damen
+gid://shopify/Product/15495116980609	CHF 11.59	1 Varianten	Barrel Make-up Pinselset (9-teilig)
+gid://shopify/Product/15495117013377	CHF 16.03	4 Varianten	Elegantes Maxikleid mit Spitzenbesatz
+gid://shopify/Product/15495117046145	CHF 13.24	40 Varianten	Keilabsatz-Sandalen mit Plateau
+gid://shopify/Product/15495117078913	CHF 14.56	1 Varianten	12er-Set Make-up Pinsel 'Small Grape'
+gid://shopify/Product/15495117209985	CHF 21.49	24 Varianten	Elegantes Slim-Fit Midikleid für den Alltag
+gid://shopify/Product/15495117275521	CHF 27.46	21 Varianten	Retro Pumps mit Chunky Heel und V-Ausschnitt
+gid://shopify/Product/15495117308289	CHF 7.87	1 Varianten	12 Make-up Pinsel für Gesicht & Augen
+gid://shopify/Product/15495117341057	CHF 19.27	4 Varianten	Elegantes Zweiteiler-Set mit Top und langem Rock
+gid://shopify/Product/15495117373825	CHF 17.59	1 Varianten	Drehbarer Organizer für Kosmetik und Büro
+gid://shopify/Product/15495117406593	CHF 21.31	6 Varianten	Elegante High-Heel Sandalen mit eckiger Spitze
+gid://shopify/Product/15495117439361	CHF 9.36	1 Varianten	8-teiliges Make-up Pinselset «Crystal»
+gid://shopify/Product/15495117472129	CHF 13.69	15 Varianten	Elegantes Slim-Fit V-Neck Langarmkleid
+gid://shopify/Product/15495117504897	CHF 28.42	18 Varianten	Plaid-High-Heel-Sandalen mit spitzer Zehe
+gid://shopify/Product/15495117537665	CHF 7.83	1 Varianten	Diamond Make-up Pinselset (20 Stk.)
+gid://shopify/Product/15495117570433	CHF 12.40	1 Varianten	Kord Aufbewahrungskorb mit Fächern
+gid://shopify/Product/15495117603201	CHF 45.16	36 Varianten	Mary-Jane-Schuhe mit Blockabsatz und T-Steg
+gid://shopify/Product/15495117635969	CHF 14.60	5 Varianten	Elegantes Off-Shoulder Midikleid mit A-Linie
+gid://shopify/Product/15495117668737	CHF 9.43	1 Varianten	10er-Set professionelle Neon Make-up Pinsel
+gid://shopify/Product/15495117701505	CHF 10.12	1 Varianten	Retro Schmuckkästchen im Burg-Stil
+gid://shopify/Product/15495117734273	CHF 20.44	12 Varianten	Elegantes V-Ausschnitt Midi-Kleid mit Gürtel
+gid://shopify/Product/15495117767041	CHF 14.82	1 Varianten	10-teiliges Make-up Pinselset „Pretty Waist“
