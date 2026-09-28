@@ -165,7 +165,7 @@ internal fun SubTile(item: MenuItem, image: Image?, onClick: () -> Unit) {
         }
         Spacer(Modifier.height(6.dp))
         Text(
-            item.title, style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center,
+            shortLabel(item.title), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center,
             maxLines = 2, overflow = TextOverflow.Ellipsis,
         )
     }

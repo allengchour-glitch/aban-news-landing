@@ -16,6 +16,8 @@ import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.isEnabled
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.test.core.app.ApplicationProvider
@@ -87,6 +89,25 @@ abstract class TourBase {
 
     protected fun go(url: String) { links.tryEmit(url); rule.waitForIdle() }
 
+    /** Produktseite steht: Kaufknopf zeigt „In den Warenkorb" oder „Grösse wählen". */
+    protected fun waitForBuy(timeout: Long = 40_000) = rule.waitUntil(timeout) {
+        listOf("In den Warenkorb", "wählen").any { rule.onAllNodesWithText(it, substring = true).fetchSemanticsNodes().isNotEmpty() }
+    }
+
+    /** Grösse wählen (wird nicht vorausgewählt), dann in den Warenkorb. */
+    protected fun addToCart() {
+        if (rule.onAllNodesWithText("Grösse wählen").fetchSemanticsNodes().isNotEmpty()) {
+            rule.onAllNodesWithText("Grösse wählen").onFirst().performClick()
+            settle(1500)
+            val size = listOf("M", "S", "L", "XL", "2XL", "XXL", "XS").firstOrNull { v ->
+                rule.onAllNodes(hasText(v) and isEnabled() and hasClickAction()).fetchSemanticsNodes().isNotEmpty()
+            } ?: error("Keine lieferbare Grösse gefunden")
+            rule.onAllNodes(hasText(size) and isEnabled() and hasClickAction()).onFirst().performClick()
+            settle(800)
+        }
+        rule.onAllNodesWithText("In den Warenkorb", substring = true).onFirst().performClick()
+    }
+
     protected fun start() {
         val app = ApplicationProvider.getApplicationContext<LuxeApplication>()
         // Robolectric kennt Androids ImageDecoder nicht → im Test den klassischen BitmapFactory-Weg nehmen
@@ -119,7 +140,7 @@ class ScreenTour : TourBase() {
         shot("03-kollektion")
 
         go("https://luxestyle.ch/products/damen-polka-dot-sommerkleid-mit-spaghettitrage-636400")
-        waitFor("In den Warenkorb"); settle()
+        waitForBuy(); settle()
         shot("04-produkt")
         rule.onAllNodes(SemanticsMatcher("vergrössern") { it.config.getOrNull(SemanticsActions.OnClick)?.label == "Vergrössern" }).onFirst().performClick()
         settle(2500)
@@ -130,7 +151,7 @@ class ScreenTour : TourBase() {
         settle(1500)
         shot("05-produkt-details")
 
-        rule.onAllNodesWithText("In den Warenkorb", substring = true).onFirst().performClick()
+        addToCart()
         waitFor("Im Warenkorb"); settle(1500)
         shot("06-hinzugefuegt")
 
@@ -169,7 +190,7 @@ class ScreenTour : TourBase() {
     fun groessenUndSuche() {
         start()
         go("https://luxestyle.ch/products/elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben")
-        waitFor("In den Warenkorb"); settle()
+        waitForBuy(); settle()
         waitFor("Kleider"); settle(1500) // Kategorie-Pfad ist geladen, das Layout steht
         // Grössen-Zeile liegt sonst unter der Kaufleiste → bis zum Liefer-Kasten scrollen
         scrollTo("product", "Gratis-Versand in der Schweiz"); settle(800)
@@ -235,7 +256,7 @@ class ScreenTour : TourBase() {
         rule.onNodeWithTag("grid").performScrollToIndex(16); settle(3000)
         shot("21-suche-weit-unten")
         rule.onAllNodesWithText("CHF", substring = true).onFirst().performClick()
-        waitFor("In den Warenkorb"); settle(1500)
+        waitForBuy(); settle(1500)
         rule.onAllNodesWithContentDescription("Zurück").onFirst().performClick()
         settle(2500)
         shot("21b-zurueck-gleiche-stelle")
@@ -250,10 +271,10 @@ class ScreenTour : TourBase() {
     fun farbenLieferdatumWarenkorb() {
         start()
         go("https://luxestyle.ch/products/damen-flanell-kapuzenpullover-fur-herbst-und-w-611600")
-        waitFor("In den Warenkorb"); settle(5000)
+        waitForBuy(); settle(5000)
         rule.onNodeWithTag("product").performScrollToIndex(1); settle(3000)
         shot("20-produkt-farbbilder")
-        rule.onAllNodesWithText("In den Warenkorb", substring = true).onFirst().performClick()
+        addToCart()
         waitFor("Im Warenkorb"); settle(1000)
         go("https://luxestyle.ch/cart")
         waitFor("Zur Kasse")
@@ -265,7 +286,7 @@ class ScreenTour : TourBase() {
     fun kategoriePfad() {
         start()
         go("https://luxestyle.ch/products/hoodie-langarmshirt-fur-damen-614400")
-        waitFor("In den Warenkorb"); waitFor("Strick & Pullover"); settle()
+        waitForBuy(); waitFor("Strick & Pullover"); settle()
         shot("18-produkt-kategoriepfad")
         scrollTo("product", "Mehr aus"); settle(3000)
         shot("18b-mehr-aus")
@@ -299,7 +320,7 @@ class ScreenTour : TourBase() {
         start()
         shot("17-start-grosse-schrift")
         go("https://luxestyle.ch/products/elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben")
-        waitFor("In den Warenkorb"); settle()
+        waitForBuy(); settle()
         scrollTo("product", "Grössentabelle"); settle(1500)
         shot("17b-produkt-grosse-schrift")
         go("https://luxestyle.ch/collections/sub-kleider")
@@ -313,7 +334,7 @@ class ScreenTour : TourBase() {
         start()
         shot("11-start-dunkel")
         go("https://luxestyle.ch/products/damen-polka-dot-sommerkleid-mit-spaghettitrage-636400")
-        waitFor("In den Warenkorb"); settle()
+        waitForBuy(); settle()
         shot("12-produkt-dunkel")
     }
 }
@@ -331,9 +352,9 @@ class StoreShots : TourBase() {
         waitFor("Empfohlen"); settle()
         shot("store-2-kleider")
         go("https://luxestyle.ch/products/gestreiftes-armelloses-mini-kleid-mit-v-aussch-612500")
-        waitFor("In den Warenkorb"); settle()
+        waitForBuy(); settle()
         shot("store-3-produkt")
-        rule.onAllNodesWithText("In den Warenkorb", substring = true).onFirst().performClick()
+        addToCart()
         waitFor("Im Warenkorb"); settle(4500)
         go("https://luxestyle.ch/cart")
         waitFor("Zur Kasse"); settle()

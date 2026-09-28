@@ -92,7 +92,8 @@ fun homeRails(seasonHandle: String, halloween: Boolean = false): List<RailSpec> 
     RailSpec("damen-mode", newest = true, title = "Neu bei Damen"),
     RailSpec("halloween").takeIf { halloween },
     RailSpec(seasonHandle),
-    RailSpec("schmuck-uhren"),
+    // Nur Damen-Schmuck: die Kollektion „Schmuck & Uhren" führt meistverkauft mit Fitness- und Kinder-GPS-Uhren
+    RailSpec("schmuck-uhren", title = "Schmuck", query = "tag:schmuck AND tag:damen"),
     LUCK_RAIL,
     RailSpec("damen-mode", title = "Beliebt bei Damen"),
     RailSpec("schuhe"),

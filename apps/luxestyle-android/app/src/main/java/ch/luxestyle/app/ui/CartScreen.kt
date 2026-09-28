@@ -78,7 +78,17 @@ fun CartScreen() {
         ScreenTitle("Warenkorb")
         val c = cart
         if (c == null || c.lines.isEmpty()) {
-            EmptyState(R.drawable.ic_bag, "Dein Warenkorb ist leer", "Schöne Stücke warten schon auf dich.", "Weiter einkaufen", nav::home)
+            val recent by shop.recent.items.collectAsState()
+            val wish by shop.wishlist.items.collectAsState()
+            Box(Modifier.weight(1f)) {
+                EmptyState(R.drawable.ic_bag, "Dein Warenkorb ist leer", "Schöne Stücke warten schon auf dich.", "Weiter einkaufen", nav::home)
+            }
+            // Zuletzt angesehen: der schnellste Weg zurück zu dem, was schon gefallen hat
+            if (recent.isNotEmpty()) {
+                SectionHeader("Zuletzt angesehen")
+                Rail(recent, wish.map { it.handle }.toSet())
+                Gap(16)
+            }
             return
         }
         CartContent(c)
@@ -123,6 +133,9 @@ private fun CartContent(c: Cart) {
         }
     }
     val missing = missingForFreeShipping(c.subtotal)
+    // Vorsichtig nach Rabatt gerechnet: lieber CHF 7 zeigen, die dann wegfallen, als umgekehrt
+    val ship = if (missingForFreeShipping(c.total) == null) 0.0 else CartRepository.SHIPPING_CHF
+    val grand = Money(c.total.amount + ship, c.total.currency)
     val wish by shop.wishlist.items.collectAsState()
     val suggestions = remember(recs.state, c.lines, missing) {
         (recs.state as? Load.Ok)?.value.orEmpty().let { cartSuggestions(it, c.lines.map { l -> l.productHandle }.toSet(), missing) }
@@ -144,13 +157,13 @@ private fun CartContent(c: Cart) {
                     if (c.total.amount < c.subtotal.amount - 0.004) {
                         SummaryRow("Rabatt", "−" + Money(c.subtotal.amount - c.total.amount, c.total.currency).format(), accent = true)
                     }
-                    SummaryRow("Versand", "an der Kasse")
+                    SummaryRow("Versand Schweiz", if (ship == 0.0) "gratis" else Money(ship, c.total.currency).format())
                     Gap(8)
                     HorizontalDivider(color = LocalLuxe.current.line)
                     Gap(8)
                     Row(Modifier.fillMaxWidth()) {
                         Text("Total", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
-                        Text(c.total.format(), style = MaterialTheme.typography.titleLarge)
+                        Text(grand.format(), style = MaterialTheme.typography.titleLarge)
                     }
                 }
             }
@@ -168,7 +181,7 @@ private fun CartContent(c: Cart) {
         ) {
             HorizontalDivider(color = LocalLuxe.current.line)
             PillButton(
-                "Zur Kasse · ${c.total.format()}",
+                "Zur Kasse · ${grand.format()}",
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
             ) { nav.web(c.checkoutUrl, "Kasse") }
         }

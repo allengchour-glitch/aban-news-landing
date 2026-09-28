@@ -28,6 +28,23 @@ class ShopLogicTest {
     }
 
     @Test
+    fun grösseWirdNichtVorausgewählt() {
+        assertEquals(mapOf("Farbe" to "Weiss"), dress.defaultSelection(askFor = "Grösse"))
+        assertNull(dress.variantFor(dress.defaultSelection(askFor = "Grösse")))
+    }
+
+    @Test
+    fun farbeWieAufDemTitelbild() {
+        fun iv(id: String, color: String, url: String) = Variant(id, color, true, Money(20.0), null, mapOf("Farbe" to color), Image(url))
+        val hoodie = Product(
+            "p2", "hoodie", "Hoodie", "", listOf(Image("https://cdn/grau.jpg?v=1"), Image("https://cdn/rot.jpg")),
+            listOf(ProductOption("Farbe", listOf("Weinrot", "Grau"))),
+            listOf(iv("r", "Weinrot", "https://cdn/rot.jpg"), iv("g", "Grau", "https://cdn/grau.jpg?v=2")),
+        )
+        assertEquals(mapOf("Farbe" to "Grau"), hoodie.defaultSelection(askFor = "Grösse"))
+    }
+
+    @Test
     fun grautNurWirklichUnkaufbareWerteAus() {
         val sel = mapOf("Farbe" to "Weiss", "Grösse" to "M")
         assertFalse(dress.isValueAvailable("Grösse", "S", sel)) // Weiss/S ausverkauft

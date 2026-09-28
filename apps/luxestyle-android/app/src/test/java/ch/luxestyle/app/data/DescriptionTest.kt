@@ -190,7 +190,35 @@ class CartSuggestionTest {
     fun zuerstWasDieVersandlückeSchliesst() {
         val recs = listOf(card("klein", 5.0), card("teuer", 60.0), card("passt", 12.0), card("mittel", 8.0))
         val order = cartSuggestions(recs, emptySet(), Money(10.10)).map { it.handle }
-        assertEquals(listOf("passt", "teuer", "mittel", "klein"), order)
+        // „teuer" schliesst die Lücke auch, kostet aber CHF 50 mehr als nötig – kommt ans Ende
+        assertEquals(listOf("passt", "mittel", "klein", "teuer"), order)
+    }
+}
+
+class ReviewFixesTest {
+    @Test
+    fun webBannerMitTextWirdErkannt() {
+        assertTrue(ch.luxestyle.app.data.isWebBanner(Image("b", width = 1600, height = 620)))
+        assertTrue(!isWebBanner(Image("p", width = 800, height = 800)))
+        assertTrue(!isWebBanner(Image("x")))
+    }
+
+    @Test
+    fun chipsBleibenKurz() {
+        assertEquals("Accessoires", ch.luxestyle.app.ui.shortLabel("Accessoires: Schals, Mützen & Gürtel"))
+        assertEquals("Kleider", ch.luxestyle.app.ui.shortLabel("Kleider"))
+    }
+
+    @Test
+    fun grössentabelleNurMitVorhandenenGrössen() {
+        val g = SizeGuide(listOf(SizeChart(null, listOf("Grösse", "Brust"), listOf(
+            listOf("XS", "80"), listOf("S", "84"), listOf("M", "88"), listOf("XXL", "100"), listOf("3XL", "106"),
+        ))), emptyList())
+        val rows = g.only(listOf("S", "M", "2XL")).charts.single().rows
+        assertEquals(listOf("S", "M", "2XL"), rows.map { it.first() })
+        assertEquals("100", rows.last()[1])
+        // Passt nichts, bleibt alles stehen
+        assertEquals(5, g.only(listOf("Einheitsgrösse")).charts.single().rows.size)
     }
 }
 

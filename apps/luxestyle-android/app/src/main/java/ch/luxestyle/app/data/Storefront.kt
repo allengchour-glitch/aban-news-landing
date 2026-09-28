@@ -79,7 +79,7 @@ class Storefront(
         val img = runCatching { run("query Img { ${q.joinToString(" ")} }") }.getOrNull()
         return items.map { m ->
             val i = handles.indexOf(m.collectionHandle)
-            m.copy(image = img?.o("c$i")?.o("image")?.let(Parse::image))
+            m.copy(image = img?.o("c$i")?.o("image")?.let(Parse::image)?.takeUnless(::isWebBanner))
         }
     }
 
@@ -149,7 +149,8 @@ class Storefront(
         val d = run("query Img { ${q.joinToString(" ")} }")
         return handles.withIndex().associate { (i, h) ->
             val c = d.o("c$i")
-            h to (Parse.image(c.o("image")) ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
+            val own = Parse.image(c.o("image"))?.takeUnless(::isWebBanner)
+            h to (own ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
         }
     }
 
@@ -257,3 +258,10 @@ class Storefront(
                 product { id handle title } } } } } }"""
     }
 }
+
+/**
+ * Breite Web-Banner (1600×620) tragen Titel und Knopf ins Bild gebrannt („Frauen … Jetzt entdecken").
+ * In der App werden sie abgeschnitten und doppeln den eigenen Text – dort lieber ein Produktbild.
+ */
+fun isWebBanner(image: Image): Boolean =
+    image.height > 0 && image.width.toDouble() / image.height > 2.2

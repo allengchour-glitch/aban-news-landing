@@ -63,8 +63,18 @@ data class Product(
     val url: String get() = "https://luxestyle.ch/products/$handle"
 
     /** Standard-Auswahl: erste lieferbare Variante, sonst die erste. */
-    fun defaultSelection(): Map<String, String> =
-        (variants.firstOrNull { it.available } ?: variants.firstOrNull())?.options.orEmpty()
+    /**
+     * Vorauswahl beim Öffnen: die Ausführung, die auf dem Titelbild zu sehen ist (sonst die erste
+     * lieferbare). [askFor] (z. B. „Grösse") wird nicht vorausgewählt, wenn es mehrere Werte gibt –
+     * sonst landet ungefragt „S" im Warenkorb.
+     */
+    fun defaultSelection(askFor: String? = null): Map<String, String> {
+        val cover = images.firstOrNull()?.url?.substringBefore('?')
+        val base = variants.firstOrNull { it.available && cover != null && it.image?.url?.substringBefore('?') == cover }
+            ?: variants.firstOrNull { it.available } ?: variants.firstOrNull()
+        val ask = askFor?.takeIf { a -> (options.firstOrNull { it.name == a }?.values?.size ?: 0) > 1 }
+        return base?.options.orEmpty().filterKeys { it != ask }
+    }
 
     fun variantFor(selection: Map<String, String>): Variant? =
         variants.firstOrNull { v -> v.options.all { (k, value) -> selection[k] == value } }
@@ -186,6 +196,8 @@ fun cleanTitle(title: String): String =
 fun cartSuggestions(recs: List<ProductCard>, inCart: Set<String>, missing: Money?): List<ProductCard> {
     val open = recs.filter { it.available && it.handle !in inCart }.distinctBy { it.handle }
     if (missing == null) return open
+    // Zuerst, was die Lücke schliesst, ohne viel mehr auszugeben (bis CHF 25 darüber)
     val (reach, rest) = open.partition { it.price.amount >= missing.amount - 0.004 }
-    return reach.sortedBy { it.price.amount } + rest.sortedByDescending { it.price.amount }
+    val (fit, pricey) = reach.partition { it.price.amount <= missing.amount + 25 }
+    return fit.sortedBy { it.price.amount } + rest.sortedByDescending { it.price.amount } + pricey.sortedBy { it.price.amount }
 }
