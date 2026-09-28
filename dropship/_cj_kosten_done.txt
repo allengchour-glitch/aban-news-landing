@@ -39127,3 +39127,6 @@ gid://shopify/Product/15494121783681	CHF 9.43	1 Varianten	Smart Torque Katzenspi
 gid://shopify/Product/15494121980289	CHF 24.52	1 Varianten	Doppel-Schulterrucksack für Herren
 gid://shopify/Product/15494122570113	CHF 9.43	1 Varianten	Faltbare Sporttasche für Freizeit und Reisen
 gid://shopify/Product/15494123127169	CHF 28.16	1 Varianten	GPS-Tracker für Kinder, Senioren und Haustiere
+gid://shopify/Product/15494123422081	CHF 36.03	1 Varianten	Computer-Rucksack für Alltag und Reisen
+gid://shopify/Product/15494123946369	CHF 11.44	1 Varianten	Elektrischer Simulationsvogel für Katzen
+gid://shopify/Product/15494124208513	CHF 46.97	1 Varianten	Trolley-Schulrucksack mit Rollen
