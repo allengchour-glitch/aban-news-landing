@@ -27,7 +27,7 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
    QUELLE (Datum) aktualisieren, am Bestand messen, Kanarienvögel, Lauf.
 7. [-] 00:15 ZURÜCKGESTELLT: Quellvideos lassen sich keinem Shop-Produkt sicher zuordnen (CJ-Produktabfrage von 40 Rucksack-Kandidaten enthält die Download-Hashes nicht) → kein geprüfter Preis fürs Bild; ohne Zuordnung keine Probe. **Schnitt-Proben:** die zwei übrigen CJ-Quellvideos (Reiserucksack 16:9, Lederrucksack 9:16) mit `schnitt.py` +
    luxe-epic-anime schneiden, Tor muss bestehen, Kontaktbogen prüfen → als Proben bereitlegen (nicht posten).
-8. [ ] **Gedächtnis:** Journal + Index für alles Neue der Nacht; Morgenbericht (GEMESSEN / GETAN / OFFEN für den Betreiber).
+8. [x] ✅ 10:05 Journal Nachtrag 106 (ganze Nacht) + Index-Zeilen 28.09.; Morgenbericht an Betreiber. **Gedächtnis:** Journal + Index für alles Neue der Nacht; Morgenbericht (GEMESSEN / GETAN / OFFEN für den Betreiber).
 
 ## Protokoll
 - 22:30 Plan angelegt. Nachprüfung beworbene CJ-Ware läuft (bisher 2 ausgelistet: Sojawachskerzen Zitrus/Holz + Orchidee,
@@ -44,3 +44,4 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 - 06:05 Block 4: Keepalive ok (uptime 7 min). #1019 weiter offen (bis Entscheid 30.09.). Preis-Verlustschutz 5'500/5'956: 40'347 Varianten gehoben, 1'231 Produkte GESPERRT (DENY, nötiger Preis > 2× bisher) — diese sind jetzt nicht mehr kaufbar → im Morgenbericht nennen. Reel-Queue 9 ready (Server-Weg lief, 2 Sammelvideos vorne). TikTok 10:05 = Lederrucksack (vor den Sammelvideos eingeplant), Sammelvideo folgt im nächsten Termin.
 - 08:05 Block 5: Preis-Verlustschutz FERTIG 07:26. KORREKTUR zu 06:05: «1'231 gesperrt» war der kumulierte Zähler über mehrere Neustart-Läufe — gemessen im Ledger heute: 445 Produkte / 2'159 Varianten auf DENY (nötiger Preis > 2×, z. B. Baum-Hängematte 22.90 bei EK 43.39). 0 davon in wartenden Posts, 0 Kunden-Lieblinge, Rizinusöl-Wickel nicht betroffen. Nebenbei 06:30: Zeiger-Dateien-Union in repo_vorspulen.sh behoben (3 Dateien mit 2–3 verklebten Zeigern, kein Verlust).
 
+- 10:05 Block 6 (Abschluss): Neustart (uptime 0) → Keepalive ok. #1019 weiter ohne Antwort (Gmail 0 Treffer, nichts gesendet). Reel-Queue 17 ready; Halloween-Sammelvideo auf YouTube 16:05 geplant, Herbst-Sammelvideo wartet auf den nächsten IG/FB-Reel-Termin. Nachtschicht beendet.

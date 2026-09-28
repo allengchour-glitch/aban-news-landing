@@ -39670,3 +39670,10 @@ gid://shopify/Product/15495083590017	CHF 25.33	21 Varianten	Retro Chunky-Heel Sa
 gid://shopify/Product/15495083622785	CHF 35.66	1 Varianten	Katzenbaum mit Sisalstamm und Spielball
 gid://shopify/Product/15495083655553	CHF 10.59	1 Varianten	Gaming Controller Projektionsleuchte
 gid://shopify/Product/15495083721089	CHF 8.11	1 Varianten	Rasierpinsel mit Dachshaar und Lotusgriff
+gid://shopify/Product/15495083786625	CHF 16.75	1 Varianten	9-teiliges Pinselset für Make-up Artists
+gid://shopify/Product/15495083819393	CHF 12.02	56 Varianten	Bequeme einfarbige Slip-On Sandalen für Damen
+gid://shopify/Product/15495083852161	CHF 12.07	1 Varianten	VR-Brille für packende Virtual-Reality-Erlebnisse
+gid://shopify/Product/15495083884929	CHF 19.69	1 Varianten	Rose Gold Make-up Pinsel
+gid://shopify/Product/15495083917697	CHF 27.89	1 Varianten	Sisal-Rettich Beissspielzeug für Katzen
+gid://shopify/Product/15495083950465	CHF 17.55	45 Varianten	High-Heel Sandalen mit Schnalle und Blockabsatz
+gid://shopify/Product/15495083983233	CHF 7.72	1 Varianten	Cremiger Concealer mit Feuchtigkeitspflege

@@ -16065,3 +16065,4 @@ gid://shopify/Product/15523864084865	86->0	Trendy japanischer Rucksack für Stud
 gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 ml
 gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
 gid://shopify/Product/15430408438145	17->1	Herren Sling-Tasche «Ranger» · Crazy-Horse-Echtleder
+gid://shopify/Product/15450851934593	30->0	6er Set Ätherische Öle

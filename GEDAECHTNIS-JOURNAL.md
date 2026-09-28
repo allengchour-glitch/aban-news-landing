@@ -6,6 +6,35 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 📌 Nachtrag 106 — 28.09.2026 · Nachtschicht 27.09. 22:30 → 28.09. 10:30 (Betreiber «12 stunde autonom, mit allem drum und dran»)
+Plan und Protokoll: `dropship/NACHTSCHICHT-2026-09-27.md`. Container startete fast stündlich neu, der Keepalive hielt jedes Mal
+(STAND 0 CJ-Runner, Aufseher=1). Die Lehren der Nacht, jede mit ihrem Bericht:
+- **Grind-Leck (22:40):** `schulstart_lauf.sh` hielt seine Fertig-Marker in /tmp und importierte nach dem Neustart 2 h lang
+  trotz `_GRIND_PAUSE_BIS`. Jetzt prüft jede Import-Schleife die Pause selbst (schulstart_lauf.sh, cj_runner_template.sh).
+- **Ausgelistete CJ-Ware (#1019-Klasse):** `cj_ausgelistet_sichtbar.py` hat 643 beworbene Produkte geprüft und 2 ausgelistete gedraftet.
+  Lauf 1 hatte 205 ohne Urteil (Varianten-SKU als pid) → korrigiert. 0 davon in wartenden Posts.
+- **Sammelvideos:** Halloween (3 Kostüme + 3 Deko) und Herbst mit je 6 Produkten, 24 s. Die Karte ist 1000×865 gross (+42 % Fläche), das Laub liegt unter dem Preis.
+  Auswahl: Kostüm = «Kostüm» im Titel, Lizenzfiguren und Lebensmittel gesperrt. Vor jedem Post prüft `montagePruefen` die Livepreise
+  (Halloween nach dem Verlustschutz neu gerendert). Halloween ging auf YouTube (16:05), Herbst wartet auf IG/FB.
+- **Musik nur episch** (Betreiber): blind bewertet → Rotation = adventure-uplift + epic-anime + orchestra. 7 wartende Reels
+  per `musik_tauschen.py` umgestellt, erkannt mit `musik_erkennen.py`. Orchester-Tempo wird je Abschnitt gemessen, nicht am Kick.
+- **«Push was Leute kaufen»:** Die einzige Seite mit Kaufwille (Rizinusöl-Wickel-Set, 2 Warenkörbe) war DRAFT → Ersatz-Wickel
+  angelegt (22 Varianten, 16 CH-Wege), Redirect, Ratgeber und Öl verknüpft. 7 gekaufte Artikel sind jetzt `kunden-liebling` mit Vorrang in den Bildposts.
+- **Export-Format (00:25):** Mein Ad-hoc-Export lag unter den geteilten Namen, 5 Wächter starben. Jetzt prüfen `format_ok` im Kosten-Bauer
+  und die Format-Vorprüfung im Aufseher. Danach sah der Preis-Verlustschutz 5'956 Kandidaten.
+- **Preis-Verlustschutz FERTIG 07:26:** 40'347 Varianten gehoben. Gesperrt (DENY, nötiger Preis > 2×) sind **445 Produkte /
+  2'159 Varianten**. Die Zahl «1'231» von 06:05 war ein kumulierter Zähler über Neustarts, der Ledger ist die Wahrheit. 0 davon in Posts.
+- **Reel-Nachschub:** Der Runner rief den Video-Index vor dem Motor auf, darum lief der Motor nie. Danach blockte der Proxy die Downloads → Server-Weg
+  über `auftraege/` mit dem Anteil-Takt in `cj_takt.mjs`. Ergebnis: 3 Reels gebaut, 2 durchs Tor, Queue 17 ready.
+- **Zustandsdateien:** Die Union in `repo_vorspulen.sh` verklebte Zeiger (06:30, Name) und den Heilversprechen-Stempel (08:25, Inhalt).
+  Neu gibt es die Inhaltsregel und den Wächter `zustand_verklebt.py`.
+- **Fortura-Bestand (08:10):** Der Tageslauf vom 27.09. 20:10 scheiterte am fehlenden Shopify-Zugang, der Stempel sperrte ihn 20 h.
+  Jetzt gibt es einen neuen Versuch nach 2 h. 638 Varianten nachgeführt.
+- **#1019:** Bis 10:00 keine Antwort der Kundin (Gmail geprüft), nichts gesendet. Entscheid am 30.09. (Betreiber).
+- Zurückgestellt: Schnitt-Proben Rucksack (Quellvideo keinem Shop-Produkt sicher zuzuordnen → kein geprüfter Preis).
+**LEHRE der Nacht:** Fast jede Klasse war eine Voraussetzung, die still fehlte: ein Marker in /tmp, ein Token, ein Dateiformat,
+ein Zugang, ein Dateiname. Der Fix war jedes Mal eine Prüfung AN DER STELLE, die die Voraussetzung braucht, nicht beim Starter.
+
 ## 2026-09-28 · 🧷 Zustandsdatei am Inhalt erkennen, nicht am Namen (Verbesserungsrunde 08:25)
 GEMESSEN: `HEILVERSPRECHEN.md` zeigte den Filter `updated_at:>2026-09-25T20:29:48Z2026-09-25T00:26:28Z2026-09-23T22:11:04Z`,
 die Stempeldatei war vom 25.09. bis 27.09. verklebt (git 23eeb461c). Ursache wie morgens bei den Cursor-Dateien: die Ledger-Union in
