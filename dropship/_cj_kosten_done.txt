@@ -39732,3 +39732,5 @@ gid://shopify/Product/15495087784321	CHF 19.52	1 Varianten	Wasserdichter Busines
 gid://shopify/Product/15495087817089	CHF 19.08	1 Varianten	Automatischer Haarstyler mit Keramik-Heizelement
 gid://shopify/Product/15495087849857	CHF 21.38	1 Varianten	Business Casual Rucksack
 gid://shopify/Product/15495087915393	CHF 29.61	48 Varianten	Offroad Wander- und Laufschuhe mit weicher Sohle
+gid://shopify/Product/15495087948161	CHF 17.96	1 Varianten	Leder-Herrenumhängetasche Hochformat Casual
+gid://shopify/Product/15495087980929	CHF 18.58	1 Varianten	Mini-Haarglätter
