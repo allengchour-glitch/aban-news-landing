@@ -1706,3 +1706,5 @@ gid://shopify/Product/15491591078273	2026-09-28T17:20Z	schon-DRAFT	15.90	25.11	N
 gid://shopify/Product/15480338448769	2026-09-28T17:21Z	schon-DRAFT	14.90	24.06	Atmungsaktive Slip-on Sportschuhe für Damen
 gid://shopify/Product/15491515187585	2026-09-28T17:21Z	schon-DRAFT	22.90	32.04	Elektrischer Fischschupper
 gid://shopify/Product/15480283103617	2026-09-28T17:21Z	kein-verlust-live	21.90	30.94	Retro Casual Outdoor Lederstiefel mit Reissverschluss
+gid://shopify/Product/15480164614529	2026-09-28T17:21Z	schon-DRAFT	14.90	23.92	Freizeit-Sneaker mit dicker Sohle
+gid://shopify/Product/15481712050561	2026-09-28T17:21Z	schon-DRAFT	15.90	24.86	Sonnenblenden-Organizer für Auto & LKW
