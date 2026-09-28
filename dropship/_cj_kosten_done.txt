@@ -39064,3 +39064,6 @@ gid://shopify/Product/15493934678401	CHF 21.27	27 Varianten	Leichte Slip-on Mule
 gid://shopify/Product/15493934711169	CHF 15.29	1 Varianten	Spandex Ring Kissen für Sofa und Rückenlehne
 gid://shopify/Product/15493934743937	CHF 34.78	1 Varianten	MINI GT 911 Turbo GT2 RS GT Modellauto
 gid://shopify/Product/15493934776705	CHF 17.02	1 Varianten	Vintage Haarschneider für präzise Schnitte
+gid://shopify/Product/15493934809473	CHF 22.45	24 Varianten	Herren Schnürschuhe mit Fleecefutter
+gid://shopify/Product/15493934842241	CHF 13.47	1 Varianten	Schmetterling & Motte Kissen
+gid://shopify/Product/15493934875009	CHF 9.73	1 Varianten	Modellauto-Set: Rennwagen und Klassiker (1:64)
