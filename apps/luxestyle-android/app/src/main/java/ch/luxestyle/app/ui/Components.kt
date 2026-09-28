@@ -66,6 +66,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
@@ -249,7 +250,8 @@ fun ProductTile(
         }
         Spacer(Modifier.height(8.dp))
         Text(
-            card.title, style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis,
+            // Silbentrennung statt „Ortungsgerä / t"
+            card.title, style = MaterialTheme.typography.bodyMedium.copy(hyphens = Hyphens.Auto), maxLines = 2, overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(horizontal = 2.dp),
         )
         Spacer(Modifier.height(4.dp))

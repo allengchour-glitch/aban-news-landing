@@ -109,7 +109,7 @@ class Storefront(
 
     suspend fun suggest(query: String): Suggestions {
         val d = run(
-            """query P(${'$'}q: String!) { predictiveSearch(query: ${'$'}q, limit: 6, types: [PRODUCT, QUERY, COLLECTION]) {
+            """query P(${'$'}q: String!) { predictiveSearch(query: ${'$'}q, limit: 8, types: [PRODUCT, QUERY, COLLECTION]) {
               queries { text } collections { handle title } products { ...Card } } } $CARD""",
             vars("q" to query),
         )
