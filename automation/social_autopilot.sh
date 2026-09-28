@@ -106,6 +106,16 @@ while true; do
     fi
     touch "$MARKE_NACHSCHUB.saison"
   fi
+  # 28.09.2026 (Betreiber «alles andere weiter pushen bis einkauf kommt»; dropship/KASSE-ABBRUCH-2026-09-28.md): 9 Kassen-Sitzungen,
+  # 1 Kauf — CJ-Lieferzeit 2–4 Wochen. CH-Lager-Ware (1–2 Werktage) lag in 0 von 32 Reels und kaum in Bild-Posts. Liegen weniger als 4
+  # wartende Bild-Posts mit «Schweizer Lager» in der Caption, werden bis 4 CH-Lager-Artikel eingereiht (Kadenz unverändert).
+  if faellig "$MARKE_NACHSCHUB.chlager" "$NACHSCHUB_ABSTAND"; then
+    CHL=$(python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/posts_image.csv',encoding='utf-8')) if r.get('status')=='ready' and 'Schweizer Lager' in (r.get('caption') or '')))" 2>/dev/null || echo 99)
+    if [ "$CHL" -lt 4 ]; then
+      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" VORRANG_TAG=ch-lager SAISON_ZEILE='🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir' QUEUE_MAX=$((4 - CHL)) $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) CH-Lager-Nachschub fehlgeschlagen"
+    fi
+    touch "$MARKE_NACHSCHUB.chlager"
+  fi
   if [ "$META_OK" = 1 ]; then
     export IG_USER_ID="$(cat /tmp/meta_ig_id 2>/dev/null)"
     export FB_PAGE_ID="${FB_PAGE_ID:-1049840534888592}"

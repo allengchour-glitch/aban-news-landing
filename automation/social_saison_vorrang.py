@@ -19,6 +19,10 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAG = os.environ.get("TAG", "herbst-2026")
 BIS = os.environ.get("BIS", "2026-11-30")
 EXTRA_TAGS = [t for t in os.environ.get("EXTRA_TAGS", "kunden-liebling,ersatz-wickelset-0928").split(",") if t]
+# 28.09.2026 (Betreiber «alles andere weiter pushen bis einkauf kommt», dropship/KASSE-ABBRUCH-2026-09-28.md): 9 Kassen-Sitzungen,
+# 1 Kauf; CJ-Lieferzeit 2–4 Wochen ist der wahrscheinlichste Abbruchgrund. CH-Lager (Fortura, 2–3 Werktage, 2'394 aktiv) NACH der
+# Saison-Ware, vor allem übrigen — reine Reihenfolge, keine Kadenz- oder Sperränderung.
+NACH_TAGS = [t for t in os.environ.get("NACH_TAGS", "ch-lager").split(",") if t]
 HANDLES = os.path.join(REPO, "dropship/_social_vorrang.txt")
 REEL = os.path.join(REPO, "dropship/_reel_vorrang.txt")
 
@@ -32,7 +36,7 @@ def main():
     # 28.09.2026 (Betreiber «push mehr etwas das leute kaufen»): zusätzlich die nachweislich gekauften Artikel (Tag
     # kunden-liebling, gesetzt aus ShopifyQL «orders GROUP BY product_title») und der Ersatz für die meistbesuchte Seite
     # (ersatz-wickelset-0928). Sie stehen VOR der Saison-Ware; die Saison-Zählung «0 Produkte → nicht überschreiben» gilt weiter.
-    for tag in EXTRA_TAGS + [TAG]:
+    for tag in EXTRA_TAGS + [TAG] + NACH_TAGS:
         c = None
         while True:
             r = gql('query($q:String!,$c:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
