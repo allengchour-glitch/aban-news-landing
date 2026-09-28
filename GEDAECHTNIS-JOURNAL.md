@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🔧 Jury-Sperren reparieren statt wegwerfen (Betreiber «mehr verbessern», 20:50)
+- 32 Bildposts `jury-skip`, 28 aus der Kimi-Queue. Zwei reparierbare Klassen: BILD (englischer Lieferantentext auf dem
+  gewählten Produktbild) und CAPTION (Kimi versprach Details, die das Bild nicht zeigt).
+- `automation/jury_nachbessern.py`: Produkt über die tokenlose Storefront API, Hook + Name/Preis aus dem ECHTEN Titel,
+  altes Bild + bis 3 andere Produktbilder (≥ 600 px, nie gepostet) → erster Jury-Treffer wird ready (nachgelesen, atomar).
+- 23/32 repariert (16 neues Bild, 7 nur Caption), Queue 34 → 57. Kontaktbogen der 16 Bilder: sauber.
+- **Lehre:** Ein strenges Tor ohne Reparaturweg leert die Queue. Zu jedem Sperrgrund gehört die Frage «was wäre die
+  ehrliche Fassung?» — oft steckt sie schon im Shop (weitere Produktbilder, echter Titel).
+- Nebenbei: Betreiber schickte TikTok-Link `vm.tiktok.com/ZN8rqu5yB` — Proxy + WebFetch blocken tiktok.com → Hetzner-Auftrag.
+
 ## 2026-09-28 · 🔏 Jury-Sperren an einen parallelen Schreiber verloren — Säuberer liest vor dem Schreiben neu (Verbesserungsrunde 20:25)
 - GEMESSEN nach Neustart: `reels_seed.csv` 0× `jury-skip` statt 23, 34 ready; schon Commit 66a763d31 ohne die Sperren.
   Zwischen Textersatz und Commit schrieb ein Poster/Reel-Motor seine zu Beginn gelesenen Zeilen zurück (Lost Update).
@@ -17165,3 +17175,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🍂 **«herbstsachen auf sozial pushen»: 0 von 107 wartenden Reel-/Bild-Posts waren Herbst → `social_saison_vorrang.py` + `post_guard.nachVorrang()` in Bild-/Reel-/Metricool-Poster (nur Reihenfolge) + Saison-Nachschub (< 4 → auffüllen); Nachschub-Doppelsperre sah seit «Link in Bio» die Handles nicht (Hoodie doppelt) → id-Spalte; Teetasse (Bild 4, geliefert 1) übersprungen.** Eine Sperre muss dort suchen, wo der Schlüssel heute steht → Journal Nachtrag 81
 - 2026-09-25 · 🩺 **Medizin-Zweck-Wächter prüfte 0 Produkte je Lauf (nur Neuimporte 3 Tage, Grind pausiert) → wöchentlich ganzer Bestand; Hallux-Schiene + Hämorrhoidenkissen fehlten auch in den Regeln (3 DRAFT); Krankheitswörter im Titel: 138 von 152 Roh-Treffern Kanarienvögel («S-chwarze», «Vollnarbenleder») → Wortgrenzen, 9 Titel entschärft.** «0 geprüft» ist ein Befund, kein Grün → Journal Nachtrag 79
 - 2026-09-24 · 🏷️ **Preisschutz FERTIG (227k Zeilen, 352 gesperrt) → wartende Posts warben mit alten Preisen (Karussell 28.90 bei live 55.90, Reel 14.90/25.90): `post_guard.preisVeraltet()` in allen Postern + täglicher Säuberer (4 markiert); Preis = Betrag mit Rappen, «ab CHF 50»-Schwelle nicht.** Preis beim Posten prüfen, nicht nur beim Bauen → Journal Nachtrag 77
+- 2026-09-25 · 💤 **Fortura-Bestand 30 h alt: Tageslauf starb 02:10 beim Container-Neustart ohne Fehlerzeile, Anspruch war vor dem Lauf gesetzt, `absturz_nachholen` sucht nur Traceback → `still_gestorben LOG` (letzte Schreibung vor Container-Start + keine FERTIG/PAUSE, ≤3×/Tag), NUR an Toren mit unbedingter Schlusszeile (Fortura, Wahlversprechen); 20 von 47 Tor-Logs ohne Schlusszeile, meist bedingtes FERTIG = kein Beweis.** Nachhol-Signal braucht Vertrag → Journal Nachtrag 84
+- 2026-09-25 · 🏆 **«weltklasse»: Halloween-Reihe stand auf Startseiten-Platz 17 von 25 (Rotation setzte Katalog, nie Position) → Regel 6: Saison-Reihe im Fenster direkt unter Herbst (live 17→5); «10 Dubletten in Halloween» waren längst DRAFT (Kollektion zählt Entwürfe), aktiv nur 1 SKU-Paar — mit FREMDER Variante (Falbala als 140 cm unter Hexen-Titel) → DRAFT + 301.** Saisonal = Inhalt UND Platz → Journal Nachtrag 83
