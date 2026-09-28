@@ -38831,3 +38831,5 @@ gid://shopify/Product/15493908595073	CHF 15.18	16 Varianten	Elegante High Heels 
 gid://shopify/Product/15493908627841	CHF 14.89	8 Varianten	Retro-Chic Pumps mit Chunky-Absatz
 gid://shopify/Product/15493908660609	CHF 18.82	1 Varianten	Puzzle-Kissen – Modern & dekorativ
 gid://shopify/Product/15493908693377	CHF 18.56	1 Varianten	Digitales Leinwandbild, personalisierbar
+gid://shopify/Product/15493908726145	CHF 13.79	1 Varianten	Bärendecke aus Musselin für Kinder
+gid://shopify/Product/15493908791681	CHF 11.45	1 Varianten	DIY Malen nach Zahlen – Mein Kleid
