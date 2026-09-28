@@ -40025,3 +40025,10 @@ gid://shopify/Product/15495116292481	CHF 9.83	1 Varianten	3D-Wanduhr mit Wecker 
 gid://shopify/Product/15495116325249	CHF 10.17	1 Varianten	Wasserdichte LED-Fahrradlampe mit Griffmontage
 gid://shopify/Product/15495116358017	CHF 56.36	1 Varianten	Automatischer Kartenmischer
 gid://shopify/Product/15495116390785	CHF 19.83	1 Varianten	A8 Velo-Alarm mit Rücklicht
+gid://shopify/Product/15495116456321	CHF 17.17	4 Varianten	Elegantes Off-Shoulder Maxikleid mit Blumen-Patchw
+gid://shopify/Product/15495116489089	CHF 22.28	1 Varianten	Elektrischer Drehteller für Produktpräsentationen
+gid://shopify/Product/15495116521857	CHF 15.06	1 Varianten	Makeup Pinselset
+gid://shopify/Product/15495116554625	CHF 16.73	1 Varianten	Mountainbike-Sattel mit Rücklicht
+gid://shopify/Product/15495116587393	CHF 21.15	4 Varianten	Elegantes A-Linien Kleid mit Schnürung
+gid://shopify/Product/15495116620161	CHF 11.93	1 Varianten	Yunmi Kühlschrank Geruchsfilter Kräuter
+gid://shopify/Product/15495116652929	CHF 14.00	1 Varianten	10-teiliges Make-up Pinselset
