@@ -39233,3 +39233,5 @@ gid://shopify/Product/15494461620609	CHF 12.89	1 Varianten	Plüschtier für Hund
 gid://shopify/Product/15494461817217	CHF 53.17	1 Varianten	Business Notebook Rucksack – Multi-Layer, gross
 gid://shopify/Product/15494462275969	CHF 7.58	1 Varianten	Katzenspielzeug mit Katzenminze im Pilz-Design
 gid://shopify/Product/15494462374273	CHF 24.02	1 Varianten	Kinderrucksack Superleicht
+gid://shopify/Product/15494462865793	CHF 12.58	1 Varianten	Beissfestes Wildleder-Kauspielzeug
+gid://shopify/Product/15494462964097	CHF 31.02	1 Varianten	Taktische Outdoor-Brusttasche
