@@ -41066,3 +41066,9 @@ gid://shopify/Product/15495748977025	CHF 16.56	15 Varianten	Maxirock mit Blumenp
 gid://shopify/Product/15495749108097	CHF 10.68	20 Varianten	Boho V-Ausschnitt Midikleid mit Muster
 gid://shopify/Product/15495753531777	CHF 11.74	1 Varianten	Stuhlbezug
 gid://shopify/Product/15495753597313	CHF 11.54	40 Varianten	Herren Kurzarmhemd mit modischem Print
+gid://shopify/Product/15495753761153	CHF 73.82	1 Varianten	Plüsch-Teppich für Schlafzimmer und Wohnbereich
+gid://shopify/Product/15495771652481	CHF 19.37	1 Varianten	Sofa- und Sesselbezug
+gid://shopify/Product/15495771685249	CHF 16.66	20 Varianten	Trendiges V-Neck Fleece-Gilet für junge Männer
+gid://shopify/Product/15495771750785	CHF 12.59	21 Varianten	Sommer-Polo-Shirt
+gid://shopify/Product/15495771783553	CHF 8.62	1 Varianten	Bestickter Kissenbezug mit Fransen
+gid://shopify/Product/15495771816321	CHF 13.26	1 Varianten	3-teiliges WC-Set mit Anti-Rutsch-Matte
