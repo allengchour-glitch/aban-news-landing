@@ -1110,7 +1110,11 @@ while true; do
   CAW=/tmp/cj_ausgelistet_sichtbar.log
   if [ -f "$REPO/automation/cj_ausgelistet_sichtbar.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$CAW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CAW"; then
+    # 28.09.2026 (Betreiber «1019 sachen nicht mehr solche passieren»): Stufe A = alles Sichtbare (777: Kollektionen ganz,
+    # besuchte Seiten 90 T, Social-Warteschlangen, Kunden-Lieblinge) täglich; Stufe B = übriger CJ-Bestand (46'224) rollierend,
+    # 1500/Lauf, jedes Produkt spätestens alle 30 T. Ledger dropship/_cj_nachpruefung.tsv macht jeden Lauf neustartfest —
+    # darum auch still_gestorben (Container ~stündlich neu, ein Lauf dauert ~45 min; FERTIG-Zeile ist unbedingt).
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CAW" || still_gestorben "$CAW"; then
       touch "$CAW"
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_cj_ausgelistet.lock; flock -n 9 || exit 0; exec >> \"$CAW\" 2>&1; \
