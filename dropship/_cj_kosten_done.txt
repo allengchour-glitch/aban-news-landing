@@ -37387,3 +37387,8 @@ gid://shopify/Product/15493476712833	CHF 16.11	1 Varianten	Bluetooth Sportuhr mi
 gid://shopify/Product/15493476745601	CHF 18.60	1 Varianten	Smartwatch mit Anruf-, Herzfrequenz- & Blutsauerst
 gid://shopify/Product/15493478711681	CHF 7.66	1 Varianten	Türkis-Ring im schlichten Design
 gid://shopify/Product/15493478744449	CHF 24.36	1 Varianten	PS5 Multifunktions-Lüfter-Ladestation
+gid://shopify/Product/15493478777217	CHF 26.67	1 Varianten	Grosser Freizeit-Rucksack aus Oxford-Stoff
+gid://shopify/Product/15493478908289	CHF 18.73	1 Varianten	Outdoor-Bergsteigerrucksack 70L
+gid://shopify/Product/15493479006593	CHF 87.40	1 Varianten	Motorrad-Hartschalenrucksack, 15L erweiterbar
+gid://shopify/Product/15493479203201	CHF 15.22	1 Varianten	Business Travel Rucksack Gross
+gid://shopify/Product/15493479367041	CHF 18.96	1 Varianten	Business Laptop-Rucksack mit grosser Kapazität
