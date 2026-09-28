@@ -40861,3 +40861,7 @@ gid://shopify/Product/15495234257281	CHF 22.29	16 Varianten	Derby Loafers im Bri
 gid://shopify/Product/15495234290049	CHF 10.15	1 Varianten	Silikon-Creme-Applikator mit abnehmbarer Kugel
 gid://shopify/Product/15495234322817	CHF 27.34	1 Varianten	Mäuse- und Insektenvertreiber für Innenräume
 gid://shopify/Product/15495234355585	CHF 7.68	1 Varianten	Pinsel-Set (10 Stück)
+gid://shopify/Product/15495234388353	CHF 34.53	9 Varianten	Herren Sicherheitsstiefel mit Stahlkappen
+gid://shopify/Product/15495234421121	CHF 54.60	1 Varianten	Rohraufweiter-Set für Kältetechnik
+gid://shopify/Product/15495234453889	CHF 12.60	1 Varianten	Runder Make-up Pinselhalter
+gid://shopify/Product/15495234552193	CHF 24.04	40 Varianten	Leichte Slip-on Freizeitschuhe für Herren
