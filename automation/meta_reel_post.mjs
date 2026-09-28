@@ -113,9 +113,13 @@ for (const r of rows.slice(1)) {
 if (!DRY) writeLedger();
 
 // Kadenz-Wache: letzter IG-Post aus dem Ledger
+// 28.09.2026: NUR IG/FB-Posts zählen. Vorher zählte jedes «posted…» — auch posted-tiktok/posted-youtube (Metricool schreibt
+// posted_at in dieselbe CSV) und die posted-dup-*-Überspringer. Gemessen: TikTok 05:10 + YouTube 08:11 hielten die 6-h-Uhr fest,
+// IG/FB bekam 1 Reel in 24 h statt 3 (letztes 04:09, «fällig» seit 27.09. 22:26). Wächter: automation/reel_kadenz_wache.py.
+const IG_FB_POSTED = /^posted(-ig(-fb)?|-instagram|-facebook)?$/;
 let lastPosted = 0;
 for (const r of rows.slice(1)) {
-  if ((r[idx.status] || '').startsWith('posted') && r[idx.posted_at]) {
+  if (IG_FB_POSTED.test((r[idx.status] || '').trim()) && r[idx.posted_at]) {
     const t = Date.parse(r[idx.posted_at]); if (t > lastPosted) lastPosted = t;
   }
 }

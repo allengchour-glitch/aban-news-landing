@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · ⏱️ Kadenz-Sperre zählte fremde Kanäle (Verbesserungsrunde 12:26)
+GEMESSEN: Der Autopilot meldete seit 27.09. 22:26 stündlich «Reel fällig» und danach «Kadenz-Wache … <6h → kein Post». Letzte Posts: IG/FB 04:09,
+TikTok 05:10, YouTube 08:11. `meta_reel_post.mjs` nahm für die Sperre jedes «posted…», auch die Metricool-Status in derselben CSV.
+GETAN: Die Sperre zählt nur IG/FB-Status (9/9 Kanarienvögel), neuer Wächter `reel_kadenz_wache.py` (1,5× Takt) im Keepalive, Trockenlauf
+postet wieder. Herbst-Montage auf `wartet-freigabe` (Betreiber-OK erbeten).
+Vorher, auf Betreiber-Screenshot: Das Reel-Fenster war zu klein (siehe `REEL-FENSTER-2026-09-28.md`, 8/13 neu gerendert).
+LEHRE: Wer eine geteilte Ledger-Spalte liest, filtert auf seinen Kanal. Ein Status wie «posted-youtube» ist für den IG-Poster kein Post.
+
 ## 📌 Nachtrag 106 — 28.09.2026 · Nachtschicht 27.09. 22:30 → 28.09. 10:30 (Betreiber «12 stunde autonom, mit allem drum und dran»)
 Plan und Protokoll: `dropship/NACHTSCHICHT-2026-09-27.md`. Container startete fast stündlich neu, der Keepalive hielt jedes Mal
 (STAND 0 CJ-Runner, Aufseher=1). Die Lehren der Nacht, jede mit ihrem Bericht:
@@ -17081,3 +17089,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-24 · ⏱️ **Preis-Nachlauf bekam nur 10–15 min/h (Ende der Aufseher-Liste + stündlicher Neustart) → Keepalive 3d startet ihn sofort; Ledger-Skip nur für heutige Quittungen; CJ-Takt protokolliert je Aufruf das Skript (13'018 CJ-Produkte ohne EK, ~500/Tag).** Fortschritt je Stunde messen, nicht «läuft» → Journal Nachtrag 70
 - 2026-09-24 · 🚦 **CJ-Budget seit 16:00: Reel-Motor 196, Bewertungen 158, Kosten-Nachtrag 0 — er hatte am Listenende ab Zeiger «FERTIG» geschrieben (Aufseher: 20 h Pause). FERTIG jetzt nur nach voller Runde ohne Arbeit; `cj_takt` hat Vorrang-Schranke (/tmp/cj_vorrang, Bestellwächter frei).** FERTIG ist ein Vertrag → Journal Nachtrag 71
 - 2026-09-24 · 🎻 **«fairy tail theme anime musik»: eigenes Stück `luxe-celtic-epic.wav` (Whistle/Fiedel/Dudelsack über Rock+Orchester, Melodie neu komponiert), Gemini-Hörschleife 7→8/10; render.sh hatte LUFS-Default +13.5 (ffmpeg-Abbruch), jetzt −14 + Lead-Spur mit Präsenz-EQ + Stillen-Kappung; Reel-Motor Gadget/Fitness/Haustier/Kinder.** KI-Hörer für Mix, nicht für Urheberrecht → Journal Nachtrag 72
+- 2026-09-24 · 🧸 **Ratgeber «Kuscheltiere waschen» live (Schreiber → Prüfer 5× wichtig → behoben → WebFetch); `ft-pluesch` ist CREATED_DESC mit Tag=pluesch (oben Sofabezüge) → Link auf Tag-Ansicht `/ch-lager`; Warnhinweis 36 Monate fehlt bei Teilen der Fortura-Plüschgruppe (Feed ohne Warnfeld, nicht erfunden); Displaybilder ~20 Tiere → «Lieferumfang: 1 Stück» bei 4 ergänzt.** Kollektionslink = erste 24 Karten → Journal Nachtrag 74
+- 2026-09-24 · 🪣 **CJ-Eimer: kein versteckter Verbraucher — Nachfluss nur ~43 Punkte/min (usedToday 107'890→112'620 in 109 min), nicht 165; Takt-Bericht je Maschine `dropship/_cj_takt_<host>.json` (Container 188/h, Server 111/h); globale Bremse jetzt gemeinsamer Abstand 180 s je Maschine statt 30 s je Aufruf.** Gezählt erklärt gemessen → Konstante falsch, nicht Täter → Journal Nachtrag 73
