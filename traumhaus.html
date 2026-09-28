@@ -12615,7 +12615,16 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
      solange der Startbildschirm steht, will jemand tippen (eng); sobald gespielt
      wird, soll die Welt schnell fertig werden (weit). */
   function grenze(){ var st=document.getElementById("start");
-    return (st && !st.classList.contains("hide")) ? 4 : (_ladeAlt?1e9:(window._ladeBreite||1e9)); } /* Runde 103: der Deckel NACH dem Start wird mit probe-ladenah gemessen (8 verdoppelte die Gesamtzeit: 56 → 112 s) — bis die Zahl steht, unbegrenzt wie zuvor; die Reihenfolge wirkt dann nur, solange der Startbildschirm steht */
+    return (st && !st.classList.contains("hide")) ? 4 : (_ladeAlt?1e9:(window._ladeBreite||32)); }
+  /* Runde 103, GEMESSEN mit probe-ladenah (Handy-Format, allein, 305 nahe Bauten in 120 m um den Start):
+       Deckel     nahe Haelfte | nah fertig | alles fertig
+       unbegrenzt (alt)  40 s  |   56 s     |   56 s      ← Reihenfolge wirkungslos: alle 379 Anfragen auf einmal
+       64                siehe Runbook Runde 103
+       32                31 s  |   51 s     |   71 s      ← gewaehlt: Umgebung 9 s frueher halb, 5 s frueher ganz
+       16                41 s  |   52 s     |   82 s
+        8                46 s  |   63 s     |  112 s      ← eng macht ALLES spaeter, auch das Nahe
+     Es gibt keine Zahl, die beides kann (gleiche Lehre wie beim Startbildschirm-Deckel oben): 32 kauft die
+     fruehe Umgebung mit 15 s spaeterem Weltende. */
   window._ladeStand={gefordert:0,fertig:0};
   function vorrang(url){return /th_(mann|frau|kind|baby)/.test(url);}
   function weiter(){ var m=grenze(); while(aktiv<m&&schlange.length){ var bi=0; if(!_ladeAlt)for(var q=1;q<schlange.length;q++)if(schlange[q].d<schlange[bi].d)bi=q;
