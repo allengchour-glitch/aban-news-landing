@@ -1528,3 +1528,56 @@ gid://shopify/Product/15493499191681	2026-09-28T17:11Z	schon-DRAFT	33.90	64.46	K
 gid://shopify/Product/15466920182145	2026-09-28T17:11Z	schon-DRAFT	20.90	51.27	Dach-Reparaturflicken, wasserdicht
 gid://shopify/Product/15485425123713	2026-09-28T17:11Z	schon-DRAFT	23.90	54.02	Wasserdichter Sofa-Schutzbezug
 gid://shopify/Product/15485336387969	2026-09-28T17:11Z	schon-DRAFT	17.90	47.77	Sofaüberwurf aus Nerzvelours mit Monstera-Muster
+gid://shopify/Product/15490893021569	2026-09-28T17:11Z	schon-DRAFT	16.90	46.52	Edelstahl Schneidebrett
+gid://shopify/Product/15465835266433	2026-09-28T17:11Z	schon-DRAFT	52.90	81.76	Pflanzenständer aus Schmiedeeisen
+gid://shopify/Product/15459597975937	2026-09-28T17:11Z	schon-DRAFT	15.90	44.72	Nicht rutschender Streifen-Sofabezug Winter
+gid://shopify/Product/15485336322433	2026-09-28T17:11Z	schon-DRAFT	37.90	66.47	Sofa-Schutzhülle aus wasserdichtem Teddyfleece
+gid://shopify/Product/15459786850689	2026-09-28T17:11Z	schon-DRAFT	29.90	60.88	Herren-Fischhosen, dick verstärkt
+gid://shopify/Product/15481692127617	2026-09-28T17:11Z	schon-DRAFT	56.90	85.22	Sternenlicht-Projektor für Galaxien-Ambiente
+gid://shopify/Product/15481878970753	2026-09-28T17:11Z	schon-DRAFT	28.90	56.99	Mobile Festplatte 500G
+gid://shopify/Product/15493278007681	2026-09-28T17:11Z	schon-DRAFT	41.90	69.80	Tragbare elektrische Poliermaschine
+gid://shopify/Product/15490909864321	2026-09-28T17:11Z	schon-DRAFT	17.90	45.71	HD 4K Quadrocopter Drohne
+gid://shopify/Product/15479532749185	2026-09-28T17:11Z	schon-DRAFT	17.90	45.56	120W Fast-Charging Power Bank mit Digitalanzeige
+gid://shopify/Product/15485336420737	2026-09-28T17:11Z	schon-DRAFT	14.90	42.51	Chenille Sofaüberzug – Rutschfest & Ganzjährig
+gid://shopify/Product/15480280449409	2026-09-28T17:11Z	schon-DRAFT	15.90	43.39	Autositzauflage für eine jahreszeitliche Nutzung
+gid://shopify/Product/15479397974401	2026-09-28T17:11Z	schon-DRAFT	15.90	42.63	Britische Winter-Boots mit dicker Sohle
+gid://shopify/Product/15459598893441	2026-09-28T17:11Z	schon-DRAFT	15.90	42.56	Französisches Cremedesign Angora-freier Kissenbezug
+gid://shopify/Product/15490616263041	2026-09-28T17:11Z	schon-DRAFT	15.90	42.24	Chenille-Sitzkissenbezug im minimalistischen Stil
+gid://shopify/Product/15462220562817	2026-09-28T17:11Z	schon-DRAFT	25.90	51.87	Teleskopsstock
+gid://shopify/Product/15470640693633	2026-09-28T17:11Z	schon-DRAFT	20.90	46.54	Sofa-Überzug aus Kunstleder, hochelastisch
+gid://shopify/Product/15488502825345	2026-09-28T17:11Z	schon-DRAFT	16.90	42.50	Hammer aus Karbonstahl, geschmiedet
+gid://shopify/Product/15493084742017	2026-09-28T17:11Z	schon-DRAFT	21.90	47.20	Schneidebrett aus Kiefernholz
+gid://shopify/Product/15492143743361	2026-09-28T17:11Z	schon-DRAFT	17.90	43.11	Einspritzdüse für Corolla
+gid://shopify/Product/15491392700801	2026-09-28T17:11Z	schon-DRAFT	21.90	46.86	Musselin Baumwolldecke 6-lagig
+gid://shopify/Product/15480462868865	2026-09-28T17:11Z	schon-DRAFT	20.90	45.41	2.5 Zoll SATA3 SSD für Desktop & Notebook
+gid://shopify/Product/15493276893569	2026-09-28T17:11Z	schon-DRAFT	33.90	57.98	Akku-Schlagschrauber 21V bürstenlos
+gid://shopify/Product/15485424927105	2026-09-28T17:11Z	schon-DRAFT	15.90	39.76	Rutschfester Chenille Sofabezug für jede Jahreszeit
+gid://shopify/Product/15468735234433	2026-09-28T17:11Z	schon-DRAFT	43.90	67.29	Kinder-Trolley mit Muster – 18 Zoll
+gid://shopify/Product/15479470653825	2026-09-28T17:11Z	schon-DRAFT	15.90	39.21	High-Speed TF Speicherkarte
+gid://shopify/Product/15459598041473	2026-09-28T17:11Z	schon-DRAFT	15.90	39.06	Universeller Rutschfester Sesselbezug Bingwen-Design
+gid://shopify/Product/15479375528321	2026-09-28T17:11Z	schon-DRAFT	27.90	51.06	Sitzerhöhung mit Lendenwirbelstütze
+gid://shopify/Product/15477534294401	2026-09-28T17:11Z	schon-DRAFT	15.90	38.87	Marmor-Bettwäsche-Set mit Goldfolien-Muster
+gid://shopify/Product/15493152244097	2026-09-28T17:11Z	schon-DRAFT	15.90	38.81	Elastischer Strick-Sofakissenbezug
+gid://shopify/Product/15458843328897	2026-09-28T17:11Z	schon-DRAFT	38.90	61.66	Allwetter-Bettdecke mit Quadratmuster
+gid://shopify/Product/15485336256897	2026-09-28T17:11Z	schon-DRAFT	15.90	38.60	Wasserfester Teddyfleece Sofa-Überzug
+gid://shopify/Product/15485539320193	2026-09-28T17:11Z	schon-DRAFT	41.90	64.31	Hochhitzebeständige Keramik-Kasserolle
+gid://shopify/Product/15485846225281	2026-09-28T17:11Z	schon-DRAFT	15.90	38.21	Chenille Anti-Rutsch Sofa-Schonbezug
+gid://shopify/Product/15458765963649	2026-09-28T17:11Z	schon-DRAFT	18.90	41.13	3D Wanduhr abstrakt
+gid://shopify/Product/15479631380865	2026-09-28T17:11Z	schon-DRAFT	23.90	45.88	Lithium-Ionen-Akku für Elektrowerkzeuge
+gid://shopify/Product/15462220693889	2026-09-28T17:11Z	schon-DRAFT	14.90	36.58	Kristall Kerzenhalter
+gid://shopify/Product/15485336748417	2026-09-28T17:11Z	schon-DRAFT	15.90	37.55	Chenille Sofa-Kissen
+gid://shopify/Product/15480463556993	2026-09-28T17:11Z	schon-DRAFT	23.90	45.43	SSD für Desktop & Laptop (SATA III, 2.5 Zoll)
+gid://shopify/Product/15463465648513	2026-09-28T17:11Z	schon-DRAFT	17.90	39.11	48-teiliges Besteckset aus Edelstahl
+gid://shopify/Product/15481842303361	2026-09-28T17:11Z	schon-DRAFT	15.90	37.09	Speicherkarte für Kamera
+gid://shopify/Product/15463782547841	2026-09-28T17:12Z	schon-DRAFT	34.90	56.00	Dreischichtige Titan-Bratpfanne, gehämmert
+gid://shopify/Product/15480840225153	2026-09-28T17:12Z	schon-DRAFT	20.90	41.91	Wasserdichter Laptop-Rucksack (Unisex)
+gid://shopify/Product/15484627812737	2026-09-28T17:12Z	schon-DRAFT	25.90	46.62	Faltbare, schnelltrocknende Tischmatte
+gid://shopify/Product/15493248352641	2026-09-28T17:12Z	schon-DRAFT	16.90	37.61	Japanische Keramik-Teeschale mit Blumenmuster
+gid://shopify/Product/15458845131137	2026-09-28T17:12Z	schon-DRAFT	15.90	36.57	Kissenbezüge in Gelb und Beige
+gid://shopify/Product/15458845229441	2026-09-28T17:12Z	schon-DRAFT	15.90	36.57	Velours-Kissen in minimalistischer Optik
+gid://shopify/Product/15459598664065	2026-09-28T17:12Z	schon-DRAFT	15.90	36.53	Schmutzresistenter Chenille-Polsterbezug
+gid://shopify/Product/15480139022721	2026-09-28T17:12Z	schon-DRAFT	15.90	36.52	Memory Foam Sitzkissen für schönes Gesäss
+gid://shopify/Product/15459598631297	2026-09-28T17:12Z	schon-DRAFT	15.90	36.36	Nordische Strickdecke mit Pompons
+gid://shopify/Product/15493276369281	2026-09-28T17:12Z	schon-DRAFT	16.90	37.21	Diamantstickerei Mutterliebe
+gid://shopify/Product/15481774768513	2026-09-28T17:12Z	schon-DRAFT	41.90	62.19	Smart Voice Recorder mit One-Key-Aufnahme
+gid://shopify/Product/15487526764929	2026-09-28T17:12Z	schon-DRAFT	26.90	47.17	Titan-Stieltopf, beschichtungsfrei
