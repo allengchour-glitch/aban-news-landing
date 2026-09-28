@@ -38469,3 +38469,5 @@ gid://shopify/Product/15493859705217	CHF 14.97	25 Varianten	V-Ausschnitt A-Linie
 gid://shopify/Product/15493859737985	CHF 68.82	1 Varianten	Kochlöffel- & Schöpflöffel-Set mit Palisandergriff
 gid://shopify/Product/15493859770753	CHF 6.86	1 Varianten	BB Cream Make-up Primer
 gid://shopify/Product/15493859803521	CHF 45.33	1 Varianten	Wäschekorb für Schrank & Regal, Himmelblau
+gid://shopify/Product/15493859836289	CHF 16.42	30 Varianten	Samtkleid mit V-Ausschnitt und Reissverschluss
+gid://shopify/Product/15493859869057	CHF 19.27	1 Varianten	Elektrischer Weinflaschenöffner mit Zubehör
