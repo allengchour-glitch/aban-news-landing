@@ -41109,3 +41109,9 @@ gid://shopify/Product/15492129063297	CHF 12.93	12 Varianten	Spicy Girl Kleid mit
 gid://shopify/Product/15492129096065	CHF 15.93	32 Varianten	Vintage Neckholder Satin Mermaid Abendkleid
 gid://shopify/Product/15492129128833	CHF 23.62	8 Varianten	Elegantes, paillettenbesticktes Schnürkleid
 gid://shopify/Product/15492129161601	CHF 22.92	16 Varianten	Pailletten-Minikleid mit Perlenstickerei
+gid://shopify/Product/15492129194369	CHF 14.56	25 Varianten	Rundhals-Kleid mit Rüschen und Leopardenmuster
+gid://shopify/Product/15492129227137	CHF 19.25	16 Varianten	Elegantes Maxi-Abendkleid mit Spaghettiträgern
+gid://shopify/Product/15492129259905	CHF 14.52	8 Varianten	Satin Spaghetti-Träger Maxi-Kleid mit V-Ausschnitt
+gid://shopify/Product/15492129292673	CHF 26.61	6 Varianten	Weite Denim Work Pants für Herren
+gid://shopify/Product/15492129325441	CHF 20.54	6 Varianten	Bootcut Jeans mit Digitaldruck für Herren
+gid://shopify/Product/15492129358209	CHF 20.38	6 Varianten	Herren Plissierte Wide-Leg Jeans
