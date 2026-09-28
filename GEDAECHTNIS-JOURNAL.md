@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🎞️ HyperFrames-Probe: Reel aus HTML statt ffmpeg-Overlay (Betreiber «ja», 21:20)
+- Quelle: TikTok @sebastiankauffmann «Claude 5 besten Plugins» — über `automation/browser/tiktok_video_lesen.mjs`
+  (Hetzner, ASR-Untertitel + Standbilder; Cloud blockt tiktok.com). Einordnung `dropship/LERNEN-TIKTOK-PLUGINS-2026-09-28.md`.
+- Probe: `automation/hyperframes/` (Vorlage + einrichten.sh). 6 Fassungen; Endstand Jury 9,33/9,17/9,33, Tor ✓.
+- **Lehren:** (1) Hook ab Bild 0 VOLL lesbar — wortweises Einblenden kostet das erste Bild. (2) Nur Bilder, die das
+  Caption-Versprechen belegen (Variante ohne Handy → Stimmigkeit 2). (3) Die Jury streut um ±2 Punkte → für Automatik
+  Mehrheit aus 3 Urteilen. (4) `/usr/local/bin/ffprobe` ist ein Ersatz — Werkzeuge, die ffprobe rufen, brauchen ein echtes.
+- Bericht: `dropship/HYPERFRAMES-PROBE-2026-09-28.md`. Motor noch nicht gebaut (Betreiber-Entscheid).
+
 ## 2026-09-28 · 🔧 Jury-Sperren reparieren statt wegwerfen (Betreiber «mehr verbessern», 20:50)
 - 32 Bildposts `jury-skip`, 28 aus der Kimi-Queue. Zwei reparierbare Klassen: BILD (englischer Lieferantentext auf dem
   gewählten Produktbild) und CAPTION (Kimi versprach Details, die das Bild nicht zeigt).
@@ -17177,3 +17186,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-24 · 🏷️ **Preisschutz FERTIG (227k Zeilen, 352 gesperrt) → wartende Posts warben mit alten Preisen (Karussell 28.90 bei live 55.90, Reel 14.90/25.90): `post_guard.preisVeraltet()` in allen Postern + täglicher Säuberer (4 markiert); Preis = Betrag mit Rappen, «ab CHF 50»-Schwelle nicht.** Preis beim Posten prüfen, nicht nur beim Bauen → Journal Nachtrag 77
 - 2026-09-25 · 💤 **Fortura-Bestand 30 h alt: Tageslauf starb 02:10 beim Container-Neustart ohne Fehlerzeile, Anspruch war vor dem Lauf gesetzt, `absturz_nachholen` sucht nur Traceback → `still_gestorben LOG` (letzte Schreibung vor Container-Start + keine FERTIG/PAUSE, ≤3×/Tag), NUR an Toren mit unbedingter Schlusszeile (Fortura, Wahlversprechen); 20 von 47 Tor-Logs ohne Schlusszeile, meist bedingtes FERTIG = kein Beweis.** Nachhol-Signal braucht Vertrag → Journal Nachtrag 84
 - 2026-09-25 · 🏆 **«weltklasse»: Halloween-Reihe stand auf Startseiten-Platz 17 von 25 (Rotation setzte Katalog, nie Position) → Regel 6: Saison-Reihe im Fenster direkt unter Herbst (live 17→5); «10 Dubletten in Halloween» waren längst DRAFT (Kollektion zählt Entwürfe), aktiv nur 1 SKU-Paar — mit FREMDER Variante (Falbala als 140 cm unter Hexen-Titel) → DRAFT + 301.** Saisonal = Inhalt UND Platz → Journal Nachtrag 83
+- 2026-09-25 · 🔫 **Waffen-Wächter prüfte seit Grind-Pause 1 Seite/Tag (SEIT 3 Tage, `/tmp/export.jsonl` ohne Text 0/49'892) → Wochen-Vollrunde live (498 S.): Feuerzeug in Pistolenform + Aufnahme-Stift aus Google-Kanal, 3 Fehltreffer gesperrt (MP5-Autoradio ×2, Seifenblasen-MP); Vollrunden-Stempel erst nach Exit 0 (auch Medizin).** «Wie viele Seiten sah der letzte Lauf?» → Journal Nachtrag 85

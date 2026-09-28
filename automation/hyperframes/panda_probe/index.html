@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Playfair"; src: url("assets/playfair-display-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      @font-face { font-family: "Inter"; src: url("assets/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+      @font-face { font-family: "Inter"; src: url("assets/inter-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #f3ece2; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Inter", sans-serif; color: #1d1a17; }
+      .bg { position: absolute; inset: -60px; background-size: cover; background-position: center; filter: blur(40px) saturate(0.9) brightness(1.08); opacity: 0.55; }
+      .kopf { position: absolute; top: 250px; left: 0; width: 1080px; text-align: center; z-index: 5; }
+      .kopf .marke { font-family: "Playfair", serif; font-weight: 800; font-size: 46px; letter-spacing: 0.32em; color: #1d1a17; }
+      .kopf .linie { width: 90px; height: 3px; background: #b8894a; margin: 14px auto 0; }
+      .karte { position: absolute; left: 50px; top: 540px; width: 980px; height: 880px; border-radius: 36px; overflow: hidden;
+               box-shadow: 0 30px 80px rgba(60, 40, 20, 0.28); background: #fff; z-index: 2; }
+      .karte img { position: absolute; left: 0; top: -20px; width: 980px; height: 1140px; object-fit: cover; object-position: center top; }
+      .hook { position: absolute; top: 340px; left: 60px; width: 960px; text-align: center; z-index: 6;
+              font-family: "Playfair", serif; font-weight: 800; font-size: 74px; line-height: 1.06; color: #1d1a17; }
+      .hook .gold { color: #a8742f; }
+      .unterstrich { position: absolute; left: 340px; top: 512px; width: 400px; height: 6px; background: #b8894a; border-radius: 3px; z-index: 6; transform-origin: left center; }
+      .hook span { display: inline-block; }
+      .chips { position: absolute; left: 50px; top: 1450px; width: 900px; z-index: 6; }
+      .chip { display: inline-block; margin: 0 12px 16px 0; padding: 18px 28px; border-radius: 999px; background: #1d1a17; color: #f7f1e8;
+              font-size: 40px; font-weight: 500; }
+      .preis { position: absolute; left: 50px; top: 1445px; width: 980px; height: 190px; border: 2px solid #b8894a; border-radius: 30px; background: #1d1a17; z-index: 7;
+               display: flex; align-items: center; justify-content: space-between; padding: 0 44px; }
+      .preis .name { color: #f7f1e8; font-size: 40px; font-weight: 800; line-height: 1.12; }
+      .preis .link { display: block; margin-top: 10px; color: #e0b774; font-size: 28px; font-weight: 500; }
+      .preis .chf { color: #e0b774; font-family: "Playfair", serif; font-weight: 800; font-size: 84px; white-space: nowrap; }
+      .cta { position: absolute; left: 0; top: 1660px; width: 1080px; text-align: center; z-index: 7; }
+      .cta .gross { font-size: 44px; font-weight: 800; color: #1d1a17; }
+      .cta .klein { margin-top: 12px; font-size: 30px; font-weight: 500; color: #5b5048; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1080" data-height="1920">
+      <div id="bg1" class="bg clip" data-start="0.0" data-duration="3.4" style="background-image:url(assets/p1.jpg)"></div>
+      <div id="bg2" class="bg clip" data-start="3.3" data-duration="3.4" style="background-image:url(assets/p3.jpg)"></div>
+      <div id="bg3" class="bg clip" data-start="6.6" data-duration="3.4" style="background-image:url(assets/p4.jpg)"></div>
+      <div id="kopf" class="kopf clip" data-start="0" data-duration="10"><div class="marke">LUXESTYLE</div><div class="linie"></div></div>
+      <div id="k1" class="karte clip" data-start="0.0" data-duration="3.4"><img id="i1" src="assets/p1.jpg" /></div>
+      <div id="k2" class="karte clip" data-start="3.3" data-duration="3.4"><img id="i2" src="assets/p3.jpg" /></div>
+      <div id="k3" class="karte clip" data-start="6.6" data-duration="3.4"><img id="i3" src="assets/p4.jpg" /></div>
+      <div id="hook" class="hook clip" data-start="0" data-duration="3.3">Dein Handy,<br />gehalten vom <span class="gold">Panda</span></div>
+      <div id="strich" class="unterstrich clip" data-start="0" data-duration="3.3"></div>
+      <div id="chips" class="chips clip" data-start="3.4" data-duration="3.2">
+        <span class="chip">📱 Hält dein Smartphone stabil</span>
+        <span class="chip">🐼 Deko &amp; Halter in einem</span>
+        <span class="chip">🎁 Tolle Geschenkidee</span>
+      </div>
+      <div id="preis" class="preis clip" data-start="6.8" data-duration="3.2"><div class="name">Panda Handyhalter<span class="link">luxestyle.ch · Link in Bio</span></div><div class="chf">CHF 14.90</div></div>
+      <div id="cta" class="cta clip" data-start="7.2" data-duration="2.8">
+        <div class="klein">Klarna &amp; TWINT · Gratis Versand ab CHF 50</div>
+      </div>
+
+      <audio id="musik" class="clip" src="assets/musik.wav" data-start="0" data-duration="10" data-media-start="41" data-volume="1" data-fade-out="0.8"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const S = [[0.0, 3.4], [3.3, 3.4], [6.6, 3.4]];
+      const rein = [{ y: 260 }, { x: 1100, rotate: 7 }, { y: 700 }];
+      S.forEach(([st, du], k) => {
+        const i = k + 1;
+        // Szene 1 steht ab Bild 0 voll im Bild (nur Zoom) — nie ein halbes erstes Bild
+        tl.fromTo("#k" + i, { opacity: k ? 0 : 1, x: 0, y: 0, rotate: 0, scale: 1, ...rein[k] },
+                           { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, duration: k ? 0.35 : 0.45, ease: "power3.out" }, st);
+        tl.fromTo("#i" + i, { scale: 1.05, x: k % 2 ? 50 : -50 }, { scale: 1.4, x: k % 2 ? -50 : 50, duration: du, ease: "none" }, st);
+        tl.fromTo("#bg" + i, { scale: 1.0, x: -60 }, { scale: 1.2, x: 60, duration: du, ease: "none" }, st);
+        if (k < S.length - 1) tl.to("#k" + i, { opacity: 0, scale: 0.92, duration: 0.2, ease: "power2.in" }, st + du - 0.2);
+      });
+      // Hook: ab Bild 0 vollständig lesbar, Bewegung über Skalierung + Goldstrich
+      tl.fromTo("#hook", { scale: 1.18 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 0);
+      tl.fromTo("#strich", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.25);
+      tl.to("#hook", { scale: 1.05, duration: 0.18, yoyo: true, repeat: 1 }, 1.2);
+      tl.to("#hook", { scale: 1.05, duration: 0.18, yoyo: true, repeat: 1 }, 2.2);
+      tl.to(["#hook", "#strich"], { y: -30, opacity: 0, duration: 0.25 }, 3.05);
+      tl.fromTo(".chip", { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, stagger: 0.8, ease: "back.out(1.8)" }, 3.5);
+      tl.to("#chips", { opacity: 0, duration: 0.25 }, 6.35);
+      tl.fromTo("#preis", { y: 260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, 6.8);
+      tl.fromTo(".preis .chf", { scale: 0.5 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, 7.0);
+      tl.fromTo("#cta", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" }, 7.2);
+      tl.to(".preis .chf", { scale: 1.1, duration: 0.22, yoyo: true, repeat: 3, ease: "sine.inOut" }, 8.6);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

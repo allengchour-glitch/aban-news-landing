@@ -1102,3 +1102,10 @@ gid://shopify/Product/15452677964161	nicht-versendbar	Duschkopf-Set
 gid://shopify/Product/15453540712833	ok	Katzenspielzeug
 gid://shopify/Product/15453794697601	ok	Einweg-Bettwäsche für Hunde
 gid://shopify/Product/15454471881089	nicht-versendbar	Intelligenter Ventilator mit Fernbedienung
+gid://shopify/Product/15468699779457	nicht-versendbar	PVC-Wellschlauch für Vakuum- und Lüftungssysteme
+gid://shopify/Product/15473434001793	nicht-versendbar	Multifunktionaler Plüsch-Sessel für Zuhause
+gid://shopify/Product/15477525905793	nicht-versendbar	Rollkoffer mit leisem 360°-Rädersystem
+gid://shopify/Product/15478612033921	nicht-versendbar	Faltbarer Angelstuhl im europäischen Stil
+gid://shopify/Product/15453779329409	nicht-versendbar	Kleiderständer mit Trockengitter
+gid://shopify/Product/15481799770497	nicht-versendbar	Outdoor Notstromaggregat 220V
+gid://shopify/Product/15487525716353	nicht-versendbar	Multifunktionales Abtropfgestell für Spülbecken
