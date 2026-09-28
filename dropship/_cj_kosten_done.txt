@@ -38771,3 +38771,5 @@ gid://shopify/Product/15493889524097	CHF 17.10	5 Varianten	Gerissene Camouflage 
 gid://shopify/Product/15493889556865	CHF 47.47	1 Varianten	Winterwarmes Katzen- und Hundebett
 gid://shopify/Product/15493889589633	CHF 7.21	1 Varianten	Gedrehtes Armband mit Zirkonia
 gid://shopify/Product/15493889655169	CHF 14.87	6 Varianten	Retro Tattered Denim Shorts für Herren
+gid://shopify/Product/15493889720705	CHF 30.15	1 Varianten	Beheizbare Decke für Haustiere
+gid://shopify/Product/15493889753473	CHF 14.55	1 Varianten	Multifunktionale elektrische Reinigungsbürste
