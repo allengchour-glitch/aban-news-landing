@@ -16,3 +16,9 @@
 **Vorschläge (Betreiber-Entscheid, grosse sichtbare Änderung):**
 1. Startseite straffen: 25 Sektionen, rund 12'000 px auf dem Handy. Kandidaten zum Ausblenden: pl_kinder, pl_senioren, pl_spass_gadgets, pl_wechsel_taschen, product_list_L3EDnA, pl_querbeet.
 2. Hauptmenü von 175 auf rund 40 Einträge kürzen (Hauptkategorien plus wenige Unterpunkte).
+
+## Umgesetzt 28.09. (Betreiber «1 aber halb so viel»)
+- Startseite: 3 Wechsel-Reihen ausgeblendet (`disabled`, nicht gelöscht): `pl_wechsel_taschen`, `product_list_L3EDnA`, `pl_querbeet`, also die drei untersten Produktreihen vor dem Vertrauensblock. 22 Abschnitte sichtbar statt 25.
+- Die Halloween-Reihe (`pl_kinder`) bleibt sichtbar.
+- `homepage_katalog_rotation.py` gibt ausgeblendeten Reihen keinen Katalog mehr. Sonst könnte ein Saison-Katalog (Weihnachten ab 15.10.) auf einer unsichtbaren Reihe landen. Der Selbsttest ist bestanden.
+- Backup der Live-Datei vor der Änderung liegt im Scratchpad. Zurück: `disabled` entfernen.

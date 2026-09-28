@@ -115,7 +115,9 @@ def umbauen(t, tag, sichtbar=None):
     # 3. Wechsel-Reihen
     fest_colls = {secs[k]["settings"].get("collection") for k in list(FEST) + list(sf) if k in secs}
     heute = [h for h in pool_heute(tag, sichtbar) if h not in fest_colls]
-    for k, h in zip([w for w in WECHSEL if w in secs and w not in sf], heute):
+    # 28.09.2026 (Betreiber «startseite kürzen, halb so viel»): ausgeblendete Reihen («disabled») bekommen keinen Katalog —
+    # sonst landete ein Saison-Katalog (Halloween, Weihnachten) auf einer unsichtbaren Reihe.
+    for k, h in zip([w for w in WECHSEL if w in secs and w not in sf and not secs[w].get("disabled")], heute):
         if secs[k]["settings"].get("collection") != h:
             notizen.append(f"{k}: {secs[k]['settings'].get('collection')} -> {h}")
             secs[k]["settings"]["collection"] = h
@@ -124,7 +126,7 @@ def umbauen(t, tag, sichtbar=None):
     #    Im Saisonfenster steht die Reihe mit dem Saison-Katalog direkt unter der Herbst-/Trend-Reihe.
     md = (tag.month, tag.day)
     for h in [h for h, von, bis in SAISON if von <= md <= bis][:1]:
-        k = next((w for w in WECHSEL if w in secs and secs[w]["settings"].get("collection") == h), None)
+        k = next((w for w in WECHSEL if w in secs and not secs[w].get("disabled") and secs[w]["settings"].get("collection") == h), None)
         anker = next((a for a in ("pl_herbst", "pl_trends") if a in t["order"] and a != k), None)
         if k and anker:
             rest = [x for x in t["order"] if x != k]
