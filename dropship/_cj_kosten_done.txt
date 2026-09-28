@@ -38857,3 +38857,8 @@ gid://shopify/Product/15493909905793	CHF 10.95	1 Varianten	Halskette mit natürl
 gid://shopify/Product/15493910069633	CHF 20.85	27 Varianten	Herren Casual Wildleder-Schuhe
 gid://shopify/Product/15493910102401	CHF 7.03	1 Varianten	Vliestapete mit Muster fürs Wohnzimmer
 gid://shopify/Product/15493910266241	CHF 8.11	1 Varianten	High-Gloss Trimming Plate Matte Nose Shadow
+gid://shopify/Product/15493910331777	CHF 18.60	1 Varianten	Doppelseitiger Kissenbezug aus Maulbeerseide
+gid://shopify/Product/15493910462849	CHF 21.93	39 Varianten	Sleeker Leder-Sneaker im Color-Blocking-Design
+gid://shopify/Product/15493910659457	CHF 16.45	1 Varianten	Rundes Nackenkissen aus Memory Foam
+gid://shopify/Product/15493910724993	CHF 16.35	1 Varianten	Lidschatten-Palette 99 Farben
+gid://shopify/Product/15493910823297	CHF 16.44	1 Varianten	Abstraktes Linienbild "Liebeslied" (horizontal)
