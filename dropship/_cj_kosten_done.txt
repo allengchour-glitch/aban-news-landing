@@ -37247,3 +37247,36 @@ gid://shopify/Product/15493258740097	CHF 11.32	1 Varianten	Schutzgehäuse für R
 gid://shopify/Product/15493258772865	CHF 138.30	1 Varianten	High-Speed Glasfaser-Netzwerkkabel
 gid://shopify/Product/15493258838401	CHF 15.95	1 Varianten	Air Rebuild Kit HP-80 Zubehör
 gid://shopify/Product/15493258936705	CHF 14.77	1 Varianten	Smarte Videotürklingel
+gid://shopify/Product/15493259002241	CHF 18.43	1 Varianten	Smarter Touch-Vorhangschalter
+gid://shopify/Product/15493259755905	CHF 8.34	1 Varianten	Holzplatte mit Mittelfinger-Design
+gid://shopify/Product/15493259821441	CHF 24.02	1 Varianten	Silikon-Frischhaltebeutel für Lebensmittel
+gid://shopify/Product/15493259854209	CHF 9.85	1 Varianten	Bambusschöpfer mit Griff
+gid://shopify/Product/15493259886977	CHF 31.23	1 Varianten	Pizza-Schaufel mit abnehmbarem Holzgriff
+gid://shopify/Product/15493259952513	CHF 24.31	1 Varianten	Elektrische Salz- und Pfeffermühle mit Ladestation
+gid://shopify/Product/15493259985281	CHF 7.18	1 Varianten	Aufsatzdüsen für Mundduschen, 6er-Set
+gid://shopify/Product/15493260050817	CHF 29.88	1 Varianten	Schneidebrett Akazienholz Schachbrettmuster
+gid://shopify/Product/15493260083585	CHF 25.14	1 Varianten	Tragbare Outdoor-Dusche
+gid://shopify/Product/15493260214657	CHF 15.39	1 Varianten	Tragbarer Eis-Crushing-Entsafter
+gid://shopify/Product/15493260247425	CHF 22.04	1 Varianten	Keramik Bad-Set: Lotion, Zahnbürstenhalter, Becher
+gid://shopify/Product/15493260345729	CHF 27.66	1 Varianten	Tragbares UV-Sterilisations-Nachtlicht mit Bewegun
+gid://shopify/Product/15493260378497	CHF 8.76	1 Varianten	Japanische Schürze, wasserabweisend
+gid://shopify/Product/15493260411265	CHF 29.70	1 Varianten	Sprudelbad für dein Smartphone
+gid://shopify/Product/15493276369281	CHF 37.21	1 Varianten	Diamantstickerei Mutterliebe
+gid://shopify/Product/15493276467585	CHF 32.43	1 Varianten	Regendichter Windschutz für E-Scooter & Töffli
+gid://shopify/Product/15493276565889	CHF 22.53	1 Varianten	Diamant Malerei
+gid://shopify/Product/15493276631425	CHF 69.91	2 Varianten	Kabelloser Handstaubsauger mit Lithium-Akku
+gid://shopify/Product/15493276762497	CHF 50.17	1 Varianten	5-teiliges Set Akku-Schlagschrauber
+gid://shopify/Product/15493276893569	CHF 57.98	1 Varianten	Akku-Schlagschrauber 21V bürstenlos
+gid://shopify/Product/15493277024641	CHF 73.13	1 Varianten	Tragbare elektrische Kaffeemaschine
+gid://shopify/Product/15493277254017	CHF 80.52	1 Varianten	Kabellose Heissluftpistole mit Temperaturkontrolle
+gid://shopify/Product/15493277352321	CHF 41.73	1 Varianten	Akku-Heissklebepistole Set 21V mit 50 Klebesticks
+gid://shopify/Product/15493277483393	CHF 86.63	1 Varianten	Elektrische Poliermaschine für Haushalt & Auto
+gid://shopify/Product/15493277647233	CHF 50.08	1 Varianten	Multifunktionaler Akku-Schrauber
+gid://shopify/Product/15493277745537	CHF 12.08	1 Varianten	Tragbarer USB Fusselrasierer
+gid://shopify/Product/15493278007681	CHF 69.80	1 Varianten	Tragbare elektrische Poliermaschine
+gid://shopify/Product/15493318640001	CHF 23.43	1 Varianten	Xbox One S X Netzteil
+gid://shopify/Product/15493318803841	CHF 19.19	1 Varianten	ZMI Purple Rice 10000 mAh Powerbank
+gid://shopify/Product/15493318934913	CHF 8.44	1 Varianten	3D Ice-Clear Blush Nägel
+gid://shopify/Product/15493319033217	CHF 7.11	1 Varianten	Wasserdichtes USB-Ladegerät für Fahrzeuge
+gid://shopify/Product/15493319197057	CHF 11.44	1 Varianten	Wasserdichtes Motorrad-Ladegerät mit Dual-USB
+gid://shopify/Product/15493319360897	CHF 21.94	1 Varianten	Solar Powerbank Tasche für Outdoor Handy-Ladung
