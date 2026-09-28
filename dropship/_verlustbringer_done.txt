@@ -1728,3 +1728,23 @@ gid://shopify/Product/15480463851905	2026-09-28T17:21Z	schon-DRAFT	14.90	22.94	A
 gid://shopify/Product/15491398467969	2026-09-28T17:21Z	kein-verlust-live	22.90	15.90	TF High-Speed Speicherkarte für Kameras
 gid://shopify/Product/15480281137537	2026-09-28T17:21Z	schon-DRAFT	15.90	23.87	HD 1080P Sport-DV-Kamera mit Nachtsicht
 gid://shopify/Product/15483934146945	2026-09-28T17:21Z	schon-DRAFT	14.90	22.80	Kuechenablage
+gid://shopify/Product/15479434248577	2026-09-28T17:21Z	schon-DRAFT	16.90	24.77	Acryl Staubschutzhülle & Controller-Halterung
+gid://shopify/Product/15479450698113	2026-09-28T17:21Z	schon-DRAFT	14.90	22.77	Roman Casual Sandalen aus weichem Leder
+gid://shopify/Product/15481608700289	2026-09-28T17:21Z	kein-verlust-live	16.90	24.69	Retro Slipper · Damen
+gid://shopify/Product/15481755599233	2026-09-28T17:21Z	kein-verlust-live	18.90	26.59	Leder-Sneaker für Herren
+gid://shopify/Product/15468735660417	2026-09-28T17:21Z	schon-DRAFT	15.90	23.40	Faltbarer Organizer mit 32 Fächern
+gid://shopify/Product/15481777521025	2026-09-28T17:21Z	schon-DRAFT	16.90	24.23	Kinderkissen für alle Jahreszeiten
+gid://shopify/Product/15485538599297	2026-09-28T17:21Z	kein-verlust-live	36.90	25.91	3-in-1 Antihaft-Frühstückspfanne
+gid://shopify/Product/15492087447937	2026-09-28T17:21Z	schon-DRAFT	16.90	23.89	Alu-Dreieckswinkel für präzises Holzhandwerk
+gid://shopify/Product/15484492677505	2026-09-28T17:21Z	schon-DRAFT	14.90	21.72	Isolierende Pool-Abdeckung
+gid://shopify/Product/15474494931329	2026-09-28T17:21Z	kein-verlust-live	34.90	24.61	Kissenbezug oder Kissen mit schwarzer Katze
+gid://shopify/Product/15468339102081	2026-09-28T17:21Z	schon-DRAFT	15.90	22.57	Wanddekor aus Strohgeflecht
+gid://shopify/Product/15491408167297	2026-09-28T17:21Z	schon-DRAFT	15.90	22.56	Vorhang „Amerikanischer Landhausstil“ mit Blumenmuster
+gid://shopify/Product/15483933852033	2026-09-28T17:21Z	kein-verlust-live	16.90	23.54	Schuhe für den Alltag
+gid://shopify/Product/15493276565889	2026-09-28T17:21Z	schon-DRAFT	15.90	22.53	Diamant Malerei
+gid://shopify/Product/15458723070337	2026-09-28T17:21Z	schon-DRAFT	16.90	23.34	Wandmontierter Handtuchhalter
+gid://shopify/Product/15459127656833	2026-09-28T17:21Z	kein-verlust-live	20.90	14.05	Weiches Hundehalsband aus PU
+gid://shopify/Product/15458844836225	2026-09-28T17:21Z	schon-DRAFT	15.90	21.93	Grüner Kissenbezug mit Polka-Dot-Muster
+gid://shopify/Product/15458765865345	2026-09-28T17:21Z	kein-verlust-live	32.90	22.92	Holz-Uhr
+gid://shopify/Product/15484613558657	2026-09-28T17:21Z	schon-DRAFT	14.90	20.92	Mikrofaser Badetuch, ultrafein & saugfähig
+gid://shopify/Product/15485425779073	2026-09-28T17:21Z	schon-DRAFT	15.90	21.88	Sofa-Kissen aus Eisseide
