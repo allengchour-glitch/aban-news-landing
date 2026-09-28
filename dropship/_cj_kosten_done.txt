@@ -39859,3 +39859,7 @@ gid://shopify/Product/15495106986369	CHF 13.19	1 Varianten	Futterspender-Kreisel
 gid://shopify/Product/15495107019137	CHF 9.45	1 Varianten	Wöchentliches Schwangerschaftstagebuch
 gid://shopify/Product/15495107084673	CHF 9.08	1 Varianten	Rotierender Katzen-Teaser Ball mit Licht & Sound
 gid://shopify/Product/15495107117441	CHF 5.29	1 Varianten	Silikon-Fingerhut für Senioren
+gid://shopify/Product/15495107150209	CHF 7.56	1 Varianten	Diamond Painting Wasserfall-Landschaft
+gid://shopify/Product/15495107182977	CHF 8.37	1 Varianten	Elektrische Spielzeugmaus für Katzen
+gid://shopify/Product/15495107215745	CHF 7.53	1 Varianten	Reinigungsset für digitale Hörgeräte
+gid://shopify/Product/15495107248513	CHF 9.97	1 Varianten	Leuchtendes Diamond Painting für Erwachsene
