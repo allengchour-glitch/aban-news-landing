@@ -26,14 +26,22 @@ git reset --hard "origin/$B" || exit 1
 python3 - "$S" <<'EOF'
 import os, sys
 snap = sys.argv[1]; mehr = 0
+import re
+# 28.09.2026: Zustandsdateien (EIN Wert: Zeiger/Position/Stand) sind keine Ledger — die Union hängte alte Zeiger an den
+# neuen (Datei ohne Zeilenende → «eyJ…=eyJ…=eyJ…=», 3 Zeiger in _cj_kosten_cursor/_google_size_cursor, 2 in _textbild_cursor)
+# Gemessen: Shopify nimmt den verklebten Zeiger an, liest aber nur den ERSTEN — stand bisher immer der neueste vorne (Union
+# hängt hinten an), also kein Verlust; die Datei wuchs aber je Restore, und ein alter Zeiger vorne setzt den Lauf still
+# zurück. Diese Dateien behalten die origin-Fassung.
+ZUSTAND = re.compile(r"cursor|zeiger|_pos\.txt$|_stand\.txt$", re.I)
 for f in os.listdir(snap):
     repo = os.path.join("dropship", f)
-    if not os.path.exists(repo): continue
+    if not os.path.exists(repo) or ZUSTAND.search(f): continue
     have = set(open(repo, errors="ignore").read().splitlines())
     neu = [l for l in open(os.path.join(snap, f), errors="ignore").read().splitlines()
            if l.strip() and l not in have and "cj-ohne-antwort" not in l]
     if neu:
-        with open(repo, "a") as out: out.write("\n".join(neu) + "\n")
+        roh = open(repo, errors="ignore").read()
+        with open(repo, "a") as out: out.write(("" if not roh or roh.endswith("\n") else "\n") + "\n".join(neu) + "\n")
         mehr += len(neu); print(f, "+", len(neu))
 print("union:", mehr)
 EOF
