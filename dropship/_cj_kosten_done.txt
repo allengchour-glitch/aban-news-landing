@@ -40032,3 +40032,7 @@ gid://shopify/Product/15495116554625	CHF 16.73	1 Varianten	Mountainbike-Sattel m
 gid://shopify/Product/15495116587393	CHF 21.15	4 Varianten	Elegantes A-Linien Kleid mit Schnürung
 gid://shopify/Product/15495116620161	CHF 11.93	1 Varianten	Yunmi Kühlschrank Geruchsfilter Kräuter
 gid://shopify/Product/15495116652929	CHF 14.00	1 Varianten	10-teiliges Make-up Pinselset
+gid://shopify/Product/15495116718465	CHF 14.30	4 Varianten	Tailliertes Strickkleid mit Schlitz
+gid://shopify/Product/15495116751233	CHF 15.35	1 Varianten	Make-up Pinselset mit Holzgriff
+gid://shopify/Product/15495116784001	CHF 8.10	1 Varianten	Pinselset für präzises Make-up (Elefant)
+gid://shopify/Product/15495116816769	CHF 19.08	4 Varianten	Colorblock V-Neck Strickkleid mit Schnürung
