@@ -1069,3 +1069,8 @@ gid://shopify/Product/15493083922817	ok	Schichtdickenmessgerät für Lack
 gid://shopify/Product/15448942117249	nicht-versendbar	Erhöhtes Hundebett mit Sonnendach
 gid://shopify/Product/15449496453505	nicht-versendbar	Erhöhter Hundenapf · 2 Edelstahl-Näpfe im Eisenrahmen
 gid://shopify/Product/15449126437249	nicht-versendbar	Hunde-WC mit Kunstrasen für Welpentraining
+gid://shopify/Product/15478430761345	nicht-versendbar	Smarter Deckenventilator mit RGB-Licht
+gid://shopify/Product/15454271144321	ok	Intelligentes Türschloss mit Gesichtserkennung
+gid://shopify/Product/15477929410945	ok	Mid-Century Deckenleuchte für Wohn- & Schlafzimmer
+gid://shopify/Product/15453898670465	ok	Leichtes Reisegepäck
+gid://shopify/Product/15454079648129	ok	Katzentreppe mit Nest
