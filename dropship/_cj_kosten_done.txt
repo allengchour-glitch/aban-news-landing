@@ -40545,3 +40545,4 @@ gid://shopify/Product/15495190348161	CHF 23.11	1 Varianten	Elektrischer Glättb�
 gid://shopify/Product/15495190380929	CHF 27.66	28 Varianten	Gestreifte Tweed-Schuhe mit Klettverschluss
 gid://shopify/Product/15495190446465	CHF 7.51	1 Varianten	Mehrreihiges silbernes Perlenarmband
 gid://shopify/Product/15495190479233	CHF 15.92	1 Varianten	Profi 2-in-1 Glätteisen & Lockenstab mit Ionen-Tec
+gid://shopify/Product/15495190512001	CHF 54.94	16 Varianten	Warme Damen-Schuhe mit Klettverschluss
