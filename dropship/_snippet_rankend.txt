@@ -4261,3 +4261,10 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15448953520513	Dieser Helm ist der ideale Begleiter für alle Outdoor-Abenteuer wie Klettern, Höhlenforschung und Bergsteigen.
 15448953684353	Dieser Kinderhelm bietet optimalen Schutz beim Velofahren, Skaten oder Rollerfahren. Verstellbare Grösse für Kinder von 3 bis 10 Jahren.
 15448953782657	Dieser vielseitige Fahrradhelm ist ideal für erwachsene Damen und Herren, die sowohl auf Bergstrassen als auch auf Autobahnen sicher unterwegs sein …
+15448953815425	Dieser vielseitige Helm ist ideal für diverse Outdoor-Aktivitäten, von Bergstrassen bis zu Autobahnen. Verstellbare Grösse (52-62 cm Kopfumfang).
+15448953880961	Der Plum Scooter Helm ist ideal für Kinder, Jugendliche und Erwachsene, die Wert auf Sicherheit und Stil legen.
+15448954110337	Dieser Halbschalenhelm im Retro-Stil bietet Sicherheit und Komfort für deine Fahrten mit dem E-Motorrad. Einheitsgrösse für Kopfumfang 55-62 cm.
+15448954470785	Dieser Kinder Velohelm schützt die Kleinsten bei ihren Abenteuern. Erhältlich in zwei Grössen für Kinder von 1-8 Jahren.
+15448954536321	Dieser Velohelm ist ideal für Pendler und alle, die auch bei kühleren Temperaturen nicht auf ihr E-Bike verzichten möchten.
+15448954569089	Diese Velo-Sturmhaube aus kühlendem Eisseiden-Gewebe schützt dein Gesicht und deinen Hals optimal vor Sonne und Wind während der Fahrt.
+15448954667393	Dieser vielseitige Ganzjahres-Elektromotorradhelm ist ideal für Pendler und bietet Komfort sowie Schutz in jeder Saison.
