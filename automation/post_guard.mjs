@@ -274,3 +274,18 @@ export function montagePruefen(videoUrl) {
   const z = ((r.stdout || '') + (r.stderr || '')).trim().split('\n').pop() || '';
   return { ok: r.status === 0, grund: z.slice(0, 200), quelle: q };
 }
+
+// 28.09.2026 (Betreiber «mache jede post ein meisterwerk in sozial media, jetzt hast du gemini» / «vision ai»):
+// Gemini-Vision-Jury VOR jedem Post — sieht, was kein Zähler sieht (falscher Hook, Fremdtext, winziges Produkt, billige Wirkung).
+// status 0 = Meisterwerk, 4 = durchgefallen (Zeile als jury-skip markieren), 2 = kein Urteil (diesen Lauf überspringen, später neu).
+// JURY=0 schaltet sie ab (nur für Notfälle). Kalibrierung + Warteschlangen-Messung: dropship/GEMINI-JURY-2026-09-28.md.
+export function juryPruefen(quelle, caption, typ = 'reel') {
+  if (process.env.JURY === '0') return { status: 0, info: 'Jury aus (JURY=0)' };
+  const r = spawnSync('python3', ['automation/gemini_jury.py', quelle, '--caption', String(caption || ''), '--typ', typ],
+    { encoding: 'utf8', timeout: 400000 });
+  const z = ((r.stdout || '').trim().split('\n').pop() || '');
+  let v = {}; try { v = JSON.parse(z); } catch {}
+  const info = v.schnitt != null ? `Note ${v.schnitt}${(v.ko || []).length ? ' K.o. ' + v.ko.join(',') : ''} — ${String(v.gruende || '').slice(0, 160)}`
+    : String(v.grund || z).slice(0, 200);
+  return { status: r.status === 0 ? 0 : (r.status === 4 ? 4 : 2), info };
+}
