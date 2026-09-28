@@ -38534,3 +38534,8 @@ gid://shopify/Product/15493863080321	CHF 12.38	9 Varianten	Sportlicher Herren Ho
 gid://shopify/Product/15493863113089	CHF 6.88	1 Varianten	Retro-Armband mit ovalen Goldperlen
 gid://shopify/Product/15493863145857	CHF 48.52	1 Varianten	Tatami-Rückenkissen für Senioren
 gid://shopify/Product/15493863178625	CHF 50.88	1 Varianten	Iron Man QI Wireless Charger Stand
+gid://shopify/Product/15493863211393	CHF 19.41	30 Varianten	Thermisches Outdoor-Kapuzenhoodie für Herren
+gid://shopify/Product/15493863244161	CHF 10.00	1 Varianten	Vergoldetes Edelstahlarmband
+gid://shopify/Product/15493863276929	CHF 9.36	1 Varianten	Weihnachts-Kissenbezug mit Stickerei
+gid://shopify/Product/15493863309697	CHF 17.96	20 Varianten	Sportlicher Freizeit-Hoodie für Herren
+gid://shopify/Product/15493863342465	CHF 10.36	1 Varianten	USB-C Hub mit Kartenleser und Power Delivery
