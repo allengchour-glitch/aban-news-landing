@@ -1064,3 +1064,8 @@ gid://shopify/Product/15448941855105	nicht-versendbar	Hundebett mit Blachen-Sonn
 gid://shopify/Product/15448940773761	nicht-versendbar	360° drehbares Katzenbett für den Schreibtisch
 gid://shopify/Product/15480563564929	ok	Supernieren-Richtmikrofon
 gid://shopify/Product/15455516885377	ok	Faltbarer Katzenkäfig mit Isolierung
+gid://shopify/Product/15481681936769	ok	Drahtloses Ansteckmikrofon Little Bee
+gid://shopify/Product/15493083922817	ok	Schichtdickenmessgerät für Lack
+gid://shopify/Product/15448942117249	nicht-versendbar	Erhöhtes Hundebett mit Sonnendach
+gid://shopify/Product/15449496453505	nicht-versendbar	Erhöhter Hundenapf · 2 Edelstahl-Näpfe im Eisenrahmen
+gid://shopify/Product/15449126437249	nicht-versendbar	Hunde-WC mit Kunstrasen für Welpentraining

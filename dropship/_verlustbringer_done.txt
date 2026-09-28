@@ -1414,3 +1414,117 @@ gid://shopify/Product/15455759499649	2026-09-25T07:16Z	kein-verlust-live	15.90	1
 gid://shopify/Product/15455513608577	2026-09-25T07:16Z	draft	15.90	21.97	Handgefertigte Farbenfrohe Bürsten-Decke
 gid://shopify/Product/15454501437825	2026-09-25T07:16Z	draft	14.90	20.71	Reflektierendes Band
 gid://shopify/Product/15455520719233	2026-09-25T07:16Z	draft	14.90	20.67	Glas-Topf mit 2-fach Griff
+gid://shopify/Product/15491384934785	2026-09-28T17:09Z	schon-DRAFT	66.90	1323.71	Mozanit Tennisarmband
+gid://shopify/Product/15458984198529	2026-09-28T17:09Z	schon-DRAFT	32.90	1113.88	4K HD Hubschrauber für professionelle Luftfotografie
+gid://shopify/Product/15465857712513	2026-09-28T17:09Z	schon-DRAFT	95.90	1103.72	Kupferne Aussenleuchte im europäischen Stil
+gid://shopify/Product/15493084807553	2026-09-28T17:09Z	schon-DRAFT	146.90	612.54	Japanischer Bonsai-Topf aus Yixing-Ton
+gid://shopify/Product/15468316787073	2026-09-28T17:09Z	schon-DRAFT	55.90	479.05	Reisegepäck
+gid://shopify/Product/15479469900161	2026-09-28T17:09Z	schon-DRAFT	28.90	287.85	M.2 NVMe SSD 128 GB für Laptop & Desktop
+gid://shopify/Product/15459598991745	2026-09-28T17:09Z	schon-DRAFT	14.90	235.01	Geometrischer Teppich für Wohnen & Schlafen – Modern
+gid://shopify/Product/15468337987969	2026-09-28T17:09Z	schon-DRAFT	18.90	220.09	Baumwoll-Decke mit Streifen-Muster
+gid://shopify/Product/15468338282881	2026-09-28T17:09Z	schon-DRAFT	18.90	220.09	Handgewobene Wolldecke
+gid://shopify/Product/15468699189633	2026-09-28T17:09Z	schon-DRAFT	30.90	231.16	Bronze Adler Figur – Symbol grosser Ambitionen
+gid://shopify/Product/15479470981505	2026-09-28T17:09Z	schon-DRAFT	18.90	213.74	DDR4 Notebook Arbeitsspeicher
+gid://shopify/Product/15491071705473	2026-09-28T17:09Z	schon-DRAFT	28.90	204.33	Grosser Aufbewahrungsbox
+gid://shopify/Product/15458986819969	2026-09-28T17:09Z	schon-DRAFT	64.90	233.91	Kamera-Drohne mit 3-Achsen-Gimbal
+gid://shopify/Product/15485845307777	2026-09-28T17:09Z	schon-DRAFT	24.90	168.76	Schmutzfangmatte Rutschfest & Waschbar
+gid://shopify/Product/15480409686401	2026-09-28T17:09Z	schon-DRAFT	152.90	282.06	Wasserdichter Outdoor-Lautsprecher im Stein-Design
+gid://shopify/Product/15462220726657	2026-09-28T17:09Z	schon-DRAFT	45.90	167.77	Titan-Kochgeschirr-Set
+gid://shopify/Product/15481815990657	2026-09-28T17:09Z	schon-DRAFT	15.90	127.87	High-Speed Speicherkarte
+gid://shopify/Product/15479625777537	2026-09-28T17:09Z	schon-DRAFT	94.90	199.50	Ganzjahres-Leder-Sitzkissen Universal
+gid://shopify/Product/15493258772865	2026-09-28T17:09Z	schon-DRAFT	37.90	138.30	High-Speed Glasfaser-Netzwerkkabel
+gid://shopify/Product/15480274157953	2026-09-28T17:09Z	schon-DRAFT	15.90	110.98	Smartphone 12
+gid://shopify/Product/15478568845697	2026-09-28T17:09Z	schon-DRAFT	15.90	111.18	3D gedrucktes Halbporträt für Dekorationen
+gid://shopify/Product/15491902931329	2026-09-28T17:10Z	schon-DRAFT	76.90	169.55	London Bus 3D Puzzle
+gid://shopify/Product/15459806282113	2026-09-28T17:10Z	schon-DRAFT	79.90	171.91	Tennis-Kettchen · Damen
+gid://shopify/Product/15479470096769	2026-09-28T17:10Z	schon-DRAFT	48.90	135.68	Phantom Butterfly SSD 128GB/512GB SATA3.0
+gid://shopify/Product/15479849910657	2026-09-28T17:10Z	schon-DRAFT	19.90	104.91	Externe SSD für Desktop & Notebook
+gid://shopify/Product/15484908765569	2026-09-28T17:10Z	schon-DRAFT	15.90	100.61	Wabi-Sabi Cave Stein-Set (7-teilig)
+gid://shopify/Product/15466877092225	2026-09-28T17:10Z	schon-DRAFT	27.90	112.48	Wandkunst für Eingänge
+gid://shopify/Product/15458575614337	2026-09-28T17:10Z	schon-DRAFT	60.90	144.66	Minimal-Kronleuchter
+gid://shopify/Product/15458756067713	2026-09-28T17:10Z	schon-DRAFT	52.90	136.51	Dreieckige Wandpendeluhr mit zwei Flügeln
+gid://shopify/Product/15480343495041	2026-09-28T17:10Z	schon-DRAFT	15.90	99.03	4-in-1 Multi-Device USB Stick
+gid://shopify/Product/15461980569985	2026-09-28T17:10Z	schon-DRAFT	19.90	102.31	Wiederverwendbare Eiswürfel für den Sommer
+gid://shopify/Product/15480460968321	2026-09-28T17:10Z	schon-DRAFT	19.90	99.59	N500S Ultra Light SSD (60 GB - 960 GB)
+gid://shopify/Product/15465842573697	2026-09-28T17:10Z	schon-DRAFT	95.90	173.55	Grobgewobene Strickdecke aus Chenille-Garn
+gid://shopify/Product/15480948261249	2026-09-28T17:10Z	schon-DRAFT	55.90	128.90	Bluetooth Intercom Headset für Velohelme
+gid://shopify/Product/15479468523905	2026-09-28T17:10Z	schon-DRAFT	42.90	115.11	SATA3 Laptop SSD-Festplatte
+gid://shopify/Product/15480653414785	2026-09-28T17:10Z	schon-DRAFT	20.90	91.37	Lexar 1066x microSD Speicherkarte für 4K UHD
+gid://shopify/Product/15458845294977	2026-09-28T17:10Z	schon-DRAFT	77.90	148.29	Sommerdukk fürs Bett
+gid://shopify/Product/15493088641409	2026-09-28T17:10Z	schon-DRAFT	36.90	106.57	Runder Jute Teppich für Wohnzimmer
+gid://shopify/Product/15468759744897	2026-09-28T17:10Z	schon-DRAFT	28.90	95.75	Retro Bauhaus Glaslampe
+gid://shopify/Product/15479340630401	2026-09-28T17:10Z	schon-DRAFT	15.90	81.88	Weiches Autositzkissen
+gid://shopify/Product/15478613279105	2026-09-28T17:10Z	schon-DRAFT	14.90	80.14	Wasserdichter Sofaüberwurf im minimalistischen Stil
+gid://shopify/Product/15458625552769	2026-09-28T17:10Z	schon-DRAFT	67.90	131.46	Mehrschichtiger Edelstahl-Dampftopf
+gid://shopify/Product/15493141430657	2026-09-28T17:10Z	schon-DRAFT	15.90	79.27	5D Diamond Painting «Edle Pfingstrose»
+gid://shopify/Product/15458624536961	2026-09-28T17:10Z	schon-DRAFT	92.90	155.08	Gewichtsjacke mit Kaltliege-Effekt
+gid://shopify/Product/15480268128641	2026-09-28T17:10Z	schon-DRAFT	68.90	129.39	Wildkamera mit Fernzugriff und Nachtsicht
+gid://shopify/Product/15481254838657	2026-09-28T17:10Z	schon-DRAFT	22.90	82.80	Ersatz-Lithium-Akku für Elektro-Handbohrer
+gid://shopify/Product/15493152407937	2026-09-28T17:10Z	schon-DRAFT	42.90	102.64	Seidenähnliches Zierkissen mit Hundemotiv
+gid://shopify/Product/15479420846465	2026-09-28T17:10Z	schon-DRAFT	15.90	75.46	Kabelloses Bluetooth KTV Mikrofon-Set
+gid://shopify/Product/15484498280833	2026-09-28T17:10Z	schon-DRAFT	72.90	131.32	Gas-Druckkochtopf aus Edelstahl
+gid://shopify/Product/15493190189441	2026-09-28T17:10Z	schon-DRAFT	38.90	97.20	Aufblasbare Outdoor-Campingmatte
+gid://shopify/Product/15463465484673	2026-09-28T17:10Z	schon-DRAFT	20.90	76.06	Wasserabsorbierende Matte
+gid://shopify/Product/15472047751553	2026-09-28T17:10Z	schon-DRAFT	54.90	108.90	Künstliche Weihnachtsbaum-Dekoration
+gid://shopify/Product/15484486091137	2026-09-28T17:10Z	schon-DRAFT	53.90	107.63	Katzenvilla
+gid://shopify/Product/15484425437569	2026-09-28T17:10Z	schon-DRAFT	14.90	68.23	Bettwäsche-Set aus Baumwolle, gestreift
+gid://shopify/Product/15476168065409	2026-09-28T17:10Z	schon-DRAFT	52.90	105.67	Weiches Baumwoll-Badetuch, 4er- oder 8er-Set
+gid://shopify/Product/15492520083841	2026-09-28T17:10Z	schon-DRAFT	21.90	73.56	Wasserfilterbeutel 6L
+gid://shopify/Product/15460660281729	2026-09-28T17:10Z	schon-DRAFT	18.90	70.18	HD 4K Kamera-Drohne mit langer Akkulaufzeit
+gid://shopify/Product/15459283009921	2026-09-28T17:10Z	schon-DRAFT	22.90	73.58	Schneidebrett-Set mit Stand
+gid://shopify/Product/15479470719361	2026-09-28T17:10Z	schon-DRAFT	21.90	72.49	Thunder 2.5 Zoll SATA SSD
+gid://shopify/Product/15484500181377	2026-09-28T17:10Z	schon-DRAFT	47.90	98.39	Retro Wandregal aus Massivholz
+gid://shopify/Product/15493119672705	2026-09-28T17:10Z	schon-DRAFT	51.90	101.70	3D Würfel Dartscheibe
+gid://shopify/Product/15459531522433	2026-09-28T17:10Z	schon-DRAFT	15.90	65.51	Staubabdeckung Austauschwerkzeug Einbau-Kit
+gid://shopify/Product/15458847064449	2026-09-28T17:10Z	schon-DRAFT	20.90	69.48	Chenille-Sofauhrenbezug, hautfreundlich, katzenfreundlich, a
+gid://shopify/Product/15485425287553	2026-09-28T17:10Z	schon-DRAFT	25.90	74.40	Sofa-Überwurf Rutschfest Gestreift
+gid://shopify/Product/15485044720001	2026-09-28T17:10Z	schon-DRAFT	15.90	61.59	Whiskeyglas Krake
+gid://shopify/Product/15464043118977	2026-09-28T17:10Z	schon-DRAFT	15.90	61.41	Sonnensegel für Garten, Camping & Pool
+gid://shopify/Product/15480284152193	2026-09-28T17:10Z	schon-DRAFT	52.90	97.63	Elektrische Dampflokomotive für Kinder
+gid://shopify/Product/15477422752129	2026-09-28T17:10Z	schon-DRAFT	28.90	73.28	Faltbarer Staubdichter Aufbewahrungsschrank
+gid://shopify/Product/15484612772225	2026-09-28T17:10Z	schon-DRAFT	50.90	95.02	Kuschelige, wärmende Decke
+gid://shopify/Product/15468316950913	2026-09-28T17:10Z	schon-DRAFT	61.90	105.22	20 Zoll Boarding Koffer
+gid://shopify/Product/15458845557121	2026-09-28T17:10Z	schon-DRAFT	41.90	85.08	Warme Doppel-Lagen Coral-Fleece-Decke
+gid://shopify/Product/15486744789377	2026-09-28T17:10Z	schon-DRAFT	16.90	59.97	Chenille Sofaüberzug – rutschfest & vielseitig
+gid://shopify/Product/15478169665921	2026-09-28T17:10Z	schon-DRAFT	14.90	57.83	Offroad-Strecken Teppich für Kinderzimmer
+gid://shopify/Product/15493090476417	2026-09-28T17:10Z	schon-DRAFT	14.90	57.24	Kupfer-Steckverbinder mit Nasendraht
+gid://shopify/Product/15481841484161	2026-09-28T17:10Z	schon-DRAFT	62.90	105.01	HD-Sportkamera mit Aufnahmefunktion
+gid://shopify/Product/15485425254785	2026-09-28T17:10Z	schon-DRAFT	22.90	63.35	Wasserfester Sofaüberzug aus Fuzzy-Garn
+gid://shopify/Product/15462799573377	2026-09-28T17:10Z	schon-DRAFT	65.90	105.37	Handbemalte Keramikvase im Antik-Stil
+gid://shopify/Product/15479470784897	2026-09-28T17:10Z	schon-DRAFT	26.90	66.18	Holz-Lernspielzeug
+gid://shopify/Product/15479468392833	2026-09-28T17:10Z	schon-DRAFT	14.90	54.10	512GB SATA SSD für Laptops und Desktops
+gid://shopify/Product/15481816088961	2026-09-28T17:10Z	schon-DRAFT	14.90	54.03	3-in-1 Metall USB-Stick
+gid://shopify/Product/15476674068865	2026-09-28T17:10Z	schon-DRAFT	51.90	90.82	Sonnenblenden-Vorhang
+gid://shopify/Product/15485336519041	2026-09-28T17:10Z	schon-DRAFT	33.90	72.55	Katzenfreundlicher Sofa-Überzug gestreift
+gid://shopify/Product/15480480956801	2026-09-28T17:10Z	schon-DRAFT	18.90	57.24	TF Speicherkarte für Recorder & Überwachung
+gid://shopify/Product/15485735403905	2026-09-28T17:10Z	schon-DRAFT	14.90	53.24	Faltbare Kleiderschrank-Aufbewahrungsbox, ausziehbar
+gid://shopify/Product/15484488384897	2026-09-28T17:10Z	schon-DRAFT	64.90	103.19	Katzenbaum mit drehbarer Plattform
+gid://shopify/Product/15478824862081	2026-09-28T17:10Z	schon-DRAFT	15.90	53.38	Fixer Anti-Rutsch Sofaüberwurf aus Chenille
+gid://shopify/Product/15481776537985	2026-09-28T17:10Z	schon-DRAFT	36.90	73.85	Wasserdichte Solar Powerbank mit LED
+gid://shopify/Product/15493090541953	2026-09-28T17:10Z	schon-DRAFT	62.90	99.60	Lammwoll-Baumwoll-Duvet, doppelseitig, extra warm
+gid://shopify/Product/15485425516929	2026-09-28T17:10Z	schon-DRAFT	15.90	52.27	Rutschfester Stretch-Sofabezug – All-inclusive
+gid://shopify/Product/15484713468289	2026-09-28T17:11Z	schon-DRAFT	29.90	66.18	4-in-1 OTG USB Stick für iPhone & Android
+gid://shopify/Product/15481776275841	2026-09-28T17:11Z	schon-DRAFT	34.90	70.52	RC Dinosaurier – Laufendes Spielzeug mit Sound
+gid://shopify/Product/15458647048577	2026-09-28T17:11Z	schon-DRAFT	39.90	75.31	Geschirr-Set mit Löffeln
+gid://shopify/Product/15468318065025	2026-09-28T17:11Z	schon-DRAFT	25.90	61.19	Hunde-Tragetasche für kleine Hunde
+gid://shopify/Product/15478714663297	2026-09-28T17:11Z	schon-DRAFT	15.90	51.15	Aufblasbarer Hunde-Herding-Ball
+gid://shopify/Product/15468735562113	2026-09-28T17:11Z	schon-DRAFT	20.90	55.83	Faltbare Reisetasche mit grosser Kapazität
+gid://shopify/Product/15484607758721	2026-09-28T17:11Z	schon-DRAFT	20.90	55.67	Hochwertige Crossbody Bag aus Rindsleder
+gid://shopify/Product/15491887235457	2026-09-28T17:11Z	schon-DRAFT	15.90	50.39	Sitzheizkissen fürs Auto
+gid://shopify/Product/15460761403777	2026-09-28T17:11Z	schon-DRAFT	29.90	63.84	Keramikschale flach – diverse Designs
+gid://shopify/Product/15480462213505	2026-09-28T17:11Z	schon-DRAFT	18.90	52.61	SSD Patch SATA3 Notebook Desktop
+gid://shopify/Product/15491591143809	2026-09-28T17:11Z	schon-DRAFT	38.90	72.36	Meditationskissen
+gid://shopify/Product/15477534622081	2026-09-28T17:11Z	schon-DRAFT	21.90	55.28	Kuschelige Decke mit Muster
+gid://shopify/Product/15479416881537	2026-09-28T17:11Z	schon-DRAFT	49.90	83.20	Akku-Hochdruckreiniger für Auto & Haus
+gid://shopify/Product/15466071163265	2026-09-28T17:11Z	schon-DRAFT	32.90	65.91	Wasserdichtes Dichtungsband für Dach & Wand
+gid://shopify/Product/15492131717505	2026-09-28T17:11Z	schon-DRAFT	17.90	50.62	Klassische Moissanit Ohrstecker (S925 Silber)
+gid://shopify/Product/15490893283713	2026-09-28T17:11Z	schon-DRAFT	15.90	48.58	Elektrischer Fleischwolf aus Edelstahl
+gid://shopify/Product/15478613410177	2026-09-28T17:11Z	schon-DRAFT	14.90	47.09	Insektenschutz-Türvorhang für Schlafzimmer
+gid://shopify/Product/15480140792193	2026-09-28T17:11Z	schon-DRAFT	27.90	59.64	Tragbare, stossfeste USB 3.0 Festplatte
+gid://shopify/Product/15467039818113	2026-09-28T17:11Z	schon-DRAFT	29.90	61.08	Chenille Kissenbezug mit Fischgrätmuster · 4 Stück
+gid://shopify/Product/15459597812097	2026-09-28T17:11Z	schon-DRAFT	15.90	47.04	Universeller geradliniger rutschfester Sofaüberzug
+gid://shopify/Product/15466023616897	2026-09-28T17:11Z	schon-DRAFT	20.90	51.93	Leinwandbild im Massivholzrahmen
+gid://shopify/Product/15493499191681	2026-09-28T17:11Z	schon-DRAFT	33.90	64.46	Kabelloser Ladeständer
+gid://shopify/Product/15466920182145	2026-09-28T17:11Z	schon-DRAFT	20.90	51.27	Dach-Reparaturflicken, wasserdicht
+gid://shopify/Product/15485425123713	2026-09-28T17:11Z	schon-DRAFT	23.90	54.02	Wasserdichter Sofa-Schutzbezug
+gid://shopify/Product/15485336387969	2026-09-28T17:11Z	schon-DRAFT	17.90	47.77	Sofaüberwurf aus Nerzvelours mit Monstera-Muster
