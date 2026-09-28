@@ -38810,3 +38810,8 @@ gid://shopify/Product/15493897814401	CHF 12.32	1 Varianten	Herren Quarzuhr mit w
 gid://shopify/Product/15493897847169	CHF 21.86	27 Varianten	Vielseitige Bow-Tie Damenschuhe
 gid://shopify/Product/15493902336385	CHF 9.75	1 Varianten	Alufelgen Reparatur-Kit
 gid://shopify/Product/15493902827905	CHF 29.69	1 Varianten	Elegante Herrenuhr mit Solar-Quarzwerk
+gid://shopify/Product/15493902860673	CHF 16.71	30 Varianten	Damen Outdoor Sandalen im römischen Stil
+gid://shopify/Product/15493902926209	CHF 15.52	1 Varianten	Hartwachs-Versiegelung für langanhaltenden Schutz
+gid://shopify/Product/15493903122817	CHF 15.59	8 Varianten	Keilsandalen mit Nietenriemen und Peep-Toe
+gid://shopify/Product/15493904564609	CHF 19.28	1 Varianten	12V Auto Poliermaschine für Glanz und Kratzer
+gid://shopify/Product/15493906170241	CHF 9.08	1 Varianten	Runde Quarzuhr mit Lederarmband
