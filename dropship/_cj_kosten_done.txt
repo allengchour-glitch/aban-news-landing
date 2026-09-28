@@ -39440,3 +39440,6 @@ gid://shopify/Product/15494892913025	CHF 29.10	1 Varianten	Diamond Painting: Run
 gid://shopify/Product/15494893044097	CHF 8.58	1 Varianten	Kupfer-Armband Vintage Hohl-Design
 gid://shopify/Product/15494893076865	CHF 7.65	1 Varianten	DIY Diamond Painting Weihnachtsbaum (2er-Set)
 gid://shopify/Product/15494893142401	CHF 13.84	14 Varianten	Leichter Cardigan aus Baumwoll-Leinen für Herren
+gid://shopify/Product/15494893175169	CHF 7.45	1 Varianten	Armband mit violetten Zirkonia-Kristallen
+gid://shopify/Product/15494893240705	CHF 12.52	1 Varianten	Leinwandbild mit Massivholzrahmen, 3-teilig
+gid://shopify/Product/15494893339009	CHF 23.92	12 Varianten	Slim-Fit T-Shirt mit Totem-Print
