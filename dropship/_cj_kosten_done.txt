@@ -39432,3 +39432,5 @@ gid://shopify/Product/15494856573313	CHF 15.02	1 Varianten	Toilettenpapierhalter
 gid://shopify/Product/15494856606081	CHF 9.22	1 Varianten	Katzen-Kratzbaum mit integrierter Säule
 gid://shopify/Product/15494856638849	CHF 16.78	1 Varianten	Pilz Kratzbaum aus Leinen für Katzen
 gid://shopify/Product/15494856671617	CHF 25.68	1 Varianten	Runder Wandhahn aus Kupfer
+gid://shopify/Product/15494856704385	CHF 13.35	30 Varianten	Damen-Top mit V-Ausschnitt, Rüschen und 3/4-Ärmeln
+gid://shopify/Product/15494856835457	CHF 30.47	1 Varianten	Leichter Strick-Kimono für Damen
