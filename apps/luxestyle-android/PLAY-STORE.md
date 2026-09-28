@@ -6,7 +6,7 @@ Stand 2026-09-25. Paket-ID **`luxestyle.ch`** (so in der Play Console angelegt),
 Native App (Kotlin, Jetpack Compose) auf der **Shopify Storefront API** – ohne Token, Shopify erlaubt
 öffentliches Lesen und den Warenkorb. Preise immer in CHF (`@inContext(country: CH)`).
 - **Nativ:** Start (Titelbild der Webseite fest in der App, Saison-Knopf wechselt mit dem Kalender,
-  alle Bereiche als runde Bilder, WELCOME10-Band, 11 Reihen von Neu bei Damen bis Geschenke, Nach Budget, Beliebte Kategorien, zuletzt angesehen), Kategorien als
+  alle Bereiche als runde Bilder, WELCOME10-Band, Reihen von Neu bei Damen bis Geschenke, Halloween (15.9.–31.10.), Glücksbringer, Nach Budget, Beliebte Kategorien, zuletzt angesehen), Kategorien als
   Übersicht (Bereiche links, Unterkategorien mit Bild rechts), Kategorie-Pfad wie die Webseite,
   „Mehr aus …", Kollektion mit Unterkategorien, Sortierung, Preis-/Lieferbar-Filter und Nachladen,
   Produkt mit Galerie + Vollbild-Zoom + Varianten (unkaufbare ausgegraut) + „Passt dazu", Suche mit

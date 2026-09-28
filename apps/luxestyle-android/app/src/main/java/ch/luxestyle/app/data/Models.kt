@@ -103,8 +103,18 @@ data class MenuItem(val title: String, val url: String, val children: List<MenuI
     val collectionHandle: String? get() = Regex("/collections/([^/?#]+)").find(url)?.groupValues?.get(1)
 }
 
-/** Eine Reihe der Startseite: Kollektion, neueste oder meistverkaufte Stücke, eigener Titel. */
-data class RailSpec(val handle: String, val newest: Boolean = false, val title: String? = null)
+/**
+ * Eine Reihe der Startseite: Kollektion, neueste oder meistverkaufte Stücke, eigener Titel.
+ * Mit [query] statt Kollektion: Produktsuche des Shops (für Themen ohne eigene Kollektion),
+ * „Alle" führt dann zur Suche nach [searchTerm].
+ */
+data class RailSpec(
+    val handle: String,
+    val newest: Boolean = false,
+    val title: String? = null,
+    val query: String? = null,
+    val searchTerm: String? = null,
+)
 
 data class HomeData(
     val season: CollectionInfo?,

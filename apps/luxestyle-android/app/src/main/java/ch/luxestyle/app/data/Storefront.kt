@@ -50,7 +50,8 @@ class Storefront(
     suspend fun home(seasonHandle: String, specs: List<RailSpec>): HomeData {
         val rails = specs.mapIndexed { i, r ->
             val sort = if (r.newest) "sortKey: CREATED, reverse: true" else "sortKey: BEST_SELLING"
-            """r$i: collection(handle: ${JsonPrimitive(r.handle)}) { ...Coll products(first: 12, $sort) { nodes { ...Card } } }"""
+            if (r.query != null) """r$i: products(first: 12, $sort, query: ${JsonPrimitive(r.query)}) { nodes { ...Card } }"""
+            else """r$i: collection(handle: ${JsonPrimitive(r.handle)}) { ...Coll products(first: 12, $sort) { nodes { ...Card } } }"""
         }.joinToString("\n")
         val d = run(
             """query Home { season: collection(handle: "$seasonHandle") { ...Coll } $rails } $COLL $CARD""",
@@ -58,9 +59,11 @@ class Storefront(
         return HomeData(
             season = Parse.collection(d.o("season")),
             rails = specs.indices.mapNotNull { i ->
+                val spec = specs[i]
                 val c = d.o("r$i") ?: return@mapNotNull null
-                val info = Parse.collection(c)?.let { specs[i].title?.let { t -> it.copy(title = t) } ?: it } ?: return@mapNotNull null
-                val cards = c.nodes("products").mapNotNull(Parse::card)
+                val info = if (spec.query != null) CollectionInfo(spec.handle, spec.title ?: spec.handle, "", null)
+                    else Parse.collection(c)?.let { spec.title?.let { t -> it.copy(title = t) } ?: it } ?: return@mapNotNull null
+                val cards = (if (spec.query != null) c.a("nodes").mapNotNull { it.obj() } else c.nodes("products")).mapNotNull(Parse::card)
                 if (cards.isEmpty()) null else info to cards
             },
         )

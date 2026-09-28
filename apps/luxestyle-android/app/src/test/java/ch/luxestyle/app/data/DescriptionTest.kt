@@ -258,5 +258,16 @@ class HomeContentTest {
         assertEquals(RailSpec("damen-mode", newest = true, title = "Neu bei Damen"), rails.first())
         assertEquals(rails.size, rails.distinctBy { it.handle to it.newest }.size)
         assertTrue(rails.indexOfFirst { it.handle == "bestseller" } > rails.indexOfFirst { it.handle == "schmuck-uhren" })
+        assertTrue(rails.none { it.handle == "halloween" })
+        assertTrue(ch.luxestyle.app.ui.LUCK_RAIL in rails)
+    }
+
+    @Test
+    fun halloweenNurImHerbst() {
+        assertEquals("halloween", ch.luxestyle.app.ui.homeRails("jacken-outdoor", halloween = true)[1].handle)
+        assertTrue(ch.luxestyle.app.ui.isHalloweenTime(9, 15))
+        assertTrue(ch.luxestyle.app.ui.isHalloweenTime(10, 31))
+        assertTrue(!ch.luxestyle.app.ui.isHalloweenTime(9, 14))
+        assertTrue(!ch.luxestyle.app.ui.isHalloweenTime(11, 1))
     }
 }

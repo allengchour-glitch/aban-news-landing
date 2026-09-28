@@ -73,14 +73,27 @@ fun seasonFor(month: Int): Pair<String, String> = when (month) {
 
 const val WELCOME_CODE = "WELCOME10"
 
+/** Halloween-Reihe weit oben ab Mitte September bis 31. Oktober. */
+fun isHalloweenTime(month: Int, day: Int): Boolean = month == 10 || (month == 9 && day >= 15)
+
+/** Glücksbringer-Schmuck (Kleeblatt, Hufeisen, „Fortune") – im Shop gibt es dafür keine eigene Kollektion. */
+val LUCK_RAIL = RailSpec(
+    handle = "gluecksbringer",
+    title = "Glücksbringer",
+    query = "(title:*Glück* OR title:*Fortun* OR title:*Kleeblatt* OR title:*Hufeisen*) AND tag:schmuck",
+    searchTerm = "Glück",
+)
+
 /**
  * Reihen der Startseite, Mode zuerst (Neuheiten und Bestbewertet des ganzen Shops sind oft Technik
  * und Haustier – die kommen weiter unten). Technik/Kinder/Sport bleiben über die Bereiche oben erreichbar.
  */
-fun homeRails(seasonHandle: String): List<RailSpec> = listOf(
+fun homeRails(seasonHandle: String, halloween: Boolean = false): List<RailSpec> = listOfNotNull(
     RailSpec("damen-mode", newest = true, title = "Neu bei Damen"),
+    RailSpec("halloween").takeIf { halloween },
     RailSpec(seasonHandle),
     RailSpec("schmuck-uhren"),
+    LUCK_RAIL,
     RailSpec("damen-mode", title = "Beliebt bei Damen"),
     RailSpec("schuhe"),
     RailSpec("fur-ihn"),
@@ -100,7 +113,10 @@ fun HomeScreen() {
     val shop = LocalShop.current
     val nav = LocalNav.current
     val (seasonHandle, seasonLabel) = androidx.compose.runtime.remember { seasonFor(Calendar.getInstance().get(Calendar.MONTH) + 1) }
-    val home = rememberLoad("home") { shop.api.home(seasonHandle, homeRails(seasonHandle)) }
+    val halloween = androidx.compose.runtime.remember {
+        Calendar.getInstance().let { isHalloweenTime(it.get(Calendar.MONTH) + 1, it.get(Calendar.DAY_OF_MONTH)) }
+    }
+    val home = rememberLoad("home") { shop.api.home(seasonHandle, homeRails(seasonHandle, halloween)) }
     val menu = rememberLoad("menu") { shop.menu() }
     val liked by shop.wishlist.items.collectAsState()
     val recent by shop.recent.items.collectAsState()
@@ -131,20 +147,26 @@ fun HomeScreen() {
                 }
                 val likedHandles = liked.map { it.handle }.toSet()
                 val sale = onSale(s.value.rails.flatMap { it.second })
+                val specs = homeRails(seasonHandle, halloween).associateBy { it.handle to it.title }
+                val seasonAt = s.value.rails.indexOfFirst { it.first.handle == seasonHandle }
+                val tilesAt = s.value.rails.indexOfFirst { it.first.title == "Beliebt bei Damen" }
                 s.value.rails.forEachIndexed { i, (info, cards) ->
                     item(key = "rail-$i") {
-                        SectionHeader(info.title, "Alle") { nav.collection(info.handle, info.title) }
+                        val term = specs[info.handle to info.title]?.searchTerm
+                        SectionHeader(info.title, "Alle") {
+                            if (term != null) nav.search(term) else nav.collection(info.handle, info.title)
+                        }
                         Rail(cards, likedHandles)
                     }
                     // Zwischen die Reihen: Preis-Einstiege und Bildkacheln, damit die Seite nicht nur aus Reihen besteht
-                    if (i == 1 && sale.size >= 4) item(key = "reduziert") {
+                    if (i == seasonAt && sale.size >= 4) item(key = "reduziert") {
                         SectionHeader("Reduziert")
                         Rail(sale, likedHandles)
                     }
-                    if (i == 1) priceEntries(menuItems).takeIf { it.size >= 2 }?.let { entries ->
+                    if (i == seasonAt) priceEntries(menuItems).takeIf { it.size >= 2 }?.let { entries ->
                         item(key = "preise") { PriceEntries(entries) }
                     }
-                    if (i == 3) pickCategories(menuItems, FEATURED).takeIf { it.size >= 3 }?.let { cats ->
+                    if (i == tilesAt) pickCategories(menuItems, FEATURED).takeIf { it.size >= 3 }?.let { cats ->
                         item(key = "kacheln") { FeaturedCategories(cats) }
                     }
                 }
