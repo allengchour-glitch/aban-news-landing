@@ -39537,3 +39537,9 @@ gid://shopify/Product/15495027753345	CHF 23.98	1 Varianten	Kinderhelm für Rolls
 gid://shopify/Product/15495027818881	CHF 9.63	1 Varianten	Maniküre Polierfeile doppelseitig
 gid://shopify/Product/15495028048257	CHF 58.64	1 Varianten	Smarter Velohelm mit LED-Beleuchtung
 gid://shopify/Product/15495028277633	CHF 20.95	1 Varianten	Boiling Fish Kinder-Velo- und Skatinghelm
+gid://shopify/Product/15495048462721	CHF 12.46	1 Varianten	Geschäftsarmbanduhr
+gid://shopify/Product/15495048495489	CHF 23.20	1 Varianten	Kabellose 5-in-1 Ladestation mit Wecker
+gid://shopify/Product/15495048528257	CHF 16.34	1 Varianten	Mechanische Herrenuhr – Business & Freizeit
+gid://shopify/Product/15495048561025	CHF 7.63	1 Varianten	Builder Gel Klar für Nägel 15ml
+gid://shopify/Product/15495048593793	CHF 13.08	1 Varianten	Universal Reise-Ladegerät 2x USB-A & 2x USB-C
+gid://shopify/Product/15495048692097	CHF 20.47	1 Varianten	Geschenkset: Uhr, Gürtel, Brieftasche & Accessoire
