@@ -40413,3 +40413,11 @@ gid://shopify/Product/15495142408577	CHF 43.06	18 Varianten	Vintage Sandalen mit
 gid://shopify/Product/15495142441345	CHF 8.17	1 Varianten	Handgemachte Camellia Lace Press-on Nägel
 gid://shopify/Product/15495142474113	CHF 38.06	1 Varianten	Kabellose 3-in-1 Powerbank mit Schnellladefunktion
 gid://shopify/Product/15495142506881	CHF 54.24	1 Varianten	Bange Business Rucksack (wasserdicht)
+gid://shopify/Product/15495142539649	CHF 16.75	36 Varianten	Keilsandalen mit Riemen und Peep-Toe
+gid://shopify/Product/15495142572417	CHF 6.96	1 Varianten	Handgemachte abnehmbare Nagel-Patches
+gid://shopify/Product/15495142637953	CHF 8.20	1 Varianten	2-in-1 Magnetisches Uhren-Ladegerät
+gid://shopify/Product/15495142670721	CHF 65.01	1 Varianten	BANGE Lederrucksack: Business & Fashion
+gid://shopify/Product/15495142703489	CHF 15.92	45 Varianten	Damen Sandalen mit Klettverschluss und Plateauabsa
+gid://shopify/Product/15495142736257	CHF 68.75	1 Varianten	Multifunktionaler Make-up-Spiegel mit Tischlampe
+gid://shopify/Product/15495142769025	CHF 9.23	1 Varianten	Handgemachte Blumenmuster-Kunstnägel
+gid://shopify/Product/15495142801793	CHF 14.06	1 Varianten	Umhängetasche im Industrial Style
