@@ -40060,3 +40060,5 @@ gid://shopify/Product/15495117701505	CHF 10.12	1 Varianten	Retro Schmuckkästche
 gid://shopify/Product/15495117734273	CHF 20.44	12 Varianten	Elegantes V-Ausschnitt Midi-Kleid mit Gürtel
 gid://shopify/Product/15495117767041	CHF 14.82	1 Varianten	10-teiliges Make-up Pinselset „Pretty Waist“
 gid://shopify/Product/15495117832577	CHF 37.78	1 Varianten	Lovewood Serviertablett Vintage
+gid://shopify/Product/15495117865345	CHF 13.77	25 Varianten	Elegantes Spitzen-Patchwork Kleid mit Rundhals
+gid://shopify/Product/15495117930881	CHF 20.45	1 Varianten	Automatischer Make-up Pinselreiniger mit USB
