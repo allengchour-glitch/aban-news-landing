@@ -19,7 +19,7 @@
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -231,7 +231,16 @@ if (/^montage-/.test(get(cand, 'id') || '')) {   // 28.09.2026: Sammelvideo — 
     console.error(`⛔ Kein Post — Meisterwerk-Tor: ${zeile.slice(0, 220)}`);
     if (!DRY && t.status === 4) { cand[idx.status] = 'meisterwerk-tor-skip'; writeLedger(); }
     process.exit(3);   // 3 = uebersprungen: naechster Durchlauf nimmt das naechste Reel
-  } }
+  }
+  // 28.09.2026 Betreiber «mache jede post ein meisterwerk … jetzt hast du gemini» · «vision ai»: das Tor misst, die Jury SIEHT
+  // (Fremdtext/Wasserzeichen, falsches Produkt, Hook ≠ Produkt, billige Wirkung). Kein Urteil (Exit 2) = kein Post, keine Marke.
+  const j = juryPruefen(quelle, get(cand, 'caption'), 'reel');
+  if (j.status !== 0) {
+    console.error(`⛔ Kein Post — Gemini-Jury: ${j.info}`);
+    if (!DRY && j.status === 4) { cand[idx.status] = 'jury-skip'; writeLedger(); }
+    process.exit(3);
+  }
+  console.log(`  Gemini-Jury: ${j.info}`); }
 const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hashtags');
 // ── 23.09.2026 Paket «direktlink» — VORBEREITET, standardmaessig AUS. Ohne die Schalter bleibt der Body byte-gleich.
 //  DIREKTLINK_TEXT=1: die Caption-Zeile «🔗 luxestyle.ch/products/… (Link in Bio)» ist auf TikTok FALSCH (Profil ohne

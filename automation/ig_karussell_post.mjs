@@ -21,7 +21,7 @@
  */
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen } from './post_guard.mjs';
 
 const V = 'v21.0';
 const IG_ID = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id', 'utf8').trim() : '');
@@ -223,6 +223,12 @@ for (const r of bereit) {
   }
   if (codes.some(c => c !== '200')) { console.log(`   ⛔ ${slug}: Bilder antworten ${codes.join(',')} → uebersprungen`); continue; }
   if (bilder.some(b => postSeen(b))) { console.log(`   ⛔ ${slug}: Bild schon gepostet (gemeinsamer Ledger)`); if (!DRY) { setzen(r, 'status', 'posted-dup-skip'); writeLedger(); } continue; }
+  // 28.09.2026 Gemini-Vision-Jury auf die Titelfolie (das Bild, das der Feed zeigt) — «jede post ein meisterwerk».
+  { const lokal = fs.existsSync(`${ordner}/01.jpg`) ? `${ordner}/01.jpg` : bilder[0];
+    const j = juryPruefen(lokal, caption, 'karussell');
+    if (j.status === 4) { console.log(`   ⛔ ${slug}: Gemini-Jury ${j.info} → jury-skip`); if (!DRY) { setzen(r, 'status', 'jury-skip'); writeLedger(); } continue; }
+    if (j.status !== 0) { console.log(`   ⚠️ ${slug}: Gemini-Jury ohne Urteil (${j.info}) → bleibt ready`); continue; }
+    console.log(`   ✅ Gemini-Jury: ${j.info}`); }
   cand = r; break;
 }
 if (!cand) { console.log('Kein postbares Karussell.'); process.exit(0); }

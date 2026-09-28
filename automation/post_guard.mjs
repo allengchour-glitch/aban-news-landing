@@ -281,7 +281,7 @@ export function montagePruefen(videoUrl) {
 // JURY=0 schaltet sie ab (nur für Notfälle). Kalibrierung + Warteschlangen-Messung: dropship/GEMINI-JURY-2026-09-28.md.
 export function juryPruefen(quelle, caption, typ = 'reel') {
   if (process.env.JURY === '0') return { status: 0, info: 'Jury aus (JURY=0)' };
-  const r = spawnSync('python3', ['automation/gemini_jury.py', quelle, '--caption', String(caption || ''), '--typ', typ],
+  const r = spawnSync('python3', [new URL('./gemini_jury.py', import.meta.url).pathname, quelle, '--caption', String(caption || ''), '--typ', typ],
     { encoding: 'utf8', timeout: 400000 });
   const z = ((r.stdout || '').trim().split('\n').pop() || '');
   let v = {}; try { v = JSON.parse(z); } catch {}

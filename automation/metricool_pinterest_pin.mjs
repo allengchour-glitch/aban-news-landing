@@ -33,7 +33,7 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';   // ocrJetzt() — ohne diesen Import lief der OCR-Aufruf still in den catch (23.09. gemessen)
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, juryPruefen } from './post_guard.mjs';
 
 const NUR_LISTE = parseInt(process.env.NUR_LISTE || '0', 10);
 const DRY = process.env.DRY === '1' || NUR_LISTE > 0;
@@ -231,6 +231,11 @@ for (const k of kandidaten) {   // 23.09. 22:58: Text-Hauptbild nie als Rohbild 
   const f = await pinFassung(k);
   if (f.art === 'Rohbild') ocrJetzt(k.handle, k.bild.url);
   if (f.art === 'Rohbild' && textImBild(k.bild.url)) { log(`   ⛔ ${k.handle}: Hauptbild trägt Lieferantentext (OCR ${bildtext.get(k.bild.url.split('?')[0])} Wörter), 2:3-Fassung nicht nutzbar (${f.grund}) → übersprungen`); continue; }
+  // 28.09.2026 Gemini-Vision-Jury («jede post ein meisterwerk»): Pin-Bild + Titel/Preis wie eine Kundin ansehen.
+  // Urteile liegen im Cache (dropship/_gemini_jury.tsv) — ein abgelehntes Bild kostet beim naechsten Lauf nichts.
+  { const j = juryPruefen(f.url, `${k.title}\nCHF ${parseFloat(k.priceRangeV2.minVariantPrice.amount).toFixed(2)}`, 'bild');
+    if (j.status !== 0) { log(`   ⛔ ${k.handle}: Gemini-Jury ${j.status === 4 ? '' : 'ohne Urteil '}${j.info} → übersprungen`); continue; }
+    log(`   ✅ Gemini-Jury: ${j.info}`); }
   kandidat = k; fassung = f; break;
 }
 if (!kandidat) { console.log('Kein Pin-Kandidat (alle Quellen erschöpft, gesperrt oder Text im Bild).'); process.exit(0); }

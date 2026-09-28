@@ -23,7 +23,7 @@ import fs from 'node:fs';
 import { execFileSync as _exf } from 'node:child_process';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang } from './post_guard.mjs';
+         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, juryPruefen } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -293,7 +293,11 @@ async function produktAktiv(zeilenId){
   return { ok:null, grund:'Shopify nicht erreichbar' };
 }
 
-for(const next of ready.slice(0, MAX)){
+// 28.09.2026: bis MAX_PER_RUN Posts, aber bis zu VERSUCHE Zeilen ansehen — mit der Gemini-Jury faellt ein Teil der Queue
+// durch; vorher sah ein Lauf genau EINE Zeile an, jede Ablehnung kostete den ganzen 6-h-Takt (Exit 0 → Autopilot-Marke).
+const VERSUCHE = parseInt(process.env.VERSUCHE || '12', 10);
+for(const next of ready.slice(0, MAX + VERSUCHE)){
+  if(postedCount >= MAX || anyFail) break;
   // 23.09.2026: PNG vom Shopify-CDN ist kein Grund zum Ueberspringen — `format=jpg` liefert echtes image/jpeg (gemessen).
   const imageUrl = jpgVomCdn(next[idx.image_url].trim());
   const caption = next[idx.caption] || '';
@@ -358,6 +362,19 @@ for(const next of ready.slice(0, MAX)){
       continue;
     }
   }
+  // ⛔ ELFTE SCHICHT (28.09.2026, Betreiber «mache jede post ein meisterwerk … jetzt hast du gemini» · «vision ai»):
+  // Gemini-Vision-Jury schaut das Bild an wie eine Kundin (Fremdlogo/Wasserzeichen, falsches Produkt, billige Wirkung).
+  // 4 = durchgefallen → «jury-skip»; 2 = kein Urteil (Netz/Schlüssel) → Zeile bleibt ready, kein Post ohne Urteil.
+  {
+    const j = juryPruefen(imageUrl, caption, 'bild');
+    if (j.status === 4) {
+      console.log(`   ⛔ Gemini-Jury: ${j.info} → jury-skip: ${next[idx.id]}`);
+      if(!DRY){ next[idx.status] = 'jury-skip'; fs.writeFileSync(CSV, serialize(rows)); }
+      continue;
+    }
+    if (j.status !== 0) { console.log(`   ⚠️ Gemini-Jury ohne Urteil (${j.info}) → Zeile bleibt ready: ${next[idx.id]}`); continue; }
+    console.log(`   ✅ Gemini-Jury: ${j.info}`);
+  }
   const fbCaption = fbText(caption, pa.url, 'bild');
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
@@ -415,4 +432,6 @@ for(const next of ready.slice(0, MAX)){
 
 if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
 console.log(`Fertig: ${postedCount} gepostet${DRY?' (DRY)':''}.`);
-process.exit(anyFail && postedCount===0 ? 1 : 0);
+// 28.09.2026: 0 gepostet ohne Fehler = «uebersprungen» (Exit 3, Vertrag wie meta_reel_post/metricool_tiktok_post) —
+// der Autopilot setzt dann seine Marke NICHT und versucht es im naechsten Lauf wieder.
+process.exit(anyFail && postedCount===0 ? 1 : (!DRY && postedCount===0 && ready.length ? 3 : 0));
