@@ -1,6 +1,6 @@
-# Social-Lernen — Stand 2026-09-28 02:01 UTC
+# Social-Lernen — Stand 2026-09-28 08:10 UTC
 
-Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 51 · TikTok 13 · Pinterest 100 → **115 Inhalte**; 6 zu junge Posts nicht gezählt.
+Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 51 · TikTok 13 · Pinterest 103 → **115 Inhalte**; 5 zu junge Posts nicht gezählt.
 
 **So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +5 als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + 3)): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×1.68. **n** = Inhalte. **Belastbar erst ab n ≥ 3** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.
 
@@ -16,8 +16,8 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 51 · TikTok 13 · Pint
 | kueche | 5 | 1.13 | 1.00 | ja |
 | gadget | 7 | 1.13 | 1.00 | ja |
 | home | 22 | 1.05 | 1.00 | ja |
-| fitness | 7 | 1.03 | 1.00 | ja |
-| allgemein | 27 | 1.03 | 1.00 | ja |
+| allgemein | 27 | 1.04 | 1.00 | ja |
+| fitness | 7 | 1.03 | 1.02 | ja |
 | mode | 14 | 0.93 | 0.98 | ja |
 
 ### Hooks
@@ -31,7 +31,7 @@ _Noch keiner mit n ≥ 3._
 | pinterest 09–12 | 3 | 1.54 | 1.66 | ja |
 | instagram 00–03 | 3 | 1.42 | 1.16 | ja |
 | instagram 15–18 | 4 | 1.23 | 1.04 | ja |
-| pinterest 06–09 | 81 | 1.22 | 1.00 | ja |
+| pinterest 06–09 | 84 | 1.21 | 1.00 | ja |
 | pinterest 15–18 | 6 | 1.21 | 1.20 | ja |
 | pinterest 18–21 | 3 | 1.21 | 1.20 | ja |
 | instagram 18–21 | 6 | 1.18 | 1.06 | ja |
@@ -63,8 +63,8 @@ _Noch keiner mit n ≥ 3._
 | kueche | 5 | 1.13 | 1.00 | ja |
 | gadget | 7 | 1.13 | 1.00 | ja |
 | home | 22 | 1.05 | 1.00 | ja |
-| fitness | 7 | 1.03 | 1.00 | ja |
-| allgemein | 27 | 1.03 | 1.00 | ja |
+| allgemein | 27 | 1.04 | 1.00 | ja |
+| fitness | 7 | 1.03 | 1.02 | ja |
 | kinder | 2 | 0.98 | 0.94 | vorläufig |
 | mode | 14 | 0.93 | 0.98 | ja |
 
@@ -75,8 +75,8 @@ _Noch keiner mit n ≥ 3._
 | pinterest 09–12 | 3 | 1.54 | 1.66 | ja |
 | instagram 00–03 | 3 | 1.42 | 1.16 | ja |
 | instagram 15–18 | 4 | 1.23 | 1.04 | ja |
-| pinterest 06–09 | 81 | 1.22 | 1.00 | ja |
 | pinterest 12–15 | 2 | 1.21 | 1.61 | vorläufig |
+| pinterest 06–09 | 84 | 1.21 | 1.00 | ja |
 | pinterest 15–18 | 6 | 1.21 | 1.20 | ja |
 | pinterest 18–21 | 3 | 1.21 | 1.20 | ja |
 | tiktok 06–09 | 1 | 1.19 | 2.02 | vorläufig |
@@ -87,7 +87,7 @@ _Noch keiner mit n ≥ 3._
 | pinterest 00–03 | 3 | 1.03 | 1.00 | ja |
 | tiktok 15–18 | 1 | 1.02 | 1.09 | vorläufig |
 | instagram 21–24 | 5 | 1.00 | 1.00 | ja |
-| instagram 03–06 | 2 | 0.92 | 0.82 | vorläufig |
+| instagram 03–06 | 2 | 0.93 | 0.83 | vorläufig |
 | instagram 09–12 | 19 | 0.92 | 0.90 | ja |
 | tiktok 09–12 | 6 | 0.88 | 1.00 | ja |
 | tiktok 18–21 | 5 | 0.70 | 0.91 | ja |
@@ -113,7 +113,7 @@ _Noch keiner mit n ≥ 3._
 
 ### Musik und Stimme
 
-0 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (6 Verlaufszeilen).
+0 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (14 Verlaufszeilen).
 
 ### Formate (roher Median-Score je Kanal)
 
@@ -123,8 +123,8 @@ _Noch keiner mit n ≥ 3._
 | instagram karussell | 5 | 7 |
 | instagram bild | 27 | 15 |
 | tiktok reel | 13 | 285 |
-| pinterest pin | 75 | 2 |
-| pinterest pin-video | 25 | 4 |
+| pinterest pin-video | 26 | 3.5 |
+| pinterest pin | 77 | 2 |
 
 ## Stärkste 5 (gegen den eigenen Kanal-Median)
 - ×8.00 (Score 218, Median 14) · instagram reel · Endlich Ruhe beim Gassi? 👀 · https://www.instagram.com/reel/Ddutl8miAzn/

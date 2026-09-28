@@ -300,3 +300,4 @@ gid://shopify/Product/15470023737729	preis-gehoben	22.90→25.90
 gid://shopify/Product/15470023737729	reaktiviert	Zubehör: Frontlader
 gid://shopify/Product/15470075609473	preis-gehoben	29.50→35.90
 gid://shopify/Product/15470075609473	reaktiviert	Kellnergeldbörse Portemonnaie
+gid://shopify/Product/15461980569985	draft-ausverkauft	Wiederverwendbare Eiswürfel für den Sommer
