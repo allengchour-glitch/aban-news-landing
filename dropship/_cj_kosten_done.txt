@@ -39435,3 +39435,7 @@ gid://shopify/Product/15494856671617	CHF 25.68	1 Varianten	Runder Wandhahn aus K
 gid://shopify/Product/15494856704385	CHF 13.35	30 Varianten	Damen-Top mit V-Ausschnitt, Rüschen und 3/4-Ärmeln
 gid://shopify/Product/15494856835457	CHF 30.47	1 Varianten	Leichter Strick-Kimono für Damen
 gid://shopify/Product/15494892781953	CHF 8.92	1 Varianten	Farbverlauf Armband
+gid://shopify/Product/15494892880257	CHF 41.61	6 Varianten	Casual Langarmhemd für Herren
+gid://shopify/Product/15494892913025	CHF 29.10	1 Varianten	Diamond Painting: Rund- oder Quadrat-Steine
+gid://shopify/Product/15494893044097	CHF 8.58	1 Varianten	Kupfer-Armband Vintage Hohl-Design
+gid://shopify/Product/15494893076865	CHF 7.65	1 Varianten	DIY Diamond Painting Weihnachtsbaum (2er-Set)
