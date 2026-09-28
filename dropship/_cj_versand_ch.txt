@@ -1134,3 +1134,21 @@ gid://shopify/Product/15481713688961	nicht-versendbar	Multifunktionaler Rollkoff
 gid://shopify/Product/15504120119681	ok	Reisekoffer aus Aluminiumlegierung mit Zahlenschloss
 gid://shopify/Product/15448945623425	nicht-versendbar	Agility-Trainingsset für Hunde, verstellbar
 gid://shopify/Product/15453894443393	ok	Automatischer Futterautomat für Hunde & Katzen 4L/6L
+gid://shopify/Product/15454058381697	ok	Katzenrucksack mit 32L Kapazität
+gid://shopify/Product/15459126641025	nicht-versendbar	Business-Koffer aus Oxford-Stoff, 18 Zoll
+gid://shopify/Product/15472377299329	ok	Business Commuter Rucksack – gross & vielseitig
+gid://shopify/Product/15502588117377	ok	Daunenschlafsack für Outdoor-Camping
+gid://shopify/Product/15504188473729	ok	Futterautomat mit Kamera für Hunde und Katzen
+gid://shopify/Product/15449493897601	nicht-versendbar	Leichter Zeltstuhl mit Sonnenschirm, Getränkehalter und Tragtasche
+gid://shopify/Product/15451925184897	nicht-versendbar	Multifunktionaler Business-Reiserucksack
+gid://shopify/Product/15472274997633	ok	Faltbarer Angel-Schaukelstuhl aus Aluminium
+gid://shopify/Product/15479435460993	nicht-versendbar	Napapi Universal-Autositzkissen für alle Jahreszeiten
+gid://shopify/Product/15501659275649	ok	Boxing-Trainingsbeutel
+gid://shopify/Product/15458641052033	ok	Wasserdichter Wind- und Wärmeschutz-Softshell-Hundemantel
+gid://shopify/Product/15479379034497	ok	Hochdruckreiniger für Auto und Haushalt
+gid://shopify/Product/15449127747969	nicht-versendbar	Mond & Sterne Katzenbaum mit 4 Ebenen – Blau
+gid://shopify/Product/15451917418881	nicht-versendbar	Katzenbaum mit 4 Ebenen, Mond & Sterne – Lila
+gid://shopify/Product/15503133311361	ok	Futterautomat mit Kamera für Kleintiere
+gid://shopify/Product/15448943755649	nicht-versendbar	Erhöhtes, auslaufsicheres Katzenklo
+gid://shopify/Product/15447610982785	ok	Multifunktionaler Rucksack mit doppelten Schultergurten
+gid://shopify/Product/15449601180033	nicht-versendbar	Doppelseitiges Meditationskissen mit Extra-Polsterung
