@@ -41063,3 +41063,5 @@ gid://shopify/Product/15495748747649	CHF 14.61	30 Varianten	Elegantes Polka-Dot 
 gid://shopify/Product/15495748813185	CHF 15.65	28 Varianten	Langärmliges A-Linien Hemdkleid mit Reverskragen
 gid://shopify/Product/15495748911489	CHF 15.15	10 Varianten	Elegantes A-Linien Kleid mit Farbverlauf
 gid://shopify/Product/15495748977025	CHF 16.56	15 Varianten	Maxirock mit Blumenprint und Plisseefalten
+gid://shopify/Product/15495749108097	CHF 10.68	20 Varianten	Boho V-Ausschnitt Midikleid mit Muster
+gid://shopify/Product/15495753531777	CHF 11.74	1 Varianten	Stuhlbezug
