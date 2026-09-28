@@ -1,7 +1,7 @@
 /* Sonde (Runde 103): funktioniert, was Runde 103 eingebaut hat — im laufenden Spiel, nicht nur im Text?
    Prueft: Buergerrang (Punkte, Rangwechsel zahlt genau einmal, Kopfzeile nach dem Palast), Entdecker-Album
    (Figur neben einen Ort setzen → orteCheck traegt ihn ein, zahlt, Banner), Haus-Ausbau (Kauf, Ausbau, Preis
-   verdoppelt sich, Miete steigt, Deckel Stufe 5), Spielstand (il/rg im Snapshot, zt in saveGame, Umweg
+   verdoppelt sich, Miete steigt, Deckel IMMO_LV_MAX — 5 in Runde 103, 12 seit Runde 104), Spielstand (il/rg im Snapshot, zt in saveGame, Umweg
    speichern → laden erhaelt Ausbau und Rang), Willkommen-zurueck-Formel, Stufe-4/5-Sperren, neue Erfolge und
    Missionen ohne Wurf. Gegenprobe: ein absichtlich falscher Ort (300 m weg) darf NICHT entdeckt werden.
    Aufruf: node spiele-dev/tools/sonden/probe-r103.mjs */
@@ -18,9 +18,9 @@ mitSonden('traumhaus.html', {
     var o2=WORLD_POIS[5]; sims[0].x=o2[0]+300; sims[0].z=o2[1]; var n0=(stats.orte||[]).length; orteCheck(); out.gegenprobeOrt=(stats.orte||[]).length===n0;
     /* Haus kaufen + ausbauen ueber die echten Funktionen */
     var H=window._immo||[]; out.kauf=null; out.ausbau=[];
-    if(H.length){var i=0,hs=H[0]; sims[0].x=hs.x+2; sims[0].z=hs.z+2; geld=200000;
+    if(H.length){var i=0,hs=H[0]; sims[0].x=hs.x+2; sims[0].z=hs.z+2; geld=1e7; out.lvMax=IMMO_LV_MAX;
       immo.indexOf(i)<0&&(immo.push(i),immoFlagge(hs));
-      var m1=immoMiete(); for(var k=0;k<5;k++){var pr=immoAusbauPreis(i); var gv=geld; immoAusbau(i,hs); out.ausbau.push({lv:immoLv[i]||1,preis:pr,bezahlt:gv-geld});}
+      var m1=immoMiete(); for(var k=0;k<IMMO_LV_MAX;k++){var pr=immoAusbauPreis(i); var gv=geld; immoAusbau(i,hs); out.ausbau.push({lv:immoLv[i]||1,preis:pr,bezahlt:gv-geld});}
       out.mieteVorher=m1; out.mieteNachher=immoMiete(); out.lvEnde=immoLv[i]; out.flaggeScale=hs.flagge?+hs.flagge.scale.x.toFixed(2):null;}
     /* Rang: Punkte hochtreiben und Praemie genau einmal */
     stats.quests=(stats.quests||0)+40; var gr=geld; rangPruef(); var gr1=geld-gr; rangPruef(); var gr2=geld-gr-gr1;
@@ -46,9 +46,9 @@ const ok = (b, t) => console.log((b ? '✅ ' : '❌ ') + t)
 console.log(`Haeuser ${r.immoN} · Raenge ${r.raenge} · Orte ${r.orteN} · Start: ${r.punkte0} Pkt = Rang ${r.rang0}, Bonus ${r.bonus0.toFixed(2)} · JS-Fehler ${jsFehler.length}`)
 ok(r.ortEntdeckt && r.ortLohn > 0, `Ort „${r.ortName}“ entdeckt, +${r.ortLohn} $`)
 ok(r.gegenprobeOrt, 'Gegenprobe: 300 m daneben wird nichts entdeckt')
-ok(r.ausbau.length === 5 && r.ausbau[3].lv === 5 && r.ausbau[4].bezahlt === 0, `Ausbau: ${r.ausbau.map((a) => a.lv + '(' + a.preis + '$/' + a.bezahlt + ')').join(' → ')} · Deckel 5 haelt`)
+ok(r.ausbau.length === r.lvMax && r.ausbau[r.lvMax - 2].lv === r.lvMax && r.ausbau[r.lvMax - 1].bezahlt === 0, `Ausbau: ${r.ausbau.map((a) => a.lv + '(' + a.preis + '$/' + a.bezahlt + ')').join(' → ')} · Deckel ${r.lvMax} haelt`)
 ok(r.ausbau[1].preis === r.ausbau[0].preis * 2 && r.ausbau[2].preis === r.ausbau[1].preis * 2, 'Ausbau-Preis verdoppelt sich je Stufe')
-ok(r.mieteNachher === r.mieteVorher * 3, `Miete ${r.mieteVorher} → ${r.mieteNachher} (Stufe 5 = ×3) · Flagge ×${r.flaggeScale}`)
+ok(r.mieteNachher === r.mieteVorher * (1 + 0.5 * (r.lvMax - 1)), `Miete ${r.mieteVorher} → ${r.mieteNachher} (Stufe ${r.lvMax} = ×${1 + 0.5 * (r.lvMax - 1)}) · Flagge ×${r.flaggeScale}`)
 ok(r.rangNach > r.rang0 && r.praemie1 > 0 && r.praemie2 === 0, `Rang ${r.rang0} → ${r.rangNach}, Praemie ${r.praemie1} $ einmal, zweiter Aufruf ${r.praemie2} $`)
 ok(/Pkt|→|Ikone/.test(r.hudPalast) || r.hudPalast.length > 0, `Kopfzeile nach dem Palast: „${r.hudPalast}“`)
 ok(r.snapIl !== '{}' && r.snapRg === r.rangGezahlt && r.zt && r.umweg, `Spielstand: il=${r.snapIl} rg=${r.snapRg} zt ${r.zt ? 'ja' : 'NEIN'} · Umweg speichern→laden erhaelt Ausbau+Rang ${r.umweg}`)

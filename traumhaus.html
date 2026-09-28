@@ -5297,7 +5297,7 @@ function immoFlagge(hs){var fg=new THREE.Group();
 /* 🏗️ HAUS-AUSBAU (Runde 103): ein gekauftes Haus laesst sich viermal ausbauen (Stufe 2 bis 5) — je Stufe
    +50 % Miete, der Preis verdoppelt sich je Stufe. Das ist die Geldsenke, die oben fehlte (probe-sog: 340'000 $ Bargeld nach 6 h, nichts zu
    kaufen), und ein Grund, zu den Haeusern zurueckzugehen. immoLv reist im Spielstand mit (il). */
-var immoLv={},IMMO_LV_MAX=5; /* fuenf Stufen, Preis verdoppelt sich je Stufe (probe-sog: mit drei Stufen sass der aktive Spieler nach 6 h auf 690'000 $) */
+var immoLv={},IMMO_LV_MAX=12; /* Runde 104: zwoelf Stufen — Stufe 12 allein kostet das 1536-fache des Hauspreises, alle elf Ausbauten zusammen das 3071-fache; die Senke, die nie voll wird */ /* fuenf Stufen, Preis verdoppelt sich je Stufe (probe-sog: mit drei Stufen sass der aktive Spieler nach 6 h auf 690'000 $) */
 function immoMiete(){var m=0;immo.forEach(function(i){m+=150*(1+0.5*((immoLv[i]||1)-1));});return m;}
 function immoAusbauPreis(i){var hs=window._immo&&window._immo[i];return hs?Math.round(hs.preis*1.5*Math.pow(2,(immoLv[i]||1)-1)):0;}
 function immoAusbau(i,hs){
@@ -13313,6 +13313,7 @@ function verdiene(betrag,zaehlt){
   var m=(zaehlt===false)?1:komboPlus();
   var b=Math.round(betrag*m);
   geld+=b;if(typeof geldSend==="function")geldSend();
+  stats.verdient=(stats.verdient||0)+b;   /* Runde 104: Gesamtverdienst (Buergerrang) */
   if(zaehlt!==false)KOMBO.verdient+=b-betrag;
   /* Die Hetze vergibt KEIN eigenes Geld — sie zaehlt nur, was ohnehin verdient wird.
      So kann keine Runde die Wirtschaft aufblasen, egal wie oft man sie spielt. */
@@ -13554,6 +13555,13 @@ var ACH=[
  ["praesident","👑","Stadtpräsident","Bürgerrang „Stadtpräsident“ erreicht (460 Punkte)",function(){return rangIdx(rangPunkte())>=6;}],
  ["bauloewe","🏗️","Baulöwe","3 gekaufte Häuser ausgebaut",function(){return (stats.immoAusbau||0)>=3;}],
  ["immokoenig","🏘️","Immobilien-König","Alle Dorfhäuser gekauft",function(){return typeof immo!=="undefined"&&window._immo&&window._immo.length>=10&&immo.length>=window._immo.length;}]
+,
+ /* Runde 104: Ziele fuer die lange Strecke (erzeugte Stufen/Raenge). */
+ ["tycoon","🌆","Tycoon","Wohnstufe 8 erreicht (Vermögen)",function(){return wohnstufe>=8;}],
+ ["legende","🌟","Legende","Wohnstufe 10 erreicht",function(){return wohnstufe>=10;}],
+ ["ikone5","💫","Ikone V","Bürgerrang „Ikone V“ erreicht (2800 Punkte)",function(){return rangIdx(rangPunkte())>=12;}],
+ ["hausherr","🏗️","Hausherr","Ein Haus auf Ausbaustufe 8",function(){var m=0;for(var k in immoLv)if(immoLv[k]>m)m=immoLv[k];return m>=8;}],
+ ["millionaer","💰","Millionär","1'000'000 $ Vermögen",function(){return vermoegen()>=1000000;}]
 ];
 /* 🎯 DER LETZTE METER. Vierzig Erfolge lagen im Menue — und alle sahen gleich weit
    weg aus, weil keiner einen Zwischenstand trug. "5 Ernten" liest sich bei 0 exakt wie
@@ -13605,7 +13613,12 @@ var ACHFORT={
  stadtrat:[function(){return rangPunkte();},180,"Punkt"],
  praesident:[function(){return rangPunkte();},460,"Punkt"],
  bauloewe:[function(){return stats.immoAusbau||0;},3,"Ausbau"],
- immokoenig:[function(){return typeof immo!=="undefined"?immo.length:0;},(window._immo&&window._immo.length)||15,"Haus"]
+ immokoenig:[function(){return typeof immo!=="undefined"?immo.length:0;},(window._immo&&window._immo.length)||15,"Haus"],
+ tycoon:[function(){return wohnstufe;},8,"Wohnstufe"],
+ legende:[function(){return wohnstufe;},10,"Wohnstufe"],
+ ikone5:[function(){return rangPunkte();},2800,"Punkt"],   /* = rangSchwelle(12), RAENGE ist hier noch nicht definiert */
+ hausherr:[function(){var m=0;for(var k in immoLv)if(immoLv[k]>m)m=immoLv[k];return m;},8,"Ausbaustufe"],
+ millionaer:[function(){return Math.round(vermoegen());},1000000,null]
 };
 /* Dieselbe Lehre wie bei checkAch: eine werfende Bedingung darf nicht den ganzen
    Rest mitreissen. Hier kostet ein Fehler genau einen Balken. */
@@ -13682,6 +13695,25 @@ var WOHNSTUFEN=[
  ["👑 Palast",         50000, 6, 12, 7000]
 ];
 var wohnstufe=0, naechsteAbnahme=4;
+/* ♾️ STUFEN OHNE ENDE (Runde 104, User: „das spiel sollte viel laenger gehen als 60 tage, ein unendliches spiel").
+   Die feste Tabelle endet beim Palast; der Hauswert kann nicht unbegrenzt wachsen (Grundstueck, Katalog, Moebel bis
+   Stufe 3). Ab Stufe 6 zaehlt darum das VERMOEGEN — Hauswert plus alles, was in gekaufte Haeuser und ihre Ausbauten
+   geflossen ist — und das ist nach oben offen: Ausbaupreise verdoppeln sich je Stufe. Ziel je Stufe ×1,5 (auf 5000
+   gerundet), Bereiche/Komfort bleiben 6/12 wie beim Palast, Praemie ×1,35. Namen bis Stufe 10, danach „Legende II, III, …".
+   stufeDaten(n) ist der EINE Zugang; WOHNSTUFEN bleibt fuer die Moebel-Sperren (stufe:1…5) unveraendert. */
+var STUFEN_MEHR=[["🏘️","Gutsherr"],["🏙️","Magnat"],["🌆","Tycoon"],["🏦","Baron"],["🌟","Legende"]];
+function roemisch(n){var R=[[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]],o="";
+  for(var i=0;i<R.length;i++)while(n>=R[i][0]){o+=R[i][1];n-=R[i][0];}return o||"";}
+function stufeDaten(n){
+  if(n<WOHNSTUFEN.length)return WOHNSTUFEN[n];
+  var m=n-WOHNSTUFEN.length+1;                       /* 1 = erste erzeugte Stufe (6) */
+  var ziel=Math.round(100000*Math.pow(1.5,m-1)/5000)*5000;
+  var nm=m<=STUFEN_MEHR.length?STUFEN_MEHR[m-1]:["🌟","Legende "+roemisch(m-STUFEN_MEHR.length+1)];
+  return [nm[0]+" "+nm[1],ziel,6,12,Math.round(7000*Math.pow(1.35,m)),"vermoegen"];}   /* Bereiche 6 / Komfort 12 wie beim Palast: das Haus ist fertig, ab hier zaehlt nur das Vermoegen. Die erste Fassung verlangte 12+2·m Komfort-Moebel — Stufe 13 haette 28 nutzbare Moebel gebraucht, das Grundstueck gibt das nicht her, die Leiter waere still gestorben (probe-sog rechnet ohne Komfort und haette es nicht gezeigt) */
+function immoWert(){var w=0;if(typeof immo==="undefined"||!window._immo)return 0;
+  immo.forEach(function(i){var hs=window._immo[i];if(!hs)return;var lv=(typeof immoLv!=="undefined"&&immoLv[i])||1;
+    w+=hs.preis*(1+1.5*(Math.pow(2,lv-1)-1));});return w;}   /* Kaufpreis + alle bezahlten Ausbauten */
+function vermoegen(){return hausWert()+immoWert();}
 /* ═══════════ 🎮 SPIELMODI + 🎯 TAGES-MISSIONEN (User: „viele mods und missionen") ═══
    MODI — gewaehlt beim ersten Solo-Start (Bestands-Saves bleiben Klassisch):
      klassisch  wie bisher
@@ -13832,16 +13864,23 @@ var rangGezahlt=0;
 function rangPunkte(){var p=0;try{
   p=(stats.quests||0)*4+Object.keys(achDone||{}).length*3+((stats.orte&&stats.orte.length)||0)*2
    +(typeof immo!=="undefined"?immo.length:0)*3+(stats.immoAusbau||0)*2+((skills.arbeit.lv||1)-1)*3
-   +wohnstufe*5+(stats.abnahmen||0)*2+(missSerie||0);}catch(e){}return p;}
-function rangIdx(p){var i=0;for(var k=0;k<RAENGE.length;k++)if(p>=RAENGE[k][2])i=k;return i;}
-function rangName(){var r=RAENGE[rangIdx(rangPunkte())];return r[0]+" "+r[1];}
+   +wohnstufe*5+(stats.abnahmen||0)*2+(missSerie||0)+Math.floor((stats.verdient||0)/2500);}catch(e){}return p;}  /* Runde 104: +1 je 2500 $ verdient — die Quelle, die nie versiegt */
+/* ♾️ RAENGE OHNE ENDE (Runde 104): nach „Ikone" (1000) folgen Ikone II, III, … mit wachsendem Abstand
+   (Schwelle_k = 1000 + 120·n(n+1)/2 + 150·n, n = k−8): 1270, 1660, 2170, 2800, … — gemessen mit probe-sog ueber
+   365 Tage, damit Raenge auch im 200. Tag noch kommen und nicht alle im 30. (Erste Fassung mit 250: in der zweiten
+   Jahreshaelfte nur alle 40–47 Tage ein Rang.) */
+function rangSchwelle(k){if(k<RAENGE.length)return RAENGE[k][2];var n=k-RAENGE.length+1;
+  return RAENGE[RAENGE.length-1][2]+n*(n+1)/2*120+n*150;}
+function rangDaten(k){if(k<RAENGE.length)return RAENGE[k];return ["💫","Ikone "+roemisch(k-RAENGE.length+2),rangSchwelle(k)];}
+function rangIdx(p){var i=0;while(i<400&&p>=rangSchwelle(i+1))i++;return i;}
+function rangName(){var r=rangDaten(rangIdx(rangPunkte()));return r[0]+" "+r[1];}
 function rangPruef(){
   if(MPs&&!mpHost)return;
   var i=rangIdx(rangPunkte());if(i<=rangGezahlt)return;
   /* jede uebersprungene Stufe zahlt mit (ein alter Spielstand kann mehrere auf einmal steigen) */
   var pr=0;for(var k=rangGezahlt+1;k<=i;k++)pr+=Math.round(400*k*modusFaktor());
   rangGezahlt=i;geld+=pr;geldSend();updHUD();
-  if(typeof gtaBanner==="function")gtaBanner("Neuer Rang: "+RAENGE[i][0]+" "+RAENGE[i][1],"+"+pr+" $ · ab jetzt +"+(3*i)+" % auf alle Einnahmen","gut");
+  if(typeof gtaBanner==="function")gtaBanner("Neuer Rang: "+rangDaten(i)[0]+" "+rangDaten(i)[1],"+"+pr+" $ · ab jetzt +"+(3*i)+" % auf alle Einnahmen","gut");
   if(typeof feier==="function")feier(3);}
 /* 🧭 ENTDECKER-ALBUM (Runde 103): 36 Kartenorte, jeder erste Besuch zaehlt und zahlt. Die Orte standen
    auf der Karte, aber nichts hielt fest, ob man dort war — die halbe Welt (Burgdorf, Zoo, Flughafen,
@@ -13874,9 +13913,9 @@ function komfort(){
   return k;}
 /* Fehlliste fuer die naechste Stufe — dieselbe Funktion speist Kopfzeile UND Abnahme. */
 function stufenLuecke(){
-  var z=WOHNSTUFEN[wohnstufe+1];
+  var z=stufeDaten(wohnstufe+1);   /* Runde 104: ab 6 erzeugt, nie null */
   if(!z)return null;
-  var w=hausWert(),k=katVielfalt(),zu=komfort();
+  var w=z[5]==="vermoegen"?vermoegen():hausWert(),k=katVielfalt(),zu=komfort();
   return {ziel:z,wert:w,kat:k,zuf:zu,
           fehltWert:Math.max(0,z[1]-w),fehltKat:Math.max(0,z[2]-k),fehltZuf:Math.max(0,z[3]-zu),
           erfuellt:w>=z[1]&&k>=z[2]&&zu>=z[3]};}
@@ -13884,8 +13923,8 @@ function stufeHudUpd(){
   var el=document.getElementById("stufeBox");if(!el)return;
   var l=stufenLuecke();
   /* Runde 103: nach dem Palast zeigt die Kopfzeile den Buergerrang — vorher stand hier "alles erreicht", und genau das war das Problem. */
-  if(!l){var rp=rangPunkte(),ri=rangIdx(rp),rn=RAENGE[ri+1];
-    el.innerHTML=rn?(RAENGE[ri][0]+" "+txt(RAENGE[ri][1])+" · "+rp+"/"+rn[2]+" → "+rn[0]):(ik("i-crown")+" "+txt(RAENGE[ri][1]));return;}
+  if(!l){var rp=rangPunkte(),ri=rangIdx(rp),rn=rangDaten(ri+1);
+    el.innerHTML=rangDaten(ri)[0]+" "+txt(rangDaten(ri)[1])+" · "+rp+"/"+rn[2]+" → "+rn[0];return;}
   var tage=Math.max(0,naechsteAbnahme-tag);
   var kurz=l.fehltWert?("+"+l.fehltWert+" $")
           :l.fehltKat?("+"+l.fehltKat+" Bereich"+(l.fehltKat>1?"e":""))
@@ -13918,7 +13957,7 @@ function bauabnahme(){
     feier(3);
   }else{
     meldung="📋 Bauabnahme: noch nicht "+z[0]+" — "
-      +zeile(l.fehltWert===0,"Wert "+l.wert+"/"+z[1]+" $")+"  "
+      +zeile(l.fehltWert===0,(z[5]==="vermoegen"?"Vermögen ":"Wert ")+l.wert+"/"+z[1]+" $")+"  "
       +zeile(l.fehltKat===0,"Bereiche "+l.kat+"/"+z[2])+"  "
       +zeile(l.fehltZuf===0,"Komfort "+l.zuf+"/"+z[3]+" nutzbare Möbel");
     hint(meldung);
@@ -17765,8 +17804,8 @@ document.getElementById("achBtn").onclick=function(){
   /* Ganz oben steht, was am naechsten liegt — sonst muss man vierzig Eintraege
      durchsehen, um zu erkennen, wofuer sich der naechste Handgriff lohnt. */
   var nz=naechstesZiel();
-  var _rp=rangPunkte(),_ri=rangIdx(_rp),_rn=RAENGE[_ri+1],_nu=naechsterUnentdeckterOrt();
-  document.getElementById("questTxt").innerHTML="<b>"+RAENGE[_ri][0]+" "+RAENGE[_ri][1]+"</b> · "+_rp+" Pkt"+(_rn?" · nächster Rang "+_rn[0]+" ab "+_rn[2]:"")+"<br>🧭 <b>Orte:</b> "+(stats.orte||[]).length+"/"+WORLD_POIS.length+(_nu?" · als nächstes "+_nu.o[2]+" "+_nu.o[3]+" ("+Math.round(_nu.d)+" m)":" · alle entdeckt")+"<br>"+(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
+  var _rp=rangPunkte(),_ri=rangIdx(_rp),_rn=rangDaten(_ri+1),_nu=naechsterUnentdeckterOrt();
+  document.getElementById("questTxt").innerHTML="<b>"+rangDaten(_ri)[0]+" "+rangDaten(_ri)[1]+"</b> · "+_rp+" Pkt · nächster Rang "+_rn[0]+" "+_rn[1]+" ab "+_rn[2]+"<br>🧭 <b>Orte:</b> "+(stats.orte||[]).length+"/"+WORLD_POIS.length+(_nu?" · als nächstes "+_nu.o[2]+" "+_nu.o[3]+" ("+Math.round(_nu.d)+" m)":" · alle entdeckt")+"<br>"+(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length+" Erfolge";
   var hb=document.getElementById("hetzeBtn");
@@ -17783,11 +17822,11 @@ document.getElementById("achClose").onclick=function(){document.getElementById("
 (function(){var el=document.getElementById("stufeBox");if(!el)return;
   el.onclick=function(){
     var l=stufenLuecke();
-    if(!l){var rp2=rangPunkte(),rn2=RAENGE[rangIdx(rp2)+1];hint("Bürgerrang "+rangName()+" · "+rp2+" Punkte"+(rn2?(" — "+rn2[0]+" "+rn2[1]+" ab "+rn2[2]+". Punkte gibt es für Aufträge, Erfolge, entdeckte Orte, Häuser, Karriere."):" — höchster Rang."));return;}
+    if(!l){var rp2=rangPunkte(),rn2=rangDaten(rangIdx(rp2)+1);hint("Bürgerrang "+rangName()+" · "+rp2+" Punkte"+(rn2?(" — "+rn2[0]+" "+rn2[1]+" ab "+rn2[2]+". Punkte gibt es für Aufträge, Erfolge, entdeckte Orte, Häuser, Karriere."):" — höchster Rang."));return;}
     var z=l.ziel;
-    hint("Nächste Stufe "+z[0]+" — Hauswert "+l.wert+"/"+z[1]+" $ · Wohnbereiche "
+    hint("Nächste Stufe "+z[0]+" — "+(z[5]==="vermoegen"?"Vermögen ":"Hauswert ")+l.wert+"/"+z[1]+" $ · Wohnbereiche "
       +l.kat+"/"+z[2]+" · Komfort (nutzbare Möbel) "+l.zuf+"/"+z[3]
-      +"  (Abnahme an Tag "+naechsteAbnahme+")");};})();
+      +"  (Abnahme an Tag "+naechsteAbnahme+") · "+rangName()+" "+rangPunkte()+" Pkt");};})();
 var hintT=null;
 function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;h.classList.add("an");
   /* 🩹 Schwarm-7: im Bau-Modus lag der Hinweis (bottom 76) HINTER/UNTER der
@@ -19786,7 +19825,7 @@ window.__th={
   /* Testzugang zur Bauabnahme: Zustand lesen und den Termin ausloesen, ohne vier
      Spieltage abzuwarten. */
   stufe:function(){var l=stufenLuecke();
-    return {stufe:wohnstufe,name:WOHNSTUFEN[wohnstufe][0],bonus:+stufenBonus().toFixed(2),
+    return {stufe:wohnstufe,name:stufeDaten(wohnstufe)[0],bonus:+stufenBonus().toFixed(2),
             termin:naechsteAbnahme,tag:tag,
             luecke:l&&{wert:l.wert,kat:l.kat,zuf:l.zuf,fehltWert:l.fehltWert,
                        fehltKat:l.fehltKat,fehltZuf:l.fehltZuf,erfuellt:l.erfuellt},

@@ -7983,3 +7983,115 @@ im ersten Lauf noch „keine Aussage" hiess — 10 Bilder je 4 s im Software-Ren
 2. **Zahlen für Belohnungsleitern erst simulieren, dann eintragen.** Beide ersten Würfe (Rang-Schwellen, Ausbau-Stufen)
    waren um den Faktor 2–3 daneben; jeder Wurf kostete zehn Sekunden Sonde statt eine Woche Spielerzeit.
 3. **„Alles auf einmal anfordern" ist keine Priorität.** Eine sortierte Schlange ohne Deckel ist eine unsortierte.
+
+---
+
+## Runde 104 · ♾️ Unendliches Spiel (User: „das spiel sollte viel länger gehen als 60 tage, ein unendliches spiel")
+
+Runde 103 hatte die ersten 60 Tage gefüllt. Diese Runde fragt: **was passiert an Tag 100, 200, 365?** — `probe-sog` auf
+365 Spieltage (36,5 h echt) gestellt, zuerst gegen den Stand von Runde 103 (Commit `c6642c6`, mit der Sonde von damals).
+
+### 1. Vorher: nach Tag 20 ein leeres Jahr
+| Stand Runde 103, 365 Tage | gemütlich | aktiv |
+|---|---|---|
+| letzte Wohnstufe | Palast am Tag 20 (120 min) — für immer | gleich |
+| letzter Rang | Legende (7) am Tag 249 | Ikone (8) am Tag 272 |
+| Tage ohne Neues (von 365) | 274 | 271 |
+| längste Lücke | 54 Tage (5,4 h echt) | 54 Tage |
+| Bargeld am Ende, nichts mehr zu kaufen | 10,1 Mio $ | 11,1 Mio $ |
+| Ereignisse Tag 183–365 | Karriere Lv 9–12 und ein Rang | gleich |
+
+Jede Leiter hatte ein Ende: 5 Wohnstufen, 9 Ränge, Ausbau bis Stufe 5, 15 Häuser, 5 Autos, 33 Orte. Nach 120 Minuten blieb
+345 Tage lang nur der Karriere-Level alle 25–55 Tage, und das Geld stapelte sich auf zehn Millionen.
+
+### 2. Drei Leitern ohne Ende — erzeugt, nicht getippt
+- **Wohnstufen ab 6** kommen aus `stufeDaten(n)`; die Tabelle `WOHNSTUFEN` bleibt nur für die Möbel-Sperren. Der Hauswert
+  kann nicht beliebig wachsen (Grundstück, Katalog) — ab Stufe 6 zählt das **Vermögen** = Hauswert + Kaufpreis der Häuser +
+  alle bezahlten Ausbauten. Ziel ×1,5 je Stufe (100'000 · 150'000 · 225'000 …, auf 5'000 gerundet), Prämie ×1,35, Namen
+  Gutsherr · Magnat · Tycoon · Baron · Legende, danach Legende II, III … (römisch). Kopfzeile, Abnahme-Meldung und
+  Bau-Hinweis sagen „Vermögen" statt „Wert".
+- **Ränge ab 9** kommen aus `rangSchwelle(k)` = 1000 + 120·n(n+1)/2 + 150·n (1270 · 1660 · 2170 · 2800 …), Name Ikone II,
+  III … Neue Punktquelle, die nie versiegt: **+1 Punkt je 2'500 $ Gesamtverdienst** (`stats.verdient`, in `verdiene()`
+  gezählt, im Spielstand).
+- **Ausbau bis Stufe 12** statt 5. Preis ×1,5·2^(Stufe−1): Stufe 12 kostet das 1'536-fache des Hauspreises, alle 15 Häuser
+  auf 12 wären 138 Mio $ — die Senke, die nie voll wird. Miete +50 % je Stufe wie bisher.
+- Fünf Erfolge dazu (Tycoon = Stufe 8, Legende = Stufe 10, Ikone V, Hausherr = ein Haus auf Ausbau 8, Millionär = 1 Mio $
+  Vermögen), mit Fortschrittsbalken; nur am Ende der Listen (th-erfolge-Regel aus Runde 103).
+
+### 3. Nachher — und was die Sonde zuerst falsch las
+| 365 Tage | gemütlich | aktiv |
+|---|---|---|
+| Wohnstufe am Ende | 20 (Legende XI), erreicht Tag 360 | 20, Tag 348 |
+| Stufe 8 / 10 / 12 | Tag 44 / 64 / 84 | gleich |
+| Rang am Ende | 20 (Ikone XIII) | 20 |
+| Tage ohne Neues (von 365) | 193 | 192 |
+| längste Lücke | 11 Tage (66 min) | 10 Tage |
+| Ereignis-Tage Tag 183–365 | 35 (3 Stufen, 6 Ränge, 24 Ausbauten) | 33 (3 / 6 / 24) |
+| letzter Neuzugang | Tag 361 | Tag 358 |
+
+Die ersten vier Monate fast täglich etwas Neues, danach alle 4–6 Tage — Stufe, Rang oder Ausbau —, und am Tag 365 ist keine
+Leiter zu Ende. Gegenprobe wie in Runde 103: doppeltes Einkommen verzögert keine Stufe, Palast nie vor Tag 20.
+
+**Drei Fallen, alle vor dem Commit gefunden:**
+1. **Der erste 365er-Lauf meldete „Stufe 6 für immer".** Ursache war nicht das Spiel, sondern die Sonde: `IMMO_LV_MAX=(\d)`
+   las aus „12" eine **1** — kein Ausbau, kein Vermögen, keine Stufe 7. Aufgefallen ist es in der Quelle-Zeile der Ausgabe
+   („Ausbau bis Stufe 1"), nicht in der Tabelle. Mit `(\d+)` lief die Leiter.
+2. **Komfort +2 je Stufe hätte die Leiter still getötet.** Die erste Fassung von `stufeDaten` verlangte 12+2·m
+   Komfort-Möbel; Stufe 13 hätte 28 nutzbare Möbel gebraucht, das Grundstück gibt das nicht her. **Die Sonde rechnet ohne
+   Komfort und hätte es nie gezeigt** — der Befund kam aus dem Lesen von `stufenLuecke`. Jetzt bleiben Bereiche 6 / Komfort
+   12 wie beim Palast: das Haus ist fertig, ab hier zählt das Vermögen.
+3. **Rang-Schwellen mit 250·n(n+1)/2:** in der zweiten Jahreshälfte nur alle 40–47 Tage ein Rang (4 in 183 Tagen) →
+   mit 120 sind es 6.
+
+Und eine vierte im Werkzeugkasten: `String.replace` mit einem Ersatztext, der ``$` `` enthält, fügt den ganzen Text VOR
+dem Treffer ein — `probe-r104` war danach doppelt so lang und syntaktisch kaputt (repariert, mit `--check` belegt).
+
+### 4. Im Spiel geprüft
+- `probe-r104` (neu): Stufen 5–13 aus `stufeDaten` (Ziel steigt, Kriterium Vermögen, Komfort bleibt 12), Ränge 8–14 mit
+  `rangIdx` genau an der Schwelle und Schwelle−1 darunter (Gegenprobe), Lücke bei Stufe 5 zeigt Gutsherr mit Fehlbetrag,
+  elf Ausbauten bis 12 über die echte Funktion (Immobilienwert 7,37 Mio $), Abnahme über 5 hinaus hängt am Komfort (wie
+  gewollt), Kopfzeile bei Stufe 9 vor dem Ausbau „+505000 $", 25'000 $ verdient = +10 Punkte, Spielstand-Umweg mit Stufe 9
+  und Ausbau 12 verlustfrei, 58 Erfolge ohne Wurf — alles ✅.
+- `probe-r103` liest den Ausbau-Deckel jetzt aus der Quelle (12 statt fest 5): elf Ausbauten 3'600 → 3'686'400 $ mit
+  Verdopplung, der zwölfte Versuch kostet 0 $ (Deckel hält), Miete 150 → 975 (×6,5), Flagge ×4,85, Rang 0 → 4 mit 4'000 $
+  Prämie genau einmal, Spielstand-Umweg erhält Ausbau 12 und Rang — alle ✅ (vorher zwei ❌, weil die Sonde den Deckel 5
+  fest eingebaut hatte).
+- `th-erfolge` 58 Erfolge / 15 Missionen, jeder Zähler geschrieben, keine Bedingung wirft · `th-speichern` 40 Felder
+  verlustfrei · `th-alle --schnell` 10 von 11 (der eine Befund: nächster Punkt).
+
+### 5. Nebenbefund: das Bodenmessgerät kannte die Pirateninsel nicht
+`th-alle --schnell` meldete „Boden: 12 im Wasser" — alle auf der Pirateninsel (Runde 95) oder am Steg: Palmen, Kisten,
+Fässer, das Piratenschiff, fünf Steg-Elemente. Das Werkzeug kannte nur Rechteck-Wasserflächen und nur deutsche Namen für
+„darf im Wasser stehen" (`schiff`, `steg` — die Dateien heissen `ship`, `dock`). Jetzt erkennt es Inseln selbst (flache
+`CircleGeometry`-Scheiben bei y ≈ 0 mitten im Wasser; keine Koordinaten im Werkzeug) und prüft sich: **ohne die Insel-Regel
+MÜSSEN die Insel-Bauten im Wasser stehen**, sonst bricht es ab. Genau das schlug beim ersten Lauf an — nicht weil die Regel
+falsch war, sondern weil nach 30 s fester Wartezeit die Insel-Modelle (230 m vom Start; seit Runde 103 laden nahe Modelle
+zuerst) noch gar nicht da waren: 869 Bauwerke geprüft statt 915. Das Werkzeug wartet jetzt wie th-fahrt auf das Ladesignal
+und auf Ruhe (`warteAufRuhe`), nicht auf eine Frist. Nebenbei: der Ufer-Spiegel `U(−φ)` aus Runde 102 (th-see,
+th-laternen) fehlte hier auch — nachgezogen.
+
+Mit der vollen Welt (1'035 statt 869 Bauwerke) fand das Werkzeug dann noch eines: das **Wrack** (−281|121) „2,2 m im Fels".
+Es liegt absichtlich halb versunken (y −1,8, Runde 95) — die Fels-Prüfung lief vor der Wasser-Prüfung, und das Gelände unter
+dem Meer ist 0. Was im Wasser stehen darf, darf auch unter dem Wasserspiegel liegen: erst Wasser bestimmen, dann Fels.
+**Nachher:** Welt ruhig nach 116 s, **1'035 Bauwerke** geprüft, 2 Inseln erkannt (Sand r 22 und Grasfleck r 9), 17 Bauwerke
+darauf, Gegenprobe ✓ (ohne Insel-Regel 17 „im Wasser") — **im Fels 0 · schwebt 0 · im Wasser 0**.
+
+### 6. Nebenbefund: die Rahmenprobe von th-erfolge mass die Ladephase
+`th-erfolge` meldete zweimal hintereinander ❌ „mehr als ein Viertel der Bilder fällt aus" (28 %, 29 %), beim ersten Lauf
+desselben Stands 13 %. Die Probe zählte 4 s Bilder ohne, dann 4 s mit einer werfenden Bedingung — **26 s nach dem Start,
+mitten in der Ladephase** (der Parser blockiert den Hauptfaden bis 13,8 s am Stück, Runde 103). Das spätere Fenster ist
+dann immer das langsamere, Gift hin oder her. Jetzt: erst `warteAufRuhe`, dann vier Fenster im Wechsel (ohne · mit · ohne ·
+mit), ein Drift trifft beide Seiten gleich. **Nachher:** Welt ruhig nach 133 s, 26 Bilder in 2×4 s ohne Gift, 30 mit —
+der Wurf kostet die Bildschleife nichts Messbares (die ❌ waren Ladephase, nicht Gift); 58 Erfolge, 15 Missionen, keine
+Bedingung wirft, jeder Zähler geschrieben.
+
+### Lehren
+1. **Eine Sonde, die plötzlich Stillstand meldet, verdächtigt zuerst sich selbst.** Ein fehlendes `+` im Regex sah aus wie
+   ein totes Spiel; entlarvt hat es die Quelle-Zeile der Ausgabe, nicht die Tabelle — darum druckt die Sonde, was sie
+   gelesen hat.
+2. **Was die Sonde nicht modelliert, muss man lesen.** Komfort steht in keiner Simulation; die Leiter wäre im echten Spiel
+   kurz über dem Palast stehen geblieben, mit allen Sondenwerten grün.
+3. **Ein Messgerät, das zu früh misst, misst eine andere Welt.** 869 statt 915 Bauwerke bei th-boden, und th-erfolges
+   Rahmenprobe verglich zwei Fenster, die verschieden tief in der Ladephase lagen. Die Insel-Gegenprobe hat den ersten Fall
+   gefangen — aus einem Grund, den ich nicht vorgesehen hatte. Gegenproben, die „nichts gefunden" als Fehler werten, fangen
+   auch die unbekannten Ursachen. Und ein Vergleich A gegen B braucht A-B-A-B, sobald die Maschine selbst driftet.

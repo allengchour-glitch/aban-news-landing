@@ -162,7 +162,7 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   oder schnelleres Gerät tut. Was man sehen soll, gehört darum `fest`.
 
 **Runde 103 (User: „handy spiel optimieren, gutes langes süchtiges spiel draus machen"):**
-- `probe-sog.mjs [tage=60]` — die Sog-Kurve OHNE Browser: liest jede Formel per Regex aus `traumhaus.html` (Startgeld,
+- `probe-sog.mjs [tage=365]` — die Sog-Kurve OHNE Browser: liest jede Formel per Regex aus `traumhaus.html` (Startgeld,
   Uhr-Takt, Abnahme-Takt, Wohnstufen, Katalog mit Preisen/Sperren, Erfolge, Missionen, Aufträge, Häuser, Miete, Lohn-,
   Liefer-, Taxi-, Ernte-, Angel-Formeln, Kombo, Rang-Punkte samt Funktionsrumpf, Ausbau, Orte, Rückkehr) — fehlt eine
   Zeile, bricht sie ab statt zu raten — und spielt damit N Spieltage (1 Spieltag = 360 s echt) für zwei Spielertypen
@@ -179,3 +179,16 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   `orteCheck`), Gegenprobe 300 m daneben, Hauskauf + fünf Ausbauten über die echten Funktionen (Preis verdoppelt,
   Miete ×3, Deckel), Rang-Prämie genau einmal, Kopfzeile nach dem Palast, Spielstand (il/rg im Snapshot, zt in
   saveGame, Umweg speichern→laden), Sperren Stufe 4/5, keine werfende Erfolgs-/Missionsbedingung.
+
+**Runde 104 (User: „das spiel sollte viel länger gehen als 60 tage, ein unendliches spiel"):**
+- `probe-sog.mjs` — Standard jetzt **365 Tage**. Stufen ab 6 und Ränge ab 9 kommen aus den Erzeugerfunktionen der Quelle
+  (`stufeDaten`, `rangSchwelle`, `rangDaten` — als Funktionsrumpf übernommen), Stufe ≥ 6 misst das Vermögen (Hauswert +
+  Häuser + Ausbauten), Ausbau bis `IMMO_LV_MAX` (der billigste nächste Ausbau zuerst, nicht Haus 1 bis 12 durch), Punkte
+  auch aus dem Gesamtverdienst. Neue Zeilen: Ereignis-Tage je 30 Tage, zweite Jahreshälfte (Stufen / Ränge / Ausbauten).
+  ⚠️ `(\d)` statt `(\d+)` las aus „12" eine 1 — Stufenleiter „tot ab 6", obwohl das Spiel lief. Die Quelle-Zeile der
+  Ausgabe („Ausbau bis Stufe 1") hat es verraten: lesen, was die Sonde gelesen hat.
+- `probe-r104.mjs` — laufen die Leitern im Spiel: Stufen 5–13 aus `stufeDaten` (Ziel steigt, Vermögen, Komfort bleibt 12),
+  Ränge 8–14 mit `rangIdx` an der Schwelle und Schwelle−1 darunter (Gegenprobe), Lücke bei Stufe 5, elf Ausbauten bis 12
+  über die echte Funktion, Abnahme über 5 hinaus, Kopfzeile bei Stufe 9 vor dem Ausbau (Fehlbetrag in $), 25'000 $ verdient
+  = +10 Punkte, Spielstand-Umweg mit Stufe 9 + Ausbau 12, Erfolge ohne Wurf.
+- `probe-r103.mjs` liest den Ausbau-Deckel aus der Quelle (`IMMO_LV_MAX`; Miete ×(1 + 0,5·(Deckel − 1))) statt fest 5.

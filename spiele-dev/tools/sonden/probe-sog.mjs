@@ -16,9 +16,12 @@
    Seit Runde 103 kennt die Sonde auch Buergerrang (Punkte-Formel aus der Quelle, Praemie, +% je Rang), Haus-Ausbau,
    Entdecker-Album (Orte je Tag: Annahme 1 gemuetlich / 2 aktiv) und die Rueckkehr-Belohnung (eine Sitzung je
    3 Spieltage, 12 h Pause). Erfolge je Tag sind eine Annahme (6+0,8/Tag aktiv, 5+0,5/Tag gemuetlich, gedeckelt).
-   Aufruf: node spiele-dev/tools/sonden/probe-sog.mjs [tage=60] */
+   Runde 104: Stufen ab 6 und Raenge ab 9 kommen aus den Erzeugerfunktionen der Quelle (stufeDaten, rangSchwelle,
+   rangDaten — als Funktionsrumpf uebernommen), Stufe ≥ 6 misst das Vermoegen (Hauswert + Haeuser + Ausbauten),
+   Ausbau bis IMMO_LV_MAX, Punkte auch aus dem Gesamtverdienst. Standard sind jetzt 365 Tage (36,5 h).
+   Aufruf: node spiele-dev/tools/sonden/probe-sog.mjs [tage=365] */
 import { readFileSync } from 'node:fs'
-const TAGE = +(process.argv[2] || 60)
+const TAGE = +(process.argv[2] || 365)
 const src = readFileSync('traumhaus.html', 'utf8')
 const zeile = (re, was) => { const m = src.match(re); if (!m) throw new Error('Formel nicht gefunden: ' + was); return m }
 /* Klammer-Abgleich statt "naechstes ];" — NPC_AUFTRAEGE schliesst auf derselben Zeile wie das letzte Element. */
@@ -52,11 +55,15 @@ const RANG_PRAEMIE = +zeile(/pr\+=Math\.round\((\d+)\*k\*modusFaktor\(\)\)/, 'Ra
 /* Punkte-Formel: der Funktionsrumpf aus der Quelle, mit den Spielvariablen als Parameter */
 const _rpSrc = block('function rangPunkte(){', 'rangPunkte')
 const rangPunkteF = new Function('stats', 'achDone', 'immo', 'skills', 'wohnstufe', 'missSerie', _rpSrc.slice(1, -1).replace(/typeof immo!=="undefined"\?immo\.length:0/, 'immo.length'))
-const rangIdxF = (p) => { let i = 0; for (let k = 0; k < RAENGE.length; k++) if (p >= RAENGE[k][2]) i = k; return i }
+const immoWertS = (immoLv) => immoLv.reduce((w, l, i) => w + HAUS_PREISE[i % HAUS_PREISE.length] * (1 + 1.5 * (Math.pow(2, l - 1) - 1)), 0)
+const _fnSrc = (name) => { const i = src.indexOf('function ' + name + '('); if (i < 0) throw new Error('Funktion fehlt: ' + name); const k = src.indexOf('{', i); let t = 0, j = k; for (; j < src.length; j++) { if (src[j] === '{') t++; else if (src[j] === '}') { t--; if (t === 0) break } } return src.slice(i, j + 1) }
+const _erz = new Function('WOHNSTUFEN', 'RAENGE', 'STUFEN_MEHR', [_fnSrc('roemisch'), _fnSrc('stufeDaten'), _fnSrc('rangSchwelle'), _fnSrc('rangDaten')].join('\n') + '; return { stufeDaten, rangSchwelle, rangDaten }')(WOHNSTUFEN, RAENGE, new Function('return ' + block('var STUFEN_MEHR=[', 'STUFEN_MEHR'))())
+const stufeDaten = _erz.stufeDaten, rangSchwelle = _erz.rangSchwelle, rangDaten = _erz.rangDaten
+const rangIdxF = (p) => { let i = 0; while (i < 400 && p >= rangSchwelle(i + 1)) i++; return i }
 const _af = zeile(/hs\.preis\*([\d.]+)\*Math\.pow\(([\d.]+),\(immoLv\[i\]\|\|1\)-1\)/, 'Ausbau-Preis')
 const AUSBAU_F = +_af[1], AUSBAU_POW = +_af[2], ausbauPreis = (preis, lv) => Math.round(preis * AUSBAU_F * Math.pow(AUSBAU_POW, lv - 1))
 const AUSBAU_MIETE = +zeile(/m\+=150\*\(1\+([\d.]+)\*\(\(immoLv\[i\]\|\|1\)-1\)\)/, 'Ausbau-Miete')[1]
-const LV_MAX = +zeile(/IMMO_LV_MAX=(\d)/, 'IMMO_LV_MAX')[1]
+const LV_MAX = +zeile(/IMMO_LV_MAX=(\d+)/, 'IMMO_LV_MAX')[1]   /* (\d+): mit (\d) las die Sonde aus „12“ eine 1 — kein Ausbau, Stufenleiter tot ab 6 (Runde 104, erster Lauf) */
 const ORT_LOHN = +zeile(/var pr=Math\.round\((\d+)\*stufenBonus\(\)\);verdiene\(pr,false\)/, 'Orte-Lohn')[1]
 const ORTE_N = new Function('return ' + block('var WORLD_POIS=[', 'WORLD_POIS'))().length + 1 /* + "Dein Grundstueck" (push) */
 const _rk = zeile(/ertrag=Math\.round\(\((\d+)\+immoMiete\(\)\*([\d.]+)\)\*hst\*stufenBonus\(\)\)/, 'Rueckkehr')
@@ -96,8 +103,8 @@ function simuliere(name, prof, faktor = 1) {
   const immoMieteS = () => immoLv.reduce((m, l) => m + MIETE * (1 + AUSBAU_MIETE * (l - 1)), 0)
   let geld = START, hausWert = 0, stufe = 0, lv = 1, xp = 0, serie = 0, immo = 0, tagRealSess = 0
   const autos = [], ereignisse = [], tageOhne = [], immoLv = []
-  let questIdx = 0, fische = 0, lief = 0, nextAbnahme = TAKT, orte = 0, quests = 0, abnahmen = 0, rangGezahlt = 0, rang = 0
-  const punkte = (tag) => rangPunkteF({ quests, orte: new Array(orte), immoAusbau: immoLv.reduce((a, l) => a + (l - 1), 0), abnahmen }, Object.fromEntries(new Array(Math.min(ACH_N, Math.round(prof.ach0 + prof.achTag * tag))).fill(0).map((_, i) => ['a' + i, 1])), new Array(immo), { arbeit: { lv } }, stufe, serie)
+  let questIdx = 0, fische = 0, lief = 0, nextAbnahme = TAKT, orte = 0, quests = 0, abnahmen = 0, rangGezahlt = 0, rang = 0, verdient = 0
+  const punkte = (tag) => rangPunkteF({ quests, orte: new Array(orte), immoAusbau: immoLv.reduce((a, l) => a + (l - 1), 0), abnahmen, verdient }, Object.fromEntries(new Array(Math.min(ACH_N, Math.round(prof.ach0 + prof.achTag * tag))).fill(0).map((_, i) => ['a' + i, 1])), new Array(immo), { arbeit: { lv } }, stufe, serie)
   for (let tag = 1; tag <= TAGE; tag++) {
     const neu = []
     rang = rangIdxF(punkte(tag)); const sb = bonusF(stufe, rang)
@@ -117,7 +124,7 @@ function simuliere(name, prof, faktor = 1) {
     /* Treue-Bonus: eine echte Sitzung ≈ 3 Spieltage (18 min) */
     if (tag % 3 === 1) { tagRealSess++; einn += streakF(tagRealSess); if (tagRealSess > 1) einn += Math.round((RUECK.basis + immoMieteS() * RUECK.mieteAnteil) * RUECK.maxH * sb) }
     einn += Math.round(immoMieteS() * sb)
-    geld += Math.round(einn * faktor)
+    geld += Math.round(einn * faktor); verdient += Math.round(einn * faktor)
     /* Stadt-Auftraege (feste Liste, dann endlos) */
     if (questIdx < QUESTS.length) {
       const q = QUESTS[questIdx]; let ok = false
@@ -131,20 +138,22 @@ function simuliere(name, prof, faktor = 1) {
       if (ok) { geld += q[3]; neu.push('Auftrag „' + q[2] + '" +' + q[3]); questIdx++; quests++ }
     } else if (tag % 3 === 0) { const n = questIdx - QUESTS.length; const t = PQ[n % PQ.length](n, { fische: 0, furn: 0, grow: 0, mv: 0, stunts: 0, liefer: 0, verm: 0 }); geld += t.rw; questIdx++; quests++; if (n < 2) neu.push('Endlos-Auftrag ' + (n + 1) + ' +' + t.rw) }
     /* Ausgaben: Moebel bis zur naechsten Stufe, dann Haeuser, dann Autos */
-    const ziel = WOHNSTUFEN[Math.min(stufe + 1, WOHNSTUFEN.length - 1)]
-    if (stufe < WOHNSTUFEN.length - 1 && hausWert < ziel[1]) { const k = Math.min(geld - 100, ziel[1] - hausWert); if (k > 0) { geld -= k; hausWert += k } }
+    const ziel = stufeDaten(stufe + 1)
+    if (ziel[5] !== 'vermoegen' && hausWert < ziel[1]) { const k = Math.min(geld - 100, ziel[1] - hausWert); if (k > 0) { geld -= k; hausWert += k } }
     else {
       const hp = HAUS_PREISE[immo % HAUS_PREISE.length]
-      const ab = immoLv.findIndex((l) => l < LV_MAX)
+      /* naechster Ausbau = der billigste (niedrigste Stufe, guenstigstes Haus) — nicht Haus 1 bis 12 durchziehen, waehrend 14 Haeuser auf Stufe 1 stehen */
+      let ab = -1, abP = Infinity; immoLv.forEach((l, i) => { if (l < LV_MAX) { const p = ausbauPreis(HAUS_PREISE[i % HAUS_PREISE.length], l); if (p < abP) { abP = p; ab = i } } })
       if (immo < IMMO_N && geld - 100 >= hp) { geld -= hp; immo++; immoLv.push(1); neu.push('Haus ' + immo + ' (' + hp + ')') }
       else if (ab >= 0 && geld - 100 >= ausbauPreis(HAUS_PREISE[ab % HAUS_PREISE.length], immoLv[ab])) { geld -= ausbauPreis(HAUS_PREISE[ab % HAUS_PREISE.length], immoLv[ab]); immoLv[ab]++; neu.push('Ausbau Haus ' + (ab + 1) + ' → ' + immoLv[ab]) }
       else { const c = CARS.find((a) => !autos.includes(a.id) && (a.stufe <= stufe) && geld - 100 >= a.cost); if (c) { geld -= c.cost; autos.push(c.id); hausWert += c.cost; neu.push('Auto ' + c.n) } }
     }
     /* Abnahme alle TAKT Tage */
     if (tag >= nextAbnahme) { nextAbnahme = tag + TAKT
-      if (stufe < WOHNSTUFEN.length - 1 && hausWert >= WOHNSTUFEN[stufe + 1][1]) { stufe++; abnahmen++; geld += WOHNSTUFEN[stufe][4]; neu.push('STUFE ' + stufe + ' ' + WOHNSTUFEN[stufe][0].trim() + ' (+' + WOHNSTUFEN[stufe][4] + ')')
+      const zn = stufeDaten(stufe + 1), wert = zn[5] === 'vermoegen' ? hausWert + immoWertS(immoLv) : hausWert
+      if (wert >= zn[1]) { stufe++; abnahmen++; geld += zn[4]; neu.push('STUFE ' + stufe + ' ' + zn[0].trim() + ' (' + (zn[5] === 'vermoegen' ? 'Vermögen ' : '') + zn[1] + ', +' + zn[4] + ')')
         GATED.filter((g) => g.stufe === stufe).forEach((g) => neu.push('frei: ' + g.n)) } }
-    const ri = rangIdxF(punkte(tag)); if (ri > rangGezahlt) { rangGezahlt = ri; geld += RANG_PRAEMIE * ri; neu.push('RANG ' + RAENGE[ri][0] + ' ' + RAENGE[ri][1] + ' (+' + RANG_PRAEMIE * ri + ', +' + Math.round(ri * _sb[2] * 100) + ' %)') }
+    const ri = rangIdxF(punkte(tag)); if (ri > rangGezahlt) { rangGezahlt = ri; geld += RANG_PRAEMIE * ri; neu.push('RANG ' + rangDaten(ri)[0] + ' ' + rangDaten(ri)[1] + ' (' + rangSchwelle(ri) + ' Pkt, +' + RANG_PRAEMIE * ri + ', +' + Math.round(ri * _sb[2] * 100) + ' %)') }
     if (neu.length) ereignisse.push({ tag, min: Math.round(tag * TAG_S / 60), geld, hausWert, stufe, rang: ri, neu })
     else tageOhne.push(tag)
   }
@@ -160,11 +169,13 @@ for (const [name, prof] of Object.entries(PROFILE)) {
   console.log(`\n=== ${name.toUpperCase()} (${TAGE} Tage = ${Math.round(TAGE * TAG_S / 60)} min) ===`)
   for (const e of r.ereignisse) console.log(`  Tag ${pad(e.tag, 3)} ${pad(e.min + ' min', 8)} Geld ${pad(e.geld, 6)} Haus ${pad(e.hausWert, 6)} S${e.stufe} R${e.rang}  ${e.neu.join(' · ')}`)
   const letzte = r.ereignisse.length ? r.ereignisse[r.ereignisse.length - 1] : null
-  const stufenTage = [1, 2, 3, 4, 5].map((s) => { const e = r.ereignisse.find((x) => x.neu.some((n) => n.startsWith('STUFE ' + s))); return `S${s}: ${e ? e.tag + ' (' + e.min + ' min)' : '—'}` })
+  const stufenTage = [1, 3, 5, 6, 8, 10, 12].map((s) => { const e = r.ereignisse.find((x) => x.neu.some((n) => n.startsWith('STUFE ' + s))); return `S${s}: ${e ? e.tag + ' (' + e.min + ' min)' : '—'}` })
   console.log(`  Stufen: ${stufenTage.join(' · ')}`)
-  console.log(`  Ende: Stufe ${r.stufe}, Rang ${r.rang} ${RAENGE[r.rang][1]} (${r.punkte} Pkt), ${r.geld} $ Bargeld, Hauswert ${r.hausWert}, ${r.immo}/${IMMO_N} Haeuser, ${r.autos.length}/${CARS.length} Autos, ${r.orte}/${ORTE_N} Orte`)
+  console.log(`  Ende: Stufe ${r.stufe} ${stufeDaten(r.stufe)[0]}, Rang ${r.rang} ${rangDaten(r.rang)[1]} (${r.punkte} Pkt), ${r.geld} $ Bargeld, Hauswert ${r.hausWert}, ${r.immo}/${IMMO_N} Haeuser, ${r.autos.length}/${CARS.length} Autos, ${r.orte}/${ORTE_N} Orte`)
   console.log(`  Tage ohne Neues: ${r.tageOhne.length} von ${TAGE}` + (r.tageOhne.length ? ` (erster: ${r.tageOhne[0]}, laengste Luecke: ${(() => { let best = 0, cur = 0, prev = 0; for (const t of r.tageOhne) { cur = t === prev + 1 ? cur + 1 : 1; prev = t; best = Math.max(best, cur) } return best })()} Tage)` : ''))
   console.log(`  Horizont (letzter Neuzugang): Tag ${letzte ? letzte.tag + ' = ' + letzte.min + ' min' : '—'}`)
+  const je30 = []; for (let a = 1; a <= TAGE; a += 30) je30.push(r.ereignisse.filter((e) => e.tag >= a && e.tag < a + 30).length); console.log(`  Ereignis-Tage je 30 Tage: ${je30.join(' · ')}`)
+  const spaet = r.ereignisse.filter((e) => e.tag > TAGE / 2); console.log(`  Zweite Haelfte (Tag ${Math.floor(TAGE / 2) + 1}–${TAGE}): ${spaet.length} Ereignis-Tage, davon Stufen ${spaet.filter((e) => e.neu.some((n) => n.startsWith('STUFE'))).length}, Raenge ${spaet.filter((e) => e.neu.some((n) => n.startsWith('RANG'))).length}, Ausbauten ${spaet.filter((e) => e.neu.some((n) => n.startsWith('Ausbau'))).length}`)
 }
 /* Gegenprobe */
 const a = simuliere('aktiv', PROFILE.aktiv), b = simuliere('aktiv x2', PROFILE.aktiv, 2)
