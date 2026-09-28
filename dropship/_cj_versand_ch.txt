@@ -1061,3 +1061,5 @@ gid://shopify/Product/15449168871809	nicht-versendbar	Aluminium-Koffer mit Rahme
 gid://shopify/Product/15497425092993	ok	4-in-1 Bauchtrainer mit Rebound-Funktion
 gid://shopify/Product/15502590017921	ok	Smarter Vorhangmotor mit Fernbedienung
 gid://shopify/Product/15448941855105	nicht-versendbar	Hundebett mit Blachen-Sonnendach
+gid://shopify/Product/15448940773761	nicht-versendbar	360° drehbares Katzenbett für den Schreibtisch
+gid://shopify/Product/15480563564929	ok	Supernieren-Richtmikrofon
