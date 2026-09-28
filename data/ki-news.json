@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-27T09:59:15Z",
+ "stand": "2026-09-28T10:51:00Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -7,79 +7,79 @@
   "TechCrunch AI",
   "MIT Tech Review",
   "heise",
-  "Golem",
   "t3n",
   "netzpolitik.org"
  ],
  "nicht_erreichbar": [
   "VentureBeat AI",
+  "Golem",
   "BSI"
  ],
  "fenster_h": 72,
  "items": [
   {
-   "t": "Tausende Sensoren, eine KI: So überwachen Forscher Wärmetauscher in Atomreaktoren",
-   "u": "https://t3n.de/news/ki-ueberwachung-atomreaktor-waermetauscher-sensoren-1764697/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Auf Sand gebaut: Oracle-Schreiben wirft Schlaglicht auf Probleme bei KI-Projekten",
+   "u": "https://t3n.de/news/oracle-probleme-ki-projekte-1765379/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-27T09:40:00Z",
-   "s": "In Systemen, in denen flüssiges Salz bei extremen Temperaturen zirkuliert, können selbst kleinste Strömungsabweichungen weitreichende Folgen haben. Wenn die Substanz lokal abkühlt und erstarrt, entzie…",
+   "d": "2026-09-28T10:00:17Z",
+   "s": "Oracle steht bei dem milliardenschweren Project Jupiter offenbar unter Druck. Der Konzern hat dem Projektentwickler eine Force-Majeure-Mitteilung geschickt, um sich finanziell abzusichern. Der Move ze…",
    "sprache": "de"
   },
   {
-   "t": "Nach KI-Vorfällen: China und USA richten KI-Kommunikationskanal ein",
-   "u": "https://www.golem.de/news/nach-ki-vorfaellen-china-und-usa-richten-ki-kommunikationskanal-ein-2609-213468.html",
-   "q": "Golem",
-   "d": "2026-09-27T09:25:01Z",
-   "s": "China und die USA ringen um die Vorherrschaft bei der KI-Entwicklung. Dennoch wollen beide Länder sich über Zwischenfälle gegenseitig informieren. (KI, Cyberwar)",
-   "sprache": "de"
-  },
-  {
-   "t": "Android-Nutzer aufgepasst: Neue Malware tarnt sich als Chrome-Browser",
-   "u": "https://t3n.de/news/android-malware-rathat-ki-chrome-werksreset-1764460/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-27T09:00:00Z",
-   "s": "Android-User:innen müssen derzeit mehr Vorsicht im Netz walten lassen. Eine neue Malware, die KI für ihre Zwecke missbraucht, hat es speziell auf Geräte mit Googles Betriebssystem abgesehen. Welche Sc…",
-   "sprache": "de"
-  },
-  {
-   "t": "Smarte Verkehrssysteme: \"Was richtig ist, sollte uns nicht der Algorithmus sagen\"",
-   "u": "https://www.golem.de/news/smarte-verkehrssysteme-was-richtig-ist-sollte-uns-nicht-der-algorithmus-sagen-2609-213437.html",
-   "q": "Golem",
-   "d": "2026-09-27T05:30:02Z",
-   "s": "Smarte Verkehrssysteme sollen Städte sicherer machen. Allerdings verlangen sie hohe Investitionen und könnten das Prinzip auf den Kopf stellen, nach dem Städte funktionieren. Ein Interview von Tim Rei…",
-   "sprache": "de"
-  },
-  {
-   "t": "Google tests buying from Walmart-owned Flipkart through Gemini and AI Mode in India",
-   "u": "https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-27T01:30:00Z",
-   "s": "The limited test covers select products and users, with a broader rollout planned for later in October.",
+   "t": "Holo4: powering generalist computer-use agents",
+   "u": "https://huggingface.co/blog/Hcompany/holo4",
+   "q": "Hugging Face",
+   "d": "2026-09-28T09:44:05Z",
+   "s": "",
    "sprache": "en"
   },
   {
-   "t": "Insurers claim AI is already increasing healthcare costs",
-   "u": "https://techcrunch.com/2026/09/26/insurers-claim-ai-is-already-increasing-healthcare-costs/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-26T21:02:06Z",
-   "s": "Blue Cross Blue Shield says hospital use of AI tools led to an additional $942M in healthcare spending over a two-year period.",
+   "t": "OpenAI pausiert Training neuer KI-Modelle nach weiterem Vorfall: So soll es jetzt weitergehen",
+   "u": "https://t3n.de/news/openai-pausiert-ki-training-neue-modelle-1765374/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-28T09:30:46Z",
+   "s": "OpenAI zieht die Notbremse bei der KI‑Entwicklung. Das Training noch leistungsfähigerer Modelle wird nach einem weiteren Zwischenfall vorerst gestoppt. Was das Unternehmen mit dieser Pause erreichen w…",
+   "sprache": "de"
+  },
+  {
+   "t": "Fast eine Milliarde Dollar mehr: KI treibt US-Krankenhauskosten in die Höhe",
+   "u": "https://www.heise.de/news/Fast-eine-Milliarde-Dollar-mehr-KI-treibt-US-Krankenhauskosten-in-die-Hoehe-11467841.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-28T09:05:00Z",
+   "s": "Laut aktueller Analyse habe sich die Zahl der Patienten mit komplexen Diagnosen seit 2023 deutlich erhöht, jedoch ohne entsprechenden Anstieg bei Behandlungen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Insta360 lotet Kamerabrillen als neue Produktkategorie aus",
+   "u": "https://www.heise.de/news/Insta360-lotet-Kamerabrillen-als-neue-Produktkategorie-aus-11467791.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-09-28T09:03:00Z",
+   "s": "Insta360 prüft Kamerabrillen als neue Geräteklasse. Im Fokus soll die unkomplizierte Aufnahme hochwertiger Bilder statt KI-Funktionen stehen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Who’s liable when AI agents go rogue?",
+   "u": "https://www.technologyreview.com/2026/09/28/1145197/whos-liable-when-ai-agents-go-rogue/",
+   "q": "MIT Tech Review",
+   "d": "2026-09-28T08:06:22Z",
+   "s": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of technology to help you understand what’s coming next. You can read more from the series here. Over the past few mon…",
    "sprache": "en"
   },
   {
-   "t": "OpenAI informiert „dutzende“ Institutionen über unbefugte KI-Interaktionen",
-   "u": "https://www.heise.de/news/KI-von-OpenAI-stellte-Nutzer-Bilder-auf-Online-Plattformen-11466970.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-26T11:27:00Z",
-   "s": "OpenAIs KI platzierte Bilder seiner Nutzer auf Online-Plattformen. Es ist der erste bekannte Sicherheitsvorfall bei dem ChatGPT-Nutzerdaten involviert sind.",
-   "sprache": "de"
+   "t": "Anthropic’s CEO is about to have dinner with President Trump",
+   "u": "https://techcrunch.com/2026/09/27/anthropics-ceo-is-about-to-have-dinner-with-president-trump/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-27T20:34:28Z",
+   "s": "This will be the first one-on-one meeting between Dario Amodei and Donald Trump",
+   "sprache": "en"
   },
   {
-   "t": "heise-Angebot: MedConf Herbst 2026: Das erwartet Konferenzteilnehmer im November",
-   "u": "https://www.heise.de/news/MedConf-Herbst-2026-Das-erwartet-Konferenzteilnehmer-im-November-11319510.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-09-26T11:00:00Z",
-   "s": "KI, digitale Zwillinge und Diskussion zu vernetzten Medizingeräten: Ende November trifft sich die Medizintechnik-Community in Unterhaching bei München.",
-   "sprache": "de"
+   "t": "Can Muse overcome Meta’s trust issues?",
+   "u": "https://techcrunch.com/2026/09/27/can-muse-overcome-metas-trust-issues/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-27T19:57:30Z",
+   "s": "On Equity, we discussed how Meta's AI announcement managed to steal the spotlight from OpenAI and Anthropic.",
+   "sprache": "en"
   },
   {
    "t": "Proaction boosts sales 60% and saves 75+ hours with Codex",
