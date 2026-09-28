@@ -40518,3 +40518,9 @@ gid://shopify/Product/15495188152705	CHF 14.93	48 Varianten	Kinder Booties mit S
 gid://shopify/Product/15495188251009	CHF 13.26	1 Varianten	Silikon-Staubmaske mit Anti-Beschlag-Brille
 gid://shopify/Product/15495188283777	CHF 6.30	1 Varianten	Nagellack-Schleifring-Lager
 gid://shopify/Product/15495188414849	CHF 7.04	1 Varianten	Kinder-Spielzeug-Handy mit Touch & Musik
+gid://shopify/Product/15495188480385	CHF 12.16	24 Varianten	Mädchen-Lederstiefel mit Samtfutter
+gid://shopify/Product/15495188611457	CHF 9.99	1 Varianten	Kopfbedeckung für Outdoor-Aktivitäten · 27 × 32 cm
+gid://shopify/Product/15495188775297	CHF 32.09	1 Varianten	Niedliches Plüschkissen – verschiedene Designs
+gid://shopify/Product/15495188873601	CHF 13.18	1 Varianten	Velo-Multifunktions-Ratschenschlüssel-Set
+gid://shopify/Product/15495188939137	CHF 14.46	30 Varianten	Niedrige Kinderschuhe mit Klettverschluss
+gid://shopify/Product/15495188971905	CHF 28.23	1 Varianten	Vollgesichtsmaske für umfassenden Schutz
