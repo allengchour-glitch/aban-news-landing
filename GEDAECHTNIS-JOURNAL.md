@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 📮 Kundenmail von info@luxestyle.ch: der Hetzner-Weg endet an Shopifys Bot-Wand
+Betreiber: «nochmal mail im info@luxestyle machen … mit hetzner machen mail» (#1019, Kundin ohne Antwort). Gemessen:
+- Der Gmail-Konnektor sendet NUR vom privaten Gmail (kein Absender-Feld). `automation/zoho_mail.py` (SMTP info@ über den Proxy, getestet 07.07.)
+  braucht `ZOHO_APP_PASSWORD`, und das ist weder in der Cloud noch auf dem Server gesetzt.
+- Neues Skript `automation/browser/shopify_kunde_mailen.mjs` (Kontakt-Dialog der Bestellung, zweistufig Probe/Senden, keine Adresse im
+  öffentlichen Repo, nur SHA-256; keine Fotos; Mail/Tel maskiert). Probe 16:17: **HTTP 403 «Deine Verbindung muss verifiziert werden»** auf der
+  Bestellseite. Die Anmelde-Messung vom 17.09. («Shopify Admin angemeldet») stimmt für die Bestellseiten heute nicht.
+LEHRE: Eine Anmelde-Messung ist nur ein Zeitpunkt. Die Bot-Wand kommt je Seite und je Tag. Die Dauerlösung für Kundenmails von der Shop-Adresse
+ist `ZOHO_APP_PASSWORD` als Umgebungsvariable (Betreiber-Klick), nicht der Browser.
+
 ## 2026-09-28 · ⏱️ Kadenz-Sperre zählte fremde Kanäle (Verbesserungsrunde 12:26)
 GEMESSEN: Der Autopilot meldete seit 27.09. 22:26 stündlich «Reel fällig» und danach «Kadenz-Wache … <6h → kein Post». Letzte Posts: IG/FB 04:09,
 TikTok 05:10, YouTube 08:11. `meta_reel_post.mjs` nahm für die Sperre jedes «posted…», auch die Metricool-Status in derselben CSV.
