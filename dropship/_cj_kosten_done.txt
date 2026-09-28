@@ -39630,3 +39630,4 @@ gid://shopify/Product/15495082115457	CHF 11.16	1 Varianten	Nagelverlängerungs-F
 gid://shopify/Product/15495082148225	CHF 8.16	1 Varianten	USB-LED-Kopflampe für Fischer
 gid://shopify/Product/15495082213761	CHF 17.97	1 Varianten	Nordischer Kissenbezug aus Baumwoll-Leinen
 gid://shopify/Product/15495082246529	CHF 9.88	1 Varianten	Machfally USB-Fahrradlicht mit StVZO-Zulassung
+gid://shopify/Product/15495082279297	CHF 6.89	1 Varianten	Teleskopisches 240W USB-C Ladekabel für iPhone 15
