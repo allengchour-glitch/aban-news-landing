@@ -39374,3 +39374,5 @@ gid://shopify/Product/15494696894849	CHF 12.55	1 Varianten	Hochwasser-Schutzstre
 gid://shopify/Product/15494697025921	CHF 128.11	1 Varianten	Spezialkleber für Lautsprecher-Reparaturen
 gid://shopify/Product/15494698172801	CHF 5.96	1 Varianten	Moto E5 Ladebuchse und Mikrofon Modul
 gid://shopify/Product/15494698467713	CHF 33.63	1 Varianten	Elektrische Schleifpenne
+gid://shopify/Product/15494698828161	CHF 7.68	1 Varianten	Notfall-Reifendichtmittel für Velos
+gid://shopify/Product/15494698860929	CHF 5.90	1 Varianten	Staubsauger-Adapter für V7/V8/V10/
