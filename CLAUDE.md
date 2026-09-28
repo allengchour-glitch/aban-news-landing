@@ -66,6 +66,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 (Takt monatlich–jährlich → monatliche Rückstellung für Steuern/Franchise/Jahresrechnungen, Muss/Kann/Sparen, Notreserve),
 Gratis-Seite `budget-rechner-schweiz.html`, Engine `tools/budget/engine.js` (7 Tests), Build `tools/budget/build.py`.
 Verkauf wie immer: Katalog-Eintrag → `stripe-shop.yml` starten → Link kommt automatisch auf die Seite.
+**✅ 28.09. Testkauf durch den User erfolgreich** (Zahlung → danke-kit.html → Download). Die Verkaufskette ist
+Ende-zu-Ende bestätigt. Nächster Hebel = Reichweite: Meta-Anzeigen `docs/werbung/schulden-plan/ANZEIGEN.md` (User schaltet).
 
 **📌 2026-09-25 (🛒 2. Produkt „Schulden-Plan Schweiz" CHF 27 + 🔒 LECK: `content/` war öffentlich):**
 - **Nach YouTube-Rezept** (Alex, „selling $27 ai digital products"): Nische Schulden → Offline-Rechner
