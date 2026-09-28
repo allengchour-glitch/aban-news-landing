@@ -4268,3 +4268,22 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15448954536321	Dieser Velohelm ist ideal für Pendler und alle, die auch bei kühleren Temperaturen nicht auf ihr E-Bike verzichten möchten.
 15448954569089	Diese Velo-Sturmhaube aus kühlendem Eisseiden-Gewebe schützt dein Gesicht und deinen Hals optimal vor Sonne und Wind während der Fahrt.
 15448954667393	Dieser vielseitige Ganzjahres-Elektromotorradhelm ist ideal für Pendler und bietet Komfort sowie Schutz in jeder Saison.
+15448954798465	Dieser robuste Reithelm ist ideal für den Einsatz im Freien und bietet zuverlässigen Schutz beim Pferdesport. Grösse L (58-62 cm).
+15448954831233	Dieser Skihelm mit Visier kombiniert Sicherheit und Komfort für dein nächstes Abenteuer auf der Piste. Grösse XL (62-65 cm).
+15448954896769	Dieses Reithelm-Visier ist der ideale Begleiter für alle Outdoor-Reitsportarten. Erhältlich in zwei Grössen (M68-73cm, L73-81cm).
+15448954962305	Dieser Reithelm bietet optimalen Schutz für Kopf und Hirn, sei es beim Springreiten, Dressurreiten oder einem gemütlichen Ausritt.
+15448955126145	Dieser vielseitige Helm ist dein idealer Begleiter für diverse Aktivitäten wie Velofahren, Rollschuhlaufen oder das Fahren von Balance Cars.
+15448955191681	Dieser verstellbare Reithelm bietet zuverlässigen Schutz für den Kopf bei allen Aktivitäten rund ums Pferd.
+15448955257217	Diese beheizbare Sturmhaube ist ideal für Motorradfahrer und andere Outdoor-Enthusiasten. Hergestellt aus 93% Polyester-Spandex und 7% Polyester.
+15448955289985	Dieser E-Bike-Helm ist der ideale Begleiter für Pendler und alle, die Wert auf Sicherheit und Komfort legen.
+15448955355521	Dieser Velohelm wurde entwickelt, um dir bei deinen Fahrten optimalen Schutz und Komfort zu bieten. Erhältlich in Grösse L (57-62cm).
+15448955453825	Dieser Unisex-Velohelm eignet sich ideal für Mountainbike-Touren und bietet eine integrierte Konstruktion für erhöhte Sicherheit.
+15448955552129	Dieses Velo-Frontlicht aus einer robusten Aluminiumlegierung sorgt für zuverlässige Beleuchtung auf deinen Fahrten. Gehäuse aus Aluminiumlegierung.
+15448955715969	Dieses 2er-Set LED-Tagfahrlichter ist ideal für die Umrüstung und Modifikation von Fahrzeugscheinwerfern. Ultra-helles weisses Licht (6000K).
+15448955814273	Dieses Velo-Rücklicht aus Aluminiumlegierung erhöht deine Sichtbarkeit im Strassenverkehr. Material: Aluminiumlegierung.
+15448955879809	Das intelligente Velo-Rücklicht sorgt für mehr Sicherheit bei Nachtfahrten. 4 Leuchtmodi.
+15448955912577	Dieses vielseitige Velo-Licht ist der ideale Begleiter für alle, die Wert auf Sicherheit und Komfort legen. Akkulaufzeit: 3-5 Stunden.
+15448956109185	Dieses leistungsstarke Velo-Frontlicht ist ideal für Mountainbike- und Rennradfahrer, die auch bei schlechten Lichtverhältnissen oder in der Nacht …
+15448956240257	Dieses USB-Velo-Rücklicht erhöht deine Sicherheit im Strassenverkehr.
+15448956404097	Sorge für mehr Sicherheit im Strassenverkehr mit diesem USB-Fahrradlicht.
+15448956666241	Dieses kompakte und leistungsstarke LED-Fahrradlicht sorgt für optimale Sichtbarkeit und Sicherheit auf deinen Fahrten.
