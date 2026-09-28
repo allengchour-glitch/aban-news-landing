@@ -49602,3 +49602,4 @@ gid://shopify/Product/15449426690433	ok	CJ-CJJJJTYS01691-Black Double cups	zurue
 gid://shopify/Product/15449427018113	ok	CJ-CJYDQTJM00163-Black set	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJYDQTJM00163 → 200, 2 Varianten, pid 965198AB-DFA3-4EC7-A614-3A6540D3DAFC, variant?pid → 200, Shop-Variantennamen 2/2 bei CJ)
 gid://shopify/Product/15449427280257	ok	CJ-CJJZSNSN00770-Ash 2pcs	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJZSNSN00770 → 200, 12 Varianten, pid 842B5DB4-E59C-42FC-BEAB-01893C169776, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
 gid://shopify/Product/15449432752513	bei-cj-weg	CJ-CJYD199511501AZ	via-varianten-wache-2026-09-23
+gid://shopify/Product/16592643817863	ok
