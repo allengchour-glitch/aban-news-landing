@@ -16,6 +16,7 @@ async function sperren() {
 const VORRANG_DATEI = '/tmp/cj_vorrang', VORRANG_SKRIPTE = ['cj_kosten_backfill'];
 const IMMER_FREI = ['cj_fulfill', 'cj_order', 'cj_zahlung', 'versand_stillstand', 'bestell', 'cj_takt'];
 const VORRANG_MAX_S = parseFloat(process.env.VORRANG_MAX_S || '5400');
+const ANTEIL = ['cj_video_reel_engine'];   // 28.09.: fester kleiner Anteil trotz Vorrang (siehe vorrangWarten)
 async function vorrangWarten() {
   const name = (process.argv[1] || '?').split('/').pop();
   if (VORRANG_SKRIPTE.some(v => name.startsWith(v))) { try { fs.writeFileSync(VORRANG_DATEI, name); } catch {} return; }
@@ -34,6 +35,17 @@ async function vorrangWarten() {
       }
     }
   } catch {}
+  // 28.09.2026 ANTEIL: der Reel-Motor wartete hinter dem Kosten-Nachtrag bis zu 90 min — der Container startet ~stündlich
+  // neu, also kam er NIE dran (Takt-Bericht 04:00: Kosten 91 Aufrufe, Reel-Motor 0; Cursor seit 20:00 unverändert, 4 Reels
+  // ready). Skripte in ANTEIL laufen trotz Vorrang, aber höchstens 1 Aufruf je ANTEIL_ABSTAND_S (eigene Uhr, alle ANTEIL-Skripte zusammen).
+  if (ANTEIL.some(v => name.startsWith(v))) {
+    const A = parseFloat(process.env.ANTEIL_ABSTAND_S || '90') * 1000, UHR = '/tmp/cj_anteil_letzter';
+    for (;;) {
+      let alter; try { alter = Date.now() - fs.statSync(UHR).mtimeMs; } catch { alter = A; }
+      if (alter >= A) { try { fs.writeFileSync(UHR, name); } catch {} return; }
+      await sleep(Math.min(A - alter, 30000) + 100);
+    }
+  }
   const ende = Date.now() + VORRANG_MAX_S * 1000;
   while (Date.now() < ende) {
     let alter; try { alter = Date.now() - fs.statSync(VORRANG_DATEI).mtimeMs; } catch { return; }

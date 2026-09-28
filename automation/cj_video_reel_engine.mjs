@@ -215,6 +215,34 @@ function gitPush(dateien, msg) {
   }
   return false;
 }
+// 28.09.2026 SERVER-WEG: Die Cloud erreicht download-only-api.cjdropshipping.com nicht (Proxy 403, gemessen 27./28.09.:
+// alle 4 Kandidaten «curl failed», seit 27.09. kein neues Reel). Der Hetzner-Server holt die Videos über den Auftragskasten
+// (automation/browser/cj_quellvideo_holen.mjs, höchstens 3 je Auftrag) nach auftraege/ergebnis/<auftrag>-rq-<pid>.mp4;
+// der nächste Lauf baut daraus. Merkliste dropship/_reel_serverquelle.txt (pid, Datum) verhindert Doppel-Aufträge (24 h).
+const SQ_MERK = 'dropship/_reel_serverquelle.txt';
+const sqName = pid => ('rq-' + String(pid).toLowerCase().replace(/[^a-z0-9-]/g, '')).slice(0, 41);
+function serverQuelle(pid) {
+  const n = sqName(pid);
+  try { const f = fs.readdirSync('auftraege/ergebnis').find(x => x.endsWith(`-${n}.mp4`)); return f ? `auftraege/ergebnis/${f}` : ''; }
+  catch { return ''; }
+}
+function sqAngefragt(pid) {
+  try { const heute = Date.now(); return fs.readFileSync(SQ_MERK, 'utf8').split('\n').some(z => { const [p, d] = z.split('\t'); return p === pid && heute - Date.parse(d) < 864e5; }); }
+  catch { return false; }
+}
+function sqAuftrag(liste) {
+  if (!liste.length) return;
+  const id = `cj-reelquellen-${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-')}`;
+  fs.mkdirSync('auftraege/offen', { recursive: true });
+  const datei = `auftraege/offen/${id}.json`;
+  fs.writeFileSync(datei, JSON.stringify({ id, typ: 'skript', skript: 'cj_quellvideo_holen.mjs',
+    warum: 'Reel-Motor: Cloud-Proxy sperrt den CJ-Video-Download (28.09.) — Server lädt, Cloud rendert beim nächsten Lauf.',
+    videos: liste.slice(0, 3).map(x => ({ name: sqName(x.pid), url: x.url })) }, null, 2) + '\n');
+  const d = new Date().toISOString();
+  fs.appendFileSync(SQ_MERK, liste.slice(0, 3).map(x => `${x.pid}\t${d}`).join('\n') + '\n');
+  console.log(`   📮 Server-Auftrag ${id}: ${liste.slice(0, 3).map(x => x.pid).join(', ')}`);
+  gitPush([datei, SQ_MERK], `Reel-Motor: Quellvideos über Server (${liste.length})`);
+}
 function caption(hook, k, benefit) {
   return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
 }
@@ -408,9 +436,11 @@ if (!DRY) {
   if (nachgetragen) gitPush([CSV, LEDGER], `Reel-Queue: ${nachgetragen} Zeilen nachgetragen`);
 }
 let made = 0, gefragt = 0;
+const zumServer = [];
 const letzteMusik = fs.existsSync('/tmp/_reel_last_music') ? fs.readFileSync('/tmp/_reel_last_music', 'utf8').trim() : '';
 for (const k of reihe) {
   if (made >= BATCH || gefragt >= FRAGEN) break;
+  if (zumServer.length >= 3) break;   // 28.09.: ein Server-Auftrag trägt 3 Videos — weiter fragen kostet nur CJ-Punkte
   gefragt++;
   let vurl = '';
   try { vurl = await cjVideo(k.pid); } catch (e) { console.log('  ✗ ' + e.message + ' — Lauf endet'); break; }
@@ -426,8 +456,17 @@ for (const k of reihe) {
   const src = `/tmp/reelbuild/src_${k.pid}.mp4`, out = `/tmp/reelbuild/reel_${k.pid}.mp4`;
   let st = { ja: false, grund: 'anteil' };
   try {
-    execFileSync('curl', ['-s', '-L', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' });
-    if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log('   Video zu klein/leer'); fs.rmSync(src, { force: true }); continue; }
+    const lokal = serverQuelle(k.pid);
+    if (lokal) { fs.copyFileSync(lokal, src); console.log(`   Quelle vom Server: ${lokal}`); }
+    else {
+      try { execFileSync('curl', ['-s', '-L', '--fail', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' }); }
+      catch { fs.rmSync(src, { force: true }); }
+      if (!fs.existsSync(src) || fs.statSync(src).size < 200000) {
+        fs.rmSync(src, { force: true });
+        if (/^https:\/\/download-only-api\.cjdropshipping\.com\/.+\.mp4$/i.test(vurl) && !sqAngefragt(k.pid)) zumServer.push({ pid: k.pid, url: vurl });
+        console.log('   Download gesperrt/leer → über den Server'); continue;
+      }
+    }
     let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
     if (dur && dur < 3) { console.log('   Video kuerzer als 3 s'); continue; }
     const mw = musikWahl(th, k.pid), musik = mw.datei;
@@ -449,5 +488,6 @@ for (const k of reihe) {
   } catch (e) { console.log('   Fehler:', String(e.message || e).slice(0, 120)); }
   finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); fs.rmSync(`/tmp/reelbuild/vo_${k.pid}.wav`, { force: true }); }
 }
+if (!DRY) sqAuftrag(zumServer);
 if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO], 'Reel-Motor: kein-Video-Ledger');
 console.log(`FERTIG. neue Reels: ${made} | nachgetragen: ${nachgetragen} | CJ gefragt: ${gefragt} | Kandidaten: ${kand.length}`);

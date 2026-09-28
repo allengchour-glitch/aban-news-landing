@@ -34,7 +34,9 @@ while true; do
   # Video-Index zuerst (22.09.): 150 CJ-Listen-Aufrufe je Lauf fuellen dropship/_cj_video_index.json,
   # der Motor nimmt daraus fast sichere Treffer. BATCH 3 (Betreiber 22.09.: TikTok + Instagram im Fokus,
   # jede Plattform bekommt ein EIGENES Reel → Bedarf ~5–6 je Tag).
-  INDEX_CALLS=${INDEX_CALLS:-150} flock -n /tmp/cj_video_index.lock /opt/node22/bin/node automation/cj_video_index.mjs 9>&- || true
+  # 28.09.2026: Index kam hier ZUERST — 150 CJ-Aufrufe hinter dem Kosten-Vorrang brauchten länger als der Container lebt
+  # (Neustart ~stündlich), der Motor darunter lief seit 27.09. 20:00 nie (Cursor fest, 4 Reels ready). Jetzt: Motor zuerst
+  # (braucht wenige Aufrufe, Anteil-Regel in cj_takt.mjs), Index danach für den nächsten Lauf.
   # 23.09.: Sprecherstimme NUR über Azure (Betreiber-Schlüssel, Speech-Ressource switzerlandnorth — kommerzielle Lizenz;
   # edge-tts hat keine, Piper nur mit Betreiber-Ja). Jede dritte Reel (Betreiber «stimme maximal», Hausregel «ohne
   # Voiceover» vom Juni damit abgelöst). Scheitert Azure, entsteht die Reel ohne Stimme — kein Ausweichen.
@@ -43,5 +45,6 @@ while true; do
   if [ -n "${AZURE_SPEECH_KEY:-}" ]; then export STIMME_MOTOR=azure STIMME_ANTEIL="${STIMME_ANTEIL:-0.33}"; else export STIMME_ANTEIL=0; fi
   # 23.09.: LAUTHEIT_2PASS=1 — der einstufige Weg schrieb AAC 96 kHz Mono (loudnorm gibt 192 kHz aus); zweistufig = -14 LUFS, 48 kHz Stereo.
   LAUTHEIT_2PASS=${LAUTHEIT_2PASS:-1} BATCH=${BATCH:-3} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
+  INDEX_CALLS=${INDEX_CALLS:-150} flock -n /tmp/cj_video_index.lock /opt/node22/bin/node automation/cj_video_index.mjs 9>&- || true
   sleep "${TAKT:-21600}" 9>&-
 done
