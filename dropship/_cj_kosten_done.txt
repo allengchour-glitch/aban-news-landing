@@ -40516,3 +40516,5 @@ gid://shopify/Product/15495187956097	CHF 18.20	1 Varianten	Kupferrohr-Ladeventil
 gid://shopify/Product/15495188054401	CHF 19.21	1 Varianten	Elektronischer Esel Plüschtier mit Fernbedienung
 gid://shopify/Product/15495188152705	CHF 14.93	48 Varianten	Kinder Booties mit Strass und weicher Sohle
 gid://shopify/Product/15495188251009	CHF 13.26	1 Varianten	Silikon-Staubmaske mit Anti-Beschlag-Brille
+gid://shopify/Product/15495188283777	CHF 6.30	1 Varianten	Nagellack-Schleifring-Lager
+gid://shopify/Product/15495188414849	CHF 7.04	1 Varianten	Kinder-Spielzeug-Handy mit Touch & Musik

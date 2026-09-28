@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🔇 Wächter der #1019-Klasse verschluckte seinen Abbruchgrund (Verbesserungsrunde 16:25)
+GEMESSEN: `zweites_gehirn --wacht` meldete 1 NEU: `cj_ausgelistet_sichtbar.py` gql() hatte `except Exception: pass` und endete mit
+«Shopify nicht erreichbar». Eine Drossel (429), ein abgelaufenes Token (401) oder ein GraphQL-Fehler sahen damit gleich aus.
+Social im Takt (26 Reels + 64 Bilder bereit, IG-Reel 14:19, TikTok 18:05 geplant), Pinterest-Planer läuft nach 24 h.
+GETAN: gql() behält den letzten Grund (Ausnahme oder GraphQL-errors), schreibt ihn je Versuch nach stderr und ins Exit.
+Kanarienvogel: urlopen → 429 fünfmal → «letzter Grund: HTTPError 429». Danach zweites Gehirn 0 NEU (141 Befunde).
+LEHRE: Ein Wächter, der aufgibt, muss sagen, woran. «nicht erreichbar» ohne Grund führt zur falschen Reparatur.
+
 ## 2026-09-28 · 📮 Kundenmail von info@luxestyle.ch: der Hetzner-Weg endet an Shopifys Bot-Wand
 Betreiber: «nochmal mail im info@luxestyle machen … mit hetzner machen mail» (#1019, Kundin ohne Antwort). Gemessen:
 - Der Gmail-Konnektor sendet NUR vom privaten Gmail (kein Absender-Feld). `automation/zoho_mail.py` (SMTP info@ über den Proxy, getestet 07.07.)

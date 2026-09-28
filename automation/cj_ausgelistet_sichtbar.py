@@ -28,6 +28,9 @@ def stok():
 
 
 def gql(q, v=None):
+    # 28.09.: Grund nicht mehr verschlucken (zweites_gehirn «grund-verschluckt») — der Wächter der #1019-Klasse muss sagen,
+    # WARUM er aufgibt (Drossel, 401, GraphQL-Fehler), sonst sieht «Shopify nicht erreichbar» wie ein Netzproblem aus.
+    grund = "?"
     for a in range(5):
         r = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json", data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                    headers={"X-Shopify-Access-Token": stok(), "Content-Type": "application/json"})
@@ -35,10 +38,12 @@ def gql(q, v=None):
             j = json.load(urllib.request.urlopen(r, timeout=60))
             if j.get("data"):
                 return j["data"]
-        except Exception:
-            pass
+            grund = "GraphQL: " + json.dumps(j.get("errors") or j)[:200]
+        except Exception as e:
+            grund = f"{type(e).__name__}: {str(e)[:200]}"
+        print(f"  gql Versuch {a + 1}/5: {grund}", file=sys.stderr, flush=True)
         time.sleep(3 * (a + 1))
-    raise SystemExit("Shopify nicht erreichbar")
+    raise SystemExit(f"Shopify nicht erreichbar — letzter Grund: {grund}")
 
 
 def cj_status(pid, tok):
