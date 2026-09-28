@@ -38862,3 +38862,4 @@ gid://shopify/Product/15493910462849	CHF 21.93	39 Varianten	Sleeker Leder-Sneake
 gid://shopify/Product/15493910659457	CHF 16.45	1 Varianten	Rundes Nackenkissen aus Memory Foam
 gid://shopify/Product/15493910724993	CHF 16.35	1 Varianten	Lidschatten-Palette 99 Farben
 gid://shopify/Product/15493910823297	CHF 16.44	1 Varianten	Abstraktes Linienbild "Liebeslied" (horizontal)
+gid://shopify/Product/15493910888833	CHF 26.93	50 Varianten	Herren High-top Sportschuh
