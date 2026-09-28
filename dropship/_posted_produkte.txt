@@ -93,3 +93,4 @@ slug:spot-uv-sterilisator-tragbar-a47399
 name:provence
 slug:midikleid-mit-zopfmuster-und-blumenprint
 slug:multifunktionaler-runder-gemuseschneider-be2e21
+slug:blumenkleid-mit-schnurung
