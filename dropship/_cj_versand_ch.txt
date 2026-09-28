@@ -1063,3 +1063,4 @@ gid://shopify/Product/15502590017921	ok	Smarter Vorhangmotor mit Fernbedienung
 gid://shopify/Product/15448941855105	nicht-versendbar	Hundebett mit Blachen-Sonnendach
 gid://shopify/Product/15448940773761	nicht-versendbar	360° drehbares Katzenbett für den Schreibtisch
 gid://shopify/Product/15480563564929	ok	Supernieren-Richtmikrofon
+gid://shopify/Product/15455516885377	ok	Faltbarer Katzenkäfig mit Isolierung
