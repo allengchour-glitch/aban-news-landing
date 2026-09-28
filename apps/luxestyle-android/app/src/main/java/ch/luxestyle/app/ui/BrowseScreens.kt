@@ -112,7 +112,7 @@ fun CollectionScreen(handle: String, initialTitle: String) {
     val shop = LocalShop.current
     val nav = LocalNav.current
     var sort by rememberSaveable { mutableStateOf(Sort.FEATURED) }
-    var filters by remember { mutableStateOf(Filters()) }
+    var filters by rememberSaveable(stateSaver = FiltersSaver) { mutableStateOf(Filters()) }
     var title by rememberSaveable { mutableStateOf(initialTitle) }
     var description by rememberSaveable { mutableStateOf("") }
     val menu = (rememberLoad("menu") { shop.menu() }.state as? Load.Ok)?.value
@@ -124,7 +124,7 @@ fun CollectionScreen(handle: String, initialTitle: String) {
     Column(Modifier.fillMaxSize()) {
         ScreenTitle(title.ifEmpty { " " }, back = true)
         ProductGrid(
-            key = Triple(handle, sort, filters),
+            key = listOf("kollektion", handle, sort, filters),
             load = { cursor ->
                 val (info, page) = shop.api.collection(handle, sort, cursor, filters)
                 info?.let { if (title.isEmpty()) title = it.title; description = it.description }

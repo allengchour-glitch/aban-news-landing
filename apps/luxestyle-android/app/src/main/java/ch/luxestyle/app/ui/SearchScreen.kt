@@ -74,8 +74,8 @@ fun SearchScreen(initial: String) {
     var text by rememberSaveable(initial) { mutableStateOf(initial) }
     var submitted by rememberSaveable(initial) { mutableStateOf(initial) }
     var sort by rememberSaveable { mutableStateOf(Sort.FEATURED) }
-    var filters by remember { mutableStateOf(Filters()) }
-    var total by remember { mutableStateOf<Int?>(null) }
+    var filters by rememberSaveable(stateSaver = FiltersSaver) { mutableStateOf(Filters()) }
+    var total by rememberSaveable { mutableStateOf<Int?>(null) }
     var suggestions by remember { mutableStateOf<Suggestions?>(null) }
     // Zum abgeschickten Begriff: passende Kategorien und „Meintest du …"
     var related by remember { mutableStateOf<Suggestions?>(null) }
@@ -229,7 +229,7 @@ private fun Results(
     val nav = LocalNav.current
     val categories = related?.collections.orEmpty()
     ProductGrid(
-        key = Triple(query, sort, filters),
+        key = listOf("suche", query, sort, filters),
         load = { cursor -> shop.api.search(query, sort, cursor, filters).also { onTotal(it.first) }.second },
         onOpen = { nav.product(it.handle) },
         header = {

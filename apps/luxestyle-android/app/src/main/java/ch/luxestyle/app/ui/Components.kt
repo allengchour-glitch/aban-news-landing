@@ -28,6 +28,11 @@ import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.testTag
+import androidx.compose.runtime.saveable.listSaver
+import ch.luxestyle.app.data.Filters
+import ch.luxestyle.app.data.PriceBand
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -314,7 +319,32 @@ fun TileSkeleton(modifier: Modifier = Modifier) {
 }
 
 /**
- * Zweispaltiges Produktraster mit automatischem Nachladen. [key] setzt die Liste zurück (z. B. neue Sortierung).
+ * Geladene Listen bleiben eine Weile im Speicher: Wer aus den Treffern ein Produkt öffnet und zurückgeht,
+ * steht wieder an derselben Stelle – ohne dass die Liste von vorne lädt.
+ */
+object GridCache {
+    data class Entry(val items: List<ProductCard>, val cursor: String?, val hasNext: Boolean, val savedAt: Long)
+
+    private const val MAX_AGE_MS = 15 * 60_000L
+    private val map = object : LinkedHashMap<Any, Entry>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Any, Entry>?) = size > 24
+    }
+
+    fun get(key: Any, now: Long = System.currentTimeMillis()): Entry? =
+        synchronized(map) { map[key]?.takeIf { now - it.savedAt < MAX_AGE_MS } }
+
+    fun put(key: Any, entry: Entry) = synchronized(map) { map[key] = entry }
+}
+
+/** Filter überstehen den Weg ins Produkt und zurück. */
+val FiltersSaver = listSaver<Filters, Any>(
+    save = { listOf(it.price?.name.orEmpty(), it.onlyAvailable) },
+    restore = { Filters((it[0] as String).takeIf { n -> n.isNotEmpty() }?.let(PriceBand::valueOf), it[1] as Boolean) },
+)
+
+/**
+ * Zweispaltiges Produktraster mit automatischem Nachladen. [key] setzt die Liste zurück (z. B. neue Sortierung)
+ * und muss über alle Listen eindeutig sein – er ist zugleich der Schlüssel im [GridCache].
  */
 @Composable
 fun ProductGrid(
@@ -326,13 +356,19 @@ fun ProductGrid(
 ) {
     val wishlist = LocalShop.current.wishlist
     val liked by wishlist.items.collectAsState()
-    val items = remember(key) { mutableStateListOf<ProductCard>() }
-    var cursor by remember(key) { mutableStateOf<String?>(null) }
-    var hasNext by remember(key) { mutableStateOf(true) }
+    val cached = remember(key) { GridCache.get(key) }
+    val items = remember(key) { mutableStateListOf<ProductCard>().apply { cached?.let { addAll(it.items) } } }
+    var cursor by remember(key) { mutableStateOf(cached?.cursor) }
+    var hasNext by remember(key) { mutableStateOf(cached?.hasNext ?: true) }
     var loading by remember(key) { mutableStateOf(false) }
     var error by remember(key) { mutableStateOf<String?>(null) }
     var retry by remember(key) { mutableIntStateOf(0) }
     val grid = rememberLazyGridState()
+    DisposableEffect(key) {
+        onDispose {
+            if (items.isNotEmpty()) GridCache.put(key, GridCache.Entry(items.toList(), cursor, hasNext, System.currentTimeMillis()))
+        }
+    }
 
     val nearEnd by remember(key) {
         derivedStateOf {
@@ -378,7 +414,7 @@ fun ProductGrid(
         contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp),
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().testTag("grid"),
     ) {
         header()
         itemsIndexed(items, key = { _, c -> c.id }) { _, card ->

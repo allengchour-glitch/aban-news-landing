@@ -205,6 +205,28 @@ class ScreenTour : TourBase() {
         shot("16-entfernt-rueckgaengig")
     }
 
+    /** Aus den Suchtreffern ins Produkt und zurück: Liste und Stelle bleiben, nichts lädt von vorne. */
+    @Test
+    fun zurueckAusProduktBleibtInDerSuche() {
+        start()
+        go("luxestyle://suche")
+        rule.onNode(hasSetTextAction()).performTextInput("kleid")
+        rule.onNode(hasSetTextAction()).performImeAction()
+        waitFor("Treffer"); waitForPrices(); settle()
+        rule.onNodeWithTag("grid").performScrollToIndex(16); settle(3000)
+        shot("21-suche-weit-unten")
+        rule.onAllNodesWithText("CHF", substring = true).onFirst().performClick()
+        waitFor("In den Warenkorb"); settle(1500)
+        rule.onAllNodesWithContentDescription("Zurück").onFirst().performClick()
+        settle(2500)
+        shot("21b-zurueck-gleiche-stelle")
+        // Oben stünde „… Treffer für «kleid»" – ist die Liste noch unten, gibt es diesen Knoten gar nicht
+        check(rule.onAllNodesWithText("Treffer für", substring = true).fetchSemanticsNodes().isEmpty()) {
+            "Nach dem Zurückgehen steht die Suche wieder oben"
+        }
+        check(rule.onAllNodesWithText("kleid", substring = true).fetchSemanticsNodes().isNotEmpty()) { "Suchbegriff fehlt" }
+    }
+
     @Test
     fun farbenLieferdatumWarenkorb() {
         start()
