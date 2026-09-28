@@ -40188,3 +40188,4 @@ gid://shopify/Product/15495127826817	CHF 79.42	72 Varianten	Fashionable Minimali
 gid://shopify/Product/15495127892353	CHF 17.39	1 Varianten	Ersatzgehäuse für Xbox One Elite Controller Gen. 1
 gid://shopify/Product/15495127925121	CHF 12.00	1 Varianten	Kissenhülle American Yellow Bottom Plant Ins
 gid://shopify/Product/15495127957889	CHF 30.84	36 Varianten	Unisex Trainings-Sneaker aus Mesh
+gid://shopify/Product/15495128056193	CHF 19.80	1 Varianten	Switch Handle 4-in-1 Kabel-Gamepad
