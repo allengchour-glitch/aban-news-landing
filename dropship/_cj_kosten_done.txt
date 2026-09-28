@@ -39988,3 +39988,9 @@ gid://shopify/Product/15495114686849	CHF 13.80	1 Varianten	Nagellack-Set
 gid://shopify/Product/15495114719617	CHF 29.29	28 Varianten	Herren Heavyweight Hoodie mit Kängurutasche
 gid://shopify/Product/15495114752385	CHF 19.95	1 Varianten	Interaktiver Plüschvogel für Katzen
 gid://shopify/Product/15495114785153	CHF 16.59	1 Varianten	Nagel-Fototherapie-Gel
+gid://shopify/Product/15495114850689	CHF 11.04	1 Varianten	Oktopus Plüsch-Hundespielzeug
+gid://shopify/Product/15495114948993	CHF 12.73	1 Varianten	Mehrfarbiges Nagelmodellage-Gel
+gid://shopify/Product/15495114981761	CHF 8.78	1 Varianten	Plüsch-Katzenspielzeug mit Katzenminze
+gid://shopify/Product/15495115014529	CHF 11.64	1 Varianten	Nail Basic Gel-Set
+gid://shopify/Product/15495115047297	CHF 6.90	1 Varianten	Plüsch-Elefant Handyhüllen-Hundespielzeug
+gid://shopify/Product/15495115080065	CHF 10.00	1 Varianten	Gel-Nagellack für feine Linien (3er-Set)
