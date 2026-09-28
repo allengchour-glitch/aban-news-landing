@@ -1124,3 +1124,5 @@ gid://shopify/Product/15450755137921	nicht-versendbar	Waschmaschinen-Zwischenbau
 gid://shopify/Product/15452680257921	nicht-versendbar	Gartenrandsteine
 gid://shopify/Product/15453898834305	ok	Akazienholz Schneidbrett
 gid://shopify/Product/15470351647105	nicht-versendbar	Betonstempel
+gid://shopify/Product/15484625158529	ok	Faltbarer Regiestuhl aus Aluminium
+gid://shopify/Product/15480277401985	ok	Aufblasbares Auto-Bett für SUV und MPV
