@@ -41115,3 +41115,4 @@ gid://shopify/Product/15492129259905	CHF 14.52	8 Varianten	Satin Spaghetti-Träg
 gid://shopify/Product/15492129292673	CHF 26.61	6 Varianten	Weite Denim Work Pants für Herren
 gid://shopify/Product/15492129325441	CHF 20.54	6 Varianten	Bootcut Jeans mit Digitaldruck für Herren
 gid://shopify/Product/15492129358209	CHF 20.38	6 Varianten	Herren Plissierte Wide-Leg Jeans
+gid://shopify/Product/15492129390977	CHF 19.54	12 Varianten	Loose Fit Straight Leg Jeans für Herren
