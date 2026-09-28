@@ -8,6 +8,14 @@
   "betreff": "Erinnerung: Ihre Bestellung #1019 bei LuxeStyle – kurze Rückmeldung",
   "text": "Guten Tag\n\nWir haben Ihnen am Sonntagabend zu Ihrer Bestellung #1019 geschrieben – vielleicht ist die Nachricht im Spam gelandet, darum hier nochmals kurz von unserer Shop-Adresse:\n\nDer bestellte «Leuchtende Halloween-Schaukelgeist» ist bei unserem Lieferanten leider nicht mehr verfügbar. Sie können wählen:\n\n1) Ersatz aus unserem Schweizer Lager: ein leuchtender LED-Hängegeist (weiss, 50 cm, Batterien inklusive), Lieferung in 2–3 Werktagen, ohne Mehrkosten.\n2) Volle Rückerstattung von CHF 23.11.\n\nAntworten Sie einfach mit «1» oder «2». Ohne Antwort bis Mittwoch, 30. September, erstatten wir den vollen Betrag automatisch zurück.\n\nHerzliche Grüsse\nIhr LuxeStyle-Team\ninfo@luxestyle.ch",
   "senden": false,
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-28T16:17:10.792Z",
+  "dauer_s": 8.3,
+  "ergebnis": {
+    "ok": false,
+    "grund": "erwartete Empfaengeradresse nicht auf der Bestellseite — Abbruch",
+    "ziel": "https://admin.shopify.com/store/au3j0y-hq/orders/19063546085767",
+    "fehler": "HTTP 403",
+    "textanfang": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst"
+  }
 }
