@@ -1,0 +1,17 @@
+{
+  "id": "sauber-menue-2809",
+  "typ": "screenshot",
+  "url": "https://luxestyle.ch/collections/all",
+  "mobil": true,
+  "ganze_seite": true,
+  "warum": "Betreiber 28.09.: «mach webseite sauber» — Optik von echter Besucher-IP messen",
+  "stand": "ok",
+  "begonnen": "2026-09-28T19:24:41.448Z",
+  "dauer_s": 5.8,
+  "ergebnis": {
+    "ziel": "https://luxestyle.ch/collections/all",
+    "status": 200,
+    "mobil": true,
+    "datei": "auftraege/ergebnis/sauber-menue-2809.png"
+  }
+}

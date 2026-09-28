@@ -1,0 +1,17 @@
+{
+  "id": "sauber-start-2809",
+  "typ": "screenshot",
+  "url": "https://luxestyle.ch/",
+  "mobil": true,
+  "ganze_seite": true,
+  "warum": "Betreiber 28.09.: «mach webseite sauber» — Optik von echter Besucher-IP messen",
+  "stand": "ok",
+  "begonnen": "2026-09-28T19:24:52.434Z",
+  "dauer_s": 11.6,
+  "ergebnis": {
+    "ziel": "https://luxestyle.ch/",
+    "status": 200,
+    "mobil": true,
+    "datei": "auftraege/ergebnis/sauber-start-2809.png"
+  }
+}
