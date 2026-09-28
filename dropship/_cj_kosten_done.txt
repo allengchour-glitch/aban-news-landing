@@ -38897,3 +38897,10 @@ gid://shopify/Product/15493916393857	CHF 22.89	51 Varianten	Kinder-Sneakers mit 
 gid://shopify/Product/15493916459393	CHF 20.85	1 Varianten	Multifunktionaler Warmluft-Haarstyler
 gid://shopify/Product/15493916524929	CHF 21.84	1 Varianten	Smartwatch für Kinder mit Herzfrequenzmessung
 gid://shopify/Product/15493916590465	CHF 14.09	4 Varianten	Midi-Kleid mit Blumenmuster und Viereck-Ausschnitt
+gid://shopify/Product/15493916787073	CHF 24.76	33 Varianten	Modische Kinder-Sneakers – schlicht & bequem
+gid://shopify/Product/15493916918145	CHF 29.78	1 Varianten	Lockenstab & Glätteisen mit Keramikheizung
+gid://shopify/Product/15493916950913	CHF 18.70	1 Varianten	Smartwatch mit Bluetooth-Telefonie und Gesundheits
+gid://shopify/Product/15493917016449	CHF 18.09	8 Varianten	Elegantes Abendkleid mit tiefem Rückenausschnitt
+gid://shopify/Product/15493917245825	CHF 11.25	48 Varianten	Kinder-Hausschuhe aus Baumwolle mit weicher Sohle
+gid://shopify/Product/15493917311361	CHF 24.55	1 Varianten	Tragbarer 2-in-1 Styling-Stab für Pony
+gid://shopify/Product/15493917409665	CHF 10.12	1 Varianten	Lederarmband mit Herz-Design für Smartwatches
