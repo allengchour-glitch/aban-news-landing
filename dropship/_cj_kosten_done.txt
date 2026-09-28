@@ -40503,3 +40503,16 @@ gid://shopify/Product/15495186678145	CHF 23.75	98 Varianten	Bequeme Slip-on Kind
 gid://shopify/Product/15495186743681	CHF 11.45	1 Varianten	Wabenlaterne gegen Wespen, Gartendeko
 gid://shopify/Product/15495186841985	CHF 23.05	1 Varianten	Augenmassagegerät mit EMS
 gid://shopify/Product/15495187005825	CHF 7.82	1 Varianten	Lern-Smartphone mit Musik und Vibration
+gid://shopify/Product/15495187071361	CHF 12.91	6 Varianten	Glitzer-Schuhe für Mädchen mit Klettverschluss
+gid://shopify/Product/15495187136897	CHF 9.53	1 Varianten	Vibrierendes Augenmassagegerät
+gid://shopify/Product/15495187235201	CHF 69.40	1 Varianten	Fugenpistole für Zement und Dichtmasse
+gid://shopify/Product/15495187333505	CHF 33.54	1 Varianten	RC Roboterhund mit Touch-Sensorik
+gid://shopify/Product/15495187399041	CHF 23.35	52 Varianten	Lauflernschuhe mit Drehverschluss für Kinder
+gid://shopify/Product/15495187464577	CHF 9.11	1 Varianten	Elektrisches Bian-Stein Gua Sha Board
+gid://shopify/Product/15495187726721	CHF 23.42	1 Varianten	Runder aufblasbarer Sprinklermatte für Kinder
+gid://shopify/Product/15495187792257	CHF 17.30	48 Varianten	Freizeitschuhe für Kinder, Frühling/Herbst
+gid://shopify/Product/15495187890561	CHF 13.60	1 Varianten	Atmungsaktive Stahlgitter-Maske
+gid://shopify/Product/15495187956097	CHF 18.20	1 Varianten	Kupferrohr-Ladeventilzange
+gid://shopify/Product/15495188054401	CHF 19.21	1 Varianten	Elektronischer Esel Plüschtier mit Fernbedienung
+gid://shopify/Product/15495188152705	CHF 14.93	48 Varianten	Kinder Booties mit Strass und weicher Sohle
+gid://shopify/Product/15495188251009	CHF 13.26	1 Varianten	Silikon-Staubmaske mit Anti-Beschlag-Brille
