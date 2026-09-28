@@ -1,19 +1,19 @@
 {
-  "stand": "2026-09-28T14:18:06.198Z",
+  "stand": "2026-09-28T20:26:24.151Z",
   "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
   "fenster_tage": 90,
   "k_glaettung": 3,
   "min_n": 3,
   "beobachtungen": {
-    "instagram": 51,
+    "instagram": 53,
     "tiktok": 12,
     "pinterest": 103,
     "zu_jung": 6
   },
-  "inhalte": 114,
-  "posts": 166,
+  "inhalte": 116,
+  "posts": 168,
   "musik_verlauf": {
-    "zeilen": 26,
+    "zeilen": 39,
     "verknuepfte_inhalte": 0
   },
   "quellen_fehler": [],
@@ -192,21 +192,21 @@
     "haustier": {
       "n": 7,
       "gewicht": 1.49,
-      "vorsprung": 0.398,
+      "vorsprung": 0.396,
       "median_rel": 2,
       "belastbar": true
     },
     "beauty": {
       "n": 9,
-      "gewicht": 1.41,
-      "vorsprung": 0.347,
-      "median_rel": 1,
+      "gewicht": 1.42,
+      "vorsprung": 0.349,
+      "median_rel": 1.04,
       "belastbar": true
     },
     "schmuck": {
       "n": 15,
       "gewicht": 1.37,
-      "vorsprung": 0.313,
+      "vorsprung": 0.316,
       "median_rel": 1.11,
       "belastbar": true
     },
@@ -220,29 +220,29 @@
     "gadget": {
       "n": 7,
       "gewicht": 1.13,
-      "vorsprung": 0.123,
+      "vorsprung": 0.122,
       "median_rel": 1,
       "belastbar": true
     },
     "allgemein": {
-      "n": 26,
-      "gewicht": 1.09,
-      "vorsprung": 0.083,
+      "n": 27,
+      "gewicht": 1.08,
+      "vorsprung": 0.081,
       "median_rel": 1,
       "belastbar": true
     },
     "home": {
       "n": 22,
       "gewicht": 1.05,
-      "vorsprung": 0.047,
+      "vorsprung": 0.048,
       "median_rel": 1,
       "belastbar": true
     },
     "fitness": {
       "n": 7,
       "gewicht": 1.03,
-      "vorsprung": 0.031,
-      "median_rel": 1.02,
+      "vorsprung": 0.03,
+      "median_rel": 1.01,
       "belastbar": true
     },
     "kinder": {
@@ -253,10 +253,10 @@
       "belastbar": false
     },
     "mode": {
-      "n": 14,
-      "gewicht": 0.93,
-      "vorsprung": -0.069,
-      "median_rel": 0.99,
+      "n": 15,
+      "gewicht": 0.95,
+      "vorsprung": -0.055,
+      "median_rel": 1,
       "belastbar": true
     }
   },
@@ -270,16 +270,16 @@
     },
     "instagram 00–03": {
       "n": 3,
-      "gewicht": 1.41,
-      "vorsprung": 0.344,
-      "median_rel": 1.13,
+      "gewicht": 1.39,
+      "vorsprung": 0.33,
+      "median_rel": 1.08,
       "belastbar": true
     },
     "instagram 15–18": {
       "n": 4,
-      "gewicht": 1.23,
-      "vorsprung": 0.205,
-      "median_rel": 1.04,
+      "gewicht": 1.22,
+      "vorsprung": 0.202,
+      "median_rel": 1.03,
       "belastbar": true
     },
     "pinterest 12–15": {
@@ -320,8 +320,15 @@
     "instagram 18–21": {
       "n": 6,
       "gewicht": 1.18,
-      "vorsprung": 0.167,
-      "median_rel": 1.07,
+      "vorsprung": 0.163,
+      "median_rel": 1.05,
+      "belastbar": true
+    },
+    "instagram 06–09": {
+      "n": 8,
+      "gewicht": 1.14,
+      "vorsprung": 0.129,
+      "median_rel": 1.14,
       "belastbar": true
     },
     "instagram 12–15": {
@@ -329,13 +336,6 @@
       "gewicht": 1.12,
       "vorsprung": 0.11,
       "median_rel": 1.02,
-      "belastbar": true
-    },
-    "instagram 06–09": {
-      "n": 8,
-      "gewicht": 1.11,
-      "vorsprung": 0.105,
-      "median_rel": 1.1,
       "belastbar": true
     },
     "pinterest 03–06": {
@@ -349,6 +349,13 @@
       "n": 3,
       "gewicht": 1.03,
       "vorsprung": 0.03,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "instagram 21–24": {
+      "n": 7,
+      "gewicht": 1.01,
+      "vorsprung": 0.014,
       "median_rel": 1,
       "belastbar": true
     },
@@ -366,26 +373,19 @@
       "median_rel": 1,
       "belastbar": true
     },
-    "instagram 21–24": {
-      "n": 5,
-      "gewicht": 1,
-      "vorsprung": -0.005,
-      "median_rel": 1,
+    "instagram 09–12": {
+      "n": 19,
+      "gewicht": 0.92,
+      "vorsprung": -0.08,
+      "median_rel": 0.95,
       "belastbar": true
     },
     "instagram 03–06": {
       "n": 2,
-      "gewicht": 0.93,
-      "vorsprung": -0.073,
-      "median_rel": 0.83,
-      "belastbar": false
-    },
-    "instagram 09–12": {
-      "n": 19,
       "gewicht": 0.92,
-      "vorsprung": -0.088,
-      "median_rel": 0.9,
-      "belastbar": true
+      "vorsprung": -0.081,
+      "median_rel": 0.82,
+      "belastbar": false
     },
     "tiktok 18–21": {
       "n": 5,
@@ -396,17 +396,17 @@
     }
   },
   "formate": {
+    "instagram karussell": {
+      "n": 6,
+      "median_score": 6
+    },
+    "instagram bild": {
+      "n": 28,
+      "median_score": 15.5
+    },
     "instagram reel": {
       "n": 19,
       "median_score": 36.2
-    },
-    "instagram karussell": {
-      "n": 5,
-      "median_score": 7
-    },
-    "instagram bild": {
-      "n": 27,
-      "median_score": 15
     },
     "tiktok reel": {
       "n": 12,

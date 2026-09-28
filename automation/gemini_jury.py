@@ -13,7 +13,7 @@ stimmigkeit (Caption/Hook passt zum gezeigten Produkt), wirkung (hochwertig, ver
 K.-o.: falsches/anderes Produkt als die Caption, anstössig, Heilversprechen, Waffe, Preis im Bild ≠ Preis der Caption.
 Urteil: ok = Schnitt ≥ MIN (7.0) UND jedes Kriterium ≥ 5 UND kein K.-o.
 
-  python3 automation/gemini_jury.py <datei|url> --caption "…" [--typ reel|bild|karussell]
+  python3 automation/gemini_jury.py <datei|url> --caption "…" [--typ reel|bild|karussell] [--nur-cache] [--ohne-cache]
   → letzte Zeile JSON {ok, schnitt, noten, ko, gruende, verbesserung}
   Exit 0 = Meisterwerk, 4 = durchgefallen, 2 = kein Urteil (Netz/Schlüssel) — der Poster überspringt dann, kein Urteil ist kein Ja.
 Cache: dropship/_gemini_jury.tsv (sha1 der Datei + Caption → Urteil) — dieselbe Datei kostet nur einmal.
@@ -135,6 +135,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("quelle"); ap.add_argument("--caption", default=""); ap.add_argument("--typ", default="reel")
     ap.add_argument("--ohne-cache", action="store_true")
+    ap.add_argument("--nur-cache", action="store_true", help="nur gecachtes Urteil, keine neue Anfrage (Exit 2 wenn keins)")
     a = ap.parse_args()
     if not schluessel():
         print(json.dumps({"ok": None, "grund": "GEMINI_API_KEY fehlt"})); sys.exit(2)
@@ -150,6 +151,8 @@ def main():
             if t[0] == sig and len(t) >= 3:
                 v = json.loads(t[2]); v["cache"] = True
                 print(json.dumps(v, ensure_ascii=False)); sys.exit(0 if v["ok"] else 4)
+    if a.nur_cache:
+        print(json.dumps({"ok": None, "grund": "kein gecachtes Urteil (--nur-cache)"})); sys.exit(2)
     jpgs, ist_video = bilder(pfad)
     if not jpgs:
         print(json.dumps({"ok": None, "grund": "keine Standbilder"})); sys.exit(2)

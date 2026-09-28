@@ -61,3 +61,22 @@ oberschenkelhoch), YouTube-Short «Herbst-Favoriten» mit Note 9,17 durchgelasse
 - Reel-Nachschub: 12 postbare Reels ≈ 4 Tage IG/FB-Takt. Durchgefallene Reels mit Quelle können über
   `reel/reel_neu_rendern.py` neu gebaut werden (Fremdtext ist aber meist im Quellvideo — dann hilft nur `schnitt.py --sperren`).
 - Kosten: ~0,1 Rappen je Urteil (gemini-2.5-flash, 1–4 Bilder); Cache verhindert Doppelzahlungen. Budget-Regel 11 (kein Veo) unberührt.
+
+## Nachtrag 20:40 UTC — die 23 Reel-Sperren gingen verloren (Verbesserungsrunde)
+
+GEMESSEN nach dem Container-Neustart: `reels_seed.csv` trug **0** `jury-skip` (Bild-Queue: 32 ✓), 34 «ready». Schon der
+Commit 66a763d31 enthielt die Sperren nicht: zwischen meinem Textersatz und dem Commit schrieb ein anderer Schreiber
+(Poster/Reel-Motor; 20+ Skripte schreiben diese Datei) seine zu Beginn gelesenen Zeilen zurück — **Lost Update**.
+Dieselbe Klasse steckte im Säuberer selbst: er las alle Zeilen, prüfte Minuten lang (OCR) und schrieb dann ALLES zurück.
+
+GETAN:
+- `social_queue_saeubern.py` hat den Schritt **jury-skip** (Reels + Bilder, gleicher Cache-Schlüssel wie die Poster,
+  `JURY_NEU` = 40 neue Urteile/Lauf, danach nur Cache via `gemini_jury.py --nur-cache`; kein Urteil = bleibt ready).
+  Er läuft täglich im Aufseher → eine verlorene Sperre kommt spätestens am nächsten Tag zurück (idempotent).
+- **Schreiben = nachlesen:** Datei direkt vor dem Schreiben neu lesen, nur Zeilen ändern, die dort noch «ready» sind
+  (Schlüssel id + Medium), atomar über `.tmp` + `os.replace`.
+- Kanarienvogel DRY: 23 jury-skip (alle aus dem Cache, 18 s), echt: 23 gesetzt, zurückgelesen 23; Reels ready 11.
+
+OFFEN (nicht behoben, gemessen): `post_guard.lock()` beendet einen Poster bei fremdem Lock mit **Exit 0** — der
+Autopilot setzt dann die Takt-Marke wie nach einem Post (Klasse Nachtrag 94). Tritt nur bei parallelen Postern auf
+(Autopilot ruft seriell) — nächster Kandidat einer Runde.

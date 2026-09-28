@@ -15,6 +15,15 @@ Serpent-Armreif. Geprüft wird je ready-Zeile:
   bildtext-skip      (23.09.2026, Betreiber-Screenshot IG-Raster: «made from natural stone», «300ml Aroma Diffuser
                      7 color LED change») Das BILD trägt englischen Lieferanten-Werbetext — Tesseract liest ≥4
                      sichere Wörter. Nur Bild-Posts; Ergebnis je URL in dropship/_bildtext_queue.txt gemerkt.
+  jury-skip          (28.09.2026, Betreiber «jede post ein meisterwerk … jetzt hast du gemini» · «vision ai») Die
+                     Gemini-Vision-Jury (automation/gemini_jury.py, dieselbe wie in den Postern, gleicher Cache-Schlüssel
+                     Datei+Caption) lässt das Reel/Bild durchfallen. Kein Urteil (Netz/Schlüssel) = bleibt ready.
+                     JURY=0 schaltet den Schritt ab; JURY_NEU=n begrenzt neue (nicht gecachte) Urteile je Lauf (Standard 40).
+
+⚠️ 28.09.2026 SCHREIBEN = NACHLESEN: Der Lauf dauert Minuten (OCR, Jury). Vorher schrieb er am Ende die Zeilen zurück,
+die er zu Beginn gelesen hatte — ein Poster/Reel-Motor, der in der Zwischenzeit «posted…» oder eine neue Zeile schrieb,
+wurde überschrieben. Umgekehrt verlor ein Jury-Durchgang am 28.09. alle 23 Reel-Sperren an einen parallelen Schreiber.
+Jetzt: Datei direkt vor dem Schreiben NEU lesen, nur Zeilen ändern, die dort noch «ready» sind (Schlüssel id+Medium).
 
 ⚠️ 23.09.2026: Dieses Skript hatte seit dem 03.09. KEINEN Starter (kein Log je geschrieben) — gemessen: 3 von 73
 «ready»-Bildposts bewarben gedraftete Ware. Jetzt taeglich im Aufseher (fixer_keepalive.sh, Tagesliste).
@@ -181,6 +190,56 @@ def bildtext_woerter(url):
             f.write(f"{url}\t{len(w)}\n")
     return len(w)
 
+JURY = os.environ.get("JURY", "1") != "0"
+JURY_NEU = int(os.environ.get("JURY_NEU", "40"))
+_jury_neu = 0
+
+def jury_quelle(medium):
+    """Dieselbe Datei wie der Poster: lokale Reel-/Montage-Datei, sonst die URL."""
+    for rx, ordner in ((r"/social/reels/([^/?#]+\.mp4)", "social/reels"), (r"/social/montage_proben/([^/?#]+\.mp4)", "social/montage_proben")):
+        m = re.search(rx, medium or "")
+        if m and os.path.exists(f"{ordner}/{m.group(1)}"):
+            return f"{ordner}/{m.group(1)}"
+    return medium
+
+def jury_durchgefallen(medium, cap, typ):
+    """True = Jury sagt nein; False = bestanden oder kein Urteil (nie aus Unwissen sperren)."""
+    global _jury_neu
+    if not JURY or not medium:
+        return False
+    import subprocess
+    try:
+        p = subprocess.run(["python3", os.path.join(os.path.dirname(os.path.abspath(__file__)), "gemini_jury.py"),
+                            jury_quelle(medium), "--caption", cap, "--typ", typ, "--nur-cache"] if _jury_neu >= JURY_NEU else
+                           ["python3", os.path.join(os.path.dirname(os.path.abspath(__file__)), "gemini_jury.py"),
+                            jury_quelle(medium), "--caption", cap, "--typ", typ], capture_output=True, text=True, timeout=400)
+    except Exception:
+        return False
+    try:
+        v = json.loads((p.stdout or "").strip().splitlines()[-1])
+    except Exception:
+        v = {}
+    if not v.get("cache") and v.get("ok") is not None:
+        _jury_neu += 1
+    return p.returncode == 4
+
+
+def schreiben_nachgelesen(datei, aenderungen):
+    """aenderungen: {(id, medium): neuer_status}. Liest die Datei NEU und setzt nur Zeilen, die dort noch ready sind."""
+    with open(datei, newline="", encoding="utf-8") as f:
+        rd = csv.DictReader(f); felder = rd.fieldnames; rows = list(rd)
+    n = 0
+    for r in rows:
+        k = (r.get("id") or "", r.get("image_url") or r.get("video_url") or r.get("url") or "")
+        if k in aenderungen and (r.get("status") or "").strip() == "ready":
+            r["status"] = aenderungen[k]; n += 1
+    if n:
+        tmp = datei + ".tmp"
+        with open(tmp, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
+        os.replace(tmp, datei)
+    return n
+
 gesamt = Counter()
 for datei in DATEIEN:
     if not os.path.exists(datei): continue
@@ -192,6 +251,7 @@ for datei in DATEIEN:
     live.update(status_von_handles([k[2:] for k, a in schl if a == "h"]))
     gesehen = set(gepostet)
     n = Counter()
+    aend = {}
     for r in ready:
         medium = (r.get("image_url") or r.get("video_url") or r.get("url") or "")
         cap    = r.get("caption") or ""
@@ -205,15 +265,18 @@ for datei in DATEIEN:
         elif pid and live.get(pid) and live[pid] != "ACTIVE": neu = "produkt-weg-skip"
         elif pid and preis_veraltet(cap, pid):          neu = "preis-veraltet-skip"
         elif r.get("image_url") and (bildtext_woerter(r["image_url"]) or 0) >= 4: neu = "bildtext-skip"
+        elif datei in ("automation/reels_seed.csv", "social/posts_image.csv") and \
+                jury_durchgefallen(medium, cap, "reel" if r.get("video_url") else "bild"): neu = "jury-skip"
         if neu:
             n[neu] += 1
-            if not DRY: r["status"] = neu
+            aend[(zid, medium)] = neu
         else:
             n["bleibt ready"] += 1
             if k: gesehen.add(k)
-    if not DRY and n:
-        with open(datei, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
+    if not DRY and aend:
+        geschrieben = schreiben_nachgelesen(datei, aend)
+        if geschrieben != len(aend):
+            print(f"   (nachgelesen: {len(aend) - geschrieben} Zeile(n) hatte inzwischen ein anderer Schreiber geändert — bleiben so)")
     print(f"{datei:32s} ready {len(ready):4d} → " + " · ".join(f"{k} {v}" for k, v in n.most_common()))
     gesamt.update(n)
 print(("DRY — " if DRY else "") + "GESAMT: " + " · ".join(f"{k} {v}" for k, v in gesamt.most_common()))

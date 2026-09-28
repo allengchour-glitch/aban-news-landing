@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🔏 Jury-Sperren an einen parallelen Schreiber verloren — Säuberer liest vor dem Schreiben neu (Verbesserungsrunde 20:25)
+- GEMESSEN nach Neustart: `reels_seed.csv` 0× `jury-skip` statt 23, 34 ready; schon Commit 66a763d31 ohne die Sperren.
+  Zwischen Textersatz und Commit schrieb ein Poster/Reel-Motor seine zu Beginn gelesenen Zeilen zurück (Lost Update).
+- Der Säuberer hatte dieselbe Klasse (Zeilen lesen → Minuten OCR → alles zurückschreiben).
+- Fix: `schreiben_nachgelesen()` (neu lesen, nur noch-ready-Zeilen, `.tmp` + `os.replace`) + Schritt `jury-skip` im
+  täglichen Säuberer (gecachte Urteile, `--nur-cache` ab 40 neuen/Lauf). Kanarienvogel 23/23, zurückgelesen 23.
+- **Lehre:** Eine Statusmarke in einer Datei mit vielen Schreibern ist erst gesetzt, wenn sie jemand WIEDERHOLT setzt.
+  Einmal-Skripte gegen geteilte Ledger → lieber in einen täglichen, idempotenten Wächter einbauen.
+- Offen: `post_guard.lock()` endet bei fremdem Lock mit Exit 0 → Autopilot-Marke wie nach Post.
+
 ## 2026-09-28 · 👁️ Gemini-Vision-Jury vor jedem Social-Post (Betreiber «jede post ein meisterwerk» · «vision ai», 20:20)
 - **Lehre 1 — Messen ist nicht Sehen.** `meisterwerk_tor.py` prüfte Format, Bewegung, Ton, Bildpreis; nichts davon sah ein
   «Dropshipping.com»-Wasserzeichen, «3Cr14 tool steel» im Bild oder einen Wok im Reel für ein Löffel-Set. Eine Vision-Jury
