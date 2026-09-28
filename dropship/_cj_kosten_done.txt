@@ -39035,3 +39035,6 @@ gid://shopify/Product/15493933465985	CHF 11.44	1 Varianten	Windmühlen Schmuckst
 gid://shopify/Product/15493933498753	CHF 8.14	1 Varianten	OGAS Glas-Entfettungspaste für Scheiben
 gid://shopify/Product/15493933531521	CHF 15.39	14 Varianten	Herren Hoodie mit Print
 gid://shopify/Product/15493933564289	CHF 17.39	8 Varianten	Herren Kapuzenpullover mit Fellkragen und Digitalp
+gid://shopify/Product/15493933597057	CHF 15.74	24 Varianten	Herren Fleece Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15493933662593	CHF 22.51	1 Varianten	Nähgarn-Set mit 150 Farben und Zubehör
+gid://shopify/Product/15493933695361	CHF 11.29	1 Varianten	Faltbarer Multi-Ständer für Leuchtplatten
