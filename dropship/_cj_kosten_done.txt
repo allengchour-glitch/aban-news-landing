@@ -40225,3 +40225,5 @@ gid://shopify/Product/15495131890049	CHF 41.57	1 Varianten	Titan Schneidebrett f
 gid://shopify/Product/15495131988353	CHF 12.56	1 Varianten	Umhängetasche für Herren aus Oxford-Stoff
 gid://shopify/Product/15495132152193	CHF 29.22	1 Varianten	Hunde-Badehandschuh mit Brause
 gid://shopify/Product/15495132348801	CHF 20.34	1 Varianten	OSTMARS Mini-Entsafter für frische Säfte
+gid://shopify/Product/15495132447105	CHF 81.31	1 Varianten	Rucksack aus echtem Rindsleder
+gid://shopify/Product/15495132643713	CHF 20.75	1 Varianten	Roboter-Hund Sparbüchse
