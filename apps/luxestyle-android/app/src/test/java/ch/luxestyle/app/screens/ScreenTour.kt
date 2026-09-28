@@ -205,6 +205,21 @@ class ScreenTour : TourBase() {
         shot("16-entfernt-rueckgaengig")
     }
 
+    @Test
+    fun startseiteVonAllem() {
+        start()
+        settle(5000)
+        shot("22-start-bereiche")
+        scrollTo("home", "Neu bei Damen"); settle(3000)
+        shot("22a-start-neu")
+        scrollTo("home", "Nach Budget"); settle(3000)
+        shot("22b-start-budget")
+        scrollTo("home", "Beliebte Kategorien"); settle(5000)
+        shot("22c-start-kacheln")
+        scrollTo("home", "Premium Geschenke"); settle(3000)
+        shot("22d-start-unten")
+    }
+
     /** Aus den Suchtreffern ins Produkt und zurück: Liste und Stelle bleiben, nichts lädt von vorne. */
     @Test
     fun zurueckAusProduktBleibtInDerSuche() {

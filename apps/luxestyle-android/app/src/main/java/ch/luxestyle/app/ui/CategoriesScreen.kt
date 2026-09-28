@@ -155,7 +155,7 @@ private fun DepartmentBanner(top: MenuItem, image: Image?, onClick: () -> Unit) 
 }
 
 @Composable
-private fun SubTile(item: MenuItem, image: Image?, onClick: () -> Unit) {
+internal fun SubTile(item: MenuItem, image: Image?, onClick: () -> Unit) {
     Column(
         Modifier.clip(Radius.Small).clickable(role = Role.Button, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,

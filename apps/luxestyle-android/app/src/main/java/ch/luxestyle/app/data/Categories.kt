@@ -50,3 +50,27 @@ internal fun titleMentions(productTitle: String, category: String): Boolean {
 
 private fun allPaths(items: List<MenuItem>, prefix: List<MenuItem> = emptyList()): List<List<MenuItem>> =
     items.flatMap { m -> listOf(prefix + m) + allPaths(m.children, prefix + m) }
+
+/** Preis-Einstiege aus dem Menü („Geschenke unter CHF 20" → „unter CHF 20"), günstigste zuerst, je Betrag einmal. */
+fun priceEntries(menu: List<MenuItem>): List<Pair<String, MenuItem>> {
+    val re = Regex("(unter|bis)\\s+CHF\\s+(\\d+)", RegexOption.IGNORE_CASE)
+    return menu.flatMap { it.children }
+        .filter { it.collectionHandle != null }
+        .mapNotNull { m -> re.find(m.title)?.let { Triple(it.groupValues[2].toInt(), "${it.groupValues[1].lowercase()} CHF ${it.groupValues[2]}", m) } }
+        .sortedBy { it.first }
+        .distinctBy { it.first }
+        .map { it.second to it.third }
+}
+
+/** Unterkategorien für die Startseite, in der gewünschten Reihenfolge – was im Menü fehlt, fällt weg. */
+fun pickCategories(menu: List<MenuItem>, titles: List<String>): List<MenuItem> {
+    val all = menu.flatMap { it.children }.filter { it.collectionHandle != null }
+    return titles.mapNotNull { t -> all.firstOrNull { it.title.equals(t, ignoreCase = true) } }.distinctBy { it.collectionHandle }
+}
+
+/** Reduzierte Stücke aus allen geladenen Reihen: grösster Rabatt zuerst. */
+fun onSale(cards: List<ProductCard>, max: Int = 12): List<ProductCard> =
+    cards.filter { it.available && it.discountPercent != null }
+        .distinctBy { it.handle }
+        .sortedByDescending { it.discountPercent }
+        .take(max)

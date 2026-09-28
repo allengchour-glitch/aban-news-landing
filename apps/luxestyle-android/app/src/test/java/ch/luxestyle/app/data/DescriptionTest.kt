@@ -229,3 +229,34 @@ class SameDepartmentTest {
         assertEquals(3, sameDepartment(recs, null).size)
     }
 }
+
+class HomeContentTest {
+    private fun m(title: String, handle: String?, vararg kids: MenuItem) =
+        MenuItem(title, handle?.let { "https://luxestyle.ch/collections/$it" } ?: "https://luxestyle.ch/pages/x", kids.toList())
+
+    private val menu = listOf(
+        m("Damen", "damen-mode", m("Kleider", "kleider"), m("Taschen & Rucksäcke", "taschen")),
+        m("Geschenke", "premium-geschenke",
+            m("Geschenke unter CHF 50", "u50"), m("Kleine Mitbringsel unter CHF 20", "u20"),
+            m("Geschenke bis CHF 30", "b30"), m("Nochmals unter CHF 20", "u20b"), m("Für Kinder", "kinder")),
+    )
+
+    @Test
+    fun budgetEinstiegeSortiertUndEinmalig() {
+        assertEquals(listOf("unter CHF 20", "bis CHF 30", "unter CHF 50"), priceEntries(menu).map { it.first })
+        assertEquals("u20", priceEntries(menu).first().second.collectionHandle)
+    }
+
+    @Test
+    fun kachelnInGewünschterReihenfolge() {
+        assertEquals(listOf("taschen", "kleider"), pickCategories(menu, listOf("Taschen & Rucksäcke", "Gibt es nicht", "kleider")).map { it.collectionHandle })
+    }
+
+    @Test
+    fun startseiteModeZuerstOhneDoppelte() {
+        val rails = ch.luxestyle.app.ui.homeRails("damen-mode")
+        assertEquals(RailSpec("damen-mode", newest = true, title = "Neu bei Damen"), rails.first())
+        assertEquals(rails.size, rails.distinctBy { it.handle to it.newest }.size)
+        assertTrue(rails.indexOfFirst { it.handle == "bestseller" } > rails.indexOfFirst { it.handle == "schmuck-uhren" })
+    }
+}

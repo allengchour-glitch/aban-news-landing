@@ -47,18 +47,19 @@ class Storefront(
             }
         }
 
-    suspend fun home(seasonHandle: String, railHandles: List<String>): HomeData {
-        val rails = railHandles.mapIndexed { i, h ->
-            """r$i: collection(handle: "$h") { ...Coll products(first: 12, sortKey: BEST_SELLING) { nodes { ...Card } } }"""
+    suspend fun home(seasonHandle: String, specs: List<RailSpec>): HomeData {
+        val rails = specs.mapIndexed { i, r ->
+            val sort = if (r.newest) "sortKey: CREATED, reverse: true" else "sortKey: BEST_SELLING"
+            """r$i: collection(handle: ${JsonPrimitive(r.handle)}) { ...Coll products(first: 12, $sort) { nodes { ...Card } } }"""
         }.joinToString("\n")
         val d = run(
             """query Home { season: collection(handle: "$seasonHandle") { ...Coll } $rails } $COLL $CARD""",
         )
         return HomeData(
             season = Parse.collection(d.o("season")),
-            rails = railHandles.indices.mapNotNull { i ->
+            rails = specs.indices.mapNotNull { i ->
                 val c = d.o("r$i") ?: return@mapNotNull null
-                val info = Parse.collection(c) ?: return@mapNotNull null
+                val info = Parse.collection(c)?.let { specs[i].title?.let { t -> it.copy(title = t) } ?: it } ?: return@mapNotNull null
                 val cards = c.nodes("products").mapNotNull(Parse::card)
                 if (cards.isEmpty()) null else info to cards
             },
