@@ -40284,3 +40284,5 @@ gid://shopify/Product/15495136641409	CHF 33.61	1 Varianten	Erhöhter, verstellba
 gid://shopify/Product/15495136706945	CHF 22.28	1 Varianten	Strickdecke für Büro und Zuhause
 gid://shopify/Product/15495136739713	CHF 12.52	4 Varianten	Elegantes A-Linien Kleid mit Print und Cut-Out
 gid://shopify/Product/15495136772481	CHF 16.12	1 Varianten	USB Aroma Diffuser mit Holzmaserung
+gid://shopify/Product/15495136805249	CHF 64.61	1 Varianten	Futterautomat mit Kamera für Katzen, 6L
+gid://shopify/Product/15495136838017	CHF 26.95	1 Varianten	Sofa-Kissenbezug mit Weihnachts-Digitaldruck
