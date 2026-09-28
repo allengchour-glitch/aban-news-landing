@@ -41046,3 +41046,13 @@ gid://shopify/Product/15495733707137	CHF 14.61	1 Varianten	Bestickte Tischdecke 
 gid://shopify/Product/15495747436929	CHF 10.71	1 Varianten	Hundespielzeug-Set
 gid://shopify/Product/15495747469697	CHF 17.77	35 Varianten	Etuikleid mit Rüschen und asymmetrischem Saum
 gid://shopify/Product/15495747535233	CHF 19.22	1 Varianten	Plüsch-Versteckspiel für Haustiere
+gid://shopify/Product/15495747568001	CHF 14.91	5 Varianten	Geometrisches Damen-Kleid mit Patchwork-Rock
+gid://shopify/Product/15495747600769	CHF 13.21	1 Varianten	Kissenhülle «Marokkanischer Regenbogen»
+gid://shopify/Product/15495747666305	CHF 7.38	1 Varianten	Chamäleon Plüschtier mit Sound und Futterversteck
+gid://shopify/Product/15495747731841	CHF 22.62	4 Varianten	Maxikleid mit Blumenmuster
+gid://shopify/Product/15495747993985	CHF 22.13	1 Varianten	Boho-Kissenbezug mit Füllung
+gid://shopify/Product/15495748026753	CHF 28.73	1 Varianten	Plüsch Beissspielzeug für Katzen und Hunde
+gid://shopify/Product/15495748092289	CHF 21.29	4 Varianten	Elegantes ärmelloses Patchwork-Kleid
+gid://shopify/Product/15495748190593	CHF 51.79	1 Varianten	Cartoon Hunde-Sitzkissen für Kinder
+gid://shopify/Product/15495748223361	CHF 14.25	1 Varianten	Plüschtier Avocado
+gid://shopify/Product/15495748256129	CHF 10.93	12 Varianten	Etuikleid Satin mit Spitze
