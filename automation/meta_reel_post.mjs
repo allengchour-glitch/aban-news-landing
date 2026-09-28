@@ -12,7 +12,7 @@
  * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
-import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle } from './post_guard.mjs';
+import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -256,7 +256,16 @@ if (/^montage-/.test(cand[idx.id] || '')) {   // 28.09.2026: Sammelvideo — all
     console.error(`⛔ Kein Post — Meisterwerk-Tor: ${((t.stdout || '').trim().split('\n').pop() || '').slice(0, 220)}`);
     if (!DRY && t.status === 4) { cand[idx.status] = 'meisterwerk-tor-skip'; writeLedger(); }
     process.exit(3);
-  } }
+  }
+  // 28.09.2026 Betreiber «mache jede post ein meisterwerk … jetzt hast du gemini» · «vision ai»: das Tor misst, die Jury SIEHT
+  // (Fremdtext/Wasserzeichen, falsches Produkt, Hook ≠ Produkt, billige Wirkung). Kein Urteil (Exit 2) = kein Post, keine Marke.
+  const j = juryPruefen(quelle, cand[idx.caption], 'reel');
+  if (j.status !== 0) {
+    console.error(`⛔ Kein Post — Gemini-Jury: ${j.info}`);
+    if (!DRY && j.status === 4) { cand[idx.status] = 'jury-skip'; writeLedger(); }
+    process.exit(3);
+  }
+  console.log(`  Gemini-Jury: ${j.info}`); }
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
 const fbTextReel = fbText(text, shopUrl, 'reel');   // FB: klickbarer Produktlink statt «(Link in Bio)»

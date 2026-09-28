@@ -130,11 +130,10 @@ while true; do
     fi
     if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
       echo "$(date -u +%H:%M) Bildpost fällig"
-      if MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then
-        touch "$MARKE_BILD"
-      else
-        echo "$(date -u +%H:%M) Bildpost fehlgeschlagen (Marke bleibt alt, nächster Lauf versucht erneut)"
-      fi
+      MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; rc=$?
+      if [ $rc -eq 0 ]; then touch "$MARKE_BILD"
+      elif [ $rc -eq 3 ]; then echo "$(date -u +%H:%M) Bildpost übersprungen (Jury/Sperren, Marke bleibt alt, nächster Lauf versucht erneut)"
+      else echo "$(date -u +%H:%M) Bildpost fehlgeschlagen (Marke bleibt alt, nächster Lauf versucht erneut)"; fi
     fi
 
     if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
