@@ -1710,3 +1710,21 @@ gid://shopify/Product/15480164614529	2026-09-28T17:21Z	schon-DRAFT	14.90	23.92	F
 gid://shopify/Product/15481712050561	2026-09-28T17:21Z	schon-DRAFT	15.90	24.86	Sonnenblenden-Organizer für Auto & LKW
 gid://shopify/Product/15483890499969	2026-09-28T17:21Z	schon-DRAFT	14.90	23.82	Ferngesteuertes Auto
 gid://shopify/Product/15472337420673	2026-09-28T17:21Z	kein-verlust-live	15.90	26.64	Herren Hoodie im Vintage-Look
+gid://shopify/Product/15481981337985	2026-09-28T17:21Z	schon-DRAFT	17.90	26.67	Lavalier Mikrofon für kabellose Aufnahmen
+gid://shopify/Product/15479416848769	2026-09-28T17:21Z	kein-verlust-live	18.90	27.59	High-top Sneaker mit Schlangenmuster
+gid://shopify/Product/15479466688897	2026-09-28T17:21Z	kein-verlust-live	18.90	27.56	Vintage Western Cowboy Boots
+gid://shopify/Product/15484906733953	2026-09-28T17:21Z	schon-DRAFT	15.90	24.55	Bohemian Sun Wandteppich im Retro-Stil
+gid://shopify/Product/15477051621761	2026-09-28T17:21Z	schon-DRAFT	18.90	27.42	High Looks Rucksack 3er-Set
+gid://shopify/Product/15460660117889	2026-09-28T17:21Z	schon-DRAFT	18.90	27.35	HD-Drohne mit Höhenfixierung
+gid://shopify/Product/15479340335489	2026-09-28T17:21Z	schon-DRAFT	15.90	24.28	4D Silikon Anti-Rutsch Autositzkissen – Atmungsaktiv
+gid://shopify/Product/15480282939777	2026-09-28T17:21Z	schon-DRAFT	15.90	24.20	Hochdruck-Sandstrahldüse für Kärcher K-Serie
+gid://shopify/Product/15480272159105	2026-09-28T17:21Z	kein-verlust-live	18.90	27.15	Retro Western Boots für Herren
+gid://shopify/Product/15493260083585	2026-09-28T17:21Z	schon-DRAFT	16.90	25.14	Tragbare Outdoor-Dusche
+gid://shopify/Product/15480284447105	2026-09-28T17:21Z	schon-DRAFT	15.90	24.12	Astronaut Sternenhimmel Projektionslampe
+gid://shopify/Product/15493259821441	2026-09-28T17:21Z	schon-DRAFT	15.90	24.02	Silikon-Frischhaltebeutel für Lebensmittel
+gid://shopify/Product/15485425648001	2026-09-28T17:21Z	schon-DRAFT	15.90	24.01	Sofa-Kissen aus gemütlichem Coral Fleece
+gid://shopify/Product/15479639998849	2026-09-28T17:21Z	schon-DRAFT	17.90	26.00	Drahtloses Dual-Mikrofon mit Rauschunterdrückung
+gid://shopify/Product/15480463851905	2026-09-28T17:21Z	schon-DRAFT	14.90	22.94	Atmungsaktive, leichte Freizeitschuhe mit weicher Sohle
+gid://shopify/Product/15491398467969	2026-09-28T17:21Z	kein-verlust-live	22.90	15.90	TF High-Speed Speicherkarte für Kameras
+gid://shopify/Product/15480281137537	2026-09-28T17:21Z	schon-DRAFT	15.90	23.87	HD 1080P Sport-DV-Kamera mit Nachtsicht
+gid://shopify/Product/15483934146945	2026-09-28T17:21Z	schon-DRAFT	14.90	22.80	Kuechenablage
