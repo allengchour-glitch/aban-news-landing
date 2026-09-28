@@ -5288,3 +5288,10 @@ gid://shopify/Product/15449057624449	1790625542	ok	48 Shop / 48 CJ / 0 fehlend /
 gid://shopify/Product/15449057722753	1790625542	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449057853825	1790625542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449057952129	1790625542	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15431384269185	1790628121	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384498561	1790628121	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384859009	1790628121	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431385121153	1790628121	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15448887001473	1790628121	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
+gid://shopify/Product/15449058017665	1790628121	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449058083201	1790628121	ok	96 Shop / 96 CJ / 0 fehlend / 0 DENY
