@@ -39244,3 +39244,7 @@ gid://shopify/Product/15494465192321	CHF 35.28	1 Varianten	Hartschalen-Rucksack 
 gid://shopify/Product/15494465225089	CHF 9.35	1 Varianten	Plüsch-Haifisch mit Vibration und Touch
 gid://shopify/Product/15494465749377	CHF 45.33	1 Varianten	Anti-Diebstahl Rucksack für Studenten
 gid://shopify/Product/15494465880449	CHF 10.11	1 Varianten	Robustes Hunde- & Katzenspielzeug mit Rindfleischa
+gid://shopify/Product/15494466437505	CHF 20.13	1 Varianten	Picknick-Kühlrucksack aus Oxford-Stoff
+gid://shopify/Product/15494466535809	CHF 9.25	1 Varianten	Futterspender-Spielzeug für Hunde und Katzen
+gid://shopify/Product/15494467092865	CHF 78.65	1 Varianten	Reise-Rucksack aus echtem Leder
+gid://shopify/Product/15494467223937	CHF 20.68	1 Varianten	Maulkorb aus Rindsleder für Hunde
