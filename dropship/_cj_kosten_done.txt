@@ -40270,3 +40270,17 @@ gid://shopify/Product/15495136117121	CHF 14.28	4 Varianten	Midi-Kleid mit quadra
 gid://shopify/Product/15495136149889	CHF 13.06	1 Varianten	Futternapf «Fliegende Untertasse» für Katzen
 gid://shopify/Product/15495136182657	CHF 17.91	12 Varianten	Elegantes asymmetrisches Plisseekleid mit Schnürun
 gid://shopify/Product/15495136215425	CHF 20.42	1 Varianten	WLAN-Überwachungskamera für Zuhause
+gid://shopify/Product/15495136280961	CHF 59.33	1 Varianten	Picknickdecke im Ethno-Stil
+gid://shopify/Product/15495136313729	CHF 14.16	5 Varianten	Elegantes Off-Shoulder A-Linien Kleid mit Print
+gid://shopify/Product/15495136346497	CHF 30.39	1 Varianten	Ionen-Haartrockner mit Warmluft & Kaltstufe
+gid://shopify/Product/15495136379265	CHF 58.94	1 Varianten	Keramik-Futternapf mit Bambusständer für Haustiere
+gid://shopify/Product/15495136412033	CHF 38.32	1 Varianten	Elastischer Sofaüberzug – verschiedene Grössen
+gid://shopify/Product/15495136444801	CHF 13.13	4 Varianten	Damen V-Ausschnitt Kleid mit Knoten & Puffärmeln
+gid://shopify/Product/15495136477569	CHF 42.19	1 Varianten	2K HD Überwachungskamera mit Nachtsicht
+gid://shopify/Product/15495136510337	CHF 15.61	1 Varianten	Katzen-Plüschkissen für Wohnen & Unterwegs
+gid://shopify/Product/15495136543105	CHF 19.86	24 Varianten	Midi-Plisseekleid mit Rüschenärmeln und Gürtel
+gid://shopify/Product/15495136575873	CHF 37.83	1 Varianten	Elektrischer, portabler Zahnspüler
+gid://shopify/Product/15495136641409	CHF 33.61	1 Varianten	Erhöhter, verstellbarer Futternapf für Hunde
+gid://shopify/Product/15495136706945	CHF 22.28	1 Varianten	Strickdecke für Büro und Zuhause
+gid://shopify/Product/15495136739713	CHF 12.52	4 Varianten	Elegantes A-Linien Kleid mit Print und Cut-Out
+gid://shopify/Product/15495136772481	CHF 16.12	1 Varianten	USB Aroma Diffuser mit Holzmaserung
