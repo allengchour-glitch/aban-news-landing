@@ -39725,3 +39725,9 @@ gid://shopify/Product/15495087554945	CHF 16.72	5 Varianten	Damen Langarmshirt mi
 gid://shopify/Product/15495087587713	CHF 17.69	12 Varianten	Gefütterte Snow Boots aus weichem Kunstleder
 gid://shopify/Product/15495087620481	CHF 21.12	1 Varianten	Elektrischer Haarschneider mit Edelstahlklinge
 gid://shopify/Product/15495087653249	CHF 21.88	16 Varianten	Ankle Boots mit Hufeisenabsatz
+gid://shopify/Product/15495087686017	CHF 17.96	18 Varianten	Gefütterte, wasserdichte Baumwollschuhe für Damen
+gid://shopify/Product/15495087718785	CHF 13.83	1 Varianten	Bartpflege-Set mit Wachs, Öl und Bürste
+gid://shopify/Product/15495087751553	CHF 17.26	1 Varianten	Glättungs- & Bartkamm für Männer
+gid://shopify/Product/15495087784321	CHF 19.52	1 Varianten	Wasserdichter Business Rucksack für Herren
+gid://shopify/Product/15495087817089	CHF 19.08	1 Varianten	Automatischer Haarstyler mit Keramik-Heizelement
+gid://shopify/Product/15495087849857	CHF 21.38	1 Varianten	Business Casual Rucksack
