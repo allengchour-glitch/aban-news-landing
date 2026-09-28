@@ -40912,3 +40912,11 @@ gid://shopify/Product/15495237108097	CHF 78.71	1 Varianten	Minimalistischer Küc
 gid://shopify/Product/15495237140865	CHF 10.78	30 Varianten	Niedliche Cartoon-Baumwollhausschuhe für Kinder
 gid://shopify/Product/15495237173633	CHF 21.06	1 Varianten	Moocare Aromatherapie-Öl (20 Stk.)
 gid://shopify/Product/15495237239169	CHF 13.16	1 Varianten	Muttertags-Ring mit Rohstein
+gid://shopify/Product/15495237271937	CHF 13.96	42 Varianten	Kleinkind Sandalen mit Klettverschluss
+gid://shopify/Product/15495237370241	CHF 10.39	1 Varianten	Geburtsstein Ring – schlicht & elegant
+gid://shopify/Product/15495237403009	CHF 14.09	1 Varianten	Hoegoa Haarpflege-Ölkapseln für tägliche Pflege
+gid://shopify/Product/15495237468545	CHF 13.16	1 Varianten	Retro Ring mit Geburtssteinen
+gid://shopify/Product/15495237534081	CHF 19.21	1 Varianten	Malen nach Zahlen Kit «Peace For All»
+gid://shopify/Product/15495237665153	CHF 11.33	1 Varianten	Unendlicher Geburtsstein-Ring mit Namen
+gid://shopify/Product/15495237697921	CHF 15.30	1 Varianten	Digitales Ölgemälde: Landschaft, Tier oder Blume
+gid://shopify/Product/15495237730689	CHF 17.62	3 Varianten	Warme, wasserdichte Überschuhe fürs Velo
