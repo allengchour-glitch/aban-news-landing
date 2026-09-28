@@ -132,9 +132,10 @@ private fun CartContent(c: Cart) {
             sameDepartment(related.await(), path.firstOrNull()?.collectionHandle) + best
         }
     }
-    val missing = missingForFreeShipping(c.subtotal)
-    // Vorsichtig nach Rabatt gerechnet: lieber CHF 7 zeigen, die dann wegfallen, als umgekehrt
-    val ship = if (missingForFreeShipping(c.total) == null) 0.0 else CartRepository.SHIPPING_CHF
+    // Die Versandregel des Shops prüft den Betrag NACH Rabatt (gemessen: 2 × 24.90 = 49.80,
+    // mit „2+ Artikel −10 %" 44.82 → CHF 7 Versand). Darum überall c.total, nie c.subtotal.
+    val missing = missingForFreeShipping(c.total)
+    val ship = if (missing == null) 0.0 else CartRepository.SHIPPING_CHF
     val grand = Money(c.total.amount + ship, c.total.currency)
     val wish by shop.wishlist.items.collectAsState()
     val suggestions = remember(recs.state, c.lines, missing) {
@@ -143,7 +144,7 @@ private fun CartContent(c: Cart) {
 
     Box(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.testTag("cart"), contentPadding = PaddingValues(bottom = 120.dp)) {
-            item { Box(Modifier.padding(horizontal = 16.dp)) { ShippingProgress(c.subtotal) } }
+            item { Box(Modifier.padding(horizontal = 16.dp)) { ShippingProgress(c.total) } }
             items(c.lines, key = { it.id }) { line ->
                 Column(Modifier.padding(horizontal = 16.dp)) {
                     LineRow(line, busy == line.id, onQty = { change(line, it) }, onOpen = { nav.product(line.productHandle) })
