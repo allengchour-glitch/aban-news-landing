@@ -63,7 +63,4 @@ Secrets für den Workflow: `LUXE_KEYSTORE_B64` (= `base64 -w0 luxestyle-upload.j
 - **Ohne App-Update:** Produkte, Preise, Menü, Kollektionen, Bilder, Beschreibungen kommen live aus Shopify.
 - **App-Update:** Actions → „LuxeStyle Android-App bauen" → Versionsname (z. B. 1.0.5) und Spur („alpha" = geschlossener Test).
   versionCode zählt selbst. `production` landet als Entwurf (ein Klick „Freigeben").
-- **Einmalig für automatisches Hochladen** (nach der ersten Hand-Hochladung):
-  1. Google Cloud Console → Projekt → „IAM → Dienstkonten" → Dienstkonto anlegen → Schlüssel (JSON).
-  2. Play Console → „Nutzer und Berechtigungen" → Dienstkonto-E-Mail einladen, Rechte: Releases verwalten.
-  3. GitHub-Secret `PLAY_SERVICE_ACCOUNT_JSON` = Inhalt der JSON-Datei.
+- Hochladen braucht das Secret `PLAY_SERVICE_ACCOUNT_JSON` (Dienstkonto mit „Releases verwalten", eingerichtet 28.09.).
