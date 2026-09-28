@@ -40268,3 +40268,5 @@ gid://shopify/Product/15495136051585	CHF 15.73	1 Varianten	Herren Chronograph Sp
 gid://shopify/Product/15495136084353	CHF 15.44	4 Varianten	Elegantes Strickkleid mit geometrischem Muster
 gid://shopify/Product/15495136117121	CHF 14.28	4 Varianten	Midi-Kleid mit quadratischem Ausschnitt
 gid://shopify/Product/15495136149889	CHF 13.06	1 Varianten	Futternapf «Fliegende Untertasse» für Katzen
+gid://shopify/Product/15495136182657	CHF 17.91	12 Varianten	Elegantes asymmetrisches Plisseekleid mit Schnürun
+gid://shopify/Product/15495136215425	CHF 20.42	1 Varianten	WLAN-Überwachungskamera für Zuhause
