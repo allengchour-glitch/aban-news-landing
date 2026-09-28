@@ -188,7 +188,12 @@ def main():
     print(f"Start | Stufe A sichtbar {len(ware)} ({quelle}), heute offen {len(a_offen)} | Stufe B Rest {len(rest)} "
           f"von {cj_aktiv} aktiven CJ | DRY={DRY}", flush=True)
     weg, unklar, gepr = [], 0, 0
-    for gid, (ref, handle, titel, woher) in list(a_offen.items()) + list(rest.items()):
+    alle = list(a_offen.items()) + list(rest.items())
+    for n, (gid, (ref, handle, titel, woher)) in enumerate(alle, 1):
+        # 28.09.: Fortschritt alle 25 — sonst steht nach einem Neustart das FERTIG des VORIGEN Laufs in den letzten 3 Log-Zeilen,
+        # und fixer_keepalive.still_gestorben hält den abgebrochenen Lauf für beendet (gemessen 18:09: 567/2277, kein Neustart).
+        if n % 25 == 0:
+            print(f"  … {n}/{len(alle)} geprüft", flush=True)
         s = cj_status(ref, tok)
         if s is None:
             unklar += 1; continue
