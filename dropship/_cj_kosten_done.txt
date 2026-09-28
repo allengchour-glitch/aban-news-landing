@@ -39707,3 +39707,21 @@ gid://shopify/Product/15495086965121	CHF 13.71	24 Varianten	Sportliche Casual-Sa
 gid://shopify/Product/15495086997889	CHF 23.67	1 Varianten	Kabelloser Mini-Haarglätter
 gid://shopify/Product/15495087030657	CHF 14.48	12 Varianten	Minikleid mit Taillenbetonung
 gid://shopify/Product/15495087063425	CHF 28.92	1 Varianten	Interaktiver Plüschhund mit Sprachsteuerung
+gid://shopify/Product/15495087096193	CHF 30.13	12 Varianten	Keilabsatz-Sandalen mit offener Spitze
+gid://shopify/Product/15495087128961	CHF 38.25	1 Varianten	Infrarot Ultraschall Haarglätter
+gid://shopify/Product/15495087161729	CHF 18.01	5 Varianten	Elegantes Mesh-Maxikleid in grossen Grössen
+gid://shopify/Product/15495087194497	CHF 9.68	1 Varianten	Sprechender Hamster
+gid://shopify/Product/15495087227265	CHF 13.22	8 Varianten	Damen-Flip-Flops mit Cut-Outs
+gid://shopify/Product/15495087260033	CHF 25.40	1 Varianten	Elektrischer Haarschneider
+gid://shopify/Product/15495087292801	CHF 11.51	20 Varianten	Vielseitiges Damen-Top mit Patchwork
+gid://shopify/Product/15495087325569	CHF 66.03	1 Varianten	RC Special Effects Twist Car
+gid://shopify/Product/15495087358337	CHF 16.57	16 Varianten	Crystal-Heeled Ultra-High Heel Sandalen
+gid://shopify/Product/15495087391105	CHF 16.96	1 Varianten	USB Baby-Haarschneider
+gid://shopify/Product/15495087423873	CHF 11.22	3 Varianten	Blaues Oberteil mit Blumenprint und Puffärmeln
+gid://shopify/Product/15495087456641	CHF 11.45	1 Varianten	Blubber-Panzerwagen für Kinder
+gid://shopify/Product/15495087489409	CHF 14.04	32 Varianten	Bedruckte Sandalen mit Schnürung
+gid://shopify/Product/15495087522177	CHF 13.55	1 Varianten	Lockenstab mit Turmalin-Keramikbeschichtung
+gid://shopify/Product/15495087554945	CHF 16.72	5 Varianten	Damen Langarmshirt mit Plissée-Saum
+gid://shopify/Product/15495087587713	CHF 17.69	12 Varianten	Gefütterte Snow Boots aus weichem Kunstleder
+gid://shopify/Product/15495087620481	CHF 21.12	1 Varianten	Elektrischer Haarschneider mit Edelstahlklinge
+gid://shopify/Product/15495087653249	CHF 21.88	16 Varianten	Ankle Boots mit Hufeisenabsatz
