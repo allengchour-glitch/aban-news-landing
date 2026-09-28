@@ -43,6 +43,7 @@ object Parse {
             available = o.b("availableForSale"),
             quickVariant = o.o("variants").a("nodes").singleOrNull()?.obj()
                 ?.takeIf { it.b("availableForSale") }?.s("id"),
+            collections = o.nodes("collections").mapNotNull { it.s("handle") }.toSet(),
         )
     }
 
@@ -117,6 +118,7 @@ object Parse {
                     id = l.s("id") ?: return@mapNotNull null,
                     quantity = qty,
                     variantId = m.s("id").orEmpty(),
+                    productId = m.o("product").s("id").orEmpty(),
                     productHandle = m.o("product").s("handle").orEmpty(),
                     productTitle = m.o("product").s("title").orEmpty(),
                     variantTitle = m.s("title")?.takeIf { it != "Default Title" },

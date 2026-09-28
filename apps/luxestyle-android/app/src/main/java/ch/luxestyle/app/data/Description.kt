@@ -1,15 +1,52 @@
 package ch.luxestyle.app.data
 
+import java.util.Calendar
+
 /**
  * Lieferzeit aus dem Vertrauens-Kasten der Beschreibung („Lieferung 10–20 Werktage").
  * Der Kasten selbst wird entfernt, die Angabe zeigt die App dann sichtbar oben an.
  */
 fun deliveryNote(html: String): String? {
+    val d = deliveryDays(html) ?: return null
+    return "Lieferung ca. ${d.days.first}–${d.days.last} ${if (d.workdays) "Werktage" else "Tage"}"
+}
+
+data class DeliveryDays(val days: IntRange, val workdays: Boolean)
+
+fun deliveryDays(html: String): DeliveryDays? {
     val text = html.replace(Regex("<[^>]+>"), "")
-    val m = Regex("Liefer(?:ung|zeit)\\s+(?:Schweiz\\s*:?\\s*)?(?:ca\\.\\s*)?(\\d+\\s*[–-]\\s*\\d+)\\s*(Werktage|Tage)")
+    val m = Regex("Liefer(?:ung|zeit)\\s+(?:Schweiz\\s*:?\\s*)?(?:ca\\.\\s*)?(\\d+)\\s*[–-]\\s*(\\d+)\\s*(Werktage|Tage)")
         .find(text) ?: return null
-    val range = m.groupValues[1].replace(Regex("\\s*[–-]\\s*"), "–")
-    return "Lieferung ca. $range ${m.groupValues[2]}"
+    val from = m.groupValues[1].toInt()
+    val to = m.groupValues[2].toInt()
+    if (from > to || to > 90) return null
+    return DeliveryDays(from..to, m.groupValues[3] == "Werktage")
+}
+
+/** „Lieferung ca. 13.–27. Okt." – gerechnet ab heute, Werktage ohne Samstag und Sonntag. */
+fun deliveryWindow(html: String, today: Calendar = Calendar.getInstance()): String? {
+    val d = deliveryDays(html) ?: return null
+    val from = addDays(today, d.days.first, d.workdays)
+    val to = addDays(today, d.days.last, d.workdays)
+    val sameMonth = from.get(Calendar.MONTH) == to.get(Calendar.MONTH)
+    val start = if (sameMonth) "${from.get(Calendar.DAY_OF_MONTH)}." else dayMonth(from)
+    val unit = if (d.workdays) "Werktage" else "Tage"
+    return "Lieferung ca. $start–${dayMonth(to)} (${d.days.first}–${d.days.last} $unit)"
+}
+
+private val MONTHS = listOf("Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez.")
+
+private fun dayMonth(c: Calendar) = "${c.get(Calendar.DAY_OF_MONTH)}. ${MONTHS[c.get(Calendar.MONTH)]}"
+
+fun addDays(start: Calendar, days: Int, workdays: Boolean): Calendar {
+    val c = start.clone() as Calendar
+    var left = days
+    while (left > 0) {
+        c.add(Calendar.DAY_OF_MONTH, 1)
+        val dow = c.get(Calendar.DAY_OF_WEEK)
+        if (!workdays || (dow != Calendar.SATURDAY && dow != Calendar.SUNDAY)) left--
+    }
+    return c
 }
 
 /**

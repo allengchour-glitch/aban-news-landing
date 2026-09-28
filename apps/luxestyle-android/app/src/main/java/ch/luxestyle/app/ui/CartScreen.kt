@@ -39,6 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
@@ -51,6 +52,12 @@ import ch.luxestyle.app.data.Cart
 import ch.luxestyle.app.data.CartLine
 import ch.luxestyle.app.data.CartRepository
 import ch.luxestyle.app.data.Money
+import ch.luxestyle.app.data.Storefront
+import ch.luxestyle.app.data.breadcrumb
+import ch.luxestyle.app.data.cartSuggestions
+import ch.luxestyle.app.data.sameDepartment
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 
@@ -99,16 +106,40 @@ private fun CartContent(c: Cart) {
         }
     }
 
+    // Vorschläge zum ersten Stück im Warenkorb, aus derselben Abteilung und Kategorie;
+    // fehlt Geld bis zum Gratis-Versand, zuerst was die Lücke schliesst
+    val first = c.lines.firstOrNull()
+    val menu = (rememberLoad("menu") { shop.menu() }.state as? Load.Ok)?.value
+    val recs = rememberLoad(first?.productHandle, menu != null) {
+        if (first == null || menu == null) return@rememberLoad emptyList()
+        coroutineScope {
+            val related = async { runCatching { shop.api.recommendations(first.productId) }.getOrDefault(emptyList()) }
+            val p = shop.api.product(first.productHandle)
+            val path = breadcrumb(menu, p.collections, p.title)
+            val best = path.lastOrNull()?.collectionHandle?.let { h ->
+                runCatching { shop.api.collection(h, Storefront.Sort.BEST, null).second.products }.getOrDefault(emptyList())
+            }.orEmpty()
+            sameDepartment(related.await(), path.firstOrNull()?.collectionHandle) + best
+        }
+    }
+    val missing = missingForFreeShipping(c.subtotal)
+    val wish by shop.wishlist.items.collectAsState()
+    val suggestions = remember(recs.state, c.lines, missing) {
+        (recs.state as? Load.Ok)?.value.orEmpty().let { cartSuggestions(it, c.lines.map { l -> l.productHandle }.toSet(), missing) }
+    }
+
     Box(Modifier.fillMaxSize()) {
-        LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 120.dp)) {
-            item { ShippingProgress(c.subtotal) }
+        LazyColumn(Modifier.testTag("cart"), contentPadding = PaddingValues(bottom = 120.dp)) {
+            item { Box(Modifier.padding(horizontal = 16.dp)) { ShippingProgress(c.subtotal) } }
             items(c.lines, key = { it.id }) { line ->
-                LineRow(line, busy == line.id, onQty = { change(line, it) }, onOpen = { nav.product(line.productHandle) })
-                HorizontalDivider(color = LocalLuxe.current.line)
+                Column(Modifier.padding(horizontal = 16.dp)) {
+                    LineRow(line, busy == line.id, onQty = { change(line, it) }, onOpen = { nav.product(line.productHandle) })
+                    HorizontalDivider(color = LocalLuxe.current.line)
+                }
             }
-            item { DiscountBox(c) }
+            item { Box(Modifier.padding(horizontal = 16.dp)) { DiscountBox(c) } }
             item {
-                Column(Modifier.padding(top = 20.dp)) {
+                Column(Modifier.padding(horizontal = 16.dp).padding(top = 20.dp)) {
                     SummaryRow("Zwischensumme", c.subtotal.format())
                     if (c.total.amount < c.subtotal.amount - 0.004) {
                         SummaryRow("Rabatt", "−" + Money(c.subtotal.amount - c.total.amount, c.total.currency).format(), accent = true)
@@ -120,6 +151,14 @@ private fun CartContent(c: Cart) {
                     Row(Modifier.fillMaxWidth()) {
                         Text("Total", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
                         Text(c.total.format(), style = MaterialTheme.typography.titleLarge)
+                    }
+                }
+            }
+            if (suggestions.isNotEmpty()) item(key = "suggest") {
+                Column(Modifier.testTag("cart-suggestions")) {
+                    SectionHeader(if (missing != null) "Für Gratis-Versand ergänzen" else "Passt dazu")
+                    Rail(suggestions.take(10), wish.map { it.handle }.toSet()) { card ->
+                        if (missing != null && card.price.amount >= missing.amount - 0.004) "Versand dann gratis" else null
                     }
                 }
             }

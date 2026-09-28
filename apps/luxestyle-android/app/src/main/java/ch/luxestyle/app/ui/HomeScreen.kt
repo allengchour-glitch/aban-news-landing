@@ -253,14 +253,14 @@ private fun Promise(@DrawableRes icon: Int, title: String, sub: String) {
 }
 
 @Composable
-fun Rail(cards: List<ProductCard>, liked: Set<String>) {
+fun Rail(cards: List<ProductCard>, liked: Set<String>, note: (ProductCard) -> String? = { null }) {
     val nav = LocalNav.current
     val wishlist = LocalShop.current.wishlist
     LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         items(cards, key = { it.id }) { card ->
             ProductTile(
                 card, liked = card.handle in liked, onLike = { wishlist.toggle(card) },
-                onClick = { nav.product(card.handle) }, modifier = Modifier.width(158.dp),
+                onClick = { nav.product(card.handle) }, modifier = Modifier.width(158.dp), note = note(card),
             )
         }
     }

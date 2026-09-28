@@ -151,7 +151,7 @@ class Storefront(
 
     suspend fun recommendations(productId: String): List<ProductCard> {
         val d = run(
-            """query R(${'$'}id: ID!) { productRecommendations(productId: ${'$'}id) { ...Card } } $CARD""",
+            """query R(${'$'}id: ID!) { productRecommendations(productId: ${'$'}id) { ...Card collections(first: 40) { nodes { handle } } } } $CARD""",
             vars("id" to productId),
         )
         return d.a("productRecommendations").mapNotNull { it.obj()?.let(Parse::card) }.take(10)
@@ -250,6 +250,6 @@ class Storefront(
             discountCodes { code applicable }
             lines(first: 100) { nodes { id quantity cost { totalAmount { amount currencyCode } }
               merchandise { ... on ProductVariant { id title price { amount currencyCode } image { url altText }
-                product { handle title } } } } } }"""
+                product { id handle title } } } } } }"""
     }
 }

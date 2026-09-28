@@ -28,6 +28,8 @@ data class ProductCard(
     val available: Boolean,
     /** Variante für „direkt in den Warenkorb" – nur bei Produkten mit genau einer lieferbaren Ausführung. */
     val quickVariant: String? = null,
+    /** Nur bei Vorschlägen geladen – damit bleiben sie in derselben Abteilung. */
+    val collections: Set<String> = emptySet(),
 ) {
     val discountPercent: Int?
         get() = compareAt?.takeIf { it.amount > price.amount }
@@ -73,6 +75,19 @@ data class Product(
         return variants.any { v -> v.available && v.options.all { (k, x) -> wanted[k] == null || wanted[k] == x } }
     }
 
+    /**
+     * Bild je Wert einer Option (z. B. Farbe), wenn jede Ausführung ein eigenes, unterscheidbares Bild hat.
+     * Sonst null – dann bleiben die Text-Chips.
+     */
+    fun swatches(option: String): Map<String, Image>? {
+        val values = options.firstOrNull { it.name == option }?.values ?: return null
+        if (values.size < 2) return null
+        val map = values.associateWith { value -> variants.firstOrNull { it.options[option] == value && it.image != null }?.image }
+        if (map.values.any { it == null }) return null
+        if (map.values.map { it!!.url.substringBefore('?') }.distinct().size != values.size) return null
+        return map.mapValues { it.value!! }
+    }
+
     fun toCard(): ProductCard {
         val v = variants.firstOrNull { it.available } ?: variants.first()
         return ProductCard(id, handle, title, images.firstOrNull(), v.price, v.compareAt, variants.any { it.available })
@@ -97,6 +112,7 @@ data class CartLine(
     val id: String,
     val quantity: Int,
     val variantId: String,
+    val productId: String,
     val productHandle: String,
     val productTitle: String,
     val variantTitle: String?,
@@ -149,3 +165,14 @@ fun relevantCollections(query: String, hits: List<CollectionHit>): List<Collecti
 /** Emoji und Zierzeichen am Anfang von Menü-Titeln weg („🎁 Geschenke" → „Geschenke"). */
 fun cleanTitle(title: String): String =
     title.trimStart { !it.isLetterOrDigit() }.trim()
+
+/**
+ * Vorschläge im Warenkorb: nichts, was schon drin liegt, nichts Ausverkauftes.
+ * Fehlt noch Geld bis zum Gratis-Versand, kommen zuerst die günstigsten Stücke, die die Lücke schliessen.
+ */
+fun cartSuggestions(recs: List<ProductCard>, inCart: Set<String>, missing: Money?): List<ProductCard> {
+    val open = recs.filter { it.available && it.handle !in inCart }.distinctBy { it.handle }
+    if (missing == null) return open
+    val (reach, rest) = open.partition { it.price.amount >= missing.amount - 0.004 }
+    return reach.sortedBy { it.price.amount } + rest.sortedByDescending { it.price.amount }
+}

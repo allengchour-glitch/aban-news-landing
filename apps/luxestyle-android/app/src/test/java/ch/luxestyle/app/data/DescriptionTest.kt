@@ -154,3 +154,78 @@ class SearchSuggestTest {
         assertEquals(emptyList<String>(), relevantCollections("kl", hits).map { it.handle }) // zu kurz
     }
 }
+
+class DeliveryWindowTest {
+    private fun day(y: Int, m: Int, d: Int) = java.util.Calendar.getInstance().apply { clear(); set(y, m - 1, d) }
+
+    @Test
+    fun werktageÜberspringenWochenende() {
+        // Fr 2. Okt. 2026: +1 Werktag = Mo 5. Okt.
+        assertEquals(5, addDays(day(2026, 10, 2), 1, workdays = true).get(java.util.Calendar.DAY_OF_MONTH))
+        assertEquals(3, addDays(day(2026, 10, 2), 1, workdays = false).get(java.util.Calendar.DAY_OF_MONTH))
+    }
+
+    @Test
+    fun fensterMitMonatswechsel() {
+        val html = "<p>Lieferung Schweiz: 10–20 Werktage</p>"
+        // Mo 28. Sept. 2026 + 10 Werktage = Mo 12. Okt., + 20 = Mo 26. Okt.
+        assertEquals("Lieferung ca. 12.–26. Okt. (10–20 Werktage)", deliveryWindow(html, day(2026, 9, 28)))
+        // Mi 16. Sept. + 10 Werktage = Mi 30. Sept., + 20 = Mi 14. Okt.
+        assertEquals("Lieferung ca. 30. Sept.–14. Okt. (10–20 Werktage)", deliveryWindow(html, day(2026, 9, 16)))
+        assertNull(deliveryWindow("<p>Kein Hinweis</p>", day(2026, 9, 16)))
+    }
+}
+
+class CartSuggestionTest {
+    private fun card(h: String, price: Double, ok: Boolean = true) = ProductCard("id-$h", h, h, null, Money(price), null, ok)
+
+    @Test
+    fun ohneDoppelteUndAusverkaufte() {
+        val recs = listOf(card("a", 10.0), card("b", 20.0, ok = false), card("c", 30.0), card("a", 10.0))
+        assertEquals(listOf("a", "c"), cartSuggestions(recs, emptySet(), null).map { it.handle })
+        assertEquals(listOf("c"), cartSuggestions(recs, setOf("a"), null).map { it.handle })
+    }
+
+    @Test
+    fun zuerstWasDieVersandlückeSchliesst() {
+        val recs = listOf(card("klein", 5.0), card("teuer", 60.0), card("passt", 12.0), card("mittel", 8.0))
+        val order = cartSuggestions(recs, emptySet(), Money(10.10)).map { it.handle }
+        assertEquals(listOf("passt", "teuer", "mittel", "klein"), order)
+    }
+}
+
+class SwatchTest {
+    private fun v(color: String, size: String, url: String?) = Variant(
+        "$color-$size", "$color / $size", true, Money(10.0), null, mapOf("Farbe" to color, "Grösse" to size), url?.let { Image(it) },
+    )
+
+    private fun product(vararg variants: Variant) = Product(
+        "p", "p", "P", "", emptyList(),
+        listOf(ProductOption("Farbe", variants.map { it.options.getValue("Farbe") }.distinct()),
+            ProductOption("Grösse", variants.map { it.options.getValue("Grösse") }.distinct())),
+        variants.toList(),
+    )
+
+    @Test
+    fun jedeFarbeMitEigenemBild() {
+        val p = product(v("Rot", "S", "https://x/rot.jpg?v=1"), v("Rot", "M", "https://x/rot.jpg?v=2"), v("Blau", "S", "https://x/blau.jpg"))
+        assertEquals(mapOf("Rot" to "https://x/rot.jpg?v=1", "Blau" to "https://x/blau.jpg"), p.swatches("Farbe")!!.mapValues { it.value.url })
+    }
+
+    @Test
+    fun gleichesBildOderFehlendesBildGibtTextChips() {
+        assertNull(product(v("Rot", "S", "https://x/a.jpg"), v("Blau", "S", "https://x/a.jpg")).swatches("Farbe"))
+        assertNull(product(v("Rot", "S", "https://x/a.jpg"), v("Blau", "S", null)).swatches("Farbe"))
+        assertNull(product(v("Rot", "S", "https://x/a.jpg")).swatches("Farbe"))
+    }
+}
+
+class SameDepartmentTest {
+    @Test
+    fun nurAusDerselbenAbteilung() {
+        fun c(h: String, vararg coll: String) = ProductCard(h, h, h, null, Money(1.0), null, true, collections = coll.toSet())
+        val recs = listOf(c("pulli", "damen-mode", "neu"), c("boxhandschuh", "sport"), c("ohne"))
+        assertEquals(listOf("pulli"), sameDepartment(recs, "damen-mode").map { it.handle })
+        assertEquals(3, sameDepartment(recs, null).size)
+    }
+}

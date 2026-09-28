@@ -34,6 +34,13 @@ fun breadcrumb(menu: List<MenuItem>, productCollections: List<String>, productTi
     return emptyList()
 }
 
+/**
+ * Shopifys automatische Vorschläge mischen alles („Boxhandschuhe" zum Damen-Pullover).
+ * Behalten wird nur, was in derselben Hauptkategorie liegt.
+ */
+fun sameDepartment(cards: List<ProductCard>, department: String?): List<ProductCard> =
+    if (department == null) cards else cards.filter { department in it.collections }
+
 /** „Kleider" steckt in „Sommerkleid": erstes Wort der Kategorie, Endung gekürzt, mindestens 5 Buchstaben. */
 internal fun titleMentions(productTitle: String, category: String): Boolean {
     val word = category.lowercase().split(Regex("[^\\p{L}]+")).firstOrNull { it.isNotEmpty() } ?: return false

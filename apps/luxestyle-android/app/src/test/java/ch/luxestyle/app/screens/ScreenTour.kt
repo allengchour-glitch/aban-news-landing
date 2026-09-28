@@ -17,6 +17,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
+import androidx.compose.ui.test.performScrollToIndex
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ch.luxestyle.app.LuxeApplication
@@ -202,6 +203,21 @@ class ScreenTour : TourBase() {
         rule.onAllNodesWithContentDescription("Entfernen").onFirst().performClick()
         waitFor("Rückgängig"); settle(800)
         shot("16-entfernt-rueckgaengig")
+    }
+
+    @Test
+    fun farbenLieferdatumWarenkorb() {
+        start()
+        go("https://luxestyle.ch/products/damen-flanell-kapuzenpullover-fur-herbst-und-w-611600")
+        waitFor("In den Warenkorb"); settle(5000)
+        rule.onNodeWithTag("product").performScrollToIndex(1); settle(3000)
+        shot("20-produkt-farbbilder")
+        rule.onAllNodesWithText("In den Warenkorb", substring = true).onFirst().performClick()
+        waitFor("Im Warenkorb"); settle(1000)
+        go("https://luxestyle.ch/cart")
+        waitFor("Zur Kasse")
+        scrollTo("cart", "Gratis-Versand ergänzen", 60_000); settle(5000)
+        shot("20b-warenkorb-ergaenzen")
     }
 
     @Test

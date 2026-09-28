@@ -55,9 +55,17 @@ import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Product
 import ch.luxestyle.app.data.cleanDescription
 import ch.luxestyle.app.data.breadcrumb
-import ch.luxestyle.app.data.deliveryNote
+import ch.luxestyle.app.data.deliveryWindow
+import ch.luxestyle.app.data.sameDepartment
 import ch.luxestyle.app.data.Storefront.Sort
 import ch.luxestyle.app.data.sizeGuide
+import androidx.compose.foundation.border
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import ch.luxestyle.app.data.Image
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 
@@ -202,7 +210,16 @@ private fun ProductDetail(p: Product) {
                             }
                         }
                         Gap(10)
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        val swatches = remember(p.handle, opt.name) { if (opt.name == SIZE_OPTION) null else p.swatches(opt.name) }
+                        if (swatches != null) FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            opt.values.forEach { value ->
+                                Swatch(
+                                    swatches.getValue(value), value,
+                                    selected = selection[opt.name] == value,
+                                    enabled = p.isValueAvailable(opt.name, value, selection),
+                                ) { selection = selection + (opt.name to value) }
+                            }
+                        } else FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             opt.values.forEach { value ->
                                 ChoiceChip(
                                     value,
@@ -216,7 +233,7 @@ private fun ProductDetail(p: Product) {
             }
             item {
                 Column(Modifier.padding(horizontal = 20.dp).fillMaxWidth().clip(Radius.Card).background(MaterialTheme.colorScheme.surfaceVariant).padding(16.dp)) {
-                    deliveryNote(p.descriptionHtml)?.let { Assurance(R.drawable.ic_truck, it) }
+                    remember(p.handle) { deliveryWindow(p.descriptionHtml) }?.let { Assurance(R.drawable.ic_truck, it) }
                     Assurance(R.drawable.ic_bag, "Gratis-Versand in der Schweiz ab CHF 45")
                     Assurance(R.drawable.ic_return, "30 Tage Rückgabe")
                     Assurance(R.drawable.ic_shield, "Sicher bezahlen mit TWINT, Karte oder Klarna")
@@ -224,7 +241,7 @@ private fun ProductDetail(p: Product) {
             }
             val html = cleanDescription(p.descriptionHtml)
             if (html.isNotBlank()) item { Description(html) }
-            (recs.state as? Load.Ok)?.value?.takeIf { it.isNotEmpty() }?.let { cards ->
+            (recs.state as? Load.Ok)?.value?.let { sameDepartment(it, path.firstOrNull()?.collectionHandle) }?.takeIf { it.isNotEmpty() }?.let { cards ->
                 item {
                     SectionHeader("Passt dazu")
                     Rail(cards, wish.map { it.handle }.toSet())
@@ -277,6 +294,26 @@ private fun ProductDetail(p: Product) {
 }
 
 private const val SIZE_OPTION = "Grösse"
+
+/** Ausführung als Bild statt als Text – man sieht sofort, welche Farbe gemeint ist. */
+@Composable
+private fun Swatch(image: Image, label: String, selected: Boolean, enabled: Boolean, onClick: () -> Unit) {
+    val c = MaterialTheme.colorScheme
+    Box(
+        Modifier.size(62.dp, 78.dp).clip(Radius.Small)
+            .border(if (selected) 2.dp else 1.dp, if (selected) c.primary else LocalLuxe.current.line, Radius.Small)
+            .padding(if (selected) 3.dp else 0.dp).clip(Radius.Small)
+            .background(LocalLuxe.current.card)
+            .semantics { contentDescription = label + if (enabled) "" else ", ausverkauft" }
+            .clickable(role = Role.RadioButton, onClick = onClick),
+    ) {
+        AsyncImage(
+            image.sized(200), null, contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize().alpha(if (enabled) 1f else 0.35f),
+        )
+        if (!enabled) Box(Modifier.align(Alignment.Center).width(44.dp).height(1.5.dp).rotate(-35f).background(c.onSurface.copy(alpha = 0.55f)))
+    }
+}
 
 @Composable
 private fun Assurance(@DrawableRes icon: Int, text: String) {
