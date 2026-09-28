@@ -39408,3 +39408,4 @@ gid://shopify/Product/15494855491969	CHF 9.38	1 Varianten	TV-Zahnstocher-Box im 
 gid://shopify/Product/15494855590273	CHF 17.58	4 Varianten	Bedrucktes V-Ausschnitt Maxikleid mit hoher Taille
 gid://shopify/Product/15494855623041	CHF 121.09	1 Varianten	DIY Katzen-Kratzbaum im Kaktus-Design
 gid://shopify/Product/15494855688577	CHF 6.82	1 Varianten	Zirkon Armband mit Blumen- und Herz-Designs
+gid://shopify/Product/15494855721345	CHF 48.45	1 Varianten	Keramik-Aufbewahrungsdose mit Legierungsdeckel
