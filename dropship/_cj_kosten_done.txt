@@ -40186,3 +40186,4 @@ gid://shopify/Product/15495127728513	CHF 9.69	1 Varianten	Kabellose Funkmaus im 
 gid://shopify/Product/15495127794049	CHF 139.27	1 Varianten	Nordic Kaktus Kissenhülle
 gid://shopify/Product/15495127826817	CHF 79.42	72 Varianten	Fashionable Minimalist Roller Skates
 gid://shopify/Product/15495127892353	CHF 17.39	1 Varianten	Ersatzgehäuse für Xbox One Elite Controller Gen. 1
+gid://shopify/Product/15495127925121	CHF 12.00	1 Varianten	Kissenhülle American Yellow Bottom Plant Ins
