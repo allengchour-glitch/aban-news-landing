@@ -69,48 +69,151 @@ def cj_status(pid, tok):
     return None
 
 
-def main():
-    tok = open("/tmp/_cjtok").read().strip() if os.path.exists("/tmp/_cjtok") else ""
-    if not tok:
-        print("⛔ Kein CJ-Token (/tmp/_cjtok) — KEIN Urteil (kein «0 ausgelistet»)"); sys.exit(2)
-    ware = {}
+NACHPRUEF = os.path.join(REPO, "dropship", "_cj_nachpruefung.tsv")   # gid \t datum \t urteil (ok/weg) — jede Prüfung sofort
+ZYKLUS_TAGE = int(os.environ.get("ZYKLUS_TAGE", "30"))              # Rest-Bestand: jedes Produkt spätestens alle N Tage
+ROLLEN = int(os.environ.get("ROLLEN", "1500"))                      # Rest-Bestand je Lauf (CJ: 10 Punkte je Abfrage)
+SKU_PID = re.compile(r"^CJ-([0-9]{10,}|[0-9A-Fa-f-]{30,})$")          # CJ-<Produkt-ID>
+SKU_VAR = re.compile(r"^(?:CJ-)?(CJ[A-Z]{2,4}[0-9]{6,}[A-Z0-9]*)$")   # CJYD304327501AZ, CJ-CJLY291609201AZ
+
+
+def cj_ref(sku):
+    """CJ-Referenz aus der Shop-SKU. 28.09.: die alte Regel «^CJ-…» übersah Varianten-SKUs OHNE Präfix (CJLY…AZ) —
+    dieselbe Falle wie besuchte_seiten_lieferbar.py am 18.09. (33 von 35 «keine CJ-SKU»)."""
+    sku = (sku or "").strip()
+    m = SKU_PID.match(sku) or SKU_VAR.match(sku)
+    return m.group(1) if m else None
+
+
+def ledger():
+    stand = {}
+    if os.path.exists(NACHPRUEF):
+        for l in open(NACHPRUEF, encoding="utf-8"):
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 3 and t[1] > stand.get(t[0], ("", ""))[0]:
+                stand[t[0]] = (t[1], t[2])
+    return stand
+
+
+def sichtbare_ware():
+    """Stufe A — alles, was eine Kundin heute sieht: beworbene Kollektionen (ganz, nur neu-eingetroffen gekappt),
+    besuchte Produktseiten (90 T), Produkte in den wartenden Social-Posts, gekaufte Lieblinge."""
+    ware, quelle = {}, {}
+    def nimm(p, woher):
+        v = p["variants"]["nodes"]
+        ref = cj_ref(v[0]["sku"] if v else "")
+        if p["status"] == "ACTIVE" and ref and p["id"] not in ware:
+            ware[p["id"]] = (ref, p["handle"], p["title"], woher)
+    NODE = "nodes{id handle title status variants(first:1){nodes{sku}}}"
     for h in KOLLEKTIONEN:
-        cur = None
+        cur, n = None, 0
         while True:
-            d = gql('query($h:String!,$c:String){collectionByHandle(handle:$h){products(first:100,after:$c){pageInfo{hasNextPage endCursor} '
-                    'nodes{id handle title status variants(first:1){nodes{sku}}}}}}', {"h": h, "c": cur})
+            d = gql('query($h:String!,$c:String){collectionByHandle(handle:$h){products(first:100,after:$c){pageInfo{hasNextPage endCursor} ' + NODE + '}}}', {"h": h, "c": cur})
             c = d.get("collectionByHandle")
             if not c:
                 break
             for p in c["products"]["nodes"]:
-                sku = (p["variants"]["nodes"][0]["sku"] or "") if p["variants"]["nodes"] else ""
-                m = re.match(r"^CJ-([0-9A-Za-z-]{6,})$", sku)
-                if p["status"] == "ACTIVE" and m:
-                    ware[p["id"]] = (m.group(1), p["handle"], p["title"], h)
-            if not c["products"]["pageInfo"]["hasNextPage"] or sum(1 for v in ware.values() if v[3] == h) >= PRO_KOLLEKTION:
-                break   # nur die ersten PRO_KOLLEKTION (was man sieht); neu-eingetroffen hat Zehntausende
+                nimm(p, h); n += 1
+            if not c["products"]["pageInfo"]["hasNextPage"] or (h == "neu-eingetroffen" and n >= PRO_KOLLEKTION):
+                break
             cur = c["products"]["pageInfo"]["endCursor"]
-    print(f"Start | {len(ware)} aktive CJ-Produkte in {len(KOLLEKTIONEN)} beworbenen Kollektionen | DRY={DRY}", flush=True)
-    weg, unklar = [], 0
-    for gid, (pid, handle, titel, koll) in ware.items():
-        s = cj_status(pid, tok)
+    quelle["kollektionen"] = len(ware)
+    handles = set()
+    try:   # besuchte Produktseiten (dieselbe Abfrage wie besuchte_seiten_lieferbar.py)
+        q = ('{ shopifyqlQuery(query: "FROM sessions SHOW sessions GROUP BY landing_page_path '
+             "WHERE human_or_bot_session = 'human' SINCE -90d ORDER BY sessions DESC LIMIT 500\") { parseErrors tableData { rows } } }")
+        for r in (gql(q)["shopifyqlQuery"].get("tableData") or {}).get("rows") or []:
+            pfad = (r.get("landing_page_path") or "").split("?")[0]
+            if "/products/" in pfad:
+                handles.add(pfad.rsplit("/products/", 1)[1].strip("/"))
+        quelle["besucht"] = len(handles)
+    except Exception as e:
+        print(f"  ⚠️ besuchte Seiten nicht lesbar: {e}", flush=True)
+    import csv, glob
+    for f in ["automation/reels_seed.csv", "social/posts_image.csv", "social/ig_karussell.csv"]:
+        try:
+            for r in csv.DictReader(open(os.path.join(REPO, f), encoding="utf-8")):
+                if (r.get("status") or "").strip() == "ready":
+                    handles.update(re.findall(r"luxestyle\.ch/products/([a-z0-9-]+)", " ".join(str(v) for v in r.values())))
+        except Exception:
+            pass
+    quelle["besucht+social"] = len(handles)
+    liste = sorted(handles)
+    for k in range(0, len(liste), 40):
+        q = " OR ".join(f"handle:{h}" for h in liste[k:k + 40])
+        for p in gql('query($q:String!){products(first:50,query:$q){' + NODE + '}}', {"q": q})["products"]["nodes"]:
+            nimm(p, "besucht/social")
+    d = gql('{products(first:100,query:"tag:kunden-liebling status:active"){' + NODE + '}}')
+    for p in d["products"]["nodes"]:
+        nimm(p, "kunden-liebling")
+    quelle["gesamt"] = len(ware)
+    return ware, quelle
+
+
+def rest_bestand(schon, stand):
+    """Stufe B — der übrige aktive CJ-Bestand, rollierend: nie geprüft zuerst, dann die ältesten. Quelle: die geteilten
+    Exporte (/tmp/export.jsonl = Status, /tmp/kost28.jsonl = SKU). Fehlt einer oder hat das falsche Format → Stufe B
+    meldet sich ab (kein stilles «0 geprüft»)."""
+    try:
+        aktiv = {}
+        for l in open("/tmp/export.jsonl", encoding="utf-8"):
+            d = json.loads(l)
+            if d.get("status") == "ACTIVE":
+                aktiv[d["id"]] = (d.get("handle") or "", d.get("title") or "")
+        sku = {}
+        for l in open("/tmp/kost28.jsonl", encoding="utf-8"):
+            d = json.loads(l)
+            par = d.get("__parentId")
+            if par and par in aktiv and par not in sku:
+                ref = cj_ref(d.get("sku"))
+                if ref:
+                    sku[par] = ref
+    except Exception as e:
+        print(f"  ⚠️ Stufe B aus: Exporte nicht lesbar ({e}) — nur Stufe A", flush=True)
+        return {}, 0
+    grenze = (datetime.date.today() - datetime.timedelta(days=ZYKLUS_TAGE)).isoformat()
+    faellig = [g for g in sku if g not in schon and stand.get(g, ("", ""))[0] < grenze]
+    faellig.sort(key=lambda g: stand.get(g, ("", ""))[0])
+    return {g: (sku[g], aktiv[g][0], aktiv[g][1], "rest") for g in faellig[:ROLLEN]}, len(sku)
+
+
+def main():
+    tok = open("/tmp/_cjtok").read().strip() if os.path.exists("/tmp/_cjtok") else ""
+    if not tok:
+        print("⛔ Kein CJ-Token (/tmp/_cjtok) — KEIN Urteil (kein «0 ausgelistet»)"); sys.exit(2)
+    heute = datetime.date.today().isoformat()
+    stand = ledger()
+    ware, quelle = sichtbare_ware()
+    a_offen = {g: v for g, v in ware.items() if stand.get(g, ("", ""))[0] != heute}   # Stufe A: täglich, Neustart-fest
+    rest, cj_aktiv = rest_bestand(set(ware), stand)
+    print(f"Start | Stufe A sichtbar {len(ware)} ({quelle}), heute offen {len(a_offen)} | Stufe B Rest {len(rest)} "
+          f"von {cj_aktiv} aktiven CJ | DRY={DRY}", flush=True)
+    weg, unklar, gepr = [], 0, 0
+    for gid, (ref, handle, titel, woher) in list(a_offen.items()) + list(rest.items()):
+        s = cj_status(ref, tok)
         if s is None:
             unklar += 1; continue
+        gepr += 1
+        if not DRY:
+            with open(NACHPRUEF, "a", encoding="utf-8") as f:
+                f.write(f"{gid}\t{heute}\t{s}\n")
         if s == "weg":
-            weg.append((handle, titel, koll, pid))
-            print(f"  ⛔ ausgelistet: {titel[:60]} ({koll}, pid {pid})", flush=True)
+            weg.append((handle, titel, woher, ref))
+            print(f"  ⛔ ausgelistet: {titel[:60]} ({woher}, {ref})", flush=True)
             if not DRY:
-                heute = datetime.date.today().isoformat()
                 gql('mutation($id:ID!){productUpdate(product:{id:$id,status:DRAFT}){userErrors{message}}}', {"id": gid})
                 gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": gid, "t": ["cj-entfernt", f"cj-entfernt-{heute}"]})
+    stand = ledger()
+    abgedeckt = sum(1 for d, _ in stand.values() if d >= (datetime.date.today() - datetime.timedelta(days=ZYKLUS_TAGE)).isoformat())
     zeit = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
-    zeilen = [f"# CJ ausgelistet — beworbene Ware (Stand {zeit})", "",
-              f"Geprüft: {len(ware)} aktive CJ-Produkte in {', '.join(KOLLEKTIONEN)} · ausgelistet: **{len(weg)}** · kein Urteil: {unklar}",
-              "", "| Produkt | Kollektion | CJ-pid |", "|---|---|---|"] + [f"| {t} (`{h}`) | {k} | {p} |" for h, t, k, p in weg]
+    zeilen = [f"# CJ ausgelistet — Nachprüfung (Stand {zeit})", "",
+              f"Stufe A (täglich, sichtbar): {len(ware)} · Stufe B (rollierend, {ZYKLUS_TAGE} T): {len(rest)} dieser Lauf · "
+              f"aktive CJ gesamt {cj_aktiv} · in {ZYKLUS_TAGE} T geprüft: {abgedeckt}",
+              f"Dieser Lauf: geprüft {gepr} · ausgelistet **{len(weg)}** → DRAFT · kein Urteil {unklar}",
+              "", "| Produkt | Quelle | CJ-Referenz |", "|---|---|---|"] + [f"| {t} (`{h}`) | {w} | {r} |" for h, t, w, r in weg]
     if not DRY:
         open(BERICHT, "w", encoding="utf-8").write("\n".join(zeilen) + "\n")
-    print(f"FERTIG: {len(ware)} geprüft, {len(weg)} ausgelistet{' (DRY)' if DRY else ' → DRAFT'}, {unklar} ohne Urteil")
-
+    print(f"FERTIG: {gepr} geprüft, {len(weg)} ausgelistet{' (DRY)' if DRY else ' → DRAFT'}, {unklar} ohne Urteil · "
+          f"Abdeckung {abgedeckt}/{cj_aktiv} in {ZYKLUS_TAGE} T")
 
 if __name__ == "__main__":
     main()
