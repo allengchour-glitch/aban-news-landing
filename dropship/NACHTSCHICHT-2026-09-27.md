@@ -10,9 +10,9 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 
 ## Punkte (Reihenfolge = Wirkung auf Verkäufe)
 
-1. [ ] **Bestellungen:** #1019 — Kundin-Antwort in Gmail lesen (from:alicia.riedi@powersurf.li); NICHTS senden, nur melden.
+1. [~] 00:05 Gmail geprüft: KEINE Antwort von Frau Riedi (Thread nur unsere Mail 27.09. 22:04), nichts gesendet; Bestell-Ampel 1 offen (#1019, LX1019 CREATED, unbezahlt = gewollt bis Entscheid 30.09.). **Bestellungen:** #1019 — Kundin-Antwort in Gmail lesen (from:alicia.riedi@powersurf.li); NICHTS senden, nur melden.
    Neue Bestellung → sofort `cj_order_engine.py` (USD_CHF per WebSearch, Frankfurter/ER-API gesperrt) + Ausgelistet-Prüfung.
-2. [~] 22:24 wartende Posts geprüft: 0 bewerben die 3 ausgelisteten (Schaukelgeist, 2 Sojawachskerzen); Endbericht folgt. **Ausgelistete Ware:** Lauf `cj_ausgelistet_sichtbar.py` auswerten (Bericht `dropship/CJ-AUSGELISTET-SICHTBAR.md`);
+2. [x] ✅ 23:04 Lauf 2: 643 geprüft, 0 ausgelistet, 1 ohne Urteil (vorher 205 — Varianten-SKU-Fix wirkt); zusammen mit Lauf 1: 2 ausgelistet → DRAFT. 22:24 wartende Posts geprüft: 0 bewerben die 3 ausgelisteten (Schaukelgeist, 2 Sojawachskerzen); Endbericht folgt. **Ausgelistete Ware:** Lauf `cj_ausgelistet_sichtbar.py` auswerten (Bericht `dropship/CJ-AUSGELISTET-SICHTBAR.md`);
    ausgelistete Artikel aus wartenden Social-Posts nehmen (reels_seed.csv / posts_image.csv / ig_karussell.csv → Status
    `produkt-nicht-aktiv`), damit kein Post ein totes Produkt bewirbt.
 3. [x] ✅ 22:45 Stichprobe 5 live (WebFetch): 5/5 deutsch, Material passt zum Titel (Holz/Bambus, PU/Metall), 1 Widerspruch Gewicht (Uhr «ca. 100 g» vs. Text «148 g» — CJ productWeight vs. Groq-Text); «Patentleder», «Neuzeitbox», «geglühte Sohle» stehen im ALTEN Groq-Text, nicht im Block. Ledger 998. **Faktenblock-Nachtrag** (CJ-Merkmale in die Produktseite): Fortschritt messen (`_cj_specs_done.txt`), Stichprobe 5
@@ -25,7 +25,7 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
    Kontaktbogen per Read prüfen, Preis-Metadatum `--pruefen`, dem Betreiber schicken. Posten erst nach seinem OK.
 6. [x] ✅ 22:40 QUELLE 27.09.: Trends bestätigt (Hunde-Trinkflasche, Sternenhimmel-Projektor, UV-Reiniger, Qi2-Ladestation); neu «AquaBrush» (Sprüh-Haarbürste) Bestand 0 (Kanarienvogel Haarbürste = 3), Peeling-Seren abgelehnt; THEMEN unverändert. **Hype-Recherche (Dauerauftrag):** Web-Suche Trends Ende September 2026 → `automation/hype_kuratieren.py` THEMEN +
    QUELLE (Datum) aktualisieren, am Bestand messen, Kanarienvögel, Lauf.
-7. [ ] **Schnitt-Proben:** die zwei übrigen CJ-Quellvideos (Reiserucksack 16:9, Lederrucksack 9:16) mit `schnitt.py` +
+7. [-] 00:15 ZURÜCKGESTELLT: Quellvideos lassen sich keinem Shop-Produkt sicher zuordnen (CJ-Produktabfrage von 40 Rucksack-Kandidaten enthält die Download-Hashes nicht) → kein geprüfter Preis fürs Bild; ohne Zuordnung keine Probe. **Schnitt-Proben:** die zwei übrigen CJ-Quellvideos (Reiserucksack 16:9, Lederrucksack 9:16) mit `schnitt.py` +
    luxe-epic-anime schneiden, Tor muss bestehen, Kontaktbogen prüfen → als Proben bereitlegen (nicht posten).
 8. [ ] **Gedächtnis:** Journal + Index für alles Neue der Nacht; Morgenbericht (GEMESSEN / GETAN / OFFEN für den Betreiber).
 
@@ -37,4 +37,6 @@ hier abhaken (✅ + Zahl), committen, pushen. Kein Punkt ohne Messung vorher und
 - 22:52 Ausgelistet-Lauf 1: 645 geprüft, 2 ausgelistet, 205 ohne Urteil = Varianten-SKUs als pid abgefragt → korrigiert, Lauf 2 läuft.
 - 22:44 Halloween-Sammelvideo (Betreiber «halloween sachen, auch fortune sachen / kostüme»): 3 Kostüme + 3 Deko, Hook 7.37, Preise live ok, an Betreiber geschickt (social/montage_proben/). Auswahl-Fixes: Kostüm = «Kostüm» im Titel (Produkttyp allein gab nur Zubehör), Lizenzfiguren gesperrt (Pennywise/Hagrid/PJ Masks …), Lebensmittel gesperrt («Trolli Dracula» = Gummibärchen). Fortura-Kostüme ohne Lizenz und mit Halloween-Bezug: Ghost/Hexe/Sensemann/Spider Witch — Auswahl nahm die bewerteten/textfreien zuerst.
 - 22:40 ⛔ GRIND-LECK: `schulstart_lauf.sh` importierte seit Container-Start (20:40) über cj_sku_import (Fertig-Marker nur in /tmp → nach Neustart weg), trotz Grind-Pause. Gestoppt; Pause-Prüfung in schulstart_lauf.sh UND cj_runner_template.sh (engines_up.sh startet die Runner ohne Prüfung).
+- 23:00–00:15 (zwischen den Blöcken, Betreiber-Aufträge): Sammelvideo-Karte +42 % Fläche (Halloween + Herbst neu, Tor ok); Musik nur episch (adventure-uplift aufgenommen, 7 wartende Reels umgestellt); «push was Leute kaufen»: Ersatz-Rizinusöl-Wickel live (meistbesuchte tote Seite), 7 gekaufte Artikel als kunden-liebling in Bildposts + Vorrang.
+- 00:01 Container-Neustart (uptime 0 min) → Keepalive: STAND 0 CJ-Runner, Aufseher=1.
 
