@@ -40524,3 +40524,8 @@ gid://shopify/Product/15495188775297	CHF 32.09	1 Varianten	Niedliches Plüschkis
 gid://shopify/Product/15495188873601	CHF 13.18	1 Varianten	Velo-Multifunktions-Ratschenschlüssel-Set
 gid://shopify/Product/15495188939137	CHF 14.46	30 Varianten	Niedrige Kinderschuhe mit Klettverschluss
 gid://shopify/Product/15495188971905	CHF 28.23	1 Varianten	Vollgesichtsmaske für umfassenden Schutz
+gid://shopify/Product/15495189102977	CHF 19.52	1 Varianten	Baby Musik Keyboard Roboter
+gid://shopify/Product/15495189266817	CHF 15.68	30 Varianten	LED-Sneaker aus Lederimitat für Jungen
+gid://shopify/Product/15495189365121	CHF 7.72	1 Varianten	4-lagige, atmungsaktive Staubfiltermaske
+gid://shopify/Product/15495189496193	CHF 10.56	1 Varianten	Sprechendes Plüschtier: Shiba Inu & Pomeranian
+gid://shopify/Product/15495189561729	CHF 5.40	1 Varianten	Kammreiniger für Haare und Staub
