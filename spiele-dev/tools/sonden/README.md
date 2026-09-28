@@ -160,3 +160,22 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   der Tramhaltestelle aus drei Läufen stammten aus Läufen, die PARALLEL zu anderen Sonden liefen. Unter Last kommen
   die GLB-Dateien in anderer Reihenfolge an, und der Entwirrer entscheidet anders: genau das, was ein langsameres
   oder schnelleres Gerät tut. Was man sehen soll, gehört darum `fest`.
+
+**Runde 103 (User: „handy spiel optimieren, gutes langes süchtiges spiel draus machen"):**
+- `probe-sog.mjs [tage=60]` — die Sog-Kurve OHNE Browser: liest jede Formel per Regex aus `traumhaus.html` (Startgeld,
+  Uhr-Takt, Abnahme-Takt, Wohnstufen, Katalog mit Preisen/Sperren, Erfolge, Missionen, Aufträge, Häuser, Miete, Lohn-,
+  Liefer-, Taxi-, Ernte-, Angel-Formeln, Kombo, Rang-Punkte samt Funktionsrumpf, Ausbau, Orte, Rückkehr) — fehlt eine
+  Zeile, bricht sie ab statt zu raten — und spielt damit N Spieltage (1 Spieltag = 360 s echt) für zwei Spielertypen
+  durch (gemütlich/aktiv, jede Tätigkeit kostet echte Sekunden, Deckel je Tag). Meldet je Tag, was NEU ist (Stufe,
+  Freischaltung, Auto, Haus, Ausbau, Rang, Orte-Meilenstein, Karriere, Auftrag), Tage ohne Neues, längste Lücke,
+  Horizont. Annahmen stehen im Kopf (Orte/Tag, Erfolge/Tag, Kombo-Mittel). Gegenprobe: doppeltes Einkommen darf
+  keine Stufe verzögern, Palast nie vor Tag 20 (5 Abnahmen × 4 Tage).
+- `probe-ladenah.mjs [alt|neu] [R=120]` — wann steht die NAHE Welt (bau()-Gruppen im Umkreis R um den Figurenstart
+  −67|43), nicht wann die letzte Datei kommt. Handy-Format (screen 390×844 → `_mobil`), tippt sofort „Solo bauen",
+  zählt jede Sekunde nah/gesamt bis `_ladeOffen` 0 und dreimal stabil. `alt` lädt mit `?ladeAlt` (Dateireihenfolge,
+  nach dem Start unbegrenzt), `neu` mit Entfernungs-Priorität. ⚠️ Die Sonde selbst wird vom Hauptfaden-Stau gebremst
+  (Proben kommen in Klumpen) — Sekundenwerte sind ±5 s. Gegenprobe: Nahzahl sinkt nie, nah fertig ≤ alles fertig.
+- `probe-r103.mjs` — funktioniert das Eingebaute im laufenden Spiel: Ort entdecken (Figur neben den Ort gesetzt →
+  `orteCheck`), Gegenprobe 300 m daneben, Hauskauf + fünf Ausbauten über die echten Funktionen (Preis verdoppelt,
+  Miete ×3, Deckel), Rang-Prämie genau einmal, Kopfzeile nach dem Palast, Spielstand (il/rg im Snapshot, zt in
+  saveGame, Umweg speichern→laden), Sperren Stufe 4/5, keine werfende Erfolgs-/Missionsbedingung.

@@ -5292,16 +5292,35 @@ function immoFlagge(hs){var fg=new THREE.Group();
   var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,1.1,5),new THREE.MeshStandardMaterial({color:0x8a8a90}));mast.position.y=0.55;fg.add(mast);
   var fl=new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.4),new THREE.MeshStandardMaterial({color:0xffd23a,emissive:0xcc9900,emissiveIntensity:0.35,side:THREE.DoubleSide}));
   fl.position.set(0.35,0.9,0);fg.add(fl);
-  fg.position.set(hs.x,hs.h+1.2,hs.z);scene.add(fg);hs.flagge=fg;}
+  fg.position.set(hs.x,hs.h+1.2,hs.z);scene.add(fg);hs.flagge=fg;
+  var _ix=window._immo?window._immo.indexOf(hs):-1;if(_ix>=0&&(immoLv[_ix]||1)>1)fg.scale.setScalar(1+0.35*((immoLv[_ix]||1)-1));}
+/* 🏗️ HAUS-AUSBAU (Runde 103): ein gekauftes Haus laesst sich viermal ausbauen (Stufe 2 bis 5) — je Stufe
+   +50 % Miete, der Preis verdoppelt sich je Stufe. Das ist die Geldsenke, die oben fehlte (probe-sog: 340'000 $ Bargeld nach 6 h, nichts zu
+   kaufen), und ein Grund, zu den Haeusern zurueckzugehen. immoLv reist im Spielstand mit (il). */
+var immoLv={},IMMO_LV_MAX=5; /* fuenf Stufen, Preis verdoppelt sich je Stufe (probe-sog: mit drei Stufen sass der aktive Spieler nach 6 h auf 690'000 $) */
+function immoMiete(){var m=0;immo.forEach(function(i){m+=150*(1+0.5*((immoLv[i]||1)-1));});return m;}
+function immoAusbauPreis(i){var hs=window._immo&&window._immo[i];return hs?Math.round(hs.preis*1.5*Math.pow(2,(immoLv[i]||1)-1)):0;}
+function immoAusbau(i,hs){
+  if(MPs&&!mpHost){hint("Nur der Gastgeber baut aus.");return;}
+  if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7)return;
+  var lv=immoLv[i]||1;if(lv>=IMMO_LV_MAX)return;
+  var pr=immoAusbauPreis(i);
+  if(geld<pr){hint("Zu teuer. Dir fehlen "+(pr-geld)+" $");beep(200,.15,"sawtooth",.05);return;}
+  geld-=pr;geldSend();immoLv[i]=lv+1;stats.immoAusbau=(stats.immoAusbau||0)+1;updHUD();
+  if(MPs&&mpHost)netSend({t:"immoLv",i:i,lv:lv+1});
+  if(hs.flagge)hs.flagge.scale.setScalar(1+0.35*lv);
+  beep(660,.09,"square",.05);setTimeout(function(){beep(880,.11,"square",.05);},90);
+  hint("Ausgebaut auf Stufe "+(lv+1)+". Miete jetzt "+Math.round(150*(1+0.5*lv))+" $ pro Tag.");}
 function updImmo(dt){
   if(MPs&&!mpHost)return;
   var H=window._immo;if(!H)return;
   window._immoT=(window._immoT||0)-dt;if(window._immoT>0)return;window._immoT=0.4;
   var me=sims[0],best=-1,bd=6;
-  for(var i=0;i<H.length;i++){if(immo.indexOf(i)>=0)continue;
+  for(var i=0;i<H.length;i++){if(immo.indexOf(i)>=0&&(immoLv[i]||1)>=IMMO_LV_MAX)continue;
     var d=Math.hypot(me.x-H[i].x,me.z-H[i].z);if(d<bd){bd=d;best=i;}}
   var kb=document.getElementById("kaufBtn");
-  if(best>=0&&!fahren&&!buildMode){kb.style.display="block";kb.textContent="\uD83C\uDFE0 "+H[best].preis+" $";kb.dataset.idx=best;}
+  if(best>=0&&!fahren&&!buildMode){kb.style.display="block";var _own=immo.indexOf(best)>=0;kb.dataset.art=_own?"ausbau":"kauf";
+    kb.textContent=_own?("\u2B06\uFE0F Ausbau "+((immoLv[best]||1)+1)+" \u00B7 "+immoAusbauPreis(best)+" $"):("\uD83C\uDFE0 "+H[best].preis+" $");kb.dataset.idx=best;}
   else kb.style.display="none";}
 document.addEventListener("DOMContentLoaded",function(){});
 (function(){var kb=document.createElement("button");kb.id="kaufBtn";
@@ -5309,7 +5328,9 @@ document.addEventListener("DOMContentLoaded",function(){});
      ueberlappten sich die drei. Jetzt in der Mitte ueber den anderen Aktions-Knoepfen. */
   kb.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(248px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:14px 18px;min-height:48px;font-size:1.05rem;font-weight:800;color:#fff;background:#e8b04a;box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
   document.body.appendChild(kb);
-  kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
+  kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs)return;
+    if(kb.dataset.art==="ausbau"){immoAusbau(i,hs);return;}
+    if(immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
     if(geld<hs.preis){hint("Zu teuer. Dir fehlen "+(hs.preis-geld)+" $");beep(200,.15,"sawtooth",.05);return;}
     geld-=hs.preis;geldSend();immo.push(i);if(MPs&&mpHost)netSend({t:"immo",i:i});if(!hs.flagge)immoFlagge(hs);stats.immobilien=(stats.immobilien||0)+1;updHUD(); /* 🩹 Schwarm-P3: Gast erfaehrt vom Hauskauf */
@@ -6435,6 +6456,7 @@ setTimeout(function baueGebaeude(){
   function bau(file,zielH,x,y,z,rotY,center,cb,ohneSchutz){
     if(!ohneSchutz){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];}
     window._ladeOffen=(window._ladeOffen||0)+1;
+    window._ladePrioD=Math.hypot(x-window._LADE_MITTE[0],z-window._LADE_MITTE[1]); /* Runde 103: Entfernung zum Start = Ladeprioritaet */
     window._glbHol(file,function(root){
     if(!root){_ladeFertigEins();return;}
     var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
@@ -12573,7 +12595,16 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
    hinten in einer Schlange von 340 Gebaeuden, laeuft der Spieler minutenlang ohne
    Koerper herum. Sie duerfen darum vor. */
 (function(){ if(!GL)return;
-  var echt=GL.load.bind(GL), schlange=[], aktiv=0;
+  var echt=GL.load.bind(GL), schlange=[], aktiv=0, jobs={};
+  /* 🎯 NAHES ZUERST (Runde 103). GEMESSEN (th-laden handy): 379 Modelle, 174 MB, die Haelfte erst nach
+     40 s, die letzte nach 56 s — in Dateireihenfolge, also Zoo und Flughafen genauso frueh wie das
+     Haus nebenan. Jeder Auftrag traegt jetzt seine Entfernung zum Startpunkt der Figur (-67|43); die
+     Schlange nimmt immer den naechsten. Figuren behalten den Vorrang (d=-1), Auftraege ohne Ort
+     (Moebel, Wagen) stehen bei 60 m. ?ladeAlt schaltet auf die alte Reihenfolge — fuer den Vergleich. */
+  var _ladeAlt=/[?&]ladeAlt/.test(location.search);
+  var _lbm=/[?&]ladeBreite=(\d+)/.exec(location.search); if(_lbm)window._ladeBreite=+_lbm[1]; /* fuer probe-ladenah: Deckel nach dem Start messen statt raten */
+  window._LADE_MITTE=[-67,43];
+  window._ladePrioUpd=function(datei,d){var j=jobs["/models/"+datei];if(j&&typeof d==="number"&&d<j.d)j.d=d;};
   /* ⚠️ DIE GRENZE IST NICHT KONSTANT, UND DAS IST DER GANZE WITZ. GEMESSEN an drei
      Punkten (Klick auf „Solo bauen" | Welt fertig geladen):
          ohne Schlange   9,7 s | 68,8 s
@@ -12584,10 +12615,11 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
      solange der Startbildschirm steht, will jemand tippen (eng); sobald gespielt
      wird, soll die Welt schnell fertig werden (weit). */
   function grenze(){ var st=document.getElementById("start");
-    return (st && !st.classList.contains("hide")) ? 4 : 1e9; }
+    return (st && !st.classList.contains("hide")) ? 4 : (_ladeAlt?1e9:(window._ladeBreite||1e9)); } /* Runde 103: der Deckel NACH dem Start wird mit probe-ladenah gemessen (8 verdoppelte die Gesamtzeit: 56 → 112 s) — bis die Zahl steht, unbegrenzt wie zuvor; die Reihenfolge wirkt dann nur, solange der Startbildschirm steht */
   window._ladeStand={gefordert:0,fertig:0};
   function vorrang(url){return /th_(mann|frau|kind|baby)/.test(url);}
-  function weiter(){ var m=grenze(); while(aktiv<m&&schlange.length){ aktiv++; schlange.shift()(); } }
+  function weiter(){ var m=grenze(); while(aktiv<m&&schlange.length){ var bi=0; if(!_ladeAlt)for(var q=1;q<schlange.length;q++)if(schlange[q].d<schlange[bi].d)bi=q;
+    var j=schlange.splice(bi,1)[0]; delete jobs[j.url]; aktiv++; j.f(); } }
   /* ⚠️ NACH DEM START NICHT MEHR NACHGEBEN — TEUER GELERNT. Jedes setTimeout(...,0)
      gibt dem Browser Gelegenheit, ein Bild der 3D-Szene zu zeichnen. Solange der
      Startbildschirm steht, ist genau das gewollt: dort will jemand tippen. Danach
@@ -12606,7 +12638,8 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
     var auftrag=function(){ echt(url,
       function(g){ try{ if(ok)ok(g); } finally { fertig(); } }, fort,
       function(e){ try{ if(fehl)fehl(e); } finally { fertig(); } }); };
-    if(vorrang(url))schlange.unshift(auftrag); else schlange.push(auftrag);
+    var d=vorrang(url)?-1:(typeof window._ladePrioD==="number"?window._ladePrioD:60);
+    var job={f:auftrag,d:d,url:url}; schlange.push(job); jobs[url]=job;
     setTimeout(weiter,0);
   };
 })();
@@ -13073,9 +13106,9 @@ function _matVereinheitlichen(wurzel){
 window._glbVorlage=function(datei,cb){
   var C=window._glbCache=window._glbCache||{}, e=C[datei];
   if(e&&e.szene){cb(e.szene);return;}
-  if(e){e.warte.push(cb);return;}          /* laedt schon — anstellen */
+  if(e){e.warte.push(cb);if(window._ladePrioUpd)window._ladePrioUpd(datei,window._ladePrioD);window._ladePrioD=undefined;return;}          /* laedt schon — anstellen (Runde 103: naeherer Ort zieht den Auftrag vor) */
   C[datei]=e={szene:null,warte:[cb]};
-  GL.load("/models/"+datei,function(g){
+  GL.load("/models/"+datei,function(g){ window._ladePrioD=undefined;
     _matVereinheitlichen(g.scene);
     e.szene=g.scene; var w=e.warte; e.warte=[];
     for(var i=0;i<w.length;i++)w[i](e.szene);
@@ -13084,6 +13117,7 @@ window._glbVorlage=function(datei,cb){
   },undefined,function(){
     var w=e.warte; delete C[datei];
     for(var i=0;i<w.length;i++)w[i](null);});
+  window._ladePrioD=undefined;
 };
 window._glbHol=function(datei,cb){
   window._glbVorlage(datei,function(v){cb(v?v.clone(true):null);});
@@ -13152,9 +13186,9 @@ var KATALOG={
      `th_<id>.glb` lud. Masse GEMESSEN aus der geladenen Box, nicht geschaetzt:
      Bett 1,62 x 1,10 x 2,12 · Sofa 2,13 x 0,82 x 0,90 · Esstisch 1,50 x 0,92 x 1,92.
      `norm` skaliert auf die Zelle, `zielH` deckelt die Hoehe. */
-  {id:"bett_hotel",n:"⭐ Hotelbett",e:"🛏️",cost:1150,size:[1,2],datei:"th11_bett.glb",norm:1,zielH:1.1,
+  {id:"bett_hotel",n:"⭐ Hotelbett",e:"🛏️",cost:1150,stufe:5,size:[1,2],datei:"th11_bett.glb",norm:1,zielH:1.1,
    use:{need:"energie",pose:"lie",off:[0,0],dur:14}},
-  {id:"sofa_lounge",n:"⭐ Lounge-Sofa",e:"🛋️",cost:1250,size:[2,1],datei:"th11_sofa.glb",norm:1,zielH:0.85,
+  {id:"sofa_lounge",n:"⭐ Lounge-Sofa",e:"🛋️",cost:1250,stufe:4,size:[2,1],datei:"th11_sofa.glb",norm:1,zielH:0.85,
    use:{need:"spass",pose:"sit",off:[0,0],dur:8}},
   {id:"esstisch",n:"⭐ Esstisch mit Stühlen",e:"🍽️",cost:780,size:[1,1],datei:"th11_esstisch_stuehle.glb",norm:1,zielH:0.95,
    use:{need:"hunger",pose:"sit",off:[0,0],dur:7}}],
@@ -13167,7 +13201,7 @@ var KATALOG={
   {id:"messingtopf",n:"⭐ Messingtopf",e:"🍲",cost:140,size:[1,1],norm:1,zielH:0.3},
   {id:"holzschale",n:"⭐ Holzschale",e:"🥣",cost:120,size:[1,1],norm:1,zielH:0.15},
   /* 🆕 gemessen 3,24 x 2,23 x 0,71 — die breiteste Zeile im Katalog, darum [2,1]. */
-  {id:"kuechenzeile_gr",n:"⭐ Grosse Küchenzeile",e:"🍽️",cost:1450,size:[2,1],datei:"th11_kuechenzeile.glb",norm:1,zielH:2.2,
+  {id:"kuechenzeile_gr",n:"⭐ Grosse Küchenzeile",e:"🍽️",cost:1450,stufe:4,size:[2,1],datei:"th11_kuechenzeile.glb",norm:1,zielH:2.2,
    use:{need:"hunger",pose:"stand",off:[0,1],dur:6}}],
  bad:[
   {id:"toilette",n:"Toilette",e:"🚽",cost:260,size:[1,1],use:{need:"hygiene",pose:"sit",off:[0,0],dur:4}},
@@ -13214,7 +13248,7 @@ var KATALOG={
   /* 🆕 gemessen: Schreibtisch 1,60 x 1,29 x 0,81 · Buerostuhl 0,64 x 1,00 x 0,64 ·
      Aktenregal 2,02 x 1,82 x 0,90. Das Buero war mit drei Eintraegen die duennste
      Kategorie im ganzen Katalog. */
-  {id:"schreibtisch_gr",n:"⭐ Chef-Schreibtisch",e:"🗄️",cost:890,size:[1,1],datei:"th11_schreibtisch.glb",norm:1,zielH:1.25,
+  {id:"schreibtisch_gr",n:"⭐ Chef-Schreibtisch",e:"🗄️",cost:890,stufe:5,size:[1,1],datei:"th11_schreibtisch.glb",norm:1,zielH:1.25,
    use:{need:"spass",pose:"sit",off:[0,0],dur:8}},
   {id:"buerostuhl",n:"⭐ Bürostuhl",e:"💺",cost:340,size:[1,1],datei:"th11_buerostuhl.glb",norm:1,zielH:1.0,
    use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
@@ -13500,6 +13534,17 @@ var ACH=[
  ["hetzeprofi","⏱️","Rekordjäger","5 Hetzen gespielt",function(){return (stats.hetzen||0)>=5;}],
  ["hetzekoenig","💸","Goldene Neunzig","1000 $ in einer einzigen Hetze",function(){return (stats.hetzeBest||0)>=1000;}],
  ["taxifahrer","🚕","Taxifahrer","5 Fahrgäste ans Ziel gebracht",function(){return (stats.taxiFahrten||0)>=5;}]
+,
+ /* Runde 103: Langzeit-Ziele — Orte, Buergerrang, Immobilien. NUR AM ENDE anfuegen (achDone speichert IDs, nicht Indizes;
+    aber th-erfolge zaehlt Reihenfolge-Faelle). */
+ ["entdecker","🧭","Entdecker","10 Orte auf der Karte besucht",function(){return (stats.orte||[]).length>=10;}],
+ ["landeskenner","🗺️","Landeskenner","25 Orte auf der Karte besucht",function(){return (stats.orte||[]).length>=25;}],
+ ["weltenbummler","🌍","Weltenbummler","Jeden Ort der Karte besucht",function(){return WORLD_POIS.length>0&&(stats.orte||[]).length>=WORLD_POIS.length;}],
+ ["buerger","🎖️","Bürger","Bürgerrang „Bürger“ erreicht (45 Punkte)",function(){return rangIdx(rangPunkte())>=2;}],
+ ["stadtrat","🏛️","Stadtrat","Bürgerrang „Stadtrat“ erreicht (180 Punkte)",function(){return rangIdx(rangPunkte())>=4;}],
+ ["praesident","👑","Stadtpräsident","Bürgerrang „Stadtpräsident“ erreicht (460 Punkte)",function(){return rangIdx(rangPunkte())>=6;}],
+ ["bauloewe","🏗️","Baulöwe","3 gekaufte Häuser ausgebaut",function(){return (stats.immoAusbau||0)>=3;}],
+ ["immokoenig","🏘️","Immobilien-König","Alle Dorfhäuser gekauft",function(){return typeof immo!=="undefined"&&window._immo&&window._immo.length>=10&&immo.length>=window._immo.length;}]
 ];
 /* 🎯 DER LETZTE METER. Vierzig Erfolge lagen im Menue — und alle sahen gleich weit
    weg aus, weil keiner einen Zwischenstand trug. "5 Ernten" liest sich bei 0 exakt wie
@@ -13543,7 +13588,15 @@ var ACHFORT={
  torjaeger:[function(){return stats.tore||0;},3,"Tor"],
  hetzeprofi:[function(){return stats.hetzen||0;},5,"Hetze"],
  hetzekoenig:[function(){return stats.hetzeBest||0;},1000,null],
- taxifahrer:[function(){return stats.taxiFahrten||0;},5,"Fahrgast"]
+ taxifahrer:[function(){return stats.taxiFahrten||0;},5,"Fahrgast"],
+ entdecker:[function(){return (stats.orte||[]).length;},10,"Ort"],
+ landeskenner:[function(){return (stats.orte||[]).length;},25,"Ort"],
+ weltenbummler:[function(){return (stats.orte||[]).length;},WORLD_POIS.length,"Ort"],
+ buerger:[function(){return rangPunkte();},45,"Punkt"],
+ stadtrat:[function(){return rangPunkte();},180,"Punkt"],
+ praesident:[function(){return rangPunkte();},460,"Punkt"],
+ bauloewe:[function(){return stats.immoAusbau||0;},3,"Ausbau"],
+ immokoenig:[function(){return typeof immo!=="undefined"?immo.length:0;},(window._immo&&window._immo.length)||15,"Haus"]
 };
 /* Dieselbe Lehre wie bei checkAch: eine werfende Bedingung darf nicht den ganzen
    Rest mitreissen. Hier kostet ein Fehler genau einen Balken. */
@@ -13660,6 +13713,9 @@ var MISS_POOL=[
     Tagesmission: der Knopf hat damit einen Grund, und der Zaehler einen Leser. */
  ["🛍️","Kaufe {n}× im Laden ein",2,function(){return stats.einkaeufe||0;}],
  ["🚕","Bringe {n} Fahrgäste mit dem Taxi ans Ziel (Taxi im Verkehr antippen)",2,function(){return stats.taxiFahrten||0;}]
+,
+ /* Runde 103 (am Ende, siehe Warnung oben): Entdecken hatte keine Tagesmission. Marker: naechster unentdeckter Ort (missZiele). */
+ ["🧭","Entdecke {n} neue Orte auf der Karte",2,function(){return (stats.orte||[]).length;}]
 ];
 function missNeu(){
   if(MPs&&!mpHost)return;
@@ -13718,6 +13774,7 @@ function missZiele(){
     if(m.done)return;
     var o=MISS_ORTE[m.i];
     if(m.i===3){var a=window.autoRec;o=a?[a.mesh.position.x,a.mesh.position.z]:[0,0];}
+    if(m.e==="🧭"){var nu=naechsterUnentdeckterOrt();o=nu?[nu.o[0],nu.o[1]]:null;} /* Runde 103: Marker auf den naechsten unentdeckten Ort */
     if(!o)return;
     var k=o[0]+"_"+o[1],x=o[0]+(belegt[k]||0)*7; /* zwei Heim-Missionen: Marker nebeneinander */
     belegt[k]=(belegt[k]||0)+1;
@@ -13749,7 +13806,53 @@ function feier(n){
     if(typeof launchFirework==="function")launchFirework(sims[0].x+(Math.random()-0.5)*6,sims[0].z+(Math.random()-0.5)*6);
     if(typeof hearts==="function")hearts(sims[0].x,sims[0].z);}
 }
-function stufenBonus(){return (1+wohnstufe*0.12)*modusFaktor();}      /* +12 % Einnahmen je Stufe */
+/* 🎖️ BUERGERRANG (Runde 103) — die Leiter NACH dem Palast, und von Anfang an parallel dazu.
+   GEMESSEN mit probe-sog: beide Spielertypen erreichen den Palast nach genau 120 min, weil nur der
+   4-Tage-Takt der Abnahme bremst, nicht das Geld; danach passiert an 36 von 60 Tagen nichts Neues,
+   Stufe 4 und 5 schalteten nichts frei, und der aktive Spieler sass nach 6 h auf 340'000 $.
+   Der Rang sammelt PUNKTE aus allem, was das Spiel ohnehin zaehlt — Auftraege, Erfolge, entdeckte
+   Orte, Haeuser, Ausbauten, Karriere, Wohnstufe, Abnahmen, Missions-Serie. EINE Zahl, die jede
+   Handlung hebt. Jeder Rang zahlt eine Praemie und +3 % auf alle Einnahmen (wie die Wohnstufe,
+   ueber stufenBonus). rangGezahlt steht im Spielstand (rg), sonst kaeme die Praemie nach jedem Laden. */
+/* Schwellen GEMESSEN mit probe-sog (zweiter Wurf): mit 12/30/60/100/160/240/350/500 war „Legende" nach 4–6 h
+   erreicht — die Leiter muss laenger sein als eine Sitzung. Jetzt: Stadtpraesident nach ~6 h aktivem Spiel,
+   Legende und Ikone bleiben dahinter offen. */
+var RAENGE=[["🌱","Neuling",0],["🏘️","Nachbar",15],["🎖️","Bürger",45],["⭐","Ehrenbürger",100],["🏛️","Stadtrat",180],
+            ["🎩","Vizepräsident",300],["👑","Stadtpräsident",460],["🌟","Legende",700],["💫","Ikone",1000]];
+var rangGezahlt=0;
+function rangPunkte(){var p=0;try{
+  p=(stats.quests||0)*4+Object.keys(achDone||{}).length*3+((stats.orte&&stats.orte.length)||0)*2
+   +(typeof immo!=="undefined"?immo.length:0)*3+(stats.immoAusbau||0)*2+((skills.arbeit.lv||1)-1)*3
+   +wohnstufe*5+(stats.abnahmen||0)*2+(missSerie||0);}catch(e){}return p;}
+function rangIdx(p){var i=0;for(var k=0;k<RAENGE.length;k++)if(p>=RAENGE[k][2])i=k;return i;}
+function rangName(){var r=RAENGE[rangIdx(rangPunkte())];return r[0]+" "+r[1];}
+function rangPruef(){
+  if(MPs&&!mpHost)return;
+  var i=rangIdx(rangPunkte());if(i<=rangGezahlt)return;
+  /* jede uebersprungene Stufe zahlt mit (ein alter Spielstand kann mehrere auf einmal steigen) */
+  var pr=0;for(var k=rangGezahlt+1;k<=i;k++)pr+=Math.round(400*k*modusFaktor());
+  rangGezahlt=i;geld+=pr;geldSend();updHUD();
+  if(typeof gtaBanner==="function")gtaBanner("Neuer Rang: "+RAENGE[i][0]+" "+RAENGE[i][1],"+"+pr+" $ · ab jetzt +"+(3*i)+" % auf alle Einnahmen","gut");
+  if(typeof feier==="function")feier(3);}
+/* 🧭 ENTDECKER-ALBUM (Runde 103): 36 Kartenorte, jeder erste Besuch zaehlt und zahlt. Die Orte standen
+   auf der Karte, aber nichts hielt fest, ob man dort war — die halbe Welt (Burgdorf, Zoo, Flughafen,
+   Camping) hatte fuer den Fortschritt keinen Wert. stats.orte reist im Spielstand mit (st). */
+function orteCheck(){
+  if(!running||(MPs&&!mpHost))return;
+  var p=spielerPos(),L=stats.orte||(stats.orte=[]);
+  for(var i=0;i<WORLD_POIS.length;i++){var o=WORLD_POIS[i];
+    if(L.indexOf(o[3])>=0)continue;
+    var dx=o[0]-p.x,dz=o[1]-p.z;if(dx*dx+dz*dz>22*22)continue;
+    L.push(o[3]);var pr=Math.round(100*stufenBonus());verdiene(pr,false);
+    if(typeof gtaBanner==="function")gtaBanner("Entdeckt: "+o[2]+" "+o[3],L.length+"/"+WORLD_POIS.length+" Orte · +"+pr+" $","gut");
+    if(typeof beep==="function"){beep(660,.08,"triangle",.05);setTimeout(function(){beep(990,.12,"triangle",.05);},110);}
+    return;}}
+function naechsterUnentdeckterOrt(p){
+  p=p||spielerPos();var L=stats.orte||[],best=null,bd=1e12;
+  for(var i=0;i<WORLD_POIS.length;i++){var o=WORLD_POIS[i];if(L.indexOf(o[3])>=0)continue;
+    var d=(o[0]-p.x)*(o[0]-p.x)+(o[1]-p.z)*(o[1]-p.z);if(d<bd){bd=d;best=o;}}
+  return best?{o:best,d:Math.sqrt(bd)}:null;}
+function stufenBonus(){return (1+wohnstufe*0.12+0.03*rangIdx(rangPunkte()))*modusFaktor();}      /* +12 % je Wohnstufe, +3 % je Rang */
 /* Wie viele KATEGORIEN sind moebliert? Belohnt ein vollstaendiges Haus statt
    zwanzig Kopien desselben Stuecks. */
 function katVielfalt(){
@@ -13771,7 +13874,9 @@ function stufenLuecke(){
 function stufeHudUpd(){
   var el=document.getElementById("stufeBox");if(!el)return;
   var l=stufenLuecke();
-  if(!l){el.innerHTML=ik("i-crown")+" Palast — alles erreicht";return;}
+  /* Runde 103: nach dem Palast zeigt die Kopfzeile den Buergerrang — vorher stand hier "alles erreicht", und genau das war das Problem. */
+  if(!l){var rp=rangPunkte(),ri=rangIdx(rp),rn=RAENGE[ri+1];
+    el.innerHTML=rn?(RAENGE[ri][0]+" "+txt(RAENGE[ri][1])+" · "+rp+"/"+rn[2]+" → "+rn[0]):(ik("i-crown")+" "+txt(RAENGE[ri][1]));return;}
   var tage=Math.max(0,naechsteAbnahme-tag);
   var kurz=l.fehltWert?("+"+l.fehltWert+" $")
           :l.fehltKat?("+"+l.fehltKat+" Bereich"+(l.fehltKat>1?"e":""))
@@ -14269,7 +14374,8 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   kb:KOMBO.best||0,   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
   an:_achNah,       /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
   hz:HETZE.best||0,
-  hzl:HETZE.letzte||[]};}  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
+  hzl:HETZE.letzte||[],
+  il:immoLv,rg:rangGezahlt};}  /* Runde 103: Haus-Ausbaustufen, ausgezahlter Buergerrang (der Zeitstempel zt kommt in saveGame dazu — nicht hier, sonst waere der Umweg speichern(laden(speichern(x))) nie gleich) */  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -14327,6 +14433,7 @@ function loadSnapshot(sn){
   if(sn.an)_achNah=sn.an;
   if(sn.hz!==undefined)HETZE.best=sn.hz|0;
   if(Array.isArray(sn.hzl))HETZE.letzte=sn.hzl.slice(-5);
+  immoLv=(sn.il&&typeof sn.il==="object")?sn.il:{};rangGezahlt=sn.rg|0;window._wegSeit=sn.zt||0; /* Runde 103 */
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -14422,7 +14529,8 @@ function onNetMsg(m){
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
   else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;}
-  else if(m.t==="immo"&&!mpHost){if(immo.indexOf(m.i)<0)immo.push(m.i);} /* 🩹 Schwarm-P3: Gast sieht Hauskaeufe des Hosts */
+  else if(m.t==="immo"&&!mpHost){if(immo.indexOf(m.i)<0)immo.push(m.i);}
+  else if(m.t==="immoLv"&&!mpHost){immoLv[m.i]=m.lv;var _h9=window._immo&&window._immo[m.i];if(_h9&&_h9.flagge)_h9.flagge.scale.setScalar(1+0.35*(m.lv-1));} /* Runde 103: Gast sieht den Ausbau */ /* 🩹 Schwarm-P3: Gast sieht Hauskaeufe des Hosts */
   else if(m.t==="wanted"&&!mpHost){wanted=m.w|0;updWantedHUD();if(m.w>0)hint("Fahndung Stufe "+m.w+" — die Polizei sucht euch.");} /* 🩹 Schwarm-P2: Gast sieht den Fahndungsstand */
   else if(m.t==="growSold"&&mpHost){stats.growSold=(stats.growSold||0)+1;} /* 🩹 Gast-Deal zaehlt */
   else if(m.t==="growReset"&&mpHost){for(var _gi=0;_gi<furn.length;_gi++){var _gf=furn[_gi];
@@ -17648,9 +17756,10 @@ document.getElementById("achBtn").onclick=function(){
   /* Ganz oben steht, was am naechsten liegt — sonst muss man vierzig Eintraege
      durchsehen, um zu erkennen, wofuer sich der naechste Handgriff lohnt. */
   var nz=naechstesZiel();
-  document.getElementById("questTxt").innerHTML=(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
+  var _rp=rangPunkte(),_ri=rangIdx(_rp),_rn=RAENGE[_ri+1],_nu=naechsterUnentdeckterOrt();
+  document.getElementById("questTxt").innerHTML="<b>"+RAENGE[_ri][0]+" "+RAENGE[_ri][1]+"</b> · "+_rp+" Pkt"+(_rn?" · nächster Rang "+_rn[0]+" ab "+_rn[2]:"")+"<br>🧭 <b>Orte:</b> "+(stats.orte||[]).length+"/"+WORLD_POIS.length+(_nu?" · als nächstes "+_nu.o[2]+" "+_nu.o[3]+" ("+Math.round(_nu.d)+" m)":" · alle entdeckt")+"<br>"+(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
   var w2=hausWert();
-  document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length;
+  document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length+" Erfolge";
   var hb=document.getElementById("hetzeBtn");
   if(hb)hb.textContent="🏁 "+HETZE.dauer+"-Sekunden-Hetze starten"+(HETZE.best>0?"  ·  Rekord "+HETZE.best+" $":"");
   document.getElementById("achPanel").style.display="flex";};
@@ -17665,7 +17774,7 @@ document.getElementById("achClose").onclick=function(){document.getElementById("
 (function(){var el=document.getElementById("stufeBox");if(!el)return;
   el.onclick=function(){
     var l=stufenLuecke();
-    if(!l){hint("Höchste Stufe. Der Palast steht.");return;}
+    if(!l){var rp2=rangPunkte(),rn2=RAENGE[rangIdx(rp2)+1];hint("Bürgerrang "+rangName()+" · "+rp2+" Punkte"+(rn2?(" — "+rn2[0]+" "+rn2[1]+" ab "+rn2[2]+". Punkte gibt es für Aufträge, Erfolge, entdeckte Orte, Häuser, Karriere."):" — höchster Rang."));return;}
     var z=l.ziel;
     hint("Nächste Stufe "+z[0]+" — Hauswert "+l.wert+"/"+z[1]+" $ · Wohnbereiche "
       +l.kat+"/"+z[2]+" · Komfort (nutzbare Möbel) "+l.zuf+"/"+z[3]
@@ -18530,7 +18639,7 @@ var SAVE="th_save1";
    Spiel (MPs=null bei running), schrieb der 6-s-Autosave den KOOP-Stand in den
    SOLO-Slot und zerstoerte den Solo-Spielstand. Slot wird jetzt beim Start
    eingefroren (window._saveSlot in startGame). */
-function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(window._saveSlot||(MPs?"th_save_coop":SAVE),JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
+function saveGame(){if(MPs&&!mpHost)return;try{var _s=snapshot();_s.zt=Date.now();localStorage.setItem(window._saveSlot||(MPs?"th_save_coop":SAVE),JSON.stringify(_s));}catch(e){}} /* Runde 103: zt = wann zuletzt gespielt, fuer "Willkommen zurueck" */ /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
   /* ⚠️ Wer schneller ist als die 9-Sekunden-Marke, startet in eine unaufgewaermte
      Welt — genau in das Ruckeln, das _aufwaermen() verhindern soll. Darum hier
@@ -18568,7 +18677,16 @@ function startGame(){
       var bon8=Math.min(40*n8,280);geld+=bon8;geldSend();updHUD();
       var txt8=n8>1?"🔥 Tag-"+n8+"-Serie! Treue-Bonus +"+bon8+" $":"👋 Willkommen! Tages-Bonus +"+bon8+" $";
       setTimeout(function(){if(running)hint(txt8);},4500);}
-  }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("Auftrag vom Stadtpräsidenten: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
+  }catch(e){}}
+  /* 🕰️ WILLKOMMEN ZURUECK (Runde 103): wer nach einer Pause wiederkommt, findet vor, dass Mia und die
+     gekauften Haeuser weitergearbeitet haben — 120 $ je Stunde plus die halbe Tagesmiete je Stunde, hoechstens
+     8 Stunden. Der Grund, morgen wieder aufzumachen, ohne dass man etwas verpasst haette. */
+  try{if((!MPs||mpHost)&&window._wegSeit){var wegH=(Date.now()-window._wegSeit)/3.6e6;window._wegSeit=0;
+    if(wegH>=0.5&&wegH<24*30){var hst=Math.min(wegH,8),ertrag=Math.round((120+immoMiete()*0.5)*hst*stufenBonus());
+      geld+=ertrag;geldSend();updHUD();
+      var wegTxt=wegH<1?Math.round(wegH*60)+" min":(Math.round(wegH*10)/10)+" h";
+      setTimeout(function(){if(running&&typeof gtaBanner==="function")gtaBanner("Willkommen zurück","Du warst "+wegTxt+" weg — Mia und deine Häuser haben "+ertrag+" $ verdient","gut");},2600);}}}catch(e){}
+  setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("Auftrag vom Stadtpräsidenten: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
   /* Das Haekchen gibt es nicht mehr; der Modus ist immer an. */
   romantik=true;
@@ -18798,7 +18916,7 @@ function stampVilla(){
   /* 🔒 Die Vorlage stellte das ab Stufe 1 gesperrte Designer-Sofa auch bei Stufe 0
      ins Haus und umging damit die frische Freischaltung. Gesperrte Stuecke werden
      durch ihr freies Pendant ersetzt — die Vorlage bleibt vollstaendig moebliert. */
-  var ERSATZ={sofa_design:"sofa",himmelbett:"bett",standuhr:"lampe",haistatue:"topfpflanze",pferdestatue:"topfpflanze"};
+  var ERSATZ={sofa_design:"sofa",himmelbett:"bett",standuhr:"lampe",haistatue:"topfpflanze",kuechenzeile_gr:"kueche",sofa_lounge:"sofa",bett_hotel:"bett",schreibtisch_gr:"schreibtisch",pferdestatue:"topfpflanze"};
   /* 🐛 Schwarm-Befund: 3500 rein, ~9500 beim Abriss zurueck — beliebig oft wiederholbar.
      Alles Gestempelte wird als gratis markiert und zahlt beim Abriss nichts aus. */
   window._gratisBau=window._gratisBau||{};
@@ -18869,7 +18987,7 @@ function loop(now){
       _z.g.position.x=_z.x;} /* ⚠️ Runde 102: kein rotation.y-Flip mehr — er drehte die Gruppe um die Lok, die Wagen sprangen 3,7 m hoch ueber den Wendeplatz (Ost) bzw. 5,3 m uebers Deckende (West); Pendelzug schiebt zurueck (Messwerte bei _seeZug) */
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
     if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;
-      if(immo.length){var miete=Math.round(immo.length*150*stufenBonus());geld+=miete;geldSend();updHUD();hint("Miete: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
+      if(immo.length){var miete=Math.round(immoMiete()*stufenBonus());geld+=miete;geldSend();updHUD();stats.mieteTage=(stats.mieteTage||0)+1;hint("Miete: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
       /* 🏅 Die Bauabnahme ist der Taktgeber des Spiels — sie kommt zum Termin,
          egal was der Spieler gerade tut, und sagt konkret, was noch fehlt. */
       /* 🏅 Die Abnahme war ein stilles Popup — jetzt kommt der BAUINSPEKTOR sichtbar
@@ -19153,7 +19271,7 @@ function loop(now){
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0,s:(act9&&(shiftHeld||joyEdge))?1:0});steerWasActive=act9;}}
       window._thHbT=(window._thHbT||0)-dt; /* 🩹 Schwarm-P1: Keepalive alle 2s — der 6s-Watchdog in mp.js trennte idle Gäste */
       if(window._thHbT<=0){window._thHbT=2;netSend({t:"hb"});}}
-    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();missCheck();}
+    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();missCheck();rangPruef();orteCheck();}
       if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs,v:s.mesh.visible};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});
         netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten,st:stats,ac:achDone});
