@@ -41085,3 +41085,4 @@ gid://shopify/Product/15500926812545	CHF 10.38	6 Varianten	Bagger Sweatshirt fü
 gid://shopify/Product/15500926845313	CHF 6.90	1 Varianten	Blättermuster Kupferarmband
 gid://shopify/Product/15500926878081	CHF 11.67	1 Varianten	Nähmaschinen-Zubehör-Set für diverse Anwendungen ·
 gid://shopify/Product/15500926910849	CHF 42.03	1 Varianten	Vintage Servierplatte aus Massivholz mit Metallgri
+gid://shopify/Product/15448114200961	CHF 17.41	54 Varianten	V-Ausschnitt Jumpsuit mit langer Ärmel
