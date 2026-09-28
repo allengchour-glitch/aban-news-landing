@@ -64,3 +64,16 @@
 15479398990209	unklar:farbe-unbekannt	2026-09-28	268W GaN Multiport-Ladegerät
 15493830705537	eu-sku-gesetzt:CJXFLPCD00176-White-EU	2026-09-28	Kabelloses USB-Ladegerät für Smartphones
 15493830771073	eu-sku-gesetzt:CJXFLPCD00171-EU	2026-09-28	Lithium-Akku-Ladegerät mit LCD-Anzeige
+15493851939201	eu-sku-gesetzt:CJJF222157502BY	2026-09-28	Vollautomatischer Lockenstab für nasse & trockene Haare
+15493852299649	eu-sku-gesetzt:CJYD217664502BY	2026-09-28	High-Speed Warmluftbürste 9-in-1
+15493852561793	eu-sku-gesetzt:CJJF217205002BY	2026-09-28	Haarglätter und Lockenstab
+15493861245313	unklar:farbe-unbekannt	2026-09-28	Keramik Haarglätter & Lockenstab
+15493861736833	eu-sku-gesetzt:CJTF105214702BY	2026-09-28	Automatischer Lockenstab Rose Tube Spiral
+15493861966209	eu-sku-gesetzt:CJTF103575602BY	2026-09-28	Glätteisen & Lockenstab 2-in-1 mit Keramikplatten
+15493862228353	eu-sku-gesetzt:CJJF198973802BY	2026-09-28	Lockenstab mit Farboptionen
+15493870190977	eu-sku-gesetzt:CJTF101504602BY	2026-09-28	Automatischer Lockenstab für nasse und trockene Haare
+15493870322049	eu-sku-gesetzt:CJTF101284601AZ	2026-09-28	2-in-1 Lockenstab & Glätteisen
+15493870682497	eu-sku-gesetzt:CJTF100721201AZ	2026-09-28	LED Display Anion Glättbürste
+15493916918145	eu-sku-gesetzt:CJBJMRTF00229-Black-EU	2026-09-28	Lockenstab & Glätteisen mit Keramikheizung
+15493929042305	unklar:farbe-unbekannt	2026-09-28	Handdampfglätter, multifunktional
+15493929828737	eu-sku-gesetzt:CJZN112672802BY	2026-09-28	Tragbares Mini-Reisebügeleisen
