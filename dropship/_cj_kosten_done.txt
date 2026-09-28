@@ -40267,3 +40267,4 @@ gid://shopify/Product/15495136018817	CHF 13.33	5 Varianten	Eleganter gestreifter
 gid://shopify/Product/15495136051585	CHF 15.73	1 Varianten	Herren Chronograph Sportuhr mit PU-Armband
 gid://shopify/Product/15495136084353	CHF 15.44	4 Varianten	Elegantes Strickkleid mit geometrischem Muster
 gid://shopify/Product/15495136117121	CHF 14.28	4 Varianten	Midi-Kleid mit quadratischem Ausschnitt
+gid://shopify/Product/15495136149889	CHF 13.06	1 Varianten	Futternapf «Fliegende Untertasse» für Katzen
