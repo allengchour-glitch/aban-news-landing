@@ -47,19 +47,23 @@ class Storefront(
             }
         }
 
-    suspend fun home(seasonHandle: String, railHandles: List<String>): HomeData {
-        val rails = railHandles.mapIndexed { i, h ->
-            """r$i: collection(handle: "$h") { ...Coll products(first: 12, sortKey: BEST_SELLING) { nodes { ...Card } } }"""
+    suspend fun home(seasonHandle: String, specs: List<RailSpec>): HomeData {
+        val rails = specs.mapIndexed { i, r ->
+            val sort = if (r.newest) "sortKey: CREATED, reverse: true" else "sortKey: BEST_SELLING"
+            if (r.query != null) """r$i: products(first: 12, $sort, query: ${JsonPrimitive(r.query)}) { nodes { ...Card } }"""
+            else """r$i: collection(handle: ${JsonPrimitive(r.handle)}) { ...Coll products(first: 12, $sort) { nodes { ...Card } } }"""
         }.joinToString("\n")
         val d = run(
             """query Home { season: collection(handle: "$seasonHandle") { ...Coll } $rails } $COLL $CARD""",
         )
         return HomeData(
             season = Parse.collection(d.o("season")),
-            rails = railHandles.indices.mapNotNull { i ->
+            rails = specs.indices.mapNotNull { i ->
+                val spec = specs[i]
                 val c = d.o("r$i") ?: return@mapNotNull null
-                val info = Parse.collection(c) ?: return@mapNotNull null
-                val cards = c.nodes("products").mapNotNull(Parse::card)
+                val info = if (spec.query != null) CollectionInfo(spec.handle, spec.title ?: spec.handle, "", null)
+                    else Parse.collection(c)?.let { spec.title?.let { t -> it.copy(title = t) } ?: it } ?: return@mapNotNull null
+                val cards = (if (spec.query != null) c.a("nodes").mapNotNull { it.obj() } else c.nodes("products")).mapNotNull(Parse::card)
                 if (cards.isEmpty()) null else info to cards
             },
         )
@@ -75,7 +79,7 @@ class Storefront(
         val img = runCatching { run("query Img { ${q.joinToString(" ")} }") }.getOrNull()
         return items.map { m ->
             val i = handles.indexOf(m.collectionHandle)
-            m.copy(image = img?.o("c$i")?.o("image")?.let(Parse::image))
+            m.copy(image = img?.o("c$i")?.o("image")?.let(Parse::image)?.takeUnless(::isWebBanner))
         }
     }
 
@@ -105,7 +109,7 @@ class Storefront(
 
     suspend fun suggest(query: String): Suggestions {
         val d = run(
-            """query P(${'$'}q: String!) { predictiveSearch(query: ${'$'}q, limit: 6, types: [PRODUCT, QUERY, COLLECTION]) {
+            """query P(${'$'}q: String!) { predictiveSearch(query: ${'$'}q, limit: 8, types: [PRODUCT, QUERY, COLLECTION]) {
               queries { text } collections { handle title } products { ...Card } } } $CARD""",
             vars("q" to query),
         )
@@ -145,7 +149,8 @@ class Storefront(
         val d = run("query Img { ${q.joinToString(" ")} }")
         return handles.withIndex().associate { (i, h) ->
             val c = d.o("c$i")
-            h to (Parse.image(c.o("image")) ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
+            val own = Parse.image(c.o("image"))?.takeUnless(::isWebBanner)
+            h to (own ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
         }
     }
 
@@ -253,3 +258,10 @@ class Storefront(
                 product { id handle title } } } } } }"""
     }
 }
+
+/**
+ * Breite Web-Banner (1600×620) tragen Titel und Knopf ins Bild gebrannt („Frauen … Jetzt entdecken").
+ * In der App werden sie abgeschnitten und doppeln den eigenen Text – dort lieber ein Produktbild.
+ */
+fun isWebBanner(image: Image): Boolean =
+    image.height > 0 && image.width.toDouble() / image.height > 2.2

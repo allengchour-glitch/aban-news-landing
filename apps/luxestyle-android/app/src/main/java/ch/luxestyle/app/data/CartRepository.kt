@@ -56,7 +56,14 @@ class CartRepository(private val api: Storefront, private val prefs: SharedPrefe
 
     companion object {
         private const val KEY = "cart_id"
-        /** Wie die Versandregel im Shopify-Admin (Schweiz: „Kostenloser Versand" ab CHF 45, sonst CHF 7). */
+        /**
+         * Wie die Versandregel im Shopify-Admin (Schweiz: „Kostenloser Versand" ab CHF 45 NACH Rabatt,
+         * sonst CHF 7). Nach aussen versprochen wird „ab CHF 50" wie auf der Webseite: mit dem
+         * Automatik-Rabatt „2+ Artikel −10 %" ist das die einzige Zahl, die in jedem Korb stimmt
+         * (50 × 0.9 = 45). Der Warenkorb rechnet exakt mit dieser Grenze.
+         */
         const val FREE_SHIPPING_CHF = 45.0
+        /** Versand Schweiz unter der Gratis-Grenze (Versandprofil im Shop-Admin). */
+        const val SHIPPING_CHF = 7.0
     }
 }

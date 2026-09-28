@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -98,7 +99,7 @@ private fun ProductDetail(p: Product) {
     val scope = rememberCoroutineScope()
     val haptic = LocalHapticFeedback.current
     val wish by shop.wishlist.items.collectAsState()
-    var selection by rememberSaveable(p.handle) { mutableStateOf(p.defaultSelection()) }
+    var selection by rememberSaveable(p.handle) { mutableStateOf(p.defaultSelection(askFor = SIZE_OPTION)) }
     val variant = p.variantFor(selection)
     val images = p.images.ifEmpty { listOfNotNull(variant?.image) }
     val pager = rememberPagerState { images.size.coerceAtLeast(1) }
@@ -113,7 +114,12 @@ private fun ProductDetail(p: Product) {
         shop.api.collection(h, Sort.BEST, null).second.products.filter { it.id != p.id }.take(12)
     }
     var viewer by remember { mutableStateOf<Int?>(null) }
-    val guide = remember(p.handle) { sizeGuide(p.descriptionHtml) }
+    val guide = remember(p.handle) {
+        sizeGuide(p.descriptionHtml)?.only(p.options.firstOrNull { it.name == SIZE_OPTION }?.values.orEmpty())
+    }
+    val list = rememberLazyListState()
+    // Noch nicht gewählt (Grösse wird bewusst nicht vorausgewählt)
+    val missingOption = p.options.firstOrNull { it.values.size > 1 && selection[it.name] == null }
     var showGuide by rememberSaveable(p.handle) { mutableStateOf(false) }
     LaunchedEffect(p.handle) { shop.recent.seen(p.toCard()) }
     viewer?.let { start -> ImageViewer(images, start) { viewer = null } }
@@ -130,7 +136,7 @@ private fun ProductDetail(p: Product) {
     }
 
     Box(Modifier.fillMaxSize()) {
-        LazyColumn(Modifier.fillMaxSize().testTag("product"), contentPadding = PaddingValues(bottom = 110.dp)) {
+        LazyColumn(Modifier.fillMaxSize().testTag("product"), state = list, contentPadding = PaddingValues(bottom = 110.dp)) {
             item {
                 Box(Modifier.fillMaxWidth().aspectRatio(0.8f).background(LocalLuxe.current.card)) {
                     HorizontalPager(pager, Modifier.fillMaxSize()) { i ->
@@ -183,7 +189,11 @@ private fun ProductDetail(p: Product) {
                         if (pct != null) { Spacer(Modifier.width(10.dp)); Badge("−$pct %", LocalLuxe.current.sale) }
                     }
                     Gap(4)
-                    Text("Versandkosten werden an der Kasse berechnet", style = MaterialTheme.typography.bodySmall, color = LocalLuxe.current.muted)
+                    val window = remember(p.handle) { deliveryWindow(p.descriptionHtml)?.substringBefore(" (") }
+                    Text(
+                        listOfNotNull("Gratis-Versand ab CHF 50", window).joinToString(" · "),
+                        style = MaterialTheme.typography.bodySmall, color = LocalLuxe.current.muted,
+                    )
                     if (variant != null && !variant.available) {
                         Gap(8)
                         Text("Diese Ausführung ist ausverkauft.", style = MaterialTheme.typography.bodyMedium, color = LocalLuxe.current.sale)
@@ -234,7 +244,7 @@ private fun ProductDetail(p: Product) {
             item {
                 Column(Modifier.padding(horizontal = 20.dp).fillMaxWidth().clip(Radius.Card).background(MaterialTheme.colorScheme.surfaceVariant).padding(16.dp)) {
                     remember(p.handle) { deliveryWindow(p.descriptionHtml) }?.let { Assurance(R.drawable.ic_truck, it) }
-                    Assurance(R.drawable.ic_bag, "Gratis-Versand in der Schweiz ab CHF 45")
+                    Assurance(R.drawable.ic_bag, "Gratis-Versand in der Schweiz ab CHF 50")
                     Assurance(R.drawable.ic_return, "30 Tage Rückgabe")
                     Assurance(R.drawable.ic_shield, "Sicher bezahlen mit TWINT, Karte oder Klarna")
                 }
@@ -267,14 +277,21 @@ private fun ProductDetail(p: Product) {
                     val ok = variant?.available == true
                     PillButton(
                         text = when {
+                            missingOption != null -> "${missingOption.name} wählen"
                             variant == null -> "Ausführung wählen"
                             !ok -> "Ausverkauft"
                             else -> "In den Warenkorb · ${variant.price.format()}"
                         },
-                        enabled = ok,
+                        enabled = ok || missingOption != null,
                         loading = adding,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
+                        if (missingOption != null) {
+                            // Zur Auswahl scrollen: Galerie (0), Titel (1), dann die Optionen
+                            val idx = 2 + p.options.indexOf(missingOption)
+                            scope.launch { list.animateScrollToItem(idx) }
+                            return@PillButton
+                        }
                         val v = variant ?: return@PillButton
                         adding = true
                         scope.launch {

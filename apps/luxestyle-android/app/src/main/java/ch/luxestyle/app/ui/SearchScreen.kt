@@ -114,7 +114,7 @@ fun SearchScreen(initial: String) {
         val s = suggestions
         when {
             s != null && (s.queries.isNotEmpty() || s.products.isNotEmpty() || s.collections.isNotEmpty()) ->
-                SuggestionList(s, onQuery = ::submit)
+                SuggestionList(s, text.trim(), onQuery = ::submit)
             submitted.isNotBlank() -> Results(
                 query = submitted, sort = sort, filters = filters, total = total, related = related,
                 onSort = { sort = it }, onFilters = { filters = it }, onTotal = { total = it }, onQuery = ::submit,
@@ -180,7 +180,7 @@ private fun BarButton(icon: Int, label: String, onClick: () -> Unit) {
 }
 
 @Composable
-private fun SuggestionList(s: Suggestions, onQuery: (String) -> Unit) {
+private fun SuggestionList(s: Suggestions, typed: String, onQuery: (String) -> Unit) {
     val nav = LocalNav.current
     LazyColumn(Modifier.testTag("vorschlaege"), contentPadding = PaddingValues(bottom = 24.dp)) {
         items(s.collections, key = { "c" + it.handle }) { c ->
@@ -201,6 +201,19 @@ private fun SuggestionList(s: Suggestions, onQuery: (String) -> Unit) {
                     Spacer(Modifier.height(2.dp))
                     Price(p.price, p.compareAt)
                 }
+            }
+        }
+        // Vorschläge zeigen nur wenige Stücke – der Weg zu allen Treffern soll nicht über die Tastatur gehen
+        if (typed.isNotEmpty()) item(key = "alle") {
+            Row(
+                Modifier.fillMaxWidth().clickable { onQuery(typed) }.padding(horizontal = 20.dp, vertical = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    "Alle Treffer für «$typed» anzeigen", style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.secondary, modifier = Modifier.weight(1f),
+                )
+                Icon(painterResource(R.drawable.ic_search), null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(16.dp))
             }
         }
     }

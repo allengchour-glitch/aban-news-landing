@@ -86,7 +86,20 @@ data class SizeChart(val title: String?, val header: List<String>, val rows: Lis
     }
 }
 
-data class SizeGuide(val charts: List<SizeChart>, val notes: List<String>)
+data class SizeGuide(val charts: List<SizeChart>, val notes: List<String>) {
+    /**
+     * Nur die Grössen, die es beim Produkt gibt, beschriftet wie die Auswahl („2XL" statt „XXL").
+     * Passt keine Zeile, bleibt die Tabelle unverändert.
+     */
+    fun only(sizes: List<String>): SizeGuide {
+        if (sizes.isEmpty()) return this
+        val byNorm = sizes.associateBy(::normalizeSize)
+        return copy(charts = charts.map { chart ->
+            val rows = chart.rows.mapNotNull { r -> byNorm[normalizeSize(r.first())]?.let { listOf(it) + r.drop(1) } }
+            if (rows.isEmpty()) chart else chart.copy(rows = rows)
+        })
+    }
+}
 
 private fun normalizeSize(s: String): String {
     val t = s.trim().uppercase().replace(" ", "")

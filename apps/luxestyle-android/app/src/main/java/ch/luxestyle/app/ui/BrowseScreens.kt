@@ -148,7 +148,7 @@ fun CollectionScreen(handle: String, initialTitle: String) {
                         ) {
                             items(chips, key = { it.url }) { c ->
                                 val here = c.collectionHandle == handle
-                                ChoiceChip(c.title, selected = here) {
+                                ChoiceChip(shortLabel(c.title), selected = here) {
                                     // Nachbarn tauschen die Seite aus, statt den Zurück-Stapel zu füllen
                                     if (!here) c.collectionHandle?.let { nav.collection(it, c.title, replace = siblings.isNotEmpty()) }
                                 }
@@ -224,3 +224,6 @@ fun WishlistScreen() {
 
 @Composable
 fun Gap(h: Int) = Spacer(Modifier.height(h.dp))
+
+/** „Accessoires: Schals, Mützen & Gürtel" → „Accessoires" – Chips bleiben kurz. */
+fun shortLabel(title: String): String = title.substringBefore(":").trim().ifEmpty { title }

@@ -1,0 +1,58 @@
+name: LuxeStyle-App von Gemini bewerten lassen
+
+# Nur manuell starten (Cron-Regel: keine automatischen Läufe, siehe CLAUDE.md).
+# Macht Bildschirmfotos der echten App mit echten Shopdaten und lässt Gemini sie beurteilen.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: apps/luxestyle-android
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platforms;android-36 build-tools;36.0.0"
+
+      - name: Rundgang durch die App (Bildschirmfotos)
+        env:
+          LUXE_SCREENSHOTS: "1"
+        # Einzelne Rundgänge dürfen scheitern (Netz, Shopdaten) – bewertet wird, was an Bildern da ist
+        run: ./gradlew --no-daemon --continue testDebugUnitTest --tests '*ScreenTour*' || true
+
+      - name: Bilder verkleinern
+        run: |
+          command -v convert >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick; }
+          mkdir -p screens-small
+          find . -path '*screens*' -name '*.png' -not -path './screens-small/*' | sort | while read -r f; do
+            convert "$f" -resize 540x -quality 80 "screens-small/$(basename "${f%.png}").jpg"
+          done
+          ls screens-small | tee /dev/stderr | wc -l
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Gemini-Bewertung
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node tools/gemini_review.mjs screens-small
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gemini-review
+          path: |
+            apps/luxestyle-android/gemini-review.md
+            apps/luxestyle-android/screens-small/
+          if-no-files-found: warn
