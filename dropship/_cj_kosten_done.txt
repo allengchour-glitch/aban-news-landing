@@ -40410,3 +40410,6 @@ gid://shopify/Product/15495142310273	CHF 8.76	1 Varianten	3D Blumen-Maniküre zu
 gid://shopify/Product/15495142343041	CHF 15.07	8 Varianten	Modische Keilsandalen mit offener Spitze
 gid://shopify/Product/15495142375809	CHF 22.04	1 Varianten	S6 Magnetisches 3-in-1 Auto-Wireless-Ladegerät
 gid://shopify/Product/15495142408577	CHF 43.06	18 Varianten	Vintage Sandalen mit T-Riemen und Blockabsatz
+gid://shopify/Product/15495142441345	CHF 8.17	1 Varianten	Handgemachte Camellia Lace Press-on Nägel
+gid://shopify/Product/15495142474113	CHF 38.06	1 Varianten	Kabellose 3-in-1 Powerbank mit Schnellladefunktion
+gid://shopify/Product/15495142506881	CHF 54.24	1 Varianten	Bange Business Rucksack (wasserdicht)
