@@ -19,7 +19,7 @@
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -144,7 +144,7 @@ if (process.env.PRUEFEN === '1') {
 // (cjreel-*, mit Musik aus der ffmpeg-Pipeline) zuerst, Marken-Videos danach.
 const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'));
 const _alle = rows.slice(1).filter(passt);
-const _reihe = nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))], r => get(r, 'caption'));   // 25.09. Saison-Vorrang (Herbst) zuerst
+const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))], r => get(r, 'caption')), r => get(r, 'id'));   // 25.09. Saison-Vorrang (Herbst) zuerst
 // DRY schreibt nichts (23.09.: vorher setzte schon der DRY-Lauf tote Adressen auf archived-deadurl).
 const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { if (DRY) return; r[idx.status] = st; writeLedger(); });
 if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde.'); process.exit(0); }
@@ -217,8 +217,13 @@ if (!pa.ok) {
 // 27.09.2026 Betreiber «mache keine billige einfache post, jeder soll ein meisterwerk sein»: Meisterwerk-Tor an der
 // fertigen Datei (Format, Dauer, Ton, Bewegung in der 1. Sekunde, Standbild-Anteil). Gemessen: 3 von 11 wartenden und
 // 8 von 14 geposteten Reels hatten einen stehenden Einstieg — genau die Klasse, die TikTok (Ø 1,8 s von 11 s) verliert.
+if (/^montage-/.test(get(cand, 'id') || '')) {   // 28.09.2026: Sammelvideo — alle 6 Bildpreise gegen den Shop
+  const mp = montagePruefen(get(cand, 'video_url'));
+  if (!mp.ok) { console.error(`⛔ Kein Post — Sammelvideo-Preise: ${mp.grund}`); if (!DRY) { cand[idx.status] = 'montage-preis-skip'; writeLedger(); } process.exit(3); }
+  console.log(`  Sammelvideo: ${mp.grund}`);
+}
 { const vu = get(cand, 'video_url'); const lm = /\/social\/reels\/([^/?#]+\.mp4)/.exec(vu);
-  const quelle = lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu;
+  const quelle = montageQuelle(vu) || (lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu);
   const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000,
     env: { ...process.env, PREIS_SOLL: [...String(get(cand, 'caption') || '').matchAll(/CHF\s*(\d{1,4}[.,]\d{2})/g)].map(m => m[1]).join(',') } });   // 27.09.: Bildpreis = Caption-Preis
   if (t.status !== 0) {

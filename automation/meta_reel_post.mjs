@@ -12,7 +12,7 @@
  * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
-import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang } from './post_guard.mjs';
+import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -142,7 +142,7 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
   && !familieKuerzlich(r[idx.caption]);   // 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
 // 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
 const _alle = rows.slice(1).filter(_passt);
-const _reihe = nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))], r => r[idx.caption]);   // 25.09. Saison-Vorrang (Herbst) vor v2/alt
+const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))], r => r[idx.caption]), r => r[idx.id]);   // 25.09. Saison-Vorrang (Herbst) vor v2/alt
 const cand = ersterErreichbare(_reihe, r => r[idx.video_url] || '', (r, st) => { r[idx.status] = st; if (!DRY) writeLedger(); });   // DRY schreibt nichts
 if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
 // Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
@@ -239,8 +239,13 @@ async function promoPruefen(postId, videoUrl, caption) {
   console.log(`  Produkt: ${pa.grund}`);
 }
 // 27.09.2026 Meisterwerk-Tor (wie metricool_tiktok_post.mjs): keine Reels mit stehendem Einstieg, Diashow, falschem Format/Ton.
+if (/^montage-/.test(cand[idx.id] || '')) {   // 28.09.2026: Sammelvideo — alle 6 Bildpreise gegen den Shop
+  const mp = montagePruefen(cand[idx.video_url]);
+  if (!mp.ok) { console.error(`⛔ Kein Post — Sammelvideo-Preise: ${mp.grund}`); if (!DRY) { cand[idx.status] = 'montage-preis-skip'; writeLedger(); } process.exit(3); }
+  console.log(`  Sammelvideo: ${mp.grund}`);
+}
 { const vu = cand[idx.video_url]; const lm = /\/social\/reels\/([^/?#]+\.mp4)/.exec(vu);
-  const quelle = lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu;
+  const quelle = montageQuelle(vu) || (lm && fs.existsSync(`social/reels/${lm[1]}`) ? `social/reels/${lm[1]}` : vu);
   const t = spawnSync('python3', ['automation/meisterwerk_tor.py', quelle], { encoding: 'utf8', timeout: 240000,
     env: { ...process.env, PREIS_SOLL: [...String(cand[idx.caption] || '').matchAll(/CHF\s*(\d{1,4}[.,]\d{2})/g)].map(m => m[1]).join(',') } });   // 27.09.: Bildpreis = Caption-Preis
   if (t.status !== 0) {

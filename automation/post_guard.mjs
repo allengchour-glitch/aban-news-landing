@@ -8,6 +8,7 @@
  * Ledger liegt im Repo (dropship/_posted_media.txt) → überlebt Container-Resets, wird committet.
  */
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 const LOCK = '/tmp/ig_post.lock';
 const LEDGER = 'dropship/_posted_media.txt';
 // 23.09.2026: Karussell-Slides heissen in JEDEM Set 01.jpg … 06.jpg — nur der Dateiname als Schluessel
@@ -251,4 +252,25 @@ export function nachVorrang(rows, captionVon, set = vorrangHandles()) {
   const v = rows.filter(r => istVorrang(captionVon(r), set));
   const vs = v.map((r, i) => [stufe(r), i, r]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
   return [...vs, ...rows.filter(r => !v.includes(r))];
+}
+
+// 28.09.2026 SAMMELVIDEOS (Betreiber «push webseite», zuvor «gut» zu Halloween-/Herbst-Montage): Zeilen mit id «montage-…»
+// gehen VOR allen anderen (sie zeigen 6 Produkte + luxestyle.ch am Schluss). Sie tragen keinen einzelnen Produkt-Link, also
+// greift weder die Kaufbar- noch die Caption-Preisprüfung — deshalb prüft `montagePruefen` direkt vor dem Post alle 6
+// eingebrannten Preise gegen den Shop (promo_montage.py --pruefen liest das Manifest im Video). Preis-Verlustschutz hebt
+// gerade Tausende Preise an: ein Bildpreis von gestern kann heute falsch sein.
+export function montageErst(rows, idVon) {
+  const m = rows.filter(r => /^montage-/.test(idVon(r) || ''));
+  return [...m, ...rows.filter(r => !m.includes(r))];
+}
+export function montageQuelle(videoUrl) {
+  const lm = /\/social\/montage_proben\/([^/?#]+\.mp4)/.exec(videoUrl || '');
+  return lm && fs.existsSync(`social/montage_proben/${lm[1]}`) ? `social/montage_proben/${lm[1]}` : '';
+}
+export function montagePruefen(videoUrl) {
+  const q = montageQuelle(videoUrl);
+  if (!q) return { ok: false, grund: 'Montage-Datei lokal nicht gefunden (social/montage_proben/)' };
+  const r = spawnSync('python3', ['automation/reel/promo_montage.py', '--pruefen', q], { encoding: 'utf8', timeout: 300000 });
+  const z = ((r.stdout || '') + (r.stderr || '')).trim().split('\n').pop() || '';
+  return { ok: r.status === 0, grund: z.slice(0, 200), quelle: q };
 }
