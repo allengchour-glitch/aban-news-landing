@@ -38895,3 +38895,4 @@ gid://shopify/Product/15493916098945	CHF 14.30	24 Varianten	Elegantes Langarm-Kl
 gid://shopify/Product/15493916197249	CHF 7.12	1 Varianten	Lederarmband mit Dreiecksverschluss für Smartwatch
 gid://shopify/Product/15493916393857	CHF 22.89	51 Varianten	Kinder-Sneakers mit Sternenmuster und weicher Sohl
 gid://shopify/Product/15493916459393	CHF 20.85	1 Varianten	Multifunktionaler Warmluft-Haarstyler
+gid://shopify/Product/15493916524929	CHF 21.84	1 Varianten	Smartwatch für Kinder mit Herzfrequenzmessung
