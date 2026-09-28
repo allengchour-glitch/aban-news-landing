@@ -6,6 +6,21 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 👁️ Gemini-Vision-Jury vor jedem Social-Post (Betreiber «jede post ein meisterwerk» · «vision ai», 20:20)
+- **Lehre 1 — Messen ist nicht Sehen.** `meisterwerk_tor.py` prüfte Format, Bewegung, Ton, Bildpreis; nichts davon sah ein
+  «Dropshipping.com»-Wasserzeichen, «3Cr14 tool steel» im Bild oder einen Wok im Reel für ein Löffel-Set. Eine Vision-Jury
+  (gemini-2.5-flash, ~0,1 Rp./Urteil, Cache) fand 55 von 103 wartenden Posts unpostbar; Sichtprüfung 3/3 bestätigt.
+- **Lehre 2 — die Jury entlarvt die Caption-Quelle.** ≥ 8 Bild-Durchfäller sind Kimi-Captions mit Details, die das Bild nicht
+  zeigt («Mondstein», «Reise-Rucksack», «Color-Block»). Die Klasse sitzt in der Caption-Erzeugung → nächster Schritt: Jury beim
+  Bau der Queue.
+- **Lehre 3 — ein neues Tor verändert den Takt.** Der Bildposter sah pro Lauf EINE Zeile und endete mit Exit 0 auch ohne Post →
+  jede Ablehnung hätte 6 h gekostet (Klasse Nachtrag 94). Wer ein Tor einbaut, prüft, ob der Aufrufer danach weitersucht und
+  was sein Exit-Code dem Autopiloten sagt.
+- **Lehre 4 — erster Prompt hatte einen Fehlalarm:** Herstellermarke auf der Originalverpackung («HEKU») galt als Fremdwerbung →
+  Prompt erlaubt Marke AUF der Ware. Jede Jury braucht einen Kanarienvogel aus sauberem Material.
+- Beleg live: Autopilot 20:11 lehnte Karussell «Blockabsatz-Stiefel» ab (K.-o. falsches_produkt), YouTube-Short Herbst 9,17 durch.
+  Bericht `dropship/GEMINI-JURY-2026-09-28.md`.
+
 ## 2026-09-28 · 🧽 «mach webseite sauber»: technisch sauber, eine irreführende Überschrift entfernt
 Hetzner-Ganzseitenfotos (mobil) + WebFetch + Admin-API: keine Fehler. Leere Flächen auf Ganzseitenfotos = Lazy-Load, nicht leer
 (WebFetch listet die Produkte). Behoben: Bewertungs-Überschrift «Das sagen unsere Kundinnen und Kunden» über 13'818 importierten
@@ -17136,3 +17151,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-24 · 🪣 **CJ-Eimer: kein versteckter Verbraucher — Nachfluss nur ~43 Punkte/min (usedToday 107'890→112'620 in 109 min), nicht 165; Takt-Bericht je Maschine `dropship/_cj_takt_<host>.json` (Container 188/h, Server 111/h); globale Bremse jetzt gemeinsamer Abstand 180 s je Maschine statt 30 s je Aufruf.** Gezählt erklärt gemessen → Konstante falsch, nicht Täter → Journal Nachtrag 73
 - 2026-09-24 · 🧩 **Warnhinweis «unter 36 Monaten» fehlte bei 581 Kinderspielzeugen (Bausteine ~507, Kuscheltiere 74), 111 falsche age_group — `kinder_sicherheit.py` lief nie täglich und schrieb HTML aus dem Export zurück (Zeitreise-Überschreiber) → live lesen, frisch vor jedem Schreiben, Text-Sperre, Rücklesen; Faultier/Sennenhund/Verkleidung/Schuh-Regeln; jetzt im Aufseher.** Textschreiber lesen unmittelbar vor dem Schreiben live → Journal Nachtrag 76
 - 2026-09-24 · 🍂 **«pushe mehr herbstsachen»: Herbst-Favoriten 59 → 119 (Quoten-Summe 65 < Ziel 80 hielt sie fest; 3 Sichtrunden, 23 aussortiert, `GESICHTET`-Freigabeliste gegen ungesehene Nachrücker), Startseite Platz 2 unter Trend (WebFetch), Pinterest-Vorrang wechselt je Pin, IG-Herbst-Set täglich; `/tmp/export.jsonl` war Kosten-Export → Hype/Herbst/Querbeet 0 Kandidaten → `format_ok()`.** Geteilte Datei = Format prüfen, nicht Alter → Journal Nachtrag 75
+- 2026-09-25 · 🎨 **Motiv-Wahl ohne Auswahl (Teetasse «Blumen- oder Pfingstrosenmotiv», eine Variante): Wahlversprechen-Wächter kannte Motiv-Alternativen nicht → Bindestrich-Form ins Muster (21 Treffer, 17 echt), 16 Texte bereinigt, 1 Titel; ein Ad-hoc-Listenlauf überschrieb den Gesamtbericht → `BERICHT=`.** Werkzeug mit festem Berichtspfad nie für Ausschnitte ohne Umlenkung → Journal Nachtrag 82
+- 2026-09-25 · 🍂 **«herbstsachen auf sozial pushen»: 0 von 107 wartenden Reel-/Bild-Posts waren Herbst → `social_saison_vorrang.py` + `post_guard.nachVorrang()` in Bild-/Reel-/Metricool-Poster (nur Reihenfolge) + Saison-Nachschub (< 4 → auffüllen); Nachschub-Doppelsperre sah seit «Link in Bio» die Handles nicht (Hoodie doppelt) → id-Spalte; Teetasse (Bild 4, geliefert 1) übersprungen.** Eine Sperre muss dort suchen, wo der Schlüssel heute steht → Journal Nachtrag 81
+- 2026-09-25 · 🩺 **Medizin-Zweck-Wächter prüfte 0 Produkte je Lauf (nur Neuimporte 3 Tage, Grind pausiert) → wöchentlich ganzer Bestand; Hallux-Schiene + Hämorrhoidenkissen fehlten auch in den Regeln (3 DRAFT); Krankheitswörter im Titel: 138 von 152 Roh-Treffern Kanarienvögel («S-chwarze», «Vollnarbenleder») → Wortgrenzen, 9 Titel entschärft.** «0 geprüft» ist ein Befund, kein Grün → Journal Nachtrag 79
+- 2026-09-24 · 🏷️ **Preisschutz FERTIG (227k Zeilen, 352 gesperrt) → wartende Posts warben mit alten Preisen (Karussell 28.90 bei live 55.90, Reel 14.90/25.90): `post_guard.preisVeraltet()` in allen Postern + täglicher Säuberer (4 markiert); Preis = Betrag mit Rappen, «ab CHF 50»-Schwelle nicht.** Preis beim Posten prüfen, nicht nur beim Bauen → Journal Nachtrag 77
