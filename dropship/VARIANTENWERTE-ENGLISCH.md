@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-28 17:09 UTC, Stand 2026-09-28 17:13 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-28 17:09 UTC, Stand 2026-09-28 17:18 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **6'631**
-- Optionen mit englischen Werten (Kandidaten): 803
+- Produkte gesehen: **7'856**
+- Optionen mit englischen Werten (Kandidaten): 954
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'571
+- Werte mit unbekanntem Wort (unverändert): 4'610
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 32
+- übersprungen «kleidungsstueck-im-wert»: 33
 - übersprungen «kollision-nach-uebersetzung»: 17
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -35,6 +35,7 @@
 - `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Long sleeves | Vest | Off shoulder
 - `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
 - `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
+- `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -102,5 +103,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 159, `light` 140, `color` 104, `⟨satzbau:adjektiv-vor-nomen⟩` 64, `mother` 61, `shell` 53, `core` 53, `to` 52, `hat` 46, `rope` 44, `for` 42, `case` 38, `lens` 38, `father` 38, `high` 37, `years` 35, `old` 35, `generation` 34, `powder` 34, `no` 30, `surface` 30, `adjustable` 29, `mom` 28, `bag` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `belt` 25, `carbon` 25, `dog` 25, `cocoa` 25, `tea` 24, `batteries` 24, `dad` 24, `perforated` 24, `of` 23, `stone` 22, `face` 22, `electric` 22, `housing` 22, `suit` 21, `nail` 21, `one` 21, `bear` 21, `yadan` 21, `handle` 20, `comfortable` 20, `⟨satzbau:material-vor-farbe⟩` 19, `number` 19, `deer` 19, `milk` 18, `three` 18, `noodles` 18, `clothing` 18, `full` 17, `ice` 17, `waist` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `pad` 16
+`light` 178, `degrees` 159, `⟨satzbau:adjektiv-vor-nomen⟩` 149, `color` 120, `shell` 77, `rope` 61, `mother` 61, `core` 53, `to` 52, `hat` 46, `high` 44, `case` 43, `for` 42, `dark` 41, `powder` 40, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `years` 37, `magnetic` 36, `old` 35, `bag` 34, `no` 33, `surface` 31, `bear` 30, `eyelets` 30, `adjustable` 29, `mom` 28, `tea` 27, `carbon` 27, `suit` 27, `mushroom` 27, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `belt` 25, `dog` 25, `cocoa` 25, `batteries` 24, `dad` 24, `perforated` 24, `stone` 23, `face` 23, `milk` 23, `of` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22, `nail` 21, `bead` 21, `deer` 21, `yadan` 21, `handle` 20, `noodles` 20, `⟨satzbau:material-vor-farbe⟩` 20, `cloud` 20
 

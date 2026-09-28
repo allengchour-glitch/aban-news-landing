@@ -70,6 +70,27 @@ if [ -n "${FORTURA_FTP_USER:-}" ] && [ -n "${FORTURA_FTP_PW:-}" ] && [ ! -s /tmp
   ( umask 077; printf 'export FORTURA_FTP_USER=%q\nexport FORTURA_FTP_PW=%q\n' "$FORTURA_FTP_USER" "$FORTURA_FTP_PW" > /tmp/fortura_env.sh )
   echo "$(date -u +%H:%M) Fortura-Zugang aus Umgebungsvariablen bereitgestellt"
 fi
+# 28.09.2026: Betreiber hat alle Zugänge als Umgebungsvariablen gesetzt («nutze die sachen wo ich gesetzt habe»). Viele Skripte
+# lesen aber Dateien in /tmp (dienste.env, judgeme.env, cj_creds.env, secrets_env.sh), die ein FRISCHER Container nicht hat
+# (26.09.: alle Kanäle still). Fehlt eine Datei, wird sie hier aus der Umgebung geschrieben (600, Werte nie ausgegeben).
+# Und fehlt der CJ-Token, holt ihn getAccessToken mit CJ_EMAIL/CJ_API_KEY — sonst stehen Bestellungen und #1019-Wächter still.
+env_datei() {   # env_datei <datei> VAR…   — schreibt nur, wenn die Datei fehlt und mindestens eine Variable gesetzt ist
+  local f="$1"; shift; [ -s "$f" ] && return 0
+  local v inhalt=""; for v in "$@"; do [ -n "${!v:-}" ] && inhalt+="$(printf 'export %s=%q' "$v" "${!v}")"$'\n'; done
+  [ -n "$inhalt" ] || return 0
+  ( umask 077; printf '%s' "$inhalt" > "$f" ) && echo "$(date -u +%H:%M) Zugang aus Umgebung bereitgestellt: $(basename "$f")"
+}
+env_datei /tmp/secrets_env.sh SHOPIFY_CLIENT_ID SHOPIFY_CLIENT_SECRET SHOPIFY_SHOP
+env_datei /tmp/cj_creds.env CJ_EMAIL CJ_API_KEY
+env_datei /tmp/dienste.env GEMINI_API_KEY GROQ_API_KEY GROQ_API_KEY2 GROQ_API_KEY3 DEEPSEEK_API_KEY PRINTFUL_STORE_ID PRINTFUL_API_KEY KIMI_API_KEY KIMI_BASE
+env_datei /tmp/judgeme.env JUDGEME_PRIVATE_TOKEN JUDGEME_PUBLIC_TOKEN JUDGEME_SHOP_DOMAIN
+[ -n "${ZOHO_APP_PASSWORD:-}" ] && [ ! -s /tmp/zoho_app_pw ] && ( umask 077; printf '%s' "$ZOHO_APP_PASSWORD" > /tmp/zoho_app_pw )
+if [ ! -s /tmp/cj_token.json ] && [ -n "${CJ_EMAIL:-}" ] && [ -n "${CJ_API_KEY:-}" ]; then
+  ( umask 077; curl -s --max-time 40 -X POST https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken \
+      -H 'Content-Type: application/json' -d "{\"email\":\"$CJ_EMAIL\",\"password\":\"$CJ_API_KEY\"}" \
+    | python3 -c "import json,sys;d=json.load(sys.stdin);t=(d.get('data') or {}).get('accessToken');json.dump({'accessToken':t},open('/tmp/cj_token.json','w')) if t else print('CJ-Anmeldung aus Umgebung gescheitert:',d.get('message'))" ) \
+    && [ -s /tmp/cj_token.json ] && echo "$(date -u +%H:%M) CJ-Token aus Umgebung geholt"
+fi
 # 27.09.2026 (#1019): cj_verfuegbarkeit.py + cj_order_engine.py lesen /tmp/_cjtok — im frischen Container fehlte die Datei,
 # der Verfügbarkeits-Wächter lief 20:07 als «No-op», und ein bei CJ ausgelistetes Produkt wurde um 21:27 verkauft.
 # Ist /tmp/cj_token.json da (Tresor/autostart), wird _cjtok daraus geschrieben.
