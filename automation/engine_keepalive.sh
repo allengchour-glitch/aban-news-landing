@@ -70,6 +70,9 @@ if [ -n "${FORTURA_FTP_USER:-}" ] && [ -n "${FORTURA_FTP_PW:-}" ] && [ ! -s /tmp
   ( umask 077; printf 'export FORTURA_FTP_USER=%q\nexport FORTURA_FTP_PW=%q\n' "$FORTURA_FTP_USER" "$FORTURA_FTP_PW" > /tmp/fortura_env.sh )
   echo "$(date -u +%H:%M) Fortura-Zugang aus Umgebungsvariablen bereitgestellt"
 fi
+# 28.09.2026: Leert der Hetzner-Server auftraege/offen/, hält git beim Merge das für eine VERZEICHNIS-UMBENENNUNG (offen → erledigt)
+# und verschiebt neue Aufträge still nach erledigt/ (gemessen 19:15: 4 Screenshot-Aufträge; der Push brach nur zufällig am Konflikt ab).
+git -C "$REPO" config merge.directoryRenames false 2>/dev/null
 # 28.09.2026: Betreiber hat alle Zugänge als Umgebungsvariablen gesetzt («nutze die sachen wo ich gesetzt habe»). Viele Skripte
 # lesen aber Dateien in /tmp (dienste.env, judgeme.env, cj_creds.env, secrets_env.sh), die ein FRISCHER Container nicht hat
 # (26.09.: alle Kanäle still). Fehlt eine Datei, wird sie hier aus der Umgebung geschrieben (600, Werte nie ausgegeben).
