@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-28 · 🧽 «mach webseite sauber»: technisch sauber, eine irreführende Überschrift entfernt
+Hetzner-Ganzseitenfotos (mobil) + WebFetch + Admin-API: keine Fehler. Leere Flächen auf Ganzseitenfotos = Lazy-Load, nicht leer
+(WebFetch listet die Produkte). Behoben: Bewertungs-Überschrift «Das sagen unsere Kundinnen und Kunden» über 13'818 importierten
+CJ-Käuferkommentaren → «Das sagen Käuferinnen und Käufer zu unseren Produkten» + Herkunftshinweis (UWG). Git-Falle: Directory-Rename-
+Erkennung verschob neue Aufträge nach erledigt/ → merge.directoryRenames=false im Keepalive. Bericht dropship/WEBSEITE-SAUBER-2026-09-28.md.
+LEHRE: Ein Ganzseiten-Foto zeigt Lazy-Load-Reihen leer — erst per WebFetch den Inhalt prüfen, dann urteilen.
+
 ## 2026-09-28 · 📧 Gmail «Senden als» info@ eingerichtet — der Konnektor sendet trotzdem als Hauptadresse (17:37)
 Betreiber hat den Alias info@luxestyle.ch (smtp.zoho.eu:465) eingerichtet. Testmail über den Gmail-Konnektor an ihn selbst:
 Absender = allengchour@gmail.com. Der Konnektor hat kein From-Feld, und die Gmail-API nimmt ohne From-Header die Hauptadresse,
