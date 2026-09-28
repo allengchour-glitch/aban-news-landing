@@ -40858,3 +40858,6 @@ gid://shopify/Product/15495233470849	CHF 14.38	21 Varianten	Leichte, atmungsakti
 gid://shopify/Product/15495233536385	CHF 49.50	1 Varianten	Kupfer Rückspülfilter für Haushalt
 gid://shopify/Product/15495233569153	CHF 12.90	1 Varianten	Make-up Pinselset "Christmas Moose"
 gid://shopify/Product/15495234257281	CHF 22.29	16 Varianten	Derby Loafers im Britischen Casual-Stil
+gid://shopify/Product/15495234290049	CHF 10.15	1 Varianten	Silikon-Creme-Applikator mit abnehmbarer Kugel
+gid://shopify/Product/15495234322817	CHF 27.34	1 Varianten	Mäuse- und Insektenvertreiber für Innenräume
+gid://shopify/Product/15495234355585	CHF 7.68	1 Varianten	Pinsel-Set (10 Stück)
