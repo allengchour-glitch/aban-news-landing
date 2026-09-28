@@ -91,3 +91,4 @@ slug:damen-hoodie-bequem-mit-taschen-und-langarm
 slug:kapuzen-sweatshirt-kleid-mit-gurtel
 slug:spot-uv-sterilisator-tragbar-a47399
 name:provence
+slug:midikleid-mit-zopfmuster-und-blumenprint

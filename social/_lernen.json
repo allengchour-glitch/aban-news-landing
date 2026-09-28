@@ -1,5 +1,5 @@
 {
-  "stand": "2026-09-28T02:01:30.276Z",
+  "stand": "2026-09-28T08:10:30.523Z",
   "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
   "fenster_tage": 90,
   "k_glaettung": 3,
@@ -7,13 +7,13 @@
   "beobachtungen": {
     "instagram": 51,
     "tiktok": 13,
-    "pinterest": 100,
-    "zu_jung": 6
+    "pinterest": 103,
+    "zu_jung": 5
   },
   "inhalte": 115,
-  "posts": 164,
+  "posts": 167,
   "musik_verlauf": {
-    "zeilen": 6,
+    "zeilen": 14,
     "verknuepfte_inhalte": 0
   },
   "quellen_fehler": [],
@@ -159,6 +159,13 @@
       "median_rel": 0.87,
       "belastbar": false
     },
+    "Genau das hat gefehlt": {
+      "n": 1,
+      "gewicht": 0.95,
+      "vorsprung": -0.046,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
     "Warum hat das niemand früher gebaut?": {
       "n": 1,
       "gewicht": 0.95,
@@ -171,13 +178,6 @@
       "gewicht": 0.91,
       "vorsprung": -0.091,
       "median_rel": 0.7,
-      "belastbar": false
-    },
-    "Genau das hat gefehlt": {
-      "n": 1,
-      "gewicht": 0.91,
-      "vorsprung": -0.093,
-      "median_rel": 0.69,
       "belastbar": false
     },
     "LuxeStyle in 43 Sekunden Mode, Schmuck, Sonnenbrillen & mehr": {
@@ -227,22 +227,22 @@
     "home": {
       "n": 22,
       "gewicht": 1.05,
-      "vorsprung": 0.048,
+      "vorsprung": 0.047,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "allgemein": {
+      "n": 27,
+      "gewicht": 1.04,
+      "vorsprung": 0.043,
       "median_rel": 1,
       "belastbar": true
     },
     "fitness": {
       "n": 7,
       "gewicht": 1.03,
-      "vorsprung": 0.029,
-      "median_rel": 1,
-      "belastbar": true
-    },
-    "allgemein": {
-      "n": 27,
-      "gewicht": 1.03,
-      "vorsprung": 0.026,
-      "median_rel": 1,
+      "vorsprung": 0.031,
+      "median_rel": 1.02,
       "belastbar": true
     },
     "kinder": {
@@ -255,7 +255,7 @@
     "mode": {
       "n": 14,
       "gewicht": 0.93,
-      "vorsprung": -0.075,
+      "vorsprung": -0.07,
       "median_rel": 0.98,
       "belastbar": true
     }
@@ -282,19 +282,19 @@
       "median_rel": 1.04,
       "belastbar": true
     },
-    "pinterest 06–09": {
-      "n": 81,
-      "gewicht": 1.22,
-      "vorsprung": 0.197,
-      "median_rel": 1,
-      "belastbar": true
-    },
     "pinterest 12–15": {
       "n": 2,
       "gewicht": 1.21,
       "vorsprung": 0.191,
       "median_rel": 1.61,
       "belastbar": false
+    },
+    "pinterest 06–09": {
+      "n": 84,
+      "gewicht": 1.21,
+      "vorsprung": 0.191,
+      "median_rel": 1,
+      "belastbar": true
     },
     "pinterest 15–18": {
       "n": 6,
@@ -362,15 +362,15 @@
     "instagram 21–24": {
       "n": 5,
       "gewicht": 1,
-      "vorsprung": -0.002,
+      "vorsprung": -0.005,
       "median_rel": 1,
       "belastbar": true
     },
     "instagram 03–06": {
       "n": 2,
-      "gewicht": 0.92,
-      "vorsprung": -0.081,
-      "median_rel": 0.82,
+      "gewicht": 0.93,
+      "vorsprung": -0.073,
+      "median_rel": 0.83,
       "belastbar": false
     },
     "instagram 09–12": {
@@ -412,13 +412,13 @@
       "n": 13,
       "median_score": 285
     },
-    "pinterest pin": {
-      "n": 75,
-      "median_score": 2
-    },
     "pinterest pin-video": {
-      "n": 25,
-      "median_score": 4
+      "n": 26,
+      "median_score": 3.5
+    },
+    "pinterest pin": {
+      "n": 77,
+      "median_score": 2
     }
   },
   "musik": {},
