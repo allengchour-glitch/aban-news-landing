@@ -40265,3 +40265,5 @@ gid://shopify/Product/15495135953281	CHF 16.17	20 Varianten	Elegantes Mini-Stufe
 gid://shopify/Product/15495135986049	CHF 10.83	1 Varianten	Herren Quarzuhr, quadratisch, Edelstahl
 gid://shopify/Product/15495136018817	CHF 13.33	5 Varianten	Eleganter gestreifter Neckholder-Jumpsuit
 gid://shopify/Product/15495136051585	CHF 15.73	1 Varianten	Herren Chronograph Sportuhr mit PU-Armband
+gid://shopify/Product/15495136084353	CHF 15.44	4 Varianten	Elegantes Strickkleid mit geometrischem Muster
+gid://shopify/Product/15495136117121	CHF 14.28	4 Varianten	Midi-Kleid mit quadratischem Ausschnitt
