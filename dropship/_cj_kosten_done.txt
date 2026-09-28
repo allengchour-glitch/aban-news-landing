@@ -40107,3 +40107,6 @@ gid://shopify/Product/15495119929729	CHF 38.94	1 Varianten	5D Diamant-Malerei: E
 gid://shopify/Product/15495119962497	CHF 22.15	18 Varianten	Tiefe Sneaker für Herren – Weiss
 gid://shopify/Product/15495119995265	CHF 21.34	1 Varianten	DIY 5D Diamond Painting Schlafzimmer Deko
 gid://shopify/Product/15495120028033	CHF 10.54	1 Varianten	Horror Zombie Maske
+gid://shopify/Product/15495120126337	CHF 22.72	42 Varianten	Suede Business-Casual Loafers
+gid://shopify/Product/15495120257409	CHF 21.34	1 Varianten	DIY Diamond Painting Set «Schlafzimmer-Deko»
+gid://shopify/Product/15495120290177	CHF 50.07	1 Varianten	Multifunktions-Induktionskochfeld
