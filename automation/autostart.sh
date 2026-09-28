@@ -13,6 +13,8 @@ log(){ echo "[autostart] $*"; }
 [ -z "$SHOPIFY_CLIENT_ID" ] && { log "SHOPIFY_CLIENT_ID fehlt → No-op. Secrets als Environment-Variablen setzen (Claude-Code-Umgebung) oder inline übergeben."; exit 0; }
 
 # ── CJ-Token besorgen (Cache → sonst frisch via CJ_EMAIL/CJ_API_KEY) ──
+# 28.09.: Schreibweise «CJ_API_Key» (Betreiber) mit abdecken — Umgebungsvariablen sind gross-/kleinschreibungs-sensitiv.
+CJ_API_KEY="${CJ_API_KEY:-${CJ_API_Key:-}}"; [ -n "$CJ_API_KEY" ] && export CJ_API_KEY
 if [ ! -s /tmp/cj_token.json ] && [ -n "$CJ_EMAIL" ] && [ -n "$CJ_API_KEY" ]; then
   curl -s -X POST https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken \
     -H 'Content-Type: application/json' \
