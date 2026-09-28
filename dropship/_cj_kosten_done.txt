@@ -40783,3 +40783,20 @@ gid://shopify/Product/15495226491265	CHF 12.99	1 Varianten	Damen Rucksack aus ge
 gid://shopify/Product/15495226589569	CHF 11.01	1 Varianten	Zahnpflege-Spielzeug für Hunde mit Futterspender
 gid://shopify/Product/15495226818945	CHF 20.17	1 Varianten	Gaciron W08F-20 Intelligentes LED-Fahrradlicht
 gid://shopify/Product/15495227507073	CHF 17.33	1 Varianten	Studenten Rucksack für Herren
+gid://shopify/Product/15495227539841	CHF 14.63	1 Varianten	Elektronischer Roboterhund mit Sprach- und Berühru
+gid://shopify/Product/15495227572609	CHF 13.32	1 Varianten	LED-Fahrradblinker mit Fernbedienung
+gid://shopify/Product/15495227638145	CHF 17.69	1 Varianten	Wasserdichte Crossbody-Bag für Herren
+gid://shopify/Product/15495227670913	CHF 19.04	1 Varianten	Ferngesteuertes Wandkletterauto
+gid://shopify/Product/15495227703681	CHF 18.84	1 Varianten	Wiederaufladbarer Velo-Scheinwerfer BC01-600
+gid://shopify/Product/15495227769217	CHF 19.64	1 Varianten	PU Leder Rucksack für Studierende
+gid://shopify/Product/15495227834753	CHF 10.67	1 Varianten	Kuscheltier Tiger für Mädchen
+gid://shopify/Product/15495227900289	CHF 15.56	1 Varianten	Canvas Rucksack für Freizeit und Reisen
+gid://shopify/Product/15495229276545	CHF 41.08	1 Varianten	Ferngesteuertes Twist Car mit Gestensteuerung
+gid://shopify/Product/15495229309313	CHF 14.80	1 Varianten	Denim Rucksack für Damen – gross & stylisch
+gid://shopify/Product/15495229407617	CHF 20.05	1 Varianten	Herren Messenger Bag Oxford-Stoff
+gid://shopify/Product/15495229440385	CHF 14.37	1 Varianten	Buntes 3D Dinosaurier LED Nachtlicht
+gid://shopify/Product/15495229473153	CHF 15.43	1 Varianten	Silikon-Nachtlicht mit LED
+gid://shopify/Product/15495229505921	CHF 30.39	1 Varianten	Business Rucksack – leicht & multifunktional
+gid://shopify/Product/15495229538689	CHF 16.17	21 Varianten	Casual-Sandalen mit Elastikband
+gid://shopify/Product/15495229571457	CHF 8.59	1 Varianten	Ferngesteuerter Kipplaster
+gid://shopify/Product/15495229604225	CHF 14.11	1 Varianten	Canvas Schultertasche "All-match" mit grosser Kapa
