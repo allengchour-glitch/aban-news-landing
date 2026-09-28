@@ -1126,3 +1126,9 @@ gid://shopify/Product/15453898834305	ok	Akazienholz Schneidbrett
 gid://shopify/Product/15470351647105	nicht-versendbar	Betonstempel
 gid://shopify/Product/15484625158529	ok	Faltbarer Regiestuhl aus Aluminium
 gid://shopify/Product/15480277401985	ok	Aufblasbares Auto-Bett für SUV und MPV
+gid://shopify/Product/15484626600321	nicht-versendbar	E-Gitarre mit 24 Bünden und Flammen-Design
+gid://shopify/Product/15501865779585	nicht-versendbar	Reisekoffer
+gid://shopify/Product/15503089566081	nicht-versendbar	Deckenventilator-Lampe «Light Luxury»
+gid://shopify/Product/15453783654785	ok	Inline-Skates für Männer und Frauen
+gid://shopify/Product/15481713688961	nicht-versendbar	Multifunktionaler Rollkoffer mit USB-Port
+gid://shopify/Product/15504120119681	ok	Reisekoffer aus Aluminiumlegierung mit Zahlenschloss
