@@ -37927,3 +37927,5 @@ gid://shopify/Product/15493827920257	CHF 7.40	1 Varianten	Handgewobenes Reisperl
 gid://shopify/Product/15493827953025	CHF 16.93	1 Varianten	Tiefschlaf-Augenmaske für lückenlose Abdunkelung
 gid://shopify/Product/15493828018561	CHF 11.04	12 Varianten	Chices Retro-Top mit Hahnentrittmuster
 gid://shopify/Product/15493828051329	CHF 7.82	1 Varianten	Geflochtenes Lederarmband aus Titanstahl
+gid://shopify/Product/15493828084097	CHF 11.68	1 Varianten	Transparenter Stockschirm Ahornblatt
+gid://shopify/Product/15493828116865	CHF 10.25	99 Varianten	3D Blumenprint Kurzarm-Shirt
