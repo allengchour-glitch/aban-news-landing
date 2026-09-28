@@ -41083,3 +41083,5 @@ gid://shopify/Product/15499874926977	CHF 31.25	22 Varianten	Rennrad-Sneaker
 gid://shopify/Product/15500905611649	CHF 12.86	42 Varianten	Kurzarm-Hemd mit Revers und V-Ausschnitt
 gid://shopify/Product/15500926812545	CHF 10.38	6 Varianten	Bagger Sweatshirt für Jungen
 gid://shopify/Product/15500926845313	CHF 6.90	1 Varianten	Blättermuster Kupferarmband
+gid://shopify/Product/15500926878081	CHF 11.67	1 Varianten	Nähmaschinen-Zubehör-Set für diverse Anwendungen ·
+gid://shopify/Product/15500926910849	CHF 42.03	1 Varianten	Vintage Servierplatte aus Massivholz mit Metallgri
