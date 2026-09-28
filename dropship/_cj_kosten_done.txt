@@ -39235,3 +39235,5 @@ gid://shopify/Product/15494462275969	CHF 7.58	1 Varianten	Katzenspielzeug mit Ka
 gid://shopify/Product/15494462374273	CHF 24.02	1 Varianten	Kinderrucksack Superleicht
 gid://shopify/Product/15494462865793	CHF 12.58	1 Varianten	Beissfestes Wildleder-Kauspielzeug
 gid://shopify/Product/15494462964097	CHF 31.02	1 Varianten	Taktische Outdoor-Brusttasche
+gid://shopify/Product/15494463422849	CHF 20.03	1 Varianten	Ear Planet Plüsch-Hundespielzeug mit Sound
+gid://shopify/Product/15494464078209	CHF 48.19	1 Varianten	Wasserdichter Outdoor Rucksack für Herren
