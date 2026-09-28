@@ -30,7 +30,7 @@ Einkaufen
 • Heller und dunkler Modus
 
 Einkaufen bei LuxeStyle:
-• Gratis-Versand in der Schweiz ab CHF 45
+• Gratis-Versand in der Schweiz ab CHF 50
 • 30 Tage Rückgabe
 • –10 % auf die erste Bestellung mit dem Code WELCOME10
 

@@ -373,7 +373,7 @@ private fun Promises() {
             .background(MaterialTheme.colorScheme.surfaceVariant).padding(vertical = 14.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
-        Promise(R.drawable.ic_truck, "Gratis-Versand", "ab CHF 45")
+        Promise(R.drawable.ic_truck, "Gratis-Versand", "ab CHF 50")
         Promise(R.drawable.ic_return, "30 Tage", "Rückgabe")
         Promise(R.drawable.ic_shield, "TWINT & Karte", "sicher bezahlen")
     }

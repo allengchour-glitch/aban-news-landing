@@ -191,7 +191,7 @@ private fun ProductDetail(p: Product) {
                     Gap(4)
                     val window = remember(p.handle) { deliveryWindow(p.descriptionHtml)?.substringBefore(" (") }
                     Text(
-                        listOfNotNull("Gratis-Versand ab CHF 45", window).joinToString(" · "),
+                        listOfNotNull("Gratis-Versand ab CHF 50", window).joinToString(" · "),
                         style = MaterialTheme.typography.bodySmall, color = LocalLuxe.current.muted,
                     )
                     if (variant != null && !variant.available) {
@@ -244,7 +244,7 @@ private fun ProductDetail(p: Product) {
             item {
                 Column(Modifier.padding(horizontal = 20.dp).fillMaxWidth().clip(Radius.Card).background(MaterialTheme.colorScheme.surfaceVariant).padding(16.dp)) {
                     remember(p.handle) { deliveryWindow(p.descriptionHtml) }?.let { Assurance(R.drawable.ic_truck, it) }
-                    Assurance(R.drawable.ic_bag, "Gratis-Versand in der Schweiz ab CHF 45")
+                    Assurance(R.drawable.ic_bag, "Gratis-Versand in der Schweiz ab CHF 50")
                     Assurance(R.drawable.ic_return, "30 Tage Rückgabe")
                     Assurance(R.drawable.ic_shield, "Sicher bezahlen mit TWINT, Karte oder Klarna")
                 }
