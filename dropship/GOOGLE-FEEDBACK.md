@@ -1,36 +1,63 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-09-27T21:07Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-09-28T18:21Z
 
-Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen nur für Shopping Ads (ignoriert): 24143.
+Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen nur für Shopping Ads (ignoriert): 24189.
 
-## Free-Listings-Blocker: 1183
+## Free-Listings-Blocker: 1078
 
 | Klasse | Produkte | davon ohne onlineStoreUrl |
 |---|---:|---:|
-| Inappropriate image | 428 | 0 |
-| Title under review | 262 | 0 |
-| Product page unavailable | 248 | 0 |
-| Personalized advertising: personal hardships | 74 | 0 |
+| Inappropriate image | 439 | 0 |
+| Product page unavailable | 256 | 0 |
+| Title under review | 137 | 0 |
+| Personalized advertising: personal hardships | 75 | 0 |
 | Personalized advertising: Sexual interests | 51 | 0 |
 | Restricted adult content | 51 | 0 |
-| Image too small | 25 | 0 |
-| Image under review | 12 | 0 |
-| Promotional overlay on image | 8 | 0 |
-| Adult-oriented content | 7 | 0 |
-| Unable to show image | 6 | 0 |
-| Inappropriate title | 4 | 0 |
+| Image too small | 23 | 0 |
+| Image under review | 16 | 0 |
+| Promotional overlay on image | 9 | 0 |
+| Adult-oriented content | 8 | 0 |
 | Personalized advertising: legal restrictions | 4 | 0 |
+| Inappropriate title | 3 | 0 |
+| Unable to show image | 3 | 0 |
 | Additional text found | 1 | 0 |
 | Personalized advertising: Identity and belief | 1 | 0 |
 | Local Requirements | 1 | 0 |
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 63
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 50
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Inappropriate image (428)
+### Image under review (16)
 
+- armbanduhr-rettangolo-rechteckig-unisex
+- sommer-set-riviera-2-teilig-lassig-damen
+- plateau-sneaker-cloud-spitzen-mesh-geschnurt
+- transparente-iphone®-hulle-selbst-gestalten
+- ruckenfreies-top-mit-rundhals-und-3-4-armeln-602500
+- armband-gehause-44-45mm-fur-smartwatches-619400
+- s5-fitness-armband-mit-temperatur-und-blutdruc-600200
+- gleitende-pizza-schaufel-aus-holz-799360
+- tragbarer-kabelloser-flaschenwarmer-mit-usb-079104
+- usb-hd-kamera-064832
+- hundepflegeol-mit-zitronenmelisse-969345
+- wasserdichte-kissenfullung-615300
+- warmende-schneestiefel-fur-kinder-239744
+- bruder-lemken-grubber-fga02228
+- sandalen-mit-holzperlen-und-gewebtem-design-615100
+- herren-freizeit-board-schuhe-628700
+
+### Inappropriate image (439)
+
+- herren-ring-vintage-edelstahl-retro
+- sunset-projection-lamp-16-colors-adjustable
+- pod-sticker-ice-hockey
+- pod-sticker-planet-mars
+- pod-sticker-tattoo-skull-rose
+- retro-flammen-tischlampe-led
+- herren-cargo-hose-trail-multi-pocket-outdoor
+- damen-bikini-maui-neckholder-floral
 - ximonth-nagelpflege-pflaster-956673
 - vertikaler-gaming-pistolengriff-mit-trigger-610900
 - velo-rucklicht-mit-langer-akkulaufzeit-607100
@@ -83,18 +110,86 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - kurze-wattierte-jacke-mit-karomuster-607300
 - nachthemd-aus-polyester-606600
 - nachthemd-602300
-- herren-langarmshirt-casual-trendy-636000
-- taillierte-jeansjacke-fur-herren-824321
-- winddichte-gesichtsmaske-fur-herbst-und-winter-609100
-- horror-maske-blutung-totenkopf-285312
-- tyrant-rotten-face-mask-861120
-- horror-maske-fur-halloween-und-fasnacht-821504
-- horror-totenkopf-latex-maske-537728
-- south-moon-fuss-pflegelosung-944002
 - …
+
+### Product page unavailable (256)
+
+- sonnenbrille-photo-selbsttonend-polarisiert
+- loungewear-pyjama-set-fur-die-ganze-familie-603800
+- armelloses-casual-top-fur-damen-627100
+- elegantes-langarmshirt-mit-v-ausschnitt-633600
+- tanktop-mit-integrierten-brustpolstern-604800
+- bohemian-jumpsuit-mit-taschen-639000
+- damen-pullover-rundhals-loose-fit-328769
+- leichte-leinen-baumwollhose-mit-geradem-bein-609700
+- nahtlose-strick-tie-dye-yogahose-fur-damen-607800
+- business-casual-anzug-color-block-fur-junge-ma-630100
+- high-waist-a-linien-midi-jupe-mit-kordelzug-450434
+- pullover-jacke-quirky-personality-613600
+- pailletten-hoodie-fur-damen-619100
+- waffelstrick-hoodie-mit-v-ausschnitt-622800
+- kapuzenpullover-mit-3d-druck-fur-damen-621200
+- sportliche-slim-fit-jacke-mit-brusttaschen-601600
+- personalisierbarer-zugfreier-reflektierender-h-4ce320
+- jute-riemen-sandalen-635700
+- slip-on-sandalen-mit-blockabsatz-629700
+- warme-herren-winterjacke-mit-fleece-fellkragen-152256
+- fashion-ripped-shirt-jacket-damen-421120
+- vr-brille-fur-3d-filme-games-612200
+- chiffonkleid-mit-volants-und-taillengurtel-606200
+- weiche-sneakers-fur-kinder-schwarz-rosa-khaki-609600
+- zehen-trenner-fur-yoga-und-sport-604600
+- prinzessinnen-schuhe-mit-weicher-sohle-und-vel-621300
+- schlanke-langarm-herrenbluse-mit-streifen-617300
+- kinder-schuhe-aus-baumwolle-535552
+- chic-damenkleid-628900
+- kinderhausschuhe-mit-cartoon-motiv-665728
+- slimfit-hosen-606500
+- leichte-jacke-mit-druckmuster-629400
+- patchwork-rock-fur-damen-635100
+- herren-langarmhemd-mit-kragenknopf-629500
+- tiedye-kleid-mit-lockerem-sitz-612400
+- regenstiefel-fur-kinder-mit-tier-motiven-608800
+- elegantes-a-linien-kleid-mit-ruschenarmeln-620600
+- asymmetrischer-jupe-mit-quasten-628000
+- samt-top-mit-peter-pan-kragen-605100
+- lockerer-langarm-pullover-mit-rundhals-und-hak-639600
+- herren-corduroy-sweatshirt-mit-knopfleiste-635200
+- elegante-high-heel-sandalen-619900
+- legere-slip-on-fahrschuhe-604600
+- herren-hemd-mit-streifen-und-karomuster-603000
+- langarmellose-chiffon-dress-627800
+- chelsea-stiefel-620928
+- herren-langarmhemd-kariert-bequemer-loose-fit-600200
+- herren-3d-druck-kurzarm-hemd-619000
+- retro-polka-dot-halterneck-maxikleid-630100
+- kapuzen-leinenkleid-mit-langen-armeln-622600
+- sandalen-mit-runder-zehenpartie-plateau-601700
+- weiche-casual-leder-sneaker-fur-herren-622900
+- flyknit-platform-dad-casual-sports-627100
+- midi-kleid-mit-asymmetrischem-blumenprint-608200
+- muller-stiletto-sandalen-mit-schleife-621900
+- retro-sandalen-mit-riemchen-und-rundspitze-617900
+- sandalen-mit-perlen-und-stilettoabsatz-604000
+- high-heel-sandalen-mit-offener-spitze-625600
+- flip-toe-sandalen-im-romischen-stil-610400
+- outdoor-schlankheits-sandalen-619800
+- …
+
+### Adult-oriented content (8)
+
+- schweiz-sticker-alphorn
+- latex-augenmaske-628500
+- korperschmuck-kette-384896
+- porenreiniger-mit-vakuum-saugfunktion-5236f9
+- beckenboden-muskeltrainer-mit-zahlfunktion-915200
+- beckenboden-trainingsgerat-fur-frauen-b986d0
+- porenreiniger-mit-vakuumfunktion-1d414d
+- plusch-hundegeschirr-mit-leine-744320
 
 ### Personalized advertising: Sexual interests (51)
 
+- strick-bluse-maglia-hollow-out-loose-langarm
 - date-night-drinking-creative-brettspiel-602600
 - sommerliches-neckholder-kleid-mit-tiefem-v-aus-625500
 - glitzernde-netzstrumpfe-mit-strass-617200
@@ -119,7 +214,6 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - fitness-leggings-mit-po-push-up-effekt-609216
 - retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
 - retro-kleid-mit-print-619300
-- neckholder-minikleid-im-europaischen-stil-608300
 - milos-venus-kerzenform-aus-silikon-112896
 - figurbetontes-halterneck-schnur-top-625400
 - eleganter-jumpsuit-mit-quasten-und-einzelsleev-638700
@@ -149,6 +243,7 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 
 ### Restricted adult content (51)
 
+- strick-bluse-maglia-hollow-out-loose-langarm
 - date-night-drinking-creative-brettspiel-602600
 - sommerliches-neckholder-kleid-mit-tiefem-v-aus-625500
 - glitzernde-netzstrumpfe-mit-strass-617200
@@ -173,7 +268,6 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - fitness-leggings-mit-po-push-up-effekt-609216
 - retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
 - retro-kleid-mit-print-619300
-- neckholder-minikleid-im-europaischen-stil-608300
 - milos-venus-kerzenform-aus-silikon-112896
 - figurbetontes-halterneck-schnur-top-625400
 - eleganter-jumpsuit-mit-quasten-und-einzelsleev-638700
@@ -201,7 +295,7 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - metall-wanddekoration-fur-wohnraume-659700
 - damen-hantelpaar-aus-silikon-403008
 
-### Title under review (262)
+### Title under review (137)
 
 - f1-spray-racing-auto-mit-gestensteuerung-613300
 - l-formige-coral-fleece-kuchenmatte-623100
@@ -265,7 +359,7 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - elastische-herrenunterwasche-233665
 - …
 
-### Image too small (25)
+### Image too small (23)
 
 - edelstahl-anhanger-sternzeichen-und-monate-620600
 - hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
@@ -287,13 +381,11 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - geblumtes-v-ausschnitt-kurzarmkleid-mit-3d-pri-603900
 - retro-blumen-sandalen-fur-damen-921536
 - seiden-polohemd-mit-revers-fur-herren-601000
-- kupferarmband-mit-magneten-fur-damen-613200
-- brustgeschirr-und-leine-fur-katzen-645632
 - damen-kapuzenpullover-mit-weihnachtsmotiv-626900
 - 3d-gedrucktes-langarmshirt-fur-damen-603900
 - damen-flanell-kapuzenpullover-fur-herbst-und-w-611600
 
-### Personalized advertising: personal hardships (74)
+### Personalized advertising: personal hardships (75)
 
 - lendenwirbel-stutzgurt-fur-personen-mit-behind-629400
 - sportlich-legeres-sweatshirt-mit-rundhals-621900
@@ -320,14 +412,15 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - schwangerschafts-kleid-mit-streifen-623600
 - weite-damen-schuhe-fur-hallux-valgus-079360
 - elegantes-midi-kleid-mit-front-reissverschluss-609100
+- senior-style-pullover-mit-halb-rei-verschluss-610600
 - drahtloser-bettnasser-alarm-fur-babys-618200
 - thermo-leggings-fur-schwangerschaft-hohe-elast-657800
 - aufblasbare-gehhilfe-fgaou914155
 - erfrischendes-mundwasser-fur-unterwegs-624000
 - faltbare-rollstuhl-aufbewahrungstasche-mit-sch-606600
-- gurt-clip-fur-schwangerschaft-ec4fd4
 - schwangerschafts-stillkleid-601800
 - kabellose-tattoo-maschine-4-gang-einstellbar-627008
+- stillkissenbezug-u-form-baby-stretch-087168
 - umstands-maxikleid-mit-schnurung-perlen-619400
 - multifunktionales-c-formiges-schwangerschaftsk-846400
 - multifunktionales-schwangerschaftskissen-325312
@@ -354,106 +447,15 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - verstellbare-kniegelenk-gehhilfe-229376
 - u-formiges-schwangerschaftskissen-aus-baumwoll-784064
 - naturlatex-kissen-fur-seiten-und-schwangerscha-239296
-- elektrisches-manikure-und-nagelpiercing-gerat-782272
 - …
 
-### Product page unavailable (248)
-
-- loungewear-pyjama-set-fur-die-ganze-familie-603800
-- armelloses-casual-top-fur-damen-627100
-- elegantes-langarmshirt-mit-v-ausschnitt-633600
-- tanktop-mit-integrierten-brustpolstern-604800
-- bohemian-jumpsuit-mit-taschen-639000
-- damen-pullover-rundhals-loose-fit-328769
-- leichte-leinen-baumwollhose-mit-geradem-bein-609700
-- nahtlose-strick-tie-dye-yogahose-fur-damen-607800
-- business-casual-anzug-color-block-fur-junge-ma-630100
-- high-waist-a-linien-midi-jupe-mit-kordelzug-450434
-- pullover-jacke-quirky-personality-613600
-- pailletten-hoodie-fur-damen-619100
-- waffelstrick-hoodie-mit-v-ausschnitt-622800
-- kapuzenpullover-mit-3d-druck-fur-damen-621200
-- sportliche-slim-fit-jacke-mit-brusttaschen-601600
-- personalisierbarer-zugfreier-reflektierender-h-4ce320
-- jute-riemen-sandalen-635700
-- slip-on-sandalen-mit-blockabsatz-629700
-- warme-herren-winterjacke-mit-fleece-fellkragen-152256
-- fashion-ripped-shirt-jacket-damen-421120
-- vr-brille-fur-3d-filme-games-612200
-- chiffonkleid-mit-volants-und-taillengurtel-606200
-- weiche-sneakers-fur-kinder-schwarz-rosa-khaki-609600
-- zehen-trenner-fur-yoga-und-sport-604600
-- prinzessinnen-schuhe-mit-weicher-sohle-und-vel-621300
-- schlanke-langarm-herrenbluse-mit-streifen-617300
-- kinder-schuhe-aus-baumwolle-535552
-- chic-damenkleid-628900
-- kinderhausschuhe-mit-cartoon-motiv-665728
-- fu-badewanne-mit-massage-620900
-- regenstiefel-fur-kinder-mit-tier-motiven-608800
-- elegantes-a-linien-kleid-mit-ruschenarmeln-620600
-- lockerer-langarm-pullover-mit-rundhals-und-hak-639600
-- herren-hemd-mit-streifen-und-karomuster-603000
-- rennrad-sneaker-559bc0
-- langarmellose-chiffon-dress-627800
-- chelsea-stiefel-620928
-- herren-langarmhemd-kariert-bequemer-loose-fit-600200
-- herren-3d-druck-kurzarm-hemd-619000
-- retro-polka-dot-halterneck-maxikleid-630100
-- kapuzen-leinenkleid-mit-langen-armeln-622600
-- sandalen-mit-runder-zehenpartie-plateau-601700
-- weiche-casual-leder-sneaker-fur-herren-622900
-- flyknit-platform-dad-casual-sports-627100
-- midi-kleid-mit-asymmetrischem-blumenprint-608200
-- muller-stiletto-sandalen-mit-schleife-621900
-- retro-sandalen-mit-riemchen-und-rundspitze-617900
-- sandalen-mit-perlen-und-stilettoabsatz-604000
-- high-heel-sandalen-mit-offener-spitze-625600
-- flip-toe-sandalen-im-romischen-stil-610400
-- outdoor-schlankheits-sandalen-619800
-- plateau-wedge-pantoletten-mit-kreuzriemen-616400
-- dampfende-sportschuhe-626000
-- martin-boots-fur-herren-mid-top-608100
-- kinder-barfussschuhe-fur-strand-und-freizeit-0515f4
-- kinder-martin-boots-fur-herbst-winter-6670bc
-- atmungsaktive-leichte-mesh-sneakers-551192
-- leinenhemd-mit-langen-armeln-635800
-- keramik-futternapf-fur-katzen-erhoht-065024
-- pailletten-hemd-fur-herren-632700
-- …
-
-### Inappropriate title (4)
+### Inappropriate title (3)
 
 - weihnachtsbaum-print-hausanzug-625100
 - stahlarmband-mit-fallschirmschlie-e-618900
-- slim-fit-jeans-in-lila-schwarz-606200
 - kinder-martin-boots-mit-seitenreissverschluss-624200
 
-### Image under review (12)
-
-- ruckenfreies-top-mit-rundhals-und-3-4-armeln-602500
-- armband-gehause-44-45mm-fur-smartwatches-619400
-- s5-fitness-armband-mit-temperatur-und-blutdruc-600200
-- gleitende-pizza-schaufel-aus-holz-799360
-- tragbarer-kabelloser-flaschenwarmer-mit-usb-079104
-- usb-hd-kamera-064832
-- hundepflegeol-mit-zitronenmelisse-969345
-- wasserdichte-kissenfullung-615300
-- warmende-schneestiefel-fur-kinder-239744
-- bruder-lemken-grubber-fga02228
-- sandalen-mit-holzperlen-und-gewebtem-design-615100
-- herren-freizeit-board-schuhe-628700
-
-### Adult-oriented content (7)
-
-- latex-augenmaske-628500
-- korperschmuck-kette-384896
-- porenreiniger-mit-vakuum-saugfunktion-5236f9
-- beckenboden-muskeltrainer-mit-zahlfunktion-915200
-- beckenboden-trainingsgerat-fur-frauen-b986d0
-- porenreiniger-mit-vakuumfunktion-1d414d
-- plusch-hundegeschirr-mit-leine-744320
-
-### Promotional overlay on image (8)
+### Promotional overlay on image (9)
 
 - schimmernder-thermo-gel-nagellack-619200
 - klein-robust-4k-auflosung-626700
@@ -462,6 +464,7 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - smart-led-schranklicht-mit-uhr-und-sensor-254144
 - haarverlangerungs-set-mit-temperaturregelung-818432
 - digitaler-thermostat-fur-fussbodenheizung-992000
+- manicure-gel-set-fur-nagelverlangerung-885184
 - leinenhemd-fur-herren-stehkragen-langarm-639300
 
 ### Personalized advertising: legal restrictions (4)
@@ -471,14 +474,11 @@ Gescannt: 49871 aktive Produkte in 200 Seiten (vollständig), 330 s. Meldungen n
 - acryl-organizer-fur-brett-und-kartenspiele-637800
 - haarentferner-106496
 
-### Unable to show image (6)
+### Unable to show image (3)
 
 - schlichte-baumwolsshorts-fur-frauen-639000
-- kaschmirbluse-mit-3d-effekt-613400
-- corduroy-hoodie-639100
-- strick-hoodie-mit-geometrie-und-streifenmuster-609300
-- herren-kurzarm-hoodie-603800
-- retro-herren-stiefeletten-mit-streifenmuster-611600
+- bequeme-herren-freizeitschuhe-627700
+- vintage-baumwoll-sweatshirt-fur-herren-618300
 
 ### Additional text found (1)
 

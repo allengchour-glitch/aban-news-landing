@@ -16,9 +16,9 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-27T21:14:41Z — SCHARF
+## Letzter Lauf 2026-09-28T18:21:51Z — SCHARF
 
-Gescannt 49871 aktive von 49871 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 49544 aktive von 49544 (EXACT); Wächter-Stand 21 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 26x gewartet, 169 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
@@ -27,7 +27,6 @@ Gescannt 49871 aktive von 49871 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel 
 ## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
 
 - kinder-martin-boots-mit-seitenreissverschluss-624200: Inappropriate title
-- slim-fit-jeans-in-lila-schwarz-606200: Inappropriate title
 - stahlarmband-mit-fallschirmschlie-e-618900: Inappropriate title
 - weihnachtsbaum-print-hausanzug-625100: Inappropriate title
 
