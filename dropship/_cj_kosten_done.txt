@@ -40830,3 +40830,4 @@ gid://shopify/Product/15495230914945	CHF 37.35	1 Varianten	JY018 Mini-Drohne mit
 gid://shopify/Product/15495231766913	CHF 7.05	1 Varianten	Tiger Eye Leopard Print Kunstnägel
 gid://shopify/Product/15495231799681	CHF 106.82	1 Varianten	Saucen- und Milchtopf aus 304 Edelstahl
 gid://shopify/Product/15495231832449	CHF 18.33	1 Varianten	Mini Quadrocopter mit vier Achsen
+gid://shopify/Product/15495231930753	CHF 15.77	24 Varianten	Atmungsaktive Mesh Freizeit-Sneakers mit Plateau
