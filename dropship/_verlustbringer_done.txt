@@ -1854,3 +1854,4 @@ gid://shopify/Product/15494693618049	2026-09-29T16:12Z	draft	29.90	50.64	Tragbar
 gid://shopify/Product/15493862556033	2026-09-29T16:12Z	draft	15.90	36.52	5-in-1 Warmluftstyler für vielseitiges Haarstyling
 gid://shopify/Product/15494642401665	2026-09-29T16:12Z	draft	16.90	37.52	Doppelschichtiger Keramikteller mit Rillenmuster
 gid://shopify/Product/15495090864513	2026-09-29T16:12Z	draft	20.90	41.15	Polar Fleece Stretch-Sofabezug
+gid://shopify/Product/15494642073985	2026-09-29T16:12Z	draft	18.90	39.10	Kratzbaum mit Drehscheibe aus Massivholz
