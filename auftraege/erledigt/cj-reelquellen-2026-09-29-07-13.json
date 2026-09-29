@@ -17,6 +17,26 @@
       "url": "https://download-only-api.cjdropshipping.com/28b3c3eff04948d8a7ea5dacb5fdbe9e/c58959dec08346608944210600276c32-21096552ff4489f480cca7a4dbd5c3da-ld.mp4"
     }
   ],
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-29T07:16:35.643Z",
+  "dauer_s": 22.4,
+  "ergebnis": {
+    "videos": [
+      {
+        "name": "rq-1508633954092593152",
+        "bytes": 2119881,
+        "datei": "auftraege/ergebnis/cj-reelquellen-2026-09-29-07-13-rq-1508633954092593152.mp4"
+      },
+      {
+        "name": "rq-9fddbbc8-79fe-4c42-b83c-09fd81a375c9",
+        "bytes": 3477324,
+        "datei": "auftraege/ergebnis/cj-reelquellen-2026-09-29-07-13-rq-9fddbbc8-79fe-4c42-b83c-09fd81a375c9.mp4"
+      },
+      {
+        "name": "rq-1379687316490162176",
+        "bytes": 4083650,
+        "datei": "auftraege/ergebnis/cj-reelquellen-2026-09-29-07-13-rq-1379687316490162176.mp4"
+      }
+    ]
+  }
 }
