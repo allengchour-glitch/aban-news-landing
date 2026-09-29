@@ -1798,3 +1798,76 @@ gid://shopify/Product/15493854921089	2026-09-29T15:35Z	draft	33.90	76.42	Gusseis
 gid://shopify/Product/15493873336705	2026-09-29T15:36Z	draft	22.90	64.99	Dark Werewolf Baustein-Modell (813 Teile)
 gid://shopify/Product/15495239500161	2026-09-29T15:36Z	draft	15.90	57.82	HD Leinwandbild – Fünfteiliges Set
 gid://shopify/Product/15493837881729	2026-09-29T15:36Z	draft	20.90	62.25	Akazienholz-Spatel-Set für die Küche
+gid://shopify/Product/15494643122561	2026-09-29T15:36Z	draft	16.90	57.61	Outdoor Picknicktopf, einzeln
+gid://shopify/Product/15495236125057	2026-09-29T15:36Z	draft	27.90	68.59	Wasserdichter Reise-Aufbewahrungsbeutel
+gid://shopify/Product/15495067730305	2026-09-29T15:36Z	draft	22.90	63.36	Vollautomatisches Ladegerät für Motorrad & Auto
+gid://shopify/Product/15493873238401	2026-09-29T15:36Z	draft	19.90	58.86	Mechanische Eule Bausteine für Kinder
+gid://shopify/Product/15493808030081	2026-09-29T15:36Z	draft	16.90	54.40	Plüsch-Sofakissen mit Anti-Rutsch-Unterseite
+gid://shopify/Product/15495133954433	2026-09-29T15:36Z	draft	56.90	94.28	Doppelseitiges Schneidebrett aus Rosenholz
+gid://shopify/Product/15493873074561	2026-09-29T15:36Z	draft	21.90	59.13	Zauberer Robe Modell Bausteine
+gid://shopify/Product/15493846532481	2026-09-29T15:36Z	draft	67.90	103.55	Multifunktionaler Edelstahl-Wandhahn mit Sprühdüse
+gid://shopify/Product/15494690177409	2026-09-29T15:36Z	draft	28.90	62.69	Kratzbaum mit Spielzeug für Katzen
+gid://shopify/Product/15495212827009	2026-09-29T15:36Z	draft	14.90	48.01	Diamond Painting Kleiner Fuchs
+gid://shopify/Product/15494700794241	2026-09-29T15:36Z	draft	14.90	47.61	Universal-Lenkrolle mit Doppellager
+gid://shopify/Product/15495154270593	2026-09-29T15:36Z	draft	48.90	81.22	Schubladenführungs-Montagehilfe
+gid://shopify/Product/15493909021057	2026-09-29T15:36Z	draft	23.90	55.66	Quilling Papier Malerei DIY-Set
+gid://shopify/Product/15493889556865	2026-09-29T15:37Z	draft	15.90	47.47	Winterwarmes Katzen- und Hundebett
+gid://shopify/Product/15493861900673	2026-09-29T15:37Z	draft	44.90	75.28	Multifunktionale Rohrzange
+gid://shopify/Product/15494642893185	2026-09-29T15:37Z	draft	17.90	48.28	Multifunktions-Stabmixer für Babynahrung
+gid://shopify/Product/15494345359745	2026-09-29T15:37Z	draft	45.90	76.26	Faltbare Kleidersack-Reisetasche
+gid://shopify/Product/15493933891969	2026-09-29T15:37Z	draft	14.90	45.25	Quadratischer Stickrahmen aus Kunststoff
+gid://shopify/Product/15495235174785	2026-09-29T15:37Z	draft	34.90	65.20	Retro Eisen Aufbewahrungskorb
+gid://shopify/Product/15494627852673	2026-09-29T15:37Z	draft	22.90	53.06	Küchenregal, multifunktional & platzsparend
+gid://shopify/Product/15494854869377	2026-09-29T16:09Z	schon-DRAFT	22.90	53.03	Vertikales Kratzbrett für Katzen
+gid://shopify/Product/15495143293313	2026-09-29T16:09Z	draft	41.90	71.38	P108 6.0Ah Lithium-Akku für Elektrowerkzeuge
+gid://shopify/Product/15495212761473	2026-09-29T16:10Z	draft	20.90	50.06	Moderner Marokkanischer Geometrischer Teppich
+gid://shopify/Product/15495225901441	2026-09-29T16:10Z	draft	22.90	51.38	Velo-Licht 4000 mAh
+gid://shopify/Product/15493932548481	2026-09-29T16:10Z	draft	17.90	45.61	Minimalistischer Handtuchhalter im Nordic-Stil
+gid://shopify/Product/15495214104961	2026-09-29T16:10Z	draft	24.90	52.23	DIY Katzen-Kletterwand aus Massivholz
+gid://shopify/Product/15495082443137	2026-09-29T16:10Z	draft	19.90	47.22	Elastischer Schonbezug für modulare Sofas
+gid://shopify/Product/15493853282689	2026-09-29T16:10Z	draft	29.90	56.67	Nordisches Kissen Schwarz-Weiss mit Herzmuster
+gid://shopify/Product/15493807800705	2026-09-29T16:10Z	draft	15.90	42.52	Kord-Sitzkissen für alle Jahreszeiten
+gid://shopify/Product/15493717787009	2026-09-29T16:10Z	draft	22.90	49.45	Militär Kampfpanzer Modell Bausatz
+gid://shopify/Product/15493935006081	2026-09-29T16:10Z	draft	16.90	43.15	Cartoon-Bettmatratze für Sommer – weich & gemütlich
+gid://shopify/Product/15494856016257	2026-09-29T16:10Z	draft	15.90	41.91	Minimalistischer Katzen-Kletterbaum Weihnachten
+gid://shopify/Product/15495232651649	2026-09-29T16:10Z	draft	21.90	47.62	Gusseisen-Bratpfanne, emailliert
+gid://shopify/Product/15493932777857	2026-09-29T16:10Z	draft	35.90	61.35	Runder Wandspiegel mit Diamant-Effekt, 30 cm
+gid://shopify/Product/15493859803521	2026-09-29T16:10Z	schon-DRAFT	19.90	45.33	Wäschekorb für Schrank & Regal, Himmelblau
+gid://shopify/Product/15495137493377	2026-09-29T16:10Z	draft	38.90	62.79	Faltbares Hundebett für alle Grössen
+gid://shopify/Product/15495232684417	2026-09-29T16:10Z	draft	18.90	32.59	Ersatzspitze für Surface Pen
+gid://shopify/Product/15493858525569	2026-09-29T16:10Z	schon-DRAFT	28.90	52.36	Kondensator-Mikrofon-Set für Aufnahmen
+gid://shopify/Product/15493933302145	2026-09-29T16:11Z	draft	34.90	58.07	Schwammbett für Haustiere, waschbar
+gid://shopify/Product/15495091716481	2026-09-29T16:11Z	draft	30.90	54.01	OTRC FY602 Flugauto-Drohne mit HD-Kamera
+gid://shopify/Product/15493807538561	2026-09-29T16:11Z	draft	16.90	39.90	Plüsch-Sofakissen für Herbst und Winter
+gid://shopify/Product/15493836472705	2026-09-29T16:11Z	draft	22.90	45.82	Kabellose Qi-Ladestation mit Tischlampe
+gid://shopify/Product/15495139426689	2026-09-29T16:11Z	draft	19.90	42.51	Orangen-Kirschen Katzenbaum mit Kratzstamm
+gid://shopify/Product/15495139033473	2026-09-29T16:11Z	draft	38.90	61.17	Wandregal aus Massivholz mit Haken
+gid://shopify/Product/15493971542401	2026-09-29T16:11Z	draft	15.90	37.91	Keramikschale «Rain-hat»
+gid://shopify/Product/15493865963905	2026-09-29T16:11Z	draft	16.90	38.78	Lammfell-Sofaüberwurf, einfarbig, rutschfest
+gid://shopify/Product/15493848695169	2026-09-29T16:11Z	draft	21.90	43.56	Runder oder eckiger Tischläufer aus Baumwollleinen
+gid://shopify/Product/15493871829377	2026-09-29T16:11Z	draft	39.90	61.36	Explosionsgeschützter Schnellkochtopf für Gasherd
+gid://shopify/Product/15493933105537	2026-09-29T16:11Z	draft	16.90	38.34	Faltbare Aufbewahrungsbox aus Baumwolle und Leinen
+gid://shopify/Product/15495119929729	2026-09-29T16:11Z	draft	17.90	38.94	5D Diamant-Malerei: Eulen-Familienbaum
+gid://shopify/Product/15495121043841	2026-09-29T16:11Z	draft	17.90	38.94	Diamond Painting Set "Adler, Baum, Wolf"
+gid://shopify/Product/15493853905281	2026-09-29T16:12Z	draft	21.90	42.68	Elastischer Sofaüberzug aus Flanell
+gid://shopify/Product/15494693618049	2026-09-29T16:12Z	draft	29.90	50.64	Tragbares Ausziehregal für die Küche
+gid://shopify/Product/15493862556033	2026-09-29T16:12Z	draft	15.90	36.52	5-in-1 Warmluftstyler für vielseitiges Haarstyling
+gid://shopify/Product/15494642401665	2026-09-29T16:12Z	draft	16.90	37.52	Doppelschichtiger Keramikteller mit Rillenmuster
+gid://shopify/Product/15495090864513	2026-09-29T16:12Z	draft	20.90	41.15	Polar Fleece Stretch-Sofabezug
+gid://shopify/Product/15494642073985	2026-09-29T16:12Z	draft	18.90	39.10	Kratzbaum mit Drehscheibe aus Massivholz
+gid://shopify/Product/15495145554305	2026-09-29T16:12Z	draft	21.90	40.94	Edelstahl-Schale für Trockenfrüchte
+gid://shopify/Product/15493810651521	2026-09-29T16:12Z	draft	27.90	46.94	Wok aus 304 Edelstahl mit Wabenstruktur
+gid://shopify/Product/15494855295361	2026-09-29T16:12Z	draft	23.90	42.92	Katzen-Kratzbaum mit Sprungplattform
+gid://shopify/Product/15495222329729	2026-09-29T16:12Z	draft	18.90	37.85	Doumao Kratzbaum mit Drehteller und Ball
+gid://shopify/Product/15494698467713	2026-09-29T16:12Z	draft	14.90	33.63	Elektrische Schleifpenne
+gid://shopify/Product/15494344180097	2026-09-29T16:12Z	draft	16.90	35.49	Leichter Crossbody-Beutel
+gid://shopify/Product/15493851021697	2026-09-29T16:12Z	draft	30.90	49.02	Smarter Wischroboter für dein Zuhause
+gid://shopify/Product/15493932581249	2026-09-29T16:12Z	draft	15.90	33.83	Bananen-Haustierbett, waschbar
+gid://shopify/Product/15493866062209	2026-09-29T16:12Z	draft	15.90	33.63	Donut-Sitzkissen für Kinderzimmer
+gid://shopify/Product/15495105118593	2026-09-29T16:13Z	draft	28.90	46.59	Wok aus raffiniertem Eisen
+gid://shopify/Product/15495193592193	2026-09-29T16:13Z	draft	16.90	34.56	Handgemachte Bambus Etagere
+gid://shopify/Product/15494350176641	2026-09-29T16:13Z	draft	20.90	38.24	Funny Shiba Inu Corgi Trainingsball
+gid://shopify/Product/15493873959297	2026-09-29T16:13Z	draft	37.90	55.11	Mini-Soja- und Saftmaschine, filterfrei
+gid://shopify/Product/15495067828609	2026-09-29T16:13Z	draft	16.90	33.65	Kissenbezug Ethno-Stil Baumwolle Leinen
+gid://shopify/Product/15495138247041	2026-09-29T16:13Z	draft	26.90	43.56	Waschbarer & bissfester Haustier-Schlafsack
+gid://shopify/Product/15495212433793	2026-09-29T16:13Z	draft	16.90	33.50	Sofaüberwurf aus Baumwolle mit Antirutsch-Funktion
