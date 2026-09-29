@@ -1908,3 +1908,4 @@ gid://shopify/Product/15493935235457	2026-09-29T16:29Z	draft	17.90	31.16	Kopfst�
 gid://shopify/Product/15493924192641	2026-09-29T16:29Z	draft	15.90	29.10	Sika Hirsch Plüschtier für Kinder
 gid://shopify/Product/15493853577601	2026-09-29T16:29Z	draft	19.90	32.93	Kissenbezug ohne Füllung, 45x45cm
 gid://shopify/Product/15493872845185	2026-09-29T16:29Z	draft	17.90	30.72	Memory Foam Sitzkissen für Home Office
+gid://shopify/Product/15493923635585	2026-09-29T16:29Z	draft	16.90	29.57	Essstuhl-Kissen, abnehmbar & waschbar
