@@ -8095,3 +8095,5 @@ Bedingung wirft, jeder Zähler geschrieben.
    Rahmenprobe verglich zwei Fenster, die verschieden tief in der Ladephase lagen. Die Insel-Gegenprobe hat den ersten Fall
    gefangen — aus einem Grund, den ich nicht vorgesehen hatte. Gegenproben, die „nichts gefunden" als Fehler werten, fangen
    auch die unbekannten Ursachen. Und ein Vergleich A gegen B braucht A-B-A-B, sobald die Maschine selbst driftet.
+
+> **Plan für Runde 105 ff.:** `spiele-dev/PLAN-TRAUMHAUS-105ff.md` (geschrieben 2026-09-29 im Sparmodus).
