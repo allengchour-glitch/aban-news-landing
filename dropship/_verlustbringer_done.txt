@@ -1765,3 +1765,36 @@ gid://shopify/Product/15493797020033	2026-09-29T15:34Z	draft	29.90	124.11	Faltba
 gid://shopify/Product/15493895618945	2026-09-29T15:34Z	draft	16.90	110.94	Hundebett mit Eisenrahmen und Netzliege
 gid://shopify/Product/15493750620545	2026-09-29T15:34Z	draft	32.90	125.20	4b Mainboard Power Basic Kit für Raspberry Pi
 gid://shopify/Product/15495115604353	2026-09-29T15:34Z	draft	75.90	168.14	Luftreiniger mit Mückenlampe und CO2-Sensor
+gid://shopify/Product/15495130644865	2026-09-29T15:34Z	draft	31.90	116.45	Titan-Schneidebrett für Outdoor & Küche
+gid://shopify/Product/15493933203841	2026-09-29T15:34Z	draft	20.90	95.10	Kratzfestes Leinen-Hundebett mit Kissen
+gid://shopify/Product/15495231799681	2026-09-29T15:34Z	draft	32.90	106.82	Saucen- und Milchtopf aus 304 Edelstahl
+gid://shopify/Product/15494642598273	2026-09-29T15:34Z	draft	14.90	87.80	Transparente Anti-Rutsch Küchenmatte
+gid://shopify/Product/15493848433025	2026-09-29T15:34Z	draft	33.90	106.46	Handbemalte Bambus Teekanne mit zwei Tassen
+gid://shopify/Product/15495120519553	2026-09-29T15:34Z	draft	23.90	95.06	Keramik-Tassenset mit Untertasse und Löffel
+gid://shopify/Product/15495194247553	2026-09-29T15:34Z	draft	25.90	95.88	Edelstahl-Bratpfanne für alle Herdarten
+gid://shopify/Product/15495138476417	2026-09-29T15:34Z	draft	69.90	138.50	Doppellagiges Katzenbett aus Massivholz mit Sisal
+gid://shopify/Product/15495236583809	2026-09-29T15:34Z	draft	30.90	95.47	Keramik-Vorratsdose mit Deckel
+gid://shopify/Product/15495113933185	2026-09-29T15:34Z	draft	16.90	79.21	Plüsch-Bettvorleger für mehr Wohnlichkeit
+gid://shopify/Product/15495081230721	2026-09-29T15:34Z	draft	15.90	78.02	Handkurbel-Generator
+gid://shopify/Product/15495128252801	2026-09-29T15:35Z	draft	32.90	93.13	Marokkanischer Kissenbezug mit Quasten
+gid://shopify/Product/15494627918209	2026-09-29T15:35Z	draft	16.90	76.97	Hundebett Atmungsaktiv & Feuchtigkeitsbeständig
+gid://shopify/Product/15493809799553	2026-09-29T15:35Z	draft	30.90	90.13	Borosilikat-Suppentopf mit Doppelgriff
+gid://shopify/Product/15495753761153	2026-09-29T15:35Z	draft	15.90	73.82	Plüsch-Teppich für Schlafzimmer und Wohnbereich
+gid://shopify/Product/15495236452737	2026-09-29T15:35Z	draft	31.90	89.26	Wasserdichter Vakuum-Aufbewahrungsbeutel 25L
+gid://shopify/Product/15495192314241	2026-09-29T15:35Z	draft	38.90	95.95	Grosses Tatami-Rückenkissen für Bett & Sofa
+gid://shopify/Product/15495235010945	2026-09-29T15:35Z	draft	14.90	68.60	Robuste Multifunktions-Rohrzange
+gid://shopify/Product/15494855623041	2026-09-29T15:35Z	draft	67.90	121.09	DIY Katzen-Kratzbaum im Kaktus-Design
+gid://shopify/Product/15493807669633	2026-09-29T15:35Z	draft	23.90	76.35	Runder Teppich Ring Samt Modern Creme
+gid://shopify/Product/15493897585025	2026-09-29T15:35Z	draft	34.90	87.19	Keramikvase im nordischen Stil
+gid://shopify/Product/15493859737985	2026-09-29T15:35Z	schon-DRAFT	17.90	68.82	Kochlöffel- & Schöpflöffel-Set mit Palisandergriff
+gid://shopify/Product/15494602162561	2026-09-29T15:35Z	draft	74.90	124.89	Teekannen-Set aus hitzebeständigem Glas
+gid://shopify/Product/15493873041793	2026-09-29T15:35Z	draft	40.90	90.83	Bremszylinder-Rückstellwerkzeug
+gid://shopify/Product/15495237108097	2026-09-29T15:35Z	draft	30.90	78.71	Minimalistischer Küchen-Organizer aus Edelstahl
+gid://shopify/Product/15493873533313	2026-09-29T15:35Z	draft	31.90	76.98	Magnetische Bausteine: Zugstrecken-Puzzle
+gid://shopify/Product/15493836931457	2026-09-29T15:35Z	draft	34.90	79.00	Anatomisches Nackenstützkissen für besseren Schlaf
+gid://shopify/Product/15495136379265	2026-09-29T15:35Z	draft	14.90	58.94	Keramik-Futternapf mit Bambusständer für Haustiere
+gid://shopify/Product/15493933433217	2026-09-29T15:35Z	draft	18.90	61.87	Kühlende Schlafmatte für Hunde und Katzen
+gid://shopify/Product/15493854921089	2026-09-29T15:35Z	draft	33.90	76.42	Gusseisen Schmortopf mit Holzdeckel
+gid://shopify/Product/15493873336705	2026-09-29T15:36Z	draft	22.90	64.99	Dark Werewolf Baustein-Modell (813 Teile)
+gid://shopify/Product/15495239500161	2026-09-29T15:36Z	draft	15.90	57.82	HD Leinwandbild – Fünfteiliges Set
+gid://shopify/Product/15493837881729	2026-09-29T15:36Z	draft	20.90	62.25	Akazienholz-Spatel-Set für die Küche
