@@ -27,7 +27,7 @@ Zweiter toter Lauf derselben Art: `fuellmenge_nachtragen` (16:53). **GETAN:** Je
 Schloss `START … (Aufseher)` ins Log; das Tor wertet nur Zeilen nach der letzten Marke (`letzter_lauf()`); Kanarienvögel
 3/3 (altes Log ohne Marke = altes Verhalten; toter Lauf mit Marke = fällig; sauberer Lauf = fertig). Die zwei toten Läufe
 markiert, Aufseher neu → beide laufen. **Lehre:** Ein Tor, das «fertig» aus den letzten Zeilen liest, braucht eine
-Anfangsmarke — sonst erbt jeder abgestürzte Lauf das Ende seines Vorgängers. Nach dem Fortura-Fix hätte die Frage
+Anfangsmarke — sonst erbt jeder abgestürzte Lauf das Ende seines Vorgängers. **Ergebnis 20:21:** Nachlauf FERTIG — 2'149 Produkte / 19'425 Varianten gehoben, 10 gesperrt; Live-Nachkontrolle der 63: **62 ohne Verlust, 1 nicht mehr aktiv, 0 Verlust**. Nach dem Fortura-Fix hätte die Frage
 «wo liest noch jemand `tail` ohne Marke?» sofort über alle Tore gehen müssen, nicht nur über das eine.
 
 ## 2026-09-29 · 🔎 #1019 bei CJ neu gesucht: kein gleichwertiger Ersatz mit CH-Versand (19:25)
