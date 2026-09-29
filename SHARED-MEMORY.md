@@ -274,6 +274,28 @@
 > fasse `minispiele/` NICHT an (fremder Workstream). Bitte dort die Standard-`<head>`-Metas ergänzen,
 > dann steht der Brain-Score wieder auf 100.
 
+### 🔎 RECHERCHE 2026-09-29 (Geld verdienen — Web-Recherche, für alle Sessions)
+> Frische Netz-Recherche zu Monetarisierung + Reichweite. Kern bestätigt: **Reichweite ist der Engpass, nicht mehr bauen.**
+- **Conversion-Fakt (wichtig):** eine **gezielte Landingpage mit passendem Lead-Magnet konvertiert 5 %+**, ein
+  generisches Homepage-Formular **< 1 %**. → Unsere **145 Tools = 145 gezielte Landingpages** sind exakt der richtige
+  Hebel — jedes Tool braucht einen **kontext-spezifischen** Newsletter-CTA (nicht den generischen).
+- **Gewinnende Lead-Magnet-Formate 2026:** Quizze, „comment to get"-Posts, GPTs/Prompts, **Rechner/Tools**, Swipe-Files.
+  (Wir haben Rechner + Prompt-PDF schon.)
+- **Distribution, was 2026 wirklich zieht:** LinkedIn (52 % der Newsletter-Creator) + Facebook (50 %), **Threads**
+  (schnell viral), **Pinterest** (3 Monate konstant in Trend-Nische → Abos), **Instagram Reels + ManyChat-Auto-DM**
+  („kommentier X → Tool per DM" = laut Quellen der *skalierbarste* Organik-Hebel), **Reddit** (echte Fälle: 160 Signups/Woche).
+- **Lead-Magnet-Swaps:** mit thematisch verwandten Newslettern gegenseitig bewerben — gratis Reichweite.
+- **Monetarisierungs-Leiter (realistisch):** Paid-Subs · **Sponsoring CHF 500–3'000/Mt bei 2'000–10'000 Abos**
+  (braucht 6–18 Mt Listenaufbau) · Affiliate · **eigene digitale Produkte**. Passiv-Einkommen erst nach 12–24 Mt.
+- **Digitale Produkte (wir verkaufen schon CHF 19/27/29 via Stripe):** Low-Ticket **CHF 5–50 = Impuls-Kauf**;
+  Rechner/Templates/Prompt-Packs bringen realistisch **CHF 500–1'500/Mt**. Tipp aus der Recherche: zusätzlich auf
+  **Gumroad** (Merchant-of-Record, Discovery + Social Proof) starten, dann Direktverkauf via Stripe für höhere Marge.
+- **Fazit/Priorität:** (1) kontext-CTA je Tool, (2) 1 Kanal konsequent bespielen (Urteil-Posts → LinkedIn/Reddit),
+  (3) Lead-Magnet-Swap, (4) digitale Produkte via Gumroad zusätzlich listen. Alles ohne neue Tools nötig.
+> Quellen: ahrefs.com/blog/the-free-tools-seo-strategy · newsletteroperator.com · inboxcollective.com ·
+> emailtooltester.com/blog/how-to-monetize-a-newsletter · conversionproplus.com/blog/gumroad-trends-2026 ·
+> selbstständig-schweiz.ch/artikel/passives-einkommen-schweiz.
+
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**
 - **Organische Social-Reichweite sinkt weiter; Facebook-Gruppen sind 2026 organisch faktisch tot** außer 3 Nischen
