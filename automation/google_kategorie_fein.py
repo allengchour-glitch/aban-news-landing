@@ -20,12 +20,19 @@ SHOP = "au3j0y-hq.myshopify.com"
 GROB = "Apparel & Accessories > Clothing"
 LEDGER = os.path.join(REPO, "dropship/_google_kategorie_fein.tsv")
 TAXO = os.environ.get("TAXO", "/tmp/gtaxo.txt")
+GROB_ERLAUBT = ("Apparel & Accessories", "Cameras & Optics", "Health & Beauty > Personal Care > Vision Care",
+                "Health & Beauty > Health Care > Supports", "Sporting Goods > Outdoor Recreation")
+GOOGLE_KANAL = "gid://shopify/Publication/302872297857"   # App «Google & YouTube»
 SCHARF = os.environ.get("DRY") != "1"
 C = "Apparel & Accessories > Clothing > "
 
-AUSSEN = re.compile(r"kinder|kids|baby|mädchen|\bfür jungen\b|\bjungen-|kleinkind|kostüm|verkleidung|puppe", re.I)
+AUSSEN = re.compile(r"^jungen\b|kinder|kids|baby|mädchen|\bfür jungen\b|\bjungen-|kleinkind|kostüm|verkleidung|puppe(?!nkragen)|cosplay|b[üu]hnenuniform", re.I)
 REGELN = [
-    (r"\w*schal\b|\bschals\b|halstuch|stola", "Apparel & Accessories > Clothing Accessories > Scarves & Shawls"),
+    (r"\w*schal\b|\bschals\b|halstuch|stola|\w*tuch\b(?!.*(strand|bade|hand))|halsw[äa]rmer", "Apparel & Accessories > Clothing Accessories > Scarves & Shawls"),
+    (r"strand-?kimono|strand[üu]berzug|swimwear|badebekleidung|facekini", C + "Swimwear"),
+    (r"kimono\w* nachtgewand|nachtgewand|\brobe\b.*herren|pajama", C + "Sleepwear & Loungewear"),
+    (r"tights|f[üu]sslinge|beinw[äa]rmer|\w*stulpen\b|bloomers|bauchformer|taillentrainer|corsage|bustier", C + "Underwear & Socks"),
+    (r"partnerlook|familien-?(outfit|look)|zweiteiler|\boutfit\b", C + "Outfit Sets"),
     (r"trainingsanzug|jogginganzug|sportanzug", C + "Activewear"),
     (r"pyjama|schlafanzug|nachthemd|bademantel|morgenmantel|loungewear|homewear|nachtwäsche", C + "Sleepwear & Loungewear"),
     (r"bikini|badeanzug|badehose|bademode|tankini|swimsuit|monokini|badeshorts|cover-?up", C + "Swimwear"),
@@ -33,17 +40,295 @@ REGELN = [
     (r"\bset\b|\bsets\b|[23]-teilig|zwei-?teilig|drei-?teilig|\bkombi\b", C + "Outfit Sets"),
     (r"jumpsuit|overall|romper|playsuit|einteiler", C + "One-Pieces > Jumpsuits & Rompers"),
     (r"leggings|yoga|sport-?bh|fitness|laufshirt|radhose", C + "Activewear"),
-    (r"\w*kleid\b|\bdress\b|sommerkleid", C + "Dresses"),
-    (r"\w*rock\b|\bskirt\b|\w*jupes?\b", C + "Skirts"),
-    (r"strickjacke|cardigan", C + "Shirts & Tops"),
-    (r"\w*weste\b|\bgilet\b", C + "Outerwear > Vests"),
-    (r"\w*jacke\b|\w*mantel\b|trenchcoat|\bparka\b|blazer|bomber|windbreaker|daunen|\bcoat\b|\bjacket\b|anorak", C + "Outerwear > Coats & Jackets"),
+    (r"\w*kleid\b|\bdress\b|sommerkleid|sundress|slipdress|damenrobe|\bmaxi\b", C + "Dresses"),
+    (r"\w*rock\b|\bskirt\b|\w*jupes?\b|r[öo]ckchen|\w*r[öo]cke\b|\w*r[öo]ck\b|skort", C + "Skirts"),
+    (r"strickjacke|strickj[äa]ckchen|cardigan|kardigan", C + "Shirts & Tops"),
+    (r"\w*westen?\b|\bgilet\b|\bvest\b", C + "Outerwear > Vests"),
+    (r"\w*jacke\b|\w*mantel\b|trenchcoat|\bparka\b|blazer|bomber|windbreaker|daunen|\bcoat\b|\bjacket\b|anorak|sakko|blouson|\bcape\b|\w*-cape\b|poncho", C + "Outerwear > Coats & Jackets"),
     (r"\w*shorts\b|bermuda|kurze hose", C + "Shorts"),
-    (r"\w*hosen?\b|\w*jeans\b|\w*pants\b|jogger|chino|culotte|trousers", C + "Pants"),
-    (r"shirt|\w*hemd\b|bluse|\w*tops?\b|\bcami\b|pullunder|pullover|\bpulli\b|sweatshirt|hoodie|tunika|\bpolo\b|camisole|tanktop|oberteil|sweater|longsleeve|\bcrop\b", C + "Shirts & Tops"),
+    (r"\w*hosen?\b|\w*jeans\b|\w*pants\b|jogger|chino|culotte|trousers?\b|capris|pantalons?\b|kurzbeine|denim f[üu]r herren", C + "Pants"),
+    (r"shirt|\w*hemd\b|bluse|\w*tops?\b|\bcami\b|pullunder|pullover|\bpulli\b|sweatshirt|hoodie|tunika|\bpolo\b|camisole|tanktop|oberteil|sweater|longsleeve|\bcrop\b|\w*hemden\b|henley|turtleneck|\w*pulli\b|kurz[äa]rml\w*|achsellos|polo\b|\btee\b|tunic|bodysuit|trikot|kutte|gewand|kaftan|kimono|fleece\b", C + "Shirts & Tops"),
     (r"\w*anzug\b|\bsuit\b|smoking", C + "Suits"),
 ]
 _R = [(re.compile(m, re.I), z) for m, z in REGELN]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ZWEITER TEIL (29.09.2026, «bis alles fix ist und sauber»): LEERE Werte im Google-Kanal.
+# GEMESSEN (Bulk-Export mit publishedOnPublication): 1'466 von 47'474 Kanal-Produkten ohne Kategorie —
+# 783 «Trend-Gadget», 147 «Trend-Produkt», 120 Kostüm-Warengruppe (Fortura-Sammelkorb: WC-Papier, Luftmatratze,
+# Bruder-Modelle), 117 Aufbewahrung … `google_kategorie.py` lässt Sammelkörbe bewusst leer («leer schlägt falsch»).
+# Hier entscheidet das NOMEN im Titel (Reihenfolge = Vorrang: Tier/Baby vor Kleidung, Kleidung vor Gerät —
+# «Heizjacke» ist eine Jacke, «Katzen-Slipper für Damen» ein Schuh, «Badehandtuch für Haustiere» Tierbedarf).
+# Kein Treffer → danach die gepflegte Tag-/Warengruppen-Logik aus google_kategorie.kategorie(); sonst bleibt leer.
+# Kleidung landet zuerst grob und wird sofort mit REGELN oben verfeinert. Die 1'654 Leeren AUSSERHALB des Kanals
+# (1'561 Kostüme, 41 Raucherzubehör — bewusst nicht bei Google) werden nicht angefasst.
+# ─────────────────────────────────────────────────────────────────────────────
+PC = "Health & Beauty > Personal Care > "
+KOS = PC + "Cosmetics > "
+KH = "Home & Garden > Kitchen & Dining > "
+MENSCH = re.compile(r"\b(damen|herren|frauen|männer|unisex|mädchen|jungen)\b|katzenohren", re.I)
+LEER_REGELN = [
+    # Fortura-Fanartikel: «Radsocken für Auto Holland» sind Radkappen-Überzüge, keine Socken
+    (r"radsocken|spiegelsocken|autofahne|auto-?flagge|auto[- ]?waschhandschuh|autowasch\w*", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
+    # Masken: Schutz-/Sportmaske ≠ Hautpflege-Tuchmaske ≠ LED-Gerät ≠ Kostüm (43 standen über Tag «beauty» als Kosmetik)
+    (r"tauch\w*maske|tauch- und schwimmmaske|schnorchel\w*", "Sporting Goods > Outdoor Recreation > Boating & Water Sports > Diving & Snorkeling > Diving & Snorkeling Masks", ""),
+    (r"atemschutz\w*|staubmaske|staubschutzmaske|\bffp\d|aktivkohlefilter", "Business & Industrial > Work Safety Protective Gear > Protective Masks > Dust Masks", ""),
+    (r"^(?!.*(hoodie|pullover|shirt|jacke)).*(augenmaske|schlafmaske)", PC + "Sleeping Aids > Eye Masks", ""),
+    (r"^(?=.*maske).*(\bled\b|led-|photon\w*|rotlicht|lichttherapie|\bems\b|beauty instrument)|leuchtmaske|lichtmaske", "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools", ""),
+    (r"tuchmaske|feuchtigkeitsmaske|kollagen\w* \w*maske|jelly\b.*maske|fussmaske|maske mit (kurkuma|hyaluron|kollagen|kojis)|kojis[äa]ure|sheet mask", "Health & Beauty > Personal Care > Cosmetics > Skin Care", ""),
+    (r"^(?=.*(maske|sturmhaube|balaclava)).*(schutzfilter|baumwollmaske|saubere luft|filtersystem|winddicht\w*|thermo-?gesichtsmaske|uv-?schutz|sturmhaube|balaclava|halbgesichtsmaske|outdoor-?\w*maske|maske f[üu]r (sport|den winter|herbst)|atmungsaktiv\w* (\w+ )?maske|3d gesichtsmaske|gesichtsmaske f[üu]r (herbst|winter)|vollgesichtsmaske|sonnenschutz gesichtsmaske|winter-gesichtsmaske|schutz vor sonne)",
+     "Apparel & Accessories > Clothing Accessories > Balaclavas", ""),
+    # Tierbedarf (vor Kleidung/Handtuch/Rucksack), aber nie «Katzen-Slipper für Damen»
+    (r"f[üu]r\s+(hunde|katzen|haustiere|welpen)\b|\bhunde\w*|\bkatzen\w*|\bhaustier\w*|\bwelpen\w*|trinkbrunnen|kratzbaum|zugleine|pet-flasche|futter- und trinkflasche|tiertasche|fellpflege|futterautomat|f[üu]r tiere\b|\bhalsband\b",
+     "Animals & Pet Supplies > Pet Supplies", "tier"),
+    (r"babytrage|tragetuch", "Baby & Toddler > Baby Transport > Baby Carriers", ""),
+    (r"strampler|babyanzug|s[äa]uglingsanzug|\bbabybody|baby[- ]?body|tutu-?kleid f[üu]r baby", "Apparel & Accessories > Clothing > Baby & Toddler Clothing", ""),
+    (r"\bbaby\w*|neugeboren\w*|s[äa]ugling\w*|kleinkind\w*|kinderwagen\w*", "Baby & Toddler", ""),
+    # Spielzeug
+    (r"\bbworld\b|\bbruder\b|^zubeh[öo]r:", "Toys & Games > Toys", ""),
+    (r"pl[üu]schtier\w*|kuscheltier\w*|stofftier\w*", "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals", ""),
+    (r"\bpuzzle\w*|schraubpuzzle", "Toys & Games > Puzzles", ""),
+    (r"drohne\w*|\bdrone\b|quadcopter|ferngesteuert\w*|\brc[- ]", "Toys & Games > Toys > Remote Control Toys", ""),
+    # Kostüm/Party/Halloween
+    (r"latex-?maske|halbmaske|rhinestone maske|d[äa]monenmaske|pl[üu]sch[- ]?maske|horror\w*[- ]\w*maske|totenkopf\w*[- ]?maske|performance maske|\w*maske aus pl[üu]sch", "Apparel & Accessories > Costumes & Accessories > Masks", ""),
+    (r"echthaar\w*|echtem haar|haarper[üu]cke|human hair|lace[- ]front", "Apparel & Accessories > Clothing Accessories > Hair Accessories > Wigs", ""),
+    (r"per[üu]cken-?spray|spray f[üu]r per[üu]cken", PC + "Hair Care", ""),
+    (r"\bper[üu]cke\w*|\w+-per[üu]cke\b", "Apparel & Accessories > Clothing Accessories > Hair Accessories > Wigs", ""),
+    (r"partybrille|skibrille", "Apparel & Accessories > Costumes & Accessories > Costume Accessories", ""),
+    (r"fahnenkette|\bfahne\b|\bflagge\b|wimpelkette", "Home & Garden > Decor > Flags & Windsocks", ""),
+    (r"knicklicht\w*|jetons|wertmarken|lottokarte\w*|ballon\w*|konfetti|girlande|luftschlange\w*|tischtuchrolle|pappteller|partybecher|servietten|\bkan[üu]le\b|aufklebenummern|happy party|\blotto\w*|bingo\w*|losbox|lostrommel",
+     "Arts & Entertainment > Party & Celebration > Party Supplies", ""),
+    # Schmuck/Uhren vor Elektronik («Silikonarmband für Apple Watch», «Lederarmband mit USB-C-Ladekabel» → Kabel unten zuerst)
+    (r"(arm)?band\w* f[üu]r (apple|smart|galaxy)[- ]?watch|watch[- ]?(arm)?band", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands", ""),
+    (r"ladekabel|usb-?c?-?kabel|\bkabel\b|lightning", "Electronics > Electronics Accessories > Cables", ""),
+    (r"wanduhr|\w*wecker\b|tischuhr|kuckucksuhr", "Home & Garden > Decor > Clocks", ""),
+    (r"sanduhr", "Home & Garden > Decor > Hourglasses", ""),
+    (r"uhrenarmband|schnellverschluss-?armband|nylon-?armband|armband\w* f[üu]r .*(ultra|generation|watch)", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands", ""),
+    (r"bew[äa]sserungs-?timer", "Hardware > Plumbing > Water Timers", ""),
+    (r"eieruhr|k[üu]chen-?timer", "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Timers", ""),
+    (r"smart\s*-?watch|smartuhr|smart-?armband|fitness-?tracker|^(?!.*(licht|lampe|leuchte)).*\w*uhr\b|chronograph", "Apparel & Accessories > Jewelry > Watches", ""),
+    (r"schmuckset|halskette.*ohrring|ohrring.*halskette", "Apparel & Accessories > Jewelry > Jewelry Sets", ""),
+    (r"ohrring\w*|ohrstecker|creolen", "Apparel & Accessories > Jewelry > Earrings", ""),
+    (r"\w*fotoanh[äa]nger|medaillon", "Apparel & Accessories > Jewelry > Charms & Pendants", ""),
+    (r"halskette\w*|perlenkette|\w*kette mit\b.*anh[äa]nger|anh[äa]nger-?kette", "Apparel & Accessories > Jewelry > Necklaces", ""),
+    (r"\w*-ring\b|\bring\b|(finger|zirkon|silber|gold|diamant|verlobungs|stapel|siegel|damen|herren)ring\b", "Apparel & Accessories > Jewelry > Rings", ""),
+    (r"\barmreif\w*|\barmband\b|\w*armband\b", "Apparel & Accessories > Jewelry > Bracelets", ""),
+    # Schönheit
+    (r"make-?up[- ]?pinsel\w*|kosmetikpinsel|puderpinsel|augenbrauen-?pinsel|eyebrow pinsel|pinselset.*make|make.*pinselset", KOS + "Cosmetic Tools > Makeup Tools > Makeup Brushes", ""),
+    (r"schminkspiegel|kosmetikspiegel|make-?up[- ]?spiegel|schminkbox|lichtspiegel", KOS + "Cosmetic Tools > Makeup Tools > Face Mirrors", ""),
+    (r"fusselentferner|fusselrasierer|tierhaar\w*|\blint\b", "Home & Garden > Household Supplies > Laundry Supplies > Lint Rollers", ""),
+    (r"waxing|wachsstreifen|epilierer|epilator|haarentfern\w*|augenbrauen\w*entferner|trimmer\w*|\w*rasierer\b", PC + "Shaving & Grooming > Hair Removal", ""),
+    (r"blackhead|mitesser\w*|porenreinig\w*|microcurrent|gesichtsger[äa]t|gesichtsreinigungs?b[üu]rste|ems\b.*gesicht", KOS + "Cosmetic Tools > Skin Care Tools", ""),
+    (r"magnetisch\w* wimpern|k[üu]nstlich\w* wimpern|falsche wimpern|wimpern-?cluster|wimpernverl[äa]ngerung", KOS + "Makeup > Eye Makeup > False Eyelashes", ""),
+    (r"lidschatten|eyeliner|mascara|augenbrauen\w*|wimpern\w*|eyebrow", KOS + "Makeup > Eye Makeup", ""),
+    (r"lipgloss|lippenstift\w*|lipstick|lip ?tint|lipliner|lippenkonturenstift", KOS + "Makeup > Lip Makeup", ""),
+    (r"lippenpflege|lippenbalsam|lip ?balm", KOS + "Skin Care > Lip Balms & Treatments", ""),
+    (r"\bn[äa]gel\w*|\w*n[äa]gel\b|\bnail\b|nagellack|mani[kc][üu]re|gel-?lack|verl[äa]ngerungsgel", KOS + "Nail Care", ""),
+    (r"haargl[äa]tter|gl[äa]tteisen|lockenstab|\bf[öo]hn\b|haartrockner", PC + "Hair Care > Hair Styling Tools", ""),
+    (r"\w*kamm\b|haarb[üu]rste", PC + "Hair Care > Hair Styling Tools > Combs & Brushes", ""),
+    (r"haarspray|shampoo|haarmaske|haar[öo]l|conditioner|haarkur", PC + "Hair Care", ""),
+    (r"massage\w*|massager|gua ?sha|akupressur\w*|nadeln.*r[üu]cken|r[üu]cken\w*.*magnet", PC + "Massage & Relaxation", ""),
+    (r"seifenspender|seifen-spender|lotionspender|desinfektionsspender", "Home & Garden > Bathroom Accessories > Soap & Lotion Dispensers", ""),
+    (r"\w*seife\b", KOS + "Bath & Body > Bar Soap", ""),
+    (r"eau de (parfum|toilette)|\bparf[üu]m\w*|\bparfum\w*", KOS + "Perfume & Cologne", ""),
+    (r"serum|gesichtscreme|feuchtigkeitspflege|augenpartie|hautpflege|peeling|augenpads|gesichtsmaske \d|tuchmaske", KOS + "Skin Care", ""),
+    (r"make-?up|foundation|concealer|highlighter|\brouge\b|\bblush\b", KOS + "Makeup", ""),
+    # Kleidung & Mode (vor Geräten: «Heizjacke», «Heizweste»)
+    (r"reinigungshandschuh\w*|putzhandschuh\w*|sp[üu]lhandschuh\w*", "Home & Garden > Household Supplies > Household Cleaning Supplies > Cleaning Gloves", ""),
+    (r"\w*schal\b|\bschals\b|halstuch|stola\b", "Apparel & Accessories > Clothing Accessories > Scarves & Shawls", ""),
+    (r"haarspange|haarklammer|haarreif|scrunchie|kopfschmuck|haarschmuck", "Apparel & Accessories > Clothing Accessories > Hair Accessories", ""),
+    (r"\bf[äa]cher\b|\w*-f[äa]cher\b", "Apparel & Accessories > Clothing Accessories > Decorative Fans", ""),
+    (r"\w*handschuh\w*|f[äa]ustling\w*", "Apparel & Accessories > Clothing Accessories > Gloves & Mittens", ""),
+    (r"\w*sneaker\w*|\w*slipper\b|\w*schuhe?\b|\w*stiefel\w*|\w*sandale\w*|pantoffel\w*|\bpumps\b|loafer", "Apparel & Accessories > Shoes", ""),
+    (r"\bg[üu]rtel\b|ledeg[üu]rtel|\w*g[üu]rtel\b(?!tasche)", "Apparel & Accessories > Clothing Accessories > Belts", ""),
+    (r"^(?!.*(schale|teller|tasse|becher|vase)).*(\bm[üu]tze\w*|\w*m[üu]tze\b|beanie|\bhut\b|\w*hut\b|\bcap\b|baseballcap|schirmm[üu]tze|\bkappe\b)", "Apparel & Accessories > Clothing Accessories > Hats", ""),
+    (r"ski-? und bergbrille|skibrille(?!.*party)|snowboardbrille", "Sporting Goods > Outdoor Recreation > Winter Sports & Activities > Skiing & Snowboarding > Ski & Snowboard Goggles", ""),
+    (r"taucherbrille|schwimmbrille", "Sporting Goods > Outdoor Recreation > Boating & Water Sports > Swimming > Swim Goggles & Masks", ""),
+    (r"brillen-?reinigung\w*|reinigungst[üu]cher f[üu]r brillen", "Health & Beauty > Personal Care > Vision Care > Eyewear Accessories > Eyewear Lens Cleaning Solutions", ""),
+    (r"sonnenbrille\w*|sportbrille(?!.*kamera)", "Apparel & Accessories > Clothing Accessories > Sunglasses", ""),
+    (r"lesebrille|blaulicht\w*-?brille|blaulichtfilter|anti-?reflex brille|\w*-brille\b(?!.*party)|\bbrille f[üu]r damen", "Health & Beauty > Personal Care > Vision Care > Eyeglasses", ""),
+    (r"portemonnaie|geldb[öo]rse|m[üu]nzb[öo]rse|brieftasche|\bwallet\b|kartenetui", "Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips", ""),
+    (r"rucksack\w*|backpack", "Luggage & Bags > Backpacks", ""),
+    (r"umh[äa]ngetasche|schultertasche|handtasche|g[üu]rteltasche|bauchtasche|h[üu]fttasche|\bclutch\b|crossbody|\w*bag-stil|tragetasche|\btote\b", "Apparel & Accessories > Handbags, Wallets & Cases > Handbags", ""),
+    (r"\w*kleid(er)?\b|\w*hosen?\b|\w*jacke\b|\w*mantel\b|\w*shirt\b|\w*shirts\b|pullover|\bpulli\b|hoodie|sweatshirt|\bbluse\w*|\w*hemd\b|\w*rock\b|jumpsuit|\w*shorts\b|leggings|\w*weste\b|cardigan|strickjacke|(?<!lap)(?<!desk)\btops?\b|tunika|mieder|korsett|\w*socken\b|pyjama|bikini|badeanzug|pareo\w*|\w*kleidung\b|\bbody\b|\w*anzug\b|poloshirt|polo-shirt",
+     GROB, "mensch"),
+    # Elektronik
+    (r"zahn\w*b[üu]rste|zahnreinig\w*|zahnseide|munddusche", "Health & Beauty > Personal Care > Oral Care", ""),
+    (r"reinigungs(pen|set|stift|kit)|reinigungsb[üu]rste", "Home & Garden > Household Supplies > Household Cleaning Supplies", ""),
+    (r"mauspad|mousepad", "Electronics > Electronics Accessories > Computer Accessories > Mouse Pads", ""),
+    (r"gaming-?maus|\bmaus\b|\bmouse\b", "Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs", ""),
+    (r"tastatur\w*|keyboard", "Electronics > Electronics Accessories > Computer Components > Input Devices > Keyboards", ""),
+    (r"^(?!.*(kabelrollen|kabelhalter)).*(kopfh[öo]rer\w*|kopfhoerer\w*|earbuds|headset|in-?ear)", "Electronics > Audio > Audio Components > Headphones & Headsets", ""),
+    (r"lautsprecher\w*|\bspeaker\b|soundbar", "Electronics > Audio > Audio Components > Speakers", ""),
+    (r"telefonh[üu]lle|handyh[üu]lle\w*|handy-?h[üu]lle|phone ?case|h[üu]lle f[üu]r (iphone|samsung|galaxy|handy)|handyschale", "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases", ""),
+    (r"panzerglas|schutzfolie|displayschutz", "Electronics > Electronics Accessories > Electronics Films & Shields > Screen Protectors", ""),
+    (r"ladeger[äa]t|ladestation|netzteil|powerbank|ladesteckdose|kabellos\w* lade\w*|wireless charger|magnethalter", "Electronics > Electronics Accessories > Power > Power Adapters & Chargers", ""),
+    (r"handyhalter\w*|handy-?halterung|halter\w* f[üu]r (iphone|handy|smartphone)", "Electronics > Communications > Telephony > Mobile Phone Accessories", ""),
+    (r"projektor\w*|beamer", "Electronics > Video > Projectors", ""),
+    (r"mikrofon\w*|microphone", "Electronics > Audio > Audio Components > Microphones", ""),
+    (r"handheld|spielkonsole|\bkonsole\b", "Electronics > Video Game Consoles", ""),
+    (r"^(?!.*(t[üu]rklingel|ohrenreiniger|blackhead|mitesser)).*(\w*kamera\b|dashcam|webcam)", "Cameras & Optics", ""),
+    # Fahrzeug (nicht «Automatisch»)
+    (r"\bauto-|\bautos\b|f[üu]r (das |ihr )?auto\b|\bkfz\b|lenkrad\w*|tagfahrlicht|autositz\w*|kofferraum|motorrad\w*", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
+    # Haushalt & Wohnen
+    (r"duft[öo]l\w*|[äa]therische\w* [öo]le?\b", "Home & Garden > Decor > Home Fragrances > Fragrance Oil", ""),
+    (r"luftbefeuchter\w*", "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers", ""),
+    (r"diffuser|diffusor|aroma[- ]?lampe", "Home & Garden > Decor > Home Fragrance Accessories", ""),
+    (r"heizl[üu]fter|\w*heizer\b|heizger[äa]t|radiator", "Home & Garden > Household Appliances > Climate Control Appliances > Space Heaters", ""),
+    (r"ventilator\w*|\bl[üu]fter\b", "Home & Garden > Household Appliances > Climate Control Appliances > Fans", ""),
+    (r"\w*lampe\b|\w*leuchte\b|lichterkette\w*|nachtlicht\w*|led-?streifen|led-?leiste|\bstrahler\b", "Home & Garden > Lighting", ""),
+    (r"feuerzeug\w*", "Hardware > Tools > Lighters & Matches", ""),
+    (r"k[üu]chenarmatur|wasserhahn|\barmatur\b", "Hardware > Plumbing > Plumbing Fixtures > Faucets", ""),
+    (r"\w*handt[üu]ch\w*|badetuch|strandtuch", "Home & Garden > Linens & Bedding > Towels", ""),
+    (r"wc[- ]?papier|toilettenpapier", "Home & Garden > Household Supplies > Household Paper Products > Toilet Paper", ""),
+    (r"luftmatratze\w*|schwimmring|poolfloat|luftmatte", "Home & Garden > Pool & Spa > Pool & Spa Accessories > Pool Floats & Loungers", ""),
+    (r"schlafmatte|isomatte|campingmatte|camping-?matte", "Sporting Goods > Outdoor Recreation > Camping & Hiking > Sleeping Pads", ""),
+    (r"sport-trinkflasche", "Home & Garden > Kitchen & Dining > Tableware > Drinkware", ""),
+    (r"dehnungsband|trainingsgurt|widerstandsband\w*|fitness-?band|yoga-?matte|hantel\w*|springseil|trainingsband", "Sporting Goods > Exercise & Fitness", ""),
+    (r"^(?!.*(spr[üu]h|sauce|[öo]l-|f[üu]r hunde|latex|blender|mixer|warmhalte))(.*(\w*tasse\b|\w*becher\b(?!-?mixer)|\w*flasche\b|karaffe))", "Home & Garden > Kitchen & Dining > Tableware > Drinkware", ""),
+    (r"\w*mixer\b|\w*blender\b|sojamilch\w*|entsafter|standmixer|zerkleinerer|k[üu]chenmaschine|fleischwolf", "Home & Garden > Kitchen & Dining > Kitchen Appliances", ""),
+    (r"kochl[öo]ffel\w*|\w*reibe\b|gem[üu]seschneider|gem[üu]sehacker|\w*hacker\b|gefl[üu]gelschere|k[üu]chenschere|\bshaker\b|schneebesen|sch[äa]ler|dosen[öo]ffner|gasherd-?z[üu]nder|pfannenwender|\bsieb\b|fischschuppen\w*|spr[üu]hflasche|[öo]lspr[üu]her",
+     "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils", ""),
+    (r"\w*schale(n)?\b|\w*sch[üu]ssel\b|\w*teller\b|keramikplatte", "Home & Garden > Kitchen & Dining > Tableware > Dinnerware", ""),
+    (r"stiftehalter|dokumentenhalter|schreibtisch-?organizer|briefablage", "Office Supplies > Filing & Organization > Desk Organizers", ""),
+    (r"notizblock|notizbuch|kalender", "Office Supplies > Filing & Organization > Calendars, Organizers & Planners", ""),
+    (r"\bdecke\b|\w+-decke\b|kuscheldecke|wolldecke|fleecedecke|kn[üu]pfdecke", "Home & Garden > Linens & Bedding > Bedding > Blankets", ""),
+    (r"pflanzenh[äa]nger|h[äa]nger f[üu]r pflanzen|blumentopf|pflanztopf|\w*[üu]bertopf", "Home & Garden > Lawn & Garden > Gardening > Pots & Planters", ""),
+    # dritte Welle (Trockenlauf 29.09.: 315 offen) — spät eingereiht, fängt nur bisher Ungetroffenes
+    (r"kunstblut|narben\w*|theaterschminke|latex fl[üu]ssig|fl[üu]ssiglatex", KOS + "Makeup > Costume & Stage Makeup", ""),
+    (r"fliegerbrille|brille f[üu]r pilot|schutzbrille s\.?w\.?a\.?t|hosentr[äa]ger|zimmerm[äa]dchenset|gesichtsvisier", "Apparel & Accessories > Costumes & Accessories > Costume Accessories", ""),
+    (r"tischbombe|glitter mix|discokugel|gl[üu]cksrad|g[äa]stebuch|g[äa]ste holzrahmen", "Arts & Entertainment > Party & Celebration > Party Supplies", ""),
+    (r"horrorhand|kletternder weihnachtsmann|fledermaus", "Home & Garden > Decor > Seasonal & Holiday Decorations", ""),
+    (r"center shock|fr[öo]schli|lolly|hochzeitsmandeln|\w*mandeln\b", "Food, Beverages & Tobacco > Food Items > Candy & Chocolate", ""),
+    (r"shapewear|\w*-?shaper\b|formschneider|arm-shaping|bodysuit|yoga-?set|jogger\b|sakko|blazer|kardigan|oberteile?\b|sommeroben|trenchcoat|jeans\b|pajama|outfit\b|\w*hemden\b|rockedress|\bdress\b", GROB, "mensch"),
+    (r"\w*boots\b|pantinen|clogs|winterschl[üu]pfer", "Apparel & Accessories > Shoes", ""),
+    (r"st[üu]tzgurt|w[äa]rmegurt|haltungs-?korrekt\w*|r[üu]ckenstabilisator|\w*bandagen?\b|kn[öo]chelst[üu]tze|handgelenkst[üu]tze|wrist wraps|zehenspreizer|halsst[üu]tz\w*|r[üu]ckenstrecker", "Health & Beauty > Health Care > Supports & Braces", ""),
+    (r"schn[üu]rsenkel", "Apparel & Accessories > Shoe Accessories > Shoelaces", ""),
+    (r"ohrenreiniger|ohrreiniger", PC + "Ear Care", ""),
+    (r"nasenreiniger|nasensauger", "Health & Beauty > Health Care", ""),
+    (r"zahnaufhell\w*|zahnpasta(?!-dispenser)", PC + "Oral Care", ""),
+    (r"bartpflege\w*|bart[öo]l", PC + "Shaving & Grooming", ""),
+    (r"\bshaver\b", PC + "Shaving & Grooming > Electric Razors", ""),
+    (r"lippen[öo]l|lip plumper|lippenglanz\w*", KOS + "Skin Care > Lip Balms & Treatments", ""),
+    (r"augencreme|augenpflege|k[öo]rper[öo]l|vein cream|klebepflege|hautrejuvenation|blaues licht f[üu]r|sch[öo]nheitspflaster|sch[öo]nheitsmaske|gesichtsstraffer|halsheber|eye beauty", KOS + "Skin Care", ""),
+    (r"gl[äa]ttb[üu]rste|knotenl[öo]ser|haarfluid|haarband", PC + "Hair Care", ""),
+    (r"uhrenschrank|uhrenbox|schmuckbox|schmuckdisplay|ringschatulle|schmuckk[äa]stchen|anstecknadel-halter", "Health & Beauty > Jewelry Cleaning & Care > Jewelry Holders", ""),
+    (r"\buhren\b", "Apparel & Accessories > Jewelry > Watches", ""),
+    (r"^(?!.*maske).*(ohrclip|ohrhaken)", "Apparel & Accessories > Jewelry > Earrings", ""),
+    (r"\w*armb[äa]nder\b", "Apparel & Accessories > Jewelry > Bracelets", ""),
+    (r"(?=.*(zirkon|verstellbar|legierung|silber|gold|925|edelstahl))\w+ring\b", "Apparel & Accessories > Jewelry > Rings", ""),
+    (r"taillenkette|bauchkette|k[öo]rperkette", "Apparel & Accessories > Jewelry", ""),
+    (r"^(?!.*(schl[üu]sselanh|hawaiikette|fahnenkette)).*(\w*anh[äa]nger\b|\w*anhanger\b|collier|liebeskette|\w*kette\b)", "Apparel & Accessories > Jewelry > Necklaces", ""),
+    (r"(ohrh[öo]rer|airpods)[- ]?(etui|h[üu]lle)|schutzh[üu]lle f[üu]r airpods", "Electronics > Audio > Audio Accessories > Headphone & Headset Accessories", ""),
+    (r"ohrh[öo]rer|earphone", "Electronics > Audio > Audio Components > Headphones & Headsets", ""),
+    (r"schutzglas|glas-schutz|anti-schiel", "Electronics > Electronics Accessories > Electronics Films & Shields > Screen Protectors", ""),
+    (r"(magsafe|smartphone|handy|telefon)\w*[- ]?h[üu]lle|schutzh[üu]lle|\bcase\b", "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases", ""),
+    (r"(tablet|handy|smartphone|r[üu]ckspiegel-handy)[- ]?halt\w*|hud-halterung|halterung f[üu]r .*handy|luftventil-halter|faltbarer halter", "Electronics > Communications > Telephony > Mobile Phone Accessories", ""),
+    (r"\bcontroller\b", "Electronics > Video Game Console Accessories", ""),
+    (r"mausarmlehne|\w*maus\b", "Electronics > Electronics Accessories > Computer Accessories", ""),
+    (r"t[üu]rklingel", "Home & Garden > Business & Home Security", ""),
+    (r"\w*drucker\b", "Electronics > Print, Copy, Scan & Fax > Printers, Copiers & Fax Machines", ""),
+    (r"ringlicht", "Cameras & Optics > Photography > Lighting & Studio", ""),
+    (r"objektfinder|verlustobjekt", "Electronics", ""),
+    (r"neck-?fan", "Home & Garden > Household Appliances > Climate Control Appliances > Fans", ""),
+    (r"\w*befeuchter\b|nebel-?feuchter", "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers", ""),
+    (r"luftreiniger", "Home & Garden > Household Appliances > Climate Control Appliances > Air Purifiers", ""),
+    (r"staubsauger", "Home & Garden > Household Appliances > Vacuums", ""),
+    (r"dampfb[üu]gel\w*", "Home & Garden > Household Appliances > Laundry Appliances > Garment Steamers", ""),
+    (r"waschmaschine", "Home & Garden > Household Appliances > Laundry Appliances > Washing Machines", ""),
+    (r"\bmopp?\b|mini-mopp?|bodenreiniger|saugglas-?b\w*|ultraschall-reinigung\w*|schaumreiniger", "Home & Garden > Household Supplies > Household Cleaning Supplies", ""),
+    (r"fusselroller", "Home & Garden > Household Supplies > Laundry Supplies > Lint Rollers", ""),
+    (r"duschkopf", "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Shower Parts > Shower Heads", ""),
+    (r"k[üu]chenhahn|ablaufventil", "Hardware > Plumbing", ""),
+    (r"seifengrinder|zahnpasta-dispenser|badewannenauflage", "Home & Garden > Bathroom Accessories", ""),
+    (r"wasserspender|wasserdispenser", "Hardware > Plumbing > Water Dispensing & Filtration > Water Dispensers", ""),
+    (r"kinder-?moskitonetz|t[üu]rschloss f[üu]r kinder|kindersitz", "Baby & Toddler > Baby Safety", ""),
+    (r"t[üu]rschliesser|t[üu]rstopper|ratchet\w*|schraub\w*satz", "Hardware", ""),
+    (r"messschieber", "Hardware > Tools > Measuring Tools & Sensors", ""),
+    (r"luftpolsterfolie", "Office Supplies > Shipping Supplies > Packing Materials", ""),
+    (r"bleistiftspitzer", "Office Supplies > Office Instruments > Pencil Sharpeners", ""),
+    (r"schreibhilfe|nachrichtentafel", "Office Supplies", ""),
+    (r"h[äa]ngematte", "Home & Garden > Lawn & Garden > Outdoor Living > Hammocks", ""),
+    (r"regentonne", "Home & Garden > Lawn & Garden > Gardening > Rain Barrels", ""),
+    (r"schlauchd[üu]se", "Home & Garden > Lawn & Garden > Watering & Irrigation > Garden Hose Spray Nozzles", ""),
+    (r"insektenschutz|moskitonetz", "Home & Garden > Household Supplies > Pest Control", ""),
+    (r"fussmatte|t[üu]rmatte", "Home & Garden > Decor > Door Mats", ""),
+    (r"tapestry|wandteppich", "Home & Garden > Decor > Artwork > Decorative Tapestries", ""),
+    (r"(strick|woll|fleece|kuschel|bett|tages|sofa|pl[üu]sch)decke\b", "Home & Garden > Linens & Bedding > Bedding > Blankets", ""),
+    (r"ewige rose|kunstblume\w*|getrocknete blumen", "Home & Garden > Decor > Artificial Flora", ""),
+    (r"\w*kerzen\w*|kerzenleuchte\w*", "Home & Garden > Decor > Home Fragrances > Candles", ""),
+    (r"\w*figur\b|statue|skulptur|deko-set|kunstharz|bronze drache|weltkarte|levitation|\badler\b", "Home & Garden > Decor", ""),
+    (r"ukulele|gitarre|trommel\b", "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments", ""),
+    (r"seifenblasen", "Toys & Games > Toys > Activity Toys", ""),
+    (r"\w*spielzeug\b|rennwagen|fidget|\w*spiel\b", "Toys & Games > Toys", ""),
+    (r"schürze|sch[üu]rze\b", KH + "Kitchen Tools & Utensils > Aprons", ""),
+    (r"m[öo]rser", KH + "Kitchen Tools & Utensils > Mortars & Pestles", ""),
+    (r"nudelholz|teigroller", KH + "Kitchen Tools & Utensils > Rolling Pins", ""),
+    (r"kaffeem[üu]hle", KH + "Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories > Coffee Grinders", ""),
+    (r"k[üu]hlschrank\b|popcorn|waffel\w*|sandwich|air fryer|heissluftfritteuse|milchshaker|k[üu]chenmix|backautomat|gaskocher|grill\b|mixer|blender\w*|saftzerst[äa]uber|flaschenw[äa]rmer|becherw[äa]rmer|dampfgarer|pfefferm[üu]hle|allesschneider", KH + "Kitchen Appliances", ""),
+    (r"frischhaltebox|gew[üu]rzgl[äa]s\w*|reisetank|vorratsdose", KH + "Food Storage", ""),
+    (r"dinnerplatte|\bbowl\b", KH + "Tableware > Dinnerware", ""),
+    (r"\bcup\b|thermobe[ck]+er|champagnerglas\w*|gl[äa]ser-?set|kaffeekanne|teekessel|tee-set|wasserkessel|weindekanter|dekanter|strohhalm", KH + "Tableware > Drinkware", ""),
+    (r"teefilter|tee-ei|messl[öo]ffel|k[üu]chenrollenhalter|messerhalter|trichter|burgerform|backform|kerzenform|teigmatte|brot-?schneid\w*|\w*brecher\b|abtropfmatte|k[üu]chenmatte|k[üu]chenutensil\w*|gem[üu]sehobel|gem[üu]sekutter|gemuese|ananas-?schneider|knoblauchpresse|k[üu]chenwaage|wein[öo]ffner|salatdrainer|w[äa]rmeleitplatte|kaffeekapsel\w*|champagner-pong", KH + "Kitchen Tools & Utensils", ""),
+    (r"\w*licht\b|\w*leuchten\b|lichter\b", "Home & Garden > Lighting", ""),
+    (r"\w*fackeln?\b", "Home & Garden > Lighting > Tiki Torches & Oil Lamps", ""),
+    (r"duffel\w*", "Luggage & Bags > Duffel Bags", ""),
+    (r"handgep[äa]ck|\w*koffer\b|trolley", "Luggage & Bags", ""),
+    (r"\bstuhl\b|\w*stuhl\b", "Furniture > Chairs", ""),
+    (r"\w*tasche\b|\w*taschen\b|\w*bag\b|\w*beutel\b", "Luggage & Bags", ""),
+    (r"badespielzeug", "Toys & Games > Toys > Bath Toys", ""),
+    (r"\w*bausteine\b|baukl[öo]tze", "Toys & Games > Toys > Building Toys", ""),
+    (r"springbrunnen|tischbrunnen|zimmerbrunnen", "Home & Garden > Decor > Fountains & Ponds", ""),
+    (r"leinwand", "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Textiles > Crafting Canvas > Painting Canvas", ""),
+    (r"wandkunst|wandbild|led-bild|\bbild\b|poster|kunstdruck", "Home & Garden > Decor > Artwork", ""),
+    (r"dekokissen|zierkissen|kissenbezug|sofakissen|knoten kissen", "Home & Garden > Decor > Throw Pillows", ""),
+    (r"haribo|trolli|bonbon\w*|gummib[äa]r\w*|schokolade\w*|lutscher|kaugummi", "Food, Beverages & Tobacco > Food Items > Candy & Chocolate", ""),
+    (r"zitruspresse|pizza-?schaufel|grillkorb|grill-?thermometer|thermometer f[üu]r grill|k[üu]chenhelfer\w*|weinbel[üu]fter|eisw[üu]rfel\w*|getreidespender|fingerschutz|abflusskorb", "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils", ""),
+    (r"tumbler", "Home & Garden > Kitchen & Dining > Tableware > Drinkware", ""),
+    (r"kuchenplatte|\bdish\b", "Home & Garden > Kitchen & Dining > Tableware > Dinnerware", ""),
+    (r"abflussreiniger|mattenreiniger|staubbl[äa]ser|bildschirmreiniger|b[üu]rsten-set", "Home & Garden > Household Supplies > Household Cleaning Supplies", ""),
+    (r"reiseadapter|\badapter\b", "Electronics > Electronics Accessories > Power > Power Adapters & Chargers", ""),
+    (r"funkger[äa]t|walkie", "Electronics > Communications > Communication Radios > Two-Way Radios", ""),
+    (r"gimbal|stativ\b|selfie-?stick", "Cameras & Optics > Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers & Supports", ""),
+    (r"f[üu]ller\b|kugelschreiber|\bstifte?\b", "Office Supplies > Office Instruments > Writing & Drawing Instruments > Pens & Pencils", ""),
+    (r"fotohintergrund", "Cameras & Optics > Photography > Lighting & Studio > Studio Backgrounds", ""),
+    (r"lampion\w*|hawaiikette|kugeln im netz", "Arts & Entertainment > Party & Celebration > Party Supplies", ""),
+    (r"w[äa]schesack|w[äa]schekorb|w[äa]schebeutel", "Home & Garden > Household Supplies > Laundry Supplies > Laundry Baskets", ""),
+    (r"\bgolf\w*", "Sporting Goods > Outdoor Recreation > Golf", ""),
+    (r"\w*trainer\b|trainingsger[äa]t|gewichthebergurt|boxsack|bauchmuskel\w*|yoga[- ]?gurt|\w*stretch\w*|wandkletter\w*|fitness\w*", "Sporting Goods > Exercise & Fitness", ""),
+    (r"m[öo]belheber", "Hardware > Tools", ""),
+    (r"\w*schmuck\b", "Apparel & Accessories > Jewelry", ""),
+    (r"animatronic|spinnennetz|halloween|\bskelett\w*|\w*skelett\b|totenkopf|grabstein|dekostoff horror|\bgeist\b|\bhexe\b", "Home & Garden > Decor > Seasonal & Holiday Decorations", ""),
+    (r"^(?!.*(tv|android|musik|sound|lautsprecher|bluetooth|halloween|totenkopf|geschenkset)).*(aufbewahrung\w*|organizer|\w*truhen?\b|\w*box\b|\w*k[öo]rbe?\b|\w*kiste\b|beh[äa]lter|\w*eimer\b)", "Home & Garden > Household Supplies > Storage & Organization", ""),
+    (r"mp3-?player|musikplayer", "Electronics > Audio > Audio Players & Recorders", ""),
+]
+_L = [(re.compile(m, re.I), z, b) for m, z, b in LEER_REGELN]
+
+
+def ziel_leer(titel, tags=(), typ=""):
+    """Google-Pfad für ein Kanal-Produkt ohne Wert — (pfad, quelle) oder (None, None)."""
+    t = titel or ""
+    if "bruder" in {x.lower() for x in tags}:
+        return "Toys & Games > Toys", "tags"              # Bruder-Modelle (Traktor, Kettendozer, bworld-Figuren)
+    for rx, z, b in _L:
+        if not rx.search(t):
+            continue
+        if b == "tier" and MENSCH.search(t):
+            continue                                   # «Katzen-Slipper für Damen» = Schuh
+        if z == GROB:
+            if AUSSEN.search(t):
+                return None, None                      # Kinder-/Kostümkleidung: eigene Zweige, nicht raten
+            return (ziel(t) or GROB), "titel"
+        return z, "titel"
+    try:
+        from google_kategorie import kategorie        # gepflegte Tag-/Warengruppen-Logik (leer schlägt falsch)
+        z = kategorie(t, tags, typ)
+    except Exception as e:
+        print(f"  google_kategorie.kategorie nicht nutzbar: {type(e).__name__}: {e}", file=sys.stderr)
+        z = None
+    if z == GROB:
+        z = ziel(t) or GROB
+    return (z, "tags") if z else (None, None)
 
 
 def ziel(titel):
@@ -86,8 +371,9 @@ def export():
     pfad = os.environ.get("EXPORT")
     if pfad and os.path.exists(pfad):
         return [json.loads(l) for l in open(pfad)]
-    inner = ('{ products(query:"status:active") { edges { node { id handle title '
-             'metafield(namespace:"mm-google-shopping", key:"google_product_category"){ value } } } } }')
+    inner = ('{ products(query:"status:active") { edges { node { id handle title productType tags '
+             'g:publishedOnPublication(publicationId:"%s") '
+             'metafield(namespace:"mm-google-shopping", key:"google_product_category"){ value } } } } }' % GOOGLE_KANAL)
     b = gql('mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id} userErrors{message}}}', {"q": inner})["bulkOperationRunQuery"]
     if b["userErrors"]:
         raise RuntimeError("Bulk-Export: " + b["userErrors"][0]["message"])
@@ -104,50 +390,78 @@ def export():
     return [json.loads(l) for l in open(ziel_)]
 
 
+def schreiben(plan, alt, f):
+    """metafieldsSet in 25er-Blöcken, Rücklesen aus der Antwort; Ledger-Zeile nur bei bestätigtem Wert."""
+    ok = fehl = 0
+    for i in range(0, len(plan), 25):
+        teil = plan[i:i + 25]
+        m = [{"ownerId": pid, "namespace": "mm-google-shopping", "key": "google_product_category",
+              "type": "single_line_text_field", "value": z} for pid, _, _, z in teil]
+        r = gql('mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m){metafields{owner{... on Product{id}} value} userErrors{message}}}',
+                {"m": m})["metafieldsSet"]
+        if r["userErrors"]:
+            fehl += len(teil)
+            print("  Fehler:", r["userErrors"][0]["message"])
+            continue
+        gesetzt = {(x["owner"] or {}).get("id"): x["value"] for x in r["metafields"]}
+        for pid, h, _, z in teil:
+            if gesetzt.get(pid) == z:
+                ok += 1
+                f.write(f"{h}\t{alt}\t{z}\n")
+            else:
+                fehl += 1
+    return ok, fehl
+
+
 def main():
-    print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: Google-Kategorie fein · {'SCHARF' if SCHARF else 'TROCKEN'}")
+    print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: Google-Kategorie fein + leer · {'SCHARF' if SCHARF else 'TROCKEN'}")
     gueltig = taxonomie()
-    for _, z in REGELN:
+    for z in [z for _, z in REGELN] + [z for _, z, _ in LEER_REGELN]:
         if z not in gueltig:
             raise RuntimeError(f"Google-Pfad unbekannt: {z} — nichts geschrieben")
-    rows = [r for r in export() if ((r.get("metafield") or {}).get("value") or "") == GROB]
+    alle = export()
+    # (1) grob «Clothing» → Unterkategorie
+    rows = [r for r in alle if ((r.get("metafield") or {}).get("value") or "") == GROB]
     plan, offen = [], []
     for r in rows:
-        z = ziel(r.get("title", ""))
+        # Handschuh, Mütze, Gürtel, Schuh, Brille zuerst: eigener Zweig ausserhalb «Clothing» — sonst machte
+        # «Fleece-gefütterte Handschuhe» die Oberteil-Regel (fleece) zum Oberteil. Tier/Baby/Spielzeug-Treffer
+        # zählen hier nicht (GROB_ERLAUBT): wer schon «Clothing» trägt, ist Mode.
+        z2, q = ziel_leer(r.get("title", ""), (), "")
+        z = z2 if (q == "titel" and z2 and z2 != GROB and z2.startswith(GROB_ERLAUBT)) else ziel(r.get("title", ""))
         (plan if z else offen).append((r["id"], r.get("handle", ""), r.get("title", ""), z))
     zaehl = collections.Counter(z.replace(C, "") for *_, z in plan)
     print(f"grob «Clothing»: {len(rows)} · einordenbar {len(plan)} · bleibt grob {len(offen)}")
     for k, v in zaehl.most_common():
         print(f"  {v:5d}  {k}")
+    # (2) leer im Google-Kanal → Pfad aus dem Titel (sonst gepflegte Tag-Logik, sonst leer lassen)
+    leer = [r for r in alle if r.get("g") and not ((r.get("metafield") or {}).get("value") or "").strip()]
+    lplan, loffen = [], []
+    quelle = collections.Counter()
+    for r in leer:
+        z, q = ziel_leer(r.get("title", ""), r.get("tags") or [], r.get("productType") or "")
+        if z and z in gueltig:
+            lplan.append((r["id"], r.get("handle", ""), r.get("title", ""), z))
+            quelle[q] += 1
+        else:
+            loffen.append(r.get("title", ""))
+    lzaehl = collections.Counter(z for *_, z in lplan)
+    print(f"leer im Google-Kanal: {len(leer)} · einordenbar {len(lplan)} ({dict(quelle)}) · bleibt leer {len(loffen)}")
+    for k, v in lzaehl.most_common(25):
+        print(f"  {v:5d}  {k}")
     if not SCHARF:
         import random
         random.seed(7)
-        for k in zaehl:
-            bsp = [t for _, _, t, z in plan if z.replace(C, "") == k][:200]
-            print(f"\n[{k}] Stichprobe:", " | ".join(t[:45] for t in random.sample(bsp, min(6, len(bsp)))))
-        print("\n[bleibt grob] Stichprobe:", " | ".join(t[:40] for *_, t, _ in random.sample(offen, min(12, len(offen)))))
+        for k in list(lzaehl)[:40]:
+            bsp = [t for _, _, t, z in lplan if z == k]
+            print(f"\n[{k}] Stichprobe:", " | ".join(t[:45] for t in random.sample(bsp, min(5, len(bsp)))))
+        print("\n[bleibt leer] Stichprobe:", " | ".join(t[:40] for t in random.sample(loffen, min(12, len(loffen)))))
         return
-    ok = fehl = 0
     with open(LEDGER, "a", encoding="utf-8") as f:
-        for i in range(0, len(plan), 25):
-            teil = plan[i:i + 25]
-            m = [{"ownerId": pid, "namespace": "mm-google-shopping", "key": "google_product_category",
-                  "type": "single_line_text_field", "value": z} for pid, _, _, z in teil]
-            r = gql('mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m){metafields{owner{... on Product{id}} value} userErrors{message}}}',
-                    {"m": m})["metafieldsSet"]
-            if r["userErrors"]:
-                fehl += len(teil)
-                print("  Fehler:", r["userErrors"][0]["message"])
-                continue
-            gesetzt = {(x["owner"] or {}).get("id"): x["value"] for x in r["metafields"]}
-            for pid, h, _, z in teil:
-                if gesetzt.get(pid) == z:
-                    ok += 1
-                    f.write(f"{h}\t{GROB}\t{z}\n")
-                else:
-                    fehl += 1
-    print(f"FERTIG: {ok} eingeordnet, {fehl} Fehler, {len(offen)} bleiben grob")
-
+        ok1, fehl1 = schreiben(plan, GROB, f)
+        ok2, fehl2 = schreiben(lplan, "(leer)", f)
+    print(f"FERTIG: fein {ok1} eingeordnet ({fehl1} Fehler, {len(offen)} bleiben grob) · leer {ok2} gefüllt "
+          f"({fehl2} Fehler, {len(loffen)} bleiben leer)")
 
 if __name__ == "__main__":
     main()
