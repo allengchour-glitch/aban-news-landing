@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-28T10:51:00Z",
+ "stand": "2026-09-29T10:39:03Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -7,94 +7,94 @@
   "TechCrunch AI",
   "MIT Tech Review",
   "heise",
+  "Golem",
   "t3n",
   "netzpolitik.org"
  ],
  "nicht_erreichbar": [
   "VentureBeat AI",
-  "Golem",
   "BSI"
  ],
  "fenster_h": 72,
  "items": [
   {
-   "t": "Auf Sand gebaut: Oracle-Schreiben wirft Schlaglicht auf Probleme bei KI-Projekten",
-   "u": "https://t3n.de/news/oracle-probleme-ki-projekte-1765379/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-28T10:00:17Z",
-   "s": "Oracle steht bei dem milliardenschweren Project Jupiter offenbar unter Druck. Der Konzern hat dem Projektentwickler eine Force-Majeure-Mitteilung geschickt, um sich finanziell abzusichern. Der Move ze…",
+   "t": "Project Jupiter: Oracle bringt durch Zahlungsstopp zentralen OpenAI-Ausbau ins Wanken",
+   "u": "https://www.golem.de/news/project-jupiter-oracle-bringt-durch-zahlungsstopp-zentralen-openai-ausbau-ins-wanken-2609-213526.html",
+   "q": "Golem",
+   "d": "2026-09-29T10:15:02Z",
+   "s": "Oracle hat mit einem wahnwitzigen Konzept zur Energieversorgung breite Proteste gegen sein riesiges Rechenzentrum in New Mexico ausgelöst. Nun stoppt der Trump-Vertraute Larry Ellison die Zahlungen. (…",
    "sprache": "de"
   },
   {
-   "t": "Holo4: powering generalist computer-use agents",
-   "u": "https://huggingface.co/blog/Hcompany/holo4",
-   "q": "Hugging Face",
-   "d": "2026-09-28T09:44:05Z",
-   "s": "",
-   "sprache": "en"
-  },
-  {
-   "t": "OpenAI pausiert Training neuer KI-Modelle nach weiterem Vorfall: So soll es jetzt weitergehen",
-   "u": "https://t3n.de/news/openai-pausiert-ki-training-neue-modelle-1765374/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-28T09:30:46Z",
-   "s": "OpenAI zieht die Notbremse bei der KI‑Entwicklung. Das Training noch leistungsfähigerer Modelle wird nach einem weiteren Zwischenfall vorerst gestoppt. Was das Unternehmen mit dieser Pause erreichen w…",
+   "t": "Midjourney Medical: 100 Prozent Weltbild, 99,9 Prozent Blödsinn",
+   "u": "https://www.golem.de/news/midjourney-medical-100-prozent-weltbild-99-9-prozent-bloedsinn-2609-213407.html",
+   "q": "Golem",
+   "d": "2026-09-29T10:00:02Z",
+   "s": "Mit Midjourney Medical lässt Gründer und CEO David Holz seinen Träumen von einer Welt nach der Singularität freien Lauf. Circa 0,1 Prozent seiner Versprechen sollte man ernst nehmen. Ein IMHO von Tim …",
    "sprache": "de"
   },
   {
-   "t": "Fast eine Milliarde Dollar mehr: KI treibt US-Krankenhauskosten in die Höhe",
-   "u": "https://www.heise.de/news/Fast-eine-Milliarde-Dollar-mehr-KI-treibt-US-Krankenhauskosten-in-die-Hoehe-11467841.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise+ | Analogfotografie: Lomografie als Gegenbewegung zur digitalen Perfektion",
+   "u": "https://www.heise.de/ratgeber/Analogfotografie-Lomografie-als-Gegenbewegung-zur-digitalen-Perfektion-11463536.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
    "q": "heise",
-   "d": "2026-09-28T09:05:00Z",
-   "s": "Laut aktueller Analyse habe sich die Zahl der Patienten mit komplexen Diagnosen seit 2023 deutlich erhöht, jedoch ohne entsprechenden Anstieg bei Behandlungen.",
+   "d": "2026-09-29T10:00:00Z",
+   "s": "Unscharf, körnig, unperfekt – und gerade deshalb faszinierend. Lomografie feiert ihr Comeback im Zeitalter von digitaler Bilderflut und KI.",
    "sprache": "de"
   },
   {
-   "t": "Insta360 lotet Kamerabrillen als neue Produktkategorie aus",
-   "u": "https://www.heise.de/news/Insta360-lotet-Kamerabrillen-als-neue-Produktkategorie-aus-11467791.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Anthropic warnt vor existenziellen KI-Risiken – und plant trotzdem den Mega-IPO",
+   "u": "https://t3n.de/news/anthropic-warnt-vor-existenziellen-ki-risiken-und-plant-trotzdem-den-mega-ipo-1765545/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-29T09:35:02Z",
+   "s": "Im Prospekt für den geplanten Börsengang warnt Anthropic vor möglichen katastrophalen Folgen seiner eigenen KI-Modelle. Gleichzeitig wächst das Geschäft rasant – ebenso wie Verluste und Kosten. weiter…",
+   "sprache": "de"
+  },
+  {
+   "t": "Wer darf was? Okta will KI-Agenten an die Leine nehmen",
+   "u": "https://www.heise.de/news/Wer-darf-was-Okta-will-KI-Agenten-an-die-Leine-nehmen-11469407.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-09-28T09:03:00Z",
-   "s": "Insta360 prüft Kamerabrillen als neue Geräteklasse. Im Fokus soll die unkomplizierte Aufnahme hochwertiger Bilder statt KI-Funktionen stehen.",
+   "d": "2026-09-29T09:31:00Z",
+   "s": "Okta und namhafte Partner gründen die Blueprint Alliance, um KI-Agenten abzusichern und gemeinsame Standards zu etablieren.",
    "sprache": "de"
   },
   {
-   "t": "Who’s liable when AI agents go rogue?",
-   "u": "https://www.technologyreview.com/2026/09/28/1145197/whos-liable-when-ai-agents-go-rogue/",
-   "q": "MIT Tech Review",
-   "d": "2026-09-28T08:06:22Z",
-   "s": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of technology to help you understand what’s coming next. You can read more from the series here. Over the past few mon…",
-   "sprache": "en"
+   "t": "OpenAI und Anthropic: Was vom KI-Hype des Sommers wirklich übrig bleibt",
+   "u": "https://t3n.de/news/openai-anthropic-ki-hype-1764681/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-29T07:55:00Z",
+   "s": "Selten war die Schlagzeilendichte größer: Sprachmodelle sollen kurz vor der Superintelligenz stehen und uns alle umbringen. Die beiden KI-Wissenschaftlerinnen Tweiterlesen auf t3n.de",
+   "sprache": "de"
   },
   {
-   "t": "Anthropic’s CEO is about to have dinner with President Trump",
-   "u": "https://techcrunch.com/2026/09/27/anthropics-ceo-is-about-to-have-dinner-with-president-trump/",
+   "t": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity",
+   "u": "https://techcrunch.com/2026/09/28/anthropics-prospectus-details-losses-growth-and-yes-a-warning-that-its-ai-could-end-humanity/",
    "q": "TechCrunch AI",
-   "d": "2026-09-27T20:34:28Z",
-   "s": "This will be the first one-on-one meeting between Dario Amodei and Donald Trump",
+   "d": "2026-09-29T05:13:43Z",
+   "s": "In its prospectus, Anthropic just told investors it's losing tens of billions of dollars a year, but also growing like crazy, and — oh yeah — its own AI might pose an existential risk to humanity.",
    "sprache": "en"
   },
   {
-   "t": "Can Muse overcome Meta’s trust issues?",
-   "u": "https://techcrunch.com/2026/09/27/can-muse-overcome-metas-trust-issues/",
+   "t": "Peak XV ups Surge seed investment ceiling to $5M, unveils 18-startup cohort",
+   "u": "https://techcrunch.com/2026/09/28/peak-xv-goes-bigger-at-seed-with-new-surge-cohort-as-series-a-bar-rises/",
    "q": "TechCrunch AI",
-   "d": "2026-09-27T19:57:30Z",
-   "s": "On Equity, we discussed how Meta's AI announcement managed to steal the spotlight from OpenAI and Anthropic.",
+   "d": "2026-09-29T00:30:00Z",
+   "s": "Thirteen of the 18 startups in Peak XV’s latest Surge cohort are targeting global markets, while more than half are based in India.",
    "sprache": "en"
   },
   {
-   "t": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-   "u": "https://openai.com/index/proaction",
+   "t": "How we will do better for Australia",
+   "u": "https://openai.com/index/how-we-will-do-better-for-australia",
    "q": "OpenAI",
-   "d": "2026-09-25T19:00:00Z",
-   "s": "With Codex, GPT-Live-1, and GPT-6 Astra, Proaction builds, operates, and sells modern fleet management faster.",
+   "d": "2026-09-28T19:00:00Z",
+   "s": "OpenAI apologises for incidents involving Australian government websites and outlines stronger safeguards and support to strengthen Australia’s cyber defences.",
    "sprache": "en"
   },
   {
-   "t": "The Download: the Pentagon’s AI-powered lie detector and young organ limits",
-   "u": "https://www.technologyreview.com/2026/09/25/1145157/the-download-pentagon-ai-lie-detector-young-organ-limits/",
-   "q": "MIT Tech Review",
-   "d": "2026-09-25T12:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The Pentagon wants $30 million to build an AI-powered lie dete…",
+   "t": "Towards safety cases for frontier AI training",
+   "u": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
+   "q": "OpenAI",
+   "d": "2026-09-28T19:00:00Z",
+   "s": "Our early guidelines for safety cases in frontier AI training cover technical safeguards, operational practices, and investigating misalignment incidents",
    "sprache": "en"
   }
  ]
