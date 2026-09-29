@@ -1156,3 +1156,28 @@ gid://shopify/Product/15449175523713	ok	Blumen-Bettwäsche-Set aus Baumwolle, 4-
 gid://shopify/Product/15449461260673	ok	Nagelfeile mit Akku – Lautlos
 gid://shopify/Product/15470376452481	nicht-versendbar	PC-Koffer mit Universalrädern
 gid://shopify/Product/15480492523905	ok	Mobile SSD für direkte Smartphone-Verbindung
+gid://shopify/Product/15449128665473	nicht-versendbar	Solar 4G Wildtierkamera mit Nachtsicht
+gid://shopify/Product/15502138605953	ok	Multifunktionales Fitness Board – Upgrade
+gid://shopify/Product/15449126732161	nicht-versendbar	Edles Katzenklo aus Edelstahl, komplett geschlossen
+gid://shopify/Product/15449482428801	ok	LED-Makeup-Spiegel mit Licht
+gid://shopify/Product/15454193811841	ok	Intelligenter Futtermatcher für Hunde und Katzen
+gid://shopify/Product/15454202069377	ok	Automatischer Futternapf für Katzen
+gid://shopify/Product/15459128246657	ok	Intelligente Abfallbox mit Induktion
+gid://shopify/Product/15495895581057	ok	Katzen Kratzbaum mit Emoji-Design
+gid://shopify/Product/15452680290689	nicht-versendbar	Campingliege mit Fussstütze
+gid://shopify/Product/15454204756353	nicht-versendbar	Fernbedienung Turmventilator
+gid://shopify/Product/15459592470913	ok	Kühler Luftbefeuchter
+gid://shopify/Product/15470395720065	nicht-versendbar	Mobiles 20L Outdoor-Waschbecken mit Wassertank
+gid://shopify/Product/15479417569665	ok	Kabelloser Hochdruckreiniger für Auto und Zuhause
+gid://shopify/Product/15497526083969	ok	Leder Martin Boots mit spitzer Zehenkappe
+gid://shopify/Product/15453761012097	ok	Multi-Funktions-Nähmaschine Elektrisch Automatisch mit Erweiterungsplatine
+gid://shopify/Product/15454235001217	ok	Turbofan für Reinigung
+gid://shopify/Product/15478613213569	ok	Maillard Doppel-Schicht-Garn Bettwäsche-Set
+gid://shopify/Product/15468962578817	ok	Deckenventilator mit Fernbedienung
+gid://shopify/Product/15501745291649	ok	Körperbrett für Hause
+gid://shopify/Product/15503956312449	nicht-versendbar	Geschenkset: Lippenstift & Make-up Box
+gid://shopify/Product/15450782957953	nicht-versendbar	Fussballtor 240x90x150 cm Stahl
+gid://shopify/Product/15451638301057	ok	HD Astronomisches Teleskop für Kinder
+gid://shopify/Product/15468735955329	ok	Trolley Koffer Set
+gid://shopify/Product/15484488548737	nicht-versendbar	Halbgeschlossene Katzentoilette, abnehmbar
+gid://shopify/Product/15506448646529	ok	4-teiliges Hochzeitsbettwäsche-Set mit Stickerei
