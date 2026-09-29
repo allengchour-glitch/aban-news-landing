@@ -161,7 +161,7 @@ class ScreenTour : TourBase() {
         shot("02-start-reihen")
 
         go("https://luxestyle.ch/collections/sub-kleider")
-        waitFor("Empfohlen"); settle()
+        waitFor("Sortieren"); settle()
         shot("03-kollektion")
 
         go("https://luxestyle.ch/products/damen-polka-dot-sommerkleid-mit-spaghettitrage-636400")
@@ -201,8 +201,11 @@ class ScreenTour : TourBase() {
         rule.onAllNodesWithText("Damen").onFirst().performClick()
         settle(1500)
         rule.onAllNodesWithText("Alles ansehen").onFirst().performClick()
-        waitFor("Empfohlen"); settle()
+        waitFor("Sortieren"); settle()
         shot("09b-damen-unterkategorien")
+        rule.onAllNodesWithText("Preis").onFirst().performClick()
+        settle(1200)
+        shot("09c0-preis-menue")
         rule.onAllNodesWithText("Bis CHF 25").onFirst().performClick()
         waitForPrices(); settle()
         shot("09c-filter-bis-25")
@@ -267,7 +270,7 @@ class ScreenTour : TourBase() {
         shot("22b-start-budget")
         scrollTo("home", "Beliebte Kategorien"); settle(5000)
         shot("22c-start-kacheln")
-        scrollTo("home", "Premium Geschenke"); settle(3000)
+        scrollTo("home", "Make-up"); settle(3000)
         shot("22d-start-unten")
     }
 
@@ -375,7 +378,7 @@ class StoreShots : TourBase() {
         settle()
         shot("store-1-start")
         go("https://luxestyle.ch/collections/sub-kleider")
-        waitFor("Empfohlen"); settle()
+        waitFor("Sortieren"); settle()
         shot("store-2-kleider")
         go("https://luxestyle.ch/products/gestreiftes-armelloses-mini-kleid-mit-v-aussch-612500")
         waitForBuy(); settle()

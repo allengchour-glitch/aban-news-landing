@@ -259,8 +259,7 @@ private fun Results(
                         Spacer(Modifier.height(10.dp))
                         CategoryChips(categories)
                     }
-                    SortRow(sort, listOf(Sort.FEATURED, Sort.PRICE_ASC, Sort.PRICE_DESC), edge = 0.dp, onSort = onSort)
-                    FilterRow(filters, edge = 0.dp, onChange = onFilters)
+                    ListControls(sort, listOf(Sort.FEATURED, Sort.PRICE_ASC, Sort.PRICE_DESC), onSort, filters, onFilters)
                 }
             }
         },

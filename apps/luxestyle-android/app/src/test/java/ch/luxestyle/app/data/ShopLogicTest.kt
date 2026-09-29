@@ -75,7 +75,7 @@ class ShopLogicTest {
 
     @Test
     fun saisonWechseltMitDemKalender() {
-        assertEquals("jacken-outdoor", seasonFor(9).first)
+        assertEquals("damen-strick-pullover", seasonFor(9).first)
         assertEquals("sommer", seasonFor(7).first)
         assertEquals("premium-geschenke", seasonFor(12).first)
     }

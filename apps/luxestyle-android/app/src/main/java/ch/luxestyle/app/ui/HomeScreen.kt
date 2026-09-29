@@ -66,10 +66,16 @@ import java.util.Calendar
 fun seasonFor(month: Int): Pair<String, String> = when (month) {
     3, 4, 5 -> "neu-eingetroffen" to "Frühling"
     6, 7, 8 -> "sommer" to "Sommer"
-    9, 10 -> "jacken-outdoor" to "Herbst"
+    // Nicht „Jacken & Outdoor": die führt mit Herrenjacken, das Titelbild zeigt aber Damenmode
+    9, 10 -> COSY to "Herbst"
     11, 12 -> "premium-geschenke" to "Geschenkzeit"
-    else -> "jacken-outdoor" to "Winter"
+    else -> COSY to "Winter"
 }
+
+private const val COSY = "damen-strick-pullover"
+
+/** Die Saison-Reihe: im Herbst und Winter Damen-Jacken und -Mäntel, sonst die Saison-Kollektion. */
+fun seasonRail(seasonHandle: String): RailSpec = if (seasonHandle == COSY) COAT_RAIL else RailSpec(seasonHandle)
 
 const val WELCOME_CODE = "WELCOME10"
 
@@ -85,23 +91,44 @@ val LUCK_RAIL = RailSpec(
 )
 
 /**
- * Reihen der Startseite, Mode zuerst (Neuheiten und Bestbewertet des ganzen Shops sind oft Technik
- * und Haustier – die kommen weiter unten). Technik/Kinder/Sport bleiben über die Bereiche oben erreichbar.
+ * Herbst/Winter: die Kollektion „Jacken & Outdoor" führt meistverkauft mit Herrenjacken –
+ * darum Damen-Jacken, -Mäntel und Blazer über die Produktsuche.
+ */
+val COAT_RAIL = RailSpec(
+    handle = "damen-jacken-maentel",
+    title = "Jacken & Mäntel",
+    query = "product_type:Damenmode AND (title:*jacke* OR title:*mantel* OR title:*parka* OR title:*blazer*)",
+    searchTerm = "Mantel",
+)
+
+/**
+ * Die Kollektionen „Schuhe" und „Stiefel & Boots" führen meistverkauft mit Kinderschuhen. Eindeutige
+ * Begriffe statt „*stiefel*": zwei „Stiefel" zeigen auf dem Bild Sandalen (Katalogfehler).
+ */
+val BOOT_RAIL = RailSpec(
+    handle = "damen-stiefel",
+    title = "Stiefel & Boots",
+    query = "product_type:Damenschuhe AND (title:*overknee* OR title:*ankle* OR title:*stiefelette* OR title:*boots*) AND NOT title:*schuhe* AND NOT title:*sandale*",
+    searchTerm = "Stiefel",
+)
+
+/**
+ * Reihen der Startseite: Damenmode und Schmuck, danach Beauty und Geschenke.
+ * Gemessen (Kimi-Bewertung + Shop-Abfrage): „Neu eingetroffen" waren acht Beamer, „Bestseller"
+ * mischte Bratpfanne und Heizjacke, „Schuhe" zeigte Kinderschuhe, „Wohnen" Kissenbezüge –
+ * das passte nicht zu „Premium-Style". Alles davon bleibt über Kategorien und Suche erreichbar.
  */
 fun homeRails(seasonHandle: String, halloween: Boolean = false): List<RailSpec> = listOfNotNull(
     RailSpec("damen-mode", newest = true, title = "Neu bei Damen"),
     RailSpec("halloween").takeIf { halloween },
-    RailSpec(seasonHandle),
+    seasonRail(seasonHandle),
     // Nur Damen-Schmuck: die Kollektion „Schmuck & Uhren" führt meistverkauft mit Fitness- und Kinder-GPS-Uhren
     RailSpec("schmuck-uhren", title = "Schmuck", query = "tag:schmuck AND tag:damen"),
     LUCK_RAIL,
     RailSpec("damen-mode", title = "Beliebt bei Damen"),
-    RailSpec("schuhe"),
-    RailSpec("fur-ihn"),
-    RailSpec("bestseller"),
-    RailSpec("neu-eingetroffen", newest = true),
-    RailSpec("beauty-pflege"),
-    RailSpec("wohnen-dekoration"),
+    RailSpec("damen-strick-pullover", title = "Strick & Pullover"),
+    BOOT_RAIL.takeIf { seasonHandle == COSY },
+    RailSpec("make-up", title = "Make-up"),
     RailSpec("premium-geschenke"),
 ).distinctBy { it.handle to it.newest }
 
@@ -149,7 +176,7 @@ fun HomeScreen() {
                 val likedHandles = liked.map { it.handle }.toSet()
                 val sale = onSale(s.value.rails.flatMap { it.second })
                 val specs = homeRails(seasonHandle, halloween).associateBy { it.handle to it.title }
-                val seasonAt = s.value.rails.indexOfFirst { it.first.handle == seasonHandle }
+                val seasonAt = s.value.rails.indexOfFirst { it.first.handle == seasonRail(seasonHandle).handle }
                 val tilesAt = s.value.rails.indexOfFirst { it.first.title == "Beliebt bei Damen" }
                 s.value.rails.forEachIndexed { i, (info, cards) ->
                     item(key = "rail-$i") {
