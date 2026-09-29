@@ -6,6 +6,17 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🤝 «andere session lernt für dich»: Lehren der Lern-Session übernommen (20:15)
+Die Session lebt auf `origin/claude/selbststaendiges-lernen-h48e6m` (eigene Historie, keine gemeinsame Basis; letzter
+Commit 27.09. 19:59). Mein erster Blick fand sie NICHT: `git fetch origin claude/luxestyle-status-tztnn1` holt nur den
+eigenen Branch, erst ein voller `git fetch origin` (>120 s) zeigte die neuen Branches. **Übernommen:** 21 Vault-Notizen,
+`dropship/LERNEN-MCP-KONNEKTOREN-2026-09-27.md`, `tools/browser.mjs` (+ `tools/varianten_preis.mjs` lag schon da).
+**Nachgemessen:** Browser-Selbsttest 12/12, luxestyle.ch HTTP 200 in 390 px → CLAUDE.md-Satz «Cloud hat keinen Browser»
+korrigiert. **Verträglichkeit geprüft:** ihre Preisregel = max(heute, Zielpreis 38 % nach WELCOME10), nur heben;
+`preis_verlustschutz` hebt auch nur → kein Ping-Pong. **Ihre wichtigsten Befunde:** Import-Chargen tragen Faktor ≈1.41
+auf den EK (≈21 % Marge nach WELCOME10); «Taschenmesser 2× bestellt» war 2× erstattet — Verkäufer nur zählen, wenn
+bezahlt + erfüllt + ACTIVE; TikTok-Ads-Konnektor steht auf `connect_incomplete` (nur der Betreiber kann ihn abschliessen).
+
 ## 2026-09-29 · 💸 63 Verlustartikel kaufbar: Tagestor hielt einen toten Lauf 16 h für fertig (Verbesserungsrunde 19:55)
 **GEMESSEN:** Ampel «VERLUST: 63 kaufbar, nur Preis-Meldung» — live z. B. «Hundebett» CHF 81.90 bei EK 108.95,
 «Dampfkochtopf» 69.90 / 94.59, «Katzen-Kratzbaum» 33.90 / 48.56 (ACTIVE, CONTINUE): jeder Verkauf kostet Geld.
@@ -17133,6 +17144,10 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-27 · 🛒 **#1019 (neue Kundin) bestellte einen bei CJ AUSGELISTETEN Artikel: `cj_verfuegbarkeit` prüft jedes Produkt nur einmal + lief ohne `/tmp/_cjtok` als No-op → `cj_ausgelistet_sichtbar.py` (beworbene Ware neu prüfen), Keepalive schreibt `_cjtok`; Ersatz Fortura CE91772, Mail-Entwurf; `productUpdate(tags:)` ersetzt ALLE Tags → nur `tagsAdd`.** Einmal geprüft ≠ weiter lieferbar → Journal Nachtrag 105
+- 2026-09-27 · 🥁 **«drum and base? … besser»: `render.sh`-Begrenzer war in JEDEM Render wirkungslos (`alimiter` Standard `level=1` hebt wieder auf 0 dBFS) → `level=0` + 4× Überabtastung; 5 Hype/House-Stücke +4 dBTP neu gemastert; DnB v5 im blinden A/B (3 Läufe) kein klarer Gewinn → Juli-Fassung bleibt; NEU `luxe-dnb-drive.wav` (Drop ab 0 s, v2 gewinnt 2/3 blind); `produce/hoerprobe.py` (blind).** Ausgang messen, nicht dem Parameternamen glauben → Journal Nachtrag 103
+- 2026-09-27 · 🎸 **«musik noch besser»: neues Stück `luxe-anime-opening.wav` (J-Rock-Opening 176 BPM, kein Intro, Gemini-Hörschleife 6→9/10) in 7 Reel-Pools; die 5 Hype/House-Stücke hatten +4 dBTP (meine «Gegenprobe» war Mono→Stereo, −3 dB — falsch); celtic-epic fehlte in `CREDITS.txt` → `schnitt.py` hätte es abgelehnt.** Zweiter Messweg vor jeder Reparatur; KI-Hörer nicht vorsagen → Journal Nachtrag 102
+- 2026-09-27 · 💰 **Bildpreis ≠ Caption: 2 von 3 wartenden CDN-Reels trugen im Video einen alten Preis (CHF 5.90 bei Caption/Live 15.90) — der Preisschutz hob nur Shop + Caption → `meisterwerk_tor.py` liest den eingebrannten Preis (OCR, `PREIS_SOLL` aus der Caption), beide Reel-Poster reichen ihn durch; Kanarienvogel ok, 0 Fehlalarme.** Ein Wert an zwei Orten = zwei Prüfungen → Journal Nachtrag 101
 - 2026-09-27 · 📴 **«meta brauch nicht habe ja metricool»: Bildpost + Karussell haben jetzt einen Metricool-Weg (Entwurf 1/8 Bilder auf IG+FB getestet und gelöscht), Autopilot schaltet bei `data_access_expires_at` selbst um (`/me` sagt nach Ablauf evtl. weiter ok), Kaufbar-Prüfung tokenlos; Nebenfund: Saison-Zeilen ohne Shopify-ID bekamen auf FB die Startseite → Zeilen-ID = Handle.** Ablaufdatum ≠ Fehlercode → Journal Nachtrag 100
 - 2026-09-27 · 🏆 **«jeder Post ein Meisterwerk»: `meisterwerk_tor.py` vor jedem Reel-Post (Hook ≥3 in der 1. Sekunde, ≤50 % Standbild, ≥1080×1920, 6–35 s, −30…−8 LUFS) — 8/14 gepostete fielen durch, die 2 heute geplanten gelöscht (eine Diashow mit Bildpreis 4.90 bei live 15.90); Kaufbar-Prüfung über die TOKENLOSE Storefront API (von der Play-Store-App-Session).** Bildpreis per OCR prüfen = nächste Klasse → Journal Nachtrag 99
 - 2026-09-27 · 📊 **Betreiber: «du bist metricool master und sozial master … analysiert was am besten ist» → 30-T-Messung über Metricool: TikTok Median 272/Post, YouTube 91, IG 17, FB 1–2, Pinterest 0 (44 Pins, 0 Klicks) → TikTok 12→8 h, Pinterest 6→24 h (delegierter Entscheid), IG+FB über Metricool ohne Meta-Token, 11 fremde Entwürfe gelöscht.** Nächste Klasse: TikTok-Hook (1,8 s von 11 s) → `dropship/SOCIAL-ANALYSE-2026-09-27.md`
