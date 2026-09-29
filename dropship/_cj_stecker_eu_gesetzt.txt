@@ -108,3 +108,9 @@
 15496381661569	eu-sku-gesetzt:CJCD115277402BY	2026-09-29	Notebook-Netzteil 19.5V7.7A
 15496383103361	unklar:farbe-unbekannt	2026-09-29	USB-Ladegerät für Mobiltelefone (EU-Stecker)
 15496399225217	eu-sku-gesetzt:CJBJMRTF00091-EU	2026-09-29	2-in-1 Glätteisen & Lockenstab · 27 cm
+15496399880577	unklar:farbe-unbekannt	2026-09-29	Ultradünnes Haarglätteisen mit Nano-Keramik
+15496405975425	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab mit LCD-Temperaturanzeige
+15496409973121	unklar:farbe-unbekannt	2026-09-29	30W Multi-Funktions Netzteil mit USB
+15496410333569	unklar:farbe-unbekannt	2026-09-29	Intelligentes 4-Schacht-Ladegerät für AAA/AA-Akkus
+15496510439809	eu-sku-gesetzt:CJYD238698302BY	2026-09-29	Multifunktionale Nagelpoliermaschine mit Staubsauger
+15496534294913	eu-sku-gesetzt:CJJF119614302BY	2026-09-29	3-Rohr Lockenstab für grosse Wellen
