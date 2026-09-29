@@ -1927,3 +1927,19 @@ gid://shopify/Product/15493859639681	2026-09-29T16:32Z	schon-DRAFT	21.90	32.65	M
 gid://shopify/Product/15495067140481	2026-09-29T16:32Z	draft	22.90	33.55	Sky Innovation IMAX B6 V2 Ladegerät
 gid://shopify/Product/15495188775297	2026-09-29T16:33Z	draft	21.90	32.09	Niedliches Plüschkissen – verschiedene Designs
 gid://shopify/Product/15493857706369	2026-09-29T16:33Z	schon-DRAFT	16.90	27.09	Sportliche Freizeitschuhe für Herren
+gid://shopify/Product/15495068451201	2026-09-29T16:33Z	draft	18.90	29.08	Gestrickter Schonbezug für Sofakissen
+gid://shopify/Product/15493828903297	2026-09-29T16:33Z	draft	15.90	26.06	Smarter LED-Streifen mit Sprachsteuerung
+gid://shopify/Product/15493874319745	2026-09-29T16:33Z	draft	20.90	31.01	Japanisches Matcha Tee-Set
+gid://shopify/Product/15495193461121	2026-09-29T16:33Z	draft	17.90	27.99	Nordischer Metallkorb für Schreibtisch & Früchte
+gid://shopify/Product/15494577652097	2026-09-29T16:33Z	draft	20.90	30.84	Ölfiltertopf aus Edelstahl
+gid://shopify/Product/15493935169921	2026-09-29T16:33Z	draft	18.90	28.79	Leichte, atmungsaktive Freizeitschuhe für Herren
+gid://shopify/Product/15492130144641	2026-09-29T16:33Z	draft	15.90	25.58	Memory Foam Sitzkissen für Zuhause & Büro
+gid://shopify/Product/15495082803585	2026-09-29T16:33Z	draft	15.90	25.39	Make-up Pinsel- und Utensilienhalter aus Glas
+gid://shopify/Product/15495091650945	2026-09-29T16:33Z	draft	14.90	24.32	Sofabett-Überzug ohne Armlehnen
+gid://shopify/Product/15495128121729	2026-09-29T16:34Z	draft	21.90	31.26	Vielseitiger Freizeitschuh für Herren
+gid://shopify/Product/15494984302977	2026-09-29T16:34Z	draft	16.90	25.83	Tier- und Blumenmotiv Ölgemälde ohne Rahmen
+gid://shopify/Product/15493932319105	2026-09-29T16:34Z	draft	16.90	25.71	Faltbares Haustier-Feldbett für Camping
+gid://shopify/Product/15493871534465	2026-09-29T16:34Z	draft	16.90	25.59	Backzubehör-Set: Ovaler Teigschaber & Mixer
+gid://shopify/Product/15493800329601	2026-09-29T16:34Z	draft	15.90	24.41	Afrikanischer Batik Baumwollstoff
+gid://shopify/Product/15495226261889	2026-09-29T16:34Z	kein-verlust-live	17.90	16.31	ROCKBROS Velo Frontlicht USB-Ladefunktion
+gid://shopify/Product/15493871042945	2026-09-29T16:34Z	draft	16.90	25.19	Glättbürste Mini – konstanter Temperaturkontrolle

@@ -11,10 +11,17 @@
 - Ursache: `ohne_lieferantenref_guard.py` liess `lx-` pauschal als Quelle gelten («lieber durchlassen»). Dieselbe
   Klasse wie #1008 (bezahlt, nie lieferbar).
 
-## GETAN
-- `gueltige_ref()`: nur noch `LX-BUNDLE-…` gilt als Quelle; neue Klasse `LX_HAND` (`^lx(sch)?-` ohne Bündel) wird
-  wie «ohne SKU» behandelt → DRAFT + Tag `keine-lieferanten-ref` (rückholbar: `REVIVE=1`, sobald eine Quelle in der SKU steht).
-- Übrige Schein-SKUs bleiben wie bisher NUR gemeldet.
-- Kanarienvögel: LX-23-…/LX-DIFF-WHITE/LXSCH-GIFT → ohne Quelle; LX-BUNDLE-…, CJ-…-LXL, fortura-…-LXL, bb-…, CJYD…,
-  Printful → gültig.
-- Tote Seiten: `tote_landeseiten.py` (täglich) leitet besuchte, jetzt gedraftete Seiten auf gleichartige Ware um.
+## GETAN (korrigiert 16:50 UTC)
+- `gueltige_ref()`: `lx-` gilt nicht mehr pauschal als Quelle — nur eigene Bündel `LX-BUNDLE-…` und `LXSCH-GIFT-…`
+  (Journal 28.08.: `LXSCH-GIFT-TECH-HERO` ist ein eigenes Bündel). Die LX-Hand-Slugs erscheinen damit ab jetzt in der
+  täglichen Meldung «SKU ohne gültige Referenzform» — **gemeldet, NICHT gedraftet**.
+- ⚠️ Ein erster Entwurf draftete sie automatisch. Zurückgenommen, bevor etwas geschrieben wurde: Das Journal vom 28.08.
+  hält fest, dass die Handkuratierung Bewertungen trägt (Jade Roller 5,0★) und pauschales Draften **Betreiber-Entscheid**
+  ist. Der Trockenlauf wurde abgebrochen, am Shop ist nichts geändert.
+- Kanarienvögel: LX-23-…/LX-DIFF-WHITE → ohne Quelle (Meldung); LX-BUNDLE-…, LXSCH-GIFT-…, CJ-…-LXL, fortura-…-LXL, bb-…,
+  CJYD…, Printful → gültig.
+
+## BETREIBER-ENTSCHEID
+13 aktive Produkte ohne Bezugsquelle (Liste oben). Optionen: (a) auf Entwurf setzen (`keine-lieferanten-ref`, rückholbar,
+besuchte Seiten leitet `tote_landeseiten.py` um); (b) je Produkt eine CJ-Quelle suchen und die SKU nachtragen;
+(c) so lassen und bei einer Bestellung von Hand beschaffen. Das Kristall-Set hatte am 29.09. schon eine Kasse.
