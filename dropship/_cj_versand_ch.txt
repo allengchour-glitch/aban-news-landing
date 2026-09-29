@@ -1204,3 +1204,7 @@ gid://shopify/Product/15450782892417	nicht-versendbar	Fahrradständer für 2 Vel
 gid://shopify/Product/15450842988929	nicht-versendbar	3er-Set Gusseisenpfannen für Steaks & mehr
 gid://shopify/Product/15453898867073	ok	Wasserdichte Laptop-Tasche für Business-Reisen
 gid://shopify/Product/15467040997761	ok	Sommerdecke aus Baumwollgaze mit Sojafasern
+gid://shopify/Product/15476525203841	ok	Lüftung für Schweissarbeiten
+gid://shopify/Product/15495592018305	ok	Militär Jet Bausteine Puzzle
+gid://shopify/Product/15496302887297	ok	Rutschfester Teppich für Schlafzimmer und Wohnbereich
+gid://shopify/Product/15496508113281	nicht-versendbar	Kinder-Reisekoffer zum Draufsitzen
