@@ -30,6 +30,7 @@ def gql(q, v=None):
     tok = open("/tmp/cj_shop_token.txt").read().strip()
     req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json", data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                  headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
+    grund = ""
     for a in range(6):
         try:
             d = json.load(urllib.request.urlopen(req, timeout=60))
@@ -38,10 +39,12 @@ def gql(q, v=None):
                 if ts and ts.get("currentlyAvailable", 1000) < 400:      # Eimer-Etikette: andere Schreiber nicht aushungern
                     time.sleep(3)
                 return d["data"]
-        except Exception:
-            pass
+            grund = str((d.get("errors") or [{}])[0].get("message", "keine Daten"))[:120]
+        except Exception as e:
+            grund = f"{type(e).__name__}: {e}"[:120]
         time.sleep(3 + 3 * a)
-    raise RuntimeError("Shopify antwortet nicht")
+    print(f"gql: letzter Grund: {grund}", file=sys.stderr)
+    raise RuntimeError(f"Shopify antwortet nicht ({grund})")
 
 
 def auswerten():

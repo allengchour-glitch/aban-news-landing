@@ -84,3 +84,53 @@
 15495067140481	eu-sku-gesetzt:CJYD217016202BY	2026-09-28	Sky Innovation IMAX B6 V2 Ladegerät
 15495087522177	eu-sku-gesetzt:CJBJMRTF00119-EU	2026-09-28	Lockenstab mit Turmalin-Keramikbeschichtung
 15495120617857	eu-sku-gesetzt:CJBJMRTF00083-EU	2026-09-28	Glitzerndes Titanium-Glätteisen für trockenes Haar
+15495120945537	eu-sku-gesetzt:CJBJMRTF00072-Red-EU	2026-09-29	Glättbürste mit Keramikheizplatte
+15495121174913	eu-sku-gesetzt:CJBJMRTF00068-EU	2026-09-29	Mestar Iron Pro Automatischer Lockenstab
+15495121535361	eu-sku-gesetzt:CJBJMRTF00065-Black-EU	2026-09-29	Keramik-Glättbürste für glattes Haar
+15495121633665	unklar:farbe-unbekannt	2026-09-29	2-in-1 Glätteisen & Lockenstab
+15495122125185	eu-sku-gesetzt:CJYD191964802BY	2026-09-29	P20 Bleiakku-Ladegerät für Auto & Motorrad
+15495123468673	unklar:farbe-unbekannt	2026-09-29	2-in-1 Glätteisen & Lockenstab mit LCD-Anzeige
+15495126155649	eu-sku-gesetzt:CJCD190212602BY	2026-09-29	12V/6A Smart Batterieladegerät
+15495136346497	eu-sku-gesetzt:CJZN110472503CX	2026-09-29	Ionen-Haartrockner mit Warmluft & Kaltstufe
+15495142998401	unklar:farbe-unbekannt	2026-09-29	Schnellladegerät für Elektrowerkzeuge
+15495143063937	eu-sku-gesetzt:CJCD175658102BY	2026-09-29	Vierfach-Schnellladegerät für Elektrowerkzeuge
+15495190839681	eu-sku-gesetzt:CJBJMRTF00030-EU	2026-09-29	4-in-1 Lockenstab & Haarglätter
+15495239664001	unklar:farbe-unbekannt	2026-09-29	9mm Super Slim Lockenstab für Ringellöckchen
+15495319454081	unklar:farbe-unbekannt	2026-09-29	Digitales 3-Port USB-Ladegerät mit Display
+15495319814529	unklar:farbe-unbekannt	2026-09-29	Keramik-Lockenstab mit Flüssigkristall-Display
+15495320076673	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab mit Negativ-Ionen
+15495401177473	unklar:farbe-unbekannt	2026-09-29	2-in-1 Lockenstab und Glätteisen
+15496264647041	unklar:farbe-unbekannt	2026-09-29	USB-A C Ladegerät mit vier Anschlüssen
+15496264745345	eu-sku-gesetzt:CJCD117338504DW	2026-09-29	Lithium-Ionen Akku-Ladegerät 14.4V/18V
+15496330609025	unklar:farbe-unbekannt	2026-09-29	Infrarot Dampf-Glätteisen
+15496330805633	eu-sku-gesetzt:CJBJMRTF00236-Rose Gold-EU	2026-09-29	Ionen-Glättbürste mit Keramikbeschichtung
+15496331362689	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab für einfache Wellen
+15496381661569	eu-sku-gesetzt:CJCD115277402BY	2026-09-29	Notebook-Netzteil 19.5V7.7A
+15496383103361	unklar:farbe-unbekannt	2026-09-29	USB-Ladegerät für Mobiltelefone (EU-Stecker)
+15496399225217	eu-sku-gesetzt:CJBJMRTF00091-EU	2026-09-29	2-in-1 Glätteisen & Lockenstab · 27 cm
+15496399880577	unklar:farbe-unbekannt	2026-09-29	Ultradünnes Haarglätteisen mit Nano-Keramik
+15496405975425	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab mit LCD-Temperaturanzeige
+15496409973121	unklar:farbe-unbekannt	2026-09-29	30W Multi-Funktions Netzteil mit USB
+15496410333569	unklar:farbe-unbekannt	2026-09-29	Intelligentes 4-Schacht-Ladegerät für AAA/AA-Akkus
+15496510439809	eu-sku-gesetzt:CJYD238698302BY	2026-09-29	Multifunktionale Nagelpoliermaschine mit Staubsauger
+15496534294913	eu-sku-gesetzt:CJJF119614302BY	2026-09-29	3-Rohr Lockenstab für grosse Wellen
+15496535703937	unklar:farbe-unbekannt	2026-09-29	Glätteisen für glattes oder lockiges Haar
+15496537145729	unklar:farbe-unbekannt	2026-09-29	Fluffy Hair Straightener Styling Glätteisen
+15496580661633	unklar:farbe-unbekannt	2026-09-29	Multifunktionaler Wasserkocher für 1 Person
+15496581611905	unklar:farbe-unbekannt	2026-09-29	Herzli-Waffeleisen für de schnälle Zmorge
+15496610283905	eu-sku-gesetzt:CJXFLPCD00401-Black-EU	2026-09-29	Netzteil für Xbox 360 E
+15496704426369	eu-sku-gesetzt:CJXFLPCD00379-EU	2026-09-29	Netzteil für Video-Türklingel
+15497378201985	eu-sku-gesetzt:CJYD220115503CX	2026-09-29	Akku-Ladegerät für Ni-Cd/Ni-MH Zellen 7.2-18V
+15497420308865	eu-sku-gesetzt:CJJF110096302BY	2026-09-29	Kabelloser Lockenstab mit LCD-Display
+15497420571009	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab mit Infrarot-Technologie
+15497420669313	unklar:farbe-unbekannt	2026-09-29	2-in-1 Glätteisen & Lockenstab, Titan-Keramik
+15497421128065	eu-sku-gesetzt:CJJF108993702BY	2026-09-29	Reisefreundliches Glätteisen
+15497421357441	eu-sku-gesetzt:CJJF108952901AZ	2026-09-29	Keramik-Lockenstab-Set mit Wechselsystem
+15497421521281	unklar:farbe-unbekannt	2026-09-29	Keramik-Lockenstab für grosse Wellen
+15497433350529	unklar:farbe-unbekannt	2026-09-29	Multifunktionaler Lockenstab mit Keramikbeschichtung
+15497433448833	eu-sku-gesetzt:CJBJMRJF00211-Golden Gray-EU	2026-09-29	Kabelloser Mini-Haartrockner mit 800W
+15497434071425	eu-sku-gesetzt:CJXFLPCD00350-BLACK-EU	2026-09-29	Universal-Laptop-Netzteil 75W mit USB-C PD
+15497442460033	unklar:farbe-unbekannt	2026-09-29	4-Port Reise-Ladegerät mit LED-Anzeige
+15497443017089	eu-sku-gesetzt:CJXFLPCD00300-EU	2026-09-29	USB Smart Ladegerät mit 5 Anschlüssen
+15497447178625	unklar:farbe-unbekannt	2026-09-29	Lockenstab für Pony und feines Haar
+15497447702913	eu-sku-gesetzt:CJBJMRJF00192-Pink-EU	2026-09-29	Lockenstab mit Nano-Titan-Keramikbeschichtung

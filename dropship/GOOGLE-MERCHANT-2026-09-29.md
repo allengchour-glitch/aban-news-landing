@@ -18,3 +18,6 @@ betreffen die Gratis-Einträge nicht.
 ## Was nur der Betreiber im Merchant Center sehen/tun kann
 - Konto-Ebene: Warnungen/Sperren, Website-Bestätigung, Versand- und Rückgabe-Einstellungen (Merchant Center → «Diagnose»).
 - «Over capacity for Shopping ads (CSS program)» = nur Anzeigen; für den Gratis-Weg nichts zu tun.
+
+## Nachtrag 08:25 UTC — Werkzeuge melden jetzt ihren Fehlergrund
+`bild_mini_entfernen.py` und `gfeed_nachpruefen.py` verschluckten in gql() jede Ausnahme (Befund zweites Gehirn, Klasse grund-verschluckt). Jetzt: letzter Grund in stderr + in der Abbruchmeldung (Test falscher Token → «401 Unauthorized»).
