@@ -1,13 +1,13 @@
 {
  "host": "ubuntu-4gb-nbg1-1",
- "stunde": "2026-09-29T20:00Z",
- "stand": "2026-09-29T20:04:38Z",
+ "stunde": "2026-09-29T21:00Z",
+ "stand": "2026-09-29T21:05:25Z",
  "fenster_min": 60,
- "summe": 39,
+ "summe": 40,
  "skripte": {
   "versand_stillstand.py": 16,
   "cj_zahlung_offen.py": 16,
-  "cj_video_reel_engine.mjs": 5,
+  "cj_video_reel_engine.mjs": 6,
   "cj_order_engine.py": 2
  }
 }
