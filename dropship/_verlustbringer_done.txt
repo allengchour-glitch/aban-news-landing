@@ -1833,3 +1833,24 @@ gid://shopify/Product/15494856016257	2026-09-29T16:10Z	draft	15.90	41.91	Minimal
 gid://shopify/Product/15495232651649	2026-09-29T16:10Z	draft	21.90	47.62	Gusseisen-Bratpfanne, emailliert
 gid://shopify/Product/15493932777857	2026-09-29T16:10Z	draft	35.90	61.35	Runder Wandspiegel mit Diamant-Effekt, 30 cm
 gid://shopify/Product/15493859803521	2026-09-29T16:10Z	schon-DRAFT	19.90	45.33	Wäschekorb für Schrank & Regal, Himmelblau
+gid://shopify/Product/15495137493377	2026-09-29T16:10Z	draft	38.90	62.79	Faltbares Hundebett für alle Grössen
+gid://shopify/Product/15495232684417	2026-09-29T16:10Z	draft	18.90	32.59	Ersatzspitze für Surface Pen
+gid://shopify/Product/15493858525569	2026-09-29T16:10Z	schon-DRAFT	28.90	52.36	Kondensator-Mikrofon-Set für Aufnahmen
+gid://shopify/Product/15493933302145	2026-09-29T16:11Z	draft	34.90	58.07	Schwammbett für Haustiere, waschbar
+gid://shopify/Product/15495091716481	2026-09-29T16:11Z	draft	30.90	54.01	OTRC FY602 Flugauto-Drohne mit HD-Kamera
+gid://shopify/Product/15493807538561	2026-09-29T16:11Z	draft	16.90	39.90	Plüsch-Sofakissen für Herbst und Winter
+gid://shopify/Product/15493836472705	2026-09-29T16:11Z	draft	22.90	45.82	Kabellose Qi-Ladestation mit Tischlampe
+gid://shopify/Product/15495139426689	2026-09-29T16:11Z	draft	19.90	42.51	Orangen-Kirschen Katzenbaum mit Kratzstamm
+gid://shopify/Product/15495139033473	2026-09-29T16:11Z	draft	38.90	61.17	Wandregal aus Massivholz mit Haken
+gid://shopify/Product/15493971542401	2026-09-29T16:11Z	draft	15.90	37.91	Keramikschale «Rain-hat»
+gid://shopify/Product/15493865963905	2026-09-29T16:11Z	draft	16.90	38.78	Lammfell-Sofaüberwurf, einfarbig, rutschfest
+gid://shopify/Product/15493848695169	2026-09-29T16:11Z	draft	21.90	43.56	Runder oder eckiger Tischläufer aus Baumwollleinen
+gid://shopify/Product/15493871829377	2026-09-29T16:11Z	draft	39.90	61.36	Explosionsgeschützter Schnellkochtopf für Gasherd
+gid://shopify/Product/15493933105537	2026-09-29T16:11Z	draft	16.90	38.34	Faltbare Aufbewahrungsbox aus Baumwolle und Leinen
+gid://shopify/Product/15495119929729	2026-09-29T16:11Z	draft	17.90	38.94	5D Diamant-Malerei: Eulen-Familienbaum
+gid://shopify/Product/15495121043841	2026-09-29T16:11Z	draft	17.90	38.94	Diamond Painting Set "Adler, Baum, Wolf"
+gid://shopify/Product/15493853905281	2026-09-29T16:12Z	draft	21.90	42.68	Elastischer Sofaüberzug aus Flanell
+gid://shopify/Product/15494693618049	2026-09-29T16:12Z	draft	29.90	50.64	Tragbares Ausziehregal für die Küche
+gid://shopify/Product/15493862556033	2026-09-29T16:12Z	draft	15.90	36.52	5-in-1 Warmluftstyler für vielseitiges Haarstyling
+gid://shopify/Product/15494642401665	2026-09-29T16:12Z	draft	16.90	37.52	Doppelschichtiger Keramikteller mit Rillenmuster
+gid://shopify/Product/15495090864513	2026-09-29T16:12Z	draft	20.90	41.15	Polar Fleece Stretch-Sofabezug
