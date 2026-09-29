@@ -120,3 +120,13 @@
 15496581611905	unklar:farbe-unbekannt	2026-09-29	Herzli-Waffeleisen für de schnälle Zmorge
 15496610283905	eu-sku-gesetzt:CJXFLPCD00401-Black-EU	2026-09-29	Netzteil für Xbox 360 E
 15496704426369	eu-sku-gesetzt:CJXFLPCD00379-EU	2026-09-29	Netzteil für Video-Türklingel
+15497378201985	eu-sku-gesetzt:CJYD220115503CX	2026-09-29	Akku-Ladegerät für Ni-Cd/Ni-MH Zellen 7.2-18V
+15497420308865	eu-sku-gesetzt:CJJF110096302BY	2026-09-29	Kabelloser Lockenstab mit LCD-Display
+15497420571009	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab mit Infrarot-Technologie
+15497420669313	unklar:farbe-unbekannt	2026-09-29	2-in-1 Glätteisen & Lockenstab, Titan-Keramik
+15497421128065	eu-sku-gesetzt:CJJF108993702BY	2026-09-29	Reisefreundliches Glätteisen
+15497421357441	eu-sku-gesetzt:CJJF108952901AZ	2026-09-29	Keramik-Lockenstab-Set mit Wechselsystem
+15497421521281	unklar:farbe-unbekannt	2026-09-29	Keramik-Lockenstab für grosse Wellen
+15497433350529	unklar:farbe-unbekannt	2026-09-29	Multifunktionaler Lockenstab mit Keramikbeschichtung
+15497433448833	eu-sku-gesetzt:CJBJMRJF00211-Golden Gray-EU	2026-09-29	Kabelloser Mini-Haartrockner mit 800W
+15497434071425	eu-sku-gesetzt:CJXFLPCD00350-BLACK-EU	2026-09-29	Universal-Laptop-Netzteil 75W mit USB-C PD
