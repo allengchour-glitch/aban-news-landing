@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 👗 Google: 6'826 Kleidungsstücke von «Clothing» in die echte Unterkategorie (17:40)
+- GEMESSEN: 7'254 aktive mit `google_product_category` = «Apparel & Accessories > Clothing»; Nachfrage-Liebling «Aria» stand auf «Belts».
+- GETAN: `google_kategorie_fein.py` (täglich): Titelregeln, Pfade gegen Google-Taxonomie, Kinder/Kostüm aussen vor →
+  6'826 gesetzt, 0 Fehler, 428 bleiben grob; 16 Lieblinge zusätzlich von Hand präzisiert und neu eingereicht.
+- **Lehre:** Im Trockenlauf JEDE Zielklasse mit Stichprobe lesen — fünf Fehlerklassen (Schal/Kapuze, Socken-Set, «jungen»,
+  Mehrzahl, «Jupe») zeigten sich nur in den Beispielen, nicht in den Zahlen.
+
 ## 2026-09-29 · 🛒 «verbessere irgendwie das leute es kaufen»: Nachfrage sichtbar machen (17:30)
 - GEMESSEN (ShopifyQL 90 T, Menschen, Produkt-Landeseiten): Abendkleid «Sirène» 143 Sitz. · 9 Warenkörbe · 7 Kasse · 0 Kauf
   (fast alles Woche 29.06. = TikTok-Werbung, mobil); danach Aria, Leinen-Set, Aurora … Keiner dieser Nachfrage-Belege stand
@@ -17301,3 +17308,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-26 · ⏳ **TikTok 42 h still: `metricool_tiktok_post.mjs` beendete «übersprungen» (Altpreis) mit Exit 0 → Autopilot setzte die 12-h-Marke wie nach einem Post; Reel-Poster kennt «Exit 3 = übersprungen» seit 23.09., der Metricool-Poster nie → Exit 3 + 0/3/Fehler im Autopilot (Test 3/3), TikTok + YouTube nachgeholt.** Exit-Code ist ein Vertrag; neuer Poster übernimmt die Rückgabecodes des alten → Journal Nachtrag 94
 - 2026-09-26 · 🧩 **Startseiten-Reihe zeigte Horizon-Platzhalter «Produkttitel CHF 19.99» (Betreiber-Screenshot aus Facebook): Rotation setzte `sub-uhren` ein, die im Online Store abgemeldet ist (301 → uhren) → Pool auf `uhren`, `sichtbar_live()` prüft jeden Katalog (Online Store + ≥ 8 Produkte) vor dem Einsetzen; 40 Kataloge gemessen, 1 unsichtbar.** Wer einen Handle einsetzt, prüft die Sichtbarkeit → Journal Nachtrag 96
 - 2026-09-26 · ⛔ **Frischer Container (Klon von main unter unserem Branch, /tmp leer, keine SHOPIFY_CLIENT_*-Variablen): Posten auf allen Kanälen still seit 06:10, und die Betreiber-Ampel gab NICHTS aus (`return` ohne Shop-Token) → `zugang_weg()` meldet «⛔ ZUGANG WEG» zuerst, 19/25 Prüfungen laufen tokenfrei weiter, jede Prüfung einzeln in try; Gegenprobe 3/3.** Fehlende Voraussetzung ist ein Befund, keine Ruhe → Journal Nachtrag 97
+- 2026-09-27 · 🔑 **Zugänge da, aber ungenutzt: FORTURA_FTP_* standen in der Umgebung, 4 Skripte lasen nur `/tmp/fortura_env.sh` → Keepalive schreibt die Datei aus der Umgebung (Feed 20'148 Zeilen); Metricool-TikTok/YouTube brach ohne Shop-Token ab (37 h still) → Kaufbar-Prüfung über öffentliche `/products/<handle>.js`, 404 ohne Ledger-Urteil; SHOPIFY_CLIENT_* fehlen weiter (Pinterest, IG/FB, Bestell-Ampel).** Zugang dort suchen, wo er heute liegt → Journal Nachtrag 98
