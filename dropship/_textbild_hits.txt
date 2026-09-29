@@ -16092,3 +16092,23 @@ gid://shopify/Product/15525488001409	24->0	Kinder-Halbstiefel aus Kunstleder
 gid://shopify/Product/15525491278209	95->3	Quarz-Armbanduhr mit Kalender
 gid://shopify/Product/15525494882689	50->0	Flaschen-Aufbewahrungstasche für Outdoor
 gid://shopify/Product/15525513101697	17->0	Kinder Smartwatch mit GPS-Ortung
+gid://shopify/Product/15502260273537	27->3	Damen-High-Top-Stiefel aus Wildleder
+gid://shopify/Product/15503284633985	29->0	Ausziehbarer Abtropfkorb für Spülbecken
+gid://shopify/Product/15503303836033	22->1	Halsband aus PU-Leder mit Kroko-Muster
+gid://shopify/Product/15504011231617	17->1	Aufblasbare Nackenstütze
+gid://shopify/Product/15504083288449	22->3	Kabelloser Audio-Adapter für TV & Kopfhörer
+gid://shopify/Product/15504112025985	15->0	Atemtrainer zur Verbesserung der Lungenkapazität
+gid://shopify/Product/15504118382977	49->0	Golfball-Magazin für Driving Range
+gid://shopify/Product/15504188178817	70->0	Futter-Napf aus Keramik für Katze
+gid://shopify/Product/15506188861825	33->0	Handgefertigte, abnehmbare Nägel im Kühlen Weiss
+gid://shopify/Product/15506324586881	18->0	Mikrostrom-Augenmassagegerät mit Farblicht
+gid://shopify/Product/15506669142401	20->0	Elegantes Neckholder-Kleid mit Schlitz
+gid://shopify/Product/15508406108545	99->1	Eisseiden-Rattan-Kissen für Schwangere
+gid://shopify/Product/15508420362625	11->0	Lässige Umhängetasche für Männer
+gid://shopify/Product/15508421542273	42->2	Geschirrspüler-Zubehörkorb
+gid://shopify/Product/15508422197633	31->0	Wasserfester Eyeliner für präzise Linien
+gid://shopify/Product/15508448084353	107->3	Sportliche Herrenuhr mit vielen Funktionen
+gid://shopify/Product/15508480360833	22->0	Intelligenter Futterautomat mit Keramiknapf
+gid://shopify/Product/15510317826433	10->0	Handgemachte Nagel-Patches Schwarz-Weiss
+gid://shopify/Product/15510326608257	8->0	Leichter Outdoor Mini-Rucksack
+gid://shopify/Product/15510925574529	23->0	Plüschtier Karotte – abnehm- & waschbar
