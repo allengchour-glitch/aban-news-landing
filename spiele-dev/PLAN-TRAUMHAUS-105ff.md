@@ -194,3 +194,51 @@ Messgerät: `probe-sog 365` (Ereignis-Tage je 30 Tage; Ziel: kein 30-Tage-Fenste
 *   **Story-Missions-Abschlussrate:** Prozentualer Anteil der Spieler, die Story-Mission X abschliessen, nachdem sie Mission X-1 beendet haben (misst das Story-Pacing und Engagement).
 *   **Auftragsgeber-Diversitaet:** woechentliche Verteilung der abgeschlossenen, wiederholbaren Auftraege auf die verschiedenen Auftraggeber (zeigt, ob alle Figuren und Spielsysteme genutzt werden).
 *   **Figuren-Interaktions-Hotspot:** Heatmap, die anzeigt, wo und zu welcher Ingame-Uhrzeit Spieler mit den 5 Hauptfiguren interagieren (prueft, ob die Tagesablaeufe wahrgenommen und genutzt werden).
+
+## 9. „Wie GTA": Rangeln, Bestehlen, schöne Bewegungen bei allem (User 2026-09-29)
+
+> User: „wie gta, schlagen und so, bestehlen, schöne bewegungen bei allem". Muster aus GTA, keine Inhalte. Ton wie bisher:
+> Slapstick, kein Blut, jede Tat hat Folgen über die vorhandenen Systeme (Fahndungssterne, Polizei mit Zugriff und
+> VERHAFTET-Einblendung, Bürgerrang, Ruf bei Figuren aus Abschnitt 8). Reihenfolge ist zwingend: erst Bewegungen, dann Taten.
+
+### 9.1 Bewegungen zuerst (GROSS, 2 Sessions) — die Voraussetzung für alles andere
+Heute sind Figuren prozedural (Gliedmassen als Einzelteile, ~440 Aufrufe an der Kreuzung), es gibt kein Animationssystem.
+Schlagen und Stehlen sehen ohne echte Animationen nach Kasperletheater aus.
+- **Skinned Figuren mit Clips** aus CC0-Paketen (wie die Autos in Runde 90 in Blender nachbearbeitet, `tools/assets/`):
+  idle, gehen, rennen, sitzen, einsteigen/aussteigen, aufheben, winken, Schlag, Taschengriff, taumeln, hinfallen, aufstehen.
+  three.js `AnimationMixer` mit Überblendung (0,15–0,25 s), Fussbodenkontakt über den Boden-Strahl, der schon für Autos
+  existiert (`th-autoboden`-Logik).
+- **Alle Wesen über dieselbe Schleife**: Mia, Passanten, die fünf Figuren, Kinder auf dem Schulweg, Polizei. Ein Mixer je
+  Figur, Clips geteilt (eine Instanz je Clip-Typ) — misst `probe-aufrufe` (Ziel: Bewegtes an der Kreuzung 440 → < 200,
+  weil eine skinned Figur EIN Aufruf ist statt zehn Gliedmassen).
+- **Fahrzeuge**: Einsteigen als Clip statt Teleport, Tür schwenkt (Modelle haben Türen als Teile — messen mit `th-echt`).
+- **Kamera**: leichte Verzögerung und Schulterblick beim Rennen (billig, grosse Wirkung).
+- Messen: neue Sonde `probe-bewegung` — je Clip: spielt ab, blendet über, Füsse ≤ 3 cm über Boden, keine T-Pose länger
+  als 1 Bild; `th-bewegt` erweitert um Figuren.
+
+### 9.2 Rangeln (MITTEL, 1 Session, nach 9.1)
+- Tipp/Taste neben einem Passanten: Schlag-Clip, Ziel taumelt oder fällt (Clip), steht nach 2 s auf und läuft weg oder
+  schlägt zurück (50 %). Kein Lebensbalken für Passanten; Mia hat einen kleinen Ausdauer-Balken (nach 3 Schlägen Pause).
+- **Folgen**: 1 Fahndungsstern, Passanten in 30 m weichen aus und rufen (vorhandene Meinungs-Sprechblasen), Ruf bei
+  allen fünf Figuren −1, Elian sperrt Aufträge bis zum Ende der Fahndung. Polizei kommt über `polizeiStart/polizeiKurs`.
+- **Warum überhaupt**: Story-Missionen und Aufträge, die es brauchen (Dieb stellen, Streit im Chilbiplatz schlichten =
+  zwei Schläge, dann Belohnung), damit es Spiel ist und kein Selbstzweck.
+- Messen: `th-gta` erweitert (Schlag → Stern, Zugriff, VERHAFTET-Ablauf, Ruf-Abzug, Reset nach Verhaftung).
+
+### 9.3 Bestehlen (MITTEL, 1 Session, nach 9.1)
+- Von hinten an einen Passanten: Taschengriff-Clip 1,2 s; Erfolg 70 % (Beute 20–120 $ nach Viertel, Sunnehalde mehr),
+  Misserfolg: Passant dreht sich um, ruft, 1 Stern. Automaten, Spendenkästen, Marktstände als feste Ziele mit Cooldown.
+- Auto stehlen gibt es schon (Fahndung) — Ergänzung: Besitzer rennt hinterher (Clip) und ruft.
+- **Folgen** wie 9.2 plus: gestohlenes Geld zählt NICHT als „verdient" für den Bürgerrang (Abschnitt 7, Exploit-Kritik),
+  stattdessen ein eigener Zähler „Schattenkasse" mit eigenen Erfolgen („Kleinganove", „Taschendieb")
+  und einem Hehler in Burgdorf, der die Schattenkasse mit Abschlag wechselt (Geldsenke + Ort mit Sinn).
+- **Umkehr**: Ruf zurückkaufen (Spende ans Stadtfest, Sozialdienst-Aufträge für Lena) — die GTA-Schleife Tat → Folge →
+  Wiedergutmachung, die das Spiel endlos hält.
+- Messen: `probe-sog` bekommt den Pfad „Kleinganove" als drittes Spielerprofil (Einnahmen aus Diebstahl, Sterne, Verhaftungen
+  pro 30 Tage; Verhaftung kostet Zeit und 10 % Bargeld — muss sich messbar weniger lohnen als Arbeit, sonst kippt die Ökonomie).
+
+### 9.4 Reihenfolge und Kosten
+1. 9.1 Bewegungen (2 Sessions, grösster Nutzen: alles im Spiel sieht besser aus, weniger Aufrufe).
+2. 8 Story + Figuren mit Tagesablauf (1 Session) — die Figuren brauchen die Clips aus 9.1.
+3. 9.2 + 9.3 (je 1 Session), dazu die Missionen, die sie nutzen.
+Vorher unverändert: Abschnitt 7 Punkt 2 (Rangpunkte aus Netto, Exploit-Schranke) — sonst wird Stehlen zum Rang-Turbo.
