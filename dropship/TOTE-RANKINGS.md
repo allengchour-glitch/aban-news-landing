@@ -1,6 +1,6 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 28.09.2026 20:11 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 29.09.2026 20:13 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
@@ -21,6 +21,10 @@ Automatischer Hühner-Futterautomat · rattensicher, 4 Öffnungen  ·  **~170 Su
 ## /products/holzspiegel-im-europaischen-stil-621200  — **DRAFT**
 Holzspiegel im europäischen Stil  ·  **~140 Suchen/Monat** betroffen
 - «holzspiegel» — Position 17, 140/Monat
+
+## /products/holz-kleiderstander-617200  — **DRAFT**
+Holz-Kleiderständer  ·  **~140 Suchen/Monat** betroffen
+- «holz kleiderständer» — Position 53, 140/Monat
 
 ## /products/gewichtete-decke-fur-besseren-schlaf-096066  — **301 → totes Ziel**
 Gewichtete Decke für besseren Schlaf  ·  **~140 Suchen/Monat** betroffen
