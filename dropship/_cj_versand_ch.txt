@@ -1208,3 +1208,19 @@ gid://shopify/Product/15476525203841	ok	Lüftung für Schweissarbeiten
 gid://shopify/Product/15495592018305	ok	Militär Jet Bausteine Puzzle
 gid://shopify/Product/15496302887297	ok	Rutschfester Teppich für Schlafzimmer und Wohnbereich
 gid://shopify/Product/15496508113281	nicht-versendbar	Kinder-Reisekoffer zum Draufsitzen
+gid://shopify/Product/15497449701761	ok	Küchen-Geschirrschrank mit Auszugregal
+gid://shopify/Product/15448943821185	nicht-versendbar	Katzentoilette mit Doppeltür
+gid://shopify/Product/15448943985025	nicht-versendbar	E Classic Grey Katzentoilette
+gid://shopify/Product/15448944345473	nicht-versendbar	Galaxy Katzentoilette Orange, Geruchsdicht
+gid://shopify/Product/15448950768001	nicht-versendbar	Automatischer Wi-Fi Futterspender für Katzen & kleine Hunde
+gid://shopify/Product/15449127518593	nicht-versendbar	Kompakter Katzenbaum mit 2 Höhlen & Sisal-Kratzstämmen
+gid://shopify/Product/15449127649665	nicht-versendbar	Multifunktionaler Katzenkratzbaum mit Tunnel
+gid://shopify/Product/15449850675585	ok	Damenstiefel mit Klotzhacke aus Nappaleder
+gid://shopify/Product/15450772570497	nicht-versendbar	Katzenhöhle mit Luxus-Bett aus Seegras
+gid://shopify/Product/15450772865409	nicht-versendbar	Katzenbaum mit Holzelementen aus Seegras
+gid://shopify/Product/15450844627329	nicht-versendbar	Wasserdichtes Seiten-Aufbewahrungszelt Grau
+gid://shopify/Product/15453793485185	ok	Exzentrische Hantelstange für Fingerkrafttraining
+gid://shopify/Product/15477424030081	nicht-versendbar	Smarte Deckenleuchte mit Ventilator fürs Schlafzimmer
+gid://shopify/Product/15502258831745	ok	Präzisionswaage 3-10 kg, elektronisch
+gid://shopify/Product/15506140070273	ok	Keramik Trinkbrunnen Kaktus für Katzen
+gid://shopify/Product/15449479643521	nicht-versendbar	Macrame-Vorhang aus Baumwolle
