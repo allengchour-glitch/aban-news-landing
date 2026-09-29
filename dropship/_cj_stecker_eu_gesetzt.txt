@@ -134,3 +134,13 @@
 15497443017089	eu-sku-gesetzt:CJXFLPCD00300-EU	2026-09-29	USB Smart Ladegerät mit 5 Anschlüssen
 15497447178625	unklar:farbe-unbekannt	2026-09-29	Lockenstab für Pony und feines Haar
 15497447702913	eu-sku-gesetzt:CJBJMRJF00192-Pink-EU	2026-09-29	Lockenstab mit Nano-Titan-Keramikbeschichtung
+15497447801217	eu-sku-gesetzt:CJBJMRJF00191-Grey-EU	2026-09-29	Glätteisen mit Warmluft und Lockenfunktion
+15497454682497	eu-sku-gesetzt:CJCJ158146103CX	2026-09-29	Pinlo Toaster
+15497456910721	unklar:farbe-unbekannt	2026-09-29	Lötkolben-Set mit 26 Gravurköpfen
+15497472868737	eu-sku-gesetzt:CJXFLPDC00105-Black-EU	2026-09-29	Nitecore D4 Digicharger LCD Ladegerät
+15499155997057	unklar:farbe-unbekannt	2026-09-29	Ladegerät für 72V20AH E-Fahrzeug Batterien
+15499449598337	unklar:farbe-unbekannt	2026-09-29	Rosen Lockenstab mit LCD-Anzeige
+15499491606913	unklar:eu-teurer:12.22>6.97	2026-09-29	Haartrockner mit Thermokeramik
+15499780587905	eu-sku-gesetzt:CJCD211235304DW	2026-09-29	Outdoor-Ladegerät für Camping
+15499782521217	unklar:farbe-unbekannt	2026-09-29	Universal Ladegerät für MacBook
+15500001968513	eu-sku-gesetzt:CJYD187206607GT	2026-09-29	Laptop-Ladegerät
