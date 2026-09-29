@@ -1,40 +1,42 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-09-28T18:21Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-09-29T16:45Z
 
-Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen nur für Shopping Ads (ignoriert): 24189.
+Gescannt: 49273 aktive Produkte in 198 Seiten (vollständig), 597 s. Meldungen nur für Shopping Ads (ignoriert): 24116.
 
-## Free-Listings-Blocker: 1078
+## Free-Listings-Blocker: 1013
 
 | Klasse | Produkte | davon ohne onlineStoreUrl |
 |---|---:|---:|
-| Inappropriate image | 439 | 0 |
-| Product page unavailable | 256 | 0 |
-| Title under review | 137 | 0 |
+| Inappropriate image | 429 | 0 |
+| Product page unavailable | 219 | 0 |
+| Title under review | 136 | 0 |
 | Personalized advertising: personal hardships | 75 | 0 |
 | Personalized advertising: Sexual interests | 51 | 0 |
 | Restricted adult content | 51 | 0 |
-| Image too small | 23 | 0 |
-| Image under review | 16 | 0 |
+| Image under review | 19 | 0 |
 | Promotional overlay on image | 9 | 0 |
 | Adult-oriented content | 8 | 0 |
 | Personalized advertising: legal restrictions | 4 | 0 |
+| Unable to show image | 4 | 0 |
 | Inappropriate title | 3 | 0 |
-| Unable to show image | 3 | 0 |
+| Image too small | 2 | 0 |
 | Additional text found | 1 | 0 |
 | Personalized advertising: Identity and belief | 1 | 0 |
 | Local Requirements | 1 | 0 |
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 50
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 6
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Image under review (16)
+### Image under review (19)
 
 - armbanduhr-rettangolo-rechteckig-unisex
-- sommer-set-riviera-2-teilig-lassig-damen
+- sonnenbrille-carre-retro-small-square
 - plateau-sneaker-cloud-spitzen-mesh-geschnurt
+- herren-set-costa-kapuzen-shirt-jogger
 - transparente-iphone®-hulle-selbst-gestalten
+- pod-sticker-moon-face
 - ruckenfreies-top-mit-rundhals-und-3-4-armeln-602500
 - armband-gehause-44-45mm-fur-smartwatches-619400
 - s5-fitness-armband-mit-temperatur-und-blutdruc-600200
@@ -44,17 +46,16 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - hundepflegeol-mit-zitronenmelisse-969345
 - wasserdichte-kissenfullung-615300
 - warmende-schneestiefel-fur-kinder-239744
+- john-deere-gator-xuv-855d-mit-fahrer-fga02490
 - bruder-lemken-grubber-fga02228
 - sandalen-mit-holzperlen-und-gewebtem-design-615100
 - herren-freizeit-board-schuhe-628700
 
-### Inappropriate image (439)
+### Inappropriate image (429)
 
 - herren-ring-vintage-edelstahl-retro
-- sunset-projection-lamp-16-colors-adjustable
-- pod-sticker-ice-hockey
+- pod-sticker-flame-graffiti
 - pod-sticker-planet-mars
-- pod-sticker-tattoo-skull-rose
 - retro-flammen-tischlampe-led
 - herren-cargo-hose-trail-multi-pocket-outdoor
 - damen-bikini-maui-neckholder-floral
@@ -110,21 +111,21 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - kurze-wattierte-jacke-mit-karomuster-607300
 - nachthemd-aus-polyester-606600
 - nachthemd-602300
+- herren-langarmshirt-casual-trendy-636000
+- taillierte-jeansjacke-fur-herren-824321
 - …
 
-### Product page unavailable (256)
+### Product page unavailable (219)
 
 - sonnenbrille-photo-selbsttonend-polarisiert
 - loungewear-pyjama-set-fur-die-ganze-familie-603800
 - armelloses-casual-top-fur-damen-627100
 - elegantes-langarmshirt-mit-v-ausschnitt-633600
-- tanktop-mit-integrierten-brustpolstern-604800
 - bohemian-jumpsuit-mit-taschen-639000
 - damen-pullover-rundhals-loose-fit-328769
 - leichte-leinen-baumwollhose-mit-geradem-bein-609700
 - nahtlose-strick-tie-dye-yogahose-fur-damen-607800
 - business-casual-anzug-color-block-fur-junge-ma-630100
-- high-waist-a-linien-midi-jupe-mit-kordelzug-450434
 - pullover-jacke-quirky-personality-613600
 - pailletten-hoodie-fur-damen-619100
 - waffelstrick-hoodie-mit-v-ausschnitt-622800
@@ -136,11 +137,8 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - warme-herren-winterjacke-mit-fleece-fellkragen-152256
 - fashion-ripped-shirt-jacket-damen-421120
 - vr-brille-fur-3d-filme-games-612200
-- chiffonkleid-mit-volants-und-taillengurtel-606200
 - weiche-sneakers-fur-kinder-schwarz-rosa-khaki-609600
-- zehen-trenner-fur-yoga-und-sport-604600
 - prinzessinnen-schuhe-mit-weicher-sohle-und-vel-621300
-- schlanke-langarm-herrenbluse-mit-streifen-617300
 - kinder-schuhe-aus-baumwolle-535552
 - chic-damenkleid-628900
 - kinderhausschuhe-mit-cartoon-motiv-665728
@@ -160,13 +158,10 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - herren-hemd-mit-streifen-und-karomuster-603000
 - langarmellose-chiffon-dress-627800
 - chelsea-stiefel-620928
-- herren-langarmhemd-kariert-bequemer-loose-fit-600200
 - herren-3d-druck-kurzarm-hemd-619000
-- retro-polka-dot-halterneck-maxikleid-630100
 - kapuzen-leinenkleid-mit-langen-armeln-622600
 - sandalen-mit-runder-zehenpartie-plateau-601700
 - weiche-casual-leder-sneaker-fur-herren-622900
-- flyknit-platform-dad-casual-sports-627100
 - midi-kleid-mit-asymmetrischem-blumenprint-608200
 - muller-stiletto-sandalen-mit-schleife-621900
 - retro-sandalen-mit-riemchen-und-rundspitze-617900
@@ -174,6 +169,14 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - high-heel-sandalen-mit-offener-spitze-625600
 - flip-toe-sandalen-im-romischen-stil-610400
 - outdoor-schlankheits-sandalen-619800
+- plateau-wedge-pantoletten-mit-kreuzriemen-616400
+- dampfende-sportschuhe-626000
+- martin-boots-fur-herren-mid-top-608100
+- kinder-barfussschuhe-fur-strand-und-freizeit-0515f4
+- atmungsaktive-leichte-mesh-sneakers-551192
+- keramik-futternapf-fur-katzen-erhoht-065024
+- pailletten-hemd-fur-herren-632700
+- sandalen-mit-chunky-heel-621600
 - …
 
 ### Adult-oriented content (8)
@@ -295,11 +298,12 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - metall-wanddekoration-fur-wohnraume-659700
 - damen-hantelpaar-aus-silikon-403008
 
-### Title under review (137)
+### Title under review (136)
 
 - f1-spray-racing-auto-mit-gestensteuerung-613300
 - l-formige-coral-fleece-kuchenmatte-623100
 - ferngesteuertes-fluggerat-mit-hindernisvermeid-625400
+- edelstahl-anhanger-sternzeichen-und-monate-620600
 - herren-business-quarzuhr-638800
 - wasserdichte-quarzuhr-fur-erwachsene-620800
 - casual-loose-fit-t-shirt-mit-zwei-taschen-628400
@@ -338,7 +342,6 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - leopard-print-yoga-shorts-621700
 - nahtlose-high-waist-yoga-hose-fur-damen-625200
 - sexy-slim-fit-denim-style-shorts-mit-schleife-630400
-- nahtlose-strick-tie-dye-yogahose-fur-damen-607800
 - high-waist-fitness-leggings-mit-po-push-up-623900
 - besticktes-leinen-baumwoll-shirt-615400
 - kurzarm-top-mit-jacquard-print-und-schrager-sc-603800
@@ -347,9 +350,6 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - leinen-lyocell-slim-fit-langarmhemd-607500
 - highlighter-lidschatten-blush-palette-602434
 - multicolour-lidschatten-palette-600800
-- lockerer-baumwoll-strickpullover-fur-damen-631700
-- color-block-strick-cardigan-im-old-money-stil-603400
-- atmungsaktive-fischer-und-reiseweste-630600
 - tailliertes-etuikleid-mit-rundhals-und-print-635000
 - einfarbiges-turtleneck-oberteil-612500
 - klassisches-karohemd-613200
@@ -357,33 +357,15 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - hip-heber-yoga-hosen-010434
 - hoodie-mit-kordelzug-weit-geschnittener-jacken-801218
 - elastische-herrenunterwasche-233665
+- baseball-low-cut-leder-sneaker-fur-herren-618500
+- nahtloses-yoga-set-fur-damen-797952
+- v-ausschnitt-3-4-arm-minikleid-610100
 - …
 
-### Image too small (23)
+### Image too small (2)
 
 - edelstahl-anhanger-sternzeichen-und-monate-620600
-- hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
-- kaschmirahnlicher-schal-mit-totem-muster-607900
-- paisley-jacquard-schal-mit-quasten-600200
-- geraffter-pullover-schal-fur-damen-623100
-- retro-zip-up-hoodie-mit-3d-digitalprint-614100
-- lassiges-damen-sweatshirt-mit-tiermotiv-615300
-- partnerlook-bikini-blau-weiss-gestreift-612500
-- loser-strickpullover-611500
-- herren-kurzarmhemd-aus-baumwoll-leinen-mix-627400
-- hoher-herrenstiefel-mit-niedrigem-absatz-666240
-- herren-langarmhemd-mit-farbblocken-632000
-- elegantes-one-shoulder-sommerkleid-mit-schlitz-624600
 - flache-outdoor-sandalen-mit-rundkopf-plus-size-607300
-- extra-langes-sommerkleid-fur-die-ferien-622800
-- keilsandalen-im-bohemian-stil-mit-blumen-621400
-- kurzes-v-neck-kleid-mit-lochstickerei-625400
-- geblumtes-v-ausschnitt-kurzarmkleid-mit-3d-pri-603900
-- retro-blumen-sandalen-fur-damen-921536
-- seiden-polohemd-mit-revers-fur-herren-601000
-- damen-kapuzenpullover-mit-weihnachtsmotiv-626900
-- 3d-gedrucktes-langarmshirt-fur-damen-603900
-- damen-flanell-kapuzenpullover-fur-herbst-und-w-611600
 
 ### Personalized advertising: personal hardships (75)
 
@@ -474,9 +456,10 @@ Gescannt: 49544 aktive Produkte in 199 Seiten (vollständig), 774 s. Meldungen n
 - acryl-organizer-fur-brett-und-kartenspiele-637800
 - haarentferner-106496
 
-### Unable to show image (3)
+### Unable to show image (4)
 
 - schlichte-baumwolsshorts-fur-frauen-639000
+- casual-hemdenjacke-616000
 - bequeme-herren-freizeitschuhe-627700
 - vintage-baumwoll-sweatshirt-fur-herren-618300
 

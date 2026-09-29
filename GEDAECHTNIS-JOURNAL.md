@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🔑 OpenAI-Schlüssel da, aber api.openai.com gesperrt (17:20)
+- Betreiber gab OPENAI_API_KEY im Chat und setzte ihn als Umgebungsvariable («umgebung gesetzt»). Abgelegt: `/tmp/openai_key`
+  (600) + `/tmp/secrets_env.sh`; `engine_keepalive.sh` schreibt ihn nach jedem Neustart aus der Umgebung. Nie ins Repo.
+- GEMESSEN: `curl https://api.openai.com/v1/models` → **CONNECT tunnel failed, 403** (Netzwerk-Richtlinie der Umgebung,
+  nicht der Schlüssel). Nicht umgehen. Freigabe = Betreiber: Umgebung bearbeiten → Netzwerkzugriff → `api.openai.com`
+  zu den erlaubten Domains. Bis dahin ist der Schlüssel nur vorbereitet.
+- **Lehre:** Ein neuer Dienst braucht zwei Dinge — Schlüssel UND erlaubten Host. Erst die Erreichbarkeit messen, dann bauen.
+
 ## 2026-09-29 · 🏷️ LX-Handkuratierung: fast selbst gedraftet, was der Betreiber entscheidet (Verbesserungsrunde 16:25)
 - GEMESSEN: Kristall-Set (`LX-23-…`) = einzige Produktseite der Woche mit Warenkorb + Kasse; 13 aktive LX-Slugs ohne
   Quelle, 0 Bestellungen je; `ohne_lieferantenref_guard` liess `lx-` pauschal als Quelle gelten → nicht einmal gemeldet.
@@ -17272,3 +17280,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🔁 **Nullrunden: `bild_klein_fix`/`default_variant_fix`/`promo_aus_beschreibung` schrieben seit 14.09. 537× «FERTIG: 0 gescannt» (Cursor am Katalogende nie gelöscht — dieselbe Klasse wie `cj_verfuegbarkeit` 19.09., Geschwister nie geprüft) → `vollrunde.py` (Stempel nur bei Runde ab Anfang, sonst 7 T falsche PAUSE), `nullrunden_wache.py` im Keepalive (Eingangs-Null ≠ Ergebnis-Null); erste 600: 2 Hauptbilder getauscht.** Behobene Klasse → Geschwister greppen → Journal Nachtrag 91
 - 2026-09-26 · ⏲️ **Cloud-Container lebt nach einer Routine ohne Session-Arbeit genau ~5 min (CJ-Takt: 21:09–21:13, 22:08–22:13 …) — Tages-Wächter tragen der Hetzner-Aufseher (`luxe-waechter`, 80 Commits/24 h), nicht die Cloud; die Nullrunden-Wache meldete die erklärte Freigabe-Null weiter → `CURSOR-FREI`-Markierung in `vollrunde.fertig()`, Wache still bei erklärter Null.** Erst fragen, WO ein Wächter läuft; eine Wache braucht den Fall «Null erklärt» → Journal Nachtrag 92
 - 2026-09-26 · 🎞️ **Säuberer prüfte 0 von 42 Reels (Ziffern am ID-Ende = CJ-Nummer, nicht Shopify-ID → kein Status, kein Preisband), Poster fanden Altpreise erst beim Posten (TikTok + YouTube 04:08 leer) → Caption-Handle als Schlüssel wie in den Postern; Kanarienvogel 42/42 gelesen, 25 `preis-veraltet-skip`, 17 ready.** Zwei Prüfer derselben Regel brauchen denselben Schlüssel; zählen, wie viele Zeilen beurteilbar waren → Journal Nachtrag 93
+- 2026-09-26 · ⏳ **TikTok 42 h still: `metricool_tiktok_post.mjs` beendete «übersprungen» (Altpreis) mit Exit 0 → Autopilot setzte die 12-h-Marke wie nach einem Post; Reel-Poster kennt «Exit 3 = übersprungen» seit 23.09., der Metricool-Poster nie → Exit 3 + 0/3/Fehler im Autopilot (Test 3/3), TikTok + YouTube nachgeholt.** Exit-Code ist ein Vertrag; neuer Poster übernimmt die Rückgabecodes des alten → Journal Nachtrag 94
