@@ -14,7 +14,11 @@ const dir = process.argv[2] || 'screens-small';
 const out = process.env.OUT_FILE || 'openai-review.md';
 if (!KEY) { console.error('OPENAI_API_KEY fehlt – ChatGPT-Bewertung übersprungen.'); process.exit(0); }
 
-const files = fs.readdirSync(dir).filter((f) => f.endsWith('.jpg')).sort();
+// Neue OpenAI-Konten dürfen nur ~30'000 Tokens pro Minute schicken (gemessen: 49 Bilder = 38'098 → abgelehnt).
+// Darum höchstens OPENAI_MAX_IMAGES Bilder, gleichmässig über den Rundgang verteilt.
+const MAX = Number(process.env.OPENAI_MAX_IMAGES || 20);
+const all = fs.readdirSync(dir).filter((f) => f.endsWith('.jpg')).sort();
+const files = all.length <= MAX ? all : Array.from({ length: MAX }, (_, i) => all[Math.floor((i * all.length) / MAX)]);
 if (files.length === 0) { console.error(`Keine Bilder in ${dir}`); process.exit(1); }
 
 const content = [{ type: 'text', text: fs.readFileSync(new URL('./review_prompt.txt', import.meta.url), 'utf8') }];
