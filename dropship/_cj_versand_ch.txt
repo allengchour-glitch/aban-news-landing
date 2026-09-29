@@ -1181,3 +1181,11 @@ gid://shopify/Product/15451638301057	ok	HD Astronomisches Teleskop für Kinder
 gid://shopify/Product/15468735955329	ok	Trolley Koffer Set
 gid://shopify/Product/15484488548737	nicht-versendbar	Halbgeschlossene Katzentoilette, abnehmbar
 gid://shopify/Product/15506448646529	ok	4-teiliges Hochzeitsbettwäsche-Set mit Stickerei
+gid://shopify/Product/15449127223681	nicht-versendbar	2er-Set Sisal-Kratzmatten für Katzen
+gid://shopify/Product/15455269552513	ok	Interaktiver Katzenfutter-Automat
+gid://shopify/Product/15470742110593	ok	Elektromagnetische Dosierpumpe
+gid://shopify/Product/15479434412417	ok	Schutzhülle für Gaming-Zubehör
+gid://shopify/Product/15483793539457	ok	Automatischer Futterautomat
+gid://shopify/Product/15495899513217	ok	Simulation Katzenrucksack-Puppe
+gid://shopify/Product/15497440264577	ok	Holz-Etagere für Tee und Snacks
+gid://shopify/Product/15500972949889	ok	Intelligenter Futterautomat mit Video
