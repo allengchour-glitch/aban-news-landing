@@ -16082,3 +16082,4 @@ gid://shopify/Product/15470076920193	191->0	Ticketsabroller Metall
 gid://shopify/Product/15453825368449	8->1	Modell Soft Velvet Wimpern
 gid://shopify/Product/15489442546049	55->0	Locker sitzender Rundhals-Pullover
 gid://shopify/Product/15490129985921	67->0	Casual Hemdenjacke
+gid://shopify/Product/15493443518849	20->0	Extravagante Perlenkette mit Anhänger
