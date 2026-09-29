@@ -1921,3 +1921,9 @@ gid://shopify/Product/15493927797121	2026-09-29T16:31Z	draft	15.90	27.27	Diamant
 gid://shopify/Product/15495189823873	2026-09-29T16:31Z	draft	16.90	28.05	Seiltanz-Roboter
 gid://shopify/Product/15495067304321	2026-09-29T16:31Z	draft	15.90	26.99	Stretch-Strick Wildleder Stuhlhusse
 gid://shopify/Product/15495213023617	2026-09-29T16:32Z	draft	16.90	27.96	Diamond Painting mit Harz-Diamanten
+gid://shopify/Product/15495225049473	2026-09-29T16:32Z	draft	16.90	27.95	Katzen-Kratzsäule aus Sisal und Holz, 53cm
+gid://shopify/Product/15494256591233	2026-09-29T16:32Z	draft	18.90	29.67	Atmungsaktive Crossbody-Haustiertasche
+gid://shopify/Product/15493859639681	2026-09-29T16:32Z	schon-DRAFT	21.90	32.65	Make-up Set "Meerjungfrau" oder "Punk"
+gid://shopify/Product/15495067140481	2026-09-29T16:32Z	draft	22.90	33.55	Sky Innovation IMAX B6 V2 Ladegerät
+gid://shopify/Product/15495188775297	2026-09-29T16:33Z	draft	21.90	32.09	Niedliches Plüschkissen – verschiedene Designs
+gid://shopify/Product/15493857706369	2026-09-29T16:33Z	schon-DRAFT	16.90	27.09	Sportliche Freizeitschuhe für Herren
