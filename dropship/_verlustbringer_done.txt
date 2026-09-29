@@ -1760,3 +1760,4 @@ gid://shopify/Product/15495111410049	2026-09-29T15:31Z	draft	15.90	121.85	Wandmo
 gid://shopify/Product/15493835555201	2026-09-29T15:32Z	draft	51.90	155.49	Moderner Teppich mit Streifen und Geometrie
 gid://shopify/Product/15493933072769	2026-09-29T15:33Z	draft	49.90	146.56	Haustierbett "Iron Bed" mit Matratze
 gid://shopify/Product/15495086408065	2026-09-29T15:33Z	draft	15.90	110.97	Induktions-Wasserspritzwal mit Farblicht
+gid://shopify/Product/15495733182849	2026-09-29T15:34Z	draft	38.90	133.53	Faltbarer Quadcopter mit 2-Achsen-Gimbal
