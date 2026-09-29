@@ -409,3 +409,4 @@
 2026-09-26T08:11:43Z	NACHMESSUNG	gid://shopify/Product/15497378038145	portable-auto-waschburste-4-teilig-605000	-	google		keine Google-Meldung	ok
 2026-09-27T21:14:41Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
 2026-09-28T18:21:51Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
+2026-09-29T16:51:35Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok

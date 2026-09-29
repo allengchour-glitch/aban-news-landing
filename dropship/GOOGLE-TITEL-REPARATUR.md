@@ -16,9 +16,9 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-28T18:21:51Z — SCHARF
+## Letzter Lauf 2026-09-29T16:51:35Z — SCHARF
 
-Gescannt 49544 aktive von 49544 (EXACT); Wächter-Stand 21 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 26x gewartet, 169 s gesamt.
+Gescannt 49252 aktive von 49253 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 5x gewartet, 37 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
