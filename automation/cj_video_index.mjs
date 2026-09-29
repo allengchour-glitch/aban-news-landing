@@ -20,7 +20,13 @@ import { takt } from './cj_takt.mjs';
 
 const STATE = 'dropship/_cj_video_index.json';
 const SHOP_LEDGER = 'dropship/cj_niche_done.txt';
-const CALLS = parseInt(process.env.INDEX_CALLS || '150', 10);
+const CALLS_LAUF = parseInt(process.env.INDEX_CALLS || '150', 10);
+// ⚠️ TAGESDECKEL (29.09.2026): `product/list` kostet 50 CJ-Punkte (developers.cjdropshipping.cn …/points.html:
+// 50'000 Basis + Umsatzpunkte, Rückstellung 00:00 UTC). GEMESSEN 29.09.: dieser Index machte 2'025 von 4'949 CJ-Aufrufen
+// = ~101'000 von ~125'000 Punkten; um 23:15 UTC war das Konto leer («16900500 Insufficient API points») — Versand-Wächter,
+// Bestell-Automat und die Ersatzsuche für #1020 standen still. Der Index lag da schon bei 917 Videos (Reels brauchen ~3/Tag).
+// → höchstens INDEX_TAG_MAX Aufrufe je UTC-Tag (Standard 300 = 15'000 Punkte ≈ 12 %). Zähler im Zustand (st.tag).
+const TAG_MAX = parseInt(process.env.INDEX_TAG_MAX || '300', 10);
 const DRY = process.env.DRY === '1';
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json') ? (JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken || '') : '')).trim();
 if (!CJT) { console.log('Kein CJ-Token (/tmp/cj_token.json) → No-op.'); process.exit(0); }
@@ -45,6 +51,10 @@ if (!st.kats.length) {
   console.log(`Kategorienbaum geladen: ${st.kats.length} Kategorien (Ebene 3)`);
   if (!st.kats.length) { console.log('Kein Kategorienbaum → Abbruch:', c.message); process.exit(0); }
 }
+const heute = new Date().toISOString().slice(0, 10);
+if (!st.tag || st.tag.d !== heute) st.tag = { d: heute, calls: 0 };
+const CALLS = Math.max(0, Math.min(CALLS_LAUF, TAG_MAX - st.tag.calls));
+if (!CALLS) { console.log(`FERTIG (Tagesdeckel ${TAG_MAX} Aufrufe erreicht, ${heute}) — schont CJ-Punkte für Bestellungen/Wächter.`); process.exit(0); }
 const shop = new Set(fs.readFileSync(SHOP_LEDGER, 'utf8').split('\n').map(s => s.trim().replace(/^cj:/, '')).filter(Boolean));
 
 // Prioritaet: die Kategorien UNSERER aktiven Produkte zuerst. Der Shop speichert keine CJ-Kategorie
@@ -96,6 +106,6 @@ while (calls < CALLS) {
     if (st.cursor.k >= st.kats.length) { st.cursor.k = 0; st.stat.runden++; console.log(`### Katalogende — Runde ${st.stat.runden} abgeschlossen, Cursor vorn.`); }
   } else st.cursor.page++;
 }
-st.stat.aufrufe += calls; st.stat.produkte += produkte; st.stat.videos += videos; st.stand = new Date().toISOString();
+st.stat.aufrufe += calls; st.tag.calls += calls; st.stat.produkte += produkte; st.stat.videos += videos; st.stand = new Date().toISOString();
 if (!DRY) fs.writeFileSync(STATE, JSON.stringify(st));
 console.log(`FERTIG${stopp ? ' (' + stopp + ')' : ''}: ${calls} Aufrufe · ${produkte} Produkte gesehen · ${videos} mit Video · ${neu} NEU im Shop-Index · Index gesamt ${Object.keys(st.shop_video).length} · naechster Cursor ${st.cursor.k + 1}/${st.kats.length} S.${st.cursor.page}${DRY ? ' · DRY' : ''}`);

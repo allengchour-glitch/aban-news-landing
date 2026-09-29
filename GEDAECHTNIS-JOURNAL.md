@@ -6,6 +6,22 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🪙 CJ-Punkte leer um 23:15 UTC — der Video-Index frass 81 % des Tages
+
+**GEMESSEN:** Bei der Ersatzsuche für #1020 antwortete CJ «16900500 Insufficient API points. Used today: 124'850, Remaining: 0».
+CJ-Doku (developers.cjdropshipping.cn …/standard/points.html): 50'000 Basis + Umsatzpunkte (USD 1 = 100), Rückstellung
+00:00 UTC; `product/list`/`listV2` = **50 Punkte**, query/variant/stock/freightCalculate = 10, Bestell-Endpunkte 0.
+`cj_takt`-Log des Tages: 4'949 Aufrufe, davon **2'025 `cj_video_index.mjs`** (alle `product/list`) = ~101'000 Punkte.
+Gestern waren es 484. Folge: `cj_versand_ch_guard` meldete ab 23:15 nur noch «unklar», Ersatzsuche #1020 blind.
+Der Index stand da schon bei 917 Produkten mit Video (Reels brauchen ~3/Tag).
+
+**GETAN:** Tagesdeckel `INDEX_TAG_MAX` (Standard 300 Aufrufe = 15'000 Punkte ≈ 12 %) mit Zähler im Zustand (`st.tag`);
+Probe `INDEX_TAG_MAX=0 DRY=1` → «Tagesdeckel erreicht», 0 CJ-Aufrufe.
+
+**LEHRE:** Aufrufe zählen reicht nicht — bei CJ kosten Endpunkte unterschiedlich viel. Ein Hintergrund-Sammler mit
+50-Punkte-Endpunkt braucht einen TAGESdeckel, sonst verdrängt er Bestellung und Kundenschutz. Nebenbei: #1020 =
+Kristall-Set (handkuratiert, ohne Lieferant) → `dropship/BESTELLUNG-1020-KRISTALL-SET.md`.
+
 ## 2026-09-29 · 🧐 «kimi und chatgpt nutzen für kritik»: `automation/kritik.py` — beide Modelle, ein Prüfauftrag (21:30)
 **Gebaut:** dieselbe Frage + Dateien parallel an ChatGPT (`gpt-5.5`, OpenAI von hier erreichbar, 133 Modelle) und Kimi
 (`kimi-k3`), Rolle strenger Prüfer, Ablage optional in `dropship/_kritik/`. **Fallen beim Bau:** kimi-k3 akzeptiert nur

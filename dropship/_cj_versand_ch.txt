@@ -1310,3 +1310,4 @@ gid://shopify/Product/15496359838081	ok	Olayks Mini-Bratpfanne für Zuhause
 gid://shopify/Product/15493500404097	ok	Lederrucksack mit grossem Fassungsvermögen
 gid://shopify/Product/15481691898241	ok	Full HD Smart Mini Beamer mit WLAN
 gid://shopify/Product/15481839059329	nicht-versendbar	Outdoor Energie-Speicher
+gid://shopify/Product/15510325789057	ok	Leichter, geräumiger Reise- und Wanderrucksack
