@@ -16092,3 +16092,4 @@ gid://shopify/Product/15525488001409	24->0	Kinder-Halbstiefel aus Kunstleder
 gid://shopify/Product/15525491278209	95->3	Quarz-Armbanduhr mit Kalender
 gid://shopify/Product/15525494882689	50->0	Flaschen-Aufbewahrungstasche für Outdoor
 gid://shopify/Product/15525513101697	17->0	Kinder Smartwatch mit GPS-Ortung
+gid://shopify/Product/15502260273537	27->3	Damen-High-Top-Stiefel aus Wildleder
