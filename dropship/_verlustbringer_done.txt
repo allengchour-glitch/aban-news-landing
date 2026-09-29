@@ -1756,3 +1756,6 @@ gid://shopify/Product/15495139295617	2026-09-29T15:29Z	draft	74.90	204.53	Massiv
 gid://shopify/Product/15495026901377	2026-09-29T15:29Z	draft	102.90	222.70	Silikon Fussmodell für Nageldesign
 gid://shopify/Product/15495127794049	2026-09-29T15:30Z	draft	26.90	139.27	Nordic Kaktus Kissenhülle
 gid://shopify/Product/15494697025921	2026-09-29T15:31Z	draft	15.90	128.11	Spezialkleber für Lautsprecher-Reparaturen
+gid://shopify/Product/15495111410049	2026-09-29T15:31Z	draft	15.90	121.85	Wandmontierte Katzen-Kletterplattform aus Massivholz
+gid://shopify/Product/15493835555201	2026-09-29T15:32Z	draft	51.90	155.49	Moderner Teppich mit Streifen und Geometrie
+gid://shopify/Product/15493933072769	2026-09-29T15:33Z	draft	49.90	146.56	Haustierbett "Iron Bed" mit Matratze
