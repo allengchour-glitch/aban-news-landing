@@ -144,3 +144,4 @@
 15499780587905	eu-sku-gesetzt:CJCD211235304DW	2026-09-29	Outdoor-Ladegerät für Camping
 15499782521217	unklar:farbe-unbekannt	2026-09-29	Universal Ladegerät für MacBook
 15500001968513	eu-sku-gesetzt:CJYD187206607GT	2026-09-29	Laptop-Ladegerät
+15500071895425	eu-sku-gesetzt:CJCD166677502BY	2026-09-29	USB-Ladegerät mit QC3.0
