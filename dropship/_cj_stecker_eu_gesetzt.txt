@@ -166,3 +166,7 @@
 15501023379841	unklar:farbe-unbekannt	2026-09-29	Dampf-Glättbürste
 15501023543681	unklar:eu-teurer:9.81>6.63	2026-09-29	Automatischer Lockenstab für zuhause
 15501679395201	eu-sku-gesetzt:CJYD224115802BY	2026-09-29	Laptop Ladegerät
+15502129955201	unklar:farbe-unbekannt	2026-09-29	Smart-Ladegerät mit LCD-Display
+15502143160705	unklar:farbe-unbekannt	2026-09-29	Glätteisen und Lockenstab 2-in-1 mit Thermostat
+15502144110977	unklar:farbe-unbekannt	2026-09-29	Glättbürste mit Anionenfunktion
+15502144962945	eu-sku-gesetzt:CJBJMRJF00177-Dyson color-EU	2026-09-29	2-in-1 Lockenstab & Glätteisen aus Turmalin-Keramik
