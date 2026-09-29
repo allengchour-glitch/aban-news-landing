@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🏷️ 174 Produkte ohne Kategorie: Komposita, die keine Regel kannte (Verbesserungsrunde 12:25)
+- GEMESSEN: Ampel «KATEGORIE: ~174 aktive ohne Kategorie · unbekannte Typen» seit Tagen konstant, Ledger 0 — alles Sammeltypen,
+  deren Titel eindeutig waren, aber an Komposita scheiterten (`\bhut\b` findet «Sommermütze» nicht, `(armband|…)?uhr` keine
+  «Automatikuhr», `\bdecke\b` keine «Strickdecke») oder an Transliterationen («Kuechenreibe», «Kopfhoerer», «Anhanger»).
+  «Selbst gestalten» stand gar nicht in SAMMELTYPEN → die POD-Decke/Notizbuch/Mauspad bekamen nie eine Titelprüfung.
+- GETAN: dritte Welle HINTER allen Regeln (keine alte Zuordnung ändert sich), Trockenlauf Titel für Titel gelesen, 3 geratene
+  Regeln wieder raus, Kanarienvögel Schlüssel-/Trainings-/Beissring. 157 gesetzt, 157/174 unabhängig zurückgelesen, 17 offen.
+- **Lehre:** Deutsche Komposita tragen das Warenwort am ENDE (Sommer-MÜTZE, Automatik-UHR, Strick-DECKE) — `\bwort\b` verpasst
+  sie; Regeln für Warenwörter brauchen `\w*wort\b`, aber jede solche Regel einen Kanarienvogel für falsche Endungen (…ring).
+
 ## 2026-09-29 · 🔇 Meine eigenen neuen gql() verschluckten den Fehlergrund (Verbesserungsrunde 08:25)
 - GEMESSEN: `zweites_gehirn.py --wacht` → 2 NEU [grund-verschluckt] in `bild_mini_entfernen.py` und `gfeed_nachpruefen.py`
   (beide heute früh gebaut, kopiert aus einer alten gql()-Vorlage mit `except Exception: pass`). Dieselbe Klasse war am 28.09.
@@ -17240,3 +17250,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🔄 **Gedächtnis der anderen Sessions geladen (Diff ab merge-base mit main, sonst 400 Dateien Rauschen): 40 fehlende Lern-Dateien übernommen (Skill werbevideo, video_hook, LERNEN-*, Vault), Geheimnis-Scan 0; Versand 45 aktiv = Absicht (hält «ab 50» nach 10 %-Rabatt); Metricool-Plan der ads-Session postet IG+FB+Threads (Threads-Stopp!) und 6/12 Produkte waren im Juni schon auf IG → Betreiber-Entscheid.** Fremde Planer umgehen jedes eigene Ledger → vor Planung `getScheduledPosts` → Journal Nachtrag 88
 - 2026-09-25 · 📱 **IG-Profil «fix»: Profilraster schneidet Reels auf 3:4 (y 240–1680) + Kachelsymbol rechts oben → Kopf 200→250, Hook 350→400 (overlay/schnitt/promo_montage), Emoji im Bild = «□» → `ohne_emoji`; Lampenbild mit «LED multifunctional desk lamp» ging raus, `bildtext_pruefen` las 0 Wörter → `KACHELN=1` (Lampe 15, sauber ≤3) + zehnte Schicht im Bild-Poster (Queue 58: 1 Treffer).** Sichere Zone je Oberfläche; ein Detektor mit 0 braucht einen Positivfall → Journal Nachtrag 89
 - 2026-09-25 · 🗑️ **«lösche die post die nicht passen automatisch»: `ig_aufraeumen.mjs` (TEXT ≥5 W nur Lieferantenbild, PRODUKT nur per ID, DOPPEL behält den besten; >500 Aufrufe/<6 h nie, 5/Tag, Abbruch bei Meta-Sperre, Listing-Rücklesen), Aufseher täglich; 3 Trockenläufe fanden 3 Fehlerklassen (Handle≠gelöscht → Blazer Roma wäre weg gewesen; eigene Gestaltungen als «Text»; Stoffmuster = 4 Wörter); erster Lauf 5 gelöscht, 43 folgen.** «Nicht gefunden» ist beim Löschen kein Beweis → Journal Nachtrag 90
+- 2026-09-25 · 🔁 **Nullrunden: `bild_klein_fix`/`default_variant_fix`/`promo_aus_beschreibung` schrieben seit 14.09. 537× «FERTIG: 0 gescannt» (Cursor am Katalogende nie gelöscht — dieselbe Klasse wie `cj_verfuegbarkeit` 19.09., Geschwister nie geprüft) → `vollrunde.py` (Stempel nur bei Runde ab Anfang, sonst 7 T falsche PAUSE), `nullrunden_wache.py` im Keepalive (Eingangs-Null ≠ Ergebnis-Null); erste 600: 2 Hauptbilder getauscht.** Behobene Klasse → Geschwister greppen → Journal Nachtrag 91

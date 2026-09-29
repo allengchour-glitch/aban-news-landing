@@ -90,7 +90,7 @@ TABELLE = {
 # auf Electronics (554 davon Klemmbausteine/3D-Holzpuzzles), «Aufbewahrung & Organizer» auf Storage (1'271 ohne
 # Ordnungswort: Wasserkocher, Saugroboter, Barhocker). Fuer diese Typen entscheidet jetzt der TITEL; passt keine
 # Regel, wird NICHT geraten (Produkt bleibt ohne Kategorie und steht im Bericht).
-SAMMELTYPEN = {"Trend-Gadget", "Trend-Produkt", "Kinder", "Schweizer Editionen", "Anime", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
+SAMMELTYPEN = {"Trend-Gadget", "Trend-Produkt", "Kinder", "Selbst gestalten", "Schweizer Editionen", "Anime", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
                "Aufbewahrung & Ordnung", "Geschenkset", "Haushalt & Wohnen", "Home & Living", "Wohnen & Dekoration",
                "Sommer-Gadget", "Outdoor & Gadget", "Tech-Gadget", "Haushalt", "Haushalt & Hobby"}
 import re as _re
@@ -156,6 +156,45 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"stift|notizbuch|schreibtisch|büro\w*|kalender|etikett", "os"),
     (r"badezimmer|dusch\w*|\bbad\b|toilette|seifenspender|zahnpasta|dispenser", "hg-1"),
     (r"putz\w*|reinig\w*|fusselroller|mopp|besen|wäsche\w*", "hg-10"),
+    # 29.09.2026 — dritte Welle (Verbesserungsrunde): 174 aktive Sammeltyp-Produkte ohne Treffer, obwohl der Titel eindeutig
+    # ist (Komposita und Transliterationen: «Automatikuhr», «Sommermütze», «Faltenhundebett», «Kuechenreibe», «Glättbürste»).
+    # Steht HINTER allen älteren Regeln → ändert keine bisherige Zuordnung. IDs am 29.09. per taxonomy gemessen.
+    (r"shapewear|korsett|mieder|\w*shaper\b|formschneider|arm-?shaping", "aa-1-6-10"),
+    (r"fussfeile|zehenspreizer|hühneraug\w*", "hb-3-9"),
+    (r"massag\w*|masseur|halsheber", "hb-3-11-8"),
+    (r"haltung\w*|rückenstabilisator|halsstütz\w*", "hb-3-1-3"),
+    (r"ätherische\w* öl\w*", "hb-3-21"),
+    (r"parfum|parfüm", "hb-3-2-8"),
+    (r"gua\s?sha|eyebrow|augenbrauen\w*|beauty[- ]instrument|mitesser", "hb-3-2-5"),
+    (r"cream\b|augenpartie|augenpflege|körperöl|feuchtigkeitspfleg\w*|schönheitspflaster", "hb-3-2-9"),
+    (r"glätt\w*|\bkamm\b|ion-kamm", "hb-3-10"),
+    (r"rasier\w*|shaver|bart\w*|zahnbürste|manicure|maniküre|pedicure|pediküre|schlafmaske", "hb-3"),
+    (r"atemschutz\w*", "hb-1"),
+    (r"automatikuhr|uhrwerk|tourbillon|\buhren\b", "aa-6-11"),
+    (r"perl\w*|collier|ohrhänger|zirkon\w*|fingerkette|armbänder|medaillon|klangkette|goldgarnitur|anhanger\b|(schlangen|umarmungs|kreuz)ring\b", "aa-6"),
+    (r"airpods|kopfhoerer", "el-2"),
+    (r"schutzglas|glas-schutz|panzerglas", "el-7-11-5"),
+    (r"hülle|\bcase\b", "el-4-8-4-2"),
+    (r"mauspad", "el"),
+    (r"mausarm\w*|handgelenkauflage", "os"),
+    (r"hemden|jogger|sakko|blazer|oberteil\w*|kardigan|pulli\w*|trenchcoat|pareo\w*|\w*kleider\b|\w*kleidung\w*|jeans|\w*dress\b|sommeroben|schlüpfer", "aa-1"),
+    (r"pumps|high heels|stiletto|flip-?flops|pantinen|sandal\w*|schnürsenkel", "aa-8"),
+    (r"\w*mütze\b|sonnenhut", "aa-2-17"),
+    (r"hundebett|zugleine|futterautomat|\bcat\b", "ap-2"),
+    (r"\btote\b|münzbörse", "lb"),
+    (r"hängematte", "hg-12-2-4"),
+    (r"fussmatte", "hg-3-26"),
+    (r"fingerschutz", "hg-11-8"),
+    (r"öffner|schäler|hacker\b|\w*mühle\b|reibe\b|pizza|waffel\w*|sandwich|belüfter|tee-ei|ananas|salat\w*|gemuese\w*|getreidespender|thermobe[ck]er|shredder|fischschuppen", "hg-11"),
+    (r"\w*trainer\b|trainingsrad|trainingsgurt|bauchmuskel\w*|widerstands-?bänder|kraftbänder|wrist wraps|handgelenkstütze", "sg-2"),
+    (r"seifen-?spender|schaumseifen\w*", "hg-1"),
+    (r"staubbläser|\bfan\b", "hg-9"),
+    (r"solar\w*|beleuchtung|\w*-licht\b", "hg-13"),
+    (r"\w*decke\b", "hg-15"),
+    (r"tapestry|wandkunst|nachrichtentafel|teelicht\w*|fächer\b", "hg-3"),
+    (r"truhe\b", "hg-10-16"),
+    (r"türschloss für kinder|schutzhaube f\w* kinder|kindersitz|schreibhilfe für kinder", "bt"),
+    (r"möbelheber", "ha-15"),
 ]
 _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 
@@ -166,7 +205,7 @@ _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 SAMMEL_FALLBACK = {t: TABELLE.get(t) for t in SAMMELTYPEN}
 SAMMEL_FALLBACK["Trend-Gadget"] = None
 SAMMEL_FALLBACK["Trend-Produkt"] = None   # 24.09.: 260 aktive, nie als Sammeltyp gefuehrt → Titelregeln griffen gar nicht
-for _t in ("Kinder", "Schweizer Editionen", "Anime"):   # 24.09.: Kleinsttypen ohne Tabellenwert — nur per Titel, sonst offen
+for _t in ("Kinder", "Schweizer Editionen", "Anime", "Selbst gestalten"):   # 24.09./29.09.: Kleinsttypen ohne Tabellenwert — nur per Titel, sonst offen
     SAMMEL_FALLBACK[_t] = None
 
 
