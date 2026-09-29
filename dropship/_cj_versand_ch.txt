@@ -1312,3 +1312,7 @@ gid://shopify/Product/15481691898241	ok	Full HD Smart Mini Beamer mit WLAN
 gid://shopify/Product/15481839059329	nicht-versendbar	Outdoor Energie-Speicher
 gid://shopify/Product/15510325789057	ok	Leichter, geräumiger Reise- und Wanderrucksack
 gid://shopify/Product/15510812197249	ok	Mini-Handgepäck mit Ladefunktion
+gid://shopify/Product/15455514263937	ok	Stoffbettwäsche mit Stickerei, Hautfreundlich & Seidenweich
+gid://shopify/Product/15459760669057	nicht-versendbar	American Vintage-Stil Nachttisch Wandlampe für Schlafzimmer & Wohnzimmer
+gid://shopify/Product/15504098656641	ok	Sukkulenten-Blumentopf Silikonform
+gid://shopify/Product/15509384036737	ok	Grosse luxuriöse Kristallglas-Schale
