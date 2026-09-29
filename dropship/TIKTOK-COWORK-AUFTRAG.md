@@ -1,21 +1,26 @@
 # TikTok posten — Auftrag für Cowork
 
-> # ⛔ AUFGABE 0 — ZUERST, sonst nicht posten
+> ### ℹ️ Posten ist frei — ein Rest bleibt offen
 >
-> **Im Profil steht weder ein Link noch die Adresse.** Der letzte Slide jedes
-> Beitrags sagt aber «Link in Bio» — wer jetzt postet, schickt jede Zuschauerin
-> ins Leere. Setz wenigstens diesen Text ins Bio (Profil → Profil bearbeiten →
-> Biografie), dann sind die Beiträge frei:
+> Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer
+> Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft
+> mehr ins Leere — die Zuschauerin findet den Shop im Bio.
+> Gemessen: 549 Follower · 77 Videos · 273 Likes.
 >
-> ```
-> Mode · Beauty · Wohnen · Technik 🇨🇭
-> luxestyle.ch · -10% mit WELCOME10
-> ```
+> **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):
+> Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil
+> bearbeiten» kennt nur Name, Anmeldename, Biografie, Pronomen. Es kommt über
+> **Einstellungen → Konto → Unternehmensverifizierung**: dort den Firmennachweis
+> hochladen (UID-Registerauszug von uid.admin.ch oder Zefix-Auszug).
+> ⚠️ Nur **JPEG/JPG/PNG**, kein PDF — den Auszug als Screenshot speichern,
+> farbig, unter 10 MB, mit dem vollständigen rechtsgültigen Firmennamen.
+> ⚠️ Nicht zu verwechseln mit «Verifizierung» (blauer Haken) — die verlangt
+> Presseartikel und ist für uns aussichtslos.
 
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
-**Profil am 2026-09-27 gemessen:** ? Follower · ? Videos · ? Likes · Bio-Link: **keiner**
+**Profil am 2026-09-29 gemessen:** 549 Follower · 77 Videos · 273 Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,
