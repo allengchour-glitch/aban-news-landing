@@ -73,6 +73,16 @@ absturz_nachholen() {
 # 25.09. 02:10 geladen, beim Neustart gestorben, nächster Versuch erst nach 20 h → Bestand 30 h alt.
 # NUR für Jobs, deren LETZTE Zeile IMMER FERTIG oder PAUSE ist (sonst beweist das Fehlen nichts):
 # letzte Schreibung vor dem Container-Start + keine Schlusszeile = gestorben. Höchstens 3×/Tag.
+# letzter_lauf LOG — gibt nur die Zeilen ab der letzten «START »-Marke aus (ohne Marke: das ganze Log).
+letzter_lauf() {
+  [ -f "$1" ] || return 0
+  if grep -q "^START " "$1"; then
+    awk '/^START /{buf=""} {buf=buf $0 "\n"} END{printf "%s", buf}' "$1"
+  else
+    cat "$1"
+  fi
+}
+
 still_gestorben() {
   local log="$1" boot z n
   [ -f "$log" ] || return 1
@@ -409,7 +419,11 @@ while true; do
       HM=$(date -u +%H%M); ZS=$(cat /tmp/_start_versand_jenachland 2>/dev/null || echo 0)
       [ "$HM" -ge 425 ] 2>/dev/null && [ "$HM" -lt 700 ] 2>/dev/null && [ "$ZS" -lt "$(date -u -d 'today 04:25' +%s)" ] && ZN=1
     fi
-    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG"; then
+    # ⚠️ 29.09.2026: `tail -n 3` sah das FERTIG des VORTAGS über der einen Zeile eines Laufs, der beim Container-Neustart
+    # starb (preis_verlustschutz 29.09. 04:09: «Kandidaten: 2788 …», keine Schlusszeile → 16 h «erledigt», 63 Verlustartikel
+    # blieben kaufbar). Jeder Start schreibt jetzt «START … (Aufseher)» ins Log; gewertet wird nur, was DANACH kam.
+    # Logs ohne Marke (vor dem ersten neuen Start) behalten das alte Verhalten.
+    if [ "$ZN" = 0 ] && letzter_lauf "/tmp/$L.log" | tail -n 3 | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
     fi
@@ -532,11 +546,11 @@ while true; do
     date +%s > "/tmp/_start_$L"
     if [ -n "$NACH" ]; then
       ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP $SPUR bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py && echo \"FERTIG \$(date -u +%FT%TZ) (Tageslauf sauber beendet, Aufseher)\"" \
+          "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; $EXP $SPUR bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py && echo \"FERTIG \$(date -u +%FT%TZ) (Tageslauf sauber beendet, Aufseher)\"" \
           >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
     else
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP $SPUR exec bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py" \
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; $EXP $SPUR exec bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
     fi
     echo "$(date -u +%H:%M) restart $L"
