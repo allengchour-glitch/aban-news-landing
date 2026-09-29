@@ -1155,3 +1155,4 @@ gid://shopify/Product/15449601180033	nicht-versendbar	Doppelseitiges Meditations
 gid://shopify/Product/15449175523713	ok	Blumen-Bettwäsche-Set aus Baumwolle, 4-teilig
 gid://shopify/Product/15449461260673	ok	Nagelfeile mit Akku – Lautlos
 gid://shopify/Product/15470376452481	nicht-versendbar	PC-Koffer mit Universalrädern
+gid://shopify/Product/15480492523905	ok	Mobile SSD für direkte Smartphone-Verbindung
