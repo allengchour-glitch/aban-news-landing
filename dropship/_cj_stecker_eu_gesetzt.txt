@@ -160,3 +160,9 @@
 15500956008833	unklar:farbe-unbekannt	2026-09-29	Lockenstab «New Cat Series»
 15500956074369	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab für langanhaltende Wellen
 15501007978881	eu-sku-gesetzt:CJJF150406602BY	2026-09-29	6-in-1 Lockenstab-Set mit Keramikaufsätzen
+15501021970817	unklar:farbe-unbekannt	2026-09-29	Ion-Kurzsträhner und Lockenstab
+15501022790017	eu-sku-gesetzt:CJJF135993602BY	2026-09-29	Automatischer Lockenstab für Locken & Glätten
+15501023084929	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab mit Temperaturregelung
+15501023379841	unklar:farbe-unbekannt	2026-09-29	Dampf-Glättbürste
+15501023543681	unklar:eu-teurer:9.81>6.63	2026-09-29	Automatischer Lockenstab für zuhause
+15501679395201	eu-sku-gesetzt:CJYD224115802BY	2026-09-29	Laptop Ladegerät
