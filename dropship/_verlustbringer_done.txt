@@ -1855,3 +1855,19 @@ gid://shopify/Product/15493862556033	2026-09-29T16:12Z	draft	15.90	36.52	5-in-1 
 gid://shopify/Product/15494642401665	2026-09-29T16:12Z	draft	16.90	37.52	Doppelschichtiger Keramikteller mit Rillenmuster
 gid://shopify/Product/15495090864513	2026-09-29T16:12Z	draft	20.90	41.15	Polar Fleece Stretch-Sofabezug
 gid://shopify/Product/15494642073985	2026-09-29T16:12Z	draft	18.90	39.10	Kratzbaum mit Drehscheibe aus Massivholz
+gid://shopify/Product/15495145554305	2026-09-29T16:12Z	draft	21.90	40.94	Edelstahl-Schale für Trockenfrüchte
+gid://shopify/Product/15493810651521	2026-09-29T16:12Z	draft	27.90	46.94	Wok aus 304 Edelstahl mit Wabenstruktur
+gid://shopify/Product/15494855295361	2026-09-29T16:12Z	draft	23.90	42.92	Katzen-Kratzbaum mit Sprungplattform
+gid://shopify/Product/15495222329729	2026-09-29T16:12Z	draft	18.90	37.85	Doumao Kratzbaum mit Drehteller und Ball
+gid://shopify/Product/15494698467713	2026-09-29T16:12Z	draft	14.90	33.63	Elektrische Schleifpenne
+gid://shopify/Product/15494344180097	2026-09-29T16:12Z	draft	16.90	35.49	Leichter Crossbody-Beutel
+gid://shopify/Product/15493851021697	2026-09-29T16:12Z	draft	30.90	49.02	Smarter Wischroboter für dein Zuhause
+gid://shopify/Product/15493932581249	2026-09-29T16:12Z	draft	15.90	33.83	Bananen-Haustierbett, waschbar
+gid://shopify/Product/15493866062209	2026-09-29T16:12Z	draft	15.90	33.63	Donut-Sitzkissen für Kinderzimmer
+gid://shopify/Product/15495105118593	2026-09-29T16:13Z	draft	28.90	46.59	Wok aus raffiniertem Eisen
+gid://shopify/Product/15495193592193	2026-09-29T16:13Z	draft	16.90	34.56	Handgemachte Bambus Etagere
+gid://shopify/Product/15494350176641	2026-09-29T16:13Z	draft	20.90	38.24	Funny Shiba Inu Corgi Trainingsball
+gid://shopify/Product/15493873959297	2026-09-29T16:13Z	draft	37.90	55.11	Mini-Soja- und Saftmaschine, filterfrei
+gid://shopify/Product/15495067828609	2026-09-29T16:13Z	draft	16.90	33.65	Kissenbezug Ethno-Stil Baumwolle Leinen
+gid://shopify/Product/15495138247041	2026-09-29T16:13Z	draft	26.90	43.56	Waschbarer & bissfester Haustier-Schlafsack
+gid://shopify/Product/15495212433793	2026-09-29T16:13Z	draft	16.90	33.50	Sofaüberwurf aus Baumwolle mit Antirutsch-Funktion
