@@ -1257,3 +1257,4 @@ gid://shopify/Product/15449120833921	ok	Samt-Blackout Vorhang-Set für Wohnzimme
 gid://shopify/Product/15449126830465	nicht-versendbar	Geräumige Katzentoilette mit Geruchsverschluss
 gid://shopify/Product/15452687008129	nicht-versendbar	Gestreifter Camping-Bett für mittelgrosse bis grosse Hunde
 gid://shopify/Product/15453784211841	ok	Doppelte Leder-Roller-Skates
+gid://shopify/Product/15453786702209	ok	Kratzball Katzenbett

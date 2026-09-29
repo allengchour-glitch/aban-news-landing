@@ -6,6 +6,12 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🔁 Google «Product page unavailable»: ein harmloses Update holt 27 % zurück (16:50)
+- GEMESSEN (A/B, 128/128, Google-Vollscan 16:45): A mit Tag 35 frei (27 %), Kontrolle 2 frei (1,6 %). «Image too small» 23 → 2.
+- GETAN: Kontrolle nachgezogen (126); `gfeed_anstupsen.py` täglich im Aufseher (je Produkt ≤ 1×/7 T, Datums-Tag, Ledger).
+- **Lehre:** Bei einer Google-Meldung, die der Seite widerspricht (kaufbar, HTTP 200), erst mit Kontrollgruppe testen —
+  der Versuch kostete einen halben Tag und belegt die Wirkung, statt 256 Produkte blind anzufassen.
+
 ## 2026-09-29 · 🔑 OpenAI-Schlüssel da, aber api.openai.com gesperrt (17:20)
 - Betreiber gab OPENAI_API_KEY im Chat und setzte ihn als Umgebungsvariable («umgebung gesetzt»). Abgelegt: `/tmp/openai_key`
   (600) + `/tmp/secrets_env.sh`; `engine_keepalive.sh` schreibt ihn nach jedem Neustart aus der Umgebung. Nie ins Repo.
@@ -17281,3 +17287,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-26 · ⏲️ **Cloud-Container lebt nach einer Routine ohne Session-Arbeit genau ~5 min (CJ-Takt: 21:09–21:13, 22:08–22:13 …) — Tages-Wächter tragen der Hetzner-Aufseher (`luxe-waechter`, 80 Commits/24 h), nicht die Cloud; die Nullrunden-Wache meldete die erklärte Freigabe-Null weiter → `CURSOR-FREI`-Markierung in `vollrunde.fertig()`, Wache still bei erklärter Null.** Erst fragen, WO ein Wächter läuft; eine Wache braucht den Fall «Null erklärt» → Journal Nachtrag 92
 - 2026-09-26 · 🎞️ **Säuberer prüfte 0 von 42 Reels (Ziffern am ID-Ende = CJ-Nummer, nicht Shopify-ID → kein Status, kein Preisband), Poster fanden Altpreise erst beim Posten (TikTok + YouTube 04:08 leer) → Caption-Handle als Schlüssel wie in den Postern; Kanarienvogel 42/42 gelesen, 25 `preis-veraltet-skip`, 17 ready.** Zwei Prüfer derselben Regel brauchen denselben Schlüssel; zählen, wie viele Zeilen beurteilbar waren → Journal Nachtrag 93
 - 2026-09-26 · ⏳ **TikTok 42 h still: `metricool_tiktok_post.mjs` beendete «übersprungen» (Altpreis) mit Exit 0 → Autopilot setzte die 12-h-Marke wie nach einem Post; Reel-Poster kennt «Exit 3 = übersprungen» seit 23.09., der Metricool-Poster nie → Exit 3 + 0/3/Fehler im Autopilot (Test 3/3), TikTok + YouTube nachgeholt.** Exit-Code ist ein Vertrag; neuer Poster übernimmt die Rückgabecodes des alten → Journal Nachtrag 94
+- 2026-09-26 · 🧩 **Startseiten-Reihe zeigte Horizon-Platzhalter «Produkttitel CHF 19.99» (Betreiber-Screenshot aus Facebook): Rotation setzte `sub-uhren` ein, die im Online Store abgemeldet ist (301 → uhren) → Pool auf `uhren`, `sichtbar_live()` prüft jeden Katalog (Online Store + ≥ 8 Produkte) vor dem Einsetzen; 40 Kataloge gemessen, 1 unsichtbar.** Wer einen Handle einsetzt, prüft die Sichtbarkeit → Journal Nachtrag 96

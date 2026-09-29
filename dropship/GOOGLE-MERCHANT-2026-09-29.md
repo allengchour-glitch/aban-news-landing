@@ -21,3 +21,14 @@ betreffen die Gratis-Einträge nicht.
 
 ## Nachtrag 08:25 UTC — Werkzeuge melden jetzt ihren Fehlergrund
 `bild_mini_entfernen.py` und `gfeed_nachpruefen.py` verschluckten in gql() jede Ausnahme (Befund zweites Gehirn, Klasse grund-verschluckt). Jetzt: letzter Grund in stderr + in der Abbruchmeldung (Test falscher Token → «401 Unauthorized»).
+
+## Nachtrag 16:50 UTC — A/B-Ergebnis «Product page unavailable» (Google-Vollscan 16:45 UTC)
+| Gruppe | vorher | noch blockiert | frei |
+|---|---|---|---|
+| A (Tag = Produkt-Update, 05:17 UTC) | 128 | 93 | **35 (27 %)** |
+| B (Kontrolle, unverändert) | 128 | 126 | 2 (1,6 %) |
+Ein harmloses Update lässt die App «Google & YouTube» die Seite neu einreichen; die Meldung war meist ein Altbefund.
+Kontrollgruppe B (126) um 16:46 nachgezogen. Neuer Tageswächter `automation/gfeed_anstupsen.py` (im Aufseher): jedes aktive
+Produkt mit dieser Meldung höchstens alle 7 Tage anstossen (Tag `gfeed-anstupsen-JJMMTT`, alte `gfeed-…`-Tags weg), Ledger
+`dropship/_gfeed_anstupsen.tsv`. Nebenbefund desselben Scans: «Image too small» 23 → **2** (bild_mini_entfernen wirkt),
+«Inappropriate image» 439 → 300.
