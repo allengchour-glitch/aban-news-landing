@@ -1798,3 +1798,23 @@ gid://shopify/Product/15493854921089	2026-09-29T15:35Z	draft	33.90	76.42	Gusseis
 gid://shopify/Product/15493873336705	2026-09-29T15:36Z	draft	22.90	64.99	Dark Werewolf Baustein-Modell (813 Teile)
 gid://shopify/Product/15495239500161	2026-09-29T15:36Z	draft	15.90	57.82	HD Leinwandbild – Fünfteiliges Set
 gid://shopify/Product/15493837881729	2026-09-29T15:36Z	draft	20.90	62.25	Akazienholz-Spatel-Set für die Küche
+gid://shopify/Product/15494643122561	2026-09-29T15:36Z	draft	16.90	57.61	Outdoor Picknicktopf, einzeln
+gid://shopify/Product/15495236125057	2026-09-29T15:36Z	draft	27.90	68.59	Wasserdichter Reise-Aufbewahrungsbeutel
+gid://shopify/Product/15495067730305	2026-09-29T15:36Z	draft	22.90	63.36	Vollautomatisches Ladegerät für Motorrad & Auto
+gid://shopify/Product/15493873238401	2026-09-29T15:36Z	draft	19.90	58.86	Mechanische Eule Bausteine für Kinder
+gid://shopify/Product/15493808030081	2026-09-29T15:36Z	draft	16.90	54.40	Plüsch-Sofakissen mit Anti-Rutsch-Unterseite
+gid://shopify/Product/15495133954433	2026-09-29T15:36Z	draft	56.90	94.28	Doppelseitiges Schneidebrett aus Rosenholz
+gid://shopify/Product/15493873074561	2026-09-29T15:36Z	draft	21.90	59.13	Zauberer Robe Modell Bausteine
+gid://shopify/Product/15493846532481	2026-09-29T15:36Z	draft	67.90	103.55	Multifunktionaler Edelstahl-Wandhahn mit Sprühdüse
+gid://shopify/Product/15494690177409	2026-09-29T15:36Z	draft	28.90	62.69	Kratzbaum mit Spielzeug für Katzen
+gid://shopify/Product/15495212827009	2026-09-29T15:36Z	draft	14.90	48.01	Diamond Painting Kleiner Fuchs
+gid://shopify/Product/15494700794241	2026-09-29T15:36Z	draft	14.90	47.61	Universal-Lenkrolle mit Doppellager
+gid://shopify/Product/15495154270593	2026-09-29T15:36Z	draft	48.90	81.22	Schubladenführungs-Montagehilfe
+gid://shopify/Product/15493909021057	2026-09-29T15:36Z	draft	23.90	55.66	Quilling Papier Malerei DIY-Set
+gid://shopify/Product/15493889556865	2026-09-29T15:37Z	draft	15.90	47.47	Winterwarmes Katzen- und Hundebett
+gid://shopify/Product/15493861900673	2026-09-29T15:37Z	draft	44.90	75.28	Multifunktionale Rohrzange
+gid://shopify/Product/15494642893185	2026-09-29T15:37Z	draft	17.90	48.28	Multifunktions-Stabmixer für Babynahrung
+gid://shopify/Product/15494345359745	2026-09-29T15:37Z	draft	45.90	76.26	Faltbare Kleidersack-Reisetasche
+gid://shopify/Product/15493933891969	2026-09-29T15:37Z	draft	14.90	45.25	Quadratischer Stickrahmen aus Kunststoff
+gid://shopify/Product/15495235174785	2026-09-29T15:37Z	draft	34.90	65.20	Retro Eisen Aufbewahrungskorb
+gid://shopify/Product/15494627852673	2026-09-29T15:37Z	draft	22.90	53.06	Küchenregal, multifunktional & platzsparend
