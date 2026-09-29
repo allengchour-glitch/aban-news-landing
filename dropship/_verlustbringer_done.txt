@@ -1871,3 +1871,10 @@ gid://shopify/Product/15493873959297	2026-09-29T16:13Z	draft	37.90	55.11	Mini-So
 gid://shopify/Product/15495067828609	2026-09-29T16:13Z	draft	16.90	33.65	Kissenbezug Ethno-Stil Baumwolle Leinen
 gid://shopify/Product/15495138247041	2026-09-29T16:13Z	draft	26.90	43.56	Waschbarer & bissfester Haustier-Schlafsack
 gid://shopify/Product/15495212433793	2026-09-29T16:13Z	draft	16.90	33.50	Sofaüberwurf aus Baumwolle mit Antirutsch-Funktion
+gid://shopify/Product/15493914427777	2026-09-29T16:13Z	draft	17.90	34.44	Bow Buckle IWatch Metallarmband
+gid://shopify/Product/15494602228097	2026-09-29T16:13Z	draft	16.90	33.44	Saucenschälchen-Set mit Bambustablett
+gid://shopify/Product/15493930156417	2026-09-29T16:13Z	draft	16.90	33.38	Live Ringlicht 26cm für Beauty & Selfie
+gid://shopify/Product/15495191069057	2026-09-29T16:13Z	draft	16.90	33.35	E68 Quadcopter Falt-Drohne
+gid://shopify/Product/15495235600769	2026-09-29T16:13Z	draft	22.90	39.17	Rustikaler Aufbewahrungskorb aus Baumwollseil
+gid://shopify/Product/15493872320897	2026-09-29T16:13Z	draft	17.90	34.15	E61 bodenloser Siebträger aus Edelstahl
+gid://shopify/Product/15495137231233	2026-09-29T16:13Z	draft	16.90	33.12	Wasserdichtes Sofa-Kissen, ganzjährig, rutschfest
