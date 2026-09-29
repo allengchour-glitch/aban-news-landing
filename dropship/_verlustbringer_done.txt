@@ -1955,3 +1955,11 @@ gid://shopify/Product/15495231996289	2026-09-29T16:34Z	draft	17.90	25.46	3-in-1 
 gid://shopify/Product/15494602097025	2026-09-29T16:34Z	draft	16.90	24.33	Japanische Keramik-Nudelschale mit Deckel
 gid://shopify/Product/15495140966785	2026-09-29T16:34Z	kein-verlust-live	15.90	14.57	Velo Rücklicht mit Warnfunktion
 gid://shopify/Product/15493800132993	2026-09-29T16:35Z	draft	15.90	22.57	Fussmatte mit Holzmaserung
+gid://shopify/Product/15495106658689	2026-09-29T16:35Z	draft	14.90	21.53	Diamond Painting Set „Pferd“
+gid://shopify/Product/15495224754561	2026-09-29T16:35Z	draft	16.90	23.46	LED-Fahrradbeleuchtung für Speichen
+gid://shopify/Product/15493837980033	2026-09-29T16:35Z	draft	16.90	23.20	Mini Holzkohleofen – Outdoor & Haushalt
+gid://shopify/Product/15493837029761	2026-09-29T16:35Z	draft	16.90	23.15	Fuchs Kunstfell Kissen Herzform
+gid://shopify/Product/15493859180929	2026-09-29T16:35Z	kein-verlust-live	32.90	22.86	Kartoffel-Pommes-Schneider aus Edelstahl
+gid://shopify/Product/15495091388801	2026-09-29T16:35Z	draft	15.90	21.78	Latex-Anti-Rutschmatte für Zuhause
+gid://shopify/Product/15493894209921	2026-09-29T16:35Z	draft	15.90	21.77	Wandregal mit Zahnpastaspender, bohrfrei
+gid://shopify/Product/15493873664385	2026-09-29T16:35Z	draft	16.90	22.71	Keramik-Teekanne für losen Tee
