@@ -114,3 +114,9 @@
 15496410333569	unklar:farbe-unbekannt	2026-09-29	Intelligentes 4-Schacht-Ladegerät für AAA/AA-Akkus
 15496510439809	eu-sku-gesetzt:CJYD238698302BY	2026-09-29	Multifunktionale Nagelpoliermaschine mit Staubsauger
 15496534294913	eu-sku-gesetzt:CJJF119614302BY	2026-09-29	3-Rohr Lockenstab für grosse Wellen
+15496535703937	unklar:farbe-unbekannt	2026-09-29	Glätteisen für glattes oder lockiges Haar
+15496537145729	unklar:farbe-unbekannt	2026-09-29	Fluffy Hair Straightener Styling Glätteisen
+15496580661633	unklar:farbe-unbekannt	2026-09-29	Multifunktionaler Wasserkocher für 1 Person
+15496581611905	unklar:farbe-unbekannt	2026-09-29	Herzli-Waffeleisen für de schnälle Zmorge
+15496610283905	eu-sku-gesetzt:CJXFLPCD00401-Black-EU	2026-09-29	Netzteil für Xbox 360 E
+15496704426369	eu-sku-gesetzt:CJXFLPCD00379-EU	2026-09-29	Netzteil für Video-Türklingel
