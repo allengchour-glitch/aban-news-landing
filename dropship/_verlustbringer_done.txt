@@ -1818,3 +1818,4 @@ gid://shopify/Product/15494345359745	2026-09-29T15:37Z	draft	45.90	76.26	Faltbar
 gid://shopify/Product/15493933891969	2026-09-29T15:37Z	draft	14.90	45.25	Quadratischer Stickrahmen aus Kunststoff
 gid://shopify/Product/15495235174785	2026-09-29T15:37Z	draft	34.90	65.20	Retro Eisen Aufbewahrungskorb
 gid://shopify/Product/15494627852673	2026-09-29T15:37Z	draft	22.90	53.06	Küchenregal, multifunktional & platzsparend
+gid://shopify/Product/15494854869377	2026-09-29T16:09Z	schon-DRAFT	22.90	53.03	Vertikales Kratzbrett für Katzen

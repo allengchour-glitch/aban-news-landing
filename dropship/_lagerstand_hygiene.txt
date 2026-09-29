@@ -304,3 +304,5 @@ gid://shopify/Product/15461980569985	draft-ausverkauft	Wiederverwendbare Eiswür
 gid://shopify/Product/15469983629697	draft-ausverkauft	Strumpfmaske gestrickt
 gid://shopify/Product/15470034616705	draft-ausverkauft	Skelett beweglich
 gid://shopify/Product/15493859803521	draft-ausverkauft	Wäschekorb für Schrank & Regal, Himmelblau
+gid://shopify/Product/15470036255105	draft-ausverkauft	Saure Zungen · 100 Stück
+gid://shopify/Product/15470034616705	reaktiviert	Skelett beweglich
