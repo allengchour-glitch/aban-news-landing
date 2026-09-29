@@ -6,6 +6,18 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🛒 «verbessere irgendwie das leute es kaufen»: Nachfrage sichtbar machen (17:30)
+- GEMESSEN (ShopifyQL 90 T, Menschen, Produkt-Landeseiten): Abendkleid «Sirène» 143 Sitz. · 9 Warenkörbe · 7 Kasse · 0 Kauf
+  (fast alles Woche 29.06. = TikTok-Werbung, mobil); danach Aria, Leinen-Set, Aurora … Keiner dieser Nachfrage-Belege stand
+  in einer Social-Vorrangliste; Sirène war NIE gepostet (Juni-Zeile «skip», KI-Bild). «No reviews» auf der Produktseite ist
+  `display:none` (WebFetch liest versteckten Text) → kein Theme-Eingriff. Versand CHF 7 / gratis ab 45 steht offen auf der Seite.
+- GETAN: `nachfrage_liebling.py` (täglich im Aufseher): Produktseiten mit ≥2 Warenkorb- oder ≥1 Kassen-Sitzung (90 T) →
+  Tag `nachfrage-liebling`, nur mit belegter Bezugsquelle (Kristall-Set fiel raus) → 11 Produkte; `social_saison_vorrang.py`
+  zieht den Tag direkt nach `kunden-liebling` vor; 5 Bildposts (queue_new_products VORRANG_TAG) + Sirène von Hand eingereiht
+  (Zeilen-ID = Handle, Jury prüft vor dem Post). Bereits gepostete (Aurora, Leinen-Set) bleiben draussen (Doppelpost-Verbot).
+- **Lehre:** Warenkorb-Sitzungen sind der stärkste Kaufwillen-Beleg, den wir haben — ein Vorrang, der nur auf «schon gekauft»
+  schaut, übersieht bei 2 Verkäufen im Monat fast alles. Und: WebFetch liest `display:none`-Text mit; Sichtbarkeit im HTML prüfen.
+
 ## 2026-09-29 · 🔁 Google «Product page unavailable»: ein harmloses Update holt 27 % zurück (16:50)
 - GEMESSEN (A/B, 128/128, Google-Vollscan 16:45): A mit Tag 35 frei (27 %), Kontrolle 2 frei (1,6 %). «Image too small» 23 → 2.
 - GETAN: Kontrolle nachgezogen (126); `gfeed_anstupsen.py` täglich im Aufseher (je Produkt ≤ 1×/7 T, Datums-Tag, Ledger).
@@ -17288,3 +17300,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-26 · 🎞️ **Säuberer prüfte 0 von 42 Reels (Ziffern am ID-Ende = CJ-Nummer, nicht Shopify-ID → kein Status, kein Preisband), Poster fanden Altpreise erst beim Posten (TikTok + YouTube 04:08 leer) → Caption-Handle als Schlüssel wie in den Postern; Kanarienvogel 42/42 gelesen, 25 `preis-veraltet-skip`, 17 ready.** Zwei Prüfer derselben Regel brauchen denselben Schlüssel; zählen, wie viele Zeilen beurteilbar waren → Journal Nachtrag 93
 - 2026-09-26 · ⏳ **TikTok 42 h still: `metricool_tiktok_post.mjs` beendete «übersprungen» (Altpreis) mit Exit 0 → Autopilot setzte die 12-h-Marke wie nach einem Post; Reel-Poster kennt «Exit 3 = übersprungen» seit 23.09., der Metricool-Poster nie → Exit 3 + 0/3/Fehler im Autopilot (Test 3/3), TikTok + YouTube nachgeholt.** Exit-Code ist ein Vertrag; neuer Poster übernimmt die Rückgabecodes des alten → Journal Nachtrag 94
 - 2026-09-26 · 🧩 **Startseiten-Reihe zeigte Horizon-Platzhalter «Produkttitel CHF 19.99» (Betreiber-Screenshot aus Facebook): Rotation setzte `sub-uhren` ein, die im Online Store abgemeldet ist (301 → uhren) → Pool auf `uhren`, `sichtbar_live()` prüft jeden Katalog (Online Store + ≥ 8 Produkte) vor dem Einsetzen; 40 Kataloge gemessen, 1 unsichtbar.** Wer einen Handle einsetzt, prüft die Sichtbarkeit → Journal Nachtrag 96
+- 2026-09-26 · ⛔ **Frischer Container (Klon von main unter unserem Branch, /tmp leer, keine SHOPIFY_CLIENT_*-Variablen): Posten auf allen Kanälen still seit 06:10, und die Betreiber-Ampel gab NICHTS aus (`return` ohne Shop-Token) → `zugang_weg()` meldet «⛔ ZUGANG WEG» zuerst, 19/25 Prüfungen laufen tokenfrei weiter, jede Prüfung einzeln in try; Gegenprobe 3/3.** Fehlende Voraussetzung ist ein Befund, keine Ruhe → Journal Nachtrag 97

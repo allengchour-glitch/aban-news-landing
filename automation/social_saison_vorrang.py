@@ -18,7 +18,7 @@ from kollektionstexte_nachbessern import gql  # noqa: E402
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAG = os.environ.get("TAG", "herbst-2026")
 BIS = os.environ.get("BIS", "2026-11-30")
-EXTRA_TAGS = [t for t in os.environ.get("EXTRA_TAGS", "kunden-liebling,ersatz-wickelset-0928").split(",") if t]
+EXTRA_TAGS = [t for t in os.environ.get("EXTRA_TAGS", "kunden-liebling,nachfrage-liebling,ersatz-wickelset-0928").split(",") if t]
 # 28.09.2026 (Betreiber «alles andere weiter pushen bis einkauf kommt», dropship/KASSE-ABBRUCH-2026-09-28.md): 9 Kassen-Sitzungen,
 # 1 Kauf; CJ-Lieferzeit 2–4 Wochen ist der wahrscheinlichste Abbruchgrund. CH-Lager (Fortura, 2–3 Werktage, 2'394 aktiv) NACH der
 # Saison-Ware, vor allem übrigen — reine Reihenfolge, keine Kadenz- oder Sperränderung.
