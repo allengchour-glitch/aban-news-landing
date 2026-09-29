@@ -150,3 +150,9 @@
 15500254773633	eu-sku-gesetzt:CJYD196708602BY	2026-09-29	Haartrockner mit Mehrfachfunktionen
 15500255691137	eu-sku-gesetzt:CJJF196266602BY	2026-09-29	Automatischer Lockenstab mit Warmluftbürste 3-in-1
 15500438602113	eu-sku-gesetzt:CJCD121247102BY	2026-09-29	Netzteil mit Trafo für Game Konsole
+15500486967681	unklar:farbe-unbekannt	2026-09-29	Haarroller und Haarschneider
+15500487557505	unklar:farbe-unbekannt	2026-09-29	Haartrockner mit automatischer Staubsaugung
+15500909379969	eu-sku-gesetzt:CJJF184812502BY	2026-09-29	Lockenstab für einfache Stylings
+15500910133633	unklar:farbe-unbekannt	2026-09-29	3-in-1 Glätteisen & Lockenstab für trockenes/nasses Haar
+15500911411585	uebersprungen-status	2026-09-29
+15500928319873	eu-sku-gesetzt:CJCD115354002BY	2026-09-29	Universal Ladegerät
