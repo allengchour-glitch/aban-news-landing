@@ -96,3 +96,19 @@ Ledger `dropship/_jury_nachbesserung.tsv` (je Zeile ein Versuch). Täglich im Au
 Ergebnis: **23 von 32 repariert** (16 mit anderem Bild, 7 nur mit ehrlicher Caption), 5 ohne bestandenen Kandidaten,
 4 ohne Produkt-ID. Bild-Queue ready 34 → 57. Sichtprüfung Kontaktbogen der 16 neuen Bilder: alle sauber, kein
 Lieferantentext (Markenname auf Zifferblatt/Sohle = Ware selbst).
+
+## Nachtrag 29.09. 00:45 UTC — die Jury streut: Mehrheit aus 3 im Grenzband (Verbesserungsrunde)
+
+GEMESSEN: 8 Grenzfälle aus dem Cache (Schnitt 6–8) je 2× neu beurteilt → **2 von 8 kippten** zwischen bestanden und
+durchgefallen (reel 1744902…: F/F/T; reel 1745985…: T/F/T), der Schnitt lag bis 3,3 Punkte auseinander (5,5 vs 8,83).
+Schon am 28.09. bekam die HyperFrames-Probe v4 erst 9,33, dann 7,17.
+
+GETAN (`automation/gemini_jury.py`):
+- **Grenzfall** = Schnitt innerhalb ±1,5 um die Schwelle 7,0 ODER tiefste Note 4–5,5 → 2 weitere Urteile, die
+  **Mehrheit** entscheidet, gespeichert wird das Median-Urteil der Mehrheitsseite + `runden` (alle Einzelurteile).
+  Klare Fälle bleiben bei 1 Urteil. Schalter `JURY_RUNDEN` (Standard 3), `JURY_BAND` (1,5).
+- Alte Einzelurteile im Grenzband (120 von 195 Cache-Einträgen) gelten nicht mehr → nächster Aufruf urteilt neu mit Mehrheit.
+- Selbsttest (7 Fälle) bestanden. Einmal-Nachprüfung der gesperrten Grenzfälle: 13 Zeilen (9 Reels, 4 Bilder) mit
+  Mehrheit neu beurteilt → **0 freigegeben** (alle Sperren bestätigt). Die Mehrheit schützt vor allem vor
+  **Zufallsfreigaben** wie T/F/T.
+Kosten: nur im Grenzband ×3 (~0,3 Rp. statt ~0,1 Rp. je Post).

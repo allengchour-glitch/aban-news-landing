@@ -25,6 +25,11 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(REPO, "dropship", "_gemini_jury.tsv")
 MODELL = os.environ.get("JURY_MODELL", "gemini-2.5-flash")
 MIN = float(os.environ.get("JURY_MIN", "7.0"))
+# 29.09.2026 Streuung GEMESSEN: 8 Grenzfälle (Schnitt 6–8) je 3× beurteilt → 2 kippten zwischen bestanden/durchgefallen,
+# Schnitt bis 3,3 Punkte auseinander (5,5 vs 8,83). Darum: liegt das erste Urteil im Grenzband, kommen 2 weitere dazu
+# und die MEHRHEIT entscheidet (Schnitt = Median). Klare Fälle kosten weiter nur ein Urteil.
+RUNDEN = int(os.environ.get("JURY_RUNDEN", "3"))
+BAND = float(os.environ.get("JURY_BAND", "1.5"))
 KRIT = ["erstes_bild", "bildqualitaet", "sauberkeit", "text_im_bild", "stimmigkeit", "wirkung"]
 
 
@@ -131,6 +136,23 @@ def urteilen(a):
             "gruende": a.get("gruende", ""), "verbesserung": a.get("verbesserung", "")}
 
 
+def grenzfall(v):
+    """Nahe an der Schwelle: Schnitt innerhalb ±BAND um MIN, oder tiefste Note genau an der 5er-Grenze (4–5.5)."""
+    lo = min(v["noten"].values()) if v["noten"] else 0
+    return abs(v["schnitt"] - MIN) <= BAND or 4.0 <= lo <= 5.5
+
+
+def mehrheit(urteile):
+    """Mehrheit der ok-Urteile entscheidet; Rückgabe = das Median-Urteil der Mehrheitsseite (Begründung passt zum Ergebnis)."""
+    ja = [u for u in urteile if u["ok"]]
+    nein = [u for u in urteile if not u["ok"]]
+    seite = ja if len(ja) > len(nein) else nein
+    seite = sorted(seite, key=lambda u: u["schnitt"])
+    v = dict(seite[len(seite) // 2])
+    v["runden"] = [{"ok": u["ok"], "schnitt": u["schnitt"]} for u in urteile]
+    return v
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("quelle"); ap.add_argument("--caption", default=""); ap.add_argument("--typ", default="reel")
@@ -149,7 +171,10 @@ def main():
         for l in open(CACHE, encoding="utf-8"):
             t = l.rstrip("\n").split("\t")
             if t[0] == sig and len(t) >= 3:
-                v = json.loads(t[2]); v["cache"] = True
+                v = json.loads(t[2])
+                if RUNDEN > 1 and grenzfall(v) and "runden" not in v:
+                    continue          # Einzelurteil im Grenzband (vor 29.09.) zählt nicht mehr → neu mit Mehrheit
+                v["cache"] = True
                 print(json.dumps(v, ensure_ascii=False)); sys.exit(0 if v["ok"] else 4)
     if a.nur_cache:
         print(json.dumps({"ok": None, "grund": "kein gecachtes Urteil (--nur-cache)"})); sys.exit(2)
@@ -158,6 +183,9 @@ def main():
         print(json.dumps({"ok": None, "grund": "keine Standbilder"})); sys.exit(2)
     try:
         v = urteilen(fragen(jpgs, a.caption, a.typ, ist_video))
+        if RUNDEN > 1 and grenzfall(v):
+            weitere = [urteilen(fragen(jpgs, a.caption, a.typ, ist_video)) for _ in range(RUNDEN - 1)]
+            v = mehrheit([v] + weitere)
     except Exception as e:
         print(json.dumps({"ok": None, "grund": str(e)[:200]})); sys.exit(2)
     with open(CACHE, "a", encoding="utf-8") as f:

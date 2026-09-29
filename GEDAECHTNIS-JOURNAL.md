@@ -6,6 +6,16 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🎲 Jury-Streuung: Mehrheit aus 3 im Grenzband (Verbesserungsrunde 00:25)
+- GEMESSEN: 8 Grenzfälle (Schnitt 6–8) je 3× → 2 kippten, Schnitt bis 3,3 Punkte auseinander. Temperatur 0,1 hilft nicht:
+  die Standbilder sind identisch, das Modell urteilt trotzdem verschieden.
+- Fix: `gemini_jury.py` — im Grenzband 2 Zusatzurteile, Mehrheit, Median-Urteil + `runden` im Cache; alte Einzelurteile
+  im Band ungültig. Nachprüfung 13 gesperrter Grenzfälle: 0 freigegeben (Sperren bestätigt).
+- **Lehre:** Ein einzelnes KI-Urteil nahe der Schwelle ist kein Messwert. Vor jeder Schwelle erst die Streuung messen
+  (derselbe Input 3×); klare Fälle brauchen keine Wiederholung, Grenzfälle eine Mehrheit.
+- Weiter gemessen: Landeseiten 7 T nur 54 menschliche Sitzungen (Start 17, Rizinusöl 7, Halloween 4) — Verkehr bleibt der
+  Engpass; «Morgenstern 71 cm» = Kostüm-Accessoire (ok); sku_dup_scan brach 20:28 an Drosselung ab (ehrlich, nächster Lauf).
+
 ## 2026-09-28 · 🎞️ HyperFrames-Probe: Reel aus HTML statt ffmpeg-Overlay (Betreiber «ja», 21:20)
 - Quelle: TikTok @sebastiankauffmann «Claude 5 besten Plugins» — über `automation/browser/tiktok_video_lesen.mjs`
   (Hetzner, ASR-Untertitel + Standbilder; Cloud blockt tiktok.com). Einordnung `dropship/LERNEN-TIKTOK-PLUGINS-2026-09-28.md`.
@@ -17187,3 +17197,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 💤 **Fortura-Bestand 30 h alt: Tageslauf starb 02:10 beim Container-Neustart ohne Fehlerzeile, Anspruch war vor dem Lauf gesetzt, `absturz_nachholen` sucht nur Traceback → `still_gestorben LOG` (letzte Schreibung vor Container-Start + keine FERTIG/PAUSE, ≤3×/Tag), NUR an Toren mit unbedingter Schlusszeile (Fortura, Wahlversprechen); 20 von 47 Tor-Logs ohne Schlusszeile, meist bedingtes FERTIG = kein Beweis.** Nachhol-Signal braucht Vertrag → Journal Nachtrag 84
 - 2026-09-25 · 🏆 **«weltklasse»: Halloween-Reihe stand auf Startseiten-Platz 17 von 25 (Rotation setzte Katalog, nie Position) → Regel 6: Saison-Reihe im Fenster direkt unter Herbst (live 17→5); «10 Dubletten in Halloween» waren längst DRAFT (Kollektion zählt Entwürfe), aktiv nur 1 SKU-Paar — mit FREMDER Variante (Falbala als 140 cm unter Hexen-Titel) → DRAFT + 301.** Saisonal = Inhalt UND Platz → Journal Nachtrag 83
 - 2026-09-25 · 🔫 **Waffen-Wächter prüfte seit Grind-Pause 1 Seite/Tag (SEIT 3 Tage, `/tmp/export.jsonl` ohne Text 0/49'892) → Wochen-Vollrunde live (498 S.): Feuerzeug in Pistolenform + Aufnahme-Stift aus Google-Kanal, 3 Fehltreffer gesperrt (MP5-Autoradio ×2, Seifenblasen-MP); Vollrunden-Stempel erst nach Exit 0 (auch Medizin).** «Wie viele Seiten sah der letzte Lauf?» → Journal Nachtrag 85
+- 2026-09-25 · 🎨 **«mache alles»: Farbliste mit Doppelpunkt fehlte dem Wahlversprechen-Wächter (Grössen-Form seit 24.09., Farben nie) — 951 roh, 571 echt, Ausnahmen Anzahl-vor-«Farben»/Set-Titel (erste Fassung schützte Masse statt Paletten); Ratgeber Yogamatte + Nagellack live; Teetasse + Dampf-Entferner (Stecker unklar) aus Google; Moissanit manuell 5 → Smart 94 + 301.** Neue Regelform → sofort die Geschwister prüfen → Journal Nachtrag 86
