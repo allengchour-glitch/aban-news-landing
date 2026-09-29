@@ -1287,3 +1287,15 @@ gid://shopify/Product/15521662042497	ok	Hochzeits-Herrenhaus Bausteine
 gid://shopify/Product/15523184083329	ok	Keramikvase Vintage Jade Grün
 gid://shopify/Product/15523862905217	ok	Wasserfeste Anti‑Rutsch Wanderschuhe
 gid://shopify/Product/15523920314753	ok	Business Schulter Rucksack Outdoor
+gid://shopify/Product/15524698587521	ok	Verstellbare Kurzhanteln für Damen
+gid://shopify/Product/15525483184513	ok	Mechanische Armbanduhr mit Saphirglas
+gid://shopify/Product/15449485869441	ok	Astronomisches Teleskop mit Telefonadapter
+gid://shopify/Product/15453780967809	nicht-versendbar	Holz-Kleiderständer
+gid://shopify/Product/15454302372225	ok	Retro-Rucksack aus Echtleder
+gid://shopify/Product/15468734022017	nicht-versendbar	Kindertrolley mit Cartoon-Print
+gid://shopify/Product/15484628107649	nicht-versendbar	Nordische Tischleuchte für Wohn- & Schlafzimmer
+gid://shopify/Product/15485846290817	nicht-versendbar	Hunde-Toilettenschale aus Edelstahl
+gid://shopify/Product/15493367660929	ok	Leder-Laptop-Rucksack für Herren
+gid://shopify/Product/15497524511105	ok	Business-Schuhe aus Kalbsleder mit Lasergravur
+gid://shopify/Product/15504089153921	nicht-versendbar	Handlicher Reisekoffer für Damen
+gid://shopify/Product/15507778240897	ok	Magnetischer Fitness-Timer mit App-Steuerung
