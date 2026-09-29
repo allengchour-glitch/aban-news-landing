@@ -1750,3 +1750,6 @@ gid://shopify/Product/15484613558657	2026-09-28T17:21Z	schon-DRAFT	14.90	20.92	M
 gid://shopify/Product/15485425779073	2026-09-28T17:21Z	schon-DRAFT	15.90	21.88	Sofa-Kissen aus Eisseide
 gid://shopify/Product/15495214236033	2026-09-29T15:29Z	draft	19.90	846.54	Katzen-Kletterwand aus Massivholz
 gid://shopify/Product/15494855426433	2026-09-29T15:29Z	draft	44.90	389.89	Katzen-Kratzbaum «Space Capsule»
+gid://shopify/Product/15495157383553	2026-09-29T15:29Z	draft	88.90	275.21	Verstellbare Winkel-Werkbank 15 Zoll
+gid://shopify/Product/15495223280001	2026-09-29T15:29Z	draft	15.90	183.45	Wandmontiertes Sisal-Kratzbrett aus Massivholz
+gid://shopify/Product/15495139295617	2026-09-29T15:29Z	draft	74.90	204.53	Massivholz Katzenkratzbaum mit Liegefläche
