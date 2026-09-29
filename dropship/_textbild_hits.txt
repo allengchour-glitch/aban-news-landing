@@ -16100,3 +16100,4 @@ gid://shopify/Product/15504083288449	22->3	Kabelloser Audio-Adapter für TV & Ko
 gid://shopify/Product/15504112025985	15->0	Atemtrainer zur Verbesserung der Lungenkapazität
 gid://shopify/Product/15504118382977	49->0	Golfball-Magazin für Driving Range
 gid://shopify/Product/15504188178817	70->0	Futter-Napf aus Keramik für Katze
+gid://shopify/Product/15506188861825	33->0	Handgefertigte, abnehmbare Nägel im Kühlen Weiss
