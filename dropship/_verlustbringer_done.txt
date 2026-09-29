@@ -1819,3 +1819,15 @@ gid://shopify/Product/15493933891969	2026-09-29T15:37Z	draft	14.90	45.25	Quadrat
 gid://shopify/Product/15495235174785	2026-09-29T15:37Z	draft	34.90	65.20	Retro Eisen Aufbewahrungskorb
 gid://shopify/Product/15494627852673	2026-09-29T15:37Z	draft	22.90	53.06	Küchenregal, multifunktional & platzsparend
 gid://shopify/Product/15494854869377	2026-09-29T16:09Z	schon-DRAFT	22.90	53.03	Vertikales Kratzbrett für Katzen
+gid://shopify/Product/15495143293313	2026-09-29T16:09Z	draft	41.90	71.38	P108 6.0Ah Lithium-Akku für Elektrowerkzeuge
+gid://shopify/Product/15495212761473	2026-09-29T16:10Z	draft	20.90	50.06	Moderner Marokkanischer Geometrischer Teppich
+gid://shopify/Product/15495225901441	2026-09-29T16:10Z	draft	22.90	51.38	Velo-Licht 4000 mAh
+gid://shopify/Product/15493932548481	2026-09-29T16:10Z	draft	17.90	45.61	Minimalistischer Handtuchhalter im Nordic-Stil
+gid://shopify/Product/15495214104961	2026-09-29T16:10Z	draft	24.90	52.23	DIY Katzen-Kletterwand aus Massivholz
+gid://shopify/Product/15495082443137	2026-09-29T16:10Z	draft	19.90	47.22	Elastischer Schonbezug für modulare Sofas
+gid://shopify/Product/15493853282689	2026-09-29T16:10Z	draft	29.90	56.67	Nordisches Kissen Schwarz-Weiss mit Herzmuster
+gid://shopify/Product/15493807800705	2026-09-29T16:10Z	draft	15.90	42.52	Kord-Sitzkissen für alle Jahreszeiten
+gid://shopify/Product/15493717787009	2026-09-29T16:10Z	draft	22.90	49.45	Militär Kampfpanzer Modell Bausatz
+gid://shopify/Product/15493935006081	2026-09-29T16:10Z	draft	16.90	43.15	Cartoon-Bettmatratze für Sommer – weich & gemütlich
+gid://shopify/Product/15494856016257	2026-09-29T16:10Z	draft	15.90	41.91	Minimalistischer Katzen-Kletterbaum Weihnachten
+gid://shopify/Product/15495232651649	2026-09-29T16:10Z	draft	21.90	47.62	Gusseisen-Bratpfanne, emailliert
