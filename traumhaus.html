@@ -13308,12 +13308,15 @@ function komboPlus(){
   return komboMult();}
 /* Der EINE Ort, an dem Verdienst vergeben wird — sonst muesste der Multiplikator an
    dreissig Stellen stehen und waere ueberall anders. */
-function verdiene(betrag,zaehlt){
+function verdiene(betrag,zaehlt,krimi){
   if(betrag>0)camKick=Math.max(camKick,0.010);
   var m=(zaehlt===false)?1:komboPlus();
   var b=Math.round(betrag*m);
   geld+=b;if(typeof geldSend==="function")geldSend();
-  stats.verdient=(stats.verdient||0)+b;   /* Runde 104: Gesamtverdienst (Buergerrang) */
+  /* Runde 105: Beute aus Coups und Taschendiebstahl geht in die SCHATTENKASSE, nicht in den Gesamtverdienst — sonst
+     zaehlte Kriminalitaet als ehrliche Arbeit fuer den Buergerrang (Kritik ChatGPT, Plan Abschnitt 7 Punkt 2). Das Geld
+     selbst bleibt; nur der Rang sieht es nicht. Rueckgaben/Verkaeufe von Bauteilen laufen ohnehin direkt ueber geld+=. */
+  if(krimi)stats.schatten=(stats.schatten||0)+b;else stats.verdient=(stats.verdient||0)+b;   /* Runde 104: Gesamtverdienst (Buergerrang) */
   if(zaehlt!==false)KOMBO.verdient+=b-betrag;
   /* Die Hetze vergibt KEIN eigenes Geld — sie zaehlt nur, was ohnehin verdient wird.
      So kann keine Runde die Wirtschaft aufblasen, egal wie oft man sie spielt. */
@@ -15164,7 +15167,7 @@ function finishCrime(){
   var chance=0.55+lv*0.07+(crime.accomplice?0.15:0)-job.risk*0.5+(crime.mgBonus||0);crime.mgBonus=0;
   var ok=Math.random()<chance;
   var beute=Math.round(job.base*(1+lv*0.4)*(crime.accomplice?1.7:1));
-  if(ok){verdiene(beute);stats.coupsOk++;
+  if(ok){verdiene(beute,undefined,true);stats.coupsOk++;
     crimeScene(true,job,beute);
     skillXp("krimi",2);}
   else{polizeiPending=true;wantedPlus(1);var strafe=Math.min(geld,Math.round(beute*0.6)+100);geld-=strafe;
@@ -17752,7 +17755,7 @@ function taschendieb(n9){
   mgStart("🤏 Taschendiebstahl","Ruhige Hand — dreimal sauber treffen, sonst fliegst du auf!",function(avg){
     if(avg>=0.65){
       var beute9=Math.round((25+Math.random()*55)*(1+skills.krimi.lv*0.25));
-      verdiene(beute9);if(MPs&&!mpHost)netSend({t:"dieb"});else stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
+      verdiene(beute9,undefined,true);if(MPs&&!mpHost)netSend({t:"dieb"});else stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
       geldSend();updHUD();
       if(Math.random()<0.12){polizeiPending=true;wantedPlus(1);npcTimer=Math.min(npcTimer,5);
         hint("+"+beute9+" $ … aber jemand hat es GESEHEN. 🚨");}
@@ -17805,7 +17808,7 @@ document.getElementById("achBtn").onclick=function(){
      durchsehen, um zu erkennen, wofuer sich der naechste Handgriff lohnt. */
   var nz=naechstesZiel();
   var _rp=rangPunkte(),_ri=rangIdx(_rp),_rn=rangDaten(_ri+1),_nu=naechsterUnentdeckterOrt();
-  document.getElementById("questTxt").innerHTML="<b>"+rangDaten(_ri)[0]+" "+rangDaten(_ri)[1]+"</b> · "+_rp+" Pkt · nächster Rang "+_rn[0]+" "+_rn[1]+" ab "+_rn[2]+"<br>🧭 <b>Orte:</b> "+(stats.orte||[]).length+"/"+WORLD_POIS.length+(_nu?" · als nächstes "+_nu.o[2]+" "+_nu.o[3]+" ("+Math.round(_nu.d)+" m)":" · alle entdeckt")+"<br>"+(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
+  document.getElementById("questTxt").innerHTML="<b>"+rangDaten(_ri)[0]+" "+rangDaten(_ri)[1]+"</b> · "+_rp+" Pkt · nächster Rang "+_rn[0]+" "+_rn[1]+" ab "+_rn[2]+((stats.schatten||0)>0?" · 🕶️ Schattenkasse "+stats.schatten+" $ (zählt nicht für den Rang)":"")+"<br>🧭 <b>Orte:</b> "+(stats.orte||[]).length+"/"+WORLD_POIS.length+(_nu?" · als nächstes "+_nu.o[2]+" "+_nu.o[3]+" ("+Math.round(_nu.d)+" m)":" · alle entdeckt")+"<br>"+(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length+" Erfolge";
   var hb=document.getElementById("hetzeBtn");

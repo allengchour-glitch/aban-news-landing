@@ -242,3 +242,10 @@ Schlagen und Stehlen sehen ohne echte Animationen nach Kasperletheater aus.
 2. 8 Story + Figuren mit Tagesablauf (1 Session) — die Figuren brauchen die Clips aus 9.1.
 3. 9.2 + 9.3 (je 1 Session), dazu die Missionen, die sie nutzen.
 Vorher unverändert: Abschnitt 7 Punkt 2 (Rangpunkte aus Netto, Exploit-Schranke) — sonst wird Stehlen zum Rang-Turbo.
+
+### 9.5 Korrektur nach Code-Lesen (2026-09-29, Runde 105 Teil 1 erledigt)
+- **Bestehlen gibt es schon:** Taschendiebstahl als Minispiel (`mgStart("🤏 Taschendiebstahl")`, Erfolg → Beute mit
+  `skills.krimi`, Misserfolg → Polizei + Busse) und Coups (`CRIMES`, `crimeScene`, Komplize, Risiko). 9.3 heisst also nicht
+  „neu bauen", sondern: Clips aus 9.1 dranhängen, Besitzer-Reaktion, Hehler in Burgdorf, Ruf-Folgen bei den Figuren.
+- **Erledigt:** Beute läuft in `stats.schatten` statt in den Gesamtverdienst (Runbook Runde 105 Teil 1). Der
+  Kauf-Verkauf-Exploit aus Abschnitt 7 existiert nicht (Rückgaben gehen direkt über `geld+=`).

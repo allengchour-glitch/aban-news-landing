@@ -25,6 +25,8 @@ mitSonden('traumhaus.html', {
     wohnstufe=9;stufeHudUpd();
     /* Punkte aus Verdienst */
     var p0=rangPunkte();verdiene(25000,false);o.punkteDelta=rangPunkte()-p0;
+    /* Runde 105: Beute (krimi=true) darf den Gesamtverdienst NICHT erhoehen, nur die Schattenkasse */
+    var v0=stats.verdient||0,s0=stats.schatten||0;verdiene(1000,false,true);o.schatten={dv:(stats.verdient||0)-v0,ds:(stats.schatten||0)-s0};
     /* Spielstand-Umweg mit Stufe 9 + Ausbau */
     var sn=snapshot();var lvVor=JSON.stringify(immoLv);wohnstufe=0;immoLv={};loadSnapshot(sn);o.umweg=wohnstufe===9&&JSON.stringify(immoLv)===lvVor;
     o.achWurf=[];ACH.forEach(function(a){try{a[4]();}catch(e){o.achWurf.push(a[0]);}});o.achN=ACH.length;
@@ -48,6 +50,7 @@ ok(r.abnahme.stufeNach === (r.l5b.erfuellt ? 6 : 5), `Abnahme: Stufe ${r.abnahme
 ok(/\$/.test(r.hud9) && r.l9.art === 'vermoegen' && r.l9.fehlt > 0, `Stufe 9 vor dem Ausbau: Kopfzeile „${r.hud9}“ · Ziel ${r.l9.ziel} ${r.l9.zielWert} $, fehlt ${r.l9.fehlt} $`)
 ok(r.stufen.filter((s) => s.n >= 6).every((s) => s.komfort === 12), 'Stufen 6–13: Komfort bleibt 12 wie beim Palast (kein Vollstopfen des Hauses als Ziel)')
 ok(r.punkteDelta >= 10, `25'000 $ verdient → +${r.punkteDelta} Rangpunkte`)
+ok(r.schatten.dv === 0 && r.schatten.ds === 1000, `Beute 1'000 $ → Gesamtverdienst +${r.schatten.dv}, Schattenkasse +${r.schatten.ds} (Rang sieht Beute nicht)`)
 ok(r.umweg, 'Spielstand-Umweg mit Stufe 9 und Ausbau 12 verlustfrei')
 ok(r.achWurf.length === 0 && r.fortWurf.length === 0, `${r.achN} Erfolge, Fortschritt: keine Bedingung wirft`)
 if (jsFehler.length) console.log('JS-Fehler: ' + jsFehler.join(' | '))

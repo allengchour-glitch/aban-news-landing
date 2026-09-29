@@ -8097,3 +8097,15 @@ Bedingung wirft, jeder Zähler geschrieben.
    auch die unbekannten Ursachen. Und ein Vergleich A gegen B braucht A-B-A-B, sobald die Maschine selbst driftet.
 
 > **Plan für Runde 105 ff.:** `spiele-dev/PLAN-TRAUMHAUS-105ff.md` (geschrieben 2026-09-29 im Sparmodus).
+
+---
+
+## Runde 105 (Teil 1) · 🕶️ Schattenkasse — Beute zählt nicht für den Bürgerrang (Sparmodus, 2026-09-29)
+
+ChatGPT-Kritik (Plan Abschnitt 7, Punkt 1): Rangpunkte aus dem Bruttoverdienst seien ausnutzbar. Nachgeprüft im Code:
+Rückgaben und Verkäufe von Bauteilen laufen direkt über `geld+=` (kein Rang-Effekt) — der befürchtete Kauf-Verkauf-Kreis
+gibt es nicht. **Aber:** das Spiel hat längst Kriminalität (Coups mit `skills.krimi`, Taschendiebstahl als Minispiel mit
+Polizei und Busse bei Misserfolg), und deren Beute lief über `verdiene()` → zählte als ehrlicher Gesamtverdienst für den
+Bürgerrang. Jetzt: `verdiene(betrag, zaehlt, krimi)` — Beute geht in `stats.schatten` (Schattenkasse, im 🏆-Panel sichtbar
+„zählt nicht für den Rang"), das Geld selbst bleibt. Sonde `probe-r104`: Beute 1'000 $ → Gesamtverdienst +0, Schattenkasse
++1'000; alle übrigen Prüfungen unverändert ✅. Grundlage für Plan 9.3 (Hehler in Burgdorf wechselt die Schattenkasse).
