@@ -1954,3 +1954,4 @@ gid://shopify/Product/15495215513985	2026-09-29T16:34Z	draft	15.90	23.53	Futterb
 gid://shopify/Product/15495231996289	2026-09-29T16:34Z	draft	17.90	25.46	3-in-1 Bambus Dispenser für Folien und Wachspapier
 gid://shopify/Product/15494602097025	2026-09-29T16:34Z	draft	16.90	24.33	Japanische Keramik-Nudelschale mit Deckel
 gid://shopify/Product/15495140966785	2026-09-29T16:34Z	kein-verlust-live	15.90	14.57	Velo Rücklicht mit Warnfunktion
+gid://shopify/Product/15493800132993	2026-09-29T16:35Z	draft	15.90	22.57	Fussmatte mit Holzmaserung
