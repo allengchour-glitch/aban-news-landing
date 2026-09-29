@@ -1189,3 +1189,16 @@ gid://shopify/Product/15483793539457	ok	Automatischer Futterautomat
 gid://shopify/Product/15495899513217	ok	Simulation Katzenrucksack-Puppe
 gid://shopify/Product/15497440264577	ok	Holz-Etagere für Tee und Snacks
 gid://shopify/Product/15500972949889	ok	Intelligenter Futterautomat mit Video
+gid://shopify/Product/15452686909825	nicht-versendbar	Hochliegendes Hunde-Bett mit abnehmbarem Schirm, 36 Zoll
+gid://shopify/Product/15495732134273	ok	Tragbare Sponge-Matratze für Kinder und Studenten
+gid://shopify/Product/15506408243585	ok	Faltbarer Einkaufstrolley mit vier Rädern
+gid://shopify/Product/15476126941569	ok	Faltbares Outdoor-Zelt für eine Person
+gid://shopify/Product/15497534210433	ok	Bambus-Schneidebrett mit Deckel, quadratisch
+gid://shopify/Product/15452677472641	ok	Badezimmerhahn
+gid://shopify/Product/15453898277249	nicht-versendbar	Grossvolumiger Koffer mit Aluminiumrahmen
+gid://shopify/Product/15459127591297	nicht-versendbar	Reisegepäck mit USB-Anschluss
+gid://shopify/Product/15466877157761	ok	Cotton-Bettwäsche-Set
+gid://shopify/Product/15502487585153	ok	Bestickter 3D-Mesh Stoff für Kleider
+gid://shopify/Product/15449099698561	ok	Shisha-Ventil Rennversion
+gid://shopify/Product/15450782892417	nicht-versendbar	Fahrradständer für 2 Velos, freistehend, Stahl
+gid://shopify/Product/15450842988929	nicht-versendbar	3er-Set Gusseisenpfannen für Steaks & mehr
