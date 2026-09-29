@@ -1949,3 +1949,8 @@ gid://shopify/Product/15494223724929	2026-09-29T16:34Z	draft	16.90	24.87	Hunde-B
 gid://shopify/Product/15493865505153	2026-09-29T16:34Z	draft	18.90	26.83	Fritteuse mit Sieb und Glasdeckel
 gid://shopify/Product/15495137657217	2026-09-29T16:34Z	draft	16.90	24.71	Kinder-Kissen mit Memory-Schaum & Eis-Seide
 gid://shopify/Product/15493778440577	2026-09-29T16:34Z	draft	19.90	27.68	Bettwäsche-Set mit Blumenmuster
+gid://shopify/Product/15493795873153	2026-09-29T16:34Z	draft	16.90	24.65	Fussmatte mit Tiermotiven
+gid://shopify/Product/15495215513985	2026-09-29T16:34Z	draft	15.90	23.53	Futterball Tumbler – Interaktives Spielzeug für Hunde
+gid://shopify/Product/15495231996289	2026-09-29T16:34Z	draft	17.90	25.46	3-in-1 Bambus Dispenser für Folien und Wachspapier
+gid://shopify/Product/15494602097025	2026-09-29T16:34Z	draft	16.90	24.33	Japanische Keramik-Nudelschale mit Deckel
+gid://shopify/Product/15495140966785	2026-09-29T16:34Z	kein-verlust-live	15.90	14.57	Velo Rücklicht mit Warnfunktion

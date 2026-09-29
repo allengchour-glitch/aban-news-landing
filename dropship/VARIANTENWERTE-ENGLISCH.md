@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **28'856**
-- Optionen mit englischen Werten (Kandidaten): 2'401
+- Produkte gesehen: **29'456**
+- Optionen mit englischen Werten (Kandidaten): 2'415
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'304
+- Werte mit unbekanntem Wort (unverändert): 13'460
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 55
 - übersprungen «kollision-nach-uebersetzung»: 36
@@ -129,5 +129,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 519, `light` 430, `inner` 423, `color` 305, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 110, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `belt` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `half` 64, `⟨satzbau:nomen-nomen⟩` 63, `feet` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `plush` 56, `electric` 55, `one` 55, `little` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `yards` 51, `lens` 50, `night` 49, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `cloud` 47, `cat` 46
+`⟨satzbau:adjektiv-vor-nomen⟩` 527, `inner` 475, `light` 431, `color` 306, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 110, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `belt` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `spring` 71, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `⟨satzbau:nomen-nomen⟩` 63, `net` 63, `feet` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `yards` 57, `plush` 56, `electric` 55, `one` 55, `little` 54, `night` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47
 
