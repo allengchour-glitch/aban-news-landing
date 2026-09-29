@@ -120,3 +120,77 @@ Messgerät: `probe-sog 365` (Ereignis-Tage je 30 Tage; Ziel: kein 30-Tage-Fenste
    - Messung:
      - probe-sog: Ereignis-Tage/30 ab Monat 5 von 4–6 auf ≥8.
      - In-Game: Projekte pro 30 Tage, Abbruchquote zwischen Phasen (< 20 %).
+
+## 8. Story, Missionen, Bewegung, „wie echt" — Entwurf von Gemini (gemini-2.5-pro, 2026-09-29), auf Wunsch des Users
+
+> User: „gute story auch oder missionen? aufträge etc? viel bewegung und alles wie echt machen". Entwurf ungefiltert; vor dem
+> Einbau pruefen: Missionen nur mit vorhandenen Systemen (Angelrute/Tuning-Kit/Schatzkarte gibt es noch nicht), Figuren als
+> feste Passanten mit Tagesablauf (Stunde → Ort), Auftraege ueber die bestehende Endlos-Auftrags-Vorlage (PQ) einhaengen.
+> Billigster Einstieg fuer Runde 105: die „klein"-Punkte unter BEWEGUNG (Schulweg, Regen-Reaktion, Glocken/Zugansage,
+> Enten) + 3 Story-Missionen (1, 2, 7) mit Elian/Lena/Luca als benannte Passanten. Messen: probe-sog um Missionskette erweitern.
+
+
+### 1. STORY-BOGEN
+
+**Akt 1: Ankunft und Fundament.** Mia kommt als Neuling in die Stadt, ohne grosses Vermoegen. Sie lernt die Grundlagen, um sich ein Leben aufzubauen: erster Job, erstes kleines Haus, erste Kontakte. Sie beweist ihren Wert durch Fleiss und Zuverlaessigkeit und erarbeitet sich den Respekt der Dorfgemeinschaft.
+
+**Akt 2: Wachstum und Gemeinschaft.** Mia ist etabliert und wird zur treibenden Kraft. Sie investiert nicht nur in ihr eigenes Eigentum, sondern engagiert sich in Grossprojekten, die allen zugutekommen, wie dem Stadtfest oder der Modernisierung von Infrastruktur. Ihre Entscheidungen praegen sichtbar das Stadtbild und die Wirtschaft.
+
+**Akt 3: Vermächtnis und Einfluss.** Als eine der wohlhabendsten und angesehensten Personen der Stadt sichert Mia deren Zukunft. Sie agiert als Mentorin und Investorin, finanziert Wahrzeichen und sorgt dafuer, dass der Ort auch fuer kommende Generationen ein "Traumhaus" bleibt. Ihr Fokus liegt nun auf dem grossen Ganzen.
+
+**Wiederkehrende Figuren:**
+*   **Elian Gerber:** Der pragmatische Gemeindepraesident im Rathaus. Er will, dass die Stadt waechst, modern und attraktiv bleibt.
+*   **Lena Bachmann:** Die bodenstaendige Baeuerin vom Bauernhof. Sie will ihre Produkte frisch auf den Markt bringen und den Hof am Laufen halten.
+*   **Marco Frei:** Der Auto-enthusiastische Mechaniker im Technikpark. Er will die schnellsten und schoensten Autos in der Stadt sehen.
+*   **Sofia Zuercher:** Die elitaere Architektin und Investorin aus der Sunnehalde. Sie will Aesthetik und maximalen Profit aus Immobilien.
+*   **Luca Schmid:** Der alte Fischer am Seepark. Er will die Traditionen bewahren und sorgt sich um die Natur rund um den See.
+
+### 2. 12 STORY-MISSIONEN
+
+1.  **Willkommen in der Neustadt** — Erreiche Buergerrang 2 — 500 Fr. und 20 Rangpunkte — Elian Gerber — Rathaus
+2.  **Eine helfende Hand** — Ernte 10 Kisten Gemuese — 1'000 Fr. und Werkzeug-Upgrade — Lena Bachmann — Bauernhof
+3.  **Frisch auf den Tisch** — Schliesse eine Lieferung fuer Lena ab — 1'500 Fr. und Zugang zu Liefer-Auftraegen — Lena Bachmann — Marktplatz
+4.  **Mobilitaet ist alles** — Kaufe dein erstes Auto — 2'000 Fr. und Rabatt auf erste Lackierung — Marco Frei — Technikpark
+5.  **Ein Dach ueber dem Kopf** — Baue dein Haus auf Wohnstufe 3 aus — 5'000 Fr. und neue Moebel-Optionen — Sofia Zuercher — Sunnehalde
+6.  **Das erste Investment** — Kaufe ein zweites Haus zur Vermietung — 10'000 Fr. und 5 % hoehere Miete fuer dieses Haus — Sofia Zuercher — Buergli
+7.  **Die Ruhe des Sees** — Fange 5 Fische im See — 3'000 Fr. und eine bessere Angelrute — Luca Schmid — Seepark
+8.  **Ein Fest fuer alle** — Spende 20'000 Fr. fuer das Stadtfest — Permanenter Erfolg und Verdopplung der Einnahmen am Festtag — Elian Gerber — Chilbiplatz
+9.  **Portfolio-Aufbau** — Erreiche 5'000 Fr. Mieteinnahmen pro Woche — 25'000 Fr. und Zugang zu Luxus-Immobilien — Sofia Zuercher — Neustadt
+10. **Der Traum vom Sportwagen** — Kaufe ein Auto im Wert von ueber 100'000 Fr. — Gratis Tuning-Kit und exklusive Felgen — Marco Frei — Technikpark
+11. **Geheimnis der Pirateninsel** — Fange einen "Legendären Silberbarsch" nahe der Pirateninsel — Schatzkarte (fuehrt zu 50'000 Fr.) — Luca Schmid — Meer
+12. **Ein Denkmal fuer die Zukunft** — Spende 250'000 Fr. fuer die neue Seepark-Bruecke — Namensplakette auf der Bruecke und höchster Buergerrang — Elian Gerber — Seepark
+
+### 3. 6 AUFTRAGS-VORLAGEN
+
+*   **Express-Lieferung:** Lena Bachmann braucht dringend 5 Kisten Tomaten fuer das Restaurant am Marktplatz, weil eine Reisegruppe unerwartet eingetroffen ist.
+*   **Immobilien-Aufwertung:** Sofia Zuercher will, dass du ein Mietshaus in der Rebhalde auf Wohnstufe X ausbaust, um einen anspruchsvollen Mieter zu gewinnen.
+*   **VIP-Fahrdienst:** Elian Gerber braucht einen diskreten Fahrer, der einen Investor vom Flughafen zum Hotel in der Neustadt faehrt.
+*   **Exotischer Fang:** Der Zoo benoetigt drei seltene Flusskrebse fuer das neue Aquarium, die nur im Fluss nahe der Burg zu finden sind.
+*   **Testfahrt-Vorbereitung:** Marco Frei bittet dich, ein frisch getuntes Auto unfallfrei vom Technikpark zu einem Kunden in der Sunnehalde zu ueberfuehren.
+*   **Materialtransport:** Die Schmiede in Burgdorf braucht eine Lieferung Eisenerz vom Gesteinsbruch am Grossen Berg, um neue Werkzeuge herzustellen.
+
+### 4. BEWEGUNG
+
+*   **Figuren-Tagesablauf:** Die 5 Hauptfiguren sind nur zu bestimmten Zeiten an ihren Hauptorten; abends sind sie z.B. im Restaurant am Marktplatz (Aufwand: mittel).
+*   **Schulweg:** Gruppen von Kindern laufen um 07:30 Uhr und 12:00 Uhr zwischen den Wohnvierteln und der Schule in der Neustadt (Aufwand: klein).
+*   **Wetter-Reaktionen:** Passanten spannen bei Regen Regenschirme auf und laufen schneller; bei Sonnenschein sitzen mehr Leute im Seepark (Aufwand: klein).
+*   **Markttag:** Jeden Samstagvormittag sind auf dem Marktplatz zusaetzliche Marktstaende und mehr Passanten (Aufwand: mittel).
+*   **Geraeuschkulisse:** Kirchenglocken laeuten zur vollen Stunde; am Bahnhof hoert man Zugansagen, wenn ein Zug einfaehrt (Aufwand: klein).
+*   **Tierverhalten:** Die Zootiere haben Schlaf- und Fressenszeiten; die Enten im Seepark versammeln sich, wenn man sich dem Ufer naehert (Aufwand: klein).
+*   **Berufsverkehr:** Die Verkehrsdichte auf den Hauptstrassen ist zwischen 07:00–09:00 und 17:00–19:00 Uhr sichtbar hoeher (Aufwand: mittel).
+*   **Seilbahn-Betrieb:** Die Seilbahn zum Grossen Berg faehrt nur von 08:00 bis 20:00 Uhr und macht mittags eine Pause (Aufwand: gross).
+
+### 5. WIE ECHT
+
+*   **Konsequenzen:** Ein hoher Fahndungslevel fuehrt dazu, dass Buerger dir ausweichen und Figuren wie Elian dir voruebergehend keine Auftraege geben.
+*   **Zeit:** Bauvorhaben dauern Ingame-Stunden oder -Tage; das Geld dafuer wird bei Baubeginn abgebucht, nicht bei Fertigstellung.
+*   **Geldfluss:** Mieteinnahmen werden einmal pro Ingame-Woche ausgezahlt, nicht in Echtzeit; Lohn fuer die Karriere kommt am Monatsende.
+*   **Oekonomie:** Preise fuer Fische und Ernteprodukte schwanken je nach Wochentag und Nachfrage (z.B. am Markttag teurer).
+*   **Zustand:** Ein Auto muss nach einem Unfall im Technikpark repariert werden, bevor der Taxi-Nebenjob wieder angenommen werden kann.
+*   **Ruf:** Das Erfuellen von Auftraegen fuer eine Figur verbessert den Ruf bei ihr, was zu besseren Belohnungen oder exklusiven Auftraegen fuehrt.
+
+### 6. MESSEN
+
+*   **Story-Missions-Abschlussrate:** Prozentualer Anteil der Spieler, die Story-Mission X abschliessen, nachdem sie Mission X-1 beendet haben (misst das Story-Pacing und Engagement).
+*   **Auftragsgeber-Diversitaet:** woechentliche Verteilung der abgeschlossenen, wiederholbaren Auftraege auf die verschiedenen Auftraggeber (zeigt, ob alle Figuren und Spielsysteme genutzt werden).
+*   **Figuren-Interaktions-Hotspot:** Heatmap, die anzeigt, wo und zu welcher Ingame-Uhrzeit Spieler mit den 5 Hauptfiguren interagieren (prueft, ob die Tagesablaeufe wahrgenommen und genutzt werden).
