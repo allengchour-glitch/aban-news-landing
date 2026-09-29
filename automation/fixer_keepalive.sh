@@ -579,7 +579,7 @@ while true; do
     # nur die Einmal-Importe (schulstart, frosch_maske) bleiben nach FERTIG aus.
     case "$N" in
       schulstart_import|frosch_maske_import) grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue ;;
-      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
+      *) if letzter_lauf "/tmp/$N.log" | tail -n 3 | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
     esac
     pause_kuehlt "$N" && continue
     dreht_sich_im_kreis "$N" && continue
@@ -587,7 +587,7 @@ while true; do
       '$1 ~ /node$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
     date +%s > "/tmp/_start_$N"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$N.lock; flock -n 9 || exit 0; CAP=900 exec /opt/node22/bin/node automation/$N.mjs" \
+        "exec 9>/tmp/lock_$N.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; CAP=900 exec /opt/node22/bin/node automation/$N.mjs" \
         >> "/tmp/$N.log" 2>&1 9>&- & )
     echo "$(date -u +%H:%M) restart $N"
     sleep 5
@@ -1592,10 +1592,10 @@ KLT=/tmp/test_klingen_tor.log
   # ⭐ BEWERTUNGEN NACHHOLEN (24.09.2026, Betreiber «bewertungen push»): 1–3★-Kommentare fuer 2'072 Produkte, die nur
   # 4–5★ zeigen. Ein Lauf dauert Stunden, der Container startet stuendlich neu → fortsetzen, bis das Log FERTIG sagt.
   BN=/tmp/bewertungen_nachholen.log
-  if [ -f /tmp/judgeme.env ] && ! tail -n 3 "$BN" 2>/dev/null | grep -q "^FERTIG" \
+  if [ -f /tmp/judgeme.env ] && ! letzter_lauf "$BN" | tail -n 3 | grep -q "^FERTIG" \
      && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /bewertungen_nachholen\.sh$/ {f=1} END{exit(f?0:1)}' \
      && ! { tail -n 1 "$BN" 2>/dev/null | grep -q "^PAUSE" && [ $(( $(date +%s) - $(stat -c %Y "$BN") )) -lt 3600 ]; }; then
-    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/bewertungen_nachholen.sh" >> "$BN" 2>&1 & )
+    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; exec bash automation/bewertungen_nachholen.sh" >> "$BN" 2>&1 & )
     echo "$(date -u +%H:%M) Bewertungen nachholen: fortgesetzt"
   fi
   FB=/tmp/fortura_bestand.stamp
