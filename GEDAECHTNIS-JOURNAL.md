@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🧐 «kimi und chatgpt nutzen für kritik»: `automation/kritik.py` — beide Modelle, ein Prüfauftrag (21:30)
+**Gebaut:** dieselbe Frage + Dateien parallel an ChatGPT (`gpt-5.5`, OpenAI von hier erreichbar, 133 Modelle) und Kimi
+(`kimi-k3`), Rolle strenger Prüfer, Ablage optional in `dropship/_kritik/`. **Fallen beim Bau:** kimi-k3 akzeptiert nur
+`temperature 1` (HTTP 400, auch in `kimi_frage.py` behoben); k3 denkt > 5 min → 180-s-Timeout, dann «RemoteDisconnected»
+bei 300 s (Proxy schliesst stille Verbindungen) → Streaming. **Erste Anwendung** auf die START-Marken-Reparatur:
+ChatGPT 20 Befunde (105 s), Kimi 12 (699 s). Nachgemessen: `still_gestorben` unverankert = echt → behoben (Kanarienvögel
+2/2); «/proc/uptime = Host» sagten BEIDE unabhängig — gemessen falsch (Container 22 min); FERTIG-Formatdrift 0 Fälle.
+**Lehre:** Übereinstimmung zweier Modelle ist ein Prüfauftrag, kein Beweis. → `dropship/KRITIK-KIMI-CHATGPT.md`
+
 ## 2026-09-29 · 🤝 «andere session lernt für dich»: Lehren der Lern-Session übernommen (20:15)
 Die Session lebt auf `origin/claude/selbststaendiges-lernen-h48e6m` (eigene Historie, keine gemeinsame Basis; letzter
 Commit 27.09. 19:59). Mein erster Blick fand sie NICHT: `git fetch origin claude/luxestyle-status-tztnn1` holt nur den
