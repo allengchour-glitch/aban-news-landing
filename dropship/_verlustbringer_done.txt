@@ -1909,3 +1909,13 @@ gid://shopify/Product/15493924192641	2026-09-29T16:29Z	draft	15.90	29.10	Sika Hi
 gid://shopify/Product/15493853577601	2026-09-29T16:29Z	draft	19.90	32.93	Kissenbezug ohne Füllung, 45x45cm
 gid://shopify/Product/15493872845185	2026-09-29T16:29Z	draft	17.90	30.72	Memory Foam Sitzkissen für Home Office
 gid://shopify/Product/15493923635585	2026-09-29T16:29Z	draft	16.90	29.57	Essstuhl-Kissen, abnehmbar & waschbar
+gid://shopify/Product/15494642434433	2026-09-29T16:29Z	draft	15.90	28.54	Frischhaltedose für Kühl- und Gefrierschrank
+gid://shopify/Product/15495191593345	2026-09-29T16:30Z	draft	15.90	28.26	LSRC-XT6 Dual-Kamera Mini-Drohne
+gid://shopify/Product/15495105216897	2026-09-29T16:30Z	draft	24.90	37.09	304er Edelstahlpfanne mit Abtropfgestell
+gid://shopify/Product/15493892931969	2026-09-29T16:30Z	draft	19.90	31.96	Katzenhöhle Winterwarm (S, M, L)
+gid://shopify/Product/15495119110529	2026-09-29T16:30Z	draft	18.90	30.90	Leichte Herrenschuhe aus Lederimitat
+gid://shopify/Product/15495106429313	2026-09-29T16:30Z	draft	16.90	28.66	Beissfester Trainingsball für Hunde
+gid://shopify/Product/15495112720769	2026-09-29T16:31Z	draft	17.90	29.66	Superweiches Plüschbett für Haustiere
+gid://shopify/Product/15493807407489	2026-09-29T16:31Z	draft	15.90	27.60	Sofa-Schutzbezug aus Polyester
+gid://shopify/Product/15493927797121	2026-09-29T16:31Z	draft	15.90	27.27	Diamant-Kristallglas mit Goldfolie oder Türkis
+gid://shopify/Product/15495189823873	2026-09-29T16:31Z	draft	16.90	28.05	Seiltanz-Roboter
