@@ -202,6 +202,9 @@ Messgerät: `probe-sog 365` (Ereignis-Tage je 30 Tage; Ziel: kein 30-Tage-Fenste
 > VERHAFTET-Einblendung, Bürgerrang, Ruf bei Figuren aus Abschnitt 8). Reihenfolge ist zwingend: erst Bewegungen, dann Taten.
 
 ### 9.1 Bewegungen zuerst (GROSS, 2 Sessions) — die Voraussetzung für alles andere
+> Entwurf von ChatGPT (gpt-4.1, 2026-09-29, ungeprueft, mit Lizenz-Korrektur im Kopf): `spiele-dev/entwuerfe/r105-bewegungen-chatgpt.md`
+> — Asset-Rezept, JS-Modul „Figuren“ (Mixer, Blenden, LOD), Integrationsstellen, probe-bewegung, Risiken.
+
 Heute sind Figuren prozedural (Gliedmassen als Einzelteile, ~440 Aufrufe an der Kreuzung), es gibt kein Animationssystem.
 Schlagen und Stehlen sehen ohne echte Animationen nach Kasperletheater aus.
 - **Skinned Figuren mit Clips** aus CC0-Paketen (wie die Autos in Runde 90 in Blender nachbearbeitet, `tools/assets/`):
