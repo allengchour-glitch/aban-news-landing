@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🔎 #1019 bei CJ neu gesucht: kein gleichwertiger Ersatz mit CH-Versand (19:25)
+Betreiber «1019 cj suchen». `cj_ersatz_suche.py` (8 Stichwörter): Original pid 2608070456571627400 weiterhin 1602002
+«removed from shelves». Der **gleiche 5-ft-Schaukelgeist** existiert (2098100793999478786, USD 85.99) — **0 CH-Wege**
+(US-Lager), ebenso alle grossen Aussen-Geister (USD 35–66, 0 Wege). Mit CH-Weg nur kleine Harz-Figuren (7–16 cm, USD 2–4)
+oder ein Nachtlicht — kein gleichwertiger Ersatz. Kundin hat auf die Mail vom 27.09. 22:04 nicht geantwortet (Gmail
+geprüft). Bestehender Plan bleibt: Fortura CE91772 (50 cm, CH-Lager) oder Rückerstattung; Entscheid 30.09. (Betreiber).
+
 ## 2026-09-29 · 🧹 Google-Kategorien «bis alles fix ist und sauber»: 4'749 präziser, Traktoren raus aus «Halsketten» (18:20)
 **Betreiber:** «bis alles fix ist und sauber». **GEMESSEN:** 1'466 Kanal-Produkte ohne Kategorie (1'654 weitere leere
 sind Kostüme/Raucherzubehör ausserhalb des Kanals — richtig so), 440 grob «Clothing», 4'132 grob «Electronics»;
