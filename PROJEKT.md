@@ -1,5 +1,16 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🎯 2026-09-29 — Kontext-CTAs in 22 Top-Tools
+> Umsetzung der Recherche (gezielte Seite + passender Hinweis ≈ 5 % statt < 1 % generisch).
+> - **`tools/kontext_cta.py`** (idempotent, Marker `data-cta-kontext="<slug>"`): Tabelle Tool → Überschrift/
+>   Unterzeile/Knopf, die den Gedanken des Besuchers fortsetzt (z. B. Stundenlohn: „Dein Stundenlohn steht. Jetzt
+>   die Stunden, die er nicht bezahlt."). Ändert nur strong/p/a im `<aside data-aban-news-cta>` (4 Zeilen/Datei).
+> - Versprochen wird nur, was der Newsletter liefert (3 Updates mit Urteil, 1 getestetes Tool, 1 Prompt).
+> - **Messung:** Anmelde-Link trägt `?utm_source=abannews&utm_medium=tool&utm_campaign=<slug>` → **in beehiiv
+>   unter Abonnenten/Quelle sehen, welches Tool Abos bringt** (kein Cookie/Pixel bei uns; in `datenschutz.html` 4.4 erklärt).
+> - 22 Tools: 10 × 🇨🇭 Geld, 8 × Selbstständige (Stundenlohn, Marge, Skonto …), 4 × KI. Weitere = Eintrag in `CTAS` + Lauf.
+> - Offen (fremd): `virale-prompts-check.html` ohne JSON-LD/Hub-Link (Tool-Brain 98,1).
+
 ## ✨ 2026-07-24 — Polish-Pass (Urteil-Format durch den ganzen Funnel)
 > „polish alles": Qualitäts-Pass über die Kimi-Conversion-Arbeit + sichere Restpunkte umgesetzt.
 > - **Funnel-Konsistenz:** `preview.html` (echte Beispiel-Ausgabe) zeigt jetzt bei allen 4 Stories das
