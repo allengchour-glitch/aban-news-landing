@@ -1919,3 +1919,5 @@ gid://shopify/Product/15495112720769	2026-09-29T16:31Z	draft	17.90	29.66	Superwe
 gid://shopify/Product/15493807407489	2026-09-29T16:31Z	draft	15.90	27.60	Sofa-Schutzbezug aus Polyester
 gid://shopify/Product/15493927797121	2026-09-29T16:31Z	draft	15.90	27.27	Diamant-Kristallglas mit Goldfolie oder Türkis
 gid://shopify/Product/15495189823873	2026-09-29T16:31Z	draft	16.90	28.05	Seiltanz-Roboter
+gid://shopify/Product/15495067304321	2026-09-29T16:31Z	draft	15.90	26.99	Stretch-Strick Wildleder Stuhlhusse
+gid://shopify/Product/15495213023617	2026-09-29T16:32Z	draft	16.90	27.96	Diamond Painting mit Harz-Diamanten

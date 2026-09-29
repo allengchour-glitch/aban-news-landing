@@ -30,6 +30,8 @@ DRY = os.environ.get("DRY") == "1"
 REVIVE = os.environ.get("REVIVE") == "1"
 LEDGER = "dropship/_ohne_lieferantenref.txt"
 TAG = "keine-lieferanten-ref"
+# 29.09.2026: frei getippte LX-Slugs der Juni-Handkuratierung (LX-23-…, LX-DIFF-WHITE, LXSCH-GIFT-…); Bündel ausgenommen.
+LX_HAND = re.compile(r'^lx(sch)?-(?!bundle-)', re.I)
 POD = re.compile(r'printful|^fertig-|^pod-|selbstgestalten', re.I)
 
 # ⚠️ 20.08.2026: Eine SKU zu HABEN ist nicht dasselbe wie eine QUELLE zu haben.
@@ -57,7 +59,11 @@ def gueltige_ref(sku):
     if not s:
         return False
     low = s.lower()
-    if low.startswith(("bb-", "fortura-", "lx-")):
+    # 29.09.2026: «lx-» galt pauschal als Quelle. Echt ist nur das eigene Bündel «LX-BUNDLE-…» (aus eigenen, belegten
+    # Artikeln). «LX-23-KRISTALL-SET-3-TEILIG», «LX-DIFF-WHITE», «LXSCH-GIFT-…» sind frei getippte Slugs der Juni-
+    # Handkuratierung — COWORK-AUFTRAEGE.md: «handkuratierte Altprodukte ohne Lieferanten dahinter»; 0 Bestellungen je.
+    # Das Kristall-Set hatte am 29.09. einen Warenkorb UND eine Kasse (die #1008-Klasse, fast ausgelöst).
+    if low.startswith(("bb-", "fortura-", "lx-bundle-")):
         return True
     if re.match(r'^\d{6,}_\d+$', s):                       # Printful <sync>_<variant>
         return True
@@ -177,8 +183,11 @@ def main():
                 # Formmuster über 41'000 Produkte würde gültige Ware aus dem Verkauf
                 # nehmen. Erst mit DRY-Ausgabe gegenprüfen, dann von Hand entscheiden.
                 if not hat_quelle(p) and not any(POD.search(t) for t in p["tags"]):
-                    schein.append((p["id"], p["title"],
-                                   [v["sku"] for v in p["variants"]["nodes"] if v["sku"]][:1]))
+                    skus = [v["sku"].strip() for v in p["variants"]["nodes"] if (v["sku"] or "").strip()]
+                    if skus and all(LX_HAND.match(x) for x in skus):
+                        treffer.append((p["id"], p["title"]))   # Handkuratierung ohne Bezugsquelle → wie ohne SKU
+                    else:
+                        schein.append((p["id"], p["title"], skus[:1]))
                 continue
             if any(POD.search(t) for t in p["tags"]):
                 pod += 1                       # Printful liefert — Quelle ist dort hinterlegt
