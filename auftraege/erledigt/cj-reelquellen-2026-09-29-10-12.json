@@ -1,0 +1,42 @@
+{
+  "id": "cj-reelquellen-2026-09-29-10-12",
+  "typ": "skript",
+  "skript": "cj_quellvideo_holen.mjs",
+  "warum": "Reel-Motor: Cloud-Proxy sperrt den CJ-Video-Download (28.09.) — Server lädt, Cloud rendert beim nächsten Lauf.",
+  "videos": [
+    {
+      "name": "rq-6c620040-0081-47b4-8aff-49d630eafb13",
+      "url": "https://download-only-api.cjdropshipping.com/a0de8fa8a50071f1b3af4531958d0102/727a3ae6fe01425ba327a451d49623dd-532b58e0e1e14c5132c63e2473dba1c3-ld.mp4"
+    },
+    {
+      "name": "rq-c22dbc56-487d-4421-9a1b-bd3decc351b7",
+      "url": "https://download-only-api.cjdropshipping.com/a30d00d2cc6043929442ec680b1df79d/9be528bf621e46898b1538861d6b3f8a-ed4d06e7a0fb597b0b1ab9dd9f19cbc6-ld.mp4"
+    },
+    {
+      "name": "rq-9df9d888-c5a9-4339-9aad-1de223d295fc",
+      "url": "https://download-only-api.cjdropshipping.com/1a1b6a00f52671edb2946732b68f0102/31ca38af7b2042d1b739a4e0dd50ab0a-1d066aa9ab60a458142056cd04b2c12f-ld.mp4"
+    }
+  ],
+  "stand": "ok",
+  "begonnen": "2026-09-29T10:14:27.847Z",
+  "dauer_s": 22.2,
+  "ergebnis": {
+    "videos": [
+      {
+        "name": "rq-6c620040-0081-47b4-8aff-49d630eafb13",
+        "bytes": 5822663,
+        "datei": "auftraege/ergebnis/cj-reelquellen-2026-09-29-10-12-rq-6c620040-0081-47b4-8aff-49d630eafb13.mp4"
+      },
+      {
+        "name": "rq-c22dbc56-487d-4421-9a1b-bd3decc351b7",
+        "bytes": 4750287,
+        "datei": "auftraege/ergebnis/cj-reelquellen-2026-09-29-10-12-rq-c22dbc56-487d-4421-9a1b-bd3decc351b7.mp4"
+      },
+      {
+        "name": "rq-9df9d888-c5a9-4339-9aad-1de223d295fc",
+        "bytes": 3783028,
+        "datei": "auftraege/ergebnis/cj-reelquellen-2026-09-29-10-12-rq-9df9d888-c5a9-4339-9aad-1de223d295fc.mp4"
+      }
+    ]
+  }
+}
