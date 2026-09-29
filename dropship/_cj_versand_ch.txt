@@ -1299,3 +1299,14 @@ gid://shopify/Product/15493367660929	ok	Leder-Laptop-Rucksack für Herren
 gid://shopify/Product/15497524511105	ok	Business-Schuhe aus Kalbsleder mit Lasergravur
 gid://shopify/Product/15504089153921	nicht-versendbar	Handlicher Reisekoffer für Damen
 gid://shopify/Product/15507778240897	ok	Magnetischer Fitness-Timer mit App-Steuerung
+gid://shopify/Product/15493932810625	ok	Hundebett für alle Jahreszeiten
+gid://shopify/Product/15494856049025	ok	Faltbare Outdoor-Box mit Holzdeckel
+gid://shopify/Product/15493871567233	ok	Elektrischer Grill für Zuhause
+gid://shopify/Product/15452686745985	nicht-versendbar	Hochliegendes Mesh-Hundebett
+gid://shopify/Product/15493860065665	ok	Runder Holzkohle-Grill für Zuhause & Gastro
+gid://shopify/Product/15493837750657	ok	Universal-Dampfkochtopf aus Edelstahl
+gid://shopify/Product/15493751177601	ok	Memory Foam Kissen mit Federschaum-Füllung
+gid://shopify/Product/15496359838081	ok	Olayks Mini-Bratpfanne für Zuhause
+gid://shopify/Product/15493500404097	ok	Lederrucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15481691898241	ok	Full HD Smart Mini Beamer mit WLAN
+gid://shopify/Product/15481839059329	nicht-versendbar	Outdoor Energie-Speicher
