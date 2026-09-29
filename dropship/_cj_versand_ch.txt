@@ -1202,3 +1202,5 @@ gid://shopify/Product/15502487585153	ok	Bestickter 3D-Mesh Stoff für Kleider
 gid://shopify/Product/15449099698561	ok	Shisha-Ventil Rennversion
 gid://shopify/Product/15450782892417	nicht-versendbar	Fahrradständer für 2 Velos, freistehend, Stahl
 gid://shopify/Product/15450842988929	nicht-versendbar	3er-Set Gusseisenpfannen für Steaks & mehr
+gid://shopify/Product/15453898867073	ok	Wasserdichte Laptop-Tasche für Business-Reisen
+gid://shopify/Product/15467040997761	ok	Sommerdecke aus Baumwollgaze mit Sojafasern

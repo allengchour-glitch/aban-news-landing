@@ -62,6 +62,12 @@ if [ ! -x /usr/local/bin/ffprobe ] && [ -f "$REPO_AUTO/ffprobe_ersatz.py" ]; the
   chmod +x /usr/local/bin/ffprobe
   echo "$(date -u +%H:%M) ffprobe-Ersatz bereitgestellt"
 fi
+# 29.09.2026: OpenAI-Schlüssel aus der Umgebung (Betreiber hat OPENAI_API_KEY gesetzt; Variablen erreichen die Session
+# erst nach einem späteren Neustart). Nur nach /tmp (600), nie ins Repo. ⚠️ api.openai.com ist in der Netzwerk-
+# Richtlinie dieser Umgebung gesperrt (CONNECT 403, gemessen 29.09.) — bis zur Freigabe reine Vorbereitung.
+if [ -n "${OPENAI_API_KEY:-}" ] && [ ! -s /tmp/openai_key ]; then
+  ( umask 077; printf '%s' "$OPENAI_API_KEY" > /tmp/openai_key )
+fi
 # 27.09.2026: Fortura-Zugang aus den Umgebungsvariablen. Der Betreiber hat FORTURA_FTP_USER/_PW in den
 # Claude-Einstellungen hinterlegt, aber vier Skripte (Feed, Bestand, Aufseher, Ampel) lesen nur
 # /tmp/fortura_env.sh — nach jedem frischen Container meldete die Ampel «FORTURA-ZUGANG WEG», obwohl er da war.
