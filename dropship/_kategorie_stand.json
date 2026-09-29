@@ -1,14 +1,13 @@
 {
- "stand": "2026-09-28T17:08Z",
+ "stand": "2026-09-29T12:32Z",
  "gescannt": 174,
  "ohne_kategorie_vorher": 174,
- "gesetzt": 0,
- "ohne_kategorie_nachher": 174,
+ "gesetzt": 157,
+ "ohne_kategorie_nachher": 17,
  "fehler": 0,
  "unbekannte_typen": {
-  "Trend-Gadget": 109,
-  "Trend-Produkt": 60,
-  "Selbst gestalten": 4,
+  "Trend-Produkt": 9,
+  "Trend-Gadget": 7,
   "Kinder": 1
  },
  "scharf": true
