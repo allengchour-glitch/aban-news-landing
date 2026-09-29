@@ -1109,3 +1109,5 @@ warme-doppel-lagen-coral-fleece-decke-611000	nicht-aktiv
 kurze-daunenjacke-mit-kapuze-634500	hat-liste
 unisex-leder-winterhandschuhe-891585	hat-liste
 gusseisen-teekessel-diamond-1000ml-622400	gesetzt-2
+u-formige-warmflasche-fur-nacken-und-schultern-bd844c	gesetzt-2
+lassiger-kapuzenpullover-fur-damen-612700	hat-liste
