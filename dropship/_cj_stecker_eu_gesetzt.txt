@@ -145,3 +145,8 @@
 15499782521217	unklar:farbe-unbekannt	2026-09-29	Universal Ladegerät für MacBook
 15500001968513	eu-sku-gesetzt:CJYD187206607GT	2026-09-29	Laptop-Ladegerät
 15500071895425	eu-sku-gesetzt:CJCD166677502BY	2026-09-29	USB-Ladegerät mit QC3.0
+15500204048769	unklar:farbe-unbekannt	2026-09-29	Doppelfunktionales Haarschneider
+15500254445953	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab 32mm mit Anionenpflege
+15500254773633	eu-sku-gesetzt:CJYD196708602BY	2026-09-29	Haartrockner mit Mehrfachfunktionen
+15500255691137	eu-sku-gesetzt:CJJF196266602BY	2026-09-29	Automatischer Lockenstab mit Warmluftbürste 3-in-1
+15500438602113	eu-sku-gesetzt:CJCD121247102BY	2026-09-29	Netzteil mit Trafo für Game Konsole
