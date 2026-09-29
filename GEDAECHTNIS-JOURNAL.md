@@ -6,6 +6,18 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🧹 Google-Kategorien «bis alles fix ist und sauber»: 4'749 präziser, Traktoren raus aus «Halsketten» (18:20)
+**Betreiber:** «bis alles fix ist und sauber». **GEMESSEN:** 1'466 Kanal-Produkte ohne Kategorie (1'654 weitere leere
+sind Kostüme/Raucherzubehör ausserhalb des Kanals — richtig so), 440 grob «Clothing», 4'132 grob «Electronics»;
+«Shoes» ist bei Google ein Endknoten. **GETAN:** `google_kategorie_fein.py` hat jetzt drei Teile (grob Clothing ·
+leer im Kanal · grob Electronics mit Zielzweig-Liste): 1'424 + 376 + 2'949 gesetzt, 0 Fehler, 20/20 zurückgelesen.
+**Lehren:** (1) Eine leere Regex-Alternative `||` trifft JEDEN Titel — nach jedem sed/replace die Muster auf Leer-Treffer
+testen (`re.search(m, "")`). (2) `(?=.*x)(y)` prüft ab der Trefferstelle; für «Titel enthält x» braucht es `^(?=.*x).*(y)`.
+(3) Deutsche Substrings schlagen zurück: «Linearführ-in-ear», «R-ohrreiniger», «X-box». (4) Wer einen groben Wert
+verfeinert, beschränkt die Zielzweige (Positivliste) — sonst wird aus einem USB-Stick mit Kette eine Halskette.
+**Nebenfund:** 19 Bruder-Modelle mit «…anhänger» standen in der Kollektion «Halsketten» → `cat_tags.mjs` FAHRZEUG um
+Marken + Anhänger-Komposita erweitert, `schmuck_tag_heilen.py` täglich. → `dropship/GOOGLE-KATEGORIE-FEIN-2026-09-29.md`
+
 ## 2026-09-29 · 👗 Google: 6'826 Kleidungsstücke von «Clothing» in die echte Unterkategorie (17:40)
 - GEMESSEN: 7'254 aktive mit `google_product_category` = «Apparel & Accessories > Clothing»; Nachfrage-Liebling «Aria» stand auf «Belts».
 - GETAN: `google_kategorie_fein.py` (täglich): Titelregeln, Pfade gegen Google-Taxonomie, Kinder/Kostüm aussen vor →
@@ -17101,6 +17113,9 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-09-27 · 📴 **«meta brauch nicht habe ja metricool»: Bildpost + Karussell haben jetzt einen Metricool-Weg (Entwurf 1/8 Bilder auf IG+FB getestet und gelöscht), Autopilot schaltet bei `data_access_expires_at` selbst um (`/me` sagt nach Ablauf evtl. weiter ok), Kaufbar-Prüfung tokenlos; Nebenfund: Saison-Zeilen ohne Shopify-ID bekamen auf FB die Startseite → Zeilen-ID = Handle.** Ablaufdatum ≠ Fehlercode → Journal Nachtrag 100
+- 2026-09-27 · 🏆 **«jeder Post ein Meisterwerk»: `meisterwerk_tor.py` vor jedem Reel-Post (Hook ≥3 in der 1. Sekunde, ≤50 % Standbild, ≥1080×1920, 6–35 s, −30…−8 LUFS) — 8/14 gepostete fielen durch, die 2 heute geplanten gelöscht (eine Diashow mit Bildpreis 4.90 bei live 15.90); Kaufbar-Prüfung über die TOKENLOSE Storefront API (von der Play-Store-App-Session).** Bildpreis per OCR prüfen = nächste Klasse → Journal Nachtrag 99
+- 2026-09-27 · 📊 **Betreiber: «du bist metricool master und sozial master … analysiert was am besten ist» → 30-T-Messung über Metricool: TikTok Median 272/Post, YouTube 91, IG 17, FB 1–2, Pinterest 0 (44 Pins, 0 Klicks) → TikTok 12→8 h, Pinterest 6→24 h (delegierter Entscheid), IG+FB über Metricool ohne Meta-Token, 11 fremde Entwürfe gelöscht.** Nächste Klasse: TikTok-Hook (1,8 s von 11 s) → `dropship/SOCIAL-ANALYSE-2026-09-27.md`
 - 2026-09-25 · 🧴 **Füllmenge fehlte bei 169 Kosmetik-Flüssigprodukten (Rizinusöl = meistbesuchte Landeseite, nur Versandgewicht) → `fuellmenge_nachtragen.py` liest die Verpackung (OCR), schreibt automatisch nur bei ml+fl-oz-Übereinstimmung, sonst Sichtliste; Sichtung fand «20 ml» statt 120 ml ×3 und «5 ml» = 1.5 ml; 31 live, Tageslauf.** OCR-Zahl nie ohne zweite Einheit glauben → Journal Nachtrag 78
 - 2026-09-24 · 🔌 **Konnektoren gemessen: Metricool-MCP liest Analytik (TikTok Ø 1 s von 11 s), Dropbox privat + keine Binär-Uploads, vidIQ ohne Kanal, Coupler leer (braucht Search Console/GA4), Porter nicht in der Sitzung.** «Verbunden» ≠ Daten → Journal Nachtrag 64
 - 2026-09-24 · 🎨 **«weiter polishen»: «Herstellerlager» an 3 Quellen + 711 Texten + 13 Seiten + Versand-Richtlinie → «Lieferantenlager» (Nachzählung 0); Bewertungs-Nachholer fand nie seine Quittungen (Ledger Zahl-ID, Liste Handle → «h:»-Zeilen, 1'934 offen); Lizenzfiguren (53 Fortura) nicht selbst bewerben (Karussell+Pinterest am Titel); «Wasserfeste Maniküre» 14 Designs bei 1 Variante → echte Auswahl (`auswahl_nachruesten.py`, nur mit vorhandenen Bildern, WebFetch bestätigt); «36 Farben … Set» = 36 Einzelfarben bei CJ → Titel für Mensch.** Liste und Ledger brauchen denselben Schlüssel; viele Bilder beweisen keine Auswahl → Journal Nachtrag 63

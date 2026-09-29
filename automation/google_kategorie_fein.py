@@ -18,10 +18,19 @@ import collections, json, os, re, sys, time, urllib.request
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
 GROB = "Apparel & Accessories > Clothing"
+ELEK = "Electronics"
 LEDGER = os.path.join(REPO, "dropship/_google_kategorie_fein.tsv")
 TAXO = os.environ.get("TAXO", "/tmp/gtaxo.txt")
 GROB_ERLAUBT = ("Apparel & Accessories", "Cameras & Optics", "Health & Beauty > Personal Care > Vision Care",
                 "Health & Beauty > Health Care > Supports", "Sporting Goods > Outdoor Recreation")
+ELEK_ERLAUBT = ("Electronics >", "Toys & Games", "Cameras & Optics", "Home & Garden > Lighting", "Home & Garden > Decor > Clocks",
+                "Home & Garden > Household Appliances", "Home & Garden > Decor > Home Fragrance Accessories",
+                "Home & Garden > Business & Home Security", "Health & Beauty > Personal Care > Oral Care",
+                "Health & Beauty > Personal Care > Shaving & Grooming", "Health & Beauty > Personal Care > Massage & Relaxation",
+                "Health & Beauty > Personal Care > Hair Care > Hair Styling Tools", "Apparel & Accessories > Jewelry > Watch",
+                "Vehicles & Parts", "Baby & Toddler", "Animals & Pet Supplies", "Hardware > Tools > Lighters",
+                "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments",
+                "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools")
 GOOGLE_KANAL = "gid://shopify/Publication/302872297857"   # App «Google & YouTube»
 SCHARF = os.environ.get("DRY") != "1"
 C = "Apparel & Accessories > Clothing > "
@@ -70,6 +79,12 @@ MENSCH = re.compile(r"\b(damen|herren|frauen|männer|unisex|mädchen|jungen)\b|k
 LEER_REGELN = [
     # Fortura-Fanartikel: «Radsocken für Auto Holland» sind Radkappen-Überzüge, keine Socken
     (r"radsocken|spiegelsocken|autofahne|auto-?flagge|auto[- ]?waschhandschuh|autowasch\w*", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
+    (r"\bgps\b.*(tracker|halsband|ortung|anti-verlust)|gps-\w*tracker", "Electronics > GPS Tracking Devices", ""),
+    (r"usb-?stick\w*|speicherstick\w*|usb-?flash", "Electronics > Electronics Accessories > Computer Components > Storage Devices > USB Flash Drives", ""),
+    (r"^(?!.*(ladeger|lader)).*(batterien? f[üu]r|carbon-?batterien|lithium-?batterie)", "Electronics > Electronics Accessories > Power > Batteries", ""),
+    (r"holzpuzzle|metallpuzzle|3d-?puzzle", "Toys & Games > Puzzles", ""),
+    (r"klemmbaustein\w*|\bbaustein\w*|\w*bausteine\b|\bbausatz\b|\w+-?bausatz\b|baukasten\w*|\bmoc\b", "Toys & Games > Toys > Building Toys", ""),
+    (r"vr-?brille|3d-vr|smarte? (audio-)?brille|bluetooth-?brille|ai brille|smart-?brille", "Electronics > Computers > Smart Glasses", ""),
     # Masken: Schutz-/Sportmaske ≠ Hautpflege-Tuchmaske ≠ LED-Gerät ≠ Kostüm (43 standen über Tag «beauty» als Kosmetik)
     (r"tauch\w*maske|tauch- und schwimmmaske|schnorchel\w*", "Sporting Goods > Outdoor Recreation > Boating & Water Sports > Diving & Snorkeling > Diving & Snorkeling Masks", ""),
     (r"atemschutz\w*|staubmaske|staubschutzmaske|\bffp\d|aktivkohlefilter", "Business & Industrial > Work Safety Protective Gear > Protective Masks > Dust Masks", ""),
@@ -79,7 +94,7 @@ LEER_REGELN = [
     (r"^(?=.*(maske|sturmhaube|balaclava)).*(schutzfilter|baumwollmaske|saubere luft|filtersystem|winddicht\w*|thermo-?gesichtsmaske|uv-?schutz|sturmhaube|balaclava|halbgesichtsmaske|outdoor-?\w*maske|maske f[üu]r (sport|den winter|herbst)|atmungsaktiv\w* (\w+ )?maske|3d gesichtsmaske|gesichtsmaske f[üu]r (herbst|winter)|vollgesichtsmaske|sonnenschutz gesichtsmaske|winter-gesichtsmaske|schutz vor sonne)",
      "Apparel & Accessories > Clothing Accessories > Balaclavas", ""),
     # Tierbedarf (vor Kleidung/Handtuch/Rucksack), aber nie «Katzen-Slipper für Damen»
-    (r"f[üu]r\s+(hunde|katzen|haustiere|welpen)\b|\bhunde\w*|\bkatzen\w*|\bhaustier\w*|\bwelpen\w*|trinkbrunnen|kratzbaum|zugleine|pet-flasche|futter- und trinkflasche|tiertasche|fellpflege|futterautomat|f[üu]r tiere\b|\bhalsband\b",
+    (r"^(?!.*(h[üu]lle f[üu]rs? (iphone|handy)|tastenkappe|ohrh[öo]rer|speicherstick|usb)).*(f[üu]r\s+(hunde|katzen|haustiere|welpen)\b|\bhunde\w*|\bkatzen\w*|\bhaustier\w*|\bwelpen\w*|trinkbrunnen|kratzbaum|zugleine|pet-flasche|futter- und trinkflasche|tiertasche|fellpflege|futterautomat|f[üu]r tiere\b|\bhalsband\b)",
      "Animals & Pet Supplies > Pet Supplies", "tier"),
     (r"babytrage|tragetuch", "Baby & Toddler > Baby Transport > Baby Carriers", ""),
     (r"strampler|babyanzug|s[äa]uglingsanzug|\bbabybody|baby[- ]?body|tutu-?kleid f[üu]r baby", "Apparel & Accessories > Clothing > Baby & Toddler Clothing", ""),
@@ -88,7 +103,7 @@ LEER_REGELN = [
     (r"\bbworld\b|\bbruder\b|^zubeh[öo]r:", "Toys & Games > Toys", ""),
     (r"pl[üu]schtier\w*|kuscheltier\w*|stofftier\w*", "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals", ""),
     (r"\bpuzzle\w*|schraubpuzzle", "Toys & Games > Puzzles", ""),
-    (r"drohne\w*|\bdrone\b|quadcopter|ferngesteuert\w*|\brc[- ]", "Toys & Games > Toys > Remote Control Toys", ""),
+    (r"drohne\w*|\bdrone\b|quadcopter|quadrocopter|ferngesteuert\w*|\brc[- ]", "Toys & Games > Toys > Remote Control Toys", ""),
     # Kostüm/Party/Halloween
     (r"latex-?maske|halbmaske|rhinestone maske|d[äa]monenmaske|pl[üu]sch[- ]?maske|horror\w*[- ]\w*maske|totenkopf\w*[- ]?maske|performance maske|\w*maske aus pl[üu]sch", "Apparel & Accessories > Costumes & Accessories > Masks", ""),
     (r"echthaar\w*|echtem haar|haarper[üu]cke|human hair|lace[- ]front", "Apparel & Accessories > Clothing Accessories > Hair Accessories > Wigs", ""),
@@ -101,18 +116,18 @@ LEER_REGELN = [
     # Schmuck/Uhren vor Elektronik («Silikonarmband für Apple Watch», «Lederarmband mit USB-C-Ladekabel» → Kabel unten zuerst)
     (r"(arm)?band\w* f[üu]r (apple|smart|galaxy)[- ]?watch|watch[- ]?(arm)?band", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands", ""),
     (r"ladekabel|usb-?c?-?kabel|\bkabel\b|lightning", "Electronics > Electronics Accessories > Cables", ""),
-    (r"wanduhr|\w*wecker\b|tischuhr|kuckucksuhr", "Home & Garden > Decor > Clocks", ""),
+    (r"wanduhr|\w*wecker\b|tischuhr|kuckucksuhr|kalenderuhr|spiegel ?uhr|uhr f[üu]r zuhause", "Home & Garden > Decor > Clocks", ""),
     (r"sanduhr", "Home & Garden > Decor > Hourglasses", ""),
-    (r"uhrenarmband|schnellverschluss-?armband|nylon-?armband|armband\w* f[üu]r .*(ultra|generation|watch)", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands", ""),
+    (r"uhrenarmband|f[üu]r fitbit|schnellverschluss-?armband|nylon-?armband|armband\w* f[üu]r .*(ultra|generation|watch)", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands", ""),
     (r"bew[äa]sserungs-?timer", "Hardware > Plumbing > Water Timers", ""),
     (r"eieruhr|k[üu]chen-?timer", "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Cooking Timers", ""),
-    (r"smart\s*-?watch|smartuhr|smart-?armband|fitness-?tracker|^(?!.*(licht|lampe|leuchte)).*\w*uhr\b|chronograph", "Apparel & Accessories > Jewelry > Watches", ""),
+    (r"smart\s*-?watch|smartuhr|smart\w*[- ](sport-?|bluetooth-?|gesundheits-?|business-?)?armband|sportarmband|sport-armband|bluetooth-armband|armband mit herzfrequenz|herzfrequenz-?armband|pedometer\b.*armband|fitness-?tracker|^(?!.*(licht|lampe|leuchte|zeitschalt|ladestation|lautsprecher|wecker|reise-uhr|stopuhr|zifferblatt|wand|tisch|charger|ladeger)).*\w*uhr\b|chronograph", "Apparel & Accessories > Jewelry > Watches", ""),
     (r"schmuckset|halskette.*ohrring|ohrring.*halskette", "Apparel & Accessories > Jewelry > Jewelry Sets", ""),
     (r"ohrring\w*|ohrstecker|creolen", "Apparel & Accessories > Jewelry > Earrings", ""),
     (r"\w*fotoanh[äa]nger|medaillon", "Apparel & Accessories > Jewelry > Charms & Pendants", ""),
     (r"halskette\w*|perlenkette|\w*kette mit\b.*anh[äa]nger|anh[äa]nger-?kette", "Apparel & Accessories > Jewelry > Necklaces", ""),
     (r"\w*-ring\b|\bring\b|(finger|zirkon|silber|gold|diamant|verlobungs|stapel|siegel|damen|herren)ring\b", "Apparel & Accessories > Jewelry > Rings", ""),
-    (r"\barmreif\w*|\barmband\b|\w*armband\b", "Apparel & Accessories > Jewelry > Bracelets", ""),
+    (r"^(?!.*(ladestation|lader|kabel|smart|herzfrequenz|bluetooth|pedometer|antistatik|m[üu]cken|fitbit|kamera)).*(\barmreif\w*|\barmband\b|\w*armband\b)", "Apparel & Accessories > Jewelry > Bracelets", ""),
     # Schönheit
     (r"make-?up[- ]?pinsel\w*|kosmetikpinsel|puderpinsel|augenbrauen-?pinsel|eyebrow pinsel|pinselset.*make|make.*pinselset", KOS + "Cosmetic Tools > Makeup Tools > Makeup Brushes", ""),
     (r"schminkspiegel|kosmetikspiegel|make-?up[- ]?spiegel|schminkbox|lichtspiegel", KOS + "Cosmetic Tools > Makeup Tools > Face Mirrors", ""),
@@ -158,18 +173,19 @@ LEER_REGELN = [
     (r"mauspad|mousepad", "Electronics > Electronics Accessories > Computer Accessories > Mouse Pads", ""),
     (r"gaming-?maus|\bmaus\b|\bmouse\b", "Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs", ""),
     (r"tastatur\w*|keyboard", "Electronics > Electronics Accessories > Computer Components > Input Devices > Keyboards", ""),
-    (r"^(?!.*(kabelrollen|kabelhalter)).*(kopfh[öo]rer\w*|kopfhoerer\w*|earbuds|headset|in-?ear)", "Electronics > Audio > Audio Components > Headphones & Headsets", ""),
-    (r"lautsprecher\w*|\bspeaker\b|soundbar", "Electronics > Audio > Audio Components > Speakers", ""),
+    (r"(kopfh[öo]rer|headset)\w*[- ]?(st[äa]nder|halter\w*|h[üu]lle|etui)|(st[äa]nder|halterung|h[üu]lle|etui) f[üu]r .*(kopfh|headset|earbuds)", "Electronics > Audio > Audio Accessories > Headphone & Headset Accessories", ""),
+    (r"^(?!.*(kabelrollen|kabelhalter|st[äa]nder|halter|lader|ladeger|charger|adapter|h[üu]lle)).*(kopfh[öo]rer\w*|kopfhoerer\w*|earbuds|headset|\bin-?ear\b)", "Electronics > Audio > Audio Components > Headphones & Headsets", ""),
+    (r"lautsprecher\w*|\bspeaker\b|soundbar|subwoofer", "Electronics > Audio > Audio Components > Speakers", ""),
     (r"telefonh[üu]lle|handyh[üu]lle\w*|handy-?h[üu]lle|phone ?case|h[üu]lle f[üu]r (iphone|samsung|galaxy|handy)|handyschale", "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases", ""),
     (r"panzerglas|schutzfolie|displayschutz", "Electronics > Electronics Accessories > Electronics Films & Shields > Screen Protectors", ""),
     (r"ladeger[äa]t|ladestation|netzteil|powerbank|ladesteckdose|kabellos\w* lade\w*|wireless charger|magnethalter", "Electronics > Electronics Accessories > Power > Power Adapters & Chargers", ""),
     (r"handyhalter\w*|handy-?halterung|halter\w* f[üu]r (iphone|handy|smartphone)", "Electronics > Communications > Telephony > Mobile Phone Accessories", ""),
     (r"projektor\w*|beamer", "Electronics > Video > Projectors", ""),
-    (r"mikrofon\w*|microphone", "Electronics > Audio > Audio Components > Microphones", ""),
-    (r"handheld|spielkonsole|\bkonsole\b", "Electronics > Video Game Consoles", ""),
+    (r"^(?!.*(webcam|kamera|subwoofer|intercom)).*(mikrofon\w*|microphone)", "Electronics > Audio > Audio Components > Microphones", ""),
+    (r"spielkonsole|game[- ]?konsole|\bkonsole\b|handheld[- ](konsole|spiel|game)", "Electronics > Video Game Consoles", ""),
     (r"^(?!.*(t[üu]rklingel|ohrenreiniger|blackhead|mitesser)).*(\w*kamera\b|dashcam|webcam)", "Cameras & Optics", ""),
     # Fahrzeug (nicht «Automatisch»)
-    (r"\bauto-|\bautos\b|f[üu]r (das |ihr )?auto\b|\bkfz\b|lenkrad\w*|tagfahrlicht|autositz\w*|kofferraum|motorrad\w*", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
+    (r"^(?!.*(auto-?clicker|auto-?leveling)).*(\bauto-|\bautos\b|f[üu]r (das |ihr )?auto\b|\bkfz\b|lenkrad\w*|tagfahrlicht|autositz\w*|kofferraum|motorrad\w*)", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
     # Haushalt & Wohnen
     (r"duft[öo]l\w*|[äa]therische\w* [öo]le?\b", "Home & Garden > Decor > Home Fragrances > Fragrance Oil", ""),
     (r"luftbefeuchter\w*", "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers", ""),
@@ -204,7 +220,7 @@ LEER_REGELN = [
     (r"\w*boots\b|pantinen|clogs|winterschl[üu]pfer", "Apparel & Accessories > Shoes", ""),
     (r"st[üu]tzgurt|w[äa]rmegurt|haltungs-?korrekt\w*|r[üu]ckenstabilisator|\w*bandagen?\b|kn[öo]chelst[üu]tze|handgelenkst[üu]tze|wrist wraps|zehenspreizer|halsst[üu]tz\w*|r[üu]ckenstrecker", "Health & Beauty > Health Care > Supports & Braces", ""),
     (r"schn[üu]rsenkel", "Apparel & Accessories > Shoe Accessories > Shoelaces", ""),
-    (r"ohrenreiniger|ohrreiniger", PC + "Ear Care", ""),
+    (r"ohrenreiniger|(?<!r)ohrreiniger", PC + "Ear Care", ""),
     (r"nasenreiniger|nasensauger", "Health & Beauty > Health Care", ""),
     (r"zahnaufhell\w*|zahnpasta(?!-dispenser)", PC + "Oral Care", ""),
     (r"bartpflege\w*|bart[öo]l", PC + "Shaving & Grooming", ""),
@@ -222,9 +238,9 @@ LEER_REGELN = [
     (r"(ohrh[öo]rer|airpods)[- ]?(etui|h[üu]lle)|schutzh[üu]lle f[üu]r airpods", "Electronics > Audio > Audio Accessories > Headphone & Headset Accessories", ""),
     (r"ohrh[öo]rer|earphone", "Electronics > Audio > Audio Components > Headphones & Headsets", ""),
     (r"schutzglas|glas-schutz|anti-schiel", "Electronics > Electronics Accessories > Electronics Films & Shields > Screen Protectors", ""),
-    (r"(magsafe|smartphone|handy|telefon)\w*[- ]?h[üu]lle|schutzh[üu]lle|\bcase\b", "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases", ""),
+    (r"(magsafe|smartphone|handy|telefon)\w*[- ]?h[üu]lle|^(?=.*(handy|iphone|smartphone|telefon|samsung|xiaomi|galaxy)).*(schutzh[üu]lle|\bcase\b)", "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases", ""),
     (r"(tablet|handy|smartphone|r[üu]ckspiegel-handy)[- ]?halt\w*|hud-halterung|halterung f[üu]r .*handy|luftventil-halter|faltbarer halter", "Electronics > Communications > Telephony > Mobile Phone Accessories", ""),
-    (r"\bcontroller\b", "Electronics > Video Game Console Accessories", ""),
+    (r"^(?=.*(game|gaming|ps\d|xbox|switch|nintendo|konsole)).*controller|gamepad", "Electronics > Video Game Console Accessories", ""),
     (r"mausarmlehne|\w*maus\b", "Electronics > Electronics Accessories > Computer Accessories", ""),
     (r"t[üu]rklingel", "Home & Garden > Business & Home Security", ""),
     (r"\w*drucker\b", "Electronics > Print, Copy, Scan & Fax > Printers, Copiers & Fax Machines", ""),
@@ -260,7 +276,7 @@ LEER_REGELN = [
     (r"\w*figur\b|statue|skulptur|deko-set|kunstharz|bronze drache|weltkarte|levitation|\badler\b", "Home & Garden > Decor", ""),
     (r"ukulele|gitarre|trommel\b", "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments", ""),
     (r"seifenblasen", "Toys & Games > Toys > Activity Toys", ""),
-    (r"\w*spielzeug\b|rennwagen|fidget|\w*spiel\b", "Toys & Games > Toys", ""),
+    (r"\w*spielzeug\w*|spielauto|rennwagen|fidget|\w*spiel\b", "Toys & Games > Toys", ""),
     (r"schürze|sch[üu]rze\b", KH + "Kitchen Tools & Utensils > Aprons", ""),
     (r"m[öo]rser", KH + "Kitchen Tools & Utensils > Mortars & Pestles", ""),
     (r"nudelholz|teigroller", KH + "Kitchen Tools & Utensils > Rolling Pins", ""),
@@ -271,6 +287,18 @@ LEER_REGELN = [
     (r"\bcup\b|thermobe[ck]+er|champagnerglas\w*|gl[äa]ser-?set|kaffeekanne|teekessel|tee-set|wasserkessel|weindekanter|dekanter|strohhalm", KH + "Tableware > Drinkware", ""),
     (r"teefilter|tee-ei|messl[öo]ffel|k[üu]chenrollenhalter|messerhalter|trichter|burgerform|backform|kerzenform|teigmatte|brot-?schneid\w*|\w*brecher\b|abtropfmatte|k[üu]chenmatte|k[üu]chenutensil\w*|gem[üu]sehobel|gem[üu]sekutter|gemuese|ananas-?schneider|knoblauchpresse|k[üu]chenwaage|wein[öo]ffner|salatdrainer|w[äa]rmeleitplatte|kaffeekapsel\w*|champagner-pong", KH + "Kitchen Tools & Utensils", ""),
     (r"\w*licht\b|\w*leuchten\b|lichter\b", "Home & Garden > Lighting", ""),
+    # vierte Welle (Rest «Electronics», 29.09.: 1'373) — häufigste Warenwörter im Rest
+    (r"power ?bank", "Electronics > Electronics Accessories > Power > Power Adapters & Chargers", ""),
+    (r"^(?!.*(ladeger|lader|staubsauger|drohne|quadrocopter|controller|\bmit\b.*akku|akku-\w*(schneider|schrauber|s[äa]ge|h[üu]lle)|megaphon|pumpe|router|kopfband|marktstand|klatsche|toy gun|reifenf)).*(\bakkus?\b|\w+-akkus?\b|ersatzakku\w*|li-?ion)", "Electronics > Electronics Accessories > Power > Batteries", ""),
+    (r"saugroboter|kehrroboter|reinigungsroboter|wischroboter|fensterputzroboter", "Home & Garden > Household Appliances > Vacuums", ""),
+    (r"roboterhund|roboter-?spielzeug|malroboter|programmierbar\w* roboter", "Toys & Games > Toys > Robotic Toys", ""),
+    (r"festplatten-?geh[äa]use|ssd-?geh[äa]use|m\.?2 ssd geh[äa]use|festplattenbox", "Electronics > Electronics Accessories > Computer Components > Storage Devices > Hard Drive Accessories > Hard Drive Enclosures & Mounts", ""),
+    (r"kartenleser", "Electronics > Electronics Accessories > Computer Components > Input Devices > Memory Card Readers", ""),
+    (r"tv[- ]?box|android[- ]?box|set-top[- ]?box|streaming-?stick", "Electronics > Video > Video Players & Recorders > Streaming & Home Media Players", ""),
+    (r"^(?!.*\bmit\b.*fernbedienung)(?!.*(drohne|roboter|jalousie|vorhang|stativ|strobe)).*\w*fernbedienung\w*", "Electronics > Electronics Accessories > Remote Controls", ""),
+    (r"bewegungssensor|magnetsensor|t[üu]r- und fenster", "Home & Garden > Business & Home Security > Motion Sensors", ""),
+    (r"haarschneider|haartrimmer|bartschneider", PC + "Shaving & Grooming > Hair Clippers & Trimmers", ""),
+    (r"mi band|f[üu]r (xiaomi|huawei|amazfit) .*band|universal armband", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Bands", ""),
     (r"\w*fackeln?\b", "Home & Garden > Lighting > Tiki Torches & Oil Lamps", ""),
     (r"duffel\w*", "Luggage & Bags > Duffel Bags", ""),
     (r"handgep[äa]ck|\w*koffer\b|trolley", "Luggage & Bags", ""),
@@ -280,7 +308,7 @@ LEER_REGELN = [
     (r"\w*bausteine\b|baukl[öo]tze", "Toys & Games > Toys > Building Toys", ""),
     (r"springbrunnen|tischbrunnen|zimmerbrunnen", "Home & Garden > Decor > Fountains & Ponds", ""),
     (r"leinwand", "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Textiles > Crafting Canvas > Painting Canvas", ""),
-    (r"wandkunst|wandbild|led-bild|\bbild\b|poster|kunstdruck", "Home & Garden > Decor > Artwork", ""),
+    (r"wandkunst|wandbild|led-bild\b|\bbild\b|poster|kunstdruck", "Home & Garden > Decor > Artwork", ""),
     (r"dekokissen|zierkissen|kissenbezug|sofakissen|knoten kissen", "Home & Garden > Decor > Throw Pillows", ""),
     (r"haribo|trolli|bonbon\w*|gummib[äa]r\w*|schokolade\w*|lutscher|kaugummi", "Food, Beverages & Tobacco > Food Items > Candy & Chocolate", ""),
     (r"zitruspresse|pizza-?schaufel|grillkorb|grill-?thermometer|thermometer f[üu]r grill|k[üu]chenhelfer\w*|weinbel[üu]fter|eisw[üu]rfel\w*|getreidespender|fingerschutz|abflusskorb", "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils", ""),
@@ -449,6 +477,20 @@ def main():
     print(f"leer im Google-Kanal: {len(leer)} · einordenbar {len(lplan)} ({dict(quelle)}) · bleibt leer {len(loffen)}")
     for k, v in lzaehl.most_common(25):
         print(f"  {v:5d}  {k}")
+    # (3) grob «Electronics» (29.09.: 4'132) → Unterzweig, nur in geprüfte Zielzweige (ELEK_ERLAUBT). Vieles unter
+    #     «Electronics» ist gar keine Elektronik: Klemmbausteine, Drohnen, Kameras, Wecker, Aroma-Diffusoren.
+    erows = [r for r in alle if ((r.get("metafield") or {}).get("value") or "") == ELEK]
+    eplan, eoffen = [], 0
+    for r in erows:
+        z, q = ziel_leer(r.get("title", ""), (), "")
+        if z and q == "titel" and z != ELEK and z.startswith(ELEK_ERLAUBT) and z in gueltig:
+            eplan.append((r["id"], r.get("handle", ""), r.get("title", ""), z))
+        else:
+            eoffen += 1
+    ezaehl = collections.Counter(z for *_, z in eplan)
+    print(f"grob «Electronics»: {len(erows)} · einordenbar {len(eplan)} · bleibt grob {eoffen}")
+    for k, v in ezaehl.most_common(15):
+        print(f"  {v:5d}  {k}")
     if not SCHARF:
         import random
         random.seed(7)
@@ -460,8 +502,9 @@ def main():
     with open(LEDGER, "a", encoding="utf-8") as f:
         ok1, fehl1 = schreiben(plan, GROB, f)
         ok2, fehl2 = schreiben(lplan, "(leer)", f)
+        ok3, fehl3 = schreiben(eplan, ELEK, f)
     print(f"FERTIG: fein {ok1} eingeordnet ({fehl1} Fehler, {len(offen)} bleiben grob) · leer {ok2} gefüllt "
-          f"({fehl2} Fehler, {len(loffen)} bleiben leer)")
+          f"({fehl2} Fehler, {len(loffen)} bleiben leer) · Electronics {ok3} verfeinert ({fehl3} Fehler, {eoffen} bleiben grob)")
 
 if __name__ == "__main__":
     main()

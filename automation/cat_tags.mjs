@@ -9,7 +9,10 @@
 // Beides sind keine Regex-Fehler im engeren Sinn — die Wörter sind wirklich mehrdeutig. Nur
 // der Zusammenhang entscheidet, und der steht im Titel. Trifft eines dieser Muster, wird das
 // betroffene Schlagwort übersprungen (Regel 9b: deutsche Wortformen mitdenken).
-const FAHRZEUG = /traktor|bagger|lkw|kipper|dozer|lader|schlepper|maehdrescher|bruder|john deere|fendt|claas|case ih|new holland|caterpillar|bworld|roadmax|beregnung|frontlader|teleskoplader/;
+// 29.09.2026: 11 weitere Modelle standen trotz Wache in der Halsketten-Kollektion — «Joskin Wannenkippanhänger»,
+// «Land Rover Defender, Einachsanhänger», «RAM 2500 … mit Anhänger», «Massey Ferguson …». Marken und Anhänger-Komposita
+// fehlten. Ausserdem: «Schlüsselanhänger» und «Anhänger für Hunde» sind kein Halsschmuck.
+const FAHRZEUG = /traktor|bagger|lkw|kipper|dozer|lader|schlepper|maehdrescher|bruder|john deere|fendt|claas|case ih|new holland|caterpillar|bworld|roadmax|beregnung|frontlader|teleskoplader|massey|joskin|land rover|defender|\bram \d|\bjeep\b|(?:wannenkipp|bordwand|fass|pferde|einachs|tank|holztransport|hakenlift|tieflade|vieh|ballen|abroll|mulden|rucke)anhanger|(?:transport|kipp)-?anhanger|fliegl|krampe/;
 
 // ── BELEUCHTUNG (23.09.2026, Audit-Befund 2) ─────────────────────────────────────────────────
 // Die alte Regel `/\blampe\b|leuchte|beleuchtung|projektor|nachtlicht|led.?strip|lichterkette/`
@@ -97,7 +100,7 @@ export function catTags(text) {
     [/ohrring|ohrhanger|creol|creyol|ohrstecker|earring/,        ['ohrringe', 'schmuck', 'damen']],
     [/armband(?!uhr)|armreif|bracelet|\banklet\b|fusskett/,      ['kategorie-armband', 'schmuck']],
     [/armbanduhr|damenuhr|herrenuhr|kinderuhr|unisex.?uhr|\buhr\b|\bwatch\b|smartwatch|wanduhr|tischuhr|wecker/, ['uhr', 'schmuck']],
-    [istFahrzeug ? /halskette|necklace|collier|choker/ : /halskette|\bkette\b|necklace|anhanger|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
+    [istFahrzeug ? /halskette|necklace|collier|choker/ : /halskette|\bkette\b|necklace|(?<!schlussel)anhanger(?! fur (?:hunde|haustiere|katzen))|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
     [/\bring\b|siegelring|damenring|herrenring|verlobungsring|ehering/, ['schmuck', 'damen']],
     [/perlen|pearl/,                                             ['schmuck', 'perlen']],
     // Eyewear
