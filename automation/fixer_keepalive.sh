@@ -74,6 +74,8 @@ absturz_nachholen() {
 # NUR für Jobs, deren LETZTE Zeile IMMER FERTIG oder PAUSE ist (sonst beweist das Fehlen nichts):
 # letzte Schreibung vor dem Container-Start + keine Schlusszeile = gestorben. Höchstens 3×/Tag.
 # letzter_lauf LOG — gibt nur die Zeilen ab der letzten «START »-Marke aus (ohne Marke: das ganze Log).
+# REGEL (29.09., ChatGPT-Kritik #2): Ein Skript darf «START » NUR als erste Zeile seines Laufs schreiben (Bedeutung wie
+# die Aufseher-Marke). Eine «START …»-Zeile mitten im Lauf würde den Laufabschnitt abschneiden.
 letzter_lauf() {
   [ -f "$1" ] || return 0
   if grep -q "^START " "$1"; then
@@ -92,7 +94,8 @@ still_gestorben() {
   # als fertig, weil darüber noch das FERTIG vom Vortag stand (Fortura-Bestand 04:13 gestorben, 11 h kein Nachholen).
   # Logs ohne Marke behalten das alte Verhalten.
   if grep -q "^START " "$log"; then
-    awk '/^START /{buf=""} {buf=buf $0 "\n"} END{printf "%s", buf}' "$log" | grep -qE "FERTIG|PAUSE" && return 1
+    # 29.09. (ChatGPT-Kritik #5, nachgemessen): verankert wie das Haupttor — «nicht FERTIG» mitten im Text zählt nicht.
+    letzter_lauf "$log" | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?(FERTIG|PAUSE)" && return 1
   else
     tail -n 3 "$log" | grep -qE "FERTIG|PAUSE" && return 1
   fi

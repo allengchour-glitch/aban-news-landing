@@ -43,7 +43,7 @@ def fragen(prompt, key, modell=MODELL, timeout=180):
                                           "sage das ausdruecklich statt zu raten."},
             {"role": "user", "content": prompt},
         ],
-        "temperature": 0.2,
+        "temperature": 1 if "k3" in modell else 0.2,   # 29.09.: kimi-k3 lehnt alles ausser 1 ab (HTTP 400)
     }).encode()
     req = urllib.request.Request("https://api.moonshot.ai/v1/chat/completions", data=daten,
                                  headers={"Authorization": "Bearer " + key,
