@@ -16097,3 +16097,4 @@ gid://shopify/Product/15503284633985	29->0	Ausziehbarer Abtropfkorb für Spülbe
 gid://shopify/Product/15503303836033	22->1	Halsband aus PU-Leder mit Kroko-Muster
 gid://shopify/Product/15504011231617	17->1	Aufblasbare Nackenstütze
 gid://shopify/Product/15504083288449	22->3	Kabelloser Audio-Adapter für TV & Kopfhörer
+gid://shopify/Product/15504112025985	15->0	Atemtrainer zur Verbesserung der Lungenkapazität
