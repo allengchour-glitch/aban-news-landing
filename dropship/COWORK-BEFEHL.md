@@ -1,5 +1,37 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 29.09. 15:45 UTC — DREI Browser-Klicks für Cowork (am PC, eingeloggter Browser) · diesen Block 1:1 in Cowork einfügen
+
+> Warum nicht aus der Cloud: alle drei brauchen einen eingeloggten Browser (Google-, TikTok-, BigBuy-Konto). Die
+> Cloud-Session hat keinen, und `ListAgents`/Bridge zeigen am 29.09. keine erreichbare PC-Session. Cowork auf dem PC
+> arbeitet in deinem Browser → kann alle drei. Passwörter/2FA gibst DU ein, nie in den Chat.
+
+```
+Du arbeitest in meinem eingeloggten Browser. Drei Aufgaben, der Reihe nach. Nichts bezahlen, nichts löschen.
+
+1) GOOGLE MERCHANT CENTER (merchants.google.com, Konto von luxestyle.ch)
+   a) Der Shop liefert NUR in die Schweiz. Finde, wo Deutschland als Land/Markt aktiv ist
+      (Banner «Complete remaining actions … Germany», oder Einstellungen → Märkte/Business info/Versand).
+      Deutschland ENTFERNEN bzw. deaktivieren. Auf KEINEN Fall «Complete actions» ausführen (das schaltet DE frei).
+   b) Übersicht → «6 products need to be updated» öffnen. Mache einen Screenshot der Liste
+      (Produktname + Grund) und speichere ihn / zeig ihn mir.
+
+2) TIKTOK (tiktok.com, Konto @luxestyle.ch) → Profil bearbeiten → Website:
+   https://luxestyle.ch/collections/gerade-auf-instagram?utm_source=tiktok&utm_medium=social&utm_campaign=bio
+   Speichern. Fehlt das Feld «Website»: Einstellungen → Konto → auf «Business-Konto» wechseln (gratis),
+   dann erneut. Danach das Profil neu laden und prüfen, dass der Link sichtbar ist.
+
+3) BIGBUY (bigbuy.eu, Kundennummer 966388) — AM COMPUTER, nicht am Handy:
+   https://www.bigbuy.eu/en/contact → Reiter «Administration» (Invoices, refunds, tax information) → Ticket.
+   Betreff und Text: aus der Datei dropship/BIGBUY-1000-EURO.md, Abschnitt «Nachtrag 16.09.», Block ab
+   «Subject: Customer 966388 – wallet balance EUR 1,000.00 …» (auf Englisch, unverändert).
+   Die IBAN steht im BigBuy-Konto; nicht neu eintippen. Absenden, die Ticket-Referenz notieren und
+   in dropship/_bigbuy_ticket_ref.txt eintragen (oder mir schicken).
+```
+
+**Quittungen:** (1) Screenshot der 6 Produkte in den Chat → ich behebe sie im Shop. (2) TikTok-Link → die Ampel prüft
+`bioLink` im Profil. (3) Ticket-Referenz → `dropship/_bigbuy_ticket_ref.txt`, dann verschwindet ⭐ BigBuy aus der Ampel.
+
 > **Fünf Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
