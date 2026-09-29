@@ -240,9 +240,47 @@ def schreiben_nachgelesen(datei, aenderungen):
         os.replace(tmp, datei)
     return n
 
+def doppelte_zeilen(datei):
+    """29.09.2026: dieselbe Zeilen-ID mehrfach «ready» (Reel-Motor-Nachtrag + Merge-Union; gemessen 5 IDs doppelt in
+    reels_seed.csv). Die ERSTE bleibt, jede weitere bekommt «dup-zeile-skip». Doppelte Zeilen sind textgleich — darum
+    zeilengenau über die Position im Text, nicht über den Schlüssel (id, Medium). Rückgabe: Anzahl markiert."""
+    import io
+    txt = open(datei, encoding="utf-8", newline="").read()
+    zeilen = list(csv.DictReader(io.StringIO(txt)))
+    ids = Counter(r.get("id") for r in zeilen if (r.get("status") or "").strip() == "ready")
+    gepostet = {r.get("id") for r in zeilen if (r.get("status") or "").strip().startswith("posted")}
+    # doppelt = mehrfach ready ODER ready + schon gepostet (sonst ginge dieselbe Datei ein zweites Mal raus)
+    doppelt = [i for i, n in ids.items() if i and (n > 1 or i in gepostet)]
+    n = 0
+    for zid in doppelt:
+        starts = [m.end() for m in re.finditer(r"(?:^|\n)" + re.escape(zid) + ",", txt)]
+        gesehen = zid in gepostet             # schon gepostet → auch die erste ready-Zeile ist ein Doppel
+        for st in starts:
+            ende = txt.find("\n" + zid + ",", st)
+            j = txt.find(",ready,", st, ende if ende > 0 else len(txt))
+            if j < 0:
+                continue
+            if not gesehen:
+                gesehen = True; continue
+            txt = txt[:j] + ",dup-zeile-skip," + txt[j + 7:]
+            n += 1
+            starts = [m.end() for m in re.finditer(r"(?:^|\n)" + re.escape(zid) + ",", txt)]
+            break
+    if n and not DRY:
+        neu = list(csv.DictReader(io.StringIO(txt)))
+        assert len(neu) == len(zeilen), "Zeilenzahl geändert — Abbruch"
+        tmp = datei + ".tmp"
+        open(tmp, "w", encoding="utf-8", newline="").write(txt)
+        os.replace(tmp, datei)
+    return n
+
 gesamt = Counter()
 for datei in DATEIEN:
     if not os.path.exists(datei): continue
+    for _ in range(10):                       # je Durchgang eine weitere Doppelung pro ID, bis nichts mehr doppelt ist
+        d = doppelte_zeilen(datei)
+        if d: gesamt["dup-zeile-skip"] += d; print(f"{datei:32s} doppelte ready-Zeilen → dup-zeile-skip: {d}")
+        if not d or DRY: break
     with open(datei, newline="", encoding="utf-8") as f:
         rd = csv.DictReader(f); felder = rd.fieldnames; rows = list(rd)
     ready = [r for r in rows if (r.get("status") or "").strip() == "ready"]

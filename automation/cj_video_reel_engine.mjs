@@ -205,6 +205,8 @@ function hashtags(title, pid) {
 const esc = x => /[",\n]/.test(x) ? '"' + String(x).replace(/"/g, '""') + '"' : x;
 function appendReel(id, url, cap, tags, platforms) {
   let csv = fs.readFileSync(CSV, 'utf8'); if (!csv.endsWith('\n')) csv += '\n';
+  // 29.09.2026: Datei direkt vor dem Schreiben neu gelesen — steht die ID schon drin (anderer Lauf, Merge), nichts anhängen.
+  if (new RegExp('^' + id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ',', 'm').test(csv)) { console.log(`   (Zeile ${id} steht schon in der Queue — nicht doppelt)`); return false; }
   csv += [id, new Date().toISOString().slice(0, 10), url, esc(cap), esc(tags), esc(platforms), 'ready', '', ''].join(',') + '\n';
   fs.writeFileSync(CSV, csv);
 }
@@ -335,7 +337,9 @@ if (process.env.NEU_RENDERN === '1') {
 // ---------------------------------------------------------------- Kandidaten
 const gebaut = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 const keinVideo = new Set(fs.existsSync(KEINVIDEO) ? fs.readFileSync(KEINVIDEO, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : []);
-const inCsv = new Set((fs.readFileSync(CSV, 'utf8').match(/^cjreel-(\d+)/gm) || []).map(s => s.replace('cjreel-', '')));
+// 29.09.2026: vorher /^cjreel-(\d+)/ — UUID-pids (9BDA360E-…, 56A53647-…) galten nie als «in der Queue» und wurden vom
+// Nachtrag erneut angehängt (5 IDs doppelt, gemessen 29.09.). Jede ID bis zum ersten Komma zählt.
+const inCsv = new Set((fs.readFileSync(CSV, 'utf8').match(/^cjreel-[^,\n]+/gm) || []).map(s => s.replace('cjreel-', '')));
 const kand = []; let cursor = null, gescannt = 0;
 // Index-Kandidaten zuerst (cj_video_index.mjs, 22.09.): Produkte, die laut CJ-Kategorieliste ein Video
 // haben — der Motor fragt dann fast nur noch Treffer statt 1 von 80. Nachschlag im Shop per SKU-OR-Suche
