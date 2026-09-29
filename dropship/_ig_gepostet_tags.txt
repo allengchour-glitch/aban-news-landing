@@ -24,3 +24,5 @@
 2026-09-27T21:12Z	gid://shopify/Product/15500372771201	+	ig-seit-2026-09-27	spot-uv-sterilisator-tragbar-a47399
 2026-09-28T18:16Z	gid://shopify/Product/15449433637249	+	ig-seit-2026-09-28	sicherheits-schuhe-mit-stahlkappe-695232
 2026-09-28T18:16Z	gid://shopify/Product/15495110295937	+	ig-seit-2026-09-28	laptop-tasche-fur-herren-121536
+2026-09-29T16:47Z	gid://shopify/Product/15524867473793	+	ig-seit-2026-09-28	reflektierendes-hunde-brustgeschirr-mit-leine-050816
+2026-09-29T16:47Z	gid://shopify/Product/15500073533825	+	ig-seit-2026-09-29	vegetarische-schredder-box-342016

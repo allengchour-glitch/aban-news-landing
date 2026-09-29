@@ -263,5 +263,17 @@
   "armellose-strickweste-mit-rundhalsausschnitt-633100"
  ],
  "getaggt": 128,
- "fehler": 0
+ "fehler": 0,
+ "B_nachgezogen": {
+  "zeit": "2026-09-29T16:45Z",
+  "tag": "gfeed-nachpruefen-2909b",
+  "getaggt": 126,
+  "fehler": 0,
+  "anzahl": 126
+ },
+ "ergebnis_1": {
+  "stand": "2026-09-29T16:45Z",
+  "A_noch": 93,
+  "B_noch": 126
+ }
 }
