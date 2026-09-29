@@ -6,6 +6,17 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🎯 «jeden tag ein verkauf machen» — Rechnung, Zählzeile, erster Gratis-Hebel (05:30)
+- GEMESSEN 30 T (nur Menschen): direkt 610/9/3/0, Google-Suche 123/5/3/1, Social 116/2/1/0 (Sitzungen/Warenkorb/Kasse/Kauf).
+  Ziel 30/Monat braucht bei ~0,8 % rund 120 kaufbereite Sitzungen/Tag, heute ~4 aus der Suche → Faktor ~30.
+- Betreiber wählte «Nur gratis, langsamer» (gegen Google-Anzeigen / erst TikTok-Link).
+- Getan: `verkauf_ziel.py` → Zeile «VERKAUF-ZIEL 1/Tag: heute · gestern · 7 T · 30 T · letzter» in jedem Keepalive (fremde,
+  nicht erstattete Käufe, Europe/Zurich). Google «Product page unavailable» 256: Stichprobe 40/40 kaufbar + HTTP 200 →
+  A/B-Versuch (128 Tag `gfeed-nachpruefen-2909` / 128 Kontrolle), Auswertung automatisch nach dem nächsten Vollscan.
+- **Lehre:** Ein Ziel ohne tägliche Zählzeile wird zum Wunsch. Und: eine Massnahme, deren Wirkung man nicht direkt sehen
+  kann (was sieht Googles Crawler?), gehört in einen Versuch mit Kontrollgruppe statt auf alle Produkte.
+- Offen (gratis, Betreiber-Klick): Website-Link im TikTok-Profil — reichweitenstärkster Kanal ohne Weg in den Shop.
+
 ## 2026-09-29 · 👯 Doppelzeilen in der Reel-Queue (Verbesserungsrunde 04:25)
 - GEMESSEN: 5 IDs doppelt in `reels_seed.csv`, 2 davon beide `ready`; auch das Ledger `_cj_reel_gebaut.txt` doppelt.
 - Ursache 1: `inCsv = /^cjreel-(\d+)/` — UUID-IDs fielen durch jedes «schon in der Queue?». Ursache 2: `appendReel` prüfte nie.
@@ -17208,3 +17219,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🔫 **Waffen-Wächter prüfte seit Grind-Pause 1 Seite/Tag (SEIT 3 Tage, `/tmp/export.jsonl` ohne Text 0/49'892) → Wochen-Vollrunde live (498 S.): Feuerzeug in Pistolenform + Aufnahme-Stift aus Google-Kanal, 3 Fehltreffer gesperrt (MP5-Autoradio ×2, Seifenblasen-MP); Vollrunden-Stempel erst nach Exit 0 (auch Medizin).** «Wie viele Seiten sah der letzte Lauf?» → Journal Nachtrag 85
 - 2026-09-25 · 🎨 **«mache alles»: Farbliste mit Doppelpunkt fehlte dem Wahlversprechen-Wächter (Grössen-Form seit 24.09., Farben nie) — 951 roh, 571 echt, Ausnahmen Anzahl-vor-«Farben»/Set-Titel (erste Fassung schützte Masse statt Paletten); Ratgeber Yogamatte + Nagellack live; Teetasse + Dampf-Entferner (Stecker unklar) aus Google; Moissanit manuell 5 → Smart 94 + 301.** Neue Regelform → sofort die Geschwister prüfen → Journal Nachtrag 86
 - 2026-09-25 · 🔁 **Ausverkauft-Entwürfe ohne Rückweg: `lagerstand_hygiene` las `first:100` (222 Bestand-0, das unkaufbare auf S. 3) und draftete, Fortura hebt Mengen nur an → 77 von 154 Entwürfen wieder lieferbar (Halloween-Perücken/Flügel), ohne EK (Nachtrag + Preisschutz nur ACTIVE) → Fall C Rückweg (Ledger/Tag/Klinge/Redirect/SKU-Zwilling/EK/Boden ≤2×), 73 zurück; «4 Aufseher» waren Unter-Shells (SID zählen).** Wer draftet, holt zurück → Journal Nachtrag 87
+- 2026-09-25 · 🔄 **Gedächtnis der anderen Sessions geladen (Diff ab merge-base mit main, sonst 400 Dateien Rauschen): 40 fehlende Lern-Dateien übernommen (Skill werbevideo, video_hook, LERNEN-*, Vault), Geheimnis-Scan 0; Versand 45 aktiv = Absicht (hält «ab 50» nach 10 %-Rabatt); Metricool-Plan der ads-Session postet IG+FB+Threads (Threads-Stopp!) und 6/12 Produkte waren im Juni schon auf IG → Betreiber-Entscheid.** Fremde Planer umgehen jedes eigene Ledger → vor Planung `getScheduledPosts` → Journal Nachtrag 88

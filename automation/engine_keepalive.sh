@@ -471,6 +471,7 @@ fi
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
 # 29.09.2026 Betreiber «jeden tag ein verkauf machen»: Ziel sichtbar in jeder Meldung (fremde, nicht erstattete Käufe je Tag).
 python3 "$REPO_AUTO/verkauf_ziel.py" 2>/dev/null || echo "VERKAUF-ZIEL: unklar (Skript fehlt)"
+[ -f "$REPO_AUTO/../dropship/_gfeed_nachpruefen_2909.json" ] && python3 "$REPO_AUTO/gfeed_nachpruefen.py" --auswerten 2>/dev/null | sed 's/^/GOOGLE-VERSUCH /'
 
 # 🪣 CJ-TAKT-BERICHT (24.09.2026): Server und Container teilen EIN CJ-Konto, sehen aber nur ihre eigenen Aufrufe.
 # Jede Maschine legt stündlich dropship/_cj_takt_<host>.json ab (Aufrufe je Skript, letzte 60 min); hier werden

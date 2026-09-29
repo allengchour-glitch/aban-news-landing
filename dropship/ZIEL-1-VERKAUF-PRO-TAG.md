@@ -25,3 +25,13 @@ Verkäufe an fremde Kunden, 30 T: 2 (#1018, #1019). Zeile «VERKAUF-ZIEL» steht
 | TikTok-Profil-Link setzen | TikTok ist der reichweitenstärkste Kanal (Median 272 Aufrufe/Post), aber ohne Link im Profil kommt kaum jemand in den Shop | Betreiber: 1 Klick in der TikTok-App |
 | Google-Gratis-Einträge: 1'078 Blocker (2 % des Katalogs) | klein, aber einziger Kanal mit Verkauf | ich (autonom) |
 | Schweizer Lager in Posts/Startseite vorn (seit 28.09.) | gegen Abbrüche an der Kasse (CJ = 2–4 Wochen) | läuft |
+
+## Entscheid Betreiber 29.09.: «Nur gratis, langsamer» — erster Schritt
+
+**Google-Gratis-Einträge, Klasse «Product page unavailable» (256 aktive, publizierte Produkte).** GEMESSEN: 40/40
+Stichproben laut Storefront kaufbar, Seiten HTTP 200. Was Googles Crawler sah, ist von hier nicht messbar.
+**Versuch mit Kontrollgruppe** (`automation/gfeed_nachpruefen.py`, 29.09. 05:17 UTC): Gruppe A (128) bekam den
+neutralen Tag `gfeed-nachpruefen-2909` (Produkt-Update → die App «Google & YouTube» reicht neu ein), Gruppe B (128)
+bleibt unverändert. Zurückgelesen: Tag gesetzt, Produkt ACTIVE + im Onlineshop. Auswertung erscheint automatisch als
+Zeile «GOOGLE-VERSUCH» im Keepalive, sobald `google_feedback_wache.py` neu gescannt hat. Wirkt A deutlich besser als B →
+dieselbe Massnahme für alle 1'078 Blocker-Produkte der zeitlichen Klassen («under review», «unavailable»).
