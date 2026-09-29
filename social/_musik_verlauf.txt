@@ -53,3 +53,4 @@
 2026-09-29T03:10:37.006Z	luxe-epic-anime.wav	23.25	gadget	cjreel-9BDA360E-DE48-4110-9C53-5B03DAAD9885	stimme:ja	azure:de-CH-JanNeural
 2026-09-29T03:12:02.687Z	luxe-orchestra.wav	15	kueche	cjreel-1356864306993565696	stimme:ja	azure:de-CH-JanNeural
 2026-09-29T04:26:23.630Z	luxe-orchestra.wav	18	haustier	cjreel-1759085260295385088	stimme:ja	azure:de-CH-JanNeural
+2026-09-29T04:27:57.466Z	luxe-adventure-uplift.wav	45.5	gadget	cjreel-CE45EEA3-DDF4-43AD-888F-79658DC973BA	stimme:ja	azure:de-CH-JanNeural
