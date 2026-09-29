@@ -6,6 +6,17 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🤝 «andere session lernt für dich»: Lehren der Lern-Session übernommen (20:15)
+Die Session lebt auf `origin/claude/selbststaendiges-lernen-h48e6m` (eigene Historie, keine gemeinsame Basis; letzter
+Commit 27.09. 19:59). Mein erster Blick fand sie NICHT: `git fetch origin claude/luxestyle-status-tztnn1` holt nur den
+eigenen Branch, erst ein voller `git fetch origin` (>120 s) zeigte die neuen Branches. **Übernommen:** 21 Vault-Notizen,
+`dropship/LERNEN-MCP-KONNEKTOREN-2026-09-27.md`, `tools/browser.mjs` (+ `tools/varianten_preis.mjs` lag schon da).
+**Nachgemessen:** Browser-Selbsttest 12/12, luxestyle.ch HTTP 200 in 390 px → CLAUDE.md-Satz «Cloud hat keinen Browser»
+korrigiert. **Verträglichkeit geprüft:** ihre Preisregel = max(heute, Zielpreis 38 % nach WELCOME10), nur heben;
+`preis_verlustschutz` hebt auch nur → kein Ping-Pong. **Ihre wichtigsten Befunde:** Import-Chargen tragen Faktor ≈1.41
+auf den EK (≈21 % Marge nach WELCOME10); «Taschenmesser 2× bestellt» war 2× erstattet — Verkäufer nur zählen, wenn
+bezahlt + erfüllt + ACTIVE; TikTok-Ads-Konnektor steht auf `connect_incomplete` (nur der Betreiber kann ihn abschliessen).
+
 ## 2026-09-29 · 💸 63 Verlustartikel kaufbar: Tagestor hielt einen toten Lauf 16 h für fertig (Verbesserungsrunde 19:55)
 **GEMESSEN:** Ampel «VERLUST: 63 kaufbar, nur Preis-Meldung» — live z. B. «Hundebett» CHF 81.90 bei EK 108.95,
 «Dampfkochtopf» 69.90 / 94.59, «Katzen-Kratzbaum» 33.90 / 48.56 (ACTIVE, CONTINUE): jeder Verkauf kostet Geld.

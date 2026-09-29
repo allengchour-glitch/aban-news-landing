@@ -287,7 +287,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 - **🌐 Browser-Agent (FEST, User 2026-06-12):** Der User hat **Brave + Playwright-MCP auf seinem PC-Claude**
   eingerichtet (Setup: `dropship/BROWSER-AGENT-SETUP.md`, Port 9222, Meta Business Suite eingeloggt).
-  **Cloud-Sessions haben KEINEN Browser** — für Browser-Aufgaben (IG/FB aufräumen, Web-UI-Klicks) den User
+  **✅ KORRIGIERT 27./29.09.: Cloud-Sessions HABEN einen Browser** — `tools/browser.mjs` (Chromium 141 + globales Playwright, vertraut per SPKI genau den Proxy-CAs; Selbsttest 12/12, luxestyle.ch HTTP 200 in 390 px, nachgemessen 29.09.). Nur Dienste mit Anmeldung (IG, TikTok, Konsolen) bleiben PC-/Handy-Weg. ~~Cloud-Sessions haben KEINEN Browser~~ — für Anmelde-Aufgaben (IG/FB aufräumen, Web-UI-Klicks) den User
   bitten, den Auftrag an seinen PC-Claude zu geben, ODER falls ein Browser-MCP in der Session auftaucht, direkt
   nutzen. **Dauerauftrag: IMMER maximal autonom arbeiten** — nicht fragen, machen; nur echte User-Klicks
   (Login/2FA, Löschen veröffentlichter Posts, Bezahlungen) klar benennen. **Bei Sperren/API-Lücken selbst
@@ -502,6 +502,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-29 · 🤝 **«andere session lernt für dich»: Branch `claude/selbststaendiges-lernen-h48e6m` (eigene Historie) übernommen — 21 Vault-Notizen + `LERNEN-MCP-KONNEKTOREN` + `tools/browser.mjs` (Cloud-Browser geht, 12/12); sie bepreist Haustier-/Schutzware auf 38 % Marge nach WELCOME10, nur heben (`tools/varianten_preis.mjs entscheid()`) → verträgt sich mit `preis_verlustschutz` (auch nur heben); echte Verkäufer = bezahlt + erfüllt + ACTIVE, Taschenmesser war 2× erstattet.** Fremde Branches mit `git fetch origin` (ohne Einzelnamen) finden → Journal 29.09.
 - 2026-09-29 · 💸 **63 Verlustartikel kaufbar (Hundebett 81.90 / EK 108.95): `preis_verlustschutz` starb 04:09 beim Neustart, das Schleifen-Tor las `tail -n 3` und fand das FERTIG vom Vortag → 16 h kein Nachholen; dieselbe Falle wie Fortura, aber für alle ~55 Tageswächter → START-Marke bei jedem Start + `letzter_lauf()`, Kanarienvögel 3/3, 2 tote Läufe nachgeholt.** Nach einem Fix alle gleichartigen Tore absuchen → Journal 29.09.
 - 2026-09-29 · 🧹 **«bis alles fix ist und sauber»: `google_kategorie_fein.py` füllt 1'424 leere Kanal-Produkte, verfeinert 376 «Clothing» + 2'949 «Electronics» (Positivliste der Zielzweige), 0 Fehler; «Shoes» ist bei Google Endknoten; 1'654 Leere ausserhalb = Kostüme (bewusst). Nebenfund: 19 Bruder-Anhänger in «Halsketten» → cat_tags + `schmuck_tag_heilen.py`.** Leere Regex-Alternative `||` trifft alles → `dropship/GOOGLE-KATEGORIE-FEIN-2026-09-29.md`
 - 2026-09-29 · 👗 **«google push?/noch mehr?»: 7'254 aktive bei Google nur «Clothing» (Aria sogar «Belts») → `google_kategorie_fein.py` (täglich, Pfade gegen Google-Taxonomie, Kinder/Kostüm aussen vor) ordnet 6'826 ein (Tops 3'747, Hosen, Jacken, Kleider, Röcke inkl. «Jupe» …), 0 Fehler; 16 Lieblinge präzisiert + neu eingereicht.** Trockenlauf je Zielklasse mit Stichprobe lesen → `dropship/GOOGLE-KATEGORIE-FEIN-2026-09-29.md`
