@@ -156,3 +156,7 @@
 15500910133633	unklar:farbe-unbekannt	2026-09-29	3-in-1 Glätteisen & Lockenstab für trockenes/nasses Haar
 15500911411585	uebersprungen-status	2026-09-29
 15500928319873	eu-sku-gesetzt:CJCD115354002BY	2026-09-29	Universal Ladegerät
+15500928385409	unklar:farbe-unbekannt	2026-09-29	Rapid Ladegerät
+15500956008833	unklar:farbe-unbekannt	2026-09-29	Lockenstab «New Cat Series»
+15500956074369	unklar:farbe-unbekannt	2026-09-29	Automatischer Lockenstab für langanhaltende Wellen
+15501007978881	eu-sku-gesetzt:CJJF150406602BY	2026-09-29	6-in-1 Lockenstab-Set mit Keramikaufsätzen

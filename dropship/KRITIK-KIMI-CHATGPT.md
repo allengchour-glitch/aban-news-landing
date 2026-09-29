@@ -31,3 +31,18 @@ ChatGPT: 20 Befunde. Nachgemessen:
 | 20 | «FERTIG» sagt nichts über fachlichen Erfolg | richtig, anderes Thema (Wächter-Artefakte) | offen, bewusst |
 
 Volltext ChatGPT: `dropship/_kritik/2026-09-29-aufseher-startmarke.md`.
+
+### Kimi (kimi-k3, 699 s im Streaming, 12 Befunde) — Volltext `dropship/_kritik/2026-09-29-aufseher-startmarke-kimi.md`
+| Kimi # | Befund | = ChatGPT | Messung / Urteil |
+|---|---|---|---|
+| 1 | `still_gestorben` unverankert | #5 | **beide unabhängig** → schon behoben |
+| 2 | `/proc/uptime` = Host | #13 | **beide unabhängig — und beide falsch**: gemessen Container (22 min) |
+| 9 | START-Namensraum | #2 | 4 Skripte, immer 1. Zeile → Regel notiert |
+| 6 | andere Startpfade schreiben keine Marke | #1 | stimmt für Handstarts; Regel: nur über den Aufseher starten |
+| 3 | 3 Nachholungen/Tag zu wenig | #17 | gilt nur für `still_gestorben`-Jobs (Fortura u. a.), nicht für die Schleife |
+| 4 | 20-h-Regel lässt Startzeiten driften | — | bekannt und gewollt («FERTIG gilt 20 h», 04.09.) |
+| 11 | FERTIG in fremdem Format → Dauer-Neustart | — | gemessen: 0 Zeilen in fremdem Format, 0 Wächter ≥ 3 Starts heute |
+
+**Lehre:** Zwei Modelle, die unabhängig dasselbe sagen, sind ein Grund zuerst zu PRÜFEN, kein Beweis: Beide behaupteten
+«/proc/uptime zeigt im Container den Host» — die Messung (1 Befehl) widerlegte es. Kimi fand nichts, was ChatGPT nicht
+auch fand, brauchte aber 7× so lange (699 s vs. 105 s) → Standard: beide parallel, ChatGPT-Antwort zuerst lesen.
