@@ -74,6 +74,53 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-28/29 (🐕 HUNDE SEITE 4 — ein 404 an der Kundenseite war ein STATUSFEHLER, kein Messfehler):**
+- **Auftrag:** Dauerauftrag / `/loop`, Seite 4 der Hundeklasse.
+- **✅ GEÄNDERT (live): 26 Produkte / 46 Varianten**, `userErrors` in allen drei Teilen leer.
+  Von 128 Varianten: **81 in Ordnung, 46 angehoben, 1 gemeldet, 0 ohne Einkaufspreis, 0 nicht-CHF.**
+  Band der angehobenen 20,9–37,9 PROZENT. **Die beste Seite der Hundeklasse bisher** — 63 PROZENT
+  waren schon in Ordnung (Seite 3: 36 PROZENT). Grösste Fälle: Hochliegendes Hunde-Bett mit Schirm
+  118.90 bei EK 84.50 → 154.90 · Gestreifter Camping-Bett 109.90/78.10 → 144.90 · Hochliegendes
+  Mesh-Hundebett 103.90/73.58 → 134.90 · Auto-Hundematte mit Stütze 2 Var. 93.90/66.85 → 119.90.
+- **🔴 DER WICHTIGSTE FUND KAM AUS DER NACHMESSUNG, NICHT AUS DER ABFRAGE: zwei Produkte lieferten
+  an der Kundenseite 404** — und das ist keine Drosselung (429 wäre „warte"). **Nachgesehen statt
+  vermutet: beide stehen auf `DRAFT`, `publishedAt: null`, in 0 Kanälen.** Die Abfrage
+  `title:hund* AND status:active` hatte sie trotzdem geliefert — **der Suchindex-Fehler vom
+  14.09., und die Nachmessung hat ihn gefunden, ohne dass ich danach gesucht habe.**
+  Gegenprobe über `nodes(ids:)` für alle 50: **genau 2 sind DRAFT, exakt die beiden 404er.**
+  Ihre Preise sind korrekt gesetzt (per `productVariant` nachgefragt: 154.90 und 144.90) —
+  **nur sieht sie kein Kunde.** **Lehre: ein 404 in `preis_nachmessen.mjs` ist zuerst eine Frage
+  an den Produktstatus, nicht ein Fehlschlag des Geräts.**
+- **✅ Damit 24 von 24 wirklich live geschalteten Produkten an der echten Kundenseite nachgemessen**,
+  Gegenprobe mit erfundenen Werten **0/3** (mit den echten 3/3).
+- **⛔ 1 VARIANTE NUR GEMELDET, und sie ist ein Lehrstück für die Regel je Variante:
+  Hundeschutzmatte.** Dasselbe Produkt, dieselbe Grösse 132×160 cm, zwei Farben — **Schwarz
+  EK 36.57, Orangerot EK 64.31.** Schwarz stand bei 51.90 (21,7 PROZENT) und wurde auf 69.90
+  gesetzt; Orangerot steht bei 34.90 und macht **−104,7 PROZENT** (Faktor 3,4) → gemeldet.
+  Ein Einkaufspreis, der bei gleicher Ware und gleicher Grösse fast das Doppelte beträgt, ist ein
+  Importfehler, über den ein Mensch entscheidet. **Damit sind es achtzehn Faktor-über-3-Fälle.**
+- **🔑 DIE DATEI-ABLAGE IST STEUERBAR, NICHT GLÜCK.** Dieselbe Abfrage wie auf Seite 3 kam diesmal
+  **inline** zurück — genau der Fall, der auf Seite 1 zum Abtippen zwang. **Die Abfrage mit MEHR
+  Feldern wiederholt** (`descriptionHtml`, `sku`, `createdAt`, `compareAtPrice`) → 103 708 Zeichen,
+  über der Grenze, das Werkzeug legt sie als Datei ab. Danach `jq` + Node, **null Abtippen.**
+  Wer die Datei will, fragt mehr ab.
+- **⚠️ MEINE EIGENE GEGENPROBE WAR ZUERST DEFEKT, nicht die Mutation.** Der Abgleich
+  „Mutation gegen Plan-CSV" meldete 46 gegen 37 Zeilen. Ursache: **neun Produkttitel enthalten ein
+  Komma** („Hochliegendes Hunde-Bett mit abnehmbarem Schirm, 36 Zoll"), und `awk -F,` zählt das
+  Komma im Feld mit — die Felder verrutschen, die Zeile fällt aus dem Filter. Mit einem echten
+  CSV-Leser: **46 gegen 46, exakt gleich.** Dieselbe Klasse wie die fehlende Wortgrenze bei `3to4`
+  und `/schal/`. Die Gegenprobe prüft jetzt sich selbst mit: ein erfundener Preis **muss** genau
+  eine Abweichung erzeugen (tut er).
+- **⚠️ DIE KLASSENGRÖSSE HAT SICH BEWEGT, und die gemerkte Zahl ist veraltet.** GEMESSEN heute:
+  `title:hund*` **1670 aktiv · 752 Entwürfe · 24 archiviert · 2446 gesamt**, und die **Summe
+  schliesst exakt** (Unsinn-Filter 0). Am 27.09. standen dort **1694 aktiv / 2351 gesamt**.
+  **Lehre: eine laufende Summe gegen eine gemerkte Gesamtzahl zu rechnen ist falsch** — verlässlich
+  ist die Seitenzahl (4 Seiten à 50 = 200 Produkte gesehen), nicht der Prozentsatz.
+- **📊 STAND: 200 Hundeprodukte gemessen (Seiten 1–4) → 124 Produkte / 441 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block4-2026-09-28.csv`. Cursor für Seite 5:
+  `eyJsYXN0X2lkIjoxNTQ1Mzc3MjE4NTk4NSwibGFzdF92YWx1ZSI6MTU0NTM3NzIxODU5ODV9`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-27, fünfte Runde (🐕 HUNDE SEITE 3 — die Antwort kam als DATEI, also null Abtippen):**
 - **Auftrag:** Dauerauftrag / `/loop`, Seite 3 der 1694 Hundeprodukte.
 - **🔑 DER GRÖSSTE UNTERSCHIED ZU DEN VORRUNDEN IST KEIN BEFUND, SONDERN EIN WEG: die Abfrageantwort
