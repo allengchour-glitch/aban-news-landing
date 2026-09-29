@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🖼️ Google Merchant: zu kleine Zusatzbilder, Motiv-Blocker, A/B für «unavailable» (06:10)
+- «Image too small» 23: Hauptbild jedes Mal ≥ 500 px, klein waren Zusatzbilder → Google prüft additional_image_link mit.
+  `bild_klein_fix.py` sah nur Position 1 → neue Klasse `bild_mini_entfernen.py`: Zusatzbilder < 250 px weg, nie Hauptbild,
+  nie Variantenbild (Sternzeichen-Anhänger: 9 Varianten-Minis wären sonst weg gewesen), URLs geloggt. 54 entfernt, Nachlauf 0.
+- «Inappropriate image» 439: Stichprobe 24 + Ledger-Abgleich (246 textfrei) → das Motiv selbst (Totenkopf, freizügig) —
+  kein Fall für Bildtausch. Nicht jede Google-Meldung ist ein Fehler, den man reparieren kann.
+- **Lehre:** Bei einer Bild-Meldung erst ALLE Bilder des Produkts messen; und Variantenbilder sind Teil der Kaufentscheidung —
+  jede Bild-Löschung prüft die Variantenbindung.
+
 ## 2026-09-29 · 🎯 «jeden tag ein verkauf machen» — Rechnung, Zählzeile, erster Gratis-Hebel (05:30)
 - GEMESSEN 30 T (nur Menschen): direkt 610/9/3/0, Google-Suche 123/5/3/1, Social 116/2/1/0 (Sitzungen/Warenkorb/Kasse/Kauf).
   Ziel 30/Monat braucht bei ~0,8 % rund 120 kaufbereite Sitzungen/Tag, heute ~4 aus der Suche → Faktor ~30.
@@ -17220,3 +17229,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🎨 **«mache alles»: Farbliste mit Doppelpunkt fehlte dem Wahlversprechen-Wächter (Grössen-Form seit 24.09., Farben nie) — 951 roh, 571 echt, Ausnahmen Anzahl-vor-«Farben»/Set-Titel (erste Fassung schützte Masse statt Paletten); Ratgeber Yogamatte + Nagellack live; Teetasse + Dampf-Entferner (Stecker unklar) aus Google; Moissanit manuell 5 → Smart 94 + 301.** Neue Regelform → sofort die Geschwister prüfen → Journal Nachtrag 86
 - 2026-09-25 · 🔁 **Ausverkauft-Entwürfe ohne Rückweg: `lagerstand_hygiene` las `first:100` (222 Bestand-0, das unkaufbare auf S. 3) und draftete, Fortura hebt Mengen nur an → 77 von 154 Entwürfen wieder lieferbar (Halloween-Perücken/Flügel), ohne EK (Nachtrag + Preisschutz nur ACTIVE) → Fall C Rückweg (Ledger/Tag/Klinge/Redirect/SKU-Zwilling/EK/Boden ≤2×), 73 zurück; «4 Aufseher» waren Unter-Shells (SID zählen).** Wer draftet, holt zurück → Journal Nachtrag 87
 - 2026-09-25 · 🔄 **Gedächtnis der anderen Sessions geladen (Diff ab merge-base mit main, sonst 400 Dateien Rauschen): 40 fehlende Lern-Dateien übernommen (Skill werbevideo, video_hook, LERNEN-*, Vault), Geheimnis-Scan 0; Versand 45 aktiv = Absicht (hält «ab 50» nach 10 %-Rabatt); Metricool-Plan der ads-Session postet IG+FB+Threads (Threads-Stopp!) und 6/12 Produkte waren im Juni schon auf IG → Betreiber-Entscheid.** Fremde Planer umgehen jedes eigene Ledger → vor Planung `getScheduledPosts` → Journal Nachtrag 88
+- 2026-09-25 · 📱 **IG-Profil «fix»: Profilraster schneidet Reels auf 3:4 (y 240–1680) + Kachelsymbol rechts oben → Kopf 200→250, Hook 350→400 (overlay/schnitt/promo_montage), Emoji im Bild = «□» → `ohne_emoji`; Lampenbild mit «LED multifunctional desk lamp» ging raus, `bildtext_pruefen` las 0 Wörter → `KACHELN=1` (Lampe 15, sauber ≤3) + zehnte Schicht im Bild-Poster (Queue 58: 1 Treffer).** Sichere Zone je Oberfläche; ein Detektor mit 0 braucht einen Positivfall → Journal Nachtrag 89
