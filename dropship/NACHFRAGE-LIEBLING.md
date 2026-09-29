@@ -27,3 +27,10 @@
 | y2k-harajuku-hoodie-mit-nieten-629700 | 1 | 1 | 1 | ✅ Tag |
 | smartes-raumklima-kraftvolle-kuhlung-einfach-per-a-1194795 | 1 | 1 | 1 | — DRAFT |
 | rollstuhl-fur-hunde-mit-hinterbein-lahmung-629100 | 1 | 1 | 1 | — DRAFT |
+
+## Google-Push 29.09. 17:50 UTC (Betreiber «google push?»)
+Alle 16 Lieblinge (11 Nachfrage + 5 gekauft) sind im Kanal «Google & YouTube» und haben keine Google-Meldung.
+Google-Kategorie präzisiert (Pfade gegen Googles Taxonomie geprüft): Sirène/Aria/Aurora → Dresses (Aria stand wegen «mit Gürtel»
+auf **Belts**; im Katalog nur dieser eine Fall von 139 «Gürtel»-Titeln), Nodo → Shoes, Provence → Outfit Sets, Leinenhemd →
+Shirts & Tops, Fleischwolf → Food Grinders & Mills, Hängematte → Hammocks (vorher leer). Danach alle 16 per Tag-Update neu
+eingereicht (`gfeed-anstupsen-…`, Ledger `_gfeed_anstupsen.tsv`).
