@@ -78,7 +78,14 @@ still_gestorben() {
   [ -f "$log" ] || return 1
   boot=$(( $(date +%s) - $(cut -d. -f1 /proc/uptime) ))
   [ "$(stat -c %Y "$log")" -lt "$boot" ] || return 1
-  tail -n 3 "$log" | grep -qE "FERTIG|PAUSE" && return 1
+  # 29.09.: nur Zeilen NACH der letzten «START »-Marke zählen. Mit tail -n 3 galt ein Lauf, der nach 1 Zeile starb,
+  # als fertig, weil darüber noch das FERTIG vom Vortag stand (Fortura-Bestand 04:13 gestorben, 11 h kein Nachholen).
+  # Logs ohne Marke behalten das alte Verhalten.
+  if grep -q "^START " "$log"; then
+    awk '/^START /{buf=""} {buf=buf $0 "\n"} END{printf "%s", buf}' "$log" | grep -qE "FERTIG|PAUSE" && return 1
+  else
+    tail -n 3 "$log" | grep -qE "FERTIG|PAUSE" && return 1
+  fi
   z="/tmp/_still_$(basename "$log" .log)_$(date -u +%Y%m%d)"
   n=$(cat "$z" 2>/dev/null); case "$n" in (''|*[!0-9]*) n=0 ;; esac
   [ "$n" -lt 3 ] || return 1

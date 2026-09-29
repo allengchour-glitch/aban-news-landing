@@ -10,6 +10,7 @@ cd "$(dirname "$0")/.." || exit 1
 # Gescheiterter Lauf → Zeitstempel so zurückdrehen, dass der Keepalive in 2 h erneut startet (28.09.: rc=2 wegen
 # fehlendem Shopify-Zugang blockierte den nächsten Versuch 20 h lang, Bestand 3 T alt, obwohl der Zugang längst zurück war).
 nochmal() { touch -d "@$(( $(date +%s) - 72000 + 7200 ))" /tmp/fortura_bestand.stamp; }
+echo "START $(date -u +%FT%TZ): Fortura-Bestand"   # Marke für still_gestorben() im Aufseher
 NEU=/tmp/fortura_feed_neu.csv
 if ! bash automation/fortura_fetch_feed.sh "$NEU"; then
   echo "PAUSE: Feed-Abruf gescheitert (Zugang in /tmp/fortura_env.sh?) — nichts geschrieben"; nochmal; exit 2

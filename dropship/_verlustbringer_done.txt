@@ -1748,3 +1748,5 @@ gid://shopify/Product/15458844836225	2026-09-28T17:21Z	schon-DRAFT	15.90	21.93	G
 gid://shopify/Product/15458765865345	2026-09-28T17:21Z	kein-verlust-live	32.90	22.92	Holz-Uhr
 gid://shopify/Product/15484613558657	2026-09-28T17:21Z	schon-DRAFT	14.90	20.92	Mikrofaser Badetuch, ultrafein & saugfähig
 gid://shopify/Product/15485425779073	2026-09-28T17:21Z	schon-DRAFT	15.90	21.88	Sofa-Kissen aus Eisseide
+gid://shopify/Product/15495214236033	2026-09-29T15:29Z	draft	19.90	846.54	Katzen-Kletterwand aus Massivholz
+gid://shopify/Product/15494855426433	2026-09-29T15:29Z	draft	44.90	389.89	Katzen-Kratzbaum «Space Capsule»
