@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 👯 Doppelzeilen in der Reel-Queue (Verbesserungsrunde 04:25)
+- GEMESSEN: 5 IDs doppelt in `reels_seed.csv`, 2 davon beide `ready`; auch das Ledger `_cj_reel_gebaut.txt` doppelt.
+- Ursache 1: `inCsv = /^cjreel-(\d+)/` — UUID-IDs fielen durch jedes «schon in der Queue?». Ursache 2: `appendReel` prüfte nie.
+- Fix: Regex `^cjreel-[^,\n]+`, `appendReel` liest vor dem Anhängen neu; Säuberer `dup-zeile-skip` (mehrfach ready → erste
+  bleibt; ready + gepostet → alle ready markiert), zeilengenau über Textposition, Zeilenzahl-Prüfung. 2 markiert.
+- **Lehre:** Ein ID-Muster, das nur eine ID-Form kennt (Ziffern), ist für die andere Form (UUID) blind — dieselbe Klasse wie
+  «Ziffern am Ende = CJ-Nummer» (26.09.). Bei jedem ID-Regex die Menge der echten IDs zählen: wie viele passen NICHT?
+- Weiter gemessen: Nachschub gesund (15 neue Reels über Nacht), IG/FB 5,3 h, TikTok 4,3 h, YouTube 8,2 h im Takt.
+
 ## 2026-09-29 · 🎲 Jury-Streuung: Mehrheit aus 3 im Grenzband (Verbesserungsrunde 00:25)
 - GEMESSEN: 8 Grenzfälle (Schnitt 6–8) je 3× → 2 kippten, Schnitt bis 3,3 Punkte auseinander. Temperatur 0,1 hilft nicht:
   die Standbilder sind identisch, das Modell urteilt trotzdem verschieden.
@@ -17198,3 +17207,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🏆 **«weltklasse»: Halloween-Reihe stand auf Startseiten-Platz 17 von 25 (Rotation setzte Katalog, nie Position) → Regel 6: Saison-Reihe im Fenster direkt unter Herbst (live 17→5); «10 Dubletten in Halloween» waren längst DRAFT (Kollektion zählt Entwürfe), aktiv nur 1 SKU-Paar — mit FREMDER Variante (Falbala als 140 cm unter Hexen-Titel) → DRAFT + 301.** Saisonal = Inhalt UND Platz → Journal Nachtrag 83
 - 2026-09-25 · 🔫 **Waffen-Wächter prüfte seit Grind-Pause 1 Seite/Tag (SEIT 3 Tage, `/tmp/export.jsonl` ohne Text 0/49'892) → Wochen-Vollrunde live (498 S.): Feuerzeug in Pistolenform + Aufnahme-Stift aus Google-Kanal, 3 Fehltreffer gesperrt (MP5-Autoradio ×2, Seifenblasen-MP); Vollrunden-Stempel erst nach Exit 0 (auch Medizin).** «Wie viele Seiten sah der letzte Lauf?» → Journal Nachtrag 85
 - 2026-09-25 · 🎨 **«mache alles»: Farbliste mit Doppelpunkt fehlte dem Wahlversprechen-Wächter (Grössen-Form seit 24.09., Farben nie) — 951 roh, 571 echt, Ausnahmen Anzahl-vor-«Farben»/Set-Titel (erste Fassung schützte Masse statt Paletten); Ratgeber Yogamatte + Nagellack live; Teetasse + Dampf-Entferner (Stecker unklar) aus Google; Moissanit manuell 5 → Smart 94 + 301.** Neue Regelform → sofort die Geschwister prüfen → Journal Nachtrag 86
+- 2026-09-25 · 🔁 **Ausverkauft-Entwürfe ohne Rückweg: `lagerstand_hygiene` las `first:100` (222 Bestand-0, das unkaufbare auf S. 3) und draftete, Fortura hebt Mengen nur an → 77 von 154 Entwürfen wieder lieferbar (Halloween-Perücken/Flügel), ohne EK (Nachtrag + Preisschutz nur ACTIVE) → Fall C Rückweg (Ledger/Tag/Klinge/Redirect/SKU-Zwilling/EK/Boden ≤2×), 73 zurück; «4 Aufseher» waren Unter-Shells (SID zählen).** Wer draftet, holt zurück → Journal Nachtrag 87
