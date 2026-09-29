@@ -74,6 +74,68 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-29 (🛒 ETWAS ZUM VERKAUFEN GEBAUT — und der Katalog JEDES Shopify-Shops ist öffentlich):**
+- **Auftrag des Users:** „nutze das ganze internet für info · eine app oder irgendetwas entwickeln
+  programmieren zum verkaufen · surfe überall für infos." Die Hunde-Schleife wurde dafür angehalten.
+- **🔑 DER BEFUND, AUF DEM ALLES STEHT, IST GEMESSEN: `https://<shop>/products.json` liefert auf
+  JEDEM Shopify-Shop HTTP 200** — geprüft an luxestyle.ch, gymshark.com, allbirds.com,
+  www.waterdrop.de. Darin: Titel, Optionen **mit Werten**, alle Varianten mit Preis,
+  `compare_at_price`, SKU und Bilder. Kein Schlüssel, keine Anmeldung, Shopifys eigener Endpunkt.
+  **Damit lässt sich ein Katalogfehler bei einem FREMDEN Shop belegen, ohne dass der Händler
+  irgendetwas freigibt** — und genau das löst das Problem, an dem laut Recherche die meisten neuen
+  Werkzeuge sterben. ⚠️ **Nicht** enthalten ist der Einkaufspreis; eine Marge braucht weiter Zugang.
+- **📉 DIE RECHERCHE HAT DIE RICHTUNG ENTSCHIEDEN, nicht die Produktidee.** QUELLE (Auswertung von
+  über 1000 KI-gebauten Geschäften): **70 PROZENT bleiben unter 1000 im Monat, 1–2 PROZENT kommen
+  über 50 000** — der Engpass ist die Verteilung, nicht das Bauen. Das deckt sich exakt mit der
+  eigenen Messung vom 13.06. („mehr Produkte/Posts/Videos = 0-Hebel, bewiesen"). Also wurde bewusst
+  etwas gebaut, dessen Verteilung **eingebaut** ist: ein Prüfer, den man auf den Shop eines
+  Interessenten richten kann, bevor dieser irgendetwas installiert.
+- **🛠️ GEBAUT, 100 Prüfungen grün:** `functions/_katalog_audit.mjs` (die Prüfer, **genau einmal**),
+  `tools/katalog_audit.mjs` (Kommandozeile, **73 Selbsttests**), `functions/api/shop-check.js`
+  (öffentliche Cloudflare-Pages-Funktion), `functions/_shop-check.test.mjs` (**27 Prüfungen**,
+  davon die Adressprüfung) und die Seite **`shop-check.html`**. In der CI eingehängt
+  (`hype-filter-test.yml`), im Skill `werkzeugkasten` eingetragen.
+- **Gefunden werden:** rohe Lieferantentexte im Variantennamen (`Set 3-GreenSXL`,
+  `XCS00525070101`) · englische Farbwerte im deutschsprachigen Shop · **Option heisst „Farbe",
+  enthält aber keine Farben** · durchgestrichener Preis nicht höher als der Preis (in der Schweiz
+  **PBV-relevant**, QUELLE: Selbstvergleich nur wenn der alte Preis doppelt so lange galt, max.
+  zwei Monate) · gleiche Ware zu verschiedenen Preisen · Produkte ohne Bild · doppelte Titel.
+- **🔴 DIE GEGENPROBE IST WERTVOLLER ALS JEDER SELBSTTEST, und sie macht das Gerät erst
+  verkäuflich: gymshark.com 500 Produkte → 0 Befunde · allbirds.com 250 → 0 · waterdrop.de 169 →
+  14 (stichprobenweise als echt bestätigt) · luxestyle.ch 1000 → 91.** Ein Prüfer, der überall
+  ausschlägt, misst nichts. Dieser unterscheidet einen gepflegten Katalog von einem, in den
+  Lieferantendaten roh hineingelaufen sind — und **genau dieser Satz ist der Verkaufssatz.**
+- **⚠️ DREI ECHTE FEHLALARME KAMEN ERST AN FREMDEN SHOPS HERAUS**, jeder an der Kundenseite
+  nachgesehen statt geglaubt: (1) der **Messschieber** hat Varianten `2 Stück`/`3 Stück`/`5 Stück`
+  — Mengenrabatt, kein Defekt; (2) der **Rizinusöl-Wickel** hat eine ZWEITE Option
+  (`Bauchwickel` gegen `Set Bauch + Nacken`); (3) **`sandrot` und `rasengrün` SIND Farben**, meine
+  Prüfung verlangte aber einen Wortanfang — **die Wortgrenzen-Falle in umgekehrter Richtung, zu
+  streng statt zu locker.** Nach den Korrekturen fiel eine Kategorie **von 80 auf 10** — die erste
+  Zahl bestand zu sieben Achteln aus Fehlalarmen. **Hätte ich sie gemeldet, wäre der Bericht
+  Müll gewesen.**
+- **⚠️ Und ein Absturz, der bei einem Produkt für Fremde untragbar ist:** eine nicht auflösbare
+  Adresse (`de.mrmarvis.com`) riss den Lauf mit einem Stacktrace ab. Jetzt: Klartext und Exit 2,
+  als Test festgehalten. Die Adressprüfung weist IP-Adressen, `localhost` und interne Endungen ab,
+  **damit der Rand dieses Kontos keine Abruf-Maschine auf Zuruf wird.**
+- **💰 DIE BEZAHLSCHIENE STEHT BEREITS — das war der wichtigste Fund für „womit verkaufen".**
+  GEMESSEN: `functions/_pro.mjs` validiert **Lemon-Squeezy**-Lizenzschlüssel (Monat/Jahr), **fünf**
+  Edge-Funktionen benutzen sie schon, der Laden ist `abannews.lemonsqueezy.com`, Preisstufen
+  CHF 19/39/49 in `produkte.html`. Es musste also **keine Zahlung gebaut werden.** Modell: Zahlen
+  und drei Belege je Fehlerart **gratis**, die vollständige Liste hinter **aban Pro**.
+- **⛔ Der naheliegende Weg war der falsche, und das ist gemessen:** ein digitales Produkt im
+  bestehenden Shopify-Shop zu verkaufen geht **nicht** — `test-digital-products-connection` meldet,
+  dass die Digital-Products-App bei LuxeStyle **gar nicht installiert** ist. Dazu passt die
+  Zielgruppe nicht (Schweizer Tierbedarf-Kundschaft kauft kein Händler-Werkzeug).
+- **⚠️ EHRLICH ZUR KONKURRENZ:** die Kategorie ist **nicht leer** — **CleanShelf** im Shopify App
+  Store prüft bereits „language and duplicate products" (QUELLE). Der Unterschied ist **keine
+  Installation nötig**, also auf fremde Shops anwendbar. Preisanker am Markt (QUELLE): 39 USD für
+  ein werkzeuggestütztes Audit, 150 USD von Hand, 500–2500 bei Agenturen.
+- **🟡 NUR DER USER:** (1) die Seite ist erst nach dem Merge nach `main` live (Cloudflare Pages
+  baut von `main`); (2) entscheiden, ob der volle Bericht in aban Pro liegt oder als Einzelkauf
+  (CHF 39) angelegt wird; (3) ob und wen man damit ansprechen will — **ich habe niemanden
+  kontaktiert**, das Werkzeug liest nur öffentliche Daten und schreibt nichts.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-28/29 (🐕 HUNDE SEITE 4 — ein 404 an der Kundenseite war ein STATUSFEHLER, kein Messfehler):**
 - **Auftrag:** Dauerauftrag / `/loop`, Seite 4 der Hundeklasse.
 - **✅ GEÄNDERT (live): 26 Produkte / 46 Varianten**, `userErrors` in allen drei Teilen leer.
