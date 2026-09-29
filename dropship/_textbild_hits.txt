@@ -16111,3 +16111,4 @@ gid://shopify/Product/15508448084353	107->3	Sportliche Herrenuhr mit vielen Funk
 gid://shopify/Product/15508480360833	22->0	Intelligenter Futterautomat mit Keramiknapf
 gid://shopify/Product/15510317826433	10->0	Handgemachte Nagel-Patches Schwarz-Weiss
 gid://shopify/Product/15510326608257	8->0	Leichter Outdoor Mini-Rucksack
+gid://shopify/Product/15510925574529	23->0	Plüschtier Karotte – abnehm- & waschbar
