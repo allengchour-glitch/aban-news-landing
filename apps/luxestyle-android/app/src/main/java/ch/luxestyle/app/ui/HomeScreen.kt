@@ -232,7 +232,7 @@ private fun Hero(season: String, onClick: () -> Unit) {
             ),
         )
         Column(Modifier.align(Alignment.BottomStart).padding(22.dp)) {
-            Text("${season.uppercase()} · SCHWEIZER SHOP", style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.9f))
+            Text("${season.uppercase()} ${java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)} · NEUE STÜCKE", style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.9f))
             Spacer(Modifier.height(8.dp))
             Text("Premium-Style.\nSchweizer Shop.", style = MaterialTheme.typography.displaySmall, color = Color.White)
             Spacer(Modifier.height(16.dp))

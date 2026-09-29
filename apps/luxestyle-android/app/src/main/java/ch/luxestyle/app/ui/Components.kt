@@ -239,7 +239,7 @@ fun ProductTile(
                 Badge("−$it %", LocalLuxe.current.sale, Modifier.align(Alignment.TopStart).padding(8.dp))
             }
             HeartButton(liked, onLike, Modifier.align(Alignment.TopEnd).padding(6.dp))
-            card.quickVariant?.let { QuickAdd(card, it, Modifier.align(Alignment.BottomEnd).padding(8.dp)) }
+            if (card.available) QuickAdd(card, Modifier.align(Alignment.BottomEnd).padding(8.dp))
             if (!card.available) {
                 Box(
                     Modifier.align(Alignment.BottomStart).padding(8.dp).clip(Radius.Small)
@@ -263,17 +263,25 @@ fun ProductTile(
     }
 }
 
-/** Ein Tipp legt Produkte mit nur einer Ausführung direkt in den Warenkorb. */
+/**
+ * „+" auf jeder lieferbaren Karte: nur eine Ausführung → direkt in den Warenkorb;
+ * sonst öffnet das Kauf-Blatt mit Grösse und Farbe (nie ungefragt „S").
+ */
 @Composable
-private fun QuickAdd(card: ProductCard, variantId: String, modifier: Modifier) {
+private fun QuickAdd(card: ProductCard, modifier: Modifier) {
     val shop = LocalShop.current
     val nav = LocalNav.current
     val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
     var busy by remember { mutableStateOf(false) }
+    var sheet by remember { mutableStateOf(false) }
+    if (sheet) QuickBuy(card.handle) { sheet = false }
+    val variantId = card.quickVariant
     Box(
-        modifier.size(36.dp).clip(CircleShape).background(MaterialTheme.colorScheme.primary)
+        // 40 dp sichtbar, Tippfläche durch das Innenpolster der Karte grösser
+        modifier.size(40.dp).clip(CircleShape).background(MaterialTheme.colorScheme.primary)
             .clickable(enabled = !busy, role = Role.Button, onClickLabel = "${card.title} in den Warenkorb") {
+                if (variantId == null) { sheet = true; return@clickable }
                 busy = true
                 scope.launch {
                     runCatching { shop.cart.add(variantId) }

@@ -123,7 +123,12 @@ private fun Department(top: MenuItem) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            DepartmentBanner(top, top.image ?: images[top.collectionHandle]) { top.collectionHandle?.let { nav.collection(it, top.title) } }
+            // Drei Unterkategorien nebeneinander statt des ersten Produkts der Kollektion –
+            // das war z. B. bei Schmuck ein Fitnessarmband auf Weiss, im Breitformat eine leere Fläche.
+            val collage = top.children.mapNotNull { c -> c.collectionHandle?.let { images[it] } }.take(3)
+            DepartmentBanner(top, if (collage.size == 3) collage else listOfNotNull(top.image ?: images[top.collectionHandle])) {
+                top.collectionHandle?.let { nav.collection(it, top.title) }
+            }
         }
         top.children.forEach { child ->
             item(key = child.url) {
@@ -134,12 +139,16 @@ private fun Department(top: MenuItem) {
 }
 
 @Composable
-private fun DepartmentBanner(top: MenuItem, image: Image?, onClick: () -> Unit) {
+private fun DepartmentBanner(top: MenuItem, pictures: List<Image>, onClick: () -> Unit) {
     Box(
         Modifier.fillMaxWidth().aspectRatio(2.1f).clip(Radius.Card).background(LocalLuxe.current.card)
             .clickable(role = Role.Button, onClickLabel = "Alles aus ${top.title}", onClick = onClick),
     ) {
-        image?.let { AsyncImage(it.sized(720), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
+        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+            pictures.forEach {
+                AsyncImage(it.sized(if (pictures.size == 1) 720 else 300), null, contentScale = ContentScale.Crop, modifier = Modifier.weight(1f).fillMaxHeight())
+            }
+        }
         Box(Modifier.fillMaxSize().background(Brush.verticalGradient(0.3f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.6f))))
         Row(
             Modifier.align(Alignment.BottomStart).fillMaxWidth().padding(14.dp),
@@ -160,8 +169,10 @@ internal fun SubTile(item: MenuItem, image: Image?, onClick: () -> Unit) {
         Modifier.clip(Radius.Small).clickable(role = Role.Button, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box(Modifier.fillMaxWidth().aspectRatio(1f).clip(Radius.Card).background(LocalLuxe.current.card)) {
-            image?.let { AsyncImage(it.sized(300), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
+        Box(Modifier.fillMaxWidth().aspectRatio(1f).clip(Radius.Card).background(LocalLuxe.current.card), contentAlignment = Alignment.Center) {
+            if (image != null) AsyncImage(image.sized(300), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+            // Ohne Bild keine leere Fläche: Anfangsbuchstabe in Markenfarbe
+            else Text(shortLabel(item.title).take(1), style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.secondary)
         }
         Spacer(Modifier.height(6.dp))
         Text(

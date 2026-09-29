@@ -174,6 +174,15 @@ class DeliveryWindowTest {
         assertEquals("Lieferung ca. 30. Sept.–14. Okt. (10–20 Werktage)", deliveryWindow(html, day(2026, 9, 16)))
         assertNull(deliveryWindow("<p>Kein Hinweis</p>", day(2026, 9, 16)))
     }
+
+    @Test
+    fun warenkorbZeigtDasLangsamsteStück() {
+        val a = deliveryDays("<p>Lieferung 7–12 Tage</p>")!!
+        val b = deliveryDays("<p>Lieferung 10–20 Werktage</p>")!!
+        assertEquals(DeliveryDays(10..20, true), slowest(listOf(a, b)))
+        assertEquals(a, slowest(listOf(a)))
+        assertNull(slowest(emptyList()))
+    }
 }
 
 class CartSuggestionTest {

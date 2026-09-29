@@ -35,14 +35,28 @@ for (const f of files) {
   content.push({ type: 'image_url', image_url: { url: `data:image/jpeg;base64,${b64}`, detail: 'low' } });
 }
 
+// Gestreamt: Denk-Modelle (z. B. kimi-k3) brauchen oft über 5 Minuten; ohne Stream bricht Node
+// nach 300 s ohne Antwort-Kopf ab (UND_ERR_HEADERS_TIMEOUT).
 const r = await fetch(`${P.base}/chat/completions`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${KEY}` },
-  body: JSON.stringify({ model: MODEL, messages: [{ role: 'user', content }] }),
+  body: JSON.stringify({ model: MODEL, stream: true, messages: [{ role: 'user', content }] }),
 });
-const j = await r.json().catch(() => ({}));
-const text = j?.choices?.[0]?.message?.content || '';
-if (!text) { console.error(`${MODEL}: keine Antwort (${r.status}) ${JSON.stringify(j).slice(0, 400)}`); process.exit(1); }
+if (!r.ok) { console.error(`${MODEL}: keine Antwort (${r.status}) ${(await r.text()).slice(0, 400)}`); process.exit(1); }
+let text = '';
+let buf = '';
+const dec = new TextDecoder();
+for await (const chunk of r.body) {
+  buf += dec.decode(chunk, { stream: true });
+  let nl;
+  while ((nl = buf.indexOf('\n')) >= 0) {
+    const line = buf.slice(0, nl).trim();
+    buf = buf.slice(nl + 1);
+    if (!line.startsWith('data:') || line === 'data: [DONE]') continue;
+    try { text += JSON.parse(line.slice(5)).choices?.[0]?.delta?.content || ''; } catch { /* Teilzeile */ }
+  }
+}
+if (!text) { console.error(`${MODEL}: leere Antwort`); process.exit(1); }
 
 const md = `# ${P.name}-Bewertung der LuxeStyle-App\n_${new Date().toISOString()} · ${MODEL} · ${files.length} Bildschirme_\n\n${text}\n`;
 fs.writeFileSync(out, md);
