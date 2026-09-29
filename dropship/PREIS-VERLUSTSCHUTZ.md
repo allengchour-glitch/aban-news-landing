@@ -1,35 +1,35 @@
-# Preis-Verlustschutz — scharf 2026-09-28 07:26 UTC
+# Preis-Verlustschutz — scharf 2026-09-29 20:21 UTC
 
 Regel: Preis ≥ Mindestpreis bei **25% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **377** · Varianten gehoben: **2958** · gesperrt (Faktor > 2.0): 28
-- Median-Faktor der Hebungen: 1.24× · Varianten ohne EK (nicht geprüft): 25225
-- geschrieben: 377 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **2149** · Varianten gehoben: **19425** · gesperrt (Faktor > 2.0): 10
+- Median-Faktor der Hebungen: 1.27× · Varianten ohne EK (nicht geprüft): 1339
+- geschrieben: 2149 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Festlicher Patchwork-Rock in Rot | 22.90 | 16.91 | **24.90** | 1.09× |
-| Faltbarer Untersetzer mit Sonnenblumenmuster | 16.90 | 22.22 | **31.90** | 1.89× |
-| Midi-Rock mit elastischem Bund | 28.90 | 20.47 | **29.90** | 1.03× |
-| Vintage-Leopardenprint Midi-Kleid | 21.90 | 18.91 | **26.90** | 1.23× |
-| Mädchenschuhe mit Schleife und Strass | 16.90 | 12.92 | **18.90** | 1.12× |
-| Patchwork Plaid Minirock für Damen | 29.90 | 21.90 | **31.90** | 1.07× |
-| Yoga Lavendel Aromatherapie Brenner | 15.90 | 18.68 | **26.90** | 1.69× |
-| Mid-Langer Leinenrock für Damen | 18.90 | 13.28 | **19.90** | 1.05× |
-| Staubdichte Cartoon Aufbewahrungsbox | 15.90 | 13.64 | **19.90** | 1.25× |
-| Elegantes Vintage Samtkleid mit Meerjungfrauen-S | 21.90 | 15.81 | **22.90** | 1.05× |
-| Wein- und Sektgläser-Organizer, 8L | 19.90 | 22.22 | **31.90** | 1.60× |
-| Dunkelroter A-Linien Tellerrock mit Schottenmust | 22.90 | 18.37 | **26.90** | 1.17× |
-| Damen Outdoor Sport Leggings – Blickdicht | 19.90 | 14.07 | **20.90** | 1.05× |
-| Tutu-Rock aus 6-lagigem Tüll | 19.90 | 14.86 | **21.90** | 1.10× |
-| Vielseitiges Denim Etuikleid mit A-Linie | 19.90 | 14.56 | **20.90** | 1.05× |
-| Workwear Chic Midi-Rock mit Tunnelzug | 23.90 | 17.06 | **24.90** | 1.04× |
-| Fransen-Midirock im Heavy-Industry-Stil | 29.90 | 21.87 | **31.90** | 1.07× |
-| High-Waist Jupe im Sticky-Rice-Stil | 16.90 | 13.46 | **19.90** | 1.18× |
-| Eleganter Satin-Midi-Rock für Damen | 17.90 | 13.22 | **18.90** | 1.06× |
-| Half-Zip Pullover im Koreanischen Stil | 21.90 | 19.05 | **27.90** | 1.27× |
-| Ablage für Räucherstäbchen «Tea Room» | 15.90 | 13.54 | **19.90** | 1.25× |
-| Britische Lederstiefeletten für Herren | 27.90 | 25.45 | **36.90** | 1.32× |
-| Color-Block Pullover mit Kettenmuster | 23.90 | 18.18 | **25.90** | 1.08× |
-| Hochleistungs-Backofenreiniger | 14.90 | 10.50 | **15.90** | 1.07× |
-| Edler Strickpullover mit halblangem Rollkragen | 16.90 | 14.20 | **20.90** | 1.24× |
+| Elektrischer Weinflaschenöffner mit Zubehör | 16.90 | 19.27 | **27.90** | 1.65× |
+| Midilangarm-Strickkleid für Damen | 19.90 | 15.83 | **22.90** | 1.15× |
+| Tragbarer Gasherd für Camping & Picknick | 49.90 | 42.03 | **59.90** | 1.20× |
+| Runder Holzkohle-Grill für Zuhause & Gastro | 92.90 | 95.82 | **134.90** | 1.45× |
+| Damen Strickkleid mit V-Ausschnitt und Schleife | 20.90 | 16.52 | **23.90** | 1.14× |
+| Faltbarer Hosen-Organizer, mehrlagig | 14.90 | 11.72 | **16.90** | 1.13× |
+| Bedrucktes Henley-Shirt mit Knopfleiste & Raw-He | 19.90 | 14.91 | **21.90** | 1.10× |
+| Magnetisiergerät | 14.90 | 12.03 | **17.90** | 1.20× |
+| Princess Sonnenschirm mit Spitze | 16.90 | 12.91 | **18.90** | 1.12× |
+| V-Ausschnitt Spitzenkleid mit Blumenmuster | 26.90 | 19.20 | **27.90** | 1.04× |
+| Keramik Haarglätter & Lockenstab | 19.90 | 16.37 | **23.90** | 1.20× |
+| Drehmomentschlüssel-Set für hohe Präzision | 109.90 | 85.26 | **119.90** | 1.09× |
+| Elegantes Etuikleid mit Volantsaum | 26.90 | 21.17 | **30.90** | 1.15× |
+| Profi-Haarschneidemaschine mit LCD-Anzeige | 29.90 | 27.77 | **39.90** | 1.33× |
+| Industrie-Drehmomentschlüssel-Reparaturset | 46.90 | 40.21 | **56.90** | 1.21× |
+| One-Shoulder Halterneck-Kleid | 25.90 | 18.59 | **26.90** | 1.04× |
+| Multifunktionaler Keramik-Haarstyling-Kamm | 17.90 | 14.63 | **20.90** | 1.17× |
+| Haarschneider mit LCD-Display | 46.90 | 40.16 | **56.90** | 1.21× |
+| 3-in-1 Multifunktions-Walzwerk für Goldschmiede | 142.90 | 109.00 | **152.90** | 1.07× |
+| Reise-Nähset in praktischer Zipper-Tasche | 15.90 | 11.65 | **16.90** | 1.06× |
+| Haarglätter mit integriertem Kamm | 26.90 | 23.44 | **33.90** | 1.26× |
+| Automatischer Lockenstab Rose Tube Spiral | 27.90 | 25.13 | **35.90** | 1.29× |
+| Glätteisen & Lockenstab 2-in-1 mit Keramikplatte | 20.90 | 18.60 | **26.90** | 1.29× |
+| Baumwollkordel Deko-Wandbehang | 56.90 | 47.51 | **66.90** | 1.18× |
+| Lockenstab mit Farboptionen | 40.90 | 35.41 | **49.90** | 1.22× |

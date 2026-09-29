@@ -247,10 +247,3 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Edelstahl-Schmuck für Herren 2026: Der Guide für hypoallerge](/blogs/ratgeber/edelstahl-schmuck-fur-herren-2026-der-guide-fur-hypoallergene-ketten-armbander) | 0 |
 | [Beauty-Routine 2026: Die 5 Essentials für strahlende Haut](/blogs/ratgeber/beauty-routine-2026-die-5-essentials-fur-strahlende-haut) | 0 |
 
-## Verlinktes Produkt ist ausverkauft (aktiv, aber Bestand 0 bei DENY)
-
-Die Produktseite sagt «Ausverkauft», der Ratgeber wirbt weiter. Ware nachlegen, Karte tauschen oder den Link auf die Kollektion umbiegen.
-
-| Ratgeber | Produkt |
-|---|---|
-| [Halloween-Deko selber machen: 10 Ideen für dr](/blogs/ratgeber/halloween-deko-selber-machen-10-ideen-ratgeber) | [Skelett beweglich](/products/skelett-beweglich-fga904874) |
