@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 🏷️ LX-Handkuratierung: fast selbst gedraftet, was der Betreiber entscheidet (Verbesserungsrunde 16:25)
+- GEMESSEN: Kristall-Set (`LX-23-…`) = einzige Produktseite der Woche mit Warenkorb + Kasse; 13 aktive LX-Slugs ohne
+  Quelle, 0 Bestellungen je; `ohne_lieferantenref_guard` liess `lx-` pauschal als Quelle gelten → nicht einmal gemeldet.
+- GETAN: `lx-` gilt nur noch als Bündel (`LX-BUNDLE-`, `LXSCH-GIFT-`); Slugs landen in der täglichen Meldung.
+  Mein erster Entwurf draftete sie — zurückgenommen VOR dem Schreiben, weil das Journal vom 28.08. festhält:
+  Bewertungssieger darunter, pauschales Draften = Betreiber-Entscheid. Frage an den Betreiber gestellt.
+- **Lehre:** Vor einer Massenänderung das Journal nach der Klasse durchsuchen (`gedaechtnis.py`), nicht nur das Repo nach
+  der Quelle — eine frühere Session kann die Entscheidung ausdrücklich dem Betreiber vorbehalten haben.
+
 ## 2026-09-29 · 🪦 «Still gestorben» sah das FERTIG vom Vortag (Keepalive 15:26)
 - GEMESSEN: Ampel «⚠️ FORTURA-BESTAND 1 T alt». Der Tageslauf 04:13 schrieb EINE Zeile («Feed geladen») und starb beim
   Container-Neustart. `still_gestorben()` im Aufseher prüfte `tail -n 3` auf FERTIG|PAUSE — darüber standen noch die
@@ -17262,3 +17271,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-25 · 🗑️ **«lösche die post die nicht passen automatisch»: `ig_aufraeumen.mjs` (TEXT ≥5 W nur Lieferantenbild, PRODUKT nur per ID, DOPPEL behält den besten; >500 Aufrufe/<6 h nie, 5/Tag, Abbruch bei Meta-Sperre, Listing-Rücklesen), Aufseher täglich; 3 Trockenläufe fanden 3 Fehlerklassen (Handle≠gelöscht → Blazer Roma wäre weg gewesen; eigene Gestaltungen als «Text»; Stoffmuster = 4 Wörter); erster Lauf 5 gelöscht, 43 folgen.** «Nicht gefunden» ist beim Löschen kein Beweis → Journal Nachtrag 90
 - 2026-09-25 · 🔁 **Nullrunden: `bild_klein_fix`/`default_variant_fix`/`promo_aus_beschreibung` schrieben seit 14.09. 537× «FERTIG: 0 gescannt» (Cursor am Katalogende nie gelöscht — dieselbe Klasse wie `cj_verfuegbarkeit` 19.09., Geschwister nie geprüft) → `vollrunde.py` (Stempel nur bei Runde ab Anfang, sonst 7 T falsche PAUSE), `nullrunden_wache.py` im Keepalive (Eingangs-Null ≠ Ergebnis-Null); erste 600: 2 Hauptbilder getauscht.** Behobene Klasse → Geschwister greppen → Journal Nachtrag 91
 - 2026-09-26 · ⏲️ **Cloud-Container lebt nach einer Routine ohne Session-Arbeit genau ~5 min (CJ-Takt: 21:09–21:13, 22:08–22:13 …) — Tages-Wächter tragen der Hetzner-Aufseher (`luxe-waechter`, 80 Commits/24 h), nicht die Cloud; die Nullrunden-Wache meldete die erklärte Freigabe-Null weiter → `CURSOR-FREI`-Markierung in `vollrunde.fertig()`, Wache still bei erklärter Null.** Erst fragen, WO ein Wächter läuft; eine Wache braucht den Fall «Null erklärt» → Journal Nachtrag 92
+- 2026-09-26 · 🎞️ **Säuberer prüfte 0 von 42 Reels (Ziffern am ID-Ende = CJ-Nummer, nicht Shopify-ID → kein Status, kein Preisband), Poster fanden Altpreise erst beim Posten (TikTok + YouTube 04:08 leer) → Caption-Handle als Schlüssel wie in den Postern; Kanarienvogel 42/42 gelesen, 25 `preis-veraltet-skip`, 17 ready.** Zwei Prüfer derselben Regel brauchen denselben Schlüssel; zählen, wie viele Zeilen beurteilbar waren → Journal Nachtrag 93

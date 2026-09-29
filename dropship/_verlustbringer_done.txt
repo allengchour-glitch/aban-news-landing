@@ -1943,3 +1943,9 @@ gid://shopify/Product/15493871534465	2026-09-29T16:34Z	draft	16.90	25.59	Backzub
 gid://shopify/Product/15493800329601	2026-09-29T16:34Z	draft	15.90	24.41	Afrikanischer Batik Baumwollstoff
 gid://shopify/Product/15495226261889	2026-09-29T16:34Z	kein-verlust-live	17.90	16.31	ROCKBROS Velo Frontlicht USB-Ladefunktion
 gid://shopify/Product/15493871042945	2026-09-29T16:34Z	draft	16.90	25.19	Glättbürste Mini – konstanter Temperaturkontrolle
+gid://shopify/Product/15495091814785	2026-09-29T16:34Z	draft	17.90	26.12	Mini-Drohne S9HW mit Kamera und WiFi-Steuerung
+gid://shopify/Product/15495091126657	2026-09-29T16:34Z	draft	16.90	24.89	Sofaüberzug mit Muster und Rundumschutz
+gid://shopify/Product/15494223724929	2026-09-29T16:34Z	draft	16.90	24.87	Hunde-Beissspielzeug mit Rindfleischgeschmack
+gid://shopify/Product/15493865505153	2026-09-29T16:34Z	draft	18.90	26.83	Fritteuse mit Sieb und Glasdeckel
+gid://shopify/Product/15495137657217	2026-09-29T16:34Z	draft	16.90	24.71	Kinder-Kissen mit Memory-Schaum & Eis-Seide
+gid://shopify/Product/15493778440577	2026-09-29T16:34Z	draft	19.90	27.68	Bettwäsche-Set mit Blumenmuster
