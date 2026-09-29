@@ -214,11 +214,12 @@ if (direkt) {
   if (arg === '--selbsttest') {
     selbsttest().then((ok) => process.exit(ok ? 0 : 1));
   } else if (!arg) {
-    console.log('Aufruf: node tools/katalog_audit.mjs <shop-domain> [--seiten n] [--json datei]');
+    console.log('Aufruf: node tools/katalog_audit.mjs <shop-domain> [--seiten n] [--json datei] [--bericht datei.html]');
     process.exit(1);
   } else {
     const seitenMax = Number(process.argv[process.argv.indexOf('--seiten') + 1]) || 4;
     const jsonZiel = process.argv.includes('--json') ? process.argv[process.argv.indexOf('--json') + 1] : null;
+    const berichtZiel = process.argv.includes('--bericht') ? process.argv[process.argv.indexOf('--bericht') + 1] : null;
     (async () => {
       const alle = [];
       for (let s = 1; s <= seitenMax; s++) {
@@ -238,6 +239,12 @@ if (direkt) {
         const { writeFileSync } = await import('node:fs');
         writeFileSync(jsonZiel, JSON.stringify({ shop: arg, ...e }, null, 1));
         console.log(`\nBefunde als JSON: ${jsonZiel}`);
+      }
+      if (berichtZiel) {
+        const { writeFileSync } = await import('node:fs');
+        const { berichtHtml } = await import('../functions/_katalog_bericht.mjs');
+        writeFileSync(berichtZiel, berichtHtml(e, arg));
+        console.log(`Bericht zum Weitergeben: ${berichtZiel}`);
       }
     })();
   }
