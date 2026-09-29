@@ -69,3 +69,54 @@ Messgerät: `probe-sog 365` (Ereignis-Tage je 30 Tage; Ziel: kein 30-Tage-Fenste
 - Keine zwei Browser-Sonden gleichzeitig; Sonden-Ausgaben kurz halten (`cut -c1-200`, nur ❌-Zeilen).
 - Jede Runde: Messung vorher, Änderung, Messung nachher, Runbook-Abschnitt, Commit, Push — dann erst die nächste.
 - Geheimnisse (API-Schlüssel) nie in Chat, Dateien oder Commits — nur als Umgebungs-/GitHub-Secret setzen.
+
+## 7. Kritik von ChatGPT (gpt-5, 2026-09-29) — auf Wunsch des Users eingeholt, ungefiltert
+
+> Eingabe: Runbook-Abschnitt Runde 104 + Abschnitte 0–6 dieses Plans. Bewertung der Punkte folgt in der nächsten Session
+> (Prüfen: Rangpunkte aus Brutto sind tatsaechlich exploitbar? Micro-Ziele mit ETA aus vorhandenen Zahlen = billigste Massnahme).
+
+
+1) Schwächen/Risiken Runde-104-Design (Endlosspiel)
+1. Reine Zahlenleiter ohne neue Systeme: Nach ~2–4 h sind alle Mechaniken bekannt, danach nur Skalierung (Vermögen, Rang, Ausbau). Kein neues Feature/Interaktion nach 20 h → Monotonie, kein „second layer“ (Risiko: Abbruch trotz „unendlich“).
+2. Grind-Anreiz durch Rangpunkte pro „verdient“ statt Nettogewinn: Farming/Exploit möglich (Flippen, Kleinsttransaktionen, Rückerstattungen), Progress wird vom geschicktesten Exploit dominiert statt vom Spiel. Untergräbt Fairness und Koop.
+3. Ereignis-Kadenz bleibt mechanisch: 4–6 Tage Ingame zwischen Highlights ab Monat 5 sind „leere Strecken“ ohne Entscheidung. Es fehlt eine reaktive Zwischenlage (Events, Mini-Ziele), die Gaps füllt.
+4. Kein Risiko/Spannung: Keine Kostenwellen, Brüche oder Dilemmata (Wartung, Steuern, Marktpreise, Zufallsereignisse). Progress ist deterministisch → geringe Retention.
+5. Sichtbarkeit der Fortschritte sinkt: Hohe Ausbaustufen sind unsichtbare Zahlen; wenig neue Optik/Spielgefühl bei Stufe 8–12. Motivationsknick, v. a. auf Mobile.
+6. Koop ohne Koop-Ziele: WebRTC existiert, aber keine kooperativen Anreize/Belohnungen → Feature „unsichtbar“ für Retention.
+7. Onboarding/Ziele-Transparenz: „Vermögen“ als Stufen-Kriterium ersetzt „Wert“; auf <1000 px HUD fehlt der Stufenname → unklare Nächstziele/ETA auf Handy.
+8. Wirtschaft kann kippen: 50 % Mietenje-Stufe + exponentielle Ausbaukosten wirken stabil, aber ohne Gegenkräfte (Wartung, Leerstand, Steuern) droht späterer Überschuss/Übersättigung (erneut „Geldstapel ohne Nutzen“).
+9. Karriere spät und flach: 45–55 Tage je Level ab Mitte → de-facto obsolet als Motivator im Spätspiel.
+10. Komfort-Realität ungemessen: Risiko, dass reale Grundstück-Limits Progress heimlich drosseln (wurde schon fast passiert).
+
+2) Plan-Lücken, Fehlpriorisierungen, Overkill
+1. Fehlend: Exploit-Schranke fürs Rangsystem (Brutto→Netto; Ausnahmen für Rückerstattungen). Muss vor jedem weiteren Meta-Progress.
+2. Stadtprojekte nur als Option „ODER“ zu Preisschraube: Das ist der dringendste späte Ereignis-Lieferant und sollte vor Balancingschrauben kommen (liefert neue Ziele + Sichtbarkeit).
+3. Kein „Session-Ziele/ETA“-Layer: Auf Mobile brauchen Spieler jederzeit „Nächstes Ziel in X min / Schritt Y von Z“.
+4. Prestige/NG+ zu früh vorgeschlagen: Ohne neue Mechanik wird nur Reset mit +5 % Bonus → gleiche Langeweile schneller. Erst neue Senken/Interaktionen, dann Prestige.
+5. Komfort-Sonde steht unter „2“, aber sie ist Blocking für Balancing-Entscheidungen (und Erfolgserreichbarkeit am Handy). Höher priorisieren.
+6. Service Worker ja; aber kein Fallback für teilweises Laden/Abbruch (Resume/Graceful Degradation). Mobile Drop-offs bleiben sonst hoch.
+7. Wetter/Bestenliste/Haustier/Tuning wirken teurer als ihr Nutzen für Kernprobleme (Kadenz, Sichtbarkeit, Exploit). Niedriger priorisieren.
+8. GLTF-Kompression/Worker sind richtig, aber Textur-Deckel 1024 px kann zu sichtbarer Qualitätsminderung an Close-ups führen; ergänze Mip-Tuning/Aniso-Check, sonst UX-Schaden.
+
+3) Drei Maßnahmen mit bestem Wirkungs-/Aufwandsverhältnis (+ Messung)
+1. Session-Ziele + ETA auf HUD (Micro-Missions)
+   - Inhalt: Immer 3 kleinschrittige Ziele mit Zeit-/Kosten-ETA (z. B. „Nächster Ausbau X in ~7 min“, „Verdiene 25’000 $ für +10 Rangpunkte“, „Kaufe Parkbank-Set für +2 Komfort“). Belohnung: kleine Prämie/Boost.
+   - Aufwand: UI + 3–4 einfache Heuristiken (es gibt alle Zahlen im Spiel).
+   - Wirkung: Füllt Gaps, gibt Klarheit, steigert 2h- und 20h-Bindung.
+   - Messung: 
+     - Neue Kennzahlen: mediane „Leerlauf-Minuten ohne Ziel“ (Client), Anteil Sessions mit >2 erfüllten Micro-Zielen.
+     - probe-sog (365): zusätzlich „Durchschnitt ETA zum nächsten Ereignis“; Ziel < 10 min ab Monat 5.
+2. Rangpunkte auf Nettogewinn umstellen + Anti-Exploit
+   - Inhalt: Punkte aus (Einnahmen – Ausgaben) nur bei Netto-Plus; Ausschlüsse: Rückerstattungen/An- und Verkauf gleicher Kategorie innerhalb 60 s; Cap pro Realtime-Minute.
+   - Aufwand: 1–2 Funktionen in verdiene()/buche(), kleine Fenster-Queue; Migration stats.
+   - Wirkung: Fairness, verhindert Grind-Loops, stabilisiert Progress-Kurve.
+   - Messung:
+     - A/B mit probe-sog: Punkte-Zuwachs/30 Tage stabil vs. ausreißerfrei.
+     - In-Game: Anteil Transaktionen, die gefiltert wurden (< 5 % Ziel).
+3. Stadtprojekte „leichtgewichtig“ als späte Senke/Ereignisquelle
+   - Inhalt: 4 generische Projekte (Park, Brücke, Denkmal, Seilbahn-Ausbau) mit 3–5 Bauphasen, skalierende Kosten, kleine Stadtweiteffekte (+x % Miete für Wohnbezirk, +Taxi-Nachfrage etc.). Nutzung vorhandener Modelle/Plätze.
+   - Aufwand: 1 Datenstruktur, 1 Fortschritts-UI, Phasen als sichtbare Platzhalter; keine neuen GLBs nötig.
+   - Wirkung: Späte, sichtbare Meilensteine, Koop-Anker, füllt 4–6-Tage-Lücken.
+   - Messung:
+     - probe-sog: Ereignis-Tage/30 ab Monat 5 von 4–6 auf ≥8.
+     - In-Game: Projekte pro 30 Tage, Abbruchquote zwischen Phasen (< 20 %).
