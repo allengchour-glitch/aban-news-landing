@@ -130,3 +130,7 @@
 15497433350529	unklar:farbe-unbekannt	2026-09-29	Multifunktionaler Lockenstab mit Keramikbeschichtung
 15497433448833	eu-sku-gesetzt:CJBJMRJF00211-Golden Gray-EU	2026-09-29	Kabelloser Mini-Haartrockner mit 800W
 15497434071425	eu-sku-gesetzt:CJXFLPCD00350-BLACK-EU	2026-09-29	Universal-Laptop-Netzteil 75W mit USB-C PD
+15497442460033	unklar:farbe-unbekannt	2026-09-29	4-Port Reise-Ladegerät mit LED-Anzeige
+15497443017089	eu-sku-gesetzt:CJXFLPCD00300-EU	2026-09-29	USB Smart Ladegerät mit 5 Anschlüssen
+15497447178625	unklar:farbe-unbekannt	2026-09-29	Lockenstab für Pony und feines Haar
+15497447702913	eu-sku-gesetzt:CJBJMRJF00192-Pink-EU	2026-09-29	Lockenstab mit Nano-Titan-Keramikbeschichtung
