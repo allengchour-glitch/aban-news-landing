@@ -303,3 +303,4 @@ gid://shopify/Product/15470075609473	reaktiviert	Kellnergeldbörse Portemonnaie
 gid://shopify/Product/15461980569985	draft-ausverkauft	Wiederverwendbare Eiswürfel für den Sommer
 gid://shopify/Product/15469983629697	draft-ausverkauft	Strumpfmaske gestrickt
 gid://shopify/Product/15470034616705	draft-ausverkauft	Skelett beweglich
+gid://shopify/Product/15493859803521	draft-ausverkauft	Wäschekorb für Schrank & Regal, Himmelblau
