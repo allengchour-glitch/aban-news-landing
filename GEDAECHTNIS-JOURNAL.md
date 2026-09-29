@@ -6,6 +6,19 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-29 · 💸 63 Verlustartikel kaufbar: Tagestor hielt einen toten Lauf 16 h für fertig (Verbesserungsrunde 19:55)
+**GEMESSEN:** Ampel «VERLUST: 63 kaufbar, nur Preis-Meldung» — live z. B. «Hundebett» CHF 81.90 bei EK 108.95,
+«Dampfkochtopf» 69.90 / 94.59, «Katzen-Kratzbaum» 33.90 / 48.56 (ACTIVE, CONTINUE): jeder Verkauf kostet Geld.
+`preis_verlustschutz.py` (hebt genau diese Preise, täglich) war am 29.09. 04:09 gestartet («Kandidaten: 2788 …») und beim
+Container-Neustart gestorben. Das Tor der Tages-Schleife las `tail -n 3` — darüber stand das FERTIG vom 28.09. →
+«erledigt», 20 h kein Nachholen. Dieselbe Klasse wie der Fortura-Befund heute früh, aber für ALLE ~55 Schleifen-Wächter.
+Zweiter toter Lauf derselben Art: `fuellmenge_nachtragen` (16:53). **GETAN:** Jeder Schleifen-Start schreibt nach dem
+Schloss `START … (Aufseher)` ins Log; das Tor wertet nur Zeilen nach der letzten Marke (`letzter_lauf()`); Kanarienvögel
+3/3 (altes Log ohne Marke = altes Verhalten; toter Lauf mit Marke = fällig; sauberer Lauf = fertig). Die zwei toten Läufe
+markiert, Aufseher neu → beide laufen. **Lehre:** Ein Tor, das «fertig» aus den letzten Zeilen liest, braucht eine
+Anfangsmarke — sonst erbt jeder abgestürzte Lauf das Ende seines Vorgängers. Nach dem Fortura-Fix hätte die Frage
+«wo liest noch jemand `tail` ohne Marke?» sofort über alle Tore gehen müssen, nicht nur über das eine.
+
 ## 2026-09-29 · 🔎 #1019 bei CJ neu gesucht: kein gleichwertiger Ersatz mit CH-Versand (19:25)
 Betreiber «1019 cj suchen». `cj_ersatz_suche.py` (8 Stichwörter): Original pid 2608070456571627400 weiterhin 1602002
 «removed from shelves». Der **gleiche 5-ft-Schaukelgeist** existiert (2098100793999478786, USD 85.99) — **0 CH-Wege**
