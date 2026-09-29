@@ -1831,3 +1831,5 @@ gid://shopify/Product/15493717787009	2026-09-29T16:10Z	draft	22.90	49.45	Militä
 gid://shopify/Product/15493935006081	2026-09-29T16:10Z	draft	16.90	43.15	Cartoon-Bettmatratze für Sommer – weich & gemütlich
 gid://shopify/Product/15494856016257	2026-09-29T16:10Z	draft	15.90	41.91	Minimalistischer Katzen-Kletterbaum Weihnachten
 gid://shopify/Product/15495232651649	2026-09-29T16:10Z	draft	21.90	47.62	Gusseisen-Bratpfanne, emailliert
+gid://shopify/Product/15493932777857	2026-09-29T16:10Z	draft	35.90	61.35	Runder Wandspiegel mit Diamant-Effekt, 30 cm
+gid://shopify/Product/15493859803521	2026-09-29T16:10Z	schon-DRAFT	19.90	45.33	Wäschekorb für Schrank & Regal, Himmelblau
