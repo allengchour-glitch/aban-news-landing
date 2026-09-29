@@ -1878,3 +1878,33 @@ gid://shopify/Product/15495191069057	2026-09-29T16:13Z	draft	16.90	33.35	E68 Qua
 gid://shopify/Product/15495235600769	2026-09-29T16:13Z	draft	22.90	39.17	Rustikaler Aufbewahrungskorb aus Baumwollseil
 gid://shopify/Product/15493872320897	2026-09-29T16:13Z	draft	17.90	34.15	E61 bodenloser Siebträger aus Edelstahl
 gid://shopify/Product/15495137231233	2026-09-29T16:13Z	draft	16.90	33.12	Wasserdichtes Sofa-Kissen, ganzjährig, rutschfest
+gid://shopify/Product/15495106691457	2026-09-29T16:26Z	schon-DRAFT	16.90	33.07	Kuscheliges Cord-Hundebett
+gid://shopify/Product/15493830640001	2026-09-29T16:26Z	draft	27.90	44.06	Retro Fashion Herren Digital-Zeigeruhr
+gid://shopify/Product/15495082836353	2026-09-29T16:26Z	draft	17.90	33.76	Katzen-Klettergerüst «Space Nest»
+gid://shopify/Product/15495131890049	2026-09-29T16:26Z	draft	25.90	41.57	Titan Schneidebrett für Haushalt & Outdoor
+gid://shopify/Product/15495094436225	2026-09-29T16:27Z	draft	30.90	46.53	SH5H Mini Helikopter mit 1080P Weitwinkel-Kamera
+gid://shopify/Product/15495082738049	2026-09-29T16:27Z	draft	21.90	37.52	Klettergerüst mit Liegefläche für Katzen
+gid://shopify/Product/15494642303361	2026-09-29T16:27Z	draft	32.90	48.36	Kaktus Katzen-Spielrad aus Massivholz
+gid://shopify/Product/15493934383489	2026-09-29T16:27Z	draft	22.90	38.28	Bettlückenfüller Keilkissen
+gid://shopify/Product/15493750063489	2026-09-29T16:27Z	draft	24.90	40.02	Kissenbezug im französischen Stil
+gid://shopify/Product/15495212237185	2026-09-29T16:27Z	draft	16.90	31.87	Sofaüberwurf mit Tiermuster
+gid://shopify/Product/15493935202689	2026-09-29T16:27Z	draft	17.90	32.82	Thermostat-Haarkamm mit vier Geschwindigkeiten
+gid://shopify/Product/15495082967425	2026-09-29T16:27Z	draft	22.90	37.67	Katzenbaum mit Kratzstamm
+gid://shopify/Product/15494642565505	2026-09-29T16:27Z	draft	23.90	38.41	Porzellan Servierplatte «Drache & Phönix»
+gid://shopify/Product/15495136412033	2026-09-29T16:27Z	draft	23.90	38.32	Elastischer Sofaüberzug – verschiedene Grössen
+gid://shopify/Product/15495213449601	2026-09-29T16:27Z	draft	17.90	32.25	Feuerfester Wok aus Gusseisen
+gid://shopify/Product/15495132152193	2026-09-29T16:27Z	draft	14.90	29.22	Hunde-Badehandschuh mit Brause
+gid://shopify/Product/15494892913025	2026-09-29T16:27Z	draft	14.90	29.10	Diamond Painting: Rund- oder Quadrat-Steine
+gid://shopify/Product/15495233339777	2026-09-29T16:27Z	draft	21.90	36.05	Trendige Sport-Freizeitschuhe zum Schnüren
+gid://shopify/Product/15495156760961	2026-09-29T16:27Z	draft	15.90	30.01	Anti-Beschlag Gasmaske
+gid://shopify/Product/15495117832577	2026-09-29T16:27Z	draft	23.90	37.78	Lovewood Serviertablett Vintage
+gid://shopify/Product/15495193133441	2026-09-29T16:27Z	draft	15.90	29.75	Rundes Kissen aus Lammwolle für Sofa & Bett
+gid://shopify/Product/15493807604097	2026-09-29T16:28Z	draft	20.90	34.68	Platform High-top Canvas Sportschuhe
+gid://shopify/Product/15495117996417	2026-09-29T16:28Z	draft	15.90	29.68	Mehrzweck-Vorratsdose mit Deckel
+gid://shopify/Product/15493914788225	2026-09-29T16:28Z	draft	20.90	34.65	Edelstahl-Armband für Apple Watch 8, Schleifenschnalle
+gid://shopify/Product/15495113376129	2026-09-29T16:28Z	draft	20.90	34.39	High-Speed RC Drift Car, 1:18, blau/gelb
+gid://shopify/Product/15493864522113	2026-09-29T16:29Z	draft	16.90	30.27	Blackened Spider Campingkocher, faltbar
+gid://shopify/Product/15493935235457	2026-09-29T16:29Z	draft	17.90	31.16	Kopfstütze und Lendenkissen für Autositz
+gid://shopify/Product/15493924192641	2026-09-29T16:29Z	draft	15.90	29.10	Sika Hirsch Plüschtier für Kinder
+gid://shopify/Product/15493853577601	2026-09-29T16:29Z	draft	19.90	32.93	Kissenbezug ohne Füllung, 45x45cm
+gid://shopify/Product/15493872845185	2026-09-29T16:29Z	draft	17.90	30.72	Memory Foam Sitzkissen für Home Office
