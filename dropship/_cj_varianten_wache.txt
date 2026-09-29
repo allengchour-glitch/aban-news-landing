@@ -5454,3 +5454,4 @@ gid://shopify/Product/15449102057857	1790655956	ok	10 Shop / 10 CJ / 0 fehlend /
 gid://shopify/Product/15449102123393	1790655956	ok	16 Shop / 24 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449102156161	1790655956	ok	80 Shop / 80 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449102188929	1790655956	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449102254465	1790655956	ok	96 Shop / 96 CJ / 0 fehlend / 0 DENY
