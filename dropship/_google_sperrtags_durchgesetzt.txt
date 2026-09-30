@@ -397,3 +397,12 @@
 2026-09-29T00:28:04Z	gid://shopify/Product/15522242953601	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	smarter-aschenbecher-mit-luftreiniger-fur-auto-042304
 2026-09-29T00:28:05Z	gid://shopify/Product/15523906224513	google-policy-flag	Google & YouTube	intelligenter-intimreiniger-fur-die-frau-723136
 2026-09-29T00:28:05Z	gid://shopify/Product/15524929175937	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	runder-aschenbecher-aus-keramik-2cef8b
+2026-09-30T00:36:04Z	gid://shopify/Product/15413739684225	niedrig-bewertet-nicht-bewerben	Google & YouTube	sommerkleid-armellos-damen-tailliert-elegant-schwarz
+2026-09-30T00:36:05Z	gid://shopify/Product/15446071640449	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	straffendes-pflegeol-fur-den-intimbereich-mit-460097
+2026-09-30T00:36:07Z	gid://shopify/Product/15446272639361	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	led-laser-offroad-scheinwerfer-638301
+2026-09-30T00:36:08Z	gid://shopify/Product/15447898915201	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	lederriemen-mit-kette-fur-damen-625100
+2026-09-30T00:36:09Z	gid://shopify/Product/15447936893313	google-policy-flag, nicht-google-bewerben	Google & YouTube	aurora-nahtlose-ultra-dunne-strumpfhose-622000
+2026-09-30T00:36:10Z	gid://shopify/Product/15447978115457	adult-nicht-bewerben, gmc-adult-pull	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	perlenbesetztes-neckholder-minikleid-988098
+2026-09-30T00:36:11Z	gid://shopify/Product/15448019796353	google-policy-flag, nicht-google-bewerben	Google & YouTube	gestricktes-langarmhemd-mit-falten-optik-267522
+2026-09-30T00:36:12Z	gid://shopify/Product/15448022974849	google-policy-flag, nicht-google-bewerben	Google & YouTube	langes-strickjackchen-mit-lochmuster-866818
+2026-09-30T00:36:14Z	gid://shopify/Product/15448030183809	adult-nicht-bewerben, gmc-adult-pull	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	off-shoulder-strandbluse-mit-seitenschlitz-490113
