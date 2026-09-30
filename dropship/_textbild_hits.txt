@@ -16139,3 +16139,7 @@ gid://shopify/Product/15523938468225	16->0	WLAN Handy Beamer
 gid://shopify/Product/15523940270465	18->0	Silikonkissen für Kinder mit Wirbelsäulenstütze
 gid://shopify/Product/15524079272321	133->0	Brusttasche wasserdicht
 gid://shopify/Product/15524257104257	9->0	Mini Matt Dragon Canvas Wasserfestes Herrenarmband 25 mm
+gid://shopify/Product/15524778934657	74->0	Memory Foam Kissen für Sitzkomfort
+gid://shopify/Product/15524779295105	39->0	Zero-Pressure Cloud Kissen
+gid://shopify/Product/15524928946561	60->0	Leuchtender Basketball Grösse 5 oder 7
+gid://shopify/Product/15525143019905	62->1	Wasserdichte Smartwatch mit Schrittzähler
