@@ -1,0 +1,22 @@
+{
+  "id": "cj-torquellen-2026-09-30-14-07-b",
+  "typ": "skript",
+  "skript": "cj_quellvideo_holen.mjs",
+  "warum": "Meisterwerk-Tor sperrte Reels (HOOK < 3,0); reel_neu_rendern.py MODUS=hook schneidet sie mit neuem Einstieg neu.",
+  "videos": [
+    {
+      "name": "rq-44e4345f-e33c-49ef-b436-926e2d694c50",
+      "url": "https://download-only-api.cjdropshipping.com/9523291ea40447df929c7fd09fe9484d/e2d7adbcfcc44442814163dfd566352f-9f95dfbec643d71bff14f0ae2fb3d150-ld.mp4"
+    },
+    {
+      "name": "rq-160ca70e-1448-4e4d-b76d-341602bf7780",
+      "url": "https://download-only-api.cjdropshipping.com/1b5765b0ca4e4011a243317a4e2831cb/3ed70a24ef3d414f9d901eb28ef9e686-12158c7e14987a692c87935e2d0ac4ae-ld.mp4"
+    },
+    {
+      "name": "rq-89d3ea68-37a4-4f3c-adbe-8986435235a8",
+      "url": "https://download-only-api.cjdropshipping.com/cb388f705cfe416bb9835744ace468a9/af1ae88e39d34dd4b6e2a57a684190b6-b0f11c1987bef953b667ddd98bf6c268-ld.mp4"
+    }
+  ],
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}

@@ -1854,3 +1854,7 @@ usb-adapter-626600	gesetzt-1
 pflanzen-controller-605300	gesetzt-4
 rgb-headset-600300	gesetzt-2
 falt-joystick-601000	gesetzt-3
+gamepad-halter-617700	gesetzt-2
+bluetooth-gamepad-612300	gesetzt-3
+ps5-gamepad-618700	gesetzt-2
+rgb-gamepad-622100	gesetzt-4

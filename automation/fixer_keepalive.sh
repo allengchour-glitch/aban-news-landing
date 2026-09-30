@@ -631,6 +631,19 @@ while true; do
         >> /tmp/startseite_optik.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start startseite_optik_wache (täglich, nur lesen)"
   fi
+  # 🎬 TOR-REPARATUR (30.09.2026): vom Meisterwerk-Tor gesperrte Reels (HOOK < 3,0, fester Einstieg 2 s) mit der
+  # bewegtesten Sekunde neu schneiden (reel_neu_rendern.py MODUS=hook, Tor Pflicht → wieder ready); fehlende Quellen fragt
+  # tor_quellen_anfragen.mjs beim Server an (Merkliste 24 h). Ergebnis-Dateien + Queue sichert git_sichern.sh.
+  if [ ! -f /tmp/reel_tor_reparatur_$(date -u +%F) ] && [ -f "$REPO/automation/reel/reel_neu_rendern.py" ]; then
+    touch "/tmp/reel_tor_reparatur_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_reel_tor_reparatur.lock; flock -n 9 || exit 0; echo START \$(date -u +%FT%H:%MZ); \
+         MODUS=hook SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
+         SCHARF=1 timeout 900 /opt/node22/bin/node automation/reel/tor_quellen_anfragen.mjs | grep -E '📮|FERTIG'; \
+         bash automation/git_sichern.sh 'Reel-Tor-Reparatur: neu geschnitten + Quellen angefragt [skip ci]' social/reels automation/reels_seed.csv auftraege/offen" \
+        >> /tmp/reel_tor_reparatur.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start reel_tor_reparatur (täglich)"
+  fi
   # ✎ FB-CAPTION-KORREKTUR (23.09.2026, Betreiber «bearbeite selber wens nicht stimmt wie zb versandkosten»): feste
   # Ersetzungstabelle (Blitzversand/«in 1–2 Tagen»/CHF 65/Lockpreis), 45 s Takt, Abbruch beim ersten Meta-Sperrhinweis.
   # Erstlauf 23.09.: 7 von 25, dann Spam-Sperre nach 120 Löschungen — der tägliche Lauf macht dort weiter.

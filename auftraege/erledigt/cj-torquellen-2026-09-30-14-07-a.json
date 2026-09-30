@@ -1,0 +1,42 @@
+{
+  "id": "cj-torquellen-2026-09-30-14-07-a",
+  "typ": "skript",
+  "skript": "cj_quellvideo_holen.mjs",
+  "warum": "Meisterwerk-Tor sperrte Reels (HOOK < 3,0); reel_neu_rendern.py MODUS=hook schneidet sie mit neuem Einstieg neu.",
+  "videos": [
+    {
+      "name": "rq-1442339841068109824",
+      "url": "https://download-only-api.cjdropshipping.com/2a5a66391e864fc1875eb80db3648b9c/69964a8c5741439e965f0d39a53bf1f1-e4ce8a815902a22c394a09be0190a4e5-ld.mp4"
+    },
+    {
+      "name": "rq-1661261861666426880",
+      "url": "https://download-only-api.cjdropshipping.com/86e8c090881771eeaa1d5420848d0102/cd88f693f3fc4ddf97ed138d3d3af342-2fd39d2613b37c656a151c04b2188e8e-ld.mp4"
+    },
+    {
+      "name": "rq-1586604104162488320",
+      "url": "https://download-only-api.cjdropshipping.com/83de6230b8c746bba9f28138c5cefce4/72b5314ee5054f7591cc326cb8a6a953-cdfe37b8e48c2916e27339c88ac0e011-ld.mp4"
+    }
+  ],
+  "stand": "ok",
+  "begonnen": "2026-09-30T14:08:36.725Z",
+  "dauer_s": 14.7,
+  "ergebnis": {
+    "videos": [
+      {
+        "name": "rq-1442339841068109824",
+        "bytes": 3878613,
+        "datei": "auftraege/ergebnis/cj-torquellen-2026-09-30-14-07-a-rq-1442339841068109824.mp4"
+      },
+      {
+        "name": "rq-1661261861666426880",
+        "bytes": 4116806,
+        "datei": "auftraege/ergebnis/cj-torquellen-2026-09-30-14-07-a-rq-1661261861666426880.mp4"
+      },
+      {
+        "name": "rq-1586604104162488320",
+        "bytes": 1277192,
+        "datei": "auftraege/ergebnis/cj-torquellen-2026-09-30-14-07-a-rq-1586604104162488320.mp4"
+      }
+    ]
+  }
+}
