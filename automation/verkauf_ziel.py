@@ -27,6 +27,11 @@ def eigene_id():
     return ""
 
 
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+from erstattung import REFUND_FELD, zurueck  # noqa: E402
+
+
 def main():
     try:
         tok = open("/tmp/cj_shop_token.txt").read().strip()
@@ -35,7 +40,7 @@ def main():
     seit = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=31)).strftime("%Y-%m-%dT%H:%M:%SZ")
     q = ('{orders(first:100,query:"created_at:>=%s AND (financial_status:paid OR financial_status:partially_refunded)",'
          'sortKey:CREATED_AT,reverse:true){nodes{name createdAt test customer{id} '
-         'totalPriceSet{shopMoney{amount}} totalRefundedSet{shopMoney{amount}}}}}' % seit)
+         'totalPriceSet{shopMoney{amount}} totalRefundedSet{shopMoney{amount}} ' + REFUND_FELD + '}}}') % seit
     req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json", data=json.dumps({"query": q}).encode(),
                                  headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
     nodes, fehler = None, ""
@@ -58,7 +63,8 @@ def main():
         if n.get("test") or ((n.get("customer") or {}).get("id") == ich and ich):
             continue
         brutto = float(n["totalPriceSet"]["shopMoney"]["amount"] or 0)
-        erstattet = float(((n.get("totalRefundedSet") or {}).get("shopMoney") or {}).get("amount") or 0)
+        # 30.09.2026: totalRefundedSet bleibt 0, solange die Rückbuchung PENDING ist (#1019) → Buchungen zählen
+        erstattet = max(float(((n.get("totalRefundedSet") or {}).get("shopMoney") or {}).get("amount") or 0), zurueck(n))
         if brutto > 0 and erstattet >= brutto - 0.01:
             continue
         t = dt.datetime.fromisoformat(n["createdAt"].replace("Z", "+00:00")).astimezone(TZ)
