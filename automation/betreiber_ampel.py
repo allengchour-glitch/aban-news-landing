@@ -611,6 +611,21 @@ def social_meta_live():
     return " · ".join(teile)
 
 
+
+def startseiten_optik():
+    """OPTIK (30.09.2026): Befunde von automation/startseite_optik_wache.mjs (gerenderte Startseite, 390 px)."""
+    try:
+        d = json.load(open(os.path.join(REPO, "dropship", "_startseite_optik.json"), encoding="utf-8"))
+    except Exception:
+        return "OPTIK: noch kein Lauf (automation/startseite_optik_wache.mjs)"
+    b = d.get("befunde") or []
+    if not b:
+        return ""  # nur melden, wenn etwas zu tun ist
+    arten = {}
+    for x in b:
+        arten[x["art"]] = arten.get(x["art"], 0) + 1
+    return "⚠️ OPTIK Startseite: " + ", ".join(f"{k} {v}" for k, v in arten.items()) + " — dropship/STARTSEITE-OPTIK.md"
+
 def grow_zaehler():
     """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
     nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
@@ -792,7 +807,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, server_waechter, judgeme_verdacht, iban_grep)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

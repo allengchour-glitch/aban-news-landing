@@ -621,6 +621,16 @@ while true; do
         >> /tmp/social_qualitaet.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start social_qualitaet_wache (täglich, nur lesen)"
   fi
+  # 📱 STARTSEITEN-OPTIK (30.09.2026, Betreiber-Screenshot «bild fehlt» + «solche und ähnliche fehler nicht mehr
+  # passieren»): rendert luxestyle.ch in 390 px im echten Chromium und meldet Leerräume > 90 px in einer Sektion,
+  # kaputte/leere/winzige Bilder und waagrechtes Scrollen. Nur lesen → dropship/STARTSEITE-OPTIK.md + Ampel «OPTIK».
+  if [ ! -f /tmp/startseite_optik_$(date -u +%F) ] && [ -f "$REPO/automation/startseite_optik_wache.mjs" ]; then
+    touch "/tmp/startseite_optik_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_startseite_optik.lock; flock -n 9 || exit 0; timeout 900 /opt/node22/bin/node automation/startseite_optik_wache.mjs" \
+        >> /tmp/startseite_optik.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start startseite_optik_wache (täglich, nur lesen)"
+  fi
   # ✎ FB-CAPTION-KORREKTUR (23.09.2026, Betreiber «bearbeite selber wens nicht stimmt wie zb versandkosten»): feste
   # Ersetzungstabelle (Blitzversand/«in 1–2 Tagen»/CHF 65/Lockpreis), 45 s Takt, Abbruch beim ersten Meta-Sperrhinweis.
   # Erstlauf 23.09.: 7 von 25, dann Spam-Sperre nach 120 Löschungen — der tägliche Lauf macht dort weiter.

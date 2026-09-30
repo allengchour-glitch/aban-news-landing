@@ -6,6 +6,17 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 📱 «bild fehlt»: Kundenstimmen-Karussell mit 110 px Lücke + 56-px-Bild — kein Wächter sah die GERENDERTE Seite
+
+Betreiber-Screenshot (Handy): über den Sternen leere Fläche, Produktbild winzig am Kartenende. Gemessen (tools/browser.mjs, 390 px):
+Judge.me-Wrapper 48 px Innenabstand + 24 px Rand + Textblock 124 px hoch (47 px Text, zentriert), Bild 56 px. Alle 15 Bilder HTTP 200.
+GETAN: CSS `<style id="lx-ks-fix">` in der Sektion `lux_kundenstimmen` (Backup der Live-index.json vorher; feste Kartenhöhe 285 px
+statt auto — `height:auto` auf dem Karussell-Rahmen blähte die Sektion auf mehrere Bildschirme, `display:flex` auf den Karten liess
+sie verschwinden). Live ohne Test-CSS gemessen: Karte 285, Bild 120 px, Lücke weg. WÄCHTER: `automation/startseite_optik_wache.mjs`
+(täglich im Aufseher, Ampel «OPTIK» nur bei Befund): Leerraum > 90 px in einer Sektion, kaputte/leere/winzige (< 64 px) Bilder,
+Überbreite; Befund erst nach zweitem Abruf (Cache). Kanarienvogel 3/3 (Test-CSS braucht `html body …`, sonst gewinnt die Live-Korrektur).
+LEHRE: API-Wächter sehen Daten, nicht die Seite — die Optik braucht einen Wächter, der rendert. Theme-Datei zu gross für curl-Argumente → urllib.
+
 ## 2026-09-30 · 🖼️ Google «Inappropriate image» mit Gemini + ChatGPT: 18 Hauptbilder getauscht (nur vorhandene, nur bei Einigkeit)
 
 Betreiber «google sachen mit chatgpt und gemini». `automation/google_bild_tausch.py`: beide Modelle wählen unabhängig das
