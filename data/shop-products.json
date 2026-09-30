@@ -174,5 +174,12 @@
     "desc": "Alle Einnahmen und Ausgaben mit Takt (monatlich bis jährlich), monatliche Rückstellung für Steuern und Jahresrechnungen, Muss/Kann/Sparen, Notreserve. Offline-Rechner mit Anleitung. Keine Finanzberatung.",
     "price": "CHF 19",
     "buy": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N"
+  },
+  {
+    "slug": "mietzins-paket",
+    "title": "Mietzins-Paket Schweiz: Senkung verlangen, mit fertigem Brief",
+    "desc": "Berechnet die Mietzinssenkung nach Art. 13 und 16 VMWG (Referenzzins, Teuerung, Kosten), den nächstmöglichen Termin und die Fristen, und schreibt das Herabsetzungsbegehren nach Art. 270a OR fertig. Offline-Rechner mit Anleitung. Keine Rechtsberatung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O"
   }
 ]
