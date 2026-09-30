@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:30:42Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:33:44Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1184 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2891** in 782 Produkten
-- Treffer (≥ 4 Wörter): **138** in 116 Produkten
+- Medien geprüft: **2982** in 807 Produkten
+- Treffer (≥ 4 Wörter): **139** in 117 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -13,6 +13,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 |---|---|---|---|---|
 | Smart Detector Kamera-Finder `15477388476801` | [70319928377729](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2650e5c6-8afb-4031-ab0a-28cf15e78253_trans.jpg) | 60 | Upgraded Camera Intelligent Detector Pinhole Camera Infrared Night | offen |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061284737](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94a0e0da-1f2f-47ce-ad2f-33ec82e8fea7_water_trans.jpg) | 48 | Convenient advantages are visible open insulated cup operation | ENTFERNT |
+| Handgemachte Fake Nails für Maniküre `15510318940545` | [70633075310977](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2403080358360323100.jpg) | 43 | buy free Nail Size Chart Dimensions index middle | offen |
 | Heizbare Winterhaube für Fahrrad & Ski `15453769859457` | [69926690554241](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1722437663757307904.jpg) | 35 | hea Resist the cold Cheeks feel hot two | offen |
 | Velo-Scheinwerfer mit Welleninduktion `15448957223297` | [69862628753793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ec0a3dc-5ff7-4919-9833-ca59f27106b0_trans.jpg) | 34 | Smart gesture sensing Wave sensor lighting switch When | ENTFERNT |
 | Fahrradhelm für sicheres Radfahren `15453769073025` | [69926689276289](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7069a30b-403b-43cf-9d90-e5b3dbb7eea6_trans.jpg) | 31 | adjust the wrapping floating adjustment system design The | ENTFERNT |
