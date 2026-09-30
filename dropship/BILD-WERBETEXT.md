@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:39:56Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:42:51Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1187 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3166** in 857 Produkten
-- Treffer (≥ 4 Wörter): **142** in 120 Produkten
+- Medien geprüft: **3265** in 882 Produkten
+- Treffer (≥ 4 Wörter): **143** in 121 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -19,6 +19,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Fahrradhelm für sicheres Radfahren `15453769073025` | [69926689276289](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7069a30b-403b-43cf-9d90-e5b3dbb7eea6_trans.jpg) | 31 | adjust the wrapping floating adjustment system design The | ENTFERNT |
 | Kabelloser Audio-Adapter für TV & Kopfhörer `15504083288449` | [70584177918337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9165c63c-fb2b-4df7-b0c0-c45b2180e9f4.jpg) | 31 | Bluetooth Super Guarantee AUDIO DELAY with these super | offen |
 | Gaming-Konsole Silikonhülle `15453787914625` | [69926758252929](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11ddebed-2105-475c-9551-19d8341fcd8d.jpg) | 27 | Comfortable Hand Feeling Environmentally friendly silicone feel very | ENTFERNT |
+| Outdoor Smartwatch mit Kompass & Herzfrequenz `15523210428801` | [70759100875137](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9c845c6d-b477-42c0-8a4b-16587c747055.jpg) | 27 | Emergency call function long press the bottom button | offen |
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | ENTFERNT |
 | Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
 | Aufblasbare Nackenstütze `15504011231617` | [70583674536321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e273f284-0202-4442-8616-c72997e32732_trans.jpg) | 24 | Ergonomic Design Assist relieving cervical fatigue More fitting | offen |
