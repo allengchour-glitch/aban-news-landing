@@ -242,12 +242,55 @@ def r_stiller_uebersprung(dateien):
     return treffer
 
 
+def _objekt_nach(t, start):
+    """Text des {...}-Literals ab Index start (erste «{»), Klammern in Strings zaehlen nicht."""
+    tiefe, q, i = 0, None, start
+    while i < len(t):
+        c = t[i]
+        if q:
+            if c == "\\":
+                i += 2
+                continue
+            if c == q:
+                q = None
+        elif c in "'\"`":
+            q = c
+        elif c == "{":
+            tiefe += 1
+        elif c == "}":
+            tiefe -= 1
+            if tiefe == 0:
+                return t[start:i + 1]
+        i += 1
+    return t[start:start + 400]
+
+
+def r_seo_teil(dateien):
+    """30.09.2026 — `seo: {description: …}` OHNE title LOESCHT bei Shopify den SEO-Titel (productUpdate/
+    collectionUpdate ersetzen das ganze SEO-Objekt). Gemessen: Kristall-Set-Titel weg; 25'133 von 25'183 aktiven
+    Produkten im Ledger von seo_versandschwelle_fix ohne SEO-Titel, uebriger Katalog 117 von 24'050."""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix not in (".py", ".mjs", ".js") or AUTO not in p.parents:
+            continue
+        for m in re.finditer(r"""["']?\bseo["']?\s*:\s*\{""", t):
+            obj = _objekt_nach(t, m.end() - 1)
+            hat_t = re.search(r"""["']?\btitle["']?\s*:""", obj)
+            hat_d = re.search(r"""["']?\bdescription["']?\s*:""", obj)
+            if bool(hat_t) != bool(hat_d):
+                zeile = t.count("\n", 0, m.start()) + 1
+                treffer.append((p, zeile, "seo-Objekt nur mit " + ("title" if hat_t else "description")
+                                + " — Shopify LOESCHT das andere Feld"))
+    return treffer
+
+
 REGELN = [
     ("stille-null", r_stille_null, "17.09.2026"),
     ("grund-verschluckt", r_grund_verschluckt, "17.09.2026"),
     ("pgrep-falle", r_pgrep_falle, "11.08.2026"),
     ("nur-tmp-dauerlaeufer", r_nur_tmp_dauerlaeufer, "11.08.2026"),
     ("stiller-uebersprung", r_stiller_uebersprung, "17.09.2026"),
+    ("seo-teil", r_seo_teil, "30.09.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -263,6 +306,8 @@ KOEDER = {
                              '         gibt_es_nicht_xyz website_hygiene_runner; do\n'
                              '  QUELL="/tmp/$S.sh"\ndone\n'),
     "stiller-uebersprung": ("automation/koeder.sh", 'QUELL=/tmp/x.sh\n[ -f "$QUELL" ] || continue\n'),
+    # Der ECHTE Fall aus seo_versandschwelle_fix.py (bis 30.09.):
+    "seo-teil": ("automation/koeder.py", 'gql(M,\n    {"i": {"id": p["id"], "seo": {"description": neu}}})\n'),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -275,6 +320,8 @@ ECHT = {
                              'for S in autocommit social_autopilot; do\n  QUELL="/tmp/$S.sh"\ndone\n'
                              'setsid bash /tmp/secrets_env.sh &\n'),
     "stiller-uebersprung": ("automation/koeder.sh", 'QUELL=/tmp/x.sh\necho "fehlt: $QUELL"\n[ -f "$QUELL" ] || continue\n'),
+    # Echt: beide Felder, Titel als f-String mit {…} (die Klammer im String darf das Objekt nicht beenden).
+    "seo-teil": ("automation/koeder.py", 'x = {"i": {"id": c["id"], "seo": {"title": f"{titel} | LuxeStyle",\n    "description": besch}}}\n'),
 }
 
 

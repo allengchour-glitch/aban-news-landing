@@ -45,7 +45,7 @@ def kuerzen(s):
 def lauf(ids, dry):
     n_ok = n_skip = n_err = 0
     for pid in ids:
-        d = gql('query($id:ID!){product(id:$id){title seo{description}}}', {"id": pid})
+        d = gql('query($id:ID!){product(id:$id){title seo{title description}}}', {"id": pid})
         p = (d.get("data") or {}).get("product")
         if not p:
             n_err += 1; continue
@@ -57,7 +57,7 @@ def lauf(ids, dry):
             n_ok += 1
             if n_ok <= 8: print(f"  {len(alt)}→{len(neu)} {neu!r}")
             continue
-        u = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{seo{description}} userErrors{message}}}', {"i": {"id": pid, "seo": {"description": neu}}})
+        u = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{seo{description}} userErrors{message}}}', {"i": {"id": pid, "seo": {"title": (p["seo"] or {}).get("title"), "description": neu}}})  # 30.09.: ohne title wird er GELOESCHT
         r = u["data"]["productUpdate"]
         if r["userErrors"] or (r["product"] or {}).get("seo", {}).get("description") != neu:
             n_err += 1; print("  FEHLER", pid, r["userErrors"])

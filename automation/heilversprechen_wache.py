@@ -257,6 +257,15 @@ ERSATZ += [
     ("Es ist ideal für entspannende Momente zu Hause oder zur Linderung von Verspannungen.", "Es ist ideal für entspannende Momente zu Hause."),
     ("kann er zur Linderung von Beschwerden im Lendenbereich beitragen und unterstützt gleichzeitig", "sorgt er für wohlige Wärme im Lendenbereich und unterstützt gleichzeitig"),
 ]
+# 30.09.2026 Esoterik (Vollscan 49'233 aktive, jede Phrase am ganzen Satz gelesen): Wirkung → Aussehen/Sammelwert.
+ERSATZ += [
+    ("Darüber hinaus wird Fluorit in verschiedenen Heilpraktiken eingesetzt.", "Darüber hinaus ist Fluorit ein beliebter Sammelstein."),
+    ("Er kann dabei helfen, negative Energieansammlungen im Körper zu eliminieren und wird oft mit Glück in Verbindung gebracht.", "Traditionell wird er oft mit Glück in Verbindung gebracht."),
+    ("Kann zur Eliminierung negativer Energie beitragen", "Schöner Blickfang auf Regal oder Schreibtisch"),
+    ("Ideal für Dekorationszwecke und verschiedene Heilpraktiken", "Ideal für Dekorationszwecke und als Sammlerstück"),
+    ("Dieser Edelstein ist bekannt dafür, die Intuition zu stärken, vor negativen Energien zu schützen und die Verbindung zum inneren Selbst zu fördern.", "Der Labradorit ist für sein schillerndes Farbspiel bekannt, das je nach Lichteinfall wechselt."),
+    ("einen heilenden Rauchring-Effekt", "einen beruhigenden Rauchring-Effekt"),
+]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
 MUSTER = re.compile(
@@ -274,7 +283,11 @@ MUSTER = re.compile(
     r"|beugt Kopfverformung|Depression|Angstzuständ"
     # 25.09.2026: Hautkrankheiten/Krankheitsbilder mit WORTGRENZE — ohne sie trafen «S-chwarze» (warze) und «Voll-narbe-nleder»
     # 138 von 150 Titeln (Kanarienvögel im Trockenlauf).
-    r"|\b(?:Akne|Narben|Chloasma|Melasma|Neurodermitis|Psoriasis|Schuppenflechte|Ekzem\w*|Nagelpilz|Fu(?:ss|ß)pilz|Krampfadern)\b|Anti-Akne|Akne-", re.I)
+    r"|\b(?:Akne|Narben|Chloasma|Melasma|Neurodermitis|Psoriasis|Schuppenflechte|Ekzem\w*|Nagelpilz|Fu(?:ss|ß)pilz|Krampfadern)\b|Anti-Akne|Akne-"
+    # 30.09.2026: esoterische Heilaussagen fehlten — «3 handverlesene Heilsteine» (Kristall-Set = einzige Produktseite mit Kauf
+    # der Woche), Fluorit «negative Energieansammlungen im Körper eliminieren». Vollscan 49'233 aktive: 4 Produkte.
+    # «Chakra»/«Aura» bleiben draussen (beschreibend: Armband-Design, Parfum-Aura) — dropship/HEILVERSPRECHEN-ESOTERIK.md
+    r"|Heilstein\w*|Heilkristall\w*|Heilpraktik\w*|\bheilende[nrs]?\b|Heilkraft\w*|negative\w* Energie\w*", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
     r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Beschaffenheit des Holzes|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
@@ -320,6 +333,10 @@ def main():
     cur = None; seiten = 0; geprueft = 0; fixe = 0; meld = []; fehler = 0
     NUR_OFFEN = os.environ.get("NUR_OFFEN") == "1"
     offene = [i for i, v in ledger.items() if v == "offen"] if NUR_OFFEN else []
+    # 30.09.2026: NUR_IDS=gid,gid … prüft genau diese Produkte (nach einer MUSTER-Erweiterung: als «sauber» quittierte
+    # Altprodukte werden sonst nie neu gelesen — der Tageslauf sieht nur updated_at seit dem letzten Lauf).
+    if os.environ.get("NUR_IDS"):
+        NUR_OFFEN = True; offene = [x.strip() for x in os.environ["NUR_IDS"].split(",") if x.strip()]
     if NUR_OFFEN: q = f"NUR_OFFEN ({len(offene)})"
     while seiten < CAP:
         if NUR_OFFEN:
@@ -336,7 +353,7 @@ def main():
         for p in pg["nodes"]:
             html = p["descriptionHtml"] or ""
             geprueft += 1
-            if ledger.get(p["id"]) == sha(html):
+            if ledger.get(p["id"]) == sha(html) and not os.environ.get("NUR_IDS"):
                 continue
             neu = html
             for a, b in ERSATZ:
@@ -384,6 +401,16 @@ def main():
         cur = pg["pageInfo"]["endCursor"]
     if geprueft == 0 and not seit:
         raise RuntimeError("0 Produkte geprueft ohne Zeitfilter — Abfrage/Berechtigung kaputt, KEIN Urteil")
+    # 30.09.2026: Ein gezielter Lauf (NUR_OFFEN/NUR_IDS) oder ein Meldelauf (FIX=0) darf weder den Tagesbericht
+    # ueberschreiben noch den Zeitstempel vorschieben — sonst ueberspringt der naechste Tageslauf alles, was seit dem
+    # letzten ECHTEN Lauf geaendert wurde (gemessen 30.09.: Trockenlauf NUR_IDS schob seit 13:21 → 00:4x).
+    teillauf = NUR_OFFEN or not FIX
+    if teillauf:
+        print(f"TEILLAUF: {geprueft} geprüft, {fixe} entschärft, {len(meld)} offen, {fehler} Fehler — Bericht/Zeitstempel unverändert")
+        for h, t, r in meld:
+            print("  offen:", h, "|", r[:2])
+        if fehler: sys.exit(1)
+        return
     with open(BERICHT, "w") as f:
         f.write(f"# Heilversprechen in Produkttexten — Stand {heute}\n\n")
         f.write(f"Geprüft: {geprueft} (Filter: `{q}`) · entschärft: {fixe} · offen: {len(meld)} · Schreibfehler: {fehler}\n\n")

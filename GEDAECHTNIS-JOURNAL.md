@@ -6,6 +6,22 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🪨 Esoterische Heilaussagen + SEO-Teilschreiber löschen SEO-Titel
+
+**GEMESSEN:** Landeseiten 7 T: Kristall-Set = einzige Produktseite mit Kauf (5 Sitz., 2 Warenkörbe, 1 Kauf). Seine
+SEO-Beschreibung sagte «3 handverlesene Heilsteine» — `heilversprechen_wache.MUSTER` kannte keine Esoterik. Vollscan
+49'233: 4 Produkte (Fluorit «negative Energieansammlungen im Körper eliminieren», Labradorit, Luftbefeuchter). Beim
+Umschreiben der SEO-Beschreibung verschwand der SEO-Titel: **`seo:{description}` ohne title setzt title auf null.**
+`seo_versandschwelle_fix.py` tat das bei 25'133 Produkten (Ledger 25'183 → 99,8 % ohne Titel; Rest 0,5 %).
+
+**GETAN:** MUSTER + 6 Ersatzphrasen, 3 Texte + 1 SEO von Hand, 0 SEO-Treffer im Vollscan danach; Teilläufe (NUR_OFFEN,
+FIX=0, neu NUR_IDS) schieben den seit-Stempel nicht mehr vor (tat es!); fünf Schreiber geben den Titel mit; Regel
+`seo-teil` im zweiten Gehirn (0 NEU). Keine Massen-Wiederherstellung: Theme zeigt ohne SEO-Titel «Titel – LuxeStyle».
+
+**LEHRE:** Ein Shopify-Objektfeld (seo) ist ein GANZES — wer ein Teilfeld schreibt, löscht die übrigen. Und: eine
+Muster-Erweiterung wirkt nicht auf schon als «sauber» quittierte Produkte; ein Trockenlauf darf keinen Zustand
+vorschieben → `dropship/SEO-TEIL-UND-ESOTERIK-2026-09-30.md`.
+
 ## 2026-09-29 · 🪙 CJ-Punkte leer um 23:15 UTC — der Video-Index frass 81 % des Tages
 
 **GEMESSEN:** Bei der Ersatzsuche für #1020 antwortete CJ «16900500 Insufficient API points. Used today: 124'850, Remaining: 0».

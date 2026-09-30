@@ -91,6 +91,9 @@ def main():
         if DRY:
             fix += 1
             continue
+        # 30.09.2026: seo mit nur EINEM Feld loescht das andere (Kristall-Set-Titel, 25'133 Titel via
+        # seo_versandschwelle_fix) → immer beide Felder schicken, das unveraenderte mit seinem alten Wert.
+        neu = {"title": seo.get("title"), "description": seo.get("description"), **neu}
         r = hw.gql("mutation($p:ProductUpdateInput!){productUpdate(product:$p){product{seo{title description}} userErrors{message}}}",
                    {"p": {"id": p["id"], "seo": neu}})
         pu = (r.get("data") or {}).get("productUpdate") or {}
@@ -99,7 +102,7 @@ def main():
         # null heisst «Produkttitel/Beschreibung gelten», ist also Erfolg.
         def ok(k, v):
             g = got.get(k)
-            return (g or "") == v or (g is None and k == "title" and v == p["title"][:70])
+            return (g or "") == (v or "") or (g is None and k == "title" and v == p["title"][:70])
         if pu.get("userErrors") or not all(ok(k, v) for k, v in neu.items()):
             fehl += 1
             print("    ⛔", pu.get("userErrors"), got)

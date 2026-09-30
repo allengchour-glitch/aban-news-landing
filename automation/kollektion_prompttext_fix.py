@@ -256,7 +256,7 @@ def main():
         r = gql('mutation($i:CollectionInput!){collectionUpdate(input:$i){'
                 'collection{id} userErrors{field message}}}',
                 {"i": {"id": c["id"], "descriptionHtml": t["body"],
-                       "seo": {"description": t["seo"]}}})
+                       "seo": {"title": (c.get("seo") or {}).get("title"), "description": t["seo"]}}})  # 30.09.: ohne title wird er GELOESCHT
         cu = ((r.get("data") or {}).get("collectionUpdate") or {})
         if not r or cu.get("userErrors"):
             print(f"    ⚠️ nicht geschrieben: {str(cu.get('userErrors'))[:120]} — bleibt offen")

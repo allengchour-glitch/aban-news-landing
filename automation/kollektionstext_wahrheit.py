@@ -20,15 +20,20 @@ def gql(q,v=None):
 AENDERUNGEN = [
  ("688564306305",
   {"descriptionHtml":"<p>Stolz auf die Schweiz: Edelweiss, Matterhorn, Alphorn und mehr — unsere Schweizer Editionen für Zuhause, Feste und als Geschenk. Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna &amp; TWINT.</p>",
-   "seo":{"description":"Schweizer Editionen online kaufen: Edelweiss-Mode, Matterhorn-Deko, Fan-Artikel & Geschenke. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."}}),
+   "seo_beschreibung":"Schweizer Editionen online kaufen: Edelweiss-Mode, Matterhorn-Deko, Fan-Artikel & Geschenke. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."}),
  ("690801967489",
   {"descriptionHtml":"<p>💇 Haarpflege &amp; Styling bei LuxeStyle — kuratierte Auswahl, viele Artikel ab Schweizer Lager in 1–2 Werktagen. Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>"}),
  ("690626625921",
   {"descriptionHtml":"<p>Steh- und Deckenlampen, die deinen Raum ins richtige Licht rücken – vom sanften Ambiente bis zur hellen Grundbeleuchtung. Schweizer Online-Shop, Gratis-Versand ab CHF 50, 30 Tage Rückgabe.</p>",
-   "seo":{"description":"Steh- & Deckenlampen für jeden Raum · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT."}}),
+   "seo_beschreibung":"Steh- & Deckenlampen für jeden Raum · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT."}),
 ]
 for cid,felder in AENDERUNGEN:
     eingabe={"id":f"gid://shopify/Collection/{cid}",**felder}
+    # 30.09.2026: seo nur mit description LOESCHT den SEO-Titel → den bestehenden Titel mitgeben.
+    if "seo_beschreibung" in eingabe:
+        alt=gql('query($id:ID!){collection(id:$id){seo{title}}}',{"id":eingabe["id"]})
+        titel=(((alt.get('data') or {}).get('collection') or {}).get('seo') or {}).get('title')
+        eingabe["seo"]=dict(title=titel, description=eingabe.pop("seo_beschreibung"))
     r=gql('mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{handle} userErrors{message}}}',{"i":eingabe})
     res=(r.get('data') or {}).get('collectionUpdate') or {}
     print(('  ⚠️ '+json.dumps(res.get('userErrors'))[:80]) if res.get('userErrors') else f"  ✓ {(res.get('collection') or {}).get('handle')}")

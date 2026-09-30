@@ -125,8 +125,10 @@ def main():
                 print(f"  {p['title'][:44]:<44} …{neu[-70:]}", flush=True)
             if DRY:
                 continue
+            # ⚠️ 30.09.2026: `seo` nur mit description LOESCHT seo.title — 25'133 von 25'183 aktiven Produkten in
+            # diesem Ledger haben keinen SEO-Titel mehr (uebriger Katalog: 117 von 24'050). Titel immer mitgeben.
             gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
-                {"i": {"id": p["id"], "seo": {"description": neu}}})
+                {"i": {"id": p["id"], "seo": {"title": (p.get("seo") or {}).get("title"), "description": neu}}})
             f.write(f"{p['id']}\t65->50\n"); f.flush()
             time.sleep(0.16)
         if n % 2000 < 100:
