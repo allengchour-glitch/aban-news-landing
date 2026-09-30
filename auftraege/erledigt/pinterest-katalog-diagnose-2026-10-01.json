@@ -1,0 +1,8 @@
+{
+  "id": "pinterest-katalog-diagnose-2026-10-01",
+  "typ": "skript",
+  "skript": "pinterest_katalog_diagnose.mjs",
+  "warum": "Frage: ist der Einbruch der Pinterest-Reichweite seit ~16.09. ein Katalog-Problem (letztes Einpflegen, Distribution genehmigt/nicht genehmigt)? Stand 17.09.: 431,36 Tsd. erfolgreich, 100 % genehmigt. Rein lesend.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
