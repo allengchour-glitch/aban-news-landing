@@ -62,6 +62,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-30 (🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch):**
+- **Nachfrage prüfen:** Semrush hat 0 API-Units → Google-Vorschläge per `suggestqueries.google.com/complete/search?client=firefox&hl=de&gl=ch&q=…`
+  (geht durch den Proxy). Belegt: „mietzinsreduktion berechnen/vorlage“, „hochzeit budget excel vorlage/pro gast“, „wedding budget spreadsheet“.
+- **Mietzins-Paket Schweiz CHF 19** (`tools/mietzins/`, 12 Tests, `content/packs/de/mietzins-paket/`): Art. 13 VMWG (Senkung = 1−1/(1+3 %×Schritte),
+  1,75→1,25 = −5,66 %), Art. 16 (40 % LIK), Kostenpauschale, Termin + letzter Zugangstag, Fristen Art. 270a OR, fertiger Brief. Referenzzins
+  1,25 % (BWO, Stand 2.9.2026, nächste Publikation **1.12.2026** → dann `AKTUELL` in engine.js nachführen!). Verkauft auf `mietzins-senkung-rechner.html`
+  (rechnete vorher falsch Schritte×2,91 % → jetzt Engine). Stripe `buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O`.
+- **Hochzeits-Budget-Plan CHF 19** (`tools/hochzeit/`, 10 Tests, App + Excel `tools/etsy/hochzeit_xlsx.py`), Gratis-Seite `hochzeit-budget-rechner.html`.
+  Excel per LibreOffice gegen Engine geprüft (8/8). Beispielbeträge = Platzhalter, KEINE erfundenen Durchschnittspreise.
+  Stripe `buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P`.
+- **Etsy (6 Pakete in `content/etsy/`)**: Upload vollautomatisch über `etsy-upload.yml` (`tools/etsy/etsy_upload.mjs`, OAuth über
+  `abannews.com/api/etsy-auth`). Secrets `ETSY_API_KEY` (keystring:shared_secret) gesetzt ✅. **Wartet auf Etsy-Freigabe der App**
+  („Pending Personal Approval“) → dann User: /api/etsy-auth → `ETSY_REFRESH_TOKEN` → Workflow starten (erst Probelauf).
+- `hype-filter`-Test war auf main rot (Pro-Lizenz nicht gemockt) → gefixt.
+
 **📌 2026-09-25 (🛒 3. Produkt „Budget-Plan Schweiz" CHF 19):** Offline-Rechner `content/packs/de/budget-plan/`
 (Takt monatlich–jährlich → monatliche Rückstellung für Steuern/Franchise/Jahresrechnungen, Muss/Kann/Sparen, Notreserve),
 Gratis-Seite `budget-rechner-schweiz.html`, Engine `tools/budget/engine.js` (7 Tests), Build `tools/budget/build.py`.
