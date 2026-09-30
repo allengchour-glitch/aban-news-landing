@@ -80,6 +80,38 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-30, vierte Runde (⚙️ DIE AUTOMATISIERUNG WAR SEIT JEHER INSTALLIERT — Shopify Flow):**
+- **Auftrag:** „neuste sachen lernen für automation." Voller Bericht:
+  **`dropship/LERNEN-AUTOMATION-2026-09-30.md`**.
+- **🔴 DER FUND STAND DIE GANZE ZEIT IM EIGENEN SHOP. GEMESSEN über `appInstallations`:
+  `{"title":"Flow","handle":"flow","developerName":"Shopify"}` ist installiert** — Tarif
+  **Basic**, Währung CHF. **Kein einziger Stand-Block seit Juni erwähnt Flow.** Stattdessen
+  steht dort vier Monate lang die Klage, Automatisierung gehe hier nicht: erst „GitHub Actions
+  ist gesperrt", dann „Scheduler ist nicht aktiv", dann „es fehlen die drei Env-Werte".
+- **🔑 WARUM FLOW ALLEM ÜBERLEGEN IST, und das folgt aus der Architektur statt aus Werbung:
+  es läuft IM SHOP.** Kein Container, keine Sitzung, kein Token, kein Cron, kostenlos. Zum
+  Vergleich, alles gemessen: GitHub Actions braucht Secrets und hat ein Fair-Use-Risiko · die
+  neue Routine hat **keine `mcp__Shopify__*`-Tools** · `preis_korrektur.mjs` wartet seit dem
+  19.09. auf drei Env-Werte · `watch_url` endet laut eigener Beschreibung mit der Sitzung.
+  **Flow ist das einzige Stück, das ohne uns weiterläuft.**
+- **⚠️ DIE GRENZE IST EBENFALLS GEMESSEN: von über 400 Mutationen der Admin-API heissen genau
+  ZWEI nach Flow** — `flowGenerateSignature` und `flowTriggerReceive`. **Es gibt keine Mutation,
+  die einen Workflow anlegt.** Workflows entstehen nur in der Oberfläche → **einmaliger
+  User-Klick.** **Aber `flowTriggerReceive` ist der interessante Teil:** baut der User einen
+  Workflow mit **eigenem Auslöser**, kann ich diesen von hier feuern — **einmal klicken,
+  dauerhaft fernsteuerbar.**
+- **🟡 NUR DER USER, und dieser eine Klick wiegt mehr als alles, was ich bauen kann:** den
+  Workflow „bezahlt, nicht versandt" in Flow anlegen. **Er hätte #1019 von selbst gemeldet**,
+  und im Juli hat genau dieses Muster **CHF 869.62 Rückerstattungen** gekostet. Bauplan im
+  Bericht. ⚠️ **Entscheidend ist die ZWEITE Statusprüfung NACH dem Warten** — ohne sie meldet
+  er auch längst versandte Bestellungen, und eine Meldung, die meistens falsch ist, schaltet
+  man nach einer Woche ab.
+- **⛔ Bewusst NICHT gebaut: ein Shopify-Webhook auf eine eigene Cloudflare-Funktion.**
+  `webhookSubscriptionCreate` existiert und `functions/` ist ein dauerhafter Endpunkt — der Weg
+  ist **plausibel und ungeprüft**. Flow löst dieselben Fälle ohne eine Zeile Code und ohne neue
+  Fehlerquelle; ein Webhook lohnt erst für etwas, das Flow nicht kann.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-30, dritte Runde (🔌 DER USER HAT KONNEKTOREN VERBUNDEN — zwei offene Punkte damit geschlossen):**
 - **Auftrag:** „mcp verbunden und co wo du geschriben hast."
 - **✅ GEMESSEN über `ListConnectors`, das Konto hat jetzt SIEBEN Konnektoren statt vier:**
