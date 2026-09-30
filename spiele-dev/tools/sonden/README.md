@@ -201,4 +201,8 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   in Weltkoordinaten (Gehen und Rennen). Drei Gegenproben. `DIAG=1` druckt Clip/Tempo/Gewichte der Renner.
 - Werkzeuge daneben (spiele-dev/tools/): `figuren-schau.mjs` (Kontaktbogen von Figuren-GLBs, `--schritt` misst den Weg
   je Sekunde bei Abspieltempo 1 über den Bodenkontakt) und `fbx-zu-glb.mjs` (FBX → GLB ohne Blender, Farben eingebacken).
+- `probe-handy.mjs` (2026-09-30, User: „auf handy kann ich ned spielen") — Handy-Format hoch (390×844) oder `QUER=1`
+  (844×390), isMobile/Touch: tippt „Solo bauen", wartet auf `_ladeOffen === 0`, misst Download, JS-Speicher,
+  geschaetzten Grafikspeicher (Geometrie + Texturen), Aufrufe/Dreiecke, laengste Blockade. Gegenprobe 2-s-Blockade.
+  Erster Befund: im Hochformat liegt `#rotHint` („Dreh dein Handy quer!") ueber allem — ohne Weiter-Knopf.
 
