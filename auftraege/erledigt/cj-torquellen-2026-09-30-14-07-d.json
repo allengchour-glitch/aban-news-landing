@@ -17,6 +17,7 @@
       "url": "https://download-only-api.cjdropshipping.com/b3538050db3f71edbfc20675a0ec0102/d8e4b9c2721d455aa0e13a38b7a48323-e17515299dae8c30840076389f1ef36b-ld.mp4"
     }
   ],
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "abgebrochen-server",
+  "hinweis": "Server-Lauf starb ohne Ergebnis (Ursache serverseitig unbekannt, Videos 2,6–10 MB). Nicht wiederholen — Quellen liegen in auftraege/ergebnis/.",
+  "nachgeholt": "2026-09-30T15:58Z von der Cloud direkt geladen (Download-Host seit heute aus der Cloud erreichbar): rq-1388063174305124352:2601652, rq-1586184516597723136:10110985, rq-1636202620727603200:4291758"
 }
