@@ -262,3 +262,14 @@ Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den 
 - **Uploads in den Shop heissen `tati-model-…`** — nur so greift die Sperre auf den Weg Shop → Pin/Story/Karussell.
 - **Startseite:** Hero-Bilder vorbereitet (Desktop 2400×1100: drei Fotos rechts, Gesichter frei, Text links unten; Mobil 1080×1350 oben
   verankert), liegen in /tmp/tati — Upload wartet auf Speicherplatz (Duplikat-Aufräumung läuft).
+
+### 🏠 30.09. 17:0x UTC — Tati ist das Titelbild («neue titelbild mit tati?»)
+- **Ohne Dateispeicher:** Hero-Bilder als **Theme-Assets** (`tati-model-hero-desktop.jpg` 2400×1100, drei Fotos ab 43 % der Breite;
+  `tati-model-hero-mobil.jpg` 1080×1350 oben verankert) — Theme-Dateien zählen nicht zum vollen Dateispeicher (auch die App-Symbole gingen).
+- CSS-Block `lx-tati-hero` in der Startseiten-Sektion `lux_usp` (custom-liquid direkt unter dem Hero): Original-Hero-Bild unsichtbar
+  (Platz bleibt), Tati als Hintergrund (Desktop `right top`, Mobil `center top`), Verlauf auf «to top» gedreht (Theme-Standard «to bottom»
+  legte den Schatten übers Gesicht), Markierung «Model: @tatjanalarsinamoira» unten rechts.
+  **Rücknahme = Block `<style id="lx-tati-hero">…</style>` löschen**; Backup `/tmp/index_backup_vor_tati_hero.json`.
+- Sichtprüfung im echten Chromium bei 390 / 768 / 1024 / 1440 px: Gesicht überall frei (erster Desktop-Wurf: Text über dem linken Foto
+  → Fotos nach rechts). Mobil beginnt der Text knapp unter dem Kinn.
+- Offen: Knopf heisst weiter «Übergangsmode entdecken» (Betreiber-Frage, ob er auf die Kleider zeigen soll).

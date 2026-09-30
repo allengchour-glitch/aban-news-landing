@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:49:29Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:54:27Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1204 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3972** in 1082 Produkten
-- Treffer (≥ 4 Wörter): **160** in 137 Produkten
+- Medien geprüft: **4061** in 1107 Produkten
+- Treffer (≥ 4 Wörter): **164** in 141 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -19,6 +19,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Velo-Scheinwerfer mit Welleninduktion `15448957223297` | [69862628753793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ec0a3dc-5ff7-4919-9833-ca59f27106b0_trans.jpg) | 34 | Smart gesture sensing Wave sensor lighting switch When | ENTFERNT |
 | Fahrradhelm für sicheres Radfahren `15453769073025` | [69926689276289](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7069a30b-403b-43cf-9d90-e5b3dbb7eea6_trans.jpg) | 31 | adjust the wrapping floating adjustment system design The | ENTFERNT |
 | Kabelloser Audio-Adapter für TV & Kopfhörer `15504083288449` | [70584177918337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9165c63c-fb2b-4df7-b0c0-c45b2180e9f4.jpg) | 31 | Bluetooth Super Guarantee AUDIO DELAY with these super | offen |
+| Anti-Bell-Gerät für Hunde `15453793026433` | [69926766379393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8959a061-2a2d-431d-9f4b-533f2eea777b.jpg) | 28 | Upgrade Smart Chip Anti False Triggering With smart | offen |
 | Gaming-Konsole Silikonhülle `15453787914625` | [69926758252929](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11ddebed-2105-475c-9551-19d8341fcd8d.jpg) | 27 | Comfortable Hand Feeling Environmentally friendly silicone feel very | ENTFERNT |
 | Outdoor Smartwatch mit Kompass & Herzfrequenz `15523210428801` | [70759100875137](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9c845c6d-b477-42c0-8a4b-16587c747055.jpg) | 27 | Emergency call function long press the bottom button | offen |
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | ENTFERNT |
@@ -124,6 +125,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Mini-Powerbank für Apple Watch `15502661190017` | [70564236034433](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/321670423961.jpg) | 7 | Over magnetic field protection Short circuit protection | offen |
 | Mikrostrom-Augenmassagegerät mit Farblicht `15506324586881` | [70603024269697](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ede64476-e502-41dc-9a2c-93d7929839a3.jpg) | 7 | IMPROVE FINE LINES FIRMING SKIN IMPROVE SKIN | offen |
 | Zero-Pressure Cloud Kissen `15524779295105` | [70799444607361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fd02c3c-fee9-46e1-98b0-892a3bd2156d_trans.jpg) | 7 | Zoned pillow Sleeping approximately included Pillowcase approximately | offen |
+| Leuchtende Kinderschlappen `15453791584641` | [69926764577153](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c44db29-a789-417a-b940-4a8bc06fd03b_trans.jpg) | 7 | Bandage style for outdoor wear Luminous slippers | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
@@ -152,6 +154,8 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Freihand-Hundeleine für mittelgrosse und grosse  `15519837127041` | [70709921546625](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1615103635301.jpg) | 5 | use one just say Just | offen |
 | Schlaf-Nackenkissen mit Moxibustion `15453777002881` | [69926709461377](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a853db6-9b9d-4b90-aabb-1d14cf817e22_trans.jpg) | 5 | Mugwort Heat Pack Classic Gray | offen |
 | Mehrzweck-Hundeleine mit Frosch Schnalle `15453790142849` | [77408597934471](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/35e1164a-a08f-4ce2-b4b4-78d80f17b055_fine.jpg) | 5 | Lake Blue Small frog clasp | offen |
+| Dickes Korallen-Fleece Badetuch `15453792436609` | [69926765724033](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42b48f14-7470-4f15-ad28-5a75b765be12_fine.jpg) | 5 | Comfortable and soft Enlarged Thickened | offen |
+| Kinder-Badetuch mit Cartoon-Druck `15453792895361` | [69926766248321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ecef8483-3251-4e8d-935e-73a510cf11a6_fine.jpg) | 5 | caring for newborn skin acterial | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
