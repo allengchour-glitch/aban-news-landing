@@ -38,7 +38,7 @@ function csvZeilen(t) {   // RFC-4180: Captions enthalten Zeilenumbrüche und Ko
 function ids() {
   const [h, ...rows] = csvZeilen(fs.readFileSync(CSV, 'utf8'));
   const iid = h.indexOf('id'), ist = h.indexOf('status');
-  return [...new Set(rows.filter(r => /^cjreel-/.test(r[iid] || '') && r[ist] === 'meisterwerk-tor-skip').map(r => r[iid].slice(7)))];
+  return [...new Set(rows.filter(r => /^cjreel-/.test(r[iid] || '') && ['meisterwerk-tor-skip', 'preis-veraltet-skip'].includes(r[ist])).map   /* 30.09.: auch Preis-Sperren (MODUS=preis) */(r => r[iid].slice(7)))];
 }
 function hatQuelle(pid) {
   const n = sqName(pid);

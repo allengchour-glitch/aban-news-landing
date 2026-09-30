@@ -647,6 +647,7 @@ while true; do
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_reel_tor_reparatur.lock; flock -n 9 || exit 0; echo START \$(date -u +%FT%H:%MZ); \
          MODUS=hook SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
+         MODUS=preis SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
          SCHARF=1 timeout 900 /opt/node22/bin/node automation/reel/tor_quellen_anfragen.mjs | grep -E '📮|FERTIG'; \
          bash automation/git_sichern.sh 'Reel-Tor-Reparatur: neu geschnitten + Quellen angefragt [skip ci]' social/reels automation/reels_seed.csv auftraege/offen" \
         >> /tmp/reel_tor_reparatur.log 2>&1 9>&- & )

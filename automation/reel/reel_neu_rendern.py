@@ -16,6 +16,12 @@ MODUS=hook (30.09.2026): statt «Fenster zu schmal» die vom Meisterwerk-Tor ges
 neu schneiden — Einstieg = bewegteste Sekunde der Quelle (reel/hook_start.py). Besteht das Tor, geht die Zeile zurück auf
 `ready` (Datei frisch gelesen, nur Zeilen, die noch meisterwerk-tor-skip stehen, atomar geschrieben — Lost-Update-Lehre 28.09.).
 Seit 30.09. nimmt auch der Fenster-Modus den gefundenen Einstieg statt min(2, Dauer/4).
+
+MODUS=preis (30.09.2026, Verbesserungsrunde): 36 Reels standen auf `preis-veraltet-skip` — post_guard.preisVeraltet sperrt
+sie zu Recht (Preis in Caption UND im Bild ≠ Live-Preis), aber niemand reparierte sie: gesperrt ≠ verloren (Lehre 28.09.).
+Hier: Live-Preis aus Shopify (Handle aus dem Caption-Link), Video mit neuem Preis neu rendern, Tor mit PREIS_SOLL = Live,
+Caption-Preis ersetzen (Versand-Schwellen bleiben), Zeile atomar zurück auf `ready`. Ohne Quelle: tor_quellen_anfragen.mjs
+fordert sie über den Server an (STATUS enthält preis-veraltet-skip).
 """
 import csv, glob, json, os, re, subprocess, sys, tempfile
 import numpy as np
@@ -81,11 +87,54 @@ def dauer(p):
         return float(c.duration / 1e6) if c.duration else 0.0
 
 
+def live_preis(handle):
+    """Günstigste Variante (CHF, 2 Stellen) + Status aus Shopify — None bei Fehler (dann kein Urteil, keine Änderung)."""
+    sys.path.insert(0, os.path.join(REPO, "automation"))
+    import heilversprechen_wache as hw
+    r = hw.gql('query($h:String!){productByHandle(handle:$h){status priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}}}}',
+               {"h": handle})
+    p = ((r.get("data") or {}).get("productByHandle")) if isinstance(r, dict) else None
+    if not p:
+        return None
+    return p["status"], f'{float(p["priceRangeV2"]["minVariantPrice"]["amount"]):.2f}', f'{float(p["priceRangeV2"]["maxVariantPrice"]["amount"]):.2f}'
+
+
+VERSAND = re.compile(r"(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?", re.I)
+
+
+def caption_preis(cap, neu):
+    """Jede CHF-Angabe mit Rappen ausser Versand-Schwellen (wie post_guard.preisVeraltet) → neuer Preis."""
+    # Kanarienvogel 30.09.: «CHF 47.90 statt CHF 59.90» wurde zu «CHF 48.90 statt CHF 48.90» → Streichpreis raus
+    cap = re.sub(r"\s*statt\s+CHF\s?\d+[.,]\d{2}\b", "", cap)
+    schutz = {m.span() for m in VERSAND.finditer(cap)}
+    def ersetze(m):
+        if any(a <= m.start() < b for a, b in schutz):
+            return m.group(0)
+        return f"CHF {neu}"
+    return re.sub(r"CHF\s?\d+[.,]\d{2}\b", ersetze, cap)
+
+
+def zeile_ersetzen(rid, alt_status, neu_status, neue_caption):
+    """Wie status_setzen, aber mit Caption — nur wenn die Zeile noch alt_status trägt (Lost-Update-Lehre 28.09.)."""
+    import io
+    with open(CSV, newline="") as f:
+        rows = list(csv.reader(f))
+    h = rows[0]; iid, ist, ica = h.index("id"), h.index("status"), h.index("caption"); n = 0
+    for r in rows[1:]:
+        if len(r) > ist and r[iid] == rid and r[ist] == alt_status:
+            r[ist] = neu_status; r[ica] = neue_caption; n += 1
+    buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows(rows)
+    with open(CSV + ".tmp", "w", newline="") as f:
+        f.write(buf.getvalue())
+    os.replace(CSV + ".tmp", CSV)
+    return n
+
+
 def main():
     rows = list(csv.DictReader(open("automation/reels_seed.csv")))
     erg = []
     for r in rows:
-        soll = "meisterwerk-tor-skip" if MODUS == "hook" else "ready"
+        soll = {"hook": "meisterwerk-tor-skip", "preis": "preis-veraltet-skip"}.get(MODUS, "ready")
         if r.get("status") != soll or not r["id"].startswith("cjreel-"):
             continue
         pid = r["id"][len("cjreel-"):]
@@ -93,13 +142,21 @@ def main():
         if not os.path.exists(lokal):
             continue
         b = fensterbreite(lokal)
-        if MODUS != "hook" and b >= MIN_BREITE:
+        if MODUS == "fenster" and b >= MIN_BREITE:
             continue
         q = sorted(glob.glob(f"auftraege/ergebnis/*-rq-{pid.lower()}.mp4"))
         cap = r["caption"]
         hook = re.sub(r"\s*👀\s*$", "", cap.split("\n")[0]).strip()
         m = re.search(r"«([^»]+)»", cap); titel = m.group(1) if m else ""
         p = re.search(r"CHF (\d+\.\d\d)", cap); preis = p.group(1) if p else ""
+        if MODUS == "preis":
+            hd = re.search(r"/products/([a-z0-9-]+)", cap)
+            lp = live_preis(hd.group(1)) if hd else None
+            if not lp or lp[0] != "ACTIVE":
+                erg.append((pid, b, "UEBERSPRUNGEN", "kein Live-Preis" if not lp else f"Produkt {lp[0]}")); continue
+            if lp[1] != lp[2]:
+                erg.append((pid, b, "UEBERSPRUNGEN", f"Preisspanne {lp[1]}–{lp[2]} (Variantenpreise) — von Hand")); continue
+            preis = lp[1]; cap = caption_preis(cap, preis)
         if not (q and titel and preis):
             erg.append((pid, b, "UEBERSPRUNGEN", "keine Quelle" if not q else "Caption ohne Titel/Preis")); continue
         mus = subprocess.run(["python3", "automation/music/produce/musik_erkennen.py", lokal], capture_output=True, text=True).stdout.split("\t")
@@ -121,7 +178,12 @@ def main():
         if tor.returncode != 0:
             erg.append((pid, b, "TOR-DURCHGEFALLEN", tor.stdout.strip()[-200:])); os.unlink(tmp); continue
         os.replace(tmp, lokal)
-        zurueck = status_setzen({r["id"]}, "meisterwerk-tor-skip", "ready") if MODUS == "hook" else 0
+        if MODUS == "hook":
+            zurueck = status_setzen({r["id"]}, "meisterwerk-tor-skip", "ready")
+        elif MODUS == "preis":
+            zurueck = zeile_ersetzen(r["id"], "preis-veraltet-skip", "ready", cap)
+        else:
+            zurueck = 0
         erg.append((pid, b, "ERSETZT", f"neu {nb} px · Einstieg {st}s" + (" · wieder ready" if zurueck else "")))
     print("\nERGEBNIS:")
     for e in erg:

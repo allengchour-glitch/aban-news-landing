@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🏷️ Reels mit veraltetem Preis: 36 gesperrt, 0 repariert (Verbesserungsrunde 20:25)
+post_guard.preisVeraltet sperrte 36 Reels zu Recht — aber kein Weg führte zurück: `reel_neu_rendern.py` kannte nur Fenster/Hook,
+die Quellanfrage nur Tor-Sperren. Jetzt `MODUS=preis` (Live-Preis → Video + Caption neu, Tor mit PREIS_SOLL, atomar ready) +
+Quellanfrage für Preis-Sperren + täglicher Aufseher-Aufruf. Kanarienvogel fand «statt CHF» → «CHF 48.90 statt CHF 48.90».
+Erstlauf: 1 ersetzt (T8-Smartwatch), 18 Quellen angefragt, 6 ohne CJ-Video. **Jede Sperre braucht ihren Reparaturweg — auch
+die, die «nur» eine Preisänderung ist.** → `dropship/REEL-PREIS-REPARATUR-2026-09-30.md`
+
 ## 2026-09-30 · 🧟 Ein äusseres `timeout` beendet nur den Aufrufer — tesseract lief als Waise weiter (Load 50)
 Beim Neu-Schnitt gemessen: Load 50 auf 4 Kernen, 11 `tesseract` mit Eltern-PID 1, bis 826 s alt. Das Meisterwerk-Tor lief
 dadurch im Reel-Motor an seine OCR-Grenze → «nicht messbar» → 5 von 6 fertigen Reels verworfen. `bildtext_pruefen.py` rief
