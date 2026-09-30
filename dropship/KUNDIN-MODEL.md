@@ -226,3 +226,14 @@ Platz nicht sofort frei). Alle acht Medien wurden wieder entfernt, Gegenprobe: 0
 beiden Produkten. **Ein FAILED-Medium am Produkt ist schlimmer als gar keins** (Lehre 11.08.:
 ein Produkt stand live mit 7 FAILED-Medien und ohne sichtbares Bild im Google-Kanal).
 Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den Grind-Befund.
+
+## 🔁 30.09.2026 — «hast du noch fotos von tati? kannst du das auch in shop machen und app»
+- Fotos NICHT mehr im Container (liegen nie im Repo; /tmp war weg, der Link stand nirgends). Betreiber schickte den Link erneut
+  → 10 Fotos (1536×2048) nach `/tmp/tati/` geholt (Rezept oben funktioniert unverändert). **Der Link bleibt ausserhalb des Repos**
+  (er öffnet ihre Fotos für jeden) — nur `/tmp/tati/link.txt` (600).
+- Inhalt: Blumenkleid mit Schnürung (Fotos 1–4, 8–10; 8/9 schneiden den Kopf an) · blaues Midikleid (5–7).
+- Produkte heute: `blumenkleid-mit-schnurung-613000` ACTIVE **CHF 24.90** (4/4 kaufbar, CJ Status 3 = im Verkauf) ·
+  `midikleid-mit-zopfmuster-und-blumenprint-600200` ACTIVE **CHF 39.90** (40/40 kaufbar; CJ-Abfrage gedrosselt, offen).
+  ⚠️ Die Caption vom 04.09. nennt CHF 14.90 — veraltet, nie so posten.
+- **Shop-Upload erneut geprüft (1 Foto): FAILED `FILE_STORAGE_LIMIT_EXCEEDED`** → Medium sofort entfernt, Produkt wieder 6/6 READY.
+  Shop braucht Platz im Dateispeicher (Betreiber-Entscheid: aufräumen oder Grow-Plan).
