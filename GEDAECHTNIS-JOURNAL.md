@@ -19,8 +19,13 @@ quittiert 6, offen 0», 6 leere Quittungen pro Tag, niemand merkte es (Quittung 
 Bauer: VORRANG `kunden-liebling`/`nachfrage-liebling` (12, u. a. Sirène/Aurora/Provence), `sub-kleider` neu, `sommer` raus,
 UTM `utm_source=pinterest&utm_campaign=pins-<board>`, Metricool-Ledger ausgeschlossen (0 Überschneidung), THROTTLED-
 Wiederholung (erster Lauf verlor 13/25 Kollektionen still → 10 statt 114).
-**Offen:** Der Reichweiten-Einbruch begann VOR dem sparse-Klon (16.09.) → Messaufträge `pinterest-analytics-2026-10-01`
-+ `pinterest-katalog-diagnose-2026-10-01` an den Server.
+**Nachmessung (Server, Pinterest selbst, 30.09. 22:1x UTC) — der «Einbruch auf ~50/Tag» war ein MESSFEHLER von Metricool:**
+Pinterest Analytics letzte 14 Tage: **45,51 Tsd. Impressionen (−45 %)**, 986 Interaktionen, **56 ausgehende Klicks (−20 %)**,
+77 Merken — also ~3'250 Impressionen/Tag, nicht 50. Metricools Konto-Zeitreihe liefert seit 22.09. nur noch Bruchstücke.
+Katalog: letztes Einpflegen 30.09. 09:26 UTC, 420,79 Tsd. erfolgreich (99,15 %), 0 fehlgeschlagen; Distribution 423,5 Tsd.
+genehmigt (99,5 %), 2'111 nicht genehmigt = «Nicht vorrätig». Kein Katalogproblem. Shopify zählt deutlich weniger
+Pinterest-Sitzungen als Pinterest ausgehende Klicks (In-App-Browser → «direct») — deshalb jetzt UTM auf jedem Server-Pin.
+**Zweite Lehre:** Eine Zahl aus einem Drittwerkzeug (Metricool) vor einer Diagnose an der Quelle (Pinterest) gegenprüfen.
 **Lehre:** Wer einen Klon verschlankt, muss jeden Leser prüfen, der Dateien ausserhalb des neuen Umfangs liest. Eine Quittung
 «nichts offen» ist kein Erfolg, wenn die Liste leer ist, weil die Datei fehlt → fehlende Eingabe = Fehler, nicht 0.
 
