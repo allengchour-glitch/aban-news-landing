@@ -192,3 +192,7 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   über die echte Funktion, Abnahme über 5 hinaus, Kopfzeile bei Stufe 9 vor dem Ausbau (Fehlbetrag in $), 25'000 $ verdient
   = +10 Punkte, Spielstand-Umweg mit Stufe 9 + Ausbau 12, Erfolge ohne Wurf.
 - `probe-r103.mjs` liest den Ausbau-Deckel aus der Quelle (`IMMO_LV_MAX`; Miete ×(1 + 0,5·(Deckel − 1))) statt fest 5.
+- `probe-schritt.mjs` (Runde 105) — vermisst den Geh-Clip von Mia/Partner (Dauer, Fussknochen, engste Stellung = Stand-Bild,
+  Schrittlänge → Tempo bei timeScale 1) und lässt Mia im Spiel gehen und anhalten: timeScale muss v/1,45 sein, nach dem
+  Anhalten Pause bei t = 1,049. Wartet in Bildern (`renderer.info.render.frame`), nicht in Sekunden. Gegenprobe: weiteste
+  Fussstellung > 2× engste, Schritt > 10 cm.

@@ -8109,3 +8109,23 @@ Polizei und Busse bei Misserfolg), und deren Beute lief über `verdiene()` → z
 Bürgerrang. Jetzt: `verdiene(betrag, zaehlt, krimi)` — Beute geht in `stats.schatten` (Schattenkasse, im 🏆-Panel sichtbar
 „zählt nicht für den Rang"), das Geld selbst bleibt. Sonde `probe-r104`: Beute 1'000 $ → Gesamtverdienst +0, Schattenkasse
 +1'000; alle übrigen Prüfungen unverändert ✅. Grundlage für Plan 9.3 (Hehler in Burgdorf wechselt die Schattenkasse).
+
+## Runde 105 (Teil 2) · 🚶 Füsse rutschen nicht mehr, Stehen ohne eingefrorenen Schritt (2026-09-30)
+
+**Befund beim Code-Lesen (korrigiert die Annahme „Figuren sind prozedural" aus Plan 9.1):** Mia und Partner tragen seit
+je ein skinned Modell (`th_mann.glb`/`th_frau.glb`, `attachRealChar`, 24 Knochen, ein Clip „walking"); nur Passanten sind
+prozedural (`mkBewohner`). Im Repo liegen 79 GLB mit Animationen (Meshy-Figuren `anime_*`/`class_*` mit idle/walk/run,
+Tiere `an_*` mit 8 Clips). Der Geh-Clip lief aber IMMER mit timeScale 1,1 — egal ob Mia 2,6 m/s ging oder sprintete —
+und beim Anhalten blieb sie mitten im Schritt eingefroren.
+
+**Gemessen (`probe-schritt`, neu):** Clip 1,067 s, Schrittlänge 0,78 m → 1,57 m je Zyklus = **1,47 m/s bei timeScale 1**;
+engste Fussstellung bei **t = 1,049 s**. Bei 2,6 m/s Gehtempo glitten die Füsse also um rund 40 %.
+
+**Eingebaut:** Abspieltempo aus der echten Geschwindigkeit (Weg je Bild, geglättet; 0,55…2,6), Anhalten erst, wenn das
+Stand-Bild seit dem letzten Bild überschritten wurde (auch beim Zyklus-Umbruch — ein enges Zeitfenster wird auf langsamen
+Geräten übersprungen). **Nachher im Spiel:** timeScale 1,71 bei 2,48 m/s (= v/1,45), nach dem Anhalten pausiert der Clip
+bei t = 1,049.
+
+**Lehre (Sonde):** In BILDERN warten, nicht in Sekunden. Die Testumgebung liefert ~1 Bild/s und das Spiel deckelt dt auf
+0,05 s — nach 1,8 s Wanduhr war der Clip erst 0,07 s weiter, und die erste Sondenfassung meldete ❌, obwohl die Logik
+stimmte. `renderer.info.render.frame` zählen (wie th-erfolge).

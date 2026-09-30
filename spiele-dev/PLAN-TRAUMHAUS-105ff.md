@@ -252,3 +252,14 @@ Vorher unverändert: Abschnitt 7 Punkt 2 (Rangpunkte aus Netto, Exploit-Schranke
   „neu bauen", sondern: Clips aus 9.1 dranhängen, Besitzer-Reaktion, Hehler in Burgdorf, Ruf-Folgen bei den Figuren.
 - **Erledigt:** Beute läuft in `stats.schatten` statt in den Gesamtverdienst (Runbook Runde 105 Teil 1). Der
   Kauf-Verkauf-Exploit aus Abschnitt 7 existiert nicht (Rückgaben gehen direkt über `geld+=`).
+
+### 9.6 Korrektur zu 9.1 nach Code-Lesen (2026-09-30, Runde 105 Teil 2 erledigt)
+- **Assets sind da:** 79 GLB mit Animationen im Repo — Meshy-Figuren `anime_boy/girl/hero/mage/ninja/warrior` (idle, walk,
+  run, teils attack), `class_mage/ranger/titan`, Tiere `an_*` (8 Clips). Mia/Partner tragen bereits skinned `th_mann`/`th_frau`
+  (ein Clip „walking"). Kein CC0-Download nötig; neue Clips (sitzen, Schlag, Taschengriff, taumeln) über das Meshy-Rezept
+  aus `spiele-dev/RUNBOOK-SPIELE.md` auf demselben Rig erzeugen. Der ChatGPT-Entwurf (Abschnitt 1 Assets) ist damit überholt;
+  sein Modul-Teil (Mixer, Blenden, LOD, Fallback) bleibt brauchbar.
+- **Erledigt:** Tempo-Kopplung und Stand-Bild für Mia/Partner (Runbook Runde 105 Teil 2, `probe-schritt`).
+- **Nächster Schritt 9.1:** Passanten von `mkBewohner` auf eine `anime_*`-Figur mit idle/walk/run umstellen (Mixer je
+  Figur, Blenden nach Geschwindigkeit wie bei Mia, LOD ab 60 m), gemessen mit `probe-aufrufe` (Bewegtes 440 → ?) und einer
+  erweiterten `probe-schritt` (Fussrutschen der Passanten).

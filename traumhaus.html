@@ -16032,8 +16032,23 @@ function updSim(s,si,dt,now){
   var m=s.mesh,ud=m.userData;
   if(s.mixer){s.mixer.update(dt);
     var moving=(s.state==="walk"||s.state==="steer"||s.state==="dance"||(MPs&&!mpHost&&s.net&&s._netMoved));
-    if(s.walkAction)s.walkAction.paused=!moving;
-    if(s.state==="dance"&&s.walkAction)s.walkAction.timeScale=1.5;else if(s.walkAction)s.walkAction.timeScale=1.1;}
+    /* 🚶 Runde 105: FUESSE RUTSCHEN NICHT MEHR, STEHEN OHNE EINGEFRORENEN SCHRITT. Vorher lief der Geh-Clip immer mit
+       timeScale 1,1, egal wie schnell die Figur wirklich war (Sprint = doppelt so schnell → Fuesse glitten ueber den Boden),
+       und beim Anhalten blieb sie mitten im Schritt stehen. Gemessen (probe-schritt): der Clip legt je Zyklus 1,57 m in
+       1,067 s zurueck = 1,47 m/s bei timeScale 1; engste Fussstellung bei t = 1,049 s. Jetzt: Abspieltempo aus der echten
+       Geschwindigkeit (Weg je Bild, geglaettet), Anhalten erst beim naechsten Stand-Bild. */
+    var dx9=s.x-(s._px!==undefined?s._px:s.x),dz9=s.z-(s._pz!==undefined?s._pz:s.z);s._px=s.x;s._pz=s.z;
+    var v9=Math.hypot(dx9,dz9)/Math.max(dt,0.001);s._v=(s._v||0)*0.6+v9*0.4;
+    if(s.walkAction){var a9=s.walkAction;
+      if(s.state==="dance"){a9.paused=false;a9.timeScale=1.5;}
+      else if(moving&&s._v>0.05){a9.paused=false;a9.timeScale=Math.min(2.6,Math.max(0.55,s._v/1.45));}
+      else{var tn=a9.time,tp=(s._at!==undefined?s._at:tn);   /* Zeit vor/nach dem letzten mixer.update */
+        /* Auf langsamen Geraeten (4 Bilder/s) springt die Clip-Zeit je Bild um 0,3 s — ein enges Fenster um 1,049 wuerde
+           uebersprungen (probe-schritt: nach 1,4 s immer noch nicht pausiert). Darum: Stand-Bild gilt als erreicht, sobald
+           es seit dem letzten Bild UEBERSCHRITTEN wurde (auch beim Umbruch am Zyklusende). */
+        var kreuzt=(tp<=1.049&&tn>=1.049)||tn<tp||Math.abs(tn-1.049)<0.03;
+        if(kreuzt){a9.paused=true;a9.time=1.049;}else{a9.paused=false;a9.timeScale=1.4;}}
+      s._at=a9.time;}}
   /* 🏔️ GELAENDEHOEHE. Bisher stand jede Figur hart auf y = 0 — auf einem Berg
      waere sie im Fels gelaufen. Die Hoehe kommt aus derselben Funktion, aus der
      auch der Berg und seine Wege gebaut sind; Bild und Begehbarkeit koennen
