@@ -5007,3 +5007,4 @@ gid://shopify/Product/15452309619073	zugeordnet	21	Herren Canvas Loafers im Beij
 gid://shopify/Product/15452309881217	zugeordnet	12	Atmungsaktive Trainingsschuhe für Herren
 gid://shopify/Product/15452310372737	zugeordnet	30	Herren Loafer aus Rindsleder
 gid://shopify/Product/15452311257473	zugeordnet	5	Retro Sportschuhe aus Leder für Damen
+gid://shopify/Product/15451930427777	zugeordnet	32	Herren-Cordjacke im Workwear-Stil
