@@ -23,7 +23,7 @@ festem `START=min(2, Dauer/4)` (Karton, Titel, Totale) und prüfte nie. **Der Er
 Fix: `automation/reel/hook_start.py` (bewegteste Sekunde der Quelle, wie das Tor gemessen) → `START`; danach
 `meisterwerk_tor.py` im Motor; Exit 4 → nicht in die Queue, pid nach `dropship/_reel_tor_abgelehnt.txt` (nie wieder
 gefragt), Exit 2 → später erneut. 80 Quellen: Hook unter 3,0 am alten Einstieg 19/80, am neuen 1/80; Testrender
-Eierschüttler besteht (HOOK 4,64). Bericht `dropship/REEL-TOR-MOTOR-2026-09-30.md`.
+Eierschüttler ~~besteht (HOOK 4,64)~~ — KEIN Beleg, lief über den make_reel-Zweig ohne START; nachgemessen 0 s → 4,65, 4,87 s → 19,94 (Nachtrag 2 im Bericht). Bericht `dropship/REEL-TOR-MOTOR-2026-09-30.md`.
 **Regel:** Wer ein Tor vor dem Veröffentlichen baut, baut es auch in jeden Erzeuger ein — sonst misst das Tor
 nur, wie viel Ausschuss produziert wurde. Nebenlehre: `pgrep -f "<muster>"` im Monitor findet die eigene Zeile (endlos).
 

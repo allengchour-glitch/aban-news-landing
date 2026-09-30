@@ -12,8 +12,10 @@
   festen Einstieg (Standard 2 s) Median **6,2**, an der bewegtesten Sekunde Median **19,2** (je Quelle Median Faktor 2,7);
   **unter 3,0: 19 von 80 am Standard-Einstieg, 1 von 80 am gefundenen**; 10 Quellen hatten am Standard-Einstieg < 1,0
   (Standbild/Karton). Das sind Quellwerte — im fertigen Reel verdünnen Marken-Balken und Texte die Bewegung.
-- Testrender Eierschüttler (`make_reel.sh`, gleiche Texte/Musik): Einstieg 4,87 s → Tor **bestanden** (HOOK 4,64,
-  STILL 9 %, Bildpreis 19.90 = Caption).
+- ~~Testrender Eierschüttler: Einstieg 4,87 s → Tor bestanden (HOOK 4,64)~~ — **KEIN BELEG (korrigiert 14:50 UTC):** der Test lief
+  über den `make_reel.sh`-Zweig ohne Stimme/2-Pass, der `START` nie las; das Reel begann bei 0 s. Nach dem Fix (s. Nachtrag 2)
+  gemessen: gleiche Quelle, Texte, Musik — **Einstieg 0 s → HOOK 4,65 · Einstieg 4,87 s → HOOK 19,94**; Bild bei 0,5 s
+  unterscheidet sich um 103 Graustufen (also wirklich andere Stelle).
 
 ## GETAN
 1. `automation/reel/hook_start.py` (neu): misst die Quelle wie das Tor (96×170, 15 fps) und liefert die Startsekunde mit
@@ -50,3 +52,10 @@
   Aufseher-Runde (nur tesseract mit Eltern-PID 1 und > 300 s). 8 + 5 Waisen beendet; Load 50 → 17 in 3 Minuten.
   Kanarienvogel: `sleep` als «tesseract» per setsid (Eltern-PID 1) → beendet; Aufrufe mit python-Eltern unberührt.
   ⚠️ Erste Regel «Eltern ≠ python/node» war zu breit (traf im Test mit Schwelle 0 auch junge Prozesse) → auf Eltern-PID 1 eingeengt.
+
+## Nachtrag 2 (14:50 UTC) — der Einstieg wirkte im Neu-Schnitt gar nicht
+Der erste `MODUS=hook`-Lauf: **13/13 wieder am Hook-Tor gescheitert** (0,03–2,09). Ursache: `make_reel.sh` hat zwei Render-Zweige;
+nur der mit `STIMME`/`LAUTHEIT_2PASS` las `START`. `reel_neu_rendern.py` (und mein erster Testrender) liefen über den anderen —
+jedes Reel begann bei Quellsekunde 0. Der Reel-Motor setzt `LAUTHEIT_2PASS=1` (Runner) und war nicht betroffen.
+Fix: gleicher Eingangs-Seek `-ss "${START:-0}"` im zweiten Zweig. Gegenprobe siehe oben (4,65 → 19,94). Neu-Schnitt neu gestartet.
+**Lehre:** ein Parameter, der «übergeben» wird, ist erst belegt, wenn das ERGEBNIS sich mit ihm ändert (A/B am Ausgang).
