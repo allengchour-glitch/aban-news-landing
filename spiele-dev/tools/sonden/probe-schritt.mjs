@@ -14,9 +14,13 @@ mitSonden('traumhaus.html', { gang: `function(){return new Promise(function(fert
     function nachBildern(n,dann){var f0=bild(),t0=Date.now();(function w(){if(bild()-f0>=n||Date.now()-t0>60000)dann(bild()-f0);else setTimeout(w,100);})();}
     var zelle=cx(1)-cx(0),gx=Math.round((s.x-cx(0))/zelle),gz=Math.round((s.z-cz(0))/(cz(1)-cz(0)));
     s.target=null;s.path=[[gx+3,gz]];s.state="walk";var o={};
-    nachBildern(8,function(b1){o.unterwegs={bilder:b1,state:s.state,v:+(s._v||0).toFixed(2),ts:+s.walkAction.timeScale.toFixed(2),paused:s.walkAction.paused};
+    nachBildern(8,function(b1){o.unterwegs={bilder:b1,state:s.state,v:+(s._vg||0).toFixed(2),ts:+s.walkAction.timeScale.toFixed(2),paused:s.walkAction.paused};
       s.path=[];s.target=null;s.state="propose";s.useT=60;
-      nachBildern(18,function(b2){o.danach={bilder:b2,state:s.state,paused:s.walkAction.paused,t:+s.walkAction.time.toFixed(3),v:+(s._v||0).toFixed(2)};fertig(o);});});});}`, schritt: `function(){var out=[];
+      /* ⚠️ Fest 18 Bilder reichten nach dem Merge mit th-runde90 nicht mehr: die Figur faehrt jetzt an (27 Schritte
+         bis Vollgas), war beim Stopp langsamer, und der Clip stand weiter vor dem Stand-Bild (0,934 statt ~0,3 weiter).
+         Bis 1,049 sind es bei timeScale 1,4 hoechstens 0,76 s Spielzeit. Darum: warten, BIS pausiert, hoechstens 80
+         Bilder, und die Zahl der Bilder melden. */
+      (function bisStand(dann){var f0=bild(),t0=Date.now();(function w(){if(s.walkAction.paused||bild()-f0>=80||Date.now()-t0>120000)dann(bild()-f0);else setTimeout(w,100);})();})(function(b2){o.danach={bilder:b2,state:s.state,paused:s.walkAction.paused,t:+s.walkAction.time.toFixed(3),v:+(s._vg||0).toFixed(2)};fertig(o);});});});}`, schritt: `function(){var out=[];
   [0,1].forEach(function(si){var s=sims[si];if(!s||!s.glb||!s.mixer||!s.walkAction){out.push({sim:si,fehler:"kein glb/mixer"});return;}
     var act=s.walkAction,clip=act.getClip(),o={sim:si,name:s.name,clip:clip.name,dauer:+clip.duration.toFixed(3),skala:+s.glb.scale.x.toFixed(3)};
     var bones=[];s.glb.traverse(function(n){if(n.isBone)bones.push(n);});o.knochen=bones.length;

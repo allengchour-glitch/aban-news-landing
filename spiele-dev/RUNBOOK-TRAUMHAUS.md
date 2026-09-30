@@ -8211,3 +8211,29 @@ die 1,8-s-Zeitlupe war legitim vorbei. Jetzt Sofort-Wert (0,3) + „endet" + Geg
    und machten die Bilder hier trotzdem 12 % langsamer. Erst der Vergleich gegen den alten Stand am selben Ort zeigte es.
 5. **Ein Prüfwerkzeug, das auf beiden Ständen scheitert, gehört nicht der Änderung, aber dem, der es findet.** Die
    Zeitlupe war richtig, die Prüfung las in Uhrzeit statt im Ablauf — derselbe Fehler wie in Runde 105 Teil 2.
+
+## Runde 105 (Teil 4) · 🤝 Stand der anderen Session übernommen: weiches Drehen, Anfahren, Tiere (2026-09-30)
+
+User: „lade memory von andere session, weiss nicht ob er auch gemacht hat etwas". Nachgesehen (git, PR-Liste,
+Session-Liste): eine zweite Session hat am 26./27.09. am Traumhaus gearbeitet (User-Auftrag dort: „mach bewegung
+schöner von allen und flüssig"). Ihre **Runde 89 „Grundstücksrand"** ist auf `main` (#2524), ihre **„Runde 90"**
+lag ungemergt als Entwurf in #2547 (`th-runde90`); die Session selbst ist nicht mehr abrufbar. ⚠️ Beide Sessions
+zählen ihre Runden unabhängig — „Runde 89/90" dort ist etwas anderes als Runde 89/90 in diesem Runbook.
+
+**Übernommen:** `main` gemergt (u. a. ihr Grundstücksrand), dann `th-runde90` gemergt (ihre Commits bleiben erhalten):
+Bewohner drehen mit höchstens 7,5 rad/s, fahren an (5,5 m/s²) und rollen aus (7 m/s²); Tiere wenden mit 4 rad/s und
+laufen in die Richtung, in die sie schauen; th-echt/th-pruef warten auf `_ladeOffen === 0` statt auf 55 s.
+
+**Zwei Stellen, die kein Merge-Werkzeug meldet:**
+1. **Dasselbe Feld, zwei Bedeutungen.** `s._v` war dort das SOLL-Tempo von `simWalk`, bei mir (Teil 2) das GEMESSENE
+   Tempo der Clip-Kopplung. Zusammen hätte das gemessene Tempo (in Kurven kleiner) jedes Bild das Soll überschrieben.
+   Meins heisst jetzt `s._vg`.
+2. **Untergrenze des Abspieltempos.** Ohne Anfahren war die Figur nie langsamer als 2,6 m/s; mit Anfahren läuft sie bei
+   0,52 m/s (probe-schritt) — die Untergrenze 0,55 liess die Beine 50 % zu schnell laufen. Jetzt 0,25.
+Dazu die einzige Textkonflikt-Zeile (Tiere): meine Gehege-Höhe `y0` (Runde 102) + ihre Richtung `an.dreh`.
+
+**Gemessen nach dem Merge:** th-bewegung grösste Drehung je Schritt 89,8° → **7,2°**, Anfahren 1 → **27** Schritte,
+Anhalten 2 → **64**, Schrittrate je m/s Spanne 1,00×, Tiere 180° → **3,8°** über 50 Schritte, Gegenprobe ✅ ·
+probe-schritt ✅ (Tempo gekoppelt, Stand-Bild 1,049 nach 27–30 Bildern; die Sonde wartet jetzt BIS pausiert, höchstens
+80 Bilder — fest 18 reichten mit Ausrollen nicht mehr) · th-bewegt alles bewegt · th-pruef bestanden mit **985
+Modellen, steckt 2** (mit fester 55-s-Frist vorher 944 / 7 — genau der Messfehler, den die andere Session behoben hat).

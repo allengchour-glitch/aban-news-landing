@@ -51,10 +51,31 @@ const BAHN = 'function(){' +
     'if(s.state!=="walk")break;}' +
   'return out;}'
 
-mitSonden('traumhaus.html', { bahn: BAHN }, TMP)
+/* Zweite Probe: ein TIER absichtlich um 180 Grad umdrehen lassen und zaehlen, ueber
+   wie viele Schritte das geschieht. Auch hier mit festem dt — aus demselben Grund. */
+const TIER = 'function(){' +
+  'var T=(window._tiere&&window._tiere.land)||[]; if(!T.length)return null;' +
+  'var an=T[0];' +
+  'var out=[],dt=1/60,now=performance.now();' +
+  'for(var i=0;i<300;i++){' +
+    /* \u26a0\ufe0f DIE WENDE MUSS INNERHALB DER SCHLEIFE PASSIEREN. Stand sie davor, sah die
+       Schleife auf der alten Fassung gar nichts: dort folgt die Richtung dem Ziel
+       sofort, die Drehung war also schon vorbei, bevor gemessen wurde. Gemessen
+       wurden dann nur die Zufallsschlenker (7,6 Grad) — und das haette wie eine
+       bereits fluessige Drehung ausgesehen. */
+    'var vr=(an.dreh!==undefined?an.dreh:an.head);' +
+    'if(i===1)an.head=vr+Math.PI;' +
+    'updTiere(dt,now+i*16);' +
+    'var nr=(an.dreh!==undefined?an.dreh:an.head);' +
+    'var d=nr-vr; d=Math.atan2(Math.sin(d),Math.cos(d));' +
+    'out.push(Math.abs(d)*180/Math.PI);}' +
+  'return out;}'
+
+mitSonden('traumhaus.html', { bahn: BAHN, tier: TIER }, TMP)
 
 const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 22000 })
 const P = await page.evaluate(() => window.__th.bahn())
+const TI = await page.evaluate(() => window.__th.tier())
 await browser.close()
 aufraeumen(TMP)
 
@@ -89,6 +110,14 @@ console.log(`\n3. Fuesse`)
 console.log(q.length
   ? `   Schrittrate je m/s               : ${qMin.toFixed(2)} … ${qMax.toFixed(2)} (Spanne ${(qMax / Math.max(qMin, 1e-6)).toFixed(2)}×)`
   : `   keine Schrittdaten`)
+
+if (TI && TI.length) {
+  const tMax = Math.max(...TI)
+  const tSchritte = TI.filter(d => d > 0.05).length
+  console.log(`\n4. Tiere (eines absichtlich um 180° umgedreht)`)
+  console.log(`   groesste Drehung in EINEM Schritt : ${tMax.toFixed(1)}°`)
+  console.log(`   Schritte, ueber die gedreht wird  : ${tSchritte}`)
+} else console.log(`\n4. Tiere: keine erfasst`)
 
 console.log(`\n🔍 GEGENPROBE`)
 console.log(`   Figur bewegt sich ueberhaupt (> 5 m): ${bewegt ? '✅' : '❌ sie steht — alle Zahlen oben waeren Schein'} ${strecke.toFixed(1)} m`)

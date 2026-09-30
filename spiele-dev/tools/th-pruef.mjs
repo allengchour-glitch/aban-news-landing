@@ -151,7 +151,26 @@ const SONDE = `function(){
           freigeraeumt:window._freigeraeumt,entwirrt:window._entwirrt,entzerrt:window._entzerrt};}`
 
 mitSonden(datei, { pruefung: SONDE }, tmp)
-const { browser, page, jsFehler, fehlend } = await spielOeffnen(tmp, { warten })
+const { browser, page, jsFehler, fehlend } = await spielOeffnen(tmp, { warten: Math.min(warten, 15000) })
+
+/* ⚠️ AUF DAS EREIGNIS WARTEN, NICHT AUF EINE FRIST (Runbook-Regel 4).
+   Der Kommentar oben sagt es schon halb: „die letzte Aufraeumstufe laeuft bei 50 s,
+   wer frueher misst, sieht Objekte auf der Strasse, die gleich weggeraeumt werden".
+   Die Schlussfolgerung daraus war aber falsch — eine GROESSERE Frist (55 s) loest es
+   nicht, denn die Kette haengt am LETZTEN geladenen Modell, nicht an einer Uhr.
+   Auf einer beschaeftigten Maschine ist sie nach 55 s laengst noch nicht durch.
+
+   BELEGT am Schwestermessgeraet th-echt, dieselbe Spieldatei, nur andere Last:
+       ohne Last 9 · im Torlauf 11 bis 16 · zwei Laeufe gleichzeitig 30.
+   Dort hat die Umstellung auf das Ereignis die Zahl lastfest gemacht (9 unter Last).
+   Hier gilt dasselbe: ein Objekt, das noch im Korridor steht, weil entwirren() noch
+   nicht lief, ist kein Fehler der Welt — nur eine zu frueh gestellte Frage. */
+for (let i = 0; i < 90; i++) {
+  const offen = await page.evaluate(() => window._ladeOffen)
+  if (offen === 0) break
+  await page.waitForTimeout(2000)
+}
+await page.waitForTimeout(20000)   /* freiRaeumen 2,5 s + _spaetEinfrieren 4 s, unter Last laenger */
 const r = await page.evaluate(() => window.__th.pruefung())
 await browser.close()
 aufraeumen(tmp)
