@@ -75,3 +75,4 @@ gid://shopify/Product/15525478203777	2026-09-25	Uhren
 gid://shopify/Product/15525275533697	2026-09-25	Beauty & Pflege
 gid://shopify/Product/15503163752833	2026-09-25	Parfum & Düfte
 gid://shopify/Product/15480410669441	2026-09-29	Auto & KFZ-Zubehör
+gid://shopify/Product/15524971315585	2026-09-30	Damen-Mode
