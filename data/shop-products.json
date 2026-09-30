@@ -181,5 +181,12 @@
     "desc": "Berechnet die Mietzinssenkung nach Art. 13 und 16 VMWG (Referenzzins, Teuerung, Kosten), den nächstmöglichen Termin und die Fristen, und schreibt das Herabsetzungsbegehren nach Art. 270a OR fertig. Offline-Rechner mit Anleitung. Keine Rechtsberatung.",
     "price": "CHF 19",
     "buy": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O"
+  },
+  {
+    "slug": "hochzeits-budget",
+    "title": "Hochzeits-Budget-Plan: Kosten pro Gast, Zahlungsplan, Sparrate",
+    "desc": "Alle Posten mit Preis pro Gast oder Pauschale, jede Anzahlung mit Datum, die Sparrate, die jede Zahlung deckt, und wie viele Gäste ins Budget passen. Offline-App und Excel-Vorlage mit Anleitung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P"
   }
 ]

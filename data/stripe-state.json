@@ -180,5 +180,12 @@
     "link": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O",
     "cents": 1900,
     "currency": "chf"
+  },
+  "hochzeits-budget": {
+    "product": "prod_VMC8vWf3NgNOjf",
+    "price": "price_1ULTkXRXvVMyfaIr2XEwUUaU",
+    "link": "https://buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P",
+    "cents": 1900,
+    "currency": "chf"
   }
 }
