@@ -5692,3 +5692,5 @@ gid://shopify/Product/15449150062977	1790745013	ok	3 Shop / 3 CJ / 0 fehlend / 0
 gid://shopify/Product/15449150095745	1790745013	ok	96 Shop / 96 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449150128513	1790745013	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449150194049	1790745013	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449150226817	1790745013	ok	80 Shop / 80 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449150292353	1790745013	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
