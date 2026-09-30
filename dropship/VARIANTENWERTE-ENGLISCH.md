@@ -6,13 +6,13 @@
 
 ## Zahlen
 
-- Produkte gesehen: **27'658**
-- Optionen mit englischen Werten (Kandidaten): 2'380
+- Produkte gesehen: **30'657**
+- Optionen mit englischen Werten (Kandidaten): 2'457
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'174
+- Werte mit unbekanntem Wort (unverändert): 13'617
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 54
+- übersprungen «kleidungsstueck-im-wert»: 56
 - übersprungen «kollision-nach-uebersetzung»: 36
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -42,6 +42,8 @@
 - `15491406987649` [Farbe] **Hoodie und Hose im Set** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
 - `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
+- `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
+- `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -128,5 +130,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 517, `light` 429, `inner` 403, `color` 304, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 110, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `belt` 85, `french` 84, `opp` 81, `four` 78, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `half` 64, `⟨satzbau:nomen-nomen⟩` 63, `feet` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `plush` 56, `electric` 55, `one` 55, `little` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `night` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `cloud` 47, `cat` 46, `star` 46
+`⟨satzbau:adjektiv-vor-nomen⟩` 534, `inner` 487, `light` 432, `color` 311, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 111, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `belt` 92, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `yards` 77, `spring` 71, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `autumn` 66, `⟨satzbau:nomen-nomen⟩` 65, `half` 64, `net` 63, `feet` 62, `mother` 61, `buckle` 60, `of` 60, `code` 59, `tea` 57, `little` 56, `plush` 56, `electric` 55, `one` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47
 
