@@ -1470,3 +1470,9 @@ gid://shopify/Product/15500071141761	ok	GaN-100W-Ladegerät
 gid://shopify/Product/15500199494017	ok	Gemeinsame Sneaker
 gid://shopify/Product/15500917211521	ok	Maifan Stein Antihaft-Pfanne
 gid://shopify/Product/15500959678849	ok	Elektrischer Wischmopp-Aufsatz für Staubsauger
+gid://shopify/Product/15501660324225	nicht-versendbar	Elektroroller Akku
+gid://shopify/Product/15510926131585	ok	Vielseitiger Business Rucksack mit Kompressionsfunktion
+gid://shopify/Product/15517550477697	ok	Wasserdichte Android Smartwatch für Herren
+gid://shopify/Product/15518684152193	ok	Ärmelloses V-Neck Maxikleid mit Blumenstickerei
+gid://shopify/Product/15521255293313	ok	720p Full HD Mini-Beamer mit Autofokus
+gid://shopify/Product/15522209694081	ok	Kini Car Forged Herren Quarzuhr
