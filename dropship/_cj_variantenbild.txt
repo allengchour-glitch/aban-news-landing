@@ -4895,3 +4895,10 @@ gid://shopify/Product/15450855899521	zugeordnet	30	GOT7 Baumwoll-Hoodie
 gid://shopify/Product/15450855932289	zugeordnet	2	Magnetische Nackenhalterung für Smartphones
 gid://shopify/Product/15450855965057	zugeordnet	5	Interaktiver rollender Ball für Katzen
 gid://shopify/Product/15450855997825	zugeordnet	14	Baby Geh- und Lauflernhilfe
+gid://shopify/Product/15450856030593	zugeordnet	6	Elektrische Gesichtsmaske mit Massagefunktion
+gid://shopify/Product/15450856063361	zugeordnet	3	Ocean Wave Projektor LED Nachtlicht
+gid://shopify/Product/15450856096129	zugeordnet	10	Verstellbare Zehenspreizer-Schiene für den grossen Zeh
+gid://shopify/Product/15450856128897	zugeordnet	2	Ferngesteuerter Hai – Fliegender RC Ballon
+gid://shopify/Product/15450856194433	bild-urls-tot
+gid://shopify/Product/15450856227201	zugeordnet	20	Sommer-Set: Ärmelloses Top & Shorts mit Kordelzug
+gid://shopify/Product/15450856259969	zugeordnet	3	LED Buchlicht Mini Clip-On
