@@ -56139,3 +56139,4 @@ gid://shopify/Product/15448597725569	gid://shopify/MediaImage/69858913223041
 gid://shopify/Product/15448599462273	gid://shopify/MediaImage/69858952249729
 gid://shopify/Product/15448601166209	gid://shopify/MediaImage/69858987868545
 gid://shopify/Product/15448603001217	gid://shopify/MediaImage/69859041968513
+gid://shopify/Product/15449401917825	gid://shopify/MediaImage/69871481323905
