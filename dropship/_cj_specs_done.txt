@@ -1838,3 +1838,4 @@ ring-astra-stern-mond-drehbar-verstellbar	gesetzt-2
 gro-e-maus-matte-610700	gesetzt-3
 gaming-headset-637900	gesetzt-3
 gaming-headset-rgb-128321	gesetzt-1
+bluetooth-headset-299137	gesetzt-2
