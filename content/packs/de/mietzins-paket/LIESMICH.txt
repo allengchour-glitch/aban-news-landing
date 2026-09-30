@@ -1,0 +1,10 @@
+Mietzins-Paket Schweiz 1.0 — aban news
+
+Inhalt
+  mietzins-paket.html  Rechner, Termin, Fristen und fertiger Brief: im Browser öffnen (Doppelklick), läuft offline
+  ANLEITUNG.md         Schritt für Schritt: Unterlagen, Brief, Fristen, Schlichtungsbehörde
+
+Nutzung privat erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Planungshilfe, keine Rechtsberatung.
+
+© aban news, abannews.com · hallo@abannews.com

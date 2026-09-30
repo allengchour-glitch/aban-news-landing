@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Mietzins-Paket Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#b45309;--akz-lt:#fde9c8;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e7dfd2;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--rot:#b91c1c;--b1:#b45309;--b2:#6b7280;--b3:#15803d}
+@media(prefers-color-scheme:dark){:root{--akz:#fbbf24;--akz-lt:#5a4422;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--rot:#f87171;--b1:#fbbf24;--b2:#9c9384;--b3:#4ade80}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(24px,4.5vw,32px);letter-spacing:-.02em;line-height:1.15}
+h2{font-size:1.2rem;margin:0 0 10px}
+.sub{color:var(--ink2);margin:6px 0 18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+#ergebnis td:not(:first-child){white-space:nowrap}
+input,select{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--akz)}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.x{padding:6px 10px;color:var(--muted)}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.zahl{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.gut{color:var(--gut)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:12px}
+.warn{border-left:4px solid var(--rot);padding:10px 14px;background:var(--field);border-radius:8px;margin:8px 0}
+.balken{display:flex;height:22px;border-radius:999px;overflow:hidden;margin:8px 0;background:var(--line)}
+.balken i{display:block;height:100%}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:.86rem;color:var(--ink2)}
+.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c)}
+.klein{font-size:.82rem;color:var(--muted)}
+@media(max-width:560px){.karten thead{display:none}.karten tr{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.karten td{border:0;padding:0;text-align:left}.karten td:first-child{grid-column:1/-1}
+.karten td[data-l]::before{content:attr(data-l);display:block;font-size:.72rem;color:var(--muted);font-weight:700}}
+@media print{button,.leiste,.noprint{display:none!important}body{background:#fff}}
+.brief{background:#fff;color:#111;border:1px solid var(--line);border-radius:10px;padding:28px 30px;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;white-space:pre-wrap}
+.zwei{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.monate{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.86rem}.monate label{display:flex;gap:5px;align-items:center;font-weight:400;margin:0}
+@media print{.wrap>*:not(#briefbox){display:none!important}#briefbox{border:0;padding:0}#briefbox h2,#briefbox .hint{display:none}.brief{border:0;padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Mietzins-Paket Schweiz</h1>
+<p class="sub">Rechnet aus, wie viel weniger Miete dir zusteht, auf welchen Termin, bis wann dein Brief ankommen muss, und schreibt das Herabsetzungsbegehren fertig. Nach Art. 270a OR und Art. 13 und 16 VMWG. Alles bleibt in diesem Browser.</p>
+
+<section class="box">
+<h2>1 · Deine Miete</h2>
+<div class="zwei">
+<div><label for="netto">Nettomietzins pro Monat (CHF)</label><input id="netto" type="number" min="0" step="10"><p class="hint">Ohne Nebenkosten. Die Nebenkosten ändern sich nicht.</p></div>
+<div><label for="zinsAlt">Referenzzinssatz bei der letzten Mietzinsfestlegung</label><select id="zinsAlt"></select><p class="hint">Steht im Mietvertrag oder im letzten Schreiben zur Mietzinsanpassung.</p></div>
+<div><label for="zinsNeu">Referenzzinssatz heute</label><select id="zinsNeu"></select><p class="hint" id="standHint"></p></div>
+<div><label for="festlegung">Datum der letzten Mietzinsfestlegung</label><input id="festlegung" type="date"><p class="hint">Mietbeginn oder letzte Anpassung. Für die Kostenpauschale.</p></div>
+</div>
+</section>
+
+<section class="box">
+<h2>2 · Was der Vermieter gegenrechnen darf</h2>
+<div class="zwei">
+<div><label for="likAlt">Landesindex (LIK) bei der letzten Festlegung</label><input id="likAlt" type="number" step="0.1" placeholder="z. B. 106.2"><p class="hint">Steht oft im Vertrag. Sonst beim Bundesamt für Statistik (LIK-Rechner). Leer lassen = keine Teuerung.</p></div>
+<div><label for="likNeu">Landesindex (LIK) heute</label><input id="likNeu" type="number" step="0.1" placeholder="z. B. 107.1"><p class="hint">Gleiche Basis wie links verwenden (z. B. Dezember 2020 = 100).</p></div>
+<div><label for="kosten">Pauschale für allgemeine Kostensteigerungen</label><select id="kosten"><option value="0">keine</option><option value="0.0025">0,25 % pro Jahr</option><option value="0.005" selected>0,5 % pro Jahr</option><option value="0.0075">0,75 % pro Jahr</option><option value="0.01">1 % pro Jahr</option></select><p class="hint">Vermieter machen oft 0,5–1 % pro Jahr geltend. Mit 0,5 % rechnest du vorsichtig.</p></div>
+</div>
+</section>
+
+<section class="box">
+<h2>3 · Termin und Frist</h2>
+<div class="zwei">
+<div><label for="zugang">Wann kommt dein Brief beim Vermieter an?</label><input id="zugang" type="date"><p class="hint">Plane Reserve ein: eingeschrieben mindestens 10 Tage vor dem letzten möglichen Tag abschicken, falls der Brief erst abgeholt werden muss.</p></div>
+<div><label for="frist">Kündigungsfrist</label><select id="frist"><option value="3" selected>3 Monate</option><option value="4">4 Monate</option><option value="6">6 Monate</option></select><p class="hint">Steht im Mietvertrag. Für Wohnungen mindestens 3 Monate.</p></div>
+</div>
+<label style="margin-top:10px">Kündigungstermine laut Mietvertrag (jeweils Monatsende)</label>
+<div class="monate" id="termine"></div>
+<p class="hint">Häufig: jedes Monatsende ausser Dezember. Steht im Vertrag nichts, gelten die ortsüblichen Termine deiner Gemeinde.</p>
+</section>
+
+<section class="box" id="ergebnis"></section>
+
+<section class="box">
+<h2>5 · Deine Angaben für den Brief</h2>
+<div class="zwei">
+<div><label for="absender">Deine Namen und Adresse</label><textarea id="absender" rows="4" style="font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)" placeholder="Anna und Marco Muster&#10;Beispielweg 12&#10;3000 Bern"></textarea><p class="hint">Mieten mehrere Personen gemeinsam, unterschreiben alle.</p></div>
+<div><label for="vermieter">Vermieter oder Verwaltung</label><textarea id="vermieter" rows="4" style="font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)" placeholder="Muster Immobilien AG&#10;Hauptstrasse 1&#10;3000 Bern"></textarea></div>
+<div><label for="objekt">Mietobjekt</label><input id="objekt" placeholder="3½-Zimmer-Wohnung, 2. OG links, Beispielweg 12, 3000 Bern"></div>
+<div><label for="ort">Ort</label><input id="ort" placeholder="Bern"></div>
+</div>
+</section>
+
+<section class="box" id="briefbox">
+<h2>6 · Dein Herabsetzungsbegehren</h2>
+<p class="hint noprint">Drucken, unterschreiben, eingeschrieben schicken. Eine Kopie und den Einlieferungsbeleg aufbewahren.</p>
+<div class="brief" id="brief"></div>
+<div class="leiste noprint"><button onclick="window.print()">Brief drucken / als PDF</button><button id="kopie">Brieftext kopieren</button><button id="beispiel">Beispiel laden</button><button id="leeren">Alles leeren</button></div>
+</section>
+
+<p class="klein">Planungshilfe, keine Rechtsberatung. Grundlage: Art. 270a und 271a OR, Art. 12, 13 und 16 VMWG. Referenzzinssatz: Bundesamt für Wohnungswesen. Bei Streit berät dich die Schlichtungsbehörde deines Bezirks kostenlos, ebenso der Mieterinnen- und Mieterverband für Mitglieder. © aban news · abannews.com</p>
+</div>
+<script>
+// Mietzins-Paket Schweiz — Rechen-Engine (ohne Oberfläche, in Node testbar).
+// Grundlage: Art. 13 VMWG (Hypothekarzins), Art. 16 VMWG (Teuerung, 40 % des LIK), Art. 12 VMWG (Kostensteigerungen),
+// Art. 270a OR (Herabsetzungsbegehren auf den nächstmöglichen Kündigungstermin).
+(function (root) {
+  "use strict";
+  var AKTUELL = { satz: 1.25, stand: "2. September 2026", naechste: "1. Dezember 2026" };
+
+  // Art. 13 Abs. 1 VMWG: Erhöhung um ¼ % → höchstens 3 % (< 5 %), 2,5 % (5–6 %), 2 % (> 6 %).
+  function satzProSchritt(zins) { return zins < 5 ? 0.03 : (zins <= 6 ? 0.025 : 0.02); }
+
+  // Veränderung des Mietzinses in Anteilen (−0.0566 = −5,66 %) von Referenzzins alt → neu.
+  // Eine Senkung ist die Umkehrung der Erhöhung: 1,25 → 1,75 = +6 % ⇒ 1,75 → 1,25 = 1 − 1/1,06 = −5,66 %.
+  function zinsAnteil(alt, neu) {
+    var a = Math.round(alt * 4), n = Math.round(neu * 4);
+    if (a === n) return 0;
+    var tief = Math.min(a, n), hoch = Math.max(a, n), summe = 0;
+    for (var s = tief; s < hoch; s++) summe += satzProSchritt(s / 4);
+    return n > a ? summe : -(1 - 1 / (1 + summe));
+  }
+
+  // Art. 16 VMWG: höchstens 40 % der Veränderung des Landesindexes der Konsumentenpreise.
+  function teuerungAnteil(likAlt, likNeu) {
+    likAlt = +likAlt; likNeu = +likNeu;
+    if (!(likAlt > 0) || !(likNeu > 0)) return 0;
+    return 0.4 * (likNeu / likAlt - 1);
+  }
+
+  // Allgemeine Kostensteigerungen als Pauschale pro Jahr (z. B. 0.005 = 0,5 %/Jahr), anteilig nach Monaten.
+  function kostenAnteil(monate, proJahr) { return Math.max(0, +monate || 0) / 12 * Math.max(0, +proJahr || 0); }
+
+  function monateZwischen(von, bis) {
+    if (!von || !bis) return 0;
+    var a = new Date(von), b = new Date(bis);
+    return Math.max(0, (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()));
+  }
+
+  function monatsende(j, m) { return new Date(j, m + 1, 0); } // m: 0–11
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+
+  // Nächstmöglicher Kündigungstermin: das Schreiben muss spätestens am letzten Tag vor Beginn der Frist ankommen.
+  // termine: Liste erlaubter Monate (1–12, jeweils Monatsende). zugang: Datum, an dem der Brief ankommt.
+  function naechsterTermin(zugang, fristMonate, termine) {
+    var z = new Date(zugang); z.setHours(0, 0, 0, 0);
+    var f = Math.max(1, Math.round(+fristMonate || 3));
+    var erlaubt = (termine && termine.length) ? termine : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    for (var i = 0; i < 60; i++) {
+      var j = z.getFullYear(), m = z.getMonth() + i;
+      var t = monatsende(j, m);
+      if (erlaubt.indexOf(t.getMonth() + 1) < 0) continue;
+      var spaetestens = monatsende(t.getFullYear(), t.getMonth() - f); // Ende des Monats vor Fristbeginn
+      if (z <= spaetestens) {
+        var ab = new Date(t.getFullYear(), t.getMonth() + 1, 1);
+        return { termin: iso(t), wirksamAb: iso(ab), spaetestensZugang: iso(spaetestens) };
+      }
+    }
+    return null;
+  }
+
+  function plusTage(datum, tage) { var d = new Date(datum); d.setDate(d.getDate() + tage); return iso(d); }
+
+  function berechnen(e) {
+    var netto = +e.netto || 0;
+    var zins = zinsAnteil(+e.zinsAlt, e.zinsNeu == null ? AKTUELL.satz : +e.zinsNeu);
+    var teuerung = teuerungAnteil(e.likAlt, e.likNeu);
+    var monate = monateZwischen(e.festlegung, e.heute);
+    var kosten = kostenAnteil(monate, e.kostenProJahr == null ? 0.005 : e.kostenProJahr);
+    var total = zins + teuerung + kosten;
+    var neu = Math.round(netto * (1 + total) * 20) / 20; // auf 5 Rappen
+    var r = {
+      zins: zins, teuerung: teuerung, kosten: kosten, monate: monate, total: total,
+      nettoNeu: neu, proMonat: netto - neu, proJahr: (netto - neu) * 12,
+      anspruch: total < 0
+    };
+    if (e.zugang) {
+      r.termin = naechsterTermin(e.zugang, e.frist, e.termine);
+      r.antwortBis = plusTage(e.zugang, 30);                 // Art. 270a Abs. 2 OR: Vermieter nimmt innert 30 Tagen Stellung
+      r.schlichtungBis = plusTage(r.antwortBis, 30);         // danach 30 Tage für die Schlichtungsbehörde (ohne Antwort)
+    }
+    return r;
+  }
+
+  var api = { AKTUELL: AKTUELL, zinsAnteil: zinsAnteil, teuerungAnteil: teuerungAnteil, kostenAnteil: kostenAnteil,
+    naechsterTermin: naechsterTermin, monateZwischen: monateZwischen, berechnen: berechnen };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.MietzinsEngine = api;
+})(this);
+
+</script>
+<script>
+(function(){
+  "use strict";
+  var E=window.MietzinsEngine,K="aban-mietzins-v1",A=E.AKTUELL;
+  var $=function(id){return document.getElementById(id)};
+  var FELDER=["netto","zinsAlt","zinsNeu","festlegung","likAlt","likNeu","kosten","zugang","frist","absender","vermieter","objekt","ort"];
+  var MON=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  var MON_LANG=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  function heute(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function inTagen(n){var d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+  var BEISPIEL={netto:"1850",zinsAlt:"1.75",zinsNeu:String(A.satz),festlegung:"2024-04-01",likAlt:"",likNeu:"",kosten:"0.005",zugang:inTagen(5),frist:"3",termine:[1,2,3,4,5,6,7,8,9,10,11],absender:"",vermieter:"",objekt:"",ort:""};
+  var st=JSON.parse(JSON.stringify(BEISPIEL));
+  try{var g=JSON.parse(localStorage.getItem(K)||"null");if(g&&g.netto!==undefined)st=g}catch(e){}
+  function speichern(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function chf(x){return "CHF "+(Math.round(x*20)/20).toLocaleString("de-CH",{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function pz(x){return (x>0?"+":x<0?"−":"")+Math.abs(x*100).toLocaleString("de-CH",{minimumFractionDigits:2,maximumFractionDigits:2})+" %"}
+  function satz(x){return (+x).toLocaleString("de-CH",{minimumFractionDigits:2})+" %"}
+  function datum(iso){if(!iso)return "";var p=iso.split("-");return +p[2]+". "+MON_LANG[+p[1]-1]+" "+p[0]}
+  var saetze=[];for(var s=100;s<=400;s+=25)saetze.push(s/100);
+  ["zinsAlt","zinsNeu"].forEach(function(id){$(id).innerHTML=saetze.map(function(v){return '<option value="'+v+'">'+satz(v)+'</option>'}).join("")});
+  $("standHint").textContent="Amtlich: "+satz(A.satz)+" (Stand "+A.stand+", nächste Publikation "+A.naechste+").";
+  $("termine").innerHTML=MON.map(function(m,i){return '<label><input type="checkbox" data-m="'+(i+1)+'"> '+m+'</label>'}).join("");
+  function laden(){
+    FELDER.forEach(function(f){if($(f))$(f).value=st[f]==null?"":st[f]});
+    [].forEach.call(document.querySelectorAll("[data-m]"),function(c){c.checked=st.termine.indexOf(+c.getAttribute("data-m"))>=0});
+  }
+  function eingabe(){
+    return {netto:+st.netto,zinsAlt:+st.zinsAlt,zinsNeu:+st.zinsNeu,likAlt:st.likAlt,likNeu:st.likNeu,festlegung:st.festlegung,heute:heute(),
+      kostenProJahr:+st.kosten,zugang:st.zugang,frist:+st.frist,termine:st.termine};
+  }
+  function rechnen(){
+    var r=E.berechnen(eingabe()),h="<h2>4 · Ergebnis</h2>";
+    if(!(+st.netto>0)){$("ergebnis").innerHTML=h+"<p>Trag oben deinen Nettomietzins ein.</p>";$("brief").textContent="";return}
+    h+='<table><tbody>'
+      +'<tr><td>Referenzzinssatz '+satz(st.zinsAlt)+' → '+satz(st.zinsNeu)+' (Art. 13 VMWG)</td><td>'+pz(r.zins)+'</td></tr>'
+      +'<tr><td>Teuerung: 40 % der LIK-Veränderung (Art. 16 VMWG)</td><td>'+(r.teuerung?pz(r.teuerung):'nicht erfasst')+'</td></tr>'
+      +'<tr><td>Kostenpauschale, '+r.monate+' Monate seit der letzten Festlegung</td><td>'+pz(r.kosten)+'</td></tr>'
+      +'<tr><td><b>Zusammen</b></td><td><b>'+pz(r.total)+'</b></td></tr></tbody></table>';
+    if(r.anspruch){
+      h+='<div class="kacheln" style="margin-top:12px"><div class="kachel"><b>Neuer Nettomietzins</b><div class="zahl gut">'+chf(r.nettoNeu)+'</div>statt '+chf(+st.netto)+'</div>'
+        +'<div class="kachel"><b>Du sparst</b><div class="zahl gut">'+chf(r.proMonat)+'</div>pro Monat</div>'
+        +'<div class="kachel"><b>Pro Jahr</b><div class="zahl gut">'+chf(r.proJahr)+'</div>jedes Jahr, solange der Zins so bleibt</div></div>';
+      if(r.termin)h+='<p class="urteil">Die tiefere Miete gilt ab dem <b>'+datum(r.termin.wirksamAb)+'</b> (Kündigungstermin '+datum(r.termin.termin)+'). Dein Brief muss spätestens am <b>'+datum(r.termin.spaetestensZugang)+'</b> ankommen, sonst verschiebt sich alles auf den nächsten Termin.</p>'
+        +'<h2 style="margin-top:18px">Die Fristen danach (Art. 270a OR)</h2><ul style="margin-left:18px">'
+        +'<li>Der Vermieter muss innert <b>30 Tagen</b> Stellung nehmen, also bis etwa <b>'+datum(r.antwortBis)+'</b>.</li>'
+        +'<li>Lehnt er ab, antwortet er nur teilweise oder gar nicht: Du hast <b>30 Tage</b>, um die Schlichtungsbehörde anzurufen. Ohne Antwort spätestens bis etwa <b>'+datum(r.schlichtungBis)+'</b>. Bei einer Antwort zählen die 30 Tage ab deren Empfang.</li>'
+        +'<li>Das Verfahren vor der Schlichtungsbehörde ist für Mieter in der Regel kostenlos.</li>'
+        +'<li>Eine Kündigung, weil du dein Recht geltend machst, ist anfechtbar, ebenso während und bis drei Jahre nach einem Verfahren (Art. 271a OR).</li></ul>';
+      else h+='<p class="klein">Trag in Schritt 3 das Zugangsdatum ein, dann rechnet das Paket Termin und Fristen aus.</p>';
+    } else {
+      h+='<p class="warn"><b>Aktuell kein Anspruch auf eine Senkung.</b> '+(r.zins>=0?'Der Referenzzinssatz ist seit der letzten Festlegung nicht gesunken.':'Teuerung und Kostensteigerungen gleichen die Senkung des Referenzzinssatzes aus.')+' Ein Brief lohnt sich deshalb nicht. Prüfe wieder, wenn der Satz sinkt (nächste Publikation: '+A.naechste+').</p>';
+    }
+    $("ergebnis").innerHTML=h;
+    brief(r);
+  }
+  function brief(r){
+    if(!r.anspruch){$("brief").textContent="Kein Anspruch auf Herabsetzung mit diesen Angaben, deshalb kein Brief.";return}
+    var ab=r.termin?datum(r.termin.wirksamAb):"[Datum]",seit=(+st.zinsNeu===A.satz?"Seit dem 2. September 2025 beträgt":"Heute beträgt");
+    var teile=[];if(r.teuerung)teile.push("die Teuerung (40 % der Veränderung des Landesindexes der Konsumentenpreise, "+pz(r.teuerung)+")");if(r.kosten)teile.push("allgemeine Kostensteigerungen ("+pz(r.kosten)+")");
+    var gegen=teile.length?"\n\nZu Ihren Gunsten habe ich "+teile.join(" und ")+" bereits verrechnet. Zusammen mit der Senkung des Referenzzinssatzes ("+pz(r.zins)+") ergibt das "+pz(r.total)+".":"";
+    var t=(st.absender||"[Deine Namen und Adresse]")+"\n\n\n"
+      +"Einschreiben\n"+(st.vermieter||"[Vermieter oder Verwaltung]")+"\n\n\n"
+      +(st.ort||"[Ort]")+", "+datum(heute())+"\n\n"
+      +"Herabsetzungsbegehren gemäss Art. 270a OR\n"
+      +"Mietobjekt: "+(st.objekt||"[Mietobjekt]")+"\n\n"
+      +"Sehr geehrte Damen und Herren\n\n"
+      +"Der aktuelle Nettomietzins von "+chf(+st.netto)+" pro Monat beruht auf einem hypothekarischen Referenzzinssatz von "+satz(st.zinsAlt)+". "+seit+" der Referenzzinssatz "+satz(st.zinsNeu)+"."
+      +"\n\nGestützt auf Art. 270a OR und Art. 13 VMWG verlange ich die Herabsetzung des Nettomietzinses um "+pz(-r.total).replace("+","")+" auf "+chf(r.nettoNeu)+" pro Monat, und zwar auf den nächstmöglichen Kündigungstermin, das heisst mit Wirkung ab "+ab+"."
+      +gegen
+      +"\n\nBitte teilen Sie mir innert 30 Tagen schriftlich mit, ob Sie dem Begehren zustimmen. Die Nebenkosten bleiben unverändert."
+      +"\n\nFreundliche Grüsse\n\n\n\n"+((st.absender||"").split("\n")[0]||"[Unterschrift]");
+    $("brief").textContent=t;
+  }
+  function aendern(e){
+    var t=e.target;
+    if(t.getAttribute&&t.getAttribute("data-m")){st.termine=[].filter.call(document.querySelectorAll("[data-m]"),function(c){return c.checked}).map(function(c){return +c.getAttribute("data-m")})}
+    else if(FELDER.indexOf(t.id)>=0)st[t.id]=t.value; else return;
+    speichern();rechnen();
+  }
+  document.addEventListener("input",aendern);document.addEventListener("change",aendern);
+  $("beispiel").onclick=function(){st=JSON.parse(JSON.stringify(BEISPIEL));speichern();laden();rechnen()};
+  $("leeren").onclick=function(){st={netto:"",zinsAlt:"1.5",zinsNeu:String(A.satz),festlegung:"",likAlt:"",likNeu:"",kosten:"0.005",zugang:"",frist:"3",termine:[1,2,3,4,5,6,7,8,9,10,11],absender:"",vermieter:"",objekt:"",ort:""};speichern();laden();rechnen()};
+  $("kopie").onclick=function(){var t=$("brief").textContent;if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){$("kopie").textContent="Kopiert ✓"})};
+  laden();rechnen();
+})();
+</script>
+</body>
+</html>
