@@ -5079,3 +5079,6 @@ gid://shopify/Product/15452688777601	zugeordnet	36	V-Ausschnitt 3/4-Arm Miniklei
 gid://shopify/Product/15452688810369	zugeordnet	10	Damenleichtes Trägerkleid mit Rüschendetails
 gid://shopify/Product/15452689072513	zugeordnet	20	3/4-Arm Elegant Business-Office-Kleid
 gid://shopify/Product/15452689138049	zugeordnet	25	Enganliegendes Turtleneck-Kleid mit Falten
+gid://shopify/Product/15452689203585	zugeordnet	20	Dreiviertelarm Doppelreihiges Anzugkleid
+gid://shopify/Product/15452689236353	zugeordnet	56	Damenmode-Lockerkleid Plus-Grösse
+gid://shopify/Product/15452689301889	zugeordnet	18	Elegantes Langarm-Maxikleid
