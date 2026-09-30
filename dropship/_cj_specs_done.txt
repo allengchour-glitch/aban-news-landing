@@ -1822,3 +1822,4 @@ denim-cap-bleu-washed-hellblau	hat-liste
 baseball-cap-wellness-rot-stickerei	hat-liste
 baseball-cap-paris-schwarz-stickerei	hat-liste
 edelstahl-armband-amore-herz-geburtsstein-gold	gesetzt-1
+edelstahl-armband-coeur-herz-gold	gesetzt-1
