@@ -1421,3 +1421,5 @@ gid://shopify/Product/15511795761537	ok	Motorrad-Seitenkoffer aus PU-Leder
 gid://shopify/Product/15512269422977	ok	Multifunktionales Antihaft-Backblech
 gid://shopify/Product/15520407978369	ok	Multifunktionaler Mixer, Entsafter & Grinder
 gid://shopify/Product/15522128068993	ok	Jieshi 3-in-1 Saug- und Wischroboter
+gid://shopify/Product/15453897294209	nicht-versendbar	Kleiner Reisekoffer
+gid://shopify/Product/15459281830273	ok	Goldplattierte Rechteckige Casserole mit Deckel
