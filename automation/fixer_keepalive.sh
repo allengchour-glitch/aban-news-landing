@@ -632,6 +632,13 @@ while true; do
         >> /tmp/startseite_optik.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start startseite_optik_wache (täglich, nur lesen)"
   fi
+  # 💾 SPEICHER-AUFRÄUMUNG (30.09.2026, Betreiber «Duplikat-Bilder löschen»): läuft ~75 min, der Container startet stündlich neu →
+  # fortsetzen, bis im Log FERTIG steht (Nachweis-Liste dropship/_speicher_geloescht.tsv überspringt Erledigtes). Exporte in /tmp.
+  if [ -s /tmp/speicher_drafts.jsonl ] && [ -s /tmp/speicher_aktiv.jsonl ] && ! tail -n 1 /tmp/speicher_duplikat.log 2>/dev/null | grep -q '^FERTIG'; then
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_speicher_duplikat.lock; flock -n 9 || exit 0; EXPORT_DRAFT=/tmp/speicher_drafts.jsonl EXPORT_AKTIV=/tmp/speicher_aktiv.jsonl SCHARF=1 N=6000 python3 automation/speicher_duplikat_bilder.py" \
+        >> /tmp/speicher_duplikat.log 2>&1 9>&- & )
+  fi
   # 🎬 TOR-REPARATUR (30.09.2026): vom Meisterwerk-Tor gesperrte Reels (HOOK < 3,0, fester Einstieg 2 s) mit der
   # bewegtesten Sekunde neu schneiden (reel_neu_rendern.py MODUS=hook, Tor Pflicht → wieder ready); fehlende Quellen fragt
   # tor_quellen_anfragen.mjs beim Server an (Merkliste 24 h). Ergebnis-Dateien + Queue sichert git_sichern.sh.

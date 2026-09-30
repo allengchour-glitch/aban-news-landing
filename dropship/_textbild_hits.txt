@@ -16203,3 +16203,5 @@ gid://shopify/Product/15453793714561	37->0	Hochzeits-Schuhe für Blumenmädchen
 gid://shopify/Product/15453793812865	20->3	Mädchen Doppelriemen Glitzersteinchen Stiefelchen
 gid://shopify/Product/15453793845633	45->1	4-Personen-Geschirr-Set aus Weizenstroh
 gid://shopify/Product/15453827105153	74->0	Kapuzenpullover mit Kaffeemotiv
+gid://shopify/Product/15473070276993	35->1	Leichte, vielseitige Herrenjacke mit Kapuze
+gid://shopify/Product/15473389076865	22->3	Etagere Metall Rund, 4 Fächer
