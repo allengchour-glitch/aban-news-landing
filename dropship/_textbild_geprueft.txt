@@ -56211,3 +56211,5 @@ gid://shopify/Product/15453774184833	gid://shopify/MediaImage/69926701760897
 gid://shopify/Product/15453774217601	gid://shopify/MediaImage/69926701826433
 gid://shopify/Product/15453774250369	gid://shopify/MediaImage/69926701859201
 gid://shopify/Product/15453774315905	gid://shopify/MediaImage/69926701957505
+gid://shopify/Product/15453774381441	gid://shopify/MediaImage/77407196676487
+gid://shopify/Product/15453774414209	gid://shopify/MediaImage/77407197725063
