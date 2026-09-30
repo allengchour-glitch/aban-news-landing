@@ -6,6 +6,18 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🎬 Ein Tor nur am Ende der Kette lässt den Erzeuger Ausschuss produzieren: 14/14 Reel-Posts abgewiesen
+Autonome Runde 12:26 UTC. `/tmp/social_autopilot.log`: 14 Reel-Versuche heute, **alle** vom Meisterwerk-Tor abgewiesen
+(12× `HOOK < 3.0`, 2× Bildpreis ≠ Caption) — je Versuch ein 15-min-Durchlauf ohne Post; Queue 63 `ready` + 20 schon
+`meisterwerk-tor-skip`. Ursache: das Tor (27.09.) wurde nur in die POSTER eingebaut; `cj_video_reel_engine.mjs` rendert mit
+festem `START=min(2, Dauer/4)` (Karton, Titel, Totale) und prüfte nie. **Der Erzeuger kannte die Abnahme nicht.**
+Fix: `automation/reel/hook_start.py` (bewegteste Sekunde der Quelle, wie das Tor gemessen) → `START`; danach
+`meisterwerk_tor.py` im Motor; Exit 4 → nicht in die Queue, pid nach `dropship/_reel_tor_abgelehnt.txt` (nie wieder
+gefragt), Exit 2 → später erneut. 80 Quellen: Hook unter 3,0 am alten Einstieg 19/80, am neuen 1/80; Testrender
+Eierschüttler besteht (HOOK 4,64). Bericht `dropship/REEL-TOR-MOTOR-2026-09-30.md`.
+**Regel:** Wer ein Tor vor dem Veröffentlichen baut, baut es auch in jeden Erzeuger ein — sonst misst das Tor
+nur, wie viel Ausschuss produziert wurde. Nebenlehre: `pgrep -f "<muster>"` im Monitor findet die eigene Zeile (endlos).
+
 ## 2026-09-30 · 📱 «bild fehlt»: Kundenstimmen-Karussell mit 110 px Lücke + 56-px-Bild — kein Wächter sah die GERENDERTE Seite
 
 Betreiber-Screenshot (Handy): über den Sternen leere Fläche, Produktbild winzig am Kartenende. Gemessen (tools/browser.mjs, 390 px):

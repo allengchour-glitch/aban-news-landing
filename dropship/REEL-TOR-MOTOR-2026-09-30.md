@@ -8,9 +8,10 @@
 - **Ursache:** `cj_video_reel_engine.mjs` rendert mit festem Einstieg `START=min(2, Dauer/4)` und prüft das Ergebnis nie —
   das Tor stand nur vor dem Posten (`meta_reel_post.mjs`, `metricool_tiktok_post.mjs`). Der Motor füllte die Queue also
   mit Reels, die der Poster wegwirft.
-- Quellen (55 Lieferantenvideos in `auftraege/ergebnis/`, `automation/reel/hook_start.py`): Bewegung der 1. Sekunde am
-  festen Einstieg (Standard 2 s) vs. an der bewegtesten Sekunde — Median ~2× höher; 9 Quellen hatten am Standard-Einstieg
-  < 1,0 (Standbild/Karton), am gefundenen Einstieg 9,3–36,9.
+- Quellen (80 Lieferantenvideos in `auftraege/ergebnis/`, `automation/reel/hook_start.py`): Bewegung der 1. Sekunde am
+  festen Einstieg (Standard 2 s) Median **6,2**, an der bewegtesten Sekunde Median **19,2** (je Quelle Median Faktor 2,7);
+  **unter 3,0: 19 von 80 am Standard-Einstieg, 1 von 80 am gefundenen**; 10 Quellen hatten am Standard-Einstieg < 1,0
+  (Standbild/Karton). Das sind Quellwerte — im fertigen Reel verdünnen Marken-Balken und Texte die Bewegung.
 - Testrender Eierschüttler (`make_reel.sh`, gleiche Texte/Musik): Einstieg 4,87 s → Tor **bestanden** (HOOK 4,64,
   STILL 9 %, Bildpreis 19.90 = Caption).
 
