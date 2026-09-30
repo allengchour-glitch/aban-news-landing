@@ -48,9 +48,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Nie direkt nach `main` pushen. ⚠️ Die alten Branches `claude/dropship-lade-memory-SrAs5` (PR #5) und
   `claude/dropshipping-session-LehDs` sind **in `main` gemergt und vom Remote gelöscht** — nicht mehr nutzen.
   Der gesamte Dropship-Stand liegt jetzt auf `main` (zuletzt Memory Teil 14, PR #400).
-- **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
-  über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
-  Memory, damit jede neue Session nahtlos weitermacht.
+- **⏰ KORRIGIERT 2026-09-30 — „Scheduler ist hier nicht aktiv" STIMMT NICHT.** Der Satz nannte die
+  falschen Werkzeuge: `CronCreate`/`ScheduleWakeup` sind nicht der Weg, **`mcp__Claude_Code_Remote__create_trigger`
+  ist es**. GEMESSEN: Routine `trig_014EJWgLC9AmpW3kDZkAUQqu` läuft **täglich 08:56 Europe/Zurich**.
+  ⚠️ **Die echte Grenze liegt woanders: eine so angelegte Routine führt KEINE Connectors mit**
+  (der `connectors`-Parameter wird von dieser Organisation abgelehnt) → die gefeuerte Sitzung hat
+  **keine `mcp__Shopify__*`-Tools** und kann am Shop nichts ändern. Sie macht die zugangsfreie
+  Hälfte (Kundenseite nachmessen, `katalog_audit`, PR-Checks, Recherche, Gedächtnispflege).
+  **Für die volle Runde braucht es die drei Env-Werte** (siehe „nur der User") **oder** eine
+  Routine, die der User selbst in der claude.ai-Routinen-Oberfläche anlegt, wo Connectors mitgehen.
 - **🌐 Browser-Agent (FEST, User 2026-06-12):** Der User hat **Brave + Playwright-MCP auf seinem PC-Claude**
   eingerichtet (Setup: `dropship/BROWSER-AGENT-SETUP.md`, Port 9222, Meta Business Suite eingeloggt).
   **⚠️ KORRIGIERT 2026-09-27: „Cloud-Sessions haben KEINEN Browser" STIMMT NICHT.** Gemessen:
@@ -74,6 +80,62 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-30, zweite Runde (⏰ DER AUTOPILOT WAR NIE UNMÖGLICH — und CHF 206.50 liegen abholbereit):**
+- **Auftrag:** „lerne für geldverdienen automatisch irgendwie du musst arbeiten" und danach
+  „neuste prompt und updates im netz suchen auch app oder mcp egal was gratis und für maximum
+  verbesserung".
+- **🔴 DER GRÖSSTE FUND IST EINE KORREKTUR AM EIGENEN GEDÄCHTNIS, und sie hat seit Juni jede Runde
+  gedeckelt.** `CLAUDE.md` behauptete: „Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht
+  aktiv → kein echter Cron-Loop über Stunden möglich; **Autonomie = Charge für Charge**." Der
+  Dauerauftrag des Users lautet seit Juni „vollautonom, ohne ‚weiter' zu sagen" — genau das galt
+  als technisch unmöglich. **GEMESSEN: es geht, der Satz nannte nur die falschen Werkzeuge.**
+  `mcp__Claude_Code_Remote__create_trigger` legt eine echte wiederkehrende Routine an.
+  **Läuft ab jetzt täglich 08:56 Europe/Zurich** (`trig_014EJWgLC9AmpW3kDZkAUQqu`).
+- **⚠️ UND DIE GEGENPROBE HAT DIE ROUTINE SOFORT WIEDER HALBIERT — bevor sie einmal gelaufen ist.**
+  Die Anlage meldete von selbst: **„this trigger stores no MCP connectors"**. Der Versuch, `Shopify`
+  ausdrücklich mitzugeben, wurde abgelehnt: **„the connectors parameter is not available for this
+  organization"**. Die gefeuerte Sitzung hat also **keine `mcp__Shopify__*`-Tools** — sie kann
+  keine Bestellung lesen und keinen Preis setzen. **Der Prompt der Routine wurde daraufhin
+  umgeschrieben**, damit sie nicht jeden Morgen an Schritt 1 scheitert: sie macht die zugangsfreie
+  Hälfte (Preise an der echten Kundenseite nachmessen, `katalog_audit`, PR-Checks, Recherche,
+  Gedächtnispflege). **Eine Routine, die täglich in eine Wand läuft, wäre schlimmer als keine.**
+- **💰 GEBAUT `tools/offenes_geld.mjs` (36 Selbsttests) — und es hat beim ersten Lauf Geld gefunden.**
+  Es sucht nicht neue Reichweite, sondern **Geld, das schon im Shop liegt**: bezahlt aber nicht
+  geliefert, und liegengebliebene Warenkörbe mit erreichbarer Adresse. **GEMESSEN:
+  CHF 23.11 der Kundschaft geschuldet · CHF 183.60 in fünf Körben, alle mit echter Adresse.**
+  Zum Vergleich: **der Shop hat in vier Monaten netto rund CHF 253 erlöst** — es liegt also
+  ungefähr ein Vierteljahresumsatz herum.
+- **🔴 ZEITKRITISCH, NUR DER USER: Bestellung #1019 ist seit dem 27.09. BEZAHLT und NICHT
+  VERSANDT** — „Leuchtender Halloween-Schaukelgeist", CHF 23.11, SKU `CJ-2608070456571627400`.
+  **Halloween-Ware ist nach dem 31.10. wertlos.** Das ist exakt das Muster, das im Juli
+  CHF 869.62 Rückerstattungen gekostet hat. Die CJ-Bestellung samt Bezahlung kann nur der User
+  auslösen.
+- **🔑 DIE REGEL, DIE DAS WERKZEUG ERST EHRLICH MACHT: Kundengeld und eigenes Geld werden NIE
+  zusammengezählt.** Zwei der Posten sind **eigene Testbestellungen** (an der E-Mail erkannt) —
+  ohne diese Trennung stünden hier CHF 54.80 „offen", die niemand schuldet. Ebenso: ein
+  abgeschlossener Korb ist ein Kauf, ein Korb **ohne Adresse ist NICHT erreichbar** statt eine
+  Chance, und eine frisch bezahlte Bestellung bekommt **zwei Tage Karenz**, bevor sie „nicht
+  geliefert" heisst.
+- **🔒 UND EIN FEHLER, DER IN EIN ÖFFENTLICHES REPO GEWANDERT WÄRE.** Der Datenauszug enthält
+  Kundenadressen **und Wiederherstellungs-Links, die einen Schlüssel zum fremden Warenkorb
+  tragen**. Die Säuberung ersetzte zuerst nur `customerEmail` — **zwei echte Adressen standen in
+  einem verschachtelten `emailAddress` und blieben stehen.** Die Gegenprobe hat sie gefunden.
+  Jetzt läuft die Säuberung **rekursiv über jeden Schlüssel**, dessen Name `mail` enthält, statt
+  über eine Liste bekannter Felder. **Dieselbe Klasse wie die fehlende Wortgrenze bei `3to4`:
+  wer nach einer Liste sucht statt nach einer Eigenschaft, findet nur, was er schon kannte.**
+- **⚠️ „DIE BESTEN GRATIS-MCP-SERVER" BESCHREIBEN NICHT DIESES KONTO.** Die Artikel nennen
+  Filesystem, GitHub, Context7, Playwright, Sequential Thinking, Firecrawl, Brave Search, Memory.
+  **Gegenprobe über `SearchMcpRegistry` an diesem Konto: Context7 und Firecrawl existieren
+  (nicht installiert), Sequential Thinking, Brave Search, Memory und Filesystem tauchen gar nicht
+  auf.** Ausserdem heisst „gratis" dort meist „hat einen kostenlosen Tarif", nicht „ohne Konto".
+  **Das messbare Kriterium steht im Verzeichnis selbst: `isAuthless: true`.** Danach gefiltert
+  bleiben u. a. **Parallel Search** (`web_search`, `web_fetch`) und **Microsoft Learn**.
+  ⛔ **Bewusst NICHT installiert:** ein Konnektor ist eine dauerhafte Konto-Änderung und gehört
+  dem User; und `WebSearch`/`WebFetch` stehen hier ohnehin schon.
+- **📊 154 + 36 = 190 Prüfungen grün.** Die drei roten `Workers Builds` sind unverändert der Fall
+  vom 12.09., Stand-down-Kommentar steht seit dem 20.09. an PR #2514 — **kein zweiter.**
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-30 (🔎 MAXIMALE RECHERCHE — vier Fehlalarme kamen erst an FREMDEN Shops heraus):**
 - **Auftrag:** „maximum hilfe surfing suchen · andere session shop seite" — die andere Session macht
   Shop und Webseite, diese Runde recherchiert und schärft den Shop-Check. Voller Bericht mit allen
