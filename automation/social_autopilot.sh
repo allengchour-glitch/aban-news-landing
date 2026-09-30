@@ -190,6 +190,17 @@ while true; do
         if WEG=metricool MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then touch "$MARKE_BILD"
         else echo "$(date -u +%H:%M) Bildpost (Metricool) fehlgeschlagen (Marke bleibt alt)"; fi
       fi
+      # 30.09.2026: Stories auch ohne Meta (Datenzugang endet 05.10.) — story-autopost-meta.mjs WEG=metricool plant
+      # instagramData/facebookData type STORY (Entwurf-Test 30.09.: beide als STORY angelegt, gelöscht).
+      if faellig "$MARKE_STORY" "$STORY_ABSTAND"; then
+        echo "$(date -u +%H:%M) Story faellig (Metricool, Instagram + Facebook)"
+        SREADY=$(python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/story_queue.csv',encoding='utf-8')) if r.get('status')=='ready'))" 2>/dev/null || echo 0)
+        [ "$SREADY" -lt 1 ] && { SCHARF=1 N=1 timeout 900 python3 automation/story_bauen.py | grep -E '✅|⛔|FERTIG|Kandidaten' || true; }
+        SREADY=$(python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/story_queue.csv',encoding='utf-8')) if r.get('status')=='ready'))" 2>/dev/null || echo 0)
+        if [ "$SREADY" -lt 1 ]; then echo "$(date -u +%H:%M) ⚠️ Story (Metricool): keine gebaut — Marke bleibt alt"
+        elif WEG=metricool MAX_PER_RUN=1 $NODE automation/story-autopost-meta.mjs; then touch "$MARKE_STORY"
+        else echo "$(date -u +%H:%M) Story (Metricool) fehlgeschlagen (Marke bleibt alt)"; fi
+      fi
       if faellig "$MARKE_KARUSSELL" "$KARUSSELL_ABSTAND"; then
         echo "$(date -u +%H:%M) Karussell faellig (Metricool, Instagram + Facebook)"
         if WEG=metricool $NODE automation/ig_karussell_post.mjs; then touch "$MARKE_KARUSSELL"

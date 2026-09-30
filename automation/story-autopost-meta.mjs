@@ -30,6 +30,40 @@ const FB_TOK = process.env.FB_PAGE_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN
 
 const COLS = ['id','scheduled_date','type','media_url','platforms','status','posted_at','post_url'];
 
+// 30.09.2026: Metricool-Weg (Meta-Datenzugang endet 05.10. und wird nicht erneuert, Betreiber 27.09.). Ohne Meta-Token oder mit
+// WEG=metricool plant dieser Poster die Story über Metricool (instagramData/facebookData type STORY, ohne Text — Stories haben
+// keine Caption). Gleiches Muster wie social-autopost-meta.mjs (normalize → scheduler/posts, +4 min). MC_ENTWURF=1 = nur Entwurf (Test).
+function mcTokenLesen(){
+  if (process.env.METRICOOL_USER_TOKEN) return process.env.METRICOOL_USER_TOKEN;
+  try { const m = /METRICOOL_USER_TOKEN=([^\s'"]+)/.exec(fs.readFileSync('/tmp/metricool.env','utf8')); if (m) return m[1]; } catch {}
+  return '';
+}
+const MC_TOKEN = mcTokenLesen();
+const MC_USER = process.env.METRICOOL_USER_ID || '4801419';
+const MC_BLOG = process.env.METRICOOL_BLOG_ID || '6227837';
+const VIA_MC = !!MC_TOKEN && (process.env.WEG === 'metricool' || (!IG_TOK && !FB_TOK));
+async function mcStory(type, url, netz){
+  const q = `userId=${MC_USER}&blogId=${MC_BLOG}`;
+  let media = url;
+  if(type==='image'){
+    const n = await fetch(`https://app.metricool.com/api/actions/normalize/image/url?url=${encodeURIComponent(url)}&${q}`, { headers:{ 'X-Mc-Auth':MC_TOKEN } });
+    const nt = await n.text();
+    let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data==='string' ? j.data : '') || (typeof j==='string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g,''); }
+    if(!n.ok || !norm){ console.error(`Metricool normalize (${netz}):`, n.status, nt.slice(0,160)); return false; }
+    media = norm;
+  }
+  const entwurf = process.env.MC_ENTWURF === '1';
+  const body = { publicationDate:{ dateTime:new Date(Date.now()+4*60e3).toISOString().slice(0,19), timezone:'UTC' },
+                 text:'', providers:[{ network:netz }], media:[media], autoPublish:!entwurf, draft:entwurf, shortener:false };
+  if(netz==='instagram') body.instagramData = { type:'STORY' };
+  if(netz==='facebook') body.facebookData = { type:'STORY' };
+  const r = await fetch(`https://app.metricool.com/api/v2/scheduler/posts?${q}`, { method:'POST', headers:{ 'X-Mc-Auth':MC_TOKEN, 'Content-Type':'application/json' }, body:JSON.stringify(body) });
+  const rt = await r.text();
+  if(!r.ok){ console.error(`Metricool Story (${netz}):`, r.status, rt.slice(0,200)); return false; }
+  let id=''; try { const j = JSON.parse(rt); id = String(j.data?.id || j.id || ''); } catch {}
+  console.log(`${netz}: Story über Metricool ${entwurf?'als ENTWURF ':''}geplant`, id); return `metricool:${id||'?'}`;
+}
+
 function parse(text){
   const rows=[]; let row=[], field='', q=false;
   for(let i=0;i<text.length;i++){const c=text[i];
@@ -128,7 +162,7 @@ async function fbVideoStory(url){
 }
 
 // --- Hauptlauf ---
-const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB'].filter(Boolean);
+const configured = VIA_MC ? ['IG(Metricool)','FB(Metricool)'] : [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB'].filter(Boolean);
 if(configured.length===0 && !DRY){ console.log('Kein Meta-Kanal für Stories konfiguriert → No-op.'); process.exit(0); }
 if(!fs.existsSync(CSV)){ console.log('Keine social/story_queue.csv → nichts zu tun.'); process.exit(0); }
 
@@ -156,9 +190,14 @@ for(const next of due.slice(0, MAX)){
   if(DRY){ console.log('   DRY_RUN: würde senden.'); postedCount++; continue; }
 
   const results = [];
-  results.push(wantIG ? await igStory(type, url) : null);
-  if(wantFB) results.push(type==='video' ? await fbVideoStory(url) : await fbPhotoStory(url));
-  else results.push(null);
+  if(VIA_MC){
+    results.push(wantIG ? await mcStory(type, url, 'instagram') : null);
+    results.push(wantFB ? await mcStory(type, url, 'facebook') : null);
+  } else {
+    results.push(wantIG ? await igStory(type, url) : null);
+    if(wantFB) results.push(type==='video' ? await fbVideoStory(url) : await fbPhotoStory(url));
+    else results.push(null);
+  }
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
     if(results[0] && results[0]!==false) postMark(url);
