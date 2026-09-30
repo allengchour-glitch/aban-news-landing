@@ -16216,3 +16216,4 @@ gid://shopify/Product/15496015544705	8->0	Kurzarm Hoodie für Herren
 gid://shopify/Product/15496330576257	70->0	Herren Casual Schuhe mit dezenter Fersenerhöhung
 gid://shopify/Product/15496359510401	9->0	Keilkissen-Set für Rücken, Beine und Knie
 gid://shopify/Product/15496426815873	18->0	S925 Silber Moissanit Ring für Damen
+gid://shopify/Product/15496498020737	36->1	Solar Horn Light
