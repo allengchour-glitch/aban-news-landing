@@ -77,6 +77,9 @@ def main():
             r = hw.gql('mutation($p:ID!,$m:[ID!]!){productDeleteMedia(productId:$p,mediaIds:$m){deletedMediaIds mediaUserErrors{message}}}',
                        {"p": p["id"], "m": ids})
             d = ((r.get("data") or {}).get("productDeleteMedia") or {})
+            fe = " ".join(e.get("message", "") for e in (d.get("mediaUserErrors") or []))
+            if "do not exist" in fe:        # 30.09.: ein abgebrochener Lauf löschte, bevor er den Nachweis schrieb → erledigt verbuchen
+                led.write(f"{p['id']}\t{p['handle']}\t0\t0\t{time.strftime('%Y-%m-%d')}\tschon-geloescht\n"); led.flush(); uebersprungen += 1; continue
             if d.get("mediaUserErrors") or not d.get("deletedMediaIds"):
                 fehler += 1; print(f"  ⚠️ {p['handle']}: {d.get('mediaUserErrors') or r.get('errors')}", file=sys.stderr, flush=True); continue
             b = sum(s for m, s in med[p["id"]] if m in set(d["deletedMediaIds"]))
