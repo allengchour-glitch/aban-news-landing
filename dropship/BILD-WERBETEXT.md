@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:23:48Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:26:47Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1184 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2713** in 732 Produkten
-- Treffer (≥ 4 Wörter): **132** in 110 Produkten
+- Medien geprüft: **2802** in 757 Produkten
+- Treffer (≥ 4 Wörter): **137** in 115 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -16,9 +16,11 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Heizbare Winterhaube für Fahrrad & Ski `15453769859457` | [69926690554241](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1722437663757307904.jpg) | 35 | hea Resist the cold Cheeks feel hot two | offen |
 | Velo-Scheinwerfer mit Welleninduktion `15448957223297` | [69862628753793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ec0a3dc-5ff7-4919-9833-ca59f27106b0_trans.jpg) | 34 | Smart gesture sensing Wave sensor lighting switch When | ENTFERNT |
 | Fahrradhelm für sicheres Radfahren `15453769073025` | [69926689276289](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7069a30b-403b-43cf-9d90-e5b3dbb7eea6_trans.jpg) | 31 | adjust the wrapping floating adjustment system design The | ENTFERNT |
+| Kabelloser Audio-Adapter für TV & Kopfhörer `15504083288449` | [70584177918337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9165c63c-fb2b-4df7-b0c0-c45b2180e9f4.jpg) | 31 | Bluetooth Super Guarantee AUDIO DELAY with these super | offen |
 | Gaming-Konsole Silikonhülle `15453787914625` | [69926758252929](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11ddebed-2105-475c-9551-19d8341fcd8d.jpg) | 27 | Comfortable Hand Feeling Environmentally friendly silicone feel very | ENTFERNT |
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | ENTFERNT |
 | Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
+| Aufblasbare Nackenstütze `15504011231617` | [70583674536321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e273f284-0202-4442-8616-c72997e32732_trans.jpg) | 24 | Ergonomic Design Assist relieving cervical fatigue More fitting | offen |
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69650083316097](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edelstahl-trinkflasche-hydro-570-ml-edit.jpg) | 23 | Stainless Steel Tea Storage Drink tea with peace | ENTFERNT |
 | Smartwatch mit Herzfrequenz und Anruffunktion `15524886774145` | [70800820633985](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1720366426231017472.jpg) | 23 | Hyperuricemia risk assessment Uric acid The normal value | offen |
@@ -49,6 +51,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | ENTFERNT |
 | Grosses Trinkschüssel für Haustiere `15453764911489` | [69926640091521](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e8706c5-2053-4556-b96a-09d5a383114a_trans.jpg) | 14 | Use exquisite The cat bowl Start Daily Food | ENTFERNT |
 | Kratzball Katzenbett `15453786702209` | [69926756123009](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02496609-f1fa-42a2-9066-4a77e2ad840f_trans.jpg) | 14 | Rotating climbing frame cat nest ROTATING BALL SOLID | ENTFERNT |
+| Handgemachte Erdbeer-Sweetheart Nägel `15503947792769` | [70582060777857](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f23c1d9b-83d0-415b-81ea-ead6875180a1.jpg) | 14 | PROFESSIONAL NAIL PROFESSIONAL NAIL mate ith thin the | offen |
 | Öle für Duftdiffuser `15453771661697` | [69926697304449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68ea0afb-6a45-4d84-8ebc-123850f919a2.jpg) | 13 | LAVENDER ESSENTIAL ESSENTIAL OIL THERAPEUTIC GRADE Essential oils | ENTFERNT |
 | In-Ear Gaming Headset mit Geräuschunterdrückung `15433463398785` | [69712350380417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6bddeded-3685-4902-9816-b786891ec9e2_trans.jpg) | 13 | Gaming Bluetooth delay Dual Mode Cool Fantasy Breathing | ENTFERNT |
 | Luftstromladegerät `15500984058241` | [70551408705921](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3049674334524.jpg) | 13 | Pad Wireless Charging Board Adjustable Clamp Angle Adjust | ENTFERNT |
@@ -79,6 +82,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Wasserfeste Maniküre `15452675244417` | [69904212853121](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2caa2e48-c29a-4328-8ad9-a73a56493b1a.jpg) | 9 | ZESUNMEI ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection | offen |
 | Kabelloser Glätt- und Lockenkamm `15503235940737` | [70574844903809](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4dcc5522-902b-40ed-b6e1-f55ffa99e59e_trans.jpg) | 9 | files Intelligent temperature control for different types hair | offen |
 | 21-Gitter Nagelschmuck-Box mit Glassteinen `15522212118913` | [70746582483329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eba30eda-9b63-41f2-a8a5-2145ec15f0ad.jpg) | 9 | Violets Color Big stones Violets vitrail Samll stones | offen |
+| Smart-Armband für Damen `15504142664065` | [70586155827585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/691402992569.jpg) | 9 | and luxurious The Beauty Art Concentrate the beauty | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | ENTFERNT |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
@@ -143,6 +147,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Geschlossene Katzen-Toilette `15453787554177` | [69926757761409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ce2b38c-d07e-471f-bf87-c523816c64f8_trans.jpg) | 4 | Flowerpot cat litter box | offen |
 | NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202086279](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/49cf115c-637e-4f7b-ae60-7e2e11eed288_trans.jpg) | 4 | Bracket Charging cable Gamepad | offen |
 | 6er Set Ätherische Öle `15450851934593` | [69887443272065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2238128500626.jpg) | 4 | KBAY Pure essential oils | offen |
+| DIY Notizbuch Diamond Painting Set `15504098099585` | [70585666797953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/97e0576d-c964-415a-809d-235fa4622d65.jpg) | 4 | Diamond Painting Pages Notebook | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
