@@ -4907,3 +4907,6 @@ gid://shopify/Product/15450856325505	zugeordnet	2	Super Soft EVA Fitness- & Yoga
 gid://shopify/Product/15450856358273	zugeordnet	4	Magnetische LED-Leuchte für Tisch und Wand
 gid://shopify/Product/15450856423809	zugeordnet	7	Strandtuch-Kleid – Badetuch zum Anziehen
 gid://shopify/Product/15450856522113	zugeordnet	5	Kabellose LED Kopfhörer mit Katzenohren
+gid://shopify/Product/15450856554881	zugeordnet	15	Drehscheiben-Quarzuhr für Herren
+gid://shopify/Product/15450856587649	zugeordnet	33	Grosse Herren Lederschuhe im britischen Stil
+gid://shopify/Product/15450856653185	zugeordnet	6	Magnetische Handyhalterung fürs Auto
