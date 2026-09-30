@@ -59,3 +59,11 @@ nur der mit `STIMME`/`LAUTHEIT_2PASS` las `START`. `reel_neu_rendern.py` (und me
 jedes Reel begann bei Quellsekunde 0. Der Reel-Motor setzt `LAUTHEIT_2PASS=1` (Runner) und war nicht betroffen.
 Fix: gleicher Eingangs-Seek `-ss "${START:-0}"` im zweiten Zweig. Gegenprobe siehe oben (4,65 → 19,94). Neu-Schnitt neu gestartet.
 **Lehre:** ein Parameter, der «übergeben» wird, ist erst belegt, wenn das ERGEBNIS sich mit ihm ändert (A/B am Ausgang).
+
+## Ergebnis Neu-Schnitt (15:05 UTC, nach dem START-Fix)
+`MODUS=hook SCHARF=1`: **22 ersetzt (21 Zeilen wieder `ready`)**, 2 am Tor durch `STILL` 73/91 % (Quelle zu ruhig — bleiben gesperrt),
+10 ohne Quelle (4 ohne CJ-Video, 6 Server-Quellen noch unterwegs → nächster Tageslauf). Queue: `meisterwerk-tor-skip` 36 → 15,
+`ready` 23 → 49 (inkl. neuer Motor-Reels). Kontaktbogen 8 Stichproben (Bild 0,3 s + 5 s): Produkt ab Bild 0 sichtbar in 8/8.
+⚠️ 1745702295637073920 (Sternenhimmel-Projektor Kinder) trägt englischen Lieferantentext im Video («with multiple color
+combinations») — die Gemini-Jury im Poster prüft Lieferantentext als K.-o.; nicht von Hand freigegeben.
+⚠️ 1586604104162488320 steht zweimal in der Queue (Säuberer-Schritt `dup-zeile-skip` räumt ab).
