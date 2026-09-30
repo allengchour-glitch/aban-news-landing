@@ -170,3 +170,17 @@
 15502143160705	unklar:farbe-unbekannt	2026-09-29	Glätteisen und Lockenstab 2-in-1 mit Thermostat
 15502144110977	unklar:farbe-unbekannt	2026-09-29	Glättbürste mit Anionenfunktion
 15502144962945	eu-sku-gesetzt:CJBJMRJF00177-Dyson color-EU	2026-09-29	2-in-1 Lockenstab & Glätteisen aus Turmalin-Keramik
+15502147518849	unklar:farbe-unbekannt	2026-09-30	Elektrischer Lockenstab für glattes & lockiges Haar
+15502182285697	unklar:farbe-unbekannt	2026-09-30	Omelet Lockenstab
+15502184022401	unklar:farbe-unbekannt	2026-09-30	Elektrischer Lockenstab – Wet & Dry
+15502185791873	unklar:farbe-unbekannt	2026-09-30	Drei-Rohr Lockenstab für Beach Waves
+15502186742145	unklar:farbe-unbekannt	2026-09-30	Wasserwellen-Lockenstab mit drei Heizstäben
+15502191821185	eu-sku-gesetzt:CJBJMRJF00126-Gold-EU	2026-09-30	Profi Lockenstab mit Turmalin-Keramik
+15502533296513	eu-sku-gesetzt:CJXFLPDC00108-White-S605W-EU	2026-09-30	Einstellbares DC-Netzteil für Reparaturen
+15502585528705	unklar:farbe-unbekannt	2026-09-30	Automatischer Lockenstab für perfekte Wellen
+15503234892161	unklar:farbe-unbekannt	2026-09-30	Multifunktionaler Lockenstab & Glättbürste
+15503282209153	unklar:farbe-unbekannt	2026-09-30	Handdampfglätter für Zuhause & Reisen
+15504082174337	eu-sku-gesetzt:CJJF147780802BY	2026-09-30	Kabelloser 2-in-1 Glätt- und Lockenstab mit USB
+15504082764161	eu-sku-gesetzt:CJJF144518403CX	2026-09-30	2-in-1 Dampf-Haarglätter & Lockenstab
+15504083419521	eu-sku-gesetzt:CJJF140677002BY	2026-09-30	Mini Lockenstab für grosse Locken
+15504149184897	unklar:farbe-unbekannt	2026-09-30	Big Wave Lockenstab mit Anionen-Technologie

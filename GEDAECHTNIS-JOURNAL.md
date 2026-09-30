@@ -7,6 +7,21 @@
 
 
 
+
+## 2026-10-01 · 🛒 #1021: UUID-pid nicht erkannt + Einzelvariante gegen 5 CJ-Varianten
+**GEMESSEN:** #1021, 30.09. 21:49 UTC, CHF 45.90, neue Kunden-ID, Quelle ChatGPT (erste und letzte Sitzung), «Nibosi
+Quarzuhr mit Edelstahlband», SKU `CJ-65D5329E-AA72-43AD-910B-F95B35E89D0A`. Bestell-Ampel 22:08: «KEIN CJ-Auftrag»;
+Engine-Log: «variantSku … bei CJ nicht gefunden».
+**Ursache 1:** `cj_order_engine.vid_fuer()` erkannte die Produkt-ID-Form nur als `CJ-<Ziffern>`; UUID-pids fielen in den
+variantSku-Zweig. Fix: Muster auch für UUID.
+**Ursache 2:** Shop-Produkt hat EINE Variante («Default Title»), CJ fünf (Blau-/Schwarz-/Weiss-Stahl, ganz schwarz, ganz
+gold, je USD 13.63). Kontaktbogen: Shop-Hauptbild, Bild 2 und Bild 4 = blaues Zifferblatt auf Stahl-Milanaise → CJ vid
+2F958323-… Bild 3 der Galerie war das GOLD-Variantenbild → aus der Galerie entfernt (Kundin hätte Gold erwarten können).
+**Fix:** `dropship/_cj_varianten_zuordnung.tsv` (Shopify-SKU → vid, nur mit Beleg), `vid_fuer()` liest sie vor «manuell
+prüfen»; Gegenprobe Wickel-Set (22 Varianten) meldet weiter «manuell prüfen». LX1021 = SD2609302311130651900, CREATED,
+CH, CJPacket EQ Sensitive, USD 21.55, vid geprüft. Bezahlen = Betreiber in der CJ-Konsole (Guthaben 0).
+**Offen:** Wie viele Einzelvarianten-Produkte hängen an Mehrvarianten-CJ-pids? Jede Bestellung darauf bleibt laut stehen.
+
 ## 2026-10-01 · 📌 Pinterest: der Server-Pinner sah seine Warteschlange nicht (sparse-Klon)
 **Anlass:** Betreiber «okey dan nur luxestyle push» (nach der Pinterest-Übergabe der abannews-Session).
 **GEMESSEN:** Metricool Pinterest-Konto: Impressionen 12.–15.09. 5'406–8'205/Tag (Pin-Klicks bis 187, ausgehende bis 15),
