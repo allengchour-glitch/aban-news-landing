@@ -6,6 +6,15 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🧟 Ein äusseres `timeout` beendet nur den Aufrufer — tesseract lief als Waise weiter (Load 50)
+Beim Neu-Schnitt gemessen: Load 50 auf 4 Kernen, 11 `tesseract` mit Eltern-PID 1, bis 826 s alt. Das Meisterwerk-Tor lief
+dadurch im Reel-Motor an seine OCR-Grenze → «nicht messbar» → 5 von 6 fertigen Reels verworfen. `bildtext_pruefen.py` rief
+`pytesseract.image_to_data` ohne `timeout=`; die Aufseher-Aufrufe liegen unter `timeout N` — das beendet Python, nicht das Kind.
+Dazu nahm jeder Aufruf ohne `OMP_THREAD_LIMIT=1` alle Kerne. Fix: Timeout IM Aufruf (pytesseract killt sein Kind, Überschreitung
+= Fehler statt «0 Wörter»), 1 Thread, `automation/ocr_waisen.sh` in jeder Aufseher-Runde (nur Eltern-PID 1, > 300 s).
+**Regel:** Wer ein Programm startet, gibt ihm selbst die Zeitgrenze — ein äusseres `timeout` erzeugt Waisen. Und ein
+Abräumer braucht ein enges Kriterium (Eltern-PID 1), sonst trifft er Arbeit, die noch jemand liest.
+
 ## 2026-09-30 · 🎬 Ein Tor nur am Ende der Kette lässt den Erzeuger Ausschuss produzieren: 14/14 Reel-Posts abgewiesen
 Autonome Runde 12:26 UTC. `/tmp/social_autopilot.log`: 14 Reel-Versuche heute, **alle** vom Meisterwerk-Tor abgewiesen
 (12× `HOOK < 3.0`, 2× Bildpreis ≠ Caption) — je Versuch ein 15-min-Durchlauf ohne Post; Queue 63 `ready` + 20 schon

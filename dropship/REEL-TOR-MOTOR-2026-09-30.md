@@ -32,3 +32,21 @@
   Gemini-Jury (`gemini_jury.py`) sieht jedes Reel vor dem Post zusätzlich an.
 - Unter hoher Last (Load 20) läuft tesseract im Tor in den 120-s-Timeout → Exit 2 «nicht messbar», kein Post. Kein Fehlurteil,
   aber verlorene Durchläufe.
+
+## Nachtrag 14:00–14:35 UTC — Reparaturweg und OCR-Stau
+- **Gesperrt ≠ verloren:** `reel/reel_neu_rendern.py MODUS=hook` schneidet `meisterwerk-tor-skip`-Reels mit der bewegtesten
+  Sekunde neu; Tor Pflicht; bestanden → Zeile zurück auf `ready` (frisch gelesen, nur noch gesperrte Zeilen, atomar). Seit heute
+  nimmt auch der Fenster-Modus den gefundenen Einstieg. Täglich im Aufseher (`reel_tor_reparatur`, mit `git_sichern.sh`).
+- **Fehlende Quellen:** `reel/tor_quellen_anfragen.mjs` holt die CJ-Videoadresse (API, `cj_takt`) und legt Server-Aufträge
+  (≤ 3 Videos je Auftrag) an — 22 gesperrte ohne Quelle → 18 angefragt in 6 Aufträgen, 4 ohne CJ-Video. Erste Quellen kamen
+  binnen Minuten an; der laufende Neu-Schnitt nahm sie mit. Falle beim Bau: zeilenweise Suche in `reels_seed.csv` fand 0 —
+  Captions tragen Zeilenumbrüche; jetzt RFC-4180-Parser.
+- **OCR-Stau (gemessen 14:31 UTC):** Load **50** auf 4 Kernen, **11 verwaiste `tesseract`** (Eltern = PID 1, bis 826 s alt).
+  Folge: das Tor lief im Reel-Motor an seine OCR-Grenze (120 s) → «nicht messbar» → **5 von 6 fertigen Reels verworfen**.
+  Ursache: `bildtext_pruefen.py` rief `image_to_data` ohne Timeout; ein äusseres `timeout` beendet nur Python, das Kind
+  läuft weiter; ohne `OMP_THREAD_LIMIT` nimmt jeder Aufruf alle Kerne.
+  Fix: `bildtext_pruefen.py` → `OMP_THREAD_LIMIT=1` + `timeout=OCR_TIMEOUT` (90 s, pytesseract beendet sein Kind; Überschreitung
+  = RuntimeError, kein stilles «sauber»); `meisterwerk_tor.py` → 1 Thread, 240 s; `automation/ocr_waisen.sh` jede
+  Aufseher-Runde (nur tesseract mit Eltern-PID 1 und > 300 s). 8 + 5 Waisen beendet; Load 50 → 17 in 3 Minuten.
+  Kanarienvogel: `sleep` als «tesseract» per setsid (Eltern-PID 1) → beendet; Aufrufe mit python-Eltern unberührt.
+  ⚠️ Erste Regel «Eltern ≠ python/node» war zu breit (traf im Test mit Schwelle 0 auch junge Prozesse) → auf Eltern-PID 1 eingeengt.
