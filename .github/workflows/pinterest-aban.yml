@@ -1,0 +1,80 @@
+name: Pinterest-Autopilot abannews
+
+# Postet 1× täglich 2 Pins auf die Gratis-Rechner von abannews.com (dort sitzen die Kauf-Knöpfe).
+# Texte: Gemini und ChatGPT abwechselnd, jeder Text muss den Fakten-Prüfer bestehen (sonst Vorlage).
+# Ohne Zugangsdaten: Probelauf (rendert die Pins als Artefakt zum Anschauen, sendet nichts).
+# Einmalig: Secrets ABAN_PINTEREST_APP_ID + ABAN_PINTEREST_APP_SECRET, dann abannews.com/api/pinterest-auth
+# → ABAN_PINTEREST_REFRESH_TOKEN. Danach erneuert der Lauf den Schlüssel selbst (verschlüsselt im Repo).
+on:
+  schedule:
+    - cron: '17 9 * * *'   # 1×/Tag (Regel: höchstens ein Lauf pro Tag), 11:17 Schweizer Sommerzeit
+  workflow_dispatch:
+    inputs:
+      probelauf:
+        description: 'Nur Bilder erzeugen, nichts an Pinterest senden'
+        type: boolean
+        default: false
+      pins:
+        description: 'Pins in diesem Lauf (1–5)'
+        default: '2'
+      sandbox:
+        description: 'Sandbox (Trial access): Pins nur für dich sichtbar, z. B. fürs Demo-Video an Pinterest'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pinterest-aban
+  cancel-in-progress: false
+
+jobs:
+  pins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Playwright (für die Pin-Bilder)
+        run: |
+          npm i playwright@^1.48 --no-save >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Tests (Fakten-Prüfer, Auswahl, Token, ganzer Lauf gegen nachgebaute Server)
+        run: node automation/pinterest_aban/test_autopilot.mjs
+      - name: Pins erstellen
+        env:
+          ABAN_PINTEREST_APP_ID: ${{ secrets.ABAN_PINTEREST_APP_ID }}
+          ABAN_PINTEREST_APP_SECRET: ${{ secrets.ABAN_PINTEREST_APP_SECRET }}
+          ABAN_PINTEREST_REFRESH_TOKEN: ${{ secrets.ABAN_PINTEREST_REFRESH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          PINS_PRO_LAUF: ${{ inputs.pins || '2' }}
+          PROBE: ${{ inputs.probelauf && '1' || '' }}
+          SANDBOX: ${{ inputs.sandbox && '1' || '' }}
+          SANDBOX_TOKEN: ${{ secrets.ABAN_PINTEREST_SANDBOX_TOKEN }}
+        run: |
+          if [ "$SANDBOX" = "1" ]; then
+            export PINTEREST_API_BASE=https://api-sandbox.pinterest.com/v5 ABAN_PINTEREST_ACCESS_TOKEN="$SANDBOX_TOKEN"
+            [ -n "$SANDBOX_TOKEN" ] || { echo "Secret ABAN_PINTEREST_SANDBOX_TOKEN fehlt (Pinterest-App-Seite → Sandbox-Token erzeugen)."; exit 1; }
+          fi
+          if [ -n "$PROBE" ] || { [ -z "$ABAN_PINTEREST_APP_ID" ] && [ "$SANDBOX" != "1" ]; }; then export DRY_RUN=1; else export DRY_RUN=0; fi
+          node automation/pinterest_aban/autopilot.mjs
+      - name: Pin-Bilder als Artefakt (zum Anschauen)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pins
+          path: _pins/
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Ledger + verschlüsselten Schlüssel committen
+        run: |
+          if [ -n "$(git status --porcelain data/pinterest-aban.json data/pinterest-aban-token.enc)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/pinterest-aban.json data/pinterest-aban-token.enc
+            git commit -m "Pinterest: Pins des Tages [skip ci]"
+            for _i in 1 2 3; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi

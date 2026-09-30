@@ -1,0 +1,228 @@
+{
+  "_hinweis": "Nur Fakten eintragen, die auf der verlinkten Seite stehen und geprüft sind. Gemini darf ausschliesslich daraus schreiben; Zahlen, die hier nicht vorkommen, verwirft der Prüfer.",
+  "boards": {
+    "wohnen": {
+      "name": "Miete & Wohnen Schweiz",
+      "beschreibung": "Mietzins senken, Hypothek, Eigenmietwert: Gratis-Rechner für die Schweiz."
+    },
+    "budget": {
+      "name": "Budget & Sparen Schweiz",
+      "beschreibung": "Budget planen, Rechnungen zurücklegen, Sparziele erreichen: Gratis-Rechner."
+    },
+    "schulden": {
+      "name": "Schulden abbauen",
+      "beschreibung": "Schuldenfrei werden: Lawine oder Schneeball, tilgen oder investieren."
+    },
+    "hochzeit": {
+      "name": "Hochzeit planen: Budget",
+      "beschreibung": "Hochzeitsbudget, Kosten pro Gast und Sparplan bis zum grossen Tag."
+    },
+    "vorsorge": {
+      "name": "Vorsorge & Vermögen Schweiz",
+      "beschreibung": "Säule 3a, Zinseszins und Lohn: verständliche Gratis-Rechner."
+    }
+  },
+  "themen": [
+    {
+      "slug": "mietzins",
+      "url": "https://abannews.com/mietzins-senkung-rechner",
+      "board": "wohnen",
+      "gewicht": 3,
+      "produkt": true,
+      "fakten": [
+        "Der Referenzzinssatz beträgt 1,25 %.",
+        "Sinkt der Referenzzinssatz um 0,25 Prozentpunkte, steht Mietern rund 2,91 % weniger Miete zu.",
+        "Zwei Schritte ergeben −5,66 %, nicht −5,82 %.",
+        "Die Senkung muss man aktiv beim Vermieter verlangen.",
+        "Der Vermieter darf Teuerung und Kostensteigerungen gegenrechnen.",
+        "Der Rechner zeigt die neue Miete und die Ersparnis pro Jahr."
+      ],
+      "stichworte": [
+        "Mietzinsreduktion",
+        "Referenzzinssatz",
+        "Miete senken",
+        "Mieter Schweiz",
+        "Mietzins berechnen"
+      ],
+      "bildzahl": "−2,91 %"
+    },
+    {
+      "slug": "hochzeit",
+      "url": "https://abannews.com/hochzeit-budget-rechner",
+      "board": "hochzeit",
+      "gewicht": 3,
+      "produkt": true,
+      "fakten": [
+        "Pauschalen wie Location, Fotografie und Musik kosten gleich viel, egal wie viele Gäste kommen.",
+        "Essen und Getränke wachsen mit jedem Gast.",
+        "Der Rechner zeigt die Kosten pro Gast und wie viele Gäste ins Budget passen.",
+        "Viele Anbieter verlangen Anzahlungen lange vor der Hochzeit.",
+        "Rund zehn Prozent Reserve im Budget einplanen."
+      ],
+      "stichworte": [
+        "Hochzeitsbudget",
+        "Hochzeit planen",
+        "Kosten pro Gast",
+        "Hochzeit Kosten",
+        "Hochzeitsplanung"
+      ]
+    },
+    {
+      "slug": "budget",
+      "url": "https://abannews.com/budget-rechner-schweiz",
+      "board": "budget",
+      "gewicht": 3,
+      "produkt": true,
+      "fakten": [
+        "In der Schweiz kommen die Steuern bei den meisten als Rechnung, nicht als Lohnabzug.",
+        "Der Rechner verteilt Steuern, Franchise und Jahresrechnungen auf den Monat.",
+        "Ein Dauerauftrag auf ein separates Konto direkt nach dem Lohn verhindert Überraschungen.",
+        "Als Notreserve gelten drei Monate feste Ausgaben.",
+        "Die Miete sollte höchstens ein Drittel des Nettoeinkommens kosten."
+      ],
+      "stichworte": [
+        "Budget Schweiz",
+        "Budgetplanung",
+        "Steuern zurücklegen",
+        "Haushaltsbudget",
+        "Geld sparen"
+      ]
+    },
+    {
+      "slug": "schulden",
+      "url": "https://abannews.com/schulden-oder-investieren",
+      "board": "schulden",
+      "gewicht": 3,
+      "produkt": true,
+      "fakten": [
+        "Der Rechner vergleicht: Extra-Geld in die Schulden oder ins Depot.",
+        "Er zeigt, ab welcher Rendite sich Investieren lohnt.",
+        "Die Lawinen-Methode tilgt zuerst die Schuld mit dem höchsten Zins und kostet am wenigsten Zins.",
+        "Die Schneeball-Methode tilgt zuerst die kleinste Schuld.",
+        "Der Rechner zeigt, wann du schuldenfrei bist."
+      ],
+      "stichworte": [
+        "Schulden abbauen",
+        "schuldenfrei",
+        "Schneeball-Methode",
+        "Kredit tilgen",
+        "Schulden oder investieren"
+      ]
+    },
+    {
+      "slug": "saeule3a",
+      "url": "https://abannews.com/saeule-3a-rechner",
+      "board": "vorsorge",
+      "gewicht": 2,
+      "fakten": [
+        "Einzahlungen in die Säule 3a senken die Steuern.",
+        "Der Rechner zeigt die Steuerersparnis der 3a-Einzahlung.",
+        "Er zeigt auch, wie das 3a-Guthaben über die Jahre wächst."
+      ],
+      "stichworte": [
+        "Säule 3a",
+        "Steuern sparen",
+        "Vorsorge Schweiz",
+        "3a Rechner"
+      ]
+    },
+    {
+      "slug": "sparziel",
+      "url": "https://abannews.com/sparziel-rechner",
+      "board": "budget",
+      "gewicht": 1,
+      "fakten": [
+        "Der Rechner zeigt, wie viel du pro Monat sparen musst, um ein Ziel rechtzeitig zu erreichen.",
+        "Startkapital und Zinsen werden berücksichtigt."
+      ],
+      "stichworte": [
+        "Sparziel",
+        "Sparplan",
+        "Geld sparen",
+        "monatlich sparen"
+      ]
+    },
+    {
+      "slug": "zinseszins",
+      "url": "https://abannews.com/zinseszins-rechner",
+      "board": "vorsorge",
+      "gewicht": 1,
+      "fakten": [
+        "Der Rechner zeigt Endkapital, eingezahlte Summe und Zinsertrag.",
+        "Startkapital, monatliche Sparrate und Zinssatz sind frei wählbar."
+      ],
+      "stichworte": [
+        "Zinseszins",
+        "Vermögen aufbauen",
+        "Sparrate",
+        "Zinsen berechnen"
+      ]
+    },
+    {
+      "slug": "hypothek",
+      "url": "https://abannews.com/hypothek-rechner-schweiz",
+      "board": "wohnen",
+      "gewicht": 2,
+      "fakten": [
+        "Der Rechner zeigt Zinskosten, Amortisation und Tragbarkeit.",
+        "Die Tragbarkeit prüfen Banken mit der Drittel-Regel.",
+        "Erste und zweite Hypothek werden getrennt berechnet."
+      ],
+      "stichworte": [
+        "Hypothek Schweiz",
+        "Eigenheim",
+        "Tragbarkeit",
+        "Haus kaufen Schweiz"
+      ]
+    },
+    {
+      "slug": "eigenmietwert",
+      "url": "https://abannews.com/eigenmietwert-rechner",
+      "board": "wohnen",
+      "gewicht": 1,
+      "fakten": [
+        "Der Rechner schätzt den Eigenmietwert aus Marktmiete oder Liegenschaftswert.",
+        "Er zeigt einen geschätzten Steuer-Effekt."
+      ],
+      "stichworte": [
+        "Eigenmietwert",
+        "Wohneigentum",
+        "Steuern Eigenheim"
+      ]
+    },
+    {
+      "slug": "nettolohn",
+      "url": "https://abannews.com/nettolohn-rechner-schweiz",
+      "board": "vorsorge",
+      "gewicht": 1,
+      "fakten": [
+        "Der Rechner rechnet vom Brutto- zum Nettolohn.",
+        "AHV, BVG, ALV und Nichtberufsunfall werden abgezogen.",
+        "Kanton, Zivilstand und Quellensteuer werden berücksichtigt."
+      ],
+      "stichworte": [
+        "Nettolohn",
+        "Brutto Netto",
+        "Lohn Schweiz",
+        "Lohnabzüge"
+      ]
+    },
+    {
+      "slug": "trading",
+      "url": "https://abannews.com/trading-lernen",
+      "board": "vorsorge",
+      "gewicht": 1,
+      "fakten": [
+        "Die Seite sammelt Gratis-Kurse und ein Übungsdepot ohne echtes Geld.",
+        "Sie erklärt die Steuer-Regeln für Trading in der Schweiz.",
+        "Keine Versprechen von schnellen Gewinnen."
+      ],
+      "stichworte": [
+        "Trading lernen",
+        "Börse Einsteiger",
+        "Aktien Schweiz",
+        "Übungsdepot"
+      ]
+    }
+  ]
+}
