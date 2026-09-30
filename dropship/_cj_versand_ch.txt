@@ -1316,3 +1316,7 @@ gid://shopify/Product/15455514263937	ok	Stoffbettwäsche mit Stickerei, Hautfreu
 gid://shopify/Product/15459760669057	nicht-versendbar	American Vintage-Stil Nachttisch Wandlampe für Schlafzimmer & Wohnzimmer
 gid://shopify/Product/15504098656641	ok	Sukkulenten-Blumentopf Silikonform
 gid://shopify/Product/15509384036737	ok	Grosse luxuriöse Kristallglas-Schale
+gid://shopify/Product/15493884281217	ok	Hundebett «Four Seasons» – Gemütlich & Waschbar
+gid://shopify/Product/15495104594305	ok	Elektrische Grillplatte und Hot Pot
+gid://shopify/Product/15493846663553	ok	Retro Rucksack aus Rindsleder für 15-Zoll-Laptop
+gid://shopify/Product/15452683665793	ok	Auto-Hundematte mit erweiterter Stütze für Rücksitz
