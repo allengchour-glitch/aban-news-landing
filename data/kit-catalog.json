@@ -179,5 +179,13 @@
     "price_cents": 1900,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "mietzins-paket",
+    "title": "Mietzins-Paket Schweiz: Senkung verlangen, mit fertigem Brief",
+    "desc": "Berechnet die Mietzinssenkung nach Art. 13 und 16 VMWG (Referenzzins, Teuerung, Kosten), den nächstmöglichen Termin und die Fristen, und schreibt das Herabsetzungsbegehren nach Art. 270a OR fertig. Offline-Rechner mit Anleitung. Keine Rechtsberatung.",
+    "price_cents": 1900,
+    "currency": "chf",
+    "standalone": true
   }
 ]
