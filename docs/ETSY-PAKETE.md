@@ -70,3 +70,14 @@ Shop-Währung (`PREISE` im Skript), Kategorie aus dem Etsy-Baum, 5 Bilder, Datei
 nachgebauter Etsy-Server, der Reihenfolge, Formate (form-urlencoded / multipart) und alle Pflichtfelder laut
 OpenAPI-Spezifikation (Stand 30.09.2026) kontrolliert, inkl. Idempotenz. 18/18 grün. Der erste echte Lauf ist
 trotzdem der eigentliche Test: Fehlermeldungen von Etsy stehen im Workflow-Log.
+
+## Hochzeits-Budget (DE) und Wedding Budget Planner (EN)
+
+`content/etsy/hochzeits-budget/` (Excel, Offline-App, Anleitung-PDF) und `content/etsy/en/wedding-budget-planner/`
+(Excel, Guide-PDF), je 5 Bilder und `ETSY-LISTING.txt`. Suchbegriffe: „hochzeit budget excel vorlage“,
+„wedding budget spreadsheet google sheets“.
+
+- Excel aus `tools/etsy/hochzeit_xlsx.py` (DE + EN aus einem Generator, nur Formeln, SUMIF statt Array-Formeln).
+  Gegenprobe per LibreOffice-Neuberechnung: 8/8 Kennzahlen = `tools/hochzeit/engine.js`, auch mit Teilzahlungen.
+- Bilder und PDFs: `CH=… node tools/etsy/hochzeit_etsy.mjs` (Zahlen aus der Engine, Datum relativ zu heute).
+- Preise im Upload-Skript: DE 12, EN 10 USD. Der Etsy-Upload nimmt beide automatisch mit.

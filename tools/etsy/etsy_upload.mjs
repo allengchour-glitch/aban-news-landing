@@ -23,6 +23,8 @@ const PREISE = {
   'schulden-plan': { CHF: 14, EUR: 14, USD: 15, GBP: 12 },
   'en/budget-planner': { CHF: 8, EUR: 8, USD: 9, GBP: 7 },
   'en/debt-payoff-planner': { CHF: 10, EUR: 10, USD: 11, GBP: 9 },
+  'hochzeits-budget': { CHF: 12, EUR: 12, USD: 13, GBP: 10 },
+  'en/wedding-budget-planner': { CHF: 9, EUR: 9, USD: 10, GBP: 8 },
 };
 const TITEL_RE = /[^\p{L}\p{Nd}\p{P}\p{Sm}\p{Zs}™©®]/u; // Etsy: erlaubte Zeichen im Titel
 const TAG_RE = /[^\p{L}\p{Nd}\p{Zs}\-'™©®]/u;           // Etsy: erlaubte Zeichen in Tags

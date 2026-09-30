@@ -187,5 +187,13 @@
     "price_cents": 1900,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "hochzeits-budget",
+    "title": "Hochzeits-Budget-Plan: Kosten pro Gast, Zahlungsplan, Sparrate",
+    "desc": "Alle Posten mit Preis pro Gast oder Pauschale, jede Anzahlung mit Datum, die Sparrate, die jede Zahlung deckt, und wie viele Gäste ins Budget passen. Offline-App und Excel-Vorlage mit Anleitung.",
+    "price_cents": 1900,
+    "currency": "chf",
+    "standalone": true
   }
 ]

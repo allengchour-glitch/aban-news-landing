@@ -1,0 +1,11 @@
+Hochzeits-Budget-Plan 1.0 — aban news
+
+Inhalt
+  hochzeits-budget.html  Offline-App: Posten, Zahlungsplan, Sparrate (Doppelklick, läuft im Browser, auch auf dem Handy)
+  Hochzeits-Budget.xlsx  dieselbe Rechnung als Excel-Vorlage (auch Google Tabellen und LibreOffice)
+  ANLEITUNG.md           Start in 15 Minuten, Gästeliste, Anzahlungen, Sparkonto
+
+Nutzung privat erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Planungshilfe. Die Beispielbeträge sind Platzhalter, keine Durchschnittspreise.
+
+© aban news, abannews.com · hallo@abannews.com
