@@ -22,7 +22,10 @@
    `meisterwerk_tor.py` mit `PREIS_SOLL` = Live-Preis. Exit 4 → **nicht in die Queue**, pid nach
    `dropship/_reel_tor_abgelehnt.txt` (pid · Datum · Gründe) und nie wieder gefragt; Exit 2 (nicht messbar) → kein
    Eintrag, nächster Lauf versucht es neu. Neu-Render: bei Tor-Fehler bleibt die alte Fassung.
-3. Bestand: siehe unten (Warteschlange gegen das Tor gemessen, Durchgefallene vorab markiert).
+3. Bestand gemessen (12:53–13:1x UTC, Tor ohne Bildpreis-OCR): **65 `ready`-Reels → 37 bestanden, 28 durchgefallen**
+   (28× HOOK < 3,0, davon 4 auch STILL > 50 %). Die bei der Markierung noch `ready` standen (16; die übrigen hatten Poster
+   bzw. Jury inzwischen selbst quittiert), stehen jetzt auf `meisterwerk-tor-skip` — zurückgelesen 16/16. Danach 23 `ready`
+   (die Jury sperrte parallel weitere). Jeder Abweis hätte einen 15-min-Autopilot-Durchlauf gekostet.
 
 ## OFFEN / Grenzen
 - HOOK misst Pixeldifferenz, nicht Wirkung: die bewegteste Sekunde kann ein Szenenwechsel oder Blitz sein. Die
