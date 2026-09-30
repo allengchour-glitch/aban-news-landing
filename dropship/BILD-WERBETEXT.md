@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:36:46Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:39:56Z
 
-Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1186 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
+Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1187 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3078** in 832 Produkten
-- Treffer (≥ 4 Wörter): **140** in 118 Produkten
+- Medien geprüft: **3166** in 857 Produkten
+- Treffer (≥ 4 Wörter): **142** in 120 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -47,6 +47,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Nagelfräser-Bit aus Wolframstahl `15502471266689` | [70562975351169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/398099cc-fa5b-442d-8379-7dae455303e5_fine.jpg) | 15 | Conical ball head Titanium nitride coating Cross teeth | offen |
 | SouthMoon Mugwort Bein-Patches `15448822907265` | [69861107433857](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/19215726-4098-45ba-bc77-72141ebf1369.jpg) | 15 | Lower Body Treatment Patch RESHAPE FIRM BEAUTIFUL LEG | offen |
 | SouthMoon Mugwort Bein-Patches `15448822907265` | [69861107499393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ef928716-2b0b-4e28-84ec-6ab4df493aa2.jpg) | 15 | Lower Body Treatment Patch RESHAPE FIRM BEAUTIFUL LEG | offen |
+| Multifunktionales Silikon-Wärmepad `15522140586369` | [70744149983617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/111c4387-a670-4b29-bbf3-bdca2051cd60_fine.jpg) | 15 | Storage without pressure thin silicone flexible heating food | offen |
 | Kamera-Drohne mit Hinderniserkennung `15453744628097` | [69926295536001](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc914a48-36f7-4072-b53a-203bf305c567.jpg) | 14 | Powerful brushless power Equipped with four and brushless | offen |
 | Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | ENTFERNT |
 | Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | ENTFERNT |
@@ -151,6 +152,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202086279](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/49cf115c-637e-4f7b-ae60-7e2e11eed288_trans.jpg) | 4 | Bracket Charging cable Gamepad | offen |
 | 6er Set Ätherische Öle `15450851934593` | [69887443272065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2238128500626.jpg) | 4 | KBAY Pure essential oils | offen |
 | DIY Notizbuch Diamond Painting Set `15504098099585` | [70585666797953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/97e0576d-c964-415a-809d-235fa4622d65.jpg) | 4 | Diamond Painting Pages Notebook | offen |
+| Anti-Falten Naturkern Creme `15521323286913` | [70733673267585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9ea20bb-5335-4ffc-aa47-a9e946abed95.jpg) | 4 | TEN KON MIRRC LIV | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
