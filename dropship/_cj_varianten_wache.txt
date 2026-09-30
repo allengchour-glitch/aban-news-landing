@@ -5983,3 +5983,17 @@ gid://shopify/Product/15449428492673	1790777289	ok	2 Shop / 3 CJ / 0 fehlend / 0
 gid://shopify/Product/15449428525441	1790777289	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
 gid://shopify/Product/15449428558209	1790777289	ok	12 Shop / 12 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449428623745	1790777289	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428656513	1790777289	ok	35 Shop / 35 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428689281	1790777289	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428722049	1790777289	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428754817	1790777289	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428787585	1790777289	ok	14 Shop / 14 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428885889	1790777289	ok	99 Shop / 99 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428951425	1790777289	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428984193	1790777289	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449429016961	1790777289	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449429049729	1790777289	ok	64 Shop / 64 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449429115265	1790777289	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449429148033	1790777289	ok	63 Shop / 63 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449429180801	1790777289	ok	26 Shop / 26 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449429246337	1790777289	ok	37 Shop / 37 CJ / 0 fehlend / 0 DENY
