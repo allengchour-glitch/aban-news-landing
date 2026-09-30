@@ -56059,3 +56059,4 @@ gid://shopify/Product/15523938468225	gid://shopify/MediaImage/77406932468103
 gid://shopify/Product/15523938664833	gid://shopify/MediaImage/70771979157889
 gid://shopify/Product/15523938730369	gid://shopify/MediaImage/70771980239233
 gid://shopify/Product/15523939484033	gid://shopify/MediaImage/70771989315969
+gid://shopify/Product/15523940270465	gid://shopify/MediaImage/77406935351687
