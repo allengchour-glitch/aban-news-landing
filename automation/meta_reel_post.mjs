@@ -12,7 +12,7 @@
  * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
-import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen } from './post_guard.mjs';
+import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, igUserTags } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -304,7 +304,7 @@ const altesLayout = (() => {
   }
   return (cand[idx.scheduled_date] || '').trim().slice(0, 10) <= '2026-09-25';   // CDN-Reels: alle vor der Korrektur gebaut
 })();
-const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true', ...(altesLayout ? { thumb_offset: '3500' } : {}) });
+const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true', ...(altesLayout ? { thumb_offset: '3500' } : {}), ...igUserTags([url, cand[idx.id]], 'reel') });   // 30.09.: Tati markieren
 if (altesLayout) console.log('   Cover bei 3,5 s (Reel mit altem Layout, Hook im Raster sonst abgeschnitten)');
 if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 for (let a = 0; a < 30; a++) {

@@ -21,7 +21,7 @@
  */
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen, modelSperre } from './post_guard.mjs';
 
 const V = 'v21.0';
 const IG_ID = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id', 'utf8').trim() : '');
@@ -222,6 +222,8 @@ for (const r of bereit) {
     if (!DRY) { pushen([ordner, CSV], `IG-Karussell-Slides ${slug} [skip ci]`); await schlaf(8000); codes = bilder.map(http); }
   }
   if (codes.some(c => c !== '200')) { console.log(`   ⛔ ${slug}: Bilder antworten ${codes.join(',')} → uebersprungen`); continue; }
+  // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
+  { const ms = modelSperre(bilder, caption); if (ms) { console.log(`   ⛔ ${slug}: ${ms}`); continue; } }
   if (bilder.some(b => postSeen(b))) { console.log(`   ⛔ ${slug}: Bild schon gepostet (gemeinsamer Ledger)`); if (!DRY) { setzen(r, 'status', 'posted-dup-skip'); writeLedger(); } continue; }
   // 28.09.2026 Gemini-Vision-Jury auf die Titelfolie (das Bild, das der Feed zeigt) — «jede post ein meisterwerk».
   { const lokal = fs.existsSync(`${ordner}/01.jpg`) ? `${ordner}/01.jpg` : bilder[0];

@@ -23,7 +23,7 @@ import fs from 'node:fs';
 import { execFileSync as _exf } from 'node:child_process';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, juryPruefen } from './post_guard.mjs';
+         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, juryPruefen, igUserTags } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -143,7 +143,7 @@ async function postIG(imageUrl, caption){
   const fehlt = markierungFehlt(imageUrl, caption);
   if (fehlt) { console.error('⛔', fehlt); return false; }
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
-  const c = await gpost(`${base}/media`, { image_url: imageUrl, caption, access_token: IG_TOK });
+  const c = await gpost(`${base}/media`, { image_url: imageUrl, caption, access_token: IG_TOK, ...igUserTags([imageUrl], 'bild') });   // 30.09.: Tati markieren
   if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
   await waitContainer(`https://graph.facebook.com/${V}/${c.j.id}?fields=status_code&access_token=${encodeURIComponent(IG_TOK)}`);
   const p = await gpost(`${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK });

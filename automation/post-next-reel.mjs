@@ -17,7 +17,7 @@
  *   DRY_RUN=1             (optional: nur loggen, nichts senden/schreiben)
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 
 const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
 const WEBHOOK = process.env.PUBLISH_WEBHOOK_URL || process.env.MAKE_REEL_WEBHOOK || '';
@@ -57,6 +57,8 @@ const videoUrl = next[idx.video_url];
 
 // GEMEINSAME Doppelpost-Sperre (post_guard): EIN Lock für alle Poster + script-übergreifender
 // Medien-Ledger. Verhindert, dass dieser Webhook-Poster denselben Reel wie meta_reel_post schickt.
+// 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
+{ const ms = modelSperre([videoUrl], caption); if (ms) { console.error('⛔', ms); process.exit(3); } }
 if(!DRY) postLock();
 if(!DRY && postSeen(videoUrl)){ console.log('⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost.'); next[idx.status]='posted'; fs.writeFileSync(CSV, serialize(rows)); process.exit(0); }
 // Webhook-Payload: Reel-Felder + abannews-kompatible Felder (text/url/tags) für social/post.py-artige n8n-Flows.

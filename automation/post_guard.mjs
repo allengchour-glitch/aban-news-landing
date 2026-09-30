@@ -153,10 +153,33 @@ export async function fbSeitenIdentitaet(token, pageId = FB_SEITE) {
 
 export const MODEL_HANDLE = '@tatjanalarsinamoira';
 // Merkmale des Materials: die Dateinamen der Kundinnenfotos und des daraus gebauten Reels.
-const MODEL_MEDIEN = /(^|[^a-z])(kundin-\d\d|luxestyle-model-(clean|musik))/i;
+// 30.09.2026: + «tati» — ihre Fotos kommen in den Shop (Dateiname tati-model-…) und fliessen von dort in Pins, Stories und
+// Karussells; die Sperre muss am BILD greifen, nicht an einer Queue.
+const MODEL_MEDIEN = /(^|[^a-z])(kundin-\d\d|luxestyle-model-(clean|musik)|tati-model|tatjana)/i;
 
 export function istModelMaterial(medium = '', zeilenId = '') {
   return MODEL_MEDIEN.test(String(medium)) || MODEL_MEDIEN.test(String(zeilenId));
+}
+
+// 30.09.2026 Betreiber: «bei insta posting immer sie markieren und auch andere orte» — EINE Prüfung für ALLE Poster
+// (IG, FB, TikTok, YouTube, Pinterest, Karussell, Story). text = Caption/Pin-Text; text === null = Kanal ohne Text (Story):
+// dann nur erlaubt, wenn die Markierung ins Bild gebrannt ist (Dateiname enthält «markiert»).
+export function modelSperre(medien = [], text = '') {
+  const m = (Array.isArray(medien) ? medien : [medien]).filter(x => istModelMaterial(String(x || '')));
+  if (!m.length) return null;
+  if (text === null) return m.every(x => /markiert/i.test(String(x))) ? null
+    : `Model-Material ohne eingebrannte Markierung (${MODEL_HANDLE}) in einem Kanal ohne Text — gesperrt.`;
+  return String(text).toLowerCase().includes(MODEL_HANDLE.toLowerCase()) ? null
+    : `Model-Markierung fehlt: ${MODEL_HANDLE} muss im Text stehen (Bedingung der Einwilligung, Betreiber 30.09. «immer markieren») — gesperrt.`;
+}
+
+// 30.09.2026: echte Instagram-Personenmarkierung (sie wird benachrichtigt), zusätzlich zum @-Handle im Text.
+// Bild: Position Mitte; Reel: nur Name (Graph API). Leer, wenn kein Model-Material.
+export function igUserTags(medien = [], typ = 'bild') {
+  const m = (Array.isArray(medien) ? medien : [medien]).some(x => istModelMaterial(String(x || '')));
+  if (!m) return {};
+  const u = MODEL_HANDLE.replace(/^@/, '');
+  return { user_tags: JSON.stringify(typ === 'reel' ? [{ username: u }] : [{ username: u, x: 0.5, y: 0.5 }]) };
 }
 
 export function markierungFehlt(medium = '', caption = '', zeilenId = '') {

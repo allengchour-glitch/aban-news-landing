@@ -19,7 +19,7 @@
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -234,6 +234,8 @@ if (/^montage-/.test(get(cand, 'id') || '')) {   // 28.09.2026: Sammelvideo — 
   }
   // 28.09.2026 Betreiber «mache jede post ein meisterwerk … jetzt hast du gemini» · «vision ai»: das Tor misst, die Jury SIEHT
   // (Fremdtext/Wasserzeichen, falsches Produkt, Hook ≠ Produkt, billige Wirkung). Kein Urteil (Exit 2) = kein Post, keine Marke.
+  // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
+  { const ms = modelSperre([quelle, get(cand, 'video_url')], get(cand, 'caption')); if (ms) { console.error('⛔ Kein Post —', ms); process.exit(3); } }
   const j = juryPruefen(quelle, get(cand, 'caption'), 'reel');
   if (j.status !== 0) {
     console.error(`⛔ Kein Post — Gemini-Jury: ${j.info}`);

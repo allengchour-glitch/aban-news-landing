@@ -16,7 +16,7 @@
  *      META_GRAPH_VERSION(Default v21.0) · MAX_PER_RUN(1) · DRY_RUN=1
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
 
 const CSV = new URL('../social/story_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -182,6 +182,8 @@ let postedCount = 0, anyFail = false;
 for(const next of due.slice(0, MAX)){
   const type = (next[idx.type]||'image').trim().toLowerCase()==='video' ? 'video' : 'image';
   const url = next[idx.media_url].trim();
+  // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre) — Story hat keinen Text
+  { const ms = modelSperre([url], null); if (ms) { console.error('   ⛔', ms); continue; } }
   if(!DRY && postSeen(url)){ console.log(`   ⛔ Story-Medium schon gepostet → skip: ${url}`); next[idx.status]='posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue; }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);

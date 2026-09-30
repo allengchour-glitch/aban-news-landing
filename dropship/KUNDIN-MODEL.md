@@ -248,3 +248,17 @@ Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den 
   Lock, Medien-Ledger, `markierungFehlt` (Kanarienvogel ohne @-Markierung → Exit 2), FB-Seitenwache.
 - **IG 17864629440679186** (https://www.instagram.com/reel/Dd6wC1RiWEd/, Markierung zurückgelesen ✓) · **FB-Video 1036507699423763**.
 - Shop: wartet auf Speicherplatz (Betreiber: Duplikat-Bilder löschen, 6,83 GB).
+
+### 🏷️ 30.09. — «bei insta posting immer sie markieren und auch andere orte» · «sie darf auch titelseite sein»
+- **Die frühere «ehrliche Lücke» ist zu:** `post_guard.modelSperre(medien, text)` — EINE Prüfung, eingebaut in ALLE Poster
+  (IG-Karussell, Pinterest, TikTok/YouTube über Metricool, post-next-reel, tiktok-autopost, video-autopost-meta, Story, altes Karussell;
+  IG-Bild + IG-Reel hatten schon `markierungFehlt`). Model-Material wird am **Dateinamen** erkannt (`tati-model`, `tatjana`, `kundin-NN`,
+  `luxestyle-model-*`) — auch wenn ihre Fotos später als Produktbilder aus dem Shop kommen (Pins/Stories/Karussells ziehen dort).
+  Kanäle mit Text: `@tatjanalarsinamoira` Pflicht; Pinterest und das alte Karussell fügen sie selbst ein. Story (kein Text):
+  Markierung wird ins Bild gebrannt (`story_bauen.py`, Datei `…-markiert.jpg`), sonst gesperrt. Kanarienvögel 6/6.
+- **Echte Instagram-Personenmarkierung** (`user_tags`, sie wird benachrichtigt): `igUserTags()` in IG-Bild-, IG-Reel- und
+  Privat-Reel-Poster. Reels mit `user_tags` am unveröffentlichten Container getestet → angenommen.
+  ⚠️ Das bereits gepostete Reel (17864629440679186) trägt sie nur als @-Text — IG erlaubt kein nachträgliches Markieren per API.
+- **Uploads in den Shop heissen `tati-model-…`** — nur so greift die Sperre auf den Weg Shop → Pin/Story/Karussell.
+- **Startseite:** Hero-Bilder vorbereitet (Desktop 2400×1100: drei Fotos rechts, Gesichter frei, Text links unten; Mobil 1080×1350 oben
+  verankert), liegen in /tmp/tati — Upload wartet auf Speicherplatz (Duplikat-Aufräumung läuft).

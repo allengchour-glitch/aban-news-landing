@@ -39,6 +39,8 @@ F_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 F_REG = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 F_SERIF = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 GOLD, WEISS, DUNKEL = (212, 175, 55), (255, 255, 255), (18, 18, 18)
+MODEL = re.compile(r"(^|[^a-z])(kundin-\d\d|luxestyle-model-(clean|musik)|tati-model|tatjana)", re.I)   # wie post_guard.MODEL_MEDIEN
+MODEL_HANDLE = "@tatjanalarsinamoira"
 
 
 def name_key(text):
@@ -135,6 +137,8 @@ def karte(p, ziel):
         d.text((W / 2, ty), z, font=f_titel, fill=WEISS, anchor="mm", stroke_width=3, stroke_fill=DUNKEL); ty += 72
     d.text((W / 2, ty + 55), f"CHF {p['preis']:.2f}", font=f_preis, fill=GOLD, anchor="mm", stroke_width=4, stroke_fill=DUNKEL)
     d.text((W / 2, 1730), "luxestyle.ch  ·  Klarna  ·  TWINT", font=f_fuss, fill=WEISS, anchor="mm", stroke_width=2, stroke_fill=DUNKEL)
+    if MODEL.search(p["bild"]):             # 30.09.: Stories haben keinen Text → Markierung ins Bild (Betreiber «immer sie markieren»)
+        d.text((W / 2, 1790), f"Model: {MODEL_HANDLE}", font=f_fuss, fill=GOLD, anchor="mm", stroke_width=2, stroke_fill=DUNKEL)
     bg.save(ziel, "JPEG", quality=90)
     return kt
 
@@ -171,7 +175,8 @@ def main():
         if len(gebaut) >= N or versucht >= N + 3:
             break
         versucht += 1
-        datei = f"social/stories/story_{p['handle'][:70]}.jpg" if SCHARF else f"/tmp/story_{p['handle'][:70]}.jpg"
+        endung = "-markiert" if MODEL.search(p["bild"]) else ""     # post_guard.modelSperre(…, null) verlangt «markiert»
+        datei = f"social/stories/story_{p['handle'][:70]}{endung}.jpg" if SCHARF else f"/tmp/story_{p['handle'][:70]}{endung}.jpg"
         try:
             kt = karte(p, datei)
         except Exception as e:

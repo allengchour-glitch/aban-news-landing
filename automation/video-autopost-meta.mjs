@@ -21,7 +21,7 @@
  *   MAX_PER_RUN=1 · DRY_RUN=1
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
 
 const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -152,6 +152,8 @@ let postedCount = 0, anyFail = false;
 for(const next of due.slice(0, MAX)){
   const videoUrl = next[idx.video_url].trim();
   const caption = next[idx.caption] || '';
+  // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
+  { const ms = modelSperre([videoUrl], caption); if (ms) { console.error('   ⛔', ms); continue; } }
   // ⛔ INHALTS-SPERRE: dieses Video schon je gepostet (script-übergreifend)? → nie zweimal.
   if(!DRY && postSeen(videoUrl)){
     console.log(`   ⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost: ${videoUrl}`);

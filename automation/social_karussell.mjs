@@ -24,7 +24,7 @@
  */
 import fs from 'fs';
 import { lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, fbSeitenIdentitaet } from './post_guard.mjs';
+         produktGepostet, produktMerken, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
 
 const V = 'v21.0';
 const IG_ID  = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id','utf8').trim() : '');
@@ -52,7 +52,9 @@ const plan = JSON.parse(fs.readFileSync(DATEI, 'utf8'));
 // der ein Produkt bewirbt, das es nicht gibt).
 const bau = (liste) => [plan.kopf, '',
   ...liste.map((p, i) => `${i + 1}. ${p.welt}: ${(p.kurz || p.titel.split(' · ')[0])} \u2013 CHF ${p.preis.toFixed(2)}`),
-  '', plan.fuss].join('\n');
+  '', plan.fuss,
+  // 30.09.2026 Betreiber «immer sie markieren»: liegt ein Bild von Tati im Karussell, steht sie im Text
+  ...(modelSperre(liste.map(p => p.img), '') ? ['Model: @tatjanalarsinamoira'] : [])].join('\n');
 let posten = plan.produkte.filter(p => {
   if (postSeen(p.img)) { console.log(`   ⛔ Bild schon gepostet → raus: ${p.titel}`); return false; }
   if (produktGepostet(p.titel, p.gid)) { console.log(`   ⛔ Ware schon gepostet → raus: ${p.titel}`); return false; }

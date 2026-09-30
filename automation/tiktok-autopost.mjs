@@ -22,7 +22,7 @@
  *   DRY_RUN=1
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 
@@ -169,6 +169,8 @@ let postedCount = 0, anyFail = false;
 for(const next of ready.slice(0, MAX)){
   const videoUrl = next[idx.video_url].trim();
   const caption = (next[idx.caption] || '') + (next[idx.hashtags] ? '\n' + next[idx.hashtags] : '');
+  // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
+  { const ms = modelSperre([videoUrl], caption); if (ms) { console.error('   ⛔', ms); continue; } }
   // ⛔ INHALTS-SPERRE: Video schon je gepostet (auch auf IG/FB)? → nie zweimal, kein Cross-Plattform-Doppel.
   if(!DRY && postSeen(videoUrl)){
     console.log(`   ⛔ Video schon gepostet (gemeinsamer Ledger, evtl. IG) → skip: ${videoUrl}`);

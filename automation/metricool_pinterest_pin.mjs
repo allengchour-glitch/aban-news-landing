@@ -33,7 +33,7 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';   // ocrJetzt() — ohne diesen Import lief der OCR-Aufruf still in den catch (23.09. gemessen)
-import { lock as postLock, seen as postSeen, mark as postMark, juryPruefen } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, juryPruefen, modelSperre } from './post_guard.mjs';
 
 const NUR_LISTE = parseInt(process.env.NUR_LISTE || '0', 10);
 const DRY = process.env.DRY === '1' || NUR_LISTE > 0;
@@ -247,6 +247,9 @@ const board = boards.find(b => b.name === boardName) || boards.find(b => b.name 
 const preis = `CHF ${parseFloat(kandidat.priceRangeV2.minVariantPrice.amount).toFixed(2)}`;
 const saetze = text(kandidat.descriptionHtml).split(/(?<=[.!?])\s+/).filter(s => s.length > 25 && !HEIL.test(s) && !/vergriffen|Sommer 2026|Premium-Liebling/i.test(s));
 const beschreibung = `${(saetze.slice(0, 2).join(' ') || kandidat.title).slice(0, 330)}\n\n${preis} · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kleiner Schweizer Shop 🇨🇭`.slice(0, 480);
+// 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre) — beim Pin steht sie im Text
+const mitModel = modelSperre([kandidat.bild?.url, fassung.url], '') ? `${beschreibung.slice(0, 430)}\nModel: @tatjanalarsinamoira (Instagram)` : beschreibung;
+{ const ms = modelSperre([kandidat.bild?.url, fassung.url], mitModel); if (ms) { console.error('⛔', ms); process.exit(3); } }
 const link = `${kandidat.onlineStoreUrl}?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin`;
 const titel = kandidat.title.slice(0, 100);
 console.log(`Pin: ${titel}\n  Quelle: ${kandidat.quelle} · Board: ${board ? board.name : boardName + ' (?)'}${board && board.name !== boardName ? ` (gewünscht «${boardName}», fehlt → Fallback)` : ''} · ${preis}\n  Link: ${link}\n  Bild: ${fassung.art} ${fassung.url.slice(0, 110)}\n        (${fassung.grund})\n  Text: ${beschreibung.slice(0, 140)}…`);
@@ -261,7 +264,7 @@ try {
   const n = await mc(`/actions/normalize/image/url?url=${encodeURIComponent(fassung.url)}`);
   const norm = typeof n === 'string' ? n.replace(/^"|"$/g, '') : (n.data?.url || n.url || (typeof n.data === 'string' ? n.data : ''));
   if (!norm) throw new Error('normalize: keine URL');
-  const body = { publicationDate: { dateTime, timezone: TZ }, text: beschreibung, providers: [{ network: 'pinterest' }], media: [norm],
+  const body = { publicationDate: { dateTime, timezone: TZ }, text: mitModel, providers: [{ network: 'pinterest' }], media: [norm],
     autoPublish: true, draft: false, shortener: false,
     pinterestData: { boardId: board.id, pinTitle: titel, pinLink: link, pinNewFormat: true } };
   const r = await mc('/v2/scheduler/posts', { method: 'POST', body: JSON.stringify(body) });

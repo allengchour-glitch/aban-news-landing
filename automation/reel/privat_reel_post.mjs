@@ -14,7 +14,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { lock as postLock, seen as postSeen, mark as postMark, markierungFehlt, fbSeitenIdentitaet } from '../post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, markierungFehlt, fbSeitenIdentitaet, igUserTags } from '../post_guard.mjs';
 
 const [datei, capDatei] = process.argv.slice(2).filter(a => !a.startsWith('--'));
 const DRY = process.argv.includes('--dry');
@@ -39,7 +39,7 @@ async function j(r) { const t = await r.text(); try { return JSON.parse(t); } ca
 let igId = null;
 {
   const c = await j(await fetch(`https://graph.facebook.com/${V}/${IG}/media`, { method: 'POST', body: new URLSearchParams({
-    media_type: 'REELS', upload_type: 'resumable', caption, share_to_feed: 'true', access_token: TOK }) }));
+    media_type: 'REELS', upload_type: 'resumable', caption, share_to_feed: 'true', access_token: TOK, ...igUserTags([name], 'reel') }) }));
   if (!c.id) { console.error('IG-Container:', JSON.stringify(c).slice(0, 300)); process.exit(1); }
   const up = await j(await fetch(`https://rupload.facebook.com/ig-api-upload/${V}/${c.id}`, { method: 'POST',
     headers: { Authorization: `OAuth ${TOK}`, offset: '0', file_size: String(buf.length) }, body: buf }));
