@@ -6,6 +6,12 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 👀 «dann alle sollen helfen»: Jury mit zwei Modellen (21:00 UTC)
+Betreiber auf «ist Gemini Vision gut?». Grenzfälle entschied bisher 3× Gemini (dieselben Augen, streut ±3). Jetzt: Gemini +
+ChatGPT-Vision (`gpt-5.5`, data-URI-Bilder, JSON) + Gemini, Mehrheit; `runden` zeigt je Urteil das Modell; ChatGPT-Ausfall →
+Gemini (kein Urteil ist kein Nein). Probe Aurora-Anzeige (Band erzwungen): Gemini 9,0 · GPT 8,5 · Gemini 9,17 → bestanden.
+ChatGPT sah, was Gemini nicht sah: «Bild im Bild auf unscharfem Grund wirkt nach Dropshipping, Köpfe abgeschnitten».
+
 ## 2026-09-30 · 🏷️ Reels mit veraltetem Preis: 36 gesperrt, 0 repariert (Verbesserungsrunde 20:25)
 post_guard.preisVeraltet sperrte 36 Reels zu Recht — aber kein Weg führte zurück: `reel_neu_rendern.py` kannte nur Fenster/Hook,
 die Quellanfrage nur Tor-Sperren. Jetzt `MODUS=preis` (Live-Preis → Video + Caption neu, Tor mit PREIS_SOLL, atomar ready) +

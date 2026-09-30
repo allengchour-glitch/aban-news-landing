@@ -30,6 +30,10 @@ MIN = float(os.environ.get("JURY_MIN", "7.0"))
 # und die MEHRHEIT entscheidet (Schnitt = Median). Klare Fälle kosten weiter nur ein Urteil.
 RUNDEN = int(os.environ.get("JURY_RUNDEN", "3"))
 BAND = float(os.environ.get("JURY_BAND", "1.5"))
+# 30.09.2026 Betreiber «dann alle sollen helfen»: im Grenzband entscheidet nicht mehr 3× Gemini (dieselben Augen), sondern
+# Gemini + ChatGPT-Vision + Gemini — ein zweites Modell sieht andere Fehler (kritik.py-Erfahrung). Ohne OpenAI-Schlüssel
+# oder bei Ausfall fällt die Runde auf Gemini zurück (kein Urteil ist kein Nein).
+MODELL_GPT = os.environ.get("JURY_MODELL_GPT", "gpt-5.5")
 KRIT = ["erstes_bild", "bildqualitaet", "sauberkeit", "text_im_bild", "stimmigkeit", "wirkung"]
 
 
@@ -127,6 +131,37 @@ def fragen(jpgs, caption, typ, ist_video):
     raise RuntimeError("Gemini ohne Antwort — " + letzter)
 
 
+def openai_schluessel():
+    k = os.environ.get("OPENAI_API_KEY", "").strip()
+    if not k and os.path.exists("/tmp/openai_key"):
+        k = open("/tmp/openai_key").read().strip()
+    return k
+
+
+def fragen_gpt(jpgs, caption, typ, ist_video):
+    """Dieselbe Frage an ChatGPT-Vision (Bilder als data-URI). RuntimeError bei Ausfall."""
+    k = openai_schluessel()
+    if not k:
+        raise RuntimeError("kein OPENAI_API_KEY")
+    info = ("Du siehst 4 Standbilder aus dem Video (0,3 s, 1,2 s, Mitte, Ende)." if ist_video and len(jpgs) > 1
+            else "Du siehst das Bild des Posts.")
+    inhalt = [{"type": "text", "text": PROMPT.format(typ=typ, bildinfo=info, caption=caption[:1500])}]
+    inhalt += [{"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(b).decode()}} for b in jpgs]
+    body = {"model": MODELL_GPT, "messages": [{"role": "user", "content": inhalt}], "response_format": {"type": "json_object"}}
+    letzter = ""
+    for a in range(3):
+        try:
+            r = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode(),
+                                       headers={"Content-Type": "application/json", "Authorization": f"Bearer {k}"})
+            j = json.load(urllib.request.urlopen(r, timeout=180))
+            txt = j["choices"][0]["message"]["content"]
+            return json.loads(re.search(r"\{.*\}", txt, re.S).group(0))
+        except Exception as e:
+            letzter = f"{type(e).__name__}: {str(e)[:150]}"
+            time.sleep(4 * (a + 1))
+    raise RuntimeError("ChatGPT ohne Antwort — " + letzter)
+
+
 def urteilen(a):
     noten = {k: float((a.get("noten") or {}).get(k, 0)) for k in KRIT}
     schnitt = round(sum(noten.values()) / len(KRIT), 2)
@@ -149,7 +184,7 @@ def mehrheit(urteile):
     seite = ja if len(ja) > len(nein) else nein
     seite = sorted(seite, key=lambda u: u["schnitt"])
     v = dict(seite[len(seite) // 2])
-    v["runden"] = [{"ok": u["ok"], "schnitt": u["schnitt"]} for u in urteile]
+    v["runden"] = [{"ok": u["ok"], "schnitt": u["schnitt"], "modell": u.get("modell", MODELL)} for u in urteile]
     return v
 
 
@@ -184,7 +219,18 @@ def main():
     try:
         v = urteilen(fragen(jpgs, a.caption, a.typ, ist_video))
         if RUNDEN > 1 and grenzfall(v):
-            weitere = [urteilen(fragen(jpgs, a.caption, a.typ, ist_video)) for _ in range(RUNDEN - 1)]
+            weitere = []
+            for i in range(RUNDEN - 1):
+                u = None
+                if i == 0:                                   # erste Zusatzrunde: anderes Modell
+                    try:
+                        u = urteilen(fragen_gpt(jpgs, a.caption, a.typ, ist_video)); u["modell"] = MODELL_GPT
+                    except Exception as e:
+                        print(f"  ChatGPT-Runde ausgefallen ({str(e)[:120]}) → Gemini", file=sys.stderr)
+                if u is None:
+                    u = urteilen(fragen(jpgs, a.caption, a.typ, ist_video)); u["modell"] = MODELL
+                weitere.append(u)
+            v["modell"] = MODELL
             v = mehrheit([v] + weitere)
     except Exception as e:
         print(json.dumps({"ok": None, "grund": str(e)[:200]})); sys.exit(2)
