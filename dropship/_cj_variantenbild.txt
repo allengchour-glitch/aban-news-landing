@@ -5055,3 +5055,6 @@ gid://shopify/Product/15452682813825	zugeordnet	3	SG901PRO Quadcopter für Lufta
 gid://shopify/Product/15452682846593	bild-urls-tot
 gid://shopify/Product/15452682944897	zugeordnet	6	M22-Fernbedienung mit 45-Zoll-Bildschirm und bürstenlosem UA
 gid://shopify/Product/15452683010433	zugeordnet	3	Mini-Drone mit Gestensensorik
+gid://shopify/Product/15452683043201	bild-urls-tot
+gid://shopify/Product/15452683075969	zugeordnet	4	GT3 Mini-Drone mit Doppelfunktion und Hindernisvermeidung
+gid://shopify/Product/15452683370881	zugeordnet	16	Universeller Halb-Autorestsitz 5-Sitzer
