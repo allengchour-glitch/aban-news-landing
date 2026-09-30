@@ -43,6 +43,23 @@ jobs:
           fi
           echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/upload.jks"
 
+      - name: Storefront-Schlüssel prüfen (Sterne)
+        env:
+          TOKEN: ${{ secrets.LUXE_STOREFRONT_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::warning::LUXE_STOREFRONT_TOKEN fehlt – App wird ohne Sterne gebaut"; exit 0; fi
+          # Bali-Maxikleid hat echte Bewertungen; der Schlüssel selbst wird nie ausgegeben
+          R=$(curl -s https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json \
+            -H 'Content-Type: application/json' -H "X-Shopify-Storefront-Access-Token: $TOKEN" \
+            -d '{"query":"{ product(handle: \"strand-maxikleid-bali-luftiges-stufenkleid\") { r: metafield(namespace: \"reviews\", key: \"rating_count\") { value } } }"}')
+          if echo "$R" | grep -q '"value"'; then
+            echo "Schlüssel ok, Bewertungen lesbar: $(echo "$R" | grep -o '"value":"[0-9]*"')"
+          else
+            echo "::error::Schlüssel liefert keine Bewertungen (Metafeld-Berechtigung im Headless-Kanal fehlt?)"
+            echo "$R" | grep -o '"message":"[^"]*"' | head -3
+            exit 1
+          fi
+
       - name: Tests, Lint und signiertes Bundle
         env:
           LUXE_KEYSTORE_PATH: ${{ runner.temp }}/upload.jks
