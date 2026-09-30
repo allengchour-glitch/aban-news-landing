@@ -16217,3 +16217,5 @@ gid://shopify/Product/15496330576257	70->0	Herren Casual Schuhe mit dezenter Fer
 gid://shopify/Product/15496359510401	9->0	Keilkissen-Set für Rücken, Beine und Knie
 gid://shopify/Product/15496426815873	18->0	S925 Silber Moissanit Ring für Damen
 gid://shopify/Product/15496498020737	36->1	Solar Horn Light
+gid://shopify/Product/15497296281985	30->1	Sandalen mit klobigem Absatz
+gid://shopify/Product/15500002591105	19->0	Corduroy-Hemd
