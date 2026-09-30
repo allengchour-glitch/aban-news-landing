@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:26:47Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:30:42Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1184 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2802** in 757 Produkten
-- Treffer (≥ 4 Wörter): **137** in 115 Produkten
+- Medien geprüft: **2891** in 782 Produkten
+- Treffer (≥ 4 Wörter): **138** in 116 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -110,6 +110,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Wasserfeste Maniküre `15452675244417` | [69904212820353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d16136c0-c77b-45c6-bd2c-307fd3cee636.jpg) | 7 | Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
 | Wasserfeste Maniküre `15452675244417` | [69904212885889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c2d356f-2e71-40ce-8bc8-68b7272deb4c.jpg) | 7 | Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
 | Mini-Powerbank für Apple Watch `15502661190017` | [70564236034433](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/321670423961.jpg) | 7 | Over magnetic field protection Short circuit protection | offen |
+| Mikrostrom-Augenmassagegerät mit Farblicht `15506324586881` | [70603024269697](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ede64476-e502-41dc-9a2c-93d7929839a3.jpg) | 7 | IMPROVE FINE LINES FIRMING SKIN IMPROVE SKIN | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |

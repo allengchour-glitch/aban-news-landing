@@ -4902,3 +4902,8 @@ gid://shopify/Product/15450856128897	zugeordnet	2	Ferngesteuerter Hai – Fliege
 gid://shopify/Product/15450856194433	bild-urls-tot
 gid://shopify/Product/15450856227201	zugeordnet	20	Sommer-Set: Ärmelloses Top & Shorts mit Kordelzug
 gid://shopify/Product/15450856259969	zugeordnet	3	LED Buchlicht Mini Clip-On
+gid://shopify/Product/15450856292737	zugeordnet	17	Reise-Hängematte aus Fallschirm-Nylon
+gid://shopify/Product/15450856325505	zugeordnet	2	Super Soft EVA Fitness- & Yogamatte
+gid://shopify/Product/15450856358273	zugeordnet	4	Magnetische LED-Leuchte für Tisch und Wand
+gid://shopify/Product/15450856423809	zugeordnet	7	Strandtuch-Kleid – Badetuch zum Anziehen
+gid://shopify/Product/15450856522113	zugeordnet	5	Kabellose LED Kopfhörer mit Katzenohren
