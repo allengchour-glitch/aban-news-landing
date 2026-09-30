@@ -16137,3 +16137,5 @@ gid://shopify/Product/15523921133953	57->0	Leuchtende dreidimensionale Quarzuhr
 gid://shopify/Product/15523938369921	18->0	Rutschfeste Futterschale für Haustiere
 gid://shopify/Product/15523938468225	16->0	WLAN Handy Beamer
 gid://shopify/Product/15523940270465	18->0	Silikonkissen für Kinder mit Wirbelsäulenstütze
+gid://shopify/Product/15524079272321	133->0	Brusttasche wasserdicht
+gid://shopify/Product/15524257104257	9->0	Mini Matt Dragon Canvas Wasserfestes Herrenarmband 25 mm
