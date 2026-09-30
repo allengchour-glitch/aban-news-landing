@@ -12099,3 +12099,4 @@ gid://shopify/Product/15427240198529	ersetzt
 gid://shopify/Product/15427240231297	ersetzt
 gid://shopify/Product/15427240264065	ersetzt
 gid://shopify/Product/15427240296833	ersetzt
+gid://shopify/Product/15427240329601	ersetzt

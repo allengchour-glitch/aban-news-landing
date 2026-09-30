@@ -16160,3 +16160,4 @@ gid://shopify/Product/15453761864065	18->3	Bequem Fit Fleecefutter Hoodie mit Ta
 gid://shopify/Product/15453762158977	26->0	Holz-Ornament mit Edelstein
 gid://shopify/Product/15453772775809	29->0	Taktischer Rucksack für Outdoor & Angeln
 gid://shopify/Product/15453772874113	16->0	Lässige Herren-Hosen mit Knöchel-Verengung
+gid://shopify/Product/15453773234561	48->0	Leichte Reisetasche für Herren
