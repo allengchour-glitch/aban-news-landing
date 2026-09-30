@@ -11,6 +11,11 @@ Nach dem Render muss `meisterwerk_tor.py` bestehen (mit PREIS_SOLL aus der Capti
 
   python3 automation/reel/reel_neu_rendern.py          → Trockenlauf: Liste mit Fensterbreite, Quelle, Hook, Musik
   SCHARF=1 python3 automation/reel/reel_neu_rendern.py → rendern, Tor, Datei ersetzen (git add/commit macht der Aufrufer)
+
+MODUS=hook (30.09.2026): statt «Fenster zu schmal» die vom Meisterwerk-Tor gesperrten Reels (status meisterwerk-tor-skip)
+neu schneiden — Einstieg = bewegteste Sekunde der Quelle (reel/hook_start.py). Besteht das Tor, geht die Zeile zurück auf
+`ready` (Datei frisch gelesen, nur Zeilen, die noch meisterwerk-tor-skip stehen, atomar geschrieben — Lost-Update-Lehre 28.09.).
+Seit 30.09. nimmt auch der Fenster-Modus den gefundenen Einstieg statt min(2, Dauer/4).
 """
 import csv, glob, json, os, re, subprocess, sys, tempfile
 import numpy as np
@@ -19,7 +24,34 @@ from PIL import Image
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(REPO)
 SCHARF = os.environ.get("SCHARF") == "1"
+MODUS = os.environ.get("MODUS", "fenster")
 MIN_BREITE = 700
+CSV = "automation/reels_seed.csv"
+
+
+def hook_start(quelle, d):
+    try:
+        r = json.loads(subprocess.run(["python3", "automation/reel/hook_start.py", quelle], capture_output=True, text=True,
+                                      timeout=300).stdout.strip().split("\n")[-1])
+        return float(r["start"])
+    except Exception:
+        return min(2, d / 4 if d else 0)
+
+
+def status_setzen(ids, alt, neu):
+    """Nur Zeilen, die noch `alt` tragen, auf `neu` — Datei frisch lesen, atomar schreiben. Gibt die Zahl zurück."""
+    import io
+    with open(CSV, newline="") as f:
+        rows = list(csv.reader(f))
+    h = rows[0]; iid, ist = h.index("id"), h.index("status"); n = 0
+    for r in rows[1:]:
+        if len(r) > ist and r[iid] in ids and r[ist] == alt:
+            r[ist] = neu; n += 1
+    buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows(rows)
+    with open(CSV + ".tmp", "w", newline="") as f:
+        f.write(buf.getvalue())
+    os.replace(CSV + ".tmp", CSV)
+    return n
 
 
 def fensterbreite(video):
@@ -53,14 +85,15 @@ def main():
     rows = list(csv.DictReader(open("automation/reels_seed.csv")))
     erg = []
     for r in rows:
-        if r.get("status") != "ready" or not r["id"].startswith("cjreel-"):
+        soll = "meisterwerk-tor-skip" if MODUS == "hook" else "ready"
+        if r.get("status") != soll or not r["id"].startswith("cjreel-"):
             continue
         pid = r["id"][len("cjreel-"):]
         lokal = f"social/reels/reel_{pid}.mp4"
         if not os.path.exists(lokal):
             continue
         b = fensterbreite(lokal)
-        if b >= MIN_BREITE:
+        if MODUS != "hook" and b >= MIN_BREITE:
             continue
         q = sorted(glob.glob(f"auftraege/ergebnis/*-rq-{pid.lower()}.mp4"))
         cap = r["caption"]
@@ -78,7 +111,8 @@ def main():
             erg.append((pid, b, "TROCKEN", "")); continue
         tmp = f"/tmp/reelneu_{pid}.mp4"
         d = dauer(q[0])
-        env = {**os.environ, "START": str(min(2, d / 4 if d else 0)), "MUSIK_START": str(ein)}
+        st = hook_start(q[0], d)
+        env = {**os.environ, "START": str(st), "MUSIK_START": str(ein)}
         subprocess.run(["bash", "automation/reel/make_reel.sh", q[0], tmp, z1, z2, f"CHF {preis}", hook, "automation/music/" + stueck],
                        env=env, check=True, capture_output=True, timeout=600)
         tor = subprocess.run(["python3", "automation/meisterwerk_tor.py", tmp], env={**os.environ, "PREIS_SOLL": preis},
@@ -87,7 +121,8 @@ def main():
         if tor.returncode != 0:
             erg.append((pid, b, "TOR-DURCHGEFALLEN", tor.stdout.strip()[-200:])); os.unlink(tmp); continue
         os.replace(tmp, lokal)
-        erg.append((pid, b, "ERSETZT", f"neu {nb} px"))
+        zurueck = status_setzen({r["id"]}, "meisterwerk-tor-skip", "ready") if MODUS == "hook" else 0
+        erg.append((pid, b, "ERSETZT", f"neu {nb} px · Einstieg {st}s" + (" · wieder ready" if zurueck else "")))
     print("\nERGEBNIS:")
     for e in erg:
         print("  " + " · ".join(str(x) for x in e))
