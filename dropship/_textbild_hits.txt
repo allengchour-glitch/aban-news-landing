@@ -16210,3 +16210,4 @@ gid://shopify/Product/15489442546049	55->0	Locker sitzender Rundhals-Pullover
 gid://shopify/Product/15493849350529	157->1	Make-up Pinsel Set · 9-teilig
 gid://shopify/Product/15493864161665	61->0	Smarter Bluetooth Lautsprecher
 gid://shopify/Product/15493908332929	19->0	Wasserdichte Plateau-Sandalen mit Chunky-Heel
+gid://shopify/Product/15495088275841	76->0	Niche Vintage Chunky-soled Sneakers
