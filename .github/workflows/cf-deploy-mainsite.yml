@@ -88,6 +88,17 @@ jobs:
             echo "Kein GitHub-Secret ANTHROPIC_API_KEY — KI-Tools bleiben im 503-Fallback."
           fi
 
+      - name: Etsy-Schlüssel ins Pages-Projekt schreiben (für /api/etsy-auth, falls gesetzt)
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+        run: |
+          if [ -n "$ETSY_API_KEY" ]; then
+            printf '%s' "$ETSY_API_KEY" | npx --yes wrangler@3 pages secret put ETSY_API_KEY --project-name="${{ env.PROJECT }}"
+            echo "ETSY_API_KEY ins Pages-Projekt geschrieben (Wert nie ausgegeben)."
+          else
+            echo "Kein GitHub-Secret ETSY_API_KEY — /api/etsy-auth antwortet 503."
+          fi
+
       - name: Deploy (Direct Upload)
         run: npx --yes wrangler@3 pages deploy _site --project-name="${{ env.PROJECT }}" --branch=main
 

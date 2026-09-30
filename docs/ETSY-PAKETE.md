@@ -48,3 +48,25 @@ not be loaded"). Werte mit openpyxl `data_only=True` auslesen.
 
 Dieselben Dateien und Texte passen auch dort. Gumroad: pro Produkt die Dateien aus `dateien/` bzw. `files/` hochladen
 (oder als ZIP), Titel und Beschreibung aus `ETSY-LISTING.txt`, Titelbild `01.png`.
+
+## Automatisch hochladen (Etsy Open API v3, ohne Klicken pro Eintrag)
+
+`tools/etsy/etsy_upload.mjs` legt alle 4 Pakete als **Entwürfe** an: Titel, Beschreibung, 13 Tags, Preis in der
+Shop-Währung (`PREISE` im Skript), Kategorie aus dem Etsy-Baum, 5 Bilder, Dateien. Idempotent über
+`data/etsy-listings.json`. Start: Actions → „Etsy-Upload“ (Standard = Probelauf, prüft alle Etsy-Regeln).
+
+**Einmalig nötig (nur der User kann das):**
+1. Etsy-Shop eröffnen (etsy.com/sell: Identität, Bankkonto, Zahlungsmittel für Gebühren).
+2. Etsy-App anlegen: etsy.com/developers/register → Name z. B. „aban Upload“ → **Callback-URL**
+   `https://abannews.com/api/etsy-callback` eintragen → Keystring + Shared Secret kopieren.
+3. GitHub-Secret **`ETSY_API_KEY`** = `keystring:shared_secret` (mit Doppelpunkt). Der nächste Deploy schreibt ihn
+   automatisch auch ins Cloudflare-Projekt.
+4. `https://abannews.com/api/etsy-auth` öffnen → bei Etsy freigeben → angezeigten Schlüssel als GitHub-Secret
+   **`ETSY_REFRESH_TOKEN`** speichern (gilt 90 Tage).
+5. Actions → „Etsy-Upload“ → Probelauf **aus** → Entwürfe erscheinen im Shop. Mit „veröffentlichen“ gehen sie live
+   (USD 0.20 je Eintrag).
+
+**Geprüft ohne echten Zugang:** `node tools/etsy/test_etsy_upload.mjs` — Regelprüfung mit Gegenproben und ein
+nachgebauter Etsy-Server, der Reihenfolge, Formate (form-urlencoded / multipart) und alle Pflichtfelder laut
+OpenAPI-Spezifikation (Stand 30.09.2026) kontrolliert, inkl. Idempotenz. 18/18 grün. Der erste echte Lauf ist
+trotzdem der eigentliche Test: Fehlermeldungen von Etsy stehen im Workflow-Log.
