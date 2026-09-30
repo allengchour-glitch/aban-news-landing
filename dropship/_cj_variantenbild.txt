@@ -4889,3 +4889,9 @@ gid://shopify/Product/15450855440769	bild-urls-tot
 gid://shopify/Product/15450855506305	bild-urls-tot
 gid://shopify/Product/15450855539073	bild-urls-tot
 gid://shopify/Product/15450855571841	bild-urls-tot
+gid://shopify/Product/15450855637377	zugeordnet	24	Warme Wende-Fleecejacke mit Kapuze für Herren
+gid://shopify/Product/15450855866753	zugeordnet	20	Pyjama-Set für Damen
+gid://shopify/Product/15450855899521	zugeordnet	30	GOT7 Baumwoll-Hoodie
+gid://shopify/Product/15450855932289	zugeordnet	2	Magnetische Nackenhalterung für Smartphones
+gid://shopify/Product/15450855965057	zugeordnet	5	Interaktiver rollender Ball für Katzen
+gid://shopify/Product/15450855997825	zugeordnet	14	Baby Geh- und Lauflernhilfe
