@@ -4957,3 +4957,4 @@ gid://shopify/Product/15451641446785	zugeordnet	5	Scheinwerfer-Zierring für Gol
 gid://shopify/Product/15451641479553	zugeordnet	2	Wand-Schlüsselbox mit Zahlencode
 gid://shopify/Product/15451924431233	zugeordnet	9	Herren Quarzuhr mit Leuchtzeigern und Stahlband
 gid://shopify/Product/15451924496769	zugeordnet	2	Solar Taucheruhr aus Edelstahl
+gid://shopify/Product/15451926331777	zugeordnet	15	Drapiertes V-Neck Kleid mit Textur
