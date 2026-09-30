@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+> **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
+> Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
+> `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,
+> Token-Rotation verschlüsselt), Workflow `pinterest-aban.yml` (nur manuell), Anmeldung `abannews.com/api/pinterest-auth`,
+> Secrets `ABAN_PINTEREST_*` (noch nicht gesetzt). Die Pinterest-Session darf ihn übernehmen, umbauen oder löschen.
+> Nicht gleichzeitig zwei Autopiloten auf dasselbe Pinterest-Konto loslassen.
+
+
 > ## 🚨 2026-08-30 · GitHub-Konto ist als SPAM markiert — für ALLE Sessions
 > GitHubs eigene Meldung: `Validation Failed: **User flagged as spammy**`. Das erklärt in einem
 > Zug die Actions-Sperre, die harten API-Limits **und** dass Repo + Benutzerprofil für jeden

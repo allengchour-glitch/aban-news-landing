@@ -6,8 +6,8 @@ name: Pinterest-Autopilot abannews
 # Einmalig: Secrets ABAN_PINTEREST_APP_ID + ABAN_PINTEREST_APP_SECRET, dann abannews.com/api/pinterest-auth
 # → ABAN_PINTEREST_REFRESH_TOKEN. Danach erneuert der Lauf den Schlüssel selbst (verschlüsselt im Repo).
 on:
-  schedule:
-    - cron: '17 9 * * *'   # 1×/Tag (Regel: höchstens ein Lauf pro Tag), 11:17 Schweizer Sommerzeit
+  # schedule:  # PAUSIERT 2026-09-30: Pinterest gehört der anderen Session (siehe SHARED-MEMORY.md), kein Doppelposten
+  #   - cron: '17 9 * * *'
   workflow_dispatch:
     inputs:
       probelauf:
