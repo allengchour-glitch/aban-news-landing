@@ -74,6 +74,81 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-30 (🔎 MAXIMALE RECHERCHE — vier Fehlalarme kamen erst an FREMDEN Shops heraus):**
+- **Auftrag:** „maximum hilfe surfing suchen · andere session shop seite" — die andere Session macht
+  Shop und Webseite, diese Runde recherchiert und schärft den Shop-Check. Voller Bericht mit allen
+  Quellen und Marken: **`dropship/LERNEN-VERKAUFEN-RECHERCHE-2026-09-30.md`**.
+- **🔴 DER STÄRKSTE WETTBEWERBSBEFUND IST GEMESSEN, NICHT ZITIERT.** Kostenlose Shopify-Audits gibt
+  es reichlich (Privy Store Grader, `audit.shopifyhelpcenter.com` mit „100+ Checks in 12
+  Kategorien", ScaleFront, LOGEIX, StoreAudit). **Ich habe den führenden mit einem echten Browser
+  selbst auf luxestyle.ch losgelassen.** Sein 9837-Zeichen-Bericht enthält **weder „variant" noch
+  „compare_at" noch „Farbe"**, keinen einzigen unserer wörtlichen Belege — und in der Kopfzeile
+  steht **„PRODUCTS DETECTED: –"**. **Alle diese Werkzeuge messen die Shop-Ebene; den Katalog misst
+  keines.** Zweiter Teil des Marktes: Werkzeuge zum **Reparieren** von Variantennamen gibt es
+  reichlich (PS Bulk Variant Editor, Replaceit, SpurIT, Super Sheet) — sie verlangen aber, dass der
+  Händler **schon weiss**, welche Produkte kaputt sind. **Finden gegen Reparieren ist die Lücke.**
+- **🔴 VIER FEHLALARME, JEDER ERST AN EINEM FREMDEN SHOP GEFUNDEN — und der vierte wäre der
+  peinlichste gewesen.** (1) Mengenrabatt: der Messschieber hat `2/3/5 Stück`. (2) Eine **zweite
+  Option**: der Rizinusöl-Wickel unterscheidet `Bauchwickel` und `Set Bauch + Nacken` → daraus die
+  belastbare Regel **mehr als eine Option = es variiert mehr als die Farbe**. (3) `sandrot` und
+  `rasengrün` **sind** Farben — meine Prüfung verlangte einen Wortanfang, **die Wortgrenzen-Falle
+  in umgekehrter Richtung, zu streng statt zu locker**. (4) **Die Streichpreis-Prüfung schlug auch
+  bei `compare_at_price` GLEICH dem Preis oder 0.00 an.** GEMESSEN: **ankerkraut.de 269 Varianten
+  mit gleichem Wert, purelei.de 559 mit 0.00** — Shopify zeigt in beiden Fällen **gar keinen**
+  durchgestrichenen Preis. **Mit der alten Regel hätte das Gerät einer gepflegten Marke 158
+  Rechtsprobleme gemeldet, die sie nicht hat.** Eine Kategorie fiel von **80 auf 7**.
+- **🔑 DARAUS DIE REGEL FÜR JEDES GERÄT, DAS FREMDE DATEN BEURTEILT: ein Befund muss etwas sein,
+  das die Kundschaft tatsächlich zu sehen bekommt** — nicht bloss etwas, das in den Daten seltsam
+  aussieht. **Keiner der vier Fehlalarme wäre am eigenen Shop aufgefallen.**
+- **⚖️ SCHWEREGRADE EINGEFÜHRT, erzwungen von einer Messung:** `nomadi.de` führt Markenware, die
+  Varianten heissen `heritage black` und `Moon Black` — die **offiziellen** Farbnamen von Bugaboo
+  und Cybex, kein Lieferantenmüll. 69 davon als „Defekt" zu melden wäre falsch gewesen. Jeder
+  Befund ist jetzt **Defekt** (objektiv falsch, für die Kundschaft sichtbar) oder **Hinweis**
+  (einen Blick wert, kann eine gute Erklärung haben), getrennt gezählt.
+- **✅ GEGENPROBE ÜBER ZEHN SHOPS (GEMESSEN 30.09., je eine Seite): gymshark.com, allbirds.com,
+  ankerkraut.de und snocks.com je 250 Produkte und je NULL Defekte** · codello.de 1 · purelei.de 4 ·
+  de.holy.com 8 · luxestyle.ch 9 · waterdrop.de 11 · nomadi.de 19 · lfdy.com 25. **Vier gepflegte
+  Kataloge ergeben null** — ein Prüfer, der auch dort ausschlägt, wäre wertlos. Die Vergleichstabelle
+  auf `shop-check.html` nennt **nur die sauberen Shops namentlich**; fremde Fehler gehören nicht in
+  unsere Werbung (und herabsetzende Werbung ist in der Schweiz ein eigenes Risiko).
+- **🔴 EIN NAHELIEGENDER PLAN IST RECHTLICH VOM TISCH, und das ist die wichtigste Recherche dieser
+  Runde:** „fremde Shops messen und den Händlern ihren Befund mailen" geht **nicht**. QUELLE:
+  Schweiz **Art. 3 Abs. 1 lit. o UWG** verlangt für elektronische Massenwerbung Einwilligung plus
+  Absenderangabe plus Abmeldehinweis; **Deutschland: die Lockerung für Unternehmen betrifft die
+  TELEFONwerbung — für E-Mail gibt es sie nicht, im B2B genauso wie im B2C.** Die Verteilung muss
+  **eingehend** sein. **Ich habe niemanden kontaktiert.**
+- **📉 UND DIE ZAHL, DIE DIE PRODUKTWAHL ÜBERHAUPT ENTSCHIEDEN HAT (QUELLE, über 1000 KI-gebaute
+  Geschäfte): 70 PROZENT bleiben unter 1000 im Monat, 1–2 PROZENT kommen über 50 000** — der
+  Engpass ist die Verteilung. **Die Gegenprobe am eigenen Bestand stimmt bitter genau:** das
+  Gedächtnis hält seit dem 13.06. fest, dass mehr Produkte/Posts/Videos hier ein **gemessener
+  0-Hebel** sind. Dieselbe Lehre, zwei Quellen, vier Monate auseinander.
+- **🟡 Wo die Händler sind (QUELLE), samt der Regeln, die man vorher lesen muss:** r/shopify
+  340 000+ · r/reviewmyshopify 34 000+ · Shopify Community 900 000+ · Discord „Talk Shop" ·
+  FB-Gruppen 50 000–100 000. **r/shopify duldet Eigenwerbung nur als echte Händlerhilfe**
+  (90/10-Regel), **die Shopify Community verbietet sie ausserhalb des „Ask and Offer"-Boards.**
+- **⚠️ Demut-Befund (QUELLE): Katalog-Hygiene steht in KEINER Liste der häufigsten
+  Händler-Beschwerden 2026** (dort stehen Support, App-Ballast, Gebühren, Kontosperren, Ausfälle).
+  Das Produkt löst also ein Problem, von dem viele nicht wissen, dass sie es haben — **deshalb ist
+  der Befund am eigenen Shop der ganze Verkauf, nicht die Beschreibung.**
+- **↔️ EIN WIDERSPRUCH BLEIBT OFFEN, bewusst nicht aufgelöst:** eine Quelle nennt **99 USD
+  einmalig** für den Shopify-Partner-Zugang, eine andere „kostenlos". Die offizielle Seite nennt
+  **keine Gebühr**. → Vor einer Entscheidung beim Anbieter selbst prüfen, **hier keine Zahl
+  behaupten.**
+- **🟢 CI: einen VORBESTEHENDEN roten Check behoben, statt ihn wegzuerklären.** `hype-filter` war
+  rot (4 Fehler in `functions/_api.test.mjs`). **GEMESSEN: dieselben vier Fehler treten auf
+  `origin/main` auf, ohne eine einzige Änderung von hier** — mein Commit hat den Workflow nur
+  erstmals ausgelöst, weil er `functions/**` anfasst. **Ursache:** der Claude-Pfad in
+  `api/hype-check.js` verlangt inzwischen zusätzlich eine **aban-Pro-Lizenz**, der Mock antwortete
+  aber auf **jede** Adresse mit der Claude-Antwort — also bekam auch die Lizenzprüfung diese
+  Antwort und lehnte ab. **Der Test war veraltet, nicht der Code kaputt.** Mock unterscheidet jetzt
+  nach Adresse, und ein **neuer Test 10b** belegt, dass die Pro-Sperre wirklich greift (ohne
+  Schlüssel muss es Fallback bleiben) — sonst wäre der Test auch grün, wenn die Sperre wegfiele.
+  **36 ok / 4 rot → 43 ok.** Die drei roten `Workers Builds` sind unverändert der Fall vom 12.09.,
+  Stand-down-Kommentar steht seit dem 20.09. an PR #2514 — **kein zweiter.**
+- **📊 154 Prüfungen grün:** 84 Selbsttests `katalog_audit` · 27 `_shop-check.test.mjs` ·
+  43 `_api.test.mjs`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-29 (🛒 ETWAS ZUM VERKAUFEN GEBAUT — und der Katalog JEDES Shopify-Shops ist öffentlich):**
 - **Auftrag des Users:** „nutze das ganze internet für info · eine app oder irgendetwas entwickeln
   programmieren zum verkaufen · surfe überall für infos." Die Hunde-Schleife wurde dafür angehalten.
