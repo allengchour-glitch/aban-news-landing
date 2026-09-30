@@ -11,7 +11,7 @@
 | Thema | Merchant Center (Stand 04.08., Gedächtnis) | Shop (live gemessen) | Befund |
 |---|---|---|---|
 | Länder | Feed-Länder **DE + CH** | Markt nur **CH** | DE raus |
-| Versandkosten | Standardversand Schweiz CHF **7.90**, gratis ab **60** | Allgemeines Profil: Standard **7.00**; «Kostenloser Versand» ab **45** aktiv; Regel ab **50** inaktiv; Regel ab **65** vorhanden; Versandrichtlinie sagt «gratis ab CHF **50**» | Drei Zahlen, keine stimmt mit Google überein |
+| Versandkosten | Standardversand Schweiz CHF **7.90**, gratis ab **60** | Allgemeines Profil: Standard **7.00**; «Kostenloser Versand» ab **45** aktiv; Regel ab **50** inaktiv; Regel ab **65** vorhanden; Versandrichtlinie sagt «gratis ab CHF **50**» | Shop hält «ab 50» ein (45er-Regel misst nach dem 10-%-Rabatt, siehe unten); Google weicht ab |
 | Lieferzeit | **6–14** Werktage | Produktseiten: **10–20** Werktage (Direktversand ab Lieferantenlager) | Google verspricht zu schnell |
 | Rückgabe | 30 Tage, gratis, verifiziert | Richtlinie: 30 Tage freiwillig, unbenutzte Ware | passt |
 | Store-Qualität CH | «Great»: Versandkosten/Rückgabefrist/-kosten Exceptional, HD-Bilder Good, Bilder je Angebot Incomplete, **Lieferzeit fehlt** | — | Lieferzeit nachtragen |
@@ -22,13 +22,15 @@
 (`bild_mini_entfernen.py`), «Inappropriate image» (`google_bild_tausch.py`, Pilot bis 03.10.), Google-Kategorien
 (`google_kategorie_fein.py`).
 
-## ⚠️ Vorab-Entscheid des Betreibers (eine Zeile im Chat genügt)
-**Ab welchem Betrag ist der Versand gratis: 45, 50 oder 65?** Der Shop gibt heute ab CHF 45 gratis (aktive Regel),
-die Versandrichtlinie und die Texte sagen 50, eine dritte Regel steht auf 65. Google muss dieselbe Zahl zeigen wie
-die Kasse, sonst droht «Mismatched shipping cost». **Empfehlung: 50** (steht schon in Richtlinie, Bannern und Reels).
-Nach dem Entscheid stellt die Cloud-Session die Shopify-Regeln um; Cowork setzt in Schritt 2 dieselbe Zahl bei Google.
-Solange kein Entscheid da ist: Schritt 2 auf «Versand aus Shopify übernehmen» stellen (Variante A), dann folgt Google
-automatisch dem Shop.
+## ✅ Entscheid des Betreibers (01.10.): Gratisversand ab CHF 50
+**Im Shop ändert sich dafür nichts, und das ist Absicht.** Am 15.09. mit vier echten Warenkörben gemessen
+(`COWORK-BEFEHL.md`, «Geschlossen» Punkt 1): Shopify prüft die Regel «≥ 45» auf dem Betrag **nach** dem
+automatischen 10-%-Rabatt ab 2 Artikeln. 45 ÷ 0,9 = 50: mit zwei Artikeln beginnt der Gratisversand also genau bei
+CHF 50 vor Rabatt, und ein einzelner Artikel ist schon ab 45 gratis. Die Zusage «ab CHF 50» wird damit überall
+eingehalten. Die Shopify-Regel auf 50 zu stellen hiesse, die echte Schwelle auf CHF 55.56 zu schieben.
+Die Rate «Standard 0.00 ab 65» ist durch die 45er-Regel überdeckt und schadet nicht.
+**Für Google gilt:** Versand CHF 7.00, gratis ab CHF 50. Google zeigt damit für Einzelartikel zwischen 45 und 49.99
+eher zu viel Versand an als zu wenig, nie zu wenig. Noch genauer ist Variante A (Import aus Shopify).
 
 ---
 
@@ -51,7 +53,7 @@ nie «Complete remaining actions» für Deutschland.
    Weg: Einstellungen → «Shipping and returns» → Versanddienst «Standardversand Schweiz».
    Variante A (bevorzugt): Gibt es «Automatically import shipping settings from Shopify» / Versand aus der
    Shopify-App übernehmen → einschalten und den manuellen Dienst deaktivieren.
-   Variante B (falls A fehlt): Dienst bearbeiten → Kosten CHF 7.00, gratis ab CHF <ENTSCHEID: 50>.
+   Variante B (falls A fehlt): Dienst bearbeiten → Kosten CHF 7.00, gratis ab CHF 50.
    Quittung: Screenshot des Versanddienstes nach dem Speichern.
 
 3) LIEFERZEIT EINTRAGEN (fehlt in der Store-Qualität CH)
@@ -101,8 +103,6 @@ Am Ende: alle Screenshots und eine Zeile je Schritt (erledigt / übersprungen + 
 ---
 
 ## Was die Cloud-Session danach macht
-- **Nach dem Versand-Entscheid:** Shopify-Versandregeln auf EINE Schwelle bringen (allgemeines Profil, Kasse
-  mit Testkorb prüfen), Richtlinie und Banner abgleichen.
 - **Nach Schritt 6e:** die 6 Produkte im Shop reparieren oder draften.
 - **Nach Schritt 7:** Store-Qualität im Gedächtnis nachführen; «Bilder je Angebot» bleibt die Daueraufgabe
   (Bild-Backfill, 856 Fortura-Produkte haben beim Lieferanten nur ein Bild).
