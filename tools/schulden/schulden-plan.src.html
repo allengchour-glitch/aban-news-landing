@@ -94,7 +94,7 @@ tbody tr.frei td{color:var(--gut);font-weight:700}
   var $=function(id){return document.getElementById(id)};
   function chf(x){return "CHF "+Math.round(x).toLocaleString("de-CH")}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  function datum(m){if(m===null)return "nicht absehbar";var d=new Date();d.setMonth(d.getMonth()+m);return d.toLocaleDateString("de-CH",{month:"long",year:"numeric"})}
+  function datum(m){if(m===null)return "nicht absehbar";var d=new Date();d.setDate(1);d.setMonth(d.getMonth()+m);/* setDate(1): sonst wird aus dem 30. + n Monate ein „30. Februar“ = März */return d.toLocaleDateString("de-CH",{month:"long",year:"numeric"})}
   function dauer(m){if(m===null)return "nie";var j=Math.floor(m/12),r=m%12;return (j?j+" J. ":"")+(r?r+" Mt.":"")}
   function speichern(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
   function liste(){
