@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-29T10:39:03Z",
+ "stand": "2026-09-30T10:28:09Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Project Jupiter: Oracle bringt durch Zahlungsstopp zentralen OpenAI-Ausbau ins Wanken",
-   "u": "https://www.golem.de/news/project-jupiter-oracle-bringt-durch-zahlungsstopp-zentralen-openai-ausbau-ins-wanken-2609-213526.html",
-   "q": "Golem",
-   "d": "2026-09-29T10:15:02Z",
-   "s": "Oracle hat mit einem wahnwitzigen Konzept zur Energieversorgung breite Proteste gegen sein riesiges Rechenzentrum in New Mexico ausgelöst. Nun stoppt der Trump-Vertraute Larry Ellison die Zahlungen. (…",
-   "sprache": "de"
-  },
-  {
-   "t": "Midjourney Medical: 100 Prozent Weltbild, 99,9 Prozent Blödsinn",
-   "u": "https://www.golem.de/news/midjourney-medical-100-prozent-weltbild-99-9-prozent-bloedsinn-2609-213407.html",
-   "q": "Golem",
-   "d": "2026-09-29T10:00:02Z",
-   "s": "Mit Midjourney Medical lässt Gründer und CEO David Holz seinen Träumen von einer Welt nach der Singularität freien Lauf. Circa 0,1 Prozent seiner Versprechen sollte man ernst nehmen. Ein IMHO von Tim …",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Analogfotografie: Lomografie als Gegenbewegung zur digitalen Perfektion",
-   "u": "https://www.heise.de/ratgeber/Analogfotografie-Lomografie-als-Gegenbewegung-zur-digitalen-Perfektion-11463536.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "t": "heise+ | Wie Sie KI-Agenten mit .NET orchestrieren",
+   "u": "https://www.heise.de/ratgeber/Wie-Sie-KI-Agenten-mit-NET-orchestrieren-11464010.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
    "q": "heise",
-   "d": "2026-09-29T10:00:00Z",
-   "s": "Unscharf, körnig, unperfekt – und gerade deshalb faszinierend. Lomografie feiert ihr Comeback im Zeitalter von digitaler Bilderflut und KI.",
+   "d": "2026-09-30T10:00:00Z",
+   "s": "Microsoft Agent Framework verbindet LLMs, Werkzeuge und zustandsbehaftete Workflows für ein belastbares KI-System.",
    "sprache": "de"
   },
   {
-   "t": "Anthropic warnt vor existenziellen KI-Risiken – und plant trotzdem den Mega-IPO",
-   "u": "https://t3n.de/news/anthropic-warnt-vor-existenziellen-ki-risiken-und-plant-trotzdem-den-mega-ipo-1765545/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Donald Trump: KI-Industrie soll sich selbst regulieren",
+   "u": "https://www.golem.de/news/donald-trump-ki-industrie-soll-sich-selbst-regulieren-2609-213573.html",
+   "q": "Golem",
+   "d": "2026-09-30T09:18:02Z",
+   "s": "Donald Trump setzt beim Thema KI auf Selbstregulierung: Eine \"moralisch bindende\" Vereinbarung mit der KI-Industrie soll KI-Unfälle verhindern. (KI, Politik)",
+   "sprache": "de"
+  },
+  {
+   "t": "AI Lab Report: Kleinere Leichtgewichte statt immer trägerer Giganten",
+   "u": "https://www.golem.de/news/ai-lab-report-kleinere-leichtgewichte-statt-immer-traegerer-giganten-2609-213527.html",
+   "q": "Golem",
+   "d": "2026-09-30T08:45:02Z",
+   "s": "Unser Newsletter AI Lab Report ordnet neue KI-Entwicklungen ein. In der aktuellen Ausgabe geht es um einen Gegentrend zu immer größeren Sprachmodellen. (KI, In eigener Sache)",
+   "sprache": "de"
+  },
+  {
+   "t": "Hohe Infrastruktur-Ausgaben: KI-Branche bräuchte bis 2031 jährlich 6 Billionen Dollar Umsatz",
+   "u": "https://t3n.de/news/infrastruktur-ki-branche-2031-1765801/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-29T09:35:02Z",
-   "s": "Im Prospekt für den geplanten Börsengang warnt Anthropic vor möglichen katastrophalen Folgen seiner eigenen KI-Modelle. Gleichzeitig wächst das Geschäft rasant – ebenso wie Verluste und Kosten. weiter…",
+   "d": "2026-09-30T08:30:51Z",
+   "s": "Bis 2031 müsste die KI-Branche jährlich sechs Billionen US-Dollar erwirtschaften, um rentabel zu sein. Grund sind laut der Unternehmensberatung Bain & Company die hohen Infrastrukturausgaben. Das Prob…",
    "sprache": "de"
   },
   {
-   "t": "Wer darf was? Okta will KI-Agenten an die Leine nehmen",
-   "u": "https://www.heise.de/news/Wer-darf-was-Okta-will-KI-Agenten-an-die-Leine-nehmen-11469407.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "KI-Tool soll helfen: „Nachhaltigkeit im Krankenhaus muss sich auch rechnen“",
+   "u": "https://www.heise.de/hintergrund/KI-Tool-soll-helfen-Nachhaltigkeit-im-Krankenhaus-muss-sich-auch-rechnen-11470487.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-09-29T09:31:00Z",
-   "s": "Okta und namhafte Partner gründen die Blueprint Alliance, um KI-Agenten abzusichern und gemeinsame Standards zu etablieren.",
+   "d": "2026-09-30T08:22:00Z",
+   "s": "Ein KI-gestützter Assistent des Start-ups mirasu soll Kliniken helfen, aus Nachhaltigkeitsdaten konkrete, wirtschaftlich begründete Maßnahmen abzuleiten.",
    "sprache": "de"
   },
   {
-   "t": "OpenAI und Anthropic: Was vom KI-Hype des Sommers wirklich übrig bleibt",
-   "u": "https://t3n.de/news/openai-anthropic-ki-hype-1764681/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Nach KI-Hackerangriffen: Trump setzt auf Selbstverpflichtung statt Regulierung",
+   "u": "https://t3n.de/news/nach-ki-hackerangriffen-trump-setzt-auf-selbstverpflichtung-statt-regulierung-1765794/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-29T07:55:00Z",
-   "s": "Selten war die Schlagzeilendichte größer: Sprachmodelle sollen kurz vor der Superintelligenz stehen und uns alle umbringen. Die beiden KI-Wissenschaftlerinnen Tweiterlesen auf t3n.de",
+   "d": "2026-09-30T06:30:37Z",
+   "s": "Seit Wochen wird weltweit über Risiken Künstlicher Intelligenz diskutiert. US-Präsident Trump sagt nach einem Treffen mit KI-Bossen, dass die Unternehmen sich gegenseitig kontrollieren sollen.weiterle…",
    "sprache": "de"
   },
   {
-   "t": "Anthropic’s prospectus details losses, growth, and, yes, a warning that its AI could end humanity",
-   "u": "https://techcrunch.com/2026/09/28/anthropics-prospectus-details-losses-growth-and-yes-a-warning-that-its-ai-could-end-humanity/",
+   "t": "America.gov gets really weird when you ask it about Minecraft, but it’s not a glitch",
+   "u": "https://techcrunch.com/2026/09/29/america-gov-gets-really-weird-when-you-ask-it-about-minecraft-but-its-not-a-glitch/",
    "q": "TechCrunch AI",
-   "d": "2026-09-29T05:13:43Z",
-   "s": "In its prospectus, Anthropic just told investors it's losing tens of billions of dollars a year, but also growing like crazy, and — oh yeah — its own AI might pose an existential risk to humanity.",
+   "d": "2026-09-29T23:30:55Z",
+   "s": "For the sake of national security, it's a relief to learn that America.gov is not hallucinating to the point that it's penning lengthy poetry.",
    "sprache": "en"
   },
   {
-   "t": "Peak XV ups Surge seed investment ceiling to $5M, unveils 18-startup cohort",
-   "u": "https://techcrunch.com/2026/09/28/peak-xv-goes-bigger-at-seed-with-new-surge-cohort-as-series-a-bar-rises/",
+   "t": "The internet is convinced Elon Musk’s xAI trolled OpenAI’s ‘Dots’ launch",
+   "u": "https://techcrunch.com/2026/09/29/the-internet-is-convinced-elon-musks-xai-trolled-openais-dots-launch/",
    "q": "TechCrunch AI",
-   "d": "2026-09-29T00:30:00Z",
-   "s": "Thirteen of the 18 startups in Peak XV’s latest Surge cohort are targeting global markets, while more than half are based in India.",
+   "d": "2026-09-29T22:20:59Z",
+   "s": "Before OpenAI launched its new AI agent, Dots, on Tuesday, Elon Musk's xAI had already acquired the domain name \"dot.com,\" which now redirects to the Grok chatbot download page.",
    "sprache": "en"
   },
   {
-   "t": "How we will do better for Australia",
-   "u": "https://openai.com/index/how-we-will-do-better-for-australia",
-   "q": "OpenAI",
-   "d": "2026-09-28T19:00:00Z",
-   "s": "OpenAI apologises for incidents involving Australian government websites and outlines stronger safeguards and support to strengthen Australia’s cyber defences.",
+   "t": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
+   "u": "https://huggingface.co/blog/nvidia/kumo-tabular",
+   "q": "Hugging Face",
+   "d": "2026-09-29T15:30:38Z",
+   "s": "",
    "sprache": "en"
   },
   {
-   "t": "Towards safety cases for frontier AI training",
-   "u": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
-   "q": "OpenAI",
-   "d": "2026-09-28T19:00:00Z",
-   "s": "Our early guidelines for safety cases in frontier AI training cover technical safeguards, operational practices, and investigating misalignment incidents",
+   "t": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+   "u": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+   "q": "Hugging Face",
+   "d": "2026-09-29T13:07:00Z",
+   "s": "",
    "sprache": "en"
   }
  ]
