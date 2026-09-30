@@ -1,0 +1,4 @@
+# Shopify-SKU → CJ-vid, wenn das Shop-Produkt EINE Variante hat, CJ aber mehrere (Engine meldet sonst «manuell prüfen»).
+# Nur mit Beleg eintragen (welches Bild zeigt welche Variante). Gelesen von automation/cj_order_engine.py vid_fuer().
+# shopify_sku	cj_vid	cj_variantSku	beleg
+CJ-65D5329E-AA72-43AD-910B-F95B35E89D0A	2F958323-FB21-467F-BEBA-0A2EC0EBB263	CJZBNSSY02651-Stainless steel blue	01.10.2026 #1021: Shop-Hauptbild + Bild 2 + Bild 4 = blaues Zifferblatt, Stahl-Milanaise (Kontaktbogen gegen die 5 CJ-Variantenbilder)

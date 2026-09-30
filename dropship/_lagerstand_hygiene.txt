@@ -306,3 +306,5 @@ gid://shopify/Product/15470034616705	draft-ausverkauft	Skelett beweglich
 gid://shopify/Product/15493859803521	draft-ausverkauft	Wäschekorb für Schrank & Regal, Himmelblau
 gid://shopify/Product/15470036255105	draft-ausverkauft	Saure Zungen · 100 Stück
 gid://shopify/Product/15470034616705	reaktiviert	Skelett beweglich
+gid://shopify/Product/15470017675649	draft-ausverkauft	bworld Scrambler Ducati Full Throttle mit Fahrer
+gid://shopify/Product/15470031274369	draft-ausverkauft	Erdmännchen Plüsch
