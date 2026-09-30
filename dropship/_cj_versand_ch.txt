@@ -1400,3 +1400,5 @@ gid://shopify/Product/15503234171265	ok	Schneidebrett aus Bambus mit Schublade
 gid://shopify/Product/15503303934337	ok	Kabelloser elektronischer Haustierzaun
 gid://shopify/Product/15507724075393	ok	Britische Business Casual Lederschuhe
 gid://shopify/Product/15521248838017	ok	Abstrakte Figuren – Luxuriöse Kunstobjekte
+gid://shopify/Product/15523076768129	ok	Leder Umhängetasche mit vielen Fächern
+gid://shopify/Product/15525514117505	ok	Heimprojektor YG400 HD
