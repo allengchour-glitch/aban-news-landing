@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-25T18:06:52Z",
+ "stand": "2026-09-30T10:28:09Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-   "u": "https://openai.com/index/proaction",
-   "q": "OpenAI",
-   "d": "2026-09-25T19:00:00Z",
-   "s": "With Codex, GPT-Live-1, and GPT-6 Astra, Proaction builds, operates, and sells modern fleet management faster.",
-   "sprache": "en"
-  },
-  {
-   "t": "Some Supabase customers are publicly exposing reams of people’s data to the web",
-   "u": "https://techcrunch.com/2026/09/25/some-supabase-customers-are-publicly-exposing-reams-of-peoples-data-to-the-web/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-25T17:29:46Z",
-   "s": "The findings highlight how AI-generated and vibe-coded apps can spill and expose users' data when not configured or secured properly.",
-   "sprache": "en"
-  },
-  {
-   "t": "Astra and Opus just passed Turing’s other test",
-   "u": "https://techcrunch.com/2026/09/25/astra-and-opus-just-passed-turings-other-test/",
-   "q": "TechCrunch AI",
-   "d": "2026-09-25T17:24:36Z",
-   "s": "Frontier AI models are finishing Alan Turing's World War II codebreaking work.",
-   "sprache": "en"
-  },
-  {
-   "t": "Anzeige: Vibe Coding: Softwareentwicklung mit KI praktisch umsetzen",
-   "u": "https://www.golem.de/news/anzeige-vibe-coding-softwareentwicklung-mit-ki-praktisch-umsetzen-2609-213170.html",
-   "q": "Golem",
-   "d": "2026-09-25T16:45:02Z",
-   "s": "Vibe Coding verändert, wie Software-Prototypen entstehen. Ein Online-Workshop vermittelt den Umgang mit KI-Coding-Tools, Prompting, Debugging und Qualitätssicherung. (Golem Karrierewelt, Programmiersp…",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Rechenzentren: Abwärme heizt angrenzende Wohngebiete auf",
-   "u": "https://www.heise.de/news/KI-Rechenzentren-Abwaerme-heizt-angrenzende-Wohngebiete-auf-11466676.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise+ | Wie Sie KI-Agenten mit .NET orchestrieren",
+   "u": "https://www.heise.de/ratgeber/Wie-Sie-KI-Agenten-mit-NET-orchestrieren-11464010.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
    "q": "heise",
-   "d": "2026-09-25T16:01:00Z",
-   "s": "KI-Rechenzentren geben enorme Mengen Abwärme ab. Erste Studien belegen, dass dies die Temperaturen in angrenzenden Wohngebieten messbar ansteigen lässt.",
+   "d": "2026-09-30T10:00:00Z",
+   "s": "Microsoft Agent Framework verbindet LLMs, Werkzeuge und zustandsbehaftete Workflows für ein belastbares KI-System.",
    "sprache": "de"
   },
   {
-   "t": "(g+) US-Politik: Maga-Anhängerschaft schreckt zurück, weil Trump voll auf KI setzt",
-   "u": "https://www.golem.de/news/us-politik-maga-anhaengerschaft-schreckt-zurueck-weil-trump-voll-auf-ki-setzt-2609-213453.html",
+   "t": "Donald Trump: KI-Industrie soll sich selbst regulieren",
+   "u": "https://www.golem.de/news/donald-trump-ki-industrie-soll-sich-selbst-regulieren-2609-213573.html",
    "q": "Golem",
-   "d": "2026-09-25T16:00:01Z",
-   "s": "Mit seiner bedingungslosen KI-Unterstützung bringt Trump vor den Midterms selbst loyale Maga-Anhänger gegen sich auf. Ein Stimmungsbild aus den USA von Financial-Times-Autor Joe Miller. Von Joe Miller…",
+   "d": "2026-09-30T09:18:02Z",
+   "s": "Donald Trump setzt beim Thema KI auf Selbstregulierung: Eine \"moralisch bindende\" Vereinbarung mit der KI-Industrie soll KI-Unfälle verhindern. (KI, Politik)",
    "sprache": "de"
   },
   {
-   "t": "Wasserzeichen für KI-Texte: Anthropic weitet Anwendung aus",
-   "u": "https://www.heise.de/news/Wasserzeichen-fuer-KI-Texte-Anthropic-weitet-Anwendung-aus-11466692.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "AI Lab Report: Kleinere Leichtgewichte statt immer trägerer Giganten",
+   "u": "https://www.golem.de/news/ai-lab-report-kleinere-leichtgewichte-statt-immer-traegerer-giganten-2609-213527.html",
+   "q": "Golem",
+   "d": "2026-09-30T08:45:02Z",
+   "s": "Unser Newsletter AI Lab Report ordnet neue KI-Entwicklungen ein. In der aktuellen Ausgabe geht es um einen Gegentrend zu immer größeren Sprachmodellen. (KI, In eigener Sache)",
+   "sprache": "de"
+  },
+  {
+   "t": "Hohe Infrastruktur-Ausgaben: KI-Branche bräuchte bis 2031 jährlich 6 Billionen Dollar Umsatz",
+   "u": "https://t3n.de/news/infrastruktur-ki-branche-2031-1765801/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-09-30T08:30:51Z",
+   "s": "Bis 2031 müsste die KI-Branche jährlich sechs Billionen US-Dollar erwirtschaften, um rentabel zu sein. Grund sind laut der Unternehmensberatung Bain & Company die hohen Infrastrukturausgaben. Das Prob…",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Tool soll helfen: „Nachhaltigkeit im Krankenhaus muss sich auch rechnen“",
+   "u": "https://www.heise.de/hintergrund/KI-Tool-soll-helfen-Nachhaltigkeit-im-Krankenhaus-muss-sich-auch-rechnen-11470487.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-09-25T14:40:00Z",
-   "s": "Anthropic versieht weitere Claude-Modelle mit unsichtbaren Text-Wasserzeichen. Das Verfahren soll mit Claude erzeugte Texte erkennbar machen, hat aber Grenzen.",
+   "d": "2026-09-30T08:22:00Z",
+   "s": "Ein KI-gestützter Assistent des Start-ups mirasu soll Kliniken helfen, aus Nachhaltigkeitsdaten konkrete, wirtschaftlich begründete Maßnahmen abzuleiten.",
    "sprache": "de"
   },
   {
-   "t": "Erweiterung per KI erstellen: So geht das in Safari – und so holst du noch mehr raus",
-   "u": "https://t3n.de/news/erweiterung-beschreiben-safari-browser-macos-ios-ipad-1765163/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Nach KI-Hackerangriffen: Trump setzt auf Selbstverpflichtung statt Regulierung",
+   "u": "https://t3n.de/news/nach-ki-hackerangriffen-trump-setzt-auf-selbstverpflichtung-statt-regulierung-1765794/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-25T13:30:06Z",
-   "s": "Unter macOS, iOS und iPadOS 27 könnt ihr Browser-Erweiterungen einfach über einen KI-Prompt erzeugen. Wir zeigen, wo die Grenzen liegen – und wie ihr sie mit eiweiterlesen auf t3n.de",
+   "d": "2026-09-30T06:30:37Z",
+   "s": "Seit Wochen wird weltweit über Risiken Künstlicher Intelligenz diskutiert. US-Präsident Trump sagt nach einem Treffen mit KI-Bossen, dass die Unternehmen sich gegenseitig kontrollieren sollen.weiterle…",
    "sprache": "de"
   },
   {
-   "t": "KI-Agenten greifen Onlineshops an – für 25 Dollar pro Shop",
-   "u": "https://t3n.de/news/ki-agenten-greifen-onlineshops-an-fuer-25-dollar-pro-shop-1765143/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-25T12:45:02Z",
-   "s": "Für Onlinehändler:innen könnte sich die Bedrohungslage grundlegend verschieben. Autonome KI-Agenten können Shops automatisiert scannen, Schwachstellen testen und Angriffe vorbereiten – und das im Schn…",
-   "sprache": "de"
+   "t": "America.gov gets really weird when you ask it about Minecraft, but it’s not a glitch",
+   "u": "https://techcrunch.com/2026/09/29/america-gov-gets-really-weird-when-you-ask-it-about-minecraft-but-its-not-a-glitch/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-29T23:30:55Z",
+   "s": "For the sake of national security, it's a relief to learn that America.gov is not hallucinating to the point that it's penning lengthy poetry.",
+   "sprache": "en"
   },
   {
-   "t": "The Download: the Pentagon’s AI-powered lie detector and young organ limits",
-   "u": "https://www.technologyreview.com/2026/09/25/1145157/the-download-pentagon-ai-lie-detector-young-organ-limits/",
-   "q": "MIT Tech Review",
-   "d": "2026-09-25T12:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The Pentagon wants $30 million to build an AI-powered lie dete…",
+   "t": "The internet is convinced Elon Musk’s xAI trolled OpenAI’s ‘Dots’ launch",
+   "u": "https://techcrunch.com/2026/09/29/the-internet-is-convinced-elon-musks-xai-trolled-openais-dots-launch/",
+   "q": "TechCrunch AI",
+   "d": "2026-09-29T22:20:59Z",
+   "s": "Before OpenAI launched its new AI agent, Dots, on Tuesday, Elon Musk's xAI had already acquired the domain name \"dot.com,\" which now redirects to the Grok chatbot download page.",
+   "sprache": "en"
+  },
+  {
+   "t": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
+   "u": "https://huggingface.co/blog/nvidia/kumo-tabular",
+   "q": "Hugging Face",
+   "d": "2026-09-29T15:30:38Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+   "u": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+   "q": "Hugging Face",
+   "d": "2026-09-29T13:07:00Z",
+   "s": "",
    "sprache": "en"
   }
  ]

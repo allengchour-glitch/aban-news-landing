@@ -1,5 +1,34 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🎯 2026-09-29 — Kontext-CTAs in 22 Top-Tools
+> Umsetzung der Recherche (gezielte Seite + passender Hinweis ≈ 5 % statt < 1 % generisch).
+> - **`tools/kontext_cta.py`** (idempotent, Marker `data-cta-kontext="<slug>"`): Tabelle Tool → Überschrift/
+>   Unterzeile/Knopf, die den Gedanken des Besuchers fortsetzt (z. B. Stundenlohn: „Dein Stundenlohn steht. Jetzt
+>   die Stunden, die er nicht bezahlt."). Ändert nur strong/p/a im `<aside data-aban-news-cta>` (4 Zeilen/Datei).
+> - Versprochen wird nur, was der Newsletter liefert (3 Updates mit Urteil, 1 getestetes Tool, 1 Prompt).
+> - **Messung:** Anmelde-Link trägt `?utm_source=abannews&utm_medium=tool&utm_campaign=<slug>` → **in beehiiv
+>   unter Abonnenten/Quelle sehen, welches Tool Abos bringt** (kein Cookie/Pixel bei uns; in `datenschutz.html` 4.4 erklärt).
+> - 22 Tools: 10 × 🇨🇭 Geld, 8 × Selbstständige (Stundenlohn, Marge, Skonto …), 4 × KI. Weitere = Eintrag in `CTAS` + Lauf.
+> - **Nachtrag 2026-09-30: alle 146 Tools kontextuell.** Die restlichen 124 per Workflow geschrieben (Schreiben →
+>   Ehrlichkeits-Prüfung → Passungs-Prüfung → Regel-Check im Code → Konsistenz über alle). Daten: `tools/kontext_ctas.json`
+>   (vom Skript geladen). Private/sensible Tools (SSW, Eisprung, Promille, BMI, Schlaf …) bekommen bewusst einen
+>   zurückhaltenden Hinweis ohne Bezug zur Person. `virale-prompts-check.html` hat jetzt JSON-LD + Rück-Link (Brain 100).
+
+## ✨ 2026-07-24 — Polish-Pass (Urteil-Format durch den ganzen Funnel)
+> „polish alles": Qualitäts-Pass über die Kimi-Conversion-Arbeit + sichere Restpunkte umgesetzt.
+> - **Funnel-Konsistenz:** `preview.html` (echte Beispiel-Ausgabe) zeigt jetzt bei allen 4 Stories das
+>   **Urteil-Badge** (Lohnt sich/Abwarten/Ignorieren) — ehrlich zur jeweiligen Quelle. So verspricht der
+>   Homepage-Lead das Format → Mail-Mock zeigt es → die verlinkte Beispiel-Ausgabe hält es. Kein Bruch mehr.
+> - **Hand-Vertrieb-Deliverable:** `docs/urteil-social-posts.md` — 6 fertige LinkedIn/X-Posts im Urteil-Format
+>   + Tages-Vorlage (du-Form, keine erfundenen Zahlen, 1 Link). Kimis #1-Hebel (Reichweite+Vertrauen). Liegt in
+>   `docs/` (vom Voice-Linter ausgenommen → 0-Hashtag-Regel kein Problem).
+> - **Mobile:** Mail-Mock-Badges (`.vtag`) brechen jetzt sauber um (flex-wrap).
+> - **Trust/Name:** bereits vorhanden (Hero-Pill + Footer „Kuratiert von Aban/Allen Chour" + Organization-Schema
+>   mit founder + LinkedIn sameAs) → nicht dupliziert.
+> - Brains: Tool-Brain 145/100. Content-Scan zeigt 27 hoch/67 mittel — **alle in `minispiele/`** (Spiele-Session,
+>   tabu für mich), 0 in meinen Dateien. Nicht angefasst; Notiz in SHARED-MEMORY für die Spiele-Session.
+> - Offen/nur User (aus KIMI-KRITIK.md): Preise auf Startseite, Gesichtsfoto im Hero, täglich 1 Urteil-Post.
+
 ## 🤖 DAUERAUFTRAG (User 2026-06-25, oberste Prioritaet)
 > **Vollautonom, 24/7 weiterbauen + verbessern, bis der ERSTE Franken reinkommt — egal wie.** Nicht fragen, machen.
 > 1. **Menschen-zentriert:** immer denken, was Besucher/Kund:innen wollen und sehen.

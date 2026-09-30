@@ -171,5 +171,13 @@
     "price_cents": 2700,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "budget-plan",
+    "title": "Budget-Plan Schweiz: nie mehr von der Steuerrechnung überrascht",
+    "desc": "Alle Einnahmen und Ausgaben mit Takt (monatlich bis jährlich), monatliche Rückstellung für Steuern und Jahresrechnungen, Muss/Kann/Sparen, Notreserve. Offline-Rechner mit Anleitung. Keine Finanzberatung.",
+    "price_cents": 1900,
+    "currency": "chf",
+    "standalone": true
   }
 ]

@@ -62,6 +62,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-25 (🛒 3. Produkt „Budget-Plan Schweiz" CHF 19):** Offline-Rechner `content/packs/de/budget-plan/`
+(Takt monatlich–jährlich → monatliche Rückstellung für Steuern/Franchise/Jahresrechnungen, Muss/Kann/Sparen, Notreserve),
+Gratis-Seite `budget-rechner-schweiz.html`, Engine `tools/budget/engine.js` (7 Tests), Build `tools/budget/build.py`.
+Verkauf wie immer: Katalog-Eintrag → `stripe-shop.yml` starten → Link kommt automatisch auf die Seite.
+**✅ 28.09. Testkauf durch den User erfolgreich** (Zahlung → danke-kit.html → Download). Die Verkaufskette ist
+Ende-zu-Ende bestätigt. Nächster Hebel = Reichweite: Meta-Anzeigen `docs/werbung/schulden-plan/ANZEIGEN.md` (User schaltet).
+
 **📌 2026-09-25 (🛒 2. Produkt „Schulden-Plan Schweiz" CHF 27 + 🔒 LECK: `content/` war öffentlich):**
 - **Nach YouTube-Rezept** (Alex, „selling $27 ai digital products"): Nische Schulden → Offline-Rechner
   `content/packs/de/schulden-plan/schulden-plan.html` (Lawine/Schneeball, tilgen vs. investieren, Break-even,
@@ -72,12 +79,28 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   aus + bricht ab, falls `_site/content` existiert (Gegenprobe: Wächter rc=1).
 - **Falle build.py:** Regex „bis zum nächsten `</script>`" hat bei leerem Engine-Block das FOLGENDE Skript (die ganze
   Oberfläche) gelöscht → jetzt Marken `/*ENGINE-START*/…/*ENGINE-END*/`, idempotent geprüft.
-- Kauf-Links beider Produkte warten weiter auf den echten Stripe-Key (GitHub-Secret). **Keine Werbung vorher.**
+- ✅ **25.09. Stripe-Key im GitHub-Secret ersetzt (User)** → `stripe-shop.yml` legte beide Links an: Prüfstand
+  `buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p` (CHF 29), Schulden-Plan `buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q` (CHF 27). Neue
+  Produkte = Katalog-Eintrag + Workflow starten, sonst nichts. Werbung erst nach erstem Test-Kauf (Download prüfen).
+
+**📌 2026-09-25 (📱 LuxeStyle Android-App — native, Google Play bereit):**
+- `apps/luxestyle-android/` = **native Compose-App auf der Shopify Storefront API ohne Token**
+  (`au3j0y-hq.myshopify.com/api/2025-07/graphql.json`: Menü, Kollektionen, Suche, Produkte, Cart gehen
+  tokenlos; **Metafelder/Bewertungen NICHT** → „unauthenticated_read_metafields"). Nur Kasse/Konto im Web.
+  Alles Weitere: `apps/luxestyle-android/PLAY-STORE.md`. Workflow `luxestyle-android.yml` (manuell).
+- **Kein Emulator im Container → Rundgang per Robolectric+Roborazzi mit echten Shopdaten:**
+  `LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*Tour*'` → `screens/`. Falle: Robolectric kann
+  Androids `ImageDecoder` nicht → im Test Coil mit `imageDecoderEnabled(false)`.
+- **Shop-Wahrheit geprüft (Admin):** Gratis-Versand CH aktiv **ab CHF 45** (sonst CHF 7; Regel „ab 50" ist
+  deaktiviert, das Shop-Banner sagt trotzdem „ab 50"). WELCOME10 aktiv bis 31.12.2027, 10 %, 1×/Kunde.
+- **Container-Fallen:** Maven Central 429 → Gradle-Init-Skript auf `maven-central.storage-download.googleapis.com/maven2/`.
+  Chromium kennt die Proxy-CA erst nach `certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n ccr-proxy -i /root/.ccr/agent-proxy-ca.crt`.
+- **🟡 Nur User:** Play-Konto (25 USD; privat = 12 Tester × 14 Tage), Upload-Schlüssel aufbewahren, AAB hochladen.
 
 **📌 2026-09-24 (🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks):**
 - **Produkt:** `content/packs/de/strategie-pruefstand/` (Python-Kit, Katalog `data/kit-catalog.json`,
   standalone). Verkaufskasten auf `trading-lernen.html` holt den Kauf-Link aus `data/shop-products.json`.
-- **🟡 KAUF-LINK FEHLT NOCH — nur User:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
+- **✅ (erledigt 25.09., s. oben) — früher:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
   (Stripe 403 `secret_key_required`, vermutlich `pk_…`). Richtiger Key: `sk_live_…` oder eingeschränkt
   `rk_live_…` mit Schreibrecht auf Products, Prices, Payment Links. Danach `stripe-shop.yml` starten →
   Link wird angelegt, committet, deployt (kein `[skip ci]` mehr). Cloudflare hat den richtigen Key

@@ -96,6 +96,7 @@ tar -cf - \
   --exclude='./mediakit' \
   --exclude='./tools' \
   --exclude='./content' \
+  --exclude='./apps' \
   --exclude='./automation' \
   --exclude='./server' \
   --exclude='./linkedin' \
