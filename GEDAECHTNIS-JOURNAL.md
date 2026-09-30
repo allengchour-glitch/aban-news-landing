@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🖼️ Google «Inappropriate image» mit Gemini + ChatGPT: 18 Hauptbilder getauscht (nur vorhandene, nur bei Einigkeit)
+
+Betreiber «google sachen mit chatgpt und gemini». `automation/google_bild_tausch.py`: beide Modelle wählen unabhängig das
+unverfänglichste vorhandene Bild; Tausch nur bei gleicher Wahl, kein Upload (Speicher voll). Pilot 40: 18 Tausch, 15 Motiv selbst,
+3 behalten, 4 uneinig, 0 Fehler; 40 Kontrollen unberührt (Tag-/Update-Effekt vom 29.09.). Sichtprüfung 18/18 plausibel. Auswertung
+nach dem nächsten Google-Lauf → `dropship/GOOGLE-BILD-TAUSCH-2026-09-30.md`. LEHRE: Zwei Modelle als Vier-Augen-Prinzip + Kontrolle —
+das Urteil ändert nur, wenn beide einig sind, und die Wirkung misst Google, nicht das Modell.
+
 ## 2026-09-30 · 🖼️ Bei vollem Dateispeicher NIE zuerst löschen: Handy-Set ohne Bild → DRAFT
 
 Bildtausch LX-DIFF gelang (3 CJ-Bilder). LX-PHN: Upload FILE_STORAGE_LIMIT_EXCEEDED; ich löschte das alte 5616×3744-Bild, um Platz zu
