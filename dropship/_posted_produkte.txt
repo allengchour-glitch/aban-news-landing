@@ -99,3 +99,4 @@ slug:overknee-stiefel-mit-schnurung-und-blockabsatz
 slug:plusch-alligator-fga88595
 slug:strickpullover-rundhals-loose-fit
 name:sirne
+name:nodo
