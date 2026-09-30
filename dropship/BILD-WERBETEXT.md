@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-29T18:04:02Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:10:06Z
 
-Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 764 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
+Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1181 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2668** in 722 Produkten
-- Treffer (≥ 4 Wörter): **131** in 109 Produkten
+- Medien geprüft: **2674** in 722 Produkten
+- Treffer (≥ 4 Wörter): **132** in 110 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -128,6 +128,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Katzen-Spielzeug mit Futter-Feeder `15453772480897` | [70519928619393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/706a908f-a6f9-4761-bb6e-19107db87d57_trans.jpg) | 5 | PET TOY Open the Cover | offen |
 | Inline-Skate-Set für Kids `15453781557633` | [69926731776385](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22712a88-427a-4d84-b10f-6edb2551ccb4_trans.jpg) | 5 | material Hard shell crash protection | ENTFERNT |
 | Magnetische Kühlschrank-Marker `15453779034497` | [69926719095169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b7925275-5a1b-4a5a-ba07-0319761fa6b1.jpg) | 5 | not just keep moving forward | offen |
+| Velo-Frontlicht 2000LM XPT*6 LED Aluminium `15448957518209` | [77410975318407](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c73e9f7d-9e53-4472-9a85-89b14bf186c1_trans.jpg) | 5 | The main light has advance | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
