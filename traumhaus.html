@@ -6417,8 +6417,15 @@ function figZustand(f,ziel,blend){
 /* Nah jedes Bild, mittel jedes 3., fern jedes 8. — die vergangene Zeit wird aufgespart, der Clip
    laeuft also im richtigen Tempo weiter, nur in groeberen Schritten. Der Versatz fi verteilt die
    Last, damit nicht alle fernen Figuren im selben Bild rechnen. */
+/* Ab 110 m (Abstand zur Kamera, 3D) ist eine Figur nur noch ein paar Pixel hoch: dann weder zeichnen noch
+   Skelett rechnen. GEMESSEN (Software-Renderer, Figuren immer an): Start 302 → 341 ms/Bild, Markt 420 → 470 —
+   die Kastenfiguren waren im Vertex-Teil billiger, obwohl sie 18 Teile hatten. Die Zeit wird bis 2 s
+   aufgespart, die Figur erscheint also nicht in der alten Pose. */
 function figTick(p,dt){var f=p.fig;f._acc+=dt;f._n++;
-  var d=Math.hypot(p.x-camera.position.x,p.z-camera.position.z),alle=d<35?1:(d<80?3:8);
+  var d=Math.hypot(p.x-camera.position.x,camera.position.y-1,p.z-camera.position.z),sicht=d<110;
+  if(p.mesh.visible!==sicht)p.mesh.visible=sicht;
+  if(!sicht){if(f._acc>2)f._acc=2;return;}
+  var alle=d<35?1:(d<80?3:8);
   if((f._n+p.fi)%alle!==0)return;
   f.mixer.update(f._acc);f._acc=0;}
 function figurAnlegen(p,v){

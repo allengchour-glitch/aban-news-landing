@@ -8184,6 +8184,21 @@ Teile je Figur 18,4 → 1. `updFussg` 0,04 → 0,13–0,32 ms (Mixer). Gang ✅ 
 wieder, Rutschen ✅, Rennen ✅. **Drei Gegenproben:** umgedrehte Figur gleitet 2,02 m/s · ungekoppelter Renner gleitet
 gerichtet 1,12 m/s · falsches Tempo + 20 cm angehobene Figur erkannt. Bild: `r105-passanten-bahnsteig.png`.
 
+### 6. Bildzeit und Prüfreihe
+Bildzeit im Software-Renderer (`bildzeit`-Vergleich, 15 s je Ort, alter Stand `cdacff3` gegen neu):
+| Ort | alt | Figuren immer an | mit Ausblenden ab 110 m |
+|---|---|---|---|
+| Start | 302 ms | 341 ms | 305 ms |
+| Markt | 420 ms | 470 ms | 444 ms |
+| Hauptstrasse | 268 ms | 262 ms | 256 ms |
+Trotz 90 % weniger Aufrufen waren die Bilder hier langsamer: der Software-Renderer verformt die Skelette auf der CPU,
+und die Figuren haben mehr Dreiecke als die Kästen. Darum blendet `figTick` Figuren ab 110 m (3D-Abstand zur Kamera)
+aus und rechnet ihr Skelett nicht (Zeit bis 2 s aufgespart).
+**Prüfreihe:** th-bewegt alles bewegt · th-leistung 0 JS-Fehler, alles bewegt nach dem Einfrieren · th-pruef bestanden
+(944 Modelle, Korridor 0, steckt 7 — **identisch auf dem alten Stand**, also nicht aus dieser Runde) · th-gta **22/22**.
+⚠️ th-gta zeigte 20/21 — auch auf dem alten Stand: die Zeitlupen-Prüfung las den Faktor 4,3 s nach dem Auslösen,
+die 1,8-s-Zeitlupe war legitim vorbei. Jetzt Sofort-Wert (0,3) + „endet" + Gegenprobe (Info-Einblendung ohne Zeitlupe).
+
 ### Lehren
 1. **Tempo-Kopplung prüft man in Weltkoordinaten, nicht am Abspieltempo.** Die erste Gang-Prüfung (Clip-Tempo = echtes
    Tempo) war grün, obwohl die Füsse glitten — sie verglich die Formel mit sich selbst. Erst „der aufgesetzte Fuss muss
@@ -8192,3 +8207,7 @@ gerichtet 1,12 m/s · falsches Tempo + 20 cm angehobene Figur erkannt. Bild: `r1
    Spiel aus; der Vergleich Fussbahn-im-Spiel gegen Fussbahn-offline (Bild für Bild gleich) zeigte, dass beide nur „Kontakt"
    verschieden definierten.
 3. **`*_end`-Knoten sind nach dem GLTF-Export keine Knochen** (nicht in skin.joints, kein isBone) — nach Namen suchen.
+4. **Weniger Zeichenaufrufe heisst nicht schneller, wenn man es nicht misst.** Die Figuren sparten 90 % der Aufrufe
+   und machten die Bilder hier trotzdem 12 % langsamer. Erst der Vergleich gegen den alten Stand am selben Ort zeigte es.
+5. **Ein Prüfwerkzeug, das auf beiden Ständen scheitert, gehört nicht der Änderung, aber dem, der es findet.** Die
+   Zeitlupe war richtig, die Prüfung las in Uhrzeit statt im Ablauf — derselbe Fehler wie in Runde 105 Teil 2.

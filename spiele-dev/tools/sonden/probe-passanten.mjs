@@ -15,12 +15,13 @@ mitSonden(quelle, {
     followSim=null;camTx=x;camTz=z;camRT=r;camR=r;camB=b;camA=a;updCam();return true;}`,
   last: `function(){
     function r(){renderer.render(scene,camera);return [renderer.info.render.calls,renderer.info.render.triangles];}
-    var n=fussg.length,glb=0,teile=0;
-    fussg.forEach(function(p){var c=0;p.mesh.traverse(function(o){if(o.isMesh&&o.visible&&!(o.userData&&o.userData.blob))c++;});teile+=c;if(p.fig)glb++;});
+    /* Teile je SICHTBARER Figur (Runde 105: Figuren ueber 110 m sind ausgeblendet) */
+    var n=fussg.length,glb=0,teile=0,sichtbar=0;
+    fussg.forEach(function(p){if(p.fig)glb++;if(!p.mesh.visible)return;sichtbar++;var c=0;p.mesh.traverse(function(o){if(o.isMesh&&o.visible&&!(o.userData&&o.userData.blob))c++;});teile+=c;});
     var mit=r(),vis=fussg.map(function(p){return p.mesh.visible;});
     fussg.forEach(function(p){p.mesh.visible=false;});var ohne=r();fussg.forEach(function(p,i){p.mesh.visible=vis[i];});
     var t0=performance.now();for(var k=0;k<40;k++)updFussg(0.016,performance.now());var cpu=(performance.now()-t0)/40;
-    return {n:n,glb:glb,teileJeFigur:+(teile/n).toFixed(1),mit:mit,ohne:ohne,cpuMs:+cpu.toFixed(3)};}`,
+    return {n:n,glb:glb,sichtbar:sichtbar,teileJeFigur:+(teile/Math.max(1,sichtbar)).toFixed(1),mit:mit,ohne:ohne,cpuMs:+cpu.toFixed(3)};}`,
   gang: `function(stoer){
     if(!fussg.length||!fussg[0].fig)return {ohneClips:true};
     if(stoer){var s0=fussg.find(function(p){return p.fig&&!p.stand;});s0._stoerTs=true;s0.fig.root.position.y+=0.2;}
@@ -80,7 +81,7 @@ for (const [n, x, z, r, b, a] of P) {
   await page.evaluate((v) => window.__th.kam(...v), [x, z, r, b, a])
   await page.waitForTimeout(1200)
   const L = await page.evaluate(() => window.__th.last())
-  console.log(n.padEnd(18), `Passanten ${L.n} (echte Figuren ${L.glb}), Teile/Figur ${L.teileJeFigur} · Aufrufe ${L.mit[0]}/${L.ohne[0]} (+${L.mit[0] - L.ohne[0]}) · Dreiecke +${L.mit[1] - L.ohne[1]} · updFussg ${L.cpuMs} ms`)
+  console.log(n.padEnd(18), `Passanten ${L.n} (echte Figuren ${L.glb}, sichtbar ${L.sichtbar}), Teile/Figur ${L.teileJeFigur} · Aufrufe ${L.mit[0]}/${L.ohne[0]} (+${L.mit[0] - L.ohne[0]}) · Dreiecke +${L.mit[1] - L.ohne[1]} · updFussg ${L.cpuMs} ms`)
 }
 const G = await page.evaluate(() => window.__th.gang(false))
 if (G.ohneClips) console.log('Gang: Passanten haben (noch) keine Clips')
