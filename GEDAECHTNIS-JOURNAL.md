@@ -6,6 +6,24 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+
+## 2026-10-01 · 📌 Pinterest: der Server-Pinner sah seine Warteschlange nicht (sparse-Klon)
+**Anlass:** Betreiber «okey dan nur luxestyle push» (nach der Pinterest-Übergabe der abannews-Session).
+**GEMESSEN:** Metricool Pinterest-Konto: Impressionen 12.–15.09. 5'406–8'205/Tag (Pin-Klicks bis 187, ausgehende bis 15),
+16.09. 1'359, 17.–21.09. 378–531, seit 22.09. 44–73/Tag. Shopify-Sitzungen mit Referrer pinterest: 13.09. 15, 23.–29.09. 0.
+Alle Pins seit 22.09. 0–8 Impressionen. Katalog im Shop unverändert (Pinterest-Kanal 49'093 aktive).
+**Ursache (ein Teil):** `server/luxe-agent-schlank.sh` klont seit 23.09. sparse (`server auftraege automation/browser`);
+`pinterest_pin_erstellen.mjs` las `dropship/_pinterest_pins_queue.tsv` → auf dem Server nicht vorhanden → «Warteschlange 0,
+quittiert 6, offen 0», 6 leere Quittungen pro Tag, niemand merkte es (Quittung = Erfolg ohne Pin).
+**Fix:** Warteschlange nach `auftraege/pinterest_pins_queue.tsv` (git mv, 3 Skripte); Pin-Skript wirft, wenn sie fehlt.
+Bauer: VORRANG `kunden-liebling`/`nachfrage-liebling` (12, u. a. Sirène/Aurora/Provence), `sub-kleider` neu, `sommer` raus,
+UTM `utm_source=pinterest&utm_campaign=pins-<board>`, Metricool-Ledger ausgeschlossen (0 Überschneidung), THROTTLED-
+Wiederholung (erster Lauf verlor 13/25 Kollektionen still → 10 statt 114).
+**Offen:** Der Reichweiten-Einbruch begann VOR dem sparse-Klon (16.09.) → Messaufträge `pinterest-analytics-2026-10-01`
++ `pinterest-katalog-diagnose-2026-10-01` an den Server.
+**Lehre:** Wer einen Klon verschlankt, muss jeden Leser prüfen, der Dateien ausserhalb des neuen Umfangs liest. Eine Quittung
+«nichts offen» ist kein Erfolg, wenn die Liste leer ist, weil die Datei fehlt → fehlende Eingabe = Fehler, nicht 0.
+
 ## 2026-09-30 · 👀 «dann alle sollen helfen»: Jury mit zwei Modellen (21:00 UTC)
 Betreiber auf «ist Gemini Vision gut?». Grenzfälle entschied bisher 3× Gemini (dieselben Augen, streut ±3). Jetzt: Gemini +
 ChatGPT-Vision (`gpt-5.5`, data-URI-Bilder, JSON) + Gemini, Mehrheit; `runden` zeigt je Urteil das Modell; ChatGPT-Ausfall →
