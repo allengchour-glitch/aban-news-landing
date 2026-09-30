@@ -40,6 +40,8 @@ MARKE_TIKTOK=/tmp/_autopilot_letztes_tiktok
 MARKE_KARUSSELL=/tmp/_autopilot_letztes_karussell
 MARKE_BILD=/tmp/_autopilot_letztes_bild
 MARKE_REEL=/tmp/_autopilot_letztes_reel
+STORY_ABSTAND=${STORY_ABSTAND:-28800}    # 30.09.2026 Betreiber «reels stories etc auch machen»: letzte Story war am 11.06. → 1 Story je 8 h (IG+FB)
+MARKE_STORY=/tmp/_autopilot_letzte_story
 
 exec 9>/tmp/social_autopilot.lock
 # ⚠️ `9>&-` ist KEIN Beiwerk (29.08.2026). `exec 9>lock` wird an JEDES Kind vererbt —
@@ -134,6 +136,20 @@ while true; do
       if [ $rc -eq 0 ]; then touch "$MARKE_BILD"
       elif [ $rc -eq 3 ]; then echo "$(date -u +%H:%M) Bildpost übersprungen (Jury/Sperren, Marke bleibt alt, nächster Lauf versucht erneut)"
       else echo "$(date -u +%H:%M) Bildpost fehlgeschlagen (Marke bleibt alt, nächster Lauf versucht erneut)"; fi
+    fi
+
+    # STORY (30.09.2026): Karte 1080×1920 aus einem nie geposteten Produkt (story_bauen.py: Jury Pflicht, Produkt-Ledger,
+    # git_sichern), dann story-autopost-meta.mjs (IG-Story + FB-Foto-Story, post_guard-Ledger). Stories haben per API
+    # weder Link noch Caption — Marke, Preis und luxestyle.ch stehen im Bild.
+    if faellig "$MARKE_STORY" "$STORY_ABSTAND"; then
+      echo "$(date -u +%H:%M) Story fällig"
+      SREADY=$(python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/story_queue.csv',encoding='utf-8')) if r.get('status')=='ready'))" 2>/dev/null || echo 0)
+      [ "$SREADY" -lt 1 ] && { SCHARF=1 N=1 timeout 900 python3 automation/story_bauen.py | grep -E '✅|⛔|FERTIG|Kandidaten' || true; }
+      SREADY=$(python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/story_queue.csv',encoding='utf-8')) if r.get('status')=='ready'))" 2>/dev/null || echo 0)
+      if [ "$SREADY" -lt 1 ]; then
+        echo "$(date -u +%H:%M) ⚠️ Story: keine gebaut (Kandidaten/Jury) — Marke bleibt alt, nächster Lauf versucht erneut"
+      elif MAX_PER_RUN=1 $NODE automation/story-autopost-meta.mjs; then touch "$MARKE_STORY"
+      else echo "$(date -u +%H:%M) Story fehlgeschlagen (Marke bleibt alt, nächster Lauf versucht erneut)"; fi
     fi
 
     if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
