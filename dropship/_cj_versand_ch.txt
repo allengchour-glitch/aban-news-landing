@@ -1416,3 +1416,8 @@ gid://shopify/Product/15490893218177	ok	Titanium Antihaft-Bratpfanne für Zuhaus
 gid://shopify/Product/15493870649729	ok	Retro Leder Rucksack für Freizeit & Reisen
 gid://shopify/Product/15502533296513	ok	Einstellbares DC-Netzteil für Reparaturen
 gid://shopify/Product/15506038817153	ok	First Layer Leder Computer Bag
+gid://shopify/Product/15508420493697	ok	Reise-Rucksack aus Rindsleder
+gid://shopify/Product/15511795761537	ok	Motorrad-Seitenkoffer aus PU-Leder
+gid://shopify/Product/15512269422977	ok	Multifunktionales Antihaft-Backblech
+gid://shopify/Product/15520407978369	ok	Multifunktionaler Mixer, Entsafter & Grinder
+gid://shopify/Product/15522128068993	ok	Jieshi 3-in-1 Saug- und Wischroboter
