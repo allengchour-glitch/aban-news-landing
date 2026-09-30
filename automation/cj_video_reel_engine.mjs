@@ -20,7 +20,7 @@
  *     social/_musik_verlauf.txt, Spalten 6/7 = «stimme:ja|nein» + Stimme/Grund. Messung: automation/music/STIMME.md.
  */
 import fs from 'node:fs';
-import { execFileSync, execSync } from 'node:child_process';
+import { execFileSync, execSync, spawnSync } from 'node:child_process';
 import { nachlauf } from './eimer_etikette.mjs';
 import { takt as cjTakt } from './cj_takt.mjs';
 import { catKey, tagsFor, balanceByCategory } from './lib/reel-category.mjs';
@@ -34,6 +34,20 @@ const FRAGEN = parseInt(process.env.FRAGEN || '200', 10);  // CJ-Anfragen je Lau
 const CSV = 'automation/reels_seed.csv';
 const LEDGER = 'dropship/_cj_reel_gebaut.txt';            // pid → nur nach Erfolg
 const KEINVIDEO = 'dropship/_cj_reel_kein_video.txt';      // pid → CJ hat kein Video (nicht nochmal fragen)
+// 30.09.2026: der Motor prüfte nie gegen das Meisterwerk-Tor (meisterwerk_tor.py) — der Poster verwarf danach 14/14 Reels
+// des Tages (HOOK < 3,0). Jetzt: Einstieg = bewegteste Sekunde der Quelle (reel/hook_start.py), fertiges Reel durchs Tor,
+// Durchgefallene kommen nicht in die Queue, sondern hierher (pid\tdatum\tgründe) und werden nicht erneut gefragt.
+const TOR_ABGELEHNT = 'dropship/_reel_tor_abgelehnt.txt';
+function hookStart(src, fallback) {
+  try { const r = JSON.parse(execFileSync('python3', ['automation/reel/hook_start.py', src], { encoding: 'utf8', timeout: 180000 }).trim().split('\n').pop());
+    if (typeof r.start === 'number') return r; } catch {}
+  return { start: fallback };
+}
+function torPruefen(datei, preis) {
+  const t = spawnSync('python3', ['automation/meisterwerk_tor.py', datei], { encoding: 'utf8', timeout: 240000, env: { ...process.env, PREIS_SOLL: preis.toFixed(2) } });
+  let g = []; try { g = JSON.parse((t.stdout || '').trim().split('\n').pop()).gruende || []; } catch { g = [`nicht messbar: ${(t.stderr || '').slice(-120)}`]; }
+  return { rc: t.status, gruende: g };
+}
 const MEDIEN = 'social/reels';
 const BRANCH = 'claude/luxestyle-status-tztnn1';
 const RAW = `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/${BRANCH}/${MEDIEN}/`;
@@ -318,10 +332,12 @@ if (process.env.NEU_RENDERN === '1') {
         let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
         const mw = musikWahl(thema(k.title), pid), musik = mw.datei;
         st = stimmeBauen(pid, th, hook, k, '');
-        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
+        const hs = hookStart(src, Math.min(2, dur / 4 || 0));
+        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(hs.start), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
         // OHNE_PUSH = Sichtpruefung: nichts veroeffentlicht → auch kein Verlaufseintrag (sonst zaehlt die Lernschleife Test-Renders)
         if (process.env.OHNE_PUSH !== '1') musikMerken(`cjreel-${pid}`, mw, thema(k.title), st);
         if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log(`   ${pid}: Render fehlgeschlagen`); continue; }
+        { const tor = torPruefen(out, k.price); if (tor.rc !== 0) { console.log(`   ${pid}: ⛔ Meisterwerk-Tor ${tor.gruende.join(' · ')} — alte Fassung bleibt`); continue; } }
         if (process.env.OHNE_PUSH === '1') { console.log(`   ✅ ${pid} gerendert → ${out} (kein Push)`); neu++; continue; }
         fs.copyFileSync(out, `${MEDIEN}/reel_${pid}.mp4`); dateien.push(`${MEDIEN}/reel_${pid}.mp4`); neu++;
         console.log(`   ✅ ${pid} neu gerendert: ${z1} / ${z2}`);
@@ -336,7 +352,7 @@ if (process.env.NEU_RENDERN === '1') {
 
 // ---------------------------------------------------------------- Kandidaten
 const gebaut = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
-const keinVideo = new Set(fs.existsSync(KEINVIDEO) ? fs.readFileSync(KEINVIDEO, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : []);
+const keinVideo = new Set([KEINVIDEO, TOR_ABGELEHNT].flatMap(f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : []));
 // 29.09.2026: vorher /^cjreel-(\d+)/ — UUID-pids (9BDA360E-…, 56A53647-…) galten nie als «in der Queue» und wurden vom
 // Nachtrag erneut angehängt (5 IDs doppelt, gemessen 29.09.). Jede ID bis zum ersten Komma zählt.
 const inCsv = new Set((fs.readFileSync(CSV, 'utf8').match(/^cjreel-[^,\n]+/gm) || []).map(s => s.replace('cjreel-', '')));
@@ -479,8 +495,16 @@ for (const k of reihe) {
     const mw = musikWahl(th, k.pid), musik = mw.datei;
     console.log(`   Musik: ${musik} ab ${mw.start}s [${th}]`);
     st = stimmeBauen(k.pid, th, hook, k, benefit);
-    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
+    const hs = hookStart(src, Math.min(2, dur / 4 || 0));
+    console.log(`   Einstieg: ${hs.start}s (Hook Quelle ${hs.hook_quelle ?? '?'} · Standard ${hs.start_standard ?? '?'}s = ${hs.hook_standard ?? '?'})`);
+    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(hs.start), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
     if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log('   Render fehlgeschlagen'); continue; }
+    const tor = torPruefen(out, k.price);
+    if (tor.rc !== 0) {
+      console.log(`   ⛔ Meisterwerk-Tor: ${tor.gruende.join(' · ')} → nicht in die Queue`);
+      if (tor.rc === 4) fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\t${tor.gruende.join(' · ')}\n`);
+      continue;
+    }
     const datei = `reel_${k.pid}.mp4`; fs.copyFileSync(out, `${MEDIEN}/${datei}`);
     const url = RAW + datei;
     if (!gitPush([`${MEDIEN}/${datei}`], `Reel ${k.pid} (${th})`)) { console.log('   Push fehlgeschlagen — Reel verworfen, naechster Lauf'); fs.rmSync(`${MEDIEN}/${datei}`, { force: true }); continue; }
@@ -496,5 +520,5 @@ for (const k of reihe) {
   finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); fs.rmSync(`/tmp/reelbuild/vo_${k.pid}.wav`, { force: true }); }
 }
 if (!DRY) sqAuftrag(zumServer);
-if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO], 'Reel-Motor: kein-Video-Ledger');
+if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO, ...(fs.existsSync(TOR_ABGELEHNT) ? [TOR_ABGELEHNT] : [])], 'Reel-Motor: kein-Video- und Tor-Ledger');
 console.log(`FERTIG. neue Reels: ${made} | nachgetragen: ${nachgetragen} | CJ gefragt: ${gefragt} | Kandidaten: ${kand.length}`);
