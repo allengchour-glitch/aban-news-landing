@@ -140,6 +140,14 @@ CTAS: dict[str, tuple[str, str, str]] = {
         "Prompts holen →"),
 }
 
+# Weitere Tools (z. B. per Workflow geschrieben + geprüft) liegen als Daten daneben:
+# [{"slug": ..., "head": ..., "sub": ..., "btn": ...}, ...] — Einträge oben im Code haben Vorrang.
+EXTRA = Path(__file__).with_name("kontext_ctas.json")
+if EXTRA.exists():
+    import json
+    for _row in json.loads(EXTRA.read_text(encoding="utf-8")):
+        CTAS.setdefault(_row["slug"], (_row["head"], _row["sub"], _row["btn"]))
+
 ASIDE_RE = re.compile(r"<aside data-aban-news-cta(?P<attrs>[^>]*)>(?P<body>.*?)</aside>", re.S)
 STRONG_RE = re.compile(r"(<strong[^>]*>)(.*?)(</strong>)", re.S)
 P_RE = re.compile(r"(<p[^>]*>)(.*?)(</p>)", re.S)
