@@ -16150,3 +16150,4 @@ gid://shopify/Product/15431536181633	8->2	Baseball-Cap «Paris» · Schwarz, Sti
 gid://shopify/Product/15431537033601	56->1	Edelstahl-Halskette «Goutte» · Tropfen-Anhänger, Silber
 gid://shopify/Product/15431606731137	30->1	Ohrstecker «Minou» · Kätzchen, 925 Silber
 gid://shopify/Product/15431608140161	160->0	Oversize-Sonnenbrille «Riviera» · getönt, UV400
+gid://shopify/Product/15448596087169	16->1	Gestreifter Casual Anzug mit V-Ausschnitt
