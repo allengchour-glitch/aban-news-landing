@@ -74,7 +74,8 @@ def bildpreise(pfad, dauer):
         try:
             subprocess.run([FF, "-y", "-loglevel", "error", "-ss", f"{t:.2f}", "-i", pfad, "-frames:v", "1", f], timeout=120)
             if os.path.getsize(f) > 1000:
-                txt = subprocess.run(["tesseract", f, "-", "--psm", "11"], capture_output=True, text=True, timeout=120).stdout
+                txt = subprocess.run(["tesseract", f, "-", "--psm", "11"], capture_output=True, text=True, timeout=240,
+                                     env={**os.environ, "OMP_THREAD_LIMIT": "1"}).stdout   # 30.09.: 1 Thread (Last-Stau)
                 funde |= {f"{float(x.replace(',', '.')):.2f}" for x in re.findall(r"(?<![\d.,])(\d{1,4}[.,]\d{2})(?![\d])", txt)
                           if float(x.replace(',', '.')) >= 5}
         finally:

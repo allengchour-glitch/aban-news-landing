@@ -178,6 +178,7 @@ while true; do
   # Der Herzschlag bedeutet «ich mache Fortschritt», nicht «ich bin fertig». Er gehoert
   # deshalb an den ANFANG der Runde und wird am Ende erneut geschrieben.
   date +%s > /tmp/_fixer_herzschlag
+  bash "$REPO/automation/ocr_waisen.sh" 2>/dev/null   # 30.09.2026: verwaiste tesseract (Last-Stau) — jede Runde
   # ZWEITE WACHE, unabhängig von flock. Am 13.08. liefen zweimal zwei Supervisoren, obwohl
   # beide dieselbe Sperrdatei offen hatten UND die Sperre nachweislich gehalten wurde — die
   # flock-Semantik über exec/setsid/geerbte Deskriptoren hinweg ist hier offenbar nicht

@@ -29,6 +29,11 @@ DIESES SKRIPT ÄNDERT NICHTS. Es liefert `hat_werbetext(pfad_oder_bytes)` für d
 misst auf Wunsch eine Stichprobe, damit die Schwelle belegt ist statt geraten.
 """
 import io, os, re, subprocess, sys
+# 30.09.2026: Tesseract mit OpenMP nahm unter Last alle 4 Kerne je Aufruf (Load 50, 11 verwaiste Prozesse bis 826 s) —
+# ein Thread je Aufruf; OCR_TIMEOUT beendet den Aufruf selbst (pytesseract killt sein Kind), statt dass ein äusseres
+# `timeout` nur Python beendet und tesseract als Waise weiterläuft. Zeitüberschreitung = RuntimeError (kein stilles «sauber»).
+os.environ.setdefault("OMP_THREAD_LIMIT", "1")
+OCR_TIMEOUT = int(os.environ.get("OCR_TIMEOUT", "90"))
 
 # ⚠️ 15.09.2026: Hier stand ein nacktes `import pytesseract`. In DIESEM Container gibt es
 # weder das Modul noch das Programm `tesseract` selbst, und pip erreicht files.pythonhosted.org
@@ -66,7 +71,7 @@ ZWEILESARTEN = os.environ.get("ZWEILESARTEN") == "1"
 
 
 def _lese(g):
-    d = pytesseract.image_to_data(g, output_type=pytesseract.Output.DICT)
+    d = pytesseract.image_to_data(g, output_type=pytesseract.Output.DICT, timeout=OCR_TIMEOUT)
     raus = []
     for wort, konf in zip(d["text"], d["conf"]):
         try:
@@ -93,7 +98,7 @@ def _kacheln(g):
         k = g.crop((int(x0 * w), int(y0 * h), int((x0 + 0.55) * w), int((y0 + 0.55) * h)))
         s = max(1.0, 1400 / max(k.size))
         k = k.resize((int(k.width * s), int(k.height * s)), Image.LANCZOS)
-        d = pytesseract.image_to_data(k, config="--psm 6", output_type=pytesseract.Output.DICT)
+        d = pytesseract.image_to_data(k, config="--psm 6", output_type=pytesseract.Output.DICT, timeout=OCR_TIMEOUT)
         for wort, konf in zip(d["text"], d["conf"]):
             try:
                 kf = float(konf)
