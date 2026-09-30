@@ -1423,3 +1423,33 @@ gid://shopify/Product/15520407978369	ok	Multifunktionaler Mixer, Entsafter & Gri
 gid://shopify/Product/15522128068993	ok	Jieshi 3-in-1 Saug- und Wischroboter
 gid://shopify/Product/15453897294209	nicht-versendbar	Kleiner Reisekoffer
 gid://shopify/Product/15459281830273	ok	Goldplattierte Rechteckige Casserole mit Deckel
+gid://shopify/Product/15478744580481	ok	Heizbare Kuscheldecke mit Ärmeln und Kapuze
+gid://shopify/Product/15493277024641	ok	Tragbare elektrische Kaffeemaschine
+gid://shopify/Product/15493847613825	ok	Lederrucksack mit Doppelreissverschluss
+gid://shopify/Product/15493857476993	ok	Elektrischer Mückenstecker mit Saugfunktion
+gid://shopify/Product/15495120388481	ok	Induktionskochfeld 3500W – Energiesparend
+gid://shopify/Product/15496184103297	ok	Kupfer Teekessel 1.7L
+gid://shopify/Product/15500911313281	ok	Luftbefeuchter für Grossraum
+gid://shopify/Product/15502030602625	nicht-versendbar	Reisegepäck-Trolley
+gid://shopify/Product/15503956115841	nicht-versendbar	Yan Fengyun Oriental Make-up Set, 22-teilig
+gid://shopify/Product/15506301518209	ok	Elektrischer Babybrei-Zubereiter
+gid://shopify/Product/15508414759297	ok	Smartwatch mit Herzfrequenz & Multisport-Tracking
+gid://shopify/Product/15509520515457	ok	Auszugskorb faltbar für Küchenschränke
+gid://shopify/Product/15521218625921	ok	Sommer Freizeitschuhe mit Absatzerhöhung
+gid://shopify/Product/15522194129281	ok	Smartwatch mit Sprachfunktion
+gid://shopify/Product/15523760112001	ok	Grosser 80L Trekking-Rucksack
+gid://shopify/Product/15524892508545	ok	Intelligenter Futterautomat
+gid://shopify/Product/15449168216449	ok	Retro Präge-Design Handtasche für Herren
+gid://shopify/Product/15449178046849	nicht-versendbar	Gianna Ganzkörperspiegel mit Aluminiumrahmen
+gid://shopify/Product/15452684386689	nicht-versendbar	Auto-Kühlmatte mit Lüftung
+gid://shopify/Product/15453793321345	nicht-versendbar	Bauch-Fitnessgerät
+gid://shopify/Product/15454193680769	ok	Intelligenter Futternapf
+gid://shopify/Product/15455160762753	ok	American-Style Glas-Tablett, 40 x 27.5 cm
+gid://shopify/Product/15493795971457	ok	Freistehendes dreieckiges Badregal
+gid://shopify/Product/15494255509889	ok	Leder Business Rucksack
+gid://shopify/Product/15494496321921	ok	Lederrucksack Vintage Herren Rindsleder
+gid://shopify/Product/15494643089793	ok	Kratzbaum mit Kuschelhöhle
+gid://shopify/Product/15499864998273	ok	Wintersofa-Bezug
+gid://shopify/Product/15500933693825	ok	Sonnensystem-Modellbausteine
+gid://shopify/Product/15500971901313	ok	Multifunktionales Fitness Board, faltbar
+gid://shopify/Product/15503087141249	nicht-versendbar	Japanische Deckenventilator-Lampe mit Reinigungsfunktion
