@@ -80,6 +80,39 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-30, dritte Runde (🔌 DER USER HAT KONNEKTOREN VERBUNDEN — zwei offene Punkte damit geschlossen):**
+- **Auftrag:** „mcp verbunden und co wo du geschriben hast."
+- **✅ GEMESSEN über `ListConnectors`, das Konto hat jetzt SIEBEN Konnektoren statt vier:**
+  **Firecrawl** (verbunden, in dieser Sitzung aktiv) · **Graph of Thought** (verbunden, aktiv) ·
+  Shopify · Google Drive · **Context7 (`connect_incomplete`)** · Google Calendar (nicht verbunden) ·
+  **TikTok Ads (`connect_incomplete`)**.
+- **❌ FIRECRAWL LÖST DIE INSTAGRAM-SACKGASSE NICHT — jetzt GEMESSEN statt vermutet.**
+  `firecrawl_scrape` auf `instagram.com/luxestyle.ch` antwortet **„we do not support this site"**.
+  Die Vermutung vom 27.09. stimmt also, **aber aus einem anderen Grund als angenommen**: erwartet
+  war die leere JS-Hülle vom 20.09., tatsächlich ist es eine **Absage des Anbieters selbst** —
+  Instagram wird gar nicht erst abgerufen. **Gegenprobe, ohne die der Befund wertlos wäre:**
+  dieselbe Funktion holt `luxestyle.ch/products/agility-trainingsset-fur-hunde` mit **85 915
+  Zeichen** — der Konnektor läuft, es liegt an Instagram. **Damit bleibt der PC-Weg über das
+  eingeloggte Brave (`automation/local/ig-reel-lesen.mjs`) der einzige Weg**, und kein weiterer
+  Auslesedienst muss mehr probiert werden.
+- **✅ EIN BEWUSST OFFEN GELASSENER WIDERSPRUCH IST GESCHLOSSEN: das Shopify-Partnerprogramm kostet
+  nichts.** Der Block von heute Morgen hielt fest, eine Quelle nenne **99 USD einmalig**, eine
+  andere „kostenlos", und verbot ausdrücklich, hier eine Zahl zu behaupten. **GEMESSEN an der
+  Anbieterseite selbst** (`shopify.com/de/partners`, HTTP 200): **es wird keine Gebühr genannt.**
+  Die 99-USD-Zahl steht nicht beim Anbieter. ⚠️ Ehrliche Grenze: „nennt keine Gebühr" ist nicht
+  „für immer gratis" — aber es ist genau das, was das Gedächtnis verlangt hat.
+- **⚖️ EHRLICH ZUM NUTZEN, damit niemand Firecrawl für mehr hält als es ist:** für den Shop-Check
+  bringt es **nichts** — `/products.json` liefert dieselben Daten strukturiert und ohne Konnektor.
+  Sein Wert liegt in der **Recherche** (Suche mit Fundstellen, gezielte Frage an eine Seite statt
+  ganzem Abzug — der Partnerprogramm-Befund kam genau so) und bei Seiten, die blosses `curl`
+  abweist. **Graph of Thought ist verbunden, aber diese Runde hat KEINEN gemessenen Nutzen dafür
+  gefunden** — es als „jetzt besser" zu verbuchen wäre eine Behauptung ohne Messung.
+- **🟡 NUR DER USER, zwei halbfertige Verbindungen:** **Context7** und **TikTok Ads** stehen beide
+  auf `connect_incomplete` — angefangen, nicht fertig. **TikTok Ads wiegt schwerer**: das
+  Gedächtnis führt „TikTok-Pixel + Conversion-Kampagne" seit dem 13.06. als einen der drei
+  User-Klicks, und der Konnektor steht seit dem 27.09. unverändert halbfertig da.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-30, zweite Runde (⏰ DER AUTOPILOT WAR NIE UNMÖGLICH — und CHF 206.50 liegen abholbereit):**
 - **Auftrag:** „lerne für geldverdienen automatisch irgendwie du musst arbeiten" und danach
   „neuste prompt und updates im netz suchen auch app oder mcp egal was gratis und für maximum
