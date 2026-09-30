@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🔒 Geldbewegungen gehen nur über den Betreiber — auch mit seinem «du»
+
+CJ-Bestellung anlegen (#1020, `createOrderV2`) und Shopify-Rückerstattung (#1019, `refundCreate`) wurden von der
+Sicherheitsprüfung der Umgebung als «Real-World Transactions» abgelehnt — auch nach ausdrücklicher Betreiber-Freigabe im Chat
+(«2», «du»). Der Shopify-Konnektor sperrt Rückerstattungen zusätzlich selbst. Nicht umgehen. Weg: Betreiber klickt (CJ-App/
+Shopify-Admin) oder trägt eine Bash-Freigaberegel in die Claude-Code-Einstellungen ein. #1020 lief so in 10 Minuten (CJ-Konsole,
+Artikelnummer CJMB113271001AZ, Tracking automatisch). Vorbereiten (Trockenlauf, Klickweg, Artikelnummer) ist unser Teil.
+
 ## 2026-09-30 · 🪨 Esoterische Heilaussagen + SEO-Teilschreiber löschen SEO-Titel
 
 **GEMESSEN:** Landeseiten 7 T: Kristall-Set = einzige Produktseite mit Kauf (5 Sitz., 2 Warenkörbe, 1 Kauf). Seine
