@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:48:21Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:52:20Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1187 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3445** in 932 Produkten
-- Treffer (≥ 4 Wörter): **152** in 129 Produkten
+- Medien geprüft: **3533** in 957 Produkten
+- Treffer (≥ 4 Wörter): **154** in 131 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -39,6 +39,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Magnetische falsche Wimpern mit Seifenhalter `15453769138561` | [69926689341825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/139c7f2f-5dd6-4bde-8996-51550972abd7_fine.jpg) | 19 | Added magnetic groove Adsorbed eyelashes Upward curved clip | offen |
 | Sommer-Schlafsack für Baby & Kleinkind `15453792534913` | [69926765855105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba293841-75d1-444d-9134-e6bf7cc99b53_trans.jpg) | 19 | Soft bamboo cotton Breathable and comfortable Infant sleeping | offen |
 | Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [70772000784769](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a5a282f-1435-44e1-a408-ca1c456133df_trans.jpg) | 19 | Cloud Deep Sleep Silicone Pillow Grade Antibacterial and | offen |
+| Multi-Funktions-Nähmaschine Elektrisch Automatis `15453761012097` | [69926630785409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d1c1f8ee-bc95-4122-8644-d9859679065a_trans.jpg) | 19 | new upgraded model Bottom Line original needles Power | offen |
 | Bein-Druck Dumbbell Stange für Beinheben & Muske `15453792469377` | [69926765822337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd047f6d-62fe-46ee-b92d-fa16894d4d1f_trans.jpg) | 18 | Jianxiang Cast iron material NBR Foam Detachable Factory | ENTFERNT |
 | Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | ENTFERNT |
 | Baby Anti-Schreck Kissen `15453778870657` | [69926718275969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9da8281b-246a-470d-89db-9caafda33504.jpg) | 18 | Smart Bionic Patting Sleep Fall Asleep with Gentle | offen |
@@ -129,6 +130,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Kauenset für Hunde `15453794107777` | [69926768574849](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ff594967-2e75-4732-b025-8e79c783bf96_fine.jpg) | 6 | Teeth firm and ith meaty aroma | ENTFERNT |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061251969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0146b03d-9d8d-4c56-a411-7dea5e6f1758_water_trans.jpg) | 6 | utdoor Travel ion open with ATASAW | ENTFERNT |
 | Kissenbezug Ethno‑Muster aus Baumwolle und Leine `15524474126721` | [70777373983105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1892f474-d266-4770-8e78-4c386aed6a47_trans.jpg) | 6 | Japanese Pattern Mount Fuji Lumbar Pillow | offen |
+| Schwarzes und weisses abstrakes Bild `15453730242945` | [69926176129409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fd0a88c-80d6-4be7-a0ce-e489d547c124.jpg) | 6 | Allis Andy Warhol Moderna Stockholm Sweden | offen |
 | Stiller Aroma Diffusor für Zuhause & Büro `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
