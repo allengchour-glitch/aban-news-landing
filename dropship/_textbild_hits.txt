@@ -16177,3 +16177,6 @@ gid://shopify/Product/15453776052609	12->0	Fitness-Tasche für unterwegs
 gid://shopify/Product/15453776150913	30->0	Grosses Reisegepäck für Outdoor-Aktivitäten · 54×29×26cm
 gid://shopify/Product/15453776314753	83->1	Nylon-Schnellwechselarmband geflochten
 gid://shopify/Product/15453776413057	10->0	Kinder-Schlafkissen mit Schlaf-Puppe
+gid://shopify/Product/15453776609665	9->0	Schönheits- & Nacken-Pflege Memory Kopfkissen · 61×41×10cm
+gid://shopify/Product/15453776642433	25->0	Elastisches Stoff-Armband für Herrenuhr
+gid://shopify/Product/15453776675201	61->0	Minimaler Leder-Geldbeutel
