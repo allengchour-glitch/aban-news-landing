@@ -5030,3 +5030,28 @@ gid://shopify/Product/15452678717825	zugeordnet	3	Erhöhtes Futtergeschirr
 gid://shopify/Product/15452678783361	zugeordnet	2	Keramikfutternapf
 gid://shopify/Product/15452678816129	zugeordnet	2	Hunde-Schnüffelspiel · Futter-Brett
 gid://shopify/Product/15452678914433	zugeordnet	2	Langsames Futterteller
+gid://shopify/Product/15452679602561	zugeordnet	4	Fischerschirm
+gid://shopify/Product/15452679635329	zugeordnet	2	Faltbare Outdoor-Stühle
+gid://shopify/Product/15452679700865	bild-urls-tot
+gid://shopify/Product/15452679963009	zugeordnet	3	Wetterfestes Zelt
+gid://shopify/Product/15452680028545	zugeordnet	1	Holzverbrennungs-Ofen-Zelt
+gid://shopify/Product/15452680061313	zugeordnet	18	Faltzelt für 3-4 Personen
+gid://shopify/Product/15452680094081	bild-urls-tot
+gid://shopify/Product/15452680126849	zugeordnet	7	Einpersonen-Schlafpad
+gid://shopify/Product/15452681535873	zugeordnet	2	Digitaler Hörer im Ohr mit 32 Kanälen und Bluetooth
+gid://shopify/Product/15452681601409	bild-urls-tot
+gid://shopify/Product/15452681929089	bild-urls-tot
+gid://shopify/Product/15452681994625	zugeordnet	5	Acacia-Snackplatte Handpoliert
+gid://shopify/Product/15452682092929	zugeordnet	2	Mini LED-Fotolicht mit Lithium-Akku
+gid://shopify/Product/15452682387841	zugeordnet	2	Faltbare Silikon-Handroll-Trommel
+gid://shopify/Product/15452682486145	zugeordnet	2	3D-VR-Brille für Smartphone 4.7-6 Zoll
+gid://shopify/Product/15452682518913	zugeordnet	3	Romantischer Sternenhimmel-Projektor
+gid://shopify/Product/15452682584449	zugeordnet	6	RG106PRO Drohne mit Hindernisvermeidung und 3-Achsen-PTZ-Kop
+gid://shopify/Product/15452682617217	zugeordnet	6	Mini-Drohne mit 4K & Fernbedienung
+gid://shopify/Product/15452682649985	bild-urls-tot
+gid://shopify/Product/15452682682753	zugeordnet	4	HD-Quadrocopter mit Fernbedienung
+gid://shopify/Product/15452682715521	zugeordnet	6	Ferngesteuertes Fluggerät mit HD-Bildschirm
+gid://shopify/Product/15452682813825	zugeordnet	3	SG901PRO Quadcopter für Luftaufnahmen
+gid://shopify/Product/15452682846593	bild-urls-tot
+gid://shopify/Product/15452682944897	zugeordnet	6	M22-Fernbedienung mit 45-Zoll-Bildschirm und bürstenlosem UA
+gid://shopify/Product/15452683010433	zugeordnet	3	Mini-Drone mit Gestensensorik
