@@ -183,3 +183,4 @@
 2026-09-30T21:40:18.972Z	luxe-orchestra.wav	11.25	allgemein	cjreel-1451726046176088064	stimme:ja	azure:de-CH-JanNeural
 2026-09-30T21:41:41.710Z	luxe-epic-anime.wav	10.5	allgemein	cjreel-2733EBE9-EE7B-4C14-B66F-4FD785227004	stimme:nein	anteil
 2026-09-30T22:09:23.742Z	luxe-orchestra.wav	18	allgemein	cjreel-76D4683B-D441-4391-AA50-E0FF87EBA1B2	stimme:nein	anteil
+2026-09-30T22:10:41.849Z	luxe-adventure-uplift.wav	38	allgemein	cjreel-35AE52BA-A0A5-4823-B7F5-67A9DA61B50B	stimme:nein	anteil
