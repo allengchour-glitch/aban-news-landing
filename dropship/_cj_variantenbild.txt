@@ -5058,3 +5058,24 @@ gid://shopify/Product/15452683010433	zugeordnet	3	Mini-Drone mit Gestensensorik
 gid://shopify/Product/15452683043201	bild-urls-tot
 gid://shopify/Product/15452683075969	zugeordnet	4	GT3 Mini-Drone mit Doppelfunktion und Hindernisvermeidung
 gid://shopify/Product/15452683370881	zugeordnet	16	Universeller Halb-Autorestsitz 5-Sitzer
+gid://shopify/Product/15452683403649	zugeordnet	8	Winter-Sitzauflage mit weicher Polsterung
+gid://shopify/Product/15452683534721	zugeordnet	3	PU-Sitzauflage SUV-Viereckstühle
+gid://shopify/Product/15452683567489	zugeordnet	8	3-teiliges Auto-Kissen Set Winter-Plüsch
+gid://shopify/Product/15452683665793	zugeordnet	2	Auto-Hundematte mit erweiterter Stütze für Rücksitz
+gid://shopify/Product/15452683698561	zugeordnet	19	Sommer-Minimales EisSilk Autositze-Polster
+gid://shopify/Product/15452685205889	zugeordnet	60	Katzenfestes Einheitssofaüberwurf
+gid://shopify/Product/15452685238657	zugeordnet	60	Nordisch-Stil Anti-Rutsch Staubdichter Sofa-Bezug
+gid://shopify/Product/15452685271425	zugeordnet	14	3D-Bubble-Chiffon-Esstuhl-Bezug
+gid://shopify/Product/15452685566337	zugeordnet	48	Chenille-Bolsterkissen extra lang, verschiedene Grössen
+gid://shopify/Product/15452685697409	zugeordnet	6	Druckfreier Memoryschaum-Kissen
+gid://shopify/Product/15452685828481	zugeordnet	16	Sommerdecke mit Kühlung
+gid://shopify/Product/15452685894017	zugeordnet	3	Halskissen für bequemen Halt
+gid://shopify/Product/15452685926785	zugeordnet	3	Sommer-Duvet mit Tencel und Stickerei
+gid://shopify/Product/15452688613761	zugeordnet	12	Schlitz Maxi-Rock Abendkleid
+gid://shopify/Product/15452688646529	zugeordnet	35	Sommer-Strap-Dress mit Falten in Rot, Schwarz & Weiss
+gid://shopify/Product/15452688679297	zugeordnet	14	Rundhals-Glitzer-Partykleid
+gid://shopify/Product/15452688712065	zugeordnet	21	Elegant Langarm-Shirt-Kleid für Büro & Alltag
+gid://shopify/Product/15452688777601	zugeordnet	36	V-Ausschnitt 3/4-Arm Minikleid
+gid://shopify/Product/15452688810369	zugeordnet	10	Damenleichtes Trägerkleid mit Rüschendetails
+gid://shopify/Product/15452689072513	zugeordnet	20	3/4-Arm Elegant Business-Office-Kleid
+gid://shopify/Product/15452689138049	zugeordnet	25	Enganliegendes Turtleneck-Kleid mit Falten
