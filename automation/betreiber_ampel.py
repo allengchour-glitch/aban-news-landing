@@ -618,10 +618,16 @@ def grow_zaehler():
     try:
         cfg = dict(l.rstrip("\n").split("\t", 1) for l in open(os.path.join(REPO, "dropship", "_grow_bedingung.txt"), encoding="utf-8") if "\t" in l)
         start, ziel, eigen = cfg["start"], int(cfg.get("ziel", "3")), cfg.get("eigene_kunden_id", "")
-        d = gql('query($q:String!){ orders(first:50, query:$q){ nodes{ name displayFinancialStatus customer{ id } } } }',
+        # ⚠️ 30.09.2026 (#1019): eine voll erstattete Bestellung blieb «PAID», solange die Rückbuchung PENDING ist, und zählte
+        # als Verkauf (GROW 2/3 statt 1/3). Gezählt wird jetzt: nicht storniert UND erstattete Buchungen < Bestellbetrag.
+        d = gql('query($q:String!){ orders(first:50, query:$q){ nodes{ name displayFinancialStatus cancelledAt customer{ id } '
+                'totalPriceSet{ shopMoney{ amount } } refunds(first:5){ transactions(first:5){ nodes{ kind status amountSet{ shopMoney{ amount } } } } } } } }',
                 {"q": f"created_at:>='{start}'"})
+        from erstattung import zurueck
         n = [o["name"] for o in (((d.get("data") or {}).get("orders") or {}).get("nodes") or [])
-             if o.get("displayFinancialStatus") in ("PAID", "PARTIALLY_PAID") and ((o.get("customer") or {}).get("id") or "") != eigen]
+             if o.get("displayFinancialStatus") in ("PAID", "PARTIALLY_PAID", "PARTIALLY_REFUNDED") and not o.get("cancelledAt")
+             and zurueck(o) < float(o["totalPriceSet"]["shopMoney"]["amount"]) - 0.005
+             and ((o.get("customer") or {}).get("id") or "") != eigen]
     except Exception:
         return "GROW: Zähler unklar (Abfrage fehlgeschlagen)"
     if len(n) >= ziel:

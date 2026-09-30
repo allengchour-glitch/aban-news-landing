@@ -69,9 +69,8 @@ def main():
         # ⚠️ 30.09.2026 (#1019): «irgendeine Rückerstattung» ≠ erstattet — CHF 16.11 von 23.11 (Versand fehlte) stand als
         # «erstattet». Gezählt werden die Rückerstattungs-Buchungen (auch PENDING: Shopify Payments bucht nach), nicht die Existenz.
         summe = float(o["totalPriceSet"]["shopMoney"]["amount"])
-        zurueck = sum(float(t["amountSet"]["shopMoney"]["amount"]) for r in (o.get("refunds") or [])
-                      for t in ((r.get("transactions") or {}).get("nodes") or [])
-                      if t.get("kind") == "REFUND" and t.get("status") in ("SUCCESS", "PENDING"))
+        from erstattung import zurueck as _zurueck
+        zurueck = _zurueck(o)
         erstattet = bool(o.get("refunds")) and zurueck >= summe - 0.005
         teil = bool(o.get("refunds")) and not erstattet
         lx = [k for k in watch if k.startswith((f"LX{nr}", f"#{nr}"))]  # «#1020» = von Hand in der CJ-Konsole (30.09.)
