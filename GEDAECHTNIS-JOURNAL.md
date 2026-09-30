@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🧭 LX-Handkuratierte: Bezugsquellen vorab festhalten (#1020 stand 6 h ohne Quelle)
+
+12 LX-Produkte ohne Lieferant: je 5 CJ-Kandidaten mit CH-Versand, Kontaktbogen unser Bild vs. CJ-Bild → 4 passen
+(Aroma-Diffuser, Regenwolken-Diffuser nach Titel, Sonnenuntergangslampe, Spiegel-Uhr), 6 teilweise, 2 ohne Quelle (Cellulite-Roller,
+Kosmetik-Organizer). Tabelle mit SKU je Produkt: `dropship/LX-BEZUGSQUELLEN-2026-09-30.md`. Nebenbefund: 2 Hauptbilder passen nicht zum
+Titel (Regenwolken-Diffuser zeigt Holz-Ei, Handy-Set zeigt nur Hüllen). Fallen: CJ `productImage` ist JSON-TEXT, keine Liste
+(erster Bogen nur graue Kacheln); ungequotetes Heredoc führt `…`-Backticks als Befehl aus.
+
 ## 2026-09-30 · 💸 #1019 teilerstattet: CHF 16.11 statt der zugesagten 23.11 — Ampel zählte «irgendeine» Rückerstattung
 
 Betreiber erstattete #1019 um 05:34 UTC (Notiz «lager leer», Status PENDING) — nur die Ware, ohne CHF 7.00 Versand. Die Mail vom
