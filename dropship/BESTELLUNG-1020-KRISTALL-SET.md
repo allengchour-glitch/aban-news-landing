@@ -28,3 +28,6 @@ Trockenlauf gegen CJ (Produkt gelistet, Status 3): Variante A vid 13941971247024
 USD 7.71 (7–10 T, 16 Optionen) = USD 20.73 ≈ CHF 17.27 · VK CHF 36.90 · Marge ≈ CHF 19.63 · Adresse vollständig.
 Das automatische Anlegen (createOrderV2) wurde von der Sicherheitsprüfung der Umgebung als echte Transaktion blockiert →
 Betreiber bestellt in der CJ-Konsole (Bestellnummer LX1020) oder gibt die Aktion frei.
+
+## Nachtrag 30.09. 04:35 — CJ-Konsole findet es nicht
+Direktsuche in der CJ-Konsole per Artikelnummer: **CJMB113271001AZ** (Variante Set1, USD 13.02; mit Zertifikat CJMB113271005EV, USD 13.89); Produkt-SKU CJMB1132710. Link: https://cjdropshipping.com/product/-p-1394197123326676992.html
