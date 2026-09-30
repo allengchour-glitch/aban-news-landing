@@ -1,5 +1,10 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 01.10. — ALLE Google-Merchant-Aufgaben in einem Auftrag → `dropship/COWORK-MERCHANT-2026-10-01.md`
+> Ersetzt Punkt 1 des Blocks vom 29.09. (DE entfernen + 6 Produkte) und erweitert ihn: Versand an den Shop angleichen,
+> Lieferzeit eintragen, Rückgabe/Unternehmensangaben prüfen, Diagnosen zählen, Store-Qualität zurückmelden.
+> **Vorab ein Entscheid:** Gratisversand ab 45, 50 oder 65? (Empfehlung 50.)
+
 ## 🆕 29.09. 15:45 UTC — DREI Browser-Klicks für Cowork (am PC, eingeloggter Browser) · diesen Block 1:1 in Cowork einfügen
 
 > Warum nicht aus der Cloud: alle drei brauchen einen eingeloggten Browser (Google-, TikTok-, BigBuy-Konto). Die
