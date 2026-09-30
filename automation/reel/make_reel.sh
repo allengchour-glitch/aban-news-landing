@@ -68,7 +68,9 @@ print(f\"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m[
     -map "[v]" -map 1:a -c:v libx264 -preset medium -crf 24 -pix_fmt yuv420p -c:a aac -b:a 160k -ar 48000 -shortest "$OUT"
   exit 0
 fi
-ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -i "$SRC" -ss "$MUSIK_START" -i "$MUSIC" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "
+# 30.09.2026: dieser Zweig (ohne STIMME/LAUTHEIT_2PASS) las START nie — reel_neu_rendern.py lief hier durch und jedes
+# «neu geschnittene» Reel begann trotzdem bei Quellsekunde 0 (13/13 wieder am Hook-Tor gescheitert). Gleicher Eingangs-Seek wie oben.
+ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -ss "${START:-0}" -i "$SRC" -ss "$MUSIK_START" -i "$MUSIC" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "
 [0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.06[bg];
 [0:v]scale=w='if(gt(ih/iw\,1.3)\,600\,if(gt(ih/iw\,0.7222)\,-2\,1080))':h='if(gt(ih/iw\,1.3)\,-2\,if(gt(ih/iw\,0.7222)\,780\,-2))',crop=w='min(iw\,1080)':h='min(ih\,780)'[fg];
 [bg][fg]overlay=(W-w)/2:390+(780-h)/2[base];
