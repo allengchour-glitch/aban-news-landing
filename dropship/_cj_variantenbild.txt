@@ -4971,3 +4971,11 @@ gid://shopify/Product/15451927445889	zugeordnet	15	Elegantes Mesh-Panel Maxiklei
 gid://shopify/Product/15451927773569	zugeordnet	17	Leinenmisch-Hemd für Herren
 gid://shopify/Product/15451927839105	zugeordnet	30	Herren Corduroy Hemd-Jacke mit Brusttasche
 gid://shopify/Product/15451927871873	zugeordnet	8	Herren Sommer Hemd Kurzarm Gestreift Floral
+gid://shopify/Product/15451927904641	zugeordnet	99	Herren Langarmshirt mit Print
+gid://shopify/Product/15451928002945	zugeordnet	18	Herren Retro Loose-Fit Rundhals-Shirt
+gid://shopify/Product/15451928592769	zugeordnet	24	V-Ausschnitt Pullover aus Baumwoll-Leinen
+gid://shopify/Product/15451928723841	zugeordnet	18	Leinenhemd für Herren – Langarm, Unifarben
+gid://shopify/Product/15451928920449	zugeordnet	12	Atmungsaktives Sportshirt für Herren
+gid://shopify/Product/15451929117057	zugeordnet	24	Casual Retro Hemd für Herren
+gid://shopify/Product/15451929248129	zugeordnet	20	Baumwoll Langarm Hemdjacke
+gid://shopify/Product/15451929543041	zugeordnet	10	Herren Strick-Cardigan mit Lochmuster
