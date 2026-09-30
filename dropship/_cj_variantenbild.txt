@@ -4931,3 +4931,5 @@ gid://shopify/Product/15450857800065	zugeordnet	25	H88 4K Mini-Action-Kamera fü
 gid://shopify/Product/15450857865601	bild-urls-tot
 gid://shopify/Product/15450857898369	zugeordnet	25	Faltbarer Hunde-Poop-Scooper mit Beuteln
 gid://shopify/Product/15450857931137	zugeordnet	5	Mikrostrom Gesichtsmassagegerät mit Doppelroller
+gid://shopify/Product/15450857996673	zugeordnet	2	Arm Trainingsgerät für Fitness
+gid://shopify/Product/15450858094977	zugeordnet	20	Lässiges Männer Freizeithemd mit Print
