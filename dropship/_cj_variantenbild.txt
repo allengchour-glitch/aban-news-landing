@@ -4933,3 +4933,5 @@ gid://shopify/Product/15450857898369	zugeordnet	25	Faltbarer Hunde-Poop-Scooper 
 gid://shopify/Product/15450857931137	zugeordnet	5	Mikrostrom Gesichtsmassagegerät mit Doppelroller
 gid://shopify/Product/15450857996673	zugeordnet	2	Arm Trainingsgerät für Fitness
 gid://shopify/Product/15450858094977	zugeordnet	20	Lässiges Männer Freizeithemd mit Print
+gid://shopify/Product/15450858127745	zugeordnet	9	Elegantes Neckholder-Maxikleid mit Schlitz
+gid://shopify/Product/15450858193281	zugeordnet	2	Quallen-Lava-Lampe mit 17 Farben
