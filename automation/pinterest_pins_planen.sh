@@ -11,13 +11,13 @@ cd "$REPO" || exit 1
 N="${PINS_JE_TAG:-6}"
 TAG=$(date -u +%F)
 [ -f dropship/_SOCIAL_STOPP_PINTEREST ] && { echo "Pinterest-Stopp gesetzt — keine Aufträge"; exit 0; }
-[ -s dropship/_pinterest_pins_queue.tsv ] || { echo "keine Warteschlange"; exit 0; }
+[ -s auftraege/pinterest_pins_queue.tsv ] || { echo "keine Warteschlange"; exit 0; }
 if ls auftraege/offen/pinterest-pin-$TAG-*.json auftraege/erledigt/pinterest-pin-$TAG-*.json >/dev/null 2>&1; then
   echo "heute schon geplant"; exit 0
 fi
 OFFEN=$(python3 - <<'PY'
 import glob,json,csv
-q=[r['handle'] for r in csv.DictReader(open('dropship/_pinterest_pins_queue.tsv'),delimiter='\t')]
+q=[r['handle'] for r in csv.DictReader(open('auftraege/pinterest_pins_queue.tsv'),delimiter='\t')]
 done=set()
 for f in glob.glob('auftraege/erledigt/pinterest-pin-*.json'):
     try: d=json.load(open(f)); e=d.get('ergebnis') or d.get('teilergebnis') or {}
@@ -31,7 +31,7 @@ PY
 mkdir -p auftraege/offen
 for i in $(seq 1 "$N"); do
   cat > "auftraege/offen/pinterest-pin-$TAG-$i.json" <<J
-{"typ":"skript","skript":"pinterest_pin_erstellen.mjs","id":"pinterest-pin-$TAG-$i","warum":"Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus dropship/_pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). $i von $N heute."}
+{"typ":"skript","skript":"pinterest_pin_erstellen.mjs","id":"pinterest-pin-$TAG-$i","warum":"Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). $i von $N heute."}
 J
 done
 # 23.09.2026: git_sichern.sh (Merge, kein Autostash — Autostash verschluckte Quittungen laufender Poster)

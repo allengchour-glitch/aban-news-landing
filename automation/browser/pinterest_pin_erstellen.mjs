@@ -1,5 +1,5 @@
 /**
- * pinterest_pin_erstellen.mjs — veröffentlicht GENAU EINEN Pin je Lauf aus dropship/_pinterest_pins_queue.tsv.
+ * pinterest_pin_erstellen.mjs — veröffentlicht GENAU EINEN Pin je Lauf aus auftraege/pinterest_pins_queue.tsv.
  *
  * ANLASS (22.09.2026, Betreiber «push mehr» Besucher): Pinterest bringt 71 Sitzungen/30 T nur aus Katalog-Pins
  * und steht ausdrücklich NICHT unter dropship/_SOCIAL_STOPP (die Datei nennt Instagram, Facebook).
@@ -29,8 +29,11 @@ const NUTZER = 'luxestyleCH';
 const norm = s => (s || '').toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/[^a-z0-9]/g, '');
 
 function warteschlange(REPO) {
-  const p = path.join(REPO, 'dropship/_pinterest_pins_queue.tsv');
-  if (!fs.existsSync(p)) return [];
+  // 01.10.2026: Der Server-Klon ist seit 23.09. sparse (server, auftraege, automation/browser). Die Warteschlange lag
+  // unter dropship/ → 8 Tage «Warteschlange 0», kein Pin. Sie liegt jetzt in auftraege/. Fehlt sie: laut scheitern.
+  const p = [path.join(REPO, 'auftraege/pinterest_pins_queue.tsv'), path.join(REPO, 'dropship/_pinterest_pins_queue.tsv')]
+    .find(f => fs.existsSync(f));
+  if (!p) throw new Error('Pin-Warteschlange fehlt (auftraege/pinterest_pins_queue.tsv) — sparse-Klon?');
   const [kopf, ...zeilen] = fs.readFileSync(p, 'utf8').split('\n').filter(Boolean);
   const k = kopf.split('\t');
   return zeilen.map(z => Object.fromEntries(z.split('\t').map((v, i) => [k[i], v])));
