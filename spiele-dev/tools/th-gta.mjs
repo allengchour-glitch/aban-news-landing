@@ -30,8 +30,14 @@ mitSonden('traumhaus.html', {
   einsteigen: `function(){einsteigen(window.autoRec);return !!fahren;}`,
   aussteigen: `function(){aussteigen();return !fahren;}`,
   radio: `function(){return {an:radioAn,sender:radioSender,src:radioAud&&radioAud._src,pausiert:radioAud?radioAud.paused:null};}`,
-  banner: `function(){gtaBanner("Verhaftet","Busse -350 $","schlecht");return true;}`,
+  /* Der Faktor wird SOFORT nach dem Ausloesen gelesen (im selben Aufruf) und dazu die Uhrzeit gemerkt —
+     die Zeitlupe laeuft 1,8 s ECHTE Zeit, und zwischen zwei page.evaluate liegen hier 1–2 s (Runde 105). */
+  banner: `function(){window._bnT=performance.now();gtaBanner("Verhaftet","Busse -350 $","schlecht");return window._zeitFaktor;}`,
   zeit: `function(){return window._zeitFaktor;}`,
+  zeitMs: `function(){return [window._zeitFaktor,Math.round(performance.now()-(window._bnT||0))];}`,
+  /* Gegenprobe: eine Info-Einblendung darf KEINE Zeitlupe ausloesen — sonst waere „sofort < 1" nichtssagend. */
+  bannerInfo: `function(){window._zeitFaktor=1;clearTimeout(window._zlT);gtaBanner("Info","Test","info");var f=window._zeitFaktor;
+    document.getElementById("gtaBanner").className="";return f;}`,
   /* Fuers Bild: der Software-Renderer braucht fuer EIN Bildschirmfoto laenger als die
      Einblendung steht (3,2 s) — erster Lauf zeigte darum nur das Spiel ohne Band. */
   bannerHalten: `function(){gtaBanner("Verhaftet","Busse -350 $ · Fahndung 2 Sterne","schlecht");clearTimeout(window._gbT);return true;}`,
@@ -106,17 +112,25 @@ pruefe('Taste R wechselt den Sender', sp1 !== sp2, `${sp1} → ${sp2}`)
 if (BILDER) { await th('ortHalten'); await bild('2-einsteigen') }
 
 /* ── Verhaftet ── */
-await th('banner'); await page.waitForTimeout(400)
+const zfSofort = await th('banner'); await page.waitForTimeout(400)
 const bn = await page.evaluate(() => ({ k: document.getElementById('gtaBanner').className, f: document.querySelector('canvas').style.filter }))
-const zf = await th('zeit')
+const [zf, zfMs] = await th('zeitMs')
+console.log(`   (Zeitlupe: sofort ${zfSofort}, spaeter ${zf} nach ${zfMs} ms)`)
 pruefe('VERHAFTET-Einblendung mit grauem Bild', /an/.test(bn.k) && /grayscale/.test(bn.f), JSON.stringify(bn))
-pruefe('Zeitlupe waehrend der Einblendung', zf < 1, 'Faktor ' + zf)
+/* ⚠️ Bis Runde 104 wurde hier nur „spaeter" gelesen: 400 ms Pause plus zwei Rundreisen zum Browser.
+   GEMESSEN in Runde 105: das sind in diesem Container 4,3 s — die 1,8-s-Zeitlupe ist dann legitim
+   vorbei (Faktor 1), auch auf dem Stand VOR Runde 105 (dort ebenfalls 20/21). Das Spiel war richtig:
+   sofort nach dem Ausloesen steht der Faktor auf 0,3. Darum gilt der Sofort-Wert; ob die Zeitlupe
+   wieder ENDET, prueft die Zeile weiter unten, und die Info-Einblendung ist die Gegenprobe. */
+pruefe('Zeitlupe waehrend der Einblendung', zfSofort < 1, `Faktor sofort ${zfSofort}, nach ${zfMs} ms ${zf}`)
 await page.waitForTimeout(4000)
 const bn2 = await page.evaluate(() => ({ k: document.getElementById('gtaBanner').className, f: document.querySelector('canvas').style.filter }))
 /* Seit Runde 93 stellt gtaBanner den GRUNDFILTER des Spiels wieder her (saturate/contrast) statt ihn zu
    loeschen — vorher war das Bild nach der ersten Einblendung flau. Weg muss nur das Grau sein. */
 pruefe('Einblendung und Grau verschwinden wieder', !/an/.test(bn2.k) && !/grayscale/.test(bn2.f), JSON.stringify(bn2))
 pruefe('Zeitlupe endet', (await th('zeit')) === 1)
+const zfInfo = await th('bannerInfo')
+pruefe('Gegenprobe: Info-Einblendung ohne Zeitlupe', zfInfo === 1, 'Faktor ' + zfInfo)
 
 if (BILDER) { await th('bannerHalten'); await bild('3-verhaftet'); await th('bannerWeg') }
 
