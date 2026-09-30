@@ -16,6 +16,8 @@ pr(A.pruefeText({ ...gut, kopf: 'Miete senken 🏠 jetzt' }, miet).some((f) => f
 pr(A.pruefeText({ ...gut, kopf: 'Lerne Trading ohne Risiko' }, miet).some((f) => f.startsWith('Hype')) && A.pruefeText({ ...gut, titel: 'Passives Einkommen mit dem Rechner aufbauen' }, miet).some((f) => f.startsWith('Hype')), 'Gegenprobe: Versprechen („ohne Risiko“, „passives Einkommen“) werden verworfen');
 pr(A.pruefeText({ ...gut, punkte: ['a', 'b'] }, miet).some((f) => f.startsWith('punkte')), 'Gegenprobe: falsche Punkte-Liste wird verworfen');
 pr(A.pruefeText({ ...gut, titel: 'x'.repeat(101) }, miet).some((f) => f.startsWith('titel')), 'Gegenprobe: Titel > 100 Zeichen (Pinterest-Limit) wird verworfen');
+const trad = POOL.themen.find((x) => x.slug === 'trading');
+pr(A.pruefeText({ ...A.vorlage(trad), kopf: 'Trading-Rechner für dich' }, trad).some((f) => f.startsWith('Ratgeber')), 'Gegenprobe: Ratgeber-Seite darf nicht „Rechner“ heissen');
 // 2. Vorlage besteht für JEDES Thema den eigenen Prüfer
 const vf = POOL.themen.flatMap((t) => [0, 1, 2].map((v) => [t.slug, A.pruefeText(A.vorlage(t, v), t)])).filter(([, f]) => f.length);
 pr(vf.length === 0, `Vorlagen bestehen den Prüfer für alle ${POOL.themen.length} Themen${vf.length ? ' — ' + JSON.stringify(vf[0]) : ''}`);
