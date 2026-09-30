@@ -16164,3 +16164,5 @@ gid://shopify/Product/15453773234561	48->0	Leichte Reisetasche für Herren
 gid://shopify/Product/15453773562241	19->1	Wasserdichte Motorradtasche
 gid://shopify/Product/15453773595009	83->0	Wasserdichte Trekkinghose für Herren
 gid://shopify/Product/15453773660545	12->1	Trainings- & Fitness-Schuhe
+gid://shopify/Product/15453728178561	35->0	Transmitter mit Display
+gid://shopify/Product/15453774381441	46->1	Damen Plateau-Sneaker mit Quaste
