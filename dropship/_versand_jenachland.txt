@@ -12161,3 +12161,6 @@ gid://shopify/Product/15427242459521	ersetzt
 gid://shopify/Product/15427242492289	ersetzt
 gid://shopify/Product/15427242525057	ersetzt
 gid://shopify/Product/15427242557825	ersetzt
+gid://shopify/Product/15427242590593	ersetzt
+gid://shopify/Product/15427242623361	ersetzt
+gid://shopify/Product/15427242656129	ersetzt
