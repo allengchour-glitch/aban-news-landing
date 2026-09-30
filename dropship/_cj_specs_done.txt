@@ -1747,3 +1747,6 @@ siegelring-marmor-gold	gesetzt-1
 retro-flammen-tischlampe-led	gesetzt-2
 isolier-trinkflasche-edelstahl-huelle	gesetzt-3
 edelstahl-coffee-to-go-becher	gesetzt-2
+canvas-shopper-tote-nachhaltig	gesetzt-1
+edelstahl-seifenschale-ohne-bohren	gesetzt-1
+partner-halskette-soulmate-magnetischer-herz-anhanger-2-halften	hat-liste
