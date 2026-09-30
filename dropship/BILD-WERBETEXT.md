@@ -1,10 +1,10 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:17:37Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:29:38Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1204 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3813** in 1032 Produkten
-- Treffer (≥ 4 Wörter): **155** in 132 Produkten
-- nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
+- Medien geprüft: **3846** in 1042 Produkten
+- Treffer (≥ 4 Wörter): **157** in 134 Produkten
+- nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 1
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
 ## Treffer
@@ -25,6 +25,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
 | Aufblasbare Nackenstütze `15504011231617` | [70583674536321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e273f284-0202-4442-8616-c72997e32732_trans.jpg) | 24 | Ergonomic Design Assist relieving cervical fatigue More fitting | offen |
 | Outdoor Sport Smartwatch mit Bluetooth-Anruffunk `15523936829825` | [70771944554881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402260207580325900.jpg) | 24 | waterproof life without fear waterproof daily and can | offen |
+| Schönheits- & Nacken-Pflege Memory Kopfkissen ·  `15453776609665` | [69926707757441](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/331c4e1a-bf63-464d-b0fa-0cc65a5b4259_trans.jpg) | 24 | Sleep your side keep your spine straight Side | offen |
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69650083316097](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edelstahl-trinkflasche-hydro-570-ml-edit.jpg) | 23 | Stainless Steel Tea Storage Drink tea with peace | ENTFERNT |
 | Smartwatch mit Herzfrequenz und Anruffunktion `15524886774145` | [70800820633985](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1720366426231017472.jpg) | 23 | Hyperuricemia risk assessment Uric acid The normal value | offen |
@@ -166,6 +167,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Anti-Falten Naturkern Creme `15521323286913` | [70733673267585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9ea20bb-5335-4ffc-aa47-a9e946abed95.jpg) | 4 | TEN KON MIRRC LIV | offen |
 | Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [77406935318919](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f15a2c8-bd86-4fdc-aafc-dc131f8d63ed_trans.jpg) | 4 | silicone Scm and more | offen |
 | Automatischer Futter- und Wasserspender `15453774545281` | [77407199363463](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dd2059f6-db77-4f5d-8664-c9f8e5d0e5d1_trans.jpg) | 4 | Blue Stainless Steel Bowl | offen |
+| Kinder-Schlafkissen mit Schlaf-Puppe `15453776413057` | [77407215485319](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fec7fcf-3d75-4a83-becb-62a2dc4de8b6_trans.jpg) | 4 | Embrace design Children feel | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
