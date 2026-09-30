@@ -4917,3 +4917,4 @@ gid://shopify/Product/15450856915329	zugeordnet	5	Multifunktionaler Baby-Tragegu
 gid://shopify/Product/15450856948097	zugeordnet	14	Hunde- und Katzenrucksack
 gid://shopify/Product/15450857046401	zugeordnet	1	HD WiFi Spiegelreflexkamera mit Flip-Screen
 gid://shopify/Product/15450857079169	zugeordnet	3	Powerbank mit hoher Kapazität
+gid://shopify/Product/15450857111937	zugeordnet	3	Tragbarer Auto-Luftbefeuchter X3
