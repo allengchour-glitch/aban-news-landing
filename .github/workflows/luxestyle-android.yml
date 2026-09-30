@@ -49,6 +49,8 @@ jobs:
           LUXE_KEYSTORE_PASSWORD: ${{ secrets.LUXE_KEYSTORE_PASSWORD }}
           LUXE_KEY_ALIAS: upload
           LUXE_VERSION_NAME: ${{ inputs.version_name }}
+          # Öffentlicher Storefront-Schlüssel für die Sterne (Judge.me); fehlt er, baut die App ohne Sterne
+          LUXE_STOREFRONT_TOKEN: ${{ secrets.LUXE_STOREFRONT_TOKEN }}
         run: |
           # Jede Play-Version braucht einen höheren versionCode; 100–102 kamen von Hand.
           export LUXE_VERSION_CODE=$((GITHUB_RUN_NUMBER + 104))

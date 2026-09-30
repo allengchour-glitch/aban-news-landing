@@ -168,6 +168,16 @@ private fun ProductDetail(p: Product) {
                         Gap(6)
                     }
                     Text(p.title, style = MaterialTheme.typography.headlineMedium)
+                    p.rating?.let { r ->
+                        Gap(6)
+                        // Antippen öffnet die Bewertungen auf der Produktseite des Shops (Judge.me)
+                        RatingLine(
+                            r, big = true,
+                            modifier = Modifier.clip(Radius.Small)
+                                .clickable(onClickLabel = "Bewertungen lesen") { nav.web(p.url + "#judgeme_product_reviews", "Bewertungen") }
+                                .padding(vertical = 4.dp),
+                        )
+                    }
                     Gap(12)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         val v = variant ?: p.variants.first()

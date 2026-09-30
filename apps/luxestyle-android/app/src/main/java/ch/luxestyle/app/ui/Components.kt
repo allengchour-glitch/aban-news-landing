@@ -69,6 +69,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Money
 import ch.luxestyle.app.data.ProductCard
@@ -254,12 +256,40 @@ fun ProductTile(
             card.title, style = MaterialTheme.typography.bodyMedium.copy(hyphens = Hyphens.Auto), maxLines = 2, overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(horizontal = 2.dp),
         )
+        card.rating?.let {
+            Spacer(Modifier.height(3.dp))
+            RatingLine(it, Modifier.padding(horizontal = 2.dp))
+        }
         Spacer(Modifier.height(4.dp))
         Box(Modifier.padding(horizontal = 2.dp)) { Price(card.price, card.compareAt) }
         note?.let {
             Spacer(Modifier.height(4.dp))
             Text(it, style = MaterialTheme.typography.labelMedium, color = LocalLuxe.current.sale, modifier = Modifier.padding(horizontal = 2.dp))
         }
+    }
+}
+
+/**
+ * Sterne aus echten Judge.me-Bewertungen: „★★★★★ 4.9 (15)". Gerundet auf ganze Sterne – die
+ * genaue Zahl steht daneben. Ohne Bewertung wird nichts angezeigt.
+ */
+@Composable
+fun RatingLine(rating: ch.luxestyle.app.data.Rating, modifier: Modifier = Modifier, big: Boolean = false) {
+    val full = kotlin.math.round(rating.average).toInt().coerceIn(0, 5)
+    val style = if (big) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.labelSmall
+    val word = if (rating.count == 1) "Bewertung" else "Bewertungen"
+    Row(
+        modifier.semantics(mergeDescendants = true) {
+            contentDescription = "${rating.label()} von 5 Sternen, ${rating.count} $word"
+        },
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text("★".repeat(full) + "☆".repeat(5 - full), style = style, color = MaterialTheme.colorScheme.secondary)
+        Spacer(Modifier.width(4.dp))
+        Text(
+            if (big) "${rating.label()} · ${rating.count} $word" else "${rating.label()} (${rating.count})",
+            style = style, color = LocalLuxe.current.muted,
+        )
     }
 }
 

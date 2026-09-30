@@ -17,23 +17,28 @@ import java.io.IOException
 class ShopException(message: String) : IOException(message)
 
 /**
- * Shopify Storefront API (ohne Token – Shopify erlaubt öffentliche Lesezugriffe und den Warenkorb).
+ * Shopify Storefront API. Ohne Token gehen Katalog und Warenkorb; Metafelder (Judge.me-Bewertungen)
+ * liefert Shopify nur mit öffentlichem Storefront-Token ([token]). Fehlt er, fragt die App sie nicht ab.
  * Preise immer im Schweizer Kontext (CHF, Deutsch).
  */
 class Storefront(
     private val http: OkHttpClient,
     private val endpoint: String = "https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json",
+    private val token: String = "",
 ) {
+    val hasRatings: Boolean get() = token.isNotBlank()
+
     private val json = Json { ignoreUnknownKeys = true }
 
     suspend fun run(query: String, variables: JsonObject = JsonObject(emptyMap())): JsonObject =
         withContext(Dispatchers.IO) {
             val body = buildJsonObject {
-                put("query", JsonPrimitive(withSwissContext(query)))
+                put("query", JsonPrimitive(withSwissContext(withRatings(query, hasRatings))))
                 put("variables", variables)
             }.toString().toRequestBody("application/json".toMediaType())
             val req = Request.Builder().url(endpoint).post(body)
                 .header("Accept-Language", "de-CH")
+                .apply { if (hasRatings) header("X-Shopify-Storefront-Access-Token", token) }
                 .build()
             http.newCall(req).execute().use { res ->
                 if (!res.isSuccessful) throw ShopException("Shop antwortet nicht (${res.code})")
@@ -119,6 +124,7 @@ class Storefront(
     suspend fun product(handle: String): Product {
         val d = run(
             """query P(${'$'}h: String!) { product(handle: ${'$'}h) { id handle title descriptionHtml
+              $RATING_MARK
               options { name optionValues { name } }
               images(first: 12) { nodes { url altText width height } }
               collections(first: 40) { nodes { handle } }
@@ -244,7 +250,16 @@ class Storefront(
                 query.substring(m.range.last + 1)
         }
 
+        /** Platzhalter für die Bewertungsfelder – ohne Token bleibt er als GraphQL-Kommentar stehen. */
+        const val RATING_MARK = "#rating"
+        private const val RATING_FIELDS = """rating: metafield(namespace: "reviews", key: "rating") { value }
+            ratingCount: metafield(namespace: "reviews", key: "rating_count") { value }"""
+
+        fun withRatings(query: String, enabled: Boolean): String =
+            if (enabled) query.replace(RATING_MARK, RATING_FIELDS) else query
+
         private const val CARD = """fragment Card on Product { id handle title availableForSale
+            $RATING_MARK
             featuredImage { url altText width height }
             priceRange { minVariantPrice { amount currencyCode } }
             compareAtPriceRange { maxVariantPrice { amount currencyCode } }

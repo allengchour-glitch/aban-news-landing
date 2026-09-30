@@ -11,7 +11,7 @@ class Shop(context: Context) {
         .connectTimeout(15, TimeUnit.SECONDS)
         .readTimeout(20, TimeUnit.SECONDS)
         .build()
-    val api = Storefront(http)
+    val api = Storefront(http, token = ch.luxestyle.app.BuildConfig.STOREFRONT_TOKEN)
     private val prefs = context.getSharedPreferences("luxestyle", Context.MODE_PRIVATE)
     val cart = CartRepository(api, prefs)
     val wishlist = Wishlist(prefs)

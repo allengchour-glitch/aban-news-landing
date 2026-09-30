@@ -30,11 +30,19 @@ data class ProductCard(
     val quickVariant: String? = null,
     /** Nur bei Vorschlägen geladen – damit bleiben sie in derselben Abteilung. */
     val collections: Set<String> = emptySet(),
+    /** Echte Judge.me-Bewertungen (Durchschnitt, Anzahl); null ohne Bewertung oder ohne Storefront-Token. */
+    val rating: Rating? = null,
 ) {
     val discountPercent: Int?
         get() = compareAt?.takeIf { it.amount > price.amount }
             ?.let { (((it.amount - price.amount) / it.amount) * 100).toInt() }
             ?.takeIf { it >= 5 }
+}
+
+/** Durchschnitt 1–5 und Anzahl. Angezeigt wird nur, was es wirklich gibt (mindestens eine Bewertung). */
+data class Rating(val average: Double, val count: Int) {
+    /** „4.9" – eine Stelle, Schweizer Punkt. */
+    fun label(): String = String.format(Locale.ROOT, "%.1f", average)
 }
 
 data class ProductOption(val name: String, val values: List<String>)
@@ -59,6 +67,7 @@ data class Product(
     val variants: List<Variant>,
     /** Kollektionen in Shop-Reihenfolge – daraus entsteht der Kategorie-Pfad. */
     val collections: List<String> = emptyList(),
+    val rating: Rating? = null,
 ) {
     val url: String get() = "https://luxestyle.ch/products/$handle"
 
@@ -100,7 +109,7 @@ data class Product(
 
     fun toCard(): ProductCard {
         val v = variants.firstOrNull { it.available } ?: variants.first()
-        return ProductCard(id, handle, title, images.firstOrNull(), v.price, v.compareAt, variants.any { it.available })
+        return ProductCard(id, handle, title, images.firstOrNull(), v.price, v.compareAt, variants.any { it.available }, rating = rating)
     }
 }
 

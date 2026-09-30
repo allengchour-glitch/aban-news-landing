@@ -179,4 +179,27 @@ class ShopLogicTest {
         )
         assertEquals("""[{"price":{"min":100.0}}]""", Storefront.filterInputs(Filters(PriceBand.OVER_100)).toString())
     }
+
+    @Test
+    fun bewertungenAusJudgeMe() {
+        fun card(rating: String?, count: String?) = Json.parseToJsonElement(
+            """{"id":"1","handle":"h","title":"T","availableForSale":true,
+            "priceRange":{"minVariantPrice":{"amount":"20.0","currencyCode":"CHF"}},
+            "rating":${rating ?: "null"},"ratingCount":${count ?: "null"}}""",
+        ) as JsonObject
+        val r = Parse.card(card("""{"value":"{\"scale_min\":\"1.0\",\"scale_max\":\"5.0\",\"value\":\"4.93\"}"}""", """{"value":"15"}"""))!!.rating!!
+        assertEquals(4.93, r.average, 0.001)
+        assertEquals(15, r.count)
+        assertEquals("4.9", r.label())
+        // Ohne Bewertung oder ohne Token (Felder fehlen) keine Sterne – nie eine erfundene Note
+        assertNull(Parse.card(card(null, null))!!.rating)
+        assertNull(Parse.card(card("""{"value":"{\"value\":\"0\"}"}""", """{"value":"0"}"""))!!.rating)
+    }
+
+    @Test
+    fun bewertungsfelderNurMitToken() {
+        val q = "query Q { products(first: 1) { nodes { id\n ${Storefront.RATING_MARK}\n } } }"
+        assertFalse(Storefront.withRatings(q, enabled = false).contains("metafield"))
+        assertTrue(Storefront.withRatings(q, enabled = true).contains("""metafield(namespace: "reviews", key: "rating")"""))
+    }
 }
