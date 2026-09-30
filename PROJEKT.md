@@ -9,7 +9,10 @@
 > - **Messung:** Anmelde-Link trägt `?utm_source=abannews&utm_medium=tool&utm_campaign=<slug>` → **in beehiiv
 >   unter Abonnenten/Quelle sehen, welches Tool Abos bringt** (kein Cookie/Pixel bei uns; in `datenschutz.html` 4.4 erklärt).
 > - 22 Tools: 10 × 🇨🇭 Geld, 8 × Selbstständige (Stundenlohn, Marge, Skonto …), 4 × KI. Weitere = Eintrag in `CTAS` + Lauf.
-> - Offen (fremd): `virale-prompts-check.html` ohne JSON-LD/Hub-Link (Tool-Brain 98,1).
+> - **Nachtrag 2026-09-30: alle 146 Tools kontextuell.** Die restlichen 124 per Workflow geschrieben (Schreiben →
+>   Ehrlichkeits-Prüfung → Passungs-Prüfung → Regel-Check im Code → Konsistenz über alle). Daten: `tools/kontext_ctas.json`
+>   (vom Skript geladen). Private/sensible Tools (SSW, Eisprung, Promille, BMI, Schlaf …) bekommen bewusst einen
+>   zurückhaltenden Hinweis ohne Bezug zur Person. `virale-prompts-check.html` hat jetzt JSON-LD + Rück-Link (Brain 100).
 
 ## ✨ 2026-07-24 — Polish-Pass (Urteil-Format durch den ganzen Funnel)
 > „polish alles": Qualitäts-Pass über die Kimi-Conversion-Arbeit + sichere Restpunkte umgesetzt.

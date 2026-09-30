@@ -1,0 +1,746 @@
+[
+ {
+  "slug": "abwesenheitsnotiz-generator",
+  "head": "Die Notiz ist raus. Den Mailberg danach kannst du mit KI vorsortieren.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool und 1 Prompt zum Kopieren, etwa für Antworten, Zusammenfassungen und E-Mails. Rund 5 Minuten Lesezeit.",
+  "btn": "Hol dir den Prompt →"
+ },
+ {
+  "slug": "alters-rechner",
+  "head": "Kleiner Hinweis in eigener Sache: aban news ordnet KI für den Berufsalltag.",
+  "sub": "Jeden Werktag am Morgen: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool, 1 Prompt zum Kopieren. Rund 5 Minuten.",
+  "btn": "Schau mal rein →"
+ },
+ {
+  "slug": "arbeitstage-rechner",
+  "head": "Werktage gezählt. Wie viele davon frisst Admin-Kram, den KI kürzen kann?",
+  "sub": "Mo–Fr 3 KI-Updates mit Urteil (lohnt sich, abwarten, ignorieren), plus 1 Tool, das ich selbst getestet habe. Für Selbstständige und KMU.",
+  "btn": "Lies werktags mit →"
+ },
+ {
+  "slug": "arbeitszeit-rechner",
+  "head": "Wie viel dieser Arbeitszeit war Routine, die sich mit KI kürzen liesse?",
+  "sub": "Werktags 1 KI-Tool im Selbsttest mit klarem Urteil, für wen es passt und für wen nicht. Plus 1 Prompt zum Kopieren. Rund 5 Minuten.",
+  "btn": "Routine kürzen →"
+ },
+ {
+  "slug": "backofen-temperatur",
+  "head": "Guten Appetit. Beruflich schreibe ich übrigens über KI im Arbeitsalltag.",
+  "sub": "aban news: werktags früh 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt. Rund 5 Minuten, ohne Hype.",
+  "btn": "Wirf einen Blick →"
+ },
+ {
+  "slug": "benzin-vs-elektro",
+  "head": "Vergleichen statt glauben: Nach diesem Prinzip prüfe ich auch KI-Tools.",
+  "sub": "Werktäglich 1 KI-Tool im Praxistest, für wen es passt und für wen nicht, dazu 3 Updates mit Urteil: lohnt sich, abwarten, ignorieren.",
+  "btn": "Kurz reinlesen →"
+ },
+ {
+  "slug": "bild-komprimierer",
+  "head": "Klein und lokal erledigt. Bei KI-Tools prüfe ich genauso nüchtern, was sie taugen.",
+  "sub": "Jeden Werktag teste ich 1 KI-Tool selbst und sage ehrlich, für wen es passt und für wen nicht. Dazu 3 kurze Updates mit Urteil. Rund 5 Minuten.",
+  "btn": "Tool-Tests lesen →"
+ },
+ {
+  "slug": "bild-zu-base64",
+  "head": "Das Bild steckt im Code. Wo KI dir bei der Arbeit hilft, ordne ich nüchtern ein.",
+  "sub": "Mo–Fr in deinem Posteingang: 1 KI-Tool im Selbsttest, 3 Updates mit klarer Einordnung und 1 Prompt zum Kopieren. Ohne Hype, rund 5 Minuten.",
+  "btn": "Lies die Tests →"
+ },
+ {
+  "slug": "binaer-rechner",
+  "head": "Im Binärsystem ist alles eindeutig. KI-News sind es selten, darum urteile ich.",
+  "sub": "Jeden Werktag 3 KI-Updates, jedes mit Urteil: lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool. Rund 5 Minuten.",
+  "btn": "Entscheide klarer →"
+ },
+ {
+  "slug": "blindtext-generator",
+  "head": "Irgendwann braucht das Layout echten Text. Dafür kann KI einen Entwurf liefern.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, 1 selbst getestetes KI-Tool und 3 Updates mit klarem Urteil. Nüchtern, ohne Hype, rund 5 Minuten.",
+  "btn": "Kopier dir Prompts →"
+ },
+ {
+  "slug": "bmi-rechner",
+  "head": "Ein anderes Thema: KI im Arbeitsalltag, werktäglich und nüchtern sortiert.",
+  "sub": "aban news erscheint Mo–Fr: 3 KI-Updates mit Einordnung, 1 getestetes Tool, 1 Prompt. Für Selbstständige und KMU, rund 5 Minuten.",
+  "btn": "Ansehen, falls es passt →"
+ },
+ {
+  "slug": "border-radius-generator",
+  "head": "Die Ecken sind rund. Bei KI-Tools suche ich dafür nach Ecken und Kanten.",
+  "sub": "Werktags 1 KI-Tool, das ich selbst ausprobiert habe, mit Stärken und Schwächen: für wen es passt, für wen nicht. Plus 1 Prompt zum Kopieren.",
+  "btn": "Schau genauer hin →"
+ },
+ {
+  "slug": "box-shadow-generator",
+  "head": "Den Schatten sieht man sofort. Ob ein KI-Tool hält, was es verspricht, nicht.",
+  "sub": "Deshalb teste ich werktäglich 1 KI-Tool selbst und sage, für wen es passt und für wen nicht. Dazu 1 Prompt zum Kopieren. Rund 5 Minuten.",
+  "btn": "Hol dir das Urteil →"
+ },
+ {
+  "slug": "bruchrechner",
+  "head": "Aufs Wesentliche gekürzt: So halte ich es auch mit KI-News für den Job.",
+  "sub": "Mo–Fr rund 5 Minuten: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool, 1 Prompt zum Kopieren. Mehr nicht.",
+  "btn": "Lies das Wesentliche →"
+ },
+ {
+  "slug": "buchstabier-alphabet",
+  "head": "Am Telefon hilft ein klares System. Bei der Flut an KI-News ebenfalls.",
+  "sub": "Werktäglich sortiert: 3 KI-Updates mit Urteil (lohnt sich, abwarten, ignorieren), dazu 1 getestetes Tool und 1 Prompt. Rund 5 Minuten.",
+  "btn": "Bring Ordnung rein →"
+ },
+ {
+  "slug": "countdown-timer",
+  "head": "Während die Zeit läuft: Meine KI-Übersicht für den Job braucht rund 5 Minuten.",
+  "sub": "Mo–Fr: 3 KI-Updates mit Urteil, 1 selbst getestetes Tool, 1 Prompt zum Kopieren. Für Selbstständige und KMU im DACH-Raum.",
+  "btn": "Nimm dir 5 Minuten →"
+ },
+ {
+  "slug": "cron-generator",
+  "head": "Dein Cronjob läuft von allein. Welche Aufgabe dahinter könnte KI übernehmen?",
+  "sub": "Für alle, die gern automatisieren: werktäglich 1 selbst getestetes KI-Tool mit ehrlichem Urteil, dazu 1 Prompt zum Kopieren. 5 Minuten.",
+  "btn": "Hol dir Tool-Urteile →"
+ },
+ {
+  "slug": "css-clamp-generator",
+  "head": "Die Schriftgröße passt sich an. Welche KI-Tools zu deiner Arbeit passen, teste ich.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool mit ehrlicher Einschätzung, für wen es passt und für wen nicht, plus 1 Prompt zum Kopieren.",
+  "btn": "Lies die Tests →"
+ },
+ {
+  "slug": "css-minify",
+  "head": "Weniger Bytes, gleiche Wirkung: nach diesem Prinzip schreibe ich über KI.",
+  "sub": "Ohne Füllstoff: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt zum Kopieren. Werktäglich, in rund 5 Minuten gelesen.",
+  "btn": "Spar dir den Ballast →"
+ },
+ {
+  "slug": "css-verlauf-generator",
+  "head": "Hintergrund ohne Bilddatei. Offen bleibt, welches KI-Tool dir Arbeit abnimmt.",
+  "sub": "Werktäglich 1 KI-Tool, das ich selbst getestet habe: für wen es taugt und für wen nicht. Dazu 3 Updates mit klarem Urteil. 5 Minuten.",
+  "btn": "Sieh dir die Tests an →"
+ },
+ {
+  "slug": "csv-json-konverter",
+  "head": "Aus CSV wird JSON. Fürs Aufräumen danach reicht manchmal ein guter Prompt.",
+  "sub": "Jede Ausgabe enthält 1 Prompt zum Kopieren und 1 selbst getestetes KI-Tool, dazu 3 Updates mit klarem Urteil. Werktäglich, 5 Minuten.",
+  "btn": "Nimm die Prompts mit →"
+ },
+ {
+  "slug": "cubic-bezier-generator",
+  "head": "Die Kurve sitzt. Bei neuen KI-Tools ist der richtige Zeitpunkt oft die Frage.",
+  "sub": "Werktäglich 3 KI-Updates mit klarem Urteil: lohnt sich, abwarten oder ignorieren. Dazu 1 KI-Tool, das ich selbst ausprobiert habe.",
+  "btn": "Triff den Zeitpunkt →"
+ },
+ {
+  "slug": "cups-in-gramm",
+  "head": "Gutes Gelingen. Mein anderes Thema ist KI im Arbeitsalltag.",
+  "sub": "Mein Newsletter erscheint werktäglich und handelt von KI im Arbeitsalltag, nicht vom Backen: 3 Updates, 1 getestetes Tool, 1 Prompt.",
+  "btn": "Schau mal rein →"
+ },
+ {
+  "slug": "datengroessen-umrechner",
+  "head": "Einheiten sind umgerechnet. Bei KI-News rechne ich den Hype heraus.",
+  "sub": "Statt Rätselraten ein klares Urteil: Ich ordne werktäglich 3 KI-Updates ein – lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool.",
+  "btn": "Bleib auf dem Stand →"
+ },
+ {
+  "slug": "diff-tool",
+  "head": "Was sich geändert hat, ist markiert. Bei KI-News übernehme ich das werktäglich.",
+  "sub": "3 KI-Updates pro Ausgabe, jedes mit klarem Urteil, dazu 1 Prompt zum Kopieren – praktisch, wenn du Prompt-Varianten vergleichst. 5 Minuten.",
+  "btn": "Verfolge die KI-News →"
+ },
+ {
+  "slug": "dreisatz-rechner",
+  "head": "Drei Werte, eine Antwort. Ob sich ein KI-Tool rechnet, zeigt erst der Test.",
+  "sub": "Ich teste werktäglich 1 KI-Tool selbst und schreibe nüchtern, für wen es sich lohnt und für wen nicht. Dazu 3 Updates mit klarem Urteil.",
+  "btn": "Entscheide informiert →"
+ },
+ {
+  "slug": "durchschnitt-rechner",
+  "head": "Du kennst jetzt den Durchschnitt. Ich suche bei KI-News das, was darüber liegt.",
+  "sub": "Werktäglich 3 KI-Updates mit Urteil, 1 selbst getestetes Tool und 1 Prompt zum Kopieren. Nüchtern, ohne Hype, in 5 Minuten gelesen.",
+  "btn": "Lies nur das Wichtige →"
+ },
+ {
+  "slug": "einheiten-umrechner",
+  "head": "Falls dich auch KI im Arbeitsalltag beschäftigt, gibt es hier einen Newsletter.",
+  "sub": "Ein kurzer Newsletter für Selbstständige und KMU: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Werktäglich, rund 5 Minuten.",
+  "btn": "Wirf einen Blick →"
+ },
+ {
+  "slug": "eisprung-rechner",
+  "head": "Von mir gibt es ausserdem einen Newsletter zu KI im Beruf.",
+  "sub": "Ein separater Newsletter für Selbstständige und KMU: 3 KI-Updates mit Einordnung, 1 getestetes Tool, 1 Prompt. Rund 5 Minuten.",
+  "btn": "Erfahre mehr →"
+ },
+ {
+  "slug": "email-pruefer",
+  "head": "Das Format stimmt. Den Mailtext dazu kann KI mit dir entwerfen.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Mailings, Offerten oder Kundenmails, plus 1 selbst getestetes KI-Tool mit ehrlichem Urteil. 5 Minuten.",
+  "btn": "Hol dir den Prompt →"
+ },
+ {
+  "slug": "email-signatur-generator",
+  "head": "Deine Signatur wirkt jetzt professionell. Die Mail darüber darf KI mitschreiben.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren für den Büroalltag und 1 KI-Tool, das ich selbst getestet habe, mit klarem Urteil, für wen es sich lohnt.",
+  "btn": "Starte mit einem Prompt →"
+ },
+ {
+  "slug": "encoder",
+  "head": "Codiert und wieder lesbar. Welche KI-Neuheit sich lohnt, ordne ich ein.",
+  "sub": "Wer mit APIs und Webhooks arbeitet, braucht keinen Hype: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Werktäglich, 5 Minuten.",
+  "btn": "Abonniere ohne Hype →"
+ },
+ {
+  "slug": "env-parser",
+  "head": "Die Konfig steht als JSON. Welcher KI-Dienst ins Setup gehört, ist schwerer.",
+  "sub": "Werktäglich 3 KI-Updates mit klarem Urteil und 1 selbst getestetes Tool – nüchtern eingeordnet, bevor du etwas in dein Setup holst. 5 Minuten.",
+  "btn": "Urteile lesen →"
+ },
+ {
+  "slug": "fahrtkosten-rechner",
+  "head": "Die Fahrt ist eingepreist. Offerte und Spesen-Mail kann KI vorformulieren.",
+  "sub": "Jeden Werktag 1 selbst getestetes KI-Tool und 1 Prompt zum Kopieren – etwa für Offerten, Spesen und Kundenmails. Rund 5 Minuten, ohne Hype.",
+  "btn": "Prompts mitnehmen →"
+ },
+ {
+  "slug": "farb-umrechner",
+  "head": "HEX, RGB, HSL sitzen. Bleibt die Frage, welche KI-Design-Tools etwas taugen.",
+  "sub": "Ich teste KI-Tools selbst und sage bei jedem, für wen es passt und für wen nicht. Dazu 3 Updates mit Urteil und 1 Prompt, werktäglich.",
+  "btn": "Klartext abholen →"
+ },
+ {
+  "slug": "farbpalette-generator",
+  "head": "Eine Harmonie lässt sich berechnen. Ob ein KI-Design-Tool taugt, muss man testen.",
+  "sub": "Ich probiere KI-Tools selbst aus und schreibe werktäglich, welches taugt und für wen es nichts ist. Dazu 1 Prompt zum Kopieren. 5 Minuten.",
+  "btn": "Testergebnisse lesen →"
+ },
+ {
+  "slug": "favicon-generator",
+  "head": "Icon fertig, ohne Grafikprogramm. Solche Abkürzungen suche ich auch unter KI-Tools.",
+  "sub": "Werktäglich sortiere ich aus: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt zum Kopieren. In 5 Minuten gelesen, nüchtern geschrieben.",
+  "btn": "Abkürzungen finden →"
+ },
+ {
+  "slug": "feiertage-arbeitstage-kanton",
+  "head": "Arbeitstage sind knapp. Umso mehr zählt, welche Routine KI dir abnehmen kann.",
+  "sub": "Werktäglich aus Belp: 3 KI-Updates mit Urteil, 1 selbst getestetes Tool und 1 Prompt zum Kopieren – für Selbstständige und KMU in der Schweiz. 5 Minuten.",
+  "btn": "Morgens mitlesen →"
+ },
+ {
+  "slug": "flaechen-rechner",
+  "head": "Fläche und Umfang stehen. Beruflich beschäftigt mich ein anderes Thema: KI.",
+  "sub": "Werktäglich 5 Minuten für Selbstständige und KMU: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Nur falls das zu dir passt.",
+  "btn": "Schau mal rein →"
+ },
+ {
+  "slug": "freelancer-cockpit",
+  "head": "Die Zahlen stehen. Für Angebotstexte und Mails hilft KI – mit gutem Prompt.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren und 1 KI-Tool, das ich selbst getestet habe – mit klarem Urteil, ob es Selbstständigen etwas bringt. 5 Minuten.",
+  "btn": "Prompts abholen →"
+ },
+ {
+  "slug": "geschwindigkeit-rechner",
+  "head": "Falls du beruflich mit KI zu tun hast: Dazu schreibe ich werktäglich.",
+  "sub": "Ein kurzer Newsletter für Selbstständige und KMU: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Rund 5 Minuten, nüchtern geschrieben.",
+  "btn": "Kurz reinlesen →"
+ },
+ {
+  "slug": "ggt-kgv-rechner",
+  "head": "Der euklidische Algorithmus ist verlässlich. Viele KI-Antworten sind es nicht.",
+  "sub": "Nebenbei schreibe ich werktäglich über KI im Arbeitsalltag: 3 Updates mit ehrlichem Urteil, 1 getestetes Tool, 1 Prompt. 5 Minuten.",
+  "btn": "Nüchtern mitlesen →"
+ },
+ {
+  "slug": "gratis-ki-prompts",
+  "head": "Die Prompts hier sind der Anfang. Jeden Werktag kommt 1 neuer dazu.",
+  "sub": "Pro Ausgabe 1 Prompt zum Kopieren, dazu 3 KI-Updates mit Urteil und 1 selbst getestetes Tool. Für Selbstständige, werktäglich in 5 Minuten gelesen.",
+  "btn": "Neue Prompts holen →"
+ },
+ {
+  "slug": "gross-kleinschreibung",
+  "head": "Umformatieren geht per Klick. Beim Formulieren hilft KI – wenn der Prompt stimmt.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren und 1 getestetes KI-Tool, dazu 3 Updates mit klarem Urteil. Kurz und ohne Hype – für Selbstständige und KMU.",
+  "btn": "Besser formulieren →"
+ },
+ {
+  "slug": "hash-generator",
+  "head": "Der Hash stimmt oder nicht – so klar sind Urteile über KI-Tools selten.",
+  "sub": "Hier bekommst du sie trotzdem: werktäglich 3 KI-Updates mit Urteil (lohnt sich, abwarten, ignorieren), dazu 1 getestetes Tool und 1 Prompt. 5 Minuten.",
+  "btn": "Klare Urteile lesen →"
+ },
+ {
+  "slug": "hashtag-generator",
+  "head": "Die Hashtags stehen. Für die Caption dazu taugt KI – mit Einschränkungen.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool mit ehrlichem Urteil, für wen es sich lohnt – und 1 Prompt zum Kopieren, etwa für Social-Posts. 5 Minuten.",
+  "btn": "Caption-Prompts holen →"
+ },
+ {
+  "slug": "html-entities",
+  "head": "Sonderzeichen entschärft. Code aus der KI verdient dieselbe Vorsicht.",
+  "sub": "Werktäglich 3 KI-Updates mit Urteil und 1 selbst getestetes Tool – samt klarer Ansage, für wen es nichts ist. Dazu 1 Prompt. 5 Minuten.",
+  "btn": "Einordnung holen →"
+ },
+ {
+  "slug": "iban-pruefer",
+  "head": "Die IBAN ist gültig. Beim Text zur Rechnung darf KI mithelfen.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Rechnungs- und Zahlungsmails, dazu 1 selbst getestetes KI-Tool mit klarem Urteil. 5 Minuten, ohne Hype.",
+  "btn": "Rechnungs-Prompts holen →"
+ },
+ {
+  "slug": "inflations-rechner",
+  "head": "Kaufkraft schwindet leise. Zeit in Routinearbeit auch, und dort kann KI helfen.",
+  "sub": "Montag bis Freitag sortiere ich 3 KI-Updates für dich: lohnt sich, abwarten oder ignorieren. Dazu 1 selbst getestetes Tool, in 5 Minuten gelesen.",
+  "btn": "Lass KI-News sortieren →"
+ },
+ {
+  "slug": "json-formatter",
+  "head": "Sauberes JSON spart Fehlersuche. Ein guter Prompt spart sie manchmal auch.",
+  "sub": "Jede Ausgabe: 1 Prompt zum Kopieren und 1 selbst getestetes KI-Tool mit ehrlichem Urteil. Dazu 3 Updates, die dir sagen, was du ignorieren kannst. 5 Minuten.",
+  "btn": "Abonnier die Tool-Tests →"
+ },
+ {
+  "slug": "jwt-decoder",
+  "head": "Header und Payload liegen offen. KI-Tools verdienen denselben prüfenden Blick.",
+  "sub": "Werktäglich 3 KI-Updates, nüchtern eingeordnet, und 1 selbst getestetes Tool – mit klarer Ansage, für wen es taugt und für wen nicht. Rund 5 Minuten.",
+  "btn": "Bleib nüchtern informiert →"
+ },
+ {
+  "slug": "kalenderwoche-rechner",
+  "head": "Die KW ist klar. Offen bleibt, welche KI-News diese Woche wirklich zählen.",
+  "sub": "Montag bis Freitag im Posteingang: 3 KI-Updates, jedes mit Urteil – lohnt sich, abwarten oder ignorieren. Gelesen in 5 Minuten, auch zwischen Terminen.",
+  "btn": "Starte die Woche klar →"
+ },
+ {
+  "slug": "kalorienbedarf-rechner",
+  "head": "Übrigens: Mein Newsletter handelt von KI im Arbeitsalltag.",
+  "sub": "Montag bis Freitag erscheint aban news: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt zum Kopieren. Für Selbstständige und KMU.",
+  "btn": "Schau kurz rein →"
+ },
+ {
+  "slug": "keyword-dichte",
+  "head": "Ein Text für Menschen schlägt jeden überladenen. Auch wenn KI mitschreibt.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren und 1 selbst getestetes KI-Tool, mit ehrlichem Urteil, ob es sich für Marketing und Texte im KMU lohnt. 5 Minuten, ohne Hype.",
+  "btn": "Prompts holen →"
+ },
+ {
+  "slug": "kleidergroessen-umrechner",
+  "head": "Größe gefunden. Falls du auch beruflich mit KI arbeitest, lies gern mit.",
+  "sub": "Der Newsletter aban news bringt werktäglich 3 KI-Updates mit klarem Urteil und 1 getestetes Tool, gedacht für Selbstständige und KMU im DACH-Raum.",
+  "btn": "Wirf einen Blick →"
+ },
+ {
+  "slug": "kontrast-checker",
+  "head": "Die Farben bestehen den Test. Welche KI-Tools bestehen ihn im Web-Alltag?",
+  "sub": "Ich teste KI-Tools selbst und sage werktäglich, ob sie bestehen: lohnt sich, abwarten oder ignorieren. Dazu 1 Prompt zum Kopieren. Rund 5 Minuten, ohne Hype.",
+  "btn": "Sieh die Testurteile →"
+ },
+ {
+  "slug": "kreditrechner",
+  "head": "Klare Zahlen schaffen Ruhe. Klare Urteile zu KI-Tools auch.",
+  "sub": "Werktäglich 3 KI-Updates, jedes mit nüchternem Urteil: lohnt sich, abwarten oder ignorieren. Dazu 1 selbst getestetes Tool – für wen es passt, für wen nicht.",
+  "btn": "Behalte den Überblick →"
+ },
+ {
+  "slug": "leasing-vs-kauf",
+  "head": "Wer fair vergleicht, entscheidet besser. So nehme ich mir KI-Tools vor.",
+  "sub": "Jedes getestete Tool bekommt ein klares Urteil: für wen es passt und für wen nicht. Dazu 3 KI-Updates und 1 Prompt, Montag bis Freitag in 5 Minuten.",
+  "btn": "Entscheide informierter →"
+ },
+ {
+  "slug": "lesezeit-rechner",
+  "head": "Rund 5 Minuten Lesezeit: So kurz ist jede Ausgabe über KI im Arbeitsalltag.",
+  "sub": "Drin stecken 3 KI-Updates mit klarem Urteil, 1 selbst getestetes Tool und 1 Prompt zum Kopieren. Montag bis Freitag, für Selbstständige und KMU.",
+  "btn": "Probier eine Ausgabe →"
+ },
+ {
+  "slug": "lottozahlen-generator",
+  "head": "Hier entscheidet der Zufall. In meinem Newsletter geht es um KI im Job.",
+  "sub": "Kurz und nüchtern: 3 KI-Updates, 1 getestetes Tool und 1 Prompt pro Ausgabe. Werktags, rund 5 Minuten, für Selbstständige und KMU.",
+  "btn": "Lern aban news kennen →"
+ },
+ {
+  "slug": "markdown-html-konverter",
+  "head": "Markdown rein, HTML raus. Für den Text davor gibt es werktags 1 Prompt.",
+  "sub": "Jede Ausgabe bringt 1 Prompt zum Kopieren und 1 selbst getestetes KI-Tool, mit klarem Urteil, für wen es passt. Montag bis Freitag, rund 5 Minuten.",
+  "btn": "Prompt kopieren →"
+ },
+ {
+  "slug": "markdown-tabelle",
+  "head": "Tabelle umgewandelt. Bei solcher Fleissarbeit muss KI zeigen, was sie kann.",
+  "sub": "Ich teste KI-Tools selbst und ordne sie werktäglich ein: lohnt sich, abwarten oder ignorieren. Dazu 1 Prompt zum Kopieren. 5 Minuten, ohne Hype.",
+  "btn": "Finde passende Tools →"
+ },
+ {
+  "slug": "mehrwertsteuer-eu",
+  "head": "Den Steuersatz hast du. Offerten und Kundenmails schreiben sich nicht von selbst.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool für Selbstständige und KMU plus 1 Prompt zum Kopieren – etwa für Offerten und Kundenmails. Rund 5 Minuten, ohne Hype.",
+  "btn": "Entlaste deinen Alltag →"
+ },
+ {
+  "slug": "mietrendite-rechner",
+  "head": "Brutto sieht gut aus, netto zählt. Bei KI-Versprechen ist es genauso.",
+  "sub": "Ich lese die KI-News und sage werktäglich nüchtern: lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool und 1 Prompt. Rund 5 Minuten.",
+  "btn": "Lies ohne Hype →"
+ },
+ {
+  "slug": "mwst-rechner",
+  "head": "Wer Rechnungen schreibt, schreibt auch Offerten und Mails. Dafür gibt es Prompts.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren und 1 selbst getestetes KI-Tool, dazu 3 Updates mit klarem Urteil. Für Selbstständige und KMU, in rund 5 Minuten.",
+  "btn": "Werktags-Prompt holen →"
+ },
+ {
+  "slug": "notendurchschnitt-rechner",
+  "head": "Der Schnitt steht. Nebenbei geht es bei mir um KI im Arbeitsalltag.",
+  "sub": "Gedacht für Selbstständige und KMU: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Werktäglich, rund 5 Minuten.",
+  "btn": "Unverbindlich lesen →"
+ },
+ {
+  "slug": "passphrase-generator",
+  "head": "Eine Passphrase merkst du dir. Einen guten Prompt musst du nur kopieren.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren für den Arbeitsalltag, dazu 1 selbst getestetes KI-Tool und 3 Updates mit klarem Urteil. Rund 5 Minuten.",
+  "btn": "Prompts mitnehmen →"
+ },
+ {
+  "slug": "passwort-generator",
+  "head": "Ein gutes Passwort geht schnell. Ein brauchbares KI-Tool zu finden, nicht.",
+  "sub": "Das Suchen übernehme ich: Werktäglich teste ich 1 KI-Tool selbst und sage, für wen es passt und für wen nicht. Dazu 3 Updates mit Urteil.",
+  "btn": "Suche abgeben →"
+ },
+ {
+  "slug": "passwort-staerke-check",
+  "head": "Du prüfst Passwörter, bevor du ihnen traust. Warum nicht auch KI-Tools?",
+  "sub": "Jede Ausgabe prüft 1 KI-Tool im Selbsttest: für wen es sich lohnt, für wen nicht. Dazu 3 Updates mit klarem Urteil. Werktäglich, 5 Minuten.",
+  "btn": "Geprüfte Tools lesen →"
+ },
+ {
+  "slug": "platzhalter-bild",
+  "head": "Das echte Bild fehlt noch. Vielleicht entsteht es mit KI, vielleicht besser nicht.",
+  "sub": "Werktäglich ordne ich KI-Neuheiten nüchtern ein: lohnt sich, abwarten oder ignorieren. Dazu 1 selbst getestetes Tool und 1 Prompt. Rund 5 Minuten.",
+  "btn": "Werktäglich mitlesen →"
+ },
+ {
+  "slug": "pomodoro-timer",
+  "head": "Die Pause ist so lang wie eine Ausgabe über KI im Arbeitsalltag.",
+  "sub": "Werktäglich 3 KI-Updates mit klarem Urteil, 1 selbst getestetes Tool und 1 Prompt zum Kopieren. Rund 5 Minuten, danach zurück an die Arbeit.",
+  "btn": "In der Pause lesen →"
+ },
+ {
+  "slug": "primzahl-pruefer",
+  "head": "Teilbar oder nicht, das ist klar. Mein Newsletter handelt von KI im Beruf.",
+  "sub": "Für Selbstständige und KMU: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt. Rund 5 Minuten, ohne Hype.",
+  "btn": "Einfach mitlesen →"
+ },
+ {
+  "slug": "promille-rechner",
+  "head": "Unabhängig davon: aban news ist ein Newsletter zu KI im Beruf.",
+  "sub": "Werktäglich 3 KI-Updates mit klarem Urteil, 1 selbst getestetes Tool und 1 Prompt zum Kopieren. Rund 5 Minuten.",
+  "btn": "Newsletter ansehen →"
+ },
+ {
+  "slug": "prozent-rechner",
+  "head": "Rabatt und Aufschlag sind klar. Ob sich ein KI-Abo rechnet, ist schwerer zu sagen.",
+  "sub": "Jedes getestete KI-Tool bekommt ein klares Urteil: für wen es sich lohnt und für wen nicht. Werktäglich, 5 Minuten, für Selbstständige und KMU.",
+  "btn": "Tool-Urteile holen →"
+ },
+ {
+  "slug": "prozentuale-veraenderung",
+  "head": "Zahl ausgerechnet, Satz fehlt noch? Den kann KI für den Bericht vorformulieren.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Zusammenfassungen und Berichte, dazu 3 KI-Updates mit klarem Urteil. In rund 5 Minuten gelesen.",
+  "btn": "Prompts abholen →"
+ },
+ {
+  "slug": "px-rem-umrechner",
+  "head": "Von px zu rem ist eine Formel. Von KI-Tool zu echtem Nutzen braucht es einen Test.",
+  "sub": "Den mache ich selbst: werktäglich 1 getestetes KI-Tool mit klarem Urteil, für wen es taugt. Dazu 3 Updates und 1 Prompt zum Kopieren. 5 Minuten.",
+  "btn": "Nüchtern mitlesen →"
+ },
+ {
+  "slug": "qr-code",
+  "head": "Neben jeden QR-Code gehört ein Satz, der zum Scannen einlädt. KI kann ihn entwerfen.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, 1 selbst getestetes KI-Tool und 3 Updates mit Urteil: lohnt sich, abwarten oder ignorieren. Rund 5 Minuten.",
+  "btn": "Prompts holen →"
+ },
+ {
+  "slug": "quersumme-rechner",
+  "head": "Ziffern addiert. Mein eigentliches Thema ist KI im Arbeitsalltag.",
+  "sub": "Falls das passt: werktäglich 3 KI-Updates mit Urteil, 1 getestetes Tool und 1 Prompt. Rund 5 Minuten, ohne Hype.",
+  "btn": "Kurz ansehen →"
+ },
+ {
+  "slug": "rechnung-teilen",
+  "head": "Zurück bei der Arbeit? Dort schaue ich nüchtern auf KI.",
+  "sub": "3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Werktäglich, rund 5 Minuten, ohne Hype eingeordnet.",
+  "btn": "Mal reinschauen →"
+ },
+ {
+  "slug": "regex-tester",
+  "head": "Regex von KI? Gern, aber erst nach einem Test wie diesem.",
+  "sub": "Diese Haltung steckt in jeder Ausgabe: 3 KI-Updates mit Urteil (lohnt sich, abwarten, ignorieren), 1 getestetes Tool, 1 Prompt. Werktäglich, 5 Minuten.",
+  "btn": "Ehrlich informiert bleiben →"
+ },
+ {
+  "slug": "roemische-zahlen",
+  "head": "Das war Latein. Über KI im Arbeitsalltag schreibe ich lieber auf Deutsch.",
+  "sub": "Werktags am Morgen: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool, 1 Prompt. Rund 5 Minuten, falls es dich interessiert.",
+  "btn": "Probier eine Ausgabe →"
+ },
+ {
+  "slug": "schlaf-rechner",
+  "head": "Nebenbei: Ich schreibe werktäglich über KI im Arbeitsalltag.",
+  "sub": "Mo–Fr am Morgen: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt zum Kopieren. Etwa 5 Minuten Lesezeit.",
+  "btn": "Lesen, wenn du magst →"
+ },
+ {
+  "slug": "schriftgroessen-skala",
+  "head": "Die Skala steht. Bei KI-Tools fürs Webdesign lohnt sich ein zweiter Blick.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool – für wen es passt und für wen nicht. Dazu 3 Updates mit Urteil und 1 Prompt. 5 Minuten.",
+  "btn": "Lies die Tests →"
+ },
+ {
+  "slug": "schuhgroessen-umrechner",
+  "head": "Passt hoffentlich. Werktags schreibe ich über etwas ganz anderes: KI im Job.",
+  "sub": "aban news: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool, 1 Prompt zum Kopieren. Für Selbstständige und KMU, Mo–Fr.",
+  "btn": "Wirf einen Blick →"
+ },
+ {
+  "slug": "schweizer-geld-center",
+  "head": "Bei Lohn und MWST hilft Rechnen. Bei KI-Tools hilft ein ehrliches Urteil.",
+  "sub": "Aus Belp, werktäglich: 3 KI-Updates mit klarem Urteil – lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool und 1 Prompt. Für Selbstständige und KMU.",
+  "btn": "Werktags mitlesen →"
+ },
+ {
+  "slug": "seitenverhaeltnis-rechner",
+  "head": "Für Bild und Caption gibt es viele KI-Tools. Nur ein Teil davon taugt.",
+  "sub": "Werktäglich 1 KI-Tool, selbst getestet – mit ehrlichem Urteil, für wen es taugt. Dazu 3 Updates und 1 Prompt zum Kopieren.",
+  "btn": "Finde passende Tools →"
+ },
+ {
+  "slug": "slug-generator",
+  "head": "Eine saubere URL ist erledigt. Für den Text dahinter hilft ein guter Prompt.",
+  "sub": "Werktäglich: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt zum Kopieren, etwa fürs Schreiben. 5 Minuten.",
+  "btn": "Abonnier aban news →"
+ },
+ {
+  "slug": "sonderzeichen",
+  "head": "Kopieren statt suchen. Bei KI-Neuheiten nehme ich dir das Suchen ab.",
+  "sub": "Mo–Fr in rund 5 Minuten: welche KI-Neuheit du nutzen, abwarten oder ignorieren kannst – plus 1 Prompt zum direkten Einsetzen.",
+  "btn": "Spar dir das Suchen →"
+ },
+ {
+  "slug": "sparziel-rechner",
+  "head": "Dein Sparziel hat eine Rate. Auch bei KI-Abos lohnt sich genaues Hinschauen.",
+  "sub": "Werktäglich 1 getestetes KI-Tool mit klarem Urteil: lohnt sich, abwarten oder ignorieren. Keine Anlagetipps, nur KI im Arbeitsalltag.",
+  "btn": "Genau hinschauen →"
+ },
+ {
+  "slug": "spritverbrauch-rechner",
+  "head": "Kurzer Themenwechsel: Ich ordne werktags KI-News für den Beruf ein.",
+  "sub": "Falls es dich interessiert: Mo–Fr 3 KI-Updates mit klarem Urteil, 1 getestetes Tool, 1 Prompt. Für Selbstständige und KMU.",
+  "btn": "Schau es dir an →"
+ },
+ {
+  "slug": "ssw-rechner",
+  "head": "aban news handelt von KI im Arbeitsalltag, für Selbstständige und KMU.",
+  "sub": "Werktäglich 3 KI-Updates mit Urteil, 1 getestetes Tool und 1 Prompt zum Kopieren. Rund 5 Minuten Lesezeit.",
+  "btn": "Erfahre mehr →"
+ },
+ {
+  "slug": "stoppuhr",
+  "head": "Kurz gestoppt, kurz gelesen: KI im Arbeitsalltag in rund 5 Minuten.",
+  "sub": "Mo–Fr: 3 KI-Updates mit Urteil, 1 selbst getestetes Tool, 1 Prompt zum Kopieren. Für Selbstständige und KMU.",
+  "btn": "Nimm dir 5 Minuten →"
+ },
+ {
+  "slug": "stromkosten-rechner",
+  "head": "Jetzt weisst du, was das Gerät kostet. Bei KI-Tools ist das oft unklarer.",
+  "sub": "aban news bringt Mo–Fr 3 KI-Updates mit Urteil, 1 selbst getestetes Tool und 1 Prompt. Für Selbstständige und KMU, rund 5 Minuten.",
+  "btn": "Trag dich ein →"
+ },
+ {
+  "slug": "tage-rechner",
+  "head": "Die Frist steht. Für die Terminmails bis dahin gibt es passende Prompts.",
+  "sub": "Zu 3 KI-Updates sage ich werktäglich klar: lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool und 1 Prompt, etwa für E-Mails.",
+  "btn": "Behalte den Überblick →"
+ },
+ {
+  "slug": "taschenrechner",
+  "head": "Das Ergebnis steht. Für Offerten und Mails dazu gibt es werktags 1 Prompt.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Offerten und Kundenmails, dazu 1 selbst getestetes KI-Tool und 3 Updates mit Urteil. Rund 5 Minuten.",
+  "btn": "Hol dir Prompts →"
+ },
+ {
+  "slug": "text-bereinigen",
+  "head": "Listen aufräumen geht per Klick. Für ganze Texte braucht KI einen guten Prompt.",
+  "sub": "In jeder Ausgabe 1 Prompt zum Kopieren, etwa zum Zusammenfassen oder Umschreiben – dazu 3 KI-Updates mit Urteil. Werktäglich, 5 Minuten.",
+  "btn": "Hol dir den Prompt →"
+ },
+ {
+  "slug": "text-case-konverter",
+  "head": "Und wenn nicht nur die Schreibweise, sondern der ganze Text besser werden soll?",
+  "sub": "Werktäglich 1 KI-Tool, selbst getestet und klar eingeordnet, plus 1 Prompt zum Kopieren – etwa zum Kürzen, Umformulieren und Glätten von Texten. 5 Minuten.",
+  "btn": "Prompt holen →"
+ },
+ {
+  "slug": "timestamp-konverter",
+  "head": "Wer Logs liest, kennt das: viel Rauschen, wenig Relevantes. Bei KI ist es ähnlich.",
+  "sub": "Jeden Werktag früh: 3 KI-Updates mit klarem Urteil – lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool, etwa für Automatisierungen. Rund 5 Minuten.",
+  "btn": "Rauschen filtern →"
+ },
+ {
+  "slug": "tippgeschwindigkeit-test",
+  "head": "Schneller tippen hilft. Manches musst du mit KI gar nicht mehr selbst tippen.",
+  "sub": "Einmal pro Werktag 1 Prompt zum Kopieren und 1 selbst getestetes KI-Tool – mit ehrlicher Einschätzung, für wen es sich lohnt und für wen nicht.",
+  "btn": "Weniger tippen →"
+ },
+ {
+  "slug": "url-parser",
+  "head": "Der Link ist entwirrt. KI-Neuigkeiten entwirre ich dir jeden Werktag.",
+  "sub": "3 KI-Updates pro Ausgabe, jedes mit klarem Urteil: lohnt sich, abwarten oder ignorieren. Nüchtern eingeordnet für Selbstständige und KMU, in etwa 5 Minuten.",
+  "btn": "KI-News entwirren →"
+ },
+ {
+  "slug": "ust-idnr-pruefer",
+  "head": "Zwischen Formalitäten und Offerten: Wo KI im Büro wirklich Arbeit abnimmt.",
+  "sub": "Werktäglich 1 KI-Tool, selbst getestet für Selbstständige und KMU im DACH-Raum, plus 1 Prompt zum Kopieren, etwa für Offerten und E-Mails. Ohne Hype, in 5 Minuten.",
+  "btn": "Büro-Prompts holen →"
+ },
+ {
+  "slug": "utm-builder",
+  "head": "Jetzt siehst du, welcher Kanal wirkt. Bei KI-Tools lohnt sich derselbe Blick.",
+  "sub": "Pro Ausgabe 3 KI-Updates mit klarem Urteil und 1 getestetes Tool, eingeordnet für Selbstständige und KMU, die ihr Marketing selbst machen. Nüchtern, in rund 5 Minuten.",
+  "btn": "Urteil mitlesen →"
+ },
+ {
+  "slug": "uuid-generator",
+  "head": "Wer IDs erzeugt, baut oft Automatisierungen. Dort lohnt ein Blick auf KI.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool mit klarer Ansage, für wen es passt und für wen nicht – dazu 3 Updates mit klarem Urteil. Rund 5 Minuten.",
+  "btn": "Tool-Tests lesen →"
+ },
+ {
+  "slug": "video-id-extractor",
+  "head": "Eine ID, alle Links. Für Titel und Beschreibungen taugt oft ein guter Prompt.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Titel, Texte und Beschreibungen – und 1 getestetes KI-Tool mit ehrlichem Urteil, für wen es taugt. 5 Minuten.",
+  "btn": "Prompts holen →"
+ },
+ {
+  "slug": "virale-prompts-check",
+  "head": "Weniger Show, mehr Auftrag: So sehen Prompts aus, die im Alltag tragen.",
+  "sub": "Jede Ausgabe enthält 1 Prompt zum Kopieren, 1 selbst getestetes KI-Tool und 3 Updates mit klarem Urteil: lohnt sich, abwarten oder ignorieren. 5 Minuten.",
+  "btn": "Bessere Prompts holen →"
+ },
+ {
+  "slug": "volumen-rechner",
+  "head": "Übrigens schreibe ich jeden Werktag über KI im Berufsalltag.",
+  "sub": "aban news: 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt – für Selbstständige und KMU, rund 5 Minuten.",
+  "btn": "Schau mal rein →"
+ },
+ {
+  "slug": "wlan-qr",
+  "head": "Gäste sind online. Ich schreibe werktags über KI bei der Arbeit.",
+  "sub": "Ein kurzer Newsletter für Selbstständige und KMU: 3 eingeordnete KI-Updates, 1 getestetes Tool, 1 Prompt zum Kopieren. Etwa 5 Minuten.",
+  "btn": "Lies mal rein →"
+ },
+ {
+  "slug": "wochentag-rechner",
+  "head": "Der Wochentag ist klar. Werktags schreibe ich über KI im Arbeitsalltag.",
+  "sub": "Montag bis Freitag frühmorgens, rund 5 Minuten: ehrlich eingeordnete KI-Updates und 1 selbst getestetes Tool, ohne Hype.",
+  "btn": "Probier eine Ausgabe →"
+ },
+ {
+  "slug": "woerter-pro-seite",
+  "head": "Weniger Seiten, gleiche Aussage: Beim Kürzen und Gliedern hilft KI.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren und 1 getestetes KI-Tool – nützlich für Angebote, Berichte und längere Texte. Mit ehrlichem Urteil, in 5 Minuten.",
+  "btn": "Text-Prompts sichern →"
+ },
+ {
+  "slug": "wuerfel-roller",
+  "head": "Abseits vom Spieltisch schreibe ich werktags über KI im Job.",
+  "sub": "Kurz und nüchtern: 3 KI-Updates mit Urteil, 1 getestetes Tool, 1 Prompt. Gedacht für Selbstständige und KMU, etwa 5 Minuten.",
+  "btn": "Mitlesen, wenn du magst →"
+ },
+ {
+  "slug": "youtube-beschreibung-generator",
+  "head": "Die Struktur steht, den Inhalt schreibst du. Wo KI dabei taugt, teste ich.",
+  "sub": "Werktäglich 1 KI-Tool mit klarer Ansage, für wen es sich lohnt und für wen nicht, plus 1 Prompt zum Kopieren, etwa für Entwürfe und Ideen. 5 Minuten.",
+  "btn": "Lies die Einordnung →"
+ },
+ {
+  "slug": "youtube-einnahmen-rechner",
+  "head": "Eine ehrliche Spanne statt großer Versprechen – so ordne ich auch KI-News ein.",
+  "sub": "3 KI-Updates pro Werktag, jedes mit klarem Urteil: lohnt sich, abwarten oder ignorieren. Dazu 1 getestetes Tool. Keine Hype-Zahlen, rund 5 Minuten.",
+  "btn": "Bleib nüchtern informiert →"
+ },
+ {
+  "slug": "youtube-embed-generator",
+  "head": "Das Video ist eingebettet. Fehlt noch der Text, der zum Anschauen bewegt?",
+  "sub": "Werktäglich 1 KI-Tool, selbst getestet und klar eingeordnet, dazu 1 Prompt zum Kopieren, etwa für Seitentexte und Videobeschreibungen. 5 Minuten.",
+  "btn": "Prompts abholen →"
+ },
+ {
+  "slug": "youtube-thumbnail",
+  "head": "Ein gutes Thumbnail erkennst du sofort. Ein gutes KI-Tool erst im Test.",
+  "sub": "Ich teste werktäglich 1 KI-Tool selbst und sage dir, für wen es taugt und für wen nicht. Dazu 3 KI-Updates mit klarem Urteil. 5 Minuten Lesezeit.",
+  "btn": "Hol dir die Tests →"
+ },
+ {
+  "slug": "youtube-zeitstempel",
+  "head": "Kapitel sortieren dein Video. Ein guter Prompt sortiert deine Texte.",
+  "sub": "Mo–Fr 1 Prompt zum Kopieren, 1 getestetes KI-Tool und 3 Updates mit Urteil: lohnt sich, abwarten oder ignorieren. In rund 5 Minuten gelesen.",
+  "btn": "Werktags mitlesen →"
+ },
+ {
+  "slug": "zahlensystem-umrechner",
+  "head": "Hex, Dezimal, Binär sind umgerechnet. KI-News übersetze ich dir in Klartext.",
+  "sub": "Mo–Fr 3 KI-Updates mit klarem Urteil und 1 selbst getestetes Tool, mit Hinweis, für wen es passt und für wen nicht. 5 Minuten, ohne Hype.",
+  "btn": "Klare Urteile lesen →"
+ },
+ {
+  "slug": "zahlungsfrist-rechner",
+  "head": "Du weißt, wann gezahlt sein muss. Die Zahlungserinnerung kann KI vorformulieren.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Zahlungserinnerungen, Angebote oder heikle Kundenmails, plus 1 getestetes KI-Tool mit ehrlichem Urteil. 5 Minuten.",
+  "btn": "Nachhaken erleichtern →"
+ },
+ {
+  "slug": "zeichen-limit-social",
+  "head": "Der Post passt ins Limit. Beim Schreiben selbst kann KI mehr als kürzen.",
+  "sub": "Werktäglich 1 Prompt zum Kopieren, etwa für Posts, Produkttexte und Kundenmails, plus 1 KI-Tool, das ich selbst teste und klar einordne. 5 Minuten.",
+  "btn": "Schreib-Prompts holen →"
+ },
+ {
+  "slug": "zeichenzaehler",
+  "head": "Zählen ist schnell erledigt. Das Schreiben kostet die Zeit, und da setzt KI an.",
+  "sub": "Jeden Werktag 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt, den du direkt für deinen nächsten Text kopieren kannst. Rund 5 Minuten.",
+  "btn": "Nächsten Prompt holen →"
+ },
+ {
+  "slug": "zeitrechner",
+  "head": "Das Ende des Arbeitsblocks steht. Manche Aufgaben darin kann KI abnehmen.",
+  "sub": "Ich teste KI-Tools im Arbeitsalltag und sage werktäglich, welches Aufwand spart und welches nicht: lohnt sich, abwarten oder ignorieren. 5 Minuten.",
+  "btn": "Tool-Tests abonnieren →"
+ },
+ {
+  "slug": "zeitspanne-rechner",
+  "head": "Die Stunden sind addiert. Beim Admin-Anteil darin lohnt sich ein Blick auf KI.",
+  "sub": "Werktäglich 1 selbst getestetes KI-Tool mit klarem Urteil, dazu 1 Prompt zum Kopieren, etwa für Mails, Offerten oder Protokolle. Für Selbstständige, 5 Minuten.",
+  "btn": "Büroarbeit abkürzen →"
+ },
+ {
+  "slug": "zeitzonen-rechner",
+  "head": "Der Termin steht für alle. Beim Protokoll danach kann KI dir zuarbeiten.",
+  "sub": "Nüchtern eingeordnet: 3 KI-Updates, 1 Tool im Selbsttest und 1 Prompt zum Kopieren. Jeden Werktag früh am Morgen im Postfach, in rund 5 Minuten gelesen.",
+  "btn": "Updates erhalten →"
+ },
+ {
+  "slug": "zinseszins-rechner",
+  "head": "Ohne Finanztipps: Mein Thema ist KI im Arbeitsalltag, werktags in 5 Minuten.",
+  "sub": "aban news bringt Mo–Fr 3 KI-Updates mit klarem Urteil, 1 getestetes Tool und 1 Prompt für die Arbeit. Keine Geldtipps, rund 5 Minuten.",
+  "btn": "Einmal reinschauen →"
+ },
+ {
+  "slug": "zufalls-generator",
+  "head": "Das Los ist gezogen. Falls dich KI bei der Arbeit interessiert, lies mit.",
+  "sub": "Werktäglich 3 KI-Updates, 1 selbst getestetes Tool und 1 Prompt zum Kopieren, für Selbstständige und KMU. Rund 5 Minuten, nüchtern eingeordnet.",
+  "btn": "Kurz ansehen →"
+ }
+]
