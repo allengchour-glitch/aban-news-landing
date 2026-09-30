@@ -56,3 +56,20 @@ nur Deutschschweiz ansprechen (Sprache de), Kommentare in der Testphase aus.
 - TikTok-Klicks vs. Shopify-Sitzungen: 20–40 % Lücke ist normal (In-App-Browser), kein Fehler.
 - Bei 0 Käufen nach CHF 80: Ergebnis = welches Produkt/Video den billigsten Warenkorb bringt → Grundlage für
   organische Posts und die spätere Kampagne mit Pixel (Konto «LuxeStyle CH Ads»).
+
+## ✅ 30.09. 21:16 UTC — drei Spark Ads angelegt (Routine trig_01K2gxc6YXt7kTcK3sbsFoQf)
+Posts gemessen über `identity_video_get` (BC_AUTH_TT): alle drei organisch live, Status `ITEM_STATUS_HESITATE_RECOMMEND`
+(tragen auch alle älteren Posts — kein Befund), `is_ai_generated: true` (KI-Kennzeichnung aus Metricool greift).
+
+| Anzeige | ad_id | TikTok-Post | Zielseite (utm_content) |
+|---|---|---|---|
+| Sirène CHF 49.90 | 1877793049771441 | 7691427221021527329 | `/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe` (sirene) |
+| Aurora CHF 69.90 | 1877793049796626 | 7691432399791476000 | `/products/abendkleid-aurora-satin-spaghettitrager-schlitz` (aurora) |
+| Provence CHF 39.90 | 1877793049796642 | 7691437492066733344 | `/products/2-teiliges-leinen-set-provence-hemd-wide-leg-hose` (provence) |
+
+- Alle mit CTA SHOP_NOW, `utm_source=tiktok&utm_medium=paid&utm_campaign=lernen-okt26`. Anzeigengruppe 1877789510086802
+  (CH, Frauen 18–54, Ziel Klick, Gesamtbudget **CHF 80**, 30.09. 21:30 – 04.10. 21:30 UTC), Kampagne 1877789482580273.
+- **Anzeigentext = Post-Text** (Spark Pull übernimmt die Caption; unser `ad_text` ohne Emoji wurde ersetzt — kein Fehler).
+- Review: `ad_review_info` → alle drei `is_approved: true / ALL_AVAILABLE`; `ad_get` → `AD_STATUS_AUDIT` (Prüfung läuft noch).
+- Nächste Messung: 01.10. abends — Ausgaben, CTR, CPC je Anzeige (`report_integrated_get`) + Shopify-Sitzungen mit
+  `utm_campaign=lernen-okt26`; Entscheidregeln oben (nach CHF 25 je Anzeige: CPC > 0.60 oder CTR < 0,5 % → aus).
