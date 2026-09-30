@@ -1744,3 +1744,6 @@ ring-blauer-stein-elegant	gesetzt-1
 ring-schwarz-regenbogen-kristall	gesetzt-3
 stapelring-set-gold-mix	hat-liste
 siegelring-marmor-gold	gesetzt-1
+retro-flammen-tischlampe-led	gesetzt-2
+isolier-trinkflasche-edelstahl-huelle	gesetzt-3
+edelstahl-coffee-to-go-becher	gesetzt-2
