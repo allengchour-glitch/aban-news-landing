@@ -16,5 +16,27 @@
       "name": "rq-1745702295637073920",
       "url": "https://download-only-api.cjdropshipping.com/60158ab5b44671eead306723a78f0102/b72ec0a738fe4453be2b21fbc3bf97e3-4a737ec63492d672cc49646c990797ae-ld.mp4"
     }
-  ]
+  ],
+  "stand": "ok",
+  "begonnen": "2026-09-30T14:19:13.274Z",
+  "dauer_s": 16.1,
+  "ergebnis": {
+    "videos": [
+      {
+        "name": "rq-1585251275422314496",
+        "bytes": 1907953,
+        "datei": "auftraege/ergebnis/cj-torquellen-2026-09-30-14-07-e-rq-1585251275422314496.mp4"
+      },
+      {
+        "name": "rq-932a09a9-4a91-462d-a04d-235e9f41ec59",
+        "bytes": 5822302,
+        "datei": "auftraege/ergebnis/cj-torquellen-2026-09-30-14-07-e-rq-932a09a9-4a91-462d-a04d-235e9f41ec59.mp4"
+      },
+      {
+        "name": "rq-1745702295637073920",
+        "bytes": 3974933,
+        "datei": "auftraege/ergebnis/cj-torquellen-2026-09-30-14-07-e-rq-1745702295637073920.mp4"
+      }
+    ]
+  }
 }
