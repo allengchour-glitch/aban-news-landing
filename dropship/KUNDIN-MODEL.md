@@ -237,3 +237,14 @@ Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den 
   ⚠️ Die Caption vom 04.09. nennt CHF 14.90 — veraltet, nie so posten.
 - **Shop-Upload erneut geprüft (1 Foto): FAILED `FILE_STORAGE_LIMIT_EXCEEDED`** → Medium sofort entfernt, Produkt wieder 6/6 READY.
   Shop braucht Platz im Dateispeicher (Betreiber-Entscheid: aufräumen oder Grow-Plan).
+
+### ✅ 30.09. 16:5x UTC — Tati-Video gepostet (Betreiber: «Ja, posten», trotz Produkt-Regel, weil eigenes Model-Material)
+- `automation/reel/fotos_reel.py` (neu, Fotos per Plan, nie im Repo): 3 harte Schnitte in Sekunde 1, Dias 2 s mit Ken Burns
+  (oben verankert), Foto zwischen Hook- und Produktzone (Betreiber «gesicht nicht decken» — kein Text über dem Gesicht),
+  Foto 07 raus (Gesicht im Original angeschnitten), Schlusskarte mit Live-Preisen. Erster Entwurf schrieb «Versand aus der
+  Schweiz» — falsch (CJ, China) → «Gratis Versand ab CHF 50». Tor ✓ (Hook 5,08, −14,4 LUFS, Bildpreise = Caption),
+  Gemini-Jury 8,83 (Sauberkeit 10, Stimmigkeit 10).
+- `automation/reel/privat_reel_post.mjs` (neu): IG resumable upload + FB-Datei-Upload, KEINE öffentliche Ablage; Wachen:
+  Lock, Medien-Ledger, `markierungFehlt` (Kanarienvogel ohne @-Markierung → Exit 2), FB-Seitenwache.
+- **IG 17864629440679186** (https://www.instagram.com/reel/Dd6wC1RiWEd/, Markierung zurückgelesen ✓) · **FB-Video 1036507699423763**.
+- Shop: wartet auf Speicherplatz (Betreiber: Duplikat-Bilder löschen, 6,83 GB).

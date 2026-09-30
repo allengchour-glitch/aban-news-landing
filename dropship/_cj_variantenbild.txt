@@ -5108,3 +5108,4 @@ gid://shopify/Product/15452709749121	zugeordnet	44	Leichte Industrieschutzschuhe
 gid://shopify/Product/15452709781889	zugeordnet	14	Unisex-Atmungsaktive Sportschuhe mit Stossdämpfung
 gid://shopify/Product/15452709814657	zugeordnet	14	Stretch-Woven Laufschuhe mit Popcorn-Rubber-Sohle
 gid://shopify/Product/15452709847425	zugeordnet	10	Axige Leder-Plattformschuhe Romantische Sandalen
+gid://shopify/Product/15452709880193	zugeordnet	17	Herren Casual Sportschuh für Waldspaziergänge
