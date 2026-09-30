@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:42:51Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T14:45:39Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1187 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3265** in 882 Produkten
-- Treffer (≥ 4 Wörter): **143** in 121 Produkten
+- Medien geprüft: **3358** in 907 Produkten
+- Treffer (≥ 4 Wörter): **149** in 126 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -23,17 +23,21 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | ENTFERNT |
 | Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
 | Aufblasbare Nackenstütze `15504011231617` | [70583674536321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e273f284-0202-4442-8616-c72997e32732_trans.jpg) | 24 | Ergonomic Design Assist relieving cervical fatigue More fitting | offen |
+| Outdoor Sport Smartwatch mit Bluetooth-Anruffunk `15523936829825` | [70771944554881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402260207580325900.jpg) | 24 | waterproof life without fear waterproof daily and can | offen |
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69650083316097](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edelstahl-trinkflasche-hydro-570-ml-edit.jpg) | 23 | Stainless Steel Tea Storage Drink tea with peace | ENTFERNT |
 | Smartwatch mit Herzfrequenz und Anruffunktion `15524886774145` | [70800820633985](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1720366426231017472.jpg) | 23 | Hyperuricemia risk assessment Uric acid The normal value | offen |
+| WLAN Mini Beamer für Zuhause `15523938730369` | [70771980239233](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/644790402982.jpg) | 23 | LED PROJECTOR MORE ENJOYMENT display Easily get cinema | offen |
 | Magnetische Sportbrille für Helm `15453768810881` | [69926688948609](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94d8c59c-9774-43ab-b99c-f851e81e0a74.jpg) | 22 | SAFE TRAVEL Thousands safety safe the critical moment | ENTFERNT |
 | Pinguin-Tuch zum Abwischen `15453791093121` | [69926763987329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2591efa5-f7fd-4ddc-a6e2-fb67637ca6b7_trans.jpg) | 21 | Not easy shed hair Caring for the quality | ENTFERNT |
 | Faltbarer Joystick mit Display-Fernbedienung `15433464250753` | [69712351560065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/406f332f-0d28-4363-b23b-80bd80122925_fine.jpg) | 21 | Remote control with screen and foldable joystick disassembly | ENTFERNT |
 | SouthMoon Mugwort Bein-Patches `15448822907265` | [69861107401089](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/271cdf1d-42bb-4d8d-a235-4901202c9bb1.jpg) | 21 | legs easily not easy stick your figure Post | ENTFERNT |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69551858450817](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30121526-a689-45d1-9ed4-91e88a11b644_water_trans.jpg) | 21 | Stainless Steel Tea Storage Drink tea with peace | offen |
 | Holziges Raumfeuchtigkeitsgerät `15453772153217` | [69926698451329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/92451689-d71f-4c27-be0d-757de9de3bc5_trans.jpg) | 20 | Enjoy sweet sleep Light tone humidification company does | ENTFERNT |
+| K52 Bluetooth Anruf Smartwatch Ultra-lange Stand `15523922149761` | [70771616350593](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2403041355130327300.jpg) | 20 | Screen IPS material screen makes color saturation are | offen |
 | Magnetische falsche Wimpern mit Seifenhalter `15453769138561` | [69926689341825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/139c7f2f-5dd6-4bde-8996-51550972abd7_fine.jpg) | 19 | Added magnetic groove Adsorbed eyelashes Upward curved clip | offen |
 | Sommer-Schlafsack für Baby & Kleinkind `15453792534913` | [69926765855105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba293841-75d1-444d-9134-e6bf7cc99b53_trans.jpg) | 19 | Soft bamboo cotton Breathable and comfortable Infant sleeping | offen |
+| Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [70772000784769](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a5a282f-1435-44e1-a408-ca1c456133df_trans.jpg) | 19 | Cloud Deep Sleep Silicone Pillow Grade Antibacterial and | offen |
 | Bein-Druck Dumbbell Stange für Beinheben & Muske `15453792469377` | [69926765822337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd047f6d-62fe-46ee-b92d-fa16894d4d1f_trans.jpg) | 18 | Jianxiang Cast iron material NBR Foam Detachable Factory | ENTFERNT |
 | Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | ENTFERNT |
 | Baby Anti-Schreck Kissen `15453778870657` | [69926718275969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9da8281b-246a-470d-89db-9caafda33504.jpg) | 18 | Smart Bionic Patting Sleep Fall Asleep with Gentle | offen |
@@ -121,6 +125,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Nixie-Röhrenuhr mit Wecker aus Walnussholz `15501005291905` | [70551630807425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/640bcf9f-7da6-4b62-8469-9399beef9d90.jpg) | 6 | GERALDINI MUUTO ESIGN THE SOLACE SOAKING | offen |
 | Kauenset für Hunde `15453794107777` | [69926768574849](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ff594967-2e75-4732-b025-8e79c783bf96_fine.jpg) | 6 | Teeth firm and ith meaty aroma | ENTFERNT |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061251969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0146b03d-9d8d-4c56-a411-7dea5e6f1758_water_trans.jpg) | 6 | utdoor Travel ion open with ATASAW | ENTFERNT |
+| Kissenbezug Ethno‑Muster aus Baumwolle und Leine `15524474126721` | [70777373983105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1892f474-d266-4770-8e78-4c386aed6a47_trans.jpg) | 6 | Japanese Pattern Mount Fuji Lumbar Pillow | offen |
 | Stiller Aroma Diffusor für Zuhause & Büro `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
@@ -154,6 +159,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | 6er Set Ätherische Öle `15450851934593` | [69887443272065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2238128500626.jpg) | 4 | KBAY Pure essential oils | offen |
 | DIY Notizbuch Diamond Painting Set `15504098099585` | [70585666797953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/97e0576d-c964-415a-809d-235fa4622d65.jpg) | 4 | Diamond Painting Pages Notebook | offen |
 | Anti-Falten Naturkern Creme `15521323286913` | [70733673267585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9ea20bb-5335-4ffc-aa47-a9e946abed95.jpg) | 4 | TEN KON MIRRC LIV | offen |
+| Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [77406935318919](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f15a2c8-bd86-4fdc-aafc-dc131f8d63ed_trans.jpg) | 4 | silicone Scm and more | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 

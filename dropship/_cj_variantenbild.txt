@@ -4958,3 +4958,16 @@ gid://shopify/Product/15451641479553	zugeordnet	2	Wand-Schlüsselbox mit Zahlenc
 gid://shopify/Product/15451924431233	zugeordnet	9	Herren Quarzuhr mit Leuchtzeigern und Stahlband
 gid://shopify/Product/15451924496769	zugeordnet	2	Solar Taucheruhr aus Edelstahl
 gid://shopify/Product/15451926331777	zugeordnet	15	Drapiertes V-Neck Kleid mit Textur
+gid://shopify/Product/15451926397313	zugeordnet	20	Ärmelloses A-Linien Kleid mit Schleifendetails
+gid://shopify/Product/15451926593921	zugeordnet	10	Elegantes Abendkleid mit Stickereien
+gid://shopify/Product/15451926692225	zugeordnet	15	Elegantes Satin-Patchwork Slip-Kleid
+gid://shopify/Product/15451926724993	zugeordnet	40	Chiffonkleid mit Volants und Taillengürtel
+gid://shopify/Product/15451926757761	zugeordnet	10	Leoparden-Kleid mit V-Ausschnitt
+gid://shopify/Product/15451926823297	zugeordnet	20	Französisches V-Neck Kleid mit Taillengürtel
+gid://shopify/Product/15451926954369	zugeordnet	12	Neckholder-Plisseekleid mit V-Ausschnitt
+gid://shopify/Product/15451927314817	zugeordnet	35	Damen A-Linien Freizeitkleid aus Baumwoll-Leinen
+gid://shopify/Product/15451927413121	zugeordnet	18	Eleganter Jupe-Anzug im Business-Stil
+gid://shopify/Product/15451927445889	zugeordnet	15	Elegantes Mesh-Panel Maxikleid mit Rückenausschnitt
+gid://shopify/Product/15451927773569	zugeordnet	17	Leinenmisch-Hemd für Herren
+gid://shopify/Product/15451927839105	zugeordnet	30	Herren Corduroy Hemd-Jacke mit Brusttasche
+gid://shopify/Product/15451927871873	zugeordnet	8	Herren Sommer Hemd Kurzarm Gestreift Floral
