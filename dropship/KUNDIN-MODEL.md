@@ -273,3 +273,9 @@ Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den 
 - Sichtprüfung im echten Chromium bei 390 / 768 / 1024 / 1440 px: Gesicht überall frei (erster Desktop-Wurf: Text über dem linken Foto
   → Fotos nach rechts). Mobil beginnt der Text knapp unter dem Kinn.
 - Offen: Knopf heisst weiter «Übergangsmode entdecken» (Betreiber-Frage, ob er auf die Kleider zeigen soll).
+
+### 30.09. — Titelbild-Knopf zeigt auf Kleider (Betreiber «knopf auf kleider zeigen»)
+- Startseiten-Hero `hero_jVaWmY`, Block `button_H9gpTf`: «Übergangsmode entdecken» → `/collections/jacken-outdoor`
+  ersetzt durch **«Kleider entdecken» → `shopify://collections/sub-kleider`** (Kollektion «Kleider», 3'141 Produkte,
+  9 Kanäle, enthält Tatis Blumenkleid; das Midikleid liegt in `midikleider`). Backup `/tmp/index_backup_vor_knopf.json`,
+  per Admin-API zurückgelesen. Rücknahme = label/link zurücksetzen.

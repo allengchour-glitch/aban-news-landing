@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:57:15Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T17:00:08Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1204 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4157** in 1132 Produkten
-- Treffer (≥ 4 Wörter): **164** in 141 Produkten
+- Medien geprüft: **4254** in 1157 Produkten
+- Treffer (≥ 4 Wörter): **165** in 142 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -175,6 +175,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [77406935318919](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f15a2c8-bd86-4fdc-aafc-dc131f8d63ed_trans.jpg) | 4 | silicone Scm and more | offen |
 | Automatischer Futter- und Wasserspender `15453774545281` | [77407199363463](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dd2059f6-db77-4f5d-8664-c9f8e5d0e5d1_trans.jpg) | 4 | Blue Stainless Steel Bowl | offen |
 | Kinder-Schlafkissen mit Schlaf-Puppe `15453776413057` | [77407215485319](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fec7fcf-3d75-4a83-becb-62a2dc4de8b6_trans.jpg) | 4 | Embrace design Children feel | offen |
+| Keilkissen-Set für Rücken, Beine und Knie `15496359510401` | [77409979826567](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cb2eb66a-aaca-46c2-b521-0b82de4bdc18.jpg) | 4 | Snoring Issue surgery Relaxation | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
