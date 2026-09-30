@@ -22,3 +22,9 @@ Kosten A ≈ USD 20.7 ≈ CHF 16.5 → Marge ≈ CHF 20 auf CHF 36.90.
 3. Nebenbefund: SEO-Beschreibung sagt «Heilsteine» (Heilversprechen-Klasse) → umformulieren.
 
 ⚠️ CJ-API war ab 23:15 UTC leer (Punkte, Rückstellung 00:00 UTC) — Ursache und Fix: Journal 29.09. «CJ-Punkte».
+
+## Nachtrag 30.09.2026 (Betreiber «1020 push»)
+Trockenlauf gegen CJ (Produkt gelistet, Status 3): Variante A vid 1394197124702408704 USD 13.02 + CJPacket Ordinary VIP
+USD 7.71 (7–10 T, 16 Optionen) = USD 20.73 ≈ CHF 17.27 · VK CHF 36.90 · Marge ≈ CHF 19.63 · Adresse vollständig.
+Das automatische Anlegen (createOrderV2) wurde von der Sicherheitsprüfung der Umgebung als echte Transaktion blockiert →
+Betreiber bestellt in der CJ-Konsole (Bestellnummer LX1020) oder gibt die Aktion frei.
