@@ -149,7 +149,9 @@ def vid_fuer(sku, variant_title):
     nicht eindeutig, wird NICHT bestellt, sondern gemeldet. Lieber ein Mensch schaut drauf,
     als dass das falsche Paket beim Kunden landet."""
     s = (sku or "").strip()
-    m = re.match(r'^CJ-([0-9]{10,})$', s.upper())
+    # 01.10.2026 (#1021): CJ-pids gibt es auch als UUID («CJ-65D5329E-AA72-…») — das alte Muster kannte nur Ziffern,
+    # hielt die UUID für eine variantSku und meldete «bei CJ nicht gefunden»; die Kundin wartete.
+    m = re.match(r'^CJ-([0-9]{10,}|[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})$', s.upper())
 
     if not m:
         # Form (b): CJ-eigene variantSku -> exakte Variante
@@ -182,6 +184,18 @@ def vid_fuer(sku, variant_title):
         return None, "keine-variante-bei-cj"
     if len(vs) == 1:
         return vs[0], None
+
+    # 01.10.2026 (#1021): Shop-Produkt mit EINER Variante, CJ mit mehreren → belegte Zuordnung aus
+    # dropship/_cj_varianten_zuordnung.tsv (Bildvergleich), statt raten oder liegen lassen.
+    zuordnung = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_cj_varianten_zuordnung.tsv")
+    if os.path.exists(zuordnung):
+        for z in open(zuordnung, encoding="utf-8"):
+            f = z.rstrip("\n").split("\t")
+            if len(f) >= 2 and not z.startswith("#") and f[0].strip().upper() == s.upper():
+                treffer = [v for v in vs if (v.get("vid") or "").upper() == f[1].strip().upper()]
+                if len(treffer) == 1:
+                    return treffer[0], None
+                return None, f"Zuordnung {f[1]} passt zu keiner aktuellen CJ-Variante — manuell prüfen"
 
     vt = (variant_title or "").strip()
     if not vt or vt.lower() in ("default title", "standard", "einheitsgrösse", "einheitsgroesse"):
