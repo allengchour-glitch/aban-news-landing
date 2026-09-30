@@ -24,3 +24,12 @@ Kristall-Set: CJMB113271001AZ (BESTELLUNG-1020-KRISTALL-SET.md).
 - **Regenwolken-Diffuser (LX-DIFF):** Titel «Regenwolken … 7 Nachtlichter», Hauptbild zeigt einen Holz-Ei-Diffuser → Bild oder Titel irreführend.
 - **Handy-Makeover-Set (LX-PHN):** Titel «Charms, Grip & MagSafe-Halter», Hauptbild zeigt nur einfarbige Hüllen.
 - **Ohne Quelle:** Cellulite-Roller (LX-25), Bambus-Kosmetik-Organizer (LX-35) — bei Bestellung erstatten oder vorher auf Entwurf setzen (Betreiber-Entscheid).
+
+## Nachtrag 08:45 UTC — Bilder ersetzt (Betreiber «bilder ersetzen ja»)
+- **Regenwolken-Diffuser (LX-DIFF):** ✅ 3 Bilder des CJ-Quellprodukts 1697439781971570688 (weiss freigestellt, grünes Licht, im Einsatz;
+  kein Werbetext), altes Holz-Ei-Bild entfernt. Zurückgelesen: Hauptbild «Regenwolken-Aroma-Diffuser weiss».
+- **Handy-Makeover-Set (LX-PHN):** ⚠️ Set-Bild (Charm-Kette + MagSafe-Ring + Griff, ohne Fremdtext/Logo) gebaut, Upload scheitert an
+  **FILE_STORAGE_LIMIT_EXCEEDED** (100 GB voll). Ich hatte das alte Bild VOR dem Upload gelöscht, um Platz zu schaffen — Shopify gibt den
+  Speicher nicht sofort frei, 6 Versuche über 6 Min. scheiterten, das Zurücksetzen auch. Produkt deshalb auf **DRAFT** + Tag
+  `bild-fehlt-speicher-voll`. Neues Bild liegt in `dropship/_bild_backup/lx-phn-handy-makeover-set-neu.jpg` — hochladen und wieder
+  ACTIVE setzen, sobald Speicher frei ist (Grow-Plan oder Aufräumen).

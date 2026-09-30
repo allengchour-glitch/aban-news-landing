@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 🖼️ Bei vollem Dateispeicher NIE zuerst löschen: Handy-Set ohne Bild → DRAFT
+
+Bildtausch LX-DIFF gelang (3 CJ-Bilder). LX-PHN: Upload FILE_STORAGE_LIMIT_EXCEEDED; ich löschte das alte 5616×3744-Bild, um Platz zu
+schaffen — Shopify gibt Speicher NICHT sofort frei (6 Versuche/6 Min., auch Rücksetzen scheiterte) → Produkt ohne Bild → DRAFT +
+`bild-fehlt-speicher-voll`, neues Bild im Repo `dropship/_bild_backup/`. LEHRE: Erst hochladen und READY sehen, dann das alte löschen —
+nie umgekehrt, schon gar nicht bei vollem Speicher.
+
 ## 2026-09-30 · 🧮 Erstattet, aber «PAID»: PENDING-Rückbuchungen machten #1019 zum Verkauf (GROW 2/3 statt 1/3)
 
 Shopify Payments führt eine voll erstattete Bestellung 1–2 Tage als PAID mit totalRefundedSet 0.00. Drei Zähler (Bestell-Ampel,
