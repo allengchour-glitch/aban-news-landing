@@ -436,7 +436,7 @@ Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_
 - **Auto-Website (Startseite selbst-frisch):** Homepage-Freshness-Reihen (neu-eingetroffen, trends-gadgets,
   elektronik-technik, wohnen-dekoration, blitzversand-schweiz, eu-lager-schnell, parfuem-damen) auf
   **sortOrder=CREATED_DESC** → neue CJ-Importe erscheinen automatisch oben. Bestseller/Premium bleiben BEST_SELLING.
-- **Google-Scorecard CH = «Great»** (Versand/Rückgabe/HD-Bilder grün); einzige Lücke «Images per offer» →
+- **Google-Scorecard CH = «Great»** (GEMESSEN Mail 29.09.: Versandkosten/Rückgabefrist/Rückgabekosten «Exceptional», HD-Bilder «Good», Bilder/Angebot «Incomplete», Lieferzeit fehlt ganz; Mail 30.09. = Scorecard DEUTSCHLAND «Good», alle 6 «Incomplete» — DE ist noch Feed-Land, Shop liefert nur CH → Betreiber-Klick: DE aus Feed-Ländern entfernen); einzige Lücke «Images per offer» →
   Fortura-Bild-Backfill arbeitet sie ab. Alt-kuratierte 1-Bild-Produkte (~500, keine Lieferanten-Quelle) = Rest.
 
 ## ⏱️ Keepalive ausgedünnt (User-Ja, 25.08.2026)
