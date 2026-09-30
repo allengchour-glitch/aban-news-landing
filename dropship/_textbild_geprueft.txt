@@ -56255,3 +56255,4 @@ gid://shopify/Product/15453776707969	gid://shopify/MediaImage/69926707921281
 gid://shopify/Product/15453776740737	gid://shopify/MediaImage/69926707986817
 gid://shopify/Product/15453776773505	gid://shopify/MediaImage/69926708052353
 gid://shopify/Product/15453776806273	gid://shopify/MediaImage/69926708085121
+gid://shopify/Product/15453776839041	gid://shopify/MediaImage/77407436439943

@@ -138,3 +138,4 @@
 2026-09-30T11:12:15.486Z	luxe-epic-anime.wav	10.5	kinder	cjreel-3C903069-4390-4C74-9A70-37D44ADA6E76	stimme:nein	anteil
 2026-09-30T11:13:47.444Z	luxe-adventure-uplift.wav	41	mode	cjreel-1673563451437879296	stimme:ja	azure:de-CH-JanNeural
 2026-09-30T12:17:17.603Z	luxe-orchestra.wav	11.25	haustier	cjreel-1702616383424569344	stimme:nein	anteil
+2026-09-30T12:18:48.656Z	luxe-orchestra.wav	18	allgemein	cjreel-1394558713930584064	stimme:nein	anteil
