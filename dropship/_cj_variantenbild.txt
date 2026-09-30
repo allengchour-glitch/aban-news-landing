@@ -4985,3 +4985,6 @@ gid://shopify/Product/15451929903489	zugeordnet	10	Herren Weste mit Stehkragen
 gid://shopify/Product/15451930100097	zugeordnet	36	Slim-Fit Herrenweste · koreanischer Stil
 gid://shopify/Product/15451930263937	zugeordnet	12	Kapuzenjacke für Herren
 gid://shopify/Product/15451930657153	zugeordnet	16	Gothic Military Herrenjacke
+gid://shopify/Product/15452299755905	zugeordnet	18	Elegante Pumps mit spitzer Kappe
+gid://shopify/Product/15452300280193	bild-urls-tot
+gid://shopify/Product/15452300509569	zugeordnet	12	Elegante Nubuk-Sandalen mit Blockabsatz
