@@ -6295,8 +6295,10 @@ setTimeout(function baueFussg(){
    {skin:0xd8a878,hair:0x4a3a20,top:0x4ac8c0,bottom:0x2f3f52,dress:false,longHair:false}];
   function fg(i,x,z,axis,dir,lim0,lim1,stand,yaw){
     var m=mkBewohner(PAL[i%PAL.length]);m.scale.setScalar(1.15);scene.add(m);
+    var k9=fussg.length;
     fussg.push({mesh:m,x:x,z:z,axis:axis||"x",dir:dir,speed:1.0+((i*3)%4)*0.32,walkT:i*2,
-      lim0:lim0,lim1:lim1,stand:!!stand,yaw:yaw});}
+      lim0:lim0,lim1:lim1,stand:!!stand,yaw:yaw,
+      fi:k9,datei:FIG_DATEIEN[k9%FIG_DATEIEN.length],skala:0.95+((k9*7)%11)/100});} /* Runde 105 Teil 3: echte Figur + Groesse 0,95–1,05 */
   // Hauptstrassen Nord/Sued (mehr Volk als vorher)
   /* 🚶 Die Leute liefen bei ±(SZ+5.9)=±51.9 — seit die Hauptstrasse 16 m breit ist, liegt
      das MITTEN AUF DER FAHRBAHN (Band 50..66). Gehwegmitten sind 58∓9.1, also SZ+2.9 innen
@@ -6331,33 +6333,127 @@ setTimeout(function baueFussg(){
   /* ⚠️ z = 137, nicht 168: das Spielfeld liegt bei (53|155) und ist 30 tief —
      die Torauslinie laeuft auf 140 und 170. Auf 168 waeren die Leute IM Feld. */
   for(var g4=0;g4<2;g4++)fg(g4+1,40+g4*16,137.0,"x",g4%2?1:-1,32,74);      // Sportplatz
+  figurenLaden();
 },0);
 function updFussg(dt,now){
   var panik=(typeof wanted!=="undefined"&&wanted>0);
   fussg.forEach(function(p){
-    var spd=p.speed*(panik?2.6:1);
+    var spd=panik?Math.max(p.speed*2.6,3.4):p.speed; /* Rennen unter 3,4 m/s saehe mit dem Renn-Clip nach Zeitlupe aus (Abspieltempo < 0,76) */
     if(p.stand){ // Verkaeufer: stehen hinterm Stand, blicken zur Kundschaft
-      p.mesh.position.set(p.x,0.06,p.z);p.mesh.rotation.y=p.yaw||0;
+      p.mesh.position.set(p.x,0.06,p.z);
+      _fgDreh(p,(p._blick!==undefined?p._blick:(p.yaw||0)),dt); /* angesprochen: dreht sich zum Spieler */
       var us=p.mesh.userData;if(us&&us.ll){us.ll.rotation.x=0;us.rl.rotation.x=0;us.la.rotation.x=0;us.ra.rotation.x=0;}
+      if(p.fig){figZustand(p.fig,"idle",0.3);figTick(p,dt);}
       return;}
     var az=(p.axis==="z");
-    if(az)p.z+=p.dir*spd*dt;else p.x+=p.dir*spd*dt;
+    /* 🔄 Am Streckenende kehrten alle im selben Bild um — 180 Grad auf der Stelle, und die neue Richtung
+       lief sofort los, waehrend die Figur noch zurueckschaute. Jetzt: 0,6 s stehen und umdrehen. */
+    if(p._wende>0)p._wende-=dt;
+    else{if(az)p.z+=p.dir*spd*dt;else p.x+=p.dir*spd*dt;}
     p.walkT+=dt*7*spd;
     var v9=az?p.z:p.x,l0=(p.lim0!==undefined?p.lim0:-84),l1=(p.lim1!==undefined?p.lim1:84);
-    if(v9>l1)p.dir=-1;if(v9<l0)p.dir=1;
+    if(v9>l1&&p.dir>0){p.dir=-1;p._wende=0.6;}if(v9<l0&&p.dir<0){p.dir=1;p._wende=0.6;}
     if(panik&&!p._schreck&&Math.random()<0.02){p._schreck=true;fgEmoji(p,"😱");}
     if(!panik)p._schreck=false;
-    p.mesh.position.set(p.x,0.06+(panik?Math.abs(Math.sin(p.walkT))*0.08:0),p.z);
-    p.mesh.rotation.y=az?(p.dir>0?0:Math.PI):(p.dir>0?Math.PI/2:-Math.PI/2);
+    p.mesh.position.set(p.x,0.06+(panik&&!p.fig?Math.abs(Math.sin(p.walkT))*0.08:0),p.z); /* echte Figur: der Renn-Clip federt selbst */
+    _fgDreh(p,az?(p.dir>0?0:Math.PI):(p.dir>0?Math.PI/2:-Math.PI/2),dt);
+    if(p.fig){var f9=p.fig;figZustand(f9,panik?"run":"walk",0.25);
+      var a9=f9.act[f9.aktuell];
+      if(a9){var rn=(f9.aktuell==="run"),vz=(rn?f9.v1Run:f9.v1)*f9.skala;
+        /* Abspieltempo = echtes Tempo / Weg je Sekunde bei Tempo 1 (gemessen, figuren-schau --schritt).
+           Sonst rutschen die Fuesse ueber den Gehweg. _stoerTs = Gegenprobe der Sonde. */
+        a9.timeScale=p._stoerTs?1:(p._wende>0?(rn?0.7:0.55):Math.max(rn?0.7:0.5,Math.min(rn?1.6:2.6,spd/vz)));} /* beim Umdrehen: kleine Schritte auf der Stelle */
+      figTick(p,dt);}
     var ud=p.mesh.userData;if(ud&&ud.ll){var sw=Math.sin(p.walkT);var amp=panik?0.9:0.55;
       ud.ll.rotation.x=sw*amp;ud.rl.rotation.x=-sw*amp;ud.la.rotation.x=-sw*(amp-0.15);ud.ra.rotation.x=sw*(amp-0.15);
       if(panik){ud.la.rotation.x-=1.5;ud.ra.rotation.x-=1.5;}}});}
+/* Blickrichtung weich nachfuehren: hoechstens 6 rad/s (eine halbe Drehung in gut 0,5 s), immer der kurze Weg. */
+function _fgDreh(p,ziel,dt){
+  if(p._yaw===undefined)p._yaw=ziel;
+  var d=Math.atan2(Math.sin(ziel-p._yaw),Math.cos(ziel-p._yaw)),m=dt*6;
+  p._yaw+=Math.max(-m,Math.min(m,d));p.mesh.rotation.y=p._yaw;}
 function fgEmoji(p,txt){
   var cv=document.createElement("canvas");cv.width=cv.height=48;var c=cv.getContext("2d");
   c.font="34px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,24,26);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(0.5,0.5,1);sp.position.y=2.1;p.mesh.add(sp);
   setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},1600);}
+/* ── 🚶 ECHTE FIGUREN FUER DIE PASSANTEN (Runde 105 Teil 3) ─────────────────────────────────────
+   GEMESSEN vorher (probe-passanten): 55 Passanten aus je 18,4 Einzelteilen (Kasten-Gliedmassen,
+   Kugelkopf), Arme und Beine per Sinus geschwenkt. Am Markt kosteten sie +253 Zeichenaufrufe.
+   Jetzt: Quaternius „Animated Men/Women" (CC0, models/ASSET-CREDITS.md), 8 Figuren mit echten
+   Proportionen und Alltagskleidung, je EIN Teil (Farben als Eckpunktfarben eingebacken, 1 800–2 800
+   Dreiecke), 8 Clips: Walk, Run, Idle, Punch, Death, Sitting, Standing, Clapping — die letzten fuer
+   Rangeln/Auftraege (Plan 9.2/9.3). Gewandelt mit spiele-dev/tools/fbx-zu-glb.mjs (kein Blender).
+   Die Kastenfigur bleibt als Platzhalter stehen, bis die Datei da ist — nie eine leere Stelle.
+   ⚠️ r128 hat kein SkeletonUtils: `clone(true)` kopiert das Skelett NICHT mit, die Klone zeigen
+   auf die Knochen der Vorlage (neon-park.html hat das schon einmal erlebt: Figur unsichtbar).
+   _skinKlon baut darum je Klon ein eigenes Skelett aus den geklonten Knochen. */
+var FIG_DATEIEN=["q_male_casual","q_female_casual","q_male_longsleeve","q_female_dress",
+                 "q_male_shirt","q_female_tanktop","q_male_suit","q_female_alternative"];
+/* Weg je Sekunde bei Abspieltempo 1 = Tempo, mit dem der Fuss WAEHREND DES BODENKONTAKTS nach hinten
+   wandert (figuren-schau --schritt, 240 Bilder je Zyklus; Kontakt = hoechstens 1,5 cm (Gehen) bzw.
+   2,5 cm (Rennen) ueber dem tiefsten Punkt dieses Fusses). Gehen: Maenner 1,55 m/s, Frauen 1,53.
+   Rennen: 4,02 / 3,95. ⚠️ ZWEI FALSCHE ZWISCHENSTAENDE, beide im Spiel nachgemessen:
+   „2 x Knoechel-Hub / Dauer" gab 1,51 / 2,31 (Hub zaehlt die Schwungphase mit — Fuss glitt vorwaerts),
+   „1 cm ueber dem Minimum beider Fuesse" gab beim Rennen 4,5 (der Knoechel ist erst beim Abstossen am
+   tiefsten und zieht dort am schnellsten — Fuss glitt 0,7–0,9 m/s rueckwaerts). Hueften wandern nicht. */
+function _figV(datei,renn){var w=/female/.test(datei);return renn?(w?3.95:4.02):(w?1.53:1.55);}
+var _figVorl={};
+function _skinKlon(src){
+  var c=src.clone(true),sN=[],cN=[];
+  src.traverse(function(n){sN.push(n);});c.traverse(function(n){cN.push(n);});
+  var m=new Map();for(var i=0;i<sN.length;i++)m.set(sN[i],cN[i]);
+  for(var j=0;j<cN.length;j++){var cn=cN[j],sn=sN[j];
+    if(cn.isSkinnedMesh&&sn.skeleton){
+      cn.bind(new THREE.Skeleton(sn.skeleton.bones.map(function(b){return m.get(b)||b;}),sn.skeleton.boneInverses),sn.bindMatrix);}}
+  return c;}
+function figZustand(f,ziel,blend){
+  if(f.aktuell===ziel)return;var neu=f.act[ziel];if(!neu)return;
+  var alt=f.aktuell?f.act[f.aktuell]:null;
+  neu.reset();neu.play();
+  if(alt&&blend>0)neu.crossFadeFrom(alt,blend,false);else if(alt)alt.stop();
+  f.aktuell=ziel;}
+/* Nah jedes Bild, mittel jedes 3., fern jedes 8. — die vergangene Zeit wird aufgespart, der Clip
+   laeuft also im richtigen Tempo weiter, nur in groeberen Schritten. Der Versatz fi verteilt die
+   Last, damit nicht alle fernen Figuren im selben Bild rechnen. */
+function figTick(p,dt){var f=p.fig;f._acc+=dt;f._n++;
+  var d=Math.hypot(p.x-camera.position.x,p.z-camera.position.z),alle=d<35?1:(d<80?3:8);
+  if((f._n+p.fi)%alle!==0)return;
+  f.mixer.update(f._acc);f._acc=0;}
+function figurAnlegen(p,v){
+  if(p.fig||!p.mesh)return;
+  var root=_skinKlon(v.szene),el=p.mesh.scale.x||1;
+  root.scale.multiplyScalar(p.skala/el);              /* die Kastenfigur traegt 1,15 — hier zaehlt nur p.skala */
+  root.position.y=0.008/el;                            /* Fuss steht in der Datei 8 mm unter null */
+  root.traverse(function(o){if(o.isMesh){o.castShadow=true;o.receiveShadow=false;}});
+  /* Kastenteile weg (sie hatten je eigene Geometrien); Kontaktschatten und Sprechblasen bleiben. */
+  p.mesh.children.slice().forEach(function(c){if(!c.isSprite&&!(c.userData&&c.userData.blob))p.mesh.remove(c);});
+  p.mesh.userData={nieAusblenden:true};
+  p.mesh.add(root);
+  var mx=new THREE.AnimationMixer(root),act={};
+  ["Walk","Run","Idle","Punch","Death","Sitting","Standing","Clapping"].forEach(function(n){
+    if(v.clips[n])act[n.toLowerCase()]=mx.clipAction(v.clips[n]);});
+  /* Knoechel = Spitze des Unterschenkels. ⚠️ Die *_end-Knoten sind nach dem Export KEINE Gelenke
+     (nicht in skin.joints, also kein isBone) — nur benannte Kinder, die mitlaufen. Nach Namen suchen. */
+  var fL=null,fR=null;root.traverse(function(o){if(o.name==="LowerLegL_end")fL=o;if(o.name==="LowerLegR_end")fR=o;});
+  var f={root:root,mixer:mx,act:act,aktuell:null,v1:_figV(p.datei,false),v1Run:_figV(p.datei,true),
+         skala:p.skala,fussL:fL,fussR:fR,_acc:0,_n:0};
+  figZustand(f,p.stand?"idle":"walk",0);
+  var a0=act[f.aktuell];if(a0)a0.time=((p.fi*0.37)%1)*a0.getClip().duration; /* nicht alle im Gleichschritt */
+  mx.update(0);                                        /* erstes Bild schon in Pose, nie Ruhepose (T) */
+  p.fig=f;}
+function figurenLaden(){
+  if(!GL)return;
+  FIG_DATEIEN.forEach(function(d){
+    window._ladePrioD=25;                              /* Innenstadt nahe am Start: vor den fernen Orten */
+    GL.load("/models/"+d+".glb",function(g){
+      var clips={};(g.animations||[]).forEach(function(c){clips[c.name]=c;});
+      var v=_figVorl[d]={szene:g.scene,clips:clips};
+      fussg.forEach(function(p){if(p.datei===d)figurAnlegen(p,v);});
+      if(window._aufwaermenBald)window._aufwaermenBald();
+    },undefined,function(){});                       /* ohne Datei bleibt die Kastenfigur — kein Fehlerbild */
+    window._ladePrioD=undefined;});}
 // ---- Ambiente-Tiere: Enten auf dem See + streunende Katzen/Hunde ----
 function mkEnte(){var g=new THREE.Group();var wm=new THREE.MeshStandardMaterial({color:0xf4f4ea,roughness:0.6});
   var body=new THREE.Mesh(new THREE.SphereGeometry(0.32,10,8),wm);body.scale.set(1.3,0.8,1);body.position.y=0.28;g.add(body);
@@ -16224,7 +16320,8 @@ function npcAnsprechen(){
   /* 🩹 Schwarm-7: bei Marktverkaeufern ist stand=true das DAUER-Flag (hinter
      der Theke) — der 3,5-s-Reset schickte sie nach dem ersten Gespraech auf
      Wanderschaft. Nur temporaer stoppen, wer nicht ohnehin steht. */
-  if(!f.stand){f.stand=true;setTimeout(function(){f.stand=false;},3500);}       // bleibt kurz stehen
+  if(!f.stand){f.stand=true;var sp9=spielerPos();f._blick=Math.atan2(sp9.x-f.x,sp9.z-f.z);
+    setTimeout(function(){f.stand=false;f._blick=undefined;},3500);}       // bleibt kurz stehen und schaut her
   if(Math.random()<0.35){
     var a=NPC_AUFTRAEGE[(Math.random()*NPC_AUFTRAEGE.length)|0];
     verdiene(Math.round(a[1]*stufenBonus()));

@@ -8129,3 +8129,66 @@ bei t = 1,049.
 **Lehre (Sonde):** In BILDERN warten, nicht in Sekunden. Die Testumgebung liefert ~1 Bild/s und das Spiel deckelt dt auf
 0,05 s — nach 1,8 s Wanduhr war der Clip erst 0,07 s weiter, und die erste Sondenfassung meldete ❌, obwohl die Logik
 stimmte. `renderer.info.render.frame` zählen (wie th-erfolge).
+
+## Runde 105 (Teil 3) · 🚶 Passanten als echte Figuren mit Clips (2026-09-30)
+
+User-Wunsch (Plan Abschnitt 8/9): „viel Bewegung und alles wie echt", „schöne Bewegungen bei allem". Voraussetzung für
+Rangeln/Bestehlen (Plan 9.2/9.3) sind Figuren mit Clips. Heute waren die 55 Passanten Kastenfiguren (`mkBewohner`).
+
+### 1. Auswahl — erst ansehen, dann entscheiden (`figuren-schau.mjs`, neu)
+Im Repo lagen drei Sätze mit Clips: Kenney-Mini (`npc_*`, 32 Clips, aber Knubbel mit halbem Kopf), Meshy-`anime_*`
+(Kulleraugen, 14 000 Dreiecke) und `class_*` (Fantasy-Rüstung). Kontaktbogen neben Mia/Max: keiner passt als Schweizer
+Passant neben die realistischen Sims. Kein Meshy-Schlüssel in der Session. **Gewählt:** Quaternius „Animated Men/Women"
+(CC0, Lizenz im Download geprüft, `models/ASSET-CREDITS.md`) — echte Proportionen, Alltagskleidung, 11 Clips inkl. Punch,
+Death, Sitting, Clapping. Bild: `spiele-dev/screenshots/r105-figuren-kontaktbogen.png`.
+⚠️ **Nebenbefund Kenney-Dateien:** `npc_mb…npc_fd` enthalten die Clips aller vorher exportierten Figuren nochmal
+(32 → 256 Clips, 0,33 → 1,6 MB je Datei, Blender-Aktionen gesammelt). Nicht angefasst (nur neon-park nutzt sie).
+
+### 2. FBX → GLB ohne Blender (`fbx-zu-glb.mjs`, neu)
+three.js r128 (dieselbe Version wie das Spiel, aus dem npm-Paket) FBXLoader + GLTFExporter im Browser. Drei Fallen, alle
+gemessen:
+- **150–190 Materialgruppen je Figur.** GLTFExporter r128 macht daraus je Gruppe ein Primitiv, das ALLE Eckpunkte
+  zeichnet: 150 Teile, 280 000–420 000 Dreiecke, und die letzte Farbe (Schuhe) übermalt die ganze Figur (Kontaktbogen:
+  schwarze Silhouetten). Lösung: Materialfarbe je Gruppe in die Eckpunktfarbe backen, EIN Material → 1 Teil je Figur.
+- **Geometrie 75 % der Datei** (5 562 Eckpunkte ohne Index). Normalen und UV weg (GLTFLoader schaltet ohne NORMAL selbst
+  auf flatShading = der Low-Poly-Look), gleiche Eckpunkte zusammengelegt → ~1 100.
+- **FBX-Zusatzdaten** je Knoten als `extras` im JSON (45 kB). Geleert.
+Dazu: Grösse auf 1,75/1,66 m (über gehäutete Eckpunkte, Box3 ignoriert Skinning), Spuren auf Hilfsknochen (PoleTarget,
+*_end) und Ruhewert-Spuren raus. **Ergebnis:** 2 MB FBX → ~280 kB GLB je Figur, 1 800–2 800 Dreiecke.
+
+### 3. Einbau (`traumhaus.html`, Block „ECHTE FIGUREN FUER DIE PASSANTEN")
+Kastenfigur bleibt Platzhalter, bis die Datei da ist. `_skinKlon` baut je Klon ein eigenes Skelett (r128 hat kein
+SkeletonUtils; `clone(true)` teilt sonst die Knochen der Vorlage). Mixer je Figur; nah jedes Bild, mittel jedes 3., fern
+jedes 8. (aufgesparte Zeit, Versatz je Figur). Verkäufer: Idle. Panik: Run (mind. 3,4 m/s). Am Streckenende 0,6 s stehen
+und weich umdrehen (vorher 180° im selben Bild). Angesprochen: dreht sich zum Spieler.
+
+### 4. Tempo-Kopplung — zwei falsche Zwischenstände, beide von der Sonde gefangen
+Abspieltempo = echtes Tempo / Weg je Sekunde bei Tempo 1. Der Weg je Sekunde ist das Tempo, mit dem der Fuss WÄHREND DES
+BODENKONTAKTS nach hinten wandert:
+| Schätzung | Gehen | Rennen | im Spiel gemessen (aufgesetzter Fuss, gerichtet) |
+|---|---|---|---|
+| 2 × Knöchel-Hub / Dauer | 1,51 | 2,31 | Gehen +0,2…+0,5 m/s vorwärts (Hub zählt die Schwungphase mit) |
+| flach = 1 cm über Minimum beider Füsse | 1,56 | 4,5 | Rennen −0,7…−0,9 m/s rückwärts (Knöchel erst beim Abstossen am tiefsten) |
+| **Kontakt je Fuss, 1,5 cm (Gehen) / 2,5 cm (Rennen)** | **1,55 / 1,53** | **4,02 / 3,95** | Gehen −0,04…+0,08 · Rennen −0,25…+0,03 |
+Beim Rennen rollt der Fuss ab: je nach Schwelle 3,3–4,5 m/s. Beide Werkzeuge (figuren-schau, probe-passanten) benutzen
+dieselbe Kontakt-Definition.
+
+### 5. Gemessen (`probe-passanten`, neu)
+| Ort | Aufrufe vorher | nachher | Dreiecke vorher | nachher |
+|---|---|---|---|---|
+| Kreuzung | +96 | +10 | +4 554 | +11 118 |
+| Hauptstrasse | +45 | +6 | +2 030 | +5 980 |
+| Markt | +253 | +26 | +12 170 | +26 984 |
+| Bahnsteig | +48 | +6 | +2 054 | +5 632 |
+Teile je Figur 18,4 → 1. `updFussg` 0,04 → 0,13–0,32 ms (Mixer). Gang ✅ 55 Figuren, Panik ✅ 50/50 rennen und gehen danach
+wieder, Rutschen ✅, Rennen ✅. **Drei Gegenproben:** umgedrehte Figur gleitet 2,02 m/s · ungekoppelter Renner gleitet
+gerichtet 1,12 m/s · falsches Tempo + 20 cm angehobene Figur erkannt. Bild: `r105-passanten-bahnsteig.png`.
+
+### Lehren
+1. **Tempo-Kopplung prüft man in Weltkoordinaten, nicht am Abspieltempo.** Die erste Gang-Prüfung (Clip-Tempo = echtes
+   Tempo) war grün, obwohl die Füsse glitten — sie verglich die Formel mit sich selbst. Erst „der aufgesetzte Fuss muss
+   am Boden stillstehen" misst, was man sieht, und fängt auch eine verkehrt herum laufende Figur.
+2. **Eine Sonde, die anders definiert als das Werkzeug, misst etwas anderes.** Die Renn-Abweichung sah wie ein Fehler im
+   Spiel aus; der Vergleich Fussbahn-im-Spiel gegen Fussbahn-offline (Bild für Bild gleich) zeigte, dass beide nur „Kontakt"
+   verschieden definierten.
+3. **`*_end`-Knoten sind nach dem GLTF-Export keine Knochen** (nicht in skin.joints, kein isBone) — nach Namen suchen.

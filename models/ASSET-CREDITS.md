@@ -119,6 +119,15 @@ Alle CC0, GLB→Blender (Textur eingebettet, flat-shading) via automation/polish
 ## Kenney — Mini Characters (CC0) — Blender-poliert
 npc_ma..npc_fd = 8 menschliche Dorfbewohner-Modelle (character-male/female-a..d). Ersetzen die prozeduralen NPCs.
 
+## Quaternius — Animated Men Pack + Animated Women Pack (CC0) — Runde 105 Teil 3 (2026-09-30)
+Quelle: https://quaternius.com/packs/animatedmen.html und https://quaternius.com/packs/animatedwomen.html
+Lizenz: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/, License.txt im Download-Ordner geprueft).
+q_male_casual/longsleeve/shirt/suit + q_female_alternative/casual/dress/tanktop = 8 Passanten mit echten
+Proportionen. FBX → GLB ohne Blender mit `spiele-dev/tools/fbx-zu-glb.mjs` (three.js r128 FBXLoader +
+GLTFExporter): Materialfarben als Eckpunktfarben eingebacken (1 Teil je Figur), Normalen weg (flache
+Schattierung), Groesse 1,75 m / 1,66 m, 8 von 11 Clips (Walk, Run, Idle, Punch, Death, Sitting, Standing,
+Clapping), Spuren auf Hilfsknochen entfernt. ~280 kB je Datei (FBX 2 MB).
+
 ## Kenney — Furniture Kit (CC0) — Blender-poliert
 fn_table/chair/chair2/stool/bed/plant/plant2/bookcase = Möbel (Tavernen-Ecke im Dorf, Bett als Bau-Objekt).
 

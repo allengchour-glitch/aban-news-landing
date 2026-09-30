@@ -196,3 +196,9 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   Schrittlänge → Tempo bei timeScale 1) und lässt Mia im Spiel gehen und anhalten: timeScale muss v/1,45 sein, nach dem
   Anhalten Pause bei t = 1,049. Wartet in Bildern (`renderer.info.render.frame`), nicht in Sekunden. Gegenprobe: weiteste
   Fussstellung > 2× engste, Schritt > 10 cm.
+- `probe-passanten.mjs` (Runde 105 Teil 3) — Passanten: Zeichenaufrufe/Dreiecke mit und ohne (4 Orte), Teile je Figur,
+  CPU von updFussg; Gang (Clip, Tempo-Kopplung, Fuss am Boden), Panik (Run und zurück), Rutschen des aufgesetzten Fusses
+  in Weltkoordinaten (Gehen und Rennen). Drei Gegenproben. `DIAG=1` druckt Clip/Tempo/Gewichte der Renner.
+- Werkzeuge daneben (spiele-dev/tools/): `figuren-schau.mjs` (Kontaktbogen von Figuren-GLBs, `--schritt` misst den Weg
+  je Sekunde bei Abspieltempo 1 über den Bodenkontakt) und `fbx-zu-glb.mjs` (FBX → GLB ohne Blender, Farben eingebacken).
+

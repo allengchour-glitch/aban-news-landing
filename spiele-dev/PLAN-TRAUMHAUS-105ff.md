@@ -263,3 +263,21 @@ Vorher unverändert: Abschnitt 7 Punkt 2 (Rangpunkte aus Netto, Exploit-Schranke
 - **Nächster Schritt 9.1:** Passanten von `mkBewohner` auf eine `anime_*`-Figur mit idle/walk/run umstellen (Mixer je
   Figur, Blenden nach Geschwindigkeit wie bei Mia, LOD ab 60 m), gemessen mit `probe-aufrufe` (Bewegtes 440 → ?) und einer
   erweiterten `probe-schritt` (Fussrutschen der Passanten).
+
+### 9.7 Stand nach Runde 105 Teil 3 (2026-09-30) — Passanten sind echte Figuren
+- **Erledigt:** 55 Passanten = 8 Quaternius-Figuren (CC0, echte Proportionen), je 1 Teil, Clips Walk/Run/Idle/Punch/
+  Death/Sitting/Standing/Clapping. Tempo-Kopplung in Weltkoordinaten gemessen (aufgesetzter Fuss steht), weiches Umdrehen,
+  Blick zum Spieler beim Ansprechen. Zeichenaufrufe am Markt +253 → +26 (Runbook Runde 105 Teil 3, `probe-passanten`).
+- **Werkzeuge dafür:** `fbx-zu-glb.mjs` (jede weitere Quaternius-/CC0-FBX in Minuten ins Spiel), `figuren-schau.mjs`
+  (Kontaktbogen + `--schritt`).
+- **Noch Kastenfiguren (nächste Schritte, je klein):**
+  1. Besucher am Haus (`spawnNpc`: Postbote, Nachbarin, Händler, Polizist, Stadtpräsident, Inspektor) — gleiche
+     Figuren über `figurAnlegen`, `n.state` enter/act/leave → walk/idle; der Polizist bekommt `q_male_suit` o. ä.
+  2. Bankpersonal (`bankPersonal`, 3 Figuren, stehen) und Taxi-Fahrgast (`taxiFigur`, wartet/steigt aus → Idle/Walk).
+  3. Kinder (`mkKind`) — Quaternius hat keine Kinder; skaliert 0,68 sähen aus wie kleine Erwachsene. Eigene Quelle suchen
+     (CC0 „kids" auf quaternius.com/opengameart) oder Kasten lassen.
+- **Neu möglich (Clips sind da):** 9.2 Rangeln mit `Punch` (Schlag) und `Death` (hinfallen) + `Standing` (aufstehen);
+  Sitzbänke mit `Sitting`; Applaus beim Stadtfest/Chilbi mit `Clapping`. Punch/Death haben die Passanten schon als Actions
+  (`p.fig.act.punch`, `.death`) — nur noch auslösen und die Folgen aus 9.2 verdrahten.
+- **Idee Mia/Max:** Deren Meshy-Rig (24 Knochen) ist dasselbe wie bei `anime_*` → Idle und Run von dort übertragbar
+  (heute steht Mia im eingefrorenen Stand-Bild). Erst Knochennamen vergleichen, dann mit `probe-schritt` messen.
