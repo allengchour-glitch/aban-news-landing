@@ -4979,3 +4979,4 @@ gid://shopify/Product/15451928920449	zugeordnet	12	Atmungsaktives Sportshirt fü
 gid://shopify/Product/15451929117057	zugeordnet	24	Casual Retro Hemd für Herren
 gid://shopify/Product/15451929248129	zugeordnet	20	Baumwoll Langarm Hemdjacke
 gid://shopify/Product/15451929543041	zugeordnet	10	Herren Strick-Cardigan mit Lochmuster
+gid://shopify/Product/15451929575809	zugeordnet	99	Herren Hemd mit Animal-Print und kurzen Ärmeln
