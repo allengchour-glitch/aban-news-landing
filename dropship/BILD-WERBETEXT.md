@@ -1,10 +1,10 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:12:33Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:17:37Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1204 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3647** in 987 Produkten
-- Treffer (≥ 4 Wörter): **154** in 131 Produkten
-- nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 1
+- Medien geprüft: **3813** in 1032 Produkten
+- Treffer (≥ 4 Wörter): **155** in 132 Produkten
+- nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
 ## Treffer
@@ -165,6 +165,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | DIY Notizbuch Diamond Painting Set `15504098099585` | [70585666797953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/97e0576d-c964-415a-809d-235fa4622d65.jpg) | 4 | Diamond Painting Pages Notebook | offen |
 | Anti-Falten Naturkern Creme `15521323286913` | [70733673267585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9ea20bb-5335-4ffc-aa47-a9e946abed95.jpg) | 4 | TEN KON MIRRC LIV | offen |
 | Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [77406935318919](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f15a2c8-bd86-4fdc-aafc-dc131f8d63ed_trans.jpg) | 4 | silicone Scm and more | offen |
+| Automatischer Futter- und Wasserspender `15453774545281` | [77407199363463](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dd2059f6-db77-4f5d-8664-c9f8e5d0e5d1_trans.jpg) | 4 | Blue Stainless Steel Bowl | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
