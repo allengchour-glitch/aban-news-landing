@@ -5028,3 +5028,5 @@ gid://shopify/Product/15452318040449	zugeordnet	20	Kinder-Sportsandalen mit Klet
 gid://shopify/Product/15452678652289	zugeordnet	6	Faltbares Edelstahl-Futtergeschirr
 gid://shopify/Product/15452678717825	zugeordnet	3	Erhöhtes Futtergeschirr
 gid://shopify/Product/15452678783361	zugeordnet	2	Keramikfutternapf
+gid://shopify/Product/15452678816129	zugeordnet	2	Hunde-Schnüffelspiel · Futter-Brett
+gid://shopify/Product/15452678914433	zugeordnet	2	Langsames Futterteller
