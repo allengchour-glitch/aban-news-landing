@@ -54,6 +54,7 @@
     .sc-beleg{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
       opacity:.8;margin:2px 0;word-break:break-word}
     .sc-sauber{border-left-color:#15803d}
+    .sc-nur-hinweis{border-left-color:rgba(128,128,128,.45)}
     .sc-tabelle{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
     .sc-tabelle th,.sc-tabelle td{text-align:left;padding:7px 10px;border-bottom:1px solid rgba(128,128,128,.22)}
     .sc-fehler{color:#b91c1c}
@@ -94,15 +95,27 @@
       gegen gepflegte Kataloge gegengepr&uuml;ft, bevor er hier steht:
     </p>
     <table class="sc-tabelle">
-      <thead><tr><th>Shop</th><th>Gepr&uuml;fte Produkte</th><th>Befunde</th></tr></thead>
+      <thead><tr><th>Shop</th><th>Gepr&uuml;fte Produkte</th><th>Produkte mit Defekt</th></tr></thead>
       <tbody>
         <tr><td>gymshark.com</td><td>250</td><td>0</td></tr>
         <tr><td>allbirds.com</td><td>250</td><td>0</td></tr>
-        <tr><td>waterdrop.de</td><td>169</td><td>14 &mdash; stichprobenweise als echt best&auml;tigt</td></tr>
-        <tr><td>ein importbasierter Shop</td><td>1000</td><td>91</td></tr>
+        <tr><td>ankerkraut.de</td><td>250</td><td>0</td></tr>
+        <tr><td>snocks.com</td><td>250</td><td>0</td></tr>
+        <tr><td>sechs weitere Shops (nicht genannt)</td><td>169&ndash;250 je Shop</td><td>1 bis 25</td></tr>
       </tbody>
     </table>
-    <p class="sc-klein">Gemessen am 29.09.2026. Jeder Befund ist w&ouml;rtlich zitierbar, keiner gesch&auml;tzt.</p>
+    <p class="sc-klein">
+      Gemessen am 30.09.2026, zehn Shops. Jeder Befund ist w&ouml;rtlich zitierbar, keiner
+      gesch&auml;tzt. Die sechs Shops mit Befunden bleiben hier ungenannt &mdash; ihre Fehler
+      geh&ouml;ren ihnen, nicht unserer Werbung. <strong>Vier gepflegte Kataloge ergeben null.</strong>
+      Ein Pr&uuml;fer, der auch dort ausschl&auml;gt, w&auml;re wertlos.
+    </p>
+    <p class="sc-klein">
+      <strong>Defekt</strong> hei&szlig;t: objektiv falsch und f&uuml;r Ihre Kundschaft sichtbar.
+      <strong>Hinweis</strong> hei&szlig;t: einen Blick wert, es kann aber eine gute Erkl&auml;rung
+      geben &mdash; Marken f&uuml;hren ihre Farben oft mit dem englischen Originalnamen. Beides wird
+      getrennt gez&auml;hlt, damit keine Zahl gr&ouml;&szlig;er aussieht als sie ist.
+    </p>
   </section>
 
   <section class="sc-karte">
@@ -177,11 +190,21 @@
           zeige('<div class="sc-karte"><p class="sc-fehler">' + esc(d.text || 'Das hat nicht geklappt.') + '</p></div>');
           return;
         }
-        var arten = Object.keys(d.nachArt || {}).sort(function (a, b) { return d.nachArt[b] - d.nachArt[a]; });
+        // Defekte zuerst, Hinweise danach — ein Markenfarbname ist auffällig, aber kein Fehler.
+        var arten = Object.keys(d.nachArt || {}).sort(function (a, b) {
+          var sa = (d.schwere && d.schwere[a] === 'defekt') ? 0 : 1;
+          var sb = (d.schwere && d.schwere[b] === 'defekt') ? 0 : 1;
+          return sa - sb || d.nachArt[b] - d.nachArt[a];
+        });
         var h = '<div class="sc-karte">';
-        h += '<div class="sc-zahl">' + d.betroffeneProdukte + '</div>';
+        h += '<div class="sc-zahl">' + d.produkteMitDefekt + '</div>';
         h += '<p class="sc-lead" style="margin:6px 0 0">von <strong>' + d.geprueft +
-             '</strong> geprüften Produkten in <strong>' + esc(d.shop) + '</strong> haben mindestens einen Befund.</p>';
+             '</strong> geprüften Produkten in <strong>' + esc(d.shop) +
+             '</strong> haben einen <strong>Defekt</strong> — etwas, das objektiv falsch ist und das Ihre Kundschaft sieht.</p>';
+        if (d.hinweise) {
+          h += '<p class="sc-klein">Dazu ' + d.hinweise + ' Hinweise, bei denen es eine gute Erklärung geben kann (' +
+               d.betroffeneProdukte + ' Produkte insgesamt betroffen).</p>';
+        }
         if (!d.katalogVollstaendig) {
           h += '<p class="sc-klein">Geprüft wurden die ersten ' + d.geprueft +
                ' Produkte. Größere Kataloge prüft die vollständige Fassung.</p>';
@@ -194,7 +217,9 @@
         } else {
           h += '<div class="sc-karte">';
           arten.forEach(function (art) {
-            h += '<div class="sc-befund"><h3>' + d.nachArt[art] + ' × ' + esc(NAMEN[art] || art) + '</h3>';
+            var hinweis = !(d.schwere && d.schwere[art] === 'defekt');
+            h += '<div class="sc-befund' + (hinweis ? ' sc-nur-hinweis' : '') + '"><h3>' +
+                 (hinweis ? 'Hinweis: ' : '') + d.nachArt[art] + ' × ' + esc(NAMEN[art] || art) + '</h3>';
             (d.beispiele[art] || []).forEach(function (b) {
               h += '<p class="sc-beleg">' + esc(b.titel) + ' → ' + esc(b.beleg) + '</p>';
             });

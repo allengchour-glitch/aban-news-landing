@@ -28,7 +28,7 @@
  */
 
 import {
-  GEDROSSELT, istDeutsch, istRoheVariante, istFremdsprachigeFarbe, zuRappen,
+  GEDROSSELT, SCHWERE, istDeutsch, istRoheVariante, istFremdsprachigeFarbe, zuRappen,
   istStreichpreisDefekt, hatPreisgrund, istFarbwert, optionFarbeOhneFarben,
   optionIstPreisgrund, gleicheWareVerschiedenePreise, holeSeite, pruefe, bericht,
 } from '../functions/_katalog_audit.mjs';
@@ -112,12 +112,20 @@ function selbsttest() {
   p('GEGENPROBE leere Liste ist unbekannt', istDeutsch([]) === null);
 
   // --- Streichpreis
-  p('gleich hoch ist ein Defekt', istStreichpreisDefekt('19.90', '19.90'));
   p('niedriger ist ein Defekt', istStreichpreisDefekt('19.90', '14.90'));
   // GEGENPROBE
   p('GEGENPROBE echter Streichpreis ist kein Defekt', !istStreichpreisDefekt('19.90', '29.90'));
   p('GEGENPROBE kein Streichpreis ist kein Defekt', !istStreichpreisDefekt('19.90', null));
-  p('19.9 und 19.90 sind derselbe Preis', istStreichpreisDefekt('19.9', '19.90'));
+  // DIE VIER FEHLALARM-FAELLE vom 29.09.2026, an fremden Marken-Shops gemessen.
+  // Shopify zeigt in beiden gar keinen durchgestrichenen Preis — also kein Befund.
+  p('GEGENPROBE gleich hoch ist KEIN Defekt (ankerkraut.de, 269 Varianten)',
+    !istStreichpreisDefekt('21.95', '21.95'));
+  p('GEGENPROBE 0.00 ist KEIN Defekt (purelei.de, 559 Varianten)',
+    !istStreichpreisDefekt('32.90', '0.00'));
+  p('GEGENPROBE 19.9 und 19.90 gelten als gleich, also kein Defekt',
+    !istStreichpreisDefekt('19.9', '19.90'));
+  // und die Gegenprobe zur Gegenprobe: ein Rappen darunter IST ein Defekt
+  p('ein Rappen unter dem Preis ist ein Defekt', istStreichpreisDefekt('19.90', '19.89'));
 
   // --- gleiche Ware, verschiedene Preise
   const nurFarben = [{ title: 'Rot', price: '15.90' }, { title: 'Blau', price: '24.90' }];
@@ -186,6 +194,20 @@ function selbsttest() {
     { title: 'Rot', price: '19.90', compare_at_price: '29.90' },
     { title: 'Blau', price: '19.90', compare_at_price: '29.90' }] }];
   p('GEGENPROBE sauberer Katalog meldet nichts', pruefe(sauber).befunde.length === 0);
+
+  // --- Schweregrade: ein Markenfarbname darf kein „Defekt" sein (Lehre nomadi.de, 29.09.2026)
+  p('rohe Variante ist ein Defekt', e.befunde.find((b) => b.art === 'rohe_variante').schwere === 'defekt');
+  p('fehlendes Bild ist ein Defekt', e.befunde.find((b) => b.art === 'ohne_bild').schwere === 'defekt');
+  p('Streichpreis ist ein Defekt', e.befunde.find((b) => b.art === 'streichpreis_defekt').schwere === 'defekt');
+  p('englischer Farbwert ist nur ein HINWEIS', e.befunde.find((b) => b.art === 'fremdsprache').schwere === 'hinweis');
+  p('doppelter Titel ist nur ein HINWEIS', e.befunde.find((b) => b.art === 'doppelter_titel').schwere === 'hinweis');
+  p('Defekte und Hinweise werden getrennt gezaehlt', e.defekte === 3 && e.hinweise === 2);
+  p('Produkte mit Defekt sind weniger als Produkte mit Befund',
+    e.produkteMitDefekt <= e.betroffeneProdukte);
+  // GEGENPROBE: jeder Befund traegt genau einen der beiden Grade, keiner bleibt leer
+  p('GEGENPROBE jeder Befund hat einen Schweregrad',
+    e.befunde.every((b) => b.schwere === 'defekt' || b.schwere === 'hinweis'));
+  p('GEGENPROBE die Summe geht auf', e.defekte + e.hinweise === e.befunde.length);
 
   // --- Drosselung heisst warte, nicht leer
   const dross = async () => ({ status: 429, ok: false, json: async () => ({}) });

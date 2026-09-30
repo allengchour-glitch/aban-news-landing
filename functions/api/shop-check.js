@@ -85,6 +85,10 @@ export async function onRequestGet({ request, env }) {
     katalogVollstaendig: e.produkte < MAX_SEITEN * 250,
     deutsch: e.deutsch,
     betroffeneProdukte: e.betroffeneProdukte,
+    produkteMitDefekt: e.produkteMitDefekt,
+    defekte: e.defekte,
+    hinweise: e.hinweise,
+    schwere: Object.fromEntries(Object.keys(e.nachArt).map((a) => [a, e.befunde.find((b) => b.art === a).schwere])),
     nachArt: e.nachArt,
     beispiele,
     // Die vollstaendige Liste — jedes betroffene Produkt mit Handle und woertlichem

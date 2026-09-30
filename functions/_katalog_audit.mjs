@@ -37,6 +37,29 @@
 
 export const GEDROSSELT = new Set([429, 430, 503]);
 
+/**
+ * Schweregrad je Befundart. **`defekt`** heisst: etwas ist objektiv falsch und die
+ * Kundschaft bekommt es zu sehen. **`hinweis`** heisst: einen Blick wert, aber es kann
+ * eine gute Erklaerung geben.
+ *
+ * ⚠️ DIE TRENNUNG KAM AUS EINER MESSUNG AN EINEM FREMDEN SHOP (29.09.2026):
+ * `nomadi.de` fuehrt Markenware, und die Varianten heissen `heritage black` oder
+ * `Moon Black` — das sind die OFFIZIELLEN Farbnamen von Bugaboo und Cybex, kein
+ * Lieferantenmuell. 69 solche Faelle als „Defekt" zu melden waere falsch gewesen.
+ * Ein englischer Farbwert ist in einem deutschen Shop auffaellig, aber nicht per se
+ * ein Fehler. Dasselbe gilt fuer doppelte Titel (koennen zwei echte Produkte sein)
+ * und Preisunterschiede (der Grund kann in der Beschreibung stehen).
+ */
+export const SCHWERE = {
+  rohe_variante: 'defekt',             // Lieferantencode ist nie beabsichtigt
+  option_farbe_ohne_farben: 'defekt',  // die Kundschaft waehlt etwas anderes als sie denkt
+  streichpreis_defekt: 'defekt',       // eine Ersparnis wird versprochen, die es nicht gibt
+  ohne_bild: 'defekt',                 // ein Produkt ohne Bild wird nicht gekauft
+  fremdsprache: 'hinweis',             // kann ein offizieller Markenfarbname sein
+  gleiche_ware_preis: 'hinweis',       // der Grund kann in der Beschreibung stehen
+  doppelter_titel: 'hinweis',          // koennen zwei echte Produkte sein
+};
+
 /** Englische Farbwoerter, die in einem deutschsprachigen Shop nichts verloren haben. */
 export const ENGLISCHE_FARBEN = [
   'red', 'blue', 'green', 'yellow', 'grey', 'gray', 'black', 'white', 'pink',
@@ -95,14 +118,24 @@ export function zuRappen(p) {
 }
 
 /**
- * Streichpreis-Defekt: `compare_at_price` ist gesetzt, aber NICHT hoeher als der Preis.
- * Dann ist die angezeigte Ersparnis keine. Nicht gesetzt = kein Befund (nicht „Defekt").
+ * Streichpreis-Defekt: ein durchgestrichener Preis, der KLEINER ist als der echte Preis.
+ * Dann verspricht die Anzeige eine Ersparnis, die es nicht gibt.
+ *
+ * ⚠️ DIESE PRUEFUNG WAR ZUERST VIEL ZU WEIT, und der Fehlalarm waere der peinlichste
+ * dieser Runde gewesen (gemessen 29.09.2026 an fremden Marken-Shops):
+ *  - `ankerkraut.de`: **269 Varianten** haben `compare_at_price` EXAKT GLEICH dem Preis.
+ *  - `purelei.de`: **559 Varianten** haben `compare_at_price` = **0.00**.
+ * Shopify zeigt in beiden Faellen gar keinen durchgestrichenen Preis an. Es ist Datenrauschen,
+ * kein Defekt, den ein Kunde je sieht. Mit `s <= p` haette dieses Geraet einer gepflegten
+ * Marke 158 Rechtsprobleme gemeldet, die sie nicht hat.
+ * **Ein Befund muss etwas sein, das die Kundschaft tatsaechlich zu sehen bekommt.**
  */
 export function istStreichpreisDefekt(preis, streich) {
   const p = zuRappen(preis);
   const s = zuRappen(streich);
   if (p === null || s === null) return false;
-  return s <= p;
+  if (s <= 0) return false;   // 0.00 = kein Streichpreis
+  return s < p;               // gleich hoch zeigt Shopify nicht an
 }
 
 /**
@@ -308,10 +341,20 @@ export function pruefe(produkte) {
     if (anzahl > 1) befunde.push({ art: 'doppelter_titel', titel, handle: null, beleg: `${anzahl}x derselbe Titel` });
   }
 
+  // Jeder Befund traegt seinen Schweregrad mit, und Defekte werden getrennt von Hinweisen
+  // gezaehlt. Wer beides in eine Zahl wirft, verkauft einem Haendler Markenfarbnamen als Fehler.
+  for (const b of befunde) b.schwere = SCHWERE[b.art] ?? 'hinweis';
   const nachArt = {};
   for (const b of befunde) nachArt[b.art] = (nachArt[b.art] ?? 0) + 1;
   const betroffen = new Set(befunde.map((b) => b.handle).filter(Boolean)).size;
-  return { deutsch, produkte: produkte.length, befunde, nachArt, betroffeneProdukte: betroffen };
+  const defektProdukte = new Set(befunde.filter((b) => b.schwere === 'defekt').map((b) => b.handle).filter(Boolean)).size;
+  return {
+    deutsch, produkte: produkte.length, befunde, nachArt,
+    betroffeneProdukte: betroffen,
+    produkteMitDefekt: defektProdukte,
+    defekte: befunde.filter((b) => b.schwere === 'defekt').length,
+    hinweise: befunde.filter((b) => b.schwere === 'hinweis').length,
+  };
 }
 
 export function bericht(ergebnis, shop) {
@@ -319,7 +362,8 @@ export function bericht(ergebnis, shop) {
   z.push(`Katalog-Audit ${shop}`);
   z.push(`  Produkte geprueft: ${ergebnis.produkte}`);
   z.push(`  Shopsprache deutsch: ${ergebnis.deutsch === null ? 'unbekannt' : ergebnis.deutsch ? 'ja' : 'nein'}`);
-  z.push(`  Produkte mit Befund: ${ergebnis.betroffeneProdukte}`);
+  z.push(`  Produkte mit Befund: ${ergebnis.betroffeneProdukte}  (davon mit DEFEKT: ${ergebnis.produkteMitDefekt})`);
+  z.push(`  Befunde: ${ergebnis.defekte} Defekte, ${ergebnis.hinweise} Hinweise`);
   const namen = {
     rohe_variante: 'Rohe Lieferantentexte im Variantennamen',
     fremdsprache: 'Englische Farbwerte im deutschsprachigen Shop',
@@ -329,8 +373,15 @@ export function bericht(ergebnis, shop) {
     doppelter_titel: 'Doppelter Produkttitel',
     option_farbe_ohne_farben: 'Option heisst „Farbe", enthaelt aber keine Farben',
   };
-  for (const [art, anzahl] of Object.entries(ergebnis.nachArt).sort((a, b) => b[1] - a[1])) {
-    z.push(`  ${String(anzahl).padStart(5)}  ${namen[art] ?? art}`);
+  // Defekte zuerst, danach Hinweise — innerhalb der Gruppe nach Haeufigkeit.
+  const arten = Object.entries(ergebnis.nachArt).sort((a, b) => {
+    const sa = SCHWERE[a[0]] === 'defekt' ? 0 : 1;
+    const sb = SCHWERE[b[0]] === 'defekt' ? 0 : 1;
+    return sa - sb || b[1] - a[1];
+  });
+  for (const [art, anzahl] of arten) {
+    const marke = SCHWERE[art] === 'defekt' ? 'DEFEKT ' : 'Hinweis';
+    z.push(`  ${marke} ${String(anzahl).padStart(5)}  ${namen[art] ?? art}`);
     for (const b of ergebnis.befunde.filter((x) => x.art === art).slice(0, 3)) {
       z.push(`         z. B. ${b.titel} -> ${b.beleg}`);
     }

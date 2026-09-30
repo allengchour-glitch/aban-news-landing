@@ -39,10 +39,28 @@ export function berichtHtml(ergebnis, shop, jetzt = new Date()) {
   const datum = jetzt.toISOString().slice(0, 10);
   const arten = Object.keys(ergebnis.nachArt ?? {}).sort((a, b) => ergebnis.nachArt[b] - ergebnis.nachArt[a]);
 
+  // Defekte zuerst, Hinweise danach — und sichtbar getrennt. Ein Markenfarbname wie
+  // `heritage black` ist auffaellig, aber kein Fehler (gemessen an nomadi.de, 29.09.2026);
+  // ihn als Defekt zu verkaufen waere eine Uebertreibung, die den ganzen Bericht entwertet.
+  arten.sort((a, b) => {
+    const sa = (ergebnis.befunde.find((x) => x.art === a)?.schwere === 'defekt') ? 0 : 1;
+    const sb = (ergebnis.befunde.find((x) => x.art === b)?.schwere === 'defekt') ? 0 : 1;
+    return sa - sb || ergebnis.nachArt[b] - ergebnis.nachArt[a];
+  });
+
   let abschnitte = '';
+  let hinweisKopf = false;
   for (const art of arten) {
     const treffer = ergebnis.befunde.filter((b) => b.art === art);
-    abschnitte += `<section><h2>${ergebnis.nachArt[art]} × ${esc(NAMEN[art] ?? art)}</h2>`;
+    const istHinweis = treffer[0]?.schwere !== 'defekt';
+    if (istHinweis && !hinweisKopf) {
+      hinweisKopf = true;
+      abschnitte += '<section class="trenner"><h2 class="hinweis">Hinweise &mdash; einen Blick wert, '
+        + 'aber es kann eine gute Erkl&auml;rung geben</h2><p class="warum">Zum Beispiel f&uuml;hren '
+        + 'Marken ihre Farben oft mit dem englischen Originalnamen. Das ist kein Fehler, nur eine '
+        + 'Entscheidung &mdash; deshalb steht es hier und nicht oben.</p></section>';
+    }
+    abschnitte += `<section><h2${istHinweis ? ' class="hinweis"' : ''}>${ergebnis.nachArt[art]} × ${esc(NAMEN[art] ?? art)}</h2>`;
     abschnitte += `<p class="warum">${esc(WARUM[art] ?? '')}</p><table><thead><tr>`
       + '<th>Produkt</th><th>Beleg (wörtlich aus Ihrem Katalog)</th></tr></thead><tbody>';
     for (const b of treffer) {
@@ -68,6 +86,8 @@ body{margin:0;padding:32px 16px;background:var(--papier);color:var(--tinte);
 main{max-width:860px;margin:0 auto}
 h1{font-size:1.8rem;margin:0 0 4px} h2{font-size:1.15rem;margin:34px 0 6px;
   padding-left:12px;border-left:3px solid var(--warn)}
+h2.hinweis{border-left-color:var(--linie);opacity:.85}
+.trenner{margin-top:44px;padding-top:8px;border-top:1px solid var(--linie)}
 .kopf{border-bottom:2px solid var(--tinte);padding-bottom:16px;margin-bottom:8px}
 .zahl{font-size:2.6rem;font-weight:700;line-height:1;margin:18px 0 2px}
 .warum{opacity:.8;margin:2px 0 12px;max-width:62ch}
@@ -86,8 +106,10 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--linie);font-s
   <h1>Katalog-Bericht</h1>
   <p>${esc(shop)} · geprüft am ${datum}</p>
 </div>
-<p class="zahl">${ergebnis.betroffeneProdukte}</p>
-<p class="warum">von <strong>${ergebnis.produkte}</strong> geprüften Produkten haben mindestens einen Befund.
+<p class="zahl">${ergebnis.produkteMitDefekt}</p>
+<p class="warum">von <strong>${ergebnis.produkte}</strong> geprüften Produkten haben einen <strong>Defekt</strong> —
+etwas, das objektiv falsch ist und das Ihre Kundschaft zu sehen bekommt.
+Dazu kommen <strong>${ergebnis.hinweise}</strong> Hinweise (${ergebnis.betroffeneProdukte} Produkte insgesamt betroffen).
 Jeder Befund unten steht wörtlich so in Ihrem öffentlichen Katalog und lässt sich dort nachprüfen.</p>
 ${abschnitte}
 <footer>
@@ -96,8 +118,12 @@ ${abschnitte}
 Shopify-Shop selbst bereitstellt. Es wurden keine Zugangsdaten verwendet, nichts verändert
 und nichts gespeichert.</p>
 <p><strong>Wie zuverlässig das ist.</strong> Derselbe Prüfer ergibt bei gepflegten Katalogen
-null Befunde (gymshark.com: 500 Produkte, 0 · allbirds.com: 250 Produkte, 0). Ein Prüfer,
-der überall ausschlägt, misst nichts.</p>
+null Defekte — gemessen am 30.09.2026 an gymshark.com, allbirds.com, ankerkraut.de und
+snocks.com (je 250 Produkte, je 0). Ein Prüfer, der überall ausschlägt, misst nichts.</p>
+<p><strong>Defekt gegen Hinweis.</strong> Ein Defekt ist objektiv falsch und für Ihre Kundschaft
+sichtbar. Ein Hinweis ist einen Blick wert, kann aber eine gute Erklärung haben — Marken führen
+ihre Farben oft mit dem englischen Originalnamen. Beides wird getrennt gezählt, damit keine Zahl
+größer aussieht als sie ist.</p>
 <p><strong>Was hier nicht steht.</strong> Der Einkaufspreis ist nicht öffentlich, deshalb
 enthält dieser Bericht keine Margenrechnung. Es werden auch keine Umsatzwirkungen geschätzt —
 nur das, was messbar im Katalog steht.</p>
