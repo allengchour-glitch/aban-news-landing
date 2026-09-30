@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:47:16Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-30T16:49:29Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1204 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **3899** in 1057 Produkten
-- Treffer (≥ 4 Wörter): **158** in 135 Produkten
+- Medien geprüft: **3972** in 1082 Produkten
+- Treffer (≥ 4 Wörter): **160** in 137 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -94,6 +94,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Kabelloser Glätt- und Lockenkamm `15503235940737` | [70574844903809](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4dcc5522-902b-40ed-b6e1-f55ffa99e59e_trans.jpg) | 9 | files Intelligent temperature control for different types hair | offen |
 | 21-Gitter Nagelschmuck-Box mit Glassteinen `15522212118913` | [70746582483329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eba30eda-9b63-41f2-a8a5-2145ec15f0ad.jpg) | 9 | Violets Color Big stones Violets vitrail Samll stones | offen |
 | Smart-Armband für Damen `15504142664065` | [70586155827585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/691402992569.jpg) | 9 | and luxurious The Beauty Art Concentrate the beauty | offen |
+| Gemüse-Trocknerkorb `15453785784705` | [69926751797633](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f0075ec1-cb10-41cd-86f7-dfe85080a843.jpg) | 9 | SPACIOUS Easily accommodate array vegetables pads the bottom | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | ENTFERNT |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
@@ -150,6 +151,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Velo-Frontlicht 2000LM XPT*6 LED Aluminium `15448957518209` | [77410975318407](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c73e9f7d-9e53-4472-9a85-89b14bf186c1_trans.jpg) | 5 | The main light has advance | offen |
 | Freihand-Hundeleine für mittelgrosse und grosse  `15519837127041` | [70709921546625](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1615103635301.jpg) | 5 | use one just say Just | offen |
 | Schlaf-Nackenkissen mit Moxibustion `15453777002881` | [69926709461377](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a853db6-9b9d-4b90-aabb-1d14cf817e22_trans.jpg) | 5 | Mugwort Heat Pack Classic Gray | offen |
+| Mehrzweck-Hundeleine mit Frosch Schnalle `15453790142849` | [77408597934471](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/35e1164a-a08f-4ce2-b4b4-78d80f17b055_fine.jpg) | 5 | Lake Blue Small frog clasp | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
