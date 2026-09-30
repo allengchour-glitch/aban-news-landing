@@ -16167,3 +16167,5 @@ gid://shopify/Product/15453773660545	12->1	Trainings- & Fitness-Schuhe
 gid://shopify/Product/15453728178561	35->0	Transmitter mit Display
 gid://shopify/Product/15453774381441	46->1	Damen Plateau-Sneaker mit Quaste
 gid://shopify/Product/15453774414209	79->0	Keramik-Schüssel für Hunde mit Nackenstütze
+gid://shopify/Product/15453774709121	94->0	Hundepfote-Knochenteller Holz/Bambus
+gid://shopify/Product/15453774774657	41->0	Herren-Jumpsuit
