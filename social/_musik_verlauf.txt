@@ -132,3 +132,4 @@
 2026-09-30T09:11:13.948Z	luxe-adventure-uplift.wav	38	kinder	cjreel-2407110211521609400	stimme:nein	anteil
 2026-09-30T09:12:16.230Z	luxe-epic-anime.wav	23.25	kinder	cjreel-1745702295637073920	stimme:nein	anteil
 2026-09-30T10:37:00.315Z	luxe-orchestra.wav	15	haustier	cjreel-1407934219342188544	stimme:nein	anteil
+2026-09-30T10:38:14.571Z	luxe-adventure-uplift.wav	41	schmuck	cjreel-2603140713091606200	stimme:nein	anteil
