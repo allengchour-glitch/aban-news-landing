@@ -16143,3 +16143,4 @@ gid://shopify/Product/15524778934657	74->0	Memory Foam Kissen für Sitzkomfort
 gid://shopify/Product/15524779295105	39->0	Zero-Pressure Cloud Kissen
 gid://shopify/Product/15524928946561	60->0	Leuchtender Basketball Grösse 5 oder 7
 gid://shopify/Product/15525143019905	62->1	Wasserdichte Smartwatch mit Schrittzähler
+gid://shopify/Product/15525457691009	34->0	Flared Butterfly Pillow Ice Silk – Silver Snow Gray
