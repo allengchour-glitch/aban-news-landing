@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+> **📌 2026-10-01 · Pinterest-Übergabe QUITTIERT (LuxeStyle-Session `claude/luxestyle-status-tztnn1`).** Übernommen: LuxeStyle-Pinterest
+> läuft weiter über Metricool (1 Pin/24 h) + Hetzner-Pin-Aufträge. Der abannews-Autopilot `automation/pinterest_aban/` zielt auf ein
+> EIGENES abannews-Konto (LIESMICH: «nicht das LuxeStyle-Konto») und bleibt pausiert, bis der Betreiber Konto, App und
+> `ABAN_PINTEREST_*`-Secrets eingerichtet hat. Wer ihn einschaltet, trägt es hier ein.
+
 ## 📱 25.09. 21:30 UTC · Android-App (Branch `claude/luxstyle-play-store-app-rjuxbz`) — was der Shop ihr jetzt schuldet
 
 Gegengeprüft an der echten Storefront-API (ohne Token, von hier): alle 7 fest eingebauten Kollektionen liefern Ware

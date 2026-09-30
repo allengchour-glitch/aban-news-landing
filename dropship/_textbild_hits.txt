@@ -16219,3 +16219,4 @@ gid://shopify/Product/15496426815873	18->0	S925 Silber Moissanit Ring für Damen
 gid://shopify/Product/15496498020737	36->1	Solar Horn Light
 gid://shopify/Product/15497296281985	30->1	Sandalen mit klobigem Absatz
 gid://shopify/Product/15500002591105	19->0	Corduroy-Hemd
+gid://shopify/Product/15503947792769	18->0	Handgemachte Erdbeer-Sweetheart Nägel
