@@ -1,0 +1,362 @@
+{
+ "inhaberAdressen": [
+  "inhaber@entfernt.invalid"
+ ],
+ "bestellungen": [
+  {
+   "name": "#1020",
+   "createdAt": "2026-09-29T22:16:36Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "36.9",
+   "customerEmail": "kundschaft-1@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Kristall-Set 3-teilig"
+    }
+   ]
+  },
+  {
+   "name": "#1019",
+   "createdAt": "2026-09-27T21:27:52Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "23.11",
+   "customerEmail": "kundschaft-2@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Leuchtender Halloween-Schaukelgeist"
+    }
+   ]
+  },
+  {
+   "name": "#1018",
+   "createdAt": "2026-09-07T17:11:51Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "28.9",
+   "customerEmail": "kundschaft-3@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "E-Scooter Lithium-Akku Ladegeraet"
+    }
+   ]
+  },
+  {
+   "name": "#1017",
+   "createdAt": "2026-09-07T14:50:10Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "40.9",
+   "customerEmail": "kundschaft-4@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Fuda Taschenmesser"
+    }
+   ]
+  },
+  {
+   "name": "#1016",
+   "createdAt": "2026-09-03T08:57:35Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "47.9",
+   "customerEmail": "kundschaft-4@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Fuda Taschenmesser"
+    }
+   ]
+  },
+  {
+   "name": "#1015",
+   "createdAt": "2026-08-22T10:11:29Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "22.9",
+   "customerEmail": "inhaber@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Gemueseschneider"
+    }
+   ]
+  },
+  {
+   "name": "#1014",
+   "createdAt": "2026-08-15T15:14:24Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "41.9",
+   "customerEmail": "kundschaft-5@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Leinen-Set Provence"
+    }
+   ]
+  },
+  {
+   "name": "#1013",
+   "createdAt": "2026-08-14T15:05:06Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "33.82",
+   "customerEmail": "inhaber@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Midikleid"
+    },
+    {
+     "title": "Blumenkleid"
+    }
+   ]
+  },
+  {
+   "name": "#1012",
+   "createdAt": "2026-08-09T11:00:03Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "32.9",
+   "customerEmail": "inhaber@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Katzenspielzeug"
+    }
+   ]
+  },
+  {
+   "name": "#1011",
+   "createdAt": "2026-08-03T15:16:22Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "21.9",
+   "customerEmail": "kundschaft-6@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Reise-Haengematte"
+    }
+   ]
+  },
+  {
+   "name": "#1010",
+   "createdAt": "2026-07-11T09:51:54Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "44.9",
+   "customerEmail": "inhaber@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Bluetooth-Kopfhoerer"
+    }
+   ]
+  },
+  {
+   "name": "#1009",
+   "createdAt": "2026-07-10T07:29:27Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "40.9",
+   "customerEmail": "inhaber@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Kopfhoerer Xiaomi"
+    }
+   ]
+  },
+  {
+   "name": "#1008",
+   "createdAt": "2026-07-08T13:52:07Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "177.21",
+   "customerEmail": "kundschaft-7@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Schlauchboot"
+    }
+   ]
+  },
+  {
+   "name": "#1007",
+   "createdAt": "2026-07-07T08:10:14Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "265.9",
+   "customerEmail": "kundschaft-8@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Raumkuehlung"
+    }
+   ]
+  },
+  {
+   "name": "#1006",
+   "createdAt": "2026-07-07T06:47:26Z",
+   "financialStatus": "REFUNDED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "426.51",
+   "customerEmail": "kundschaft-9@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "Kompakte Kuehlung"
+    }
+   ]
+  },
+  {
+   "name": "#1005",
+   "createdAt": "2026-07-03T10:03:09Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "FULFILLED",
+   "totalPrice": "41.9",
+   "customerEmail": "kundschaft-10@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "WM-Trikot"
+    }
+   ]
+  },
+  {
+   "name": "#1004",
+   "createdAt": "2026-06-25T12:54:09Z",
+   "financialStatus": "PAID",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "31.9",
+   "customerEmail": "inhaber@entfernt.invalid",
+   "lineItems": [
+    {
+     "title": "LED-Laterne Boho"
+    }
+   ]
+  },
+  {
+   "name": "#1003",
+   "createdAt": "2026-06-21T18:09:05Z",
+   "financialStatus": "EXPIRED",
+   "fulfillmentStatus": "UNFULFILLED",
+   "totalPrice": "33.9",
+   "customerEmail": null,
+   "lineItems": [
+    {
+     "title": "Vakuumierer"
+    }
+   ]
+  }
+ ],
+ "koerbe": [
+  {
+   "name": "#72020526956935",
+   "createdAt": "2026-09-29T07:57:31Z",
+   "completedAt": null,
+   "totalPriceSet": {
+    "shopMoney": {
+     "amount": "36.9"
+    }
+   },
+   "customer": {
+    "defaultEmailAddress": {
+     "emailAddress": "kundschaft-11@entfernt.invalid"
+    }
+   },
+   "abandonedCheckoutUrl": "(entfernt — traegt einen Schluessel zum Warenkorb; im Shopify-Admin unter „Abgebrochene Bestellungen\")",
+   "lineItems": {
+    "nodes": [
+     {
+      "title": "Kristall-Set 3-teilig"
+     }
+    ]
+   }
+  },
+  {
+   "name": "#69196114985345",
+   "createdAt": "2026-08-22T10:21:03Z",
+   "completedAt": null,
+   "totalPriceSet": {
+    "shopMoney": {
+     "amount": "22.9"
+    }
+   },
+   "customer": {
+    "defaultEmailAddress": {
+     "emailAddress": "inhaber@entfernt.invalid"
+    }
+   },
+   "abandonedCheckoutUrl": "(entfernt — traegt einen Schluessel zum Warenkorb; im Shopify-Admin unter „Abgebrochene Bestellungen\")",
+   "lineItems": {
+    "nodes": [
+     {
+      "title": "Gemueseschneider"
+     }
+    ]
+   }
+  },
+  {
+   "name": "#68831570919809",
+   "createdAt": "2026-07-04T20:28:33Z",
+   "completedAt": null,
+   "totalPriceSet": {
+    "shopMoney": {
+     "amount": "49.9"
+    }
+   },
+   "customer": {
+    "defaultEmailAddress": {
+     "emailAddress": "kundschaft-12@entfernt.invalid"
+    }
+   },
+   "abandonedCheckoutUrl": "(entfernt — traegt einen Schluessel zum Warenkorb; im Shopify-Admin unter „Abgebrochene Bestellungen\")",
+   "lineItems": {
+    "nodes": [
+     {
+      "title": "Abendkleid Sirene"
+     }
+    ]
+   }
+  },
+  {
+   "name": "#68831073173889",
+   "createdAt": "2026-07-04T19:10:01Z",
+   "completedAt": null,
+   "totalPriceSet": {
+    "shopMoney": {
+     "amount": "49.9"
+    }
+   },
+   "customer": {
+    "defaultEmailAddress": {
+     "emailAddress": "kundschaft-13@entfernt.invalid"
+    }
+   },
+   "abandonedCheckoutUrl": "(entfernt — traegt einen Schluessel zum Warenkorb; im Shopify-Admin unter „Abgebrochene Bestellungen\")",
+   "lineItems": {
+    "nodes": [
+     {
+      "title": "Abendkleid Sirene"
+     }
+    ]
+   }
+  },
+  {
+   "name": "#68828101050753",
+   "createdAt": "2026-07-04T12:44:33Z",
+   "completedAt": null,
+   "totalPriceSet": {
+    "shopMoney": {
+     "amount": "46.9"
+    }
+   },
+   "customer": {
+    "defaultEmailAddress": {
+     "emailAddress": "kundschaft-14@entfernt.invalid"
+    }
+   },
+   "abandonedCheckoutUrl": "(entfernt — traegt einen Schluessel zum Warenkorb; im Shopify-Admin unter „Abgebrochene Bestellungen\")",
+   "lineItems": {
+    "nodes": [
+     {
+      "title": "Mule-Sandalette Nodo"
+     }
+    ]
+   }
+  }
+ ],
+ "_hinweis": "Adressen pseudonymisiert und Wiederherstellungs-Links entfernt, weil dieses Repo oeffentlich ist. Betraege, Daten, Titel und Erreichbarkeit sind unveraendert."
+}
