@@ -176,3 +176,4 @@
 2026-09-30T20:26:51.396Z	luxe-orchestra.wav	15	haustier	cjreel-2607140739201614200	stimme:nein	anteil
 2026-09-30T20:28:22.987Z	luxe-epic-anime.wav	23.25	haustier	cjreel-1265790C-29A8-4EAD-A9DB-8BFCFBF0B6CA	stimme:nein	anteil
 2026-09-30T20:30:15.011Z	luxe-orchestra.wav	11.25	haustier	cjreel-E96420EC-3543-4464-A00D-7CDD43BD924A	stimme:ja	azure:de-CH-JanNeural
+2026-09-30T21:09:26.098Z	luxe-adventure-uplift.wav	45.5	haustier	cjreel-A5C114E4-AFCB-4CF8-92B7-56132951AC00	stimme:ja	azure:de-CH-JanNeural
