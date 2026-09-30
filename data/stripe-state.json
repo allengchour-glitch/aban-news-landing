@@ -173,5 +173,12 @@
     "link": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N",
     "cents": 1900,
     "currency": "chf"
+  },
+  "mietzins-paket": {
+    "product": "prod_VMBzAsOubo4APm",
+    "price": "price_1ULTb2RXvVMyfaIrV1YCK7w1",
+    "link": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O",
+    "cents": 1900,
+    "currency": "chf"
   }
 }
