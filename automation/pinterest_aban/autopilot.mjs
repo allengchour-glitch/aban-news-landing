@@ -46,6 +46,7 @@ export function pruefeText(t, thema) {
   const h = alles.match(HYPE);
   if (h) f.push(`Hype/Emoji: ${h[0]}`);
   if (/https?:\/\//.test(alles)) f.push('Link im Text');
+  if (thema.art === 'ratgeber' && /rechner/i.test(alles)) f.push('Ratgeber-Seite als „Rechner“ beschrieben');
   return f;
 }
 
@@ -54,7 +55,7 @@ export function vorlage(thema, variante = 0) {
   const fk = thema.fakten, w = thema.stichworte;
   const kopfe = [`${w[0]}: so geht's`, `${w[0]} richtig rechnen`, `${w[0]} einfach erklärt`];
   return {
-    titel: `${w[0]}: Gratis-Rechner für die Schweiz`.slice(0, 100),
+    titel: `${w[0]}: ${thema.art === 'ratgeber' ? 'Gratis-Ratgeber' : 'Gratis-Rechner'} für die Schweiz`.slice(0, 100),
     beschreibung: `${fk[0]} ${fk[1] || ''} Gratis und ohne Anmeldung auf abannews.com. ${w.slice(0, 3).map((s) => s).join(', ')}.`.replace(/\s+/g, ' ').slice(0, 500),
     alt: `Grafik zum Thema ${w[0]}: ${fk[0]}`.slice(0, 400),
     kopf: kopfe[variante % kopfe.length].slice(0, 60),
@@ -121,7 +122,7 @@ export function pinHtml(thema, t, layout, fotoB64) {
   .u{font-size:40px;line-height:1.35;color:#374151;margin-top:30px}.fuss{position:absolute;left:0;right:0;bottom:0;background:${dunkel};color:#fff;padding:40px 70px;display:flex;justify-content:space-between;align-items:center;font-size:34px;font-weight:700}
   .fuss span{color:${akzent}}ul{list-style:none;margin-top:60px}li{font-size:44px;line-height:1.3;margin:0 0 34px;padding-left:74px;position:relative}
   li b{position:absolute;left:0;top:0;width:52px;height:52px;border-radius:12px;background:${dunkel};color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center}`;
-  const fuss = `<div class="fuss">abannews.com <span>Gratis-Rechner →</span></div>`;
+  const fuss = `<div class="fuss">abannews.com <span>${thema.art === 'ratgeber' ? 'Gratis-Ratgeber' : 'Gratis-Rechner'} →</span></div>`;
   const kicker = esc((POOL.boards[thema.board] || {}).name || thema.stichworte[0]);
   const kopf = `<p class="k">${kicker}</p><h1>${esc(t.kopf)}</h1>`;
   const mitte = (inhalt) => `<div style="position:absolute;top:0;left:0;right:0;bottom:130px;display:flex;flex-direction:column;justify-content:center;padding:0 70px">${inhalt}</div>`;
@@ -136,8 +137,9 @@ export function pinHtml(thema, t, layout, fotoB64) {
 
 // ---------- KI ----------
 function prompt(thema) {
-  return `Du schreibst einen Pinterest-Pin auf Deutsch (Schweiz, "ss" statt "ß") für einen kostenlosen Online-Rechner.
-Ziel: Menschen, die nach "${thema.stichworte.slice(0, 3).join('", "')}" suchen, sollen auf den Rechner klicken.
+  const was = thema.art === 'ratgeber' ? 'eine kostenlose Ratgeber-Seite (kein Rechner)' : 'einen kostenlosen Online-Rechner';
+  return `Du schreibst einen Pinterest-Pin auf Deutsch (Schweiz, "ss" statt "ß") für ${was}.
+Ziel: Menschen, die nach "${thema.stichworte.slice(0, 3).join('", "')}" suchen, sollen auf die Seite klicken.
 Verwende AUSSCHLIESSLICH diese Fakten, keine anderen Zahlen, keine Versprechen, keine Ausrufezeichen, keine Emojis:
 ${thema.fakten.map((f) => '- ' + f).join('\n')}
 Stil: sachlich, konkret, hilfreich, Du-Form. Keine Hype-Wörter.
