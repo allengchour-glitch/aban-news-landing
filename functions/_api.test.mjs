@@ -157,18 +157,23 @@ async function run() {
   }
 
   // 10) Claude-Pfad mit gemocktem fetch (Key gesetzt) → claude-Quelle, kein Key-Leak
+  // Umschreiben ist Pro-Funktion (functions/_pro.mjs) → Lizenzprüfung bei Lemon Squeezy mitmocken
+  const PRO_OK = () => new Response(JSON.stringify({ valid: true, license_key: { status: "active" }, meta: {} }), {
+    status: 200, headers: { "Content-Type": "application/json" },
+  });
   console.log("\nTest 10 — Claude-Pfad (gemockt):");
   {
     const realFetch = globalThis.fetch;
     let sawKey = null;
     globalThis.fetch = async (url, init) => {
+      if (String(url).includes("lemonsqueezy")) return PRO_OK();
       sawKey = init && init.headers && init.headers["x-api-key"];
       return new Response(JSON.stringify({ content: [{ type: "text", text: "Nüchtern umgeschrieben." }] }), {
         status: 200, headers: { "Content-Type": "application/json" },
       });
     };
     try {
-      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
+      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite", license_key: "test-lizenz-123" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
       const data = await res.json();
       check("aiRewriteSource = claude", data.aiRewriteSource === "claude", "src=" + data.aiRewriteSource);
       check("aiRewrite = Mock-Text", data.aiRewrite === "Nüchtern umgeschrieben.");
@@ -180,14 +185,33 @@ async function run() {
     }
   }
 
+  // 10b) Gegenprobe: ohne Pro-Lizenz wird Claude NICHT aufgerufen
+  console.log("\nTest 10b — ohne Lizenz kein Claude-Aufruf:");
+  {
+    const realFetch = globalThis.fetch;
+    let claudeGerufen = false;
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("anthropic")) claudeGerufen = true;
+      return new Response(JSON.stringify({ valid: false }), { status: 200, headers: { "Content-Type": "application/json" } });
+    };
+    try {
+      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
+      const data = await res.json();
+      check("Claude nicht aufgerufen", !claudeGerufen);
+      check("proRequired gesetzt", data.proRequired === true);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  }
+
   // 11) Claude-Fehler (gemockter 500) → Fallback, Key leakt nicht in Error
   console.log("\nTest 11 — Claude-Fehler → Fallback ohne Key-Leak:");
   {
     const realFetch = globalThis.fetch;
-    globalThis.fetch = async () =>
-      new Response("server error", { status: 500 });
+    globalThis.fetch = async (url) =>
+      String(url).includes("lemonsqueezy") ? PRO_OK() : new Response("server error", { status: 500 });
     try {
-      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
+      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite", license_key: "test-lizenz-123" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
       const data = await res.json();
       check("Fallback bei API-Fehler", data.aiRewriteSource === "fallback", "src=" + data.aiRewriteSource);
       check("aiRewriteError gesetzt", typeof data.aiRewriteError === "string");
