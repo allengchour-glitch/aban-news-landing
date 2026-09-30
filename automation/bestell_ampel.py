@@ -23,7 +23,7 @@ def main():
     q = ('{orders(first:20,query:"financial_status:paid AND fulfillment_status:unfulfilled AND status:open",'
          'sortKey:CREATED_AT,reverse:true){nodes{name createdAt '
          'totalPriceSet{shopMoney{amount}} '
-         'refunds(first:3){id totalRefundedSet{shopMoney{amount}}} '
+         'refunds(first:3){id totalRefundedSet{shopMoney{amount}} transactions(first:5){nodes{kind status amountSet{shopMoney{amount}}}}} '
          'lineItems(first:3){nodes{title sku}}}}}')
     req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
         data=json.dumps({"query": q}).encode(),
@@ -66,10 +66,19 @@ def main():
         alt = f"{h:.0f}h" if h < 48 else f"{h/24:.0f}d"
         # Eine erstattete Bestellung ist erledigt, auch wenn Shopify sie bis zum Settlement
         # noch als "paid" fuehrt — sonst steht das ⚠️ weiter, nachdem der Fall geloest ist.
-        erstattet = bool(o.get("refunds"))
+        # ⚠️ 30.09.2026 (#1019): «irgendeine Rückerstattung» ≠ erstattet — CHF 16.11 von 23.11 (Versand fehlte) stand als
+        # «erstattet». Gezählt werden die Rückerstattungs-Buchungen (auch PENDING: Shopify Payments bucht nach), nicht die Existenz.
+        summe = float(o["totalPriceSet"]["shopMoney"]["amount"])
+        zurueck = sum(float(t["amountSet"]["shopMoney"]["amount"]) for r in (o.get("refunds") or [])
+                      for t in ((r.get("transactions") or {}).get("nodes") or [])
+                      if t.get("kind") == "REFUND" and t.get("status") in ("SUCCESS", "PENDING"))
+        erstattet = bool(o.get("refunds")) and zurueck >= summe - 0.005
+        teil = bool(o.get("refunds")) and not erstattet
         lx = [k for k in watch if k.startswith((f"LX{nr}", f"#{nr}"))]  # «#1020» = von Hand in der CJ-Konsole (30.09.)
         if erstattet:
             st, warn = "erstattet", ""
+        elif teil:
+            st, warn = f"TEILERSTATTET CHF {zurueck:.2f}/{summe:.2f}", " ⚠️"
         else:
             st = ", ".join(f"{k}:{watch[k].get('status','?')}" for k in lx) if lx else "KEIN CJ-Auftrag"
             warn = " ⚠️" if (not lx and h > 2) or any(watch[k].get("status") in ("TRASH", "CANCELLED") for k in lx) else ""
