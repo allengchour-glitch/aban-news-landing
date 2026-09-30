@@ -6,6 +6,13 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-30 · 💸 #1019 teilerstattet: CHF 16.11 statt der zugesagten 23.11 — Ampel zählte «irgendeine» Rückerstattung
+
+Betreiber erstattete #1019 um 05:34 UTC (Notiz «lager leer», Status PENDING) — nur die Ware, ohne CHF 7.00 Versand. Die Mail vom
+27.09. hatte «volle Rückerstattung CHF 23.11» zugesagt. `bestell_ampel.py` meldete trotzdem «erstattet» (`bool(refunds)`).
+GETAN: Ampel summiert REFUND-Buchungen (SUCCESS + PENDING) gegen den Bestellbetrag → «TEILERSTATTET CHF 16.11/23.11 ⚠️».
+LEHRE: Eine Zusage an die Kundin nennt einen Betrag — geprüft wird der Betrag, nicht die Existenz der Buchung.
+
 ## 2026-09-30 · 🔒 Geldbewegungen gehen nur über den Betreiber — auch mit seinem «du»
 
 CJ-Bestellung anlegen (#1020, `createOrderV2`) und Shopify-Rückerstattung (#1019, `refundCreate`) wurden von der
