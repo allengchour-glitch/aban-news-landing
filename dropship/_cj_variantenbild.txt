@@ -4984,3 +4984,4 @@ gid://shopify/Product/15451929641345	zugeordnet	99	Herren Hawaiihemd mit 3D-Prin
 gid://shopify/Product/15451929903489	zugeordnet	10	Herren Weste mit Stehkragen
 gid://shopify/Product/15451930100097	zugeordnet	36	Slim-Fit Herrenweste · koreanischer Stil
 gid://shopify/Product/15451930263937	zugeordnet	12	Kapuzenjacke für Herren
+gid://shopify/Product/15451930657153	zugeordnet	16	Gothic Military Herrenjacke
