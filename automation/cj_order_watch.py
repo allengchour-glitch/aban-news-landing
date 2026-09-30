@@ -19,10 +19,17 @@ takt()
 d = json.loads(urllib.request.urlopen(req, timeout=45).read())
 alt = json.load(open(STATE)) if os.path.exists(STATE) else {}
 neu, aenderungen = {}, []
+# 30.09.2026 (#1020): Von Hand in der CJ-Konsole angelegte Auftraege tragen die Shopify-Nummer «#1020» statt «LX1020».
+# Steht diese «#»-Nummer im Bestell-Ledger (Spalte 3), ist sie der ECHTE Auftrag, kein Schatten → mitverfolgen.
+try:
+    KONSOLE = {l.split("\t")[2].strip().upper() for l in open("dropship/_cj_orders_done.txt")
+               if len(l.split("\t")) > 2 and l.split("\t")[2].strip().startswith("#")}
+except OSError:
+    KONSOLE = set()
 for o in d.get("data", {}).get("list", []):
     n = (o.get("orderNum") or "").upper()
-    if not n.startswith("LX"):
-        continue  # Schatten-Einträge (#-Form) nie anfassen/melden
+    if not n.startswith("LX") and n not in KONSOLE:
+        continue  # Schatten-Einträge (#-Form) nie anfassen/melden — ausser von Hand angelegte (Ledger)
     jetzt = {"status": o.get("orderStatus"), "tracking": o.get("trackNumber") or ""}
     # 19.08.: CJ kann Aufträge SPLITTEN (LX1013 → 2 Pakete mit eigenem Tracking) —
     # darum je Auftrag+Tracking ein Eintrag, sonst überschreibt das Dict die Pakete.

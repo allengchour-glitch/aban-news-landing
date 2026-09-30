@@ -67,7 +67,7 @@ def main():
         # Eine erstattete Bestellung ist erledigt, auch wenn Shopify sie bis zum Settlement
         # noch als "paid" fuehrt — sonst steht das ⚠️ weiter, nachdem der Fall geloest ist.
         erstattet = bool(o.get("refunds"))
-        lx = [k for k in watch if k.startswith(f"LX{nr}")]
+        lx = [k for k in watch if k.startswith((f"LX{nr}", f"#{nr}"))]  # «#1020» = von Hand in der CJ-Konsole (30.09.)
         if erstattet:
             st, warn = "erstattet", ""
         else:

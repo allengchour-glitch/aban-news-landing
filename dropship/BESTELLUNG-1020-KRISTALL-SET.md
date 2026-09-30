@@ -31,3 +31,6 @@ Betreiber bestellt in der CJ-Konsole (Bestellnummer LX1020) oder gibt die Aktion
 
 ## Nachtrag 30.09. 04:35 — CJ-Konsole findet es nicht
 Direktsuche in der CJ-Konsole per Artikelnummer: **CJMB113271001AZ** (Variante Set1, USD 13.02; mit Zertifikat CJMB113271005EV, USD 13.89); Produkt-SKU CJMB1132710. Link: https://cjdropshipping.com/product/-p-1394197123326676992.html
+
+## Nachtrag 30.09. 04:45 — bei CJ angelegt (Betreiber, Konsole)
+CJ-Auftrag **#1020** (orderId 2609300440110970200): Variante Set1 vid 1394197124702408704 USD 13.02 + CJPacket Fast Ordinary USD 9.17 = **USD 22.19**, Status CREATED (unbezahlt). Ledger `_cj_orders_done.txt` trägt ihn mit Referenz «#1020»; `cj_order_watch.py` + `bestell_ampel.py` verfolgen von Hand angelegte «#»-Aufträge, wenn sie im Ledger stehen (sonst gelten «#»-Aufträge weiter als Schatten der CJ-App).
