@@ -50518,3 +50518,4 @@ gid://shopify/Product/15453793419649	schon-sauber	0
 gid://shopify/Product/15453793583489	schon-sauber	0
 gid://shopify/Product/15453793714561	schon-sauber	0
 gid://shopify/Product/15453793747329	schon-sauber	0
+gid://shopify/Product/15453793780097	schon-sauber	0
