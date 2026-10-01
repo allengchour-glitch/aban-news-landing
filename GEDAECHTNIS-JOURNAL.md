@@ -11,6 +11,10 @@
 
 
 
+## 2026-10-01 · 🦻 Hörgerät ohne das Wort «Hörgerät» (Verbesserungsrunde 12:26 UTC)
+Googles Meldung «Personalized advertising: personal hardships» (67 aktive) als zweiter Prüfer gelesen: darin «Digitaler Hörer im Ohr mit 32 Kanälen und Bluetooth» (CHF 107.90, «speziell für ältere Menschen», App-Anpassung, UV-Koffer) = Hörgerät, ACTIVE seit 10.07. Unser Wächter `medizin_zweck_guard.py` kannte «Hörgerät/Hörverstärker», aber die Regel `geraet-nach-funktion` sperrt «Bluetooth» (gegen Ohrhörer) — und dieses Gerät hat Bluetooth. Fix: eigene Regel `hoergeraet-funktion` in `medizin_zweck.json` (Importer + Bestand), ohne Bluetooth-Sperre; Voll-Export 1 Treffer/0 Fehlalarme, Kanarienvögel 10/10, JS gleich; über den Wächter gedraftet + zurückgelesen. Die übrigen geprüften Meldungen (Sauerstoff-«Injektion» = Kosmetik-Sprüher, Spritzen ohne Nadel, Derma-Roller) sind keine Medizingeräte.
+**Lehre:** Eine Regel-Sperre, die eine harmlose Klasse schützt, deckt jede echte Klasse mit demselben Merkmal mit — dann eine eigene Regel ohne diese Sperre bauen, nicht die Sperre verkleinern. Fremde Richtlinien-Listen (Google) sind ein unabhängiger Prüfer für eigene Muster. → `dropship/MEDIZIN-HOERGERAET-2026-10-01.md`
+
 ## 2026-10-01 · 🔁 Ersatz-Zuordnung für Nicht-CJ-SKUs (Verbesserungsrunde 08:25 UTC)
 Kristall-Set (`LX-23-KRISTALL-SET-3-TEILIG`) 7 T: 6 Sitz., 2 Warenkörbe, 2× Kasse; #1020 brauchte Ersatzsuche + Handauftrag.
 Engine: `ist_cj()` liess LX-SKUs als «anderer Lieferant» liegen. Fix: `zuordnung_vid()` (Tabelle `_cj_varianten_zuordnung.tsv`)
