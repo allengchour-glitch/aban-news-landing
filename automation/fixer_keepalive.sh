@@ -914,6 +914,18 @@ while true; do
     tail -n 1 "$TK" 2>/dev/null | grep -q "korrigiert" && tail -n 1 "$TK" | grep -qv " 0 korrigiert, 0 gemeldet" \
       && echo "$(date -u +%H:%M) titel_kauderwelsch: $(tail -n 1 "$TK")"
   fi
+  # GOOGLE-BILDTAUSCH AUSGEROLLT (01.10.2026, Betreiber «push shop mehr»): A/B ausgewertet — getauscht 10/13 von Google frei-
+  # gegeben, Kontrolle 0/25 → alle «Inappropriate image» laufen (Gemini + ChatGPT einig, nur vorhandene Bilder, Ledger je Produkt).
+  # Alle 2 h, solange offen; der Lauf endet mit FERTIG, wenn nichts mehr offen ist. Neustart-fest über das Ledger.
+  GBT=/tmp/google_bild_tausch.log
+  if [ -f "$REPO/automation/google_bild_tausch.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GBT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 7200 ] || absturz_nachholen "$GBT" || still_gestorben "$GBT"; then
+      touch "$GBT"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_bild_tausch.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          SCHARF=1 N=60 exec timeout 3300 python3 automation/google_bild_tausch.py" >> "$GBT" 2>&1 9>&- & )
+    fi
+  fi
   # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
   # `bilder-geloescht-speicher` trägt und aktiv ohne Bild ist, geht zurück auf DRAFT (`wartet-auf-bilder`). Eine Suchabfrage.
   if [ -f "$REPO/automation/aktiv_ohne_bild_wache.py" ]; then

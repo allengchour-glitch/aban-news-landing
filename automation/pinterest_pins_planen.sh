@@ -8,7 +8,7 @@
 set -u
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO" || exit 1
-N="${PINS_JE_TAG:-6}"
+N="${PINS_JE_TAG:-10}"   # 01.10.2026: 6 → 10 (Pinterest = beste Warenkorb-Quote der Gratis-Kanäle, 14 T: 8 Sitz. → 2 Warenkörbe)
 TAG=$(date -u +%F)
 [ -f dropship/_SOCIAL_STOPP_PINTEREST ] && { echo "Pinterest-Stopp gesetzt — keine Aufträge"; exit 0; }
 [ -s auftraege/pinterest_pins_queue.tsv ] || { echo "keine Warteschlange"; exit 0; }
