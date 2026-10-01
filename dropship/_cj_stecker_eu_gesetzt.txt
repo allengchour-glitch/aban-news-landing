@@ -195,3 +195,8 @@
 15509366047105	unklar:farbe-unbekannt	2026-10-01	30W Vertikales USB-Ladegerät mit 6 Ports
 15509371060609	eu-sku-gesetzt:CJJJYSFZ00013-EU	2026-10-01	Mini-Nähmaschine, elektrisch
 15509383283073	eu-sku-gesetzt:CJXFZNZN01657-EU	2026-10-01	Blattloser Haartrockner
+15510313894273	unklar:farbe-unbekannt	2026-10-01	Popcornmaschine
+15510322282881	eu-sku-gesetzt:CJJF164896102BY	2026-10-01	2-in-1 Glätteisen & Lockenstab mit Anionen
+15510330999169	unklar:farbe-unbekannt	2026-10-01	Faltbarer Reise-Wasserkocher mit 0.6 L
+15510911943041	eu-sku-gesetzt:CJXFZNZN00977-White-EU	2026-10-01	Handdampfglätter
+15510957785473	eu-sku-gesetzt:CJYD304645901AZ	2026-10-01	PS2 Konsolen-Netzteil (Modell 70000)
