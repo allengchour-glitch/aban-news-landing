@@ -1,6 +1,28 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
 
+
+## 🆕 01.10. 20:10 UTC — Gratis-Reichweite: KI-Shopping + Bing · 1:1 in Cowork einfügen
+> GEMESSEN 14 T (nur Menschen): ChatGPT 11 Sitzungen (und #1021 kam über ChatGPT!), Bing 4, Google 36. Beides kostet nichts.
+
+```
+Du arbeitest in meinem eingeloggten Browser. Nichts bezahlen, keine Abos, keine Anzeigen-Kampagne. Screenshot je Schritt.
+
+1) SHOPIFY → admin.shopify.com/agentic  (Agentic Storefronts / «KI-Kanäle»)
+   Screenshot der Seite. Für JEDEN Kanal (ChatGPT, Perplexity, Microsoft Copilot, Google AI Mode) notieren:
+   verfügbar für die Schweiz? an/aus? Alles, was kostenlos und für die Schweiz verfügbar ist: EINSCHALTEN.
+   Fragt ein Kanal nach Bezahlung oder einem Abo: NICHT einschalten, nur melden.
+   Gibt es die Seite nicht: Einstellungen → Apps und Vertriebskanäle → nach «Agentic»/«ChatGPT» suchen, Screenshot.
+
+2) MICROSOFT MERCHANT CENTER (ads.microsoft.com → Tools → Merchant Center) — gratis Bing-Shopping
+   Neuen Shop anlegen «LuxeStyle CH», Land Schweiz, Website luxestyle.ch (Verifizierung über Shopify oder
+   Meta-Tag — den Tag mir schicken, ich setze ihn im Theme). Danach «Import aus Google Merchant Center»
+   (Konto 5797470070) wählen und «Free listings / kostenlose Einträge» aktivieren. KEINE Kampagne, KEIN Budget.
+   Fragt Microsoft nach Zahlungsmittel für Anzeigen: abbrechen und melden.
+```
+**Quittungen:** (1) Screenshot → ich messe danach die Sitzungen aus ChatGPT/Perplexity/Copilot (ShopifyQL referrer).
+(2) Meta-Tag/Bestätigung → ich setze den Tag und prüfe den Import.
+
 ## 🆕 01.10. 19:15 UTC — Nachkontrolle Merchant + zwei alte Punkte · diesen Block 1:1 in Cowork einfügen
 > Betreiber hat die Merchant-Versandeinstellungen umgestellt. Dieser Auftrag PRÜFT das (nichts neu erfinden) und klärt die
 > Deutschland-Quelle nur LESEND. Dazu die zwei Punkte, die seit Wochen offen sind (BigBuy EUR 1'000, TikTok-Bio-Link).
