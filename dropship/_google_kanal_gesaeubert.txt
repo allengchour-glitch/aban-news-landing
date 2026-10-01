@@ -149,3 +149,4 @@ gid://shopify/Product/15522294235521	waffe	Multifunktionales Outdoor-Messer
 gid://shopify/Product/15523199091073	waffe	Damast Klappmesser für Outdoor und Küche
 gid://shopify/Product/15523199123841	waffe	Sanhe Stahl SKD-11 Klappmesser
 gid://shopify/Product/15523210166657	waffe	Outdoor-Klappmesser mit Stahlgriff
+gid://shopify/Product/16603332837767	rauchzubehoer	Auto-USB-Ladegerät mit Zigarettenanzünder
