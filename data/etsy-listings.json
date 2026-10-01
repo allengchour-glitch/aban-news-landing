@@ -40,5 +40,12 @@
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:05:31.899Z",
     "state": "draft"
+  },
+  "finanz-kompass": {
+    "listing_id": 4586615357,
+    "preis": 29,
+    "waehrung": "CHF",
+    "angelegt": "2026-10-01T19:11:27.056Z",
+    "state": "draft"
   }
 }
