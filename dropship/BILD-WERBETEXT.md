@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T00:08:59Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T00:30:45Z
 
-Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1223 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
+Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1224 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4273** in 1157 Produkten
-- Treffer (≥ 4 Wörter): **165** in 142 Produkten
+- Medien geprüft: **4285** in 1157 Produkten
+- Treffer (≥ 4 Wörter): **167** in 142 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -156,6 +156,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Mehrzweck-Hundeleine mit Frosch Schnalle `15453790142849` | [77408597934471](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/35e1164a-a08f-4ce2-b4b4-78d80f17b055_fine.jpg) | 5 | Lake Blue Small frog clasp | offen |
 | Dickes Korallen-Fleece Badetuch `15453792436609` | [69926765724033](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42b48f14-7470-4f15-ad28-5a75b765be12_fine.jpg) | 5 | Comfortable and soft Enlarged Thickened | offen |
 | Kinder-Badetuch mit Cartoon-Druck `15453792895361` | [69926766248321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ecef8483-3251-4e8d-935e-73a510cf11a6_fine.jpg) | 5 | caring for newborn skin acterial | offen |
+| TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [77431087202695](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans_a9a4f97f-6a9d-494a-b348-ee9500bc4469.jpg) | 5 | Foldable yoga mat available complete | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
@@ -176,6 +177,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Automatischer Futter- und Wasserspender `15453774545281` | [77407199363463](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dd2059f6-db77-4f5d-8664-c9f8e5d0e5d1_trans.jpg) | 4 | Blue Stainless Steel Bowl | offen |
 | Kinder-Schlafkissen mit Schlaf-Puppe `15453776413057` | [77407215485319](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fec7fcf-3d75-4a83-becb-62a2dc4de8b6_trans.jpg) | 4 | Embrace design Children feel | offen |
 | Keilkissen-Set für Rücken, Beine und Knie `15496359510401` | [77409979826567](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cb2eb66a-aaca-46c2-b521-0b82de4bdc18.jpg) | 4 | Snoring Issue surgery Relaxation | offen |
+| Bauchstützgürtel für Schwangere `15453760717185` | [77430630547847](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ded9c826-8d29-4235-bedb-80c99cd060de_trans.jpg) | 4 | Ring design fits better | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
