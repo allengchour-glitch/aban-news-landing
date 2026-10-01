@@ -2154,3 +2154,6 @@ blauer-halsausschnitt-rock-604400	hat-liste
 langarmliger-maxi-rock-637000	hat-liste
 langarm-dress-609300	gesetzt-1
 orangefarbene-sommerkleid-609700	hat-liste
+langarm-dress-mit-fliege-638600	gesetzt-3
+schwarze-patchwork-mermaid-rock-627800	hat-liste
+pink-lace-rockchen-603700	gesetzt-4
