@@ -5147,3 +5147,4 @@ gid://shopify/Product/15453524328833	zugeordnet	8	Edelstahl-Wassersportflasche
 gid://shopify/Product/15453525737857	zugeordnet	3	18k vergoldete Halskette mit Zirkonia
 gid://shopify/Product/15453525967233	zugeordnet	2	Geometrische Ohrringe
 gid://shopify/Product/15453526458753	zugeordnet	2	Herz Ohrringe
+gid://shopify/Product/15453526786433	zugeordnet	6	Anstecknadel-Halter
