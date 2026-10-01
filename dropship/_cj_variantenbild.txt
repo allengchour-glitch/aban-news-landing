@@ -5518,3 +5518,4 @@ gid://shopify/Product/15454047109505	zugeordnet	12	Retro-Kleid mit halbem Hals
 gid://shopify/Product/15454047207809	zugeordnet	35	Seidenkleid mit 3/4-Ärmeln
 gid://shopify/Product/15454047240577	zugeordnet	16	Tarnmuster-Stiefel
 gid://shopify/Product/15454047404417	zugeordnet	42	Langarm-Kleid mit Taillengürtel, elegant, lang, für Urlaub
+gid://shopify/Product/15454047568257	zugeordnet	90	Damen-Maxikleid mit 3D-Druckärmeln
