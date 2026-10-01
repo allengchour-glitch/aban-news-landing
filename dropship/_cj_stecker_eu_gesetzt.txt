@@ -200,3 +200,10 @@
 15510330999169	unklar:farbe-unbekannt	2026-10-01	Faltbarer Reise-Wasserkocher mit 0.6 L
 15510911943041	eu-sku-gesetzt:CJXFZNZN00977-White-EU	2026-10-01	Handdampfglätter
 15510957785473	eu-sku-gesetzt:CJYD304645901AZ	2026-10-01	PS2 Konsolen-Netzteil (Modell 70000)
+15520407978369	eu-sku-gesetzt:CJYD254788901AZ	2026-10-01	Multifunktionaler Mixer, Entsafter & Grinder
+15522038940033	unklar:farbe-unbekannt	2026-10-01	Vollautomatischer Lockenstab
+15522116501889	unklar:farbe-unbekannt	2026-10-01	Automatischer Lockenstab Lazy – Rotierender Big Wave
+15522128691585	unklar:farbe-unbekannt	2026-10-01	Wandmontierter Badheizlüfter
+15523541811585	eu-sku-gesetzt:CJJY103022502BY	2026-10-01	Smart Multi-Port Ladegerät
+15524778246529	unklar:farbe-unbekannt	2026-10-01	Dampfreiniger 1600W für Dunstabzugshaube
+15524927144321	eu-sku-gesetzt:CJJJCFCJ02337-White-EU	2026-10-01	Automatischer Multifunktions-Toaster
