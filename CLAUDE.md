@@ -54,8 +54,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **`SHOPIFY_CLIENT_SECRET` in der Cloud-Umgebung ungültig ist** („Missing or invalid client secret" → User muss
   neuen Schlüssel im Dev-Dashboard erzeugen und das Secret ersetzen). Fallback-Name „Kunde" statt „Verifizierter Käufer".
 - **Eigener Live-Lauf gestoppt** nach Dubletten-Fund (Biden-Uhr 8 Dubletten → ausgeblendet; Bauchtrainer 3 neue ok).
-- **Massen-Import der anderen Session** (≈20'000 Reviews, Absender `cj-import@luxestyle.ch`): **≈2'900 sichtbare 1–3★
-  fremder Verkäufer** → per User-Entscheid **ausgeblendet** (`automation/judgeme_hide_lowstar.py`, Ledger
+- **Massen-Import der anderen Session** (≈20'000 Reviews, Absender `cj-import@luxestyle.ch`): **2'857 sichtbare 1–3★
+  fremder Verkäufer** + **32 aus dem Judge.me-AliExpress-Import** (u. a. Sommerkleid ärmellos, Maxirock, Ibiza —
+  der alte „Sommerkleid 3.3★"-Punkt) → per User-Entscheid **alle 2'889 ausgeblendet**, **0 sichtbare 1–3★-Importe übrig** (`automation/judgeme_hide_lowstar.py`, Ledger
   `dropship/judgeme_hidden_lowstar.txt`, `UNHIDE=1` macht es rückgängig). Judge.me-API: `PUT /reviews/{id}`
   mit `curated:"spam"` = unveröffentlicht, `"ok"` = wieder sichtbar.
 

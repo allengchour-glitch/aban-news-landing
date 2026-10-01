@@ -9,14 +9,16 @@
 
 > ## 🛑 JUDGE.ME-REVIEW-REGELN (User-Entscheidung 2026-10-01 — für ALLE Sessions bindend)
 > 1. **Nur ≥4★ importieren.** Ein Import ab 07.09. (Absender `cj-import@luxestyle.ch`) hatte ~2'900 Bewertungen
->    mit 1–3★ **fremder CJ-Verkäufer** sichtbar gemacht („Nie erhalten", „35 € Zoll", „Schrott") → auf User-Wunsch
->    **ausgeblendet** (umkehrbar, IDs in `dropship/judgeme_hidden_lowstar.txt`, Tool `automation/judgeme_hide_lowstar.py`).
+>    mit 1–3★ **fremder CJ-Verkäufer** sichtbar gemacht („Nie erhalten", „35 € Zoll", „Schrott") + 32 aus dem Judge.me-AliExpress-Import (`source=aliexpress`)
+>    → auf User-Wunsch **alle 2'889 ausgeblendet** (Stand 01.10.: 0 sichtbare 1–3★-Importe) (umkehrbar, IDs in `dropship/judgeme_hidden_lowstar.txt`, Tool `automation/judgeme_hide_lowstar.py`).
 >    Wer importiert: `MIN_SCORE=4` Pflicht. Echte LuxeStyle-Kundenbewertungen NIE anfassen.
 > 2. **Vor jedem Import pro Produkt prüfen, ob es schon Imports hat** (Judge.me `product_external_id`) — sonst
 >    Dubletten (2026-10-01 passiert: Biden-Uhr doppelt importiert, Dubletten wieder ausgeblendet).
 > 3. **CJ-pid-Auflösung NUR exakt** (numerische SKU = pid, `product/query?pid=`). **Nie `product/list?keyWords=`**:
 >    liefert für jede SKU dasselbe Fremdprodukt → Reviews eines FREMDEN Produkts = Fake-Reviews.
-> 4. Absender-Name nie „Verifizierter Käufer" (sie haben nicht bei LuxeStyle gekauft) → neutral „Kunde".
+> 4. **Ungefilterte Judge.me-Liste endet bei ~10'000 eindeutigen Reviews** (danach Wiederholungen) → für Prüfungen
+>    `published=true&rating=N` nutzen, nicht blind durchblättern.
+> 5. Absender-Name nie „Verifizierter Käufer" (sie haben nicht bei LuxeStyle gekauft) → neutral „Kunde".
 
 ---
 
