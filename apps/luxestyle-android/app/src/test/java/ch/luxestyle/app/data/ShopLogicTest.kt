@@ -202,4 +202,28 @@ class ShopLogicTest {
         assertFalse(Storefront.withRatings(q, enabled = false).contains("metafield"))
         assertTrue(Storefront.withRatings(q, enabled = true).contains("""metafield(namespace: "reviews", key: "rating")"""))
     }
+
+    @Test
+    fun kachelbilderNieDoppelt() {
+        val jade1 = Image("https://cdn.shopify.com/s/files/1/c/S00fa75G_8bd6e6ca-6dc6-4934-84b0-e1a6ad240780.webp?v=1")
+        val jade2 = Image("https://cdn.shopify.com/s/files/1/c/S00fa75G_c06b013b-0db3-4ae6-956e-1c130c4bc189.webp?v=2")
+        val uhr = Image("https://cdn.shopify.com/s/files/1/f/uhr.jpg")
+        val kalender = Image("https://cdn.shopify.com/s/files/1/f/kalender.jpg")
+        assertEquals(imageKey(jade1), imageKey(jade2))
+        val picked = pickDistinct(
+            listOf("a", "b", "c", "d"),
+            mapOf("a" to listOf(jade1, uhr), "b" to listOf(jade2, uhr), "c" to listOf(jade2, uhr, kalender), "d" to emptyList()),
+        )
+        assertEquals(jade1, picked["a"])
+        assertEquals(uhr, picked["b"])
+        assertEquals(kalender, picked["c"])
+        assertEquals(null, picked["d"])
+    }
+
+    @Test
+    fun emojiHandleAusMenue() {
+        val m = MenuItem("Geschenke bis CHF 30", "https://luxestyle.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30", emptyList())
+        assertEquals("🎁-geschenke-bis-chf-30", m.collectionHandle)
+        assertEquals("damen-kleider", MenuItem("Kleider", "/collections/damen-kleider?sort=x", emptyList()).collectionHandle)
+    }
 }

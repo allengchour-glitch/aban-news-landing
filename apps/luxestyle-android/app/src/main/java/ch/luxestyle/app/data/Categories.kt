@@ -52,9 +52,12 @@ private fun allPaths(items: List<MenuItem>, prefix: List<MenuItem> = emptyList()
     items.flatMap { m -> listOf(prefix + m) + allPaths(m.children, prefix + m) }
 
 /** Preis-Einstiege aus dem Menü („Geschenke unter CHF 20" → „unter CHF 20"), günstigste zuerst, je Betrag einmal. */
-fun priceEntries(menu: List<MenuItem>): List<Pair<String, MenuItem>> {
+fun priceEntries(menu: List<MenuItem>): List<Pair<String, MenuItem>> = priceItems(menu.flatMap { it.children })
+
+/** Wie [priceEntries], aber für eine Liste von Unterkategorien (z. B. die eines Bereichs). */
+fun priceItems(items: List<MenuItem>): List<Pair<String, MenuItem>> {
     val re = Regex("(unter|bis)\\s+CHF\\s+(\\d+)", RegexOption.IGNORE_CASE)
-    return menu.flatMap { it.children }
+    return items
         .filter { it.collectionHandle != null }
         .mapNotNull { m -> re.find(m.title)?.let { Triple(it.groupValues[2].toInt(), "${it.groupValues[1].lowercase()} CHF ${it.groupValues[2]}", m) } }
         .sortedBy { it.first }

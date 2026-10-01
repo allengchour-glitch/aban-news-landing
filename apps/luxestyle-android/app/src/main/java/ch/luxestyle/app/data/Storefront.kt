@@ -146,17 +146,22 @@ class Storefront(
     }
 
     /** Bild je Kollektion; ohne eigenes Bild das des ersten Produkts. */
-    suspend fun collectionImages(handles: List<String>): Map<String, Image?> {
+    /**
+     * Bildkandidaten je Kollektion: zuerst Fotos der meistverkauften Produkte, das eigene Kollektionsbild
+     * nur als Rückfall. Die Kollektionsbilder wurden einmal von Hand gesetzt und veralten (Netzteil bei
+     * „Geschenke für Ihn"); Produktfotos folgen dem Sortiment von selbst, auch wenn neue Produkte dazukommen.
+     */
+    suspend fun collectionImages(handles: List<String>): Map<String, List<Image>> {
         if (handles.isEmpty()) return emptyMap()
         val q = handles.mapIndexed { i, h ->
             "c$i: collection(handle: ${JsonPrimitive(h)}) { image { url altText width height } " +
-                "products(first: 1) { nodes { featuredImage { url altText width height } } } }"
+                "products(first: 6, sortKey: BEST_SELLING) { nodes { featuredImage { url altText width height } } } }"
         }
         val d = run("query Img { ${q.joinToString(" ")} }")
         return handles.withIndex().associate { (i, h) ->
             val c = d.o("c$i")
             val own = Parse.image(c.o("image"))?.takeUnless(::isWebBanner)
-            h to (own ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
+            h to (c.nodes("products").mapNotNull { it.o("featuredImage")?.let(Parse::image) } + listOfNotNull(own))
         }
     }
 
@@ -278,5 +283,23 @@ class Storefront(
  * Breite Web-Banner (1600×620) tragen Titel und Knopf ins Bild gebrannt („Frauen … Jetzt entdecken").
  * In der App werden sie abgeschnitten und doppeln den eigenen Text – dort lieber ein Produktbild.
  */
+/**
+ * Je Kollektion ein Bild, das in dieser Auswahl noch nicht vorkommt. Im Shop haben z. B. vier
+ * Preis-Kollektionen dasselbe Jade-Roller-Foto – Shopify hängt beim erneuten Hochladen nur „_<uuid>“ an.
+ * Ist jeder Kandidat schon vergeben, bleibt die Kachel ohne Bild (Anfangsbuchstabe) statt doppelt.
+ */
+fun pickDistinct(handles: List<String>, candidates: Map<String, List<Image>>): Map<String, Image?> {
+    val used = mutableSetOf<String>()
+    return handles.distinct().associateWith { h ->
+        candidates[h].orEmpty().firstOrNull { imageKey(it) !in used }?.also { used += imageKey(it) }
+    }
+}
+
+private val UPLOAD_SUFFIX = Regex("_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
+
+/** Dateiname ohne Endung und ohne Shopifys Upload-Zusatz: gleiche Fotos haben denselben Schlüssel. */
+internal fun imageKey(image: Image): String =
+    image.url.substringBefore('?').substringAfterLast('/').substringBeforeLast('.').replace(UPLOAD_SUFFIX, "").lowercase()
+
 fun isWebBanner(image: Image): Boolean =
     image.height > 0 && image.width.toDouble() / image.height > 2.2

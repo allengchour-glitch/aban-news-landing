@@ -118,8 +118,12 @@ data class ProductPage(val products: List<ProductCard>, val cursor: String?, val
 data class CollectionInfo(val handle: String, val title: String, val description: String, val image: Image?)
 
 data class MenuItem(val title: String, val url: String, val children: List<MenuItem>, val image: Image? = null) {
-    /** Handle der Kollektion, falls der Menüpunkt auf eine zeigt. */
+    /**
+     * Handle der Kollektion, falls der Menüpunkt auf eine zeigt. Das Menü liefert Emoji-Handles
+     * prozent-kodiert („%F0%9F%8E%81-geschenke-bis-chf-30“) – so findet die Storefront sie nicht.
+     */
     val collectionHandle: String? get() = Regex("/collections/([^/?#]+)").find(url)?.groupValues?.get(1)
+        ?.let { runCatching { java.net.URLDecoder.decode(it, "UTF-8") }.getOrDefault(it) }
 }
 
 /**

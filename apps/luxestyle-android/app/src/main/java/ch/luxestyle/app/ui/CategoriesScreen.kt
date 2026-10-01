@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Image
 import ch.luxestyle.app.data.MenuItem
+import ch.luxestyle.app.data.priceItems
 import coil3.compose.AsyncImage
 
 /**
@@ -107,11 +108,15 @@ private fun RailItem(title: String, selected: Boolean, onClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun Department(top: MenuItem) {
     val shop = LocalShop.current
     val nav = LocalNav.current
-    val handles = remember(top) { listOfNotNull(top.collectionHandle) + top.children.mapNotNull { it.collectionHandle } }
+    // „unter CHF 20", „bis CHF 30" … als eine Budget-Zeile statt sechs Kacheln mit demselben Foto
+    val prices = remember(top) { priceItems(top.children).takeIf { it.size >= 2 }.orEmpty() }
+    val tiles = remember(top) { top.children.filter { c -> prices.none { it.second == c } } }
+    val handles = remember(top) { tiles.mapNotNull { it.collectionHandle } }
     val images by produceState<Map<String, Image?>>(emptyMap(), top.url) {
         value = runCatching { shop.collectionImages(handles) }.getOrDefault(emptyMap())
     }
@@ -123,14 +128,25 @@ private fun Department(top: MenuItem) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            // Drei Unterkategorien nebeneinander statt des ersten Produkts der Kollektion –
-            // das war z. B. bei Schmuck ein Fitnessarmband auf Weiss, im Breitformat eine leere Fläche.
-            val collage = top.children.mapNotNull { c -> c.collectionHandle?.let { images[it] } }.take(3)
-            DepartmentBanner(top, if (collage.size == 3) collage else listOfNotNull(top.image ?: images[top.collectionHandle])) {
+            // Drei Unterkategorien nebeneinander statt des Web-Banners mit eingebrannter Schrift.
+            // Die Bilder sind schon untereinander verschieden (pickDistinct).
+            val collage = tiles.mapNotNull { c -> c.collectionHandle?.let { images[it] } }.take(3)
+            DepartmentBanner(top, if (collage.size >= 2) collage else listOfNotNull(top.image)) {
                 top.collectionHandle?.let { nav.collection(it, top.title) }
             }
         }
-        top.children.forEach { child ->
+        if (prices.isNotEmpty()) item(span = { GridItemSpan(maxLineSpan) }) {
+            Column(Modifier.testTag("budget")) {
+                Text("Nach Budget", style = MaterialTheme.typography.titleSmall)
+                Spacer(Modifier.height(8.dp))
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    prices.forEach { (label, m) ->
+                        ChoiceChip(label, selected = false) { m.collectionHandle?.let { nav.collection(it, m.title) } }
+                    }
+                }
+            }
+        }
+        tiles.forEach { child ->
             item(key = child.url) {
                 SubTile(child, images[child.collectionHandle]) { child.collectionHandle?.let { nav.collection(it, child.title) } }
             }
