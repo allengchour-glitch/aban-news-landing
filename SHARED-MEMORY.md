@@ -6,6 +6,18 @@
 > dann die eigene Detail-Memory. **Nach grösseren Aktionen:** Abschnitt „Live-Stand" unten aktualisieren.
 > Stand: 2026-06-12.
 
+
+> ## 🛑 JUDGE.ME-REVIEW-REGELN (User-Entscheidung 2026-10-01 — für ALLE Sessions bindend)
+> 1. **Nur ≥4★ importieren.** Ein Import ab 07.09. (Absender `cj-import@luxestyle.ch`) hatte ~2'900 Bewertungen
+>    mit 1–3★ **fremder CJ-Verkäufer** sichtbar gemacht („Nie erhalten", „35 € Zoll", „Schrott") → auf User-Wunsch
+>    **ausgeblendet** (umkehrbar, IDs in `dropship/judgeme_hidden_lowstar.txt`, Tool `automation/judgeme_hide_lowstar.py`).
+>    Wer importiert: `MIN_SCORE=4` Pflicht. Echte LuxeStyle-Kundenbewertungen NIE anfassen.
+> 2. **Vor jedem Import pro Produkt prüfen, ob es schon Imports hat** (Judge.me `product_external_id`) — sonst
+>    Dubletten (2026-10-01 passiert: Biden-Uhr doppelt importiert, Dubletten wieder ausgeblendet).
+> 3. **CJ-pid-Auflösung NUR exakt** (numerische SKU = pid, `product/query?pid=`). **Nie `product/list?keyWords=`**:
+>    liefert für jede SKU dasselbe Fremdprodukt → Reviews eines FREMDEN Produkts = Fake-Reviews.
+> 4. Absender-Name nie „Verifizierter Käufer" (sie haben nicht bei LuxeStyle gekauft) → neutral „Kunde".
+
 ---
 
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)

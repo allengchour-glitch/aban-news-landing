@@ -28,8 +28,8 @@ if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 
 const QUERY = process.env.QUERY || 'tag:cj-real';
 const ONLY = (process.env.ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
-const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '25', 10) || 25);
-const PER = Math.max(1, parseInt(process.env.PER || '6', 10) || 6);
+const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '250', 10) || 250);
+const PER = Math.max(1, parseInt(process.env.PER || '8', 10) || 8);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
 const DRY = process.env.DRY_RUN === '1';
 
@@ -58,8 +58,13 @@ async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return A
 // ── CJ ──
 async function cjToken() {
   try { if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8')); if (t.exp > Date.now() + 60000) return t.accessToken; } } catch {}
-  const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) });
-  const j = await r.json().catch(() => ({}));
+  // CJ erwartet das Feld 'password' fuer den API-Key (2026 verifiziert). 'apiKey' als Fallback.
+  let j = {};
+  for (const field of ['password', 'apiKey']) {
+    const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, [field]: CJ_API_KEY }) });
+    j = await r.json().catch(() => ({}));
+    if (j?.result && j?.data?.accessToken) break;
+  }
   if (!j.result || !j?.data?.accessToken) {
     console.log('⚠️  CJ-Auth fehlgeschlagen → No-op. Meldung: ' + (j.message || JSON.stringify(j).slice(0, 160)));
     console.log('    → CJ_API_KEY im CJ-Dashboard (My CJ → Authorization → API) neu generieren & GitHub-Secret aktualisieren.');
@@ -95,7 +100,7 @@ async function translateDE(texts) {
 // ── Judge.me POST ──
 async function jmPost(pid, r) {
   const body = { shop_domain: JM_DOMAIN, platform: 'shopify', id: pid,
-    name: r.name || 'Verifizierter Käufer',
+    name: r.name || 'Kunde',
     email: r.email || `cj-import+${Math.random().toString(36).slice(2, 9)}@luxestyle.ch`,
     rating: Math.max(1, Math.min(5, Number(r.rating) || 5)), title: r.title || '', body: r.body || '', api_token: JM_TOKEN };
   if (r.created_at) body.created_at = r.created_at;
@@ -108,14 +113,36 @@ const numId = (gid) => String(gid).split('/').pop();
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 
 (async () => {
-  const stok = await sToken();
-  if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op.'); process.exit(0); }
-
-  // Produkte holen
+  // PRODUCTS_FILE: Produktliste als JSON ([{id,handle,title,sku}]) statt Shopify-Login — z. B. wenn
+  // SHOPIFY_CLIENT_SECRET rotiert ist und die Liste ueber den Shopify-Connector geholt wurde.
+  const PFILE = (process.env.PRODUCTS_FILE || '').trim();
   const q = ONLY.length ? ONLY.map(h => `handle:${h}`).join(' OR ') : QUERY;
-  const pr = await sgql(stok, `query($q:String!,$n:Int!){ products(first:$n, query:$q){ edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: LIMIT });
-  const prods = (pr?.data?.products?.edges || []).map(e => e.node).filter(p => !done.has(numId(p.id)));
-  console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT})${DRY ? ' [DRY]' : ''}`);
+  const prods = [];
+  let stok = null;
+  if (PFILE) {
+    const list = JSON.parse(fs.readFileSync(PFILE, 'utf8'));
+    for (const x of list) {
+      const node = { id: x.id, title: x.title || '', handle: x.handle, variants: { edges: [{ node: { sku: x.sku || '' } }] } };
+      if (!done.has(numId(node.id)) && (!ONLY.length || ONLY.includes(node.handle))) prods.push(node);
+      if (prods.length >= LIMIT) break;
+    }
+  } else {
+    stok = await sToken();
+    if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op. (Tipp: PRODUCTS_FILE nutzen)'); process.exit(0); }
+  }
+  // Cursor-Pagination: sammelt bis LIMIT Produkte ueber mehrere Seiten (Shopify max 250/Seite)
+  let cursor = null;
+  while (!PFILE && prods.length < LIMIT) {
+    const page = Math.min(250, LIMIT - prods.length);
+    const pr = await sgql(stok, `query($q:String!,$n:Int!,$c:String){ products(first:$n, query:$q, after:$c){ pageInfo{ hasNextPage endCursor } edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: page, c: cursor });
+    const conn = pr?.data?.products;
+    const batch = (conn?.edges || []).map(e => e.node).filter(x => !done.has(numId(x.id)));
+    prods.push(...batch);
+    if (!conn?.pageInfo?.hasNextPage) break;
+    cursor = conn.pageInfo.endCursor;
+    await sleep(250);
+  }
+  console.log(`${prods.length} Produkt(e) zu prüfen (${PFILE ? 'PRODUCTS_FILE=' + PFILE : 'QUERY="' + q + '"'}, LIMIT=${LIMIT})${DRY ? ' [DRY]' : ''}`);
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
 
   const ctok = await cjToken();
@@ -125,12 +152,14 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   const DEBUG = process.env.DEBUG === '1';
   // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
   async function resolvePid(sku) {
-    const strategies = [
-      ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
+    // NUR exakte Treffer. KEINE Stichwortsuche (list/keyWords): die lieferte 2026-10-01 fuer JEDE SKU dasselbe
+    // fremde Produkt (pid 2610011328081637100) → haette Reviews eines FREMDEN Produkts importiert (= Fake-Reviews).
+    const strategies = [];
+    if (/^\d{15,22}$/.test(sku)) strategies.push(['query/pid', '/product/query', { pid: sku }]); // numerische SKU = CJ-pid
+    strategies.push(
+      ['query/productSku', '/product/query', { productSku: sku }],
       ['query/variantSku', '/product/query', { variantSku: sku }],
-      ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
-      ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
-    ];
+    );
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
       await sleep(1100);
@@ -149,6 +178,8 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
     const cjSku = rawSku.replace(/^CJ-/i, '').trim();
     if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); continue; }
+    // Nicht-CJ-Quellen (BigBuy/Printful/POD) gar nicht bei CJ anfragen — spart Quota + Zeit
+    if (/^(bb-|pf-|printful|pod-)/i.test(cjSku)) { console.log(`· ${p.handle}: SKU ${cjSku} ist keine CJ-Quelle → skip`); continue; }
     try {
       const resolved = await resolvePid(cjSku);
       const cjpid = resolved?.pid;
@@ -168,7 +199,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
         const rev = {
-          name: (c.commentUser || '').trim() || 'Verifizierter Käufer',
+          name: (c.commentUser || '').trim() || 'Kunde',
           rating: Number(c.score) || 5,
           body: bodiesDE[i] || c.comment.trim(),
           created_at: (c.commentDate || '').slice(0, 10) || undefined,

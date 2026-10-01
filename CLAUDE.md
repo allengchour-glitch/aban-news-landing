@@ -47,6 +47,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (NEUESTER STAND — Judge.me aufgeräumt):** Siehe Regelblock oben in `SHARED-MEMORY.md`.
+- **Importer repariert** (`automation/cj_reviews_import.mjs`): CJ-Auth-Fix von main übernommen; **numerische SKU = CJ-pid**
+  direkt (vorher fand er sie nie); **gefährliche `keyWords`-Suche entfernt** (lieferte Fremdprodukt
+  `2610011328081637100` für jede SKU); neuer Modus **`PRODUCTS_FILE`** (Produktliste als JSON), weil
+  **`SHOPIFY_CLIENT_SECRET` in der Cloud-Umgebung ungültig ist** („Missing or invalid client secret" → User muss
+  neuen Schlüssel im Dev-Dashboard erzeugen und das Secret ersetzen). Fallback-Name „Kunde" statt „Verifizierter Käufer".
+- **Eigener Live-Lauf gestoppt** nach Dubletten-Fund (Biden-Uhr 8 Dubletten → ausgeblendet; Bauchtrainer 3 neue ok).
+- **Massen-Import der anderen Session** (≈20'000 Reviews, Absender `cj-import@luxestyle.ch`): **≈2'900 sichtbare 1–3★
+  fremder Verkäufer** → per User-Entscheid **ausgeblendet** (`automation/judgeme_hide_lowstar.py`, Ledger
+  `dropship/judgeme_hidden_lowstar.txt`, `UNHIDE=1` macht es rückgängig). Judge.me-API: `PUT /reviews/{id}`
+  mit `curated:"spam"` = unveröffentlicht, `"ok"` = wieder sichtbar.
+
 **📌 2026-09-22 (NEUESTER STAND — Klaviyo VERIFIZIERT ok · QA-Aufräumung · Versand-Widerspruch — Session `luxstyle-ads-search-5i68xa`):**
 - **✅ Klaviyo-Sync LÄUFT (alte „kaputt/0 Orders"-Notiz WIDERLEGT):** direkt via Klaviyo-MCP gemessen — Metric
   **„Placed Order" (`W7XTVD`)** empfängt echte Bestellungen: zuletzt **7.9. (2×), 3.9., 22.8., 15.8., 14.8., 9.8.,
