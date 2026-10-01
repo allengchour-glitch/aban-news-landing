@@ -900,6 +900,25 @@ var BAUW=2*Math.round(GW/4),BAUH=2*Math.round(GH/4);
 var BAUX0=Math.round((GW-BAUW)/2),BAUY0=Math.round((GH-BAUH)/2);
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
+/* 🏁 STARTORT DER BEWOHNER — EINE QUELLE FUER FUENF STELLEN.
+   ⚠️ GEMESSEN, NICHT VERMUTET (th-start.mjs): der Bewohner stand bei (-67 | 43), also
+   44 m AUSSERHALB des eigenen Grundstuecks und 79,6 m von dessen Mitte entfernt — in der
+   aeussersten Suedwest-Ecke der Welt, zwei Meter neben einer Verkehrsampel. Die alte
+   Formel cx(2+i*2), cz(GH-2) rechnet in GITTERZELLEN vom Weltrand aus: Zelle 2 von 72
+   und Zelle 44 von 46. Sie war nie als Hausadresse gedacht, sie war der Ursprung des
+   Rasters. Beim ersten Bild sah man darum eine Ampel, einen Bushalt und 80 m Wiese
+   zwischen sich und dem eigenen Grund.
+   Jetzt beginnt das Spiel IN der Heckenoeffnung im Norden, auf der Auffahrt (x = 0,65),
+   drei Meter innerhalb der Grenze und mit Blick nach Sueden ins eigene Grundstueck.
+   ⚠️ Die Figuren werden abwechselnd nach Osten und Westen gefaechert, nicht in eine
+   Reihe gelegt: hintereinander auf der 2,4 m schmalen Auffahrt stehen sie sich beim
+   Losgehen im Weg, nebeneinander in EINE Richtung laeuft die Reihe in die Hecke.
+   ⚠️ Und NICHTS wird in die Mitte gestellt. Das Baufenster muss leer bleiben, sonst
+   blockiert es das Bauen (th-rand prueft genau das). Der Start liegt am Rand des
+   Grundstuecks, nicht in seiner Mitte. */
+var HEIMX=0.65, HEIMZ=24;
+function heimX(i){var k=i|0;return HEIMX+((k%2)?1:-1)*Math.ceil(k/2)*2.4;}
+function heimZ(i){return HEIMZ-Math.floor((i|0)/6)*2.4;}
 // Rasen mit Textur
 var TEXLOADER=new THREE.TextureLoader();
 /* 🧱 WELT-KOLLISION (frueh deklariert, damit alle Bau-Funktionen registrieren koennen) */
@@ -14846,7 +14865,7 @@ function onNetMsg(m){
   else if(m.t==="pi"){partnerAct(m.k,true,m.n);}
   else if(m.t==="crimeGo"){startCrime(m.j,m.a,true);}
   else if(m.t==="crimeEnd"&&!mpHost){crime.on=false;
-    sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);});
+    sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;s2.x=heimX(i);s2.z=heimZ(i);s2.rot=Math.PI;});
     crimeScene(m.ok,CRIMES[m.j],m.v);}
 }
 function partnerAct(k,silent,fromName){
@@ -15142,7 +15161,7 @@ function spawnKind(baby){
   if(kinder.length>=3)return null;
   var nm=KIDNAMES[(Math.random()*KIDNAMES.length)|0];
   var m=mkKind(baby);
-  var k={mesh:m,name:nm,x:cx(3),z:cz(GH-2),rot:0,alter:baby?0:2,walkT:0,path:[],emoji:null,emoT:0,net:null,baby:!!baby};
+  var k={mesh:m,name:nm,x:heimX(5),z:heimZ(5),rot:Math.PI,alter:baby?0:2,walkT:0,path:[],emoji:null,emoT:0,net:null,baby:!!baby};
   kinder.push(k);return k;}
 // Realistische geriggte Charaktere (Meshy-Rigging, echte Walk-Animation)
 function attachRealChar(sim,file,height){
@@ -15169,7 +15188,7 @@ function attachRealChar(sim,file,height){
       sim.walkAction.play();sim.walkAction.paused=true;}
   },undefined,function(){});}
 var sims=simDefs.map(function(sd,i){
-  return {name:sd.name,mesh:mkBewohner(sd),x:cx(2+i*2),z:cz(GH-2),rot:0,
+  return {name:sd.name,mesh:mkBewohner(sd),x:heimX(i),z:heimZ(i),rot:Math.PI,
     needs:{hunger:70+Math.random()*20,energie:75+Math.random()*20,spass:60+Math.random()*20,hygiene:70+Math.random()*20},
     state:"idle",pose:"stand",path:[],target:null,useT:0,walkT:0,net:null,emoji:null,emoT:0,glb:null,mixer:null,walkAction:null};});
 attachRealChar(sims[0],"th_mann.glb",1.48);
@@ -15411,7 +15430,7 @@ function zielFrei(s9){if(s9.target&&s9.target.busy!==undefined)s9.target.busy=fa
 function finishCrime(){
   var job=crime.job;crime.on=false;
   sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;
-    s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";});
+    s2.x=heimX(i);s2.z=heimZ(i);s2.rot=Math.PI;s2.pose="stand";});
   /* 🩹 Der Tageszaehler stand HINTER dem Host-Return — beim Gast wurde nie
      hochgezaehlt, sein Limit „zwei krumme Dinger pro Tag" griff also nie und er
      konnte beliebig oft zuschlagen. Jetzt zaehlen beide Peers mit, entschieden
@@ -15910,7 +15929,7 @@ function updWork(dt){
     lohn=Math.round(lohn*stufenBonus());   /* 🏅 die Abnahme verspricht „+12 % Einnahmen" — galt vorher nur fuer die Miete */
     verdiene(lohn);skillXp("arbeit",1);
     sims.forEach(function(s2,i){
-      if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";}
+      if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=heimX(i);s2.z=heimZ(i);s2.rot=Math.PI;s2.pose="stand";}
       s2.needs.hunger=Math.max(10,s2.needs.hunger-18);s2.needs.energie=Math.max(10,s2.needs.energie-20);
       simEmoji(s2,"💰");});
     hint("Feierabend. +"+lohn+" $ Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
