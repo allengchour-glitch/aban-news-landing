@@ -16221,3 +16221,4 @@ gid://shopify/Product/15497296281985	30->1	Sandalen mit klobigem Absatz
 gid://shopify/Product/15500002591105	19->0	Corduroy-Hemd
 gid://shopify/Product/15503947792769	18->0	Handgemachte Erdbeer-Sweetheart Nägel
 gid://shopify/Product/15523938730369	90->0	WLAN Mini Beamer für Zuhause
+gid://shopify/Product/15448585765249	11->1	A-Linien Tennisrock mit Anti-Expositions-Unterlage
