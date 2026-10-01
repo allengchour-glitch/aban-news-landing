@@ -1,23 +1,25 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-09-30T12:52Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-01T12:52Z
 
-Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen nur für Shopping Ads (ignoriert): 18446.
+Gescannt: 49195 aktive Produkte in 197 Seiten (vollständig), 276 s. Meldungen nur für Shopping Ads (ignoriert): 18440.
 
-## Free-Listings-Blocker: 714
+## Free-Listings-Blocker: 723
 
 | Klasse | Produkte | davon ohne onlineStoreUrl |
 |---|---:|---:|
-| Inappropriate image | 316 | 0 |
-| Product page unavailable | 134 | 0 |
+| Inappropriate image | 320 | 0 |
+| Product page unavailable | 131 | 0 |
 | Personalized advertising: personal hardships | 67 | 0 |
-| Title under review | 64 | 0 |
-| Personalized advertising: Sexual interests | 39 | 0 |
-| Restricted adult content | 39 | 0 |
-| Image under review | 24 | 0 |
+| Title under review | 61 | 0 |
+| Personalized advertising: Sexual interests | 37 | 0 |
+| Restricted adult content | 37 | 0 |
+| Image under review | 36 | 0 |
 | Image too small | 14 | 0 |
-| Adult-oriented content | 7 | 0 |
+| Adult-oriented content | 8 | 0 |
 | Promotional overlay on image | 5 | 0 |
 | Inappropriate title | 2 | 0 |
+| Tobacco products & related equipment | 1 | 0 |
 | Personalized advertising: legal restrictions | 1 | 0 |
+| Unable to show image | 1 | 0 |
 | Additional text found | 1 | 0 |
 | Personalized advertising: Identity and belief | 1 | 0 |
 
@@ -27,7 +29,7 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Image under review (24)
+### Image under review (36)
 
 - armbanduhr-rettangolo-rechteckig-unisex
 - reed-diffuser-aroma-duftstabchen-ohne-flamme
@@ -35,7 +37,9 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - plateau-sneaker-cloud-spitzen-mesh-geschnurt
 - herren-set-costa-kapuzen-shirt-jogger
 - transparente-iphone®-hulle-selbst-gestalten
+- pod-sticker-jellyfish
 - pod-sticker-moon-face
+- tasse-braunvieh
 - tote-zum-selbstgestalten
 - edelstahl-seifenschale-ohne-bohren
 - partner-ring-bar-vintage-edelstahl-unisex
@@ -43,18 +47,28 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - armband-gehause-44-45mm-fur-smartwatches-619400
 - s5-fitness-armband-mit-temperatur-und-blutdruc-600200
 - wanduhr-im-schlichten-nordischen-design-868544
+- kreatives-schraubpuzzle-set-fur-kinder-c800b9
+- h88-4k-mini-action-kamera-fur-sport-outdoor-608500
+- daoguang-holiday-amber-buckle-mules-193538
+- kinder-retro-sneakers-mit-klettverschluss-611200
 - hundepflegeol-mit-zitronenmelisse-969345
+- nordisch-stil-anti-rutsch-staubdichter-sofa-be-620000
+- chenille-bolsterkissen-extra-lang-verschiedene-874242
 - schwarzes-und-weisses-abstrakes-bild-981888
-- wasserdichte-kissenfullung-615300
+- franzosische-stickerei-mit-metallgriff-600200
+- blumen-schurze-im-prinzessinnen-stil-601400
+- madchen-leder-schuhe-britischer-stil-610800
 - warmende-schneestiefel-fur-kinder-239744
 - john-deere-gator-xuv-855d-mit-fahrer-fga02490
 - bruder-lemken-grubber-fga02228
+- wasserdichte-plateau-sandalen-mit-chunky-heel-633600
+- strand-cardigan-kleid-mit-spitze-617700
 - sandalen-mit-holzperlen-und-gewebtem-design-615100
 - schwarze-canvas-sneaker-mit-hohe-boost-622600
 - kissen-zum-muttertag-4654be
 - herren-freizeit-board-schuhe-628700
 
-### Inappropriate image (316)
+### Inappropriate image (320)
 
 - herren-ring-vintage-edelstahl-retro
 - sunset-projection-lamp-16-colors-adjustable
@@ -90,11 +104,12 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - strick-top-mit-eckigem-ausschnitt-und-volantsa-603500
 - satin-camisole-mit-neckholder-622900
 - glitzerndes-dekollete-kettentop-616700
-- a-linien-tennisrock-mit-anti-expositions-unter-618900
 - high-waist-yoga-pants-huftstraffend-schnelltro-607900
 - legging-tights-621800
+- gepolsterte-baumwolljacke-mit-blumenmuster-628000
 - taillierte-jeansjacke-fur-herren-824321
 - horror-maske-blutung-totenkopf-285312
+- tyrant-rotten-face-mask-861120
 - west-moon-hals-pflege-pads-glatte-zarte-halsha-898498
 - planet-diamond-star-fake-nails-249089
 - handlicher-sturmfeuerzeug-brenner-618300
@@ -103,6 +118,7 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - pullover-jacke-quirky-personality-600800
 - silikon-photon-maske-led-620400
 - geruchsneutrale-katzentoilette-mit-schaufel-ma-987138
+- microneedling-anti-falten-serum-608000
 - ultraschall-luftbefeuchter-mit-aromatherapie-327744
 - isolierte-wasserflasche-mit-deckel-610700
 - silikon-futternapf-fur-hunde-605800
@@ -114,13 +130,12 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - infrarot-nachtsichtgerat-1080p-687680
 - magnetische-wimpern-fur-einfachen-look-222785
 - minimalistisches-airtag-geldborse-fur-herren-757377
-- suede-sandalen-637900
-- dekorative-treppenstufen-556545
 - …
 
-### Adult-oriented content (7)
+### Adult-oriented content (8)
 
 - schweiz-sticker-alphorn
+- latex-augenmaske-628500
 - korperschmuck-kette-384896
 - porenreiniger-mit-vakuum-saugfunktion-5236f9
 - beckenboden-muskeltrainer-mit-zahlfunktion-915200
@@ -128,7 +143,7 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - porenreiniger-mit-vakuumfunktion-1d414d
 - plusch-hundegeschirr-mit-leine-744320
 
-### Personalized advertising: Sexual interests (39)
+### Personalized advertising: Sexual interests (37)
 
 - strick-bluse-maglia-hollow-out-loose-langarm
 - date-night-drinking-creative-brettspiel-602600
@@ -143,7 +158,6 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - spitzen-body-mit-blumenmuster-623400
 - yoga-jumpsuit-mit-hohem-stretchanteil-605400
 - party-lippenstift-614900
-- retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
 - herren-sport-rad-einteiler-612300
 - milos-venus-kerzenform-aus-silikon-112896
 - eleganter-jumpsuit-mit-quasten-und-einzelsleev-638700
@@ -152,7 +166,6 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - elegantes-ruckenfreies-blumenprint-kleid-609300
 - gefaltetes-mini-kleid-mit-ruschensaum-614800
 - samt-camisole-slip-dress-mit-spitze-617700
-- elegantes-maxikleid-mit-spitze-und-schlitz-615100
 - damen-blumen-print-neckholder-kleid-604300
 - chices-a-linien-minikleid-mit-v-ausschnitt-620500
 - beckenboden-trainingsgerat-fur-frauen-b986d0
@@ -170,7 +183,7 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - metall-wanddekoration-fur-wohnraume-659700
 - damen-hantelpaar-aus-silikon-403008
 
-### Restricted adult content (39)
+### Restricted adult content (37)
 
 - strick-bluse-maglia-hollow-out-loose-langarm
 - date-night-drinking-creative-brettspiel-602600
@@ -185,7 +198,6 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - spitzen-body-mit-blumenmuster-623400
 - yoga-jumpsuit-mit-hohem-stretchanteil-605400
 - party-lippenstift-614900
-- retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
 - herren-sport-rad-einteiler-612300
 - milos-venus-kerzenform-aus-silikon-112896
 - eleganter-jumpsuit-mit-quasten-und-einzelsleev-638700
@@ -194,7 +206,6 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - elegantes-ruckenfreies-blumenprint-kleid-609300
 - gefaltetes-mini-kleid-mit-ruschensaum-614800
 - samt-camisole-slip-dress-mit-spitze-617700
-- elegantes-maxikleid-mit-spitze-und-schlitz-615100
 - damen-blumen-print-neckholder-kleid-604300
 - chices-a-linien-minikleid-mit-v-ausschnitt-620500
 - beckenboden-trainingsgerat-fur-frauen-b986d0
@@ -212,9 +223,25 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - metall-wanddekoration-fur-wohnraume-659700
 - damen-hantelpaar-aus-silikon-403008
 
-### Title under review (64)
+### Image too small (14)
 
-- f1-spray-racing-auto-mit-gestensteuerung-613300
+- edelstahl-anhanger-sternzeichen-und-monate-620600
+- hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
+- kaschmirahnlicher-schal-mit-totem-muster-607900
+- paisley-jacquard-schal-mit-quasten-600200
+- lassiges-damen-sweatshirt-mit-tiermotiv-615300
+- partnerlook-bikini-blau-weiss-gestreift-612500
+- loser-strickpullover-611500
+- herren-kurzarmhemd-aus-baumwoll-leinen-mix-627400
+- herren-langarmhemd-mit-farbblocken-632000
+- flache-outdoor-sandalen-mit-rundkopf-plus-size-607300
+- seiden-polohemd-mit-revers-fur-herren-601000
+- damen-kapuzenpullover-mit-weihnachtsmotiv-626900
+- 3d-gedrucktes-langarmshirt-fur-damen-603900
+- damen-flanell-kapuzenpullover-fur-herbst-und-w-611600
+
+### Title under review (61)
+
 - edelstahl-anhanger-sternzeichen-und-monate-620600
 - naicai-kissenbezug-aus-lammwolle-615800
 - vollautomatischer-32mm-lockenstab-mit-negativ-607000
@@ -225,9 +252,7 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - high-waist-capri-yoga-hose-mit-bauchkontrolle-600100
 - leopard-print-yoga-shorts-621700
 - high-waist-fitness-leggings-mit-po-push-up-623900
-- hoodie-mit-kordelzug-weit-geschnittener-jacken-801218
 - baseball-low-cut-leder-sneaker-fur-herren-618500
-- v-ausschnitt-3-4-arm-minikleid-610100
 - anti-aging-augencreme-615300
 - augenmassagegerat-gegen-dunkle-ringe-und-falte-344192
 - prinzessinnen-sandalen-618100
@@ -274,24 +299,10 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - atmungsaktiver-mid-calf-freizeitschuh-fur-herr-629800
 - warme-fleece-gefutterte-winterschuhe-fur-herre-629300
 - popeline-hemdblusenkleid-mit-gurtel-616400
+- vintage-cheongsam-kleid-mit-armeln-628300
+- sportliche-mid-heel-freizeitschuhe-fur-damen-155584
+- elegante-sandalen-mit-schleife-812800
 - …
-
-### Image too small (14)
-
-- edelstahl-anhanger-sternzeichen-und-monate-620600
-- hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
-- kaschmirahnlicher-schal-mit-totem-muster-607900
-- paisley-jacquard-schal-mit-quasten-600200
-- lassiges-damen-sweatshirt-mit-tiermotiv-615300
-- partnerlook-bikini-blau-weiss-gestreift-612500
-- loser-strickpullover-611500
-- herren-kurzarmhemd-aus-baumwoll-leinen-mix-627400
-- herren-langarmhemd-mit-farbblocken-632000
-- flache-outdoor-sandalen-mit-rundkopf-plus-size-607300
-- seiden-polohemd-mit-revers-fur-herren-601000
-- damen-kapuzenpullover-mit-weihnachtsmotiv-626900
-- 3d-gedrucktes-langarmshirt-fur-damen-603900
-- damen-flanell-kapuzenpullover-fur-herbst-und-w-611600
 
 ### Personalized advertising: personal hardships (67)
 
@@ -310,9 +321,9 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - stillkissen-2-in-1-605700
 - stillkissen-mit-taillenstutze-619100
 - perforierter-gripp-steuerungshulle-636700
-- digitaler-horer-im-ohr-mit-32-kanalen-und-blue-629100
 - teufelsaugen-ohrhanger-622800
 - schwangerschafts-kleid-mit-streifen-623600
+- bauchstutzgurtel-fur-schwangere-627600
 - weite-damen-schuhe-fur-hallux-valgus-079360
 - elegantes-midi-kleid-mit-front-reissverschluss-609100
 - senior-style-pullover-mit-halb-rei-verschluss-610600
@@ -357,15 +368,11 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - schwangerschaftskissen-u-form-0be3f4
 - …
 
-### Product page unavailable (134)
+### Product page unavailable (131)
 
 - armelloses-casual-top-fur-damen-627100
-- damen-pluschweste-doppelseitig-tragbar-609600
 - bohemian-jumpsuit-mit-taschen-639000
 - leichte-leinen-baumwollhose-mit-geradem-bein-609700
-- high-elastic-leggings-fur-figurformung-623200
-- eleganter-samt-blazer-mit-v-ausschnitt-615800
-- gefutterter-patchwork-wintermantel-mit-kapuze-628900
 - damen-steppjacke-mit-rautenmuster-624200
 - gepolsterte-baumwolljacke-mit-blumenmuster-628000
 - herren-kapuzenpullover-aus-cord-610800
@@ -377,6 +384,7 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - herren-pullover-mit-kleinem-karomuster-611200
 - jute-riemen-sandalen-635700
 - slip-on-sandalen-mit-blockabsatz-629700
+- sommer-high-top-schuhe-2-tragevarianten-595585
 - weiche-sneakers-fur-kinder-schwarz-rosa-khaki-609600
 - prinzessinnen-schuhe-mit-weicher-sohle-und-vel-621300
 - chic-damenkleid-628900
@@ -419,6 +427,9 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - gypsophila-herren-quarzuhr-mit-leuchtzeigern-754048
 - flache-sandalen-mit-knochelriemen-605800
 - keile-leichte-flip-flops-618300
+- ethno-sandalen-mit-klettverschluss-und-dicker-624200
+- dicke-isolierte-snow-boots-mit-sherpa-futter-621500
+- sandalen-mit-doppelter-schnalle-606200
 - …
 
 ### Promotional overlay on image (5)
@@ -429,6 +440,10 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 - digitaler-thermostat-fur-fussbodenheizung-992000
 - manicure-gel-set-fur-nagelverlangerung-885184
 
+### Tobacco products & related equipment (1)
+
+- usb-hand-dampfgerat-fur-feuchtigkeit-611800
+
 ### Inappropriate title (2)
 
 - stahlarmband-mit-fallschirmschlie-e-618900
@@ -437,6 +452,10 @@ Gescannt: 49231 aktive Produkte in 197 Seiten (vollständig), 299 s. Meldungen n
 ### Personalized advertising: legal restrictions (1)
 
 - acryl-organizer-fur-brett-und-kartenspiele-637800
+
+### Unable to show image (1)
+
+- wasserdichte-plateau-sandalen-mit-chunky-heel-633600
 
 ### Additional text found (1)
 

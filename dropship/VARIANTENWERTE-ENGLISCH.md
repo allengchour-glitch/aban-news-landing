@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-01 09:11 UTC, Stand 2026-10-01 12:39 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-01 09:11 UTC, Stand 2026-10-01 12:44 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **33'056**
-- Optionen mit englischen Werten (Kandidaten): 2'537
+- Produkte gesehen: **49'199**
+- Optionen mit englischen Werten (Kandidaten): 2'974
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'035
+- Werte mit unbekanntem Wort (unverändert): 15'597
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 58
-- übersprungen «kollision-nach-uebersetzung»: 37
+- übersprungen «kleidungsstueck-im-wert»: 71
+- übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -45,6 +45,10 @@
 - `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
 - `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
 - `15500261392769` [Ausführung] **Schlichter Baumwoll-Top** — weste: Vest | Short
+- `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
+- `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Black Cardigan-Plus Size L | Black Cardigan-Plus Size XL | Black Cardigan-Plus Size 2XL | Black Cardigan-Plus Size 3XL | Black Cardigan-Plus Size 4XL | Black Cardigan | Sleeveless Floral Skirt-Plus Size L | Sleeveless Floral Skirt-Plus Size XL
+- `15506707251585` [Farbe] **Hemd und Hose mit Taillengürtel** — hose, oberteil: 689 White Shirt | 690 White Trousers
+- `15523850486145` [Farbe] **Bambus-Strickjacke: wasserabweisend, öl- & fleckenresistent** — oberteil: SF23451-38-Mens long sleeved shirt | SF23451-38-Mens short sleeved shirt | SF23451-39-Mens long sleeved shirt | SF23451-39-Mens short sleeved shirt | SF23451-40-Mens long sleeved shirt | SF23451-40-Mens short sleeved shirt | SF23451-41-Mens long sleeved shirt | SF23451-41-Mens short sleeved shirt
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -87,6 +91,10 @@
 - `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
 - `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
 - `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
+- `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
+- `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
+- `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -129,5 +137,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 536, `inner` 528, `light` 434, `color` 323, `shell` 162, `degrees` 159, `size` 140, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 120, `powder` 115, `⟨satzbau:nomen-nomen⟩` 111, `no` 108, `diamond` 108, `to` 102, `high` 101, `skin` 100, `three` 97, `belt` 92, `bag` 91, `shoes` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 80, `code` 79, `yards` 79, `rope` 75, `spring` 71, `dual` 71, `dark` 69, `base` 69, `petal` 68, `chain` 67, `dinosaur` 66, `autumn` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `buckle` 60, `of` 60, `cherry` 59, `little` 59, `tea` 57, `one` 56, `plush` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `bottom` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49
+`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 576, `light` 446, `color` 393, `shell` 162, `degrees` 159, `size` 155, `⟨satzbau:material-vor-farbe⟩` 148, `core` 137, `surface` 130, `powder` 125, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 113, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `four` 95, `bag` 93, `code` 91, `french` 89, `rain` 88, `yards` 88, `case` 87, `dark` 83, `dinosaur` 82, `opp` 81, `buckle` 78, `cloth` 78, `spring` 75, `rope` 75, `bottom` 75, `dual` 71, `chain` 70, `base` 69, `autumn` 69, `petal` 68, `half` 67, `little` 66, `net` 64, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `bear` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 57, `electric` 56, `rice` 55, `rainbow` 55, `night` 54, `face` 52
 
