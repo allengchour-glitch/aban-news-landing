@@ -2359,3 +2359,17 @@ tunmate-rizinusol-382081	2006997782977490945	3	6.67	ok	landeseite
 10-teiliges-badset-aus-baumwolle-620600	2601050821591620800	16	12.81	ok	landeseite
 schwarzer-rundhalspullover-mit-loch-optik-und-629200	2603260741171629600	16	13.40	ok	landeseite
 grauer-doppelreihiger-wollpullover-mit-stehkra-611600	2607251228101614100	16	11.00	ok	landeseite
+asymmetrisches-t-shirt-609300	2607270209551600000	16	6.77	ok	landeseite
+dinosaurier-skelett-kostum-fur-haustiere-607600	2608040818221608500	16	11.00	ok	landeseite
+scheinwerfer-vernebler-becher-a1978c	-	-	-	unklar keine CJ-SKU	landeseite
+leder-lenkradbezug-38cm-19018d	-	-	-	unklar keine CJ-SKU	landeseite
+marathon-carbon-racing-laufschuhe-609500	2506121210421600100	16	10.22	ok	landeseite
+herren-sneaker-korean-style-atmungsaktiv-961984	1368202130049077248	16	14.96	ok	landeseite
+etagere-fur-kuchen-snacks-abea57	-	-	-	unklar keine CJ-SKU	landeseite
+polarisierte-sonnenbrille-blendfrei-uv-schutz-fashion-look-herren	2605280721411606100	5	5.18	ok	landeseite
+universal-ladegerat-fur-60v-e-scooter-bike-580481	2059121643540295681	0	-	KEINE CH-Option → DRAFT	landeseite
+shapewear-kleid-jumpsuit-mit-brustpolster-029440	1666423806115721216	16	10.29	ok	landeseite
+10-in-1-reinigungburste-mit-sprachassistenz-601400	2605050908281601900	7	28.32	ok	landeseite
+breiter-haushalts-organizer-mit-35-fachern-613700	2410030812421614000	16	36.17	ok	landeseite
+trendig-casual-pullover-614200	2604080654591614600	16	12.21	ok	landeseite
+outdoor-wireless-powerbank-mit-kabel-618100	2604040057141618500	0	-	KEINE CH-Option → DRAFT	landeseite
