@@ -886,6 +886,19 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_speicher_kuerzen_$SKK.lock; flock -n 9 || exit 0; \
         KLASSE=$SKK SCHARF=1 N=8000 exec python3 automation/speicher_bilder_kuerzen.py" >> "/tmp/speicher_kuerzen_$SKK.log" 2>&1 & )
   done
+  # TITEL-KAUDERWELSCH (01.10.2026, 12-Tage-Plan Tag 1, Grind wieder an): Neuimporte mit erfundenen Wörtern
+  # («Inflierbares» statt «Aufblasbares») — Gemini + ChatGPT müssen dasselbe Wort finden, sonst nur Meldung. Alle 6 h.
+  TK=/tmp/titel_kauderwelsch_wache.log
+  if [ -f "$REPO/automation/titel_kauderwelsch_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 21600 ] || absturz_nachholen "$TK"; then
+      touch "$TK"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_titel_kauderwelsch.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          SCHARF=1 exec timeout 1800 python3 automation/titel_kauderwelsch_wache.py" >> "$TK" 2>&1 9>&- & )
+    fi
+    tail -n 1 "$TK" 2>/dev/null | grep -q "korrigiert" && tail -n 1 "$TK" | grep -qv " 0 korrigiert, 0 gemeldet" \
+      && echo "$(date -u +%H:%M) titel_kauderwelsch: $(tail -n 1 "$TK")"
+  fi
   # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
   # `bilder-geloescht-speicher` trägt und aktiv ohne Bild ist, geht zurück auf DRAFT (`wartet-auf-bilder`). Eine Suchabfrage.
   if [ -f "$REPO/automation/aktiv_ohne_bild_wache.py" ]; then

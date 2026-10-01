@@ -663,10 +663,10 @@
 #done search:candle warmer lamp
 #done search:cozy throw pillow cover autumn
 #done search:christmas tree ornaments
-search:christmas decoration led lights
-search:advent calendar box
-search:christmas gift box set
-search:christmas sweater
+#done search:christmas decoration led lights
+#done search:advent calendar box
+#done search:christmas gift box set
+#done search:christmas sweater
 search:winter knit beanie
 search:touchscreen gloves winter
 search:cashmere scarf

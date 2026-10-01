@@ -10,7 +10,7 @@ Sitzungen, Startseite 46 · Speicher 107,7 GB (Grow ab heute) · 29 meistbesucht
 
 | Tag | Datum | Thema | Messbar fertig, wenn … |
 |---|---|---|---|
-| 1 | 01.10. | **CJ-Grind an + Saison-/Lücken-Suchaufträge** (32), Neuimport-Qualität (Titel/Text-Stichprobe, Kauderwelsch) | Runner laufen, ≥ 100 Neuimporte, Stichprobe 20 ohne Sprachfehler — ✅ gestartet 16:20 (erster Fund: «Inflierbares» → korrigiert) |
+| 1 | 01.10. | **CJ-Grind an + Saison-/Lücken-Suchaufträge** (32), Neuimport-Qualität (Titel/Text-Stichprobe, Kauderwelsch) | Runner laufen, ≥ 100 Neuimporte, Stichprobe 20 ohne Sprachfehler — ✅ gestartet 16:20 (erster Fund: «Inflierbares» → korrigiert); 16:30 Wächter `titel_kauderwelsch_wache.py` (Gemini+ChatGPT einig, 7/7 Kanarienvögel, alle 6 h) |
 | 2 | 02.10. | **Startseite Herbst/Halloween**: Saison-Reihen mit Neuware, «Neu eingetroffen» frisch, Optik 390 px | Saisonreihen ≥ 8 kaufbare Karten mit ≥ 2 Bildern, Optik-Wache 0 Befunde |
 | 3 | 03.10. | **Weihnachten 2026 + Geschenke**: Kollektion auffüllen, Geschenk-Unterwelten (für sie / für ihn / Kinder / unter CHF 30) | je Unterwelt ≥ 24 kaufbare Produkte; Auswertung Google-Bildtausch-Pilot |
 | 4 | 04.10. | **Dünne/leere Kollektionen**: füllen (Suchaufträge) oder ausblenden; Menü- und Ratgeber-Links | 0 sichtbare Kollektionen mit < 8 kaufbaren Produkten (Ausnahme: kuratierte Looks) |

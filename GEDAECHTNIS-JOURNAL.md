@@ -11,6 +11,10 @@
 
 
 
+## 2026-10-01 · 🔤 Erfundene Wörter in Neuimport-Titeln (Verbesserungsrunde 16:25, 12-Tage-Plan Tag 1)
+«Inflierbares Halloween Kostüm» (von «inflatable») — die Titel-Sprachwache fängt nur abgeschriebenes Englisch, nicht erfundene deutsche Wörter. Neu: `titel_kauderwelsch_wache.py` (Gemini Block + ChatGPT einzeln, Änderung nur bei Einigkeit über Wort und Ersatz), Kanarienvögel 7/7, Aufseher alle 6 h.
+**Lehre:** Ein Prüfer für «nicht übersetzt» ist kein Prüfer für «falsch übersetzt» — jede Fehlerform braucht ihren eigenen Test. Ohne Wörterbuch ersetzen zwei unabhängige Modelle das Nachschlagen; Uneinigkeit heisst melden, nicht raten. → `dropship/TITEL-KAUDERWELSCH-2026-10-01.md`
+
 ## 2026-10-01 · 🚀 Grow aktiv, Grind wieder an (Betreiber «cj runner go … grow plan aktiv»)
 Plan gemessen: `shop.plan.displayName` = «Shopify» (Grow). Sofort: Speicher-Löschen A/B gestoppt (Fertig-Marken `_speicher_kuerzen_fertig_*.txt`, gelöscht bis dahin 6'526 Lieferantenbilder / 1,41 GB — nichts Eigenes), `_GRIND_RUNNER_ZAHL` 0 → 4, `_GRIND_PAUSE_BIS` → 0, GROW-Zähler aus. Dünne sichtbare Kollektionen gemessen (52 von 356 mit ≤ 40 Produkten; regelbasiert dünn: LED-Strip 4, Schutzglas 5, Wallets 5, Wimpern 5, Spielzeug-Fahrzeuge 6, Gaming-Headsets 8, Cocktail 10, Garten 11) → 32 Suchaufträge inkl. Saison. Engpass für «schneller» ist CJ selbst (1 Aufruf/s je Konto über `cj_takt`, Tagespunkte ~125k je Konto) — weitere API-Schlüssel desselben Kontos teilen dieselben Grenzen.
 
