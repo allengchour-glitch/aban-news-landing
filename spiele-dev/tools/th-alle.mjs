@@ -223,6 +223,30 @@ const PRUEFUNGEN = [
   { name: 'Steuerung (Handy und PC)', datei: 'th-steuerung.mjs', kern: false,
     wert: (s) => (s.match(/— (\d+) ok/) || [, '?'])[1] + ' ok',
     gut: (s) => /🎉 STEUERUNG BESTANDEN/.test(s) },
+  /* Runde 89: die Bau-Werkzeuge bewegen Geld (Rueckgaengig erstattet, Abriss zahlt aus) —
+     ein Fehler dort erzeugt Geld oder vernichtet es, ohne dass man es im Bild sieht. */
+  { name: 'Bauen (Ziehen, Zimmer, Rueckgaengig, Kasse)', datei: 'th-bauen.mjs', kern: true,
+    wert: (s) => (s.match(/(\d+)\/(\d+) bestanden/) || [, '?', '?']).slice(1).join('/'),
+    gut: (s) => { const m = s.match(/(\d+)\/(\d+) bestanden/); return !!m && m[1] === m[2] } },
+  /* Runde 90: Streifenwagen, Verkehr mit Charge 50, Radio, Einblendungen. */
+  { name: 'GTA (Polizei, Radio, Einblendungen)', datei: 'th-gta.mjs', kern: false,
+    wert: (s) => (s.match(/(\d+)\/(\d+) bestanden/) || [, '?', '?']).slice(1).join('/'),
+    gut: (s) => { const m = s.match(/(\d+)\/(\d+) bestanden/); return !!m && m[1] === m[2] } },
+  /* Runde 92: kein Auto im Gruenen — stehend 0, Verkehr unter 2 % der Proben, Polizei-Einsatzort
+     unter 15 % (die Einsatzort-Suche faellt bei Standorten ohne Strasse im Umkreis auf die
+     naechste Strassenzelle zurueck; ganz 0 ist erst mit einem dichteren Strassennetz erreichbar). */
+  { name: 'Autoboden (kein Auto im Gruenen)', datei: 'th-autoboden.mjs', kern: false,
+    wert: (s) => { const m = s.match(/stehend im Gruenen (\d+) .*Verkehr gruen ([\d.]+) % .*Polizei-Einsatz gruen (\d+)\/(\d+)/); return m ? `${m[1]} / ${m[2]} % / ${m[3]}:${m[4]}` : '?' },
+    gut: (s) => { const m = s.match(/stehend im Gruenen (\d+) .*Verkehr gruen ([\d.]+) % .*Polizei-Einsatz gruen (\d+)\/(\d+)/)
+      const q = s.match(/Parkplaetze ohne Zufahrt (\d+) . schief (\d+) . ragt heraus (\d+)/)
+      return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] < 2 && +m[3] / +m[4] < 0.15
+        && (!q || (+q[1] === 0 && +q[2] === 0 && +q[3] === 0)) } },
+  /* Runde 93: Bordstein an jeder Fahrbahnkante, keine Luecke zwischen Asphalt und Platte,
+     jeder Uebergang mit abgesenktem Bordstein. Gegenprobe im Werkzeug (Suedstrassen-Bordstein). */
+  { name: 'Kante (Bordstein, Luecke, Uebergang)', datei: 'th-kante.mjs', kern: false,
+    wert: (s) => { const m = s.match(/ohne Bordstein (\d+) . Luecke (\d+) . ohne Gehweg (\d+) . Uebergaenge (\d+), nicht abgesenkt (\d+)/); return m ? `${m[1]}/${m[2]}/${m[3]} · ${m[5]}:${m[4]}` : '?' },
+    gut: (s) => { const m = s.match(/ohne Bordstein (\d+) . Luecke (\d+) . ohne Gehweg (\d+) . Uebergaenge (\d+), nicht abgesenkt (\d+)/)
+      return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] === 0 && +m[5] === 0 } },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },

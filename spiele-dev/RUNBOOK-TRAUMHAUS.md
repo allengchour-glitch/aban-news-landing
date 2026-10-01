@@ -6722,3 +6722,1618 @@ Sechs bleiben — **bei allen vier Eingriffen exakt sechs**. Zwei Lehren:
 Teil sehen je zwei gleich aus, der Unterschied steckt im Rest (Lichter-/Schatten-Anteil
 des Schluessels). Und vorher pruefen, ob sechs Aussetzer auf einem ECHTEN Geraet
 ueberhaupt spuerbar sind; von hier aus laesst sich das nicht beantworten.
+
+## 2026-09-23 · 🧱 Runde 89: Bauen wie in den grossen Aufbauspielen
+
+User: „traumhaus verbessern, vor allem aufbau, kopiere von andere spielen nur das beste".
+Uebernommen sind **Bedienmuster**, keine Inhalte. Vorher (gemessen im Bild): Waende nur
+Kante fuer Kante per Tipp, Vorschau ein gruener Kasten, kein Rueckgaengig, das Gitter
+(weiss, 22 %) auf dem Rasen unsichtbar — man sah nicht, wo man bauen darf.
+
+| Vorbild | Was jetzt im Baumodus geht | Grep-Anker |
+|---|---|---|
+| Die Sims | **Wand/Fenster ziehen** (ganze Linie, Kosten am Zeiger), **Wände streichen per Ziehen** | `function zugPlan`, `function bauLinie`, `#bauMass` |
+| Die Sims | **Zimmer ziehen**: Rechteck → Wände rundum + Boden + Tür zur Kamera | `ZIMMER_DEF`, `p.tuer` |
+| Die Sims | **Rückgängig / Wiederholen** (Knöpfe, Strg+Z / Strg+Y) | `function bauGeld`, `function bauAnwenden` |
+| Die Sims | **Pipette** (Knopf oder Alt+Klick): Möbel/Wand/Farbe/Boden aufnehmen | `function pipetteAt` |
+| Die Sims | **Wände halb hoch** im Baumodus (Knopf schaltet um, bleibt gespeichert) | `WAND_HALB`, `wandSkalaZiel` |
+| Minecraft | Reiter **„Zuletzt"** mit den letzten 8 Teilen (localStorage `th_zuletzt`) | `ZULETZT`, `zuletztMerken` |
+| Sims/Animal Crossing | **Grundstücksrahmen** in Bernstein + dunkles Gitter; Kamera fährt beim Wechsel zum Grundstück | `gridHelper.add`, `updBauKamera` |
+| Planet Coaster | **Echte Vorschau**: das Möbel halb durchsichtig, rot getönt wenn belegt | `function vorschauModell`, `function furnMass` |
+| Townscaper | Wände und Böden **wachsen** weich aus dem Boden | `bauPloppStart`, `updBauPlopps` |
+| Karten-Apps | Handy: **zwei Finger drehen** die Kamera (vorher nur Zoom) | `pinchW` |
+
+Prüfwerkzeug: **`spiele-dev/tools/th-bauen.mjs`** (in `th-alle`, Kernreihe) — fährt jede
+Geste mit echten Mausereignissen und rechnet Stand UND Kasse nach, mit Gegenprobe
+(ein Einzeltipp muss genau eine Wand setzen, sonst Abbruch statt „0 = 0 bestanden").
+
+**Fünf Regeln für jeden, der hier weiterbaut:**
+
+1. **Jede Bau-Änderung läuft durch `bauGeld(fn)`.** Rückgängig liest den Stand (Wände,
+   Böden, Möbel, Geld) davor und danach — die Differenz ist der Eintrag. Wer eine neue
+   Bauhandlung einbaut und sie nicht einwickelt, baut ein Loch: die Handlung ist dann
+   nicht rückgängig, und ein späteres Rückgängig prüft gegen einen Stand, den es nicht
+   kennt. Bestehende Knöpfe (`edRot`, `edUp`, `edSell`, `villaBtn`) werden am Ende des
+   Blocks EINGEWICKELT, ihr Inhalt blieb unberührt.
+2. **`bauGeld` muss synchron bleiben.** Nur so enthält die Differenz ausschliesslich, was
+   DIESE Hand gebaut hat — kein Lohn, keine Partner-Nachricht kann dazwischenkommen.
+   Ein Druck-Ziehen-Loslassen wird über `bauZugBeginn`/`bauZugEnde` zu EINEM Eintrag
+   gebündelt, jede einzelne Änderung darin läuft trotzdem synchron durch `bauGeld`.
+3. **Geld wird nicht nachgerechnet, sondern gemessen.** Rückgängig bucht exakt die
+   Geld-Differenz zurück. Keine zweite Preistabelle (Regel 9 oben). Der Stapel leert sich
+   beim Verlassen des Baumodus — sonst: Sofa kaufen, eine Woche benutzen, voll erstattet.
+   Auto und Hund stehen nicht in `furn` → hinterlassen keine Differenz → nicht rückgängig.
+4. **Koop: ganz oder gar nicht.** `bauAnwenden` prüft ALLES, bevor es etwas anfasst;
+   hat der Partner inzwischen daran gebaut, wird der Eintrag verworfen, nicht halb
+   ausgeführt. Angewendet wird über `doPlaceWall`/`doPlaceFloor`/`doPlaceFurn`/`doPaint`
+   → dieselben Nachrichten wie beim normalen Bauen, keine neuen Typen.
+   Entfernen einer Wand = `doPlaceWall(x,y,d,null)` (NICHT `doDelete`: das reisst beide
+   Kanten der Zelle ab und zahlt die Hälfte aus).
+5. **Wer ein Wandnetz baut, fragt `wandSkalaZiel()`.** Die Halb-Ansicht skaliert die
+   Wandgruppen in y. Wandgruppen aus dem Spielstand sind nach 9 s eingefroren
+   (`_einfrieren`) — nach jeder Skalierung `updateMatrix()`, sonst ändert sich nur die Zahl.
+
+**Handy-Layout:** sechs Werkzeuge statt zwei. Als Spalte ragten sie bei 844x390 in die
+Kopfzeile (th-hud: `halbBtn 73 % unter stufeBox`), als Reihe bei 667x375 und 568x320 unter
+„Leben" (`rotBtn → Tipp landet auf modeBtn`). Jetzt zwei Reihen zu drei oben rechts
+(144 x 94 px), und die Kategorien stehen in EINER wischbaren Zeile — umgebrochen wuchs die
+Palette bei 568x320 bis y 135 hinauf.
+
+**Beobachtet, NICHT behoben (Kandidat für eine nächste Runde, erst messen):**
+Möbel mit gerader Grösse (2x1, 2x2 — 18 Einträge, u. a. Sofa, Bett, Esstisch, Teich)
+belegen die Zellen `gx … gx+1` (`furnCells`), das Modell steht aber auf der Mitte der
+ANKERzelle `cx(gx)`. Belegung und Bild liegen damit eine halbe Zelle auseinander. Nicht
+angefasst, weil Sitz- und Liegepunkte (`arrive`: `s.x=cx(f.gx)`), die Villa-Vorlage und
+jeder gespeicherte Stand an genau dieser Lage hängen. Wer es angeht: zuerst messen, wie
+weit die Modelle tatsächlich über ihre Belegung hinausragen (Hüllbox je Katalog-Eintrag
+gegen `furnCells`), dann Modell UND Sitzpunkt gemeinsam verschieben.
+
+## 2026-09-23 · 🎬 Runde 90: GTA-Stil + Gratis-Autos, in Blender selbst bearbeitet
+
+User: „traumhaus mit gta 5 style wie das spiel kombinieren … hole gratis stl und bearbeite
+selber". Fahren, Klauen, Polizeijagd, Stunts und Aufträge gab es schon. Gefehlt hat, woran
+man GTA sofort erkennt — und die Polizei bestand aus zwei Kästen, die SEITWÄRTS fuhren
+(Korpus der Länge nach auf x, gefahren wurde entlang +z).
+
+**Gratis-Modelle → selbst bearbeitet (Charge 50):** Quaternius „Cars Pack" (CC0, 7 Wagen
+als .blend) über den öffentlichen Drive-Ordner. `tools/assets/mk_th50_gta_wagen.py` holt die
+Dateien selbst und baut in Blender reproduzierbar GLB + STL:
+- **Streifenwagen** Schweizer Art: weiss, blau/leuchtgelbes Karomuster (Punkte per Strahl
+  auf die Flanke gelegt), 3D-Schriftzug „POLIZEI" (auf der Flankennormale — senkrecht
+  gestellt tauchte er oben in die Tür ein), Lichtbalken → `BlaulichtL`/`BlaulichtR`.
+- **Taxi, Limousine, Kompakt, Coupé, GT, Geländewagen:** neue PBR-Materialien mit Spielnamen,
+  eigene Lackfarben, Hinterräder getrennt (EIN Netz → `_raederAnlegen` fand 3 statt 4).
+- Im Spiel: sechs neue Wagen im Verkehr (je 4 drehende Räder), Kaufautos „Geländewagen"
+  und „⭐ GT-Sportwagen" (ab Wohnstufe 1), Streifenwagen mit blinkendem Blaulicht +
+  Lichtschein (Sprite, KEIN Punktlicht) + Zweiklang-Sirene.
+
+**GTA-Präsentation** (Grep-Anker in Klammern):
+- Einsteigen zeigt **Wagen + Gegend** unten rechts, Gegendwechsel zeigt den Namen (`gtaOrt`,
+  `gegendVon` — liest `WORLD_POIS`, keine zweite Namensliste).
+- **Autoradio** mit drei Sendern, „live" an der Uhr (`RADIO`, `radioSpielen`); Taste **R** oder
+  Tipp auf den Tacho. Spielmusik pausiert im Auto.
+- **VERHAFTET** (Bild grau + Zeitlupe), **AUFTRAG ERLEDIGT**, **STUNT-SPRUNG** (`gtaBanner`).
+- **Fahndungssterne** als fünf Plätze statt Emoji (`sterneHtml`).
+
+Prüfwerkzeug: **`spiele-dev/tools/th-gta.mjs`** (15 Prüfungen, in `th-alle` volle Reihe).
+
+**Regeln, die hier Zeit gekostet hätten:**
+1. **Blender gibt es nicht mehr als Programm** (`/usr/bin/blender` fehlt im Container). Es geht
+   als Python-Modul: `pip download bpy==4.2.0 --no-deps` (520 MB, passt zu Python 3.11) →
+   `pip install --target /tmp/bpyenv <whl>` → `PYTHONPATH=/tmp/bpyenv python3 skript.py`.
+   Rendern geht mit Cycles auf der CPU; der Prozess stürzt beim BEENDEN ab (Segfault) —
+   das Bild ist dann schon geschrieben. Nicht als Fehler deuten.
+2. **Quaternius liegt auf Google Drive**, nicht nur auf itch.io: `tools/assets/drive_liste.py
+   <ordner-id>` listet einen öffentlichen Ordner, geladen wird mit `uc?export=download&id=…`.
+3. **Zeitlupe nur solo.** `_zeitFaktor` bremst die ganze Welt — im Koop rechnet der Host für
+   beide. `zeitlupe()` tut deshalb bei `MPs` nichts.
+4. **Einblendung und Gegend-Takt schreiben dasselbe Feld.** `gtaOrt` setzt `_gegend` selbst,
+   sonst ersetzt der nächste Takt den Wagennamen durch die Gegend (im Bild gesehen).
+5. **Ein Bildschirmfoto dauert länger als eine Einblendung steht** (SwiftShader: >3 s). Für
+   Bilder die Einblendung festhalten (`bannerHalten` in th-gta), für Prüfungen den Takt
+   direkt auslösen (`ortTakt`) statt zu warten.
+6. **Namensnennung CC BY:** Die drei Kevin-MacLeod-Stücke zeigt das Radio mit Titel, Künstler
+   und Lizenz, sobald sie laufen (wie GTA Lied und Künstler einblendet). premium/hype sind
+   Eigenproduktionen (automation/music/produce).
+
+## Runde 91 · 🚕 Taxi-Nebenjob (User: „mach traumhaus spiel weiter")
+
+Der GTA-Klassiker unter den Nebenjobs, gebaut auf das Taxi aus Charge 50. Ein Taxi im Verkehr
+antippen → der Fahrer übergibt die Schicht (**20 $ Miete, kein Diebstahl, keine Fahndung**).
+Dann: Fahrgast abholen (winkt am Straßenrand, gelber Ring), ans Ziel bringen, Fahrpreis nach
+Strecke + Trinkgeld nach Restzeit (zu spät: 60 %, kein Trinkgeld), nächster Fahrgast.
+**Deckel 5 Fahrten/Tag** (dieselbe Überlegung wie 4 Lieferungen/Tag: ein endlos wiederholbarer
+Job entwertet Arbeit, Ernte und Aufträge). Aussteigen beendet die Schicht.
+
+Wiederverwendet statt neu gebaut (Grep-Anker): Ziele aus `LIEFERZIELE`, Navigation über
+`gpsSetz`, Figur aus `mkBewohner`, Geld über `verdiene` (Wohnstufen-Bonus inklusive),
+Einblendung über `gtaBanner(…,"info")`. Neu: `TAXI`, `taxiSchicht`, `taxiHalt`, `updTaxi`,
+Erfolg „Taxifahrer" (am Ende von `ACH` angehängt), Auftrag im `MISS_POOL` (am Ende).
+
+Prüfwerkzeug: `th-gta.mjs` jetzt **21 Prüfungen** (Haltepunkte aller 13 Ziele, Schicht, Abholen,
+Absetzen, Aussteigen beendet die Schicht) + Bilder `gta-4-taxi-halt-*.png`.
+
+**Regeln, die hier Zeit gekostet haben:**
+1. **Eine POI-Mitte ist kein Haltepunkt.** Die Koordinaten in `LIEFERZIELE` liegen im See
+   (Seepark), mitten auf dem Markt oder auf der Fahrbahn. `taxiHalt` sucht darum den nächsten
+   Punkt, an dem `gpsStrasse` gilt und `gpsGesperrt` nicht, und geht dann in 16 Richtungen zum
+   Straßenrand: der Gast steht 3,6 m hinter der Kante (Parkbuchten sind breit), sonst 1,6 m.
+2. **Die Fahrkamera folgt dem Auto.** Wer den wartenden Gast fotografieren will, steht zu Fuß
+   daneben; ein Auto näher als 8 m löst schon das Einsteigen aus.
+3. **Nie ein zufälliges Element per `sort(Math.random)`** — per Index ziehen (Runbook-Regel).
+
+## Runde 92 · 🚗 Autos vom Rasen, Striche in Ordnung (User: „die platzierung passen überall nicht so, auto gehören nicht auf rasen, striche auf strassen sind komisch")
+
+Zwei Beschwerden, beide zuerst **gemessen**, dann geändert, dann gegengeprüft.
+
+**Neues Messgerät `th-autoboden.mjs`** — worauf steht und fährt jedes Auto? Fünf Strahlen je Wagen
+(Mitte + vier Ecken im Eigensystem, senkrecht nach unten), die erste nach oben zeigende Fläche wird
+nach ihrer **sichtbaren Farbe** (Materialfarbe × Texturmittel) in grün / erde / asphalt / hell / wasser
+eingeteilt. Sammelt Autos auf drei Wegen (Lackmaterial `^(Sd|Nf)Lack`, `bau()`-Gruppen mit
+Fahrzeugdatei, die bewegten Listen `verkehr`/`polizei`/Landbus), **simuliert 40 s Verkehr** und
+fragt den Polizei-Einsatzort ab. **Gegenprobe eingebaut** (Regel 1): ein Wagen wird auf das
+`rasen`-Objekt gestellt und muss grün melden, einer auf die Hauptstrasse asphalt — sonst Abbruch.
+Dazu **`th-umfeld.mjs`** (Gebäude, Kollider-/Strassenkarte im Meterraster, Böden eines
+Ausschnitts, mehrere Ausschnitte je Lauf): „Ort gesucht, nicht geraten" in einem Werkzeug.
+
+**Befund vorher:** 5 stehende Fahrzeuge im Grünen — Tank- und Gepäckwagen des Flughafens (der hatte
+Bahn und Bauten, aber **kein Vorfeld**), das Taxi am Bahnhof auf dem **Behindertenstellplatz**
+(„wasser #436ebd" = die blaue Fläche), ein Lieferwagen, den `wegVonStrasse` von der Fahrbahn in
+den **Vorgarten** geschoben hatte, und der Werkstatt-Kunde halb **in einer überdachten Bude**.
+Polizei-Einsatzort: **53 von 120** Proben im Grünen, Zuhause 20/24 (Formel: 34 m in zufälligem
+Winkel). Verkehr: 0,7 % — der Verkehr war nie das Problem.
+
+**Nachher (gemessen, `th-autoboden`):** stehend im Grünen **0**, in Objekt 0, Verkehr 0,2 % (Rest: Müllwagen 2/40 am Zubringer 60°),
+Polizei-Einsatzort **0 von 120** (nach der Verschärfung auf Zellen mit Strassen-Nachbarn; davor 5, ganz zu Beginn 53),
+`JS-Fehler 0`. `th-alle --schnell` **11 von 11**, `th-strassen` 144 Stellen (Parkstreifen-Wagen
+zählt nicht mehr, Bushalte-Kante weg), html-validate 0 Fehler / 56 Warnungen, th-hud 0 Befunde.
+Bilder: `spiele-dev/screenshots/platz-*.png` (von oben) und `spielfahrt-*.png` (aus dem Spiel).
+
+**Behoben:**
+- Flughafen: **Vorfeld** aus Beton (64 × 36 m) mit Standlinie, Haltebalken, weisser Kante zur Bahn.
+- Taxi → **Taxistand** auf den freien Plätzen 9/10 der Südreihe (gelb, „TAXI" in der Gasse);
+  beide Lieferwagen → Parkstreifen (14,9 | 51,2) bzw. Platz 5 der Südreihe — alle drei Orte
+  vorher mit `th-umfeld` als frei bestätigt.
+- Polizei: `polizeiStart()` wählt eine **Strassenzelle** (gpsStrasse, 28–46 m, sonst Spirale),
+  `polizeiKurs()` **folgt der Strasse**, solange sie näher bringt (Blick 7 m voraus, Ausweichen bis
+  60°), und verlässt sie erst für den Zugriff (< 18 m).
+
+**Striche — der Hauptstrassen-Querschnitt war an fünf Stellen fünfmal anders:** Spuren ±2/±5,
+Leitlinie ±4, Parklinie ±5,3, Randlinie ±7,5. Die äussere Spur war damit 1,3 m breit; die Wagen
+fuhren AUF der Parklinie, die Randlinie lief quer durch die Parkfelder, die Haltelinien deckten
+eine Spur, und jede Zufahrt hatte **zwei** Haltelinien (vor und hinter dem Zebra), die Wagen
+hielten auf keiner. Jetzt **eine Tabelle** `HS_INNEN/HS_AUSSEN/HS_LEIT/HS_PARK/HS_BORD`
+(1,8 / 4,4 / 3,1 / 5,75 / 7,9), aus der Verkehr, Pfeile, Halte-, Leit- und Randlinien und die
+Parkfelder lesen. Dazu: Bushaltebucht ans Wartehäuschen (die Betonkante lag **in der Fahrspur**,
+die Bucht 38 m weiter, der Bus fuhr auf der anderen Seite) — der Bus biegt jetzt weich ein und aus;
+alle Striche 0,15 m breit; Landstrassen-Mittelstriche als **InstancedMesh mit Lücken**
+(`_ringStrichLuecke`) an Zubringern und dort, wo eine Viertel-Anbindung kreuzt; Anbindungs-Gehwege
+enden vor der Landstrasse; Zubringer-Streifen enden vor der Haltelinie; Ring-Schenkel-Routen
+halten nicht mehr bei „Rot" mitten auf dem Ring.
+
+**Regeln, die hier Zeit gekostet haben:**
+1. **Der Wolkenschatten liegt über allem.** Der erste Lauf meldete unter jedem Wagen „wasser
+   #162234" — die Gegenprobe hat es gefangen: durchsichtige Auflagen ohne `depthWrite` sind Licht,
+   kein Belag. Ohne Gegenprobe hätte ich „alle Autos im Wasser" gemeldet.
+2. **`/lack/i` trifft „B-lack".** Die Windmühle galt als Auto. Materialnamen genau anfangen lassen.
+3. **Ein 170 m hoher Hügel ist kein Objekt.** Hoch UND klein = Hindernis; hoch und weit = Gelände.
+4. **`node --check` sieht keinen ReferenceError.** Beim Umbau der Ring-Striche blieben zwei
+   `quadOben(dpos,…)`-Aufrufe für die Zubringer stehen — Syntax sauber, Weltbau tot. Die
+   Prüfläufe massen eine kaputte Welt, bis ich die Verwendungen gegrept habe. Nach jedem Umbenennen:
+   alle Vorkommen zählen, und `JS-Fehler: 0` am Ende der Werkzeuge ist Pflichtlektüre.
+5. **Backtick im Sonden-Kommentar** — zum vierzehnten Mal. `th-lint` vor dem Browserlauf.
+6. **Screenshots „HUD aus" per `visibility:hidden` auf `body>*:not(canvas)`** versteckt auch den
+   Canvas-Container: leerer Himmel. Das HUD bleibt drauf.
+7. **Der grosse Berg hatte einen flachen Saum auf y = 0 — über den Strassen.** Sein Netz reicht
+   als Ellipse bis 1,32 rad (541 m breit); ausserhalb der Kuppen liefert `gelaendeH` 0, und diese
+   Scheitel lagen in Almwiesen-Grün (#213816) über den Viertelstrassen (−0,003) und -böden
+   (−0,012) von Bauernhof und Flughafen. Das Postauto fuhr 40/40 Proben „auf Grün", im Bild
+   fehlte der Asphalt zwischen den Gehwegen. Gefunden mit einer **Strahl-Probe, die ALLE Treffer
+   von oben nach unten listet** (`spiele-dev/tools/th-strahl.mjs`, Sprites auslassen — `Raycaster` ohne
+   `camera` stürzt an ihnen). Saum jetzt auf −0,02.
+8. **`ohneSchutz` schaltet nur `wegVonStrasse` ab.** Der Entwirrer schob den Parkstreifen-Wagen
+   trotzdem 10 m in den Vorgarten; nur `userData.fest` hält ihn. Geparkte Wagen bekommen beides.
+9. **Ein Werkzeug, das nur den Mittelpunkt prüft, übersieht die Spitze** (Landstrassen-Striche:
+   Nachbarstriche ragten in die Kreuzung). Lücken nach Ausdehnung rechnen, nicht nach Mitte.
+10. **Modellachse messen, nicht annehmen.** `th7_taxi`/`th7_lieferwagen` sind längs **z**
+    (GLB-Box 1,9 × 4,3 / 2,2 × 4,8), `th_auto_*` längs **x**. Mit „Front auf +x" (gilt für th43)
+    standen Taxi und Lieferwagen quer über 1,5 Stellplätze — auf Asphalt, also für die
+    Bodenmessung unsichtbar. Erst das Spielbild zeigte es (User: „spiele es selber, dann
+    siehst du alles"). Kommando: GLB-JSON lesen, POSITION-Accessor min/max, längere Achse.
+11. **Der Feld-Platzierer kannte die Viertelstrassen nicht.** `frei()` prüfte die Viertel an
+    ihrer Wunschposition mit 8 m Rand; die Bauernhofstrasse liegt am Viertelrand, 5 m
+    ausserhalb. Ein Feld (y 0,02) lag über dem Westende, das Postauto fuhr 9/40 „auf Grün".
+    Jetzt meidet `frei()` die tatsächlichen Bänder aus `_viertelBaender()` (mit Gehweg) — und
+    der Generator läuft per `setTimeout 0` **nach** den synchron gesetzten Vierteln, sonst kennt
+    er die Farmstrasse noch nicht (danach lag ein zweites Feld über dem Ostteil). Messung 7/40 → 0.
+12. **Selbst spielen ist ein Werkzeug**: `spiele-dev/tools/th-spielfahrt.mjs` fährt Wegpunkte mit dem
+    echten Fahrmodell (`fahrStart`/`fahr` wie th-fahrgefuehl, Lenkvorzeichen und
+    Fahrtrichtung werden gemessen, nicht angenommen) und fotografiert alle 45 m aus der
+    Folgekamera im Handy-Format; dazu Stationen zu Fuss. Die Bilder werden angeschaut.
+
+
+## Runde 93 · 🔍 Fehler selbst gesucht (User: „suche selber fehler und verbessere" · „parkplätze müssen auch schönen ausweg haben und auch schön parkieren")
+
+Drei Suchläufe: **jede Strasse der Welt abfahren** (`th-spielfahrt`-Weltfahrt über alle Bänder aus
+`_viertelBaender()` + feste Bänder + Zubringer + Landstrasse, 60+ Bilder), **jeden Parkplatz von oben**,
+und die **volle Prüfreihe** `th-alle` (51 Werkzeuge). Dazu eine Code-Review des ganzen Diffs.
+
+**Gefunden und behoben:**
+- **Seepark-Stich lief in den See.** „26 m ab z 120" = bis z 146 = Seemitte; das eigene Auto stand im
+  Wasser (`park-seepark.png`, `welt-031`). Jetzt Vorplatz bis zur Promenade (122,5…126,4). Dazu sperrt
+  **Wasser** jetzt Auto und Spielfigur (`imWasser`: echte Uferkurve `seeR`, Meer, Fluss; Brücken/Damm
+  frei) — nichts hielt vorher am Ufer an. Uferstein 7 lag auf dem Vorplatz (Promenadenseite frei).
+- **Quartiersplatz ohne Zufahrt** (5 m Rasen zur Querstrasse): Vorfahrfläche + zwei Gehwegübergänge.
+- **Drei „Parktaschen" lagen quer über Gehweg und Erdstreifen**, Wagen senkrecht ohne Zufahrt, ein
+  Findling auf der Nordtasche (`park-pad-*.png`). Entfallen; die sechs Wagen parken längs im
+  **Parkstreifen der Hauptstrasse**, der leer stand.
+- **Bahnhofs-Parkplatz: Kasten-Autos → echte Modelle** (th37/th50), Nase in den Stall. `ladeWagen`
+  braucht den Modell-Lader, der beim Parkplatzbau noch nicht existiert → warten (Poll), nicht raten.
+- **Viertelstrasse Gewerbe: „Wagen am Bordstein" bei ±3,2 standen in der Fahrspur** (Spuren ±2,6,
+  9 m breit) — Verkehr und eigenes Auto steckten dahinter fest (`welt-036`, „steckt fest bei (247|-155)").
+  Am Bordstein ist kein Platz (Kante 4,5, Gehweg 4,7…6,9) → **Parkbuchten** über dem Gehweg bei ±5,9;
+  die Bucht hängt am Wagen und rückt mit dem Kollider-Ausweicher mit.
+- **Einmündungen:** Gehwege der Viertelstrasse und des Anschlusses liefen als EIN Balken quer über die
+  Fahrbahn des jeweils anderen, Striche durch die Kreuzung (`welt-047`, `welt-049`). `TRIM`-Lücken
+  (halbe Fahrbahn + Gehweg + Luft) an jeder Einmündung; der zweite L-Schenkel endet an der
+  Strassenkante statt in der Mitte (sonst Gehweg deckungsgleich über Gehweg = Z-Kampf).
+- **th-echt 14 statt 9:** Gipfelkreuz (72 Paare) und zwei Felsen (88/75) standen **im Stationshaus**
+  der Bergstation — das Haus ist 17 × 27,5 m, frei ist nur der Terrassenstreifen lx 8,5…12; Müllcontainer
+  (−54|48) in einem Doppelhaus (16). Bleiben: Gondel in der Station (gewollt), Laden/bd_inn 1,08 m,
+  Materialstapel am Rohbau 0,4 m, Birke/Karussell 0,15 m.
+- **Code-Review (5 Spiel-Befunde):** `gtaBanner` löschte den Grundfilter (Spiel flau nach der ersten
+  Einblendung) → Basis merken/wiederherstellen; Taxi-Timer konnten zwei Gäste setzen → `TAXI.timer`
+  + `taxiGastWeg()` vor jedem neuen; `bauZugBeginn` verwarf einen Zug ohne Ende → abschliessen;
+  Fahrgast-Figur zweimal gebaut → `taxiFigur()`; `drive_liste.py` las UTF-8 als Latin-1.
+  Die Review-Befunde zu `suchmaschine.html` stammen aus #2527 (main), nicht aus diesem PR.
+
+**Strasse ↔ Trottoir** (User: „schöne verbindung strasse und trottoir auch schöne übergänge"):
+Neues Messgerät **`th-kante.mjs`** — Querschnitte alle 9 m auf jedem Band (feste + `_viertelBaender()`
++ `window._anschluesse`), je Seite sieben Strahlen von der Fahrbahnkante bis 1,8 m in den Gehweg:
+Bordstein-Oberkante ≥ 9 cm? Boden (grün/erde) zwischen Asphalt und Platte = **Lücke**? Gehweg da?
+Dazu jeder Übergang aus `window._uebergaenge`: Bordstein an beiden Enden ≤ 5 cm (**abgesenkt**)?
+Gegenprobe eingebaut: der gemessene 12-cm-Stein der Südstrasse muss erkannt werden.
+Befund vorher: nur Haupt-/Querstrassen hatten einen Bordstein, und der lief **durch jeden
+Zebrastreifen** (Übergang an eine 12-cm-Mauer); Ring, Viertelstrassen, Anschlüsse: Platte direkt am
+Asphalt oder 0,2 m Boden dazwischen, kein Stein; T-Einmündungen ohne jeden Übergang.
+Jetzt EIN Helfer `bordsteinKante(a,kante,seite,von,bis,luecken)` (Lücken `"frei"` an Einmündungen,
+`"ab"` = 3-cm-Rampe am Zebra); `window._zebraAllg(x,z,quer,breite)` für jede Fahrbahnbreite; an jeder
+T-Einmündung zwei Übergänge (über den Anschluss hinter der Gehweglinie, über die Viertelstrasse
+daneben). Anschluss-Enden in **Metern** getrimmt (äussere Strasse 7, Ecke 4,5, Viertelstrasse 4,7 =
+bis an deren Gehwegkante), Viertel-Trim 6,9 = Aussenkante des Anschluss-Gehwegs — die Platten
+stossen jetzt zusammen statt sich zu überlappen oder eine Wiesenlücke zu lassen.
+
+**Neues Mass:** `th-autoboden` prüft **Parkplätze** (`window._parkplaetze`): Zufahrt auf Belag bis zur
+nächsten Strassenzelle (24 Richtungen), jeder Wagen ganz im Rechteck und in Stallrichtung.
+
+**Regeln, die hier Zeit gekostet haben:**
+1. **Ein Kommentar ist kein Mass.** „endet am Seeufer" stand seit Monaten über einem Asphalt, der bis in
+   die Seemitte reichte. Erst das Abfahren hat es gezeigt. Wer „bis zum Ufer" schreibt, rechnet mit
+   `seeR`, nicht mit einer Zahl.
+2. **Die volle Prüfreihe läuft auf dem Dateistand ihres jeweiligen Werkzeugstarts.** Jedes Werkzeug
+   kopiert `traumhaus.html` beim Start — wer während der 60 Minuten patcht, bekommt gemischte Stände.
+   Endzahlen immer aus einem Lauf nach dem letzten Patch.
+3. **Ein Parkplatz ohne Zufahrt sieht von oben richtig aus.** Striche, Bordstein, Wagen — alles da.
+   Dass 5 m Rasen zwischen Strasse und Platz liegen, sieht nur, wer die Zufahrt sucht. Darum die
+   Zufahrtsprüfung im Werkzeug statt im Auge.
+
+**Nachlese (zweiter Durchgang mit den Messgeräten):**
+- **Zwei Hochhäuser standen auf den Zubringern** (th-strassen): (−64|−116) mitten auf dem Zubringer 240°
+  (Mitte x −67), und der in Teil 3 versetzte Turm (72|−112) — `wegVonStrasse` schob ihn wegen der
+  Querstrassen-Zone (x 78 ± 10,5) auf 67,5, also auf den Zubringer 300° (Weltfahrt: „steckt fest bei
+  (62|−111)"). `wegVonStrasse` kennt die Zubringer nicht. Jetzt (−92|−116) und (92|−113), ausserhalb
+  beider Zonen.
+- **Wassergrenze lag 100 m zu weit westlich.** `x < −233` war die MITTE der Meerplatte (200 × 340 um
+  (−232|0)), nicht das Ufer; die Figur stand auf dem Ortsfoto „Meer" auf dem Wasser. Wasser = x < −135
+  innerhalb der Platte (|z| < 168,5); frei bleiben Wendeplatz (−132|−30), Steg (z 70) und Fähranleger
+  (z 100) bis x −148.
+- **Zubringer-Mündung:** der Belag ab Ringmitte lag mit y 0,004 ÜBER dem Ring-Belag (−0,003 … −0,008) —
+  ein helleres Parallelogramm quer über der Ring-Spur (Bild `k2-ring-zubringer`). Das Stück
+  Ringmitte … Aussenkante + 0,3 m liegt jetzt auf −0,010 (über den Plätzen −0,012, unter jeder Strasse).
+- **Bergstation: Hütte, Kreuz, Felsen wurden zur Laufzeit weggeschoben.** `freiRaeumen` schiebt alles
+  ohne `userData.fest` aus dem WELT-Kasten fremder Bauwerke; der Welt-Kasten des um 58° gedrehten
+  17 × 27-m-Hauses ist aber 32 × 29 m und deckt die ganze Terrasse. Die Hütte landete 14 m neben
+  ihrem Platz auf dem Hang, das Kreuz 4 m über der Terrassenkante. Gemessen mit einer Sonde
+  (`probe-berg.mjs`: Soll aus `aufTerrasse` gegen Ist aus `position`), nicht geraten.
+- **Ring-Lücken sassen falsch.** Nach Teil 4 meldete th-kante Löcher im INNEREN Ring-Gehweg bei (±58|−96)
+  und (108|70) und 8 cm Gras bei (117|61): die Lücke war auf beiden Seiten und an der Ringmitte
+  zentriert (x = 112·tan30 = 64,7). Der Zubringer-Belag beginnt aber in der Ringmitte — den inneren
+  Gehweg kreuzt er nie — und schneidet die ÄUSSERE Gehweglinie bei 117,6·tan30 = 67,9 (Süd 71,4,
+  Nord 61,0). Halbe Breite 5,2 (Fahrbahn 4,2 unter 30° = 4,85 + Luft).
+- **Anschluss-Belag über dem Ring:** −0,004 lag über den Ring-Platten (−0,0042 … −0,0086); an der
+  geteilten Mündung (Bauernhof-Anschluss + Zubringer 300°) ein helles Parallelogramm in der Ring-Spur
+  (`k6-muendung-300-nah`). Jetzt −0,0098: unter jeder Strasse, über den Viertelplatten (−0,012).
+- **Bauernhof-Anschluss lief in den Grossen Berg.** Weltfahrt-Bild `welt-083`: Auto im Gelände.
+  Gemessen (`probe-berghoehe.mjs`, `window._bergHoehe` entlang der Bänder): 0,15 m bei z −215, 3,6 m
+  bei −229, 10,3 m bei −245 — der Berg (Mitte (60|−420), r 200, Fuss bis 1,3 r = 260) reicht bis
+  z −160. **Schneise in `gelaendeH`**: innerhalb 22 m um die beiden L-Schenkel Höhe 0, bis 48 m
+  weich. 22 m und nicht 6, weil das Bergnetz dort ~20 m grob ist (48 Winkel auf r ≈ 175): eine
+  engere Schneise läge zwischen zwei Rasterpunkten, und der Belag bliebe unter der interpolierten
+  Fläche. Die Funktion ist zugleich die Begehbarkeit — Auto und Netz sehen dieselbe Schneise.
+- **Berghütte:** erster Versuch bergwärts (lz 25) — dort liegt das Gelände GEMESSEN auf 68,7 m,
+  die Hütte stand auf einem 40-m-Felsturm 26 m über der Station. Jetzt seitlich (lx ±22, entlang
+  der Höhenlinie); der Code misst beide Seiten und nimmt die, die der Terrassenhöhe am nächsten
+  kommt. Regel: **erst messen, wo die Höhenlinie läuft, dann bauen.**
+- **Messgeräte nachgezogen:** th-kante zählt Übergänge (abgesenkt = Zweck) und Einmündungen (Asphalt
+  bis 1,8 m hinter der Kante) nicht mehr als „ohne Bordstein"; Landstrassen (Strand, Achterbahn) ohne
+  Gehweg gewollt → gelistet, nicht gezählt; Ring-Süd innen (Bahndamm) ausgelassen. th-strassen: das
+  Zubringer-Band beginnt bei `zubR0`, nicht bei r 123 (sonst zählt es Ring-Objekte). th-echt: Tiefe
+  zusätzlich im LOKALEN Rahmen jedes Meshes — der Welt-Kasten des um 58° gedrehten Stationshauses ist
+  32 × 29 m statt 17 × 24 und meldete Kreuz und Felsen „3,3 m im Haus", obwohl sie neben der Wand
+  standen; Positionen beider Objekte in der Tabelle. th-pruef: Fahrzeuge ganz im Parkstreifen (≥ 5,3 m
+  von der Mitte) sind kein Korridor-Befund (dieselbe Regel wie th-strassen).
+- **Bordstein lag auf der Schiene** (th-gleis in der vollen Reihe: 3 Bauteile über dem Gleiskörper). Der neue
+  Stein am inneren Süd-Gehweg des Rings (z 113,24…113,5) traf die Südschiene (113,22…113,38) — dort liegt das
+  Gleis direkt an der Ringkante, der Schotter IST die Kante. `stueck()` lässt den Stein auf dieser Seite weg.
+  Gegenprobe th-gleis allein: 0.
+- **Aus der vollen Prüfreihe (51 Werkzeuge, in drei Läufen — ein 90-min-Deckel und eine Session-Pause
+  haben zwei Anläufe abgebrochen):** th-missmap: die Taxi-Mission (Runde 91) hatte weder Ort noch belegten
+  Grund; ein Taxistand-Marker wäre falsch (nur Taxis im Verkehr lassen sich antippen) → der Weg steht im
+  Missionstext, das Werkzeug führt 13 wie Strassenmusik als bewusst ortlos. th-gta: „Grau verschwindet
+  wieder" erwartete einen LEEREN Filter — seit dem Review-Fix stellt `gtaBanner` den Grundfilter wieder
+  her; die Prüfung verlangt jetzt nur, dass das Grau weg ist (21/21).
+- **Nachgezogen:** Wendeplatz am Strand ragte 6 m aufs Wasser → r 7 um −128, genau zwischen Sandkante und
+  Ring-Gehweg (`r93-strand-wendeplatz-nachher.png`); Kartenmarke „Meer" lag in der Meerplatten-Mitte 100 m
+  draussen → am Strand; Altstadt-Laden steckte 1,08 m im Gasthaus (seit main) — th-umfeld zeigte ihn
+  eingekeilt zwischen Gasthaus, Werkstatt, Markthalle und Platz („ohnePlatz" des Entwirrers) → 3,5 statt
+  3,9 m hoch, Grundriss 10 % kleiner, th-echt sauber (`r93-altstadt-laden-nachher.png`).
+- **Bewusst gelassen:** Kies-Vorgärten am Villenviertel (Quer-Ost (83|−21) „erde") und die Marktplatz-
+  Kante (41|66) sind Gestaltung, keine Lücken; Fluggastbrücke × Flugzeug 2,4 m ist ein Zeitpunkt
+  der Andock-Animation; zwei kleine Giebelhütten am Sportplatz (36|134)/(40|134) × ein Kleinteil (38|136)
+  überlappen je nach Entwirrer-Reihenfolge mal 1 m, mal gar nicht (seit main).
+
+**Endzahlen (letzter Lauf nach dem letzten Patch, Regel 2):**
+| Messgerät | vorher | nachher |
+|---|---|---|
+| th-kante: Querschnitte ohne Bordstein · Lücke Asphalt/Platte · ohne Gehweg | 753 · 542 · 92 | **2 · 5 · 9** (+ 51 auf Landstrassen, gewollt) |
+| th-kante: Übergänge nicht abgesenkt | 16 von 16 | **0 von 24** |
+| th-autoboden: stehend grün · Objekt · Verkehr · Polizei · Parkplätze ohne Zufahrt / schief / ragt | 5 · – · – · 53/120 · – | **0 · 0 · 0,2 % · 0/120 · 0 / 0 / 0** |
+| th-strassen: Stellen auf dem Belag | 144 | **112** (Rest: Baustelle am Zubringer 30°, Bäume/Masten am Rand, wie in Runde 92) |
+| th-echt: echte Durchdringungen | 14 | **7** (Bäume untereinander, Laden/Inn 1,08, Gondel in der Station) |
+| th-pruef: im Strassenkorridor · steckt in einem Bau | 37 · 20 (main: 36 · 19) | **0 · 2** (zwei Ahorne im Stadthaus, seit main) |
+| Weltfahrt (`alle-strassen.mjs k4`): Zubringer 240°/300°, Strandzufahrt, Achterbahn | 2 × steckt fest | **0** |
+
+Bilder: `spiele-dev/screenshots/r93-*.png` (Vorher: Figur auf dem Meer, Auto im Berg, Hütte auf dem
+Felsturm · Nachher: abgesenkte Zebras, T-Einmündungen, Ring-Mündung Ost, Zubringer 300° ohne Türme).
+
+
+## Runde 94 · ✨ Schöner (User: „weiter schöner machen")
+
+Vorgehen: 14 Orte aus der **Spielkamera schräg** (nicht von oben) fotografiert (`serie.mjs`, r 16–40,
+Neigung 0,55–0,7), die hässlichsten Stellen benannt, je Stelle Ursache gemessen, geändert, Nachher-Bild.
+Bilder `spiele-dev/screenshots/r94-*.png`.
+
+**Gefunden und behoben:**
+- **Landstrasse, Zubringer, Strand- und Achterbahn-Zufahrt, Quartiersplatz, Bergweg sahen aus wie
+  Betonplatten** — heller und mit Fugenraster, anders als die Stadtstrassen. Ursache: alle nutzten `betMat`,
+  und dessen Struktur (`_strukTex("beton")`) hat **Fugenlinien alle 32 px**; das Kiesbankett ebenso.
+  Neue Helfer `asphMat` (Körnung der Stadtstrassen aus `_roadTex`, 6 m je Kachel) und `kiesMat`
+  (Körnung ohne Fugen). Beide geben je Aufruf ein eigenes Material, teilen die Textur — `repeat` nur über
+  `kacheln()` (klont die map).
+- **Grüne Sechseck-„Insel" 100 m vor dem Strand** (mal da, mal weg): der Teich-Animator dämpft nur
+  Rand-Vertices (|x|,|y| > 11 m) — die Mitte der 200 × 340-m-Meerplatte kräuselte mit voller Amplitude
+  ±0,16 um −0,04 und tauchte bis −0,20, **unter die Fernebene (−0,08)**. `amp` je Wasserfläche; Meer 0,1
+  (tiefster Punkt −0,056, über dem weissen Fern-Overlay bei −0,06 — mit 0,2 schaute der noch als heller
+  Keil durch).
+- **Dunkle Linie quer über die Landstrasse an der Kreuzung (200|0):** der Ring lief von 0 bis **6,283** rad,
+  nicht bis 2π — 0,000185 rad × 200 m = ein **3,7-cm-Spalt** an der Naht, durch den der tiefere
+  Anschluss-Belag schaute. `TAU` im ganzen Block.
+- **Spielclub von oben ein Holzparkett mit zwölf Fugen** — `th34_decke` ist eine Decke, kein Dach. Kiesdach
+  in hellem Attika-Rahmen darüber; von innen bleibt die Holzdecke.
+- **Berghütte auf einem 33-m-Felsturm:** „Höhe am nächsten an der Terrasse" wählte einen Punkt mit 30 m
+  Spanne (31,8 oben, 2,2 unten). Jetzt der **flachste Grund im Umkreis** (24/30 m, 24 Richtungen, ohne
+  Talsektor; Spanne 5 m), Sockel nur so hoch wie der Hang (7,8 m).
+- **Wartehäuschen und Telefonzelle standen im Parkplatz** (Grenze Fahrgasse/Stellplätze) — von hinten ein
+  grauer Klotz zwischen den Wagen. Auf den gemessen freien Grünstreifen nördlich des Platzes.
+
+**Regeln:**
+1. **Ein Material, das überall gleich aussehen soll, muss aus derselben Textur kommen.** Sechs
+   Strassenstücke nutzten die Beton-Struktur, weil `betMat` bequem war — die Fugen sah man erst aus der
+   Spielkamera.
+2. **Wasser darf nie unter das liegen, was unter dem Wasser liegt.** Amplitude gegen die Höhenstaffelung
+   rechnen (Fernebene −0,08, Overlay −0,06), nicht nach Gefühl.
+3. **6,283 ist nicht 2π.** Wer einen Kreis schliesst, nimmt `Math.PI*2`; sonst bleibt ein Spalt an der Naht.
+4. **„Am nächsten an der Zielhöhe" ist das falsche Kriterium für einen Bauplatz am Hang** — es findet
+   den steilsten Punkt. Gesucht ist die kleinste Spanne unter der Grundfläche.
+- **Zubringer-Bankett und Leitpfosten liefen bis zur Aussenkante der Landstrasse** (th-strassen: 4–6 Pfosten
+  im Landstrassen-Band) — `r1 = R+HB` war die Ring-Aussenkante. Beide enden jetzt 1 m vor der Innenkante.
+
+
+## Runde 95 · 🌍 Grösser, viele Sachen (User: „grösser und viele sachen")
+
+**Erst gemessen:** `probe-dichte.mjs` (Objekte je 40-m-Zelle, Welt ±460, Wasser/Berg markiert) zeigte die Welt als
+dichten Kern x −140…220 / z −100…180 mit vier **leeren** Zonen: Osten (x 260…450, z −200…−60), Südosten
+(x 240…450, z 300…430), Nordwesten (x −460…−140, z −460…−330) und das Meer (200 × 340 m Blau mit zwei
+Booten). Dazu: **546 der 903 Modelle im Repo waren unbenutzt** (Skript: Referenzen in der HTML gegen `models/`).
+
+**Gebaut (alles über den bestehenden Generator `viertel()`, nichts von Hand gezeichnet):**
+| Ort | Lage | Inhalt | Anschluss |
+|---|---|---|---|
+| 🏙️ Neustadt | (370|−140) | Rathaus, Bibliothek, Kino, Einkaufszentrum, Museum, Hotel (th10/th9) | Stich von der Gewerbe-Strasse bei z −140 |
+| 🛰️ Technikpark | (405|−260) | Tankstelle, Restaurant, Roboter gross/klein, Wasserturm, Container, 2 Satellitenschüsseln, Generator, Drohne (nf/th20/th10/th9) | Verlängerung der Flughafen-Strasse |
+| 🏰 Burgdorf | (−300|−390) | Burg, Scheune, Haus, Schmiede, Sägewerk, Turmhaus, Stall, Windmühle, Stadthaus, Werkstatt, Fachwerk, Turm (bd/building) | vom Westende der Zoo-Strasse 140 m nach Norden |
+| 🏕️ Bergsee-Camping | (330|360) | Wasserfall, Höhleneingang, Bergsee, Hängebrücke, Grillplatz, 2 Wohnmobile, 4 Zelte, Feuer, Holz, Laube, Wegweiser (th26/th40/sv/cc0) | Verlängerung der Freizeitpark-Strasse |
+| 🏴‍☠️ Pirateninsel | (−250|90) im Meer | Sand, Leuchtturm, 6 Palmen, 2 Kanonen, Schatzkiste, Fässer, Kiste, Flagge, Zelt, Feuer, Steg, Piratenschiff (wiegt sich), Wrack (wc/pr) | keiner (Kulisse; Kurse von Segelboot x −151 und Frachter x −157…−149 geprüft) |
+
+Dazu **Blumenwiesen (80 Flecken) und Pilze (40)** als je EINE InstancedMesh, ein **Aussenring der Streuung**
+(r 200…440: 110 Bäume, 70 Büsche, 40 Findlinge, 60 Blumenfelder — mit Filter gegen Meer und Berge, die
+`freiPlatz` nicht kennt), Fernebene 900 → 1200 m, grosse Karte auf −400…460 / −450…420, Kartenmarken und
+Lieferziele für die vier Viertel.
+
+**Generator-Befunde dabei (beide seit Monaten drin):**
+- **`setback` ist ein Mittelpunkt-Abstand.** Bei Vierteln mit Strasse längs z werden die Bauten um 90°
+  gedreht — ihre Tiefe zur Strasse ist dann `w`, nicht `d`. Post und Polizeiwache (32 m) standen mit der
+  Mitte 18,9 m neben der Strassenmitte → Fassade 1,3 m IN der Fahrbahn, Parkgarage 3 m (th-strassen hatte
+  das seit Runde 92 als „6× polizeiwache" gemeldet; ich hielt es für Modell-Ursprünge am Rand). Jetzt
+  mindestens Gehweg-Aussenkante + 2,5 m + halbe Tiefe.
+- **Ein Viertel weiss nichts vom Anschluss des Nachbarn.** `cfg.nachbarn = [[Koordinate, Seite]]` gibt der
+  Strasse dieselbe Lücke (Gehweg, Bordstein, Striche) und dieselben zwei Übergänge wie beim eigenen Anschluss.
+  Gewerbe (Neustadt) und Zoo (Burgdorf) tragen das.
+
+**Lehren:**
+1. **Masse aus der GELADENEN Box, nie aus den Rohdaten.** `bd_*`, `th23_*`, `nf_*` tragen Knoten-Transformationen:
+   die Accessor-Box liegt bis Faktor 3 daneben, `nf_satellite` hat den Ursprung 19 m ausserhalb seiner Box.
+   `probe-masse.mjs` lädt jedes Modell wie `bau()` und gibt w/d bei Zielhöhe.
+2. **Ein Viertel ist so breit wie sein `w`, nicht wie seine Strasse.** Neustadt wich 50 m aus, weil das
+   Gewerbe-Viertel 96 m breit ist (Strasse nur in der Mitte) — th-viertel zeigt es, das Bild nicht.
+3. **Kachelnähte sitzen in der Textur, nicht in der Fläche.** `sand.jpg` hatte Nähte, `kiesMat` danach auch
+   (Bild k17-pirateninsel: Gitter auf dem Inselsand). Ursache in `_strukTex`: die 2-px-Körner wurden am
+   Kachelrand abgeschnitten, bei RepeatWrapping lag darum an jeder Grenze eine dünnere Linie. `pt()` zeichnet
+   Randkörner um 128 px versetzt mit — Beton, Kies und Erde sind jetzt nahtlos.
+4. **Streuen ist eine Reihenfolge-Frage.** Der Aussenring war nach ~50 ms fertig, die Viertel entstehen bei
+   260 ms, Bahn und Vorfeld später — `freiPlatz` kannte die neuen Strassen noch nicht: Baum auf dem Vorfeld
+   (293,7|−159,9), Baum auf der Flughafen-Anbindung (248|−190), Busch auf der Camping-Anbindung, Krone auf dem
+   Neustadt-Stich (th-strassen, Sonde probe-technik). Feste Wartezeit (1,5 s) reichte im Headless-Lauf NICHT
+   (Timer feuern dort Sekunden später, Baum bei 314,8|−150,9) → der Aussenring wartet jetzt auf den Eintrag des
+   letzten Viertels (Bauernhof) in `VIERTEL`, kennt das Flugfeld aus dem Flughafen-Eintrag und lässt
+   Beton-Plätze (boden „platz") frei.
+5. **Perspektive täuscht, die Sonde nicht.** Im Schrägbild schienen Wasserturm und Satellitenschüssel des
+   Technikparks auf dem Gehweg zu stehen; gemessen (probe-technik, Weltkästen) sind es 9,4 bzw. 21 m von der
+   Strassenmitte — hohe Objekte wandern im Bild zur Strasse. Erst messen, dann verschieben.
+6. **Nie zwei Instanzen desselben Werkzeugs gleichzeitig.** Zwei parallele `th-pruef`-Läufe (eine Kette aus der
+   Zeit vor dem Kontext-Schnitt, eine neue) teilen dieselbe Temp-Datei; die eine räumte sie auf, während die
+   andere lud → „799 Modelle, 36 im Korridor" — ein Artefakt, kein Befund. Vor dem Start `ps` nach laufenden
+   Ketten fragen.
+7. **Vorfeld 64 → 50 m:** mit Neustadt bei x 320 ragte das Vorfeld 3 m in die Platte; jetzt 4 m Wiese dazwischen
+   (ein 1-m-Streifen sähe aus wie ein Riss). Und der Gewerbe-Randbaum (294|−160) stand seit Runde 92 auf dem
+   Vorfeld, das die Nordost-Ecke der Gewerbe-Platte überdeckt — zweimal an derselben Stelle gemessen, also kein
+   Zufall (Streu wäre zufällig). `freiQuer −160` nur für die Randbäume; die Bauzeile bleibt.
+8. **Ein `nachbarn`-Eintrag braucht ein Gegenstück.** th-kante: die Übergänge (257,4|−140) und (−285|−257,4)
+   liefen gegen den vollen 12-cm-Stein — der Nachbar (Gewerbe/Zoo) zeichnet den Zebrastreifen bei 7,4 m,
+   der Anschluss-Schenkel des neuen Viertels liess aber nur 7 m Lücke und senkte nichts ab (das gab es nur
+   am eigenen T-Ende). `cfg.anschlussT:true` behandelt das A-Ende wie ein T-Ende (Lücke 10 m, Stein 4,5…10 m
+   abgesenkt). Dazu standen Bank und Abfalleimer des Gewerbe-Viertels (11-m-Takt) genau an den Zebra-Enden:
+   `viertelMoeblieren` fragt jetzt `_aufViertelWeg` (alle Bänder inkl. Gehweg).
+9. **„Autos gehören nicht auf Rasen" gilt auch auf dem Camping.** th-autoboden fand die zwei Wohnmobile im
+   Grünen (Viertelboden „rasen"). `bauten[].stellplatz:true` legt eine Kiesfläche (Bau + 1,2 m rundum) auf die
+   Platte — ein Generator-Merkmal, keine Handkoordinate (die Wohnmobile stehen, wo der Laufcursor sie hinsetzt).
+10. **Ein Modell kann nur das Gestell sein.** `sv_tent`/`cc0_tent` sind im Bausatz das A-Gestell, die Plane ist
+    `sv_tent_canvas` (gleiche Box). Im Spiel standen drei orange Holzrahmen als „Zelte" — erst das Nahbild
+    (k21-zelt-nah) zeigte es, die Sonde probe-zelt fand die Objekte im Headless-Lauf nicht einmal (noch nicht
+    geladen: drei Browser parallel). Jetzt nur die Plane; Gestell + Plane an derselben Stelle zählte th-echt sonst
+    als Durchdringung.
+11. **Anschluss gerade weiter ≠ Einmündung.** Beginnt der Anschluss am ENDE einer Nachbarstrasse (Camping hinter
+    dem Freizeitpark, Technikpark hinter dem Flughafen), liess der 7-m-Vorlauf für eine kreuzende Fahrbahn auf
+    beiden Seiten eine Kerbe ohne Gehweg und Bordstein (k19-camping-zufahrt). `cfg.anschlussGerade` → Vorlauf 0.
+
+**Endzahlen Runde 95 (Endstand, jedes Werkzeug allein gelaufen):**
+| Werkzeug | vorher (Runde 93/94) | nachher |
+|---|---|---|
+| th-viertel | — | Neustadt, Technikpark, Burgdorf, Bergsee-Camping alle am Wunschort |
+| th-pruef: Modelle · Korridor · steckt | 914 · 0 · 2 | **1001 · 0 · 2** (dieselben zwei Ahorne im Stadthaus) |
+| th-strassen (Stellen auf dem Belag) | 112 | 118 nach dem Bau → **94** |
+| th-kante: Übergänge · nicht abgesenkt | 24 · 0 | **30 · 0** (Schnitte 1060, ohne Bordstein 4, Lücke 6, ohne Gehweg 12) |
+| th-autoboden: im Grünen · Verkehr · Polizei | 0 · 0,2 % · 0/120 | 3 nach dem Bau (2 Wohnmobile, Gepäckwagen) → **0 · 0,2 % · 0/120** |
+| th-netz / th-fenster | 47/0 · 8/0 | **47/0 · 8/0** |
+| th-boden (Fels · schwebt · Wasser) | 0 · 0 · 0 | **0 · 0 · 0** (805 Bauwerke) |
+| th-echt (echte Durchdringungen) | 6–7 | **6** (Bäume untereinander, Materialstapel/Rohbau) |
+| probe-technik: Fremdes auf dem Flugfeld | 3 (Baum auf Vorfeld, 2 Büsche) | **0** |
+
+Bilder: `spiele-dev/screenshots/r95-*.png` (Neustadt, Technikpark von oben, Burgdorf, Camping, Pirateninsel,
+Blumen, Weltkarte Ost, Zebra am Neustadt-Stich, Vorfeld 50 m). ⚠️ th-strassen schwankt um ±3 zwischen Läufen
+(Streu ist Zufall); th-pruef nur allein laufen lassen (1001 Modelle = sauber, 804 = zu früh gemessen).
+
+
+
+## Runde 96 · 🚸 Übergänge schöner (User: „übergänge schöner")
+
+**Vorher gemessen:** alle 30 registrierten Übergänge aus `window._uebergaenge` (Sonde `probe-uebergaenge`:
+8 auf den Hauptstrassen 16 m, 8 auf den Querstrassen 10 m, 14 auf Viertelstrassen/Anschlüssen 9 m), sechs davon
+aus der Spielkamera nah fotografiert (`k24-*-vor`): weisse Balken 0,62 m im 1,15-m-Takt auf dem Asphalt, an den
+Enden hört der Gehweg auf, sonst nichts — kein Schild, keine Platte, nichts, was einen Übergang als Ort markiert.
+
+**Gebaut (eine Stelle, `_zebraAllg`, wirkt auf alle 30):**
+- **Gelbe Streifen wie in der Schweiz** (SN 640 241): 0,5 m breit, 0,5 m Lücke, Takt 1,0 m; 15 auf der Haupt-,
+  9 auf der Quer-, 8 auf der Viertelstrasse. Farbe 0xe8b73a, nachts 0x9a7d2a.
+- **Aufmerksamkeitsfeld** an jedem Ende: helle Rippenplatte 4,8 × 0,9 m auf der abgesenkten 3-cm-Platte (Rippen
+  in Gehrichtung, Oberkante 3,3 cm).
+- **Schild „Standort eines Fussgängerstreifens"** (SSV 4.11, blaues Quadrat, weisses Dreieck, schwarzer
+  Fussgänger als Canvas-Textur) auf 2,3-m-Pfahl an jedem Ende, 3,2 m neben der Streifenachse, Tafel zum
+  ankommenden Verkehr gedreht.
+- Alles als **vier InstancedMeshes** (Streifen 420, Felder/Pfähle/Tafeln je 80): vorher ~260 einzelne Planes.
+
+**Lehren:**
+1. **`_markMats` ist eine Grau-Zwangsjacke.** Der Tag/Nacht-Wechsel setzt jedes Material darin auf ein festes
+   Grau — das Vorfeld-Gelb (Runde 92) war deshalb nach dem ersten Abend grau, und gelbe Streifen wären es auch
+   geworden. Gelbe Markierungen hängen jetzt in `_gelbMats` mit eigenem Nachtton.
+2. **Erst das Messgerät lesen, dann bauen.** th-kante tastet den Bordstein im Band ±2 m um die Streifenachse ab
+   und verlangt ≤ 5 cm; th-strassen prüft jede Instanz gegen die Fahrbahnbänder. Schild darum 3,2 m neben der
+   Achse und hinter der Gehwegkante, Feld als 2-mm-Platte — beide Werkzeuge blieben so auf ihren Werten.
+3. **Instanzen brauchen `frustumCulled = false` UND `nieAusblenden`.** Die Hüllkugel der Geometrie liegt im Ursprung,
+   und die Entfernungs-Ausblendung (`lodAufbau`) entscheidet pro Objekt nach dessen Lage: die Streifen (Hüllkugel
+   2,4 m) verschwanden ab 130 m vom Ursprung, die Schilder (0,43 m) schon ab 34 m — Gewerbe und Burgdorf hatten im
+   ersten Nachher-Bild gar keinen Streifen, das Nahbild kein Schild. Sonde `probe-zebsicht` (Spieler an drei Orten,
+   `visible`/`count` der vier Meshes) belegt die Korrektur: 304 Streifen, 60 Felder/Pfähle/Tafeln, überall sichtbar.
+4. **Ein Schild hat eine Fahrtrichtung.** Rechtsverkehr (Lane-Tabelle `ROUTEN`): Strasse längs x → +z-Spur fährt
+   +x; Strasse längs z → −x-Spur fährt +z (Herleitung: rechts = Fahrtrichtung × oben). Das Schild steht auf der
+   ankommenden Spur VOR dem Streifen und schaut ihr entgegen. Der erste Anlauf hatte die x-Strassen spiegelverkehrt
+   (Bild k26-schild-nah2: der Fahrer sah die Rückseite). Sonde `probe-schild` prüft jedes der 60 Schilder gegen die
+   Regel. Erster Lauf: 56 von 60 — die vier „falschen" waren zwei Dinge auf einmal: (a) die Sonde ordnete das
+   Schild dem NÄCHSTEN Übergang zu, an T-Einmündungen liegen zwei Übergänge 12 m auseinander und das Schild
+   dazwischen (Zuordnung jetzt über die Geometrie: 3,2 m längs, hb+0,76 quer); (b) ein echter Fehler: der
+   Übergang über die einmündende Strasse liegt 7,4 m von der Mitte der durchgehenden, zwischen deren Fahrbahnkante
+   (4,5) und dem Streifenrand (5,0) bleibt ein halber Meter — das Schild „vor dem Streifen" stand 0,3 m IN der
+   durchgehenden Fahrbahn (Gewerbe, Sportpark ×2, Zoo). th-strassen hatte das nicht gesehen, weil es vor der
+   Spiegel-Korrektur lief (Lehre: nach JEDER Änderung neu messen, auch wenn „nur" gedreht wurde). SSV 4.11 steht
+   AM Streifen, nicht davor → liegt der Platz auf einer Fahrbahn (`_aufViertelWeg`), kommt das Schild auf die
+   andere Seite des Streifens, weiter der Spur zugewandt.
+
+**Endzahlen Runde 96 (Endstand, Werkzeuge einzeln):**
+| Werkzeug | Runde 95 | Runde 96 |
+|---|---|---|
+| th-kante: Übergänge · nicht abgesenkt | 30 · 0 | **30 · 0** (Schnitte 1056, ohne Bordstein 0, Lücke 4, ohne Gehweg 8) |
+| th-strassen (Stellen auf dem Belag) | 94 | **94** nach der Eck-Korrektur (der 94er-Lauf davor mass den Stand VOR der Spiegelung — dort standen die vier Eck-Schilder noch aussen; Streifen/Felder sind flach, Pfähle hinter der Gehwegkante) |
+| th-pruef: Modelle · Korridor · steckt | 1001 · 0 · 2 | **1001 · 0 · 2** · Zeichenaufrufe 187 → 196 (vier InstancedMeshes) |
+| probe-zebsicht: Streifen · Felder · Schilder sichtbar | — | **304 · 60 · 60**, an allen drei Messorten |
+| probe-schild: Schilder vor dem Streifen und dem Verkehr zugewandt | — | **60 von 60** (erster Lauf 56: vier Eck-Schilder an T-Einmündungen 0,3 m in der durchgehenden Fahrbahn → andere Streifenseite) |
+Bilder: `spiele-dev/screenshots/r96-*.png` (Vorher/Nachher Hauptstrasse, Querstrasse, Gewerbe, Neustadt-Stich,
+Freizeitpark, Burgdorf; Schild nah).
+
+## Runde 97 · 🚸 Übergänge weiter (User: „weiter" nach „übergänge schöner")
+
+**Vorher gemessen — erst das Messgerät geschärft.** th-kante meldete nach Runde 96 „Lücke 6, ohne Gehweg 8"
+und sah drei Dinge nicht: (a) eine überhängende Baumkrone über dem Gehweg zählte als „Lücke grün" (Südstrasse),
+(b) die vier Zubringer-Stücke zwischen Querstrasse und Ring hatten gar kein Band, (c) es gab keine Frage „endet
+hier ein Gehweg an einer Einmündung, ohne dass ein Übergang weiterführt?". Neu: überhängende Treffer
+(`min.y > 0,5`) übersprungen, Bänder Zubringer-Nord/-Süd Ost/West, Trottoirüberfahrten (`_ueberfahrten`) als
+eigene Klasse, und Abschnitt **EINMÜNDUNGEN (gebündelt)**: Schnitte in Einmündungen, auf 12 m gebündelt, gelten
+als versorgt, wenn ein Übergang in 10 m liegt (Gegenprobe Quer-Ost/Südstrasse (78|50) muss versorgt sein).
+Geschärfter Ausgangsstand: **Schnitte 1085 · ohne Bordstein 28 · Lücke 22 · ohne Gehweg 7 · Einmündungen ohne
+Übergang 13 von 27** (Ring an allen sechs Zubringer-Mündungen, Strandzufahrt, Anschlüsse über die Landstrasse).
+
+**Gebaut:**
+- **Übergänge an allen Mündungen des Stadtrings** (Zubringer 30/60/120/240/300/330°, Querstrassen, Strandzufahrt):
+  `stueck(…, luecken)` nimmt Einträge `[von, bis, {breite, schraeg}]`, schneidet Gehweg und Bordstein auf, legt
+  1,2-m-Rampen (3 cm) und wünscht einen Übergang auf der Gehweglinie (Länge 2,2 statt 4,8).
+- **Schräge Übergänge** über die Landstrasse (r 200) an den Viertel-Anschlüssen: `_zebraAllg(…, {schraeg})`
+  schert die Streifen parallel zur Fahrbahn (nicht flacher als 20°), das Schild rückt um den Längsversatz der
+  schrägen Kante nach aussen. Je Gehwegseite der eigene Schnittpunkt mit r 200, `_ringStrichLuecke` nimmt die
+  Mittellinie dort heraus.
+- **Trottoirüberfahrt** Querstrasse West / Strandzufahrt: der Gehweg läuft durch, der Stein ist auf 3 cm abgesenkt
+  (Runde 93 hatte dort eine offene Einmündung ohne Übergang).
+- **Viertel-Einmündungen nur auf der Seite der Einmündung offen** — vorher war die Lücke in BEIDE Gehwege
+  geschnitten, gegenüber lief der Bordstein vor 5 m Wiese weiter (sechs T-Einmündungen).
+- **Zubringer Nord/Süd:** Bordstein und Gehweg lagen auf der Ring-Aussenkante (x ±107,4), weil `stueck` den
+  näheren Ring-Mittelpunkt nahm → `mitte` wird übergeben.
+- **Kathedrale 6 m nach Norden** (DOM_Z −22 → −28): Zaun und Pfeiler standen 2,7 m in der Ost-Ausfallstrasse,
+  der Obelisk auf der Bordsteinlinie (th-kante „Lücke" bei (147|−5)).
+- **Übergänge der Ringe erst nach den Vierteln** (`window._nachVierteln(fn)`: wartet auf das letzte Viertel,
+  höchstens 15 s): vorher wusste `_aufStrasse` beim Bau noch nichts vom Bauernhof-Anschluss, ein Schild stand
+  auf dessen Asphalt.
+- **Teil 3 — was die Fotos danach zeigten:**
+  - **Markierungen im Streifen** (neue Sonde `probe-strichzeb`, 29 Funde): Randlinien liefen durch alle Streifen
+    der Haupt- und Querstrassen → Lücken ±2,9 m; die Parkfelder ±60 lagen quer über den Streifen bei x ±62 —
+    und darauf **parkierten Lieferwagen (x 63) und Kombi (x 61)** → Segmente um den Streifen ±5,4 m gekürzt,
+    Wagen mittig in die verbleibenden Felder; Mittelstrich der Viertelstrassen im Streifen neben der Einmündung
+    (fünf Viertel, Bild k31-t-gegenueber) → Strich entfällt dort.
+  - **Letztes falsches Schild** (Zubringer 300° und Bauernhof-Anschluss verlassen den Ring an derselben Stelle,
+    x 60 — beide Schildplätze auf Asphalt): Plätze rücken in 0,5-m-Schritten (höchstens 2 m) vom Streifen weg,
+    zuerst auf der richtigen Seite, dann umgeklappt; alle bisher freien Schilder bleiben, wo sie waren.
+  - **Wiese über der Kreuzung am Bauernhof** (Bild k34-bauernhof-oben): das Bergnetz hat am Fuss Dreiecke von
+    8 × 29 m; ein Eckpunkt 23 m neben dem Anschluss trug noch Hang und zog die Fläche bis +0,033 m über den Belag
+    (Sonde `probe-bergstrasse`: 99 Strassenpunkte verdeckt). Schneise in `gelaendeH` 22 → 34 m.
+  - **Obelisk im Kathedralen-Tor:** nach dem Umzug stand er 0,7 m hinter dem 4 m breiten Tor, rechts blieb kein
+    Durchgang → links neben die Achse (DX−6).
+  - **Taxistand-Gelb** hing in `_markMats` (nach dem ersten Abend grau) → `_gelbMats`.
+  - **th-strassen** schliesst den Zug aus (`window._zug`): am Bahnübergang Stadtring West zählte er sonst als
+    vier „Cube…" auf der Fahrbahn.
+
+**Lehren:**
+1. **Ein Messgerät, das überhängende Kronen als Loch im Gehweg zählt, schickt einen zum falschen Ort.** Erst die
+   Treffer ansehen (`probe-wer`: Eltern-Kette, Kasten), dann bauen. Dasselbe für th-strassen: die „Cubes" auf dem
+   Stadtring waren der Zug am Bahnübergang.
+2. **Sonden dürfen nicht nach `visible` filtern.** Die Sichtweiten-Pflege (`_vdListe`) schaltet alles Ferne aus —
+   `probe-strichzeb` sah im ersten Lauf keines der Viertel, obwohl das Foto den Strich zeigte. Die Gegenprobe
+   darum mit einem UNSICHTBAR geschalteten künstlichen Strich am letzten Übergang.
+3. **Eine Gegenprobe, die nicht ausschlägt, ist der Befund.** probe-bergstrasse: erst das falsche Netz (mehrere
+   `userData.gelaende`, das erste ist ein Kettenberg), dann bewegte das Anheben nichts (`matrixAutoUpdate` aus →
+   `updateMatrix()`). Erst danach waren „0 verdeckt" und „99 verdeckt" Zahlen.
+4. **Reihenfolge ist Geometrie.** Was beim Bau per `_aufStrasse` fragt, muss nach allem gebaut werden, was
+   Strassen anlegt — sonst ist die Antwort die eines halben Welt-Stands (`_nachVierteln`).
+5. **Wer etwas verschiebt, prüft die neuen Nachbarn.** Die Kathedrale 6 m nördlicher löste den Zaun in der
+   Strasse — und stellte den Obelisken ins Tor.
+6. **Ein grobes Netz braucht eine Schneise breiter als ein Dreieck** — sonst liegt die Fläche zwischen zwei
+   Rasterpunkten über dem Belag, obwohl die Höhenfunktion dort 0 sagt.
+7. **InstancedMesh-Kapazität zählt still:** zu klein, und die letzten Instanzen fehlen ohne Fehlermeldung
+   (probe-schild vergleicht gezeichnete Tafeln mit den Einträgen). Streifen 800, Felder/Pfähle/Tafeln je 160.
+8. **Fotos mit `body>*:not(canvas)` ausblenden versteckt auch die 3D-Leinwand**, wenn sie in einem Container
+   liegt — die Bilder zeigten nur Himmelblau und die Minikarte. Draufsicht: `b` bis 1,3, ohne HUD-Trick.
+
+**Endzahlen Runde 97:**
+| Werkzeug | Runde 96 (geschärft) | Runde 97 |
+|---|---|---|
+| th-kante: Schnitte · ohne Bordstein · Lücke · ohne Gehweg | 1085 · 28 · 22 · 7 | **1089 · 0 · 0 · 0** |
+| th-kante: Übergänge · nicht abgesenkt · Einmündungen ohne Übergang | 30 · 0 · 13 von 27 | **47 · 0 · 0 von 14** (Gegenprobe (78\|50) versorgt ✓) |
+| probe-schild: zugewandt + frei + nah · gezeichnet | 60/60 (Runde 96) | **94/94 · 94 von 94** (Kapazität 160; Zwischenstand 93: Doppelmündung x 60) |
+| probe-strichzeb: Markierungen im Streifen | — | **29 → 0** (Gegenprobe 2/2) |
+| probe-bergstrasse: Strassenpunkte unter dem Bergnetz | — | **99 → 0** (Gegenprobe +0,3 m: 1147 von 1927) |
+| th-strassen (Stellen auf dem Belag) | 94 | **74** (Zug ausgeschlossen, Schild vom Stadtring, Kathedrale aus der Ausfallstrasse) |
+| th-pruef: Modelle · Korridor · steckt | 1001 · 0 · 2 | **1001 · 0 · 2** · bestanden |
+| th-echt: Paare · echte Durchdringungen | 16 · 6 | **16 · 6** |
+| th-autoboden | 0 · 0 · 0 · 0,2 % · 0/120 · 0 | **0 · 0 · 0 · 0,2 % · 0/120 · 0** (Parkplätze ohne Zufahrt 0, schief 0) |
+Bilder: `spiele-dev/screenshots/r97-*.png` (vorher/nachher: Querstrasse West, Ring Süd, Ring Nord, Landstrasse am
+Gewerbe, T-Einmündung Freizeitpark, Bauernhof von oben, Kathedralen-Tor; nachher: Hauptstrasse x ±62 mit Parkfeldern).
+
+
+## Runde 98 · 🧱 Übergänge noch schöner (User: „das geht noch besser und schöne übergang")
+
+**Erst aus der Nähe angesehen** (Spielkamera auf Augenhöhe, acht Stellen, Arbeitsbilder k40-*, die Vorher-Bilder davon als `r98-*-vor.png` eingecheckt): die Übergänge selbst waren
+seit Runde 96/97 in Ordnung, grob wirkte, was um sie herum liegt — (1) an jeder Absenkung fiel der Bordstein
+**senkrecht** von 12 auf 3 cm, die abgesenkte Platte lag mit einer 3-cm-Stufe neben dem Gehweg; (2) an jeder
+Einmündung endete der Stein mit einer **12-cm-Stirnfläche** an der Fahrbahn; (3) an den vier Hauptkreuzungen stiessen
+die Fahrbahnen in einer **scharfen 90-Grad-Ecke** zusammen (nur der Gehweg war aussen mit einer Viertelkreis-Platte
+gerundet). Dann gemessen — neue Sonde `probe-stufen` (Höhenprofile um jede Bordsteinlücke, Gegenproben eingebaut):
+**144 Stufen im Stein** (96 an Absenkungen, 48 an Einmündungen), **89 in der Platte**, 20 Löcher neben
+Steinenden, **0 von 16** Kreuzungsecken gerundet, 0 von 3 L-Knicken mit Aussenkurve.
+
+**Gebaut:**
+- **Übergangssteine** (`_keil`: Quader mit schräger Oberkante): vor jeder Absenkung läuft der Stein auf 0,9 m von 12 auf
+  3 cm hinunter — AUSSERHALB der Lücke, damit er über die ganze Streifenbreite abgesenkt bleibt (th-kante misst ±2 m);
+  an jeder Einmündung läuft er auf 0,6 m (Ring-Mündungen, Strandzufahrt, Landstrasse: 1,2 m wie die Gehwegrampe) auf
+  3 cm aus — dort liegt in dieser Welt immer ein Übergang, die 3-cm-Kante bleibt als Anschlag für den Blindenstock.
+- **Plattenrampen**: die abgesenkte Platte steigt an beiden Enden auf 0,3 m zur Gehweghöhe an (Quer 5 cm, sonst 6).
+  Die flachen „Rampen" an Ring-Mündungen, Strandzufahrt und Landstrasse (3-cm-Kästen) sind echte Rampen geworden.
+- **Stadtring**: EIN Stein je Gehweglinie mit Mündungslücken (vorher je Gehwegstück einer, auch ein 12-cm-Stein neben
+  der 3-cm-Rampe); die Lücke im STEIN liegt dort, wo der Asphalt die Steinlinie schneidet (`rand`, bei schrägen
+  Zubringern 0,6 m neben der Lücke im Gehweg — dazwischen war bis 0,9 m Loch); am Zubringer lag die abgesenkte Platte
+  unter der 5-cm-Platte und war unsichtbar.
+- **Eckradius 3 m** an allen 16 Ecken der Hauptkreuzungen (`eckBogen`): Asphalt zwischen Ecke und Bogen, Bogenstein,
+  Gehweg-Bogen ab Radius 0,72 (= Abstand zur Innenkante der Gehwegstreifen, die Innenkante läuft als Bogen weiter);
+  Gehweg, Stein und Erdstreifen enden am Bogenanfang. Die alten Viertelkreis-Platten sind weg.
+- **Viertel-Einmündungen**: die 2,3 m vollen Steins zwischen Einmündung und Streifen (ohne Gehweg dahinter) sind
+  abgesenkt — die ganze Ecke liegt auf 3 cm.
+- **Landstrasse**: die Lücke im Stein je Steinlinie aus dem eigenen Schnittpunkt mit r 200 (vorher aus der Mittellinie:
+  Stein endete 1,45 m vor dem Asphalt).
+- **Ost-Ausfallstrasse** (Gewerbe-Anschluss bei (112|0)): der äussere Ring-Gehweg samt 12-cm-Stein lief QUER über die
+  Einfahrt — ein Fehler seit dem Bau des Viertels, th-kante sah ihn nicht, weil es dort keine Lücke gab. Jetzt eine
+  Mündung wie an den Zubringern (Lücke, Rampen, Fussgängerstreifen). Der Anschluss-Stein ist bis hinter die Landung
+  des Streifens abgesenkt (`bordA.ab` 7,7 m), und der Gehweg beginnt erst dort — mit 7 m lag er 0,7 m über der
+  abgesenkten Platte (3-cm-Stufe in der Absenkung, probe-stufen 4). Und der Ring-Gehweg öffnet sich dort bis 7,16 m
+  (Aussenkante der abgesenkten Platte) statt 4,76 m — sonst stieg er mitten auf der Landung wieder auf 5,4 cm, und
+  zwischen ihm und der Anschluss-Rampe lag eine 0,8 m breite 3-cm-Mulde. Jetzt ist die Landung EINE Fläche.
+- **L-Knicke der Anschlüsse** (`eckeL`, 3 Stück): aussen fehlte ein Quadrat Asphalt (4,5 × 4,5 m Wiese in der Kurve).
+  Jetzt Viertelkreis Asphalt, Bogenstein und Gehweg-Bogen; aussen laufen Stein und Gehweg beider Schenkel bis zum Knick.
+- `bordA`/`cfg.vorlaufBord`: der Stein am Anfang eines Anschlusses darf näher an die andere Strasse als der Gehweg.
+
+**Lehren:**
+1. **Ein Teil mit Weltkoordinaten in der Form ist aus der Ferne unsichtbar.** `lodAufbau` liest den Standort aus der
+   Matrix des Netzes — mit Ursprung (0|0) galten die 16 Kreuzungsecken als 88 m entfernt und verschwanden (Bild
+   r98-ecke-unsichtbar: nur Wiese). Die Sonde hatte sie trotzdem gemessen, denn Strahlen fragen nicht nach `visible`.
+   Dieselbe Falle wie die Streifen in Runde 96, jetzt mit Messung: `probe-stufen` prüft den Ursprung aller neuen Teile.
+2. **Das Profil lesen, bevor man einer Zahl glaubt.** Fünf der ersten Befunde waren Messfehler (Schattenfleck,
+   Naht, 3-mm-Fahrbahnhöhe, Plattenlinie auf der Fahrbahn, Laternensockel) — jeder hätte zu einem falschen Umbau
+   geführt. `KANTE=… PROFIL=1` druckt das Profil einer Stelle.
+3. **Die Lücke im Stein ist nicht die Lücke im Gehweg.** Beide lagen bisher am selben Ort; bei schrägen Einmündungen
+   und an der Landstrasse schneiden Stein und Gehweg den Asphalt an verschiedenen Stellen.
+4. **Was nicht als Lücke eingetragen ist, sieht kein Werkzeug.** Die Ost-Ausfallstrasse war seit ihrem Bau durch einen
+   Bordstein gesperrt; th-kante prüft Lücken, th-strassen Gegenstände — ein durchlaufender Stein ist für beide richtig.
+   Gefunden hat es erst ein Strahl längs der Fahrbahnachse.
+5. **Eine flach gebaute Instanz ist für th-strassen ein Turm.** Die alten Eckplatten waren `CircleGeometry(4.6)` in der
+   xy-Ebene, gedreht erst über die Instanzmatrix; das Werkzeug nimmt die Höhe aus der UNGEDREHTEN Geometrie-Box und
+   meldete sie als 4,6 m hohe Gegenstände auf der Hauptstrasse (8 der 74 Stellen). Mit ihnen verschwanden die Befunde
+   — keine Verbesserung der Welt, sondern ein Messfehler weniger.
+6. **Zeitabhängige Messungen nie neben einer zweiten Sonde.** th-echt meldete 13 statt 6 echte Durchdringungen, weil
+   nebenher probe-wer lief (Gondel in der Station, Fluggastbrücke im Flugzeug, vier weitere Paare). Allein: 6 von 16,
+   wie in Runde 97. Dieselbe Regel wie für th-pruef.
+7. **th-pruefs Zeichenaufrufe sind kein Vergleichsmass** (198, 228, 294 für denselben Stand: es liest `renderer.info`
+   nach dem letzten Durchgang). Die Last einer Runde misst `probe-aufrufe`: fester Kamerapunkt, eigener render(), mit
+   und ohne die markierten Teile.
+
+**Endzahlen Runde 98:**
+| Messung | Runde 97 | Runde 98 |
+|---|---|---|
+| probe-stufen: Stufen im Stein / in der Platte | 144 / 89 | **0 / 0** |
+| probe-stufen: Löcher neben Steinenden | 20 | 9 |
+| probe-stufen: Kreuzungsecken gerundet · L-Knicke mit Aussenkurve | 0 von 16 · 0 von 3 | **16 von 16 · 3 von 3** |
+| probe-stufen: Teile mit Ursprung neben der Form | — | 0 von 331 (Gegenprobe schlägt an) |
+| th-kante: ohne Bordstein · Lücke · ohne Gehweg | 0 · 0 · 0 | 0 · 0 · 0 (Übergangssteine als solche erkannt) |
+| th-kante: Übergänge · nicht abgesenkt · Einmündungen ohne Übergang | 47 · 0 · 0/14 | **48** (Ost-Ausfall) · 0 · 0/14 |
+| probe-schild | 94 von 94 | 96 von 96 |
+| probe-strichzeb · probe-bergstrasse | 0 · 0 | 0 · 0 |
+| th-strassen | 74 | 68 (−8 alte Eckplatten = Messfehler, Lehre 5; ±3 zufällig Gestreutes) |
+| th-pruef | 1001 / 0 / 2, bestanden | 1001 / 0 / 2, bestanden |
+| th-echt (allein) | 16 Paare / 6 echt | 16 / 6 |
+| th-autoboden | 0 · 0 · 0 · 0,2 % · 0/120 | 0 · Erde 1 · 0 · 0,1 % · 0/120 (Müllwagen am Sportplatz, s. Offen) |
+| probe-aufrufe (Kreuzung · nah · Ost-Ausfall · hoch · Ring) | — | +32 · +18 · +8 · 0 · 0 (≤ 3 %) |
+Bilder: `spiele-dev/screenshots/r98-*.png` (vorher/nachher: Bordstein an der Absenkung, Kreuzungsecke, Querstrasse,
+Viertel-Einmündung; nachher: Ecke von oben, Ost-Ausfallstrasse, zwei L-Knicke; dazu die unsichtbare Ecke).
+**Offen (klein):** 9 schmale Streifen Wiese neben Steinenden an Einmündungen, wo die andere Fläche tiefer liegt
+(Bauernhof an der Landstrasse unter 16°, Zoo-/Gewerbe-/Burgdorf-Enden, Sportpark-Anschluss am Achterbahn-Stich).
+Der Müllwagen auf dem Zubringer 60° streift den Sportplatz (th-autoboden seit Runde 95 1–3 Proben im Grünen, diesmal
+„Erde" = Laufbahn); th-strassen führt dort Flutlichtmast und Ballfangzaun im Band — ein Umbau des Sportplatzes wäre
+eine eigene Runde.
+
+## Runde 99 · 📉 Flimmern und ~10 fps (User: „flimmert die ganze map fast, gefühlte 10 fps")
+
+**Erst geklärt, WAS der User spielt:** die Live-Seite ist `main` (Stand Runde 88, bis auf eingefügte SEO-/Cloudflare-
+Zeilen identisch); dieser PR hat keine Vorschau (Deploy nur von `main`). Das Flimmern und die Bildrate sind also live —
+und der PR wäre ohne diese Runde SCHWERER gewesen: th-tempo Handy-Pfad `main` 29,1 ms / 175 Aufrufe, PR 38,5 ms / 309.
+
+### 1. Flimmern = Tiefenstreit, weil near 0,1 m war
+Die Spielkamera hatte fest `near 0,1` (für die Ich-Sicht nötig) bei 14…135 m Abstand zum Boden. Genauigkeit des
+Tiefenpuffers ≈ Entfernung² / (near · 2²⁴): 1,2 mm auf 45 m, 7 mm auf 110 m — und mit 16 Bit, wie manche Handys sie
+liefern, 30 cm. Fahrbahn (−0,003), Anschlüsse (−0,0098), Viertelplatten (−0,012) und Eck-Asphalt (−0,001) liegen 2…7 mm
+übereinander: sie stritten um jeden Bildpunkt, und beim Bewegen wanderte das Muster über jede Strasse.
+**Neu:** near folgt dem Zoom (`camR · 0,05`, 0,1…6 m; Ich-Sicht 0,1) in `updCam`.
+**Messgerät `probe-tiefenstreit`:** dasselbe Bild mit dem near des Spiels und mit near 3 m — jeder Bildpunkt, der sich
+ändert, hat seinen Gewinner nur wegen fehlender Tiefengenauigkeit. Anteil Bildpunkte mit Tiefenstreit (sechs Punkte): `main` 1,93 %, PR vorher 2,63 % (Stadtmitte 10,3 %, Viertel Gewerbe
+3,6 %), **nachher 0,43 %** (Kreuzung/Ring/nah 0,00 %). Gegenprobe (Magenta 1 mm unter der Fahrbahn, near 0,1): 87 → 14'004.
+
+Drei Fehlversuche mit der Sonde, alle an einer Gegenprobe entlarvt:
+- **Versatz-Vergleich** (zwei Bilder mit 3 cm versetzter Kamera, wie th-flacker): sah den Streit kaum — die
+  Asphaltschichten haben fast dieselbe Farbe, und 3 cm verschieben das Muster nur.
+- **Gegenprobe auf exakt gleicher Höhe** blieb stumm: gleich hohe Flächen streiten NICHT (gleiche Tiefe je Bildpunkt,
+  LessEqual → die später gezeichnete gewinnt immer). Tiefenstreit braucht einen KLEINEN Abstand, keinen Nullabstand.
+- **Magenta-Falle mit 0 Bildpunkten auch 5 cm über der Fahrbahn:** die Kamera stand beim ersten Aufruf noch woanders.
+  Seither prüft die Sonde, dass das Ziel in der Bildmitte liegt.
+Rest in der Stadtmitte (~2 %) ist keine Tiefe, sondern Mischreihenfolge zweier durchsichtiger Ebenen (three.js sortiert
+Durchsichtiges nach projizierter Tiefe, die von near abhängt).
+
+### 2. ~10 fps = Zeichenaufrufe: die Modelle bestanden aus 53'451 Einzelteilen
+`probe-bildlast` (feste Kamerapunkte, eigener render(), Median aus 5) zeigte bis zu 9'417 Aufrufe je Bild (Zoom 90) auf
+`main`. `probe-aufrufe-herkunft`: an der Kreuzung ein Doppelhaus 293 Aufrufe, geparkte Wagen 212, Blumenrabatten 103.
+Die Blender-Modelle bestehen aus Hunderten Einzelteilen (Theater 970) mit einer Handvoll Materialien (Theater 10).
+**Neu: `_zusammenfassen()`** in `_spaetEinfrieren` (also jedes Mal, wenn das Laden zur Ruhe kommt): je `bau()`-Modell
+alle statischen Teile desselben Materials zu EINEM Mesh (w-lokal, Normalen mitgedreht, Spiegelungen umgedreht).
+Ausgeschlossen: `_bewegt`/`animiert`, Fahrgeschäfte (`FAHRTEN` suchen ihre beweglichen Teile zur Laufzeit geometrisch
+und hängen sie per `attach` um — die drei einzigen `attach`-Stellen der Datei), Durchsichtiges, Mehrfachmaterial,
+Skinning/Morphs, Kinder, eigenes onBeforeRender, fremde userData-Schlüssel. Schattenwurf im Schlüssel (sonst würfen die
+von `_schattenSparen` abgeschalteten Kleinteile wieder). Gleiche Kopien teilen die Geometrie (Hash über Lage, Teile,
+Materialien). In Scheiben von 12 ms. Danach LOD-Index und Verdecker-Liste neu. Parkplätze (`ladeWagen`, nicht `bau()`)
+über `window._zfStatisch`. `?ohneZF` schaltet es ab. **46'869 Teile aus 641 Modellen → 3'101 Meshes, 705 ms**
+in zwei Läufen (Scheiben). Dazu `window._zfFahrzeug` für die 33 Verkehrswagen: 1'918 Teile → 147 Meshes.
+
+Fallen dabei:
+- **0 von 53'451 Teilen im ersten Lauf:** jedes Teil trug userData (`name` vom GLTF-Lader, `_vdC/_vdR` vom Verdecker).
+  „Keine userData" war als Sicherheitsregel gedacht und schloss alles aus — erlaubt sind jetzt genau diese Schlüssel.
+- **Doppelhaus trotzdem 293:** die Sonde mass bei 60 s, das Haus kam später. Die Welt baut sich bis ~180 s auf;
+  `probe-bildlast`/`-herkunft`/`-zusammen` warten jetzt mit `warteAufRuhe`.
+- **„11,9 % anders" am Freizeitpark:** der Verdecker machte nach dem Neuaufbau das Dach über der (von der Sonde dorthin
+  gestellten) Figur durchsichtig — so gewollt. Die Sonde schaltet ihn für die Fotos ab: 0,00 %.
+**Sichtprüfung `probe-zusammen`** (eine Seite, `?ohneZF`, fotografieren, zusammenfassen, dieselben Punkte noch einmal;
+Bewegtes und Durchsichtiges ausgeblendet): Freizeitpark 2'351 → 329 Aufrufe bei **0,00 %** anderen
+Bildpunkten, Stadtmitte 0,00 %, Gewerbe 0,05 %, nah 0,04 %, Ring 0,40 %, Kreuzung 1,57 %, weit 2,17 % — die Unterschiede
+sind HINZUGEKOMMENE Kleinteile in der Ferne (vorher entfernungs-ausgeblendet), nichts fehlt (Bilder angesehen).
+Bilder: `spiele-dev/screenshots/r99-{kreuzung,weit,freizeitpark}-{einzelteile,zusammengefasst}.png` (statische Welt,
+Bewegtes/Durchsichtiges ausgeblendet).
+**th-echt** liest `userData.teile` (Kasten je Einzelteil) — sonst wäre die T-Form des Oberleitungsmasts wieder ein Klotz.
+**Verkehr:** die Räder hängen in Drehgruppen (`piv.userData.rad`), deren Meshes unmarkiert sind. Die erste Fassung prüfte
+userData nur an Meshes und wäre in die Radgruppen abgestiegen — jetzt fällt JEDER Knoten mit fremden Schlüsseln samt
+Unterbaum heraus. Nachgeprüft: 33 Wagen, alle Räder am Wagen, alle drehen sich.
+**Nebenbefund Stadthaus:** Gruppenkästen vor/nach verglichen (in einer Seite) — `th8_stadthaus_offen` schrumpfte von
+20,6 × 20,6 auf 12,5 × 10,6 m. Kein Verlust: das Dach ist ein vierseitiger Kegel, um 45° gedreht; `Box3.setFromObject`
+dreht den KASTEN des Kegels mit und bläht das Haus um √2 auf. Zusammengefasst zählen die echten Eckpunkte. Die zwei
+Ahorne, die th-pruef seit Runde 93 als „steckt im Stadthaus" meldete, standen nie darin (th-pruef steckt 2 → **0**).
+
+### Lehren
+1. **Erst fragen, welchen Stand der User sieht.** Die Klage galt der Live-Seite; ohne diese Prüfung hätte ich den PR
+   gegen sich selbst optimiert.
+2. **near ist der Tiefenpuffer.** Ein Wert, der für die nächste Kamera passt (Ich-Sicht), ruiniert die weiteste.
+3. **Eine Sicherheitsregel, die alles ausschliesst, ist ein stummes Messgerät.** Zuerst zählen, WIE VIEL sie
+   ausschliesst — hier 100 %.
+4. **th-tempo vergleicht Startansichten.** Die sind seit Runde 89 verschieden; Stände vergleicht `probe-bildlast`.
+5. **Erst messen, wenn die Welt fertig ist.** Sie baut sich bis ~180 s auf; ein Vergleich bei 60 s misst Ladezeitpunkte
+   (Doppelhaus „293 Aufrufe" war nicht zusammengefasst, weil noch nicht geladen). `warteAufRuhe` kostet 3 min — lohnt.
+6. **Ein kleineres Mass ist nicht immer ein Verlust.** Der schrumpfende Stadthaus-Kasten sah nach fehlenden Teilen aus
+   und war die Korrektur eines seit Runde 93 gemeldeten Artefakts. Ansehen, welches Teil den Rand
+   bestimmt, bevor man repariert.
+
+**Endzahlen Runde 99:**
+| Messung | `main` (live, fertige Welt) | PR vor Runde 99 (⚠️ bei ~60 s, Welt unfertig) | PR nachher (fertige Welt) |
+|---|---|---|---|
+| probe-tiefenstreit gesamt (Stadtmitte) | 1,93 % (10,4 %) | 2,63 % (10,3 %) | **0,43 %** (2,1 % = Mischreihenfolge, s. oben) |
+| probe-bildlast Aufrufe Kreuzung · Stadtmitte · Ring · weit · Gewerbe · nah | 2'214 · 356 · 1'718 · 8'753 · 737 · 515 | 2'360 · 392 · 1'874 · 8'419 · 881 · 423 | **1'475 · 261 · 829 · 2'507 · 521 · 266** |
+| Summe der sechs Punkte | 14'293 | 14'349 | **5'859 (−59 % zu main)** |
+| Dreiecke Kreuzung · Stadtmitte · weit | 323k · 168k · 1'271k | 344k · 228k · 1'243k | 420k · 277k · 1'042k |
+| th-bewegt · th-fahrt | — | — | alles Angemeldete bewegt sich · 11 Fahrgeschäfte, 0 ohne Bewegung |
+| th-gta · th-bauen | — | 21/21 · 22/22 | 21/21 · 22/22 |
+| th-pruef (Modelle · Korridor · steckt) | — | 1001 · 0 · 2 | 1001 · 0 · **0** (Kasten-Artefakt weg, s. oben) |
+| th-echt (Paare · echt) | — | 16 · 6 | 17 · 7 (neu: Ahorn × Spielturm 0,16 m, Lage-Streuung) |
+| th-kante · probe-stufen · probe-schild | — | 0/0/0, 48 · 0/0, 16/16 · 96 | unverändert |
+| th-strassen · th-autoboden | — | 68 · 0/1/0 | 61 · 0/0/0, Verkehr grün 0,1 %, Polizei 0/120 |
+| th-flimmern (stille Kamera) | — | kein Umschalten | kein Umschalten |
+
+⚠️ SwiftShader-Millisekunden (Summe PR −8 % zu main) sind Füllraten-Werte, keine Gerätewerte — auf dem Handy zählen
+die Aufrufe. Offen: `probe-aufrufe-herkunft` an der Kreuzung — der Rest sind prozedurale Kleinteile (Boxen/Zylinder
+einzelner Farben, je 10…60) und Bodenmarkierungen; die liessen sich nach demselben Muster je Zelle zusammenfassen.
+
+## Runde 100 · 🧩 Weiter (User: „weiter" nach Runde 99)
+
+Auftrag verstanden als: den Rest aus Runde 99 angehen („an der Kreuzung bleiben ~1'000 Aufrufe aus prozeduralen
+Kleinteilen und Bodenmarkierungen"). Unterwegs fanden die Gegenproben vier alte Fehler, die mit Aufrufen nichts zu tun
+haben, aber sichtbar sind — der grösste davon: **auf `main` steht die Sonne nur am Startpunkt richtig.**
+
+### 1. Erst gemessen, WER die Aufrufe macht
+`probe-aufrufe-herkunft ART=1 HERK=1` (neu: hängt sich vor dem Weltaufbau an `scene.add` und nennt die Baufunktion):
+an der Kreuzung (78|58) 1'483 Aufrufe = Gruppen prozedural 502 (Dorfhäuser `haus` 141, Blumenfelder 132, Zäune
+`einfriedung` 63, Café 34, Laternen 26, Rathaus 21, Brunnen 15 …), bewegt 426, Modelle 277, **Boden lose 204**
+(Bordsteine `box`, Keile `_keil`, Plattenränder `tr`, Linien `randl`, Parkfelder …), Instanzen 26.
+
+### 2. Weltgruppen und lose Bodenteile zusammenfassen — per AUSSCHLUSSLISTE
+`_zfKandidaten()` sammelt bei jedem `_zusammenfassen()`:
+- jede **eingefrorene Gruppe** direkt in der Szene ohne fremde userData (also keine Modelle, keine Figuren, nichts
+  `nieAusblenden`/`animiert`/`fest`), ohne Baumodus (Wände, Böden, Möbel, eigenes Auto, Haustier, Vorschau), ohne
+  Wintermarkt und ohne die Parkbucht beim Autohaus (rückt in den ersten 95 s mit),
+- jedes **flache lose Mesh** am Boden (≤ 0,35 m hoch, Oberkante ≤ 0,4 m) — je **48-m-Zelle und Material** zu einem Mesh,
+  Ursprung im Mittelpunkt der Teile (für die Entfernungs-Ausblendung). Höhere lose Teile bleiben einzeln: über eine
+  Zelle zusammengefasst wären Masten und Felsen für den Verdecker ein „grosser Bau" und für th-strassen ein
+  Zellmittelpunkt.
+Warum eine Ausschlussliste und nicht jede Baufunktion einzeln: zusammenfassen INNERHALB einer Gruppe lässt alles
+gültig, was die Gruppe als Ganzes betrifft (entfernen, verschieben, ein-/ausblenden — Stadtfest, Wintermarkt,
+Immobilien-Flagge), und Materialien bleiben dieselben Objekte (Nachtfenster, Ampeln, Laternen). Kaputt ginge nur, was
+ein EINZELNES Kind später anfasst. Das ist zweifach geprüft:
+1. jede `.visible=`, `.material=` und `.remove(`-Stelle der Datei gelesen,
+2. **`probe-anfasser`**: lädt mit `?ohneZF`, macht aus `visible`/`material` jedes Kandidaten-Teils eine Falle, notiert
+   Lage, Elternteil und Eckpunkte, spielt Abend, Nacht mit Stadtfest, Regen, Schnee, Winter, Baumodus.
+   Ergebnis: **0 verschoben, 0 entfernt, 0 Eckpunkte, 0 Setter-Aufrufe** (ausser Aufwärmen, das sofort zurücksetzt).
+   Gegenprobe (ein Teil unsichtbar, eins verschoben, Eckpunkte geändert): alle drei gemeldet.
+
+**Falle 1 — `BoxGeometry` hat Gruppen.** Der erste Lauf fasste fast nichts zusammen: `_zfSig` lehnte jede Geometrie mit
+`groups` ab, und Box (6) und Zylinder (3) bringen sie immer mit — ein Dorfhaus besteht nur daraus. Mit EINEM Material
+zeichnet three.js die Gruppen gar nicht einzeln (renderBufferDirect bekommt `group = null`), sie dürfen wegfallen.
+Gefunden, weil `probe-zusammen` (Seite mit `?ohneZF`, dann zusammenfassen) Kreuzung 943 zeigte, `probe-bildlast`
+(normales Spiel) aber 1'428 — die Zahl im Normalbetrieb ist die, die zählt.
+**Falle 3 — Scheiben gegen LOD.** Die 79 Blumenfelder (948 Teile, 141 Aufrufe an der Kreuzung) blieben trotzdem
+einzeln: das Zusammenfassen läuft in Scheiben über viele Bilder und nahm die LOD-Liste als Momentaufnahme am Anfang.
+Baute `lodAufbau` dazwischen neu auf und blendete aus, waren die Stängel „unsichtbar, aber nicht vom LOD" — weg.
+Jetzt trägt jedes Teil die Marke selbst (`_lodM`). Belegt: ein zweiter Lauf von Hand fasste sie sofort zusammen.
+**Falle 2 — die Sichtprüfung verglich einen kaputten Vorher-Stand.** `probe-zusammen` meldete an der Kreuzung 2,41 %
+andere Bildpunkte: Baumkronen und eine Telefonzelle 13–20 m neben der Figur, die VORHER fehlten. Ein Leerlauf ohne
+Zusammenfassen (`LEER=1`, neu) blieb bei 0,01 % — also kein Zeiteffekt. Strahl durch die Bildpunkte: die Teile waren
+da, aber unsichtbar geschaltet … vom Entfernungs-Ausblenden, das sie für 97 m entfernt hielt (Abschnitt 3).
+**Das gilt rückwirkend auch für Runde 99:** „die Unterschiede sind hinzugekommene ferne Kleinteile" war falsch gedeutet —
+es waren zum grossen Teil fälschlich ausgeblendete NAHE Teile im Vorher-Bild.
+
+### 3. Entfernungs-Ausblendung: rechnete mit veralteter Lage, und der Zoom nahm zu viel weg
+- `lodAufbau` merkt sich die Lage jedes Kleinteils EINMAL; `entwirren`/`freiRaeumen` schieben Modelle danach noch um bis
+  zu 90 m. **`probe-lodlage`** (neu, Gegenprobe: ein Eintrag um 50 m versetzt): `main` 1'617 von 10'485 Einträgen
+  veraltet, **266 Teile an der Kreuzung dadurch unsichtbar** (Pappeln, Ahorne: Stämme ohne Krone). `lodTakt` liest die
+  Lage jetzt aus der Weltmatrix.
+- Beim Herauszoomen verschwanden Teile unter 2,2 m schon ab 38 m (Zoom 90) — dort noch ~13 Bildpunkte gross. Sichtbar
+  wurde es, als der LOD-Index nach dem Zusammenfassen vollständig war: das **ganze Wirtshaus** (lauter Teile unter 2,2 m),
+  Bäume und die geparkten Autos fehlten in der Weitsicht. Auf `main` standen sie nur, weil sie nach dem letzten
+  `lodAufbau` geladen und nie erfasst wurden. Jetzt schrumpfen nur noch die winzigen (< 0,55 m) mit dem Zoom.
+
+### 4. Eingefroren, aber im Code weiterbewegt (Nebenfund von probe-anfasser)
+`_einfrieren` setzt `matrixAutoUpdate=false` für alles ohne `_bewegt`. Wer danach `.position` setzt, bewegt nur eine Zahl.
+`probe-anfasser` sucht jetzt jedes eingefrorene Objekt, dessen Lage von seiner Matrix abweicht:
+- **Ziel der Sonne** (65 m daneben): loop() setzt es jedes Bild auf die Kamera, aber `updateMatrixWorld()` rechnet bei
+  eingefrorenem Objekt die lokale Matrix nicht nach. Das Licht zog mit, das Ziel stand am Startpunkt — die Richtung
+  kippte mit der Entfernung. **`probe-sonne`** um 12:00: `main` 64,5° am Start, **14° an der Kreuzung, 7° im Gewerbe,
+  8° am Freizeitpark** (Spannweite 57°); PR überall 64,5°. Auf `main` liegt also überall ausser am Start Abendlicht:
+  blasse Farben, flach einfallende Sonne, und die Schatten-Box steht neben dem Spieler — keine Schatten
+  (Bilder `r100-sonne-{kreuzung,gewerbe}-{main,pr}.png`).
+- **Regen/Schnee** (folgt der Kamera; fiel nur um den Startpunkt), **Vögel** (kreisen; standen), **Ring unter der
+  eigenen Figur** (blieb 40,7 m zurück), **Brunnenstrahlen** (`main`: in den Daten wächst ein Strahl von 1,42 auf 1,70,
+  die Matrix bleibt bei 1,32 — sie standen still) — alle in `_bewegtMarkieren` bzw. beim Anlegen markiert.
+  Dazu die **Parkbucht beim Autohaus** (neu in diesem PR, gibt es auf `main` nicht): `_nachRuecken` zog nur den Wagen nach.
+
+### 5. Schatten aufs Texelraster
+Jetzt, wo die Schatten-Box überall um den Spieler steht, fällt ihr Kriechen auf: Licht und Ziel folgen der Kamera
+stufenlos, das Raster der Schattenkarte liegt jedes Bild um Bruchteile eines Texels anders, Schattenkanten wandern
+beim Gehen. `_sonneAufKamera` verschiebt Licht UND Ziel quer zur Lichtrichtung aufs Texelraster (Achsen der
+Schattenkamera wie `Object3D.lookAt`). **`probe-schattenkriechen`** (Kamera steht, nur das Ziel wandert in 2-cm-Schritten):
+ohne Raster ändert sich bei JEDEM Schritt rund 0,14 % der Bildpunkte um bis zu 32 Farbstufen (Farbsumme), mit Raster
+**0 von 10 Schritten** (grösste Abweichung 1 = Rauschen). Erste Fassung der Sonde zählte erst ab 24 Farbstufen — die
+Gegenprobe blieb stumm (PCF-weiche Kanten ändern sich nur leicht), also Schwelle 3 und die grösste Abweichung dazu.
+
+### Zahlen
+| Messung (fertige Welt) | `main` (live) | PR Runde 99 | **PR Runde 100** |
+|---|---|---|---|
+| probe-bildlast Aufrufe Kreuzung · Stadtmitte · Ring · weit · Gewerbe · nah | 2'165 · 349 · 1'664 · 8'807 · 734 · 482 | 1'475 · 261 · 829 · 2'507 · 521 · 266 | **1'194 · 239 · 635 · 2'661 · 499 · 231** |
+| Summe der sechs Punkte | 14'201 | 5'859 | **5'459 (−62 % zu main)** |
+| Blumenfelder an der Kreuzung (probe-aufrufe-herkunft) | – | 132 (141 nach Teil 1) | **37** |
+| Sonnen-Höhenwinkel 12:00, Spannweite über 5 Orte (probe-sonne) | **57,1°** (64,5° … 7,4°) | 57,1° | **0,0°** |
+| Teile an der Kreuzung fälschlich LOD-unsichtbar (probe-lodlage) | 187–266 | 0 (Zufall) | **0** |
+| Eingefroren, aber bewegt (probe-anfasser; `main` einzeln belegt) | Sonnenziel, Brunnenstrahlen (+ gleicher Code: Regen, Vögel, Ring) | 12 (Sonnenziel, Regen, 9 Vögel, Ring) | **0** |
+| Schattenkanten-Kriechen je 2-cm-Schritt (probe-schattenkriechen) | – | 10 von 10 | **0 von 10** |
+
+Die Weitsicht (Zoom 90) hat 150 Aufrufe mehr als Runde 99 — das ist der Preis dafür, dass Wirtshaus, Bäume und geparkte
+Autos beim Herauszoomen stehen bleiben (Abschnitt 3).
+**Prüfreihe:** th-bewegt alles bewegt · th-fahrt 11/0 · th-gta 21/21 · th-bauen 22/22 · th-pruef 1001/0/0 bestanden ·
+th-echt 6 echte Durchdringungen (wie Runde 99) · th-kante 0/0/0, 48 Übergänge, Einmündungen 0/14 · probe-stufen 0/0,
+Ecken 16/16 · probe-schild 96/96 · th-strassen 66 · th-autoboden 0/0/0, Verkehr 0,1 %, Polizei 0/120 · th-flimmern kein
+Umschalten · probe-tiefenstreit 0,39 % · probe-anfasser 0 · probe-zusammen nah ≤ 0,26 %, weit 2,0 % · html-validate 0 Fehler.
+
+### Lehren
+1. **Die Zahl im NORMALBETRIEB messen, nicht nur im Versuchsaufbau.** `probe-zusammen` fasst in einer `?ohneZF`-Seite
+   von Hand zusammen und zeigte −52 % an der Kreuzung; im Spiel griffen die Weltgruppen gar nicht (BoxGeometry-Gruppen).
+2. **Ein Vorher-Bild ist nur so gut wie der Vorher-Zustand.** Erst ein Leerlauf (nichts ändern, zweimal fotografieren),
+   dann ein Strahl durch die geänderten Bildpunkte — sonst schreibt man einem Fix zu, was ein alter Fehler war.
+3. **Einfrieren braucht eine Gegenprüfung auf „bewegt sich trotzdem".** Sechs Arten von Objekten liefen seit dem Einfrieren falsch,
+   eins davon (das Sonnenziel) veränderte das Licht der ganzen Karte. `probe-anfasser` findet diese Klasse jetzt
+   automatisch.
+
+## Runde 101 · 📐 Platzierung passend (User: „jetzt spiel weiter" → „platzierung passend machen")
+
+Erst selbst gespielt (`th-spielfahrt r101`: Stadtrunde, Landstrasse, Bauernhof, Flughafen, sechs Orte zu Fuss), dann
+jeden Befund mit einer Sonde belegt, geändert und nachgemessen. Der zweite User-Satz kam mitten in der Runde und traf
+genau das, was die Bilder zeigten: Dinge stehen, wo sie nicht hingehören.
+
+### 1. Möbel gerader Grösse standen eine halbe Zelle neben ihrer Belegung (seit Runde 89 als offen notiert)
+`furnCells` belegt bei Breite/Tiefe 2 die Zellen `gx … gx+1`, gebaut wurde auf `cx(gx)`. **`probe-moebelversatz`:
+30 von 30 Fällen genau 1 m daneben**; das Himmelbett ragte 0,96 m in die Nachbarzelle, der Teich 0,92, das
+Designer-Sofa 0,82; in der Villa-Vorlage steckte das Sofa 6 cm in der Wand (`probe-villamoebel`), und die grüne
+Vorschau zeigte eine andere Stelle als die belegte.
+- Neu `furnMitte(def,gx,gy,rot)` / `fMitte(f)`: Mitte der Belegung (bei gerader Seite +CS/2). Modell, Vorschau,
+  Plopp, Möbellicht, Auswahlring, Sitz-/Liegepunkt (`arrive`, Bett +0,3 relativ dazu), „nächstes Möbel", Beet-Ernte,
+  Liebes-Möbel, Hochzeit am Rosenbogen und die Tippflächen (Herd/Teich/Stereo) nehmen sie.
+- **Belegung, Speicherstand und Netz bleiben gx/gy.** Ein alter Spielstand lädt dieselben Felder, nur das Bild rückt
+  auf sie. Autos und Hund haben keine Belegung (nicht in `furn`) und bleiben auf der Ankerzelle.
+- `furnMass` zentriert den Grundriss von `norm`-Modellen auf die Zellmitte: der Zimmerfarn hat seinen Drehpunkt
+  0,46 m neben der Pflanze und ragte 0,48 m hinaus.
+- Nachher: gerade 0/30 versetzt, 0 ragt · ungerade 0/140 · Villa: 0 in Wand, 0 in anderem Möbel, 0 ragt.
+**Falle:** die erste Gegenprobe von `probe-moebelversatz` blieb stumm — das verschobene Modell ist eingefroren
+(`_einfrieren`), `position.x += 1` ändert ohne `updateMatrix()` nichts am Bild. Dieselbe Klasse wie Runde 100, Abschnitt 4.
+
+### 2. Quartiersplatz: Bushalte-Tafel im Stellplatz des Taxis (Spielfahrt r101-35, r101-10)
+Aus der Spielkamera sah es aus wie ein Picknicktisch unter einem gelben Auto. `probe-wasda` nannte es:
+`th3_bushalte` bei (−64|−10), Kasten x −64,8…−63,1 / z −11,7…−8,4 — im Stall z −11…−8. Runde 94 hatte
+Wartehäuschen und Telefonzelle verlegt, die Tafel übersehen. Jetzt (−67,5|25,9) auf dem Grünstreifen hinter der
+Telefonzelle (frei laut `probe-wasda`).
+
+### 3. Bahnhof-Parkplatz neu eingepasst — fünf Fehler an einer Stelle
+Der Platz (36 × 16, x 7…43 / z 89…105) war nach Nachbarn gemessen, die es so nicht mehr gibt. `probe-parkfrei` +
+`probe-wasda` + Fotos von oben (`r101-bahnhofplatz-vorher`, `-umfeld-vorher`, `-nord-vorher`, `-nordkante`):
+1. **Bahnhof th41 bis x 10,4** — der Platz lag 3,4 m darin, der Kassenautomat (6,8|103,6) IM Bahnhofsgebäude.
+2. **Rathaus-Sockel bis z 90,0** — die Südreihe begann bei 89: SUV und Kompakt 0,5 m im Sockel, das Taxi am Taxistand
+   ebenso, und zwei Bäume des Grünstreifens standen IM Rathaus.
+3. **Warteplatz** (Pflaster 8 × 7, Trinkbrunnen, Bank, Vogeltränke bei (17,5|98), älter als der grosse Platz) mitten in
+   Fahrgasse und Nordreihe — auf dem Foto der hellgraue Fleck mit Bank zwischen den Autos.
+4. **Zwei Laternenmasten in der 5,6-m-Fahrgasse** (13|97 gleich hinter der Einfahrt, 37|97).
+5. **Zufahrten:** die Einfahrt x 8…14 lief unter Bahnsteig und Bahnsteigdach, in der Ausfahrt x 22…28 stand der
+   Fahrleitungsmast (24|110) — und beide Bänder waren zugeparkt (GT auf Nordplatz 0, Limousine auf Nordplatz 5).
+Neu (alles aus `PX/PZ/PW/PD`, `window._bahnPP` für die Abschnitte weiter unten):
+- Platz x 11…43, z 90,6…104,2; Bordstein 0,5 m ringsum, ganz ausserhalb von Bahnhof und Rathaus.
+- **Beide Zufahrten im einzigen freien Streifen zum Ring** (x 32…42,5: zwischen Signal x 29 und Signal x 44, ohne Mast
+  und Bahnsteig), Pfeile hinein/hinaus; die Nordreihe hat 6 Plätze und endet davor. Gassenpfeile zeigen zur Ausfahrt.
+- **Warteplatz = Insel an der Bahnhofs-Ostwand** (x 11…14,6) mit Inselkante; Brunnen, Bank, Vogeltränke darauf.
+  Angemeldet (`_parkplaetze`) wird nur die Stellfläche.
+- Behindertenplatz = Südplatz 0 (nächst dem Bahnhof); Südplatz 3 = Lieferwagen der Werkstatt (`_bahnPP.platz(-1,3)`
+  statt fester 25/91,6); Südplatz 7/8 = Taxistand (`window._taxiStand`); x 40…43 bleibt Reststreifen für die Laterne
+  (41,7|91,6) aus der Laternenkette. Masten auf den Stirn-Bordsteinen, Kassenautomat auf dem Nord-Bordstein an der
+  Einfahrt, Grünstreifen + drei Bäume nur westlich des Rathauses.
+- Nicht angefasst: die Zufahrt quert das Gleis (z 110,7…113,3) ohne Bahnübergang-Ausstattung — das war schon so;
+  eine Schranke passt dort nicht (Ring 1,5 m hinter der Schiene, s. Schranken-Kommentar). Eigene Runde.
+
+### 4. Rettungswagen im Hochhaus — ein alter Messfehler
+`probe-parkfrei` (A): `th49_rettungswagen` (11,5|−121) steckte im Skyline-Turm (10|−119), Kasten x 6…14 / z −123…−115.
+Die Wagen standen einmal richtig UNTER dem Vordach der Notaufnahme (KZ+8, „dafür ist es gebaut"). Eine spätere Runde las
+den Hüllkasten MIT Vordach (z −143,7…−125,6) als Baukörper, meldete „6 m in der Notaufnahme" und schob sie auf KZ+15 —
+in den Turm. Der Kollider sagt es richtig: Baukörper bis z −132,5, darüber 6,9 m Vordach. Jetzt KZ+8,3.
+**Lehre:** Hüllbox ≠ Baukörper. Ein Vordach, ein Portikus, ein Ausleger gehören zur Box, aber nicht zur Wand.
+
+### 5. Die Sonden selbst — dreimal nachgeschärft
+1. **Unsichtbar ≠ nicht da.** Die ersten Läufe fanden Brunnen, Bank und Vogeltränke im Parkplatz NICHT — die
+   Entfernungs-Ausblendung (`_lodM`) und die Gruppen-Sichtprüfung (`_gsAus`) hatten sie ausgeschaltet, weil die Figur am
+   Start steht. Die Sonden schalten beides für die Messung ein und danach zurück.
+2. **Ein Objekt ist kein Quader.** Mit einer Gesamtbox je Objekt „steckten" die Rettungswagen unter dem Vordach in der
+   Notaufnahme; Hofasphalt und Markierung (0…6 cm) zählten als Hindernis. Jetzt Teil für Teil, nur Bodenhöhe.
+3. **Zusammengefasste Parkwagen** haben keinen eigenen Grundriss mehr → `probe-parkfrei` lädt mit `?ohneZF`.
+
+### Zahlen
+| Messung | vorher | nachher |
+|---|---|---|
+| probe-moebelversatz: gerade Grösse versetzt > 0,3 m · ragt > 0,3 m | 30/30 · 6 | **0 · 0** |
+| probe-moebelversatz: ungerade versetzt/ragt (Zimmerfarn) | 2 · 2 | **0 · 0** |
+| probe-villamoebel: in Wand · in Möbel · ragt | 1 · 0 · 0 | **0 · 0 · 0** |
+| probe-parkfrei A: geparkte Autos mit Hindernis im Grundriss | Taxi×Bushalte, Taxi×Rathaus, Rettungswagen×Turm (+ SUV/Kompakt×Rathaus, nicht `fest`) | **0 von 15** |
+| probe-parkfrei B: Hindernisse auf Parkplätzen | Bahnhof 8 (Rathaus, Bahnhof, Brunnen, Bank, Tränke, 2 Masten, Automat) · Quartiersplatz 2 | **nur die 2 Randlaternen (gewollt)** |
+| th-autoboden: Grün/Erde/Objekt · Verkehr grün · Polizei · Parkplätze ohne Zufahrt/schief/raus | – | 0/0/0 · 0,2 % · 0/120 · 0/0/0 (Bahnhof-Zufahrt über das neue Band) |
+
+**Prüfreihe (Endstand, jedes Werkzeug allein):** th-bauen 22/22 · th-pruef bestanden (1001 Modelle, Korridor 0,
+fehlend 0, JS 0; „steckt drin" 2 = die Rettungswagen unter dem Vordach, siehe unten) · th-kante 0/0/0, 48 Übergänge,
+Einmündungen 0/14 · th-autoboden 0/0/0, 0,2 %, 0/120, Parkplätze mit Zufahrt · html-validate 0 Fehler (56 Warnungen,
+unverändert). Gegen den Stand vor Runde 101 (`897662b` kurz eingesetzt, danach aus dem Commit zurückgeholt):
+th-strassen 66 → **64** · th-echt dieselben **7** echten Durchdringungen vorher wie nachher (Runde 100 meldete 6 —
+Streuung des Werkzeugs; keine davon betrifft etwas aus Runde 101), neu nur die zwei Rettungswagen-Paare als „Mesh —".
+**th-pruef „steckt drin" ist eine Kandidatenliste, kein Befund** (so steht es im Werkzeug): die Kastenregel kann „unter
+einem Vordach" nicht von „in einer Wand" unterscheiden. Die zwei Rettungswagen stehen zu 82 % im Hüllkasten der
+Notaufnahme — th-echt: „Mesh —", kein einziges Bauteil-Paar; probe-parkfrei Teil für Teil: 0. Und umgekehrt: den ECHTEN
+Fall (Wagen im Skyline-Turm) hat th-pruef nie gemeldet — die Regel prüft nur „klein in mindestens 6× so gross", der Turm
+(8,6 × 8,6 m) ist nur 4,7× so gross wie der Wagen. **Lehre:** Wer auf eine Kasten-Meldung hin etwas verschiebt, ohne
+Teil für Teil nachzusehen, kann einen richtigen Standort gegen einen falschen tauschen — genau so kam der Wagen in den Turm.
+
+## Runde 102 · 🏛️ Umgestaltung (User: „gestallte alles besser um" · dann „ultracode aktiviert")
+
+Erst die ganze Welt angeschaut, nicht nur die üblichen sechs Orte: `probe-luftbild` fotografiert jeden der 35
+Kartenorte aus der Spielkamera (schräg, Figur steht dort). Dann je Befund eine Sonde, die Änderung, die Gegenprobe.
+
+### 1. Der Altstadt-Kern war eine Baustelle zwischen vier Wänden
+Auf dem Luftbild lag ein gelber Turmdrehkran quer über Markthalle und Laden, dazwischen Rohbau, Gerüst, Bagger,
+Container, Lager, Zaun — alles in einem Block von 14,7 × 16 m zwischen Schule (Ostwand x −47,1), Stadthaus
+(Nordwand z 90,3), Markthalle (Westwand x −32,4) und Gleisband (z 110,8). Neun Korrekturkommentare im Code
+erzählten die Geschichte: der Rohbau 10 cm an der Schulwand, der Container nacheinander in der Markthalle, im
+Klettergerüst und im Stadthaus, sieben Zaunfelder in Häusern, der Kranfuss 1,9 m vor dem Ring. **`probe-gedraenge`**
+(neu: Abstand zweier Bauten aus den Bauteil-Kästen AUF dem Boden, nicht aus der Hüllbox) fand 19 Paare unter 1,5 m in
+der ganzen Welt — fünf davon in diesem Block, dazu der Baustellen-LKW, der in der 3,3-m-Gasse zwischen Stadthaus und
+Markthalle das Wirtshaus berührte (0 m) und die Markthalle (0,58 m).
+- **Baustelle weg, Altstadtplatz hin:** Zierbrunnen (th35) in der Mitte, zwei Bänke zu ihm, zwei Ahorne an den
+  Nordecken, Laterne, zwei Kübel — alles `fest`, heller Plattenbelag genau zwischen den vier Wänden (die Erdfläche
+  der Baustelle lag vorher bis unter die halbe Markthalle und 2 m ins Gleisband). Das Markthallen-Tor liegt ohnehin
+  auf dieser Seite (Kollider-Tür x −34,5).
+- **Der Kran arbeitet jetzt an der Ost-Baustelle** (180|150), wo die Stadt wächst: Rohbau 1,5 m nach Westen, Kran im
+  freigewordenen 5,3-m-Streifen vor dem Ostzaun (Fuss 4,2 × 4,2 gemessen, 0,6 m zum Rohbau, 0,55 m zum Zaun),
+  Materialstapel quer in den Oststreifen, Mischer 1 m nach Süden (nach dem Rohbau-Umzug 0,02 m an dessen Ecke → 1,26 m).
+  Dort stand vorher ein Randbaum IM Rohbau — siehe 2.
+- **Tramhaltestelle** wanderte ohne `fest` von Lauf zu Lauf ((−78|108), (−60|105), (−63|92) — zweimal an der Schulwand);
+  jetzt fest auf x −42 zwischen den Masten −60/−24, am neuen Platz. **Wirtshaus** fest (war z 71,5 oder 74,4 je nach
+  Lauf, Front 1,9 m im Korridor der Südstrasse → z 74, Front 69,4), **Laden** fest (z 76 oder 78 → 78; sein Kollider
+  stand seit jeher auf (−24|74), zur Hälfte im Wirtshaus, die Osthälfte des Ladens war durchlaufbar → auf den
+  Modellkasten), **Werkstatt** fest (Rückwand 0,3 m vor dem Bahnhofsportal → 1,5 m nach Süden, Kollider mit).
+  Bank aus der 2,8-m-Gasse und Bank vor dem Gerüst: beide an den Brunnen. Pylonen und LKW entfallen.
+
+### 2. Die Randbäume der Viertel standen bei zehn von elf Vierteln nicht am Rand
+`viertel()` setzt je Seite alle 12 m einen Baum quer zur Strasse auf `VW/2 − 4`. VW ist aber die x-Ausdehnung
+(Bodenplatte `PlaneGeometry(VW,VD)`) — bei einem Viertel längs x (zehn von elf) ist quer die Tiefe VD. Die Reihe landete
+(VW−VD)/2 m ausserhalb: Chilbiplatz 30 m (ein Baum im Rohbau der Ost-Baustelle, Luftbild), Sportpark 68 m (16 Bäume
+im Freizeitpark), Freizeitpark 110 m (8 im Chilbiplatz, 5 davon in Bowlingbahn und Nachtclub). Neue Sonde
+`probe-randbaum`: **201 von 265 Randbäumen ausserhalb ihres Viertels, 25 in fremden Vierteln/Bauten** → jetzt
+`Q9 = laengs ? VD : VW`, dazu `_randBaeumeRaeumen()` nach dem letzten Modell (zwei Bäume standen im
+Höhleneingang des Campings, das die Sonde erst nach dem Laden sehen kann): nachher 0 ausserhalb, 0 in etwas anderem.
+**Falle in der Sonde selbst:** die erste Fassung vertauschte bei „längs z" w und d — dieselbe Verwechslung wie im Spiel,
+nur andersherum — und meldete beim Gewerbe 4 Bäume „draussen", die drinnen standen. Erst die Gegenprobe (30 m vor der
+Südkante muss „draussen" sein: ✗ 0) hat es gezeigt. Ein Messgerät, das denselben Denkfehler hat wie das Gemessene,
+misst nichts.
+
+### 3. Was ist „stabil"?
+`probe-stabil` (zwei Läufe, alle bau()-Modelle) und `probe-springen` (ein Lauf, 35…155 s) sagen für Stand 101 UND 102
+„nur Bus, Gondeln, Segelboot verschieden" — die drei Lagen der Haltestelle kamen aus Läufen, die PARALLEL zu anderen
+Sonden liefen. Unter Last treffen die GLB-Dateien in anderer Reihenfolge ein, und der Entwirrer entscheidet anders —
+also genau das, was ein schnelleres oder langsameres Gerät tut. **Lehre:** was der Spieler sehen soll, gehört `fest`
+auf eine gemessene Lage; und eine Sonde, die Positionen meldet, darf nicht neben einer anderen laufen.
+
+### 4. Ultracode: zehn Regionen parallel gesichtet, jeder Befund adversarial geprüft
+User: „ultracode aktiviert". Zwei Workflows: (1) je Region ein Finder (Luftbilder + `probe-wasda` + Code lesen)
+und je Befund ein Skeptiker, der ihn per Code-Kommentar (Absicht?), `th-ort` (Kasten-Artefakt?) und Messung am
+Zielort (frei?) zu widerlegen hatte — **57 Befunde, 56 bestätigt, 1 widerlegt** (Pappel am Glockenturm-Sockel: im
+Bild nicht als Fehler sichtbar); (2) zwölf Code-Gruppen **nacheinander** eingebaut (eine Datei — nie zwei Schreiber),
+jede Gruppe mit eigener Nachmessung. Was dabei herauskam, nach Ursache:
+- **Vorhügel auf Vierteln und Strassen (10 Befunde):** die Vorhügel-Schleife kannte nur „nicht ins Meer". Apotheke
+  bis zum Erdgeschoss im Gras, Sportpark-Strasse 40 m unter einer Kuppe, Zoo-Strasse und Bauernhof-Anschluss im
+  Hügel, Talstation der Seilbahn in einer Kuppe. Jetzt allgemeine Regel statt zehn ifs: jede Kugel mit Bodenkreis in
+  `window._vorhuegel`, `_vorhuegelRaeumen` nach den Vierteln (Bodenkreis gegen Viertelplatte + 6 m, gegen
+  `_aufViertelWeg`, und < 45 m zur Achterbahn-Station). **16 von 20 Kugeln** fallen — sechs mehr als gemeldet
+  (u. a. v23 mitten in der Gewerbe-Platte). Damit passte auch das **Café** ins Gewerbe (neunter Bau, fiel mit
+  „passt nicht mehr" heraus): `gegenseite:true` versucht die andere Zeile — nur dort, gemessen; global hätte es
+  in Burgdorf zwei Bauten an ungemessene Plätze geschoben.
+- **Marktplatz/Stadtpark:** ein Wohnblock `block(60,SZ+44)` mitten auf der Park-Platte (Wimpelkette durchs 1. OG,
+  Nordfront in der Feuerwache), das Einzelhaus `haus(64)` auf dem Park-Zugangsweg (Brunnen und vier Pappeln als
+  Klumpen an seinem Zaun), Eiche/Fichte/Ahorn/Hecke im Rathaus-Korpus, ein Ahorn mit Stamm im Picknicktisch
+  (kopierter Parametersatz), einer in der Kettenlaterne, die Park-Wippe auf dem Rathaus-Vorplatz. Alles gemessen
+  gestrichen oder fest gesetzt. **Folgefund beim Nachmessen:** `streu()` würfelt mit `Math.random`, und der Park
+  war in `freiPlatz` nie gesperrt — nur die Kollider des Blocks und des Hauses hielten die Streubäume fern; nach
+  deren Abriss stand im ersten Lauf ein Streubaum in der Wippe → Sperrfläche x 28…88 / z 69…96.
+- **Bahnhof:** Schwellen liefen durch die Parkplatz-Zufahrten (jetzt Lücke x 30,5…44 wie an ±78; Beweis über eine
+  Vertex-Sonde, weil `probe-wasda` die 240-m-Gleisgruppe ausfiltert) · zwei Mastbauarten 1,5 m hintereinander bei
+  ±24 (th17-Reihe auf [−96,−60,60,96]).
+- **Sunnehalde:** der auf der Karte angepriesene Spielplatz lag in der 7,5-m-Lücke zwischen zwei Villen hinter
+  deren Hecke, die Sandplatte 4 bzw. 6,5 m unter den Häusern, das Karussell im 26-m-Turm. Spielplatz samt Platte zum
+  th16-Set im Quartierspark (57|−2), Karussell fest auf (101|88).
+- **West:** Brückenfels lag 6,6 m auf dem Sandstrand über dem Wendeplatz (BX0 −128 → −140, Zug-Wende mit
+  `max:BX0−19` ohne Umdrehen — die Wagen sprangen beim Wenden 3,7 m in die Luft) · 32-m-Turm in der Flussmitte
+  (`wegVonStrasse` schob ihn vom Nord-Ring genau ins Wasser) · 32-m-Turm im Villenviertel Rebhalde · Laternen im
+  Fluss (Ring-Nord-Reihe: jeder Punkt näher als 9,5 m an der Ringmitte wurde ins Wasser geschoben), auf dem Strand
+  (Ring-West) und in Dorfhäuschen (Querstrassen-Reihe auf der Hausachse x −89) → Punkte mit drittem Feld „ohne
+  wegVonStrasse" auf gemessenen Gehweg-Lagen · Wohnblock 1,3 m im Fluss · Segelboot fuhr durch den Tunnelfels und
+  ins Frachterheck (Kurs −10…64).
+- **Seepark:** **alles am See war gespiegelt** — `seeR(φ)` wurde in Weltkoordinaten mit falschem Vorzeichen benutzt
+  (Wassermesh mit `rotation.x = −π/2` liegt auf z = 146 − sin a·r, also `seeR(−φ)`): zwei Bänke und zwei Steine im
+  Wasser, Bank und Laterne auf dem Rundweg, Schilf bis 6,7 m im See, `imWasser` sperrte den Nordweg als unsichtbare
+  Wand. **Und die Messgeräte hatten denselben Spiegel** (`th-see`, `th-laternen` meldeten „0 an Land") — jetzt
+  `uf(−a)`, mitgezogen. Steg lag komplett auf dem Rundweg (jetzt radial, 3 m über dem Wasser); Stadthaus mit der
+  Ostwand im Zubringer-Asphalt; Ring-Laterne und eine 9-m-Schranke mitten in der Zubringer-Mündung.
+- **Sportpark:** Achterbahn-Zug schwebte 2,5 m über dem Bahnsteig und steckte im Stationsdach (Kurve abgesenkt,
+  P[0] y 0,2 statt 2 — nicht der Hochbahnsteig, in dem der Spieler gestanden hätte) · Eishalle real 43,6 × 30,9 statt
+  deklariert 24 × 17: Baum in der Südwand, Bank und Eimer 0,6 m dahinter (`viertelMoeblieren` mit `sperr`).
+- **Freizeitpark:** Neonschild NACHTCLUB stand an der Bowlingbahn, CASINO 46 m vom Casino am Strassenrand — feste
+  Zahlen vom 04.09., seit dem Solver-Umbau an der falschen Stelle; jetzt relativ zur echten Viertelmitte. Die zwei
+  Kassenhäuschen standen 18 m hinter dem Tor auf dem Kies (Wunsch-z statt echter Lage; jetzt nach den Vierteln).
+- **Bauernhof/Zoo:** alle Gehege leer (fester 15-s-Timer fand die th24-GLBs noch nicht — `zoo.bauten` war bei 63 s
+  leer, bei 72 s voll → Tiere hängen am Schlusslauf; dabei zweiter Fund: die Hasen schwebten auf dem Streichelzoo-
+  DACH, weil „höchster flacher Quader" das Dach war) · Saatreihen liefen unter Scheune, Silo, Stall und Gewächshaus
+  durch (Felder je Zeile schmaler) · vier Waldbäume in der Koppel (`freiPlatz` kannte den Hofausbau nicht) ·
+  Randbäume quer durch die Äcker (`randBaeume:false`) · Zoo-Möbelsatz: 6er-Satz sortierte sich nach Seiten (Süd
+  immer Index 0/2/4) → neun identische Bänke gegenüber neun Eimern und fünf `th31_schild_rund` — das ist kein
+  Verkehrsschild, sondern der **Ritter-Rundschild** aus Charge 30.
+- **Flughafen/Neustadt:** dieselbe Paritätsfalle (fünf Rundschilde in Reihe, ein Bauzaunfeld quer auf dem
+  Hangar-Zugangsweg) → 5er-Satz ohne Bauzaun; 34 m nackte Platte hinter Tower und Radarturm (`rand` 14 → 22);
+  Neustadt hatte **null Kleinteile** (entstand nach der Möbel-Messung von Runde 95) → 14 von Hand, fest, weil der
+  11-m-Takt den Hotel-Zugangsweg trifft.
+- **Burgdorf/Spielclub/Grosser Berg:** **Burgdorf war vom Ortsmittelpunkt aus eine leere Kiesfläche** — fünf der
+  zwölf Häuser tauchten erst unter 34 m auf: `lodAufbau` nahm die LOKALE Knotenskala (`n.scale`) statt der Weltskala
+  aus der Weltmatrix, ein kleiner Knoten in einem grossen, skalierten Wrapper galt als winzig. Jetzt Achsvektoren der
+  `matrixWorld` → bd_house_c 0/5 → 5/5, bd_smithy 0/8 → 8/8, bd_stable 0/8 → 8/8 (Sonde mit `warteAufRuhe`).
+  **Nebenwirkung, gewollt:** alle bau()-Modelle mit Knotenskala werden jetzt nach echtem Weltradius eingestuft.
+  Doppelmast am Spielclub (Ringlaterne 121,5 neben Club-Laterne 122 → 126). Gipfel: 48-Strahlen-„Windrad" kam vom
+  Exponenten 0,80 (Ring 1 bei 18 m) plus `flatShading`; Exponent 1,0 + Glattschattierung. Die „schwarze Zacke" bleibt:
+  sie ist das Ende des Fahrweg-Bands am 52°-Hang (eigene Band-Sonde), und die Bergwege sind tangential statt radial
+  verbreitert (7 m Fahrweg rendert als 35-cm-Linie) — eigene Runde.
+**Lehren aus dem Workflow:** (1) Ein Skeptiker, der messen MUSS (Zielort frei?), fand in 20 von 56 Fällen einen
+besseren Ort als der Finder — die Widerlegungsquote war klein, die Korrekturquote gross. (2) Der Entwirrer und
+`wegVonStrasse` sind die häufigste Ursache: „Code sagt A, Spiel zeigt B" kam in 14 Befunden vor. (3) Zwei
+Messgeräte trugen denselben Fehler wie das Gemessene (See-Spiegel) — ein Messgerät braucht eine eigene Gegenprobe
+gegen die Welt, nicht gegen die Formel.
+
+## Runde 103 · 📱🎯 Handy + langes, süchtiges Spiel (User: „handy spiel optimieren, gutes langes süchtiges spiel draus machen")
+
+Zwei Fragen, beide erst gemessen: **Was hält den Spieler, und wo hört es auf?** und **Was kostet der Start auf dem Handy?**
+
+### 1. Die Sog-Kurve — gemessen, nicht gefühlt (`probe-sog`)
+Die Sonde liest jede Formel aus der Quelle (Regex auf die Zeile; fehlt sie, bricht sie ab) und spielt 60 Spieltage
+(1 Spieltag = 1440 Minuten ÷ 4 je Sekunde = **360 s echt**; der Kommentar „1 Spielminute = 0,5 s" war veraltet) für
+einen gemütlichen und einen aktiven Spieler durch. Jede Tätigkeit kostet echte Sekunden, die Deckel je Tag gelten
+(4 Lieferungen, 5 Taxifahrten, 3 Missionen), Ausgaben gehen erst in Möbel bis zur nächsten Stufe, dann in Häuser, Autos.
+
+**Vorher:**
+| | gemütlich | aktiv |
+|---|---|---|
+| Stufe 1 / 3 / 5 (Palast) | Tag 4 / 12 / 20 = 24 / 72 / **120 min** | genau gleich |
+| Tage ohne Neues (von 60) | 34 | 36 |
+| längste Lücke | 17 Tage (102 min) | 19 Tage (114 min) |
+| Bargeld nach 6 h, nichts mehr zu kaufen | 205'000 $ | 342'000 $ |
+| Freischaltungen an Stufe 4 / 5 | 0 / 0 | 0 / 0 |
+
+Der Befund in einem Satz: **nicht das Geld bremst, sondern der 4-Tage-Takt der Abnahme** — beide Spielertypen stehen
+nach 120 Minuten im Palast, und die Kopfzeile sagt „alles erreicht". Danach gibt es nur noch Karriere-Level alle 20
+Tage und die skalierten Endlos-Aufträge; die Bürgermeister-Erfolge „Immobilien-Hai" & Co. waren mit 15 Dorfhäusern
+zwar erreichbar, aber niemand hatte einen Grund, hinzugehen.
+
+**Eingebaut (jede Zahl mit der Sonde gegengerechnet, zwei Würfe):**
+- **🎖️ Bürgerrang** — eine Punktezahl aus allem, was das Spiel ohnehin zählt (Aufträge ×4, Erfolge ×3, entdeckte
+  Orte ×2, Häuser ×3, Ausbauten ×2, Karriere ×3, Wohnstufe ×5, Abnahmen ×2, Missions-Serie). Neun Ränge, jeder mit
+  Prämie (400 $ × Rang) und **+3 % auf alle Einnahmen** (über `stufenBonus`, wie die Wohnstufe). Nach dem Palast
+  zeigt die Kopfzeile den Rang mit Punktestand und nächster Schwelle. ⚠️ Erster Wurf (12/30/…/500) war nach 4–6 h
+  durch — die Sonde zeigte „Legende" an Tag 39. Jetzt 15/45/100/180/300/460/700/1000: Stadtpräsident nach ~6 h
+  aktivem Spiel, Legende und Ikone bleiben offen.
+- **🧭 Entdecker-Album** — 33 Kartenorte, jeder erste Besuch (22 m) zahlt 100 $ × Bonus und zählt; Erfolge bei
+  10/25/allen, Tagesmission „Entdecke 2 neue Orte" mit Marker auf dem nächsten unentdeckten Ort, Zeile im 🏆-Panel
+  („als nächstes: 🎢 Achterbahn (312 m)"). Die halbe Welt — Burgdorf, Zoo, Flughafen, Camping — hatte vorher für den
+  Fortschritt keinen Wert.
+- **🏗️ Haus-Ausbau** — gekaufte Dorfhäuser bis Stufe 5, Preis 1,5 × Hauspreis × 2^(Stufe−1), Miete +50 % je Stufe;
+  Knopf neben dem eigenen Haus, Flagge wächst mit. Das ist die Geldsenke, die oben fehlte (mit drei Stufen sass der
+  aktive Spieler noch auf 690'000 $ — zweiter Wurf).
+- **🕰️ Willkommen zurück** — `saveGame` schreibt einen Zeitstempel (nicht `snapshot()`, sonst wäre der Umweg
+  speichern→laden nie gleich); wer ≥ 30 min weg war, bekommt 120 $ + halbe Tagesmiete je Stunde, höchstens 8 h.
+- **⭐ Stufe 4 und 5 schalten frei:** Grosse Küchenzeile + Lounge-Sofa (4), Hotelbett + Chef-Schreibtisch (5);
+  `ERSATZ` für die Villa-Vorlage ergänzt.
+- 8 neue Erfolge (mit Fortschrittsbalken), 2 neue Tagesmissionen — beides NUR am Ende der Listen (Pool-Index im
+  Spielstand); Koop: Gast bekommt `{t:"immoLv"}`.
+
+**Nachher (dieselbe Sonde, dieselben Annahmen):**
+| | gemütlich | aktiv |
+|---|---|---|
+| Tage ohne Neues (von 60) | **3** | **1** |
+| längste Lücke | 1 Tag | 1 Tag |
+| Rang nach 6 h | Vizepräsident (355 Pkt, Tag 45) | Stadtpräsident (469 Pkt, Tag 58) |
+| Bargeld nach 6 h (Häuser noch ausbaubar) | 88'000 $ | 227'000 $ |
+| Freischaltungen an Stufe 4 / 5 | 2 / 2 | 2 / 2 |
+
+Die Stufenleiter selbst ist unverändert (Palast bleibt bei 120 min — sie ist der Einstieg, nicht das Spiel).
+
+### 2. Der Handy-Start (`th-laden handy`, `probe-ladenah`)
+**Gemessen vorher:** 523 Dateien, 178,6 MB, davon 379 Modelle mit 174,0 MB. Erstes Modell nach 0,2 s, die Hälfte
+nach **40 s**, das letzte nach 56 s; Welt fertig bei 62 s. Der Hauptfaden war in Summe **61 s blockiert** (17 Blockaden
+über 0,1 s, die längste **13,8 s**) — das ist der GLB-Parser, nicht das Netz. Die Bedienoberfläche selbst ist sauber:
+`th-hud` 3 Formate × 3 Modi, 0 Befunde.
+Die Reihenfolge war die Dateireihenfolge: Zoo und Flughafen kamen so früh wie das Haus nebenan, und nach dem Klick
+auf „Solo bauen" gingen alle 379 Anfragen auf einmal raus (Deckel 1e9) — die nahe Welt (305 Bauten in 120 m um den
+Start) war darum genauso spät fertig wie die ganze: Hälfte 40 s, alles 56 s.
+
+**Eingebaut:** jeder `bau()`-Auftrag trägt seine Entfernung zum Figurenstart (−67|43); die Ladeschlange nimmt immer den
+nächsten (Figuren weiter zuerst, Möbel/Wagen ohne Ort bei 60 m; ein näherer Ort zieht einen schon eingereihten
+Auftrag vor), und nach dem Start bleibt ein Deckel (gemessen: 64) statt unbegrenzt — sonst hat die Reihenfolge
+keine Wirkung. `?ladeAlt` schaltet für Vergleiche auf die alte Reihenfolge.
+
+**Nachher** (`probe-ladenah`, jeder Lauf allein — ⚠️ zwei Läufe nebeneinander verfälschen genau diese Zahlen, und die
+Sonde selbst wird vom Hauptfaden-Stau gebremst, ±5 s):
+
+| Deckel nach dem Start | nahe Hälfte | nah fertig | alles fertig |
+|---|---|---|---|
+| unbegrenzt (alt) | 40 s | 56 s | 56 s |
+| **64 (gewählt)** | **31 s** | **51 s** | 65 s |
+| 32 | 31 s | 51 s | 71 s |
+| 16 | 41 s | 52 s | 82 s |
+| 8 | 46 s | 63 s | 112 s |
+
+Mit 64 stehen die ersten nahen Bauten nach ~21 s (alt: 0 nach 26 s), die Hälfte 9 s früher, alle 5 s früher —
+bezahlt mit 9 s späterem Weltende (32 kostete 15 s bei gleichem Gewinn; 64 ist die weiteste Zahl, bei der die
+Reihenfolge noch trägt) (und damit später laufendem `entwirren`/`_spaetEinfrieren`). Ein enger Deckel
+macht ALLES später, auch das Nahe: die Parser-Blockaden bleiben dieselben, nur das Netz steht dazwischen still.
+Was diese Runde NICHT löst: die 174 MB selbst und die 61 s Parser-Blockade — das braucht kleinere Modelle
+(Draco/meshopt) oder echtes Nachladen nach Entfernung, und Letzteres bricht die Kette nach dem Laden
+(freiRaeumen/entwirren/Zoo/Randbäume hängen an der LETZTEN Datei). Eigene Runde.
+
+### 3. Werkzeuge (siehe `sonden/README.md`)
+`probe-sog`, `probe-ladenah`, `probe-r103`. Funktionsprüfung im Spiel (`probe-r103`): 15 Häuser, 9 Ränge, 34 Orte; Ort entdeckt +100 $, Gegenprobe 300 m daneben
+nichts; 5 Ausbauten 3600/7200/14400/28800 $, sechster verweigert, Miete 150 → 450, Flagge ×2,4; Rang 0 → 3 zahlt
+genau einmal; Kopfzeile nach dem Palast „🏛️ Stadtrat · 198/300 → 🎩"; Spielstand il/rg/zt, Umweg speichern→laden
+erhält Ausbau und Rang; Sperren Stufe 4/5 an vier Einträgen; 53 Erfolge / 16 Missionen ohne Wurf.
+`th-speichern`: 40 Felder, 30 Böden / 22 Wände / 6 Möbel, verlustfrei. `th-erfolge`: jeder gelesene Zähler wird
+geschrieben, keine Bedingung wirft, kein Erfolg beim Start erfüllt — ⚠️ der ERSTE Lauf meldete 16 „unerreichbare"
+Zähler (auch alte wie `stats.lieferungen`): meine angefügten Listeneinträge hatten das schliessende `];` an die
+letzte Zeile geklebt; das Werkzeug sucht das Listenende als eigene Zeile und dehnte seine Ausschlusszone bis zur
+nächsten — echte Schreibstellen fielen hinein. Listenende wieder auf eigene Zeile, Wiederholung: 0 solche Befunde.
+Offen bleibt eine Zeile der Rahmenprobe („mehr als ein Viertel der Bilder fällt aus" unter injiziertem Wurf), die
+im ersten Lauf noch „keine Aussage" hiess — 10 Bilder je 4 s im Software-Renderer, ein Bild sind 10 %.
+
+### Lehren
+1. **Eine Fortschrittsleiter, die von der Uhr statt vom Spieler getaktet ist, endet für alle gleichzeitig.** Die Abnahme
+   alle 4 Tage machte Geld bedeutungslos — die Sonde hat das in einer Zeile gezeigt, was 14 Runden Bauen nicht sahen.
+2. **Zahlen für Belohnungsleitern erst simulieren, dann eintragen.** Beide ersten Würfe (Rang-Schwellen, Ausbau-Stufen)
+   waren um den Faktor 2–3 daneben; jeder Wurf kostete zehn Sekunden Sonde statt eine Woche Spielerzeit.
+3. **„Alles auf einmal anfordern" ist keine Priorität.** Eine sortierte Schlange ohne Deckel ist eine unsortierte.
+
+---
+
+## Runde 104 · ♾️ Unendliches Spiel (User: „das spiel sollte viel länger gehen als 60 tage, ein unendliches spiel")
+
+Runde 103 hatte die ersten 60 Tage gefüllt. Diese Runde fragt: **was passiert an Tag 100, 200, 365?** — `probe-sog` auf
+365 Spieltage (36,5 h echt) gestellt, zuerst gegen den Stand von Runde 103 (Commit `c6642c6`, mit der Sonde von damals).
+
+### 1. Vorher: nach Tag 20 ein leeres Jahr
+| Stand Runde 103, 365 Tage | gemütlich | aktiv |
+|---|---|---|
+| letzte Wohnstufe | Palast am Tag 20 (120 min) — für immer | gleich |
+| letzter Rang | Legende (7) am Tag 249 | Ikone (8) am Tag 272 |
+| Tage ohne Neues (von 365) | 274 | 271 |
+| längste Lücke | 54 Tage (5,4 h echt) | 54 Tage |
+| Bargeld am Ende, nichts mehr zu kaufen | 10,1 Mio $ | 11,1 Mio $ |
+| Ereignisse Tag 183–365 | Karriere Lv 9–12 und ein Rang | gleich |
+
+Jede Leiter hatte ein Ende: 5 Wohnstufen, 9 Ränge, Ausbau bis Stufe 5, 15 Häuser, 5 Autos, 33 Orte. Nach 120 Minuten blieb
+345 Tage lang nur der Karriere-Level alle 25–55 Tage, und das Geld stapelte sich auf zehn Millionen.
+
+### 2. Drei Leitern ohne Ende — erzeugt, nicht getippt
+- **Wohnstufen ab 6** kommen aus `stufeDaten(n)`; die Tabelle `WOHNSTUFEN` bleibt nur für die Möbel-Sperren. Der Hauswert
+  kann nicht beliebig wachsen (Grundstück, Katalog) — ab Stufe 6 zählt das **Vermögen** = Hauswert + Kaufpreis der Häuser +
+  alle bezahlten Ausbauten. Ziel ×1,5 je Stufe (100'000 · 150'000 · 225'000 …, auf 5'000 gerundet), Prämie ×1,35, Namen
+  Gutsherr · Magnat · Tycoon · Baron · Legende, danach Legende II, III … (römisch). Kopfzeile, Abnahme-Meldung und
+  Bau-Hinweis sagen „Vermögen" statt „Wert".
+- **Ränge ab 9** kommen aus `rangSchwelle(k)` = 1000 + 120·n(n+1)/2 + 150·n (1270 · 1660 · 2170 · 2800 …), Name Ikone II,
+  III … Neue Punktquelle, die nie versiegt: **+1 Punkt je 2'500 $ Gesamtverdienst** (`stats.verdient`, in `verdiene()`
+  gezählt, im Spielstand).
+- **Ausbau bis Stufe 12** statt 5. Preis ×1,5·2^(Stufe−1): Stufe 12 kostet das 1'536-fache des Hauspreises, alle 15 Häuser
+  auf 12 wären 138 Mio $ — die Senke, die nie voll wird. Miete +50 % je Stufe wie bisher.
+- Fünf Erfolge dazu (Tycoon = Stufe 8, Legende = Stufe 10, Ikone V, Hausherr = ein Haus auf Ausbau 8, Millionär = 1 Mio $
+  Vermögen), mit Fortschrittsbalken; nur am Ende der Listen (th-erfolge-Regel aus Runde 103).
+
+### 3. Nachher — und was die Sonde zuerst falsch las
+| 365 Tage | gemütlich | aktiv |
+|---|---|---|
+| Wohnstufe am Ende | 20 (Legende XI), erreicht Tag 360 | 20, Tag 348 |
+| Stufe 8 / 10 / 12 | Tag 44 / 64 / 84 | gleich |
+| Rang am Ende | 20 (Ikone XIII) | 20 |
+| Tage ohne Neues (von 365) | 193 | 192 |
+| längste Lücke | 11 Tage (66 min) | 10 Tage |
+| Ereignis-Tage Tag 183–365 | 35 (3 Stufen, 6 Ränge, 24 Ausbauten) | 33 (3 / 6 / 24) |
+| letzter Neuzugang | Tag 361 | Tag 358 |
+
+Die ersten vier Monate fast täglich etwas Neues, danach alle 4–6 Tage — Stufe, Rang oder Ausbau —, und am Tag 365 ist keine
+Leiter zu Ende. Gegenprobe wie in Runde 103: doppeltes Einkommen verzögert keine Stufe, Palast nie vor Tag 20.
+
+**Drei Fallen, alle vor dem Commit gefunden:**
+1. **Der erste 365er-Lauf meldete „Stufe 6 für immer".** Ursache war nicht das Spiel, sondern die Sonde: `IMMO_LV_MAX=(\d)`
+   las aus „12" eine **1** — kein Ausbau, kein Vermögen, keine Stufe 7. Aufgefallen ist es in der Quelle-Zeile der Ausgabe
+   („Ausbau bis Stufe 1"), nicht in der Tabelle. Mit `(\d+)` lief die Leiter.
+2. **Komfort +2 je Stufe hätte die Leiter still getötet.** Die erste Fassung von `stufeDaten` verlangte 12+2·m
+   Komfort-Möbel; Stufe 13 hätte 28 nutzbare Möbel gebraucht, das Grundstück gibt das nicht her. **Die Sonde rechnet ohne
+   Komfort und hätte es nie gezeigt** — der Befund kam aus dem Lesen von `stufenLuecke`. Jetzt bleiben Bereiche 6 / Komfort
+   12 wie beim Palast: das Haus ist fertig, ab hier zählt das Vermögen.
+3. **Rang-Schwellen mit 250·n(n+1)/2:** in der zweiten Jahreshälfte nur alle 40–47 Tage ein Rang (4 in 183 Tagen) →
+   mit 120 sind es 6.
+
+Und eine vierte im Werkzeugkasten: `String.replace` mit einem Ersatztext, der ``$` `` enthält, fügt den ganzen Text VOR
+dem Treffer ein — `probe-r104` war danach doppelt so lang und syntaktisch kaputt (repariert, mit `--check` belegt).
+
+### 4. Im Spiel geprüft
+- `probe-r104` (neu): Stufen 5–13 aus `stufeDaten` (Ziel steigt, Kriterium Vermögen, Komfort bleibt 12), Ränge 8–14 mit
+  `rangIdx` genau an der Schwelle und Schwelle−1 darunter (Gegenprobe), Lücke bei Stufe 5 zeigt Gutsherr mit Fehlbetrag,
+  elf Ausbauten bis 12 über die echte Funktion (Immobilienwert 7,37 Mio $), Abnahme über 5 hinaus hängt am Komfort (wie
+  gewollt), Kopfzeile bei Stufe 9 vor dem Ausbau „+505000 $", 25'000 $ verdient = +10 Punkte, Spielstand-Umweg mit Stufe 9
+  und Ausbau 12 verlustfrei, 58 Erfolge ohne Wurf — alles ✅.
+- `probe-r103` liest den Ausbau-Deckel jetzt aus der Quelle (12 statt fest 5): elf Ausbauten 3'600 → 3'686'400 $ mit
+  Verdopplung, der zwölfte Versuch kostet 0 $ (Deckel hält), Miete 150 → 975 (×6,5), Flagge ×4,85, Rang 0 → 4 mit 4'000 $
+  Prämie genau einmal, Spielstand-Umweg erhält Ausbau 12 und Rang — alle ✅ (vorher zwei ❌, weil die Sonde den Deckel 5
+  fest eingebaut hatte).
+- `th-erfolge` 58 Erfolge / 15 Missionen, jeder Zähler geschrieben, keine Bedingung wirft · `th-speichern` 40 Felder
+  verlustfrei · `th-alle --schnell` 10 von 11 (der eine Befund: nächster Punkt).
+
+### 5. Nebenbefund: das Bodenmessgerät kannte die Pirateninsel nicht
+`th-alle --schnell` meldete „Boden: 12 im Wasser" — alle auf der Pirateninsel (Runde 95) oder am Steg: Palmen, Kisten,
+Fässer, das Piratenschiff, fünf Steg-Elemente. Das Werkzeug kannte nur Rechteck-Wasserflächen und nur deutsche Namen für
+„darf im Wasser stehen" (`schiff`, `steg` — die Dateien heissen `ship`, `dock`). Jetzt erkennt es Inseln selbst (flache
+`CircleGeometry`-Scheiben bei y ≈ 0 mitten im Wasser; keine Koordinaten im Werkzeug) und prüft sich: **ohne die Insel-Regel
+MÜSSEN die Insel-Bauten im Wasser stehen**, sonst bricht es ab. Genau das schlug beim ersten Lauf an — nicht weil die Regel
+falsch war, sondern weil nach 30 s fester Wartezeit die Insel-Modelle (230 m vom Start; seit Runde 103 laden nahe Modelle
+zuerst) noch gar nicht da waren: 869 Bauwerke geprüft statt 915. Das Werkzeug wartet jetzt wie th-fahrt auf das Ladesignal
+und auf Ruhe (`warteAufRuhe`), nicht auf eine Frist. Nebenbei: der Ufer-Spiegel `U(−φ)` aus Runde 102 (th-see,
+th-laternen) fehlte hier auch — nachgezogen.
+
+Mit der vollen Welt (1'035 statt 869 Bauwerke) fand das Werkzeug dann noch eines: das **Wrack** (−281|121) „2,2 m im Fels".
+Es liegt absichtlich halb versunken (y −1,8, Runde 95) — die Fels-Prüfung lief vor der Wasser-Prüfung, und das Gelände unter
+dem Meer ist 0. Was im Wasser stehen darf, darf auch unter dem Wasserspiegel liegen: erst Wasser bestimmen, dann Fels.
+**Nachher:** Welt ruhig nach 116 s, **1'035 Bauwerke** geprüft, 2 Inseln erkannt (Sand r 22 und Grasfleck r 9), 17 Bauwerke
+darauf, Gegenprobe ✓ (ohne Insel-Regel 17 „im Wasser") — **im Fels 0 · schwebt 0 · im Wasser 0**.
+
+### 6. Nebenbefund: die Rahmenprobe von th-erfolge mass die Ladephase
+`th-erfolge` meldete zweimal hintereinander ❌ „mehr als ein Viertel der Bilder fällt aus" (28 %, 29 %), beim ersten Lauf
+desselben Stands 13 %. Die Probe zählte 4 s Bilder ohne, dann 4 s mit einer werfenden Bedingung — **26 s nach dem Start,
+mitten in der Ladephase** (der Parser blockiert den Hauptfaden bis 13,8 s am Stück, Runde 103). Das spätere Fenster ist
+dann immer das langsamere, Gift hin oder her. Jetzt: erst `warteAufRuhe`, dann vier Fenster im Wechsel (ohne · mit · ohne ·
+mit), ein Drift trifft beide Seiten gleich. **Nachher:** Welt ruhig nach 133 s, 26 Bilder in 2×4 s ohne Gift, 30 mit —
+der Wurf kostet die Bildschleife nichts Messbares (die ❌ waren Ladephase, nicht Gift); 58 Erfolge, 15 Missionen, keine
+Bedingung wirft, jeder Zähler geschrieben.
+
+### Lehren
+1. **Eine Sonde, die plötzlich Stillstand meldet, verdächtigt zuerst sich selbst.** Ein fehlendes `+` im Regex sah aus wie
+   ein totes Spiel; entlarvt hat es die Quelle-Zeile der Ausgabe, nicht die Tabelle — darum druckt die Sonde, was sie
+   gelesen hat.
+2. **Was die Sonde nicht modelliert, muss man lesen.** Komfort steht in keiner Simulation; die Leiter wäre im echten Spiel
+   kurz über dem Palast stehen geblieben, mit allen Sondenwerten grün.
+3. **Ein Messgerät, das zu früh misst, misst eine andere Welt.** 869 statt 915 Bauwerke bei th-boden, und th-erfolges
+   Rahmenprobe verglich zwei Fenster, die verschieden tief in der Ladephase lagen. Die Insel-Gegenprobe hat den ersten Fall
+   gefangen — aus einem Grund, den ich nicht vorgesehen hatte. Gegenproben, die „nichts gefunden" als Fehler werten, fangen
+   auch die unbekannten Ursachen. Und ein Vergleich A gegen B braucht A-B-A-B, sobald die Maschine selbst driftet.
+
+> **Plan für Runde 105 ff.:** `spiele-dev/PLAN-TRAUMHAUS-105ff.md` (geschrieben 2026-09-29 im Sparmodus).
+
+---
+
+## Runde 105 (Teil 1) · 🕶️ Schattenkasse — Beute zählt nicht für den Bürgerrang (Sparmodus, 2026-09-29)
+
+ChatGPT-Kritik (Plan Abschnitt 7, Punkt 1): Rangpunkte aus dem Bruttoverdienst seien ausnutzbar. Nachgeprüft im Code:
+Rückgaben und Verkäufe von Bauteilen laufen direkt über `geld+=` (kein Rang-Effekt) — der befürchtete Kauf-Verkauf-Kreis
+gibt es nicht. **Aber:** das Spiel hat längst Kriminalität (Coups mit `skills.krimi`, Taschendiebstahl als Minispiel mit
+Polizei und Busse bei Misserfolg), und deren Beute lief über `verdiene()` → zählte als ehrlicher Gesamtverdienst für den
+Bürgerrang. Jetzt: `verdiene(betrag, zaehlt, krimi)` — Beute geht in `stats.schatten` (Schattenkasse, im 🏆-Panel sichtbar
+„zählt nicht für den Rang"), das Geld selbst bleibt. Sonde `probe-r104`: Beute 1'000 $ → Gesamtverdienst +0, Schattenkasse
++1'000; alle übrigen Prüfungen unverändert ✅. Grundlage für Plan 9.3 (Hehler in Burgdorf wechselt die Schattenkasse).
+
+## Runde 105 (Teil 2) · 🚶 Füsse rutschen nicht mehr, Stehen ohne eingefrorenen Schritt (2026-09-30)
+
+**Befund beim Code-Lesen (korrigiert die Annahme „Figuren sind prozedural" aus Plan 9.1):** Mia und Partner tragen seit
+je ein skinned Modell (`th_mann.glb`/`th_frau.glb`, `attachRealChar`, 24 Knochen, ein Clip „walking"); nur Passanten sind
+prozedural (`mkBewohner`). Im Repo liegen 79 GLB mit Animationen (Meshy-Figuren `anime_*`/`class_*` mit idle/walk/run,
+Tiere `an_*` mit 8 Clips). Der Geh-Clip lief aber IMMER mit timeScale 1,1 — egal ob Mia 2,6 m/s ging oder sprintete —
+und beim Anhalten blieb sie mitten im Schritt eingefroren.
+
+**Gemessen (`probe-schritt`, neu):** Clip 1,067 s, Schrittlänge 0,78 m → 1,57 m je Zyklus = **1,47 m/s bei timeScale 1**;
+engste Fussstellung bei **t = 1,049 s**. Bei 2,6 m/s Gehtempo glitten die Füsse also um rund 40 %.
+
+**Eingebaut:** Abspieltempo aus der echten Geschwindigkeit (Weg je Bild, geglättet; 0,55…2,6), Anhalten erst, wenn das
+Stand-Bild seit dem letzten Bild überschritten wurde (auch beim Zyklus-Umbruch — ein enges Zeitfenster wird auf langsamen
+Geräten übersprungen). **Nachher im Spiel:** timeScale 1,71 bei 2,48 m/s (= v/1,45), nach dem Anhalten pausiert der Clip
+bei t = 1,049.
+
+**Lehre (Sonde):** In BILDERN warten, nicht in Sekunden. Die Testumgebung liefert ~1 Bild/s und das Spiel deckelt dt auf
+0,05 s — nach 1,8 s Wanduhr war der Clip erst 0,07 s weiter, und die erste Sondenfassung meldete ❌, obwohl die Logik
+stimmte. `renderer.info.render.frame` zählen (wie th-erfolge).
+
+## Runde 105 (Teil 3) · 🚶 Passanten als echte Figuren mit Clips (2026-09-30)
+
+User-Wunsch (Plan Abschnitt 8/9): „viel Bewegung und alles wie echt", „schöne Bewegungen bei allem". Voraussetzung für
+Rangeln/Bestehlen (Plan 9.2/9.3) sind Figuren mit Clips. Heute waren die 55 Passanten Kastenfiguren (`mkBewohner`).
+
+### 1. Auswahl — erst ansehen, dann entscheiden (`figuren-schau.mjs`, neu)
+Im Repo lagen drei Sätze mit Clips: Kenney-Mini (`npc_*`, 32 Clips, aber Knubbel mit halbem Kopf), Meshy-`anime_*`
+(Kulleraugen, 14 000 Dreiecke) und `class_*` (Fantasy-Rüstung). Kontaktbogen neben Mia/Max: keiner passt als Schweizer
+Passant neben die realistischen Sims. Kein Meshy-Schlüssel in der Session. **Gewählt:** Quaternius „Animated Men/Women"
+(CC0, Lizenz im Download geprüft, `models/ASSET-CREDITS.md`) — echte Proportionen, Alltagskleidung, 11 Clips inkl. Punch,
+Death, Sitting, Clapping. Bild: `spiele-dev/screenshots/r105-figuren-kontaktbogen.png`.
+⚠️ **Nebenbefund Kenney-Dateien:** `npc_mb…npc_fd` enthalten die Clips aller vorher exportierten Figuren nochmal
+(32 → 256 Clips, 0,33 → 1,6 MB je Datei, Blender-Aktionen gesammelt). Nicht angefasst (nur neon-park nutzt sie).
+
+### 2. FBX → GLB ohne Blender (`fbx-zu-glb.mjs`, neu)
+three.js r128 (dieselbe Version wie das Spiel, aus dem npm-Paket) FBXLoader + GLTFExporter im Browser. Drei Fallen, alle
+gemessen:
+- **150–190 Materialgruppen je Figur.** GLTFExporter r128 macht daraus je Gruppe ein Primitiv, das ALLE Eckpunkte
+  zeichnet: 150 Teile, 280 000–420 000 Dreiecke, und die letzte Farbe (Schuhe) übermalt die ganze Figur (Kontaktbogen:
+  schwarze Silhouetten). Lösung: Materialfarbe je Gruppe in die Eckpunktfarbe backen, EIN Material → 1 Teil je Figur.
+- **Geometrie 75 % der Datei** (5 562 Eckpunkte ohne Index). Normalen und UV weg (GLTFLoader schaltet ohne NORMAL selbst
+  auf flatShading = der Low-Poly-Look), gleiche Eckpunkte zusammengelegt → ~1 100.
+- **FBX-Zusatzdaten** je Knoten als `extras` im JSON (45 kB). Geleert.
+Dazu: Grösse auf 1,75/1,66 m (über gehäutete Eckpunkte, Box3 ignoriert Skinning), Spuren auf Hilfsknochen (PoleTarget,
+*_end) und Ruhewert-Spuren raus. **Ergebnis:** 2 MB FBX → ~280 kB GLB je Figur, 1 800–2 800 Dreiecke.
+
+### 3. Einbau (`traumhaus.html`, Block „ECHTE FIGUREN FUER DIE PASSANTEN")
+Kastenfigur bleibt Platzhalter, bis die Datei da ist. `_skinKlon` baut je Klon ein eigenes Skelett (r128 hat kein
+SkeletonUtils; `clone(true)` teilt sonst die Knochen der Vorlage). Mixer je Figur; nah jedes Bild, mittel jedes 3., fern
+jedes 8. (aufgesparte Zeit, Versatz je Figur). Verkäufer: Idle. Panik: Run (mind. 3,4 m/s). Am Streckenende 0,6 s stehen
+und weich umdrehen (vorher 180° im selben Bild). Angesprochen: dreht sich zum Spieler.
+
+### 4. Tempo-Kopplung — zwei falsche Zwischenstände, beide von der Sonde gefangen
+Abspieltempo = echtes Tempo / Weg je Sekunde bei Tempo 1. Der Weg je Sekunde ist das Tempo, mit dem der Fuss WÄHREND DES
+BODENKONTAKTS nach hinten wandert:
+| Schätzung | Gehen | Rennen | im Spiel gemessen (aufgesetzter Fuss, gerichtet) |
+|---|---|---|---|
+| 2 × Knöchel-Hub / Dauer | 1,51 | 2,31 | Gehen +0,2…+0,5 m/s vorwärts (Hub zählt die Schwungphase mit) |
+| flach = 1 cm über Minimum beider Füsse | 1,56 | 4,5 | Rennen −0,7…−0,9 m/s rückwärts (Knöchel erst beim Abstossen am tiefsten) |
+| **Kontakt je Fuss, 1,5 cm (Gehen) / 2,5 cm (Rennen)** | **1,55 / 1,53** | **4,02 / 3,95** | Gehen −0,04…+0,08 · Rennen −0,25…+0,03 |
+Beim Rennen rollt der Fuss ab: je nach Schwelle 3,3–4,5 m/s. Beide Werkzeuge (figuren-schau, probe-passanten) benutzen
+dieselbe Kontakt-Definition.
+
+### 5. Gemessen (`probe-passanten`, neu)
+| Ort | Aufrufe vorher | nachher | Dreiecke vorher | nachher |
+|---|---|---|---|---|
+| Kreuzung | +96 | +10 | +4 554 | +11 118 |
+| Hauptstrasse | +45 | +6 | +2 030 | +5 980 |
+| Markt | +253 | +26 | +12 170 | +26 984 |
+| Bahnsteig | +48 | +6 | +2 054 | +5 632 |
+Teile je Figur 18,4 → 1. `updFussg` 0,04 → 0,13–0,32 ms (Mixer). Gang ✅ 55 Figuren, Panik ✅ 50/50 rennen und gehen danach
+wieder, Rutschen ✅, Rennen ✅. **Drei Gegenproben:** umgedrehte Figur gleitet 2,02 m/s · ungekoppelter Renner gleitet
+gerichtet 1,12 m/s · falsches Tempo + 20 cm angehobene Figur erkannt. Bild: `r105-passanten-bahnsteig.png`.
+
+### 6. Bildzeit und Prüfreihe
+Bildzeit im Software-Renderer (`bildzeit`-Vergleich, 15 s je Ort, alter Stand `cdacff3` gegen neu):
+| Ort | alt | Figuren immer an | mit Ausblenden ab 110 m |
+|---|---|---|---|
+| Start | 302 ms | 341 ms | 305 ms |
+| Markt | 420 ms | 470 ms | 444 ms |
+| Hauptstrasse | 268 ms | 262 ms | 256 ms |
+Trotz 90 % weniger Aufrufen waren die Bilder hier langsamer: der Software-Renderer verformt die Skelette auf der CPU,
+und die Figuren haben mehr Dreiecke als die Kästen. Darum blendet `figTick` Figuren ab 110 m (3D-Abstand zur Kamera)
+aus und rechnet ihr Skelett nicht (Zeit bis 2 s aufgespart).
+**Prüfreihe:** th-bewegt alles bewegt · th-leistung 0 JS-Fehler, alles bewegt nach dem Einfrieren · th-pruef bestanden
+(944 Modelle, Korridor 0, steckt 7 — **identisch auf dem alten Stand**, also nicht aus dieser Runde) · th-gta **22/22**.
+⚠️ th-gta zeigte 20/21 — auch auf dem alten Stand: die Zeitlupen-Prüfung las den Faktor 4,3 s nach dem Auslösen,
+die 1,8-s-Zeitlupe war legitim vorbei. Jetzt Sofort-Wert (0,3) + „endet" + Gegenprobe (Info-Einblendung ohne Zeitlupe).
+
+### Lehren
+1. **Tempo-Kopplung prüft man in Weltkoordinaten, nicht am Abspieltempo.** Die erste Gang-Prüfung (Clip-Tempo = echtes
+   Tempo) war grün, obwohl die Füsse glitten — sie verglich die Formel mit sich selbst. Erst „der aufgesetzte Fuss muss
+   am Boden stillstehen" misst, was man sieht, und fängt auch eine verkehrt herum laufende Figur.
+2. **Eine Sonde, die anders definiert als das Werkzeug, misst etwas anderes.** Die Renn-Abweichung sah wie ein Fehler im
+   Spiel aus; der Vergleich Fussbahn-im-Spiel gegen Fussbahn-offline (Bild für Bild gleich) zeigte, dass beide nur „Kontakt"
+   verschieden definierten.
+3. **`*_end`-Knoten sind nach dem GLTF-Export keine Knochen** (nicht in skin.joints, kein isBone) — nach Namen suchen.
+4. **Weniger Zeichenaufrufe heisst nicht schneller, wenn man es nicht misst.** Die Figuren sparten 90 % der Aufrufe
+   und machten die Bilder hier trotzdem 12 % langsamer. Erst der Vergleich gegen den alten Stand am selben Ort zeigte es.
+5. **Ein Prüfwerkzeug, das auf beiden Ständen scheitert, gehört nicht der Änderung, aber dem, der es findet.** Die
+   Zeitlupe war richtig, die Prüfung las in Uhrzeit statt im Ablauf — derselbe Fehler wie in Runde 105 Teil 2.
+
+## Runde 105 (Teil 4) · 🤝 Stand der anderen Session übernommen: weiches Drehen, Anfahren, Tiere (2026-09-30)
+
+User: „lade memory von andere session, weiss nicht ob er auch gemacht hat etwas". Nachgesehen (git, PR-Liste,
+Session-Liste): eine zweite Session hat am 26./27.09. am Traumhaus gearbeitet (User-Auftrag dort: „mach bewegung
+schöner von allen und flüssig"). Ihre **Runde 89 „Grundstücksrand"** ist auf `main` (#2524), ihre **„Runde 90"**
+lag ungemergt als Entwurf in #2547 (`th-runde90`); die Session selbst ist nicht mehr abrufbar. ⚠️ Beide Sessions
+zählen ihre Runden unabhängig — „Runde 89/90" dort ist etwas anderes als Runde 89/90 in diesem Runbook.
+
+**Übernommen:** `main` gemergt (u. a. ihr Grundstücksrand), dann `th-runde90` gemergt (ihre Commits bleiben erhalten):
+Bewohner drehen mit höchstens 7,5 rad/s, fahren an (5,5 m/s²) und rollen aus (7 m/s²); Tiere wenden mit 4 rad/s und
+laufen in die Richtung, in die sie schauen; th-echt/th-pruef warten auf `_ladeOffen === 0` statt auf 55 s.
+
+**Zwei Stellen, die kein Merge-Werkzeug meldet:**
+1. **Dasselbe Feld, zwei Bedeutungen.** `s._v` war dort das SOLL-Tempo von `simWalk`, bei mir (Teil 2) das GEMESSENE
+   Tempo der Clip-Kopplung. Zusammen hätte das gemessene Tempo (in Kurven kleiner) jedes Bild das Soll überschrieben.
+   Meins heisst jetzt `s._vg`.
+2. **Untergrenze des Abspieltempos.** Ohne Anfahren war die Figur nie langsamer als 2,6 m/s; mit Anfahren läuft sie bei
+   0,52 m/s (probe-schritt) — die Untergrenze 0,55 liess die Beine 50 % zu schnell laufen. Jetzt 0,25.
+Dazu die einzige Textkonflikt-Zeile (Tiere): meine Gehege-Höhe `y0` (Runde 102) + ihre Richtung `an.dreh`.
+
+**Gemessen nach dem Merge:** th-bewegung grösste Drehung je Schritt 89,8° → **7,2°**, Anfahren 1 → **27** Schritte,
+Anhalten 2 → **64**, Schrittrate je m/s Spanne 1,00×, Tiere 180° → **3,8°** über 50 Schritte, Gegenprobe ✅ ·
+probe-schritt ✅ (Tempo gekoppelt, Stand-Bild 1,049 nach 27–30 Bildern; die Sonde wartet jetzt BIS pausiert, höchstens
+80 Bilder — fest 18 reichten mit Ausrollen nicht mehr) · th-bewegt alles bewegt · th-pruef bestanden mit **985
+Modellen, steckt 2** (mit fester 55-s-Frist vorher 944 / 7 — genau der Messfehler, den die andere Session behoben hat).
+
+## Runde 106 · 📱 Handy: „1 fps" — die Szene zwang jedes Bild alle Matrizen neu (2026-10-01)
+
+User: „auf handy kann ich ned spielen" → „1 fps habe ich bei traumhaus". ⚠️ Live ist `main` (PR #2528 ungemergt) —
+alles hier wirkt auf dem Telefon erst nach dem Merge.
+
+### 1. Erst gemessen, dann vermutet
+- **probe-bildlast** (main gegen PR, Handy-Pfad): PR zeichnet halb so viele Aufrufe, war aber +62 % langsamer. **Falsch
+  gelesen:** derselbe Stand mass im nächsten Lauf Stadtmitte 628 statt 1'494 ms. Die SwiftShader-ms schwanken zwischen
+  zwei Läufen um mehr als das Doppelte — nur Verhältnisse **im selben Lauf** zählen, und auch die nur grob.
+- **probe-bildkosten** (neu): je Teile-Art alles ausblenden, Bild neu, Median aus 5. Ergebnis Kreuzung/Stadtmitte/Weit:
+  Standard-Material (PBR) trägt **91–98 %** der Rasterzeit (31'945 Teile), texturierte Teile 32–41 %, Skinning (Passanten)
+  6–9 %, durchsichtig 10–18 %. Gegenprobe „nichts ausblenden" ±5–11 % = Rauschgrenze der Sonde.
+- **probe-profil** (neu, Chrome-Profiler im Handy-Pfad an der Kreuzung): 42'304 Knoten im Szenenbaum, davon 7'074 mit
+  matrixAutoUpdate — und trotzdem **`scene.updateMatrixWorld()` 30 ms je Bild**, der grösste JavaScript-Posten.
+
+### 2. Die Ursache: `scene.matrixAutoUpdate` stand auf true
+three.js ruft vor jedem Bild `scene.updateMatrixWorld()`. Die Szene selbst rechnet ihre Matrix neu, setzt damit
+matrixWorldNeedsUpdate und reicht **`force=true` an alle 42'000 Nachfahren** weiter. `_einfrieren` (Runde 103) sparte
+deshalb nur das Zusammensetzen der lokalen Matrix — die Multiplikation mit der Elternmatrix lief weiter für jeden Knoten.
+Der Kommentar dort („48 000 updateMatrix() sind wenige Millisekunden, die Matrizen waren nie die Bremse") hatte recht
+mit dem Teil, den er mass, und übersah den anderen.
+**Fix:** `scene.matrixAutoUpdate=false` (die Szene bewegt sich nie). Danach rechnen nur noch Teilbäume, die sich selbst
+bewegen oder als geändert gemeldet sind.
+**probe-matrix** (neu): für JEDEN Knoten Weltmatrix = Eltern × lokal, an acht Zeitpunkten (fertige Welt, Rundreise über
+6 Orte, in drei Fahrgeschäften, nachts, Baumodus an/aus): **0 falsche Weltmatrizen**. Gegenprobe (eingefrorenes Objekt,
+`.matrix` direkt umgeschrieben): erkannt ✓.
+
+### 3. Handy-Sparmodus (`_sparHandy` = `_mobil`, `?voll` schaltet ab, `?spar` am Rechner ein)
+| Hebel | normal | Sparmodus | warum |
+|---|---|---|---|
+| Herauszoomen bis | 135 | **80** | main bei Zoom 135: 9'821 Aufrufe je Bild |
+| Ausblend-Abstände (lodTakt) | ×1 | **×0,75** | weniger Aufrufe und Dreiecke in der Ferne |
+| Punktlichter im Shader | 6 | **2** | jedes kostet jeden Bildpunkt jedes Standard-Materials; probe-bildkosten 6 → 2: −9 / −11 / −17 % Rasterzeit (Kreuzung/Stadtmitte/Weit, Rauschen ±8 %) |
+| Modell-Texturen | 512 px | **256 px** | 239 von 253 Bildern sind 512 px; ~220 MB → ~55 MB Grafikspeicher |
+Dazu **`?fps`**: Anzeige oben links (Bilder/s, längstes Bild, Aufrufe, Dreiecke, Pixelratio, Sparmodus, lädt noch) —
+für das ECHTE Gerät, denn im Container gibt es nur einen Software-Rasterizer.
+
+### 4. Zahlen (vorher = Kopf 3d3d1fe, nachher = dieser Stand; Handy-Pfad, fertige Welt, je im SELBEN Lauf)
+| Messung | vorher | nachher |
+|---|---|---|
+| `scene.updateMatrixWorld()` allein (probe-profil) | 25,6 ms | **12,9 ms** |
+| Profil je Bild: updateMatrixWorld + multiplyMatrices (Eigenzeit) | 15,5 + 10,1 ms | **12,6 + 1,3 ms** |
+| probe-bildlast Aufrufe Kreuzung · Stadtmitte · Ring · weit · Gewerbe · nah | 1'150 · 238 · 791 · 2'221 · 820 · 193 | **964 · 235 · 631 · 2'073 · 572 · 194** |
+| probe-bildlast Summe Software-ms (sechs Punkte) | 7'276 | **5'945 (−18 %)** |
+| probe-handy quer: Texturen im Grafikspeicher | 223 MB (371) | **86 MB (369, davon 123 verkleinert)** |
+| probe-handy quer: Geometrie · JS-Speicher | 184 MB · 387 MB | 183 MB · 382 MB (unverändert — nächster Hebel) |
+| probe-handy quer: Startbild-Aufrufe (Pixel 1,35) | 2'240 | 1'994 |
+| probe-handy quer: längste Blockade beim Laden | 24,2 s | 20,0 s |
+„weit" ist Zoom 90 — die Sonde setzt den Zoom direkt; im Spiel ist im Sparmodus bei 80 Schluss.
+Gegenprobe probe-profil: 30 ms reines Rechnen je Bild eingespeist → 21 ms auf der eigenen Funktion gebucht (der Rest
+fällt in „(program)"/GC) — die Eigenzeiten sind eher zu niedrig als zu hoch.
+Bilder: `spiele-dev/screenshots/r106-{kreuzung,stadtmitte,weit}-{spar,voll}.png` (Handy quer, ?fps-Anzeige oben links;
+das Wetter ist je Lauf zufällig — Regen im voll-Bild ist kein Unterschied des Sparmodus). Sichtbar: am Rand der
+Kreuzung fehlen im Sparmodus einzelne Bäume in 60–78 m, sonst gleich.
+
+**Prüfreihe (Endstand):** probe-matrix 0 falsch in 8 Zeitpunkten, Gegenprobe ✓ · th-bewegt alles bewegt · th-fahrt
+**11 geprüft, 0 ohne Bewegung** (s. unten) · th-gta 22/22 · th-bauen 22/22 · th-pruef bestanden (982 Modelle, steckt 2 =
+Rettungswagen in der Notaufnahme wie Teil 4) · probe-anfasser „eingefroren, aber bewegt" 0, Gegenprobe ✓ · JS-Fehler 0.
+
+**Wohin die restlichen Aufrufe gehen** (probe-bildlast `BAENDER=1`, Kreuzung, 958 Aufrufe): prozedural 605 (davon
+396 in 60–120 m Kameraabstand), Modelle 300, Instanzen 37. Der nächste Hebel sind die selbst gebauten Kleinteile —
+Runde 100 hat sie schon als Rest benannt („Boxen/Zylinder einzelner Farben, je Zelle zusammenfassen").
+
+### 5. Werkzeug-Fehler, die dabei aufflogen
+- **th-fahrt prüfte seit Runde 103 nur noch 2 von 11 Fahrgeschäften.** Feste 55-s-Frist, aber das Laden geht seit
+  Runde 103 „Nahes zuerst" — der Rummel liegt weit vom Start und war noch nicht da. Ausgabe trotzdem „BESTANDEN".
+  Jetzt `warteAufRuhe`: 11 geprüft, 8 bewegen sich, 3 absichtlich still.
+- **Die fps-Anzeige zählte zuerst das falsche Bild.** Das Shader-Vorwärmen zeichnet in einer eigenen
+  requestAnimationFrame-Kette in ein 8×8-Ziel und setzt `renderer.info` zurück — die Anzeige las 185 statt 964
+  Aufrufe. Jetzt werden die Zähler direkt nach dem Hauptbild gemerkt. ⚠️ Ich hatte dem User die falsche Zahl schon
+  gemeldet und musste sie zurücknehmen.
+- **probe-handy:** `waitForSelector('#soloBtn')` nach 60 s abgebrochen („resolved to visible") — der Hauptfaden war
+  vom Laden blockiert. 150 s.
+
+### 6. Fehler, die ich selbst eingebaut und vor dem Commit gefunden habe
+- **`Texture.userData` gibt es in r128 nicht.** `_texKlein` warf bei jeder Textur — VOR `ok(g)`: 139 Modelle geladen,
+  nie aufgestellt, 91 JS-Fehler. probe-handy hat es gemeldet (JS-Fehler-Zeile, `_ladeOffen` 139). Jetzt WeakSet und
+  try/catch, damit eine Verkleinerung nie das Aufstellen verhindert.
+- **Kommentar falsch geschlossen** (`*/` stehen gelassen, Text dahinter) — ein ganzer Messlauf mit „__th undefined".
+  Seitdem nach JEDER Änderung: Skriptblöcke herausziehen, `node --check`.
+
+### Lehren
+1. **„Wenige Millisekunden" für den gemessenen Teil heisst nichts über den ungemessenen.** Runde 103 mass das
+   Zusammensetzen (updateMatrix) und schloss „Matrizen sind nicht die Bremse"; die Multiplikation, die die Szene per
+   `force` für 42'000 Knoten erzwang, stand nie in der Messung. Ein Profiler je Funktion hätte es sofort gezeigt.
+2. **Software-Millisekunden zweier Läufe sind nicht vergleichbar.** Derselbe Stand: 1'494 und 628 ms. Nur im selben
+   Lauf, und auch dann nur grob.
+3. **„Bestanden" mit kleiner Stichprobe ist verdächtig.** th-fahrt meldete grün mit 2 statt 11 — die Zahl stand in der
+   Ausgabe, niemand hat sie mit der früheren verglichen.
+4. **Eine Anzeige ist ein Messgerät und braucht eine Gegenprobe.** Die ?fps-Zahl gegen probe-bildlast am selben Punkt
+   zu halten hat den Fehler gezeigt — vorher hatte ich sie dem User schon gemeldet.
+
+### Offen
+- Live erst nach Merge von PR #2528 (User). Dann auf dem Handy `abannews.com/traumhaus.html?fps` öffnen und die Zahlen
+  melden lassen — das ist die einzige echte Gerätemessung.
+- Prozedurale Kleinteile je Zelle zusammenfassen (Kreuzung 605 von 958 Aufrufen).
+- Geometrie 183 MB und JS-Speicher 382 MB unverändert: Quell-Geometrien nach dem Zusammenfassen freigeben (nur wo
+  kein Cache sie noch braucht).
+- Hochformat: `#rotHint` hat weiterhin keinen „Trotzdem spielen"-Knopf (Vorschlag liegt beim User).

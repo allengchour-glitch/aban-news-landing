@@ -29,7 +29,7 @@
  */
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { mitSonden, spielOeffnen, aufraeumen, REPO } from './th-lib.mjs'
+import { mitSonden, spielOeffnen, warteAufRuhe, aufraeumen, REPO } from './th-lib.mjs'
 
 /* ⚠️ Regel 2 des Runbooks: die Sonde laeuft INNERHALB der IIFE. `ACH`, `MISS_POOL`,
    `stats`, `checkAch` sind direkt sichtbar; `window.ACH` waere `undefined` und
@@ -103,25 +103,31 @@ const sonde = `function(){
      sondern "jedes siebte Bild verliert Zeichnen, Speichern und Host-Abgleich" — plus
      jeder Erfolg hinter dem kaputten Eintrag dauerhaft tot.
      Darum wird hier gegen eine REFERENZ gemessen: gleiche Dauer ohne und mit Gift. */
+  /* ⚠️ Runde 104: „ohne“ dann „mit“ in EINEM Durchgang, 26 s nach dem Start — mitten in der Ladephase (Parser blockiert
+     den Hauptfaden bis 13,8 s am Stueck, Runde 103). Das spaetere Fenster ist dann IMMER das langsamere, Gift hin oder her:
+     drei Laeufe am selben Stand ergaben 13 %, 28 %, 29 %. Darum jetzt A-B-A-B (zwei Fenster je Zustand im Wechsel, ein Drift
+     trifft beide Seiten) — und das Werkzeug wartet vorher auf Ladesignal + Ruhe (warteAufRuhe, wie th-fahrt/th-boden). */
   return new Promise(function(fertig){
     var zaehl=function(){return renderer.info.render.frame;};
-    var a0=zaehl();
-    setTimeout(function(){
-      var a1=zaehl();                                   /* Referenz: 4 s unvergiftet */
-      ACH.unshift(["_rahmen","x","Rahmen","Rahmenprobe",function(){throw new Error("Rahmentest");}]);
-      setTimeout(function(){
-        var a2=zaehl();                                 /* 4 s mit werfender Bedingung */
-        for(var q=0;q<ACH.length;q++)if(ACH[q][0]==="_rahmen"){ACH.splice(q,1);break;}
-        delete achDone._rahmen;
-        raus.rahmen={ohne:a1-a0, mit:a2-a1};
-        fertig(raus);
-      },4000);
-    },4000);
+    var GIFT=["_rahmen","x","Rahmen","Rahmenprobe",function(){throw new Error("Rahmentest");}];
+    var ohne=0,mit=0;
+    function fenster(vergiftet,dann){
+      if(vergiftet)ACH.unshift(GIFT);
+      var s0=zaehl();
+      setTimeout(function(){var n=zaehl()-s0;
+        if(vergiftet){for(var q=0;q<ACH.length;q++)if(ACH[q][0]==="_rahmen"){ACH.splice(q,1);break;}delete achDone._rahmen;mit+=n;}
+        else ohne+=n;
+        dann();},4000);}
+    fenster(false,function(){fenster(true,function(){fenster(false,function(){fenster(true,function(){
+      raus.rahmen={ohne:ohne, mit:mit, fenster:4};
+      fertig(raus);});});});});
   });}`
 
 mitSonden('traumhaus.html', { erf: sonde }, '_erf.html')
 const { browser, page, jsFehler } = await spielOeffnen('_erf.html', { warten: 26000 })
-const R = await page.evaluate(() => window.__th.erf())   /* laeuft ~9 s: Belastungs- und Rahmenprobe */
+const ruhe = await warteAufRuhe(page)   /* Runde 104: Rahmenprobe erst auf der fertigen Welt, nicht in der Ladephase */
+console.log(`Welt ruhig nach ${ruhe.sekunden} s (Seite ${ruhe.seite} s, ${ruhe.objekte} feste Bauwerke)${ruhe.ruhig ? '' : ' — ⚠️ nicht ruhig geworden'}`)
+const R = await page.evaluate(() => window.__th.erf())   /* laeuft ~17 s: Belastungs- und Rahmenprobe (2×4 s je Zustand) */
 await browser.close()
 aufraeumen('_erf.html')
 
@@ -161,7 +167,7 @@ else { fund++; console.log(`❌ Belastungsprobe: ein einziger Fehler legt die ga
 
 const RA = R.rahmen || {}
 const verlust = RA.ohne ? Math.round((1 - RA.mit / RA.ohne) * 100) : 0
-console.log(`ℹ️  Rahmenprobe: ${RA.ohne} Bilder je 4 s ohne Gift, ${RA.mit} mit — ${verlust} % Verlust an Zeichnen/Speichern/Host-Abgleich`)
+console.log(`ℹ️  Rahmenprobe: ${RA.ohne} Bilder in 2×4 s ohne Gift, ${RA.mit} mit (Fenster im Wechsel) — ${verlust} % Verlust an Zeichnen/Speichern/Host-Abgleich`)
 /* ⚠️ EIN PROZENTWERT AUS VIER BILDERN IST KEINE AUSSAGE (2026-09-08, im Torlauf
    aufgeflogen). Der Browser zeichnet hier ohnehin nur ~1 Bild/s; unter Last waren
    es 3 Bilder ohne Gift und 2 mit — macht 33 % und eine rote Zeile, obwohl EIN

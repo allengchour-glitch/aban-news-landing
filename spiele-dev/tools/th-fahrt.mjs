@@ -34,7 +34,7 @@
  *
  * Aufruf:  node spiele-dev/tools/th-fahrt.mjs [weltsekunden]
  */
-import { mitSonden, spielOeffnen, aufraeumen, warteWeltzeit } from './th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen, warteWeltzeit, warteAufRuhe } from './th-lib.mjs'
 
 const SEK = Number(process.argv[2] || 5)
 
@@ -63,6 +63,11 @@ const TMP = mitSonden('traumhaus.html', {
 }, '_fahrt_probe.html')
 
 const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000 })
+/* ⚠️ Runde 106: nach der festen 55-s-Frist standen erst 2 von 11 Fahrgeschaeften in FAHRTEN (panorama, seilbahn) — das
+   Laden geht seit Runde 103 „Nahes zuerst", der Rummel liegt weit vom Start. „2 geprueft, bestanden" hiess also: 9 nie
+   angesehen. Jetzt auf die fertige Welt warten (dasselbe Signal wie th-echt/th-pruef). */
+const ru = await warteAufRuhe(page, { minSekunden: 150 })
+console.log(`Welt ruhig nach ${ru.seite} s`)
 const a = await page.evaluate(() => window.__th.fahrt())
 const gA = await page.evaluate(() => window.__th.gondeln())
 const z = await warteWeltzeit(page, SEK)

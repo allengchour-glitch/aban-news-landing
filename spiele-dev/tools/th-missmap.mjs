@@ -45,7 +45,8 @@ const check = (name, gut, detail) => {
    #2417 im Missionstext). Die Lieferungen (3) bekommen ihren Ort dynamisch
    vom geparkten Auto. */
 const OHNE_ORT_ERLAUBT = { 7: 'Strassenmusik — ueberall, nur 17-21 Uhr (steht im Text)',
-                           8: 'Emotes — ueberall moeglich' }
+                           8: 'Emotes — ueberall moeglich',
+                           13: 'Taxi — jedes Taxi im Verkehr antippen, kein fester Ort (steht seit Runde 93 im Text)' }
 const deck = await S('deckung')
 const ortlos = deck.filter((d) => !d.hatOrt && d.i !== 3 && !OHNE_ORT_ERLAUBT[d.i])
 check('Jede Mission hat einen Ort (oder einen belegten Grund)', ortlos.length === 0,

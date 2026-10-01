@@ -30,7 +30,7 @@
  * mit einem Querschnitt nachsehen, bevor man etwas verschiebt.
  *
  * ⚠️ BEWEGLICHES VORHER AUSSCHLIESSEN (verkehr, busRec, _landbus, fussg, npcs, sims,
- * polizei). Ohne diese Liste sind zwei Drittel der Funde fahrende Autos, die dort
+ * polizei, _zug). Ohne diese Liste sind zwei Drittel der Funde fahrende Autos, die dort
  * hingehoeren. Rehe und Hasen laufen ebenfalls ueber die Strasse; die bleiben als
  * Rauschen stehen und sind am Namen (`animal-…`) zu erkennen.
  */
@@ -73,10 +73,14 @@ const sonde = `function(MINH){
       if(Math.abs(q-b.c)<b.h&&l>b.von&&l<b.bis)return b.n;}
     var r=Math.hypot(x,z);
     if(Math.abs(r-RINGR)<RINGH)return "Landstrasse";
-    if(r>=RAD0&&r<=RAD1)
+    /* Seit Runde 93 beginnt jeder Zubringer an der Ring-AUSSENKANTE (zubR0: 30/330 Grad bei
+       r 136,5, 60/120 bei 143,5, 240/300 bei 122,7), nicht mehr bei 123 — was innerhalb liegt,
+       gehoert dem Stadtring und wird dort gezaehlt. */
+    if(r<=RAD1)
       for(var g=0;g<SPEICHEN.length;g++){
         var a=SPEICHEN[g]*Math.PI/180;
-        if(Math.abs(x*Math.sin(a)-z*Math.cos(a))<SPH){
+        var r0=(typeof zubR0==="function")?zubR0(SPEICHEN[g]):RAD0;
+        if(r>=r0&&Math.abs(x*Math.sin(a)-z*Math.cos(a))<SPH){
           /* nur die richtige Haelfte der Geraden */
           if(x*Math.cos(a)+z*Math.sin(a)>0)return "Zubringer "+SPEICHEN[g]+"\\u00b0";}}
     return null;}
@@ -90,6 +94,10 @@ const sonde = `function(MINH){
   try{markiere(sims);}catch(e){}
   try{markiere(polizei);}catch(e){}
   try{if(busRec&&busRec.mesh)busRec.mesh.traverse(function(c){beweglich.add(c);});}catch(e){}
+  /* 🚆 Der Zug (window._zug) quert den Stadtring West bei z 112 auf einem Bahnuebergang. Stand er dort
+     zufaellig beim Messen, meldete das Werkzeug 4 „Cube043…" auf dem Stadtring (Runde 97) — 35 m Zug
+     im Band, aber er gehoert dort hin. */
+  try{if(window._zug&&window._zug.mesh)window._zug.mesh.traverse(function(c){beweglich.add(c);});}catch(e){}
   var w=new THREE.Vector3(), bb=new THREE.Box3(), karte={};
   /* ⚠️ INSTANZIERTES WAR UNSICHTBAR — und das ist kein Randfall. GEMESSEN: 212
      InstancedMeshes mit zusammen 6991 Instanzen (Parkzaun, Weidezaun, Landebahn,
@@ -127,6 +135,10 @@ const sonde = `function(MINH){
        darauf; dieselbe Regel wie bei Baumkronen und Kranauslegern. */
     if(bb.min.y>2)return;
     var q=o,d=null;while(q&&q!==scene){if(q.userData&&q.userData.datei)d=q.userData.datei;q=q.parent;}
+    /* Runde 92: der PARKSTREIFEN der Hauptstrassen (5,75 bis 8,05 m von der Mitte, Tabelle
+       HS_PARK/HS_BORD im Spiel) ist fuer Fahrzeuge der richtige Ort — ein dort geparkter
+       Lieferwagen ist kein Objekt AUF der Fahrbahn. Alles andere (Laterne, Zaun) bleibt Befund. */
+    if(/^Hauptstrasse/.test(band)&&Math.abs(Math.abs(w.z)-58)>=5.3&&/^(th7_|th37_|th40_|th50_|th_auto_)/.test(d||""))return;
     var k=Math.round(w.x/3)+"|"+Math.round(w.z/3)+"|"+band;
     if(!karte[k]||karte[k].hoch<hy)
       karte[k]={x:+w.x.toFixed(1),z:+w.z.toFixed(1),band:band,hoch:+hy.toFixed(2),

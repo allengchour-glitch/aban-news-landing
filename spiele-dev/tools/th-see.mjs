@@ -7,6 +7,11 @@
  *   3. eine SCHAETZUNG im Enten-Code: »See-Rand liegt bei ~11…16«.
  * Echt sind 9,1…16,9. Die Enten schwammen darum an den engen Stellen an Land.
  *
+ * ⚠️ VORZEICHEN (Runde 102): das Wassermesh liegt mit rotation.x=-π/2 in der Welt auf z = 146 − sin a·r,
+ * der Uferradius in Welt-Peilung φ = atan2(z−146, x) ist also seeR(−φ). Dieses Messgeraet rechnete bis
+ * Runde 102 mit seeR(φ) — demselben Spiegel wie der Enten-Code — und meldete „0 an Land" fuer Enten, die
+ * bis 5 m auf dem Rundweg schwammen. Jetzt uf(−a); die engste Richtung wird ebenfalls in Welt-Peilung gesucht.
+ *
  * Der Test treibt die Herde in die ENGSTE Richtung des Sees (Fuetterziel weit
  * ausserhalb) und misst ueber 1200 Takte, wie oft und wie weit eine Ente die
  * Uferlinie ueberschreitet.
@@ -17,14 +22,14 @@ import { mitSonden, spielOeffnen, aufraeumen } from './th-lib.mjs'
 
 const sonde = `function(){
   var uf=window._seeUfer||function(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;};
-  var aMin=0,uMin=99; for(var k=0;k<720;k++){var a=k/720*6.283; if(uf(a)<uMin){uMin=uf(a);aMin=a;}}
+  var aMin=0,uMin=99; for(var k=0;k<720;k++){var a=k/720*6.283; if(uf(-a)<uMin){uMin=uf(-a);aMin=a;}}   /* Welt-Peilung: Ufer = uf(−a) */
   var raus=0,proben=0,tief=0,wo=null;
   ENTEN.ziel={x:ENTEN.SEE.x+Math.cos(aMin)*40,z:ENTEN.SEE.z+Math.sin(aMin)*40};ENTEN.zielT=999;
   for(var t=0;t<1200;t++){
     updEnten(0.05,performance.now()+t*50);
     ENTEN.enten.forEach(function(en){
       var a=Math.atan2(en.z-ENTEN.SEE.z,en.x-ENTEN.SEE.x);
-      var r=Math.hypot(en.x-ENTEN.SEE.x,en.z-ENTEN.SEE.z), u=uf(a);
+      var r=Math.hypot(en.x-ENTEN.SEE.x,en.z-ENTEN.SEE.z), u=uf(-a);   /* seeR(−φ), s. Kopf (Runde 102) */
       proben++; if(r>u){raus++; if(r-u>tief){tief=r-u;wo=[+en.x.toFixed(1),+en.z.toFixed(1)];}}});}
   return {engsteRichtung:+(aMin*180/Math.PI).toFixed(1),engstesUfer:+uMin.toFixed(2),
           proben:proben,anLand:raus,anteil:+(raus/proben*100).toFixed(1),

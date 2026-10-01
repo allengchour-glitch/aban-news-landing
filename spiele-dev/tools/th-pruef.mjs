@@ -29,11 +29,16 @@ const tmp = '_pruef_tmp.html'
 
 const SONDE = `function(){
   var K=window._KORRIDORE||[];
-  function korr(b){
+  /* Parkstreifen (Runde 93, wie th-strassen): die Hauptstrassen haben einen Parkstreifen 5,75…7,9 m
+     von der Mitte (HS_PARK…HS_BORD). Ein Fahrzeug, das ganz jenseits von 5,3 m steht, parkt dort
+     gewollt — kein Befund. Alles andere (und jedes Nicht-Fahrzeug) zaehlt wie bisher. */
+  function istFahrzeug(w){var d=(w.userData&&w.userData.datei)||"";return /th7_|th37_|th50_|th_auto|taxi|lieferwagen|polizei/i.test(d);}
+  function korr(b,w){
     for(var i=0;i<K.length;i++){var k=K[i],l=k[1]==="x";
       var aMin=l?b.min.x:b.min.z,aMax=l?b.max.x:b.max.z;
       if(aMax<k[3]-1||aMin>k[4]+1)continue;
       var qMin=l?b.min.z:b.min.x,qMax=l?b.max.z:b.max.x;
+      if(w&&/^Haupt/.test(k[0])&&istFahrzeug(w)&&Math.min(Math.abs(qMin-k[2]),Math.abs(qMax-k[2]))>=5.3&&(qMin>k[2])===(qMax>k[2]))continue;
       var ue=Math.min(qMax,k[2]+k[5])-Math.max(qMin,k[2]-k[5]);
       if(ue>0.4)return {n:k[0],ue:+ue.toFixed(1)};}
     return null;}
@@ -47,7 +52,7 @@ const SONDE = `function(){
     var b=new THREE.Box3().setFromObject(w);
     if(!isFinite(b.min.x)||b.max.y-b.min.y<0.45)return;   /* flache Deko darf am Rand liegen */
     bb.push({b:b,d:datei(w),x:+w.position.x.toFixed(0),z:+w.position.z.toFixed(0)});
-    var k=korr(b);
+    var k=korr(b,w);
     if(k)auf.push([+w.position.x.toFixed(0),+w.position.z.toFixed(0),k.ue,k.n]);});
   var paare=[];
   for(var a=0;a<bb.length;a++)for(var c=a+1;c<bb.length;c++){
@@ -146,7 +151,26 @@ const SONDE = `function(){
           freigeraeumt:window._freigeraeumt,entwirrt:window._entwirrt,entzerrt:window._entzerrt};}`
 
 mitSonden(datei, { pruefung: SONDE }, tmp)
-const { browser, page, jsFehler, fehlend } = await spielOeffnen(tmp, { warten })
+const { browser, page, jsFehler, fehlend } = await spielOeffnen(tmp, { warten: Math.min(warten, 15000) })
+
+/* ⚠️ AUF DAS EREIGNIS WARTEN, NICHT AUF EINE FRIST (Runbook-Regel 4).
+   Der Kommentar oben sagt es schon halb: „die letzte Aufraeumstufe laeuft bei 50 s,
+   wer frueher misst, sieht Objekte auf der Strasse, die gleich weggeraeumt werden".
+   Die Schlussfolgerung daraus war aber falsch — eine GROESSERE Frist (55 s) loest es
+   nicht, denn die Kette haengt am LETZTEN geladenen Modell, nicht an einer Uhr.
+   Auf einer beschaeftigten Maschine ist sie nach 55 s laengst noch nicht durch.
+
+   BELEGT am Schwestermessgeraet th-echt, dieselbe Spieldatei, nur andere Last:
+       ohne Last 9 · im Torlauf 11 bis 16 · zwei Laeufe gleichzeitig 30.
+   Dort hat die Umstellung auf das Ereignis die Zahl lastfest gemacht (9 unter Last).
+   Hier gilt dasselbe: ein Objekt, das noch im Korridor steht, weil entwirren() noch
+   nicht lief, ist kein Fehler der Welt — nur eine zu frueh gestellte Frage. */
+for (let i = 0; i < 90; i++) {
+  const offen = await page.evaluate(() => window._ladeOffen)
+  if (offen === 0) break
+  await page.waitForTimeout(2000)
+}
+await page.waitForTimeout(20000)   /* freiRaeumen 2,5 s + _spaetEinfrieren 4 s, unter Last laenger */
 const r = await page.evaluate(() => window.__th.pruefung())
 await browser.close()
 aufraeumen(tmp)
