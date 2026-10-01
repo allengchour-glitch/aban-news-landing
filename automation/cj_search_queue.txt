@@ -651,14 +651,20 @@
 #done search:herb grinder 4 piece
 #done search:smell proof stash bag
 #done search:torch lighter jet flame
+# 01.10.2026 Betreiber «google sachen machen, nur dort mache ich gewinn»: GEMESSEN 90 T — Google 337 Sitzungen / 20 Warenkörbe /
+# 5 Käufe (1,5 %), TikTok 2'553 / 0. Meistbesuchte Google-Seite = Rizinusöl-Wickel-SET mit Öl (55 Sitz., 2× Kasse) — der Ersatz
+# vom 28.09. ist nur der Wickel. Gesucht wird das SET → zuerst. Heilversprechen-Wächter greift wie immer (nur Pflege-Aussagen).
+search:castor oil pack kit with oil
+search:castor oil pack wrap organic
+search:castor oil hexane free
 # 01.10.2026 Betreiber «viel coolere produkten und so» → VORNE einreihen. Quelle (QUELLE, nicht gemessen): autods «10 Best
 # Dropshipping Products October 2026», sellthetrend «17 Viral Products 2026», printify/fourthwall/litcommerce TikTok-Listen.
 # Am Bestand prüfen, bevor etwas auf die Startseite kommt (Hype-Reihe nimmt nur Gemessenes). Abgelehnt: Pimple Patches
 # (Wundauflage), Supplements, Reinigungspaste (Chemie), Markenware (Stanley/Dyson/UGG → nur No-Name-Pendants).
-search:fire extinguisher drink dispenser
-search:eyeball doorbell halloween
-search:led bat halloween decoration
-search:house shaped piggy bank
+#done search:fire extinguisher drink dispenser
+#done search:eyeball doorbell halloween
+#done search:led bat halloween decoration
+#done search:house shaped piggy bank
 search:rotating spinning necklace
 search:hair tinsel
 search:electric spin body brush
