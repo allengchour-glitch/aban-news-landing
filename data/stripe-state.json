@@ -203,5 +203,13 @@
     "link_id": "plink_1ULpLQRXvVMyfaIrrTO1ygLW",
     "cents": 2900,
     "currency": "chf"
+  },
+  "umzugs-paket": {
+    "product": "prod_VMYnfPtsxbtTma",
+    "price": "price_1ULpfvRXvVMyfaIr8k57FXOk",
+    "link": "https://buy.stripe.com/cNi3cx6aa2EQ3gben35wI13",
+    "link_id": "plink_1ULpfvRXvVMyfaIrwT2xef9M",
+    "cents": 1200,
+    "currency": "chf"
   }
 }

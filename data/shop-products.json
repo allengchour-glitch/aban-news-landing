@@ -195,5 +195,12 @@
     "desc": "Der Gesamtplan mit Daten: Rückstellungen, Mietzinssenkung, Start-Reserve, Schulden nach Lawine oder Schneeball, volle Notreserve. Dazu Budget-Plan, Mietzins-Paket, Schulden-Plan und Bonus Hochzeits-Budget-Plan mit Excel-Vorlagen (einzeln CHF 52). Offline, kein Konto. Keine Finanzberatung.",
     "price": "CHF 29",
     "buy": "https://buy.stripe.com/dRm3cx8iicfqbMHbaR5wI12"
+  },
+  {
+    "slug": "umzugs-paket",
+    "title": "Umzugs-Paket Schweiz: Kündigung, Umzugsplan und Wohnungsabgabe",
+    "desc": "Nächstmöglicher Kündigungstermin mit letztem Zugangstag, fertiger Kündigungsbrief (Familienwohnung, Nachmieter), Umzugsplan mit Daten, Adressänderungs-Liste und Abgabeprotokoll zum Drucken. Offline-App mit Anleitung. Keine Rechtsberatung.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNi3cx6aa2EQ3gben35wI13"
   }
 ]
