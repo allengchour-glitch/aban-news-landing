@@ -73,3 +73,22 @@ Posts gemessen über `identity_video_get` (BC_AUTH_TT): alle drei organisch live
 - Review: `ad_review_info` → alle drei `is_approved: true / ALL_AVAILABLE`; `ad_get` → `AD_STATUS_AUDIT` (Prüfung läuft noch).
 - Nächste Messung: 01.10. abends — Ausgaben, CTR, CPC je Anzeige (`report_integrated_get`) + Shopify-Sitzungen mit
   `utm_campaign=lernen-okt26`; Entscheidregeln oben (nach CHF 25 je Anzeige: CPC > 0.60 oder CTR < 0,5 % → aus).
+
+## 📏 01.10. 18:52 UTC — erste Messung (Routine trig_01DcoZoJLS4YPyxtPsbNpYyt)
+TikTok `report_integrated_get` (Lebenszeit, Konto 7646326014504976401) · Shopify ShopifyQL `utm_campaign = 'lernen-okt26'` (3 T):
+
+| Anzeige | Ausgaben CHF | Impr. | Klicks | CTR | CPC | Ø Sehdauer | Shopify-Sitz. | Warenkorb | Kasse | Kauf |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Sirène | 7.85 | 5'359 | 37 | 0,69 % | 0.21 | 1,25 s | 45 | 0 | 0 | 0 |
+| Aurora | 3.31 | 5'626 | 25 | 0,44 % | 0.13 | 1,13 s | 37 | 0 | 0 | 0 |
+| Provence | 3.26 | 4'322 | 19 | 0,44 % | 0.17 | 1,06 s | 30 | 0 | 0 | 0 |
+| **Total** | **14.42** | 15'307 | 81 | 0,53 % | 0.18 | | 112 | 0 | 0 | 0 |
+
+- Alle drei `ENABLE` / `AD_STATUS_DELIVERY_OK`. **Entscheidregel greift noch nicht** (keine Anzeige hat CHF 25 erreicht) →
+  nichts abgeschaltet, kein Budget geändert. Aurora + Provence liegen mit 0,44 % CTR unter der 0,5-%-Schwelle — bei CHF 25
+  je Anzeige wieder prüfen.
+- Shopify zählt MEHR Sitzungen (112) als TikTok Klicks (81) — erwartet war eine Lücke nach unten. Möglich: Mehrfach-Sitzungen
+  derselben Person (In-App-Browser) oder Bot-Vorschauen; Befund festhalten, nicht deuten.
+- Ø Sehdauer 1,06–1,25 s = wie organisch (Median 1,37 s, Videoschnitt-Skill): der Einstieg hält noch nicht. 0 Warenkörbe
+  bei 112 Sitzungen → Produktseite/Preis ist die nächste Frage, nicht die Anzeige.
+- Nächste Messung: wenn eine Anzeige CHF 25 erreicht (bei ~CHF 14/Tag Gesamttempo ca. 02./03.10.).
