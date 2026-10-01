@@ -1,0 +1,11 @@
+Pensions-Check Schweiz 1.0 — aban news
+
+Inhalt
+  pensions-check.html   AHV (inkl. 13. Altersrente), Pensionskasse, Säule 3a und Erspartes, Lücke und Sparrate, Fahrplan.
+                        Im Browser öffnen (Doppelklick), läuft offline, speichert nur in deinem Browser.
+  ANLEITUNG.md          Welche Unterlagen du brauchst und wie du die Zahlen liest
+
+Nutzung privat erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Planungshilfe, keine Finanz- oder Steuerberatung.
+
+© aban news, abannews.com · hallo@abannews.com

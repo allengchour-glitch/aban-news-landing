@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Pensions-Check Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#7c2d12;--akz2:#c2410c;--ink:#22201c;--ink2:#3f3a33;--muted:#706a60;--line:#e6dfd4;--bg:#faf7f2;--card:#fff;--field:#fdfbf8;--gut:#15803d;--rot:#b91c1c;--c1:#c2410c;--c2:#ea9a64;--c3:#0f766e;--c4:#64748b}
+@media(prefers-color-scheme:dark){:root{--akz:#fdba74;--akz2:#fb923c;--ink:#f4efe8;--ink2:#d8d0c4;--muted:#a49b8e;--line:#39332c;--bg:#16130f;--card:#1f1b16;--field:#1b1813;--gut:#4ade80;--rot:#f87171;--c1:#fb923c;--c2:#fdba74;--c3:#2dd4bf;--c4:#94a3b8}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px 70px}
+.marke{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--akz2);font-weight:800}
+h1{font-size:clamp(26px,5vw,36px);letter-spacing:-.02em;line-height:1.12;margin-top:4px}
+h2{font-size:1.15rem;margin:0 0 6px}
+.sub{color:var(--ink2);margin:8px 0 6px;max-width:680px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:3px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+input,select{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--akz2);outline-offset:1px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.zahl{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+.gut{color:var(--gut)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz2);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:10px}
+.warn{border-left-color:var(--rot)}
+.balken{display:flex;height:34px;border-radius:8px;overflow:hidden;background:var(--line);margin:12px 0 4px;position:relative}
+.balken i{display:block;height:100%}
+.ziel{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--ink)}
+.leg{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.84rem;color:var(--ink2)}
+.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c)}
+table{width:100%;border-collapse:collapse;font-size:.93rem;margin-top:6px}
+td{padding:7px 4px;border-bottom:1px solid var(--line)}td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fahrplan{list-style:none}.fahrplan li{padding:10px 0;border-bottom:1px solid var(--line)}.fahrplan b{display:block}
+.fahrplan .w{font-size:.76rem;font-weight:800;color:var(--akz2);text-transform:uppercase;letter-spacing:.05em}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.klein{font-size:.82rem;color:var(--muted)}
+details summary{cursor:pointer;font-weight:700;margin-top:8px}
+[hidden]{display:none!important}
+.balken i,.leg span::before{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+@media print{.leiste,.noprint{display:none!important}body{background:#fff}.box{border:0;padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="marke">aban news · Pensions-Check Schweiz</div>
+<h1>Reicht dein Geld nach der Pensionierung?</h1>
+<p class="sub">AHV inklusive 13. Altersrente, Pensionskasse, Säule 3a und Erspartes in einem Bild: was du pro Monat erwarten kannst, wie gross die Lücke zu deinem Ziel ist und wie viel du dafür sparen müsstest. Alles bleibt in diesem Browser.</p>
+
+<section class="box">
+<h2>1 · Du und dein Ziel</h2>
+<div class="grid">
+<div><label for="alter">Alter heute</label><input id="alter" type="number" min="18" max="70"></div>
+<div><label for="pensionsalter">Pensionierung mit</label><input id="pensionsalter" type="number" min="58" max="70"><p class="hint">Referenzalter 65. Die AHV gibt es frühestens ab 63, gekürzt um 6,8 % pro Jahr Vorbezug. Frauen Jahrgang 1961–1963 haben ein Übergangsalter zwischen 64 und 65.</p></div>
+<div><label for="bisAlter">Planen bis Alter</label><input id="bisAlter" type="number" min="70" max="105"><p class="hint">Bis wann das Ersparte reichen soll.</p></div>
+<div><label for="ziel">Gewünschtes Budget pro Monat (CHF)</label><input id="ziel" type="number" min="0" step="100"><p class="hint">Richtwert: 70–80 % des heutigen Nettolohns.</p></div>
+</div>
+</section>
+
+<section class="box">
+<h2>2 · AHV</h2>
+<div class="grid">
+<div><label for="e1">Durchschnittliches Jahreseinkommen (CHF)</label><input id="e1" type="number" min="0" step="1000"><p class="hint">Über das ganze Erwerbsleben. Grob: heutiger Bruttolohn. Bei Verheirateten werden die Einkommen beider geteilt (Splitting), das rechnet der Check selbst.</p></div>
+<div><label for="j1">Beitragsjahre bei Pensionierung</label><input id="j1" type="number" min="0" max="44"><p class="hint">44 = voll. Fehlende Jahre (Ausland, Studium ohne Beiträge) kürzen die Rente.</p></div>
+<div><label for="zivil">Verheiratet oder eingetragene Partnerschaft</label><select id="zivil"><option value="">nein</option><option value="ja">ja</option></select></div>
+<div><label for="kinder">Jahre mit Kindern unter 16</label><input id="kinder" type="number" min="0" max="44"><p class="hint">Dafür gibt es Erziehungsgutschriften (CHF 45’360 pro Jahr, bei Ehepaaren je zur Hälfte).</p></div>
+</div>
+<div class="grid" id="p2" hidden style="margin-top:12px">
+<div><label for="e2">Partner/in: Jahreseinkommen (CHF)</label><input id="e2" type="number" min="0" step="1000"></div>
+<div><label for="j2">Partner/in: Beitragsjahre</label><input id="j2" type="number" min="0" max="44"></div>
+<p class="hint" style="grid-column:1/-1">Als Haushalt rechnen: Ziel, Pensionskasse, 3a und Vermögen für beide zusammen eintragen. Gerechnet wird, als ob ihr gleichzeitig in Pension geht; die Ehepaar-Begrenzung gilt erst, wenn beide eine Rente beziehen.</p>
+</div>
+<p class="hint" style="margin-top:8px">Genaue Zahlen: Auszug aus dem individuellen Konto und Rentenvorausberechnung bei deiner Ausgleichskasse, beides kostenlos.</p>
+</section>
+
+<section class="box">
+<h2>3 · Pensionskasse</h2>
+<div class="grid">
+<div><label for="pk65">Altersguthaben mit 65 laut Vorsorgeausweis (CHF)</label><input id="pk65" type="number" min="0" step="1000"><p class="hint">Steht als „voraussichtliches Altersguthaben“ auf dem Ausweis. Bei früherer Pensionierung ist es kleiner: Wert für dein Alter aus dem Ausweis nehmen. Leer = unten hochrechnen.</p></div>
+<div><label for="pksatz">Umwandlungssatz laut Ausweis (%)</label><input id="pksatz" type="number" min="0" max="10" step="0.1" placeholder="z. B. 5,6"><p class="hint">Steht auf dem Vorsorgeausweis. Die 6,8 % aus dem Gesetz gelten nur für den obligatorischen Teil (Art. 14 BVG); auf das ganze Guthaben rechnen die meisten Kassen tiefer, bei früherer Pensionierung noch tiefer.</p></div>
+</div>
+<details><summary>Ohne Ausweis hochrechnen</summary><div class="grid" style="margin-top:8px">
+<div><label for="pkheute">Altersguthaben heute (CHF)</label><input id="pkheute" type="number" min="0" step="1000"></div>
+<div><label for="pkjahr">Sparbeiträge pro Jahr (CHF)</label><input id="pkjahr" type="number" min="0" step="500"><p class="hint">Arbeitnehmer und Arbeitgeber zusammen.</p></div>
+<div><label for="pkzins">Verzinsung (%)</label><input id="pkzins" type="number" min="0" max="5" step="0.25"></div>
+</div></details>
+</section>
+
+<section class="box">
+<h2>4 · Säule 3a und Erspartes</h2>
+<div class="grid">
+<div><label for="a3heute">Säule 3a heute (CHF)</label><input id="a3heute" type="number" min="0" step="1000"></div>
+<div><label for="a3jahr">3a-Einzahlung pro Jahr (CHF)</label><input id="a3jahr" type="number" min="0" step="100"></div>
+<div><label for="vheute">Freies Vermögen heute (CHF)</label><input id="vheute" type="number" min="0" step="1000"></div>
+<div><label for="vjahr">Sparen pro Jahr (CHF)</label><input id="vjahr" type="number" min="0" step="500"></div>
+<div><label for="rendite">Rendite nach Teuerung bis zur Pensionierung (% p. a.)</label><input id="rendite" type="number" min="-2" max="8" step="0.5"><p class="hint">Real, also nach Abzug der Teuerung, weil Ziel und AHV in heutigen Franken stehen. Konto eher 0 %, Wertschriften langfristig mehr, mit Schwankungen.</p></div>
+<div><label for="rendite2">Rendite nach Teuerung im Ruhestand (% p. a.)</label><input id="rendite2" type="number" min="-2" max="6" step="0.5"></div>
+</div>
+</section>
+
+<section class="box" id="ergebnis">
+<h2>Dein Ergebnis</h2>
+<div id="out" aria-live="polite"></div>
+<div class="leiste noprint"><button onclick="print()">Drucken oder als PDF sichern</button><button id="reset">Zurücksetzen</button></div>
+</section>
+
+<section class="box">
+<h2>Fahrplan bis zur Pensionierung</h2>
+<ol class="fahrplan" id="fahrplan"></ol>
+</section>
+<p class="klein">Planungshilfe, keine Finanz- oder Steuerberatung. Die AHV-Rente ist eine Schätzung nach der Rentenformel (Art. 34 AHVG, Mindestrente CHF 1’260, Stand 1.1.2026) ohne die Rundung der amtlichen Rentenskala; Teilrenten vereinfacht nach Beitragsjahren. Splitting und Erziehungsgutschriften vereinfacht über das ganze Erwerbsleben. Renditen sind reale Annahmen (nach Teuerung). Nicht eingerechnet: Rentenzuschlag für Frauen der Übergangsgeneration (Art. 34bis AHVG), Steuern. Die AHV-Renten werden in der Regel alle zwei Jahre angepasst.</p>
+</div>
+
+<script>/*ENGINE*/</script>
+<script>
+(function(){
+"use strict";
+var P=window.PensionEngine,$=function(id){return document.getElementById(id)};
+var chf=function(x){return "CHF "+Math.round(x).toLocaleString("de-CH")};
+var KEY="aban-pension-v1";
+var IDS=["alter","pensionsalter","bisAlter","ziel","e1","j1","zivil","kinder","e2","j2","pk65","pksatz","pkheute","pkjahr","pkzins","a3heute","a3jahr","vheute","vjahr","rendite","rendite2"];
+var VOR={alter:50,pensionsalter:65,bisAlter:90,ziel:"",e1:"",j1:44,zivil:"",kinder:"",e2:"",j2:44,pk65:"",pksatz:"",pkheute:"",pkjahr:"",pkzins:1.25,a3heute:"",a3jahr:"",vheute:"",vjahr:"",rendite:2,rendite2:1};
+var st;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!st||typeof st!=="object")st=Object.assign({},VOR);
+IDS.forEach(function(k){$(k).value=st[k]==null?VOR[k]:st[k]});
+function render(){
+  $("p2").hidden=st.zivil!=="ja";
+  var v=function(k){return st[k]===""||st[k]==null?0:+st[k]};
+  var pers=[{einkommen:v("e1"),jahre:v("j1")}];if(st.zivil==="ja")pers.push({einkommen:v("e2"),jahre:v("j2")});
+  var r=P.check({kinderJahre:v("kinder"),alter:v("alter"),pensionsalter:v("pensionsalter")||65,bisAlter:v("bisAlter")||90,ziel:v("ziel"),personen:pers,
+    pk:{guthaben65:v("pk65"),satz:v("pksatz")||6.8,heute:v("pkheute"),proJahr:v("pkjahr"),zins:st.pkzins===""?1.25:v("pkzins")},
+    saeule3a:{heute:v("a3heute"),proJahr:v("a3jahr")},vermoegen:{heute:v("vheute"),proJahr:v("vjahr")},rendite:v("rendite"),renditeRuhestand:st.rendite2===""?v("rendite"):v("rendite2")});
+  if(!v("e1")){$("out").innerHTML='<p class="urteil">Trag in Schritt 2 dein durchschnittliches Jahreseinkommen ein.</p>';fahrplan(r);return}
+  var h='<div class="kacheln"><div class="kachel"><b>Pro Monat im Ruhestand</b><div class="zahl">'+chf(r.total)+'</div>alle Quellen zusammen</div>';
+  if(r.ziel)h+='<div class="kachel"><b>'+(r.luecke?"Lücke pro Monat":"Ziel erreicht")+'</b><div class="zahl '+(r.luecke?"rot":"gut")+'">'+(r.luecke?chf(r.luecke):Math.round(r.deckung*100)+" %")+'</div>'+(r.luecke?"zu deinem Budget von "+chf(r.ziel):"deines Budgets gedeckt")+'</div>';
+  if(r.kapitalNoetig&&r.jahreBis>0)h+='<div class="kachel"><b>Dafür sparen</b><div class="zahl">'+chf(r.sparrate)+'</div>pro Monat bis zur Pensionierung ('+r.jahreBis+' Jahre)</div>';
+  else if(r.kapitalNoetig)h+='<div class="kachel"><b>Fehlendes Kapital</b><div class="zahl rot">'+chf(r.kapitalNoetig)+'</div>heute, um die Lücke zu decken</div>';
+  h+='<div class="kachel"><b>AHV pro Jahr</b><div class="zahl">'+chf(r.ahvJahr)+'</div>13 Monatsrenten, die 13. im Dezember (im ersten Rentenjahr anteilig)</div></div>';
+  var teile=[["AHV",r.ahv,"var(--c1)"],["13. AHV-Rente (Monatsschnitt)",r.ahv13,"var(--c2)"],["Pensionskasse",r.pkRente,"var(--c3)"],["3a und Erspartes",r.verzehr,"var(--c4)"]];
+  var skala=Math.max(r.total,r.ziel)||1;
+  h+='<div class="balken" aria-hidden="true">'+teile.map(function(t){return '<i style="width:'+(t[1]/skala*100)+'%;background:'+t[2]+'"></i>'}).join("")+(r.ziel?'<span class="ziel" style="left:calc('+(r.ziel/skala*100)+'% - 1px)" title="Ziel"></span>':'')+'</div>';
+  h+='<div class="leg">'+teile.map(function(t){return '<span style="--c:'+t[2]+'">'+t[0]+'</span>'}).join("")+(r.ziel?'<span style="--c:var(--ink)">Strich = dein Ziel</span>':'')+'</div>';
+  h+='<table>';
+  teile.forEach(function(t){h+='<tr><td>'+t[0]+'</td><td class="r">'+chf(t[1])+' / Mt.</td></tr>'});
+  h+='<tr><td><b>Total</b></td><td class="r"><b>'+chf(r.total)+' / Mt.</b></td></tr></table>';
+  if(!v("pksatz")&&(v("pk65")||v("pkheute")))h+='<p class="urteil warn">Ohne Umwandlungssatz rechnet der Check mit 6,8 %, dem gesetzlichen Minimum für den obligatorischen Teil. Für das ganze Guthaben ist das eine Höchstannahme: Satz vom Vorsorgeausweis eintragen.</p>';
+  if(r.kuerzung)h+='<p class="urteil warn">Pensionierung mit '+r.pensionsalter+': Die AHV beginnt '+(r.jahreOhneAhv?'frühestens mit 63, ':'')+'gekürzt um '+(r.kuerzung*100).toFixed(1).replace(".",",")+' % (Art. 40 AHVG, Art. 56bis AHVV), lebenslang.'+(r.jahreOhneAhv?' Die '+r.jahreOhneAhv+' Jahre bis 63 überbrückst du aus eigenem Kapital: rund '+chf(r.ueberbrueckung)+', im Kapitalbedarf eingerechnet.':'')+'</p>';
+  if(r.ehepaar)h+='<p class="urteil">Als Ehepaar ist die Summe der AHV-Renten begrenzt: auf 150 % der Höchstrente, bei fehlenden Beitragsjahren anteilig weniger (Art. 35 AHVG, Art. 53bis AHVV). Bei euch '+chf(r.ehepaar.max)+' pro Monat statt '+chf(r.ehepaar.vorher)+(r.kuerzung?', vor der Kürzung für den Vorbezug':'')+'.</p>';
+  [["j1","Mit"],["j2","Partner/in: mit"]].forEach(function(x){if(x[0]==="j2"&&st.zivil!=="ja")return;var j=v(x[0]);
+    if(!j)h+='<p class="urteil warn">'+(x[0]==="j2"?"Partner/in: ":"")+'Ohne Beitragsjahre gibt es keine AHV-Rente. Beitragsjahre eintragen.</p>';
+    else if(j<44)h+='<p class="urteil warn">'+x[1]+' '+j+' von 44 Beitragsjahren gibt es eine Teilrente. AHV-Beiträge verjähren nach fünf Jahren (Art. 16 AHVG): Fehlende Jahre der letzten fünf Jahre lassen sich bei der Ausgleichskasse noch nachzahlen.</p>';});
+  if(r.luecke){h+='<p class="urteil warn">Um die Lücke von '+chf(r.luecke)+' pro Monat bis Alter '+(v("bisAlter")||90)+' zu decken, brauchst du bei der Pensionierung zusätzlich rund <b>'+chf(r.kapitalNoetig)+'</b>. Hebel: 3a voll einzahlen, Einkauf in die Pensionskasse prüfen (steuerlich abzugsfähig, Sperrfrist drei Jahre vor einem Kapitalbezug), später pensionieren oder das Budget anpassen.</p>'}
+  else if(r.ziel)h+='<p class="urteil">Mit diesen Annahmen deckt dein Einkommen im Ruhestand dein Budget. Prüf die Annahmen alle paar Jahre mit dem neusten Vorsorgeausweis.</p>';
+  h+='<p class="klein" style="margin-top:8px">Pensionskasse: '+chf(r.pkGuthaben)+' Altersguthaben × '+String(r.pkSatz).replace(".",",")+' %. Säule 3a bei Pensionierung: '+chf(r.kapital3a)+', freies Vermögen: '+chf(r.kapitalVermoegen)+', aufgebraucht über '+r.ruhejahre+' Jahre.</p>';
+  $("out").innerHTML=h;fahrplan(r);
+}
+function fahrplan(r){
+  var bis=r.jahreBis,L=[
+    [10,"10 Jahre vorher","AHV-Kontoauszug bestellen","Auszug aus dem individuellen Konto bei der Ausgleichskasse, kostenlos. Beiträge verjähren nach fünf Jahren (Art. 16 AHVG): Lücken früh finden, solange sie sich noch schliessen lassen."],
+    [10,"10 Jahre vorher","Säule 3a aufteilen","Mehrere 3a-Konten eröffnen. Sie lassen sich in verschiedenen Jahren beziehen, das senkt die Steuer auf den Kapitalbezügen oft."],
+    [5,"5 Jahre vorher","Einkauf in die Pensionskasse prüfen","Die mögliche Einkaufssumme steht im Vorsorgeausweis. Aus einem Einkauf darf drei Jahre lang kein Kapital bezogen werden (Art. 79b Abs. 3 BVG)."],
+    [5,"5 Jahre vorher","Rentenvorausberechnung verlangen","Bei der Ausgleichskasse, kostenlos. Ersetzt die Schätzung hier durch die amtliche Zahl."],
+    [3,"3 Jahre vorher","Rente oder Kapital entscheiden","Die Frist für den Kapitalbezug steht im Reglement deiner Pensionskasse. Rente: lebenslang sicher. Kapital: flexibel, aber du trägst das Risiko."],
+    [1,"1 Jahr vorher","Budget für den Ruhestand","Krankenkasse, Wohnen, Steuern: Steuern fallen auch im Ruhestand an, auf Renten und Vermögen."],
+    [0,"Einige Monate vorher","AHV-Rente anmelden","Bei der Ausgleichskasse. Die Rente beginnt am ersten Tag des Monats nach dem Referenzalter (Art. 21 AHVG)."]];
+  $("fahrplan").innerHTML=L.map(function(x){return '<li><span class="w">'+x[1]+(x[0]&&x[0]>bis?" · Zeitpunkt vorbei, trotzdem prüfen":"")+'</span><b>'+x[2]+'</b>'+x[3]+'</li>'}).join("");
+}
+document.addEventListener("input",function(ev){var id=ev.target.id;if(IDS.indexOf(id)<0)return;st[id]=ev.target.value;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}render()});
+document.addEventListener("change",function(ev){if(ev.target.tagName==="SELECT")ev.target.dispatchEvent(new Event("input",{bubbles:true}))});
+$("reset").addEventListener("click",function(){if(confirm("Alle Eingaben löschen?")){st=Object.assign({},VOR);IDS.forEach(function(k){$(k).value=st[k]});try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}render()}});
+render();
+})();
+</script>
+</body>
+</html>
