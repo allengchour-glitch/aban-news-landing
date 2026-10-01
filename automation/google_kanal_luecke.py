@@ -40,8 +40,9 @@ def _hinten(*stämme):
     return r"(?:%s)*(?:%s)(?!%s)" % (W, "|".join(stämme), W)
 
 RISIKO = [
-    ("Tabak/Rauchen",   _hinten(r"tabak\w*", r"shisha\w*", r"grinder", r"bong", r"vape\w*",
-                                r"zigarette\w*", r"wasserpfeife\w*", r"pfeifenkopf")
+    # 01.10.2026: «Zigarettenanzünder» ist die 12-V-Steckdose im Auto (5 Ladegeräte fielen aus Google), «Seifengrinder» ein Seifenhobel.
+    ("Tabak/Rauchen",   _hinten(r"tabak\w*", r"shisha\w*", r"(?<!seifen)grinder", r"bong", r"vape\w*",
+                                r"zigarette(?!n-?anz[üu]nder)\w*", r"wasserpfeife\w*", r"pfeifenkopf")
                         + r"|(?<!%s)(?:cbd|joint|e-zigarette\w*)(?!%s)" % (W, W)),
     ("Heilversprechen", r"(?:licht|photo|foto|laser|magnet|elektro|physio|akupunktur|infrarot)"
                         r"therapie" + r"|(?<!%s)(?:therapieger[äa]t\w*|heilt|medizinprodukt\w*|"
@@ -54,6 +55,7 @@ RISIKO = [
                         r"nachbildung\w*|f[äa]lschung\w*)(?!%s)" % (W, W)),
 ]
 RISIKO = [(n, re.compile(p, re.I)) for n, p in RISIKO]
+_KUECHE = re.compile(r"entsafter|mixer|k[üu]che|kaffee|gew[üu]rz|pfeffer|salz", re.I)
 
 # Klingen NICHT neu erfinden — die Hausregel ist seit dem 16.09. gehärtet und
 # getestet (automation/handklingenregel_test.py). Eine zweite Kopie liefe
@@ -75,6 +77,8 @@ def grund(titel, tags):
                 return f"Tag «{t}»"
     for name, rx in RISIKO:
         m = rx.search(titel or "")
+        if m and name == "Tabak/Rauchen" and m.group(0).lower().endswith("grinder") and _KUECHE.search(titel or ""):
+            m = None                 # «Mixer, Entsafter & Grinder» = Küchengerät (01.10.2026)
         if m:
             return f"{name} im Titel («{m.group(0)}»)"
     if ist_klinge(titel or ""):

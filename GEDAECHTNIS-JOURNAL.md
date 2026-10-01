@@ -11,6 +11,33 @@
 
 
 
+
+## 2026-10-01 17:50 · 🗂️ Feinkategorien 2. Welle + Ampel-Speicherzeile
+
+**Betreiber:** «anpassen und alles verbessern» (nach dem Routinen-Update).
+
+- **Gemessen** (frischer Voll-Export 49'324 aktive): grob blieben Decor 1'571, Kitchen & Dining 981, Vehicle Parts 449,
+  Jewelry 227, Lighting 209, Toys 368, Arts & Entertainment 252 (Sticker). Shoes 5'443 und Backpacks 1'017 sind bei Google ENDKNOTEN — nichts zu tun.
+- **Getan:** `google_kategorie_fein.py` Schritt (4) bekommt Zweig-Tabellen für diese sieben Oberzweige (nur Unterzweig des bisherigen
+  Werts, Präfix-Regel bleibt). Neu: `PLAN_OUT=datei` schreibt die ganze Prüfliste (Ziel, Titel, ID) — Stichprobe je Klasse statt 4 Titel.
+  Ein Zweig-Eintrag mit Ziel `None` ist eine SPERRE (Titel bleibt grob). Unbekannte Pfade brechen jetzt laut ab statt still zu fehlen.
+- **Zwei Trockenläufe fanden ~25 Fehlgriffe, alle vor dem Schreiben gesperrt:** «LED-Taschenlampe»/«Moskitolampe»/«Fahrrad-Frontscheinwerfer»
+  als Wohnlampe; `\bdruck\b` traf «Cartoon-Druck», «3D-Druck», «Anti-Druck»; «Kochgeschirr-Set» als Tafelgeschirr (Regel-Reihenfolge);
+  «Tassen-Organizer», «Spatelhalter», «Sägekette», «Kettensägen-Schärfset», «Plissee-Kissen», «Abtropfgestell» als Besteck; «Insektenschutz-
+  Türvorhang» → Window Screens statt Vorhang; «Taillenkette» → Body Jewelry statt Halskette.
+- **Ergebnis:** 1'742 verfeinert, 0 Fehler (zurückgelesen); dazu 70 «Clothing» aus dem Tageslauf. 5'544 bleiben grob (Fitness 878 = viele
+  Velo-Lichter, die die Präfix-Regel bewusst nicht über Kreuz verschiebt).
+- **Ampel:** «Datei-Speicher voll» hing 24 h an alten FILE_STORAGE_LIMIT-Fehlschlägen VOR dem Grow-Wechsel → zählt jetzt erst ab
+  `_grow_aktiv.txt` (16:00 UTC).
+- **Lehre:** Reihenfolge ist Vorrang — eine allgemeine Regel («geschirr-set») vor der spezifischen («kochgeschirr-set») verschluckt sie.
+  Bei jeder neuen Tabelle die volle Prüfliste je Zielklasse lesen, nicht nur die Zählung.
+- **Nachtrag 17:55 — Fehlalarm des neuen Google-Wächters:** «Auto-USB-Ladegerät mit Zigarettenanzünder» wurde als Tabak aus Google
+  genommen. Vollmessung der Tabak-Regel am Katalog: 7 harmlose Treffer (5 Kfz-Ladegeräte «Zigarettenanzünder», «Mixer, Entsafter &
+  Grinder», «Seifengrinder»). `google_kanal_luecke.py`: `zigarette(?!n-?anzünder)`, `(?<!seifen)grinder`, Grinder mit Küchenwort im
+  Titel frei; Kanarienvögel 12/12 (echte Tabakware bleibt draussen); Ladegerät wieder im Google-Kanal (zurückgelesen).
+  Lehre: Eine Sperrregel, die bisher nur täglich ein Bericht war, wird mit einem automatischen Vollstrecker zur Schreibregel —
+  vorher ihre Treffer am ganzen Katalog lesen.
+
 ## 2026-10-01 · 🗂️ Feinkategorien überall — und ein Skript, das ohne DRY=1 sofort schreibt
 5'087 Google-Kanal-Produkte von grob auf fein (nur Unterzweig des bisherigen Werts). Falle 1: `google_kategorie_fein.py` hat `SCHARF = DRY != "1"` — mein «Trockenlauf» schrieb 2'049 Werte; nachträglich je Zielpfad Stichproben gelesen und 59 Fehlgriffe korrigiert. Falle 2: «leine» in «kleine» (105 Fehltreffer, im echten Trockenlauf gefunden). Falle 3: eine Kostüm-Regel widersprach dem Beschluss «Kostüme ohne Google» und traf ein Hundekostüm → zurückgenommen.
 **Lehre:** Vor jedem Lauf den Standardmodus im Kopf des Skripts lesen — «ohne Schalter = Trockenlauf» ist eine Annahme, keine Regel. Und vor einer neuen Regel das Gedächtnis nach der Klasse durchsuchen (Kostüm = bewusst draussen). → `dropship/GOOGLE-FOKUS-2026-10-01.md`

@@ -535,15 +535,128 @@ def main():
              (r"\bhammer\b", TO + " > Hammers"), (r"massband|maßband|wasserwaage|messschieber|zollstock|laser-?entfernung|entfernungsmesser", TO + " > Measuring Tools & Sensors"),
              (r"feuerzeug|stabfeuerzeug", TO + " > Lighters & Matches"), (r"\bleiter\b|trittleiter|klappleiter", TO + " > Ladders & Scaffolding"),
              (r"hei(?:ss|ß)luftf[öo]hn|hei(?:ss|ß)luftpistole", TO + " > Heat Guns"), (r"schraubendreher|schraubenzieher", TO + " > Screwdrivers"),
-             (r"\bzange\b|kombizange|spitzzange|seitenschneider", TO + " > Pliers"), (r"winkelschleifer|schleifmaschine", TO + " > Grinders")],
+             (r"\bzange\b|kombizange|spitzzange|seitenschneider", TO + " > Pliers"), (r"winkelschleifer|schleifmaschine", TO + " > Grinders"),
+             (r"ringschl[üu]ssel|gabelschl[üu]ssel|steckschl[üu]ssel|drehmomentschl[üu]ssel|ratschenschl[üu]ssel|rohrzange", TO + " > Wrenches"),
+             (r"werkzeugset|werkzeug-set|werkzeugkoffer|werkzeugkasten", TO + " > Tool Sets"), (r"l[öo]tkolben|l[öo]tstation", TO + " > Soldering Irons"),
+             (r"fugenpistole|kartuschenpistole|silikonpistole", TO + " > Caulking Tools"), (r"^(?!.*(?:sch[äa]rf|s[äa]gekette|sechskant)).*(?:\bs[äa]ge\b|hands[äa]ge|stichs[äa]ge|ketten?s[äa]ge|b[üu]gels[äa]ge)", TO + " > Saws")],
     }
-    ZWEIG = {k: [(re.compile(m, re.I), z) for m, z in v if z in gueltig] for k, v in ZWEIG.items()}
+    # 01.10.2026 (zweite Welle, Betreiber «anpassen und alles verbessern»): die nächstgrössten groben Zweige nach Shoes/Backpacks
+    # (Endknoten): Decor 1'571, Kitchen & Dining 981, Vehicle Parts 449, Jewelry 227, Lighting 209, Toys 368, Arts 252.
+    # Deutsche Komposita: Warenwort am Ende → «\w*wort» statt «\bwort\b»; Vorrang = spezifisch vor allgemein.
+    D, K, V, J, L, T = ("Home & Garden > Decor", "Home & Garden > Kitchen & Dining", "Vehicles & Parts > Vehicle Parts & Accessories",
+                        "Apparel & Accessories > Jewelry", "Home & Garden > Lighting", "Toys & Games > Toys")
+    VD, KT, KA = V + " > Vehicle Maintenance, Care & Decor", K + " > Kitchen Tools & Utensils", K + " > Kitchen Appliances"
+    ZWEIG[D] = [(r"sitzkissen|stuhlkissen|sitzauflage|sitzpolster|stuhlpolster|bankauflage|tatami|bodenkissen", D + " > Chair & Sofa Cushions"),
+                (r"(?:sofa|couch|stuhl|sessel|armlehnen|r[üu]ckenlehnen)\w*[- ]?(?:bezug|bez[üu]ge|[üu]berzug|[üu]berwurf|husse)|\bhusse|sofa-?schutz", D + " > Slipcovers"),
+                (r"^(?!.*(?:nacken|schlaf|still|reise|seitenschl|bauchschl|lagerung|knie|orthop|lenden|kopfkissen))(?:.*(?:zier|deko|sofa|couch|plüsch|pl[üu]sch)[- ]?kissen|.*kissenbez|.*kissenh[üu]lle)", D + " > Throw Pillows"),
+                (r"fu(?:ss|ß)matte|t[üu]rmatte|schmutzfangmatte|fu(?:ss|ß)abtreter", D + " > Door Mats"),
+                (r"wandteppich|tapisserie", D + " > Artwork > Decorative Tapestries"), (r"^(?!.*(?:reinig|kehr|klebeband|shampoo|kn[üu]pf|set f[üu]r anf)).*teppich|\bl[äa]ufer\b", D + " > Rugs"),
+                (r"insektenschutz|fliegengitter|m[üu]ckenschutz|m[üu]ckennetz", D + " > Window Treatments > Window Screens"), (r"raffhalter|gardinenstange|vorhangstange|vorhangschiene", D + " > Window Treatment Accessories"), (r"^(?!.*dusch).*(?:vorhang|vorh[äa]nge|gardine|verdunklungsvorhang)", D + " > Window Treatments > Curtains & Drapes"),
+                (r"^(?!.*kissen).*(?:\brollo\b|jalousie|plissee)", D + " > Window Treatments > Window Blinds & Shades"), (r"fensterfolie|sichtschutzfolie", D + " > Window Treatments > Window Films"),
+                (r"\bvase\b|\bvasen\b|\w+vase\b", D + " > Vases"),
+                (r"kunstblume|kunstpflanze|k[üu]nstliche\w* (?:blume|pflanze|rose|orchidee|eukalyptus|baum|sukkulente|olivenbaum)", D + " > Artificial Flora"),
+                (r"trockenblume|getrocknete\w* blume|pampasgras", D + " > Dried Flowers"),
+                (r"kerzenhalter|kerzenst[äa]nder|teelichthalter|windlicht", D + " > Home Fragrance Accessories > Candle Holders"),
+                (r"led[- ]?kerze|flammenlose\w* kerze", D + " > Flameless Candles"),
+                (r"duftkerze|\bkerzen?\b|\w+kerzen?\b", D + " > Home Fragrances > Candles"),
+                (r"r[äa]ucherst[äa]bchen|weihrauch", D + " > Home Fragrances > Incense"), (r"duft[öo]l|aroma[öo]l", D + " > Home Fragrances > Fragrance Oil"),
+                (r"raumduft|lufterfrischer|duftst[äa]bchen|diffusor-?st[äa]bchen", D + " > Home Fragrances > Air Fresheners"),
+                (r"bilderrahmen|fotorahmen|\w*rahmen f[üu]r (?:fotos|bilder)", D + " > Picture Frames"),
+                (r"wanduhr", D + " > Clocks > Wall Clocks"), (r"wecker", D + " > Clocks > Alarm Clocks"), (r"tischuhr|kaminuhr", D + " > Clocks > Desk & Shelf Clocks"),
+                (r"standuhr", D + " > Clocks > Floor & Grandfather Clocks"), (r"sanduhr", D + " > Hourglasses"),
+                (r"wandteppich|tapisserie", D + " > Artwork > Decorative Tapestries"),
+                (r"poster|leinwand|wandbild|wandkunst|gem[äa]lde|kunstdruck", D + " > Artwork > Posters, Prints, & Visual Artwork"),
+                (r"wandtattoo|wandaufkleber|wandsticker", D + " > Home Decor Decals"),
+                (r"(?:garten|rasen)\w*[- ]?(?:figur|statue|skulptur|deko)|gartenstecker", D + " > Lawn Ornaments & Garden Sculptures"),
+                (r"adventskranz|t[üu]rkranz|\bkranz\b|girlande", D + " > Wreaths & Garlands"),
+                (r"^(?!.*(?:kissen|box|aufbewahrung|pl[üu]sch)).*(?:\w*figur\b|\w*figuren\b|statue|skulptur|b[üu]ste\b)", D + " > Figurines"),
+                (r"weihnacht|halloween|ostern|oster\w+|advent|christbaum|tannenbaum", D + " > Seasonal & Holiday Decorations"),
+                (r"windspiel|klangspiel", D + " > Wind Chimes"), (r"traumf[äa]nger", D + " > Dreamcatchers"), (r"schneekugel", D + " > Snow Globes"),
+                (r"spieluhr|musikdose", D + " > Music Boxes"), (r"spardose|sparschwein", D + " > Piggy Banks & Money Jars"),
+                (r"sonnenf[äa]nger|suncatcher", D + " > Suncatchers"), (r"buchst[üu]tze", D + " > Bookends"),
+                (r"garderobe|kleiderhaken|hutablage|wandhaken", D + " > Coat & Hat Racks"), (r"k[üu]hlschrankmagnet", D + " > Refrigerator Magnets"),
+                (r"tapete", D + " > Wallpaper"), (r"flagge|\bfahne\b", D + " > Flags & Windsocks"), (r"springbrunnen|zimmerbrunnen|gartenbrunnen", D + " > Fountains & Ponds"),
+                (r"vogelhaus|nistkasten", D + " > Bird & Wildlife Houses"), (r"vogelfutter\w*", D + " > Bird & Wildlife Feeders"),
+                (r"\bspiegel\b|\w+spiegel\b", D + " > Mirrors"), (r"\w*korb\b|\w*k[öo]rbe\b", D + " > Baskets"), (r"deko-?tablett|\btablett\b", D + " > Decorative Trays")]
+    ZWEIG[K] = [(r"schneidebrett|schneidbrett|hackbrett|servierbrett", KT + " > Cutting Boards"), (r"korkenzieher|weinöffner|wein[öo]ffner", K + " > Barware > Corkscrews"),
+                (r"flaschen[öo]ffner", K + " > Barware > Cocktail Shakers & Tools > Bottle Openers"),
+                (r"trinkflasche|wasserflasche|thermosflasche|isolierflasche", K + " > Food & Beverage Carriers > Water Bottles"),
+                (r"lunchbox|brotdose|bento", K + " > Food & Beverage Carriers > Lunch Boxes & Totes"), (r"brotkasten|brotbeutel", K + " > Food Storage > Bread Boxes & Bags"),
+                (r"vorratsdose|vorratsglas|frischhaltedose|aufbewahrungsdose|vorratsbeh[äa]lter", K + " > Food Storage > Food Storage Containers"),
+                (r"^(?!.*(?:reiniger|halter|w[äa]rmer|warmhalte|organizer)).*(?:tasse|\bbecher\b|\w+becher\b|kaffeebecher)", K + " > Tableware > Drinkware > Mugs"),
+                (r"^(?!.*(?:koch|einweg)).*(?:geschirr-?set|tafelservice|geschirrservice)", K + " > Tableware > Dinnerware > Dinnerware Sets"),
+                (r"\bteller\b|\w+teller\b", K + " > Tableware > Dinnerware > Plates"), (r"sch[üu]ssel|\w*schale\b|\w*schalen\b|schälchen|sch[äa]lchen", K + " > Tableware > Dinnerware > Bowls"),
+                (r"^(?!.*(?:gestell|halter|organizer|abtropf|kasten|einsatz)).*(?:besteck|essst[äa]bchen|st[äa]bchen-?set)", K + " > Tableware > Flatware"), (r"teekanne|kaffeekanne", K + " > Tableware > Coffee Servers & Tea Pots"),
+                (r"^(?!.*(?:wender|halter|reinig|st[äa]nder)).*(?:(?:topf|kochtopf|pfannen|kochgeschirr)[- ]?set|kochgeschirr)", K + " > Cookware & Bakeware > Cookware > Cookware Sets"), (r"pfanne", K + " > Cookware & Bakeware > Cookware > Skillets & Frying Pans"), (r"\bwok\b", K + " > Cookware & Bakeware > Cookware > Woks"),
+                (r"^(?!.*elektr).*(?:kochtopf|suppentopf|\btopf\b)", K + " > Cookware & Bakeware > Cookware > Stock Pots"),
+                (r"backform|kuchenform|muffinform|springform|silikonform", K + " > Cookware & Bakeware > Bakeware > Cake Pans & Molds"),
+                (r"^(?!.*kocher).*backblech", K + " > Cookware & Bakeware > Bakeware > Baking & Cookie Sheets"), (r"backmatte|backpapier|dauerbackfolie", K + " > Cookware & Bakeware > Bakeware Accessories > Baking Mats & Liners"),
+                (r"teesieb|tee-?ei\b", KT + " > Tea Strainers"), (r"^(?!.*(?:gestell|organizer|regal|halter)).*(?:\bsieb\b|\w+sieb\b|abtropfsieb)", KT + " > Colanders & Strainers"),
+                (r"\breibe\b|\w+reibe\b|zestenreibe", KT + " > Food Graters & Zesters"), (r"gew[üu]rzm[üu]hle|pfefferm[üu]hle|salzm[üu]hle", KT + " > Spice Grinders"),
+                (r"sch[üu]rze", KT + " > Aprons"), (r"ofenhandschuh|topflappen", KT + " > Oven Mitts & Pot Holders"), (r"dosen[öo]ffner", KT + " > Can Openers"),
+                (r"(?:grill|bbq|braten|fleisch|k[üu]chen)\w*[- ]?thermometer|temperaturmessger[äa]t", KT + " > Cooking Thermometers"), (r"^(?!.*(?:halter|thermometer)).*(?:pfannenwender|\bspatel\b|\w+spatel\b)", KT + " > Spatulas"), (r"schneebesen", KT + " > Whisks"), (r"sch[öo]pfkelle|suppenkelle|\bkelle\b", KT + " > Ladles"),
+                (r"grillzange|k[üu]chenzange|servierzange", KT + " > Tongs"), (r"eisw[üu]rfel", KT + " > Ice Cube Trays"),
+                
+                (r"milchaufsch[äa]umer", KA + " > Milk Frothers & Steamers"), (r"standmixer|stabmixer|\bmixer\b", KA + " > Food Mixers & Blenders"),
+                (r"^(?!.*f[üu]r (?:die |eine )?kaffeemaschine).*(?:kaffeemaschine|espressomaschine|french press|espressokocher)", KA + " > Coffee Makers & Espresso Machines"),
+                (r"kaffeefilter", K + " > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories > Coffee Filters"),
+                (r"^(?!.*(?:b[üu]rste|reinig)).*kaffeem[üu]hle", K + " > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories > Coffee Grinders")]
+    ZWEIG[V] = [(r"lenkrad\w*[- ]?(?:bezug|h[üu]lle|abdeckung)|lenkradbezug", VD + " > Vehicle Decor > Vehicle Steering Wheel Covers"),
+                (r"lufterfrischer|autoduft|auto-?duft|duft\w* f[üu]r (?:das |den |s )?auto|l[üu]ftungsclip", VD + " > Vehicle Decor > Vehicle Air Fresheners"),
+                (r"starthilfe|jump ?starter|notstarter", VD + " > Vehicle Repair & Specialty Tools > Vehicle Jump Starters"),
+                (r"armaturenbrett|dashboard", VD + " > Vehicle Decor > Vehicle Dashboard Accessories"),
+                (r"organizer|aufbewahrung|r[üu]cksitztasche|kofferraum\w*(?:tasche|box)", V + " > Vehicle Storage & Cargo > Vehicle Organizers"),
+                (r"waschb[üu]rste|autow[äa]sche|polier", VD + " > Vehicle Cleaning")]
+    ZWEIG[J] = [(r"uhrenarmband|uhrarmband|armband f[üu]r (?:die )?(?:apple )?watch|watch[- ]?armband", J + " > Watch Accessories > Watch Bands"),
+                (r"ohrring|ohrstecker|ohrh[äa]nger|creole|ear ?cuff|ohrklemme", J + " > Earrings"), (r"fu(?:ss|ß)kett", J + " > Anklets"),
+                (r"piercing|bauchnabel|nasenring|fingerkette|taillenkette|bauchkette|k[öo]rperkette", J + " > Body Jewelry"),
+                (r"schmuckset|schmuck-set|parure", J + " > Jewelry Sets"), (r"brosche|anstecknadel|\bpin\b", J + " > Brooches & Lapel Pins"),
+                (r"^(?!.*halskette).*anh[äa]nger|\bcharm", J + " > Charms & Pendants"),
+                (r"armbanduhr|\w+uhr\b|\buhr\b", J + " > Watches"),
+                (r"^(?!.*(?:armbandperlen|perlen f[üu]r|diy)).*(?:armband|armb[äa]nder|armreif|armkett|armspange)", J + " > Bracelets"),
+                (r"halskette|\bkette\b|\w+kette\b|collier|choker|halsband", J + " > Necklaces"),
+                (r"\w*ring\b|\w*ringe\b", J + " > Rings")]
+    ZWEIG[L] = [(r"w[äa]rmelampe|heizlampe|rotlicht|taschenlampe|stirnlampe|kopflampe|uv-?lampe|nagellampe|m[üu]cken|moskito|insekt|fahrrad|velo|brillenlampe", None),
+                (r"lichterkette|led-?streifen|led-?band|lichtschlauch|lichtervorhang", L + " > Light Ropes & Strings"),
+                (r"kronleuchter|l[üu]ster", L + " > Lighting Fixtures > Chandeliers"),
+                (r"deckenleuchte|deckenlampe|pendelleuchte|pendellampe|h[äa]ngeleuchte|h[äa]ngelampe", L + " > Lighting Fixtures > Ceiling Light Fixtures"),
+                (r"wandleuchte|wandlampe", L + " > Lighting Fixtures > Wall Light Fixtures"), (r"unterbauleuchte|schrankleuchte|schranklicht|schranklampe", L + " > Lighting Fixtures > Cabinet Light Fixtures"),
+                (r"gl[üu]hbirne|leuchtmittel|led-?birne|\be27\b|\bgu10\b", L + " > Light Bulbs"),
+                (r"strahler|scheinwerfer|flutlicht|fluter", L + " > Flood & Spot Lights"),
+                (r"(?:weg|garten|treppen|boden|pfad)\w*leucht|(?:weg|garten|treppen)\w*licht|solar-?(?:weg|garten|treppe)", L + " > Landscape Pathway Lighting"),
+                (r"notlicht|notleuchte", L + " > Emergency Lighting"),
+                (r"nachtlicht|stimmungslicht|projektor|sternenhimmel|galaxy|ambiente?licht|led-?w[üu]rfel", L + " > Night Lights & Ambient Lighting"),
+                (r"tischlampe|nachttischlampe|stehlampe|leselampe|schreibtischlampe|tischleuchte|\blampe\b|\w+lampe\b", L + " > Lamps")]
+    ZWEIG[T] = [(r"pl[üu]sch|kuscheltier|stofftier", T + " > Dolls, Playsets & Toy Figures > Stuffed Animals"),
+                (r"ferngesteuert|\brc[- ]|\brc\b|fernsteuer", T + " > Remote Control Toys"),
+                (r"bausteine|klemmbaustein|bauset|baukl[öo]tze|magnetbausteine", T + " > Building Toys"),
+                (r"badespielzeug|badewannen\w*spielzeug|badeente", T + " > Bath Toys"), (r"sandspielzeug|strandspielzeug|sandkasten", T + " > Beach & Sand Toys"),
+                (r"seifenblase", T + " > Activity Toys > Bubble Blowing Toys"), (r"kaleidoskop", T + " > Visual Toys > Kaleidoscopes"),
+                (r"roboter", T + " > Robotic Toys"), (r"aufzieh", T + " > Wind-Up Toys"),
+                (r"spielk[üu]che|kaufladen|arztkoffer|werkzeugkoffer f[üu]r kinder|rollenspiel", T + " > Pretend Play"),
+                (r"xylophon|spielzeugtrommel|musikspielzeug|kinderklavier", T + " > Musical Toys"),
+                (r"lernspielzeug|montessori|lernspiel", T + " > Educational Toys"),
+                (r"\bpuppe\b|\w+puppe\b", T + " > Dolls, Playsets & Toy Figures"), (r"actionfigur|spielfigur", T + " > Dolls, Playsets & Toy Figures > Action & Toy Figures"),
+                (r"rennwagen|spielzeugauto|\bauto\b|eisenbahn|\bzug\b|lkw|bagger|traktor|feuerwehrauto|modellauto", T + " > Play Vehicles")]
+    ZWEIG["Arts & Entertainment"] = [(r"\bsticker\b|\w+sticker\b|aufkleber",
+                                      "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Decorative Stickers"),
+                                     (r"luftballon|\bballon", "Arts & Entertainment > Party & Celebration > Party Supplies > Balloons"),
+                                     (r"konfetti", "Arts & Entertainment > Party & Celebration > Party Supplies > Confetti")]
+    ZWEIG[PS] += [(r"sch[üu]ssel|\bbowl\b|futterbowl", PS + " > Pet Bowls, Feeders & Waterers")]
+    falsch = [z for v in ZWEIG.values() for _, z in v if z and z not in gueltig]
+    if falsch:
+        raise RuntimeError("Zweig-Pfad unbekannt (nichts geschrieben): " + "; ".join(falsch[:5]))
+    # Eintrag mit Ziel None = Sperre: Titel bleibt grob (z. B. Wärmelampe ≠ Wohnlampe).
+    ZWEIG = {k: [(re.compile(m, re.I), z) for m, z in v] for k, v in ZWEIG.items()}
     fplan, foffen = [], collections.Counter()
     for r in alle:
         v = ((r.get("metafield") or {}).get("value") or "").strip()
         if not r.get("g") or not v or v in (GROB, ELEK) or v.count(">") > 1 or v not in hat_kinder:
             continue
-        z = next((zz for rx, zz in ZWEIG.get(v, []) if rx.search(r.get("title", ""))), None)
+        treffer = next(((rx, zz) for rx, zz in ZWEIG.get(v, []) if rx.search(r.get("title", ""))), None)
+        if treffer and treffer[1] is None:          # Sperre
+            foffen[v] += 1; continue
+        z = treffer[1] if treffer else None
         if z:
             fplan.append((r["id"], r.get("handle", ""), r.get("title", ""), z)); continue
         z, q = ziel_leer(r.get("title", ""), (), "")
@@ -559,6 +672,10 @@ def main():
     for k, v in fzaehl.most_common(25):
         print(f"  {v:5d}  {k}")
     print("  bleibt grob (häufigste):", ", ".join(f"{k} {n}" for k, n in foffen.most_common(8)))
+    if os.environ.get("PLAN_OUT"):                 # Prüfliste für die Stichproben-Durchsicht (alle Klassen, jede Zeile)
+        with open(os.environ["PLAN_OUT"], "w", encoding="utf-8") as po:
+            for pid, _, t, z in fplan:
+                po.write(f"{z}\t{t}\t{pid}\n")
     if not SCHARF:
         import random
         random.seed(7)

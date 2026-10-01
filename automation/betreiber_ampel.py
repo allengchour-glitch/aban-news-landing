@@ -56,6 +56,13 @@ def datei_speicher_voll():
         return None                      # kein Befund aus einer kaputten Abfrage
     grenze = (datetime.datetime.now(datetime.timezone.utc)
               - datetime.timedelta(hours=24))
+    # 01.10.2026: Grow aktiv (300 GB) ab dropship/_grow_aktiv.txt (Datum ab 16:00 UTC) — Fehlschläge
+    # VOR dem Wechsel sind Vergangenheit; nur spätere melden (sonst ruft die Ampel 24 h lang falsch).
+    try:
+        g = open(os.path.join(REPO, "dropship", "_grow_aktiv.txt")).read().split("\t")[0].strip()
+        grenze = max(grenze, datetime.datetime.fromisoformat(g + "T16:00:00+00:00"))
+    except Exception:
+        pass
     for k in knoten:
         codes = [f.get("code") for f in (k.get("fileErrors") or [])]
         if "FILE_STORAGE_LIMIT_EXCEEDED" not in codes:
