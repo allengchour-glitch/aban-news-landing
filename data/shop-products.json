@@ -3,8 +3,8 @@
     "slug": "alle-kits",
     "title": "Alle KI-Starter-Kits (Bundle)",
     "desc": "Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.",
-    "price": "CHF 79",
-    "buy": "https://buy.stripe.com/6oUbJ38iicfq4kf2El5wI0m",
+    "price": "CHF 39",
+    "buy": "https://buy.stripe.com/dRm7sN2XY6V68AvceV5wI0Q",
     "bundle": true
   },
   {
@@ -144,49 +144,49 @@
     "slug": "prompt-bibliothek",
     "title": "KI-Prompt-Bibliothek für DACH-Solopreneure",
     "desc": "100+ erprobte Prompts zum Kopieren — Akquise, Kunden, Marketing, Admin & Recherche. Branchen-übergreifend, ehrlich, ohne Hype.",
-    "price": "CHF 19",
-    "buy": "https://buy.stripe.com/28E4gBgOO0wI3gben35wI0n"
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/eVq8wR6aagvG03Zfr75wI0R"
   },
   {
     "slug": "vorlagen-set",
     "title": "Fertige Text-Vorlagen für Solopreneure",
     "desc": "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
-    "price": "CHF 19",
-    "buy": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o"
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/8x2cN70PQ7Za1837YF5wI0S"
   },
   {
     "slug": "strategie-pruefstand",
     "title": "Strategie-Prüfstand: Trading-Ideen ehrlich testen",
     "desc": "Python-Kit: deine Regel gegen 9 bekannte Stile und 200 Zufallsstrategien, Skill in Prozent, Zukunfts-Schutz, Auswahl-Falle, Daytrading-Test. Mit Anleitung zu den sieben Fallen. Keine Anlageberatung.",
-    "price": "CHF 29",
-    "buy": "https://buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p"
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/aFa4gB422djucQLen35wI0T"
   },
   {
     "slug": "schulden-plan",
     "title": "Schulden-Plan Schweiz: tilgen oder investieren",
     "desc": "Alle Schulden in einem Plan: Lawine oder Schneeball, schuldenfrei-Datum, gesparte Zinsen und die Rendite, ab der Investieren gewinnt. Offline-Rechner mit Monatsplan und Anleitung. Keine Finanzberatung.",
-    "price": "CHF 27",
-    "buy": "https://buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q"
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/aFa8wR7ee3IU03Zfr75wI0U"
   },
   {
     "slug": "budget-plan",
     "title": "Budget-Plan Schweiz: nie mehr von der Steuerrechnung überrascht",
     "desc": "Alle Einnahmen und Ausgaben mit Takt (monatlich bis jährlich), monatliche Rückstellung für Steuern und Jahresrechnungen, Muss/Kann/Sparen, Notreserve. Offline-Rechner mit Anleitung. Keine Finanzberatung.",
-    "price": "CHF 19",
-    "buy": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/6oUcN7cyydju3gbfr75wI0V"
   },
   {
     "slug": "mietzins-paket",
     "title": "Mietzins-Paket Schweiz: Senkung verlangen, mit fertigem Brief",
     "desc": "Berechnet die Mietzinssenkung nach Art. 13 und 16 VMWG (Referenzzins, Teuerung, Kosten), den nächstmöglichen Termin und die Fristen, und schreibt das Herabsetzungsbegehren nach Art. 270a OR fertig. Offline-Rechner mit Anleitung. Keine Rechtsberatung.",
-    "price": "CHF 19",
-    "buy": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O"
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/fZu8wR6aagvGg2XdiZ5wI0W"
   },
   {
     "slug": "hochzeits-budget",
     "title": "Hochzeits-Budget-Plan: Kosten pro Gast, Zahlungsplan, Sparrate",
     "desc": "Alle Posten mit Preis pro Gast oder Pauschale, jede Anzahlung mit Datum, die Sparrate, die jede Zahlung deckt, und wie viele Gäste ins Budget passen. Offline-App und Excel-Vorlage mit Anleitung.",
-    "price": "CHF 19",
-    "buy": "https://buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P"
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/eVq28taqq5R29Ez3Ip5wI0X"
   }
 ]

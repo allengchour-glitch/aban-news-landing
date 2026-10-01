@@ -3,8 +3,8 @@
     "slug": "en-alle-kits",
     "title": "All AI Starter Kits (Bundle)",
     "desc": "Every industry kit together — much cheaper than buying separately.",
-    "price": "€79",
-    "buy": "https://buy.stripe.com/00w9AV0PQ93e1836UB5wI0C",
+    "price": "€39",
+    "buy": "https://buy.stripe.com/aFa9AVgOOa7icQL0wd5wI0Y",
     "bundle": true
   },
   {
@@ -144,14 +144,14 @@
     "slug": "en-prompt-bibliothek",
     "title": "AI Prompt Library for Solo Professionals",
     "desc": "100+ proven copy-paste prompts — outreach, clients, marketing, admin & research. Cross-industry, honest, no hype.",
-    "price": "€19",
-    "buy": "https://buy.stripe.com/bJe5kFbuubbm1835Qx5wI0L"
+    "price": "€14",
+    "buy": "https://buy.stripe.com/dRm00l9mmcfqaIDceV5wI0Z"
   },
   {
     "slug": "en-vorlagen-set",
     "title": "Ready-made Text Templates for Solo Professionals",
     "desc": "40 ready-to-use templates for quotes, emails, invoices & rejections. Copy, replace placeholders, send.",
-    "price": "€19",
-    "buy": "https://buy.stripe.com/6oUbJ342293edUP4Mt5wI0M"
+    "price": "€14",
+    "buy": "https://buy.stripe.com/28E6oJ0PQ6V61836UB5wI10"
   }
 ]
