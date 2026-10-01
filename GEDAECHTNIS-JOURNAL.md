@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-01 · 🪟 Microsoft Merchant Center: Store abgelehnt wegen eigener Werbesätze
+Betreiber reichte LuxeStyle bei Microsoft (Bing-Gratis-Listings) ein → «Ihr Store wurde abgelehnt … Beschreibung muss wahrheitsgemäss … sein», 0 Produktprobleme. Ursache waren nicht Produkte, sondern Store-Aussagen: das Admin-Feld `shop.description` («Premium … schnellem Versand in die Schweiz und nach Deutschland», per API nicht änderbar, seit 14.08. nur «Deutschland» im Theme ersetzt), «ohne versteckte Gebühren» im selben Absatz wie «Einfuhrsteuer ab rund CHF 60», «Angaben laufend geprüft»/«Geprüfte Produktangaben» (unbelegbar), EU-Lager «in wenigen Tagen statt Wochen» (nie gemessen), Footer ohne Kontakt. **Lehre:** Ein Prüfer liest Werbesatz und Kleingedrucktes nebeneinander — jede absolute Zusage («ohne», «geprüft», «schnell») braucht einen Beleg, sonst raus. Ein Teil-Replace (nur «Deutschland») lässt den Rest der Lüge stehen. Details `dropship/MICROSOFT-MERCHANT-2026-10-01.md`.
+
 ## 2026-10-01 20:15 · 📣 «push shop mehr» — Gratis-Kanäle, die kaufen
 
 **Gemessen 14 T (Menschen):** 293 Sitzungen, 3 Käufe. Google-Suche 36 → 1 Kauf · Pinterest 8 → 2 Warenkörbe (beste Quote) ·
