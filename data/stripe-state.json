@@ -198,9 +198,10 @@
   },
   "finanz-kompass": {
     "product": "prod_VMYJFEcGeT06Tv",
-    "price": "price_1ULpD7RXvVMyfaIr4zAMWaIb",
-    "link": "https://buy.stripe.com/aFacN79mmgvGeYT2El5wI11",
-    "cents": 4900,
+    "price": "price_1ULpLQRXvVMyfaIrRLjE8urV",
+    "link": "https://buy.stripe.com/dRm3cx8iicfqbMHbaR5wI12",
+    "link_id": "plink_1ULpLQRXvVMyfaIrrTO1ygLW",
+    "cents": 2900,
     "currency": "chf"
   }
 }
