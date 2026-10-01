@@ -9,6 +9,13 @@
 
 
 
+
+## 2026-10-01 · 🧹 Hängende Server-Quittungen (Verbesserungsrunde 04:25 UTC)
+Ampel «BOT-AUFTRAG HAENGT» 8 h für cj-torquellen-…-c/-e (0/6 Videos); Hinweis «von Hand prüfen» blieb liegen. Fix:
+`automation/auftrag_haenger_schliessen.py` (stündlich im Aufseher): schliesst nur, wo das Nachholen belegt ist; Pin-Aufträge nur,
+wenn ein späterer Lauf die Pinnwand gelesen hat; Unbekanntes bleibt. Kanarienvögel 3/3. Aufseher neu gestartet (Datei geändert).
+Lehre: Ein Alarm, der nie eine Handlung auslöst, verdeckt den nächsten echten — Wächter brauchen einen Abschluss-Weg.
+
 ## 2026-10-01 · 🖼️ CJ-Varianten per Bildvergleich (Verbesserungsrunde 00:25 UTC)
 Klasse aus #1021 vermessen: 27'390 Einzelvarianten-Produkte mit CJ-pid-SKU, Stichprobe 40 → 29 mit mehreren CJ-Varianten.
 Fix: `automation/cj_variante_bild.py` + Einbau in `cj_order_engine.vid_fuer()`; Treffer nur bei Einigkeit Gemini/ChatGPT und

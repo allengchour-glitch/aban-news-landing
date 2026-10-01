@@ -869,6 +869,14 @@ while true; do
       echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
     fi
   fi
+  # HAENGENDE SERVER-QUITTUNGEN (01.10.2026): «laufend» > 3 h wird geschlossen, wenn das Nachholen nachweislich
+  # geregelt ist (Download → Merkliste 24 h; Pin → späterer Lauf las die Pinnwand; lesende Aufträge). Alles andere
+  # bleibt in der Ampel. Ohne das meldete die Ampel 8 h lang dieselben zwei Downloads — Rauschen verdeckt Pannen.
+  if [ -f "$REPO/automation/auftrag_haenger_schliessen.py" ]; then
+    AH=$( cd "$REPO" && SCHARF=1 timeout 120 python3 automation/auftrag_haenger_schliessen.py 2>&1 | tail -1 )
+    case "$AH" in "FERTIG: 0 "*) ;; *) echo "$(date -u +%H:%M) haenger: $AH"
+      ( cd "$REPO" && bash automation/git_sichern.sh "Server-Quittungen: hängende geschlossen [skip ci]" auftraege/erledigt >/dev/null 2>&1 ) ;; esac
+  fi
   # PINTEREST-PINS, einmal taeglich (22.09.2026, Betreiber «push mehr» Besucher): legt N Auftraege fuer den
   # Hetzner-Agenten an (je Auftrag EIN Pin, Quittung ueber auftraege/erledigt + Pinnwand). Pinterest steht nicht
   # unter dropship/_SOCIAL_STOPP. Idempotent: gibt es heute schon Auftraege, passiert nichts.
