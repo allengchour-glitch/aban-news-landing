@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T00:36:56Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T01:08:33Z
 
-Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1224 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
+Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1225 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4301** in 1157 Produkten
-- Treffer (≥ 4 Wörter): **167** in 142 Produkten
+- Medien geprüft: **4315** in 1157 Produkten
+- Treffer (≥ 4 Wörter): **168** in 142 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -178,6 +178,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Kinder-Schlafkissen mit Schlaf-Puppe `15453776413057` | [77407215485319](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fec7fcf-3d75-4a83-becb-62a2dc4de8b6_trans.jpg) | 4 | Embrace design Children feel | offen |
 | Keilkissen-Set für Rücken, Beine und Knie `15496359510401` | [77409979826567](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cb2eb66a-aaca-46c2-b521-0b82de4bdc18.jpg) | 4 | Snoring Issue surgery Relaxation | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [77430630547847](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ded9c826-8d29-4235-bedb-80c99cd060de_trans.jpg) | 4 | Ring design fits better | offen |
+| Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [77414983074183](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f15a2c8-bd86-4fdc-aafc-dc131f8d63ed_trans_5c6b88a6-6872-4594-973f-0287e85392ec.jpg) | 4 | silicone Scm and more | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 

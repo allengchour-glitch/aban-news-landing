@@ -199,8 +199,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Grössen…»
 - `15467097719169` · Zirkon-Ring mit Silikon-Einlage im Tropfen-Design
   - «…Erhältlich in verschiedenen Grössen…»
-- `15468317147521` · Handgepäck: Leichtgewicht für Studenten
-  - «…Erhältlich in diversen Farben…»
 - `15468338446721` · Bohemian Armband- und Halsketten-Set
   - «…Erhältlich in verschiedenen Farben…»
 - `15468338807169` · Halskette mit Frucht- oder Muschel-Anhänger
