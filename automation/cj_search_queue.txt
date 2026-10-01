@@ -651,3 +651,39 @@
 #done search:herb grinder 4 piece
 #done search:smell proof stash bag
 #done search:torch lighter jet flame
+# 01.10.2026 Betreiber «grow plan aktiv … fülle die leeren kategorien und neuheiten von cj sachen mit allem drum und dran».
+# Zuerst SAISON (Okt–Dez = Halloween, Herbst, Weihnachten, Winter), dann die dünnen sichtbaren Kollektionen
+# (gemessen 01.10.: led-strip 4 aktiv, schutzglas 5, wallets 5, wimpern 5, spielzeug-fahrzeuge 6, gaming-headsets 8,
+# cocktail 10, garten 11). Importer-Wachen (Klinge, Medizin, Marke, Tierschutz, Heikel, Dublette) greifen wie immer.
+#done search:halloween decoration
+#done search:halloween party decor led
+#done search:halloween costume accessories
+#done search:pumpkin lantern
+search:autumn blanket knitted
+search:candle warmer lamp
+search:cozy throw pillow cover autumn
+search:christmas tree ornaments
+search:christmas decoration led lights
+search:advent calendar box
+search:christmas gift box set
+search:christmas sweater
+search:winter knit beanie
+search:touchscreen gloves winter
+search:cashmere scarf
+search:heated vest
+search:thermal underwear set
+search:fleece lined leggings
+search:winter boots women
+search:house slippers plush
+search:led strip lights rgb
+search:tempered glass screen protector samsung
+search:mens leather wallet rfid
+search:women wallet long
+search:false eyelashes natural
+search:magnetic eyelashes
+search:toy truck die cast
+search:rc car kids
+search:gaming headset
+search:cocktail shaker set
+search:garden pruning shears
+search:watering can

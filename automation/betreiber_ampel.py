@@ -630,6 +630,9 @@ def grow_zaehler():
     """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
     nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
     Betreibers (eine feste Kunden-ID) zaehlen nicht. Meldet immer den Stand; ab Ziel als Ruf an den Betreiber."""
+    # 01.10.2026: Betreiber «grow plan aktiv» (gemessen: shop.plan.displayName = «Shopify» = Grow) → Zähler erledigt.
+    if os.path.exists(os.path.join(REPO, "dropship", "_grow_aktiv.txt")):
+        return ""
     try:
         cfg = dict(l.rstrip("\n").split("\t", 1) for l in open(os.path.join(REPO, "dropship", "_grow_bedingung.txt"), encoding="utf-8") if "\t" in l)
         start, ziel, eigen = cfg["start"], int(cfg.get("ziel", "3")), cfg.get("eigene_kunden_id", "")

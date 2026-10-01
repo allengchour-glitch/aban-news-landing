@@ -9,6 +9,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 > Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`. Parallel-Sessions: `SHARED-MEMORY.md`.
 
 ## 📌 Aktueller Stand (16.09.2026, 07:30 UTC) — was JETZT gilt
+- **🚀 01.10.2026 ~16:20 UTC: GROW-PLAN AKTIV + GRIND WIEDER AN** (Betreiber: «cj runner go … grow plan aktiv, nutze aus und pimpe die webseite fülle die leeren kategorien und neuheiten von cj sachen mit allem drum und dran»). Gemessen `shop.plan.displayName` = «Shopify» (= Grow, 300 GB lt. Betreiber). `_GRIND_RUNNER_ZAHL` = 4, `_GRIND_PAUSE_BIS` = 0; Runner ruhen nur im Vorrang-Fenster 16:00–17:30 UTC. Speicher-Löschen A/B GESTOPPT (Fertig-Marken; bis dahin 6'526 Lieferantenbilder / 1,41 GB gelöscht). GROW-Zähler in der Ampel aus (`dropship/_grow_aktiv.txt`). 32 CJ-Suchaufträge (Saison Halloween/Herbst/Weihnachten/Winter + dünne Kollektionen) in `automation/cj_search_queue.txt`. **Die Zeilen unten zu «Grind PAUSIERT» / «Speicher voll bis 21.10.» sind damit überholt.**
 - **🔪 KEINE KLINGEN MEHR IM VERKAUF (16.09.).** CJ schickte #1017 aus Shanghai zurück:
   verbotener Artikel, keine Linie CN→CH — auch nicht für Küchenmesser. **207 Klingen gedraftet**,
   davon 95 mit einem Lieferanten-Urteil vom 04.09., das nie vollstreckt wurde. Kunde voll

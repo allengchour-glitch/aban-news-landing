@@ -11,6 +11,9 @@
 
 
 
+## 2026-10-01 · 🚀 Grow aktiv, Grind wieder an (Betreiber «cj runner go … grow plan aktiv»)
+Plan gemessen: `shop.plan.displayName` = «Shopify» (Grow). Sofort: Speicher-Löschen A/B gestoppt (Fertig-Marken `_speicher_kuerzen_fertig_*.txt`, gelöscht bis dahin 6'526 Lieferantenbilder / 1,41 GB — nichts Eigenes), `_GRIND_RUNNER_ZAHL` 0 → 4, `_GRIND_PAUSE_BIS` → 0, GROW-Zähler aus. Dünne sichtbare Kollektionen gemessen (52 von 356 mit ≤ 40 Produkten; regelbasiert dünn: LED-Strip 4, Schutzglas 5, Wallets 5, Wimpern 5, Spielzeug-Fahrzeuge 6, Gaming-Headsets 8, Cocktail 10, Garten 11) → 32 Suchaufträge inkl. Saison. Engpass für «schneller» ist CJ selbst (1 Aufruf/s je Konto über `cj_takt`, Tagespunkte ~125k je Konto) — weitere API-Schlüssel desselben Kontos teilen dieselben Grenzen.
+
 ## 2026-10-01 · ✂️ Speicher A+B: «nur Lieferanten-Dateien löschen» (Betreiber «a dann b aber nicht das fehler gibt»)
 Trockenlauf A (aktive Produkte ab Bild 11) zeigte beim Durchsehen eines Beispiels: Bild 11 war «<handle>-edit.jpg» — UNSER bearbeitetes Bild. Klassifiziert: 37 «-edit», 3'477 andere Eigen-/Printful-Namen («cosy.jpg», «clear-case-for-iphone-…»), 26'353 UUID + 1'890 CJ-Zahlencodes. Regel: gelöscht wird nur, was eindeutig wie eine Lieferantendatei heisst; Variantenbilder live geschützt; auto-entwurf-0926 (offener Entscheid) aus B ausgenommen. A 6,52 GB + B 7,22 GB → ~94/100 GB. Wächter `aktiv_ohne_bild_wache.py` gegen bildlose Rückholungen. Aufseher-Neustart vom Klassifikator abgelehnt → Änderungen greifen beim nächsten Container-Neustart.
 **Lehre:** Positionsregeln («ab Bild 11») treffen, was zufällig hinten steht — auch Eigenes. Vor jedem Massenlöschen die Kandidaten nach NAMEN klassifizieren und nur die eindeutig fremde Klasse freigeben. → `dropship/SPEICHER-ENTSCHEID-2026-10-01.md`
