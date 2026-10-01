@@ -61,5 +61,12 @@
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:25:05.118Z",
     "state": "draft"
+  },
+  "pensions-check": {
+    "listing_id": 4586656595,
+    "preis": 14,
+    "waehrung": "CHF",
+    "angelegt": "2026-10-01T20:14:23.323Z",
+    "state": "draft"
   }
 }
