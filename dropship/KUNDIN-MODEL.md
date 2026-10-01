@@ -279,3 +279,11 @@ Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den 
   ersetzt durch **«Kleider entdecken» → `shopify://collections/sub-kleider`** (Kollektion «Kleider», 3'141 Produkte,
   9 Kanäle, enthält Tatis Blumenkleid; das Midikleid liegt in `midikleider`). Backup `/tmp/index_backup_vor_knopf.json`,
   per Admin-API zurückgelesen. Rücknahme = label/link zurücksetzen.
+
+### ✅ 01.10.2026 ~18:50 UTC — Tatis Fotos im Shop (Grow-Plan, Speicher frei)
+- Originale per CloudKit-Rezept neu geholt (Link weiter nur in `/tmp/tati/link.txt`; ⚠️ die Partition steht jetzt unter
+  `anonymousPublicAccess.databasePartition`, nicht mehr oben im Resolve-Ergebnis). 10 Fotos 3024×4032, EXIF gedreht, 1600×2133 JPEG.
+- **Blumenkleid mit Schnürung** (`blumenkleid-mit-schnurung-613000`): Fotos 1, 2, 3, 4, 8, 10 als Bilder 1–6 (9 aus: Bewegungsunschärfe).
+  **Midikleid mit Zopfmuster** (`midikleid-mit-zopfmuster-und-blumenprint-600200`): Fotos 5, 6, 7 als Bilder 1–3.
+- Dateinamen `tati-model-<produkt>-NN.jpg` → `post_guard.modelSperre` greift auf jedem Weg Shop → Pin/Story/Karussell (Markierung Pflicht).
+  Alle 9 READY, zurückgelesen. Alt-Text «Tati trägt …». Variantenbilder unverändert.

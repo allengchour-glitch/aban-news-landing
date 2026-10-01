@@ -12,6 +12,30 @@
 
 
 
+
+## 2026-10-01 19:00 · 🚀 «wie kann man sonst grow plan nutzen» → «ja starte alle bis fertig egal wie»
+
+**Gemessen:** Gewinnbericht (ShopifyQL `cost_of_goods_sold`, `gross_profit`) läuft; er zeigt bei fast allen Verkäufen Gewinn 0,
+weil Shopify den EK im Bestellmoment festhält — heute haben 99,7 % aller Varianten einen EK (418'228 CJ). Lücken: 62 CJ mit
+SKU-Form «CJ-CJMZ29511470001» (Produkt-SKU + 4-stellige Variantennummer) — der Kosten-Nachtrag kannte sie nicht (nie im Ledger).
+Video-Deckel: Upload-Probe wieder offen, Grow erlaubt 1'000 Videos (Basic 250). Verkauft unter EK waren Gemüseschneider (15.90/20.84),
+Hängematte, Midikleid — heute alle über EK (Verlustschutz wirkte).
+**Getan:**
+- `cj_kosten_backfill.mjs`: sechste SKU-Form → `product/query?productSku=<ohne 4 Ziffern>` (live belegt).
+- 69 AKTIVE Produkte stehen im Kosten-Ledger als `cj-abgekuendigt-pruefen` (CJ 1602002) und wurden nie nachgeprüft →
+  `cj_ausgelistet_sichtbar.py` Stufe B nimmt sie zuerst (Ausgelistet → Entwurf).
+- `cj_bild_backfill.mjs`: Ziffern-Muster stand vor dem UUID-Muster und schnitt «CJ-924419AC-19AD-…» zu pid «924419» ab → 14/14 im
+  letzten Lauf «Product not found»; 34 Produkte waren fälschlich `cj-kennt-nicht` (für immer übersprungen) → Reihenfolge + Lookahead,
+  6 Kanarienvögel, 34 Ledger- und 46 Merklisten-Zeilen zurückgenommen.
+- Reel-Motor: Ablage zuerst Shopify-CDN (Test: READY, 206 video/mp4); abgelaufene `SHOPIFY_CLIENT_*` aus der Umgebung entfernen,
+  sonst «Kein gültiger Admin-Token». Video-Nachtrag nur noch im Vorrangfenster, 250/Tag (vorher 60/Tag zu zufälliger Stunde → 0 Videos).
+- Tatis 9 Fotos auf die zwei Kleider (KUNDIN-MODEL.md). `kaufwille_zeile.py` in jeder Keepalive-Meldung.
+**Betreiber-Meldung Merchant Center (Cowork):** Gratisversand 45 UND 65 ist gewollt (45 = 50 minus 10-%-Rabatt, `versandschwelle_rabatt.py`;
+«Standard 0 ab 65» ist ein harmloser Überrest). Deutschland: kein Produkt-Override in Shopify (Mini-Kleid = General profile, keine
+Länder-Metafelder; Adidas-Set Entwurf) — nicht anfassen. Promotions (WELCOME10) unterstützt Google in CH nicht.
+**Lehre:** Ein ID-Muster, das die kürzere Form zuerst prüft, frisst die längere — bei SKU-Tabellen IMMER die spezifischste Form zuerst
+(dritte Wiederholung nach #1021 und dem Reel-Motor).
+
 ## 2026-10-01 17:50 · 🗂️ Feinkategorien 2. Welle + Ampel-Speicherzeile
 
 **Betreiber:** «anpassen und alles verbessern» (nach dem Routinen-Update).
