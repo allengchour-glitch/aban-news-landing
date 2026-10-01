@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T02:34:20Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T02:36:42Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1240 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4519** in 1207 Produkten
-- Treffer (≥ 4 Wörter): **171** in 144 Produkten
+- Medien geprüft: **4596** in 1231 Produkten
+- Treffer (≥ 4 Wörter): **172** in 145 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -70,6 +70,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Intelligentes Bremslicht für Velos `15448957976961` | [69862641762689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2fb4a32-5161-4001-9089-69587e78a7ab_trans.jpg) | 12 | waterproof Good waterproof level for daily need worry | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
 | Memory Foam Kissen für Sitzkomfort `15524778934657` | [70799437791617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93274f63-3058-4378-bb61-625cdfc725d4.jpg) | 12 | FACE YOUR DAY ACE YOUR DAY Premium Memory | offen |
+| Mini Saugroboter für dein Zuhause `15522243150209` | [70747137343873](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1720385250183483392.jpg) | 12 | Cleaning for the home Born for new era | offen |
 | Smart-Armbanduhr mit Herzfrequenz- und Blutsauer `15453778411905` | [69926716244353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a7c63c5-36db-464a-a086-26ad34f0f8c8_trans.jpg) | 11 | GPS Outdoor sports smart watch Smart Watch Fearless | offen |
 | Smarte Helmleuchte fürs Radfahren `15453769466241` | [69926689702273](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fdfc0dfa-7ab7-41f0-b10e-03b749c90bea.jpg) | 11 | Breathable DESIGN and ventilated and comfortable summer The | ENTFERNT |
 | Wärmeweste mit Leinsamenfüllung `15453777691009` | [69926714081665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3fef8624-ed85-4cbd-9977-ea72f57a8e7c.jpg) | 11 | Comfortable Warm Compress Friendly Fit COMFORTABLE AND WARM | ENTFERNT |
