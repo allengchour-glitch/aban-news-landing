@@ -32,11 +32,31 @@ CATALOG = REPO / "data" / "kit-catalog.json"
 STATE = REPO / "data" / "stripe-state.json"
 OUT = REPO / "data" / "shop-products.json"
 SITE = os.environ.get("ABAN_SITE_URL", "https://abannews.com").rstrip("/")
-API = "https://api.stripe.com/v1"
+API = os.environ.get("STRIPE_API_BASE", "https://api.stripe.com/v1")
 
 
 def dl_hash(slug: str, salt: str) -> str:
     return hashlib.sha256(f"{slug}:{salt}".encode("utf-8")).hexdigest()[:24]
+
+
+def stripe_get(path: str, key: str) -> dict:
+    req = urllib.request.Request(f"{API}{path}", headers={"Authorization": f"Bearer {key}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+
+def link_id_finden(url: str, key: str) -> str:
+    """Payment-Link-ID zu einer URL (ältere Status-Einträge haben nur die URL)."""
+    nach = ""
+    for _ in range(20):
+        seite = stripe_get(f"/payment_links?limit=100{'&starting_after=' + nach if nach else ''}", key)
+        for pl in seite.get("data", []):
+            if pl.get("url") == url:
+                return pl["id"]
+        if not seite.get("has_more") or not seite.get("data"):
+            return ""
+        nach = seite["data"][-1]["id"]
+    return ""
 
 
 def stripe(path: str, params: list[tuple], key: str) -> dict:
@@ -96,9 +116,30 @@ def main() -> int:
                         ("after_completion[redirect][url]",
                          f"{SITE}{args.danke}?slug={slug}&session_id={{CHECKOUT_SESSION_ID}}")], key)
                     state[slug] = {"product": prod["id"], "price": price["id"],
-                                   "link": link["url"], "cents": cents, "currency": cur}
+                                   "link": link["url"], "link_id": link.get("id", ""), "cents": cents, "currency": cur}
                     created += 1
                     print(f"✓ Stripe angelegt: {slug} ({cur.upper()}) → {link['url']}")
+                elif int(state[slug].get("cents", cents)) != cents:
+                    # Preis geändert → neuer Preis + neuer Link auf dasselbe Produkt, alter Link wird abgeschaltet.
+                    # (Sonst zeigt die Seite den neuen Preis, die Kasse verlangt aber weiter den alten.)
+                    alt = state[slug]
+                    price = stripe("/prices", [("product", alt["product"]), ("unit_amount", str(cents)),
+                                               ("currency", cur)], key)
+                    link = stripe("/payment_links", [
+                        ("line_items[0][price]", price["id"]), ("line_items[0][quantity]", "1"),
+                        ("metadata[slug]", slug),
+                        ("after_completion[type]", "redirect"),
+                        ("after_completion[redirect][url]",
+                         f"{SITE}{args.danke}?slug={slug}&session_id={{CHECKOUT_SESSION_ID}}")], key)
+                    alte_id = alt.get("link_id") or link_id_finden(alt.get("link", ""), key)
+                    if alte_id:
+                        stripe(f"/payment_links/{alte_id}", [("active", "false")], key)
+                    if alt.get("price"):
+                        stripe(f"/prices/{alt['price']}", [("active", "false")], key)
+                    state[slug] = {"product": alt["product"], "price": price["id"], "link": link["url"],
+                                   "link_id": link.get("id", ""), "cents": cents, "currency": cur}
+                    print(f"✓ Preis geändert: {slug} {alt.get('cents')} → {cents} ({cur.upper()}), neuer Link {link['url']}"
+                          + ("" if alte_id else " — ⚠ alten Link nicht gefunden, bitte im Stripe-Dashboard deaktivieren"))
                 else:
                     print(f"• schon da: {slug}")
             except urllib.error.HTTPError as e:

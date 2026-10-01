@@ -62,14 +62,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (💰 Preise gesenkt + Stripe-Preisfalle behoben):** User: „19 Fr nicht zu teuer? passe alle Preise an“.
+Leiter: Vorlagen/Rechner **12** (Budget-Plan, Hochzeit, Branchen-Kits) · Pakete **14** (Schulden, Mietzins, Prompt-Bibliothek,
+Vorlagen-Set) · Nische **19** (Strategie-Prüfstand) · Bundle alle Kits **39** (statt 79). Regel: eigener Shop nie teurer als Etsy.
+**🐛 Falle behoben:** `stripe_sync.py` behielt bei Preisänderung den ALTEN Link („schon da“) → Seite neuer Preis, Kasse alter.
+Jetzt: neuer Price + Link aufs selbe Produkt, alter Link + Preis deaktiviert (`tools/stripe/test_preisaenderung.py`, 8/8,
+altes Skript fällt 6/8). `shop.html`-ItemList (JSON-LD) wird jetzt aus `data/shop-products.json` erzeugt (`tools/shop_jsonld.py`,
+im Stripe-Workflow) — war handgepflegt mit alten Preisen und ohne die neuen Produkte.
+
 **📌 2026-09-30 (🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch):**
 - **Nachfrage prüfen:** Semrush hat 0 API-Units → Google-Vorschläge per `suggestqueries.google.com/complete/search?client=firefox&hl=de&gl=ch&q=…`
   (geht durch den Proxy). Belegt: „mietzinsreduktion berechnen/vorlage“, „hochzeit budget excel vorlage/pro gast“, „wedding budget spreadsheet“.
-- **Mietzins-Paket Schweiz CHF 19** (`tools/mietzins/`, 12 Tests, `content/packs/de/mietzins-paket/`): Art. 13 VMWG (Senkung = 1−1/(1+3 %×Schritte),
+- **Mietzins-Paket Schweiz CHF 14** (seit 01.10.; `tools/mietzins/`, 12 Tests, `content/packs/de/mietzins-paket/`): Art. 13 VMWG (Senkung = 1−1/(1+3 %×Schritte),
   1,75→1,25 = −5,66 %), Art. 16 (40 % LIK), Kostenpauschale, Termin + letzter Zugangstag, Fristen Art. 270a OR, fertiger Brief. Referenzzins
   1,25 % (BWO, Stand 2.9.2026, nächste Publikation **1.12.2026** → dann `AKTUELL` in engine.js nachführen!). Verkauft auf `mietzins-senkung-rechner.html`
   (rechnete vorher falsch Schritte×2,91 % → jetzt Engine). Stripe `buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O`.
-- **Hochzeits-Budget-Plan CHF 19** (`tools/hochzeit/`, 10 Tests, App + Excel `tools/etsy/hochzeit_xlsx.py`), Gratis-Seite `hochzeit-budget-rechner.html`.
+- **Hochzeits-Budget-Plan CHF 12** (seit 01.10.; `tools/hochzeit/`, 10 Tests, App + Excel `tools/etsy/hochzeit_xlsx.py`), Gratis-Seite `hochzeit-budget-rechner.html`.
   Excel per LibreOffice gegen Engine geprüft (8/8). Beispielbeträge = Platzhalter, KEINE erfundenen Durchschnittspreise.
   Stripe `buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P`.
 - **Etsy (6 Pakete in `content/etsy/`)**: Upload vollautomatisch über `etsy-upload.yml` (`tools/etsy/etsy_upload.mjs`, OAuth über
