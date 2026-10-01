@@ -6,7 +6,7 @@
 
 ## Zahlen
 
-- Produkte gesehen: **16'230**
+- Produkte gesehen: **16'829**
 - Optionen mit englischen Werten (Kandidaten): 1'832
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
