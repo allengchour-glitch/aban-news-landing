@@ -27,7 +27,17 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "dropship/_speicher_geloescht.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 N = int(os.environ.get("N", "200"))
-TAG = "duplikat-auto-draft"
+# 01.10.2026: Klasse per Umgebung (Betreiber «fix mal speicherplatz»). Nur Klassen, die NICHT zurückkommen:
+#   duplikat-auto-draft        Dublette eines aktiven Produkts (30.09.)
+# ⛔ NICHT freigegeben (geprüft 01.10.): «alt-einzelgroesse-ersetzt» (alte Fortura-Einzelgrössen, «ersetzt» durch
+#   gruppierte Produkte) — nur 728 von 1'369 haben einen auffindbaren aktiven Nachfolger (Handle-Stamm), Ertrag 0,35 GB.
+#   Eine Löschung, deren Sicherheitsannahme sich nicht belegen lässt, unterbleibt (Lehre dateispeicher_aufraeumen.py).
+TAG = os.environ.get("TAG", "duplikat-auto-draft")
+ERLAUBT = {"duplikat-auto-draft": None}
+if TAG not in ERLAUBT:
+    sys.exit(f"⛔ Klasse {TAG!r} ist nicht freigegeben (nur {sorted(ERLAUBT)})")
+import re
+HANDLE_RE = re.compile(ERLAUBT[TAG]) if ERLAUBT[TAG] else None
 
 
 def lade():
@@ -53,10 +63,10 @@ def main():
     # Editor/POD (Regel 4 «heilig»): auch als Duplikat nicht anfassen — der erste Probelauf traf pod-sticker-tattoo-snake
     # (Original pod-sticker-snake-cute blieb intakt, 2 Bilder), der Ausschluss ist Vorsicht, kein Befund.
     kand = [p for p in prod.values() if TAG in p["tags"] and med.get(p["id"]) and p["id"] not in fertig
-            and not p["handle"].startswith("pod-")]
+            and not p["handle"].startswith("pod-") and (not HANDLE_RE or HANDLE_RE.search(p["handle"]))]
     geteilt = sum(1 for p in kand for m, _ in med[p["id"]] if m in aktiv)
     ges = sum(s for p in kand for _, s in med[p["id"]])
-    print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {len(kand)} Duplikat-Entwürfe mit Bildern · "
+    print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {len(kand)} Entwürfe «{TAG}» mit Bildern · "
           f"{sum(len(med[p['id']]) for p in kand)} Bilder · {ges / 1e9:.2f} GB · mit aktivem Produkt geteilt: {geteilt} · "
           f"{'SCHARF' if SCHARF else 'TROCKEN'} N={N}", flush=True)
     if not SCHARF:
