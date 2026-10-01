@@ -13,6 +13,17 @@
 
 
 
+
+## 2026-10-01 20:00 · 🏆 «nutze grow plan und mache ein meisterwerk» — Produktseiten mit Geld darauf
+
+Messgerät `tools/pdp_meisterwerk.py` (8 Punkte, Selbsttest 7/7) → 5 Seiten (TikTok-bezahlt + Tati) **6,3 → 9,0/10**.
+Kernfund: Sirène CHF 49.90 zeigte «Versand CHF 7 · gratis ab CHF 50» — Kundin rechnet 56.90, real gratis (≥ 45). 7 Kassen,
+0 Käufe. Fix im Theme für ALLE ≥ 45 (Wortlaut nach Preisband, wahr auch mit WELCOME10). Preis nicht auf 50 gehoben (Anzeige
+zeigt 49.90 — Werbepreis = Seitenpreis). SEO-Titel (4 fehlten seit 30.09.), «Color»/«Pink 1» → Rosenprint/Bunt, Beschreibungen,
+2 Grow-Videos aus Tatis Fotos. CJ-Kommentare für alle 5 gemessen 0 → keine Bewertungen möglich ohne echte Käuferin.
+**Lehre:** Ein Versandtext, der eine Schwelle nennt, ohne den Preis daneben zu kennen, schadet genau dem Artikel knapp darunter —
+Zusagen an den Preis koppeln (Liquid `product.price_min`), nicht pauschal. → `dropship/PDP-MEISTERWERK-2026-10-01.md`
+
 ## 2026-10-01 19:00 · 🚀 «wie kann man sonst grow plan nutzen» → «ja starte alle bis fertig egal wie»
 
 **Gemessen:** Gewinnbericht (ShopifyQL `cost_of_goods_sold`, `gross_profit`) läuft; er zeigt bei fast allen Verkäufen Gewinn 0,
