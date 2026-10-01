@@ -505,9 +505,28 @@ for (const k of reihe) {
       if (tor.rc === 4) fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\t${tor.gruende.join(' · ')}\n`);
       continue;
     }
-    const datei = `reel_${k.pid}.mp4`; fs.copyFileSync(out, `${MEDIEN}/${datei}`);
-    const url = RAW + datei;
-    if (!gitPush([`${MEDIEN}/${datei}`], `Reel ${k.pid} (${th})`)) { console.log('   Push fehlgeschlagen — Reel verworfen, naechster Lauf'); fs.rmSync(`${MEDIEN}/${datei}`, { force: true }); continue; }
+    const datei = `reel_${k.pid}.mp4`;
+    // 01.10.2026 Grow-Plan (300 GB, Video-Upload wieder offen — gemessen: stagedUploads VIDEO ohne userErrors, Test-Reel
+    // READY, cdn.shopify.com antwortet 206 video/mp4): Ablage ZUERST im Shopify-CDN. Das Repo (681 MB in social/reels/)
+    // bleibt nur Rückfall, falls der Upload scheitert. Die abgelaufenen SHOPIFY_CLIENT_* der Umgebung werden entfernt,
+    // sonst nimmt der Uploader sie vor dem gültigen Token (gemessen: «Kein gültiger Admin-Token»).
+    let url = '';
+    try {
+      const env = { ...process.env, SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', SHOPIFY_ADMIN_TOKEN: TOK };
+      delete env.SHOPIFY_CLIENT_ID; delete env.SHOPIFY_CLIENT_SECRET;
+      const ziel = `/tmp/reelbuild/${datei}`; fs.copyFileSync(out, ziel);
+      url = execFileSync(process.execPath, ['automation/upload_to_shopify_cdn.mjs', ziel, `Reel ${k.title.slice(0, 60)}`],
+                         { encoding: 'utf8', env, timeout: 300000, stdio: ['ignore', 'pipe', 'ignore'] }).trim().split('\n').pop();
+      fs.rmSync(ziel, { force: true });
+      if (!/^https:\/\/cdn\.shopify\.com\//.test(url)) url = '';
+    } catch { url = ''; }
+    if (url) console.log('   Ablage: Shopify-CDN');
+    else {
+      fs.copyFileSync(out, `${MEDIEN}/${datei}`);
+      url = RAW + datei;
+      if (!gitPush([`${MEDIEN}/${datei}`], `Reel ${k.pid} (${th})`)) { console.log('   Push fehlgeschlagen — Reel verworfen, naechster Lauf'); fs.rmSync(`${MEDIEN}/${datei}`, { force: true }); continue; }
+      console.log('   Ablage: Repo (CDN-Upload gescheitert)');
+    }
     // erreichbar?
     let code = '';
     try { code = execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', url], { encoding: 'utf8' }); } catch {}

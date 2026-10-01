@@ -172,7 +172,14 @@ def rest_bestand(schon, stand):
         return {}, 0
     grenze = (datetime.date.today() - datetime.timedelta(days=ZYKLUS_TAGE)).isoformat()
     faellig = [g for g in sku if g not in schon and stand.get(g, ("", ""))[0] < grenze]
-    faellig.sort(key=lambda g: stand.get(g, ("", ""))[0])
+    # 01.10.2026: Verdacht zuerst — der Kosten-Nachtrag hat 69 AKTIVE Produkte schon als «removed from shelves» (1602002)
+    # quittiert (`cj-abgekuendigt-pruefen`), aber nie vollstreckt; im 30-T-Zyklus kämen sie irgendwann dran (#1019-Klasse).
+    try:
+        verdacht = {l.split("\t")[0] for l in open(os.path.join(REPO, "dropship", "_cj_kosten_done.txt"), encoding="utf-8")
+                    if "\tcj-abgekuendigt-pruefen" in l}
+    except OSError:
+        verdacht = set()
+    faellig.sort(key=lambda g: (g not in verdacht, stand.get(g, ("", ""))[0]))
     return {g: (sku[g], aktiv[g][0], aktiv[g][1], "rest") for g in faellig[:ROLLEN]}, len(sku)
 
 
