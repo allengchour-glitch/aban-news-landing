@@ -8,6 +8,15 @@
 
 
 
+
+## 2026-10-01 · 🖼️ CJ-Varianten per Bildvergleich (Verbesserungsrunde 00:25 UTC)
+Klasse aus #1021 vermessen: 27'390 Einzelvarianten-Produkte mit CJ-pid-SKU, Stichprobe 40 → 29 mit mehreren CJ-Varianten.
+Fix: `automation/cj_variante_bild.py` + Einbau in `cj_order_engine.vid_fuer()`; Treffer nur bei Einigkeit Gemini/ChatGPT und
+Sicherheit ≥ 0.8; identische Variantenbilder (Grössen) werden nicht geraten. Kanarienvögel: Uhr (blau, = Handvergleich),
+Fursuit-Kopf (orange, Kontaktbogen), Laptopständer (silber); Zerkleinerer: GPT 0.55 → kein Treffer → bleibt stehen.
+Lehre: Was von Hand per Bildvergleich gelöst wurde, ist die Vorlage für den Automaten — mit Vier-Augen-Regel statt Raten.
+Bericht: `dropship/CJ-VARIANTEN-BILDVERGLEICH-2026-10-01.md`.
+
 ## 2026-10-01 · 🛒 #1021: UUID-pid nicht erkannt + Einzelvariante gegen 5 CJ-Varianten
 **GEMESSEN:** #1021, 30.09. 21:49 UTC, CHF 45.90, neue Kunden-ID, Quelle ChatGPT (erste und letzte Sitzung), «Nibosi
 Quarzuhr mit Edelstahlband», SKU `CJ-65D5329E-AA72-43AD-910B-F95B35E89D0A`. Bestell-Ampel 22:08: «KEIN CJ-Auftrag»;
