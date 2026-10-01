@@ -5148,3 +5148,18 @@ gid://shopify/Product/15453525737857	zugeordnet	3	18k vergoldete Halskette mit Z
 gid://shopify/Product/15453525967233	zugeordnet	2	Geometrische Ohrringe
 gid://shopify/Product/15453526458753	zugeordnet	2	Herz Ohrringe
 gid://shopify/Product/15453526786433	zugeordnet	6	Anstecknadel-Halter
+gid://shopify/Product/15453526950273	zugeordnet	3	Punk-Style Schlangenknochen-Kette
+gid://shopify/Product/15453527015809	zugeordnet	20	Schlanke Damenkleid
+gid://shopify/Product/15453527802241	zugeordnet	2	Diamant-Ohrhänger
+gid://shopify/Product/15453527966081	zugeordnet	3	Polarisierte Sonnenbrille
+gid://shopify/Product/15453527998849	zugeordnet	8	Doppelsteg-Sonnenbrille
+gid://shopify/Product/15453528064385	zugeordnet	2	Grosse Schultasche
+gid://shopify/Product/15453528162689	zugeordnet	3	Elegante Leder-Tasche
+gid://shopify/Product/15453528293761	zugeordnet	5	Wickel-Tasche
+gid://shopify/Product/15453528326529	zugeordnet	10	Leder-Handtasche
+gid://shopify/Product/15453530292609	zugeordnet	4	Leder-Querformat-Tasche
+gid://shopify/Product/15453530325377	zugeordnet	12	Damen-Münzbörse
+gid://shopify/Product/15453531636097	zugeordnet	6	Haarklammer Wolke
+gid://shopify/Product/15453531668865	zugeordnet	2	Gesichtsfirma-Gel
+gid://shopify/Product/15453531767169	zugeordnet	21	Schönheitspflaster
+gid://shopify/Product/15453531799937	zugeordnet	3	Schönheitsmaske
