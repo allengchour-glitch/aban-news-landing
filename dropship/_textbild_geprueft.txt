@@ -56400,3 +56400,4 @@ gid://shopify/Product/15449132401025	gid://shopify/MediaImage/69866867655041
 gid://shopify/Product/15449147244929	gid://shopify/MediaImage/69867074847105
 gid://shopify/Product/15469895680385	gid://shopify/MediaImage/77415040090503
 gid://shopify/Product/15469918486913	gid://shopify/MediaImage/77415040254343
+gid://shopify/Product/15496359510401	gid://shopify/MediaImage/77409979826567
