@@ -5414,3 +5414,4 @@ gid://shopify/Product/15454000677249	zugeordnet	12	Velours-Laufschuhe für Kinde
 gid://shopify/Product/15454000808321	zugeordnet	36	Wasserdichte Jungenstiefel
 gid://shopify/Product/15454000841089	zugeordnet	14	Herren-Cargo-Hosen, gerade geschnitten
 gid://shopify/Product/15454000906625	zugeordnet	14	Wasserdichte Kinderschuhe
+gid://shopify/Product/15454000972161	zugeordnet	92	Herren Kletter- und Camp-Camouflagehose
