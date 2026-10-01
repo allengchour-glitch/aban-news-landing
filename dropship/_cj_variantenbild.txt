@@ -5531,3 +5531,4 @@ gid://shopify/Product/15454048256385	zugeordnet	4	Kinderbesteckset mit Bagger-De
 gid://shopify/Product/15454048289153	zugeordnet	28	Sommerkleid mit hohem Bund
 gid://shopify/Product/15454048321921	zugeordnet	7	Fahrradhelm für Herren und Damen
 gid://shopify/Product/15454048485761	zugeordnet	48	Winter-Lauflernschuhe Velours-Schneestiefel
+gid://shopify/Product/15454048518529	zugeordnet	30	Lange Blumen-Kleid mit V-Hals

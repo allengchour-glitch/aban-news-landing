@@ -8930,3 +8930,4 @@ gid://shopify/Product/15454132175233	1790876187	ok	4 Shop / 4 CJ / 0 fehlend / 0
 gid://shopify/Product/15454132208001	1790876187	ok	48 Shop / 48 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15454132240769	1790876187	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15454132273537	1790876187	ok	35 Shop / 35 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454132306305	1790876187	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
