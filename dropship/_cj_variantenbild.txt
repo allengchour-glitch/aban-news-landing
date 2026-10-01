@@ -5133,3 +5133,5 @@ gid://shopify/Product/15452710797697	zugeordnet	24	Luftige Mary Jane Sneakers mi
 gid://shopify/Product/15452710830465	zugeordnet	19	LED-Leuchtschuhe für Kleinkinder
 gid://shopify/Product/15452710863233	zugeordnet	29	Casual Sandalen Einheitsfarbig
 gid://shopify/Product/15452710896001	zugeordnet	22	Weiche Lauflernschuhe für Kinder
+gid://shopify/Product/15452710928769	zugeordnet	40	Kinder Leichtlaufschuhe
+gid://shopify/Product/15452710961537	zugeordnet	69	Kinder-Lichtschuhe mit USB
