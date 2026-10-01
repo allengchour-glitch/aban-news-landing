@@ -5541,3 +5541,5 @@ gid://shopify/Product/15454049042817	zugeordnet	30	Wollschuhe für Kinder, rutsc
 gid://shopify/Product/15454049141121	zugeordnet	8	Sommer-Maxikleid mit Polka-Dot-Muster
 gid://shopify/Product/15454049173889	zugeordnet	48	Sommer-Schuhe für Mädchen – Mehrfarbig
 gid://shopify/Product/15454049272193	zugeordnet	21	Warme Kinderschuhe mit Fleece
+gid://shopify/Product/15454049403265	zugeordnet	12	Woll-Laufschuhe für Kinder
+gid://shopify/Product/15454049599873	zugeordnet	26	Kinderstrand-Schuhe
