@@ -17,6 +17,13 @@
   Weiter gilt: geändert wird nur bei Einigkeit Gemini + ChatGPT, sonst nur gemeldet. Aufseher alle 6 h (unverändert).
 - Kanarienvögel 11/11 (4 neu: Witch Hat ✓, Lily of the Valley ✓, «Outdoor LED-Lichterkette» bleibt ✓, «Marine Yacht Indoor» = Grenzfall).
 
+## ERGEBNIS (scharf, 21:10 UTC)
+- Trockenlauf 239 Titel → scharf: **32 korrigiert** (beide Modelle einig, zurückgelesen), 57 nur gemeldet (uneinig → unverändert).
+- Weit mehr als die 6 von Hand gezählten: Mode-Neuware trug «Coat», «Tassel», «Mid-Length», «Down-Jackett», «Quilted»,
+  «Checkiert», «Corset», «Chunky-Heel»; dazu zwei abgeschnittene Titel («Bluetooth‑So», «Kordelb»).
+- Stichprobe gegen Bild: «Fell‑Kopfbogen‑Mantel» → «Fell‑Kapuzen‑Mantel» — Hauptbild zeigt Fellkapuze ✓.
+- Ledger `dropship/_titel_kauderwelsch.tsv` hält alt → neu je Produkt (rückgängig machbar).
+
 ## OFFEN
 - Altbestand vor dem 29.09. ist nicht im Fenster der Wache (STUNDEN=48) — eigener Lauf mit grösserem Fenster, wenn die
   Neuimport-Zahlen stimmen.

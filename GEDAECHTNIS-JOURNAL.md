@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-01 · 🔤 Halb übersetzte Neuimport-Titel (Denglisch)
+Verbesserungsrunde 20:25: 255 Neuimporte seit Grind-Start, Google-Kategorie bei allen gesetzt, aber Titel wie «Halloween Witch Hat Nachtlicht», «Orca & Diver Epoxy Resin Tischlampe». `titel_sprache.mjs` prüft «alle Wörter im CJ-Namen» — EIN deutsches Kopfwort genügt als Gegenbeweis; `titel_kauderwelsch_wache.py` suchte Nicht-Wörter und nahm Englisch ausdrücklich aus. Erweiterung: Prompt meldet auch stehengebliebenes Englisch mit gängigem deutschem Wort; «falsch» wortweise verglichen (Wortfolge vs. Einzelwörter liess einige Modelle als uneinig gelten); Ersatz ohne Leerzeichen verglichen. Kanarienvögel 11/11, Trockenlauf → scharf: 32 korrigiert, 57 gemeldet. **Lehre:** Meine Regex-Handzählung fand 6, die Modelle 32 — Mode-Wörter (Coat, Tassel, Quilted, Mid-Length) stehen in keiner Stichwortliste. Eine Klasse erst mit dem Werkzeug zählen, das sie auch beheben soll.
+
 ## 2026-10-01 · 🪟 Microsoft Merchant Center: Store abgelehnt wegen eigener Werbesätze
 Betreiber reichte LuxeStyle bei Microsoft (Bing-Gratis-Listings) ein → «Ihr Store wurde abgelehnt … Beschreibung muss wahrheitsgemäss … sein», 0 Produktprobleme. Ursache waren nicht Produkte, sondern Store-Aussagen: das Admin-Feld `shop.description` («Premium … schnellem Versand in die Schweiz und nach Deutschland», per API nicht änderbar, seit 14.08. nur «Deutschland» im Theme ersetzt), «ohne versteckte Gebühren» im selben Absatz wie «Einfuhrsteuer ab rund CHF 60», «Angaben laufend geprüft»/«Geprüfte Produktangaben» (unbelegbar), EU-Lager «in wenigen Tagen statt Wochen» (nie gemessen), Footer ohne Kontakt. **Lehre:** Ein Prüfer liest Werbesatz und Kleingedrucktes nebeneinander — jede absolute Zusage («ohne», «geprüft», «schnell») braucht einen Beleg, sonst raus. Ein Teil-Replace (nur «Deutschland») lässt den Rest der Lüge stehen. Details `dropship/MICROSOFT-MERCHANT-2026-10-01.md`.
 
