@@ -1,18 +1,18 @@
 {
   "typ": "skript",
   "skript": "pinterest_pin_erstellen.mjs",
-  "id": "pinterest-pin-2026-10-01-2",
-  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 2 von 10 heute.",
+  "id": "pinterest-pin-2026-10-01-10",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 10 von 10 heute.",
   "stand": "ok",
-  "begonnen": "2026-10-01T20:20:48.430Z",
-  "dauer_s": 16.6,
+  "begonnen": "2026-10-01T20:20:29.657Z",
+  "dauer_s": 17.3,
   "ergebnis": {
     "gepinnt": [
-      "2-teiliges-leinen-set-provence-hemd-wide-leg-hose"
+      "midikleid-mit-zopfmuster-und-blumenprint-600200"
     ],
     "unklar": [],
     "uebersprungen": [
-      "2-teiliges-leinen-set-provence-hemd-wide-leg-hose: schon auf der Pinnwand"
+      "midikleid-mit-zopfmuster-und-blumenprint-600200: schon auf der Pinnwand"
     ],
     "schritte": [
       "Warteschlange 163, quittiert 11, offen 154",

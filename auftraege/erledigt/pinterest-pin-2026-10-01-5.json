@@ -2,33 +2,23 @@
   "typ": "skript",
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-01-5",
-  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 5 von 6 heute.",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 5 von 10 heute.",
   "stand": "ok",
-  "begonnen": "2026-10-01T02:22:43.913Z",
-  "dauer_s": 63.2,
+  "begonnen": "2026-10-01T20:21:42.678Z",
+  "dauer_s": 16.3,
   "ergebnis": {
     "gepinnt": [
       "mule-sandalette-nodo-drapiert-spitze-form"
     ],
     "unklar": [],
-    "uebersprungen": [],
+    "uebersprungen": [
+      "mule-sandalette-nodo-drapiert-spitze-form: schon auf der Pinnwand"
+    ],
     "schritte": [
-      "Warteschlange 114, quittiert 9, offen 107",
-      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
-      "Pinnwand «Schuhe & Sandalen» (https://ch.pinterest.com/luxestyleCH/schuhe-sandalen/, 281 Z.): Titel nicht da",
-      "Bild 86265 Bytes (image/jpeg)",
-      "Beschreibung eingetragen",
-      "Nachlesen: Titel auf der Pinnwand (347 Z.)"
+      "Warteschlange 163, quittiert 11, offen 154",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Schuhe & Sandalen» (https://ch.pinterest.com/luxestyleCH/schuhe-sandalen/, 348 Z.): Titel SCHON DA"
     ],
-    "bilder": [
-      "auftraege/ergebnis/pinterest-pin-2026-10-01-5-1-bild.png",
-      "auftraege/ergebnis/pinterest-pin-2026-10-01-5-2-ausgefuellt.png",
-      "auftraege/ergebnis/pinterest-pin-2026-10-01-5-3-nachher.png"
-    ],
-    "pin": {
-      "handle": "mule-sandalette-nodo-drapiert-spitze-form",
-      "board": "Schuhe & Sandalen",
-      "title": "Mule-Sandalette «Nodo» · Drapiert, Spitze Form"
-    }
+    "bilder": []
   }
 }
