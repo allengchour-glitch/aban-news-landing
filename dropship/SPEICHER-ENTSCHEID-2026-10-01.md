@@ -26,3 +26,16 @@ Und: der CJ-Import legte ~1 GB pro Tag an — auf Basic ist ein Wiederanlaufen d
 
 **Empfehlung:** Für «CJ wieder pushen» führt kein Weg an Grow vorbei. Bis dahin genügt A (Uploads gehen wieder), ohne
 Verkaufsverlust — Entscheid beim Betreiber, weil es aktive Produkte betrifft und nicht rückgängig zu machen ist.
+
+## ✅ Betreiber-Entscheid 01.10. «a dann b aber nicht das fehler gibt» — umgesetzt
+Werkzeug `automation/speicher_bilder_kuerzen.py` (Trockenlauf Standard, Ledger `_speicher_kuerzen.tsv`, im Aufseher fortgesetzt bis
+`_speicher_kuerzen_fertig_<klasse>.txt`). Schutz: Variantenbilder (live je Etappe), POD/Printful, alle im Repo/Live-Theme/Produkttexten
+genannten Dateien (929), Status live geprüft, und **nur Dateien mit Lieferanten-Namen** (UUID / CJ-Zahlencode).
+- Trockenlauf A zuerst 7,27 GB — beim Durchsehen standen hinter Bild 10 auch **unsere eigenen Bilder** («…-edit.jpg», «cosy.jpg»,
+  Printful-Mockups) → Lieferanten-Namensregel, Kanarienvögel 7/7 → **A: 6'261 Produkte · 28'266 Bilder · 6,52 GB.**
+- **B: 3'740 CJ-Entwürfe · 28'972 Bilder · 7,22 GB** — ohne `auto-entwurf-0926` (offener Rückhol-Entscheid), ohne Medizin/Klinge;
+  Tag `bilder-geloescht-speicher`; neuer Wächter `aktiv_ohne_bild_wache.py` (stündlich) setzt solche Produkte zurück auf DRAFT,
+  falls ein Rückholer sie ohne Bild aktiv schaltet.
+- Erwartet nach A+B: **~94 von 100 GB.** Rückgelesen: Strandjacke 11 Bilder, 24/24 Varianten mit Bild, Titelbild da;
+  Schuhregal-Entwurf 0 Bilder + Tag. 0 Fehler in den ersten Etappen.
+- Mit Grow (300 GB, Betreiber-Angabe): ~1,7–1,95 MB je CJ-Produkt → Platz für ~110'000–120'000 weitere Produkte.

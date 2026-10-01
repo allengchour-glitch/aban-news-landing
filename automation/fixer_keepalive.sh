@@ -877,6 +877,21 @@ while true; do
     case "$AH" in "FERTIG: 0 "*) ;; *) echo "$(date -u +%H:%M) haenger: $AH"
       ( cd "$REPO" && bash automation/git_sichern.sh "Server-Quittungen: hängende geschlossen [skip ci]" auftraege/erledigt >/dev/null 2>&1 ) ;; esac
   fi
+  # SPEICHER KÜRZEN (01.10.2026, Betreiber «a dann b aber nicht das fehler gibt»): Läufe dauern Stunden, der Container startet
+  # stündlich neu → hier fortsetzen, bis die Fertig-Marke liegt. Ledger dropship/_speicher_kuerzen.tsv macht es idempotent.
+  for SKK in aktiv-max10 cj-entwurf; do
+    [ -f "$REPO/automation/speicher_bilder_kuerzen.py" ] || break
+    [ -f "$REPO/dropship/_speicher_kuerzen_fertig_$SKK.txt" ] && continue
+    # flock je Klasse: läuft schon ein Lauf, beendet sich der neue sofort (kein Doppelstart)
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_speicher_kuerzen_$SKK.lock; flock -n 9 || exit 0; \
+        KLASSE=$SKK SCHARF=1 N=8000 exec python3 automation/speicher_bilder_kuerzen.py" >> "/tmp/speicher_kuerzen_$SKK.log" 2>&1 & )
+  done
+  # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
+  # `bilder-geloescht-speicher` trägt und aktiv ohne Bild ist, geht zurück auf DRAFT (`wartet-auf-bilder`). Eine Suchabfrage.
+  if [ -f "$REPO/automation/aktiv_ohne_bild_wache.py" ]; then
+    AOB=$( cd "$REPO" && timeout 120 python3 automation/aktiv_ohne_bild_wache.py 2>&1 | tail -1 )
+    case "$AOB" in "FERTIG: 0 aktive ohne Bild → DRAFT, 0 "*) ;; *) echo "$(date -u +%H:%M) aktiv_ohne_bild: $AOB" ;; esac
+  fi
   # PINTEREST-PINS, einmal taeglich (22.09.2026, Betreiber «push mehr» Besucher): legt N Auftraege fuer den
   # Hetzner-Agenten an (je Auftrag EIN Pin, Quittung ueber auftraege/erledigt + Pinnwand). Pinterest steht nicht
   # unter dropship/_SOCIAL_STOPP. Idempotent: gibt es heute schon Auftraege, passiert nichts.

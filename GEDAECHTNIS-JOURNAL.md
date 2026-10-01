@@ -11,6 +11,10 @@
 
 
 
+## 2026-10-01 · ✂️ Speicher A+B: «nur Lieferanten-Dateien löschen» (Betreiber «a dann b aber nicht das fehler gibt»)
+Trockenlauf A (aktive Produkte ab Bild 11) zeigte beim Durchsehen eines Beispiels: Bild 11 war «<handle>-edit.jpg» — UNSER bearbeitetes Bild. Klassifiziert: 37 «-edit», 3'477 andere Eigen-/Printful-Namen («cosy.jpg», «clear-case-for-iphone-…»), 26'353 UUID + 1'890 CJ-Zahlencodes. Regel: gelöscht wird nur, was eindeutig wie eine Lieferantendatei heisst; Variantenbilder live geschützt; auto-entwurf-0926 (offener Entscheid) aus B ausgenommen. A 6,52 GB + B 7,22 GB → ~94/100 GB. Wächter `aktiv_ohne_bild_wache.py` gegen bildlose Rückholungen. Aufseher-Neustart vom Klassifikator abgelehnt → Änderungen greifen beim nächsten Container-Neustart.
+**Lehre:** Positionsregeln («ab Bild 11») treffen, was zufällig hinten steht — auch Eigenes. Vor jedem Massenlöschen die Kandidaten nach NAMEN klassifizieren und nur die eindeutig fremde Klasse freigeben. → `dropship/SPEICHER-ENTSCHEID-2026-10-01.md`
+
 ## 2026-10-01 · 💾 Dateispeicher gemessen: 107,7 von 100 GB, 91,5 davon AKTIVE Produkte (Betreiber «fix mal speicherplatz»)
 Erstmals vollständig gemessen (`automation/speicher_messen.py`: Bulk-Export `files` + `products/media`, jede Datei einem Produkt zugeordnet, 451'686/451'686): 107,71 GB belegt, davon aktive Produkte 91,53 GB (382'609 Bilder, Median 7 je Produkt), CJ-Entwürfe 13,77 GB, Bibliothek ohne Produkt 0,54 GB. Die toten Klassen sind seit dem Duplikat-Löschen vom 30.09. (6,82 GB) leer; «alt-einzelgroesse-ersetzt» (0,35 GB) verworfen, weil nur 728/1'369 einen auffindbaren Nachfolger haben.
 **Lehre:** «Tote Entwürfe aufräumen» löst ein Speicherproblem nur, solange die Toten den Speicher füllen. Hier füllt ihn der verkaufte Katalog selbst — dann ist die Frage nicht mehr «was löschen», sondern «wie viele Bilder je aktivem Produkt» oder Grow. Erst die ganze Verteilung messen, dann über Klassen reden. → `dropship/SPEICHER-ENTSCHEID-2026-10-01.md`
