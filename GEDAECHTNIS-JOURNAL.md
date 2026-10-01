@@ -31,6 +31,12 @@
   `_grow_aktiv.txt` (16:00 UTC).
 - **Lehre:** Reihenfolge ist Vorrang — eine allgemeine Regel («geschirr-set») vor der spezifischen («kochgeschirr-set») verschluckt sie.
   Bei jeder neuen Tabelle die volle Prüfliste je Zielklasse lesen, nicht nur die Zählung.
+- **Nachtrag 17:55 — Fehlalarm des neuen Google-Wächters:** «Auto-USB-Ladegerät mit Zigarettenanzünder» wurde als Tabak aus Google
+  genommen. Vollmessung der Tabak-Regel am Katalog: 7 harmlose Treffer (5 Kfz-Ladegeräte «Zigarettenanzünder», «Mixer, Entsafter &
+  Grinder», «Seifengrinder»). `google_kanal_luecke.py`: `zigarette(?!n-?anzünder)`, `(?<!seifen)grinder`, Grinder mit Küchenwort im
+  Titel frei; Kanarienvögel 12/12 (echte Tabakware bleibt draussen); Ladegerät wieder im Google-Kanal (zurückgelesen).
+  Lehre: Eine Sperrregel, die bisher nur täglich ein Bericht war, wird mit einem automatischen Vollstrecker zur Schreibregel —
+  vorher ihre Treffer am ganzen Katalog lesen.
 
 ## 2026-10-01 · 🗂️ Feinkategorien überall — und ein Skript, das ohne DRY=1 sofort schreibt
 5'087 Google-Kanal-Produkte von grob auf fein (nur Unterzweig des bisherigen Werts). Falle 1: `google_kategorie_fein.py` hat `SCHARF = DRY != "1"` — mein «Trockenlauf» schrieb 2'049 Werte; nachträglich je Zielpfad Stichproben gelesen und 59 Fehlgriffe korrigiert. Falle 2: «leine» in «kleine» (105 Fehltreffer, im echten Trockenlauf gefunden). Falle 3: eine Kostüm-Regel widersprach dem Beschluss «Kostüme ohne Google» und traf ein Hundekostüm → zurückgenommen.

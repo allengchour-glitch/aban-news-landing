@@ -5532,3 +5532,12 @@ gid://shopify/Product/15454048289153	zugeordnet	28	Sommerkleid mit hohem Bund
 gid://shopify/Product/15454048321921	zugeordnet	7	Fahrradhelm für Herren und Damen
 gid://shopify/Product/15454048485761	zugeordnet	48	Winter-Lauflernschuhe Velours-Schneestiefel
 gid://shopify/Product/15454048518529	zugeordnet	30	Lange Blumen-Kleid mit V-Hals
+gid://shopify/Product/15454048551297	zugeordnet	4	Sicherheitshelm fürs Radfahren bei Nacht
+gid://shopify/Product/15454048649601	zugeordnet	16	Warme Kinderschneestiefel
+gid://shopify/Product/15454048780673	zugeordnet	30	Warme Kinderschuhe mit Fleece-Futter
+gid://shopify/Product/15454048846209	zugeordnet	24	Kinder Winterstiefel mit Fell
+gid://shopify/Product/15454049010049	zugeordnet	18	Elegante Bürodress mit Spitze
+gid://shopify/Product/15454049042817	zugeordnet	30	Wollschuhe für Kinder, rutschfest
+gid://shopify/Product/15454049141121	zugeordnet	8	Sommer-Maxikleid mit Polka-Dot-Muster
+gid://shopify/Product/15454049173889	zugeordnet	48	Sommer-Schuhe für Mädchen – Mehrfarbig
+gid://shopify/Product/15454049272193	zugeordnet	21	Warme Kinderschuhe mit Fleece
