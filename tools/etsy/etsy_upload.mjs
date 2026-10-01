@@ -26,7 +26,7 @@ const PREISE = {
   'en/debt-payoff-planner': { CHF: 10, EUR: 10, USD: 11, GBP: 9 },
   'hochzeits-budget': { CHF: 12, EUR: 12, USD: 13, GBP: 10 },
   'en/wedding-budget-planner': { CHF: 9, EUR: 9, USD: 10, GBP: 8 },
-  'finanz-kompass': { CHF: 29, EUR: 29, USD: 32, GBP: 25 },
+  'finanz-kompass': { CHF: 24, EUR: 24, USD: 27, GBP: 21 },
   'umzugs-paket': { CHF: 12, EUR: 12, USD: 13, GBP: 10 },
 };
 const TITEL_RE = /[^\p{L}\p{Nd}\p{P}\p{Sm}\p{Zs}™©®]/u; // Etsy: erlaubte Zeichen im Titel
@@ -85,7 +85,10 @@ let ACCESS;
 async function etsy(methode, pfad, body) {
   const headers = { 'x-api-key': process.env.ETSY_API_KEY, Authorization: `Bearer ${ACCESS}` };
   let data = body;
-  if (body && !(body instanceof FormData)) {
+  if (body && body.__json) {
+    headers['Content-Type'] = 'application/json';
+    data = JSON.stringify(body.__json);
+  } else if (body && !(body instanceof FormData)) {
     headers['Content-Type'] = 'application/x-www-form-urlencoded';
     data = new URLSearchParams(body);
   }
@@ -155,6 +158,22 @@ async function main() {
   console.log(`Shop ${shop.shop_name} (${me.shop_id}), Währung ${waehrung}`);
   const tax = await kategorie();
   for (const p of pakete) {
+    if (ledger[p.slug] && PREISE[p.slug][waehrung] && Number(ledger[p.slug].preis) !== PREISE[p.slug][waehrung]) {
+      // Preis im Skript geändert → bestehenden Eintrag nachführen (updateListingInventory: erst lesen, dann mit neuem Preis schreiben)
+      const neu = PREISE[p.slug][waehrung], id = ledger[p.slug].listing_id;
+      const inv = await etsy('GET', `/application/listings/${id}/inventory`);
+      const products = (inv.products || []).map((pr) => ({
+        sku: pr.sku || '',
+        property_values: (pr.property_values || []).map((v) => ({ property_id: v.property_id, value_ids: v.value_ids, values: v.values, ...(v.scale_id ? { scale_id: v.scale_id } : {}) })),
+        offerings: (pr.offerings || []).filter((o) => !o.is_deleted).map((o) => ({ price: neu, quantity: o.quantity, is_enabled: o.is_enabled, readiness_state_id: o.readiness_state_id })),
+      }));
+      await etsy('PUT', `/application/listings/${id}/inventory`, { __json: { products,
+        price_on_property: inv.price_on_property || [], quantity_on_property: inv.quantity_on_property || [], sku_on_property: inv.sku_on_property || [],
+        ...(inv.readiness_state_on_property ? { readiness_state_on_property: inv.readiness_state_on_property } : {}) } });
+      console.log(`✓ ${p.slug}: Preis ${ledger[p.slug].preis} → ${neu} ${waehrung}`);
+      ledger[p.slug].preis = neu;
+      fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2) + '\n');
+    }
     if (ledger[p.slug]) {
       // Schon angelegt: nicht doppelt anlegen. Mit ACTIVATE einen bestehenden Entwurf veröffentlichen.
       if (ACTIVATE && ledger[p.slug].state !== 'active') {

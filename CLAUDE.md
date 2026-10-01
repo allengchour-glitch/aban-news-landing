@@ -74,12 +74,12 @@ HTML `fedlex.data.admin.ch/eli/cc/27/317_321_377/…`, Anker `id="art_266_c"`). 
 **Falle:** Stripe-Bot-Commits (Actions-Token) lösen KEINEN Deploy aus → Kauf-Link blieb unsichtbar; `stripe-shop.yml` startet jetzt `cf-deploy-mainsite.yml` selbst (auf main).
 **Leck-Nachträge:** Rand-Cache lieferte `/downloads/packs/*` weiter → Purge-Liste (#2568) + `_redirects` `/downloads/packs/* → /shop.html` (#2570).
 
-**📌 2026-10-01 (🧭 Meisterwerk-Produkt „Finanz-Kompass Schweiz" CHF 29, einzeln CHF 52):**
+**📌 2026-10-01 (🧭 Meisterwerk-Produkt „Finanz-Kompass Schweiz" CHF 24 (seit 01.10. abends, vorher 29), einzeln CHF 52):**
 - **Neu:** `tools/kompass/engine.js` verbindet Budget-, Mietzins- und Schulden-Engine zu EINEM Plan mit Daten (Miete prüfen →
   Rückstellungen → Start-Reserve 1 Monat → Schulden Lawine/Schneeball → Notreserve 3 Monate → frei). 26 Tests (`test_engine.js`).
   App `content/packs/de/finanz-kompass/finanz-kompass.html` (Build `tools/kompass/build.py`, auch Engine-Block der Verkaufsseite).
 - **Paket:** `INHALT.json` im Kurations-Ordner → `build_product_pack.build_single` kopiert die 4 Einzelprodukte als Unterordner
-  + Excel/PDF aus `content/etsy/` (24 Dateien, 444 KB). Katalog `finanz-kompass` (standalone, 2900 — nach der Preissenkung auf main von 49 auf 29, = Etsy-Preis). Verkaufsseite
+  + Excel/PDF aus `content/etsy/` (24 Dateien, 444 KB). Katalog `finanz-kompass` (standalone, 2400 — 49 → 29 → 24 am 01.10., = Etsy-Preis). Verkaufsseite
   `finanz-kompass-schweiz.html` (Vorschau mit echter Engine, Kauf-Link aus `shop-products.json`). Hinweis „CHF 29 statt 52" auf
   den 4 Einzelseiten. Etsy: `content/etsy/finanz-kompass/` CHF 29, Bilder `tools/etsy/kompass_etsy.mjs`.
 - **Prüfer-Agent fand 2 Blocker (behoben + getestet):** Kreditraten wurden doppelt verteilt (gehören NICHT ins Budget, Engine
@@ -98,11 +98,14 @@ Darum ging die Anmeldung nie. Jetzt: Platzhalter-Sperre in `etsy_upload.mjs` + `
 bestehen den Probelauf. **User:** echtes `keystring:shared_secret` aus Etsy → Your Apps als Secret setzen → Schlüssel-Test → /api/etsy-auth.
 **📌 2026-10-01 (💰 Preise gesenkt + Stripe-Preisfalle behoben):** User: „19 Fr nicht zu teuer? passe alle Preise an“.
 Leiter: Vorlagen/Rechner **12** (Budget-Plan, Hochzeit, Branchen-Kits) · Pakete **14** (Schulden, Mietzins, Prompt-Bibliothek,
-Vorlagen-Set) · Nische **19** (Strategie-Prüfstand) · Bundle alle Kits **39** (statt 79). Regel: eigener Shop nie teurer als Etsy.
+Vorlagen-Set) · Nische **19** (Strategie-Prüfstand) · Bundle alle Kits **39** (statt 79) · Finanz-Kompass **24** (statt 29; < Budget+Schulden einzeln = 26). Regel: eigener Shop nie teurer als Etsy.
 **🐛 Falle behoben:** `stripe_sync.py` behielt bei Preisänderung den ALTEN Link („schon da“) → Seite neuer Preis, Kasse alter.
 Jetzt: neuer Price + Link aufs selbe Produkt, alter Link + Preis deaktiviert (`tools/stripe/test_preisaenderung.py`, 8/8,
 altes Skript fällt 6/8). `shop.html`-ItemList (JSON-LD) wird jetzt aus `data/shop-products.json` erzeugt (`tools/shop_jsonld.py`,
 im Stripe-Workflow) — war handgepflegt mit alten Preisen und ohne die neuen Produkte.
+**Etsy:** 7 Einträge LIVE (Shop AbanPlanner 66202841, Ledger `data/etsy-listings.json`). Preis im Skript ändern → nächster
+`etsy-upload.yml`-Lauf führt bestehende Einträge nach (updateListingInventory: GET → PUT JSON, getestet). „veröffentlichen“ schaltet auch
+bestehende Entwürfe live.
 
 **📌 2026-09-30 (🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch):**
 - **Nachfrage prüfen:** Semrush hat 0 API-Units → Google-Vorschläge per `suggestqueries.google.com/complete/search?client=firefox&hl=de&gl=ch&q=…`

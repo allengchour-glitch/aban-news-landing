@@ -43,6 +43,8 @@ const server = http.createServer((req, res) => {
     if (req.url === '/v3/application/users/me') return j({ user_id: 1, shop_id: 77 });
     if (req.url === '/v3/application/shops/77') return j({ shop_name: 'TestShop', currency_code: 'CHF' });
     if (req.url === '/v3/application/seller-taxonomy/nodes') return j({ results: [{ id: 1, name: 'Paper & Party Supplies', children: [{ id: 2, name: 'Paper', children: [{ id: 1234, name: 'Planner Templates' }] }] }] });
+    if (/\/v3\/application\/listings\/\d+\/inventory$/.test(req.url) && req.method === 'GET')
+      return j({ products: [{ product_id: 1, sku: '', property_values: [], offerings: [{ offering_id: 5, price: { amount: 2900, divisor: 100, currency_code: 'CHF' }, quantity: 999, is_enabled: true, is_deleted: false, readiness_state_id: 42 }] }], price_on_property: [], quantity_on_property: [], sku_on_property: [] });
     if (req.url === '/v3/application/shops/77/listings' && req.method === 'POST') return j({ listing_id: 900 + log.filter((x) => x.u.endsWith('/listings')).length });
     return j({});
   });
@@ -88,6 +90,19 @@ t(!r.e && akt.filter((x) => x.m === 'PATCH' && /state=active/.test(x.body)).leng
 const vorAkt2 = log.length;
 r = await lauf({ ACTIVATE: '1' });
 t(!r.e && !log.slice(vorAkt2).some((x) => x.m === 'PATCH'), 'Gegenprobe: schon veröffentlichte Einträge werden nicht erneut angefasst');
+// Preis geändert: bestehenden Eintrag nachführen (GET inventory → PUT mit neuem Preis, Rest unverändert)
+const LP = path.join(tmp, 'data/etsy-listings.json');
+const L3 = JSON.parse(fs.readFileSync(LP)); L3['schulden-plan'].preis = 27; fs.writeFileSync(LP, JSON.stringify(L3));
+const vorPreis = log.length;
+r = await lauf();
+const put = log.slice(vorPreis).find((x) => x.m === 'PUT' && x.u.endsWith('/inventory'));
+const pb = put && JSON.parse(put.body), of = pb?.products?.[0]?.offerings?.[0];
+t(!r.e && put && put.ct.includes('application/json') && of.price === 14 && of.quantity === 999 && of.is_enabled === true && of.readiness_state_id === 42 && !('offering_id' in of),
+  'Preisänderung: Inventar mit neuem Preis (CHF 14) als JSON zurückgeschrieben, Menge/Status/Bereitschaft erhalten' + (r.e ? ': ' + r.se : ''));
+t(JSON.parse(fs.readFileSync(LP))['schulden-plan'].preis === 14 && log.slice(vorPreis).filter((x) => x.m === 'PUT').length === 1, 'nur der geänderte Eintrag angefasst, Ledger nachgeführt');
+const vorPreis2 = log.length;
+r = await lauf();
+t(!r.e && !log.slice(vorPreis2).some((x) => x.m === 'PUT'), 'Gegenprobe: gleicher Preis → kein Inventar-Update');
 // Schlüssel-Test (KEY_CHECK): gültig → 0, abgelehnt → 1, Platzhalter → 1 ohne Netz
 const pruef = (key) => new Promise((resolve) => import('child_process').then(({ execFile }) =>
   execFile('node', ['tools/etsy/etsy_upload.mjs'], { env: { ...env, KEY_CHECK: '1', ETSY_API_KEY: key } }, (e, so) => resolve({ e, so }))));
