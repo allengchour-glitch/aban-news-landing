@@ -319,3 +319,7 @@
 # /downloads/ enthaelt drei Dateien, zwei davon noindex (Kauf-Downloads). Die
 # eine oeffentliche ist das Starter-Kit — dorthin, statt auf 404.
 /downloads/       /downloads/dach-ki-toolkit.html  301
+
+# Bezahlte Pakete lagen bis 01.10.2026 ungeschützt unter /downloads/packs/ und stecken teils noch im Rand-Cache.
+# Umleitung statt 404, damit auch eine Cache-Nachprüfung die alte Datei ersetzt. Gekauft wird über den Shop.
+/downloads/packs/*  /shop.html  302
