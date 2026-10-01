@@ -27,6 +27,7 @@ const PREISE = {
   'hochzeits-budget': { CHF: 12, EUR: 12, USD: 13, GBP: 10 },
   'en/wedding-budget-planner': { CHF: 9, EUR: 9, USD: 10, GBP: 8 },
   'finanz-kompass': { CHF: 29, EUR: 29, USD: 32, GBP: 25 },
+  'umzugs-paket': { CHF: 12, EUR: 12, USD: 13, GBP: 10 },
 };
 const TITEL_RE = /[^\p{L}\p{Nd}\p{P}\p{Sm}\p{Zs}™©®]/u; // Etsy: erlaubte Zeichen im Titel
 const TAG_RE = /[^\p{L}\p{Nd}\p{Zs}\-'™©®]/u;           // Etsy: erlaubte Zeichen in Tags

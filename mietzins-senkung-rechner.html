@@ -160,17 +160,19 @@ footer a{color:var(--muted)}
 
   function monateZwischen(von, bis) {
     if (!von || !bis) return 0;
-    var a = new Date(von), b = new Date(bis);
+    var a = lokal(von), b = lokal(bis);
     return Math.max(0, (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()));
   }
 
+  // "JJJJ-MM-TT" lokal lesen: new Date("2026-10-15") wäre UTC und westlich von Greenwich ein Tag zu früh
+  function lokal(x) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(x)); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date(x); }
   function monatsende(j, m) { return new Date(j, m + 1, 0); } // m: 0–11
   function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 
   // Nächstmöglicher Kündigungstermin: das Schreiben muss spätestens am letzten Tag vor Beginn der Frist ankommen.
   // termine: Liste erlaubter Monate (1–12, jeweils Monatsende). zugang: Datum, an dem der Brief ankommt.
   function naechsterTermin(zugang, fristMonate, termine) {
-    var z = new Date(zugang); z.setHours(0, 0, 0, 0);
+    var z = lokal(zugang); z.setHours(0, 0, 0, 0);
     var f = Math.max(1, Math.round(+fristMonate || 3));
     var erlaubt = (termine && termine.length) ? termine : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     for (var i = 0; i < 60; i++) {
@@ -186,7 +188,7 @@ footer a{color:var(--muted)}
     return null;
   }
 
-  function plusTage(datum, tage) { var d = new Date(datum); d.setDate(d.getDate() + tage); return iso(d); }
+  function plusTage(datum, tage) { var d = lokal(datum); d.setDate(d.getDate() + tage); return iso(d); }
 
   function berechnen(e) {
     var netto = +e.netto || 0;

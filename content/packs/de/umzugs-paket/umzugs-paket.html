@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Umzugs-Paket Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#1d4ed8;--ink:#1c2230;--ink2:#394052;--muted:#687083;--line:#dde2ec;--bg:#f5f7fb;--card:#fff;--field:#fbfcfe;--gut:#15803d;--rot:#b91c1c;--warm:#b45309}
+@media(prefers-color-scheme:dark){:root{--akz:#93b4ff;--ink:#eef1f7;--ink2:#cfd5e2;--muted:#97a0b3;--line:#2e3445;--bg:#11141b;--card:#181c25;--field:#151922;--gut:#4ade80;--rot:#f87171;--warm:#fbbf24}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px 70px}
+.marke{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--akz);font-weight:800}
+h1{font-size:clamp(26px,5vw,36px);letter-spacing:-.02em;line-height:1.12;margin-top:4px}
+h2{font-size:1.15rem;margin:0 0 4px}
+.sub{color:var(--ink2);margin:8px 0 6px;max-width:680px}
+.tabs{display:flex;gap:6px;margin:18px 0 6px;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:5}
+.tabs button{flex:1 1 140px;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 11px;font:inherit;color:var(--ink2);cursor:pointer}
+.tabs button b{display:block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tabs button[aria-current=page]{border-color:var(--akz);box-shadow:inset 0 -3px 0 var(--akz);color:var(--ink)}
+@media(max-width:560px){.tabs{gap:4px}.tabs button{flex:1 1 0;min-width:0;overflow:hidden;overflow-wrap:anywhere;hyphens:auto;padding:6px 7px;font-size:.74rem;line-height:1.25}.tabs button b{font-size:.62rem}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:3px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+input,select,textarea{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+textarea{min-height:60px}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--akz);flex:0 0 18px}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--akz);outline-offset:1px}
+.zwei{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.monate{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.86rem}.monate label{display:flex;gap:5px;align-items:center;font-weight:400;margin:0}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.haupt{background:var(--akz);border-color:var(--akz);color:#fff;font-weight:700}
+@media(prefers-color-scheme:dark){button.haupt{color:#0b1530}}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.zahl{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:10px}
+.warn{border-left-color:var(--warm)}
+.liste{list-style:none;margin-top:8px}
+.liste li{display:flex;gap:12px;align-items:flex-start;padding:10px 4px;border-bottom:1px solid var(--line)}
+.liste li.fertig .t{text-decoration:line-through;color:var(--muted)}
+.liste .dat{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.liste .t{font-weight:700}.liste .x{font-size:.9rem;color:var(--ink2)}
+.liste li.vorbei:not(.fertig) .dat{color:var(--rot)}
+.fort{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin:8px 0 2px}.fort i{display:block;height:100%;background:var(--akz)}
+.brief{background:#fff;color:#111;border:1px solid var(--line);border-radius:10px;padding:28px 30px;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;white-space:pre-wrap;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:8px}
+th,td{padding:6px 5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+td select{min-width:110px}
+.raum{margin-top:16px}.raum h3{font-size:1rem}
+.klein{font-size:.82rem;color:var(--muted)}
+[hidden]{display:none!important}
+@media print{.tabs,.leiste,.noprint{display:none!important}body{background:#fff;color:#000}.box{border:0;padding:0}
+body[class^=p-] .wrap>.marke,body[class^=p-] .wrap>h1,body[class^=p-] .wrap>.sub,body[class^=p-] .wrap>p.klein{display:none!important}
+body.p-brief section:not(#s-kuendigung),body.p-brief #s-kuendigung>*:not(#briefbox){display:none!important}
+body.p-brief #briefbox .brief{border:0;padding:0}
+body.p-protokoll section:not(#s-abgabe){display:none!important}body.p-protokoll #s-abgabe{display:block!important}
+body.p-plan section:not(#s-plan){display:none!important}body.p-plan #s-plan{display:block!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="marke">aban news · Umzugs-Paket Schweiz</div>
+<h1>Umziehen ohne Frist zu verpassen</h1>
+<p class="sub">Kündigungstermin, fertiger Kündigungsbrief, Umzugsplan mit Daten, Adressänderungen und Abgabeprotokoll. Nach Art. 264, 266a–266o und 267 OR. Alles bleibt in diesem Browser.</p>
+
+<nav class="tabs" aria-label="Bereiche">
+<button data-tab="kuendigung" aria-current="page"><b>1</b>Kündigung</button>
+<button data-tab="plan"><b>2</b>Umzugsplan</button>
+<button data-tab="adressen"><b>3</b>Adressen</button>
+<button data-tab="abgabe"><b>4</b>Wohnungsabgabe</button>
+</nav>
+
+<section class="box" id="s-kuendigung">
+<h2>Wann kannst du kündigen?</h2>
+<p class="hint">Mieterinnen und Mieter kündigen mit drei Monaten Frist auf einen ortsüblichen Termin, sofern der Vertrag nichts anderes sagt (Art. 266c OR). Die Termine stehen im Mietvertrag, oft „jedes Monatsende ausser Dezember“.</p>
+<div class="zwei" style="margin-top:12px">
+<div><label for="k-zugang">Brief kommt beim Vermieter an am</label><input id="k-zugang" type="date"><p class="hint">Zählt der Tag, an dem der Vermieter ihn erhalten oder abholen kann. Ist bei der Zustellung niemand da, gibt es nur eine Abholungseinladung: Der Brief gilt dann erst als zugegangen, wenn er abgeholt werden kann. Darum früh senden oder persönlich gegen Quittung übergeben.</p></div>
+<div><label for="k-frist">Kündigungsfrist</label><select id="k-frist"><option value="3" selected>3 Monate (Gesetz)</option><option value="4">4 Monate</option><option value="6">6 Monate</option></select></div>
+<div><label for="k-miete">Bruttomiete pro Monat (CHF)</label><input id="k-miete" type="number" min="0" step="10"></div>
+<div><label for="k-auszug">Wunsch-Auszug (optional)</label><input id="k-auszug" type="date"><p class="hint">Früher als der Termin? Dann brauchst du einen Nachmieter (Art. 264 OR). Der Vermieter darf ihn prüfen, plane dafür einige Wochen ein.</p></div>
+</div>
+<div style="margin-top:12px"><label>Kündigungstermine laut Vertrag (jeweils Monatsende)</label><div class="monate" id="k-termine"></div><p class="hint">Vorbelegt ist „jedes Monatsende ausser Dezember“, das steht in vielen Verträgen. Das ist eine Annahme: Steht im Vertrag nichts, gilt der Ortsgebrauch, oft nur zwei oder drei Termine im Jahr. Bei Gemeinde oder Mieterverband nachfragen.</p></div>
+<div id="k-out" aria-live="polite"></div>
+
+<h2 style="margin-top:22px">Kündigungsbrief</h2>
+<p class="hint">Schriftlich und eigenhändig unterschrieben (Art. 266l OR). Dient die Wohnung der Familie, muss der Ehegatte oder eingetragene Partner ausdrücklich zustimmen, am einfachsten mitunterschreiben (Art. 266m OR). Sonst ist die Kündigung nichtig (Art. 266o OR).</p>
+<div class="zwei" style="margin-top:12px">
+<div><label for="b-ich">Dein Name und Adresse</label><textarea id="b-ich" placeholder="Vorname Name&#10;Strasse Nr.&#10;PLZ Ort"></textarea></div>
+<div><label for="b-verm">Vermieter oder Verwaltung</label><textarea id="b-verm" placeholder="Verwaltung AG&#10;Strasse Nr.&#10;PLZ Ort"></textarea></div>
+<div><label for="b-objekt">Wohnung</label><input id="b-objekt" placeholder="3½-Zimmer-Wohnung, 2. OG links, Musterweg 5, 3000 Bern"></div>
+<div><label for="b-zweit">Zweite Person</label><input id="b-zweit" placeholder="Vorname Name (leer lassen, wenn allein)"></div>
+<div><label for="b-rolle">Rolle der zweiten Person</label><select id="b-rolle"><option value="mit">Mitmieter/in (steht im Mietvertrag)</option><option value="ehe">Ehegatte oder eingetragener Partner (Zustimmung, Art. 266m OR)</option></select><p class="hint">Stehen mehrere Personen im Mietvertrag, müssen alle kündigen und unterschreiben.</p></div>
+<div><label for="b-ort">Ort</label><input id="b-ort" placeholder="Bern"></div>
+<div><label for="b-nach">Nachmieter vorschlagen</label><select id="b-nach"><option value="">nein</option><option value="ja">ja, ich suche einen Nachmieter</option></select></div>
+</div>
+<div id="briefbox"><div class="brief" id="brief"></div></div>
+<div class="leiste"><button class="haupt" data-print="brief">Brief drucken</button><button id="b-kopie">Text kopieren</button></div>
+</section>
+
+<section class="box" id="s-plan" hidden>
+<h2>Umzugsplan</h2>
+<div class="zwei noprint"><div><label for="p-umzug">Umzugstag</label><input id="p-umzug" type="date"><p class="hint">Leer = Wunsch-Auszug oder Kündigungstermin aus Schritt 1.</p></div>
+<div><label for="p-abgabe">Wohnungsabgabe</label><input id="p-abgabe" type="date"><p class="hint">Leer = Wunsch-Auszug oder Kündigungstermin.</p></div></div>
+<div class="fort" aria-hidden="true"><i id="p-fort"></i></div><p class="klein" id="p-stand"></p>
+<ul class="liste" id="p-liste"></ul>
+<div class="leiste"><button data-print="plan">Plan drucken</button></div>
+</section>
+
+<section class="box" id="s-adressen" hidden>
+<h2>Adressänderungen</h2>
+<p class="hint">Die Gemeinde meldet die neue Adresse an einige Ämter weiter, zum Beispiel ans Steueramt. Alle anderen musst du selbst informieren. Eigene Einträge kannst du ergänzen.</p>
+<div class="fort" aria-hidden="true"><i id="a-fort"></i></div><p class="klein" id="a-stand"></p>
+<ul class="liste" id="a-liste"></ul>
+<div class="leiste"><input id="a-neu" placeholder="Eigener Eintrag, z. B. Fitnessstudio" style="max-width:320px"><button id="a-plus">Hinzufügen</button></div>
+</section>
+
+<section class="box" id="s-abgabe" hidden>
+<h2>Abgabeprotokoll</h2>
+<p class="hint">Raum für Raum mit dem Vermieter durchgehen. Der Vermieter muss Mängel, für die du einstehen sollst, sofort melden; später nur noch versteckte Mängel (Art. 267a OR). Normale Abnützung durch vertragsgemässen Gebrauch geht nicht zu deinen Lasten (Art. 267 OR). Nur unterschreiben, was stimmt.</p>
+<div class="zwei" style="margin-top:12px"><div><label for="g-mieter">Mieter/in</label><input id="g-mieter"></div><div><label for="g-wohnung">Wohnung (Adresse, Stockwerk)</label><input id="g-wohnung"></div><div><label for="g-datum">Abgabe am</label><input id="g-datum" placeholder="TT.MM.JJJJ"></div><div><label for="g-schluessel">Anzahl Schlüssel abgegeben</label><input id="g-schluessel" type="number" min="0"></div>
+<div><label for="g-strom">Zählerstand Strom</label><input id="g-strom"></div><div><label for="g-wasser">Zählerstand Wasser / Wärme</label><input id="g-wasser"></div></div>
+<div id="g-raeume"></div>
+<p style="margin-top:16px">Die Unterschriften bestätigen den festgestellten Zustand. Sie sind keine Anerkennung von Kosten.</p><p style="margin-top:22px">Ort, Datum: ______________________</p><p style="margin-top:22px">Mieter/in: ______________________ &nbsp; &nbsp; Vermieter/in: ______________________</p>
+<div class="leiste"><button class="haupt" data-print="protokoll">Protokoll drucken</button><button id="reset" class="noprint">Alles zurücksetzen</button></div>
+</section>
+<p class="klein">Planungshilfe, keine Rechtsberatung. Bei Streit um die Kündigung oder die Abgabe helfen die kantonale Schlichtungsbehörde (kostenlos) und der Mieterverband.</p>
+</div>
+
+<script>// Mietzins-Paket Schweiz — Rechen-Engine (ohne Oberfläche, in Node testbar).
+// Grundlage: Art. 13 VMWG (Hypothekarzins), Art. 16 VMWG (Teuerung, 40 % des LIK), Art. 12 VMWG (Kostensteigerungen),
+// Art. 270a OR (Herabsetzungsbegehren auf den nächstmöglichen Kündigungstermin).
+(function (root) {
+  "use strict";
+  var AKTUELL = { satz: 1.25, stand: "2. September 2026", naechste: "1. Dezember 2026" };
+
+  // Art. 13 Abs. 1 VMWG: Erhöhung um ¼ % → höchstens 3 % (< 5 %), 2,5 % (5–6 %), 2 % (> 6 %).
+  function satzProSchritt(zins) { return zins < 5 ? 0.03 : (zins <= 6 ? 0.025 : 0.02); }
+
+  // Veränderung des Mietzinses in Anteilen (−0.0566 = −5,66 %) von Referenzzins alt → neu.
+  // Eine Senkung ist die Umkehrung der Erhöhung: 1,25 → 1,75 = +6 % ⇒ 1,75 → 1,25 = 1 − 1/1,06 = −5,66 %.
+  function zinsAnteil(alt, neu) {
+    var a = Math.round(alt * 4), n = Math.round(neu * 4);
+    if (a === n) return 0;
+    var tief = Math.min(a, n), hoch = Math.max(a, n), summe = 0;
+    for (var s = tief; s < hoch; s++) summe += satzProSchritt(s / 4);
+    return n > a ? summe : -(1 - 1 / (1 + summe));
+  }
+
+  // Art. 16 VMWG: höchstens 40 % der Veränderung des Landesindexes der Konsumentenpreise.
+  function teuerungAnteil(likAlt, likNeu) {
+    likAlt = +likAlt; likNeu = +likNeu;
+    if (!(likAlt > 0) || !(likNeu > 0)) return 0;
+    return 0.4 * (likNeu / likAlt - 1);
+  }
+
+  // Allgemeine Kostensteigerungen als Pauschale pro Jahr (z. B. 0.005 = 0,5 %/Jahr), anteilig nach Monaten.
+  function kostenAnteil(monate, proJahr) { return Math.max(0, +monate || 0) / 12 * Math.max(0, +proJahr || 0); }
+
+  function monateZwischen(von, bis) {
+    if (!von || !bis) return 0;
+    var a = lokal(von), b = lokal(bis);
+    return Math.max(0, (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()));
+  }
+
+  // "JJJJ-MM-TT" lokal lesen: new Date("2026-10-15") wäre UTC und westlich von Greenwich ein Tag zu früh
+  function lokal(x) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(x)); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date(x); }
+  function monatsende(j, m) { return new Date(j, m + 1, 0); } // m: 0–11
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+
+  // Nächstmöglicher Kündigungstermin: das Schreiben muss spätestens am letzten Tag vor Beginn der Frist ankommen.
+  // termine: Liste erlaubter Monate (1–12, jeweils Monatsende). zugang: Datum, an dem der Brief ankommt.
+  function naechsterTermin(zugang, fristMonate, termine) {
+    var z = lokal(zugang); z.setHours(0, 0, 0, 0);
+    var f = Math.max(1, Math.round(+fristMonate || 3));
+    var erlaubt = (termine && termine.length) ? termine : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    for (var i = 0; i < 60; i++) {
+      var j = z.getFullYear(), m = z.getMonth() + i;
+      var t = monatsende(j, m);
+      if (erlaubt.indexOf(t.getMonth() + 1) < 0) continue;
+      var spaetestens = monatsende(t.getFullYear(), t.getMonth() - f); // Ende des Monats vor Fristbeginn
+      if (z <= spaetestens) {
+        var ab = new Date(t.getFullYear(), t.getMonth() + 1, 1);
+        return { termin: iso(t), wirksamAb: iso(ab), spaetestensZugang: iso(spaetestens) };
+      }
+    }
+    return null;
+  }
+
+  function plusTage(datum, tage) { var d = lokal(datum); d.setDate(d.getDate() + tage); return iso(d); }
+
+  function berechnen(e) {
+    var netto = +e.netto || 0;
+    var zins = zinsAnteil(+e.zinsAlt, e.zinsNeu == null ? AKTUELL.satz : +e.zinsNeu);
+    var teuerung = teuerungAnteil(e.likAlt, e.likNeu);
+    var monate = monateZwischen(e.festlegung, e.heute);
+    var kosten = kostenAnteil(monate, e.kostenProJahr == null ? 0.005 : e.kostenProJahr);
+    var total = zins + teuerung + kosten;
+    var neu = Math.round(netto * (1 + total) * 20) / 20; // auf 5 Rappen
+    var r = {
+      zins: zins, teuerung: teuerung, kosten: kosten, monate: monate, total: total,
+      nettoNeu: neu, proMonat: netto - neu, proJahr: (netto - neu) * 12,
+      anspruch: total < 0
+    };
+    if (e.zugang) {
+      r.termin = naechsterTermin(e.zugang, e.frist, e.termine);
+      r.antwortBis = plusTage(e.zugang, 30);                 // Art. 270a Abs. 2 OR: Vermieter nimmt innert 30 Tagen Stellung
+      r.schlichtungBis = plusTage(r.antwortBis, 30);         // danach 30 Tage für die Schlichtungsbehörde (ohne Antwort)
+    }
+    return r;
+  }
+
+  var api = { AKTUELL: AKTUELL, zinsAnteil: zinsAnteil, teuerungAnteil: teuerungAnteil, kostenAnteil: kostenAnteil,
+    naechsterTermin: naechsterTermin, monateZwischen: monateZwischen, berechnen: berechnen };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.MietzinsEngine = api;
+})(this);
+
+// Umzugs-Paket Schweiz — Rechen-Engine (ohne Oberfläche, in Node testbar).
+// Kündigung durch Mieter: Art. 266a–266c OR (3 Monate auf ortsüblichen Termin / Vertrag), Art. 266l (schriftlich),
+// Art. 266m (Familienwohnung: Zustimmung des Ehegatten / eingetragenen Partners), Art. 266o (sonst nichtig),
+// Art. 264 (vorzeitige Rückgabe: zumutbarer Nachmieter), Art. 267/267a (Rückgabe, Mängelmeldung), Art. 257e (Kaution).
+// Den Termin rechnet die geprüfte Mietzins-Engine (naechsterTermin, Zugangsprinzip).
+(function (root) {
+  "use strict";
+  var M = root.MietzinsEngine || (typeof require !== "undefined" ? require("../mietzins/engine.js") : null);
+
+  function d(x) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(x)); var t = m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date(x); t.setHours(12, 0, 0, 0); return t; }
+  function wochenende(x) { var g = d(x).getDay(); return g === 0 || g === 6; }
+  function iso(t) { return t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0"); }
+  function plusTage(x, n) { var t = d(x); t.setDate(t.getDate() + n); return iso(t); }
+  // Arbeitstag davor (Sa/So → Freitag); Feiertage sind kantonal und werden NICHT berücksichtigt
+  function werktagDavor(x) { var t = d(x); while (t.getDay() === 0 || t.getDay() === 6) t.setDate(t.getDate() - 1); return iso(t); }
+
+  // Kündigung: zugang = Tag, an dem der Brief beim Vermieter ankommen kann. Empfehlung Postaufgabe: 7 Tage vorher (Puffer).
+  function kuendigung(e) {
+    var frist = Math.max(3, Math.round(+e.fristMonate || 3));   // Art. 266a/266c: kürzer als 3 Monate nicht vereinbar
+    var termine = (e.termine && e.termine.length) ? e.termine : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    var zugang = e.zugang || iso(new Date());
+    var t = M.naechsterTermin(zugang, frist, termine);
+    if (!t) return null;
+    // Wenn heute versendet: Zugang realistisch +2 Tage (A-Post Einschreiben); erst daraus den Termin rechnen
+    var r = { frist: frist, termine: termine, termin: t.termin, auszugBis: t.termin, spaetestensZugang: t.spaetestensZugang,
+      aufgebenBis: werktagDavor(plusTage(t.spaetestensZugang, -7)), wirksamAb: t.wirksamAb };
+    var heute = e.heute || iso(new Date());
+    r.warnungen = [];
+    if (zugang < heute) r.warnungen.push("zugangVergangen");
+    else if (r.aufgebenBis < heute) r.warnungen.push(r.spaetestensZugang < heute ? "zuSpaet" : "knapp");
+    if (wochenende(r.spaetestensZugang)) r.warnungen.push("zugangWochenende");
+    if (wochenende(r.termin)) r.warnungen.push("terminWochenende");
+    // Wie lange noch Miete bis zum Termin (Monate inkl. Monat des Zugangs)
+    var a = d(zugang), b = d(t.termin);
+    r.monateMiete = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()) + 1;
+    r.mieteBisTermin = (+e.miete || 0) * r.monateMiete;
+    // Vorzeitiger Auszug (Art. 264): gespart, wenn ein Nachmieter ab dem Wunschdatum übernimmt
+    if (e.auszug) {
+      var w = d(e.auszug);
+      if (w < b) {
+        // Auszug am 1. eines Monats: dieser Monat ist schon frei; sonst ist er bezahlt
+        var monate = (b.getFullYear() - w.getFullYear()) * 12 + (b.getMonth() - w.getMonth()) + (w.getDate() === 1 ? 1 : 0);
+        r.vorzeitig = { monate: monate, ersparnis: monate * (+e.miete || 0) };
+      } else if (w > b) r.warnungen.push("auszugNachTermin");
+    }
+    return r;
+  }
+
+  // Umzugsplan rückwärts ab Umzugstag. tage < 0 = vor dem Umzug, > 0 = danach.
+  var AUFGABEN = [
+    { id: "kuendigen", tage: null, titel: "Alte Wohnung kündigen", text: "Schriftlich und unterschrieben (Art. 266l OR), von allen Mietern im Vertrag; bei der Familienwohnung mit Zustimmung des Ehegatten oder eingetragenen Partners (Art. 266m OR). Per Einschreiben, früh genug: Wer die Abholungseinladung bekommt, holt oft erst Tage später ab." },
+    { id: "offerten", tage: -60, titel: "Offerten für Umzug einholen", text: "Mindestens drei Offerten: Zügelfirma, Mietwagen oder Helfer. Fix- oder Stundenpreis, Versicherung, Material." },
+    { id: "reinigung", tage: -45, titel: "Endreinigung organisieren", text: "Offerte mit Abnahmegarantie, also Nachreinigung inklusive, falls bei der Abgabe etwas beanstandet wird." },
+    { id: "ausmisten", tage: -42, titel: "Ausmisten", text: "Was nicht mitkommt: verkaufen, verschenken, Sperrgut-Termine der Gemeinde nachschauen." },
+    { id: "parkplatz", tage: -28, titel: "Parkfeld für den Umzugswagen", text: "Bei der Gemeinde oder Polizei eine Bewilligung für Halteverbot oder Parkfeld beantragen, an beiden Adressen." },
+    { id: "post", tage: -21, titel: "Nachsendeauftrag bei der Post", text: "Online bei der Post, gilt ab Umzugstag. Kostet je nach Dauer." },
+    { id: "strom", tage: -14, titel: "Strom, Internet, TV ummelden", text: "Zählerstand am Auszugstag notieren. Internet-Umzug früh anmelden, Anschlüsse brauchen oft zwei Wochen." },
+    { id: "adressen", tage: -10, titel: "Adressänderungen verschicken", text: "Arbeitgeber, Bank, Krankenkasse, Versicherungen, Abos. Liste im Paket abhaken." },
+    { id: "kartons", tage: -7, titel: "Packen nach Zimmern", text: "Kartons beschriften: Zimmer und Inhalt. Eine Kiste für die erste Nacht: Werkzeug, Bettwäsche, Ladekabel, Medikamente." },
+    { id: "protokoll", tage: -1, titel: "Wohnungsabgabe vorbereiten", text: "Abgabeprotokoll vom Einzug hervorholen. Alle Schlüssel zählen, auch Briefkasten und Keller." },
+    { id: "abmelden", tage: -5, titel: "Bei der alten Gemeinde abmelden", text: "Persönlich, online (eUmzug, wo angeboten) oder per Formular. Manche Gemeinden verlangen die Abmeldung vor dem Wegzug." },
+    { id: "umzug", tage: 0, titel: "Umzugstag", text: "Zählerstände an beiden Adressen fotografieren. Schäden beim Ausladen sofort mit Foto festhalten." },
+    { id: "abgabe", tage: null, titel: "Wohnungsabgabe", text: "Mit dem Vermieter durchgehen. Nur unterschreiben, was stimmt. Der Vermieter muss Mängel sofort melden (Art. 267a OR)." },
+    { id: "gemeinde", tage: 3, titel: "Bei der neuen Gemeinde anmelden", text: "Persönlich oder online (eUmzug, wo angeboten), mit Ausweis, Mietvertrag und Krankenkassen-Nachweis. Die Frist regelt der Kanton, meist 14 Tage." },
+    { id: "verkehr", tage: 5, titel: "Strassenverkehrsamt: neue Adresse", text: "Führer- und Fahrzeugausweis brauchen die neue Adresse, auch bei einem Umzug innerhalb des Kantons, meist innert 14 Tagen. Bei Kantonswechsel gibt es neue Kontrollschilder." },
+    { id: "kasse", tage: 7, titel: "Krankenkasse: neue Prämienregion", text: "Die Prämie hängt vom Wohnort ab. Neue Adresse melden, bei Kantonswechsel kann sich die Prämie ändern." },
+    { id: "kaution", tage: 30, titel: "Mietkaution zurückfordern", text: "Freigabe beim Vermieter verlangen. Hat er innert eines Jahres nach Mietende nichts rechtlich geltend gemacht, zahlt die Bank dir die Kaution auf Verlangen aus (Art. 257e OR). Bei einer Mietkautionsversicherung gilt das nicht: dort die Police beim Versicherer kündigen." }
+  ];
+
+  function plan(umzug, kuend, abgabe) {
+    return AUFGABEN.map(function (a) {
+      var datum = a.id === "kuendigen" ? (kuend ? kuend.aufgebenBis : null)
+        : a.id === "abgabe" ? (abgabe || (kuend ? kuend.termin : umzug))
+        : plusTage(umzug, a.tage);
+      return { id: a.id, titel: a.titel, text: a.text, datum: datum };
+    }).sort(function (x, y) { return (x.datum || "9") < (y.datum || "9") ? -1 : 1; });
+  }
+
+  var api = { kuendigung: kuendigung, plan: plan, AUFGABEN: AUFGABEN, werktagDavor: werktagDavor, plusTage: plusTage, wochenende: wochenende };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.UmzugEngine = api;
+})(this);
+</script>
+<script>
+(function(){
+"use strict";
+var U=window.UmzugEngine,$=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var chf=function(x){return "CHF "+Math.round(x).toLocaleString("de-CH")};
+var MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+var dat=function(s){if(!s)return "—";var t=s.split("-");return (+t[2])+". "+MON[+t[1]-1]+" "+t[0]};
+var heute=new Date(),iso=function(t){return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0")};
+var KEY="aban-umzug-v1";
+var ADR=["Arbeitgeber (Lohnbuchhaltung)","Bank und Kreditkarten","Krankenkasse (Prämienregion!)","Hausrat- und Haftpflichtversicherung","Autoversicherung","Post: Nachsendeauftrag","SBB / SwissPass","Handy-Abo","Internet und TV","Strom an der alten Adresse abmelden","Strom an der neuen Adresse anmelden","Zeitungen und Zeitschriften","Ärztin, Zahnarzt, Apotheke","Pensionskasse und 3a-Konto","AHV-Ausgleichskasse (Selbständige)","Vereine und Fitnessstudio","Online-Shops und Lieferadressen","Familie und Freunde"];
+var RAEUME=["Küche","Bad / WC","Wohnzimmer","Schlafzimmer","Zimmer 3","Korridor / Eingang","Balkon / Sitzplatz","Keller / Estrich"];
+var TEILE=["Böden","Wände und Decke","Fenster und Storen","Türen und Schlösser","Einbauten und Geräte"];
+var ZUSTAND={"":"–","ok":"in Ordnung","abn":"normale Abnützung","man":"Mangel"};
+var vorlage={k:{zugang:"",frist:"3",miete:"",auszug:"",termine:[1,2,3,4,5,6,7,8,9,10,11]},b:{ich:"",verm:"",objekt:"",zweit:"",rolle:"mit",ort:"",nach:""},p:{umzug:"",abgabe:"",fertig:{}},a:{fertig:{},eigen:[]},g:{mieter:"",wohnung:"",datum:"",schluessel:"",strom:"",wasser:"",z:{}}};
+var st;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!st||!st.k)st=JSON.parse(JSON.stringify(vorlage));
+var speichern=function(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+
+function felder(){
+  $("k-termine").innerHTML=MON.map(function(m,i){return '<label><input type="checkbox" data-mon="'+(i+1)+'"'+(st.k.termine.indexOf(i+1)>=0?" checked":"")+'> '+m+'</label>'}).join("");
+  ["zugang","frist","miete","auszug"].forEach(function(k){$("k-"+k).value=st.k[k]});
+  ["ich","verm","objekt","zweit","rolle","ort","nach"].forEach(function(k){$("b-"+k).value=st.b[k]||(k==="rolle"?"mit":"")});
+  $("p-umzug").value=st.p.umzug;$("p-abgabe").value=st.p.abgabe;
+  ["mieter","wohnung","datum","schluessel","strom","wasser"].forEach(function(k){$("g-"+k).value=st.g[k]||""});
+  $("g-raeume").innerHTML=RAEUME.map(function(r,ri){return '<div class="raum"><h3>'+r+'</h3><table><tr><th>Teil</th><th>Zustand</th><th>Bemerkung</th></tr>'+TEILE.map(function(t,ti){var k=ri+"-"+ti,z=st.g.z[k]||{};
+    return '<tr><td>'+t+'</td><td><select data-g="'+k+'" data-f="s">'+Object.keys(ZUSTAND).map(function(o){return '<option value="'+o+'"'+(z.s===o?" selected":"")+'>'+ZUSTAND[o]+'</option>'}).join("")+'</select></td><td><input data-g="'+k+'" data-f="n" value="'+esc(z.n)+'" aria-label="Bemerkung '+t+'"></td></tr>'}).join("")+'</table></div>'}).join("");
+}
+function kuend(){
+  var k=st.k;if(!k.zugang||!k.termine.length)return null;
+  return U.kuendigung({zugang:k.zugang,fristMonate:+k.frist,termine:k.termine,miete:+k.miete||0,auszug:k.auszug||null});
+}
+function render(){
+  var r=kuend(),h="";
+  if(!st.k.zugang)h='<p class="urteil">Datum eintragen, an dem der Brief ankommt. Heute versendet heisst meist: übermorgen.</p>';
+  else if(!r)h='<p class="urteil warn">Mindestens einen Kündigungstermin ankreuzen.</p>';
+  else{
+    h='<div class="kacheln"><div class="kachel"><b>Mietende</b><div class="zahl">'+dat(r.termin)+'</div>nächstmöglicher Termin</div>'
+     +'<div class="kachel"><b>Brief muss ankommen bis</b><div class="zahl">'+dat(r.spaetestensZugang)+'</div>sonst gilt der nächste Termin (Art. 266a OR)</div>'
+     +'<div class="kachel"><b>Einschreiben aufgeben bis</b><div class="zahl">'+dat(r.aufgebenBis)+'</div>mit einer Woche Reserve</div>'
+     +(st.k.miete?'<div class="kachel"><b>Miete bis dahin</b><div class="zahl">'+chf(r.mieteBisTermin)+'</div>'+r.monateMiete+' Monate ab dem Monat des Zugangs</div>':'')+'</div>';
+    var W={zugangVergangen:'Das Zugangsdatum liegt in der Vergangenheit. Trag das Datum ein, an dem der Brief tatsächlich ankommt.',
+      zuSpaet:'Für diesen Termin ist es zu spät: Der letzte Zugangstag ist vorbei. Die Kündigung gilt dann für den nächstmöglichen Termin (Art. 266a OR). Rechne mit einem späteren Zugangsdatum.',
+      knapp:'Die empfohlene Postaufgabe ist vorbei. Bring den Brief persönlich vorbei und lass dir den Empfang mit Datum quittieren, oder rechne mit dem nächsten Termin.',
+      zugangWochenende:'Der letzte Zugangstag ist ein Samstag oder Sonntag. Bei einer Verwaltung ist dann niemand im Büro, und ein Einschreiben liegt erst am nächsten Werktag zum Abholen bereit. Sorg dafür, dass der Brief früher ankommt.',
+      terminWochenende:'Das Mietende fällt auf ein Wochenende. Umzug und Abgabe finden je nach Ortsgebrauch oft am letzten Werktag davor oder am nächsten Werktag statt. Mit dem Vermieter absprechen. Am Sonntag gilt für Lastwagen das Sonntagsfahrverbot.',
+      auszugNachTermin:'Dein Wunsch-Auszug liegt nach dem Mietende. Das Mietverhältnis endet am Termin. Danach brauchst du die Zustimmung des Vermieters.'};
+    (r.warnungen||[]).forEach(function(w){h+='<p class="urteil warn">'+W[w]+'</p>'});
+    if(r.vorzeitig)h+='<p class="urteil warn">Du willst <b>'+r.vorzeitig.monate+' Monate früher</b> ausziehen. Ohne Nachmieter schuldest du die Miete bis '+dat(r.termin)+(st.k.miete?' ('+chf(r.vorzeitig.ersparnis)+' für diese Monate)':'')+'. Schlägst du einen zumutbaren, zahlungsfähigen Nachmieter vor, der den Vertrag zu den gleichen Bedingungen übernimmt, bist du ab dessen Übernahme befreit (Art. 264 OR). Im Brief „Nachmieter vorschlagen: ja“ wählen.</p>';
+  }
+  $("k-out").innerHTML=h;
+  brief(r);plan(r);adressen();
+}
+function brief(r){
+  var b=st.b,ich=b.ich.trim()||"[Vorname Name\nStrasse Nr.\nPLZ Ort]",verm=b.verm.trim()||"[Vermieter / Verwaltung\nStrasse Nr.\nPLZ Ort]";
+  var heuteTxt=(b.ort.trim()||"[Ort]")+", "+dat(iso(heute));
+  var termin=r?dat(r.termin):"[Termin]",obj=b.objekt.trim()||"[Wohnung, Adresse]";
+  var zwei=b.zweit.trim(),wir=zwei&&b.rolle!=="ehe";
+  var t=ich+"\n\n\nEinschreiben\n"+verm+"\n\n\n"+heuteTxt+"\n\n\nKündigung des Mietvertrags: "+obj+"\n\nSehr geehrte Damen und Herren\n\nHiermit "+(wir?"kündigen wir":"kündige ich")+" den Mietvertrag für die oben genannte Wohnung fristgerecht auf den "+termin+", beziehungsweise auf den nächstmöglichen Termin.\n\n";
+  if(b.nach)t+=(wir?"Wir möchten":"Ich möchte")+" die Wohnung vorzeitig"+(st.k.auszug?" per "+dat(st.k.auszug):"")+" zurückgeben und "+(wir?"werden":"werde")+" Ihnen gemäss Art. 264 OR zumutbare Nachmieterinnen oder Nachmieter vorschlagen, die den Vertrag zu den gleichen Bedingungen übernehmen. Bitte teilen Sie "+(wir?"uns":"mir")+" mit, welche Unterlagen Sie von Interessenten benötigen.\n\n";
+  if(wir)t+="Bitte bestätigen Sie uns den Eingang dieser Kündigung und das Mietende schriftlich. Für die Wohnungsabgabe schlagen wir einen Termin in der letzten Woche vor dem Mietende vor. Bitte überweisen Sie die Mietkaution nach der Abgabe beziehungsweise geben Sie das Mietkautionskonto frei.\n\nFreundliche Grüsse\n\n\n\n__________________________\n"+(ich.split("\n")[0])+"\n\n\n__________________________\n"+zwei;
+  else{t+="Bitte bestätigen Sie mir den Eingang dieser Kündigung und das Mietende schriftlich. Für die Wohnungsabgabe schlage ich einen Termin in der letzten Woche vor dem Mietende vor. Bitte überweisen Sie die Mietkaution nach der Abgabe auf mein Konto beziehungsweise geben Sie das Mietkautionskonto frei.\n\nFreundliche Grüsse\n\n\n\n__________________________\n"+(ich.split("\n")[0]);
+  if(zwei)t+="\n\n\n__________________________\n"+zwei+" (Zustimmung gemäss Art. 266m OR)";}
+  $("brief").textContent=t;
+}
+function liste(el,items,fertig,datum){
+  var n=0;el.innerHTML=items.map(function(x){var f=!!fertig[x.id];if(f)n++;var vorbei=x.datum&&x.datum<iso(heute);
+    return '<li class="'+(f?"fertig ":"")+(vorbei?"vorbei":"")+'"><input type="checkbox" data-done="'+esc(x.id)+'"'+(f?" checked":"")+' aria-label="'+esc(x.titel)+' erledigt"><div>'+(datum?'<div class="dat">'+dat(x.datum)+'</div>':'')+'<div class="t">'+esc(x.titel)+'</div>'+(x.text?'<div class="x">'+esc(x.text)+'</div>':'')+'</div></li>'}).join("");
+  return n;
+}
+function plan(r){
+  var umzug=st.p.umzug||st.k.auszug||(r?r.termin:"");
+  if(!umzug){$("p-liste").innerHTML='<li><div class="x">Umzugstag eintragen oder in Schritt 1 den Kündigungstermin berechnen.</div></li>';$("p-stand").textContent="";$("p-fort").style.width="0";return}
+  var items=U.plan(umzug,r,st.p.abgabe||st.k.auszug||null);
+  var n=liste($("p-liste"),items,st.p.fertig,true);
+  $("p-fort").style.width=(n/items.length*100)+"%";$("p-stand").textContent=n+" von "+items.length+" erledigt";
+}
+function adressen(){
+  var items=ADR.concat(st.a.eigen).map(function(x){return{id:x,titel:x}});
+  var n=liste($("a-liste"),items,st.a.fertig,false);
+  $("a-fort").style.width=(n/items.length*100)+"%";$("a-stand").textContent=n+" von "+items.length+" erledigt";
+}
+document.addEventListener("input",function(ev){
+  var el=ev.target,id=el.id||"";
+  if(el.hasAttribute("data-mon")){st.k.termine=[].slice.call(document.querySelectorAll("[data-mon]:checked")).map(function(x){return +x.getAttribute("data-mon")})}
+  else if(el.hasAttribute("data-done")){var sec=el.closest("section").id,o=sec==="s-plan"?st.p.fertig:st.a.fertig;o[el.getAttribute("data-done")]=el.checked}
+  else if(el.hasAttribute("data-g")){var k=el.getAttribute("data-g");st.g.z[k]=st.g.z[k]||{};st.g.z[k][el.getAttribute("data-f")]=el.value}
+  else if(/^k-/.test(id))st.k[id.slice(2)]=el.value;
+  else if(/^b-/.test(id))st.b[id.slice(2)]=el.value;
+  else if(/^p-/.test(id))st.p[id.slice(2)]=el.value;
+  else if(/^g-/.test(id))st.g[id.slice(2)]=el.value;
+  else return;
+  speichern();render();
+});
+document.addEventListener("change",function(ev){if(ev.target.type==="checkbox"||ev.target.tagName==="SELECT")ev.target.dispatchEvent(new Event("input",{bubbles:true}))});
+document.addEventListener("click",function(ev){
+  var b=ev.target.closest("button");if(!b)return;
+  if(b.hasAttribute("data-tab")){var t=b.getAttribute("data-tab");document.querySelectorAll("section[id^=s-]").forEach(function(s){s.hidden=s.id!=="s-"+t});
+    document.querySelectorAll(".tabs button").forEach(function(x){if(x===b)x.setAttribute("aria-current","page");else x.removeAttribute("aria-current")});window.scrollTo({top:0,behavior:"smooth"})}
+  else if(b.hasAttribute("data-print")){document.body.className="p-"+b.getAttribute("data-print");print();setTimeout(function(){document.body.className=""},500)}
+  else if(b.id==="b-kopie"){var ok=function(){b.textContent="Kopiert"},nein=function(){b.textContent="Kopieren nicht möglich, Text markieren"};try{navigator.clipboard.writeText($("brief").textContent).then(ok,nein)}catch(e){nein()}}
+  else if(b.id==="a-plus"){var v=$("a-neu").value.trim();if(v&&st.a.eigen.indexOf(v)<0&&ADR.indexOf(v)<0){st.a.eigen.push(v);$("a-neu").value="";speichern();render()}}
+  else if(b.id==="reset"){if(confirm("Alle Eingaben löschen?")){st=JSON.parse(JSON.stringify(vorlage));speichern();felder();render()}}
+});
+window.addEventListener("afterprint",function(){document.body.className=""});
+felder();render();
+})();
+</script>
+</body>
+</html>

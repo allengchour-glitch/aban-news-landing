@@ -1,0 +1,11 @@
+Umzugs-Paket Schweiz 1.0 — aban news
+
+Inhalt
+  umzugs-paket.html   Kündigungstermin, Kündigungsbrief, Umzugsplan mit Daten, Adressänderungen, Abgabeprotokoll.
+                      Im Browser öffnen (Doppelklick), läuft offline, speichert nur in deinem Browser.
+  ANLEITUNG.md        Schritt für Schritt von der Kündigung bis zur Kaution
+
+Nutzung privat erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Planungshilfe, keine Rechtsberatung.
+
+© aban news, abannews.com · hallo@abannews.com
