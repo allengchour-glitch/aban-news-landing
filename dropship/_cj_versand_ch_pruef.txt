@@ -2286,3 +2286,15 @@ premium-leder-geldborse-slim	-	-	-	unklar keine CJ-SKU	bestseller
 hochdruck-tassenreiniger-fur-kaffeepitcher-147072	1409776968303513600	-	-	unklar 1602002 Product has been removed from  rest=279	bestseller
 haarentferner-mit-kristalltechnik-827648	1552885208847372288	-	-	unklar 1602002 Product has been removed from  rest=259	bestseller
 augenbrauen-epilierer-5121f6	-	-	-	unklar keine CJ-SKU	bestseller
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+kuchenregal-fur-gewurze-messer-7e619d	-	-	-	unklar keine CJ-SKU	klinge
+wetzstein-800-8000er-kornung-d7fafb	-	-	-	unklar keine CJ-SKU	klinge
+gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	-	-	-	unklar keine CJ-SKU	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	-	-	-	unklar keine CJ-SKU	klinge
+diamant-messerscharfer-mit-festem-winkel-c8b87b	-	-	-	unklar keine CJ-SKU	klinge
+vintage-rasiermesser-aus-edelstahl-823872	1694160950087127040	16	5.39	ok	klinge
+kuchen-organizer-fur-messer-und-geschirr-719936	1792396141347217408	16	20.46	ok	klinge
+led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend	2059172387683094530	7	14.08	ok	landeseite
+auto-schnellladegerat-pd-ausziehbares-kabel-fur-apple-android	2605270739311617600	3	9.46	ok	landeseite
+abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe	2605310132541637500	16	8.79	ok	landeseite
