@@ -33,3 +33,20 @@ Kategorie nur wenn leer (Taxonomie-geprüft), Geschlecht nur für Kleidung; erst
 **Was Google-Ranking sonst bestimmt (QUELLE Google Merchant Center Hilfe, nicht gemessen):** Titel mit Produktart + Merkmal,
 vollständige Attribute (Kategorie, Geschlecht, Farbe, Grösse), gute Bilder ohne Text, Preis, Lieferzeit/Versand/Rückgabe
 (Store-Qualität), Bewertungen. Davon offen beim Betreiber: Lieferzeit + DE raus (siehe oben).
+
+## Nachtrag ~17:30 — «fix alles ganz sauber» + «Feinkategorien überall» + Merchant-Rückmeldung
+**Grow bestätigt:** Test-Upload aufs Shopify-CDN → READY (danach gelöscht). Session-Umgebung trägt veraltete Shopify-App-Zugangsdaten
+(Grant HTTP 400), der Tresor `/tmp/secrets_env.sh` gültige (200) — Motoren nutzen den Tresor.
+**Kostüme raus aus Google:** Importer publizieren in alle 6 Kanäle; `google_neuimport.py` nimmt Neuware, die `google_kanal_luecke.grund()`
+trifft (Kostüm/Erotik/Tabak/Klinge …), stündlich aus dem Google-Kanal (Halloween-Kostüm zurückgelesen: raus, Kategorie gelöscht).
+Eine am selben Tag gebaute Kostüm-Kategorie-Regel wieder ENTFERNT (Kostüme bleiben bewusst ohne Kategorie; traf ein Hundekostüm).
+**Feinkategorien überall:** Messung 47'454 Kanal-Produkte, 20'141 mit ≤ 2 Ebenen. Neuer Schritt (4) in `google_kategorie_fein.py`:
+nur Unterzweig des bisherigen Werts (Präfix-Regel) + Zweig-Tabellen Haustier/Fitness/Werkzeug. **5'087 verfeinert, 0 Fehler**
+(u. a. Leinen 676, Halsbänder/Geschirre 650, Hund 624, Kissen 497, Näpfe 420, Ringe 388, Katze 351, Yoga-Geräte, Expander, Schraubendreher).
+Fehlgriffe aus Stichproben korrigiert (59: Kerzenhalter, Duschvorhang, Messerhalter, Kessel, Lupe, Fritteuse/-Zubehör, Entsafter,
+Fingerkette). ⚠️ Zwei Fallen: «leine» in «k-leine» (105 Fehltreffer im Trockenlauf, vor dem Schreiben behoben); das Skript schreibt
+OHNE `DRY=1` sofort (die ersten 2'049 liefen ungeprüft — nachträglich per Stichprobe geprüft, Fehlgriffe korrigiert). Eimer-Etikette
+jetzt gemeinsame Regel (Lauf hielt den Eimer bei 23/2'000). Grob bleiben 7'285 (Deko 1'571, Küche 981, Fitness 878, Werkzeug 765 …).
+**Merchant (Betreiber/Cowork):** Lieferzeit 10–20 WT in allen 4 Versandrichtlinien ✅ (Screenshot). DE-Produkte: Adidas-Trainingsanzug
+ist Entwurf und nicht im Google-Kanal; Mini-Kleid aktiv, Shop-Markt nur Schweiz → Altangebot, per Produkt-Update neu eingereicht
+(`gfeed-anstupsen-261001`). WELCOME10 im Shop AKTIV (10 %, einmal je Kunde, bis 31.12.2027, 3× genutzt) → Merchant-Aktion kann starten.
