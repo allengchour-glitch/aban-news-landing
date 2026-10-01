@@ -179,6 +179,9 @@ async function jmHasImported(extId) {
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
       await sleep(1100);
+      // CJ-Tageskontingent leer → NICHT als "nicht gefunden" werten (sonst landet das Produkt faelschlich im
+      // Geprueft-Ledger), sondern den ganzen Lauf sauber beenden. Kontingent erneuert sich taeglich.
+      if (/Insufficient API points|Too Many Requests|QPS limit/i.test(r?.message || '')) { const e = new Error('CJ_QUOTA: ' + r.message); e.quota = true; throw e; }
       const d = r?.data;
       const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
       const pid = d?.pid || d?.productId || (Array.isArray(listed) ? (listed[0]?.pid || listed[0]?.productId) : null);
@@ -204,6 +207,7 @@ async function jmHasImported(extId) {
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
+      if (/Insufficient API points|Too Many Requests|QPS limit/i.test(cr?.message || '')) { const e = new Error('CJ_QUOTA: ' + cr.message); e.quota = true; throw e; }
       const list = cr?.data?.list || cr?.data?.comments || cr?.data?.content || cr?.data?.commentList || (Array.isArray(cr?.data) ? cr.data : []);
       if (DEBUG) console.log(`    [DEBUG] comments(${cjpid}): result=${cr?.result} dataKeys=${cr?.data && typeof cr.data === 'object' ? Object.keys(cr.data).join(',') : typeof cr?.data} listLen=${Array.isArray(list) ? list.length : 'n/a'}${cr?.message ? ' msg=' + cr.message : ''}`);
       const picked = (list || [])
@@ -229,7 +233,10 @@ async function jmHasImported(extId) {
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
       if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} }
-    } catch (e) { fails++; console.error(`✗ ${p.handle}: ${e.message}`); }
+    } catch (e) {
+      if (e.quota) { console.error(`⛔ CJ-API-Kontingent leer — Lauf beendet, ${p.handle} bleibt offen. Morgen erneut starten.`); break; }
+      fails++; console.error(`✗ ${p.handle}: ${e.message}`);
+    }
   }
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
   process.exit(0);

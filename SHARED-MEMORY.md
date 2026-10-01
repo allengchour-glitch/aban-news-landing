@@ -18,7 +18,10 @@
 >    liefert für jede SKU dasselbe Fremdprodukt → Reviews eines FREMDEN Produkts = Fake-Reviews.
 > 4. **Ungefilterte Judge.me-Liste endet bei ~10'000 eindeutigen Reviews** (danach Wiederholungen) → für Prüfungen
 >    `published=true&rating=N` nutzen, nicht blind durchblättern.
-> 5. Absender-Name nie „Verifizierter Käufer" (sie haben nicht bei LuxeStyle gekauft) → neutral „Kunde".
+> 5. **CJ-API-Tageskontingent ist knapp** (01.10.: 112'180 Punkte verbraucht, Rest 0 → alle Abfragen scheitern).
+>    Massen-Importe fressen es für alle. Importer bricht jetzt bei leerem Kontingent sauber ab. **Priorität: meistbesuchte
+>    Produkte zuerst** (Queue `dropship/judgeme_queue_top.json`, Top-Einstiegsseiten 90 T.), nicht blind 60'000 Produkte.
+> 6. Absender-Name nie „Verifizierter Käufer" (sie haben nicht bei LuxeStyle gekauft) → neutral „Kunde".
 
 ---
 
