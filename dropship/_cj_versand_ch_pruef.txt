@@ -2352,3 +2352,9 @@ langanhaltender-uv-lidschatten-769542	-	-	-	unklar keine CJ-SKU	landeseite
 wimpernserum-3-ml-b5f10d	-	-	-	unklar keine CJ-SKU	landeseite
 reparaturplatten-set-7a9af5	-	-	-	unklar keine CJ-SKU	landeseite
 multifunktionale-flussige-grundierung-8e59e6	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-gesichtsburste-mit-reinigungsfunkt-999bc1	-	-	-	unklar keine CJ-SKU	landeseite
+spulbecken-organizer-schwamm-seifenhalter-mit-ablauf	2057741404842156033	0	-	KEINE CH-Option → DRAFT	landeseite
+tunmate-rizinusol-382081	2006997782977490945	3	6.67	ok	landeseite
+10-in-1-diamant-make-up-pinsel-set-361218	1996475452681801730	0	-	KEINE CH-Option → DRAFT	landeseite
+10-teiliges-badset-aus-baumwolle-620600	2601050821591620800	16	12.81	ok	landeseite
+schwarzer-rundhalspullover-mit-loch-optik-und-629200	2603260741171629600	16	13.40	ok	landeseite
