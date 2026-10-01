@@ -111,6 +111,22 @@ async function jmPost(pid, r) {
 
 const numId = (gid) => String(gid).split('/').pop();
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
+// Geprueft ohne Import (0 Kommentare / keine pid / hat schon Reviews) → beim naechsten Lauf ueberspringen.
+const CHECKED = 'dropship/cj_reviews_checked.txt';
+for (const id of (fs.existsSync(CHECKED) ? fs.readFileSync(CHECKED, 'utf8').split('\n') : [])) if (id.trim()) done.add(id.trim());
+const markChecked = (id) => { if (!DRY) try { fs.appendFileSync(CHECKED, id + '\n'); } catch {} };
+// Dubletten-Schutz (2026-10-01): hat das Produkt bei Judge.me schon IMPORTIERTE Reviews (andere Session/frueherer
+// Lauf), wird es uebersprungen. Echte Kundenbewertungen blockieren nicht.
+async function jmHasImported(extId) {
+  try {
+    const pr = await fetch(`https://judge.me/api/v1/products/-1?shop_domain=${JM_DOMAIN}&api_token=${JM_TOKEN}&external_id=${extId}`);
+    if (pr.status === 404) return false;
+    const jid = (await pr.json())?.product?.id; if (!jid) return false;
+    const rr = await fetch(`${JM_API}?shop_domain=${JM_DOMAIN}&api_token=${JM_TOKEN}&product_id=${jid}&per_page=100`);
+    const R = (await rr.json())?.reviews || [];
+    return R.some(r => ((r.reviewer?.email || '').startsWith('cj-import')) || (r.source || '').toLowerCase() === 'aliexpress');
+  } catch { return false; }
+}
 
 (async () => {
   // PRODUCTS_FILE: Produktliste als JSON ([{id,handle,title,sku}]) statt Shopify-Login — z. B. wenn
@@ -177,13 +193,14 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
     const cjSku = rawSku.replace(/^CJ-/i, '').trim();
-    if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); continue; }
+    if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); markChecked(pidNum); continue; }
     // Nicht-CJ-Quellen (BigBuy/Printful/POD) gar nicht bei CJ anfragen — spart Quota + Zeit
     if (/^(bb-|pf-|printful|pod-)/i.test(cjSku)) { console.log(`· ${p.handle}: SKU ${cjSku} ist keine CJ-Quelle → skip`); continue; }
     try {
+      if (await jmHasImported(pidNum)) { console.log(`· ${p.handle}: hat schon importierte Reviews → skip (Dubletten-Schutz)`); markChecked(pidNum); continue; }
       const resolved = await resolvePid(cjSku);
       const cjpid = resolved?.pid;
-      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); continue; }
+      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); markChecked(pidNum); continue; }
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
@@ -192,7 +209,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       const picked = (list || [])
         .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
         .slice(0, PER);
-      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); continue; }
+      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); markChecked(pidNum); continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
       let sent = 0;
