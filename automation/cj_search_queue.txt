@@ -651,6 +651,30 @@
 #done search:herb grinder 4 piece
 #done search:smell proof stash bag
 #done search:torch lighter jet flame
+# 01.10.2026 Betreiber «viel coolere produkten und so» → VORNE einreihen. Quelle (QUELLE, nicht gemessen): autods «10 Best
+# Dropshipping Products October 2026», sellthetrend «17 Viral Products 2026», printify/fourthwall/litcommerce TikTok-Listen.
+# Am Bestand prüfen, bevor etwas auf die Startseite kommt (Hype-Reihe nimmt nur Gemessenes). Abgelehnt: Pimple Patches
+# (Wundauflage), Supplements, Reinigungspaste (Chemie), Markenware (Stanley/Dyson/UGG → nur No-Name-Pendants).
+search:fire extinguisher drink dispenser
+search:eyeball doorbell halloween
+search:led bat halloween decoration
+search:house shaped piggy bank
+search:rotating spinning necklace
+search:hair tinsel
+search:electric spin body brush
+search:peel and stick wall decor
+search:heatless curling rod
+search:magnetic power bank phone
+search:privacy screen protector iphone
+search:portable blender usb
+search:mini waffle maker
+search:insulated tumbler 40oz handle straw
+search:portable carpet spot cleaner
+search:platform mini boots suede
+search:heated jacket usb
+search:laser level drill dust collector
+search:galaxy star projector
+search:sunset lamp projector
 # 01.10.2026 Betreiber «grow plan aktiv … fülle die leeren kategorien und neuheiten von cj sachen mit allem drum und dran».
 # Zuerst SAISON (Okt–Dez = Halloween, Herbst, Weihnachten, Winter), dann die dünnen sichtbaren Kollektionen
 # (gemessen 01.10.: led-strip 4 aktiv, schutzglas 5, wallets 5, wimpern 5, spielzeug-fahrzeuge 6, gaming-headsets 8,
@@ -667,10 +691,10 @@
 #done search:advent calendar box
 #done search:christmas gift box set
 #done search:christmas sweater
-search:winter knit beanie
-search:touchscreen gloves winter
-search:cashmere scarf
-search:heated vest
+#done search:winter knit beanie
+#done search:touchscreen gloves winter
+#done search:cashmere scarf
+#done search:heated vest
 search:thermal underwear set
 search:fleece lined leggings
 search:winter boots women
