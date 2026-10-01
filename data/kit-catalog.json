@@ -211,5 +211,13 @@
     "price_cents": 1200,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "pensions-check",
+    "title": "Pensions-Check Schweiz: AHV, Pensionskasse, 3a und die Rentenlücke",
+    "desc": "AHV-Rente nach der Rentenformel inklusive 13. Altersrente und Ehepaar-Begrenzung, Pensionskasse aus dem Vorsorgeausweis, Säule 3a und Erspartes, Lücke zum Budget mit nötiger Sparrate, Fahrplan 10 Jahre bis zur Pensionierung. Offline-App mit Anleitung. Keine Finanzberatung.",
+    "price_cents": 1400,
+    "currency": "chf",
+    "standalone": true
   }
 ]

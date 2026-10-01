@@ -4,13 +4,12 @@
 > baut sie sauber (eigene Recherche/Quellen, keine erfundenen Zahlen), und beim nächsten
 > Lauf fällt sie via Bestands-Dedupe raus. Nicht manuell abarbeiten nötig.
 
-Stand: 2026-06-29 11:50 UTC · 11 offen · 8 bereits abgedeckt
+Stand: 2026-10-01 19:52 UTC · 10 offen · 9 bereits abgedeckt
 
 ## ▶️ Offen (nach Priorität)
 - **P2** `kalorien-defizit.html` — **Abnehm-Rechner (Kaloriendefizit)**: Defizit & Dauer bis Zielgewicht (mit Disclaimer)
 - **P2** `koerperfett-rechner.html` — **Körperfett-Rechner**: Körperfettanteil per Umfang-Methode (US-Navy)
 - **P2** `quadratmeter-preis.html` — **Quadratmeterpreis-Rechner**: Preis pro m² aus Preis & Fläche (Miete/Kauf vergleichen)
-- **P2** `rentenluecke-rechner.html` — **Rentenlücke-Rechner (CH)**: Grobe Vorsorgelücke 1./2./3. Säule abschätzen
 - **P2** `teilzeit-lohn-rechner.html` — **Teilzeit-Lohn-Rechner**: Lohn & Pensum umrechnen (100 % ↔ Teilzeit)
 - **P2** `wasserbedarf-rechner.html` — **Wasserbedarf-Rechner**: Täglicher Trinkbedarf nach Gewicht & Aktivität (Faustregel)
 - **P3** `kalorien-verbrennen.html` — **Kalorienverbrauch-Rechner**: Verbrauchte Kalorien je Sportart & Dauer (MET-Werte)
@@ -26,5 +25,6 @@ Stand: 2026-06-29 11:50 UTC · 11 offen · 8 bereits abgedeckt
 - `eigenmietwert-rechner` → vorhanden als `eigenmietwert-rechner.html`
 - `benzin-vs-elektro` → vorhanden als `benzin-vs-elektro.html`
 - `leasing-vs-kauf` → vorhanden als `leasing-vs-kauf.html`
+- `rentenluecke-rechner` → vorhanden als `rentenluecke-rechner.html`
 - `ferien-anspruch-rechner` → vorhanden als `ferien-anspruch-rechner.html`
 - `seo-roi-rechner` → vorhanden als `seo-roi-rechner.html`
