@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T02:32:00Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T02:34:20Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1240 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4444** in 1182 Produkten
-- Treffer (≥ 4 Wörter): **170** in 143 Produkten
+- Medien geprüft: **4519** in 1207 Produkten
+- Treffer (≥ 4 Wörter): **171** in 144 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -135,6 +135,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061251969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0146b03d-9d8d-4c56-a411-7dea5e6f1758_water_trans.jpg) | 6 | utdoor Travel ion open with ATASAW | ENTFERNT |
 | Kissenbezug Ethno‑Muster aus Baumwolle und Leine `15524474126721` | [70777373983105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1892f474-d266-4770-8e78-4c386aed6a47_trans.jpg) | 6 | Japanese Pattern Mount Fuji Lumbar Pillow | offen |
 | Schwarzes und weisses abstrakes Bild `15453730242945` | [69926176129409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fd0a88c-80d6-4be7-a0ce-e489d547c124.jpg) | 6 | Allis Andy Warhol Moderna Stockholm Sweden | offen |
+| Kabelloser Fernbedienungs-Lichtschalter mit Aufl `15500960334209` | [70551213048193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/077ddc62-b373-4967-8369-66c3dcbb8272_trans.jpg) | 6 | REMOTE CONTROL Infrared remote control receiver | offen |
 | Stiller Aroma Diffusor für Zuhause & Büro `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
