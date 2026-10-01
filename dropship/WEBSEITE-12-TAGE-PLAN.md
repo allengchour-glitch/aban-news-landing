@@ -22,3 +22,8 @@ Sitzungen, Startseite 46 · Speicher 107,7 GB (Grow ab heute) · 29 meistbesucht
 | 10 | 10.10. | **SEO**: Kollektionstexte Saison, 2 Ratgeber (Herbst-Deko, Weihnachtsgeschenke), interne Links | Texte live, Links geprüft (0 tote) |
 | 11 | 11.10. | **Tempo & Mobil**: Ladezeit/Bildgrössen der Startseite und Top-Seiten, mobile Darstellung | Messung vorher/nachher, keine Überbreite |
 | 12 | 12.10. | **Auswertung**: Sitzungen, Warenkörbe, Käufe vorher/nachher; Bericht + nächster Plan | Bericht `dropship/WEBSEITE-12-TAGE-BILANZ.md` |
+
+## Vorgezogen 01.10. (Betreiber «ja starte alle bis fertig», Grow nutzen)
+- Tag 8 teilweise: Reel-Motor legt neue Reels zuerst im Shopify-CDN ab (Repo nur Rückfall); Video-Nachtrag 250/Tag im CJ-Vorrangfenster
+  (Shopify-Deckel Grow 1'000 statt 250). Nachmessen am 08.10.: Zahl der Produkte mit Video, Ablage der neuen Reels.
+- Tatis Fotos auf Blumenkleid + Midikleid (erste Bilder). KAUFWILLE-Zeile in jeder Keepalive-Meldung.
