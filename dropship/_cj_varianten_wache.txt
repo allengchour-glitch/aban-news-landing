@@ -7447,3 +7447,7 @@ gid://shopify/Product/15450740687233	1790857111	ok	24 Shop / 24 CJ / 0 fehlend /
 gid://shopify/Product/15450740752769	1790857111	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15450740785537	1790857111	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15450740851073	1790857111	ok	18 Shop / 18 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15450740883841	1790857111	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15450740949377	1790857111	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15450740982145	1790857111	ok	18 Shop / 18 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15450741014913	1790857111	ok	14 Shop / 14 CJ / 0 fehlend / 0 DENY
