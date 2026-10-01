@@ -659,10 +659,10 @@
 #done search:halloween party decor led
 #done search:halloween costume accessories
 #done search:pumpkin lantern
-search:autumn blanket knitted
-search:candle warmer lamp
-search:cozy throw pillow cover autumn
-search:christmas tree ornaments
+#done search:autumn blanket knitted
+#done search:candle warmer lamp
+#done search:cozy throw pillow cover autumn
+#done search:christmas tree ornaments
 search:christmas decoration led lights
 search:advent calendar box
 search:christmas gift box set
