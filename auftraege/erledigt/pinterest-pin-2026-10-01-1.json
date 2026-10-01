@@ -2,18 +2,7 @@
   "typ": "skript",
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-01-1",
-  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 1 von 6 heute.",
-  "stand": "geklaert",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen.",
-  "ergebnis": {
-    "gepinnt": [
-      "2-teiliges-leinen-set-provence-hemd-wide-leg-hose"
-    ],
-    "unklar": [],
-    "uebersprungen": [],
-    "schritte": [
-      "Lauf starb nach dem Veröffentlichen (Quittung blieb «laufend»).",
-      "Von Hand geklärt 01.10. 02:50 UTC: Auftrag 2 fand «Leinen-Set «Provence»» bereits auf der Pinnwand Sommerkleider & Damenmode 2026 (Titel SCHON DA) → Pin existiert genau einmal, nicht wiederholen."
-    ]
-  }
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 1 von 10 heute.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
 }
