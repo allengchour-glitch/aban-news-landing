@@ -54,8 +54,8 @@ fs.mkdirSync(path.join(tmp, 'data'));
 fs.symlinkSync(path.resolve('content'), path.join(tmp, 'content'));
 const env = { ...process.env, ROOT: tmp, DRY_RUN: '0', ETSY_API_KEY: ECHT, ETSY_REFRESH_TOKEN: 'RT1', PAKETE: 'en/budget-planner,schulden-plan',
   ETSY_API_BASE: `http://127.0.0.1:${port}/v3`, ETSY_TOKEN_URL: `http://127.0.0.1:${port}/token` };
-const lauf = () => new Promise((resolve) => {
-  import('child_process').then(({ execFile }) => execFile('node', ['tools/etsy/etsy_upload.mjs'], { env }, (e, so, se) => resolve({ e, so, se })));
+const lauf = (extra = {}) => new Promise((resolve) => {
+  import('child_process').then(({ execFile }) => execFile('node', ['tools/etsy/etsy_upload.mjs'], { env: { ...env, ...extra } }, (e, so, se) => resolve({ e, so, se })));
 });
 let r = await lauf();
 t(!r.e, 'Upload-Lauf gegen den Nachbau ohne Fehler' + (r.e ? ': ' + r.se : ''));
@@ -78,6 +78,16 @@ t(Object.keys(ledger).length === 2, 'Ledger mit 2 Einträgen geschrieben');
 const vorher = log.length;
 r = await lauf();
 t(!r.e && !log.slice(vorher).some((x) => x.u.endsWith('/listings') && x.m === 'POST'), 'zweiter Lauf legt nichts doppelt an');
+// Veröffentlichen bestehender Entwürfe: ACTIVATE=1 schaltet die 2 Ledger-Entwürfe live, legt nichts neu an
+const vorAkt = log.length;
+r = await lauf({ ACTIVATE: '1' });
+const akt = log.slice(vorAkt);
+const L2 = JSON.parse(fs.readFileSync(path.join(tmp, 'data/etsy-listings.json')));
+t(!r.e && akt.filter((x) => x.m === 'PATCH' && /state=active/.test(x.body)).length === 2 && !akt.some((x) => x.u.endsWith('/listings') && x.m === 'POST')
+  && Object.values(L2).every((x) => x.state === 'active'), 'ACTIVATE: bestehende Entwürfe veröffentlicht, nichts doppelt angelegt' + (r.e ? ': ' + r.se : ''));
+const vorAkt2 = log.length;
+r = await lauf({ ACTIVATE: '1' });
+t(!r.e && !log.slice(vorAkt2).some((x) => x.m === 'PATCH'), 'Gegenprobe: schon veröffentlichte Einträge werden nicht erneut angefasst');
 // Schlüssel-Test (KEY_CHECK): gültig → 0, abgelehnt → 1, Platzhalter → 1 ohne Netz
 const pruef = (key) => new Promise((resolve) => import('child_process').then(({ execFile }) =>
   execFile('node', ['tools/etsy/etsy_upload.mjs'], { env: { ...env, KEY_CHECK: '1', ETSY_API_KEY: key } }, (e, so) => resolve({ e, so }))));
