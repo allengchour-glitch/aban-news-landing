@@ -1,5 +1,5 @@
 {
- "stand": "2026-09-30T10:28:09Z",
+ "stand": "2026-10-01T10:55:39Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "heise+ | Wie Sie KI-Agenten mit .NET orchestrieren",
-   "u": "https://www.heise.de/ratgeber/Wie-Sie-KI-Agenten-mit-NET-orchestrieren-11464010.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-09-30T10:00:00Z",
-   "s": "Microsoft Agent Framework verbindet LLMs, Werkzeuge und zustandsbehaftete Workflows für ein belastbares KI-System.",
-   "sprache": "de"
+   "t": "An AI “mind-reading” tool can reconstruct what you’re looking at based on a brain scan",
+   "u": "https://www.technologyreview.com/2026/10/01/1145588/ai-mind-reading-reconstructs-what-youre-looking-at/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-01T10:32:24Z",
+   "s": "A new AI tool can guess what you’re looking at just by analyzing your brain scans—and recreate that image with remarkable precision. It can go the other way too, and predict a person’s brain activity …",
+   "sprache": "en"
   },
   {
-   "t": "Donald Trump: KI-Industrie soll sich selbst regulieren",
-   "u": "https://www.golem.de/news/donald-trump-ki-industrie-soll-sich-selbst-regulieren-2609-213573.html",
+   "t": "Anzeige: Google Pixel Watch 5 als früher Prime-Deal zum Bestpreis nur 352 Euro",
+   "u": "https://www.golem.de/news/anzeige-google-pixel-watch-5-als-frueher-prime-deal-zum-bestpreis-nur-352-euro-2610-213612.html",
    "q": "Golem",
-   "d": "2026-09-30T09:18:02Z",
-   "s": "Donald Trump setzt beim Thema KI auf Selbstregulierung: Eine \"moralisch bindende\" Vereinbarung mit der KI-Industrie soll KI-Unfälle verhindern. (KI, Politik)",
+   "d": "2026-10-01T10:18:02Z",
+   "s": "Die Google Pixel Watch 5 war bei Amazon noch nie so günstig, dabei ist die Smartwatch mit Gemini-Coach und Schlafindex brandneu. (Technik/Hardware, Smartwatch)",
    "sprache": "de"
   },
   {
-   "t": "AI Lab Report: Kleinere Leichtgewichte statt immer trägerer Giganten",
-   "u": "https://www.golem.de/news/ai-lab-report-kleinere-leichtgewichte-statt-immer-traegerer-giganten-2609-213527.html",
-   "q": "Golem",
-   "d": "2026-09-30T08:45:02Z",
-   "s": "Unser Newsletter AI Lab Report ordnet neue KI-Entwicklungen ein. In der aktuellen Ausgabe geht es um einen Gegentrend zu immer größeren Sprachmodellen. (KI, In eigener Sache)",
-   "sprache": "de"
-  },
-  {
-   "t": "Hohe Infrastruktur-Ausgaben: KI-Branche bräuchte bis 2031 jährlich 6 Billionen Dollar Umsatz",
-   "u": "https://t3n.de/news/infrastruktur-ki-branche-2031-1765801/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-09-30T08:30:51Z",
-   "s": "Bis 2031 müsste die KI-Branche jährlich sechs Billionen US-Dollar erwirtschaften, um rentabel zu sein. Grund sind laut der Unternehmensberatung Bain & Company die hohen Infrastrukturausgaben. Das Prob…",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Tool soll helfen: „Nachhaltigkeit im Krankenhaus muss sich auch rechnen“",
-   "u": "https://www.heise.de/hintergrund/KI-Tool-soll-helfen-Nachhaltigkeit-im-Krankenhaus-muss-sich-auch-rechnen-11470487.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Gerichtsunterlagen: OpenAI hat immer noch Probleme, Siri-Nutzer zu überzeugen",
+   "u": "https://www.heise.de/news/Gerichtsunterlagen-OpenAI-hat-immer-noch-Probleme-Siri-Nutzer-zu-ueberzeugen-11469713.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-09-30T08:22:00Z",
-   "s": "Ein KI-gestützter Assistent des Start-ups mirasu soll Kliniken helfen, aus Nachhaltigkeitsdaten konkrete, wirtschaftlich begründete Maßnahmen abzuleiten.",
+   "d": "2026-10-01T10:13:00Z",
+   "s": "Im Verfahren zwischen OpenAI und SpaceXAI sind Angaben aufgetaucht, wie gut ChatGPT als Siri-Ersatz läuft. Das Unternehmen spricht von einem „Underperformer“.",
    "sprache": "de"
   },
   {
-   "t": "Nach KI-Hackerangriffen: Trump setzt auf Selbstverpflichtung statt Regulierung",
-   "u": "https://t3n.de/news/nach-ki-hackerangriffen-trump-setzt-auf-selbstverpflichtung-statt-regulierung-1765794/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "KI in der Wirkstoffforschung: Was Pharmakonzerne bei kleinen KI-Biotechs einkaufen",
+   "u": "https://www.golem.de/news/ki-in-der-wirkstoffforschung-was-pharmakonzerne-bei-kleinen-ki-biotechs-einkaufen-2610-213546.html",
+   "q": "Golem",
+   "d": "2026-10-01T10:00:02Z",
+   "s": "Große Pharmafirmen stecken viel Geld in Kooperationen mit kleinen Biotechfirmen, obwohl die oft kaum Umsatz machen. Warum? Eine große Rolle spielt KI in der Wirkstoffforschung. Ein Bericht von Björn M…",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Agenten vom Anbieter: Schnell gebaut, schwer zu betreiben",
+   "u": "https://www.heise.de/news/KI-Agenten-vom-Anbieter-Schnell-gebaut-schwer-zu-betreiben-11472309.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-01T09:11:00Z",
+   "s": "Gartner prognostiziert, dass 70 Prozent der agentischen KI-Projekte, die per Forward-Deployed Engineering entwickelt wurden, scheitern.",
+   "sprache": "de"
+  },
+  {
+   "t": "Neues Frontier-KI-Modell von Google: Was Gemini 4 Argon leisten soll und wer es jetzt nutzen darf",
+   "u": "https://t3n.de/news/google-gemini-4-argon-frontier-ki-modell-1766042/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-09-30T06:30:37Z",
-   "s": "Seit Wochen wird weltweit über Risiken Künstlicher Intelligenz diskutiert. US-Präsident Trump sagt nach einem Treffen mit KI-Bossen, dass die Unternehmen sich gegenseitig kontrollieren sollen.weiterle…",
+   "d": "2026-10-01T08:30:13Z",
+   "s": "Google stellt mit Gemini 4 Argon ein neues Frontier-Modell seiner KI vor. Welche Verbesserungen das Unternehmen vorgenommen hat und welche Aufgaben Argon 4 schon bei Google bewältigen konnte. weiterle…",
    "sprache": "de"
   },
   {
-   "t": "America.gov gets really weird when you ask it about Minecraft, but it’s not a glitch",
-   "u": "https://techcrunch.com/2026/09/29/america-gov-gets-really-weird-when-you-ask-it-about-minecraft-but-its-not-a-glitch/",
+   "t": "Verlorene Dokumente finden: Dieser Prompt hilft",
+   "u": "https://t3n.de/news/verlorene-dokumente-finden-dieser-prompt-hilft-1765902/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-01T07:00:26Z",
+   "s": "Wo waren die Meeting-Notizen? Und der Ordner mit den Projektdaten? Manchmal sind Dateien partout nicht auffindbar. Ein Prompt hilft, um Inhalte zu finden, mit denen in einer KI gearbeitet wurde. weite…",
+   "sprache": "de"
+  },
+  {
+   "t": "Google releases Gemini 4 Argon, called its most powerful model yet",
+   "u": "https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet/",
    "q": "TechCrunch AI",
-   "d": "2026-09-29T23:30:55Z",
-   "s": "For the sake of national security, it's a relief to learn that America.gov is not hallucinating to the point that it's penning lengthy poetry.",
+   "d": "2026-09-30T23:43:07Z",
+   "s": "Google has released its latest Gemini model, marketing it as a workhorse for coding and cybersecurity work.",
    "sprache": "en"
   },
   {
-   "t": "The internet is convinced Elon Musk’s xAI trolled OpenAI’s ‘Dots’ launch",
-   "u": "https://techcrunch.com/2026/09/29/the-internet-is-convinced-elon-musks-xai-trolled-openais-dots-launch/",
+   "t": "Valor, Atreides, and Sequoia back AI startup Flow Engineering at $750M valuation",
+   "u": "https://techcrunch.com/2026/09/30/valor-atreides-and-sequoia-back-ai-startup-flow-engineering-at-750m-valuation/",
    "q": "TechCrunch AI",
-   "d": "2026-09-29T22:20:59Z",
-   "s": "Before OpenAI launched its new AI agent, Dots, on Tuesday, Elon Musk's xAI had already acquired the domain name \"dot.com,\" which now redirects to the Grok chatbot download page.",
+   "d": "2026-09-30T21:07:40Z",
+   "s": "Flow Engineering, which is bringing AI agents to hardware design, also landed Roelof Botha as an angel investor and board member.",
    "sprache": "en"
   },
   {
-   "t": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
-   "u": "https://huggingface.co/blog/nvidia/kumo-tabular",
-   "q": "Hugging Face",
-   "d": "2026-09-29T15:30:38Z",
-   "s": "",
-   "sprache": "en"
-  },
-  {
-   "t": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
-   "u": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
-   "q": "Hugging Face",
-   "d": "2026-09-29T13:07:00Z",
-   "s": "",
-   "sprache": "en"
+   "t": "Too big to fail: Verantwortungslose KI-Panik",
+   "u": "https://netzpolitik.org/2026/too-big-to-fail-verantwortungslose-ki-panik/",
+   "q": "netzpolitik.org",
+   "d": "2026-09-30T13:34:57Z",
+   "s": "Die KI-Branche treibt demokratische Gesellschaften vor sich her. Das muss ein Ende finden. – Alle Rechte vorbehalten: IMAGO / DepositphotosSeit Jahren warnt die KI-Branche vor den Gefahren der Technik…",
+   "sprache": "de"
   }
  ]
 }
