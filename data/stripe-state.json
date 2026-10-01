@@ -198,10 +198,10 @@
   },
   "finanz-kompass": {
     "product": "prod_VMYJFEcGeT06Tv",
-    "price": "price_1ULpLQRXvVMyfaIrRLjE8urV",
-    "link": "https://buy.stripe.com/dRm3cx8iicfqbMHbaR5wI12",
-    "link_id": "plink_1ULpLQRXvVMyfaIrrTO1ygLW",
-    "cents": 2900,
+    "price": "price_1ULpupRXvVMyfaIr2ODchXlH",
+    "link": "https://buy.stripe.com/dRmbJ3buufrC5oj3Ip5wI15",
+    "link_id": "plink_1ULpupRXvVMyfaIrXwPqnKqK",
+    "cents": 2400,
     "currency": "chf"
   },
   "umzugs-paket": {
