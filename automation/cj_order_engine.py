@@ -199,6 +199,22 @@ def vid_fuer(sku, variant_title):
 
     vt = (variant_title or "").strip()
     if not vt or vt.lower() in ("default title", "standard", "einheitsgrösse", "einheitsgroesse"):
+        # 01.10.2026: ~72 % der Einzelvarianten-Produkte (Stichprobe 29/40) haben bei CJ mehrere Varianten →
+        # Bildvergleich Shop-Hauptbild vs. CJ-Variantenbilder, Gemini UND ChatGPT müssen sich einig und sicher sein.
+        try:
+            import cj_variante_bild as cvb
+            d = gql('{productVariants(first:1, query:"sku:\\"%s\\""){nodes{product{featuredMedia{preview{image{url}}}}}}}' % s)
+            n = (((d.get("data") or {}).get("productVariants") or {}).get("nodes") or [])
+            url = ((((n[0].get("product") or {}).get("featuredMedia") or {}).get("preview") or {}).get("image") or {}).get("url") if n else None
+            if url:
+                v, beleg = cvb.waehlen(url, vs)
+                if v:
+                    cvb.zuordnung_schreiben(s, v, beleg)
+                    print(f"    🖼️ {s}: {beleg[:160]}", flush=True)
+                    return v, None
+                return None, f"{len(vs)} CJ-Varianten, Shop ohne Variante — {beleg[:200]}"
+        except Exception as ex:
+            return None, f"{len(vs)} CJ-Varianten, Bildvergleich-Fehler ({type(ex).__name__}: {str(ex)[:80]}) — manuell prüfen"
         return None, f"{len(vs)} CJ-Varianten, aber Bestellung ohne Variantenangabe — manuell prüfen"
 
     # Kundenwahl "Schwarz / M" -> jeder Teil muss im CJ-variantKey vorkommen,
