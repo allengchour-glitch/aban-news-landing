@@ -28,7 +28,7 @@
   "tracking": "06086397527068"
  },
  "LX1014": {
-  "status": "DELIVERED",
+  "status": "CLOSED",
   "tracking": "EQKPT8612454928YQ"
  },
  "LX1015": {
@@ -40,11 +40,11 @@
   "tracking": ""
  },
  "LX1019": {
-  "status": "CREATED",
+  "status": "TRASH",
   "tracking": ""
  },
  "LX1021": {
-  "status": "CREATED",
-  "tracking": ""
+  "status": "UNSHIPPED",
+  "tracking": "EQKPT8612951662YQ"
  }
 }
