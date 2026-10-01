@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-01-8",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 8 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-01T20:25:59.033Z",
+  "dauer_s": 65,
+  "ergebnis": {
+    "gepinnt": [
+      "elektrischer-fleischwolf-5l-kuchenmaschine-656962"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 12, offen 153",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 458 Z.): Titel nicht da",
+      "Bild 46883 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (522 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-01-8-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-01-8-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-01-8-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "elektrischer-fleischwolf-5l-kuchenmaschine-656962",
+      "board": "Home & Geschenkideen",
+      "title": "Elektrischer Fleischwolf 5L – Küchenmaschine"
+    }
+  }
 }
