@@ -678,9 +678,9 @@
 #done search:portable carpet spot cleaner
 #done search:platform mini boots suede
 #done search:heated jacket usb
-search:laser level drill dust collector
-search:galaxy star projector
-search:sunset lamp projector
+#done search:laser level drill dust collector
+#done search:galaxy star projector
+#done search:sunset lamp projector
 # 01.10.2026 Betreiber «grow plan aktiv … fülle die leeren kategorien und neuheiten von cj sachen mit allem drum und dran».
 # Zuerst SAISON (Okt–Dez = Halloween, Herbst, Weihnachten, Winter), dann die dünnen sichtbaren Kollektionen
 # (gemessen 01.10.: led-strip 4 aktiv, schutzglas 5, wallets 5, wimpern 5, spielzeug-fahrzeuge 6, gaming-headsets 8,
@@ -701,7 +701,7 @@ search:sunset lamp projector
 #done search:touchscreen gloves winter
 #done search:cashmere scarf
 #done search:heated vest
-search:thermal underwear set
+#done search:thermal underwear set
 search:fleece lined leggings
 search:winter boots women
 search:house slippers plush
