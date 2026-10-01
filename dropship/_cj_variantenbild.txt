@@ -5415,3 +5415,13 @@ gid://shopify/Product/15454000808321	zugeordnet	36	Wasserdichte Jungenstiefel
 gid://shopify/Product/15454000841089	zugeordnet	14	Herren-Cargo-Hosen, gerade geschnitten
 gid://shopify/Product/15454000906625	zugeordnet	14	Wasserdichte Kinderschuhe
 gid://shopify/Product/15454000972161	zugeordnet	92	Herren Kletter- und Camp-Camouflagehose
+gid://shopify/Product/15454001037697	zugeordnet	36	Kuschelweiche Kinderschuhe
+gid://shopify/Product/15454001070465	zugeordnet	35	Herren-Cargo-Hosen mit mehreren Taschen
+gid://shopify/Product/15454001136001	zugeordnet	36	Herren Freizeit-Hosen
+gid://shopify/Product/15454001201537	zugeordnet	32	Herren-Overall Outdoor
+gid://shopify/Product/15454001430913	zugeordnet	21	Trendige Herren Joggerhose, lockere Passform
+gid://shopify/Product/15454001496449	zugeordnet	24	Herren- Basketball-Trainingsoberteil
+gid://shopify/Product/15454001725825	zugeordnet	20	American Vintage-Henley-Shirt Herren
+gid://shopify/Product/15454001889665	zugeordnet	30	Sommer Herren Polo-Shirt
+gid://shopify/Product/15454001955201	zugeordnet	6	Picknickdecke Outdoor
+gid://shopify/Product/15454001987969	zugeordnet	12	Herren-Geldbörse aus echtem Leder
