@@ -2,33 +2,7 @@
   "typ": "skript",
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-01-3",
-  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 3 von 6 heute.",
-  "stand": "ok",
-  "begonnen": "2026-10-01T02:20:34.234Z",
-  "dauer_s": 61.7,
-  "ergebnis": {
-    "gepinnt": [
-      "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe"
-    ],
-    "unklar": [],
-    "uebersprungen": [],
-    "schritte": [
-      "Warteschlange 114, quittiert 7, offen 109",
-      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
-      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 486 Z.): Titel nicht da",
-      "Bild 94298 Bytes (image/jpeg)",
-      "Beschreibung eingetragen",
-      "Nachlesen: Titel auf der Pinnwand (563 Z.)"
-    ],
-    "bilder": [
-      "auftraege/ergebnis/pinterest-pin-2026-10-01-3-1-bild.png",
-      "auftraege/ergebnis/pinterest-pin-2026-10-01-3-2-ausgefuellt.png",
-      "auftraege/ergebnis/pinterest-pin-2026-10-01-3-3-nachher.png"
-    ],
-    "pin": {
-      "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
-      "board": "Sommerkleider & Damenmode 2026",
-      "title": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe"
-    }
-  }
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 3 von 10 heute.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
 }
