@@ -5190,3 +5190,13 @@ gid://shopify/Product/15453761044865	zugeordnet	6	Materialpaket für gehäkelte 
 gid://shopify/Product/15453761077633	zugeordnet	2	Off-Shoulder-Bluse mit Blumenmotiv
 gid://shopify/Product/15453761274241	zugeordnet	8	Glitzerndes Tanktop mit Wellenförmigem Kragen und Trägern
 gid://shopify/Product/15453761307009	zugeordnet	2	Liebes-Pendant Puppe
+gid://shopify/Product/15453761339777	zugeordnet	42	Samtbluse mit V-Ausschnitt
+gid://shopify/Product/15453761372545	zugeordnet	6	Dehnbare Yoga-Hose aus Ice Silk
+gid://shopify/Product/15453761438081	zugeordnet	20	Badezimmer-Fussmatte
+gid://shopify/Product/15453761503617	zugeordnet	36	Bienchen- Figur aus Wolle
+gid://shopify/Product/15453761601921	zugeordnet	1	Französische Stickerei mit Metallgriff
+gid://shopify/Product/15453761667457	zugeordnet	30	Trendy Sweatshirt mit Kapuze
+gid://shopify/Product/15453761700225	zugeordnet	2	Flexible USB-Sticklampe, 30 cm
+gid://shopify/Product/15453761732993	zugeordnet	60	Damen Sweat Hoodie mit Kapuze und Tasche
+gid://shopify/Product/15453761798529	zugeordnet	60	Lässiger Waffelstrick-Stehkragen-Pullover mit Reissverschlus
+gid://shopify/Product/15453761831297	zugeordnet	2	Tischkalender mit Doppelfotorahmen
