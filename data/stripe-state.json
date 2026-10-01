@@ -219,5 +219,13 @@
     "link_id": "plink_1ULqHwRXvVMyfaIr2IR53NOv",
     "cents": 1200,
     "currency": "chf"
+  },
+  "pensions-check": {
+    "product": "prod_VMZagy7i50RqVM",
+    "price": "price_1ULqReRXvVMyfaIr2zzuftbv",
+    "link": "https://buy.stripe.com/4gM7sNeGGcfq03ZbaR5wI17",
+    "link_id": "plink_1ULqRfRXvVMyfaIriS5U2X5g",
+    "cents": 1400,
+    "currency": "chf"
   }
 }
