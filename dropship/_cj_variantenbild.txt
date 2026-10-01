@@ -5392,3 +5392,12 @@ gid://shopify/Product/15453999202689	zugeordnet	40	Kinderstrandsschuhe
 gid://shopify/Product/15453999268225	zugeordnet	27	Retro Jeanshose Braun
 gid://shopify/Product/15453999333761	zugeordnet	96	Kinder-Wasserschuhe mit 5 Fingern
 gid://shopify/Product/15453999497601	zugeordnet	96	Kinder-Lauflernschuhe mit Drehverschluss
+gid://shopify/Product/15453999595905	zugeordnet	12	Casuall Hose mit mehreren Taschen
+gid://shopify/Product/15453999661441	zugeordnet	11	Wärmende Winterstiefel für Kinder
+gid://shopify/Product/15453999726977	zugeordnet	15	Retro Arbeits pants
+gid://shopify/Product/15453999792513	zugeordnet	85	Kinder-Hausschuhe mit dicker Sohle
+gid://shopify/Product/15453999825281	zugeordnet	42	Leichte Cargo-Shorts
+gid://shopify/Product/15453999890817	zugeordnet	14	Herren-Cargo-Pants, 2-in-1
+gid://shopify/Product/15453999923585	zugeordnet	99	Aerobic-Elternkind-Schuhe atmungsaktiv rutschsicher Innenber
+gid://shopify/Product/15454000021889	zugeordnet	30	Kinder-Laufschuhe, weiche Sohle
+gid://shopify/Product/15454000054657	zugeordnet	99	Herren Overalls mit vielen Taschen
