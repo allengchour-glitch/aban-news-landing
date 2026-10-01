@@ -5253,3 +5253,13 @@ gid://shopify/Product/15453810491777	zugeordnet	19	Nahtloser Bewegungs-Yoga-Jump
 gid://shopify/Product/15453810884993	zugeordnet	10	Leichter Jumpsuit für Damen
 gid://shopify/Product/15453811016065	bild-urls-tot
 gid://shopify/Product/15453811081601	zugeordnet	16	Lässige Jumpsuit mit langen Ärmeln
+gid://shopify/Product/15453811376513	zugeordnet	30	Herren-Pullover Frühling/Herbst Einheitsfarben Business-Casu
+gid://shopify/Product/15453811474817	zugeordnet	56	Herren Langarm Pullover
+gid://shopify/Product/15453824844161	zugeordnet	16	Elegantes Abendkleid mit Rüschen
+gid://shopify/Product/15453824942465	zugeordnet	36	Elegant & Casual Dreiviertelarm Damenhemddress
+gid://shopify/Product/15453825171841	zugeordnet	25	Elegantes Abendkleid mit Samt-Look
+gid://shopify/Product/15453825728897	zugeordnet	40	Patchwork-Hemd mit Kurzarm
+gid://shopify/Product/15453825925505	zugeordnet	20	Herren-Streifenhemd, knitterfrei
+gid://shopify/Product/15453826777473	bild-urls-tot
+gid://shopify/Product/15453826941313	zugeordnet	70	Gewaschener Cord-Polo mit Kragen, Amerikanischer Stil
+gid://shopify/Product/15453827039617	bild-urls-tot
