@@ -153,5 +153,40 @@
     "desc": "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
     "price": "CHF 19",
     "buy": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o"
+  },
+  {
+    "slug": "strategie-pruefstand",
+    "title": "Strategie-Prüfstand: Trading-Ideen ehrlich testen",
+    "desc": "Python-Kit: deine Regel gegen 9 bekannte Stile und 200 Zufallsstrategien, Skill in Prozent, Zukunfts-Schutz, Auswahl-Falle, Daytrading-Test. Mit Anleitung zu den sieben Fallen. Keine Anlageberatung.",
+    "price": "CHF 29",
+    "buy": "https://buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p"
+  },
+  {
+    "slug": "schulden-plan",
+    "title": "Schulden-Plan Schweiz: tilgen oder investieren",
+    "desc": "Alle Schulden in einem Plan: Lawine oder Schneeball, schuldenfrei-Datum, gesparte Zinsen und die Rendite, ab der Investieren gewinnt. Offline-Rechner mit Monatsplan und Anleitung. Keine Finanzberatung.",
+    "price": "CHF 27",
+    "buy": "https://buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q"
+  },
+  {
+    "slug": "budget-plan",
+    "title": "Budget-Plan Schweiz: nie mehr von der Steuerrechnung überrascht",
+    "desc": "Alle Einnahmen und Ausgaben mit Takt (monatlich bis jährlich), monatliche Rückstellung für Steuern und Jahresrechnungen, Muss/Kann/Sparen, Notreserve. Offline-Rechner mit Anleitung. Keine Finanzberatung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N"
+  },
+  {
+    "slug": "mietzins-paket",
+    "title": "Mietzins-Paket Schweiz: Senkung verlangen, mit fertigem Brief",
+    "desc": "Berechnet die Mietzinssenkung nach Art. 13 und 16 VMWG (Referenzzins, Teuerung, Kosten), den nächstmöglichen Termin und die Fristen, und schreibt das Herabsetzungsbegehren nach Art. 270a OR fertig. Offline-Rechner mit Anleitung. Keine Rechtsberatung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O"
+  },
+  {
+    "slug": "hochzeits-budget",
+    "title": "Hochzeits-Budget-Plan: Kosten pro Gast, Zahlungsplan, Sparrate",
+    "desc": "Alle Posten mit Preis pro Gast oder Pauschale, jede Anzahlung mit Datum, die Sparrate, die jede Zahlung deckt, und wie viele Gäste ins Budget passen. Offline-App und Excel-Vorlage mit Anleitung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P"
   }
 ]

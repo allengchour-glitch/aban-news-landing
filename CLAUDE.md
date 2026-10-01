@@ -808,6 +808,70 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   13.09. vorgeprüft: `stagedUploadsCreate` → `PUT` → `productUpdate`), aber **`SHOPIFY_SHOP` /
   `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. Dieselben drei Werte lösen zusätzlich
   `preis_korrektur.mjs` und `homepage_slim.mjs`** — ein Handgriff, drei Baustellen.
+**📌 2026-09-30 (🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch):**
+- **Nachfrage prüfen:** Semrush hat 0 API-Units → Google-Vorschläge per `suggestqueries.google.com/complete/search?client=firefox&hl=de&gl=ch&q=…`
+  (geht durch den Proxy). Belegt: „mietzinsreduktion berechnen/vorlage“, „hochzeit budget excel vorlage/pro gast“, „wedding budget spreadsheet“.
+- **Mietzins-Paket Schweiz CHF 19** (`tools/mietzins/`, 12 Tests, `content/packs/de/mietzins-paket/`): Art. 13 VMWG (Senkung = 1−1/(1+3 %×Schritte),
+  1,75→1,25 = −5,66 %), Art. 16 (40 % LIK), Kostenpauschale, Termin + letzter Zugangstag, Fristen Art. 270a OR, fertiger Brief. Referenzzins
+  1,25 % (BWO, Stand 2.9.2026, nächste Publikation **1.12.2026** → dann `AKTUELL` in engine.js nachführen!). Verkauft auf `mietzins-senkung-rechner.html`
+  (rechnete vorher falsch Schritte×2,91 % → jetzt Engine). Stripe `buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O`.
+- **Hochzeits-Budget-Plan CHF 19** (`tools/hochzeit/`, 10 Tests, App + Excel `tools/etsy/hochzeit_xlsx.py`), Gratis-Seite `hochzeit-budget-rechner.html`.
+  Excel per LibreOffice gegen Engine geprüft (8/8). Beispielbeträge = Platzhalter, KEINE erfundenen Durchschnittspreise.
+  Stripe `buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P`.
+- **Etsy (6 Pakete in `content/etsy/`)**: Upload vollautomatisch über `etsy-upload.yml` (`tools/etsy/etsy_upload.mjs`, OAuth über
+  `abannews.com/api/etsy-auth`). Secrets `ETSY_API_KEY` (keystring:shared_secret) gesetzt ✅. **Wartet auf Etsy-Freigabe der App**
+  („Pending Personal Approval“) → dann User: /api/etsy-auth → `ETSY_REFRESH_TOKEN` → Workflow starten (erst Probelauf).
+- `hype-filter`-Test war auf main rot (Pro-Lizenz nicht gemockt) → gefixt.
+
+**📌 2026-09-25 (🛒 3. Produkt „Budget-Plan Schweiz" CHF 19):** Offline-Rechner `content/packs/de/budget-plan/`
+(Takt monatlich–jährlich → monatliche Rückstellung für Steuern/Franchise/Jahresrechnungen, Muss/Kann/Sparen, Notreserve),
+Gratis-Seite `budget-rechner-schweiz.html`, Engine `tools/budget/engine.js` (7 Tests), Build `tools/budget/build.py`.
+Verkauf wie immer: Katalog-Eintrag → `stripe-shop.yml` starten → Link kommt automatisch auf die Seite.
+**✅ 28.09. Testkauf durch den User erfolgreich** (Zahlung → danke-kit.html → Download). Die Verkaufskette ist
+Ende-zu-Ende bestätigt. Nächster Hebel = Reichweite: Meta-Anzeigen `docs/werbung/schulden-plan/ANZEIGEN.md` (User schaltet).
+
+**📌 2026-09-25 (🛒 2. Produkt „Schulden-Plan Schweiz" CHF 27 + 🔒 LECK: `content/` war öffentlich):**
+- **Nach YouTube-Rezept** (Alex, „selling $27 ai digital products"): Nische Schulden → Offline-Rechner
+  `content/packs/de/schulden-plan/schulden-plan.html` (Lawine/Schneeball, tilgen vs. investieren, Break-even,
+  Schuldzinsabzug) + Gratis-Seite `schulden-oder-investieren.html` + 3 Meta-Anzeigen `docs/werbung/schulden-plan/`.
+  EINE Engine `tools/schulden/engine.js` (6 Tests `test_engine.js`), `tools/schulden/build.py` baut Produkt + Seite.
+- **🔒 `content/packs/` wurde mitdeployt:** `abannews.com/content/packs/de/strategie-pruefstand/pruefstand.py` = 200
+  (bezahltes Produkt gratis). `.md` löschte der Build, `.py`/`.html` nicht. Fix: `build-pages.sh` schliesst `./content`
+  aus + bricht ab, falls `_site/content` existiert (Gegenprobe: Wächter rc=1).
+- **Falle build.py:** Regex „bis zum nächsten `</script>`" hat bei leerem Engine-Block das FOLGENDE Skript (die ganze
+  Oberfläche) gelöscht → jetzt Marken `/*ENGINE-START*/…/*ENGINE-END*/`, idempotent geprüft.
+- ✅ **25.09. Stripe-Key im GitHub-Secret ersetzt (User)** → `stripe-shop.yml` legte beide Links an: Prüfstand
+  `buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p` (CHF 29), Schulden-Plan `buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q` (CHF 27). Neue
+  Produkte = Katalog-Eintrag + Workflow starten, sonst nichts. Werbung erst nach erstem Test-Kauf (Download prüfen).
+
+**📌 2026-09-25 (📱 LuxeStyle Android-App — native, Google Play bereit):**
+- `apps/luxestyle-android/` = **native Compose-App auf der Shopify Storefront API ohne Token**
+  (`au3j0y-hq.myshopify.com/api/2025-07/graphql.json`: Menü, Kollektionen, Suche, Produkte, Cart gehen
+  tokenlos; **Metafelder/Bewertungen NICHT** → „unauthenticated_read_metafields"). Nur Kasse/Konto im Web.
+  Alles Weitere: `apps/luxestyle-android/PLAY-STORE.md`. Workflow `luxestyle-android.yml` (manuell).
+- **Kein Emulator im Container → Rundgang per Robolectric+Roborazzi mit echten Shopdaten:**
+  `LUXE_SCREENSHOTS=1 ./gradlew testDebugUnitTest --tests '*Tour*'` → `screens/`. Falle: Robolectric kann
+  Androids `ImageDecoder` nicht → im Test Coil mit `imageDecoderEnabled(false)`.
+- **Shop-Wahrheit geprüft (Admin):** Gratis-Versand CH aktiv **ab CHF 45** (sonst CHF 7; Regel „ab 50" ist
+  deaktiviert, das Shop-Banner sagt trotzdem „ab 50"). WELCOME10 aktiv bis 31.12.2027, 10 %, 1×/Kunde.
+- **Container-Fallen:** Maven Central 429 → Gradle-Init-Skript auf `maven-central.storage-download.googleapis.com/maven2/`.
+  Chromium kennt die Proxy-CA erst nach `certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n ccr-proxy -i /root/.ccr/agent-proxy-ca.crt`.
+- **🟡 Nur User:** Play-Konto (25 USD; privat = 12 Tester × 14 Tage), Upload-Schlüssel aufbewahren, AAB hochladen.
+
+**📌 2026-09-24 (🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks):**
+- **Produkt:** `content/packs/de/strategie-pruefstand/` (Python-Kit, Katalog `data/kit-catalog.json`,
+  standalone). Verkaufskasten auf `trading-lernen.html` holt den Kauf-Link aus `data/shop-products.json`.
+- **✅ (erledigt 25.09., s. oben) — früher:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
+  (Stripe 403 `secret_key_required`, vermutlich `pk_…`). Richtiger Key: `sk_live_…` oder eingeschränkt
+  `rk_live_…` mit Schreibrecht auf Products, Prices, Payment Links. Danach `stripe-shop.yml` starten →
+  Link wird angelegt, committet, deployt (kein `[skip ci]` mehr). Cloudflare hat den richtigen Key
+  (`/api/kit-download` antwortet „Zahlung nicht gefunden" statt 503).
+- **🔒 Kit-ZIPs nie ins Repo:** `downloads/kits/` ist gitignored; der Deploy baut sie
+  (`build_kit_zips.py`, Salt mit `.strip()`). Der Stripe-Workflow hatte mit ungestripptem Salt 45 ZIPs
+  unter falschen Namen committet (404, aber Inhalt öffentlich). Gegenprobe: 34/34 alte Namen live 200.
+- **💰 eBay:** 16 Kaufberater-Seiten liefen ohne/mit fremder campid → über `/go/ebay`; Quality Check wird
+  rot bei direkten eBay-Links. Money-Guard (`automation/money_seo_guard.py`) läuft nur über GitLab = steht;
+  seine „Founding €69"-Kästen bewusst NICHT übernommen (Verlauf + „kein Hype").
 
 **📌 2026-09-23 (🔓 LIVE-DEPLOY: echte Ursache gefunden — ein eingecheckter Symlink):**
 - **abannews.com stand seit Ende August still.** Die Memory-Annahme „nur der Hetzner-Server (PAT fehlt)"

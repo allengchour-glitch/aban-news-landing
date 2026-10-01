@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Budget-Plan Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#b45309;--akz-lt:#fde9c8;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e7dfd2;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--rot:#b91c1c;--b1:#b45309;--b2:#6b7280;--b3:#15803d}
+@media(prefers-color-scheme:dark){:root{--akz:#fbbf24;--akz-lt:#5a4422;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--rot:#f87171;--b1:#fbbf24;--b2:#9c9384;--b3:#4ade80}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(24px,4.5vw,32px);letter-spacing:-.02em;line-height:1.15}
+h2{font-size:1.2rem;margin:0 0 10px}
+.sub{color:var(--ink2);margin:6px 0 18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+#ergebnis td:not(:first-child){white-space:nowrap}
+input,select{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--akz)}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.x{padding:6px 10px;color:var(--muted)}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.zahl{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.gut{color:var(--gut)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:12px}
+.warn{border-left:4px solid var(--rot);padding:10px 14px;background:var(--field);border-radius:8px;margin:8px 0}
+.balken{display:flex;height:22px;border-radius:999px;overflow:hidden;margin:8px 0;background:var(--line)}
+.balken i{display:block;height:100%}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:.86rem;color:var(--ink2)}
+.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c)}
+.klein{font-size:.82rem;color:var(--muted)}
+@media(max-width:560px){.karten thead{display:none}.karten tr{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.karten td{border:0;padding:0;text-align:left}.karten td:first-child{grid-column:1/-1}
+.karten td[data-l]::before{content:attr(data-l);display:block;font-size:.72rem;color:var(--muted);font-weight:700}}
+@media print{button,.leiste,.noprint{display:none!important}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Budget-Plan Schweiz</h1>
+<p class="sub">Trag ein, was reinkommt und was rausgeht, auch Rechnungen, die nur einmal im Jahr kommen. Der Plan rechnet alles auf den Monat um und zeigt, wie viel du monatlich für Steuern, Franchise und Co. zurücklegen musst, damit dich keine Rechnung mehr überrascht. Alles bleibt in diesem Browser.</p>
+
+<section class="box">
+<h2>1 · Einnahmen</h2>
+<div class="scroll"><table class="karten"><thead><tr><th>Bezeichnung</th><th>Betrag (CHF)</th><th>wie oft</th><th></th></tr></thead><tbody id="ein"></tbody></table></div>
+<div class="leiste"><button data-neu="ein">+ Einnahme</button></div>
+<p class="hint">13. Monatslohn als eigene Zeile „1× pro Jahr“ eintragen. Netto, also nach AHV und Pensionskasse.</p>
+</section>
+
+<section class="box">
+<h2>2 · Ausgaben</h2>
+<div class="scroll"><table class="karten"><thead><tr><th>Bezeichnung</th><th>Betrag (CHF)</th><th>wie oft</th><th>Art</th><th>Wohnen</th><th></th></tr></thead><tbody id="aus"></tbody></table></div>
+<div class="leiste"><button data-neu="aus">+ Ausgabe</button><button id="beispiel">Beispiel laden</button><button id="leeren">Alles leeren</button></div>
+<p class="hint">Art: <b>Muss</b> = Miete, Krankenkasse, Steuern, Versicherungen, Essen · <b>Kann</b> = Freizeit, Ferien, Kleider · <b>Sparen</b> = Säule 3a, Sparkonto, Tilgung über die Mindestrate hinaus. Steuern: letzte Steuerrechnung als Jahresbetrag.</p>
+</section>
+
+<section class="box">
+<h2>3 · Notreserve</h2>
+<div style="max-width:260px"><label for="reserve">Heute auf dem Sparkonto (CHF)</label><input id="reserve" type="number" min="0" step="100" value="2000"></div>
+</section>
+
+<section class="box" id="ergebnis"></section>
+
+<p class="klein">Budget-Plan Schweiz 1.0 · aban news · Modellrechnung, keine Finanz- oder Budgetberatung. Kostenlose Budgetberatung: die kantonalen Budget- und Schuldenberatungsstellen (Übersicht auf schulden.ch).</p>
+</div>
+<script>
+// Budget-Plan Schweiz — Rechen-Engine (ohne Oberfläche, in Node testbar). Beträge in CHF.
+(function (root) {
+  "use strict";
+  // Wie oft pro Jahr fällt ein Posten an?
+  var PRO_JAHR = { monat: 12, quartal: 4, halbjahr: 2, jahr: 1 };
+  // Gruppen für 50/30/20: bedarf = muss, wunsch = kann, sparen = Sparen/Tilgen
+  function monatlich(p) { return (+p.betrag || 0) * (PRO_JAHR[p.takt] || 12) / 12; }
+
+  function auswerten(plan) {
+    var ein = (plan.einnahmen || []).reduce(function (a, p) { return a + monatlich(p); }, 0);
+    var gruppen = { bedarf: 0, wunsch: 0, sparen: 0 }, rueck = 0, wohnen = 0, fix = 0, posten = [];
+    (plan.ausgaben || []).forEach(function (p) {
+      var m = monatlich(p);
+      gruppen[p.gruppe || "bedarf"] += m;
+      if (p.takt && p.takt !== "monat") rueck += m;       // nicht monatlich bezahlt → monatlich zurücklegen
+      if (p.wohnen) wohnen += m;
+      if ((p.gruppe || "bedarf") === "bedarf") fix += m;
+      posten.push({ name: p.name, monat: m, gruppe: p.gruppe || "bedarf" });
+    });
+    var aus = gruppen.bedarf + gruppen.wunsch + gruppen.sparen;
+    var rest = ein - aus;
+    var reserveZiel = 3 * fix;
+    var reserve = +plan.reserve || 0;
+    var sparMonat = gruppen.sparen + Math.max(rest, 0);
+    var monateBisReserve = reserve >= reserveZiel ? 0 : (sparMonat > 0 ? Math.ceil((reserveZiel - reserve) / sparMonat) : null);
+    var q = function (x) { return ein > 0 ? x / ein : 0; };
+    return {
+      einnahmen: ein, ausgaben: aus, rest: rest, gruppen: gruppen,
+      anteile: { bedarf: q(gruppen.bedarf), wunsch: q(gruppen.wunsch), sparen: q(gruppen.sparen + Math.max(rest, 0)) },
+      rueckstellung: rueck, wohnquote: q(wohnen), reserveZiel: reserveZiel, monateBisReserve: monateBisReserve,
+      posten: posten.sort(function (a, b) { return b.monat - a.monat; })
+    };
+  }
+  var api = { auswerten: auswerten, monatlich: monatlich, PRO_JAHR: PRO_JAHR };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.BudgetEngine = api;
+})(this);
+
+</script>
+<script>
+(function(){
+  "use strict";
+  var E=window.BudgetEngine,K="budget-plan-v1";
+  var TAKT=[["monat","monatlich"],["quartal","pro Quartal"],["halbjahr","pro Halbjahr"],["jahr","1× pro Jahr"]];
+  var ART=[["bedarf","Muss"],["wunsch","Kann"],["sparen","Sparen"]];
+  var BEISPIEL={einnahmen:[{name:"Nettolohn",betrag:5800,takt:"monat"},{name:"13. Monatslohn",betrag:5800,takt:"jahr"}],reserve:2000,ausgaben:[
+    {name:"Miete inkl. Nebenkosten",betrag:1850,takt:"monat",gruppe:"bedarf",wohnen:true},
+    {name:"Krankenkasse Prämien",betrag:420,takt:"monat",gruppe:"bedarf"},
+    {name:"Franchise und Selbstbehalt",betrag:1000,takt:"jahr",gruppe:"bedarf"},
+    {name:"Steuern",betrag:8400,takt:"jahr",gruppe:"bedarf"},
+    {name:"Hausrat und Haftpflicht",betrag:380,takt:"jahr",gruppe:"bedarf"},
+    {name:"Radio- und TV-Gebühr",betrag:335,takt:"jahr",gruppe:"bedarf"},
+    {name:"Handy und Internet",betrag:90,takt:"monat",gruppe:"bedarf"},
+    {name:"ÖV und Mobilität",betrag:150,takt:"monat",gruppe:"bedarf"},
+    {name:"Lebensmittel und Haushalt",betrag:700,takt:"monat",gruppe:"bedarf"},
+    {name:"Kleider",betrag:1200,takt:"jahr",gruppe:"wunsch"},
+    {name:"Freizeit und Ausgang",betrag:300,takt:"monat",gruppe:"wunsch"},
+    {name:"Ferien",betrag:3000,takt:"jahr",gruppe:"wunsch"},
+    {name:"Geschenke",betrag:600,takt:"jahr",gruppe:"wunsch"},
+    {name:"Säule 3a",betrag:300,takt:"monat",gruppe:"sparen"}]};
+  var st=JSON.parse(JSON.stringify(BEISPIEL));
+  try{var g=JSON.parse(localStorage.getItem(K)||"null");if(g&&g.ausgaben)st=g}catch(e){}
+  var $=function(id){return document.getElementById(id)};
+  function chf(x){return "CHF "+Math.round(x).toLocaleString("de-CH")}
+  function pz(x){return Math.round(x*100)+" %"}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function sel(liste,wert,attr,label){return '<select '+attr+' aria-label="'+label+'">'+liste.map(function(o){return '<option value="'+o[0]+'"'+(o[0]===wert?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select>'}
+  function speichern(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  function zeilen(){
+    $("ein").innerHTML=st.einnahmen.map(function(p,i){var a='data-l="ein" data-i="'+i+'"';
+      return '<tr><td data-l="Bezeichnung"><input '+a+' data-k="name" value="'+esc(p.name)+'" aria-label="Bezeichnung"></td><td data-l="Betrag"><input '+a+' data-k="betrag" type="number" min="0" step="50" value="'+p.betrag+'" aria-label="Betrag"></td><td data-l="wie oft">'+sel(TAKT,p.takt,a+' data-k="takt"',"wie oft")+'</td><td><button class="x" data-weg="ein" data-i="'+i+'" aria-label="entfernen">✕</button></td></tr>'}).join("");
+    $("aus").innerHTML=st.ausgaben.map(function(p,i){var a='data-l="aus" data-i="'+i+'"';
+      return '<tr><td data-l="Bezeichnung"><input '+a+' data-k="name" value="'+esc(p.name)+'" aria-label="Bezeichnung"></td><td data-l="Betrag"><input '+a+' data-k="betrag" type="number" min="0" step="10" value="'+p.betrag+'" aria-label="Betrag"></td><td data-l="wie oft">'+sel(TAKT,p.takt,a+' data-k="takt"',"wie oft")+'</td><td data-l="Art">'+sel(ART,p.gruppe,a+' data-k="gruppe"',"Art")+'</td><td data-l="Wohnen"><input type="checkbox" '+a+' data-k="wohnen"'+(p.wohnen?" checked":"")+' aria-label="Wohnkosten"></td><td><button class="x" data-weg="aus" data-i="'+i+'" aria-label="entfernen">✕</button></td></tr>'}).join("");
+  }
+  function rechnen(){
+    var r=E.auswerten(st),box=$("ergebnis"),h="<h2>4 · Dein Monat</h2>";
+    if(!r.einnahmen){box.innerHTML="<p>Trag oben deine Einnahmen ein.</p>";return}
+    h+='<div class="kacheln"><div class="kachel"><b>Einnahmen</b><div class="zahl">'+chf(r.einnahmen)+'</div>pro Monat</div>'
+      +'<div class="kachel"><b>Ausgaben</b><div class="zahl">'+chf(r.ausgaben)+'</div>pro Monat, inkl. Sparen</div>'
+      +'<div class="kachel"><b>'+(r.rest>=0?"Übrig":"Fehlt")+'</b><div class="zahl '+(r.rest>=0?"gut":"rot")+'">'+chf(Math.abs(r.rest))+'</div>pro Monat</div></div>';
+    if(r.rest<0)h+='<p class="warn"><b>Das Budget geht nicht auf.</b> Jeden Monat fehlen '+chf(-r.rest)+'. Beginne bei den grössten Kann-Posten unten. Bleibt es im Minus, hilft eine kostenlose Budgetberatung.</p>';
+    if(r.wohnquote>1/3)h+='<p class="warn"><b>Wohnen kostet '+pz(r.wohnquote)+' deines Einkommens.</b> Üblich ist höchstens ein Drittel. Alles darüber macht das Budget eng.</p>';
+    var jr=st.ausgaben.filter(function(p){return p.takt!=="monat"&&(+p.betrag>0)});
+    h+='<h2 style="margin-top:18px">5 · Jeden Monat zurücklegen: '+chf(r.rueckstellung)+'</h2>'
+      +'<p>Diese Rechnungen kommen nicht monatlich, aber sicher. Richte einen <b>Dauerauftrag über '+chf(r.rueckstellung)+'</b> auf ein separates Konto ein und bezahle sie von dort. Dann bringt dich keine Steuerrechnung mehr in Not.</p>'
+      +(jr.length?'<table><thead><tr><th>Posten</th><th>Rechnung</th><th>pro Monat</th></tr></thead><tbody>'+jr.map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+chf(+p.betrag)+' '+({quartal:"pro Quartal",halbjahr:"pro Halbjahr",jahr:"pro Jahr"}[p.takt])+'</td><td>'+chf(E.monatlich(p))+'</td></tr>'}).join("")+'</tbody></table>':'<p class="klein">Keine nicht-monatlichen Posten eingetragen.</p>');
+    h+='<h2 style="margin-top:18px">6 · Muss, Kann, Sparen</h2><div class="balken" role="img" aria-label="Aufteilung des Einkommens">'
+      +'<i style="width:'+Math.min(100,r.anteile.bedarf*100)+'%;background:var(--b1)"></i><i style="width:'+Math.min(100,r.anteile.wunsch*100)+'%;background:var(--b2)"></i><i style="width:'+Math.min(100,r.anteile.sparen*100)+'%;background:var(--b3)"></i></div>'
+      +'<div class="leg"><span style="--c:var(--b1)">Muss '+pz(r.anteile.bedarf)+'</span><span style="--c:var(--b2)">Kann '+pz(r.anteile.wunsch)+'</span><span style="--c:var(--b3)">Sparen inkl. Überschuss '+pz(r.anteile.sparen)+'</span></div>'
+      +'<p class="klein">Faustregel 50/30/20: etwa die Hälfte für Muss, 30 % für Kann, 20 % für Sparen. In der Schweiz liegt „Muss“ wegen Miete und Krankenkasse oft höher, dann muss „Kann“ kleiner werden.</p>';
+    var mb=r.monateBisReserve;
+    h+='<h2 style="margin-top:18px">7 · Notreserve</h2><p>Ziel: drei Monate Muss-Ausgaben, also <b>'+chf(r.reserveZiel)+'</b>. '
+      +(mb===0?'<b class="gut">Erreicht.</b> Alles darüber kannst du investieren oder Schulden tilgen.':mb===null?'Mit dem aktuellen Budget ist sie nicht erreichbar, zuerst muss das Budget aufgehen.':'Mit '+chf(r.gruppen.sparen+Math.max(r.rest,0))+' pro Monat hast du sie in etwa <b>'+mb+' Monat'+(mb===1?'':'en')+'</b> zusammen, wenn du den Überschuss wirklich sparst.')+'</p>';
+    h+='<h2 style="margin-top:18px">8 · Die grössten Posten</h2><table><tbody>'+r.posten.slice(0,5).map(function(p){return '<tr><td>'+esc(p.name)+'</td><td>'+chf(p.monat)+' / Monat</td><td>'+pz(p.monat/r.einnahmen)+'</td></tr>'}).join("")+'</tbody></table>'
+      +'<div class="leiste noprint"><button id="csv">Budget als CSV (Excel)</button><button onclick="window.print()">Drucken / als PDF</button></div>';
+    box.innerHTML=h;
+    $("csv").onclick=function(){
+      var z=[["Art","Bezeichnung","Betrag CHF","wie oft","pro Monat CHF"]];
+      st.einnahmen.forEach(function(p){z.push(["Einnahme",p.name,p.betrag,p.takt,E.monatlich(p).toFixed(2)])});
+      st.ausgaben.forEach(function(p){z.push([{bedarf:"Muss",wunsch:"Kann",sparen:"Sparen"}[p.gruppe],p.name,p.betrag,p.takt,E.monatlich(p).toFixed(2)])});
+      var csv="﻿"+z.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(";")}).join("\r\n");
+      var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="budget-plan.csv";a.click();
+    };
+  }
+  function aendern(e){
+    var t=e.target,l=t.getAttribute("data-l"),i=t.getAttribute("data-i"),k=t.getAttribute("data-k");
+    if(l&&k&&i!==null){var p=(l==="ein"?st.einnahmen:st.ausgaben)[+i];p[k]=k==="betrag"?(+t.value||0):k==="wohnen"?t.checked:t.value}
+    else if(t.id==="reserve")st.reserve=+t.value||0; else return;
+    speichern();rechnen();
+  }
+  document.addEventListener("input",aendern);document.addEventListener("change",aendern);
+  document.addEventListener("click",function(e){
+    var t=e.target,w=t.getAttribute&&t.getAttribute("data-weg"),n=t.getAttribute&&t.getAttribute("data-neu");
+    if(w){(w==="ein"?st.einnahmen:st.ausgaben).splice(+t.getAttribute("data-i"),1)}
+    else if(n==="ein")st.einnahmen.push({name:"Einnahme",betrag:0,takt:"monat"});
+    else if(n==="aus")st.ausgaben.push({name:"Ausgabe",betrag:0,takt:"monat",gruppe:"bedarf"});
+    else if(t.id==="beispiel")st=JSON.parse(JSON.stringify(BEISPIEL));
+    else if(t.id==="leeren")st={einnahmen:[],ausgaben:[],reserve:0};
+    else return;
+    speichern();zeilen();$("reserve").value=st.reserve||0;rechnen();
+  });
+  $("reserve").value=st.reserve||0;zeilen();rechnen();
+})();
+</script>
+</body>
+</html>

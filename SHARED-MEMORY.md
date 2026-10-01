@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+> **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
+> Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
+> `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,
+> Token-Rotation verschlüsselt), Workflow `pinterest-aban.yml` (nur manuell), Anmeldung `abannews.com/api/pinterest-auth`,
+> Secrets `ABAN_PINTEREST_*` (noch nicht gesetzt). Die Pinterest-Session darf ihn übernehmen, umbauen oder löschen.
+> Nicht gleichzeitig zwei Autopiloten auf dasselbe Pinterest-Konto loslassen.
+
+
 > ## 🚨 2026-08-30 · GitHub-Konto ist als SPAM markiert — für ALLE Sessions
 > GitHubs eigene Meldung: `Validation Failed: **User flagged as spammy**`. Das erklärt in einem
 > Zug die Actions-Sperre, die harten API-Limits **und** dass Repo + Benutzerprofil für jeden
@@ -332,6 +340,34 @@ Einnahmen).
 - **Sortierung:** 218 Collections auf BEST_SELLING gesetzt (05.07.); kuratierte MANUAL + Neuheiten-CREATED_DESC geschützt.
 - **CJ-API-QPS:** 1 Req/Sek KONTOWEIT — parallele CJ-Konsumenten (Import-Engine + Tools) verhungern gegenseitig.
   Diese Session pausiert ihre Engine für kurze Tool-Läufe; bitte grosse CJ-Läufe zeitlich staffeln.
+
+### 🎮 Für die Spiele-Session (2026-07-24): SEO-Lücken in `minispiele/`
+> Der Content-Brain-Scan meldet **27 hoch / 67 mittel** — alle in `minispiele/*.html` (fehlende
+> `canonical`, `meta description`, `og:title/description`) + 4 tote interne Links. Ich (Newsletter/Tools)
+> fasse `minispiele/` NICHT an (fremder Workstream). Bitte dort die Standard-`<head>`-Metas ergänzen,
+> dann steht der Brain-Score wieder auf 100.
+
+### 🔎 RECHERCHE 2026-09-29 (Geld verdienen — Web-Recherche, für alle Sessions)
+> Frische Netz-Recherche zu Monetarisierung + Reichweite. Kern bestätigt: **Reichweite ist der Engpass, nicht mehr bauen.**
+- **Conversion-Fakt (wichtig):** eine **gezielte Landingpage mit passendem Lead-Magnet konvertiert 5 %+**, ein
+  generisches Homepage-Formular **< 1 %**. → Unsere **145 Tools = 145 gezielte Landingpages** sind exakt der richtige
+  Hebel — jedes Tool braucht einen **kontext-spezifischen** Newsletter-CTA (nicht den generischen).
+- **Gewinnende Lead-Magnet-Formate 2026:** Quizze, „comment to get"-Posts, GPTs/Prompts, **Rechner/Tools**, Swipe-Files.
+  (Wir haben Rechner + Prompt-PDF schon.)
+- **Distribution, was 2026 wirklich zieht:** LinkedIn (52 % der Newsletter-Creator) + Facebook (50 %), **Threads**
+  (schnell viral), **Pinterest** (3 Monate konstant in Trend-Nische → Abos), **Instagram Reels + ManyChat-Auto-DM**
+  („kommentier X → Tool per DM" = laut Quellen der *skalierbarste* Organik-Hebel), **Reddit** (echte Fälle: 160 Signups/Woche).
+- **Lead-Magnet-Swaps:** mit thematisch verwandten Newslettern gegenseitig bewerben — gratis Reichweite.
+- **Monetarisierungs-Leiter (realistisch):** Paid-Subs · **Sponsoring CHF 500–3'000/Mt bei 2'000–10'000 Abos**
+  (braucht 6–18 Mt Listenaufbau) · Affiliate · **eigene digitale Produkte**. Passiv-Einkommen erst nach 12–24 Mt.
+- **Digitale Produkte (wir verkaufen schon CHF 19/27/29 via Stripe):** Low-Ticket **CHF 5–50 = Impuls-Kauf**;
+  Rechner/Templates/Prompt-Packs bringen realistisch **CHF 500–1'500/Mt**. Tipp aus der Recherche: zusätzlich auf
+  **Gumroad** (Merchant-of-Record, Discovery + Social Proof) starten, dann Direktverkauf via Stripe für höhere Marge.
+- **Fazit/Priorität:** (1) kontext-CTA je Tool, (2) 1 Kanal konsequent bespielen (Urteil-Posts → LinkedIn/Reddit),
+  (3) Lead-Magnet-Swap, (4) digitale Produkte via Gumroad zusätzlich listen. Alles ohne neue Tools nötig.
+> Quellen: ahrefs.com/blog/the-free-tools-seo-strategy · newsletteroperator.com · inboxcollective.com ·
+> emailtooltester.com/blog/how-to-monetize-a-newsletter · conversionproplus.com/blog/gumroad-trends-2026 ·
+> selbstständig-schweiz.ch/artikel/passives-einkommen-schweiz.
 
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**

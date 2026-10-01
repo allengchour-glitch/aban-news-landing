@@ -35,6 +35,15 @@ gebucht. Die Gegenprobe fand es: 0 Trades.) Stundenkerzen liegen nicht im Repo (
 das Skript holt fehlende Caches selbst. Rückblick-Test: `python3 tools/trading/daytrading.py`
 → `reports/DAYTRADING.md`.
 
+**Stil-Vorwärtstest** (`daten["stil_vorwaerts"]`, ab 25.09.): die neun Stile aus `tools/trading/stil_labor.py`
+auf allen acht Märkten, je CHF 10'000, Signal am Schluss, gehandelt am Folgetag, 0.1 % pro Wechsel. Der Skill
+aus dem Rückblick steht unter `vorab` — festgehalten, bevor ein Vorwärtstag zählte. `daten["verlauf"]` hält
+pro Tag Bot, Halten und Daytrading für die Kurve auf der Seite.
+
+**Sperre gegen veraltete Kurse:** Liegt der letzte Kurs VOR der letzten Entscheidung (Cache/Quelle hinkt),
+bucht der Lauf nichts und entscheidet nicht neu. Vorher hätte er für einen vergangenen Tag neu entschieden
+und erneut Kosten abgezogen (lokal mit altem Cache nachgestellt: CHF 80'139 → 80'119).
+
 ## Märkte
 
 Der Lauf ruft `markets-build.yml` auf (Kurse, Finanz-News, optional KI-Sentiment mit

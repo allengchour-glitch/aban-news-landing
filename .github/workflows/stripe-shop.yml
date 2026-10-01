@@ -45,33 +45,21 @@ jobs:
           EN_SLUGS=$(python3 -c "import json;print(','.join(k['slug'] for k in json.load(open('data/kit-catalog-en.json'))))")
           python3 automation/generate_branchen_pdfs.py --all --lang en || true
           python3 automation/build_product_pack.py --lang en --slugs "$EN_SLUGS"
-          # Kits beider Sprachen geschützt ablegen (gehashter Dateiname aus DOWNLOAD_SALT)
-          python3 - <<'PY'
-          import json, hashlib, os, shutil, pathlib
-          salt = os.environ.get("DOWNLOAD_SALT", "")
-          out = pathlib.Path("downloads/kits"); out.mkdir(parents=True, exist_ok=True)
-          jobs = [("data/kit-catalog.json", "downloads/packs"),
-                  ("data/kit-catalog-en.json", "downloads/packs/en")]
-          for catalog, packdir in jobs:
-              if not pathlib.Path(catalog).exists():
-                  continue
-              for k in json.load(open(catalog)):
-                  s = k["slug"]; src = pathlib.Path(f"{packdir}/{s}.zip")
-                  if src.exists():
-                      h = hashlib.sha256(f"{s}:{salt}".encode()).hexdigest()[:24]
-                      shutil.copy(src, out / f"{h}.zip"); print("staged", s)
-          PY
+          # Kit-ZIPs werden NICHT mehr hier abgelegt/committet. Sie baut der Deploy selbst
+          # (build-pages.sh -> automation/build_kit_zips.py, Salt mit .strip()). Frueher legte
+          # dieser Schritt sie mit ungestripptem Salt ab -> falsche Namen (404) und bezahlte
+          # Inhalte im oeffentlichen Repo (23.09.: 45 Dateien).
           python3 automation/stripe_sync.py
           python3 automation/stripe_sync.py --catalog data/kit-catalog-en.json \
             --out data/shop-products-en.json --state data/stripe-state-en.json --danke /en/danke-kit.html
 
       - name: Shop committen
         run: |
-          if [ -n "$(git status --porcelain downloads/kits data/)" ]; then
+          if [ -n "$(git status --porcelain data/)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/shop-products.json data/shop-products-en.json data/stripe-state.json data/stripe-state-en.json downloads/kits 2>/dev/null || true
-            git commit -m "Stripe-Shop: Produkte/Links + geschützte Kits (DE+EN) aktualisiert [skip ci]" || echo "nichts"
+            git add data/shop-products.json data/shop-products-en.json data/stripe-state.json data/stripe-state-en.json 2>/dev/null || true
+            git commit -m "Stripe-Shop: Produkte/Links (DE+EN) aktualisiert" || echo "nichts"
             for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
           else
             echo "Keine Änderung."

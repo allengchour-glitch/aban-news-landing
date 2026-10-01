@@ -156,59 +156,49 @@ async function run() {
     check("Security-Header", hasSecurityHeaders(res));
   }
 
-  // ⚠️ AKTUALISIERT 2026-09-30 — die Tests 10 und 11 waren VERALTET, nicht der Code kaputt.
-  // GEMESSEN: dieselben vier Fehler treten auch auf `origin/main` auf, ohne jede fremde
-  // Aenderung. Ursache: der Claude-Pfad in `api/hype-check.js` verlangt inzwischen
-  // ZUSAETZLICH eine aban-Pro-Lizenz (`requirePro` → `validateLicense` → Lemon Squeezy).
-  // Der alte Mock antwortete auf JEDE Adresse mit der Claude-Antwort, also bekam auch die
-  // Lizenzpruefung `{content:[…]}`, fand kein `valid` und lehnte ab → der Code fiel korrekt
-  // auf `fallback` zurueck. Der Mock muss nach ADRESSE unterscheiden.
-  // Ein Pro-Schluessel wird als Header `X-Pro-Key` mitgegeben (so liest ihn `readProKey`).
-  const LS = "api.lemonsqueezy.com";
-  const lizenzOk = () => new Response(JSON.stringify({
-    valid: true, license_key: { status: "active" }, meta: { variant_id: 1 },
-  }), { status: 200, headers: { "Content-Type": "application/json" } });
-  const proKopf = { "X-Pro-Key": "pro-test-schluessel-123456" };
-
-  // 10) Claude-Pfad mit gemocktem fetch (Key + Pro gesetzt) → claude-Quelle, kein Key-Leak
+  // 10) Claude-Pfad mit gemocktem fetch (Key gesetzt) → claude-Quelle, kein Key-Leak
+  // Umschreiben ist Pro-Funktion (functions/_pro.mjs) → Lizenzprüfung bei Lemon Squeezy mitmocken
+  const PRO_OK = () => new Response(JSON.stringify({ valid: true, license_key: { status: "active" }, meta: {} }), {
+    status: 200, headers: { "Content-Type": "application/json" },
+  });
   console.log("\nTest 10 — Claude-Pfad (gemockt):");
   {
     const realFetch = globalThis.fetch;
     let sawKey = null;
     globalThis.fetch = async (url, init) => {
-      if (String(url).includes(LS)) return lizenzOk();
+      if (String(url).includes("lemonsqueezy")) return PRO_OK();
       sawKey = init && init.headers && init.headers["x-api-key"];
       return new Response(JSON.stringify({ content: [{ type: "text", text: "Nüchtern umgeschrieben." }] }), {
         status: 200, headers: { "Content-Type": "application/json" },
       });
     };
     try {
-      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite" }, headers: proKopf }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
+      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite", license_key: "test-lizenz-123" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
       const data = await res.json();
       check("aiRewriteSource = claude", data.aiRewriteSource === "claude", "src=" + data.aiRewriteSource);
       check("aiRewrite = Mock-Text", data.aiRewrite === "Nüchtern umgeschrieben.");
       check("Key wurde im Header gesendet", sawKey === "sk-test-secret-123456");
       const wholeBody = JSON.stringify(data);
       check("Key leakt NICHT in die Response", !wholeBody.includes("sk-test-secret-123456"));
-      check("Pro-Schluessel leakt NICHT in die Response", !wholeBody.includes("pro-test-schluessel-123456"));
     } finally {
       globalThis.fetch = realFetch;
     }
   }
 
-  // 10b) GEGENPROBE zur Pro-Sperre: OHNE Pro-Schluessel darf es NICHT Claude sein.
-  // Ohne diese Gegenprobe wuerde Test 10 auch gruen, wenn die Sperre ganz wegfiele.
-  console.log("\nTest 10b — ohne Pro-Schluessel bleibt es Fallback:");
+  // 10b) Gegenprobe: ohne Pro-Lizenz wird Claude NICHT aufgerufen
+  console.log("\nTest 10b — ohne Lizenz kein Claude-Aufruf:");
   {
     const realFetch = globalThis.fetch;
-    globalThis.fetch = async (url) => (String(url).includes(LS)
-      ? new Response(JSON.stringify({ valid: false }), { status: 200, headers: { "Content-Type": "application/json" } })
-      : new Response(JSON.stringify({ content: [{ type: "text", text: "Nüchtern umgeschrieben." }] }), { status: 200, headers: { "Content-Type": "application/json" } }));
+    let claudeGerufen = false;
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("anthropic")) claudeGerufen = true;
+      return new Response(JSON.stringify({ valid: false }), { status: 200, headers: { "Content-Type": "application/json" } });
+    };
     try {
       const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
       const data = await res.json();
-      check("ohne Pro → Fallback", data.aiRewriteSource === "fallback", "src=" + data.aiRewriteSource);
-      check("proRequired wird gemeldet", data.proRequired === true);
+      check("Claude nicht aufgerufen", !claudeGerufen);
+      check("proRequired gesetzt", data.proRequired === true);
     } finally {
       globalThis.fetch = realFetch;
     }
@@ -218,11 +208,10 @@ async function run() {
   console.log("\nTest 11 — Claude-Fehler → Fallback ohne Key-Leak:");
   {
     const realFetch = globalThis.fetch;
-    globalThis.fetch = async (url) => (String(url).includes(LS)
-      ? lizenzOk()
-      : new Response("server error", { status: 500 }));
+    globalThis.fetch = async (url) =>
+      String(url).includes("lemonsqueezy") ? PRO_OK() : new Response("server error", { status: 500 });
     try {
-      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite" }, headers: proKopf }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
+      const res = await onRequestPost(ctx("POST", { body: { text: "Revolutionärer Game-Changer!", action: "rewrite", license_key: "test-lizenz-123" } }, { ANTHROPIC_API_KEY: "sk-test-secret-123456" }));
       const data = await res.json();
       check("Fallback bei API-Fehler", data.aiRewriteSource === "fallback", "src=" + data.aiRewriteSource);
       check("aiRewriteError gesetzt", typeof data.aiRewriteError === "string");

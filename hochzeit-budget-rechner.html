@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hochzeit-Budget-Rechner: Kosten pro Gast und Sparplan · aban news</title>
+<meta name="description" content="Gratis-Rechner fürs Hochzeitsbudget: Kosten pro Gast, wie viele Gäste in euer Budget passen und wie viel ihr bis zum Hochzeitstag monatlich sparen müsst. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/hochzeit-budget-rechner.html">
+<meta property="og:title" content="Hochzeit-Budget-Rechner: Kosten pro Gast und Sparplan">
+<meta property="og:description" content="Kosten pro Gast, maximale Gästezahl und Sparrate bis zur Hochzeit. Gratis, lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/hochzeit-budget-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Hochzeit-Budget-Rechner", "url": "https://abannews.com/hochzeit-budget-rechner.html", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "de-CH", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"}, "description": "Rechnet Hochzeitskosten pro Gast, die maximale Gästezahl für euer Budget und die nötige Sparrate bis zum Hochzeitstag.", "publisher": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wie rechne ich die Hochzeitskosten pro Gast?", "acceptedAnswer": {"@type": "Answer", "text": "Zwei Teile zusammenzählen: die Pauschalen (Location, Fotografie, Musik, Kleidung, Ringe, Deko) geteilt durch die Zahl der Gäste, plus alles, was pro Person kostet (Essen, Getränke, Apéro, Torte, Gastgeschenke). Der zweite Teil ist der Betrag, den jeder zusätzliche Gast kostet."}}, {"@type": "Question", "name": "Wie viel Reserve sollte im Hochzeitsbudget sein?", "acceptedAnswer": {"@type": "Answer", "text": "Wir empfehlen rund zehn Prozent als eigenen Posten. Fast immer kommt etwas dazu: mehr Getränke als geplant, Änderungen am Kleid, Trinkgelder, ein zusätzlicher Transport."}}, {"@type": "Question", "name": "Wann werden die Anzahlungen fällig?", "acceptedAnswer": {"@type": "Answer", "text": "Das steht in den Offerten. Locations und Fotografen verlangen oft früh eine Anzahlung, um das Datum zu reservieren, Catering meist einige Monate vorher. Tragt jede Anzahlung mit Datum ein, dann seht ihr, wie viel ihr bis wann angespart haben müsst."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--rot:#b91c1c}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--rot:#f87171}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:8px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt);padding:9px 15px}
+.hero{padding:36px 0 6px}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2)}
+h2{font-size:1.3rem;margin:30px 0 10px;letter-spacing:-.01em}
+p,ul{margin:10px 0}ul{padding-left:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:.82rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+.out{margin-top:16px}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kachel{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kachel .z{font-size:1.45rem;font-weight:800;font-variant-numeric:tabular-nums}
+.urteil{border-left:4px solid var(--amber-dk);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:12px}
+.warn{border-left:4px solid var(--rot)}
+.note{color:var(--muted);font-size:.84rem}
+.produkt{border:1px solid var(--line);border-left:4px solid var(--gut);border-radius:14px;background:var(--card);padding:18px;margin:26px 0}
+.produkt ul{margin:8px 0 14px}
+details{border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:8px 0;background:var(--card)}
+summary{font-weight:700;cursor:pointer}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<div class="wrap">
+  <section class="hero">
+    <h1>Hochzeit-Budget-Rechner: Kosten pro Gast und Sparplan</h1>
+    <p>Wie viel kostet jeder Gast, wie viele passen ins Budget, und wie viel müsst ihr bis zum grossen Tag monatlich sparen? Tragt die Beträge aus euren Offerten ein. Alles rechnet in eurem Browser.</p>
+  </section>
+
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div><label for="gaeste">Gäste</label><input id="gaeste" type="number" min="0" step="1" value="80"></div>
+      <div><label for="budget">Budget total</label><input id="budget" type="number" min="0" step="500" value="35000"></div>
+      <div><label for="progast">Kosten pro Gast</label><input id="progast" type="number" min="0" step="5" value="200"></div>
+      <div><label for="fix">Pauschalen zusammen</label><input id="fix" type="number" min="0" step="500" value="18000"></div>
+      <div><label for="datum">Hochzeitsdatum</label><input id="datum" type="date"></div>
+      <div><label for="gespart">Schon gespart</label><input id="gespart" type="number" min="0" step="500" value="6000"></div>
+    </div>
+    <p class="note">Kosten pro Gast: Essen, Getränke, Apéro, Torte, Gastgeschenke. Pauschalen: Location, Fotografie, Musik, Kleidung, Ringe, Blumen und Deko, Zivilstandsamt, Reserve. Die Vorgaben sind Beispiele, keine Durchschnittspreise.</p>
+    <div class="out" id="out" aria-live="polite"></div>
+  </section>
+
+  <h2>Der grösste Hebel ist die Gästeliste</h2>
+  <p>Location, Fotografin und Musik kosten gleich viel, ob 60 oder 120 Gäste kommen. Essen, Getränke und Apéro wachsen mit jeder Person. Deshalb zuerst die Gästeliste festlegen, dann die Location suchen, nicht umgekehrt.</p>
+
+  <h2>Anzahlungen früh einplanen</h2>
+  <p>Viele Anbieter verlangen eine Anzahlung, um euer Datum zu reservieren, manchmal schon ein Jahr vorher. Das Geld muss also nicht erst am Hochzeitstag bereit sein, sondern Schritt für Schritt. Ein separates Sparkonto mit einem Dauerauftrag nach dem Lohneingang macht es einfach.</p>
+
+  <section class="produkt" id="hochzeits-budget">
+    <p><b>Jeden Posten mit Termin planen: der Hochzeits-Budget-Plan.</b></p>
+    <ul>
+      <li><b>Alle Posten</b> mit Preis pro Gast oder Pauschale, bereits bezahlte Beträge abgezogen</li>
+      <li><b>Zahlungsplan:</b> jede Anzahlung mit Datum und die Summe, die bis dann bereit sein muss</li>
+      <li><b>Sparrate,</b> die jede einzelne Zahlung deckt, und Warnung, wann mit eurer Rate Geld fehlt</li>
+      <li><b>Gäste-Hebel:</b> wie viele Gäste ins Budget passen und wie viele weniger es bräuchte</li>
+      <li>Excel-Vorlage und Offline-App, Export als CSV oder PDF, dazu eine Anleitung</li>
+    </ul>
+    <p class="note">Läuft offline in jedem Browser, auch auf dem Handy. Eure Zahlen bleiben auf eurem Gerät.</p>
+    <a class="btn" id="plan-kauf" href="/shop.html">Hochzeits-Budget-Plan — CHF 19</a>
+    <p class="note">Sofort-Download nach der Zahlung. <a href="/agb.html">AGB &amp; Widerruf</a></p>
+  </section>
+
+  <h2>Häufige Fragen</h2>
+  <details><summary>Wie rechne ich die Hochzeitskosten pro Gast?</summary><p>Zwei Teile zusammenzählen: die Pauschalen (Location, Fotografie, Musik, Kleidung, Ringe, Deko) geteilt durch die Zahl der Gäste, plus alles, was pro Person kostet (Essen, Getränke, Apéro, Torte, Gastgeschenke). Der zweite Teil ist der Betrag, den jeder zusätzliche Gast kostet.</p></details>
+  <details><summary>Wie viel Reserve sollte im Hochzeitsbudget sein?</summary><p>Wir empfehlen rund zehn Prozent als eigenen Posten. Fast immer kommt etwas dazu: mehr Getränke als geplant, Änderungen am Kleid, Trinkgelder, ein zusätzlicher Transport.</p></details>
+  <details><summary>Wann werden die Anzahlungen fällig?</summary><p>Das steht in den Offerten. Locations und Fotografen verlangen oft früh eine Anzahlung, um das Datum zu reservieren, Catering meist einige Monate vorher. Tragt jede Anzahlung mit Datum ein, dann seht ihr, wie viel ihr bis wann angespart haben müsst.</p></details>
+
+  <p class="note" style="margin-top:20px">Passt dazu: <a href="/budget-rechner-schweiz.html">Budget-Rechner Schweiz</a> · <a href="/sparziel-rechner.html">Sparziel-Rechner</a></p>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) · Planungshilfe ·
+  <a href="/online-tools.html">Alle Tools</a> · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script id="engine">
+/*ENGINE-START*/
+// Hochzeits-Budget — Rechen-Engine (ohne Oberfläche, in Node testbar). Beträge in CHF (oder jeder anderen Währung).
+(function (root) {
+  "use strict";
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function minusMonate(datum, m) { var d = new Date(datum); d.setDate(1); d.setMonth(d.getMonth() - (+m || 0)); return d; } // 1. des Monats
+  function monate(von, bis) { var a = new Date(von), b = new Date(bis); return (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()); }
+
+  function kosten(p, gaeste) { return (+p.betrag || 0) * (p.proGast ? (+gaeste || 0) : 1); }
+
+  function auswerten(e) {
+    var g = +e.gaeste || 0, budget = +e.budget || 0;
+    var posten = (e.posten || []).map(function (p) {
+      var k = kosten(p, g), anz = Math.min(1, Math.max(0, +p.anzahlung || 0)) * k, bez = Math.min(k, +p.bezahlt || 0);
+      return { name: p.name, kosten: k, anzahlung: anz, rest: k - anz, bezahlt: bez, offen: k - bez,
+        anzahlungMonate: +p.anzahlungMonate || 0, proGast: !!p.proGast, betrag: +p.betrag || 0 };
+    });
+    var total = posten.reduce(function (a, p) { return a + p.kosten; }, 0);
+    var proGastSumme = posten.reduce(function (a, p) { return a + (p.proGast ? p.betrag : 0); }, 0);
+    var fix = total - proGastSumme * g;
+    var bezahlt = posten.reduce(function (a, p) { return a + p.bezahlt; }, 0);
+    var r = {
+      total: total, proGast: g > 0 ? total / g : 0, rest: budget - total, fix: fix,
+      proZusatzgast: proGastSumme,
+      maxGaeste: proGastSumme > 0 ? Math.max(0, Math.floor((budget - fix) / proGastSumme)) : null,
+      bezahlt: bezahlt, offen: total - bezahlt,
+      posten: posten.slice().sort(function (a, b) { return b.kosten - a.kosten; })
+    };
+    // Zahlungsplan: Anzahlung am 1. des Monats X Monate vorher (frühestens heute), Rest am Hochzeitstag.
+    // Bereits Bezahltes deckt zuerst die Anzahlung, dann den Rest.
+    if (e.datum && e.heute) {
+      var heute = new Date(e.heute), z = [];
+      posten.forEach(function (p) {
+        var anzOffen = Math.max(0, p.anzahlung - p.bezahlt), restOffen = p.offen - anzOffen;
+        if (anzOffen > 0.004) { var d = minusMonate(e.datum, p.anzahlungMonate); if (d < heute) d = heute; z.push({ datum: iso(d), name: p.name, art: "Anzahlung", betrag: anzOffen }); }
+        if (restOffen > 0.004) z.push({ datum: e.datum, name: p.name, art: p.anzahlung > 0 ? "Rest" : "Zahlung", betrag: restOffen });
+      });
+      z.sort(function (a, b) { return a.datum < b.datum ? -1 : a.datum > b.datum ? 1 : 0; });
+      r.zahlungen = z;
+      // Nötige Sparrate: für jede Fälligkeit muss (bis dahin fällig − gespart) in den Monaten bis dahin angespart sein.
+      var gespart = +e.gespart || 0, spar = +e.sparenMonat || 0, kum = 0, noetig = 0, luecke = null;
+      r.monateBis = Math.max(0, monate(e.heute, e.datum));
+      z.forEach(function (x, i) {
+        kum += x.betrag;
+        if (z[i + 1] && z[i + 1].datum === x.datum) return; // erst nach allen Zahlungen desselben Tages prüfen
+        var m = Math.max(0, monate(e.heute, x.datum));
+        var fehlt = kum - gespart;
+        if (fehlt > 0) noetig = Math.max(noetig, m > 0 ? fehlt / m : Infinity);
+        var vorhanden = gespart + spar * m;
+        if (luecke === null && vorhanden + 0.004 < kum) luecke = { datum: x.datum, fehlt: kum - vorhanden };
+      });
+      r.sparrateNoetig = noetig;   // Infinity = sofort fällig und nicht gedeckt
+      r.luecke = luecke;           // erste Fälligkeit, die mit der geplanten Sparrate nicht gedeckt ist
+    }
+    return r;
+  }
+  var api = { auswerten: auswerten, kosten: kosten };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.HochzeitEngine = api;
+})(this);
+
+/*ENGINE-END*/
+</script>
+<script>
+(function(){
+  var E=window.HochzeitEngine,$=function(id){return document.getElementById(id)};
+  function geld(x){return isFinite(x)?Math.round(x).toLocaleString("de-CH"):"–"}
+  var d=new Date();d.setMonth(d.getMonth()+12);d.setDate(15);$("datum").value=d.toISOString().slice(0,10);
+  function heute(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function render(){
+    var v=function(id){return +$(id).value||0};
+    var r=E.auswerten({gaeste:v("gaeste"),budget:v("budget"),datum:$("datum").value||null,heute:heute(),gespart:v("gespart"),
+      posten:[{name:"pro Gast",betrag:v("progast"),proGast:true},{name:"Pauschalen",betrag:v("fix")}]});
+    var h='<div class="kacheln"><div class="kachel"><b>Kosten total</b><div class="z">'+geld(r.total)+'</div>'+geld(r.proGast)+' pro Gast</div>'
+      +'<div class="kachel"><b>'+(r.rest>=0?"Übrig im Budget":"Über dem Budget")+'</b><div class="z" style="color:var(--'+(r.rest>=0?"gut":"rot")+')">'+geld(Math.abs(r.rest))+'</div>Budget '+geld(v("budget"))+'</div>'
+      +'<div class="kachel"><b>Gäste im Budget</b><div class="z">'+(r.maxGaeste===null?"–":r.maxGaeste)+'</div>jeder Gast kostet '+geld(r.proZusatzgast)+'</div></div>';
+    if(r.zahlungen&&r.monateBis>0&&r.offen>0)h+='<p class="urteil">Bis zum Hochzeitstag bleiben <b>'+r.monateBis+' Monate</b>. Damit am Ende alles bezahlt ist, müsst ihr rund <b>'+geld(Math.max(0,Math.ceil((r.offen-v("gespart"))/r.monateBis)))+' pro Monat</b> sparen. Anzahlungen, die früher fällig sind, erhöhen die Rate.</p>';
+    if(r.rest<0&&r.proZusatzgast>0)h+='<p class="urteil warn">'+Math.ceil(-r.rest/r.proZusatzgast)+' Gäste weniger bringen euch ins Budget.</p>';
+    $("out").innerHTML=h;
+  }
+  ["gaeste","budget","progast","fix","datum","gespart"].forEach(function(id){$(id).addEventListener("input",render)});
+  render();
+  fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[]}).then(function(l){
+    var p=(l||[]).filter(function(x){return x.slug==='hochzeits-budget'})[0],a=$("plan-kauf");
+    if(p&&p.buy&&a){a.href=p.buy;a.rel='noopener';a.textContent='Hochzeits-Budget-Plan kaufen — '+p.price;}
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

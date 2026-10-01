@@ -11,6 +11,11 @@ Erzeugt von `tools/vault.py bauen` aus den 📌-Bloecken in `CLAUDE.md`.
 - **2026-09-29** — 🛒 ETWAS ZUM VERKAUFEN GEBAUT — und der Katalog JEDES Shopify-Shops ist öffentlich
 - **2026-09-25** — 💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT
 - **2026-09-23** — 🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo
+- **2026-09-30** — 🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch
+- **2026-09-25** — 🛒 3. Produkt „Budget-Plan Schweiz" CHF 19
+- **2026-09-25** — 🛒 2. Produkt „Schulden-Plan Schweiz" CHF 27 + 🔒 LECK: `content/` war öffentlich
+- **2026-09-25** — 📱 LuxeStyle Android-App — native, Google Play bereit
+- **2026-09-24** — 🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks
 - **2026-09-23** — 🔓 LIVE-DEPLOY: echte Ursache gefunden — ein eingecheckter Symlink
 - **2026-09-22** — 🦺 DER ARBEITSSCHUTZ-BLOCK: eine ganze Importcharge stand bei HALBEM Einkaufspreis
 - **2026-09-20** — 📵 INSTAGRAM IST AUS DEM CONTAINER NICHT LESBAR — Werkzeug für den PC gebaut

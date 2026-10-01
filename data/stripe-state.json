@@ -152,5 +152,40 @@
     "link": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o",
     "cents": 1900,
     "currency": "chf"
+  },
+  "strategie-pruefstand": {
+    "product": "prod_VKLLZBJ5VGjpSU",
+    "price": "price_1UJgfCRXvVMyfaIrvfTgokcu",
+    "link": "https://buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p",
+    "cents": 2900,
+    "currency": "chf"
+  },
+  "schulden-plan": {
+    "product": "prod_VKLLTbbtN9AXFQ",
+    "price": "price_1UJgfCRXvVMyfaIrVaj6RjP7",
+    "link": "https://buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q",
+    "cents": 2700,
+    "currency": "chf"
+  },
+  "budget-plan": {
+    "product": "prod_VKLwvTuLBe6qaY",
+    "price": "price_1UJhEsRXvVMyfaIr5JB8bLH4",
+    "link": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N",
+    "cents": 1900,
+    "currency": "chf"
+  },
+  "mietzins-paket": {
+    "product": "prod_VMBzAsOubo4APm",
+    "price": "price_1ULTb2RXvVMyfaIrV1YCK7w1",
+    "link": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O",
+    "cents": 1900,
+    "currency": "chf"
+  },
+  "hochzeits-budget": {
+    "product": "prod_VMC8vWf3NgNOjf",
+    "price": "price_1ULTkXRXvVMyfaIr2XEwUUaU",
+    "link": "https://buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P",
+    "cents": 1900,
+    "currency": "chf"
   }
 }

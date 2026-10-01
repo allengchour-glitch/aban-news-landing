@@ -1,0 +1,59 @@
+name: Etsy-Upload
+
+# Legt die Etsy-Pakete aus content/etsy/ als Entwürfe an (Bilder, Dateien, Tags, Preis in Shop-Währung).
+# Nur manuell. Standard = Probelauf (prüft alle Etsy-Regeln, sendet nichts).
+# Einmalig nötig: Secret ETSY_API_KEY (keystring:shared_secret) + ETSY_REFRESH_TOKEN (über abannews.com/api/etsy-auth).
+on:
+  workflow_dispatch:
+    inputs:
+      probelauf:
+        description: 'Nur prüfen, nichts an Etsy senden'
+        type: boolean
+        default: true
+      veroeffentlichen:
+        description: 'Entwürfe gleich veröffentlichen (kostet USD 0.20 je Eintrag)'
+        type: boolean
+        default: false
+      pakete:
+        description: 'Komma-Liste, leer = alle (budget-plan, schulden-plan, en/budget-planner, en/debt-payoff-planner)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: etsy-upload
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tests (Regelprüfung + nachgebauter Etsy-Server)
+        run: node tools/etsy/test_etsy_upload.mjs
+      - name: Hochladen
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+          ETSY_REFRESH_TOKEN: ${{ secrets.ETSY_REFRESH_TOKEN }}
+          DRY_RUN: ${{ inputs.probelauf && '1' || '0' }}
+          ACTIVATE: ${{ inputs.veroeffentlichen && '1' || '0' }}
+          PAKETE: ${{ inputs.pakete }}
+        run: |
+          if [ -z "$PAKETE" ]; then unset PAKETE; fi
+          node tools/etsy/etsy_upload.mjs
+      - name: Liste der angelegten Einträge committen
+        if: ${{ !inputs.probelauf }}
+        run: |
+          if [ -n "$(git status --porcelain data/etsy-listings.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/etsy-listings.json
+            git commit -m "Etsy: angelegte Einträge [skip ci]"
+            for _i in 1 2 3; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          fi

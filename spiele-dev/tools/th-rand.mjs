@@ -35,8 +35,11 @@ mitSonden('traumhaus.html', {
     var BW=BAUW*CS/2+3, BH=BAUH*CS/2+3;
     var innen=[], grau=[], pflanzen={}, imFenster=[];
     function amRand(x,z){
+      /* ⚠️ ENG, NICHT GROSSZUEGIG. Mit 3,5 m Toleranz rutschten Nachbarzaeune und
+         Poller in dieselbe Rechnung — 226 „Pflanzen" bei 98 Plaetzen, und der Zugang im
+         Norden verschwand. Die Randbepflanzung steht auf EINER Linie; 1,2 m genuegen. */
       var dx=Math.abs(Math.abs(x)-(BW+2.4)), dz=Math.abs(Math.abs(z)-(BH+2.4));
-      return (dx<3.5 && Math.abs(z)<BH+4) || (dz<3.5 && Math.abs(x)<BW+4);
+      return (dx<1.2 && Math.abs(z)<BH+4) || (dz<1.2 && Math.abs(x)<BW+4);
     }
     var M=new THREE.Matrix4(),P=new THREE.Vector3(),Q=new THREE.Quaternion(),S=new THREE.Vector3();
     var gesehen={};
@@ -120,11 +123,19 @@ const nachGruppe = {}
 for (const p of S) (nachGruppe[p.g] = nachGruppe[p.g] || []).push(p)
 const gruppen = Object.values(nachGruppe).sort((a, b) => b.length - a.length)
 const hecke = gruppen[0]
+/* ⚠️ LUECKEN ZAEHLEN UEBER DIE GANZE BEPFLANZUNG, NICHT NUR UEBER DIE HECKE. Als die
+   Hecke gemischt wurde (etwa jeder vierte Platz ein bluehender Busch), meldete dieses
+   Werkzeug ploetzlich 18,8 m „Luecke" — es sah nur die Heckengruppe, und wo ein Busch
+   steht, war dort ein Loch. Die Grenze war aber durchgehend bepflanzt. Haette ich der
+   Zahl geglaubt, haette ich die Mischung wieder herausgenommen, um eine Kennzahl zu
+   retten, die das Falsche misst. Gezaehlt wird darum die VEREINIGUNG aller Gruppen auf
+   der Randlinie; die Gruppengroessen stehen trotzdem einzeln oben. */
+const bepflanzung = S
 console.log(`\nInstanz-Gruppen am Rand: ${gruppen.map(g => g.length).join(' + ')} = ${S.length} Stueck`)
 
 /* Reihen: die vier Seiten getrennt, je nach Laengsrichtung sortiert. */
 const seiten = { nord: [], sued: [], west: [], ost: [] }
-for (const p of hecke) {
+for (const p of bepflanzung) {
   if (Math.abs(p.z) > R.BH) (p.z > 0 ? seiten.nord : seiten.sued).push(p)
   else (p.x > 0 ? seiten.ost : seiten.west).push(p)
 }

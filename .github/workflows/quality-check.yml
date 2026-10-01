@@ -7,10 +7,12 @@ on:
     paths:
       - '**/*.py'
       - '**/*.json'
+      - '*.html'
   pull_request:
     paths:
       - '**/*.py'
       - '**/*.json'
+      - '*.html'
   workflow_dispatch:
 
 jobs:
@@ -54,6 +56,14 @@ jobs:
           print(f"{len(files)} JSON-Dateien geprüft, {bad} fehlerhaft, {skipped} JSONC übersprungen")
           sys.exit(1 if bad else 0)
           PY
+
+      - name: eBay-Links laufen über den getrackten Redirect
+        # Direkte ebay.*-Suchlinks tragen keine (oder eine fremde) campid = 0 Provision.
+        # Am 23.09. waren es 16 Kaufberater-Seiten. Fix: python3 tools/route_ebay_direct_links.py
+        run: |
+          out=$(python tools/route_ebay_direct_links.py --dry)
+          echo "$out"
+          echo "$out" | tail -1 | grep -q '^0 Seiten' || { echo "::error::Direkte eBay-Links ohne Tracking gefunden — python3 tools/route_ebay_direct_links.py ausführen"; exit 1; }
 
       - name: Generatoren bauen ohne Fehler (Smoke-Test)
         run: |

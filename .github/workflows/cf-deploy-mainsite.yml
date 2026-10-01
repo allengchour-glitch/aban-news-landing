@@ -88,6 +88,30 @@ jobs:
             echo "Kein GitHub-Secret ANTHROPIC_API_KEY — KI-Tools bleiben im 503-Fallback."
           fi
 
+      - name: Etsy-Schlüssel ins Pages-Projekt schreiben (für /api/etsy-auth, falls gesetzt)
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+        run: |
+          if [ -n "$ETSY_API_KEY" ]; then
+            printf '%s' "$ETSY_API_KEY" | npx --yes wrangler@3 pages secret put ETSY_API_KEY --project-name="${{ env.PROJECT }}"
+            echo "ETSY_API_KEY ins Pages-Projekt geschrieben (Wert nie ausgegeben)."
+          else
+            echo "Kein GitHub-Secret ETSY_API_KEY — /api/etsy-auth antwortet 503."
+          fi
+
+      - name: Pinterest-App ins Pages-Projekt schreiben (für /api/pinterest-auth, falls gesetzt)
+        env:
+          ABAN_PINTEREST_APP_ID: ${{ secrets.ABAN_PINTEREST_APP_ID }}
+          ABAN_PINTEREST_APP_SECRET: ${{ secrets.ABAN_PINTEREST_APP_SECRET }}
+        run: |
+          if [ -n "$ABAN_PINTEREST_APP_ID" ] && [ -n "$ABAN_PINTEREST_APP_SECRET" ]; then
+            printf '%s' "$ABAN_PINTEREST_APP_ID" | npx --yes wrangler@3 pages secret put ABAN_PINTEREST_APP_ID --project-name="${{ env.PROJECT }}"
+            printf '%s' "$ABAN_PINTEREST_APP_SECRET" | npx --yes wrangler@3 pages secret put ABAN_PINTEREST_APP_SECRET --project-name="${{ env.PROJECT }}"
+            echo "Pinterest-App ins Pages-Projekt geschrieben (Werte nie ausgegeben)."
+          else
+            echo "Keine ABAN_PINTEREST_APP_ID/_SECRET — /api/pinterest-auth antwortet 503."
+          fi
+
       - name: Deploy (Direct Upload)
         run: npx --yes wrangler@3 pages deploy _site --project-name="${{ env.PROJECT }}" --branch=main
 
@@ -101,7 +125,7 @@ jobs:
           ZONE=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             "https://api.cloudflare.com/client/v4/zones?name=abannews.com" | python3 -c "import json,sys;r=json.load(sys.stdin).get('result') or [];print(r[0]['id'] if r else '')")
           if [ -z "$ZONE" ]; then echo "::warning::Zone abannews.com nicht lesbar (Token ohne Zone:Read) — Cache nicht geleert."; exit 0; fi
-          git ls-files '*.md' | grep -v '^downloads/' | python3 -c "
+          { git ls-files '*.md' | grep -v '^downloads/'; git ls-files 'content/*'; } | python3 -c "
           import json,sys
           urls=['https://abannews.com/'+l.strip() for l in sys.stdin if l.strip()]
           for i in range(0,len(urls),30): print(json.dumps({'files':urls[i:i+30]}))" > /tmp/purge.jsonl
