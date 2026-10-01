@@ -4,6 +4,7 @@
 //   DRY_RUN=1 node tools/etsy/etsy_upload.mjs          # prüft nur (Standard), schickt nichts
 //   ETSY_API_KEY=keystring:secret ETSY_REFRESH_TOKEN=… DRY_RUN=0 node tools/etsy/etsy_upload.mjs
 //   ACTIVATE=1 …                                        # zusätzlich veröffentlichen (kostet USD 0.20 je Eintrag)
+//   KEY_CHECK=1 ETSY_API_KEY=… node tools/etsy/etsy_upload.mjs   # nur Schlüssel + App-Freigabe prüfen (kein Login nötig)
 //
 // Secrets: ETSY_API_KEY (Format keystring:shared_secret, Etsy → Your Apps), ETSY_REFRESH_TOKEN (einmalig über
 // https://abannews.com/api/etsy-auth). Optional ETSY_TAXONOMY_ID, PAKETE (Komma-Liste), AUTO_RENEW=1.
@@ -25,6 +26,7 @@ const PREISE = {
   'en/debt-payoff-planner': { CHF: 10, EUR: 10, USD: 11, GBP: 9 },
   'hochzeits-budget': { CHF: 12, EUR: 12, USD: 13, GBP: 10 },
   'en/wedding-budget-planner': { CHF: 9, EUR: 9, USD: 10, GBP: 8 },
+  'finanz-kompass': { CHF: 29, EUR: 29, USD: 32, GBP: 25 },
 };
 const TITEL_RE = /[^\p{L}\p{Nd}\p{P}\p{Sm}\p{Zs}™©®]/u; // Etsy: erlaubte Zeichen im Titel
 const TAG_RE = /[^\p{L}\p{Nd}\p{Zs}\-'™©®]/u;           // Etsy: erlaubte Zeichen in Tags
@@ -105,7 +107,30 @@ async function kategorie() {
   throw new Error('Keine passende Kategorie gefunden — ETSY_TAXONOMY_ID setzen');
 }
 
+// Echter Keystring ist ~24 Zeichen; Platzhalter aus der Anleitung („keystring:shared_secret") sofort erkennen.
+export function schluesselFehler(k = '') {
+  const [ks, sec] = k.split(':');
+  if (!k) return 'ETSY_API_KEY fehlt';
+  if (!sec) return 'ETSY_API_KEY ohne ":shared_secret" (Format keystring:shared_secret)';
+  if (/^(keystring|key|dein|your|xxx)/i.test(ks) || /^(shared_?secret|secret)$/i.test(sec) || ks.length < 16)
+    return `ETSY_API_KEY ist ein Platzhalter („${ks.slice(0, 12)}…") — echten Keystring + Shared Secret aus Etsy → Your Apps eintragen`;
+  return '';
+}
+
+// Ping ohne OAuth: 200 = Schlüssel gültig und App freigegeben; 401/403 = falscher Schlüssel oder Freigabe ausstehend.
+async function schluesselPruefen() {
+  const f = schluesselFehler(process.env.ETSY_API_KEY);
+  if (f) { console.log('❌', f); process.exit(1); }
+  const r = await fetch(`${API}/application/openapi-ping`, { headers: { 'x-api-key': process.env.ETSY_API_KEY } });
+  const text = await r.text();
+  if (r.ok) { console.log(`✅ Etsy-Schlüssel gültig, App antwortet (${r.status}). Nächster Schritt: /api/etsy-auth → ETSY_REFRESH_TOKEN.`); return; }
+  console.log(`❌ Etsy antwortet ${r.status}: ${text.slice(0, 300)}`);
+  console.log(r.status === 403 ? '   → Schlüssel falsch ODER App noch nicht freigegeben („Pending Personal Approval").' : '   → Schlüssel prüfen (Etsy → Your Apps).');
+  process.exit(1);
+}
+
 async function main() {
+  if (process.env.KEY_CHECK === '1') return schluesselPruefen();
   const alle = (process.env.PAKETE || Object.keys(PREISE).join(',')).split(',').map((s) => s.trim());
   const ledger = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : {};
   const pakete = alle.map(paketLesen);
@@ -118,8 +143,9 @@ async function main() {
   }
   if (fehler) { console.log(`\n${fehler} Regelverstösse — nichts hochgeladen.`); process.exit(1); }
   if (DRY) { console.log('\nProbelauf (DRY_RUN): alle Pakete erfüllen die Etsy-Regeln. Nichts gesendet.'); return; }
-  if (!process.env.ETSY_API_KEY?.includes(':') || !process.env.ETSY_REFRESH_TOKEN) {
-    console.log('ETSY_API_KEY (keystring:shared_secret) oder ETSY_REFRESH_TOKEN fehlt — Anleitung: docs/ETSY-PAKETE.md'); process.exit(1);
+  const kf = schluesselFehler(process.env.ETSY_API_KEY);
+  if (kf || !process.env.ETSY_REFRESH_TOKEN) {
+    console.log(`${kf || 'ETSY_REFRESH_TOKEN fehlt'} — Anleitung: docs/ETSY-PAKETE.md`); process.exit(1);
   }
   ACCESS = await token();
   const me = await etsy('GET', '/application/users/me');

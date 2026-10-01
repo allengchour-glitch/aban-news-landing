@@ -24,6 +24,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## Kernfakten (Details im Runbook)
+- **🔀 MERGE-REGEL (FEST, User 2026-10-01): PRs IMMER ohne Nachfrage nach `main` mergen**, sobald CI grün (bzw. nur
+  vorbestehend rot) ist — Draft per `update_pull_request draft:false` freigeben, dann `merge_pull_request`. Nicht fragen.
 - Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
 - CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
   `dropship/cj_enrich.mjs` (Node: `/opt/node22/bin/node`).
@@ -62,6 +64,28 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (🧭 Meisterwerk-Produkt „Finanz-Kompass Schweiz" CHF 29, einzeln CHF 52):**
+- **Neu:** `tools/kompass/engine.js` verbindet Budget-, Mietzins- und Schulden-Engine zu EINEM Plan mit Daten (Miete prüfen →
+  Rückstellungen → Start-Reserve 1 Monat → Schulden Lawine/Schneeball → Notreserve 3 Monate → frei). 26 Tests (`test_engine.js`).
+  App `content/packs/de/finanz-kompass/finanz-kompass.html` (Build `tools/kompass/build.py`, auch Engine-Block der Verkaufsseite).
+- **Paket:** `INHALT.json` im Kurations-Ordner → `build_product_pack.build_single` kopiert die 4 Einzelprodukte als Unterordner
+  + Excel/PDF aus `content/etsy/` (24 Dateien, 444 KB). Katalog `finanz-kompass` (standalone, 2900 — nach der Preissenkung auf main von 49 auf 29, = Etsy-Preis). Verkaufsseite
+  `finanz-kompass-schweiz.html` (Vorschau mit echter Engine, Kauf-Link aus `shop-products.json`). Hinweis „CHF 29 statt 52" auf
+  den 4 Einzelseiten. Etsy: `content/etsy/finanz-kompass/` CHF 29, Bilder `tools/etsy/kompass_etsy.mjs`.
+- **Prüfer-Agent fand 2 Blocker (behoben + getestet):** Kreditraten wurden doppelt verteilt (gehören NICHT ins Budget, Engine
+  zieht sie ab) · Mietsenkung ohne LIK/Festlegungsdatum überschätzt (+54 %) → zählt dann nicht ins freie Geld. Dazu: Leasing =
+  „nur Rate", Schuld in Reserve-Phase getilgt, Rate < Zins, Zins 0/Rate 0, negative Werte, >50 Jahre, Monatsnamen lokal.
+- **🔒 LECK gefunden + gestopft:** `downloads/packs/` (Klartext-Zwischenstufe von `build_kit_zips.py`) lag im Deploy → ALLE bezahlten
+  Pakete waren frei abrufbar (`abannews.com/downloads/packs/schulden-plan.zip` = 200, live geprüft). `build-pages.sh` schliesst den
+  Ordner jetzt aus + bricht ab, falls `_site/downloads/packs` existiert (Gegenprobe rc=1). Wirkt erst nach Merge + Deploy.
+- **Lehre:** Ein unabhängiger Prüfer-Agent mit Playwright findet Rechenfehler, die die eigenen Tests bestätigt hatten (der Test
+  rechnete denselben Denkfehler nach). Vor jedem Verkauf: Gegenprüfung durch einen zweiten Agenten.
+
+**📌 2026-10-01 (🔑 Etsy: Platzhalter-Schlüssel gefunden):** `/api/etsy-auth` leitete mit **`client_id=keystring`** zu Etsy →
+das GitHub-Secret `ETSY_API_KEY` (wird beim Deploy nach Cloudflare kopiert) enthält wörtlich den Platzhalter aus der Anleitung.
+Darum ging die Anmeldung nie. Jetzt: Platzhalter-Sperre in `etsy_upload.mjs` + `/api/etsy-auth`, neuer Workflow-Schalter
+„Nur Etsy-Schlüssel + App-Freigabe prüfen“ (`KEY_CHECK=1`, Ping `/application/openapi-ping`, ohne Login). Alle 6 Pakete
+bestehen den Probelauf. **User:** echtes `keystring:shared_secret` aus Etsy → Your Apps als Secret setzen → Schlüssel-Test → /api/etsy-auth.
 **📌 2026-10-01 (💰 Preise gesenkt + Stripe-Preisfalle behoben):** User: „19 Fr nicht zu teuer? passe alle Preise an“.
 Leiter: Vorlagen/Rechner **12** (Budget-Plan, Hochzeit, Branchen-Kits) · Pakete **14** (Schulden, Mietzins, Prompt-Bibliothek,
 Vorlagen-Set) · Nische **19** (Strategie-Prüfstand) · Bundle alle Kits **39** (statt 79). Regel: eigener Shop nie teurer als Etsy.

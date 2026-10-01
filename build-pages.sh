@@ -96,6 +96,7 @@ tar -cf - \
   --exclude='./mediakit' \
   --exclude='./tools' \
   --exclude='./content' \
+  --exclude='./downloads/packs' \
   --exclude='./apps' \
   --exclude='./automation' \
   --exclude='./server' \
@@ -124,6 +125,9 @@ test -f _site/_headers   && echo "_headers ok"
 # Bezahlte Produkt-Quellen (content/packs) dürfen NIE öffentlich werden — sie werden nur als
 # geschützte ZIPs (downloads/kits, gehashter Name) nach verifizierter Zahlung ausgeliefert.
 if [ -e _site/content ]; then echo "FEHLER: content/ ist im Deploy (bezahlte Produkte öffentlich) — Abbruch." >&2; exit 1; fi
+# downloads/packs/ = ungeschützte Zwischenstufe von build_kit_zips.py (Klartext-Namen wie schulden-plan.zip).
+# Bis 01.10.2026 lag sie im Deploy: alle bezahlten Pakete waren unter /downloads/packs/<slug>.zip frei abrufbar.
+if [ -e _site/downloads/packs ]; then echo "FEHLER: downloads/packs/ ist im Deploy (bezahlte Produkte öffentlich) — Abbruch." >&2; exit 1; fi
 echo "Dateien im Deploy: $(find _site -type f | wc -l)"
 echo "Dateien > 24 MiB (müssen 0 sein):"
 find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true

@@ -195,5 +195,12 @@
     "link_id": "plink_1ULouvRXvVMyfaIrKcOzu546",
     "cents": 1200,
     "currency": "chf"
+  },
+  "finanz-kompass": {
+    "product": "prod_VMYJFEcGeT06Tv",
+    "price": "price_1ULpD7RXvVMyfaIr4zAMWaIb",
+    "link": "https://buy.stripe.com/aFacN79mmgvGeYT2El5wI11",
+    "cents": 4900,
+    "currency": "chf"
   }
 }

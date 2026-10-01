@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Finanz-Kompass Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#0f766e;--akz2:#b45309;--ink:#1c2321;--ink2:#38423f;--muted:#69736f;--line:#dfe5e1;--bg:#f6f8f5;--card:#fff;--field:#fbfcfa;--gut:#15803d;--rot:#b91c1c;--p1:#0f766e;--p2:#b45309;--p3:#7c3aed;--p4:#15803d;--p5:#64748b}
+@media(prefers-color-scheme:dark){:root{--akz:#5eead4;--akz2:#fbbf24;--ink:#eef3f0;--ink2:#cdd6d2;--muted:#94a19c;--line:#2f3936;--bg:#121816;--card:#19211e;--field:#161d1b;--gut:#4ade80;--rot:#f87171;--p1:#2dd4bf;--p2:#fbbf24;--p3:#a78bfa;--p4:#4ade80;--p5:#94a3b8}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px 70px}
+header{padding:8px 0 4px}
+.marke{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--akz);font-weight:800}
+h1{font-size:clamp(26px,5vw,36px);letter-spacing:-.02em;line-height:1.12;margin-top:4px}
+h2{font-size:1.15rem;margin:0 0 4px}
+.sub{color:var(--ink2);margin:8px 0 6px;max-width:680px}
+.schritte{display:flex;gap:6px;margin:18px 0 6px;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:5}
+.schritte button{flex:1 1 140px;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 11px;font:inherit;color:var(--ink2);cursor:pointer}
+.schritte button b{display:block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.schritte button[aria-current=step]{border-color:var(--akz);box-shadow:inset 0 -3px 0 var(--akz);color:var(--ink)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:3px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+input,select{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--akz);outline-offset:1px}
+.zwei{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:6px 5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.haupt{background:var(--akz);border-color:var(--akz);color:#fff;font-weight:700}
+@media(prefers-color-scheme:dark){button.haupt{color:#062a26}}
+button.x{padding:5px 9px;color:var(--muted)}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.zahl{font-size:1.45rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+.gut{color:var(--gut)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:10px}
+.warn{border-left-color:var(--rot)}
+.plan{list-style:none;counter-reset:s;margin-top:6px}
+.plan li{counter-increment:s;position:relative;padding:12px 12px 12px 52px;border:1px solid var(--line);border-radius:12px;background:var(--field);margin:10px 0}
+.plan li::before{content:counter(s);position:absolute;left:12px;top:12px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--c,var(--akz))}
+.plan .wann{font-size:.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.plan h3{font-size:1.02rem;margin:2px 0}
+.zeit{margin:14px 0 4px}
+.zeit .spur{position:relative;height:30px;border-radius:8px;background:var(--line);overflow:hidden}
+.zeit .spur i{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;font-style:normal;white-space:nowrap;overflow:hidden}
+.zeit .ach{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);margin-top:4px}
+.klein{font-size:.82rem;color:var(--muted)}
+.leg{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.8rem;color:var(--ink2);margin-top:6px}.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c)}
+.leer{color:var(--muted);font-style:italic}
+.weiter{margin-top:14px;display:flex;justify-content:space-between;gap:8px}
+[hidden]{display:none!important}
+@media(max-width:560px){.schritte{gap:4px}.schritte button{flex:1 1 22%;padding:6px 7px;font-size:.74rem;line-height:1.25}.schritte button b{font-size:.62rem}}
+@media(max-width:560px){.karten thead{display:none}.karten tr{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.karten td{border:0;padding:0}.karten td:first-child{grid-column:1/-1}.karten td.r{text-align:left}
+.karten td[data-l]::before{content:attr(data-l);display:block;font-size:.7rem;color:var(--muted);font-weight:700}}
+@media print{.schritte,.weiter,.leiste,.noprint,section[data-s]:not([data-s="4"]){display:none!important}section[data-s="4"]{display:block!important}body{background:#fff;color:#000}.box{border:0;padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="marke">aban news · Finanz-Kompass Schweiz</div>
+<h1>Dein Geld-Plan in vier Schritten</h1>
+<p class="sub">Budget, Miete und Schulden in einem Plan: was du jeden Monat zurücklegst, ob dir weniger Miete zusteht, in welcher Reihenfolge du Schulden tilgst und ab wann du schuldenfrei bist und eine volle Notreserve hast. Alles bleibt in diesem Browser.</p>
+</header>
+
+<nav class="schritte" aria-label="Schritte">
+<button data-go="1" aria-current="step"><b>Schritt 1</b>Einnahmen &amp; Ausgaben</button>
+<button data-go="2"><b>Schritt 2</b>Miete prüfen</button>
+<button data-go="3"><b>Schritt 3</b>Schulden</button>
+<button data-go="4"><b>Schritt 4</b>Dein Plan</button>
+</nav>
+
+<section class="box" data-s="1">
+<h2>Einnahmen und Ausgaben</h2>
+<p class="hint">Jeder Posten in seinem echten Takt: Steuern als Jahresbetrag, Krankenkasse pro Monat. Der Plan rechnet alles auf den Monat um. <b>Kreditraten und Leasing nicht hier eintragen</b>, die kommen in Schritt 3.</p>
+<table class="karten" style="margin-top:10px"><thead><tr><th>Posten</th><th>Betrag CHF</th><th>Takt</th><th>Art</th><th></th></tr></thead><tbody id="posten"></tbody></table>
+<div class="leiste"><button id="neu-ein">+ Einnahme</button><button id="neu-aus">+ Ausgabe</button></div>
+<div class="zwei" style="margin-top:14px"><div><label for="reserve">Ersparnisse auf dem Konto heute (CHF)</label><input id="reserve" type="number" min="0" step="100"><p class="hint">Was du sofort hättest, wenn etwas kaputtgeht.</p></div>
+<div><label for="start">Plan startet ab</label><input id="start" type="month"></div></div>
+<div id="b-out"></div>
+<div class="weiter"><span></span><button class="haupt" data-go="2">Weiter: Miete prüfen →</button></div>
+</section>
+
+<section class="box" data-s="2" hidden>
+<h2>Steht dir weniger Miete zu?</h2>
+<p class="hint">Sinkt der Referenzzins seit deiner letzten Mietzinsfestlegung, darfst du eine Senkung verlangen (Art. 270a OR, Art. 13 VMWG). Die Angaben stehen im Mietvertrag oder in der letzten Mietzinsanpassung. Wohnst du im Eigentum, Schritt überspringen.</p>
+<div class="zwei" style="margin-top:12px">
+<div><label for="m-netto">Nettomiete pro Monat (CHF)</label><input id="m-netto" type="number" min="0" step="10"><p class="hint">Ohne Nebenkosten. Leer lassen = Schritt auslassen.</p></div>
+<div><label for="m-alt">Referenzzins im Vertrag (%)</label><select id="m-alt"></select></div>
+<div><label for="m-fest">Mietzins zuletzt festgelegt am</label><input id="m-fest" type="date"></div>
+<div><label for="m-likalt">Teuerungsindex (LIK) damals</label><input id="m-likalt" type="number" step="0.1"><p class="hint">Steht meist im Vertrag oder in der letzten Anpassung. Ohne diese Angabe zählt die Senkung im Plan nicht mit.</p></div>
+<div><label for="m-likneu">Teuerungsindex (LIK) heute</label><input id="m-likneu" type="number" step="0.1"><p class="hint">Aktueller Stand beim Bundesamt für Statistik (bfs.admin.ch), gleiche Basis wie im Vertrag.</p></div>
+</div>
+<div id="m-out"></div>
+<p class="klein" style="margin-top:10px">Den fertigen Brief mit Termin und Fristen schreibt das beigelegte <b>Mietzins-Paket</b> (Ordner „2 Mietzins“).</p>
+<div class="weiter"><button data-go="1">← Zurück</button><button class="haupt" data-go="3">Weiter: Schulden →</button></div>
+</section>
+
+<section class="box" data-s="3" hidden>
+<h2>Schulden</h2>
+<p class="hint">Kreditkarten, Kleinkredit, Leasing, Privatdarlehen, mit der Rate, die du heute zahlst. Leasing lässt sich meist nicht vorzeitig abzahlen: Art „Leasing“ wählen, dann läuft es mit seiner Rate weiter und bekommt kein Extra-Geld. Keine Schulden? Weiter zu Schritt 4.</p>
+<table class="karten" style="margin-top:10px"><thead><tr><th>Name</th><th>Offen CHF</th><th>Zins %/Jahr</th><th>Rate CHF/Monat</th><th>Art</th><th></th></tr></thead><tbody id="schulden"></tbody></table>
+<div class="leiste"><button id="neu-s">+ Schuld</button>
+<label style="display:flex;gap:8px;align-items:center;margin:0 0 0 auto;font-weight:400"><span>Reihenfolge</span><select id="methode" style="width:auto"><option value="lawine">Lawine: höchster Zins zuerst (spart am meisten)</option><option value="schneeball">Schneeball: kleinste Schuld zuerst (schnelle Erfolge)</option></select></label></div>
+<div class="weiter"><button data-go="2">← Zurück</button><button class="haupt" data-go="4">Plan anzeigen →</button></div>
+</section>
+
+<section class="box" data-s="4" hidden>
+<h2>Dein Plan</h2>
+<div id="p-out"></div>
+<div class="leiste noprint"><button onclick="print()">Plan drucken oder als PDF sichern</button><button id="reset" class="x">Alles zurücksetzen</button></div>
+<p class="klein" style="margin-top:14px">Planungshilfe, keine Finanz- oder Rechtsberatung. Gerechnet wird mit gleichbleibenden Beträgen und Zinsen. Die Mietsenkung zählt hier ab sofort. In Wirklichkeit gilt sie erst ab dem nächstmöglichen Termin, den das Mietzins-Paket ausrechnet, und nur, wenn der Vermieter zustimmt oder die Schlichtungsbehörde sie bestätigt.</p>
+<div class="weiter"><button data-go="3">← Zurück</button><span></span></div>
+</section>
+</div>
+
+<script>/*ENGINES*/</script>
+<script>
+(function(){
+"use strict";
+var B=window.BudgetEngine,S=window.SchuldenEngine,M=window.MietzinsEngine,K=window.KompassEngine;
+var $=function(id){return document.getElementById(id)};
+var chf=function(x){return "CHF "+Math.round(x).toLocaleString("de-CH")};
+var pct=function(x){return (x*100).toFixed(1).replace(".",",")+" %"};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var KEY="aban-finanz-kompass-v1";
+var heute=new Date();
+var vorlage={
+  ein:[{name:"Nettolohn",betrag:0,takt:"monat"},{name:"13. Monatslohn",betrag:0,takt:"jahr"}],
+  aus:[{name:"Miete inkl. Nebenkosten",betrag:0,takt:"monat",gruppe:"bedarf",wohnen:true},{name:"Krankenkasse",betrag:0,takt:"monat",gruppe:"bedarf"},
+       {name:"Steuern",betrag:0,takt:"jahr",gruppe:"bedarf"},{name:"Franchise und Selbstbehalt",betrag:0,takt:"jahr",gruppe:"bedarf"},
+       {name:"Hausrat und Haftpflicht",betrag:0,takt:"jahr",gruppe:"bedarf"},{name:"Radio- und TV-Gebühr",betrag:335,takt:"jahr",gruppe:"bedarf"},
+       {name:"Lebensmittel und Haushalt",betrag:0,takt:"monat",gruppe:"bedarf"},{name:"Handy und Internet",betrag:0,takt:"monat",gruppe:"bedarf"},
+       {name:"ÖV oder Auto",betrag:0,takt:"monat",gruppe:"bedarf"},{name:"Freizeit und Ausgang",betrag:0,takt:"monat",gruppe:"wunsch"},
+       {name:"Ferien",betrag:0,takt:"jahr",gruppe:"wunsch"},{name:"Säule 3a",betrag:0,takt:"monat",gruppe:"sparen"}],
+  reserve:0,start:heute.getFullYear()+"-"+String(heute.getMonth()+1).padStart(2,"0"),
+  miete:{netto:"",alt:"",fest:"",likalt:"",likneu:""},
+  schulden:[],methode:"lawine"};
+var st;
+try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!st||!st.ein)st=JSON.parse(JSON.stringify(vorlage));
+var speichern=function(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+
+var TAKT={monat:"monatlich",quartal:"pro Quartal",halbjahr:"halbjährlich",jahr:"jährlich"};
+var ART={bedarf:"Muss",wunsch:"Kann",sparen:"Sparen"};
+function sel(opts,v,attr){return '<select '+attr+'>'+Object.keys(opts).map(function(k){return '<option value="'+k+'"'+(k===v?' selected':'')+'>'+opts[k]+'</option>'}).join("")+'</select>'}
+function zeilePosten(p,typ,i){
+  return '<tr><td><input aria-label="Posten" data-t="'+typ+'" data-i="'+i+'" data-k="name" value="'+esc(p.name)+'"></td>'
+   +'<td data-l="Betrag CHF"><input aria-label="Betrag" type="number" min="0" step="10" data-t="'+typ+'" data-i="'+i+'" data-k="betrag" value="'+(p.betrag||"")+'"></td>'
+   +'<td data-l="Takt">'+sel(TAKT,p.takt,'aria-label="Takt" data-t="'+typ+'" data-i="'+i+'" data-k="takt"')+'</td>'
+   +'<td data-l="Art">'+(typ==="ein"?'<span class="klein">Einnahme</span>':sel(ART,p.gruppe,'aria-label="Art" data-t="'+typ+'" data-i="'+i+'" data-k="gruppe"'))+'</td>'
+   +'<td><button class="x" aria-label="Posten löschen" data-del="'+typ+'" data-i="'+i+'">✕</button></td></tr>'}
+function zeileSchuld(d,i){
+  return '<tr><td><input aria-label="Name" data-t="schulden" data-i="'+i+'" data-k="name" value="'+esc(d.name)+'"></td>'
+   +'<td data-l="Offen CHF"><input aria-label="Offener Betrag" type="number" min="0" step="100" data-t="schulden" data-i="'+i+'" data-k="betrag" value="'+(d.betrag||"")+'"></td>'
+   +'<td data-l="Zins %/Jahr"><input aria-label="Zins" type="number" min="0" step="0.1" data-t="schulden" data-i="'+i+'" data-k="zins" value="'+(d.zins===""?"":d.zins)+'"></td>'
+   +'<td data-l="Rate CHF/Monat"><input aria-label="Monatsrate" type="number" min="0" step="10" data-t="schulden" data-i="'+i+'" data-k="rate" value="'+(d.rate||"")+'"></td>'
+   +'<td data-l="Art">'+sel({"":"Kredit","fest":"Leasing (nur Rate)"},d.fest?"fest":"",'aria-label="Art" data-t="schulden" data-i="'+i+'" data-k="fest"')+'</td>'
+   +'<td><button class="x" aria-label="Schuld löschen" data-del="schulden" data-i="'+i+'">✕</button></td></tr>'}
+function tabellen(){
+  $("posten").innerHTML=st.ein.map(function(p,i){return zeilePosten(p,"ein",i)}).join("")+st.aus.map(function(p,i){return zeilePosten(p,"aus",i)}).join("");
+  $("schulden").innerHTML=st.schulden.length?st.schulden.map(zeileSchuld).join(""):'<tr><td colspan="6" class="leer">Keine Schulden erfasst.</td></tr>';
+}
+document.addEventListener("input",function(ev){
+  var el=ev.target,t=el.getAttribute("data-t");
+  if(t){var l=st[t][+el.getAttribute("data-i")],k=el.getAttribute("data-k");l[k]=el.type==="number"?(el.value===""?"":+el.value):el.value;}
+  else if(el.id==="reserve")st.reserve=+el.value||0;
+  else if(el.id==="start")st.start=el.value;
+  else if(el.id==="methode")st.methode=el.value;
+  else if(el.id&&el.id.indexOf("m-")===0)st.miete[el.id.slice(2)]=el.value;
+  else return;
+  speichern();rechnen();
+});
+document.addEventListener("change",function(ev){if(ev.target.tagName==="SELECT")ev.target.dispatchEvent(new Event("input",{bubbles:true}))});
+document.addEventListener("click",function(ev){
+  var b=ev.target.closest("button");if(!b)return;
+  if(b.hasAttribute("data-del")){st[b.getAttribute("data-del")].splice(+b.getAttribute("data-i"),1);speichern();tabellen();rechnen();}
+  else if(b.id==="neu-ein"){st.ein.push({name:"Einnahme",betrag:0,takt:"monat"});speichern();tabellen();}
+  else if(b.id==="neu-aus"){st.aus.push({name:"Ausgabe",betrag:0,takt:"monat",gruppe:"bedarf"});speichern();tabellen();}
+  else if(b.id==="neu-s"){st.schulden.push({name:"Kredit",betrag:"",zins:"",rate:""});speichern();tabellen();}
+  else if(b.id==="reset"){if(confirm("Alle Eingaben löschen?")){st=JSON.parse(JSON.stringify(vorlage));speichern();felder();tabellen();rechnen();zeige(1);}}
+  else if(b.hasAttribute("data-go"))zeige(+b.getAttribute("data-go"));
+});
+function zeige(n){
+  document.querySelectorAll("section[data-s]").forEach(function(s){s.hidden=+s.getAttribute("data-s")!==n});
+  document.querySelectorAll(".schritte button").forEach(function(b){if(+b.getAttribute("data-go")===n)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current")});
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function felder(){
+  $("reserve").value=st.reserve||"";$("start").value=st.start;$("methode").value=st.methode;
+  var z=[];for(var q=4;q<=16;q++)z.push((q/4).toFixed(2));
+  $("m-alt").innerHTML='<option value="">bitte wählen</option>'+z.map(function(v){return '<option value="'+v+'">'+v.replace(".",",")+' %</option>'}).join("");
+  ["netto","alt","fest","likalt","likneu"].forEach(function(k){$("m-"+k).value=st.miete[k]});
+}
+function eingaben(){
+  var pos=function(x){x=+x;return isFinite(x)&&x>0?x:0};
+  var ein=st.ein.map(function(p){return{betrag:pos(p.betrag),takt:p.takt}});
+  var aus=st.aus.map(function(p){return{name:p.name,betrag:pos(p.betrag),takt:p.takt,gruppe:p.gruppe,wohnen:!!p.wohnen}});
+  var mm=st.miete,miete=+mm.netto>0?{netto:+mm.netto,zinsAlt:+mm.alt||0,likAlt:mm.likalt,likNeu:mm.likneu,festlegung:mm.fest||null,heute:new Date().toISOString().slice(0,10)}:null;
+  var sch=st.schulden.map(function(d,i){return{name:d.name||("Schuld "+(i+1)),betrag:+d.betrag,zins:+d.zins,rate:+d.rate,fest:d.fest==="fest"}});
+  return {budget:{einnahmen:ein,ausgaben:aus,reserve:pos(st.reserve)},miete:miete,schulden:sch,methode:st.methode};
+}
+var FARBE={miete:"var(--p2)",rueck:"var(--p5)",start:"var(--p1)",schulden:"var(--p3)",schuldenA:"var(--p3)",voll:"var(--p1)",frei:"var(--p4)",loch:"var(--rot)"};
+function startMonat(){return /^\d{4}-\d{2}$/.test(st.start||"")?st.start:(heute.getFullYear()+"-"+String(heute.getMonth()+1).padStart(2,"0"))}
+function wann(s){
+  var startD=startMonat();
+  if(s.von==null)return "Sofort";
+  if(s.bis==null)return "Ab "+K.monatName(startD,s.von-1);
+  return K.monatName(startD,s.von-1)+(s.bis>s.von?" bis "+K.monatName(startD,s.bis-1):"");
+}
+function rechnen(){
+  var e=eingaben(),r=K.plan(e,window),b=r.budget,startD=startMonat();
+  // Schritt 1
+  if(!b.einnahmen){$("b-out").innerHTML='<p class="urteil">Trag oben deinen Nettolohn ein.</p>'}
+  else $("b-out").innerHTML='<div class="kacheln"><div class="kachel"><b>Monatlich zurücklegen</b><div class="zahl">'+chf(b.rueckstellung)+'</div>für Rechnungen, die nicht monatlich kommen</div>'
+    +'<div class="kachel"><b>'+(b.rest>=0?"Bleibt frei":"Fehlt")+'</b><div class="zahl '+(b.rest>=0?"gut":"rot")+'">'+chf(Math.abs(b.rest))+'</div>pro Monat, nach allem</div>'
+    +'<div class="kachel"><b>Muss · Kann · Sparen</b><div class="zahl">'+Math.round(b.anteile.bedarf*100)+' · '+Math.round(b.anteile.wunsch*100)+' · '+Math.round(b.anteile.sparen*100)+'</div>Prozent vom Einkommen (Richtwert 50 · 30 · 20)</div></div>'
+    +(b.wohnquote>1/3?'<p class="urteil warn">Die Wohnkosten liegen bei '+Math.round(b.wohnquote*100)+' % des Einkommens. Ab einem Drittel wird jedes Budget eng, darum lohnt sich Schritt 2 besonders.</p>':'');
+  // Schritt 2
+  var m=r.miete;
+  if(!m)$("m-out").innerHTML='<p class="urteil">Ohne Nettomiete wird dieser Schritt ausgelassen. Aktueller Referenzzins: <b>'+String(M.AKTUELL.satz).replace(".",",")+' %</b> (Stand '+M.AKTUELL.stand+', nächste Publikation '+M.AKTUELL.naechste+').</p>';
+  else{
+    var za=+st.miete.alt,zn=M.AKTUELL.satz,txt;
+    if(m.anspruch&&r.mieteSicher)txt='Dir steht eine Senkung von <b>'+pct(-m.total)+'</b> zu: neue Nettomiete <b>'+chf(m.nettoNeu)+'</b>. Das fliesst in Schritt 4 in deinen Plan.';
+    else if(m.anspruch)txt='Solange Festlegungsdatum oder Teuerungsindex fehlen, ist das ein <b>Höchstwert</b>: Der Vermieter darf Teuerung und Kostensteigerungen gegenrechnen, die Senkung fällt dann meist kleiner aus. Bis die Angaben vollständig sind, rechnet der Plan nicht mit diesem Geld.';
+    else if(za===zn)txt='Der Referenzzins ist seit deiner letzten Festlegung gleich geblieben. Eine Senkung lässt sich daraus nicht ableiten.';
+    else if(za<zn)txt='Der Referenzzins ist seit deiner letzten Festlegung gestiegen. Eine Senkung steht dir daraus nicht zu.';
+    else txt='Teuerung und Kostensteigerungen heben die Zinssenkung auf. Mit diesen Angaben ergibt sich keine Senkung.';
+    $("m-out").innerHTML='<div class="kacheln"><div class="kachel"><b>Referenzzins</b><div class="zahl">'+pct(m.zins)+'</div>'+String(za).replace(".",",")+' % → '+String(zn).replace(".",",")+' %</div>'
+    +'<div class="kachel"><b>Teuerung und Kosten</b><div class="zahl">'+(r.mieteSicher?pct(m.teuerung+m.kosten):"fehlt")+'</div>'+(r.mieteSicher?'darf der Vermieter verrechnen':'Datum und Index eintragen')+'</div>'
+    +'<div class="kachel"><b>'+(m.anspruch?(r.mieteSicher?"Weniger Miete":"Höchstens weniger"):"Kein Anspruch")+'</b><div class="zahl '+(m.anspruch&&r.mieteSicher?"gut":"")+'">'+(m.anspruch?chf(m.proMonat)+" / Mt.":"—")+'</div>'+(m.anspruch?chf(m.proJahr)+" pro Jahr":"keine Senkung")+'</div></div>'
+    +'<p class="urteil'+(m.anspruch&&r.mieteSicher?"":" warn")+'">'+txt+'</p>';
+  }
+  // Schritt 4
+  var h="";
+  if(!b.einnahmen){$("p-out").innerHTML='<p class="urteil">Zuerst Schritt 1 ausfüllen.</p>';return}
+  var jetzt=new Date();
+  h+='<p class="klein">Erstellt am '+jetzt.toLocaleDateString("de-CH")+' · Einnahmen '+chf(b.einnahmen)+' pro Monat · Ausgaben '+chf(b.ausgaben)+(r.raten+r.festRaten?' · Kreditraten '+chf(r.raten+r.festRaten):'')+' · Ersparnisse '+chf(r.reserve)+'</p>';
+  r.warnungen.forEach(function(w){
+    if(w.art==="rateUnterZins")h+='<p class="urteil warn">Bei <b>'+esc(w.name)+'</b> deckt die Rate nicht einmal den Zins. Ohne Extra-Zahlung wächst diese Schuld.</p>';
+    if(w.art==="ohneRate")h+='<p class="urteil warn"><b>'+esc(w.name)+'</b> hat keine Monatsrate. Ohne Extra-Geld wird sie nie kleiner. Vereinbare eine Rate, auch eine kleine.</p>';
+  });
+  if(!r.geht){
+    h+='<p class="urteil warn"><b>Das Budget geht nicht auf.</b> Jeden Monat fehlen '+chf(r.fehlt)+(r.raten+r.festRaten?' (Kreditraten eingerechnet)':'')+'. Ein Tilgungsplan ist so nicht möglich. Die grössten Posten, bei denen du ansetzen kannst:</p><ol class="plan">';
+    r.schritte.filter(function(s){return s.art==="miete"}).forEach(function(s){h+='<li style="--c:'+FARBE.miete+'"><div class="wann">Sofort</div><h3>Mietzinssenkung verlangen</h3>'+(s.sicher?'':'Höchstens ')+chf(s.proMonat)+' pro Monat, siehe Schritt 2.</li>'});
+    b.posten.slice(0,5).forEach(function(p){h+='<li><div class="wann">'+ART[p.gruppe]+'</div><h3>'+esc(p.name)+'</h3>'+chf(p.monat)+' pro Monat</li>'});
+    h+='</ol><p class="klein">Geht das Budget dauerhaft nicht auf oder drohen Betreibungen: Die Schuldenberatung ist kostenlos (Dachverband Schuldenberatung Schweiz, schulden.ch).</p>';
+    $("p-out").innerHTML=h;return;
+  }
+  var hatS=e.schulden.some(function(d){return +d.betrag>0&&!d.fest});
+  h+='<div class="kacheln">';
+  h+='<div class="kachel"><b>Frei pro Monat</b><div class="zahl gut">'+chf(r.frei)+'</div>'+(r.mieteSpar?'davon '+chf(r.mieteSpar)+' aus der Mietsenkung':'nach Ausgaben und Kreditraten')+'</div>';
+  if(hatS&&r.schuldenfrei!=null)h+='<div class="kachel"><b>Schuldenfrei</b><div class="zahl">'+K.monatName(startD,r.schuldenfrei-1)+'</div>'+(r.schuldenfreiMindest?(r.schuldenfreiMindest>r.schuldenfrei?(r.schuldenfreiMindest-r.schuldenfrei)+' Monate früher als ohne Extra-Zahlungen':'gleich wie ohne Extra-Zahlungen'):'mit den Raten allein: nie')+'</div>';
+  if(hatS&&r.zinsenMindest!=null&&r.zinsenPlan!=null)h+='<div class="kachel"><b>Gesparte Zinsen</b><div class="zahl gut">'+chf(Math.max(r.zinsenMindest-r.zinsenPlan,0))+'</div>gegenüber nur den heutigen Raten</div>';
+  if(r.ziel!=null)h+='<div class="kachel"><b>Alles im Lot</b><div class="zahl">'+(r.ziel?K.monatName(startD,r.ziel-1):"jetzt")+'</div>'+(hatS?'keine Schulden, ':'')+'Notreserve '+chf(r.vollZiel)+'</div>';
+  h+='</div>';
+  if(r.zuLang)h+='<p class="urteil warn">Mit '+chf(r.frei)+' pro Monat dauert der Plan länger als 50 Jahre. Das ist kein Plan: Budget prüfen, mit dem Gläubiger eine tiefere Rate oder einen tieferen Zins verhandeln oder die kostenlose Schuldenberatung (schulden.ch) kontaktieren.</p>';
+  // Zeitleiste mit Legende (keine abgeschnittenen Beschriftungen)
+  var zeit=r.schritte.filter(function(s){return s.von!=null&&s.bis!=null&&s.bis>=s.von});
+  if(zeit.length&&!r.zuLang){var ende=zeit[zeit.length-1].bis;
+    h+='<div class="zeit" aria-hidden="true"><div class="spur">'+zeit.map(function(s){var l=(s.von-1)/ende*100,w=(s.bis-s.von+1)/ende*100;return '<i style="left:'+l+'%;width:'+w+'%;background:'+FARBE[s.art]+'"></i>'}).join("")+'</div>'
+     +'<div class="ach"><span>'+K.monatName(startD,0)+'</span><span>'+K.monatName(startD,ende-1)+'</span></div>'
+     +'<div class="leg">'+zeit.map(function(s){return '<span style="--c:'+FARBE[s.art]+'">'+esc(s.titel.split(" (")[0])+'</span>'}).join("")+'</div></div>';}
+  h+='<ol class="plan">';
+  r.schritte.forEach(function(s){
+    var t="";
+    if(s.art==="miete")t=s.sicher?'Herabsetzungsbegehren schreiben (Mietzins-Paket, Ordner „2 Mietzins“) und per Einschreiben schicken. Du kannst <b>'+chf(s.proMonat)+'</b> weniger pro Monat verlangen, ab dem nächstmöglichen Termin. Der Vermieter hat 30 Tage Zeit. Lehnt er ab oder antwortet nicht, kannst du innert 30 Tagen an die Schlichtungsbehörde gelangen (kostenlos).'
+      :'Höchstens <b>'+chf(s.proMonat)+'</b> pro Monat, solange Festlegungsdatum und Teuerungsindex fehlen (Schritt 2). Der Plan rechnet darum noch nicht mit diesem Geld.';
+    if(s.art==="rueck")t='Dauerauftrag über <b>'+chf(s.proMonat)+'</b> auf ein separates Konto. Davon bezahlst du Steuern, Franchise und alle Jahresrechnungen, ohne dass das Budget kippt.';
+    if(s.art==="start")t='Jeden Monat <b>'+chf(s.proMonat)+'</b> auf das Sparkonto, bis '+chf(s.ziel)+' (ein Monat Fixkosten) bereitliegen. So wird eine kaputte Waschmaschine nicht zur neuen Schuld. Die Kreditraten laufen in dieser Zeit normal weiter.';
+    if(s.art==="schuldenA")t='Die Raten tilgen die Schulden schon während du die Start-Reserve aufbaust. Extra-Zahlungen braucht es nicht.';
+    if(s.art==="schulden")t='<b>'+chf(s.proMonat)+'</b> pro Monat in die Schulden: alle Raten wie bisher, der Rest zusätzlich auf <b>'+esc(r.reihenfolge[0])+'</b>. Ist eine Schuld getilgt, rollt ihre Rate auf die nächste. Reihenfolge: '+r.reihenfolge.map(esc).join(" → ")+'.'+(s.ersparnis?' Spart <b>'+chf(s.ersparnis)+'</b> Zins gegenüber nur den heutigen Raten.':'')+' Vor der ersten Extra-Zahlung beim Kreditgeber nachfragen, ob vorzeitige Rückzahlung kostenlos ist.';
+    if(s.art==="voll")t='Die frei gewordenen Raten bleiben gespart: <b>'+chf(s.proMonat)+'</b> pro Monat, bis '+chf(s.ziel)+' (drei Monate Fixkosten) auf dem Konto sind.';
+    if(s.art==="frei")t='<b>'+chf(s.proMonat)+'</b> pro Monat für deine Ziele: Säule 3a, Investieren, Ferien, Eigenheim. Die Rückstellungen laufen weiter.';
+    h+='<li style="--c:'+FARBE[s.art]+'"><div class="wann">'+wann(s)+'</div><h3>'+esc(s.titel)+'</h3>'+t+'</li>';
+  });
+  h+='</ol>';
+  if(r.fest.length)h+='<p class="klein">Läuft mit fester Rate weiter: '+r.fest.map(function(d){return esc(d.name)+' ('+chf(d.rate)+' pro Monat)'}).join(", ")+'. Die Rate ist in den Fixkosten und in der Notreserve eingerechnet.</p>';
+  $("p-out").innerHTML=h;
+}
+felder();tabellen();rechnen();
+})();
+</script>
+</body>
+</html>
