@@ -134,58 +134,66 @@
   },
   "alle-kits": {
     "product": "prod_Ui9nY4NVDgmykr",
-    "price": "price_1TijU5RXvVMyfaIrYkG7hB47",
-    "link": "https://buy.stripe.com/6oUbJ38iicfq4kf2El5wI0m",
-    "cents": 7900,
+    "price": "price_1ULoukRXvVMyfaIrvQrbQwUh",
+    "link": "https://buy.stripe.com/dRm7sN2XY6V68AvceV5wI0Q",
+    "link_id": "plink_1ULoukRXvVMyfaIr1LgHXaIF",
+    "cents": 3900,
     "currency": "chf"
   },
   "prompt-bibliothek": {
     "product": "prod_Ui9nKMQMZgzq4e",
-    "price": "price_1TijU6RXvVMyfaIrqHP6Gq3p",
-    "link": "https://buy.stripe.com/28E4gBgOO0wI3gben35wI0n",
-    "cents": 1900,
+    "price": "price_1ULoulRXvVMyfaIrs3ZyBCIV",
+    "link": "https://buy.stripe.com/eVq8wR6aagvG03Zfr75wI0R",
+    "link_id": "plink_1ULoumRXvVMyfaIrikaIugAf",
+    "cents": 1400,
     "currency": "chf"
   },
   "vorlagen-set": {
     "product": "prod_Ui9nMcjb8Z1udn",
-    "price": "price_1TijU7RXvVMyfaIr3II8l4JP",
-    "link": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o",
-    "cents": 1900,
+    "price": "price_1ULounRXvVMyfaIrXWkkxoPy",
+    "link": "https://buy.stripe.com/8x2cN70PQ7Za1837YF5wI0S",
+    "link_id": "plink_1ULounRXvVMyfaIrMJCoocwr",
+    "cents": 1400,
     "currency": "chf"
   },
   "strategie-pruefstand": {
     "product": "prod_VKLLZBJ5VGjpSU",
-    "price": "price_1UJgfCRXvVMyfaIrvfTgokcu",
-    "link": "https://buy.stripe.com/00wfZjgOO7Za2c7ceV5wI0p",
-    "cents": 2900,
+    "price": "price_1ULoupRXvVMyfaIrmPizLCqt",
+    "link": "https://buy.stripe.com/aFa4gB422djucQLen35wI0T",
+    "link_id": "plink_1ULoupRXvVMyfaIrEhmVy7gx",
+    "cents": 1900,
     "currency": "chf"
   },
   "schulden-plan": {
     "product": "prod_VKLLTbbtN9AXFQ",
-    "price": "price_1UJgfCRXvVMyfaIrVaj6RjP7",
-    "link": "https://buy.stripe.com/9B69AV7ee5R2cQLa6N5wI0q",
-    "cents": 2700,
+    "price": "price_1ULouqRXvVMyfaIrK7ga3mu8",
+    "link": "https://buy.stripe.com/aFa8wR7ee3IU03Zfr75wI0U",
+    "link_id": "plink_1ULouqRXvVMyfaIrqKm4zVhI",
+    "cents": 1400,
     "currency": "chf"
   },
   "budget-plan": {
     "product": "prod_VKLwvTuLBe6qaY",
-    "price": "price_1UJhEsRXvVMyfaIr5JB8bLH4",
-    "link": "https://buy.stripe.com/00wbJ3dCC93e1833Ip5wI0N",
-    "cents": 1900,
+    "price": "price_1ULousRXvVMyfaIrCgh6dz0u",
+    "link": "https://buy.stripe.com/6oUcN7cyydju3gbfr75wI0V",
+    "link_id": "plink_1ULousRXvVMyfaIrXThwMUr7",
+    "cents": 1200,
     "currency": "chf"
   },
   "mietzins-paket": {
     "product": "prod_VMBzAsOubo4APm",
-    "price": "price_1ULTb2RXvVMyfaIrV1YCK7w1",
-    "link": "https://buy.stripe.com/dRm4gBbuu6V603Z92J5wI0O",
-    "cents": 1900,
+    "price": "price_1ULoutRXvVMyfaIrhzP8HXgY",
+    "link": "https://buy.stripe.com/fZu8wR6aagvGg2XdiZ5wI0W",
+    "link_id": "plink_1ULouuRXvVMyfaIrpeqK23YP",
+    "cents": 1400,
     "currency": "chf"
   },
   "hochzeits-budget": {
     "product": "prod_VMC8vWf3NgNOjf",
-    "price": "price_1ULTkXRXvVMyfaIr2XEwUUaU",
-    "link": "https://buy.stripe.com/3cI8wRfKK7ZadUP5Qx5wI0P",
-    "cents": 1900,
+    "price": "price_1ULouvRXvVMyfaIrbQmE2AjX",
+    "link": "https://buy.stripe.com/eVq28taqq5R29Ez3Ip5wI0X",
+    "link_id": "plink_1ULouvRXvVMyfaIrKcOzu546",
+    "cents": 1200,
     "currency": "chf"
   },
   "finanz-kompass": {

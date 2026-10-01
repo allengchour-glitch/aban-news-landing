@@ -78,9 +78,10 @@
   },
   "en-alle-kits": {
     "product": "prod_VKLMGYAQ6AH6cd",
-    "price": "price_1UJgfLRXvVMyfaIrWS9O3fJx",
-    "link": "https://buy.stripe.com/00w9AV0PQ93e1836UB5wI0C",
-    "cents": 7900,
+    "price": "price_1ULouxRXvVMyfaIru3UntEZN",
+    "link": "https://buy.stripe.com/aFa9AVgOOa7icQL0wd5wI0Y",
+    "link_id": "plink_1ULouxRXvVMyfaIrK1QDufLj",
+    "cents": 3900,
     "currency": "eur"
   },
   "en-kosmetikstudios": {
@@ -141,16 +142,18 @@
   },
   "en-prompt-bibliothek": {
     "product": "prod_VKLMEJGsXCjbqr",
-    "price": "price_1UJgfRRXvVMyfaIrHn7ashQU",
-    "link": "https://buy.stripe.com/bJe5kFbuubbm1835Qx5wI0L",
-    "cents": 1900,
+    "price": "price_1ULouyRXvVMyfaIrj76S6N2n",
+    "link": "https://buy.stripe.com/dRm00l9mmcfqaIDceV5wI0Z",
+    "link_id": "plink_1ULouyRXvVMyfaIriQOxooeD",
+    "cents": 1400,
     "currency": "eur"
   },
   "en-vorlagen-set": {
     "product": "prod_VKLMEWAFAssLJK",
-    "price": "price_1UJgfSRXvVMyfaIr7AdFlHcV",
-    "link": "https://buy.stripe.com/6oUbJ342293edUP4Mt5wI0M",
-    "cents": 1900,
+    "price": "price_1ULov0RXvVMyfaIr9zqnMWgM",
+    "link": "https://buy.stripe.com/28E6oJ0PQ6V61836UB5wI10",
+    "link_id": "plink_1ULov0RXvVMyfaIr8o0Kyz1q",
+    "cents": 1400,
     "currency": "eur"
   }
 }

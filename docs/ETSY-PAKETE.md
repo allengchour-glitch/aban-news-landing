@@ -88,7 +88,7 @@ trotzdem der eigentliche Test: Fehlermeldungen von Etsy stehen im Workflow-Log.
 
 ## Finanz-Kompass Schweiz (Gesamtpaket, 01.10.2026)
 
-`content/etsy/finanz-kompass/`: Etsy CHF 29 (abannews.com CHF 49, einzeln CHF 84). Drei Dateien: Gesamt-ZIP (alle fünf
+`content/etsy/finanz-kompass/`: Etsy CHF 29 (abannews.com ebenfalls CHF 29, einzeln CHF 52). Drei Dateien: Gesamt-ZIP (alle fünf
 Werkzeuge mit Excel und Anleitungen), Kompass-App direkt, Anleitung als PDF. Bilder aus der echten App mit Beispielhaushalt:
 
 ```
