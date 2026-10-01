@@ -137,6 +137,20 @@ def build_single(slug: str, lang: str = "de") -> Path:
         for f in sorted(curated.iterdir()):
             if f.is_file():
                 shutil.copy(f, pack / f.name)
+        # Gesamtpakete: INHALT.json listet Produkte (als Unterordner) und Zusatzdateien (z. B. Excel aus content/etsy/).
+        inhalt = curated / "INHALT.json"
+        if inhalt.exists():
+            import json
+            spec = json.loads(inhalt.read_text(encoding="utf-8"))
+            (pack / "INHALT.json").unlink(missing_ok=True)
+            for ordner, quelle in spec.get("ordner", {}).items():
+                ziel = pack / ordner
+                if ziel.exists():
+                    shutil.rmtree(ziel)
+                shutil.copytree(REPO / quelle, ziel)
+            for zieldatei, quelle in spec.get("dateien", {}).items():
+                (pack / zieldatei).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(REPO / quelle, pack / zieldatei)
         if not (pack / "LIESMICH.txt").exists():
             (pack / "LIESMICH.txt").write_text(
                 f"{label_from_slug(slug)} — aban news\n\n"

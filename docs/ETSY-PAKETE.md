@@ -85,3 +85,14 @@ trotzdem der eigentliche Test: Fehlermeldungen von Etsy stehen im Workflow-Log.
   Gegenprobe per LibreOffice-Neuberechnung: 8/8 Kennzahlen = `tools/hochzeit/engine.js`, auch mit Teilzahlungen.
 - Bilder und PDFs: `CH=… node tools/etsy/hochzeit_etsy.mjs` (Zahlen aus der Engine, Datum relativ zu heute).
 - Preise im Upload-Skript: DE 12, EN 10 USD. Der Etsy-Upload nimmt beide automatisch mit.
+
+## Finanz-Kompass Schweiz (Gesamtpaket, 01.10.2026)
+
+`content/etsy/finanz-kompass/`: Etsy CHF 29 (abannews.com CHF 49, einzeln CHF 84). Drei Dateien: Gesamt-ZIP (alle fünf
+Werkzeuge mit Excel und Anleitungen), Kompass-App direkt, Anleitung als PDF. Bilder aus der echten App mit Beispielhaushalt:
+
+```
+python3 tools/kompass/build.py
+python3 -c "import sys;sys.path.insert(0,'automation');from build_product_pack import build_single;build_single('finanz-kompass')"
+node tools/etsy/kompass_etsy.mjs   # Playwright nötig; ROOT=… setzen, wenn das Skript aus einem anderen Ordner läuft
+```

@@ -1,0 +1,14 @@
+{
+  "ordner": {
+    "1 Budget": "content/packs/de/budget-plan",
+    "2 Mietzins": "content/packs/de/mietzins-paket",
+    "3 Schulden": "content/packs/de/schulden-plan",
+    "4 Bonus Hochzeit": "content/packs/de/hochzeits-budget"
+  },
+  "dateien": {
+    "1 Budget/Budget-Plan-Schweiz.xlsx": "content/etsy/budget-plan/dateien/Budget-Plan-Schweiz.xlsx",
+    "1 Budget/Budget-Plan-Anleitung.pdf": "content/etsy/budget-plan/dateien/Budget-Plan-Anleitung.pdf",
+    "3 Schulden/Schulden-Plan-Schweiz.xlsx": "content/etsy/schulden-plan/dateien/Schulden-Plan-Schweiz.xlsx",
+    "3 Schulden/Schulden-Plan-Anleitung.pdf": "content/etsy/schulden-plan/dateien/Schulden-Plan-Anleitung.pdf"
+  }
+}

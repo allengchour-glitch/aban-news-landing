@@ -195,5 +195,13 @@
     "price_cents": 1900,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "finanz-kompass",
+    "title": "Finanz-Kompass Schweiz: Budget, Miete und Schulden in einem Plan",
+    "desc": "Der Gesamtplan mit Daten: Rückstellungen, Mietzinssenkung, Start-Reserve, Schulden nach Lawine oder Schneeball, volle Notreserve. Dazu Budget-Plan, Mietzins-Paket, Schulden-Plan und Bonus Hochzeits-Budget-Plan mit Excel-Vorlagen (einzeln CHF 84). Offline, kein Konto. Keine Finanzberatung.",
+    "price_cents": 4900,
+    "currency": "chf",
+    "standalone": true
   }
 ]

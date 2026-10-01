@@ -19,7 +19,7 @@ on:
         type: boolean
         default: false
       pakete:
-        description: 'Komma-Liste, leer = alle (budget-plan, schulden-plan, en/budget-planner, en/debt-payoff-planner)'
+        description: 'Komma-Liste, leer = alle (budget-plan, schulden-plan, hochzeits-budget, finanz-kompass, en/…)'
         required: false
         default: ''
 

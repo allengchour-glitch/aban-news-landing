@@ -1,0 +1,17 @@
+Finanz-Kompass Schweiz 1.0 — aban news
+
+Fang hier an
+  finanz-kompass.html   Dein Gesamtplan in 4 Schritten: Budget, Miete, Schulden, Plan mit Daten.
+                        Im Browser öffnen (Doppelklick), läuft offline, speichert nur in deinem Browser.
+  ANLEITUNG.md          In 20 Minuten zum fertigen Plan
+
+Die Werkzeuge für jeden Schritt
+  1 Budget/             Budget-Plan Schweiz: App, Excel-Vorlage (auch Google Sheets), Anleitung
+  2 Mietzins/           Mietzins-Paket: Senkung, Termin, Fristen und fertiger Brief an den Vermieter
+  3 Schulden/           Schulden-Plan: Lawine oder Schneeball, Monatsplan, tilgen oder investieren, Excel-Vorlage
+  4 Bonus Hochzeit/     Hochzeits-Budget-Plan: Kosten pro Gast, Zahlungsplan, Sparrate
+
+Nutzung privat erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Planungshilfe, keine Finanz- oder Rechtsberatung.
+
+© aban news, abannews.com · hallo@abannews.com
