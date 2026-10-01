@@ -115,3 +115,8 @@ tools/trading/daten/h_*.json
 # es ist oeffentlich, der gehashte Name schuetzt dort nichts.
 downloads/kits/
 _pins/
+
+# Ausgabe der Torlaeufe (spiele-dev/tools/th-alle.mjs) — Protokoll eines Laufs,
+# kein Repo-Inhalt. Lag bisher als unverfolgte Datei im Arbeitsbaum und tauchte in
+# jedem git status auf.
+tor*.log
