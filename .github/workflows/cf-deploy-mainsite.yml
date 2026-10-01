@@ -128,6 +128,18 @@ jobs:
           { git ls-files '*.md' | grep -v '^downloads/'; git ls-files 'content/*'; } | python3 -c "
           import json,sys
           urls=['https://abannews.com/'+l.strip() for l in sys.stdin if l.strip()]
+          # Bis 01.10.2026 lagen die bezahlten Pakete ungeschützt unter /downloads/packs/ (Klartext-Namen) und stecken
+          # noch im Rand-Cache (max-age 4 h). Alle möglichen Paket-URLs mitleeren: <slug>.zip, Dateien, .html ohne Endung.
+          import pathlib
+          for kat,sub,lang in (('data/kit-catalog.json','','de'),('data/kit-catalog-en.json','en/','en')):
+            try: slugs=[k['slug'] for k in json.load(open(kat))]
+            except Exception: slugs=[]
+            for sl in slugs:
+              base='https://abannews.com/downloads/packs/'+sub+sl
+              urls.append(base+'.zip')
+              for f in sorted(pathlib.Path('content/packs/'+lang+'/'+sl).glob('*')):
+                urls.append(base+'/'+f.name)
+                if f.suffix=='.html': urls.append(base+'/'+f.stem)
           for i in range(0,len(urls),30): print(json.dumps({'files':urls[i:i+30]}))" > /tmp/purge.jsonl
           ok=0; n=0
           while read -r body; do
