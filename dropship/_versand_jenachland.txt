@@ -12601,3 +12601,13 @@ gid://shopify/Product/15422815699329	ersetzt
 gid://shopify/Product/15422819991937	ersetzt
 gid://shopify/Product/15422823465345	ersetzt
 gid://shopify/Product/15422849188225	ersetzt
+gid://shopify/Product/15422945034625	ersetzt
+gid://shopify/Product/15422946083201	ersetzt
+gid://shopify/Product/15422946804097	ersetzt
+gid://shopify/Product/15422949130625	ersetzt
+gid://shopify/Product/15422950474113	ersetzt
+gid://shopify/Product/15422953062785	ersetzt
+gid://shopify/Product/15422956798337	ersetzt
+gid://shopify/Product/15422958338433	ersetzt
+gid://shopify/Product/15422959518081	ersetzt
+gid://shopify/Product/15422960501121	ersetzt
