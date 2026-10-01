@@ -1482,3 +1482,4 @@ gid://shopify/Product/15523963470209	ok	Retro Washed Dünne Jeansjacke
 gid://shopify/Product/15523963634049	ok	Vintage Worker-Jeansjacke
 gid://shopify/Product/15523987128705	ok	Fitness Kettlebell für Zuhause
 gid://shopify/Product/15524868555137	ok	Mini Tattoo Pen mit USB-Ladekabel
+gid://shopify/Product/16603298136455	nicht-versendbar	Faltbare Schneemann-Lichterkette 1,2 m
