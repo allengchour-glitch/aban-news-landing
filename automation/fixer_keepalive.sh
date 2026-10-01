@@ -574,7 +574,9 @@ while true; do
   if [ "$VSTD" = "16" ] || { [ "$VSTD" = "17" ] && [ "${VMIN:-0}" -lt 30 ]; }; then VORRANGZEIT=1; fi
   for N in cj_bild_backfill cj_variantenbild cj_kosten_backfill schulstart_import alt_text_backfill frosch_maske_import; do
     if [ "$VORRANGZEIT" = "1" ] && [ "$N" != "cj_kosten_backfill" ]; then
-      case "$N" in cj_bild_backfill|cj_variantenbild) continue ;; esac
+      # 01.10.2026 (Grow, «fülle bilder»): cj_bild_backfill darf ins Fenster — ausserhalb verbraucht der Grind das CJ-Tageslimit
+      # bis zum Abend (gemessen: Eimer leer ab ~18:40, Lauf kam seit Stunden nicht über 14 Produkte). Nur cj_variantenbild wartet.
+      case "$N" in cj_variantenbild) continue ;; esac
     fi
     fehlt "$REPO/automation/$N.mjs" && continue
     # ⚠️ 22.09.2026: «FERTIG» hielt cj_bild_backfill seit 30.08. fest (es hatte «0 Kandidaten»
