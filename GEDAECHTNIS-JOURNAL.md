@@ -15,6 +15,20 @@
 
 
 
+
+## 2026-10-01 20:15 · 📣 «push shop mehr» — Gratis-Kanäle, die kaufen
+
+**Gemessen 14 T (Menschen):** 293 Sitzungen, 3 Käufe. Google-Suche 36 → 1 Kauf · Pinterest 8 → 2 Warenkörbe (beste Quote) ·
+TikTok 33 + Facebook 13 → 0 · ChatGPT 11 (#1021 kam von dort) · Bing 4.
+**1. Google-Bildtausch ausgerollt:** A/B ausgewertet (nur von Google neu geprüfte): getauscht 10/13 frei, Kontrolle 0/25 →
+Kontrollzeilen aus dem Ledger, Aufseher-Block alle 2 h `SCHARF=1 N=60` (neustartfest, Ledger je Produkt), erster Lauf von Hand
+(288 offen). **2. Pinterest:** alle 114 Pin-Texte begannen mit dem Lieferzeit-Kasten (Pinterest zeigt ~60 Zeichen) →
+`txt()` entfernt ls-liefer/Sorglos/Ratgeber/Produktdetails; Warteschlange neu 163 (13 Vorrang); 6 → 10 Pins/Tag.
+**3. Betreiber-Klicks (Cowork):** admin.shopify.com/agentic (ChatGPT/Perplexity/Copilot/Google AI Mode) + Microsoft Merchant
+Center Gratis-Einträge (Import aus Google).
+**Lehre:** Ein Textbaustein, der für die Produktseite gebaut wurde (Lieferzeit zuerst), wird in jedem Ableger zum ersten Satz —
+Ableger (Pins, Feeds, Captions) müssen Kästen gezielt überspringen.
+
 ## 2026-10-01 19:40 · 🖼️🗂️ «fülle bilder und leere feinkategorien»
 
 **Kategorien (gemessen):** Shop-Kollektionen — 356 sichtbar, 0 leer im Menü (135 Menü-Links vollständig gezählt);

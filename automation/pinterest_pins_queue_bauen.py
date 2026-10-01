@@ -52,7 +52,14 @@ def board(p):
 
 
 def txt(h):
-    return re.sub(r'\s+', ' ', html.unescape(re.sub('<[^>]+>', ' ', h or ''))).strip()
+    # 01.10.2026 («push shop mehr»): Pinterest zeigt nur die ersten ~60 Zeichen. Alle 114 Pins begannen mit dem Lieferzeit-Kasten
+    # («📦 Lieferzeit Schweiz: 10–20 Werktage …») statt mit dem Produkt → Kästen (Lieferzeit, Sorglos, Ratgeber, Produktdetails)
+    # vor dem Text entfernen; die Lieferzeit steht auf der Produktseite.
+    h = re.sub(r'<p[^>]*class="ls-liefer"[^>]*>.*?</p>', ' ', h or '', flags=re.S)
+    h = re.sub(r'<div[^>]*class="ls-(?:produktdetails|feed-details)"[^>]*>.*?</div>', ' ', h, flags=re.S)
+    h = re.sub(r'<div[^>]*>(?:(?!</div>).)*?(?:Sorglos shoppen|Passend dazu im Ratgeber|So trägst du)(?:(?!</div>).)*</div>', ' ', h, flags=re.S)
+    t = re.sub(r'\s+', ' ', html.unescape(re.sub('<[^>]+>', ' ', h))).strip()
+    return re.sub(r'^📦\s*Lieferzeit[^·]*(?:·[^·.]*){0,3}', '', t).strip()
 
 
 def main():
