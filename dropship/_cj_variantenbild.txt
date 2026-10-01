@@ -5366,3 +5366,4 @@ gid://shopify/Product/15453955064193	zugeordnet	8	Elegantes, ärmelloses Kleid
 gid://shopify/Product/15453955555713	zugeordnet	30	Chiffon-Kleid mit 3D-Effekt
 gid://shopify/Product/15453955588481	zugeordnet	2	Oktopus-Kleiderständer
 gid://shopify/Product/15453955654017	zugeordnet	8	Elegantes Langkleid mit Blumenmuster
+gid://shopify/Product/15453955752321	zugeordnet	68	Prinzessinnen-Schuhe mit Schleife
