@@ -70690,3 +70690,12 @@
 15421165764993	material-floskel-entfernt	Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
 15421414113665	material-floskel-entfernt	Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
 15421442261377	material-floskel-entfernt	Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürte
+15421513630081	material-floskel-entfernt	Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
+15421516218753	material-floskel-entfernt	Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+15421594501505	material-floskel-entfernt	Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
+15421615473025	farbe-floskel-entfernt,material-floskel-entfernt	Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
+15421617537409	material-floskel-entfernt	Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant
+15421620257153	material-floskel-entfernt	Keil-Sandalen «Capri» · Geflochten, Espadrille-Look
+15422040277377	material-floskel-entfernt	Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
+15422401479041	farbe-floskel-entfernt,material-floskel-entfernt	Sommer-Playsuit «Marigold» · Blüten-Print, Träger
+15422403051905	material-floskel-entfernt	Plateau-Pumps «Wild» · Leoparden-Print, Knöchelriemen
