@@ -4,48 +4,55 @@
     "preis": 12,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:04:59.743Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:08.272Z"
   },
   "schulden-plan": {
     "listing_id": 4586614310,
     "preis": 14,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:05:05.395Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:08.793Z"
   },
   "en/budget-planner": {
     "listing_id": 4586611213,
     "preis": 8,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:05:13.556Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:09.426Z"
   },
   "en/debt-payoff-planner": {
     "listing_id": 4586614426,
     "preis": 10,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:05:18.815Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:09.963Z"
   },
   "hochzeits-budget": {
     "listing_id": 4586611339,
     "preis": 12,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:05:26.115Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:10.384Z"
   },
   "en/wedding-budget-planner": {
     "listing_id": 4586614582,
     "preis": 9,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:05:31.899Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:10.844Z"
   },
   "finanz-kompass": {
     "listing_id": 4586615357,
     "preis": 29,
     "waehrung": "CHF",
     "angelegt": "2026-10-01T19:11:27.056Z",
-    "state": "draft"
+    "state": "active",
+    "veroeffentlicht": "2026-10-01T19:18:11.277Z"
   }
 }
