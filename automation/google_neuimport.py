@@ -83,11 +83,14 @@ def main():
         mf = []
         pfad = (p["gk"] or {}).get("value")
         if not pfad:
-            z, _ = gkf.ziel_leer(p["title"], p["tags"], p["productType"] or "")
+            z, quelle = gkf.ziel_leer(p["title"], p["tags"], p["productType"] or "")
             if z and z in tax:
                 pfad = z
                 mf.append({"ownerId": p["id"], "namespace": NS, "key": "google_product_category",
                            "type": "single_line_text_field", "value": z})
+                if quelle == "kinder":       # 01.10.: Kinderkleidung = gleiche Pfade + age_group kids (81 standen auf «adult»)
+                    mf.append({"ownerId": p["id"], "namespace": NS, "key": "age_group",
+                               "type": "single_line_text_field", "value": "kids"})
             else:
                 offen += 1
         if pfad and pfad.startswith("Apparel & Accessories") and not (p["ge"] or {}).get("value"):

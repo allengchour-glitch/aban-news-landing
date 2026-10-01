@@ -308,3 +308,5 @@ gid://shopify/Product/15470036255105	draft-ausverkauft	Saure Zungen · 100 Stüc
 gid://shopify/Product/15470034616705	reaktiviert	Skelett beweglich
 gid://shopify/Product/15470017675649	draft-ausverkauft	bworld Scrambler Ducati Full Throttle mit Fahrer
 gid://shopify/Product/15470031274369	draft-ausverkauft	Erdmännchen Plüsch
+gid://shopify/Product/15470073545089	draft-ausverkauft	Plüsch Schildkröte
+gid://shopify/Product/15470077936001	draft-ausverkauft	Badeset Romantic Dreams

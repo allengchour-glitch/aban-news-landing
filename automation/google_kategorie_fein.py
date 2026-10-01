@@ -36,6 +36,7 @@ SCHARF = os.environ.get("DRY") != "1"
 C = "Apparel & Accessories > Clothing > "
 
 AUSSEN = re.compile(r"^jungen\b|kinder|kids|baby|mädchen|\bfür jungen\b|\bjungen-|kleinkind|kostüm|verkleidung|puppe(?!nkragen)|cosplay|b[üu]hnenuniform", re.I)
+KOSTUEM = re.compile(r"kostüm|verkleidung|puppe(?!nkragen)|cosplay|b[üu]hnenuniform", re.I)
 REGELN = [
     (r"\w*schal\b|\bschals\b|halstuch|stola|\w*tuch\b(?!.*(strand|bade|hand))|halsw[äa]rmer", "Apparel & Accessories > Clothing Accessories > Scarves & Shawls"),
     (r"strand-?kimono|strand[üu]berzug|swimwear|badebekleidung|facekini", C + "Swimwear"),
@@ -361,8 +362,12 @@ def ziel_leer(titel, tags=(), typ=""):
         if b == "tier" and MENSCH.search(t):
             continue                                   # «Katzen-Slipper für Damen» = Schuh
         if z == GROB:
+            if KOSTUEM.search(t):
+                return None, None                      # Kostüme bleiben draussen (Google-Kanal-Regel)
             if AUSSEN.search(t):
-                return None, None                      # Kinder-/Kostümkleidung: eigene Zweige, nicht raten
+                # 01.10.2026: Kinderkleidung hat bei Google KEINE eigenen Zweige — dieselben Pfade, dazu age_group=kids.
+                # Quelle «kinder» heisst für Schreiber: age_group mitsetzen (google_neuimport tut es; Tageslauf überspringt).
+                return (ziel(t, kinder=True) or GROB), "kinder"
             return (ziel(t) or GROB), "titel"
         return z, "titel"
     try:
@@ -376,8 +381,9 @@ def ziel_leer(titel, tags=(), typ=""):
     return (z, "tags") if z else (None, None)
 
 
-def ziel(titel):
-    if AUSSEN.search(titel or ""):
+def ziel(titel, kinder=False):
+    # kinder=True (01.10.2026): Kinderkleidung darf in dieselben Feinzweige (age_group regelt das Alter), Kostüme nie.
+    if (KOSTUEM if kinder else AUSSEN).search(titel or ""):
         return None
     for rx, z in _R:
         if rx.search(titel or ""):
@@ -486,6 +492,8 @@ def main():
     quelle = collections.Counter()
     for r in leer:
         z, q = ziel_leer(r.get("title", ""), r.get("tags") or [], r.get("productType") or "")
+        if q == "kinder":
+            loffen.append(r.get("title", "")); continue          # nur mit age_group schreiben → google_neuimport
         if z and z in gueltig:
             lplan.append((r["id"], r.get("handle", ""), r.get("title", ""), z))
             quelle[q] += 1

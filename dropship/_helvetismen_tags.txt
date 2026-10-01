@@ -336,3 +336,6 @@
 2026-09-23	gid://shopify/Product/15525142266241	finken	Plüsch Hausschuh für Herren – flache Sohle
 2026-09-23	gid://shopify/Product/15525224415617	finken	Hasen-Hausschuhe für Kinder, Winter
 2026-09-23	gid://shopify/Product/15471974973825	natel	Stossfeste iPhone-Hülle aus Silikon, transparent
+2026-10-01	gid://shopify/Product/16603302658439	natel	Schutzfolie aus gehärtetem Glas für iPhone
+2026-10-01	gid://shopify/Product/16603304395143	finken	Weiche Winterbettmütze und rutschfeste Hausschuhe
+2026-10-01	gid://shopify/Product/16603340505479	finken	Kinder‑Pantoffeln mit Tiermuster

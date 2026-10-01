@@ -282,3 +282,6 @@ gid://shopify/Product/15532055560577	gehhilfe-fur-hintere-haustierbeine-283008	G
 gid://shopify/Product/15532143870337	taktisches-messer-mit-lederscheide-023040	Taktisches Messer mit Lederscheide
 gid://shopify/Product/15532259443073	herren-pullover-mit-struktur-und-kapuze-636900	Herren-Pullover mit Struktur und Kapuze
 gid://shopify/Product/15532286869889	multifunktionaler-edelstahl-taschenlampen-stif-610500	Multifunktionaler Edelstahl-Taschenlampen-Stift
+gid://shopify/Product/16603322450311	plus-size-hooded-baumwoll-kissenmantel-627500	Plus‑Size Hooded Baumwoll‑Kissenmantel
+gid://shopify/Product/16603325006215	mittelgrosser-mantel-mit-3d-muster-621700	Mittelgrosser Mantel mit 3D-Muster
+gid://shopify/Product/16603331658119	ammulliger-hufstarker-mantel-611500	Ammulliger, hufstarker Mantel
