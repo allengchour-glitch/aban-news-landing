@@ -71,6 +71,7 @@ Art. 264), Plan mit Daten, Adressen, Abgabeprotokoll. **Gesetzestext vorher bei 
 HTML `fedlex.data.admin.ch/eli/cc/27/317_321_377/…`, Anker `id="art_266_c"`). Prüfer-Agent fand 2 Blocker: Einschreiben-Falle
 (Abholungseinladung, Wochenende) + Zugang in der Vergangenheit → Warnungen. **Zeitzonen-Bug auch in der Mietzins-Engine behoben**
 (`new Date("JJJJ-MM-TT")` = UTC → `lokal()`); Tests laufen jetzt auch mit `TZ=America/New_York`. Etsy `content/etsy/umzugs-paket/` CHF 12.
+**Falle:** Stripe-Bot-Commits (Actions-Token) lösen KEINEN Deploy aus → Kauf-Link blieb unsichtbar; `stripe-shop.yml` startet jetzt `cf-deploy-mainsite.yml` selbst (auf main).
 **Leck-Nachträge:** Rand-Cache lieferte `/downloads/packs/*` weiter → Purge-Liste (#2568) + `_redirects` `/downloads/packs/* → /shop.html` (#2570).
 
 **📌 2026-10-01 (🧭 Meisterwerk-Produkt „Finanz-Kompass Schweiz" CHF 29, einzeln CHF 52):**
