@@ -77,11 +77,23 @@ KOS = PC + "Cosmetics > "
 KH = "Home & Garden > Kitchen & Dining > "
 MENSCH = re.compile(r"\b(damen|herren|frauen|männer|unisex|mädchen|jungen)\b|katzenohren", re.I)
 LEER_REGELN = [
-    # 01.10.2026 (Google-Fokus, Neuimporte nach der Grind-Pause): «Acryl Adventskalender Blind Box» landete über «kalender» bei
-    # Büro-Kalendern, «Aufblasbares Halloween-Kostüm» bei Saison-DEKO. Beide Regeln VOR den allgemeinen. «Kostüm» allein bleibt
-    # draussen (Damen-Kostüm = Anzug) — nur mit Fest-Anker und ohne «Deko».
+    # 01.10.2026 Nachprüfung «Feinkategorien überall» (Stichproben je Zielpfad): Fehlgriffe innerhalb des richtigen Hauptzweigs —
+    # «Kerzenhalter» als Kerze, «Duschvorhang mit Totenkopf» als Saison-Deko, «Messerhalter mit Abtropfschale» als Geschirr,
+    # «Teekessel» als Trinkgefäss, «Leselupe mit LED» als Leuchte, «Fritteuse/Zitruspresse» als Küchenhelfer, «Fingerkette» als Halskette.
+    (r"kerzenhalter|kerzenst[äa]nder|kerzenw[äa]rmer|teelichthalter|windlicht", "Home & Garden > Decor > Home Fragrance Accessories > Candle Holders", ""),
+    (r"duschvorhang|duschvorh[äa]nge", "Home & Garden > Bathroom Accessories > Shower Curtains", ""),
+    (r"messerhalter|messerblock|messerleiste", "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Organizers > Knife Blocks & Holders", ""),
+    (r"^(?!.*(?:elektrisch|thermostat|warmhalte|f[üu]rs auto|12 ?v|usb)).*(?:tee|wasser)kessel|fl[öo]tenkessel", "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Stovetop Kettles", ""),
+    (r"elektrische\w* (?:tee|wasser)kocher|wasserkocher|(?:thermostat|warmhalte|f[üu]rs auto|12 ?v|usb).{0,30}(?:tee|wasser)kessel|(?:tee|wasser)kessel.{0,30}(?:thermostat|warmhalte|f[üu]rs auto|12 ?v|usb)", "Home & Garden > Kitchen & Dining > Kitchen Appliances > Electric Kettles", ""),
+    (r"leselupe|lupe mit|vergr[öo]sserungsglas", "Office Supplies > Office Instruments > Magnifiers", ""),
+    (r"f[üu]r (?:die )?(?:heissluft)?fri?tteuse", "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Deep Fryer Accessories", ""),
+    (r"fritteuse|friteuse", "Home & Garden > Kitchen & Dining > Kitchen Appliances > Deep Fryers", ""),
+    (r"elektrische\w* zitruspresse|entsafter", "Home & Garden > Kitchen & Dining > Kitchen Appliances > Juicers", ""),
+    (r"fingerkette|k[öo]rperkette|bauchkette", "Apparel & Accessories > Jewelry > Body Jewelry", ""),
+    # 01.10.2026 (Google-Fokus): «Acryl Adventskalender Blind Box» landete über «kalender» bei Büro-Kalendern → Vorrang-Regel.
+    # ⛔ Eine Kostüm-Regel wurde am selben Tag wieder ENTFERNT: Kostüme bleiben bei Google bewusst ohne Kategorie (Bericht
+    # GOOGLE-KATEGORIE-FEIN-2026-09-29, AUSSEN), und die Gegenprobe traf ein HUNDE-Kostüm als Menschen-Kostüm.
     (r"adventskalender|advent calendar", "Home & Garden > Decor > Seasonal & Holiday Decorations > Advent Calendars", ""),
-    (r"^(?!.*deko).*(?:(?:halloween|fasnacht|fastnacht|karneval|cosplay)\W.{0,40}kost[üu]m\w*|kost[üu]m\w*.{0,40}\W(?:halloween|fasnacht|fastnacht|karneval|cosplay))", "Apparel & Accessories > Costumes & Accessories > Costumes", ""),
     # Fortura-Fanartikel: «Radsocken für Auto Holland» sind Radkappen-Überzüge, keine Socken
     (r"radsocken|spiegelsocken|autofahne|auto-?flagge|auto[- ]?waschhandschuh|autowasch\w*", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
     (r"\bgps\b.*(tracker|halsband|ortung|anti-verlust)|gps-\w*tracker", "Electronics > GPS Tracking Devices", ""),
@@ -382,9 +394,10 @@ def gql(q, v=None):
         try:
             d = json.load(urllib.request.urlopen(req, timeout=90))
             if d.get("data") is not None and not d.get("errors"):
-                ts = ((d.get("extensions") or {}).get("cost") or {}).get("throttleStatus") or {}
-                if ts and ts.get("currentlyAvailable", 1000) < 400:      # Eimer-Etikette
-                    time.sleep(3)
+                # Eimer-Etikette (01.10.2026): 3 s bei < 400 reichten nicht — der Lauf über 3'000 Feinkategorien hielt den Eimer
+                # bei 23/2'000 und bremste alle anderen Wächter. Jetzt die gemeinsame Regel: unter BODEN warten bis ZIEL.
+                from eimer_etikette import nachlauf
+                nachlauf(d)
                 return d["data"]
             grund = str((d.get("errors") or [{}])[0].get("message", "keine Daten"))[:160]
         except Exception as e:
@@ -496,9 +509,62 @@ def main():
     print(f"grob «Electronics»: {len(erows)} · einordenbar {len(eplan)} · bleibt grob {eoffen}")
     for k, v in ezaehl.most_common(15):
         print(f"  {v:5d}  {k}")
+    # (4) 01.10.2026 Betreiber «Feinkategorien überall»: JEDE grobe Kategorie (≤ 2 Ebenen, hat Unterzweige) → feiner, aber NUR in
+    #     einen UNTERZWEIG des bisherigen Werts (Präfix-Regel). Damit kann die Titelregel nie über Kreuz einordnen
+    #     («Pet Supplies» → «Pet Supplies > Dog Supplies > Dog Toys» ja, → «Toys & Games» nie). Gemessen 01.10.: 20'141 Kanal-
+    #     Produkte mit ≤ 2 Ebenen; Endknoten (Shoes, Backpacks) haben keine Unterzweige und bleiben.
+    hat_kinder = {z.rsplit(" > ", 1)[0] for z in gueltig if " > " in z}
+    # Zweig-Tabellen (01.10.): gelten NUR, wenn der bisherige Wert genau dieser Oberzweig ist — ein «Hunde-Motiv-Shirt» unter
+    # «Clothing» wird so nie Hundebedarf. Reihenfolge = Vorrang: erst die Funktion (Leine, Napf), dann die Tierart.
+    PS, EF, TO = "Animals & Pet Supplies > Pet Supplies", "Sporting Goods > Exercise & Fitness", "Hardware > Tools"
+    ZWEIG = {
+        # ⚠️ Trockenlauf 01.10.: «leine» steckt in «k-LEINE» (105 Fehltreffer: «Spielzeug für kleine Hunde» als Leine) → (?<!k);
+        #    Yoga-KLEIDUNG («Sport-Yoga-Set mit Shorts», «Jumpsuit für Yoga») ist kein Yoga-Gerät → ausgenommen.
+        PS: [(r"(?<!k)leine\b|(?<!k)leinen\b", PS + " > Pet Leashes"), (r"halsband|geschirr\b|brustgeschirr", PS + " > Pet Collars & Harnesses"),
+             (r"napf|n[äa]pfe|futterspender|futterautomat|trinkbrunnen|wasserspender|futterstation|futterschale", PS + " > Pet Bowls, Feeders & Waterers"),
+             (r"transportbox|transporttasche|tragetasche|rucksack|hundebox|katzenbox", PS + " > Pet Carriers & Crates"),
+             (r"b[üu]rste|kamm\b|krallen|fellpflege|schermaschine|trimmer|pflegehandschuh", PS + " > Pet Grooming Supplies"),
+             (r"\b(?:hund\w*|welpe\w*)", PS + " > Dog Supplies"), (r"\b(?:katze\w*|kater\w*|k[äa]tzchen)", PS + " > Cat Supplies"),
+             (r"\bv[öo]gel\w*|vogel\w*|papagei|wellensittich", PS + " > Bird Supplies"), (r"aquarium|\bfisch\w*", PS + " > Fish Supplies")],
+        EF: [(r"^(?!.*(?:shorts|\bbra\b|\bbh\b|jumpsuit|leggings|\bhose|shirt|\btop\b|set mit|anzug|kleid|zweiteiler|shrug|outfit|bekleidung|crop|weste|jacke|socken)).*(?:yoga|pilates)", EF + " > Yoga & Pilates"), (r"hantel|kettlebell|gewichtsscheibe|langhantel", EF + " > Weight Lifting"),
+             (r"widerstandsb[äa]nd\w*|fitnessb[äa]nd\w*|gymnastikb[äa]nd\w*|resistance band|expander", EF + " > Exercise Bands"),
+             (r"faszienrolle|schaumstoffrolle|foam ?roller", EF + " > Foam Rollers"), (r"gymnastikball|fitnessball|sitzball|pezziball", EF + " > Exercise Balls"),
+             (r"bauchroller|ab[- ]?roller|bauchtrainer rad", EF + " > Ab Wheels & Rollers"), (r"klimmzug|liegest[üu]tz|push[- ]?up", EF + " > Push Up & Pull Up Bars"),
+             (r"handtrainer|fingertrainer|griffkraft|unterarmtrainer", EF + " > Hand Exercisers"), (r"springseil|sprungseil|seilspring", EF + " > Cardio")],
+        TO: [(r"taschenlampe|stirnlampe|arbeitsleuchte|kopflampe", TO + " > Flashlights & Headlamps"), (r"bohrmaschine|akkubohrer|bohrschrauber", TO + " > Drills"),
+             (r"\bhammer\b", TO + " > Hammers"), (r"massband|maßband|wasserwaage|messschieber|zollstock|laser-?entfernung|entfernungsmesser", TO + " > Measuring Tools & Sensors"),
+             (r"feuerzeug|stabfeuerzeug", TO + " > Lighters & Matches"), (r"\bleiter\b|trittleiter|klappleiter", TO + " > Ladders & Scaffolding"),
+             (r"hei(?:ss|ß)luftf[öo]hn|hei(?:ss|ß)luftpistole", TO + " > Heat Guns"), (r"schraubendreher|schraubenzieher", TO + " > Screwdrivers"),
+             (r"\bzange\b|kombizange|spitzzange|seitenschneider", TO + " > Pliers"), (r"winkelschleifer|schleifmaschine", TO + " > Grinders")],
+    }
+    ZWEIG = {k: [(re.compile(m, re.I), z) for m, z in v if z in gueltig] for k, v in ZWEIG.items()}
+    fplan, foffen = [], collections.Counter()
+    for r in alle:
+        v = ((r.get("metafield") or {}).get("value") or "").strip()
+        if not r.get("g") or not v or v in (GROB, ELEK) or v.count(">") > 1 or v not in hat_kinder:
+            continue
+        z = next((zz for rx, zz in ZWEIG.get(v, []) if rx.search(r.get("title", ""))), None)
+        if z:
+            fplan.append((r["id"], r.get("handle", ""), r.get("title", ""), z)); continue
+        z, q = ziel_leer(r.get("title", ""), (), "")
+        if not (z and q == "titel" and z.startswith(v + " > ") and z in gueltig):
+            z2 = ziel(r.get("title", ""))
+            z = z2 if (z2 and z2.startswith(v + " > ") and z2 in gueltig) else None
+        if z:
+            fplan.append((r["id"], r.get("handle", ""), r.get("title", ""), z))
+        else:
+            foffen[v] += 1
+    fzaehl = collections.Counter(z for *_, z in fplan)
+    print(f"grob (alle Zweige, Präfix-Regel): einordenbar {len(fplan)} · bleibt grob {sum(foffen.values())}")
+    for k, v in fzaehl.most_common(25):
+        print(f"  {v:5d}  {k}")
+    print("  bleibt grob (häufigste):", ", ".join(f"{k} {n}" for k, n in foffen.most_common(8)))
     if not SCHARF:
         import random
         random.seed(7)
+        for k in list(fzaehl)[:25]:
+            bsp = [t for _, _, t, z in fplan if z == k]
+            print(f"\n[fein {k}] Stichprobe:", " | ".join(t[:45] for t in random.sample(bsp, min(4, len(bsp)))))
         for k in list(lzaehl)[:40]:
             bsp = [t for _, _, t, z in lplan if z == k]
             print(f"\n[{k}] Stichprobe:", " | ".join(t[:45] for t in random.sample(bsp, min(5, len(bsp)))))
@@ -508,6 +574,8 @@ def main():
         ok1, fehl1 = schreiben(plan, GROB, f)
         ok2, fehl2 = schreiben(lplan, "(leer)", f)
         ok3, fehl3 = schreiben(eplan, ELEK, f)
+        ok4, fehl4 = schreiben(fplan, "grob-zweig", f)
+    print(f"FEIN (alle Zweige): {ok4} verfeinert, {fehl4} Fehler, {sum(foffen.values())} bleiben grob")
     print(f"FERTIG: fein {ok1} eingeordnet ({fehl1} Fehler, {len(offen)} bleiben grob) · leer {ok2} gefüllt "
           f"({fehl2} Fehler, {len(loffen)} bleiben leer) · Electronics {ok3} verfeinert ({fehl3} Fehler, {eoffen} bleiben grob)")
 

@@ -702,18 +702,18 @@
 #done search:cashmere scarf
 #done search:heated vest
 #done search:thermal underwear set
-search:fleece lined leggings
-search:winter boots women
-search:house slippers plush
-search:led strip lights rgb
-search:tempered glass screen protector samsung
-search:mens leather wallet rfid
-search:women wallet long
-search:false eyelashes natural
-search:magnetic eyelashes
-search:toy truck die cast
-search:rc car kids
-search:gaming headset
-search:cocktail shaker set
-search:garden pruning shears
-search:watering can
+#done search:fleece lined leggings
+#done search:winter boots women
+#done search:house slippers plush
+#done search:led strip lights rgb
+#done search:tempered glass screen protector samsung
+#done search:mens leather wallet rfid
+#done search:women wallet long
+#done search:false eyelashes natural
+#done search:magnetic eyelashes
+#done search:toy truck die cast
+#done search:rc car kids
+#done search:gaming headset
+#done search:cocktail shaker set
+#done search:garden pruning shears
+#done search:watering can

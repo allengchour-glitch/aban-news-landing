@@ -11,6 +11,10 @@
 
 
 
+## 2026-10-01 · 🗂️ Feinkategorien überall — und ein Skript, das ohne DRY=1 sofort schreibt
+5'087 Google-Kanal-Produkte von grob auf fein (nur Unterzweig des bisherigen Werts). Falle 1: `google_kategorie_fein.py` hat `SCHARF = DRY != "1"` — mein «Trockenlauf» schrieb 2'049 Werte; nachträglich je Zielpfad Stichproben gelesen und 59 Fehlgriffe korrigiert. Falle 2: «leine» in «kleine» (105 Fehltreffer, im echten Trockenlauf gefunden). Falle 3: eine Kostüm-Regel widersprach dem Beschluss «Kostüme ohne Google» und traf ein Hundekostüm → zurückgenommen.
+**Lehre:** Vor jedem Lauf den Standardmodus im Kopf des Skripts lesen — «ohne Schalter = Trockenlauf» ist eine Annahme, keine Regel. Und vor einer neuen Regel das Gedächtnis nach der Klasse durchsuchen (Kostüm = bewusst draussen). → `dropship/GOOGLE-FOKUS-2026-10-01.md`
+
 ## 2026-10-01 · 🔎 Google ist der Gewinnkanal — Neuware sofort mit Google-Daten
 90 T: Google 5 Käufe aus 337 Sitzungen, TikTok 0 aus 2'553. Neuimporte nach der Grind-Pause: 13/25 ohne Google-Kategorie, weil die Nachläufer nur täglich laufen → `google_neuimport.py` stündlich; Regeln Adventskalender/Fest-Kostüm ergänzt (Kanarienvögel 5/5, «Damen Kostüm Blazer» bleibt aussen).
 **Lehre:** Ein Tagesläufer reicht, solange wenig neu kommt. Sobald ein Importer Hunderte am Tag anlegt, muss die Pflichtangabe beim Anlegen oder stündlich kommen — sonst steht die frischeste Ware (die Google zuerst testet) einen Tag lang ohne Kategorie. → `dropship/GOOGLE-FOKUS-2026-10-01.md`
