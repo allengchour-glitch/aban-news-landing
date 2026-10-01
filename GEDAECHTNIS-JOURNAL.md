@@ -14,6 +14,24 @@
 
 
 
+
+## 2026-10-01 19:40 · 🖼️🗂️ «fülle bilder und leere feinkategorien»
+
+**Kategorien (gemessen):** Shop-Kollektionen — 356 sichtbar, 0 leer im Menü (135 Menü-Links vollständig gezählt);
+«Geschenke bis CHF 30» schien leer (erste 250 von 15'243 = neue Entwürfe) → Falle: Zählung über die ersten N einer
+CREATED_DESC-Kollektion sieht nur Entwürfe. Dünn: «Süsses & Esswaren» 9 aktiv. **Google leer: 43 im Kanal** → 40 von Hand
+(jeder Pfad gegen die Taxonomie, Beschreibung gelesen wo der Titel unklar war), 3 bewusst leer (Identkontroller, Football
+12×20, Wurfdose — Zweck unklar). Funde: «Sonnenschirm-Augen» = Sonnenbrille (Titel korrigiert); **81 Kinderartikel mit
+age_group adult** → 78 auf kids, Wanduhr Kinderzimmer → Wall Clocks, «japanisch im jungen Stil» bleibt adult.
+`ziel_leer()`: Kinderkleidung → Feinpfad + Quelle «kinder» (google_neuimport setzt age_group kids mit; Tageslauf schreibt
+ohne age_group nicht), Kostüme weiter draussen (`KOSTUEM`), Kanarienvögel 8/8. 62 + 79 Felder, 0 Fehler, zurückgelesen.
+**Bilder (gemessen, Export 15:48):** 49'193 aktive — 1 Bild 1'249 (Fortura 881 = Feed ohne Extras, POD 185 = Absicht,
+CJ 132, andere 51), 2–3 Bilder 2'518. Bild-Nachtrag lief seit Stunden über dieselben 14 (UUID-Fehler, behoben) und las einen
+Export von gestern. **52 CJ-Produkte standen mit «+N Bilder» im Ledger, hatten live < 4** — beim vollen Speicher FAILED und
+entfernt → Ledger-Zeilen weg (live bestätigt), Export frisch (CJ ≤1: 129, 2–3: 1'314), Bild-Nachtrag darf ins Vorrangfenster.
+**Lehre:** Ein Ledger «+4 Bilder» ist eine Aussage über den Zeitpunkt, nicht über heute — nach einer Speicher-Krise
+Ledger gegen den Live-Stand abgleichen.
+
 ## 2026-10-01 20:00 · 🏆 «nutze grow plan und mache ein meisterwerk» — Produktseiten mit Geld darauf
 
 Messgerät `tools/pdp_meisterwerk.py` (8 Punkte, Selbsttest 7/7) → 5 Seiten (TikTok-bezahlt + Tati) **6,3 → 9,0/10**.
