@@ -5401,3 +5401,16 @@ gid://shopify/Product/15453999890817	zugeordnet	14	Herren-Cargo-Pants, 2-in-1
 gid://shopify/Product/15453999923585	zugeordnet	99	Aerobic-Elternkind-Schuhe atmungsaktiv rutschsicher Innenber
 gid://shopify/Product/15454000021889	zugeordnet	30	Kinder-Laufschuhe, weiche Sohle
 gid://shopify/Product/15454000054657	zugeordnet	99	Herren Overalls mit vielen Taschen
+gid://shopify/Product/15454000087425	zugeordnet	36	Wind- und wasserdichte Arbeitshosen
+gid://shopify/Product/15454000120193	zugeordnet	90	Kinder-Regenstiefel, rutschfest
+gid://shopify/Product/15454000218497	zugeordnet	77	Herren-Trouser mit 3D-Tasche
+gid://shopify/Product/15454000251265	zugeordnet	20	Lauflern-Socken mit Grip
+gid://shopify/Product/15454000349569	zugeordnet	96	Outdoor-Hosen für Herren, weich und atmungsaktiv
+gid://shopify/Product/15454000382337	zugeordnet	60	Kinder Schneestiefel aus Leder
+gid://shopify/Product/15454000480641	zugeordnet	30	Kinder-Sneaker aus Baumwolle
+gid://shopify/Product/15454000513409	zugeordnet	24	Einheitliche Herren-Trousers
+gid://shopify/Product/15454000578945	zugeordnet	36	Jungen Sneaker
+gid://shopify/Product/15454000677249	zugeordnet	12	Velours-Laufschuhe für Kinder
+gid://shopify/Product/15454000808321	zugeordnet	36	Wasserdichte Jungenstiefel
+gid://shopify/Product/15454000841089	zugeordnet	14	Herren-Cargo-Hosen, gerade geschnitten
+gid://shopify/Product/15454000906625	zugeordnet	14	Wasserdichte Kinderschuhe
