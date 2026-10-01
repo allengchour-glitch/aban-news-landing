@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop-Check &mdash; Katalogfehler in Ihrem Shopify-Shop finden | aban news</title>
+  <meta name="description" content="Kostenloser Katalog-Check f&uuml;r Shopify-Shops: findet rohe Lieferantentexte in Variantennamen, englische Werte im deutschsprachigen Shop, Optionen namens &bdquo;Farbe&ldquo; ohne Farben und fehlerhafte Streichpreise &mdash; ohne Zugangsdaten, nur aus &ouml;ffentlichen Daten.">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/shop-check.html">
+
+  <meta property="og:title" content="Shop-Check &mdash; Katalogfehler in Ihrem Shopify-Shop finden">
+  <meta property="og:description" content="Findet in 15 Sekunden, was Ihr Produktkatalog an Ihre Kundschaft verr&auml;t. Ohne Zugangsdaten.">
+  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:url" content="https://abannews.com/shop-check.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="aban news">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/conversion.css">
+  <link rel="stylesheet" href="/css/modern.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"de","mainEntity":[
+    {"@type":"Question","name":"Brauche ich Zugangsdaten zu meinem Shop?","acceptedAnswer":{"@type":"Answer","text":"Nein. Gelesen wird ausschliesslich der oeffentliche Endpunkt /products.json, den jeder Shopify-Shop von sich aus bereitstellt. Es wird nichts veraendert und nichts gespeichert."}},
+    {"@type":"Question","name":"Funktioniert das auch bei fremden Shops?","acceptedAnswer":{"@type":"Answer","text":"Ja, bei jedem Shopify-Shop. Die Daten sind oeffentlich."}},
+    {"@type":"Question","name":"Sind die Befunde zuverlaessig?","acceptedAnswer":{"@type":"Answer","text":"Der Pruefer wurde gegen gepflegte Marken-Shops gegengeprueft: Gymshark und Allbirds ergeben bei je 250 Produkten null Befunde. Ein Pruefer, der ueberall ausschlaegt, misst nichts."}},
+    {"@type":"Question","name":"Was kostet der vollstaendige Bericht?","acceptedAnswer":{"@type":"Answer","text":"Die Zahlen und drei Belege je Fehlerart sind kostenlos. Die vollstaendige Liste mit jedem betroffenen Produkt ist Teil von aban Pro."}}
+  ]}
+  </script>
+
+  <style>
+    .sc-wrap{max-width:900px;margin:0 auto;padding:0 16px}
+    .sc-hero{padding:48px 0 24px}
+    .sc-hero h1{font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.15;margin:0 0 12px}
+    .sc-lead{font-size:1.06rem;line-height:1.6;opacity:.85;max-width:62ch}
+    .sc-form{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 8px}
+    .sc-form input{flex:1 1 260px;min-width:0;padding:14px 16px;font-size:1rem;
+      border:1px solid rgba(128,128,128,.4);border-radius:14px;background:transparent;color:inherit}
+    .sc-form button{padding:14px 22px;font-size:1rem;font-weight:600;border:0;border-radius:14px;
+      background:#0f172a;color:#fff;cursor:pointer}
+    .sc-form button:disabled{opacity:.55;cursor:default}
+    .sc-klein{font-size:.85rem;opacity:.7;margin:0}
+    .sc-karte{border:1px solid rgba(128,128,128,.28);border-radius:14px;padding:18px 20px;margin:14px 0}
+    .sc-zahl{font-size:2.2rem;font-weight:700;line-height:1}
+    .sc-befund{border-left:3px solid #b45309;padding:4px 0 4px 14px;margin:14px 0}
+    .sc-befund h3{margin:0 0 4px;font-size:1rem}
+    .sc-beleg{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
+      opacity:.8;margin:2px 0;word-break:break-word}
+    .sc-sauber{border-left-color:#15803d}
+    .sc-nur-hinweis{border-left-color:rgba(128,128,128,.45)}
+    .sc-tabelle{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
+    .sc-tabelle th,.sc-tabelle td{text-align:left;padding:7px 10px;border-bottom:1px solid rgba(128,128,128,.22)}
+    .sc-fehler{color:#b91c1c}
+    @media (prefers-color-scheme:dark){ .sc-form button{background:#e2e8f0;color:#0f172a} }
+  </style>
+</head>
+<body>
+
+<main class="sc-wrap">
+
+  <section class="sc-hero">
+    <h1>Was verr&auml;t Ihr Produktkatalog &uuml;ber Sie?</h1>
+    <p class="sc-lead">
+      Wer Produkte von einem Lieferanten importiert, importiert auch dessen Texte.
+      Dann steht im Shop <code>Set20-YellowLXS</code> statt einer Gr&ouml;sse, unter der
+      Option &bdquo;Farbe&ldquo; stehen <em>Funktionen</em> statt Farben, und ein durchgestrichener
+      Preis ist nicht h&ouml;her als der echte. Dieser Check findet das &mdash;
+      <strong>ohne Zugangsdaten</strong>, in etwa 15 Sekunden.
+    </p>
+
+    <form class="sc-form" id="sc-form">
+      <input id="sc-shop" type="text" inputmode="url" autocomplete="url"
+             placeholder="ihr-shop.ch" aria-label="Shop-Adresse" required>
+      <button type="submit" id="sc-knopf">Katalog pr&uuml;fen</button>
+    </form>
+    <p class="sc-klein">
+      Gelesen wird nur <code>/products.json</code> &mdash; der &ouml;ffentliche Endpunkt, den
+      jeder Shopify-Shop selbst bereitstellt. Nichts wird ver&auml;ndert, nichts gespeichert.
+    </p>
+  </section>
+
+  <section id="sc-ergebnis" hidden></section>
+
+  <section class="sc-karte">
+    <h2 style="margin-top:0">Warum Sie den Zahlen trauen k&ouml;nnen</h2>
+    <p class="sc-lead" style="margin-bottom:10px">
+      Ein Pr&uuml;fer, der &uuml;berall ausschl&auml;gt, misst nichts. Darum wurde dieser
+      gegen gepflegte Kataloge gegengepr&uuml;ft, bevor er hier steht:
+    </p>
+    <table class="sc-tabelle">
+      <thead><tr><th>Shop</th><th>Gepr&uuml;fte Produkte</th><th>Produkte mit Defekt</th></tr></thead>
+      <tbody>
+        <tr><td>gymshark.com</td><td>250</td><td>0</td></tr>
+        <tr><td>allbirds.com</td><td>250</td><td>0</td></tr>
+        <tr><td>ankerkraut.de</td><td>250</td><td>0</td></tr>
+        <tr><td>snocks.com</td><td>250</td><td>0</td></tr>
+        <tr><td>sechs weitere Shops (nicht genannt)</td><td>169&ndash;250 je Shop</td><td>1 bis 25</td></tr>
+      </tbody>
+    </table>
+    <p class="sc-klein">
+      Gemessen am 30.09.2026, zehn Shops. Jeder Befund ist w&ouml;rtlich zitierbar, keiner
+      gesch&auml;tzt. Die sechs Shops mit Befunden bleiben hier ungenannt &mdash; ihre Fehler
+      geh&ouml;ren ihnen, nicht unserer Werbung. <strong>Vier gepflegte Kataloge ergeben null.</strong>
+      Ein Pr&uuml;fer, der auch dort ausschl&auml;gt, w&auml;re wertlos.
+    </p>
+    <p class="sc-klein">
+      <strong>Defekt</strong> hei&szlig;t: objektiv falsch und f&uuml;r Ihre Kundschaft sichtbar.
+      <strong>Hinweis</strong> hei&szlig;t: einen Blick wert, es kann aber eine gute Erkl&auml;rung
+      geben &mdash; Marken f&uuml;hren ihre Farben oft mit dem englischen Originalnamen. Beides wird
+      getrennt gez&auml;hlt, damit keine Zahl gr&ouml;&szlig;er aussieht als sie ist.
+    </p>
+  </section>
+
+  <section class="sc-karte">
+    <h2 style="margin-top:0">Was gepr&uuml;ft wird</h2>
+    <ul class="sc-lead">
+      <li><strong>Rohe Lieferantentexte</strong> im Variantennamen &mdash; <code>Set 3-GreenSXL</code>, <code>XCS00525070101</code>.</li>
+      <li><strong>Englische Farbwerte</strong> in einem deutschsprachigen Shop &mdash; <code>Pieces of red</code>.</li>
+      <li><strong>Option hei&szlig;t &bdquo;Farbe&ldquo;, enth&auml;lt aber keine Farben</strong> &mdash; wer dort eine Farbe zu w&auml;hlen glaubt, w&auml;hlt ein anderes Produkt.</li>
+      <li><strong>Durchgestrichener Preis nicht h&ouml;her als der Preis.</strong> In der Schweiz regelt die Preisbekanntgabeverordnung Vergleichspreise &mdash; das ist kein Sch&ouml;nheitsfehler.</li>
+      <li><strong>Gleiche Ware, verschiedene Preise</strong> ohne Gr&ouml;ssen-, Mengen- oder Ausf&uuml;hrungsgrund.</li>
+      <li><strong>Produkte ohne Bild</strong> und <strong>doppelte Titel.</strong></li>
+    </ul>
+  </section>
+
+  <section class="sc-karte">
+    <h2 style="margin-top:0">Vollst&auml;ndige Liste</h2>
+    <p class="sc-lead">
+      Die Zahlen und drei Belege je Fehlerart sind kostenlos &mdash; genug, um selbst
+      nachzusehen, ob der Befund stimmt. Die <strong>vollst&auml;ndige Liste</strong> mit jedem
+      betroffenen Produkt, seinem Handle und dem w&ouml;rtlichen Beleg ist Teil von
+      <a href="/produkte.html">aban Pro</a>.
+    </p>
+    <p class="sc-klein">
+      Sie haben bereits einen Pro-Schl&uuml;ssel? Dann tragen Sie ihn auf
+      <a href="/produkte.html">der Pro-Seite</a> ein &mdash; dieser Check erkennt ihn danach automatisch.
+    </p>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('sc-form');
+  var feld = document.getElementById('sc-shop');
+  var knopf = document.getElementById('sc-knopf');
+  var ziel = document.getElementById('sc-ergebnis');
+
+  var NAMEN = {
+    rohe_variante: 'Rohe Lieferantentexte im Variantennamen',
+    fremdsprache: 'Englische Farbwerte im deutschsprachigen Shop',
+    option_farbe_ohne_farben: 'Option heißt „Farbe“, enthält aber keine Farben',
+    streichpreis_defekt: 'Durchgestrichener Preis nicht höher als der Preis',
+    gleiche_ware_preis: 'Gleiche Ware, verschiedene Preise',
+    ohne_bild: 'Produkt ohne Bild',
+    doppelter_titel: 'Doppelter Produkttitel'
+  };
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  function zeige(html) { ziel.innerHTML = html; ziel.hidden = false; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var shop = (feld.value || '').trim();
+    if (!shop) return;
+    knopf.disabled = true;
+    knopf.textContent = 'Prüfe …';
+    zeige('<div class="sc-karte"><p>Lese den öffentlichen Katalog von <strong>' + esc(shop) + '</strong> …</p></div>');
+
+    var pro = '';
+    try { pro = localStorage.getItem('aban_pro_key') || ''; } catch (x) {}
+    var kopf = pro ? { 'X-Pro-Key': pro } : undefined;
+
+    fetch('/api/shop-check?shop=' + encodeURIComponent(shop), { headers: kopf })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) {
+          zeige('<div class="sc-karte"><p class="sc-fehler">' + esc(d.text || 'Das hat nicht geklappt.') + '</p></div>');
+          return;
+        }
+        // Defekte zuerst, Hinweise danach — ein Markenfarbname ist auffällig, aber kein Fehler.
+        var arten = Object.keys(d.nachArt || {}).sort(function (a, b) {
+          var sa = (d.schwere && d.schwere[a] === 'defekt') ? 0 : 1;
+          var sb = (d.schwere && d.schwere[b] === 'defekt') ? 0 : 1;
+          return sa - sb || d.nachArt[b] - d.nachArt[a];
+        });
+        var h = '<div class="sc-karte">';
+        h += '<div class="sc-zahl">' + d.produkteMitDefekt + '</div>';
+        h += '<p class="sc-lead" style="margin:6px 0 0">von <strong>' + d.geprueft +
+             '</strong> geprüften Produkten in <strong>' + esc(d.shop) +
+             '</strong> haben einen <strong>Defekt</strong> — etwas, das objektiv falsch ist und das Ihre Kundschaft sieht.</p>';
+        if (d.hinweise) {
+          h += '<p class="sc-klein">Dazu ' + d.hinweise + ' Hinweise, bei denen es eine gute Erklärung geben kann (' +
+               d.betroffeneProdukte + ' Produkte insgesamt betroffen).</p>';
+        }
+        if (!d.katalogVollstaendig) {
+          h += '<p class="sc-klein">Geprüft wurden die ersten ' + d.geprueft +
+               ' Produkte. Größere Kataloge prüft die vollständige Fassung.</p>';
+        }
+        h += '</div>';
+
+        if (arten.length === 0) {
+          h += '<div class="sc-karte"><div class="sc-befund sc-sauber"><h3>Kein Befund.</h3>' +
+               '<p class="sc-klein">Dieser Katalog sieht sauber aus — wie Gymshark und Allbirds in der Gegenprobe.</p></div></div>';
+        } else {
+          h += '<div class="sc-karte">';
+          arten.forEach(function (art) {
+            var hinweis = !(d.schwere && d.schwere[art] === 'defekt');
+            h += '<div class="sc-befund' + (hinweis ? ' sc-nur-hinweis' : '') + '"><h3>' +
+                 (hinweis ? 'Hinweis: ' : '') + d.nachArt[art] + ' × ' + esc(NAMEN[art] || art) + '</h3>';
+            (d.beispiele[art] || []).forEach(function (b) {
+              h += '<p class="sc-beleg">' + esc(b.titel) + ' → ' + esc(b.beleg) + '</p>';
+            });
+            if (!d.pro && d.nachArt[art] > 3) {
+              h += '<p class="sc-klein">… und ' + (d.nachArt[art] - 3) +
+                   ' weitere. Die vollständige Liste ist Teil von <a href="/produkte.html">aban Pro</a>.</p>';
+            }
+            h += '</div>';
+          });
+          h += '</div>';
+        }
+        h += '<p class="sc-klein">' + esc(d.hinweis) + '</p>';
+        zeige(h);
+      })
+      .catch(function () {
+        zeige('<div class="sc-karte"><p class="sc-fehler">Der Check ist nicht erreichbar. Bitte später nochmals.</p></div>');
+      })
+      .then(function () { knopf.disabled = false; knopf.textContent = 'Katalog prüfen'; });
+  });
+})();
+</script>
+
+</body>
+</html>

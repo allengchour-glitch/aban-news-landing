@@ -8,10 +8,12 @@ on:
     paths:
       - 'functions/**'
       - 'hype-filter.html'
+      - 'tools/katalog_audit.mjs'
   pull_request:
     paths:
       - 'functions/**'
       - 'hype-filter.html'
+      - 'tools/katalog_audit.mjs'
   workflow_dispatch:
 
 jobs:
@@ -36,6 +38,19 @@ jobs:
             node functions/_api.test.mjs
           else
             echo "kein API-Test (functions/_api.test.mjs nicht vorhanden)"
+          fi
+
+      # Shop-Check: Adressprüfung der öffentlichen Katalog-Funktion + die Prüfer selbst.
+      # Beide laufen ohne Netz — die Prüfer bekommen gebaute Kataloge, die Adressprüfung
+      # entscheidet vor dem ersten Abruf. Wichtig, weil hier ein Fremder die Zieladresse
+      # vorgibt: ohne diese Tests wäre /api/shop-check eine Abruf-Maschine auf Zuruf.
+      - name: Shop-Check-Tests (Adressprüfung + Katalog-Prüfer)
+        run: |
+          if [ -f functions/_shop-check.test.mjs ]; then
+            node functions/_shop-check.test.mjs
+            node tools/katalog_audit.mjs --selbsttest
+          else
+            echo "kein Shop-Check-Test vorhanden"
           fi
 
       # Schneller HTML-Sanity-Check: Tag-Balance + JSON-LD-Gültigkeit

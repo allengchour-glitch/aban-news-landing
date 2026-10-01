@@ -1,0 +1,62 @@
+name: Startseite schlank (LuxeStyle)
+
+# Macht die LuxeStyle-Startseite schlank: 17 Produktreihen auf 4, erste Reihe ist die
+# bewiesene Verkaufspreisklasse. Schreibt NIE in das aktive Theme, sondern legt eine
+# Kopie an - publizieren muss ein Mensch.
+#
+# Gemessene Begruendung steht im Kopf von automation/homepage_slim.mjs.
+# Bewusst KEIN schedule (Cron-Nulldiaet, Fair-Use).
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur zeigen, nichts schreiben'
+        type: boolean
+        default: true
+      ziel_theme_id:
+        description: 'Optional: bestehende Theme-ID als Ziel (leer = neue Kopie)'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homepage-slim
+  cancel-in-progress: false
+
+jobs:
+  umstellen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/homepage_slim.mjs
+            tools/shop_startseite.mjs
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Selbsttest des Umstellers
+        run: node automation/homepage_slim.mjs --selbsttest
+
+      - name: Startseite umstellen
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          ZIEL_THEME_ID: ${{ inputs.ziel_theme_id }}
+        run: node automation/homepage_slim.mjs
+
+      - name: Startseite nachmessen (live, zum Vergleich)
+        if: always()
+        env:
+          N: '8'
+        run: node tools/shop_startseite.mjs || true

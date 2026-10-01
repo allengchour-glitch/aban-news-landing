@@ -1,0 +1,890 @@
+produkt_id,handle,titel,variante_id,alter_preis,neuer_preis,einkauf,marge_vorher,entscheid
+15446271066497,bouncing-balls-katzenspielzeug-mit-feder-611266,"Bouncing Balls Katzenspielzeug mit Feder",55867032699265,19.90,24.90,13.50,24.6,gesetzt
+15446271197569,wurm-spielzeug-set-fur-katzen-541762,"Wurm-Spielzeug-Set für Katzen",55867032895873,15.90,19.90,11.03,22.9,gesetzt
+15446271721857,ersatzfedern-fur-katzenangel-629300,"Ersatzfedern für Katzenangel",56063525650817,15.90,19.90,10.29,28.1,gesetzt
+15446271721857,ersatzfedern-fur-katzenangel-629300,"Ersatzfedern für Katzenangel",56063525683585,17.90,24.90,12.25,24.0,gesetzt
+15446271721857,ersatzfedern-fur-katzenangel-629300,"Ersatzfedern für Katzenangel",56063525716353,17.90,24.90,11.92,26.0,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063698960769,25.90,34.90,18.24,21.8,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063698993537,23.90,29.90,16.34,24.0,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063699026305,20.90,29.90,14.11,25.0,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063699059073,15.90,39.90,21.90,-53.0,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063699091841,25.90,34.90,18.23,21.8,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063699124609,22.90,29.90,15.62,24.2,gesetzt
+15447633822081,kratzbaum-und-bett-fur-katzen-aus-karton-625500,"Kratzbaum und Bett für Katzen aus Karton",56063699157377,19.90,24.90,13.67,23.7,gesetzt
+15447637787009,kuscheliges-katzenzelt-norwegian-cottage-614100,"Kuscheliges Katzenzelt «Norwegian Cottage»",56063700926849,129.90,169.90,92.39,21.0,gesetzt
+15447637787009,kuscheliges-katzenzelt-norwegian-cottage-614100,"Kuscheliges Katzenzelt «Norwegian Cottage»",56063700959617,29.90,39.90,20.76,22.9,gesetzt
+15447637787009,kuscheliges-katzenzelt-norwegian-cottage-614100,"Kuscheliges Katzenzelt «Norwegian Cottage»",56063700992385,155.90,199.90,110.99,20.9,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701090689,50.90,64.90,36.11,21.2,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701123457,62.90,79.90,44.52,21.4,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701156225,50.90,64.90,36.11,21.2,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701188993,62.90,79.90,44.52,21.4,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701221761,50.90,64.90,36.11,21.2,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701254529,62.90,79.90,44.52,21.4,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701287297,50.90,64.90,36.11,21.2,gesetzt
+15447638868353,kuscheliges-katzensofa-mit-cord-fleece-841474,"Kuscheliges Katzensofa mit Cord-Fleece",56063701320065,62.90,79.90,44.52,21.4,gesetzt
+15447894458753,seidene-uv-schutzmaske-mit-katzenohren-602900,"Seidene UV-Schutzmaske mit Katzenohren",56063739199873,15.90,19.90,9.08,36.5,gesetzt
+15447894458753,seidene-uv-schutzmaske-mit-katzenohren-602900,"Seidene UV-Schutzmaske mit Katzenohren",56063739232641,15.90,19.90,9.08,36.5,gesetzt
+15447894458753,seidene-uv-schutzmaske-mit-katzenohren-602900,"Seidene UV-Schutzmaske mit Katzenohren",56063739265409,15.90,19.90,9.08,36.5,gesetzt
+15447894458753,seidene-uv-schutzmaske-mit-katzenohren-602900,"Seidene UV-Schutzmaske mit Katzenohren",56063739298177,15.90,19.90,9.08,36.5,gesetzt
+15447894458753,seidene-uv-schutzmaske-mit-katzenohren-602900,"Seidene UV-Schutzmaske mit Katzenohren",56063739330945,15.90,19.90,9.08,36.5,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747686785,22.90,29.90,14.26,30.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747719553,22.90,29.90,14.26,30.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747752321,22.90,29.90,14.26,30.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747785089,22.90,29.90,14.26,30.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747817857,25.90,34.90,18.22,21.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747850625,25.90,34.90,18.22,21.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747883393,25.90,34.90,18.22,21.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747916161,25.90,34.90,18.22,21.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747948929,25.90,34.90,18.22,21.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063747981697,25.90,34.90,18.22,21.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063748014465,22.90,29.90,14.26,30.8,gesetzt
+15447898554753,punk-maske-mit-katzenohren-stirnband-442304,"Punk Maske mit Katzenohren-Stirnband",56063748047233,22.90,29.90,14.26,30.8,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976583041,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976615809,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976648577,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976681345,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976714113,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976746881,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976779649,15.90,19.90,11.00,23.1,gesetzt
+15447926342017,katzenpfoten-handschuhe-plusch-643600,"Katzenpfoten-Handschuhe Plüsch",56052976812417,15.90,19.90,11.00,23.1,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618542977,15.90,19.90,9.68,32.4,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618575745,15.90,19.90,10.01,30.0,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618608513,15.90,19.90,10.33,27.8,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618641281,15.90,19.90,10.66,25.5,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618674049,15.90,19.90,10.98,23.3,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618706817,15.90,19.90,9.68,32.4,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618739585,15.90,19.90,10.01,30.0,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618772353,15.90,19.90,10.33,27.8,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618805121,15.90,19.90,10.66,25.5,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618837889,15.90,19.90,10.98,23.3,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618870657,15.90,19.90,9.68,32.4,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618903425,15.90,19.90,10.01,30.0,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618936193,15.90,19.90,10.33,27.8,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873618968961,15.90,19.90,10.66,25.5,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619001729,15.90,19.90,10.98,23.3,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619034497,15.90,19.90,9.68,32.4,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619067265,15.90,19.90,10.01,30.0,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619100033,15.90,19.90,10.33,27.8,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619132801,15.90,19.90,10.66,25.5,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619165569,15.90,19.90,10.98,23.3,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619198337,14.90,19.90,9.68,27.8,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619231105,14.90,19.90,10.01,25.4,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619263873,14.90,19.90,10.33,23.0,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619296641,15.90,19.90,10.66,25.5,gesetzt
+15447955636609,kurzarm-shirt-mit-trendigem-katzenprint-635000,"Kurzarm-Shirt mit trendigem Katzenprint",55873619329409,15.90,19.90,10.98,23.3,gesetzt
+15448900731265,ohrringe-mit-katzenaugenstein-und-turkis-optik-615100,"Ohrringe mit Katzenaugenstein und Türkis-Optik",55878211174785,24.90,34.90,16.93,24.5,gesetzt
+15448937595265,kuscheliges-winterbett-fur-katzen-635600,"Kuscheliges Winterbett für Katzen",55878320193921,29.90,39.90,20.88,22.4,gesetzt
+15448940118401,edelstahl-katzentoilette-geruchs-spritzschutz-469505,"Edelstahl-Katzentoilette, Geruchs- & Spritzschutz",55878328123777,115.90,149.90,82.34,21.1,gesetzt
+15448940249473,snackbox-katzenbett-ganzjahrig-multifunktional-323010,"Snackbox Katzenbett – Ganzjährig & Multifunktional",55878328254849,47.90,54.90,28.98,32.8,gesetzt
+15448940380545,wand-katzenbaum-platzsparendes-kletterparadies-716482,"Wand-Katzenbaum – platzsparendes Kletterparadies",55878328385921,80.90,104.90,57.67,20.8,gesetzt
+15448940642689,doppelstockiges-katzenhaus-mit-kratzbaum-303490,"Doppelstöckiges Katzenhaus mit Kratzbaum",55878328942977,85.90,109.90,61.02,21.1,gesetzt
+15448940773761,360-drehbares-katzenbett-fur-den-schreibtisch-259394,"360° drehbares Katzenbett für den Schreibtisch",55878329074049,151.90,194.90,108.02,21.0,gesetzt
+15448941035905,l-formiges-sisal-katzenkratzbrett-037441,"L-förmiges Sisal-Katzenkratzbrett",55878329663873,81.90,104.90,58.28,20.9,gesetzt
+15448941396353,katzen-heizungsliege-mit-kunstfell-191554,"Katzen-Heizungsliege mit Kunstfell",55878330548609,40.90,54.90,28.59,22.3,gesetzt
+15448942543233,katzen-wrestling-handschuh-mit-katzenminze-741954,"Katzen-Wrestling-Handschuh mit Katzenminze",55878333268353,17.90,24.90,12.38,23.2,gesetzt
+15448943755649,erhohtes-auslaufsicheres-katzenklo-778433,"Erhöhtes, auslaufsicheres Katzenklo",55878334808449,88.90,114.90,62.78,21.5,gesetzt
+15448943821185,katzentoilette-mit-doppeltur-033538,"Katzentoilette mit Doppeltür",55878334972289,86.90,114.90,61.80,21.0,gesetzt
+15448943985025,e-classic-grey-katzentoilette-584002,"E Classic Grey Katzentoilette",55878335267201,86.90,114.90,61.80,21.0,gesetzt
+15448944345473,galaxy-katzentoilette-orange-geruchsdicht-537602,"Galaxy Katzentoilette Orange, Geruchsdicht",55878336151937,86.90,114.90,61.52,21.3,gesetzt
+15448944411009,pinkmagic-cube-katzenklo-intelligent-selbstrei-075457,"PinkMagic Cube Katzenklo – intelligent & selbstreinigend",55878336348545,82.90,109.90,58.54,21.5,gesetzt
+15448944542081,galaxy-katzentoilette-geschlossen-grau-717698,"Galaxy Katzentoilette, geschlossen, Grau",55878336577921,83.90,109.90,59.79,20.8,gesetzt
+15448944607617,elektrischer-katzenspielball-mit-jagdbezug-607000,"Elektrischer Katzenspielball mit Jagdbezug",55878336708993,17.90,24.90,11.93,25.9,gesetzt
+15448945394049,spielzeug-fur-hunde-und-katzen-gegen-langeweil-619800,"Spielzeug für Hunde und Katzen gegen Langeweile",55878338314625,16.90,24.90,11.29,25.8,gesetzt
+15448945787265,maus-teaser-ball-elektrisches-katzenspielzeug-627000,"Maus Teaser Ball – elektrisches Katzenspielzeug",55878339166593,38.90,49.90,26.15,25.3,gesetzt
+15448945852801,interaktiver-katzen-spielball-626700,"Interaktiver Katzen-Spielball",55878339297665,17.90,24.90,12.30,23.6,gesetzt
+15448946016641,3-in-1-kasehaus-smart-katzenspielzeug-630800,"3-in-1 Käsehaus Smart Katzenspielzeug",55878339658113,25.90,34.90,18.11,22.3,gesetzt
+15448946049409,intelligenter-spielball-fur-katzen-619000,"Intelligenter Spielball für Katzen",55878339690881,15.90,19.90,9.27,35.2,gesetzt
+15448946180481,elektrischer-katzenspielstab-mit-sound-617500,"Elektrischer Katzenspielstab mit Sound",55878339953025,40.90,54.90,28.50,22.6,gesetzt
+15448946442625,holz-drehteller-mit-teaser-stab-fur-katzen-637000,"Holz-Drehteller mit Teaser-Stab für Katzen",55878340510081,28.90,39.90,20.23,22.2,gesetzt
+15448946704769,jagd-und-spielversteck-fur-katzen-628500,"Jagd- und Spielversteck für Katzen",55878341165441,24.90,34.90,16.93,24.5,gesetzt
+15448947163521,interaktiver-vogel-mit-sound-fur-katzen-602626,"Interaktiver Vogel mit Sound für Katzen",55878342115713,16.90,24.90,11.29,25.8,gesetzt
+15448948375937,weihnachts-pluschtier-mit-sound-fur-hunde-katz-301376,"Weihnachts-Plüschtier mit Sound für Hunde & Katzen",55878345523585,16.90,24.90,11.17,26.6,gesetzt
+15448948834689,katzenspielzeug-klang-rollbahn-028672,"Katzenspielzeug Klang-Rollbahn",55878346899841,21.90,29.90,14.94,24.2,gesetzt
+15448948900225,interaktiver-futterspender-fur-katzen-210241,"Interaktiver Futterspender für Katzen",55878347129217,54.90,69.90,38.00,23.1,gesetzt
+15448950768001,automatischer-wi-fi-futterspender-fur-katzen-k-030338,"Automatischer Wi-Fi Futterspender für Katzen & kleine Hunde",55878352961921,89.90,114.90,63.98,20.9,gesetzt
+15448951128449,anti-rutsch-schleckschale-fur-hunde-und-katzen-630100,"Anti-Rutsch Schleckschale für Hunde und Katzen",55878353551745,19.90,24.90,13.45,24.9,gesetzt
+15448951423361,futter-und-wasserspender-fur-katzen-612100,"Futter- und Wasserspender für Katzen",55878355222913,25.90,34.90,17.96,23.0,gesetzt
+15449126633857,elf-katzenklo-oben-vorne-einstieg-geruchsarm-902786,"Elf Katzenklo, oben/vorne Einstieg, Geruchsarm",55879479198081,75.90,99.90,53.83,21.2,gesetzt
+15449126699393,geraumige-geruchsdichte-katzentoilette-aus-ede-462595,"Geräumige, geruchsdichte Katzentoilette aus Edelstahl",55879479263617,110.90,144.90,79.08,20.8,gesetzt
+15449126732161,edles-katzenklo-aus-edelstahl-komplett-geschlo-853377,"Edles Katzenklo aus Edelstahl, komplett geschlossen",55879479296385,94.90,124.90,67.21,21.3,gesetzt
+15449126830465,geraumige-katzentoilette-mit-geruchsverschluss-001473,"Geräumige Katzentoilette mit Geruchsverschluss",55879479722369,82.90,109.90,58.70,21.3,gesetzt
+15449126896001,wurfel-katzentoilette-mit-zwei-eingangen-741505,"Würfel-Katzentoilette mit zwei Eingängen",55879479787905,81.90,104.90,57.71,21.7,gesetzt
+15449127027073,katzentoilette-mit-deckel-284929,"Katzentoilette mit Deckel",55879479984513,77.90,99.90,55.46,20.9,gesetzt
+15449127223681,2er-set-sisal-kratzmatten-fur-katzen-379137,"2er-Set Sisal-Kratzmatten für Katzen",55879480476033,99.90,119.90,64.65,28.1,gesetzt
+15449127518593,kompakter-katzenbaum-mit-2-hohlen-sisal-kratzs-774401,"Kompakter Katzenbaum mit 2 Höhlen & Sisal-Kratzstämmen",55879480803713,94.90,114.90,62.32,27.0,gesetzt
+15449127649665,multifunktionaler-katzenkratzbaum-mit-tunnel-686146,"Multifunktionaler Katzenkratzbaum mit Tunnel",55879481098625,92.90,114.90,61.43,26.5,gesetzt
+15449127747969,mond-sterne-katzenbaum-mit-4-ebenen-blau-282177,"Mond & Sterne Katzenbaum mit 4 Ebenen – Blau",55879481196929,94.90,119.90,65.61,23.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563575681,15.90,19.90,9.53,33.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563608449,15.90,19.90,9.85,31.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563641217,15.90,19.90,10.19,28.8,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563673985,15.90,19.90,10.51,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563706753,15.90,19.90,10.83,24.3,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563739521,16.90,24.90,11.17,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563772289,16.90,24.90,11.49,24.5,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563805057,16.90,24.90,11.81,22.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563837825,15.90,19.90,9.53,33.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563870593,15.90,19.90,9.85,31.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563903361,15.90,19.90,10.19,28.8,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563936129,15.90,19.90,10.51,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879563968897,15.90,19.90,10.83,24.3,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564001665,16.90,24.90,11.17,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564034433,16.90,24.90,11.49,24.5,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564067201,16.90,24.90,11.81,22.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564099969,15.90,19.90,9.53,33.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564132737,15.90,19.90,9.85,31.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564165505,15.90,19.90,10.19,28.8,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564198273,15.90,19.90,10.51,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564231041,15.90,19.90,10.83,24.3,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564263809,16.90,24.90,11.17,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564296577,16.90,24.90,11.49,24.5,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564329345,16.90,24.90,11.81,22.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564362113,15.90,19.90,9.53,33.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564394881,15.90,19.90,9.85,31.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564427649,15.90,19.90,10.19,28.8,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564460417,15.90,19.90,10.51,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564493185,15.90,19.90,10.83,24.3,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564525953,16.90,24.90,11.17,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564558721,16.90,24.90,11.49,24.5,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564591489,16.90,24.90,11.81,22.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564624257,15.90,19.90,9.53,33.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564657025,15.90,19.90,9.85,31.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564689793,15.90,19.90,10.19,28.8,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564722561,15.90,19.90,10.51,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564755329,15.90,19.90,10.83,24.3,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564788097,16.90,24.90,11.17,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564820865,16.90,24.90,11.49,24.5,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564853633,16.90,24.90,11.81,22.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564886401,15.90,19.90,9.53,33.4,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564919169,15.90,19.90,9.85,31.2,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564951937,15.90,19.90,10.19,28.8,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879564984705,15.90,19.90,10.51,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879565017473,15.90,19.90,10.83,24.3,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879565050241,16.90,24.90,11.17,26.6,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879565083009,16.90,24.90,11.49,24.5,gesetzt
+15449149538689,warmer-3d-hoodie-mit-doppelkappe-fur-katzenlie-609000,"Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen",55879565115777,16.90,24.90,11.81,22.4,gesetzt
+15449178341761,gps-halsband-fur-katzen-mit-apple-find-my-606900,"GPS-Halsband für Katzen · Find-My-kompatibel",55879871168897,15.90,19.90,9.77,31.7,gesetzt
+15449178636673,katzenhaar-gedenkanhanger-set-6-teilig-424578,"Katzenhaar-Gedenkanhänger-Set, 6-teilig",55879871627649,23.90,29.90,14.80,31.2,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723543937,14.90,19.90,8.68,35.3,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723609473,14.90,19.90,8.66,35.4,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723675009,14.90,19.90,8.71,35.0,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723740545,14.90,19.90,8.66,35.4,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723806081,14.90,19.90,8.63,35.6,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723838849,14.90,19.90,8.58,36.0,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881723969921,21.90,29.90,14.96,24.1,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881724002689,21.90,29.90,14.96,24.1,gesetzt
+15449426067841,massagehandschuhe-fur-hunde-und-katzenpflege-962240,"Massagehandschuhe für Hunde- und Katzenpflege",55881724035457,21.90,29.90,14.96,24.1,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881769943425,27.90,34.90,19.10,23.9,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881769976193,31.90,39.90,22.06,23.2,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770008961,19.90,24.90,13.54,24.4,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770041729,31.90,39.90,22.06,23.2,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770074497,19.90,24.90,13.54,24.4,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770107265,31.90,39.90,22.06,23.2,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770140033,32.90,44.90,22.84,22.9,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770172801,21.90,29.90,15.01,23.8,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770205569,32.90,44.90,22.69,23.4,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770238337,21.90,29.90,14.82,24.8,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770271105,32.90,44.90,22.82,22.9,gesetzt
+15449429574017,tragbares-katzennest-910720,"Tragbares Katzennest",55881770303873,28.90,39.90,20.01,23.1,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786360193,17.90,24.90,12.17,24.5,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786392961,19.90,24.90,13.60,24.1,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786425729,17.90,24.90,11.87,26.3,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786458497,20.90,29.90,14.24,24.3,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786491265,18.90,24.90,12.93,24.0,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786524033,19.90,24.90,13.42,25.1,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786556801,19.90,24.90,13.79,23.0,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786589569,18.90,24.90,12.93,24.0,gesetzt
+15449430950273,katzen-hunde-bett-atmungsaktiv-reisebereit-583232,"Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit",55881786622337,19.90,24.90,13.42,25.1,gesetzt
+15449431277953,interaktives-katzenspielzeug-mit-fernbedienung-503744,"Interaktives Katzenspielzeug mit Fernbedienung",55881790816641,17.90,19.90,10.73,33.4,gesetzt
+15449431277953,interaktives-katzenspielzeug-mit-fernbedienung-503744,"Interaktives Katzenspielzeug mit Fernbedienung",55881790849409,17.90,19.90,10.73,33.4,gesetzt
+15449431277953,interaktives-katzenspielzeug-mit-fernbedienung-503744,"Interaktives Katzenspielzeug mit Fernbedienung",55881790882177,15.90,19.90,10.73,25.0,gesetzt
+15449431277953,interaktives-katzenspielzeug-mit-fernbedienung-503744,"Interaktives Katzenspielzeug mit Fernbedienung",55881790914945,15.90,19.90,10.73,25.0,gesetzt
+15449431474561,2-in-1-badeburste-mit-massage-fur-hunde-katzen-354a51,"2-in-1 Badebürste mit Massage für Hunde & Katzen",55881792946561,16.90,24.90,11.28,25.8,gesetzt
+15449431474561,2-in-1-badeburste-mit-massage-fur-hunde-katzen-354a51,"2-in-1 Badebürste mit Massage für Hunde & Katzen",55881792979329,16.90,24.90,11.28,25.8,gesetzt
+15449431474561,2-in-1-badeburste-mit-massage-fur-hunde-katzen-354a51,"2-in-1 Badebürste mit Massage für Hunde & Katzen",55881793012097,16.90,24.90,11.28,25.8,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799795073,18.90,24.90,13.14,22.8,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799827841,14.90,19.90,9.04,32.6,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799860609,18.90,24.90,13.14,22.8,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799893377,14.90,19.90,9.04,32.6,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799926145,18.90,24.90,13.14,22.8,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799958913,14.90,19.90,9.04,32.6,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881799991681,20.90,29.90,14.64,22.2,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881800024449,21.90,29.90,14.85,24.7,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881800057217,20.90,29.90,14.64,22.2,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881800089985,21.90,29.90,14.94,24.2,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881800122753,21.90,29.90,15.14,23.2,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881800155521,21.90,29.90,14.94,24.2,gesetzt
+15449432195457,intelligente-katzenkugel-075648,"Intelligente Katzenkugel",55881800188289,109.90,144.90,78.49,20.6,gesetzt
+15449432916353,kurbis-strichburste-fur-hunde-katzen-selbstrei-066368,"Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend",55881807757697,21.90,29.90,14.66,25.6,gesetzt
+15449462112641,franzosische-katzenaugen-nagelsticker-607100,"Französische Katzenaugen-Nagelsticker",55882077045121,15.90,19.90,9.78,31.7,gesetzt
+15449462374785,kurz-katzenaugen-form-605700,"Kurz, Katzenaugen-Form",55882079043969,16.90,19.90,11.03,27.5,gesetzt
+15449468141953,erhohte-katzennapf-set-278722,"Erhöhte Katzennapf-Set",55882093494657,20.90,29.90,14.65,22.1,gesetzt
+15449468207489,langsamfutterer-fur-hunde-und-katzen-633800,"Langsamfütterer für Hunde und Katzen",55882093560193,30.90,39.90,21.30,23.4,gesetzt
+15449468338561,kaseformige-keramik-schussel-fur-katzen-628100,"Käseförmige Keramik-Schüssel für Katzen",55882093691265,23.90,29.90,16.55,23.1,gesetzt
+15449468600705,keramik-futternapf-fur-katzen-618800,"Keramik Futternapf für Katzen",55882094051713,27.90,34.90,19.18,23.6,gesetzt
+15449483248001,verstellbares-katzenhalsband-mit-leine-617600,"Verstellbares Katzenhalsband mit Leine",55882213425537,15.90,19.90,10.17,28.9,gesetzt
+15449483280769,automatische-hunde-und-katzenleine-625800,"Automatische Hunde- und Katzenleine",55882213458305,15.90,19.90,10.94,23.5,gesetzt
+15449484001665,katzengeschirr-mit-leine-sicher-bequem-203905,"Katzengeschirr mit Leine, sicher & bequem",55882214769025,15.90,19.90,10.99,23.2,gesetzt
+15449496781185,keramik-futterschale-fur-katzen-mit-sturzschut-621100,"Keramik-Futterschale für Katzen mit Sturzschutz",55882240721281,42.90,54.90,30.13,22.0,gesetzt
+15449496879489,katzen-schussel-fur-gesunde-halswirbelsaule-603200,"Katzen-Schüssel für gesunde Halswirbelsäule",56055343219073,17.90,24.90,12.29,23.7,gesetzt
+15449496879489,katzen-schussel-fur-gesunde-halswirbelsaule-603200,"Katzen-Schüssel für gesunde Halswirbelsäule",56055343251841,17.90,24.90,12.29,23.7,gesetzt
+15449496879489,katzen-schussel-fur-gesunde-halswirbelsaule-603200,"Katzen-Schüssel für gesunde Halswirbelsäule",56055343284609,17.90,24.90,12.29,23.7,gesetzt
+15449496879489,katzen-schussel-fur-gesunde-halswirbelsaule-603200,"Katzen-Schüssel für gesunde Halswirbelsäule",56055343317377,24.90,34.90,17.05,23.9,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616734081,19.90,24.90,13.29,25.8,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616766849,19.90,29.90,13.94,22.2,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616799617,20.90,29.90,14.59,22.4,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616832385,21.90,29.90,15.25,22.6,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616865153,19.90,24.90,13.29,25.8,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616897921,19.90,29.90,13.94,22.2,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616930689,20.90,29.90,14.59,22.4,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616963457,21.90,29.90,15.25,22.6,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882616996225,19.90,24.90,13.29,25.8,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617028993,19.90,29.90,13.94,22.2,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617061761,20.90,29.90,14.59,22.4,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617094529,21.90,29.90,15.25,22.6,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617127297,19.90,24.90,13.29,25.8,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617160065,19.90,29.90,13.94,22.2,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617192833,20.90,29.90,14.59,22.4,gesetzt
+15449576964481,herren-knit-sweater-mit-niedlichem-katzenprint-606100,"Herren Knit Sweater mit niedlichem Katzenprint",55882617225601,21.90,29.90,15.25,22.6,gesetzt
+15449590563201,katzenring-anpassbar-383937,"Katzenring anpassbar",55882825466241,21.90,24.90,13.82,29.9,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776172929,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776205697,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776238465,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776271233,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776304001,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776336769,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776369537,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776402305,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776435073,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776467841,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776500609,17.90,24.90,12.15,24.6,gesetzt
+15450646184321,sneaker-mit-katzen-design-und-dicker-sohle-677377,"Sneaker mit Katzen-Design und dicker Sohle",55886776533377,17.90,24.90,12.15,24.6,gesetzt
+15450771784065,katzenbaum-mit-kratzstamm-49-cm-seegras-779777,"Katzenbaum mit Kratzstamm, 49 cm, Seegras",55888531292545,67.90,89.90,48.34,20.9,gesetzt
+15450772078977,rundes-katzenbett-aus-seegras-36-cm-413953,"Rundes Katzenbett aus Seegras, 36 cm",55888540893569,68.90,84.90,46.24,25.4,gesetzt
+15450772570497,katzenhohle-mit-luxus-bett-aus-seegras-876865,"Katzenhöhle mit Luxus-Bett aus Seegras",55888554688897,88.90,114.90,61.66,22.9,gesetzt
+15450772865409,katzenbaum-mit-holzelementen-aus-seegras-440513,"Katzenbaum mit Holzelementen aus Seegras",55888562389377,90.90,114.90,63.16,22.8,gesetzt
+15450773979521,sisal-kratzbaum-fur-katzen-40-cm-463298,"Sisal Kratzbaum für Katzen, 40 cm",55888582640001,48.90,64.90,34.18,22.3,gesetzt
+15450774569345,katzenkratzbaum-mit-sisalsaulen-65-cm-764866,"Katzenkratzbaum mit Sisalsäulen, 65 cm",55888587653505,80.90,104.90,57.31,21.3,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674633601,15.90,19.90,8.95,37.5,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674666369,16.90,24.90,11.73,22.9,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674699137,15.90,19.90,8.95,37.5,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674731905,16.90,24.90,11.73,22.9,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674764673,15.90,19.90,8.92,37.7,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674797441,16.90,24.90,11.68,23.2,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674830209,15.90,19.90,9.51,33.5,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674862977,15.90,19.90,9.52,33.5,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674895745,15.90,19.90,9.51,33.5,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674928513,17.90,24.90,12.39,23.1,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674961281,17.90,24.90,12.39,23.1,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889674994049,17.90,24.90,12.42,22.9,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889675026817,17.90,24.90,12.42,22.9,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889675059585,17.90,24.90,12.40,23.0,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889675092353,17.90,24.90,12.40,23.0,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889675125121,17.90,24.90,12.40,23.0,gesetzt
+15450828767617,katzen-und-hundeburste-mit-massagefunktion-546624,"Katzen- und Hundebürste mit Massagefunktion",55889675157889,15.90,19.90,9.54,33.3,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687118209,14.90,19.90,8.84,34.1,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687150977,14.90,19.90,8.84,34.1,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687183745,14.90,19.90,8.84,34.1,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687216513,14.90,19.90,9.28,30.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687249281,14.90,19.90,9.28,30.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687282049,14.90,19.90,9.28,30.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687314817,14.90,19.90,8.81,34.3,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687347585,14.90,19.90,8.81,34.3,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687380353,14.90,19.90,8.81,34.3,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687413121,20.90,29.90,14.48,23.0,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687445889,19.90,24.90,13.61,24.0,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687478657,23.90,29.90,16.33,24.1,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687511425,23.90,29.90,16.33,24.1,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687544193,33.90,44.90,23.51,22.9,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687609729,17.90,19.90,10.99,31.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687642497,19.90,24.90,12.45,30.5,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687675265,20.90,24.90,13.53,28.1,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687708033,26.90,34.90,18.90,21.9,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687740801,17.90,19.90,10.99,31.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687773569,19.90,24.90,12.45,30.5,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687806337,24.90,34.90,17.21,23.2,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687839105,31.90,39.90,21.90,23.7,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889687970177,17.90,19.90,10.76,33.2,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688002945,19.90,24.90,12.22,31.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688035713,20.90,24.90,13.49,28.3,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688068481,26.90,34.90,18.90,21.9,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688166785,17.90,19.90,10.99,31.8,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688199553,19.90,24.90,12.45,30.5,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688232321,20.90,24.90,13.55,28.0,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688265089,26.90,34.90,18.74,22.6,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688330625,19.90,24.90,13.58,24.2,gesetzt
+15450829259137,selbstreinigende-katzenburste-aus-stahl-200576,"Selbstreinigende Katzenbürste aus Stahl",55889688363393,19.90,24.90,13.58,24.2,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730437505,15.90,19.90,10.69,25.3,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730470273,15.90,19.90,10.69,25.3,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730503041,15.90,19.90,10.69,25.3,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730535809,15.90,19.90,10.69,25.3,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730568577,28.90,39.90,19.85,23.7,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730601345,28.90,39.90,19.85,23.7,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730634113,28.90,39.90,19.85,23.7,gesetzt
+15450832896385,interaktives-slow-feeder-spielzeug-fur-hunde-k-820672,"Interaktives Slow-Feeder Spielzeug für Hunde & Katzen",55889730666881,28.90,39.90,19.83,23.8,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732534657,14.90,19.90,8.59,35.9,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732567425,14.90,19.90,8.59,35.9,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732600193,14.90,19.90,8.59,35.9,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732632961,14.90,19.90,8.59,35.9,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732927873,18.90,24.90,12.58,26.0,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732960641,50.90,64.90,35.52,22.5,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889732993409,18.90,24.90,12.58,26.0,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889733026177,18.90,24.90,12.58,26.0,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889733058945,17.90,24.90,12.18,24.4,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889733091713,17.90,24.90,12.18,24.4,gesetzt
+15450832961921,intelligenter-rollball-fur-katzen-776896,"Intelligenter Rollball für Katzen",55889733124481,93.90,539.90,299.32,-254.2,gemeldet
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755668865,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755701633,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755734401,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755767169,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755799937,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755832705,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755865473,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755898241,14.90,19.90,9.31,30.6,gesetzt
+15450834665857,waben-katzenstreu-matte-ea1e49,"Waben Katzenstreu-Matte",55889755931009,14.90,19.90,9.31,30.6,gesetzt
+15450836205953,tierhaarentferner-handschuh-fur-hunde-katzen-601200,"Tierhaarentferner-Handschuh für Hunde & Katzen",55889777230209,15.90,19.90,10.75,24.9,gesetzt
+15450836205953,tierhaarentferner-handschuh-fur-hunde-katzen-601200,"Tierhaarentferner-Handschuh für Hunde & Katzen",55889777361281,14.90,19.90,9.76,27.2,gesetzt
+15450836205953,tierhaarentferner-handschuh-fur-hunde-katzen-601200,"Tierhaarentferner-Handschuh für Hunde & Katzen",55889777394049,14.90,19.90,9.20,31.4,gesetzt
+15450836205953,tierhaarentferner-handschuh-fur-hunde-katzen-601200,"Tierhaarentferner-Handschuh für Hunde & Katzen",55889777426817,17.90,24.90,11.88,26.3,gesetzt
+15450836205953,tierhaarentferner-handschuh-fur-hunde-katzen-601200,"Tierhaarentferner-Handschuh für Hunde & Katzen",55889777459585,15.90,19.90,10.83,24.3,gesetzt
+15450840629633,tragbarer-reise-wasserspender-fur-hunde-katzen-411904,"Tragbarer Reise-Wasserspender für Hunde & Katzen",55889859838337,15.90,19.90,10.20,28.7,gesetzt
+15450840629633,tragbarer-reise-wasserspender-fur-hunde-katzen-411904,"Tragbarer Reise-Wasserspender für Hunde & Katzen",55889859871105,15.90,19.90,10.20,28.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895063937,21.90,29.90,15.18,23.0,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895096705,20.90,29.90,14.28,24.1,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895129473,14.90,19.90,9.96,25.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895162241,14.90,19.90,9.96,25.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895195009,21.90,29.90,15.18,23.0,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895227777,14.90,19.90,8.88,33.8,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895293313,19.90,24.90,13.56,24.3,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895326081,19.90,24.90,13.30,25.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895358849,19.90,24.90,13.30,25.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895391617,19.90,24.90,13.30,25.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895424385,19.90,24.90,13.64,23.8,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895489921,20.90,29.90,14.28,24.1,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895522689,20.90,29.90,14.28,24.1,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895555457,14.90,19.90,9.44,29.6,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895588225,15.90,44.90,23.91,-67.1,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895653761,16.90,24.90,11.47,24.6,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895752065,30.90,39.90,21.23,23.7,gesetzt
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895620993,15.90,49.90,25.08,-75.3,gemeldet
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895686529,20.90,64.90,34.17,-81.7,gemeldet
+15450848526721,erhohter-futternapf-fur-katzen-mit-transparent-253504,"Erhöhter Futternapf für Katzen mit transparentem Napf",55889895719297,20.90,64.90,35.93,-91.0,gemeldet
+15450849083777,katzen-hangematte-fur-fenster-121d04,"Katzen-Hängematte für Fenster",55889901191553,19.90,24.90,13.49,24.7,gesetzt
+15450849083777,katzen-hangematte-fur-fenster-121d04,"Katzen-Hängematte für Fenster",55889901224321,19.90,24.90,13.49,24.7,gesetzt
+15450849083777,katzen-hangematte-fur-fenster-121d04,"Katzen-Hängematte für Fenster",55889901257089,19.90,24.90,13.49,24.7,gesetzt
+15450849083777,katzen-hangematte-fur-fenster-121d04,"Katzen-Hängematte für Fenster",55889901289857,19.90,24.90,13.49,24.7,gesetzt
+15450849083777,katzen-hangematte-fur-fenster-121d04,"Katzen-Hängematte für Fenster",55889901322625,19.90,24.90,13.49,24.7,gesetzt
+15450849083777,katzen-hangematte-fur-fenster-121d04,"Katzen-Hängematte für Fenster",55889901355393,19.90,24.90,13.49,24.7,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933042049,16.90,24.90,11.13,26.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933074817,18.90,24.90,12.97,23.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933107585,27.90,39.90,19.61,21.9,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933271425,16.90,24.90,11.13,26.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933304193,18.90,24.90,12.97,23.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933336961,27.90,39.90,19.61,21.9,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933500801,16.90,24.90,11.13,26.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933533569,18.90,24.90,12.97,23.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933566337,27.90,39.90,19.61,21.9,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933730177,16.90,24.90,11.13,26.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933762945,18.90,24.90,12.97,23.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933795713,27.90,39.90,19.61,21.9,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933959553,16.90,24.90,11.13,26.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933992321,18.90,24.90,12.97,23.8,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934025089,27.90,39.90,19.61,21.9,gesetzt
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933140353,14.90,44.90,24.02,-79.1,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933173121,15.90,54.90,29.42,-105.6,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933205889,17.90,64.90,34.88,-116.5,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933369729,14.90,44.90,24.02,-79.1,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933402497,15.90,54.90,29.42,-105.6,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933435265,17.90,64.90,34.88,-116.5,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933599105,14.90,44.90,24.02,-79.1,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933631873,15.90,54.90,29.42,-105.6,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933664641,17.90,64.90,34.88,-116.5,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933828481,14.90,44.90,24.02,-79.1,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933861249,15.90,54.90,29.42,-105.6,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889933894017,17.90,64.90,34.72,-115.5,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934057857,14.90,44.90,24.02,-79.1,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934090625,15.90,54.90,29.42,-105.6,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934123393,17.90,64.90,34.72,-115.5,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934156161,18.90,74.90,40.48,-138.0,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934188929,18.90,74.90,40.48,-138.0,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934221697,18.90,74.90,40.48,-138.0,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934254465,18.90,94.90,52.69,-209.8,gemeldet
+15450851672449,kuscheliges-haustierbett-fur-katzen-412224,"Kuscheliges Haustierbett für Katzen",55889934287233,18.90,74.90,40.48,-138.0,gemeldet
+15450853212545,interaktives-katzen-spielzeug-fliegender-vogel-526336,"Interaktives Katzen-Spielzeug 'Fliegender Vogel'",55889944904065,15.90,19.90,11.08,22.6,gesetzt
+15450853212545,interaktives-katzen-spielzeug-fliegender-vogel-526336,"Interaktives Katzen-Spielzeug 'Fliegender Vogel'",55889944936833,15.90,19.90,10.72,25.1,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889958961537,18.90,24.90,12.93,24.0,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889958994305,21.90,29.90,14.71,25.4,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959027073,21.90,29.90,14.71,25.4,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959059841,21.90,29.90,15.20,22.9,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959092609,21.90,29.90,15.20,22.9,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959125377,23.90,34.90,16.81,21.9,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959158145,18.90,24.90,12.66,25.6,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959190913,18.90,24.90,12.66,25.6,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959256449,41.90,54.90,28.00,25.7,gesetzt
+15450854162817,interaktive-kobra-schlange-fur-katzen-587904,"Interaktive Kobra-Schlange für Katzen",55889959289217,55.90,74.90,39.69,21.1,gesetzt
+15450855965057,interaktiver-rollender-ball-fur-katzen-479168,"Interaktiver rollender Ball für Katzen",55889982128513,15.90,19.90,8.93,37.6,gesetzt
+15450856522113,kabellose-led-kopfhorer-mit-katzenohren-530368,"Kabellose LED Kopfhörer mit Katzenohren",55889990091137,19.90,24.90,11.20,37.5,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995202945,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995235713,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995268481,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995301249,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995334017,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995366785,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995399553,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995432321,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995465089,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995497857,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995530625,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995563393,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995596161,18.90,24.90,12.72,25.2,gesetzt
+15450856948097,hunde-und-katzenrucksack-b35d28,"Hunde- und Katzenrucksack",55889995628929,18.90,24.90,12.72,25.2,gesetzt
+15451896217985,smart-cat-toy-space-magic-wheel-639200,"Smartes Katzenspielzeug «Magisches Rad»",55895368434049,19.90,24.90,13.31,25.7,gesetzt
+15451917418881,katzenbaum-mit-4-ebenen-mond-sterne-lila-653249,"Katzenbaum mit 4 Ebenen, Mond & Sterne – Lila",55895408116097,95.90,119.90,66.08,23.4,gesetzt
+15452678390145,automatischer-katzenspielball-628300,"Automatischer Katzenspielball",55898517340545,19.90,24.90,13.43,25.0,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203124097,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203156865,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203386241,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203419009,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203648385,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203681153,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203910529,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203943297,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204172673,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204205441,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204434817,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204467585,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204696961,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204729729,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204959105,30.90,39.90,21.32,23.3,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204991873,18.90,49.90,27.19,-59.8,gesetzt
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203189633,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203222401,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203255169,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203287937,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203320705,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203353473,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203451777,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203484545,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203517313,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203550081,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203582849,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203615617,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203713921,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203746689,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203779457,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203812225,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203844993,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203877761,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066203976065,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204008833,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204041601,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204074369,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204107137,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204139905,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204238209,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204270977,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204303745,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204336513,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204369281,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204402049,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204500353,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204533121,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204565889,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204598657,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204631425,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204664193,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204762497,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204795265,20.90,69.90,37.36,-98.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204828033,23.90,84.90,44.71,-107.9,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204860801,25.90,99.90,55.11,-136.4,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204893569,27.90,94.90,52.73,-110.0,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066204926337,29.90,104.90,58.30,-116.6,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066205024641,19.90,74.90,41.11,-129.5,gemeldet
+15452685205889,katzenfestes-einheitssofauberwurf-603200,"Katzenfestes Einheitssofaüberwurf",56066205057409,20.90,69.90,37.36,-98.6,gemeldet
+15452708733313,doppelspitz-burste-fur-katzen-hunde-723840,"Doppelspitz-Bürste für Katzen & Hunde",55898606141825,15.90,19.90,10.65,25.6,gesetzt
+15453540712833,katzenspielzeug-622200,"Katzenspielzeug",56066366800257,106.90,139.90,76.32,20.7,gesetzt
+15453540712833,katzenspielzeug-622200,"Katzenspielzeug",56066366833025,106.90,139.90,76.32,20.7,gesetzt
+15453763240321,katzen-spielball-mit-spa-effekt-629900,"Katzen-Spielball mit Spasseffekt",55904643481985,18.90,24.90,12.79,24.8,gesetzt
+15453763600769,bissfeste-elektro-jump-ball-fur-katzen-hunde-633300,"Bissfeste Elektro-Jump-Ball für Katzen & Hunde",55904643875201,15.90,19.90,10.82,24.4,gesetzt
+15453763731841,kratzbrett-fuer-katzen-schont-moebel-und-krallen-606500,"Kratzbrett für Katzen · schont Möbel und Krallen",55904644006273,40.90,54.90,28.93,21.4,gesetzt
+15453764387201,hunde-katzen-futterschale-aus-lebensmittelecht-616600,"Hunde-Katzen-Futterschale aus Lebensmittelecht Silikon",55904646660481,15.90,19.90,9.39,34.4,gesetzt
+15453764649345,wasserquelle-fur-katzen-futterautomat-fur-hund-615200,"Wasserquelle für Katzen & Futterautomat für Hunde",55904647381377,27.90,34.90,19.05,24.1,gesetzt
+15453765009793,intelligenter-wasserspender-fur-katzen-621200,"Intelligenter Wasserspender für Katzen",55904647741825,81.90,104.90,58.36,20.8,gesetzt
+15453772480897,katzen-spielzeug-mit-futter-feeder-605200,"Katzen-Spielzeug mit Futter-Feeder",55904668713345,20.90,29.90,14.08,25.1,gesetzt
+15453773693313,schleckmatte-fur-hunde-und-katzen-silikon-602100,"Schleckmatte für Hunde und Katzen – Silikon",55904671662465,64.90,84.90,46.17,21.0,gesetzt
+15453783622017,wetterfeste-katzenhutte-fur-draussen-600200,"Wetterfeste Katzenhütte für draussen",55904775012737,20.90,29.90,14.52,22.8,gesetzt
+15453785194881,kletterbaum-fur-katzen-624900,"Kletterbaum für Katzen",55904796574081,112.90,144.90,80.02,21.2,gesetzt
+15453785391489,kratzposten-fur-katzen-619800,"Kratzposten für Katzen",55904799687041,104.90,134.90,74.67,20.9,gesetzt
+15453785751937,hanfseil-saule-abriebfest-und-nicht-ausfransen-621500,"Hanfseil-Säule abriebfest und nicht ausfransend Katzenliege",55904809058689,75.90,99.90,54.12,20.8,gesetzt
+15453786472833,katzennest-hexen-hut-607300,"Katzennest Hexen Hut",55904817807745,16.90,19.90,11.03,27.5,gesetzt
+15453786702209,kratzball-katzenbett-614400,"Kratzball Katzenbett",55904821870977,85.90,109.90,60.66,21.5,gesetzt
+15453787292033,katzennest-weihnachtsbaum-619600,"Katzennest Weihnachtsbaum",55904827638145,44.90,59.90,31.24,22.7,gesetzt
+15453787554177,geschlossene-katzen-toilette-627100,"Geschlossene Katzen-Toilette",55904829473153,120.90,154.90,85.94,21.0,gesetzt
+15453790699905,katzenspielzeug-vogel-simulation-622100,"Katzenspielzeug Vogel Simulation",55904851722625,15.90,19.90,10.38,27.5,gesetzt
+15453791125889,sisal-kratzsaule-fur-katzen-629500,"Sisal-Kratzsäule für Katzen",55904852148609,60.90,79.90,42.79,21.9,gesetzt
+15453794468225,huhnchenbrust-snacks-fur-katzen-626100,"Hühnchenbrust Snacks für Katzen",55904855556481,22.90,29.90,15.79,23.4,gesetzt
+15453794795905,katzenklettergerust-mit-saugnapf-627500,"Katzenklettergerüst mit Saugnapf",55904855884161,30.90,39.90,21.85,21.4,gesetzt
+15453794828673,grosses-atmungsaktives-katzen-und-hundehaus-615700,"Grosses Atmungsaktives Katzen- und Hundehaus",55904855916929,51.90,69.90,36.26,22.4,gesetzt
+15453795680641,jutestil-katzenkratzbrett-mit-integriertem-kor-625600,"Jutestil Katzenkratzbrett mit integriertem Körbchen, schuppenfrei",55904856375681,27.90,34.90,19.12,23.9,gesetzt
+15453811442049,kau-spielzeug-fur-hunde-und-katzen-604000,"Kau-Spielzeug für Hunde und Katzen",55904950714753,15.90,19.90,9.06,36.7,gesetzt
+15453894443393,automatischer-futterautomat-fur-hunde-katzen-4-622800,"Automatischer Futterautomat für Hunde & Katzen 4L/6L",55905295434113,99.90,129.90,70.80,21.3,gesetzt
+15453998842241,dunne-fleece-jacke-fur-haarlose-katzen-624100,"Dünne Fleece Jacke für haarlose Katzen",55906533572993,15.90,19.90,9.79,31.6,gesetzt
+15454035050881,elektrisches-katzenspielzeug-604300,"Elektrisches Katzenspielzeug",55907026862465,19.90,24.90,13.77,23.1,gesetzt
+15454058381697,katzenrucksack-mit-32l-kapazitat-604500,"Katzenrucksack mit 32L Kapazität",55907177955713,98.90,129.90,70.20,21.1,gesetzt
+15454058480001,katzen-wasserbrunnen-608900,"Katzen-Wasserbrunnen",55907178054017,15.90,19.90,10.56,26.2,gesetzt
+15454079418753,katzen-spielzeug-614600,"Katzen Spielzeug",55907281633665,15.90,19.90,9.50,33.6,gesetzt
+15454079648129,katzentreppe-mit-nest-620200,"Katzentreppe mit Nest",55907283501441,128.90,164.90,91.65,21.0,gesetzt
+15454079779201,elektrisches-schwein-katzen-spielzeug-mit-soun-603500,"Elektrisches Schwein Katzen-Spielzeug mit Sound",55907283698049,15.90,19.90,9.58,33.1,gesetzt
+15454092558721,katzenspielzeug-mit-drehkopf-618400,"Katzenspielzeug mit Drehkopf",55907359392129,37.90,44.90,24.07,29.4,gesetzt
+15454092689793,elektrisches-katzen-spielzeug-mit-feder-617800,"Elektrisches Katzen Spielzeug mit Feder",55907361292673,20.90,29.90,14.50,22.9,gesetzt
+15454092919169,teleskop-trainingsstab-fur-hunde-und-katzen-610200,"Teleskop-Trainingsstab für Hunde und Katzen",55907361653121,19.90,24.90,13.38,25.3,gesetzt
+15454093640065,katzen-spielzeug-mit-feder-und-schnur-611200,"Katzen Spielzeug mit Feder und Schnur",55907363815809,21.90,29.90,14.77,25.1,gesetzt
+15454109860225,katzenleine-600700,"Katzenleine",55907481682305,57.90,74.90,40.79,21.7,gesetzt
+15454193418625,owl-puzzle-futterspielzeug-fur-katzen-626500,"Owl Puzzle Futterspielzeug für Katzen",55908758454657,15.90,19.90,10.33,27.8,gesetzt
+15454193811841,intelligenter-futtermatcher-fur-hunde-und-katz-625600,"Intelligenter Futtermatcher für Hunde und Katzen",55908760781185,95.90,124.90,68.33,20.8,gesetzt
+15454202069377,automatischer-futternapf-fur-katzen-601100,"Automatischer Futternapf für Katzen",55908804723073,96.90,124.90,68.55,21.4,gesetzt
+15454249124225,katzenspielzeug-mit-feder-und-glockchen-610900,"Katzenspielzeug mit Feder und Glöckchen",55909039178113,15.90,19.90,9.94,30.5,gesetzt
+15454249288065,anzug-fur-haarlose-katzen-604800,"Anzug für haarlose Katzen",55909040030081,15.90,19.90,10.10,29.4,gesetzt
+15454384816513,interaktives-spielzeug-fur-katzen-618300,"Interaktives Spielzeug für Katzen",55910131532161,70.90,89.90,50.08,21.5,gesetzt
+15454385471873,elektrovibration-ball-fur-hunde-katzen-bei-fes-613700,"Elektrovibration-Ball für Hunde & Katzen, beissfest",56067443589505,19.90,24.90,13.31,25.7,gesetzt
+15454385897857,katzenspielball-mit-jagduberzug-611200,"Katzenspielball mit Jagdüberzug",55910138708353,15.90,19.90,10.93,23.6,gesetzt
+15454385996161,katzenkratzbrett-aus-wellpapier-602700,"Katzenkratzbrett aus Wellpapier",55910141919617,15.90,19.90,10.90,23.8,gesetzt
+15454505828737,weihnachts-countdown-katzen-spielzeug-609600,"Weihnachts-Countdown Katzen Spielzeug",55910762152321,19.90,24.90,13.34,25.5,gesetzt
+15454894162305,cotten-gestopfte-kleidung-fur-hunde-katzen-607700,"Cotten-gestopfte Kleidung für Hunde & Katzen",55913234432385,15.90,19.90,9.82,31.4,gesetzt
+15454894391681,beruhigungs-weste-fur-katzen-607200,"Beruhigungs-Weste für Katzen",55913235382657,14.90,19.90,8.59,35.9,gesetzt
+15454894784897,katzenweste-aus-baumwolle-609800,"Katzenweste aus Baumwolle",56068410507649,15.90,19.90,9.18,35.8,gesetzt
+15454894784897,katzenweste-aus-baumwolle-609800,"Katzenweste aus Baumwolle",56068410540417,15.90,19.90,9.50,33.6,gesetzt
+15454894784897,katzenweste-aus-baumwolle-609800,"Katzenweste aus Baumwolle",56068410671489,15.90,19.90,9.18,35.8,gesetzt
+15454894784897,katzenweste-aus-baumwolle-609800,"Katzenweste aus Baumwolle",56068410704257,15.90,19.90,9.50,33.6,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914626908545,15.90,29.90,14.01,2.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914626941313,15.90,29.90,14.17,1.0,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914626974081,15.90,29.90,14.33,-0.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627006849,15.90,29.90,14.50,-1.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627039617,15.90,29.90,14.66,-2.4,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627072385,15.90,29.90,14.82,-3.6,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627105153,15.90,29.90,14.99,-4.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627137921,15.90,29.90,14.01,2.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627170689,15.90,29.90,14.17,1.0,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627203457,15.90,29.90,14.33,-0.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627236225,15.90,29.90,14.50,-1.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627268993,15.90,29.90,14.66,-2.4,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627301761,15.90,29.90,14.82,-3.6,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627334529,15.90,29.90,14.99,-4.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627367297,15.90,29.90,14.01,2.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627400065,15.90,29.90,14.17,1.0,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627432833,15.90,29.90,14.33,-0.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627465601,15.90,29.90,14.50,-1.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627498369,15.90,29.90,14.66,-2.4,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627531137,15.90,29.90,14.82,-3.6,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627563905,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627596673,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627629441,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627662209,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627694977,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627727745,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627760513,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627793281,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627826049,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627858817,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627891585,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627924353,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627957121,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914627989889,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628022657,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628055425,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628088193,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628120961,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628153729,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628186497,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628219265,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628252033,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628284801,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628317569,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628350337,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628383105,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628415873,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628448641,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628481409,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628514177,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628546945,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628579713,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628612481,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628645249,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628678017,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628710785,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628743553,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628776321,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628809089,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628841857,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628874625,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628907393,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628940161,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914628972929,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629005697,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629038465,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629071233,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629104001,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629136769,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629169537,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629202305,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629235073,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629267841,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629300609,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629333377,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629366145,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629398913,14.90,29.90,14.99,-11.8,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629431681,14.90,29.90,14.01,-4.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629464449,14.90,29.90,14.17,-5.7,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629497217,14.90,29.90,14.33,-6.9,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629529985,14.90,29.90,14.50,-8.1,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629562753,14.90,29.90,14.66,-9.3,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629595521,14.90,29.90,14.82,-10.5,gesetzt
+15455266898305,geometrisches-katzenmuster-hoodie-damen-609500,"Geometrisches Katzenmuster Hoodie Damen",55914629628289,14.90,29.90,14.99,-11.8,gesetzt
+15455269060993,katzenpflege-set-619000,"Katzenpflege-Set",55914647978369,18.90,39.90,20.59,-21.0,gesetzt
+15455269552513,interaktiver-katzenfutter-automat-613700,"Interaktiver Katzenfutter-Automat",56068491313537,90.90,119.90,65.43,20.0,gesetzt
+15455269552513,interaktiver-katzenfutter-automat-613700,"Interaktiver Katzenfutter-Automat",56068491346305,90.90,124.90,69.46,15.1,gesetzt
+15455269552513,interaktiver-katzenfutter-automat-613700,"Interaktiver Katzenfutter-Automat",56068491379073,90.90,139.90,75.51,7.7,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495212929,15.90,34.90,17.42,-21.7,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495245697,15.90,34.90,17.42,-21.7,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495278465,15.90,34.90,17.42,-21.7,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495311233,15.90,34.90,17.42,-21.7,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495344001,15.90,34.90,17.42,-21.7,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495376769,15.90,24.90,11.76,17.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495409537,15.90,24.90,11.76,17.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495442305,15.90,24.90,11.76,17.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495475073,15.90,24.90,11.76,17.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495507841,15.90,24.90,11.76,17.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495540609,15.90,24.90,11.76,17.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495573377,15.90,19.90,10.48,26.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495606145,15.90,19.90,10.48,26.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495638913,15.90,19.90,10.48,26.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495671681,15.90,19.90,10.48,26.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495704449,15.90,19.90,10.48,26.8,gesetzt
+15455269683585,katzen-futternapf-mit-erhohtem-rahmen-603700,"Katzen Futternapf mit erhöhtem Rahmen",56068495737217,15.90,19.90,10.48,26.8,gesetzt
+15455515705729,interaktives-katzen-spielzeug-609700,"Interaktives Katzen-Spielzeug",55916295029121,17.90,29.90,16.07,0.2,gesetzt
+15455515836801,katzenbett-mit-hangematte-600000,"Katzenbett mit Hängematte",55916295913857,84.90,164.90,89.72,-17.4,gesetzt
+15455516033409,bentonit-katzenstreu-622400,"Bentonit Katzenstreu",55916299321729,45.90,89.90,48.73,-18.0,gesetzt
+15455516262785,gelb-dinosaurier-katzenbett-604600,"Gelb. Dinosaurier-Katzenbett",55916303679873,15.90,29.90,14.81,-3.5,gesetzt
+15455516361089,katzenbett-herbst-winter-624300,"Katzenbett Herbst/Winter",55916303810945,14.90,34.90,18.78,-40.0,gesetzt
+15455516459393,katzennest-fur-alle-jahreszeiten-604100,"Katzennest für alle Jahreszeiten",55916305219969,15.90,29.90,13.99,2.2,gesetzt
+15455516688769,weihnachtlicher-katzen-tunnel-607000,"Weihnachtlicher Katzen Tunnel",55916307841409,25.90,54.90,29.72,-27.5,gesetzt
+15455516787073,kratzfester-katzen-turm-627300,"Kratzfester Katzen-Turm",55916309479809,52.90,99.90,55.01,-15.5,gesetzt
+15455516885377,faltbarer-katzenkafig-mit-isolierung-604900,"Faltbarer Katzenkäfig mit Isolierung",55916310331777,72.90,189.90,104.68,-59.5,gesetzt
+15455551816065,katzenwasserspender-614200,"Katzenwasserspender",55916567036289,16.90,29.90,14.14,7.0,gesetzt
+15455661588865,edelstahl-trinknapf-fur-katzen-mit-halsstutze-602100,"Edelstahl-Trinknapf für Katzen mit Halsstütze",55917794918785,27.90,44.90,24.38,2.9,gesetzt
+15455662244225,katzen-tasse-612900,"Katzen-Tasse",55917802258817,39.90,49.90,27.82,22.5,gesetzt
+15455682331009,keramik-katzennapf-638700,"Keramik Katzennapf",55917954564481,32.90,59.90,31.35,-5.9,gesetzt
+15455958270337,katzen-toilette-mit-griff-621200,"Katzen-Toilette mit Griff",55919493546369,15.90,29.90,14.85,-3.8,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069387977089,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388009857,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388140929,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388173697,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388304769,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388337537,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388468609,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388501377,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388632449,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388665217,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388796289,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388829057,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388960129,17.90,39.90,20.21,-25.5,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388992897,17.90,44.90,24.67,-53.1,gesetzt
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388042625,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388075393,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388108161,20.90,74.90,40.15,-113.5,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388206465,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388239233,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388272001,20.90,74.90,40.15,-113.5,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388370305,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388403073,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388435841,20.90,74.90,40.15,-113.5,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388534145,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388566913,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388599681,20.90,74.90,40.15,-113.5,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388697985,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388730753,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388763521,20.90,74.90,40.15,-113.5,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388861825,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388894593,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069388927361,20.90,74.90,40.15,-113.5,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069389025665,17.90,59.90,31.24,-93.9,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069389058433,19.90,64.90,35.69,-99.3,gemeldet
+15456004833665,universeller-katzenkratzer-schutz-fur-sofa-623100,"Universeller Katzenkratzer-Schutz für Sofa",56069389091201,20.90,74.90,40.15,-113.5,gemeldet
+15458845327745,katzenmuster-bettwasche-601300,"Katzenmuster Bettwäsche",55924401111425,43.90,84.90,47.23,-19.5,gesetzt
+15458847064449,chenille-sofauhrenbezug-hautfreundlich-katzenf-630500,"Chenille-Sofauhrenbezug, hautfreundlich, katzenfreundlich, abriebfest",55924404355457,20.90,124.90,69.48,-269.4,gemeldet
+15458848014721,atmungsaktive-katzenleine-mit-fluchtsicherung-609200,"Atmungsaktive Katzenleine mit Fluchtsicherung",55924405436801,15.90,34.90,16.69,-16.6,gesetzt
+15458849685889,doppelte-halskette-mit-seilset-fur-katzen-hund-649300,"Doppelte Halskette mit Seilset für Katzen & Hunde",55924407206273,15.90,24.90,11.23,21.5,gesetzt
+15459598500225,kawaii-katzen-teppich-608000,"Kawaii Katzen Teppich",55925984919937,29.90,74.90,40.86,-51.8,gesetzt
+15459760144769,katzen-zugseil-brustgurt-mit-reflektor-622100,"Katzen-Zugseil-Brustgurt mit Reflektor",55926511075713,15.90,19.90,10.81,24.5,gesetzt
+15466041540993,futterautomat-fur-katzen-aus-weizenstroh-607500,"Futterautomat für Katzen aus Weizenstroh",55951770485121,16.90,34.90,18.39,-20.9,gesetzt
+15467039064449,verstellbarer-offener-goldring-mit-katzen-desi-636700,"Verstellbarer offener Goldring mit Katzen-Design",55955856523649,18.90,24.90,11.92,29.9,gesetzt
+15467104174465,tofu-katzenstreu-mit-farbwechsel-und-geruchsko-621100,"Tofu-Katzenstreu mit Farbwechsel und Geruchskontrolle",56069554143617,46.90,89.90,49.31,-16.8,gesetzt
+15467104174465,tofu-katzenstreu-mit-farbwechsel-und-geruchsko-621100,"Tofu-Katzenstreu mit Farbwechsel und Geruchskontrolle",56069554176385,46.90,329.90,181.30,-329.5,gemeldet
+15469994705281,skibrille-mit-katzenohren-fgack14057,"Skibrille mit Katzenohren",55970812723585,32.90,44.90,23.24,21.5,gesetzt
+15470011449729,latex-katzen-nase-fgack023,"Latex Katzen Nase",55970875834753,40.90,54.90,28.43,22.8,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719589249,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719622017,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719654785,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719687553,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719720321,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719753089,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719785857,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719818625,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719851393,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719884161,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719916929,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719949697,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069719982465,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720015233,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720048001,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720080769,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720113537,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720146305,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720179073,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720211841,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720244609,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720277377,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720310145,15.90,24.90,12.45,13.0,gesetzt
+15472044999041,winter-weste-fur-hunde-und-katzen-d31d68,"Winter-Weste für Hunde und Katzen",56069720342913,15.90,24.90,12.45,13.0,gesetzt
+15472047817089,katzenpfoten-massageburste-fur-die-kopfhaut-636200,"Katzenpfoten-Massagebürste für die Kopfhaut",56069726273921,20.90,34.90,19.44,-3.3,gesetzt
+15472047817089,katzenpfoten-massageburste-fur-die-kopfhaut-636200,"Katzenpfoten-Massagebürste für die Kopfhaut",56069726306689,20.90,34.90,19.44,-3.3,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736661377,14.90,19.90,9.92,26.0,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736694145,14.90,24.90,11.71,12.7,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736726913,14.90,19.90,9.92,26.0,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736759681,14.90,24.90,11.71,12.7,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736792449,14.90,19.90,9.92,26.0,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736825217,14.90,24.90,11.71,12.7,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736857985,14.90,19.90,9.92,26.0,gesetzt
+15472218145153,smart-gps-tracker-halsband-fur-katzen-635200,"Smart GPS Tracker Halsband für Katzen",56069736890753,14.90,24.90,11.71,12.7,gesetzt
+15472276472193,sommerliches-baumwollshirt-fur-haarlose-katzen-611100,"Sommerliches Baumwollshirt für haarlose Katzen",56069747999105,15.90,19.90,9.15,36.1,gesetzt
+15472276472193,sommerliches-baumwollshirt-fur-haarlose-katzen-611100,"Sommerliches Baumwollshirt für haarlose Katzen",56069748031873,15.90,19.90,9.47,33.8,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748130177,17.90,24.90,12.56,22.0,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748162945,17.90,24.90,12.40,23.0,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748195713,17.90,24.90,12.23,24.1,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748228481,17.90,24.90,12.72,21.0,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748261249,17.90,24.90,12.07,25.1,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748294017,17.90,24.90,12.89,20.0,gesetzt
+15472311992705,sommerkleid-fur-sphynx-katzen-631100,"Sommerkleid für Sphynx-Katzen",56069748326785,17.90,24.90,13.05,19.0,gesetzt
+15472377594241,automatischer-katzen-teaser-mit-seil-620000,"Automatischer Katzen-Teaser mit Seil",55977855418753,15.90,24.90,13.24,7.5,gesetzt
+15472377692545,keramik-futternapf-fur-hunde-katzen-628600,"Keramik-Futternapf für Hunde & Katzen",56069749866881,21.90,44.90,23.82,-20.9,gesetzt
+15472377692545,keramik-futternapf-fur-hunde-katzen-628600,"Keramik-Futternapf für Hunde & Katzen",56069749899649,21.90,44.90,23.82,-20.9,gesetzt
+15472377692545,keramik-futternapf-fur-hunde-katzen-628600,"Keramik-Futternapf für Hunde & Katzen",56069749932417,21.90,44.90,23.82,-20.9,gesetzt
+15472377692545,keramik-futternapf-fur-hunde-katzen-628600,"Keramik-Futternapf für Hunde & Katzen",56069749965185,21.90,44.90,23.82,-20.9,gesetzt
+15472377692545,keramik-futternapf-fur-hunde-katzen-628600,"Keramik-Futternapf für Hunde & Katzen",56069749997953,21.90,44.90,23.82,-20.9,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760123265,33.90,64.90,35.99,-18.0,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760156033,33.90,64.90,35.99,-18.0,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760188801,33.90,64.90,35.99,-18.0,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760221569,33.90,64.90,35.99,-18.0,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760254337,33.90,64.90,35.99,-18.0,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760287105,33.90,84.90,45.50,-49.1,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760319873,33.90,84.90,45.50,-49.1,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760352641,33.90,84.90,45.50,-49.1,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760385409,33.90,84.90,45.50,-49.1,gesetzt
+15473060381057,sternenhimmel-katzenbett-612900,"Sternenhimmel Katzenbett",56069760418177,33.90,84.90,45.50,-49.1,gesetzt
+15473727766913,elektrischer-specht-plusch-katzenspielzeug-631900,"Elektrischer Specht Plüsch-Katzenspielzeug",56069784994177,14.90,19.90,10.95,18.3,gesetzt
+15473727766913,elektrischer-specht-plusch-katzenspielzeug-631900,"Elektrischer Specht Plüsch-Katzenspielzeug",56069785026945,14.90,19.90,10.81,19.4,gesetzt
+15474791678337,elektrisches-katzenspielzeug-roter-apfel-636300,"Elektrisches Katzenspielzeug „Roter Apfel“",55984597729665,52.90,64.90,35.25,26.0,gesetzt
+15474847187329,katzengeschirr-set-striding-and-leaping-601100,"Katzengeschirr-Set · ausbruchsicher",56069881627009,21.90,29.90,14.03,28.8,gesetzt
+15474847187329,katzengeschirr-set-striding-and-leaping-601100,"Katzengeschirr-Set · ausbruchsicher",56069881659777,21.90,29.90,14.03,28.8,gesetzt
+15475867779457,interaktiver-schmetterlings-katzenspielzeug-621500,"Interaktiver Schmetterlings-Katzenspielzeug",55987298959745,22.90,29.90,15.88,23.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696285569,15.90,24.90,13.49,5.7,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696318337,15.90,24.90,13.81,3.5,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696351105,15.90,29.90,14.14,1.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696383873,15.90,29.90,14.47,-1.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696416641,15.90,29.90,14.79,-3.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696449409,15.90,29.90,15.12,-5.7,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696482177,15.90,29.90,15.45,-8.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696514945,15.90,29.90,15.77,-10.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696547713,15.90,29.90,16.10,-12.5,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696580481,15.90,24.90,13.49,5.7,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696613249,15.90,24.90,13.81,3.5,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696646017,15.90,29.90,14.14,1.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696678785,15.90,29.90,14.47,-1.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696711553,15.90,29.90,14.79,-3.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696744321,15.90,29.90,15.12,-5.7,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696777089,15.90,29.90,15.45,-8.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696809857,15.90,29.90,15.77,-10.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696842625,15.90,29.90,16.10,-12.5,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696875393,15.90,24.90,13.49,5.7,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696908161,15.90,24.90,13.81,3.5,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696940929,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988696973697,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697006465,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697039233,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697072001,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697104769,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697137537,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697170305,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697203073,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697235841,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697268609,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697301377,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697334145,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697366913,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697399681,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697432449,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697465217,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697497985,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697530753,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697563521,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697596289,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697629057,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697661825,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697694593,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697727361,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697760129,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697792897,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697825665,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697858433,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697891201,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697923969,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697956737,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988697989505,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698022273,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698055041,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698087809,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698120577,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698153345,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698186113,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698218881,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698251649,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698284417,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698317185,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698349953,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698382721,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698415489,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698448257,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698481025,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698513793,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698546561,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698579329,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698612097,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698644865,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698677633,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698710401,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698743169,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698775937,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698808705,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698841473,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698874241,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698907009,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698939777,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988698972545,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699005313,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699038081,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699070849,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699103617,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699136385,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699169153,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699201921,14.90,29.90,16.10,-20.1,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699234689,14.90,24.90,13.49,-0.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699267457,14.90,24.90,13.81,-3.0,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699300225,14.90,29.90,14.14,-5.4,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699332993,14.90,29.90,14.47,-7.9,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699365761,14.90,29.90,14.79,-10.3,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699398529,14.90,29.90,15.12,-12.8,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699431297,14.90,29.90,15.45,-15.2,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699464065,14.90,29.90,15.77,-17.6,gesetzt
+15476184187265,hoodie-mit-3d-digital-katzen-print-fur-paare-616200,"Hoodie mit 3D Digital Katzen-Print für Paare",55988699496833,14.90,29.90,16.10,-20.1,gesetzt
+15477388050817,anti-schling-fressnapf-fur-hunde-und-katzen-625400,"Anti-Schling Fressnapf für Hunde und Katzen",55992840978817,29.90,34.90,18.75,30.3,gesetzt
+15478521561473,saugnapf-spielzeug-fur-hunde-katzen-628500,"Saugnapf Spielzeug für Hunde & Katzen",56069934678401,24.90,44.90,25.05,-11.8,gesetzt
+15478521561473,saugnapf-spielzeug-fur-hunde-katzen-628500,"Saugnapf Spielzeug für Hunde & Katzen",56069934711169,24.90,49.90,26.12,-16.6,gesetzt

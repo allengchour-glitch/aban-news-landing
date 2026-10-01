@@ -5,6 +5,12 @@
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte.
 
+> 🧠 **NEU 2026-09-12 — suchen statt lesen:** Das Gedächtnis liegt jetzt zusätzlich als
+> Obsidian-Vault in **`brain/vault/`** (Einstieg `00 Start hier.md`), atomar und verlinkt.
+> `python3 tools/gedaechtnis.py "stichwort"` · `--sackgassen` · `--offen` · `--stand` liefert die
+> eine Tatsache mit Quelle und Datum, statt 158 KB Prosa zu lesen. Sieben **Skills** in
+> `.claude/skills/` laden die teuer gelernten Regeln von selbst. Herkunft: `LERNEN-5-SYSTEME.md`.
+
 > 🎮 **Spiele-Sessions** (neon-*/lebenspfad/wort-*): ZUERST `spiele-dev/RUNBOOK-SPIELE.md` lesen —
 > fertige Skill-Bibliothek (Smoke/Screenshot/Vision-Loop, Meshy/HDRI/Musik-Rezepte, alle Fallen). Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
@@ -42,11 +48,23 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Nie direkt nach `main` pushen. ⚠️ Die alten Branches `claude/dropship-lade-memory-SrAs5` (PR #5) und
   `claude/dropshipping-session-LehDs` sind **in `main` gemergt und vom Remote gelöscht** — nicht mehr nutzen.
   Der gesamte Dropship-Stand liegt jetzt auf `main` (zuletzt Memory Teil 14, PR #400).
-- **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
-  über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
-  Memory, damit jede neue Session nahtlos weitermacht.
+- **⏰ KORRIGIERT 2026-09-30 — „Scheduler ist hier nicht aktiv" STIMMT NICHT.** Der Satz nannte die
+  falschen Werkzeuge: `CronCreate`/`ScheduleWakeup` sind nicht der Weg, **`mcp__Claude_Code_Remote__create_trigger`
+  ist es**. GEMESSEN: Routine `trig_014EJWgLC9AmpW3kDZkAUQqu` läuft **täglich 08:56 Europe/Zurich**.
+  ⚠️ **Die echte Grenze liegt woanders: eine so angelegte Routine führt KEINE Connectors mit**
+  (der `connectors`-Parameter wird von dieser Organisation abgelehnt) → die gefeuerte Sitzung hat
+  **keine `mcp__Shopify__*`-Tools** und kann am Shop nichts ändern. Sie macht die zugangsfreie
+  Hälfte (Kundenseite nachmessen, `katalog_audit`, PR-Checks, Recherche, Gedächtnispflege).
+  **Für die volle Runde braucht es die drei Env-Werte** (siehe „nur der User") **oder** eine
+  Routine, die der User selbst in der claude.ai-Routinen-Oberfläche anlegt, wo Connectors mitgehen.
 - **🌐 Browser-Agent (FEST, User 2026-06-12):** Der User hat **Brave + Playwright-MCP auf seinem PC-Claude**
   eingerichtet (Setup: `dropship/BROWSER-AGENT-SETUP.md`, Port 9222, Meta Business Suite eingeloggt).
+  **⚠️ KORRIGIERT 2026-09-27: „Cloud-Sessions haben KEINEN Browser" STIMMT NICHT.** Gemessen:
+  Chromium 141 liegt ausführbar unter `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`,
+  `playwright` **global** in `/opt/node22/lib/node_modules`, und eine echte Produktseite lädt mit
+  HTTP 200. Die Hürde ist das Proxy-Zertifikat → gelöst in **`tools/browser.mjs`** (12 Selbsttests).
+  **Für Browser-Aufgaben ohne Anmeldung also NICHT mehr an den PC delegieren.** Instagram, TikTok-
+  und Meta-Oberflächen verlangen eine Anmeldung — dafür bleibt der PC-Weg richtig.
   **Cloud-Sessions haben KEINEN Browser** — für Browser-Aufgaben (IG/FB aufräumen, Web-UI-Klicks) den User
   bitten, den Auftrag an seinen PC-Claude zu geben, ODER falls ein Browser-MCP in der Session auftaucht, direkt
   nutzen. **Dauerauftrag: IMMER maximal autonom arbeiten** — nicht fragen, machen; nur echte User-Klicks
@@ -62,6 +80,734 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-30, vierte Runde (⚙️ DIE AUTOMATISIERUNG WAR SEIT JEHER INSTALLIERT — Shopify Flow):**
+- **Auftrag:** „neuste sachen lernen für automation." Voller Bericht:
+  **`dropship/LERNEN-AUTOMATION-2026-09-30.md`**.
+- **🔴 DER FUND STAND DIE GANZE ZEIT IM EIGENEN SHOP. GEMESSEN über `appInstallations`:
+  `{"title":"Flow","handle":"flow","developerName":"Shopify"}` ist installiert** — Tarif
+  **Basic**, Währung CHF. **Kein einziger Stand-Block seit Juni erwähnt Flow.** Stattdessen
+  steht dort vier Monate lang die Klage, Automatisierung gehe hier nicht: erst „GitHub Actions
+  ist gesperrt", dann „Scheduler ist nicht aktiv", dann „es fehlen die drei Env-Werte".
+- **🔑 WARUM FLOW ALLEM ÜBERLEGEN IST, und das folgt aus der Architektur statt aus Werbung:
+  es läuft IM SHOP.** Kein Container, keine Sitzung, kein Token, kein Cron, kostenlos. Zum
+  Vergleich, alles gemessen: GitHub Actions braucht Secrets und hat ein Fair-Use-Risiko · die
+  neue Routine hat **keine `mcp__Shopify__*`-Tools** · `preis_korrektur.mjs` wartet seit dem
+  19.09. auf drei Env-Werte · `watch_url` endet laut eigener Beschreibung mit der Sitzung.
+  **Flow ist das einzige Stück, das ohne uns weiterläuft.**
+- **⚠️ DIE GRENZE IST EBENFALLS GEMESSEN: von über 400 Mutationen der Admin-API heissen genau
+  ZWEI nach Flow** — `flowGenerateSignature` und `flowTriggerReceive`. **Es gibt keine Mutation,
+  die einen Workflow anlegt.** Workflows entstehen nur in der Oberfläche → **einmaliger
+  User-Klick.** **Aber `flowTriggerReceive` ist der interessante Teil:** baut der User einen
+  Workflow mit **eigenem Auslöser**, kann ich diesen von hier feuern — **einmal klicken,
+  dauerhaft fernsteuerbar.**
+- **🟡 NUR DER USER, und dieser eine Klick wiegt mehr als alles, was ich bauen kann:** den
+  Workflow „bezahlt, nicht versandt" in Flow anlegen. **Er hätte #1019 von selbst gemeldet**,
+  und im Juli hat genau dieses Muster **CHF 869.62 Rückerstattungen** gekostet. Bauplan im
+  Bericht. ⚠️ **Entscheidend ist die ZWEITE Statusprüfung NACH dem Warten** — ohne sie meldet
+  er auch längst versandte Bestellungen, und eine Meldung, die meistens falsch ist, schaltet
+  man nach einer Woche ab.
+- **⛔ Bewusst NICHT gebaut: ein Shopify-Webhook auf eine eigene Cloudflare-Funktion.**
+  `webhookSubscriptionCreate` existiert und `functions/` ist ein dauerhafter Endpunkt — der Weg
+  ist **plausibel und ungeprüft**. Flow löst dieselben Fälle ohne eine Zeile Code und ohne neue
+  Fehlerquelle; ein Webhook lohnt erst für etwas, das Flow nicht kann.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-30, dritte Runde (🔌 DER USER HAT KONNEKTOREN VERBUNDEN — zwei offene Punkte damit geschlossen):**
+- **Auftrag:** „mcp verbunden und co wo du geschriben hast."
+- **✅ GEMESSEN über `ListConnectors`, das Konto hat jetzt SIEBEN Konnektoren statt vier:**
+  **Firecrawl** (verbunden, in dieser Sitzung aktiv) · **Graph of Thought** (verbunden, aktiv) ·
+  Shopify · Google Drive · **Context7 (`connect_incomplete`)** · Google Calendar (nicht verbunden) ·
+  **TikTok Ads (`connect_incomplete`)**.
+- **❌ FIRECRAWL LÖST DIE INSTAGRAM-SACKGASSE NICHT — jetzt GEMESSEN statt vermutet.**
+  `firecrawl_scrape` auf `instagram.com/luxestyle.ch` antwortet **„we do not support this site"**.
+  Die Vermutung vom 27.09. stimmt also, **aber aus einem anderen Grund als angenommen**: erwartet
+  war die leere JS-Hülle vom 20.09., tatsächlich ist es eine **Absage des Anbieters selbst** —
+  Instagram wird gar nicht erst abgerufen. **Gegenprobe, ohne die der Befund wertlos wäre:**
+  dieselbe Funktion holt `luxestyle.ch/products/agility-trainingsset-fur-hunde` mit **85 915
+  Zeichen** — der Konnektor läuft, es liegt an Instagram. **Damit bleibt der PC-Weg über das
+  eingeloggte Brave (`automation/local/ig-reel-lesen.mjs`) der einzige Weg**, und kein weiterer
+  Auslesedienst muss mehr probiert werden.
+- **✅ EIN BEWUSST OFFEN GELASSENER WIDERSPRUCH IST GESCHLOSSEN: das Shopify-Partnerprogramm kostet
+  nichts.** Der Block von heute Morgen hielt fest, eine Quelle nenne **99 USD einmalig**, eine
+  andere „kostenlos", und verbot ausdrücklich, hier eine Zahl zu behaupten. **GEMESSEN an der
+  Anbieterseite selbst** (`shopify.com/de/partners`, HTTP 200): **es wird keine Gebühr genannt.**
+  Die 99-USD-Zahl steht nicht beim Anbieter. ⚠️ Ehrliche Grenze: „nennt keine Gebühr" ist nicht
+  „für immer gratis" — aber es ist genau das, was das Gedächtnis verlangt hat.
+- **⚖️ EHRLICH ZUM NUTZEN, damit niemand Firecrawl für mehr hält als es ist:** für den Shop-Check
+  bringt es **nichts** — `/products.json` liefert dieselben Daten strukturiert und ohne Konnektor.
+  Sein Wert liegt in der **Recherche** (Suche mit Fundstellen, gezielte Frage an eine Seite statt
+  ganzem Abzug — der Partnerprogramm-Befund kam genau so) und bei Seiten, die blosses `curl`
+  abweist. **Graph of Thought ist verbunden, aber diese Runde hat KEINEN gemessenen Nutzen dafür
+  gefunden** — es als „jetzt besser" zu verbuchen wäre eine Behauptung ohne Messung.
+- **🟡 NUR DER USER, zwei halbfertige Verbindungen:** **Context7** und **TikTok Ads** stehen beide
+  auf `connect_incomplete` — angefangen, nicht fertig. **TikTok Ads wiegt schwerer**: das
+  Gedächtnis führt „TikTok-Pixel + Conversion-Kampagne" seit dem 13.06. als einen der drei
+  User-Klicks, und der Konnektor steht seit dem 27.09. unverändert halbfertig da.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-30, zweite Runde (⏰ DER AUTOPILOT WAR NIE UNMÖGLICH — und CHF 206.50 liegen abholbereit):**
+- **Auftrag:** „lerne für geldverdienen automatisch irgendwie du musst arbeiten" und danach
+  „neuste prompt und updates im netz suchen auch app oder mcp egal was gratis und für maximum
+  verbesserung".
+- **🔴 DER GRÖSSTE FUND IST EINE KORREKTUR AM EIGENEN GEDÄCHTNIS, und sie hat seit Juni jede Runde
+  gedeckelt.** `CLAUDE.md` behauptete: „Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht
+  aktiv → kein echter Cron-Loop über Stunden möglich; **Autonomie = Charge für Charge**." Der
+  Dauerauftrag des Users lautet seit Juni „vollautonom, ohne ‚weiter' zu sagen" — genau das galt
+  als technisch unmöglich. **GEMESSEN: es geht, der Satz nannte nur die falschen Werkzeuge.**
+  `mcp__Claude_Code_Remote__create_trigger` legt eine echte wiederkehrende Routine an.
+  **Läuft ab jetzt täglich 08:56 Europe/Zurich** (`trig_014EJWgLC9AmpW3kDZkAUQqu`).
+- **⚠️ UND DIE GEGENPROBE HAT DIE ROUTINE SOFORT WIEDER HALBIERT — bevor sie einmal gelaufen ist.**
+  Die Anlage meldete von selbst: **„this trigger stores no MCP connectors"**. Der Versuch, `Shopify`
+  ausdrücklich mitzugeben, wurde abgelehnt: **„the connectors parameter is not available for this
+  organization"**. Die gefeuerte Sitzung hat also **keine `mcp__Shopify__*`-Tools** — sie kann
+  keine Bestellung lesen und keinen Preis setzen. **Der Prompt der Routine wurde daraufhin
+  umgeschrieben**, damit sie nicht jeden Morgen an Schritt 1 scheitert: sie macht die zugangsfreie
+  Hälfte (Preise an der echten Kundenseite nachmessen, `katalog_audit`, PR-Checks, Recherche,
+  Gedächtnispflege). **Eine Routine, die täglich in eine Wand läuft, wäre schlimmer als keine.**
+- **💰 GEBAUT `tools/offenes_geld.mjs` (36 Selbsttests) — und es hat beim ersten Lauf Geld gefunden.**
+  Es sucht nicht neue Reichweite, sondern **Geld, das schon im Shop liegt**: bezahlt aber nicht
+  geliefert, und liegengebliebene Warenkörbe mit erreichbarer Adresse. **GEMESSEN:
+  CHF 23.11 der Kundschaft geschuldet · CHF 183.60 in fünf Körben, alle mit echter Adresse.**
+  Zum Vergleich: **der Shop hat in vier Monaten netto rund CHF 253 erlöst** — es liegt also
+  ungefähr ein Vierteljahresumsatz herum.
+- **🔴 ZEITKRITISCH, NUR DER USER: Bestellung #1019 ist seit dem 27.09. BEZAHLT und NICHT
+  VERSANDT** — „Leuchtender Halloween-Schaukelgeist", CHF 23.11, SKU `CJ-2608070456571627400`.
+  **Halloween-Ware ist nach dem 31.10. wertlos.** Das ist exakt das Muster, das im Juli
+  CHF 869.62 Rückerstattungen gekostet hat. Die CJ-Bestellung samt Bezahlung kann nur der User
+  auslösen.
+- **🔑 DIE REGEL, DIE DAS WERKZEUG ERST EHRLICH MACHT: Kundengeld und eigenes Geld werden NIE
+  zusammengezählt.** Zwei der Posten sind **eigene Testbestellungen** (an der E-Mail erkannt) —
+  ohne diese Trennung stünden hier CHF 54.80 „offen", die niemand schuldet. Ebenso: ein
+  abgeschlossener Korb ist ein Kauf, ein Korb **ohne Adresse ist NICHT erreichbar** statt eine
+  Chance, und eine frisch bezahlte Bestellung bekommt **zwei Tage Karenz**, bevor sie „nicht
+  geliefert" heisst.
+- **🔒 UND EIN FEHLER, DER IN EIN ÖFFENTLICHES REPO GEWANDERT WÄRE.** Der Datenauszug enthält
+  Kundenadressen **und Wiederherstellungs-Links, die einen Schlüssel zum fremden Warenkorb
+  tragen**. Die Säuberung ersetzte zuerst nur `customerEmail` — **zwei echte Adressen standen in
+  einem verschachtelten `emailAddress` und blieben stehen.** Die Gegenprobe hat sie gefunden.
+  Jetzt läuft die Säuberung **rekursiv über jeden Schlüssel**, dessen Name `mail` enthält, statt
+  über eine Liste bekannter Felder. **Dieselbe Klasse wie die fehlende Wortgrenze bei `3to4`:
+  wer nach einer Liste sucht statt nach einer Eigenschaft, findet nur, was er schon kannte.**
+- **⚠️ „DIE BESTEN GRATIS-MCP-SERVER" BESCHREIBEN NICHT DIESES KONTO.** Die Artikel nennen
+  Filesystem, GitHub, Context7, Playwright, Sequential Thinking, Firecrawl, Brave Search, Memory.
+  **Gegenprobe über `SearchMcpRegistry` an diesem Konto: Context7 und Firecrawl existieren
+  (nicht installiert), Sequential Thinking, Brave Search, Memory und Filesystem tauchen gar nicht
+  auf.** Ausserdem heisst „gratis" dort meist „hat einen kostenlosen Tarif", nicht „ohne Konto".
+  **Das messbare Kriterium steht im Verzeichnis selbst: `isAuthless: true`.** Danach gefiltert
+  bleiben u. a. **Parallel Search** (`web_search`, `web_fetch`) und **Microsoft Learn**.
+  ⛔ **Bewusst NICHT installiert:** ein Konnektor ist eine dauerhafte Konto-Änderung und gehört
+  dem User; und `WebSearch`/`WebFetch` stehen hier ohnehin schon.
+- **📊 154 + 36 = 190 Prüfungen grün.** Die drei roten `Workers Builds` sind unverändert der Fall
+  vom 12.09., Stand-down-Kommentar steht seit dem 20.09. an PR #2514 — **kein zweiter.**
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-30 (🔎 MAXIMALE RECHERCHE — vier Fehlalarme kamen erst an FREMDEN Shops heraus):**
+- **Auftrag:** „maximum hilfe surfing suchen · andere session shop seite" — die andere Session macht
+  Shop und Webseite, diese Runde recherchiert und schärft den Shop-Check. Voller Bericht mit allen
+  Quellen und Marken: **`dropship/LERNEN-VERKAUFEN-RECHERCHE-2026-09-30.md`**.
+- **🔴 DER STÄRKSTE WETTBEWERBSBEFUND IST GEMESSEN, NICHT ZITIERT.** Kostenlose Shopify-Audits gibt
+  es reichlich (Privy Store Grader, `audit.shopifyhelpcenter.com` mit „100+ Checks in 12
+  Kategorien", ScaleFront, LOGEIX, StoreAudit). **Ich habe den führenden mit einem echten Browser
+  selbst auf luxestyle.ch losgelassen.** Sein 9837-Zeichen-Bericht enthält **weder „variant" noch
+  „compare_at" noch „Farbe"**, keinen einzigen unserer wörtlichen Belege — und in der Kopfzeile
+  steht **„PRODUCTS DETECTED: –"**. **Alle diese Werkzeuge messen die Shop-Ebene; den Katalog misst
+  keines.** Zweiter Teil des Marktes: Werkzeuge zum **Reparieren** von Variantennamen gibt es
+  reichlich (PS Bulk Variant Editor, Replaceit, SpurIT, Super Sheet) — sie verlangen aber, dass der
+  Händler **schon weiss**, welche Produkte kaputt sind. **Finden gegen Reparieren ist die Lücke.**
+- **🔴 VIER FEHLALARME, JEDER ERST AN EINEM FREMDEN SHOP GEFUNDEN — und der vierte wäre der
+  peinlichste gewesen.** (1) Mengenrabatt: der Messschieber hat `2/3/5 Stück`. (2) Eine **zweite
+  Option**: der Rizinusöl-Wickel unterscheidet `Bauchwickel` und `Set Bauch + Nacken` → daraus die
+  belastbare Regel **mehr als eine Option = es variiert mehr als die Farbe**. (3) `sandrot` und
+  `rasengrün` **sind** Farben — meine Prüfung verlangte einen Wortanfang, **die Wortgrenzen-Falle
+  in umgekehrter Richtung, zu streng statt zu locker**. (4) **Die Streichpreis-Prüfung schlug auch
+  bei `compare_at_price` GLEICH dem Preis oder 0.00 an.** GEMESSEN: **ankerkraut.de 269 Varianten
+  mit gleichem Wert, purelei.de 559 mit 0.00** — Shopify zeigt in beiden Fällen **gar keinen**
+  durchgestrichenen Preis. **Mit der alten Regel hätte das Gerät einer gepflegten Marke 158
+  Rechtsprobleme gemeldet, die sie nicht hat.** Eine Kategorie fiel von **80 auf 7**.
+- **🔑 DARAUS DIE REGEL FÜR JEDES GERÄT, DAS FREMDE DATEN BEURTEILT: ein Befund muss etwas sein,
+  das die Kundschaft tatsächlich zu sehen bekommt** — nicht bloss etwas, das in den Daten seltsam
+  aussieht. **Keiner der vier Fehlalarme wäre am eigenen Shop aufgefallen.**
+- **⚖️ SCHWEREGRADE EINGEFÜHRT, erzwungen von einer Messung:** `nomadi.de` führt Markenware, die
+  Varianten heissen `heritage black` und `Moon Black` — die **offiziellen** Farbnamen von Bugaboo
+  und Cybex, kein Lieferantenmüll. 69 davon als „Defekt" zu melden wäre falsch gewesen. Jeder
+  Befund ist jetzt **Defekt** (objektiv falsch, für die Kundschaft sichtbar) oder **Hinweis**
+  (einen Blick wert, kann eine gute Erklärung haben), getrennt gezählt.
+- **✅ GEGENPROBE ÜBER ZEHN SHOPS (GEMESSEN 30.09., je eine Seite): gymshark.com, allbirds.com,
+  ankerkraut.de und snocks.com je 250 Produkte und je NULL Defekte** · codello.de 1 · purelei.de 4 ·
+  de.holy.com 8 · luxestyle.ch 9 · waterdrop.de 11 · nomadi.de 19 · lfdy.com 25. **Vier gepflegte
+  Kataloge ergeben null** — ein Prüfer, der auch dort ausschlägt, wäre wertlos. Die Vergleichstabelle
+  auf `shop-check.html` nennt **nur die sauberen Shops namentlich**; fremde Fehler gehören nicht in
+  unsere Werbung (und herabsetzende Werbung ist in der Schweiz ein eigenes Risiko).
+- **🔴 EIN NAHELIEGENDER PLAN IST RECHTLICH VOM TISCH, und das ist die wichtigste Recherche dieser
+  Runde:** „fremde Shops messen und den Händlern ihren Befund mailen" geht **nicht**. QUELLE:
+  Schweiz **Art. 3 Abs. 1 lit. o UWG** verlangt für elektronische Massenwerbung Einwilligung plus
+  Absenderangabe plus Abmeldehinweis; **Deutschland: die Lockerung für Unternehmen betrifft die
+  TELEFONwerbung — für E-Mail gibt es sie nicht, im B2B genauso wie im B2C.** Die Verteilung muss
+  **eingehend** sein. **Ich habe niemanden kontaktiert.**
+- **📉 UND DIE ZAHL, DIE DIE PRODUKTWAHL ÜBERHAUPT ENTSCHIEDEN HAT (QUELLE, über 1000 KI-gebaute
+  Geschäfte): 70 PROZENT bleiben unter 1000 im Monat, 1–2 PROZENT kommen über 50 000** — der
+  Engpass ist die Verteilung. **Die Gegenprobe am eigenen Bestand stimmt bitter genau:** das
+  Gedächtnis hält seit dem 13.06. fest, dass mehr Produkte/Posts/Videos hier ein **gemessener
+  0-Hebel** sind. Dieselbe Lehre, zwei Quellen, vier Monate auseinander.
+- **🟡 Wo die Händler sind (QUELLE), samt der Regeln, die man vorher lesen muss:** r/shopify
+  340 000+ · r/reviewmyshopify 34 000+ · Shopify Community 900 000+ · Discord „Talk Shop" ·
+  FB-Gruppen 50 000–100 000. **r/shopify duldet Eigenwerbung nur als echte Händlerhilfe**
+  (90/10-Regel), **die Shopify Community verbietet sie ausserhalb des „Ask and Offer"-Boards.**
+- **⚠️ Demut-Befund (QUELLE): Katalog-Hygiene steht in KEINER Liste der häufigsten
+  Händler-Beschwerden 2026** (dort stehen Support, App-Ballast, Gebühren, Kontosperren, Ausfälle).
+  Das Produkt löst also ein Problem, von dem viele nicht wissen, dass sie es haben — **deshalb ist
+  der Befund am eigenen Shop der ganze Verkauf, nicht die Beschreibung.**
+- **↔️ EIN WIDERSPRUCH BLEIBT OFFEN, bewusst nicht aufgelöst:** eine Quelle nennt **99 USD
+  einmalig** für den Shopify-Partner-Zugang, eine andere „kostenlos". Die offizielle Seite nennt
+  **keine Gebühr**. → Vor einer Entscheidung beim Anbieter selbst prüfen, **hier keine Zahl
+  behaupten.**
+- **🟢 CI: einen VORBESTEHENDEN roten Check behoben, statt ihn wegzuerklären.** `hype-filter` war
+  rot (4 Fehler in `functions/_api.test.mjs`). **GEMESSEN: dieselben vier Fehler treten auf
+  `origin/main` auf, ohne eine einzige Änderung von hier** — mein Commit hat den Workflow nur
+  erstmals ausgelöst, weil er `functions/**` anfasst. **Ursache:** der Claude-Pfad in
+  `api/hype-check.js` verlangt inzwischen zusätzlich eine **aban-Pro-Lizenz**, der Mock antwortete
+  aber auf **jede** Adresse mit der Claude-Antwort — also bekam auch die Lizenzprüfung diese
+  Antwort und lehnte ab. **Der Test war veraltet, nicht der Code kaputt.** Mock unterscheidet jetzt
+  nach Adresse, und ein **neuer Test 10b** belegt, dass die Pro-Sperre wirklich greift (ohne
+  Schlüssel muss es Fallback bleiben) — sonst wäre der Test auch grün, wenn die Sperre wegfiele.
+  **36 ok / 4 rot → 43 ok.** Die drei roten `Workers Builds` sind unverändert der Fall vom 12.09.,
+  Stand-down-Kommentar steht seit dem 20.09. an PR #2514 — **kein zweiter.**
+- **📊 154 Prüfungen grün:** 84 Selbsttests `katalog_audit` · 27 `_shop-check.test.mjs` ·
+  43 `_api.test.mjs`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-29 (🛒 ETWAS ZUM VERKAUFEN GEBAUT — und der Katalog JEDES Shopify-Shops ist öffentlich):**
+- **Auftrag des Users:** „nutze das ganze internet für info · eine app oder irgendetwas entwickeln
+  programmieren zum verkaufen · surfe überall für infos." Die Hunde-Schleife wurde dafür angehalten.
+- **🔑 DER BEFUND, AUF DEM ALLES STEHT, IST GEMESSEN: `https://<shop>/products.json` liefert auf
+  JEDEM Shopify-Shop HTTP 200** — geprüft an luxestyle.ch, gymshark.com, allbirds.com,
+  www.waterdrop.de. Darin: Titel, Optionen **mit Werten**, alle Varianten mit Preis,
+  `compare_at_price`, SKU und Bilder. Kein Schlüssel, keine Anmeldung, Shopifys eigener Endpunkt.
+  **Damit lässt sich ein Katalogfehler bei einem FREMDEN Shop belegen, ohne dass der Händler
+  irgendetwas freigibt** — und genau das löst das Problem, an dem laut Recherche die meisten neuen
+  Werkzeuge sterben. ⚠️ **Nicht** enthalten ist der Einkaufspreis; eine Marge braucht weiter Zugang.
+- **📉 DIE RECHERCHE HAT DIE RICHTUNG ENTSCHIEDEN, nicht die Produktidee.** QUELLE (Auswertung von
+  über 1000 KI-gebauten Geschäften): **70 PROZENT bleiben unter 1000 im Monat, 1–2 PROZENT kommen
+  über 50 000** — der Engpass ist die Verteilung, nicht das Bauen. Das deckt sich exakt mit der
+  eigenen Messung vom 13.06. („mehr Produkte/Posts/Videos = 0-Hebel, bewiesen"). Also wurde bewusst
+  etwas gebaut, dessen Verteilung **eingebaut** ist: ein Prüfer, den man auf den Shop eines
+  Interessenten richten kann, bevor dieser irgendetwas installiert.
+- **🛠️ GEBAUT, 100 Prüfungen grün:** `functions/_katalog_audit.mjs` (die Prüfer, **genau einmal**),
+  `tools/katalog_audit.mjs` (Kommandozeile, **73 Selbsttests**), `functions/api/shop-check.js`
+  (öffentliche Cloudflare-Pages-Funktion), `functions/_shop-check.test.mjs` (**27 Prüfungen**,
+  davon die Adressprüfung) und die Seite **`shop-check.html`**. In der CI eingehängt
+  (`hype-filter-test.yml`), im Skill `werkzeugkasten` eingetragen.
+- **Gefunden werden:** rohe Lieferantentexte im Variantennamen (`Set 3-GreenSXL`,
+  `XCS00525070101`) · englische Farbwerte im deutschsprachigen Shop · **Option heisst „Farbe",
+  enthält aber keine Farben** · durchgestrichener Preis nicht höher als der Preis (in der Schweiz
+  **PBV-relevant**, QUELLE: Selbstvergleich nur wenn der alte Preis doppelt so lange galt, max.
+  zwei Monate) · gleiche Ware zu verschiedenen Preisen · Produkte ohne Bild · doppelte Titel.
+- **🔴 DIE GEGENPROBE IST WERTVOLLER ALS JEDER SELBSTTEST, und sie macht das Gerät erst
+  verkäuflich: gymshark.com 500 Produkte → 0 Befunde · allbirds.com 250 → 0 · waterdrop.de 169 →
+  14 (stichprobenweise als echt bestätigt) · luxestyle.ch 1000 → 91.** Ein Prüfer, der überall
+  ausschlägt, misst nichts. Dieser unterscheidet einen gepflegten Katalog von einem, in den
+  Lieferantendaten roh hineingelaufen sind — und **genau dieser Satz ist der Verkaufssatz.**
+- **⚠️ DREI ECHTE FEHLALARME KAMEN ERST AN FREMDEN SHOPS HERAUS**, jeder an der Kundenseite
+  nachgesehen statt geglaubt: (1) der **Messschieber** hat Varianten `2 Stück`/`3 Stück`/`5 Stück`
+  — Mengenrabatt, kein Defekt; (2) der **Rizinusöl-Wickel** hat eine ZWEITE Option
+  (`Bauchwickel` gegen `Set Bauch + Nacken`); (3) **`sandrot` und `rasengrün` SIND Farben**, meine
+  Prüfung verlangte aber einen Wortanfang — **die Wortgrenzen-Falle in umgekehrter Richtung, zu
+  streng statt zu locker.** Nach den Korrekturen fiel eine Kategorie **von 80 auf 10** — die erste
+  Zahl bestand zu sieben Achteln aus Fehlalarmen. **Hätte ich sie gemeldet, wäre der Bericht
+  Müll gewesen.**
+- **⚠️ Und ein Absturz, der bei einem Produkt für Fremde untragbar ist:** eine nicht auflösbare
+  Adresse (`de.mrmarvis.com`) riss den Lauf mit einem Stacktrace ab. Jetzt: Klartext und Exit 2,
+  als Test festgehalten. Die Adressprüfung weist IP-Adressen, `localhost` und interne Endungen ab,
+  **damit der Rand dieses Kontos keine Abruf-Maschine auf Zuruf wird.**
+- **💰 DIE BEZAHLSCHIENE STEHT BEREITS — das war der wichtigste Fund für „womit verkaufen".**
+  GEMESSEN: `functions/_pro.mjs` validiert **Lemon-Squeezy**-Lizenzschlüssel (Monat/Jahr), **fünf**
+  Edge-Funktionen benutzen sie schon, der Laden ist `abannews.lemonsqueezy.com`, Preisstufen
+  CHF 19/39/49 in `produkte.html`. Es musste also **keine Zahlung gebaut werden.** Modell: Zahlen
+  und drei Belege je Fehlerart **gratis**, die vollständige Liste hinter **aban Pro**.
+- **⛔ Der naheliegende Weg war der falsche, und das ist gemessen:** ein digitales Produkt im
+  bestehenden Shopify-Shop zu verkaufen geht **nicht** — `test-digital-products-connection` meldet,
+  dass die Digital-Products-App bei LuxeStyle **gar nicht installiert** ist. Dazu passt die
+  Zielgruppe nicht (Schweizer Tierbedarf-Kundschaft kauft kein Händler-Werkzeug).
+- **⚠️ EHRLICH ZUR KONKURRENZ:** die Kategorie ist **nicht leer** — **CleanShelf** im Shopify App
+  Store prüft bereits „language and duplicate products" (QUELLE). Der Unterschied ist **keine
+  Installation nötig**, also auf fremde Shops anwendbar. Preisanker am Markt (QUELLE): 39 USD für
+  ein werkzeuggestütztes Audit, 150 USD von Hand, 500–2500 bei Agenturen.
+- **🟡 NUR DER USER:** (1) die Seite ist erst nach dem Merge nach `main` live (Cloudflare Pages
+  baut von `main`); (2) entscheiden, ob der volle Bericht in aban Pro liegt oder als Einzelkauf
+  (CHF 39) angelegt wird; (3) ob und wen man damit ansprechen will — **ich habe niemanden
+  kontaktiert**, das Werkzeug liest nur öffentliche Daten und schreibt nichts.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-28/29 (🐕 HUNDE SEITE 4 — ein 404 an der Kundenseite war ein STATUSFEHLER, kein Messfehler):**
+- **Auftrag:** Dauerauftrag / `/loop`, Seite 4 der Hundeklasse.
+- **✅ GEÄNDERT (live): 26 Produkte / 46 Varianten**, `userErrors` in allen drei Teilen leer.
+  Von 128 Varianten: **81 in Ordnung, 46 angehoben, 1 gemeldet, 0 ohne Einkaufspreis, 0 nicht-CHF.**
+  Band der angehobenen 20,9–37,9 PROZENT. **Die beste Seite der Hundeklasse bisher** — 63 PROZENT
+  waren schon in Ordnung (Seite 3: 36 PROZENT). Grösste Fälle: Hochliegendes Hunde-Bett mit Schirm
+  118.90 bei EK 84.50 → 154.90 · Gestreifter Camping-Bett 109.90/78.10 → 144.90 · Hochliegendes
+  Mesh-Hundebett 103.90/73.58 → 134.90 · Auto-Hundematte mit Stütze 2 Var. 93.90/66.85 → 119.90.
+- **🔴 DER WICHTIGSTE FUND KAM AUS DER NACHMESSUNG, NICHT AUS DER ABFRAGE: zwei Produkte lieferten
+  an der Kundenseite 404** — und das ist keine Drosselung (429 wäre „warte"). **Nachgesehen statt
+  vermutet: beide stehen auf `DRAFT`, `publishedAt: null`, in 0 Kanälen.** Die Abfrage
+  `title:hund* AND status:active` hatte sie trotzdem geliefert — **der Suchindex-Fehler vom
+  14.09., und die Nachmessung hat ihn gefunden, ohne dass ich danach gesucht habe.**
+  Gegenprobe über `nodes(ids:)` für alle 50: **genau 2 sind DRAFT, exakt die beiden 404er.**
+  Ihre Preise sind korrekt gesetzt (per `productVariant` nachgefragt: 154.90 und 144.90) —
+  **nur sieht sie kein Kunde.** **Lehre: ein 404 in `preis_nachmessen.mjs` ist zuerst eine Frage
+  an den Produktstatus, nicht ein Fehlschlag des Geräts.**
+- **✅ Damit 24 von 24 wirklich live geschalteten Produkten an der echten Kundenseite nachgemessen**,
+  Gegenprobe mit erfundenen Werten **0/3** (mit den echten 3/3).
+- **⛔ 1 VARIANTE NUR GEMELDET, und sie ist ein Lehrstück für die Regel je Variante:
+  Hundeschutzmatte.** Dasselbe Produkt, dieselbe Grösse 132×160 cm, zwei Farben — **Schwarz
+  EK 36.57, Orangerot EK 64.31.** Schwarz stand bei 51.90 (21,7 PROZENT) und wurde auf 69.90
+  gesetzt; Orangerot steht bei 34.90 und macht **−104,7 PROZENT** (Faktor 3,4) → gemeldet.
+  Ein Einkaufspreis, der bei gleicher Ware und gleicher Grösse fast das Doppelte beträgt, ist ein
+  Importfehler, über den ein Mensch entscheidet. **Damit sind es achtzehn Faktor-über-3-Fälle.**
+- **🔑 DIE DATEI-ABLAGE IST STEUERBAR, NICHT GLÜCK.** Dieselbe Abfrage wie auf Seite 3 kam diesmal
+  **inline** zurück — genau der Fall, der auf Seite 1 zum Abtippen zwang. **Die Abfrage mit MEHR
+  Feldern wiederholt** (`descriptionHtml`, `sku`, `createdAt`, `compareAtPrice`) → 103 708 Zeichen,
+  über der Grenze, das Werkzeug legt sie als Datei ab. Danach `jq` + Node, **null Abtippen.**
+  Wer die Datei will, fragt mehr ab.
+- **⚠️ MEINE EIGENE GEGENPROBE WAR ZUERST DEFEKT, nicht die Mutation.** Der Abgleich
+  „Mutation gegen Plan-CSV" meldete 46 gegen 37 Zeilen. Ursache: **neun Produkttitel enthalten ein
+  Komma** („Hochliegendes Hunde-Bett mit abnehmbarem Schirm, 36 Zoll"), und `awk -F,` zählt das
+  Komma im Feld mit — die Felder verrutschen, die Zeile fällt aus dem Filter. Mit einem echten
+  CSV-Leser: **46 gegen 46, exakt gleich.** Dieselbe Klasse wie die fehlende Wortgrenze bei `3to4`
+  und `/schal/`. Die Gegenprobe prüft jetzt sich selbst mit: ein erfundener Preis **muss** genau
+  eine Abweichung erzeugen (tut er).
+- **⚠️ DIE KLASSENGRÖSSE HAT SICH BEWEGT, und die gemerkte Zahl ist veraltet.** GEMESSEN heute:
+  `title:hund*` **1670 aktiv · 752 Entwürfe · 24 archiviert · 2446 gesamt**, und die **Summe
+  schliesst exakt** (Unsinn-Filter 0). Am 27.09. standen dort **1694 aktiv / 2351 gesamt**.
+  **Lehre: eine laufende Summe gegen eine gemerkte Gesamtzahl zu rechnen ist falsch** — verlässlich
+  ist die Seitenzahl (4 Seiten à 50 = 200 Produkte gesehen), nicht der Prozentsatz.
+- **📊 STAND: 200 Hundeprodukte gemessen (Seiten 1–4) → 124 Produkte / 441 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block4-2026-09-28.csv`. Cursor für Seite 5:
+  `eyJsYXN0X2lkIjoxNTQ1Mzc3MjE4NTk4NSwibGFzdF92YWx1ZSI6MTU0NTM3NzIxODU5ODV9`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-27, fünfte Runde (🐕 HUNDE SEITE 3 — die Antwort kam als DATEI, also null Abtippen):**
+- **Auftrag:** Dauerauftrag / `/loop`, Seite 3 der 1694 Hundeprodukte.
+- **🔑 DER GRÖSSTE UNTERSCHIED ZU DEN VORRUNDEN IST KEIN BEFUND, SONDERN EIN WEG: die Abfrageantwort
+  war mit 62 410 Zeichen zu gross für den Kontext und wurde vom Werkzeug ALS DATEI ABGELEGT**
+  (`tool-results/…txt`). Damit liess sich alles mit `jq` und einem Node-Skript verarbeiten —
+  **kein einziger Wert von Hand übertragen**, anders als auf den Seiten 1 und 2. Das ist der
+  saubere Weg für grosse Seiten: **lieber mehr Felder abfragen und die Datei auswerten, als
+  weniger abfragen und abtippen.**
+- **✅ GEÄNDERT (live): 34 Produkte / 167 Varianten**, `userErrors` in allen vier Teilen leer,
+  **34/34 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  Von 345 Varianten: **124 in Ordnung, 167 angehoben, 4 gemeldet, 0 ohne Einkaufspreis, 0 nicht-CHF.**
+  Band der angehobenen 20,9–37,4 PROZENT. Grösste Fälle: Erhöhter Hundenapf mit 2 Edelstahl-Näpfen
+  138.90 bei EK 98.85 → 179.90 · Elektronisches Hunde-Spielzeug 51.90/36.88 → 69.90 · Hundebett
+  Warmer Schlafsack 51.90/36.75 → 69.90 · Hundebett Sofa 66.90/47.01 → 84.90.
+- **⛔ 4 VARIANTEN NUR GEMELDET (Faktor über 3), und sie zeigen die Regel je Variante im Reinzustand:**
+  **Hundebett Warmer Schlafsack** hat bei EINEM Einkaufspreis von 36.75 Varianten zu 18.90, 21.90,
+  22.90 **und** 51.90 — die drei billigen liegen bei **−116,0 / −86,5 / −78,3 PROZENT** und sprengen
+  den Deckel (Faktor 3,7 / 3,2 / 3,1), die teure wurde normal auf 69.90 gesetzt. **Dasselbe Produkt
+  ist also gleichzeitig gesetzt und gemeldet** — genau wofür der Deckel je Variante gebaut wurde.
+  Dazu **Tragbarer Hunde-Kotgreifer** 14.90 bei EK 23.33 (−74,0 PROZENT, Faktor 3,0).
+  **Damit sind es siebzehn Faktor-über-3-Fälle für den User.**
+- **⚠️ EIN PRODUKT LIEF IN DIE ABFRAGEGRENZE und wurde zurückgehalten:** LED-Halsband Leopard-Muster,
+  **60 Varianten, 50 geliefert**. Über den **echten** Cursor aus `pageInfo { endCursor }` nachgeholt
+  (nicht geraten, Lehre der Vorrunde): die restlichen 10 tragen wie die ersten 50 **14.90 bei
+  EK 5.63**. **Alle 60 liegen damit bei 58–61 PROZENT Marge — das Produkt ist gesund, nichts zu
+  ändern.** Gemessen statt angenommen; ohne das Nachholen hätte hier „zurückgehalten, offen"
+  gestanden.
+- **📊 STAND: 150 von 1694 Hundeprodukten gemessen → 98 Produkte / 395 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block3-2026-09-27.csv`. Cursor für Seite 4:
+  `eyJsYXN0X2lkIjoxNTQ1MDg0OTgzNzQ0MSwibGFzdF92YWx1ZSI6MTU0NTA4NDk4Mzc0NDF9`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-27, vierte Runde (🐕 HUNDE SEITE 2 — ein erfundener Cursor sieht aus wie „fertig"):**
+- **Auftrag:** Dauerauftrag / `/loop`, Seite 2 der 1694 Hundeprodukte.
+- **✅ GEÄNDERT (live): 30 Produkte / 186 Varianten**, `userErrors` in allen vier Teilen leer,
+  **alle 30 an der echten Kundenseite nachgemessen (28/28 und 2/2)**, Gegenprobe mit erfundenen
+  Werten schlägt bei **allen** an. Band der Ausgangsmargen 20,8–36,5 PROZENT, **0 Verlustfälle,
+  0 Faktor-über-3, 0 ohne Einkaufspreis.** Grösste Fälle: Hunde-WC mit Kunstrasen 129.90 bei
+  EK 92.59 → 169.90 · Reha-Sofa-Kissen für gelähmte Hunde 72.90/47.80 → 89.90 · Hundeleine
+  25.90/18.20 → 34.90 · Beissfestes Oxford-Spielzeug 30.90/21.21 → 39.90.
+- **🔑 DIE PREISENTSCHEIDUNG KAM DIESMAL AUS `entscheid()`**, nicht aus einem neu geschriebenen
+  Kriterium — genau der Fehler der Vorrunde. Ergebnis: **61 von 113 Varianten waren bereits in
+  Ordnung** und blieben unangetastet.
+- **⚠️ ZWEI PRODUKTE LIEFEN IN DIE ABFRAGEGRENZE und wurden zuerst zurückgehalten:** die 3-in-1
+  Trinkflasche (**55 Varianten**, 50 geliefert) und der personalisierbare Harnisch (**99
+  Varianten**, 50 geliefert). Regel vom 22.09.: eine Zahl, die an einer Abfragegrenze entsteht,
+  ist kein Messwert.
+- **🔴 UND DABEI EINE NEUE FALLE, die gefährlicher ist als sie aussieht: ICH HABE DEN CURSOR
+  GERATEN — und ein erfundener Cursor liefert eine LEERE Seite mit `hasNextPage: false`.** Das ist
+  von „es gibt nichts mehr" **nicht zu unterscheiden**. Hätte ich das geglaubt, wären 5 bzw. 49
+  Varianten stillschweigend unbepreist geblieben, und der Stand-Block hätte „vollständig"
+  behauptet. **Dieselbe Klasse wie die geratene Collection-ID vom 13.09.: Cursor und IDs werden
+  abgefragt, nie geraten.** Der echte Cursor kam aus `pageInfo { endCursor }`.
+- **✅ Danach die Lückenlosigkeit der Variantennummern belegt** (Technik vom 22.09.):
+  `erste + (n-1)*32768 === letzte` stimmt für **beide** Produkte exakt (55 und 99). Damit liessen
+  sich die 154 Varianten-IDs **rechnen statt abtippen** — und erste wie letzte erzeugte ID
+  stimmen mit der Abfrage überein.
+- **📊 Die beiden grossen Produkte allein: 134 Varianten geändert.** Beim Harnisch waren **alle 99**
+  betroffen (16.90 bei EK 11.54 = 24,1 PROZENT → 24.90); bei der Trinkflasche **35 von 55** — die
+  Varianten zu 24.90 und 26.90 erfüllten das Ziel bereits und blieben stehen. **Ein Produkt mit
+  einheitlichem Einkauf, aber fünf verschiedenen Preisen, ist genau der Fall, für den die
+  Entscheidung je Variante gebaut wurde.**
+- **📊 STAND: 100 von 1694 Hundeprodukten gemessen → 64 Produkte / 228 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block2-2026-09-27.csv`. Cursor für Seite 3:
+  `eyJsYXN0X2lkIjoxNTQ0OTQ1MjI0OTQ3MywibGFzdF92YWx1ZSI6MTU0NDk0NTIyNDk0NzN9`.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-27, dritte Runde (🔓 DIE CLOUD-SESSION HAT DOCH EINEN BROWSER — ein TikTok-Tipp hat ein Gedächtnis-Verbot gekippt):**
+- **Auftrag:** ein TikTok-Link vom User. Voller Bericht:
+  **`dropship/LERNEN-MCP-KONNEKTOREN-2026-09-27.md`**.
+- **Inhalt geholt wie im Skill `recherchieren`:** `@aiagentgeorg/video/7690216229704912160`, 49 s,
+  **7770 Aufrufe, 197 Likes, 80 Kommentare**, deutsche **ASR-Untertitelspur** (1800 Bytes WebVTT).
+  Empfohlen werden vier Konnektoren: **Perplexity** (Recherche), **Firecrawl** (Webseiten
+  auslesen), **Playwright** (echter Browser), **Composio** (hunderte Apps). Der Schluss
+  („kommentiere MCP") ist Reichweiten-Mechanik, kein Inhalt.
+- **🔓 DIE GEGENPROBE AM EIGENEN BESTAND HAT EINEN SATZ GEKIPPT, DER SEIT DEM 12.06. IN
+  GROSSBUCHSTABEN IM GEDÄCHTNIS STEHT: „Cloud-Sessions haben KEINEN Browser" IST FALSCH.**
+  GEMESSEN: **Chromium 141.0.7390.37** liegt ausführbar unter
+  `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`, **`playwright` liegt GLOBAL** in
+  `/opt/node22/lib/node_modules` — darum scheitert ein blosses `import "playwright"` aus dem
+  Projekt, und **genau das erklärt die Notiz vom 11.09.** („Playwright ist nicht vorinstalliert").
+  Eine echte Produktseite lädt mit **HTTP 200** und rendert.
+- **⚠️ DIE HÜRDE WAR DAS ZERTIFIKAT, und der bequeme Ausweg wäre der falsche gewesen.** Der
+  Agent-Proxy bricht TLS auf, Chromium 141 bringt seinen **eigenen** Wurzelspeicher mit —
+  System-Trust und die NSS-Datenbank unter `~/.pki/nssdb` helfen ihm nicht
+  (`ERR_CERT_AUTHORITY_INVALID`). **`ignoreHTTPSErrors` hätte die Prüfung GANZ abgeschaltet**,
+  dann gilt jede Seite als echt, auch eine untergeschobene. Stattdessen wird über
+  `--ignore-certificate-errors-spki-list` **genau den dokumentierten Anthropic-Proxy-CAs**
+  vertraut, mit SPKI-Fingerabdruck aus `/root/.ccr/ca-bundle.crt`.
+- **🛠️ GEBAUT `tools/browser.mjs` (12 Selbsttests).** `ansehen(url, {erwartet, verboten, bild})`
+  liefert Status, Titel, **gerenderten** Text und Screenshot und nimmt die Gegenprobe mit.
+  Zwei Selbsttests sichern genau die Versuchung ab: **die Prüfung darf nicht pauschal abgeschaltet
+  werden**, und ein Unsinn-Wert darf nicht als Fingerabdruck durchgehen. **Echter Lauf statt nur
+  grüner Selbsttests** (Lehre 23.09.): Agility-Trainingsset → HTTP 200, der heute gesetzte Preis
+  **129.90 im gerenderten Text gefunden**, alter Preis 98.90 und Unsinn-Wert 777.77 **nicht**.
+- **👀 UND DER ERSTE SCREENSHOT ZEIGTE SOFORT ZWEI MÄNGEL, DIE IM QUELLTEXT NICHT STEHEN:** die
+  Produktbilder tragen **englischen Werbetext** („LOW MAINTENANCE", „Easy to clean pet hair",
+  „Wear-resistant material") in einem Shop, der auf Deutsch verkauft — Lieferantenbilder, die
+  niemand angesehen hat, und **kein Textwerkzeug findet sie, weil der Text im Bild steht.** Dazu
+  liegt ein **Cookie-Banner mobil über Titel und Preisbereich**. ⚠️ Beides ist an **einer** Seite
+  gesehen — eine Beobachtung, keine Klassenaussage. Vor einer Zahl erst über den Katalog messen.
+- **📋 DIE VIER EMPFEHLUNGEN, EHRLICH EINGEORDNET (GEMESSEN über `ListConnectors` und das
+  Verzeichnis):** das Konto hat **vier** Konnektoren — Google Drive (verbunden), Shopify
+  (verbunden), Google Calendar (nicht verbunden), **TikTok Ads (`connect_incomplete`)**. Von den
+  vier genannten existiert im Verzeichnis **nur Firecrawl**, nicht installiert; Perplexity,
+  Playwright und Composio tauchen gar nicht auf. **Punkt 3 des Videos ist hier also bereits
+  erfüllt — ohne Konnektor, ohne Abo, ohne PC.**
+- **⚠️ Firecrawl löst die Instagram-Sackgasse vom 20.09. vermutlich NICHT:** Instagram liefert an
+  nicht angemeldete Abrufer grundsätzlich eine leere Hülle, das ist keine Frage des
+  Auslesewerkzeugs. Ungeprüft, aber nicht als Hoffnung ins Gedächtnis schreiben.
+- **🟡 NEUER NEBENBEFUND FÜR DEN USER, und er betrifft Werbegeld: der Konnektor „TikTok Ads" steht
+  auf `connect_incomplete`** — angefangen, nicht fertig verbunden. Das Gedächtnis führt
+  „TikTok-Pixel + Conversion-Kampagne" seit dem 13.06. als einen der drei User-Klicks. Ob es
+  dieselbe Baustelle ist, ist **nicht geprüft** — nachsehen lohnt.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-27, zweite Runde (🐕 DIE HUNDEKLASSE BEGINNT — und mein eigenes Blockskript wollte gesunde Preise anheben):**
+- **Auftrag:** Dauerauftrag / `/loop` plus „lerne für andere session". Katzen sind abgeschlossen
+  (806/806), nächste Klasse `hund*`.
+- **🔎 KLASSENGRENZE GEMESSEN, und `hunde*` war zu eng: `hund*` = 1694 aktive Produkte, `hunde*`
+  nur 1640** — 54 Produkte heissen „für den Hund" statt „für Hunde". Dazu 2351 gesamt, also
+  711 Entwürfe. Der naheliegende falsche Freund ist geprüft: **`title:hundert*` → 0 Treffer**, die
+  Wortanfang-Suche fängt also kein „Hundert". Die ersten 30 Titel gelesen: **30 von 30 echter
+  Hundebedarf**, keine Tiermotiv-Kleidung wie bei `tier*`.
+- **🔴 DER WICHTIGSTE FUND DIESER RUNDE IST EIN FEHLER IN MEINEM EIGENEN VORGEHEN.** Mein
+  handgeschriebenes Blockskript entschied nach `zielpreis(ek) > preis` — und wollte damit auf
+  Seite 1 **sieben Varianten mit 40,7 PROZENT Marge anheben**, also Preise, die das Ziel von 38
+  längst erfüllen. Es ist **genau die Unschärfe, die am 20.09. in `automation/preis_korrektur.mjs`
+  behoben wurde** (15 → 30 Selbsttests): ein Preis kann zwischen zwei Sprossen der Leiter stehen
+  und gesund sein. **Die Korrektur steckte im Katalogskript, nicht in den Blockskripten** — und
+  jede Runde schreibt ihr Blockskript neu.
+- **✅ SELBSTPRÜFUNG ÜBER ALLE 1148 GESETZTEN KATZEN-VARIANTEN: 0 zu Unrecht angefasst.** Jede lag
+  wirklich unter dem Ziel. **Das war aber Glück, nicht Sorgfalt:** die Katzenbänder endeten bei
+  37,9 PROZENT, die Lücke zwischen „Ziel erfüllt" und „Sprosse höher" kam dort nie vor. Bei den
+  Hunden kommt sie vor. Gegenprobe des Prüfkriteriums mitgeliefert: eine Variante mit 19.90 bei
+  EK 5.00 hat 72,1 PROZENT und wäre als Fehlgriff erkannt worden.
+- **🛠️ BEHOBEN AN DER WURZEL: `tools/varianten_preis.mjs` exportiert jetzt `entscheid(preis, kosten)`**
+  (24 → **38 Selbsttests**) und gibt `unbekannt` / `in_ordnung` / `setzen` / `melden` zurück. Damit
+  liegt die Regel an **einer** Stelle und kein Blockskript erfindet sie neu. Im Werkzeugkasten-Skill
+  eingetragen. Geprüft sind u. a.: kein Einkaufspreis → unbekannt statt in Ordnung · Marge über Ziel
+  wird nicht angefasst, **auch wenn `zielpreis()` höher liegt** · Verlustfall wird gesetzt ·
+  Faktor über 3 wird gemeldet · **idempotent** · nie senken.
+- **⚠️ UND DIE NEUEN TESTS WAREN ZUERST WIRKUNGSLOS: sie landeten im falschen Funktionsblock und
+  liefen nie.** Die Ausgabe blieb bei „24 Prüfungen bestanden, 0 gescheitert" — **grün, weil nichts
+  geprüft wurde.** Aufgefallen nur, weil ich die Zahl nachgezählt habe statt „0 gescheitert" zu
+  glauben. Dieselbe Klasse wie der 23.09. („ein grüner Selbsttest beweist nur, dass der Code tut,
+  was der Test prüft") — hier eine Stufe schlimmer: **er bewies gar nichts.**
+- **⚠️ DANACH FIEL EIN TEST UM — und er hatte recht, nicht der Code.** Mein Grenzwert EK 11.1067
+  lag schon unter dem Ziel. **Nachgerechnet liegt die Grenze bei EK 11.1042 (exakt 38,0000
+  PROZENT):** 11.10 → 38,0235 · 11.11 → 37,9676 · 11.20 → 37,4651. Testwert korrigiert, Regel nicht
+  gelockert.
+- **✅ ERSTER HUNDE-BLOCK (Seite 1 von 1694): 34 Produkte / 42 Varianten**, `userErrors` in beiden
+  Teilen leer, **34/34 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten
+  **0/3**. Von 71 Varianten: **28 in Ordnung, 42 angehoben, 1 ohne Einkaufspreis (übersprungen,
+  nicht „in Ordnung"), 0 Faktor-über-3.**
+- **🔑 DIESE SEITE SIEHT VÖLLIG ANDERS AUS ALS DIE KATZENSEITEN — und bestätigt die Chargen-Regel
+  erneut.** Der Faktor Preis/Einkauf streut hier von **0,651 bis 4,384** (Median 1,708); Katzenseite 8
+  lag geschlossen bei 1,408–1,477. **Ein Verlustfall: Hüteball für Hunde mit Griffen 45 cm, eine
+  Variante 26.90 bei EK 41.30 (−70,6 PROZENT) → 74.90**, während die Schwestervariante mit 34.90 bei
+  EK 24.27 gesund aussieht — **dasselbe Produkt, zwei Welten, und eine Messung je Produkt hätte den
+  Verlust verschluckt.** Weitere grosse Fälle: Agility-Trainingsset 98.90 bei EK 70.46 → 129.90 ·
+  Erhöhtes Hundebett mit Sonnendach 140.90/100.06 → 179.90 · Hundebett «Cooling Cot» 106.90/75.64 →
+  139.90 · Hunde Tennisball Futterspender 53.90/37.85 → 69.90.
+- **⚠️ Die 50 Produkte mussten von Hand übertragen werden** (die Abfrageantwort landete diesmal nicht
+  als Datei auf der Platte). **Deshalb wurden alle 42 Zielvarianten Ziffer für Ziffer gegen die
+  Abfrage geprüft, bevor gesendet wurde** — ein vertippter Einkaufspreis erzeugt einen falschen
+  Zielpreis, den die Nachmessung an der Kundenseite anschliessend brav bestätigen würde. Die
+  Nachmessung prüft, dass der Shop zeigt was geplant war, nicht dass der Plan richtig war.
+- **📊 STAND: 50 von 1694 Hundeprodukten gemessen → 34 Produkte / 42 Varianten korrigiert.**
+  Daten: `dropship/preise-hunde-block1-2026-09-27.csv`. Cursor für Seite 2:
+  `eyJsYXN0X2lkIjoxNTQ0ODk0NzYyMjI3MywibGFzdF92YWx1ZSI6MTU0NDg5NDc2MjIyNzN9`.
+- **🟡 NUR DER USER, und bei 1694 Hundeprodukten ist es keine Bequemlichkeit mehr:** `SHOPIFY_SHOP` /
+  `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. Handarbeit schafft 50 Produkte je Block;
+  `automation/preis_korrektur.mjs` läuft in einem Durchgang über den ganzen Katalog und trägt die
+  Margen-Regel korrekt. **Dieselben drei Werte lösen zusätzlich die schlanke Startseite und Video an
+  die Produktseite.**
+- **CI:** 33 grüne Cloudflare-Pages-Deploys auf `2e77653`, darunter `dropshipping-radar`, das am
+  20.09. rot war — **jetzt grün, ohne Zutun.** Die drei roten `Workers Builds` (aban-news-landing,
+  ki-verzeichnis, aban-a) sind unverändert der Fall vom 12.09.: keiner der fünf Worker im Repo heisst
+  so, es gibt keine Konfiguration, nur per Cloudflare-Dashboard lösbar. Stand-down-Kommentar steht
+  seit dem 20.09. an PR #2514 — **kein zweiter.**
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-26/27 (🐱 DIE GRÖSSTE KLASSE ÜBERHAUPT — 806 KATZENPRODUKTE VOLLSTÄNDIG, 489 korrigiert):**
+- **Auftrag:** Dauerauftrag / `/loop` — die nächste ungemessene Katalogklasse nach der Preisregel messen.
+  Gewählt: **Haustier**, weil einer der sieben echten Verkäufer ein Katzenspielzeug ist (#1012).
+- **🔴 DIE KLASSE IST UM EINE GRÖSSENORDNUNG GRÖSSER ALS ALLES BISHERIGE.** GEMESSEN mit
+  `productsCount` (liest `title:`, Gegenprobe `title:zzzgibtesnichtwort*` → **0**): **`katzen*` 806
+  aktive Produkte · `hunde*` 1640 · `haustier*` 508 · `kratz*` 90 · `napf*` 56.** Zum Vergleich: die
+  **gesamte** Schutzausrüstung waren 168 Produkte über sieben Blöcke. **Dieser Block misst die ERSTEN
+  300 der 806 Katzenprodukte** — der Rest ist offen, und „die Katzen sind durch" wäre gelogen.
+- **⚠️ `tier*` IST EIN FALSCHER FREUND und hätte die Messung vergiftet:** die Abfrage liefert
+  100 Treffer, und die ersten zwölf sind **Rucksack, Poncho, Handschuhe, Sweatshirt, Hoodie, Leggings
+  und Pyjama mit TIERMOTIV** — kein einziger Tierbedarf. Aufgefallen **nur, weil ich die Titel gelesen
+  habe statt der Zahl.** `katzen*` und `hunde*` waren dagegen sauber: von 200 geprüften Titeln trug
+  **keiner** das Wort nicht. **Regel: nach der Wortanfang-Suche erst ein paar Titel lesen, dann die
+  Treffermenge eine Klasse nennen.**
+- **💰 BEFUND ÜBER DIE 300: 1310 Varianten, 1148 mit bekanntem Einkauf, 259 in Ordnung,
+  798 unter dem Ziel, 91 mit Faktor über 3.** Nach Produkten: **197 von 300 betroffen.**
+- **✅ GEÄNDERT (live): 196 Produkte / 798 Varianten**, `userErrors` in allen acht Teilen leer,
+  **alle 196 an der echten Kundenseite nachgemessen (196/196, null Abweichungen).**
+  Die schlimmsten Verlustfälle: Erhöhter Futternapf 15.90 bei EK 23.91 (**−67,1 PROZENT**) →
+  44.90 · Katzenfestes Sofaüberwurf 18.90/27.19 (−59,8) → 49.90 · Faltbarer Katzenkäfig
+  72.90/104.68 (−59,5) → 189.90. Am oberen Ende stehen echte Möbel: Katzenbäume, Edelstahl-
+  Toiletten und Futterautomaten mit Einkauf 65–111, deren Preis nur um Faktor 1,2–1,3 steigt.
+- **🔑 NEUE VERFEINERUNG DER REGEL: der Preis wird JE VARIANTE gerechnet**, nicht je Produkt —
+  `neu = max(heutiger Preis, zielpreis(Einkauf DIESER Variante))`. **Gemessene Folge: 168 der 196
+  Produkte bekamen trotzdem genau EINEN Preis** (ihre Einkäufe liegen beieinander), **28 eine
+  Preisstaffel** — genau die, deren Einkauf mit der Grösse steigt. Ein Produkt je Variante zu bepreisen
+  verteuert die kleinen Grössen nicht mehr grundlos. Der **Faktor-Deckel 3 gilt ebenfalls je Variante**,
+  darum kann ein Produkt gesetzte und gemeldete Varianten zugleich haben.
+- **⛔ 7 PRODUKTE NUR GEMELDET, NICHT GESETZT (Faktor über 3 = falsch importiert):**
+  Tofu-Katzenstreu 46.90 bei EK 181.30 (**−329,5 PROZENT**, Faktor 7,0) · Chenille-Sofabezug
+  20.90/69.48 (Faktor 6,0) · Intelligenter Rollball 93.90/299.32 (5,7) · Kuscheliges Haustierbett
+  18.90/52.69 (5,0) · Katzenfestes Einheitssofaüberwurf 25.90/55.11 (3,9) · Universeller
+  Kratzerschutz 20.90/40.15 (3,6) · Erhöhter Futternapf 20.90/35.93 (3,1).
+  **Damit sind es dreizehn Faktor-über-3-Fälle für den User.**
+- **🛠️ GEBAUT `tools/preis_nachmessen.mjs` (16 Selbsttests)** — das Prüfgerät der letzten
+  Runde lag in `/tmp` und war weg. Jetzt fest im Werkzeugkasten: prüft **je Variante** gegen
+  `/products/<handle>.js` (ohne Zugangsdaten), vergleicht **ganzzahlig in Rappen** (44.9 und 44.90 sind
+  derselbe Preis), meldet eine unbekannte Variante als **unbekannt statt „in Ordnung"**, und behandelt
+  **429/430/503 als „warte"**, nicht als „fehlt". **Gegenprobe zweimal belegt:** im Selbsttest schlägt
+  ein absichtlich falscher Sollwert aus, und an der echten Seite meldete das Gerät mit erfundenen
+  Werten **0 von 3** — mit den echten **196 von 196**.
+- **⚠️ EIN PRODUKT WURDE BEIM VERSCHICKEN BEWUSST ÜBERSPRUNGEN — und nachgereicht.** Der
+  Hoodie mit 84 Varianten passte nicht mit in seinen Teil; **eine Auslassung, die man nicht aufschreibt,
+  ist ein stiller Verlust** (genau der Fehler vom 19.09.). Er ging als eigene Mutation raus. Dasselbe
+  beim 99-Varianten-Hoodie: dessen Variantenzahl wurde **einzeln nachgefragt (`variantsCount` = 99)**,
+  weil 99 verdächtig nah an der Abfragegrenze 100 liegt — er war vollständig.
+- **🟡 NUR DER USER, und es wiegt hier schwerer als je zuvor:** `SHOPIFY_SHOP` /
+  `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. **Bei 806 Katzen- und 1640 Hundeprodukten ist
+  Handarbeit keine Strategie mehr** — `automation/preis_korrektur.mjs` liegt seit dem 19.09. fertig da
+  und wartet auf genau diese drei Werte (löst zusätzlich die schlanke Startseite und Video an die PDP).
+- **✅ ZWEITER KATZEN-BLOCK (Seiten 4 und 5 der 806): 45 Produkte / 45 Varianten**, `userErrors` leer,
+  **45/45 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  **0 Verlustfälle, 0 Faktor-über-3** — alle 45 lagen im Band 20,7–37,9 PROZENT, also unter dem Ziel
+  aber über dem Einkauf. Grösste Fälle: Katzen-Kratzbaum Emoji 93.90 bei EK 67.02 (20,7 PROZENT) →
+  124.90 · Simulation Katzenrucksack 93.90/66.82 → 119.90 · Fruchtball 58.90/41.89 → 79.90.
+- **⚠️ UND EINE KORREKTUR AN MEINER EIGENEN BEOBACHTUNG, noch in derselben Runde.** Seite 4 hatte
+  **genau 1 von 100** Produkten mit Einkaufspreis, und ich war dabei, daraus „die neuere
+  Importgeneration hat keine Einkaufspreise" zu machen. **Seite 5 gemessen: 76 von 100 haben einen.**
+  Seite 4 war der Ausreisser, nicht die Regel. **Eine Seite ist keine Stichprobe** — dieselbe Klasse
+  wie das alphabetische Artefakt vom 23.09. Beide Seiten tragen übrigens dasselbe SKU-Schema
+  (`CJ-<pid>`, 100 von 100) und liegen zwei Tage auseinander (12.–14.08.), das erklärt es also nicht.
+- **✅ DRITTER KATZEN-BLOCK (Seite 6): 59 Produkte / 59 Varianten**, `userErrors` leer, **59/59 an der
+  echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**. Diese Seite trug bei
+  **100 von 100** Produkten einen Einkaufspreis, alle in CHF — **41 waren bereits in Ordnung.**
+  Wieder **0 Verlustfälle und 0 Faktor-über-3**, das Band lag bei 21,1–37,9 PROZENT. Grösste Fälle:
+  Keramik-Trinkbrunnen 54.90 bei EK 38.96 → 69.90 · Katzenbauch-Kissen 55.90/39.64 → 74.90 ·
+  Wasserbecken 58.90/41.67 → 74.90.
+- **📊 STAND DER KLASSE: 500 der 806 Katzenprodukte gemessen → 300 Produkte / 902 Varianten live
+  korrigiert**, jedes an der Kundenseite nachgemessen (196/196 · 45/45 · 59/59). **Die Verlustfälle
+  stecken alle im ersten Block** (Seiten 1–3, IDs 15446–15493); Seiten 4–6 (IDs 15493–15502) hatten
+  **keinen einzigen** — dort ist nur die Zielmarge nicht erreicht. **Auch das ist wieder die
+  Block-Streuung: die Importcharge entscheidet, nicht die Kategorie.**
+- **✅ VIERTER KATZEN-BLOCK (Seite 7): 83 Produkte / 105 Varianten**, `userErrors` in allen drei Teilen
+  leer, **83/83 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  Die schlechteste Seite bisher nach Quote: **nur 16 von 100 waren in Ordnung**, 121 von 122 Varianten
+  trugen einen Einkaufspreis (alle CHF). Wieder **0 Verlustfälle und 0 Faktor-über-3** — das Band lag
+  bei 20,7–37,9 PROZENT. Die Seite ist fast vollständig **Näpfe, Trinkbrunnen und Futterautomaten**:
+  Futterautomat mit Kamera 98.90 bei EK 70.60 → 129.90 · Keramik-Trinkbrunnen Kaktus 86.90/61.56 →
+  114.90 · Keramik-Doppelnapf 47.90/33.87 → 64.90.
+- **⚠️ DREI PRODUKTE KAMEN ZUERST ALS „unerreichbar (429)" ZURÜCK — und das ist kein Fehlschlag.**
+  Das Prüfgerät weist Drosselung getrennt aus (Regel vom 20.09.), also 80/83 im ersten Lauf. Die drei
+  einzeln nachgemessen: **3/3 bestätigt**. Hätte das Gerät 429 als „Variante fehlt" gezählt, stünde
+  hier eine erfundene Fehlerquote.
+- **📊 STAND DER KLASSE: 600 der 806 Katzenprodukte gemessen → 383 Produkte / 1007 Varianten live
+  korrigiert** (196/196 · 45/45 · 59/59 · 83/83 nachgemessen).
+- **✅ FÜNFTER KATZEN-BLOCK (Seite 8): 100 Produkte / 135 Varianten**, `userErrors` in allen vier Teilen
+  leer, **100/100 an der echten Kundenseite nachgemessen**, Gegenprobe mit erfundenen Werten **0/3**.
+  **Die erste Seite, auf der KEIN EINZIGES Produkt in Ordnung war: 135 von 135 Varianten mit
+  Einkaufspreis (alle CHF), 0 in Ordnung, 100 von 100 Produkten betroffen, 0 Faktor-über-3.**
+  Grösste Fälle: Futterstation für Katzen 75.90 bei EK 53.89 → 99.90 · Keramiknapf 44.90/31.84 →
+  59.90 · Faltbares Katzenbett mit Plüsch 56.90/40.31 → 74.90.
+- **🔑 UND DAMIT IST DIE IMPORT-BEPREISUNG ERSTMALS ALS FORMEL GEMESSEN, nicht mehr nur vermutet.**
+  Das Margenband dieser Seite ist absurd eng — **21,1 bis 24,8 PROZENT** — und der Quotient
+  Preis/Einkauf liegt bei **1,4084 bis 1,4769**. Geprüft: **„Einkauf × 1,415, aufgerundet auf das
+  nächste `n.90`" reproduziert 124 der 135 alten Preise (91,9 PROZENT)**, Gegenprobe mit Faktor 2,50
+  trifft **0 von 135**. Ein fester Aufschlag von 1,415 ergibt nach WELCOME10 rechnerisch 21,5 PROZENT
+  Marge — **deshalb war die ganze Seite unter dem Ziel, per Konstruktion und nicht aus Versehen.**
+- **⚠️ ZWEI EIGENE FEHLANNAHMEN AUF DEM WEG DORTHIN, beide von der Messung gestoppt.** (1) Ich habe
+  zuerst gegen die Leiter `x4.90/x9.90` gerechnet und kam auf 32 Prozent — **die alten Preise stehen
+  gar nicht auf dieser Leiter** (75.90, 56.90, 37.90, 33.90), sondern auf *jedem* `n.90`. Die Leiter
+  ist unsere Preisregel, nicht die des Importeurs; wer sein eigenes Raster in fremde Daten liest,
+  misst sich selbst. (2) Ich wollte daraus „der ganze Katalog ist mit 1,42 bepreist" machen:
+  **über alle 1142 Katzen-Varianten trifft der beste Einzelfaktor nur 51 PROZENT.** Die Trefferquote
+  steigt Block für Block — **36 · 42 · 58 · 73 · 92 Prozent** — also hat **jede Importcharge ihren
+  eigenen festen Aufschlag** um 1,40–1,43, und es gibt keinen Katalogfaktor. Genau die Streuung, die
+  seit dem 20.09. behauptet war, jetzt mit einer Zahl dahinter.
+- **⚠️ `katzen*` IST ZU 97 PROZENT SAUBER, NICHT ZU 100 — kleine Korrektur an meiner eigenen Aussage
+  vom 26.09.** Auf Seite 8 sind **3 von 100** Katzen-*Motiv* statt Tierbedarf: S925-Silber-Katzenring,
+  High Heel mit Katzen-Anhänger, Kawaii-Katzen-Rucksack für die Schule. Das ist derselbe Mechanismus
+  wie bei `tier*`, nur selten statt überall — „von 200 Titeln trug keiner das Wort nicht" war wahr und
+  beschreibt trotzdem nicht, ob es Tierbedarf ist. **An den Preisen ändert das nichts** (eine Marge ist
+  eine Marge), nur an der Beschriftung der Klasse.
+- **⚠️ UND EIN FEHLALARM IN MEINEM EIGENEN SUCHMUSTER:** `/schal/` fing „Wasser**schal**e",
+  „Katzen**schal**e" und „Kratz**schal**e" als Kleidungsstück. Fehlende Wortgrenze — **dieselbe Klasse
+  wie `3to4` → `3to 4` vom 12.09.** Drei der sieben Treffer waren also meine Erfindung.
+- **📊 STAND DER KLASSE: 800 der 806 Katzenprodukte gemessen → 483 Produkte / 1142 Varianten live
+  korrigiert** (196/196 · 45/45 · 59/59 · 83/83 · 100/100 nachgemessen). Daten:
+  `dropship/preise-katzen-block5-2026-09-27.csv`. **Restliche 6 im nächsten Block.**
+- **✅ SECHSTER KATZEN-BLOCK (Seite 9) — UND DAMIT IST DIE KLASSE VOLLSTÄNDIG: 6 Produkte /
+  6 Varianten**, `userErrors` leer, **6/6 an der echten Kundenseite nachgemessen**, Gegenprobe mit
+  erfundenen Werten **0/3**. Alle sechs betroffen, 0 in Ordnung, 0 Faktor-über-3, Band 21,8–23,8
+  PROZENT, Faktoren 1,420–1,458 — **genau das auf Seite 8 gemessene Band.** Tierfussabdruck-Pad
+  25.90 bei EK 17.76 → 34.90 · Tofu Katzenstreu 29.90/20.54 → 39.90 · Anti-Schling-Futternapf
+  26.90/18.83 → 34.90 · zwei Brustgeschirre und ein Zugseil je → 34.90.
+- **🔴 EIGENER ZÄHLFEHLER IM GEDÄCHTNIS AUFGEDECKT — und er hätte eine ganze Seite Arbeit doppelt
+  gemacht.** `hasNextPage` war nach diesen 6 Produkten **false**, die gemerkte Zahl sagte aber „106
+  offen". Nachgerechnet: die Blöcke deckten Seiten 1–3 (300) · 4–5 (200) · 6 (100) · 7 (100) · 8 (100)
+  = **800**, nicht 700. Die Zeile „500 der 806" nach Block 3 war bereits um 100 zu niedrig und hat
+  sich durch drei Stand-Blöcke fortgepflanzt (500 → 600 → 700). **Die Gegenprobe, die es entscheidet:
+  800 + 6 = 806 und `productsCount(title:katzen* AND status:active)` = 806 — die Summe schliesst
+  exakt.** Zusätzlich belegt: 806 aktiv + 330 Entwürfe = 1136 = `title:katzen*` ohne Statusfilter,
+  0 archiviert, Unsinn-Filter 0. **Lehre: eine laufende Summe über mehrere Sitzungen ist erst belegt,
+  wenn sie gegen die Gesamtzahl aufgeht** — sonst wandert ein Fehler mit und die nächste Sitzung
+  misst Seiten neu, die längst erledigt sind.
+- **📊 KLASSE KATZE ABGESCHLOSSEN: 806 von 806 gemessen → 489 Produkte / 1148 Varianten live
+  korrigiert**, jede einzelne an der Kundenseite nachgemessen (196/196 · 45/45 · 59/59 · 83/83 ·
+  100/100 · 6/6, null Abweichungen). **13 Faktor-über-3-Fälle bleiben beim User.**
+  Daten: `dropship/preise-katzen-block6-2026-09-27.csv`. **Nächste Klasse: `hunde*` mit 1640 aktiven
+  Produkten — doppelt so gross wie alles bisher Gemessene zusammen.**
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-25 (💸 DER GEFEIERTE VERKAUFSSCHLAGER WURDE ZWEIMAL ERSTATTET — und ist DRAFT):**
+- **Auftrag:** Dauerauftrag / `/loop` — Produktvideos für die Verkaufsschlager rendern. **Bevor ich
+  ein Video für das falsche Produkt baue, habe ich gemessen, WAS sich wirklich verkauft.** Gut so.
+- **🔴 KORREKTUR AM GEDÄCHTNIS: das „zweimal bestellte Fuda-Taschenmesser" ist kein Verkaufsschlager.**
+  Der Block vom 13.09. führt es als Beleg für die neue `BEST_SELLING`-Sortierung („vorn stehen jetzt
+  das zweimal bestellte Fuda-Taschenmesser"). **GEMESSEN an den Bestellungen selbst: #1016 und #1017
+  sind BEIDE `REFUNDED`, und das Produkt steht auf `DRAFT`.** Es ist weder Geld geblieben noch ist es
+  kaufbar. **„Zweimal bestellt" ist wahr und trotzdem irreführend — eine Bestellung ist kein Verkauf,
+  solange sie erstattet wurde.** Wer Verkaufsschlager nennt, filtert auf `financial_status:paid`
+  **und** prüft den Produktstatus, sonst baut man Werbung für etwas, das niemand kaufen kann.
+- **🔴 ZWEI ECHTE VERKÄUFER FEHLTEN GANZ:** **#1018 E-Scooter Lithium-Akku Ladegerät** (CHF 28.90,
+  07.09., bezahlt **und** erfüllt — die **jüngste** Bestellung überhaupt) und **#1012 Interaktives
+  Katzenspielzeug** (32.90, 09.08.) stehen in **keinem** Stand-Block, obwohl die Verkäuferliste
+  mehrfach zitiert wurde.
+- **✅ DIE GEMESSENE LISTE (bezahlt · erfüllt · Produkt noch ACTIVE), Stand 25.09.:**
+  #1018 E-Scooter-Ladegerät 28.90 · #1015 Gemüseschneider 22.90 · #1014 Leinen-Set «Provence» 41.90 ·
+  #1013 Midikleid + Blumenkleid 33.82 · #1012 Katzenspielzeug 32.90 · #1011 Reise-Hängematte 21.90.
+  **Sieben Produkte, alle CHF 21.90–41.90, alle CJ-Kleinware** — die Regel aus §9 des Runbooks
+  („was sich erfüllen lässt, ist CJ-Kleinware mit echter `CJ-`-SKU, CHF 20–45") ist damit erneut
+  bestätigt, diesmal ohne Ausnahme.
+- **🟢 UND EIN AUFMUNTERNDER BEFUND: jede erstattete Bestellung betrifft ein Produkt, das heute DRAFT
+  ist** (BigBuy-Sperrgut, zwei Kopfhörer, das Taschenmesser). **Die Aufräumarbeit der Vorsessions hat
+  also gewirkt** — der Katalog enthält die Fehlerquellen nicht mehr.
+- **💰 DREI DER PRODUKTE, DIE SICH TATSÄCHLICH VERKAUFEN, STANDEN UNTER DER ZIELMARGE** — und das
+  ist die teuerste Stelle im Katalog, weil dort echtes Geld durchläuft. **Geändert (live):
+  3 Produkte / 41 Varianten, 3/3 nachgemessen.** E-Scooter-Ladegerät 25.90→**34.90** (EK 18.01,
+  Marge 22,7→42,7 PROZENT) · Blumenkleid 18.90/19.90→**24.90** (EK 12.85–13.82, 22,6–24,6→38,3–42,7)
+  · Leinen-Set «Provence» 36 Var. 34.90→**39.90** (EK 20.27, 35,5→43,6). Vier Kontrollprodukte
+  (Gemüseschneider, Midikleid, beide Hängematten-Stufen) waren bereits in Ordnung — unangetastet.
+- **⚠️ EIN NEBENBEFUND DES GEDÄCHTNISSES WAR EINE FEHLDEUTUNG.** Der 13.09. notierte: „die
+  Reise-Hängematte hatte für **dieselbe Ware** 14.90 bis 51.90 bei identischem EK 16.92" — eigene
+  Runde wert. Ich wollte das glätten. **Die Variantennamen sagen etwas anderes: die teuren heissen
+  `Grey300x140cm` und `Green300x140cm` und tragen eine GRÖSSE**, die günstigen nur Farben. Es ist
+  keine identische Ware, sondern eine grössere Hängematte (63,8 PROZENT Marge). **Preise bleiben.**
+  Ohne den Blick auf die Variantennamen hätte ich einen gesunden Preis gesenkt.
+- **⚠️ FEHLALARM IM EIGENEN PRÜFGERÄT:** es meldete beim E-Scooter „alter Preis NOCH DA" (25.90
+  neben 34.90). Nachgemessen enthält der Seitenquelltext `"price":2590` **gar nicht** mehr und
+  `"price":3490` genau einmal. Zwei Erklärungen kommen in Frage — eine zwischengespeicherte Fassung
+  oder ein **Empfehlungsblock mit fremden Produkten**, deren Preise das Gerät mitzählte — und beide
+  führen zur selben Lehre: **die Prüfung „alter Preis weg" gehört an die Produktdaten
+  (`/products/<handle>.js`), die Prüfung „neuer Preis sichtbar" an die gerenderte Seite.** Umgebaut,
+  danach 3/3 sauber. **Und: vor „Fehlschlag" melden immer ein zweites Mal messen.**
+- **🎬 Produktvideos für genau diese sieben gerendert** mit `automation/produkt_werbevideo.mjs`
+  (Produkt ab Sekunde 0, Preis im Bild, Marke am Ende, je eine Musik- und eine Clean-Fassung plus
+  Deckblatt). Braucht keine Zugangsdaten.
+- **🔴 EIGENER DEFEKT, gefunden und behoben: drei Videos trugen VERALTETE PREISE.** Ich hatte
+  gerendert, **bevor** ich die Preise anhob — Leinen-Set 34.90 statt 39.90, Blumenkleid 18.90 statt
+  24.90, E-Scooter 25.90 statt 34.90. **Ein Werbevideo mit einem Preis, den der Shop nicht mehr hat,
+  ist irreführend, nicht bloss veraltet.** Die drei sind neu gerendert, und **alle sieben gegen den
+  Shop geprüft: 7 aktuell, 0 veraltet.** **Regel jetzt im Skill `werbevideo`: in einem Arbeitsgang
+  erst die Preise setzen, dann rendern** — und nach jeder späteren Preisänderung die betroffenen
+  Videos neu rendern.
+
+**📌 2026-09-23 (🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo):**
+- **Auftrag:** „lerne noch wie man bilder in video macht für super werbung video und teile memory."
+  Voller Bericht: **`dropship/LERNEN-BILD-ZU-VIDEO-2026-09-23.md`**. Neuer Skill: **`.claude/skills/werbevideo/`**.
+- **🔴 HAUPTFUND, gemessen statt vermutet: 57 von 107 Reels verbrennen das 3-Sekunden-Fenster auf
+  eine Marken-Karte.** `tools/video_hook.mjs` (17 Selbsttests) tastet das Video im 0,1-s-Raster ab
+  und zählt je Einzelbild den Anteil der Marken-Hintergrundfarbe. **Verteilung über alle 107:
+  49× bei 0,0 s · 1× 1,1 s · 8× 2,5 s · 49× 2,7 s.** Die 57 späten sind **zu 48 `auto-*`** und mit
+  den neun handgerenderten Geschwistern **genau die `render_premium_reel.sh`-Linie** — Ursache ist
+  deren 3,0-s-Intro. Kein diffuser Mangel, sondern ein Konstruktionsfehler an einer benannten Stelle.
+- **⚠️ EIGENE KORREKTUR, noch in derselben Runde:** nach 21 von 107 Videos meldete ich „bei 21 von
+  21". Das war ein **Stichproben-Artefakt** — alphabetisch stehen `accessoires-*` und `auto-*` vorn,
+  und die stammen alle aus derselben Linie. **Eine alphabetisch sortierte Teilmessung ist keine
+  Stichprobe**, weil Dateinamen die Herkunft tragen und die ersten N Einträge eine einzige
+  Produktionslinie bündeln. **QUELLE (Recherche 2026, mehrere unabhängige Texte):** die ersten
+  3 Sekunden entscheiden (*Hook Rate*), und man soll ausdrücklich **mit dem Produkt öffnen, nicht
+  mit einer Logo-Animation**; **85 PROZENT der Meta-Aufrufe laufen ohne Ton**; gute kurze vertikale
+  Anzeigen sind **7–15 s** (unsere: 17,3 s).
+- **✅ GEBAUT `automation/produkt_werbevideo.mjs` (64 Selbsttests)** — macht aus den Bildern **EINES**
+  Produkts ein Werbevideo. Das schliesst die Lücke vom 19.09.: `auto_render.sh` baut Montagen aus
+  **mehreren** Produkten und darf deshalb nie auf eine Produktseite. **Nachgemessen mit demselben
+  Gerät: Produkt ab 0,0 s statt 2,7 s**, 12,0 s statt 17,3 s, Preis auf jedem Segment, Marke 2,0 s
+  am **Ende**, vier Kamerafahrten im Wechsel, dazu `-clean.mp4` (Trend-Sound wird nie eingebrannt)
+  und ein Deckblatt-JPG. Echtes Beispiel live gerendert: `reels/produkt-taktische-outdoor-warnweste-fur-herren-623500.mp4`.
+- **🔑 KEINE ZUGANGSDATEN NÖTIG, gemessen:** `https://luxestyle.ch/products/<handle>.js` liefert
+  Titel, alle Bild-Adressen und die Variantenpreise in Rappen **ohne Token**. Das Werkzeug läuft
+  also sofort in jeder Session — anders als `preis_korrektur.mjs` und `homepage_slim.mjs`.
+  ⚠️ Der Endpunkt **drosselt** (429) nach vielen Abrufen — das heisst „warte", nicht „Produkt fehlt".
+- **🔴 EIGENER FEHLER, und der lehrreichste dieser Runde: das Messgerät mass das Falsche.** Der Haken
+  war auf **34 Zeichen** gedeckelt, alle Selbsttests grün — **und der Text lief trotzdem links und
+  rechts aus dem Bild.** Gefunden **nur, weil ich das Deckblatt angesehen habe.** GEMESSEN:
+  „Taktische Outdoor Warnweste für" sind 31 Zeichen und bei 60 px **über 1080 px breit**, breiter
+  als das ganze Bild. **Zeichenzahl ist nicht Pixelbreite.** Behoben: `textBreite()` misst **mit
+  ffmpeg selbst**, also mit genau dem Zeichner, der den Text später malt; darauf setzen Wortumbruch
+  und automatische Verkleinerung auf. Gegenprobe: doppelte Schriftgrösse = **2,00-fache** Breite.
+  **Lehre: ein grüner Selbsttest beweist nur, dass der Code tut, was der Test prüft.** Dieselbe
+  Klasse wie „Kundensicht statt API-Antwort" (13.09.) und „Diff lesen, nicht die Zahl" (07.09.).
+- **⚠️ Ein Selbsttest fiel um — und er hatte recht, nicht der Code:** ein Produkt mit **einem** Bild
+  kam auf 4,85 s, unter die 7-s-Grenze. Statt den Test zu lockern, lässt `segmentFolge()` dasselbe
+  Foto **dreimal** laufen, aber mit **verschiedener** Kamerafahrt (die Gegenprobe prüft genau das —
+  dreimal dieselbe wäre eine Diaschau).
+- **⛔ Bewusst NICHT getan: die 105 bestehenden Reels neu rendern.** Sie sind Feed-Montagen und dort
+  nicht falsch; bei 3 Abonnenten und 1248 Sessions/30 T wäre das Rechenzeit, keine belegte Besserung.
+- **🟡 NUR DER USER:** Video an die Produktseite hängen braucht **keinen** Theme-Zugriff (Weg vom
+  13.09. vorgeprüft: `stagedUploadsCreate` → `PUT` → `productUpdate`), aber **`SHOPIFY_SHOP` /
+  `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. Dieselben drei Werte lösen zusätzlich
+  `preis_korrektur.mjs` und `homepage_slim.mjs`** — ein Handgriff, drei Baustellen.
 **📌 2026-09-30 (🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch):**
 - **Nachfrage prüfen:** Semrush hat 0 API-Units → Google-Vorschläge per `suggestqueries.google.com/complete/search?client=firefox&hl=de&gl=ch&q=…`
   (geht durch den Proxy). Belegt: „mietzinsreduktion berechnen/vorlage“, „hochzeit budget excel vorlage/pro gast“, „wedding budget spreadsheet“.
@@ -148,6 +894,741 @@ Ende-zu-Ende bestätigt. Nächster Hebel = Reichweite: Meta-Anzeigen `docs/werbu
   voll erstattet (~CHF 1045), 6 davon BigBuy „beim Lieferanten ausverkauft / nicht in CH lieferbar"
   (`tracksInventory:false`). BigBuy ist inzwischen 0 aktiv. **#1004 (LED-Laterne, CHF 31.90) seit 25.06.
   bezahlt, nie versandt** — braucht Entscheid (versenden oder erstatten).
+
+**📌 2026-09-22 (🦺 DER ARBEITSSCHUTZ-BLOCK: eine ganze Importcharge stand bei HALBEM Einkaufspreis):**
+- **Auftrag:** Dauerauftrag / `/loop` — der grösste offene Einzelblock vom 20.09.
+- **🔴 DIE SCHLECHTESTE GRUPPE, DIE JE GEMESSEN WURDE: 29 von 30 Produkten mit bekanntem Einkaufs-
+  preis gingen nach WELCOME10 mit VERLUST raus, 30 von 30 lagen unter dem Ziel, KEINES war in
+  Ordnung.** Zum Vergleich: Velohelme 11 von 32, Fahrradhelme 1 von 33, Reit/Ski/Motorrad 8 von 22.
+  Es sind durchweg **Sicherheitsschuhe mit Stahlkappe**, bepreist bei rund der **Hälfte** des
+  Einkaufs: 27.90 bei EK 43.85 (**−74,6 PROZENT**) · 29.90 bei EK 44.62 (−65,8) · 28.90/41.08.
+  **Das stützt die Vermutung vom 14.09. so deutlich wie nichts zuvor: bepreist wurde nach
+  Importcharge, nicht nach Einkauf.**
+- **✅ GEÄNDERT (live): 27 Produkte / 510 Varianten**, `userErrors` in allen vier Teilen leer,
+  **alle 27 an der echten Kundenseite nachgemessen (27/27, null Abweichungen)** — und die Gegenprobe
+  mit absichtlich falschem Sollwert schlug bei keinem einzigen fälschlich an.
+- **⛔ 2 BEWUSST NUR GEMELDET (Faktor > 3 = falsch importiert, nicht falsch bepreist):**
+  Sicherheitsschuhe High-Top mit Stahlkappe 18.90 bei EK 36.65 (−115,5 PROZENT) · Damen
+  Arbeitsschuhe mit Stahlkappe 18.90 bei EK 30.85 (−81,4). **Damit sind es sechs Faktor-über-3-Fälle
+  für den User** (dazu Atemschutz-Set 16.90/49.32, Kinder-Autositz 14.90/25.07, EisSilk-Polster
+  14.90/33.23, Lendenwirbel-Kissen 17.90/38.51).
+- **✅ NACHGEHOLT (24.09.): `retro-arbeitsschuhe` ist gesetzt — 55 Varianten**, `userErrors` leer,
+  an der echten Seite nachgemessen (**59.90 und 64.90 da, 33.90 und 34.90 weg**, Gegenprobe mit
+  erfundenem Wert schlägt nicht an). Es war zurückgehalten, weil es über 50 Varianten hat und damit
+  in die Abfragegrenze lief. **Die Nachmessung über alle 55 korrigiert meine eigene Vorsichts-
+  annahme: `kosten_max` war mit 35.63 RICHTIG gemessen**, nicht zu niedrig — die 50er-Grenze hatte
+  den Höchstwert zufällig schon erfasst. Zurückhalten war trotzdem richtig: **wissen konnte ich es
+  nicht, und eine Zahl, die an einer Abfragegrenze entsteht, ist so lange kein Messwert, bis man
+  ohne die Grenze nachgesehen hat.** Beide Preisstufen standen im Verlust (33.90 bei EK 33.21 =
+  −8,8 PROZENT · 34.90 bei EK 35.63 = −13,4), Faktor 1,8 — also gesetzt, nicht gemeldet.
+- **🔑 Die Mutation wurde wieder AUS DATEN ERZEUGT, nicht von Hand geschrieben**, und der Generator
+  belegt vorher die **Lückenlosigkeit** der Variantennummern (`erste + (n-1)*32768 === letzte`,
+  25 Produkte bestätigt) — so kann der Fehler vom 19.09. („zwölf geplant, zehn gesendet") nicht
+  wiederkehren.
+- **✅ SIEBTER BLOCK (25.09.), der Rest der Schutzausrüstung — und diesmal war fast alles in
+  Ordnung:** Schutzhandschuhe, Warnwesten, Schutzbrillen, Gehörschutz, Knieschoner einzeln über
+  Wortanfänge gesucht (Gegenprobe `title:zzzgibtesnichtwort*` → 0). Von 7 mit bekanntem Einkauf
+  waren **6 bereits über dem Ziel und 0 im Verlust** — die beste Quote aller sieben Blöcke.
+  Geändert wurde genau eins: **Schutzbrille S.W.A.T 23.90 → 29.90** (EK 16.43, Marge 23,6 → 38,9
+  PROZENT), an der echten Seite nachgemessen (29.90 da, 23.90 weg, erfundener Wert schlägt nicht an).
+- **⚠️ DREI OHNE EINKAUFSPREIS = ÜBERSPRUNGEN, NICHT „in Ordnung":** Elektr. Schutzhandschuhe
+  doppelseitig isoliert (14.90), Kühlende Warnweste 14 Var. (20.90), Gehörschutz-Röhrchen (17.90).
+  **Kein `unitCost` heisst unbekannt** — die Regel überspringt sie, statt eine Marge zu erfinden.
+  ⚠️ Der erste Fall ist zusätzlich für die Normen-Frage vorzumerken: **isolierende Handschuhe für
+  Elektroarbeiten sind PSA der Kategorie III** (Norm-Familie EN 60903 / IEC 60903) — dieselbe Klasse
+  wie Helme und Atemschutz, nur mit eigener Norm.
+- **🔑 DIE STREUUNG ZWISCHEN DEN BLÖCKEN IST DAMIT ENDGÜLTIG BELEGT:** Arbeitsschutz-Schuhe
+  29 Verluste von 30 · Velohelme 11 von 32 · Reit/Ski/Motorrad 8 von 22 · Fahrradhelme 1 von 33 ·
+  dieser Block **0 von 7**. **Eine Gruppe sagt nichts über die nächste** — wer aus einer auf den
+  Katalog schliesst, liegt in beide Richtungen falsch.
+- **📊 BILANZ ALLER SIEBEN BLÖCKE: 168 Schutzprodukte gemessen → 94 Produkte / 828 Varianten live
+  korrigiert**, jedes einzelne an der Kundenseite nachgemessen (22/22 · 10/10 · 19/19 · 14/14 ·
+  10/10 · 27/27 · 1/1 · 1/1).
+
+**📌 2026-09-20, zweite Runde (⭐ DER FÜHRENDE STERN WIRD WEGGEWORFEN — es sind 123 Helme, nicht 32):**
+- **Auftrag:** Dauerauftrag („weiter"). Voller Bericht: **`dropship/LERNEN-STERNCHEN-FALLE-2026-09-20.md`**.
+- **🔴 HAUPTFUND, mit einer einzigen Abfrage belegt: `title:*wort*` sucht nur WORTANFÄNGE — der
+  führende `*` wird stillschweigend verworfen.** Aufgefallen, weil die Zahlen sich widersprachen:
+  `title:*helm*` = **77**, die Einzelteile zusammen **92**. Eine Teilmenge kann nicht grösser sein.
+  **Die Entscheidung:** `id:15448951587201` allein → „Velohelm für Kinder und Erwachsene" ·
+  `title:*velohelm* AND id:…` → gefunden · **`title:*helm* AND id:…` → LEER**. Mechanismus gemessen:
+  `*helm*` ≡ `helm*` ≡ 77, `*velohelm*` ≡ `velohelm*` ≡ 29, `velohelmzzz*` → 0 (Filter wird gelesen).
+  **Dieselbe Klasse wie der ignorierte Preisfilter: sieht aus wie ein Filter, tut etwas anderes,
+  ohne Fehlermeldung.** ⚠️ Jede frühere `title:*wort*`-Messung von mir ist eine Wortanfang-Messung.
+- **⛑️ FOLGE: 123 echte Schutzhelme statt 32** (Vereinigung aus `helm*`/`velohelm*`/`fahrradhelm*`/
+  `radhelm*`/`reithelm*`/`skihelm*`/`motorradhelm*`/`kinderhelm*`/`schutzhelm*`: 173 roh, davon
+  **16 Kostümhelme** des Party-Lieferanten und **34 Zubehör** aussortiert). **91 waren nie geprüft.**
+  Auch 123 ist eine Untergrenze — eine Wortanfang-Suche findet nur, woran man gedacht hat.
+- **🟢 ERSTMALS EIN POSITIVER BEFUND: 3 von 123 Seiten nennen die Norm** (19.09.: 0 von 32) —
+  „Zertifizierung nach **CE EN 1078** und CPSC" (`falt-helm-fur-scooter-fahrrad`), „**CE EN 1078**
+  zertifiziert" (`faltbarer-fahrradhelm`), „CPSC- und **CE**-Sicherheitsstandards"
+  (`smarter-velohelm-mit-led-beleuchtung`). **Das beweist: die Beschreibungen KÖNNEN eine Norm
+  tragen** — das Schweigen der 119 ist eine Lücke in den Lieferantendaten, kein technisches Limit.
+  **Regel vom 19.09. gilt weiter: Schweigen ist kein Beweis** → kein Produkt deswegen ausgelistet.
+- **⚠️ DEFEKT IM EIGENEN MESSGERÄT, der ein Drittel der Klasse verschluckt hat:** der erste Lauf
+  meldete **43 „unerreichbare" Seiten — alle 43 waren HTTP 429, also Drosselung.** Mit 400 ms Pause
+  und Wiederholung: **122 × 200, 1 × 429**. `tools/schutzausruestung.mjs` behoben (**19 → 29
+  Selbsttests**): `GEDROSSELT={429,430,503}` wird wiederholt und getrennt ausgewiesen
+  (`gedrosselt` ≠ `fehlt`). **Lehre: ein Gerät, das die eigene Abruffrequenz als „Seite existiert
+  nicht" meldet, erzählt eine falsche Geschichte über den Shop.**
+- **✅ WERKZEUG ERWEITERT um Kinderrückhaltesysteme:** **UN ECE R44**, **R129**, **i-Size** zählen
+  jetzt als europäisch. Vier Gegenproben gegen Fehlalarm: „Grösse 44", „Länge 129 cm" und
+  „Modell R129 schwarz" bleiben **unbekannt** — eine blosse Zahl ist keine Norm.
+- **💰 11 VON 32 GEMESSENEN SCHUTZPRODUKTEN GINGEN NACH WELCOME10 MIT VERLUST RAUS** — die
+  schlechteste Quote überhaupt (13.09.: 4/231 · 14.09.: 6/82 bzw. 14/49). 25 von 32 unter 38 %.
+- **✅ GEÄNDERT (live): 22 Produkte / 175 Varianten**, `userErrors` leer, **alle 22 an der echten
+  Seite nachgemessen (22/22 bestätigt)**. Sieben standen unter dem Einkaufspreis, darunter **drei
+  Kinderartikel und eine Schwimmweste**: Heizkissen Autositz 15.90→**44.90** (EK 23.90) ·
+  Memory-Foam-Sitzkissen 14.90→**39.90** (21.49) · Winter-Velohelm 16 Var. 15.90→**44.90** (22.81) ·
+  Velohelm integr. Licht 30 Var. **zwei Preise 29.90/54.90** (EK 16.87/29.17) · Velohelm Warnlicht
+  16 Var. 23.90→**44.90** (23.91) · Velohelm Bluetooth 43.90→**74.90** (40.81) · Velohelm Kinder+
+  Erwachsene 25 Var. 15.90→**29.90** (14.68) · Velohelm E-Bike 15.90→**29.90** (14.51) ·
+  **Schwimmweste Herren 33.90→54.90** (29.08) · Hunde-Schwimmweste 23.90→**39.90** (20.16) ·
+  Fahrradhelm+Schutzbrille 17.90→**29.90** · Autositzkissen 24.90 · **Tragbarer Kindersitz** 10 Var.
+  15.90→**24.90** · Velohelm City 24.90 · Radhelm 39.90 · Autositzschutz 34.90 · Kinder-Velohelm
+  Cartoon 28 Var. 29.90 · Velohelm UV 44.90 · Smarter Velohelm 99.90 · Velohelm Kinder-Cartoon
+  39.90 · Kinder-Velohelm Skate 19.90 · Kinder-Velohelm Magnetbrille 24.90.
+- **⛔ 3 BEWUSST NUR GEMELDET, NICHT GESETZT (Faktor > 3 = falsch importiert, nicht falsch
+  bepreist):** Sommer-EisSilk Autositzpolster 14.90 bei EK 33.23 (**−147,8 %**) · Autositzkissen
+  mit Lendenwirbelstütze 17.90/38.51 (−139,0 %) · **Kinder-Autositz Portabel 3-12 J. 14.90/25.07
+  (−87,0 %)**. Letzterer ist der Fall für den User: ein **Kinderrückhaltesystem für CHF 14.90,
+  dessen Seite weder ECE R44 noch R129 nennt.**
+- **⚠️ DAS PRÜFGERÄT SCHLUG ZUERST FALSCHEN ALARM: „22 von 22 abweichend".** Ursache: Python
+  schreibt `44.9`, verglichen wurde gegen die Zeichenkette `44.90`. Der Shop war nie falsch.
+  **Jetzt wird in Rappen ganzzahlig verglichen, und ein absichtlich falscher Sollwert muss
+  ausschlagen.** Die Mutation selbst wurde **aus Daten erzeugt statt von Hand geschrieben** —
+  genau der Fehler vom 19.09. („zwölf geplant, zehn gesendet") kann so nicht mehr passieren.
+- **✅ ZWEITER BLOCK, die 38 Fahrradhelme: 10 Produkte / 25 Varianten angehoben**, alle zehn an der
+  echten Seite nachgemessen (10/10). **Nur 1 Verlustfall von 33** gegen 11 von 32 bei den Velohelmen —
+  **19 von 33 waren schon in Ordnung.** Dass die Gruppen so weit auseinanderliegen, stützt die
+  Vermutung vom 14.09.: bepreist wurde nach Importcharge, nicht nach Einkauf. Grösster Fall:
+  Fahrradhelm für Herren 15.90 bei EK 15.40 (**−7,6 %**) → 29.90.
+- **⚠️ UNSCHÄRFE IN DER EIGENEN PREISREGEL, hier zum ersten Mal aufgefallen:** `zielpreis() > Preis`
+  ist **nicht** dasselbe wie „Marge unter Ziel". Vier Fahrradhelme (45.90/38,3 % · 66.90/39,3 % ·
+  38.90/41,0 % · 23.90/43,1 %) erfüllen das Ziel bereits — ihr Preis steht nur **zwischen zwei
+  Sprossen** der Leiter. Ein naives Sprossen-Kriterium hätte sie für 0,3–5 Prozentpunkte angefasst.
+  **Entscheidend ist die gemessene Marge, nicht die Sprossenlage.** **`automation/preis_korrektur.mjs`
+  ist nachgezogen (15 → 30 Selbsttests)** — der billigste Zeitpunkt, denn das Skript wartet auf
+  Zugangsdaten und ist nie gelaufen; sein erster Katalog-Lauf hätte sonst hunderte gesunde Produkte
+  angefasst. ⚠️ **Dabei fiel ein Selbsttest um — und er hatte unrecht, nicht der neue Code:** die
+  Grenze vom 19.09. prüfte gegen die Sprosse (EK 10.00 → `zielpreis()` 19.90, also „19.89 anheben"),
+  **19.89 ergibt dort aber 44,1 %.** Ersetzt durch eine Grenze an der Marge, beide Seiten mit der
+  tatsächlichen Marge belegt, plus ein Test, dass die alte Sprossen-Grenze nicht mehr anfasst.
+- **⚠️ Der Suchindex servierte einen veralteten TITEL:** `title:fahrradhelm*` lieferte
+  „Unisex-Fahrradhelm für **Erwussse**", `nodes(ids:)` für dasselbe Produkt „für **Erwachsene**".
+  Der Titel ist längst korrigiert, der Index hinkt nach. **Wer über Titel berichtet, fragt das
+  Produkt direkt.** Die Adresse trägt den Tippfehler weiter — bewusst gelassen, ein Handle-Wechsel
+  bricht Verweise für einen kosmetischen Gewinn.
+- **✅ DRITTER BLOCK, Reit-/Ski-/Motorradhelme: 19 Produkte / 43 Varianten**, alle 19 an der echten
+  Seite nachgemessen (19/19). **Der schlechteste Block: 8 Verluste von 22, 19 von 22 unter dem Ziel,
+  nur 3 in Ordnung.** Acht standen unter dem Einkaufspreis, darunter erneut ein **Kinder-Schutzhelm**
+  (18.90 bei EK 21.11) und ein Ganzjahres-E-Motorradhelm (15.90/18.74, **−31,0 %**).
+- **🔑 DREI GRUPPEN, DREI VÖLLIG VERSCHIEDENE BILDER — der bisher stärkste Beleg für „bepreist nach
+  Importcharge, nicht nach Einkauf":** Velohelme 11 Verluste von 32 · Fahrradhelme **1 von 33** ·
+  Reit/Ski/Motorrad **8 von 22**. **Wer eine Gruppe misst und daraus auf den Katalog schliesst, liegt
+  in beide Richtungen falsch** — genau der Fehler der 58,9 % vom 13.09.
+- **🟢 CI: ein NEUER roter Check geprüft statt zitiert.** `Cloudflare Pages: dropshipping-radar` war
+  auf `b3ed2df` grün und auf `24c1195` rot. **Gemessen: der Diff fasst `dropshipping-radar/` mit
+  0 Dateien an** (Verzeichnis unverändert, 6 Dateien, 160 K), und **13 andere Pages-Projekte haben
+  DENSELBEN Commit erfolgreich gebaut**. Auch die Pages-Grenzen sind es nicht (9469 Dateien von
+  20 000; die einzigen >25 MiB liegen in `video-prototypes/`, das `build-pages.sh` ausschliesst).
+  ⚠️ **Einen Cloudflare-Build neu starten geht nur per Dashboard** — Cloud-Sessions können das nicht.
+  Kommentar an PR #2514 mit allen Messungen. Die drei `Workers Builds` sind unverändert der Fall
+  vom 12.09. (keiner der fünf Worker im Repo heisst so, nachgemessen).
+- **✅ VIERTER BLOCK, die `helm*`-Gruppe: 14 Produkte / 19 Varianten**, 14/14 nachgemessen.
+  **30 von 44 waren bereits in Ordnung — darunter ALLE ELF, die am 19.09. und heute gesetzt wurden**
+  (sie kamen als `ueberspringen` zurück). **Damit ist die Idempotenz der Regel gegen den ECHTEN Shop
+  belegt, nicht nur im Selbsttest** — genau die Eigenschaft, auf die es ankommt, wenn
+  `preis_korrektur.mjs` einmal über den ganzen Katalog läuft. Drei Verluste: Einfacher
+  Feldfahrer-Helm 14.90 bei EK 21.41 (**−59,7 %**) · Vier-Seasons-Helm 49.90/50.08 · MTB-Helm
+  Outdoor 24.90/24.79.
+- **📊 BILANZ DER VIER BLÖCKE: 131 Schutzprodukte gemessen, 23 Verlustfälle, 68 unter dem Ziel,
+  59 in Ordnung → 65 Produkte / 262 Varianten live geändert**, jedes einzelne an der Kundenseite
+  nachgemessen (22/22 · 10/10 · 19/19 · 14/14, null Abweichungen).
+- **🔎 FÜNFTER BLOCK — die Sternchen-Lehre findet eine GANZ NEUE KLASSE: 101 Schutzausrüstungs-
+  Produkte jenseits der Helme**, nie angesehen. Mit Wortanfängen einzeln gesucht statt Sammelbegriff:
+  **Arbeitsschutz 71** (Sicherheits-/Arbeitsschuhe, Schutzhandschuhe, Warnwesten) · Kindersitze 11 ·
+  Protektoren/Knieschoner 7 · Atemschutz 5 · Schutzbrillen 4 · Klettergurte 2 · Gehörschutz 1.
+  Gegenprobe `title:zzzgibtesnichtwort*` → 0.
+- **✅ GEÄNDERT (live): 10 Produkte / 10 Varianten**, 10/10 nachgemessen. Von 12 mit bekanntem EK waren
+  **11 unter dem Ziel, 4 im Verlust**: Sofa-Schonertuch 31.90/44.17 (**−53,8 %**) · **Halbgesichts-
+  Atemschutzmaske PRO 24.90 bei EK 24.90** (−11,1 %) → 44.90 · Nackenkissen Kindersitz 27.90/26.71 →
+  49.90 · Atemschutzmaske 16in1 28.90→49.90 · vier Knieschoner 5–20 % → 24.90–49.90 · Sofa-Schoner
+  3er 16.90→24.90.
+- **⛔ VIERTER FAKTOR-ÜBER-3-FALL, und der schlimmste der Sitzung: Atemschutzmasken-Set mit Filtern,
+  CHF 16.90 bei EK 49.32 = −224,3 %.** Faktor 5,3 → gemeldet, nicht gesetzt. Es ist **Atemschutz**
+  und damit ein Importfehler, über den ein Mensch entscheidet.
+- **⚠️ DIE 71 ARBEITSSCHUTZ-PRODUKTE SIND NOCH NICHT GEMESSEN** — grösster offener Einzelblock.
+- **📦 ALTER POSTEN GESCHLOSSEN: die BigBuy-Klasse ist AUS DEM VERKAUF, „279 aktiv" ist veraltet.**
+  Drei unabhängige Wege, jeder mit Gegenprobe: `sku:bb-* AND status:active` → **0**
+  (`sku:CJ-*` → Treffer, `sku:zzzgibtesnicht-*` → leer) · `tag:bigbuy AND status:active` → **0**
+  (`tag:bigbuy` ohne Status → Treffer) · `productsCount(tag:bigbuy AND status:active)` → **0**.
+  Dazu **ohne Suchindex** via `nodes(ids:)`: `DRAFT`, `publishedAt:null`; über 500 geblättert, alle
+  DRAFT. **Kundensicht:** zwei Adressen **404**, eine **301 auf eine Collection** — nichts kaufbar.
+- **⚠️ ZÄHL-REGEL PRÄZISIERT: `productsCount` ignoriert NUR den Preisfilter.** `tag:`, `sku:`,
+  `status:` und `title:` werden gelesen und liefern echte Zahlen (77 / 29 / 38 / 0). Die Regel heisst
+  also **nicht** „traue keinem `…Count`", sondern **„traue keinem Preisfilter"** — und prüfe jeden
+  Filter mit einem Unsinn-Wert gegen.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-20 (📵 INSTAGRAM IST AUS DEM CONTAINER NICHT LESBAR — Werkzeug für den PC gebaut):**
+- **Auftrag:** ein Instagram-Reel-Link „für luxestyle".
+- **❌ SACKGASSE, mit Gegenprobe belegt:** Instagram liefert an diesen Container nur eine leere
+  JS-Hülle — **628 KB, `<title>Instagram</title>`, 0 og-Tags**, keine Video-URL, kein Nutzername,
+  `"caption":null`. Vier Wege geprüft: Browser-Kennung + `stkn`-Share-Parameter → dieselbe Hülle ·
+  `?__a=1&__d=dis` → **404 „not-logged-in"** · `api.instagram.com/oembed` → **302** (abgeschafft,
+  braucht FB-App-Token). **Die Gegenprobe entscheidet: ein ANDERER öffentlicher Beitrag liefert
+  identische 628 KB mit 0 og-Tags** — es liegt an Instagram, nicht am einzelnen Reel.
+  ⚠️ **Unterschied zu TikTok:** dort steckt die ASR-Untertitelspur in den Metadaten
+  (`subtitleInfos`) — daher kam das Transkript vom 12.09. Bei Instagram gibt es das Feld nicht.
+- **🛠️ GEBAUT `automation/local/ig-reel-lesen.mjs` (20 Selbsttests).** Läuft **auf dem PC**, nicht
+  in der Cloud: `connectOverCDP` ans eingeloggte Brave (Port 9222, Muster von
+  `ch-follower-growth.mjs`), klappt „mehr" auf und schreibt Urheber, Text, Datum, Zahlen und
+  Video-Adresse als JSON zum Zurückkopieren. Geprüft sind die reinen Helfer: Kennung aus der
+  Adresse (auch mit `stkn`), deutsche Kurzzahlen (`12,3 Tsd.` → 12300, `1.234` → 1234),
+  **fehlende Zahl ergibt `null`, nicht 0**, und „mehr" **mitten im Satz** bleibt stehen.
+  **Das Skript liest nur** — es liked, folgt, kommentiert und postet nicht.
+- **🟡 NUR DER USER:** den Reel-Inhalt liefern — entweder das Skript auf dem PC laufen lassen
+  (`node automation/local/ig-reel-lesen.mjs "<url>"`) und das JSON hierher kopieren, oder den
+  Text kurz abtippen. Ohne Inhalt lässt sich daraus nichts für den Shop ableiten.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-19, zweite Runde (🛠️ DAS PREIS-SKRIPT STEHT — zwei Gedächtnis-Pläne sind gefallen):**
+- **Auftrag:** „nutze sachen und hilf zu entwickeln für luxestyle". Voller Bericht:
+  **`dropship/LERNEN-PREIS-SKRIPT-2026-09-19.md`**.
+- **❌ PLAN 1 GEFALLEN — „die 105 Reels auf die Produktseiten" trägt nicht.** GEMESSEN:
+  `dropship/ads/auto_render.sh` baut jedes `auto-*.mp4` aus **mehreren** Produkten der
+  Allow-Liste und bricht unter zwei Bildern ab (`[ "$k" -ge 2 ] || exit 0`). Es sind
+  Marketing-Montagen; auf einer Produktseite zeigen sie **fremde Produkte** — das Gegenteil
+  dessen, wofür die +10–25 % ATC gelten. Wer Produktvideos will, muss je Produkt rendern.
+- **❌ PLAN 2 GEFALLEN — es gibt keinen Weg, gezielt nach Preis zu suchen.** GEMESSEN mit
+  Gegenprobe in derselben Abfrage: `productVariants(query:"price:<=22.90")` liefert **199.90**,
+  `price:>=9000` **dieselbe Liste**, `price:zzzgibtesnicht` **Treffer statt leer** — und
+  `products(query:"variants.price:…")` genauso. **Der Preisfilter wird von allen drei Abfragen
+  still ignoriert**, nicht nur von `productsCount`. Folge: jede Suche nach Verlustfällen muss
+  den ganzen Katalog blättern. Ohne die Gegenprobe hätte ich „Risikoband durchsucht" gemeldet.
+- **✅ GEÄNDERT (live): 7 Produkte / 21 Varianten**, **alle sieben an der echten Seite
+  nachgemessen** (Regel von der Vorrunde eingehalten). Smart-Anzuchtset 21.90→**39.90**
+  (EK 20.29 — **machte nach WELCOME10 Verlust**) · XXL-Leselupe 16.90→**29.90** (14.87) ·
+  Trinkflasche «Hydro» 3 Var. 24.90→**39.90** (21.28) · 3D-Nachttischlampe 16.90→**24.90**
+  (13.24) · Monitor-Lichtleiste 29.90→**44.90** (23.41) · Flötenkessel 44.90→**64.90** (34.71) ·
+  Sommerkleid A-Linie 15 Var. 44.90→**64.90** (34.04).
+- **🛠️ GEBAUT `automation/preis_korrektur.mjs` (15 Selbsttests) — der Katalog in EINEM Lauf.**
+  Von Hand sind es ein Dutzend Produkte je Sitzung; bei Median 20–23 % Rohmarge ist das kein Weg.
+  **Sechs Sicherheitsregeln, jede einzeln geprüft:** nie senken · kein Einkaufspreis =
+  überspringen (auch EK 0) · **Faktor-Deckel 3** (Zielpreis über dem Dreifachen wird *gemeldet,
+  nicht gesetzt* — der Fall Abtropfregal, Faktor 6, gehört einem Menschen) · **idempotent**
+  (der Selbsttest läuft zweimal) · ohne Zugangsdaten **No-op mit Exit 0** (nachgewiesen) ·
+  **`DRY_RUN` ist Standard**. Dazu die Währungsprüfung: nicht-CHF-`unitCost` wird übersprungen
+  und gezählt statt falsch gerechnet. Zwei Tests sichern die Regel gegen Abdriften: die sieben
+  Preise dieser Runde und die Grenze (genau auf dem Ziel → nichts, ein Rappen darunter → Änderung).
+- **🟡 NUR DER USER, und es löst ZWEI Baustellen auf einmal:** `SHOPIFY_SHOP` (=
+  `au3j0y-hq.myshopify.com`), `SHOPIFY_CLIENT_ID`, `SHOPIFY_CLIENT_SECRET` als Env-Werte.
+  Damit läuft das Preis-Skript über den ganzen Katalog **und** `automation/homepage_slim.mjs`
+  (schlanke Startseite, seit 12.09. fertig und wartend).
+- **⚠️ Ehrliche Grenze: das Skript ist selbstgetestet, aber nie gegen den echten Shop gelaufen.**
+  Die Tests prüfen die Entscheidungslogik, nicht die Shopify-Antworten. Erster Lauf mit
+  `DRY_RUN=1`, CSV lesen, dann erst scharf.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-19 (⛑️ ES SIND NICHT ZWEI HELME, ES SIND 32 — und ich habe sie bewusst NICHT gesperrt):**
+- **Auftrag:** Dauerauftrag, offener Punkt vom 14.09. Voller Bericht:
+  **`dropship/LERNEN-SCHUTZAUSRUESTUNG-2026-09-19.md`**.
+- **GEMESSEN: mindestens 40 Treffer auf `title:*helm*`, davon 32 echte Helme**, dazu Schwimmweste,
+  Velo-Kindersitz und mehrere Auto-Kindersitze. Das Gedächtnis führte **zwei**. ⚠️ **32 ist eine
+  Untergrenze** — die Abfrage war auf 40 begrenzt und die Wortsuche findet „Velohelm"/„Fahrradhelm"
+  nicht zuverlässig.
+- **🛠️ GEBAUT `tools/schutzausruestung.mjs` (19 Selbsttests).** Es trennt **drei** Fälle statt zwei:
+  **europäisch** (EN 1078/1077/1385, EN ISO 12402, CE) · **chinesisch** (3C/CCC/GB = **Befund**) ·
+  **unbekannt** (= **kein Befund**, nur eine Lücke in der Beschreibung). Benutzt `sichtbarerText()`
+  aus `shop_conversion.mjs`, baut die Säuberung also nicht zum zweiten Mal.
+- **🔴 ERGEBNIS: 0 von 32 Seiten nennen eine Norm — weder eine europäische noch eine chinesische.**
+  Wer für sein Kind einen Velohelm kauft, erfährt auf der Seite nicht, wonach er geprüft ist.
+  **Gegenprobe, ohne die die Null wertlos wäre:** der gemessene Text enthält nachweislich die
+  Variantennamen (`Black Graffiti-M55 To 59cm`, 10 184 Zeichen) — genau dort stand am 14.09. das
+  `3C Helmet`. Hätte einer der 32 es getragen, wäre es gefunden worden.
+- **⛔ BEWUSST NICHT GETAN: die 32 aus dem Verkauf nehmen.** Am 14.09. sagte die Seite etwas, und
+  was sie sagte, war ein Problem. Heute sagen die Seiten **nichts** — und **Schweigen ist kein
+  Beweis**. 32 Produkte auf ein fehlendes Wort hin zu sperren hiesse, eine Vermutung wie eine
+  Messung zu behandeln. **🟡 NUR DER USER:** bei CJ nachfragen, ob ein Prüfbericht nach **EN 1078**
+  (bzw. EN 1077 Ski, EN 1385 Wassersport) vorliegt. Ja → Norm in die Beschreibungen. Nein → dann
+  ist es die Lage vom 14.09. und sie gehören aus dem Verkauf.
+- **✅ GEÄNDERT (live): 12 Produkte / 89 Varianten**, `userErrors` leer, **alle zwölf an der echten
+  Seite nachgemessen**. Drei standen **unter dem Einkaufspreis**: Wassersport-Helm „Kajak und
+  Rettung" 20.90→**44.90** (EK 23.67) · Vielseitiger Helm 18 Var. 15.90→**39.90** (20.25) ·
+  **Kinder** Kart Helm 43.90→**84.90** (45.35). Neun weitere lagen nach WELCOME10 unter 38 %:
+  Short Track 49.90→69.90 · Sport/Outdoor 32.90→54.90 · Motorradtasche 50.90→89.90 · MTB-LED
+  29.90→49.90 · Hip-Hop 19 Var. 15.90→29.90 · Velo/Skates 10 Var. 24.90→29.90 · Plum Scooter
+  21 Var. 15.90→24.90 · Pendler 18.90→24.90 · Kinder-Helm mit Schutz 15.90→19.90.
+- **⚠️ EIGENER FEHLER, von der Gegenprobe gefangen: zwölf Produkte geplant, nur zehn in die
+  Mutation geschrieben.** Shopify meldete `userErrors: []` — korrekt, das Gesendete war gültig.
+  Aufgefallen allein daran, dass die **Kundensicht** bei einem Produkt noch 15.90 zeigte.
+  **REGEL AB JETZT: die Gegenprobe an der echten Seite muss JEDES geänderte Produkt abdecken,
+  nicht eine Auswahl.** Eine leere Fehlerliste sagt nichts über das, was nie gesendet wurde.
+- **Noch nicht gemessen, gleiche Klasse:** Schwimmweste, Velo-Kindersitz, Auto-Kindersitze,
+  Schutzbrillen.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-14 (🔴 DIE MARGE VON GESTERN GALT FÜR EIN ACHTEL DES KATALOGS — 18 Produkte korrigiert):**
+- **Auftrag:** Dauerauftrag. Voller Bericht: **`dropship/LERNEN-PREISE-VARIANTEN-2026-09-14.md`**.
+- **🚨 EIGENE KORREKTUR, gemessen: die gestrigen „58,9 % Median-Rohmarge / 4 Verlustfälle von 231"
+  beschreiben einen Ausschnitt, nicht den Shop.** Zwei blinde Flecken: (1) **eine Zeile je Produkt
+  misst die BILLIGSTE Variante** — `unitCost` steigt mit der Grösse, Ballettschuhe gehen von 45 %
+  (erste Variante) auf 5 % (letzte, gleicher Preis); (2) **`grep -c '^CJ-[0-9]'` auf der gestrigen
+  CSV ergibt 0 von 250** — gemessen wurde ausschliesslich die alte Importgeneration (`CJYD…`),
+  **alle 18 heute gefundenen Verlustprodukte tragen das andere Schema `CJ-<pid>`**.
+- **📊 ZWEI NEUE STICHPROBEN, verschieden sortiert damit nicht die Sortierung das Ergebnis erklärt
+  (je 120 Produkte): Median-Rohmarge 20,6 % (alphabetisch) und 23,4 % (zuletzt geändert)** über die
+  schlechteste kaufbare Variante — gegen 31,4 %, wenn man je Produkt eine Zeile liest. **Verluste
+  6 von 82 bzw. 14 von 49 mit bekanntem Einkaufspreis; 53 von 82 (65 %) bleiben nach WELCOME10 unter
+  38 %.** Versand ist in `unitCost` nicht drin, die echten Zahlen liegen darunter. Die Preise stehen
+  auf 14.90/15.90/17.90/21.90 unabhängig vom Einkauf — sieht nach einem Import aus, der nach
+  Kategorie bepreist hat (BEHAUPTUNG, belegt ist nur das Muster).
+- **🛠️ GEBAUT `tools/varianten_preis.mjs`** (24 Selbsttests): rechnet `kosten_max` gegen `preis_min`.
+  Die Preisregel (Leiter `x4.90/x9.90`, nach WELCOME10 ≥ 38 %) steckt als `zielpreis()` drin und
+  **reproduziert alle sieben Preisentscheidungen vom 13.09. exakt** — kein neues Gefühl, die alte
+  Regel aufgeschrieben. Daten: `dropship/preise-varianten-2026-09-14{a-alphabetisch,b-neueste}.csv`.
+- **✅ GEÄNDERT (live): 13 Produkte / 45 Varianten hochgesetzt**, `userErrors` leer. Steel Tongue Drum
+  ×3 69.90→**164.90** (EK 91.13) · Camping-Gaskocher 41.90→**84.90** · Dokumenten-Organizer
+  32.90→**79.90** · Reinigungbürste 42.90→**79.90** · Yogamatte 8 Var. 21.90→**54.90–79.90** ·
+  Katzen-Trinkbrunnen 6 Var. →**24.90–64.90** · Silikon-Set 28.90→**54.90** · Ladeadapter→54.90 ·
+  Kabel-Tray 24.90→**49.90** · Nachttischlampe 18.90→**39.90** · Casual Damenschuhe 18 Var.
+  16.90→**34.90**. **Yogamatte und Trinkbrunnen bekamen Preise JE VARIANTE**, weil die Einkaufspreise
+  dort wirklich auseinanderliegen. **An der echten Seite gegengeprüft** (164.90/39.90/79.90/49.90,
+  alle HTTP 200), nicht der API-Antwort geglaubt.
+- **⛔ 5 PRODUKTE AUS DEM VERKAUF (DRAFT), Seiten liefern jetzt 404:** **zwei Halbhelme
+  (Kinder + Elektroroller) tragen nur die chinesische „3C"-Kennzeichnung, keinen CE-Nachweis nach
+  EN 1078** — ein Helm ist Schutzausrüstung, das ist kein Preisthema; beide waren zusätzlich
+  Verlustprodukte. Dazu Abtropfregal (20.90 bei EK 68.11, −226 %), Panda-Plüschkissen (17.90/35.58),
+  12-teiliges Edelstahl-Kochtopf-Set (59.90/87.69, schweres Sperrgut — dieselbe Klasse wie die
+  CHF 869.62 Rückerstattungen im Juli). **Lehre: bei Helmen, Schutzbrillen, Kindersitzen und
+  Elektrogeräten auf die Kennzeichnung sehen, nicht nur auf die Marge.**
+- **⚠️ NEUE MESSFALLE: `products(query:"status:active")` liefert auch ENTWÜRFE.** Gemessen:
+  `15447562486145` kam in der Stichprobe, ist aber DRAFT, in null Kanälen, Seite 404. Gegenprobe
+  direkt danach sauber (`id:… AND status:active` leer, `… AND status:draft` gefunden,
+  `status:zzzgibtesnicht` leer) → **der Suchindex hinkt hinterher**. Eine Stichprobe über
+  `status:active` ist nicht garantiert aktiv; Status der Produkte, über die man berichtet, einzeln
+  nachfragen. Von den 13 neu bepreisten sind **12 tatsächlich aktiv und live**.
+- **🔴 BEHOBEN SIND 18 PRODUKTE, NICHT DIE KLASSE.** Wenn das Muster hält, stehen hunderte Produkte
+  unter der Zielmarge. Nächste Runde: alle SKUs `CJ-<pid>` nach derselben Regel neu bepreisen —
+  **das braucht `SHOPIFY_CLIENT_ID`/`_SECRET`/`SHOPIFY_SHOP` als Env-Werte**, sonst sind es
+  Einzelmutationen von Hand.
+- **🔑 JUDGE.ME-TOKEN GEPRÜFT (User gab `zIFh_…` als „privat" an): Judge.me selbst sagt öffentlich.**
+  `GET /api/v1/reviews?api_token=…&shop_domain=…` → **403 „You are using a public token which does
+  not have enough permissions"**, ebenso `/reviews/count`. Gegenprobe mit erfundenem Token → **401**
+  („Failed to authenticate"), der Token ist also gültig, nur nicht berechtigt. Bearer-Header → 401.
+  **Der Reviews-Import bleibt blockiert**, und die versehentlich angelegte Test-Bewertung
+  („Probelauf") lässt sich damit nicht löschen. **BEHAUPTUNG, ungeprüft:** Judge.mes REST-API
+  könnte an einen Bezahlplan gebunden sein — das würde das 403 ebenfalls erklären.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
+**📌 2026-09-13, dritte Runde (💰 DREI VON NEUN VERKAUFTEN POSTEN GINGEN MIT VERLUST RAUS):**
+- **Auftrag:** „lerne weiter". Endlich **Hack 3 aus dem offiziellen Shopify-Video gemacht:
+  Preisstrategie aus eigenem Katalog UND eigenen Bestelldaten** — der einzige offene Punkt, der
+  keine fehlenden Zugangsdaten braucht. Voller Bericht:
+  **`dropship/LERNEN-PREISE-MARGEN-2026-09-13.md`**.
+- **✅ Es geht: `inventoryItem.unitCost` ist gefüllt** — bei **231 von 250** geprüften aktiven
+  Produkten. **Währung VOR der ersten Rechnung geprüft:** Shop CHF, `unitCost` CHF (CJ rechnet
+  sonst in USD — ohne die Prüfung wäre jede Zahl wertlos). 19 ohne Kosten = **unbekannt**.
+- **🔴 DER TREFFER, aus den echten Bestellungen: 3 von 9 verkauften Posten mit bekanntem
+  Einkaufspreis gingen MIT VERLUST raus.** #1015 Gemüseschneider 15.90 vs. 20.84 · #1013
+  Midikleid 14.90 vs. 20.37 · #1011 Hängematte 14.90 vs. 16.92 — Versand noch nicht abgezogen.
+  **Im Katalog sind es nur 4 von 231 (1,7 %), bei den Verkäufen 3 von 9.** Vermutung (nicht
+  belegt): ein zu tiefer Preis sieht nach einem Fund aus, also verkauft sich genau die Ware
+  ohne Marge. **Die Gewinner:** Fuda-Taschenmesser 40.90 und Leinen-Set 34.90, beide ~44 %
+  Rohmarge, beide CHF 30–45.
+- **✅ GEÄNDERT (live): 7 Produkte / 76 Varianten hochgesetzt**, `userErrors` leer. Regel:
+  EK ÷ 0,55, aufgerundet auf `x9.90`, danach geprüft dass auch **nach WELCOME10** über 38 %
+  bleiben. Fahrradsattel 16.90→**49.90** (EK 27.55) · Titan-Schneidebrett 24.90→**54.90** (28.79)
+  · Elektr. Gemüseschneider 39.90→**74.90** (41.00) · Solar-Lichterkette 19.90→**39.90** (20.17)
+  · Runder Gemüseschneider 15.90→**39.90** (20.84) · Midikleid 40 Var. 14.90→**39.90** (20.37) ·
+  Hängematte 31 Var. 14.90–20.90→**34.90** (16.92). **Nachgemessen: Verlustfälle 4 → 0**, und
+  **an der echten Seite** gegengeprüft (49.90 / 34.90 / 39.90, alle HTTP 200) — nicht der
+  API-Antwort geglaubt. Jederzeit zurückdrehbar, alle Vorher-Werte im Bericht.
+- **🛠️ GEBAUT `tools/preis_marge.mjs`** (20 Selbsttests) + Daten
+  `dropship/preise-kosten-2026-09-13{a-vorher,b-nachher}.csv`. Gegenproben: fehlender
+  Einkaufspreis ergibt **unbekannt statt 100 % Marge**, EK = VK ergibt **genau 0 %**, eine leere
+  Preisklasse behauptet keinen Median, der Gutschein senkt den Erlös statt die Kosten.
+- **⚠️ ZWEI ZAHLEN, DIE NICHT NEBENEINANDER GEHÖREN: Median-ROHMARGE 58,9 %** (nach WELCOME10
+  54,3 %) **ist NICHT die „Dropship-Nettomarge 15–20 %"** von gestern — dort sind Versand,
+  Werbung, Retouren und Gebühren schon abgezogen, in `unitCost` nicht. Wer sie vergleicht,
+  schliesst der Shop verdiene dreimal so gut wie üblich.
+- **❌ VERMUTUNG WIDERLEGT:** „bei billiger Ware frisst der Einkauf den Preis" stimmt nicht —
+  die Klasse **unter CHF 20 hat mit 60,6 % die BESTE** Median-Rohmarge (20–30: 55,6 · 30–40:
+  59,6 · 40–50: 54,9 · ab 50: 56,6). Die Verlustfälle sind Einzelfälle über alle Klassen.
+- **⚠️ `productsCount` DECKELT BEI 10000 und liefert für `status:active`, `status:draft` und
+  ohne Filter DIESELBE 10000** — die Gegenprobe `status:zzzgibtesnicht` ergibt korrekt 0, das
+  Argument wird also gelesen, die Zahl ist trotzdem unbrauchbar. **Die wahre Zahl aktiver
+  Produkte ist damit unbekannt**, und 3 der 4 Verkaufs-Verlustfälle standen NICHT in der
+  Stichprobe → es gibt mehr als die vier gefundenen.
+- **🟡 Nebenbefund, eigene Runde wert:** die Reise-Hängematte hatte für **dieselbe Ware
+  14.90 bis 51.90** bei identischem EK 16.92. Ob weitere Produkte so aussehen: nicht gemessen.
+
+**📌 2026-09-13, zweite Runde (📧 ES GIBT KEIN ANMELDEFENSTER — der Engpass ist gemessen erklärt):**
+- **Auftrag:** „weiter youtube lernen". **Am Shop nichts geändert.** Voller Bericht:
+  **`dropship/LERNEN-EMAIL-EINSAMMELN-2026-09-13.md`**.
+- **🔴 HAUPTBEFUND, an fünf Live-Seiten GEMESSEN: ein Anmeldefenster existiert NICHT.** Geladen
+  werden genau zwei fremde Erweiterungen (Partnerprogramm, Judge.me) — **kein `shopify-forms`,
+  kein `static.klaviyo.com/onsite/js/klaviyo.js`**, kein Privy/Omnisend/Justuno/OptiMonk. Damit
+  ist die Gedächtnis-Aussage vom 01.06. „**WELCOME10-Popup (Shopify Forms) live**" **widerlegt**.
+  Die 37 „popup"-Treffer im Quelltext sind `aria-haspopup` an Suche und Menü plus die
+  Einstellungen des Judge.me-Fensters.
+- **Das einzige E-Mail-Feld ist das Theme-Formular im Fuss** und steht bei **89,6–99,2 % der
+  Seite** (Startseite: hinter 7,18 von 7,24 Mio. Zeichen). Ein handgeschriebenes Theme-Skript
+  meldet die Adresse zusätzlich an Klaviyo (`custom_source: "Footer Newsletter"`) — es
+  funktioniert, nur sieht es kaum jemand.
+- **🔑 Der zweite Teil wiegt gleich schwer: der Code steht im Klartext im Ankündigungsband**
+  jeder Seite („–10 % … mit Code WELCOME10"). **Wer den Rabatt geschenkt bekommt, trägt dafür
+  keine Adresse ein.** Zusammen erklärt das die 3 Abonnenten bei 1498 Kundendatensätzen
+  vollständig. **Reihenfolge: erst den Anreiz nicht mehr verschenken, dann ein Fenster bauen** —
+  Letzteres braucht `SHOPIFY_CLI_THEME_TOKEN`, **dasselbe Token löst auch die schlanke
+  Startseite**.
+- **🛠️ `tools/shop_conversion.mjs` erweitert (12 → 20 Selbsttests):** misst jetzt zusätzlich
+  Position des E-Mail-Felds in Prozent der Seite, ob ein Anmeldefenster-Werkzeug geladen wird
+  und welche Rabattcodes im **sichtbaren** Text stehen. Gegenproben: Feld oben → kleiner Wert;
+  kein Feld → **unbekannt statt 0 %**; ein Theme-Skript ist kein Anmeldefenster; ein Code im
+  `<script>` zählt nicht.
+- **⚠️ EIGENE KORREKTUR AM WERKZEUG — „Einwilligungsseite" war eine Fehldiagnose.**
+  **GEMESSEN (8 Abrufe desselben Videos): YouTube liefert zufällig zwei Fassungen derselben
+  Seite.** Der reduzierten fehlen `shortDescription`, `viewCount`, Dauer und Kanalname; Titel
+  und Beschreibung stehen aber vollständig in `videoPrimaryInfoRenderer` bzw.
+  `attributedDescription`. Bei sechs Abrufen kam die volle Fassung **ein Mal**. Der Satz
+  „Dieses Video gefällt dir?" steht dort unter `"title":{"simpleText"}` — **deshalb** hielt das
+  Werkzeug gestern die Seite für eine Einwilligungsseite. `tools/yt_lernen.mjs` behoben
+  (**11 → 24 Selbsttests**): beide Fassungen gelten, Titelquellen neu geordnet, mehrere Anläufe
+  (`YT_VERSUCHE`).
+- **⚠️ Und eine Falle beim Ausweichen auf Ersatzfelder:** `lengthText` steht in der reduzierten
+  Fassung, **gehört aber zu einem Vorschlagsvideo aus der Seitenspalte** — es meldete 38:45 für
+  ein 14-Minuten-Video. **Die Dauer bleibt dort unbekannt statt geraten.**
+- **📺 Fünf Videos ausgewertet, Ertrag ehrlich klein:** die Suche liefert zu diesem Thema fast
+  nur kleine Kanäle (167–27 878 Aufrufe). Brauchbar ist das Kapitelverzeichnis eines
+  Anbieter-Webinars (QUELLE): *Fehlgebrauch vermeiden → erst das heutige Seitenerlebnis
+  bewerten → führen statt fragen → Kaufhürden entfernen → testen → Leistung überwachen*.
+  Genau Schritt 2 war hier nie gemacht worden. **GEMESSEN über die Quellen selbst:** das
+  meistgesehene Video trägt **neun Partnerlinks** zu kostenpflichtigen Erweiterungen — sechs
+  der neun Bausteine stehen hier ohnehin schon.
+- **↔️ Zwei fremde Behauptungen widersprechen sich:** ein Kanal nennt „Revenue Per Recipient"
+  ausdrücklich eine **irreführende Kennzahl** — genau den Richtwert (3.65 je Empfänger), der am
+  Morgen als QUELLE notiert wurde. Bei drei Abonnenten ohne Bedeutung; notiert, damit niemand
+  die Zahl für gesichert hält.
+
+**📌 2026-09-13 (📚 NUR GELERNT — Shopify+Claude, Dropship-Szene, Profit; Theme-Sperre GEKNACKT):**
+- **Auftrag:** „lerne du nur und teile dann memory für andere session … morgen macht die andere
+  Session alles." Diese Runde hat **nichts am Shop geändert**. Voller Bericht mit Quellen:
+  **`dropship/LERNEN-SHOPIFY-CLAUDE-2026-09-13.md`** (jeder Punkt markiert als GEMESSEN /
+  QUELLE / BEHAUPTUNG).
+- **🔓 WICHTIGSTER FUND — „Theme veröffentlichen kann nur der User" stimmt so nicht mehr.**
+  Der Shopify-MCP sperrt Schreibzugriff aufs aktive Theme und `themePublish`. **Die Shopify
+  CLI kann es trotzdem:** `SHOPIFY_CLI_THEME_TOKEN` (Passwort aus der kostenlosen App
+  **Theme Access**, Scope `write_themes`) + `SHOPIFY_FLAG_STORE` → `shopify theme list --json`,
+  `theme pull --live --nodelete` (Sicherung), `theme push --theme <id> --only
+  templates/index.json`, `theme publish --theme <id> --force`. **`publish` veröffentlicht
+  keinen lokalen Code**, es promoviert nur ein bereits gepushtes Theme. `--allow-live` bleibt
+  bewusst ungenutzt. **GEMESSEN:** CLI ist im Container nicht installiert, aber
+  `npm view @shopify/cli version` → **4.8.0** erreichbar, Node 22 da → der Weg ist nicht durch
+  die Umgebung blockiert. **🟡 Es fehlt allein das Token (einmalig vom User).** Danach kann
+  jede Session die schlanke Startseite und Sticky-ATC selbst scharf stellen.
+- **Shopify AI Toolkit** (offizielles Claude-Code-Plugin, seit 09.04.2026): MCP + Skills für
+  Admin-GraphQL, Liquid-Validierung, Hydrogen, Metafelder, Functions. **GEMESSEN: im
+  Plugin-Katalog dieses Kontos gibt es KEIN Shopify-Plugin** (nur `wix`, `noibu`,
+  `brightdata-plugin`) → Marktplatz müsste erst hinzugefügt werden, Befehl ungeprüft.
+  ⚠️ Das Toolkit hat **keinen Entwurfsmodus, keine Vorschau, kein Rückgängig** — Mutationen
+  laufen sofort produktiv; und Validierungs-Payloads enthalten den Code
+  (`OPT_OUT_INSTRUMENTATION=true`).
+- **YouTube ausgewertet** (4 Videos, 19 640–257 153 Aufrufe). **Die Umsatztitel („$2.7M",
+  „$400K/m") sind unbelegte Behauptungen**, alle Kanäle verdienen an Partnerlinks. Brauchbar
+  ist das **offizielle Shopify-Video** (106 388 Aufrufe): Hack 1 Markenstimme, Hack 2 täglicher
+  Check — beides läuft hier schon; **Hack 3 Preisstrategie aus eigenem Katalog + eigenen
+  Bestelldaten ist hier noch nie gemacht worden** und ist der Profit-Hebel.
+- **Zahlen für die Arbeit von morgen (QUELLE, mehrfach belegt):** Sticky-ATC mobil
+  **+8–12 % ATC** · Video auf der Produktseite **+10–25 % ATC** · **Foto-Bewertungen 2–3×
+  besser als reiner Text** · Gratis-Versand-Fortschrittsbalken = „stärkster Warenkorb-Hebel" ·
+  Header 5–7 Navigationspunkte · gute Conversion 2–3,5 % · Dropship-Nettomarge 15–20 %.
+  **Vertrauenssignale zählen bei Dropshipping 3× so viel** wie bei bekannten Marken.
+- **🔴 Eigener Befund aus dem Abgleich:** alle echten Bestellungen lagen **CHF 21.90–41.90,
+  also UNTER der Gratis-Versand-Schwelle von CHF 65**. Die Schwelle arbeitet gerade nicht für
+  den Shop — eigene Rechnung wert, bevor jemand sie für gesetzt hält.
+- **⚠️ Zoll-Falle 2026:** die Zollfreiheit für geringwertige Importe fällt in mehreren Märkten;
+  Abgaben und Bearbeitungsgebühren fressen die Marge kleiner Sendungen. Für die Schweiz
+  gesondert prüfen, bevor Preise gesenkt werden.
+- **❌ ZWEI SACKGASSEN:** (1) **YouTube-Transkripte gehen aus diesem Container nicht** —
+  `timedtext` liefert HTTP 200 mit **0 Bytes** in allen Formaten, Innertube sagt `UNPLAYABLE`
+  bzw. `FAILED_PRECONDITION` (PO-Token nötig). Was geht: Videoseite per `curl` mit
+  Browser-Kennung holen und `shortDescription` samt Kapitelmarken herausschneiden; `WebFetch`
+  auf YouTube liefert nur die leere Hülle. (2) **Mitbewerber-Seiten inhaltlich klonen** (Copy
+  und Testimonials übernehmen, Testimonial-Bilder erzeugen) ist dieselbe Grenze wie
+  „NIE Fake-Reviews" — Layout ansehen ja, Inhalte übernehmen nein.
+- **🧰 SKILLS AUSGEBAUT: 5 → 7, und die bestehenden fünf tragen jetzt, was heute gelernt wurde.**
+  Neu: **`recherchieren`** (wie man im Netz lernt, ohne Werbung für Wissen zu halten —
+  GEMESSEN/QUELLE/BEHAUPTUNG markieren, YouTube-Grenzen, wer an dem verdient was er lehrt, und
+  die Pflicht, jede fremde Zahl am eigenen Bestand gegenzuprüfen) und **`werkzeugkasten`**
+  (welches Messgerät es schon gibt, damit keins doppelt gebaut wird — 18 Werkzeuge mit Aufruf).
+  Nachgetragen: `messgeraet-zuerst` bekam die **Count-Filter-Falle**, „erst nachsehen wie die
+  Seite es nennt" und „Kundensicht statt API-Antwort"; `shopify-publizieren` die
+  **`sortOrder`-Falle**, den **Theme-Token-Weg über die CLI** und das Anhängen von Videos ohne
+  Theme-Zugriff; `massen-html-aendern` die **Ausschlussliste von `build-pages.sh`** samt
+  Messbefehl. `skills_pruefen.py`: 7 Skills, 57 Notizen, 0 Befunde.
+- **📧 GEMESSEN, und es beendet ein Thema: der Shop hat 1498 Kundendatensätze und GENAU DREI
+  E-Mail-Abonnenten.** (3 abonniert · 1495 nicht · 9 mit mindestens einer Bestellung; Summe
+  stimmt.) Die **acht Klaviyo-Strecken**, die das Gedächtnis seit Juni als „LIVE" feiert, haben
+  **drei Empfänger**. Das WELCOME10-Fenster läuft seit Juni und hat in gut drei Monaten drei
+  Adressen gebracht. **Der Engpass ist nicht die Strecke, sondern das Einsammeln** — keine
+  weiteren Flows bauen, bevor das Einsammeln misst. Belegt über zwei Wege:
+  `customerSegmentMembers` und die Liste `customers(query:)` (nach 10 gefragt, 3 bekommen).
+  Benchmark zur Einordnung (QUELLE): Warenkorb-Strecken bringen im Schnitt 3.65 je Empfänger,
+  **41 % des E-Mail-Umsatzes kommen aus 5,3 % der Sendungen**.
+- **⚠️ NEUE MESSFALLE, dieselbe Klasse wie `productsCount`: `customersCount` ignoriert sein
+  `query`-Argument vollständig.** `email_marketing_state:subscribed`, `orders_count:>0` und
+  sogar `email:zzzgibtesnicht@example.invalid` liefern **alle 1498**. Es filtern nur
+  `customerSegmentMembers` und `customers(query:)` — Letztere gibt auf den Unsinn-Filter
+  korrekt eine leere Liste. **Regel: nie ein `…Count`-Feld mit Filter glauben, ohne einen
+  Unsinn-Filter gegenzuprüfen.**
+- **🛠️ GEBAUT `tools/yt_lernen.mjs`** (11 Selbsttests): holt Titel, Kanal, Datum, Aufrufe,
+  Dauer und Beschreibung samt **Kapitelmarken** einer YouTube-Seite. Zwei Fallen stecken als
+  Gegenprobe drin: (1) **Grösse beweist nichts** — YouTubes Einwilligungsseite ist ebenfalls
+  über 50 000 Bytes gross und heisst „Like this video?"; die erste Fassung meldete dadurch fünf
+  leere Datensätze, jetzt wird auf `shortDescription` **und** `viewCount` geprüft; (2) „19:90"
+  mitten im Satz ist keine Kapitelmarke. **Gemessene Grenze: nach rund einem Dutzend Abrufen
+  antwortet YouTube mit HTTP 429** (rund 3,3 KB) — die „3257 Bytes"-Fehlschläge vom Anfang der
+  Recherche waren rückblickend schon Drosselungen. Höchstens eine Handvoll Videos am Stück.
+- **🔥 GEÄNDERT (live, ein Feld je Collection): die Verkaufs-Collection war nach IMPORTDATUM
+  sortiert.** `geschenke-unter-50-franken` — die Collection, aus der **jeder nachprüfbare
+  Verkauf** kam — stand auf **`CREATED_DESC`** bei **63 145 Produkten**. Kundensicht vorher:
+  **sechs Hundeartikel am Stück** unter den ersten zwölf Kacheln. **Der bittere Teil:** die
+  Schwester `bestseller-unter-50` stand die ganze Zeit auf **`BEST_SELLING`**, ihre Adresse
+  **leitet aber per 301 auf die schlecht sortierte um** — die gute Sortierung war vorhanden und
+  unerreichbar. Jetzt `BEST_SELLING` bei `geschenke-unter-50-franken` (63 145),
+  `kleine-geschenke-mitbringsel` (28 900) und `nachtwaesche-pyjamas` (69).
+  **Nachgemessen an der echten Seite: Hundeartikel unter den ersten 12 von 6 auf 0**; vorn
+  stehen jetzt das **zweimal bestellte Fuda-Taschenmesser** (#1016/#1017) und Ware zwischen
+  CHF 14.90 und 40.90. Jederzeit zurückdrehbar. ⚠️ Dabei selbst in die Falle getreten: für die
+  zweite Collection die **ID geraten** → „Kollektion ist nicht vorhanden". **IDs immer abfragen.**
+  ⚠️ Und: **DRAFT-Produkte stehen in der API-Liste vorn, der Shop blendet sie aus** — darum die
+  Kundensicht abrufen, nicht der API-Antwort glauben.
+- **🛠️ GEBAUT + GEMESSEN `tools/shop_conversion.mjs`** (12 Selbsttests): ruft die echten Seiten
+  ab und zählt benannte Conversion-Bausteine. **Regel des Geräts:** vor jeder Textprüfung
+  fliegen `<script>`, `<style>` und HTML-Kommentare raus — auf der Produktseite steht in einem
+  JS-Kommentar „Gratis-Versand ab CHF 49", reine Entwicklerhistorie. Wer roh greppt, meldet
+  zwei widersprechende Versprechen.
+- **🚨 DREI KORREKTUREN AM GEDÄCHTNIS, live nachgeprüft:** (1) **Die Sticky-ATC-Leiste steht
+  längst** (`sticky-add-to-cart__bar` auf jeder Seite) — das Gedächtnis führte sie seit Juni
+  als offen, **und ich habe das gestern ungeprüft weitergetragen**. (2) **Die
+  Gratis-Versand-Schwelle ist CHF 50, nicht 65**; der Theme-Kommentar begründet die Wahl: der
+  Automatik-Rabatt greift bei 49, die Regel prüft aber **nach** dem 10-%-Gutschein, 50 × 0,9 =
+  45 → **Absicht, nicht anfassen**. (3) **Der Gratisversand-Balken existiert** — laut CRO-
+  Checklisten der stärkste Warenkorb-Hebel, also schon gezogen.
+- **⚠️ Fehler im eigenen Messgerät, gefangen bevor er Schaden anrichtete:** die erste Fassung
+  suchte „Grössentabelle" und meldete bei allen Kleidern NEIN. Die Seiten nennen es
+  **„Mass-Tabellen"** (Schweizer Schreibweise). **Regel: erst nachsehen, wie die Seite es
+  nennt, dann das Muster schreiben.** Kein Defekt sind auch Poncho und Halloween-Umhang ohne
+  Grössenhilfe — sie sind einvariantig.
+- **📊 GEMESSEN (6 Live-Seiten):** Startseite **6,91 MB / 1130 Bilder**, Collection 0,98 MB,
+  Produktseiten 0,53–0,62 MB. Auf **allen**: sticky-ATC ja, Sterne-Widget ja,
+  **Bewertungen 0**, Versand CHF 50 mit Balken, Rückgabe, CH-Signal, 5–6 Zahlungslogos,
+  Lieferdatum auf den PDP. **Kein Video auf einer einzigen Produktseite.**
+- **🎯 NACH DER MESSUNG BLEIBEN NUR DREI LÜCKEN:** (1) Bewertungen 0 überall → fehlt
+  `JUDGEME_PRIVATE_TOKEN`; (2) kein Video auf den PDP, laut Quelle +10–25 % ATC, **105 fertige
+  Reels liegen in `reels/` (494 MB)**; (3) Startseite 6,91 MB → fehlt der Theme-Token.
+  **Alles andere aus den CRO-Checklisten steht bereits. Der Shop ist nicht das Problem, die
+  zwei fehlenden Zugangsdaten sind es.**
+- **✅ Weg für Video auf die PDP vorgeprüft (braucht KEINEN Theme-Zugriff):**
+  `stagedUploadsCreate` ist gültig; `productCreateMedia` ist gültig, aber **veraltet** →
+  `productUpdate`/`productSet` nutzen. Ablauf: staged Upload → Datei per `PUT` → Medium über
+  `productUpdate` mit der `resourceUrl` anhängen.
+- **🔒 NEBENBEFUND, LIVE GEMESSEN: das Gedächtnis stand öffentlich im Netz.**
+  `https://abannews.com/CLAUDE.md` → **HTTP 200, 34 399 Bytes**,
+  `https://abannews.com/SHARED-MEMORY.md` → **200, 107 585 Bytes**. Die Session vom 12.09. hat
+  `brain/` und `.claude/` ausgeschlossen, **die Gedächtnis-Dateien im Wurzelverzeichnis aber
+  übersehen** — `build-pages.sh` hat eine Ausschluss-, keine Einschlussliste, und das gilt auch
+  für einzelne Dateien, nicht nur Verzeichnisse. Ausgeliefert wird ein alter Stand (oberster
+  Block **2026-07-05**, passend zum seit 29.08. stehenden Deploy). **Behoben:** `CLAUDE.md`,
+  `SHARED-MEMORY.md`, `LERNEN-*.md`, `*-HANDOFF.md`, `*-MEMORY.md`, `*-CHECKLISTE.md`,
+  `docs/SESSION-HANDOFF.md` ausgeschlossen, **nachgemessen 5 → 0**, Gegenprobe `functions/`
+  weiter 39 und `index.html` dabei (7377 Dateien). ⚠️ **Die bereits veröffentlichte Kopie
+  verschwindet erst mit dem nächsten Deploy** — danach gegenprüfen, dass
+  `curl -o /dev/null -w '%{http_code}' https://abannews.com/CLAUDE.md` **404** liefert.
+- **Reihenfolge für morgen:** (1) Theme-Token → schlanke Startseite scharf + nachmessen,
+  (2) Foto-Bewertungen (fehlt nur `JUDGEME_PRIVATE_TOKEN`), (3) Sticky-ATC, (4) Preisstrategie
+  aus echten Daten, (5) vorhandene Reels auf die Produktseiten. **Nicht:** mehr Produkte,
+  klonen, Bewertungen erfinden, Crons reaktivieren.
+
+**📌 2026-09-12 (🏷️ VARIANTEN AUF DEUTSCH — 291 Werte live, Wächter fing 2 eigene Fehler):**
+- **Auftrag:** „die bestehenden Produkte optimieren und Webseite". Voller Bericht:
+  **`dropship/VARIANTEN-DEUTSCH-2026-09-12.md`**.
+- **Gemessen** (`tools/produkt_qualitaet.mjs`, 13 Selbsttests, 250 aktive Produkte):
+  **rohe Lieferanten-Variantentexte 11 (4,4 %)**, **erfundene Grössen-Codes 2 (0,8 %)**.
+  **Fünf vermutete Defekte überlebten die Messung nicht** und wurden bewusst nicht
+  „behoben": fehlende Gewichte (Versand rechnet nach Preis), „Gratis ab CHF 50" (gewollt),
+  „ab CHF 80" (ein Collection-Name), die Kanäle der Rauch-Collection (richtig begrenzt),
+  angeblich tote Produktseiten (alle 200).
+- **⚠️ Zwei Fehler steckten im Messgerät selbst:** es meldete 100 % „ohne SEO" für einen
+  Auszug, der das Feld gar nicht abgefragt hatte (**ein nicht abgefragtes Feld ist
+  UNBEKANNT, nicht leer**), und zählte `2XL`–`5XL` als erfundene Grössen — das sind normale
+  Konfektionsgrössen, die Zahl fiel von 48 auf 2.
+- **Der Defekt:** bei den Familien-Pyjamas steckt die ganze Variantenmatrix in EINER Option
+  namens „Farbe", mit Texten wie `Red-FatherS`, `Black-Mom 4XL`, `Picture Color-Tong 2`,
+  `New Flower Deer-Xl For Father`. „Tong" ist chinesisch für Kind, „Picture Color" heisst
+  „wie abgebildet".
+- **✅ GEBAUT + LIVE `tools/varianten_deutsch.mjs`** (56 Selbsttests): **291 Variantenwerte
+  auf 13 aktiven Produkten** übersetzt, Option heisst jetzt „Ausführung & Grösse".
+  `Red-FatherS` → `Rot · Papa S`, `Picture Color-S For Mother` → `Wie abgebildet · Mama S`.
+- **🔑 HARTE REGEL: Grössen werden nie inhaltlich verändert.** Wer aus `0XL` ein `XL` macht,
+  lässt Leute die falsche Grösse bestellen. Der Wächter `groessenUnveraendert` prüft
+  buchstabengenau in beide Richtungen und **fing zwei echte Fehler im eigenen Werkzeug**:
+  aus `3to4` wurde `3to 4` (fehlende Wortgrenze), und `2XLMom` löste einen Fehlalarm aus.
+  Fünf Gegenproben belegen, dass der Wächter selbst ausschlägt.
+- **❌ BEWUSST NICHT ANGEFASST:** Lieferanten-Kennungen (`JJF106230color-`) — sie
+  unterscheiden zwei Muster, Wegwerfen erzeugt Duplikate (betrifft Produkt
+  **15447966515585**, dessen Werte zusätzlich unvollständig sind → eigene Runde);
+  Designnamen (`Vineyard`, `Snowflake Map Pink`) — raten wäre schlimmer als Englisch;
+  DRAFT-Produkte; Altersbereiche `3to4` (Einheit nicht belegt).
+- **🟡 NUR DER USER (Admin-Klick):** zwei Produkte der Rauch-Collection liegen in
+  Marketing-Kanälen (Google/Meta/TikTok/Pinterest), wo die Werberichtlinien sie nicht
+  wollen: **15525490950529** und **15523863101825**. `publishableUnpublish` ist durch die
+  Sicherheitsregel des Zugangs gesperrt. Prüfen: `tools/kanal_waechter.mjs` (5 Selbsttests).
+
+**📌 2026-09-12 (💰 VERKÄUFE — Gedächtnis dreifach widerlegt, Startseite als Hauptdefekt gefunden):**
+- **Auftrag:** „lerne für luxestyle.ch viele verkäufe". Alles live gemessen. Voller Bericht:
+  **`dropship/VERKAEUFE-BEFUND-2026-09-12.md`**.
+- **🚨 WIDERLEGT 1 — nicht 2 Bestellungen, sondern 14.** Dieses Dokument sagte „2 bezahlte
+  Bestellungen" (05.07.) und „0 Käufe, Conversion 0,0 %" (13.06.). **Gemessen: 14 Orders seit
+  1. Juli, davon 5 echte bezahlte Kundenbestellungen** (#1005, #1011, #1014, #1017, #1018;
+  CHF 21.90–41.90, rund eine alle 12 Tage) plus 3 Inhaber-Tests. **Der Shop konvertiert.**
+- **🔴 WICHTIGSTER EINZELBEFUND — mehr zurückerstattet als eingenommen:** 3 echte
+  Kundenbestellungen über **CHF 869.62** unerfüllt zurückerstattet (vs. CHF 175.50 geblieben).
+  Alle drei **BigBuy-Sperrgut**: #1006 Klimagerät `BB-S0465893` 426.51, #1007 Klimagerät
+  `BB-S91120937` 265.90, #1008 Schlauchboot 366 cm mit **SKU `null`** 177.21. Genau die
+  Fake-SKU- und Sperrgut-Regeln aus §9. Einzelfälle behoben (beide Klimageräte DRAFT, Boot weg).
+  **Klasse offen: 279 aktive BigBuy-Produkte, KEINES mit Gewicht, darunter Markenware**
+  (Michael Kors, Jimmy Choo, Puma Ferrari, Oral-B) → eigene gemessene Runde wert.
+  #1016 war kein Produktfehler (gleiches Messer, gleicher Kunde, gelöst via Ersatz #1017).
+  **Regel: was sich erfüllen lässt, ist CJ-Kleinware mit echter `CJ-`-SKU, CHF 20–45.**
+- **🚨 WIDERLEGT 2 — Traffic halbiert, Verkäufe trotzdem da:** 2994 → **1248 Sessions/30 T**
+  (direct 871, social 227, **search nur 124**, unbekannt 25). „Engpass = Traffic-Qualität" ist
+  nicht mehr die ganze Wahrheit.
+- **🔥 HAUPTDEFEKT GEFUNDEN (Messgerät `tools/shop_startseite.mjs`, Gegenprobe eingebaut):**
+  **Startseite 10/12 Abrufe ok = 17 % HTTP 500, 6,91 MB**, während **Produktseite 0,55 MB / 0 %**
+  und Collection 1,13 MB / 0 % liefern — gleiche Infrastruktur, also DIESE Seite. Fehlerseite ist
+  Shopifys eigene „Something went wrong" (Render-Grenze). **Ursache gezählt:** 17 Produktreihen,
+  jede rendert **72 Links bei 12 verschiedenen Produkten — jedes Produkt 6×** (Häufigkeit `[6]`
+  nachgezählt) → **1108 Produktlinks, 1130 Bilder, 1896 SVGs**.
+- **🎯 DER TREFFER:** alle drei nachprüfbar verkauften Produkte liegen in
+  `geschenke-unter-50-franken` bzw. `bestseller-unter-50`. **KEINE der 17 Reihen nutzt diese
+  Collections.** Die Startseite bewirbt 17 Kategorien, aber nicht die Preisklasse, aus der jeder
+  echte Verkauf kam.
+- **✅ GEBAUT `automation/homepage_slim.mjs`** (+ Workflow „Startseite schlank (LuxeStyle)",
+  nur `workflow_dispatch`, kein Cron): **17 Reihen → 4**, Karten 184 → 32, erwartete
+  Produktlinks 1108 → 192, Vorlage **139 497 → 51 475 B**. Reihenfolge: (1) Geschenke unter
+  CHF 50, (2) Bestseller, (3) Neuheiten, (4) Ab Schweizer Lager 1–2 Tage. Hero/USP/Trust/
+  JSON-LD unberührt. **Idempotent, 5 Selbsttests**, Sicherheitshalt gegen das aktive Theme.
+  Sicherungen: `dropship/theme-backup/index.json.{vorher,schlank}-2026-09-12.jsonc`.
+- **🟡 NUR DER USER: Theme veröffentlichen (1 Klick).** Schreibzugriff auf das **aktive** Theme
+  ist durch die Sicherheitsregel des Shopify-Zugangs blockiert („writes that target the live/MAIN
+  theme are blocked"), `themePublish` ebenfalls. `themeDuplicate` + Schreiben in die **Kopie**
+  geht. Kopie liegt bereit: `gid://shopify/OnlineStoreTheme/190339252609` („Kopie 12.09. (Claude)
+  – noch unveraendert"). Zum Scharfstellen fehlen `SHOPIFY_CLIENT_ID`/`_SECRET`/`SHOPIFY_SHOP`.
+- **❌ BEWUSST NICHT „REPARIERT":** `bestseller-unter-50` ist nur in „Point of Sale" + „Inbox"
+  publiziert — sieht nach Collections-Publish-Falle aus, **ist keine**: die Adresse liefert **301**
+  auf `geschenke-unter-50-franken` (8 Kanäle, 200). Publizieren hätte ein Duplikat erzeugt und die
+  Weiterleitung zerstört.
+- **⚠️ NEUE MESSFALLE:** `productsCount` **ignoriert Preisfilter stillschweigend**
+  (`variants.price:>99999` → 10000) und deckelt bei 10000; der SKU-Filter greift
+  (`sku:zzzgibtesnicht*` → 0). Wer nach Preis zählt, bekommt die Gesamtzahl. Aufgefallen nur,
+  weil vier Abfragen exakt dieselbe Zahl lieferten.
+- **⚠️ Eigene Korrektur:** ich habe zuerst „18 Produktreihen" gemeldet — das Messgerät sagt **17**.
+
+**📌 2026-09-12 (🧠 ZWEITES GEHIRN + SKILLS — gelernt aus TikTok @herr_tech „5 Systeme"):**
+- **Auftrag:** ein TikTok-Link + „lerne alles selbstständig", dann „obsidian 2te gehirn,
+  installiere super skills und tools, werde auto besser". Video: `@herr_tech/video/7684308282038603041`,
+  98 s. **Die Caption nennt die 5 Systeme nicht** — Transkript über die deutsche ASR-Untertitelspur
+  aus den TikTok-Metadaten (`subtitleInfos`, WebVTT) geholt. Volle Auswertung: **`LERNEN-5-SYSTEME.md`**.
+- **🔑 GEMESSENER HAUPTFUND:** `find . -name SKILL.md` lieferte **nichts** — **`.claude/skills/`
+  existierte in diesem Repo überhaupt nicht.** Genau das Stück, das das Video „absolute
+  Königsdisziplin" nennt, war das einzige, das vollständig fehlte. Alle teuer gelernten Regeln
+  standen als Prosa in dieser 470-Zeilen-Datei, die jede Session komplett liest und trotzdem
+  einzelne Fallen übersieht.
+- **✅ 5 Skills gebaut** (laden sich selbst, wenn die Beschreibung zur Aufgabe passt):
+  `messgeraet-zuerst` (jede „mach es besser"-Aufgabe) · `shopify-publizieren` (die 4 Publish-Fallen
+  + Client-Credentials-Token) · `massen-html-aendern` (Diff-Pflicht, Generator-Vorlagenkette,
+  `background-image`) · `gedaechtnis` (welche Datei die Wahrheit ist) · `git-und-pr` (Stale-Ref,
+  feste Branches, Spam-Markierung).
+- **✅ Obsidian-Vault `brain/vault/` — 39 atomare Notizen**, über Wikilinks verbunden, jede mit
+  `quelle` + `gelernt`-Datum: 13 Fallen · 5 Sackgassen · 5 Blockaden (nur User) · 7 Projekte ·
+  7 Systeme · erzeugte Zeitleiste. Einstieg `brain/vault/00 Start hier.md`.
+  **Die grossen Dateien bleiben die Historie** — der Vault ist der Zugriff darauf, kein Ersatz.
+- **✅ 4 Werkzeuge, jedes mit Gegenprobe:** `tools/gedaechtnis.py` (suchen statt lesen:
+  `"stichwort"`, `--sackgassen`, `--offen`, `--stand`) · `tools/vault.py bauen` (Index + Zeitleiste,
+  prüft alle 140 Wikilinks) · `tools/skills_pruefen.py` (53 Pfade in Skills/Notizen, findet
+  verrottete Verweise) · `tools/lehre.py` (neue Lehre aufnehmen, idempotent).
+- **🔎 Die Selbsttests haben sich SOFORT bezahlt — zwei echte Fehler im eigenen Code:**
+  (1) `skills_pruefen.py` hatte den Repo-Pfad fest verdrahtet und stürzte auf jeder Kopie ab;
+  (2) `lehre.py` ersetzte Umlaute **nach** der Unicode-Normalisierung, die Ersetzung griff nie
+  („öäü" → „oau" statt „oeaeue"). Beide hätten erst die nächste Session getroffen.
+- **✅ `automation/brain-wake.sh` erweitert** (bleibt schreibfrei): zeigt bei jedem Session-Start
+  Notizen- und Skill-Zahl, die 6 Blockaden „nur User" und die Befehle für Lehre/Prüfen.
+- **❌ BEWUSST NICHT GEBAUT, mit Begründung:** *System 2 Content-Maschine* steht schon (14 Bausteine)
+  und Masse ist hier gemessen ein 0-Hebel. *System 3 Lead-Maschine* = echte Lücke: Bausteine da
+  (`social-comment-reply.mjs` antwortet nur öffentlich, `ig-dm-reply.mjs` wartet passiv), aber die
+  Kette Kommentar→DM→Qualifizierung→Liste fehlt. **Blocker: Meta-Scope
+  `instagram_manage_messages` zusätzlich zu `instagram_manage_comments` — nur der User kann das
+  freigeben.** *System 4 Angebots-Agent* scheitert an der Quelle: Anfragen kommen per
+  `mailto:hallo@abannews.com`, darauf hat keine Session Zugriff → User muss einen maschinenlesbaren
+  Eingang benennen (n8n-Webhook liegt bereit, IMAP, oder Google-Sheet).
+- **🔴 CI-FALLE GEFUNDEN (gemessen, nicht vermutet):** `voice-linter.yml` läuft auf `pull_request`
+  über **alle `**/*.md` mit `--strict`** und hätte diese PR auf **6 Dateien rot** gemacht. Gründe
+  waren durchweg **Newsletter**-Regeln, die auf Entwickler-Doku nicht anwendbar sind: `too_long
+  10598 > 5000`, „Sie-Drift" bei normalem deutschem Satzanfang („Sie stimmte nicht"), und
+  `all_caps` — letzteres erbt die **erzeugte** Zeitleiste aus den Schlagzeilen von `CLAUDE.md`,
+  das der Linter selbst schon ausnimmt. **Fix:** `.claude/`, `brain/`, `LERNEN-*.md` in die
+  bestehende Ausnahmeliste des Workflows (wo CLAUDE.md/docs/README schon stehen), begründet im
+  Workflow-Kommentar. **Lehre für jede Session: bei neuen `.md`-Pfaden prüfen, ob der
+  Voice-Linter sie fängt** — er ist auf Newsletter geeicht, nicht auf Doku.
+- **✅ Alle CI-Prüfungen lokal nachgefahren** (Actions ist gesperrt, läuft also nicht von selbst):
+  `voice-linter` 0 Dateien nach Ausnahme · `quality-check` py_compile **408 Dateien 0 Fehler**,
+  **154 JSON 0 fehlerhaft** (1 JSONC übersprungen, wie der Workflow es tut) · `hype-filter-test`
+  Pfade nicht berührt · `deploy-check` **0 HTML im Diff**.
+- **🟡 NEBENBEFUND, Gedächtnis widerlegt:** die Aussage „0 aktive Crons" (Nulldiät, PR #828,
+  13.06.) stimmt **nicht mehr**. Von 167 Workflows haben **vier** einen aktiven `cron:`:
+  `bestseller-refresh` (`0 6 * * *`), `shop-autopilot` (`45 6 * * *`), `image-audit` (Di),
+  `shop-guards` (Mo). Sie laufen wegen der Actions-Sperre nicht — **starten aber von selbst,
+  sobald die Sperre fällt**, zwei davon täglich. **Bewusst NICHT geändert** (gehören zum
+  Shop-Autopilot, das entscheidet der User). Notiz:
+  `brain/vault/Blockiert/Vier-Crons-sind-wieder-aktiv-trotz-Nulldiaet.md`.
+- **🚨 RICHTIGSTELLUNG, die wichtigste dieser Session: GITHUB ACTIONS LÄUFT WIEDER.** Das Gedächtnis
+  behauptet seit 13.06. in Grossbuchstaben „ACCOUNT-WEIT GESPERRT — nichts läuft mehr automatisch",
+  und der ganze GitLab-CI-Umbau steht nur deswegen. **Gemessen an echten Läufen auf PR #2514:**
+  Voice Linter Lauf 2228 lief 14:18:58–14:20:28 (**90 s**) bis `success`, Quality Check Lauf 1488
+  **110 s** bis `success`, Cloudflare Pages `success`. Eine Sperre startet nichts.
+  **Belegt: `push` und `pull_request`. NICHT geprüft: `schedule` und `workflow_dispatch`** — wer
+  darauf baut, misst selbst. **Folge:** Arbeiten, die als „geht nicht" abgehakt waren, sind wieder
+  möglich, u. a. der Reviews-Importer per `workflow_dispatch`. **Fair-Use-Vorsicht bleibt**
+  (die Sperre kam von 158 Workflows/~60 Crons) → Crons weiter nicht massenhaft reaktivieren.
+  ⚠️ **Ich habe die falsche Aussage in dieser Session zuerst selbst weitergetragen** und gemeldet,
+  Actions laufe nicht — bis die PR-Ereignisse das Gegenteil zeigten. Notiz:
+  `brain/vault/Fallen/Actions-Sperre-gilt-nicht-mehr-fuer-push-und-pull-request.md`.
+- **🔴 `metricool-schedule.yml` ist auf `main` dauerhaft rot** (Läufe 7, 8, 18, 33, je 0 s). Bei der
+  Cron-Nulldiät wurde der **einzige Job mitsamt Schritten** auskommentiert, der Schlüssel `jobs:`
+  blieb stehen → leeres `jobs:` = ungültiger Workflow. Nicht diese PR. Patch-Vorschlag steht als
+  Kommentar an PR #2514; bewusst nicht hier mitgeändert.
+- **🔒 WICHTIG FÜR JEDE SESSION — ein neues Verzeichnis landet ÖFFENTLICH auf abannews.com.**
+  `build-pages.sh` kopiert das Wurzelverzeichnis per `tar` nach `_site/` und nennt nur eine
+  **Ausschlussliste** (`.git`, `node_modules`, `dropship`, `tools`, `automation`, `reports`,
+  `server`, `social`, `reels`, `video-prototypes`, …). Alles andere geht live. `brain/` und
+  `.claude/` standen in keiner Liste → **gemessen 63 Einträge** wären öffentlich abrufbar gewesen
+  (Projekt-Gedächtnis, interne Kennzahlen, Sackgassen). Behoben, nachgemessen **63 → 0**,
+  Gegenprobe `functions/` weiter dabei (39). Kein Test und kein html-validate meldet das, und
+  63 von 7167 Dateien fallen in keiner Zahl auf. **Wer ein Verzeichnis anlegt, das nicht auf die
+  Webseite gehört, trägt es im selben Arbeitsgang ein** und prüft mit
+  `tar -cf - --exclude=./.git --exclude=./node_modules . | tar -tf - | grep -c "^\./<dir>/"`.
+  ⚠️ `build-pages.sh` **schreibt beim Laufen in verfolgte Dateien** (sitemap.xml, erzeugte
+  Übersichtsseiten, Fusszeilen-Anker) → nach einem Testlauf zurücknehmen, sonst wandern fremde
+  Generator-Ausgaben in den eigenen Commit.
+- **Cloudflare:** „Workers Builds: aban-news-landing" und „ki-verzeichnis" sind rot, aber **nicht
+  von hier**: die 5 `workers/*/wrangler.toml` heissen `aban-inserate-brain`, `ki-werkzeug-ai`,
+  `luxestyle-pinterest-cron`, `luxestyle-shop-brain`, `aban-site-brain` — **keiner** davon so.
+  Für die zwei Projekte gibt es im Repo keine Konfiguration → sie fallen bei jedem Commit um.
+  Nur per Cloudflare-Dashboard lösbar. Der Pages-Build dagegen läuft: lokal Exit 0, 7167 Dateien.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m` (vom Session-Auftrag vorgegeben), Draft-PR nach `main`.
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war

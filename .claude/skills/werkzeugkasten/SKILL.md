@@ -1,0 +1,72 @@
+---
+name: werkzeugkasten
+description: Bevor ein neues Skript, Messgerät oder Hilfsmittel gebaut wird - und immer wenn eine Zahl über den Shop, die Webseite, das Gedächtnis oder ein Video gebraucht wird. Sagt, welches Werkzeug es schon gibt, was es misst und wie es aufgerufen wird, damit nichts doppelt gebaut wird.
+---
+
+# Was es schon gibt — erst nachsehen, dann bauen
+
+Node ist **`/opt/node22/bin/node`**. Jedes Werkzeug hier hat `--selbsttest` mit Gegenprobe;
+**der Selbsttest läuft vor jedem Einsatz**, sonst ist die Zahl ein Verdacht.
+
+## Shop messen (LuxeStyle)
+
+| Werkzeug | misst | Aufruf |
+|---|---|---|
+| `tools/shop_conversion.mjs` | Conversion-Bausteine auf den **echten** Seiten: sticky-ATC, Sterne, Bewertungszahl, Versandversprechen samt Schwelle, Gratisversand-Balken, Lieferdatum, Grössenhilfe, Video, Zahlungslogos, Seitengewicht — dazu **wo das E-Mail-Feld steht** (in Prozent der Seite), ob ein **Anmeldefenster** geladen wird und ob ein **Rabattcode im Klartext** auf der Seite steht | `… tools/shop_conversion.mjs --standard` |
+| `tools/shop_startseite.mjs` | Zuverlässigkeit und Gewicht der Startseite gegen eine Produktseite als Kontrolle | `… tools/shop_startseite.mjs` |
+| `tools/produkt_qualitaet.mjs` | Produktdefekte aus einem GraphQL-Auszug: rohe Lieferantentexte, erfundene Grössen, fehlende Bilder/Alt-Texte/SEO | `… tools/produkt_qualitaet.mjs <dump.json>` |
+| `tools/kanal_waechter.mjs` | heikle Produkte in Marketing-Kanälen (nach Collection, nicht nach Titel) | `… tools/kanal_waechter.mjs <dump.json>` |
+| `tools/varianten_deutsch.mjs` | übersetzt rohe Variantentexte; **Grössen bleiben unangetastet**, Wächter prüft das | `… tools/varianten_deutsch.mjs "Red-FatherS"` |
+| `automation/homepage_slim.mjs` | stellt die Startseite von 17 auf 4 Produktreihen um (nur in eine Theme-Kopie) | `… automation/homepage_slim.mjs` |
+
+## Webseite messen (abannews.com)
+
+| Werkzeug | misst |
+|---|---|
+| `tools/ki_look.py` | Bestandszählung „wie KI-generiert" (Verläufe, Floskeln, Radien) |
+| `tools/kopfleiste.mjs` | Durchschlag der klebenden Kopfleiste, mit eingebauter Gegenprobe |
+| `tools/produktdichte.mjs` | Spalten, Bildgrösse, Seitenhöhe des Produktrasters |
+| `tools/seiten_blick.mjs` | Seiten in **Bildschirmhöhen** statt als 21 000-px-Bild |
+| `tools/ecken.py`, `tools/flaechen.py`, `tools/textbausteine.py` | Radien, Farbflächen, Textbausteine (je mit `test_`-Datei) |
+
+## Gedächtnis
+
+| Werkzeug | tut |
+|---|---|
+| `tools/gedaechtnis.py` | **suchen statt lesen**: `"stichwort"`, `--sackgassen`, `--offen`, `--stand` |
+| `tools/vault.py` | `bauen` (Index + Zeitleiste, prüft alle Wikilinks), `pruefen`, `selbsttest` |
+| `tools/lehre.py` | neue Lehre idempotent in den Vault aufnehmen |
+| `tools/skills_pruefen.py` | findet verrottete Pfade in Skills und Notizen |
+
+## Recherche
+
+| Werkzeug | tut |
+|---|---|
+| `tools/preis_marge.mjs` | Rohmarge des Katalogs aus Verkaufs- und Einkaufspreis (`inventoryItem.unitCost`): Verlustfälle, dünne Margen, Median je Preisklasse, Wirkung von WELCOME10. Daten in `dropship/preise-kosten-*.csv`. ⚠️ **Liest eine Zeile je Produkt = die billigste Variante** — für Produkte mit Grössen zu optimistisch, dann `varianten_preis.mjs` nehmen | `… tools/preis_marge.mjs` |
+| `automation/produkt_werbevideo.mjs` | **Macht aus den Bildern EINES Produkts ein Werbevideo** (9:16, 12 s): Produkt ab Sekunde 0, Preis auf jedem Segment, vier Kamerafahrten im Wechsel, Marke am Ende, dazu `-clean.mp4` für Trend-Sound und ein Deckblatt-JPG. Holt Bilder und Preis über `/products/<handle>.js` — **ohne Zugangsdaten** | `node automation/produkt_werbevideo.mjs <handle>` · `--selbsttest` |
+| `tools/video_hook.mjs` | Misst, **ab welcher Sekunde das Produkt im Video zu sehen ist** (davor steht die Marken-Karte). Gemessen: alte Reels 2,5–2,8 s, neues Produktvideo 0,0 s | `node tools/video_hook.mjs reels/*.mp4` · `--selbsttest` |
+| `automation/local/ig-reel-lesen.mjs` | **Läuft auf dem PC, nicht in der Cloud.** Liest ein Instagram-Reel aus dem eingeloggten Brave (CDP, Port 9222) und schreibt Text, Urheber, Datum, Zahlen und Video-Adresse als JSON. Nötig, weil Instagram an den Container nur eine leere Hülle liefert (0 og-Tags, gegengeprüft an einem zweiten Beitrag). Liest nur — liked, folgt und postet nicht | `node automation/local/ig-reel-lesen.mjs "<url>"` · `--selbsttest` |
+| `automation/preis_korrektur.mjs` | **Bepreist den ganzen Katalog in EINEM Lauf** nach der Zielmargen-Regel. Sechs Sicherheitsregeln je im Selbsttest: nie senken · kein Einkaufspreis = überspringen · Faktor-Deckel 3 (darüber melden statt setzen) · idempotent · ohne Zugangsdaten No-op · `DRY_RUN` ist Standard. 🟡 Braucht `SHOPIFY_SHOP`/`SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` | `DRY_RUN=1 node automation/preis_korrektur.mjs` |
+| `tools/preis_nachmessen.mjs` | **Prüft an der echten Kundenseite, ob gesetzte Preise angekommen sind** — je Variante, gegen `/products/<handle>.js` (ohne Zugangsdaten). `userErrors: []` sagt nur, dass das *Gesendete* gültig war, nicht dass alles Geplante gesendet wurde. Vergleicht **ganzzahlig in Rappen** (44.9 und 44.90 sind derselbe Preis), meldet eine unbekannte Variante als **unbekannt statt in Ordnung**, und behandelt 429/430/503 als „warte", nicht als „fehlt". Gegenprobe im Selbsttest: ein absichtlich falscher Sollwert muss ausschlagen | `node tools/preis_nachmessen.mjs plan.json` · `--selbsttest` |
+| `tools/schutzausruestung.mjs` | Sucht auf den echten Produktseiten nach Normangaben für Schutzausrüstung (Helme, Westen, Schutzbrillen). Trennt **drei** Fälle: europäisch (EN 1078/1077/1385, CE) · chinesisch (3C/CCC/GB — **Befund**) · unbekannt (**kein Befund**, nur eine Lücke in der Beschreibung). Benutzt `sichtbarerText()` aus `shop_conversion.mjs` | `… tools/schutzausruestung.mjs --datei dropship/schutzausruestung-handles.txt` |
+| `tools/browser.mjs` | **Ein echter Browser AUS DER CLOUD-SESSION** — gerenderter Text statt Quelltext, Screenshot in echter Handy-Breite, Cookie-Banner und Überlagerungen sichtbar. 🔓 Widerlegt den Gedächtnis-Satz „Cloud-Sessions haben KEINEN Browser" (Chromium 141 unter `/opt/pw-browsers/`, `playwright` **global** in `/opt/node22/lib/node_modules`). ⚠️ Die Hürde ist das Proxy-Zertifikat: gelöst über `--ignore-certificate-errors-spki-list` mit den dokumentierten Anthropic-CAs, **nicht** über `ignoreHTTPSErrors` (das schaltet die Prüfung ganz ab). Nicht für Instagram oder anderes mit Anmeldung | `… tools/browser.mjs --selbsttest` · `… tools/browser.mjs <url> [breite] [hoehe]` |
+| `tools/varianten_preis.mjs` | Marge je Produkt über **alle** Varianten: rechnet `kosten_max` gegen `preis_min`, findet Verlustvarianten, die eine Messung je Produkt übersieht, und Preisspannen ohne Kostengrund. Enthält die Preisleiter-Regel (nach WELCOME10 ≥ 38 % Marge) als `zielpreis()` und seit 27.09. die **eine Preisentscheidung je Variante als `entscheid(preis, kosten)`** → `unbekannt` / `in_ordnung` / `setzen` / `melden`. 🔑 **Jedes Blockskript ruft `entscheid()` auf statt das Kriterium neu zu schreiben**: `zielpreis(ek) > preis` ist NICHT `Marge unter Ziel`, und ein selbstgebautes Sprossen-Kriterium hätte am 27.09. sieben Hundeprodukt-Varianten mit **40,7 % Marge** grundlos angehoben. Daten in `dropship/preise-varianten-*.csv`, `dropship/preise-katzen-*.csv`, `dropship/preise-hunde-*.csv` | `… tools/varianten_preis.mjs --selbsttest` |
+| `tools/katalog_audit.mjs` · `functions/_katalog_audit.mjs` | **Prueft den Katalog eines BELIEBIGEN Shopify-Shops — ohne Zugangsdaten.** GEMESSEN 29.09.2026: `https://<shop>/products.json` liefert auf jedem Shopify-Shop HTTP 200 (luxestyle, gymshark, allbirds, waterdrop). Findet rohe Lieferantentexte (`Set 3-GreenSXL`), englische Farbwerte im deutschen Shop, **Option namens „Farbe" ohne Farben**, Streichpreise die nicht hoeher sind (CH: PBV-relevant), gleiche Ware zu verschiedenen Preisen, Produkte ohne Bild, doppelte Titel. 🔑 **Die Pruefer stehen genau EINMAL** in `functions/_katalog_audit.mjs`, weil die oeffentliche Seite `/api/shop-check` dasselbe Modul benutzt. ⚠️ Die Gegenprobe macht es erst brauchbar: **gymshark 500 Produkte → 0 Befunde**, allbirds 250 → 0, waterdrop 169 → 14 (echt), luxestyle 1000 → 91. Drei Fehlalarme wurden an FREMDEN Shops gefunden und behoben (Stueckzahl, zweite Option, zusammengesetzte Farben wie `sandrot`) | `node tools/katalog_audit.mjs --selbsttest` · `node tools/katalog_audit.mjs <domain> [--seiten n] [--json datei]` |
+| `tools/offenes_geld.mjs` | **Findet Geld, das schon im Shop liegt und nur nicht abgeholt wurde** — bezahlt aber nicht geliefert, und liegengebliebene Warenkoerbe mit erreichbarer Adresse. 🔑 **Zaehlt Kundengeld und eigenes Geld NIE zusammen**: eigene Testbestellungen werden an der E-Mail erkannt und getrennt ausgewiesen (sonst haette der Shop hier CHF 54.80 „offen", die niemand schuldet). Ein abgeschlossener Korb gilt als Kauf, ein Korb ohne Adresse als **nicht erreichbar** statt als Chance, und eine frisch bezahlte Bestellung bekommt 2 Tage Karenz, bevor sie „nicht geliefert" heisst | `node tools/offenes_geld.mjs dropship/offenes-geld-*.json` · `--selbsttest` |
+| `tools/yt_lernen.mjs` | Titel, Kanal, Datum, Aufrufe, Dauer und Beschreibung samt **Kapitelmarken** einer YouTube-Seite. Transkripte gehen nicht — siehe Skill `recherchieren` |
+| `tools/tiktok_analyze.py` | echte Leistungsdaten des eigenen TikTok-Kontos (`--insecure` im Sandkasten) |
+
+## Umgebung
+
+- **Playwright ist nicht vorinstalliert**: `npm i playwright --no-save`, Browser per
+  `executablePath` auf `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. **Nie**
+  `playwright install`.
+- **ffmpeg fehlt zunächst.** `apt-get update && apt-get install -y --no-install-recommends
+  ffmpeg` funktioniert (ohne vorheriges `update` schlägt es mit 404 auf einzelne Pakete fehl).
+  Das mitgelieferte `/opt/pw-browsers/ffmpeg-*/ffmpeg-linux` kann normale MP4 **nicht** lesen.
+- Messgeräte gehören nach `tools/`, Berichte nach `reports/` oder `dropship/`.
+
+## Wenn doch etwas Neues gebaut wird
+
+Skill `messgeraet-zuerst` gilt: Gegenprobe im selben Arbeitsgang, Selbsttest gegen eine **Kopie
+an einem anderen Pfad**, und das Werkzeug wird hier eingetragen.
