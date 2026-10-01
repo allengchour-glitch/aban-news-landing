@@ -41,6 +41,8 @@ button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px
 .leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .klein{font-size:.82rem;color:var(--muted)}
 details summary{cursor:pointer;font-weight:700;margin-top:8px}
+[hidden]{display:none!important}
+.balken i,.leg span::before{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 @media print{.leiste,.noprint{display:none!important}body{background:#fff}.box{border:0;padding:0}}
 </style>
 </head>
@@ -54,7 +56,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 <h2>1 · Du und dein Ziel</h2>
 <div class="grid">
 <div><label for="alter">Alter heute</label><input id="alter" type="number" min="18" max="70"></div>
-<div><label for="pensionsalter">Pensionierung mit</label><input id="pensionsalter" type="number" min="58" max="70"><p class="hint">Referenzalter 65. Frauen Jahrgang 1961–1963 haben ein Übergangsalter zwischen 64 und 65.</p></div>
+<div><label for="pensionsalter">Pensionierung mit</label><input id="pensionsalter" type="number" min="58" max="70"><p class="hint">Referenzalter 65. Die AHV gibt es frühestens ab 63, gekürzt um 6,8 % pro Jahr Vorbezug. Frauen Jahrgang 1961–1963 haben ein Übergangsalter zwischen 64 und 65.</p></div>
 <div><label for="bisAlter">Planen bis Alter</label><input id="bisAlter" type="number" min="70" max="105"><p class="hint">Bis wann das Ersparte reichen soll.</p></div>
 <div><label for="ziel">Gewünschtes Budget pro Monat (CHF)</label><input id="ziel" type="number" min="0" step="100"><p class="hint">Richtwert: 70–80 % des heutigen Nettolohns.</p></div>
 </div>
@@ -63,13 +65,15 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 <section class="box">
 <h2>2 · AHV</h2>
 <div class="grid">
-<div><label for="e1">Durchschnittliches Jahreseinkommen (CHF)</label><input id="e1" type="number" min="0" step="1000"><p class="hint">Über das ganze Erwerbsleben, inklusive Erziehungsgutschriften. Grob: heutiger Bruttolohn.</p></div>
+<div><label for="e1">Durchschnittliches Jahreseinkommen (CHF)</label><input id="e1" type="number" min="0" step="1000"><p class="hint">Über das ganze Erwerbsleben. Grob: heutiger Bruttolohn. Bei Verheirateten werden die Einkommen beider geteilt (Splitting), das rechnet der Check selbst.</p></div>
 <div><label for="j1">Beitragsjahre bei Pensionierung</label><input id="j1" type="number" min="0" max="44"><p class="hint">44 = voll. Fehlende Jahre (Ausland, Studium ohne Beiträge) kürzen die Rente.</p></div>
 <div><label for="zivil">Verheiratet oder eingetragene Partnerschaft</label><select id="zivil"><option value="">nein</option><option value="ja">ja</option></select></div>
+<div><label for="kinder">Jahre mit Kindern unter 16</label><input id="kinder" type="number" min="0" max="44"><p class="hint">Dafür gibt es Erziehungsgutschriften (CHF 45’360 pro Jahr, bei Ehepaaren je zur Hälfte).</p></div>
 </div>
 <div class="grid" id="p2" hidden style="margin-top:12px">
 <div><label for="e2">Partner/in: Jahreseinkommen (CHF)</label><input id="e2" type="number" min="0" step="1000"></div>
 <div><label for="j2">Partner/in: Beitragsjahre</label><input id="j2" type="number" min="0" max="44"></div>
+<p class="hint" style="grid-column:1/-1">Als Haushalt rechnen: Ziel, Pensionskasse, 3a und Vermögen für beide zusammen eintragen. Gerechnet wird, als ob ihr gleichzeitig in Pension geht; die Ehepaar-Begrenzung gilt erst, wenn beide eine Rente beziehen.</p>
 </div>
 <p class="hint" style="margin-top:8px">Genaue Zahlen: Auszug aus dem individuellen Konto und Rentenvorausberechnung bei deiner Ausgleichskasse, beides kostenlos.</p>
 </section>
@@ -77,8 +81,8 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 <section class="box">
 <h2>3 · Pensionskasse</h2>
 <div class="grid">
-<div><label for="pk65">Altersguthaben mit 65 laut Vorsorgeausweis (CHF)</label><input id="pk65" type="number" min="0" step="1000"><p class="hint">Steht als „voraussichtliches Altersguthaben“ auf dem Ausweis. Leer = aus den Feldern rechts hochrechnen.</p></div>
-<div><label for="pksatz">Umwandlungssatz (%)</label><input id="pksatz" type="number" min="0" max="10" step="0.1"><p class="hint">Gesetzliches Minimum für den obligatorischen Teil: 6,8 % (Art. 14 BVG). Viele Kassen rechnen tiefer, siehe Ausweis.</p></div>
+<div><label for="pk65">Altersguthaben mit 65 laut Vorsorgeausweis (CHF)</label><input id="pk65" type="number" min="0" step="1000"><p class="hint">Steht als „voraussichtliches Altersguthaben“ auf dem Ausweis. Bei früherer Pensionierung ist es kleiner: Wert für dein Alter aus dem Ausweis nehmen. Leer = unten hochrechnen.</p></div>
+<div><label for="pksatz">Umwandlungssatz laut Ausweis (%)</label><input id="pksatz" type="number" min="0" max="10" step="0.1" placeholder="z. B. 5,6"><p class="hint">Steht auf dem Vorsorgeausweis. Die 6,8 % aus dem Gesetz gelten nur für den obligatorischen Teil (Art. 14 BVG); auf das ganze Guthaben rechnen die meisten Kassen tiefer, bei früherer Pensionierung noch tiefer.</p></div>
 </div>
 <details><summary>Ohne Ausweis hochrechnen</summary><div class="grid" style="margin-top:8px">
 <div><label for="pkheute">Altersguthaben heute (CHF)</label><input id="pkheute" type="number" min="0" step="1000"></div>
@@ -94,8 +98,8 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 <div><label for="a3jahr">3a-Einzahlung pro Jahr (CHF)</label><input id="a3jahr" type="number" min="0" step="100"></div>
 <div><label for="vheute">Freies Vermögen heute (CHF)</label><input id="vheute" type="number" min="0" step="1000"></div>
 <div><label for="vjahr">Sparen pro Jahr (CHF)</label><input id="vjahr" type="number" min="0" step="500"></div>
-<div><label for="rendite">Rendite bis zur Pensionierung (% p. a.)</label><input id="rendite" type="number" min="-2" max="8" step="0.5"><p class="hint">Konto eher 0–1 %, Wertschriften langfristig mehr, mit Schwankungen.</p></div>
-<div><label for="rendite2">Rendite im Ruhestand (% p. a.)</label><input id="rendite2" type="number" min="-2" max="6" step="0.5"></div>
+<div><label for="rendite">Rendite nach Teuerung bis zur Pensionierung (% p. a.)</label><input id="rendite" type="number" min="-2" max="8" step="0.5"><p class="hint">Real, also nach Abzug der Teuerung, weil Ziel und AHV in heutigen Franken stehen. Konto eher 0 %, Wertschriften langfristig mehr, mit Schwankungen.</p></div>
+<div><label for="rendite2">Rendite nach Teuerung im Ruhestand (% p. a.)</label><input id="rendite2" type="number" min="-2" max="6" step="0.5"></div>
 </div>
 </section>
 
@@ -109,7 +113,7 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 <h2>Fahrplan bis zur Pensionierung</h2>
 <ol class="fahrplan" id="fahrplan"></ol>
 </section>
-<p class="klein">Planungshilfe, keine Finanz- oder Steuerberatung. Die AHV-Rente ist eine Schätzung nach der Rentenformel (Art. 34 AHVG, Mindestrente CHF 1’260, Stand 1.1.2026) ohne die Rundung der amtlichen Rentenskala; Teilrenten vereinfacht nach Beitragsjahren. Renditen sind Annahmen. Die AHV-Renten werden in der Regel alle zwei Jahre angepasst.</p>
+<p class="klein">Planungshilfe, keine Finanz- oder Steuerberatung. Die AHV-Rente ist eine Schätzung nach der Rentenformel (Art. 34 AHVG, Mindestrente CHF 1’260, Stand 1.1.2026) ohne die Rundung der amtlichen Rentenskala; Teilrenten vereinfacht nach Beitragsjahren. Splitting und Erziehungsgutschriften vereinfacht über das ganze Erwerbsleben. Renditen sind reale Annahmen (nach Teuerung). Nicht eingerechnet: Rentenzuschlag für Frauen der Übergangsgeneration (Art. 34bis AHVG), Steuern. Die AHV-Renten werden in der Regel alle zwei Jahre angepasst.</p>
 </div>
 
 <script>/*ENGINE*/</script>
@@ -119,8 +123,8 @@ details summary{cursor:pointer;font-weight:700;margin-top:8px}
 var P=window.PensionEngine,$=function(id){return document.getElementById(id)};
 var chf=function(x){return "CHF "+Math.round(x).toLocaleString("de-CH")};
 var KEY="aban-pension-v1";
-var IDS=["alter","pensionsalter","bisAlter","ziel","e1","j1","zivil","e2","j2","pk65","pksatz","pkheute","pkjahr","pkzins","a3heute","a3jahr","vheute","vjahr","rendite","rendite2"];
-var VOR={alter:50,pensionsalter:65,bisAlter:90,ziel:"",e1:"",j1:44,zivil:"",e2:"",j2:44,pk65:"",pksatz:6.8,pkheute:"",pkjahr:"",pkzins:1.25,a3heute:"",a3jahr:"",vheute:"",vjahr:"",rendite:2,rendite2:1};
+var IDS=["alter","pensionsalter","bisAlter","ziel","e1","j1","zivil","kinder","e2","j2","pk65","pksatz","pkheute","pkjahr","pkzins","a3heute","a3jahr","vheute","vjahr","rendite","rendite2"];
+var VOR={alter:50,pensionsalter:65,bisAlter:90,ziel:"",e1:"",j1:44,zivil:"",kinder:"",e2:"",j2:44,pk65:"",pksatz:"",pkheute:"",pkjahr:"",pkzins:1.25,a3heute:"",a3jahr:"",vheute:"",vjahr:"",rendite:2,rendite2:1};
 var st;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
 if(!st||typeof st!=="object")st=Object.assign({},VOR);
 IDS.forEach(function(k){$(k).value=st[k]==null?VOR[k]:st[k]});
@@ -128,14 +132,15 @@ function render(){
   $("p2").hidden=st.zivil!=="ja";
   var v=function(k){return st[k]===""||st[k]==null?0:+st[k]};
   var pers=[{einkommen:v("e1"),jahre:v("j1")}];if(st.zivil==="ja")pers.push({einkommen:v("e2"),jahre:v("j2")});
-  var r=P.check({alter:v("alter"),pensionsalter:v("pensionsalter")||65,bisAlter:v("bisAlter")||90,ziel:v("ziel"),personen:pers,
-    pk:{guthaben65:v("pk65"),satz:v("pksatz"),heute:v("pkheute"),proJahr:v("pkjahr"),zins:st.pkzins===""?1.25:v("pkzins")},
+  var r=P.check({kinderJahre:v("kinder"),alter:v("alter"),pensionsalter:v("pensionsalter")||65,bisAlter:v("bisAlter")||90,ziel:v("ziel"),personen:pers,
+    pk:{guthaben65:v("pk65"),satz:v("pksatz")||6.8,heute:v("pkheute"),proJahr:v("pkjahr"),zins:st.pkzins===""?1.25:v("pkzins")},
     saeule3a:{heute:v("a3heute"),proJahr:v("a3jahr")},vermoegen:{heute:v("vheute"),proJahr:v("vjahr")},rendite:v("rendite"),renditeRuhestand:st.rendite2===""?v("rendite"):v("rendite2")});
   if(!v("e1")){$("out").innerHTML='<p class="urteil">Trag in Schritt 2 dein durchschnittliches Jahreseinkommen ein.</p>';fahrplan(r);return}
   var h='<div class="kacheln"><div class="kachel"><b>Pro Monat im Ruhestand</b><div class="zahl">'+chf(r.total)+'</div>alle Quellen zusammen</div>';
   if(r.ziel)h+='<div class="kachel"><b>'+(r.luecke?"Lücke pro Monat":"Ziel erreicht")+'</b><div class="zahl '+(r.luecke?"rot":"gut")+'">'+(r.luecke?chf(r.luecke):Math.round(r.deckung*100)+" %")+'</div>'+(r.luecke?"zu deinem Budget von "+chf(r.ziel):"deines Budgets gedeckt")+'</div>';
-  if(r.luecke)h+='<div class="kachel"><b>Dafür sparen</b><div class="zahl">'+chf(r.sparrate)+'</div>pro Monat bis zur Pensionierung ('+r.jahreBis+' Jahre)</div>';
-  h+='<div class="kachel"><b>AHV pro Jahr</b><div class="zahl">'+chf(r.ahvJahr)+'</div>13 Monatsrenten, die 13. im Dezember</div></div>';
+  if(r.kapitalNoetig&&r.jahreBis>0)h+='<div class="kachel"><b>Dafür sparen</b><div class="zahl">'+chf(r.sparrate)+'</div>pro Monat bis zur Pensionierung ('+r.jahreBis+' Jahre)</div>';
+  else if(r.kapitalNoetig)h+='<div class="kachel"><b>Fehlendes Kapital</b><div class="zahl rot">'+chf(r.kapitalNoetig)+'</div>heute, um die Lücke zu decken</div>';
+  h+='<div class="kachel"><b>AHV pro Jahr</b><div class="zahl">'+chf(r.ahvJahr)+'</div>13 Monatsrenten, die 13. im Dezember (im ersten Rentenjahr anteilig)</div></div>';
   var teile=[["AHV",r.ahv,"var(--c1)"],["13. AHV-Rente (Monatsschnitt)",r.ahv13,"var(--c2)"],["Pensionskasse",r.pkRente,"var(--c3)"],["3a und Erspartes",r.verzehr,"var(--c4)"]];
   var skala=Math.max(r.total,r.ziel)||1;
   h+='<div class="balken" aria-hidden="true">'+teile.map(function(t){return '<i style="width:'+(t[1]/skala*100)+'%;background:'+t[2]+'"></i>'}).join("")+(r.ziel?'<span class="ziel" style="left:calc('+(r.ziel/skala*100)+'% - 1px)" title="Ziel"></span>':'')+'</div>';
@@ -143,8 +148,12 @@ function render(){
   h+='<table>';
   teile.forEach(function(t){h+='<tr><td>'+t[0]+'</td><td class="r">'+chf(t[1])+' / Mt.</td></tr>'});
   h+='<tr><td><b>Total</b></td><td class="r"><b>'+chf(r.total)+' / Mt.</b></td></tr></table>';
-  if(r.ehepaar)h+='<p class="urteil">Als Ehepaar ist die Summe der AHV-Renten auf 150 % der Höchstrente begrenzt ('+chf(r.ehepaar.max)+' pro Monat, Art. 35 AHVG). Eure Renten wurden von '+chf(r.ehepaar.vorher)+' anteilig gekürzt.</p>';
-  if(v("j1")<44)h+='<p class="urteil warn">Mit '+v("j1")+' von 44 Beitragsjahren erhältst du eine Teilrente. Beitragslücken der letzten fünf Jahre kannst du bei der Ausgleichskasse nachzahlen. Frag nach, ob das bei dir möglich ist.</p>';
+  if(!v("pksatz")&&(v("pk65")||v("pkheute")))h+='<p class="urteil warn">Ohne Umwandlungssatz rechnet der Check mit 6,8 %, dem gesetzlichen Minimum für den obligatorischen Teil. Für das ganze Guthaben ist das eine Höchstannahme: Satz vom Vorsorgeausweis eintragen.</p>';
+  if(r.kuerzung)h+='<p class="urteil warn">Pensionierung mit '+r.pensionsalter+': Die AHV beginnt '+(r.jahreOhneAhv?'frühestens mit 63, ':'')+'gekürzt um '+(r.kuerzung*100).toFixed(1).replace(".",",")+' % (Art. 40 AHVG, Art. 56bis AHVV), lebenslang.'+(r.jahreOhneAhv?' Die '+r.jahreOhneAhv+' Jahre bis 63 überbrückst du aus eigenem Kapital: rund '+chf(r.ueberbrueckung)+', im Kapitalbedarf eingerechnet.':'')+'</p>';
+  if(r.ehepaar)h+='<p class="urteil">Als Ehepaar ist die Summe der AHV-Renten begrenzt: auf 150 % der Höchstrente, bei fehlenden Beitragsjahren anteilig weniger (Art. 35 AHVG, Art. 53bis AHVV). Bei euch '+chf(r.ehepaar.max)+' pro Monat statt '+chf(r.ehepaar.vorher)+(r.kuerzung?', vor der Kürzung für den Vorbezug':'')+'.</p>';
+  [["j1","Mit"],["j2","Partner/in: mit"]].forEach(function(x){if(x[0]==="j2"&&st.zivil!=="ja")return;var j=v(x[0]);
+    if(!j)h+='<p class="urteil warn">'+(x[0]==="j2"?"Partner/in: ":"")+'Ohne Beitragsjahre gibt es keine AHV-Rente. Beitragsjahre eintragen.</p>';
+    else if(j<44)h+='<p class="urteil warn">'+x[1]+' '+j+' von 44 Beitragsjahren gibt es eine Teilrente. AHV-Beiträge verjähren nach fünf Jahren (Art. 16 AHVG): Fehlende Jahre der letzten fünf Jahre lassen sich bei der Ausgleichskasse noch nachzahlen.</p>';});
   if(r.luecke){h+='<p class="urteil warn">Um die Lücke von '+chf(r.luecke)+' pro Monat bis Alter '+(v("bisAlter")||90)+' zu decken, brauchst du bei der Pensionierung zusätzlich rund <b>'+chf(r.kapitalNoetig)+'</b>. Hebel: 3a voll einzahlen, Einkauf in die Pensionskasse prüfen (steuerlich abzugsfähig, Sperrfrist drei Jahre vor einem Kapitalbezug), später pensionieren oder das Budget anpassen.</p>'}
   else if(r.ziel)h+='<p class="urteil">Mit diesen Annahmen deckt dein Einkommen im Ruhestand dein Budget. Prüf die Annahmen alle paar Jahre mit dem neusten Vorsorgeausweis.</p>';
   h+='<p class="klein" style="margin-top:8px">Pensionskasse: '+chf(r.pkGuthaben)+' Altersguthaben × '+String(r.pkSatz).replace(".",",")+' %. Säule 3a bei Pensionierung: '+chf(r.kapital3a)+', freies Vermögen: '+chf(r.kapitalVermoegen)+', aufgebraucht über '+r.ruhejahre+' Jahre.</p>';

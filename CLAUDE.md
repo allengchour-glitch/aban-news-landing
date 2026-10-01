@@ -64,6 +64,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (🧠 Gehirn-Idee → „Pensions-Check Schweiz" CHF 14 + Gratis-Seite `rentenluecke-rechner.html`):** Idee aus dem
+Ideen-Gehirn (`tools/learn_tool_ideas.py` → `automation/tool-ideas-learned.md`, Backlog `rentenluecke-rechner`). `tools/pension/` (Engine +
+29 Tests): AHV-Rentenformel Art. 34 AHVG (Werte ab 1.1.2026, Min 1260), Teilrente /44, 13. AHV-Rente, Splitting + Erziehungsgutschriften,
+Ehepaar-Plafond Art. 35 AHVG/53bis AHVV, Vorbezug Art. 40 AHVG/56bis AHVV (AHV frühestens 63, Rest = Überbrückung), PK, 3a, Lücke + Sparrate.
+Prüfer-Agent: 3 Blocker (Plafond bei Teilrenten, Vorbezug <65, Sparrate nach Pension) behoben. **Lehre:** erst plafonieren, DANN kürzen.
+Etsy `content/etsy/pensions-check/` CHF 14 (Bilder `tools/etsy/pension_etsy.mjs`).
+
 **📌 2026-10-01 (📦 Umzugs-Paket Schweiz CHF 12 + Gratis-Seite `wohnung-kuendigen-schweiz.html`):** Nachfrage per Google-Vorschlag
 belegt („kündigung wohnung vorlage schweiz", „umzug checkliste schweiz pdf", „wohnungsabnahme checkliste schweiz"). `tools/umzug/`
 (Engine + 18 Tests, nutzt `naechsterTermin` der Mietzins-Engine), App mit Kündigungstermin, Brief (Mitmieter/Art. 266m, Nachmieter

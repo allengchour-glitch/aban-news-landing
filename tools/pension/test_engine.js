@@ -25,4 +25,26 @@ t(nah(c.total, 2520 + 210 + 2500 + 155000 / 300) && nah(c.luecke, 6000 - c.total
 t(nah(c.kapitalNoetig, c.luecke * 300) && nah(c.sparrate, c.kapitalNoetig / 180), 'Kapital für die Lücke und Sparrate (ohne Rendite)');
 const c0 = P.check({ alter: 60, pensionsalter: 65, ziel: 0, personen: [{ einkommen: 50000, jahre: 44 }], pk: { heute: 100000, proJahr: 10000, zins: 0 } });
 t(nah(c0.pkGuthaben, 150000) && nah(c0.pkRente, 150000 * 0.068 / 12) && c0.luecke === 0, 'PK-Hochrechnung ohne Ausweis, Mindestumwandlungssatz 6,8 % als Vorgabe');
+// Prüfer-Funde
+const t30 = P.ehepaar(P.ahvRente(90720, 30), P.ahvRente(90720, 30), 30, 30);
+t(nah(t30.r1 + t30.r2, 3780 * 30 / 44), 'Blocker 1: beide 30 Jahre → Plafond 3780 × 30/44 = 2577.27 (Art. 53bis AHVV)');
+const t3044 = P.ehepaar(P.ahvRente(90720, 44), P.ahvRente(90720, 30), 44, 30);
+t(nah(t3044.r1 + t3044.r2, 3780 * (30 / 44 + 2) / 3), 'Plafond 44/30 Jahre = 3780 × (30/44 + 2)/3');
+t(nah(P.kuerzung(12), 0.068, 1e-9) && nah(P.kuerzung(24), 0.136, 1e-9) && nah(P.kuerzung(30), 0.136, 1e-9) && nah(P.kuerzung(5), 0.028, 1e-9), 'Blocker 2: Vorbezug 6,8 %/Jahr, max. 13,6 %, Monatswerte (Art. 56bis AHVV)');
+const v64 = P.check({ alter: 50, pensionsalter: 64, personen: [{ einkommen: 90720, jahre: 44 }], pk: { guthaben65: 0 } });
+t(nah(v64.ahv, 2520 * 0.932), 'Pensionierung mit 64: AHV um 6,8 % gekürzt');
+const v60 = P.check({ alter: 50, pensionsalter: 60, ziel: 0, personen: [{ einkommen: 90720, jahre: 44 }], pk: { guthaben65: 0 } });
+t(v60.ahvAb === 63 && nah(v60.ahv, 2520 * 0.864) && v60.jahreOhneAhv === 3 && nah(v60.ueberbrueckung, 3 * 12 * v60.ahv * 13 / 12), 'mit 60: AHV erst ab 63 (−13,6 %), 3 Jahre Überbrückung als Kapitalbedarf');
+const alt = P.check({ alter: 66, pensionsalter: 65, ziel: 9000, personen: [{ einkommen: 90720, jahre: 44 }], pk: {} });
+t(alt.jahreBis === 0 && alt.sparrate === 0 && alt.kapitalNoetig > 0, 'Blocker 3: schon pensioniert → keine absurde Sparrate');
+const sp = P.check({ alter: 50, pensionsalter: 65, personen: [{ einkommen: 60000, jahre: 44 }, { einkommen: 0, jahre: 44 }], pk: {} });
+t(nah(sp.massgebend[0], 30000) && nah(sp.ahv, 2 * P.vollrente(30000)), 'Splitting: 60 000 / 0 → je 30 000 (Art. 29quinquies)');
+const kid = P.check({ alter: 50, pensionsalter: 65, kinderJahre: 16, personen: [{ einkommen: 60000, jahre: 44 }, { einkommen: 0, jahre: 44 }], pk: {} });
+t(nah(kid.massgebend[0], 30000 + 16 * 45360 / 2 / 44), 'Erziehungsgutschrift 45 360/Jahr, hälftig (Art. 29sexies)');
+const ba = P.check({ alter: 50, pensionsalter: 65, bisAlter: 60, personen: [{ einkommen: 50000, jahre: 44 }], pk: {} });
+t(ba.bisAlter === 66 && ba.ruhejahre === 1, 'bisAlter < Pensionsalter wird auf Pensionsalter + 1 angehoben');
+const neg = P.check({ alter: 50, pensionsalter: 65, rendite: -200, personen: [{ einkommen: 50000, jahre: 44 }], saeule3a: { heute: 10000, proJahr: 1000 }, pk: {} });
+t(isFinite(neg.total) && isFinite(neg.kapital3a), 'Rendite −200 % wird begrenzt, kein NaN');
+const vp = P.check({ alter: 50, pensionsalter: 60, personen: [{ einkommen: 120000, jahre: 30 }, { einkommen: 120000, jahre: 30 }], pk: {} });
+t(nah(vp.ahv, 3780 * 30 / 44 * 0.864), 'Ehepaar + Vorbezug: erst Plafond (2577), dann Kürzung 13,6 % = 2227');
 process.exit(ok ? 0 : 1);
