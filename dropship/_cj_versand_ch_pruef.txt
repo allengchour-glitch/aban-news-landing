@@ -2298,3 +2298,32 @@ kuchen-organizer-fur-messer-und-geschirr-719936	1792396141347217408	16	20.46	ok	
 led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend	2059172387683094530	7	14.08	ok	landeseite
 auto-schnellladegerat-pd-ausziehbares-kabel-fur-apple-android	2605270739311617600	3	9.46	ok	landeseite
 abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe	2605310132541637500	16	8.79	ok	landeseite
+aroma-diffuser-mist-ultraschall-mit-led	2604161147251633800	3	5.68	ok	landeseite
+blutenring-fleur-rose-rosa-zirkonia-verstellbar	2605310643041602200	16	4.37	ok	landeseite
+sonnenbrille-carre-retro-small-square	2605291008081636300	5	5.19	ok	landeseite
+loafer-damen-rundkappe-flach-vielseitig-basic-2026	2605300637171638900	16	9.88	ok	landeseite
+tutu-kleid-fur-baby-girls-langarm-mit-spitze-7d6d30	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+reise-hangematte-aus-fallschirm-nylon-86eb20	-	-	-	unklar keine CJ-SKU	landeseite
+deformierbare-led-garagenleuchte-60w-7122ff	-	-	-	unklar keine CJ-SKU	landeseite
+babysitz-toilettenstuhl-3e78df	-	-	-	unklar keine CJ-SKU	landeseite
+ferngesteuertes-4wd-high-speed-kletterauto-a2cb0e	-	-	-	unklar keine CJ-SKU	landeseite
+baby-nest-reisebettchen-aus-baumwolle-20552f	-	-	-	unklar keine CJ-SKU	landeseite
+hundebett-warmer-schlafsack-7087d5	-	-	-	unklar keine CJ-SKU	landeseite
+riesiger-teddybar-pluschtier-mit-leder-optik-3e7eb6	-	-	-	unklar keine CJ-SKU	landeseite
+glattburste-mit-dampf-spruhfunktion-e765b5	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloses-ladegerat-kompakt-schnell-139560	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-player-mit-lampe-und-wireless-charge-69373f	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-quarzuhr-4b0f6a	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-3306-quarzuhr-38360c	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-gold-armbanduhr-mit-stahlband-d62c72	-	-	-	unklar keine CJ-SKU	landeseite
+damen-quarzuhr-mit-kalender-und-24-stunden-anz-5f29a0	-	-	-	unklar keine CJ-SKU	landeseite
+nibosi-quarzuhr-mit-edelstahlband-e89d0a	-	-	-	unklar keine CJ-SKU	landeseite
+armbanduhr-manschettenknopfe-kugelschreiber-ge-393b44	-	-	-	unklar keine CJ-SKU	landeseite
+klassische-quarzuhr-mit-leuchtanzeige-cb137b	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-quarzuhr-mit-ultradunnem-gehause-de6886	-	-	-	unklar keine CJ-SKU	landeseite
+smart-armband-mit-temperatur-und-blutsauerstof-a18f60	-	-	-	unklar keine CJ-SKU	landeseite
+led-dual-ladestation-fur-ps4-controller-e4ef04	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-tastatur-fur-ps4-controller-0fc67a	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-gamepad-fur-diverse-gerate-a8b390	-	-	-	unklar keine CJ-SKU	landeseite

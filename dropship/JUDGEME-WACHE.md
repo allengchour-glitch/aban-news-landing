@@ -1,8 +1,8 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-09-30 20:27 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 195 s
+Stand: 2026-10-01 20:30 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 182 s
 
-**JUDGEME: 0 verdaechtig · 12 Namen unmaskiert · 1 ausgeblendet · 13851 von 13851 gelesen**
+**JUDGEME: 0 verdaechtig · 12 Namen unmaskiert · 1 ausgeblendet · 13870 von 13870 gelesen**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
@@ -37,9 +37,9 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 | Feld | Wert | updatedAt |
 |---|---|---|
-| all_reviews_count | 13844 | 2026-09-30T16:23:44Z |
-| all_reviews_rating | 4.28 | 2026-09-28T18:22:23Z |
-| reviews_grid.metafield_updated_at | 2026-09-30T16:26:49Z | 2026-09-30T16:26:51Z |
+| all_reviews_count | 13678 | 2026-10-01T17:09:44Z |
+| all_reviews_rating | 4.31 | 2026-10-01T17:09:45Z |
+| reviews_grid.metafield_updated_at | 2026-10-01T17:40:05Z | 2026-10-01T17:40:07Z |
 | shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
 | shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
 

@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """titel_kauderwelsch_wache.py — Neuimport-Titel mit Wörtern, die es im Deutschen nicht gibt (01.10.2026).
 
+NACHTRAG 01.10. 20:40 (Verbesserungsrunde): 6 von 254 Neuimporten der Lampen-Suche halb übersetzt («Halloween Witch
+Hat Nachtlicht», «Lily of the Valley Duftwärmer») — kein Nicht-Wort, also vom ersten Prompt durchgelassen. Prompt deckt jetzt auch
+stehengebliebenes Englisch mit gängigem deutschem Wort; Vergleich wortweise, Ersatz bindestrich-unabhängig.
+
 ANLASS (12-Tage-Plan, Tag 1, Grind wieder an): Der erste Neuimport nach der Pause hiess «Inflierbares Halloween Kostüm für
 zwei Personen» — eine Eindeutschung von «inflatable», richtig wäre «Aufblasbares». `titel_sprache.mjs` fängt nur ABGESCHRIEBENES
 Englisch (alle Wörter stehen im CJ-Namen); ein erfundenes deutsches Wort fällt dort durch, weil es in keinem englischen Text
@@ -31,9 +35,12 @@ STUNDEN = float(os.environ.get("STUNDEN", "48"))
 LEDGER = os.path.join(REPO, "dropship", "_titel_kauderwelsch.tsv")
 
 PROMPT = """Du prüfst deutsche Produkttitel eines Schweizer Onlineshops auf Wörter, die es im Deutschen NICHT gibt
-(falsche Eindeutschungen englischer Wörter wie «Inflierbar» statt «Aufblasbar», Tippfehler, erfundene Wörter).
+(falsche Eindeutschungen englischer Wörter wie «Inflierbar» statt «Aufblasbar», Tippfehler, erfundene Wörter)
+UND auf stehengebliebene englische Wörter, für die es ein gängiges deutsches Wort gibt und die eine deutschsprachige
+Kundin so nicht suchen würde (z. B. «Witch Hat» → «Hexenhut», «Lily of the Valley» → «Maiglöckchen», «Resin» → «Kunstharz»).
 NICHT melden: Marken, Modellnamen, Produktnamen in Anführungszeichen, Masse, übliche Anglizismen (Oversized, Slim Fit,
-Wireless, Hoodie, LED, USB, Set), Schweizer Schreibweise (ss statt ß), Stil- oder Grammatikfragen.
+Wireless, Hoodie, LED, USB, Set, Indoor, Outdoor, Halloween, Yacht, Camping, Make-up), Schweizer Schreibweise (ss statt ß),
+Stil- oder Grammatikfragen.
 Antworte NUR als JSON: {"titel": [{"nr": <Nummer>, "falsch": ["<Wort genau wie im Titel>"], "korrektur": "<ganzer korrigierter Titel>"}]}
 Nur Titel mit mindestens einem Nicht-Wort aufführen. Leere Liste, wenn alles korrekt ist.
 
@@ -110,12 +117,15 @@ def pruefen(titel):
             if not (0 <= i < len(block)) or not e.get("falsch"):
                 continue
             t = block[i]
-            gf = {norm(w) for w in e["falsch"] if norm(w) and norm(w) in norm(t) and not re.search(r"\d", w)}
+            # 01.10. (Denglisch): «falsch» kann eine Wortfolge sein («Witch Hat») — verglichen wird Wort für Wort,
+            # sonst wäre «Witch Hat» ≠ [«Witch», «Hat»] und zwei einige Modelle gälten als uneinig.
+            gf = {norm(x) for w in e["falsch"] if not re.search(r"\d", w) for x in w.split()
+                  if norm(x) and norm(x) in norm(t)}
             if not gf:
                 continue
             o = gpt(PROMPT + "1. " + t)
             oe = (o.get("titel") or [{}])[0] if o.get("titel") else {}
-            of = {norm(w) for w in (oe.get("falsch") or [])}
+            of = {norm(x) for w in (oe.get("falsch") or []) for x in str(w).split() if norm(x)}
             gemeinsam = gf & of
             korr = (e.get("korrektur") or "").strip()
             okorr = (oe.get("korrektur") or "").strip()
@@ -124,7 +134,10 @@ def pruefen(titel):
                 # Ersatzwörter: was in Geminis Korrektur neu ist, muss auch in ChatGPTs Korrektur stehen
                 neu_g = {norm(w) for w in korr.split()} - {norm(w) for w in t.split()}
                 neu_o = {norm(w) for w in okorr.split()} - {norm(w) for w in t.split()}
-                einig = bool(neu_g) and neu_g <= neu_o and 0.7 <= len(korr) / max(1, len(t)) <= 1.3
+                # Bindestrich/Zusammenschreibung zählt nicht als Uneinigkeit («Hexenhut-Nachtlicht» = «Hexenhut Nachtlicht»):
+                # jedes neue Wort Geminis muss in ChatGPTs Korrektur vorkommen, die ohne Leerzeichen gelesen wird.
+                o_flach = norm(okorr)
+                einig = bool(neu_g) and all(w in o_flach for w in neu_g) and 0.6 <= len(korr) / max(1, len(t)) <= 1.4
             ergebnis.append((start + i, gemeinsam or gf, korr if einig else "", okorr, einig))
     return ergebnis
 
@@ -136,7 +149,12 @@ def kanarienvogel():
               ("Centechia 1-zu-3 RJ45 Ethernet Splitter", False),
               ("Damen Oversized Hoodie mit Kängurutasche", False),
               ("Wasserdichtige Regenjacke für Herren", None),
-              ("Adjustierbarer Ledergürtel für Damen", True)]
+              ("Adjustierbarer Ledergürtel für Damen", True),
+              # Denglisch (01.10., Neuimporte der Lampen-Suche): halb übersetzt → korrigieren; echte Anglizismen bleiben
+              ("Halloween Witch Hat Nachtlicht", True),
+              ("Lily of the Valley Duftwärmer ohne Flamme", True),
+              ("Outdoor LED-Lichterkette für den Garten", False),
+              ("Marine Yacht Indoor Leselicht", None)]
     r = pruefen([t for t, _ in faelle])
     gemeldet = {i: einig for i, _, _, _, einig in r}
     ok = 0
