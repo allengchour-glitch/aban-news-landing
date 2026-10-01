@@ -203,5 +203,13 @@
     "price_cents": 2400,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "umzugs-paket",
+    "title": "Umzugs-Paket Schweiz: Kündigung, Umzugsplan und Wohnungsabgabe",
+    "desc": "Nächstmöglicher Kündigungstermin mit letztem Zugangstag, fertiger Kündigungsbrief (Familienwohnung, Nachmieter), Umzugsplan mit Daten, Adressänderungs-Liste und Abgabeprotokoll zum Drucken. Offline-App mit Anleitung. Keine Rechtsberatung.",
+    "price_cents": 1200,
+    "currency": "chf",
+    "standalone": true
   }
 ]

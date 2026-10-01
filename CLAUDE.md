@@ -64,12 +64,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (📦 Umzugs-Paket Schweiz CHF 12 + Gratis-Seite `wohnung-kuendigen-schweiz.html`):** Nachfrage per Google-Vorschlag
+belegt („kündigung wohnung vorlage schweiz", „umzug checkliste schweiz pdf", „wohnungsabnahme checkliste schweiz"). `tools/umzug/`
+(Engine + 18 Tests, nutzt `naechsterTermin` der Mietzins-Engine), App mit Kündigungstermin, Brief (Mitmieter/Art. 266m, Nachmieter
+Art. 264), Plan mit Daten, Adressen, Abgabeprotokoll. **Gesetzestext vorher bei fedlex geholt** (Art. 264, 266a–o, 267, 267a, 257e OR;
+HTML `fedlex.data.admin.ch/eli/cc/27/317_321_377/…`, Anker `id="art_266_c"`). Prüfer-Agent fand 2 Blocker: Einschreiben-Falle
+(Abholungseinladung, Wochenende) + Zugang in der Vergangenheit → Warnungen. **Zeitzonen-Bug auch in der Mietzins-Engine behoben**
+(`new Date("JJJJ-MM-TT")` = UTC → `lokal()`); Tests laufen jetzt auch mit `TZ=America/New_York`. Etsy `content/etsy/umzugs-paket/` CHF 12.
+**Leck-Nachträge:** Rand-Cache lieferte `/downloads/packs/*` weiter → Purge-Liste (#2568) + `_redirects` `/downloads/packs/* → /shop.html` (#2570).
+
 **📌 2026-10-01 (🧭 Meisterwerk-Produkt „Finanz-Kompass Schweiz" CHF 24 (seit 01.10. abends, vorher 29), einzeln CHF 52):**
 - **Neu:** `tools/kompass/engine.js` verbindet Budget-, Mietzins- und Schulden-Engine zu EINEM Plan mit Daten (Miete prüfen →
   Rückstellungen → Start-Reserve 1 Monat → Schulden Lawine/Schneeball → Notreserve 3 Monate → frei). 26 Tests (`test_engine.js`).
   App `content/packs/de/finanz-kompass/finanz-kompass.html` (Build `tools/kompass/build.py`, auch Engine-Block der Verkaufsseite).
 - **Paket:** `INHALT.json` im Kurations-Ordner → `build_product_pack.build_single` kopiert die 4 Einzelprodukte als Unterordner
-  + Excel/PDF aus `content/etsy/` (24 Dateien, 444 KB). Katalog `finanz-kompass` (standalone, 2900 — nach der Preissenkung auf main von 49 auf 29, = Etsy-Preis). Verkaufsseite
+  + Excel/PDF aus `content/etsy/` (24 Dateien, 444 KB). Katalog `finanz-kompass` (standalone, 2400 — 49 → 29 → 24 am 01.10., = Etsy-Preis). Verkaufsseite
   `finanz-kompass-schweiz.html` (Vorschau mit echter Engine, Kauf-Link aus `shop-products.json`). Hinweis „CHF 29 statt 52" auf
   den 4 Einzelseiten. Etsy: `content/etsy/finanz-kompass/` CHF 29, Bilder `tools/etsy/kompass_etsy.mjs`.
 - **Prüfer-Agent fand 2 Blocker (behoben + getestet):** Kreditraten wurden doppelt verteilt (gehören NICHT ins Budget, Engine

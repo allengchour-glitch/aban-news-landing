@@ -54,5 +54,12 @@
     "angelegt": "2026-10-01T19:11:27.056Z",
     "state": "active",
     "veroeffentlicht": "2026-10-01T19:18:11.277Z"
+  },
+  "umzugs-paket": {
+    "listing_id": 4586628432,
+    "preis": 12,
+    "waehrung": "CHF",
+    "angelegt": "2026-10-01T19:25:05.118Z",
+    "state": "draft"
   }
 }
