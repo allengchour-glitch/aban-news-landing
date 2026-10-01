@@ -1,5 +1,47 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+
+## 🆕 01.10. 19:15 UTC — Nachkontrolle Merchant + zwei alte Punkte · diesen Block 1:1 in Cowork einfügen
+> Betreiber hat die Merchant-Versandeinstellungen umgestellt. Dieser Auftrag PRÜFT das (nichts neu erfinden) und klärt die
+> Deutschland-Quelle nur LESEND. Dazu die zwei Punkte, die seit Wochen offen sind (BigBuy EUR 1'000, TikTok-Bio-Link).
+
+```
+Du arbeitest in meinem eingeloggten Browser. Vier Aufgaben, der Reihe nach. Nichts bezahlen, nichts löschen,
+keine Kampagne starten, nie «Complete remaining actions» für Deutschland. Passwort/2FA gebe ich selbst ein.
+Jede Aufgabe mit Screenshot quittieren.
+
+1) GOOGLE MERCHANT CENTER (merchants.google.com, Konto 5797470070) — NUR PRÜFEN
+   Einstellungen → Versand und Rückgaben. Für JEDE Versandrichtlinie notieren: Land, Versandkosten,
+   Gratis-ab-Betrag, Bearbeitungs- + Lieferzeit. Soll überall: nur Schweiz · CHF 7.00 · gratis ab CHF 50.00 ·
+   Lieferzeit gesamt 10–20 Werktage. Weicht eine Richtlinie ab (z. B. noch 45, 60 oder 65): NICHT ändern,
+   nur Screenshot + Name der Richtlinie melden. Danach Übersicht → Store-Qualität Schweiz: Screenshot.
+
+2) DEUTSCHLAND — NUR LESEN, NICHTS LÖSCHEN
+   a) Merchant Center → Produkte → Datenquellen (Data sources): ALLE Quellen auflisten mit Name,
+      Typ (z. B. «Content API», «Shopify», «Website», «Datei»), Feed-Label/Land und Produktzahl.
+      Gesucht ist die Quelle, die Deutschland liefert (die 6 Produkte).
+   b) Merchant Center → Produkte → Alle Produkte → Filter Land/Feed-Label = Deutschland:
+      die 6 Produkte mit Titel + Produkt-ID notieren.
+   c) Shopify Admin → Apps → «Google & YouTube» → Einstellungen: Screenshot der Abschnitte
+      Märkte/Länder und Versand (welche Länder sind dort angehakt?).
+   Ergebnis als Liste melden. Ich entscheide danach, ob und wo DE entfernt wird.
+
+3) BIGBUY (bigbuy.eu, Kundennummer 966388) — AM COMPUTER
+   https://www.bigbuy.eu/en/contact → Reiter «Administration» (Invoices, refunds, tax information) → Ticket.
+   Betreff und Text: Datei dropship/BIGBUY-1000-EURO.md, Abschnitt «Nachtrag 16.09.», Block ab
+   «Subject: Customer 966388 – wallet balance EUR 1,000.00 …» (Englisch, unverändert). IBAN steht im
+   BigBuy-Konto, nicht neu eintippen. Absenden, die Ticket-Referenz melden.
+
+4) TIKTOK (tiktok.com, Konto @luxestyle.ch) → Profil bearbeiten → Website. Steht dort schon ein Link: nur
+   Screenshot. Sonst eintragen und speichern:
+   https://luxestyle.ch/collections/gerade-auf-instagram?utm_source=tiktok&utm_medium=social&utm_campaign=bio
+   Fehlt das Feld «Website»: Einstellungen → Konto → auf «Business-Konto» wechseln (gratis), dann erneut.
+   Profil neu laden, Screenshot.
+```
+**Quittungen:** (1) Liste der Richtlinien + Store-Qualität → Abweichungen behebe ich mit dir. (2) Quelle mit DE → ich sage, wo
+und wie entfernen (oder lassen). (3) Ticket-Referenz → `dropship/_bigbuy_ticket_ref.txt`, ⭐ verschwindet aus der Ampel.
+(4) Ampel prüft `bioLink` im Profil.
+
 ## 🆕 01.10. — ALLE Google-Merchant-Aufgaben in einem Auftrag → `dropship/COWORK-MERCHANT-2026-10-01.md`
 > Ersetzt Punkt 1 des Blocks vom 29.09. (DE entfernen + 6 Produkte) und erweitert ihn: Versand an den Shop angleichen,
 > Lieferzeit eintragen, Rückgabe/Unternehmensangaben prüfen, Diagnosen zählen, Store-Qualität zurückmelden.
