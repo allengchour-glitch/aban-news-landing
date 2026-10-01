@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T23:13:09Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T23:17:54Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1257 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4604** in 1233 Produkten
-- Treffer (≥ 4 Wörter): **172** in 145 Produkten
+- Medien geprüft: **4609** in 1233 Produkten
+- Treffer (≥ 4 Wörter): **173** in 145 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -127,6 +127,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Mikrostrom-Augenmassagegerät mit Farblicht `15506324586881` | [70603024269697](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ede64476-e502-41dc-9a2c-93d7929839a3.jpg) | 7 | IMPROVE FINE LINES FIRMING SKIN IMPROVE SKIN | offen |
 | Zero-Pressure Cloud Kissen `15524779295105` | [70799444607361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fd02c3c-fee9-46e1-98b0-892a3bd2156d_trans.jpg) | 7 | Zoned pillow Sleeping approximately included Pillowcase approximately | offen |
 | Leuchtende Kinderschlappen `15453791584641` | [69926764577153](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c44db29-a789-417a-b940-4a8bc06fd03b_trans.jpg) | 7 | Bandage style for outdoor wear Luminous slippers | offen |
+| Smart Detector Kamera-Finder `15477388476801` | [77431979835783](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1784ae22-ab7b-4d7e-ad33-d830b0c96895_trans.jpg) | 7 | Vibration Sen Desig Push door and automatic | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
