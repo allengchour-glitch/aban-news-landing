@@ -2373,3 +2373,8 @@ shapewear-kleid-jumpsuit-mit-brustpolster-029440	1666423806115721216	16	10.29	ok
 breiter-haushalts-organizer-mit-35-fachern-613700	2410030812421614000	16	36.17	ok	landeseite
 trendig-casual-pullover-614200	2604080654591614600	16	12.21	ok	landeseite
 outdoor-wireless-powerbank-mit-kabel-618100	2604040057141618500	0	-	KEINE CH-Option → DRAFT	landeseite
+duales-stereo-karaoke-system-601000	2409250409521601200	7	27.59	ok	landeseite
+p330-mini-beamer-heimkino-fur-unterwegs-614600	2407150523221614800	7	19.43	ok	landeseite
+interaktives-katzenspielzeug-mit-rotierender-s-627400	2603190158441627800	7	20.52	ok	landeseite
+automatischer-futter-und-wassernapf-534976	1674792284287672320	16	27.47	ok	landeseite
+mini-led-beamer-fur-handy-heimkino-150016	1433636562083647488	16	15.20	ok	landeseite
