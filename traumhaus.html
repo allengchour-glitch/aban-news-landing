@@ -601,6 +601,12 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 /* 📱 Handy: Pixelratio auf 1.5 deckeln. Auf einem 3x-Display rendert die Szene sonst
    9x so viele Pixel wie noetig — die teuerste Einzelbremse auf dem Telefon. */
 var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
+/* 📱 HANDY-SPARMODUS (Runde 106, User: „1 fps habe ich bei traumhaus"). Auf dem Telefon kurze Sichtweite, kleinerer
+   Herauszoom, weniger Lampen — was genau, steht jeweils am Ort. `?voll` schaltet ihn ab, `?spar` am Rechner ein. */
+var _sparHandy=(_mobil&&!/[?&]voll\b/.test(location.search))||/[?&]spar\b/.test(location.search);
+var LOD_SPAR=_sparHandy?0.75:1;   /* Ausblend-Abstaende in lodTakt */
+var LAMP_SPAR=2;                  /* Punktlichter im Shader (jedes kostet JEDEN Bildpunkt jedes Standard-Materials) */
+var ZOOM_MAX=_sparHandy?80:135;   /* ⚠️ main bei Zoom 135 (probe-bildlast „Weit"): 9'821 Zeichenaufrufe je Bild */
 /* 📱 DYNAMISCHE AUFLOESUNG. Der feste Deckel war eine Wette auf das Geraet: 1,35 ist
    fuer ein aktuelles Telefon zu wenig und fuer ein aelteres zu viel — und welches davor
    sitzt, weiss der Code nicht. `_rrMax` bleibt die Obergrenze, aber die Schleife misst
@@ -657,6 +663,17 @@ function _halmTex(){
   var t=new THREE.CanvasTexture(cv);if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
   _halmTexObj=t;return t;}
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd0ea);scene.fog=new THREE.Fog(0x9fd0ea,130,340);
+/* 📱 DIE SZENE SELBST NICHT AUTO-AKTUALISIEREN (Runde 106, User: „1 fps habe ich bei traumhaus").
+   three.js ruft vor jedem Bild scene.updateMatrixWorld(). Steht die SZENE auf matrixAutoUpdate (Vorgabe), rechnet sie
+   ihre eigene Matrix neu, setzt damit matrixWorldNeedsUpdate und reicht `force=true` an JEDEN Nachfahren weiter —
+   `_einfrieren` sparte so nur das Zusammensetzen der lokalen Matrix, nie die Multiplikation mit der Elternmatrix.
+   GEMESSEN (probe-profil, Handy-Pfad, fertige Welt): 42'304 Knoten, scene.updateMatrixWorld() 30 ms je Bild — der
+   groesste JavaScript-Posten des ganzen Bildes. Die Szene bewegt sich nie; ohne ihr Auto-Update rechnen nur noch
+   Teilbaeume, die sich selbst bewegen (matrixAutoUpdate) oder als geaendert gemeldet sind.
+   ⚠️ Wer ein EINGEFRORENES Objekt umsetzt, muss updateMatrix() rufen (wie `_nachRuecken`) — das war schon vorher
+   Pflicht. Neu: wer `.matrix` direkt beschreibt, setzt danach matrixWorldNeedsUpdate (bisher nur `_zfLoseBaue`, ruft
+   updateMatrixWorld selbst). Pruefgeraet: probe-matrix (Weltmatrix = Eltern x lokal, fuer jeden Knoten). */
+scene.matrixAutoUpdate=false;
 var camera=new THREE.PerspectiveCamera(46,W/H,0.1,600);
 // Echtes Himmelslicht
 if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
@@ -666,7 +683,7 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
 var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
 // Warme Strassenlaternen-Lichtpools — nur nachts an (Intensitaet im Tag/Nacht-Loop gesetzt)
 var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauchen GW/RX/wegVonStrasse */
-var LAMP_MAX=6;       /* 💡 gleichzeitig brennende Punktlichter — siehe Auswahl in loop() */
+var LAMP_MAX=_sparHandy?LAMP_SPAR:6;   /* 💡 gleichzeitig brennende Punktlichter — siehe Auswahl in loop() */
 
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 scene.add(sun.target);   /* das Ziel muss in der Szene haengen, sonst wandert die Schatten-Box nicht mit */
@@ -12762,6 +12779,32 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
    ⚠️ VORRANG FUER DIE FIGUREN. `attachRealChar` laedt th_mann/th_frau. Stehen sie
    hinten in einer Schlange von 340 Gebaeuden, laeuft der Spieler minutenlang ohne
    Koerper herum. Sie duerfen darum vor. */
+/* 📱 TEXTUREN IM SPARMODUS HALBIEREN (Runde 106). GEMESSEN (alle 911 GLB-Dateien, eingebettete Bilder): 253 Bilder,
+   239 davon 512 px, 8 mit 1024 px. Im Spiel liegen davon ~220 MB im Grafikspeicher (probe-handy, RGBA + Mipmaps) — auf
+   einem Telefon teilen sich Grafik und Programme denselben Speicher, und ein Browser-Tab bekommt davon nur einen Teil.
+   Auf 256 px gedeckelt ist es ein Viertel. Auf einem 390 px hohen Schirm mit Pixelratio <= 1,35 zeigt ein Haus seine
+   512er-Textur ohnehin fast nie in voller Aufloesung.
+   Einmal je Textur (Texturen sind zwischen Kopien geteilt), VOR dem ersten Hochladen — danach waere der grosse
+   Speicher schon belegt. flipY bleibt, wie GLTFLoader es setzt: die Leinwand speichert das Bild so, wie es kam.
+   ⚠️ `Texture.userData` GIBT ES IN r128 NICHT — die erste Fassung merkte sich „erledigt" dort und warf bei jeder
+   Textur; der Fehler sass VOR `ok(g)`, also wurden 139 Modelle geladen und nie aufgestellt (probe-handy: 91
+   JS-Fehler, `_ladeOffen` blieb bei 139). Jetzt ein WeakSet — und ein Fehler hier darf `ok(g)` nie verhindern
+   (try/catch beim Aufrufer). */
+var TEX_SPAR=256, _texErledigt=new WeakSet();
+function _texKlein(wurzel){
+  var SL=["map","normalMap","roughnessMap","metalnessMap","emissiveMap","aoMap","alphaMap","bumpMap"];
+  wurzel.traverse(function(n){
+    if(!n.material)return;
+    (Array.isArray(n.material)?n.material:[n.material]).forEach(function(m){
+      if(!m)return;
+      for(var i=0;i<SL.length;i++){var t=m[SL[i]];if(!t||_texErledigt.has(t))continue;_texErledigt.add(t);
+        var im=t.image,w=im&&im.width,h=im&&im.height;
+        if(!w||!h||Math.max(w,h)<=TEX_SPAR)continue;
+        var f=TEX_SPAR/Math.max(w,h),cv=document.createElement("canvas");
+        cv.width=Math.max(1,Math.round(w*f));cv.height=Math.max(1,Math.round(h*f));
+        try{cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);}catch(e){continue;}
+        t.image=cv;t.needsUpdate=true;
+        window._texKleinN=(window._texKleinN||0)+1;}});});}
 (function(){ if(!GL)return;
   var echt=GL.load.bind(GL), schlange=[], aktiv=0, jobs={};
   /* 🎯 NAHES ZUERST (Runde 103). GEMESSEN (th-laden handy): 379 Modelle, 174 MB, die Haelfte erst nach
@@ -12813,7 +12856,7 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
   GL.load=function(url,ok,fort,fehl){
     window._ladeStand.gefordert++;
     var auftrag=function(){ echt(url,
-      function(g){ try{ if(ok)ok(g); } finally { fertig(); } }, fort,
+      function(g){ try{ if(_sparHandy&&g&&g.scene)try{_texKlein(g.scene);}catch(e){} if(ok)ok(g); } finally { fertig(); } }, fort,
       function(e){ try{ if(fehl)fehl(e); } finally { fertig(); } }); };
     var d=vorrang(url)?-1:(typeof window._ladePrioD==="number"?window._ladePrioD:60);
     var job={f:auftrag,d:d,url:url}; schlange.push(job); jobs[url]=job;
@@ -17556,7 +17599,7 @@ addEventListener("mouseup",function(e){dragging=false;
   bauZugEnde();});
 renderer.domElement.addEventListener("contextmenu",function(e){e.preventDefault();});
 addEventListener("wheel",function(e){
-  var alt=camRT;camRT=Math.max(7,Math.min(135,camRT*Math.pow(1.0018,e.deltaY)));
+  var alt=camRT;camRT=Math.max(7,Math.min(ZOOM_MAX,camRT*Math.pow(1.0018,e.deltaY)));
   if(!followSim&&e.deltaY<0&&camRT<alt){ // Reinzoomen zieht sanft zum Punkt unterm Cursor
     mouse.x=(e.clientX/innerWidth)*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;
     ray.setFromCamera(mouse,camera);var P9=new THREE.Vector3();
@@ -17597,7 +17640,7 @@ renderer.domElement.addEventListener("touchmove",function(e){
     else if(paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}}
   else if(tt.length===2){var nd=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
-    camRT=Math.max(7,Math.min(135,camRT-(nd-pinchD)*0.06));pinchD=nd;
+    camRT=Math.max(7,Math.min(ZOOM_MAX,camRT-(nd-pinchD)*0.06));pinchD=nd;
     /* 🔄 Zwei Finger DREHEN die Kamera (wie in jeder Karten-App). Bisher konnten zwei
        Finger nur zoomen — und mit Boden- oder Wandwerkzeug in der Hand frisst der eine
        Finger die Geste, drehen ging dann gar nicht mehr. */
@@ -17757,7 +17800,7 @@ function tapAt(px,py){
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8);};
-document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
+document.getElementById("zoomOut").onclick=function(){camRT=Math.min(ZOOM_MAX,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
 document.getElementById("egoBtn").onclick=function(){egoToggle();};
 document.getElementById("coupBtn").onclick=function(){coupStart();};
 document.getElementById("coasterBtn").onclick=function(){coasterEinsteigen();};
@@ -19219,6 +19262,7 @@ function loop(now){
   var _roh=(now-last)/1000;                 /* echte Bildzeit — dt ist gedeckelt */
   var dt=Math.min(0.05,_roh)*(window._zeitFaktor||1);last=now;   /* 🎬 Zeitlupe (GTA-Einblendungen, Stunt) */
   _rrRegel(_roh);
+  if(_fpsEl)_fpsTakt(_roh);
   if(running){
     for(var _li=0;_li<nachtLampen.length;_li++){var _L=nachtLampen[_li];var _t=_L._ti||0; /* 💡 weiches Ein-/Ausfaden der Strassenbeleuchtung */
       if(Math.abs(_L.intensity-_t)>0.01){_L.intensity+=(_t-_L.intensity)*Math.min(1,dt*1.6);
@@ -19602,7 +19646,8 @@ function loop(now){
      behaelt ihr letztes Bild), er ist nur nicht mehr fluessig. Sobald `running`
      steht, wird wieder jedes Bild gezeichnet. */
   gruppenSicht();
-  if(running||(++_menuTakt%5===0))renderer.render(scene,camera);
+  if(running||(++_menuTakt%5===0)){renderer.render(scene,camera);
+    if(_fpsEl){_fpsAufr=renderer.info.render.calls;_fpsDr=renderer.info.render.triangles;}}
 }
 var _menuTakt=0;
 /* 📱 Aufloesung nachregeln. Gemessen wird die ECHTE Bildzeit (`now-last`), nicht `dt` —
@@ -19613,6 +19658,27 @@ var _menuTakt=0;
    30 Bildern/s), hinauf erst unter 20 ms — die Luecke dazwischen verhindert Pendeln.
    Zwischen zwei Aenderungen mindestens 4 s, denn `setPixelRatio`+`setSize` legt den
    Zeichenpuffer neu an und ruckelt selbst. */
+/* 📱 `?fps` — Anzeige oben links fuer das ECHTE Geraet (Runde 106, User: „1 fps habe ich bei traumhaus").
+   Im Container gibt es nur einen Software-Rasterizer; was ein Telefon wirklich schafft, sieht nur der User.
+   Bilder/s und laengstes Bild der letzten Sekunde, Zeichenaufrufe und Dreiecke des letzten Bildes, Pixelratio
+   (die dynamische Aufloesung regelt sie), Handy-Modus und wie viele Modelle noch laden. Kostet ohne `?fps` nichts. */
+/* ⚠️ Aufrufe/Dreiecke DIREKT NACH DEM HAUPTBILD merken, nicht am Anfang des naechsten Bildes aus renderer.info lesen:
+   das Shader-Vorwaermen (_warmObjekt, eigene requestAnimationFrame-Kette) zeichnet dazwischen in ein 8x8-Ziel und
+   setzt die Zaehler zurueck. Erste Fassung zeigte an der Kreuzung 185 Aufrufe, probe-bildlast am selben Punkt 964. */
+var _fpsEl=null, _fpsN=0, _fpsT=0, _fpsMax=0, _fpsAufr=0, _fpsDr=0;
+if(/[?&]fps\b/.test(location.search)){_fpsEl=document.createElement("div");
+  _fpsEl.style.cssText="position:fixed;left:6px;top:6px;z-index:999;pointer-events:none;font:11px/1.35 ui-monospace,monospace;"+
+    "color:#fff;background:rgba(0,0,0,.62);padding:4px 7px;border-radius:8px;white-space:pre";
+  document.body.appendChild(_fpsEl);}
+function _fpsTakt(roh){
+  if(!(roh>0)||roh>5)return;
+  _fpsN++;_fpsT+=roh;if(roh>_fpsMax)_fpsMax=roh;
+  if(_fpsT<1)return;
+  _fpsEl.textContent=(_fpsN/_fpsT).toFixed(1)+" fps · max "+Math.round(_fpsMax*1000)+" ms\n"+
+    _fpsAufr+" Aufrufe · "+Math.round(_fpsDr/1000)+"k Dreiecke\n"+
+    "Pixel "+renderer.getPixelRatio().toFixed(2)+(_mobil?" · Handy":"")+(_sparHandy?" · Sparmodus":"")+
+    (window._ladeOffen>0?" · lädt "+window._ladeOffen:"");
+  _fpsN=0;_fpsT=0;_fpsMax=0;}
 var _rrMit=0, _rrSperre=0;
 function _rrRegel(roh){
   if(!running||roh<=0||roh>1.5)return;      /* Ladepausen nicht als Ruckeln werten */
@@ -19981,8 +20047,10 @@ function lodTakt(px,pz){
      und die geparkten Autos verschwanden beim Herauszoomen. Auf main standen sie nur, weil sie nach dem
      letzten lodAufbau geladen und nie erfasst wurden. Die Aufrufe, die das kostet, hat das Zusammenfassen
      laengst eingespielt (probe-bildlast „Weit (90)"). */
-  var AN_F=78*78, AUS_F=82*82, AN_N=34*34*_z2, AUS_N=37*37*_z2,
-      AN_M=130*130, AUS_M=138*138;
+  /* 📱 Runde 106: im Handy-Sparmodus alle Grenzen ×LOD_SPAR (Abstaende, also ×LOD_SPAR² in den Quadraten). */
+  var _ls=LOD_SPAR*LOD_SPAR;
+  var AN_F=78*78*_ls, AUS_F=82*82*_ls, AN_N=34*34*_z2*_ls, AUS_N=37*37*_z2*_ls,
+      AN_M=130*130*_ls, AUS_M=138*138*_ls;
   /* ⚠️ LAGE AUS DER WELTMATRIX, NICHT AUS DEM MERKZETTEL (Runde 100). `e.x/e.z` stammen aus lodAufbau — danach
      schieben entwirren/freiRaeumen Modelle noch um bis zu 90 m (mit `_nachRuecken`, die Weltmatrix stimmt also).
      GEMESSEN (probe-lodlage.mjs, fertige Welt): auf main 1'617 von 10'485 Eintraegen veraltet, an der Kreuzung
@@ -19998,7 +20066,7 @@ function lodTakt(px,pz){
      eigenen Mitte plus Ausdehnung — sonst haengt die Entscheidung am Ursprung. */
   var G=window._instGruppen;
   if(G)for(var g=0;g<G.length;g++){
-    var q=G[g],qx=q.x-px,qz=q.z-pz,gr=78+q.r,qd2=qx*qx+qz*qz;
+    var q=G[g],qx=q.x-px,qz=q.z-pz,gr=78*LOD_SPAR+q.r,qd2=qx*qx+qz*qz;
     var s2=q.m.visible ? qd2<(gr+4)*(gr+4) : qd2<gr*gr;   /* dieselbe Reserve */
     if(q.m.visible!==s2)q.m.visible=s2;
   }

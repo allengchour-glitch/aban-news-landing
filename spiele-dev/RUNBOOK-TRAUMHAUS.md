@@ -8237,3 +8237,103 @@ Anhalten 2 → **64**, Schrittrate je m/s Spanne 1,00×, Tiere 180° → **3,8°
 probe-schritt ✅ (Tempo gekoppelt, Stand-Bild 1,049 nach 27–30 Bildern; die Sonde wartet jetzt BIS pausiert, höchstens
 80 Bilder — fest 18 reichten mit Ausrollen nicht mehr) · th-bewegt alles bewegt · th-pruef bestanden mit **985
 Modellen, steckt 2** (mit fester 55-s-Frist vorher 944 / 7 — genau der Messfehler, den die andere Session behoben hat).
+
+## Runde 106 · 📱 Handy: „1 fps" — die Szene zwang jedes Bild alle Matrizen neu (2026-10-01)
+
+User: „auf handy kann ich ned spielen" → „1 fps habe ich bei traumhaus". ⚠️ Live ist `main` (PR #2528 ungemergt) —
+alles hier wirkt auf dem Telefon erst nach dem Merge.
+
+### 1. Erst gemessen, dann vermutet
+- **probe-bildlast** (main gegen PR, Handy-Pfad): PR zeichnet halb so viele Aufrufe, war aber +62 % langsamer. **Falsch
+  gelesen:** derselbe Stand mass im nächsten Lauf Stadtmitte 628 statt 1'494 ms. Die SwiftShader-ms schwanken zwischen
+  zwei Läufen um mehr als das Doppelte — nur Verhältnisse **im selben Lauf** zählen, und auch die nur grob.
+- **probe-bildkosten** (neu): je Teile-Art alles ausblenden, Bild neu, Median aus 5. Ergebnis Kreuzung/Stadtmitte/Weit:
+  Standard-Material (PBR) trägt **91–98 %** der Rasterzeit (31'945 Teile), texturierte Teile 32–41 %, Skinning (Passanten)
+  6–9 %, durchsichtig 10–18 %. Gegenprobe „nichts ausblenden" ±5–11 % = Rauschgrenze der Sonde.
+- **probe-profil** (neu, Chrome-Profiler im Handy-Pfad an der Kreuzung): 42'304 Knoten im Szenenbaum, davon 7'074 mit
+  matrixAutoUpdate — und trotzdem **`scene.updateMatrixWorld()` 30 ms je Bild**, der grösste JavaScript-Posten.
+
+### 2. Die Ursache: `scene.matrixAutoUpdate` stand auf true
+three.js ruft vor jedem Bild `scene.updateMatrixWorld()`. Die Szene selbst rechnet ihre Matrix neu, setzt damit
+matrixWorldNeedsUpdate und reicht **`force=true` an alle 42'000 Nachfahren** weiter. `_einfrieren` (Runde 103) sparte
+deshalb nur das Zusammensetzen der lokalen Matrix — die Multiplikation mit der Elternmatrix lief weiter für jeden Knoten.
+Der Kommentar dort („48 000 updateMatrix() sind wenige Millisekunden, die Matrizen waren nie die Bremse") hatte recht
+mit dem Teil, den er mass, und übersah den anderen.
+**Fix:** `scene.matrixAutoUpdate=false` (die Szene bewegt sich nie). Danach rechnen nur noch Teilbäume, die sich selbst
+bewegen oder als geändert gemeldet sind.
+**probe-matrix** (neu): für JEDEN Knoten Weltmatrix = Eltern × lokal, an acht Zeitpunkten (fertige Welt, Rundreise über
+6 Orte, in drei Fahrgeschäften, nachts, Baumodus an/aus): **0 falsche Weltmatrizen**. Gegenprobe (eingefrorenes Objekt,
+`.matrix` direkt umgeschrieben): erkannt ✓.
+
+### 3. Handy-Sparmodus (`_sparHandy` = `_mobil`, `?voll` schaltet ab, `?spar` am Rechner ein)
+| Hebel | normal | Sparmodus | warum |
+|---|---|---|---|
+| Herauszoomen bis | 135 | **80** | main bei Zoom 135: 9'821 Aufrufe je Bild |
+| Ausblend-Abstände (lodTakt) | ×1 | **×0,75** | weniger Aufrufe und Dreiecke in der Ferne |
+| Punktlichter im Shader | 6 | **2** | jedes kostet jeden Bildpunkt jedes Standard-Materials; probe-bildkosten 6 → 2: −9 / −11 / −17 % Rasterzeit (Kreuzung/Stadtmitte/Weit, Rauschen ±8 %) |
+| Modell-Texturen | 512 px | **256 px** | 239 von 253 Bildern sind 512 px; ~220 MB → ~55 MB Grafikspeicher |
+Dazu **`?fps`**: Anzeige oben links (Bilder/s, längstes Bild, Aufrufe, Dreiecke, Pixelratio, Sparmodus, lädt noch) —
+für das ECHTE Gerät, denn im Container gibt es nur einen Software-Rasterizer.
+
+### 4. Zahlen (vorher = Kopf 3d3d1fe, nachher = dieser Stand; Handy-Pfad, fertige Welt, je im SELBEN Lauf)
+| Messung | vorher | nachher |
+|---|---|---|
+| `scene.updateMatrixWorld()` allein (probe-profil) | 25,6 ms | **12,9 ms** |
+| Profil je Bild: updateMatrixWorld + multiplyMatrices (Eigenzeit) | 15,5 + 10,1 ms | **12,6 + 1,3 ms** |
+| probe-bildlast Aufrufe Kreuzung · Stadtmitte · Ring · weit · Gewerbe · nah | 1'150 · 238 · 791 · 2'221 · 820 · 193 | **964 · 235 · 631 · 2'073 · 572 · 194** |
+| probe-bildlast Summe Software-ms (sechs Punkte) | 7'276 | **5'945 (−18 %)** |
+| probe-handy quer: Texturen im Grafikspeicher | 223 MB (371) | **86 MB (369, davon 123 verkleinert)** |
+| probe-handy quer: Geometrie · JS-Speicher | 184 MB · 387 MB | 183 MB · 382 MB (unverändert — nächster Hebel) |
+| probe-handy quer: Startbild-Aufrufe (Pixel 1,35) | 2'240 | 1'994 |
+| probe-handy quer: längste Blockade beim Laden | 24,2 s | 20,0 s |
+„weit" ist Zoom 90 — die Sonde setzt den Zoom direkt; im Spiel ist im Sparmodus bei 80 Schluss.
+Gegenprobe probe-profil: 30 ms reines Rechnen je Bild eingespeist → 21 ms auf der eigenen Funktion gebucht (der Rest
+fällt in „(program)"/GC) — die Eigenzeiten sind eher zu niedrig als zu hoch.
+Bilder: `spiele-dev/screenshots/r106-{kreuzung,stadtmitte,weit}-{spar,voll}.png` (Handy quer, ?fps-Anzeige oben links;
+das Wetter ist je Lauf zufällig — Regen im voll-Bild ist kein Unterschied des Sparmodus). Sichtbar: am Rand der
+Kreuzung fehlen im Sparmodus einzelne Bäume in 60–78 m, sonst gleich.
+
+**Prüfreihe (Endstand):** probe-matrix 0 falsch in 8 Zeitpunkten, Gegenprobe ✓ · th-bewegt alles bewegt · th-fahrt
+**11 geprüft, 0 ohne Bewegung** (s. unten) · th-gta 22/22 · th-bauen 22/22 · th-pruef bestanden (982 Modelle, steckt 2 =
+Rettungswagen in der Notaufnahme wie Teil 4) · probe-anfasser „eingefroren, aber bewegt" 0, Gegenprobe ✓ · JS-Fehler 0.
+
+**Wohin die restlichen Aufrufe gehen** (probe-bildlast `BAENDER=1`, Kreuzung, 958 Aufrufe): prozedural 605 (davon
+396 in 60–120 m Kameraabstand), Modelle 300, Instanzen 37. Der nächste Hebel sind die selbst gebauten Kleinteile —
+Runde 100 hat sie schon als Rest benannt („Boxen/Zylinder einzelner Farben, je Zelle zusammenfassen").
+
+### 5. Werkzeug-Fehler, die dabei aufflogen
+- **th-fahrt prüfte seit Runde 103 nur noch 2 von 11 Fahrgeschäften.** Feste 55-s-Frist, aber das Laden geht seit
+  Runde 103 „Nahes zuerst" — der Rummel liegt weit vom Start und war noch nicht da. Ausgabe trotzdem „BESTANDEN".
+  Jetzt `warteAufRuhe`: 11 geprüft, 8 bewegen sich, 3 absichtlich still.
+- **Die fps-Anzeige zählte zuerst das falsche Bild.** Das Shader-Vorwärmen zeichnet in einer eigenen
+  requestAnimationFrame-Kette in ein 8×8-Ziel und setzt `renderer.info` zurück — die Anzeige las 185 statt 964
+  Aufrufe. Jetzt werden die Zähler direkt nach dem Hauptbild gemerkt. ⚠️ Ich hatte dem User die falsche Zahl schon
+  gemeldet und musste sie zurücknehmen.
+- **probe-handy:** `waitForSelector('#soloBtn')` nach 60 s abgebrochen („resolved to visible") — der Hauptfaden war
+  vom Laden blockiert. 150 s.
+
+### 6. Fehler, die ich selbst eingebaut und vor dem Commit gefunden habe
+- **`Texture.userData` gibt es in r128 nicht.** `_texKlein` warf bei jeder Textur — VOR `ok(g)`: 139 Modelle geladen,
+  nie aufgestellt, 91 JS-Fehler. probe-handy hat es gemeldet (JS-Fehler-Zeile, `_ladeOffen` 139). Jetzt WeakSet und
+  try/catch, damit eine Verkleinerung nie das Aufstellen verhindert.
+- **Kommentar falsch geschlossen** (`*/` stehen gelassen, Text dahinter) — ein ganzer Messlauf mit „__th undefined".
+  Seitdem nach JEDER Änderung: Skriptblöcke herausziehen, `node --check`.
+
+### Lehren
+1. **„Wenige Millisekunden" für den gemessenen Teil heisst nichts über den ungemessenen.** Runde 103 mass das
+   Zusammensetzen (updateMatrix) und schloss „Matrizen sind nicht die Bremse"; die Multiplikation, die die Szene per
+   `force` für 42'000 Knoten erzwang, stand nie in der Messung. Ein Profiler je Funktion hätte es sofort gezeigt.
+2. **Software-Millisekunden zweier Läufe sind nicht vergleichbar.** Derselbe Stand: 1'494 und 628 ms. Nur im selben
+   Lauf, und auch dann nur grob.
+3. **„Bestanden" mit kleiner Stichprobe ist verdächtig.** th-fahrt meldete grün mit 2 statt 11 — die Zahl stand in der
+   Ausgabe, niemand hat sie mit der früheren verglichen.
+4. **Eine Anzeige ist ein Messgerät und braucht eine Gegenprobe.** Die ?fps-Zahl gegen probe-bildlast am selben Punkt
+   zu halten hat den Fehler gezeigt — vorher hatte ich sie dem User schon gemeldet.
+
+### Offen
+- Live erst nach Merge von PR #2528 (User). Dann auf dem Handy `abannews.com/traumhaus.html?fps` öffnen und die Zahlen
+  melden lassen — das ist die einzige echte Gerätemessung.
+- Prozedurale Kleinteile je Zelle zusammenfassen (Kreuzung 605 von 958 Aufrufen).
+- Geometrie 183 MB und JS-Speicher 382 MB unverändert: Quell-Geometrien nach dem Zusammenfassen freigeben (nur wo
+  kein Cache sie noch braucht).
+- Hochformat: `#rotHint` hat weiterhin keinen „Trotzdem spielen"-Knopf (Vorschlag liegt beim User).

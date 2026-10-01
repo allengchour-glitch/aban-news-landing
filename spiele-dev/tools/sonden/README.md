@@ -206,3 +206,15 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   geschaetzten Grafikspeicher (Geometrie + Texturen), Aufrufe/Dreiecke, laengste Blockade. Gegenprobe 2-s-Blockade.
   Erster Befund: im Hochformat liegt `#rotHint` („Dreh dein Handy quer!") ueber allem — ohne Weiter-Knopf.
 
+  Runde 106: zusaetzlich `renderer.info.memory` (was der Grafikchip haelt), Sparmodus, Zahl verkleinerter Texturen.
+- `probe-bildkosten.mjs` (Runde 106, User: „1 fps") — an drei Kamerapunkten je Teile-Art (gehaeutet, Instanzen,
+  durchsichtig, texturiert, Standard-Material, eigener Shader, Sprites) alles ausblenden und neu zeichnen, Median aus 5;
+  dazu Punktlichter 6 → 2 → 0. Gegenproben: alles aus ≈ 100 %, nichts aus = Rauschgrenze (±5–11 %).
+- `probe-profil.mjs` (Runde 106) — Chrome-Profiler (CDP) im Handy-Pfad an der Kreuzung: Eigenzeit je Funktion pro
+  gezeichnetem Bild, dazu Knoten/Meshes/autoMatrix und `scene.updateMatrixWorld()` allein. Gegenprobe: 30 ms reines
+  Rechnen je Bild muss als eigene Zeile erscheinen (gebucht werden ~21 ms, der Rest faellt in „(program)").
+- `probe-matrix.mjs` (Runde 106) — Weltmatrix-Treue: fuer JEDEN Knoten matrixWorld == Eltern × lokal, an acht
+  Zeitpunkten (fertige Welt, Rundreise, drei Fahrgeschaefte, nachts, Baumodus an/aus). Pflicht, seit die Szene nicht
+  mehr jedes Bild `force` erzwingt. Gegenprobe: eingefrorenes Objekt mit direkt umgeschriebener `.matrix`.
+- `probe-r106-bilder.mjs` (Runde 106) — Handy quer, drei Ansichten mit und ohne Sparmodus (`?fps` / `?fps&voll`),
+  Bilder nach spiele-dev/screenshots/r106-*.png. Urteilt nicht.

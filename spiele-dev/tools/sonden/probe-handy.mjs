@@ -10,6 +10,7 @@ import { serverStarten, PORT, CHROMIUM, mitSonden, aufraeumen } from '../th-lib.
 const quelle = process.argv[2] || 'traumhaus.html'
 const TMP = '_probe_handy_tmp.html'
 mitSonden(quelle, {
+  bild: `function(){return renderer.info.render.frame;}`,
   speicher: `function(){var geo=new Set(),tex=new Set(),gb=0,tb=0,meshes=0;
     scene.traverse(function(o){if(!o.isMesh&&!o.isPoints&&!o.isLine)return;meshes++;var g=o.geometry;
       if(g&&!geo.has(g)){geo.add(g);Object.keys(g.attributes).forEach(function(k){var a=g.attributes[k];gb+=(a.array?a.array.byteLength:0);});if(g.index)gb+=g.index.array.byteLength;
@@ -21,7 +22,8 @@ mitSonden(quelle, {
     var pm=performance.memory||{};
     return {geometrienMB:+(gb/1048576).toFixed(0),texturenMB:+(tb/1048576).toFixed(0),geometrien:geo.size,texturen:tex.size,meshes:meshes,
       aufrufe:renderer.info.render.calls,dreiecke:renderer.info.render.triangles,jsHeapMB:+((pm.usedJSHeapSize||0)/1048576).toFixed(0),
-      programme:renderer.info.programs?renderer.info.programs.length:null,mobil:typeof _mobil!=="undefined"?_mobil:null,pixel:renderer.getPixelRatio()};}`
+      programme:renderer.info.programs?renderer.info.programs.length:null,mobil:typeof _mobil!=="undefined"?_mobil:null,pixel:renderer.getPixelRatio(),
+      gpuGeo:renderer.info.memory.geometries,gpuTex:renderer.info.memory.textures,klein:window._texKleinN||0,spar:typeof _sparHandy!=="undefined"?_sparHandy:null};}`
 }, TMP)
 serverStarten()
 const STAU = `(function(){var letzte=performance.now(),max=0,summe=0;setInterval(function(){var n=performance.now(),d=n-letzte-50;letzte=n;if(d>max)max=d;if(d>100)summe+=d;},50);
@@ -41,7 +43,9 @@ await page.goto(`http://127.0.0.1:${PORT}/${TMP}`, { waitUntil: 'load', timeout:
 /* ⚠️ Erste Fassung klickte per evaluate und wartete „4 × 2 s kein neues GLB" — sie hoerte nach 13 bzw. 28
    von ~380 Modellen auf (der Startbildschirm drosselt die Ladeschlange auf 4). Jetzt: echter Tipp auf
    #soloBtn, pruefen dass #start weg ist, dann warten bis das Spiel selbst meldet: _ladeOffen === 0. */
-await page.waitForSelector('#soloBtn', { timeout: 60000 })
+/* ⚠️ 60 s reichten einmal nicht (Runde 106, alter Stand): „resolved to visible", dann Zeitueberschreitung — der
+   Hauptfaden war vom Laden blockiert, Playwrights Abfrage im Fenster kam nicht durch. 150 s. */
+await page.waitForSelector('#soloBtn', { timeout: 150000 })
 /* force: der Knopf pulsiert (CSS-Animation), Playwright wartet sonst ewig auf „stabil". force tippt trotzdem
    auf die Knopfmitte — liegt dort etwas darueber (Hochformat: #rotHint), trifft der Tipp DAS, wie beim Finger. */
 await page.tap('#soloBtn', { force: true, timeout: 10000 }).catch(() => {})
@@ -51,6 +55,11 @@ let offen = null
 for (let i = 0; i < 90; i++) { await page.waitForTimeout(2000); offen = await page.evaluate(() => window._ladeOffen); if (offen === 0 && i > 5) break }
 await page.waitForTimeout(8000)
 const tFertig = ((Date.now() - t0) / 1000).toFixed(0)
+/* Bildrate im laufenden Spiel (Software-Renderer: nur RELATIV vergleichbar, nicht die Handy-fps) */
+const fb0 = await page.evaluate(() => window.__th.bild()).catch(() => null), tb0 = Date.now()
+await page.waitForTimeout(15000)
+const fb1 = await page.evaluate(() => window.__th.bild()).catch(() => null), tb1 = Date.now()
+const msBild = fb0 != null && fb1 > fb0 ? Math.round((tb1 - tb0) / (fb1 - fb0)) : null
 const stau = await page.evaluate(() => window.__stau())
 const sp = await page.evaluate(() => window.__th.speicher())
 /* Gegenprobe Takt-Messer */
@@ -58,6 +67,8 @@ await page.evaluate(() => window.__stauNull()); await page.evaluate(() => { cons
 const gp = await page.evaluate(() => window.__stau())
 console.log(`${quelle} ${Q ? 'quer' : 'hoch'}: gestartet ${gestartet}, _ladeOffen ${offen} · Download ${(bytes / 1048576).toFixed(0)} MB (${glb} GLB, ${(glbBytes / 1048576).toFixed(0)} MB) · fertig nach ~${tFertig} s`)
 console.log(`  Speicher: JS ${sp.jsHeapMB} MB · Geometrie ${sp.geometrienMB} MB (${sp.geometrien}) · Texturen ${sp.texturenMB} MB (${sp.texturen}) · Meshes ${sp.meshes}`)
+console.log(`  Grafikchip haelt: ${sp.gpuGeo} Geometrien · ${sp.gpuTex} Texturen (renderer.info.memory) · Sparmodus ${sp.spar} · verkleinerte Texturen ${sp.klein}`)
+console.log(`  Bildzeit im Spiel: ${msBild} ms/Bild (Software-Renderer, relativ)`)
 console.log(`  Startbild: ${sp.aufrufe} Aufrufe · ${sp.dreiecke} Dreiecke · Programme ${sp.programme} · mobil ${sp.mobil} · Pixel ${sp.pixel}`)
 console.log(`  Hauptfaden: laengste Blockade ${(stau.max / 1000).toFixed(1)} s · Summe ${(stau.summe / 1000).toFixed(0)} s · JS-Fehler ${fehler.length}${fehler.length ? ' — ' + fehler.slice(0, 2).join(' | ') : ''}`)
 console.log(gp.max > 1500 ? `  ✅ Gegenprobe: 2-s-Blockade gesehen (${gp.max} ms)` : `  ❌ Gegenprobe: 2-s-Blockade NICHT gesehen (${gp.max} ms) — Takt-Messer blind`)
