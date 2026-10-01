@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T02:15:36Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-01T02:18:07Z
 
-Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1229 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
+Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1230 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4315** in 1157 Produkten
-- Treffer (≥ 4 Wörter): **168** in 142 Produkten
+- Medien geprüft: **4342** in 1157 Produkten
+- Treffer (≥ 4 Wörter): **169** in 143 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -157,6 +157,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Dickes Korallen-Fleece Badetuch `15453792436609` | [69926765724033](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42b48f14-7470-4f15-ad28-5a75b765be12_fine.jpg) | 5 | Comfortable and soft Enlarged Thickened | offen |
 | Kinder-Badetuch mit Cartoon-Druck `15453792895361` | [69926766248321](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ecef8483-3251-4e8d-935e-73a510cf11a6_fine.jpg) | 5 | caring for newborn skin acterial | offen |
 | TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [77431087202695](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans_a9a4f97f-6a9d-494a-b348-ee9500bc4469.jpg) | 5 | Foldable yoga mat available complete | offen |
+| Kratzposten für Katzen `15453785391489` | [77431172235655](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c328a8e-4893-48df-8d5d-6eda77f79ee1_fine.jpg) | 5 | Coconut Tree Two Coconut Fruits | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
