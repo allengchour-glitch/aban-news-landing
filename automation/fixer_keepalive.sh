@@ -680,16 +680,19 @@ while true; do
   # ganzen Katalog kostete darum ~31'000 CJ-Punkte für vielleicht hundert Videos und nähme
   # dem Grind das Tagesbudget weg (das am 14.08. um 19:19 Uhr bereits erschöpft war). 60
   # Anfragen pro Tag sind neben 100'000 nichts und sammeln über die Wochen ein, was da ist.
-  if [ ! -f /tmp/videos_$(date -u +%F) ]; then
+  # 01.10.2026 GROW: Deckel 1'000 statt 250 Videos (Shopify-Hilfe; Upload-Probe wieder offen). Gemessen: die Tagesläufe
+  # starteten zu irgendeiner Stunde, wenn der Grind die CJ-Punkte längst verbraucht hatte (Logs enden nach «Kandidaten»,
+  # 0 Videos) → Start nur noch IM VORRANG-FENSTER (16:00–17:30, Grind ruht) und 250 statt 60.
+  if [ "$VORRANGZEIT" = "1" ] && [ ! -f /tmp/videos_$(date -u +%F) ]; then
     touch "/tmp/videos_$(date -u +%F)"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_cj_video_backfill.lock; flock -n 9 || exit 0;
-         PRIO=dropship/_video_prio.txt CAP=60 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
+         PRIO=dropship/_video_prio.txt CAP=250 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
         >> /tmp/cj_video_backfill.log 2>&1 9>&- & )
     # ⚠️ CAP 300 war sinnlos: der Plan deckelt bei 250 Videos FUER DEN GANZEN SHOP. Der
     # Lauf prueft den Deckel jetzt vorab und arbeitet PRIO zuerst ab — die Plaetze gehoeren
     # der Ware, die auf der Startseite steht, nicht der naechstbesten in Anlegereihenfolge.
-    echo "$(date -u +%H:%M) start cj_video_backfill (PRIO sichtbare Ware, 60/Tag — User 19.08.: «überall mit videos, mache auch bei uns»)"
+    echo "$(date -u +%H:%M) start cj_video_backfill (PRIO sichtbare Ware, 250/Tag im Vorrang-Fenster — User 19.08.: «überall mit videos, mache auch bei uns»)"
   fi
   # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
   # vorbei produkt ändern»). Der Lauf nimmt abgelaufene Artikel aus der Reihe und füllt aus den

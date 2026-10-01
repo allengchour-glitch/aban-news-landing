@@ -209,6 +209,15 @@ async function main() {
           await sleep(1200);
           j = await cj(`product/variant/query?productSku=${stamm[1]}`);
         }
+        // ⚠️ SECHSTE SKU-FORM (01.10.2026): «CJ-CJMZ29511470001» = Produkt-SKU + vierstellige Variantennummer.
+        // Weder `variant/query` noch der Stamm oben (zwei Ziffern + zwei Buchstaben) kennen sie → 62 aktive
+        // Produkte blieben ohne EK und ohne Ledger-Zeile (jede Runde «ohne CJ-Referenz»). Live gemessen:
+        // `product/query?productSku=CJMZ2951147` → result:true mit sellPrice + productWeight.
+        const vier = mVar[1].match(/^(CJ[A-Z]{2}\d{7,})\d{4}$/i);
+        if (!j.result && !j.gedrosselt && vier && !/16900500|Insufficient API points/i.test(JSON.stringify(j))) {
+          await sleep(1200);
+          j = await cj(`product/query?productSku=${vier[1]}`);
+        }
       }
       else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
       // ⚠️ 21.08.2026 — DIESE PRÜFUNG WAR DER GRUND, WARUM DER BACKFILL NIE LIEF.

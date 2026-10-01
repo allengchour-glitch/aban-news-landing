@@ -250,8 +250,11 @@ const SKU_FORMEN = [
   // echte tote Ware» der Messung waren beide AZ-Form, und das Ledger trägt 0 «+N» für diese Form.
   // Dieselbe Regel steht seit 21.09. in cj_verfuegbarkeit.cj_kennt(). Ein «not found» vom falschen
   // Endpunkt beweist nichts (Lehre 09.08.). Der Variantenname hinter dem Bindestrich ist Deko.
-  [/^cj-(\d{6,})/i, m => `/product/query?pid=${m[1]}`],
+  // ⚠️ 01.10.2026 GEMESSEN: UUID ZUERST. Die Ziffern-Form stand vorne und nahm von «CJ-924419AC-19AD-…» nur «924419»
+  // → CJ 1602001 «Product not found: pid:924419» → Merkliste statt Bilder (Log 17:41, 14/14 so). Dazu darf die Ziffern-pid
+  // nicht in Hex weiterlaufen (Lookahead), sonst trifft sie den UUID-Anfang auch ohne Bindestrich-Fortsetzung.
   [/^cj-([0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})/i, m => `/product/query?pid=${m[1]}`],
+  [/^cj-(\d{6,})(?![0-9A-F])/i, m => `/product/query?pid=${m[1]}`],
   [/^cj-([A-Z]{2,8}\d{5,}[A-Z]{0,3})/i, m => /\d{2}[A-Za-z]{2}$/.test(m[1])
       ? `/product/query?variantSku=${m[1]}` : `/product/query?productSku=${m[1]}`],
 ];
