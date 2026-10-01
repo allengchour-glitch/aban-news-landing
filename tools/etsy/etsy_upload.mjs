@@ -154,7 +154,17 @@ async function main() {
   console.log(`Shop ${shop.shop_name} (${me.shop_id}), Währung ${waehrung}`);
   const tax = await kategorie();
   for (const p of pakete) {
-    if (ledger[p.slug]) { console.log(`• ${p.slug}: schon angelegt, übersprungen`); continue; }
+    if (ledger[p.slug]) {
+      // Schon angelegt: nicht doppelt anlegen. Mit ACTIVATE einen bestehenden Entwurf veröffentlichen.
+      if (ACTIVATE && ledger[p.slug].state !== 'active') {
+        await etsy('PATCH', `/application/shops/${me.shop_id}/listings/${ledger[p.slug].listing_id}`, { state: 'active' });
+        ledger[p.slug].state = 'active';
+        ledger[p.slug].veroeffentlicht = new Date().toISOString();
+        fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2) + '\n');
+        console.log(`✓ ${p.slug}: Entwurf ${ledger[p.slug].listing_id} veröffentlicht`);
+      } else console.log(`• ${p.slug}: schon angelegt (${ledger[p.slug].state}), übersprungen`);
+      continue;
+    }
     const preis = PREISE[p.slug][waehrung];
     if (!preis) throw new Error(`Kein Preis für Währung ${waehrung}`);
     const l = await etsy('POST', `/application/shops/${me.shop_id}/listings`, {
