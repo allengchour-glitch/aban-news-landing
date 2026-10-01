@@ -5368,3 +5368,12 @@ gid://shopify/Product/15453955588481	zugeordnet	2	Oktopus-Kleiderständer
 gid://shopify/Product/15453955654017	zugeordnet	8	Elegantes Langkleid mit Blumenmuster
 gid://shopify/Product/15453955752321	zugeordnet	68	Prinzessinnen-Schuhe mit Schleife
 gid://shopify/Product/15453955785089	zugeordnet	15	Strick-Openwork-Strandüberzug
+gid://shopify/Product/15453955948929	zugeordnet	39	Prinzessinnen-Sandalen
+gid://shopify/Product/15453956047233	zugeordnet	98	Kinder-Lauflernschuhe mit Kristall-Detail
+gid://shopify/Product/15453956080001	zugeordnet	25	Einfarbiges Minimalistisch Kleid
+gid://shopify/Product/15453956178305	zugeordnet	3	Prinzessin-Lauflernschuhe
+gid://shopify/Product/15453956243841	zugeordnet	18	Chic-Bluse mit Puffärmeln
+gid://shopify/Product/15453956440449	zugeordnet	18	Warme Cartoon-Schneestiefel
+gid://shopify/Product/15453956669825	zugeordnet	90	Weisse Mädchen Schuhe mit Schleife
+gid://shopify/Product/15453956800897	zugeordnet	16	Velour-Strumpfhosen 4-Farben
+gid://shopify/Product/15453956866433	zugeordnet	12	Weiche Babyschuhe mit Grip
