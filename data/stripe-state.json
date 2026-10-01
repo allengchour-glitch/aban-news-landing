@@ -211,5 +211,13 @@
     "link_id": "plink_1ULpfvRXvVMyfaIrwT2xef9M",
     "cents": 1200,
     "currency": "chf"
+  },
+  "krankenkasse-wechsel": {
+    "product": "prod_VMZQTUvlDGbWEx",
+    "price": "price_1ULqHvRXvVMyfaIrPV0PI6Rh",
+    "link": "https://buy.stripe.com/8x2fZjbuu3IU3gbgvb5wI16",
+    "link_id": "plink_1ULqHwRXvVMyfaIr2IR53NOv",
+    "cents": 1200,
+    "currency": "chf"
   }
 }
