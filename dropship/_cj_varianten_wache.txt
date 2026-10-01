@@ -8960,3 +8960,4 @@ gid://shopify/Product/15454161305985	1790876187	ok	21 Shop / 21 CJ / 0 fehlend /
 gid://shopify/Product/15454161338753	1790876187	ok	60 Shop / 60 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15454161371521	1790876187	ok	64 Shop / 65 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15454161404289	1790876187	ok	21 Shop / 21 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15431384269185	1790892515	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
