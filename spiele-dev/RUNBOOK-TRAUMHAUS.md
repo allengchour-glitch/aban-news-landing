@@ -8337,3 +8337,42 @@ Runde 100 hat sie schon als Rest benannt („Boxen/Zylinder einzelner Farben, je
 - Geometrie 183 MB und JS-Speicher 382 MB unverändert: Quell-Geometrien nach dem Zusammenfassen freigeben (nur wo
   kein Cache sie noch braucht).
 - Hochformat: `#rotHint` hat weiterhin keinen „Trotzdem spielen"-Knopf (Vorschlag liegt beim User).
+
+## Runde 107 · 📱 Handy spielbar: Weiss-Bild, Vollbild, Auflösung (2026-10-01)
+
+User: „unspielbar auf handy" — auf Nachfrage: „ruckelt sehr, voll bild auf handy geht nicht, nach paar sekunde nur weiss
+sehen, auflösung sieht nicht so toll aus". PR #2528 (Runden 89–106) vorher auf Wunsch des Users gemergt (`80151df`).
+
+### 1. „Nach paar Sekunden nur weiss" — ZWEI Ursachen, beide gemessen
+- **Die Begrüssungskarte passte nicht auf ein quer gehaltenes Handy.** `#introCard` (weiss, mittig, ohne max-height,
+  Ebene nicht scrollbar) war 644 px hoch, der Schirm 390 px: „Los geht's" lag bei 443–493 px, also UNTER dem Bildrand.
+  Wer zum ersten Mal spielte, sah nach Modus-Wahl eine weisse Karte und kam nie weiter (sie erscheint bis zum ersten
+  „Los geht's" bei JEDEM Start wieder). Neue Sonde **`probe-r107`** prüft es als Spieler (Tipp auf Solo → Klassisch →
+  Los geht's) und prüft dazu ALLE festen Vollbild-Ebenen: passt der Inhalt in 390 px oder scrollt er?
+  Gegenprobe = alter Stand: „Los geht's 443–493 von 390", „introCard 644 px", Karte geht nicht zu. Neu: Karte höchstens
+  schirmhoch und scrollbar, Knopf klebt unten, quer zwei Spalten, Tippen daneben schliesst → 297–345 von 390 ✓.
+- **Grafikspeicher.** Neu in `probe-handy`: Bytes an den WebGL-Aufrufen gezählt (bufferData/texImage2D/texStorage2D,
+  Mipmaps, delete*; Gegenprobe 2048²-Textur = +21,3 MB, nach Löschen 0). Handy quer, fertige Welt:
+  alter Live-Stand **Spitze 200 MB (Texturen 179 MB)**, nach dem Merge **124 MB (Texturen 89 MB)**. Läuft er auf dem
+  Telefon über, nimmt der Browser den WebGL-Kontext weg und die Leinwand bleibt leer. Bisher hörte niemand darauf.
+  Jetzt: `webglcontextlost` → preventDefault + dunkle Tafel „Die Grafik des Handys ist ausgestiegen", `restored` →
+  three.js baut neu auf (probe-r107: Tafel da, nach `restoreContext` weg, Bilder laufen weiter). Knopf „Leichter neu
+  starten" → **Sparstufe 2** (Texturen 128 px, Abstände ×0,6, Zoom bis 60, 1 Punktlicht, Pixelratio 1; auch `?spar2`).
+
+### 2. Vollbild
+Es gab keins. Jetzt Knopf über dem Ego-Knopf (unten rechts) und „Vollbild & quer" im Hochformat-Hinweis; beim Start
+auf dem Handy einmal von selbst (aus dem Tipp auf Solo/Raum/Beitreten). Android sperrt danach quer. **Das iPhone kennt
+die Vollbild-Schnittstelle für Seiten nicht** — dort sagt der Knopf „Teilen → Zum Home-Bildschirm"; dafür neu
+`traumhaus.webmanifest` (display fullscreen, quer) und die apple-mobile-web-app-Angaben im Kopf.
+
+### 3. Auflösung
+Die dynamische Auflösung fiel auf dem Handy bis Pixelratio 0,675 (844 px Breite → 570 gezeichnet). Auf dem Telefon
+bremsen Aufrufe und JavaScript (Runde 106), nicht die Bildpunkte. Jetzt nie unter 1: Stufen 1,35 · 1,08 · 1.
+
+### 4. Messgeräte, die bisher das Menü massen
+- **probe-handy tippte nur „Solo bauen"** — mit frischem Spielstand öffnet das die Modus-Wahl IM Startbild
+  (`probe-starttipp`: der Tipp kommt an, an der Knopfmitte liegt der Knopf). „gestartet false" seit Runde 103 war diese
+  Wahl, kein Fehler — aber alle Speicherzahlen stammten aus dem Menü-Pfad (dort zeichnet `_warmZeichnen` die ganze Welt
+  neunmal). Jetzt tippt die Sonde Klassisch und Los geht's.
+- Eigene Falle: `pkill -f probe-starttipp` in einem Befehl, der selbst „probe-starttipp" enthält, beendet die eigene
+  Shell (Exit 144).
