@@ -11,6 +11,10 @@
 
 
 
+## 2026-10-01 · 🔎 Google ist der Gewinnkanal — Neuware sofort mit Google-Daten
+90 T: Google 5 Käufe aus 337 Sitzungen, TikTok 0 aus 2'553. Neuimporte nach der Grind-Pause: 13/25 ohne Google-Kategorie, weil die Nachläufer nur täglich laufen → `google_neuimport.py` stündlich; Regeln Adventskalender/Fest-Kostüm ergänzt (Kanarienvögel 5/5, «Damen Kostüm Blazer» bleibt aussen).
+**Lehre:** Ein Tagesläufer reicht, solange wenig neu kommt. Sobald ein Importer Hunderte am Tag anlegt, muss die Pflichtangabe beim Anlegen oder stündlich kommen — sonst steht die frischeste Ware (die Google zuerst testet) einen Tag lang ohne Kategorie. → `dropship/GOOGLE-FOKUS-2026-10-01.md`
+
 ## 2026-10-01 · 🔤 Erfundene Wörter in Neuimport-Titeln (Verbesserungsrunde 16:25, 12-Tage-Plan Tag 1)
 «Inflierbares Halloween Kostüm» (von «inflatable») — die Titel-Sprachwache fängt nur abgeschriebenes Englisch, nicht erfundene deutsche Wörter. Neu: `titel_kauderwelsch_wache.py` (Gemini Block + ChatGPT einzeln, Änderung nur bei Einigkeit über Wort und Ersatz), Kanarienvögel 7/7, Aufseher alle 6 h.
 **Lehre:** Ein Prüfer für «nicht übersetzt» ist kein Prüfer für «falsch übersetzt» — jede Fehlerform braucht ihren eigenen Test. Ohne Wörterbuch ersetzen zwei unabhängige Modelle das Nachschlagen; Uneinigkeit heisst melden, nicht raten. → `dropship/TITEL-KAUDERWELSCH-2026-10-01.md`

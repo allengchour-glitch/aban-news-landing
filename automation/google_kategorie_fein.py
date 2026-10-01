@@ -77,6 +77,11 @@ KOS = PC + "Cosmetics > "
 KH = "Home & Garden > Kitchen & Dining > "
 MENSCH = re.compile(r"\b(damen|herren|frauen|männer|unisex|mädchen|jungen)\b|katzenohren", re.I)
 LEER_REGELN = [
+    # 01.10.2026 (Google-Fokus, Neuimporte nach der Grind-Pause): «Acryl Adventskalender Blind Box» landete über «kalender» bei
+    # Büro-Kalendern, «Aufblasbares Halloween-Kostüm» bei Saison-DEKO. Beide Regeln VOR den allgemeinen. «Kostüm» allein bleibt
+    # draussen (Damen-Kostüm = Anzug) — nur mit Fest-Anker und ohne «Deko».
+    (r"adventskalender|advent calendar", "Home & Garden > Decor > Seasonal & Holiday Decorations > Advent Calendars", ""),
+    (r"^(?!.*deko).*(?:(?:halloween|fasnacht|fastnacht|karneval|cosplay)\W.{0,40}kost[üu]m\w*|kost[üu]m\w*.{0,40}\W(?:halloween|fasnacht|fastnacht|karneval|cosplay))", "Apparel & Accessories > Costumes & Accessories > Costumes", ""),
     # Fortura-Fanartikel: «Radsocken für Auto Holland» sind Radkappen-Überzüge, keine Socken
     (r"radsocken|spiegelsocken|autofahne|auto-?flagge|auto[- ]?waschhandschuh|autowasch\w*", "Vehicles & Parts > Vehicle Parts & Accessories", ""),
     (r"\bgps\b.*(tracker|halsband|ortung|anti-verlust)|gps-\w*tracker", "Electronics > GPS Tracking Devices", ""),

@@ -886,6 +886,16 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_speicher_kuerzen_$SKK.lock; flock -n 9 || exit 0; \
         KLASSE=$SKK SCHARF=1 N=8000 exec python3 automation/speicher_bilder_kuerzen.py" >> "/tmp/speicher_kuerzen_$SKK.log" 2>&1 & )
   done
+  # GOOGLE-NEUIMPORT (01.10.2026, Betreiber «google rangliste cj sachen pushen»): neue Ware sofort mit Google-Kategorie +
+  # Geschlecht statt erst durch die Tagesläufer (13/25 Neuimporte standen ohne Kategorie im einzigen Kanal mit Verkäufen).
+  GN=/tmp/google_neuimport.log
+  if [ -f "$REPO/automation/google_neuimport.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 3300 ]; then
+      touch "$GN"
+      ( cd "$REPO" && SCHARF=1 STUNDEN=3 timeout 600 python3 automation/google_neuimport.py >> "$GN" 2>&1 )
+    fi
+  fi
   # TITEL-KAUDERWELSCH (01.10.2026, 12-Tage-Plan Tag 1, Grind wieder an): Neuimporte mit erfundenen Wörtern
   # («Inflierbares» statt «Aufblasbares») — Gemini + ChatGPT müssen dasselbe Wort finden, sonst nur Meldung. Alle 6 h.
   TK=/tmp/titel_kauderwelsch_wache.log

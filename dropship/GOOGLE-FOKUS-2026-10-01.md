@@ -22,3 +22,14 @@ Google-Kanal: täglicher Lückenschliesser (`google_kanal_luecke.py`, zuletzt 95
 ## OFFEN — die zwei Klicks mit dem grössten Google-Effekt (Betreiber, Merchant Center, Auftrag `COWORK-MERCHANT-2026-10-01.md`)
 1. **Lieferzeit eintragen** (fehlt in der Store-Qualität CH ganz; Merchant sagt 6–14 WT, Shop 10–20 WT).
 2. **Deutschland aus den Feed-Ländern** (wir liefern nur CH; DE zieht die Qualitätswerte runter).
+
+## Nachtrag 16:45 — «google rangliste cj sachen pushen»
+**GEMESSEN:** 25 neueste aktive CJ-Produkte: 13 ohne `google_product_category`, Kleidung ohne `gender`, alle Typ «Trend-Produkt».
+Die Nachläufer sind täglich → neue Ware bis 24 h ohne Kategorie bei Google. Zwei falsche Regeln: «Adventskalender» → Büro-Kalender,
+«Halloween-Kostüm» → Saison-Deko.
+**GETAN:** `google_kategorie_fein.py` zwei Vorrang-Regeln (Advent Calendars; Costumes nur mit Fest-Anker und ohne «Deko» — «Damen
+Kostüm Blazer» bleibt draussen), Kanarienvögel 5/5. Neu `automation/google_neuimport.py` (stündlich im Aufseher, letzte 3 h):
+Kategorie nur wenn leer (Taxonomie-geprüft), Geschlecht nur für Kleidung; erster Lauf 14 Felder gesetzt + zurückgelesen, 0 Fehler.
+**Was Google-Ranking sonst bestimmt (QUELLE Google Merchant Center Hilfe, nicht gemessen):** Titel mit Produktart + Merkmal,
+vollständige Attribute (Kategorie, Geschlecht, Farbe, Grösse), gute Bilder ohne Text, Preis, Lieferzeit/Versand/Rückgabe
+(Store-Qualität), Bewertungen. Davon offen beim Betreiber: Lieferzeit + DE raus (siehe oben).
