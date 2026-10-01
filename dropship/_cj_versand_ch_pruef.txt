@@ -2378,3 +2378,11 @@ p330-mini-beamer-heimkino-fur-unterwegs-614600	2407150523221614800	7	19.43	ok	la
 interaktives-katzenspielzeug-mit-rotierender-s-627400	2603190158441627800	7	20.52	ok	landeseite
 automatischer-futter-und-wassernapf-534976	1674792284287672320	16	27.47	ok	landeseite
 mini-led-beamer-fur-handy-heimkino-150016	1433636562083647488	16	15.20	ok	landeseite
+futterspielzeug-karotte-mit-saugnapf-586176	1580208663720112128	16	6.01	ok	landeseite
+webcam-mit-full-hd-led-ringlicht-108608	1387226046784475136	16	6.48	ok	landeseite
+intelligenter-sensor-seifenspender-aus-edelsta-068032	1744234003156176896	7	15.42	ok	landeseite
+999-silber-anhanger-fortuna-glucksmunze-filigran	2060914819531165697	16	4.47	ok	landeseite
+10-in-1-diamant-make-up-pinselset-mit-tasche-423681	2016395327306641410	0	-	KEINE CH-Option → DRAFT	landeseite
+keramik-teedose-luftdicht-630100	2607010514221630800	16	10.84	ok	landeseite
+retro-super-console-x-cube-058112	1595361933123923968	7	17.20	ok	landeseite
+intelligentes-wecker-armband-mit-vibrationsala-620000	-	-	-	unklar sku 0 	landeseite
