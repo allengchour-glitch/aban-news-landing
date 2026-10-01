@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Krankenkassen-Wechsel Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#b45309;--akz-lt:#fde9c8;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e7dfd2;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--rot:#b91c1c;--b1:#b45309;--b2:#6b7280;--b3:#15803d}
+@media(prefers-color-scheme:dark){:root{--akz:#fbbf24;--akz-lt:#5a4422;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--rot:#f87171;--b1:#fbbf24;--b2:#9c9384;--b3:#4ade80}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(24px,4.5vw,32px);letter-spacing:-.02em;line-height:1.15}
+h2{font-size:1.2rem;margin:0 0 10px}
+.sub{color:var(--ink2);margin:6px 0 18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+#ergebnis td:not(:first-child){white-space:nowrap}
+input,select{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--akz)}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.x{padding:6px 10px;color:var(--muted)}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.zahl{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.gut{color:var(--gut)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:12px}
+.warn{border-left:4px solid var(--rot);padding:10px 14px;background:var(--field);border-radius:8px;margin:8px 0}
+.balken{display:flex;height:22px;border-radius:999px;overflow:hidden;margin:8px 0;background:var(--line)}
+.balken i{display:block;height:100%}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:.86rem;color:var(--ink2)}
+.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c)}
+.klein{font-size:.82rem;color:var(--muted)}
+@media(max-width:560px){.karten thead{display:none}.karten tr{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.karten td{border:0;padding:0;text-align:left}.karten td:first-child{grid-column:1/-1}
+.karten td[data-l]::before{content:attr(data-l);display:block;font-size:.72rem;color:var(--muted);font-weight:700}}
+@media print{button,.leiste,.noprint{display:none!important}body{background:#fff}}
+.brief{background:#fff;color:#111;border:1px solid var(--line);border-radius:10px;padding:28px 30px;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;white-space:pre-wrap}
+.zwei{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.monate{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.86rem}.monate label{display:flex;gap:5px;align-items:center;font-weight:400;margin:0}
+@media print{.wrap>*:not(#briefbox){display:none!important}#briefbox{border:0;padding:0}#briefbox h2,#briefbox .hint{display:none}.brief{border:0;padding:0}}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll table td,.scroll table th{white-space:nowrap}
+.karten td,.karten th{white-space:normal}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Krankenkassen-Wechsel Schweiz</h1>
+<p class="sub">Welche Franchise für wen die günstigste ist, bis wann die Kündigung ankommen muss, und die fertigen Briefe. Nach Art. 7 KVG und Art. 93, 94 und 103 KVV. Alles bleibt in diesem Browser.</p>
+
+<section class="box" id="fristbox"></section>
+
+<section class="box">
+<h2>1 · Personen im Haushalt</h2>
+<div class="scroll"><table class="karten"><thead><tr><th>Name</th><th>Kind (bis 18)</th><th>Versichertennummer</th><th>Gesundheitskosten pro Jahr</th><th></th></tr></thead><tbody id="personen"></tbody></table></div>
+<div class="leiste"><button id="neuPerson">+ Person</button></div>
+<p class="hint">Gesundheitskosten: alle Rechnungen von Arzt, Apotheke, Spital, Physio eines Jahres (was die Grundversicherung übernimmt). Am besten aus der letzten Leistungsabrechnung der Kasse. Unsicher? Lieber etwas höher schätzen.</p>
+</section>
+
+<section class="box">
+<h2>2 · Prämien eintragen</h2>
+<p class="hint">Pro Person und Franchise die Monatsprämie. Die neuen Prämien stehen im Prämienbrief oder für alle Kassen auf priminfo.admin.ch (Rechner des Bundes). Felder leer lassen, die du nicht vergleichen willst. <b>Die vorausgefüllten Beträge sind ein erfundenes Beispiel</b>, keine echten Prämien.</p>
+<div id="praemien"></div>
+</section>
+
+<section class="box" id="ergebnis"></section>
+
+<section class="box">
+<h2>4 · Angaben für die Briefe</h2>
+<div class="zwei">
+<div><label for="absender">Deine Namen und Adresse</label><textarea id="absender" rows="4" style="font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)" placeholder="Anna Muster&#10;Beispielweg 12&#10;3000 Bern"></textarea></div>
+<div><label for="kasse">Jetzige Krankenkasse (Adresse)</label><textarea id="kasse" rows="4" style="font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)" placeholder="Musterkasse AG&#10;Postfach&#10;8000 Zürich"></textarea></div>
+<div><label for="ort">Ort</label><input id="ort" placeholder="Bern"></div>
+<div><label for="zusatz">Zusatzversicherungen</label><select id="zusatz"><option value="behalten">bei der jetzigen Kasse behalten</option><option value="kuendigen">auch kündigen (eigener Brief)</option><option value="keine">habe keine</option></select></div>
+<div><label for="zusatzDatum">Zusatz kündigen auf (laut deinen Vertragsbedingungen)</label><input id="zusatzDatum" type="date"></div>
+</div>
+</section>
+
+<section class="box" id="briefbox">
+<h2>5 · Kündigung Grundversicherung</h2>
+<p class="hint noprint">Drucken, alle volljährigen Personen unterschreiben, eingeschrieben schicken. Kopie und Beleg aufbewahren.</p>
+<div class="brief" id="brief"></div>
+<div class="leiste noprint"><button onclick="window.print()">Brief drucken / als PDF</button><button id="kopie">Brieftext kopieren</button></div>
+<div id="zusatzbrief"></div>
+</section>
+
+<section class="box">
+<h2>6 · Checkliste: so geht nichts schief</h2>
+<ol id="check" style="margin-left:18px"></ol>
+<div class="leiste noprint"><button id="beispiel">Beispiel laden</button><button id="leeren">Alles leeren</button></div>
+</section>
+
+<p class="klein">Planungshilfe, keine Rechtsberatung. Grundlage: Art. 7 und 64 KVG, Art. 93, 94 und 103 KVV. Prämien: priminfo.admin.ch. Ausnahmen beim Selbstbehalt (z. B. 40 % bei Originalpräparaten mit günstigerem Generikum) sind nicht abgebildet. © aban news · abannews.com</p>
+</div>
+<script>
+/*ENGINE*/
+</script>
+<script>
+(function(){
+  "use strict";
+  var E=window.KrankenkasseEngine,K="aban-krankenkasse-v1";
+  var $=function(id){return document.getElementById(id)};
+  var MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  function heute(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function datum(iso){var p=iso.split("-");return +p[2]+". "+MON[+p[1]-1]+" "+p[0]}
+  function chf(x){return "CHF "+Math.round(x).toLocaleString("de-CH")}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  var BEISPIEL={personen:[{name:"Anna",kind:false,nr:"",kosten:600,p:{"300":452,"500":438,"1000":403,"1500":369,"2000":335,"2500":301}},
+    {name:"Lia",kind:true,nr:"",kosten:300,p:{"0":118,"100":112,"200":106,"300":100,"400":95,"500":91,"600":86}}],absender:"",kasse:"",ort:"",zusatz:"behalten",zusatzDatum:""};
+  var st=JSON.parse(JSON.stringify(BEISPIEL));
+  try{var g=JSON.parse(localStorage.getItem(K)||"null");if(g&&g.personen)st=g}catch(e){}
+  function speichern(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  var F=E.fristen(heute());
+  function frist(){
+    var dringend=F.tageBis<=21;
+    $("fristbox").innerHTML='<h2>Deine Frist</h2><div class="kacheln"><div class="kachel"><b>Kündigung muss ankommen bis</b><div class="zahl'+(dringend?' rot':'')+'">'+datum(F.mitPraemie.eintreffenBis)+'</div>'+(F.mitPraemie.verpasst?'Frist für dieses Jahr vorbei, nächste Gelegenheit':'noch '+F.tageBis+' Tage')+'</div>'
+      +'<div class="kachel"><b>Spätestens abschicken</b><div class="zahl">'+datum(F.abschickenBis)+'</div>eingeschrieben, mit Reserve</div>'
+      +'<div class="kachel"><b>Neue Kasse ab</b><div class="zahl gut">'+datum(F.mitPraemie.wirksam)+'</div>Art. 7 Abs. 2 KVG</div></div>'
+      +'<p class="klein">Massgebend ist, wann der Brief <b>ankommt</b>, nicht wann du ihn abschickst. Ein eingeschriebener Brief, der nur abgeholt werden kann, kommt unter Umständen später an: deshalb 10 Tage Reserve. Ohne neue Prämie (ordentlich, Art. 7 Abs. 1): bis '+datum(F.ordentlich.eintreffenBis)+' auf den '+datum(F.ordentlich.wirksam)+'.</p>';
+  }
+  function felder(){
+    $("personen").innerHTML=st.personen.map(function(p,i){var a='data-i="'+i+'"';
+      return '<tr><td data-l="Name"><input '+a+' data-k="name" value="'+esc(p.name)+'" aria-label="Name"></td>'
+        +'<td data-l="Kind"><input type="checkbox" '+a+' data-k="kind"'+(p.kind?' checked':'')+' aria-label="Kind"></td>'
+        +'<td data-l="Versichertennummer"><input '+a+' data-k="nr" value="'+esc(p.nr)+'" aria-label="Versichertennummer"></td>'
+        +'<td data-l="Kosten pro Jahr"><input '+a+' data-k="kosten" type="number" min="0" step="100" value="'+(+p.kosten||0)+'" aria-label="Gesundheitskosten"></td>'
+        +'<td><button class="x" data-weg="'+i+'" aria-label="entfernen">✕</button></td></tr>'}).join("");
+    $("praemien").innerHTML=st.personen.map(function(p,i){var fr=E.FRANCHISEN[p.kind?"kind":"erwachsen"];
+      return '<p style="margin:10px 0 4px"><b>'+esc(p.name||("Person "+(i+1)))+'</b> · Monatsprämie je Franchise</p><div class="zwei">'+fr.map(function(f){return '<div><label>Franchise '+f+'</label><input type="number" min="0" step="1" data-p="'+i+'" data-f="'+f+'" value="'+((p.p||{})[f]||"")+'"></div>'}).join("")+'</div>'}).join("");
+  }
+  function rechnen(){
+    var h="<h2>3 · Welche Franchise ist für wen am günstigsten?</h2>",total=0,totalJetzt=0;
+    st.personen.forEach(function(p){
+      var art=p.kind?"kind":"erwachsen",opt=Object.keys(p.p||{}).map(function(f){return{franchise:+f,praemie:+p.p[f]}});
+      var v=E.vergleich(opt,+p.kosten||0,art);
+      if(!v.beste){h+='<p><b>'+esc(p.name)+':</b> noch keine Prämien eingetragen.</p>';return}
+      total+=v.beste.jahr;
+      h+='<p style="margin-top:12px"><b>'+esc(p.name)+'</b> · bei '+chf(+p.kosten||0)+' Gesundheitskosten: <b class="gut">Franchise '+v.beste.franchise+'</b> für '+chf(v.beste.jahr)+' im Jahr.</p>'
+        +'<div class="scroll"><table><thead><tr><th>Franchise</th><th>Prämie / Monat</th><th>Jahr bei deinen Kosten</th><th>ohne Arzt</th><th>schlimmster Fall</th></tr></thead><tbody>'
+        +v.liste.map(function(o){return '<tr'+(o===v.beste?' style="font-weight:700"':'')+'><td>'+o.franchise+'</td><td>'+chf(o.praemie)+'</td><td>'+chf(o.jahr)+'</td><td>'+chf(o.ohneArzt)+'</td><td>'+chf(o.max)+'</td></tr>'}).join("")+'</tbody></table></div>'
+        +(v.schwelle?'<p class="klein">Gewinnschwelle: Bis rund '+chf(v.schwelle)+' Gesundheitskosten im Jahr fährt '+esc(p.name)+' mit Franchise '+v.hoechste.franchise+' besser, darüber mit '+v.tiefste.franchise+'. Achtung „schlimmster Fall“: Bei einer hohen Franchise musst du im Ernstfall bis zu '+chf(v.hoechste.franchise+E.SB_MAX[art])+' selbst bezahlen können.</p>':'');
+    });
+    if(total)h+='<p class="urteil">Mit der günstigsten Franchise pro Person kostet euer Haushalt rund <b>'+chf(total)+' im Jahr</b> (Prämien plus eigene Kosten bei den geschätzten Ausgaben).</p>';
+    h+='<p class="klein">Tiefere Franchise oder anderer Versicherer: nur auf 1. Januar mit Kündigung bis '+datum(F.mitPraemie.eintreffenBis)+'. Höhere Franchise: bei der jetzigen Kasse auf Beginn des Jahres beantragen, ohne Kündigung (Art. 94 KVV).</p>';
+    $("ergebnis").innerHTML=h; briefe(); checkliste();
+  }
+  function briefe(){
+    var j=F.mitPraemie.wirksam.slice(0,4)-1, ende="31. Dezember "+j;
+    var pers=st.personen.map(function(p){return "- "+(p.name||"[Name]")+(p.nr?", Versichertennummer "+p.nr:", Versichertennummer [Nummer]")}).join("\n");
+    var t=(st.absender||"[Namen und Adresse]")+"\n\n\nEinschreiben\n"+(st.kasse||"[Krankenkasse, Adresse]")+"\n\n\n"+(st.ort||"[Ort]")+", "+datum(heute())+"\n\n"
+      +"Kündigung der obligatorischen Krankenpflegeversicherung (Grundversicherung) per "+ende+"\n\n"
+      +"Sehr geehrte Damen und Herren\n\nGestützt auf Art. 7 Abs. 2 KVG kündige ich die obligatorische Krankenpflegeversicherung für die folgenden Personen auf den "+ende+":\n\n"+pers
+      +"\n\n"+(st.zusatz==="behalten"?"Die Zusatzversicherungen sollen bei Ihnen unverändert weiterlaufen (Art. 7 Abs. 7 KVG).\n\n":"")
+      +"Der neue Versicherer wird Ihnen die lückenlose Weiterversicherung bestätigen (Art. 7 Abs. 5 KVG). Bitte bestätigen Sie mir den Eingang dieser Kündigung schriftlich.\n\nFreundliche Grüsse\n\n\n\n"+((st.absender||"").split("\n")[0]||"[Unterschrift]");
+    $("brief").textContent=t;
+    if(st.zusatz==="kuendigen"){
+      var zd=st.zusatzDatum?datum(st.zusatzDatum):"[Datum laut Vertragsbedingungen]";
+      var z=(st.absender||"[Namen und Adresse]")+"\n\n\nEinschreiben\n"+(st.kasse||"[Krankenkasse, Adresse]")+"\n\n\n"+(st.ort||"[Ort]")+", "+datum(heute())+"\n\n"
+        +"Kündigung der Zusatzversicherungen per "+zd+"\n\nSehr geehrte Damen und Herren\n\nIch kündige die Zusatzversicherungen nach VVG für die folgenden Personen auf den "+zd+":\n\n"+pers
+        +"\n\nBitte bestätigen Sie mir den Eingang dieser Kündigung schriftlich.\n\nFreundliche Grüsse\n\n\n\n"+((st.absender||"").split("\n")[0]||"[Unterschrift]");
+      $("zusatzbrief").innerHTML='<h2 style="margin-top:18px">Kündigung Zusatzversicherungen</h2><p class="warn"><b>Erst abschicken, wenn die neue Zusatzversicherung schriftlich zugesagt hat.</b> Bei Zusatzversicherungen gibt es eine Gesundheitsprüfung, sie können dich ablehnen. Kündigungsfrist und Termin stehen in deinen Vertragsbedingungen (oft 3 Monate auf Ende Jahr).</p><div class="brief">'+esc(z)+'</div>';
+    } else $("zusatzbrief").innerHTML="";
+  }
+  function checkliste(){
+    var c=["Neue Prämien vergleichen: priminfo.admin.ch (Bund, alle Kassen, alle Franchisen).",
+      "Bei der neuen Kasse anmelden und die <b>Aufnahmebestätigung</b> abwarten. Grundversicherung muss dich aufnehmen, ohne Gesundheitsfragen.",
+      "Kündigung Grundversicherung eingeschrieben schicken, so dass sie bis <b>"+datum(F.mitPraemie.eintreffenBis)+"</b> ankommt (spätestens am "+datum(F.abschickenBis)+" auf die Post).",
+      "Offene Prämien und Rechnungen bei der alten Kasse bezahlen. Bei Prämien-Ausständen ist ein Wechsel nicht möglich.",
+      "Die alte Versicherung endet erst, wenn die neue sie über die lückenlose Versicherung informiert hat (Art. 7 Abs. 5 KVG). Du bist also nie ohne Schutz.",
+      "Zusatzversicherungen <b>nie</b> kündigen, bevor die neue Zusatz schriftlich zugesagt hat.",
+      "Nur die Franchise erhöhen? Keine Kündigung nötig: bei der jetzigen Kasse auf 1. Januar beantragen.",
+      "Neue Versicherungskarte ab 1. Januar verwenden, alte vernichten."];
+    $("check").innerHTML=c.map(function(x){return "<li>"+x+"</li>"}).join("");
+  }
+  function aendern(e){
+    var t=e.target,i=t.getAttribute("data-i"),k=t.getAttribute("data-k"),pi=t.getAttribute("data-p");
+    if(i!==null&&k){var p=st.personen[+i];if(k==="kind"){p.kind=t.checked;p.p={};felder()}else p[k]=k==="kosten"?(+t.value||0):t.value}
+    else if(pi!==null){var pp=st.personen[+pi];pp.p=pp.p||{};if(t.value==="")delete pp.p[t.getAttribute("data-f")];else pp.p[t.getAttribute("data-f")]=+t.value}
+    else if(["absender","kasse","ort","zusatz","zusatzDatum"].indexOf(t.id)>=0)st[t.id]=t.value; else return;
+    speichern();rechnen();
+  }
+  document.addEventListener("input",aendern);document.addEventListener("change",aendern);
+  document.addEventListener("click",function(e){var t=e.target,w=t.getAttribute&&t.getAttribute("data-weg");
+    if(w!==null&&w!==undefined){st.personen.splice(+w,1)}
+    else if(t.id==="neuPerson")st.personen.push({name:"",kind:false,nr:"",kosten:500,p:{}});
+    else if(t.id==="beispiel")st=JSON.parse(JSON.stringify(BEISPIEL));
+    else if(t.id==="leeren")st={personen:[{name:"",kind:false,nr:"",kosten:500,p:{}}],absender:"",kasse:"",ort:"",zusatz:"behalten",zusatzDatum:""};
+    else if(t.id==="kopie"){if(navigator.clipboard)navigator.clipboard.writeText($("brief").textContent).then(function(){t.textContent="Kopiert ✓"});return}
+    else return;
+    speichern();laden()});
+  function laden(){["absender","kasse","ort","zusatz","zusatzDatum"].forEach(function(f){$(f).value=st[f]||(f==="zusatz"?"behalten":"")});felder();rechnen()}
+  frist();laden();
+})();
+</script>
+</body>
+</html>

@@ -64,6 +64,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (🏥 Krankenkassen-Wechsel-Paket CHF 12 — saisonal: Frist 30.11.):** Nachfrage per Google-Vorschlag belegt
+(„krankenkasse wechseln frist“, „krankenkasse kündigen vorlage schweiz“, „franchise rechner“, „krankenkasse vergleich 2027“).
+`tools/krankenkasse/` (Engine + 12 Tests, Mutationsprobe 3/3): Franchise-Vergleich pro Person (Erwachsene/Kinder), Gewinnschwelle,
+schlimmster Fall, Fristen. **Recht bei fedlex geprüft:** Art. 7 KVG (Abs. 2: Eintreffen bis 30.11., Abs. 5 keine Lücke, Abs. 7 Zusatz
+behalten), KVV Stand 1.8.2026 Art. 93 (Franchisen), 94 (höher nur auf Jahresbeginn), 103 (300, Selbstbehalt-Deckel 700/350).
+KVV-HTML über SPARQL `fedlex.data.admin.ch/sparqlendpoint` (Firecrawl schafft die lange KVV-Seite nicht). Gratis-Seite
+`krankenkasse-wechseln-schweiz.html` + Kaufkasten auf `krankenkassen-franchise-rechner.html`. **Jedes Jahr im September prüfen:**
+Franchisen/Deckel unverändert? Nach dem 30.11. Seiten-Text auf „nächstes Jahr“ achten (Engine rechnet automatisch).
+
 **📌 2026-10-01 (📦 Umzugs-Paket Schweiz CHF 12 + Gratis-Seite `wohnung-kuendigen-schweiz.html`):** Nachfrage per Google-Vorschlag
 belegt („kündigung wohnung vorlage schweiz", „umzug checkliste schweiz pdf", „wohnungsabnahme checkliste schweiz"). `tools/umzug/`
 (Engine + 18 Tests, nutzt `naechsterTermin` der Mietzins-Engine), App mit Kündigungstermin, Brief (Mitmieter/Art. 266m, Nachmieter
