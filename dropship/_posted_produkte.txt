@@ -112,3 +112,5 @@ pid:15412301922689
 slug:elektrischer-fleischwolf-5l-kuchenmaschine-656962
 name:elektrischerfleischwolf5l
 slug:fahnenkette-schweizer-kantone-fga88144
+slug:nibosi-quarzuhr-mit-edelstahlband-e89d0a
+name:nibosiquarzuhrmitedelstahlband
