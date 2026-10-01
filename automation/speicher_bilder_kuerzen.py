@@ -221,6 +221,14 @@ def main():
                 skip += 1; continue
             d = gql('mutation($p:ID!,$m:[ID!]!){productDeleteMedia(productId:$p,mediaIds:$m){deletedMediaIds mediaUserErrors{message}}}',
                     {"p": pid, "m": ids})["productDeleteMedia"]
+            if "does not exist" in json.dumps(d.get("mediaUserErrors") or ""):
+                # Export älter als das Produkt (01.10.: «stahl-controller», Media inzwischen weg) → nur noch vorhandene IDs, einmal neu
+                da = {n["id"] for n in gql('query($p:ID!){product(id:$p){media(first:250){nodes{id}}}}', {"p": pid})["product"]["media"]["nodes"]}
+                ids = [m for m in ids if m in da]
+                if not ids:
+                    skip += 1; continue
+                d = gql('mutation($p:ID!,$m:[ID!]!){productDeleteMedia(productId:$p,mediaIds:$m){deletedMediaIds mediaUserErrors{message}}}',
+                        {"p": pid, "m": ids})["productDeleteMedia"]
             if d.get("mediaUserErrors") or not d.get("deletedMediaIds"):
                 fehler += 1
                 print(f"  ⚠️ {h}: {d.get('mediaUserErrors')}", file=sys.stderr, flush=True)
