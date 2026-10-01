@@ -665,10 +665,10 @@ search:castor oil hexane free
 #done search:eyeball doorbell halloween
 #done search:led bat halloween decoration
 #done search:house shaped piggy bank
-search:rotating spinning necklace
-search:hair tinsel
-search:electric spin body brush
-search:peel and stick wall decor
+#done search:rotating spinning necklace
+#done search:hair tinsel
+#done search:electric spin body brush
+#done search:peel and stick wall decor
 search:heatless curling rod
 search:magnetic power bank phone
 search:privacy screen protector iphone
