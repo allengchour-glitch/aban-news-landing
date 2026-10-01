@@ -218,3 +218,11 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
   mehr jedes Bild `force` erzwingt. Gegenprobe: eingefrorenes Objekt mit direkt umgeschriebener `.matrix`.
 - `probe-r106-bilder.mjs` (Runde 106) — Handy quer, drei Ansichten mit und ohne Sparmodus (`?fps` / `?fps&voll`),
   Bilder nach spiele-dev/screenshots/r106-*.png. Urteilt nicht.
+- `probe-r107.mjs` (Runde 107, User: „unspielbar auf handy") — Handy quer wie ein Spieler (Solo → Klassisch → Los
+  geht's): Begrüssungskarte im Bild, ALLE festen Vollbild-Ebenen passen oder scrollen, Auflösungsstufen ≥ 1,
+  Vollbild-Knopf, Grafikverlust (WEBGL_lose_context) → Tafel → zurück → Bilder laufen weiter, Hochformat-Knopf.
+  Gegenprobe: alter Stand meldet „Los geht's 443–493 von 390".
+- `probe-starttipp.mjs` (Runde 107) — kommt der echte Touch-Tipp auf „Solo bauen" an? Was liegt an der Knopfmitte?
+  Ergebnis: ja — er öffnet die Modus-Wahl im Startbild.
+- `probe-handy.mjs` misst seit Runde 107 den Grafikspeicher in Bytes an den WebGL-Aufrufen (Gegenprobe 2048²-Textur)
+  und spielt sich wie ein Spieler ins Spiel (vorher blieb es in der Modus-Wahl).

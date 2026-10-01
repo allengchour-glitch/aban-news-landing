@@ -1,0 +1,17 @@
+{
+  "name": "Traumhaus",
+  "short_name": "Traumhaus",
+  "description": "Baue dein Traumhaus im Browser: Wände, Möbel, Bewohner, eine ganze Stadt.",
+  "lang": "de",
+  "start_url": "/traumhaus.html",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#241d15",
+  "theme_color": "#241d15",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "/icons/arcade-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/arcade-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

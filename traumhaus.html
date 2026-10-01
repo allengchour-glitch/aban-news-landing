@@ -8,6 +8,16 @@
 <link rel="preload" as="fetch" type="model/gltf-binary" href="models/th_mann.glb" crossorigin>
 <link rel="preload" as="fetch" type="model/gltf-binary" href="models/th_frau.glb" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<!-- 📱 Runde 107 (User: „voll bild auf handy geht nicht"): als Web-App vom Home-Bildschirm startet Traumhaus ohne
+     Browserleisten, quer. Am iPhone ist das der EINZIGE Weg zum Vollbild — Safari kennt die Vollbild-Schnittstelle dort
+     nur fuer Videos. Android bekommt zusaetzlich den Vollbild-Knopf (requestFullscreen + Querformat sperren). -->
+<link rel="manifest" href="/traumhaus.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Traumhaus">
+<link rel="apple-touch-icon" href="/icons/apple-touch-180.png">
+<meta name="theme-color" content="#241d15">
 <meta name="aban-nav" content="off"><!-- Vollbild-Spiel: keine Website-Navileiste (sonst frisst sie auf dem Handy den halben Screen) -->
 <title>Traumhaus — Bau-Simulation (Sims-Style, Online-Koop) | aban news</title>
 <meta name="description" content="Traumhaus: baue dein Haus im Browser — Wände, Böden, echte 3D-Möbel, zwei Bewohner mit Bedürfnissen, Tag/Nacht, Romantik-Modus. Solo oder Online-Koop mit Raum-Code. Gratis, kein Download.">
@@ -296,6 +306,21 @@ canvas{display:block}
 #netBadge{position:fixed;top:calc(60px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:11;background:rgba(90,150,90,.9);color:#fff;border-radius:14px;padding:4px 14px;font-size:.8rem;font-weight:800;display:none}
 .hide{display:none!important}
 input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-size:16px}
+
+/* 📱 BEGRUESSUNGSKARTE PASST AUF JEDES HANDY (Runde 107, User: „unspielbar auf handy"). GEMESSEN (probe-r107, Handy
+   quer 844×390): die Karte ist rund 700 px hoch, mittig in 390 px — „Los geht's" lag UNTER dem Bildrand, die Ebene liess
+   sich nicht scrollen. Wer das Spiel zum ersten Mal oeffnete, kam nicht weiter. Jetzt: Karte hoechstens so hoch wie der
+   Schirm und scrollbar, der Knopf klebt unten in der Karte, quer zwei Spalten; Tippen daneben schliesst sie auch. */
+#introCard{padding:8px !important}
+#introCard>div{max-height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;overscroll-behavior:contain}
+#introOk{position:sticky;bottom:0}
+@media (max-height:520px){
+  #introCard>div{max-width:720px !important;width:94vw !important;padding:12px 18px 10px !important}
+  #introCard>div>div:nth-child(2){margin:2px 0 8px !important}
+  #introCard>div>div:nth-child(3){display:grid !important;grid-template-columns:1fr 1fr;gap:6px 16px !important;font-size:.88rem !important}
+  #introCard>div>div:nth-child(3)>div:last-child{grid-column:1/-1;margin-top:2px !important}
+  #introOk{margin-top:10px !important;padding:11px 36px !important}
+}
 </style>
 </head>
 <body>
@@ -305,6 +330,8 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12zM3 3l18 18"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+<symbol id="i-voll" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+<symbol id="i-vollaus" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></symbol>
 <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9.5h.01M15 9.5h.01"/></symbol>
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 3M16 6h3a3 3 0 0 1-3 3M12 13v4M8 20h8M9.5 17h5"/></symbol>
 <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 3c3 2 4.5 6 4.5 9l2 3-3 1-1 3h-5l-1-3-3-1 2-3C7.5 9 9 5 12 3z"/><circle cx="12" cy="10" r="1.3"/></symbol>
@@ -391,6 +418,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <button class="tbtn" id="piDance" title="Tanz vorschlagen">💃</button>
 </div>
 <div id="zoomBtns" style="position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;flex-direction:column;gap:8px">
+  <button class="tbtn" id="vollBtn" title="Vollbild" aria-label="Vollbild"><svg class="ik" aria-hidden="true"><use href="#i-voll"/></svg></button>
   <button class="tbtn" id="egoBtn" title="Ego-Perspektive (wie GTA)"><svg class="ik" aria-hidden="true"><use href="#i-eye"/></svg></button>
   <button class="tbtn" id="zoomIn" title="Näher"><svg class="ik" aria-hidden="true"><use href="#i-plus"/></svg></button>
   <button class="tbtn" id="zoomOut" title="Weiter weg"><svg class="ik" aria-hidden="true"><use href="#i-minus"/></svg></button>
@@ -413,6 +441,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <div style="font-size:3rem;animation:rotwig 1.5s infinite">📱↻</div>
   <div style="margin-top:14px;font-weight:800">Dreh dein Handy quer!</div>
   <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
+  <button type="button" id="rotVoll" style="margin-top:18px;border:0;border-radius:14px;padding:12px 26px;font-weight:900;font-size:1rem;color:#241d15;background:#f3e9d6;cursor:pointer;min-height:48px">Vollbild &amp; quer</button>
 </div>
 <div id="hint"></div>
 <div id="gtaBanner"><div class="gb-band"><div class="gb-titel"></div><div class="gb-unter"></div></div></div>
@@ -603,19 +632,45 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
 /* 📱 HANDY-SPARMODUS (Runde 106, User: „1 fps habe ich bei traumhaus"). Auf dem Telefon kurze Sichtweite, kleinerer
    Herauszoom, weniger Lampen — was genau, steht jeweils am Ort. `?voll` schaltet ihn ab, `?spar` am Rechner ein. */
-var _sparHandy=(_mobil&&!/[?&]voll\b/.test(location.search))||/[?&]spar\b/.test(location.search);
-var LOD_SPAR=_sparHandy?0.75:1;   /* Ausblend-Abstaende in lodTakt */
-var LAMP_SPAR=2;                  /* Punktlichter im Shader (jedes kostet JEDEN Bildpunkt jedes Standard-Materials) */
-var ZOOM_MAX=_sparHandy?80:135;   /* ⚠️ main bei Zoom 135 (probe-bildlast „Weit"): 9'821 Zeichenaufrufe je Bild */
+var _sparHandy=(_mobil&&!/[?&]voll\b/.test(location.search))||/[?&]spar2?\b/.test(location.search);
+/* Stufe 2 (Runde 107): nach einem Grafikabsturz („nach paar sekunde nur weiss") startet das Spiel leichter —
+   gesetzt vom Knopf „Leichter neu starten" (localStorage th_spar) oder per ?spar2. */
+var _sparStufe=!_sparHandy?0:((/[?&]spar2\b/.test(location.search)||(function(){try{return localStorage.getItem("th_spar")==="2";}catch(e){return false;}})())?2:1);
+var LOD_SPAR=_sparStufe>1?0.6:(_sparHandy?0.75:1);   /* Ausblend-Abstaende in lodTakt */
+var LAMP_SPAR=_sparStufe>1?1:2;   /* Punktlichter im Shader (jedes kostet JEDEN Bildpunkt jedes Standard-Materials) */
+var ZOOM_MAX=_sparStufe>1?60:(_sparHandy?80:135);   /* ⚠️ main bei Zoom 135 (probe-bildlast „Weit"): 9'821 Zeichenaufrufe je Bild */
 /* 📱 DYNAMISCHE AUFLOESUNG. Der feste Deckel war eine Wette auf das Geraet: 1,35 ist
    fuer ein aktuelles Telefon zu wenig und fuer ein aelteres zu viel — und welches davor
    sitzt, weiss der Code nicht. `_rrMax` bleibt die Obergrenze, aber die Schleife misst
    ihre eigene Bildzeit und geht herunter, wenn sie sie nicht haelt (siehe `_rrRegel`).
    Die Fuellrate ist auf schwachen Geraeten die groesste Einzelbremse, und sie ist die
    einzige, die sich stufenlos regeln laesst. */
-var _rrMax=Math.min(devicePixelRatio,_mobil?1.35:1.6);
-var _rrStufen=[_rrMax,_rrMax*0.8,_rrMax*0.62,_rrMax*0.5], _rrIdx=0;
+var _rrMax=Math.min(devicePixelRatio,_mobil?(_sparStufe>1?1.0:1.35):1.6);
+/* 📱 Runde 107 (User: „auflösung sieht nicht so toll aus"): auf dem Handy nie unter Pixelratio 1. Die Regelung fiel bis
+   auf 0,675 — ein 844 px breiter Schirm zeichnete dann 570 px und streckte sie: matschig. Auf dem Telefon bremsen die
+   Zeichenaufrufe und das JavaScript (Runde 106), nicht die Bildpunkte; unter 1 kauft man fast nichts und sieht alles. */
+var _rrBoden=_mobil?Math.min(_rrMax,1):0;
+var _rrStufen=[_rrMax,_rrMax*0.8,_rrMax*0.62,_rrMax*0.5].map(function(v){return Math.max(v,_rrBoden);})
+  .filter(function(v,i,a){return i===0||v<a[i-1]-1e-6;}), _rrIdx=0;
 renderer.setPixelRatio(_rrMax);renderer.setSize(W,H);
+/* 📱 GRAFIK WEG → NICHT WEISS STEHEN LASSEN (Runde 107, User: „nach paar sekunde nur weiss sehen"). Laeuft auf dem
+   Telefon der Grafikspeicher ueber, nimmt der Browser der Seite den WebGL-Kontext weg; die Leinwand wird leer und man
+   sieht den Seitenhintergrund. Bisher hoerte niemand darauf. Jetzt: preventDefault (sonst gibt der Browser den Kontext
+   nie zurueck), eine dunkle Tafel mit Erklaerung, und three.js baut beim „restored" alles neu auf. Kommt er nicht
+   wieder, startet der Knopf das Spiel leichter (Sparstufe 2: Texturen 128 px, kuerzere Sicht, Pixelratio 1). */
+(function(){var cv=renderer.domElement,tafel=null;
+  cv.addEventListener("webglcontextlost",function(e){e.preventDefault();window._kontextVerloren=(window._kontextVerloren||0)+1;
+    try{localStorage.setItem("th_kontextVerlust",String((+localStorage.getItem("th_kontextVerlust")||0)+1));}catch(x){}
+    if(!tafel){tafel=document.createElement("div");
+      tafel.style.cssText="position:fixed;inset:0;z-index:95;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;"+
+        "background:#241d15;color:#f3e9d6;text-align:center;padding:24px;font:600 1rem system-ui,sans-serif";
+      tafel.innerHTML='<div style="font-size:1.15rem;font-weight:800">Die Grafik des Handys ist ausgestiegen</div>'+
+        '<div style="opacity:.8;max-width:30em">Meist ist der Grafikspeicher voll. Traumhaus versucht sie zurückzuholen …</div>'+
+        '<button type="button" style="margin-top:8px;border:0;border-radius:14px;padding:12px 24px;font-weight:900;font-size:1rem;color:#241d15;background:#f3e9d6;min-height:48px">Leichter neu starten</button>';
+      tafel.querySelector("button").onclick=function(){try{if(typeof saveGame==="function")saveGame();localStorage.setItem("th_spar","2");}catch(x){}location.reload();};
+      document.body.appendChild(tafel);}
+    tafel.style.display="flex";},false);
+  cv.addEventListener("webglcontextrestored",function(){if(tafel)tafel.style.display="none";},false);})();
 /* 📱 PCFSoftShadowMap ist der teuerste Schattenfilter (mehrere Texture-Lookups pro Pixel).
    Auf dem Handy reicht der einfache PCF-Filter — sichtbar kaum ein Unterschied, spuerbar
    guenstiger. */
@@ -12790,7 +12845,7 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
    Textur; der Fehler sass VOR `ok(g)`, also wurden 139 Modelle geladen und nie aufgestellt (probe-handy: 91
    JS-Fehler, `_ladeOffen` blieb bei 139). Jetzt ein WeakSet — und ein Fehler hier darf `ok(g)` nie verhindern
    (try/catch beim Aufrufer). */
-var TEX_SPAR=256, _texErledigt=new WeakSet();
+var TEX_SPAR=_sparStufe>1?128:256, _texErledigt=new WeakSet();
 function _texKlein(wurzel){
   var SL=["map","normalMap","roughnessMap","metalnessMap","emissiveMap","aoMap","alphaMap","bumpMap"];
   wurzel.traverse(function(n){
@@ -17801,6 +17856,28 @@ function tapAt(px,py){
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8);};
 document.getElementById("zoomOut").onclick=function(){camRT=Math.min(ZOOM_MAX,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
+/* 📱 VOLLBILD (Runde 107, User: „voll bild auf handy geht nicht"). Es gab keinen — die Browserleisten frassen auf dem
+   Handy ein Drittel der Hoehe. Knopf unten rechts und im Hochformat-Hinweis; beim Start auf dem Handy einmal von selbst
+   (nur aus einem Tipp heraus erlaubt). Android sperrt danach das Querformat. Das iPhone kennt die Vollbild-
+   Schnittstelle fuer Seiten nicht — dort hilft nur „Zum Home-Bildschirm" (Web-App-Angaben im Kopf), und genau das sagt
+   der Knopf dann. */
+function _vollAn(){return !!(document.fullscreenElement||document.webkitFullscreenElement);}
+function vollbild(an){
+  var d=document.documentElement;if(an===undefined)an=!_vollAn();
+  if(an){
+    if(!(d.requestFullscreen||d.webkitRequestFullscreen)){
+      if(!navigator.standalone)hint("Vollbild am iPhone: Teilen ⬆ → „Zum Home-Bildschirm“. Von dort startet Traumhaus ohne Leisten.");
+      return;}
+    try{var p=d.requestFullscreen?d.requestFullscreen({navigationUI:"hide"}):d.webkitRequestFullscreen();
+      if(p&&p.then)p.then(function(){try{if(screen.orientation&&screen.orientation.lock)screen.orientation.lock("landscape").catch(function(){});}catch(e){}})
+        .catch(function(){});}catch(e){}
+  }else{var x=document.exitFullscreen||document.webkitExitFullscreen;if(x)try{var q=x.call(document);if(q&&q.catch)q.catch(function(){});}catch(e){}}}
+document.getElementById("vollBtn").onclick=function(){vollbild();};
+document.getElementById("rotVoll").onclick=function(){vollbild(true);};
+["fullscreenchange","webkitfullscreenchange"].forEach(function(ev){document.addEventListener(ev,function(){
+  var u=document.querySelector("#vollBtn use");if(u)u.setAttribute("href",_vollAn()?"#i-vollaus":"#i-voll");});});
+["soloBtn","hostBtn","joinBtn"].forEach(function(id){var b=document.getElementById(id);
+  if(b&&_mobil)b.addEventListener("click",function(){if(!_vollAn()&&!navigator.standalone)vollbild(true);},true);});
 document.getElementById("egoBtn").onclick=function(){egoToggle();};
 document.getElementById("coupBtn").onclick=function(){coupStart();};
 document.getElementById("coasterBtn").onclick=function(){coasterEinsteigen();};
@@ -19018,7 +19095,8 @@ function startGame(){
   renderPalette();updHUD();MUS.play().catch(function(){});
   // Anfänger-Intro einmalig zeigen (für Einsteiger)
   try{if((!MPs||mpHost)&&!localStorage.getItem("th_intro_seen")){var _ic=document.getElementById("introCard");
-    if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};}}}catch(e){}
+    if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};
+      _ic.onclick=function(e){if(e.target===_ic)document.getElementById("introOk").onclick();};}}}catch(e){}
   hint("Bauen antippen. Dann Boden legen, Wände ziehen, Möbel stellen.");}
 document.getElementById("soloBtn").onclick=function(){
   /* 🐛 Schwarm-Befund: Wer erst "Raum erstellen"/"Beitreten" tippt und dann doch auf
