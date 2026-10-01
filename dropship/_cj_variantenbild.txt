@@ -5425,3 +5425,17 @@ gid://shopify/Product/15454001725825	zugeordnet	20	American Vintage-Henley-Shirt
 gid://shopify/Product/15454001889665	zugeordnet	30	Sommer Herren Polo-Shirt
 gid://shopify/Product/15454001955201	zugeordnet	6	Picknickdecke Outdoor
 gid://shopify/Product/15454001987969	zugeordnet	12	Herren-Geldbörse aus echtem Leder
+gid://shopify/Product/15454002053505	zugeordnet	24	Leichter Sommer-Polo
+gid://shopify/Product/15454002250113	zugeordnet	20	Business-Pullover für Herren
+gid://shopify/Product/15454002545025	zugeordnet	18	Sommer-Polo aus Mulberry-Seide
+gid://shopify/Product/15454002708865	zugeordnet	24	Pet Army Kurzarm-Shirt
+gid://shopify/Product/15454002905473	zugeordnet	8	Oranges T-Shirt mit Retro-Muster
+gid://shopify/Product/15454003003777	zugeordnet	56	Flaggen-Muster T-Shirt
+gid://shopify/Product/15454003167617	zugeordnet	16	Leichtes, kurzärmliges Herrenhemd mit 3D-Druckmuster
+gid://shopify/Product/15454003364225	zugeordnet	42	Kühlendes Sommer-Polo für Herren
+gid://shopify/Product/15454003495297	zugeordnet	30	Leichter Sommer-Shirt aus Leinen
+gid://shopify/Product/15454003560833	zugeordnet	63	Sommer-T-Shirt für Herren
+gid://shopify/Product/15454003691905	zugeordnet	21	Casual Kurzarm-Shirt
+gid://shopify/Product/15454003822977	zugeordnet	36	Retro-Herren-T-Shirt
+gid://shopify/Product/15454004052353	zugeordnet	8	Retro-Hoodie mit Stickerei
+gid://shopify/Product/15454004216193	zugeordnet	96	Leichter Sommer-Herrenpullover
