@@ -79,10 +79,10 @@ footer a{color:var(--muted)}
   <section class="panel" id="tool">
     <div class="grid">
       <div><label for="zugang">Brief kommt an am</label><input id="zugang" type="date"></div>
-      <div><label for="frist">Kündigungsfrist</label><select id="frist" style="font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%"><option value="1">1 Monat</option><option value="2">2 Monate</option><option value="3" selected>3 Monate (Gesetz)</option><option value="6">6 Monate</option></select></div>
+      <div><label for="frist">Kündigungsfrist</label><select id="frist" style="font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%"><option value="3" selected>3 Monate (Gesetz)</option><option value="4">4 Monate</option><option value="6">6 Monate</option></select></div>
       <div><label for="miete">Miete pro Monat (CHF)</label><input id="miete" type="number" min="0" step="10" value="1800"></div>
     </div>
-    <label style="margin-top:12px">Kündigungstermine laut Mietvertrag (Monatsende)</label>
+    <label style="margin-top:12px">Kündigungstermine laut Mietvertrag (Monatsende, vorbelegt: alle ausser Dezember; steht nichts im Vertrag, gilt der Ortsgebrauch)</label>
     <div class="monate" id="termine"></div>
     <div class="out" id="out" aria-live="polite"></div>
   </section>
@@ -91,6 +91,7 @@ footer a{color:var(--muted)}
   <ul>
     <li><b>Schriftlich mit Unterschrift</b>, E-Mail reicht nicht (Art. 266l OR). Per Einschreiben, damit du den Versand belegen kannst.</li>
     <li><b>Familienwohnung:</b> Ehegatte oder eingetragener Partner muss ausdrücklich zustimmen, sonst ist die Kündigung nichtig (Art. 266m und 266o OR).</li>
+    <li><b>Einschreiben-Falle:</b> Ist beim Vermieter niemand da, gibt es nur eine Abholungseinladung. Der Brief gilt erst als zugegangen, wenn er abgeholt werden kann. Wer erst am letzten Tag zustellen lässt, ist oft zu spät. Fällt der letzte Tag auf ein Wochenende, früher senden.</li>
     <li><b>Zu spät angekommen?</b> Dann gilt die Kündigung für den nächstmöglichen Termin (Art. 266a OR). Darum lieber eine Woche Reserve einplanen.</li>
     <li><b>Früher raus:</b> nur mit zumutbarem Nachmieter, der den Vertrag zu den gleichen Bedingungen übernimmt (Art. 264 OR).</li>
   </ul>
@@ -155,17 +156,19 @@ footer a{color:var(--muted)}
 
   function monateZwischen(von, bis) {
     if (!von || !bis) return 0;
-    var a = new Date(von), b = new Date(bis);
+    var a = lokal(von), b = lokal(bis);
     return Math.max(0, (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()));
   }
 
+  // "JJJJ-MM-TT" lokal lesen: new Date("2026-10-15") wäre UTC und westlich von Greenwich ein Tag zu früh
+  function lokal(x) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(x)); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date(x); }
   function monatsende(j, m) { return new Date(j, m + 1, 0); } // m: 0–11
   function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 
   // Nächstmöglicher Kündigungstermin: das Schreiben muss spätestens am letzten Tag vor Beginn der Frist ankommen.
   // termine: Liste erlaubter Monate (1–12, jeweils Monatsende). zugang: Datum, an dem der Brief ankommt.
   function naechsterTermin(zugang, fristMonate, termine) {
-    var z = new Date(zugang); z.setHours(0, 0, 0, 0);
+    var z = lokal(zugang); z.setHours(0, 0, 0, 0);
     var f = Math.max(1, Math.round(+fristMonate || 3));
     var erlaubt = (termine && termine.length) ? termine : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     for (var i = 0; i < 60; i++) {
@@ -181,7 +184,7 @@ footer a{color:var(--muted)}
     return null;
   }
 
-  function plusTage(datum, tage) { var d = new Date(datum); d.setDate(d.getDate() + tage); return iso(d); }
+  function plusTage(datum, tage) { var d = lokal(datum); d.setDate(d.getDate() + tage); return iso(d); }
 
   function berechnen(e) {
     var netto = +e.netto || 0;
@@ -218,7 +221,8 @@ footer a{color:var(--muted)}
   "use strict";
   var M = root.MietzinsEngine || (typeof require !== "undefined" ? require("../mietzins/engine.js") : null);
 
-  function d(x) { var t = new Date(x); t.setHours(12, 0, 0, 0); return t; }
+  function d(x) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(x)); var t = m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date(x); t.setHours(12, 0, 0, 0); return t; }
+  function wochenende(x) { var g = d(x).getDay(); return g === 0 || g === 6; }
   function iso(t) { return t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0"); }
   function plusTage(x, n) { var t = d(x); t.setDate(t.getDate() + n); return iso(t); }
   // Arbeitstag davor (Sa/So → Freitag); Feiertage sind kantonal und werden NICHT berücksichtigt
@@ -226,7 +230,7 @@ footer a{color:var(--muted)}
 
   // Kündigung: zugang = Tag, an dem der Brief beim Vermieter ankommen kann. Empfehlung Postaufgabe: 7 Tage vorher (Puffer).
   function kuendigung(e) {
-    var frist = Math.max(1, Math.round(+e.fristMonate || 3));
+    var frist = Math.max(3, Math.round(+e.fristMonate || 3));   // Art. 266a/266c: kürzer als 3 Monate nicht vereinbar
     var termine = (e.termine && e.termine.length) ? e.termine : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     var zugang = e.zugang || iso(new Date());
     var t = M.naechsterTermin(zugang, frist, termine);
@@ -234,7 +238,13 @@ footer a{color:var(--muted)}
     // Wenn heute versendet: Zugang realistisch +2 Tage (A-Post Einschreiben); erst daraus den Termin rechnen
     var r = { frist: frist, termine: termine, termin: t.termin, auszugBis: t.termin, spaetestensZugang: t.spaetestensZugang,
       aufgebenBis: werktagDavor(plusTage(t.spaetestensZugang, -7)), wirksamAb: t.wirksamAb };
-    // Wie lange noch Miete bis zum Termin (Monate inkl. laufendem)
+    var heute = e.heute || iso(new Date());
+    r.warnungen = [];
+    if (zugang < heute) r.warnungen.push("zugangVergangen");
+    else if (r.aufgebenBis < heute) r.warnungen.push(r.spaetestensZugang < heute ? "zuSpaet" : "knapp");
+    if (wochenende(r.spaetestensZugang)) r.warnungen.push("zugangWochenende");
+    if (wochenende(r.termin)) r.warnungen.push("terminWochenende");
+    // Wie lange noch Miete bis zum Termin (Monate inkl. Monat des Zugangs)
     var a = d(zugang), b = d(t.termin);
     r.monateMiete = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()) + 1;
     r.mieteBisTermin = (+e.miete || 0) * r.monateMiete;
@@ -242,16 +252,17 @@ footer a{color:var(--muted)}
     if (e.auszug) {
       var w = d(e.auszug);
       if (w < b) {
-        var monate = (b.getFullYear() - w.getFullYear()) * 12 + (b.getMonth() - w.getMonth());
+        // Auszug am 1. eines Monats: dieser Monat ist schon frei; sonst ist er bezahlt
+        var monate = (b.getFullYear() - w.getFullYear()) * 12 + (b.getMonth() - w.getMonth()) + (w.getDate() === 1 ? 1 : 0);
         r.vorzeitig = { monate: monate, ersparnis: monate * (+e.miete || 0) };
-      }
+      } else if (w > b) r.warnungen.push("auszugNachTermin");
     }
     return r;
   }
 
   // Umzugsplan rückwärts ab Umzugstag. tage < 0 = vor dem Umzug, > 0 = danach.
   var AUFGABEN = [
-    { id: "kuendigen", tage: null, titel: "Alte Wohnung kündigen", text: "Schriftlich, unterschrieben, bei Familienwohnung auch vom Ehegatten oder eingetragenen Partner (Art. 266l und 266m OR). Per Einschreiben." },
+    { id: "kuendigen", tage: null, titel: "Alte Wohnung kündigen", text: "Schriftlich und unterschrieben (Art. 266l OR), von allen Mietern im Vertrag; bei der Familienwohnung mit Zustimmung des Ehegatten oder eingetragenen Partners (Art. 266m OR). Per Einschreiben, früh genug: Wer die Abholungseinladung bekommt, holt oft erst Tage später ab." },
     { id: "offerten", tage: -60, titel: "Offerten für Umzug einholen", text: "Mindestens drei Offerten: Zügelfirma, Mietwagen oder Helfer. Fix- oder Stundenpreis, Versicherung, Material." },
     { id: "reinigung", tage: -45, titel: "Endreinigung organisieren", text: "Offerte mit Abnahmegarantie, also Nachreinigung inklusive, falls bei der Abgabe etwas beanstandet wird." },
     { id: "ausmisten", tage: -42, titel: "Ausmisten", text: "Was nicht mitkommt: verkaufen, verschenken, Sperrgut-Termine der Gemeinde nachschauen." },
@@ -261,11 +272,13 @@ footer a{color:var(--muted)}
     { id: "adressen", tage: -10, titel: "Adressänderungen verschicken", text: "Arbeitgeber, Bank, Krankenkasse, Versicherungen, Abos. Liste im Paket abhaken." },
     { id: "kartons", tage: -7, titel: "Packen nach Zimmern", text: "Kartons beschriften: Zimmer und Inhalt. Eine Kiste für die erste Nacht: Werkzeug, Bettwäsche, Ladekabel, Medikamente." },
     { id: "protokoll", tage: -1, titel: "Wohnungsabgabe vorbereiten", text: "Abgabeprotokoll vom Einzug hervorholen. Alle Schlüssel zählen, auch Briefkasten und Keller." },
+    { id: "abmelden", tage: -5, titel: "Bei der alten Gemeinde abmelden", text: "Persönlich, online (eUmzug, wo angeboten) oder per Formular. Manche Gemeinden verlangen die Abmeldung vor dem Wegzug." },
     { id: "umzug", tage: 0, titel: "Umzugstag", text: "Zählerstände an beiden Adressen fotografieren. Schäden beim Ausladen sofort mit Foto festhalten." },
     { id: "abgabe", tage: null, titel: "Wohnungsabgabe", text: "Mit dem Vermieter durchgehen. Nur unterschreiben, was stimmt. Der Vermieter muss Mängel sofort melden (Art. 267a OR)." },
-    { id: "gemeinde", tage: 7, titel: "Bei der neuen Gemeinde anmelden", text: "Persönlich oder online (eUmzug), mit Ausweis, Mietvertrag und Krankenkassen-Nachweis. Die Frist regelt der Kanton, meist 14 Tage." },
-    { id: "kanton", tage: 14, titel: "Bei Kantonswechsel: Auto und Krankenkasse", text: "Fahrzeugausweis und Kontrollschilder beim neuen Strassenverkehrsamt umschreiben. Krankenkasse informieren, die Prämie hängt von der Region ab." },
-    { id: "kaution", tage: 30, titel: "Mietkaution zurückfordern", text: "Freigabe beim Vermieter verlangen. Hat er innert eines Jahres nach Mietende nichts rechtlich geltend gemacht, zahlt die Bank dir die Kaution auf Verlangen aus (Art. 257e OR)." }
+    { id: "gemeinde", tage: 3, titel: "Bei der neuen Gemeinde anmelden", text: "Persönlich oder online (eUmzug, wo angeboten), mit Ausweis, Mietvertrag und Krankenkassen-Nachweis. Die Frist regelt der Kanton, meist 14 Tage." },
+    { id: "verkehr", tage: 5, titel: "Strassenverkehrsamt: neue Adresse", text: "Führer- und Fahrzeugausweis brauchen die neue Adresse, auch bei einem Umzug innerhalb des Kantons, meist innert 14 Tagen. Bei Kantonswechsel gibt es neue Kontrollschilder." },
+    { id: "kasse", tage: 7, titel: "Krankenkasse: neue Prämienregion", text: "Die Prämie hängt vom Wohnort ab. Neue Adresse melden, bei Kantonswechsel kann sich die Prämie ändern." },
+    { id: "kaution", tage: 30, titel: "Mietkaution zurückfordern", text: "Freigabe beim Vermieter verlangen. Hat er innert eines Jahres nach Mietende nichts rechtlich geltend gemacht, zahlt die Bank dir die Kaution auf Verlangen aus (Art. 257e OR). Bei einer Mietkautionsversicherung gilt das nicht: dort die Police beim Versicherer kündigen." }
   ];
 
   function plan(umzug, kuend, abgabe) {
@@ -277,7 +290,7 @@ footer a{color:var(--muted)}
     }).sort(function (x, y) { return (x.datum || "9") < (y.datum || "9") ? -1 : 1; });
   }
 
-  var api = { kuendigung: kuendigung, plan: plan, AUFGABEN: AUFGABEN, werktagDavor: werktagDavor, plusTage: plusTage };
+  var api = { kuendigung: kuendigung, plan: plan, AUFGABEN: AUFGABEN, werktagDavor: werktagDavor, plusTage: plusTage, wochenende: wochenende };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.UmzugEngine = api;
 })(this);
 
@@ -299,6 +312,8 @@ footer a{color:var(--muted)}
     $("out").innerHTML='<div class="kacheln"><div class="kachel"><b>Mietende</b><div class="z">'+dat(r.termin)+'</div>nächstmöglicher Termin</div>'
       +'<div class="kachel"><b>Ankommen bis</b><div class="z">'+dat(r.spaetestensZugang)+'</div>letzter Tag vor Fristbeginn</div>'
       +'<div class="kachel"><b>Einschreiben aufgeben bis</b><div class="z">'+dat(r.aufgebenBis)+'</div>mit einer Woche Reserve</div></div>'
+      +((r.warnungen||[]).indexOf('zugangWochenende')>=0?'<p class="urteil warn">Der letzte Zugangstag ist ein Wochenende: Sorg dafür, dass der Brief vorher ankommt.</p>':'')
+      +((r.warnungen||[]).indexOf('zugangVergangen')>=0?'<p class="urteil warn">Das Datum liegt in der Vergangenheit.</p>':'')
       +'<p class="urteil">Bis zum Mietende zahlst du noch <b>'+r.monateMiete+' Monatsmieten</b>'+(+$("miete").value?' ('+chf(r.mieteBisTermin)+')':'')+'. Den fertigen Brief, den Umzugsplan und das Abgabeprotokoll gibt es im <a href="#umzugs-paket">Umzugs-Paket</a>.</p>';
   }
   ["zugang","frist","miete"].forEach(function(id){$(id).addEventListener("input",render)});
