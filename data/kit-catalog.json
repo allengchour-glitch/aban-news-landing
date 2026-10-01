@@ -213,6 +213,14 @@
     "standalone": true
   },
   {
+    "slug": "krankenkasse-wechsel",
+    "title": "Krankenkassen-Wechsel Schweiz: Franchise, Frist und fertige Kündigung",
+    "desc": "Günstigste Franchise für jede Person im Haushalt (mit Gewinnschwelle und schlimmstem Fall), Frist bis 30. November mit Datum, Kündigungsbriefe für Grund- und Zusatzversicherung, Checkliste. Nach Art. 7 KVG und KVV. Offline-App mit Anleitung.",
+    "price_cents": 1200,
+    "currency": "chf",
+    "standalone": true
+  },
+  {
     "slug": "pensions-check",
     "title": "Pensions-Check Schweiz: AHV, Pensionskasse, 3a und die Rentenlücke",
     "desc": "AHV-Rente nach der Rentenformel inklusive 13. Altersrente und Ehepaar-Begrenzung, Pensionskasse aus dem Vorsorgeausweis, Säule 3a und Erspartes, Lücke zum Budget mit nötiger Sparrate, Fahrplan 10 Jahre bis zur Pensionierung. Offline-App mit Anleitung. Keine Finanzberatung.",
