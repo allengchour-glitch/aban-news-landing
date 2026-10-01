@@ -184,3 +184,4 @@
 15504082764161	eu-sku-gesetzt:CJJF144518403CX	2026-09-30	2-in-1 Dampf-Haarglätter & Lockenstab
 15504083419521	eu-sku-gesetzt:CJJF140677002BY	2026-09-30	Mini Lockenstab für grosse Locken
 15504149184897	unklar:farbe-unbekannt	2026-09-30	Big Wave Lockenstab mit Anionen-Technologie
+15504149643649	eu-sku-gesetzt:CJJF128114901AZ	2026-10-01	Infrarot Glätteisen für glattes & lockiges Haar
