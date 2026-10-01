@@ -64,6 +64,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (🏥 Alle Krankenkassen vergleichen 2027 — `krankenkassen-vergleich-2027.html`):** Offizielle BAG-Prämien 2027
+(opendata.swiss «Krankenversicherungsprämien», `Prämien_CH.csv`, 29.09.2026) → `tools/krankenkasse/bag_praemien.py` baut
+`data/krankenkassen/2027/<KANTON>.json` + `index.json` (Kassennamen aus BAG-«Verzeichnis der zugelassenen Krankenversicherer» 1.10.2026,
+Gemeinde→Prämienregion aus Anhang EDI-Verordnung, Tarife nur in einzelnen Gemeinden aus `Einzugsgebiete.csv`). Kinder = K1 (1. Kind).
+Engine `tools/krankenkasse/vergleich.js` (12 Tests, Mutationsprobe 3/3), voller Abgleich JSON↔CSV 175 866/175 866 (Gegenprobe greift).
+Belegt: Stadt Zürich, 2500, ohne Unfall → Sanitas TelMed Basic CHF 384.05. Seite verkauft das Wechsel-Paket CHF 12.
+**Jedes Jahr Ende September:** neue BAG-Daten → `JAHR`/URLs/`STAND`/Regionen-URL in `bag_praemien.py` nachführen, neue Kassennummern
+ergänzen (Skript bricht sonst ab), Seite auf das neue Jahr umbenennen.
+
 **📌 2026-10-01 (🏥 Krankenkassen-Wechsel-Paket CHF 12 — saisonal: Frist 30.11.):** Nachfrage per Google-Vorschlag belegt
 („krankenkasse wechseln frist“, „krankenkasse kündigen vorlage schweiz“, „franchise rechner“, „krankenkasse vergleich 2027“).
 `tools/krankenkasse/` (Engine + 12 Tests, Mutationsprobe 3/3): Franchise-Vergleich pro Person (Erwachsene/Kinder), Gewinnschwelle,

@@ -23,3 +23,13 @@ if seite.exists():
     if neu != s:
         seite.write_text(neu, encoding="utf-8")
     print(f"→ {seite.relative_to(ROOT)} (Engine-Block)")
+vergleich = (HIER / "vergleich.js").read_text(encoding="utf-8")
+seite = ROOT / "krankenkassen-vergleich-2027.html"
+if seite.exists():
+    s = seite.read_text(encoding="utf-8")
+    for a, e, inhalt in (("/*ENGINE-START*/", "/*ENGINE-END*/", engine), ("/*VERGLEICH-START*/", "/*VERGLEICH-END*/", vergleich)):
+        assert s.count(a) == 1 and s.count(e) == 1, f"Marken {a} fehlen oder doppelt"
+        s = s[:s.index(a) + len(a)] + "\n" + inhalt + "\n" + s[s.index(e):]
+    if s != seite.read_text(encoding="utf-8"):
+        seite.write_text(s, encoding="utf-8")
+    print(f"→ {seite.relative_to(ROOT)} (Engine + Vergleich)")
