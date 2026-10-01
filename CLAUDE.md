@@ -62,6 +62,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-01 (🔑 Etsy: Platzhalter-Schlüssel gefunden):** `/api/etsy-auth` leitete mit **`client_id=keystring`** zu Etsy →
+das GitHub-Secret `ETSY_API_KEY` (wird beim Deploy nach Cloudflare kopiert) enthält wörtlich den Platzhalter aus der Anleitung.
+Darum ging die Anmeldung nie. Jetzt: Platzhalter-Sperre in `etsy_upload.mjs` + `/api/etsy-auth`, neuer Workflow-Schalter
+„Nur Etsy-Schlüssel + App-Freigabe prüfen“ (`KEY_CHECK=1`, Ping `/application/openapi-ping`, ohne Login). Alle 6 Pakete
+bestehen den Probelauf. **User:** echtes `keystring:shared_secret` aus Etsy → Your Apps als Secret setzen → Schlüssel-Test → /api/etsy-auth.
+
 **📌 2026-09-30 (🛒 Produkte 4+5 nach SUCHNACHFRAGE + 🤖 Etsy-Upload automatisch):**
 - **Nachfrage prüfen:** Semrush hat 0 API-Units → Google-Vorschläge per `suggestqueries.google.com/complete/search?client=firefox&hl=de&gl=ch&q=…`
   (geht durch den Proxy). Belegt: „mietzinsreduktion berechnen/vorlage“, „hochzeit budget excel vorlage/pro gast“, „wedding budget spreadsheet“.

@@ -59,8 +59,12 @@ Shop-Währung (`PREISE` im Skript), Kategorie aus dem Etsy-Baum, 5 Bilder, Datei
 1. Etsy-Shop eröffnen (etsy.com/sell: Identität, Bankkonto, Zahlungsmittel für Gebühren).
 2. Etsy-App anlegen: etsy.com/developers/register → Name z. B. „aban Upload“ → **Callback-URL**
    `https://abannews.com/api/etsy-callback` eintragen → Keystring + Shared Secret kopieren.
-3. GitHub-Secret **`ETSY_API_KEY`** = `keystring:shared_secret` (mit Doppelpunkt). Der nächste Deploy schreibt ihn
-   automatisch auch ins Cloudflare-Projekt.
+3. GitHub-Secret **`ETSY_API_KEY`** = `<echter Keystring>:<echtes Shared Secret>` (mit Doppelpunkt, z. B.
+   `a1b2c3…:x9y8…`). ⚠️ **Nicht** wörtlich `keystring:shared_secret` — so stand es bis 01.10.2026 drin, Etsy bekam
+   `client_id=keystring` und die Anmeldung konnte nie klappen. Der nächste Deploy schreibt ihn automatisch auch ins
+   Cloudflare-Projekt. **Prüfen:** Actions → „Etsy-Upload“ → „Nur Etsy-Schlüssel + App-Freigabe prüfen“ (braucht noch
+   keinen Refresh-Token): grün = Schlüssel gültig und App freigegeben; 403 = falscher Schlüssel oder Freigabe ausstehend.
+   Platzhalter erkennen jetzt Skript **und** `/api/etsy-auth` selbst (klare Meldung statt Etsy-Fehlerseite).
 4. `https://abannews.com/api/etsy-auth` öffnen → bei Etsy freigeben → angezeigten Schlüssel als GitHub-Secret
    **`ETSY_REFRESH_TOKEN`** speichern (gilt 90 Tage).
 5. Actions → „Etsy-Upload“ → Probelauf **aus** → Entwürfe erscheinen im Shop. Mit „veröffentlichen“ gehen sie live
@@ -68,7 +72,7 @@ Shop-Währung (`PREISE` im Skript), Kategorie aus dem Etsy-Baum, 5 Bilder, Datei
 
 **Geprüft ohne echten Zugang:** `node tools/etsy/test_etsy_upload.mjs` — Regelprüfung mit Gegenproben und ein
 nachgebauter Etsy-Server, der Reihenfolge, Formate (form-urlencoded / multipart) und alle Pflichtfelder laut
-OpenAPI-Spezifikation (Stand 30.09.2026) kontrolliert, inkl. Idempotenz. 18/18 grün. Der erste echte Lauf ist
+OpenAPI-Spezifikation (Stand 30.09.2026) kontrolliert, inkl. Idempotenz, Platzhalter-Sperre und Schlüssel-Test. 25/25 grün. Der erste echte Lauf ist
 trotzdem der eigentliche Test: Fehlermeldungen von Etsy stehen im Workflow-Log.
 
 ## Hochzeits-Budget (DE) und Wedding Budget Planner (EN)

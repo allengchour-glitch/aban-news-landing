@@ -6,6 +6,12 @@ const b64url = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replac
 export async function onRequestGet({ request, env }) {
   const key = (env.ETSY_API_KEY || "").split(":")[0];
   if (!key) return new Response("ETSY_API_KEY fehlt im Pages-Projekt.", { status: 503 });
+  // Platzhalter aus der Anleitung statt echtem Schlüssel → Etsy würde nur „invalid client" melden.
+  if (/^(keystring|key|dein|your|xxx)/i.test(key) || key.length < 16)
+    return new Response(`ETSY_API_KEY in Cloudflare enthält einen Platzhalter („${key.slice(0, 12)}…") statt des echten Keystrings.
+Etsy → Your Apps → App öffnen → „Keystring" und „Shared Secret" kopieren und als ETSY_API_KEY = <keystring>:<shared_secret>
+in Cloudflare Pages (Settings → Variables and Secrets) eintragen, neu deployen, dann /api/etsy-auth erneut öffnen.`,
+      { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
   const redirect = env.ETSY_REDIRECT_URI || new URL("/api/etsy-callback", request.url).toString();
   const verifier = b64url(crypto.getRandomValues(new Uint8Array(32)));
   const state = b64url(crypto.getRandomValues(new Uint8Array(16)));

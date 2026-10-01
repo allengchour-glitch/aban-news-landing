@@ -6,7 +6,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { execFileSync } from 'child_process';
-import { paketLesen, pruefen } from './etsy_upload.mjs';
+import { paketLesen, pruefen, schluesselFehler } from './etsy_upload.mjs';
 
 let ok = true;
 const t = (c, m) => { console.log((c ? '✅ ' : '❌ ') + m); if (!c) ok = false; };
@@ -22,6 +22,13 @@ t(f.some((x) => x.includes('Dateien')), 'fehlende Dateien erkannt');
 t(pruefen({ ...gut, tags: gut.tags.slice(0, 12) }).some((x) => x.includes('12 Tags')), '12 statt 13 Tags erkannt');
 t(gut.beschreibung.startsWith('Stop getting surprised') && !gut.beschreibung.includes('FILES'), 'Beschreibung sauber ausgeschnitten');
 
+// 1b. Platzhalter-Schlüssel (so stand er in Cloudflare: client_id=keystring) wird erkannt, echter Aufbau nicht
+const ECHT = 'a1b2c3d4e5f6g7h8i9j0k1l2:zz9yy8xx7w';
+t(schluesselFehler('keystring:shared_secret').includes('Platzhalter'), 'Platzhalter keystring:shared_secret erkannt');
+t(schluesselFehler('a1b2c3d4e5f6g7h8i9j0k1l2').includes('shared_secret'), 'fehlendes :shared_secret erkannt');
+t(schluesselFehler('') === 'ETSY_API_KEY fehlt', 'leerer Schlüssel erkannt');
+t(schluesselFehler(ECHT) === '', 'echt aufgebauter Schlüssel akzeptiert');
+
 // 2. Nachgebauter Etsy-Server
 const log = [];
 const server = http.createServer((req, res) => {
@@ -31,6 +38,7 @@ const server = http.createServer((req, res) => {
     const ct = req.headers['content-type'] || '';
     log.push({ m: req.method, u: req.url, ct, key: req.headers['x-api-key'], auth: req.headers.authorization, body: ct.startsWith('multipart') ? body.toString('latin1') : body.toString() });
     const j = (o, s = 200) => { res.writeHead(s, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(o)); };
+    if (req.url === '/v3/application/openapi-ping') return req.headers['x-api-key'] === ECHT ? j({ application_id: 5 }) : j({ error: 'Invalid API key' }, 403);
     if (req.url === '/token') return j({ access_token: 'AT', refresh_token: 'RT2' });
     if (req.url === '/v3/application/users/me') return j({ user_id: 1, shop_id: 77 });
     if (req.url === '/v3/application/shops/77') return j({ shop_name: 'TestShop', currency_code: 'CHF' });
@@ -44,7 +52,7 @@ const port = server.address().port;
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'etsy-'));
 fs.mkdirSync(path.join(tmp, 'data'));
 fs.symlinkSync(path.resolve('content'), path.join(tmp, 'content'));
-const env = { ...process.env, ROOT: tmp, DRY_RUN: '0', ETSY_API_KEY: 'KEY:SECRET', ETSY_REFRESH_TOKEN: 'RT1', PAKETE: 'en/budget-planner,schulden-plan',
+const env = { ...process.env, ROOT: tmp, DRY_RUN: '0', ETSY_API_KEY: ECHT, ETSY_REFRESH_TOKEN: 'RT1', PAKETE: 'en/budget-planner,schulden-plan',
   ETSY_API_BASE: `http://127.0.0.1:${port}/v3`, ETSY_TOKEN_URL: `http://127.0.0.1:${port}/token` };
 const lauf = () => new Promise((resolve) => {
   import('child_process').then(({ execFile }) => execFile('node', ['tools/etsy/etsy_upload.mjs'], { env }, (e, so, se) => resolve({ e, so, se })));
@@ -52,8 +60,8 @@ const lauf = () => new Promise((resolve) => {
 let r = await lauf();
 t(!r.e, 'Upload-Lauf gegen den Nachbau ohne Fehler' + (r.e ? ': ' + r.se : ''));
 const tok = log.find((x) => x.u === '/token');
-t(tok && /grant_type=refresh_token/.test(tok.body) && /client_id=KEY(&|$)/.test(tok.body), 'Token-Erneuerung mit client_id = keystring (ohne Secret)');
-t(log.filter((x) => x.u !== '/token').every((x) => x.key === 'KEY:SECRET' && x.auth === 'Bearer AT'), 'jede API-Anfrage mit x-api-key keystring:secret + Bearer-Token');
+t(tok && /grant_type=refresh_token/.test(tok.body) && /client_id=a1b2c3d4e5f6g7h8i9j0k1l2(&|$)/.test(tok.body), 'Token-Erneuerung mit client_id = keystring (ohne Secret)');
+t(log.filter((x) => x.u !== '/token').every((x) => x.key === ECHT && x.auth === 'Bearer AT'), 'jede API-Anfrage mit x-api-key keystring:secret + Bearer-Token');
 const neu = log.filter((x) => x.u === '/v3/application/shops/77/listings');
 const p = new URLSearchParams(neu[0]?.body);
 t(neu.length === 2 && neu[0].ct.includes('x-www-form-urlencoded'), '2 Entwürfe als form-urlencoded angelegt');
@@ -70,6 +78,16 @@ t(Object.keys(ledger).length === 2, 'Ledger mit 2 Einträgen geschrieben');
 const vorher = log.length;
 r = await lauf();
 t(!r.e && !log.slice(vorher).some((x) => x.u.endsWith('/listings') && x.m === 'POST'), 'zweiter Lauf legt nichts doppelt an');
+// Schlüssel-Test (KEY_CHECK): gültig → 0, abgelehnt → 1, Platzhalter → 1 ohne Netz
+const pruef = (key) => new Promise((resolve) => import('child_process').then(({ execFile }) =>
+  execFile('node', ['tools/etsy/etsy_upload.mjs'], { env: { ...env, KEY_CHECK: '1', ETSY_API_KEY: key } }, (e, so) => resolve({ e, so }))));
+const vorPing = log.length;
+let k = await pruef(ECHT);
+t(!k.e && k.so.includes('gültig'), 'KEY_CHECK: gültiger Schlüssel → grün');
+k = await pruef('zzzzzzzzzzzzzzzzzzzzzzzz:falsch1');
+t(k.e && k.so.includes('403') && k.so.includes('freigegeben'), 'KEY_CHECK: abgelehnter Schlüssel → rot mit Hinweis auf Freigabe');
+k = await pruef('keystring:shared_secret');
+t(k.e && k.so.includes('Platzhalter') && log.length === vorPing + 2, 'KEY_CHECK: Platzhalter → rot, ohne Anfrage an Etsy');
 server.close();
 fs.rmSync(tmp, { recursive: true, force: true });
 process.exit(ok ? 0 : 1);

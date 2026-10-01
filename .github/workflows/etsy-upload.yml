@@ -6,6 +6,10 @@ name: Etsy-Upload
 on:
   workflow_dispatch:
     inputs:
+      schluessel_pruefen:
+        description: 'Nur Etsy-Schlüssel + App-Freigabe prüfen (braucht noch keinen ETSY_REFRESH_TOKEN)'
+        type: boolean
+        default: false
       probelauf:
         description: 'Nur prüfen, nichts an Etsy senden'
         type: boolean
@@ -44,11 +48,12 @@ jobs:
           DRY_RUN: ${{ inputs.probelauf && '1' || '0' }}
           ACTIVATE: ${{ inputs.veroeffentlichen && '1' || '0' }}
           PAKETE: ${{ inputs.pakete }}
+          KEY_CHECK: ${{ inputs.schluessel_pruefen && '1' || '0' }}
         run: |
           if [ -z "$PAKETE" ]; then unset PAKETE; fi
           node tools/etsy/etsy_upload.mjs
       - name: Liste der angelegten Einträge committen
-        if: ${{ !inputs.probelauf }}
+        if: ${{ !inputs.probelauf && !inputs.schluessel_pruefen }}
         run: |
           if [ -n "$(git status --porcelain data/etsy-listings.json)" ]; then
             git config user.name "github-actions[bot]"
