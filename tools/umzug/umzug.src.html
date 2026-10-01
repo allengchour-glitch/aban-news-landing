@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Umzugs-Paket Schweiz</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#1d4ed8;--ink:#1c2230;--ink2:#394052;--muted:#687083;--line:#dde2ec;--bg:#f5f7fb;--card:#fff;--field:#fbfcfe;--gut:#15803d;--rot:#b91c1c;--warm:#b45309}
+@media(prefers-color-scheme:dark){:root{--akz:#93b4ff;--ink:#eef1f7;--ink2:#cfd5e2;--muted:#97a0b3;--line:#2e3445;--bg:#11141b;--card:#181c25;--field:#151922;--gut:#4ade80;--rot:#f87171;--warm:#fbbf24}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px 70px}
+.marke{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--akz);font-weight:800}
+h1{font-size:clamp(26px,5vw,36px);letter-spacing:-.02em;line-height:1.12;margin-top:4px}
+h2{font-size:1.15rem;margin:0 0 4px}
+.sub{color:var(--ink2);margin:8px 0 6px;max-width:680px}
+.tabs{display:flex;gap:6px;margin:18px 0 6px;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:5}
+.tabs button{flex:1 1 140px;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 11px;font:inherit;color:var(--ink2);cursor:pointer}
+.tabs button b{display:block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tabs button[aria-current=page]{border-color:var(--akz);box-shadow:inset 0 -3px 0 var(--akz);color:var(--ink)}
+@media(max-width:560px){.tabs{gap:4px}.tabs button{flex:1 1 22%;padding:6px 7px;font-size:.74rem;line-height:1.25}.tabs button b{font-size:.62rem}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:3px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+input,select,textarea{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+textarea{min-height:60px}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--akz);flex:0 0 18px}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--akz);outline-offset:1px}
+.zwei{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.monate{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.86rem}.monate label{display:flex;gap:5px;align-items:center;font-weight:400;margin:0}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.haupt{background:var(--akz);border-color:var(--akz);color:#fff;font-weight:700}
+@media(prefers-color-scheme:dark){button.haupt{color:#0b1530}}
+.leiste{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.zahl{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:8px;margin-top:10px}
+.warn{border-left-color:var(--warm)}
+.liste{list-style:none;margin-top:8px}
+.liste li{display:flex;gap:12px;align-items:flex-start;padding:10px 4px;border-bottom:1px solid var(--line)}
+.liste li.fertig .t{text-decoration:line-through;color:var(--muted)}
+.liste .dat{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.liste .t{font-weight:700}.liste .x{font-size:.9rem;color:var(--ink2)}
+.liste li.vorbei:not(.fertig) .dat{color:var(--rot)}
+.fort{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin:8px 0 2px}.fort i{display:block;height:100%;background:var(--akz)}
+.brief{background:#fff;color:#111;border:1px solid var(--line);border-radius:10px;padding:28px 30px;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;white-space:pre-wrap;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:8px}
+th,td{padding:6px 5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+td select{min-width:110px}
+.raum{margin-top:16px}.raum h3{font-size:1rem}
+.klein{font-size:.82rem;color:var(--muted)}
+[hidden]{display:none!important}
+@media print{.tabs,.leiste,.noprint{display:none!important}body{background:#fff;color:#000}.box{border:0;padding:0}
+body[class^=p-] .wrap>.marke,body[class^=p-] .wrap>h1,body[class^=p-] .wrap>.sub,body[class^=p-] .wrap>p.klein{display:none!important}
+body.p-brief section:not(#s-kuendigung),body.p-brief #s-kuendigung>*:not(#briefbox){display:none!important}
+body.p-brief #briefbox .brief{border:0;padding:0}
+body.p-protokoll section:not(#s-abgabe){display:none!important}body.p-protokoll #s-abgabe{display:block!important}
+body.p-plan section:not(#s-plan){display:none!important}body.p-plan #s-plan{display:block!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="marke">aban news · Umzugs-Paket Schweiz</div>
+<h1>Umziehen ohne Frist zu verpassen</h1>
+<p class="sub">Kündigungstermin, fertiger Kündigungsbrief, Umzugsplan mit Daten, Adressänderungen und Abgabeprotokoll. Nach Art. 264, 266a–266o und 267 OR. Alles bleibt in diesem Browser.</p>
+
+<nav class="tabs" aria-label="Bereiche">
+<button data-tab="kuendigung" aria-current="page"><b>1</b>Kündigung</button>
+<button data-tab="plan"><b>2</b>Umzugsplan</button>
+<button data-tab="adressen"><b>3</b>Adressen</button>
+<button data-tab="abgabe"><b>4</b>Wohnungsabgabe</button>
+</nav>
+
+<section class="box" id="s-kuendigung">
+<h2>Wann kannst du kündigen?</h2>
+<p class="hint">Mieterinnen und Mieter kündigen mit drei Monaten Frist auf einen ortsüblichen Termin, sofern der Vertrag nichts anderes sagt (Art. 266c OR). Die Termine stehen im Mietvertrag, oft „jedes Monatsende ausser Dezember“.</p>
+<div class="zwei" style="margin-top:12px">
+<div><label for="k-zugang">Brief kommt beim Vermieter an am</label><input id="k-zugang" type="date"><p class="hint">Zählt der Tag, an dem der Vermieter ihn abholen kann.</p></div>
+<div><label for="k-frist">Kündigungsfrist</label><select id="k-frist"><option value="1">1 Monat</option><option value="2">2 Monate</option><option value="3" selected>3 Monate (Gesetz)</option><option value="4">4 Monate</option><option value="6">6 Monate</option></select></div>
+<div><label for="k-miete">Bruttomiete pro Monat (CHF)</label><input id="k-miete" type="number" min="0" step="10"></div>
+<div><label for="k-auszug">Wunsch-Auszug (optional)</label><input id="k-auszug" type="date"><p class="hint">Früher als der Termin? Dann brauchst du einen Nachmieter (Art. 264 OR).</p></div>
+</div>
+<div style="margin-top:12px"><label>Kündigungstermine laut Vertrag (jeweils Monatsende)</label><div class="monate" id="k-termine"></div></div>
+<div id="k-out" aria-live="polite"></div>
+
+<h2 style="margin-top:22px">Kündigungsbrief</h2>
+<p class="hint">Schriftlich und eigenhändig unterschrieben (Art. 266l OR). Dient die Wohnung der Familie, muss der Ehegatte oder eingetragene Partner ausdrücklich zustimmen, am einfachsten mitunterschreiben (Art. 266m OR). Sonst ist die Kündigung nichtig (Art. 266o OR).</p>
+<div class="zwei" style="margin-top:12px">
+<div><label for="b-ich">Dein Name und Adresse</label><textarea id="b-ich" placeholder="Vorname Name&#10;Strasse Nr.&#10;PLZ Ort"></textarea></div>
+<div><label for="b-verm">Vermieter oder Verwaltung</label><textarea id="b-verm" placeholder="Verwaltung AG&#10;Strasse Nr.&#10;PLZ Ort"></textarea></div>
+<div><label for="b-objekt">Wohnung</label><input id="b-objekt" placeholder="3½-Zimmer-Wohnung, 2. OG links, Musterweg 5, 3000 Bern"></div>
+<div><label for="b-zweit">Mitunterzeichnende Person (Familienwohnung)</label><input id="b-zweit" placeholder="Vorname Name (leer lassen, wenn allein)"></div>
+<div><label for="b-ort">Ort</label><input id="b-ort" placeholder="Bern"></div>
+<div><label for="b-nach">Nachmieter vorschlagen</label><select id="b-nach"><option value="">nein</option><option value="ja">ja, ich suche einen Nachmieter</option></select></div>
+</div>
+<div id="briefbox"><div class="brief" id="brief"></div></div>
+<div class="leiste"><button class="haupt" data-print="brief">Brief drucken</button><button id="b-kopie">Text kopieren</button></div>
+</section>
+
+<section class="box" id="s-plan" hidden>
+<h2>Umzugsplan</h2>
+<div class="zwei"><div><label for="p-umzug">Umzugstag</label><input id="p-umzug" type="date"><p class="hint">Leer = Kündigungstermin aus Schritt 1.</p></div>
+<div><label for="p-abgabe">Wohnungsabgabe</label><input id="p-abgabe" type="date"><p class="hint">Leer = Kündigungstermin.</p></div></div>
+<div class="fort" aria-hidden="true"><i id="p-fort"></i></div><p class="klein" id="p-stand"></p>
+<ul class="liste" id="p-liste"></ul>
+<div class="leiste"><button data-print="plan">Plan drucken</button></div>
+</section>
+
+<section class="box" id="s-adressen" hidden>
+<h2>Adressänderungen</h2>
+<p class="hint">Die Gemeinde meldet die neue Adresse an einige Ämter weiter, zum Beispiel ans Steueramt. Alle anderen musst du selbst informieren. Eigene Einträge kannst du ergänzen.</p>
+<div class="fort" aria-hidden="true"><i id="a-fort"></i></div><p class="klein" id="a-stand"></p>
+<ul class="liste" id="a-liste"></ul>
+<div class="leiste"><input id="a-neu" placeholder="Eigener Eintrag, z. B. Fitnessstudio" style="max-width:320px"><button id="a-plus">Hinzufügen</button></div>
+</section>
+
+<section class="box" id="s-abgabe" hidden>
+<h2>Abgabeprotokoll</h2>
+<p class="hint">Raum für Raum mit dem Vermieter durchgehen. Der Vermieter muss Mängel, für die du einstehen sollst, sofort melden; später nur noch versteckte Mängel (Art. 267a OR). Normale Abnützung durch vertragsgemässen Gebrauch geht nicht zu deinen Lasten (Art. 267 OR). Nur unterschreiben, was stimmt.</p>
+<div class="zwei" style="margin-top:12px"><div><label for="g-datum">Abgabe am</label><input id="g-datum" type="date"></div><div><label for="g-schluessel">Anzahl Schlüssel abgegeben</label><input id="g-schluessel" type="number" min="0"></div>
+<div><label for="g-strom">Zählerstand Strom</label><input id="g-strom"></div><div><label for="g-wasser">Zählerstand Wasser / Wärme</label><input id="g-wasser"></div></div>
+<div id="g-raeume"></div>
+<p class="klein" style="margin-top:16px">Unterschrift Mieter: ______________________ &nbsp; Unterschrift Vermieter: ______________________</p>
+<div class="leiste"><button class="haupt" data-print="protokoll">Protokoll drucken</button><button id="reset" class="noprint">Alles zurücksetzen</button></div>
+</section>
+<p class="klein">Planungshilfe, keine Rechtsberatung. Bei Streit um die Kündigung oder die Abgabe helfen die kantonale Schlichtungsbehörde (kostenlos) und der Mieterverband.</p>
+</div>
+
+<script>/*ENGINES*/</script>
+<script>
+(function(){
+"use strict";
+var U=window.UmzugEngine,$=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var chf=function(x){return "CHF "+Math.round(x).toLocaleString("de-CH")};
+var MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+var dat=function(s){if(!s)return "—";var t=s.split("-");return (+t[2])+". "+MON[+t[1]-1]+" "+t[0]};
+var heute=new Date(),iso=function(t){return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0")};
+var KEY="aban-umzug-v1";
+var ADR=["Arbeitgeber (Lohnbuchhaltung)","Bank und Kreditkarten","Krankenkasse (Prämienregion!)","Hausrat- und Haftpflichtversicherung","Autoversicherung","Post: Nachsendeauftrag","SBB / SwissPass","Handy-Abo","Internet und TV","Strom an der alten Adresse abmelden","Strom an der neuen Adresse anmelden","Zeitungen und Zeitschriften","Ärztin, Zahnarzt, Apotheke","Pensionskasse und 3a-Konto","AHV-Ausgleichskasse (Selbständige)","Vereine und Fitnessstudio","Online-Shops und Lieferadressen","Familie und Freunde"];
+var RAEUME=["Küche","Bad / WC","Wohnzimmer","Schlafzimmer","Zimmer 3","Korridor / Eingang","Balkon / Sitzplatz","Keller / Estrich"];
+var TEILE=["Böden","Wände und Decke","Fenster und Storen","Türen und Schlösser","Einbauten und Geräte"];
+var ZUSTAND={"":"–","ok":"in Ordnung","abn":"normale Abnützung","man":"Mangel"};
+var vorlage={k:{zugang:"",frist:"3",miete:"",auszug:"",termine:[1,2,3,4,5,6,7,8,9,10,11]},b:{ich:"",verm:"",objekt:"",zweit:"",ort:"",nach:""},p:{umzug:"",abgabe:"",fertig:{}},a:{fertig:{},eigen:[]},g:{datum:"",schluessel:"",strom:"",wasser:"",z:{}}};
+var st;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!st||!st.k)st=JSON.parse(JSON.stringify(vorlage));
+var speichern=function(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+
+function felder(){
+  $("k-termine").innerHTML=MON.map(function(m,i){return '<label><input type="checkbox" data-mon="'+(i+1)+'"'+(st.k.termine.indexOf(i+1)>=0?" checked":"")+'> '+m+'</label>'}).join("");
+  ["zugang","frist","miete","auszug"].forEach(function(k){$("k-"+k).value=st.k[k]});
+  ["ich","verm","objekt","zweit","ort","nach"].forEach(function(k){$("b-"+k).value=st.b[k]});
+  $("p-umzug").value=st.p.umzug;$("p-abgabe").value=st.p.abgabe;
+  ["datum","schluessel","strom","wasser"].forEach(function(k){$("g-"+k).value=st.g[k]});
+  $("g-raeume").innerHTML=RAEUME.map(function(r,ri){return '<div class="raum"><h3>'+r+'</h3><table><tr><th>Teil</th><th>Zustand</th><th>Bemerkung</th></tr>'+TEILE.map(function(t,ti){var k=ri+"-"+ti,z=st.g.z[k]||{};
+    return '<tr><td>'+t+'</td><td><select data-g="'+k+'" data-f="s">'+Object.keys(ZUSTAND).map(function(o){return '<option value="'+o+'"'+(z.s===o?" selected":"")+'>'+ZUSTAND[o]+'</option>'}).join("")+'</select></td><td><input data-g="'+k+'" data-f="n" value="'+esc(z.n)+'" aria-label="Bemerkung '+t+'"></td></tr>'}).join("")+'</table></div>'}).join("");
+}
+function kuend(){
+  var k=st.k;if(!k.zugang||!k.termine.length)return null;
+  return U.kuendigung({zugang:k.zugang,fristMonate:+k.frist,termine:k.termine,miete:+k.miete||0,auszug:k.auszug||null});
+}
+function render(){
+  var r=kuend(),h="";
+  if(!st.k.zugang)h='<p class="urteil">Datum eintragen, an dem der Brief ankommt. Heute versendet heisst meist: übermorgen.</p>';
+  else if(!r)h='<p class="urteil warn">Mindestens einen Kündigungstermin ankreuzen.</p>';
+  else{
+    h='<div class="kacheln"><div class="kachel"><b>Mietende</b><div class="zahl">'+dat(r.termin)+'</div>nächstmöglicher Termin</div>'
+     +'<div class="kachel"><b>Brief muss ankommen bis</b><div class="zahl">'+dat(r.spaetestensZugang)+'</div>sonst gilt der nächste Termin (Art. 266a OR)</div>'
+     +'<div class="kachel"><b>Einschreiben aufgeben bis</b><div class="zahl">'+dat(r.aufgebenBis)+'</div>mit einer Woche Reserve</div>'
+     +(st.k.miete?'<div class="kachel"><b>Miete bis dahin</b><div class="zahl">'+chf(r.mieteBisTermin)+'</div>'+r.monateMiete+' Monate inklusive laufendem</div>':'')+'</div>';
+    if(r.vorzeitig)h+='<p class="urteil warn">Du willst <b>'+r.vorzeitig.monate+' Monate früher</b> ausziehen. Ohne Nachmieter schuldest du die Miete bis '+dat(r.termin)+(st.k.miete?' ('+chf(r.vorzeitig.ersparnis)+' für diese Monate)':'')+'. Schlägst du einen zumutbaren, zahlungsfähigen Nachmieter vor, der den Vertrag zu den gleichen Bedingungen übernimmt, bist du ab dessen Übernahme befreit (Art. 264 OR). Im Brief „Nachmieter vorschlagen: ja“ wählen.</p>';
+  }
+  $("k-out").innerHTML=h;
+  brief(r);plan(r);adressen();
+}
+function brief(r){
+  var b=st.b,ich=b.ich.trim()||"[Vorname Name\nStrasse Nr.\nPLZ Ort]",verm=b.verm.trim()||"[Vermieter / Verwaltung\nStrasse Nr.\nPLZ Ort]";
+  var heuteTxt=(b.ort.trim()||"[Ort]")+", "+dat(iso(heute));
+  var termin=r?dat(r.termin):"[Termin]",obj=b.objekt.trim()||"[Wohnung, Adresse]";
+  var t=ich+"\n\n\nEinschreiben\n"+verm+"\n\n\n"+heuteTxt+"\n\n\nKündigung des Mietvertrags: "+obj+"\n\nSehr geehrte Damen und Herren\n\nHiermit kündige ich"+(b.zweit.trim()?" (zusammen mit "+b.zweit.trim()+")":"")+" den Mietvertrag für die oben genannte Wohnung fristgerecht auf den "+termin+".\n\n";
+  if(b.nach)t+="Ich möchte die Wohnung vorzeitig zurückgeben und werde Ihnen gemäss Art. 264 OR zumutbare Nachmieterinnen oder Nachmieter vorschlagen, die den Vertrag zu den gleichen Bedingungen übernehmen. Bitte teilen Sie mir mit, welche Unterlagen Sie von Interessenten benötigen.\n\n";
+  t+="Bitte bestätigen Sie mir den Eingang dieser Kündigung und das Mietende schriftlich. Für die Wohnungsabgabe schlage ich einen Termin in der letzten Woche vor dem Mietende vor. Bitte überweisen Sie die Mietkaution nach der Abgabe auf mein Konto beziehungsweise geben Sie das Mietkautionskonto frei.\n\nFreundliche Grüsse\n\n\n\n__________________________\n"+(ich.split("\n")[0]);
+  if(b.zweit.trim())t+="\n\n\n__________________________\n"+b.zweit.trim()+" (Zustimmung gemäss Art. 266m OR)";
+  $("brief").textContent=t;
+}
+function liste(el,items,fertig,datum){
+  var n=0;el.innerHTML=items.map(function(x){var f=!!fertig[x.id];if(f)n++;var vorbei=x.datum&&x.datum<iso(heute);
+    return '<li class="'+(f?"fertig ":"")+(vorbei?"vorbei":"")+'"><input type="checkbox" data-done="'+esc(x.id)+'"'+(f?" checked":"")+' aria-label="'+esc(x.titel)+' erledigt"><div>'+(datum?'<div class="dat">'+dat(x.datum)+'</div>':'')+'<div class="t">'+esc(x.titel)+'</div>'+(x.text?'<div class="x">'+esc(x.text)+'</div>':'')+'</div></li>'}).join("");
+  return n;
+}
+function plan(r){
+  var umzug=st.p.umzug||(r?r.termin:"");
+  if(!umzug){$("p-liste").innerHTML='<li><div class="x">Umzugstag eintragen oder in Schritt 1 den Kündigungstermin berechnen.</div></li>';$("p-stand").textContent="";$("p-fort").style.width="0";return}
+  var items=U.plan(umzug,r,st.p.abgabe||null);
+  var n=liste($("p-liste"),items,st.p.fertig,true);
+  $("p-fort").style.width=(n/items.length*100)+"%";$("p-stand").textContent=n+" von "+items.length+" erledigt";
+}
+function adressen(){
+  var items=ADR.concat(st.a.eigen).map(function(x){return{id:x,titel:x}});
+  var n=liste($("a-liste"),items,st.a.fertig,false);
+  $("a-fort").style.width=(n/items.length*100)+"%";$("a-stand").textContent=n+" von "+items.length+" erledigt";
+}
+document.addEventListener("input",function(ev){
+  var el=ev.target,id=el.id||"";
+  if(el.hasAttribute("data-mon")){st.k.termine=[].slice.call(document.querySelectorAll("[data-mon]:checked")).map(function(x){return +x.getAttribute("data-mon")})}
+  else if(el.hasAttribute("data-done")){var sec=el.closest("section").id,o=sec==="s-plan"?st.p.fertig:st.a.fertig;o[el.getAttribute("data-done")]=el.checked}
+  else if(el.hasAttribute("data-g")){var k=el.getAttribute("data-g");st.g.z[k]=st.g.z[k]||{};st.g.z[k][el.getAttribute("data-f")]=el.value}
+  else if(/^k-/.test(id))st.k[id.slice(2)]=el.value;
+  else if(/^b-/.test(id))st.b[id.slice(2)]=el.value;
+  else if(/^p-/.test(id))st.p[id.slice(2)]=el.value;
+  else if(/^g-/.test(id))st.g[id.slice(2)]=el.value;
+  else return;
+  speichern();render();
+});
+document.addEventListener("change",function(ev){if(ev.target.type==="checkbox"||ev.target.tagName==="SELECT")ev.target.dispatchEvent(new Event("input",{bubbles:true}))});
+document.addEventListener("click",function(ev){
+  var b=ev.target.closest("button");if(!b)return;
+  if(b.hasAttribute("data-tab")){var t=b.getAttribute("data-tab");document.querySelectorAll("section[id^=s-]").forEach(function(s){s.hidden=s.id!=="s-"+t});
+    document.querySelectorAll(".tabs button").forEach(function(x){if(x===b)x.setAttribute("aria-current","page");else x.removeAttribute("aria-current")});window.scrollTo({top:0,behavior:"smooth"})}
+  else if(b.hasAttribute("data-print")){document.body.className="p-"+b.getAttribute("data-print");print();setTimeout(function(){document.body.className=""},500)}
+  else if(b.id==="b-kopie"){try{navigator.clipboard.writeText($("brief").textContent);b.textContent="Kopiert"}catch(e){}}
+  else if(b.id==="a-plus"){var v=$("a-neu").value.trim();if(v&&st.a.eigen.indexOf(v)<0&&ADR.indexOf(v)<0){st.a.eigen.push(v);$("a-neu").value="";speichern();render()}}
+  else if(b.id==="reset"){if(confirm("Alle Eingaben löschen?")){st=JSON.parse(JSON.stringify(vorlage));speichern();felder();render()}}
+});
+window.addEventListener("afterprint",function(){document.body.className=""});
+felder();render();
+})();
+</script>
+</body>
+</html>
