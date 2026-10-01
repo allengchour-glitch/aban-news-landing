@@ -10,6 +10,14 @@
 
 
 
+
+## 2026-10-01 · 🔁 Ersatz-Zuordnung für Nicht-CJ-SKUs (Verbesserungsrunde 08:25 UTC)
+Kristall-Set (`LX-23-KRISTALL-SET-3-TEILIG`) 7 T: 6 Sitz., 2 Warenkörbe, 2× Kasse; #1020 brauchte Ersatzsuche + Handauftrag.
+Engine: `ist_cj()` liess LX-SKUs als «anderer Lieferant» liegen. Fix: `zuordnung_vid()` (Tabelle `_cj_varianten_zuordnung.tsv`)
+für jede SKU-Form + `variant/queryByVid` + Auslistungsprüfung; Eintrag Kristall → vid 1394197124702408704 (Freigabe «1020 push»).
+Messung nebenbei: Anzeigen-Landeseiten Provence/Aurora/Sirène 53 Sitz. in < 1 Tag, 0 Warenkorb, alle 74 Varianten kaufbar —
+Kaltverkehr, Messung 18:50 UTC läuft. Lehre: Eine freigegebene Handlösung gehört in eine Tabelle, die der Automat liest.
+
 ## 2026-10-01 · 🧹 Hängende Server-Quittungen (Verbesserungsrunde 04:25 UTC)
 Ampel «BOT-AUFTRAG HAENGT» 8 h für cj-torquellen-…-c/-e (0/6 Videos); Hinweis «von Hand prüfen» blieb liegen. Fix:
 `automation/auftrag_haenger_schliessen.py` (stündlich im Aufseher): schliesst nur, wo das Nachholen belegt ist; Pin-Aufträge nur,

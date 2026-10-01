@@ -135,6 +135,19 @@ FARBE_EN = {"schwarz":"black","weiss":"white","rot":"red","blau":"blue","gruen":
 AUSGELISTET = "⛔ bei CJ AUSGELISTET (1602002) — nicht lieferbar: Ersatz (z. B. Fortura) oder Rückerstattung, Produkt → DRAFT"
 
 
+def zuordnung_vid(sku):
+    """01.10.2026: belegte Zuordnung Shop-SKU → CJ-vid aus dropship/_cj_varianten_zuordnung.tsv (auch für Artikel ohne
+    CJ-SKU, z. B. hand-kuratierte LX-Produkte mit freigegebenem CJ-Ersatz wie das Kristall-Set #1020). None = kein Eintrag."""
+    pfad = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_cj_varianten_zuordnung.tsv")
+    if not os.path.exists(pfad):
+        return None
+    for z in open(pfad, encoding="utf-8"):
+        f = z.rstrip("\n").split("\t")
+        if len(f) >= 2 and not z.startswith("#") and f[0].strip().upper() == (sku or "").strip().upper():
+            return f[1].strip()
+    return None
+
+
 def vid_fuer(sku, variant_title):
     """Shopify-SKU + gewaehlte Variante -> passende CJ-Varianten-ID.
 
@@ -149,6 +162,17 @@ def vid_fuer(sku, variant_title):
     nicht eindeutig, wird NICHT bestellt, sondern gemeldet. Lieber ein Mensch schaut drauf,
     als dass das falsche Paket beim Kunden landet."""
     s = (sku or "").strip()
+    zv = zuordnung_vid(s)
+    if zv and not s.upper().startswith("CJ"):
+        # Nicht-CJ-SKU mit freigegebenem Ersatz (Kristall-Set #1020): Variante direkt per vid, Auslistung prüfen.
+        d = cj(f"/api2.0/v1/product/variant/queryByVid?vid={urllib.parse.quote(zv)}")
+        v = d.get("data") if isinstance(d.get("data"), dict) else None
+        if v and (v.get("vid") or "").upper() == zv.upper():
+            chk = cj(f"/api2.0/v1/product/query?pid={v.get('pid')}")
+            if str(chk.get("code")) == "1602002":
+                return None, AUSGELISTET
+            return v, None
+        return None, f"Ersatz-Zuordnung {zv} bei CJ nicht (mehr) gefunden — manuell prüfen"
     # 01.10.2026 (#1021): CJ-pids gibt es auch als UUID («CJ-65D5329E-AA72-…») — das alte Muster kannte nur Ziffern,
     # hielt die UUID für eine variantSku und meldete «bei CJ nicht gefunden»; die Kundin wartete.
     m = re.match(r'^CJ-([0-9]{10,}|[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})$', s.upper())
@@ -372,7 +396,7 @@ def main():
         # «anderer Lieferant» überspringen, obwohl vid_fuer() genau diese Form (b) längst kann.
         def ist_cj(sku):
             u = (sku or "").upper()
-            return u.startswith("CJ-") or bool(re.match(r'^CJ[A-Z]{2}\d{6,}', u))
+            return u.startswith("CJ-") or bool(re.match(r'^CJ[A-Z]{2}\d{6,}', u)) or bool(zuordnung_vid(sku))
         items = [li for li in alle if ist_cj(li.get("sku"))]
         if not items:
             print(f"  {o['name']}: keine CJ-Artikel (anderer Lieferant)", flush=True)
