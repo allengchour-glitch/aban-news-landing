@@ -122,3 +122,4 @@ slug:retro-handwarmer-powerbank-5000-mah-97ddfa
 name:luxury
 slug:pluschdinosaurier-t-rex-fga20427
 name:plüschdinosauriertrex
+slug:spinnennetz-weiss-fga95405
