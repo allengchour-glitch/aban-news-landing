@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-02T07:37Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-02T08:09Z
 
-Aktive gescannt: 159 · ohne Kategorie: 159 · heute gesetzt: 141 (SCHARF, CAP 3000) · danach offen: 18 · Fehler: 0
+Aktive gescannt: 42 · ohne Kategorie: 42 · heute gesetzt: 24 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- kinder-yellow-kimono-set-636800 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
-- kinder-top-mit-spitzenschliff-und-rock-613000 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
-- baby-jungen-herbstlangarm-outfit-neuwuchs-set-628000 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
-- patchwork-top-set-fur-kinder-600800 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
-- baby-romper-mit-hut-lange-armel-spitzenakzent-633500 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's One-Pieces
+- jacquard-rippstrick-stehkragen-langarmshirt-he-638700 · Herrenmode → Apparel & Accessories > Clothing
+- herren-cord-pullover-langarm-sweatshirt-639700 · Herrenmode → Apparel & Accessories > Clothing
+- langarm-lapel-shirt-mit-streifen-632100 · Herrenmode → Apparel & Accessories > Clothing
+- winddichte-herren-freizeitjacke-mit-stehkragen-637700 · Herrenmode → Apparel & Accessories > Clothing
+- herren-langarmshirt-gestreift-622800 · Herrenmode → Apparel & Accessories > Clothing
 
