@@ -2930,3 +2930,4 @@ halloween-pumpkin-kerzen-naturkreme-mit-pflanz-619300	2606130740241610500	0	-	KE
 hexe-dekorative-malerei-148096	1621683945152720896	16	12.38	ok	landeseite
 halloween-langarm-pulli-herbst-winter-damenbek-606200	2605150828521606900	16	10.29	ok	landeseite
 herren-t-shirt-mit-horror-schadel-druck-634000	2607090746071634800	16	7.43	ok	landeseite
+halloween-glasbecher-622800	2607100117451623400	16	9.47	ok	landeseite
