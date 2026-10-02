@@ -42,3 +42,9 @@ Die Filter selbst lassen sich NUR in der App Search & Discovery einstellen. Daf�
 - Betreiber-Klick in Search & Discovery (siehe oben). Danach messe ich 5 Kollektionen nach: Werte und Treffer je Farbe/Grösse.
 - 34'932 aktive Produkte ohne Farb-Option, z. B. Schmuck oder Uhren in einer Farbe. Das Farbwort im Titel wäre eine zweite Quelle (Muster in `farbe_metafeld.py`, Wortgrenzen). Erst nach dem Klick, wenn die Facette sichtbar ist.
 - Kollektionen mit > 5'000 Produkten zeigen bei Shopify grundsätzlich keine Filter. Dort bleiben die Tag-Chips.
+
+## NACHGEMESSEN 02.10. ~21:00 UTC (nach dem Betreiber-Klick, 4 Live-Seiten)
+- **Farbe ✅:** Quelle jetzt `filter.v.t.shopify.color-pattern`. Die Werte sind Farbfelder mit deutschen Namen (Beige, Blau …). sub-kleider zeigt 19 Farben (vorher 4 «Gelb»-Werte), gadgets 18, beauty-pflege 16, uhren 10.
+- **Grösse ✅:** `filter.v.option.grösse`, sub-kleider 49 Werte. Darunter ist Lieferanten-Kauderwelsch in Grössenwerten: beauty-pflege «L Code-Need To Order Without Toolkit».
+- **Kategorie ❌:** Auf keiner der 4 Seiten gibt es eine Kategorie-Facette. Schritt 5 ist nicht gespeichert oder heisst in der App anders.
+- **Anbieter:** Der Filter existiert noch (`filter.p.vendor`), ist im Theme aber ausgeblendet.
