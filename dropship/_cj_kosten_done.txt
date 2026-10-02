@@ -41152,3 +41152,14 @@ gid://shopify/Product/15448076386689	CHF 22.98	3 Varianten	Lässiger Badeanzug �
 gid://shopify/Product/15448076452225	CHF 20.86	4 Varianten	Eleganter, hochgeschlossener Langarm-Strand-Cover-
 gid://shopify/Product/15448076517761	CHF 21.99	3 Varianten	Bikini-Set · Modell 2
 gid://shopify/Product/15448076550529	CHF 20.66	4 Varianten	Badeanzug-Set für Damen
+gid://shopify/Product/15448076583297	CHF 21.99	4 Varianten	Bikini-Set · Damen
+gid://shopify/Product/15448076714369	CHF 22.65	7 Varianten	Damen-Bikini-Set
+gid://shopify/Product/15448076845441	CHF 21.33	4 Varianten	Damen Bikini-Set · Modell 2
+gid://shopify/Product/15448113709441	CHF 16.59	88 Varianten	Eleganter Jumpsuit mit weitem Bein
+gid://shopify/Product/15448591794561	CHF 46.64	5 Varianten	Lässiger Cardigan mit langen Ärmeln
+gid://shopify/Product/15448647958913	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print
+gid://shopify/Product/15448648024449	CHF 13.45	4 Varianten	Gelbe 7/8-Sportleggings mit Print
+gid://shopify/Product/15448648089985	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print
+gid://shopify/Product/15448648155521	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 3
+gid://shopify/Product/15448648188289	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 4
+gid://shopify/Product/15448648352129	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 5
