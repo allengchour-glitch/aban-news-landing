@@ -16306,3 +16306,32 @@ gid://shopify/Product/16603337294215	44->1	Taschenlampe mit kabellosem Aufladen
 gid://shopify/Product/16603337458055	140->2	Vintage Winterarbeitsschuhe Herren
 gid://shopify/Product/16603337589127	71->0	Sonnenblumentraum Nachtlicht mit Touch-Steuerung
 gid://shopify/Product/16603337752967	28->3	Herrenschuhe High-Top mit dicker Sohle
+gid://shopify/Product/16603338113415	22->0	USB-Plasma-Ball mit Farbwechsel
+gid://shopify/Product/16603338408327	29->1	Slim-Fit Daunenjacke mit weisser Federfüllung
+gid://shopify/Product/16603338473863	13->1	Moderne Nachttischlampe
+gid://shopify/Product/16603340505479	55->0	Kinder‑Pantoffeln mit Tiermuster
+gid://shopify/Product/16603347878279	42->0	Minimalistische Wandlampenleiste 60-150 cm
+gid://shopify/Product/16603350499719	193->2	Holzgeschnitzte Bärenfigur mit LED-Licht
+gid://shopify/Product/16603356397959	8->0	Sonnenaufgangs‑Wecker mit Bluetooth‑Sound
+gid://shopify/Product/16603387953543	19->3	Mini-Elektro-Luftpumpe mit Magnetlicht
+gid://shopify/Product/16603388412295	128->0	Halloween-Glühender Skull‑Raven‑Rose aus Resin
+gid://shopify/Product/16603388543367	23->0	Maiglöckchen Duftwärmer ohne Flamme
+gid://shopify/Product/16603406598535	13->0	Tragbares dimmbares Touch-Nachtlicht
+gid://shopify/Product/16603444740487	34->1	Minimalistische LED-Wandlampe für Balkon
+gid://shopify/Product/16603444806023	13->1	Kopflicht mit langer Batterielebensdauer
+gid://shopify/Product/16603445166471	37->0	Doppelseiten-Schreibtischlampe für Bett
+gid://shopify/Product/16603469087111	15->0	Wandlampe aus Zement mit Glasabdeckung
+gid://shopify/Product/16603469119879	49->0	Kinder-Yellow-Kimono-Set
+gid://shopify/Product/16603469742471	9->0	Aufladbare Nachttischlampe mit Touch‑Schalter
+gid://shopify/Product/16603587117447	26->0	Nordische Nachttischlampe in Schwarz
+gid://shopify/Product/16603587510663	32->0	Holzlampe mit Kordelzug – Retro‑Stil
+gid://shopify/Product/16603587576199	51->0	Strickbody mit Stickerei und Streifen
+gid://shopify/Product/16603587608967	14->0	Korrekturcreme für Augenhelligkeit
+gid://shopify/Product/16603588034951	8->2	LED-Streifen für Weinregal – kabellose Beleuchtung
+gid://shopify/Product/16603588067719	68->0	45-Farben-Lidschatten für den Frühling
+gid://shopify/Product/16603588297095	20->0	Kupfer-Vintage-Wandlampe mit Zugkette
+gid://shopify/Product/16603588428167	16->0	Kinder-Sleeveless-Top-Set mit Shorts
+gid://shopify/Product/16603589017991	36->0	Bewegungsmelder-Nachtlicht für Wohnräume
+gid://shopify/Product/16603589181831	41->1	Lipstick-Set mit vier Stiften in Lederbeutel
+gid://shopify/Product/16603589280135	40->0	Bauchrock mit Strickmuster und Knopfleiste
+gid://shopify/Product/16603589411207	16->0	Wandlampe mit Glasabdeckung
