@@ -1,7 +1,7 @@
 # Google-Blocker nach Land — Verbesserungsrunde 02.10.2026 (12:27 UTC)
 
 ## GEMESSEN
-- Ampel: Free-Listings-Blocker **723 → 2'568** (Scan 10:48 UTC). Neu: **1'771 «Missing shipping info in some countries»**.
+- Ampel: Free-Listings-Blocker **723 → 2'568** (Scan 10:48 UTC). **Nachmessung 13:40 UTC (neue Wache): 790 echte CH-Blocker, 1'964 nur [LI].** Neu: **1'771 «Missing shipping info in some countries»**.
 - Rohmeldung (product.feedback der App «Google & YouTube»), z. B. Bambus-Diffuser, Gua-Sha-Set:
   `Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI].` — betroffen ist nur **Liechtenstein**.
 - Der Shop liefert seit 22.09. bewusst nur in die Schweiz (LI gestrichen, Weg B). Die Schweizer Gratis-Einträge dieser Produkte

@@ -1,21 +1,20 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-02T10:48Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-02T13:26Z
 
-Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen nur für Shopping Ads (ignoriert): 17851.
+Gescannt: 49943 aktive Produkte in 200 Seiten (vollständig), 711 s. Meldungen nur für Shopping Ads (ignoriert): 17979.
 
-## Free-Listings-Blocker: 2568
+## Free-Listings-Blocker: 790
 
 | Klasse | Produkte | davon ohne onlineStoreUrl |
 |---|---:|---:|
-| Missing shipping info in some countries | 1771 | 0 |
-| Inappropriate image | 257 | 0 |
-| Product page unavailable | 130 | 0 |
+| Inappropriate image | 250 | 0 |
+| Product page unavailable | 129 | 0 |
 | Personalized advertising: Sexual interests | 92 | 0 |
 | Restricted adult content | 92 | 0 |
 | Image under review | 79 | 0 |
 | Personalized advertising: personal hardships | 67 | 0 |
 | Title under review | 47 | 0 |
 | Image too small | 14 | 0 |
-| Promotional overlay on image | 7 | 0 |
+| Promotional overlay on image | 8 | 0 |
 | Adult-oriented content | 5 | 0 |
 | Tobacco products & related equipment | 2 | 0 |
 | Inappropriate title | 2 | 0 |
@@ -23,75 +22,17 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 | Unable to show image | 1 | 0 |
 | Personalized advertising: Identity and belief | 1 | 0 |
 
+## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
+
+- Missing shipping info in some countries [LI]: 1964
+
+Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.
+
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 7
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 4
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
-
-### Missing shipping info in some countries (1771)
-
-- tech-hero-geschenkbox-smartwatch-anc-ladestation
-- premium-bambus-aroma-diffuser-300ml
-- rosenquarz-gua-sha-set
-- cellulite-massage-roller
-- bambus-aufbewahrungssystem-modular
-- bambus-kosmetik-organizer-premium
-- aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht
-- smartwatch-pro-1-78-amoled-herzfrequenz-fitness-tracker-bluetooth
-- rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling
-- sunset-projektor-led-lampe-stimmungslicht-usb-16-farben-fur-foto-deko
-- elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln
-- led-solar-lichterkette-xl-8-leuchtmodi-wetterfest-fur-garten-balkon
-- vintage-sonnenbrille-oval-metallrahmen-uv-schutz-damen
-- panda-handyhalter-susser-schreibtisch-stander-fur-smartphones
-- vintage-baseball-cap-mit-strass-schneeflocke-verstellbar-unisex-6-farben
-- ubersetzer-kopfhorer-144-sprachen-echtzeit-bluetooth-5-3
-- profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser
-- elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben
-- 16-in-1-gemuseschneider-multi-hobel-wurfler-slicer-mit-auffangbox
-- reise-schallzahnburste-4-modi-magnetschwebe-motor-antibakterielle-box
-- led-fahrradrucksack-mit-blinker-funk-fernbedienung-wasserabweisend
-- monitor-lichtleiste-mit-bewegungssensor-blendfreies-schreibtischlicht-usb
-- kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar
-- handliches-massagegerat-vibrations-massage-mit-mehreren-stufen
-- mini-usb-taschenlampe-edelstahl-wiederaufladbar-fur-schlusselbund-4-farben
-- elektrischer-krallenschleifer-fur-hund-katze-leise-usb-akku-mit-led
-- smart-anzuchtset-mit-led-pflanzenlampe-12-zellen-fur-setzlinge-krauter
-- elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben
-- strand-rock-a-linie-mit-ruschen-doppellagig-fliessend-damen-4-farben
-- herren-business-poloshirt-gestrickte-ice-silk-kuhlend-m-3xl-2-farben
-- bikini-set-damen-einteilig-schmeichelhaft-s-3xl-mehrere-farben
-- leinenhose-damen-baumwoll-leinen-locker-atmungsaktiv-viele-farben
-- neckholder-sommerkleid-mit-blumen-print-v-ausschnitt-damen
-- 2-teiliges-sommer-set-zip-top-ruschen-shorts-damen
-- strand-cardigan-riviera-leichter-uv-schutz-uberwurf
-- relaxed-fit-hoodie-cosy-mit-fell-panel-kordelzug
-- spitzen-tragertop-lacey-feminines-sommer-basic
-- edelstahl-trinkflasche-hydro-570-ml
-- s925-silber-halskette-eclat-1-karat-moissanite
-- ohrstecker-lumiere-elegante-high-end-studs
-- mondstein-blutenring-fleur-zarter-statement-ring
-- 2-teilige-mesh-bluse-resille-langarm-mit-hollow-out
-- 2-teiliges-leinen-set-provence-hemd-wide-leg-hose
-- abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe
-- strand-maxikleid-bali-luftiges-stufenkleid
-- polka-dot-retro-kleid-daisy-deep-v-mit-schleife
-- sommerkleid-savanna-western-style-midi
-- blumen-maxikleid-fleurette-neckholder-mit-fishtail
-- herren-sommerhemd-monsieur-french-court-style-kurzarm
-- etuikleid-lumea-cut-out-sheath
-- midikleid-bluette-fake-2-teiler-mit-v-ausschnitt
-- schnurkleid-noir-schleifen-detail
-- off-shoulder-kleid-brise-locker-armellos
-- herrenuhr-executive-business-quarz
-- herrenuhr-carre-minimalist-square
-- armbanduhr-rettangolo-rechteckig-unisex
-- reed-diffuser-aroma-duftstabchen-ohne-flamme
-- aroma-diffuser-mist-ultraschall-mit-led
-- s925-silber-halskette-eternal-herz-anhanger
-- s925-silber-halskette-camelia-bluten-anhanger
-- …
 
 ### Image under review (79)
 
@@ -285,7 +226,7 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 - katzen-spielzeug-set-ceb18b
 - …
 
-### Inappropriate image (257)
+### Inappropriate image (250)
 
 - herren-ring-vintage-edelstahl-retro
 - pod-sticker-flame-graffiti
@@ -480,7 +421,7 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 - schwangerschaftskissen-u-form-0be3f4
 - …
 
-### Product page unavailable (130)
+### Product page unavailable (129)
 
 - armelloses-casual-top-fur-damen-627100
 - bohemian-jumpsuit-mit-taschen-639000
@@ -504,7 +445,6 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 - prinzessinnen-schuhe-mit-weicher-sohle-und-vel-621300
 - chic-damenkleid-628900
 - damen-herren-laufschuhe-atmungsaktiv-casual-904128
-- hochpraziser-sonnenschutz-vorhang-aus-polyeste-613200
 - kinderhausschuhe-mit-cartoon-motiv-665728
 - geometrisches-katzenmuster-hoodie-damen-609500
 - slimfit-hosen-606500
@@ -542,6 +482,7 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 - atmungsaktive-kindersneakers-mit-weicher-sohle-121792
 - gypsophila-herren-quarzuhr-mit-leuchtzeigern-754048
 - flache-sandalen-mit-knochelriemen-605800
+- keile-leichte-flip-flops-618300
 - …
 
 ### Adult-oriented content (5)
@@ -552,7 +493,7 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 - beckenboden-trainingsgerat-fur-frauen-b986d0
 - porenreiniger-mit-vakuumfunktion-1d414d
 
-### Promotional overlay on image (7)
+### Promotional overlay on image (8)
 
 - schimmernder-thermo-gel-nagellack-619200
 - klein-robust-4k-auflosung-626700
@@ -561,6 +502,7 @@ Gescannt: 49945 aktive Produkte in 200 Seiten (vollständig), 638 s. Meldungen n
 - digitaler-thermostat-fur-fussbodenheizung-992000
 - manicure-gel-set-fur-nagelverlangerung-885184
 - 9mm-super-slim-lockenstab-fur-ringellockchen-593152
+- intelligenter-sprachubersetzer-468980
 
 ### Tobacco products & related equipment (2)
 

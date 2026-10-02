@@ -60,11 +60,38 @@ def klasse(msg):
     return re.sub(r"\s+in$", "", re.sub(r"\s*\[[^\]]*\]", "", msg).strip().rstrip(".")).strip()
 
 
+LAENDER = re.compile(r"\[((?:[A-Z]{2})(?:\s*,\s*[A-Z]{2})*)\]\.?\s*$")
+
+
+def laender(txt):
+    """Länderkürzel am Ende der Meldung («… [Free_listings,Shopping_ads] [LI].») → {'LI'} ; ohne Angabe → leer."""
+    m = LAENDER.search(txt or "")
+    return {x.strip() for x in m.group(1).split(",")} if m else set()
+
+
+def trifft_ch(txt):
+    """02.10.2026: 1'771 «Missing shipping info … [LI]» liessen die Ampel von 723 auf 2'568 springen — der Shop liefert seit
+    22.09. bewusst nur in die Schweiz (Liechtenstein gestrichen). Eine Meldung nur für andere Länder blockiert die Schweizer
+    Gratis-Einträge NICHT → eigene Liste «nur Ausland», nicht in den Blockern. Ohne Länderangabe zählt sie (vorsichtig) mit."""
+    l = laender(txt)
+    return not l or "CH" in l
+
+
 def main():
+    if "--kanarienvogel" in sys.argv:
+        faelle = [("Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI].", False),
+                  ("Inappropriate image in [Free_listings,Shopping_ads] [CH].", True),
+                  ("Product page unavailable in [Free_listings] [CH, LI].", True),
+                  ("Image too small", True)]
+        ok = sum(trifft_ch(t) == soll for t, soll in faelle)
+        for t, soll in faelle:
+            print(f"{'✓' if trifft_ch(t) == soll else '✗'} {t} → {trifft_ch(t)}")
+        print(f"Kanarienvögel {ok}/{len(faelle)}")
+        return
     if not TOK:
         print("kein Shop-Token → No-op"); return
     cursor, seiten, gescannt = None, 0, 0
-    klassen, handles, ohne_url, andere = {}, {}, {}, {}
+    klassen, handles, ohne_url, andere, ausland = {}, {}, {}, {}, {}
     anzeigen_meldungen = 0
     t0 = time.time()
     while True:
@@ -87,6 +114,10 @@ def main():
                     if NUR_ANZEIGEN.search(txt):
                         anzeigen_meldungen += 1; continue
                     k = klasse(txt)
+                    if not trifft_ch(txt):
+                        ka = f"{k} [{','.join(sorted(laender(txt)))}]"
+                        ausland[ka] = ausland.get(ka, 0) + 1
+                        continue
                     klassen[k] = klassen.get(k, 0) + 1
                     h = handles.setdefault(k, [])
                     if len(h) < HANDLES_MAX:
@@ -102,6 +133,7 @@ def main():
              "vollstaendig": voll, "blocker": blocker, "klassen": dict(sorted(klassen.items(), key=lambda x: -x[1])),
              "ohne_onlineStoreUrl": ohne_url, "anzeigen_meldungen": anzeigen_meldungen, "handles": handles,
              "andere_apps": dict(sorted(andere.items(), key=lambda x: -x[1])),
+             "nur_ausland": dict(sorted(ausland.items(), key=lambda x: -x[1])),
              "dauer_s": round(time.time() - t0)}
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     with open(BERICHT, "w", encoding="utf-8") as f:
@@ -111,6 +143,10 @@ def main():
         f.write(f"## Free-Listings-Blocker: {blocker}\n\n| Klasse | Produkte | davon ohne onlineStoreUrl |\n|---|---:|---:|\n")
         for k, v in stand["klassen"].items():
             f.write(f"| {k} | {v} | {ohne_url.get(k, 0)} |\n")
+        if ausland:
+            f.write("\n## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in stand["nur_ausland"].items())
+                    + "\n\nAbhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.\n")
         if andere:
             f.write("\n## Meldungen anderer Kanal-Apps (kein Google-Blocker)\n\n" + "\n".join(f"- {k}: {v}" for k, v in stand["andere_apps"].items()) + "\n")
         f.write("\n«ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. "

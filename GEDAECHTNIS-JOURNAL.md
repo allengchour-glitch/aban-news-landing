@@ -21,6 +21,13 @@
 
 
 
+
+## 2026-10-02 · 🇱🇮 Verbesserungsrunde: Google-Ampel 723 → 2'568 — 1'771 Meldungen betrafen nur Liechtenstein
+«Missing shipping info in some countries … [LI]» — der Shop liefert nur CH (LI seit 22.09. gestrichen), die Schweizer Gratis-
+Einträge sind nicht blockiert. `google_feedback_wache.py` zählt Meldungen ohne «CH» jetzt getrennt («nur Ausland»), Kanarienvögel
+4/4. **Lehre:** Google-Diagnosen tragen das Land am Ende in Klammern — vor jeder Blocker-Zahl das Land lesen. CJ-Stillstand
+11:09–16:00 = Tagesbudget leer (97'440 Punkte), erwartet. → `dropship/GOOGLE-LAENDER-2026-10-02.md`
+
 ## 2026-10-02 · 🔁 «mache das besser»: SEO-Autopilot wertet die 320 bestehenden Artikel auf + Groq-Tageskontingent
 231/320 Artikel verlinkten kein Produkt, 24 hatten FAQ-JSON-LD → `seo_autopilot.py --auffrischen` (Text bleibt, zwei markierte
 Blöcke: passende Produkte + FAQ/JSON-LD). **Relevanz:** «erste Kollektion» und «längstes Titelwort» lieferten live falsche

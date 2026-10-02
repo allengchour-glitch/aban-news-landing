@@ -2661,3 +2661,4 @@ herren-clutch-aus-vollleder-634000	2512150612481634200	16	7.43	ok	landeseite
 herren-arbeitshose-mit-schlaufe-615400	2601230610451615900	16	10.29	ok	landeseite
 gro-e-automatische-leuchtende-wasserdichte-uhr-603400	2511060621181604300	16	6.46	ok	landeseite
 herren-mechanische-armbanduhr-mit-kalender-und-607700	2509230542101607900	16	5.81	ok	landeseite
+gymnastikschuhe-fur-damen-601200	2607092344591601800	16	5.77	ok	landeseite
