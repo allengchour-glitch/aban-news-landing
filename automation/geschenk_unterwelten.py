@@ -51,7 +51,7 @@ WELTEN = {
     "ihn": {"handle": "geschenke-fuer-ihn", "nicht": re.compile(r"damen|frauen|mädchen|kinder|baby", re.I),
             "arten": [
                 ("uhr", r"herrenuhr|herren-?armbanduhr|automatikuhr|chronograph|herren.{0,20}uhr"),
-                ("leder", r"geldbörse|portemonnaie|brieftasche|kartenetui|herrengürtel|ledergürtel|gürtel für herren|krawatte|manschettenknöpfe"),
+                ("leder", r"geldbörse|portemonnaie|brieftasche|kartenetui|herrengürtel|ledergürtel|gürtel für herren|\bkrawatte\b|manschettenknöpfe"),
                 ("tech", r"powerbank|kopfhörer|ohrhörer|bluetooth-?lautsprecher|smartwatch|ladestation|"
                          r"gaming-?(maus|tastatur|headset)|drohne"),
                 ("bar", r"whisky|flachmann|cocktail|bar-?set|weinset|bierkrug|grill"),
@@ -96,14 +96,17 @@ ART_NICHT = {
     "tech": r"armband|hülle|case|kabel|ersatz|kopfband|oculus",
     "licht": r"office|büro|heimkino|home-?kino|beamer|hd |uhr|rucksack|schul|gemälde|nagel|nägel|charger|feuchttuch|luftbefeuchter|diffus|lade|speaker|lautsprecher|wecker|halskette|ring|hoodie|traumfänger|wohnräume|harz|holz|silikon|tischlampe|nachttischlampe|feuerwerk|bluetooth",
     "plüsch": r"kissen|auto|winter-plüsch|sitz|rucksack",
-    "taschen": r"schul|teens|kinder|studentin|frauen|damen|helm",
+    "taschen": r"schul|teens|kinder|studentin|frauen|damen|helm|fuzzy|plüsch|weiblich",
+    "tasche": r"taktisch|camouflage|tarn|outdoor",
+    "leder": r"weiblich|damen|trench|mantel",
+    "bar": r"backform|gasbrenner|brenner",
     "schal": r"box|einweg|sommer|\bski|velo|arbeits|koch|augen|beheizbar",
     "duft": r"öl|nachfüll|kerzenform|form\b|vorratsglas",
-    "pflege": r"rasen|mäh|garten|echthaar|augenbrauen|bartender",
+    "pflege": r"rasen|mäh|garten|echthaar|augenbrauen|bartender|nadel|roller|serum",
     "rc": r"kissen|wurst|reise",
     "spiel": r"eiswürfel|form\b|behälter|meilenstein",
     "spielzeug": r"quietsch|beiss|laser|futter|schnüffel|kau|pistole|sprüh|badeball|beagle|feder|zerr|seil",
-    "kreativ": r"nagel|werkzeugset|stift set|stiftset",
+    "kreativ": r"nagel|werkzeugset|stift set|stiftset|diffuser",
     "draussen": r"abnehmen|fitness|stahlseil",
     "beauty": r"wecker",
 }
@@ -193,7 +196,7 @@ def main():
         # Smart-Kollektionen füllen sich asynchron — kurz warten, dann die ersten 48 reihum setzen
         for _ in range(20):
             n = gql('query($id:ID!){c:collection(id:$id){productsCount{count}}}', {"id": col["id"]})["c"]["productsCount"]["count"]
-            if n >= len(soll) * 0.9:
+            if abs(n - len(soll)) <= len(soll) * 0.1:   # alter Bestand (z. B. 2'743) zählt nicht als «gefüllt»
                 break
             time.sleep(15)
         moves = [{"id": k["id"], "newPosition": str(i)} for i, k in enumerate(reihe[:48])]

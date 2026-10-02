@@ -1,0 +1,61 @@
+{
+ "2026-10-02": {
+  "sie": {
+   "id": "gid://shopify/Collection/689718428033",
+   "sortOrder": "CREATED_DESC",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "damen"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenk"
+     }
+    ]
+   }
+  },
+  "ihn": {
+   "id": "gid://shopify/Collection/689718362497",
+   "sortOrder": "CREATED_DESC",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "herren"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenk"
+     }
+    ]
+   }
+  },
+  "kinder": {
+   "id": "gid://shopify/Collection/689718460801",
+   "sortOrder": "CREATED_DESC",
+   "ruleSet": {
+    "appliedDisjunctively": true,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "kinder"
+     },
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "spielzeug"
+     }
+    ]
+   }
+  }
+ }
+}

@@ -2760,3 +2760,7 @@ kalkschutz-vorfilter-fur-boiler-634800	2512150951031635100	16	10.15	ok	landeseit
 kinder-basketballschuhe-mit-drehverschluss-602600	2504270506051602800	16	10.83	ok	landeseite
 keil-sandalen-mit-riemen-und-schnalle-624200	2603280903351624600	16	8.66	ok	landeseite
 kasual-langarm-shirt-638200	2604120612571638600	16	7.43	ok	landeseite
+herren-tang-jacke-im-retro-look-600400	2602180643171600800	16	9.61	ok	landeseite
+katzenhalsband-mit-gravur-leder-600400	2507070546081600700	16	4.89	ok	landeseite
+kupfer-fusskettchen-unisex-verstellbar-633300	2607030256301634000	7	5.18	ok	landeseite
+kuscheltier-schottisches-hochlandrind-604400	2602240809051604700	16	7.03	ok	landeseite

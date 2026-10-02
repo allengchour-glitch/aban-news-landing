@@ -982,6 +982,17 @@ while true; do
       echo "$(date -u +%H:%M) indexnow_melden: $(tail -1 "$IXN")"
     fi
   fi
+  # GESCHENK-WELTEN (02.10.2026, 12-Tage-Plan Tag 3): «für Sie/Ihn/Kinder» nach Warenart statt Tag-UND (vorher 22/24 Schmuck,
+  # 22/24 Uhren, 16/24 Babykleider). Täglich neu wählen (Neuimporte, Drafts fallen raus), Tags nachziehen, erste 48 reihum.
+  GW=/tmp/geschenk_unterwelten.log
+  if [ -f "$REPO/automation/geschenk_unterwelten.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GW" || still_gestorben "$GW"; then
+      touch "$GW"
+      ( cd "$REPO" && SCHARF=1 timeout 2400 python3 automation/geschenk_unterwelten.py >> "$GW" 2>&1 )
+      echo "$(date -u +%H:%M) geschenk_unterwelten: $(grep -c 'Reihenfolge' "$GW") Welten · $(tail -1 "$GW")"
+    fi
+  fi
   # GOOGLE-NACHFRAGE-LÜCKE (02.10.2026, Betreiber «weiter push überall»): 57 % der Google-Sitzungen (150 T) landeten auf
   # Seiten, die heute Entwürfe sind (Dry Bag 82, Rizinus-Set 55) — Google listet nur Kaufbares. Täglich: tote Google-
   # Landeseiten mit Nachfrage → generischer CJ-Suchauftrag VORNE in cj_search_queue.txt (Hausregeln, Marken, Saison).
