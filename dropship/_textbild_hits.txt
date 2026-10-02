@@ -16391,3 +16391,19 @@ gid://shopify/Product/16603758461319	25->0	Körperkorrekturband mit unsichtbarem
 gid://shopify/Product/16603758756231	22->2	Fleece-Thermopullover Rossi
 gid://shopify/Product/16603758985607	46->1	Tiefen-Vibrationsmassagegerät
 gid://shopify/Product/16603759411591	32->0	Glitzer-Mesh-Kleid mit grosser Schleife
+gid://shopify/Product/16603762917767	18->0	Kupfer Haarglätter und Lockenstab
+gid://shopify/Product/16603763048839	113->0	Haarglätter mit Dampffunktion
+gid://shopify/Product/16603763081607	28->0	Grünes Jacquard-Kleid mit Blumenmuster
+gid://shopify/Product/16603763212679	111->0	Kinder Baumwoll-Leinen Zweiteiler
+gid://shopify/Product/16603763638663	9->2	Fleece Kapuzenpullover für Damen
+gid://shopify/Product/16603763933575	8->2	Fleece-Cardigan für Outdoor-Sport
+gid://shopify/Product/16603763999111	45->0	Computerlautsprecher
+gid://shopify/Product/16603764687239	31->0	Langarm-Kleid mit Schlitz für Damen
+gid://shopify/Product/16603764752775	8->1	Baby Lammwoll Pullover mit Stehkragen
+gid://shopify/Product/16603764785543	69->0	Tragbarer kabelloser Bluetooth-Lautsprecher
+gid://shopify/Product/16603764916615	14->0	Baby- und Kleinkind-Set mit Schleifenmuster
+gid://shopify/Product/16603764982151	19->2	Kabellose Kamera mit Fernüberwachung
+gid://shopify/Product/16603765080455	27->0	Mauspad mit kabelloser Ladefunktion
+gid://shopify/Product/16603765539207	65->0	12er Badeball-Spielzeugset
+gid://shopify/Product/16603765571975	11->0	Sommerliches Jungen-Set mit kurzen Ärmeln
+gid://shopify/Product/16603765637511	32->1	Baby Strampler mit Fleece-Futter
