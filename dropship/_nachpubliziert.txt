@@ -287,3 +287,8 @@ gid://shopify/Product/16603325006215	mittelgrosser-mantel-mit-3d-muster-621700	M
 gid://shopify/Product/16603331658119	ammulliger-hufstarker-mantel-611500	Ammulliger, hufstarker Mantel
 gid://shopify/Product/16603590099335	klassisches-pullover-top-in-schwarz-grau-oder-619200	Klassisches Pullover‑Top in Schwarz, Grau oder Weiss
 gid://shopify/Product/16603590197639	feuchtigkeitsspendender-lippenbalsam-987968	Feuchtigkeitsspendender Lippenbalsam
+gid://shopify/Product/16603617952135	baby-swaddle-tuch-mit-hasenohr-stirnband-626100	Baby Swaddle-Tuch mit Hasenohr-Stirnband
+gid://shopify/Product/16603689025927	orientalische-brosche-aus-seide-und-reisperlen-621200	Orientalische Brosche aus Seide und Reisperlen
+gid://shopify/Product/16603691221383	baby-und-kinder-pyjama-set-625300	Baby- und Kinder-Pyjama-Set
+gid://shopify/Product/16603739914631	farbige-gaming-maus-mit-kabel-e55365	Farbige Gaming-Maus mit Kabel
+gid://shopify/Product/16603759935879	outdoor-rucksack-zum-wandern-und-bergsteigen-628800	Outdoor-Rucksack zum Wandern und Bergsteigen
