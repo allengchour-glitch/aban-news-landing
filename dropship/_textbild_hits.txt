@@ -16229,3 +16229,6 @@ gid://shopify/Product/15448077566337	97->0	Glitzerndes Dekolleté-Kettentop
 gid://shopify/Product/15448587075969	11->1	Midikleid mit Zopfmuster und Blumenprint
 gid://shopify/Product/15449425379713	9->0	Ultraschall-Luftbefeuchter mit Aromatherapie
 gid://shopify/Product/15449482953089	37->0	Verstellbare Hundeleine
+gid://shopify/Product/15450779550081	11->0	Wimpernlifting-Set für 10 Anwendungen
+gid://shopify/Product/15450859176321	8->0	Interaktiver Futterspender für Haustiere
+gid://shopify/Product/15453761601921	9->0	Französische Stickerei mit Metallgriff
