@@ -2779,3 +2779,8 @@ led-stirnlampe-mit-bewegungssensor-627200	2607180538191627800	7	5.86	ok	landesei
 kunstleder-kopfteilbezug-waschfrei-627400	2607260626461628100	0	-	KEINE CH-Option → DRAFT	landeseite
 kuscheldecke-mit-halloween-print-611200	2607270251091613600	16	7.71	ok	landeseite
 krokodilmuster-tote-635000	2604141128261635400	16	13.16	ok	landeseite
+leder-aktentasche-im-retro-stil-fur-herren-076928	1546063220098740224	16	24.32	ok	landeseite
+klassische-herren-armbanduhr-780416	1608672873986666496	7	7.13	ok	landeseite
+langarmhemd-slim-fit-diverse-farben-633800	2509301030041634000	16	6.77	ok	landeseite
+meridian-burste-nacken-schultermassage-629100	2606300720371629700	7	12.60	ok	landeseite
+lederarmband-mit-usb-c-ladekabel-149696	1498897959637618688	16	5.12	ok	landeseite
