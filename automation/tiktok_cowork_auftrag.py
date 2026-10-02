@@ -22,7 +22,7 @@ Beitrag nutzlos. Dieser Lauf schliesst die Luecke: Er laedt alles Neue auf die S
 Ledger: social/tiktok_cdn_slides.tsv + social/tiktok_cdn_videos.tsv (damit nichts zweimal hochlaedt).
 """
 
-import json
+import json, urllib.request
 import os
 import re
 import subprocess
@@ -116,14 +116,30 @@ def queue_aufs_cdn(pfad):
     # kann danach scheitern (belegt: FILE_STORAGE_LIMIT_EXCEEDED am 01.09., das CDN blieb
     # einen Tag auf dem alten Stand, das Log meldete trotzdem «aktualisiert»). Erfolg ist
     # erst, was die DATEI selbst sagt — Aussenwirkung prüfen, nicht die Mutationsantwort.
-    time.sleep(15)
-    chk = gql('query($i:ID!){node(id:$i){... on GenericFile{fileErrors{code message}}}}',
-              {"i": QUEUE_FILE_GID})
-    fehler = (((chk.get("data") or {}).get("node") or {}).get("fileErrors")) or []
-    if fehler:
-        print(f"⛔ Queue-CDN NICHT aktualisiert — {fehler[0].get('code')}: "
-              f"{fehler[0].get('message','')[:80]}")
-        if any(f.get("code") == "FILE_STORAGE_LIMIT_EXCEEDED" for f in fehler):
+    # 02.10.2026: `fileErrors` ist eine HISTORIE — die FILE_STORAGE_LIMIT-Fehler vom September blieben an der Datei
+    # hängen, obwohl der Upload nach dem Grow-Wechsel gelang (READY, CDN = heutiger Stand). Wahrheit = Inhalt der
+    # ausgelieferten Datei gegen die lokale Queue; fileErrors nur noch als Grund, wenn der Inhalt NICHT stimmt.
+    fehler, gleich = [], False
+    for _ in range(6):
+        time.sleep(15)
+        chk = gql('query($i:ID!){node(id:$i){... on GenericFile{fileStatus url fileErrors{code message}}}}',
+                  {"i": QUEUE_FILE_GID})
+        node = ((chk.get("data") or {}).get("node") or {})
+        fehler = node.get("fileErrors") or []
+        try:
+            live = urllib.request.urlopen(node.get("url") or "", timeout=60).read()
+            gleich = json.loads(live) == json.load(open(pfad, encoding="utf-8"))
+        except Exception:
+            gleich = False
+        if gleich:
+            break
+    if gleich:
+        fehler = []
+    if fehler or not gleich:
+        letzter = fehler[-1] if fehler else {}
+        print(f"⛔ Queue-CDN NICHT aktualisiert (Inhalt ≠ lokal nach 90 s) — letzter Dateifehler: "
+              f"{letzter.get('code', '—')}: {letzter.get('message','')[:80]}")
+        if letzter.get("code") == "FILE_STORAGE_LIMIT_EXCEEDED":
             print("   → Datei-Speicher des Shopify-Plans ist VOLL (Betreiber: Admin → "
                   "Einstellungen → Dateien bzw. Plan). Der PC arbeitet derweil mit der "
                   "letzten erfolgreichen Queue weiter.")

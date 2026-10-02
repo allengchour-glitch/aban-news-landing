@@ -19,6 +19,7 @@ import os
 import subprocess
 import sys
 import time
+import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 QUEUE = os.path.join(ROOT, "dropship", "tiktok_queue.json")
@@ -120,13 +121,26 @@ def main():
     # 02.09.: fileUpdate ist ASYNCHRON — die Verarbeitung kann NACH der Mutation scheitern
     # (belegt: FILE_STORAGE_LIMIT_EXCEEDED liess das CDN still auf dem alten Stand).
     # Ein «jetzt posten», das nie ankommt, ist schlimmer als eine klare Fehlermeldung.
-    time.sleep(15)
-    chk = gql('query($i:ID!){node(id:$i){... on GenericFile{fileErrors{code message}}}}',
-              {"i": BEFEHL_GID})
-    fehler = ((chk.get("node") or {}).get("fileErrors")) or []
-    if fehler:
-        sys.exit(f"⛔ Befehl NICHT auf dem CDN gelandet — {fehler[0].get('code')}: "
-                 f"{fehler[0].get('message','')[:80]} (Datei-Speicher des Shopify-Plans voll?)")
+    # 02.10.2026: fileErrors ist eine HISTORIE (alte FILE_STORAGE_LIMIT-Fehler bleiben hängen, obwohl spätere
+    # Updates gelingen) → Wahrheit = ausgelieferte Datei trägt DIESE Befehls-ID; fileErrors nur als Grund.
+    fehler, angekommen = [], False
+    for _ in range(6):
+        time.sleep(15)
+        chk = gql('query($i:ID!){node(id:$i){... on GenericFile{url fileErrors{code message}}}}',
+                  {"i": BEFEHL_GID})
+        node = chk.get("node") or {}
+        fehler = node.get("fileErrors") or []
+        try:
+            live = json.loads(urllib.request.urlopen(node.get("url") or "", timeout=60).read())
+            angekommen = live.get("id") == befehl["id"]
+        except Exception:
+            angekommen = False
+        if angekommen:
+            break
+    if not angekommen:
+        letzter = fehler[-1] if fehler else {}
+        sys.exit(f"⛔ Befehl NICHT auf dem CDN gelandet (90 s gewartet) — letzter Dateifehler: {letzter.get('code', '—')}: "
+                 f"{letzter.get('message','')[:80]}")
     print(f"✅ Befehl {befehl['id']} liegt auf dem CDN: «{kandidat['slug']}» wird vom PC "
           f"innert ~10 Minuten gepostet (Browser startet er bei Bedarf selbst).")
 
