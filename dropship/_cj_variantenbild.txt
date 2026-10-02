@@ -5553,3 +5553,9 @@ gid://shopify/Product/15454067392897	zugeordnet	36	Wasserdichte Velours-Winterst
 gid://shopify/Product/15454067523969	zugeordnet	16	Elegant Langarm Sequin Kleid
 gid://shopify/Product/15454068212097	zugeordnet	8	Figurbetonendes A-Linien-Kleid mit tiefem Dekolleté
 gid://shopify/Product/15454068277633	zugeordnet	20	Elegantes Zweiteiliges Kleid mit Strass
+gid://shopify/Product/15454068441473	zugeordnet	18	Locker Leinen-Baumwollkleid mit Knopf-Hals und Rüschen-Nähte
+gid://shopify/Product/15454068539777	zugeordnet	25	Baumwoll-Linon-Kleid mit langen Ärmeln
+gid://shopify/Product/15454068572545	zugeordnet	6	Sommerkleid mit Perlenbesatz
+gid://shopify/Product/15454068638081	zugeordnet	6	Elegant Kurzarm-Dress im A-Linien-Stil
+gid://shopify/Product/15454068801921	zugeordnet	36	Kinder Flash Knob Rollschuhe
+gid://shopify/Product/15454068900225	zugeordnet	39	Leichte Arbeitsschuhe mit Schutz
