@@ -1,3 +1,22 @@
+eimer-fehlt	automation/bb_csv_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/bb_viable_ch_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/bigbuy_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/cj_gaps_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/cj_variant_backfill.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_magnet_pod.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_pod_line.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_pod_stickers_all.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_poster_pod.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_prodigi_products.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_schweiz_magnets.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_schweiz_stickers.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/create_sticker_products_shopify.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/fortura_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/fortura_import_grouped.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/premium_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/schulstart_varianten.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/shopcom_import.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
+eimer-fehlt	automation/variant_merge.mjs	productSet ohne Eimer-Boden (eimer_etikette.nachlauf)
 grund-verschluckt	automation/artikelnummer_entfernen.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/bb_aktiv_marge.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/bb_unrentabel_guard.py	gql(): except-Zweig verschluckt den Grund
@@ -57,7 +76,6 @@ grund-verschluckt	automation/medizinprodukte_guard.py	gql(): except-Zweig versch
 grund-verschluckt	automation/menue_links.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/merchant_sperre_durchsetzen.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/multipack_titel.py	gql(): except-Zweig verschluckt den Grund
-grund-verschluckt	automation/neuheit_tag_nachziehen.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/newborn_altersgruppe.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/option_umbenennen.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/orphan_scan.py	gql(): except-Zweig verschluckt den Grund
@@ -72,7 +90,6 @@ grund-verschluckt	automation/seiko_fehluebersetzung.py	gql(): except-Zweig versc
 grund-verschluckt	automation/seiten_versandtext.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/selbstpruefung.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/social_queue_saeubern.py	gql(): except-Zweig verschluckt den Grund
-grund-verschluckt	automation/ss_statt_scharf_s.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/sticker_druckdatei.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/sticker_groessenvorschau.py	gql(): except-Zweig verschluckt den Grund
 grund-verschluckt	automation/sticker_kosten.py	gql(): except-Zweig verschluckt den Grund
