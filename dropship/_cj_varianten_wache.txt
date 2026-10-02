@@ -8967,3 +8967,19 @@ gid://shopify/Product/15431384859009	1790907015	unklar	SKU-DOPPELT: 4 Shop-Varia
 gid://shopify/Product/15431385121153	1790907015	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
 gid://shopify/Product/15448887001473	1790907015	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
 gid://shopify/Product/15449428525441	1790907015	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450831749505	1790907015	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450836631937	1790907015	unklar	SKU-Form nicht pruefbar: 'CJ-CJY 104172601AZ'
+gid://shopify/Product/15450836861313	1790907015	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450850460033	1790907015	unklar	SKU-DOPPELT: 2 Shop-Varianten teilen einen CJ-Kern, 2 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15454161437057	1790907015	ok	21 Shop / 21 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161469825	1790907015	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161502593	1790907015	ok	26 Shop / 26 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161535361	1790907015	ok	49 Shop / 49 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161568129	1790907015	ok	61 Shop / 61 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161600897	1790907015	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161666433	1790907015	ok	15 Shop / 15 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161764737	1790907015	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161863041	1790907015	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161928577	1790907015	ok	11 Shop / 11 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454161961345	1790907015	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454162059649	1790907015	ok	14 Shop / 14 CJ / 0 fehlend / 0 DENY
