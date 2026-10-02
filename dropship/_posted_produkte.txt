@@ -119,3 +119,6 @@ slug:eleganter-wollmantel-mit-revers-und-bindegurte
 slug:blumenkleid-mit-schnurung-613000
 name:blumenkleidmitschnürung
 slug:retro-handwarmer-powerbank-5000-mah-97ddfa
+name:luxury
+slug:pluschdinosaurier-t-rex-fga20427
+name:plüschdinosauriertrex
