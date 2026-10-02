@@ -2966,3 +2966,6 @@ autositzkissen-621700	gesetzt-1
 kopfstutze-mit-lendenstutze-624600	gesetzt-2
 sitzkissen-mit-lendenstuetze-638000	gesetzt-1
 vordersitz-abdeckung-058690	gesetzt-1
+vordersitzabdeckung-023425	gesetzt-1
+ruckenstutze-auto-615900	gesetzt-2
+ruecklehnenhaenger-635500	gesetzt-2
