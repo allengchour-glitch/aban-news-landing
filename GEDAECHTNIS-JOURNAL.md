@@ -28,6 +28,15 @@
 
 
 
+## 2026-10-02 · 🚚 Gratisversand: «49 50 entscheide du 50 ist doch?» → 50
+**GEMESSEN:** Leiste, Warenkorb, Seiten, Richtlinien, Reels, Mails sagen «gratis ab CHF 50». Tarif «Kostenloser Versand» greift ab
+TOTAL_PRICE ≥ 45 (= nach Rabatt; 50 × 0,9 wegen «Bundle 2+ −10 %», `versandschwelle_rabatt.py`). Daneben lief ein Automatik-Rabatt
+«Gratis-Versand ab CHF 49» (Mindestbetrag ebenfalls nach Rabatt gemessen → nie mehr als der 45er-Tarif) — überflüssig, aber sein
+NAME erscheint an der Kasse und widersprach dem Versprechen; dazu Code FREESHIP49 (0 Nutzungen, nirgends beworben).
+**Entscheid:** Versprechen bleibt CHF 50. Automatik-Rabatt → «Gratis-Versand ab CHF 50» (Min 50), FREESHIP49 deaktiviert, Tarif 45
+unverändert; Wächter: «Beworben 50 · nötig 45 · aktuell 45 — OK». Altwerte `dropship/_versandschwelle_50_2026-10-02.json`.
+**Merke:** «45» ist die TECHNISCHE Regel, «50» das Versprechen — wer «Gratisversand 45» liest, darf keine Texte auf 45 ändern.
+
 ## 2026-10-02 · 🐾 Tierschutz + Biozide: der SEO-Lauf fand ein Stromhalsband, das kein Textmuster sah
 **Anlass:** Unter den Seiten, die bei Google Schweiz für einen Suchbegriff ranken (Semrush), stand «Automatisches Anti-Bell
 Halsband». Der Text sagte «Vibration», das Bild zeigte zwei Metall-Kontaktstifte. Die Sperre `tierschutz_geraet.json`
