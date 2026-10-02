@@ -2736,3 +2736,5 @@ outdoor-wanderschuhe-600100	gesetzt-4
 wasserdichte-schneestiefel-611900	hat-liste
 wasserdichte-fleece-stiefel-601400	hat-liste
 sicherheits-schuhe-fur-damen-619600	hat-liste
+mannliche-sportsschuhe-mit-mesh-613500	gesetzt-2
+rutschfeste-hiking-schuhe-mit-fleecefutter-618400	hat-liste
