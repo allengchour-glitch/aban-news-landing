@@ -2918,3 +2918,5 @@ notstartgerat-12v-af0b9e	gesetzt-3
 autositzschutz-967490	gesetzt-3
 sitzkissen-mit-hohenverstellung-615200	gesetzt-1
 kombi-abfalleimer-papiertuchbox-fur-auto-608400	gesetzt-1
+kuhl-seidenkissen-sitzauflage-609800	gesetzt-1
+leder-sitzauflage-atmungsaktiv-608700	gesetzt-2
