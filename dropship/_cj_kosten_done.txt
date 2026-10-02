@@ -41179,3 +41179,11 @@ gid://shopify/Product/15449479905665	CHF 57.78	6 Varianten	Sammet-Vorhänge mit 
 gid://shopify/Product/15449494946177	CHF 20.17	3 Varianten	3-Modi UV-LED-Taschenlampe
 gid://shopify/Product/15450709819777	CHF 28.31	3 Varianten	Bequeme Slip-On Sneaker mit Paisley-Print
 gid://shopify/Product/15451640201601	CHF 45.26	2 Varianten	Küchenarmatur mit Ausziehbrause
+gid://shopify/Product/15447987224961	CHF 21.53	3 Varianten	Zweiteiliger Freizeit-Badeanzug für Damen
+gid://shopify/Product/15447988240769	CHF 22.19	4 Varianten	Casual Damen-Tanktop
+gid://shopify/Product/15448076222849	CHF 22.19	3 Varianten	Eleganter Tankini mit hohem Kragen und Bikinihose 
+gid://shopify/Product/15448076419457	CHF 20.60	4 Varianten	Eleganter Damen-Tankini mit hohem Hals
+gid://shopify/Product/15448076648833	CHF 19.54	4 Varianten	Badeanzug-Set · Damen
+gid://shopify/Product/15448648122753	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 2
+gid://shopify/Product/15448648450433	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 3
+gid://shopify/Product/15448837587329	CHF 81.47	8 Varianten	Keramik-Antihaft-Bratpfanne
