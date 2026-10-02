@@ -36,7 +36,7 @@
    "n": "antibell-art76-abs6",
    "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b|bell(en|t|st)\\b|gebell",
    "geraet": "halsband|halsb[äa]nder|collar|ger[äa]t|device|trainer|training|stopper|stopp|kontroll",
-   "wirkung": "anti-?bell|antibell|bell-?stopp|bell-?kontroll|bell-?schutz|(?:[üu]berm[äa]ss?ige[sn]?|[üu]berm[äa]ßige[sn]?|unerw[üu]nschte[sn]?|st[äa]ndige[sn]?|lautes) bellen|bellen\\s+(?:zu\\s+)?(?:stoppen|unterbinden|unterdr[üu]cken|verhindern|reduzieren|korrigieren|abgew[öo]hnen)|\\banti-?bark|\\bbark(?:ing)?\\s+(?:control|stop|collar|deterrent)|stop\\s+barking|no[- ]bark|止吠",
+   "wirkung": "anti-?bell|antibell|bell-?stopp|bell-?kontroll|bellen-?kontroll|bellen-?stopp|bell-?schutz|(?:[üu]berm[äa]ss?ige[sn]?|[üu]berm[äa]ßige[sn]?|unerw[üu]nschte[sn]?|st[äa]ndige[sn]?|lautes) bellen|bellen\\s+(?:zu\\s+)?(?:stoppen|unterbinden|unterdr[üu]cken|verhindern|reduzieren|korrigieren|abgew[öo]hnen)|\\banti-?bark|\\bbark(?:ing)?\\s+(?:control|stop|collar|deterrent)|stop\\s+barking|no[- ]bark|止吠",
    "nicht": ""
   },
   {

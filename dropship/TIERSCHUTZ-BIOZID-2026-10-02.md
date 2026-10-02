@@ -1,4 +1,4 @@
-# Tierschutz + Biozide: 34 Haustier-Geräte aus dem Verkauf (02.10.2026)
+# Tierschutz + Biozide: 35 Haustier-Geräte aus dem Verkauf (02.10.2026)
 
 **Anlass.** Beim Semrush-SEO-Lauf stand unter den Seiten, die in der Schweiz für einen Suchbegriff ranken, auch das
 «Automatische Anti-Bell Halsband» (Suchbegriff «anti bell halsband», 140/Mt). Im Text stand nur «Vibration», das
@@ -21,7 +21,7 @@ Die bisherige Sperre (`tierschutz_geraet.json`, seit 20.08.) fing nur Strom und 
   1× **tierarznei**, 4× **ultraschall_hund**, 5× **ok** (RC-Helikopter, Nylon-Trainingshalsband, Ultraschall-Mückenuhr, elektrischer Insektenschutz, «Katzenflohball»).
 - Bei 4 der 13 Strom-Geräte nannte der deutsche Text die Wirkung nie. Nur das Bild verriet sie.
 - Der Bestands-Wächter mit den neuen Regeln fand im ganzen Katalog (895 passende aktive Produkte) 26 Treffer. 5 davon fehlten in der Kandidatenliste.
-- **34 Produkte → DRAFT**, alle zurückgelesen (34/34). Ledger mit Vorher-Status und Beleg: `dropship/_tierschutz_biozid_2026-10-02.tsv`.
+- **35 Produkte → DRAFT** (34 + «Bellenkontrollhalsband» aus dem zweiten Katalog-Lauf mit der Fern-Regel), alle zurückgelesen. Ledger mit Vorher-Status und Beleg: `dropship/_tierschutz_biozid_2026-10-02.tsv`.
   Tags: `tierschutz-tschv76` bzw. `biozid-ch-zulassung` + `tierschutz-<klasse>`/`biozid-<klasse>` + `tierschutz-pruefung-0210`.
 - Bewusst AKTIV gelassen: «Solar Ultraschall Tier- & Vogelabwehr». Das ist ein Gartengerät gegen Kleintiere und Vögel, kein Gerät für den eigenen Hund, und solche Geräte sind im Schweizer Handel üblich.
 - «Katzenflohball» war eine Kugelbahn: «Floh» ist eine Fehlübersetzung von «Flash Tunnel». Titel und SEO wurden zu «Katzen-Kugelbahn mit Ball und Tunnel».
