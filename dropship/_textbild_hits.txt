@@ -16243,3 +16243,5 @@ gid://shopify/Product/15496251343233	113->0	Malen nach Zahlen – Set «Der Wund
 gid://shopify/Product/15496302264705	40->0	AK66 Gamepad für Sechs-Finger-Bedienung
 gid://shopify/Product/15496393294209	48->0	18 Make-up Pinsel Set im drehbaren Köcher
 gid://shopify/Product/15496435630465	26->0	Flugzeug-Modellbausatz zum Stecken
+gid://shopify/Product/16603297186183	124->3	Halloween Hexen-Umhang Dekoration
+gid://shopify/Product/16603297481095	47->1	Farbenfroher Kabel-Organizer in PU
