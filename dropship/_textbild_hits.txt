@@ -16242,3 +16242,4 @@ gid://shopify/Product/15485538763137	10->3	Mini-Gaskocher für Outdoor & Camping
 gid://shopify/Product/15496251343233	113->0	Malen nach Zahlen – Set «Der Wunderbaum»
 gid://shopify/Product/15496302264705	40->0	AK66 Gamepad für Sechs-Finger-Bedienung
 gid://shopify/Product/15496393294209	48->0	18 Make-up Pinsel Set im drehbaren Köcher
+gid://shopify/Product/15496435630465	26->0	Flugzeug-Modellbausatz zum Stecken
