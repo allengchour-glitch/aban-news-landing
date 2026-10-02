@@ -2862,3 +2862,4 @@ silberarmreif-geburstet-633500	2603271239121633900	16	5.12	ok	landeseite
 rundes-handgemachtes-tablett-aus-stroh-613600	2510130531101613800	16	10.29	ok	landeseite
 sonnenbrille-chrome-polarisiert-color-changing	2605250828341607300	5	5.50	ok	landeseite
 sonnenbrille-photo-selbsttonend-polarisiert	2605270106561617600	5	5.48	ok	landeseite
+smart-brille-mit-8mp-kamera-634400	2605280552381635200	5	6.63	ok	landeseite
