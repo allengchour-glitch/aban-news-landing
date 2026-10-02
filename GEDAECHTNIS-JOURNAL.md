@@ -28,6 +28,17 @@
 
 
 
+
+## 🎛️ «feinkategorie filter verbessern?»: der Farbfilter las eine Option von 8 Produkten (2026-10-02)
+GEMESSEN an den Live-Seiten: die Facette «Farbe» hat die QUELLE «Farbe & Grösse» (8 Produkte) — auf sub-kleider (3'160
+Kleider) zeigte sie «Gelb», «Gelb-0XL»; Grösse/Kategorie fehlten ganz; Produkttyp 151 Werte mit Dubletten. Die Option
+«Farbe» hat 35'545 Rohwerte (Top 30 = 43 %) → ein Filter direkt darauf wäre endlos. GETAN: `produkttyp_vereinheitlichen.py`
+(2'620 umgelegt, Sperre gegen 17 TYPE-Regel-Kollektionen, Editor/POD nie) + `farbmuster_filter.py` (19 Grundfarben
+`lux-farbe-*` → shopify.color-pattern, 13'612 Produkte), beide täglich im Aufseher; Betreiber-Klick in Search & Discovery
+(keine API). FALLEN: color-pattern nur bei Kategorien mit Taxonomie-Merkmal «Color», sonst verwirft metafieldsSet die
+ganze Charge; Metaobjekt braucht «Base pattern»; metafieldsSet liefert owner{…}, nicht ownerId. Eine Facette heisst im
+HTML wie ihre Quelle, nicht wie ihre Beschriftung → `dropship/FILTER-FEINKATEGORIE-2026-10-02.md`
+
 ## 2026-10-02 · 🧭 «passe webseite alles an» — Menü + Startseite auf Q4
 Hauptmenü (161 HTTP-Einträge, Backup `dropship/_hauptmenue_backup_2026-10-02.json`): «🎁 Geschenke & Mehr» → «🎁 Geschenke & Weihnachten»
 an Platz 1, darin Weihnachten 🎄, Für Sie/Ihn/Kinder, Hochzeitsgeschenke vor den Preisstufen; neu Wimpern & Lashes (Beauty), Fahrzeuge & RC

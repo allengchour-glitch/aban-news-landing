@@ -55,7 +55,7 @@ TABELLE = {
     # Schmuck & Uhren & Accessoires
     "Schmuck": "aa-6", "Damen-Schmuck": "aa-6", "Halskette": "aa-6-8", "Ohrringe": "aa-6", "Armband": "aa-6", "Ring": "aa-6",
     "Uhren": "aa-6-11", "Uhr": "aa-6-11", "Smartwatch": "aa-6-12",
-    "Sonnenbrille": "aa-2-27", "Hut": "aa-2-17", "Sonnenhut": "aa-2-17", "Mütze": "aa-2-17", "Accessoires": "aa-2",
+    "Sonnenbrille": "aa-2-27", "Sonnenbrillen": "aa-2-27", "Hüte & Caps": "aa-2-17", "Hut": "aa-2-17", "Sonnenhut": "aa-2-17", "Mütze": "aa-2-17", "Accessoires": "aa-2",
     "Kostüm": "aa-3-3", "Kostüme": "aa-3-3",
     # Beauty
     "Make-up": "hb-3-2-6", "Beauty": "hb-3-2-6", "Beauty & Pflege": "hb-3-2-6", "Nageldesign": "hb-3-2-7",
