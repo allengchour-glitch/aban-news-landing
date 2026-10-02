@@ -16232,3 +16232,4 @@ gid://shopify/Product/15449482953089	37->0	Verstellbare Hundeleine
 gid://shopify/Product/15450779550081	11->0	Wimpernlifting-Set für 10 Anwendungen
 gid://shopify/Product/15450859176321	8->0	Interaktiver Futterspender für Haustiere
 gid://shopify/Product/15453761601921	9->0	Französische Stickerei mit Metallgriff
+gid://shopify/Product/15454002971009	43->0	Digitalölmalerei rahmenlose Landschaftsdekoration
