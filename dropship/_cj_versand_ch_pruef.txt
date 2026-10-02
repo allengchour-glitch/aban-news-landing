@@ -2665,3 +2665,7 @@ gymnastikschuhe-fur-damen-601200	2607092344591601800	16	5.77	ok	landeseite
 herren-hemd-mit-blumenprint-und-kurzarm-632200	2607231303261632900	16	7.43	ok	landeseite
 grosses-ruckenkissen-fur-erker-und-bett-625000	2412190841321625200	16	21.82	ok	landeseite
 herren-langarmhemd-mit-stehkragen-und-streifen-616000	2602220608521616400	16	8.79	ok	landeseite
+gurtel-herrenuhr-schlicht-business-tauglich-772160	1605030120371269632	7	6.05	ok	landeseite
+herren-board-schuhe-aus-rindsleder-602600	2505121327161602800	16	21.16	ok	landeseite
+herren-schnurschuhe-im-casual-look-619700	2504220114421610000	16	14.22	ok	landeseite
+herren-freizeit-sneaker-mit-dezenter-erhohung-614600	2411120936211614900	16	14.84	ok	landeseite
