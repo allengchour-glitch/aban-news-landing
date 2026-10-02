@@ -30,6 +30,7 @@ STAND = os.path.join(REPO, "dropship", "_farbmuster_stand.json")
 EXPORT = os.environ.get("EXPORT", "/tmp/farbmuster_export.jsonl")
 SCHARF = os.environ.get("SCHARF") == "1"
 TV = "gid://shopify/TaxonomyValue/"
+TC = "gid://shopify/TaxonomyCategory/"
 
 # (Handle-Suffix, Label, Hex, Taxonomie-Wert) — Taxonomie-IDs gemessen 02.10. an TaxonomyCategory aa-1-4 «Color»
 GRUND = [
@@ -137,18 +138,20 @@ def export_holen():
     raise SystemExit("Bulk: Zeitüberschreitung")
 
 
-def mit_farbe(kat_ids):
-    """Kategorie-IDs, deren Taxonomie ein Merkmal «Color» trägt — nur dort nimmt Shopify shopify.color-pattern an
-    (sonst «Owner subtype does not match the metafield definition's constraints», und metafieldsSet verwirft die
-    ganze Charge). GEMESSEN 02.10."""
-    ja, ids = set(), sorted(kat_ids)
-    for i in range(0, len(ids), 50):
-        r = gql("query($i:[ID!]!){nodes(ids:$i){... on TaxonomyCategory{id attributes(first:60){nodes{"
-                "... on TaxonomyChoiceListAttribute{name}}}}}}", {"i": ids[i:i + 50]})
-        for n in r["nodes"]:
-            if n and any((a.get("name") == "Color") for a in n["attributes"]["nodes"]):
-                ja.add(n["id"])
-    return ja
+def mit_farbe(kat_ids=None):
+    """Kategorien, für die Shopify shopify.color-pattern annimmt = die Bedingungsliste der Feld-Definition selbst
+    (constraints key «category», exakte Taxonomie-Handles, ~1'000+). Sonst «Owner subtype does not match the metafield
+    definition's constraints», und metafieldsSet verwirft die GANZE Charge. GEMESSEN 02.10.: «Kategorie hat ein
+    Merkmal Color» ist NICHT dasselbe — damit scheiterten weiter Chargen."""
+    ja, cur = set(), None
+    while True:
+        r = gql("query($c:String){d:metafieldDefinition(identifier:{ownerType:PRODUCT,namespace:\"shopify\",key:\"color-pattern\"})"
+                "{constraints{key values(first:250,after:$c){nodes{value} pageInfo{hasNextPage endCursor}}}}}", {"c": cur})
+        v = r["d"]["constraints"]["values"]
+        ja |= {TC + n["value"] for n in v["nodes"]}
+        if not v["pageInfo"]["hasNextPage"]:
+            return ja
+        cur = v["pageInfo"]["endCursor"]
 
 
 def main():
@@ -167,7 +170,7 @@ def main():
     soll, zaehl, ohne_farbe, fremd, ohne_treffer, ohne_kat = [], collections.Counter(), 0, 0, 0, 0
     zeilen = [json.loads(l) for l in open(EXPORT, encoding="utf-8")]
     farbkat = mit_farbe({(p.get("category") or {}).get("id") for p in zeilen if p.get("category")})
-    print(f"  {len(farbkat)} Kategorien mit Farbmerkmal")
+    print(f"  {len(farbkat)} Kategorien in der Feld-Bedingung")
     for p in zeilen:
         if "options" not in p:
             continue
@@ -206,9 +209,15 @@ def main():
             r = gql("""mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m){metafields{owner{... on Product{id}} value} userErrors{field message code}}}""",
                     {"m": [{"ownerId": pid, "namespace": "shopify", "key": "color-pattern",
                             "type": "list.metaobject_reference", "value": json.dumps(neu)} for pid, neu, _ in teil]})["metafieldsSet"]
-            if r["userErrors"]:
-                print(f"  FEHLER Block {i}: {r['userErrors'][:2]}")
             zurueck = {(m.get("owner") or {}).get("id"): m["value"] for m in r["metafields"] or []}
+            if r["userErrors"]:   # metafieldsSet ist atomar → einzeln nachholen, Ausreisser nur melden
+                print(f"  Block {i}: {r['userErrors'][0]['message'][:80]} → einzeln")
+                for pid, neu, _ in teil:
+                    e = gql("""mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m){metafields{owner{... on Product{id}} value} userErrors{message}}}""",
+                            {"m": [{"ownerId": pid, "namespace": "shopify", "key": "color-pattern",
+                                    "type": "list.metaobject_reference", "value": json.dumps(neu)}]})["metafieldsSet"]
+                    for m in e["metafields"] or []:
+                        zurueck[(m.get("owner") or {}).get("id")] = m["value"]
             for pid, neu, g in teil:
                 if sorted(json.loads(zurueck.get(pid) or "[]")) == sorted(neu):
                     ok += 1
