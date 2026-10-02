@@ -27,6 +27,14 @@
 
 
 
+
+## 2026-10-02 · 🏷️ Verbesserungsrunde 16:25: nach der Preissenkung 12/18 Reels preis-veraltet, Reparatur lief nur 1×/Tag
+Jede Massen-Preisänderung macht eingebrannte Reel-Preise falsch; die Tages-Reparatur war schon gelaufen → Queue 18 → 6.
+34/36 gesperrte Reels ohne lokale Quelle, 32 Produkte ohne Shopify-Video (Motor v2 hängt CJ-Videos nicht an). Getan: Shopify-
+Produktvideo als Rückfall-Quelle, Preis-Modus ohne alte Reel-Datei, Aufseher-Block alle 3 h solange preis-veraltet wartet; 2 neu
+gerendert (Tor ok), ready 8. LEHRE: Nach jeder Massen-Preisänderung sofort `social_queue_saeubern.py` + `MODUS=preis` laufen lassen.
+→ `dropship/REEL-PREIS-NACH-SENKUNG-2026-10-02.md`
+
 ## 2026-10-02 · 💸 «verbessere alles … auch preise entscheide selber» → Betreiber wählt «15 % Reserve»
 GEMESSEN: 86 % aller Varianten mit EK standen GENAU auf dem preis_verlustschutz-Boden (deckt 25 % Rabatt + Gratisversand);
 von 76 aktiven Codes je benutzt nur WELCOME10 (3×) + Auto-Bündel 10 % (1×); alle 24 Codes > 15 % 0×. Order-Rabatte kombinieren

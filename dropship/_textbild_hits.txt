@@ -16243,3 +16243,66 @@ gid://shopify/Product/15496251343233	113->0	Malen nach Zahlen – Set «Der Wund
 gid://shopify/Product/15496302264705	40->0	AK66 Gamepad für Sechs-Finger-Bedienung
 gid://shopify/Product/15496393294209	48->0	18 Make-up Pinsel Set im drehbaren Köcher
 gid://shopify/Product/15496435630465	26->0	Flugzeug-Modellbausatz zum Stecken
+gid://shopify/Product/16603297186183	124->3	Halloween Hexen-Umhang Dekoration
+gid://shopify/Product/16603297481095	47->1	Farbenfroher Kabel-Organizer in PU
+gid://shopify/Product/16603299348871	17->1	Klassischer Wollschal mit Mesh-Muster
+gid://shopify/Product/16603304329607	70->0	Wadenhohe Lederstiefel mit Schnallen-Design
+gid://shopify/Product/16603304952199	19->1	Krokodillmuster Lederschuhe mit Metallbremse
+gid://shopify/Product/16603304984967	107->0	Cowboy-Longsleeve-Kleid in Dunkelblau
+gid://shopify/Product/16603319665031	23->0	Weitband Gürtel mit silberner Zink-Globus
+gid://shopify/Product/16603319828871	54->0	Herzförmiger Quasten-Gürtel
+gid://shopify/Product/16603320025479	19->2	Retro Leder Gürtel mit Doppelbügeln
+gid://shopify/Product/16603320287623	9->0	Thermische Handschuhe mit Heizung – Outdoor
+gid://shopify/Product/16603321041287	32->0	Schwarze Kapuzenweste für Damen
+gid://shopify/Product/16603321172359	36->0	Schwarzes Puffertuch mit dicker Polsterung
+gid://shopify/Product/16603321270663	125->0	Weisses Polyester-Mantel mit Standkragen
+gid://shopify/Product/16603321827719	54->0	Fleecegefütterter Wollmantel in Schwarz
+gid://shopify/Product/16603322286471	11->0	Gesteppte Baumwolljacke für Herbst & Winter
+gid://shopify/Product/16603322450311	39->3	Plus‑Size Hooded Baumwoll‑Kissenmantel
+gid://shopify/Product/16603324285319	96->0	Short Cotton-Padded Mantel mit Kapuze
+gid://shopify/Product/16603324481927	116->0	Langmantel mit Fellkragen in Camel
+gid://shopify/Product/16603324514695	19->3	Navy‑blauer Damen‑Mantel mit Fellkragen
+gid://shopify/Product/16603324547463	105->0	Schwarzer Damen-Mittellanger Strickmantel
+gid://shopify/Product/16603324744071	162->1	Kompakter Fellkapuzenmantel für Damen
+gid://shopify/Product/16603324809607	73->0	Leoparden‑Cardigan in Relaxed‑Fit
+gid://shopify/Product/16603324842375	63->3	Leichte blaue Jeansjacke für den Alltag
+gid://shopify/Product/16603324973447	32->0	PU Lederjacke Damen, Slim Fit, Schwarz
+gid://shopify/Product/16603329954183	21->0	Kurzmantel mit Kapuze aus Polyester
+gid://shopify/Product/16603330052487	34->0	Wollfutter Baumwollmantel mittellang
+gid://shopify/Product/16603330478471	25->2	Loose-fit Rauten-Gesteppte Daunenjacke
+gid://shopify/Product/16603330806151	75->1	Wärmender Polyestermantel mit Fellkragen
+gid://shopify/Product/16603330871687	20->0	Schwarzer Daunen‑Mantel mit Kapuze
+gid://shopify/Product/16603330937223	120->0	Weit sitzende Pufferjacke mit Kapuze
+gid://shopify/Product/16603331035527	74->3	Weisser Baumwollmantel mit Kapuze
+gid://shopify/Product/16603331395975	12->0	Mittelgrosser Wollmantel mit Kapuze
+gid://shopify/Product/16603331658119	151->0	Ammulliger, hufstarker Mantel
+gid://shopify/Product/16603331920263	9->0	Schwarzer Mantel mit Kapuze, 100 cm Länge
+gid://shopify/Product/16603332411783	14->0	Weicher Baumwollmantel mit Lammwollfutter
+gid://shopify/Product/16603332641159	9->0	Weitläufiger, mit Kapuze, schwarzer Mantel – 1XL-5XL
+gid://shopify/Product/16603333067143	29->2	Schwarzer Wollschal mit Vintage‑Look
+gid://shopify/Product/16603333165447	15->0	Silberne Low‑Top Sandalen mit Glitzer
+gid://shopify/Product/16603333689735	43->3	12V Solarpanel aus polykristallinem Silizium
+gid://shopify/Product/16603333722503	11->0	Schwarzer Langmantel mit Fellkragen
+gid://shopify/Product/16603333853575	78->1	Quasten Fashion Jacquard Kapuzen-Cape
+gid://shopify/Product/16603334312327	62->0	Freizeitschichtjacke in Pink, Schwarz, Off-White
+gid://shopify/Product/16603334607239	80->0	Langtrench mit Slim-Fit
+gid://shopify/Product/16603334705543	9->1	Quasten-Schal für den Herbst
+gid://shopify/Product/16603335033223	90->1	Vintage Lederarmband aus Edelstahl
+gid://shopify/Product/16603335229831	75->0	Gothic‑Stil Plüschmantel mit Fell‑Bustier
+gid://shopify/Product/16603335295367	15->0	Boots mit weicher Gummisohle, schwarze Goldakzente
+gid://shopify/Product/16603335688583	56->1	Corduroy-Hemd mit Kapuze
+gid://shopify/Product/16603335721351	22->0	Smart Motion Meter Handgelenkarmband
+gid://shopify/Product/16603335754119	195->1	Langärmliger, doppelt-reiteriger Trenchcoat
+gid://shopify/Product/16603335819655	44->0	Martin‑Boots mit Tassel‑Design
+gid://shopify/Product/16603335983495	10->0	Schwarzer mittellanger Trenchcoat
+gid://shopify/Product/16603336180103	22->0	Mannschaftsschuhe mit weichem Boden
+gid://shopify/Product/16603336311175	70->1	Smartwatch mit Sprachassistent und NFC
+gid://shopify/Product/16603336343943	10->0	Weisser Pufferjacke mit Seitentasche
+gid://shopify/Product/16603336737159	22->3	Bluetooth Smartwatch MAX7 – 1,32" Display
+gid://shopify/Product/16603336933767	78->0	Mehrfarbige Kristall-Lampe für Tisch
+gid://shopify/Product/16603337032071	13->0	Leichte Daunenjacke Kurz
+gid://shopify/Product/16603337064839	49->3	4K HD Wasserdichte Action-Kamera mit Fernbedienung
+gid://shopify/Product/16603337294215	44->1	Taschenlampe mit kabellosem Aufladen
+gid://shopify/Product/16603337458055	140->2	Vintage Winterarbeitsschuhe Herren
+gid://shopify/Product/16603337589127	71->0	Sonnenblumentraum Nachtlicht mit Touch-Steuerung
+gid://shopify/Product/16603337752967	28->3	Herrenschuhe High-Top mit dicker Sohle
