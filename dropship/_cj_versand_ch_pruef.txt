@@ -2626,3 +2626,8 @@ dekorative-bucherregal-laternenlampe-607700	2607291003221608400	7	8.25	ok	landes
 elegante-mid-heel-pumps-mit-eckiger-kappe-607000	2601051135071607400	16	14.48	ok	landeseite
 elegantes-blusenkleid-mit-schnurung-637400	2606301301531638000	16	9.47	ok	landeseite
 deckenventilator-mit-licht-42-zoll-167488	1603313949267734528	3	98.64	ok	landeseite
+diy-ohrring-set-aus-pu-leder-00df42	-	-	-	unklar keine CJ-SKU	landeseite
+damen-chiffon-kleid-mit-halter-neck-und-stufen-609900	2606040708141600600	16	9.47	ok	landeseite
+dreieckiges-bettkissen-2332b1	-	-	-	unklar keine CJ-SKU	landeseite
+gaming-set-uk-943617	2042207010789687298	0	-	KEINE CH-Option → DRAFT	landeseite
+fitness-smart-armband-mit-schrittzahler-und-le-623600	2605100200311624300	7	5.09	ok	landeseite
