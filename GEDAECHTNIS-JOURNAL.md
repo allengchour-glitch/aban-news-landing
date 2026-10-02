@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-02 · 🪣 Grind-Importer ohne Eimer-Boden
+Verbesserungsrunde 04:25. Drei Tageswächter (darunter `cj_versand_ch_guard`, die Ghost-Sale-Klasse) brachen seit dem Grind-Neustart mit «12x gedrosselt (Eimer dauerhaft leer)» ab. Gemessen: Eimer 42–195 von 2'000, fünf `cj_category_fill` gleichzeitig. Die Eimer-Etikette gibt es seit 22.09. — eingebaut wurde sie in die Schreiber, die damals liefen; die Grind-Importer waren seit 14.09. pausiert und blieben aussen vor. Dazu gab `cj_category_fill.sgql()` eine HTTP-200-THROTTLED-Antwort als Fachfehler zurück (keine Wiederholung). Fix in allen drei Importern + Gehirn-Regel `eimer-fehlt` (productCreate/productSet ohne `eimer_etikette`). **Lehre:** Wer einen pausierten Motor wieder einschaltet, prüft ihn gegen die Regeln, die während der Pause entstanden sind — eine Regel, die nur in laufende Prozesse eingebaut wurde, ist keine Regel.
+
 ## 2026-10-02 · 🎃 Halloween-Reihe ohne Neuware (Saison-Tag fehlte im CJ-Importer)
 12-Tage-Plan Tag 2 (Herbst/Halloween auf der Startseite). Die Halloween-Reihe hängt an einer Smart-Kollektion (Tag `halloween`, neueste zuerst) — und zeigte trotzdem den 03.09. als neuesten Artikel, obwohl seit 01.10. 16:20 Halloween-Ware importiert wird. Ursache: das Tag setzten nur Fortura- und BigBuy-Importer; der CJ-Importer kennt `catTags` (Kategorien), aber keine Saison. Fix: `saisonTags()` in cat_tags.mjs (nur Titel + EN-Lieferantenname, NICHT der Suchbegriff — eine Halloween-Suche liefert auch neutrale Lampen) + Bestand-Wächter `saison_tags_nachtragen.py` (täglich, scharf, nur hinzufügen). 9 nachgetragen, Reihe 8/8. **Lehre:** Eine «selbstfrische» Smart-Kollektion ist nur so frisch wie der Importer, der ihr Tag setzt — bei jedem neuen Importer fragen: welche Kollektions-Tags erwartet die Startseite?
 

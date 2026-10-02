@@ -6,6 +6,7 @@
  * ⚠️ CJ-QPS: Engine (cj_perpetual) vorher stoppen — 1 req/s kontoweit!
  */
 import fs from 'node:fs';
+import { nachlauf } from './eimer_etikette.mjs';   // 02.10.: Eimer-Boden für Massen-Schreiber
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import { catTags, saisonTags } from './cat_tags.mjs';
@@ -66,7 +67,18 @@ async function shTok() {
   }
   throw new Error('shTok: kein Token nach 5 Versuchen');
 }
-async function sgql(t, q, v) { const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': t }, body: JSON.stringify({ query: q, variables: v }) }); return r.json(); }
+async function sgql(t, q, v) {
+  // 02.10.2026: Eimer-Boden (eimer_etikette) + THROTTLED wiederholen — 5 parallele Importer liessen die Tageswächter
+  // (cj_versand_ch_guard, sku_dup_scan, farbe_metafeld) mit «12x gedrosselt» sterben.
+  for (let i = 0; i < 4; i++) {
+    const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': t }, body: JSON.stringify({ query: q, variables: v }) });
+    const j = await r.json();
+    await nachlauf(j);
+    if (!JSON.stringify(j?.errors || '').includes('THROTTLED')) return j;
+    await new Promise(res => setTimeout(res, 4000 * (i + 1)));
+  }
+  return {};
+}
 
 const GROQ_KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || ''), (process.env.GROQ_API_KEY3 || process.env.GROQ_API_KEY_3 || '')].filter(Boolean);
 // 'llama-3.3-70b-versatile' wird am 16.08.2026 abgeschaltet — aus der Reihe genommen.

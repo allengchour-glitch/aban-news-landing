@@ -284,6 +284,20 @@ def r_seo_teil(dateien):
     return treffer
 
 
+def r_eimer_fehlt(dateien):
+    """02.10.2026 — Produkt-ANLEGER ohne Eimer-Boden. Fünf parallele `cj_category_fill`-Läufe + `cj_sku_import` (Grind seit
+    01.10.) hielten den Shopify-Eimer auf ~50/2'000; cj_versand_ch_guard, sku_dup_scan und farbe_metafeld starben mit «12x gedrosselt
+    (Eimer dauerhaft leer)». Wer productCreate/productSet aufruft, schreibt in Masse und muss `nachlauf` (eimer_etikette) nutzen."""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix not in (".py", ".mjs", ".js") or AUTO not in p.parents:
+            continue
+        m = re.search(r"\b(productCreate|productSet)\s*\(", t)
+        if m and not re.search(r"eimer_etikette|throttleStatus|currentlyAvailable", t):
+            treffer.append((p, t.count("\n", 0, m.start()) + 1, m.group(1) + " ohne Eimer-Boden (eimer_etikette.nachlauf)"))
+    return treffer
+
+
 REGELN = [
     ("stille-null", r_stille_null, "17.09.2026"),
     ("grund-verschluckt", r_grund_verschluckt, "17.09.2026"),
@@ -291,6 +305,7 @@ REGELN = [
     ("nur-tmp-dauerlaeufer", r_nur_tmp_dauerlaeufer, "11.08.2026"),
     ("stiller-uebersprung", r_stiller_uebersprung, "17.09.2026"),
     ("seo-teil", r_seo_teil, "30.09.2026"),
+    ("eimer-fehlt", r_eimer_fehlt, "02.10.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -308,6 +323,8 @@ KOEDER = {
     "stiller-uebersprung": ("automation/koeder.sh", 'QUELL=/tmp/x.sh\n[ -f "$QUELL" ] || continue\n'),
     # Der ECHTE Fall aus seo_versandschwelle_fix.py (bis 30.09.):
     "seo-teil": ("automation/koeder.py", 'gql(M,\n    {"i": {"id": p["id"], "seo": {"description": neu}}})\n'),
+    # Der ECHTE Fall aus cj_sku_import.mjs (bis 02.10.): Anleger ohne Eimer-Boden.
+    "eimer-fehlt": ("automation/koeder.mjs", "const r = await sgql(t, `mutation($p:ProductCreateInput!){productCreate(product:$p){product{id}}}`, {p});\n"),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -322,6 +339,7 @@ ECHT = {
     "stiller-uebersprung": ("automation/koeder.sh", 'QUELL=/tmp/x.sh\necho "fehlt: $QUELL"\n[ -f "$QUELL" ] || continue\n'),
     # Echt: beide Felder, Titel als f-String mit {…} (die Klammer im String darf das Objekt nicht beenden).
     "seo-teil": ("automation/koeder.py", 'x = {"i": {"id": c["id"], "seo": {"title": f"{titel} | LuxeStyle",\n    "description": besch}}}\n'),
+    "eimer-fehlt": ("automation/koeder.mjs", "import { nachlauf } from './eimer_etikette.mjs';\nconst r = await sgql(t, `mutation{productCreate(product:$p){product{id}}}`);\n"),
 }
 
 

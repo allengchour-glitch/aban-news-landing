@@ -5,6 +5,7 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import { nachlauf } from './eimer_etikette.mjs';   // 02.10.: Eimer-Boden für Massen-Schreiber
 import { takt as cjTakt } from './cj_takt.mjs';  // 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 // ── Plüsch: Spielzeug oder Heimtextil? EINE Regelquelle (09.09.2026) ──────────
@@ -444,7 +445,10 @@ async function sgql(t,q,v){
   try{
    const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v}),signal:AbortSignal.timeout(60000)});
    const j=await r.json();
+   await nachlauf(j);                           // 02.10.: Eimer-Boden (5 parallele Importer liessen Tageswaechter verhungern)
    if(j&&j.data)return j;                       // echte Antwort (auch mit userErrors)
+   const gedrosselt=JSON.stringify(j?.errors||'').includes('THROTTLED');
+   if(gedrosselt){ await sleep(4000*(i+1)); continue; }   // HTTP 200 + THROTTLED ist kein fachlicher Fehler
    if(r.status!==429&&r.status<500)return j;    // fachlicher Fehler -> nicht wiederholen
   }catch{}
   await sleep(1500*(i+1));
