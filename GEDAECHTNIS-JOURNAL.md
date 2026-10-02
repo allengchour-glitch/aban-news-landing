@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-02 · 📦 «UNSHIPPED» heisst bei CJ NICHT «unbezahlt» — Lieferzeiten gemessen
+Ich meldete #1021 (LX1021) über 30 h stündlich als «muss in der CJ-Konsole bezahlt werden» — FALSCH: `getOrderDetail` zeigt paymentDate 30.09. 23:37, Label erstellt 23:39, Status «Warehouse is processing». UNSHIPPED = bezahlt, CJ kauft ein/verpackt. Unbezahlt sieht man an paymentDate = null. Gemessene Läufe (bezahlt → zugestellt): LX1012 10 T, LX1015 11 T, LX1013 13 T, #1018 14 T, LX1011B 14 T, LX1014 16 T; davon Lager/Einkauf bis Übergabe 1–5 T (LX1012/LX1015 je 3 T). #1020 (bezahlt 30.09. 04:46) und #1021 liegen damit im Normalbereich. **Lehre:** Bestellstatus immer an paymentDate messen, nie aus dem Statuswort raten.
+
 ## 2026-10-02 · 🪣 Grind-Importer ohne Eimer-Boden
 Verbesserungsrunde 04:25. Drei Tageswächter (darunter `cj_versand_ch_guard`, die Ghost-Sale-Klasse) brachen seit dem Grind-Neustart mit «12x gedrosselt (Eimer dauerhaft leer)» ab. Gemessen: Eimer 42–195 von 2'000, fünf `cj_category_fill` gleichzeitig. Die Eimer-Etikette gibt es seit 22.09. — eingebaut wurde sie in die Schreiber, die damals liefen; die Grind-Importer waren seit 14.09. pausiert und blieben aussen vor. Dazu gab `cj_category_fill.sgql()` eine HTTP-200-THROTTLED-Antwort als Fachfehler zurück (keine Wiederholung). Fix in allen drei Importern + Gehirn-Regel `eimer-fehlt` (productCreate/productSet ohne `eimer_etikette`). **Lehre:** Wer einen pausierten Motor wieder einschaltet, prüft ihn gegen die Regeln, die während der Pause entstanden sind — eine Regel, die nur in laufende Prozesse eingebaut wurde, ist keine Regel.
 
