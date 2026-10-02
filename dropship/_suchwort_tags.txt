@@ -14366,3 +14366,6 @@ gid://shopify/Product/16603338080647	mantel	Plus-Size Retro-Hornknopf-Dufflemant
 gid://shopify/Product/16603338572167	werkzeug	Ultraschall‑Reinigungsmaschine für Nagelwerkzeuge
 gid://shopify/Product/16603349123463	schuh	Kinderlaufschuhe Weiss PU mit Bogenknopf
 gid://shopify/Product/15454109630849	brille	Sonnenbrille mit UV-Schutz
+gid://shopify/Product/16603321041287	weste	Schwarze Kapuzenweste für Damen
+gid://shopify/Product/16603330478471	jacke	Loose-fit Rauten-Gesteppte Daunenjacke
+gid://shopify/Product/16603338408327	jacke	Slim-Fit Daunenjacke mit weisser Federfüllung
