@@ -2800,3 +2800,5 @@ magnetischer-telefonhalter-610000	2605290403521610700	7	5.52	ok	landeseite
 leuchtendes-diamond-painting-fur-erwachsene-557376	1380698203204227072	16	8.61	ok	landeseite
 maxikleid-mit-neckholder-und-knoten-614800	2606300245261615400	16	10.83	ok	landeseite
 leichter-business-rucksack-mit-grossem-volumen-606600	2509210938361606800	16	11.49	ok	landeseite
+midikleid-mit-reissverschluss-und-schleifendet-630600	2606090205511631200	16	10.15	ok	landeseite
+legeres-a-linien-kleid-fur-damen-615800	2606080904021616700	16	7.25	ok	landeseite
