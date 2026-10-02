@@ -15,6 +15,11 @@ import json, os, sys, time, urllib.request, datetime as dt
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
 
+CJ_STATUS = {"CREATED": "angelegt, UNBEZAHLT", "IN_CART": "im CJ-Warenkorb, UNBEZAHLT", "UNPAID": "UNBEZAHLT",
+             "UNSHIPPED": "bezahlt, wartet auf Versand", "SHIPPED": "versandt", "DELIVERED": "zugestellt",
+             "TRASH": "verworfen", "CANCELLED": "storniert"}
+
+
 def main():
     try:
         tok = open("/tmp/cj_shop_token.txt").read().strip()
@@ -79,7 +84,11 @@ def main():
         elif teil:
             st, warn = f"TEILERSTATTET CHF {zurueck:.2f}/{summe:.2f}", " ⚠️"
         else:
-            st = ", ".join(f"{k}:{watch[k].get('status','?')}" for k in lx) if lx else "KEIN CJ-Auftrag"
+            # 02.10.2026: «LX1021:UNSHIPPED» wurde als «unbezahlt» gelesen (auch von mir) — bei CJ heisst UNSHIPPED
+            # «bezahlt, noch nicht versandt». Status deutsch ausschreiben, Tracking dazu.
+            st = ", ".join(f"{k}: {CJ_STATUS.get(watch[k].get('status'), watch[k].get('status', '?'))}"
+                           + (f" ({watch[k]['tracking']})" if watch[k].get("tracking") else "") for k in lx) \
+                if lx else "KEIN CJ-Auftrag"
             warn = " ⚠️" if (not lx and h > 2) or any(watch[k].get("status") in ("TRASH", "CANCELLED") for k in lx) else ""
         teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
     print(f"BESTELLUNGEN: {len(nodes)} offen · " + " | ".join(teile))
