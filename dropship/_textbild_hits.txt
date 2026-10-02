@@ -16284,3 +16284,5 @@ gid://shopify/Product/16603333165447	15->0	Silberne Low‑Top Sandalen mit Glitz
 gid://shopify/Product/16603333689735	43->3	12V Solarpanel aus polykristallinem Silizium
 gid://shopify/Product/16603333722503	11->0	Schwarzer Langmantel mit Fellkragen
 gid://shopify/Product/16603333853575	78->1	Quasten Fashion Jacquard Kapuzen-Cape
+gid://shopify/Product/16603334312327	62->0	Freizeitschichtjacke in Pink, Schwarz, Off-White
+gid://shopify/Product/16603334607239	80->0	Langtrench mit Slim-Fit
