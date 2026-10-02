@@ -116,3 +116,5 @@ slug:nibosi-quarzuhr-mit-edelstahlband-e89d0a
 name:nibosiquarzuhrmitedelstahlband
 slug:schweizer-lampion-set-fga86780
 slug:eleganter-wollmantel-mit-revers-und-bindegurte
+slug:blumenkleid-mit-schnurung-613000
+name:blumenkleidmitschnürung
