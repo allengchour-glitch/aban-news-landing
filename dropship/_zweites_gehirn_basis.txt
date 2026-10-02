@@ -158,3 +158,5 @@ stille-null	automation/ueberwachung_waffen_guard.py	gql() endet mit einem leeren
 stille-null	automation/variantenwerte_deutsch.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
 stille-null	automation/versandaussagen_wahrheit.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
 stille-null	automation/versandschwelle_blog_kollektion.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+grund-verschluckt	automation/neuheit_tag_nachziehen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/ss_statt_scharf_s.py	gql(): except-Zweig verschluckt den Grund
