@@ -2511,3 +2511,26 @@ elektrisches-reinigungsgerat-fur-poren-b73b35	-	-	-	unklar keine CJ-SKU	landesei
 sitzhocker-fur-das-lenkrad-4d96d4	-	-	-	unklar keine CJ-SKU	landeseite
 lidschatten-palette-16-farben-e283c6	-	-	-	unklar keine CJ-SKU	landeseite
 wasserfester-eyeliner-stift-12-farben-3d7198	-	-	-	unklar keine CJ-SKU	landeseite
+miss-rose-highlighter-puder-80c2c1	-	-	-	unklar keine CJ-SKU	landeseite
+avocado-bb-cream-mit-pilzkopf-applikator-69b717	-	-	-	unklar keine CJ-SKU	landeseite
+feuchtigkeitspflegecreme-9e5547	-	-	-	unklar keine CJ-SKU	landeseite
+luminoser-lidschatten-fur-augen-und-gesicht-d6c18d	-	-	-	unklar keine CJ-SKU	landeseite
+langanhaltender-uv-lidschatten-769542	-	-	-	unklar keine CJ-SKU	landeseite
+wimpernserum-3-ml-b5f10d	-	-	-	unklar keine CJ-SKU	landeseite
+reparaturplatten-set-7a9af5	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktionale-flussige-grundierung-8e59e6	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-gesichtsburste-mit-reinigungsfunkt-999bc1	-	-	-	unklar keine CJ-SKU	landeseite
+scheinwerfer-vernebler-becher-a1978c	-	-	-	unklar keine CJ-SKU	landeseite
+leder-lenkradbezug-38cm-19018d	-	-	-	unklar keine CJ-SKU	landeseite
+etagere-fur-kuchen-snacks-abea57	-	-	-	unklar keine CJ-SKU	landeseite
+3-in-1-mini-drohne-fur-land-wasser-luft-f0bc29	-	-	-	unklar keine CJ-SKU	landeseite
+30w-vertikales-usb-ladegerat-mit-6-ports-5cd362	-	-	-	unklar keine CJ-SKU	landeseite
+bruststraffende-feuchtigkeitsspendende-creme-691073	2072502114368520194	0	-	KEINE CH-Option → DRAFT	landeseite
+automatische-skelett-herrenuhr-mit-leuchtzeige-626000	2601010835401626200	7	10.50	ok	landeseite
+beissfester-spielball-fur-hunde-626400	2605140213011627200	7	7.24	ok	landeseite
+bequeme-atmungsaktive-augenmaske-624000	2504180336051624500	7	6.41	ok	landeseite
+augenbrauen-stempel-kit-wasserfest-naturlich-546ee8	-	-	-	unklar keine CJ-SKU	landeseite
+bequeme-atmungsaktive-lederschuhe-633100	2604160801251633700	16	13.76	ok	landeseite
+astronaut-roboter-uberwachungskamera-90b6f7	-	-	-	unklar keine CJ-SKU	landeseite
+astronaut-phone-case-298816	1540204781170601984	16	5.27	ok	landeseite
+asymmetrisches-knopfkleid-mit-seitlichen-tasch-617700	2607100237011618400	16	9.33	ok	landeseite
