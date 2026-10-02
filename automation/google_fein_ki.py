@@ -202,6 +202,44 @@ def schreiben(plan, ledger_neu):
     return ok, fehl
 
 
+GROSS = int(os.environ.get("GROSS", "150"))   # mehr Unterpfade → zweistufig (Groq lehnt ~400er-Listen mit 413 ab)
+
+
+def einordnen(basis, titel, tax):
+    """Je Titel (ziel|None, status) — status ok/keiner/uneinig/fehlt. Bei > GROSS Unterpfaden erst die direkte
+    Unterstufe (beide Modelle einig), dann rekursiv in deren Teilbaum; scheitert Stufe 2, gilt die einige Stufe 1."""
+    pfade = sorted(p for p in tax if p.startswith(basis + " > "))
+    if not pfade:
+        return [(None, "keiner")] * len(titel)
+    if len(pfade) <= GROSS:
+        g, c, ok = frage(basis, pfade, titel)
+        if not ok:
+            return [(None, "fehlt")] * len(titel)
+        out = []
+        for k in range(1, len(titel) + 1):
+            a, b = g.get(k), c.get(k)
+            out.append((pfade[a - 1], "ok") if a and a == b else (None, "keiner" if a == b else "uneinig"))
+        return out
+    stufe = [p for p in pfade if p.count(">") == basis.count(">") + 1]
+    g, c, ok = frage(basis, stufe, titel)
+    if not ok:
+        return [(None, "fehlt")] * len(titel)
+    out = [None] * len(titel)
+    weiter = {}
+    for k in range(1, len(titel) + 1):
+        a, b = g.get(k), c.get(k)
+        if a and a == b:
+            weiter.setdefault(stufe[a - 1], []).append(k - 1)
+        else:
+            out[k - 1] = (None, "keiner" if a == b else "uneinig")
+    for kind, idx in weiter.items():
+        tiefer = einordnen(kind, [titel[i] for i in idx], tax)
+        for i, (z, st) in zip(idx, tiefer):
+            # Stufe 1 einig: tieferer Pfad, wenn Stufe 2 einig; der Zweig selbst nur, wenn BEIDE auch dort «0» sagen
+            out[i] = (z, "ok") if z else ((kind, "ok") if st == "keiner" else (None, st))
+    return out
+
+
 def main():
     if "--kanarienvogel" in sys.argv:
         return kanarienvogel()
@@ -231,28 +269,27 @@ def main():
         k, n = (int(x) for x in TEIL.split("/"))
         reihe = [g for i, g in enumerate(reihe) if i % n == k - 1]
     for basis, prod in reihe:
-        pfade = sorted(p for p in tax if p.startswith(basis + " > "))
-        if not pfade or len(pfade) > 600:
+        if not any(p.startswith(basis + " > ") for p in tax):
             continue
         for i in range(0, len(prod), BATCH):
             if gesamt >= MAX:
                 break
             teil = prod[i:i + BATCH]
             gesamt += len(teil)
-            g, c, ok = frage(basis, pfade, [p["title"] for p in teil])
-            if not ok:
+            erg = einordnen(basis, [p["title"] for p in teil], tax)
+            if all(st == "fehlt" for _, st in erg):
                 print(f"  ⚠️ {basis}: ein Modell ohne Antwort — Block übersprungen (kein Ledger)", flush=True)
                 ausgelassen += 1
                 continue
-            for k, p in enumerate(teil, 1):
-                a, b = g.get(k), c.get(k)
-                if a and a == b:
-                    plan.append((p, basis, pfade[a - 1]))
+            for p, (ziel, st) in zip(teil, erg):
+                if st == "fehlt":
+                    ausgelassen += 1
+                elif ziel:
+                    plan.append((p, basis, ziel))
+                elif st == "keiner":
+                    null += 1; ledger_neu.append(f"{p['id']}\tkeiner\t{basis}")
                 else:
-                    if a == b:
-                        null += 1; ledger_neu.append(f"{p['id']}\tkeiner\t{basis}")
-                    else:
-                        uneinig += 1; ledger_neu.append(f"{p['id']}\tuneinig\t{basis}")
+                    uneinig += 1; ledger_neu.append(f"{p['id']}\tuneinig\t{basis}")
             if SCHARF:
                 o, f_ = schreiben(plan[schon:], ledger_neu[led_schon:])
                 ok_ges += o; fehl_ges += f_; schon, led_schon = len(plan), len(ledger_neu)

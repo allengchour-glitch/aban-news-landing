@@ -472,3 +472,4 @@ gid://shopify/Product/15511032365441	ok-lokal
 gid://shopify/Product/15511869817217	hat-schon-video
 gid://shopify/Product/15512258478465	ok-lokal
 gid://shopify/Product/15516101706113	ok-lokal
+gid://shopify/Product/15516102197633	ok-lokal
