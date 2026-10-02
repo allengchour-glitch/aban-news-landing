@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-02 · 💾 Grow-Speicher nutzen — und `fileErrors` ist eine Historie
+Betreiber «nutze grow speicherplatz». Upload-Probe READY. Umgesetzt: 56 wartende Reels von raw.githubusercontent ins Shopify-CDN (`reel_cdn_umzug.py`), Handy-Makeover-Set (30.09. ohne Bild gedraftet) mit Backup-Bild wieder ACTIVE. Nebenfund: `tiktok_cowork_auftrag.py` meldete auch NACH dem Grow-Wechsel «Queue-CDN NICHT aktualisiert — FILE_STORAGE_LIMIT_EXCEEDED». Gemessen: GenericFile READY, updatedAt jetzt, CDN liefert die heutige Queue — die `fileErrors`-Liste trägt die gescheiterten Versuche vom September weiter. Fix: Erfolg = ausgelieferter Inhalt gleich lokal (auch `tiktok_jetzt.py`). **Lehre:** Fehlerlisten an einem Objekt sind dessen Geschichte; Zustand misst man an der Wirkung. Bild-/Video-Nachtrag brauchen CJ-Punkte — die sind um 06:24 UTC schon leer (Reset 16:00 UTC), deshalb laufen sie im Vorrangfenster.
+
 ## 2026-10-02 · 📦 «UNSHIPPED» heisst bei CJ NICHT «unbezahlt» — Lieferzeiten gemessen
 Ich meldete #1021 (LX1021) über 30 h stündlich als «muss in der CJ-Konsole bezahlt werden» — FALSCH: `getOrderDetail` zeigt paymentDate 30.09. 23:37, Label erstellt 23:39, Status «Warehouse is processing». UNSHIPPED = bezahlt, CJ kauft ein/verpackt. Unbezahlt sieht man an paymentDate = null. Gemessene Läufe (bezahlt → zugestellt): LX1012 10 T, LX1015 11 T, LX1013 13 T, #1018 14 T, LX1011B 14 T, LX1014 16 T; davon Lager/Einkauf bis Übergabe 1–5 T (LX1012/LX1015 je 3 T). #1020 (bezahlt 30.09. 04:46) und #1021 liegen damit im Normalbereich. **Lehre:** Bestellstatus immer an paymentDate messen, nie aus dem Statuswort raten.
 

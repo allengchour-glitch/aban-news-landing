@@ -25,5 +25,6 @@ Sitzungen, Startseite 46 · Speicher 107,7 GB (Grow ab heute) · 29 meistbesucht
 
 ## Vorgezogen 01.10. (Betreiber «ja starte alle bis fertig», Grow nutzen)
 - Tag 8 teilweise: Reel-Motor legt neue Reels zuerst im Shopify-CDN ab (Repo nur Rückfall); Video-Nachtrag 250/Tag im CJ-Vorrangfenster
+- Tag 8 (02.10., Betreiber «nutze grow speicherplatz»): alle 56 wartenden Reels von GitHub ins Shopify-CDN (`reel_cdn_umzug.py`, 0 Fehler); Handy-Makeover-Set wieder ACTIVE mit Bild; Queue-CDN-Prüfung las alte `fileErrors` als neu → Inhaltsprüfung
   (Shopify-Deckel Grow 1'000 statt 250). Nachmessen am 08.10.: Zahl der Produkte mit Video, Ablage der neuen Reels.
 - Tatis Fotos auf Blumenkleid + Midikleid (erste Bilder). KAUFWILLE-Zeile in jeder Keepalive-Meldung.
