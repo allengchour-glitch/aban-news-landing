@@ -6,10 +6,10 @@
 # (Tagesbudget war um 18:21 UTC erschöpft). Treffer gegen Bild plausibilisieren: es soll ein
 # WECKER sein, kein Spielzeug-Blaster.
 # 2026-10-02 google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen
-search:dry bag 20l
-search:castor oil wrap set
-search:silicone drying mat
-search:new year party kit
+#done search:dry bag 20l
+#done search:castor oil wrap set
+#done search:silicone drying mat
+#done search:new year party kit
 search:women reversible belt
 search:electric meat grinder 5l
 search:chiffon evening scarf

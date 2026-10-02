@@ -35,11 +35,11 @@ GETAN: (1) 24 Codes > 15 % deaktiviert (EXPIRED, Liste `dropship/_rabatte_deakti
 (2) `preis_verlustschutz.py` RABATT 0.25 → 0.15; (3) LOCKPREIS-FALLE behoben: gesperrte Varianten (DENY, Bestand 0) behielten ihren
 alten Tiefpreis → «ab CHF 14.90», kaufbar erst ab 22.90 (PBV) — 4'261 Sperren in 705 Produkten; Schutz hebt jetzt auch gesperrte
 auf den Boden (3'405 Varianten / 358 Produkte, 0 Fehler); (4) `preis_senken.py`: Preis im Band (b15, b25] → max(b15, 14.90),
-höhere Preise unberührt, keine neuen Streichpreise; Bulk-Mutation 350'008 Varianten / 34'486 Produkte, Median −11 %,
+höhere Preise unberührt, keine neuen Streichpreise; Bulk-Mutation 350'008 Varianten / 34'486 Produkte, Median −11 % — COMPLETED 16:33 UTC, 34'486 ok / 0 Fehler, Stichprobe 8/8 live, WebFetch zeigt neuen Ab-Preis,
 Ledger `dropship/_preis_senken_2026-10-02.tsv.gz` (alt/neu/EK). (5) 7 Ratgeber bewarben BUNDLE20/BEAUTYDUO → durch das echte
 Angebot «ab 2 Artikeln automatisch 10 %» ersetzt (Backup `_artikel_codes_backup_2026-10-02.json`); Seiten mit Codes alle unveröffentlicht.
 (6) 28 Seite-2-Produkte (Semrush Platz 16–30): SEO-Titel/-Text mit exaktem Suchbegriff, ohne Preis (veraltet sonst) und ohne
-«schnell» (10–20 WT) — Gemini-Vorschläge verworfen. FALLE: `articleUpdate` body ist Typ `HTML!`, nicht `String!`.
+«schnell» (10–20 WT) — Gemini-Vorschläge verworfen. Danach `seo_suchbegriff_titel.py` (Semrush Platz 31–100): Gemini-SÄTZE mit Pflicht-Suchbegriff gaben Grammatikfehler + Versprechen («Dieser kleiner wanderrucksack», «aus hochwertigem Leder») → Text = echter Produkttitel + fester Schluss, nur der Titel aus Gemini mit Floskel-/Sie-/Preis-Sperre; 36 weitere geschrieben (64 gesamt). FALLE: `articleUpdate` body ist Typ `HTML!`, nicht `String!`.
 
 ## 2026-10-02 · 📈 Semrush-Testabo (Betreiber aktiviert 02.10. ~15:45 UTC, KÜNDIGEN VOR 09.10.)
 GEMESSEN (Datenbank ch): luxestyle.ch rankt für 556 Begriffe in den Top 100, geschätzter Verkehr 0. Davon 38 auf Platz 16–30, fast alle

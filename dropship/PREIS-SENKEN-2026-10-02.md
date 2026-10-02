@@ -1,10 +1,10 @@
-# Preise auf 15-%-Reserve gesenkt — 2026-10-02 16:09 UTC (TROCKEN)
+# Preise auf 15-%-Reserve gesenkt — 2026-10-02 16:33 UTC (COMPLETED)
 
 Betreiber 02.10.: «verbessere alles … auch preise entscheide selber» → «15 % Reserve». 24 Codes > 15 % deaktiviert (0× benutzt). Regel: Preis auf altem 25-%-Boden → neuer 15-%-Boden, mindestens CHF 14.90; höhere Preise unberührt; keine neuen Streichpreise.
 
 - Varianten im Export: 431361 · ohne EK: 917 · über altem Boden (unberührt): 73359 · schon tief: 4035 · am CHF-14.90-Boden: 3042
 - **gesenkt: 350008 Varianten in 34486 Produkten**, Median neu/alt 0.887 (≈ 11 % günstiger); davon mit bestehendem Streichpreis: 0
-- Bulk-Mutation: TROCKEN · ok 0 · Fehler 0 
+- Bulk-Mutation: COMPLETED · ok 34486 · Fehler 0 
 
 | Produkt | alt | neu | EK |
 |---|---|---|---|
