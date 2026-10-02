@@ -2899,3 +2899,17 @@ carbon-zundschalter-608000	gesetzt-1
 auto-booster-800a-852098	gesetzt-3
 auto-heizer-627000	gesetzt-3
 notstart-powerbank-12v-147136	gesetzt-1
+fernbedienungsschlussel-901760	gesetzt-2
+notstart-hilfe-903680	gesetzt-3
+notstarter-12v-271424	gesetzt-3
+auto-diebstahlschutz-630336	gesetzt-3
+doppel-ladegerat-567104	gesetzt-2
+uberspannungsschutz-686976	gesetzt-1
+auto-diebstahlalarm-198464	gesetzt-4
+notstarter-powerbank-1487f7	gesetzt-3
+notstarter-mit-led-c9d41b	gesetzt-2
+batterie-schalter-9b3270	gesetzt-2
+faltbare-fernbedienungsschlussel-075ef0	gesetzt-2
+2-tasten-auto-schlussel-1ef019	gesetzt-3
+bluetooth-transmitter-5a5ede	gesetzt-2
+peugeot-auto-schlussel-021c0e	gesetzt-3
