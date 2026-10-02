@@ -1,0 +1,175 @@
+{
+ "datum": "2026-10-02 19:30:55.110228",
+ "alt": {
+  "beauty-selfcare": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TYPE",
+     "relation": "EQUALS",
+     "condition": "Beauty"
+    },
+    {
+     "column": "TYPE",
+     "relation": "EQUALS",
+     "condition": "Beauty Tools"
+    }
+   ]
+  },
+  "wimpern-lashes": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "wimpern"
+    }
+   ]
+  },
+  "hochzeitsgeschenke": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "hochzeit"
+    },
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "wein"
+    }
+   ]
+  },
+  "spielzeug-fahrzeuge": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Müllwagen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Transporter"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Batterie-Zug"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Stunt-Auto"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Rutscher"
+    }
+   ]
+  },
+  "3d-drucker": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "3d-drucker"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "3d drucker"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "impresora"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "3d-stift"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "3d stift"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "lápiz"
+    }
+   ]
+  },
+  "licht-led-strip": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "LED-Strip"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "LED Streifen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "LED-Band"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lichtband"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lichterkette"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lichtschlauch"
+    }
+   ]
+  },
+  "elektrowerkzeug": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "akkuschrauber"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "bohrmaschine"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "winkelschleifer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "stichsäge"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "schlagbohrer"
+    }
+   ]
+  }
+ }
+}
