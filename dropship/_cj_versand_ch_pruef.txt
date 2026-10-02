@@ -2784,3 +2784,14 @@ klassische-herren-armbanduhr-780416	1608672873986666496	7	7.13	ok	landeseite
 langarmhemd-slim-fit-diverse-farben-633800	2509301030041634000	16	6.77	ok	landeseite
 meridian-burste-nacken-schultermassage-629100	2606300720371629700	7	12.60	ok	landeseite
 lederarmband-mit-usb-c-ladekabel-149696	1498897959637618688	16	5.12	ok	landeseite
+lippenglanzstift-341696	1691723550400450560	3	5.06	ok	landeseite
+lederhandtasche-mit-mehreren-fachern-987200	1399578562591330304	16	14.34	ok	landeseite
+manner-leder-clutch-626700	2601180537211627100	16	10.15	ok	landeseite
+md-trainingsschuh-mit-stossdampfung-308352	1745016826813222912	16	11.37	ok	landeseite
+macro-programmierbarer-joystick-griff-mit-mete-639360	1650034218170331136	7	12.75	ok	landeseite
+leichte-industrieschutzschuhe-541248	1778723211023233024	16	17.52	ok	landeseite
+mannertasche-mit-cp-design-627500	2606010524471628200	16	8.25	ok	landeseite
+magnetische-kuhlschrank-marker-631500	2605160519391632000	7	6.66	ok	landeseite
+mehrfarben-armbanduhr-620400	2512110234421620700	16	7.43	ok	landeseite
+manner-geldborse-mit-tri-fold-design-607600	2509190752181607800	16	6.33	ok	landeseite
+leichter-sommer-tee-631200	2606261233131631800	16	9.88	ok	landeseite
