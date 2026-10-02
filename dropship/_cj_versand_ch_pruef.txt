@@ -2937,3 +2937,7 @@ halloween-sweatshirt-mit-digital-druck-618900	2607130151041619600	16	8.66	ok	lan
 herbstkissenbezuge-mit-kurbismuster-647700	2510010748511647900	16	7.17	ok	landeseite
 kurbis-design-sweatshirts-fur-herren-639700	2607150350531630400	16	10.15	ok	landeseite
 boho-kurbis-sitzkissen-und-dekokissen-619000	2607040956411619600	16	11.72	ok	landeseite
+kurbisformiger-korb-aus-baumwollseil-628700	2607270611521629300	16	14.85	ok	landeseite
+kissenhulle-ahornblatt-kurbis-stickerei-608100	2607290154051608800	16	6.18	ok	landeseite
+halloween-gartenstecker-mit-kunstblumen-626100	2607290720091626800	16	10.49	ok	landeseite
+geister-kissenbezug-set-aus-plusch-399297	2056947698515034114	0	-	KEINE CH-Option → DRAFT	landeseite

@@ -30,6 +30,20 @@
 
 
 
+
+## 🧟 «Produktdetails doppelt» kam wochenlang täglich zurück — Verursacher ist der PC des Betreibers (2026-10-02)
+150 Produkte (u. a. die TikTok-Landeseiten Sirène/Provence/Aurora) trugen täglich wieder zwei «Produktdetails»-Blöcke.
+`produktdetails_vereinen.py` vereinte sie, `klassen_kontrolle` meldete «150 → 0», und am nächsten Tag waren alle 150
+wieder doppelt; `PD-ZOMBIE-FALLE.md` fand «keinen Schreiber in diesem Container». GEFUNDEN über `git log -S'ls-feed-details'`:
+Die Windows-Aufgabe «LuxeMarketing» (`automation/local/run-follower-daily.ps1`, Schritt 8c, nur auf dem alten Branch
+`claude/luxestyle-product-CizQ6`) ruft täglich `enrich_apparel_descriptions.mjs` (MAX 400) auf. Das Skript hängt einen
+`ls-feed-details`-Block an, wenn `descriptionHtml.includes('ls-feed-details')` falsch ist — und die Vereinigung entfernte
+genau diese Klasse. Lösung ohne den PC anzufassen: vereinte und neue CJ-Blöcke tragen `<!--ls-feed-details-->`; 150 vereint,
+0 doppelt, 150 markiert. Betreiber-Klick: Schritt 8c auf dem PC abschalten (COWORK-BEFEHL).
+**Lehre:** Findet die Zombie-Falle keinen Schreiber im Container, im Git-Verlauf ALLER Branches nach dem Erzeuger des
+Markers suchen — auch nach Skripten, die auf dem PC des Betreibers laufen. Ein Aufräumer darf nie die Markierung
+entfernen, an der ein fremder Schreiber «schon erledigt» erkennt.
+
 ## 📦 «ab wann bei iris cj melden»: 48 h ohne Scan ist normal, Iris erst ab 5 Tagen (2026-10-02)
 #1020 stand in der Ampel als «⛔ VERSAND STEHT STILL … seit 63h ohne Scan». GEMESSEN an CJ `trackInfo`: einzige Station
 «Label created. Warehouse is processing» 30.09. 04:48, Status Processing. Gemessene Läufe bezahlt → Übergabe 1–5 T

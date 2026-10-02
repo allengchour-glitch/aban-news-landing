@@ -2,6 +2,17 @@
 
 
 
+## 🆕 02.10. 22:00 UTC — PC: alte Tagesaufgabe «LuxeMarketing» entschärfen (~2 Min, am PC)
+> GEMESSEN: Die Windows-Aufgabe «LuxeMarketing» (täglich 10:00) startet `enrich_apparel_descriptions.mjs` von dem alten
+> Branch `claude/luxestyle-product-CizQ6`. Sie hängte täglich bei 150 Kleidern einen ZWEITEN Block «Produktdetails» an,
+> unter anderem auf den TikTok-Landeseiten. Ich habe es serverseitig abgefangen (Markierung). Sauber ist es erst, wenn der
+> Aufruf auf dem PC weg ist.
+
+Am PC: `C:\Users\allen\aban-news-landing\automation\local\run-follower-daily.ps1` in Notepad öffnen und die Zeile
+`$env:MAX = "400"; node "automation/enrich_apparel_descriptions.mjs"; $env:MAX = $null`
+mit `#` am Anfang auskommentieren. Speichern. Fertig. (Oder die ganze Aufgabe: Aufgabenplanung → «LuxeMarketing» → Deaktivieren,
+falls du die übrigen PC-Schritte nicht mehr brauchst.)
+
 ## 🆕 02.10. 20:20 UTC — Filter auf den Kollektionsseiten: Farbe · Grösse · Kategorie (~5 Min, keine Kosten) · 1:1 in Cowork einfügen
 > GEMESSEN 02.10.: Der Filter «Farbe» liest heute nur die Option «Farbe & Grösse» (8 Produkte) → bei 3'160 Kleidern zeigt
 > er «Gelb», «Gelb-0XL» … und sonst nichts. Einen Grössen- und einen Kategorie-Filter gibt es nicht. Filter lassen sich

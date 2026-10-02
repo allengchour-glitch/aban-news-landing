@@ -49,3 +49,14 @@ Die Filter selbst lassen sich NUR in der App Search & Discovery einstellen. Daf�
 - **Kategorie ❌:** Auf keiner der 4 Seiten gibt es eine Kategorie-Facette. Schritt 5 ist nicht gespeichert oder heisst in der App anders.
 - **Anbieter:** Der Filter existiert noch (`filter.p.vendor`), ist im Theme aber ausgeblendet.
 - **Endstand ~21:20 UTC (sub-kleider, gadgets, uhren):** Verfügbarkeit · Preis · Produkttyp · Farbe · Grösse. Alle Beschriftungen sind deutsch. Der Anbieter-Filter ist entfernt. Einen Kategorie-Filter bietet die App nicht an, er entfällt.
+
+## Nachtrag 02.10. ~22:00 UTC — «mach du 1 bis 4»
+1. **TikTok-Landeseiten (Sirène, Provence, Aurora):** GEMESSEN 2 T: 246 TikTok-Sitzungen, Absprungrate 94 %, 18 s im Schnitt, 1,14 Seiten je Sitzung, 1 Warenkorb.
+   - Mobil sieht die Seite sauber aus: Preis, Grössen, Lieferdatum 16.–30.10., 30 Tage Rückgabe, Klarna/TWINT. Das Popup erscheint erst nach 30 s oder 40 % Scrollen.
+   - Gefunden und behoben: «Produktdetails» doppelt. Das ist eine Zombie-Klasse mit 150 Produkten, die täglich zurückkam (`PD-ZOMBIE-FALLE.md`: «Schreiber ausserhalb des Containers»).
+   - **Verursacher:** Die Windows-Aufgabe «LuxeMarketing» auf dem PC des Betreibers (`run-follower-daily.ps1`, Schritt 8c, nur auf dem alten Branch `claude/luxestyle-product-CizQ6`) ruft täglich `enrich_apparel_descriptions.mjs` auf (MAX 400). Das Skript hängt einen `ls-feed-details`-Block an, sobald der Text die Zeichenfolge nicht enthält; `produktdetails_vereinen.py` entfernte genau diese Klasse.
+   - **Lösung ohne PC:** Vereinte Blöcke und neue CJ-Blöcke (`cj_specs.mjs`) tragen jetzt `<!--ls-feed-details-->`. Die 150 sind vereint und zurückgelesen, 0 doppelt, 150 markiert.
+   - Auf den Seiten selbst: «Wine Red & White» heisst jetzt «Weinrot & Weiss», bei Aurora sind der doppelte Grössenhinweis und ein kaputtes `</ul>` entfernt.
+2. **Raucherzubehör aus «Coole Gadgets»:** Die Regel heisst jetzt Tag `gadget` UND Typ ≠ Raucherzubehör (alt: `_gadgets_regel_alt_2026-10-02.json`). Raucherzubehör im Google-Kanal: 0.
+3. **Grössenwerte:** 4 Produkte bereinigt (Ledger `_groessenwerte_bereinigt.tsv`). Wächter `groessenwert_kauderwelsch.py` läuft täglich nach `farbmuster_filter`.
+4. **Farbfeld aus dem Titel:** Gilt für Produkte ohne Farb-Option, wenn genau EINE Farbe als ganzes deutsches Wort im Titel steht. Englische Farbwörter, Kosmetik, Duft, Haar, Perücke und Kostüm sind ausgeschlossen (Stichprobe: «White Noise Speaker», «Sakura Creme», «braunes Haar»). Selbsttest 31/31, 1'773 Produkte.

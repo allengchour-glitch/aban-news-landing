@@ -65,6 +65,54 @@ REGELN = [
 _R = [(re.compile(m, re.I), z) for m, z in REGELN]
 OPTION = {"farbe", "color", "colour"}
 
+# Zweite Quelle (02.10.2026): Produkte OHNE Farb-Option (Schmuck, Caps, Uhren …) — Farbe aus dem TITEL, aber nur
+# als GANZES Wort (keine Komposita) und nur, wenn genau EINE Grundfarbe vorkommt. Die Options-Wortliste oben ist für
+# Titel zu grob (GEMESSEN: «Sandalette» → beige, «Edelweiss» → weiss, «Zitrone» → gelb, «Parrot» → rot,
+# «Lavendelduft» → lila). Muster wie farbe_metafeld.py (Lehre 9b).
+TITEL_REGELN = [
+    (r"ros[ée][ -]?gold", "rosegold"), (r"schwarz(?:e[rsnm]?)?", "schwarz"),
+    (r"wei(?:ss|ß)(?:e[rsnm]?)?", "weiss"), (r"grau(?:e[rsnm]?)?|anthrazit", "grau"),
+    (r"silber(?:n|farben|ne[rsnm]?)?", "silber"), (r"gold(?:en|farben|ene[rsnm]?)?", "gold"),
+    (r"bronze|kupfer(?:farben)?", "bronze"), (r"marineblau(?:e[rsnm]?)?|navy|dunkelblau(?:e[rsnm]?)?", "marineblau"),
+    (r"blau(?:e[rsnm]?)?|hellblau(?:e[rsnm]?)?|himmelblau|t[üu]rkis(?:e[rsnm]?)?", "blau"),
+    (r"rot(?:e[rsnm]?)?|weinrot(?:e[rsnm]?)?|bordeaux", "rot"),
+    (r"gr[üu]n(?:e[rsnm]?)?|oliv(?:gr[üu]n)?|mintgr[üu]n", "gruen"), (r"gelb(?:e[rsnm]?)?", "gelb"),
+    (r"orange(?:farben)?|apricot", "orange"), (r"lila|violett(?:e[rsnm]?)?|flieder", "lila"),
+    (r"rosa|pink|rosarot(?:e[rsnm]?)?", "pink"), (r"beige|khaki|ecru", "beige"),
+    (r"braun(?:e[rsnm]?)?|camel|cognac", "braun"), (r"bunt(?:e[rsnm]?)?|mehrfarbig(?:e[rsnm]?)?|regenbogen", "mehrfarbig"),
+    (r"transparent(?:e[rsnm]?)?", "transparent"),
+]
+_TR = [(re.compile(r"(?<![a-zäöüß])(?:" + m + r")(?![a-zäöüß])", re.I), z) for m, z in TITEL_REGELN]
+
+
+# Stichprobe 02.10.: englische Farbwörter sind im Titel meist Namen («White Noise Speaker», «Black Eight Billiards»),
+# «Creme»/«Nude» Kosmetik, «Orange» ein Duft, «braunes Haar» die Haarfarbe der Kundin → Titel mit diesen Wörtern raus.
+TITEL_NICHT = re.compile(r"(?<![a-zäöüß])(öl|öle|duft|aroma|creme|lotion|serum|parfum|tee|haar|haare|färbe\w*|"
+                         r"lidschatten|nagellack|lippenstift|perücke|kostüm)(?![a-zäöüß])", re.I)
+
+
+def titelfarbe(titel):
+    """Genau eine Grundfarbe als ganzes Wort im Titel → [suffix], sonst []."""
+    if TITEL_NICHT.search(titel or ""):
+        return []
+    s, gef = (titel or "").replace("«", " ").replace("»", " "), []
+    for rx, z in _TR:
+        if rx.search(s):
+            if z not in gef:
+                gef.append(z)
+            s = rx.sub(" ", s)
+    return gef if len(gef) == 1 else []
+
+
+TITEL_SELBSTTEST = [("Damen High-Heel-Sandalette «Capri» · offene Spitze", []), ("Schweiz-Poster «Edelweiss»", []),
+                    ("Zitruspresse für Zitrone und Limette", []), ("Sticker «Parrot» · 1 Stück", []),
+                    ("Aromatisch-holziger Lavendelduft (100ml)", []), ("Baseball-Cap «Classic» · Rot, Baumwolle", ["rot"]),
+                    ("S925 Silber-Halskette «Éclat»", ["silber"]), ("Herz-Ring Roségold · Zirkonia", ["rosegold"]),
+                    ("Gelbes Slim-Fit Shirt mit Spitze", ["gelb"]), ("Schwarz-Weiss Sneaker", []),
+                    ("Perlen-Anhänger «Coquille» · vergoldet", []), ("Cord-Bucket-Hat «Manchester» · Navy", ["marineblau"]),
+                    ("White Noise Speaker mit Nachtlicht", []), ("Ätherisches Öl-Set: Orange, Minze", []),
+                    ("Einfacher Färbekamm für braunes Haar", []), ("DR Japanische Sakura Creme", [])]
+
 
 def grundfarben(wert):
     s, out = (wert or "").lower(), []
@@ -84,6 +132,7 @@ SELBSTTEST = [("Schwarz", ["schwarz"]), ("Weinrot", ["rot"]), ("Rosarot", ["pink
 
 def selbsttest():
     f = [(w, grundfarben(w), e) for w, e in SELBSTTEST if sorted(grundfarben(w)) != sorted(e)]
+    f += [(w, titelfarbe(w), e) for w, e in TITEL_SELBSTTEST if titelfarbe(w) != e]
     for w, g, e in f:
         print(f"  ✗ Selbsttest «{w}»: {g} statt {e}")
     return not f
@@ -118,7 +167,7 @@ def grund_objekte():
 def export_holen():
     if os.path.exists(EXPORT) and time.time() - os.path.getmtime(EXPORT) < 6 * 3600:
         return
-    q = ('{ products(query:"status:active") { edges { node { id options { name optionValues { name } } '
+    q = ('{ products(query:"status:active") { edges { node { id title options { name optionValues { name } } '
          'category { id } metafield(namespace:"shopify", key:"color-pattern") { value } } } } }')
     r = gql("mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id} userErrors{message}}}", {"q": q})
     b = r["bulkOperationRunQuery"]
@@ -167,7 +216,7 @@ def main():
             f = z.rstrip("\n").split("\t")
             if len(f) >= 3:
                 erledigt[f[1]] = f[2]
-    soll, zaehl, ohne_farbe, fremd, ohne_treffer, ohne_kat = [], collections.Counter(), 0, 0, 0, 0
+    soll, zaehl, ohne_farbe, fremd, ohne_treffer, ohne_kat, aus_titel = [], collections.Counter(), 0, 0, 0, 0, 0
     zeilen = [json.loads(l) for l in open(EXPORT, encoding="utf-8")]
     farbkat = mit_farbe({(p.get("category") or {}).get("id") for p in zeilen if p.get("category")})
     print(f"  {len(farbkat)} Kategorien in der Feld-Bedingung")
@@ -175,14 +224,22 @@ def main():
         if "options" not in p:
             continue
         werte = [v["name"] for o in p["options"] if o["name"].strip().lower() in OPTION for v in o["optionValues"]]
-        if not werte:
+        g = []
+        if werte:
+            for w in werte:
+                for z in grundfarben(w):
+                    if z not in g:
+                        g.append(z)
+        elif "title" in p:
+            g = titelfarbe(p["title"])          # keine Farb-Option → genau eine Farbe als ganzes Wort im Titel
+            if g:
+                aus_titel += 1
+            else:
+                ohne_farbe += 1
+                continue
+        else:
             ohne_farbe += 1
             continue
-        g = []
-        for w in werte:
-            for z in grundfarben(w):
-                if z not in g:
-                    g.append(z)
         if not g:
             ohne_treffer += 1
             continue
@@ -199,7 +256,7 @@ def main():
         soll.append((p["id"], neu, g))
         zaehl.update(g)
     print(f"  Produkte: {len(soll)} zu setzen · {ohne_farbe} ohne Farb-Option · {ohne_treffer} Farb-Option ohne Farbwort · "
-          f"{fremd} fremd gepflegt (bleibt) · {ohne_kat} Kategorie ohne Farbmerkmal")
+          f"{fremd} fremd gepflegt (bleibt) · {ohne_kat} Kategorie ohne Farbmerkmal · {aus_titel} Titel-Kandidaten")
     print("  Verteilung:", ", ".join(f"{z} {n}" for z, n in zaehl.most_common()))
     ok = 0
     if SCHARF:
