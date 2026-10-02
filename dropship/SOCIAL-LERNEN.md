@@ -1,6 +1,6 @@
-# Social-Lernen — Stand 2026-10-02 03:08 UTC
+# Social-Lernen — Stand 2026-10-02 09:09 UTC
 
-Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 74 · TikTok 17 · Pinterest 128 → **153 Inhalte**; 21 zu junge Posts nicht gezählt.
+Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 76 · TikTok 19 · Pinterest 136 → **158 Inhalte**; 11 zu junge Posts nicht gezählt.
 
 **So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +5 als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + 3)): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×1.68. **n** = Inhalte. **Belastbar erst ab n ≥ 3** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.
 
@@ -10,13 +10,13 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 74 · TikTok 17 · Pint
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| haustier | 12 | 1.43 | 1.42 | ja |
-| beauty | 9 | 1.39 | 1.00 | ja |
+| haustier | 12 | 1.37 | 1.41 | ja |
 | schmuck | 15 | 1.35 | 1.11 | ja |
-| mode | 34 | 1.17 | 1.00 | ja |
-| gadget | 10 | 1.14 | 1.05 | ja |
-| kueche | 8 | 1.11 | 1.00 | ja |
-| allgemein | 31 | 1.06 | 1.00 | ja |
+| beauty | 10 | 1.31 | 0.97 | ja |
+| mode | 34 | 1.15 | 1.00 | ja |
+| gadget | 11 | 1.12 | 1.02 | ja |
+| kueche | 9 | 1.10 | 1.00 | ja |
+| allgemein | 33 | 1.06 | 1.00 | ja |
 | home | 25 | 1.05 | 1.00 | ja |
 | fitness | 7 | 1.04 | 1.03 | ja |
 
@@ -25,42 +25,44 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 74 · TikTok 17 · Pint
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | Dein Hund wird es lieben | 3 | 1.01 | 1.00 | ja |
+| Das fehlt in jeder Küche | 3 | 0.99 | 0.98 | ja |
 
 ### Zeitfenster (Schweizer Zeit, je Kanal)
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | tiktok 21–24 | 4 | 2.42 | 8.00 | ja |
-| instagram 00–03 | 4 | 1.57 | 1.69 | ja |
+| instagram 00–03 | 4 | 1.56 | 1.67 | ja |
 | pinterest 09–12 | 3 | 1.53 | 1.61 | ja |
 | instagram 18–21 | 9 | 1.36 | 1.20 | ja |
 | pinterest 15–18 | 6 | 1.21 | 1.20 | ja |
 | pinterest 18–21 | 3 | 1.21 | 1.20 | ja |
-| pinterest 06–09 | 101 | 1.17 | 1.00 | ja |
-| instagram 21–24 | 12 | 1.09 | 1.18 | ja |
-| instagram 06–09 | 10 | 1.06 | 0.92 | ja |
+| pinterest 06–09 | 109 | 1.16 | 1.00 | ja |
+| tiktok 06–09 | 3 | 1.13 | 1.04 | ja |
+| instagram 21–24 | 12 | 1.09 | 1.15 | ja |
 | pinterest 03–06 | 7 | 1.04 | 1.00 | ja |
 | pinterest 00–03 | 3 | 1.03 | 1.00 | ja |
-| instagram 15–18 | 7 | 1.02 | 1.00 | ja |
-| instagram 12–15 | 6 | 1.01 | 1.00 | ja |
+| instagram 15–18 | 7 | 1.01 | 1.00 | ja |
+| instagram 06–09 | 11 | 1.01 | 0.85 | ja |
+| instagram 12–15 | 6 | 1.00 | 0.99 | ja |
 | pinterest 21–24 | 3 | 1.00 | 1.00 | ja |
-| tiktok 09–12 | 5 | 1.00 | 0.99 | ja |
+| tiktok 09–12 | 6 | 1.00 | 0.98 | ja |
 | tiktok 18–21 | 5 | 0.99 | 0.99 | ja |
-| instagram 09–12 | 21 | 0.90 | 0.92 | ja |
-| instagram 03–06 | 5 | 0.78 | 0.62 | ja |
+| instagram 09–12 | 22 | 0.90 | 0.94 | ja |
+| instagram 03–06 | 5 | 0.77 | 0.60 | ja |
 
 ### Musik
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | luxe-orchestra.wav | 3 | 1.02 | 0.98 | ja |
-| luxe-adventure-uplift.wav | 7 | 1.00 | 0.98 | ja |
+| luxe-adventure-uplift.wav | 8 | 1.00 | 0.99 | ja |
 
 ### Stimme
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| ohne Stimme | 5 | 1.20 | 1.27 | ja |
+| ohne Stimme | 6 | 1.11 | 1.16 | ja |
 | mit Stimme | 6 | 0.98 | 0.98 | ja |
 
 ## Alle Werte mit n (vorläufige eingeschlossen)
@@ -69,13 +71,13 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 74 · TikTok 17 · Pint
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| haustier | 12 | 1.43 | 1.42 | ja |
-| beauty | 9 | 1.39 | 1.00 | ja |
+| haustier | 12 | 1.37 | 1.41 | ja |
 | schmuck | 15 | 1.35 | 1.11 | ja |
-| mode | 34 | 1.17 | 1.00 | ja |
-| gadget | 10 | 1.14 | 1.05 | ja |
-| kueche | 8 | 1.11 | 1.00 | ja |
-| allgemein | 31 | 1.06 | 1.00 | ja |
+| beauty | 10 | 1.31 | 0.97 | ja |
+| mode | 34 | 1.15 | 1.00 | ja |
+| gadget | 11 | 1.12 | 1.02 | ja |
+| kueche | 9 | 1.10 | 1.00 | ja |
+| allgemein | 33 | 1.06 | 1.00 | ja |
 | home | 25 | 1.05 | 1.00 | ja |
 | fitness | 7 | 1.04 | 1.03 | ja |
 | kinder | 2 | 0.98 | 0.94 | vorläufig |
@@ -85,71 +87,71 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 74 · TikTok 17 · Pint
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | tiktok 21–24 | 4 | 2.42 | 8.00 | ja |
-| instagram 00–03 | 4 | 1.57 | 1.69 | ja |
+| instagram 00–03 | 4 | 1.56 | 1.67 | ja |
 | pinterest 09–12 | 3 | 1.53 | 1.61 | ja |
 | instagram 18–21 | 9 | 1.36 | 1.20 | ja |
 | pinterest 12–15 | 2 | 1.21 | 1.61 | vorläufig |
 | pinterest 15–18 | 6 | 1.21 | 1.20 | ja |
 | pinterest 18–21 | 3 | 1.21 | 1.20 | ja |
-| pinterest 06–09 | 101 | 1.17 | 1.00 | ja |
-| tiktok 06–09 | 2 | 1.15 | 1.40 | vorläufig |
-| instagram 21–24 | 12 | 1.09 | 1.18 | ja |
-| instagram 06–09 | 10 | 1.06 | 0.92 | ja |
+| pinterest 06–09 | 109 | 1.16 | 1.00 | ja |
+| tiktok 06–09 | 3 | 1.13 | 1.04 | ja |
+| instagram 21–24 | 12 | 1.09 | 1.15 | ja |
 | pinterest 03–06 | 7 | 1.04 | 1.00 | ja |
 | pinterest 00–03 | 3 | 1.03 | 1.00 | ja |
 | tiktok 15–18 | 1 | 1.03 | 1.11 | vorläufig |
-| instagram 15–18 | 7 | 1.02 | 1.00 | ja |
-| instagram 12–15 | 6 | 1.01 | 1.00 | ja |
+| instagram 15–18 | 7 | 1.01 | 1.00 | ja |
+| instagram 06–09 | 11 | 1.01 | 0.85 | ja |
+| instagram 12–15 | 6 | 1.00 | 0.99 | ja |
 | pinterest 21–24 | 3 | 1.00 | 1.00 | ja |
-| tiktok 09–12 | 5 | 1.00 | 0.99 | ja |
+| tiktok 09–12 | 6 | 1.00 | 0.98 | ja |
 | tiktok 18–21 | 5 | 0.99 | 0.99 | ja |
-| instagram 09–12 | 21 | 0.90 | 0.92 | ja |
-| instagram 03–06 | 5 | 0.78 | 0.62 | ja |
+| instagram 09–12 | 22 | 0.90 | 0.94 | ja |
+| instagram 03–06 | 5 | 0.77 | 0.60 | ja |
 
 ### Hooks
 
-34 Reel-Hooks gemessen, davon 33 vorläufig (n < 3).
+34 Reel-Hooks gemessen, davon 32 vorläufig (n < 3).
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | Endlich Ruhe beim Gassi? | 2 | 1.54 | 2.96 | vorläufig |
-| Echt getragen, nicht im Studio fotografiert. | 1 | 1.46 | 4.48 | vorläufig |
-| Für die Katze, die alles darf | 1 | 1.34 | 3.20 | vorläufig |
-| Kleines Upgrade, grosser Glow | 1 | 1.26 | 2.56 | vorläufig |
+| Echt getragen, nicht im Studio fotografiert. | 1 | 1.21 | 2.14 | vorläufig |
 | Das Beste von LuxeStyle in 21 Sekunden Mode · Schmuck · Gadg | 1 | 1.20 | 2.09 | vorläufig |
+| Für die Katze, die alles darf | 1 | 1.16 | 1.79 | vorläufig |
 | Kennst du das schon? | 2 | 1.14 | 1.38 | vorläufig |
 | Luftreiniger mit Feuchtigkeitsspender Jetzt bei LuxeStyle — | 1 | 1.09 | 1.44 | vorläufig |
+| Kleines Upgrade, grosser Glow | 2 | 1.08 | 1.23 | vorläufig |
 | Dein neues Lieblingsteil? | 1 | 1.07 | 1.30 | vorläufig |
-| Küche, aber einfacher | 1 | 1.06 | 1.27 | vorläufig |
+| Küche, aber einfacher | 1 | 1.07 | 1.30 | vorläufig |
 | Sommer-Looks wo uffalle Premium-Mode us de Schwiz ab CHF 34. | 1 | 1.06 | 1.27 | vorläufig |
 | Wimpernlift-Kit Jetzt bei LuxeStyle — CHF 24.90. Blitzversan | 1 | 1.06 | 1.26 | vorläufig |
 | Dini Tasse, din Spruch — sälber gestaltet, perfekts Geschänk | 1 | 1.04 | 1.18 | vorläufig |
 
 ### Musik und Stimme
 
-11 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (188 Verlaufszeilen).
+12 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (191 Verlaufszeilen).
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| luxe-epic-anime.wav | 1 | 1.34 | 3.20 | vorläufig |
+| luxe-epic-anime.wav | 1 | 1.16 | 1.79 | vorläufig |
 | luxe-orchestra.wav | 3 | 1.02 | 0.98 | ja |
-| luxe-adventure-uplift.wav | 7 | 1.00 | 0.98 | ja |
+| luxe-adventure-uplift.wav | 8 | 1.00 | 0.99 | ja |
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| ohne Stimme | 5 | 1.20 | 1.27 | ja |
+| ohne Stimme | 6 | 1.11 | 1.16 | ja |
 | mit Stimme | 6 | 0.98 | 0.98 | ja |
 
 ### Formate (roher Median-Score je Kanal)
 
 | Kanal Format | n | Median-Score |
 |---|---:|---:|
-| instagram reel | 28 | 32 |
+| instagram bild | 39 | 15 |
+| instagram reel | 29 | 32.4 |
 | instagram karussell | 8 | 11 |
-| instagram bild | 38 | 15 |
-| tiktok reel | 17 | 281 |
-| pinterest pin | 96 | 1 |
-| pinterest pin-video | 32 | 3 |
+| tiktok reel | 19 | 281 |
+| pinterest pin-video | 35 | 1 |
+| pinterest pin | 101 | 1 |
 
 ## Stärkste 5 (gegen den eigenen Kanal-Median)
 - ×8.00 (Score 221, Median 17) · instagram reel · Endlich Ruhe beim Gassi? 👀 · https://www.instagram.com/reel/Ddutl8miAzn/
@@ -159,10 +161,10 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 74 · TikTok 17 · Pint
 - ×8.00 (Score 7880, Median 278) · tiktok reel · Der grosse Auftritt ✨ Abendkleid «Sirène» mit Schleppe – CHF 49.90 · 2 · https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329
 
 ## Schwächste 5
+- ×0.42 (Score 4, Median 17) · instagram bild · 🛒 Schon von Kund:innen bestellt · https://www.instagram.com/p/Dd1YfDSDX-4/
 - ×0.42 (Score 4, Median 17) · instagram reel · Dein Hund wird es lieben 👀 · https://www.instagram.com/reel/Dd5OfrZCOZP/
-- ×0.43 (Score 4, Median 16) · instagram bild · 🛒 Schon von Kund:innen bestellt · https://www.instagram.com/p/Dd1YfDSDX-4/
 - ×0.46 (Score 3, Median 13) · pinterest pin-video · Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse mit DYM Des · https://www.instagram.com/reel/Dar-GJqlW82/
 - ×0.46 (Score 3, Median 13) · pinterest pin-video · LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selbst-gestalte · https://www.instagram.com/reel/Daui5M2CTnT/
-- ×0.47 (Score 3, Median 12) · pinterest pin-video · LuxeStyle in 43 Sekunden ✨ Mode, Schmuck, Sonnenbrillen & mehr — alles · https://www.instagram.com/reel/DanhubhjvrJ/
+- ×0.47 (Score 5, Median 17) · instagram bild · 🛒 Schon von Kund:innen bestellt · https://www.instagram.com/p/Dd2CntDjDZs/
 
 Score: Instagram = Reichweite + 3·Likes + 5·Kommentare + 5·Speichern + 5·Teilen + 0,2·Views; TikTok = Views + 3·Likes + 5·Kommentare + 5·Teilen; Pinterest = Impressionen + 5·Merken + 3·Pin-Klicks + 10·ausgehende Klicks. Gewichte stehen in `social/_lernen.json` (jedes mit n).

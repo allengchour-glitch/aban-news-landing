@@ -33,3 +33,13 @@ Betreiber: «google push und coole fein kategorien».
 ## OFFEN
 - Wirkung bei Google messen: Free-Listings-Klicks je Kategorie in ~14 Tagen (Ledger enthält Datum + Ausgangszweig).
 - Menü-Backup: `/tmp/claude-0/gpush/main_menu_backup.json` (vor der Änderung, 158 Einträge → jetzt 161).
+
+## Nachtrag 09:15 UTC — ChatGPT ohne Guthaben
+- Gemessen: OpenAI antwortet `429 insufficient_quota / credit_balance_exhausted` (kein Drosseln — das Guthaben ist leer);
+  DeepSeek `402 Insufficient Balance`. Der Lauf schrieb seit 08:34 nichts mehr (jeder Block «ein Modell ohne Antwort»).
+- Fix: `zweiter()` erkennt leeres OpenAI-Guthaben und nimmt **Groq `openai/gpt-oss-120b`** als Zweitprüfer (Einigkeitsregel
+  bleibt). Trockenlauf Küche 80: 30 einig, alle gelesenen Wahlen plausibel (Gewürzregal → Spice Organizers, Milchtopf →
+  Saucepans, Butterdose → Butter Dishes); mehr «uneinig» (37) = konservativer. Kommt Guthaben zurück, nimmt der Lauf wieder ChatGPT.
+- Betroffen ohne Ersatz (laufen mit Gemini allein oder melden nur): `titel_kauderwelsch_wache.py`, `cj_variante_bild.py`
+  (CJ-Varianten-Bildvergleich → Bestellungen bleiben «manuell prüfen»), `google_bild_tausch.py`, `kritik.py`.
+- **Betreiber:** OpenAI-Guthaben aufladen (platform.openai.com → Billing) — oder bewusst darauf verzichten; DeepSeek ebenso leer.

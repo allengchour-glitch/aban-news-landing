@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-02T08:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-02T09:12Z
 
-Aktive gescannt: 42 · ohne Kategorie: 42 · heute gesetzt: 24 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
+Aktive gescannt: 29 · ohne Kategorie: 29 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- jacquard-rippstrick-stehkragen-langarmshirt-he-638700 · Herrenmode → Apparel & Accessories > Clothing
-- herren-cord-pullover-langarm-sweatshirt-639700 · Herrenmode → Apparel & Accessories > Clothing
-- langarm-lapel-shirt-mit-streifen-632100 · Herrenmode → Apparel & Accessories > Clothing
-- winddichte-herren-freizeitjacke-mit-stehkragen-637700 · Herrenmode → Apparel & Accessories > Clothing
-- herren-langarmshirt-gestreift-622800 · Herrenmode → Apparel & Accessories > Clothing
+- weihnachtsbaum-45-cm-fur-schreibtisch-600100 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- porzellan-pendant-mit-personalisiertem-tierpor-635200 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- weibliches-langhandtasche-aus-echtholzleder-625900 · Taschen → Luggage & Bags
+- kurzwallet-aus-vollschale-607500 · Taschen → Luggage & Bags
 

@@ -292,3 +292,4 @@ gid://shopify/Product/16603689025927	orientalische-brosche-aus-seide-und-reisper
 gid://shopify/Product/16603691221383	baby-und-kinder-pyjama-set-625300	Baby- und Kinder-Pyjama-Set
 gid://shopify/Product/16603739914631	farbige-gaming-maus-mit-kabel-e55365	Farbige Gaming-Maus mit Kabel
 gid://shopify/Product/16603759935879	outdoor-rucksack-zum-wandern-und-bergsteigen-628800	Outdoor-Rucksack zum Wandern und Bergsteigen
+gid://shopify/Product/16603861418375	langarmpullover-mit-kragen-und-halbzip-636800	Langarmpullover mit Kragen und Halbzip

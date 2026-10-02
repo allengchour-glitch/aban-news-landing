@@ -1215,3 +1215,5 @@ gid://shopify/Product/15446063907201	produkt	ohne
 gid://shopify/Product/15446064202113	produkt	ohne
 gid://shopify/Product/15446064464257	produkt	ohne
 gid://shopify/Product/15446064726401	produkt	ohne
+gid://shopify/Product/15446065021313	produkt	ohne
+gid://shopify/Product/15446065611137	produkt	ohne
