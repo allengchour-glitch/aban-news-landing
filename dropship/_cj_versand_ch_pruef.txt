@@ -2832,3 +2832,13 @@ plateau-wedge-heels-aus-lackleder-602100	2603140542181602500	16	10.79	ok	landese
 panda-magnetring-handyhulle-494720	1510595256386072576	7	5.69	ok	landeseite
 retro-kordelanzug-607600	2501060316171607800	16	9.47	ok	landeseite
 retro-streifen-hoodie-mit-zipper-615100	2606260214181615700	16	10.69	ok	landeseite
+prinzessen-laufschuhe-mit-weicher-sohle-611400	2411281516431611600	16	7.85	ok	landeseite
+retro-brusttasche-fur-herren-606500	2511191013361606700	16	10.15	ok	landeseite
+q36-clip-on-bluetooth-kopfhorer-mit-gerauschun-634400	2607231212571635500	7	6.49	ok	landeseite
+performance-drum-und-perkussionsmikrofon-600300	2602110208051600600	7	34.27	ok	landeseite
+retro-ohrringe-ring-aus-edelstahl-616100	2607120118121616700	16	4.58	ok	landeseite
+retro-sandalen-mit-knochelriemen-615500	2601280810471615800	16	11.37	ok	landeseite
+radfahrer-schuhe-197504	1422417077087637504	16	11.12	ok	landeseite
+pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78	-	-	-	unklar keine CJ-SKU	landeseite
+s925-silber-halskette-camelia-bluten-anhanger	2605310523211600800	16	4.40	ok	landeseite
+smaragd-zirkon-schmuck-set-vintage-ohrringe-ring-halskette	2605310506181625200	16	4.50	ok	landeseite
