@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-02T09:12Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-02T10:10Z
 
-Aktive gescannt: 29 · ohne Kategorie: 29 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
+Aktive gescannt: 43 · ohne Kategorie: 43 · heute gesetzt: 25 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- weihnachtsbaum-45-cm-fur-schreibtisch-600100 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
-- porzellan-pendant-mit-personalisiertem-tierpor-635200 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
-- weihnachtlicher-stuhlbezug-aus-fleece-mit-schn-604100 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
-- weibliches-langhandtasche-aus-echtholzleder-625900 · Taschen → Luggage & Bags
-- kurzwallet-aus-vollschale-607500 · Taschen → Luggage & Bags
+- weihnachtsbaum-stern-anhanger-aus-plusch-624100 · Spielzeug & Spiele → Toys & Games > Toys
+- hangender-weihnachtsbaum-style-dekorationsstab-615100 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- weihnachtslichtkranz-fur-tur-und-fenster-633600 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- lichterbaum-musikbox-10x10x20-cm-604200 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- countdown-glockchen-zum-finden-gottes-605000 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
 

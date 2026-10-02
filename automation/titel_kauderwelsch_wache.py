@@ -83,20 +83,9 @@ def gemini(text):
 
 
 def gpt(text):
-    k = openai_schluessel()
-    if not k:
-        raise RuntimeError("OPENAI-Schlüssel fehlt")
-    body = {"model": MODELL_GPT, "messages": [{"role": "user", "content": text}], "response_format": {"type": "json_object"}}
-    letzter = ""
-    for a in range(3):
-        try:
-            r = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode(),
-                                       headers={"Content-Type": "application/json", "Authorization": "Bearer " + k})
-            j = json.load(urllib.request.urlopen(r, timeout=180))
-            return json.loads(re.search(r"\{.*\}", j["choices"][0]["message"]["content"], re.S).group(0))
-        except Exception as e:
-            letzter = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(4 * (a + 1))
-    raise RuntimeError("ChatGPT ohne Antwort — " + letzter)
+    """Zweitprüfer (ChatGPT, bei leerem Guthaben Groq) — 02.10.2026, siehe zweitmodell.py."""
+    import zweitmodell
+    return zweitmodell.chat_json(text)
 
 
 def norm(w):

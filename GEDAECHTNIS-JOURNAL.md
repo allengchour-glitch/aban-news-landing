@@ -18,6 +18,14 @@
 
 
 
+
+## 2026-10-02 · 🔁 ChatGPT-Guthaben leer → zentraler Zweitprüfer `zweitmodell.py` (Groq)
+Der Google-Fein-Lauf «wartete geduldig» 30 min auf 429 — der Antwortkörper sagte `insufficient_quota / credit_balance_exhausted`.
+**Bei 429 immer den Körper lesen.** DeepSeek ebenfalls leer (402). `zweitmodell.chat_json` nimmt ChatGPT, bei leerem Guthaben Groq
+(gpt-oss-120b Text, qwen3.8-27b Vision; > 5 Bilder = 400 → beschriftetes Raster; ~400-Pfad-Prompts = 413 → zweistufig). Fünf
+Aufrufer umgestellt; CJ-Bildvergleich #1021 wieder richtig (Gemini 1.00 / Groq 0.95). Belege nennen das tatsächliche Modell.
+→ `dropship/ZWEITMODELL-GROQ-2026-10-02.md`
+
 ## 2026-10-02 · 🧭 «google push und coole fein kategorien»: KI-Feinpfade bei Google + Babykleidung im Shop
 Bulk-Export: 48'132 im Google-Kanal, ~7'100 in Zweigen mit Unterpfaden (Electronics 1'200, Decor 1'095 …), Titelregeln
 erschöpft. `google_fein_ki.py`: Gemini + ChatGPT wählen aus den echten Unterpfaden des BISHERIGEN Werts, Schreiben nur bei
