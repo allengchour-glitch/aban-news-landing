@@ -83,7 +83,7 @@ def pruefen(begriff, t, x):
     if len(t) > 60: f.append(f"Titel {len(t)} Zeichen")
     if not t.endswith(" | LuxeStyle"): f.append("Titel ohne « | LuxeStyle»")
     if not enthaelt(t, begriff): f.append("Titel ohne Suchbegriff")
-    if not (90 <= len(x) <= 160): f.append(f"Text {len(x)} Zeichen")
+    if not (60 <= len(x) <= 160): f.append(f"Text {len(x)} Zeichen")   # 02.10.: 90 → 60, kurze Namen («Schlafmaske») sind kein Fehler
     if FLOSKEL.search(t): f.append(f"Titel: Floskel «{FLOSKEL.search(t).group(0).strip()}»")
     if SIE.search(t) or SIE.search(x): f.append("Sie-Form")
     for feld, s in (("Titel", t), ("Text", x)):
@@ -124,7 +124,10 @@ def main():
         t = (v.get("seo_titel") or "").strip()
         # Text = echter Produkttitel + fester Schluss: nichts Erfundenes (Gemini-Sätze hatten Grammatikfehler und
         # Versprechen wie «aus hochwertigem Leder», «lässt deine Träume wahr werden» — 02.10.2026 verworfen)
-        x = a["titel"].strip().rstrip(".") + "." + SCHLUSS
+        # 02.10.: Kern = geprüfter SEO-Titel (Suchbegriff drin, gegen Bild/Text geprüft) statt Produkttitel — der trug teils
+        # falsche Angaben («Baumwoll-Camisole» aus Polyester)
+        kern = t[:-len(" | LuxeStyle")] if t.endswith(" | LuxeStyle") else a["titel"].strip()
+        x = kern.rstrip(".") + "." + SCHLUSS
         f = pruefen(a["kw"], t, x)
         zeilen.append(f"| {a['kw']} ({a['vol']}/Mt, Platz {a['pos']}) | {a['titel'][:40]} | {t} | {x} | {'; '.join(f) or 'ok'} |")
         if f:
