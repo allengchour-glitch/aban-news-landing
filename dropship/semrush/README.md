@@ -26,3 +26,23 @@ Verbraucht am 02.10.: ~5'190 von 50'000.
 3. `phrase_related` für die 20 kaufstärksten Begriffe mit eigenem Sortiment (~20 × 50 Zeilen) → neue Kollektions-/Ratgeberthemen.
 4. Google-Shopping-Daten (`shopping_research`) für die meistbesuchten Produkte: Titel und Preise der Mitbewerber.
 5. Rest: Suchvolumen für neue Saison-Begriffe (Weihnachten/Winter) + CJ-Suchliste nach Volumen ordnen.
+
+## Ernte 2 (02.10. 16:58–17:12 UTC, Workflow mit 5 Ernte-Agenten)
+| Datei | Zeilen | Inhalt |
+|---|---|---|
+| `luxestyle_ch_platz31plus-teil2_2026-10-02.csv` | 240 | restliche Rankings Platz > 30 (gleiches Format wie Teil 1) |
+| `kategorie_suchvolumen_ch_verwandt-{A,B,C}_2026-10-02.csv` | 94 / 93 / 44 | verwandte Begriffe mit KD (Mode · Wohnen/Geschenke · Saison/Tier); `suchvolumen.py` lädt sie automatisch |
+| `semrush_fragen_ch_2026-10-02.csv` | 13 | Fragen zu hundebett, kuscheldecke, heizdecke, lichterketten |
+| `semrush_serp_ch_2026-10-02.csv` | 50 | wer vor uns steht (Top 5) für 10 Begriffe auf Platz 11–40 |
+| `semrush_temu_shopping_ch_2026-10-02.csv` | 8 | Temu-Shopping-Anzeigen CH (nur 8 vorhanden) |
+| `ratgeber_themen_2026-10-02.tsv` | 32 | Ratgeber-Phrasen je Menü-Kollektion → `seo_autopilot.py` liest sie (`suchvolumen.ratgeber_phrasen`) |
+
+**Gemessene Kosten weichen ab (GEMESSEN):** `phrase_questions` kostet 520–640 JE AUFRUF, egal wie viele Zeilen;
+`phrase_related` mit Volumen-Filter 40–160 je Zeile (bis 1'280 je Aufruf); `api_units` in der Antwort ist die
+Konto-Differenz und zählt parallele Aufrufe anderer Agenten mit → Agenten-Summen (22'440) sind eine OBERGRENZE.
+Restguthaben unbekannt (kein Saldo-Bericht im MCP) — geschätzt 10'000–19'000.
+
+## Betreiber 02.10. 17:20 UTC: «kopiere alles von semrush bevor kündigung und fahre dann fort, aber erst am sonntag um 22.00»
+→ Erinnerung in diese Session **So 04.10. 22:00 Schweizer Zeit (20:00 UTC)**: Rest-Einheiten in Daten umsetzen (bis
+`no_api_units`), alles hier ablegen, DANN einbauen (geprüfte Sortimentslücken vorne in die CJ-Suchliste,
+`seo_suchbegriff_titel.py` auf Teil 2, Bericht). Bis dahin nichts weiter mit Semrush.
