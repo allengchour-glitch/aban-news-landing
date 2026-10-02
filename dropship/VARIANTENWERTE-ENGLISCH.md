@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **24'644**
-- Optionen mit englischen Werten (Kandidaten): 2'314
+- Produkte gesehen: **25'241**
+- Optionen mit englischen Werten (Kandidaten): 2'335
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 12'766
+- Werte mit unbekanntem Wort (unverändert): 12'833
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 51
-- übersprungen «kollision-nach-uebersetzung»: 35
+- übersprungen «kollision-nach-uebersetzung»: 36
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -80,6 +80,7 @@
 - `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: Black-US9 → Schwarz-US9; Black → Schwarz; White-US9 → Weiss-US9; White → Weiss
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 - `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
+- `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -128,5 +129,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 513, `light` 428, `inner` 369, `color` 299, `shell` 162, `degrees` 159, `core` 137, `surface` 124, `⟨satzbau:material-vor-farbe⟩` 115, `powder` 108, `diamond` 108, `no` 106, `high` 101, `skin` 98, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `belt` 79, `four` 78, `rope` 70, `dual` 69, `base` 68, `petal` 68, `chain` 67, `dark` 67, `size` 62, `feet` 62, `half` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `little` 55, `electric` 55, `one` 55, `plush` 55, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `cloud` 47, `cat` 46, `sheet` 46, `night` 46, `for` 46, `about` 46
+`⟨satzbau:adjektiv-vor-nomen⟩` 513, `light` 428, `inner` 369, `color` 299, `shell` 162, `degrees` 159, `core` 137, `surface` 124, `⟨satzbau:material-vor-farbe⟩` 117, `powder` 109, `no` 108, `diamond` 108, `high` 101, `skin` 98, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `belt` 79, `four` 78, `rope` 70, `dual` 69, `dark` 68, `base` 68, `petal` 68, `chain` 67, `⟨satzbau:nomen-nomen⟩` 63, `half` 63, `size` 62, `feet` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `plush` 56, `little` 55, `electric` 55, `one` 55, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `cloud` 47, `night` 47, `cat` 46, `sheet` 46, `for` 46
 
