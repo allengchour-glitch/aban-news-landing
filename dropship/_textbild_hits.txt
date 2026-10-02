@@ -16228,3 +16228,4 @@ gid://shopify/Product/15496359510401	9->0	Keilkissen-Set für Rücken, Beine und
 gid://shopify/Product/15448077566337	97->0	Glitzerndes Dekolleté-Kettentop
 gid://shopify/Product/15448587075969	11->1	Midikleid mit Zopfmuster und Blumenprint
 gid://shopify/Product/15449425379713	9->0	Ultraschall-Luftbefeuchter mit Aromatherapie
+gid://shopify/Product/15449482953089	37->0	Verstellbare Hundeleine
