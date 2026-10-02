@@ -678,6 +678,20 @@ while true; do
         >> /tmp/ig_aufraeumen.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start ig_aufraeumen (täglich, max 5)"
   fi
+  # 🎬 LOKALE CJ-VIDEOS ANHÄNGEN (02.10.2026, Betreiber «grow videos push»): rohe CJ-Videos, die der Server für den Reel-Motor
+  # schon geholt hat, gehören an ihre Produktseite — ohne CJ-Aufruf, also jederzeit (nicht nur im Vorrang-Fenster). Stündlich,
+  # solange offen; Ledger = das des Nachtrags; neue Server-Downloads kommen über video_prio_index.py dazu. Grow-Deckel 1'000.
+  VLA=/tmp/video_lokal_anhaengen.log
+  if [ -f "$REPO/automation/video_lokal_anhaengen.mjs" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VLA" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 3000 ] || absturz_nachholen "$VLA"; then
+      touch "$VLA"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_video_lokal.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\";
+          python3 automation/video_prio_index.py; SCHARF=1 PAARE=dropship/_video_lokal_paare.json exec timeout 3300 /opt/node22/bin/node automation/video_lokal_anhaengen.mjs" \
+          >> "$VLA" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) start video_lokal_anhaengen (lokale CJ-Videos an Produktseiten)"
+    fi
+  fi
   # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
   # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15
   # geprüften Kandidaten kam bei allen 15 `productVideo: null` zurück. Ein Lauf über den
@@ -687,11 +701,13 @@ while true; do
   # 01.10.2026 GROW: Deckel 1'000 statt 250 Videos (Shopify-Hilfe; Upload-Probe wieder offen). Gemessen: die Tagesläufe
   # starteten zu irgendeiner Stunde, wenn der Grind die CJ-Punkte längst verbraucht hatte (Logs enden nach «Kandidaten»,
   # 0 Videos) → Start nur noch IM VORRANG-FENSTER (16:00–17:30, Grind ruht) und 250 statt 60.
+  # 02.10.2026 «grow videos push»: 375 von 403 Prüfungen (93 %) fanden KEIN Video → Vorrangliste jetzt aus dem Video-Index
+  # (`video_prio_index.py`: nur Produkte, deren CJ-pid laut product/list ein Video hat; sichtbare zuerst; 502 offen).
   if [ "$VORRANGZEIT" = "1" ] && [ ! -f /tmp/videos_$(date -u +%F) ]; then
     touch "/tmp/videos_$(date -u +%F)"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_cj_video_backfill.lock; flock -n 9 || exit 0;
-         PRIO=dropship/_video_prio.txt CAP=250 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
+         python3 automation/video_prio_index.py; PRIO=dropship/_video_prio_index.txt CAP=250 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
         >> /tmp/cj_video_backfill.log 2>&1 9>&- & )
     # ⚠️ CAP 300 war sinnlos: der Plan deckelt bei 250 Videos FUER DEN GANZEN SHOP. Der
     # Lauf prueft den Deckel jetzt vorab und arbeitet PRIO zuerst ab — die Plaetze gehoeren

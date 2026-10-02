@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-02 · 🎬 Grow-Videos: der Nachtrag suchte an der falschen Stelle
+Betreiber «grow videos push». Gemessen: `cj_video_backfill` arbeitete «sichtbare Ware» ab und fand bei 375 von 403 Produkten kein CJ-Video (93 % der CJ-Aufrufe leer). Der eigene Video-Index (`_cj_video_index.json`, isVideo aus product/list) kennt 1'068 CJ-pids MIT Video — 512 aktive Shop-Produkte, keines je im Nachtrag. Und 107 rohe CJ-Videos lagen bereits im Repo (Server-Downloads für Reels). Fix: `video_lokal_anhaengen.mjs` (lokal → Produkt, ohne CJ-Punkte, READY verfolgt) + `video_prio_index.py` (Vorrangliste nur Produkte mit Video) + Aufseher-Block stündlich. Download aus der Cloud geht wieder (28.09. noch 403). **Lehre:** Zwei eigene Werkzeuge wussten zusammen die Antwort (Index: wer hat Video; Server: Videos liegen da) — der Nachtrag fragte keines. Nebenbei: fixer_keepalive.sh nur per os.replace ändern, nie in-place, solange der Aufseher läuft.
+
 ## 2026-10-02 · 💾 Grow-Speicher nutzen — und `fileErrors` ist eine Historie
 Betreiber «nutze grow speicherplatz». Upload-Probe READY. Umgesetzt: 56 wartende Reels von raw.githubusercontent ins Shopify-CDN (`reel_cdn_umzug.py`), Handy-Makeover-Set (30.09. ohne Bild gedraftet) mit Backup-Bild wieder ACTIVE. Nebenfund: `tiktok_cowork_auftrag.py` meldete auch NACH dem Grow-Wechsel «Queue-CDN NICHT aktualisiert — FILE_STORAGE_LIMIT_EXCEEDED». Gemessen: GenericFile READY, updatedAt jetzt, CDN liefert die heutige Queue — die `fileErrors`-Liste trägt die gescheiterten Versuche vom September weiter. Fix: Erfolg = ausgelieferter Inhalt gleich lokal (auch `tiktok_jetzt.py`). **Lehre:** Fehlerlisten an einem Objekt sind dessen Geschichte; Zustand misst man an der Wirkung. Bild-/Video-Nachtrag brauchen CJ-Punkte — die sind um 06:24 UTC schon leer (Reset 16:00 UTC), deshalb laufen sie im Vorrangfenster.
 
