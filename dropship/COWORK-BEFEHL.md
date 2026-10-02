@@ -2,6 +2,32 @@
 
 
 
+## 🆕 02.10. 20:20 UTC — Filter auf den Kollektionsseiten: Farbe · Grösse · Kategorie (~5 Min, keine Kosten) · 1:1 in Cowork einfügen
+> GEMESSEN 02.10.: Der Filter «Farbe» liest heute nur die Option «Farbe & Grösse» (8 Produkte) → bei 3'160 Kleidern zeigt
+> er «Gelb», «Gelb-0XL» … und sonst nichts. Einen Grössen- und einen Kategorie-Filter gibt es nicht. Filter lassen sich
+> NUR in der App einstellen (keine API). Vorbereitet ist alles: 13'906 Produkte tragen jetzt das genormte Farbfeld
+> (19 Grundfarben mit Farbpunkt), der Produkttyp ist entdoppelt (2'620 Produkte umgelegt).
+
+```
+Du arbeitest in meinem eingeloggten Browser (admin.shopify.com, Shop LuxeStyle). Nichts bezahlen. Screenshot je Schritt.
+
+Shopify Admin → Apps → «Search & Discovery» → «Filter» (Filters).
+
+1) Den bestehenden Filter «Farbe» öffnen (Quelle: Produktoption «Farbe & Grösse») → LÖSCHEN.
+2) «Filter hinzufügen» → Quelle «Kategorie-Metafeld / Category metafields» → «Farbe» (Color, shopify.color-pattern)
+   → Bezeichnung «Farbe» → Darstellung «Farbfelder/Swatches», falls angeboten → Speichern.
+3) «Filter hinzufügen» → Quelle «Produktoption» → «Grösse» → Bezeichnung «Grösse» → Speichern.
+   (Falls angeboten: Optionen «Ringgrösse» in diese Gruppe aufnehmen.)
+4) «Filter hinzufügen» → Quelle «Kategorie / Product category» → Bezeichnung «Kategorie» → Speichern.
+5) Reihenfolge per Ziehen: Kategorie · Preis · Farbe · Grösse · Produkttyp · Verfügbarkeit.
+   Den Filter «Anbieter» (Vendor) entfernen — er zeigt nur «LuxeStyle» und ist im Theme ohnehin ausgeblendet.
+6) Screenshot der fertigen Filterliste. Danach eine Kollektion öffnen: luxestyle.ch/collections/sub-kleider → Screenshot
+   der Filterleiste (Farbe muss Schwarz/Weiss/Blau … zeigen).
+```
+**Quittung:** Screenshot der Filterliste → ich messe die Facetten auf 5 Kollektionen nach (Werte + Treffer).
+Hinweis: Kollektionen mit über 5'000 Produkten zeigen bei Shopify grundsätzlich keine Filter (Plattform-Grenze) —
+dort helfen die Tag-Chips oben.
+
 ## 🆕 01.10. 20:10 UTC — Gratis-Reichweite: KI-Shopping + Bing · 1:1 in Cowork einfügen
 > GEMESSEN 14 T (nur Menschen): ChatGPT 11 Sitzungen (und #1021 kam über ChatGPT!), Bing 4, Google 36. Beides kostet nichts.
 
