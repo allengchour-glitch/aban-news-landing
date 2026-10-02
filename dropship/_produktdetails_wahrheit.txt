@@ -71084,3 +71084,17 @@
 15427279356289	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Basel»
 15427279421825	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Bernese Dog»
 15427279487361	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Bernhardiner»
+15427279552897	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Braunvieh»
+15427279618433	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Buenzli»
+15427279683969	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Cervelat»
+15427279782273	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chalet»
+15427279880577	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chuchichaeschtli»
+15427279978881	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Edelweiss»
+15427280077185	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Eidgenoss»
+15427280142721	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Enzian»
+15427280208257	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Es Git Nu Eis Zueri»
+15427280306561	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fasnacht Mask»
+15427280339329	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Feierabig»
+15427280404865	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue»
+15427280470401	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gaell»
+15427280568705	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gopfertami»
