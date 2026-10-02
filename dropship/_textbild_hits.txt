@@ -16288,3 +16288,21 @@ gid://shopify/Product/16603334312327	62->0	Freizeitschichtjacke in Pink, Schwarz
 gid://shopify/Product/16603334607239	80->0	Langtrench mit Slim-Fit
 gid://shopify/Product/16603334705543	9->1	Quasten-Schal für den Herbst
 gid://shopify/Product/16603335033223	90->1	Vintage Lederarmband aus Edelstahl
+gid://shopify/Product/16603335229831	75->0	Gothic‑Stil Plüschmantel mit Fell‑Bustier
+gid://shopify/Product/16603335295367	15->0	Boots mit weicher Gummisohle, schwarze Goldakzente
+gid://shopify/Product/16603335688583	56->1	Corduroy-Hemd mit Kapuze
+gid://shopify/Product/16603335721351	22->0	Smart Motion Meter Handgelenkarmband
+gid://shopify/Product/16603335754119	195->1	Langärmliger, doppelt-reiteriger Trenchcoat
+gid://shopify/Product/16603335819655	44->0	Martin‑Boots mit Tassel‑Design
+gid://shopify/Product/16603335983495	10->0	Schwarzer mittellanger Trenchcoat
+gid://shopify/Product/16603336180103	22->0	Mannschaftsschuhe mit weichem Boden
+gid://shopify/Product/16603336311175	70->1	Smartwatch mit Sprachassistent und NFC
+gid://shopify/Product/16603336343943	10->0	Weisser Pufferjacke mit Seitentasche
+gid://shopify/Product/16603336737159	22->3	Bluetooth Smartwatch MAX7 – 1,32" Display
+gid://shopify/Product/16603336933767	78->0	Mehrfarbige Kristall-Lampe für Tisch
+gid://shopify/Product/16603337032071	13->0	Leichte Daunenjacke Kurz
+gid://shopify/Product/16603337064839	49->3	4K HD Wasserdichte Action-Kamera mit Fernbedienung
+gid://shopify/Product/16603337294215	44->1	Taschenlampe mit kabellosem Aufladen
+gid://shopify/Product/16603337458055	140->2	Vintage Winterarbeitsschuhe Herren
+gid://shopify/Product/16603337589127	71->0	Sonnenblumentraum Nachtlicht mit Touch-Steuerung
+gid://shopify/Product/16603337752967	28->3	Herrenschuhe High-Top mit dicker Sohle
