@@ -901,7 +901,7 @@ for(const [cat,label] of grp.cats){
     status:(med||tsch)?'DRAFT':'ACTIVE',
     tags:[...tagsFinal,
           ...(med?['medizinprodukt-pruefen','medizin-zweck-'+med.grund]:[]),
-          ...(tsch?['tierschutz-tschv76','tierschutz-'+tsch.grund]:[])],
+          ...(tsch?[tsch.tag||'tierschutz-tschv76','tierschutz-'+tsch.grund]:[])],
     descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},
     productOptions, variants,
