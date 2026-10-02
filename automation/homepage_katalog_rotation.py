@@ -17,7 +17,7 @@ Was es tut (idempotent, täglich aus fixer_keepalive.sh):
      Wechsel-Reihe budget_unter25 (Rest der Aktion «unter CHF 25») heisst jetzt pl_herbst, steht EINMALIG
      direkt nach den Bestsellern und zeigt vom 22.09. bis 30.11. fest «🍂 Herbst-Favoriten»
      (automation/herbst_kuratieren.py). In diesem Fenster dreht die Rotation sie NICHT; danach kehrt sie
-     von selbst in die Wechsel-Rotation zurueck (Weihnachten laeuft ab 15.10. ueber SAISON im Pool).
+     von selbst in die Wechsel-Rotation zurueck (Weihnachten laeuft ab 01.10. ueber SAISON im Pool, seit 02.10. zwei Saison-Reihen).
 
   python3 automation/homepage_katalog_rotation.py --selbsttest     Gegenprobe auf einer Kopie (kein Netz)
   DRY=1 python3 automation/homepage_katalog_rotation.py            zeigt nur
@@ -44,14 +44,18 @@ POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "w
         "aufbewahrung-sub", "hundewelt", "buero-schreibwaren", "parfum-duefte", "outdoor-garten",
         "klemmbausteine-bausaetze", "sub-reise", "gaming", "basteln-diy", "katzenwelt", "party-deko-ch",
         "handy-zubehoer", "sub-baby-kids", "auto-kfz-zubehoer", "beauty-pflege", "kostueme-ch-lager",
-        "geschenke-unter-50-franken", "sub-haustier", "suesses-esswaren"]   # 14.09.: Betreiber «Kategorie mit Essen von Fortura» — 31 Süsswaren ab CH-Lager
+        "geschenke-unter-50-franken", "sub-haustier", "suesses-esswaren",
+        # 02.10.2026: Geschenk-Welten nach Warenart (geschenk_unterwelten.py), je 400 Produkte
+        "geschenke-fuer-sie", "geschenke-fuer-ihn", "geschenke-fuer-kinder"]   # 14.09.: Betreiber «Kategorie mit Essen von Fortura» — 31 Süsswaren ab CH-Lager
 # Reihenfolge bewusst: Hunde(8)/Katzen(16)/Haustier(24) liegen >= 8 auseinander -> nie zwei Tier-Reihen an einem Tag
 # 23.09. 23:30: «halloween» statt «halloween-2026» — beide Kollektionen trugen dieselbe Regel (Tag halloween, 230 Produkte);
 # das Menü zeigt auf /collections/halloween (6 Kanäle, längerer Text), die 2026er ist abgemeldet + 301.
 # ⚠️ 26.09.2026: hier stand «sub-uhren» — seit einem Doppel-Aufraeumen im Online Store ABGEMELDET (301 -> uhren).
 # Die Reihe zeigte dann Shopifys Platzhalter «Vorgestellte Produkte» mit Muster-T-Shirts «Produkttitel CHF 19.99»
 # (Betreiber-Screenshot aus Facebook). Deshalb prueft main() jetzt jeden Katalog live (sichtbar_live).
-SAISON = [("halloween", (9, 1), (10, 31)), ("weihnachten-2026", (10, 15), (12, 26))]
+# 02.10.2026 (Betreiber «passe webseite alles an»): Weihnachten ab 01.10. statt 15.10. — CJ liefert in 10–20 Werktagen, wer bis
+# Weihnachten beschenken will, bestellt bis ~25.11.; ab 21.12. kommt nichts mehr rechtzeitig an → Fenster bis 20.12.
+SAISON = [("halloween", (9, 1), (10, 31)), ("weihnachten-2026", (10, 1), (12, 20))]
 
 
 def saison_fest_heute(tag):
@@ -125,9 +129,13 @@ def umbauen(t, tag, sichtbar=None):
     #    Wechsel-Reihe auf Platz 17 von 25 — auf dem Handy (77 % der Sitzungen) scrollt dorthin kaum jemand.
     #    Im Saisonfenster steht die Reihe mit dem Saison-Katalog direkt unter der Herbst-/Trend-Reihe.
     md = (tag.month, tag.day)
-    for h in [h for h, von, bis in SAISON if von <= md <= bis][:1]:
+    # 02.10.2026: bis zu ZWEI Saison-Reihen (Halloween + Weihnachten überlappen im Oktober), die zweite direkt unter der ersten.
+    vorige = None
+    for h in [h for h, von, bis in SAISON if von <= md <= bis][:2]:
         k = next((w for w in WECHSEL if w in secs and not secs[w].get("disabled") and secs[w]["settings"].get("collection") == h), None)
-        anker = next((a for a in ("pl_herbst", "pl_trends") if a in t["order"] and a != k), None)
+        anker = vorige or next((a for a in ("pl_herbst", "pl_trends") if a in t["order"] and a != k), None)
+        if k:
+            vorige = k
         if k and anker:
             rest = [x for x in t["order"] if x != k]
             rest.insert(rest.index(anker) + 1, k)

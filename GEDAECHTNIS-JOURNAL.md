@@ -28,6 +28,14 @@
 
 
 
+## 2026-10-02 · 🧭 «passe webseite alles an» — Menü + Startseite auf Q4
+Hauptmenü (161 HTTP-Einträge, Backup `dropship/_hauptmenue_backup_2026-10-02.json`): «🎁 Geschenke & Mehr» → «🎁 Geschenke & Weihnachten»
+an Platz 1, darin Weihnachten 🎄, Für Sie/Ihn/Kinder, Hochzeitsgeschenke vor den Preisstufen; neu Wimpern & Lashes (Beauty), Fahrzeuge & RC
+(Kinder), LED-Strips & Lichterketten (Wohnen). `menue_links.py`: 183 Einträge, alle auf veröffentlichte, gefüllte Kollektionen.
+Startseite (25/25 Sektionen): `homepage_katalog_rotation.py` — Weihnachten-Fenster 01.10.–20.12. statt 15.10.–26.12. (CJ 10–20 WT: ab
+~21.12. kommt nichts rechtzeitig an), bis zu ZWEI Saison-Reihen nach oben (vorher `[:1]` → im Oktober nur Halloween), Geschenk-Welten im
+Pool; Selbsttest bestanden; live: Trend → Herbst → Halloween → Weihnachten (Platz 19 → 6). Überschriften dynamisch (`closest.collection.title`).
+
 ## 2026-10-02 · 🎁 «feinkategorie pushen und leeren kategorien auch» — Tag 3+4 vorgezogen
 **Geschenk-Welten (GEMESSEN):** Messlatte «≥ 24 kaufbar» war längst erfüllt (Sie 111, Ihn 250, Kinder 138) — der Kontaktbogen der
 ersten 24 aber nicht: Sie 22/24 Schmuck, Ihn 22/24 Uhren, Kinder 16/24 Babykleider. Ursache die ZUORDNUNG (Tag damen UND

@@ -2767,3 +2767,11 @@ kuscheltier-schottisches-hochlandrind-604400	2602240809051604700	16	7.03	ok	land
 leder-strandschuhe-mit-weicher-sohle-627800	2603180746481628200	16	12.32	ok	landeseite
 led-halsband-fur-hunde-leopard-muster-1985e6	-	-	-	unklar keine CJ-SKU	landeseite
 kupfer-lowe-dekoration-623200	2412030741291623500	16	25.26	ok	landeseite
+kinder-roller-skates-mit-4-radern-630400	2603260331241630900	7	21.65	ok	landeseite
+lauflernschuhe-mit-bandern-619100	2506120123461619400	16	9.88	ok	landeseite
+kinder-laufschuhe-outdoor-611800	2504190446531612000	16	20.69	ok	landeseite
+kinder-tracker-mit-gps-449408	1356113792232198144	7	6.02	ok	landeseite
+kinder-lauflernschuhe-mit-led-licht-892352	1610105934754361344	7	16.61	ok	landeseite
+kinder-lauflernschuhe-fruhling-herbst-023168	1545390297201520640	16	7.17	ok	landeseite
+leder-lauflernschuhe-fur-madchen-613000	2604241029561613600	16	10.88	ok	landeseite
+kinder-laufschuhe-aus-baumwolle-946880	1600380223965638656	16	7.17	ok	landeseite
