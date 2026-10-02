@@ -2534,3 +2534,13 @@ bequeme-atmungsaktive-lederschuhe-633100	2604160801251633700	16	13.76	ok	landese
 astronaut-roboter-uberwachungskamera-90b6f7	-	-	-	unklar keine CJ-SKU	landeseite
 astronaut-phone-case-298816	1540204781170601984	16	5.27	ok	landeseite
 asymmetrisches-knopfkleid-mit-seitlichen-tasch-617700	2607100237011618400	16	9.33	ok	landeseite
+chic-minirock-mit-falten-600100	2607081025311601100	16	8.79	ok	landeseite
+babynahrung-zerkleinerer-603100	2603280608351603500	16	13.65	ok	landeseite
+camping-cot-tent-601300	2605180147271602400	11	34.02	ok	landeseite
+bissfestes-pluschspielzeug-614800	2412090235081615200	16	6.77	ok	landeseite
+casual-locker-3d-taschen-street-overalls-611400	2508270636441612600	16	9.75	ok	landeseite
+aschenbecher-mit-deckel-602700	2607160902451603400	16	10.83	ok	landeseite
+ballet-style-halskette-624800	2607230908101625900	16	4.81	ok	landeseite
+baby-lauflernschuhe-mit-streifen-35f5fd	-	-	-	unklar keine CJ-SKU	landeseite
+business-herren-stahluhr-mit-kalender-579072	1622137492604465152	7	7.52	ok	landeseite
+automatische-mechanische-herrenuhr-778688	1443778157168693248	7	6.18	ok	landeseite
