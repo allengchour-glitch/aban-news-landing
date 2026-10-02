@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backtest-Labor: Trading-Strategie mit Indikatoren ehrlich testen · aban news</title>
+<meta name="description" content="Gratis Backtest-Labor im Browser: Teste Trading-Regeln mit RSI, MACD, Bollinger-Bändern, Stochastik und EMA oder neun bekannte Strategien ehrlich — Signal erst am Folgetag, Kosten eingerechnet, nur ungesehene Jahre zählen, Vergleich mit Kaufen und Halten und 200 Zufallsstrategien. Mit eigener CSV, nichts wird hochgeladen.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/backtest-labor.html">
+<meta property="og:title" content="Backtest-Labor: Trading-Strategie mit Indikatoren ehrlich testen">
+<meta property="og:description" content="RSI, MACD, Bollinger, Stochastik, EMA und neun klassische Regeln ehrlich testen: Folgetag, Kosten, ungesehene Jahre, Kaufen und Halten, 200 Zufallsstrategien. Im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/backtest-labor.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Backtest-Labor",
+"url":"https://abannews.com/backtest-labor.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Testet Trading-Regeln mit Indikatoren (RSI, MACD, Bollinger-Bänder, Stochastik, EMA) ehrlich: Signal erst am Folgetag, Kosten pro Wechsel, getrennte Entwicklungs- und Testjahre, Vergleich mit Kaufen und Halten und mit 200 Zufallsstrategien. Läuft lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was macht einen Backtest ehrlich?","acceptedAnswer":{"@type":"Answer","text":"Vier Dinge: Das Signal wird erst am nächsten Tag gehandelt, Kosten werden bei jedem Wechsel abgezogen, beurteilt werden nur Jahre, die beim Entwickeln nicht verwendet wurden, und das Ergebnis wird mit Kaufen und Halten sowie mit Zufallsstrategien verglichen."}},
+{"@type":"Question","name":"Was bedeutet Skill in Prozent?","acceptedAnswer":{"@type":"Answer","text":"Der Anteil von 200 Zufallsstrategien, die die Regel schlägt. Die Zufallsstrategien sind gleich lang investiert und wechseln gleich oft. 50 Prozent heisst: kein Können, nur Zufall."}},
+{"@type":"Question","name":"Warum funktioniert eine Regel auf einem Zufallsmarkt?","acceptedAnswer":{"@type":"Answer","text":"Weil im Rauschen immer Muster auftauchen. Wer lange genug sucht, findet auf vergangenen Kursen eine Regel, die gut aussieht. Auf den ungesehenen Jahren verschwindet der Vorteil dann meist. Genau das zeigt der Knopf „Beste Regel suchen“."}},
+{"@type":"Question","name":"Werden meine Kursdaten hochgeladen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die CSV-Datei wird nur in deinem Browser gelesen und gerechnet. Es wird nichts gesendet oder gespeichert. Keine Anlageberatung."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#15803d;--bad:#b91c1c;--field:#fffdf9;--grau:#9ca3af}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--ok:#34d399;--bad:#f87171;--field:#1f1b15;--grau:#7c7466}}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{border-bottom:1px solid var(--line);background:var(--bg)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem;font-family:inherit}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-dk)}
+.btn:disabled{opacity:.55;cursor:wait}
+.hero{padding:34px 0 6px}
+.hero h1{font-size:clamp(25px,4.4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:640px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+.panel h2{font-size:1.05rem;margin-bottom:10px}
+label,.lbl{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:4px}
+input[type=number],select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input[type=file]{font:inherit;font-size:.9rem;color:var(--ink2);max-width:100%}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.seg label{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:.92rem;font-weight:600;cursor:pointer;margin:0;background:var(--field)}
+.seg input{accent-color:var(--amber-dk)}
+.hint{font-size:.82rem;color:var(--muted);margin-top:6px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.err{color:var(--bad);font-weight:600;font-size:.9rem;margin-top:8px}
+.verdict{display:flex;gap:12px;align-items:flex-start;border-radius:12px;padding:14px 16px;margin-bottom:14px;border:1px solid var(--line)}
+.verdict b.tag{display:inline-block;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .65rem;border-radius:999px;white-space:nowrap}
+.v-yes b.tag{background:#dcfce7;color:#166534}.v-wait b.tag{background:#fef3c7;color:#92400e}.v-no b.tag{background:#fee2e2;color:#991b1b}
+.tab{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.78rem;color:var(--muted);font-weight:700}
+.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.skillbar{position:relative;height:14px;border-radius:7px;background:linear-gradient(90deg,#fee2e2,#fef3c7 50%,#dcfce7);margin:6px 0 2px}
+.skillbar i{position:absolute;top:-4px;width:4px;height:22px;background:var(--ink);border-radius:2px}
+.skillbar s{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--muted);text-decoration:none}
+.chart svg{width:100%;height:auto;display:block}
+.chart .k-r{fill:none;stroke:var(--amber-dk);stroke-width:2}
+.chart .k-h{fill:none;stroke:var(--grau);stroke-width:2;stroke-dasharray:5 4}
+.chart .split{stroke:var(--muted);stroke-dasharray:3 3}
+.chart text{fill:var(--muted);font-size:11px}
+.leg{display:inline-block;width:18px;height:3px;vertical-align:middle;margin:0 4px 0 10px}
+.opt{border-left:4px solid var(--amber-dk);padding:10px 14px;background:var(--cream);border-radius:0 10px 10px 0;margin-top:14px;font-size:.93rem}
+.kasten{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:16px 18px;background:var(--card);margin:20px 0}
+.kasten ul{margin:8px 0 8px 18px}
+details{border-bottom:1px solid var(--line);padding:10px 0}
+summary{cursor:pointer;font-weight:700}
+details p{margin-top:6px;color:var(--ink2)}
+h2.sec{font-size:1.2rem;margin:26px 0 8px}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<a class="skip" href="#labor">Zum Labor</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="/ki-trading-bot.html" style="font-size:.9rem">KI-Trading-Bots geprüft</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:820px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1>Backtest-Labor: Teste eine Trading-Regel, wie es ein Profi tun müsste</h1>
+    <p>Die meisten Backtests im Netz sind zu schön, weil sie schummeln: Sie handeln zum Schlusskurs, den man erst kennt, wenn es zu spät ist, vergessen Kosten und messen auf denselben Jahren, auf denen die Regel gebaut wurde. Hier nicht. Bau dir eine Regel aus RSI, MACD, Bollinger-Bändern, Stochastik, EMA und Durchschnitten oder nimm eine von neun bekannten Strategien, auf einem Zufallsmarkt oder deinen eigenen Kursen.</p>
+  </section>
+  <p data-aban-was style="max-width:820px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">So rechnet das Labor:</strong> Signal am Schlusskurs, gehandelt erst am nächsten Tag. Kosten bei jedem Wechsel. Die ersten Jahre sind zum <b>Entwickeln</b>, beurteilt wird nur der <b>Test</b> danach. Vergleich mit Kaufen und Halten und mit 200 Zufallsstrategien. Alles läuft in deinem Browser, nichts wird hochgeladen. Keine Anlageberatung.</p>
+
+  <section class="panel" id="labor" aria-labelledby="h-daten">
+    <h2 id="h-daten">1. Kurse</h2>
+    <div class="seg" role="radiogroup" aria-label="Datenquelle">
+      <label><input type="radio" name="quelle" value="zufall" checked> Zufallsmarkt</label>
+      <label><input type="radio" name="quelle" value="csv"> Eigene CSV-Datei</label>
+    </div>
+    <div id="q-zufall" class="cols">
+      <div><label for="z-ren">Rendite pro Jahr (%)</label><input id="z-ren" type="number" value="7" step="0.5"></div>
+      <div><label for="z-vol">Schwankung pro Jahr (%)</label><input id="z-vol" type="number" value="18" step="1" min="1"></div>
+      <div><label for="z-jahre">Jahre</label><input id="z-jahre" type="number" value="25" step="1" min="3" max="60"></div>
+      <div><label for="z-seed">Zufallszahl (Markt-Nr.)</label><input id="z-seed" type="number" value="7" step="1"></div>
+    </div>
+    <p class="hint" id="q-zufall-hint">Ein Markt aus reinem Zufall, ohne jedes Muster. Jede Regel, die hier „funktioniert“, hat Glück gehabt. Darum ist er der beste Lügendetektor.</p>
+    <div id="q-csv" hidden>
+      <label for="csv">CSV mit Datum und Schlusskurs</label>
+      <input id="csv" type="file" accept=".csv,.txt,text/csv">
+      <p class="hint">Zum Beispiel von Yahoo Finance (Kurse herunterladen) oder aus deinem Broker. Erkannt werden Komma, Semikolon und Tab, Daten wie 2024-03-28 oder 28.03.2024 und Schweizer Zahlen wie 1'234.50. Bei Yahoo wird „Adj Close“ genommen. Die Datei bleibt auf deinem Gerät.</p>
+      <p class="hint" id="csv-info"></p>
+    </div>
+
+    <h2 style="margin-top:18px">2. Regel</h2>
+    <div class="cols">
+      <div style="grid-column:1/-1"><label for="regel">Trading-Regel</label>
+        <select id="regel">
+          <optgroup label="Klassische Regeln">
+          <option value="trend">Trendfolge: Durchschnitt 50 über 200 Tage</option>
+          <option value="ma">Trendfolge mit eigenen Durchschnitten</option>
+          <option value="momentum">Momentum: Kurs über dem Vorjahr</option>
+          <option value="ausbruch">Ausbruch (Turtle): 55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen</option>
+          <option value="rsi2">Mean Reversion: RSI(2) unter 10 kaufen, über 70 verkaufen</option>
+          <option value="dip">Buy the Dip: nach −5 % in 5 Tagen kaufen, 10 Tage halten</option>
+          <option value="swing">Swing: nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus</option>
+          <option value="saison">Saison: November bis April investiert</option>
+          <option value="monat">Monatswechsel: letzter bis 3. Handelstag investiert</option>
+          <option value="ruhig">Ruhige Phasen: investiert, wenn die Schwankung unter dem Jahresmittel liegt</option>
+          </optgroup>
+          <optgroup label="Indikator-Regeln">
+            <option value="p_rsi">RSI(14): unter 30 kaufen, über 70 verkaufen</option>
+            <option value="p_macd">MACD (12/26/9): Linie über der Signallinie</option>
+            <option value="p_boll">Bollinger (20, 2): unter dem unteren Band kaufen, über der Mitte raus</option>
+            <option value="p_stoch">Stochastik (14): unter 20 kaufen, über 80 verkaufen</option>
+            <option value="p_ema">EMA 12 über EMA 26</option>
+            <option value="ind">Eigene Indikator-Regel bauen …</option>
+          </optgroup>
+          <option value="wahrsager">Gegenprobe: Wahrsager, der den nächsten Tag kennt</option>
+        </select></div>
+      <div class="ma-only" hidden><label for="ma-k">Kurzer Durchschnitt (Tage)</label><input id="ma-k" type="number" value="20" min="2" max="250"></div>
+      <div class="ma-only" hidden><label for="ma-l">Langer Durchschnitt (Tage)</label><input id="ma-l" type="number" value="100" min="5" max="400"></div>
+      <div class="ind-only" hidden style="grid-column:1/-1">
+        <div class="cols">
+          <div style="grid-column:1/-1"><label for="e-t">Kaufen, wenn …</label><select id="e-t"></select></div>
+          <div><label for="e-a" id="e-a-l">Wert 1</label><input id="e-a" type="number" step="1"></div>
+          <div><label for="e-b" id="e-b-l">Wert 2</label><input id="e-b" type="number" step="0.5"></div>
+          <div style="grid-column:1/-1"><label for="x-t">Verkaufen, wenn …</label><select id="x-t"></select></div>
+          <div><label for="x-a" id="x-a-l">Wert 1</label><input id="x-a" type="number" step="1"></div>
+          <div><label for="x-b" id="x-b-l">Wert 2</label><input id="x-b" type="number" step="0.5"></div>
+        </div>
+        <label style="display:flex;gap:8px;align-items:center;font-weight:600;margin-top:10px"><input type="checkbox" id="f200"> Nur investiert, solange der Kurs über dem 200-Tage-Schnitt liegt (Trendfilter)</label>
+        <p class="hint">Alle Indikatoren rechnen mit Schlusskursen und nur mit Kursen bis zum jeweiligen Tag. Stochastik nutzt deshalb Schlusskurs-Hoch und -Tief statt Tageshoch und -tief.</p>
+      </div>
+      <div><label for="kosten">Kosten pro Wechsel (%)</label><input id="kosten" type="number" value="0.1" step="0.05" min="0"></div>
+      <div><label for="anteil">Davon zum Entwickeln (%)</label><input id="anteil" type="number" value="60" step="5" min="20" max="90"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="go" type="button">Ehrlich testen</button>
+      <button class="btn ghost" id="opt" type="button">Beste Durchschnitte suchen (die Falle)</button>
+    </div>
+    <p class="err" id="err" role="alert"></p>
+  </section>
+
+  <section class="panel" id="ergebnis" hidden aria-live="polite">
+    <div id="verdict"></div>
+    <div class="tab"><table>
+      <thead><tr><th></th><th>Test (zählt)</th><th>Entwickeln</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table></div>
+    <p class="lbl" style="margin-top:14px">Skill im Test: <span id="skilltxt"></span></p>
+    <div class="skillbar" aria-hidden="true"><s></s><i id="skillmark"></i></div>
+    <p class="hint">Anteil von 200 Zufallsstrategien, die gleich lang investiert sind und gleich oft wechseln, die deine Regel schlägt (Sharpe nach Kosten). 50 % = kein Können.</p>
+    <div class="chart" id="chart"></div>
+    <div class="chart" id="signale"></div>
+    <div id="optbox"></div>
+  </section>
+
+  <div class="kasten" id="pruefstand">
+    <p><b>Eigene Regel, eigene Märkte, ganze Testreihe? Dafür gibt es den Strategie-Prüfstand.</b></p>
+    <ul>
+      <li>Deine <b>eigene Regel in Python</b>, nicht nur die neun Vorlagen</li>
+      <li>Kurse direkt von Yahoo Finance oder als CSV, auch im Schweizer Format</li>
+      <li><b>Zukunfts-Schutz:</b> bricht ab, wenn die Regel auf Kurse von morgen zugreift</li>
+      <li><b>Auswahl-Falle</b> und Mehrfach-Test über viele Märkte, Daytrading-Test auf Stundenkerzen</li>
+      <li>Bericht mit Anleitung zu den sieben häufigsten Backtest-Fallen</li>
+    </ul>
+    <p class="hint">Python-Kit zum Herunterladen, Windows, Mac und Linux, Python 3.9+. Keine Anlageberatung, kein Signaldienst.</p>
+    <a class="btn" id="pruefstand-kauf" href="/shop.html" style="margin-top:8px">Strategie-Prüfstand — CHF 29</a>
+    <p class="hint">Sofort-Download nach der Zahlung (Karte, über Stripe). <a href="/agb.html">AGB &amp; Widerruf</a> · <a href="/trading-lernen.html#pruefstand">Mehr zum Prüfstand</a></p>
+  </div>
+
+  <h2 class="sec">Was die Ergebnisse auf echten Kursen zeigen</h2>
+  <p>Wir haben die neun Regeln auf acht echten Märkten seit 2000 getestet (S&amp;P 500, SMI, Nestlé, Bitcoin, Euro/Franken, Gold, Silber, Öl). Keine schlägt einfaches Halten verlässlich. Manche dämpfen dafür die schlimmsten Einbrüche deutlich. Alle Zahlen und der Code stehen auf <a href="/trading-lernen.html">Trading lernen</a>, die Warnzeichen bei Bot-Angeboten auf <a href="/ki-trading-bot.html">KI-Trading-Bots ehrlich geprüft</a>.</p>
+
+  <h2 class="sec">Häufige Fragen</h2>
+  <details><summary>Was macht einen Backtest ehrlich?</summary><p>Signal erst am nächsten Tag handeln, Kosten bei jedem Wechsel abziehen, nur Jahre beurteilen, die beim Entwickeln nicht verwendet wurden, und mit Kaufen und Halten sowie mit Zufallsstrategien vergleichen.</p></details>
+  <details><summary>Was bedeutet Skill in Prozent?</summary><p>Der Anteil von 200 Zufallsstrategien, die deine Regel schlägt. Sie sind gleich lang investiert und wechseln gleich oft, damit nur das Timing zählt. 50 % heisst: kein Können.</p></details>
+  <details><summary>Warum „funktioniert“ eine Regel auf dem Zufallsmarkt?</summary><p>Weil im Rauschen immer Muster auftauchen. Drück auf „Beste Durchschnitte suchen“: Auf den Entwicklungsjahren findet die Suche fast immer etwas Schönes, im Test verschwindet es meist.</p></details>
+  <details><summary>Welche Indikatoren kann ich verwenden?</summary><p>RSI, MACD mit Signallinie, Bollinger-Bänder (unteres, oberes Band, Mitte), Stochastik, EMA-Kreuzung und Kurs über oder unter einem Durchschnitt. Kauf- und Verkaufsbedingung wählst du getrennt, dazu optional einen 200-Tage-Trendfilter. Alle rechnen mit Schlusskursen und nur mit Kursen bis zum jeweiligen Tag.</p></details>
+  <details><summary>Wozu die Gegenprobe „Wahrsager“?</summary><p>Sie zeigt, dass der Test echtes Können erkennen würde: Wer den nächsten Tag kennt, landet bei fast 100 % Skill. Ein Test, der das nicht schafft, wäre wertlos.</p></details>
+  <details><summary>Werden meine Daten hochgeladen?</summary><p>Nein. Die CSV wird nur in deinem Browser gelesen. Keine Anlageberatung: Das Labor sagt nicht, was du kaufen sollst, sondern ob ein Ergebnis einem ehrlichen Test standhält.</p></details>
+
+<aside data-aban-news-cta data-cta-kontext="backtest-labor" aria-label="Newsletter-Hinweis" style="max-width:760px;margin:26px auto 4px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Gleicher Test, andere Baustelle: KI-News mit Urteil.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">Werktäglich 3 KI-Updates, jedes mit Urteil: lohnt sich, abwarten oder ignorieren. Dazu 1 selbst getestetes Tool. Rund 5 Minuten, ohne Hype.<br><span style="font-size:.82rem;color:#6b7280">Gratis · 1-Klick-Abmeldung · kein Tracking-Pixel.</span></p>
+  <a href="https://abannews.beehiiv.com/subscribe?utm_source=abannews&amp;utm_medium=tool&amp;utm_campaign=backtest-labor" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:8px;font-size:.95rem">Urteile holen →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Keine Anlageberatung. Vergangene Kurse sagen die Zukunft nicht voraus. ·
+  <a href="/trading-lernen.html">Trading lernen</a> · <a href="/online-tools.html">Alle Tools</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+/*ENGINE-START*/
+var BT=(function(){
+  function sma(p,n){var o=new Array(p.length).fill(null),s=0;for(var i=0;i<p.length;i++){s+=p[i];if(i>=n)s-=p[i-n];if(i>=n-1)o[i]=s/n;}return o;}
+  function maRegel(p,k,l){var a=sma(p,k),b=sma(p,l);return p.map(function(_,i){return b[i]!==null&&a[i]>b[i]?1:0;});}
+  var R={
+    trend:function(p){return maRegel(p,50,200);},
+    momentum:function(p){return p.map(function(x,i){return i>=252&&x>p[i-252]?1:0;});},
+    ausbruch:function(p){var pos=0,o=[];for(var i=0;i<p.length;i++){if(i>=55&&p[i]>Math.max.apply(null,p.slice(i-55,i)))pos=1;else if(i>=20&&p[i]<Math.min.apply(null,p.slice(i-20,i)))pos=0;o.push(pos);}return o;},
+    rsi2:function(p){var lang=sma(p,200),pos=0,o=[],g=0,v=0;for(var i=0;i<p.length;i++){if(i){var ch=p[i]-p[i-1];g=(g+Math.max(ch,0))/2;v=(v+Math.max(-ch,0))/2;}var rsi=v===0?100:100-100/(1+g/v);if(lang[i]!==null&&p[i]>lang[i]&&rsi<10)pos=1;else if(rsi>70||(lang[i]!==null&&p[i]<lang[i]))pos=0;o.push(pos);}return o;},
+    dip:function(p){var o=[],rest=0;for(var i=0;i<p.length;i++){if(i>=5&&p[i]/p[i-5]-1<=-0.05)rest=10;o.push(rest>0?1:0);rest=Math.max(rest-1,0);}return o;},
+    swing:function(p){var pos=0,o=[];for(var i=0;i<p.length;i++){if(i>=3&&p[i]<p[i-1]&&p[i-1]<p[i-2]&&p[i-2]<p[i-3])pos=1;else if(i&&p[i]>p[i-1])pos=0;o.push(pos);}return o;},
+    saison:function(p,d){return d.map(function(x){var m=+x.slice(5,7);return [11,12,1,2,3,4].indexOf(m)>=0?1:0;});},
+    monat:function(p,d){var o=new Array(d.length).fill(0);for(var i=0;i<d.length;i++){if(i+1<d.length&&d[i+1].slice(5,7)!==d[i].slice(5,7)){for(var j=i-1;j<Math.min(i+3,d.length);j++)if(j>=0)o[j]=1;}}return o;},
+    ruhig:function(p,d,r){var o=[];for(var i=0;i<p.length;i++){if(i<272){o.push(0);continue;}var k=0,l=0,j;for(j=i-19;j<=i;j++)k+=r[j]*r[j];for(j=i-251;j<=i;j++)l+=r[j]*r[j];o.push(Math.sqrt(k/20)<Math.sqrt(l/252)?1:0);}return o;},
+    wahrsager:function(p,d,r){return p.map(function(_,i){return i+1<r.length&&r[i+1]>0?1:0;});}
+  };
+  function renditen(p){var r=[0];for(var i=1;i<p.length;i++)r.push(p[i]/p[i-1]-1);return r;}
+  // Tagesrenditen im Abschnitt [a,b): Position von gestern Abend auf die Rendite von heute, Kosten bei jedem Wechsel
+  function lauf(pos,r,a,b,kosten){var o=[],vor=a>0?pos[a-1]:0;for(var i=Math.max(a,1);i<b;i++){var q=pos[i-1];o.push(q*r[i]-(q!==vor?kosten:0));vor=q;}return o;}
+  function halten(r,a,b){var o=[];for(var i=Math.max(a,1);i<b;i++)o.push(r[i]);return o;}
+  function sharpe(x){var n=x.length;if(n<2)return 0;var m=0,i;for(i=0;i<n;i++)m+=x[i];m/=n;var s=0;for(i=0;i<n;i++)s+=(x[i]-m)*(x[i]-m);s=Math.sqrt(s/(n-1));return s?m/s*Math.sqrt(252):0;}
+  function cagr(x){var w=1;for(var i=0;i<x.length;i++)w*=1+x[i];return w>0&&x.length?Math.pow(w,252/x.length)-1:-1;}
+  function einbruch(x){var w=1,sp=1,dd=0;for(var i=0;i<x.length;i++){w*=1+x[i];if(w>sp)sp=w;if(w/sp-1<dd)dd=w/sp-1;}return dd;}
+  function kurve(x){var w=1,o=[1];for(var i=0;i<x.length;i++){w*=1+x[i];o.push(w);}return o;}
+  function rng(seed){var t=seed>>>0;return function(){t+=0x6D2B79F5;var z=t;z=Math.imul(z^z>>>15,z|1);z^=z+Math.imul(z^z>>>7,z|61);return((z^z>>>14)>>>0)/4294967296;};}
+  function zufallPos(n,anteil,wechsel,rnd){if(wechsel===0||anteil===0||anteil===1)return new Array(n).fill(anteil>=0.5?1:0);var rein=wechsel/2/Math.max(n*(1-anteil),1),raus=wechsel/2/Math.max(n*anteil,1),s=rnd()<anteil?1:0,o=[];for(var i=0;i<n;i++){o.push(s);if(rnd()<(s?raus:rein))s=1-s;}return o;}
+  // Skill: Anteil Zufallsstrategien (gleiches Engagement, gleich viele Wechsel) mit schlechterer Sharpe, im Abschnitt [a,b)
+  function skill(pos,r,a,b,kosten,n){var seg=pos.slice(a,b),rs=r.slice(a,b);var ziel=sharpe(lauf(seg,rs,0,seg.length,kosten));var anteil=seg.reduce(function(s,x){return s+x;},0)/seg.length;var w=0;for(var i=1;i<seg.length;i++)if(seg[i]!==seg[i-1])w++;var rnd=rng(42),besser=0;for(var k=0;k<n;k++){var z=zufallPos(seg.length,anteil,w,rnd);if(sharpe(lauf(z,rs,0,z.length,kosten))<ziel)besser++;}return besser/n;}
+  function kennzahlen(pos,r,a,b,kosten){var x=lauf(pos,r,a,b,kosten),h=halten(r,a,b),tr=0,drin=0,wechsel=0,inv=0;for(var i=Math.max(a,1);i<b;i++){if(pos[i]!==pos[i-1])wechsel++;inv+=pos[i-1];}
+    return {cagr:cagr(x),haltenCagr:cagr(h),dd:einbruch(x),haltenDd:einbruch(h),sharpe:sharpe(x),haltenSharpe:sharpe(h),imMarkt:inv/Math.max(b-Math.max(a,1),1),wechsel:wechsel,jahre:(b-Math.max(a,1))/252,kurve:kurve(x),haltenKurve:kurve(h)};}
+  function zufallsmarkt(renditeJahr,volJahr,jahre,seed){var rnd=rng(seed*7919+13),n=Math.round(jahre*252),mu=Math.log(1+renditeJahr)/252,sd=volJahr/Math.sqrt(252),p=[100],d=[],t=Date.UTC(2000,0,3);
+    while(d.length<n+1){var wd=new Date(t).getUTCDay();if(wd!==0&&wd!==6)d.push(new Date(t).toISOString().slice(0,10));t+=864e5;}
+    for(var i=1;i<=n;i++){var u1=Math.max(rnd(),1e-12),u2=rnd(),z=Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);p.push(p[i-1]*Math.exp(mu-sd*sd/2+sd*z));}return {d:d,p:p};}
+  function csvLesen(text){var zeilen=text.replace(/\r/g,'').split('\n').filter(function(z){return z.trim();});if(zeilen.length<2)throw new Error('Die Datei ist leer.');
+    var kopf=zeilen[0],trenn=[';','\t',','].sort(function(a,b){return kopf.split(b).length-kopf.split(a).length;})[0];
+    var zell=function(z){return z.split(trenn).map(function(c){return c.trim().replace(/^"|"$/g,'');});};
+    var k=zell(kopf).map(function(c){return c.toLowerCase();}),hatKopf=!/\d{4}|\d{1,2}\.\d{1,2}\./.test(k[0]),iD=0,iP=-1;
+    if(hatKopf){['adj close','adj. close','schlusskurs','schluss','close','kurs','price','preis','last'].some(function(n){var j=k.indexOf(n);if(j>=0){iP=j;return true;}return false;});var jd=k.findIndex(function(c){return c==='date'||c==='datum'||c==='time';});if(jd>=0)iD=jd;}
+    if(iP<0)iP=1;var d=[],p=[];
+    zeilen.slice(hatKopf?1:0).forEach(function(z){var c=zell(z);if(c.length<=Math.max(iD,iP))return;var ds=c[iD],m,iso=null;
+      if((m=ds.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/)))iso=m[1]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[3]).slice(-2);
+      else if((m=ds.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})/)))iso=m[3]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[1]).slice(-2);
+      else if((m=ds.match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})/)))iso=m[1]+'-'+('0'+m[2]).slice(-2)+'-'+('0'+m[3]).slice(-2);
+      if(!iso)return;var s=c[iP].replace(/['’\s]/g,'');if(s.indexOf(',')>=0&&s.indexOf('.')>=0){s=s.lastIndexOf(',')>s.lastIndexOf('.')?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'');}else s=s.replace(',','.');
+      var x=parseFloat(s);if(isFinite(x)&&x>0){d.push(iso);p.push(x);}});
+    var idx=d.map(function(_,i){return i;}).sort(function(a,b){return d[a]<d[b]?-1:d[a]>d[b]?1:0;}),dd=[],pp=[];idx.forEach(function(i){if(dd.length&&dd[dd.length-1]===d[i])return;dd.push(d[i]);pp.push(p[i]);});
+    if(dd.length<300)throw new Error('Zu wenig Kurse: '+dd.length+' Zeilen erkannt, mindestens 300 nötig (gut ein Jahr Tageskurse).');return {d:dd,p:pp};}
+  // ───── Indikatoren (nur Schlusskurse, jeder Wert nutzt nur Kurse bis zu diesem Tag) ─────
+  function ema(p,n){var o=new Array(p.length).fill(null),a=2/(n+1),s=0,c=0,v=null;for(var i=0;i<p.length;i++){if(p[i]===null)continue;if(v===null){s+=p[i];c++;if(c===n){v=s/n;o[i]=v;}}else{v=a*p[i]+(1-a)*v;o[i]=v;}}return o;}
+  function rsi(p,n){var o=new Array(p.length).fill(null),g=0,l=0;for(var i=1;i<p.length;i++){var ch=p[i]-p[i-1],up=Math.max(ch,0),dn=Math.max(-ch,0);if(i<=n){g+=up/n;l+=dn/n;if(i<n)continue;}else{g=(g*(n-1)+up)/n;l=(l*(n-1)+dn)/n;}o[i]=l===0?100:100-100/(1+g/l);}return o;}
+  function macd(p,f,s,sig){var a=ema(p,f),b=ema(p,s),m=p.map(function(_,i){return a[i]!==null&&b[i]!==null?a[i]-b[i]:null;}),si=ema(m,sig);return {m:m,s:si};}
+  function bollinger(p,n,k){var mid=sma(p,n),up=[],lo=[];for(var i=0;i<p.length;i++){if(mid[i]===null){up.push(null);lo.push(null);continue;}var q=0;for(var j=i-n+1;j<=i;j++)q+=(p[j]-mid[i])*(p[j]-mid[i]);var sd=Math.sqrt(q/n);up.push(mid[i]+k*sd);lo.push(mid[i]-k*sd);}return {mid:mid,up:up,lo:lo};}
+  function stoch(p,n){var o=new Array(p.length).fill(null);for(var i=n-1;i<p.length;i++){var hi=-Infinity,lo=Infinity;for(var j=i-n+1;j<=i;j++){if(p[j]>hi)hi=p[j];if(p[j]<lo)lo=p[j];}o[i]=hi===lo?50:100*(p[i]-lo)/(hi-lo);}return o;}
+  // Bedingungen: liefern je Tag true/false (null-Werte = noch nicht berechenbar = false)
+  var BED={
+    rsi_unter:function(p,a,b){var x=rsi(p,a);return x.map(function(v){return v!==null&&v<b;});},
+    rsi_ueber:function(p,a,b){var x=rsi(p,a);return x.map(function(v){return v!==null&&v>b;});},
+    macd_ueber:function(p,a,b){var x=macd(p,a,b,9);return x.m.map(function(v,i){return v!==null&&x.s[i]!==null&&v>x.s[i];});},
+    macd_unter:function(p,a,b){var x=macd(p,a,b,9);return x.m.map(function(v,i){return v!==null&&x.s[i]!==null&&v<x.s[i];});},
+    ema_ueber:function(p,a,b){var x=ema(p,a),y=ema(p,b);return x.map(function(v,i){return v!==null&&y[i]!==null&&v>y[i];});},
+    ema_unter:function(p,a,b){var x=ema(p,a),y=ema(p,b);return x.map(function(v,i){return v!==null&&y[i]!==null&&v<y[i];});},
+    kurs_ueber_sma:function(p,a){var x=sma(p,a);return p.map(function(v,i){return x[i]!==null&&v>x[i];});},
+    kurs_unter_sma:function(p,a){var x=sma(p,a);return p.map(function(v,i){return x[i]!==null&&v<x[i];});},
+    boll_unter:function(p,a,b){var x=bollinger(p,a,b);return p.map(function(v,i){return x.lo[i]!==null&&v<x.lo[i];});},
+    boll_ueber:function(p,a,b){var x=bollinger(p,a,b);return p.map(function(v,i){return x.up[i]!==null&&v>x.up[i];});},
+    boll_mitte_ueber:function(p,a,b){var x=bollinger(p,a,b);return p.map(function(v,i){return x.mid[i]!==null&&v>x.mid[i];});},
+    stoch_unter:function(p,a,b){var x=stoch(p,a);return x.map(function(v){return v!==null&&v<b;});},
+    stoch_ueber:function(p,a,b){var x=stoch(p,a);return x.map(function(v){return v!==null&&v>b;});}
+  };
+  // Einstieg/Ausstieg als Zustandsautomat; optional nur über dem 200-Tage-Schnitt investiert
+  function indikatorPos(p,ein,aus,filter200){var e=BED[ein.t](p,ein.a,ein.b),x=BED[aus.t](p,aus.a,aus.b),f=filter200?sma(p,200):null,pos=0,o=[];
+    for(var i=0;i<p.length;i++){var trendOk=!f||(f[i]!==null&&p[i]>f[i]);if(pos===0&&e[i]&&trendOk)pos=1;else if(pos===1&&(x[i]||(f&&!trendOk)))pos=0;o.push(pos);}return o;}
+  // Linien für die Signal-Grafik: overlay = im Kurs, panel = eigener Bereich mit Schwellen
+  function serien(p,c){switch(c.t){
+    case 'rsi_unter':case 'rsi_ueber':return {panel:{name:'RSI('+c.a+')',linien:[rsi(p,c.a)],stufen:[c.b],min:0,max:100}};
+    case 'stoch_unter':case 'stoch_ueber':return {panel:{name:'Stochastik('+c.a+')',linien:[stoch(p,c.a)],stufen:[c.b],min:0,max:100}};
+    case 'macd_ueber':case 'macd_unter':var m=macd(p,c.a,c.b,9);return {panel:{name:'MACD('+c.a+'/'+c.b+'/9) und Signallinie',linien:[m.m,m.s],stufen:[0]}};
+    case 'ema_ueber':case 'ema_unter':return {overlay:[ema(p,c.a),ema(p,c.b)],name:'EMA '+c.a+' und '+c.b};
+    case 'kurs_ueber_sma':case 'kurs_unter_sma':return {overlay:[sma(p,c.a)],name:'Durchschnitt '+c.a+' Tage'};
+    default:var bb=bollinger(p,c.a,c.b);return {overlay:[bb.up,bb.mid,bb.lo],name:'Bollinger-Bänder ('+c.a+', '+c.b+')'};}}
+  function regelPos(name,p,d,r,k,l){if(name==='ma')return maRegel(p,k,l);return R[name](p,d,r);}
+  function suche(p,r,a,b,kosten){var best=null,n=0;for(var k=5;k<=100;k+=5)for(var l=20;l<=300;l+=10){if(l<=k*1.5)continue;n++;var x=lauf(maRegel(p,k,l),r,a,b,kosten),s=sharpe(x);if(!best||s>best.s)best={k:k,l:l,s:s};}best.versuche=n;return best;}
+  return {BED:BED,ema:ema,rsi:rsi,macd:macd,bollinger:bollinger,stoch:stoch,indikatorPos:indikatorPos,serien:serien,R:R,sma:sma,maRegel:maRegel,renditen:renditen,lauf:lauf,sharpe:sharpe,cagr:cagr,einbruch:einbruch,skill:skill,kennzahlen:kennzahlen,zufallsmarkt:zufallsmarkt,csvLesen:csvLesen,regelPos:regelPos,suche:suche};
+})();
+if(typeof module!=='undefined')module.exports=BT;
+/*ENGINE-END*/
+(function(){
+  if(typeof document==='undefined')return;
+  var $=function(id){return document.getElementById(id);};
+  var csvDaten=null;
+  function num(id){var v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:NaN;}
+  function pct(x,d){return (x>=0?'+':'')+(x*100).toLocaleString('de-CH',{minimumFractionDigits:d===undefined?1:d,maximumFractionDigits:d===undefined?1:d})+' %';}
+  function cls(x){return x>=0?'pos':'neg';}
+  document.querySelectorAll('input[name=quelle]').forEach(function(el){el.addEventListener('change',function(){var z=this.value==='zufall';$('q-zufall').hidden=!z;$('q-zufall-hint').hidden=!z;$('q-csv').hidden=z;});});
+  var BEDS=[['rsi_unter','RSI fällt unter …','RSI-Tage',14,'Schwelle',30],['rsi_ueber','RSI steigt über …','RSI-Tage',14,'Schwelle',70],
+    ['macd_ueber','MACD liegt über der Signallinie','Schnelle EMA',12,'Langsame EMA',26],['macd_unter','MACD liegt unter der Signallinie','Schnelle EMA',12,'Langsame EMA',26],
+    ['ema_ueber','Kurze EMA liegt über langer EMA','Kurze EMA',12,'Lange EMA',26],['ema_unter','Kurze EMA liegt unter langer EMA','Kurze EMA',12,'Lange EMA',26],
+    ['kurs_ueber_sma','Kurs liegt über dem Durchschnitt','Tage',50,null,null],['kurs_unter_sma','Kurs liegt unter dem Durchschnitt','Tage',50,null,null],
+    ['boll_unter','Kurs unter dem unteren Bollinger-Band','Tage',20,'Breite (Std.-Abw.)',2],['boll_ueber','Kurs über dem oberen Bollinger-Band','Tage',20,'Breite (Std.-Abw.)',2],
+    ['boll_mitte_ueber','Kurs über der Bollinger-Mitte','Tage',20,'Breite (Std.-Abw.)',2],
+    ['stoch_unter','Stochastik fällt unter …','Tage',14,'Schwelle',20],['stoch_ueber','Stochastik steigt über …','Tage',14,'Schwelle',80]];
+  var VORLAGEN={p_rsi:[['rsi_unter',14,30],['rsi_ueber',14,70],false],p_macd:[['macd_ueber',12,26],['macd_unter',12,26],false],
+    p_boll:[['boll_unter',20,2],['boll_mitte_ueber',20,2],false],p_stoch:[['stoch_unter',14,20],['stoch_ueber',14,80],false],p_ema:[['ema_ueber',12,26],['ema_unter',12,26],false]};
+  function bedInfo(t){return BEDS.filter(function(b){return b[0]===t;})[0];}
+  ['e','x'].forEach(function(z){var sel=$(z+'-t');BEDS.forEach(function(b){var o=document.createElement('option');o.value=b[0];o.textContent=b[1];sel.appendChild(o);});
+    sel.addEventListener('change',function(){felder(z,true);});});
+  function felder(z,standard){var b=bedInfo($(z+'-t').value);$(z+'-a-l').textContent=b[2];if(standard)$(z+'-a').value=b[3];
+    var hatB=b[4]!==null;$(z+'-b').parentNode.hidden=!hatB;if(hatB){$(z+'-b-l').textContent=b[4];if(standard)$(z+'-b').value=b[5];}}
+  function setzeVorlage(v){var t=VORLAGEN[v];if(!t)return;$('e-t').value=t[0][0];felder('e',false);$('e-a').value=t[0][1];$('e-b').value=t[0][2];
+    $('x-t').value=t[1][0];felder('x',false);$('x-a').value=t[1][1];$('x-b').value=t[1][2];$('f200').checked=t[2];}
+  setzeVorlage('p_rsi');
+  function regelSicht(){var v=$('regel').value,ind=v==='ind'||v.indexOf('p_')===0;document.querySelectorAll('.ma-only').forEach(function(e){e.hidden=v!=='ma';});
+    document.querySelectorAll('.ind-only').forEach(function(e){e.hidden=!ind;});if(VORLAGEN[v])setzeVorlage(v);}
+  function bed(z){var b=bedInfo($(z+'-t').value),a=Math.round(num(z+'-a')),c=b[4]!==null?num(z+'-b'):0;
+    if(!(a>=2&&a<=400))throw new Error('„'+b[2]+'“ muss zwischen 2 und 400 liegen.');
+    if(b[4]!==null&&!isFinite(c))throw new Error('Bitte „'+b[4]+'“ ausfüllen.');
+    if((b[0].indexOf('macd')===0||b[0].indexOf('ema')===0)&&!(c>a))throw new Error('Die langsame/lange EMA muss länger sein als die schnelle/kurze.');
+    if((b[0].indexOf('rsi')===0||b[0].indexOf('stoch')===0)&&!(c>0&&c<100))throw new Error('Die Schwelle muss zwischen 0 und 100 liegen.');
+    if(b[0].indexOf('boll')===0&&!(c>0&&c<=5))throw new Error('Die Bandbreite muss zwischen 0 und 5 liegen.');
+    return {t:b[0],a:a,b:c,txt:kurzText(b[0],a,c)};}
+  function kurzText(t,a,c){return {rsi_unter:'RSI('+a+') unter '+c,rsi_ueber:'RSI('+a+') über '+c,macd_ueber:'MACD('+a+'/'+c+'/9) über Signallinie',macd_unter:'MACD('+a+'/'+c+'/9) unter Signallinie',
+    ema_ueber:'EMA '+a+' über EMA '+c,ema_unter:'EMA '+a+' unter EMA '+c,kurs_ueber_sma:'Kurs über '+a+'-Tage-Schnitt',kurs_unter_sma:'Kurs unter '+a+'-Tage-Schnitt',
+    boll_unter:'Kurs unter unterem Bollinger-Band ('+a+', '+c+')',boll_ueber:'Kurs über oberem Bollinger-Band ('+a+', '+c+')',boll_mitte_ueber:'Kurs über Bollinger-Mitte ('+a+')',
+    stoch_unter:'Stochastik('+a+') unter '+c,stoch_ueber:'Stochastik('+a+') über '+c}[t];}
+  $('regel').addEventListener('change',regelSicht);
+  $('csv').addEventListener('change',function(){var f=this.files&&this.files[0];csvDaten=null;$('csv-info').textContent='';if(!f)return;var fr=new FileReader();fr.onload=function(){try{csvDaten=BT.csvLesen(String(fr.result));$('csv-info').textContent='Erkannt: '+csvDaten.p.length+' Kurse von '+csvDaten.d[0]+' bis '+csvDaten.d[csvDaten.d.length-1]+'.';$('err').textContent='';}catch(e){$('err').textContent=e.message;}};fr.readAsText(f);});
+  function daten(){if(document.querySelector('input[name=quelle]:checked').value==='csv'){if(!csvDaten)throw new Error('Bitte zuerst eine CSV-Datei wählen.');return csvDaten;}
+    var ren=num('z-ren')/100,vol=num('z-vol')/100,j=num('z-jahre'),s=num('z-seed');if(!isFinite(ren)||!isFinite(vol)||vol<=0||!isFinite(j)||j<3||j>60||!isFinite(s))throw new Error('Bitte Rendite, Schwankung (> 0), Jahre (3–60) und Markt-Nr. prüfen.');return BT.zufallsmarkt(ren,vol,j,Math.round(s));}
+  function grenzen(n){var an=num('anteil');if(!isFinite(an)||an<20||an>90)throw new Error('Entwicklungsanteil zwischen 20 und 90 % wählen.');var cut=Math.round(n*an/100);if(n-cut<252)throw new Error('Für den Test bleibt weniger als ein Jahr. Mehr Kurse verwenden oder den Entwicklungsanteil senken.');return cut;}
+  function kostenWert(){var k=num('kosten');if(!isFinite(k)||k<0||k>5)throw new Error('Kosten zwischen 0 und 5 % wählen.');return k/100;}
+  function maWerte(){var k=Math.round(num('ma-k')),l=Math.round(num('ma-l'));if(!(k>=2&&l>k&&l<=400))throw new Error('Der lange Durchschnitt muss länger als der kurze sein (2–400 Tage).');return [k,l];}
+  function urteil(t,sk,regel){
+    if(t.wechsel===0&&t.imMarkt<0.001)return ['v-no','Hat nie gekauft','Im Testzeitraum war die Kaufbedingung kein einziges Mal erfüllt. Schwellen lockern oder den Trendfilter ausschalten.'];
+    if(regel==='wahrsager')return ['v-yes','Gegenprobe bestanden','Wer den nächsten Tag kennt, schlägt fast alle Zufallsstrategien. Der Test erkennt also echtes Können. Im echten Leben kennt niemand den nächsten Tag.'];
+    if(sk>=0.95&&t.cagr>t.haltenCagr)return ['v-yes','Genauer prüfen lohnt sich','Im Test besser als Halten und besser als 95 % der Zufallsstrategien. Das ist ein erster Hinweis, kein Beweis: Wer viele Regeln ausprobiert, findet zufällig auch so etwas. Erst auf anderen Märkten und Zeiträumen wiederholen.'];
+    if(sk>=0.8||t.dd>t.haltenDd+0.1)return ['v-wait','Abwarten',(sk>=0.8?'Etwas besser als Zufall, aber nicht sicher genug.':'Nicht besser als Zufall.')+(t.cagr<t.haltenCagr?' Weniger Rendite als einfaches Halten.':'')+(t.dd>t.haltenDd+0.1?' Dafür deutlich kleinere Einbrüche: eher eine Sicherung als ein Gewinnbringer.':'')];
+    return ['v-no','Ignorieren','Im Test nicht besser als Zufall'+(t.cagr<t.haltenCagr?' und schlechter als einfaches Halten':'')+'. Was in den Entwicklungsjahren gut aussah, hält dem ehrlichen Test nicht stand.'];}
+  function chart(e,t,d,cut){var W=640,H=230,P=30,kr=e.kurve.concat(t.kurve.slice(1).map(function(x){return x*e.kurve[e.kurve.length-1];})),kh=e.haltenKurve.concat(t.haltenKurve.slice(1).map(function(x){return x*e.haltenKurve[e.haltenKurve.length-1];}));
+    var lg=function(x){return Math.log(Math.max(x,1e-6));},all=kr.concat(kh).map(lg),mn=Math.min.apply(null,all),mx=Math.max.apply(null,all);if(mx-mn<1e-9)mx=mn+1;var n=kr.length,X=function(i){return P+(W-P-6)*i/(n-1);},Y=function(v){return H-20-(H-34)*(lg(v)-mn)/(mx-mn);};
+    var path=function(k){var s='',step=Math.max(1,Math.floor(n/700));for(var i=0;i<n;i+=step)s+=(s?'L':'M')+X(i).toFixed(1)+' '+Y(k[i]).toFixed(1);s+='L'+X(n-1).toFixed(1)+' '+Y(k[n-1]).toFixed(1);return s;};
+    var xs=X(e.kurve.length-1).toFixed(1);
+    $('chart').innerHTML='<p class="lbl" style="margin-top:16px">Verlauf (logarithmisch), Start = 1</p><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Depotwert der Regel und von Kaufen und Halten über die Zeit"><line class="split" x1="'+xs+'" x2="'+xs+'" y1="6" y2="'+(H-20)+'"/><text x="'+(+xs+4)+'" y="16">Test →</text><text x="'+P+'" y="16">Entwickeln</text><path class="k-h" d="'+path(kh)+'"/><path class="k-r" d="'+path(kr)+'"/><text x="'+P+'" y="'+(H-4)+'">'+d[0].slice(0,4)+'</text><text x="'+(W-36)+'" y="'+(H-4)+'">'+d[d.length-1].slice(0,4)+'</text></svg><p class="hint"><span class="leg" style="background:var(--amber-dk)"></span>Regel <span class="leg" style="background:var(--grau)"></span>Kaufen und Halten · Endwert Regel '+kr[n-1].toFixed(2)+'×, Halten '+kh[n-1].toFixed(2)+'×</p>';}
+  function signale(g){var box=$('signale');if(!g){box.innerHTML='';return;}var n=g.p.length,a=Math.max(0,n-252),W=640,H=200,PH=110,P=30;
+    var idx=[];for(var i=a;i<n;i++)idx.push(i);var X=function(k){return P+(W-P-6)*k/(idx.length-1);};
+    var ov=(g.ser.overlay||[]).concat(g.ser2&&g.ser2.overlay?g.ser2.overlay:[]),werte=[];idx.forEach(function(i){werte.push(g.p[i]);ov.forEach(function(s){if(s[i]!==null)werte.push(s[i]);});});
+    var mn=Math.min.apply(null,werte),mx=Math.max.apply(null,werte);if(mx-mn<1e-9)mx=mn+1;var Y=function(v){return H-18-(H-28)*(v-mn)/(mx-mn);};
+    var linie=function(s,css){var d='';idx.forEach(function(i,k){if(s[i]===null)return;d+=(d?'L':'M')+X(k).toFixed(1)+' '+Y(s[i]).toFixed(1);});return d?'<path d="'+d+'" style="fill:none;'+css+'"/>':'';};
+    var flaechen='',st=-1;idx.forEach(function(i,k){if(g.pos[i]&&st<0)st=k;if((!g.pos[i]||k===idx.length-1)&&st>=0){flaechen+='<rect x="'+X(st).toFixed(1)+'" y="4" width="'+Math.max(X(k)-X(st),1.5).toFixed(1)+'" height="'+(H-22)+'" style="fill:var(--ok);opacity:.13"/>';st=-1;}});
+    var farben=['stroke:#2563eb;stroke-width:1.4','stroke:#7c3aed;stroke-width:1.4','stroke:#2563eb;stroke-width:1.4'];
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Kurs im letzten Jahr mit investierten Phasen">'+flaechen+ov.map(function(s,j){return linie(s,farben[j%3]+(j===1&&ov.length===3?';stroke-dasharray:4 3':''));}).join('')+linie(g.p,'stroke:var(--ink);stroke-width:1.6')
+      +'<text x="'+P+'" y="'+(H-4)+'">'+g.d[a]+'</text><text x="'+(W-80)+'" y="'+(H-4)+'">'+g.d[n-1]+'</text></svg>';
+    var pan=g.ser.panel||(g.ser2&&g.ser2.panel),psvg='';
+    if(pan){var pw=[];idx.forEach(function(i){pan.linien.forEach(function(s){if(s[i]!==null)pw.push(s[i]);});});pan.stufen.forEach(function(v){pw.push(v);});
+      var pmn=pan.min!==undefined?pan.min:Math.min.apply(null,pw),pmx=pan.max!==undefined?pan.max:Math.max.apply(null,pw);if(pmx-pmn<1e-9)pmx=pmn+1;
+      var PY=function(v){return PH-8-(PH-16)*(v-pmn)/(pmx-pmn);},pl=function(s,css){var d='';idx.forEach(function(i,k){if(s[i]===null)return;d+=(d?'L':'M')+X(k).toFixed(1)+' '+PY(s[i]).toFixed(1);});return d?'<path d="'+d+'" style="fill:none;'+css+'"/>':'';};
+      var stufen=pan.stufen.concat(g.ser2&&g.ser2.panel&&g.ser2!==g.ser?[]:[]);if(g.ser.panel&&g.ser2&&g.ser2.panel)stufen=stufen.concat(g.ser2.panel.stufen);stufen=stufen.concat(g.extra||[]);
+      psvg='<p class="hint" style="margin-top:6px">'+pan.name+'</p><svg viewBox="0 0 '+W+' '+PH+'" role="img" aria-label="'+pan.name+'">'+stufen.map(function(v){return '<line x1="'+P+'" x2="'+(W-6)+'" y1="'+PY(v).toFixed(1)+'" y2="'+PY(v).toFixed(1)+'" style="stroke:var(--muted);stroke-dasharray:3 3"/><text x="2" y="'+(PY(v)+4).toFixed(1)+'">'+v+'</text>';}).join('')
+        +pan.linien.map(function(s,j){return pl(s,j?'stroke:#7c3aed;stroke-width:1.3':'stroke:#2563eb;stroke-width:1.5');}).join('')+'</svg>';}
+    box.innerHTML='<p class="lbl" style="margin-top:18px">Signale im letzten Jahr</p>'+svg+'<p class="hint"><span class="leg" style="background:var(--ok);opacity:.5;height:10px"></span>investiert <span class="leg" style="background:var(--ink)"></span>Kurs'+(ov.length?' <span class="leg" style="background:#2563eb"></span>'+(g.ser.name||g.ser2.name):'')+'</p>'+psvg;}
+  function zeigen(name,label,pos,D,r,cut,kosten,optInfo){var n=D.p.length,e=BT.kennzahlen(pos,r,0,cut,kosten),t=BT.kennzahlen(pos,r,cut,n,kosten),sk=BT.skill(pos,r,cut,n,kosten,200),se=BT.skill(pos,r,0,cut,kosten,200);
+    var u=urteil(t,sk,name);if(name!=='wahrsager'&&sk>=0.8&&document.querySelector('input[name=quelle]:checked').value==='zufall')u[2]+=' <b>Achtung: Das ist ein Zufallsmarkt ohne jedes Muster. Dieser Treffer ist sicher Glück.</b> Genau so entstehen schöne Backtests: neun Regeln probieren, eine sieht gut aus.';$('verdict').innerHTML='<div class="verdict '+u[0]+'"><b class="tag">'+u[1]+'</b><div><b>'+label+'</b><br><span class="hint" style="margin:0">'+u[2]+'</span></div></div>';
+    var z=function(lbl,a,b){return '<tr><td>'+lbl+'</td><td>'+b+'</td><td>'+a+'</td></tr>';};
+    $('tbody').innerHTML=z('Zeitraum',D.d[0].slice(0,4)+'–'+D.d[cut-1].slice(0,4)+' ('+e.jahre.toFixed(1)+' J.)',D.d[cut].slice(0,4)+'–'+D.d[n-1].slice(0,4)+' ('+t.jahre.toFixed(1)+' J.)')
+      +z('Regel pro Jahr','<span class="'+cls(e.cagr)+'">'+pct(e.cagr)+'</span>','<span class="'+cls(t.cagr)+'">'+pct(t.cagr)+'</span>')
+      +z('Kaufen und Halten pro Jahr',pct(e.haltenCagr),pct(t.haltenCagr))
+      +z('Regel schlimmster Einbruch',pct(e.dd,0),pct(t.dd,0))
+      +z('Halten schlimmster Einbruch',pct(e.haltenDd,0),pct(t.haltenDd,0))
+      +z('Sharpe Regel / Halten',e.sharpe.toFixed(2)+' / '+e.haltenSharpe.toFixed(2),t.sharpe.toFixed(2)+' / '+t.haltenSharpe.toFixed(2))
+      +z('Zeit im Markt',Math.round(e.imMarkt*100)+' %',Math.round(t.imMarkt*100)+' %')
+      +z('Wechsel (Käufe + Verkäufe)',e.wechsel,t.wechsel)
+      +z('Skill gegen Zufall',Math.round(se*100)+' %','<b>'+Math.round(sk*100)+' %</b>');
+    $('skilltxt').innerHTML='<b>'+Math.round(sk*100)+' %</b> der Zufallsstrategien geschlagen';$('skillmark').style.left='calc('+(sk*100).toFixed(1)+'% - 2px)';
+    chart(e,t,D.d,cut);$('optbox').innerHTML=optInfo||'';$('ergebnis').hidden=false;}
+  function laufen(opt){$('err').textContent='';var btn=opt?$('opt'):$('go');btn.disabled=true;setTimeout(function(){try{
+      var D=daten(),r=BT.renditen(D.p),cut=grenzen(D.p.length),kosten=kostenWert(),name=$('regel').value,label=$('regel').selectedOptions[0].textContent,pos,info='',sig=null;
+      if(opt){var b=BT.suche(D.p,r,0,cut,kosten);pos=BT.maRegel(D.p,b.k,b.l);name='ma';label='Beste Durchschnitte der Entwicklungsjahre: '+b.k+' / '+b.l+' Tage';$('regel').value='ma';$('ma-k').value=b.k;$('ma-l').value=b.l;regelSicht();
+        var e=BT.kennzahlen(pos,r,0,cut,kosten),t=BT.kennzahlen(pos,r,cut,D.p.length,kosten);
+        info='<div class="opt"><b>Die Optimierungs-Falle:</b> Die Suche hat '+b.versuche+' Kombinationen auf den Entwicklungsjahren ausprobiert und die beste genommen: '+pct(e.cagr)+' pro Jahr (Halten '+pct(e.haltenCagr)+'). Im Test, den sie nie gesehen hat: '+pct(t.cagr)+' (Halten '+pct(t.haltenCagr)+'). '+(t.cagr<e.cagr?'Der Vorsprung schrumpft, weil die Suche vor allem das Rauschen der Vergangenheit gefunden hat.':'Hier hat sie sich gehalten. Probier andere Markt-Nummern: Meist ist das nicht so.')+' So entstehen die meisten „90 %“-Backtests in der Werbung.</div>';}
+      else if(name==='ma'){var m=maWerte();pos=BT.maRegel(D.p,m[0],m[1]);label='Trendfolge '+m[0]+' / '+m[1]+' Tage';}
+      else if(name==='ind'||name.indexOf('p_')===0){var be=bed('e'),bx=bed('x'),f=$('f200').checked;pos=BT.indikatorPos(D.p,be,bx,f);
+        label='Kaufen: '+be.txt+' · Verkaufen: '+bx.txt+(f?' · nur über dem 200-Tage-Schnitt':'');sig={p:D.p,d:D.d,pos:pos,ser:BT.serien(D.p,be),ser2:be.t.split('_')[0]===bx.t.split('_')[0]?null:BT.serien(D.p,bx),extra:be.t.split('_')[0]===bx.t.split('_')[0]&&/^(rsi|stoch)/.test(bx.t)?[bx.b]:[]};name='ind';}
+      else pos=BT.regelPos(name,D.p,D.d,r);
+      zeigen(name,label,pos,D,r,cut,kosten,info);signale(sig);$('ergebnis').scrollIntoView({behavior:'smooth',block:'start'});
+    }catch(e){$('err').textContent=e.message;}btn.disabled=false;},20);}
+  $('go').addEventListener('click',function(){laufen(false);});$('opt').addEventListener('click',function(){laufen(true);});
+  var a=$('pruefstand-kauf');fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[];}).then(function(l){var p=(l||[]).filter(function(x){return x.slug==='strategie-pruefstand';})[0];if(p&&p.buy){a.href=p.buy;a.rel='noopener';a.textContent='Strategie-Prüfstand kaufen — '+p.price;}}).catch(function(){});
+})();
+</script>
+</body>
+</html>
