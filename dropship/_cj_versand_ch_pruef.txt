@@ -2869,3 +2869,5 @@ stilettos-mit-nieten-636200	2607060757141636900	16	11.37	ok	landeseite
 strukturiertes-kleid-mit-reissverschluss-tasch-921088	1863782255345684480	16	8.53	ok	landeseite
 smarter-turspion-mit-hd-kamera-652736	1620631401727012864	16	11.00	ok	landeseite
 sommerrock-mit-elasthan-619500	2607070232101611500	16	8.11	ok	landeseite
+solar-helm-mit-ventilator-334272	1407216552872382464	7	12.09	ok	landeseite
+sportliche-multifunktionsuhr-601700	2602080556201602000	7	6.49	ok	landeseite
