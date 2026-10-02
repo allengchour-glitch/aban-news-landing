@@ -22,6 +22,18 @@
 
 
 
+
+## 2026-10-02 · 🔎 «weiter push überall»: Google-Nachfrage hing an Entwürfen
+GEMESSEN 7 T: direkt 292 · TikTok 182 · Facebook 81 · Google 14 (einziger Kanal mit Käufen). Social postet planmässig, kein Kanal steht still.
+Google pro Woche 84 → 10. Von 185 Produktseiten mit Google-Besuchern (150 T) sind 61 heute Entwürfe, und sie trugen 57 % der Sitzungen
+(Dry Bag 20L 82, Rizinus-Set 55). Der 301 vom Dry Bag auf einen 10L-Dry-Bag brachte 0 Google-Sitzungen: Google listet nur Kaufbares,
+der Eintrag stirbt mit dem Entwurf. Die CJ-Suchliste war leer.
+GETAN: `automation/google_nachfrage_luecke.py` (Kanarienvögel 8/8, täglich im Aufseher) bewertet tote Google-Landeseiten
+(≥ 2 Sitz. oder ≥ 1 Warenkorb). Hausregeln gelten nur am Titel, Lager-Tags zählen nicht. Daneben Marke/eigenes Design/Saison.
+Gemini liefert den generischen CJ-Suchbegriff, der Auftrag kommt VORNE in die Queue. Erstlauf: 8 Aufträge, 8 saison-später.
+FALLE beim Bau: `google_kanal_luecke.grund(titel, tags)` wertet Lager-Tags als Risiko → alles «verboten». Hier `grund(titel, [])`.
+LEHRE: Vor dem Draften eines Produkts mit Google-Besuchern zuerst den Ersatz importieren. → `dropship/GOOGLE-NACHFRAGE-LUECKE-2026-10-02.md`
+
 ## 2026-10-02 · 🇱🇮 Verbesserungsrunde: Google-Ampel 723 → 2'568 — 1'771 Meldungen betrafen nur Liechtenstein
 «Missing shipping info in some countries … [LI]» — der Shop liefert nur CH (LI seit 22.09. gestrichen), die Schweizer Gratis-
 Einträge sind nicht blockiert. `google_feedback_wache.py` zählt Meldungen ohne «CH» jetzt getrennt («nur Ausland»), Kanarienvögel

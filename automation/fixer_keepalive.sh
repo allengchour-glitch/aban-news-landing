@@ -954,6 +954,18 @@ while true; do
         timeout 300 python3 automation/seo_autopilot.py --messen; \
         SCHARF=1 N=15 timeout 2400 python3 automation/seo_autopilot.py --auffrischen" >> /tmp/seo_autopilot.log 2>&1 & )
   fi
+  # GOOGLE-NACHFRAGE-LÜCKE (02.10.2026, Betreiber «weiter push überall»): 57 % der Google-Sitzungen (150 T) landeten auf
+  # Seiten, die heute Entwürfe sind (Dry Bag 82, Rizinus-Set 55) — Google listet nur Kaufbares. Täglich: tote Google-
+  # Landeseiten mit Nachfrage → generischer CJ-Suchauftrag VORNE in cj_search_queue.txt (Hausregeln, Marken, Saison).
+  GN=/tmp/google_nachfrage_luecke.log
+  if [ -f "$REPO/automation/google_nachfrage_luecke.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GN" || still_gestorben "$GN"; then
+      touch "$GN"
+      ( cd "$REPO" && timeout 900 python3 automation/google_nachfrage_luecke.py >> "$GN" 2>&1 )
+      echo "$(date -u +%H:%M) google_nachfrage_luecke: $(tail -1 "$GN")"
+    fi
+  fi
   # TITEL-KAUDERWELSCH (01.10.2026, 12-Tage-Plan Tag 1, Grind wieder an): Neuimporte mit erfundenen Wörtern
   # («Inflierbares» statt «Aufblasbares») — Gemini + ChatGPT müssen dasselbe Wort finden, sonst nur Meldung. Alle 6 h.
   TK=/tmp/titel_kauderwelsch_wache.log
