@@ -31,7 +31,29 @@
    "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b",
    "geraet": "halsband|halsb[äa]nder|collar",
    "wirkung": "stachelhalsband|stachel-halsband|prong collar|w[üu]rgehalsband|w[üu]rge-halsband|metallspitzen|dornen\\w* halsband"
+  },
+  {
+   "n": "antibell-art76-abs6",
+   "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b|bell(en|t|st)\\b|gebell",
+   "geraet": "halsband|halsb[äa]nder|collar|ger[äa]t|device|trainer|training|stopper|stopp|kontroll",
+   "wirkung": "anti-?bell|antibell|bell-?stopp|bell-?kontroll|bell-?schutz|(?:[üu]berm[äa]ss?ige[sn]?|[üu]berm[äa]ßige[sn]?|unerw[üu]nschte[sn]?|st[äa]ndige[sn]?|lautes) bellen|bellen\\s+(?:zu\\s+)?(?:stoppen|unterbinden|unterdr[üu]cken|verhindern|reduzieren|korrigieren|abgew[öo]hnen)|\\banti-?bark|\\bbark(?:ing)?\\s+(?:control|stop|collar|deterrent)|stop\\s+barking|no[- ]bark|止吠",
+   "nicht": ""
+  },
+  {
+   "n": "ultraschall-hund-art76-abs2",
+   "tier": "hund|dog|welpe|vierbeiner|\\bpet\\b|bell(en|t|st)\\b|gebell",
+   "geraet": "trainer|training|erziehung|dressur|halsband|collar|hundeabwehr|hunde-abwehr|abwehrger[äa]t|repeller|bellen|\\bbark",
+   "wirkung": "ultraschall|ultrasonic|ultrasound|hochfrequenzton|hochfrequente[rnms]? (?:ton|signal|schall)",
+   "nicht": "insekt|m[üu]cke|zecke|fl[öo]he|floh|vogel|v[öo]gel|marder|m[äa]use|maus\\b|ratte|nager|reinigungsger|ultraschallreinig"
+  },
+  {
+   "n": "biozid-tier-zulassung",
+   "tier": "hund|dog|katze|cat\\b|cats\\b|welpe|haustier|\\bpet\\b|\\btiere?\\b",
+   "geraet": "halsband|halsb[äa]nder|collar|\\bball\\b|anh[äa]nger|tropfen|spot-?on|pipette|shampoo|spray|puder",
+   "wirkung": "fl[öo]he|floh(?!markt)|zecke|flea|\\bticks?\\b|parasit|insektizid|insektenschutz|m[üu]ckenschutz|bandwurm|w[üu]rmer|wurmkur",
+   "nicht": "zeckenzange|zeckenhaken|zeckenkarte|zeckenpinzette|flohkamm|flohfalle|t[üu]rvorhang|fliegengitter|insektennetz|moskitonetz|ultraschall|ultrasonic"
   }
  ],
- "_bauteil": "Ergänzt 28.08.2026. Der «Automatische Bellstopper mit Sprachsteuerung» (15508416987521) stand ACTIVE in allen sechs Kanälen, obwohl CJ ihn im Original «电子止吠器项圈 / 电动止吠器» nennt (elektronisches Bell-Halsband) und als Lieferumfang «conductive column» + «test piece» führt. Der deutsche Text sagt nur «sanft korrigieren» — KEIN einziges Wort der bisherigen wirkung-Liste kommt darin vor, weil die Wirkmechanik nie benannt wird. Sie verrät sich allein über das BAUTEIL: eine leitfähige Säule ist der Kontaktstift, über den Strom auf die Haut gelangt, ein Teststück die Prüflampe, mit der man die Abgabe sichtbar macht. Vibrations-, Ton- und Ultraschallhalsbänder brauchen weder das eine noch das andere. Fehltreffer-Probe bestanden: «leitfähiger Boden» einer Induktionspfanne und «Leitfähiges Mikrofaser-Wildleder für Touchscreens» treffen nicht — «leitfähig» ist an Säule/Stift/Kontakt/Platte/Elektrode gebunden, und die UND-Kette verlangt ohnehin zusätzlich ein Tier- UND ein Geräte-Wort."
+ "_bauteil": "Ergänzt 28.08.2026. Der «Automatische Bellstopper mit Sprachsteuerung» (15508416987521) stand ACTIVE in allen sechs Kanälen, obwohl CJ ihn im Original «电子止吠器项圈 / 电动止吠器» nennt (elektronisches Bell-Halsband) und als Lieferumfang «conductive column» + «test piece» führt. Der deutsche Text sagt nur «sanft korrigieren» — KEIN einziges Wort der bisherigen wirkung-Liste kommt darin vor, weil die Wirkmechanik nie benannt wird. Sie verrät sich allein über das BAUTEIL: eine leitfähige Säule ist der Kontaktstift, über den Strom auf die Haut gelangt, ein Teststück die Prüflampe, mit der man die Abgabe sichtbar macht. Vibrations-, Ton- und Ultraschallhalsbänder brauchen weder das eine noch das andere. Fehltreffer-Probe bestanden: «leitfähiger Boden» einer Induktionspfanne und «Leitfähiges Mikrofaser-Wildleder für Touchscreens» treffen nicht — «leitfähig» ist an Säule/Stift/Kontakt/Platte/Elektrode gebunden, und die UND-Kette verlangt ohnehin zusätzlich ein Tier- UND ein Geräte-Wort.",
+ "_abs6_biozid": "Ergänzt 02.10.2026 (Semrush-SEO-Lauf fand «Automatisches Anti-Bell Halsband» mit Kontaktstiften im Bild, Text ohne Wirkwort). QUELLE fedlex SR 455.1 TSchV Art. 76 Abs. 2: «Die Verwendung von Geräten, die elektrisieren, für den Hund sehr unangenehme akustische Signale aussenden oder mittels chemischer Stoffe wirken, ist verboten.» Abs. 6: «Das Anwenden von Mitteln zur Verhinderung von Laut- und Schmerzensäusserungen ist verboten.» → Abs. 6 trifft JEDES Anti-Bell-Gerät, egal welche Wirkung (Vibration, Piepton, Ultraschall, Strom, Spray) — der ZWECK genügt, darum braucht Regel «antibell-art76-abs6» kein Wirkwort. Ultraschall-Erziehungs-/Abwehrgeräte für Hunde fallen unter Abs. 2. Biozide (SR 813.12): Floh-/Zecken-/Insektenschutz-Halsbänder, -Bälle, -Tropfen mit Wirkstoff brauchen vor dem Inverkehrbringen in der Schweiz eine Zulassung («Bandwurmschutz» = Tierarzneimittel) → Regel «biozid-tier-zulassung», Tag biozid-ch-zulassung statt tierschutz-tschv76. Neu: Feld «nicht» je Regel (Sperre gilt NUR für diese Regel) — Zeckenzange, Flohkamm, Türvorhang, Ultraschall-Insektenabwehr sind kein Fall."
 }

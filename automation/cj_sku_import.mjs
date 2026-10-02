@@ -220,7 +220,7 @@ for (const item of ITEMS) {
   const tsch = tierschutzGeraet(title, g.html);
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : []),
-      ...(tsch ? ['tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
+      ...(tsch ? [tsch.tag || 'tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
       ...((med || tsch) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`),

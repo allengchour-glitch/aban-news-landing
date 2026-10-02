@@ -36,9 +36,13 @@ const TREFFER = M.treffer.map(x => ({
   tier: new RegExp(x.tier, 'i'),
   geraet: new RegExp(x.geraet, 'i'),
   wirkung: new RegExp(x.wirkung, 'i'),
+  nicht: x.nicht ? new RegExp(x.nicht, 'i') : null,   // 02.10.2026: Sperre gilt NUR für diese Regel
 }));
 
-// Nimmt HTML oder Klartext. null = unbedenklich, sonst {grund, muster, stelle}.
+// Biozide sind kein TSchV-Fall, sondern eine Zulassungsfrage (SR 813.12) → eigener Haupt-Tag.
+export const tagFuer = (n) => (n.startsWith('biozid') ? 'biozid-ch-zulassung' : 'tierschutz-tschv76');
+
+// Nimmt HTML oder Klartext. null = unbedenklich, sonst {grund, tag, muster, stelle}.
 export function tierschutzGeraet(titel, text) {
   const roh = String(titel || '') + ' || ' + String(text || '');
   const klar = roh.replace(/<[^>]+>/g, ' ')
@@ -47,8 +51,9 @@ export function tierschutzGeraet(titel, text) {
   for (const s of SPERRE) if (s.re.test(klar)) return null;
   for (const t of TREFFER) {
     if (!t.tier.test(klar) || !t.geraet.test(klar)) continue;
+    if (t.nicht && t.nicht.test(klar)) continue;
     const m = t.wirkung.exec(klar);
-    if (m) return { grund: t.n, muster: m[0].slice(0, 90),
+    if (m) return { grund: t.n, tag: tagFuer(t.n), muster: m[0].slice(0, 90),
                     stelle: klar.slice(Math.max(0, m.index - 60), m.index + 120) };
   }
   return null;

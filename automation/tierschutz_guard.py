@@ -69,7 +69,14 @@ def gql(query, variables=None, tries=12):   # 21.09.: 4 → 12, Drosseln brauche
 M = json.load(open(os.path.join(HIER, 'tierschutz_geraet.json')))
 SPERRE = [(x['n'], re.compile(x['re'], re.I)) for x in M['sperre']]
 TREFFER = [(x['n'], re.compile(x['tier'], re.I), re.compile(x['geraet'], re.I),
-            re.compile(x['wirkung'], re.I)) for x in M['treffer']]
+            re.compile(x['wirkung'], re.I), re.compile(x['nicht'], re.I) if x.get('nicht') else None)
+           for x in M['treffer']]
+TAGS = ('tierschutz-tschv76', 'biozid-ch-zulassung')
+
+
+def tag_fuer(n):
+    """Biozide sind eine Zulassungsfrage (SR 813.12), kein TSchV-Fall (02.10.2026)."""
+    return 'biozid-ch-zulassung' if n.startswith('biozid') else 'tierschutz-tschv76'
 
 
 def tierschutz_geraet(titel, text):
@@ -80,8 +87,10 @@ def tierschutz_geraet(titel, text):
     for _n, rx in SPERRE:
         if rx.search(klar):
             return None
-    for n, tier, geraet, wirkung in TREFFER:
+    for n, tier, geraet, wirkung, nicht in TREFFER:
         if not tier.search(klar) or not geraet.search(klar):
+            continue
+        if nicht and nicht.search(klar):
             continue
         m = wirkung.search(klar)
         if m:
@@ -106,7 +115,10 @@ def main():
     # Nach der FUNKTION suchen, nicht nach der Produktbezeichnung: die Geräte heissen
     # «Hundebellen», «Ultraschall Anti-Bell Halsband» oder «Drahtloser Hundezaun».
     suchen = ['halsband', 'collar', 'antibell', 'anti-bell', 'bellen', 'hundezaun',
-              'hundetrainer', 'trainingshalsband', 'hundeerziehung', 'zaun hund']
+              'hundetrainer', 'trainingshalsband', 'hundeerziehung', 'zaun hund',
+              # 02.10.2026: Abs. 6 (Bellstopper jeder Art), Ultraschall-Abwehr, Biozide
+              'bellstopper', 'ultraschall', 'hundeabwehr', 'floh', 'zecken', 'flea',
+              'insektenschutz', 'parasit', 'bandwurm']
     gesehen, funde = {}, []
     for wort in suchen:
         q = f'status:active created_at:>={seit} {wort}'
@@ -117,7 +129,7 @@ def main():
                 if p['id'] in gesehen:
                     continue
                 gesehen[p['id']] = 1
-                if TAG in (p['tags'] or []):
+                if any(t in (p['tags'] or []) for t in TAGS):
                     continue
                 hit = tierschutz_geraet(p['title'], p['descriptionHtml'])
                 if hit:
@@ -137,7 +149,7 @@ def main():
         print(f'     …{hit[2][:150]}…')
         if fix:
             gql(M_DRAFT, {'id': p['id']}); time.sleep(0.5)
-            gql(M_TAG, {'id': p['id'], 't': [TAG]}); time.sleep(0.5)
+            gql(M_TAG, {'id': p['id'], 't': [tag_fuer(hit[0]), 'tierschutz-' + hit[0]]}); time.sleep(0.5)
             gql(M_UNPUB, {'id': p['id'], 'p': GOOGLE_PUB}); time.sleep(0.5)
             print('     → DRAFT, Tag gesetzt, aus Google & YouTube entfernt')
     if funde and not fix:
