@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 09:12 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 09:13 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **549**
-- Optionen mit englischen Werten (Kandidaten): 34
+- Produkte gesehen: **649**
+- Optionen mit englischen Werten (Kandidaten): 36
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 128
+- Werte mit unbekanntem Wort (unverändert): 140
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 1
 - übersprungen «kleidungsstueck-im-wert»: 1
@@ -74,5 +74,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`baby1` 7, `baby2` 7, `gift` 6, `chest` 6, `pad` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `belt` 4, `shell` 3, `case` 3, `full` 3, `alluvial` 3, `spring` 3, `spot` 3, `ck` 3, `unpredictable` 3, `ash` 3, `walnut` 3, `stars` 3, `color` 2, `arms` 2, `background` 2, `⟨satzbau:adjektiv-vor-nomen⟩` 2, `imitating` 2, `stone` 2, `antique` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `shoe` 2, `buckle` 2, `ribbon` 1, `hidden` 1, `elevator` 1, `–` 1, `ocean` 1, `tea` 1, `delightful` 1, `pull` 1, `out` 1, `sixbelly` 1, `modelfull` 1, `⟨satzbau:nomen-nomen⟩` 1, `shaver` 1, `6blades` 1, `no` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `july` 1, `basic` 1, `2nd` 1, `generation` 1, `snow` 1, `glacier` 1
+`shell` 8, `baby1` 7, `baby2` 7, `case` 6, `gift` 6, `chest` 6, `pad` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `belt` 4, `full` 3, `alluvial` 3, `spring` 3, `spot` 3, `ck` 3, `unpredictable` 3, `ash` 3, `walnut` 3, `stars` 3, `color` 2, `arms` 2, `background` 2, `⟨satzbau:adjektiv-vor-nomen⟩` 2, `imitating` 2, `stone` 2, `antique` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `shoe` 2, `buckle` 2, `replenishment` 2, `ribbon` 1, `hidden` 1, `elevator` 1, `–` 1, `ocean` 1, `tea` 1, `delightful` 1, `pull` 1, `out` 1, `sixbelly` 1, `modelfull` 1, `⟨satzbau:nomen-nomen⟩` 1, `shaver` 1, `6blades` 1, `no` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `july` 1, `basic` 1, `2nd` 1, `generation` 1, `snow` 1
 
