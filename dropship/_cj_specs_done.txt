@@ -2969,3 +2969,10 @@ vordersitz-abdeckung-058690	gesetzt-1
 vordersitzabdeckung-023425	gesetzt-1
 ruckenstutze-auto-615900	gesetzt-2
 ruecklehnenhaenger-635500	gesetzt-2
+hochsteller-612700	gesetzt-2
+auto-nackenstuetze-625000	gesetzt-3
+sonnenschutz-fur-fahrerseite-403586	gesetzt-1
+universeller-lenkradbezug-aus-faserleder-14-5-160898	gesetzt-1
+heizbare-auto-sitzauflage-12v-mit-2-stufen-reg-516353	gesetzt-3
+armlehnen-schutzbezug-410049	gesetzt-1
+3-in-1-auto-becherhalter-691521	gesetzt-1
