@@ -16,6 +16,17 @@
 
 
 
+
+## 2026-10-02 · 👶 Verbesserungsrunde: «Baby & Kinder» ohne Kategorie (Shopify + Google)
+Ampel 07:31: ~285 aktive ohne Shopify-Kategorie, 119 «unbekannte Typen». Der Grind (wieder an seit 01.10.) legte die Typen
+«Baby & Kinder» (96, alles Kinderkleidung) und «Büro & Home Office» (7) an; `kategorie_wache.py` rät bei unbekannten Typen
+nicht. Bei Google standen dieselben 96 auf «Baby & Toddler» (Oberzweig, Tag `kinder`), 4 sogar mit age_group adult.
+Fix: Sammeltypen + KINDERREGELN auf aa-1-25 (Set vor Einteiler, Bad/Schlaf vor Set), Lehrmodell-Regel vor «skelett»/«hund»;
+141 gesetzt, 96/96 zurückgelesen. `kinder_google_pfad.py` übersetzt die Shopify-Kinderkategorie in Googles Babyzweig
+(Baby-Wort) bzw. Kinder-Oberzweig + age_group (newborn/infant/kids), 162 Metafelder, zweiter Lauf 0 offen; beides stündlich
+im Aufseher. **Lehre:** Wer einen Importer wieder einschaltet, liest zuerst «unbekannte Typen» in der Ampel — jede neue
+Warengruppe braucht Shopify- UND Google-Zuordnung. → `dropship/KATEGORIE-KINDER-2026-10-02.md`
+
 ## 2026-10-02 · 🎬 Grow-Videos: der Nachtrag suchte an der falschen Stelle
 Betreiber «grow videos push». Gemessen: `cj_video_backfill` arbeitete «sichtbare Ware» ab und fand bei 375 von 403 Produkten kein CJ-Video (93 % der CJ-Aufrufe leer). Der eigene Video-Index (`_cj_video_index.json`, isVideo aus product/list) kennt 1'068 CJ-pids MIT Video — 512 aktive Shop-Produkte, keines je im Nachtrag. Und 107 rohe CJ-Videos lagen bereits im Repo (Server-Downloads für Reels). Fix: `video_lokal_anhaengen.mjs` (lokal → Produkt, ohne CJ-Punkte, READY verfolgt) + `video_prio_index.py` (Vorrangliste nur Produkte mit Video) + Aufseher-Block stündlich. Download aus der Cloud geht wieder (28.09. noch 403). **Lehre:** Zwei eigene Werkzeuge wussten zusammen die Antwort (Index: wer hat Video; Server: Videos liegen da) — der Nachtrag fragte keines. Nebenbei: fixer_keepalive.sh nur per os.replace ändern, nie in-place, solange der Aufseher läuft.
 

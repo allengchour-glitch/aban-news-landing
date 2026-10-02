@@ -919,6 +919,18 @@ while true; do
       ( cd "$REPO" && SCHARF=1 STUNDEN=3 timeout 600 python3 automation/google_neuimport.py >> "$GN" 2>&1 )
     fi
   fi
+  # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
+  # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.
+  KW=/tmp/kategorie_neuware.log
+  if [ -f "$REPO/automation/kategorie_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 3300 ]; then
+      touch "$KW"
+      ( cd "$REPO" && SCHARF=1 CAP=1500 timeout 900 python3 automation/kategorie_wache.py >> "$KW" 2>&1 )
+      # danach Kinderkleidung bei Google auf den Babyzweig + age_group (liest die eben gesetzte Shopify-Kategorie)
+      [ -f "$REPO/automation/kinder_google_pfad.py" ] && ( cd "$REPO" && SCHARF=1 timeout 600 python3 automation/kinder_google_pfad.py >> "$KW" 2>&1 )
+    fi
+  fi
   # TITEL-KAUDERWELSCH (01.10.2026, 12-Tage-Plan Tag 1, Grind wieder an): Neuimporte mit erfundenen Wörtern
   # («Inflierbares» statt «Aufblasbares») — Gemini + ChatGPT müssen dasselbe Wort finden, sonst nur Meldung. Alle 6 h.
   TK=/tmp/titel_kauderwelsch_wache.log

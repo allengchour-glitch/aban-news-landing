@@ -92,9 +92,13 @@ TABELLE = {
 # Regel, wird NICHT geraten (Produkt bleibt ohne Kategorie und steht im Bericht).
 SAMMELTYPEN = {"Trend-Gadget", "Trend-Produkt", "Kinder", "Selbst gestalten", "Schweizer Editionen", "Anime", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
                "Aufbewahrung & Ordnung", "Geschenkset", "Haushalt & Wohnen", "Home & Living", "Wohnen & Dekoration",
-               "Sommer-Gadget", "Outdoor & Gadget", "Tech-Gadget", "Haushalt", "Haushalt & Hobby"}
+               "Sommer-Gadget", "Outdoor & Gadget", "Tech-Gadget", "Haushalt", "Haushalt & Hobby",
+               "Baby & Kinder", "Büro & Home Office"}
 import re as _re
 TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ Schuh, Armbanduhr ≠ Armband, Schale ≠ Schal
+    # 02.10.: Lehrmodelle zuerst — «PVC Hundeskelett-Modell» wäre über «skelett» Halloween-Deko geworden, «Hundeohr
+    # Anatomie-Modell» über «hund» Tierbedarf. bi-19-8 = Medical Teaching Equipment (gemessen 02.10.).
+    (r"anatomi\w*|\w*skelett-?modell|verdauungssystem|organmodell", "bi-19-8"),
     (r"\b(rc|ferngesteuert\w*|drohne\w*|quadcopter)\b", "el"),
     (r"baustein|bausatz|baukasten|bauklötz|klemmbaustein|modellbau", "tg-5-7"),
     (r"puzzle", "tg-4"),
@@ -198,6 +202,30 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
 ]
 _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 
+# 02.10.2026 (Verbesserungsrunde): der wieder eingeschaltete Grind legte in 20 h 96 aktive «Baby & Kinder» an — fast alles
+# Kinderkleidung (Strampler, Sets, Badeanzüge) — und 7 «Büro & Home Office» (Anatomiemodelle, Badeball-Set, Mauspad).
+# Beide Typen standen nirgends → 0 Kategorie. «Baby & Kinder» bekommt eigene Regeln auf den Kinderzweig der Taxonomie
+# (aa-1-25 Baby & Children's Clothing, gemessen 02.10. per childrenOf); Reihenfolge = Vorrang: Bad und Schlaf vor Set
+# («Pyjama-Set» bleibt Schlafkleidung), Set vor Einteiler («Strampler-Set» = Outfit), Einteiler vor Oberteil/Hose
+# («Strampler mit Schmetterlingsrock» = Einteiler). Trifft keine Kinderregel, gelten die allgemeinen Titelregeln — aber
+# Erwachsenenkleidung (aa-1…) wird dort auf den Kinderzweig gehoben, nie als Damenmode eingeordnet.
+KINDERTYPEN = {"Baby & Kinder"}
+KINDERREGELN = [
+    (r"bade\w*|\bbad\b|swim\w*|schwimm\w*|sonnenschutz", "aa-1-25-8"),
+    (r"pyjama|schlafanzug|schlafsack|nachtwäsche", "aa-1-25-6"),
+    (r"swaddle|pucktuch|\w*decke\b", "bt-12"),
+    (r"\bset\b|\w+-?set\b|outfit\w*|zweiteiler|dreiteiler|\w*teilig|\bsets\b", "aa-1-25-5"),
+    (r"strampler|strampel\w*|romper|\w*body\b|onesie|overall|jumpsuit|latzhose", "aa-1-25-10"),
+    (r"(top|shirt|oberteil|pullover|sweatshirt|polo|weste)\b.*\b(und|mit|&)\b.*(rock|hose\w*|shorts)\b", "aa-1-25-5"),
+    (r"kleid\w*", "aa-1-25-3"),
+    (r"jacke|mantel|\w*weste\b|cardigan|kardigan", "aa-1-25-4"),
+    (r"\w*pullover|pulli\w*|\w*shirt\b|\btop\b|oberteil|hoodie|polo\b|bluse|longsleeve", "aa-1-25-9"),
+    (r"hose\w*|shorts|\w*rock\b|leggings|jeans", "aa-1-25-1"),
+    (r"socken|strumpf\w*", "aa-1-25-7"),
+    (r"\w*mütze\b|\bhut\b|haarband|stirnband", "aa-2-33-3"),
+]
+_KR = [(_re.compile(m, _re.I), z) for m, z in KINDERREGELN]
+
 
 # Ohne passende Titelregel: bisheriger Typ-Wert, AUSSER bei «Trend-Gadget» — dort gibt es keinen Warenbegriff (None =
 # nicht raten). Gemessen 23.09.: Spass-Elektronik ohne Bau-/Puzzlewort ist tatsaechlich Elektronik-Spielkram,
@@ -205,12 +233,20 @@ _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 SAMMEL_FALLBACK = {t: TABELLE.get(t) for t in SAMMELTYPEN}
 SAMMEL_FALLBACK["Trend-Gadget"] = None
 SAMMEL_FALLBACK["Trend-Produkt"] = None   # 24.09.: 260 aktive, nie als Sammeltyp gefuehrt → Titelregeln griffen gar nicht
-for _t in ("Kinder", "Schweizer Editionen", "Anime", "Selbst gestalten"):   # 24.09./29.09.: Kleinsttypen ohne Tabellenwert — nur per Titel, sonst offen
+for _t in ("Kinder", "Schweizer Editionen", "Anime", "Selbst gestalten", "Baby & Kinder", "Büro & Home Office"):   # 24.09./29.09.: Kleinsttypen ohne Tabellenwert — nur per Titel, sonst offen
     SAMMEL_FALLBACK[_t] = None
 
 
 def ziel_fuer(typ, titel):
     """Taxonomie-ID fuer ein Produkt: Sammeltyp → Titelregel, sonst Fallback; fester Typ → TABELLE."""
+    if typ in KINDERTYPEN:
+        for rx, z in _KR:
+            if rx.search(titel or ""):
+                return z
+        for rx, z in _TR:
+            if rx.search(titel or ""):
+                return "aa-1-25" if z == "aa-1" or z.startswith("aa-1-") else z
+        return None
     if typ in SAMMELTYPEN:
         for rx, z in _TR:
             if rx.search(titel or ""):
@@ -240,7 +276,7 @@ def gql(q, v=None):
 
 def ids_pruefen():
     """Kanarienvogel: jede Tabellen-ID muss als TaxonomyCategory existieren, sonst kein einziger Schreibvorgang."""
-    ids = sorted(set(TABELLE.values()) | {z for _, z in TITELREGELN})
+    ids = sorted(set(TABELLE.values()) | {z for _, z in TITELREGELN} | {z for _, z in KINDERREGELN} | {"aa-1-25"})
     d = gql("query($ids:[ID!]!){ nodes(ids:$ids){ ... on TaxonomyCategory { id fullName } } }", {"ids": [TC + i for i in ids]})
     namen = {}
     for i, n in zip(ids, d["data"]["nodes"]):
