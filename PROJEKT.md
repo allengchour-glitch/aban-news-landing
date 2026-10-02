@@ -1,5 +1,15 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 💱 2026-10-02 — Forex gelernt: `forex-lernen.html` + Positionsgrössen-Rechner
+> - **Belegte Fakten:** ESMA-Hebel (30:1 Hauptpaare, 20:1 andere Paare/Gold/grosse Indizes, 10:1, 5:1, 2:1; Zwangsschliessung bei
+>   50 % Mindestmarge; 74–89 % Privatkonten verlieren), BIS April 2025: 9,6 Bio. USD/Tag, FINMA-Bewilligung + Warnliste (viele „FX/Swiss“-Namen).
+> - **Rechner** (Engine `/*FXENGINE-START*/`): Pip-Wert, Lots, Nominal, Margin, effektiver Hebel, Pips bis Zwangsschliessung, Warnungen;
+>   Kontowährung CHF/EUR/USD mit Umrechnungskurs (Beispielwerte, Nutzer trägt aktuelle ein). 7 Lehrbuch-Proben grün.
+> - **Gemessen (15 Labor-Regeln, 7 Paare, Yahoo bis 02.10.2026, 0,02 % Kosten, ohne Hebel/Swap; Kurse NUR lokal):** Trendregeln
+>   (MACD/EMA/Ausbruch/Momentum) unter Zufall, Trend 50/200 = Zufall bzw. ab 2016 28 %. Gegenbewegung (Bollinger) ab 2016 Ø-Skill 69 %
+>   (ohne CHF 72 %), aber nur −0,8…+1,1 %/J. **Buy the Dip war SNB-Mindestkurs-Effekt** (74 % → ab 2016 45 %). 4 Fehlticks 2008 entfernt.
+> - Eingebunden: online-tools, Sitemap, trading-lernen, backtest-labor (FAQ Forex-CSV), ki-trading-bot (Rück-Link).
+
 ## 📐 2026-10-02 — Backtest-Labor: Goldener Schnitt (Fibonacci) + mehr Kennzahlen
 > - Neue Bedingungen `fib_unter`/`fib_ueber` (Hoch/Tief der letzten N Tage ohne heute, Niveau = Hoch − (Hoch−Tief)×r), Vorlage
 >   „Goldener Schnitt 61,8 %" (Verkauf über 23,6 %, mit 200-Tage-Filter), Overlay Hoch/Niveau/Tief in der Signal-Grafik.

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forex lernen — ehrlich, mit Rechner und echten Zahlen · aban news</title>
+<meta name="description" content="Forex lernen ohne Versprechen: Pip, Lot, Hebel, Margin, Spread und Swap einfach erklärt, Positionsgrössen-Rechner mit Pip-Wert und Margin, die Hebel-Regeln der ESMA und 15 Trading-Regeln auf 7 Währungspaaren getestet. Keine Anlageberatung.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/forex-lernen.html">
+<meta property="og:title" content="Forex lernen — ehrlich, mit Rechner und echten Zahlen">
+<meta property="og:description" content="Pip, Lot, Hebel und Margin erklärt, Positionsgrössen-Rechner und 15 Regeln auf 7 Währungspaaren getestet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://abannews.com/forex-lernen.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Forex-Positionsgrössen-Rechner","url":"https://abannews.com/forex-lernen.html","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},"description":"Berechnet aus Kontogrösse, Risiko und Stop die Positionsgrösse in Lots, den Pip-Wert, Nominalwert, Margin, effektiven Hebel und den Abstand bis zur Zwangsschliessung.","publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist ein Pip und wie viel ist er wert?","acceptedAnswer":{"@type":"Answer","text":"Ein Pip ist die vierte Nachkommastelle eines Wechselkurses (bei Yen-Paaren die zweite). Bei EUR/USD ist ein Pip bei einem Standard-Lot von 100'000 Einheiten 10 US-Dollar wert. In Franken oder Euro hängt der Wert vom Umrechnungskurs ab."}},
+{"@type":"Question","name":"Wie viel Hebel ist bei Forex erlaubt?","acceptedAnswer":{"@type":"Answer","text":"In der EU begrenzt die ESMA den Hebel für Privatkunden auf 30:1 bei den wichtigsten Währungspaaren und 20:1 bei anderen Paaren. Fällt das Konto unter 50 % der Mindestmarge, muss der Anbieter Positionen schliessen. In der Schweiz braucht ein Anbieter eine Bewilligung der FINMA."}},
+{"@type":"Question","name":"Welche Forex-Strategie funktioniert?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test auf sieben Währungspaaren seit 2003 lagen Trendregeln wie MACD und gleitende Durchschnitte auf oder unter Zufallsniveau. Kurzfristige Gegenbewegungs-Regeln wie Bollinger-Bänder waren etwas besser als Zufall, brachten ohne Hebel aber nur zwischen etwa minus 1 und plus 1 Prozent pro Jahr, vor Swap-Kosten."}},
+{"@type":"Question","name":"Wie viele Privatanleger verlieren mit Forex und CFDs Geld?","acceptedAnswer":{"@type":"Answer","text":"Laut der EU-Wertpapieraufsicht ESMA verlieren typischerweise 74 bis 89 Prozent der Privatkonten mit CFDs Geld."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#15803d;--bad:#b91c1c;--field:#fffdf9;--grau:#9ca3af}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--ok:#34d399;--bad:#f87171;--field:#1f1b15;--grau:#7c7466}}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{border-bottom:1px solid var(--line);background:var(--bg)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem;font-family:inherit}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-dk)}
+.btn:disabled{opacity:.55;cursor:wait}
+.hero{padding:34px 0 6px}
+.hero h1{font-size:clamp(25px,4.4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:640px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+.panel h2{font-size:1.05rem;margin-bottom:10px}
+label,.lbl{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:4px}
+input[type=number],select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+input[type=file]{font:inherit;font-size:.9rem;color:var(--ink2);max-width:100%}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.seg label{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:.92rem;font-weight:600;cursor:pointer;margin:0;background:var(--field)}
+.seg input{accent-color:var(--amber-dk)}
+.hint{font-size:.82rem;color:var(--muted);margin-top:6px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.err{color:var(--bad);font-weight:600;font-size:.9rem;margin-top:8px}
+.verdict{display:flex;gap:12px;align-items:flex-start;border-radius:12px;padding:14px 16px;margin-bottom:14px;border:1px solid var(--line)}
+.verdict b.tag{display:inline-block;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .65rem;border-radius:999px;white-space:nowrap}
+.v-yes b.tag{background:#dcfce7;color:#166534}.v-wait b.tag{background:#fef3c7;color:#92400e}.v-no b.tag{background:#fee2e2;color:#991b1b}
+.tab{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.78rem;color:var(--muted);font-weight:700}
+.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.skillbar{position:relative;height:14px;border-radius:7px;background:linear-gradient(90deg,#fee2e2,#fef3c7 50%,#dcfce7);margin:6px 0 2px}
+.skillbar i{position:absolute;top:-4px;width:4px;height:22px;background:var(--ink);border-radius:2px}
+.skillbar s{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--muted);text-decoration:none}
+.chart svg{width:100%;height:auto;display:block}
+.chart .k-r{fill:none;stroke:var(--amber-dk);stroke-width:2}
+.chart .k-h{fill:none;stroke:var(--grau);stroke-width:2;stroke-dasharray:5 4}
+.chart .split{stroke:var(--muted);stroke-dasharray:3 3}
+.chart text{fill:var(--muted);font-size:11px}
+.leg{display:inline-block;width:18px;height:3px;vertical-align:middle;margin:0 4px 0 10px}
+.opt{border-left:4px solid var(--amber-dk);padding:10px 14px;background:var(--cream);border-radius:0 10px 10px 0;margin-top:14px;font-size:.93rem}
+.kasten{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:16px 18px;background:var(--card);margin:20px 0}
+.kasten ul{margin:8px 0 8px 18px}
+details{border-bottom:1px solid var(--line);padding:10px 0}
+summary{cursor:pointer;font-weight:700}
+details p{margin-top:6px;color:var(--ink2)}
+h2.sec{font-size:1.2rem;margin:26px 0 8px}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<a class="skip" href="#rechner">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="/trading-lernen.html" style="font-size:.9rem">Trading lernen</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:820px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a> · <a href="/backtest-labor.html" style="color:#b45309;font-weight:600;text-decoration:none">Backtest-Labor</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1>Forex lernen: ehrlich, mit Rechner und echten Zahlen</h1>
+    <p>Devisenhandel ist der grösste Markt der Welt und für Privatleute einer der härtesten. Hier stehen die Begriffe, die du wirklich brauchst, ein Rechner, der dir vor jedem Trade die richtige Positionsgrösse zeigt, und was herauskam, als wir 15 bekannte Regeln auf sieben Währungspaaren getestet haben. Keine Anlageberatung, keine Versprechen.</p>
+  </section>
+  <p data-aban-was style="max-width:820px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Das Wichtigste zuerst:</strong> Laut der EU-Wertpapieraufsicht ESMA verlieren typischerweise <b>74 bis 89 % der Privatkonten</b> mit CFDs Geld. Der Hebel macht aus kleinen Kursbewegungen grosse Gewinne <i>und</i> Verluste. Wer Forex lernt, lernt zuerst Risiko begrenzen. Der Rechner unten rechnet nur, er wird nicht hochgeladen.</p>
+
+  <h2 class="sec">Die Begriffe, die du wirklich brauchst</h2>
+  <div class="tab"><table>
+    <tbody>
+      <tr><td><b>Währungspaar</b></td><td style="text-align:left">EUR/USD = 1,10 heisst: 1 Euro kostet 1,10 US-Dollar. Vorne die Basiswährung, hinten die Kurswährung. Kaufen = auf steigenden Euro setzen.</td></tr>
+      <tr><td><b>Pip</b></td><td style="text-align:left">Die vierte Nachkommastelle (0,0001), bei Yen-Paaren die zweite (0,01). Von 1,1000 auf 1,1050 sind 50 Pips.</td></tr>
+      <tr><td><b>Lot</b></td><td style="text-align:left">Standard-Lot = 100'000 Einheiten der Basiswährung, Mini = 10'000, Mikro = 1'000. Bei EUR/USD ist 1 Pip pro Standard-Lot 10 US-Dollar wert.</td></tr>
+      <tr><td><b>Hebel &amp; Margin</b></td><td style="text-align:left">Bei 30:1 hinterlegst du für 30'000 Franken Position 1'000 Franken Sicherheit (Margin). 1 % Kursbewegung = 30 % deiner Margin.</td></tr>
+      <tr><td><b>Spread</b></td><td style="text-align:left">Der Unterschied zwischen Kauf- und Verkaufskurs. Er ist bei jedem Trade sofort ein Verlust, den der Kurs erst wieder aufholen muss.</td></tr>
+      <tr><td><b>Swap</b></td><td style="text-align:left">Zins für Positionen über Nacht, je nach Zinsunterschied der beiden Währungen eine Gutschrift oder Belastung. Bei langen Haltedauern oft der grösste Kostenpunkt.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 class="sec">Die Regeln: so viel Hebel ist erlaubt</h2>
+  <p>Die ESMA begrenzt für Privatkunden in der EU den Hebel beim Eröffnen einer Position:</p>
+  <ul style="margin:6px 0 10px 20px">
+    <li><b>30:1</b> für die wichtigsten Währungspaare</li>
+    <li><b>20:1</b> für andere Währungspaare, Gold und grosse Aktienindizes</li>
+    <li>10:1 für andere Rohstoffe, 5:1 für Einzelaktien, 2:1 für Kryptowährungen</li>
+  </ul>
+  <p>Dazu kommen ein Schutz vor negativem Kontostand und eine <b>Zwangsschliessung</b>, sobald das Konto unter 50 % der Mindestmarge fällt (<a href="https://www.esma.europa.eu/press-news/esma-news/esma-adopts-final-product-intervention-measures-cfds-and-binary-options" target="_blank" rel="noopener">ESMA</a>). In der Schweiz braucht ein Anbieter eine Bewilligung der FINMA. Auf der <a href="https://www.finma.ch/de/finma-public/warnungen/warnliste/" target="_blank" rel="noopener">Warnliste der FINMA</a> stehen auffällig viele Namen mit „FX“ oder „Swiss“ darin, etwa „Swiss Bank FX“, „Fx Zurich“ oder „SwissFutureFX“. Ein Schweizer Name heisst nicht Schweizer Bewilligung.</p>
+  <p class="hint">Zur Grösse: Im April 2025 wurden am Devisenmarkt im Schnitt 9,6 Billionen US-Dollar pro Tag gehandelt (<a href="https://www.bis.org/publications/202509-commentary-otc-derivatives" target="_blank" rel="noopener">BIS Triennial Survey</a>). Der grösste Teil davon sind Banken und Finanzinstitute, nicht Privatleute.</p>
+
+  <section class="panel" id="rechner" aria-labelledby="h-r">
+    <h2 id="h-r">Positionsgrössen-Rechner</h2>
+    <p class="hint" style="margin:0 0 10px">Erst das Risiko festlegen, dann die Grösse ausrechnen. Profis riskieren pro Trade meist 0,5 bis 2 % des Kontos.</p>
+    <div class="cols">
+      <div><label for="konto">Kontogrösse</label><input id="konto" type="number" value="10000" min="1"></div>
+      <div><label for="kw">Kontowährung</label><select id="kw"><option>CHF</option><option>EUR</option><option>USD</option></select></div>
+      <div><label for="risiko">Risiko pro Trade (%)</label><input id="risiko" type="number" value="1" step="0.25" min="0.01"></div>
+      <div><label for="stop">Stop-Loss (Pips)</label><input id="stop" type="number" value="30" min="0.1" step="0.5"></div>
+      <div><label for="paar">Währungspaar</label><select id="paar">
+        <option value="EUR/USD">EUR/USD</option><option value="GBP/USD">GBP/USD</option><option value="AUD/USD">AUD/USD</option><option value="USD/JPY">USD/JPY</option>
+        <option value="USD/CHF">USD/CHF</option><option value="EUR/CHF">EUR/CHF</option><option value="GBP/CHF">GBP/CHF</option><option value="EUR/GBP">EUR/GBP</option><option value="EUR/JPY">EUR/JPY</option></select></div>
+      <div><label for="kurs">Aktueller Kurs des Paars</label><input id="kurs" type="number" value="1.10" step="0.0001" min="0"></div>
+      <div><label for="q2k" id="q2k-l">1 USD in CHF</label><input id="q2k" type="number" value="0.80" step="0.0001" min="0"></div>
+      <div><label for="hebel">Hebel (max. bei deinem Anbieter)</label><select id="hebel"><option value="30">30:1 (ESMA-Grenze Hauptpaare)</option><option value="20">20:1</option><option value="10">10:1</option><option value="5">5:1</option><option value="1">1:1 (ohne Hebel)</option></select></div>
+    </div>
+    <p class="hint" id="q2k-hint">Kurse sind Beispielwerte. Trag die aktuellen Kurse deines Anbieters ein.</p>
+    <p class="err" id="err" role="alert"></p>
+    <div class="tab" style="margin-top:10px"><table><tbody id="out"></tbody></table></div>
+    <div id="warn"></div>
+  </section>
+
+  <h2 class="sec" id="test">Wir haben 15 Regeln auf 7 Währungspaaren getestet</h2>
+  <p>Mit derselben Rechenlogik wie im <a href="/backtest-labor.html">Backtest-Labor</a>: Signal am Schlusskurs, gehandelt erst am Folgetag, 0,02 % Kosten pro Wechsel (enge Forex-Spreads), ohne Hebel und ohne Swap. Paare: EUR/USD, GBP/USD, USD/JPY, USD/CHF, AUD/USD, EUR/CHF, GBP/CHF, Tageskurse von Yahoo Finance seit 2000 bzw. 2003 bis 02.10.2026. Vier offensichtliche Datenfehler von 2008 (Sprünge über 8 %, die am Folgetag zurückgingen) haben wir entfernt. Echte Schocks wie der SNB-Entscheid vom 15.01.2015 (EUR/CHF −17 %) bleiben drin.</p>
+  <div class="tab"><table>
+    <thead><tr><th>Regel</th><th>Skill ganze Zeit</th><th>Skill ab 2016</th><th>ab 2016 ohne CHF-Paare</th><th>Paare mit Gewinn ab 2016</th><th>Rendite pro Jahr ab 2016</th></tr></thead>
+    <tbody><tr><td>Swing (nach 3 Minus-Tagen kaufen)</td><td>75&nbsp;%</td><td><b>64&nbsp;%</b></td><td>64&nbsp;%</td><td>2/7</td><td>−1.5 bis +0.9&nbsp;%</td></tr><tr><td>Bollinger 20/2 (unteres Band kaufen)</td><td>71&nbsp;%</td><td><b>69&nbsp;%</b></td><td>72&nbsp;%</td><td>5/7</td><td>−0.8 bis +1.1&nbsp;%</td></tr><tr><td>Stochastik 14 (unter 20 kaufen)</td><td>74&nbsp;%</td><td><b>64&nbsp;%</b></td><td>57&nbsp;%</td><td>1/7</td><td>−1.3 bis +0.7&nbsp;%</td></tr><tr><td>Buy the Dip (−5 % in 5 Tagen)</td><td>74&nbsp;%</td><td><b>45&nbsp;%</b></td><td>37&nbsp;%</td><td>3/7</td><td>−0.1 bis +0.8&nbsp;%</td></tr><tr><td>Trendfolge 50/200</td><td>50&nbsp;%</td><td><b>28&nbsp;%</b></td><td>28&nbsp;%</td><td>1/7</td><td>−2.8 bis +0.4&nbsp;%</td></tr><tr><td>MACD 12/26/9</td><td>29&nbsp;%</td><td><b>38&nbsp;%</b></td><td>35&nbsp;%</td><td>1/7</td><td>−1.8 bis +0.2&nbsp;%</td></tr></tbody>
+  </table></div>
+  <p class="hint">Skill = Anteil von 200 Zufallsstrategien mit gleicher Zeit im Markt und gleich vielen Wechseln, die geschlagen werden; 50 % = Zufall. „Ab 2016“ ist der Teil nach dem Ende des SNB-Mindestkurses.</p>
+  <div class="kasten" style="border-left-color:var(--amber-dk)">
+    <p><b>Was wir dabei gelernt haben:</b></p>
+    <ul>
+      <li><b>Trendregeln bringen bei Forex keinen Vorsprung.</b> MACD, EMA, Ausbruch und Momentum liegen im Schnitt unter Zufallsniveau, die klassische Trendfolge 50/200 über die ganze Zeit genau auf Zufall und ab 2016 deutlich darunter. „The trend is your friend“ trägt hier nicht.</li>
+      <li><b>Kurzfristige Gegenbewegungen sind etwas besser als Zufall.</b> Bollinger-Bänder halten das auch auf den Jahren ab 2016 und ohne Franken-Paare. Das Ergebnis ist aber winzig: ohne Hebel zwischen etwa −1 und +1 % pro Jahr je nach Paar, und davon gehen noch Swap-Kosten ab.</li>
+      <li><b>Ein Teil des „Erfolgs“ war ein Sonderfall.</b> Buy the Dip sah über die ganze Zeit stark aus, vor allem bei den Franken-Paaren. Zwischen 2011 und 2015 verteidigte die SNB einen Mindestkurs von 1,20 je Euro, Rücksetzer federten künstlich zurück. Ab 2016 fällt die Regel auf Zufallsniveau.</li>
+      <li><b>Hebel ändert daran nichts.</b> Er vervielfacht Gewinn, Verlust und Kosten gleich. Eine Regel ohne echten Vorsprung wird mit Hebel nur schneller teuer.</li>
+      <li><b>Währungen halten bringt im Kurs fast nichts:</b> EUR/USD -0.3&nbsp;% · GBP/USD -1.1&nbsp;% · USD/JPY +1.6&nbsp;% · USD/CHF -2.1&nbsp;% · AUD/USD -0.5&nbsp;% · EUR/CHF -1.8&nbsp;% · GBP/CHF -2.9&nbsp;% pro Jahr. Langfristig zählt der Zinsunterschied (Swap), der in Kursdaten nicht enthalten ist.</li>
+    </ul>
+  </div>
+
+  <div class="kasten" id="pruefstand">
+    <p><b>Deine eigene Forex-Regel testen?</b> Im <a href="/backtest-labor.html">Backtest-Labor</a> lädst du die Tageskurse eines Paars als CSV (z. B. von Yahoo Finance, Symbol <code>EURUSD=X</code>) und testest RSI, MACD, Bollinger, Stochastik, EMA und Fibonacci, gratis im Browser. Für eigene Regeln in Python, ganze Testreihen über viele Paare und Stundenkerzen gibt es den Strategie-Prüfstand.</p>
+    <a class="btn" id="pruefstand-kauf" href="/shop.html" style="margin-top:8px">Strategie-Prüfstand — CHF 19</a>
+    <p class="hint">Sofort-Download nach der Zahlung (Karte, über Stripe). Keine Anlageberatung, kein Signaldienst. <a href="/agb.html">AGB &amp; Widerruf</a></p>
+  </div>
+  <p>Dir wurde ein Forex-Roboter oder Signaldienst angeboten? Erst prüfen: <a href="/ki-trading-bot.html">KI-Trading-Bots ehrlich geprüft</a>.</p>
+
+  <h2 class="sec">Häufige Fragen</h2>
+  <details><summary>Was ist ein Pip und wie viel ist er wert?</summary><p>Die vierte Nachkommastelle eines Kurses, bei Yen-Paaren die zweite. Bei EUR/USD ist ein Pip pro Standard-Lot 10 US-Dollar wert. In Franken oder Euro rechnet der Rechner oben den Wert mit deinem Umrechnungskurs um.</p></details>
+  <details><summary>Wie viel Hebel ist erlaubt?</summary><p>In der EU 30:1 bei den Hauptpaaren und 20:1 bei anderen Paaren für Privatkunden (ESMA). Fällt das Konto unter 50 % der Mindestmarge, schliesst der Anbieter Positionen. In der Schweiz braucht der Anbieter eine FINMA-Bewilligung.</p></details>
+  <details><summary>Welche Forex-Strategie funktioniert?</summary><p>In unserem Test lagen Trendregeln auf oder unter Zufall, kurzfristige Gegenbewegungs-Regeln wie Bollinger-Bänder etwas darüber, brachten aber ohne Hebel nur etwa −1 bis +1 % pro Jahr vor Swap. Teste jede Idee auf ungesehenen Jahren, bevor Geld daran hängt.</p></details>
+  <details><summary>Wie viele verlieren mit Forex und CFDs Geld?</summary><p>Laut ESMA typischerweise 74 bis 89 % der Privatkonten. Viele Anbieter müssen ihre eigene Quote auf der Website angeben, schau sie dir vor der Kontoeröffnung an.</p></details>
+
+<aside data-aban-news-cta data-cta-kontext="forex-lernen" aria-label="Newsletter-Hinweis" style="max-width:760px;margin:26px auto 4px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Nüchtern statt Hebel: KI-News mit Urteil.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">Werktäglich 3 KI-Updates, jedes mit Urteil: lohnt sich, abwarten oder ignorieren. Dazu 1 selbst getestetes Tool. Rund 5 Minuten, ohne Hype.<br><span style="font-size:.82rem;color:#6b7280">Gratis · 1-Klick-Abmeldung · kein Tracking-Pixel.</span></p>
+  <a href="https://abannews.beehiiv.com/subscribe?utm_source=abannews&amp;utm_medium=tool&amp;utm_campaign=forex-lernen" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:8px;font-size:.95rem">Urteile holen →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Keine Anlageberatung. Vergangene Kurse sagen die Zukunft nicht voraus. ·
+  <a href="/trading-lernen.html">Trading lernen</a> · <a href="/backtest-labor.html">Backtest-Labor</a> · <a href="/online-tools.html">Alle Tools</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+/*FXENGINE-START*/
+var FX=(function(){
+  // Positionsgrösse aus Risiko. q2k = Wert von 1 Einheit Quotewährung in Kontowährung (gleich = 1).
+  function rechne(o){
+    var pip=o.jpy?0.01:0.0001, risikoBetrag=o.konto*o.risikoPct/100;
+    var pipWertEinheit=pip*o.q2k;                       // Kontowährung pro Pip und Einheit
+    var einheiten=risikoBetrag/(o.stopPips*pipWertEinheit);
+    var nominal=einheiten*o.kurs*o.q2k;                   // Kontowährung
+    var margin=nominal/o.hebel, effHebel=nominal/o.konto;
+    // Zwangsschliessung (ESMA): Konto fällt unter 50 % der Mindestmarge
+    var verlustBisClose=Math.max(o.konto-0.5*margin,0), pipsBisClose=verlustBisClose/(einheiten*pipWertEinheit);
+    return {pip:pip,risikoBetrag:risikoBetrag,einheiten:einheiten,lots:einheiten/100000,pipWertLot:100000*pipWertEinheit,pipWertPosition:einheiten*pipWertEinheit,
+      nominal:nominal,margin:margin,effHebel:effHebel,pipsBisClose:pipsBisClose,marginZuGross:margin>o.konto};
+  }
+  return {rechne:rechne};
+})();
+if(typeof module!=='undefined')module.exports=FX;
+/*FXENGINE-END*/
+
+(function(){
+  if(typeof document==='undefined')return;var $=function(id){return document.getElementById(id);};
+  // Beispielkurse (nur Vorbelegung, Nutzer trägt aktuelle ein)
+  var BSP={'EUR/USD':1.10,'GBP/USD':1.30,'AUD/USD':0.66,'USD/JPY':150,'USD/CHF':0.80,'EUR/CHF':0.93,'GBP/CHF':1.06,'EUR/GBP':0.85,'EUR/JPY':165};
+  var IN_CHF={CHF:1,USD:0.80,EUR:0.93,GBP:1.06,JPY:0.0053};
+  function quote(){return $('paar').value.split('/')[1];}
+  function base(){return $('paar').value.split('/')[0];}
+  function q2kVorschlag(){var q=quote(),k=$('kw').value;if(q===k)return 1;if(base()===k)return 1/parseFloat($('kurs').value||BSP[$('paar').value]);return IN_CHF[q]/IN_CHF[k];}
+  function q2kFeld(neu){var q=quote(),k=$('kw').value,gleich=q===k;$('q2k').parentNode.hidden=gleich;$('q2k-l').textContent='1 '+q+' in '+k;
+    if(neu){var v=q2kVorschlag();$('q2k').value=+v.toPrecision(6);}}
+  function nf(x,d){return x.toLocaleString('de-CH',{minimumFractionDigits:d,maximumFractionDigits:d});}
+  function num(id){return parseFloat(String($(id).value).replace(',','.'));}
+  function calc(){$('err').textContent='';var k=$('kw').value,o={konto:num('konto'),risikoPct:num('risiko'),stopPips:num('stop'),kurs:num('kurs'),q2k:quote()===k?1:num('q2k'),jpy:quote()==='JPY',hebel:+$('hebel').value};
+    if(!(o.konto>0&&o.risikoPct>0&&o.risikoPct<=100&&o.stopPips>0&&o.kurs>0&&o.q2k>0)){$('err').textContent='Bitte alle Felder mit Werten über 0 füllen (Risiko höchstens 100 %).';$('out').innerHTML='';$('warn').innerHTML='';return;}
+    var r=FX.rechne(o),z=function(a,b){return '<tr><td>'+a+'</td><td>'+b+'</td></tr>';};
+    $('out').innerHTML=z('Risiko pro Trade','<b>'+nf(r.risikoBetrag,2)+' '+k+'</b>')
+      +z('Positionsgrösse','<b>'+nf(r.lots,2)+' Lots</b> ('+nf(Math.round(r.einheiten),0)+' '+base()+')')
+      +z('Pip-Wert pro Standard-Lot',nf(r.pipWertLot,2)+' '+k)+z('Pip-Wert deiner Position',nf(r.pipWertPosition,2)+' '+k)
+      +z('Nominalwert der Position',nf(r.nominal,0)+' '+k)+z('Benötigte Margin bei '+o.hebel+':1',nf(r.margin,0)+' '+k)
+      +z('Effektiver Hebel (Position ÷ Konto)',nf(r.effHebel,1)+' : 1')
+      +z('Abstand bis Zwangsschliessung (50 % Margin)',r.marginZuGross?'–':nf(r.pipsBisClose,0)+' Pips');
+    var w=[];if(r.marginZuGross)w.push('Die Margin ist grösser als dein Konto: Diese Position kann dein Anbieter bei diesem Hebel gar nicht eröffnen. Stop weiter weg oder Risiko kleiner wählen.');
+    else if(r.effHebel>o.hebel)w.push('Der effektive Hebel liegt über dem erlaubten Hebel. Der Anbieter würde die Position ablehnen.');
+    if(o.risikoPct>2)w.push('Mehr als 2 % Risiko pro Trade: Fünf Verlust-Trades in Folge, was oft vorkommt, kosten dann rund '+nf(100-100*Math.pow(1-o.risikoPct/100,5),0)+' % des Kontos.');
+    if(o.stopPips<5)w.push('Ein Stop unter 5 Pips liegt oft im Bereich des Spreads und wird schon durch normales Rauschen ausgelöst.');
+    $('warn').innerHTML=w.map(function(t){return '<p class="opt" style="margin-top:10px">⚠️ '+t+'</p>';}).join('');}
+  $('paar').addEventListener('change',function(){$('kurs').value=BSP[this.value];$('kurs').step=quote()==='JPY'?'0.01':'0.0001';q2kFeld(true);calc();});
+  $('kw').addEventListener('change',function(){q2kFeld(true);calc();});
+  ['konto','risiko','stop','kurs','q2k','hebel'].forEach(function(id){$(id).addEventListener('input',calc);$(id).addEventListener('change',calc);});
+  q2kFeld(true);calc();
+  var a=$('pruefstand-kauf');fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[];}).then(function(l){var p=(l||[]).filter(function(x){return x.slug==='strategie-pruefstand';})[0];if(p&&p.buy){a.href=p.buy;a.rel='noopener';a.textContent='Strategie-Prüfstand kaufen — '+p.price;}}).catch(function(){});
+})();
+</script>
+</body>
+</html>
