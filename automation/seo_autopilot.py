@@ -182,19 +182,27 @@ def themen(bestehend):
     # 02.10.2026: Reihenfolge nach echtem Schweizer Suchvolumen (Semrush-Ernte, suchvolumen.py) — vorher Menü-Reihenfolge.
     # Kollektionen ohne Volumen-Daten kommen danach in Menü-Reihenfolge (sort ist stabil).
     import suchvolumen
-    for handle, titel in sorted(menue_kollektionen(), key=lambda k: -suchvolumen.fuer_kollektion(k[1])):
+    # 02.10.2026 (Semrush-Ernte 2): Ratgeber-Phrasen mit gemessenem Volumen je Kollektion (ratgeber_themen_*.tsv) kommen
+    # VOR die Google-Vorschläge und zählen als Ratgeber-Absicht; Kollektionen mit solchen Phrasen rücken nach Volumen vor.
+    def rang(k):
+        return -max([suchvolumen.fuer_kollektion(k[1])] + [v for _, v in suchvolumen.ratgeber_phrasen(k[0])])
+    for handle, titel in sorted(menue_kollektionen(), key=rang):
         if handle in kuerzlich:
             continue
         stamm = re.sub(r"\s*&.*$", "", titel).strip()
+        semvol = dict(suchvolumen.ratgeber_phrasen(handle))
         kandidaten = []
-        for s in vorschlaege(stamm) + vorschlaege(stamm + " kaufen"):
-            if KONKURRENZ.search(s) or ORT.search(s) or not GUT.search(s) or len(s.split()) < 2:
+        for s in list(semvol) + vorschlaege(stamm) + vorschlaege(stamm + " kaufen"):
+            if s in kandidaten or KONKURRENZ.search(s) or ORT.search(s) or len(s.split()) < 2:
+                continue
+            if s not in semvol and not GUT.search(s):
                 continue
             if zu_aehnlich(s, bestehend):
                 continue
             kandidaten.append(s)
-        kandidaten.sort(key=lambda x: (not INFO.search(x), len(x)))   # Ratgeber-Absicht zuerst
-        if kandidaten and INFO.search(kandidaten[0]):
+        ratgeber = lambda x: bool(INFO.search(x)) or x in semvol
+        kandidaten.sort(key=lambda x: (not ratgeber(x), -semvol.get(x, 0), len(x)))   # Ratgeber-Absicht, dann Volumen
+        if kandidaten and ratgeber(kandidaten[0]):
             yield handle, titel, kandidaten[:5]
 
 

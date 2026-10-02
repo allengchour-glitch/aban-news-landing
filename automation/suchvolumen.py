@@ -10,7 +10,7 @@ import csv, json, os, re, sys
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 ORDNER = os.path.join(os.path.dirname(HIER), "dropship", "semrush")
-_VOL, _MAP = None, None
+_VOL, _MAP, _THEMEN = None, None, None
 
 
 def _laden():
@@ -54,6 +54,22 @@ def suchbegriffe(titel):
 
 def fuer_kollektion(titel):
     return max([volumen(b) for b in suchbegriffe(titel)] or [0])
+
+
+def ratgeber_phrasen(handle):
+    """Ratgeber-Phrasen mit echtem CH-Volumen für eine Menü-Kollektion → [(phrase, volumen)], höchstes zuerst.
+    Quelle: ratgeber_themen_*.tsv (Semrush-Fragen + verwandte Begriffe, 02.10.2026 je Kollektion zugeordnet)."""
+    global _THEMEN
+    if _THEMEN is None:
+        _THEMEN = {}
+        for name in sorted(os.listdir(ORDNER)) if os.path.isdir(ORDNER) else []:
+            if name.startswith("ratgeber_themen_") and name.endswith(".tsv"):
+                for z in csv.DictReader(open(os.path.join(ORDNER, name), encoding="utf-8"), delimiter="\t"):
+                    try:
+                        _THEMEN.setdefault(z["kollektion_handle"].strip(), {})[z["phrase"].strip().lower()] = int(z["volumen"])
+                    except (KeyError, ValueError, AttributeError):
+                        pass
+    return sorted(_THEMEN.get(handle, {}).items(), key=lambda x: -x[1])
 
 
 if __name__ == "__main__":
