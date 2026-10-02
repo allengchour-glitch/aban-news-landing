@@ -18,5 +18,14 @@
   Grundlinie neu: 19 Alt-Anleger (POD-Erzeuger, BigBuy — alle nicht laufend) als bekannt, 0 NEU.
 - Kein Neustart von Hand: cj_perpetual startet die Importer als Kindprozesse je Kategorie neu → neuer Code ab dem nächsten Kind.
 
+## NACHMESSUNG (04:45, alle 6 cj_category_fill-Kinder schon mit neuem Code)
+- Eimer weiter **6–63 / 2'000** — Wirkung NICHT belegt. Gleichzeitig liefen nach dem Container-Neustart (04:25) ~12 Shopify-Jobs:
+  6 Importer, 5 Tageswächter in der Schranke, dazu `seo_versandschwelle_fix`, `kategorie_wache`, `bild_werbetext_rueckholer`,
+  `versand_jenachland`, `cj_versand_ch_sichtbar` (die letzten drei ohne Boden — als Tageswächter laut Etikette so gewollt).
+- Deutung: Der Boden lässt Schreiber WARTEN, verhindert aber nicht, dass ein Dutzend Startende im selben Moment den Eimer leert.
+  Der Neustart-Stoss (jede Stunde) ist die eigentliche Klasse; die Importer-Lücke war ein Teil davon.
+
 ## OFFEN
+- Nächste Runde: Eimer im ruhigen Fenster messen (> 20 min nach Neustart); wenn weiter < 600 → Schranke auch für die Importer
+  (shopify_schranke.sh) oder gestaffelter Start im Aufseher nach Neustart.
 - Nachmessung des Eimers nach dem nächsten Grind-Zyklus; die drei gestorbenen Wächter holt der Aufseher nach (`absturz_nachholen`).
