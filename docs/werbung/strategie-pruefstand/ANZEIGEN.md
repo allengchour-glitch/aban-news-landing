@@ -1,4 +1,4 @@
-# Werbung: Strategie-Prüfstand (CHF 29)
+# Werbung: Strategie-Prüfstand (CHF 19)
 
 Zielseite für Anzeigen und Posts: **`https://abannews.com/ki-trading-bot.html`** — beantwortet die Suche
 „KI Trading Bot", zeigt den eigenen Bot-Test und verkauft am Ende den Prüfstand. Zweite Zielseite:
@@ -9,7 +9,7 @@ oder aus den auf der Seite verlinkten Behörden-Quellen (CFTC, BaFin, FINMA). Ke
 
 ## Vor dem ersten Franken Werbung
 
-1. **Kauf-Link prüfen:** Der Knopf auf `ki-trading-bot.html` muss „Strategie-Prüfstand kaufen — CHF 29"
+1. **Kauf-Link prüfen:** Der Knopf auf `ki-trading-bot.html` muss „Strategie-Prüfstand kaufen — CHF 19"
    zeigen und auf `buy.stripe.com/…` führen (am 02.10.2026 geprüft: ja).
 2. **Kein Meta-Pixel auf abannews.com** → Kampagnenziel **Traffic → Zielseitenaufrufe**, Verkäufe im
    Stripe-Dashboard zählen (wie beim Schulden-Plan).
@@ -22,7 +22,7 @@ oder aus den auf der Seite verlinkten Behörden-Quellen (CFTC, BaFin, FINMA). Ke
 |---|---|---|---|
 | 1 | Wir haben einen Trading-Bot 26 Jahre echte Kurse lernen lassen. Auf bekannten Kursen lag er zu 100 % richtig. Auf neuen Jahren so oft, wie der Markt ohnehin steigt. Was das über „90 % Trefferquote" in der Werbung sagt. | Was KI-Trading-Bots wirklich können | Eigener Test, offene Zahlen |
 | 2 | Beim S&P 500 hat unser Bot den schlimmsten Einbruch fast halbiert: −34 % statt −57 %. Dafür verdiente er weniger als einfaches Halten. Ein Bot ist eher eine Sicherung als ein Geldautomat. | Sicherung statt Geldautomat | Bot gegen Kaufen und Halten |
-| 3 | Bevor echtes Geld an einer Trading-Regel hängt: gegen 200 Zufallsstrategien und einfaches Halten testen, mit Schutz vor dem häufigsten Backtest-Fehler. Ein Python-Kit für CHF 29, keine Signale, keine Versprechen. | Trading-Idee ehrlich testen | Strategie-Prüfstand, CHF 29 |
+| 3 | Bevor echtes Geld an einer Trading-Regel hängt: gegen 200 Zufallsstrategien und einfaches Halten testen, mit Schutz vor dem häufigsten Backtest-Fehler. Ein Python-Kit für CHF 19, keine Signale, keine Versprechen. | Trading-Idee ehrlich testen | Strategie-Prüfstand, CHF 19 |
 
 **Meta-Regeln:** keine persönlichen Eigenschaften unterstellen (nicht „Du verlierst beim Trading?"),
 keine Gewinnversprechen, nicht „garantiert". Alle drei Texte halten das ein. Kategorie „Finanzdienstleistungen"

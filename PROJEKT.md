@@ -1,7 +1,16 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 📐 2026-10-02 — Backtest-Labor: Goldener Schnitt (Fibonacci) + mehr Kennzahlen
+> - Neue Bedingungen `fib_unter`/`fib_ueber` (Hoch/Tief der letzten N Tage ohne heute, Niveau = Hoch − (Hoch−Tief)×r), Vorlage
+>   „Goldener Schnitt 61,8 %" (Verkauf über 23,6 %, mit 200-Tage-Filter), Overlay Hoch/Niveau/Tief in der Signal-Grafik.
+> - Mehr Kennzahlen je Test: Trades, Trefferquote, Ø pro Trade, bester/schlechtester Trade, längste Durststrecke (Regel/Halten).
+> - **Gemessen auf 7 echten Märkten (bis 23.09.2026):** Goldener Schnitt schlägt Halten nirgends nachweisbar; Ø-Skill 61,8 % = 56,
+>   38,2 % = 52, 50 % = 51 (Zufallsniveau, die Zahl ist nicht besonders). Ohne Filter Trefferquote bis 79 %, trotzdem 6/7 hinter Halten.
+>   Steht als Abschnitt `#goldener-schnitt` + FAQ auf der Seite. Regression: 63 Stil-Labor-Werte weiter identisch.
+> - Prüfstand-Preis ist seit 01.10. **CHF 19** (andere Session) → statische Texte in backtest-labor, ki-trading-bot, ANZEIGEN.md nachgezogen.
+
 ## 🧪 2026-10-02 — Meisterwerk-Tool: Backtest-Labor mit Indikatoren
-> - **`backtest-labor.html`** (Gratis-Tool, Funnel zum Strategie-Prüfstand CHF 29): Regeln ehrlich testen — Signal am Folgetag,
+> - **`backtest-labor.html`** (Gratis-Tool, Funnel zum Strategie-Prüfstand, Preis jetzt CHF 19): Regeln ehrlich testen — Signal am Folgetag,
 >   Kosten pro Wechsel, Entwickeln/Test getrennt (nur Test zählt), Vergleich mit Halten + **Skill gegen 200 Zufallsstrategien**.
 > - Regeln: 9 klassische (identisch zu `tools/trading/stil_labor.py`) + **Indikatoren** RSI, MACD+Signallinie, Bollinger (unten/
 >   oben/Mitte), Stochastik, EMA-Kreuz, Kurs vs. SMA — als 5 Vorlagen + eigener Baukasten (Kauf/Verkauf getrennt, 200-Tage-Filter).
