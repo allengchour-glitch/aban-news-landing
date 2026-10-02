@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 10:47 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 10:51 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **46'813**
-- Optionen mit englischen Werten (Kandidaten): 2'921
-- Optionen übersetzt: **0** · Werte übersetzt: **0**
-- Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 15'428
+- Produkte gesehen: **49'945**
+- Optionen mit englischen Werten (Kandidaten): 3'054
+- Optionen übersetzt: **28** · Werte übersetzt: **115**
+- Optionen nur codebereinigt: 1
+- Werte mit unbekanntem Wort (unverändert): 15'976
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 69
+- übersprungen «kleidungsstueck-im-wert»: 75
 - übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -48,6 +48,10 @@
 - `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
 - `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Black Cardigan-Plus Size L | Black Cardigan-Plus Size XL | Black Cardigan-Plus Size 2XL | Black Cardigan-Plus Size 3XL | Black Cardigan-Plus Size 4XL | Black Cardigan | Sleeveless Floral Skirt-Plus Size L | Sleeveless Floral Skirt-Plus Size XL
 - `15506707251585` [Farbe] **Hemd und Hose mit Taillengürtel** — hose, oberteil: 689 White Shirt | 690 White Trousers
+- `15523850486145` [Farbe] **Bambus-Strickjacke: wasserabweisend, öl- & fleckenresistent** — oberteil: SF23451-38-Mens long sleeved shirt | SF23451-38-Mens short sleeved shirt | SF23451-39-Mens long sleeved shirt | SF23451-39-Mens short sleeved shirt | SF23451-40-Mens long sleeved shirt | SF23451-40-Mens short sleeved shirt | SF23451-41-Mens long sleeved shirt | SF23451-41-Mens short sleeved shirt
+- `16603331658119` [Farbe] **Ammulliger, hufstarker Mantel** — jacke, weste: Black Vest Jacket | Khaki Cotton Jacket Vest Coat | Brown Cotton Coat Vest Coat
+- `16603338408327` [Farbe] **Slim-Fit Daunenjacke mit weisser Federfüllung** — pullover: Beige Hooded | Light Purple Hoodie | Black Hooded | Navy Blue Hooded | Rose Red Hooded | White Hooded | Bean Green Hooded
+- `16603765899655` [Farbe] **Baby Strick-Set mit Hose und Haarband · 3 Stück** — hose, pullover · Titel nennt Set: Cardigan Sweater | Knitted Pants | Hair Band | Three Piece Set
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -142,5 +146,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 576, `light` 444, `color` 389, `shell` 162, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 147, `size` 145, `core` 137, `surface` 130, `powder` 123, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 112, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `bag` 93, `code` 91, `four` 90, `french` 89, `rain` 88, `case` 87, `dark` 82, `dinosaur` 82, `opp` 81, `yards` 79, `buckle` 77, `cloth` 77, `rope` 75, `bottom` 75, `spring` 72, `dual` 71, `chain` 70, `base` 69, `petal` 68, `half` 67, `little` 66, `autumn` 66, `net` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `one` 57, `plush` 56, `electric` 55, `rainbow` 55, `night` 54, `bear` 54, `rice` 53, `face` 52
+`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 576, `light` 446, `color` 410, `shell` 162, `degrees` 159, `size` 155, `⟨satzbau:material-vor-farbe⟩` 150, `core` 137, `surface` 130, `powder` 126, `to` 122, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 114, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `three` 97, `belt` 96, `four` 95, `bag` 93, `code` 91, `dinosaur` 90, `french` 89, `rain` 88, `yards` 88, `case` 87, `dark` 83, `opp` 81, `buckle` 78, `cloth` 78, `spring` 75, `rope` 75, `bottom` 75, `dual` 71, `chain` 70, `base` 69, `autumn` 69, `petal` 68, `half` 67, `little` 66, `hat` 66, `net` 64, `strap` 62, `one` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `bear` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `electric` 56, `12to18m` 56, `rice` 55, `rainbow` 55
 

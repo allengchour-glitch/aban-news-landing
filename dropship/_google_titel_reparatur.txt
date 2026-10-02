@@ -412,3 +412,4 @@
 2026-09-29T16:51:35Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
 2026-09-30T12:57:42Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
 2026-10-01T12:56:31Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
+2026-10-02T10:51:43Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
