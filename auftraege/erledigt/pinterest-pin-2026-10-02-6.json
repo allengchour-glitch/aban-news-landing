@@ -3,6 +3,22 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-02-6",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 6 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-02T20:27:47.657Z",
+  "dauer_s": 17.9,
+  "ergebnis": {
+    "gepinnt": [
+      "nibosi-quarzuhr-mit-edelstahlband-e89d0a"
+    ],
+    "unklar": [],
+    "uebersprungen": [
+      "nibosi-quarzuhr-mit-edelstahlband-e89d0a: schon auf der Pinnwand"
+    ],
+    "schritte": [
+      "Warteschlange 163, quittiert 18, offen 147",
+      "Boards auf dem Profil: /luxestyleCH/schmuck-accessoires/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Schmuck & Accessoires» (https://ch.pinterest.com/luxestyleCH/schmuck-accessoires/, 274 Z.): Titel SCHON DA"
+    ],
+    "bilder": []
+  }
 }
