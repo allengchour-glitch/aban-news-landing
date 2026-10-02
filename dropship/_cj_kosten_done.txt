@@ -41170,3 +41170,7 @@ gid://shopify/Product/15448648712577	CHF 13.45	4 Varianten	Vier Jahreszeiten Yog
 gid://shopify/Product/15448650645889	CHF 13.61	10 Varianten	Elegante High-Waist Hose mit geradem Bein
 gid://shopify/Product/15448887001473	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448959320449	CHF 101.92	4 Varianten	Schwimmnudel aus SBR-Schaum
+gid://shopify/Product/15449479676289	CHF 36.39	60 Varianten	Anthrazitfarbene Faltenrollo
+gid://shopify/Product/15449479709057	CHF 33.80	11 Varianten	Schnurvorhänge, 2 Stück
+gid://shopify/Product/15449479807361	CHF 24.39	52 Varianten	Voile-Gardinen mit Ösen
+gid://shopify/Product/15449479872897	CHF 57.07	4 Varianten	Velours-Vorhänge mit Haken · 140 × 245 cm
