@@ -63,24 +63,10 @@ def _gemini(bilder, text):
 
 
 def _gpt(bilder, text):
+    """Zweitprüfer (ChatGPT, bei leerem Guthaben Groq-Vision) — 02.10.2026, siehe zweitmodell.py."""
     sys.path.insert(0, HIER)
-    from gemini_jury import openai_schluessel, MODELL_GPT
-    k = openai_schluessel()
-    if not k:
-        raise RuntimeError("OPENAI-Schlüssel fehlt")
-    inhalt = [{"type": "text", "text": text}] + [
-        {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(b).decode()}} for b in bilder]
-    body = {"model": MODELL_GPT, "messages": [{"role": "user", "content": inhalt}], "response_format": {"type": "json_object"}}
-    letzter = ""
-    for a in range(3):
-        try:
-            r = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode(),
-                                       headers={"Content-Type": "application/json", "Authorization": "Bearer " + k})
-            j = json.load(urllib.request.urlopen(r, timeout=180))
-            return json.loads(re.search(r"\{.*\}", j["choices"][0]["message"]["content"], re.S).group(0))
-        except Exception as e:
-            letzter = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(4 * (a + 1))
-    raise RuntimeError("ChatGPT ohne Antwort — " + letzter)
+    import zweitmodell
+    return zweitmodell.chat_json(text, bilder, nummer_ab=0)   # Prompt zählt ab «Bild 0»
 
 
 def waehlen(shop_bild_url, varianten):
@@ -106,13 +92,15 @@ def waehlen(shop_bild_url, varianten):
             return None, f"Bildvergleich: {name} ausgefallen ({str(e)[:80]}) — manuell prüfen"
     idx = {n: u.get("index") for n, u in urteile.items()}
     sicher = {n: float(u.get("sicher") or 0) for n, u in urteile.items()}
-    kurz = "; ".join(f"{n} {idx[n]} ({sicher[n]:.2f}): {str(urteile[n].get('grund',''))[:80]}" for n in urteile)
+    kurz = "; ".join(f"{n if n != 'gpt' else 'zweit'} {idx[n]} ({sicher[n]:.2f}): {str(urteile[n].get('grund',''))[:80]}" for n in urteile)
     i = idx["gemini"]
     if i is None or i != idx["gpt"] or not isinstance(i, int) or not (1 <= i <= len(kand)):
         return None, f"Bildvergleich uneinig/kein Treffer — {kurz}"
     if min(sicher.values()) < SICHER_AB:
         return None, f"Bildvergleich unsicher — {kurz}"
-    return kand[i - 1], f"auto Bildvergleich Gemini+ChatGPT einig (#{i}) — {kurz}"
+    import zweitmodell
+    zweit = zweitmodell.LETZTES_MODELL or "ChatGPT"
+    return kand[i - 1], f"auto Bildvergleich Gemini+{zweit} einig (#{i}) — {kurz}"
 
 
 def zuordnung_schreiben(shop_sku, v, beleg):

@@ -473,3 +473,11 @@ gid://shopify/Product/15511869817217	hat-schon-video
 gid://shopify/Product/15512258478465	ok-lokal
 gid://shopify/Product/15516101706113	ok-lokal
 gid://shopify/Product/15516102197633	ok-lokal
+gid://shopify/Product/15516233105793	ok-lokal
+gid://shopify/Product/15517532324225	ok-lokal
+gid://shopify/Product/15517621944705	ok-lokal
+gid://shopify/Product/15517782638977	ok-lokal
+gid://shopify/Product/15519837946241	ok-lokal
+gid://shopify/Product/15520402538881	ok-lokal
+gid://shopify/Product/15521255686529	ok-lokal
+gid://shopify/Product/15522141602177	ok-lokal

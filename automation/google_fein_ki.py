@@ -110,31 +110,9 @@ def groq(text):
 
 
 def zweiter(text):
-    """ChatGPT, solange es Guthaben hat; sonst Groq (einmal erkannt, für den Rest des Laufs)."""
-    global _GPT_LEER
-    if not _GPT_LEER and os.environ.get("ZWEITMODELL", "auto") != "groq":
-        try:
-            return gpt(text)
-        except Exception as e:
-            if "429" not in str(e):
-                raise
-            try:   # 429 = Drosselung ODER leeres Guthaben — nur Letzteres schaltet um
-                from gemini_jury import openai_schluessel
-                urllib.request.urlopen(urllib.request.Request("https://api.openai.com/v1/models",
-                                       headers={"Authorization": "Bearer " + openai_schluessel()}), timeout=30)
-                req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(
-                    {"model": "gpt-4o-mini", "messages": [{"role": "user", "content": "ok"}], "max_tokens": 1}).encode(),
-                    headers={"Content-Type": "application/json", "Authorization": "Bearer " + openai_schluessel()})
-                urllib.request.urlopen(req, timeout=30)
-                raise   # Guthaben da → echte Drosselung, normal weiter
-            except urllib.error.HTTPError as h:
-                if b"insufficient_quota" in h.read() or h.code == 402:
-                    _GPT_LEER = True
-                    print("  ChatGPT ohne Guthaben → Zweitprüfer Groq", file=sys.stderr, flush=True)
-                else:
-                    raise e
-    return groq(text)
-
+    """Zweitprüfer: ChatGPT oder bei leerem Guthaben Groq — zentral in zweitmodell.py (02.10.2026)."""
+    import zweitmodell
+    return zweitmodell.chat_json(text)
 
 def geduldig(fn, text):
     """ChatGPT antwortet bei parallelen Läufen mit 429 — warten statt den Block zu verwerfen (02.10.: 11× in 10 min)."""

@@ -139,27 +139,11 @@ def openai_schluessel():
 
 
 def fragen_gpt(jpgs, caption, typ, ist_video):
-    """Dieselbe Frage an ChatGPT-Vision (Bilder als data-URI). RuntimeError bei Ausfall."""
-    k = openai_schluessel()
-    if not k:
-        raise RuntimeError("kein OPENAI_API_KEY")
+    """Dieselbe Frage an den Zweitprüfer (ChatGPT-Vision, bei leerem Guthaben Groq-Vision; zweitmodell.py, 02.10.2026)."""
+    import zweitmodell
     info = ("Du siehst 4 Standbilder aus dem Video (0,3 s, 1,2 s, Mitte, Ende)." if ist_video and len(jpgs) > 1
             else "Du siehst das Bild des Posts.")
-    inhalt = [{"type": "text", "text": PROMPT.format(typ=typ, bildinfo=info, caption=caption[:1500])}]
-    inhalt += [{"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(b).decode()}} for b in jpgs]
-    body = {"model": MODELL_GPT, "messages": [{"role": "user", "content": inhalt}], "response_format": {"type": "json_object"}}
-    letzter = ""
-    for a in range(3):
-        try:
-            r = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode(),
-                                       headers={"Content-Type": "application/json", "Authorization": f"Bearer {k}"})
-            j = json.load(urllib.request.urlopen(r, timeout=180))
-            txt = j["choices"][0]["message"]["content"]
-            return json.loads(re.search(r"\{.*\}", txt, re.S).group(0))
-        except Exception as e:
-            letzter = f"{type(e).__name__}: {str(e)[:150]}"
-            time.sleep(4 * (a + 1))
-    raise RuntimeError("ChatGPT ohne Antwort — " + letzter)
+    return zweitmodell.chat_json(PROMPT.format(typ=typ, bildinfo=info, caption=caption[:1500]), jpgs)
 
 
 def urteilen(a):
@@ -224,7 +208,7 @@ def main():
                 u = None
                 if i == 0:                                   # erste Zusatzrunde: anderes Modell
                     try:
-                        u = urteilen(fragen_gpt(jpgs, a.caption, a.typ, ist_video)); u["modell"] = MODELL_GPT
+                        u = urteilen(fragen_gpt(jpgs, a.caption, a.typ, ist_video)); u["modell"] = __import__("zweitmodell").LETZTES_MODELL or MODELL_GPT
                     except Exception as e:
                         print(f"  ChatGPT-Runde ausgefallen ({str(e)[:120]}) → Gemini", file=sys.stderr)
                 if u is None:

@@ -84,23 +84,9 @@ def gemini(bilder, text):
 
 
 def chatgpt(bilder, text):
-    inhalt = [{"type": "text", "text": text}] + [
-        {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(b).decode()}} for b in bilder]
-    body = {"model": MODELL_GPT, "messages": [{"role": "user", "content": inhalt}]}
-    req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(body).encode(),
-                                 headers={"Authorization": "Bearer " + openai_key(), "Content-Type": "application/json"})
-    grund = ""
-    for a in range(3):
-        try:
-            return json_aus(json.load(urllib.request.urlopen(req, timeout=240))["choices"][0]["message"]["content"])
-        except urllib.error.HTTPError as e:
-            grund = f"HTTP {e.code}: {e.read()[:200].decode(errors='replace')}"
-            if e.code in (400, 401, 403, 404):
-                break
-        except Exception as e:
-            grund = f"{type(e).__name__}: {str(e)[:150]}"
-        time.sleep(5 * (a + 1))
-    raise RuntimeError("ChatGPT ohne Antwort — " + grund)
+    """Zweitprüfer (ChatGPT, bei leerem Guthaben Groq-Vision) — 02.10.2026, siehe zweitmodell.py."""
+    import zweitmodell
+    return zweitmodell.chat_json(text, bilder)
 
 
 def main():
