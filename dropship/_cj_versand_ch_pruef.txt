@@ -2758,3 +2758,5 @@ jacquard-kissenbezug-mit-blumenmuster-609400	2607290228101600300	16	6.90	ok	land
 hoodie-mit-reissverschluss-606300	2512160527561606500	16	10.29	ok	landeseite
 kalkschutz-vorfilter-fur-boiler-634800	2512150951031635100	16	10.15	ok	landeseite
 kinder-basketballschuhe-mit-drehverschluss-602600	2504270506051602800	16	10.83	ok	landeseite
+keil-sandalen-mit-riemen-und-schnalle-624200	2603280903351624600	16	8.66	ok	landeseite
+kasual-langarm-shirt-638200	2604120612571638600	16	7.43	ok	landeseite
