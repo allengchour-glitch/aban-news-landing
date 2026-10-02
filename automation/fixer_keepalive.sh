@@ -1016,6 +1016,18 @@ while true; do
       echo "$(date -u +%H:%M) farbmuster_filter: $(tail -1 "$FM")"
     fi
   fi
+  # GRÖSSENWERT-KAUDERWELSCH (02.10.2026): seit dem Filter «Grösse» stehen alle Grössenwerte offen in der Facette
+  # («L Code-Need To Order Without Toolkit»). Liest den Export von farbmuster_filter (darum DANACH), bereinigt eindeutige
+  # Muster, meldet den Rest.
+  GK=/tmp/groessenwert_kauderwelsch.log
+  if [ -f "$REPO/automation/groessenwert_kauderwelsch.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GK"; then
+      touch "$GK"
+      ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/groessenwert_kauderwelsch.py >> "$GK" 2>&1 )
+      echo "$(date -u +%H:%M) $(tail -1 "$GK")"
+    fi
+  fi
   # GOOGLE-NACHFRAGE-LÜCKE (02.10.2026, Betreiber «weiter push überall»): 57 % der Google-Sitzungen (150 T) landeten auf
   # Seiten, die heute Entwürfe sind (Dry Bag 82, Rizinus-Set 55) — Google listet nur Kaufbares. Täglich: tote Google-
   # Landeseiten mit Nachfrage → generischer CJ-Suchauftrag VORNE in cj_search_queue.txt (Hausregeln, Marken, Saison).

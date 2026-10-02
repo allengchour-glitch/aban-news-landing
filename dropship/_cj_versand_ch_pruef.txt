@@ -2931,3 +2931,7 @@ hexe-dekorative-malerei-148096	1621683945152720896	16	12.38	ok	landeseite
 halloween-langarm-pulli-herbst-winter-damenbek-606200	2605150828521606900	16	10.29	ok	landeseite
 herren-t-shirt-mit-horror-schadel-druck-634000	2607090746071634800	16	7.43	ok	landeseite
 halloween-glasbecher-622800	2607100117451623400	16	9.47	ok	landeseite
+katzennest-hexen-hut-607300	2509090622581607500	16	12.62	ok	landeseite
+tier-halloween-mantel-629600	2508120729361629800	16	5.41	ok	landeseite
+halloween-sweatshirt-mit-digital-druck-618900	2607130151041619600	16	8.66	ok	landeseite
+herbstkissenbezuge-mit-kurbismuster-647700	2510010748511647900	16	7.17	ok	landeseite

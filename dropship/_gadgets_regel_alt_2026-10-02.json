@@ -1,0 +1,13 @@
+{
+ "id": "gid://shopify/Collection/688018456961",
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "gadget"
+   }
+  ]
+ }
+}

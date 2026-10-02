@@ -195,7 +195,13 @@ def vereinen(html):
         elif label.lower().startswith(("grösse", "groesse", "größe")):
             wert = groessen_sortiert(wert)
         zeilen.append(f"<li><strong>{label}:</strong> {wert}</li>")
-    neu = ('<div class="ls-produktdetails"><h4>Produktdetails</h4><ul>'
+    # 02.10.2026 — ZOMBIE-VERURSACHER GEFUNDEN: Die Windows-Aufgabe «LuxeMarketing» auf dem PC des Betreibers
+    # ruft täglich `enrich_apparel_descriptions.mjs` (alter Branch claude/luxestyle-product-CizQ6, MAX 400) auf.
+    # Es hängt einen `ls-feed-details`-Block an, wenn der Text die Zeichenfolge NICHT enthält
+    # (`descriptionHtml.includes('ls-feed-details')`). Diese Vereinigung entfernte genau diese Klasse → am
+    # nächsten Tag hing der Block wieder dran (150 Produkte, täglich seit Wochen). Der unsichtbare Kommentar
+    # hält das PC-Skript still, ohne dass jemand den PC anfassen muss.
+    neu = ('<div class="ls-produktdetails"><!--ls-feed-details--><h4>Produktdetails</h4><ul>'
            + "".join(zeilen) + "</ul></div>")
     # Ersten Block ersetzen, alle weiteren entfernen.
     erst = [True]

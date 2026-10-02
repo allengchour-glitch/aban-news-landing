@@ -171,5 +171,6 @@ export function produktdetails(d, titel){
   const rows=specZeilen(d, titel);
   if(!rows.length) return '';
   const li=rows.map(([k,v])=>`<li><strong>${k}:</strong> ${String(v).replace(/</g,'&lt;')}</li>`).join('');
-  return `<div class="ls-produktdetails"><h4>Produktdetails</h4><ul>${li}</ul></div>`;
+  // <!--ls-feed-details-->: hält den PC-Enricher (prüft nur includes('ls-feed-details')) davon ab, einen zweiten Block anzuhängen (02.10.)
+  return `<div class="ls-produktdetails"><!--ls-feed-details--><h4>Produktdetails</h4><ul>${li}</ul></div>`;
 }

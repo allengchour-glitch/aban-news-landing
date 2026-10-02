@@ -166,7 +166,7 @@ def reparieren(html, options):
     if not was:
         return html, []
     # Leergeraeumte Bloecke ganz entfernen statt als nackte Ueberschrift stehen lassen
-    neu = re.sub(r'<div class="(?:ls-feed-details|gmc-details|ls-produktdetails)">\s*'
+    neu = re.sub(r'<div class="(?:ls-feed-details|gmc-details|ls-produktdetails)">\s*(?:<!--ls-feed-details-->\s*)?'
                  r'<h[34]>[^<]*</h[34]>\s*<ul>\s*</ul>\s*</div>', '', neu, flags=re.I)
     neu = re.sub(r'\n{3,}', '\n\n', neu)
     return neu, was
