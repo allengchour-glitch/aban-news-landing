@@ -41163,3 +41163,7 @@ gid://shopify/Product/15448648089985	CHF 13.45	4 Varianten	Vier Jahreszeiten Yog
 gid://shopify/Product/15448648155521	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 3
 gid://shopify/Product/15448648188289	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 4
 gid://shopify/Product/15448648352129	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 5
+gid://shopify/Product/15448648384897	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 2
+gid://shopify/Product/15448648515969	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 4
+gid://shopify/Product/15448648614273	CHF 13.45	4 Varianten	Vier-Jahreszeiten-Sport-Leggings mit Print
+gid://shopify/Product/15448648712577	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 5
