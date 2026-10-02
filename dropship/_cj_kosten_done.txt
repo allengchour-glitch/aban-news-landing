@@ -41141,3 +41141,14 @@ gid://shopify/Product/15447987356033	CHF 22.19	4 Varianten	High Neck Badekleid m
 gid://shopify/Product/15447987487105	CHF 22.19	3 Varianten	Eleganter High-Neck Tankini für Damen · Modell 2
 gid://shopify/Product/15447987945857	CHF 21.79	4 Varianten	Elegantes zweiteiliges Damen-Bikini-Set
 gid://shopify/Product/15447988076929	CHF 21.92	4 Varianten	Eleganter Tankini mit hohem Halsausschnitt
+gid://shopify/Product/15448075993473	CHF 23.05	4 Varianten	Casual Swimwear · Damen
+gid://shopify/Product/15448076026241	CHF 22.19	4 Varianten	Casual Badetop für Damen
+gid://shopify/Product/15448076124545	CHF 22.38	3 Varianten	Casual Bademode · Damen
+gid://shopify/Product/15448076190081	CHF 21.53	4 Varianten	Elegantes Bikini-Set mit hohem Kragen
+gid://shopify/Product/15448076255617	CHF 22.91	4 Varianten	Casual Damen-Tankini
+gid://shopify/Product/15448076288385	CHF 22.65	4 Varianten	Casual Damen-Badebekleidung
+gid://shopify/Product/15448076321153	CHF 22.65	3 Varianten	Lässiger Badeanzug · sportlich geschnitten
+gid://shopify/Product/15448076386689	CHF 22.98	3 Varianten	Lässiger Badeanzug · klassisch
+gid://shopify/Product/15448076452225	CHF 20.86	4 Varianten	Eleganter, hochgeschlossener Langarm-Strand-Cover-
+gid://shopify/Product/15448076517761	CHF 21.99	3 Varianten	Bikini-Set · Modell 2
+gid://shopify/Product/15448076550529	CHF 20.66	4 Varianten	Badeanzug-Set für Damen
