@@ -14295,3 +14295,74 @@ gid://shopify/Product/15525512413569	uhr	Bluetooth Sportuhr mit Runddisplay
 gid://shopify/Product/15525512774017	armband	Metall-Uhrenarmband mit Strasssteinen
 gid://shopify/Product/15525513527681	uhr	F64 Smart Armbanduhr mit Bluetooth
 gid://shopify/Product/15515288371585	creme	Gesichtscreme für einen ebenmässigen Teint
+gid://shopify/Product/16603300528519	ventilator	Kreisförmiger Fliegenabwehrventilator
+gid://shopify/Product/16603303608711	becher	Grosser Edelstahl-Vakuumbecher 900 ml
+gid://shopify/Product/16603304329607	stiefel	Mid-Calf Lederstiefel mit Schnallen-Design
+gid://shopify/Product/16603304395143	muetze,schuh	Weiche Winterbettmütze und rutschfeste Hausschuhe
+gid://shopify/Product/16603304952199	schuh	Krokodillmuster Lederschuhe mit Metallbremse
+gid://shopify/Product/16603320877447	mantel	Weitärmeliger Baumwollmantel bis Knöchel
+gid://shopify/Product/16603320975751	jacke	Mittellange Daunenjacke mit Baumwollfutter
+gid://shopify/Product/16603321500039	jacke	Weisses Daunenjacke mit Kapuze
+gid://shopify/Product/16603321827719	mantel	Fleecegefütterter Wollmantel in Schwarz
+gid://shopify/Product/16603321893255	mantel	Kurzmantel mit Fellkragen, 100% Polyester
+gid://shopify/Product/16603322024327	mantel	Weisser Baumwollmantel bis Knie
+gid://shopify/Product/16603322188167	mantel	Weisser Strickmantel mit Streifen und Punkten
+gid://shopify/Product/16603322253703	mantel	Kurzpolstermantel mit geometrischem Muster
+gid://shopify/Product/16603322286471	jacke	Quilted Baumwolljacke für Herbst & Winter
+gid://shopify/Product/16603322319239	jacke	Patchwork-Hooded Winterjacke
+gid://shopify/Product/16603322352007	jacke	Fleecegefüllte Baumwolljacke mit Kapuze
+gid://shopify/Product/16603322450311	mantel	Plus‑Size Hooded Baumwoll‑Kissenmantel
+gid://shopify/Product/16603324219783	mantel	Wintermantel ohne Ärmel, mittellang
+gid://shopify/Product/16603324318087	pullover	Kapuzenpullover mit Polsterung – Baumwollmischung
+gid://shopify/Product/16603324481927	mantel	Langmantel mit Fellkragen in Camel
+gid://shopify/Product/16603324547463	mantel	Schwarzer Damen-Mittellanger Strickmantel
+gid://shopify/Product/16603324744071	mantel	Kompakter Fellkapuzenmantel für Damen
+gid://shopify/Product/16603324842375	jacke	Leichte blaue Jeansjacke für den Alltag
+gid://shopify/Product/16603324940679	mantel	Retro‑Wollmantel mit Farbblock‑Kragen
+gid://shopify/Product/16603324973447	jacke	PU Lederjacke Damen, Slim Fit, Schwarz
+gid://shopify/Product/16603329954183	mantel	Kurzmantel mit Kapuze aus Polyester
+gid://shopify/Product/16603330019719	mantel	Schwarzer Strickmantel mit Fellkragen
+gid://shopify/Product/16603330052487	mantel	Wollfutter Baumwollmantel mittellang
+gid://shopify/Product/16603330183559	mantel	Koreanischer Strickmantel mit Fellkragen
+gid://shopify/Product/16603330642311	mantel	Langärmliger, mit Kapuze, gefütterter Baumwollmantel
+gid://shopify/Product/16603330806151	mantel	Wärmender Polyestermantel mit Fellkragen
+gid://shopify/Product/16603330937223	jacke	Weit sitzende Pufferjacke mit Kapuze
+gid://shopify/Product/16603330969991	mantel	Mid‑Length Daunenmantel mit Fleece‑Futter
+gid://shopify/Product/16603331035527	mantel	Weisser Baumwollmantel mit Kapuze
+gid://shopify/Product/16603331199367	mantel	Mittellanger, gefütterter Wollmantel
+gid://shopify/Product/16603331395975	mantel	Mittelgrosser Wollmantel mit Kapuze
+gid://shopify/Product/16603331625351	jacke	Muster-Standhalsjacke aus Baumwolle und Leinen
+gid://shopify/Product/16603331985799	mantel	Mittelgrosser Strickmantel mit Kapuze
+gid://shopify/Product/16603332247943	mantel	Roter Baumwollmantel mit Down-Füllung
+gid://shopify/Product/16603332411783	mantel	Weicher Baumwollmantel mit Lammwollfutter
+gid://shopify/Product/16603332608391	ladegeraet	65 W GaN Schnellladegerät – USB‑C
+gid://shopify/Product/16603332936071	jacke	Winter‑Sportjacke mit Dicke
+gid://shopify/Product/16603333132679	mantel	Dicker Baumwollmantel mit Standkragen
+gid://shopify/Product/16603333329287	jacke	Floral Polyesterjacke für ältere Damen
+gid://shopify/Product/16603333394823	kissen	Sitzkissen für Auto und Büro
+gid://shopify/Product/16603333722503	mantel	Schwarzer Langmantel mit Fellkragen
+gid://shopify/Product/16603334181255	mantel	Künstlerischer Strickmantel in 3D‑Muster
+gid://shopify/Product/16603334312327	jacke	Freizeitschichtjacke in Pink, Schwarz, Off-White
+gid://shopify/Product/16603334508935	mantel	Gestreifter Strickmantel in Bronze
+gid://shopify/Product/16603334640007	schuh	Silberne Kreuzband-Glitzer-Hochschuh-Sandalen
+gid://shopify/Product/16603335033223	armband	Vintage Lederarmband aus Edelstahl
+gid://shopify/Product/16603335229831	mantel	Gothic‑Stil Plüschmantel mit Fell‑Bustier
+gid://shopify/Product/16603335721351	armband	Smart Motion Meter Handgelenkarmband
+gid://shopify/Product/16603336147335	mantel	Leichter Wintermantel aus Baumwolle
+gid://shopify/Product/16603336180103	schuh	Mannschaftsschuhe mit weichem Boden
+gid://shopify/Product/16603336343943	jacke	Weisser Pufferjacke mit Seitentasche
+gid://shopify/Product/16603336966535	stiefel	Gefütterte Winter-Schneestiefel
+gid://shopify/Product/16603337032071	jacke	Leichte Daunenjacke Kurz
+gid://shopify/Product/16603337326983	stiefel	Hochrissige Winterstiefel für Herren
+gid://shopify/Product/16603337458055	schuh	Vintage Winterarbeitsschuhe Herren
+gid://shopify/Product/16603337490823	mantel	Angora‑Roter, lockerer Kurzmantel
+gid://shopify/Product/16603337687431	mantel	Koreanischer Oversize-Polstermantel
+gid://shopify/Product/16603337752967	schuh	Herrenschuhe High-Top mit dicker Sohle
+gid://shopify/Product/16603337785735	jacke	Wärmende Kapuzenjacke mit Daunenfüllung
+gid://shopify/Product/16603337818503	leuchte	Halloween Katze Kürbis Dekoleuchte
+gid://shopify/Product/16603338015111	stiefel	Herren Freizeitstiefel
+gid://shopify/Product/16603338047879	zange	Nagelhautzange aus Edelstahl
+gid://shopify/Product/16603338080647	mantel	Plus-Size Retro-Hornknopf-Dufflemantel
+gid://shopify/Product/16603338572167	werkzeug	Ultraschall‑Reinigungsmaschine für Nagelwerkzeuge
+gid://shopify/Product/16603349123463	schuh	Kinderlaufschuhe Weiss PU mit Bogenknopf
+gid://shopify/Product/15454109630849	brille	Sonnenbrille mit UV-Schutz
