@@ -2633,3 +2633,14 @@ gaming-set-uk-943617	2042207010789687298	0	-	KEINE CH-Option → DRAFT	landeseit
 fitness-smart-armband-mit-schrittzahler-und-le-623600	2605100200311624300	7	5.09	ok	landeseite
 farbverlauf-lidschatten-stift-630600	2606040453161631200	3	5.22	ok	landeseite
 elektrischer-fleischwolf-5l-kuchenmaschine-656962	2046148911801921537	0	-	KEINE CH-Option → DRAFT	landeseite
+elektrischer-shaker-fur-protein-shakes-342592	1423475157632159744	7	10.31	ok	landeseite
+ems-bauch-und-muskel-trainer-b08b29	-	-	-	unklar keine CJ-SKU	landeseite
+fressnapf-mit-stander-fur-haustiere-080192	1392797040848801792	16	8.86	ok	landeseite
+gesichtsrejuvenation-fur-zu-hause-ebee7a	-	-	-	unklar keine CJ-SKU	landeseite
+geflochtene-haremshose-herren-trendig-615700	2507180331161617200	16	10.83	ok	landeseite
+englische-madchenlederschuhe-mit-weichsohle-605700	2409220653521605900	16	10.55	ok	landeseite
+fledermaus-lampe-631400	2607171016511632000	16	11.06	ok	landeseite
+fressnapf-katze-schrag-erhoht-keramik-616800	2501050733211617000	16	11.12	ok	landeseite
+glatteisen-kamm-601500	2502220738531601700	7	12.08	ok	landeseite
+ferngesteuerte-infrarot-wurst-223168	1443168309032914944	16	28.02	ok	landeseite
+gestreiftes-langarm-shirt-606500	2605290653231607200	16	7.43	ok	landeseite
