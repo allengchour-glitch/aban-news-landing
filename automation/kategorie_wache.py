@@ -212,7 +212,9 @@ _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 KINDERTYPEN = {"Baby & Kinder"}
 KINDERREGELN = [
     (r"bade\w*|\bbad\b|swim\w*|schwimm\w*|sonnenschutz", "aa-1-25-8"),
-    (r"pyjama|schlafanzug|schlafsack|nachtwäsche", "aa-1-25-6"),
+    (r"pyjama|pajama|schlafanzug|schlafsack|nachtwäsche|nachthemd", "aa-1-25-6"),
+    (r"unterwäsche|unterhose|\bslips?\b|boxershorts?\b(?!.*bad)", "aa-1-25-11"),
+    (r"faux\w*[- ]zweiteiler", "aa-1-25-3"),
     (r"swaddle|pucktuch|\w*decke\b", "bt-12"),
     (r"\bset\b|\w+-?set\b|outfit\w*|zweiteiler|dreiteiler|\w*teilig|\bsets\b", "aa-1-25-5"),
     (r"strampler|strampel\w*|romper|\w*body\b|onesie|overall|jumpsuit|latzhose", "aa-1-25-10"),

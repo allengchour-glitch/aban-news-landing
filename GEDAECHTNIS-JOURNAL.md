@@ -17,6 +17,16 @@
 
 
 
+
+## 2026-10-02 · 🧭 «google push und coole fein kategorien»: KI-Feinpfade bei Google + Babykleidung im Shop
+Bulk-Export: 48'132 im Google-Kanal, ~7'100 in Zweigen mit Unterpfaden (Electronics 1'200, Decor 1'095 …), Titelregeln
+erschöpft. `google_fein_ki.py`: Gemini + ChatGPT wählen aus den echten Unterpfaden des BISHERIGEN Werts, Schreiben nur bei
+Einigkeit (Trockenläufe: 0 Fehlgriffe gesehen, ~50 % bleiben grob). 4 parallele Arbeiter → ChatGPT 429 (11× in 10 min) →
+Wartefunktion + 2 Arbeiter, im Aufseher bis Fertig-Marke. Shop: Kollektionen nach `PRODUCT_CATEGORY_ID_WITH_DESCENDANTS`
+(Babykleidung 133, Strampler & Bodys 30, Sets 66) — selbstpflegend, weil die Kategorie-Wache Neuware stündlich einordnet.
+**Falle wieder:** Menüpunkt vom Typ COLLECTION bekommt `/en/…` = 404 → als HTTP-Link `/collections/…` setzen (wie alle anderen).
+**Falle:** «im jungen Casual-Stil» / «Mädchenstil» sind Erwachsenenmode — Kinderwort-Regex braucht Ausnahmen. → `dropship/GOOGLE-FEIN-KI-2026-10-02.md`
+
 ## 2026-10-02 · 👶 Verbesserungsrunde: «Baby & Kinder» ohne Kategorie (Shopify + Google)
 Ampel 07:31: ~285 aktive ohne Shopify-Kategorie, 119 «unbekannte Typen». Der Grind (wieder an seit 01.10.) legte die Typen
 «Baby & Kinder» (96, alles Kinderkleidung) und «Büro & Home Office» (7) an; `kategorie_wache.py` rät bei unbekannten Typen
