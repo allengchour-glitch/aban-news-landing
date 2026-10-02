@@ -2874,3 +2874,5 @@ sportliche-multifunktionsuhr-601700	2602080556201602000	7	6.49	ok	landeseite
 studenten-becher-mit-spruhfunktion-580-ml-614200	2607130731261615200	16	10.29	ok	landeseite
 sweet-spot-trainer-fur-prazises-tennis-trainin-610800	2607250354111613900	16	5.41	ok	landeseite
 titan-trinkflasche-mit-strohhalm-660-ml-626900	2607081224551627500	16	14.60	ok	landeseite
+stehkragen-hemd-mit-3-4-armeln-621200	2607040047201621900	16	8.11	ok	landeseite
+stern-bodysuit-kit-606900	2607290842461607701	16	7.15	ok	landeseite
