@@ -1,0 +1,18 @@
+{
+ "datum": "2026-10-02 18:28:32.726601",
+ "auto_vorher": {
+  "id": "gid://shopify/DiscountAutomaticNode/2349744324993",
+  "title": "Gratis-Versand ab CHF 49",
+  "minimum": "49.0",
+  "status": "ACTIVE"
+ },
+ "code_vorher": {
+  "id": "gid://shopify/DiscountCodeNode/2341638996353",
+  "title": "Free Shipping ab CHF 49",
+  "code": "FREESHIP49",
+  "minimum": "49.0",
+  "status": "ACTIVE",
+  "nutzungen": 0
+ },
+ "grund": "Betreiber 02.10. «49 50 entscheide du 50 ist doch?» → Versprechen bleibt ab CHF 50; Versandregel ≥45 nach Rabatt deckt alles ab"
+}

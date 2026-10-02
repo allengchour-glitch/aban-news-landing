@@ -4,6 +4,10 @@
 versandschwelle_rabatt.py — «Gratis-Versand ab CHF 50» auch dann einhalten,
 wenn der Automatik-Rabatt den Warenkorb rechnerisch unter 50 drueckt.
 
+STAND 02.10.2026 (Betreiber «49 50 entscheide du 50 ist doch?»): Versprechen = CHF 50, Tarif >= 45 nach Rabatt
+(unverändert). Der überflüssige Automatik-Rabatt «… ab CHF 49» heisst jetzt «Gratis-Versand ab CHF 50» (Minimum 50),
+der nie benutzte Code FREESHIP49 ist deaktiviert (Altwerte: dropship/_versandschwelle_50_2026-10-02.json).
+
 BEFUND (FEHLERSUCHE-14-08.md, Abschnitt [rabatte], live nachgeprueft 2026-08-14)
 ------------------------------------------------------------------------------
 Die Ankuendigungsleiste und rund 31'000 Produkt-, Kollektions- und Blogtexte
