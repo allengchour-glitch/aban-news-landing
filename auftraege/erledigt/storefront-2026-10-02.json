@@ -4,8 +4,8 @@
   "skript": "storefront_wahrheit.mjs",
   "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
   "stand": "ok",
-  "begonnen": "2026-10-02T01:18:10.725Z",
-  "dauer_s": 68.3,
+  "begonnen": "2026-10-02T21:14:12.195Z",
+  "dauer_s": 62.9,
   "ergebnis": {
     "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
     "befunde": [
@@ -24,10 +24,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 7088,
+        "zeichen": 6978,
         "zeichen_spanne": [
-          7067,
-          7140
+          6957,
+          6978
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-02-startseite.png"
       },
@@ -46,10 +46,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 3890,
+        "zeichen": 3902,
         "zeichen_spanne": [
-          3890,
-          3890
+          3902,
+          3902
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-02-kollektion.png"
       },
