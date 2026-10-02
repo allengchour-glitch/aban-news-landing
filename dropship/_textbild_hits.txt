@@ -16238,3 +16238,4 @@ gid://shopify/Product/15454248698241	49->1	Dünne, durchsichtige Leggings
 gid://shopify/Product/15454384619905	29->1	Aromatherapie-Nebelduftuhr
 gid://shopify/Product/15455486673281	22->0	Elektrisches Mitesser-Entferner-Gerät
 gid://shopify/Product/15463587250561	42->0	SIKAI Schutzglas für GPW 2. Gen.
+gid://shopify/Product/15485538763137	10->3	Mini-Gaskocher für Outdoor & Camping

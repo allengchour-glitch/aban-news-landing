@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-02T08:29:06Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-02T08:32:39Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1257 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4625** in 1233 Produkten
-- Treffer (≥ 4 Wörter): **187** in 158 Produkten
+- Medien geprüft: **4725** in 1261 Produkten
+- Treffer (≥ 4 Wörter): **188** in 159 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -79,6 +79,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Smart-Armbanduhr mit Herzfrequenz- und Blutsauer `15453778411905` | [69926716244353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a7c63c5-36db-464a-a086-26ad34f0f8c8_trans.jpg) | 11 | GPS Outdoor sports smart watch Smart Watch Fearless | offen |
 | Smarte Helmleuchte fürs Radfahren `15453769466241` | [69926689702273](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fdfc0dfa-7ab7-41f0-b10e-03b749c90bea.jpg) | 11 | Breathable DESIGN and ventilated and comfortable summer The | ENTFERNT |
 | Wärmeweste mit Leinsamenfüllung `15453777691009` | [69926714081665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3fef8624-ed85-4cbd-9977-ea72f57a8e7c.jpg) | 11 | Comfortable Warm Compress Friendly Fit COMFORTABLE AND WARM | ENTFERNT |
+| Langlebiges Kauspielzeug für Hunde `15453790994817` | [69926763856257](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4fc8fac9-cd38-47ae-9337-2f4561d43a66_trans.jpg) | 11 | Simulation snake pattern waist twisting and stantly activates | offen |
 | Grillabdeckung aus Oxford-Gewebe `15448959910273` | [69862680527233](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/09436e7d-1a60-47bf-8225-e236c3f372d9.jpg) | 10 | Suitable for most machines with width Please ensure | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [69926292881793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c946bda-8782-4759-9d82-90a6b13f1808.jpg) | 10 | Intelligent perception obstacle avoidance Four way detection and | ENTFERNT |
 | Intelligenter Futtermanger `15453764714881` | [69926639731073](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30ca7178-06d7-4015-809a-de4d4490f015_fine.jpg) | 10 | Fully Automatic Feeding Remote Mobile Control Full Machine | ENTFERNT |
