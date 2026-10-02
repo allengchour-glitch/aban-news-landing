@@ -2860,3 +2860,5 @@ romer-sandalen-mit-cutouts-und-hohem-schaft-622100	2603260807381622400	16	12.56	
 sandalen-mit-punktabsatz-604000	2507060549371604200	16	14.84	ok	landeseite
 silberarmreif-geburstet-633500	2603271239121633900	16	5.12	ok	landeseite
 rundes-handgemachtes-tablett-aus-stroh-613600	2510130531101613800	16	10.29	ok	landeseite
+sonnenbrille-chrome-polarisiert-color-changing	2605250828341607300	5	5.50	ok	landeseite
+sonnenbrille-photo-selbsttonend-polarisiert	2605270106561617600	5	5.48	ok	landeseite
