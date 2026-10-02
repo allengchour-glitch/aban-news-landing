@@ -16277,3 +16277,10 @@ gid://shopify/Product/16603331035527	74->3	Weisser Baumwollmantel mit Kapuze
 gid://shopify/Product/16603331395975	12->0	Mittelgrosser Wollmantel mit Kapuze
 gid://shopify/Product/16603331658119	151->0	Ammulliger, hufstarker Mantel
 gid://shopify/Product/16603331920263	9->0	Schwarzer Mantel mit Kapuze, 100 cm Länge
+gid://shopify/Product/16603332411783	14->0	Weicher Baumwollmantel mit Lammwollfutter
+gid://shopify/Product/16603332641159	9->0	Weitläufiger, mit Kapuze, schwarzer Mantel – 1XL-5XL
+gid://shopify/Product/16603333067143	29->2	Schwarzer Wollschal mit Vintage‑Look
+gid://shopify/Product/16603333165447	15->0	Silberne Low‑Top Sandalen mit Glitzer
+gid://shopify/Product/16603333689735	43->3	12V Solarpanel aus polykristallinem Silizium
+gid://shopify/Product/16603333722503	11->0	Schwarzer Langmantel mit Fellkragen
+gid://shopify/Product/16603333853575	78->1	Quasten Fashion Jacquard Kapuzen-Cape

@@ -99,6 +99,34 @@ def live_preis(handle):
     return p["status"], f'{float(p["priceRangeV2"]["minVariantPrice"]["amount"]):.2f}', f'{float(p["priceRangeV2"]["maxVariantPrice"]["amount"]):.2f}'
 
 
+def shopify_quelle(handle, pid):
+    """02.10.2026: Rückfall, wenn der Server-Download (auftraege/ergebnis/*-rq-<pid>.mp4) fehlt — die Reels wurden aus dem
+    Produktvideo gebaut, das am Shopify-Produkt hängt (Tag video-hit), und das Shopify-CDN ist von hier erreichbar.
+    Gemessen nach der Preissenkung: 29 von 31 gesperrten Reels «keine Quelle». Cache /tmp/reel_quellen/ (nie ins Repo)."""
+    if not handle:
+        return []
+    ziel = f"/tmp/reel_quellen/{pid}.mp4"
+    if os.path.exists(ziel) and os.path.getsize(ziel) > 100_000:
+        return [ziel]
+    sys.path.insert(0, os.path.join(REPO, "automation"))
+    import heilversprechen_wache as hw
+    r = hw.gql('query($h:String!){productByHandle(handle:$h){media(first:20){nodes{... on Video{sources{url mimeType height}}}}}}',
+               {"h": handle})
+    p = ((r.get("data") or {}).get("productByHandle")) if isinstance(r, dict) else None
+    quellen = [s for n in ((p or {}).get("media") or {}).get("nodes", []) for s in (n.get("sources") or [])
+               if s.get("mimeType") == "video/mp4"]
+    if not quellen:
+        return []
+    beste = sorted(quellen, key=lambda s: (s.get("height") or 0) > 1080, )
+    beste = sorted([s for s in quellen if (s.get("height") or 0) <= 1080] or quellen, key=lambda s: -(s.get("height") or 0))[0]
+    os.makedirs("/tmp/reel_quellen", exist_ok=True)
+    rc = subprocess.run(["curl", "-sL", "--max-time", "300", "-o", ziel + ".tmp", beste["url"]]).returncode
+    if rc != 0 or not os.path.exists(ziel + ".tmp") or os.path.getsize(ziel + ".tmp") < 100_000:
+        return []
+    os.replace(ziel + ".tmp", ziel)
+    return [ziel]
+
+
 VERSAND = re.compile(r"(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?", re.I)
 
 
@@ -140,8 +168,11 @@ def main():
         pid = r["id"][len("cjreel-"):]
         lokal = f"social/reels/reel_{pid}.mp4"
         if not os.path.exists(lokal):
-            continue
-        b = fensterbreite(lokal)
+            if MODUS != "preis":
+                continue
+            b = 0      # 02.10.2026: Preis-Reparatur braucht das alte Reel nicht (Quelle reicht), nur Musik-Erkennung fällt weg
+        else:
+            b = fensterbreite(lokal)
         if MODUS == "fenster" and b >= MIN_BREITE:
             continue
         q = sorted(glob.glob(f"auftraege/ergebnis/*-rq-{pid.lower()}.mp4"))
@@ -157,9 +188,13 @@ def main():
             if lp[1] != lp[2]:
                 erg.append((pid, b, "UEBERSPRUNGEN", f"Preisspanne {lp[1]}–{lp[2]} (Variantenpreise) — von Hand")); continue
             preis = lp[1]; cap = caption_preis(cap, preis)
+        if not q:
+            hd2 = re.search(r"/products/([a-z0-9-]+)", cap)
+            q = shopify_quelle(hd2.group(1) if hd2 else "", pid)
         if not (q and titel and preis):
             erg.append((pid, b, "UEBERSPRUNGEN", "keine Quelle" if not q else "Caption ohne Titel/Preis")); continue
-        mus = subprocess.run(["python3", "automation/music/produce/musik_erkennen.py", lokal], capture_output=True, text=True).stdout.split("\t")
+        mus = subprocess.run(["python3", "automation/music/produce/musik_erkennen.py", lokal], capture_output=True,
+                             text=True).stdout.split("\t") if os.path.exists(lokal) else []
         stueck = mus[1] if len(mus) >= 5 and mus[4].strip() == "sicher" else "luxe-adventure-uplift.wav"
         ein = json.load(open("automation/music/_einstiege.json")).get(stueck, {}).get("einstiege", [0])[0]
         z1, z2 = zeilen(titel)

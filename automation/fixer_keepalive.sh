@@ -657,6 +657,22 @@ while true; do
         >> /tmp/reel_tor_reparatur.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start reel_tor_reparatur (täglich)"
   fi
+  # 🏷️ REEL-PREIS-REPARATUR alle 3 h (02.10.2026): nach der Preissenkung (350'008 Varianten, −11 %) sperrte der Säuberer
+  # 12 von 18 wartenden Reels als preis-veraltet — die Tages-Reparatur oben war schon gelaufen, die Queue wäre bis morgen
+  # leergelaufen. Läuft nur, wenn preis-veraltet-skip-Zeilen warten; Quelle: Server-Download oder Shopify-Produktvideo.
+  RPR=/tmp/reel_preis_reparatur.log
+  if [ -f "$REPO/automation/reel/reel_neu_rendern.py" ] && grep -q ',preis-veraltet-skip,' "$REPO/automation/reels_seed.csv" 2>/dev/null; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RPR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 10800 ]; then
+      touch "$RPR"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_reel_tor_reparatur.lock; flock -n 9 || exit 0; echo START \$(date -u +%FT%H:%MZ); \
+           MODUS=preis SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
+           bash automation/git_sichern.sh 'Reel-Preis-Reparatur [skip ci]' social/reels automation/reels_seed.csv" \
+          >> "$RPR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) start reel_preis_reparatur (3 h, wartende preis-veraltete Reels)"
+    fi
+  fi
   # ✎ FB-CAPTION-KORREKTUR (23.09.2026, Betreiber «bearbeite selber wens nicht stimmt wie zb versandkosten»): feste
   # Ersetzungstabelle (Blitzversand/«in 1–2 Tagen»/CHF 65/Lockpreis), 45 s Takt, Abbruch beim ersten Meta-Sperrhinweis.
   # Erstlauf 23.09.: 7 von 25, dann Spam-Sperre nach 120 Löschungen — der tägliche Lauf macht dort weiter.
