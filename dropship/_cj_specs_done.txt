@@ -2835,3 +2835,5 @@ ol-gemalde-zum-selbermachen-028672	gesetzt-2
 5-kamera-fahrzeugrecorder-276993	gesetzt-3
 1080p-autorekorder-mit-4-linsen-und-nachtsicht-605505	gesetzt-3
 1080p-dashcam-mit-4-kameras-und-nachtsicht-212930	gesetzt-3
+1080p-hd-fahrzeugrekorder-mit-4-kameras-hd-nac-523970	gesetzt-3
+5-kamera-fahrzeugaufzeichner-1080p-hd-nachtsic-642050	gesetzt-3
