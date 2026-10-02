@@ -1,4 +1,4 @@
-# Klassen-Kontrolle (VOLLSCAN, 49199 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 49537 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
@@ -19,7 +19,7 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Auswahl-Versprechen bei EINER Variante — 1742
+## Auswahl-Versprechen bei EINER Variante — 1746
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -52,5 +52,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448913871233` Lederrucksack für Herren
 - `15448914592129` Freizeit-Schultertasche
 - `15448918622593` Ma Pi Brusttasche aus Echtleder
-- … und 1717 weitere
+- … und 1721 weitere
 

@@ -285,3 +285,5 @@ gid://shopify/Product/15532286869889	multifunktionaler-edelstahl-taschenlampen-s
 gid://shopify/Product/16603322450311	plus-size-hooded-baumwoll-kissenmantel-627500	Plus‑Size Hooded Baumwoll‑Kissenmantel
 gid://shopify/Product/16603325006215	mittelgrosser-mantel-mit-3d-muster-621700	Mittelgrosser Mantel mit 3D-Muster
 gid://shopify/Product/16603331658119	ammulliger-hufstarker-mantel-611500	Ammulliger, hufstarker Mantel
+gid://shopify/Product/16603590099335	klassisches-pullover-top-in-schwarz-grau-oder-619200	Klassisches Pullover‑Top in Schwarz, Grau oder Weiss
+gid://shopify/Product/16603590197639	feuchtigkeitsspendender-lippenbalsam-987968	Feuchtigkeitsspendender Lippenbalsam
