@@ -1,0 +1,34 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-02-3",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 3 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-02T20:24:05.663Z",
+  "dauer_s": 60.1,
+  "ergebnis": {
+    "gepinnt": [
+      "blumenkleid-mit-schnurung-613000"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 16, offen 149",
+      "Boards auf dem Profil: /luxestyleCH/home-geschenkideen/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 823 Z.): Titel nicht da",
+      "Bild 447815 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (869 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-3-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-3-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-3-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "blumenkleid-mit-schnurung-613000",
+      "board": "Sommerkleider & Damenmode 2026",
+      "title": "Blumenkleid mit Schnürung"
+    }
+  }
+}

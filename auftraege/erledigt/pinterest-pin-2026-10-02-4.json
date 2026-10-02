@@ -1,0 +1,34 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-02-4",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 4 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-02T20:25:07.627Z",
+  "dauer_s": 61.8,
+  "ergebnis": {
+    "gepinnt": [
+      "e-scooter-lithium-akku-ladegerat-605700"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 17, offen 148",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 642 Z.): Titel nicht da",
+      "Bild 76174 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (723 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-4-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-4-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-4-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "e-scooter-lithium-akku-ladegerat-605700",
+      "board": "Home & Geschenkideen",
+      "title": "E-Scooter Ladegerät 42 V / 2 A · EU-Stecker, Xiaomi-Anschluss"
+    }
+  }
+}
