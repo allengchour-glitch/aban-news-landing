@@ -1,35 +1,35 @@
-# Preis-Verlustschutz — scharf 2026-10-02 09:23 UTC
+# Preis-Verlustschutz — scharf 2026-10-02 15:59 UTC
 
 Regel: Preis ≥ Mindestpreis bei **25% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **403** · Varianten gehoben: **3133** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.21× · Varianten ohne EK (nicht geprüft): 1336
-- geschrieben: 403 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **358** · Varianten gehoben: **3405** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 2.14× · Varianten ohne EK (nicht geprüft): 1336
+- geschrieben: 358 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Aufblasbares Halloween-Kostüm für zwei Personen | 40.90 | 34.55 | **48.90** | 1.20× |
-| Corduroy Shirt mit Streifenkragen, lange Ärmel | 35.90 | 30.59 | **43.90** | 1.22× |
-| Solarer Weihnachtsbaum für Garten | 23.90 | 19.70 | **27.90** | 1.17× |
-| Cashmere Beanie für Männer und Frauen | 21.90 | 18.55 | **26.90** | 1.23× |
-| Winddichte Ski-Handschuhe M/L – Polyester | 19.90 | 16.59 | **23.90** | 1.20× |
-| Klassischer Wollschal mit Mesh-Muster | 21.90 | 18.58 | **26.90** | 1.23× |
-| Kreisförmiger Fliegenabwehrventilator | 30.90 | 26.42 | **37.90** | 1.23× |
-| Kabelloser Edelstahl‑Bürstenkopf zum Grillreinig | 28.90 | 24.33 | **34.90** | 1.21× |
-| Genuine Leder Geldbörse mit Anti‑Diebstahl‑Riege | 33.90 | 26.92 | **38.90** | 1.15× |
-| Kompakte Powerbank 10 000 mAh mit Dual‑Display | 16.90 | 12.68 | **18.90** | 1.12× |
-| Grosser Edelstahl-Vakuumbecher 900 ml | 16.90 | 12.72 | **18.90** | 1.12× |
-| Ankle Boots mit 10 cm Plattform‑Absatz | 41.90 | 35.12 | **49.90** | 1.19× |
-| USB Sternprojektor mit austauschbaren Filmdiscs | 19.90 | 15.35 | **21.90** | 1.10× |
-| Fleece‑gefülltes Hoodie mit Kordel | 32.90 | 27.70 | **39.90** | 1.21× |
-| Wadenhohe Lederstiefel mit Schnallen-Design | 32.90 | 27.94 | **39.90** | 1.21× |
-| Weiche Winterbettmütze und rutschfeste Hausschuh | 24.90 | 20.56 | **29.90** | 1.20× |
-| Krokodillmuster Lederschuhe mit Metallbremse | 33.90 | 28.25 | **39.90** | 1.18× |
-| Cowboy-Longsleeve-Kleid in Dunkelblau | 23.90 | 19.68 | **27.90** | 1.17× |
-| Gaming‑Set mit beleuchteter Tastatur, Maus, Head | 50.90 | 43.18 | **60.90** | 1.20× |
-| Gepardenmuster Schal mit Pompons | 20.90 | 17.48 | **24.90** | 1.19× |
-| Retro-Blumen-Schal aus Polyester | 22.90 | 19.27 | **27.90** | 1.22× |
-| Doppelseitiger Schal mit Herzmuster – 185×65 cm | 22.90 | 19.27 | **27.90** | 1.22× |
-| Patchwork-Leopard‑Schal in Retro‑Stil | 22.90 | 19.27 | **27.90** | 1.22× |
-| Winter-Schal aus Wollmischung | 22.90 | 19.03 | **27.90** | 1.22× |
-| Elektrischer Schal mit drei Heizstufen aus Kunst | 21.90 | 18.01 | **25.90** | 1.18× |
+| Wokpfanne aus reinem Titan | 47.90 | 70.79 | **99.90** | 2.09× |
+| Edelstahl-Bratpfanne mit Wabenstruktur | 15.90 | 22.77 | **32.90** | 2.07× |
+| Schneidebrett aus massivem Teakholz | 19.90 | 32.90 | **46.90** | 2.36× |
+| Keramikurne für Haustierasche | 16.90 | 29.25 | **41.90** | 2.48× |
+| Schachbrett-Schneidebrett aus Kautschuk- und Ebe | 38.90 | 55.27 | **77.90** | 2.00× |
+| Samt-Lendenkissenbezug ohne Füllung (6er-Set) | 22.90 | 32.63 | **46.90** | 2.05× |
+| Elastischer Antirutsch-Sofabezug mit Streifenmus | 15.90 | 21.92 | **31.90** | 2.01× |
+| Vintage Sofakissen im französischen Stil | 23.90 | 40.16 | **56.90** | 2.38× |
+| Hohlweb-Kissen im Bambus-Look | 15.90 | 24.80 | **35.90** | 2.26× |
+| Partnerlook Sweatshirts für Familien | 14.90 | 20.44 | **29.90** | 2.01× |
+| Freizeit-Hoodie-Set für Damen | 15.90 | 22.01 | **31.90** | 2.01× |
+| Sportlicher Patchwork-Trainingsanzug für Damen | 14.90 | 20.81 | **29.90** | 2.01× |
+| Sportliches Fleece-Set mit Schriftzug-Print | 14.90 | 20.52 | **29.90** | 2.01× |
+| Weihnachts Pyjama-Sets für die ganze Familie | 14.90 | 20.67 | **29.90** | 2.01× |
+| Kinder Patchwork Rollkragenpullover | 15.90 | 22.07 | **31.90** | 2.01× |
+| Pyjama-Set für die ganze Familie | 14.90 | 21.34 | **30.90** | 2.07× |
+| Elegante Kaschmir-Weste für Damen | 14.90 | 20.53 | **29.90** | 2.01× |
+| Leichte Outdoor-Sandalen für Damen | 27.90 | 39.19 | **55.90** | 2.00× |
+| Herren High-top Wildleder Loafer | 23.90 | 40.39 | **56.90** | 2.38× |
+| Sportliche Low-Top Sneaker mit dicker Sohle | 22.90 | 35.28 | **49.90** | 2.18× |
+| Herren Sneaker mit dicker Sohle | 31.90 | 44.86 | **63.90** | 2.00× |
+| Chunky Plateau-Sandalen mit offenem Zeh | 17.90 | 24.88 | **35.90** | 2.01× |
+| Leichte Canvas Slipper für Herren | 17.90 | 24.95 | **35.90** | 2.01× |
+| Schwarze Sport-Sneaker | 16.90 | 23.35 | **33.90** | 2.01× |
+| Chelsea Stiefel | 24.90 | 36.62 | **51.90** | 2.08× |
