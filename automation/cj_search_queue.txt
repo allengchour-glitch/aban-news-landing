@@ -8,6 +8,10 @@
 # 2026-10-02 google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen
 # 2026-10-02 Semrush-Sortimentslücke (CH-Suchvolumen, von 2 Prüfern bestätigt): stehlampe 9900/Mt, orthopädisches hundebett 880/Mt
 # 2026-10-02 Semrush-Sortimentslücken 2 (CH-Suchvolumen, beide Prüfer): skianzug 1900, unterhosen herren 1300, messschieber 880, pilates ring 720, kartoffelpresse 720, rolltop rucksack 390, wickelrock 390, steppweste damen 260, katzentunnel 260, sneaker socken 210
+# 2026-10-02 Dünne Kategorien (Tag 4): 3D-Filament 7, Elektrowerkzeug 7 aktive Produkte
+search:pla filament 1.75mm
+search:cordless drill set
+search:mini cordless angle grinder
 search:ski suit
 search:men cotton boxer briefs
 search:stainless steel vernier caliper
