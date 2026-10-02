@@ -2890,3 +2890,12 @@ lenkradbezug-aus-kunstleder-633600	gesetzt-2
 suede-lenkradbezug-622300	gesetzt-3
 carbon-faser-lenkradbezug-615700	gesetzt-3
 lenkradbezug-universal-610100	gesetzt-1
+notstarter-akku-619700	gesetzt-3
+tragbarer-reifenpump-597185	gesetzt-3
+auto-notstarter-734913	gesetzt-3
+bagger-scooter-966465	nicht-aktiv
+auto-notstarter-12v-296258	gesetzt-2
+carbon-zundschalter-608000	gesetzt-1
+auto-booster-800a-852098	gesetzt-3
+auto-heizer-627000	gesetzt-3
+notstart-powerbank-12v-147136	gesetzt-1
