@@ -91,6 +91,16 @@ export function istBeleuchtung(text, typ = '') {
 export const PARFUM_JA = /parfum|eau de (?:parfum|toilette|cologne)|\bcologne\b|\bedt\b|\bedp\b|body.?mist|\bperfume\b|(?:herren|damen|unisex)duft|duftwasser/;
 export const PARFUM_NEIN = /\bauto\b|\bcar\b|lufterfrischer|diffuser|duftstab|kerze|raumduft|reinig|nagel|waschmittel|weichspul|parfumflasche|parfum-?flasche|zerstaub|atomizer|probenflasche|\bleer|geschenkset|uhr\b|portemonnaie|brieftasche|duftol|atherisch|aetherisch/;
 
+// ── SAISON (02.10.2026, 12-Tage-Plan Tag 2) ────────────────────────────────────────────────
+// Startseiten-Reihe «Halloween» (Kollektion `halloween`, Regel Tag = halloween) bekam seit dem Grind-Neustart keine
+// CJ-Neuware: nur Fortura/BigBuy setzten das Tag. Bewusst NUR auf dem TITEL (+ EN-Lieferantenname), nicht auf dem
+// Suchbegriff — «halloween decoration» liefert auch neutrale Lampen und Kissen. Bestand: automation/saison_tags_nachtragen.py
+// (gleiche Regel, Tageswächter).
+export function saisonTags(titel, nameEn = '') {
+  const s = normTitel(titel + ' ' + nameEn);
+  return /halloween/.test(s) ? ['halloween'] : [];
+}
+
 export function catTags(text) {
   const s = ' ' + (text || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '') + ' ';
   const istFahrzeug = FAHRZEUG.test(s);

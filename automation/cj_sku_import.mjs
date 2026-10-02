@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
-import { catTags } from './cat_tags.mjs';
+import { catTags, saisonTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
@@ -211,7 +211,8 @@ for (const item of ITEMS) {
       ...(tsch ? ['tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
       ...((med || tsch) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
-      ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])];
+      ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`),
+      ...saisonTags(title, d.productNameEn || '')])];   // Halloween-Reihe (02.10.), nur Titel/EN-Name
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
     status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,

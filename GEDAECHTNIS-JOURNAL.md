@@ -16,6 +16,9 @@
 
 
 
+## 2026-10-02 · 🎃 Halloween-Reihe ohne Neuware (Saison-Tag fehlte im CJ-Importer)
+12-Tage-Plan Tag 2 (Herbst/Halloween auf der Startseite). Die Halloween-Reihe hängt an einer Smart-Kollektion (Tag `halloween`, neueste zuerst) — und zeigte trotzdem den 03.09. als neuesten Artikel, obwohl seit 01.10. 16:20 Halloween-Ware importiert wird. Ursache: das Tag setzten nur Fortura- und BigBuy-Importer; der CJ-Importer kennt `catTags` (Kategorien), aber keine Saison. Fix: `saisonTags()` in cat_tags.mjs (nur Titel + EN-Lieferantenname, NICHT der Suchbegriff — eine Halloween-Suche liefert auch neutrale Lampen) + Bestand-Wächter `saison_tags_nachtragen.py` (täglich, scharf, nur hinzufügen). 9 nachgetragen, Reihe 8/8. **Lehre:** Eine «selbstfrische» Smart-Kollektion ist nur so frisch wie der Importer, der ihr Tag setzt — bei jedem neuen Importer fragen: welche Kollektions-Tags erwartet die Startseite?
+
 ## 2026-10-01 · 🔤 Halb übersetzte Neuimport-Titel (Denglisch)
 Verbesserungsrunde 20:25: 255 Neuimporte seit Grind-Start, Google-Kategorie bei allen gesetzt, aber Titel wie «Halloween Witch Hat Nachtlicht», «Orca & Diver Epoxy Resin Tischlampe». `titel_sprache.mjs` prüft «alle Wörter im CJ-Namen» — EIN deutsches Kopfwort genügt als Gegenbeweis; `titel_kauderwelsch_wache.py` suchte Nicht-Wörter und nahm Englisch ausdrücklich aus. Erweiterung: Prompt meldet auch stehengebliebenes Englisch mit gängigem deutschem Wort; «falsch» wortweise verglichen (Wortfolge vs. Einzelwörter liess einige Modelle als uneinig gelten); Ersatz ohne Leerzeichen verglichen. Kanarienvögel 11/11, Trockenlauf → scharf: 32 korrigiert, 57 gemeldet. **Lehre:** Meine Regex-Handzählung fand 6, die Modelle 32 — Mode-Wörter (Coat, Tassel, Quilted, Mid-Length) stehen in keiner Stichwortliste. Eine Klasse erst mit dem Werkzeug zählen, das sie auch beheben soll.
 
