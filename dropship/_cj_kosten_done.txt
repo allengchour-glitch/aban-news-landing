@@ -41130,3 +41130,14 @@ gid://shopify/Product/15492130013569	CHF 32.32	1 Varianten	Staubdichtes Display-
 gid://shopify/Product/15492130046337	CHF 9.48	1 Varianten	Retro Patchwork Geist Anhänger mit Halloween-Beleu
 gid://shopify/Product/15492130111873	CHF 9.48	1 Varianten	Halloween Countdown Kalender Set
 gid://shopify/Product/15492130144641	CHF 25.58	1 Varianten	Memory Foam Sitzkissen für Zuhause & Büro
+gid://shopify/Product/15447946363265	CHF 34.26	4 Varianten	Strickmütze für Herbst & Winter
+gid://shopify/Product/15447946658177	CHF 36.80	3 Varianten	Baseball Cap – Sonnenschutz mit Stil
+gid://shopify/Product/15447986569601	CHF 18.87	3 Varianten	Eleganter High-Neck Tankini für Damen
+gid://shopify/Product/15447986733441	CHF 22.19	3 Varianten	Eleganter Tankini mit hohem Kragen
+gid://shopify/Product/15447986831745	CHF 22.19	3 Varianten	Eleganter High-Neck Tankini mit verstellbaren Träg
+gid://shopify/Product/15447986864513	CHF 21.92	4 Varianten	Eleganter Tankini mit hohem Kragen und Bikinihose
+gid://shopify/Product/15447986995585	CHF 22.19	4 Varianten	High Neck Bikini Set für den Strand
+gid://shopify/Product/15447987356033	CHF 22.19	4 Varianten	High Neck Badekleid mit integriertem Bustier
+gid://shopify/Product/15447987487105	CHF 22.19	3 Varianten	Eleganter High-Neck Tankini für Damen · Modell 2
+gid://shopify/Product/15447987945857	CHF 21.79	4 Varianten	Elegantes zweiteiliges Damen-Bikini-Set
+gid://shopify/Product/15447988076929	CHF 21.92	4 Varianten	Eleganter Tankini mit hohem Halsausschnitt
