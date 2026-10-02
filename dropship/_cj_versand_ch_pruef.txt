@@ -2795,3 +2795,8 @@ magnetische-kuhlschrank-marker-631500	2605160519391632000	7	6.66	ok	landeseite
 mehrfarben-armbanduhr-620400	2512110234421620700	16	7.43	ok	landeseite
 manner-geldborse-mit-tri-fold-design-607600	2509190752181607800	16	6.33	ok	landeseite
 leichter-sommer-tee-631200	2606261233131631800	16	9.88	ok	landeseite
+magnetischer-handy-stander-aus-aluminium-633600	2606230302241634300	7	8.57	ok	landeseite
+magnetischer-telefonhalter-610000	2605290403521610700	7	5.52	ok	landeseite
+leuchtendes-diamond-painting-fur-erwachsene-557376	1380698203204227072	16	8.61	ok	landeseite
+maxikleid-mit-neckholder-und-knoten-614800	2606300245261615400	16	10.83	ok	landeseite
+leichter-business-rucksack-mit-grossem-volumen-606600	2509210938361606800	16	11.49	ok	landeseite
