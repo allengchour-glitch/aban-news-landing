@@ -1,5 +1,15 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 📈 2026-10-02 — Trading-Produkt pushen: KI-Trading-Bot-Seite
+> - **`ki-trading-bot.html`** (neu): fängt die Suche „KI Trading Bot", zeigt den eigenen Bot-Test (Auswendiglerner 100 % auf
+>   alten Kursen, auf neuen Jahren ≈ Anteil Anstiegstage; Regel-Bot vs. Halten), 7 Warnzeichen + 15-Min-Prüfliste mit Quellen
+>   (CFTC: Mirror Trading 1,7 Mrd $; BaFin: >700 KI-Websites ab 250 €; FINMA- und Kapo-ZH-Warnliste) und verkauft am Ende den
+>   **Strategie-Prüfstand** (Kaufknopf holt Stripe-Link aus `data/shop-products.json`, geprüft). Article+FAQ-JSON-LD.
+> - **Fund:** `trading-lernen.html` (bisher einzige Verkaufsseite) fehlte in `sitemap.xml` → ergänzt, ebenso die neue Seite.
+> - Bot-Check-Kasten (`data-aban-bot-check`) auf 7 Seiten (trading-tipps, sparplan-statt-trading, ki-aktien-hype-check,
+>   krypto-/etf-fuer-einsteiger, maerkte, ki-und-krypto-daten) + Satz-Link in trading-lernen.
+> - Werbe-/Post-Paket: `docs/werbung/strategie-pruefstand/ANZEIGEN.md` (3 Meta-Anzeigen ohne Krypto-Wörter, Reddit/LinkedIn/X).
+
 ## 🎯 2026-09-29 — Kontext-CTAs in 22 Top-Tools
 > Umsetzung der Recherche (gezielte Seite + passender Hinweis ≈ 5 % statt < 1 % generisch).
 > - **`tools/kontext_cta.py`** (idempotent, Marker `data-cta-kontext="<slug>"`): Tabelle Tool → Überschrift/
