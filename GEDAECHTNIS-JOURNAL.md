@@ -23,6 +23,14 @@
 
 
 
+
+## 2026-10-02 · 🧾 «2021 ist bezahlt»: CJ-Status «UNSHIPPED» ≠ unbezahlt
+Ich meldete #1021 als «wartet auf deine Zahlung in der CJ-Konsole». Live an der CJ-API (`shopping/order/list`): LX1021 ist
+bezahlt am 30.09. 23:37 (USD 21.55, CJPacket EQ Sensitive, Tracking EQKPT8612951662YQ). Bei CJ heisst UNSHIPPED «bezahlt,
+noch nicht versandt»; unbezahlt sind CREATED, IN_CART und UNPAID. Die Ampel druckte den Rohstatus → `bestell_ampel.py` schreibt
+ihn jetzt deutsch aus und hängt das Tracking an. `cj_zahlung_offen.py` hatte richtig «nichts offen» gemeldet.
+LEHRE: Rohstatus fremder Systeme nie ungedeutet weitermelden.
+
 ## 2026-10-02 · 🔎 «weiter push überall»: Google-Nachfrage hing an Entwürfen
 GEMESSEN 7 T: direkt 292 · TikTok 182 · Facebook 81 · Google 14 (einziger Kanal mit Käufen). Social postet planmässig, kein Kanal steht still.
 Google pro Woche 84 → 10. Von 185 Produktseiten mit Google-Besuchern (150 T) sind 61 heute Entwürfe, und sie trugen 57 % der Sitzungen
