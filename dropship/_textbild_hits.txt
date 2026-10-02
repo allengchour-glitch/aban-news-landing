@@ -16463,3 +16463,4 @@ gid://shopify/Product/16604173664647	34->0	Aluminium-Backform für runde Kuchen
 gid://shopify/Product/16604173697415	85->0	Portabler Mini-Barbecue-Grill mit Holzkohle
 gid://shopify/Product/16604210823559	34->0	Backform für Pizza und Brot – rechteckig, antihaft
 gid://shopify/Product/16604210921863	39->0	Bambus-Pizzaschneidebrett 33x18 cm
+gid://shopify/Product/16604211380615	12->0	Tragebeutel mit Nass/Trocken-Trennung, wasserdicht

@@ -2867,3 +2867,12 @@ hud-display-furs-auto-285248	gesetzt-4
 gps-ortungsgerat-484480	gesetzt-4
 kopf-display-gps-geschwindigkeitsmesser-961152	gesetzt-2
 gps-auto-ortungsgerat-d21f56	gesetzt-3
+4-kamera-dashcam-675969	gesetzt-3
+gps-lokator-231c58	gesetzt-4
+gps-locator-mit-90-tage-batterie-mini-design-u-21579f	gesetzt-3
+mini-gps-tracker-fur-outdoor-auto-b7cf0e	gesetzt-4
+intelligenter-auto-duftverteiler-632200	gesetzt-3
+natur-agarholz-anhanger-080962	gesetzt-2
+premium-sojawachskerze-mit-rotwein-leder-espre-287874	gesetzt-1
+sojawachs-kerze-mit-orchideen-duft-825154	nicht-aktiv
+sojawachskerze-mit-zitrus-und-holznoten-ideal-181249	nicht-aktiv
