@@ -172,9 +172,10 @@ async function jmHasImported(extId) {
     // fremde Produkt (pid 2610011328081637100) → haette Reviews eines FREMDEN Produkts importiert (= Fake-Reviews).
     const strategies = [];
     if (/^\d{15,22}$/.test(sku)) strategies.push(['query/pid', '/product/query', { pid: sku }]); // numerische SKU = CJ-pid
+    // Varianten-SKUs (z. B. CJYS260671001AZ) treffen fast immer per variantSku → zuerst (spart CJ-Punkte).
     strategies.push(
-      ['query/productSku', '/product/query', { productSku: sku }],
       ['query/variantSku', '/product/query', { variantSku: sku }],
+      ['query/productSku', '/product/query', { productSku: sku }],
     );
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
