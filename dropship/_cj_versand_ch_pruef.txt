@@ -2631,3 +2631,5 @@ damen-chiffon-kleid-mit-halter-neck-und-stufen-609900	2606040708141600600	16	9.4
 dreieckiges-bettkissen-2332b1	-	-	-	unklar keine CJ-SKU	landeseite
 gaming-set-uk-943617	2042207010789687298	0	-	KEINE CH-Option → DRAFT	landeseite
 fitness-smart-armband-mit-schrittzahler-und-le-623600	2605100200311624300	7	5.09	ok	landeseite
+farbverlauf-lidschatten-stift-630600	2606040453161631200	3	5.22	ok	landeseite
+elektrischer-fleischwolf-5l-kuchenmaschine-656962	2046148911801921537	0	-	KEINE CH-Option → DRAFT	landeseite
