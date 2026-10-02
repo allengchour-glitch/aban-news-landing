@@ -1,0 +1,2032 @@
+{
+ "stand": "2026-10-02T18:10Z",
+ "luecken_meta": {
+  "gepruefte_begriffe": 424,
+  "verworfen_regeln": 85,
+  "verworfen_abgedeckt": 302,
+  "notizen": "ERGEBNIS: 30 Sortimentslücken gefunden, geordnet nach Volumen × (1 − KD/100). An der Spitze stehen hdmi kabel (3'600), trockenblumen (2'900), fidget toys (2'400), skianzug (1'900, jetzt in der Saison) und sofortbildkamera (1'600). Die Liste ist ungeprüft; nichts in die CJ-Queue übernehmen, bevor die Kandidaten wie beim Lauf vom 02.10. einen Zweitprüfer durchlaufen haben.\n\nUMFANG: Gleicher Filter wie beim Lauf vom 02.10.: Volumen ≥ 200, KD ≤ 40 und Intent mit 0 oder 3. Über alle 6 Dateien kategorie_suchvolumen_ch_*.csv bleiben 786 eindeutige Begriffe. 362 davon stammen aus den 4 älteren Dateien und wurden am 02.10. schon beurteilt (sortiment_luecken_gepruft…json). Neu geprüft habe ich sie nicht, weil sich die Eingaben nicht geändert haben: Die Produktliste hat weiterhin 49'963 Zeilen, und die Queue ist nur um floor lamp und orthopedic dog bed gewachsen. Neu geprüft: die 424 Begriffe aus produktarten (410) und verwandt-D (14). Die beiden neuen Dateien und die alten haben keinen Begriff gemeinsam. Keiner der 30 Kandidaten ist sinngleich mit einem der 9 schon beurteilten (3d drucker, stehlampe, edelweiss hemd, weingläser, fpv drohne, orthopädisches hundebett, nachtlicht steckdose, baby geschenkset, ipl gerät).\n\nAUFTEILUNG DER 424: 30 Kandidaten. Dazu «boxershorts herren» mit «unterhosen herren» zusammengelegt, also 31 Begriffe. 85 nach Regeln verworfen, 6 wegen CJ-Queue, 302 abgedeckt (≥ 5 echte Treffer).\n\nREGELN (85):\n- 25 Saison: Bikini, Badeanzug und -hose, Sommerkleider, Sandalen, Sonnenhut, Leinenhosen und -hemd, Ventilatoren, Kühlmatte, Fliegenvorhang, Insektenschutz, Bewässerung, Sonnenschutz Auto, Shorts, Schwimmbrille; Frühlingsjacke ist ebenfalls ausser Saison.\n- 19 Netzstecker: Wasser- und Reiskocher, Heissluftfritteuse, Föhn und Haartrockner, Glätter, Warmluft- und Föhnbürste, Standmixer, Smoothie Maker, Eierkocher, Dampfgarer, Saugroboter, Akku-Staubsauger, USB-C- und Schnellladegerät, TV-Box (dazu IPTV und Lizenzen).\n- 10 keine Produktbegriffe: accessoires, adapter, herren/damen mode, spielwaren, deko wohnzimmer, babyzubehör und Ähnliches.\n- 8 topische Kosmetik: Lipgloss, Lippenstift, Schminke, Make-up-Set, Lidschatten, Augenbrauenstift, Augenpads, Wimpernlifting.\n- 5 Kostüme (vorpruefung).\n- 4 Marken: Fressnapf, Landi.\n- 3 Duft/Flüssigkeit: Raumduft, Duftstäbchen, Autoduft.\n- 3 Glas/Bruch: Aquarium, Gewürzgläser, runder Spiegel.\n- je 1: LED-Maske (Therapie), Toilettenpapier (Verbrauchsgut), 18650-Akku und Stabfeuerzeug (Gefahrgut), Katzenbaum für grosse Katzen (Grossmöbel), Handheld-Konsole (vorinstallierte Lizenzspiele).\n\nvorpruefung() meldet nur die 5 Kostüme und lässt alle 30 Kandidaten durch. ist_handklinge ist für alle Kandidaten False.\n\nCJ-QUEUE (6), alle mit dünnem Bestand, aber sinngleich schon gesucht:\n- ear cuff (#done ear cuff), nur 3 aktiv.\n- siegelring herren (#done mens signet ring), nur 1 aktiv.\n- handykette (#done crossbody phone strap wallet / beaded phone charm strap), nur 1–2 aktiv.\n- schutzfolie handy (#done Panzerglas-Suchen).\n- solar lichterkette (#done string lights outdoor; zudem 6 aktiv).\n- fleischwolf (electric meat grinder 5l, offen).\n\nBei ear cuff, siegelring und handykette hat die CJ-Suche offenbar kaum etwas gebracht. Ein zweiter Suchbegriff könnte sich lohnen, z. B. «ear climber», «gold signet ring men» oder «phone lanyard crossbody».\n\nKNAPP ABGEDECKT (genau 5–6, darum kein Kandidat): tischläufer 5, klimmzugstange 5, autositzbezüge 5, kopfhörerständer 5, ergonomische maus 5, mechanische tastatur 5, magnetische bausteine 6, schuhregal 6, chelsea boots damen 6, mini drucker 6, gusseisen topf (5 Töpfe plus 2 Sets), windlicht (8 Kerzenhalter plus Laternen).\n\nKNAPPE KANDIDATEN (4 echte Treffer): spiralschneider, kunstblumen, bügelbilder, steppweste damen, fidget toys.\n\nFALSCHE TREFFER, DIE ICH HERAUSGERECHNET HABE:\n- aux traf Faux-Leder.\n- Patch traf Nagel-Patches.\n- Slip traf Slip-on-Schuhe und Slip-Dresses.\n- stress traf Distressed-Jeans.\n- Laterne traf Laternenärmel.\n- Wasserwaage zählte nicht als Küchenwaage.\n- Tongue traf Tongue Drums.\n- Kunstblumen-Bouquets aus Klemmbausteinen zählten nicht.\n- Warmluftbürsten zählten nicht als Rundbürste.\n- Werkzeugtaschen zählten nicht als Werkzeugkasten.\n\nHINWEIS: «werkzeugkoffer» (4'400, KD 15) und «katzenbaum» bestehen wegen Intent 1 bzw. 1,0 nur teilweise den Filter. «werkzeugkoffer» würde dieselbe Lücke wie werkzeugkasten treffen und ist darum in dessen Begründung erwähnt.\n\nHilfsskripte liegen nur im Scratchpad: …/scratchpad/luecke3/ (laden.py, z.py, batch.py, p1–p5.json, klass.py). Nichts ins Repo geschrieben, nichts committet, keine Semrush-Aufrufe."
+ },
+ "luecken": [
+  {
+   "suchbegriff": "hdmi kabel",
+   "volumen": 3600,
+   "kd": 18,
+   "intent": "0",
+   "aktive_treffer": 0,
+   "cj_suche": "hdmi cable 4k",
+   "beispiele": [
+    "HDMI-VGA-Umwandler (kein Kabel)",
+    "HDMI Switch 4x1 mit Audio-Extraktion (kein Kabel)",
+    "Mirascreen Anycast Wireless HDMI Dongle (kein Kabel)"
+   ],
+   "begruendung": "3'600 Suchen pro Monat bei KD 18. Von 16 aktiven HDMI-Artikeln ist keiner ein HDMI-Kabel. Es sind alles Adapter, Konverter, Switches, Dongles, Capture-Karten oder Konsolen.",
+   "risiko": "Tiefer Warenwert (CHF 10–15 gegen den Mindestpreis von 14.90), darum Längen bündeln (1/2/3 m). Kein Stecker- und kein Bruchproblem.",
+   "bestand": {
+    "suchbegriff": "hdmi kabel",
+    "behalten": true,
+    "grund": "Bestätigt: 0 HDMI-Kabel. 16 HDMI-Titel sind alle Adapter, Konsolen oder Dongles (z. B. «HDMI-VGA-Umwandler», «HDMI Switch 4x1»). In der Shopify-Volltextsuche taucht «HDMI-Kabel» nur als Lieferumfang von TV-Boxen auf. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "hdmi kabel",
+    "behalten": false,
+    "grund": "Vorprüfung ok, aber widerlegt: Massenware, die es in der Schweiz am selben Tag für CHF 5–12 gibt (Digitec, Coop, Media Markt). Bei CHF 14.90 Preisboden und 10–20 Werktagen Lieferzeit kauft das niemand. Dazu kommt die HDMI-Lizenz: China-Kabel ohne Lizenz tragen das geschützte HDMI-Logo, das Lizenzbüro lässt solche Ware vom Zoll beschlagnahmen (Regel Marken/Lizenzen). Im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "trockenblumen",
+   "volumen": 2900,
+   "kd": 13,
+   "intent": "0",
+   "aktive_treffer": 2,
+   "cj_suche": "dried flower bouquet",
+   "beispiele": [
+    "Gipsblumen-Bouquet getrocknet",
+    "Holzblumentopf mit getrockneten Blumen"
+   ],
+   "begruendung": "2'900 pro Monat bei KD 13. Echte Trockenblumen-Deko gibt es nur 2-mal. Die übrigen Treffer sind Schmuck mit Trockenblumen (Ohrhänger, Halskette), Kerzen, eine Vase für Trockenblumen und Nagel-Deko. Pampas, Lagurus und Schleierkraut fehlen ganz.",
+   "risiko": "Getrocknetes Pflanzenmaterial ist nicht lebend, also nicht ausgeschlossen. Trotzdem nur Ware ohne Samenstände nehmen (Pflanzengesundheit beim Zoll). Die Ware ist bruch- und bröselempfindlich und hat viel Volumen.",
+   "bestand": {
+    "suchbegriff": "trockenblumen",
+    "behalten": true,
+    "grund": "Bestätigt: nur 2 echte Trockenblumen-Deko-Artikel («Gipsblumen-Bouquet getrocknet», «Holzblumentopf mit getrockneten Blumen»). Die übrigen 7 Treffer sind Schmuck, Kerzen, Diffuser oder Vasen. Kein Pampasgras und keine Strohblumen. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "trockenblumen",
+    "behalten": false,
+    "grund": "Pflanzenmaterial: Typische CJ-Sträusse enthalten Pampasgras, Lagurus oder Samenstände. Ob der Pflanzenschutz das zulässt und ob invasive Neophyten wie Pampasgras überhaupt verkauft werden dürfen, ist für die CH ungeklärt. Getrocknete Blüten zerbröseln ausserdem auf 2–4 Wochen Transport (Bruchklasse). Nähe zur Regel lebende Pflanzen, im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "fidget toys",
+   "volumen": 2400,
+   "kd": 21,
+   "intent": "1,0",
+   "aktive_treffer": 4,
+   "cj_suche": "fidget toys set",
+   "beispiele": [
+    "Fidget Spinner Schlüsselanhänger – der Stresskiller",
+    "Ball Spinner",
+    "Toast Squishy Toy aus Silikon"
+   ],
+   "begruendung": "2'400 pro Monat. Es gibt nur 4 echte Fidget-Artikel (2 Spinner-Anhänger, 1 Ball Spinner, 1 Squishy). Pop-it, Knautschbälle und Sets fehlen. Die vielen «stress»-Treffer sind Distressed-Jeans und Ähnliches.",
+   "risiko": "Spielzeug: CE und Kleinteile-Warnung unter 3 Jahren beachten. Einzelteile sind billig, darum Sets nehmen, um über CHF 14.90 zu kommen.",
+   "bestand": {
+    "suchbegriff": "fidget toys",
+    "behalten": false,
+    "grund": "5 Treffer, wenn man den Fidget-Ring mitzählt: 2 Fidget Spinner («Fidget Spinner Schlüsselanhänger – der Stresskiller», «Fidget-Spinner Schlüsselanhänger»), «Toast Squishy Toy», «Ring Astra» (Beschreibung: «Fidget/Spinning-Ring», Anti-Stress) und «3D Holzpuzzle Dekompression Spielzeug». «Ball Spinner» ist dagegen ein akkubetriebenes Flugspielzeug und gehört nicht dazu. Grenzfall, daher nach der Regel «im Zweifel false»."
+   },
+   "regeln": {
+    "suchbegriff": "fidget toys",
+    "behalten": false,
+    "grund": "Kinderspielzeug ohne CE/EN71-Nachweis von CJ. Sets mit Fidget-Spielzeug enthalten regelmässig kleine starke Magnetkugeln/-ringe (bei Spielzeug in EU/CH verboten) und Squishies mit Phthalaten (wiederholte Rückrufe im EU Safety Gate). Spielzeug ist auch aus der Hype-Reihe ausgeschlossen, 4 aktive Treffer decken den Begriff schon. Im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "skianzug",
+   "volumen": 1900,
+   "kd": 15,
+   "intent": "0",
+   "aktive_treffer": 2,
+   "cj_suche": "ski suit",
+   "beispiele": [
+    "Unisex Wind- und wasserdichter Skianzug",
+    "Wasserdichter, winddichter Ski-Overall mit extra-dicker Isolierung",
+    "Unisex-Schneehose für Wintersport (nur Hose)"
+   ],
+   "begruendung": "1'900 pro Monat bei KD 15, und die Saison beginnt jetzt. Es gibt nur 2 echte Skianzüge, dazu 2 Ski- bzw. Schneehosen. Skijacken für Damen und Herren als Set fehlen. Bei 10–20 Werktagen ist die Ware Ende Oktober bis Mitte November da, also rechtzeitig zur Saison.",
+   "risiko": "Grössentabellen (asiatische Grössen) und viel Volumen. Mit «skianzug» ist nur Kleidung gemeint, Kostüme sind ausgeschlossen.",
+   "bestand": {
+    "suchbegriff": "skianzug",
+    "behalten": true,
+    "grund": "Bestätigt: nur 2 Skianzüge («Unisex Wind- und wasserdichter Skianzug», «Ski-Overall mit extra-dicker Isolierung»), dazu 2 Ski- bzw. Schneehosen (keine Anzüge). Kein Schneeanzug. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "skianzug",
+    "behalten": true,
+    "grund": "Keine Hausregel verletzt. Im Oktober genau richtig: Ankunft Ende Oktober/November, vor der Skisaison. Generische Ware, CJ führt Ski-Overalls und zweiteilige Anzüge, Kleidung geht ohne Zollproblem. Asiatische Grössen beim Import prüfen."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "sofortbildkamera",
+   "volumen": 1600,
+   "kd": 28,
+   "intent": "0",
+   "aktive_treffer": 0,
+   "cj_suche": "kids instant print camera",
+   "beispiele": [
+    "Kinderkamera (digital, ohne Druck)",
+    "Mini Fotodrucker (Drucker, keine Kamera)"
+   ],
+   "begruendung": "1'600 pro Monat bei KD 28. Der Shop hat keine einzige Kamera, die sofort druckt. Es gibt nur digitale Kinderkameras und separate Mini-Fotodrucker.",
+   "risiko": "Die Suche wird von Marken beherrscht (Instax, Polaroid), und Marken sind ausgeschlossen. Generisch gibt es nur Kinder-Thermodruck-Kameras mit eingebautem Akku. Das ist andere Ware als Instax, die Erwartung der Käufer muss also vorher geprüft werden. Thermopapier muss nachgekauft werden.",
+   "bestand": {
+    "suchbegriff": "sofortbildkamera",
+    "behalten": true,
+    "grund": "Bestätigt: 0 Sofortbildkameras. «Kinderkamera» ist laut Beschreibung digital und druckt nicht; «Mini Fotodrucker» und «Tragbarer Fotodrucker» sind Drucker. Kein Instax- oder Polaroid-Typ. Die CJ-Suche nach einer Kinder-Druckkamera ist realistisch, weil Markengeräte über CJ nicht gehen."
+   },
+   "regeln": {
+    "suchbegriff": "sofortbildkamera",
+    "behalten": false,
+    "grund": "Wer «Sofortbildkamera» sucht, will Instax oder Polaroid (Markenware). Der generische Ersatz ist eine Thermopapier-Kinderkamera mit fest verbautem Li-Ion-Akku und Schwarz-Weiss-Druck: ein anderes Produkt, dazu Kinderspielzeug ohne Nachweis. Die Suchabsicht passt nicht, im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "unterhosen herren",
+   "volumen": 1300,
+   "kd": 14,
+   "intent": "0",
+   "aktive_treffer": 2,
+   "cj_suche": "men boxer briefs",
+   "beispiele": [
+    "Elastische Herren-Boxershorts",
+    "Muskulöse Unterwäsche für Herren"
+   ],
+   "begruendung": "1'300 pro Monat bei KD 14. Zusammengelegt mit «boxershorts herren» (1'300, KD 19). Es gibt nur 2 echte Herren-Unterhosen. Die Regex-Treffer auf «Slip» sind Slip-on-Schuhe und Slip-Dresses. In der CJ-Liste steht nur «thermal underwear set» (#done), also lange Funktionswäsche und damit andere Ware.",
+   "risiko": "Asiatische Grössen fallen klein aus. Unterwäsche ist von der Rückgabe ausgeschlossen (Hygiene). Mehrfachpacks nehmen.",
+   "bestand": {
+    "suchbegriff": "unterhosen herren",
+    "behalten": true,
+    "grund": "Bestätigt: 4 Herren-Unterhosen (Gender male): «Elastische Herren-Boxershorts», «Elastische Herrenunterwäsche», «D2 Mikro-Briefs ohne Elastik», «Muskulöse Unterwäsche für Herren». «Figurbetonter Body im Boxer-Stil» ist ein Shapewear-Body, «Bequeme Unterhose» ist für Damen. In der Queue steht nur «thermal underwear set» (#done), also Thermowäsche und nicht dasselbe."
+   },
+   "regeln": {
+    "suchbegriff": "unterhosen herren",
+    "behalten": true,
+    "grund": "Generische Basisware, keine Regel verletzt, Versand problemlos. Achtung: Bei 'men boxer briefs' liefert CJ oft Fälschungen mit CK-/Markenbund im Bild. Die Titel-Markenprüfung sieht das nicht, Bild-Kontrolle ist Pflicht (Schweizer Zoll vernichtet Fälschungen auch an Privatkunden). Mehrfachpacks wählen, damit der Preisboden passt.",
+    "cj_suche_korrigiert": "men cotton boxer briefs"
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "lötkolben",
+   "volumen": 1300,
+   "kd": 15,
+   "intent": "1,0",
+   "aktive_treffer": 1,
+   "cj_suche": "usb soldering iron",
+   "beispiele": [
+    "USB Lötkolben für Reparaturen",
+    "Portabler Gaslötkolben Stift-Typ (Gas, nicht geeignet)",
+    "Lötkolben-Set mit 26 Gravurköpfen (Brandmalkolben)"
+   ],
+   "begruendung": "1'300 pro Monat bei KD 15. Es gibt nur einen echten Elektro-Lötkolben (USB). Daneben ein Gaslötkolben, ein Brandmal-Set und ein Heissluft-Griff als Ersatzteil.",
+   "risiko": "Normale Lötkolben haben einen 230-V-Netzstecker (CN/EU), darum nur USB- oder Akku-Modelle nehmen. Gaslötkolben sind Gefahrgut, also ausschliessen.",
+   "bestand": {
+    "suchbegriff": "lötkolben",
+    "behalten": false,
+    "grund": "Widerlegt: 5 aktive Produkte enthalten einen Lötkolben. Dazu gehören «USB Lötkolben für Reparaturen» und «Multifunktionales Reparatur-Set für Elektronik» (laut Beschreibung mit Lötkolben 60 W, 200–450 °C). Die übrigen drei: «Portabler Gaslötkolben», «Lötkolben-Set mit 26 Gravurköpfen» (laut Text auch für Reparaturen) und «Holzbrenn-Set» (mit elektrischem Lötkolben). Dazu kommen Zubehörteile (90W-Lötspitze, Heissluftkolben-Griff, Lötpaste)."
+   },
+   "regeln": {
+    "suchbegriff": "lötkolben",
+    "behalten": false,
+    "grund": "Die gesuchten Lötstationen und 60-W-Kolben sind Netzgeräte, CJ führt sie mit CN/US-Stecker (Hausregel). Die USB-Variante (5 V/8 W) ist schwach und mit 'USB Lötkolben für Reparaturen' schon aktiv. Die CJ-Suche 'usb soldering iron' liefert ausserdem viele 220-V-Sets, die beim Import nicht nach Stecker gefiltert werden (Steckerprüfung erst danach). Gaskolben = Butan, nicht versendbar. False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "kunstblumen",
+   "volumen": 1000,
+   "kd": 16,
+   "intent": "0",
+   "aktive_treffer": 4,
+   "cj_suche": "artificial flowers bouquet",
+   "beispiele": [
+    "Rosen-Seifenblumen-Bouquet Geschenkbox",
+    "Ewige Rose mit LED-Licht",
+    "Girlande mit simulierten Wildblumen",
+    "Pflanzen Girlande Ruscus"
+   ],
+   "begruendung": "1'000 pro Monat bei KD 16. Kunstblumen-Sträusse oder -Stiele gibt es nicht. Es gibt nur 2 Girlanden, eine Seifenrose und eine LED-Rose. Viele «Blumenstrauss»-Treffer sind Klemmbausteine. In der CJ-Liste steht «artificial plants outdoor» (#done), das sind Aussenpflanzen und keine Sträusse.",
+   "risiko": "Viel Volumen. Die Qualität am Bild prüfen, denn billige Kunstblumen sehen schnell nach Plastik aus.",
+   "bestand": {
+    "suchbegriff": "kunstblumen",
+    "behalten": false,
+    "grund": "Widerlegt: mindestens 6 Kunstblumen-Produkte, z. B. «Künstliche Kamelien», «Künstlicher Sonnenblumen-Türkranz», «Ewige Rose mit LED-Licht» (Google-Kategorie Artificial Flora), «Girlande mit simulierten Wildblumen», «Pflanzen Girlande Ruscus» und «Rosenstrauss Engel-Geschenk (ewig haltbar)». Dazu kommen Seifenblumen-, Strick- und Garn-Bouquets. Ausserdem steht «artificial plants outdoor» schon als #done in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "kunstblumen",
+    "behalten": true,
+    "grund": "Keine Hausregel verletzt: Seide/Kunststoff, leicht, bruchfest, ganzjährig und auch als Herbst-/Winterdeko gefragt. Generische CJ-Kernware, kein Zoll- oder Pflanzenschutzthema (nicht lebend). Ware mit LED/Batterie oder 'Seifenblumen' beim Import meiden."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "messschieber",
+   "volumen": 880,
+   "kd": 15,
+   "intent": "0",
+   "aktive_treffer": 3,
+   "cj_suche": "digital caliper",
+   "beispiele": [
+    "Digitaler Messschieber",
+    "Digitaler Präzisions-Messschieber",
+    "Digitaler Messschieber für Perlen & Edelsteine"
+   ],
+   "begruendung": "880 pro Monat bei KD 15. Es gibt nur 3 Messschieber, alle digital. Analoge Schieblehren und solche aus Edelstahl bzw. Carbon fehlen.",
+   "risiko": "Gering: eine Knopfzelle, kein Stecker, kleines Paket.",
+   "bestand": {
+    "suchbegriff": "messschieber",
+    "behalten": true,
+    "grund": "Bestätigt: 3 Messschieber («Digitaler Messschieber», «Digitaler Präzisions-Messschieber», «Digitaler Messschieber für Perlen & Edelsteine»). Die Tiefenmessschraube und der Profiltiefenmesser sind andere Werkzeuge. Alle drei vorhandenen sind digital; damit keine Fast-Dubletten entstehen, besser analoge Schieblehren suchen.",
+    "cj_suche_korrigiert": "stainless steel vernier caliper"
+   },
+   "regeln": {
+    "suchbegriff": "messschieber",
+    "behalten": true,
+    "grund": "Generisches Messwerkzeug, keine Klinge (ist_klinge/ist_handklinge = False gemessen), Knopfzelle unkritisch, kein Netzstecker, keine Marke. Versand und Zoll problemlos. 3 aktive Treffer, mehr Auswahl schadet nicht."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "aux kabel",
+   "volumen": 880,
+   "kd": 17,
+   "intent": "1,3",
+   "aktive_treffer": 0,
+   "cj_suche": "aux audio cable 3.5mm",
+   "beispiele": [
+    "Over-Ear Gaming Headset mit Mikrofon & 3.5mm Klinke (kein Kabel)"
+   ],
+   "begruendung": "880 pro Monat, Kaufabsicht (Intent 3). Ein AUX- bzw. 3,5-mm-Klinkenkabel gibt es nicht. Die beiden Klinken-Treffer sind ein Headset und ein Mikrofon. Die Regex «aux» traf sonst nur Faux-Leder.",
+   "risiko": "Kleinstpreis, darum im Set verkaufen (mehrere Längen oder mit Adapter).",
+   "bestand": {
+    "suchbegriff": "aux kabel",
+    "behalten": true,
+    "grund": "Bestätigt: 0 AUX- bzw. Klinkenkabel. Treffer sind nur Headsets mit 3,5-mm-Stecker und Bluetooth-Audio-Adapter; auch die Volltextsuche nach «aux kabel/audiokabel» liefert nur Geräte mit beigelegtem Kabel. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "aux kabel",
+    "behalten": false,
+    "grund": "Klassische Kleinware: Klinkenkabel kosten im Schweizer Handel CHF 3–8 und sind sofort verfügbar. Mit CHF 14.90 Preisboden und 10–20 Werktagen Lieferzeit ist das chancenlos. Kein Mehrwert gegenüber dem Laden, im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "pilates ring",
+   "volumen": 720,
+   "kd": 9,
+   "intent": "1,3",
+   "aktive_treffer": 2,
+   "cj_suche": "pilates ring",
+   "beispiele": [
+    "Pilates Ring für Anfänger",
+    "14-teiliges Pilates Ring Essentials-Kit"
+   ],
+   "begruendung": "720 pro Monat bei KD 9, Kaufabsicht. Es gibt nur 2 Pilates-Ringe. Das übrige Pilates-Sortiment (Bars, Bänder, Socken, Rolle) ist vorhanden, darum wurde «pilates zubehör» am 02.10. als abgedeckt beurteilt. Der Ring selbst ist aber dünn besetzt.",
+   "risiko": "Gering: leicht, unzerbrechlich.",
+   "bestand": {
+    "suchbegriff": "pilates ring",
+    "behalten": true,
+    "grund": "Bestätigt: 2 Pilates-Ringe («Pilates Ring für Anfänger», «14-teiliges Pilates Ring Essentials-Kit»). Der «Gymnastikring 80 cm» ist ein Reifen und kein Pilates-Ring; die übrigen Pilates-Treffer sind Bars, Bänder und Socken. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "pilates ring",
+    "behalten": true,
+    "grund": "Fitnesszubehör ohne Heil- oder Therapieversprechen (beim Text auf 'Reha/Beckenboden-Therapie' achten). Leicht, generisch, ganzjährig, im Herbst saisonal sogar stärker (Indoor-Training). Kein Zoll-/Post-Thema."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "rundbürste",
+   "volumen": 720,
+   "kd": 15,
+   "intent": "0",
+   "aktive_treffer": 1,
+   "cj_suche": "round hair brush",
+   "beispiele": [
+    "Keramik-Rundbürste hitzebeständig 50mm"
+   ],
+   "begruendung": "720 pro Monat bei KD 15. Es gibt nur eine manuelle Rundbürste. Die vielen Warmluftbürsten haben einen Netzstecker und zählen nicht. In der CJ-Liste stehen nur elektrische Bürsten (hair dryer brush, straightener brush) und eine Sprühbürste.",
+   "risiko": "Gering. Nur manuelle Bürsten nehmen, keine elektrischen.",
+   "bestand": {
+    "suchbegriff": "rundbürste",
+    "behalten": false,
+    "grund": "Widerlegt: «Keramik-Rundbürste hitzebeständig 50mm» plus 3 beheizte Rund- bzw. Lockenbürsten («Goldkeramik-Kurzlockenbürste», «Keramik-Kurlockenbürste», «Mini Kugellockenbürste»). Dazu über 15 Warmluft- bzw. Heissluft-Rundbürsten (z. B. «Heissluftbürste 1.5 Zoll mit Volumenfunktion»). Für Suchende ist die elektrische Rundbürste eine gängige Variante, also nach «im Zweifel false»."
+   },
+   "regeln": {
+    "suchbegriff": "rundbürste",
+    "behalten": true,
+    "grund": "Generische Haarbürste, keine Hausregel verletzt. Suche aber eingrenzen: 'round hair brush' liefert bei CJ auch Warmluft-/Föhnbürsten mit Netzstecker (CN/US-Stecker = Hausregel). Daher nur unbeheizte Keramik-Rundbürsten.",
+    "cj_suche_korrigiert": "ceramic round brush"
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "werkzeugkasten",
+   "volumen": 720,
+   "kd": 16,
+   "intent": "0",
+   "aktive_treffer": 0,
+   "cj_suche": "portable tool box",
+   "beispiele": [
+    "Robuste Werkzeugtasche für den Haushalt (Tasche)",
+    "Werkzeugtasche aus Segeltuch (Tasche)",
+    "Spezialwerkzeug-Set für Motor-Timing (Spezialset)"
+   ],
+   "begruendung": "720 pro Monat bei KD 16. Es gibt keinen einzigen Werkzeugkasten oder -koffer und kein Haushalts-Werkzeugset. Vorhanden sind nur 6 Werkzeugtaschen und Spezialsets (Motor, Diamond Painting, Leder, Schnitzen). Dazu kommt «werkzeugkoffer» mit 4'400 pro Monat und KD 15. Dieser Begriff fiel nur wegen Intent 1 aus dem Filter.",
+   "risiko": "Werkzeugsets aus China enthalten oft Cutter bzw. Klingen, darum nur leere Kästen oder Sets ohne Messer nehmen. Gewicht und Fracht prüfen.",
+   "bestand": {
+    "suchbegriff": "werkzeugkasten",
+    "behalten": true,
+    "grund": "Bestätigt: 0 Werkzeugkästen oder -koffer; Volltextsuche nach werkzeugkasten/werkzeugkoffer/toolbox ergibt 0 passende. Es gibt nur 7 Werkzeugtaschen (anderer Suchbegriff), Spezial-Sets und Sortierboxen. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "werkzeugkasten",
+    "behalten": false,
+    "grund": "Bei CJ sind das entweder Werkzeugsets mit Cuttermesser (gemessen: 'Werkzeugkoffer mit Cuttermesser' -> ist_handklinge True, keine CN→CH-Linie, Fall #1017) oder leere Kunststoff-/Metallkoffer. Die sind sperrig und schwer, die Volumenfracht aus China frisst jede Marge gegen Jumbo/Hornbach. False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "tortendeko",
+   "volumen": 720,
+   "kd": 16,
+   "intent": "0",
+   "aktive_treffer": 0,
+   "cj_suche": "cake topper",
+   "beispiele": [
+    "Herzförmige Tortendekorationsform aus Silikon (Form)",
+    "Runde Schokoladenform für Kuchen-Dekoration (Form)"
+   ],
+   "begruendung": "720 pro Monat bei KD 16. Es gibt keinen Torten-Topper und keine Tortenstecker, nur Silikon- und Schokoladenformen. Zur Geburtstags- und Party-Deko passt das gut, Ballone und Girlanden sind ja vorhanden.",
+   "risiko": "Nichts Essbares nehmen (Regel Nahrung), nur Topper aus Acryl, Holz oder Papier. Personalisierte Topper gehen nicht über CJ.",
+   "bestand": {
+    "suchbegriff": "tortendeko",
+    "behalten": true,
+    "grund": "Bestätigt für die eigentliche Deko: 0 Cake-Topper, Tortenfiguren oder Zuckerdeko. Vorhanden sind nur Dekorier-Werkzeuge und Formen («Back- & Dekorations-Set für Torten», «Drehbarer Tortenständer zum Dekorieren», Silikonformen). Wer «tortendeko» sucht, will meist die Deko selbst. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "tortendeko",
+    "behalten": false,
+    "grund": "Zu viele Fallen: essbare Deko (Zucker, Oblaten, Streusel) = Nahrung; Topper mit Lizenzfiguren (Disney, Paw Patrol) = Lizenz; Namens-/Zahlentopper = Einzelanfertigung; nicht lebensmittelechter Glitzer auf der Torte. Dazu Kleinpreis-Artikel (CHF 2–5) unter dem Preisboden. False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "spiralschneider",
+   "volumen": 720,
+   "kd": 22,
+   "intent": "1,3",
+   "aktive_treffer": 4,
+   "cj_suche": "vegetable spiralizer",
+   "beispiele": [
+    "Kartoffel-Spiralschneider aus Edelstahl",
+    "Multifunktionaler Vertikal-Spiralschneider",
+    "Verstellbarer Spiralschneider mit Behälter"
+   ],
+   "begruendung": "720 pro Monat, Kaufabsicht. Es gibt genau 4 echte Treffer, einer davon ist ein Gemüseschneider mit Spiralaufsatz. Knapp unter 5.",
+   "risiko": "Die Klinge ist gekapselt, darum gilt `ist_handklinge` = False (wie bei Schäler und Hobel). Trotzdem Modelle ohne lose Ersatzklingen nehmen.",
+   "bestand": {
+    "suchbegriff": "spiralschneider",
+    "behalten": false,
+    "grund": "Widerlegt: 6 Spiralschneider. 4 haben es im Titel («Kartoffel-Spiralschneider aus Edelstahl», «Multifunktionaler Vertikal-Spiralschneider», «Verstellbarer Spiralschneider mit Behälter», «Gemüseschneider mit Spiralschneider»). 2 weitere zeigt die Volltextsuche: «3-in-1 Gemüsehobel» («gleichmässige Spiralen») und «Multifunktionaler Gemüseschneider 7-in-1» («Gemüsenudeln»)."
+   },
+   "regeln": {
+    "suchbegriff": "spiralschneider",
+    "behalten": false,
+    "grund": "Im Paket liegen offene, rasierklingenscharfe Schneideinsätze. Nach #1017 hat CJ keine CN→CH-Linie für Klingen. Ob CJ einen Spiralschneider als Klinge einstuft, ist nicht belegt (die Titelregel lässt ihn als 'Gerät' durch). Das ist Versandrisiko, kein Werbeproblem. 4 aktive Treffer decken den Begriff schon. Im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "kartoffelpresse",
+   "volumen": 720,
+   "kd": 25,
+   "intent": "0",
+   "aktive_treffer": 2,
+   "cj_suche": "potato ricer",
+   "beispiele": [
+    "Kartoffelpresse mit Hebel – Edelstahl",
+    "Fruchtpüree-Presse für die Küche"
+   ],
+   "begruendung": "720 pro Monat bei KD 25. Es gibt nur 2 Pressen für Kartoffeln bzw. Püree. Die übrigen Treffer sind Knoblauchpressen.",
+   "risiko": "Gering: aus Edelstahl, unzerbrechlich, keine Klinge.",
+   "bestand": {
+    "suchbegriff": "kartoffelpresse",
+    "behalten": true,
+    "grund": "Bestätigt: nur «Kartoffelpresse mit Hebel – Edelstahl» und «Fruchtpüree-Presse», dazu die Passiermühle als Ersatz, also höchstens 3. Die Knoblauchpressen zählen nicht. Volltextsuche kartoffelpresse/ricer findet 1. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "kartoffelpresse",
+    "behalten": true,
+    "grund": "Küchenutensil ohne Klinge, Strom oder Flüssigkeit, generisch (Edelstahl), robust im Versand. Im Herbst/Winter saisonal passend (Kartoffelstock). Keine Hausregel verletzt."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "zungenreiniger",
+   "volumen": 590,
+   "kd": 21,
+   "intent": "0",
+   "aktive_treffer": 1,
+   "cj_suche": "tongue scraper",
+   "beispiele": [
+    "Zungenreiniger aus Edelstahl"
+   ],
+   "begruendung": "590 pro Monat bei KD 21. Es gibt einen einzigen Zungenreiniger. Die übrigen «Tongue»-Treffer sind Steel Tongue Drums.",
+   "risiko": "Kleinstpreis, darum Mehrfachpack. Es ist Mundhygiene und keine Medizin, aber ohne Heilversprechen texten.",
+   "bestand": {
+    "suchbegriff": "zungenreiniger",
+    "behalten": true,
+    "grund": "Bestätigt: 1 Treffer («Zungenreiniger aus Edelstahl»). Die übrigen «Zunge/Tongue»-Treffer sind Stahlzungentrommeln und ein Ring. Volltextsuche ergibt ebenfalls 1. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "zungenreiniger",
+    "behalten": false,
+    "grund": "Mundhygiene-Artikel. CJ-Texte tragen fast immer Heilversprechen ('antibakteriell', 'gegen Mundgeruch', Ayurveda-Kupfer), nah an der Medizin-Regel. Einzelstück kostet in Apotheke/Detailhandel CHF 3–6, mit CHF 14.90 Preisboden chancenlos. 1 aktiver Treffer reicht. False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "bügelbilder",
+   "volumen": 480,
+   "kd": 11,
+   "intent": "0",
+   "aktive_treffer": 4,
+   "cj_suche": "iron on patches",
+   "beispiele": [
+    "Aufbügler Buchstaben und Zahlen",
+    "Stoffaufnäher mit Totenkopf-Stickerei",
+    "Engel-Krone Aufnäher zum Sticken"
+   ],
+   "begruendung": "480 pro Monat bei KD 11. Es gibt nur 4 Aufbügler bzw. Aufnäher. Die vielen «Patch»-Treffer sind Nagel- und Pickel-Patches.",
+   "risiko": "Gering. Keine Lizenzmotive (Marvel, Disney und Ähnliches) nehmen.",
+   "bestand": {
+    "suchbegriff": "bügelbilder",
+    "behalten": false,
+    "grund": "Widerlegt: 7 Textil-Patches, davon 3 laut Beschreibung aufbügelbar: «Bügeltransfer – selbst gestalten» (eigener Bügeltransfer), «Aufbügler Buchstaben und Zahlen» (1'680 Stück) und «Grosser Lokomotiven-Totenkopf Aufnäher» (aufbügelbar auf Baumwolle). Dazu «Stoffaufnäher mit Totenkopf-Stickerei», «Engel-Krone Aufnäher», «Pailletten Blumen Gaze Applikation» und die Holz-«Herz-Patches» für Kleidung. Im Zweifel false."
+   },
+   "regeln": {
+    "suchbegriff": "bügelbilder",
+    "behalten": false,
+    "grund": "Bei China-Grosshändlern wimmelt die Kategorie von Logo- und Figurenaufnähern (Nike, Chanel, Disney, Marvel), meist ohne Marke im Titel, nur im Bild. Die Titel-Markenprüfung greift nicht, Lizenzrisiko und Zollvernichtung drohen. Stückpreise CHF 1–3 liegen unter dem Preisboden. 4 aktive Treffer genügen. False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "dreieckstuch",
+   "volumen": 480,
+   "kd": 16,
+   "intent": "1,3",
+   "aktive_treffer": 3,
+   "cj_suche": "knitted triangle scarf",
+   "beispiele": [
+    "Gehäkelter Dreiecksschal im Ethno-Stil · 130 × 30 cm",
+    "Vielseitiger Dreiecksschal mit Bindebändern · 100 × 40 cm",
+    "Dreieckstuch mit Cutout und Quasten · 90 × 35 cm"
+   ],
+   "begruendung": "480 pro Monat, Kaufabsicht, und es ist gerade Herbst- und Wintersaison. Es gibt nur 3 Dreieckstücher. In der CJ-Liste stehen nur Seiden-, Kaschmir-, Blanket- und Chiffonschals, kein Dreieckstuch.",
+   "risiko": "Gering.",
+   "bestand": {
+    "suchbegriff": "dreieckstuch",
+    "behalten": false,
+    "grund": "Widerlegt: 5 Dreieckstücher bzw. -schals im Titel, z. B. «Dreieckiger Strickschal mit Lochmuster», «Dreieckstuch mit Cutout und Quasten», «Vielseitiger Dreiecksschal mit Bindebändern», «Gehäkelter Dreiecksschal im Ethno-Stil» und «Dreieckstuch zum Binden mit Blumenmuster». Dazu «Häkel-Schultertuch» und Dutzende weitere Schals bzw. Halstücher."
+   },
+   "regeln": {
+    "suchbegriff": "dreieckstuch",
+    "behalten": true,
+    "grund": "Gestricktes/gehäkeltes Dreieckstuch ist Herbst-/Wintermode und passt zu LuxeStyle. Generisch, leicht, keine Regel verletzt. Nur Modeware importieren, nicht das Erste-Hilfe-Dreieckstuch (Sanitätsartikel); die Suche 'knitted triangle scarf' trifft das richtig."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "rolltop rucksack",
+   "volumen": 390,
+   "kd": 12,
+   "intent": "0",
+   "aktive_treffer": 0,
+   "cj_suche": "roll top backpack",
+   "beispiele": [],
+   "begruendung": "390 pro Monat bei KD 12. Der Shop hat 1'600 Rucksäcke, aber keinen mit Rolltop bzw. Rollverschluss.",
+   "risiko": "Gering.",
+   "bestand": {
+    "suchbegriff": "rolltop rucksack",
+    "behalten": true,
+    "grund": "Bestätigt: 0 Rolltop-Rucksäcke; Volltextsuche nach rolltop/roll-top/rollverschluss ergibt 0. Es gibt zwar rund 60 wasserdichte Rucksäcke und einen 10-L-Dry-Bag, aber keinen mit Roll-Verschluss. Der Rolltop ist ein eigener Stil. In der Queue steht nur «dry bag 20l» (#done), ein Packsack und nicht dasselbe."
+   },
+   "regeln": {
+    "suchbegriff": "rolltop rucksack",
+    "behalten": true,
+    "grund": "Rolltop ist eine generische Bauform (keine Marke), ganzjährig, wasserdicht, leicht. CJ führt ihn, Versand und Zoll problemlos. 0 aktive Treffer, also echte Lücke. Titel mit 'Rains/Fjällräven-Stil' o. ä. beim Import meiden."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "hundedecke",
+   "volumen": 390,
+   "kd": 13,
+   "intent": "0",
+   "aktive_treffer": 1,
+   "cj_suche": "dog blanket",
+   "beispiele": [
+    "Beheizbare Decke für Haustiere"
+   ],
+   "begruendung": "390 pro Monat bei KD 13, und die Wintersaison beginnt. Es gibt nur eine Haustierdecke, und die ist beheizt. Die übrigen Treffer sind Plaid-Halsbänder und eine Riechdecke. In der CJ-Liste stehen nur Decken für Menschen (Picknick, Strick, Heiz, Gewicht).",
+   "risiko": "Gering: leicht, unzerbrechlich.",
+   "bestand": {
+    "suchbegriff": "hundedecke",
+    "behalten": false,
+    "grund": "Im Zweifel widerlegt: «Hundedecke» wird im Handel meist mit Hundematte gleichgesetzt. Aktiv sind «Beheizbare Decke für Haustiere», «USB-Heizmatte für Haustiere», «Kreative quadratische Hundematte», «Doppellagige Falt-Hundematte», «Hundematte wasserdicht, abnehmbar & waschbar» und «Hundematte mit Motiv». Dazu kommen 5 Auto-Hundedecken bzw. -Schutzmatten (z. B. «Hunde-Autositzmatte für die Rückbank»). Ausserdem steht «orthopedic memory foam dog bed» schon offen in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "hundedecke",
+    "behalten": true,
+    "grund": "Fleece-Hundedecke: leicht, generisch, saisonal passend. Die Suche aber eingrenzen: 'dog blanket' liefert auch beheizte Decken mit Netzteil (der aktive Treffer ist eine solche, Stecker-Regel).",
+    "cj_suche_korrigiert": "dog fleece blanket"
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "hunderampe",
+   "volumen": 390,
+   "kd": 14,
+   "intent": "0",
+   "aktive_treffer": 0,
+   "cj_suche": "dog stairs ramp",
+   "beispiele": [],
+   "begruendung": "390 pro Monat bei KD 14. Der Shop hat keine Hunderampe und keine Haustiertreppe.",
+   "risiko": "Sperrig, nahe an der Grenze zu Grossmöbeln. Nur Schaumstoff-Treppen oder faltbare Rampen nehmen und vor dem Import Volumengewicht und Fracht CN→CH prüfen.",
+   "bestand": {
+    "suchbegriff": "hunderampe",
+    "behalten": true,
+    "grund": "Bestätigt: 0 Hunderampen oder -treppen; Volltextsuche (hunderampe, hundetreppe, dog ramp/stairs, haustiertreppe) ergibt 0. Es gibt nur «Katzentreppe mit Nest» (Kratzmöbel). Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "hunderampe",
+    "behalten": false,
+    "grund": "Hundetreppen und -rampen sind sperrig (Schaumstofftreppen ~60×40×40 cm, Klapprampen 1–1,5 m). Die Volumenfracht aus China liegt wie bei Grossmöbeln weit über jedem Verkaufspreis (Hausregel Versandkosten). False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "stroboskop",
+   "volumen": 390,
+   "kd": 18,
+   "intent": "1,3",
+   "aktive_treffer": 3,
+   "cj_suche": "led strobe light",
+   "beispiele": [
+    "Strobe Licht-Set mit Fernbedienung",
+    "Strobe Light Set mit Fernbedienung",
+    "Mini LED Stroboskop-Licht"
+   ],
+   "begruendung": "390 pro Monat, Kaufabsicht. Es gibt 3 Stroboskope, knapp unter 5. Discokugeln sind andere Ware.",
+   "risiko": "Party- und DJ-Strobes haben oft einen 230-V-Netzstecker, darum nur Batterie- oder USB-Modelle nehmen.",
+   "bestand": {
+    "suchbegriff": "stroboskop",
+    "behalten": true,
+    "grund": "Bestätigt, sogar schwächer als gemeldet: «Strobe Licht-Set mit Fernbedienung» und «Strobe Light Set mit Fernbedienung» sind laut Beschreibung Fahrzeug-Blitzlichter (Auto, Motorrad, Velo). Party-Stroboskop gibt es nur eines («Mini LED Stroboskop-Licht»). Mit der CJ-Suche «led strobe light» kämen wieder Fahrzeug-Strobes, deshalb gezielt nach Bühnen- bzw. DJ-Strobes suchen.",
+    "cj_suche_korrigiert": "dj stage strobe light party"
+   },
+   "regeln": {
+    "suchbegriff": "stroboskop",
+    "behalten": false,
+    "grund": "Partystrobos laufen meist am Netz (CN/US-Stecker, Hausregel), Kleinmodelle mit Batterie sind schon 3× aktiv. 'led strobe light' liefert bei CJ zudem überwiegend rot/blaue Warnblitzer für Auto/Motorrad, deren Anbringung in der CH verboten ist (VTS). False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "wickelrock",
+   "volumen": 390,
+   "kd": 22,
+   "intent": "1,0",
+   "aktive_treffer": 1,
+   "cj_suche": "wrap midi skirt",
+   "beispiele": [
+    "Polka-Dot Wickel-Rock «Dolce» · High-Waist, asymmetrisch",
+    "Wickel-Minirock mit Schlitz und Kurzarm-Top (Set)"
+   ],
+   "begruendung": "390 pro Monat. Es gibt nur 1–2 ganzjährige Wickelröcke. Die anderen Treffer sind ein Bikini-Wickelrock und Pareos, also Sommerware. In der CJ-Liste steht «sarong wrap» (#done): Das ist ein Strandtuch und nur bedingt sinngleich.",
+   "risiko": "Nur Midi- bzw. Maxi-Wickelröcke aus Herbst- und Winterstoffen nehmen, keine Strand-Sarongs.",
+   "bestand": {
+    "suchbegriff": "wickelrock",
+    "behalten": true,
+    "grund": "Bestätigt: nur «Polka-Dot Wickel-Rock «Dolce»» als echter Wickelrock. Dazu kommen das Set «Wickel-Minirock mit Kurzarm-Top», ein Bikini-Wickelrock (Strand) und Pareos, also höchstens 3–4. Die asymmetrischen Röcke sind laut Titel keine Wickelröcke. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "wickelrock",
+    "behalten": true,
+    "grund": "Damenmode, generisch, kein Zoll-Thema. Aber 'wrap midi skirt' liefert bei CJ vor allem Sommer-Chiffon und Blumenmuster (Hausregel Sommerware im Oktober), daher auf Strick-/Wollqualität eingrenzen.",
+    "cj_suche_korrigiert": "knitted wrap midi skirt"
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "steppweste damen",
+   "volumen": 260,
+   "kd": 10,
+   "intent": "3",
+   "aktive_treffer": 4,
+   "cj_suche": "women quilted vest",
+   "beispiele": [
+    "Gepolsterte Weste für Damen",
+    "Damen Daunen-Baumwollweste",
+    "Stehkragen-Weste Winter Wattierte Jacke"
+   ],
+   "begruendung": "260 pro Monat, KD 10, rein transaktional, Wintersaison. Es gibt 4 Stepp- bzw. Daunenwesten für Damen (eine davon ist unisex). Das ist knapp unter 5, für Herren gibt es deutlich mehr. In der CJ-Liste stehen «knit vest women» und «heated vest», beides andere Ware.",
+   "risiko": "Gering. Knapp: ein einziger weiterer Import würde die Lücke schliessen.",
+   "bestand": {
+    "suchbegriff": "steppweste damen",
+    "behalten": true,
+    "grund": "Bestätigt: 3 Damen-Stepp- bzw. Daunenwesten («Gepolsterte Weste für Damen», «Damen Daunen-Baumwollweste», «Slim-Fit Daunen-Weste in Schwarz»). Die «Stehkragen-Weste Winter Wattierte Jacke» und alle Steppwesten der Volltextsuche sind für Herren; «Sleeveless Weste mit Polster» ist ein Sommer-Baumwolltop. In der Queue stehen «heated vest» und «knit vest women» (#done), beides nicht dasselbe."
+   },
+   "regeln": {
+    "suchbegriff": "steppweste damen",
+    "behalten": true,
+    "grund": "Genau Saison (Herbst/Winter), generische Mode, leicht, keine Regel verletzt, passt zu LuxeStyle. Daunenfüllung beim Versand unkritisch."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "mikrofonständer",
+   "volumen": 260,
+   "kd": 13,
+   "intent": "1,3",
+   "aktive_treffer": 3,
+   "cj_suche": "microphone stand",
+   "beispiele": [
+    "Mikrofonständer, höhenverstellbar mit Rundfuss",
+    "Kondensatormikrofon-Set mit Galgenarm",
+    "USB Kondensator-Mikrofon mit Stativ"
+   ],
+   "begruendung": "260 pro Monat, Kaufabsicht. Es gibt nur 1 einzelnen Ständer und 2 Mikrofon-Sets mit Arm bzw. Stativ. Mikrofone gibt es dagegen viele (168).",
+   "risiko": "Bodenständer sind lang und schwer, darum besser Tischständer oder Galgenarme nehmen.",
+   "bestand": {
+    "suchbegriff": "mikrofonständer",
+    "behalten": true,
+    "grund": "Bestätigt: nur 1 eigenständiger Ständer («Mikrofonständer, höhenverstellbar mit Rundfuss»). Das «Tisch-Stativ-Set» ist laut Beschreibung ein iPhone-Aufnahmestativ. 4–5 weitere Treffer sind Mikrofon-Sets mit beigelegtem Ständer oder Galgenarm, die Suchende nach einem Ständer allein nicht wollen. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "mikrofonständer",
+    "behalten": false,
+    "grund": "Bodenstative mit Galgen sind lange, schwere Pakete (80–100 cm, 2–3 kg), die Volumenfracht macht sie teurer als Thomann/Musik Hug mit Lieferung am nächsten Tag. Tischarme sind eine andere Suchabsicht. 3 aktive Treffer decken den Begriff schon. Im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "katzentunnel",
+   "volumen": 260,
+   "kd": 15,
+   "intent": "1,3",
+   "aktive_treffer": 1,
+   "cj_suche": "cat tunnel",
+   "beispiele": [
+    "Weihnachtlicher Katzen Tunnel"
+   ],
+   "begruendung": "260 pro Monat, Kaufabsicht. Es gibt nur einen Katzentunnel, und der ist ein Weihnachtsmodell. Faltbare Spieltunnel fehlen.",
+   "risiko": "Gering: faltbar, leicht.",
+   "bestand": {
+    "suchbegriff": "katzentunnel",
+    "behalten": true,
+    "grund": "Bestätigt: 1 Katzentunnel («Weihnachtlicher Katzen Tunnel»); die übrigen «Tunnel»-Treffer sind Kleidung mit Tunnelzug. Volltextsuche (katzentunnel, cat tunnel, spieltunnel) ergibt 0 weitere. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "katzentunnel",
+    "behalten": true,
+    "grund": "Faltbarer Polyester-Tunnel: flach verpackt, leicht, generisch, ganzjährig und als Weihnachtsgeschenk passend. Kein lebendes Tier, keine Regel verletzt, Versand und Zoll problemlos."
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "tablet hülle",
+   "volumen": 260,
+   "kd": 15,
+   "intent": "0",
+   "aktive_treffer": 2,
+   "cj_suche": "tablet case cover",
+   "beispiele": [
+    "Tablet-Hülle mit Stiftschlitz und Drehgriff",
+    "Macaron Schutzhülle für Tablets & Laptops"
+   ],
+   "begruendung": "260 pro Monat bei KD 15. Es gibt nur 2 echte Tablet-Hüllen. Die übrigen Treffer sind Taschen zum Umhängen.",
+   "risiko": "Hüllen passen nur auf bestimmte Modelle (iPad, Galaxy Tab), das gibt viele Varianten. Markennamen nur als Kompatibilitätsangabe verwenden.",
+   "bestand": {
+    "suchbegriff": "tablet hülle",
+    "behalten": true,
+    "grund": "Bestätigt: 2–3 Hüllen bzw. Sleeves («Tablet-Hülle mit Stiftschlitz und Drehgriff», «Macaron Schutzhülle für Tablets & Laptops», «Handheld Tablet Tasche»). Dazu 2 Umhängetaschen, die keine Hüllen sind. Volltextsuche findet nur 1. Nicht in der Queue."
+   },
+   "regeln": {
+    "suchbegriff": "tablet hülle",
+    "behalten": false,
+    "grund": "Passt nur zum jeweiligen Modell: Hunderte iPad-/Galaxy-Tab-Modelle führen zu Variantenwirrwarr und Fehlkäufen. Die Titel brauchen 'iPad/Samsung/Galaxy', was mit der Marken-Regel kollidiert. Im Detailhandel günstig und sofort verfügbar. False."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "fliegender ball",
+   "volumen": 260,
+   "kd": 22,
+   "intent": "1,3",
+   "aktive_treffer": 2,
+   "cj_suche": "flying orb ball",
+   "beispiele": [
+    "Intelligenter Induktions-Flugball mit Höhenfixierung",
+    "Fliegender Ball Oktopus – Eltern-Kind-Spielzeug"
+   ],
+   "begruendung": "260 pro Monat, Kaufabsicht. Es gibt nur 2 Flugbälle. Der «Orbit Ball» ist ein Katzenspielzeug.",
+   "risiko": "Der Hype von 2021/22 ist abgeklungen. Der Ball hat einen eingebauten Akku.",
+   "bestand": {
+    "suchbegriff": "fliegender ball",
+    "behalten": false,
+    "grund": "Im Zweifel widerlegt: 5 Flugspielzeuge dieser Art. Dazu gehören «Intelligenter Induktions-Flugball», «Fliegender Ball Oktopus» und «Ball Spinner» (akkubetriebenes Flug-Spinner-Spielzeug, 8–10 Min. Spielzeit; die Gegenseite hatte ihn fälschlich als Fidget gezählt). Ausserdem «Mini-Finger-Gyro LED-UFO» (wird geworfen und kehrt zurück, gleiche Produktklasse) und «Fliegender Unterteller» (Kinderspielzeug)."
+   },
+   "regeln": {
+    "suchbegriff": "fliegender ball",
+    "behalten": false,
+    "grund": "Spielzeug mit Propellern und fest verbautem Li-Po-Akku: Versandlinie mit Batterie und Spielzeugsicherheit (CE/EN71) sind ungeklärt. Der TikTok-Hype ist von 2021/22 und vorbei, 2 aktive Treffer reichen. Im Zweifel false."
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "sneaker socken",
+   "volumen": 210,
+   "kd": 13,
+   "intent": "0",
+   "aktive_treffer": 2,
+   "cj_suche": "ankle socks",
+   "beispiele": [
+    "10 Paar unsichtbare Socken für Damen",
+    "10 Paar Damen Füsslinge Seidig Glatt"
+   ],
+   "begruendung": "210 pro Monat bei KD 13. Es gibt nur 2 Packungen kurzer Socken bzw. Füsslinge, beide für Damen. Die übrigen «Socken»-Treffer sind Sockenschuhe, Yoga-, Pilates- und Velosocken. Den allgemeinen Begriff «socken» hat der Lauf vom 02.10. als abgedeckt beurteilt.",
+   "risiko": "Gering. Mehrfachpack nehmen, auch für Herren.",
+   "bestand": {
+    "suchbegriff": "sneaker socken",
+    "behalten": true,
+    "grund": "Bestätigt: nur 2 Sneaker- bzw. Füsslingsocken, beide für Damen («10 Paar unsichtbare Socken für Damen», «10 Paar Damen Füsslinge Seidig Glatt»). Die übrigen Treffer sind Socken-Sneaker (Schuhe), Mid-Calf-Socken, Babysocken oder Radsocken. Weil Herren ganz fehlen, gezielt danach suchen.",
+    "cj_suche_korrigiert": "men low cut ankle socks"
+   },
+   "regeln": {
+    "suchbegriff": "sneaker socken",
+    "behalten": true,
+    "grund": "Generische Basisware, ganzjährig, leicht, keine Regel verletzt. Wegen des Preisbodens Mehrfachpacks wählen (der Bestand hat schon 10er-Packs Damen); auf gefälschte Markenlogos (Nike u. a.) im Bild achten.",
+    "cj_suche_korrigiert": "ankle socks pack"
+   },
+   "bestaetigt": true
+  }
+ ],
+ "koll_meta": {
+  "uebersprungen": 81,
+  "notizen": "Ich habe 127 Kollektionen geprüft, nämlich 126 aus dem Menü und dazu beleuchtung-lampen, die als einzige rankende Kollektion nicht im Menü ist. Daraus sind 46 Vorschläge entstanden, 81 Kollektionen habe ich übersprungen. Datei: /home/user/aban-news-landing/dropship/semrush/kollektion_seo_vorschlaege_2026-10-02.tsv (Kopfzeile wie verlangt, sortiert nach Volumen). Es gab keine Semrush-Aufrufe, nichts wurde in Shopify geschrieben und nichts committet; die Datei ist ungetrackt.\n\nWie ich vorgegangen bin:\n- Produkttitel habe ich aus den aktiven Produkten gelesen (bis 300 je Kollektion, nach Verkäufen sortiert). Die Warenanteile habe ich per Stichwort gezählt.\n- Ein alter Titel gilt als «enthält den Begriff», wenn der Begriff an einem Wortanfang steht, auch wenn man Bindestriche als Leerzeichen liest. Deshalb fiel herren-schuhe weg («Herren-Schuhe» = «herren schuhe»).\n- Gekürzte Formen wie «Lauf- &», «Wander- &» und «Kuschel- &» sowie Wortteile wie «kissen» in «Zierkissen» zählen nicht als enthalten.\n- Alle 46 Zeilen habe ich maschinell geprüft:\n  - Titel höchstens 60 Zeichen mit « | LuxeStyle» am Ende, Text zwischen 138 und 154 Zeichen.\n  - Der Begriff steht wörtlich in Titel und Text, und der Text endet mit dem TWINT- oder Versand-Satz.\n  - Kein «ß», kein «!», keine Ziffern, kein «CHF», keine Sie- oder Ihr-Form.\n  - Kein Sperrwort, auch nicht als Wortteil. «Tops», «Laptop», «Topf», «High-Top» und «Mottoparty» sind deshalb gemieden.\n  - Volumen mindestens 50 und KD höchstens 50.\n- Kannibalisierung habe ich vermieden: wanderschuhe → Wander-/Arbeitsschuhe, wanderausrüstung → Wandern & Trekking, küchengeräte → Haushaltsgeräte, küchenutensilien → Küche & Kochen.\n\nGrenzfälle, bitte bewusst entscheiden:\n- camping-outdoor: KD 50 liegt genau auf der Grenze.\n- erste-august: «schweizer souvenirs» beschreibt die Ware; es ist keine Ortssuche.\n- kratzbaeume: «katzenbaum» (8'100) ist ein Synonym für Kratzbaum.\n- Bei einigen Kollektionen ist der Hauptbegriff nur die grösste Warengruppe, weil es keinen genauen Oberbegriff gibt: hundeleine (rund 40 %), reiserucksack (rund 39 %), fitnessgeräte (rund 47 %), nägel zum aufkleben, küchengeräte (rund 74 %).\n- Die Formen «Herren Schuhe», «Auto Zubehör», «Gaming Zubehör», «PC Zubehör», «Yoga Zubehör», «Camping Zubehör» und «Party Deko» stehen ohne Bindestrich, damit der Begriff wörtlich passt.\n\nWarum 81 Kollektionen übersprungen sind:\n- Begriff steht schon im alten Titel: taschen, accessoires, kleid(er), midikleider, t-shirt(s), jeans, jacke(n), jumpsuit, röcke, pyjamas, herrenuhr(en), herren schuhe, schuhe, sandalen, kinderschuhe, stiefel, sneaker, high heels, hausschuhe, schmuck (×2), uhren, ringe, ohrringe, make up/kosmetik, lockenstab, parfum, dekoration, aufbewahrung, küchenhelfer, vorhänge, hängematte, diffuser/luftbefeuchter, lampen (sub-beleuchtung und beleuchtung-lampen), technik, gadgets, powerbank, smartwatch, kopfhörer, drohnen, beamer, adapter, babykleidung, baby strampler, baby set, haustierbedarf, hundezubehör, katzenzubehör, katzen-/hundespielzeug, hundebett, spielzeug (×2), klemmbausteine, kostüme, ventilator, hoodie, mützen, westen, rucksäcke, halloween, raucherzubehör.\n- Kein genauer Begriff mit mindestens 50 Volumen: shorts-bermudas, beauty-haar (dieselbe Ware wie Haarstyling-Geräte), outdoor-garten, werkzeug-maschinen («werkzeug» hat keine Semrush-Zahl), ersatzteile-zubehoer, elektronik-kleinteile, buro-home-office, sub-baby-kids, tier-naepfe-fuettern, tier-pflege-unterwegs, fussball-fanshop, viral-hits, eu-lager-schnell, luxestyle-premium, premium-schmuck.\n- Sperrwort, CHF oder KD über 50: bestseller, blitzversand-schweiz, unter-chf-25, sets-bundles, premium-ab-chf-80, elektronik-technik (elektronik hat KD 54).\n\nNebenbefunde aus den Produkttiteln:\n1. sub-deko: Die Regel «Titel enthält Deko» zieht auch Dekolleté-Cremes und -Massagegeräte in die Kollektion.\n2. outdoor-garten («Garten & Outdoor»): fast nur Fitness- und Sportware, weniger als 1 % Garten.\n3. sub-beleuchtung und beleuchtung-lampen haben dieselbe Regel (Tag beleuchtung), es sind also zwei identische Kollektionen.\n4. uhren (2'735 Produkte) und sub-armbaender (1'342): Unter den 120 meistverkauften sind 1 bzw. 0 aktiv. Die Bestseller sind Entwürfe (vermutlich von BigBuy), aktive Ware ist aber vorhanden (Tag uhren 1'827, kategorie-armband 1'137).\n5. kuschel-heizdecken: Die alte Beschreibung nennt Beurer und Medisana.\n6. waerme-komfort: Die Zuordnung in kategorie_zu_suchbegriff (kuscheldecke/heizdecke) ist falsch, die Kollektion enthält keine Decken.\n7. Viele alte Beschreibungen enthalten «Gratis-Versand», «schnell» oder «WELCOME10». Die 46 neuen Texte ersetzen das; bei den 81 übersprungenen bleibt es stehen."
+ },
+ "kollektionen": [
+  {
+   "handle": "kratzbaeume",
+   "titel": "Kratzbäume",
+   "keyword": "katzenbaum",
+   "volumen": 8100,
+   "kd": 21,
+   "alt_seo_titel": "Kratzbaum kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Katzenbaum & Kratzbaum für Katzen | LuxeStyle",
+   "seo_text": "Katzenbaum und Kratzbaum: kleine Kratzbäume, Modelle mit Liegemulde, Plattform oder Kuschelhöhle, Pilz- und Kaktusform. Versand in die ganze Schweiz.",
+   "begruendung": "«katzenbaum» (8'100, KD 21) ist in der Schweiz das häufigere Wort für dieselbe Ware; alter Titel trägt nur «Kratzbaum» (2'400).",
+   "produkte_beispiele": [
+    "Sisal-Kratzbaum mit Liegemulde",
+    "Sisal Kratzbaum mit Plattform",
+    "Pilz-Kratzbaum aus Naturleinen für Katzen",
+    "Sisal-Kaktus Kratzbaum für Katzen",
+    "Kratzbaum mit Kuschelhöhle"
+   ],
+   "urteil": {
+    "handle": "kratzbaeume",
+    "behalten": true,
+    "grund": "36 aktive Kratzbäume; jedes genannte Merkmal kommt vor (Liegemulde, Plattform, Kuschelhöhle, Pilz- und Kaktusform). «Katzenbaum» ist ein gängiges Synonym für Kratzbaum. Die alte Beschreibung enthielt «Gratis-Versand ab CHF 50». Korrigiert habe ich nur die Grammatik: «Modelle mit … Pilz- und Kaktusform» wird zu «sowie in Pilz- und Kaktusform», dafür «Höhle» statt «Kuschelhöhle» (Länge).",
+    "seo_titel_korrigiert": "Katzenbaum & Kratzbaum für Katzen | LuxeStyle",
+    "seo_text_korrigiert": "Katzenbaum und Kratzbaum: kleine Kratzbäume, Modelle mit Liegemulde, Plattform oder Höhle sowie in Pilz- und Kaktusform. Versand in die ganze Schweiz."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Katzenbaum & Kratzbaum für Katzen | LuxeStyle",
+   "seo_text_final": "Katzenbaum und Kratzbaum: kleine Kratzbäume, Modelle mit Liegemulde, Plattform oder Höhle sowie in Pilz- und Kaktusform. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "weihnachten-2026",
+   "titel": "Weihnachten 🎄",
+   "keyword": "weihnachtsdeko",
+   "volumen": 6600,
+   "kd": 21,
+   "alt_seo_titel": "Weihnachten: Deko, Geschenke & Festliches | LuxeStyle",
+   "seo_titel": "Weihnachtsdeko, Weihnachtspyjamas & Geschenke | LuxeStyle",
+   "seo_text": "Weihnachtsdeko wie Kränze, Ornamente, Lichter und Figuren, dazu Weihnachtspyjamas für die Familie und Adventskalender. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne «weihnachtsdeko» (6'600); Deko ist die grösste Warengruppe, «weihnachtspyjama» (720) kommt dazu.",
+   "produkte_beispiele": [
+    "Weihnachtskranz mit Wursthund Dekoration",
+    "Weihnachts Pyjama-Set im rot-schwarzen Karomuster",
+    "Glasierte Weihnachtsbaum-Ornamente",
+    "Acrylpendel für Adventskalender"
+   ],
+   "urteil": {
+    "handle": "weihnachten-2026",
+    "behalten": true,
+    "grund": "217 aktive Produkte: 9 Weihnachtspyjamas (auch für die ganze Familie), 6 Kränze, 13 Ornamente bzw. Kugeln, 11 Lichter, 13 Figuren, 5 Adventskalender und 8 Geschenke. Alle Angaben stimmen. Die alte Beschreibung bewarb den Code WELCOME10.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Weihnachtsdeko, Weihnachtspyjamas & Geschenke | LuxeStyle",
+   "seo_text_final": "Weihnachtsdeko wie Kränze, Ornamente, Lichter und Figuren, dazu Weihnachtspyjamas für die Familie und Adventskalender. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "kissen-wohntextilien",
+   "titel": "Kissen & Wohntextilien",
+   "keyword": "kissen",
+   "volumen": 5400,
+   "kd": 21,
+   "alt_seo_titel": "Zierkissen, Vorhänge & Wohntextilien kaufen | LuxeStyle",
+   "seo_titel": "Kissen, Kissenbezüge & Vorhänge | LuxeStyle",
+   "seo_text": "Kissen für Sofa und Bett: Dekokissen, Kissenbezüge, Nackenkissen, Sitzkissen und Plüschtier-Kissen, dazu Vorhänge. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "«kissen» (5'400) steht im alten Titel nur als Wortteil von «Zierkissen»; Ware = Kissen und Kissenbezüge, daneben Vorhänge.",
+   "produkte_beispiele": [
+    "Seidenkissenbezug mit Reissverschluss",
+    "Nackenkissen mit Memory-Schaum",
+    "Sitzkissen für Auto und Büro",
+    "Oranges Sofakissen",
+    "Verdunkelungsvorhang mit Thermo-Isolierung"
+   ],
+   "urteil": {
+    "handle": "kissen-wohntextilien",
+    "behalten": true,
+    "grund": "685 von 740 aktiven Produkten sind Kissen: 216 Kissenbezüge, 38 Nackenkissen, 17 Sitzkissen, über 20 Plüschtier-Kissen, 18 Deko- bzw. Zierkissen. Dazu 47 Vorhänge. «Kissen» trifft die Ware genau. Die alte Beschreibung enthielt «Gratis-Versand ab CHF 50».",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Kissen, Kissenbezüge & Vorhänge | LuxeStyle",
+   "seo_text_final": "Kissen für Sofa und Bett: Dekokissen, Kissenbezüge, Nackenkissen, Sitzkissen und Plüschtier-Kissen, dazu Vorhänge. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "sub-wander-arbeitsschuhe",
+   "titel": "Wander- & Arbeitsschuhe",
+   "keyword": "wanderschuhe",
+   "volumen": 4400,
+   "kd": 20,
+   "alt_seo_titel": "Wander- & Arbeitsschuhe kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Wanderschuhe, Arbeitsschuhe & Sicherheitsschuhe | LuxeStyle",
+   "seo_text": "Wanderschuhe für Damen und Herren, Outdoorschuhe, Arbeitsschuhe und Sicherheitsschuhe mit Stahlkappe und Durchtrittschutz. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel kürzt «wanderschuhe» (4'400) zu «Wander-»; die Kollektion besteht etwa je zur Hälfte aus Wander- und Arbeits-/Sicherheitsschuhen.",
+   "produkte_beispiele": [
+    "Wasserfeste Anti‑Rutsch Wanderschuhe",
+    "Vintage Winterarbeitsschuhe Herren",
+    "Attack Shield Anti-Stich Sicherheitsschuhe",
+    "Herren Freizeit-Outdoorschuh mit Plateau"
+   ],
+   "urteil": {
+    "handle": "sub-wander-arbeitsschuhe",
+    "behalten": true,
+    "grund": "125 aktive Produkte: 51 Wanderschuhe, 36 Arbeitsschuhe, 34 Sicherheitsschuhe, 26 mit Stahlkappe, 6 mit Durchtrittschutz. Die Ware ist überwiegend für Herren, Damen- und Unisex-Modelle gibt es aber (ca. 7). Die Angabe «für Damen und Herren» ist also wahr. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Wanderschuhe, Arbeitsschuhe & Sicherheitsschuhe | LuxeStyle",
+   "seo_text_final": "Wanderschuhe für Damen und Herren, Outdoorschuhe, Arbeitsschuhe und Sicherheitsschuhe mit Stahlkappe und Durchtrittschutz. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "kostueme-fasnacht",
+   "titel": "Kostüme & Fasnacht",
+   "keyword": "fasnachtskostüme",
+   "volumen": 4400,
+   "kd": 33,
+   "alt_seo_titel": "🎭 Kostüme & Fasnacht | LuxeStyle",
+   "seo_titel": "Fasnachtskostüme: Kostüme, Perücken & Masken | LuxeStyle",
+   "seo_text": "Fasnachtskostüme und Zubehör: Kostüme für Erwachsene und Kinder, Perücken, Hüte, Masken, Waggis-Mützen und Accessoires. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne «fasnachtskostüme» (4'400, KD 33); «halloween kostüme» gehört zur Halloween-Kollektion.",
+   "produkte_beispiele": [
+    "Kostüm Nikolaus Oberteil",
+    "Lockige Cosplay-Perücke für den ganzen Kopf",
+    "Maske Jack Skellington onesize",
+    "Fischerhut aus Vinyl violet",
+    "Waggishose kurz blau"
+   ],
+   "urteil": {
+    "handle": "kostueme-fasnacht",
+    "behalten": true,
+    "grund": "964 aktive Produkte: 211 Kostüme (Erwachsene und Kinder), 169 Perücken, 83 Hüte, 58 Masken, 2 Waggis-Zipfelmützen. Der alte Text enthielt «Schnelle CH-Lieferung», «schnell» ist verboten. Hinweis: Im Oktober wäre Halloween ein Zusatz-Begriff, das ist aber kein Fehler.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Fasnachtskostüme: Kostüme, Perücken & Masken | LuxeStyle",
+   "seo_text_final": "Fasnachtskostüme und Zubehör: Kostüme für Erwachsene und Kinder, Perücken, Hüte, Masken, Waggis-Mützen und Accessoires. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "suesses-esswaren",
+   "titel": "Süsses & Esswaren",
+   "keyword": "süssigkeiten",
+   "volumen": 4400,
+   "kd": 23,
+   "alt_seo_titel": "Süsses & Esswaren ab Schweizer Lager | LuxeStyle",
+   "seo_titel": "Süssigkeiten: Kaugummi, Fruchtgummi & Bonbons | LuxeStyle",
+   "seo_text": "Süssigkeiten für Fasnacht, Feste und Kindergeburtstage: Kaugummi, Fruchtgummi, Hochzeits-Bonbons, Lollis und Wurfmaterial. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne «süssigkeiten» (4'400, KD 23); Ware = Kaugummi, Fruchtgummi, Bonbons, Lollis. Markennamen (HARIBO) bewusst nicht in Titel/Text.",
+   "produkte_beispiele": [
+    "Kaugummi Center Shock Apfel · 100 Stück",
+    "HARIBO Riesenschlangen · 30 Stück",
+    "Hochzeits-Bonbons",
+    "Swizzels Trick or Treat Lolly Mix 330 g"
+   ],
+   "urteil": {
+    "handle": "suesses-esswaren",
+    "behalten": true,
+    "grund": "Nur 9 aktive Produkte, alle passen aber: Center-Shock-Kaugummi, Fruchtgummi von HARIBO und Trolli, Hochzeits-Bonbons, Swizzels-Lolly-Mix, 100er-Packungen als Wurfmaterial. «Süssigkeiten» trifft die Ware. Der alte Text versprach «1–2 Werktage» Lieferzeit.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Süssigkeiten: Kaugummi, Fruchtgummi & Bonbons | LuxeStyle",
+   "seo_text_final": "Süssigkeiten für Fasnacht, Feste und Kindergeburtstage: Kaugummi, Fruchtgummi, Hochzeits-Bonbons, Lollis und Wurfmaterial. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "sub-laufschuhe",
+   "titel": "Lauf- & Sportschuhe",
+   "keyword": "laufschuhe",
+   "volumen": 2900,
+   "kd": 20,
+   "alt_seo_titel": "Lauf- & Sportschuhe kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Laufschuhe, Sportschuhe & Sneaker | LuxeStyle",
+   "seo_text": "Laufschuhe, Sportschuhe und Sneaker für Damen, Herren und Kinder: Running-Sneaker, Freizeit-Sneaker und Slip-ons. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel kürzt «laufschuhe» (2'900) zu «Lauf-» – das Wort steht so nicht drin; Ware = Lauf-, Sport- und Freizeit-Sneaker.",
+   "produkte_beispiele": [
+    "Kinderlaufschuhe Weiss PU mit Bogenknopf",
+    "Kinder Sportschuhe zum Schnüren",
+    "Ultraleichte Flyknit Running-Sneaker",
+    "Herren-Laufschuhe mit Mesh-Obermaterial"
+   ],
+   "urteil": {
+    "handle": "sub-laufschuhe",
+    "behalten": true,
+    "grund": "944 aktive Produkte: 122 Laufschuhe, 145 Sportschuhe, 647 Sneaker. Es gibt Ware für Damen (67), Herren (297) und Kinder (195), dazu 12 Running-Sneaker und 19 Slip-ons. Alles belegt. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Laufschuhe, Sportschuhe & Sneaker | LuxeStyle",
+   "seo_text_final": "Laufschuhe, Sportschuhe und Sneaker für Damen, Herren und Kinder: Running-Sneaker, Freizeit-Sneaker und Slip-ons. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "damen-strick-pullover",
+   "titel": "Damen-Strick & Pullover",
+   "keyword": "pullover damen",
+   "volumen": 2400,
+   "kd": 13,
+   "alt_seo_titel": "Damen-Pullover, Strick & Hoodies | LuxeStyle",
+   "seo_titel": "Pullover Damen: Strickpullover & Kapuzenpullover | LuxeStyle",
+   "seo_text": "Pullover Damen: Strickpullover mit Rundhals oder V-Ausschnitt, Kapuzenpullover mit Reissverschluss und Hoodies. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel trägt «pullover damen» (2'400, KD 13) nicht in der gesuchten Form; Ware = Strick- und Kapuzenpullover für Damen.",
+   "produkte_beispiele": [
+    "BG Streetwear Retro Strickpullover",
+    "Gefütterter Kapuzenpullover mit Reissverschluss",
+    "Hoodie und Hose im Set",
+    "Handgemachter Quasten-Pullover aus Nerzfell"
+   ],
+   "urteil": {
+    "handle": "damen-strick-pullover",
+    "behalten": true,
+    "grund": "498 Pullover, 154 Strick, 62 mit Rundhals, 33 mit V-Ausschnitt, 28 Kapuzenpullover mit Reissverschluss, 244 Hoodies. Die Angaben stimmen. Der Titel hat genau 60 Zeichen. Datenfehler am Rande: 130 Produkte vom Typ Herrenmode tragen das Damen-Tag, das betrifft den Text nicht. Alt: «Versandkostenfrei ab CHF 50».",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Pullover Damen: Strickpullover & Kapuzenpullover | LuxeStyle",
+   "seo_text_final": "Pullover Damen: Strickpullover mit Rundhals oder V-Ausschnitt, Kapuzenpullover mit Reissverschluss und Hoodies. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "sub-bart-rasur",
+   "titel": "Bart & Rasur",
+   "keyword": "rasierer",
+   "volumen": 2400,
+   "kd": 19,
+   "alt_seo_titel": "Bart & Rasur kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Rasierer, Rasierhobel & Bartpflege | LuxeStyle",
+   "seo_text": "Rasierer für Gesicht und Körper, Folienrasierer, Rasierhobel, Bart- und Haarschneider, Rasierpinsel und Bartpflege-Sets. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne Suchbegriff; «rasierer» (2'400) ist die grösste Warengruppe (Rasierer, Hobel, Trimmer), «bartpflege» (480) kommt als Zweitbegriff in den Titel.",
+   "produkte_beispiele": [
+    "Elektrischer Rasierer für Gesicht und Körper",
+    "Rasierhobel für Augenbrauen und Körperhaar",
+    "Bartpflege-Set für den Mann",
+    "Multifunktionaler Trimmer für Haar & Bart"
+   ],
+   "urteil": {
+    "handle": "sub-bart-rasur",
+    "behalten": true,
+    "grund": "Vorhanden sind Rasierer für Gesicht und Körper, Folienrasierer (2), Rasierhobel (2, laut klingenregel keine Handklinge), Bart- und Haarschneider (7), Rasierpinsel (2) und Bartpflege-Sets (7). Alles belegt. Die Kollektion enthält Fremdkörper (Bartender-Shaker, Eis- und Fusselrasierer, Kostümbärte), der Text nennt aber nur echte Ware.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Rasierer, Rasierhobel & Bartpflege | LuxeStyle",
+   "seo_text_final": "Rasierer für Gesicht und Körper, Folienrasierer, Rasierhobel, Bart- und Haarschneider, Rasierpinsel und Bartpflege-Sets. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "sub-armbaender",
+   "titel": "Armbänder",
+   "keyword": "armband",
+   "volumen": 2400,
+   "kd": 12,
+   "alt_seo_titel": "Armbänder für Damen – Edelstahl, Gold & Silber | LuxeStyle CH",
+   "seo_titel": "Armband Damen: Armreifen & Perlenarmbänder | LuxeStyle",
+   "seo_text": "Armband für Damen: Armreifen, Kettenarmbänder, Perlenarmbänder, Herz-Armbänder und geflochtene Boho-Armbänder. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel nur mit Plural «Armbänder» (61 Zeichen); «armband» (2'400, KD 12) und «armband damen» (1'300) stehen jetzt beide wörtlich drin.",
+   "produkte_beispiele": [
+    "Nagelarmreif mit Diamanten",
+    "Perlenarmband minimalistisch",
+    "Personalisiertes Herz-Armband für Damen",
+    "Geflochtenes Armband mit rotem Faden"
+   ],
+   "urteil": {
+    "handle": "sub-armbaender",
+    "behalten": true,
+    "grund": "860 aktive Produkte, alle Schmuck: 55 Armreifen, 75 mit Perlen, 61 mit Herz, 42 geflochtene bzw. Boho-Modelle, Kettenarmbänder vorhanden. Nur 36 Herrenmodelle, die Betonung auf Damen ist also vertretbar und entspricht dem alten Titel. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Armband Damen: Armreifen & Perlenarmbänder | LuxeStyle",
+   "seo_text_final": "Armband für Damen: Armreifen, Kettenarmbänder, Perlenarmbänder, Herz-Armbänder und geflochtene Boho-Armbänder. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "kuschel-heizdecken",
+   "titel": "Kuschel- & Heizdecken",
+   "keyword": "kuscheldecke",
+   "volumen": 2400,
+   "kd": 15,
+   "alt_seo_titel": "Kuschel- & Heizdecken kaufen | Elektrische Wärmedecken",
+   "seo_titel": "Kuscheldecke & Heizdecke fürs Sofa | LuxeStyle",
+   "seo_text": "Kuscheldecke fürs Sofa und Bett: karierte Decken, Decken mit Motiv oder Quasten, Babydecken und Heizdecken. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel kürzt «kuscheldecke» (2'400) zu «Kuschel-»; Ware fast nur Kuscheldecken. Alte Beschreibung nennt Marken (Beurer, Medisana), die nicht mehr im Sortiment sind.",
+   "produkte_beispiele": [
+    "Kuscheldecke Rot-Schwarz Kariert",
+    "Kuscheldecke mit Digitaldruck",
+    "Heizbare Kuscheldecke mit Ärmeln und Kapuze",
+    "Kuscheldecke Häschenohren für Babys"
+   ],
+   "urteil": {
+    "handle": "kuschel-heizdecken",
+    "behalten": true,
+    "grund": "17 aktive Produkte: kariert (rot-schwarz), mit Motiv, mit Quasten, Babydecke mit Häschenohren und 2 Heizdecken (heizbare Kuscheldecke mit Ärmeln, Büro-Heizdecke). Wahr. Der alte Text nannte Beurer und Medisana, diese Produkte sind nur Entwürfe, also irreführend.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Kuscheldecke & Heizdecke fürs Sofa | LuxeStyle",
+   "seo_text_final": "Kuscheldecke fürs Sofa und Bett: karierte Decken, Decken mit Motiv oder Quasten, Babydecken und Heizdecken. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "damen-schuhe",
+   "titel": "Damen-Schuhe",
+   "keyword": "schuhe damen",
+   "volumen": 1900,
+   "kd": 20,
+   "alt_seo_titel": "Damen-Schuhe kaufen – Sneaker, Sandalen, Pumps & Stiefel",
+   "seo_titel": "Schuhe Damen: Sandalen, Pumps & Boots | LuxeStyle",
+   "seo_text": "Schuhe Damen: Sandalen mit Blockabsatz, Plateau-Sandalen, Pumps, High Heels, Ankle Boots, Stiefel und Hausschuhe. Versand in die ganze Schweiz.",
+   "begruendung": "«schuhe» (14'800) ist breiter als die Damen-Kollektion; «schuhe damen» trifft sie genau und fehlt im alten Titel. Rund drei Viertel der Ware sind Sandalen, dazu Pumps und Stiefel.",
+   "produkte_beispiele": [
+    "Bunte High-Heel-Sandalen mit Schnürverschluss",
+    "Pumps mit Blockabsatz und runder Zehenkappe",
+    "Boots mit weicher Gummisohle, schwarze Goldakzente",
+    "Stilvolle Fischmund-High-Heel-Sandalen"
+   ],
+   "urteil": {
+    "handle": "damen-schuhe",
+    "behalten": true,
+    "grund": "985 aktive Produkte: 775 Sandalen, 45 mit Blockabsatz, 89 Plateau-Sandalen, 29 Pumps, 72 High Heels, 6 Ankle Boots, 19 Stiefel, 4 Hausschuhe. Der alte Titel nannte «Sneaker», davon gibt es 0. Der neue Text ist deutlich genauer.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Schuhe Damen: Sandalen, Pumps & Boots | LuxeStyle",
+   "seo_text_final": "Schuhe Damen: Sandalen mit Blockabsatz, Plateau-Sandalen, Pumps, High Heels, Ankle Boots, Stiefel und Hausschuhe. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "damen-jacken-maentel",
+   "titel": "Damen-Jacken & Mäntel",
+   "keyword": "jacken damen",
+   "volumen": 1900,
+   "kd": 13,
+   "alt_seo_titel": "Damen-Jacken & Mäntel online kaufen | LuxeStyle",
+   "seo_titel": "Jacken Damen: Mäntel, Steppjacken & Cardigans | LuxeStyle",
+   "seo_text": "Jacken Damen: Steppjacken, Freizeitjacken, Kurzjacken, Mäntel, Blazer und Strick-Cardigans für Herbst und Winter. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne die gesuchte Form «jacken damen»; «winterjacke damen» (5'400) wäre enger als die Ware (auch Cardigans, Blazer, Übergangsjacken).",
+   "produkte_beispiele": [
+    "Vielseitige kurze Baumwoll-Steppjacke Damen",
+    "Leder- und Fellmantel mit Fleecefutter",
+    "Legerer Cardigan für Frühling & Herbst",
+    "Blazer mit Embroidery"
+   ],
+   "urteil": {
+    "handle": "damen-jacken-maentel",
+    "behalten": true,
+    "grund": "Belegt: 116 Mäntel, 31 Stepp-, Puffer- oder Daunenjacken, 194 Cardigans, 31 Blazer, Freizeit- und Kurzjacken. Hinweis auf Daten: 121 Produkte vom Typ Herrenmode stecken in der Kollektion, der Text auf Damen ist trotzdem richtig. Alt: Versandkostenfrei.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Jacken Damen: Mäntel, Steppjacken & Cardigans | LuxeStyle",
+   "seo_text_final": "Jacken Damen: Steppjacken, Freizeitjacken, Kurzjacken, Mäntel, Blazer und Strick-Cardigans für Herbst und Winter. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "damen-blusen",
+   "titel": "Damen-Blusen & Tops",
+   "keyword": "blusen damen",
+   "volumen": 1900,
+   "kd": 17,
+   "alt_seo_titel": "Damen-Blusen & Tops kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Blusen Damen: Langarmblusen & Hemdblusenkleider | LuxeStyle",
+   "seo_text": "Blusen Damen: Langarmblusen, Off-Shoulder-Blusen, Hemdblusen, Blusen mit Blumenprint oder Streifen und Hemdblusenkleider. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne «blusen damen» (1'900); «Tops» fällt weg (Wort steht auf der Sperrliste).",
+   "produkte_beispiele": [
+    "Elegante Satin-Langarmbluse",
+    "Off-Shoulder Hemdblusenkleid für Damen",
+    "Lässiges Langarm-Hemdblusenkleid für Damen",
+    "Chiffonbluse mit kurzen Ärmeln"
+   ],
+   "urteil": {
+    "handle": "damen-blusen",
+    "behalten": true,
+    "grund": "Alle 341 aktiven Produkte sind Blusen: 63 langärmlig, 12 Off-Shoulder, 37 Hemdblusen, 28 mit Blumen, 17 mit Streifen, 38 Hemdblusenkleider. Jede Angabe ist belegt. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Blusen Damen: Langarmblusen & Hemdblusenkleider | LuxeStyle",
+   "seo_text_final": "Blusen Damen: Langarmblusen, Off-Shoulder-Blusen, Hemdblusen, Blusen mit Blumenprint oder Streifen und Hemdblusenkleider. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "sub-halsketten",
+   "titel": "Halsketten",
+   "keyword": "halskette damen",
+   "volumen": 1900,
+   "kd": 13,
+   "alt_seo_titel": "Halsketten für Damen – Edelstahl & vergoldet | LuxeStyle Schweiz",
+   "seo_titel": "Halskette Damen: Anhänger & Perlenketten | LuxeStyle",
+   "seo_text": "Halskette Damen: Ketten mit Herz- oder Kreuzanhänger, Medaillons, Perlenketten, Buchstabenketten und mehrreihige Ketten. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel (64 Zeichen, zu lang) ohne die gesuchte Form «halskette damen» (1'900).",
+   "produkte_beispiele": [
+    "Herz-Halskette mit Buchstaben aus Edelstahl",
+    "Herz-Medaillon-Halskette",
+    "Holzperlen-Halskette mit Schmetterlingen",
+    "Dopamine Buchstabenkette für Damen",
+    "Halskette mit Initialen – Kupfer, Kreuzkette"
+   ],
+   "urteil": {
+    "handle": "sub-halsketten",
+    "behalten": true,
+    "grund": "362 aktive Produkte: 40 mit Herz, 19 mit Kreuz, 3 Medaillons, 43 mit Perlen, 21 Buchstabenketten, 12 mehrreihige. Nur 2 Herrenmodelle, «Damen» trifft also zu. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Halskette Damen: Anhänger & Perlenketten | LuxeStyle",
+   "seo_text_final": "Halskette Damen: Ketten mit Herz- oder Kreuzanhänger, Medaillons, Perlenketten, Buchstabenketten und mehrreihige Ketten. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "herren-pullover",
+   "titel": "Herren-Pullover & Strick",
+   "keyword": "pullover herren",
+   "volumen": 1600,
+   "kd": 13,
+   "alt_seo_titel": "Herren-Pullover & Strick online kaufen | LuxeStyle",
+   "seo_titel": "Pullover Herren: Strickpullover & Cardigans | LuxeStyle",
+   "seo_text": "Pullover Herren: Strickpullover mit Rundhals oder V-Hals, Half-Zip-Pullover, Strick-Cardigans und Strickwesten. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "«pullover herren» (1'600) fehlt im alten Titel; Ware = Strickpullover, Cardigans, Strickwesten.",
+   "produkte_beispiele": [
+    "Herren Strickpullover mit Reissverschluss-Polo",
+    "Herren-Strickcardigan",
+    "Herren Half-Zip Hoodie mit Karomuster",
+    "Herren Strickweste Frühling/Herbst"
+   ],
+   "urteil": {
+    "handle": "herren-pullover",
+    "behalten": true,
+    "grund": "100 aktive Produkte, alle für Herren: 68 Strick, 5 mit Rundhals, 4 mit V-Hals, 5 Half-Zip, 21 Cardigans, 6 Strickwesten. Belegt. Der alte Text enthielt «Top-Marken» und «gratis».",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Pullover Herren: Strickpullover & Cardigans | LuxeStyle",
+   "seo_text_final": "Pullover Herren: Strickpullover mit Rundhals oder V-Hals, Half-Zip-Pullover, Strick-Cardigans und Strickwesten. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "haushaltsgeraete",
+   "titel": "Haushaltsgeräte",
+   "keyword": "küchengeräte",
+   "volumen": 1600,
+   "kd": 21,
+   "alt_seo_titel": "Haushaltsgeräte kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Küchengeräte: Mixer, Entsafter & Fritteusen | LuxeStyle",
+   "seo_text": "Küchengeräte: Mixer, Handmixer, Entsafter, Fritteusen, Toaster, Wasserkocher und Eierkocher, dazu Mini-Staubsauger. Versand in die ganze Schweiz.",
+   "begruendung": "Rund drei Viertel der Ware sind Küchengeräte; «haushaltsgeräte» hat keine Semrush-Zahl, «küchengeräte» (1'600) fehlt im alten Titel.",
+   "produkte_beispiele": [
+    "USB-Mixer für unterwegs",
+    "Mobiler Entsafter mit 460 ml Kapazität",
+    "Fritteuse mit Sieb",
+    "Automatischer Multifunktions-Toaster",
+    "Kabelloser USB-Staubsauger für Auto & Haushalt"
+   ],
+   "urteil": {
+    "handle": "haushaltsgeraete",
+    "behalten": true,
+    "grund": "Von 128 aktiven Produkten sind rund 80 Küchengeräte: 27 Mixer, 8 Handmixer, 28 Entsafter, Fritteusen, 5 Toaster, 8 Wasserkocher. Daneben 29 Staubsauger (Hand- und Roboter-Staubsauger, nicht nur Mini) und 5 Bügeleisen. Ich habe den Text auf «Handstaubsauger und Bügeleisen» korrigiert, damit der Haushaltsteil der Seite richtig abgebildet ist. Die Eierkocher (nur 2 für die Mikrowelle) sind gestrichen.",
+    "seo_titel_korrigiert": "Küchengeräte: Mixer, Entsafter & Fritteusen | LuxeStyle",
+    "seo_text_korrigiert": "Küchengeräte: Mixer, Handmixer, Entsafter, Fritteusen, Toaster und Wasserkocher, dazu Handstaubsauger und Bügeleisen. Versand in die ganze Schweiz."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Küchengeräte: Mixer, Entsafter & Fritteusen | LuxeStyle",
+   "seo_text_final": "Küchengeräte: Mixer, Handmixer, Entsafter, Fritteusen, Toaster und Wasserkocher, dazu Handstaubsauger und Bügeleisen. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "sub-reise",
+   "titel": "Reise & Outdoor",
+   "keyword": "reiserucksack",
+   "volumen": 1600,
+   "kd": 17,
+   "alt_seo_titel": "Reise & Outdoor kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Reiserucksack, Reisetasche & Reisezubehör | LuxeStyle",
+   "seo_text": "Reiserucksack, Reisetaschen, Koffer, Nackenkissen, Reise-Organizer und Camping-Zubehör für Ferien und Geschäftsreisen. Versand in die ganze Schweiz.",
+   "begruendung": "Rucksäcke sind die grösste Gruppe (rund 39 %), Taschen/Koffer rund 30 %; «reiserucksack» (1'600) und «reisetasche» (2'400) stehen beide im Titel. Alter Titel ohne Suchbegriff.",
+   "produkte_beispiele": [
+    "Reise-Rucksack aus Oxford-Stoff",
+    "Reisetasche aus Rindsleder mit Krokoprägung",
+    "Leder Aktenkoffer mit Zahlenschloss",
+    "Aufblasbares Nackenkissen für Reisen"
+   ],
+   "urteil": {
+    "handle": "sub-reise",
+    "behalten": true,
+    "grund": "709 aktive Produkte: 232 Rucksäcke (davon 29 ausdrücklich Reiserucksäcke), 96 Reisetaschen, Reisekoffer, 3 Nackenkissen, 27 Organizer, 79 Camping-Artikel, 47 Business-Artikel. «Reiserucksack» passt. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Reiserucksack, Reisetasche & Reisezubehör | LuxeStyle",
+   "seo_text_final": "Reiserucksack, Reisetaschen, Koffer, Nackenkissen, Reise-Organizer und Camping-Zubehör für Ferien und Geschäftsreisen. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "camping-outdoor",
+   "titel": "Camping & Outdoor",
+   "keyword": "camping zubehör",
+   "volumen": 1600,
+   "kd": 50,
+   "alt_seo_titel": "Camping & Outdoor kaufen – Kühltaschen & Camping-Tisch",
+   "seo_titel": "Camping Zubehör: Kocher, Tische & Laternen | LuxeStyle",
+   "seo_text": "Camping Zubehör: Gaskocher, Camping-Kochsets, Campingtische, Klappstühle, Campingmatten, Laternen und Hängematten. Versand in die ganze Schweiz.",
+   "begruendung": "«camping zubehör» (1'600, KD 50 = Grenze) fehlt im alten Titel; Ware = Kocher, Tische, Stühle, Matten, Laternen. Kollektion rankt für «camping liegestuhl» (Platz 50).",
+   "produkte_beispiele": [
+    "Mini Outdoor Gaskocher Ultraleicht",
+    "Klappbarer Campingtisch mit 4 Stühlen",
+    "Robuster Klappstuhl für Freizeit und Camping",
+    "Multifunktionale, wiederaufladbare Campinglaterne",
+    "Reise-Hängematte aus Fallschirm-Nylon"
+   ],
+   "urteil": {
+    "handle": "camping-outdoor",
+    "behalten": true,
+    "grund": "Belegt: 16 Kocher, 7 Kochsets, Campingtische, 3 Klappstühle, Isomatten und Bodenmatten, 2 Campinglaternen, Hängematten (mit Moskitonetz bzw. Reise-Hängematte). Korrigiert: «Camping Zubehör» ist eine falsch getrennte Zusammensetzung, richtig ist «Camping-Zubehör». Das Tor normalisiert Bindestriche, der Suchbegriff wird also weiter erkannt.",
+    "seo_titel_korrigiert": "Camping-Zubehör: Kocher, Tische & Laternen | LuxeStyle",
+    "seo_text_korrigiert": "Camping-Zubehör: Gaskocher, Camping-Kochsets, Campingtische, Klappstühle, Campingmatten, Laternen und Hängematten. Versand in die ganze Schweiz."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Camping-Zubehör: Kocher, Tische & Laternen | LuxeStyle",
+   "seo_text_final": "Camping-Zubehör: Gaskocher, Camping-Kochsets, Campingtische, Klappstühle, Campingmatten, Laternen und Hängematten. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "herren-jacken",
+   "titel": "Herren-Jacken & Hoodies",
+   "keyword": "jacken herren",
+   "volumen": 1300,
+   "kd": 10,
+   "alt_seo_titel": "Herren-Jacken & Hoodies online kaufen | LuxeStyle",
+   "seo_titel": "Jacken Herren: Hoodies, Cardigans & Mäntel | LuxeStyle",
+   "seo_text": "Jacken Herren: Jacken mit Reissverschluss, Outdoor-Jacken, Hoodies, Kapuzenpullover, Cardigans, Windbreaker und Mäntel. Versand in die ganze Schweiz.",
+   "begruendung": "«jacken herren» (1'300, KD 10) fehlt im alten Titel; «winterjacke herren» wäre enger als die Ware.",
+   "produkte_beispiele": [
+    "Herren-Jacke mit langen Ärmeln",
+    "Herren Hoodie mit Reissverschluss",
+    "Herren Cardigan Stehkragen Langarmshirt Baumwolle",
+    "Herren Kapuzen-Windbreaker wasserdicht"
+   ],
+   "urteil": {
+    "handle": "herren-jacken",
+    "behalten": true,
+    "grund": "84 aktive Produkte: 60 Hoodies bzw. Kapuzenpullover (viele mit Reissverschluss, also Sweatjacken), 17 Cardigans (Strickjacken), 11 Jacken, 3 Mäntel, 1 Windbreaker, 1 Outdoor-Jacke. «Jacken Herren» trifft den Namen der Kollektion, und der Titel sagt ehrlich, dass Hoodies und Cardigans dabei sind. Grenzfall, aber wahr. Alt: «Top-Marken» und «gratis».",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Jacken Herren: Hoodies, Cardigans & Mäntel | LuxeStyle",
+   "seo_text_final": "Jacken Herren: Jacken mit Reissverschluss, Outdoor-Jacken, Hoodies, Kapuzenpullover, Cardigans, Windbreaker und Mäntel. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "tier-leinen-kleidung",
+   "titel": "Leinen, Geschirre & Tierkleidung",
+   "keyword": "hundeleine",
+   "volumen": 1300,
+   "kd": 14,
+   "alt_seo_titel": "Leinen, Geschirre & Tierkleidung kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Hundeleine, Halsband, Geschirr & Hundekleidung | LuxeStyle",
+   "seo_text": "Hundeleine, Rollleinen, Halsbänder, Brustgeschirre, Hundejacken, Hundemäntel und Westen, dazu Katzenhalsbänder. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Leinen sind die grösste Gruppe (rund 40 %), dann Kleidung, Halsbänder, Geschirre; «hundeleine» (1'300) fehlt im alten Titel. «hundegeschirr» (1'900) wäre zu eng (rund 15 %).",
+   "produkte_beispiele": [
+    "Lederhalsband für kleine bis mittelgrosse Hunde",
+    "Verstellbares Nylon-Hundehalsband",
+    "Hundegeschirr & Leine mit Ausbruchschutz",
+    "Reflektierender Hunde-Regenmantel"
+   ],
+   "urteil": {
+    "handle": "tier-leinen-kleidung",
+    "behalten": true,
+    "grund": "40 Hundeleinen, 2 Roll- bzw. Automatikleinen, 61 Halsbänder, 15 Brustgeschirre, 38 Jacken, 21 Mäntel, 32 Westen, 7 Katzenhalsbänder. Jede Angabe ist belegt.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Hundeleine, Halsband, Geschirr & Hundekleidung | LuxeStyle",
+   "seo_text_final": "Hundeleine, Rollleinen, Halsbänder, Brustgeschirre, Hundejacken, Hundemäntel und Westen, dazu Katzenhalsbänder. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "waerme-komfort",
+   "titel": "Wärme & Komfort",
+   "keyword": "wärmekissen",
+   "volumen": 1300,
+   "kd": 14,
+   "alt_seo_titel": "Wärme & Komfort kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Wärmekissen, Heizkissen & Handwärmer | LuxeStyle",
+   "seo_text": "Wärmekissen und Heizkissen für Rücken, Nacken und Autositz, USB-Handwärmer, Wärmegürtel, Wärmflaschen und Heizwesten. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne Suchbegriff; Ware = Heizkissen, Handwärmer, Wärmegürtel. Die Zuordnung «kuscheldecke/heizdecke» in kategorie_zu_suchbegriff passt hier nicht (keine Decken in der Kollektion).",
+   "produkte_beispiele": [
+    "USB-Heizkissen mit Graphen-Technologie",
+    "Travel Box Handwärmer mit USB-Ladefunktion",
+    "Wärmegürtel mit Rotlichtfunktion",
+    "Mini-Wärmflasche Donut"
+   ],
+   "urteil": {
+    "handle": "waerme-komfort",
+    "behalten": true,
+    "grund": "40 aktive Produkte: Heizkissen für Rücken, Nacken und Autositz, USB-Handwärmer, Wärmegürtel, Wärmflaschen und 1 Heizweste. Wahr. «Wärmekissen» ist ein Synonym für die Heizkissen, Medizin-Wörter (Rotlicht, Mikrostrom) meidet der Text. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Wärmekissen, Heizkissen & Handwärmer | LuxeStyle",
+   "seo_text_final": "Wärmekissen und Heizkissen für Rücken, Nacken und Autositz, USB-Handwärmer, Wärmegürtel, Wärmflaschen und Heizwesten. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "damen-hosen",
+   "titel": "Damen-Hosen",
+   "keyword": "hosen damen",
+   "volumen": 1000,
+   "kd": 15,
+   "alt_seo_titel": "Damen-Hosen kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Hosen Damen: Wide-Leg-Hosen & High-Waist-Hosen | LuxeStyle",
+   "seo_text": "Hosen Damen: Hosen mit weitem Bein, High-Waist-Hosen, gestreifte Hosen, Yoga-Hosen, Caprihosen, Latzhosen und Sommerhosen. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne «hosen damen»; «leggings damen» passt nicht (Regel verlangt «hose» im Titel, Leggings sind kaum drin).",
+   "produkte_beispiele": [
+    "Denim Hose mit weitem Bein",
+    "High-Waist Fitnesshose mit gedrehten Falten",
+    "Schwangerschafts Yoga Hose mit weitem Bein",
+    "Gepunktete Caprihose mit schmaler Passform"
+   ],
+   "urteil": {
+    "handle": "damen-hosen",
+    "behalten": true,
+    "grund": "282 aktive Hosen: 84 mit weitem Bein bzw. Wide Leg, 58 High-Waist, 11 gestreifte, 30 Yoga-Hosen, 10 Caprihosen, 4 Latzhosen, 5 Sommerhosen. Alles belegt.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Hosen Damen: Wide-Leg-Hosen & High-Waist-Hosen | LuxeStyle",
+   "seo_text_final": "Hosen Damen: Hosen mit weitem Bein, High-Waist-Hosen, gestreifte Hosen, Yoga-Hosen, Caprihosen, Latzhosen und Sommerhosen. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "herren-hemden",
+   "titel": "Herren-Hemden",
+   "keyword": "hemden herren",
+   "volumen": 1000,
+   "kd": 21,
+   "alt_seo_titel": "Herren-Hemden & Leinenhemden kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Hemden Herren: Kurzarmhemden & Langarmhemden | LuxeStyle",
+   "seo_text": "Hemden Herren: Kurzarmhemden, Langarmhemden, gestreifte Hemden, Hemden mit Blumenmuster, Kubakragen oder Stehkragen. Versand in die ganze Schweiz.",
+   "begruendung": "«hemden herren» (1'000) fehlt im alten Titel; «edelweiss hemd» wäre zu eng.",
+   "produkte_beispiele": [
+    "Stehkragen-Cardigan Kurzarmhemd für Herren",
+    "Langarmhemd aus Lyocell und Leinen",
+    "Baumwollhemd mit Kubakragen",
+    "Herren Hemd aus Eisseide mit Blumenmuster"
+   ],
+   "urteil": {
+    "handle": "herren-hemden",
+    "behalten": true,
+    "grund": "815 aktive Hemden: 193 kurzärmlig, 228 langärmlig, 97 gestreift, 65 mit Blumenmuster, 56 mit Kuba- oder Reverskragen, 30 mit Stehkragen. Belegt. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Hemden Herren: Kurzarmhemden & Langarmhemden | LuxeStyle",
+   "seo_text_final": "Hemden Herren: Kurzarmhemden, Langarmhemden, gestreifte Hemden, Hemden mit Blumenmuster, Kubakragen oder Stehkragen. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "sub-kueche",
+   "titel": "Küche & Kochen",
+   "keyword": "küchenutensilien",
+   "volumen": 1000,
+   "kd": 18,
+   "alt_seo_titel": "Küche & Kochen kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Küchenutensilien: Pfannen, Backformen & Teller | LuxeStyle",
+   "seo_text": "Küchenutensilien: Bratpfannen, Backformen, Schneidebretter, Servierplatten, Schalen, Küchenwaagen und Gewürzmühlen. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne Suchbegriff; «küchenutensilien» (1'000) trifft die gemischte Küchenware, «küchengeräte» (elektrisch, an Haushaltsgeräte vergeben) und «kochtopf» wären zu eng.",
+   "produkte_beispiele": [
+    "Elektrische Doppelseitige Bratpfanne",
+    "Backform für Pizza und Brot – rechteckig, antihaft",
+    "Bambus-Pizzaschneidebrett 33x18 cm",
+    "Elektronische Küchenwaage aus Edelstahl",
+    "Porzellanplatte 7\" japanischer Stil"
+   ],
+   "urteil": {
+    "handle": "sub-kueche",
+    "behalten": true,
+    "grund": "16 Bratpfannen, 14 Backformen, Schneidebretter, Servierplatten, 21 Schalen, 4 Küchenwaagen, 11 Gewürz- und Pfeffermühlen, 14 Teller. Belegt. Nebenbefund ausserhalb des Auftrags: «Titanlegierung Faltmesser Mini Schlüsselanhänger» ist aktiv, wird von klingenregel aber nicht erkannt. Das sollte die Klingenwache prüfen.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Küchenutensilien: Pfannen, Backformen & Teller | LuxeStyle",
+   "seo_text_final": "Küchenutensilien: Bratpfannen, Backformen, Schneidebretter, Servierplatten, Schalen, Küchenwaagen und Gewürzmühlen. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "auto-kfz-zubehoer",
+   "titel": "Auto & KFZ-Zubehör",
+   "keyword": "auto zubehör",
+   "volumen": 1000,
+   "kd": 19,
+   "alt_seo_titel": "Auto & KFZ-Zubehör online kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Auto Zubehör: Lenkradbezüge, Sitzkissen & Pflege | LuxeStyle",
+   "seo_text": "Auto Zubehör: Lenkradbezüge, Sitzkissen, Rückenstützen, Poliermaschinen, Reinigungssets, Dashcams und Becherhalter. Versand in die ganze Schweiz.",
+   "begruendung": "«auto zubehör» (1'000) fehlt im alten Titel; «kfz zubehör» hat nur 20.",
+   "produkte_beispiele": [
+    "Plüsch-Lenkradbezug · weich & rutschfest",
+    "Sitzkissen für Auto und Büro",
+    "Kabellose Poliermaschine für dein Auto",
+    "4-Kamera-Dashcam"
+   ],
+   "urteil": {
+    "handle": "auto-kfz-zubehoer",
+    "behalten": true,
+    "grund": "76 Lenkradbezüge, 32 Sitzkissen, 7 Rückenstützen, Poliermaschinen, Reinigungssets, 15 Dashcams bzw. Kameras, 1 Becherhalter. Belegt. Korrigiert: «Auto Zubehör» wird zu «Auto-Zubehör» (falsch getrennte Zusammensetzung). Das Tor normalisiert Bindestriche, der Suchbegriff wird weiter erkannt.",
+    "seo_titel_korrigiert": "Auto-Zubehör: Lenkradbezüge, Sitzkissen & Pflege | LuxeStyle",
+    "seo_text_korrigiert": "Auto-Zubehör: Lenkradbezüge, Sitzkissen, Rückenstützen, Poliermaschinen, Reinigungssets, Dashcams und Becherhalter. Versand in die ganze Schweiz."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Auto-Zubehör: Lenkradbezüge, Sitzkissen & Pflege | LuxeStyle",
+   "seo_text_final": "Auto-Zubehör: Lenkradbezüge, Sitzkissen, Rückenstützen, Poliermaschinen, Reinigungssets, Dashcams und Becherhalter. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "fitness-training",
+   "titel": "Sport, Fitness & Outdoor",
+   "keyword": "fitnessgeräte",
+   "volumen": 1000,
+   "kd": 37,
+   "alt_seo_titel": "Fitness & Training kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Fitnessgeräte: Bauchroller, Springseile & Bänder | LuxeStyle",
+   "seo_text": "Fitnessgeräte fürs Training zuhause: Bauchroller, Springseile, Widerstandsbänder, Faszienrollen und Kettlebells. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Knapp die Hälfte der Ware sind kleine Trainingsgeräte; «fitnessgeräte» (1'000, KD 37) fehlt im alten Titel.",
+   "produkte_beispiele": [
+    "Bauchroller mit Ellenbogenstütze",
+    "Springseil mit Zähler und Kalorienanzeige",
+    "Innstar Hüftring Widerstandsband",
+    "Elektrischer Faszienball zur Muskelentspannung",
+    "Kettlebell aus Stahl für Krafttraining"
+   ],
+   "urteil": {
+    "handle": "fitness-training",
+    "behalten": true,
+    "grund": "20 Bauchtrainer bzw. Bauchroller, 21 Springseile, 46 Bänder, Faszienrollen, 2 Kettlebells. Belegt. Die Kollektion ist breiter (141 Velo-Artikel), Fitnessgeräte sind aber ein grosser Teil und entsprechen dem Namen der Kollektion. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Fitnessgeräte: Bauchroller, Springseile & Bänder | LuxeStyle",
+   "seo_text_final": "Fitnessgeräte fürs Training zuhause: Bauchroller, Springseile, Widerstandsbänder, Faszienrollen und Kettlebells. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "fur-ihn",
+   "titel": "Herren-Mode",
+   "keyword": "herrenmode",
+   "volumen": 880,
+   "kd": 24,
+   "alt_seo_titel": "Herren-Mode kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Herrenmode: Shirts, Hemden, Pullover & Schuhe | LuxeStyle",
+   "seo_text": "Herrenmode bei LuxeStyle: Langarmshirts, Poloshirts, Hemden, Hoodies, Strickpullover, Winterjacken, Westen und Herrenschuhe. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel schreibt «Herren-Mode», gesucht wird «herrenmode» (880); Ware = Shirts/Hemden (rund die Hälfte), Schuhe, Pullover, Jacken.",
+   "produkte_beispiele": [
+    "Langarmshirt mit Reverskragen",
+    "Herren Polo-Shirt mit bunten Streifen",
+    "Herren Baumwollhemd Kurzarm",
+    "Hoodie mit Farbblock-Muster, Pullover",
+    "Herren Winter Daunenjacke mit Stehkragen"
+   ],
+   "urteil": {
+    "handle": "fur-ihn",
+    "behalten": true,
+    "grund": "873 aktive Produkte, nur Herrenmode und Herrenschuhe: 133 langärmlig, 73 Polo, 254 Hemden, 26 Strick, 7 Westen, 2–3 Winterjacken, 328 Schuhe. Wahr. Alt: Gratis-Versand und WELCOME10.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Herrenmode: Shirts, Hemden, Pullover & Schuhe | LuxeStyle",
+   "seo_text_final": "Herrenmode bei LuxeStyle: Langarmshirts, Poloshirts, Hemden, Hoodies, Strickpullover, Winterjacken, Westen und Herrenschuhe. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "herren-shirts",
+   "titel": "Herren-Shirts & Tops",
+   "keyword": "t-shirt herren",
+   "volumen": 720,
+   "kd": 14,
+   "alt_seo_titel": "Herren-Shirts & Tops kaufen | LuxeStyle Schweiz",
+   "seo_titel": "T-Shirt Herren: Poloshirts & Langarmshirts | LuxeStyle",
+   "seo_text": "T-Shirt Herren: Kurzarm-T-Shirts, Poloshirts, Langarmshirts mit V-Ausschnitt oder Kapuze und gestreifte Shirts. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Ware: knapp die Hälfte Kurzarm-/T-Shirts, ein Drittel Langarmshirts, ein Viertel Polos; «t-shirt herren» (720) deckt den Grossteil, «poloshirt herren» (1'300) wäre zu eng.",
+   "produkte_beispiele": [
+    "Herren Polo-Shirt mit bunten Streifen",
+    "Langarm T-Shirt mit Streifen, lockerer Sitz",
+    "Langarmshirt mit Reverskragen",
+    "Herren Langarmshirt Gestreift"
+   ],
+   "urteil": {
+    "handle": "herren-shirts",
+    "behalten": true,
+    "grund": "176 echte T-Shirts, davon 44 ausdrücklich kurzärmlig, 133 Polos, 173 langärmlig, 16 mit V-Ausschnitt, 26 mit Kapuze, 48 gestreift. Belegt. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "T-Shirt Herren: Poloshirts & Langarmshirts | LuxeStyle",
+   "seo_text_final": "T-Shirt Herren: Kurzarm-T-Shirts, Poloshirts, Langarmshirts mit V-Ausschnitt oder Kapuze und gestreifte Shirts. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "wanddeko",
+   "titel": "Wanddeko",
+   "keyword": "wanddekoration",
+   "volumen": 720,
+   "kd": 15,
+   "alt_seo_titel": "Wanddeko kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Wanddekoration: Leinwandbilder & Wandbehänge | LuxeStyle",
+   "seo_text": "Wanddekoration: Leinwandbilder, mehrteilige Wandbilder, Wandbehänge und Silhouetten für Wohn- und Schlafzimmer. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne «wanddekoration» (720); «wandbilder» (1'900) deckt nur rund 43 % der Ware (dazu Wandbehänge, Silhouetten) und steht als Zweitbegriff im Text.",
+   "produkte_beispiele": [
+    "Dekorative Leinwandbilder Set – 3‑teilige Wandkunst",
+    "Wandbild Golf‑Stadion – gerahmt, 40 × 60 cm",
+    "Pilz-Pflanzen-Wandbehang",
+    "Metall-Wanddeko fliegender Vogel"
+   ],
+   "urteil": {
+    "handle": "wanddeko",
+    "behalten": true,
+    "grund": "72 aktive Produkte: 20 Leinwandbilder, 3 mehrteilige, 18 Wandbehänge, 2 Metall-Silhouetten, dazu Ware für Wohn- und Schlafzimmer. Belegt. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Wanddekoration: Leinwandbilder & Wandbehänge | LuxeStyle",
+   "seo_text_final": "Wanddekoration: Leinwandbilder, mehrteilige Wandbilder, Wandbehänge und Silhouetten für Wohn- und Schlafzimmer. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "herren-hosen",
+   "titel": "Herren-Hosen",
+   "keyword": "hosen herren",
+   "volumen": 590,
+   "kd": 15,
+   "alt_seo_titel": "Herren-Hosen – Leinen-, Stoff- & Cordhosen | LuxeStyle CH",
+   "seo_titel": "Hosen Herren: Cargohosen, Freizeithosen & Jeans | LuxeStyle",
+   "seo_text": "Hosen Herren: Cargohosen mit Taschen, Freizeithosen, gerade geschnittene Hosen, Jogger, Arbeitshosen und Jeans. Versand in die ganze Schweiz.",
+   "begruendung": "«hosen herren» (590) fehlt im alten Titel; «jeans herren» (880) wäre zu eng (Jeans nur rund 6 %).",
+   "produkte_beispiele": [
+    "Loose Fit Cargo-Hose mit grossen Taschen",
+    "Trendige Herren Joggerhose, lockere Passform",
+    "Wasserdichte Herren-Arbeitshose mit Fleecefutter",
+    "Pleated Wide-leg Denim Hose für Herren"
+   ],
+   "urteil": {
+    "handle": "herren-hosen",
+    "behalten": true,
+    "grund": "172 aktive Hosen: 23 Cargo, 26 Freizeit, 33 gerade geschnitten, 3 Jogger, 15 Arbeitshosen, 11 Jeans bzw. Denim. Belegt. Der alte Text versprach «Schnelle Lieferung» und WELCOME10.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Hosen Herren: Cargohosen, Freizeithosen & Jeans | LuxeStyle",
+   "seo_text_final": "Hosen Herren: Cargohosen mit Taschen, Freizeithosen, gerade geschnittene Hosen, Jogger, Arbeitshosen und Jeans. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "handy-zubehoer",
+   "titel": "Handy-Zubehör",
+   "keyword": "handyzubehör",
+   "volumen": 590,
+   "kd": 15,
+   "alt_seo_titel": "Handy-Zubehör kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Handyzubehör: Ladegeräte, Powerbanks & Halter | LuxeStyle",
+   "seo_text": "Handyzubehör: kabellose Ladegeräte, Powerbanks, Ladekabel, Handyhalter, Handyhüllen und magnetische Ladestationen. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel schreibt «Handy-Zubehör», gesucht wird «handyzubehör» (590); «handyhülle» (5'400) wäre zu eng (Ware vor allem Ladegeräte/Powerbanks).",
+   "produkte_beispiele": [
+    "3‑in‑1 Magnetischer kabelloser Ladegerät",
+    "Kompakte Powerbank 10 000 mAh mit Dual‑Display",
+    "Faltbare Yogamatte mit Handyhalter",
+    "Handyhülle für OnePlus 8T, Schwarz"
+   ],
+   "urteil": {
+    "handle": "handy-zubehoer",
+    "behalten": true,
+    "grund": "619 aktive Produkte: 171 kabellose Ladegeräte, 199 Powerbanks, Ladekabel, Halter, mehrere Handyhüllen, 55 magnetische Ladegeräte bzw. Ladestationen. Belegt. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Handyzubehör: Ladegeräte, Powerbanks & Halter | LuxeStyle",
+   "seo_text_final": "Handyzubehör: kabellose Ladegeräte, Powerbanks, Ladekabel, Handyhalter, Handyhüllen und magnetische Ladestationen. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "erste-august",
+   "titel": "Schweizer Editionen",
+   "keyword": "schweizer souvenirs",
+   "volumen": 590,
+   "kd": 12,
+   "alt_seo_titel": "Schweizer Editionen kaufen | LuxeStyle",
+   "seo_titel": "Schweizer Souvenirs: Tassen, Taschen & T-Shirts | LuxeStyle",
+   "seo_text": "Schweizer Souvenirs mit Mundart und Motiven: Tassen, Taschen, T-Shirts, Kissen, Mauspads, Sticker, Magnete und Fahnen. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne Suchbegriff; Ware = Souvenirs mit Schweizer Sprüchen und Motiven. «schweizer» ist hier Warenmerkmal, keine Ortssuche (Grenzfall, bitte bewusst entscheiden).",
+   "produkte_beispiele": [
+    "Tasse «Merci» · Modell 2",
+    "Tasche «Merci»",
+    "T-Shirt «Merci» · Modell 2",
+    "Kissen «Haeee»",
+    "Sticker «Grüezi» · 1 Stück"
+   ],
+   "urteil": {
+    "handle": "erste-august",
+    "behalten": true,
+    "grund": "242 aktive Produkte: 45 Tassen, 29 Taschen, 45 T-Shirts, 24 Kissen, 24 Mauspads, 44 Sticker, 6 Magnete, 3 Fahnen bzw. Flaggen, Mundart-Motive wie Grüezi oder Gopfertami. Alles belegt. Alt: Gratis-Versand und WELCOME10.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Schweizer Souvenirs: Tassen, Taschen & T-Shirts | LuxeStyle",
+   "seo_text_final": "Schweizer Souvenirs mit Mundart und Motiven: Tassen, Taschen, T-Shirts, Kissen, Mauspads, Sticker, Magnete und Fahnen. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "party-deko-ch",
+   "titel": "Party & Deko",
+   "keyword": "party deko",
+   "volumen": 590,
+   "kd": 15,
+   "alt_seo_titel": "🎉 Party & Deko | LuxeStyle",
+   "seo_titel": "Party Deko: Luftballons, Girlanden & Festdeko | LuxeStyle",
+   "seo_text": "Party Deko für Feste: Luftballons, Folienballone, Girlanden und Hängedeko, dazu Deko für Halloween und Weihnachten. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Ballone sind nur rund 18 % der Ware (viel Weihnachts- und Halloween-Deko); «party deko» (590) trifft die Mischung, «ballone» (4'400) wäre zu eng.",
+   "produkte_beispiele": [
+    "Weihnachts-Ballonboxen",
+    "Gummiballon DIY-Girlande",
+    "Hängedeko Glitzer Regenbogen",
+    "Solarbetriebene Weihnachts-Kieferbaumlichter"
+   ],
+   "urteil": {
+    "handle": "party-deko-ch",
+    "behalten": true,
+    "grund": "Belegt: 32 Luftballons, 12 Folienballons, 5 Girlanden, Hängedeko, 6 Artikel für Halloween, 36 für Weihnachten. Korrigiert: «Party Deko» wird zu «Party-Deko» (falsch getrennte Zusammensetzung), dazu einheitlich «Folienballons» wie «Luftballons». Das Tor normalisiert Bindestriche. Hinweis: Einige Folienballons sind Lizenzware (Disney, Marvel).",
+    "seo_titel_korrigiert": "Party-Deko: Luftballons, Girlanden & Festdeko | LuxeStyle",
+    "seo_text_korrigiert": "Party-Deko für Feste: Luftballons, Folienballons, Girlanden und Hängedeko, dazu Deko für Halloween und Weihnachten. Bezahlen mit TWINT oder Klarna."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Party-Deko: Luftballons, Girlanden & Festdeko | LuxeStyle",
+   "seo_text_final": "Party-Deko für Feste: Luftballons, Folienballons, Girlanden und Hängedeko, dazu Deko für Halloween und Weihnachten. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "damen-mode",
+   "titel": "Damen-Mode",
+   "keyword": "damenmode",
+   "volumen": 480,
+   "kd": 21,
+   "alt_seo_titel": "Damen-Mode kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Damenmode: Blusen, Kleider, Schuhe & Taschen | LuxeStyle",
+   "seo_text": "Damenmode bei LuxeStyle: Blusen, Shirts, Kleider, Sandalen, Pumps, Stiefel, Handtaschen und Portemonnaies für jeden Tag. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel schreibt «Damen-Mode» (getrennt), gesucht wird «damenmode»; Ware = Blusen/Shirts, Kleider, Schuhe, Taschen.",
+   "produkte_beispiele": [
+    "Chiffonbluse mit kurzen Ärmeln",
+    "Blumenkleid mit Schnürung",
+    "Bunte High-Heel-Sandalen mit Schnürverschluss",
+    "Portemonnaie aus Leder mit Blumenmuster"
+   ],
+   "urteil": {
+    "handle": "damen-mode",
+    "behalten": true,
+    "grund": "Belegt: 52 Blusen, Shirts, 80 Kleider, 159 Sandalen, 6 Pumps, 5 Stiefel, Handtaschen, 4 Portemonnaies. Alt: Gratis-Versand und WELCOME10.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Damenmode: Blusen, Kleider, Schuhe & Taschen | LuxeStyle",
+   "seo_text_final": "Damenmode bei LuxeStyle: Blusen, Shirts, Kleider, Sandalen, Pumps, Stiefel, Handtaschen und Portemonnaies für jeden Tag. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "hautpflege-skincare",
+   "titel": "Hautpflege & Skincare",
+   "keyword": "skincare produkte",
+   "volumen": 390,
+   "kd": 22,
+   "alt_seo_titel": "Hautpflege & Skincare kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Skincare Produkte: Cremes, Masken & Pflege-Sets | LuxeStyle",
+   "seo_text": "Skincare Produkte: Gesichtscremes, Hautseren, Augen-Pads, LED-Gesichtsmasken, Körpercremes und Gesichtspflege-Sets. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "«skincare produkte» (390) hat mehr Volumen als «hautpflege» (320, KD 37) und steht nicht im alten Titel.",
+   "produkte_beispiele": [
+    "Feuchtigkeitsspendende Gesichtspflegecreme 50 g",
+    "Feuchtigkeitsspendendes Hautserum 30 ml",
+    "Feuchtigkeitsspendende Augen-Pads",
+    "Feuchtigkeitsspendendes 5-teiliges Gesichtspflege-Set"
+   ],
+   "urteil": {
+    "handle": "hautpflege-skincare",
+    "behalten": true,
+    "grund": "Belegt: 10 Gesichtscremes, 31 Seren, 11 Augen-Pads bzw. Augenmasken, 13 LED-Gesichtsmasken, Körpercremes, Pflege-Sets. Korrigiert: «Skincare Produkte» wird zu «Skincare-Produkte». Hinweis: Hausregel und Betreiber-Entscheid vom 30.08. sehen topische Kosmetik kritisch, bei Importen und Trends. Die Ware ist aber aktiv, und der Text macht keine Heilversprechen.",
+    "seo_titel_korrigiert": "Skincare-Produkte: Cremes, Masken & Pflege-Sets | LuxeStyle",
+    "seo_text_korrigiert": "Skincare-Produkte: Gesichtscremes, Hautseren, Augen-Pads, LED-Gesichtsmasken, Körpercremes und Gesichtspflege-Sets. Bezahlen mit TWINT oder Klarna."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Skincare-Produkte: Cremes, Masken & Pflege-Sets | LuxeStyle",
+   "seo_text_final": "Skincare-Produkte: Gesichtscremes, Hautseren, Augen-Pads, LED-Gesichtsmasken, Körpercremes und Gesichtspflege-Sets. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "schmuck-sets",
+   "titel": "Schmuck-Sets",
+   "keyword": "schmuckset damen",
+   "volumen": 320,
+   "kd": 11,
+   "alt_seo_titel": "Schmuck-Sets kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Schmuckset Damen: Ring-Sets & Armband-Sets | LuxeStyle",
+   "seo_text": "Schmuckset Damen: Ring-Sets, Armband- und Armreif-Sets, Sets aus Halskette und Ohrringen sowie Ohrclip-Sets. Versand in die ganze Schweiz.",
+   "begruendung": "Kollektion rankt schon für «schmuckset» (Platz 47) und «schmuck set» (Platz 59); «schmuckset damen» (320) hat mehr Volumen und fehlt im alten Titel. «schmuckset gold» wäre zu eng.",
+   "produkte_beispiele": [
+    "Ring-Set mit Zirkon und Onyx",
+    "Armband-Set aus Naturstein",
+    "Muschel-Set: Halskette & Armband aus Edelstahl",
+    "Ohrclips Set im Vintage-Stil"
+   ],
+   "urteil": {
+    "handle": "schmuck-sets",
+    "behalten": true,
+    "grund": "83 aktive Sets: Ring-Sets, Armband- und Armreif-Sets, Sets aus Halskette und Ohrringen, «Ohrclips Set im Vintage-Stil». Überwiegend für Damen. Belegt.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Schmuckset Damen: Ring-Sets & Armband-Sets | LuxeStyle",
+   "seo_text_final": "Schmuckset Damen: Ring-Sets, Armband- und Armreif-Sets, Sets aus Halskette und Ohrringen sowie Ohrclip-Sets. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "naegel-manikuere",
+   "titel": "Nägel & Maniküre",
+   "keyword": "nägel zum aufkleben",
+   "volumen": 320,
+   "kd": 15,
+   "alt_seo_titel": "Nägel & Maniküre online kaufen – Nagellampen, Press-on & Gel",
+   "seo_titel": "Nägel zum Aufkleben, Nagelsticker & Maniküre-Set | LuxeStyle",
+   "seo_text": "Nägel zum Aufkleben: Press-on-Nägel, künstliche Nägel, Nagelsticker, Nageldesign-Sets, Nagellack und Nagellampen. Versand in die ganze Schweiz.",
+   "begruendung": "Grösste Warengruppe sind Press-on-/Kunstnägel und Nagelsticker; «nägel zum aufkleben» (320) und «maniküre set» (320) stehen beide drin. «nagellack» (2'400) wäre zu eng (rund 7 %).",
+   "produkte_beispiele": [
+    "Cat's Eye Press-on Nägel Kurz",
+    "Künstliche Nägel im Magazin-Stil",
+    "Balken-Glitzer-Nagelstickers mit Schmetterling",
+    "Transparent Jade Fat Ice Nagellack Nude",
+    "LED-Nagellampe 72W – Trockner für Nagellack"
+   ],
+   "urteil": {
+    "handle": "naegel-manikuere",
+    "behalten": true,
+    "grund": "242 Nägel zum Aufkleben bzw. Press-on-Nägel bzw. künstliche Nägel, 95 Nagelsticker, Nageldesign-Sets, 61 Nagellacke, Nagellampen, 83 Maniküre-Artikel. Belegt. Der Titel hat genau 60 Zeichen. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Nägel zum Aufkleben, Nagelsticker & Maniküre-Set | LuxeStyle",
+   "seo_text_final": "Nägel zum Aufkleben: Press-on-Nägel, künstliche Nägel, Nagelsticker, Nageldesign-Sets, Nagellack und Nagellampen. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "gaming",
+   "titel": "Gaming",
+   "keyword": "gaming zubehör",
+   "volumen": 320,
+   "kd": 14,
+   "alt_seo_titel": "Gaming kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Gaming Zubehör: Controller, Gamepads & Konsolen | LuxeStyle",
+   "seo_text": "Gaming Zubehör: Bluetooth-Controller und Gamepads für Konsole und Handy, Ladestationen, Adapter und Retro-Konsolen. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne Suchbegriff; Ware = Controller, Gamepads, Konsolen-Zubehör. «gaming pc» (14'800) führt das Sortiment nicht.",
+   "produkte_beispiele": [
+    "Transparenter Wake-Up Gaming Controller",
+    "Kabelloses Bluetooth Gamepad für PS4",
+    "LED Dual-Ladestation für PS4 Controller",
+    "4K HDMI Videospielkonsole"
+   ],
+   "urteil": {
+    "handle": "gaming",
+    "behalten": true,
+    "grund": "138 Controller, 87 Gamepads, 78 mit Bluetooth, 50 für Handys, 21 Ladestationen, 6 Adapter, 24 (Retro-)Konsolen. Belegt. Korrigiert: «Gaming Zubehör» wird zu «Gaming-Zubehör». Das Tor normalisiert Bindestriche.",
+    "seo_titel_korrigiert": "Gaming-Zubehör: Controller, Gamepads & Konsolen | LuxeStyle",
+    "seo_text_korrigiert": "Gaming-Zubehör: Bluetooth-Controller und Gamepads für Konsole und Handy, Ladestationen, Adapter und Retro-Konsolen. Bezahlen mit TWINT oder Klarna."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Gaming-Zubehör: Controller, Gamepads & Konsolen | LuxeStyle",
+   "seo_text_final": "Gaming-Zubehör: Bluetooth-Controller und Gamepads für Konsole und Handy, Ladestationen, Adapter und Retro-Konsolen. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "wandern-trekking",
+   "titel": "Wandern & Trekking",
+   "keyword": "wanderausrüstung",
+   "volumen": 320,
+   "kd": 17,
+   "alt_seo_titel": "Wandern & Trekking | LuxeStyle CH",
+   "seo_titel": "Wanderausrüstung: Rucksäcke & Stirnlampen | LuxeStyle",
+   "seo_text": "Wanderausrüstung: Wanderrucksäcke, Wanderschuhe, Trekkingstöcke, Stirnlampen, Thermosflaschen und Kompass-Uhren. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne Suchbegriff; «wanderausrüstung» (320) trifft die Mischung, «wanderschuhe» ist der Kollektion «Wander- & Arbeitsschuhe» zugeteilt (keine Kannibalisierung).",
+   "produkte_beispiele": [
+    "Wanderrucksack",
+    "Wasserfeste Anti‑Rutsch Wanderschuhe",
+    "COB LED Rotlicht Stirnlampe",
+    "Tragbare Thermosflasche mit grossem Fassungsvermögen",
+    "Trekking-Rucksack 20–35L aus Nylon"
+   ],
+   "urteil": {
+    "handle": "wandern-trekking",
+    "behalten": true,
+    "grund": "53 Rucksäcke, 51 Wanderschuhe, 3 Trekkingstöcke, 11 Stirnlampen, 4 Thermosflaschen, Kompass-Uhren bzw. Smartwatches mit Kompass. Belegt. Der alte Text nannte Schlafsäcke, davon gibt es in dieser Kollektion 0.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Wanderausrüstung: Rucksäcke & Stirnlampen | LuxeStyle",
+   "seo_text_final": "Wanderausrüstung: Wanderrucksäcke, Wanderschuhe, Trekkingstöcke, Stirnlampen, Thermosflaschen und Kompass-Uhren. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "basteln-diy",
+   "titel": "Basteln & DIY",
+   "keyword": "bastelbedarf",
+   "volumen": 260,
+   "kd": 18,
+   "alt_seo_titel": "Basteln & DIY kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Bastelbedarf: Diamond Painting & Stick-Sets | LuxeStyle",
+   "seo_text": "Bastelbedarf für DIY-Projekte: Diamond Painting, Stoffe zum Nähen, Stick-Sets, Sticknadeln, Nähzubehör und Bastel-Sets. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne Suchbegriff; «bastelbedarf» (260) trifft die Mischung aus Stoffen, Diamond Painting und Stickzubehör, «diamond painting» (8'100) wäre zu eng (rund 12 %).",
+   "produkte_beispiele": [
+    "Diamantmalerei Leinwand 120 × 55 cm",
+    "Stoffaufnäher mit Totenkopf-Stickerei",
+    "Sevenberry Vintage Teddybär Baumwollstoff",
+    "Sticknadel-Set"
+   ],
+   "urteil": {
+    "handle": "basteln-diy",
+    "behalten": true,
+    "grund": "150 Diamond-Painting-Artikel, 110 Stoffe, 42 Stick- bzw. Kreuzstich-Sets, Sticknadeln, Nähzubehör (Nähmaschinen, Scheren), Bastel-Sets. Belegt. Hinweis: «Malen nach Zahlen» (78 Produkte) wäre ein weiterer starker Begriff. Kein Fehler.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Bastelbedarf: Diamond Painting & Stick-Sets | LuxeStyle",
+   "seo_text_final": "Bastelbedarf für DIY-Projekte: Diamond Painting, Stoffe zum Nähen, Stick-Sets, Sticknadeln, Nähzubehör und Bastel-Sets. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "sub-yoga-fitness",
+   "titel": "Yoga & Fitness",
+   "keyword": "yoga zubehör",
+   "volumen": 210,
+   "kd": 16,
+   "alt_seo_titel": "Yoga & Fitness kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Yoga Zubehör: Yogamatten, Bänder & Faszienbälle | LuxeStyle",
+   "seo_text": "Yoga Zubehör und Fitness-Artikel: Yogamatten, Yoga-Kissen, Widerstandsbänder, Faszienbälle und Fitness-Shirts. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Alter Titel ohne Suchbegriff; «yogamatte» (2'400) wäre zu eng (rund 12 % der Ware).",
+   "produkte_beispiele": [
+    "Yogamatte 10 mm",
+    "Yoga-Kissen mit Griff aus atmungsaktivem Stoff",
+    "Innstar Hüftring Widerstandsband",
+    "Elektrischer Faszienball zur Muskelentspannung"
+   ],
+   "urteil": {
+    "handle": "sub-yoga-fitness",
+    "behalten": true,
+    "grund": "40 Yogamatten, 1 Yoga-Kissen, 58 Bänder, 15 Faszien-Artikel, 7 Fitness-Shirts. Belegt. Korrigiert: «Yoga Zubehör» wird zu «Yoga-Zubehör». Die Yoga-Hosen (rund 89 Produkte Yoga- und Sportbekleidung, grösster Block) sind im Text ergänzt. Das Tor normalisiert Bindestriche.",
+    "seo_titel_korrigiert": "Yoga-Zubehör: Yogamatten, Bänder & Faszienbälle | LuxeStyle",
+    "seo_text_korrigiert": "Yoga-Zubehör und Fitness-Artikel: Yogamatten, Yoga-Kissen, Widerstandsbänder, Faszienbälle, Yoga-Hosen und Fitness-Shirts. Bezahlen mit TWINT oder Klarna."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Yoga-Zubehör: Yogamatten, Bänder & Faszienbälle | LuxeStyle",
+   "seo_text_final": "Yoga-Zubehör und Fitness-Artikel: Yogamatten, Yoga-Kissen, Widerstandsbänder, Faszienbälle, Yoga-Hosen und Fitness-Shirts. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "beauty-pflege",
+   "titel": "Beauty & Pflege",
+   "keyword": "beauty produkte",
+   "volumen": 170,
+   "kd": 29,
+   "alt_seo_titel": "Beauty & Pflege kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Beauty Produkte: Make-up, Nägel & Hautpflege | LuxeStyle",
+   "seo_text": "Beauty Produkte: Lidschattenpaletten, Make-up-Pinsel, Lipgloss, künstliche Nägel, Nagelsticker und Gesichtscremes. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Breite Sammelkollektion (Nägel, Make-up, Gesichtspflege, Geräte); «beauty produkte» (170) trifft sie, «gesichtspflege» (480) wäre zu eng.",
+   "produkte_beispiele": [
+    "Zehnfarben-Lidschattenpalette Matt und Glitzer",
+    "Makeup-Pinsel-Set 10 Stück mit Holzgriff",
+    "Künstliche Nägel im Magazin-Stil",
+    "Feuchtigkeitsspendende Gesichtspflegecreme 50 g"
+   ],
+   "urteil": {
+    "handle": "beauty-pflege",
+    "behalten": true,
+    "grund": "96 Lidschattenpaletten, 25 Make-up-Pinsel, Lippenglanz bzw. Lipglaze, 61 künstliche Nägel, Nagelsticker, Gesichtscremes. Belegt. Korrigiert: «Beauty Produkte» wird zu «Beauty-Produkte». Alt: «schnelle CH-Lieferung» und Gratis-Versand.",
+    "seo_titel_korrigiert": "Beauty-Produkte: Make-up, Nägel & Hautpflege | LuxeStyle",
+    "seo_text_korrigiert": "Beauty-Produkte: Lidschattenpaletten, Make-up-Pinsel, Lipgloss, künstliche Nägel, Nagelsticker und Gesichtscremes. Bezahlen mit TWINT oder Klarna."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Beauty-Produkte: Make-up, Nägel & Hautpflege | LuxeStyle",
+   "seo_text_final": "Beauty-Produkte: Lidschattenpaletten, Make-up-Pinsel, Lipgloss, künstliche Nägel, Nagelsticker und Gesichtscremes. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "sub-deko",
+   "titel": "Vasen & Deko",
+   "keyword": "dekoartikel",
+   "volumen": 170,
+   "kd": 18,
+   "alt_seo_titel": "Vasen & Deko kaufen | LuxeStyle Schweiz",
+   "seo_titel": "Dekoartikel: Vasen, Dekofiguren & Dekokissen | LuxeStyle",
+   "seo_text": "Dekoartikel für Zuhause: Vasen, Dekofiguren, Dekokissen, Wandbehänge und Deko für Halloween und Weihnachten. Bezahlen mit TWINT oder Klarna.",
+   "begruendung": "Vasen sind nur rund 8 % der Ware; «dekoartikel» (170) trifft die Kollektion. Nebenbefund: die Regel «Titel enthält Deko» zieht auch Dekolleté-Cremes hinein.",
+   "produkte_beispiele": [
+    "Vase für Blumen und Dekoration",
+    "Kugelförmige Aromakerze für festliche Dekoration",
+    "Dekokissen im Ethno-Stil mit Quasten",
+    "Weihnachts-Dekoration Acryl-Kristallzweig"
+   ],
+   "urteil": {
+    "handle": "sub-deko",
+    "behalten": true,
+    "grund": "23 Vasen, Dekofiguren (Buddha, Kunstharz-Figur), 32 Dekokissen, 3 Wandbehänge, 6 Artikel für Halloween, 9 für Weihnachten. Belegt. Die Titelregel der Kollektion erfasst auch Fremdes («Deko» trifft «Dekolleté»), der Text beschreibt aber die echte Deko-Ware. Alt: generisch mit Gratis-Versand.",
+    "seo_titel_korrigiert": "",
+    "seo_text_korrigiert": ""
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Dekoartikel: Vasen, Dekofiguren & Dekokissen | LuxeStyle",
+   "seo_text_final": "Dekoartikel für Zuhause: Vasen, Dekofiguren, Dekokissen, Wandbehänge und Deko für Halloween und Weihnachten. Bezahlen mit TWINT oder Klarna."
+  },
+  {
+   "handle": "pc-homeoffice",
+   "titel": "PC & Homeoffice",
+   "keyword": "pc zubehör",
+   "volumen": 110,
+   "kd": 16,
+   "alt_seo_titel": "PC & Homeoffice-Zubehör | LuxeStyle Schweiz",
+   "seo_titel": "PC Zubehör: Tastaturen, Mäuse & Mauspads | LuxeStyle",
+   "seo_text": "PC Zubehör fürs Homeoffice: Gaming-Tastaturen, Tastatur-Maus-Sets, Mauspads, Tastenkappen und Schreibtisch-Organizer. Versand in die ganze Schweiz.",
+   "begruendung": "Alter Titel ohne die Form «pc zubehör» (110); «tastatur» (6'600) wäre zu eng (rund 44 % der Ware).",
+   "produkte_beispiele": [
+    "Gaming‑Set mit beleuchteter Tastatur, Maus, Headset und Lautsprechern",
+    "Mauspad mit kabelloser Ladefunktion",
+    "Mauspad mit USB-Heizfunktion",
+    "Leder-Organizer für Schreibtisch & Eingang"
+   ],
+   "urteil": {
+    "handle": "pc-homeoffice",
+    "behalten": true,
+    "grund": "74 Tastaturen, davon 26 Gaming- bzw. mechanische, 24 Tastatur-Maus-Sets, 39 Mauspads, 5 Tastenkappen, Schreibtisch-Organizer (Leder- und Holz-Organizer). Belegt. Korrigiert: «PC Zubehör» wird zu «PC-Zubehör». Das Tor normalisiert Bindestriche.",
+    "seo_titel_korrigiert": "PC-Zubehör: Tastaturen, Mäuse & Mauspads | LuxeStyle",
+    "seo_text_korrigiert": "PC-Zubehör fürs Homeoffice: Gaming-Tastaturen, Tastatur-Maus-Sets, Mauspads, Tastenkappen und Schreibtisch-Organizer. Versand in die ganze Schweiz."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "PC-Zubehör: Tastaturen, Mäuse & Mauspads | LuxeStyle",
+   "seo_text_final": "PC-Zubehör fürs Homeoffice: Gaming-Tastaturen, Tastatur-Maus-Sets, Mauspads, Tastenkappen und Schreibtisch-Organizer. Versand in die ganze Schweiz."
+  },
+  {
+   "handle": "herbst-favoriten",
+   "titel": "🍂 Herbst-Favoriten",
+   "keyword": "herbstmode",
+   "volumen": 110,
+   "kd": 16,
+   "alt_seo_titel": "Herbst-Favoriten: Strick, Hoodies & Boots | LuxeStyle",
+   "seo_titel": "Herbstmode: Hoodies, Strick, Jacken & Stiefel | LuxeStyle",
+   "seo_text": "Herbstmode für Damen und Herren: Hoodies, Strickpullover, Jacken, Mäntel, Stiefel und Handschuhe, dazu Kerzenständer. Versand in die ganze Schweiz.",
+   "begruendung": "Rund zwei Drittel der Ware sind Kleidung und Schuhe; «herbstmode» (110) trifft sie, «herbstdeko» (3'600) wäre falsch (Deko nur rund 15 %).",
+   "produkte_beispiele": [
+    "Extra-dickes Lammwoll-Fleece-Hoodie",
+    "Herren Pullover Langarm Strickpullover",
+    "Herren Kunstfellmantel mit Leopardenmuster",
+    "Warme Winter-Lederstiefel für Herren"
+   ],
+   "urteil": {
+    "handle": "herbst-favoriten",
+    "behalten": true,
+    "grund": "112 aktive Produkte: Mode für Damen (30) und Herren (29), Hoodies, Strick, Jacken, Mäntel, Stiefel, Handschuhe. «Herbstmode» passt. Das angehängte «dazu Kerzenständer» stimmt zwar (3 Stück), wirkt aber zusammenhanglos. Ersetzt durch die herbsttypischen Kürbis-Kissen (4 Stück), Länge gleich. Alt: Gratis-Versand.",
+    "seo_titel_korrigiert": "Herbstmode: Hoodies, Strick, Jacken & Stiefel | LuxeStyle",
+    "seo_text_korrigiert": "Herbstmode für Damen und Herren: Hoodies, Strickpullover, Jacken, Mäntel, Stiefel und Handschuhe, dazu Kürbis-Kissen. Versand in die ganze Schweiz."
+   },
+   "bestaetigt": true,
+   "seo_titel_final": "Herbstmode: Hoodies, Strick, Jacken & Stiefel | LuxeStyle",
+   "seo_text_final": "Herbstmode für Damen und Herren: Hoodies, Strickpullover, Jacken, Mäntel, Stiefel und Handschuhe, dazu Kürbis-Kissen. Versand in die ganze Schweiz."
+  }
+ ]
+}

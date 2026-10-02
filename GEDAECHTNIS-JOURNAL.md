@@ -28,6 +28,44 @@
 
 
 
+## 2026-10-02 · 🐾 Tierschutz + Biozide: der SEO-Lauf fand ein Stromhalsband, das kein Textmuster sah
+**Anlass:** Unter den Seiten, die bei Google Schweiz für einen Suchbegriff ranken (Semrush), stand «Automatisches Anti-Bell
+Halsband». Der Text sagte «Vibration», das Bild zeigte zwei Metall-Kontaktstifte. Die Sperre `tierschutz_geraet.json`
+(seit 20.08.) verlangte ein Wirkwort im TEXT (Schock, statischer Impuls …) und fing nur Strom/Spray.
+**Recht (QUELLE fedlex SR 455.1):** TSchV Art. 76 Abs. 2 verbietet Geräte, die elektrisieren, sehr unangenehme
+akustische Signale aussenden oder chemisch wirken; **Abs. 6 verbietet jedes Mittel zur Verhinderung von Lautäusserungen** →
+jeder Bellstopper, egal welche Wirkung. Biozide (SR 813.12): Floh-/Zecken-Halsbänder mit Wirkstoff brauchen eine Zulassung.
+**GEMESSEN:** Bildprüfung von 35 Kandidaten (3 Prüfer + Gegenprüfer, Bilder angesehen): 13 Strom (bei 4 nennt der Text die
+Wirkung nie), 4 Anti-Bell, 8 Biozid (u. a. Scalibor/Deltamethrin), 1 Tierarznei («Bandwurmschutz», Leishmaniose), 4 Ultraschall,
+5 ok. Wächter mit neuen Regeln über den Katalog: 26 + Nachlauf 1. **35 → DRAFT**, zurückgelesen, Ledger
+`dropship/_tierschutz_biozid_2026-10-02.tsv`. Solar-Gartenabwehr bewusst aktiv (kein Haushund-Gerät).
+**Regel:** 4 neue Treffer-Regeln (`antibell-art76-abs6` — ZWECK genügt; `ultraschall-hund-art76-abs2`; `biozid-tier-zulassung`
+mit eigenem Tag `biozid-ch-zulassung`; `fern-erziehungshalsband` — Fernbedienung+Halsband+Hund, im Bild 6/6 Strom) und
+**`nicht` je Regel** (Zeckenzange, Flohkamm, Türvorhang, GPS mit App) in beiden Lesern; Kanarienvögel 10/10 Node = Python.
+Falle beim Bau: «bark» steckt in «Halt-BARK-eit/Dehn-BARK-eit/Sicht-BARK-eit» → `\bbark`; «Bellenkontroll» ≠ «bell-?kontroll».
+**Lehre:** Ein Muster am Text sieht die Wirkmechanik nicht, wenn der Lieferant sie verschweigt — für Rechts-Klassen gehört eine
+ZWECK-Regel daneben (Abs. 6 braucht kein Wirkwort) und einmalig eine Bildprüfung des Bestands. Nebenfunde desselben Laufs:
+GPS-Auto-Tracker mit «1 Mikrofon» im Lieferumfang (StGB 179sexies: schon das Inverkehrbringen von Abhörgeräten ist strafbar)
+und «Klangsystem» = JBL-«FLIP 6»-Nachahmung → beide DRAFT; Sprachrekorder-Werbung «unauffällige Aufnahmen» entschärft.
+→ `dropship/TIERSCHUTZ-BIOZID-2026-10-02.md`
+
+## 2026-10-02 · 📈 Semrush ausgenutzt («nutze semrush aus» → «kopiere alles … doch mach alles weiter»)
+**Kopie:** 836 Produktarten-Suchbegriffe (218 Google-Kategorien + 41 Menü-Kollektionen, 8'000 Einheiten), 29 verwandte (1'570),
+vorher Rankings Teil 2 (240), verwandte A/B/C (231), SERP (50), Fragen (13 — CH-Volumen ≈ 0, als Ratgeber-Futter wertlos),
+Temu-Shopping (8). Verbrauch gesamt ~38–40k von 50k; Rest reicht für die Positions-Nachmessung 08.10. (~4'400).
+**GEMESSEN Kosten:** `api_units` ist die Konto-DIFFERENZ — fünf parallele Agenten zählten sich gegenseitig mit (Summe 22'440
+statt real ~20k); nur nacheinander laufende Agenten messen richtig. phrase_related ohne KD mit Filter = 40/Zeile, der
+Filterwert MUSS ein String sein (`"90"`; Zahl → NOTHING FOUND); phrase_questions 520–640 je AUFRUF; phrase_these 10/Zeile.
+**Einbau:** 12 Sortimentslücken (zwei Prüfer: Bestand + Hausregeln; 20 von 30 widerlegt) vorne in der CJ-Suchliste;
+**103 Produkt-SEO-Titel** — Gemini-Titel waren Wortsalat («Zauberstab Magischer», «Möbelfolie Selbstklebende») und trafen
+teils andere Ware («propeller cap» bei Baseball-Cap) → Workflow formulierte neu, Gegenprüfer verwarf 38/141 (Ware, Geschlecht,
+Marke, Kauderwelsch, Kannibalisierung), Werkzeug liest jetzt `--aus` und baut den Meta-Text aus dem GEPRÜFTEN Titel (der
+Produkttitel log: «Baumwoll-Camisole» aus Polyester); **46 Kollektions-SEO** mit dem Begriff mit meistem Volumen
+(`seo_kollektion_suchbegriff.py`, Ledger mit Altwerten, `--zurueck`), WebFetch live bestätigt. Ratgeber-Themen der Agenten
+waren fast nur Kaufbegriffe («high heels») → `RATGEBER_STRENG` in `seo_autopilot.py` (sonst Blog gegen eigene Kollektion).
+**Lehre:** Ein SEO-Lauf mit Bild-Gegenprüfung ist zugleich ein Rechts-Audit — die Prüfer fanden Stromhalsband, Abhör-Tracker und
+Markenfälschung, die keine Textregel sah. → `dropship/semrush/README.md`
+
 ## 2026-10-02 · 🏷️ Verbesserungsrunde 16:25: nach der Preissenkung 12/18 Reels preis-veraltet, Reparatur lief nur 1×/Tag
 Jede Massen-Preisänderung macht eingebrannte Reel-Preise falsch; die Tages-Reparatur war schon gelaufen → Queue 18 → 6.
 34/36 gesperrte Reels ohne lokale Quelle, 32 Produkte ohne Shopify-Video (Motor v2 hängt CJ-Videos nicht an). Getan: Shopify-
