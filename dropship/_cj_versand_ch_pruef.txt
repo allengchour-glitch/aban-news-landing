@@ -2764,3 +2764,6 @@ herren-tang-jacke-im-retro-look-600400	2602180643171600800	16	9.61	ok	landeseite
 katzenhalsband-mit-gravur-leder-600400	2507070546081600700	16	4.89	ok	landeseite
 kupfer-fusskettchen-unisex-verstellbar-633300	2607030256301634000	7	5.18	ok	landeseite
 kuscheltier-schottisches-hochlandrind-604400	2602240809051604700	16	7.03	ok	landeseite
+leder-strandschuhe-mit-weicher-sohle-627800	2603180746481628200	16	12.32	ok	landeseite
+led-halsband-fur-hunde-leopard-muster-1985e6	-	-	-	unklar keine CJ-SKU	landeseite
+kupfer-lowe-dekoration-623200	2412030741291623500	16	25.26	ok	landeseite

@@ -28,6 +28,25 @@
 
 
 
+## 2026-10-02 · 🎁 «feinkategorie pushen und leeren kategorien auch» — Tag 3+4 vorgezogen
+**Geschenk-Welten (GEMESSEN):** Messlatte «≥ 24 kaufbar» war längst erfüllt (Sie 111, Ihn 250, Kinder 138) — der Kontaktbogen der
+ersten 24 aber nicht: Sie 22/24 Schmuck, Ihn 22/24 Uhren, Kinder 16/24 Babykleider. Ursache die ZUORDNUNG (Tag damen UND
+geschenk trugen fast nur Schmuck; kinder ODER spielzeug zog jede Grind-Babykleidung), nicht die Sortierung (BEST_SELLING zeigte
+dasselbe). → `geschenk_unterwelten.py`: 400 je Welt nach Warenart (Titelmuster je Art + Sperren je Art), ≥ 2 Bilder, CHF 19–150,
+Google-Kanal, Tag `geschenkwelt-*`, Regel = dieser Tag, MANUAL, erste 48 reihum; Tageslauf im Aufseher. Wortfallen dreimal
+Trockenlauf: «Bade-ANZUG» = Zug, «Maxi-Kleid mit GÜRTEL» = Leder, «PLAID-Rock» = Decke, «Drachen» = Knochen**spalter** (Klinge!),
+«Eis-WÜRFEL-form» = Spiel, «Trench mit KRAWATTEN-ring» = Krawatte. **Falle beim Schreiben:** nach `collectionUpdate` füllt Shopify
+die Smart-Kollektion ASYNCHRON — die Warte-Bedingung «Anzahl ≥ 90 % der Soll-Menge» war mit dem ALTEN Bestand (2'743) sofort erfüllt,
+die Reihenfolge landete auf alter Ware → jetzt |Anzahl − Soll| ≤ 10 %. Und: `re.sub`-Ersatztext mit `\b` schrieb Rückschritt-
+Zeichen (\x08) in die Datei — Ersatz nie über re.sub mit Backslashes, sondern str.replace.
+**Dünne Kategorien:** `MINDEST=8 kollektion_leer.py` 0 leer / 27 dünn (keine im Menü) → 7 Regeln erweitert (Beauty & Self-Care auf
+Produkttypen 4 → ~3'300, Wimpern 5 → 172, Hochzeit 4 → ~89, Fahrzeuge & RC, 3D-Stifte, LED-Strips, Elektrowerkzeug) → 20 dünn: 13
+kuratiert/«Selbst gestalten», 3 Strand (Saison), Filament (CJ-Suche vorne), Haarfarbe + Panzerglas bewusst. Altregeln
+`dropship/_kollektion_regeln_alt_2026-10-02.json`.
+**Feinkategorien:** `google_fein_ki.py` hing — Zweitprüfer Groq gpt-oss-20b Tageskontingent leer, jeder Block rief trotzdem Gemini
+(kostet) und verwarf → `TagesKontingentLeer` setzt `/tmp/google_fein_ki_pause` (6 h), kein Gemini-Aufruf ohne Gegenprüfer.
+Nebenbei: «Horse Advent Calendar 2025» (alle Bilder «2025» + «BEST PRICE 59.95») DRAFT, «Tritium Herrenuhr – Modell 2025» bereinigt.
+
 ## 2026-10-02 · 🚚 Gratisversand: «49 50 entscheide du 50 ist doch?» → 50
 **GEMESSEN:** Leiste, Warenkorb, Seiten, Richtlinien, Reels, Mails sagen «gratis ab CHF 50». Tarif «Kostenloser Versand» greift ab
 TOTAL_PRICE ≥ 45 (= nach Rabatt; 50 × 0,9 wegen «Bundle 2+ −10 %», `versandschwelle_rabatt.py`). Daneben lief ein Automatik-Rabatt
