@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-02-9",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 9 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-02T20:33:24.963Z",
+  "dauer_s": 59.9,
+  "ergebnis": {
+    "gepinnt": [
+      "led-schneeflocken-string-mit-farbwechsel-607700"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 20, offen 145",
+      "Boards auf dem Profil: /luxestyleCH/wellness-beauty/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Schmuck & Accessoires» (https://ch.pinterest.com/luxestyleCH/schmuck-accessoires/, 274 Z.): Titel nicht da",
+      "Bild 139918 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (334 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-9-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-9-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-02-9-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "led-schneeflocken-string-mit-farbwechsel-607700",
+      "board": "Schmuck & Accessoires",
+      "title": "LED-Schneeflocken-String mit Farbwechsel"
+    }
+  }
 }
