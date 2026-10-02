@@ -2,7 +2,336 @@
  "workflow": "wf_07b9b29c-f45",
  "stand": "2026-10-02T17:20Z",
  "hinweis": "nur «bestaetigt»=true (beide Prüfer) einbauen — erst So 04.10. 22:00 (Betreiber)",
- "luecken_meta": null,
- "ergebnis": null,
- "themen": null
+ "luecken_meta": {
+  "gepruefte_begriffe": 363,
+  "verworfen_regeln": 95,
+  "verworfen_abgedeckt": 240,
+  "notizen": "EINGABEN: Die 4 Dateien kategorie_suchvolumen_ch_*.csv ergeben zusammen 706 eindeutige Begriffe. Davon erfüllen 362 die Bedingungen Volumen ≥ 200, KD ≤ 40 und Intent mit 0 oder 3. Dazu kommt 1 Produktart aus der Temu-Datei. Diese enthält nur 8 Anzeigen; mehrfach vorkommend sind nur Roborock-Ersatzteile (4×), und die fallen als Marke weg. Ergibt 363 geprüfte Begriffe.\n\nAUFTEILUNG: 9 Kandidaten + 95 verworfen nach Regeln + 240 abgedeckt (≥ 5 echte Treffer, teils zusätzlich in der Queue) + 16 wegen CJ-Queue + 3 zusammengelegt (stehleuchte, bogenlampe, stehlampe dimmbar → in 'stehlampe').\n\nREGELN (95):\n- 41 Marken/Läden: IKEA, Tissot, Pandora, Dosenbach, Fressnapf, Beurer, Jysk, Landi, Jumbo, PS4/PS5/Xbox, Nintendo, retro gaming (vorinstallierte Lizenzspiele), pc komponenten, Roborock (Temu).\n- 4 Kostüme: von vorpruefung() gemeldet.\n- 3 Massage.\n- 2 Nahrung/Verbrauchsgut: hundefutter, katzenstreu.\n- 9 topische Kosmetik: shampoo, make up, haarfarbe, bartöl, bartpflege set, kinderschminke …\n- 2 Klingen: säge, trennscheiben.\n- 7 Sommerware: ventilator, klimageräte, badeanzug, sandalen, shorts, wasser sport, hängematte.\n- 2 Flüssigkeiten: raumduft diffuser, diffuseur de parfum.\n- 24 keine Produkt-Begriffe: 21 Geschenkideen-Suchen, ersatzteile, luxury, 'haarentfernung laser' (Studio-Dienstleistung; dafür 'ipl gerät' als Kandidat).\n\nvorpruefung() hat sonst nichts gemeldet. Auch Roborock und katzenstreu kamen durch, wurden aber von Hand verworfen.\n\nWEGEN CJ-QUEUE VERWORFEN, BESTAND ABER TROTZDEM DÜNN – ein neuer Suchbegriff würde sich lohnen:\n- **Lichterkette:** 7 aktive, nur 2 für innen. led lichterkette 1'300 und lichterkette indoor 880, obwohl fairy lights / string lights / christmas led lights als #done markiert sind.\n- **Heizdecke/Wärmedecke:** 1'900 + 1'300 + 480, nur 1 Treffer (heated blanket usb #done).\n- **Schlafsack:** 4'400, 3 Treffer; 'cold weather sleeping bag' ist noch OFFEN.\n- **Adventskalender Frau/Mann/Kinder:** 6 Begriffe zu 4'400–8'100. Nur Puzzle-/Blind-Box-Kalender vorhanden (advent calendar box #done); Lieferzeit bis 1.12. wird knapp.\n- **Panzerglas:** 1'000, ~2 echte (#done).\n- **Handy-Stativ** und **Gartenfiguren:** ~3 bzw. ~2 Treffer.\n\nSELBSTKORREKTUREN / KNAPP ABGEDECKT:\n- '3d stifte' sah zuerst nach Lücke aus, aber die Titel heissen '3D-Druckstift' → 7 echte Treffer, abgedeckt.\n- 'externe festplatte': rund 9 mobile SSD/HDD, abgedeckt.\n- 'kaffeemaschine' (14'800): 6 tragbare/Hand-Maschinen, formal abgedeckt. Echte Haushalts-Kaffeemaschinen fehlen aber; das wäre markenlastig und mit Stecker-Frage.\n- 'wassergläser': ~7 einzelne Gläser, kein Set, knapp abgedeckt.\n- 'camping geschirr': genau 5, abgedeckt.\n- 'nachtlicht mit bewegungsmelder': ~8 Sensorleuchten, abgedeckt.\n\nTitelsuche über 49'963 aktive Produkte, mit Umlaut-Normalisierung und Ausschluss falscher Treffer (Hundegeschirr ≠ Geschirr-Set, Mesh ≠ Mesh-WLAN, Mokassin ≠ Moka). Hilfsskript liegt nur im Scratch: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/z.py. Nichts committet, keine Semrush-Aufrufe."
+ },
+ "ergebnis": [
+  {
+   "suchbegriff": "3d drucker",
+   "volumen": 14800,
+   "kd": 21,
+   "aktive_treffer": 0,
+   "intent": "0",
+   "cj_suche": "desktop 3d printer",
+   "beispiele": [],
+   "begruendung": "14'800 Suchen/Mt bei KD 21, wir führen aber keinen einzigen 3D-Drucker. Aktiv sind nur Zubehör und Ersatzteile (Düse, Druckkopf, Federstahlplatte, Netzteil) und 6 Filamente, also Ware für Leute, die schon einen Drucker haben.",
+   "risiko": "Grossgerät (8–12 kg, grosser Karton), Versand CN→CH teuer; Markt von Marken beherrscht (Bambu/Creality/Ender) – bei CJ nur No-Name-Geräte nehmen, 230-V-Netzteil/Stecker prüfen",
+   "bestand": {
+    "behalten": true,
+    "grund": "Im Shop gibt es 0 echte 3D-Drucker. Die 43 Treffer zu «3D-Druck» sind Zubehör (Filamente, MK8-Düse, Druckkopf, Federstahlplatte, Touch-Sensor, Netzteil), 3D-Druckstifte oder Kleidung mit 3D-Druckmuster. Die Lücke ist echt, und das Zubehör ist schon da. «desktop 3d printer» sucht dasselbe Produkt und steht nicht in der Queue. Hinweis: Ein Gerät wiegt 5–10 kg, darum vor dem Import die CJ-Fracht nach CH prüfen (eventuell 'mini 3d printer').",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": false,
+    "grund": "vorpruefung lässt den Begriff durch (None), er scheitert aber an der Ware selbst. Die Suche wird von Marken beherrscht (Bambu Lab, Prusa, Creality, Anycubic, Elegoo). Was CJ unter «desktop 3d printer» führt, ist meist eine dieser Marken oder ein Spielzeug-Minidrucker, und Marken sind ausgeschlossen. Dazu kommt: ein Netzgerät mit 8–15 kg, also sperrig und mit hoher CN→CH-Fracht, mit Stecker-Risiko (Klasse #76). Ein Gerät, das Support, Ersatzteile und Garantie braucht, lässt sich bei 10–20 Werktagen ohne Rücksendung nach China nicht betreuen. Resin-Drucker brauchen zudem Flüssigharz (Flüssigkeit/Gefahrgut).",
+    "cj": ""
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "stehlampe",
+   "volumen": 9900,
+   "kd": 15,
+   "aktive_treffer": 4,
+   "intent": "0",
+   "cj_suche": "floor lamp living room",
+   "beispiele": [
+    "Mid-Century Modern Stehlampe mit 4 Lampenköpfen",
+    "Dekorative Stehlampe aus Gusseisen",
+    "Iridescent RGB Stehleuchte mit Mikrofon"
+   ],
+   "begruendung": "9'900/Mt bei KD 15, dazu verwandte Begriffe: stehleuchte 1'300, bogenlampe 1'300, stehlampe dimmbar 1'000 (alle KD 11–12). Echte Treffer nur 4: drei Stehlampen und ein Eck-Spot.",
+   "risiko": "sperrig (Stange 1,5 m+), Volumengewicht; Bogenlampen mit Marmorfuss meiden. Queue hat schon 'led strip corner lamp' (RGB-Ecklampe), das ist eine andere Ware. CH-Stecker/Eurostecker prüfen",
+   "bestand": {
+    "behalten": true,
+    "grund": "Ich finde höchstens 4 Treffer, auch mit Stehleuchte, Bodenlampe, Standleuchte, Ecklampe, floor/corner und Deckenfluter: Mid-Century Modern Stehlampe, Dekorative Stehlampe aus Gusseisen, Iridescent RGB Stehleuchte und 'Indoor Spotlight Floor Corner Small Spotlight'. Das letzte ist eher ein Bodenstrahler. Damit bleiben es weniger als 5. 'floor lamp living room' passt, in der Queue steht nichts Sinngleiches ('led strip corner lamp' ist ein LED-Streifen). Sperrgut, darum die Fracht prüfen.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": true,
+    "grund": "Keine Hausregel verletzt, vorpruefung = None. Der Begriff ist generisch und hat mit 9'900 das höchste Volumen. Lampen passen in die dunkle Jahreszeit, Saisonware ist es nicht. Klassische E27-Stehlampen sind lang, schwer oder aus Glas oder Gusseisen (Muster: «Dekorative Stehlampe aus Gusseisen», CHF 91.90). Ihr Netzkabel trägt oft einen Konturen- oder Schukostecker mit 4,8-mm-Stiften, der nicht in Schweizer Dosen passt. Deshalb die Suche eingeengt auf schlanke LED-Ecklampen: Röhrensegmente in einer Schachtel von etwa 50 cm, rund 1–2 kg, Betrieb über Netzteil oder USB. Bedingungen: nur die EU-SKU mit Eurostecker (Typ C) importieren. Nichts über ca. 3 kg, kein Glasschirm, kein Gusseisen. Die MAINS-Regex in cj_stecker_pruefen.py kennt nur «Stehlampe» und verpasst «Stehleuchte»/«Ecklampe», deshalb Stecker beim Import selbst prüfen.",
+    "cj": "led corner floor lamp"
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "edelweiss hemd",
+   "volumen": 3600,
+   "kd": 15,
+   "aktive_treffer": 1,
+   "intent": "0",
+   "cj_suche": "edelweiss print shirt men",
+   "beispiele": [
+    "Edelweisshemd langarm geknöpft"
+   ],
+   "begruendung": "3'600/Mt bei KD 15, ein typisch schweizerischer Begriff. Nur 1 echtes Edelweisshemd aktiv. Die 7 Trachtenhemden (kariert/weiss) und Poster/T-Shirt/Tasse 'Edelweiss' sind nicht das gesuchte Hemd.",
+   "risiko": "CJ führt das Schweizer Motiv vermutlich kaum. Treffer am Bild prüfen (blau/schwarz mit weissem Edelweiss-Druck); sonst Fortura-Feed oder eigener Druck (POD) statt CJ",
+   "bestand": {
+    "behalten": true,
+    "grund": "Es gibt nur 1 echtes Hemd: 'Edelweisshemd langarm geknöpft'. Die anderen 9 Edelweiss-Treffer sind POD-Poster, Tasse, Tasche, Kissen, Mauspad und ein 'T-Shirt «Edelweiss»'; ein T-Shirt ist kein Hemd. Auch zu Sennen-, Trachten-, Schwinger- und Bauernhemd gibt es 0 Treffer. 'edelweiss print shirt men' passt, in der Queue steht nichts dazu. Die CJ-Treffer müssen gegen das Bild geprüft werden, damit keine allgemeinen Blumen- oder Hawaiihemden reinrutschen.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": false,
+    "grund": "vorpruefung = None, trotzdem verworfen. CJ (China) führt praktisch keine echten Edelweisshemden. Zu «edelweiss print shirt men» liefert der Katalog beliebige Blumen- oder Hawaiihemden oder «Oktoberfest costume shirts». Der Importer würde sie dann als «Edelweisshemd» betiteln, und das täuscht die Kundschaft. Bei «Costume» greift die Kostüm-Regel nur, wenn der Titel deutsch «Kostüm» lautet; das englische «Costume» geht durch (gemessen). Die Nachfrage deckt besser das bestehende Fortura-Edelweisshemd (CHF 56.90, CH-Lager, schnelle Lieferung). Mehr Varianten von dort (Kurzarm, Kinder, Damenbluse) holen statt einer CN-Kopie.",
+    "cj": ""
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "weingläser",
+   "volumen": 2400,
+   "kd": 21,
+   "aktive_treffer": 4,
+   "intent": "0,1",
+   "cj_suche": "wine glasses set",
+   "beispiele": [
+    "Edo Kiriko Weinglas",
+    "Retro-Weinglas mit Stil",
+    "Dragon Sword Kelch – Drachenform Weinglas"
+   ],
+   "begruendung": "2'400/Mt bei KD 21. Nur 4 Weingläser (Einzelstücke/Deko-Gläser), kein klassisches Weinglas-Set. Weinglas-Halter, Gläser-Organizer und Sandalen mit Weinglas-Absatz nicht mitgezählt.",
+   "risiko": "zerbrechlich: Glasbruch im Langstreckenversand; nur Sets mit Einzelkarton/Schaumeinlage. Kein Set mit Tortenmesser (Klinge)",
+   "bestand": {
+    "behalten": true,
+    "grund": "Es gibt nur 4 echte Weingläser: Edo Kiriko Weinglas, Retro-Weinglas mit Stil, Glas-Weindekanter oder Rotweingläser und Dragon Sword Kelch. Alles einzelne Ausgefallen-Gläser, kein klassisches Weinglas-Set. Das 'Champagnerglas-Set mit Tortenmesser & Schaufel' ist ein Hochzeits-Tortenset. Weinglas-Halter, Gläser-Organizer und 'Sandalen mit Weinglas-Absatz' zählen nicht. 'wine glasses set' passt. In der Queue steht nur 'wine bottle holder', das ist nicht sinngleich. Die Queue selbst warnt, dass CJ bei 'glass' streut, und Glas kann auf dem Weg brechen.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": false,
+    "grund": "Keine Verbotsklasse, vorpruefung = None. Geschäftlich aber widerlegt: Glas-Sets aus China gehen bei 10–20 Werktagen mehrmals durch Umlade-Stationen. Bruch heisst Foto-Dispute bei CJ und Erstattung, wie bei #1017. Die Sets sind schwer und voluminös, die Fracht frisst jeden Preisvorteil. «weingläser» ist Massenware, die in der Schweiz lokal sehr günstig zu haben ist (6er-Set bei IKEA, Coop oder Migros für CHF 10–25). Wer so sucht, kauft nicht 3 Wochen aus China. Die 4 aktiven Treffer sind Einzel-Neuheiten (Edo Kiriko, Drachenkelch), kein Set-Ersatz.",
+    "cj": ""
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "fpv drohne",
+   "volumen": 1600,
+   "kd": 24,
+   "aktive_treffer": 3,
+   "intent": "0,1",
+   "cj_suche": "fpv racing drone",
+   "beispiele": [
+    "GW168 5G FPV-Drohne mit HD-Kamera",
+    "Tiger Power FPV Racing Drohne",
+    "Racing Drohne mit Display"
+   ],
+   "begruendung": "1'600/Mt bei KD 24. Nur 3 echte FPV-/Racing-Drohnen. Der Rest unter 'FPV' sind Rahmen, Akkus, Propellerschutz und Monitor. Die ~180 normalen Kameradrohnen treffen die FPV-Absicht (Brille/Racing) nicht.",
+   "risiko": "LiPo-Akku im Paket (Versandlinie prüfen); ab 250 g Registrierpflicht beim BAZL, FPV-Flug nur mit Beobachter, im Text erwähnen; Markenzubehör (DJI) meiden",
+   "bestand": {
+    "behalten": false,
+    "grund": "Ich finde mindestens 5 echte FPV- bzw. Racing-Drohnen: GW168 5G FPV-Drohne mit HD-Kamera, Tiger Power FPV Racing Drohne, Racing Drohne mit Display, FPV-Maschine mit Spider-Stand (116.90) und AE21 Racing Quadcopter mit 8K Dual-Kamera. Dazu kommt ein FPV-Zubehör-Ökosystem: FPV-Monitor 4,3 Zoll mit DVR, 10-Zoll-FPV-Rahmen-Kit, FPV Racing Frame, 3 FPV-Akkus und Propellerschutz für DJI FPV. Ausserdem führt der Shop rund 60 Kameradrohnen, davon 4 mit WLAN-Livebild (H37, T-Rex, JY018, E58 WiFi). Das ist eine Frage der Titel, keine Sortimentslücke.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": false,
+    "grund": "vorpruefung = None, sachlich trotzdem widerlegt. «fpv racing drone» liefert Renn-Quadcopter mit LiPo-Akkus (4S/6S, high-C): Gefahrgut, mit begrenzten CJ-Linien CN→CH. Dazu kommen grosse Akkus, die ausgeschlossen sind. Die 5,8-GHz-Videosender senden oft mit 200–600 mW, in der Schweiz lizenzfrei sind nur 25 mW EIRP (BAKOM/FMG). Häufig werden sie als BNF/PNP ohne Funke oder Akku verkauft, was Reklamationen bringt. FPV-Flug verlangt in der Schweiz zudem einen Beobachter, ab 250 g gilt Registrierungspflicht. Die Suchnachfrage meint überwiegend die Marke DJI (Avata/Neo). Der Shop führt bereits viele Kamera-Minidrohnen.",
+    "cj": ""
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "orthopädisches hundebett",
+   "volumen": 880,
+   "kd": 11,
+   "aktive_treffer": 0,
+   "intent": "0",
+   "cj_suche": "orthopedic memory foam dog bed",
+   "beispiele": [],
+   "begruendung": "880/Mt bei sehr niedrigem KD 11. Von 35 Hundebetten ist keines aus Memory Foam/orthopädisch. 'Orthopädisch' kommt nur bei Sitz- und Kopfkissen für Menschen vor.",
+   "risiko": "Volumengewicht (Schaum nur vakuumverpackt). 'Orthopädisch' nur als Bauart nennen, kein Heil- oder Gelenkversprechen im Text (Medizin-Wächter)",
+   "bestand": {
+    "behalten": true,
+    "grund": "Es gibt 0 orthopädische bzw. Memory-Foam-Hundebetten. Die rund 30 aktiven Hunde- und Haustierbetten (z. B. 'Teddy Hundebett', 'Erhöhtes Haustierbett mit atmungsaktivem Netz') sind normale Betten. Am nächsten kommt das 'Reha-Sofa-Kissen für gelähmte Hunde', das ist aber 1 Produkt und kein Bett. Die 'Orthopädisch…'-Treffer sind Sitz- und Kopfkissen für Menschen. Die Lücke für das Merkmal ist echt. 'orthopedic memory foam dog bed' passt, in der Queue steht nichts dazu ('travel neck pillow memory foam' ist etwas anderes).",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": true,
+    "grund": "Nicht widerlegbar. «Orthopädisch» fällt hier nicht unter die Orthesen- oder Medizin-Regel: Tierbedarf ist kein Medizinprodukt nach MepV, und der Shop wirbt in der eigenen Hundebett-Kollektion selbst mit «orthopädischen Matten» (keyword_kollektionen.py). Die Ware ist generisch (Memory-Foam-Matte), vakuumgepresst kompakt versendbar, kein Grossmöbel. Herbst/Winter ist Saison. Die Kategorie hat 0 aktive Treffer bei 880 Suchen. Bedingungen: nur Grössen S–L bis ca. 4 kg, CN-Lager mit CH-Versandoption (viele CJ-Hundebetten liegen nur im US-Lager). Kein Gesundheitsversprechen im Text («lindert Arthrose» o. ä.).",
+    "cj": ""
+   },
+   "bestaetigt": true
+  },
+  {
+   "suchbegriff": "nachtlicht steckdose",
+   "volumen": 590,
+   "kd": 14,
+   "aktive_treffer": 1,
+   "intent": "0",
+   "cj_suche": "plug in night light",
+   "beispiele": [
+    "LED-Nachtlicht-Pilz mit Sensor (EU/US Stecker)"
+   ],
+   "begruendung": "590/Mt bei KD 14. Unter 87 Nachtlichtern ist nur 1 Steckdosen-Modell; der Rest läuft mit Akku/USB oder ist Projektor/Luftbefeuchter. Bewegungsmelder-Nachtlichter (~8) sind dagegen genug vorhanden.",
+   "risiko": "CH-Dose Typ J: nur Eurostecker Typ C (2 dünne Stifte) passt, Schuko Typ F nicht. Varianten mit CH-tauglichem Stecker wählen und das so beschriften",
+   "bestand": {
+    "behalten": true,
+    "grund": "Es gibt zwar 88 Nachtlichter, aber höchstens 1–2 für die Steckdose: 'LED-Nachtlicht-Pilz mit Sensor (EU/US Stecker)', und eventuell 'Bewegungsmelder-Nachtlicht für Wohnräume' (Stromquelle unklar). Der Rest läuft über USB oder Akku, ist ein Projektor, Diffusor oder Wandlicht mit Akku. Weniger als 5. 'plug in night light' passt. In der Queue stehen nur 'night light kids projector' und 'kids night light projector star', also Projektoren, nicht sinngleich. Achtung Schweiz: Nur Eurostecker (Typ C, 4,0-mm-Stifte) passt in T13-Dosen. Stecker mit 4,8-mm-Stiften (Schuko-/Konturenstecker) und US-Varianten ausschliessen.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": false,
+    "grund": "vorpruefung = None. Das Produkt IST der Netzstecker, und die Steckerfrage (Klasse #76) ist hier ungeschützt. Die MAINS-Regex in cj_stecker_pruefen.py enthält «Nachtlicht» nicht, der Wächter prüft solche Produkte also nie. Der Shop verkauft bereits «LED-Nachtlicht-Pilz mit Sensor» mit US-Varianten (Mushroom-US-Yellow/Red/Blue), die in keine Schweizer Dose passen: ein Beleg, dass der Weg heute nicht dicht ist. CJ-«EU plug»-Nachtlichter haben teils 4,8-mm-Stifte (Typ E/F), die nicht passen. Dazu billige Direkt-Netzgeräte (NEV/ESTI) für CHF 15, die es lokal mit Schweizer Stecker gibt. Im Zweifel nein.",
+    "cj": ""
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "baby geschenkset",
+   "volumen": 390,
+   "kd": 13,
+   "aktive_treffer": 0,
+   "intent": "0",
+   "cj_suche": "newborn baby gift set",
+   "beispiele": [],
+   "begruendung": "390/Mt bei KD 13. Kein einziges Geschenkset zur Geburt aktiv. Die 36 'Baby-Set'-Treffer sind Kleider-Sets (Oberteil+Hose), nur 1 Holz-Geburtstagszug.",
+   "risiko": "Nur Sets aus Textil/Spielzeug, keine Pflegeprodukte (Creme/Öl = topische Kosmetik); Kleinteile-/Spielzeug-Sicherheit bei Säuglingsware beachten",
+   "bestand": {
+    "behalten": false,
+    "grund": "Im Zweifel widerlegt. Der Shop hat mindestens 5 aktive Babyartikel, die typische Geburtsgeschenk-Sets sind: Baby Hand- und Fussabdruck-Set, Baby Meilenstein-Würfel Set, Meilenstein-Foto-Set aus Holz für Babys, Meilenstein-Plaketten-Set, Neugeborenen-Fotoshooting Requisiten-Set, Silikon-Dinner-Set für Babys 10-teilig und Tragbares Baby Beauty- und Pflegeset. Dazu kommen über 30 Kleidungs-Sets für Neugeborene, z. B. 'Baby Jungen Herbstlangarm Outfit Neugeborenen Set' und 'Baby-Set mit Stickerei – Body, Hose, Hut'. Es fehlt eine Geschenk-Kollektion oder das Wort 'Geschenkset' im Titel, nicht die Ware.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": true,
+    "grund": "Keine Hausregel verletzt, vorpruefung = None. Ware ist generisch, kein Markenname, gut für Weihnachtsgeschenke, 10–20 Werktage reichen. Sie passt zur neuen Kollektion «Baby- & Kinder-Sets» (66) und zu den KINDERREGELN. Die Suche ist aber eingeengt: «newborn baby gift set» liefert bei CJ oft Sets mit Schnuller, Beissring, Schoppen oder Rassel. Das heisst EN 1400/EN 71 (Kleinteile), Lebensmittelkontakt, und die Konformität ist unbelegt. vorpruefung erkennt das nicht («…mit Schnuller» = None, gemessen). Deshalb nur Textil-Geschenkboxen (Body, Mütze, Socken, Lätzchen). Sets mit Schnuller, Beissring, Flasche oder Rassel beim Import überspringen.",
+    "cj": "newborn baby clothes gift box"
+   },
+   "bestaetigt": false
+  },
+  {
+   "suchbegriff": "ipl gerät",
+   "volumen": 390,
+   "kd": 20,
+   "intent": "0,1",
+   "aktive_treffer": 2,
+   "cj_suche": "ipl hair removal device",
+   "beispiele": [
+    "Photon Haarentfernungsgerät",
+    "Sanftes Haarentfernungsgerät für den ganzen Körper"
+   ],
+   "begruendung": "390/Mt bei KD 20, dazu 'haarentfernung laser' 1'000/Mt (meist Studio-Suche, also Dienstleistung). Kein Titel nennt IPL; höchstens 2 Geräte könnten IPL sein. Die übrigen 'Haarentfernungs'-Treffer sind Rasierer, Epilierer, Wachs und Creme.",
+   "risiko": "Lichtgerät: Sicherheitshinweise (Augenschutz, Hauttyp) nötig, kein Heil- oder Dauerversprechen; im Hype-Kurator matcht 'IPL' ohne Wortgrenze auch Lipliner. Rücksendequote bei Beauty-Geräten beachten",
+   "bestand": {
+    "behalten": true,
+    "grund": "Höchstens 2–3 echte IPL- bzw. Lichtimpuls-Geräte: 'Photon Haarentfernungsgerät' (60.90), 'Sanftes Haarentfernungsgerät für den ganzen Körper' (77.90) und eventuell 'Haarentferner für den ganzen Körper' (51.90). Die übrigen rund 15 Treffer sind Epilierer, Lady-Shaver, Wachswärmer, Cremes oder Sprays; die Photon-Treffer sind LED-Gesichtsmasken. Ich habe 'IPL' mit Wortgrenze gesucht (Lipliner-Falle), dabei gab es 0 Treffer. 'ipl hair removal device' passt, in der Queue steht nichts dazu ('pet hair remover roller' ist etwas anderes). Beim Netzteil auf den CH-tauglichen Stecker achten.",
+    "cj": ""
+   },
+   "regeln": {
+    "behalten": false,
+    "grund": "Medizin-Bezug. IPL-Geräte zur Haarentfernung sind Produkte ohne medizinische Zweckbestimmung nach MepV Anhang 1 (= MDR Anhang XVI Nr. 5, «intensives gepulstes Licht … zur Haarentfernung»). Sie unterstehen dem Medizinprodukterecht inklusive Konformitätsbewertung. No-Name-Geräte von CJ haben keinen belegten Nachweis. Dazu V-NISSG und Risiken wie Augenschäden und Verbrennungen, Netzgerät mit Stecker-Risiko. vorpruefung lässt «IPL-Haarentfernungsgerät» durch (None, gemessen): Die MEDIZIN-Regex kennt weder ipl noch haarentfern. Nebenbefund zum Prüfen (nicht geändert): aktiv sind «Photon Haarentfernungsgerät» (53.90) und «Sanftes Haarentfernungsgerät für den ganzen Körper» (68.90). Dazu «Elektrisches Haarentfernungsgerät» mit nur UK/US-Steckervarianten.",
+    "cj": ""
+   },
+   "bestaetigt": false
+  }
+ ],
+ "themen": {
+  "datei": "/home/user/aban-news-landing/dropship/semrush/ratgeber_themen_2026-10-02.tsv",
+  "zeilen": 32,
+  "top": [
+   {
+    "kollektion_handle": "sub-pumps-heels",
+    "phrase": "high heels",
+    "volumen": 5400
+   },
+   {
+    "kollektion_handle": "sub-beleuchtung",
+    "phrase": "led beleuchtung",
+    "volumen": 4400
+   },
+   {
+    "kollektion_handle": "sub-taschen",
+    "phrase": "handtasche damen",
+    "volumen": 2900
+   },
+   {
+    "kollektion_handle": "jumpsuits-overalls",
+    "phrase": "jumpsuit damen",
+    "volumen": 2900
+   },
+   {
+    "kollektion_handle": "herren-shirts",
+    "phrase": "polo shirt",
+    "volumen": 2900
+   },
+   {
+    "kollektion_handle": "weihnachten-2026",
+    "phrase": "weihnachtsbeleuchtung outdoor",
+    "volumen": 1900
+   },
+   {
+    "kollektion_handle": "drohnen-kameras",
+    "phrase": "fpv drohne",
+    "volumen": 1600
+   },
+   {
+    "kollektion_handle": "sub-stiefel-boots",
+    "phrase": "stiefel damen",
+    "volumen": 1600
+   },
+   {
+    "kollektion_handle": "kabel-adapter",
+    "phrase": "usb adapter",
+    "volumen": 1600
+   },
+   {
+    "kollektion_handle": "sub-stiefel-boots",
+    "phrase": "damen boots",
+    "volumen": 1300
+   },
+   {
+    "kollektion_handle": "sub-beleuchtung",
+    "phrase": "nachtlicht kinder",
+    "volumen": 1300
+   },
+   {
+    "kollektion_handle": "sub-ohrringe",
+    "phrase": "ohrringe frauen",
+    "volumen": 1000
+   },
+   {
+    "kollektion_handle": "sneaker-sportschuhe",
+    "phrase": "sneaker damen",
+    "volumen": 1000
+   },
+   {
+    "kollektion_handle": "sub-stiefel-boots",
+    "phrase": "boots schuhe",
+    "volumen": 880
+   },
+   {
+    "kollektion_handle": "weihnachten-2026",
+    "phrase": "weihnachtsdeko ideen",
+    "volumen": 880
+   },
+   {
+    "kollektion_handle": "damen-mode",
+    "phrase": "zweiteiler damen",
+    "volumen": 880
+   },
+   {
+    "kollektion_handle": "spielzeug",
+    "phrase": "geschenke für kinder",
+    "volumen": 720
+   },
+   {
+    "kollektion_handle": "sub-beleuchtung",
+    "phrase": "led leuchten",
+    "volumen": 720
+   },
+   {
+    "kollektion_handle": "accessoires",
+    "phrase": "kaschmir schal",
+    "volumen": 590
+   },
+   {
+    "kollektion_handle": "sub-hausschuhe",
+    "phrase": "finken damen",
+    "volumen": 480
+   }
+  ],
+  "notizen": "Ergebnis: 32 Zeilen in 24 Kollektionen. Die Datei ist geschrieben, aber nicht committet. Keine Semrush-Aufrufe. suchvolumen.ratgeber_phrasen() liest die Datei richtig (geprüft an sub-beleuchtung und sub-stiefel-boots).\n\nAlle Zeilen haben quelle=verwandt. Alle 13 Semrush-Fragen haben ein Volumen von 30 oder weniger und fallen unter die Grenze von 50.\n\nGrundlage: 288 Kandidaten, nämlich 275 Begriffe mit Intent 1 oder einem Ratgeber-Wort und die 13 Fragen. Doppelte Begriffe aus mehreren Dateien sind zusammengelegt, das höchste Volumen gilt. Unter 50 Volumen lagen 14 Kandidaten (13 Fragen und «pflege set» mit 20). Mit Ratgeber-Wort, aber ohne Intent 1, kam kein Begriff über 50.\n\nVerworfen, in dieser Reihenfolge geprüft:\n- 14 mit Volumen unter 50.\n- 143 mit nur einem Wort.\n- 3 wegen KONKURRENZ: jumbo weihnachtsbaum sowie zweimal fressnapf hundebett.\n- 0 wegen ORT.\n- 0 wegen Medizin: «welches hundebett bei arthrose» war schon wegen des Volumens draussen.\n- 8 Marken: samsung beamer, tag heuer uhren, bracelet pandora, adidas ballerina, beurer heizdecke, bruder spielzeug, eskimo decken, handyhülle iphone.\n- 10 aus eigenem Urteil: 7 fremdsprachige Begriffe (cadeau homme, shoulder bag(s), ballet flats, deco halloween, halloween decorations, englisch schal), 2 mit veralteter Jahreszahl (adventskalender 2024 mit 22'200 und 2023) und 1 Begriff ab 18 (raucher zubehör, Kollektion Kiffer-Zubehör).\n- 18 wegen s.zu_aehnlich, zum Beispiel make up, personalisierte geschenke, geschenke für männer, geschenke für frauen, halloween deko, home gym, pla filament, gaming zubehör und weihnachtsgeschenke ideen.\n- 13 ohne passende Menü-Kollektion. menue_kollektionen() lässt alle Geschenk-Kollektionen weg, deshalb fallen personalisiertes geschenk, alle Hochzeits- und Geburtstagsgeschenke, geburtstag mann, 3d druck filament, grill zubehör und velo zubehör.\n- 1 Kollektion mit weniger als 6 Produkten: business hemd (herren-hemden hat nur 3 kaufbare).\n- 42, weil das Thema unter den 8 verlinkten Produkten fehlt. Das ist ein strengeres Kriterium als im Auftrag, mehr dazu unten.\n- 1 Duplikat mit gleichen Wörtern: kinder nachtlicht.\n- 3 wegen der Kappe von 3 je Kollektion: ambiente beleuchtung, wohnzimmer beleuchtung, boots herren.\n\nZum strengeren Kriterium: Der Autopilot verlinkt im Artikel nur die ersten 8 kaufbaren Bestseller aus s.ware(). Ich habe deren Titel und Beschreibung gelesen. Wenn kein einziges Produkt von der gesuchten Art dabei war, habe ich die Phrase verworfen, auch wenn der Kollektionstitel passt. Sonst entstünde zum Beispiel ein Artikel über Adventskalender, der nur Christbaumschmuck verlinkt. Dabei fielen auch Phrasen mit viel Volumen weg:\n- adventskalender frauen (8'100), für frauen und für den mann (je 5'400), kinder und männer (je 4'400): In weihnachten-2026 gibt es zwar 5 Adventskalender, keiner ist aber unter den 8 verlinkten Produkten.\n- ferngesteuerte autos (4'400)\n- lichterkette outdoor und vr brille (je 3'600)\n- stehlampe wohnzimmer (2'900)\n- weihnachtsgeschenke basteln (1'600): basteln-diy enthält nur Wanddeko und Vasen.\n- led strips und creolen gold (je 1'300)\n- fussball trikot (1'000): Im Fanshop sind nur Fussballschuhe und Rucksäcke.\n\nWenn der Autopilot künftig die Produkte über ware_zum_thema() wählt statt die Bestseller der Kollektion zu nehmen, lassen sich diese Phrasen nachtragen.\n\nZuordnungen mit Ermessen:\n- geschenke für kinder und geschenkideen kinder gehen an spielzeug.\n- geschenk gadgets geht an trends-gadgets.\n- tech gadgets geht an elektronik-technik.\n- zweiteiler damen geht an damen-mode, wo das 2-teilige Leinen-Set dabei ist.\n\nkollektion_titel ist der Menü-Titel aus s.menue_kollektionen(). Bei kostueme-fasnacht heisst das «Kostüme & Party», bei elektronik-technik «Technik & Gaming»."
+ }
 }

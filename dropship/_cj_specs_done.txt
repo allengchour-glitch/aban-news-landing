@@ -2927,3 +2927,7 @@ nicht-rutschige-abriebfeste-lenkergriffe-fur-a-611500	gesetzt-2
 handgenahtes-lenkradbezug-modifiziert-620500	gesetzt-2
 kunstleder-lenkradbezug-607800	gesetzt-2
 universeller-15-zoll-lenkradbezug-613300	gesetzt-2
+leder-lenkradbezug-608100	gesetzt-2
+sport-lederlenkradbezug-628100	gesetzt-2
+carbon-faser-lenkradgriffe-mit-leder-623500	gesetzt-2
+leder-lenkradbezug-rutschfest-627700	gesetzt-2
