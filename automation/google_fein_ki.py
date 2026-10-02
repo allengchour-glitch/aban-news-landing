@@ -109,10 +109,24 @@ def groq(text):
     raise RuntimeError("Groq ohne Antwort — " + letzter)
 
 
+PAUSE = "/tmp/google_fein_ki_pause"      # 02.10.: Groq-Tageskontingent leer → 6 h Pause statt Gemini für Verwurf zu bezahlen
+TAG_LEER = False
+
+
+def pause_aktiv():
+    return os.path.exists(PAUSE) and time.time() - os.path.getmtime(PAUSE) < 6 * 3600
+
+
 def zweiter(text):
     """Zweitprüfer: ChatGPT oder bei leerem Guthaben Groq — zentral in zweitmodell.py (02.10.2026)."""
+    global TAG_LEER
     import zweitmodell
-    return zweitmodell.chat_json(text)
+    try:
+        return zweitmodell.chat_json(text)
+    except zweitmodell.TagesKontingentLeer:
+        TAG_LEER = True
+        open(PAUSE, "w").write(time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()))
+        raise
 
 def geduldig(fn, text):
     """ChatGPT antwortet bei parallelen Läufen mit 429 — warten statt den Block zu verwerfen (02.10.: 11× in 10 min)."""
@@ -129,6 +143,8 @@ def frage(basis, pfade, titel):
     liste = "\n".join(f"{i}. {p[len(basis) + 3:]}" for i, p in enumerate(pfade, 1))
     produkte = "\n".join(f"{i}. {t}" for i, t in enumerate(titel, 1))
     text = PROMPT.format(basis=basis, liste=liste, produkte=produkte)
+    if TAG_LEER:                         # kein Gemini-Aufruf für einen Block, den niemand gegenprüfen kann
+        return {}, {}, False
     with cf.ThreadPoolExecutor(2) as ex:
         a, b = ex.submit(geduldig, gemini, text), ex.submit(geduldig, zweiter, text)
         ra = rb = None
@@ -246,7 +262,11 @@ def main():
     if TEIL:
         k, n = (int(x) for x in TEIL.split("/"))
         reihe = [g for i, g in enumerate(reihe) if i % n == k - 1]
+    if SCHARF and pause_aktiv():
+        print(f"PAUSE seit {open(PAUSE).read()} — nichts zu tun"); return
     for basis, prod in reihe:
+        if TAG_LEER:
+            break
         if not any(p.startswith(basis + " > ") for p in tax):
             continue
         for i in range(0, len(prod), BATCH):
@@ -255,6 +275,9 @@ def main():
             teil = prod[i:i + BATCH]
             gesamt += len(teil)
             erg = einordnen(basis, [p["title"] for p in teil], tax)
+            if TAG_LEER:
+                print("PAUSE: Zweitprüfer-Tageskontingent leer — Lauf endet, Aufseher startet nach 6 h neu (Ledger hält den Stand)", flush=True)
+                break
             if all(st == "fehlt" for _, st in erg):
                 print(f"  ⚠️ {basis}: ein Modell ohne Antwort — Block übersprungen (kein Ledger)", flush=True)
                 ausgelassen += 1
