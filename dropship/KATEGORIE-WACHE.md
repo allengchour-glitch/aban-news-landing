@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-02T16:36Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-02T17:34Z
 
-Aktive gescannt: 26 · ohne Kategorie: 26 · heute gesetzt: 8 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
+Aktive gescannt: 19 · ohne Kategorie: 19 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 18 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,5 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- stainless-steel-backform-fur-gedampfte-kuchen-602368 · Haushalt & Wohnen → Home & Garden > Household Supplies
-- eierwaffel-backform-16-loch-octopus-balls-698624 · Haushalt & Wohnen → Home & Garden > Kitchen & Dining
-- backform-fur-pizza-und-brot-rechteckig-antihaf-341888 · Haushalt & Wohnen → Home & Garden > Kitchen & Dining
-- bambus-pizzaschneidebrett-33x18-cm-bf1d28 · Haushalt & Wohnen → Home & Garden > Kitchen & Dining
-- elektrische-doppelseitige-bratpfanne-7eedcf · Haushalt & Wohnen → Home & Garden > Kitchen & Dining
+- bade-duschgel-men-s-collection-bierflaschen-op-ftac8148308 · Beauty & Pflege → Health & Beauty > Personal Care > Cosmetics > Makeup
 
