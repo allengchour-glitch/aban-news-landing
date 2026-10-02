@@ -1,5 +1,17 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🧪 2026-10-02 — Meisterwerk-Tool: Backtest-Labor mit Indikatoren
+> - **`backtest-labor.html`** (Gratis-Tool, Funnel zum Strategie-Prüfstand CHF 29): Regeln ehrlich testen — Signal am Folgetag,
+>   Kosten pro Wechsel, Entwickeln/Test getrennt (nur Test zählt), Vergleich mit Halten + **Skill gegen 200 Zufallsstrategien**.
+> - Regeln: 9 klassische (identisch zu `tools/trading/stil_labor.py`) + **Indikatoren** RSI, MACD+Signallinie, Bollinger (unten/
+>   oben/Mitte), Stochastik, EMA-Kreuz, Kurs vs. SMA — als 5 Vorlagen + eigener Baukasten (Kauf/Verkauf getrennt, 200-Tage-Filter).
+>   „Beste Durchschnitte suchen" zeigt die Optimierungs-Falle (449 Kombis auf Entwicklung → Test). Gegenprobe „Wahrsager" ≈ 100 %.
+> - Daten: **Zufallsmarkt** (seeded, zeigt Muster im Rauschen) oder **eigene CSV** (Yahoo Adj Close, CH-Format; nur lokal).
+>   Bewusst KEINE Yahoo-Rohkurse veröffentlicht (Weiterverbreitung nicht erlaubt); `tools/trading/daten/` nur lokal zum Testen.
+> - **Validiert:** Engine = Stil-Labor auf 63 Stil×Markt (max. Abw. 0.00008); RSI = Wilder-Referenz; kein Zukunftsblick;
+>   Browser-Klicktest alle Regeln/Baukasten/CSV, mobil 390 px ohne Überlauf, 0 JS-Fehler. Engine zwischen `/*ENGINE-START*/…END*/`.
+> - Eingebunden: online-tools (Geld & Märkte), Sitemap, ki-trading-bot (Prüfliste + Rück-Link), trading-lernen, Bot-Check-Kasten (7 Seiten).
+
 ## 📈 2026-10-02 — Trading-Produkt pushen: KI-Trading-Bot-Seite
 > - **`ki-trading-bot.html`** (neu): fängt die Suche „KI Trading Bot", zeigt den eigenen Bot-Test (Auswendiglerner 100 % auf
 >   alten Kursen, auf neuen Jahren ≈ Anteil Anstiegstage; Regel-Bot vs. Halten), 7 Warnzeichen + 15-Min-Prüfliste mit Quellen
