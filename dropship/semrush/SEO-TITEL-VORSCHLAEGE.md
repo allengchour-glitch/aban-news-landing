@@ -1,6 +1,6 @@
-# SEO-Titel aus Semrush-Suchbegriffen — 2026-10-02 18:04 UTC (TROCKEN)
+# SEO-Titel aus Semrush-Suchbegriffen — 2026-10-02 18:09 UTC (SCHARF)
 
-Kandidaten 103 · Regeln bestanden 103 · geschrieben 0 · ausgelassen 73
+Kandidaten 103 · Regeln bestanden 103 · geschrieben 103 · ausgelassen 73
 
 | Suchbegriff | Produkt | SEO-Titel | SEO-Text | Prüfung |
 |---|---|---|---|---|
