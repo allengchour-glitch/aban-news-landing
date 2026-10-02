@@ -28,7 +28,7 @@ Die Filter selbst lassen sich NUR in der App Search & Discovery einstellen. Daf�
 2. **Genormtes Farbfeld:** `automation/farbmuster_filter.py`. 19 eigene Grundfarben (`lux-farbe-*`) mit Farbpunkt, verknüpft mit Shopifys Taxonomie-Farbwerten (gemessen an aa-1-4).
    - Rohwert → Grundfarbe per Wortliste mit Vorrang: Roségold vor Gold, Rosarot = Pink, Weinrot = Rot, «Rotation» und «Rose Print» = keine Farbe. Selbsttest 19/19.
    - Je Produkt die Vereinigung aller Farbwerte. Gesetzt wird nur dort, wo das Feld leer ist oder von uns stammt.
-   - **13'612 Produkte**. Ausgelassen: 1'087 Farb-Optionen ohne Farbwort («Muster 2», «Set 1», «Farbton 3») und 244 Produkte, deren Kategorie kein Farbmerkmal hat.
+   - **13'435 Produkte** (alle zurückgelesen). Ausgelassen: 1'087 Farb-Optionen ohne Farbwort («Muster 2», «Set 1», «Farbton 3») und 421 Produkte, deren Kategorie nicht in der Bedingungsliste des Felds steht.
    - Läuft täglich im Aufseher für Neuimporte.
 3. **Betreiber-Klick** (`COWORK-BEFEHL.md`, oberster Block, ~5 Min): Filter «Farbe» (Quelle «Farbe & Grösse») löschen. Danach hinzufügen: Farbe aus dem Kategorie-Metafeld (Farbfelder), Grösse aus der Option «Grösse», Kategorie aus der Produktkategorie. Anbieter entfernen.
 
