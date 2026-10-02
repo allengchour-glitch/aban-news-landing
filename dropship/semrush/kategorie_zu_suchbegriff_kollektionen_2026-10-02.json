@@ -1,0 +1,164 @@
+{
+ "map": {
+  "handle:damen-mode": [
+   "damenmode",
+   "damenbekleidung"
+  ],
+  "handle:accessoires": [
+   "accessoires",
+   "mütze schal"
+  ],
+  "handle:damen-strick-pullover": [
+   "pullover damen",
+   "strickpullover damen"
+  ],
+  "handle:damen-jacken-maentel": [
+   "jacken damen",
+   "damen jacken"
+  ],
+  "handle:damen-blusen": [
+   "blusen damen",
+   "damen blusen"
+  ],
+  "handle:damen-hosen": [
+   "hosen damen",
+   "leggings damen"
+  ],
+  "handle:fur-ihn": [
+   "herrenmode",
+   "herrenbekleidung"
+  ],
+  "handle:herren-hemden": [
+   "hemden herren",
+   "herrenhemden"
+  ],
+  "handle:herren-shirts": [
+   "poloshirts herren",
+   "t shirts herren"
+  ],
+  "handle:herren-hosen": [
+   "hosen herren",
+   "herrenhosen"
+  ],
+  "handle:herren-pullover": [
+   "pullover herren",
+   "strickpullover herren"
+  ],
+  "handle:herren-jacken": [
+   "jacken herren",
+   "herrenjacken"
+  ],
+  "handle:sneaker-sportschuhe": [
+   "sneaker",
+   "turnschuhe"
+  ],
+  "handle:schmuck-sets": [
+   "schmuckset gold",
+   "schmuckset"
+  ],
+  "handle:wohnen-dekoration": [
+   "deko wohnzimmer",
+   "wohnaccessoires"
+  ],
+  "handle:outdoor-garten": [
+   "gartendeko",
+   "outdoor deko"
+  ],
+  "handle:elektronik-technik": [
+   "elektronik",
+   "technik"
+  ],
+  "handle:trends-gadgets": [
+   "gadgets",
+   "lifestyle produkte"
+  ],
+  "handle:elektronik-kleinteile": [
+   "adapter",
+   "usb adapter"
+  ],
+  "handle:sub-baby-kids": [
+   "babyzubehör",
+   "kinderzimmer deko"
+  ],
+  "handle:tier-leinen-kleidung": [
+   "hundeleine",
+   "hundekleidung"
+  ],
+  "handle:spielzeug-ch-lager": [
+   "spielzeug",
+   "spielwaren"
+  ],
+  "handle:bestseller": [
+   "bestseller",
+   "bestseller produkte"
+  ],
+  "handle:blitzversand-schweiz": [
+   "online shop schweiz",
+   "online shopping schweiz"
+  ],
+  "handle:kostueme-ch-lager": [
+   "kostüme",
+   "kostüm schweiz"
+  ],
+  "handle:viral-hits": [
+   "gadgets für männer",
+   "coole gadgets"
+  ],
+  "handle:eu-lager-schnell": [
+   "express lieferung",
+   "express versand"
+  ],
+  "handle:erste-august": [
+   "schweizer souvenirs",
+   "schweiz souvenir"
+  ],
+  "handle:luxestyle-premium": [
+   "luxury",
+   "luxus accessoires"
+  ],
+  "handle:herbst-favoriten": [
+   "herbstdeko",
+   "herbstmode"
+  ],
+  "handle:muetzen-schals": [
+   "mützen",
+   "schals"
+  ],
+  "handle:waerme-komfort": [
+   "kuscheldecke",
+   "heizdecke"
+  ],
+  "handle:sub-reise": [
+   "reise gadgets",
+   "outdoor ausrüstung"
+  ],
+  "handle:fitness-training": [
+   "fitnessgeräte",
+   "fitness zubehör"
+  ],
+  "handle:kostueme-fasnacht": [
+   "fasnacht kostüme",
+   "partykostüme"
+  ],
+  "handle:party-deko-ch": [
+   "ballone",
+   "luftballons"
+  ],
+  "handle:weihnachten-2026": [
+   "weihnachtsdeko",
+   "weihnachtsgeschenke"
+  ],
+  "handle:unter-chf-25": [
+   "kleine geschenke",
+   "günstige geschenke"
+  ],
+  "handle:sets-bundles": [
+   "geschenkset",
+   "geschenkset frauen"
+  ],
+  "handle:%F0%9F%92%8E-premium-ab-chf-80": [
+   "exklusive geschenke",
+   "edle geschenke"
+  ]
+ }
+}
