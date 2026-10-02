@@ -29,6 +29,14 @@
 
 
 
+
+## 📦 «ab wann bei iris cj melden»: 48 h ohne Scan ist normal, Iris erst ab 5 Tagen (2026-10-02)
+#1020 stand in der Ampel als «⛔ VERSAND STEHT STILL … seit 63h ohne Scan». GEMESSEN an CJ `trackInfo`: einzige Station
+«Label created. Warehouse is processing» 30.09. 04:48, Status Processing. Gemessene Läufe bezahlt → Übergabe 1–5 T
+(LX1012/LX1015 je 3 T) — 63 h ist Normalbereich. `versand_stillstand.py`: Info ab 48 h mit Datum «Iris erst ab …»,
+⛔ «JETZT Iris melden» erst ab IRIS_H = 120 h nach dem Label. Nebenbefund: CJ-Punkte 20:30 UTC Rest 5 (117'370 heute).
+**Lehre:** Eine Alarm-Schwelle gehört an die gemessene Normalzeit, nicht an ein Gefühl — sonst lernt man, ⛔ zu überlesen.
+
 ## 🎛️ «feinkategorie filter verbessern?»: der Farbfilter las eine Option von 8 Produkten (2026-10-02)
 GEMESSEN an den Live-Seiten: die Facette «Farbe» hat die QUELLE «Farbe & Grösse» (8 Produkte) — auf sub-kleider (3'160
 Kleider) zeigte sie «Gelb», «Gelb-0XL»; Grösse/Kategorie fehlten ganz; Produkttyp 151 Werte mit Dubletten. Die Option

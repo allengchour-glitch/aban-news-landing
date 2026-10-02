@@ -23,7 +23,10 @@ _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 SHOP = "au3j0y-hq.myshopify.com"
-STILL_H = int(os.environ.get("STILL_H", "48"))   # so lange darf eine Nummer ohne Scan bleiben
+STILL_H = int(os.environ.get("STILL_H", "48"))   # ab hier zeigt die Ampel die Sendung (Info)
+# 02.10.2026 (Betreiber «ab wann bei iris cj melden»): gemessen bezahlt → Übergabe an den Carrier 1–5 T (LX1012/LX1015
+# je 3 T, Journal 02.10.) — 48 h ohne Scan ist NORMAL, kein ⛔. Erst ab IRIS_H wird es ein Fall für CJs Agentin Iris.
+IRIS_H = int(os.environ.get("IRIS_H", "120"))
 MAX_NR  = int(os.environ.get("MAX_NR", "15"))    # Deckel gegen CJs 1-Anfrage/Sekunde-Limit
 
 def shop(q):
@@ -103,10 +106,11 @@ def main():
                 continue
             for t in (f.get("trackingInfo") or []):
                 if t.get("number"):
-                    kandidaten.append((o["name"], t["number"], alter))
+                    kandidaten.append((o["name"], t["number"], alter,
+                                       dt.datetime.fromisoformat(ts.replace("Z", "+00:00")) + dt.timedelta(hours=IRIS_H)))
 
-    befunde, unklar = [], 0
-    for name, nr, alter in kandidaten[:MAX_NR]:
+    befunde, warten, unklar = [], [], 0
+    for name, nr, alter, iris_ab in kandidaten[:MAX_NR]:
         n, status, err = stationen(tok, nr)
         time.sleep(1.2)
         if n is None:
@@ -118,11 +122,17 @@ def main():
         if (status or "").lower().startswith("deliver"):
             continue
         if n <= 1:
-            befunde.append(f"{name} {nr} seit {alter:.0f}h ohne Scan")
+            if alter >= IRIS_H:
+                befunde.append(f"{name} {nr} seit {alter:.0f}h ohne Scan → JETZT Iris melden (Text: COWORK-BEFEHL «Iris»)")
+            else:
+                warten.append(f"{name} {alter:.0f}h im Lager (normal bis {IRIS_H // 24} T) · Iris erst ab "
+                              f"{iris_ab:%d.%m. %H:%M} UTC")
 
     if befunde:
-        print("⛔ VERSAND STEHT STILL: " + " · ".join(befunde))
+        print("⛔ VERSAND STEHT STILL: " + " · ".join(befunde + warten))
         return 1
+    if warten:
+        print("VERSAND: " + " · ".join(warten))
     if unklar:
         print(f"VERSAND: unklar ({unklar} Sendung(en) bei CJ nicht abfragbar)")
     return 0
