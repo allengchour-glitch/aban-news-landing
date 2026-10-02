@@ -2922,3 +2922,11 @@ halloween-halsband-fur-hunde-583552	1424982299660914688	16	6.90	ok	landeseite
 farbpalette-fur-halloween-621000	2411080637401621200	3	8.51	ok	landeseite
 frauengrunes-halloween-sweatshirt-633100	2511210257101633300	16	8.93	ok	landeseite
 halloween-low-top-sneaker-mit-3d-druck-918208	1702252058469998592	16	10.15	ok	landeseite
+kartoon-kurbisschlupfchen-682752	1697175997441265664	16	8.79	ok	landeseite
+gelber-halloweenkurbis-lichtsinn-607552	1433704456129744896	7	5.75	ok	landeseite
+halloween-kostuem-fuer-hunde-479706	-	-	-	unklar keine CJ-SKU	landeseite
+fledermaus-pendelen-617900	2607100914591619000	16	4.71	ok	landeseite
+halloween-pumpkin-kerzen-naturkreme-mit-pflanz-619300	2606130740241610500	0	-	KEINE CH-Option → DRAFT	landeseite
+hexe-dekorative-malerei-148096	1621683945152720896	16	12.38	ok	landeseite
+halloween-langarm-pulli-herbst-winter-damenbek-606200	2605150828521606900	16	10.29	ok	landeseite
+herren-t-shirt-mit-horror-schadel-druck-634000	2607090746071634800	16	7.43	ok	landeseite
