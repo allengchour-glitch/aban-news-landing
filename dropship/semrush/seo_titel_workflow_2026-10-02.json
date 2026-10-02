@@ -1,0 +1,1271 @@
+[
+ {
+  "handle": "pod-sticker-text-merci",
+  "keyword": "merci",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen: «merci» meint die Schokoladenmarke, nicht den Sticker",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen, das bleibt so: «merci» meint die Schokoladenmarke, nicht den Sticker."
+ },
+ {
+  "handle": "mini-kuhlschrank-629100",
+  "keyword": "kleiner kühlschrank",
+  "entwurf": "Kleiner Kühlschrank im Mini-Format | LuxeStyle",
+  "grund_schreiber": "Suchbegriff am Anfang, «Mini» aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Kleiner Kühlschrank im Mini-Format | LuxeStyle",
+  "grund_pruefer": "46 Zeichen. Es ist ein 15-W-Kühlschrank für 12 V bzw. Akku. «im Mini-Format» doppelt «klein» zwar, sagt aber ehrlich, dass er sehr klein ist."
+ },
+ {
+  "handle": "schlafmaske-625800",
+  "keyword": "schlafmaske",
+  "entwurf": "Schlafmaske | LuxeStyle",
+  "grund_schreiber": "Produkttitel ist der Suchbegriff, keine weiteren Merkmale im Titel",
+  "behalten": true,
+  "seo_titel": "Schlafmaske | LuxeStyle",
+  "grund_pruefer": "23 Zeichen. Begriff = Produkt (Polyester/Memory-Cotton), regelkonform."
+ },
+ {
+  "handle": "mini-fotodrucker-c75644",
+  "keyword": "fotodrucker",
+  "entwurf": "Mini-Fotodrucker | LuxeStyle",
+  "grund_schreiber": "Produktname mit Bindestrich, enthält den Suchbegriff",
+  "behalten": true,
+  "seo_titel": "Mini-Fotodrucker | LuxeStyle",
+  "grund_pruefer": "28 Zeichen. Das Produkt ist ein mobiler Bluetooth-Thermodrucker, den der Shop als Fotodrucker verkauft. Der Begriff ist enthalten, und «Mini» begrenzt die Erwartung."
+ },
+ {
+  "handle": "stiletto-high-heels-633500",
+  "keyword": "stiletto",
+  "entwurf": "Stiletto High Heels | LuxeStyle",
+  "grund_schreiber": "Suchbegriff am Anfang, gleich wie Produkttitel",
+  "behalten": true,
+  "seo_titel": "Stiletto High Heels | LuxeStyle",
+  "grund_pruefer": "31 Zeichen. Damen-Stilettos aus Lackleder, der Begriff passt und steht vorne."
+ },
+ {
+  "handle": "klangsystem-625400",
+  "keyword": "sound system",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen, MARKE PRÜFEN: das Produktbild zeigt einen tragbaren Bluetooth-Lautsprecher mit «FLIP 6» und «Dare to listen» auf der Verpackung (sieht nach JBL-Nachahmung aus); «sound system» meint ausserdem eine Anlage",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "kein Urteil"
+ },
+ {
+  "handle": "baumwoll-camisole-608000",
+  "keyword": "camisole",
+  "entwurf": "Camisole aus Baumwolle | LuxeStyle",
+  "grund_schreiber": "Suchbegriff vorne, Baumwolle aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Camisole | LuxeStyle",
+  "grund_pruefer": "KORRIGIERT: Die Beschreibung nennt zweimal «Material: Polyester», «aus Baumwolle» wäre also eine falsche Materialangabe. Ich habe sie gestrichen (20 Zeichen). Nebenbefund: Der Produkttitel «Baumwoll-Camisole» ist ebenfalls falsch, das Bild zeigt ein Corsagen-Top."
+ },
+ {
+  "handle": "shirt-zum-selbstgestalten",
+  "keyword": "t shirt bedrucken schweiz",
+  "entwurf": "T-Shirt bedrucken Schweiz · mit Foto oder Motiv | LuxeStyle",
+  "grund_schreiber": "Suchbegriff am Anfang, «dein» aus dem Produkttitel weggelassen, 59 Zeichen",
+  "behalten": true,
+  "seo_titel": "T-Shirt bedrucken Schweiz · mit Foto oder Motiv | LuxeStyle",
+  "grund_pruefer": "59 Zeichen, Begriff vorne (Bindestrich erlaubt). «Foto oder Motiv» stammt aus dem Produkttitel, «dein» ist korrekt weggelassen."
+ },
+ {
+  "handle": "magischer-zauberstab-fga952815",
+  "keyword": "zauberstab",
+  "entwurf": "Magischer Zauberstab | LuxeStyle",
+  "grund_schreiber": "Natürliche Wortfolge des Produkttitels, kein erfundener Lichteffekt",
+  "behalten": true,
+  "seo_titel": "Magischer Zauberstab | LuxeStyle",
+  "grund_pruefer": "32 Zeichen. Natürliche Wortfolge, der Begriff ist enthalten. Kostüm-Zauberstab von Widmann, 122 cm, passt."
+ },
+ {
+  "handle": "selbstklebende-mobelfolie-650114",
+  "keyword": "möbelfolie",
+  "entwurf": "Möbelfolie selbstklebend | LuxeStyle",
+  "grund_schreiber": "Suchbegriff vorne, Merkmal aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Möbelfolie selbstklebend | LuxeStyle",
+  "grund_pruefer": "36 Zeichen. Begriff vorne, Merkmal aus dem Produkttitel, korrekt nachgestelltes Adjektiv."
+ },
+ {
+  "handle": "gps-auto-tracker-a3b10f",
+  "keyword": "gps tracker auto",
+  "entwurf": "GPS-Tracker Auto | LuxeStyle",
+  "grund_schreiber": "Titel passt. RECHT PRÜFEN: laut Beschreibung gehört ein Mikrofon zum Lieferumfang (Abhörfunktion, Art. 179sexies StGB)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "RECHT PRÜFEN: Laut Beschreibung gehört «1 Mikrofon» zum Lieferumfang (Abhörfunktion, Art. 179sexies StGB, dazu Relais und Fernbedienung). Ein heikles Produkt wird nicht per SEO gepusht, im Zweifel false. Erst den Verkauf rechtlich klären."
+ },
+ {
+  "handle": "strandtuch-selbst-gestalten",
+  "keyword": "badetuch bedrucken lassen",
+  "entwurf": "Badetuch bedrucken lassen · selbst gestalten | LuxeStyle",
+  "grund_schreiber": "Suchbegriff am Anfang, «selbst gestalten» aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Badetuch bedrucken lassen · selbst gestalten | LuxeStyle",
+  "grund_pruefer": "56 Zeichen. Begriff vorne, «selbst gestalten» aus dem Produkttitel. Inhaltlich stimmig: selbst gestalten, gedruckt wird auf Bestellung."
+ },
+ {
+  "handle": "business-laptop-rucksack-134656",
+  "keyword": "rucksack business",
+  "entwurf": "Rucksack Business für Notebooks | LuxeStyle",
+  "grund_schreiber": "«Laptop» vermieden, weil es den verbotenen Wortteil «top» enthält; «Notebook» ist das gleichbedeutende Wort",
+  "behalten": true,
+  "seo_titel": "Rucksack Business für Notebooks | LuxeStyle",
+  "grund_pruefer": "43 Zeichen. «Notebooks» ersetzt «Laptop» (verbotener Wortteil «top»), das ist gleichbedeutend und nicht erfunden (17/20 Zoll). Die Katalog-Wortfolge «Rucksack Business» ist vom Begriff vorgegeben und ohne Beugungsfehler."
+ },
+ {
+  "handle": "v-ausschnitt-oberteil-611100",
+  "keyword": "ausschnitt",
+  "entwurf": "Oberteil mit V-Ausschnitt | LuxeStyle",
+  "grund_schreiber": "Natürliches Deutsch statt «V-Ausschnitt-Oberteil»; die Absicht hinter dem Einzelwort «ausschnitt» ist allerdings unklar",
+  "behalten": true,
+  "seo_titel": "Oberteil mit V-Ausschnitt | LuxeStyle",
+  "grund_pruefer": "37 Zeichen. Natürliches Deutsch, sachlich korrekt (Damen-Oberteil mit V-Ausschnitt). Das Einzelwort «ausschnitt» bringt wenig, der Titel schadet aber nicht."
+ },
+ {
+  "handle": "akku-astschere-burstenlos-632400",
+  "keyword": "akku astschere",
+  "entwurf": "Akku-Astschere, bürstenlos | LuxeStyle",
+  "grund_schreiber": "Gleich wie Produkttitel. Nebenbefund: Produkttyp «Aufbewahrung & Organizer» ist falsch",
+  "behalten": true,
+  "seo_titel": "Akku-Astschere, bürstenlos | LuxeStyle",
+  "grund_pruefer": "38 Zeichen. Gleich wie Produkttitel, passt (21-V-Gartenschere). Nebenbefund: Der Produkttyp «Aufbewahrung & Organizer» und die Tags organizer/aufbewahrung sind falsch."
+ },
+ {
+  "handle": "shirt-edelweiss-line",
+  "keyword": "edelweiss shirt",
+  "entwurf": "Edelweiss-Shirt | LuxeStyle",
+  "grund_schreiber": "T-Shirt mit Edelweiss-Motiv. Ein Teil der Suchenden meint vermutlich das Edelweisshemd",
+  "behalten": true,
+  "seo_titel": "Edelweiss-Shirt | LuxeStyle",
+  "grund_pruefer": "27 Zeichen. Das Bild zeigt ein weisses T-Shirt mit Edelweiss-Blüte, der Begriff passt also wörtlich. Hinweis: Wer das Trachtenhemd sucht, findet es unter edelweisshemd-langarm-geknopft-fgsshb2899. Für die Absicht «Edelweisshemd» eignet sich dieses Produkt besser."
+ },
+ {
+  "handle": "schwingerhose-fgahb2887ml",
+  "keyword": "schwingerhosen",
+  "entwurf": "Schwingerhosen-Kostüm | LuxeStyle",
+  "grund_schreiber": "Laut Beschreibung eine Fasnachts-Schwingerhose («fake»), Typ Kostüme; «Kostüm» im Titel verhindert die Verwechslung mit echten Schwingerhosen",
+  "behalten": true,
+  "seo_titel": "Schwingerhosen-Kostüm | LuxeStyle",
+  "grund_pruefer": "33 Zeichen. Laut Beschreibung «Schwingerhose fake» für die Fasnacht. «Kostüm» verhindert die Verwechslung, und «Schwingerhosen-» ist die richtige Fugenform (vgl. Hosentasche)."
+ },
+ {
+  "handle": "usb-rucklicht-fur-velos-a18d73",
+  "keyword": "velo rücklicht",
+  "entwurf": "Velo-Rücklicht mit USB | LuxeStyle",
+  "grund_schreiber": "Suchbegriff vorne, USB aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Velo-Rücklicht mit USB | LuxeStyle",
+  "grund_pruefer": "34 Zeichen. Begriff vorne (Bindestrich erlaubt), USB aus dem Produkttitel."
+ },
+ {
+  "handle": "knickerbockerhose-fgssor7024",
+  "keyword": "knickerbocker hosen",
+  "entwurf": "Knickerbocker-Hosen | LuxeStyle",
+  "grund_schreiber": "Mehrzahl ist vom Suchbegriff vorgegeben, «Knickerbockerhose» passt nicht wörtlich",
+  "behalten": true,
+  "seo_titel": "Knickerbocker-Hosen fürs Kostüm | LuxeStyle",
+  "grund_pruefer": "KORRIGIERT (43 Zeichen): Laut Produkttyp, Tag herrenkostuem und «Anlass: Fasnacht» ist es ein Fasnachtskostüm-Teil. Wie bei der Schwingerhose steht deshalb «Kostüm» im Titel, damit Leute, die echte Knickerbocker für Tracht oder Wandern suchen, nicht getäuscht werden."
+ },
+ {
+  "handle": "rucksack-fur-die-uni-623500",
+  "keyword": "rucksack uni",
+  "entwurf": "Rucksack Uni | LuxeStyle",
+  "grund_schreiber": "«Rucksack für die Uni» enthält den Begriff nicht zusammenhängend, deshalb die kurze Form",
+  "behalten": true,
+  "seo_titel": "Rucksack Uni | LuxeStyle",
+  "grund_pruefer": "24 Zeichen. Kurze Katalogform ohne Doppelung. Jede Erweiterung wäre erfunden («Studium») oder doppelt («für die Uni»)."
+ },
+ {
+  "handle": "herren-suede-loafers-608000",
+  "keyword": "suede loafers",
+  "entwurf": "Suede Loafers für Herren | LuxeStyle",
+  "grund_schreiber": "Suchbegriff vorne, Herren aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Suede Loafers für Herren | LuxeStyle",
+  "grund_pruefer": "36 Zeichen. Laut Beschreibung Wildleder (= Suede), Herren steht im Produkttitel."
+ },
+ {
+  "handle": "kostum-pinguin-fgss5545",
+  "keyword": "kostüm pinguin",
+  "entwurf": "Kostüm Pinguin | LuxeStyle",
+  "grund_schreiber": "Gleich wie Produkttitel",
+  "behalten": true,
+  "seo_titel": "Kostüm Pinguin | LuxeStyle",
+  "grund_pruefer": "26 Zeichen. Gleich wie Produkttitel (Widmann-Kostüm)."
+ },
+ {
+  "handle": "kostum-charleston-20er-fgaor9919",
+  "keyword": "charleston kleid",
+  "entwurf": "Charleston-Kleid als 20er-Kostüm | LuxeStyle",
+  "grund_schreiber": "Bild bestätigt ein Fransenkleid für Damen, «20er» und «Kostüm» aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Charleston-Kleid als 20er-Kostüm | LuxeStyle",
+  "grund_pruefer": "44 Zeichen. Bild geprüft: Fransenkleid für Damen. «20er» ist eine Jahrzehnt-Angabe aus dem Produkttitel, kein Preis."
+ },
+ {
+  "handle": "trinkbrunnen-fur-haustiere-411520",
+  "keyword": "katzentrinkbrunnen",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen, andere Ware: Bild und Beschreibung zeigen einen Anti-Schwapp-Wassernapf ohne Pumpe (Bild mit Hund), keinen Katzentrinkbrunnen. Auch der Produkttitel «Trinkbrunnen» sollte geprüft werden",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen, das bleibt so: Es ist ein Napf ohne Pumpe, kein Katzentrinkbrunnen."
+ },
+ {
+  "handle": "gesichtsmaske-die-pest-fgack13739",
+  "keyword": "pestmaske",
+  "entwurf": "Pestmaske | LuxeStyle",
+  "grund_schreiber": "Kurz und eindeutig, keine Doppelung mit «Gesichtsmaske»",
+  "behalten": true,
+  "seo_titel": "Pestmaske | LuxeStyle",
+  "grund_pruefer": "21 Zeichen. Bild geprüft: Pestdoktor-Schnabelmaske. Nebenbefund: Die Tags beauty/hautpflege sind falsch (Kostüm, keine Hautpflege)."
+ },
+ {
+  "handle": "kostum-squid-game-fgss2056",
+  "keyword": "squid game kostüm",
+  "entwurf": "Squid-Game-Kostüm | LuxeStyle",
+  "grund_schreiber": "Begriff steht schon im Produkttitel. Lizenzname, wie die anderen Lizenzprodukte aus den Werbekanälen fernhalten",
+  "behalten": true,
+  "seo_titel": "Squid-Game-Kostüm | LuxeStyle",
+  "grund_pruefer": "29 Zeichen. Bild: schwarzer Mantel mit Kapuze und Maske (Front-Man-Kostüm), der Begriff passt. Der Lizenzstatus ist unbelegt, deshalb aus den Werbekanälen fernhalten. Der Produkttitel trägt den Namen bereits."
+ },
+ {
+  "handle": "elegantes-polka-dot-a-linien-kleid-633900",
+  "keyword": "polka dots kleid",
+  "entwurf": "Elegantes Polka-Dots-Kleid in A-Linie | LuxeStyle",
+  "grund_schreiber": "Natürliche Wortfolge, Merkmale aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Elegantes Polka-Dots-Kleid in A-Linie | LuxeStyle",
+  "grund_pruefer": "49 Zeichen. Alle Merkmale aus dem Produkttitel, natürliche Wortfolge."
+ },
+ {
+  "handle": "grosse-trinkflasche-mit-strohhalm-fur-sport-fi-635300",
+  "keyword": "große trinkflasche",
+  "entwurf": "Grosse Trinkflasche mit Strohhalm für Sport | LuxeStyle",
+  "grund_schreiber": "«ß» zu «ss», «& Fitness» wegen der Länge gestrichen",
+  "behalten": true,
+  "seo_titel": "Grosse Trinkflasche mit Strohhalm für Sport | LuxeStyle",
+  "grund_pruefer": "55 Zeichen. «ß» korrekt zu «ss», Merkmale aus dem Produkttitel."
+ },
+ {
+  "handle": "kostum-ritter-fgsseu720901",
+  "keyword": "ritter kostüm",
+  "entwurf": "Ritter-Kostüm | LuxeStyle",
+  "grund_schreiber": "Bindestrich-Schreibweise, Suchbegriff vollständig",
+  "behalten": true,
+  "seo_titel": "Ritter-Kostüm | LuxeStyle",
+  "grund_pruefer": "25 Zeichen. Begriff vollständig (Bindestrich erlaubt). Laut Tag ein Kinderkostüm, der Titel bleibt neutral und korrekt."
+ },
+ {
+  "handle": "atmungsaktive-sneaker-mit-erhohter-passform-609900",
+  "keyword": "atmungsaktive schuhe",
+  "entwurf": "Atmungsaktive Schuhe · Sneaker | LuxeStyle",
+  "grund_schreiber": "Suchbegriff vorne. «erhöhte Passform» weggelassen, weil unklar und zu lang",
+  "behalten": true,
+  "seo_titel": "Atmungsaktive Schuhe · Sneaker | LuxeStyle",
+  "grund_pruefer": "42 Zeichen. Mesh-Sneaker, der Begriff passt. Die Langform mit «erhöhter Passform» wäre über 48 Zeichen."
+ },
+ {
+  "handle": "leichte-arbeitsschuhe-mit-schutz-091200",
+  "keyword": "sicherheitsschuhe leicht und bequem",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen, PSA PRÜFEN: «Sicherheitsschuhe» setzt eine Zulassung nach EN ISO 20345 voraus, die nirgends belegt ist (Beschreibung: Stahlkappe, Anti-Schnitt). Der Produkttitel sagt nur «Arbeitsschuhe mit Schutz»",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen, das bleibt so: Für «Sicherheitsschuhe» fehlt eine belegte EN-ISO-20345-Zulassung (PSA PRÜFEN)."
+ },
+ {
+  "handle": "asymmetrisches-kleid-611500",
+  "keyword": "kleid asymmetrisch",
+  "entwurf": "Kleid asymmetrisch geschnitten | LuxeStyle",
+  "grund_schreiber": "Suchbegriff wörtlich vorne, «geschnitten» macht den Titel lesbar",
+  "behalten": true,
+  "seo_titel": "Kleid asymmetrisch geschnitten | LuxeStyle",
+  "grund_pruefer": "42 Zeichen. Begriff wörtlich vorne. Die Beschreibung bestätigt den asymmetrischen Schnitt, «geschnitten» ist also nicht erfunden."
+ },
+ {
+  "handle": "polka-dot-top-632500",
+  "keyword": "polka dot top",
+  "entwurf": "Polka-Dot-Top für Damen | LuxeStyle",
+  "grund_schreiber": "«Top» gehört zum Suchbegriff und ist hier kein Werbewort. Falls das Prüfskript den Begriff nicht ausnimmt, wird der Titel verworfen",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Nicht reparierbar: Der Suchbegriff enthält «Top», das als Wort verboten ist (auch seo_suchbegriff_titel.py prüft \\btop\\b und verwirft den Titel). Ohne «Top» fehlt aber der Suchbegriff."
+ },
+ {
+  "handle": "kabelloses-bluetooth-all-in-one-mikrofon-603300",
+  "keyword": "bluetooth mikrofon",
+  "entwurf": "Kabelloses Bluetooth-Mikrofon, All-in-one | LuxeStyle",
+  "grund_schreiber": "Merkmale aus dem Produkttitel, natürliche Wortfolge",
+  "behalten": true,
+  "seo_titel": "Kabelloses Bluetooth-Mikrofon, All-in-one | LuxeStyle",
+  "grund_pruefer": "53 Zeichen. Karaoke-Mikrofon mit eingebautem Lautsprecher, der Begriff passt. Alle Merkmale aus dem Produkttitel."
+ },
+ {
+  "handle": "baseball-cap-fgapc41947",
+  "keyword": "propeller cap",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen, andere Ware: gewöhnliche Baseball-Cap ohne Propeller",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen, das bleibt so: gewöhnliche Baseball-Cap ohne Propeller."
+ },
+ {
+  "handle": "domino-zug-bauspielzeug-fur-babys-710464",
+  "keyword": "domino-zug",
+  "entwurf": "Domino-Zug · Bauspielzeug | LuxeStyle",
+  "grund_schreiber": "«für Babys» bewusst weggelassen: 100 Dominosteine sind Kleinteile, die Beschreibung nennt Kinder. Produkttitel prüfen",
+  "behalten": true,
+  "seo_titel": "Domino-Zug · Bauspielzeug | LuxeStyle",
+  "grund_pruefer": "37 Zeichen. Begriff vorne. «für Babys» ist zu Recht weggelassen (100 Dominosteine = Kleinteile). Nebenbefund: Der Produkttitel «für Babys» sollte korrigiert werden."
+ },
+ {
+  "handle": "frauen-leder-casual-sneaker-weiss-161600",
+  "keyword": "sneaker weiß leder damen",
+  "entwurf": "Sneaker weiss Leder Damen – Casual-Sneaker | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, «ß» als «ss», danach nur Wörter aus dem Produkttitel",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Ware passt (Damen, Rindleder, weiss), aber «Sneaker weiss Leder Damen» ist eine Stichwortreihe ohne Grammatik (nachgestelltes Adjektiv wie bei «Zauberstab Magischer»). Dazu steht «Sneaker» doppelt («– Casual-Sneaker»). Weil der Begriff wörtlich in dieser Reihenfolge stehen muss, gibt es keine natürliche Fassung."
+ },
+ {
+  "handle": "mauspad-selbst-gestalten",
+  "keyword": "mousepad gestalten",
+  "entwurf": "Mousepad gestalten – Mauspad mit eigenem Motiv | LuxeStyle",
+  "grund_schreiber": "Begriff vorne; «mit eigenem Motiv» umschreibt das «selbst gestalten» aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Mousepad gestalten – mit eigenem Motiv | LuxeStyle",
+  "grund_pruefer": "Begriff passt zum Editor-Produkt. «Mousepad … Mauspad» war doppelt, deshalb das zweite Wort gestrichen. «Mit eigenem Motiv» umschreibt «selbst gestalten». 50 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "kamera-drohne-fur-kinder-641088",
+  "keyword": "drohne kinder",
+  "entwurf": "Drohne Kinder – Kamera-Drohne für Kinder | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, dann der Produktname",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "«Drohne Kinder» ist kein natürliches Deutsch, weil die Präposition fehlt. Dazu steht «Kinder» doppelt («– Kamera-Drohne für Kinder»). «Kinder-Drohne» oder «Drohne für Kinder» würde den Begriff verändern."
+ },
+ {
+  "handle": "allover-stoffbeutel-selbst-gestalten",
+  "keyword": "jutebeutel bedrucken",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen: Beutel ist aus 100 % Polyester, kein Jute- oder Baumwollbeutel. Für denselben Begriff gibt es schon die Seite des Bio-Jutebeutels (Kannibalisierung)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen (seo_titel leer): Der Beutel ist aus Polyester und kein Jutebeutel. Für den Begriff rankt die Bio-Jutebeutel-Seite besser (Platz 80 gegen 86)."
+ },
+ {
+  "handle": "bio-jutebeutel-selbst-gestalten",
+  "keyword": "jutebeutel bedrucken",
+  "entwurf": "Jutebeutel bedrucken – Bio-Baumwollbeutel | LuxeStyle",
+  "grund_schreiber": "Begriff steht schon im Produkttitel, Baumwollbeutel passt zur Suche",
+  "behalten": true,
+  "seo_titel": "Jutebeutel bedrucken – Bio-Baumwollbeutel | LuxeStyle",
+  "grund_pruefer": "Der Begriff steht schon im Produkttitel. Laut Beschreibung ist der Beutel aus 100 % Bio-Baumwolle, und «Baumwollbeutel» klärt das Material. 53 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "magnetische-falsche-wimpern-set-623700",
+  "keyword": "magnet wimpern",
+  "entwurf": "Magnet-Wimpern Set – falsche Wimpern | LuxeStyle",
+  "grund_schreiber": "Begriff mit Bindestrich vorne, Rest aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Magnet-Wimpern-Set | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Magnet-Wimpern Set» ist falsch getrennt (richtig «Magnet-Wimpern-Set»), und «Wimpern» stand doppelt («– falsche Wimpern»). Der Begriff passt zum Magnet-Wimpernset. 30 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "smartes-fitness-armband-mit-pulsmesser-344832",
+  "keyword": "pulsmesser armband",
+  "entwurf": "Pulsmesser-Armband – smartes Fitness-Armband | LuxeStyle",
+  "grund_schreiber": "Begriff als natürliches zusammengesetztes Wort vorne, kein Gesundheitsversprechen",
+  "behalten": true,
+  "seo_titel": "Smartes Pulsmesser-Armband für Fitness | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Armband» stand doppelt (Pulsmesser-Armband – Fitness-Armband). «Smart» und «Fitness» kommen aus dem Produkttitel, ohne Gesundheitsversprechen. Rankt für diesen Begriff auf Platz 50. 50 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "kostum-fledermaus-fgsspc2309",
+  "keyword": "fledermaus kostüm",
+  "entwurf": "Fledermaus-Kostüm | LuxeStyle",
+  "grund_schreiber": "Begriff als zusammengesetztes Wort. Der Produkttitel hat keine weiteren Merkmale",
+  "behalten": true,
+  "seo_titel": "Fledermaus-Kostüm | LuxeStyle",
+  "grund_pruefer": "Fortura-Kostüm, der Begriff passt genau. Das zusammengesetzte Wort ist korrekt. Nichts erfunden, 29 Zeichen."
+ },
+ {
+  "handle": "power-wrist-wraps-handgelenkstutze-cadd52",
+  "keyword": "wrist wraps",
+  "entwurf": "Power Wrist Wraps – Handgelenkstütze | LuxeStyle",
+  "grund_schreiber": "Begriff ist ein gängiger Fachbegriff aus dem Krafttraining und gehört zum Produktnamen; kein Heilversprechen",
+  "behalten": true,
+  "seo_titel": "Power Wrist Wraps – Handgelenkstütze | LuxeStyle",
+  "grund_pruefer": "Entspricht wörtlich dem Produkttitel. «Wrist Wraps» ist ein gängiger Begriff aus dem Krafttraining. Es sind Trainingsbandagen, kein Medizinprodukt, und der Titel macht kein Heilversprechen. 48 Zeichen, Prüfskript (auch Medizin-Filter) ok."
+ },
+ {
+  "handle": "smart-ring-mit-fitness-und-gesundheits-trackin-614500",
+  "keyword": "fitness tracker ring",
+  "entwurf": "Fitness-Tracker-Ring – Smart Ring | LuxeStyle",
+  "grund_schreiber": "Begriff mit Bindestrichen vorne; «Gesundheit» bewusst weggelassen (kein Medizinbezug)",
+  "behalten": true,
+  "seo_titel": "Smarter Fitness-Tracker-Ring | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Ring» stand doppelt («– Smart Ring»). Jetzt ein natürlicher Name. «Gesundheit» ist weiter weggelassen (kein Medizinbezug). 40 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "smartes-sport-armband-mit-herzfrequenzmesser-625800",
+  "keyword": "armband pulsmesser",
+  "entwurf": "Armband-Pulsmesser – smartes Sport-Armband | LuxeStyle",
+  "grund_schreiber": "Pulsmesser ist dasselbe wie der Herzfrequenzmesser aus dem Produkttitel; Begriff als zusammengesetztes Wort",
+  "behalten": true,
+  "seo_titel": "Smarter Armband-Pulsmesser für Sport | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Armband» stand doppelt. «Pulsmesser» bedeutet hier dasselbe wie «Herzfrequenzmesser», «Sport» kommt aus dem Produkttitel. Dieses Produkt rankt für «armband pulsmesser» am besten (Platz 32). Die Wortfolge unterscheidet sich vom Begriff beim Fitness-Armband. 48 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "pu-leder-rucksack-fur-studierende-244032",
+  "keyword": "rucksäcke für studenten",
+  "entwurf": "Rucksäcke für Studenten – PU-Leder-Rucksack | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, PU-Leder aus dem Produkttitel",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Kannibalisierung: Drei Produktseiten würden mit demselben Begriff «rucksäcke für studenten» beginnen. Diese Seite rankt am schwächsten (Platz 57). Behalten wird nur der Studenten-Rucksack für Herren (Platz 44). Ausserdem stand «Rucksäcke … Rucksack» doppelt."
+ },
+ {
+  "handle": "erweiterbarer-reise-rucksack-fur-studenten-303424",
+  "keyword": "rucksäcke für studenten",
+  "entwurf": "Rucksäcke für Studenten – erweiterbarer Rucksack | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, «erweiterbar» aus dem Produkttitel, genau 60 Zeichen",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Kannibalisierung: Es wäre die dritte Seite mit demselben Begriff, sie steht auf Platz 55 gegen Platz 44 beim Studenten-Rucksack für Herren. Ausserdem stand «Rucksäcke … Rucksack» doppelt."
+ },
+ {
+  "handle": "studenten-rucksack-fur-herren-732288",
+  "keyword": "rucksäcke für studenten",
+  "entwurf": "Rucksäcke für Studenten – Rucksack für Herren | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, «für Herren» aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Rucksäcke für Studenten – Modell für Herren | LuxeStyle",
+  "grund_pruefer": "Von den drei Seiten zum Begriff rankt diese am besten (Platz 44), deshalb wird nur sie behalten. Korrigiert: «Rucksäcke … Rucksack» stand doppelt, jetzt «Modell für Herren» (Herren aus dem Produkttitel). 55 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "kinder-badetuch-aus-baumwolle-632100",
+  "keyword": "kinder badetuch",
+  "entwurf": "Kinder-Badetuch aus Baumwolle | LuxeStyle",
+  "grund_schreiber": "Produkttitel enthält den Begriff schon am Anfang",
+  "behalten": true,
+  "seo_titel": "Kinder-Badetuch aus Baumwolle | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel, reine Baumwolle laut Beschreibung. 41 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "bluetooth-lautsprecher-bausatz-zum-selberbauen-925376",
+  "keyword": "lautsprecherbausatz",
+  "entwurf": "Bluetooth-Lautsprecherbausatz zum Selberbauen | LuxeStyle",
+  "grund_schreiber": "Begriff steckt als ganzes Wort im zusammengesetzten Wort und ist korrektes Deutsch",
+  "behalten": true,
+  "seo_titel": "Bluetooth-Lautsprecherbausatz zum Selberbauen | LuxeStyle",
+  "grund_pruefer": "Der Begriff steckt korrekt im zusammengesetzten Wort, und laut Beschreibung ist es ein Löt-Bausatz. «Zum Selberbauen» steht so im Produkttitel. 57 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "waschmaschinen-tabs-gegen-kalk-geruche-100-stk-060737",
+  "keyword": "waschmaschine tabs",
+  "entwurf": "Waschmaschine Tabs gegen Kalk & Gerüche, 100 Stk | LuxeStyle",
+  "grund_schreiber": "Suchabsicht passt (Reinigungs-Tabs gegen Kalk). Stückzahl nach der Multipack-Regel. Begriff muss wörtlich stehen, deshalb ohne Fugen-n. Genau 60 Zeichen",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "«Waschmaschine Tabs» ist fehlerhaftes Deutsch, korrekt wäre «Waschmaschinen-Tabs». Der Begriff muss aber wörtlich stehen, also gibt es keine fehlerfreie Fassung. Das räumt die Vorlage selbst ein («ohne Fugen-n»)."
+ },
+ {
+  "handle": "sticken-kit-625100",
+  "keyword": "stickset",
+  "entwurf": "Stickset – Sticken-Kit | LuxeStyle",
+  "grund_schreiber": "Begriff vorne. Der Produkttitel hat keine weiteren Merkmale. Achtung: dieselbe Suche wie beim Stickset mit Garn",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Kannibalisierung: Für «stickset» passt das Stickset mit Garn besser und rankt besser (Platz 39 gegen 70). Ausserdem ist «Stickset – Sticken-Kit» doppelt gemoppelt, und der Produkttitel nennt keine weiteren Merkmale zur Unterscheidung."
+ },
+ {
+  "handle": "stickset-mit-garn-799808",
+  "keyword": "stickset",
+  "entwurf": "Stickset mit Garn | LuxeStyle",
+  "grund_schreiber": "Produkttitel beginnt schon mit dem Begriff",
+  "behalten": true,
+  "seo_titel": "Stickset mit Garn | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel und ist die bessere Seite für «stickset» (Platz 39). 29 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "kleine-nahmaschine-fur-unterwegs-806849",
+  "keyword": "kleine nähmaschine",
+  "entwurf": "Kleine Nähmaschine für unterwegs | LuxeStyle",
+  "grund_schreiber": "Produkttitel enthält den Begriff schon am Anfang",
+  "behalten": true,
+  "seo_titel": "Kleine Nähmaschine für unterwegs | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel, laut Beschreibung eine tragbare Nähmaschine. 44 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "reed-diffuser-aroma-duftstabchen-ohne-flamme",
+  "keyword": "reed diffuser",
+  "entwurf": "Reed-Diffuser – Duftstäbchen ohne Flamme | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, deutsche Erklärung aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Reed-Diffuser – Duftstäbchen ohne Flamme | LuxeStyle",
+  "grund_pruefer": "Begriff vorne, die deutsche Erklärung kommt aus dem Produkttitel. Raumduft ohne Heilbezug. 52 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "anti-schling-fressnapf-fur-hunde-und-katzen-625400",
+  "keyword": "anti schling napf katze",
+  "entwurf": "Anti-Schling-Napf Katze & Hund | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, Hund kommt aus dem Produkttitel (für Hunde und Katzen)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "«Anti-Schling-Napf Katze & Hund» ist eine Stichwortreihe ohne Präposition, natürlich wäre «für Katze & Hund». Der Begriff verlangt aber «napf katze» direkt hintereinander, also gibt es keine natürliche Fassung. Der Napf selbst ist tierschutzrechtlich unbedenklich."
+ },
+ {
+  "handle": "kinder-kart-helm-515520",
+  "keyword": "karting helmets",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen: englischer Plural, nur als Englisch-Kauderwelsch einbaubar. Ausserdem Schutzhelm für Kinder ohne Normangabe (heikel)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen (seo_titel leer): englischer Plural «karting helmets» wäre nur als Kauderwelsch einbaubar, dazu ein Kinder-Schutzhelm ohne Normangabe."
+ },
+ {
+  "handle": "leder-rucksack-fur-business-alltag-623000",
+  "keyword": "rucksack leder",
+  "entwurf": "Rucksack Leder – für Business & Alltag | LuxeStyle",
+  "grund_schreiber": "Echtes Rindleder laut Beschreibung, Begriff passt. Einsatzzweck aus dem Produkttitel",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Die Ware passt (vollkörniges Rindleder), aber «Rucksack Leder» ist eine Stichwortreihe ohne Grammatik. Auch «– für Business & Alltag» hängt ohne Bezugswort. Natürlich wäre nur «Leder-Rucksack», und das verändert den Begriff."
+ },
+ {
+  "handle": "herren-jumpsuit-609900",
+  "keyword": "jumpsuit herren",
+  "entwurf": "Jumpsuit Herren – Overall für Männer | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, deutsches Synonym statt Wiederholung, keine erfundenen Merkmale",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "«Jumpsuit Herren» ist eine Stichwortreihe ohne Präposition. «Jumpsuit … Overall für Männer» sagt dasselbe zweimal. Eine natürliche Fassung («Herren-Jumpsuit», «Jumpsuit für Herren») würde den Begriff verändern."
+ },
+ {
+  "handle": "v76-gps-uhr-mit-kompass-und-hohenmesser-625300",
+  "keyword": "uhr mit höhenmeter",
+  "entwurf": "Uhr mit Höhenmeter-Anzeige, GPS und Kompass | LuxeStyle",
+  "grund_schreiber": "Mit «-Anzeige» wird der umgangssprachliche Suchbegriff korrektes Deutsch (der Höhenmesser zeigt Höhenmeter an). GPS und Kompass aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Uhr mit Höhenmeter-Anzeige, GPS und Kompass | LuxeStyle",
+  "grund_pruefer": "Mit «-Anzeige» wird der umgangssprachliche Begriff zu korrektem Deutsch: Der Höhenmesser zeigt die Höhenmeter an. GPS und Kompass kommen aus dem Produkttitel, keine Gesundheitsfunktionen im Titel. 55 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "kleiner-tragbarer-luftbefeuchter-007872",
+  "keyword": "mini luftbefeuchter",
+  "entwurf": "Tragbarer Mini-Luftbefeuchter | LuxeStyle",
+  "grund_schreiber": "Mini = klein aus dem Produkttitel, natürliche Wortfolge",
+  "behalten": true,
+  "seo_titel": "Tragbarer Mini-Luftbefeuchter | LuxeStyle",
+  "grund_pruefer": "«Mini» steht für «klein» aus dem Produkttitel. Laut Beschreibung ein Raum-Luftbefeuchter mit 350 ml. Natürliche Wortfolge, 41 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "outdoor-rucksack-50l-wandern-camping-reisen-375552",
+  "keyword": "rucksack 50l",
+  "entwurf": "Outdoor-Rucksack 50L – Wandern, Camping, Reisen | LuxeStyle",
+  "grund_schreiber": "Begriff steht im Produkttitel, alles daraus übernommen",
+  "behalten": true,
+  "seo_titel": "Outdoor-Rucksack 50L – Wandern, Camping, Reisen | LuxeStyle",
+  "grund_pruefer": "Alles kommt aus dem Produkttitel. «50L» ist ein Volumen und kein Preis (Prüfskript-Regex trifft nicht). 59 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "eleganter-wollmantel-fur-damen-601200",
+  "keyword": "damen mantel camel",
+  "entwurf": "Damen-Mantel Camel – eleganter Wollmantel | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, Farbe Camel und Wollmantel aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Eleganter Damen-Mantel Camel | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Mantel … Wollmantel» stand doppelt, und «Wolle» ist laut Beschreibung nur ein Woll-Mischgewebe. Deshalb jetzt ein Produktname mit nachgestellter Farbe wie im Produkttitel («– Camel»). «Elegant» kommt aus dem Produkttitel. 40 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "kostum-one-piece-nami-fgssck4613",
+  "keyword": "nami cosplay",
+  "entwurf": "Nami Cosplay – Kostüm aus One Piece | LuxeStyle",
+  "grund_schreiber": "Suchbegriff meint genau diese Figur. Cosplay ist ein eingedeutschtes Lehnwort. Hinweis: Lizenzfigur, für Werbekanäle prüfen",
+  "behalten": true,
+  "seo_titel": "Nami-Cosplay-Kostüm aus One Piece | LuxeStyle",
+  "grund_pruefer": "Der Begriff meint genau diese Figur, es ist ein Fortura-Kostüm ab Schweizer Lager. Korrigiert: «Nami Cosplay – Kostüm» ist jetzt ein korrekt gekoppeltes Wort ohne Gedankenstrich-Bruch. Hinweis: Lizenzfigur, deshalb gehört sie nicht in Werbekanäle. 45 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "mini-drohne-mit-dual-kamera-und-fernsteuerung-649344",
+  "keyword": "mini drohne mit kamera",
+  "entwurf": "Mini-Drohne mit Kamera und Fernsteuerung | LuxeStyle",
+  "grund_schreiber": "Begriff wörtlich vorne. «Dual» weggelassen, weil «Dual-Kamera» den Begriff zerteilen würde",
+  "behalten": true,
+  "seo_titel": "Mini-Drohne mit Kamera und Fernsteuerung | LuxeStyle",
+  "grund_pruefer": "Der Begriff steht wörtlich vorne, der Rest kommt aus dem Produkttitel. «Dual» fehlt, aber dadurch wird nichts falsch. 52 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "handgemachte-keramik-teekanne-im-retro-stil-377024",
+  "keyword": "keramik teekanne",
+  "entwurf": "Keramik-Teekanne im Retro-Stil, handgemacht | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, Merkmale aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Keramik-Teekanne im Retro-Stil, handgemacht | LuxeStyle",
+  "grund_pruefer": "Begriff vorne. «Retro-Stil» und «handgemacht» kommen aus dem Produkttitel und werden von der Beschreibung bestätigt. 55 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "wasserdichte-regenstiefel-fur-kinder-607400",
+  "keyword": "kinder regenstiefel",
+  "entwurf": "Wasserdichte Kinder-Regenstiefel | LuxeStyle",
+  "grund_schreiber": "Natürliche Wortfolge, Begriff als zusammengesetztes Wort, wasserdicht aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "Wasserdichte Kinder-Regenstiefel | LuxeStyle",
+  "grund_pruefer": "Natürliche Wortfolge, der Begriff steht als zusammengesetztes Wort. «Wasserdicht» kommt aus dem Produkttitel, laut Beschreibung aus Gummi. 44 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "tf-micro-sd-speicherkarte-furs-handy-5d69bc",
+  "keyword": "tf karte",
+  "entwurf": "TF-Karte (micro-SD) – Speicherkarte fürs Handy | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, Rest aus dem Produkttitel",
+  "behalten": true,
+  "seo_titel": "TF-Karte (micro-SD) – Speicherkarte fürs Handy | LuxeStyle",
+  "grund_pruefer": "Begriff vorne, alles Weitere aus dem Produkttitel. «Speicherkarte» erklärt den Fachbegriff TF-Karte und ist keine Wortdopplung. 58 Zeichen, Prüfskript ok."
+ },
+ {
+  "handle": "haarrollen-stick-fur-lockiges-haar-296064",
+  "keyword": "locken roll",
+  "entwurf": "",
+  "grund_schreiber": "Übersprungen: «Roll» ist kein deutsches Wort und wäre nur als Kauderwelsch einbaubar. «Locken rollen» würde den Begriff verändern",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen (seo_titel leer): «Roll» ist kein deutsches Wort, der Begriff wäre nur als Kauderwelsch einbaubar."
+ },
+ {
+  "handle": "automatisches-anti-bell-halsband-544512",
+  "keyword": "anti bell halsband",
+  "entwurf": "",
+  "grund_schreiber": "TIERSCHUTZ PRÜFEN: automatisches, wiederaufladbares Anti-Bell-Halsband (Bellkontrolle). Elektrische oder Sprüh-Halsbänder sind in der Schweiz verboten. Erst klären, ob das Produkt verkauft werden darf",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "TIERSCHUTZ PRÜFEN: automatisches, wiederaufladbares Anti-Bell-Halsband. Elektrische oder Sprüh-Halsbänder sind in der Schweiz verboten. Erst klären, ob das Produkt überhaupt verkauft werden darf, und dann über eine Sperre oder einen Entwurf entscheiden. Kein SEO-Titel."
+ },
+ {
+  "handle": "make-up-pinsel-set-fur-prazises-auftragen-873408",
+  "keyword": "schminkpinsel set",
+  "entwurf": "Schminkpinsel-Set für präzises Auftragen | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, Merkmal aus Produkttitel (52 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Schminkpinsel-Set für präzises Auftragen | LuxeStyle",
+  "grund_pruefer": "Make-up-Pinsel-Set = Schminkpinsel-Set; Merkmal aus Titel; 52 Zeichen, Regeln erfüllt"
+ },
+ {
+  "handle": "make-up-pinsel-set-10-stk-776704",
+  "keyword": "schminkpinsel set",
+  "entwurf": "Schminkpinsel-Set, 10 Stück | LuxeStyle",
+  "grund_schreiber": "Begriff vorn + Stückzahl aus Titel; unterscheidet sich vom 2. Pinsel-Set (39 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Schminkpinsel-Set, 10 Stück | LuxeStyle",
+  "grund_pruefer": "10-teiliges Pinsel-Set, Stückzahl aus Titel (keine Preiszahl); 39 Zeichen"
+ },
+ {
+  "handle": "yoga-kleidung-845440",
+  "keyword": "yoga cloth",
+  "entwurf": "",
+  "grund_schreiber": "Englischer Begriff, nur als Kauderwelsch einbaubar (Produkt = Yoga-Anzug Oberteil+Hose)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: «yoga cloth» ist englisch, nur als Kauderwelsch einbaubar"
+ },
+ {
+  "handle": "bequeme-stretch-hosen-mit-gummizug-602200",
+  "keyword": "hosen mit gummizug",
+  "entwurf": "Hosen mit Gummizug – bequem, mit Stretch | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, bequem/Stretch aus Titel (52 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Hosen mit Gummizug – bequem, mit Stretch | LuxeStyle",
+  "grund_pruefer": "Damenhose mit Gummizugbund (Typ Damenmode), bequem/Stretch aus Titel; 52 Zeichen"
+ },
+ {
+  "handle": "h9-smartwatch-mit-bluetooth-anruffunktion-648700",
+  "keyword": "h9",
+  "entwurf": "",
+  "grund_schreiber": "Reine Modellnummer – laut Regel überspringen",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: reine Modellnummer «h9»"
+ },
+ {
+  "handle": "kostum-zombie-fgsspc2207",
+  "keyword": "kostüm zombie",
+  "entwurf": "Kostüm Zombie | LuxeStyle",
+  "grund_schreiber": "Begriff = Produkttitel; keine weiteren Merkmale im Titel (25 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Kostüm Zombie | LuxeStyle",
+  "grund_pruefer": "Begriff = Produkttitel (Kinderkostüm, Varianten 5–12 Jahre); keine weiteren Titelmerkmale; 25 Zeichen"
+ },
+ {
+  "handle": "leinen-jumpsuit-mit-puffarmeln-612300",
+  "keyword": "jumpsuit leinen",
+  "entwurf": "Jumpsuit Leinen mit Puffärmeln | LuxeStyle",
+  "grund_schreiber": "Katalogform Ware+Material, Puffärmel aus Titel (42 Zeichen)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Material widersprüchlich: Beschreibung zweimal «100 % Polyesterfaser», nur Produktdetails nennen «Polyester, Leinen»; Bild zeigt kurzen, bedruckten Playsuit. Wer «jumpsuit leinen» sucht, will Leinen – im Zweifel false; dazu ist «Jumpsuit Leinen mit Puffärmeln» holprig. Produkttitel «Leinen-» prüfen"
+ },
+ {
+  "handle": "armelloser-leinen-mix-jumpsuit-fur-damen-616900",
+  "keyword": "jumpsuit leinen",
+  "entwurf": "Jumpsuit Leinen-Mix, ärmellos, für Damen | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, Leinen-Mix/ärmellos/Damen aus Titel (52 Zeichen)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Material widersprüchlich: Beschreibung «Gefertigt aus 100% Polyesterfaser» und «Material: 100% Polyesterfaser», nur Produktdetails «Polyester, Leinen»; Leinen-Anspruch unbelegt, im Zweifel false. Produkttitel «Leinen-Mix» prüfen"
+ },
+ {
+  "handle": "leichte-casual-sneaker-mit-plateau-sohle-600600",
+  "keyword": "plateau sneaker damen",
+  "entwurf": "",
+  "grund_schreiber": "Anderes Geschlecht: Beschreibung sagt «Sneaker für Herren», Typ Herrenschuhe",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Anderes Geschlecht: Herren-Sneaker (Typ Herrenschuhe, Grössen 39–44, «Sneaker für Herren»), Suchbegriff meint Damen"
+ },
+ {
+  "handle": "leinenrock-mit-seitenschlitz-639800",
+  "keyword": "leinenrock",
+  "entwurf": "Leinenrock mit Seitenschlitz | LuxeStyle",
+  "grund_schreiber": "Begriff = Titelanfang (40 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Leinenrock mit Seitenschlitz | LuxeStyle",
+  "grund_pruefer": "Leinen durch Beschreibung und Google-Metafeld material=Linen belegt; Begriff = Titelanfang; 40 Zeichen"
+ },
+ {
+  "handle": "slimfit-hosen-606500",
+  "keyword": "slim fit hose",
+  "entwurf": "Slim-Fit-Hose | LuxeStyle",
+  "grund_schreiber": "Begriff = Produkttitel im Singular; Titel hat keine weiteren Merkmale (25 Zeichen)",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Andere Ware: laut Bild und Beschreibung (Flare-Beinabschluss, Low Waist) eine Damen-Schlagjeans, keine Slim-Fit-Hose mit schmalem Bein; Suchende nach «slim fit hose» erwarten etwas anderes. Produkttitel «Slimfit-Hosen» selbst irreführend"
+ },
+ {
+  "handle": "leichter-wasserdichter-20l-sportrucksack-627400",
+  "keyword": "rucksack 20 liter",
+  "entwurf": "Rucksack 20 Liter, leicht und wasserdicht | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, leicht/wasserdicht aus Titel (53 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Rucksack 20 Liter, leicht und wasserdicht | LuxeStyle",
+  "grund_pruefer": "20-L-Sportrucksack; leicht/wasserdicht aus Titel; 53 Zeichen"
+ },
+ {
+  "handle": "bluetooth-tastatur-047425",
+  "keyword": "kabellose gaming tastatur",
+  "entwurf": "Kabellose Gaming-Tastatur, mechanisch, Bluetooth | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, mechanisch/Bluetooth aus Titel (genau 60 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Kabellose Gaming-Tastatur, mechanisch, Bluetooth | LuxeStyle",
+  "grund_pruefer": "Begriff wörtlich vorn, mechanisch/Bluetooth aus Titel; genau 60 Zeichen"
+ },
+ {
+  "handle": "hundehalsband-leine-set-612100",
+  "keyword": "leinenset hund",
+  "entwurf": "Leinenset Hund – Halsband & Leine | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, Inhalt aus Titel (45 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Leinenset Hund – Halsband & Leine | LuxeStyle",
+  "grund_pruefer": "Set aus Halsband und Leine für Hunde = Leinenset; Inhalt aus Titel; 45 Zeichen"
+ },
+ {
+  "handle": "bein-concealer-foundation-creme-626500",
+  "keyword": "bein make up",
+  "entwurf": "Bein-Make-up – Concealer und Foundation-Creme | LuxeStyle",
+  "grund_schreiber": "Getönte Bein-Creme = Bein-Make-up; Merkmale aus Titel, ohne Wirkversprechen (57 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Bein-Make-up – Concealer und Foundation-Creme | LuxeStyle",
+  "grund_pruefer": "Getönte Bein-Creme = Bein-Make-up, kosmetisch ohne Heilbezug; Merkmale aus Titel; 57 Zeichen"
+ },
+ {
+  "handle": "tasse-buenzli",
+  "keyword": "tassli",
+  "entwurf": "Tassli «Buenzli» | LuxeStyle",
+  "grund_schreiber": "Schweizerdeutsch für Tasse, passt zum CH-Spruch-Motiv (28 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Tassli «Buenzli» | LuxeStyle",
+  "grund_pruefer": "«Tassli» ist in der Schweiz der gängige Begriff für Tassen (CH-Shops verkaufen so Keramik-Tassli mit Mundart-Spruch); passt zum CH-Motiv; 28 Zeichen"
+ },
+ {
+  "handle": "fendt-936-vario-fga03040",
+  "keyword": "936 fendt",
+  "entwurf": "",
+  "grund_schreiber": "Modell heisst «Fendt 936 Vario» (Bruder-Spielzeug); «936 Fendt» nur als unnatürliche Wortfolge einbaubar, Suchende meinen oft den echten Traktor",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: Marke/Modell, nur als unnatürliche Wortfolge «936 Fendt» einbaubar; Suchende meinen oft den echten Traktor, Produkt ist Bruder-Spielzeug"
+ },
+ {
+  "handle": "wasserdichte-regenjacke-fur-hunde-602000",
+  "keyword": "regenjacke für hunde",
+  "entwurf": "Regenjacke für Hunde, wasserdicht | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, wasserdicht aus Titel (45 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Regenjacke für Hunde, wasserdicht | LuxeStyle",
+  "grund_pruefer": "Begriff vorn, wasserdicht aus Titel; 45 Zeichen"
+ },
+ {
+  "handle": "multifunktionaler-warmluft-styler-2-in-1-628000",
+  "keyword": "multistyle",
+  "entwurf": "",
+  "grund_schreiber": "«Multistyle» ist englisch/Markenlinie (meist Multi-Trimmer-Sets), nur als Kauderwelsch beim Warmluft-Styler einbaubar",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: «multistyle» ist englisch bzw. eine Markenlinie, beim Warmluft-Styler nur als Kauderwelsch einbaubar"
+ },
+ {
+  "handle": "sneaker-dad-shoes-fur-paare-833344",
+  "keyword": "dad shoes",
+  "entwurf": "Dad Shoes – Sneaker für Paare | LuxeStyle",
+  "grund_schreiber": "Etablierter Modebegriff, steht im Produkttitel (41 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Dad Shoes – Sneaker für Paare | LuxeStyle",
+  "grund_pruefer": "Etablierter Modebegriff, steht im Produkttitel (Unisex-Sneaker); 41 Zeichen"
+ },
+ {
+  "handle": "keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+  "keyword": "ingwer reibe",
+  "entwurf": "Ingwer-Reibe aus Keramik für Knoblauch & Wasabi | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, Keramik/Knoblauch/Wasabi aus Titel (59 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Ingwer-Reibe aus Keramik für Knoblauch & Wasabi | LuxeStyle",
+  "grund_pruefer": "Keramik-Ingwerreibe; Merkmale aus Titel; 59 Zeichen"
+ },
+ {
+  "handle": "geblumtes-v-ausschnitt-kleid-607400",
+  "keyword": "geblühmtes kleid",
+  "entwurf": "",
+  "grund_schreiber": "Suchbegriff falsch geschrieben («geblühmt»), wörtlich nur mit Rechtschreibfehler einbaubar",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: Suchbegriff falsch geschrieben («geblühmt»), wörtlich nur mit Rechtschreibfehler einbaubar"
+ },
+ {
+  "handle": "spitze-stiefeletten-mit-mittlerem-absatz-630100",
+  "keyword": "stiefeletten mit spitze",
+  "entwurf": "",
+  "grund_schreiber": "Mehrdeutig: «mit Spitze» meint meist Spitzenstoff (Lace); Produkt hat nur spitze Zehenpartie (+ Nieten) – andere Ware",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: «mit Spitze» meint Spitzenstoff, das Produkt hat nur eine spitze Zehenpartie (+ Nieten) – andere Ware"
+ },
+ {
+  "handle": "hd-nachtsicht-uberwachungskamera-631700",
+  "keyword": "nachtsichtkamera",
+  "entwurf": "Nachtsichtkamera in HD zur Überwachung | LuxeStyle",
+  "grund_schreiber": "Begriff vorn, HD/Überwachung aus Titel (50 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Nachtsichtkamera in HD zur Überwachung | LuxeStyle",
+  "grund_pruefer": "WLAN-Überwachungskamera mit Nachtsicht; HD/Überwachung aus Titel; 50 Zeichen"
+ },
+ {
+  "handle": "kostum-superman-fgss5803k",
+  "keyword": "superman kostüm",
+  "entwurf": "Superman-Kostüm von Widmann | LuxeStyle",
+  "grund_schreiber": "Produkt ist Superman-Kostüm (Widmann, Overall+Umhang); Herstellername aus Titel (39 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Superman-Kostüm von Widmann | LuxeStyle",
+  "grund_pruefer": "Produkt ist ein Superman-Kostüm (Overall + Umhang, Marke Widmann laut Beschreibung); Begriff meint dieselbe Ware; 39 Zeichen"
+ },
+ {
+  "handle": "mannliche-umhangetasche-mit-reissverschluss-620000",
+  "keyword": "tasche mit reißverschluss",
+  "entwurf": "Herren-Tasche mit Reissverschluss zum Umhängen | LuxeStyle",
+  "grund_schreiber": "ß→ss; «Männliche Umhängetasche» als Herren-Tasche zum Umhängen (58 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Herren-Tasche mit Reissverschluss zum Umhängen | LuxeStyle",
+  "grund_pruefer": "ß→ss zulässig; Umhängetasche für Herren laut Beschreibung; 58 Zeichen"
+ },
+ {
+  "handle": "einfaches-zelt-612400",
+  "keyword": "zelt leicht",
+  "entwurf": "Zelt – leicht und einfach | LuxeStyle",
+  "grund_schreiber": "Beschreibung: leichtes, kompaktes 2-Personen-Zelt; Gedankenstrich zählt als Leerzeichen, «einfach» aus Titel (37 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Zelt – leicht und einfach | LuxeStyle",
+  "grund_pruefer": "Beschreibung: leichtes, kompaktes 2-Personen-Zelt; «leicht» gehört zum Suchbegriff, «einfach» steht im Titel; 37 Zeichen"
+ },
+ {
+  "handle": "sternenhimmel-projektor-nova-led-nachtlicht-892738",
+  "keyword": "lampe mit sternenhimmel",
+  "entwurf": "Lampe mit Sternenhimmel – LED-Projektor «Nova» | LuxeStyle",
+  "grund_schreiber": "LED-Nachtlicht-Projektor = Lampe; Merkmale aus Titel (58 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Lampe mit Sternenhimmel – LED-Projektor «Nova» | LuxeStyle",
+  "grund_pruefer": "LED-Nachtlicht-Projektor = Lampe mit Sternenhimmel; Merkmale aus Titel; 58 Zeichen"
+ },
+ {
+  "handle": "elegante-ankle-boots-mit-kitten-heel-600000",
+  "keyword": "kitten heel boots",
+  "entwurf": "Kitten-Heel-Boots, elegant und knöchelhoch | LuxeStyle",
+  "grund_schreiber": "Gängiger Modebegriff; elegant/Ankle aus Titel (54 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Kitten-Heel-Boots, elegant und knöchelhoch | LuxeStyle",
+  "grund_pruefer": "Damen-Ankle-Boots mit Kitten-Heel; elegant/knöchelhoch (=Ankle) aus Titel; 54 Zeichen"
+ },
+ {
+  "handle": "mini-thermometer-fur-innenraume-293632",
+  "keyword": "zimmerthermometer",
+  "entwurf": "Zimmerthermometer im Mini-Format | LuxeStyle",
+  "grund_schreiber": "Thermometer für Innenräume = Zimmerthermometer, Mini aus Titel (44 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Zimmerthermometer im Mini-Format | LuxeStyle",
+  "grund_pruefer": "Thermometer für Innenräume = Zimmerthermometer; Mini aus Titel; 44 Zeichen"
+ },
+ {
+  "handle": "kostum-hai-fgaeu70750102",
+  "keyword": "kostüm hai",
+  "entwurf": "Kostüm Hai für Kinder | LuxeStyle",
+  "grund_schreiber": "Begriff = Titelanfang, Kinder aus Titel (33 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Kostüm Hai für Kinder | LuxeStyle",
+  "grund_pruefer": "Begriff = Titelanfang, «Kinder» aus Titel; 33 Zeichen"
+ },
+ {
+  "handle": "polster-fur-stuhle-845632",
+  "keyword": "stuhlpolster",
+  "entwurf": "Stuhlpolster | LuxeStyle",
+  "grund_schreiber": "«Polster für Stühle» = Stuhlpolster; Titel hat keine weiteren Merkmale (24 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Stuhlpolster | LuxeStyle",
+  "grund_pruefer": "«Polster für Stühle» = Stuhlpolster (40×40 cm Plüsch); keine weiteren Titelmerkmale; 24 Zeichen"
+ },
+ {
+  "handle": "floh-und-zeckenhalsband-fur-hunde-605000",
+  "keyword": "zeckenband hund",
+  "entwurf": "",
+  "grund_schreiber": "HEIKEL: Floh-/Zeckenhalsband = Biozid/Tierarzneimittel mit Wirkversprechen – CH-Zulassung prüfen",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: heikel (Biozid/Tierarzneimittel mit Wirkversprechen), Produkt ist ohnehin DRAFT mit Tags biozid-ch-zulassung und tierschutz-pruefung-0210"
+ },
+ {
+  "handle": "holzverbrennungs-ofen-zelt-608100",
+  "keyword": "zelt mit ofen",
+  "entwurf": "",
+  "grund_schreiber": "Andere Ware: Produkt ist ein Zeltofen mit Kaminrohren (Varianten Firewood Stove/Six Chimneys/Set, Bilder zeigen nur Ofen), kein Zelt – Produkttitel/Beschreibung erfinden ein Zelt, korrigieren",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Andere Ware: Varianten Firewood Stove/Six Chimneys/Set = Zeltofen mit Kaminrohren, kein Zelt; Produkttitel/Beschreibung erfinden ein Zelt – korrigieren"
+ },
+ {
+  "handle": "scrambler-ducati-desert-sled-mit-fahrer-fga063051",
+  "keyword": "ducati desert sledge",
+  "entwurf": "",
+  "grund_schreiber": "Marke + Tippfehler («Sledge»); Suchende meinen das echte Motorrad, Produkt ist Bruder-Spielzeugmodell",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: Marke + Tippfehler («Sledge»); Suchende meinen das echte Motorrad, Produkt ist ein Bruder-Spielzeugmodell"
+ },
+ {
+  "handle": "kinder-badeschuhe-603300",
+  "keyword": "kinder badeschuhe",
+  "entwurf": "Kinder-Badeschuhe | LuxeStyle",
+  "grund_schreiber": "Begriff = Produkttitel (29 Zeichen)",
+  "behalten": true,
+  "seo_titel": "Kinder-Badeschuhe | LuxeStyle",
+  "grund_pruefer": "Begriff = Produkttitel; 29 Zeichen"
+ },
+ {
+  "handle": "tpe-falt-yogamatte-verstarkt-und-rutschfest-624800",
+  "keyword": "faltbare yogamatte",
+  "entwurf": "Faltbare Yogamatte aus TPE, rutschfest | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, TPE und rutschfest aus dem Produkttitel; 50 Zeichen",
+  "behalten": true,
+  "seo_titel": "Faltbare Yogamatte aus TPE, verstärkt | LuxeStyle",
+  "grund_pruefer": "Passt zur Ware. Die vorgeschlagene Fassung fällt aber durch das Prüfskript: VERBOTEN sucht «chf» ohne Wortgrenze und findet es in «rutschfest». Ersetzt durch «verstärkt» aus dem Produkttitel; 49 Zeichen."
+ },
+ {
+  "handle": "kostum-konig-fgss4231k",
+  "keyword": "kostüm könig",
+  "entwurf": "Kostüm König für Kinder | LuxeStyle",
+  "grund_schreiber": "Kindergrösse im Titel wird zu «für Kinder»; 35 Zeichen",
+  "behalten": true,
+  "seo_titel": "Kostüm König für Kinder | LuxeStyle",
+  "grund_pruefer": "Kinderkostüm, «für Kinder» folgt aus «Kindergrösse» im Titel; 35 Zeichen."
+ },
+ {
+  "handle": "gestreiftes-langarmshirt-mit-vier-wege-stretch-600700",
+  "keyword": "gestreiftes langarmshirt",
+  "entwurf": "Gestreiftes Langarmshirt mit Vier-Wege-Stretch | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel, Begriff vorne; 58 Zeichen",
+  "behalten": true,
+  "seo_titel": "Gestreiftes Langarmshirt mit Vier-Wege-Stretch | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel; durchgehend gestreiftes Langarmshirt; 58 Zeichen."
+ },
+ {
+  "handle": "gestreiftes-langarm-t-shirt-631100",
+  "keyword": "gestreiftes langarmshirt",
+  "entwurf": "Gestreiftes Langarmshirt für Damen | LuxeStyle",
+  "grund_schreiber": "Langarm-T-Shirt = Langarmshirt, Typ Damenmode, Beschreibung bestätigt Damenschnitt; 46 Zeichen; drei Seiten teilen sich diesen Begriff",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Widerlegt: Laut Bild ein Lagenlook-Shirt mit uni grauem Körper, gestreift sind nur die Ärmel. Die Beschreibung bestätigt keinen Damenschnitt (der Grund behauptet das fälschlich), «für Damen» steht auch nicht im Titel. Zwei passendere Seiten teilen sich den Begriff, also Kannibalisierung."
+ },
+ {
+  "handle": "gestreiftes-langarmshirt-fur-vielseitige-looks-623300",
+  "keyword": "gestreiftes langarmshirt",
+  "entwurf": "Gestreiftes Langarmshirt für vielseitige Looks | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel; 58 Zeichen",
+  "behalten": true,
+  "seo_titel": "Gestreiftes Langarmshirt für vielseitige Looks | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel, Streifenmuster laut Beschreibung; 58 Zeichen."
+ },
+ {
+  "handle": "fahrzeug-tracker-604900",
+  "keyword": "auto tracker",
+  "entwurf": "Auto-Tracker zur Fahrzeugortung | LuxeStyle",
+  "grund_schreiber": "Beschreibung: GPS/4G-Ortungsgerät fürs Fahrzeug, also dieselbe Ware; 43 Zeichen",
+  "behalten": true,
+  "seo_titel": "Auto-Tracker zur Fahrzeugortung | LuxeStyle",
+  "grund_pruefer": "GPS-/4G-Ortungsgerät fürs Fahrzeug, gleiche Ware; «Fahrzeugortung» leitet sich aus dem Titel ab; 43 Zeichen."
+ },
+ {
+  "handle": "eleganter-samt-blazer-mit-v-ausschnitt-615800",
+  "keyword": "samt blazer damen",
+  "entwurf": "Samt-Blazer Damen, elegant mit V-Ausschnitt | LuxeStyle",
+  "grund_schreiber": "Damenmode, Merkmale aus dem Titel; 55 Zeichen",
+  "behalten": true,
+  "seo_titel": "Samt-Blazer Damen, elegant mit V-Ausschnitt | LuxeStyle",
+  "grund_pruefer": "Laut Beschreibung für Damen, Merkmale aus dem Titel; 55 Zeichen."
+ },
+ {
+  "handle": "kleiner-bluetooth-lautsprecher-621100",
+  "keyword": "lautsprecher bluetooth mini",
+  "entwurf": "Lautsprecher Bluetooth Mini | LuxeStyle",
+  "grund_schreiber": "«Kleiner» = Mini; Begriffsreihenfolge im Shop-Stil, keine erfundenen Zusätze; 39 Zeichen",
+  "behalten": true,
+  "seo_titel": "Lautsprecher Bluetooth Mini | LuxeStyle",
+  "grund_pruefer": "Kleiner Bluetooth-Lautsprecher = Mini. Die Reihenfolge entspricht dem Suchbegriff im Shopstil, ohne falsche Beugung; 39 Zeichen."
+ },
+ {
+  "handle": "chunky-dad-sneakers-mit-mesh-obermaterial-606500",
+  "keyword": "dad sneakers",
+  "entwurf": "Chunky Dad Sneakers mit Mesh-Obermaterial | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel; 53 Zeichen",
+  "behalten": true,
+  "seo_titel": "Chunky Dad Sneakers mit Mesh-Obermaterial | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel; 53 Zeichen."
+ },
+ {
+  "handle": "anti-aging-augencreme-615300",
+  "keyword": "augencreme testsieger schweiz",
+  "entwurf": "",
+  "grund_schreiber": "übersprungen: «Testsieger» wäre eine unbelegte und irreführende Behauptung, ein Test liegt nicht vor",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: «Testsieger» wäre eine unbelegte, irreführende Behauptung."
+ },
+ {
+  "handle": "elektrisches-mitesser-entferner-gerat-081740",
+  "keyword": "mitesser sauger",
+  "entwurf": "",
+  "grund_schreiber": "übersprungen: Laut Beschreibung arbeitet das Gerät mit Rotation, ohne Saugfunktion, also andere Ware; der echte Sauger ist elektrischer-mitesser-und-akne-sauger-fc5784",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: Gerät ohne Saugfunktion, also andere Ware als «Mitesser-Sauger»."
+ },
+ {
+  "handle": "elektrischer-mitesser-und-akne-sauger-fc5784",
+  "keyword": "mitesser sauger",
+  "entwurf": "Elektrischer Mitesser-Sauger | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel; «Akne» bewusst weggelassen (Heilbezug); 40 Zeichen",
+  "behalten": true,
+  "seo_titel": "Elektrischer Mitesser-Sauger | LuxeStyle",
+  "grund_pruefer": "Saugendes Kosmetikgerät (Saugstufen laut Beschreibung), entspricht dem Titel. Kein Heilbezug im Titel, «Akne» weggelassen; 40 Zeichen."
+ },
+ {
+  "handle": "eleganter-armelloser-jumpsuit-mit-v-ausschnitt-604500",
+  "keyword": "beige jumpsuit",
+  "entwurf": "Beige Jumpsuit, elegant mit V-Ausschnitt | LuxeStyle",
+  "grund_schreiber": "Farbe Beige im Titel; hebt sich von der zweiten Beige-Seite ab; 52 Zeichen",
+  "behalten": true,
+  "seo_titel": "Beige Jumpsuit, elegant mit V-Ausschnitt | LuxeStyle",
+  "grund_pruefer": "Farbe Beige im Produkttitel, Merkmale aus dem Titel; 52 Zeichen."
+ },
+ {
+  "handle": "armelloser-jumpsuit-mit-v-ausschnitt-624900",
+  "keyword": "beige jumpsuit",
+  "entwurf": "Beige Jumpsuit, ärmellos mit V-Ausschnitt | LuxeStyle",
+  "grund_schreiber": "Beige ist eine Variante (Titel «S-Beige White»: Variante steckt im Titel); 53 Zeichen",
+  "behalten": true,
+  "seo_titel": "Beige Jumpsuit, ärmellos mit V-Ausschnitt | LuxeStyle",
+  "grund_pruefer": "Titelvariante «S-Beige White», Beige laut Beschreibung erhältlich; unterscheidet sich vom Titel der anderen Beige-Seite; 53 Zeichen."
+ },
+ {
+  "handle": "schwarzes-langarm-kleid-im-retro-stil-629600",
+  "keyword": "schwarzes kleid langarm",
+  "entwurf": "Schwarzes Kleid langarm im Retro-Stil | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, Retro-Stil aus dem Titel; 49 Zeichen",
+  "behalten": true,
+  "seo_titel": "Schwarzes Kleid langarm im Retro-Stil | LuxeStyle",
+  "grund_pruefer": "Schwarzes Langarm-Kleid, Retro-Stil aus dem Titel; 49 Zeichen."
+ },
+ {
+  "handle": "einfacher-rucksack-fur-den-alltag-638000",
+  "keyword": "rucksack für alltag",
+  "entwurf": "Rucksack für Alltag und Arbeit | LuxeStyle",
+  "grund_schreiber": "Ohne Artikel liest sich der Begriff nur in einer Aufzählung natürlich; «Arbeit» steht in der Beschreibung (täglicher Gebrauch, Arbeit); 42 Zeichen",
+  "behalten": true,
+  "seo_titel": "Einfacher Rucksack für Alltag | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Arbeit» steht nicht im Produkttitel (nur in der Beschreibung), die Regel verlangt Merkmale aus dem Titel. «Einfacher» stammt aus dem Titel; 41 Zeichen."
+ },
+ {
+  "handle": "automobil-infotainment-system-9f7b66",
+  "keyword": "infotainment system",
+  "entwurf": "Infotainment-System fürs Auto | LuxeStyle",
+  "grund_schreiber": "Automobil = Auto; Gerät ist ein 7-Zoll-Autoradio mit Monitor; 41 Zeichen",
+  "behalten": true,
+  "seo_titel": "Infotainment-System fürs Auto | LuxeStyle",
+  "grund_pruefer": "Autoradio mit Monitor; «fürs Auto» = Automobil aus dem Titel; 41 Zeichen."
+ },
+ {
+  "handle": "sportliches-yoga-set-aus-nylon-4cfba1",
+  "keyword": "yoga set",
+  "entwurf": "Sportliches Yoga-Set aus Nylon | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel; 42 Zeichen",
+  "behalten": true,
+  "seo_titel": "Sportliches Yoga-Set aus Nylon | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel (Oberteil + Hose); 42 Zeichen."
+ },
+ {
+  "handle": "elegantes-sommerkleid-mit-puffarmeln-619600",
+  "keyword": "kleid mit puffärmeln",
+  "entwurf": "Elegantes Kleid mit Puffärmeln für den Sommer | LuxeStyle",
+  "grund_schreiber": "Begriff als eigene Wortgruppe statt in «Sommerkleid» versteckt; 57 Zeichen",
+  "behalten": true,
+  "seo_titel": "Elegantes Kleid mit Puffärmeln für den Sommer | LuxeStyle",
+  "grund_pruefer": "«Sommer» stammt aus «Sommerkleid» im Titel, Begriff wörtlich enthalten; 57 Zeichen."
+ },
+ {
+  "handle": "peeling-fussmaske-fur-zarte-fusse-244f6a",
+  "keyword": "fußmaske",
+  "entwurf": "Fussmaske mit Peeling für zarte Füsse | LuxeStyle",
+  "grund_schreiber": "ß→ss, Begriff vorne, Merkmale aus dem Titel; 49 Zeichen",
+  "behalten": true,
+  "seo_titel": "Fussmaske mit Peeling für zarte Füsse | LuxeStyle",
+  "grund_pruefer": "ß→ss ist zulässig, Merkmale aus dem Titel, kosmetisch und ohne Heilbezug; 49 Zeichen."
+ },
+ {
+  "handle": "freckle-pen-repair-blush-two-in-one-617000",
+  "keyword": "sommersprossen stift",
+  "entwurf": "Sommersprossen-Stift und Rouge in einem | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel; 51 Zeichen",
+  "behalten": true,
+  "seo_titel": "Sommersprossen-Stift und Rouge in einem | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel; 51 Zeichen."
+ },
+ {
+  "handle": "sicherheitsschuhe-mit-stahlkappe-636600",
+  "keyword": "stahlkappen",
+  "entwurf": "Sicherheitsschuhe mit Stahlkappen | LuxeStyle",
+  "grund_schreiber": "Plural passt, ein Paar hat zwei Kappen; 45 Zeichen",
+  "behalten": true,
+  "seo_titel": "Sicherheitsschuhe mit Stahlkappen | LuxeStyle",
+  "grund_pruefer": "Stahlkappen-Sicherheitsschuhe, passt zur Suchabsicht; 45 Zeichen."
+ },
+ {
+  "handle": "erhohter-futternapf-fur-katzen-mit-transparent-253504",
+  "keyword": "katzennapf erhöht",
+  "entwurf": "Katzennapf erhöht, mit transparentem Napf | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, transparenter Napf aus dem Titel; 53 Zeichen",
+  "behalten": true,
+  "seo_titel": "Katzennapf erhöht, transparent | LuxeStyle",
+  "grund_pruefer": "Korrigiert: «Katzennapf … mit transparentem Napf» doppelte «Napf». «transparent» steht im Titel. Kein Tierschutzproblem; 42 Zeichen."
+ },
+ {
+  "handle": "zahnburstenhalter-zur-wandmontage-863104",
+  "keyword": "zahnbürstenhalter wand",
+  "entwurf": "Zahnbürstenhalter Wand | LuxeStyle",
+  "grund_schreiber": "Wandmontage steckt schon im Begriff, jeder Zusatz wäre doppelt; 34 Zeichen",
+  "behalten": true,
+  "seo_titel": "Zahnbürstenhalter Wand | LuxeStyle",
+  "grund_pruefer": "Wandmontage laut Titel und Beschreibung; 34 Zeichen."
+ },
+ {
+  "handle": "magnesiumbeutel-fur-kletterer-037696",
+  "keyword": "magnesium beutel",
+  "entwurf": "Magnesium-Beutel für Kletterer | LuxeStyle",
+  "grund_schreiber": "Bindestrich statt Leerzeichen, ansonsten wie der Titel; 42 Zeichen",
+  "behalten": true,
+  "seo_titel": "Magnesium-Beutel für Kletterer | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel; 42 Zeichen."
+ },
+ {
+  "handle": "leichte-sommerschuhe-fur-kinder-051136",
+  "keyword": "sommerschuhe kinder",
+  "entwurf": "Sommerschuhe Kinder, leicht | LuxeStyle",
+  "grund_schreiber": "Begriff vorne, «leicht» aus dem Titel; 39 Zeichen",
+  "behalten": true,
+  "seo_titel": "Sommerschuhe Kinder, leicht | LuxeStyle",
+  "grund_pruefer": "Kinderschuhe, «leicht» aus dem Titel; 39 Zeichen."
+ },
+ {
+  "handle": "thermo-strumpfhose-mit-fleece-futter-065536",
+  "keyword": "fleece strumpfhose",
+  "entwurf": "Fleece-Strumpfhose, thermogefüttert | LuxeStyle",
+  "grund_schreiber": "Thermo + Fleece-Futter aus dem Titel; 47 Zeichen",
+  "behalten": true,
+  "seo_titel": "Fleece-Strumpfhose, thermogefüttert | LuxeStyle",
+  "grund_pruefer": "Thermo + Fleece-Futter aus dem Titel; 47 Zeichen."
+ },
+ {
+  "handle": "oranger-jumpsuit-mit-v-ausschnitt-und-taillenk-610000",
+  "keyword": "oranger overall",
+  "entwurf": "Oranger Overall mit V-Ausschnitt | LuxeStyle",
+  "grund_schreiber": "Overall = Jumpsuit, Farbe Orange im Titel; Begriff auch bei overall-mit-langen-armeln-602100 (Konkurrenz zweier Seiten)",
+  "behalten": true,
+  "seo_titel": "Oranger Overall mit V-Ausschnitt | LuxeStyle",
+  "grund_pruefer": "Jumpsuit = Damen-Overall, nur in Orange; 44 Zeichen."
+ },
+ {
+  "handle": "overall-mit-langen-armeln-602100",
+  "keyword": "oranger overall",
+  "entwurf": "Oranger Overall mit langen Ärmeln | LuxeStyle",
+  "grund_schreiber": "Arbeitsoverall laut Beschreibung u. a. in Orange erhältlich; passt zur Suchabsicht; 45 Zeichen",
+  "behalten": true,
+  "seo_titel": "Oranger Overall mit langen Ärmeln | LuxeStyle",
+  "grund_pruefer": "Arbeitsoverall, Variante Orange vorhanden (mehrere Orange-Optionen); passt zur Suchabsicht; 45 Zeichen."
+ },
+ {
+  "handle": "leichter-sport-weste-fur-herren-630500",
+  "keyword": "gilet herren sportlich",
+  "entwurf": "Gilet Herren sportlich und leicht | LuxeStyle",
+  "grund_schreiber": "Gilet ist das Schweizer Wort für Weste; Herren, Sport und leicht stehen im Titel; 45 Zeichen",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Widerlegt, andere Ware: Laut Bildern ein ärmelloses Strick-Tanktop (Muskelshirt) und kein Gilet, also keine Weste über dem Hemd und kein Bodywarmer. Wer «Gilet Herren» sucht, will etwas anderes."
+ },
+ {
+  "handle": "armelloser-leinen-jumpsuit-mit-v-ausschnitt-633000",
+  "keyword": "leinen jumpsuit",
+  "entwurf": "Ärmelloser Leinen-Jumpsuit mit V-Ausschnitt | LuxeStyle",
+  "grund_schreiber": "entspricht dem Produkttitel; 55 Zeichen",
+  "behalten": true,
+  "seo_titel": "Ärmelloser Leinen-Jumpsuit mit V-Ausschnitt | LuxeStyle",
+  "grund_pruefer": "Entspricht dem Produkttitel (Leinen-Mix); 55 Zeichen."
+ },
+ {
+  "handle": "minimalistische-metall-wanddekoration-610300",
+  "keyword": "metall deko zuzwil",
+  "entwurf": "",
+  "grund_schreiber": "übersprungen: Ortsbezug Zuzwil meint einen lokalen Händler, nicht unseren Shop",
+  "behalten": false,
+  "seo_titel": "",
+  "grund_pruefer": "Übersprungen: Ortsbezug Zuzwil meint einen lokalen Händler."
+ },
+ {
+  "handle": "mehrfarbiger-faltturvorhang-619600",
+  "keyword": "faltvorhang",
+  "entwurf": "Faltvorhang für Türen, mehrfarbig | LuxeStyle",
+  "grund_schreiber": "Falttürvorhang = Faltvorhang für Türen und Raumteilung; 45 Zeichen",
+  "behalten": true,
+  "seo_titel": "Faltvorhang für Türen | LuxeStyle",
+  "grund_pruefer": "Laut Bild ein Falt-Vorhang im Türrahmen, Ware passt. «mehrfarbig» gestrichen: Jeder Vorhang ist einfarbig, es gibt 9 Farben, das Wort wäre irreführend; 33 Zeichen."
+ }
+]
