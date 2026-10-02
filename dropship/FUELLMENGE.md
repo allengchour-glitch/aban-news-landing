@@ -1,6 +1,6 @@
-# Füllmenge fehlt — Stand 2026-10-01 13:06 UTC
+# Füllmenge fehlt — Stand 2026-10-02 10:17 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 137 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 141 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
@@ -143,3 +143,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Rainbow Highlighter Jelly Gel](https://luxestyle.ch/products/rainbow-highlighter-jelly-gel-28c4aa) | — | nichts lesbar |  |
 | [Focallure Abdeckcreme](https://luxestyle.ch/products/focallure-abdeckcreme-5f9003) | — | nichts lesbar |  |
 | [3D-Fibre Mascara mit Kollagen-Gel · 2 Stück](https://luxestyle.ch/products/3d-fibre-mascara-mit-kollagen-gel-2-stuck-7269a0) | — | nichts lesbar |  |
+| [Korrekturcreme für Augenhelligkeit](https://luxestyle.ch/products/korrekturcreme-fur-augenhelligkeit-611500) | — | nichts lesbar |  |
+| [Vital Smooth Rouge-Creme](https://luxestyle.ch/products/vital-smooth-rouge-creme-010560) | — | nichts lesbar |  |
+| [Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/feuchtigkeitsspendender-lippenbalsam-987968) | — | nichts lesbar |  |
+| [Aromatherapie-Öl im Kristallfläschchen](https://luxestyle.ch/products/aromatherapie-ol-im-kristallflaschchen-636500) | — | nichts lesbar |  |
