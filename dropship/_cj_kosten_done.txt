@@ -41174,3 +41174,8 @@ gid://shopify/Product/15449479676289	CHF 36.39	60 Varianten	Anthrazitfarbene Fal
 gid://shopify/Product/15449479709057	CHF 33.80	11 Varianten	Schnurvorhänge, 2 Stück
 gid://shopify/Product/15449479807361	CHF 24.39	52 Varianten	Voile-Gardinen mit Ösen
 gid://shopify/Product/15449479872897	CHF 57.07	4 Varianten	Velours-Vorhänge mit Haken · 140 × 245 cm
+gid://shopify/Product/15449479610753	CHF 44.26	6 Varianten	Verdunkelungsvorhang mit Haken
+gid://shopify/Product/15449479905665	CHF 57.78	6 Varianten	Sammet-Vorhänge mit Ösen
+gid://shopify/Product/15449494946177	CHF 20.17	3 Varianten	3-Modi UV-LED-Taschenlampe
+gid://shopify/Product/15450709819777	CHF 28.31	3 Varianten	Bequeme Slip-On Sneaker mit Paisley-Print
+gid://shopify/Product/15451640201601	CHF 45.26	2 Varianten	Küchenarmatur mit Ausziehbrause
