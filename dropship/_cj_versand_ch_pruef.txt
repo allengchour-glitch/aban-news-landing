@@ -2878,3 +2878,7 @@ stehkragen-hemd-mit-3-4-armeln-621200	2607040047201621900	16	8.11	ok	landeseite
 stern-bodysuit-kit-606900	2607290842461607701	16	7.15	ok	landeseite
 tragerloses-satin-minikleid-mit-blumenmuster-637400	2608090244501638100	16	8.25	ok	landeseite
 tourbillon-water-ghost-automatikuhr-fur-herren-216000	1587723652307628032	7	6.98	ok	landeseite
+super-racing-bausteine-us-muscle-car-155840	1716350679968653312	16	9.47	ok	landeseite
+sportliche-freizeit-sneaker-mit-farbakzenten-613900	2411080152301614200	16	13.16	ok	landeseite
+vollgesichtsmaske-mit-15-in-1-filtersystem-841601	1980902579266412546	0	-	KEINE CH-Option → DRAFT	landeseite
+ximonth-nagelpflege-essenz-mit-bienengift-843393	2072217369122340865	3	5.03	ok	landeseite

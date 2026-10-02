@@ -48,3 +48,4 @@ Die Filter selbst lassen sich NUR in der App Search & Discovery einstellen. Daf�
 - **Grösse ✅:** `filter.v.option.grösse`, sub-kleider 49 Werte. Darunter ist Lieferanten-Kauderwelsch in Grössenwerten: beauty-pflege «L Code-Need To Order Without Toolkit».
 - **Kategorie ❌:** Auf keiner der 4 Seiten gibt es eine Kategorie-Facette. Schritt 5 ist nicht gespeichert oder heisst in der App anders.
 - **Anbieter:** Der Filter existiert noch (`filter.p.vendor`), ist im Theme aber ausgeblendet.
+- **Endstand ~21:20 UTC (sub-kleider, gadgets, uhren):** Verfügbarkeit · Preis · Produkttyp · Farbe · Grösse. Alle Beschriftungen sind deutsch. Der Anbieter-Filter ist entfernt. Einen Kategorie-Filter bietet die App nicht an, er entfällt.
