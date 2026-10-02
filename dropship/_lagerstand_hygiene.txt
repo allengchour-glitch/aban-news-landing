@@ -312,3 +312,5 @@ gid://shopify/Product/15470073545089	draft-ausverkauft	Plüsch Schildkröte
 gid://shopify/Product/15470077936001	draft-ausverkauft	Badeset Romantic Dreams
 gid://shopify/Product/15469998276993	draft-ausverkauft	Gehstock Steampunk Kopf
 gid://shopify/Product/15470017675649	reaktiviert	bworld Scrambler Ducati Full Throttle mit Fahrer
+gid://shopify/Product/15469928022401	preis-gehoben	23.90→44.90
+gid://shopify/Product/15469928022401	reaktiviert	Bade- & Duschgel MEN'S COLLECTION Bierflaschen-Optik 360 ml
