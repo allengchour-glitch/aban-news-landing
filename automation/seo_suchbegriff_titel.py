@@ -13,6 +13,9 @@ dropship/semrush/luxestyle_ch_*.csv (Spalten Keyword;Position;Search Volume;Keyw
     kein ß, kein «!» — Verstoss = nicht geschrieben (Bericht). seo{title,description} immer ZUSAMMEN (Gehirn-Regel seo-teil).
   python3 automation/seo_suchbegriff_titel.py            Trockenlauf → dropship/semrush/SEO-TITEL-VORSCHLAEGE.md
   SCHARF=1 python3 automation/seo_suchbegriff_titel.py   schreiben + zurücklesen → Ledger dropship/semrush/_seo_seite2_ledger.tsv
+  … --aus DATEI.tsv   Titel NICHT von Gemini, sondern aus einer geprüften Datei (Spalten handle, keyword, seo_titel) —
+                      02.10.: Gemini-Titel waren holprig («Zauberstab Magischer», «Möbelfolie Selbstklebende»), daher
+                      Workflow (Umformulieren + Gegenprüfen am Produkttitel); die harten REGELN gelten trotzdem.
 """
 import csv, datetime as dt, glob, json, os, re, sys, unicodedata
 
@@ -104,7 +107,13 @@ def main():
             aus.append((h, d["kw"], "nicht aktiv")); continue
         arbeit.append({**d, "h": h, "id": p["id"], "titel": p["title"], "alt": p["seo"]})
     vorschlag = {}
-    for i in range(0, len(arbeit), 30):
+    if "--aus" in sys.argv:
+        datei = sys.argv[sys.argv.index("--aus") + 1]
+        for z in csv.DictReader(open(datei, encoding="utf-8"), delimiter="\t"):
+            vorschlag[z["handle"].strip()] = {"seo_titel": z["seo_titel"].strip(), "keyword": z["keyword"].strip()}
+        # nur Zeilen aus der Datei — und nur mit dem Suchbegriff, für den sie geprüft wurden
+        arbeit = [{**a, "kw": vorschlag[a["h"]]["keyword"] or a["kw"]} for a in arbeit if a["h"] in vorschlag]
+    for i in range(0, len(arbeit), 30) if "--aus" not in sys.argv else []:
         teil = arbeit[i:i + 30]
         vorschlag.update(gemini(PROMPT.format(liste=json.dumps([{"handle": a["h"], "suchbegriff": a["kw"], "produkttitel": a["titel"]}
                                                                  for a in teil], ensure_ascii=False))))
