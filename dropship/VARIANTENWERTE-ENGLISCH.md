@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 10:16 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 10:17 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **27'639**
-- Optionen mit englischen Werten (Kandidaten): 2'379
+- Produkte gesehen: **29'437**
+- Optionen mit englischen Werten (Kandidaten): 2'414
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'137
+- Werte mit unbekanntem Wort (unverändert): 13'457
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 54
+- übersprungen «kleidungsstueck-im-wert»: 55
 - übersprungen «kollision-nach-uebersetzung»: 36
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -42,6 +42,7 @@
 - `15491406987649` [Farbe] **Hoodie und Hose im Set** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
 - `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
+- `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -131,5 +132,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 518, `light` 429, `inner` 403, `color` 303, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 110, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `belt` 85, `french` 84, `opp` 81, `four` 78, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `half` 64, `⟨satzbau:nomen-nomen⟩` 63, `feet` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `plush` 56, `little` 55, `electric` 55, `one` 55, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `night` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `cloud` 47, `cat` 46, `star` 46, `sheet` 46
+`⟨satzbau:adjektiv-vor-nomen⟩` 528, `inner` 475, `light` 431, `color` 305, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 110, `no` 108, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `belt` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `spring` 71, `dual` 71, `rope` 70, `dark` 69, `base` 68, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `⟨satzbau:nomen-nomen⟩` 63, `feet` 62, `mother` 61, `of` 60, `code` 59, `buckle` 58, `tea` 57, `net` 57, `yards` 57, `plush` 56, `little` 55, `electric` 55, `one` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47
 
