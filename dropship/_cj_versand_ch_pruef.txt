@@ -2778,3 +2778,4 @@ kinder-laufschuhe-aus-baumwolle-946880	1600380223965638656	16	7.17	ok	landeseite
 led-stirnlampe-mit-bewegungssensor-627200	2607180538191627800	7	5.86	ok	landeseite
 kunstleder-kopfteilbezug-waschfrei-627400	2607260626461628100	0	-	KEINE CH-Option → DRAFT	landeseite
 kuscheldecke-mit-halloween-print-611200	2607270251091613600	16	7.71	ok	landeseite
+krokodilmuster-tote-635000	2604141128261635400	16	13.16	ok	landeseite
