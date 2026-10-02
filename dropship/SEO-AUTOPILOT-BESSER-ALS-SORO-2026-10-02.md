@@ -31,3 +31,22 @@ täglich veröffentlichen; trysoro.com, Shopify-App «Soro ‑ SEO Autopilot & C
 ## OFFEN
 - Wirkung nach 14/28 Tagen lesen (Bericht füllt sich selbst). Nächste Ausbaustufe, wenn Daten da sind: bestehende Artikel mit
   Besuchern auffrischen statt nur neue schreiben.
+
+## Ausbau 13:00 UTC — «mache das besser»: bestehende Artikel aufwerten (`--auffrischen`)
+- GEMESSEN: 320 veröffentlichte Artikel, **231 ohne einen einzigen Produktlink**, nur 24 mit FAQ-JSON-LD.
+- `N=15 SCHARF=1 … --auffrischen` (täglich im Aufseher nach dem neuen Artikel): Artikeltext bleibt UNVERÄNDERT; dazu zwei
+  markierte, ersetzbare Blöcke — «Passend dazu im Shop» (3–4 kaufbare Produkte, Live-Preis, alle 30 T neu, sonst wieder
+  entfernt) und «Häufige Fragen» + FAQPage-JSON-LD (Antworten nur aus dem Artikeltext, Zweitprüfer kontrolliert; vorhandene
+  FAQ → nur JSON-LD). Besuchte Artikel zuerst (ShopifyQL 90 T). `NUR=handle` für gezielte Läufe.
+- **Relevanz-Fallen (zweimal live gesehen, sofort korrigiert):** «erste verlinkte Kollektion» gab dem Salzlampen-Artikel eine
+  Quarzuhr; «längstes Titelwort» gab Silk-Pillowcase Baumwoll- und Ätherische-Öle «Schweizer»-Produkte → jetzt nennt Gemini
+  deutsche Produkt-Suchwörter («Seidenkissenbezug», «Diffuser», «Faszienrolle»), geschrieben wird nur, wenn der Produkttitel das
+  Wort trägt; kein Treffer → Block entfernt. WebFetch Silk-Pillowcase: 4 Seidenkissenbezüge.
+- **Groq hat ein TAGES-Kontingent (200'000 Tokens je Modell)** — der Google-Massenlauf hatte gpt-oss-120b UND qwen geleert, der
+  Auffrischer hing in 429-Wartezeiten. Jetzt: Massenlauf auf `gpt-oss-20b` (eigenes Kontingent) und nacheinander statt parallel;
+  leeres Tageskontingent = sofortiger, sauberer Abbruch (`TagesKontingentLeer`), Produktblöcke laufen weiter, FAQ wird nachgeholt.
+- Stand 13:00: 7 Artikel aufgewertet (2 mit neuer FAQ, 1 JSON-LD aus vorhandener FAQ, 5 Produktblöcke, 1 falscher Block entfernt).
+
+## Betreiber (optional)
+- OpenAI-Guthaben aufladen ODER Groq «Dev Tier» (console.groq.com → Billing): beides hebt die Tagesgrenze des Zweitprüfers.
+  Ohne: der Auffrischer schafft je Tag so viele FAQ, wie das Kontingent erlaubt — Produktblöcke laufen unabhängig davon.

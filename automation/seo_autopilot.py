@@ -23,6 +23,7 @@ Ledger dropship/_seo_autopilot.tsv (Datum, Handle, Phrase, Kollektion, Produkte)
   python3 automation/seo_autopilot.py                 # Trockenlauf: Thema + Artikel bauen und prüfen, NICHT veröffentlichen
   SCHARF=1 python3 automation/seo_autopilot.py        # veröffentlicht höchstens 1 Artikel (MAX=n für mehr)
   python3 automation/seo_autopilot.py --messen        # Wirkung messen
+  N=10 [SCHARF=1] python3 automation/seo_autopilot.py --auffrischen   # bestehende Artikel: Produktblock + FAQ/JSON-LD
   python3 automation/seo_autopilot.py --kanarienvogel # Prüfregeln testen (ohne Netz)
 """
 import html as H, json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
@@ -297,21 +298,14 @@ def faktenpruefung(art, produkte):
             r = zweitmodell.chat_json(PRUEF.format(fakten=fakten_text(produkte), text=t[:12000]))
             break
         except RuntimeError as e:
-            if "429" not in str(e) or a == 4:
+            if "429" not in str(e) or "Tageskontingent" in str(e) or a == 4:
                 raise
             time.sleep(60 * (a + 1))
     return [str(x) for x in (r.get("probleme") or [])][:8], zweitmodell.LETZTES_MODELL
 
 
 def body_bauen(art):
-    faq = art.get("faq") or []
-    teile = [art["html"].strip(), "<h2>Häufige Fragen</h2>"]
-    for f in faq:
-        teile.append(f"<h3>{H.escape(f['frage'])}</h3><p>{H.escape(f['antwort'])}</p>")
-    ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-        {"@type": "Question", "name": f["frage"], "acceptedAnswer": {"@type": "Answer", "text": f["antwort"]}} for f in faq]}
-    teile.append('<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>")
-    return "\n".join(teile)
+    return block_ersetzen(art["html"].strip(), MARKE_F, faq_html(art.get("faq") or []))
 
 
 def veroeffentlichen(art, produkte):
@@ -327,6 +321,259 @@ def veroeffentlichen(art, produkte):
     if r["userErrors"] or not r["article"]:
         raise RuntimeError(f"articleCreate: {r['userErrors']}")
     return r["article"]
+
+
+# ---------------------------------------------------------------- 2b) Bestehende Artikel aufwerten (02.10.2026)
+# GEMESSEN 02.10.: 320 veröffentlichte Artikel — 231 verlinken KEIN Produkt (nur eine Kollektion), nur 24 tragen FAQ-JSON-LD.
+# Soro schreibt nur Neues; wer schon Seiten hat, gewinnt mehr, wenn jede bestehende Seite auf kaufbare Ware führt und
+# Antwortmaschinen eine FAQ findet. Der Artikeltext selbst bleibt UNVERÄNDERT (bestehende Rankings nicht gefährden) —
+# es kommen nur zwei markierte Blöcke dazu, die jeder Lauf ersetzt statt verdoppelt:
+#   <!-- lx-produkte --> … <!-- /lx-produkte -->   3–4 kaufbare Produkte der verlinkten Kollektion, Live-Preis, alle 30 T neu
+#   <!-- lx-faq --> … <!-- /lx-faq -->              FAQ + FAQPage-JSON-LD; Antworten NUR aus dem Artikeltext (Zweitprüfer prüft)
+# Hat ein Artikel schon «Häufige Fragen» mit <h3>/<p>-Paaren, wird daraus nur das JSON-LD gebaut (kein neuer Text).
+AUFFRISCH_LEDGER = os.path.join(REPO, "dropship", "_seo_auffrischen.tsv")
+PRODUKT_TAGE = 30
+MARKE_P = ("<!-- lx-produkte -->", "<!-- /lx-produkte -->")
+MARKE_F = ("<!-- lx-faq -->", "<!-- /lx-faq -->")
+
+FAQ_PROMPT = """Erstelle zu diesem Ratgeber-Artikel eines Schweizer Onlineshops 4 häufige Fragen mit Antworten.
+REGELN: Jede Antwort (2–3 Sätze) darf NUR enthalten, was im ARTIKEL steht — nichts dazuerfinden. Schweizer Hochdeutsch («ss»,
+nie «ß»), Du-Form, keine Heilversprechen, keine Ladennamen, keine Preise. Fragen so, wie Menschen sie bei Google stellen.
+ARTIKEL «{titel}»:
+{text}
+Antworte NUR als JSON: {{"faq": [{{"frage": "...", "antwort": "..."}}, …]}}"""
+
+FAQ_PRUEF = """Prüfe, ob jede ANTWORT vollständig durch den ARTIKEL gedeckt ist. Melde jede Antwort, die etwas behauptet, das NICHT im
+Artikel steht, oder die sachlich falsch ist.
+ARTIKEL:
+{text}
+FAQ:
+{faq}
+Antworte NUR als JSON: {{"probleme": ["<Frage> — <warum>", …]}} (leere Liste, wenn alles gedeckt ist)."""
+
+
+def block_ersetzen(body, marke, inhalt):
+    a, z = marke
+    body = re.sub(re.escape(a) + r".*?" + re.escape(z), "", body, flags=re.S).rstrip()
+    return body + ("\n" + a + "\n" + inhalt + "\n" + z if inhalt else "")
+
+
+ALLGEMEIN = set("guide ratgeber tipps ideen anleitung uebungen wirkung mythen test vergleich kaufen richtig pflege reinigen "
+                "trends basics welche worauf ankommt grosse kleine beste besten neue schweiz damen herren kinder frauen maenner "
+                "geschenke geschenk ideen fuer was wie warum wann wirklich bringt sie bringen arten unterschied unterschiede "
+                "praktisch modern stil stile jahr jahre 2025 2026 alltag reise uni haus zuhause winter sommer herbst "
+                "schweizer swiss baumwolle leder holz seide edelstahl silber gold metall kunststoff ultimative".split())
+
+
+SUCH_PROMPT = """Ein Ratgeber-Artikel eines Schweizer Onlineshops heisst: «{titel}».
+Nenne 1–3 deutsche Suchwörter für die PRODUKTE, um die es im Artikel geht — so, wie sie in deutschen Produkttiteln stehen
+(z. B. «Seidenkissenbezug», «Faszienrolle», «Diffuser»). Kein Material allein (Baumwolle, Leder), kein Land, kein Adjektiv.
+Antworte NUR als JSON: {{"woerter": ["…"]}}"""
+
+
+def ware_zum_thema(titel, handle):
+    """Kaufbare Produkte zum Artikelthema, deren TITEL das Suchwort trägt — sonst [] (lieber kein Block als ein falscher).
+    02.10.: erst «erste Kollektion» (Salzlampe → Quarzuhr), dann «längstes Titelwort» (Silk-Pillowcase → «Baumwolle»,
+    Ätherische Öle → «Schweizer») — beides falsch. Jetzt nennt Gemini die Produkt-Suchwörter, der Titel-Test bleibt hart."""
+    from titel_kauderwelsch_wache import gemini
+    try:
+        kandidaten = [w for w in (gemini(SUCH_PROMPT.format(titel=titel)).get("woerter") or []) if isinstance(w, str)]
+    except RuntimeError:
+        kandidaten = []
+    for w in kandidaten[:3]:
+        n = norm(w).replace(" ", "")
+        if len(n) < 4 or n in ALLGEMEIN or KONKURRENZ.search(w):
+            continue
+        stamm = n[:-1] if n.endswith(("n", "s", "e")) and len(n) > 6 else n
+        d = gql('query($q:String!){products(first:40,query:$q){nodes{handle title status featuredMedia{preview{image{url}}} '
+                'priceRangeV2{minVariantPrice{amount}} variants(first:1){nodes{availableForSale}}}}}',
+                {"q": f"status:active AND title:{stamm}*"})["products"]["nodes"]
+        gut = []
+        for p in d:
+            if stamm not in norm(p["title"]).replace(" ", "") or not (p.get("featuredMedia") or {}).get("preview"):
+                continue
+            if not any(v["availableForSale"] for v in p["variants"]["nodes"]):
+                continue
+            gut.append({"handle": p["handle"], "titel": p["title"], "info": "", "bild": p["featuredMedia"]["preview"]["image"]["url"],
+                        "preis": f"{float(p['priceRangeV2']['minVariantPrice']['amount']):.2f}"})
+        if len(gut) >= 3:
+            return w, gut[:4]
+    return None, []
+
+def produkt_block(produkte, khandle, ktitel):
+    zeilen = "".join(f'<li><a href="/products/{p["handle"]}">{H.escape(p["titel"])}</a> – CHF {p["preis"]}</li>' for p in produkte[:4])
+    return (f"<h2>Passend dazu im Shop</h2><ul>{zeilen}</ul>"
+            f'<p><a href="/collections/{khandle}">Mehr dazu im Shop ansehen</a></p>')
+
+
+def faq_html(faq):
+    teile = ["<h2>Häufige Fragen</h2>"] + [f"<h3>{H.escape(f['frage'])}</h3><p>{H.escape(f['antwort'])}</p>" for f in faq]
+    ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": f["frage"], "acceptedAnswer": {"@type": "Answer", "text": f["antwort"]}} for f in faq]}
+    return "".join(teile) + '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
+
+
+def faq_vorhanden(body):
+    """Bestehende «Häufige Fragen»-Sektion → [(frage, antwort)] aus <h3>/<p>-Paaren (oder [] )."""
+    m = re.search(r"<h2[^>]*>\s*(?:Häufige Fragen|FAQ)[^<]*</h2>(.*?)(?=<h2|$)", body, re.S | re.I)
+    if not m:
+        return []
+    paare = re.findall(r"<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>", m.group(1), re.S)
+    return [{"frage": text_aus(q), "antwort": text_aus(a)} for q, a in paare if text_aus(q) and text_aus(a)]
+
+
+def faq_regeln(faq):
+    from heilversprechen_wache import MUSTER, FEHLALARM
+    t = " ".join(f"{f['frage']} {f['antwort']}" for f in faq)
+    v = []
+    if "ß" in t:
+        v.append("ß")
+    m = MUSTER.search(t)
+    if m and not FEHLALARM.search(t[max(0, m.start() - 80):m.end() + 80]):
+        v.append(f"Heilversprechen «{m.group(0)}»")
+    if SIE_MITTE.search(" . ".join(f"{f['frage']} . {f['antwort']}" for f in faq)):
+        v.append("Sie-Form")
+    if KONKURRENZ.search(t):
+        v.append("Konkurrenzname")
+    if len(faq) < 3:
+        v.append("zu wenige Fragen")
+    return v
+
+
+def faq_erzeugen(titel, text):
+    from titel_kauderwelsch_wache import gemini
+    import zweitmodell
+    faq = [f for f in (gemini(FAQ_PROMPT.format(titel=titel, text=text[:9000])).get("faq") or [])
+           if isinstance(f, dict) and f.get("frage") and f.get("antwort")][:5]
+    v = faq_regeln(faq)
+    if v:
+        return None, "Regeln: " + ", ".join(v)
+    for a in range(5):
+        try:
+            r = zweitmodell.chat_json(FAQ_PRUEF.format(text=text[:9000], faq=json.dumps(faq, ensure_ascii=False)))
+            break
+        except RuntimeError as e:
+            if "429" not in str(e) or "Tageskontingent" in str(e) or a == 4:
+                raise
+            time.sleep(60 * (a + 1))
+    probleme = [str(x) for x in (r.get("probleme") or [])]
+    if probleme:
+        # nur die belegten Fragen behalten — reicht es noch für 3, ist die FAQ brauchbar
+        schlecht = {f["frage"] for f in faq if any(f["frage"][:40] in p for p in probleme)}
+        faq = [f for f in faq if f["frage"] not in schlecht]
+        if len(faq) < 3 or len(schlecht) < len(probleme):
+            return None, f"Zweitprüfer ({zweitmodell.LETZTES_MODELL}): " + " | ".join(probleme)[:200]
+    return faq, f"ok ({zweitmodell.LETZTES_MODELL})"
+
+
+def auffrisch_ledger():
+    d = {}
+    if os.path.exists(AUFFRISCH_LEDGER):
+        for l in open(AUFFRISCH_LEDGER, encoding="utf-8"):
+            z = l.rstrip("\n").split("\t")
+            if len(z) >= 3:
+                d[z[0]] = z   # letzter Eintrag gewinnt
+    return d
+
+
+def besuche_je_artikel():
+    try:
+        d = gql('{ shopifyqlQuery(query: "FROM sessions SHOW sessions GROUP BY landing_page_path WHERE human_or_bot_session = '
+                "'human' AND landing_page_path CONTAINS '/blogs/' SINCE -90d LIMIT 1000\") { tableData { rows } } }")["shopifyqlQuery"]
+    except RuntimeError:
+        return {}
+    z = {}
+    for r in (d.get("tableData") or {}).get("rows") or []:
+        h = r["landing_page_path"].rstrip("/").rsplit("/", 1)[-1]
+        z[h] = z.get(h, 0) + int(r["sessions"])
+    return z
+
+
+def auffrischen(n):
+    led = auffrisch_ledger()
+    besuche = besuche_je_artikel()
+    arts, c = [], None
+    while True:
+        d = gql('query($c:String){articles(first:100,after:$c){pageInfo{hasNextPage endCursor} '
+                'nodes{id handle title body isPublished}}}', {"c": c})["articles"]
+        arts += [a for a in d["nodes"] if a["isPublished"]]
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        c = d["pageInfo"]["endCursor"]
+    jetzt = time.time()
+
+    def faellig(a):
+        z = led.get(a["handle"])
+        if not z:
+            return True
+        return z[2] in ("fehler", "teil") or (jetzt - time.mktime(time.strptime(z[1][:10], "%Y-%m-%d"))) / 86400 >= PRODUKT_TAGE
+    nur = [h for h in os.environ.get("NUR", "").split(",") if h]
+    kand = [a for a in arts if (a["handle"] in nur) if nur] or \
+           [a for a in arts if not nur and faellig(a) and "/collections/" in (a["body"] or "")]
+    kand.sort(key=lambda a: (-besuche.get(a["handle"], 0), MARKE_P[0] in (a["body"] or "")))   # Besuchte zuerst
+    print(f"Auffrischen: {len(arts)} veröffentlichte, {len(kand)} fällig, bearbeite bis {n}", flush=True)
+    ok = 0
+    ohne_zweit = False
+    for a in kand[:n]:
+        body = a["body"] or ""
+        roh = re.sub(re.escape(MARKE_P[0]) + r".*?" + re.escape(MARKE_P[1]), "", body, flags=re.S)
+        roh = re.sub(re.escape(MARKE_F[0]) + r".*?" + re.escape(MARKE_F[1]), "", roh, flags=re.S)
+        text = text_aus(roh)
+        was = []
+        # Produkte: nur solche, deren Titel das Kernwort des Artikels trägt (Relevanz vor Menge)
+        wort, produkte = ware_zum_thema(a["title"], a["handle"])
+        if not produkte and MARKE_P[0] in body:
+            body = block_ersetzen(body, MARKE_P, "")          # alter, nicht mehr belegbarer Block raus
+            was.append("produkte-entfernt")
+        if produkte:
+            kh = next((k for k in re.findall(r'/collections/([a-z0-9-]+)', roh) if k not in ("all", "frontpage")), "all")
+            body = block_ersetzen(body, MARKE_P, produkt_block(produkte, kh, wort.capitalize()) if kh != "all" else
+                                  produkt_block(produkte, "all", "Shop").split("<p><a href=\"/collections/all")[0])
+            was.append(f"produkte:{wort}")
+        # FAQ: vorhandene Sektion → nur JSON-LD; sonst neu aus dem Artikeltext (nicht doppelt, wenn Block schon steht)
+        if "FAQPage" not in roh and MARKE_F[0] not in body:
+            alt = faq_vorhanden(roh)
+            if len(alt) >= 2:
+                ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+                    {"@type": "Question", "name": f["frage"], "acceptedAnswer": {"@type": "Answer", "text": f["antwort"]}} for f in alt]}
+                body = block_ersetzen(body, MARKE_F, '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>")
+                was.append(f"ld-aus-vorhandener-faq:{len(alt)}")
+            elif len(text.split()) >= 250:
+                if ohne_zweit:
+                    faq, grund = None, "Zweitprüfer heute leer"
+                    was.append("faq-später")
+                else:
+                    try:
+                        faq, grund = faq_erzeugen(a["title"], text)
+                    except RuntimeError as e:   # Tageskontingent leer → Produktblöcke weiter, FAQ beim nächsten Lauf
+                        print(f"  ⏸ Zweitprüfer nicht verfügbar ({str(e)[:100]}) — ab hier nur Produktblöcke", flush=True)
+                        ohne_zweit, faq, grund = True, None, "Zweitprüfer leer"
+                        was.append("faq-später")
+                if faq:
+                    body = block_ersetzen(body, MARKE_F, faq_html(faq))
+                    was.append(f"faq:{len(faq)}")
+                elif "faq-später" not in was:
+                    was.append("faq-abgelehnt")
+                    print(f"    FAQ abgelehnt: {grund}", flush=True)
+        if body == (a["body"] or ""):
+            print(f"  · {a['handle']}: nichts zu tun ({', '.join(was) or 'keine Ware/FAQ'})", flush=True)
+            continue
+        print(f"  {'✓' if SCHARF else '(trocken)'} {a['handle']} [{besuche.get(a['handle'], 0)} Besuche]: {', '.join(was)}", flush=True)
+        if not SCHARF:
+            open(f"/tmp/seo_auffrischen_{a['handle'][:40]}.html", "w").write(body)
+            continue
+        r = gql('mutation($id:ID!,$a:ArticleUpdateInput!){articleUpdate(id:$id,article:$a){article{body} userErrors{message}}}',
+                {"id": a["id"], "a": {"body": body}})["articleUpdate"]
+        status = "ok" if not r["userErrors"] and r["article"] and r["article"]["body"] == body else "fehler"   # Rücklesen
+        if status == "ok" and "faq-später" in was:
+            status = "teil"
+        if r["userErrors"]:
+            print(f"    ✗ {r['userErrors']}", flush=True)
+        with open(AUFFRISCH_LEDGER, "a", encoding="utf-8") as f:
+            f.write(f"{a['handle']}\t{time.strftime('%Y-%m-%d')}\t{status}\t{','.join(was)}\n")
+        ok += status in ("ok", "teil")
+    print(f"FERTIG Auffrischen: {ok} aktualisiert", flush=True)
+    return 0
 
 
 # ---------------------------------------------------------------- 3) Messen
@@ -392,6 +639,8 @@ def main():
         return kanarienvogel()
     if "--messen" in sys.argv:
         return messen()
+    if "--auffrischen" in sys.argv:
+        return auffrischen(int(os.environ.get("N", "10")))
     print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
     bestehend = bestehende_artikel()
     print(f"{len(bestehend)} bestehende Artikel", flush=True)
