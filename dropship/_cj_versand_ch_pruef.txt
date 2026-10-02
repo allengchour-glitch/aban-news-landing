@@ -2830,3 +2830,5 @@ retro-booties-mit-lederriemen-und-falten-631300	2606100832331632000	16	17.66	ok	
 retro-arbeitsschuhe-624900	2605220230561625500	16	15.56	ok	landeseite
 plateau-wedge-heels-aus-lackleder-602100	2603140542181602500	16	10.79	ok	landeseite
 panda-magnetring-handyhulle-494720	1510595256386072576	7	5.69	ok	landeseite
+retro-kordelanzug-607600	2501060316171607800	16	9.47	ok	landeseite
+retro-streifen-hoodie-mit-zipper-615100	2606260214181615700	16	10.69	ok	landeseite
