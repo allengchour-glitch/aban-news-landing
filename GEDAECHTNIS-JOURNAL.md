@@ -24,6 +24,19 @@
 
 
 
+
+## 2026-10-02 · 🤖 «werbungen wie soro … programmiere tools selber»: IndexNow selbst gebaut (ChatGPT kauft)
+GEMESSEN: Die letzten 4 echten Bestellungen kamen 2× über ChatGPT (#1021, #1018 direkt auf der Produktseite, utm_source=chatgpt.com)
+und 2× über Google bzw. direkt. ChatGPT-Sitzungen wachsen (Juli 2, Aug 7, Sept 16); ChatGPT/Copilot/DuckDuckGo lesen den Bing-Index,
+und Shopify hat kein IndexNow. Verworfen nach Messung: Titel-Optimierer (Titel < 25 Zeichen 3,4 Besuche/1000 gegen 2,2 bei 25–40),
+Warenkorb-Rückholung (1 abgebrochene Kasse in 30 T, 6 Newsletter-Abos), Chatbot/Upsell (zu wenig Verkehr). Semrush: keine API-Einheiten.
+GEBAUT: `automation/indexnow_melden.py` (täglich im Aufseher, ≤ 10'000/Lauf, Adresse frühestens nach 30 T wieder, nur Onlineshop-Seiten,
+Vorrang Kollektionen/Artikel/Kaufwillen-Produkte). Schlüssel als CDN-Datei, `luxestyle.ch/<key>.txt` per URL-Redirect (301 → Schlüssel).
+Probe 202, erster Lauf 10'000 → HTTP 200; 50'744 Seiten, Rückstand 40'744.
+FALLE: `Collection.resourcePublicationOnCurrentPublication` gibt es nicht → `publishedOnPublication(publicationId: Onlineshop)`.
+Nebenbefund: Das JSON-LD der Produktseiten trägt die CJ-Varianten-SKU (`sku: CJLY…`) öffentlich, ohne Versand-/Rückgabe-Angaben.
+LEHRE: Kaufquelle je Bestellung messen (customerJourneySummary), nicht nur Sitzungen je Kanal. → `dropship/WERBE-TOOLS-SELBST-GEBAUT-2026-10-02.md`
+
 ## 2026-10-02 · 🧾 «2021 ist bezahlt»: CJ-Status «UNSHIPPED» ≠ unbezahlt
 Ich meldete #1021 als «wartet auf deine Zahlung in der CJ-Konsole». Live an der CJ-API (`shopping/order/list`): LX1021 ist
 bezahlt am 30.09. 23:37 (USD 21.55, CJPacket EQ Sensitive, Tracking EQKPT8612951662YQ). Bei CJ heisst UNSHIPPED «bezahlt,

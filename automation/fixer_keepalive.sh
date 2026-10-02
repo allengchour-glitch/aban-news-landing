@@ -954,6 +954,18 @@ while true; do
         timeout 300 python3 automation/seo_autopilot.py --messen; \
         SCHARF=1 N=15 timeout 2400 python3 automation/seo_autopilot.py --auffrischen" >> /tmp/seo_autopilot.log 2>&1 & )
   fi
+  # INDEXNOW (02.10.2026, Betreiber «programmiere tools selber» statt Apps wie «IndexNow Kit»): ChatGPT, Copilot und
+  # DuckDuckGo lesen den Bing-Index; 2 der letzten 4 Bestellungen kamen über ChatGPT. Täglich ≤ 10'000 Seiten an IndexNow,
+  # jede Adresse höchstens alle 30 T (nur Neues/Rückstand). Schlüssel-Datei: luxestyle.ch/<key>.txt → CDN (Redirect).
+  IXN=/tmp/indexnow_melden.log
+  if [ -f "$REPO/automation/indexnow_melden.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$IXN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$IXN" || still_gestorben "$IXN"; then
+      touch "$IXN"
+      ( cd "$REPO" && timeout 1800 python3 automation/indexnow_melden.py >> "$IXN" 2>&1 )
+      echo "$(date -u +%H:%M) indexnow_melden: $(tail -1 "$IXN")"
+    fi
+  fi
   # GOOGLE-NACHFRAGE-LÜCKE (02.10.2026, Betreiber «weiter push überall»): 57 % der Google-Sitzungen (150 T) landeten auf
   # Seiten, die heute Entwürfe sind (Dry Bag 82, Rizinus-Set 55) — Google listet nur Kaufbares. Täglich: tote Google-
   # Landeseiten mit Nachfrage → generischer CJ-Suchauftrag VORNE in cj_search_queue.txt (Hausregeln, Marken, Saison).
