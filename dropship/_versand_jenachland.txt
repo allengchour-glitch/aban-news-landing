@@ -1612,3 +1612,5 @@ gid://shopify/Product/15446062924161	ersetzt
 gid://shopify/Product/15446063284609	ersetzt
 gid://shopify/Product/15446063612289	ersetzt
 gid://shopify/Product/15446063907201	ersetzt
+gid://shopify/Product/15446064202113	ersetzt
+gid://shopify/Product/15446064464257	ersetzt
