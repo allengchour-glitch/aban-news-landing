@@ -993,6 +993,29 @@ while true; do
       echo "$(date -u +%H:%M) geschenk_unterwelten: $(grep -c 'Reihenfolge' "$GW") Welten · $(tail -1 "$GW")"
     fi
   fi
+  # PRODUKTTYP-VEREINHEITLICHEN (02.10.2026, Betreiber «feinkategorie filter verbessern?»): die Facette «Produkttyp»
+  # zeigte Gadget+Gadgets, Beauty Tools+Beauty-Tool+Beauty-Tools … Importer erzeugen die Dubletten neu → täglich auf den
+  # Haupttyp legen (Sperre: kein Produkt fällt aus einer TYPE-Regel-Kollektion; Editor/POD nie).
+  PT=/tmp/produkttyp_vereinheitlichen.log
+  if [ -f "$REPO/automation/produkttyp_vereinheitlichen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$PT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$PT" || still_gestorben "$PT"; then
+      touch "$PT"
+      ( cd "$REPO" && SCHARF=1 timeout 1800 python3 automation/produkttyp_vereinheitlichen.py >> "$PT" 2>&1 )
+      echo "$(date -u +%H:%M) produkttyp_vereinheitlichen: $(tail -1 "$PT")"
+    fi
+  fi
+  # FARBMUSTER-FILTER (02.10.2026): genormtes Farbfeld shopify.color-pattern aus der Option «Farbe» (19 Grundfarben,
+  # lux-farbe-*), damit der Storefront-Filter «Farbe» lesbar ist (Rohwerte: 35'545). Täglich für Neuimporte.
+  FM=/tmp/farbmuster_filter.log
+  if [ -f "$REPO/automation/farbmuster_filter.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$FM" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$FM" || still_gestorben "$FM"; then
+      touch "$FM"
+      ( cd "$REPO" && SCHARF=1 timeout 3000 python3 automation/farbmuster_filter.py >> "$FM" 2>&1 )
+      echo "$(date -u +%H:%M) farbmuster_filter: $(tail -1 "$FM")"
+    fi
+  fi
   # GOOGLE-NACHFRAGE-LÜCKE (02.10.2026, Betreiber «weiter push überall»): 57 % der Google-Sitzungen (150 T) landeten auf
   # Seiten, die heute Entwürfe sind (Dry Bag 82, Rizinus-Set 55) — Google listet nur Kaufbares. Täglich: tote Google-
   # Landeseiten mit Nachfrage → generischer CJ-Suchauftrag VORNE in cj_search_queue.txt (Hausregeln, Marken, Saison).
