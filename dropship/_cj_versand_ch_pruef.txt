@@ -2544,3 +2544,8 @@ ballet-style-halskette-624800	2607230908101625900	16	4.81	ok	landeseite
 baby-lauflernschuhe-mit-streifen-35f5fd	-	-	-	unklar keine CJ-SKU	landeseite
 business-herren-stahluhr-mit-kalender-579072	1622137492604465152	7	7.52	ok	landeseite
 automatische-mechanische-herrenuhr-778688	1443778157168693248	7	6.18	ok	landeseite
+elegante-umhangetasche-in-lack-optik-crossbody-kompakt-3-farben	2605290545541626000	16	8.11	ok	landeseite
+ear-cuffs-papillon-blauer-schmetterling	2060968105059700738	16	4.47	ok	landeseite
+elegante-figurbetonte-jupe-mit-schlitz-601200	2607031337181601900	16	10.29	ok	landeseite
+eleganter-trenchcoat-fur-herren-626300	2604250045051626800	16	10.29	ok	landeseite
+eleganter-stahl-tuchhalter-637300	2607010721191637900	16	10.01	ok	landeseite
