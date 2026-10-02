@@ -2596,3 +2596,51 @@ wasserdichte-partneruhr-aus-edelstahl-cd1a14	-	-	-	unklar keine CJ-SKU	landeseit
 gaming-trigger-griff-fur-smartphones-c1a081	-	-	-	unklar keine CJ-SKU	landeseite
 elektrisches-reinigungsgerat-fur-poren-b73b35	-	-	-	unklar keine CJ-SKU	landeseite
 sitzhocker-fur-das-lenkrad-4d96d4	-	-	-	unklar keine CJ-SKU	landeseite
+lidschatten-palette-16-farben-e283c6	-	-	-	unklar keine CJ-SKU	landeseite
+wasserfester-eyeliner-stift-12-farben-3d7198	-	-	-	unklar keine CJ-SKU	landeseite
+miss-rose-highlighter-puder-80c2c1	-	-	-	unklar keine CJ-SKU	landeseite
+avocado-bb-cream-mit-pilzkopf-applikator-69b717	-	-	-	unklar keine CJ-SKU	landeseite
+feuchtigkeitspflegecreme-9e5547	-	-	-	unklar keine CJ-SKU	landeseite
+luminoser-lidschatten-fur-augen-und-gesicht-d6c18d	-	-	-	unklar keine CJ-SKU	landeseite
+langanhaltender-uv-lidschatten-769542	-	-	-	unklar keine CJ-SKU	landeseite
+wimpernserum-3-ml-b5f10d	-	-	-	unklar keine CJ-SKU	landeseite
+reparaturplatten-set-7a9af5	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktionale-flussige-grundierung-8e59e6	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-gesichtsburste-mit-reinigungsfunkt-999bc1	-	-	-	unklar keine CJ-SKU	landeseite
+scheinwerfer-vernebler-becher-a1978c	-	-	-	unklar keine CJ-SKU	landeseite
+leder-lenkradbezug-38cm-19018d	-	-	-	unklar keine CJ-SKU	landeseite
+etagere-fur-kuchen-snacks-abea57	-	-	-	unklar keine CJ-SKU	landeseite
+3-in-1-mini-drohne-fur-land-wasser-luft-f0bc29	-	-	-	unklar keine CJ-SKU	landeseite
+30w-vertikales-usb-ladegerat-mit-6-ports-5cd362	-	-	-	unklar keine CJ-SKU	landeseite
+augenbrauen-stempel-kit-wasserfest-naturlich-546ee8	-	-	-	unklar keine CJ-SKU	landeseite
+astronaut-roboter-uberwachungskamera-90b6f7	-	-	-	unklar keine CJ-SKU	landeseite
+baby-lauflernschuhe-mit-streifen-35f5fd	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-trinkflasche-611700	2606120555021612400	16	9.23	ok	landeseite
+damen-blockabsatzschuhe-suede-peep-toe-625000	2606150617041625700	16	10.29	ok	landeseite
+e58-faltbare-hd-drohne-c013de	-	-	-	unklar keine CJ-SKU	landeseite
+doppelwandiger-isolierbecher-aus-edelstahl-919808	1652845595280805888	16	11.60	ok	landeseite
+doppelte-leder-roller-skates-542144	1410431914912911360	11	38.69	ok	landeseite
+elektrische-kamm-fur-locken-und-glatte-620200	2506120342381620400	3	14.13	ok	landeseite
+durchsichtiger-fischschwanzrock-624800	2607211357141625600	16	7.85	ok	landeseite
+dekorative-bucherregal-laternenlampe-607700	2607291003221608400	7	8.25	ok	landeseite
+elegante-mid-heel-pumps-mit-eckiger-kappe-607000	2601051135071607400	16	14.48	ok	landeseite
+elegantes-blusenkleid-mit-schnurung-637400	2606301301531638000	16	9.47	ok	landeseite
+deckenventilator-mit-licht-42-zoll-167488	1603313949267734528	3	98.64	ok	landeseite
+diy-ohrring-set-aus-pu-leder-00df42	-	-	-	unklar keine CJ-SKU	landeseite
+damen-chiffon-kleid-mit-halter-neck-und-stufen-609900	2606040708141600600	16	9.47	ok	landeseite
+dreieckiges-bettkissen-2332b1	-	-	-	unklar keine CJ-SKU	landeseite
+gaming-set-uk-943617	2042207010789687298	0	-	KEINE CH-Option → DRAFT	landeseite
+fitness-smart-armband-mit-schrittzahler-und-le-623600	2605100200311624300	7	5.09	ok	landeseite
+farbverlauf-lidschatten-stift-630600	2606040453161631200	3	5.22	ok	landeseite
+elektrischer-fleischwolf-5l-kuchenmaschine-656962	2046148911801921537	0	-	KEINE CH-Option → DRAFT	landeseite
+elektrischer-shaker-fur-protein-shakes-342592	1423475157632159744	7	10.31	ok	landeseite
+ems-bauch-und-muskel-trainer-b08b29	-	-	-	unklar keine CJ-SKU	landeseite
+fressnapf-mit-stander-fur-haustiere-080192	1392797040848801792	16	8.86	ok	landeseite
+gesichtsrejuvenation-fur-zu-hause-ebee7a	-	-	-	unklar keine CJ-SKU	landeseite
+geflochtene-haremshose-herren-trendig-615700	2507180331161617200	16	10.83	ok	landeseite
+englische-madchenlederschuhe-mit-weichsohle-605700	2409220653521605900	16	10.55	ok	landeseite
+fledermaus-lampe-631400	2607171016511632000	16	11.06	ok	landeseite
+fressnapf-katze-schrag-erhoht-keramik-616800	2501050733211617000	16	11.12	ok	landeseite
+glatteisen-kamm-601500	2502220738531601700	7	12.08	ok	landeseite
+ferngesteuerte-infrarot-wurst-223168	1443168309032914944	16	28.02	ok	landeseite
+gestreiftes-langarm-shirt-606500	2605290653231607200	16	7.43	ok	landeseite
