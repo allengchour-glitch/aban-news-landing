@@ -16226,3 +16226,5 @@ gid://shopify/Product/15448673747329	33->0	Gepolsterte Baumwolljacke mit Blumenm
 gid://shopify/Product/15449132401025	12->1	Microneedling Anti-Falten Serum
 gid://shopify/Product/15496359510401	9->0	Keilkissen-Set für Rücken, Beine und Knie
 gid://shopify/Product/15448077566337	97->0	Glitzerndes Dekolleté-Kettentop
+gid://shopify/Product/15448587075969	11->1	Midikleid mit Zopfmuster und Blumenprint
+gid://shopify/Product/15449425379713	9->0	Ultraschall-Luftbefeuchter mit Aromatherapie
