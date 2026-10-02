@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 09:27 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-02 09:09 UTC, Stand 2026-10-02 10:07 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **10'842**
-- Optionen mit englischen Werten (Kandidaten): 1'318
+- Produkte gesehen: **11'437**
+- Optionen mit englischen Werten (Kandidaten): 1'340
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 6'723
+- Werte mit unbekanntem Wort (unverändert): 6'808
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 34
-- übersprungen «kollision-nach-uebersetzung»: 23
+- übersprungen «kollision-nach-uebersetzung»: 25
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -65,6 +65,8 @@
 - `15450839777665` [Farbe] xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264: 120cm pink → 120 cm Pink; 120cm black → 120 cm Schwarz; 120cm navy blue → 120 cm Marineblau; 120cm grey → 120 cm Grau; 150cm pink → 150 cm Pink
 - `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Camouflage grey → Camouflage Grau; Army green camouflage → Armeegrün Camouflage; Weissweiss → Weiss; Schwarzschwarz → Schwarz; White camouflage → Weiss Camouflage
 - `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
+- `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
+- `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -113,5 +115,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 238, `light` 234, `color` 176, `degrees` 159, `shell` 81, `skin` 78, `high` 68, `rope` 66, `feet` 62, `to` 61, `mother` 61, `three` 59, `no` 56, `size` 54, `core` 53, `surface` 49, `line` 48, `electric` 48, `powder` 47, `dark` 47, `hat` 46, `for` 45, `case` 43, `of` 43, `buckle` 42, `bag` 42, `⟨satzbau:material-vor-farbe⟩` 42, `perforated` 42, `years` 40, `acupuncture` 40, `opp` 39, `lens` 38, `father` 38, `generation` 37, `adjustable` 37, `belt` 36, `magnetic` 36, `suit` 35, `old` 35, `person` 35, `tea` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `carbon` 33, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `⟨satzbau:nomen-vor-farbe⟩` 30, `bear` 30, `eyelets` 30, `button` 30, `plush` 30, `iphone13` 29, `batteries` 28, `mom` 28, `lamp` 28, `⟨satzbau:nomen-nomen⟩` 27, `mushroom` 27, `full` 26, `simple` 26, `insert` 26, `number` 26
+`⟨satzbau:adjektiv-vor-nomen⟩` 244, `light` 234, `color` 178, `degrees` 159, `shell` 81, `skin` 78, `high` 68, `rope` 66, `feet` 62, `to` 61, `mother` 61, `three` 59, `no` 56, `size` 54, `core` 53, `surface` 49, `line` 48, `electric` 48, `powder` 47, `dark` 47, `hat` 46, `for` 45, `case` 43, `of` 43, `buckle` 42, `bag` 42, `⟨satzbau:material-vor-farbe⟩` 42, `perforated` 42, `years` 40, `acupuncture` 40, `opp` 39, `lens` 38, `father` 38, `generation` 37, `adjustable` 37, `belt` 36, `magnetic` 36, `suit` 35, `old` 35, `person` 35, `tea` 34, `carbon` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `⟨satzbau:nomen-vor-farbe⟩` 30, `bear` 30, `eyelets` 30, `button` 30, `plush` 30, `iphone13` 29, `ice` 28, `batteries` 28, `mom` 28, `lamp` 28, `⟨satzbau:nomen-nomen⟩` 27, `mushroom` 27, `full` 26, `simple` 26, `insert` 26
 
