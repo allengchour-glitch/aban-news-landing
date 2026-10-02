@@ -517,3 +517,7 @@ gid://shopify/Product/15451605303681	ok	Auto-Sicherheitsgurt für Hund & Katze
 gid://shopify/Product/15451605500289	ok	Ultraschall-Reinigungsgerät
 gid://shopify/Product/15451638169985	ok	WLAN Überwachungskamera mit Bewegungserkennung
 gid://shopify/Product/15451914076545	ok	Kabelloser Mini-Glättkamm mit LCD-Anzeige
+gid://shopify/Product/15451914273153	ok	Kabelloser Glättkamm mit Anionen-Technologie
+gid://shopify/Product/15451914502529	ok	Kabelloser 2-in-1 Glättkamm mit Ionen-Pflege
+gid://shopify/Product/15452518449537	ok	Astronauten-Handyhülle mit 3D-Motiv
+gid://shopify/Product/15452598763905	ok	Küchenhelfer-Set · 5-teilig, antihaft-geeignet
