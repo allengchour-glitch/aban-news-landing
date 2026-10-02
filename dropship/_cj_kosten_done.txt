@@ -41167,3 +41167,6 @@ gid://shopify/Product/15448648384897	CHF 13.45	4 Varianten	Vier Jahreszeiten Yog
 gid://shopify/Product/15448648515969	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 4
 gid://shopify/Product/15448648614273	CHF 13.45	4 Varianten	Vier-Jahreszeiten-Sport-Leggings mit Print
 gid://shopify/Product/15448648712577	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 5
+gid://shopify/Product/15448650645889	CHF 13.61	10 Varianten	Elegante High-Waist Hose mit geradem Bein
+gid://shopify/Product/15448887001473	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448959320449	CHF 101.92	4 Varianten	Schwimmnudel aus SBR-Schaum
