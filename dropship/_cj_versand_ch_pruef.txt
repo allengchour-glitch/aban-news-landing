@@ -2775,3 +2775,6 @@ kinder-lauflernschuhe-mit-led-licht-892352	1610105934754361344	7	16.61	ok	landes
 kinder-lauflernschuhe-fruhling-herbst-023168	1545390297201520640	16	7.17	ok	landeseite
 leder-lauflernschuhe-fur-madchen-613000	2604241029561613600	16	10.88	ok	landeseite
 kinder-laufschuhe-aus-baumwolle-946880	1600380223965638656	16	7.17	ok	landeseite
+led-stirnlampe-mit-bewegungssensor-627200	2607180538191627800	7	5.86	ok	landeseite
+kunstleder-kopfteilbezug-waschfrei-627400	2607260626461628100	0	-	KEINE CH-Option → DRAFT	landeseite
+kuscheldecke-mit-halloween-print-611200	2607270251091613600	16	7.71	ok	landeseite
