@@ -37,7 +37,9 @@ from marge_wahrheit import mindestpreis, netto        # noqa: E402
 from kollektionstexte_nachbessern import gql          # noqa: E402
 
 SCHARF = os.environ.get("SCHARF") == "1"
-RABATT = float(os.environ.get("RABATT", "0.25"))
+# 02.10.2026 Betreiber-Entscheid «15 % Reserve»: alle Codes > 15 % deaktiviert (0× benutzt, Liste
+# dropship/_rabatte_deaktiviert_2026-10-02.tsv); grösster aktiver Code = 15 %, Order-Rabatte kombinieren nicht.
+RABATT = float(os.environ.get("RABATT", "0.15"))
 MAX_FAKTOR = float(os.environ.get("MAX_FAKTOR", "2.0"))
 CAP = int(os.environ.get("CAP", "100000"))
 # 3 Arbeiter wie kategorie_wache (24.09.: einer schaffte ~15 Produkte/min → 22'609 Produkte = 25 h, länger als
@@ -108,6 +110,12 @@ def plane(pid):
                 # ⚠️ 24.09.2026: DENY+tracked MIT Bestand (Fortura, CH-Lager) ist KEINE Sperre — die Variante bleibt kaufbar.
                 # Die Fortura-Bündel (Faktor 3–5) wären so still weiterverkauft worden.
                 ueber.append((v, preis, ek, neu))
+            else:
+                # 02.10.2026 (Betreiber «verbessere alles … auch preise»): schon gesperrte Varianten behielten ihren alten
+                # Tiefpreis → Shop und Karten zeigten «ab CHF 14.90», kaufbar erst ab 22.90 (Lockpreis, PBV). Gemessen:
+                # 4'261 Sperren in 705 Produkten. Gesperrt bleibt gesperrt, aber der Preis zeigt jetzt den echten Boden.
+                streich = v.get("compareAtPrice")
+                heben.append((v, preis, ek, neu, None if (streich and float(streich) <= neu) else streich))
             continue
         streich = v.get("compareAtPrice")
         heben.append((v, preis, ek, neu, None if (streich and float(streich) <= neu) else streich))
@@ -132,7 +140,11 @@ def schreibe(p, heben, sperren):
             u["compareAtPrice"] = None
         upd.append(u)
     for v, preis, ek, neu in sperren:
-        upd.append({"id": v["id"], "inventoryPolicy": "DENY", "inventoryItem": {"tracked": True}})
+        # 02.10.2026: auch der Preis geht auf den Boden — sonst bleibt der alte Tiefpreis als Lockpreis sichtbar
+        u = {"id": v["id"], "inventoryPolicy": "DENY", "inventoryItem": {"tracked": True}, "price": f"{neu:.2f}"}
+        if v.get("compareAtPrice") and float(v["compareAtPrice"]) <= neu:
+            u["compareAtPrice"] = None
+        upd.append(u)
     ist = {}
     if upd:
         r = gql(M, {"p": p["id"], "v": upd})["productVariantsBulkUpdate"]
@@ -149,6 +161,8 @@ def schreibe(p, heben, sperren):
         x = ist.get(v["id"]) or {}
         if x.get("inventoryPolicy") != "DENY" or not (x.get("inventoryItem") or {}).get("tracked"):
             return f"Rücklesen: {v['id']} nicht gesperrt"
+        if f"{float(x.get('price') or 0):.2f}" != f"{_[2]:.2f}":
+            return f"Rücklesen: gesperrte {v['id']} soll {_[2]:.2f}, ist {x.get('price')}"
     alle = p["variants"]["nodes"]
     gesperrt = {v["id"] for v, *_ in sperren} | {v["id"] for v in alle if v["inventoryPolicy"] == "DENY"
                                                  and v["inventoryItem"]["tracked"] and (v.get("inventoryQuantity") or 0) <= 0}
