@@ -2842,3 +2842,5 @@ radfahrer-schuhe-197504	1422417077087637504	16	11.12	ok	landeseite
 pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78	-	-	-	unklar keine CJ-SKU	landeseite
 s925-silber-halskette-camelia-bluten-anhanger	2605310523211600800	16	4.40	ok	landeseite
 smaragd-zirkon-schmuck-set-vintage-ohrringe-ring-halskette	2605310506181625200	16	4.50	ok	landeseite
+samt-kissenbezug-fur-lendenkissen-2er-set-636100	2606230549021636900	16	8.37	ok	landeseite
+schaum-abflussreiniger-604000	2607040449371604600	0	-	KEINE CH-Option → DRAFT	landeseite
