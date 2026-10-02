@@ -16380,3 +16380,5 @@ gid://shopify/Product/16603739062663	53->0	Tuya Smart WiFi Tür- und Fenstersens
 gid://shopify/Product/16603739095431	29->0	Multifunktionale Mini-Brusttasche aus Canvas
 gid://shopify/Product/16603739259271	29->0	Sweatshirt- und Hosen-Set mit Buchstabenmuster
 gid://shopify/Product/16603739292039	11->0	Robuste Sporttasche aus Polyester
+gid://shopify/Product/16603739390343	34->1	Lockenstab für grosse Wellen
+gid://shopify/Product/16603739586951	13->0	Mädchen Strampler mit Puffärmeln und Blumenmuster
