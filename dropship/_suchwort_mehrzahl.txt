@@ -3709,3 +3709,4 @@ gid://shopify/Product/15531884970369	taschen	Kleine Gürteltasche aus Leder
 gid://shopify/Product/15531885330817	taschen	Diagonale Umhängetasche aus weichem Lederimitat
 gid://shopify/Product/15531885494657	taschen	Personalisierbare Umhängetasche mit Band
 gid://shopify/Product/15531885724033	hosen	Fitnesshose für Po- und Hüfttraining
+gid://shopify/Product/15454109630849	brillen	Sonnenbrille mit UV-Schutz
