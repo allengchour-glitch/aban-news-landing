@@ -16441,3 +16441,25 @@ gid://shopify/Product/16603863089543	35->0	Loose‑Fit Cordy Pullover Hoodie
 gid://shopify/Product/16603863417223	19->0	Jacquard-Pullover mit Reissverschluss und Revers
 gid://shopify/Product/16603863679367	29->0	Herren Hooded Longsleeve Jacke
 gid://shopify/Product/16603863875975	124->3	Herren Langarmshirt mit Kapuze
+gid://shopify/Product/16603864760711	12->0	Herren Sportshirt Langarm mit Halbreissverschluss
+gid://shopify/Product/16603865022855	101->0	Herren Kapuzenpullover mit Knöpfen
+gid://shopify/Product/16603865317767	63->1	Stehkragen-Weste Winter Wattierte Jacke
+gid://shopify/Product/16603865350535	37->0	Retro Warmer Mantel mit Kapuze
+gid://shopify/Product/16603866694023	139->0	Adventskalender Geschenkbox
+gid://shopify/Product/16603897692551	41->0	Weihnachtlicher Stuhlbezug aus Fleece mit Schneemann-Design
+gid://shopify/Product/16603904573831	13->2	Handtasche aus echtem Leder – Clutch
+gid://shopify/Product/16603939438983	54->1	Weihnachtsbaum-Stern-Anhänger aus Plüsch
+gid://shopify/Product/16603943436679	23->0	Christbaumdecke mit goldenen Pailletten-Schneeflocken
+gid://shopify/Product/16603981316487	119->2	Weihnachtsrätsel-Adventskalender
+gid://shopify/Product/16603981513095	20->0	Weihnachtslichtkette mit Schneeflocken und Eiskristallen
+gid://shopify/Product/16603986723207	13->2	Weihnachtskranz mit Wursthund Dekoration
+gid://shopify/Product/16603987116423	69->2	Solar Weihnachts-Zeder für Aussenbereich
+gid://shopify/Product/16603988197767	46->0	Kugelförmige Aromakerze für festliche Dekoration
+gid://shopify/Product/16604014969223	107->1	Handtasche aus Vollschale Latzleder
+gid://shopify/Product/16604047835527	19->0	Solarbetriebene Weihnachts-Kieferbaumlichter
+gid://shopify/Product/16604173500807	18->2	Porzellanplatte 31 cm rund – Stripes & Wellen
+gid://shopify/Product/16604173566343	15->0	Rundes Eisenbrett mit Griff
+gid://shopify/Product/16604173664647	34->0	Aluminium-Backform für runde Kuchen
+gid://shopify/Product/16604173697415	85->0	Portabler Mini-Barbecue-Grill mit Holzkohle
+gid://shopify/Product/16604210823559	34->0	Backform für Pizza und Brot – rechteckig, antihaft
+gid://shopify/Product/16604210921863	39->0	Bambus-Pizzaschneidebrett 33x18 cm

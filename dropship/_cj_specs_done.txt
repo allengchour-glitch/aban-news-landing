@@ -2855,3 +2855,15 @@ fahrzeug-tracker-mit-gps-075522	gesetzt-3
 karten-tracker-779202	gesetzt-2
 universal-navi-furs-auto-624200	gesetzt-3
 fahrzeug-tracker-mit-langer-akku-lebensdauer-244802	gesetzt-3
+gps-ortungsgerat-fur-fahrzeuge-623800	gesetzt-4
+bluetooth-ortungstracker-568450	gesetzt-2
+gps-auto-ortungstracker-298432	gesetzt-2
+2-in-1-wireless-auto-adapter-559232	gesetzt-2
+laser-geschwindigkeitsmessgerat-303552	gesetzt-3
+elektronischer-geschwindigkeitsmesser-776320	gesetzt-2
+kleiner-gps-tracker-879232	gesetzt-4
+obd-gps-locator-649024	gesetzt-3
+hud-display-furs-auto-285248	gesetzt-4
+gps-ortungsgerat-484480	gesetzt-4
+kopf-display-gps-geschwindigkeitsmesser-961152	gesetzt-2
+gps-auto-ortungsgerat-d21f56	gesetzt-3
