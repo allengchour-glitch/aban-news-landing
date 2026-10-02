@@ -123,3 +123,5 @@ name:luxury
 slug:pluschdinosaurier-t-rex-fga20427
 name:plüschdinosauriertrex
 slug:spinnennetz-weiss-fga95405
+slug:tragbarer-mixer-fur-frische-drinks-770432
+name:tragbarermixerfürfrischedrinks
