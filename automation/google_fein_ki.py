@@ -19,7 +19,7 @@ REGEL (eng, damit nichts falsch wird):
   EXPORT=… SCHARF=1 MAX=2000 python3 automation/google_fein_ki.py
 Export braucht je Zeile: id, title, tags, g (im Google-Kanal), gk.value (google_product_category).
 """
-import concurrent.futures as cf, json, os, re, sys, time, urllib.request
+import concurrent.futures as cf, json, os, re, sys, time, urllib.error, urllib.request
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HIER)
@@ -86,6 +86,56 @@ def wahl(antwort, n_prod, n_pfad):
     return out
 
 
+_GPT_LEER = False
+
+
+def groq(text):
+    """Ersatz-Zweitprüfer (02.10.: OpenAI «credit_balance_exhausted», DeepSeek «Insufficient Balance»)."""
+    k = os.environ.get("GROQ_API_KEY", "")
+    if not k:
+        raise RuntimeError("GROQ_API_KEY fehlt")
+    body = {"model": os.environ.get("GROQ_MODELL", "openai/gpt-oss-120b"), "temperature": 0,
+            "messages": [{"role": "user", "content": text}], "response_format": {"type": "json_object"}}
+    letzter = ""
+    for a in range(4):
+        try:
+            r = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=json.dumps(body).encode(),
+                                       headers={"Content-Type": "application/json", "Authorization": "Bearer " + k,
+                                                "User-Agent": "luxestyle-google-fein/1"})   # ohne User-Agent 403
+            j = json.load(urllib.request.urlopen(r, timeout=120))
+            return json.loads(re.search(r"\{.*\}", j["choices"][0]["message"]["content"], re.S).group(0))
+        except Exception as e:
+            letzter = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(15 * (a + 1))
+    raise RuntimeError("Groq ohne Antwort — " + letzter)
+
+
+def zweiter(text):
+    """ChatGPT, solange es Guthaben hat; sonst Groq (einmal erkannt, für den Rest des Laufs)."""
+    global _GPT_LEER
+    if not _GPT_LEER and os.environ.get("ZWEITMODELL", "auto") != "groq":
+        try:
+            return gpt(text)
+        except Exception as e:
+            if "429" not in str(e):
+                raise
+            try:   # 429 = Drosselung ODER leeres Guthaben — nur Letzteres schaltet um
+                from gemini_jury import openai_schluessel
+                urllib.request.urlopen(urllib.request.Request("https://api.openai.com/v1/models",
+                                       headers={"Authorization": "Bearer " + openai_schluessel()}), timeout=30)
+                req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(
+                    {"model": "gpt-4o-mini", "messages": [{"role": "user", "content": "ok"}], "max_tokens": 1}).encode(),
+                    headers={"Content-Type": "application/json", "Authorization": "Bearer " + openai_schluessel()})
+                urllib.request.urlopen(req, timeout=30)
+                raise   # Guthaben da → echte Drosselung, normal weiter
+            except urllib.error.HTTPError as h:
+                if b"insufficient_quota" in h.read() or h.code == 402:
+                    _GPT_LEER = True
+                    print("  ChatGPT ohne Guthaben → Zweitprüfer Groq", file=sys.stderr, flush=True)
+                else:
+                    raise e
+    return groq(text)
+
+
 def geduldig(fn, text):
     """ChatGPT antwortet bei parallelen Läufen mit 429 — warten statt den Block zu verwerfen (02.10.: 11× in 10 min)."""
     for a in range(5):
@@ -102,7 +152,7 @@ def frage(basis, pfade, titel):
     produkte = "\n".join(f"{i}. {t}" for i, t in enumerate(titel, 1))
     text = PROMPT.format(basis=basis, liste=liste, produkte=produkte)
     with cf.ThreadPoolExecutor(2) as ex:
-        a, b = ex.submit(geduldig, gemini, text), ex.submit(geduldig, gpt, text)
+        a, b = ex.submit(geduldig, gemini, text), ex.submit(geduldig, zweiter, text)
         ra = rb = None
         try:
             ra = a.result()
@@ -125,7 +175,7 @@ def kanarienvogel():
     for i, t in enumerate(titel, 1):
         pg = pfade[g[i] - 1] if g.get(i) else "0"
         pc = pfade[c[i] - 1] if c.get(i) else "0"
-        print(f"{'=' if g.get(i) == c.get(i) else '≠'} {t}\n    Gemini: {pg}\n    ChatGPT: {pc}")
+        print(f"{'=' if g.get(i) == c.get(i) else '≠'} {t}\n    Gemini: {pg}\n    Zweitprüfer: {pc}")
     return 0 if ok else 1
 
 
