@@ -2549,3 +2549,5 @@ ear-cuffs-papillon-blauer-schmetterling	2060968105059700738	16	4.47	ok	landeseit
 elegante-figurbetonte-jupe-mit-schlitz-601200	2607031337181601900	16	10.29	ok	landeseite
 eleganter-trenchcoat-fur-herren-626300	2604250045051626800	16	10.29	ok	landeseite
 eleganter-stahl-tuchhalter-637300	2607010721191637900	16	10.01	ok	landeseite
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
