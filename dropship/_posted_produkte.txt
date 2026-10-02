@@ -125,3 +125,4 @@ name:plüschdinosauriertrex
 slug:spinnennetz-weiss-fga95405
 slug:tragbarer-mixer-fur-frische-drinks-770432
 name:tragbarermixerfürfrischedrinks
+slug:kabelloses-ansteckmikrofon-mit-ladebox
