@@ -1,0 +1,29 @@
+{
+ "datum": "2026-10-02T20:05",
+ "zu_setzen": 13906,
+ "geschrieben": 0,
+ "ohne_farb_option": 34932,
+ "ohne_farbwort": 1087,
+ "fremd": 0,
+ "verteilung": {
+  "schwarz": 9683,
+  "weiss": 5361,
+  "blau": 4955,
+  "gruen": 3963,
+  "grau": 3875,
+  "beige": 3833,
+  "rot": 3685,
+  "pink": 3465,
+  "braun": 3356,
+  "orange": 2186,
+  "marineblau": 2031,
+  "gelb": 1812,
+  "lila": 1579,
+  "gold": 659,
+  "silber": 652,
+  "rosegold": 92,
+  "mehrfarbig": 58,
+  "bronze": 49,
+  "transparent": 45
+ }
+}

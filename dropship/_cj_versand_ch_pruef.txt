@@ -2802,3 +2802,13 @@ maxikleid-mit-neckholder-und-knoten-614800	2606300245261615400	16	10.83	ok	lande
 leichter-business-rucksack-mit-grossem-volumen-606600	2509210938361606800	16	11.49	ok	landeseite
 midikleid-mit-reissverschluss-und-schleifendet-630600	2606090205511631200	16	10.15	ok	landeseite
 legeres-a-linien-kleid-fur-damen-615800	2606080904021616700	16	7.25	ok	landeseite
+mini-usb-taschenlampe-edelstahl-wiederaufladbar-fur-schlusselbund-4-farben	2605150215051639000	7	5.25	ok	landeseite
+mondphasen-sonnenuhr-taschenuhr-mit-klappdecke-616700	2606220233291617400	16	6.63	ok	landeseite
+nagelverlangerungs-gel-set-198336	1449239849323335680	3	8.89	ok	landeseite
+ohrringe-mit-katzenaugenstein-und-turkis-optik-615100	2607030533321616100	16	4.50	ok	landeseite
+paarweise-hausschuhe-eba3ba	-	-	-	unklar keine CJ-SKU	landeseite
+mini-transparente-bluetooth-ohrhorer-mit-ladeb-053888	1660564318695460864	7	7.13	ok	landeseite
+miniatur-shaver-fur-prazises-rasieren-698816	1594243484507189248	7	6.34	ok	landeseite
+outdoor-wanderschuhe-unisex-832256	1626886205335941120	16	12.56	ok	landeseite
+mikrostrom-gesichtsmassagegerat-mit-doppelroll-903488	1467360593416687616	7	8.35	ok	landeseite
+multi-funktions-nahmaschine-elektrisch-automat-617000	2505190927101617200	3	53.10	ok	landeseite
