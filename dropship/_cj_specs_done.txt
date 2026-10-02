@@ -2979,3 +2979,5 @@ armlehnen-schutzbezug-410049	gesetzt-1
 warmende-sitzauflage-fur-model-3-y-vorderreihe-610300	gesetzt-2
 universelle-auto-sitzauflage-fur-kinder-614300	gesetzt-1
 armaturenbrettmatte-fur-dodge-ram-1500-2500-35-002817	gesetzt-1
+3d-luftkissen-airbag-607300	gesetzt-3
+heizkissen-fur-autositz-609600	gesetzt-2
