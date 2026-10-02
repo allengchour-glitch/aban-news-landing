@@ -20,6 +20,14 @@
 
 
 
+
+## 2026-10-02 · 🔁 «mache das besser»: SEO-Autopilot wertet die 320 bestehenden Artikel auf + Groq-Tageskontingent
+231/320 Artikel verlinkten kein Produkt, 24 hatten FAQ-JSON-LD → `seo_autopilot.py --auffrischen` (Text bleibt, zwei markierte
+Blöcke: passende Produkte + FAQ/JSON-LD). **Relevanz:** «erste Kollektion» und «längstes Titelwort» lieferten live falsche
+Produkte (Quarzuhr zur Salzlampe, Baumwolle zu Seide, «Schweizer» zu ätherischen Ölen) → Gemini nennt deutsche Produkt-Suchwörter,
+Titel-Test hart, sonst Block weg. **Groq-Tageskontingent 200k Tokens/Modell** — ein Massenlauf frisst es für alle; Massenläufe
+bekommen ein eigenes Modell (gpt-oss-20b), Tageslimit bricht sofort ab statt zu warten. → `dropship/SEO-AUTOPILOT-BESSER-ALS-SORO-2026-10-02.md`
+
 ## 2026-10-02 · ✍️ «mach besser als soro»: eigener SEO-Autopilot mit Nachfrage-, Waren- und Fakten-Tor
 Soro = KI-SEO-Autopilot (täglich Keyword → Artikel → veröffentlichen). Gemessen: 331 Artikel brachten in 90 T ~45 Sitzungen,
 0 Warenkörbe — Menge ist nicht der Hebel. `seo_autopilot.py`: CH-Google-Vorschläge (gl=ch) je Menü-Kollektion, nur Themen mit

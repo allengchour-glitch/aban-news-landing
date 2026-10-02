@@ -20,6 +20,14 @@ import base64, json, os, re, sys, time, urllib.error, urllib.request
 MODELL_GPT = os.environ.get("MODELL_GPT", "gpt-5.5")
 GROQ_TEXT = os.environ.get("GROQ_MODELL", "openai/gpt-oss-120b")
 GROQ_BILD = os.environ.get("GROQ_MODELL_BILD", "qwen/qwen3.8-27b")
+# Ausweich-Textmodell bei 429; leer = keins. 02.10.: Groq hat ein TAGES-Kontingent von 200'000 Tokens JE MODELL (gemessen:
+# beide Modelle durch den Google-Massenlauf leer) → Massenläufe nehmen ein eigenes Modell (GROQ_MODELL=openai/gpt-oss-20b,
+# GROQ_AUSWEICH=""), damit Bestellungen (Bildvergleich) und SEO-Faktenprüfung ihr Kontingent behalten.
+GROQ_AUSWEICH = os.environ.get("GROQ_AUSWEICH", GROQ_BILD)
+
+
+class TagesKontingentLeer(RuntimeError):
+    pass
 MARKE = "/tmp/openai_leer"
 LEER_GUELTIG_S = 6 * 3600
 LETZTES_MODELL = ""
@@ -127,13 +135,16 @@ def groq_json(text, bilder=None, nummer_ab=1):
         raise RuntimeError("GROQ_API_KEY fehlt")
     global LETZTES_MODELL
     # Text: bei 429 (Minutenkontingent, geteilt mit Dauerläufen) zuerst auf das zweite Modell mit eigenem Kontingent
-    modelle = [GROQ_BILD] if bilder else [GROQ_TEXT, GROQ_BILD]
+    modelle = [GROQ_BILD] if bilder else [m for m in (GROQ_TEXT, GROQ_AUSWEICH) if m]
     modell = modelle[0]
     body = {"model": modell, "temperature": 0, "messages": [{"role": "user", "content": _inhalt(text, bilder)}],
             "response_format": {"type": "json_object"}}
     letzter = ""
+    tageslimit = set()
     for a in range(6):
         modell = modelle[a % len(modelle)]
+        if modell in tageslimit:
+            continue
         body["model"] = modell
         try:
             r = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=json.dumps(body).encode(),
@@ -143,14 +154,26 @@ def groq_json(text, bilder=None, nummer_ab=1):
             LETZTES_MODELL = "groq:" + modell
             return _json(j["choices"][0]["message"]["content"])
         except urllib.error.HTTPError as e:
-            letzter = f"HTTP {e.code}: {e.read()[:150].decode('utf-8', 'replace')}"
+            letzter = f"HTTP {e.code}: {e.read()[:400].decode('utf-8', 'replace')}"
             if e.code in (400, 401, 403, 404, 413):
                 break
             if e.code == 429 and a % len(modelle) < len(modelle) - 1:
                 continue                      # sofort das nächste Modell, erst danach warten
+            m = re.search(r"try again in (?:(\d+)m)?([\d.]+)(ms|s)", letzter)
+            if e.code == 429 and m:           # Groq nennt die Wartezeit selbst — genau so lange warten
+                warte = int(m.group(1) or 0) * 60 + float(m.group(2)) / (1000 if m.group(3) == "ms" else 1)
+                if "per day" in letzter or warte > 180:
+                    tageslimit.add(modell)
+                    if all(x in tageslimit for x in modelle):
+                        raise TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — {letzter[:160]}")
+                    continue
+                time.sleep(min(90, warte + 1))
+                continue
         except Exception as e:
             letzter = f"{type(e).__name__}: {str(e)[:150]}"
         time.sleep(15 * (a + 1))
+    if tageslimit or "per day" in letzter:
+        raise TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — {letzter[:160]}")
     raise RuntimeError(f"Groq ({modell}) ohne Antwort — " + letzter)
 
 
