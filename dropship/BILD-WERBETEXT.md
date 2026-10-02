@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-02T07:41:58Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-02T07:43:26Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1257 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4610** in 1233 Produkten
-- Treffer (≥ 4 Wörter): **173** in 145 Produkten
+- Medien geprüft: **4611** in 1233 Produkten
+- Treffer (≥ 4 Wörter): **174** in 146 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -97,6 +97,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | 21-Gitter Nagelschmuck-Box mit Glassteinen `15522212118913` | [70746582483329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eba30eda-9b63-41f2-a8a5-2145ec15f0ad.jpg) | 9 | Violets Color Big stones Violets vitrail Samll stones | offen |
 | Smart-Armband für Damen `15504142664065` | [70586155827585](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/691402992569.jpg) | 9 | and luxurious The Beauty Art Concentrate the beauty | offen |
 | Gemüse-Trocknerkorb `15453785784705` | [69926751797633](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f0075ec1-cb10-41cd-86f7-dfe85080a843.jpg) | 9 | SPACIOUS Easily accommodate array vegetables pads the bottom | offen |
+| Französische Stickerei mit Metallgriff `15453761601921` | [69926631735681](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5101e94-1e7c-4117-8616-dd4248dcec28_trans.jpg) | 9 | Metal handle Comfortable handle durable and not tiring | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | ENTFERNT |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
