@@ -19,6 +19,15 @@
 
 
 
+
+## 2026-10-02 · ✍️ «mach besser als soro»: eigener SEO-Autopilot mit Nachfrage-, Waren- und Fakten-Tor
+Soro = KI-SEO-Autopilot (täglich Keyword → Artikel → veröffentlichen). Gemessen: 331 Artikel brachten in 90 T ~45 Sitzungen,
+0 Warenkörbe — Menge ist nicht der Hebel. `seo_autopilot.py`: CH-Google-Vorschläge (gl=ch) je Menü-Kollektion, nur Themen mit
+≥ 6 kaufbaren Produkten, Kannibalisierungs-Schutz, Gemini schreibt nur aus Fakten, Zweitprüfer prüft, harte Regeln (Heil-
+versprechen, Du-Form, ss, Konkurrenz, Preis/Link aus Fakten), FAQ-JSON-LD, Wirkungsmessung. Erster Artikel live (Hochzeitsgast-
+Kleider). **Fallen:** Sie-Erkennung traf «Sie passt …» (3. Person) → nur mitten im Satz; Ortsanfragen («… kaufen bern») sind
+keine Ratgeber-Themen; abgelehnte Themen dürfen nicht 60 T sperren (7 T). → `dropship/SEO-AUTOPILOT-BESSER-ALS-SORO-2026-10-02.md`
+
 ## 2026-10-02 · 🔁 ChatGPT-Guthaben leer → zentraler Zweitprüfer `zweitmodell.py` (Groq)
 Der Google-Fein-Lauf «wartete geduldig» 30 min auf 429 — der Antwortkörper sagte `insufficient_quota / credit_balance_exhausted`.
 **Bei 429 immer den Körper lesen.** DeepSeek ebenfalls leer (402). `zweitmodell.chat_json` nimmt ChatGPT, bei leerem Guthaben Groq

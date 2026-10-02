@@ -125,21 +125,29 @@ def groq_json(text, bilder=None, nummer_ab=1):
         bilder = [raster(bilder, nummer_ab)]
     if not k:
         raise RuntimeError("GROQ_API_KEY fehlt")
-    modell = GROQ_BILD if bilder else GROQ_TEXT
+    global LETZTES_MODELL
+    # Text: bei 429 (Minutenkontingent, geteilt mit Dauerläufen) zuerst auf das zweite Modell mit eigenem Kontingent
+    modelle = [GROQ_BILD] if bilder else [GROQ_TEXT, GROQ_BILD]
+    modell = modelle[0]
     body = {"model": modell, "temperature": 0, "messages": [{"role": "user", "content": _inhalt(text, bilder)}],
             "response_format": {"type": "json_object"}}
     letzter = ""
-    for a in range(4):
+    for a in range(6):
+        modell = modelle[a % len(modelle)]
+        body["model"] = modell
         try:
             r = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=json.dumps(body).encode(),
                                        headers={"Content-Type": "application/json", "Authorization": "Bearer " + k,
                                                 "User-Agent": "luxestyle-zweitmodell/1"})
             j = json.load(urllib.request.urlopen(r, timeout=120))
+            LETZTES_MODELL = "groq:" + modell
             return _json(j["choices"][0]["message"]["content"])
         except urllib.error.HTTPError as e:
             letzter = f"HTTP {e.code}: {e.read()[:150].decode('utf-8', 'replace')}"
             if e.code in (400, 401, 403, 404, 413):
                 break
+            if e.code == 429 and a % len(modelle) < len(modelle) - 1:
+                continue                      # sofort das nächste Modell, erst danach warten
         except Exception as e:
             letzter = f"{type(e).__name__}: {str(e)[:150]}"
         time.sleep(15 * (a + 1))
@@ -156,8 +164,7 @@ def chat_json(text, bilder=None, nummer_ab=1):
             return out
         except OpenAILeer as e:
             _leer_markieren(str(e))
-    out = groq_json(text, bilder, nummer_ab)
-    LETZTES_MODELL = "groq:" + (GROQ_BILD if bilder else GROQ_TEXT)
+    out = groq_json(text, bilder, nummer_ab)   # setzt LETZTES_MODELL auf das tatsächlich antwortende Modell
     return out
 
 
