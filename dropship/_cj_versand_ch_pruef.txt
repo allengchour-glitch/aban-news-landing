@@ -2943,3 +2943,5 @@ halloween-gartenstecker-mit-kunstblumen-626100	2607290720091626800	16	10.49	ok	l
 geister-kissenbezug-set-aus-plusch-399297	2056947698515034114	0	-	KEINE CH-Option → DRAFT	landeseite
 halloween-umhang-kleiner-teufel-aus-flanell-632800	2602270700481633100	16	12.21	ok	landeseite
 vielseitiger-kurbis-totenkopf-gurtel-603800	2601180341061604400	16	5.81	ok	landeseite
+lolita-stirnband-mit-hexenhut-und-rosen-636900	2606180248491637600	16	8.54	ok	landeseite
+gelber-leopard-hoodie-mit-teufelshornern-606900	2606160343041607600	16	10.42	ok	landeseite
