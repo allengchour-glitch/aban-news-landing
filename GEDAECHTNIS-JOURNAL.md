@@ -25,6 +25,17 @@
 
 
 
+
+## 2026-10-02 · 📈 Semrush-Testabo (Betreiber aktiviert 02.10. ~15:45 UTC, KÜNDIGEN VOR 09.10.)
+GEMESSEN (Datenbank ch): luxestyle.ch rankt für 556 Begriffe in den Top 100, geschätzter Verkehr 0. Davon 38 auf Platz 16–30, fast alle
+leicht (KD 8–25): ballettschuhe 590/Mt Platz 29, casio illuminator 320 (21), katzenklo möbel 320 (26), trinkrucksack 260 (26) …
+Suchvolumen für 478 Begriffe zu 350 Kollektionen (Gemini formulierte die Suchanfragen; Kollektionstitel sind keine Suchbegriffe).
+GEBAUT: `automation/suchvolumen.py` (Lookup, liest dropship/semrush/), `seo_autopilot.themen()` sortiert nach Volumen; Ortsfilter + Ausland.
+FALLE: Gemini gab die Kategorie-Schlüssel mit anderer Leerzeichen-Form zurück → erst 32/126, nach Normalisierung beider Seiten 85/126.
+FALLE: `phrase_these` nimmt höchstens 100 Begriffe pro Aufruf (Fehler 612). Kosten: 10 Einheiten je Ergebniszeile, leere Begriffe kosten nichts.
+Erinnerungen: trig_01MN3e4NbqNHWM53tMnx4AkY (08.10.), trig_01DXWkv64bGu99SKH8dxJtxG (09.10.); Kalender-Konnektor ohne Schreibrecht.
+→ `dropship/semrush/README.md` (Plan für die restlichen ~44'800 Einheiten)
+
 ## 2026-10-02 · 🤖 «werbungen wie soro … programmiere tools selber»: IndexNow selbst gebaut (ChatGPT kauft)
 GEMESSEN: Die letzten 4 echten Bestellungen kamen 2× über ChatGPT (#1021, #1018 direkt auf der Produktseite, utm_source=chatgpt.com)
 und 2× über Google bzw. direkt. ChatGPT-Sitzungen wachsen (Juli 2, Aug 7, Sept 16); ChatGPT/Copilot/DuckDuckGo lesen den Bing-Index,

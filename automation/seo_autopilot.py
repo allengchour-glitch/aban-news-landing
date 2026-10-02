@@ -47,7 +47,10 @@ KONKURRENZ = re.compile(r"\b(landi|qualipet|fressnapf|ikea|galaxus|digitec|brack
                         r"bauhaus|hornbach|obi|do it|hellweg|ebay|action|pepco|nanu|nana|jysk|xxxlutz|pfister|conforama)\b", re.I)
 SIE_MITTE = re.compile(r"(?<![.!?:;] )(?<![.!?:;])\b(?:Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b(?<!^Sie)")
 ORT = re.compile(r"\b(bern|zürich|zuerich|basel|luzern|st\.? ?gallen|winterthur|lausanne|genf|lugano|biel|thun|aarau|zug|"
-                 r"chur|schaffhausen|in der nähe|online|schweiz|ch|bestellen|outlet|second ?hand|gebraucht|occasion)\b", re.I)
+                 r"chur|schaffhausen|in der nähe|online|schweiz|ch|bestellen|outlet|second ?hand|gebraucht|occasion|"
+                 r"wien|graz|linz|salzburg|innsbruck|berlin|hamburg|münchen|muenchen|köln|koeln|frankfurt|stuttgart|"
+                 r"düsseldorf|dresden|leipzig|hannover|nürnberg|bremen|österreich|deutschland|mailand|paris|"
+                 r"türkei|italien|spanien|polen|ungarn|tschechien|dubai|thailand|usa|amerika|china)\b", re.I)
 INFO = re.compile(r"waschbar|orthopäd|test|vergleich|welche|wie |für |grösse|groesse|material|richtig|pflege|reinigen|"
                   r"tipps|ideen|unterschied|beste|outdoor|winter|herbst|weihnacht|klein|gross|xxl|damen|herren|kinder", re.I)
 GUT = re.compile(r"waschbar|orthopäd|test|vergleich|welche|wie|kaufen|für |grösse|groesse|material|richtig|pflege|"
@@ -176,7 +179,10 @@ def themen(bestehend):
         return (jetzt - time.mktime(time.strptime(z[0][:10], "%Y-%m-%d"))) / 86400
     # veröffentlicht → 60 Tage Pause; abgelehnt («-») → 7 Tage, dann neuer Versuch mit anderer Phrase
     kuerzlich = {z[3] for z in ledger() if len(z) > 3 and alter(z) < (7 if z[1] == "-" else PAUSE_TAGE)}
-    for handle, titel in menue_kollektionen():
+    # 02.10.2026: Reihenfolge nach echtem Schweizer Suchvolumen (Semrush-Ernte, suchvolumen.py) — vorher Menü-Reihenfolge.
+    # Kollektionen ohne Volumen-Daten kommen danach in Menü-Reihenfolge (sort ist stabil).
+    import suchvolumen
+    for handle, titel in sorted(menue_kollektionen(), key=lambda k: -suchvolumen.fuer_kollektion(k[1])):
         if handle in kuerzlich:
             continue
         stamm = re.sub(r"\s*&.*$", "", titel).strip()
