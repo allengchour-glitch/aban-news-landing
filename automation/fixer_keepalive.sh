@@ -941,6 +941,15 @@ while true; do
           EXPORT=/tmp/google_fein_ki_export.jsonl SCHARF=1 TEIL=$GK/2 exec python3 automation/google_fein_ki.py" >> "/tmp/google_fein_ki_$GK.log" 2>&1 & )
     done
   fi
+  # SEO-AUTOPILOT (02.10.2026, Betreiber «mach besser als soro»): täglich EIN Ratgeber aus echter CH-Suchnachfrage
+  # (Google-Vorschläge gl=ch), nur Themen mit ≥ 6 kaufbaren Produkten, Faktenprüfung durch Zweitmodell, FAQ-JSON-LD;
+  # danach Wirkungsmessung (dropship/SEO-AUTOPILOT.md). Marke je Tag, flock gegen Doppelstart.
+  SA_MARKE="/tmp/seo_autopilot_$(date -u +%F).done"
+  if [ -f "$REPO/automation/seo_autopilot.py" ] && [ ! -f "$SA_MARKE" ] && [ "$(date -u +%H)" -ge 7 ]; then
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_seo_autopilot.lock; flock -n 9 || exit 0; \
+        SCHARF=1 MAX=1 timeout 1800 python3 automation/seo_autopilot.py && touch '$SA_MARKE'; \
+        timeout 300 python3 automation/seo_autopilot.py --messen" >> /tmp/seo_autopilot.log 2>&1 & )
+  fi
   # TITEL-KAUDERWELSCH (01.10.2026, 12-Tage-Plan Tag 1, Grind wieder an): Neuimporte mit erfundenen Wörtern
   # («Inflierbares» statt «Aufblasbares») — Gemini + ChatGPT müssen dasselbe Wort finden, sonst nur Meldung. Alle 6 h.
   TK=/tmp/titel_kauderwelsch_wache.log
