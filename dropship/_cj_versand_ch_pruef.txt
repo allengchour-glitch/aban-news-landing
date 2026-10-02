@@ -2650,3 +2650,4 @@ fressnapf-set-keramik-mit-akryl-stander-119168	1750527789549228032	16	11.00	ok	l
 fashion-skeleton-drei-augen-wasserdichte-herre-808000	1598574649166802944	7	6.34	ok	landeseite
 gansedaunenkissen-fullung-fur-kissenhullen-520f50	-	-	-	unklar keine CJ-SKU	landeseite
 halskette-coquille-muschel-anhanger-mit-tassel	2605310509351601000	16	4.50	ok	landeseite
+herren-crossbody-bag-mit-totenkopf-muster-612300	2602241159281612700	16	7.43	ok	landeseite
