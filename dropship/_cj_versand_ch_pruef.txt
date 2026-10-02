@@ -2915,3 +2915,8 @@ leuchtende-halloween-party-maske-f9b978	-	-	-	unklar keine CJ-SKU	landeseite
 totenkopf-messerhalter-fur-halloween-891328	1779364783909777408	16	15.15	ok	landeseite
 kurbis-schatulle-aus-massivholz-612500	2604100956341612900	16	9.61	ok	landeseite
 kurbis-sitzkissen-aus-plusch-473088	1443808528555970560	16	10.15	ok	landeseite
+halloween-deko-realistische-kunststoffkette-658880	1773552640845156352	16	12.21	ok	landeseite
+abnehmbare-halloween-nagelsticker-619200	2504270814281619700	0	-	KEINE CH-Option → DRAFT	landeseite
+halsband-mit-halloween-print-fur-hunde-219584	1530154911835631616	16	6.01	ok	landeseite
+halloween-halsband-fur-hunde-583552	1424982299660914688	16	6.90	ok	landeseite
+farbpalette-fur-halloween-621000	2411080637401621200	3	8.51	ok	landeseite
