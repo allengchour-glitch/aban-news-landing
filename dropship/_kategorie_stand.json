@@ -1,16 +1,15 @@
 {
- "stand": "2026-10-02T04:45Z",
- "gescannt": 285,
- "ohne_kategorie_vorher": 285,
- "gesetzt": 166,
- "ohne_kategorie_nachher": 119,
+ "stand": "2026-10-02T07:37Z",
+ "gescannt": 159,
+ "ohne_kategorie_vorher": 159,
+ "gesetzt": 141,
+ "ohne_kategorie_nachher": 18,
  "fehler": 0,
  "unbekannte_typen": {
-  "Baby & Kinder": 96,
   "Trend-Produkt": 9,
   "Trend-Gadget": 7,
-  "Büro & Home Office": 6,
-  "Kinder": 1
+  "Kinder": 1,
+  "Büro & Home Office": 1
  },
  "scharf": true
 }
