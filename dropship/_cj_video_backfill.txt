@@ -508,3 +508,12 @@ gid://shopify/Product/15481691570561	ok-lokal
 gid://shopify/Product/15481691799937	ok-lokal
 gid://shopify/Product/15481691832705	ok-lokal
 gid://shopify/Product/15493348393345	ok-lokal
+gid://shopify/Product/15448821498241	ok	LED Gesichtsmaske für ein ebenmässiges Hautbild
+gid://shopify/Product/15448958009729	ok	Velo-Rücklicht mit Blinker & Fernbedienung
+gid://shopify/Product/15449127387521	ok	Plüschtier-Schlüsselanhänger für Taschen
+gid://shopify/Product/15449597673857	ok	Militär-Armbanduhr Wasserdicht
+gid://shopify/Product/15450171769217	ok	OBD-GPS-Locator
+gid://shopify/Product/15451605303681	ok	Auto-Sicherheitsgurt für Hund & Katze
+gid://shopify/Product/15451605500289	ok	Ultraschall-Reinigungsgerät
+gid://shopify/Product/15451638169985	ok	WLAN Überwachungskamera mit Bewegungserkennung
+gid://shopify/Product/15451914076545	ok	Kabelloser Mini-Glättkamm mit LCD-Anzeige
