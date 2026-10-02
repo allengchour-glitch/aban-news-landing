@@ -76,3 +76,12 @@ gid://shopify/Product/15525275533697	2026-09-25	Beauty & Pflege
 gid://shopify/Product/15503163752833	2026-09-25	Parfum & Düfte
 gid://shopify/Product/15480410669441	2026-09-29	Auto & KFZ-Zubehör
 gid://shopify/Product/15524971315585	2026-09-30	Damen-Mode
+gid://shopify/Product/16603322122631	2026-10-02	Damen-Mode
+gid://shopify/Product/15525480333697	2026-10-02	Uhren
+gid://shopify/Product/15525457330561	2026-10-02	Beauty & Pflege
+gid://shopify/Product/16603594850695	2026-10-02	Wohnen & Dekoration
+gid://shopify/Product/15525494161793	2026-10-02	Küche & Kochen
+gid://shopify/Product/15496847819137	2026-10-02	Gaming
+gid://shopify/Product/15525487739265	2026-10-02	Taschen & Rucksäcke
+gid://shopify/Product/15480457527681	2026-10-02	Auto & KFZ-Zubehör
+gid://shopify/Product/15518559207809	2026-10-02	Handy-Zubehör
