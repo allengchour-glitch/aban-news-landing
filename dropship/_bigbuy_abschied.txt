@@ -273,3 +273,4 @@ gid://shopify/Product/15525490753921	Herren Quarzuhr mit Doppellaufwerk
 gid://shopify/Product/15525498651009	Kaffeemühle manuell
 gid://shopify/Product/15525500879233	Net Red Wasserdichte Quarz-Uhr 30 m
 gid://shopify/Product/16603739423111	Diebstahlsichere Umhängetasche
+gid://shopify/Product/16604210921863	Bambus-Pizzaschneidebrett 33x18 cm
