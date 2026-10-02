@@ -6,6 +6,9 @@
 # (Tagesbudget war um 18:21 UTC erschöpft). Treffer gegen Bild plausibilisieren: es soll ein
 # WECKER sein, kein Spielzeug-Blaster.
 # 2026-10-02 google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen
+# 2026-10-02 Semrush-Sortimentslücke (CH-Suchvolumen, von 2 Prüfern bestätigt): stehlampe 9900/Mt, orthopädisches hundebett 880/Mt
+search:floor lamp living room
+search:orthopedic memory foam dog bed
 #done search:dry bag 20l
 #done search:castor oil wrap set
 #done search:silicone drying mat

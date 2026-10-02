@@ -111,8 +111,9 @@ def suchbegriff(titel):
     return s, bool(a.get("sommer"))
 
 
-def queue_vorne(zeilen):
-    """Neue Aufträge NACH dem Kopfkommentar, VOR allen offenen Zeilen (der Runner nimmt die ersten 4 ohne #)."""
+def queue_vorne(zeilen, grund=None):
+    """Neue Aufträge NACH dem Kopfkommentar, VOR allen offenen Zeilen (der Runner nimmt die ersten 4 ohne #).
+    grund = Kommentar über dem Block (Standard: dieses Skript); auch semrush_luecken_einbauen.py nutzt die Funktion."""
     alt = open(QUEUE, encoding="utf-8").read().split("\n")
     vorhanden = {z.strip().lower() for z in alt}
     neu = [z for z in zeilen if z.lower() not in vorhanden and f"#done {z}".lower() not in vorhanden]
@@ -121,7 +122,7 @@ def queue_vorne(zeilen):
     kopf = 0
     while kopf < len(alt) and alt[kopf].startswith("#") and not alt[kopf].startswith("#done"):
         kopf += 1
-    block = [f"# {dt.date.today()} google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen"] + neu
+    block = [f"# {dt.date.today()} " + (grund or "google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen")] + neu
     tmp = QUEUE + ".tmp"
     open(tmp, "w", encoding="utf-8").write("\n".join(alt[:kopf] + block + alt[kopf:]))
     os.replace(tmp, QUEUE)

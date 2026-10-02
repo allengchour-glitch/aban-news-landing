@@ -53,6 +53,8 @@ ORT = re.compile(r"\b(bern|zürich|zuerich|basel|luzern|st\.? ?gallen|winterthur
                  r"türkei|italien|spanien|polen|ungarn|tschechien|dubai|thailand|usa|amerika|china)\b", re.I)
 INFO = re.compile(r"waschbar|orthopäd|test|vergleich|welche|wie |für |grösse|groesse|material|richtig|pflege|reinigen|"
                   r"tipps|ideen|unterschied|beste|outdoor|winter|herbst|weihnacht|klein|gross|xxl|damen|herren|kinder", re.I)
+RATGEBER_STRENG = re.compile(r"\b(wie|was|welche[rsmn]?|worauf|warum|wann|wo)\b|ideen|tipps|test|vergleich|unterschied|pflege|"
+                             r"waschen|reinigen|richtig|anleitung|für ", re.I)
 GUT = re.compile(r"waschbar|orthopäd|test|vergleich|welche|wie|kaufen|für |grösse|groesse|material|richtig|pflege|"
                  r"reinigen|tipps|ideen|unterschied|beste|günstig|outdoor|winter|herbst|weihnacht|klein|gross|xxl", re.I)
 
@@ -184,13 +186,18 @@ def themen(bestehend):
     import suchvolumen
     # 02.10.2026 (Semrush-Ernte 2): Ratgeber-Phrasen mit gemessenem Volumen je Kollektion (ratgeber_themen_*.tsv) kommen
     # VOR die Google-Vorschläge und zählen als Ratgeber-Absicht; Kollektionen mit solchen Phrasen rücken nach Volumen vor.
+    # Nur echte Ratgeber-Phrasen (Frage/Anleitung): Kauf-Begriffe wie «high heels» oder «polo shirt» gehören auf die
+    # Kollektionsseite (seo_kollektion_suchbegriff.py) — ein Blog-Artikel dazu würde ihr Konkurrenz machen.
+    def sem(h):
+        return [(p, v) for p, v in suchvolumen.ratgeber_phrasen(h) if RATGEBER_STRENG.search(p)]
+
     def rang(k):
-        return -max([suchvolumen.fuer_kollektion(k[1])] + [v for _, v in suchvolumen.ratgeber_phrasen(k[0])])
+        return -max([suchvolumen.fuer_kollektion(k[1], k[0])] + [v for _, v in sem(k[0])])
     for handle, titel in sorted(menue_kollektionen(), key=rang):
         if handle in kuerzlich:
             continue
         stamm = re.sub(r"\s*&.*$", "", titel).strip()
-        semvol = dict(suchvolumen.ratgeber_phrasen(handle))
+        semvol = dict(sem(handle))
         kandidaten = []
         for s in list(semvol) + vorschlaege(stamm) + vorschlaege(stamm + " kaufen"):
             if s in kandidaten or KONKURRENZ.search(s) or ORT.search(s) or len(s.split()) < 2:

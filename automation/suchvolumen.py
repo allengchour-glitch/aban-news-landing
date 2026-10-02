@@ -52,8 +52,11 @@ def suchbegriffe(titel):
     return _MAP.get(kategorie_schluessel(titel), [])
 
 
-def fuer_kollektion(titel):
-    return max([volumen(b) for b in suchbegriffe(titel)] or [0])
+def fuer_kollektion(titel, handle=None):
+    """Höchstes Volumen der Suchbegriffe einer Kollektion. Mit handle zählen auch die handle-genauen Zuordnungen
+    («handle:<handle>» in kategorie_zu_suchbegriff_*.json) — «Hemden» unter Herren ist «herrenhemden», nicht «hemden»."""
+    begriffe = suchbegriffe(titel) + (suchbegriffe("handle:" + handle) if handle else [])
+    return max([volumen(b) for b in begriffe] or [0])
 
 
 def ratgeber_phrasen(handle):
