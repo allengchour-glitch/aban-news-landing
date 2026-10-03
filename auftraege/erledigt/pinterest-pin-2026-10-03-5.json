@@ -3,6 +3,22 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-03-5",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 5 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-03T20:28:55.072Z",
+  "dauer_s": 16.6,
+  "ergebnis": {
+    "gepinnt": [
+      "bluetooth-smartwatch-max7-1-32-display-578688"
+    ],
+    "unklar": [],
+    "uebersprungen": [
+      "bluetooth-smartwatch-max7-1-32-display-578688: schon auf der Pinnwand"
+    ],
+    "schritte": [
+      "Warteschlange 163, quittiert 24, offen 141",
+      "Boards auf dem Profil: /luxestyleCH/schmuck-accessoires/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Schmuck & Accessoires» (https://ch.pinterest.com/luxestyleCH/schmuck-accessoires/, 396 Z.): Titel SCHON DA"
+    ],
+    "bilder": []
+  }
 }
