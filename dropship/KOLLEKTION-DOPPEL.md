@@ -1,15 +1,9 @@
-# Kollektionen mit gleicher Regel — Stand 2026-10-02T10:51:54Z
+# Kollektionen mit gleicher Regel — Stand 2026-10-03T10:10:18Z
 
-OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 10 · Gruppen: 10 · SCHARF
+OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 9 · Gruppen: 9 · SCHARF
 
 Regel: eine Bleiberin je Gruppe (Menü > Startseite > Rotation > Kanäle > Text), die anderen abgemeldet + 301. Ledger `dropship/_kollektion_doppel.txt`. Rückweg: Redirect löschen + publizieren.
 
-
-### UND TAG EQUALS «geschenk» · VARIANT_PRICE LESS_THAN «30»
-
-- `🎁-geschenke-bis-chf-30` «Geschenke bis CHF 30» · 15314 Produkte · 312 P. (online store, menü, 10 kanäle, text 2) · **BLEIBT**
-- `geschenke-unter-30` «Geschenkideen unter CHF 30» · 4410 Produkte · 5 P. (2 kanäle, text 2) · **→ 301**
-- ⏸️ Produktzahlen ungleich [4410, 15314] — Shopify rechnet noch, heute übersprungen
 
 ### UND TAG EQUALS «bar»
 
