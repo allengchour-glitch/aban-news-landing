@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-03-3",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 3 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-03T20:26:35.945Z",
+  "dauer_s": 61.4,
+  "ergebnis": {
+    "gepinnt": [
+      "cowboy-longsleeve-kleid-in-dunkelblau-618000"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 23, offen 142",
+      "Boards auf dem Profil: /luxestyleCH/schuhe-sandalen/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 870 Z.): Titel nicht da",
+      "Bild 158444 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (927 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-03-3-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-03-3-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-03-3-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "cowboy-longsleeve-kleid-in-dunkelblau-618000",
+      "board": "Sommerkleider & Damenmode 2026",
+      "title": "Cowboy-Longsleeve-Kleid in Dunkelblau"
+    }
+  }
 }
