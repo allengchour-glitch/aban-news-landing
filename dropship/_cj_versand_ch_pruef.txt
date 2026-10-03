@@ -3237,3 +3237,14 @@ hd-smart-mini-projektor-fur-home-office-815424	1732629280057724928	6	23.88	ok	la
 magnetische-3-in-1-wireless-powerbank-606500	2406190917061606700	0	-	KEINE CH-Option → DRAFT	landeseite
 kabelloser-mini-staubsauger-mit-geblase-616100	2411060557051616600	7	24.62	ok	landeseite
 smart-hundespielzeug-346624	1356909656169123840	7	9.86	ok	landeseite
+spot-uv-sterilisator-tragbar-a47399	-	-	-	unklar keine CJ-SKU	landeseite
+silikon-gesichtsreinigungsburste-0787a2	-	-	-	unklar keine CJ-SKU	landeseite
+2-in-1-glatteisen-lockenstab-mit-display-590400	1603213630487670784	7	11.99	ok	landeseite
+beheizbare-hausschuhe-mit-temperaturregelung-615500	2410180251511616000	0	-	KEINE CH-Option → DRAFT	landeseite
+futterspender-fur-hunde-bc09f6	-	-	-	unklar keine CJ-SKU	landeseite
+modell-soft-velvet-wimpern-629800	2506010729471629900	16	5.20	ok	landeseite
+hunde-lederjacke-mit-adler-stickerei-99216d	-	-	-	unklar keine CJ-SKU	landeseite
+lederarmband-mit-verschluss-unisex-604800	2603290529321605300	16	4.50	ok	landeseite
+keramik-gewurztopf-im-nordic-style-492928	1386869403487965184	16	9.20	ok	landeseite
+edelstahl-antihaft-bratpfanne-421504	1379680905043513344	16	21.75	ok	landeseite
+rhinestone-kalenderuhr-fur-herren-980864	1477201536072421376	7	7.13	ok	landeseite
