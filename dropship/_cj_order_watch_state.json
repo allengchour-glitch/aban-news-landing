@@ -42,5 +42,9 @@
  "LX1021": {
   "status": "UNSHIPPED",
   "tracking": "EQKPT8612951662YQ"
+ },
+ "LX1022": {
+  "status": "CREATED",
+  "tracking": ""
  }
 }
