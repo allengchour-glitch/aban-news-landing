@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-02T10:29:17Z",
+ "stand": "2026-10-03T09:51:38Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Das Ende des Gedankenstrichs: Warum sich KI-Modelle in Texten immer noch verraten",
-   "u": "https://t3n.de/news/das-ende-des-gedankenstrichs-warum-sich-ki-modelle-in-texten-immer-noch-verraten-1766310/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-02T10:00:13Z",
-   "s": "Unternehmen wie OpenAI und Anthropic arbeiten hart daran, typische Muster aus ihren Sprachmodellen zu entfernen. Trotzdem gibt es weiterhin Lieblingsphrasen, die sie deutlich häufiger als Menschen ben…",
-   "sprache": "de"
-  },
-  {
-   "t": "Neue Kolumne Gewissenskonflikt: Ist Vibecoding okay - oder nur wenn ich es mache?",
-   "u": "https://www.golem.de/news/neue-kolumne-gewissenskonflikt-ist-vibecoding-okay-oder-nur-wenn-ich-es-mache-2610-213613.html",
+   "t": "Macos: Apple verschärft Full Disk Access wegen KI-Agenten",
+   "u": "https://www.golem.de/news/macos-apple-verschaerft-full-disk-access-wegen-ki-agenten-2610-213673.html",
    "q": "Golem",
-   "d": "2026-10-02T10:00:02Z",
-   "s": "Ich lasse mir selbst ab und zu Code und Bilder von KI generieren. Über KI-Slop darf ich mich trotzdem aufregen. Oder? Eine Kolumne von Tim Reinboth (Gewissenskonflikt, KI)",
+   "d": "2026-10-03T09:50:02Z",
+   "s": "Apple plant strengere Kontrollen für Full Disk Access. Grund sind laut Apple wachsende Risiken durch KI-Agenten. (MacOS, Apple)",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: Kostenloses Whitepaper: Wenn Hacker KI nutzen.",
-   "u": "https://www.heise.de/news/Kostenloses-Whitepaper-Wenn-Hacker-KI-nutzen-11438392.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-02T10:00:00Z",
-   "s": "KI verändert nicht nur Arbeitsprozesse, sondern auch die Möglichkeiten von Angreifern. Für Unternehmen verschärft sich damit die Bedrohungslage.",
-   "sprache": "de"
-  },
-  {
-   "t": "Google-Analyse: Weltraumrechenzentren wohl nicht vor 2035 kosteneffizient",
-   "u": "https://www.golem.de/news/google-analyse-weltraumrechenzentren-wohl-nicht-vor-2035-kosteneffizient-2610-213644.html",
-   "q": "Golem",
-   "d": "2026-10-02T09:43:01Z",
-   "s": "Google hat seinen ersten KI-Satelliten gestartet. Aufgrund der Startkosten bleiben irdische Rechenzentren aber wohl auf Jahre günstiger. (Weltall, Google)",
-   "sprache": "de"
-  },
-  {
-   "t": "Fobizz: Lehrkräfte entwickeln eher Lernbegleiter als Assistenten für sich selbst",
-   "u": "https://www.heise.de/hintergrund/Fobizz-Lehrkraefte-entwickeln-eher-Lernbegleiter-als-Assistenten-fuer-sich-selbst-11474035.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-02T09:39:00Z",
-   "s": "Lehrkräfte entwickeln KI-Assistenten mehrheitlich als Lernbegleiter für Schüler. Doch ob die Systeme tatsächlich im Unterricht ankommen, bleibt offen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Vom Chatbot zur Bild-KI: Diese 7 lokalen KI-Tools solltet ihr kennen",
-   "u": "https://t3n.de/news/statt-chatgpt-7-lokale-ki-anwendungen-1643976/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "KI im IT-Alltag: 89 Prozent konnten ihre Produktivität steigern – aber nicht alle profitieren gleichermaßen",
+   "u": "https://t3n.de/news/ki-im-it-alltag-89-prozent-konnten-ihre-produktivitaet-steigern-aber-nicht-alle-profitieren-gleichermassen-1766467/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-02T09:30:00Z",
-   "s": "Es muss nicht immer ChatGPT, Claude, Jev oder Midjourney sein. Mit den richtigen Tools könnt ihr auch auf eurem Rechner KI-Anwendungen ausführen. Wir geben euch einen Überblick. weiterlesen auf t3n.de",
+   "d": "2026-10-03T09:25:03Z",
+   "s": "In deutschen IT-Abteilungen ist man sich einig: KI spart mehr Zeit, als sie zusätzliche Arbeit verursacht. Je nach Position gehen die Erfahrungen von Fach- und Führungskräften aber immer noch auseinan…",
    "sprache": "de"
   },
   {
-   "t": "AutoSynthData: Generating Training Data for Enterprise Agents",
-   "u": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
-   "q": "Hugging Face",
-   "d": "2026-10-02T04:01:31Z",
-   "s": "",
-   "sprache": "en"
+   "t": "Künstliche Intelligenz: Gemini greift auf Google Wallet zu",
+   "u": "https://www.golem.de/news/kuenstliche-intelligenz-gemini-greift-auf-google-wallet-zu-2610-213674.html",
+   "q": "Golem",
+   "d": "2026-10-03T09:02:02Z",
+   "s": "Gemini findet ab sofort Bord- sowie Treuekarten und wertet Ausgaben aus. Vorerst startet die Funktion allerdings nur in den USA. (Gemini, Google)",
+   "sprache": "de"
   },
   {
-   "t": "Musk’s AI chatbot Grok reportedly encouraged Trump to capture Venezuela’s president",
-   "u": "https://techcrunch.com/2026/10/01/musks-ai-chatbot-grok-reportedly-encouraged-trump-to-capture-venezuelas-president/",
+   "t": "Leica bleibt Leica und KI trifft Kunst – Fotonews der Woche 40/2026",
+   "u": "https://www.heise.de/news/Leica-bleibt-Leica-und-KI-trifft-Kunst-Fotonews-der-Woche-40-2026-11474285.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-03T08:00:00Z",
+   "s": "Leica-Verkauf gescheitert, Australiens KI-Gesetz trifft Wandmalerei, In-N-Out gegen Teamshooting und ein spektakuläres Sonnenfinsternisbild.",
+   "sprache": "de"
+  },
+  {
+   "t": "Meta Muse: Warum eure Anrufe nicht von der KI, sondern von Menschen bearbeitet werden",
+   "u": "https://t3n.de/news/meta-muse-anrufe-ki-mensch-1764706/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-03T07:50:00Z",
+   "s": "Verspricht Meta bei Muse AI mehr, als das Unternehmen halten kann? Der KI-Agent soll theoretisch Anrufe für Nutzer:innen tätigen. Jetzt gibt es interne Kommunikation, die darauf hinweist, dass stattde…",
+   "sprache": "de"
+  },
+  {
+   "t": "Weniger Prompt, mehr Platz für Code: Pi 1.0.0 ist da",
+   "u": "https://www.heise.de/news/Coding-Agent-Pi-Mehr-Platz-im-Prompt-weniger-Ballast-11474629.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-03T06:20:00Z",
+   "s": "Pi ist ein erweiterbarer KI-Coding-Agent fürs Terminal. Version 1.0.0 strafft den Codemode, ergänzt Bildgenerierung und startet im Vollbild.",
+   "sprache": "de"
+  },
+  {
+   "t": "Betroffene in ganz Europa: Mindestens 147 Abgeordnete wurden Ziel sexualisierter Deepfakes",
+   "u": "https://netzpolitik.org/2026/betroffene-in-ganz-europa-mindestens-147-abgeordnete-wurden-ziel-sexualisierter-deepfakes/",
+   "q": "netzpolitik.org",
+   "d": "2026-10-03T04:28:56Z",
+   "s": "Ein Gesicht reicht: Mit KI lassen sich Fotos für sexualisierte Deepfakes missbrauchen (Symbolbild) – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Egor KomarovEine neue Studie zeigt, wie Politike…",
+   "sprache": "de"
+  },
+  {
+   "t": "Meta wants your next gadget to be Muse-infused",
+   "u": "https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/",
    "q": "TechCrunch AI",
-   "d": "2026-10-01T21:08:11Z",
-   "s": "President Trump reportedly asked for Grok's opinion before invading Venezuela and capturing Nicolás Maduro.",
+   "d": "2026-10-03T00:45:39Z",
+   "s": "Meta wants Muse in your TV and your toaster, so it's giving the code away for free.",
    "sprache": "en"
   },
   {
-   "t": "ChatGPT can now virtually try on clothes for you",
-   "u": "https://techcrunch.com/2026/10/01/chatgpt-can-now-virtually-try-on-clothes-for-you/",
+   "t": "Sean Parker is rebuilding Stability AI around music",
+   "u": "https://techcrunch.com/2026/10/02/sean-parker-is-rebuilding-stability-ai-around-music/",
    "q": "TechCrunch AI",
-   "d": "2026-10-01T19:21:53Z",
-   "s": "OpenAI is rolling out new shopping features for ChatGPT that let users virtually try on clothing and accessories using their own photos and save products they like to a Favorites library.",
+   "d": "2026-10-02T21:09:14Z",
+   "s": "Sean Parker, who once taught the music industry what asking for forgiveness looks like, is now back with the labels' blessing and money.",
    "sprache": "en"
   },
   {
-   "t": "The eternal complement",
-   "u": "https://openai.com/index/the-eternal-complement",
+   "t": "A model guide for the GPT-6 family",
+   "u": "https://openai.com/index/practical-guide-building-gpt-6",
    "q": "OpenAI",
-   "d": "2026-10-01T17:00:00Z",
-   "s": "Advanced AI may matter most for the routine work behind breakthrough ideas. Explore why execution could shape the next economy and the pace of progress.",
+   "d": "2026-10-02T16:15:00Z",
+   "s": "Learn how startups can choose GPT-6 models, tune reasoning effort, improve prompts and skills, coordinate tools, and prepare workflows for production.",
    "sprache": "en"
   }
  ]
