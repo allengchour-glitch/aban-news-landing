@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KI-Trading-Bot: ehrlich geprüft — was er kann und was nicht · aban news</title>
-<meta name="description" content="KI-Trading-Bots ehrlich geprüft: Was ein Bot auf 26 Jahren echter Kurse wirklich schafft, die Warnzeichen laut FINMA, BaFin und CFTC, und wie du jeden Bot in 15 Minuten prüfst. Keine Anlageberatung.">
+<title>KI-Trading-Bot (Claude, ChatGPT): ehrlich geprüft · aban news</title>
+<meta name="description" content="KI-Trading-Bots ehrlich geprüft, auch die Claude- und ChatGPT-Bots aus TikTok: Was ein Bot auf 26 Jahren echter Kurse wirklich schafft, die Warnzeichen laut FINMA, BaFin und CFTC, und wie du jeden Bot in 15 Minuten prüfst. Keine Anlageberatung.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/ki-trading-bot.html">
 <meta property="og:title" content="KI-Trading-Bot: ehrlich geprüft">
@@ -20,13 +20,14 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"KI-Trading-Bot: ehrlich geprüft — was er kann und was nicht",
 "description":"Was ein Trading-Bot auf 26 Jahren echter Kurse schafft, die Warnzeichen laut FINMA, BaFin und CFTC und eine Prüfliste für jeden Bot.",
-"inLanguage":"de","datePublished":"2026-10-02","mainEntityOfPage":"https://abannews.com/ki-trading-bot.html","image":"https://abannews.com/og-image.png",
+"inLanguage":"de","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://abannews.com/ki-trading-bot.html","image":"https://abannews.com/og-image.png",
 "author":{"@type":"Person","name":"Allen Chour"},
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com","logo":{"@type":"ImageObject","url":"https://abannews.com/og-image.png"}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Gibt es einen KI-Trading-Bot, der zuverlässig Geld verdient?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test nicht. Ein Bot, der jedes Kursmuster seit 2000 auswendig lernt, lag auf bekannten Kursen zu 100 % richtig, auf neuen Jahren aber nur so oft wie jemand, der einfach investiert bleibt. Mit klassischen Regeln verdiente er auf keinem von acht Märkten verlässlich mehr als Kaufen und Halten. Die US-Aufsicht CFTC schreibt: KI kann die Zukunft nicht vorhersagen."}},
+{"@type":"Question","name":"Kann Claude oder ChatGPT einen Trading-Bot programmieren, der Geld verdient?","acceptedAnswer":{"@type":"Answer","text":"Programmieren ja, Geld verdienen in unserem Test nein. Die steilen Gewinnkurven in vielen Videos entstehen meist durch einen Fehler im Test: Das Signal nutzt den heutigen Schlusskurs, der Gewinn desselben Tages wird trotzdem mitgezählt. Mit diesem Fehler macht eine einfache 5-Tage-Regel beim S&P 500 +61,6 % pro Jahr, korrekt gerechnet −5,1 %. Unser eigener, mit Claude gebauter KI-Bot dämpfte Einbrüche stark, verdiente aber weniger als einfaches Halten."}},
 {"@type":"Question","name":"Woran erkenne ich ein unseriöses Trading-Bot-Angebot?","acceptedAnswer":{"@type":"Answer","text":"Typische Warnzeichen laut CFTC und BaFin: garantierte oder sehr hohe Renditen, Trefferquoten nahe 100 %, Werbung über Influencer oder Fremde im Internet, kein Impressum, viele fast identische Websites und ein niedriger Einstieg wie 250 Euro. Prüfe den Anbieter auf der Warnliste der FINMA und der Kantonspolizei Zürich."}},
 {"@type":"Question","name":"Was kann ein Trading-Bot wirklich?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test vor allem Verluste dämpfen: Beim S&P 500 lag der schlimmste Einbruch bei −34 % statt −57 % beim einfachen Halten. Dafür verdiente er weniger, +6.1 % statt +8.7 % pro Jahr. Er ist eher eine Sicherung als ein Geldautomat."}},
 {"@type":"Question","name":"Wie prüfe ich die Regel eines Bots selbst?","acceptedAnswer":{"@type":"Answer","text":"Nur Jahre zählen, die beim Entwickeln nicht verwendet wurden, das Signal erst am nächsten Tag handeln, Kosten einrechnen und das Ergebnis mit Kaufen und Halten sowie mit Zufallsstrategien vergleichen. Genau das macht unser Strategie-Prüfstand."}}
@@ -80,6 +81,8 @@ td{white-space:nowrap}td:first-child{white-space:normal}
 details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 16px;margin:8px 0}
 summary{cursor:pointer;font-weight:700;padding:11px 0}
 .cta{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:8px;margin-top:6px}
+.prompt{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:.86rem/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;margin:10px 0 6px}
+.kopier{background:var(--cream);color:var(--amber-dk);border:1px solid var(--amber-lt);border-radius:8px;padding:7px 12px;font-weight:700;cursor:pointer;font-size:.88rem}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;font-size:.84rem;color:var(--muted)}
 footer a{color:var(--muted)}
 </style>
@@ -92,7 +95,7 @@ footer a{color:var(--muted)}
 <div class="wrap">
 
 <h1>KI-Trading-Bots ehrlich geprüft</h1>
-<p class="lead">„Die KI handelt für dich, du kassierst." So klingt die Werbung. Wir haben einen Bot selbst auf 26 Jahren echter Kurse lernen lassen, die Warnungen der Aufsichtsbehörden gelesen und eine Prüfliste gebaut, mit der du jedes Angebot in 15 Minuten einschätzt. Keine Anlageberatung, keine Versprechen.</p>
+<p class="lead">„Die KI handelt für dich, du kassierst." So klingt die Werbung. Wir haben einen Bot selbst auf 26 Jahren echter Kurse lernen lassen, die Claude- und ChatGPT-Bots aus den Videos nachgerechnet, die Warnungen der Aufsichtsbehörden gelesen und eine Prüfliste gebaut, mit der du jedes Angebot in 15 Minuten einschätzt. Keine Anlageberatung, keine Versprechen.</p>
 
 <h2>Die unbequeme Zahl zuerst</h2>
 <div class="kasten warn">
@@ -128,6 +131,46 @@ footer a{color:var(--muted)}
 <div class="kasten gut">
   <p><b>Was ein Bot wirklich kann:</b> Verluste dämpfen. Der schlimmste Einbruch ist fast halbiert, dafür verdient er weniger. Ein Bot ist eher eine Sicherung als ein Geldautomat. Wer dir das Gegenteil verspricht, muss es mit ungesehenen Jahren und nach Kosten belegen.</p>
 </div>
+
+<h2 id="claude-bot">Die Claude- und ChatGPT-Bots aus TikTok und YouTube</h2>
+<p>Tausende Videos zeigen, wie Claude oder ChatGPT in wenigen Minuten einen Trading-Bot programmiert, am Ende eine steil steigende Gewinnkurve. Das Programmieren klappt tatsächlich: Claude schreibt in Minuten lauffähigen Code. Das Problem ist die Kurve.</p>
+
+<h3>Der häufigste Fehler: der Bot sieht in die Zukunft</h3>
+<p>Der Bot entscheidet mit dem heutigen Schlusskurs, ob er kauft. Der Test bucht ihm aber schon den Gewinn <b>desselben Tages</b> gut, also eine Bewegung, die zum Zeitpunkt der Entscheidung bereits vorbei war. Eine Zeile Code, kaum zu sehen, und die Kurve explodiert. Wir haben es mit einer einfachen Regel nachgemessen: „Kaufen, wenn der Kurs höher ist als vor 5 Tagen, sonst Bargeld.“</p>
+<div class="tab"><table>
+<thead><tr><th>Markt</th><th>mit Zukunftsblick</th><th>korrekt, mit Kosten</th><th>einfach halten</th></tr></thead>
+<tbody>
+<tr><td>S&amp;P 500 (2000–2026)</td><td>+61.6&nbsp;% pro Jahr, Einbruch −9&nbsp;%</td><td class="nein">−5.1&nbsp;% pro Jahr, Einbruch −80&nbsp;%</td><td>+6.5&nbsp;% pro Jahr, Einbruch −57&nbsp;%</td></tr>
+<tr><td>Bitcoin (2014–2026)</td><td>+728&nbsp;% pro Jahr, Einbruch −16&nbsp;%</td><td>+38.2&nbsp;% pro Jahr, Einbruch −82&nbsp;%</td><td>+54.3&nbsp;% pro Jahr, Einbruch −83&nbsp;%</td></tr>
+</tbody></table></div>
+<p class="klein">Gleiche Regel, gleiche Kurse, einziger Unterschied: An welchem Tag die Entscheidung zählt. Korrekt = Signal am Schluss, gehandelt ab dem nächsten Tag, 0.1&nbsp;% Kosten pro Wechsel. Tageskurse von Yahoo Finance bis 23.09.2026, gemessen am 03.10.2026.</p>
+<p>Dazu kommen die üblichen Schönheitsfehler: keine Gebühren und Spreads, nur eine gute Börsenphase (etwa Bitcoin 2020–2021), und gezeigt wird die beste von vielen ausprobierten Varianten. Frag dich auch, womit der Kanal Geld verdient: mit dem Bot, oder mit Kursen, Broker-Empfehlungslinks und Aufrufen?</p>
+
+<h3>Wir haben selbst mit Claude einen Bot gebaut</h3>
+<p>Ein Komitee aus 18 Regeln (RSI, MACD, Bollinger, Goldener Schnitt und andere), das laufend lernt, welche Regel gerade gut liegt, dazu ein lernendes Vorhersagemodell und eine Risikosteuerung. Ehrlich getestet: Signal erst am Folgetag, Kosten, Gegenproben gegen Zufall.</p>
+<div class="tab"><table>
+<thead><tr><th>Markt</th><th>KI-Bot pro Jahr</th><th>Halten pro Jahr</th><th>KI-Bot schlimmster Einbruch</th><th>Halten schlimmster Einbruch</th></tr></thead>
+<tbody>
+<tr><td>S&amp;P 500 (2001–2026)</td><td>+3.2&nbsp;%</td><td>+7.1&nbsp;%</td><td>−15&nbsp;%</td><td>−57&nbsp;%</td></tr>
+<tr><td>Bitcoin (2015–2026)</td><td>+10.0&nbsp;%</td><td>+43.5&nbsp;%</td><td>−22&nbsp;%</td><td>−83&nbsp;%</td></tr>
+<tr><td>Depot aus 7 Märkten (2004–2026)</td><td>+0.8&nbsp;%</td><td>+8.1&nbsp;% (gleich verteilt, monatlich ausgeglichen)</td><td>−8&nbsp;%</td><td>−34&nbsp;%</td></tr>
+</tbody></table></div>
+<p>Er bremst Einbrüche stark, verdient aber deutlich weniger. Das Lernen brachte im Test keinen Vorteil: Ein Komitee ohne Lernen war gleich gut, und je stärker der Bot lernte, desto schlechter wurde er. Am besten schnitt die langweiligste Variante ab: gleich verteilt halten und einmal im Monat ausgleichen.</p>
+
+<h3>Wenn du trotzdem einen Bot mit Claude baust</h3>
+<p>Gib diesen Prüfauftrag mit, bevor du einer Kurve glaubst:</p>
+<pre class="prompt" id="pruefprompt">Prüfe den Backtest dieses Trading-Bots streng, bevor wir dem Ergebnis glauben:
+1. Das Signal darf nur Kurse bis und mit heute nutzen. Gehandelt wird frühestens zum nächsten Kurs. Zeig mir die Codezeile, die das sicherstellt.
+2. Rechne 0.1 % Kosten pro Kauf und Verkauf ein (bei CFDs zusätzlich den Spread und die Übernachtgebühren).
+3. Entwickle die Regel nur auf den Jahren bis 2018. Melde das Ergebnis ab 2019 getrennt, ohne danach noch etwas anzupassen.
+4. Vergleiche nach Kosten mit einfachem Kaufen und Halten und mit 200 Zufallsstrategien, die gleich oft investiert sind.
+5. Gegenprobe: Baue absichtlich eine Regel, die den morgigen Kurs kennt. Sie muss fast immer richtig liegen. Liegt meine Regel in der Nähe, steckt ein Zukunftsblick im Code.
+Sag mir am Ende in einem Satz, ob die Regel Halten nach Kosten auf den ungesehenen Jahren schlägt.</pre>
+<button type="button" class="kopier" data-kopier="pruefprompt">Prüfauftrag kopieren</button>
+<p>Danach erst ein <b>Papierkonto</b> (Spielgeld beim Broker) für einige Monate, mit laufender Buchführung, nicht rückwirkend. Eine Regel kannst du auch ohne Code gratis im <a href="/backtest-labor.html">Backtest-Labor</a> testen, mit Zufalls-Vergleich und Zukunfts-Gegenprobe.</p>
+<script>
+(function(){var b=document.querySelector('[data-kopier]');if(!b||!navigator.clipboard)return;b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-kopier')).textContent;navigator.clipboard.writeText(t).then(function(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Prüfauftrag kopieren'},1800)}).catch(function(){})})})();
+</script>
 
 <h2>Sieben Warnzeichen bei Bot-Angeboten</h2>
 <ol>
@@ -177,6 +220,7 @@ footer a{color:var(--muted)}
 
 <h2>Häufige Fragen</h2>
 <details><summary>Gibt es einen KI-Trading-Bot, der zuverlässig Geld verdient?</summary><p>In unserem Test nicht. Auswendig gelernt lag er auf bekannten Kursen zu 100&nbsp;% richtig, auf neuen Jahren nur so oft, wie der Markt ohnehin steigt. Mit klassischen Regeln verdiente er auf keinem von acht Märkten verlässlich mehr als Kaufen und Halten. Die CFTC schreibt: KI kann die Zukunft nicht vorhersagen.</p></details>
+<details><summary>Kann Claude oder ChatGPT einen Trading-Bot programmieren, der Geld verdient?</summary><p>Programmieren ja, Geld verdienen in unserem Test nein. Die steilen Kurven in vielen Videos entstehen meist durch einen <a href="#claude-bot">Zukunftsblick im Test</a>: mit diesem Fehler +61.6&nbsp;% pro Jahr beim S&amp;P 500, korrekt gerechnet −5.1&nbsp;%. Unser eigener, mit Claude gebauter Bot dämpfte Einbrüche, verdiente aber weniger als Halten.</p></details>
 <details><summary>Woran erkenne ich ein unseriöses Angebot?</summary><p>Garantierte oder sehr hohe Renditen, Trefferquoten nahe 100&nbsp;%, Werbung über Influencer, kein Impressum, viele gleiche Websites, ein Einstieg ab 250 Euro und Prämien fürs Anwerben. Dann zuerst die Warnlisten der FINMA und der Kantonspolizei Zürich prüfen.</p></details>
 <details><summary>Was kann ein Trading-Bot wirklich?</summary><p>Verluste dämpfen: beim S&amp;P 500 −34&nbsp;% statt −57&nbsp;% im schlimmsten Einbruch. Dafür +6.1&nbsp;% statt +8.7&nbsp;% pro Jahr. Eine Sicherung, kein Geldautomat.</p></details>
 <details><summary>Wie prüfe ich die Regel eines Bots selbst?</summary><p>Nur ungesehene Jahre zählen, das Signal erst am nächsten Tag handeln, Kosten einrechnen und mit Kaufen und Halten sowie mit Zufallsstrategien vergleichen. Das macht der <a href="#pruefstand">Strategie-Prüfstand</a> automatisch.</p></details>
