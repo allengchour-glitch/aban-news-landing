@@ -101,7 +101,7 @@ Die erstatteten BigBuy-Bestellungen #1006–#1008 und #1016/#1019 haben nichts g
 | Jul 2031 | 56 | 2'412 | 1'012 | 29'094 | 103 | 3'720 |
 | Aug 2031 | 57 | 2'448 | 1'029 | 30'123 | 105 | 3'797 |
 
-«kumuliert» beginnt bei −194, dem Ist-Stand vom 03.10. Nach der Basis-Rechnung ist der Verlust aus der Anfangszeit im **Dezember 2026** wieder eingeholt.
+«kumuliert» beginnt bei −194, dem Ist-Stand vom 03.10. Nach der Basis-Rechnung ist der Verlust aus der Anfangszeit im **März 2027** wieder eingeholt (vorsichtig: frühestens 2029).
 
 ## Was die Kurve wirklich bewegt (gemessen, nicht angenommen)
 - **Ein Kauf mehr pro Monat bringt etwa CHF 20.** Bei den heutigen Fixkosten braucht es **6 Käufe im Monat**, damit die Fixkosten gedeckt sind.
