@@ -1,5 +1,24 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🤖 2026-10-03 — KI-Bot-Trader (`tools/trading/ki_bot/`, Anleitung README.md)
+> - **Kern** (`kern.py`): Komitee aus 18 Experten (9 Stile aus stil_labor, 6 Indikator-Regeln, Halten, Cash, Online-Logit
+>   auf 13 Merkmalen) + lernender Gewichter (Hedge, eta 10, Vergessen 0.995) + Vol-Ziel 15 %, Verlust-Bremse, Umschicht-Band.
+>   Parameter vorab fest. Reines Python (kein numpy im Container).
+> - **Messung** (`bot.py --backtest` → data/ki-bot-backtest.json): KI-Bot senkt Einbrüche stark (S&P −14 % statt −57 %), verdient
+>   aber weniger; Lernen bringt nichts ggü. Komitee ohne Lernen, stärkeres Lernen schlechter (eta 5 > 10 > 20). Portfolio:
+>   **gleich verteilt + monatlich ausgleichen gewinnt** (2004– ohne BTC +8,1 %/J Sharpe 0,65 vs KI-Bot +0,8 %, 0,29).
+> - **Tages-Depot** (`bot.py --lauf`): 3 Strategien (KI-Bot, Ausgleich, Trendfilter 200) wie echte Konten (Bargeld+Positionen),
+>   Band 2 %, idempotent, nur anhängen → data/ki-bot.json. Läuft auf dem PC.
+> - **Plus500 hat für CFD-Konten KEINE API/MetaTrader** (BrokerChooser) → `signale.py`: Daytrading-Signale per Telegram mit
+>   GÜTESIEGEL (letzte 240 ungesehene Tage nach Kosten im Plus + Münzwurf < 20 %), frisch (≤ 1 Std.), laufende Kerze ignoriert,
+>   Grösse aus Konto/Risiko, Schattenbuch + Lagebericht. Am 03.10.: **kein Markt hat das Siegel** (alle nach Kosten im Minus).
+> - **Alpaca** (`broker_alpaca.py`): Papier Standard; Echtgeld nur mit ALPACA_PAPER=false + KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD";
+>   Anteil 0.5, max 1000 USD/Auftrag, kein Short/Margin, Not-Aus (KI_BOT_STOP / Datei STOP), Daytrade-Bracket nur Kauf,
+>   Glattstellen 20 Min vor Schluss (Alpaca-Uhr). **Kein GitHub-Job mit Broker-Schlüsseln** (Sicherheitsprüfung blockierte es;
+>   bewusst Sache des Users).
+> - Tests: `test_ki_bot.py` 37/37 inkl. nachgebautem Alpaca-Server; Kausalitäts-Test erkennt eingebauten Zukunftsblick
+>   (Mutationsprobe — erste Fassung war zu schwach, Renditen werden jetzt gespiegelt).
+
 ## 💱 2026-10-02 — Forex gelernt: `forex-lernen.html` + Positionsgrössen-Rechner
 > - **Belegte Fakten:** ESMA-Hebel (30:1 Hauptpaare, 20:1 andere Paare/Gold/grosse Indizes, 10:1, 5:1, 2:1; Zwangsschliessung bei
 >   50 % Mindestmarge; 74–89 % Privatkonten verlieren), BIS April 2025: 9,6 Bio. USD/Tag, FINMA-Bewilligung + Warnliste (viele „FX/Swiss“-Namen).
