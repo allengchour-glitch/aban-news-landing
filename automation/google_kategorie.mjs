@@ -90,6 +90,7 @@ const NACH_TYP = {
   'Aufbewahrung & Organizer': 'Home & Garden > Household Supplies > Storage & Organization',
   'Elektronik':               'Electronics',
   'Schmuck':                  'Apparel & Accessories > Jewelry',
+  'Büro & Home Office':       'Office Supplies',   // 03.10.2026 neuer Grind-Typ
   'Küche & Bar':              'Home & Garden > Kitchen & Dining',
 };
 

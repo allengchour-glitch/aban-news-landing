@@ -214,6 +214,8 @@ NACH_TYP = {
     # «Aufbewahrung & Organizer» steht bewusst NICHT mehr hier — siehe AUFB_TITEL unten.
     "Elektronik":            "Electronics",
     "Schmuck":               "Apparel & Accessories > Jewelry",
+    # 03.10.2026: neuer Grind-Typ (32 Produkte im Google-Kanal ohne Kategorie) — Grundpfad, Feinheit macht google_fein_ki.
+    "Büro & Home Office":    "Office Supplies",
 }
 
 
