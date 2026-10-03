@@ -3083,3 +3083,5 @@ warme-touchscreen-handschuhe-fur-ski-und-velo-651900	2510271003471652100	16	9.61
 eleganter-damenmantel-mit-fellkragen-601300	2512290950491601600	16	11.60	ok	landeseite
 lassiger-kapuzenpullover-fur-damen-612700	2602240223181613100	16	11.00	ok	landeseite
 hohe-damenstiefel-628000	2606100608291628600	16	12.56	ok	landeseite
+winter-heizweste-mit-batterie-fur-herren-605000	2607091029361605700	7	17.69	ok	landeseite
+eleganter-edelstahl-kerzenstander-im-french-st-625700	2607210223041626500	16	11.00	ok	landeseite
