@@ -3049,3 +3049,7 @@ damenstiefel-aus-vollnarbenleder-mit-weicher-s-638700	2605080256161639300	16	12.
 trendy-knochelstiefel-fur-herren-631700	2602280245221632900	16	17.66	ok	landeseite
 borosilikatglas-tasse-mit-skala-957378	2001554398306037762	0	-	KEINE CH-Option → DRAFT	landeseite
 windschutzjacke-623700	2607211537531624400	16	8.79	ok	landeseite
+herren-strickpullover-mit-stehkragen-und-half-609600	2602100932561600000	16	13.65	ok	landeseite
+gefutterter-kapuzenpullover-mit-reissverschlus-602400	2607230559541603100	16	13.04	ok	landeseite
+herren-pullover-langarm-strickpullover-611700	2607221641461612400	16	12.81	ok	landeseite
+herren-kunstfellmantel-mit-leopardenmuster-614000	2606230822151615600	16	17.77	ok	landeseite
