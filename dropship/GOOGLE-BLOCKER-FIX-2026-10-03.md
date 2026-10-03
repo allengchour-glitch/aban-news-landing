@@ -25,3 +25,11 @@ statt als Netzfehler. Aufseher: Bildtausch alle 2 h für drei Klassen; Varianten
 ## OFFEN / Nachmessen
 - Nächster Google-Vollscan (`google_feedback_wache.py`, täglich): Klassen neu zählen; Bildtausch «tausch-g» getrennt von «tausch» auswerten.
 - «Motiv»-Fälle (Totenkopf, Horror-Masken, Waffen-Optik, knappe Mode) bleiben bei Google blockiert. Sie sind ohnehin nicht sichtbar, deshalb kein Eingriff.
+
+## Endstand Bildtausch (03.10. ~01:45 UTC)
+| Klasse | getauscht | behalten (kein besseres Bild) | Motiv ist das Problem | offen (≤ 1 Bild) |
+|---|---:|---:|---:|---:|
+| Inappropriate image (250) | 136 (27 mit zwei Modellen, 109 Gemini allein) | 24 | 88 | 2 |
+| Restricted adult content (92) | 43 | 7 | 35 | 7 |
+| Promotional overlay (8) | 3 | 5 | — | — |
+Nachmessung: nächster `google_feedback_wache`-Vollscan; «tausch-g» getrennt von «tausch» auswerten (Erwartung aus 30.09.: ~76 % frei).

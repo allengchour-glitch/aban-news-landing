@@ -3106,3 +3106,18 @@ vielseitiger-cardigan-mit-goldknopfen-617300	2604061019271617700	16	10.15	ok	lan
 herren-langarm-sweatshirt-loose-fit-636500	2605280707181637100	16	9.75	ok	landeseite
 wind-und-wasserdichte-outdoor-jacke-615400	2605090233411616000	16	9.47	ok	landeseite
 frauenpullover-aus-polyester-615700	2603170953541616000	16	10.35	ok	landeseite
+damenstiefel-mit-klotzhacke-aus-nappaleder-639701	2606190900351630400	11	29.34	ok	landeseite
+mini-usb-handwarmer-mit-magnetfunktion-639300	2511080958491639400	6	7.78	ok	landeseite
+mehrlagige-musselindecke-aus-baumwolle-608000	2603240753551608500	16	22.91	ok	landeseite
+extra-dickes-lammwoll-fleece-hoodie-629900	2608030331121620600	16	10.42	ok	landeseite
+herren-rollkragenpullover-aus-wolle-604000	2608100404521604700	16	7.85	ok	landeseite
+overknee-stiefel-mit-stretch-und-klobigem-absa-618900	2601181210231619200	16	12.32	ok	landeseite
+herren-trenchcoat-im-biker-stil-600900	2606230420541601500	16	15.32	ok	landeseite
+retro-workstiefel-627700	2506050125581627900	16	23.50	ok	landeseite
+warme-winter-hausschuhe-063744	1446742119636144128	16	11.23	ok	landeseite
+elegantes-bodycon-kleid-mit-halbem-rollkragen-615200	2606120150071615900	16	9.07	ok	landeseite
+eleganter-kerzenhalter-gold-marmor-638400	2602141219251638700	11	42.20	ok	landeseite
+hoodie-jogginghose-set-im-partnerlook-637400	2510290123201637700	16	12.21	ok	landeseite
+damen-strickpullover-mit-herzmuster-reissversc-602300	2606300334551602900	16	10.15	ok	landeseite
+freizeitjacke-fur-fruhling-und-herbst-628000	2606251156281628600	16	11.60	ok	landeseite
+lockere-jeansjacke-im-korea-stil-fur-herren-566274	2061660218522361858	-	-	unklar 200 Success rest=15	landeseite
