@@ -2021,3 +2021,4 @@ gid://shopify/Product/15427241443713	ersetzt
 gid://shopify/Product/15427241476481	ersetzt
 gid://shopify/Product/15427241542017	ersetzt
 gid://shopify/Product/15427241574785	ersetzt
+gid://shopify/Product/15427241607553	ersetzt
