@@ -47134,3 +47134,10 @@ wollhut-fur-haustiere-236224	ap-2	Haustierbedarf	2026-10-03T08:16Z
 schwarzer-weisser-hundesweater-herbst-050240	ap-2	Haustierbedarf	2026-10-03T08:16Z
 hahnchenstander-aus-stahl-fur-grill-030720	hg-10	Haushalt & Wohnen	2026-10-03T10:11Z
 eisen-steakpressplatte-fur-grill-teppanyaki-025088	hg-10	Haushalt & Wohnen	2026-10-03T10:11Z
+leinwand-gestelltes-leder-sessel-mit-stauraum-621400	hg-10	Haushalt & Wohnen	2026-10-03T17:12Z
+interaktives-diy-graffiti-deckenmalset-625600	hg-10	Haushalt & Wohnen	2026-10-03T17:12Z
+quadratisches-badmatte-mit-saugkappen-630600	hg-10	Haushalt & Wohnen	2026-10-03T17:12Z
+sofabett-mit-modernem-muster-617500	hg-10	Haushalt & Wohnen	2026-10-03T17:12Z
+flocked-home-fussmatte-40x60-cm-616500	hg-3-26	Haushalt & Wohnen	2026-10-03T17:12Z
+kissen-fur-balkonfenster-gestreift-55-55-cm-604500	hg-15	Haushalt & Wohnen	2026-10-03T17:12Z
+rundes-sitzkissen-in-prussian-blue-634900	hg-15	Haushalt & Wohnen	2026-10-03T17:12Z
