@@ -1062,7 +1062,20 @@ while true; do
     if [ "$ALTER" -gt 7200 ] || absturz_nachholen "$GBT" || still_gestorben "$GBT"; then
       touch "$GBT"
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_bild_tausch.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
-          SCHARF=1 N=60 exec timeout 3300 python3 automation/google_bild_tausch.py" >> "$GBT" 2>&1 9>&- & )
+          for K in 'Inappropriate image' 'Restricted adult content' 'Promotional overlay on image'; do \
+            KLASSE=\"\$K\" EIN_MODELL=1 SCHARF=1 N=60 timeout 1500 python3 automation/google_bild_tausch.py; done" >> "$GBT" 2>&1 9>&- & )
+    fi
+  fi
+  # 03.10.2026: drei Bildklassen statt einer (Adult/Überlagerung mit eigenem Prompt); EIN_MODELL=1 greift nur, wenn der
+  # Zweitprüfer leer ist (Groq-Tageskontingent JE Modell) — gemessen 35/46 getauschte frei (76 %) gegen 4/19 unberührte.
+  # GOOGLE «Image too small» (03.10.2026): zu kleine VARIANTEN-Bilder (< 250 px) per fileUpdate an Ort und Stelle auf 600 px.
+  GVG=/tmp/google_variantenbild_gross.log
+  if [ -f "$REPO/automation/google_variantenbild_gross.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GVG" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GVG"; then
+      touch "$GVG"
+      ( cd "$REPO" && SCHARF=1 timeout 1500 python3 automation/google_variantenbild_gross.py >> "$GVG" 2>&1 )
+      echo "$(date -u +%H:%M) $(tail -1 "$GVG")"
     fi
   fi
   # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
