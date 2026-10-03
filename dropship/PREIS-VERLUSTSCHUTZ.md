@@ -1,35 +1,35 @@
-# Preis-Verlustschutz — scharf 2026-10-02 15:59 UTC
+# Preis-Verlustschutz — scharf 2026-10-03 08:30 UTC
 
-Regel: Preis ≥ Mindestpreis bei **25% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
+Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **358** · Varianten gehoben: **3405** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 2.14× · Varianten ohne EK (nicht geprüft): 1336
-- geschrieben: 358 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **171** · Varianten gehoben: **902** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.08× · Varianten ohne EK (nicht geprüft): 917
+- geschrieben: 171 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Wokpfanne aus reinem Titan | 47.90 | 70.79 | **99.90** | 2.09× |
-| Edelstahl-Bratpfanne mit Wabenstruktur | 15.90 | 22.77 | **32.90** | 2.07× |
-| Schneidebrett aus massivem Teakholz | 19.90 | 32.90 | **46.90** | 2.36× |
-| Keramikurne für Haustierasche | 16.90 | 29.25 | **41.90** | 2.48× |
-| Schachbrett-Schneidebrett aus Kautschuk- und Ebe | 38.90 | 55.27 | **77.90** | 2.00× |
-| Samt-Lendenkissenbezug ohne Füllung (6er-Set) | 22.90 | 32.63 | **46.90** | 2.05× |
-| Elastischer Antirutsch-Sofabezug mit Streifenmus | 15.90 | 21.92 | **31.90** | 2.01× |
-| Vintage Sofakissen im französischen Stil | 23.90 | 40.16 | **56.90** | 2.38× |
-| Hohlweb-Kissen im Bambus-Look | 15.90 | 24.80 | **35.90** | 2.26× |
-| Partnerlook Sweatshirts für Familien | 14.90 | 20.44 | **29.90** | 2.01× |
-| Freizeit-Hoodie-Set für Damen | 15.90 | 22.01 | **31.90** | 2.01× |
-| Sportlicher Patchwork-Trainingsanzug für Damen | 14.90 | 20.81 | **29.90** | 2.01× |
-| Sportliches Fleece-Set mit Schriftzug-Print | 14.90 | 20.52 | **29.90** | 2.01× |
-| Weihnachts Pyjama-Sets für die ganze Familie | 14.90 | 20.67 | **29.90** | 2.01× |
-| Kinder Patchwork Rollkragenpullover | 15.90 | 22.07 | **31.90** | 2.01× |
-| Pyjama-Set für die ganze Familie | 14.90 | 21.34 | **30.90** | 2.07× |
-| Elegante Kaschmir-Weste für Damen | 14.90 | 20.53 | **29.90** | 2.01× |
-| Leichte Outdoor-Sandalen für Damen | 27.90 | 39.19 | **55.90** | 2.00× |
-| Herren High-top Wildleder Loafer | 23.90 | 40.39 | **56.90** | 2.38× |
-| Sportliche Low-Top Sneaker mit dicker Sohle | 22.90 | 35.28 | **49.90** | 2.18× |
-| Herren Sneaker mit dicker Sohle | 31.90 | 44.86 | **63.90** | 2.00× |
-| Chunky Plateau-Sandalen mit offenem Zeh | 17.90 | 24.88 | **35.90** | 2.01× |
-| Leichte Canvas Slipper für Herren | 17.90 | 24.95 | **35.90** | 2.01× |
-| Schwarze Sport-Sneaker | 16.90 | 23.35 | **33.90** | 2.01× |
-| Chelsea Stiefel | 24.90 | 36.62 | **51.90** | 2.08× |
+| Serviertablett mit Holzgriff | 22.90 | 19.37 | **24.90** | 1.09× |
+| Sportweste | 22.90 | 18.96 | **23.90** | 1.04× |
+| Baby Krabbelschuhe mit weicher Sohle | 22.90 | 19.21 | **24.90** | 1.09× |
+| Keramikteller im nordischen Stil | 21.90 | 18.79 | **23.90** | 1.09× |
+| Zubehör für Messerschärfer | 23.90 | 19.94 | **25.90** | 1.08× |
+| Outdoor T-Shirt | 26.90 | 22.33 | **27.90** | 1.04× |
+| Prinzessinnen-Schuhe mit Perlen-Schleife | 40.90 | 34.58 | **43.90** | 1.07× |
+| Drehbare Keramik-Abtropfschale für Obst | 23.90 | 20.16 | **25.90** | 1.08× |
+| Wende-Mehrzweck-Schleifgerät | 59.90 | 49.72 | **61.90** | 1.03× |
+| Taktische Windjacke mit Kapuze | 40.90 | 34.93 | **43.90** | 1.07× |
+| Mädchen Sandalen mit Glitzer und Schnalle | 28.90 | 24.05 | **30.90** | 1.07× |
+| Multifunktionales quadratisches Sonnensegel | 28.90 | 24.14 | **30.90** | 1.07× |
+| Winkelverstellbarer Messerschärfer | 59.90 | 49.20 | **61.90** | 1.03× |
+| Lernspielzeug aus Holz für Kinder | 21.90 | 17.97 | **22.90** | 1.05× |
+| Taktische Fleecejacke für Herren | 39.90 | 33.70 | **41.90** | 1.05× |
+| Vogel im Käfig Holz-Puzzle | 28.90 | 24.35 | **30.90** | 1.07× |
+| Softshell Sportanzug für Herren | 34.90 | 29.17 | **36.90** | 1.06× |
+| Einfache Outdoor-Strandschuhe | 21.90 | 18.68 | **23.90** | 1.09× |
+| Sportjacke für Frühling und Herbst | 21.90 | 18.66 | **23.90** | 1.09× |
+| Hohe Kinderstiefel mit atmungsaktivem Mesh | 27.90 | 23.55 | **29.90** | 1.07× |
+| Gusseisenpfanne für die Küche | 23.90 | 20.34 | **25.90** | 1.08× |
+| 1cm Keramik Mosaik Fliesen für DIY | 24.90 | 20.98 | **26.90** | 1.08× |
+| 1cm Keramik Mosaik Fliesen für DIY-Projekte | 24.90 | 20.79 | **26.90** | 1.08× |
+| Leder-Halbschuhe für Mädchen | 21.90 | 18.77 | **23.90** | 1.09× |
+| Tarn-Regenponcho für Bergsport und Wandern | 28.90 | 24.17 | **30.90** | 1.07× |

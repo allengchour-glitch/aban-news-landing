@@ -10,7 +10,7 @@ Die Sortierung war nicht schuld (BEST_SELLING zeigte dasselbe) — die ZUORDNUNG
 WAS ES TUT
   1. liest den Katalog-Export (hype_export_bauen.py, ZIEL=/tmp/geschenk_export.jsonl, ≤ 24 h alt)
   2. wählt je Welt Ware nach Warenart (Titel-Muster je Kategorie), nur: ACTIVE, im Google-Kanal (= sauber geprüft),
-     ≥ 2 Bilder, Preis CHF 19–150, keine Sperr-Tags/-Wörter (Kostüm, Medizin, Klinge, Tierschutz, Biozid, Duplikat …)
+     ≥ 2 Bilder, Preis CHF 19–150 (Welt «unter30»: 12–30), keine Sperr-Tags/-Wörter (Kostüm, Medizin, Klinge, Tierschutz, Biozid, Duplikat …)
   3. Tag `geschenkwelt-sie|ihn|kinder` setzen (fehlende) und bei nicht mehr passender Ware entfernen
   4. Kollektion: eine Regel «Tag = geschenkwelt-…», Sortierung MANUAL, die ersten 48 Plätze reihum nach Warenart
      (Kaufwillen-Tags zuerst), damit oben Vielfalt steht
@@ -72,6 +72,20 @@ WELTEN = {
                    ("musik", r"xylophon|spielzeug-?(gitarre|klavier|trommel)|musikinstrument"),
                    ("spielzeug", r"spielzeug"),
                ]},
+    # 03.10.2026: «Geschenke bis CHF 30» (Menü, 9 Kanäle) zeigte oben 12/24 Partydeko + 11/24 Schmuck (Regel geschenk UND
+    # Preis < 30, CREATED_DESC) — dieselbe Klasse wie oben, eigenes Preisband, unisex.
+    "unter30": {"handle": "🎁-geschenke-bis-chf-30", "preis": (12, 30), "nicht": re.compile(r"baby|strampler", re.I),
+                "arten": [
+                    ("schmuck", r"ohrring|halskette|anhänger|armband(?!uhr)|armreif|\bring\b"),
+                    ("duft", r"duftkerze|kerze|diffuser|duftstäbchen|kerzenwärmer"),
+                    ("tasse", r"tasse|thermobecher|kaffeebecher|trinkflasche|teekanne|teeset"),
+                    ("deko", r"weihnachtsfigur|weihnachtskugel|weihnachtsdeko|adventskranz|lichterkette|schneekugel|"
+                             r"nachtlicht|sternenhimmel|sternenprojektor"),
+                    ("spiel", r"puzzle|kartenspiel|brettspiel|würfelspiel|plüschtier|kuscheltier|stofftier"),
+                    ("kuschel", r"kuscheldecke|fleecedecke|wärmflasche|wärmekissen|kuschelsocken"),
+                    ("beauty", r"kosmetiktasche|make-?up-?pinsel|schminkspiegel|haarspange|haarklammer|scrunchie|nagelset"),
+                    ("gadget", r"schlüsselanhänger|handyständer|mini-?staubsauger|mini-?ventilator|notizbuch|tagebuch"),
+                ]},
 }
 
 
@@ -92,7 +106,7 @@ TIER = re.compile(r"hund|katze|katzen|haustier|nager|vögel|vogel|leine|aquarium
 KLEIDUNG = re.compile(r"kleid|hose|hemd|shirt|bluse|anzug|bikini|jacke|mantel|pullover|hoodie|\brock\b|jeans|leggings|"
                       r"\btop\b|weste|overall|jumpsuit|cardigan", re.I)
 ART_NICHT = {
-    "schmuck": r"uhrenarmband|werkzeug|smart|watch|uhr|herzfrequenz|sportarmband|silikon|trainer|grip|kautschuk",
+    "schmuck": r"schlüssel|fidget|spinner|uhrenarmband|werkzeug|smart|watch|uhr|herzfrequenz|sportarmband|silikon|trainer|grip|kautschuk",
     "tech": r"armband|hülle|case|kabel|ersatz|kopfband|oculus",
     "licht": r"office|büro|heimkino|home-?kino|beamer|hd |uhr|rucksack|schul|gemälde|nagel|nägel|charger|feuchttuch|luftbefeuchter|diffus|lade|speaker|lautsprecher|wecker|halskette|ring|hoodie|traumfänger|wohnräume|harz|holz|silikon|tischlampe|nachttischlampe|feuerwerk|bluetooth",
     "plüsch": r"kissen|auto|winter-plüsch|sitz|rucksack",
@@ -101,14 +115,19 @@ ART_NICHT = {
     "leder": r"weiblich|damen|trench|mantel",
     "bar": r"backform|gasbrenner|brenner",
     "schal": r"box|einweg|sommer|\bski|velo|arbeits|koch|augen|beheizbar",
-    "duft": r"öl|nachfüll|kerzenform|form\b|vorratsglas",
+    "duft": r"solar|outdoor|öl|nachfüll|kerzenform|form\b|vorratsglas",
     "pflege": r"rasen|mäh|garten|echthaar|augenbrauen|bartender|nadel|roller|serum",
     "rc": r"kissen|wurst|reise",
-    "spiel": r"eiswürfel|form\b|behälter|meilenstein",
+    "spiel": r"quietsch|zähne|knirsch|eiswürfel|form\b|behälter|meilenstein",
     "spielzeug": r"quietsch|beiss|laser|futter|schnüffel|kau|pistole|sprüh|badeball|beagle|feder|zerr|seil",
     "kreativ": r"nagel|werkzeugset|stift set|stiftset|diffuser",
     "draussen": r"abnehmen|fitness|stahlseil",
     "beauty": r"wecker",
+    # Welt «unter30» (Trockenlauf 03.10.: Nagelset «Sternenhimmel», Herrenuhr/WC-Licht mit Nachtlicht, Perlenring,
+    # Taschenuhr mit Lupe, Gewichts-Notizbuch, Oster-Decke im Oktober)
+    "deko": r"nagel|uhr|\bring\b|perlen|\bwc\b|bewegungs|sensor|luftbefeuchter|charger|lade",
+    "gadget": r"uhr|gewicht|stirnband|klemme|leuchte",
+    "kuschel": r"oster",
 }
 
 
@@ -130,12 +149,13 @@ def auswahl():
     for d in export_laden():
         t, tags = d["title"], d.get("tags") or []
         preis = float(d["priceRangeV2"]["minVariantPrice"]["amount"])
-        if not d.get("g") or d["mediaCount"]["count"] < 2 or not (19 <= preis <= 150):
+        if not d.get("g") or d["mediaCount"]["count"] < 2:
             continue
         if SPERR_TITEL.search(t) or any(SPERR_TAGS.search(x) for x in tags):
             continue
         for w, welt in WELTEN.items():
-            if welt["nicht"].search(t):
+            lo, hi = welt.get("preis", (19, 150))
+            if welt["nicht"].search(t) or not (lo <= preis <= hi):
                 continue
             a = art_von(welt, t)
             if a:
