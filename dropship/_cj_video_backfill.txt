@@ -535,3 +535,21 @@ gid://shopify/Product/15453773103489	ok	Doppelstrahl-Luftbefeuchter
 gid://shopify/Product/15453774086529	ok	Stiller Aroma Diffusor für Zuhause & Büro
 gid://shopify/Product/15454106255745	ok	Haarstyling-Kamm für glatte Haare
 gid://shopify/Product/15454111039873	ok	Elch-Themen-Weste für Haustiere
+gid://shopify/Product/15496229454209	ok-lokal
+gid://shopify/Product/15496360624513	ok-lokal
+gid://shopify/Product/15496528429441	ok-lokal
+gid://shopify/Product/15496603402625	ok-lokal
+gid://shopify/Product/15497436332417	ok-lokal
+gid://shopify/Product/15497476243841	ok-lokal
+gid://shopify/Product/15502138605953	ok-lokal
+gid://shopify/Product/15503133606273	ok-lokal
+gid://shopify/Product/15505601823105	ok-lokal
+gid://shopify/Product/15508669497729	ok-lokal
+gid://shopify/Product/15509505900929	ok-lokal
+gid://shopify/Product/15510918660481	ok-lokal
+gid://shopify/Product/15517525803393	ok-lokal
+gid://shopify/Product/15518549016961	ok-lokal
+gid://shopify/Product/15518595907969	ok-lokal
+gid://shopify/Product/15519830147457	ok-lokal
+gid://shopify/Product/15524698685825	ok-lokal
+gid://shopify/Product/15525477712257	ok-lokal
