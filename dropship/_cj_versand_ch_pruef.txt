@@ -3232,3 +3232,8 @@ kapuzen-sweatshirt-mit-kordelzug-618600	2606150616221611600	16	12.21	ok	landesei
 herren-hoodie-waffel-sweatshirt-620300	2605280628571620900	16	10.35	ok	landeseite
 sternenprojektor-fur-kinderzimmer-054208	1628625788834689024	7	12.70	ok	landeseite
 walnuss-holz-kerzenwarmer-fur-zuhause-halt-tee-609800	2601160953241600200	16	9.47	ok	landeseite
+herren-jacke-mit-stehkragen-rei-verschluss-601000	2606230641371601500	16	11.00	ok	landeseite
+hd-smart-mini-projektor-fur-home-office-815424	1732629280057724928	6	23.88	ok	landeseite
+magnetische-3-in-1-wireless-powerbank-606500	2406190917061606700	0	-	KEINE CH-Option → DRAFT	landeseite
+kabelloser-mini-staubsauger-mit-geblase-616100	2411060557051616600	7	24.62	ok	landeseite
+smart-hundespielzeug-346624	1356909656169123840	7	9.86	ok	landeseite
