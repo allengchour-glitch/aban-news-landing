@@ -33,6 +33,12 @@
 
 
 
+## 🎁 «Geschenke bis CHF 30» = vierte Unterwelt; Bildtausch-Pilot: Kontrolle wird zu 42 % auch ohne Eingriff frei (2026-10-03)
+- **GEMESSEN:** Menü-Kollektion `🎁-geschenke-bis-chf-30` (9 Kanäle, 15'518 Produkte, Regel geschenk UND < 30, CREATED_DESC): oben 12/24 Partydeko und 11/24 Schmuck. Das ist dieselbe Zuordnungs-Klasse wie bei «für Sie/Ihn/Kinder» am 02.10. — beim Abarbeiten von Plan-Tag 3 war der vierte Punkt «unter CHF 30» übersehen worden.
+- **GETAN:** Welt `unter30` in `geschenk_unterwelten.py` (Preisband je Welt, 12–30; 8 Warenarten; 400 Produkte reihum). Die 10 Fehlgriffe aus dem Trockenlauf sind als `ART_NICHT` eingetragen (Hundespielzeug «Zähneknirschen» trotz TIER-Filter, Oster-Decke im Oktober, «Sternenhimmel»-Nagelset als Deko).
+- **Bildtausch-Pilot ausgewertet** (Routine `trig_01Ek6v3W3rJ8mxkhzJG1WBmR`): Tausch 15/18 frei (83 %), Kontrolle unberührt 11/26 (42 %). Rund 40 % gibt Google bei der Neuprüfung von selbst frei; der echte Gewinn liegt bei etwa +40 Prozentpunkten. Die Kontroll-Zeilen fielen beim Ausrollen aus dem Ledger und wurden aus Commit aaa2908db rekonstruiert.
+- **Lehre:** (1) Ein Plan-Punkt mit Aufzählung (Sie/Ihn/Kinder/unter 30) ist erst erledigt, wenn JEDES Glied gemessen ist. Die Messlatte «≥ 24 kaufbar» war erfüllt, die Optik nicht. (2) A/B-Ledger nie beim Ausrollen überschreiben, sonst kann die spätere Auswertung die Kontrolle nicht mehr finden. (3) Ohne Kontrollgruppe hätte man 83 % als Wirkung gemeldet. → `dropship/GESCHENKE-UNTER-30-2026-10-03.md`, `dropship/GOOGLE-BILD-TAUSCH-2026-09-30.md`
+
 ## 🪣 Verbesserungsrunde: gemeinsame gql-Helfer ohne Eimer-Boden vererben die Drosselung (2026-10-03)
 farbe_metafeld + textbild_fix starben 01:26/01:54 mit «12x gedrosselt» während der Massenläufe der Nacht. Der Bildtausch
 schrieb über `heilversprechen_wache.gql` (5 Importeure) — nur THROTTLED-Wiederholung, kein Boden. 15 importierte Helfer
@@ -17724,6 +17730,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 🪣 **Verbesserungsrunde: cj_versand_ch_guard, sku_dup_scan, farbe_metafeld starben mit «12x gedrosselt (Eimer dauerhaft leer)» — Eimer 42–195/2'000 bei 5 parallelen `cj_category_fill`; die drei Grind-Importer (category_fill, sku_import, trending_import) hielten als einzige Massen-Schreiber keinen Eimer-Boden (seit 22.09. Regel), category_fill gab THROTTLED sogar als Fachfehler zurück → `nachlauf()` + THROTTLED-Wiederholung, Gehirn-Regel `eimer-fehlt` (14/14).** Ein wieder eingeschalteter Altmotor kennt die Regeln nicht, die während seiner Pause entstanden → `dropship/EIMER-IMPORTER-2026-10-02.md`
+- 2026-10-02 · 🎃 **12-Tage-Plan Tag 2: Halloween-Reihe der Startseite zeigte als neuesten Artikel den 03.09. — `halloween`-Tag setzten nur Fortura/BigBuy, der CJ-Importer nie → `saisonTags()` in cat_tags.mjs (nur Titel/EN-Name, nicht Suchbegriff) im Importer + Wächter `saison_tags_nachtragen.py` (Kanarienvögel 7/7, 9 nachgetragen); Halloween 8/8, Herbst 8/8, Optik 0.** Eine Smart-Kollektion lebt nur, wenn JEDER Importer ihr Tag kennt → `dropship/SAISON-TAGS-2026-10-02.md`
 
 ### Verschoben am 02.10.2026 (Einzeilen 27.09.–01.10.)
 - 2026-10-01 · 🔤 **Verbesserungsrunde: 255 Neuimporte in 4 h — Kategorie 0 fehlend, aber halb übersetzte Titel («Halloween Witch Hat Nachtlicht», «Damen‑Coat», «Tassel‑Gürtel»): Sprachwache fängt nur ganz Abgeschriebenes, Kauderwelsch-Wache nahm Englisch aus → Prompt deckt stehengebliebenes Englisch, wortweiser Vergleich, Ersatz bindestrich-unabhängig; Kanarienvögel 11/11, Trockenlauf 239 → scharf 32 korrigiert (beide Modelle einig), 57 nur gemeldet.** Hand-Zählung (6) unterschätzte die Klasse fünffach → `dropship/TITEL-DENGLISCH-2026-10-01.md`
