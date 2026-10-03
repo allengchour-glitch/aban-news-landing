@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-03T00:47Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-03T01:32Z
 
-Aktive gescannt: 75 · ohne Kategorie: 75 · heute gesetzt: 54 (SCHARF, CAP 3000) · danach offen: 21 · Fehler: 0
+Aktive gescannt: 247 · ohne Kategorie: 247 · heute gesetzt: 218 (SCHARF, CAP 1500) · danach offen: 29 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -8,15 +8,15 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 ## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
 
 - Trend-Produkt: 12
+- Büro & Home Office: 9
 - Trend-Gadget: 7
 - Kinder: 1
-- Büro & Home Office: 1
 
 ## Beispiele (heute gesetzt)
 
-- freizeitschuhe-fur-herren-609800 · Herrenschuhe → Apparel & Accessories > Shoes
-- hundepullover-fur-sport-und-freizeit-622100 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- retro-nieten-umhangetasche-aus-leder-558528 · Taschen → Luggage & Bags
-- vintage-sportschuhe-fur-herren-603000 · Herrenschuhe → Apparel & Accessories > Shoes
-- herzformige-mousseform-aus-edelstahl-425984 · Küche & Bar → Home & Garden > Kitchen & Dining
+- kuchenhelfer-set-aus-edelstahl-633300 · Küche & Bar → Home & Garden > Kitchen & Dining
+- serviertablett-mit-holzgriff-179648 · Küche & Bar → Home & Garden > Kitchen & Dining
+- sportweste-3d8ceb · Sport & Outdoor → Sporting Goods
+- baby-krabbelschuhe-mit-weicher-sohle-596416 · Kinderschuhe → Apparel & Accessories > Shoes
+- keramikteller-im-nordischen-stil-629700 · Küche & Bar → Home & Garden > Kitchen & Dining
 
