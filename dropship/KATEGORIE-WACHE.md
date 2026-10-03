@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-03T01:32Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-03T02:29Z
 
-Aktive gescannt: 247 · ohne Kategorie: 247 · heute gesetzt: 218 (SCHARF, CAP 1500) · danach offen: 29 · Fehler: 0
+Aktive gescannt: 190 · ohne Kategorie: 190 · heute gesetzt: 161 (SCHARF, CAP 1500) · danach offen: 29 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- kuchenhelfer-set-aus-edelstahl-633300 · Küche & Bar → Home & Garden > Kitchen & Dining
-- serviertablett-mit-holzgriff-179648 · Küche & Bar → Home & Garden > Kitchen & Dining
-- sportweste-3d8ceb · Sport & Outdoor → Sporting Goods
-- baby-krabbelschuhe-mit-weicher-sohle-596416 · Kinderschuhe → Apparel & Accessories > Shoes
-- keramikteller-im-nordischen-stil-629700 · Küche & Bar → Home & Garden > Kitchen & Dining
+- nachtlicht-aus-holz-fur-warme-atmosphare-602400 · Beleuchtung → Home & Garden > Lighting
+- neonlicht-fur-wanddekoration-602200 · Beleuchtung → Home & Garden > Lighting
+- blumentopf-mond-bonsai-aus-purpursand-619700 · Basteln & DIY → Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts
+- weiche-polyester-decke-800-1300-g-cartoon-blum-950272 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
+- tragbares-led-buhnenlicht-aus-aluminium-633200 · Beleuchtung → Home & Garden > Lighting
 
