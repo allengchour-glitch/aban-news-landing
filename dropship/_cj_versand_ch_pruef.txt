@@ -3077,3 +3077,4 @@ franzosische-bulldogge-tasse-541824	1683350851018039296	16	16.76	ok	landeseite
 led-teelichter-flackernd-batteriebetrieben-594688	1356798178678149120	7	7.58	ok	landeseite
 retro-handwarmer-powerbank-5000-mah-97ddfa	-	-	-	unklar keine CJ-SKU	landeseite
 britisches-teeservice-luxury-571968	1533076372594372608	16	16.67	ok	landeseite
+gusseisen-teekessel-diamond-1000ml-622400	2504030353111622600	16	22.91	ok	landeseite
