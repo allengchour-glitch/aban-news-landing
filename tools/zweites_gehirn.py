@@ -298,6 +298,26 @@ def r_eimer_fehlt(dateien):
     return treffer
 
 
+def r_helfer_ohne_eimer(dateien):
+    """03.10.2026 — gemeinsam genutzte gql-Helfer ohne Eimer-Boden. `heilversprechen_wache.gql` (von 5 Skripten importiert,
+    darunter google_bild_tausch) wiederholte bei THROTTLED nur; während der nächtlichen Massenläufe starben farbe_metafeld und
+    textbild_fix mit «12x gedrosselt (Eimer dauerhaft leer)». Ein Helfer, den ANDERE importieren, muss `nachlauf` rufen —
+    sonst erbt jeder Aufrufer die Lücke. (Die Selbstprobe darf sich selbst importieren, damit sie in EINER Datei passt.)"""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix != ".py" or AUTO not in p.parents:
+            continue
+        m = re.search(r"^def gql\(.*?(?=^\S|\Z)", t, re.S | re.M)
+        if not m or re.search(r"eimer_etikette|throttleStatus|currentlyAvailable|nachlauf", t):
+            continue
+        if not re.search(r"urlopen|curl|requests\.", m.group(0)):
+            continue                                        # delegiert an einen anderen Helfer
+        imp = re.compile(rf"(from {re.escape(p.stem)} import [^\n]*\bgql\b|import {re.escape(p.stem)}\b)")
+        if any(imp.search(u) for u in dateien.values()):
+            treffer.append((p, t.count("\n", 0, m.start()) + 1, "gemeinsamer gql-Helfer ohne Eimer-Boden (eimer_etikette.nachlauf)"))
+    return treffer
+
+
 REGELN = [
     ("stille-null", r_stille_null, "17.09.2026"),
     ("grund-verschluckt", r_grund_verschluckt, "17.09.2026"),
@@ -306,6 +326,7 @@ REGELN = [
     ("stiller-uebersprung", r_stiller_uebersprung, "17.09.2026"),
     ("seo-teil", r_seo_teil, "30.09.2026"),
     ("eimer-fehlt", r_eimer_fehlt, "02.10.2026"),
+    ("helfer-ohne-eimer", r_helfer_ohne_eimer, "03.10.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -325,6 +346,10 @@ KOEDER = {
     "seo-teil": ("automation/koeder.py", 'gql(M,\n    {"i": {"id": p["id"], "seo": {"description": neu}}})\n'),
     # Der ECHTE Fall aus cj_sku_import.mjs (bis 02.10.): Anleger ohne Eimer-Boden.
     "eimer-fehlt": ("automation/koeder.mjs", "const r = await sgql(t, `mutation($p:ProductCreateInput!){productCreate(product:$p){product{id}}}`, {p});\n"),
+    # Der ECHTE Fall aus heilversprechen_wache.py (bis 03.10.): Helfer, den andere importieren, nur THROTTLED-Wiederholung.
+    "helfer-ohne-eimer": ("automation/koeder_helfer.py",
+                          "# from koeder_helfer import gql\ndef gql(q, v=None):\n    out = subprocess.run(['curl', URL]).stdout\n"
+                          "    d = json.loads(out)\n    return d\n"),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -340,6 +365,10 @@ ECHT = {
     # Echt: beide Felder, Titel als f-String mit {…} (die Klammer im String darf das Objekt nicht beenden).
     "seo-teil": ("automation/koeder.py", 'x = {"i": {"id": c["id"], "seo": {"title": f"{titel} | LuxeStyle",\n    "description": besch}}}\n'),
     "eimer-fehlt": ("automation/koeder.mjs", "import { nachlauf } from './eimer_etikette.mjs';\nconst r = await sgql(t, `mutation{productCreate(product:$p){product{id}}}`);\n"),
+    # Echt: derselbe Helfer MIT nachlauf (heutige Fassung) — und ein Delegierer ohne eigenes HTTP (kollektion_doppel.py).
+    "helfer-ohne-eimer": ("automation/koeder_helfer.py",
+                          "# from koeder_helfer import gql\nfrom eimer_etikette import nachlauf as _nachlauf\n"
+                          "def gql(q, v=None):\n    d = json.loads(subprocess.run(['curl', URL]).stdout)\n    _nachlauf(d)\n    return d\n"),
 }
 
 

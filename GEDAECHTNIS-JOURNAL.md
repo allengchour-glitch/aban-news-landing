@@ -32,6 +32,14 @@
 
 
 
+
+## 🪣 Verbesserungsrunde: gemeinsame gql-Helfer ohne Eimer-Boden vererben die Drosselung (2026-10-03)
+farbe_metafeld + textbild_fix starben 01:26/01:54 mit «12x gedrosselt» während der Massenläufe der Nacht. Der Bildtausch
+schrieb über `heilversprechen_wache.gql` (5 Importeure) — nur THROTTLED-Wiederholung, kein Boden. 15 importierte Helfer
+ohne `nachlauf` → alle gepatcht (`_nachlauf(d)` nach dem JSON-Lesen), Gehirn-Regel `helfer-ohne-eimer` (16/16, 0 NEU).
+Nach Neustart gemessen: Eimer 6/2'000. **Lehre:** Wer ein Werkzeug eines anderen Werkzeugs für Massenarbeit nimmt, erbt
+dessen Eimer-Verhalten — die Etikette gehört in den HELFER, nicht in jeden Aufrufer. → `dropship/EIMER-HELFER-2026-10-03.md`
+
 ## 🔧 «fix alles» (Google-Blocker): Bildtausch wirkt 76 % gegen 21 %, «Image too small» sind Variantenbilder (2026-10-03)
 790 Free-Listings-Blocker. GEMESSEN: von 46 getauschten «Inappropriate image» sind 35 frei (76 %), von 19 unberührten
 «uneinig» 4 (21 %) → Tausch weiter, bei leerem Zweitprüfer (Groq-Kontingent je Modell; Groq nimmt jetzt nur 3 Bilder)

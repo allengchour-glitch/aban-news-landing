@@ -47,6 +47,13 @@ Nur Titel mit mindestens einem Nicht-Wort aufführen. Leere Liste, wenn alles ko
 """
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def gql(q, v=None):
     letzter = ""
     for versuch in range(6):
@@ -54,6 +61,7 @@ def gql(q, v=None):
             r = urllib.request.Request(URL, data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                        headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
             j = json.load(urllib.request.urlopen(r, timeout=60))
+            _nachlauf(j)
             if j.get("data") and not j.get("errors"):
                 return j["data"]
             letzter = json.dumps(j.get("errors"))[:200]

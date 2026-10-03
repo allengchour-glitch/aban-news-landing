@@ -58,6 +58,13 @@ POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "w
 SAISON = [("halloween", (9, 1), (10, 31)), ("weihnachten-2026", (10, 1), (12, 20))]
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def saison_fest_heute(tag):
     md = (tag.month, tag.day)
     return {k: h for k, h, von, bis in SAISON_FEST if von <= md <= bis}
@@ -151,7 +158,9 @@ def gql(q, v=None):
     r = subprocess.run(["curl", "-s", "--max-time", "60", API, "-H", "X-Shopify-Access-Token: " + tok,
                         "-H", "Content-Type: application/json", "--data-binary", "@-"],
                        input=json.dumps({"query": q, "variables": v or {}}), capture_output=True, text=True)
-    return json.loads(r.stdout)
+    d = json.loads(r.stdout)
+    _nachlauf(d)
+    return d
 
 
 def sichtbar_live(handles):

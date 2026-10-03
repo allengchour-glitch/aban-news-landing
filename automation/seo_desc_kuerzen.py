@@ -13,6 +13,13 @@ Text wird LIVE gelesen (Lehre 15.08.), nur seo.description geschrieben, sofort g
 import json, os, re, sys, time, urllib.request, urllib.error
 SHOP = "au3j0y-hq.myshopify.com"; ZIEL = 155
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def gql(q, v=None):
     tok = open("/tmp/cj_shop_token.txt").read().strip()
     for i in range(6):
@@ -20,6 +27,7 @@ def gql(q, v=None):
                                    headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
         try:
             d = json.load(urllib.request.urlopen(r, timeout=90))
+            _nachlauf(d)
         except (urllib.error.HTTPError, urllib.error.URLError):
             time.sleep(3 + 3 * i); continue
         if any(e.get("extensions", {}).get("code") == "THROTTLED" for e in d.get("errors") or []):

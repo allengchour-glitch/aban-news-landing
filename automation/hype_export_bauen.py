@@ -22,6 +22,13 @@ BULK = ('{ products(query:"status:active") { edges { node { id title status tags
         'priceRangeV2 { minVariantPrice { amount } } } } } }')
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def tok():
     p = "/tmp/cj_shop_token.txt"
     if not (os.path.exists(p) and open(p).read().strip()):
@@ -42,6 +49,7 @@ def gql(q, v=None):
         d = json.loads(r.stdout)
     except Exception:
         return {}
+    _nachlauf(d)
     if d.get("errors"):
         print("   ⚠️ Shopify:", json.dumps(d["errors"])[:180])
     return d

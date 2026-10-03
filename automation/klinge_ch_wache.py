@@ -79,6 +79,13 @@ BULK = """{ products(query: "status:active OR status:draft") { edges { node {
             variants(first: 1) { edges { node { sku } } } } } } }"""
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def klingen_tor(titel, tags):
     """Das EINE Tor vor jeder Reaktivierung: (gesperrt, grund).
 
@@ -114,6 +121,7 @@ def gql(q, v=None):
             headers={"X-Shopify-Access-Token": _tok(), "Content-Type": "application/json"})
         try:
             d = json.loads(urllib.request.urlopen(r, timeout=60).read())
+            _nachlauf(d)
         except Exception as e:                      # Netz-/Anmeldefehler
             letzte = e
             time.sleep(2 + i * 2)

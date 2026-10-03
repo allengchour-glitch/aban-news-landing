@@ -158,6 +158,13 @@ FEINER = (('Leder',      ('PU-Leder','Kunstleder','Mikrofaserleder','Echtleder',
           ('Kunststoff', ('ABS-Kunststoff','Silikon','Acryl')),
           ('Seide',      ('Eisseide','Milchseide')))
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def plaintext(h):
     return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', h or '')))
 
@@ -330,6 +337,7 @@ def gql(query, variables=None):
                            capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
+            _nachlauf(d)
         except Exception:
             time.sleep(3 + 2 * versuch); continue
         if d.get('errors') and any('Throttled' in str(e) for e in d['errors']):

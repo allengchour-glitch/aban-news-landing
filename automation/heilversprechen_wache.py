@@ -299,6 +299,13 @@ FEHLALARM = re.compile(
     r"|Erste-Hilfe|Insekten", re.I)
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def gql(q, v=None):
     a = ["curl", "-s", "--max-time", "90", "-X", "POST", URL, "-H", "X-Shopify-Access-Token: " + TOK,
          "-H", "Content-Type: application/json", "-d", json.dumps({"query": q, "variables": v or {}})]
@@ -307,6 +314,7 @@ def gql(q, v=None):
         out = subprocess.run(a, capture_output=True, text=True).stdout
         try:
             d = json.loads(out)
+            _nachlauf(d)
         except Exception as e:
             grund = f"kein JSON ({type(e).__name__}): {out[:80]!r}"; time.sleep(3 * (versuch + 1)); continue
         if d.get("errors") and any("THROTTLED" in str(e) for e in d["errors"]):

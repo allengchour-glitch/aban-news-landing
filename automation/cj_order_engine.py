@@ -35,6 +35,13 @@ LEDGER = "dropship/_cj_orders_done.txt"
 MAX_TAGE = int(os.environ.get("MAX_TAGE", "20"))       # Obergrenze fuers Lieferversprechen
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def usd_chf():
     """Kurs live holen — geschaetzte Kurse verfaelschen die Margenrechnung sofort:
     mit 0.85 statt der echten 0.810 wurde eine Bestellung als Minusgeschaeft ausgewiesen,
@@ -87,6 +94,7 @@ def gql(q, v=None):
         grund = "unbekannt"
         try:
             d = json.loads(r.stdout)
+            _nachlauf(d)
             if "data" in d:
                 return d
             # ⚠️ 17.09.2026: Hier stand `except Exception: pass` und darunter `return {}`.

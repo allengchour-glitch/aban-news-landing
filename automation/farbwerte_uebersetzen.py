@@ -35,6 +35,13 @@ FARBE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                     "farben_de.json"), encoding="utf-8"))
 
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def gql(q, v=None):
     with open("/tmp/_fw.json", "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
@@ -46,6 +53,7 @@ def gql(q, v=None):
                             "--data-binary", "@/tmp/_fw.json"], capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
+            _nachlauf(d)
             if d.get("data") is not None:
                 return d
         except Exception:

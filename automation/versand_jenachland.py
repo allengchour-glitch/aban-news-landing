@@ -59,6 +59,13 @@ STUFE = {
     'standard': ('10–20 Werktage', 'Versand nur in die Schweiz'),
 }
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def gql(q, v=None):
     req = urllib.request.Request(
         f'https://{SHOP}/admin/api/2026-01/graphql.json',
@@ -67,6 +74,7 @@ def gql(q, v=None):
     for versuch in range(8):
         try:
             d = json.load(urllib.request.urlopen(req, timeout=45))
+            _nachlauf(d)
         except Exception:
             if versuch == 7: raise
             time.sleep(2 ** versuch); continue

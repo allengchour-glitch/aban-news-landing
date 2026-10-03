@@ -250,6 +250,13 @@ WARENART = {
 }
 _WARENART = {k: re.compile(v, re.I) for k, v in WARENART.items()}
 
+try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+
 def warenart(titel):
     """Grobe Warenart eines Titels, oder None."""
     for name, muster in _WARENART.items():
@@ -312,6 +319,7 @@ def gql(q, v=None):
                             "--data-binary", "@/tmp/_hy.json"], capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
+            _nachlauf(d)
             if d.get("data") is not None:
                 return d
         except Exception:
