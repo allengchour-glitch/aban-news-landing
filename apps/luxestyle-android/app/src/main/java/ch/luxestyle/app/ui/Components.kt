@@ -69,6 +69,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Money
 import ch.luxestyle.app.data.ProductCard
@@ -239,7 +241,7 @@ fun ProductTile(
                 Badge("−$it %", LocalLuxe.current.sale, Modifier.align(Alignment.TopStart).padding(8.dp))
             }
             HeartButton(liked, onLike, Modifier.align(Alignment.TopEnd).padding(6.dp))
-            card.quickVariant?.let { QuickAdd(card, it, Modifier.align(Alignment.BottomEnd).padding(8.dp)) }
+            if (card.available) QuickAdd(card, Modifier.align(Alignment.BottomEnd).padding(8.dp))
             if (!card.available) {
                 Box(
                     Modifier.align(Alignment.BottomStart).padding(8.dp).clip(Radius.Small)
@@ -254,6 +256,10 @@ fun ProductTile(
             card.title, style = MaterialTheme.typography.bodyMedium.copy(hyphens = Hyphens.Auto), maxLines = 2, overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(horizontal = 2.dp),
         )
+        card.rating?.let {
+            Spacer(Modifier.height(3.dp))
+            RatingLine(it, Modifier.padding(horizontal = 2.dp))
+        }
         Spacer(Modifier.height(4.dp))
         Box(Modifier.padding(horizontal = 2.dp)) { Price(card.price, card.compareAt) }
         note?.let {
@@ -263,17 +269,49 @@ fun ProductTile(
     }
 }
 
-/** Ein Tipp legt Produkte mit nur einer Ausführung direkt in den Warenkorb. */
+/**
+ * Sterne aus echten Judge.me-Bewertungen: „★★★★★ 4.9 (15)". Gerundet auf ganze Sterne – die
+ * genaue Zahl steht daneben. Ohne Bewertung wird nichts angezeigt.
+ */
 @Composable
-private fun QuickAdd(card: ProductCard, variantId: String, modifier: Modifier) {
+fun RatingLine(rating: ch.luxestyle.app.data.Rating, modifier: Modifier = Modifier, big: Boolean = false) {
+    val full = kotlin.math.round(rating.average).toInt().coerceIn(0, 5)
+    val style = if (big) MaterialTheme.typography.bodyMedium else MaterialTheme.typography.labelSmall
+    val word = if (rating.count == 1) "Bewertung" else "Bewertungen"
+    Row(
+        modifier.semantics(mergeDescendants = true) {
+            contentDescription = "${rating.label()} von 5 Sternen, ${rating.count} $word"
+        },
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text("★".repeat(full) + "☆".repeat(5 - full), style = style, color = MaterialTheme.colorScheme.secondary)
+        Spacer(Modifier.width(4.dp))
+        Text(
+            if (big) "${rating.label()} · ${rating.count} $word" else "${rating.label()} (${rating.count})",
+            style = style, color = LocalLuxe.current.muted,
+        )
+    }
+}
+
+/**
+ * „+" auf jeder lieferbaren Karte: nur eine Ausführung → direkt in den Warenkorb;
+ * sonst öffnet das Kauf-Blatt mit Grösse und Farbe (nie ungefragt „S").
+ */
+@Composable
+private fun QuickAdd(card: ProductCard, modifier: Modifier) {
     val shop = LocalShop.current
     val nav = LocalNav.current
     val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
     var busy by remember { mutableStateOf(false) }
+    var sheet by remember { mutableStateOf(false) }
+    if (sheet) QuickBuy(card.handle) { sheet = false }
+    val variantId = card.quickVariant
     Box(
-        modifier.size(36.dp).clip(CircleShape).background(MaterialTheme.colorScheme.primary)
+        // 40 dp sichtbar, Tippfläche durch das Innenpolster der Karte grösser
+        modifier.size(40.dp).clip(CircleShape).background(MaterialTheme.colorScheme.primary)
             .clickable(enabled = !busy, role = Role.Button, onClickLabel = "${card.title} in den Warenkorb") {
+                if (variantId == null) { sheet = true; return@clickable }
                 busy = true
                 scope.launch {
                     runCatching { shop.cart.add(variantId) }

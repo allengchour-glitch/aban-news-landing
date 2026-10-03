@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Image
 import ch.luxestyle.app.data.MenuItem
+import ch.luxestyle.app.data.priceItems
 import coil3.compose.AsyncImage
 
 /**
@@ -107,11 +108,15 @@ private fun RailItem(title: String, selected: Boolean, onClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun Department(top: MenuItem) {
     val shop = LocalShop.current
     val nav = LocalNav.current
-    val handles = remember(top) { listOfNotNull(top.collectionHandle) + top.children.mapNotNull { it.collectionHandle } }
+    // „unter CHF 20", „bis CHF 30" … als eine Budget-Zeile statt sechs Kacheln mit demselben Foto
+    val prices = remember(top) { priceItems(top.children).takeIf { it.size >= 2 }.orEmpty() }
+    val tiles = remember(top) { top.children.filter { c -> prices.none { it.second == c } } }
+    val handles = remember(top) { tiles.mapNotNull { it.collectionHandle } }
     val images by produceState<Map<String, Image?>>(emptyMap(), top.url) {
         value = runCatching { shop.collectionImages(handles) }.getOrDefault(emptyMap())
     }
@@ -123,9 +128,25 @@ private fun Department(top: MenuItem) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            DepartmentBanner(top, top.image ?: images[top.collectionHandle]) { top.collectionHandle?.let { nav.collection(it, top.title) } }
+            // Drei Unterkategorien nebeneinander statt des Web-Banners mit eingebrannter Schrift.
+            // Die Bilder sind schon untereinander verschieden (pickDistinct).
+            val collage = tiles.mapNotNull { c -> c.collectionHandle?.let { images[it] } }.take(3)
+            DepartmentBanner(top, if (collage.size >= 2) collage else listOfNotNull(top.image)) {
+                top.collectionHandle?.let { nav.collection(it, top.title) }
+            }
         }
-        top.children.forEach { child ->
+        if (prices.isNotEmpty()) item(span = { GridItemSpan(maxLineSpan) }) {
+            Column(Modifier.testTag("budget")) {
+                Text("Nach Budget", style = MaterialTheme.typography.titleSmall)
+                Spacer(Modifier.height(8.dp))
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    prices.forEach { (label, m) ->
+                        ChoiceChip(label, selected = false) { m.collectionHandle?.let { nav.collection(it, m.title) } }
+                    }
+                }
+            }
+        }
+        tiles.forEach { child ->
             item(key = child.url) {
                 SubTile(child, images[child.collectionHandle]) { child.collectionHandle?.let { nav.collection(it, child.title) } }
             }
@@ -134,12 +155,16 @@ private fun Department(top: MenuItem) {
 }
 
 @Composable
-private fun DepartmentBanner(top: MenuItem, image: Image?, onClick: () -> Unit) {
+private fun DepartmentBanner(top: MenuItem, pictures: List<Image>, onClick: () -> Unit) {
     Box(
         Modifier.fillMaxWidth().aspectRatio(2.1f).clip(Radius.Card).background(LocalLuxe.current.card)
             .clickable(role = Role.Button, onClickLabel = "Alles aus ${top.title}", onClick = onClick),
     ) {
-        image?.let { AsyncImage(it.sized(720), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
+        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+            pictures.forEach {
+                AsyncImage(it.sized(if (pictures.size == 1) 720 else 300), null, contentScale = ContentScale.Crop, modifier = Modifier.weight(1f).fillMaxHeight())
+            }
+        }
         Box(Modifier.fillMaxSize().background(Brush.verticalGradient(0.3f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.6f))))
         Row(
             Modifier.align(Alignment.BottomStart).fillMaxWidth().padding(14.dp),
@@ -160,8 +185,10 @@ internal fun SubTile(item: MenuItem, image: Image?, onClick: () -> Unit) {
         Modifier.clip(Radius.Small).clickable(role = Role.Button, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box(Modifier.fillMaxWidth().aspectRatio(1f).clip(Radius.Card).background(LocalLuxe.current.card)) {
-            image?.let { AsyncImage(it.sized(300), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
+        Box(Modifier.fillMaxWidth().aspectRatio(1f).clip(Radius.Card).background(LocalLuxe.current.card), contentAlignment = Alignment.Center) {
+            if (image != null) AsyncImage(image.sized(300), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+            // Ohne Bild keine leere Fläche: Anfangsbuchstabe in Markenfarbe
+            else Text(shortLabel(item.title).take(1), style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.secondary)
         }
         Spacer(Modifier.height(6.dp))
         Text(
