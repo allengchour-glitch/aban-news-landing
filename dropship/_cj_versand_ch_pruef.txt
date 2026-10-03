@@ -3085,3 +3085,12 @@ lassiger-kapuzenpullover-fur-damen-612700	2602240223181613100	16	11.00	ok	landes
 hohe-damenstiefel-628000	2606100608291628600	16	12.56	ok	landeseite
 winter-heizweste-mit-batterie-fur-herren-605000	2607091029361605700	7	17.69	ok	landeseite
 eleganter-edelstahl-kerzenstander-im-french-st-625700	2607210223041626500	16	11.00	ok	landeseite
+kaschmir-strickpullover-fur-damen-622200	2607220857461623400	16	11.60	ok	landeseite
+eleganter-strickpullover-mit-farbstreifen-608200	2608050824081608900	16	11.00	ok	landeseite
+nordische-strickdecke-mit-quasten-002112	1449248722453139456	16	19.65	ok	landeseite
+kabellose-kaffeemuhle-mit-usb-ladefunktion-968000	1775348457503465472	7	12.30	ok	landeseite
+u-formige-warmflasche-fur-nacken-und-schultern-bd844c	-	-	-	unklar keine CJ-SKU	landeseite
+corduroy-hemd-jacke-fur-herren-611200	2602241107021611500	16	10.15	ok	landeseite
+herren-octopus-high-top-retro-martin-boots-754752	1463684195225309184	16	12.56	ok	landeseite
+wassertropfen-powerbank-handwarmer-f5f25e	-	-	-	unklar keine CJ-SKU	landeseite
+bohemian-wandregal-fur-kerzen-626300	2608141112071627201	16	15.81	ok	landeseite
