@@ -3053,3 +3053,7 @@ herren-strickpullover-mit-stehkragen-und-half-609600	2602100932561600000	16	13.6
 gefutterter-kapuzenpullover-mit-reissverschlus-602400	2607230559541603100	16	13.04	ok	landeseite
 herren-pullover-langarm-strickpullover-611700	2607221641461612400	16	12.81	ok	landeseite
 herren-kunstfellmantel-mit-leopardenmuster-614000	2606230822151615600	16	17.77	ok	landeseite
+gestrickte-sofadecke-mit-quasten-608900	2412040749281609100	16	11.37	ok	landeseite
+usb-aroma-diffuser-mit-7-led-farben-1b3dcc	-	-	-	unklar keine CJ-SKU	landeseite
+usb-heizkissen-mit-graphen-technologie-acad9f	-	-	-	unklar keine CJ-SKU	landeseite
+kapuzen-sweatshirt-kleid-mit-gurtel-604900	2606020359191605900	16	9.33	ok	landeseite
