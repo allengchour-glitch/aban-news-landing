@@ -1061,9 +1061,18 @@ while true; do
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GBT" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 7200 ] || absturz_nachholen "$GBT" || still_gestorben "$GBT"; then
       touch "$GBT"
+      # 03.10.2026 12:30 WECHSELBETRIEB: Mit fester Reihenfolge und N=60 kam der Lauf nie über die erste Klasse hinaus
+      # (~11 Produkte/h, Container-Neustart stündlich) — 265 «Restricted adult content» warteten unbegrenzt. Jetzt
+      # beginnt jeder Lauf bei der nächsten Klasse (Zähler /tmp/gbt_klasse_idx) und nimmt je Klasse höchstens 8.
+      GBT_IDX=$(( ($(cat /tmp/gbt_klasse_idx 2>/dev/null || echo 0) + 1) % 3 )); echo "$GBT_IDX" > /tmp/gbt_klasse_idx
+      case "$GBT_IDX" in
+        0) GBT_REIHE="'Inappropriate image' 'Restricted adult content' 'Promotional overlay on image'" ;;
+        1) GBT_REIHE="'Restricted adult content' 'Promotional overlay on image' 'Inappropriate image'" ;;
+        *) GBT_REIHE="'Promotional overlay on image' 'Inappropriate image' 'Restricted adult content'" ;;
+      esac
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_bild_tausch.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
-          for K in 'Inappropriate image' 'Restricted adult content' 'Promotional overlay on image'; do \
-            KLASSE=\"\$K\" EIN_MODELL=1 SCHARF=1 N=60 timeout 1500 python3 automation/google_bild_tausch.py; done" >> "$GBT" 2>&1 9>&- & )
+          for K in $GBT_REIHE; do \
+            KLASSE=\"\$K\" EIN_MODELL=1 SCHARF=1 N=8 timeout 1200 python3 automation/google_bild_tausch.py; done" >> "$GBT" 2>&1 9>&- & )
     fi
   fi
   # 03.10.2026: drei Bildklassen statt einer (Adult/Überlagerung mit eigenem Prompt); EIN_MODELL=1 greift nur, wenn der
