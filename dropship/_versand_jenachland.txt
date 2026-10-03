@@ -2160,3 +2160,6 @@ gid://shopify/Product/15427279782273	ersetzt
 gid://shopify/Product/15427279815041	ersetzt
 gid://shopify/Product/15427279880577	ersetzt
 gid://shopify/Product/15427279913345	ersetzt
+gid://shopify/Product/15427279978881	ersetzt
+gid://shopify/Product/15427280011649	ersetzt
+gid://shopify/Product/15427280077185	ersetzt
