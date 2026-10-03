@@ -3125,3 +3125,5 @@ diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
 elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
 kuchenregal-fur-gewurze-messer-7e619d	-	-	-	unklar keine CJ-SKU	klinge
 wetzstein-800-8000er-kornung-d7fafb	-	-	-	unklar keine CJ-SKU	klinge
+gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	-	-	-	unklar keine CJ-SKU	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	-	-	-	unklar keine CJ-SKU	klinge
