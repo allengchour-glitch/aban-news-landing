@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-03T00:34Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-03T00:47Z
 
-Aktive gescannt: 116 · ohne Kategorie: 116 · heute gesetzt: 95 (SCHARF, CAP 1500) · danach offen: 21 · Fehler: 0
+Aktive gescannt: 75 · ohne Kategorie: 75 · heute gesetzt: 54 (SCHARF, CAP 3000) · danach offen: 21 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- v-ausschnitt-tull-glitzerkleid-mit-stickerei-603200 · Damenmode → Apparel & Accessories > Clothing
-- a-line-pullover-kleid-in-rot-oder-schwarz-605900 · Damenmode → Apparel & Accessories > Clothing
-- mini-bodycon-rock-mit-glitzer-622100 · Damenmode → Apparel & Accessories > Clothing
-- leoparden-print-kleid-mit-stick-panel-608900 · Damenmode → Apparel & Accessories > Clothing
-- einseitiges-fishtail-kleid-in-schwarz-616900 · Damenmode → Apparel & Accessories > Clothing
+- freizeitschuhe-fur-herren-609800 · Herrenschuhe → Apparel & Accessories > Shoes
+- hundepullover-fur-sport-und-freizeit-622100 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- retro-nieten-umhangetasche-aus-leder-558528 · Taschen → Luggage & Bags
+- vintage-sportschuhe-fur-herren-603000 · Herrenschuhe → Apparel & Accessories > Shoes
+- herzformige-mousseform-aus-edelstahl-425984 · Küche & Bar → Home & Garden > Kitchen & Dining
 
