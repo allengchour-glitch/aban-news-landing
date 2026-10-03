@@ -339,3 +339,7 @@
 2026-10-01	gid://shopify/Product/16603302658439	natel	Schutzfolie aus gehärtetem Glas für iPhone
 2026-10-01	gid://shopify/Product/16603304395143	finken	Weiche Winterbettmütze und rutschfeste Hausschuhe
 2026-10-01	gid://shopify/Product/16603340505479	finken	Kinder‑Pantoffeln mit Tiermuster
+2026-10-03	gid://shopify/Product/15483934376321	natel	Magnetischer Seitenhalter für Monitor & Handy · Aluminium
+2026-10-03	gid://shopify/Product/16604898525575	natel	Mountainbike-Doppeltasche mit Handyfach
+2026-10-03	gid://shopify/Product/16604914516359	natel	Karten-Scanner mit Handyhalter
+2026-10-03	gid://shopify/Product/16604896330119	finken	Baby-Hausschuhe mit Klettverschluss
