@@ -3094,3 +3094,6 @@ corduroy-hemd-jacke-fur-herren-611200	2602241107021611500	16	10.15	ok	landeseite
 herren-octopus-high-top-retro-martin-boots-754752	1463684195225309184	16	12.56	ok	landeseite
 wassertropfen-powerbank-handwarmer-f5f25e	-	-	-	unklar keine CJ-SKU	landeseite
 bohemian-wandregal-fur-kerzen-626300	2608141112071627201	16	15.81	ok	landeseite
+warme-winter-lederstiefel-fur-herren-627900	2412290356431628300	16	16.16	ok	landeseite
+kurzer-fleece-kapuzenpullover-fur-damen-619400	2512150958231619700	16	12.32	ok	landeseite
+gefuttertes-kapuzen-sweatshirt-aus-baumwolle-607800	2512101241131608000	16	11.24	ok	landeseite
