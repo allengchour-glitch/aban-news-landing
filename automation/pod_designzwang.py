@@ -97,7 +97,7 @@ def gql(query, variables=None, _drossel=0):
         # 21.09.2026: Eine Drossel ist kein Fehler, sondern eine Wartezeit — Shopify nennt sie.
         if "THROTTLED" in json.dumps(d["errors"]).upper() and _drossel < 12:
             _k = (d.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
-            _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+            _f = max(float(_k.get("requestedQueryCost") or 0), 600.0) - float(_t.get("currentlyAvailable") or 0)
             _r = float(_t.get("restoreRate") or 0)
             time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
             return gql(query, variables, _drossel + 1)

@@ -55,7 +55,7 @@ def gql(q, v=None, tok=None):
             if any("THROTTL" in str(e.get("extensions", {})) for e in j.get("errors") or []):
                 # 21.09.2026: Wartezeit aus Shopifys throttleStatus statt fester 3 s.
                 _k = (j.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
-                _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                _f = max(float(_k.get("requestedQueryCost") or 0), 600.0) - float(_t.get("currentlyAvailable") or 0)
                 _r = float(_t.get("restoreRate") or 0)
                 time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0); continue
             return j

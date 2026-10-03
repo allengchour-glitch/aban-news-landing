@@ -112,16 +112,16 @@ def gql(q, v=None):
                 try:
                     _k = (d.get("extensions") or {}).get("cost") or {}
                     _t = _k.get("throttleStatus") or {}
-                    _fehlt = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                    _fehlt = max(float(_k.get("requestedQueryCost") or 0), 600.0) - float(_t.get("currentlyAvailable") or 0)  # 03.10.: bis zum Eimer-Boden warten, nicht nur bis zur eigenen Anfrage
                     _rate = float(_t.get("restoreRate") or 0)
                     if _fehlt > 0 and _rate > 0:
                         wartezeit = min(30.0, _fehlt / _rate + 0.5)
                 except Exception:
                     pass
                 time.sleep(wartezeit)
-                if drossel < 12:
+                if drossel < 40:
                     continue
-                grund = "12x gedrosselt (Eimer dauerhaft leer): " + grund
+                grund = "40x gedrosselt (Eimer dauerhaft leer): " + grund
                 break
         except Exception as e:
             roh = (r.stdout or "")[:200]

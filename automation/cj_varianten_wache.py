@@ -103,7 +103,7 @@ def gql(q, v=None):
                 drossel += 1; wartezeit = 12.0
                 try:
                     k = (d.get("extensions") or {}).get("cost") or {}; t = k.get("throttleStatus") or {}
-                    fehlt = float(k.get("requestedQueryCost") or 0) - float(t.get("currentlyAvailable") or 0)
+                    fehlt = max(float(k.get("requestedQueryCost") or 0), 600.0) - float(t.get("currentlyAvailable") or 0)
                     rate = float(t.get("restoreRate") or 0)
                     if fehlt > 0 and rate > 0: wartezeit = min(30.0, fehlt / rate + 0.5)
                 except Exception: pass

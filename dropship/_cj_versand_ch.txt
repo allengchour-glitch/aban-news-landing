@@ -1489,3 +1489,4 @@ gid://shopify/Product/16604933390727	nicht-versendbar	Faltbarer Bollerwagen für
 gid://shopify/Product/16604926017927	ok	Blumentopf Mond-Bonsai aus Purpursand
 gid://shopify/Product/16604932538759	ok	Hantel mit Rundkopf und Gummibeschichtung
 gid://shopify/Product/16604931686791	ok	Senioren-Telefonuhr mit Ortungsfunktion
+gid://shopify/Product/15448959320449	nicht-versendbar	Schwimmnudel aus SBR-Schaum

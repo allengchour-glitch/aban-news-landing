@@ -318,6 +318,20 @@ def r_helfer_ohne_eimer(dateien):
     return treffer
 
 
+def r_drossel_ungeduldig(dateien):
+    """03.10.2026 — Drossel-Schleife, die nur bis zur EIGENEN Anfrage wartet. 19 Wächter rechneten
+    `requestedQueryCost - currentlyAvailable`: bei leerem Eimer (16 von 2'000, gemessen 16:28) sind das < 1 s je
+    Versuch — nach 12 Versuchen in ~15 s «12x gedrosselt», cj_versand_ch_guard starb so um 12:11. Gewartet wird bis
+    zum Eimer-Boden (600)."""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix != ".py" or AUTO not in p.parents:
+            continue
+        for m in re.finditer(r'float\(_?k\.get\("requestedQueryCost"\) or 0\)\s*-\s*float', t):
+            treffer.append((p, t.count("\n", 0, m.start()) + 1, "Drossel wartet nur auf die eigene Anfrage (max(…, 600) nehmen)"))
+    return treffer
+
+
 REGELN = [
     ("stille-null", r_stille_null, "17.09.2026"),
     ("grund-verschluckt", r_grund_verschluckt, "17.09.2026"),
@@ -327,6 +341,7 @@ REGELN = [
     ("seo-teil", r_seo_teil, "30.09.2026"),
     ("eimer-fehlt", r_eimer_fehlt, "02.10.2026"),
     ("helfer-ohne-eimer", r_helfer_ohne_eimer, "03.10.2026"),
+    ("drossel-ungeduldig", r_drossel_ungeduldig, "03.10.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -350,6 +365,8 @@ KOEDER = {
     "helfer-ohne-eimer": ("automation/koeder_helfer.py",
                           "# from koeder_helfer import gql\ndef gql(q, v=None):\n    out = subprocess.run(['curl', URL]).stdout\n"
                           "    d = json.loads(out)\n    return d\n"),
+    "drossel-ungeduldig": ("automation/koeder_drossel.py",
+                           '_fehlt = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)\n'),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -369,6 +386,8 @@ ECHT = {
     "helfer-ohne-eimer": ("automation/koeder_helfer.py",
                           "# from koeder_helfer import gql\nfrom eimer_etikette import nachlauf as _nachlauf\n"
                           "def gql(q, v=None):\n    d = json.loads(subprocess.run(['curl', URL]).stdout)\n    _nachlauf(d)\n    return d\n"),
+    "drossel-ungeduldig": ("automation/koeder_drossel.py",
+                           '_fehlt = max(float(_k.get("requestedQueryCost") or 0), 600.0) - float(_t.get("currentlyAvailable") or 0)\n'),
 }
 
 

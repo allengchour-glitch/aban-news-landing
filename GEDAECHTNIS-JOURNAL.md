@@ -33,6 +33,11 @@
 
 
 
+## ⏳ Wächter starben in 15 s an «12x gedrosselt»: Wartezeit nur bis zur eigenen Anfrage (2026-10-03, Verbesserungsrunde 16:25)
+- **GEMESSEN:** Der Eimer lag 16:28–16:30 bei 16–136 von 2'000. Gestorben sind `cj_versand_ch_guard` (12:11), `fuellmenge_nachtragen` und `pinterest_pins_pruefen`. 30 Wächter rechneten `requestedQueryCost − currentlyAvailable`: Bei leerem Eimer waren das unter 1 s je Versuch, nach 12 Versuchen gaben sie auf.
+- **GETAN:** Alle 30 warten bis `max(Anfrage, 600) − verfügbar` (≤ 30 s); die 19 mit `_fehlt` haben 40 statt 12 Versuche. Regel `drossel-ungeduldig` im Zweiten Gehirn (18/18).
+- **Lehre:** Geduld wird in ZEIT gemessen, nicht in Versuchen. Wer nur auf die eigene Anfrage wartet, verliert jedes Rennen gegen Schreiber, die auf 600 warten. → `dropship/DROSSEL-GEDULD-2026-10-03.md`
+
 ## 📦 #1020 «Dispatched» in der CJ-App — die Versand-Ampel schwieg zu früh (2026-10-03)
 - **Betreiber-Screenshot:** CJ-App, Auftrag DP2609300440070970000 (#1020 Kristall-Set, USD 22.19) mit Status «Dispatched».
 - **GEMESSEN** (`getTrackInfo` 06086397533485): CJ-Status «Dispatched», aber nur zwei Lagerzeilen («Label created … Warehouse is processing» 30.09. 04:48 und «Shipping Label Created» 12:48), kein Carrier-Scan, `lastTrackNumber` «Updating». `versand_stillstand.py` zählte die Zeilen der Route: Mit 2 Zeilen galt die Sendung als «bewegt», und die VERSAND-Zeile verschwand ab etwa 09:00 aus der Ampel.
