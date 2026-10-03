@@ -1963,3 +1963,5 @@ gid://shopify/Product/15493859180929	2026-09-29T16:35Z	kein-verlust-live	32.90	2
 gid://shopify/Product/15495091388801	2026-09-29T16:35Z	draft	15.90	21.78	Latex-Anti-Rutschmatte für Zuhause
 gid://shopify/Product/15493894209921	2026-09-29T16:35Z	draft	15.90	21.77	Wandregal mit Zahnpastaspender, bohrfrei
 gid://shopify/Product/15493873664385	2026-09-29T16:35Z	draft	16.90	22.71	Keramik-Teekanne für losen Tee
+gid://shopify/Product/15448959320449	2026-10-03T09:08Z	kein-verlust-live	125.90	101.92	Schwimmnudel aus SBR-Schaum
+gid://shopify/Product/15448837587329	2026-10-03T09:08Z	kein-verlust-live	100.90	81.47	Keramik-Antihaft-Bratpfanne
