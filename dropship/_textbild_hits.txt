@@ -16486,3 +16486,6 @@ gid://shopify/Product/15453895983489	106->2	Camo-Hosen für Herren, retro-stylis
 gid://shopify/Product/15454109041025	11->0	2-Ebenen-Badezimmer-Aufbewahrungsständer aus Aluminium
 gid://shopify/Product/15454180671873	10->0	Mini-Luftbefeuchter für Zuhause
 gid://shopify/Product/15479803806081	12->2	Ultra HD Smart Projector
+gid://shopify/Product/15496539636097	18->0	LED Teelichter Flackernd (Batteriebetrieben)
+gid://shopify/Product/15496705900929	63->0	Halsband aus Echtleder für Hunde
+gid://shopify/Product/15496892547457	14->0	Gaming-Griff für Smartphones
