@@ -3062,3 +3062,5 @@ usb-aroma-diffusor-mit-befeuchter-465152	1525035291923460096	3	8.06	ok	landeseit
 unisex-leder-winterhandschuhe-891585	1971150378983526402	0	-	KEINE CH-Option → DRAFT	landeseite
 unisex-strickhandschuhe-mit-touchscreen-554946	1971103727281635329	0	-	KEINE CH-Option → DRAFT	landeseite
 strickmutze-fur-herbst-winter-852481	2069308852352155649	16	17.16	ok	landeseite
+leichter-daunenmantel-mit-kapuze-613300	2605120316211613800	16	10.15	ok	landeseite
+kurze-daunenjacke-mit-kapuze-634500	2602240525271634900	16	8.79	ok	landeseite
