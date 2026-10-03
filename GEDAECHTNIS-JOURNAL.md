@@ -31,6 +31,16 @@
 
 
 
+
+## 🔧 «fix alles» (Google-Blocker): Bildtausch wirkt 76 % gegen 21 %, «Image too small» sind Variantenbilder (2026-10-03)
+790 Free-Listings-Blocker. GEMESSEN: von 46 getauschten «Inappropriate image» sind 35 frei (76 %), von 19 unberührten
+«uneinig» 4 (21 %) → Tausch weiter, bei leerem Zweitprüfer (Groq-Kontingent je Modell; Groq nimmt jetzt nur 3 Bilder)
+entscheidet Gemini allein (`EIN_MODELL=1`, Ledger «tausch-g»). «Image too small»: Hauptbilder ≥ 500 px, zu klein waren 45
+VARIANTEN-Bilder → `google_variantenbild_gross.py` (Lanczos 600 px, `fileUpdate` ersetzt die Datei, Media-ID + Farbzuordnung
+bleiben, 45/45). Adult 92: 73 ohne Auslöserwort → Bild; gleiche Tauschrunde. «Product page unavailable» 129: alle kaufbar,
+115 nur einmal angestossen → zweite Runde, Abstand 3 T. Titel-Fälle: «Martin Boots», «Hand-Dampfgerät». → `dropship/GOOGLE-BLOCKER-FIX-2026-10-03.md`
+**Lehre:** Ein Google-Bildbefund kann ein VARIANTEN-Bild meinen — erst messen, welches Bild Google je Angebot nimmt.
+
 ## 🧟 «Produktdetails doppelt» kam wochenlang täglich zurück — Verursacher ist der PC des Betreibers (2026-10-02)
 150 Produkte (u. a. die TikTok-Landeseiten Sirène/Provence/Aurora) trugen täglich wieder zwei «Produktdetails»-Blöcke.
 `produktdetails_vereinen.py` vereinte sie, `klassen_kontrolle` meldete «150 → 0», und am nächsten Tag waren alle 150

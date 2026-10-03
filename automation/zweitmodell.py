@@ -99,7 +99,7 @@ def _openai(text, bilder):
     raise RuntimeError("ChatGPT ohne Antwort — " + letzter)
 
 
-GROQ_MAX_BILDER = int(os.environ.get("GROQ_MAX_BILDER", "5"))   # mehr → HTTP 400 «Too many images» (gemessen 02.10.)
+GROQ_MAX_BILDER = int(os.environ.get("GROQ_MAX_BILDER", "3"))   # mehr → HTTP 400 «Too many images» (02.10.: 5; 03.10. gemessen: «supports up to 3 images»)
 
 
 def raster(bilder, nummer_ab=1, zelle=360, spalten=4):

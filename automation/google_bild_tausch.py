@@ -44,6 +44,15 @@ beste Wahl ist oder kein Bild besser ist, antworte wahl=1. Wenn der Artikel selb
 Motiv, Waffe) und kein Bild das lösen kann, setze motiv_selbst_problem=true.
 Antworte NUR mit JSON: {{"wahl": n, "motiv_selbst_problem": true|false, "grund": "max. 1 Satz"}}"""
 
+# 03.10.2026: zweite Klasse «Promotional overlay on image» (8 Produkte) — gleiches Verfahren, anderer Ablehnungsgrund.
+PROMPT_UEBERLAGERUNG = """Du prüfst Produktbilder für Google Merchant (Gratis-Einträge, Schweiz). Google hat das HAUPTBILD (Bild 1)
+dieses Artikels als «Promotional overlay on image» abgelehnt: eingeblendeter Werbetext, Preise, Rabatt-Sticker, Logos,
+Wasserzeichen, Rahmen oder Grafik-Collagen über dem Produktfoto. Artikel: «{titel}» (Typ: {typ}).
+Du siehst {k} Bilder, nummeriert 1 bis {k} in dieser Reihenfolge. Wähle das Bild, das den ARTIKEL klar zeigt und KEINEN
+eingeblendeten Text, kein Logo, kein Wasserzeichen und keine Grafik-Einblendung trägt (Schrift AUF dem Produkt selbst ist erlaubt).
+Wenn kein Bild ohne Einblendung existiert, antworte wahl=1. motiv_selbst_problem bleibt false.
+Antworte NUR mit JSON: {{"wahl": n, "motiv_selbst_problem": true|false, "grund": "max. 1 Satz"}}"""
+
 
 def openai_key():
     k = os.environ.get("OPENAI_API_KEY") or (open("/tmp/openai_key").read().strip() if os.path.exists("/tmp/openai_key") else "")
@@ -77,7 +86,12 @@ def gemini(bilder, text):
     for a in range(3):
         try:
             r = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
-            return json_aus(json.load(urllib.request.urlopen(r, timeout=120))["candidates"][0]["content"]["parts"][0]["text"])
+            j = json.load(urllib.request.urlopen(r, timeout=120))
+            # 03.10.2026: ohne «candidates» hat Gemini die BILDER selbst gesperrt (promptFeedback.blockReason, z. B. Horror-
+            # Maske mit Blut). Das ist kein Netzfehler, sondern die Antwort: das Motiv ist das Problem.
+            if not j.get("candidates") and (j.get("promptFeedback") or {}).get("blockReason"):
+                return {"wahl": 1, "motiv_selbst_problem": True, "grund": "Gemini sperrt die Bilder: " + j["promptFeedback"]["blockReason"]}
+            return json_aus(j["candidates"][0]["content"]["parts"][0]["text"])
         except Exception as e:
             grund = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(4 * (a + 1))
     raise RuntimeError("Gemini ohne Antwort — " + grund)
@@ -92,7 +106,9 @@ def chatgpt(bilder, text):
 def main():
     stand = json.load(open(STAND))
     handles = stand["handles"].get(KLASSE) or []
-    erledigt = {l.split("\t")[0] for l in open(LEDGER)} if os.path.exists(LEDGER) else set()
+    zeilen = [l.rstrip("\n").split("\t") for l in open(LEDGER)] if os.path.exists(LEDGER) else []
+    # NOCHMAL_UNEINIG=1 (03.10.): «uneinig»/«fehler» zählen nicht als erledigt — sie bekommen eine neue Runde.
+    erledigt = {f[0] for f in zeilen if len(f) > 2 and not (os.environ.get("NOCHMAL_UNEINIG") == "1" and f[2] in ("uneinig", "fehler"))}
     offen = [h for h in handles if h not in erledigt]
     print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {KLASSE} · {len(handles)} gemeldet (Stand {stand['stand']}) · "
           f"{len(offen)} offen · N={N} KONTROLLE={KONTROLLE} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
@@ -113,11 +129,24 @@ def main():
         med, bilder = [m for m, _ in paare], [b for _, b in paare]
         if len(med) < 2:
             zaehl["zu_wenig_bilder"] += 1; continue
-        text = PROMPT.format(titel=p["title"], typ=p.get("productType") or "-", k=len(bilder))
+        text = (PROMPT_UEBERLAGERUNG if KLASSE == "Promotional overlay on image" else PROMPT).format(
+            titel=p["title"], typ=p.get("productType") or "-", k=len(bilder))
         try:
-            g, c = gemini(bilder, text), chatgpt(bilder, text)
+            g = gemini(bilder, text)
         except RuntimeError as e:
             zaehl["fehler"] += 1; print(f"  ⚠️ {h}: {e}", file=sys.stderr, flush=True); continue
+        allein = False
+        try:
+            c = chatgpt(bilder, text)
+        except Exception as e:
+            # 03.10.2026: GEMESSEN — von 46 getauschten Produkten (30.09.–01.10.) sind 35 (76 %) nicht mehr blockiert,
+            # von 19 «uneinig» (unberührt) nur 4 (21 %). Ist der Zweitprüfer leer (ChatGPT ohne Guthaben, Groq-Tages-
+            # kontingent je Modell), entscheidet mit EIN_MODELL=1 Gemini allein — jeder Tausch ist umkehrbar und wird als
+            # «tausch-g» protokolliert (Nachmessung getrennt).
+            if os.environ.get("EIN_MODELL") == "1" and ("Kontingent" in str(e) or "429" in str(e) or "Guthaben" in str(e)):
+                c, allein = dict(g), True
+            else:
+                zaehl["fehler"] += 1; print(f"  ⚠️ {h}: {e}", file=sys.stderr, flush=True); continue
         gw, cw = int(g.get("wahl") or 1), int(c.get("wahl") or 1)
         motiv = bool(g.get("motiv_selbst_problem")) or bool(c.get("motiv_selbst_problem"))
         if motiv:
@@ -125,13 +154,13 @@ def main():
         elif gw == cw == 1:
             art = "behalten"
         elif gw == cw and 1 < gw <= len(med):
-            art = "tausch"
+            art = "tausch-g" if allein else "tausch"
         else:
             art = "uneinig"
-        zaehl[art] += 1
+        zaehl[art] = zaehl.get(art, 0) + 1
         print(f"  {art:9} {h[:55]:55} G={gw} C={cw} · G: {str(g.get('grund'))[:70]} · C: {str(c.get('grund'))[:70]}", flush=True)
-        neu = med[gw - 1]["id"] if art == "tausch" else ""
-        if SCHARF and art == "tausch":
+        neu = med[gw - 1]["id"] if art.startswith("tausch") else ""
+        if SCHARF and art.startswith("tausch"):
             r = hw.gql('mutation($p:ID!,$m:[MoveInput!]!){productReorderMedia(id:$p,moves:$m){mediaUserErrors{message}}}',
                        {"p": p["id"], "m": [{"id": neu, "newPosition": "0"}]})
             err = ((r.get("data") or {}).get("productReorderMedia") or {}).get("mediaUserErrors")

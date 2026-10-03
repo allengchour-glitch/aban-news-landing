@@ -18,7 +18,9 @@ SHOP = "au3j0y-hq.myshopify.com"
 STAND = os.path.join(REPO, "dropship/_google_feedback_stand.json")
 LEDGER = os.path.join(REPO, "dropship/_gfeed_anstupsen.tsv")
 KLASSE = "Product page unavailable"
-TAGE = int(os.environ.get("TAGE", "7"))
+# 03.10.2026: 7 → 3 Tage. 115 der 129 Restfälle hatten seit dem 29.09. nur EINEN Anstoss; zweite Runde 03.10. 00:27 UTC
+# (Nachmessung im nächsten Google-Vollscan). Ein Tag-Update kostet nichts und löst keine Kundenwirkung aus.
+TAGE = int(os.environ.get("TAGE", "3"))
 SCHARF = os.environ.get("DRY") != "1"
 
 
