@@ -16474,3 +16474,4 @@ gid://shopify/Product/15447883841921	18->0	Vielseitiger Dreiecksschal mit Bindeb
 gid://shopify/Product/15447900750209	10->0	Sportlicher Taillenformer mit Reissverschluss
 gid://shopify/Product/15447931748737	41->1	Glitzernde Netzstrümpfe mit Strass
 gid://shopify/Product/15447979065729	47->1	Spitzen-Neckholder-Top mit integrierten Pads
+gid://shopify/Product/15448836276609	51->0	Planet Diamond Star Fake Nails
