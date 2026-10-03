@@ -1,11 +1,11 @@
 {
+  "id": "storefront-2026-10-03",
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
-  "id": "storefront-2026-10-03",
-  "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]",
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
   "stand": "ok",
-  "begonnen": "2026-10-03T00:01:09.461Z",
-  "dauer_s": 60.6,
+  "begonnen": "2026-10-03T18:15:11.056Z",
+  "dauer_s": 63.9,
   "ergebnis": {
     "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
     "befunde": [
@@ -24,10 +24,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 6978,
+        "zeichen": 7016,
         "zeichen_spanne": [
-          4272,
-          6978
+          4293,
+          7016
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-03-startseite.png"
       },
@@ -46,10 +46,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 3902,
+        "zeichen": 3673,
         "zeichen_spanne": [
-          3902,
-          3902
+          3673,
+          3673
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-03-kollektion.png"
       },
