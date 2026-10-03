@@ -1485,3 +1485,7 @@ gid://shopify/Product/15524868555137	ok	Mini Tattoo Pen mit USB-Ladekabel
 gid://shopify/Product/16603298136455	nicht-versendbar	Faltbare Schneemann-Lichterkette 1,2 m
 gid://shopify/Product/16603400339847	ok	Schreibtischlampe mit Drehfunktion – Walnuss Finish
 gid://shopify/Product/16603766849927	nicht-versendbar	Kissen mit Rücken- und Nackensupport
+gid://shopify/Product/16604933390727	nicht-versendbar	Faltbarer Bollerwagen für Outdoor-Aktivitäten
+gid://shopify/Product/16604926017927	ok	Blumentopf Mond-Bonsai aus Purpursand
+gid://shopify/Product/16604932538759	ok	Hantel mit Rundkopf und Gummibeschichtung
+gid://shopify/Product/16604931686791	ok	Senioren-Telefonuhr mit Ortungsfunktion
