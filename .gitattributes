@@ -1,0 +1,5 @@
+# 03.10.2026: Reine Zeilen-Ledger (nur Anhängen, Reihenfolge egal) vereinigt Git beim Merge selbst.
+# _cj_reel_kein_video.txt kollidierte am 03.10. fünfmal zwischen Auto-Committer und Hand-Commits.
+# NICHT für Zeiger-/Stand-Dateien (_*_cursor.txt, *.json): dort würde «union» zwei Werte stehen lassen.
+dropship/_cj_reel_kein_video.txt merge=union
+dropship/cj_niche_done.txt merge=union
