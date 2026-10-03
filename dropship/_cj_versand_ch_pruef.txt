@@ -3221,3 +3221,19 @@ patchwork-hoodie-627700	2601051059511628000	16	9.20	ok	landeseite
 herren-lederimitat-reversjacke-602200	2605220331421602800	16	17.40	ok	landeseite
 herren-hoodie-suede-optik-uni-lassig-624200	2604160852071624800	16	11.00	ok	landeseite
 frauenkreppsohlen-schnurstiefel-in-grossen-bis-607200	2606151045051607800	16	12.32	ok	landeseite
+v-hals-pullover-fur-herren-605100	2604120044431605500	16	10.29	ok	landeseite
+freizeit-set-mit-pullover-und-midirock-636000	2607241323161636800	16	15.81	ok	landeseite
+bg-streetwear-retro-strickpullover-605300	2604070444331605800	16	11.60	ok	landeseite
+gefutterte-damen-schneestiefel-mit-kunstfellkr-601700	2601080730021602400	16	12.32	ok	landeseite
+warme-wasserdichte-high-top-winterschuhe-fur-d-825024	1573275130304933888	16	13.76	ok	landeseite
+locker-geschnittenes-pullover-kleid-mit-schlit-603700	2607020542081604300	16	14.00	ok	landeseite
+overknee-stiefel-mit-schnurung-und-blockabsatz-621200	2601181148281621600	16	23.02	ok	landeseite
+kapuzen-sweatshirt-mit-kordelzug-618600	2606150616221611600	16	12.21	ok	landeseite
+herren-hoodie-waffel-sweatshirt-620300	2605280628571620900	16	10.35	ok	landeseite
+sternenprojektor-fur-kinderzimmer-054208	1628625788834689024	7	12.70	ok	landeseite
+walnuss-holz-kerzenwarmer-fur-zuhause-halt-tee-609800	2601160953241600200	16	9.47	ok	landeseite
+herren-jacke-mit-stehkragen-rei-verschluss-601000	2606230641371601500	16	11.00	ok	landeseite
+hd-smart-mini-projektor-fur-home-office-815424	1732629280057724928	6	23.88	ok	landeseite
+magnetische-3-in-1-wireless-powerbank-606500	2406190917061606700	0	-	KEINE CH-Option → DRAFT	landeseite
+kabelloser-mini-staubsauger-mit-geblase-616100	2411060557051616600	7	24.62	ok	landeseite
+smart-hundespielzeug-346624	1356909656169123840	7	9.86	ok	landeseite
