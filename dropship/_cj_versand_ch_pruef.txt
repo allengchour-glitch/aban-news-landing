@@ -3030,3 +3030,4 @@ halloween-kostuem-fuer-hunde-479706	-	-	-	unklar keine CJ-SKU	landeseite
 halloween-kapuzenpullover-mit-totenkopf-print-603500	2605120818321604000	16	10.29	ok	landeseite
 strickpullover-rundhals-loose-fit-634500	2606130929591635000	16	11.00	ok	landeseite
 eleganter-wollmantel-mit-revers-und-bindegurte-615500	2605270251121616000	16	18.24	ok	landeseite
+horror-maske-blutung-totenkopf-285312	1439140285409005568	16	8.93	ok	landeseite
