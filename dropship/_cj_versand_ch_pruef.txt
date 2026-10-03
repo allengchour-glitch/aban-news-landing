@@ -3115,3 +3115,9 @@ overknee-stiefel-mit-stretch-und-klobigem-absa-618900	2601181210231619200	16	12.
 herren-trenchcoat-im-biker-stil-600900	2606230420541601500	16	15.32	ok	landeseite
 retro-workstiefel-627700	2506050125581627900	16	23.50	ok	landeseite
 warme-winter-hausschuhe-063744	1446742119636144128	16	11.23	ok	landeseite
+elegantes-bodycon-kleid-mit-halbem-rollkragen-615200	2606120150071615900	16	9.07	ok	landeseite
+eleganter-kerzenhalter-gold-marmor-638400	2602141219251638700	11	42.20	ok	landeseite
+hoodie-jogginghose-set-im-partnerlook-637400	2510290123201637700	16	12.21	ok	landeseite
+damen-strickpullover-mit-herzmuster-reissversc-602300	2606300334551602900	16	10.15	ok	landeseite
+freizeitjacke-fur-fruhling-und-herbst-628000	2606251156281628600	16	11.60	ok	landeseite
+lockere-jeansjacke-im-korea-stil-fur-herren-566274	2061660218522361858	-	-	unklar 200 Success rest=15	landeseite
