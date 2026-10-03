@@ -129,3 +129,4 @@ slug:kabelloses-ansteckmikrofon-mit-ladebox
 pid:15412302414209
 slug:bier-kanule-pink-fga921126
 name:bierkanülepink
+slug:zweiteiliger-hoodie-jogginghosen-trainingsanzu

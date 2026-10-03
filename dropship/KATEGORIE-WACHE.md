@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-03T02:29Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-03T04:08Z
 
-Aktive gescannt: 190 · ohne Kategorie: 190 · heute gesetzt: 161 (SCHARF, CAP 1500) · danach offen: 29 · Fehler: 0
+Aktive gescannt: 38 · ohne Kategorie: 38 · heute gesetzt: 9 (SCHARF, CAP 1500) · danach offen: 29 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -14,9 +14,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- nachtlicht-aus-holz-fur-warme-atmosphare-602400 · Beleuchtung → Home & Garden > Lighting
-- neonlicht-fur-wanddekoration-602200 · Beleuchtung → Home & Garden > Lighting
-- blumentopf-mond-bonsai-aus-purpursand-619700 · Basteln & DIY → Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts
-- weiche-polyester-decke-800-1300-g-cartoon-blum-950272 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
-- tragbares-led-buhnenlicht-aus-aluminium-633200 · Beleuchtung → Home & Garden > Lighting
+- schokoladen-keyboard-form-58b8b6 · Haushalt & Wohnen → Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
+- octopus-kleine-kugelmaschine-1eb4f4 · Haushalt & Wohnen → Home & Garden > Household Supplies
+- roter-hundemantel-fur-kleine-hunde-621800 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- mehrzweckpfanne-fur-braten-und-omelett-62ce31 · Haushalt & Wohnen → Home & Garden > Kitchen & Dining
+- wolldecke-fur-hund-und-katze-604736 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
 
