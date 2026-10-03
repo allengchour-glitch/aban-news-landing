@@ -2007,3 +2007,4 @@ gid://shopify/Product/15427240919425	ersetzt
 gid://shopify/Product/15427240952193	ersetzt
 gid://shopify/Product/15427240984961	ersetzt
 gid://shopify/Product/15427241017729	ersetzt
+gid://shopify/Product/15427241050497	ersetzt
