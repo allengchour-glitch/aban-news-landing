@@ -33,6 +33,12 @@
 
 
 
+## 📦 #1020 «Dispatched» in der CJ-App — die Versand-Ampel schwieg zu früh (2026-10-03)
+- **Betreiber-Screenshot:** CJ-App, Auftrag DP2609300440070970000 (#1020 Kristall-Set, USD 22.19) mit Status «Dispatched».
+- **GEMESSEN** (`getTrackInfo` 06086397533485): CJ-Status «Dispatched», aber nur zwei Lagerzeilen («Label created … Warehouse is processing» 30.09. 04:48 und «Shipping Label Created» 12:48), kein Carrier-Scan, `lastTrackNumber` «Updating». `versand_stillstand.py` zählte die Zeilen der Route: Mit 2 Zeilen galt die Sendung als «bewegt», und die VERSAND-Zeile verschwand ab etwa 09:00 aus der Ampel.
+- **GETAN:** Gezählt werden nur echte Stationen. Zeilen zu Etikett und Lager filtert die Regel `ETIKETT` heraus (Kanarienvögel 5/5). Die Ampel zeigt wieder «#1020 81h im Lager · Iris erst ab 05.10. 04:48 UTC».
+- **Lehre:** Ein Status-Wort («Dispatched») und eine Zeilenzahl sind keine Bewegung. Massgeblich ist der erste Scan des Paketdiensts.
+
 ## 🔄 Bildtausch: feste Klassen-Reihenfolge verhungerte die grösste Klasse (2026-10-03, Verbesserungsrunde 12:25)
 - **GEMESSEN:** Der Scan 10:09 zeigte «Restricted adult content» 92 → 265 (Grind-Mode mit Modelfotos). Der Bildtausch lief aber stur «Inappropriate (63 offen) → Adult → Überlagerung» mit N=60. Er schaffte etwa 11 Produkte pro Stunde; der stündliche Neustart beendete jeden Lauf in der ersten Klasse. Adult kam nie dran.
 - **GETAN:** Jeder Lauf beginnt bei der nächsten Klasse (`/tmp/gbt_klasse_idx`), je Klasse N=8 → alle drei Klassen in einem Container-Leben.
