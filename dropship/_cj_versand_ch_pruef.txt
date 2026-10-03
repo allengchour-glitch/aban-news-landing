@@ -2945,3 +2945,10 @@ halloween-umhang-kleiner-teufel-aus-flanell-632800	2602270700481633100	16	12.21	
 vielseitiger-kurbis-totenkopf-gurtel-603800	2601180341061604400	16	5.81	ok	landeseite
 lolita-stirnband-mit-hexenhut-und-rosen-636900	2606180248491637600	16	8.54	ok	landeseite
 gelber-leopard-hoodie-mit-teufelshornern-606900	2606160343041607600	16	10.42	ok	landeseite
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+kuchenregal-fur-gewurze-messer-7e619d	-	-	-	unklar keine CJ-SKU	klinge
+wetzstein-800-8000er-kornung-d7fafb	-	-	-	unklar keine CJ-SKU	klinge
+gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	-	-	-	unklar keine CJ-SKU	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	-	-	-	unklar keine CJ-SKU	klinge
+diamant-messerscharfer-mit-festem-winkel-c8b87b	-	-	-	unklar keine CJ-SKU	klinge
