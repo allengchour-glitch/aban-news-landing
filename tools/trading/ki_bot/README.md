@@ -57,15 +57,31 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
 7. **Bilanz:** `python tools/trading/ki_bot/signale.py --rueckblick` — gesendete Signale und Schattenbuch (Signale ohne
    Siegel, nur mitgebucht) mit echtem Ausgang.
 
-## Auto-Handel über Alpaca (Papierkonto)
+## Vollautomatisch über Alpaca (Start in 10 Minuten)
 
-1. Gratis-Konto auf alpaca.markets, „Paper Trading“ wählen, API-Schlüssel erzeugen.
-2. `setx ALPACA_KEY_ID "..."` und `setx ALPACA_SECRET_KEY "..."`.
-   Ein automatischer Lauf auf GitHub ist bewusst **nicht** eingerichtet: Wer einen Bot mit Broker-Schlüsseln unbeaufsichtigt
-   laufen lässt, soll das selbst und bewusst tun.
-3. Zuerst trocken: `python tools/trading/ki_bot/bot.py --lauf --broker alpaca --trocken`
-4. Daytrading automatisch: `python tools/trading/ki_bot/signale.py --dauer --broker alpaca` — nur Signale mit Gütesiegel,
-   nur Kauf-Signale, als Bracket-Auftrag (Stop + Ziel), 20 Minuten vor US-Börsenschluss wird glattgestellt.
+1. **Konto:** gratis auf alpaca.markets registrieren. Ein Papierkonto (Spielgeld, 100'000 USD) ist sofort da, ohne
+   Einzahlung. Die **Alpaca-App** (iPhone/Android) zeigt dir jeden Auftrag des Bots live.
+2. **Schlüssel:** im Alpaca-Dashboard links „Paper“ wählen → „API Keys“ → „Generate“. Beide Werte kopieren.
+3. **Python** installieren (python.org, Häkchen „Add to PATH“) und den Ordner `tools/trading/` auf den PC kopieren.
+4. **Einstellen** (Eingabeaufforderung, einmalig, dann Fenster neu öffnen):
+   ```
+   setx ALPACA_KEY_ID "dein-key"
+   setx ALPACA_SECRET_KEY "dein-secret"
+   setx TELEGRAM_BOT_TOKEN "dein-token"     (optional: jedes Signal aufs Handy)
+   setx TELEGRAM_CHAT_ID "deine-chat-id"
+   ```
+5. **Trocken testen:** `python tools/trading/ki_bot/bot.py --lauf --broker alpaca --trocken` zeigt die Aufträge, sendet nichts.
+6. **Starten:** Doppelklick auf `start-auto.bat`. Er macht den Selbsttest, schichtet einmal am Tag das Depot um
+   (Strategie „Ausgleich“) und handelt tagsüber nur Signale mit Gütesiegel als Bracket-Auftrag (Stop + Ziel). 20 Minuten
+   vor US-Börsenschluss stellt er alles glatt. Fenster schliessen = Bot aus.
+7. **Not-Aus:** Doppelklick auf `stop.bat`. Danach gehen keine neuen Aufträge mehr raus. Mit `weiter.bat` wieder freigeben.
+8. **Automatisch jeden Tag:** Windows-Aufgabenplanung → „Einfache Aufgabe erstellen“ → täglich 15:00 (US-Börse öffnet
+   15:30 Schweizer Zeit) → Programm `start-auto.bat`.
+
+Läuft er mindestens **3 Monate** im Papierkonto, vergleiche mit `python tools/trading/ki_bot/signale.py --rueckblick`
+und mit einfachem Halten. Erst dann über echtes Geld nachdenken. Ein automatischer Lauf auf GitHub ist bewusst
+**nicht** eingerichtet: Einen Bot mit Broker-Schlüsseln lässt man nur auf dem eigenen Rechner und bewusst laufen.
+Hinweis: Hat kein Markt das Gütesiegel, handelt der Daytrading-Teil nicht. Das ist Absicht, kein Fehler.
 
 **Sicherungen:** Papier ist Standard. Echtes Geld nur, wenn `ALPACA_PAPER=false` **und**
 `KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"` gesetzt sind. Höchstens `KI_BOT_ANTEIL` (Standard 0.5) des Kontos investiert, jeder
