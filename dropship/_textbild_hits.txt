@@ -16485,3 +16485,4 @@ gid://shopify/Product/15453895557505	141->0	Herren Arbeitshose mit Schlaufe
 gid://shopify/Product/15453895983489	106->2	Camo-Hosen für Herren, retro-stylish
 gid://shopify/Product/15454109041025	11->0	2-Ebenen-Badezimmer-Aufbewahrungsständer aus Aluminium
 gid://shopify/Product/15454180671873	10->0	Mini-Luftbefeuchter für Zuhause
+gid://shopify/Product/15479803806081	12->2	Ultra HD Smart Projector
