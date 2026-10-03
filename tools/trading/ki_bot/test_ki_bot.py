@@ -143,7 +143,11 @@ class Fake(BaseHTTPRequestHandler):
 
     def do_POST(self):
         n = int(self.headers.get("Content-Length", 0))
-        Fake.log.append(("POST", self.path, json.loads(self.rfile.read(n))))
+        roh = self.rfile.read(n)
+        try:
+            Fake.log.append(("POST", self.path, json.loads(roh)))
+        except ValueError:
+            Fake.log.append(("POST", self.path, roh.decode("utf-8")))
         self._antwort({"id": "auftrag-1", "status": "accepted"})
 
     def log_message(self, *a):
@@ -203,6 +207,11 @@ tg = {datetime(2026, 9, 1).date(): [(99, 99.5, 0), (99.5, 100, 0), (100, 98.5, 0
 SG.abrechnen(lbs, {"GC=F": tg})
 e = lbs["signale"][0]["ergebnis"]
 pruefe("Abrechnung: Stop vor Erholung", e and e["grund"] == "Stop" and e["ausstieg"] == 99.0)
+
+# ntfy (Gratis-Push ohne Konto)
+pruefe("ntfy: ohne Thema nichts senden", SG.push_ntfy("x", env={}) is False)
+pruefe("ntfy: sendet Text an das Thema", SG.push_ntfy("Gold kaufen 2'650", env={"KI_BOT_NTFY": "mein-geheimes-thema", "KI_BOT_NTFY_SERVER": basis})
+       and Fake.log[-1][1] == "/mein-geheimes-thema" and "Gold kaufen" in Fake.log[-1][2])
 
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")

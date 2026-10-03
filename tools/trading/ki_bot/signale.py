@@ -22,7 +22,7 @@ Ablauf pro Prüfung (z. B. alle 15 Minuten während der Handelszeiten, siehe REA
     python3 tools/trading/ki_bot/signale.py --rueckblick         # Bilanz der gesendeten Signale
     python3 tools/trading/ki_bot/signale.py --test-push          # Test-Nachricht an Telegram
 
-Einstellungen über Umgebungsvariablen: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (ohne → nur Bildschirm),
+Einstellungen über Umgebungsvariablen: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID und/oder KI_BOT_NTFY (ohne → nur Bildschirm),
 KI_BOT_KONTO (Kontogrösse, Standard 1000), KI_BOT_WAEHRUNG (CHF/EUR/USD, Standard CHF), KI_BOT_RISIKO
 (Prozent pro Trade, Standard 1). Keine Anlageberatung.
 """
@@ -152,11 +152,30 @@ def groesse(einstieg, stop_abstand, konto, risiko_pct, usd_in_konto, hebel):
 
 
 # ───────────── Telegram ─────────────
+def push_ntfy(text, env=None):
+    """Gratis-Push über ntfy.sh — ohne Konto: App „ntfy“ installieren, Thema abonnieren, KI_BOT_NTFY=<thema> setzen.
+    Themen sind öffentlich lesbar, wer den Namen kennt: einen langen, zufälligen Namen wählen."""
+    env = os.environ if env is None else env
+    thema = env.get("KI_BOT_NTFY", "").strip()
+    if not thema:
+        return False
+    server = (env.get("KI_BOT_NTFY_SERVER") or "https://ntfy.sh").rstrip("/")
+    req = urllib.request.Request(f"{server}/{urllib.parse.quote(thema)}", data=text.encode("utf-8"), method="POST",
+                                 headers={"Title": "KI-Bot", "Tags": "chart_with_upwards_trend"})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return 200 <= r.status < 300
+    except Exception as e:  # noqa: BLE001
+        print(f"ntfy-Fehler: {type(e).__name__}")
+        return False
+
+
 def push(text):
     token, chat = os.environ.get("TELEGRAM_BOT_TOKEN", ""), os.environ.get("TELEGRAM_CHAT_ID", "")
     print("\n" + text + "\n")
+    ntfy = push_ntfy(text)
     if not token or not chat:
-        return False
+        return ntfy
     daten = urllib.parse.urlencode({"chat_id": chat, "text": text, "disable_web_page_preview": "true"}).encode()
     try:
         with urllib.request.urlopen(urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=daten), timeout=15) as r:

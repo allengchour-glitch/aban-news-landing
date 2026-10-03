@@ -67,8 +67,7 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
    ```
    setx ALPACA_KEY_ID "dein-key"
    setx ALPACA_SECRET_KEY "dein-secret"
-   setx TELEGRAM_BOT_TOKEN "dein-token"     (optional: jedes Signal aufs Handy)
-   setx TELEGRAM_CHAT_ID "deine-chat-id"
+   setx KI_BOT_NTFY "dein-langes-zufalls-thema"   (optional: jedes Signal aufs Handy, siehe ntfy unten)
    ```
 5. **Trocken testen:** `python tools/trading/ki_bot/bot.py --lauf --broker alpaca --trocken` zeigt die Aufträge, sendet nichts.
 6. **Starten:** Doppelklick auf `start-auto.bat`. Er macht den Selbsttest, schichtet einmal am Tag das Depot um
@@ -89,9 +88,45 @@ Auftrag höchstens `KI_BOT_MAX_AUFTRAG` USD (Standard 1000), kein Leerverkauf, k
 oder eine leere Datei `STOP` in diesem Ordner. Protokoll ohne Schlüssel: `data/ki-bot-broker.json`.
 Strategie für Tages-Aufträge: `KI_BOT_STRATEGIE` = `Ausgleich` (Standard), `KI-Bot` oder `Trendfilter 200`.
 
+## Gratis-Werkzeuge rund um den Bot
+
+| Werkzeug | Kostet | Wofür |
+|---|---|---|
+| **ntfy** (App für iPhone/Android, ntfy.sh) | gratis, kein Konto | Signale und Lagebericht aufs Handy, ohne Telegram-Bot einzurichten |
+| **Alpaca-Papierkonto** + Alpaca-App | gratis | Bot handelt mit Spielgeld, du siehst jeden Auftrag live in der App |
+| **Alpaca MCP-Server** (offiziell, github.com/alpacahq/alpaca-mcp-server) | gratis | Dein Claude auf dem PC sieht Depot, Kurse und Aufträge und kann im Chat Aufträge geben |
+| **Yahoo Finance** | gratis, ohne Schlüssel | Tageskurse, VIX, US-Zinsen (nutzt der Bot schon) |
+
+**ntfy einrichten (2 Minuten):** App „ntfy“ installieren → „+“ → ein langes, zufälliges Thema ausdenken (z. B.
+`kibot-7f3k9q2xw`) und abonnieren → am PC `setx KI_BOT_NTFY "kibot-7f3k9q2xw"`. Test:
+`python tools/trading/ki_bot/signale.py --test-push`. Achtung: Wer den Themennamen kennt, kann mitlesen. Darum lang und zufällig.
+
+**Alpaca MCP für Claude Desktop** (Einstellungen → Developer → Edit Config, braucht `uv` von astral.sh):
+```json
+{"mcpServers": {"alpaca": {"command": "uvx", "args": ["alpaca-mcp-server"],
+  "env": {"ALPACA_API_KEY": "dein-key", "ALPACA_SECRET_KEY": "dein-secret", "ALPACA_PAPER_TRADE": "true"}}}}
+```
+Für Claude Code: `claude mcp add alpaca --scope user --transport stdio uvx alpaca-mcp-server --env ALPACA_API_KEY=... --env ALPACA_SECRET_KEY=... --env ALPACA_PAPER_TRADE=true`.
+Danach im Chat z. B.: „Zeig mein Alpaca-Depot und die Aufträge des KI-Bots von heute.“ `ALPACA_PAPER_TRADE` auf `true` lassen:
+Ein Sprachmodell, das per Chat mit echtem Geld handelt, ist genau das, wovor die Seite `ki-trading-bot.html` warnt.
+
+**Helfen Gratis-Zusatzdaten?** `python3 tools/trading/ki_bot/zusatzdaten.py` testet vorab festgelegte Regeln mit VIX
+und Zinskurve auf dem S&P 500 (Signal am Folgetag, 0.1 % Kosten, Test 2013–2026 ungesehen). Stand 03.10.2026:
+
+| Regel | pro Jahr | schlimmster Einbruch | Skill |
+|---|---|---|---|
+| Kaufen und Halten | +13.1 % | −30 % | – |
+| VIX unter 30 | +9.5 % | −32 % | 18 % |
+| VIX unter 50-Tage-Ø | +4.3 % | −26 % | 76 % |
+| Zinskurve positiv | +10.6 % | −25 % | 56 % |
+| VIX unter 30 + Kurs über 200-Tage-Ø | +7.8 % | −22 % | 57 % |
+
+Keine Regel schlägt Halten, keine ist klar besser als Zufall (Gegenprobe „kennt morgen“: 100 %). Wer bei hohem VIX
+aussteigt, verpasst die stärksten Erholungstage. Darum kommen diese Daten **nicht** in den Bot.
+
 ## Prüfen
 
 ```
-python3 tools/trading/ki_bot/test_ki_bot.py   # 37 Tests, inkl. nachgebautem Alpaca-Server
+python3 tools/trading/ki_bot/test_ki_bot.py   # 39 Tests, inkl. nachgebautem Alpaca-Server
 python3 tools/trading/ki_bot/bot.py --pruefen  # Gegenproben: Wahrsager ~100 %, Zufallsmarkt nicht extrem
 ```
