@@ -3040,3 +3040,21 @@ halloween-digitaldruck-sweatshirt-damen-615800	2512300445221616100	16	9.88	ok	la
 verzierte-blockabsatz-damenstiefel-oberschenke-628000	2605280132001628700	16	13.40	ok	landeseite
 nordische-fransen-strickdecke-8c46da	-	-	-	unklar keine CJ-SKU	landeseite
 damen-hoodie-bequem-mit-taschen-und-langarm-610500	2607170536031611200	16	10.84	ok	landeseite
+herren-loose-fit-kapuzenjacke-waffelpique-617500	2606110423041618400	16	11.00	ok	landeseite
+hut-handschuhe-schal-3-in-1-set-609900	2605070714591600500	16	13.40	ok	landeseite
+warme-lederhandschuhe-mit-fleecefutter-626600	2512220904121626800	16	6.63	ok	landeseite
+langer-damenmantel-im-kaschmir-look-600600	2601020516591600800	16	18.24	ok	landeseite
+color-block-strick-cardigan-im-old-money-stil-603400	2604220251531603900	16	9.20	ok	landeseite
+damenstiefel-aus-vollnarbenleder-mit-weicher-s-638700	2605080256161639300	16	12.56	ok	landeseite
+trendy-knochelstiefel-fur-herren-631700	2602280245221632900	16	17.66	ok	landeseite
+borosilikatglas-tasse-mit-skala-957378	2001554398306037762	0	-	KEINE CH-Option → DRAFT	landeseite
+windschutzjacke-623700	2607211537531624400	16	8.79	ok	landeseite
+herren-strickpullover-mit-stehkragen-und-half-609600	2602100932561600000	16	13.65	ok	landeseite
+gefutterter-kapuzenpullover-mit-reissverschlus-602400	2607230559541603100	16	13.04	ok	landeseite
+herren-pullover-langarm-strickpullover-611700	2607221641461612400	16	12.81	ok	landeseite
+herren-kunstfellmantel-mit-leopardenmuster-614000	2606230822151615600	16	17.77	ok	landeseite
+gestrickte-sofadecke-mit-quasten-608900	2412040749281609100	16	11.37	ok	landeseite
+usb-aroma-diffuser-mit-7-led-farben-1b3dcc	-	-	-	unklar keine CJ-SKU	landeseite
+usb-heizkissen-mit-graphen-technologie-acad9f	-	-	-	unklar keine CJ-SKU	landeseite
+kapuzen-sweatshirt-kleid-mit-gurtel-604900	2606020359191605900	16	9.33	ok	landeseite
+martin-ankle-boots-im-britischen-casual-stil-600000	2411020349481600200	16	14.24	ok	landeseite
