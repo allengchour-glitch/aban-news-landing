@@ -3121,3 +3121,7 @@ hoodie-jogginghose-set-im-partnerlook-637400	2510290123201637700	16	12.21	ok	lan
 damen-strickpullover-mit-herzmuster-reissversc-602300	2606300334551602900	16	10.15	ok	landeseite
 freizeitjacke-fur-fruhling-und-herbst-628000	2606251156281628600	16	11.60	ok	landeseite
 lockere-jeansjacke-im-korea-stil-fur-herren-566274	2061660218522361858	-	-	unklar 200 Success rest=15	landeseite
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+kuchenregal-fur-gewurze-messer-7e619d	-	-	-	unklar keine CJ-SKU	klinge
+wetzstein-800-8000er-kornung-d7fafb	-	-	-	unklar keine CJ-SKU	klinge
