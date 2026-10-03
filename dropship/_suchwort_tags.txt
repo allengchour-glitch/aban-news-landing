@@ -14670,3 +14670,4 @@ gid://shopify/Product/16605481107847	mantel	Hundemantel Golden Retriever Labrado
 gid://shopify/Product/16605481435527	pullover	Weihnachtspullover für kleine und mittlere Hunde
 gid://shopify/Product/16605481501063	decke	Wolldecke mit Kapuze für Hunde
 gid://shopify/Product/16605481533831	pullover	Old Man Wanchristmas Haustier-Strickpullover
+gid://shopify/Product/16605819765127	matte	Quadratisches Badmatte mit Saugkappen
