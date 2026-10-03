@@ -14561,3 +14561,6 @@ gid://shopify/Product/16604876538247	weste	Sportweste
 gid://shopify/Product/16604876734855	schuh	Baby Krabbelschuhe mit weicher Sohle
 gid://shopify/Product/16604877848967	jacke	Taktische Windjacke mit Kapuze
 gid://shopify/Product/16604878668167	jacke	Taktische Fleecejacke für Herren
+gid://shopify/Product/16604878766471	schuh	Einfache Outdoor-Strandschuhe
+gid://shopify/Product/16604878864775	anzug	Softshell Sportanzug für Herren
+gid://shopify/Product/16604878995847	stiefel	Hohe Kinderstiefel mit atmungsaktivem Mesh
