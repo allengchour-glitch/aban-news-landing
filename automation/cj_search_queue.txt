@@ -9,18 +9,18 @@
 # 2026-10-02 Semrush-Sortimentslücke (CH-Suchvolumen, von 2 Prüfern bestätigt): stehlampe 9900/Mt, orthopädisches hundebett 880/Mt
 # 2026-10-02 Semrush-Sortimentslücken 2 (CH-Suchvolumen, beide Prüfer): skianzug 1900, unterhosen herren 1300, messschieber 880, pilates ring 720, kartoffelpresse 720, rolltop rucksack 390, wickelrock 390, steppweste damen 260, katzentunnel 260, sneaker socken 210
 # 2026-10-02 Dünne Kategorien (Tag 4): 3D-Filament 7, Elektrowerkzeug 7 aktive Produkte
-search:pla filament 1.75mm
-search:cordless drill set
-search:mini cordless angle grinder
-search:ski suit
-search:men cotton boxer briefs
-search:stainless steel vernier caliper
-search:pilates ring
-search:potato ricer
-search:roll top backpack
-search:knitted wrap midi skirt
-search:women quilted vest
-search:cat tunnel
+#done search:pla filament 1.75mm
+#done search:cordless drill set
+#done search:mini cordless angle grinder
+#done search:ski suit
+#done search:men cotton boxer briefs
+#done search:stainless steel vernier caliper
+#done search:pilates ring
+#done search:potato ricer
+#done search:roll top backpack
+#done search:knitted wrap midi skirt
+#done search:women quilted vest
+#done search:cat tunnel
 search:men low cut ankle socks
 search:floor lamp living room
 search:orthopedic memory foam dog bed
