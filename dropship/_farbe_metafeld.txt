@@ -415,3 +415,11 @@ gid://shopify/Product/15532044714369	Silber
 gid://shopify/Product/15532202262913	Silber
 gid://shopify/Product/16603689451911	Violett
 gid://shopify/Product/16603691155847	Silber
+gid://shopify/Product/16604847210887	Grün
+gid://shopify/Product/16604850160007	Mehrfarbig
+gid://shopify/Product/16604851011975	Silber
+gid://shopify/Product/16604851274119	Silber
+gid://shopify/Product/16604869788039	Transparent
+gid://shopify/Product/16604906258823	Schwarz
+gid://shopify/Product/16604910059911	Grün
+gid://shopify/Product/16604924543367	Schwarz
