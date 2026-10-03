@@ -33,3 +33,17 @@ statt als Netzfehler. Aufseher: Bildtausch alle 2 h für drei Klassen; Varianten
 | Restricted adult content (92) | 43 | 7 | 35 | 7 |
 | Promotional overlay (8) | 3 | 5 | — | — |
 Nachmessung: nächster `google_feedback_wache`-Vollscan; «tausch-g» getrennt von «tausch» auswerten (Erwartung aus 30.09.: ~76 % frei).
+
+## NACHGEMESSEN 03.10. 10:09 UTC (erster Vollscan nach dem Fix, dank Fortsetzung jetzt fertig)
+| Klasse | 02.10. 13:26 | 03.10. 10:09 |
+|---|---:|---:|
+| Inappropriate image | 250 | **199** |
+| Product page unavailable | 129 | **120** |
+| Image too small | 14 | **6** |
+| Restricted adult content | 92 | **265** ⚠️ |
+| Promotional overlay on image | 8 | 29 ⚠️ |
+| Blocker gesamt | 790 | 1'072 |
+
+- Bildtausch «tausch-g» (150, nur Gemini): nach weniger als einem Tag sind noch 16 «Inappropriate image» und 7 «adult» blockiert. Google hat erst einen Teil neu geprüft.
+- **Neue Welle «Restricted adult content»:** 240 Produkte sind neu dabei, 67 sind herausgefallen. Fast alles ist Mode mit Modelfotos (Strumpfhosen, Bodys, Kleider, Bademode, Sandalen); dazu kommen Ausreisser wie ein Kuchenteiler und eine Herrenuhr. Die Handles enden auf 6xxxxx, das sind die neuen Grind-Importe.
+  → Als Nächstes zu behandeln (eigene Runde): Kontaktbogen einer Stichprobe, dann Bildtausch mit `KLASSE='Restricted adult content'` für neue Ware, eventuell eine Import-Regel für das Hauptbild bei Wäsche/Bademode.
