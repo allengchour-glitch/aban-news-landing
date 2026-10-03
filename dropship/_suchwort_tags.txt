@@ -14449,3 +14449,11 @@ gid://shopify/Product/16603765965191	korb	Abtropfkorb für Essstaebchen und Kuec
 gid://shopify/Product/16603766358407	kissen	Babykissen gegen Verformungen
 gid://shopify/Product/16603766423943	pullover	Kinderpullover im Western-Stil
 gid://shopify/Product/16603766882695	tasche	Aufbewahrungstasche für Camping-Geschirr
+gid://shopify/Product/16603767177607	shirt	Herren Langarmshirt aus Seide
+gid://shopify/Product/16603767636359	shirt	Herren Langarmshirt mit Revers und Knopfleiste
+gid://shopify/Product/16603767832967	kissen	Nackenkissen mit Memory-Schaum
+gid://shopify/Product/16603767865735	pullover	Herren Rollkragenpullover aus Strick
+gid://shopify/Product/16603768029575	huelle	Dackel-Kissenhülle mit Tiermuster
+gid://shopify/Product/16603768095111	shirt	Herren Langarmshirt mit Rundhalsausschnitt
+gid://shopify/Product/16603768193415	kissen	Seiden-Armlehnenkissen mit Lendenwirbelstütze
+gid://shopify/Product/16603768324487	shirt	Herren Rollkragen-Sportshirt
