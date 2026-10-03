@@ -2015,3 +2015,9 @@ gid://shopify/Product/15427241214337	ersetzt
 gid://shopify/Product/15427241247105	ersetzt
 gid://shopify/Product/15427241279873	ersetzt
 gid://shopify/Product/15427241312641	ersetzt
+gid://shopify/Product/15427241345409	ersetzt
+gid://shopify/Product/15427241378177	ersetzt
+gid://shopify/Product/15427241443713	ersetzt
+gid://shopify/Product/15427241476481	ersetzt
+gid://shopify/Product/15427241542017	ersetzt
+gid://shopify/Product/15427241574785	ersetzt
