@@ -10,6 +10,7 @@
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · GEMINI_API_KEY · SCOPE · [TARGETS=fr,it,en] · [MAX=1000] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { nachlauf } from './eimer_etikette.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
 const GEMINI=(process.env.GEMINI_API_KEY||'').trim();
@@ -23,7 +24,7 @@ let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/mys
 if(!ADMIN_TOKEN && !(CID&&CSEC)){ console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 if(!GEMINI){ console.log('Kein GEMINI_API_KEY → No-op (Übersetzung braucht den Key).'); process.exit(0); }
 
-async function gql(tok,q,v){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query:q,variables:v})}); return r.json(); }
+async function gql(tok,q,v){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query:q,variables:v})}); const j=await r.json(); await nachlauf(j); return j; }  // 03.10.2026: Eimer-Etikette
 async function works(t){ try{const r=await gql(t,'{shop{name}}');return r?.data?.shop?.name||null;}catch{return null;} }
 async function cc(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); return j.access_token||null; }
 async function token(){ if(ADMIN_TOKEN&&await works(ADMIN_TOKEN))return ADMIN_TOKEN; if(CID&&CSEC){const t=await cc(); if(t&&await works(t))return t;} console.error('❌ Auth'); process.exit(0); }
@@ -85,7 +86,8 @@ console.log(`Übersetzen — SCOPE=${SCOPE}, Ziele: ${TARGETS.join('/')}${DRY?' 
 if(SCOPE==='hero'){
   // Hero-Produkte aus CSV-Handles
   const handles=new Set();
-  for(const f of ['automation/good_products.csv','dropship/rated_products.csv']){ if(!fs.existsSync(f)) continue;
+  // 03.10.2026: HANDLES_FILE (eine Zeile = ein Handle, erste Zeile Kopf) ersetzt die Juni-Listen — z. B. Top-Seiten nach Sitzungen.
+  for(const f of (process.env.HANDLES_FILE?[process.env.HANDLES_FILE]:['automation/good_products.csv','dropship/rated_products.csv'])){ if(!fs.existsSync(f)) continue;
     const lines=fs.readFileSync(f,'utf8').split('\n').slice(1); for(const ln of lines){ const h=(ln.split(',')[0]||'').trim(); if(h) handles.add(h); } }
   console.log(`  Hero-Produkte: ${handles.size} Handles + alle Collections`);
   for(const h of handles){ if(total>=MAX) break; const pr=await gql(tok,Q_HANDLE,{h}); const pid=pr?.data?.productByHandle?.id; if(!pid){ continue; }
@@ -98,7 +100,8 @@ else if(SCOPE==='catalog'){
   total+=await eachByType('PRODUCT', async (node)=>{ const out=await translateResource(node); if(out.regs){ touched++; if(touched%25===0) console.log(`  … ${touched} Produkte übersetzt`); } });
 }
 else if(SCOPE==='theme'){
-  for(const type of ['ONLINE_STORE_THEME','LINK','SHOP_POLICY','ONLINE_STORE_THEME_SECTION_GROUP']){
+  // 03.10.: MENU dazu; TYPES überschreibt die Liste (Theme hat 4'523 Felder, fr ist schon übersetzt — nicht neu in EINEM Prompt schicken)
+  for(const type of (process.env.TYPES||'MENU,LINK,SHOP_POLICY,ONLINE_STORE_THEME_SECTION_GROUP,ONLINE_STORE_THEME').split(',')){
     try{ const n=await eachByType(type, async (node)=>{ const out=await translateResource(node); if(out.regs) touched++; }); console.log(`  ${type}: ${n} Ressource(n) geprüft`); }catch(e){ console.error('  ⚠️',type,e.message); }
   }
   total=touched;
