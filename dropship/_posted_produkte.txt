@@ -134,3 +134,5 @@ slug:gefutterte-damen-schneestiefel-mit-kunstfellkr
 slug:kabelloses-ansteckmikrofon-mit-ladebox-016064
 name:kabellosesansteckmikrofonmitladebox
 slug:gestrickte-sofadecke-mit-quasten
+slug:walnuss-holz-kerzenwarmer-fur-zuhause-halt-tee-609800
+name:walnussholzkerzenwärmerfürzuhause
