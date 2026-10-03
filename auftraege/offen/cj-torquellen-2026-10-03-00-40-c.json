@@ -1,0 +1,20 @@
+{
+  "id": "cj-torquellen-2026-10-03-00-40-c",
+  "typ": "skript",
+  "skript": "cj_quellvideo_holen.mjs",
+  "warum": "Meisterwerk-Tor sperrte Reels (HOOK < 3,0); reel_neu_rendern.py MODUS=hook schneidet sie mit neuem Einstieg neu.",
+  "videos": [
+    {
+      "name": "rq-1439773507859910656",
+      "url": "https://download-only-api.cjdropshipping.com/d9f9d92e4db8472aa2f34009a61b8701/82a09b0c19d94e04ad7422d1fa4c0744-ab7f9da5b59d76463db13d981f1e3750-ld.mp4"
+    },
+    {
+      "name": "rq-1452900498217766912",
+      "url": "https://download-only-api.cjdropshipping.com/c5b6efdc4fb34636b2c894923e1b5f78/3f0b5d6d03374f2d863c90300fe6e741-e8ec2f5f0e732d3dde46e25d4bbb5939-ld.mp4"
+    },
+    {
+      "name": "rq-1682660448442781696",
+      "url": "https://download-only-api.cjdropshipping.com/d345d5a02c2771ee9e636633b79f0102/9457e575c585499191d6257c6857fa0d-42aeb945fb412b146205030bfafe4400-ld.mp4"
+    }
+  ]
+}
