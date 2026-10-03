@@ -3104,3 +3104,5 @@ gefutterte-damenjacke-mit-blumenmuster-620200	2603220935271620600	16	10.15	ok	la
 retro-jacke-fur-herren-mit-revers-609800	2606080734331600300	16	9.61	ok	landeseite
 vielseitiger-cardigan-mit-goldknopfen-617300	2604061019271617700	16	10.15	ok	landeseite
 herren-langarm-sweatshirt-loose-fit-636500	2605280707181637100	16	9.75	ok	landeseite
+wind-und-wasserdichte-outdoor-jacke-615400	2605090233411616000	16	9.47	ok	landeseite
+frauenpullover-aus-polyester-615700	2603170953541616000	16	10.35	ok	landeseite

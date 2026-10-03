@@ -5635,3 +5635,12 @@ gid://shopify/Product/15454106911105	zugeordnet	14	Kinder Sandalen Farbpassend
 gid://shopify/Product/15454107107713	zugeordnet	49	Leuchtende Kinderschuhe
 gid://shopify/Product/15454107238785	zugeordnet	85	Kinder-Lauflernschuhe
 gid://shopify/Product/15454107337089	zugeordnet	20	Leichte Sommerschuhe für Kinder
+gid://shopify/Product/15454107500929	zugeordnet	18	Babyschlappen mit Stickbärchen, weiche Sohle, rutschsicher
+gid://shopify/Product/15454115299713	zugeordnet	5	Sportliche Armbanduhr mit Kalenderfunktion
+gid://shopify/Product/15454115365249	zugeordnet	3	Multifunktionaler Sechszeiger-Quarz-Herrenuhr mit Kalender
+gid://shopify/Product/15454115430785	zugeordnet	4	Unisex-Armbanduhr mit Sechshandigem Kalender und Wasserdicht
+gid://shopify/Product/15454115496321	zugeordnet	4	Wasserdichte Herren-Kalenderuhr im Fashion-Stil
+gid://shopify/Product/15454115529089	zugeordnet	2	Wasserfeste Lippenstift
+gid://shopify/Product/15454115594625	zugeordnet	6	Multifunktions-Armband
+gid://shopify/Product/15454115660161	zugeordnet	3	DIY Ölmalerei Wandkunst
+gid://shopify/Product/15454115692929	zugeordnet	5	Unisex Armbanduhr Sport
