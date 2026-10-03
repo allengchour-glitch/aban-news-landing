@@ -130,3 +130,6 @@ pid:15412302414209
 slug:bier-kanule-pink-fga921126
 name:bierkanülepink
 slug:zweiteiliger-hoodie-jogginghosen-trainingsanzu
+slug:gefutterte-damen-schneestiefel-mit-kunstfellkr
+slug:kabelloses-ansteckmikrofon-mit-ladebox-016064
+name:kabellosesansteckmikrofonmitladebox

@@ -1412,3 +1412,25 @@ gid://shopify/Product/15525486788993	a	toddler
 gid://shopify/Product/15525487640961	a	toddler
 gid://shopify/Product/15525488296321	a	toddler
 gid://shopify/Product/16603617952135	a	toddler
+gid://shopify/Product/15525192958337	w	Kleinteile	Kinder-Lollipop-Make-up-Spielzeug
+gid://shopify/Product/16604878602631	w	Kleinteile	Lernspielzeug aus Holz für Kinder
+gid://shopify/Product/16604884926855	w	Kleinteile	Puzzle Top Ten – 10‑Stufen‑Schraubpuzzle
+gid://shopify/Product/16604888465799	w	Kleinteile	Holzpuzzle Super Schwierig Zehn Stufen
+gid://shopify/Product/16604891840903	w	Kleinteile	Pyramiden-Holzbox mit Entschlüsselungs-Puzzle
+gid://shopify/Product/16604893512071	w	Kleinteile	Interaktives 3D-Holzpuzzle für Eltern und Kinder
+gid://shopify/Product/16604895117703	w	Kleinteile	Regenbogen-Bausteine aus Holz und Acryl
+gid://shopify/Product/16604896657799	w	Kleinteile	Bausteine Modell Brandenburger Tor für Kinder
+gid://shopify/Product/16604954624391	w	Kleinteile	Holz-Steckspiel mit Säulen und Bausteinen
+gid://shopify/Product/16604954984839	w	Kleinteile	Schildkröten-Beissring mit Schnullerkette
+gid://shopify/Product/16604955148679	w	Kleinteile	Holz-Steckbrett-Puzzle für Kinder
+gid://shopify/Product/16604955410823	w	Kleinteile	DIY Fotorahmen Bausteine
+gid://shopify/Product/16604956950919	w	Kleinteile	Rennwagen-Modellbausteine für Kinder
+gid://shopify/Product/15497431712129	a	toddler
+gid://shopify/Product/15512278499713	a	kids
+gid://shopify/Product/15524697375105	a	kids
+gid://shopify/Product/15525192958337	a	kids
+gid://shopify/Product/16603823243655	a	kids
+gid://shopify/Product/16604876734855	a	toddler
+gid://shopify/Product/16604886598023	a	toddler
+gid://shopify/Product/16604893544839	a	toddler
+gid://shopify/Product/16604896330119	a	toddler

@@ -16,18 +16,13 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-02T10:51:43Z — SCHARF
+## Letzter Lauf 2026-10-03T09:13:18Z — SCHARF
 
-Gescannt 49945 aktive von 49945 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 53x gewartet, 267 s gesamt.
+Gescannt 50480 aktive von 50480 (EXACT); Wächter-Stand 20 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
 | zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
-
-## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
-
-- kinder-martin-boots-mit-seitenreissverschluss-624200: Inappropriate title
-- stahlarmband-mit-fallschirmschlie-e-618900: Inappropriate title
 
 ## Ledger gesamt
 
