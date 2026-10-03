@@ -14671,3 +14671,5 @@ gid://shopify/Product/16605481435527	pullover	Weihnachtspullover für kleine und
 gid://shopify/Product/16605481501063	decke	Wolldecke mit Kapuze für Hunde
 gid://shopify/Product/16605481533831	pullover	Old Man Wanchristmas Haustier-Strickpullover
 gid://shopify/Product/16605819765127	matte	Quadratisches Badmatte mit Saugkappen
+gid://shopify/Product/16605820486023	matte	Flocked Home Fussmatte 40x60 cm
+gid://shopify/Product/16605820879239	kissen	Rundes Sitzkissen in Prussian Blue
