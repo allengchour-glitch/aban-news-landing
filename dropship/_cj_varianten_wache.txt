@@ -9194,3 +9194,10 @@ gid://shopify/Product/15454335336833	1790987542	ok	12 Shop / 12 CJ / 0 fehlend /
 gid://shopify/Product/15454335435137	1790987542	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15454350016897	1790987542	ok	14 Shop / 14 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15454350115201	1790987542	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454350246273	1790987542	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454350279041	1790987542	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454350442881	1790987542	ok	4 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454350541185	1790987542	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454351163777	1790987542	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454351229313	1790987542	ok	80 Shop / 80 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15454351360385	1790987542	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
