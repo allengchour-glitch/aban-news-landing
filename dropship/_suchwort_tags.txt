@@ -14520,3 +14520,4 @@ gid://shopify/Product/16604833218951	anhaenger	Weihnachts Countdown Tieranhänge
 gid://shopify/Product/16604852748679	spiegel	Donut Auto-Anhänger für Rückspiegel
 gid://shopify/Product/16604854813063	anhaenger	Schlüsselanhänger für den Gürtel
 gid://shopify/Product/16604855239047	anhaenger	Bionischer Fisch-Schlüsselanhänger
+gid://shopify/Product/16604855665031	anhaenger	Edelstahl-Projektions-Schlüsselanhänger

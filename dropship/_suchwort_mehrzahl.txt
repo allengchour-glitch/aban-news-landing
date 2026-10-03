@@ -3759,3 +3759,4 @@ gid://shopify/Product/16604912025991	taschen	Tragbare Oxford Reisetasche
 gid://shopify/Product/16604913238407	kleider	Leoparden-Print Strickkleid
 gid://shopify/Product/16604914418055	kleider	Tailliertes Strickkleid mit V-Ausschnitt
 gid://shopify/Product/16604914942343	kleider	Damenkleid mit Leopardenmuster und Spitze
+gid://shopify/Product/16604915532167	kleider	Elegantes, figurbetontes Etuikleid mit Langarm
