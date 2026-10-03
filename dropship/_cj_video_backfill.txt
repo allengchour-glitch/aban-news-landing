@@ -552,3 +552,4 @@ gid://shopify/Product/15518549016961	ok-lokal
 gid://shopify/Product/15518595907969	ok-lokal
 gid://shopify/Product/15519830147457	ok-lokal
 gid://shopify/Product/15524698685825	ok-lokal
+gid://shopify/Product/15525477712257	ok-lokal
