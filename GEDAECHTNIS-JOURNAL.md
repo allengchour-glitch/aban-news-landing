@@ -33,6 +33,11 @@
 
 
 
+## 🔄 Bildtausch: feste Klassen-Reihenfolge verhungerte die grösste Klasse (2026-10-03, Verbesserungsrunde 12:25)
+- **GEMESSEN:** Der Scan 10:09 zeigte «Restricted adult content» 92 → 265 (Grind-Mode mit Modelfotos). Der Bildtausch lief aber stur «Inappropriate (63 offen) → Adult → Überlagerung» mit N=60. Er schaffte etwa 11 Produkte pro Stunde; der stündliche Neustart beendete jeden Lauf in der ersten Klasse. Adult kam nie dran.
+- **GETAN:** Jeder Lauf beginnt bei der nächsten Klasse (`/tmp/gbt_klasse_idx`), je Klasse N=8 → alle drei Klassen in einem Container-Leben.
+- **Lehre:** Mehrere Warteschlangen in EINEM Lauf mit festen Schritten = die erste frisst das Zeitfenster. Bei stündlichen Neustarts reihum beginnen und kleine Scheiben nehmen. → `dropship/BILDTAUSCH-WECHSEL-2026-10-03.md`
+
 ## 🎁 «Geschenke bis CHF 30» = vierte Unterwelt; Bildtausch-Pilot: Kontrolle wird zu 42 % auch ohne Eingriff frei (2026-10-03)
 - **GEMESSEN:** Menü-Kollektion `🎁-geschenke-bis-chf-30` (9 Kanäle, 15'518 Produkte, Regel geschenk UND < 30, CREATED_DESC): oben 12/24 Partydeko und 11/24 Schmuck. Das ist dieselbe Zuordnungs-Klasse wie bei «für Sie/Ihn/Kinder» am 02.10. — beim Abarbeiten von Plan-Tag 3 war der vierte Punkt «unter CHF 30» übersehen worden.
 - **GETAN:** Welt `unter30` in `geschenk_unterwelten.py` (Preisband je Welt, 12–30; 8 Warenarten; 400 Produkte reihum). Die 10 Fehlgriffe aus dem Trockenlauf sind als `ART_NICHT` eingetragen (Hundespielzeug «Zähneknirschen» trotz TIER-Filter, Oster-Decke im Oktober, «Sternenhimmel»-Nagelset als Deko).
