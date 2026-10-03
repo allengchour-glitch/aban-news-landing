@@ -17,7 +17,7 @@ ein Befund, wenn es bei einem bekannt-gelungenen Fall gefuellt waere.
 MELDET NUR — schreibt nichts, storniert nichts. Eine Zeile in der Keepalive-Ausgabe, und nur
 wenn es etwas zu melden gibt. Ein Ausfall meldet «unklar», nie Schweigen.
 """
-import json, os, sys, time, urllib.request, datetime as dt
+import re, json, os, sys, time, urllib.request, datetime as dt
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
@@ -69,6 +69,8 @@ def cj(url, tok, tries=6):
             return None, str(e)[:60]
     return None, "gedrosselt"
 
+ETIKETT = re.compile(r"label created|shipping label|warehouse is processing|order (has been )?(received|placed)", re.I)
+
 def stationen(tok, nummer):
     """(Zahl der Stationen, Status, Fehler). data ist bei getTrackInfo eine LISTE."""
     j, err = cj("https://developers.cjdropshipping.com/api2.0/v1/logistic/"
@@ -79,7 +81,11 @@ def stationen(tok, nummer):
     if isinstance(d, list):
         d = d[0] if d else {}
     d = d or {}
-    return len(d.get("routes") or []), (d.get("trackingStatus") or "?"), ""
+    # 03.10.2026: #1020 bekam eine ZWEITE Lager-Zeile («Shipping Label Created» 12:48 nach «Label created. Warehouse
+    # is processing» 04:48) und CJ-Status «Dispatched» — die Ampel zählte 2 Stationen und schwieg, obwohl kein
+    # Carrier-Scan existiert. Gezählt werden nur echte Stationen; Etiketten-/Lagerzeilen nicht.
+    echte = [r for r in (d.get("routes") or []) if not ETIKETT.search(r.get("remark") or "")]
+    return len(echte), (d.get("trackingStatus") or "?"), ""
 
 def main():
     seit = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=30)).strftime("%Y-%m-%d")
