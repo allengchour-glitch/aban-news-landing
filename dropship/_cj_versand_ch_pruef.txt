@@ -3058,3 +3058,7 @@ usb-aroma-diffuser-mit-7-led-farben-1b3dcc	-	-	-	unklar keine CJ-SKU	landeseite
 usb-heizkissen-mit-graphen-technologie-acad9f	-	-	-	unklar keine CJ-SKU	landeseite
 kapuzen-sweatshirt-kleid-mit-gurtel-604900	2606020359191605900	16	9.33	ok	landeseite
 martin-ankle-boots-im-britischen-casual-stil-600000	2411020349481600200	16	14.24	ok	landeseite
+usb-aroma-diffusor-mit-befeuchter-465152	1525035291923460096	3	8.06	ok	landeseite
+unisex-leder-winterhandschuhe-891585	1971150378983526402	0	-	KEINE CH-Option → DRAFT	landeseite
+unisex-strickhandschuhe-mit-touchscreen-554946	1971103727281635329	0	-	KEINE CH-Option → DRAFT	landeseite
+strickmutze-fur-herbst-winter-852481	2069308852352155649	16	17.16	ok	landeseite
