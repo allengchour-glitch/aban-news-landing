@@ -22,6 +22,11 @@
   - «quietschendes Plüschtier zum Zähneknirschen» (Hundespielzeug)
 - Altregeln liegen in `dropship/_geschenk_unterwelten_alt.json`. Der Aufseher fährt den Lauf täglich (bestehender Block).
 
+## NACHGEMESSEN 08:50 UTC (Admin-API)
+- Schreiblauf: Tags +400, Regel = `geschenkwelt-unter30`, Sortierung MANUAL, 48 Plätze gemischt, ohne Fehler. Sie/Ihn/Kinder unverändert (+2/−2).
+- Erste 24 Karten jetzt: Kerzenwärmer, Sternzeichen-Anhänger, Schraubpuzzle, Teetasse, Sternenprojektor, Nagelset, Strickdecke, Notizbuch-Sticker, Diffuser … — die Warenarten wechseln reihum (vorher 12 Partydeko + 11 Schmuck).
+- Die Kollektion zählte direkt nach der Regeländerung noch 11'185 Produkte. Shopify leert asynchron; der Sollwert ist 400.
+
 ## OFFEN
 - Die Zwillingskollektion `geschenke-unter-30` (1 Kanal, nicht im Menü) bleibt vorerst. Kandidat zum Abmelden, sobald klar ist, welcher Kanal sie nutzt.
 
