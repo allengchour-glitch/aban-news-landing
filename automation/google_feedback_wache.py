@@ -31,6 +31,8 @@ TOK = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or (open("/tmp/cj_shop_token.txt").
 HANDLES_MAX = int(os.environ.get("HANDLES_MAX", "300"))
 SEITEN_MAX = int(os.environ.get("SEITEN_MAX", "400"))
 NUR_ANZEIGEN = re.compile(r"\[Shopping_ads\]")
+TEIL = "/tmp/google_feedback_teil.json"            # Zwischenstand je Seite (überlebt Container-Neustarts in /tmp)
+TEIL_MAX_H = float(os.environ.get("TEIL_MAX_H", "8"))
 
 
 def gql(q, v=None):
@@ -94,6 +96,22 @@ def main():
     klassen, handles, ohne_url, andere, ausland = {}, {}, {}, {}, {}
     anzeigen_meldungen = 0
     t0 = time.time()
+    # 03.10.2026 FORTSETZEN: Der Vollscan (~206 Seiten, Eimer-Wartezeiten) braucht länger als eine Stunde; der Container
+    # startet etwa stündlich neu. Heute wurde der Lauf um 07:11, 08:09 und 08:31 gestartet und jedes Mal abgebrochen
+    # (Stand blieb auf 02.10. 13:26). Nach jeder Seite wird der Zwischenstand gesichert; ein neuer Start
+    # setzt dort fort, wenn der Teilstand jünger als TEIL_MAX_H ist.
+    teil_alt = None
+    try:
+        if time.time() - os.path.getmtime(TEIL) < TEIL_MAX_H * 3600:
+            teil_alt = json.load(open(TEIL, encoding="utf-8"))
+    except Exception:
+        teil_alt = None
+    if teil_alt:
+        cursor, seiten, gescannt = teil_alt["cursor"], teil_alt["seiten"], teil_alt["gescannt"]
+        klassen, handles, ohne_url = teil_alt["klassen"], teil_alt["handles"], teil_alt["ohne_url"]
+        andere, ausland, anzeigen_meldungen = teil_alt["andere"], teil_alt["ausland"], teil_alt["anzeigen"]
+        t0 -= teil_alt.get("dauer_s", 0)
+        print(f"FORTSETZEN ab Seite {seiten} ({gescannt} gescannt)", flush=True)
     while True:
         d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active\"){ pageInfo{hasNextPage endCursor} "
                 "nodes{ handle onlineStoreUrl feedback{ details{ app{title} messages{ message } } } } } }", {"c": cursor})
@@ -127,6 +145,11 @@ def main():
         if not pg["pageInfo"]["hasNextPage"] or seiten >= SEITEN_MAX:
             break
         cursor = pg["pageInfo"]["endCursor"]
+        tmp = TEIL + ".neu"
+        json.dump({"cursor": cursor, "seiten": seiten, "gescannt": gescannt, "klassen": klassen, "handles": handles,
+                   "ohne_url": ohne_url, "andere": andere, "ausland": ausland, "anzeigen": anzeigen_meldungen,
+                   "dauer_s": round(time.time() - t0)}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
+        os.replace(tmp, TEIL)
     voll = seiten < SEITEN_MAX
     blocker = sum(klassen.values())
     stand = {"stand": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "gescannt": gescannt, "seiten": seiten,
@@ -136,6 +159,10 @@ def main():
              "nur_ausland": dict(sorted(ausland.items(), key=lambda x: -x[1])),
              "dauer_s": round(time.time() - t0)}
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    try:
+        os.remove(TEIL)
+    except FileNotFoundError:
+        pass
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand {stand['stand']}\n\n")
         f.write(f"Gescannt: {gescannt} aktive Produkte in {seiten} Seiten ({'vollständig' if voll else '⚠️ DECKEL erreicht'}), "

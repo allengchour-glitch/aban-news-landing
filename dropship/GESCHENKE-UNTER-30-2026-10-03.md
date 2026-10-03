@@ -24,3 +24,9 @@
 
 ## OFFEN
 - Die Zwillingskollektion `geschenke-unter-30` (1 Kanal, nicht im Menü) bleibt vorerst. Kandidat zum Abmelden, sobald klar ist, welcher Kanal sie nutzt.
+
+## Nebenbefund derselben Runde: Google-Vollscan kam nie ans Ziel
+- **GEMESSEN:** `google_feedback_wache.py` startete heute um 07:11, 08:09, 08:26 und 08:31. Keiner der Läufe wurde fertig, der Stand blieb auf 02.10. 13:26. Der Scan braucht rund 206 Seiten plus Wartezeiten, also mehr als eine Stunde. Der Container startet etwa stündlich neu, und der Lauf schrieb erst am Ende.
+- **GETAN:** Der Lauf setzt jetzt fort. Nach jeder Seite sichert er den Zwischenstand atomar nach `/tmp/google_feedback_teil.json`; ein Neustart innerhalb von 8 h setzt dort an. Nach dem fertigen Stand wird die Datei gelöscht.
+- **Probe:** simulierter Abbruch nach 2 Seiten, dann «FORTSETZEN ab Seite 2», Ende mit 4 Seiten und 1000 gescannten Produkten. Danach existierte keine Teil-Datei mehr.
+- **Folge:** Die Nachmessung von Bildtausch, Anstoss und Variantenbildern (`GOOGLE-BLOCKER-FIX-2026-10-03.md`) hing genau an diesem Scan.
