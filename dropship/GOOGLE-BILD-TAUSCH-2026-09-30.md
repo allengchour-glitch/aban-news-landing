@@ -23,7 +23,21 @@ Rückenposen → Frontansicht (Jumpsuit, Yoga-Hose), Vorher/Nachher-Haut → Pac
 Nebenfund: `south-moon-fuss-pflegelosung-944002` ist ein **Warzenentferner** («WART REMOVAL» auf der Packung) — Heilmittel-Klasse,
 Tausch löst das nicht; Kandidat für Heilversprechen-/Medizinprodukt-Wache.
 
-## Auswertung (offen)
-Nach dem nächsten Google-Prüflauf (`google_feedback_wache.py`, täglich): Anteil «nicht mehr Inappropriate image» bei den 18
-Tauschen gegen die 40 Kontrollen. Nur wenn Tausch klar besser: restliche ~260 der Klasse laufen lassen (`SCHARF=1 N=…`).
+## Auswertung (03.10.2026, Stand Google-Scan 02.10. 13:26 UTC)
+| Gruppe (Pilot 30.09.) | n | nicht mehr blockiert |
+|---|---:|---:|
+| **Tausch** | 18 | **15 (83 %)** |
+| Kontrolle, bis zum Scan unberührt | 26 | 11 (42 %) |
+| Kontrolle, am 01.10. doch getauscht | 14 | 8 (57 %, nur 1 Tag Zeit) |
+| Motiv (nichts getauscht) | 15 | 12 (80 %) |
+
+Tausch ist klar besser als Kontrolle (83 % vs. 42 %). Die Kontrolle zeigt aber auch: **rund 40 % gibt Google ohne
+Eingriff wieder frei** (Neuprüfung). Der echte Gewinn des Tauschs liegt also bei etwa +40 Prozentpunkten, nicht bei 83 %.
+Auffällig ist «Motiv» mit 80 %. Daraus folgt nicht, dass das Motiv harmlos ist; es ist eine kleine Stichprobe mit
+Google-eigenem Rauschen.
+
+**Ausgerollt ist schon** (01.10. mit Zwischenstand 10/13 vs. 0/25, Commit 645e807d7; danach 02./03.10.). Die
+Kontroll-Zeilen fielen beim Ausrollen aus dem Ledger (Rekonstruktion aus aaa2908db). Die Klasse ist vollständig
+bearbeitet: Von 250 blockierten haben nur noch 2 keinen Ledger-Eintrag (≤ 1 Bild). Ein weiterer SCHARF-Lauf ist nicht nötig.
+**Nächste Messung:** der laufende Vollscan vom 03.10. (Start 08:09 UTC). «tausch-g» (150, nur Gemini) dort getrennt auswerten.
 Rückweg je Produkt: alte media-id aus Spalte 4 per productReorderMedia an Position 0.
