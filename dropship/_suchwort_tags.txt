@@ -14668,3 +14668,5 @@ gid://shopify/Product/16605114401159	muetze	Hundemütze für Valentinstag
 gid://shopify/Product/16605115351431	pullover	Wollpullover für Hunde – beige / grau
 gid://shopify/Product/16605481107847	mantel	Hundemantel Golden Retriever Labrador – Anti-Rabenschleim
 gid://shopify/Product/16605481435527	pullover	Weihnachtspullover für kleine und mittlere Hunde
+gid://shopify/Product/16605481501063	decke	Wolldecke mit Kapuze für Hunde
+gid://shopify/Product/16605481533831	pullover	Old Man Wanchristmas Haustier-Strickpullover
