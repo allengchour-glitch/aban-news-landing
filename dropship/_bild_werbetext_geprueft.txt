@@ -4725,3 +4725,4 @@ gid://shopify/Product/16603334345095	gid://shopify/MediaImage/77435223146887	0	h
 gid://shopify/Product/15524003873153	gid://shopify/MediaImage/70772861043073	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/12823711835.jpg?v=1788417841	2026-10-02T08:32:31Z	
 gid://shopify/Product/15524003873153	gid://shopify/MediaImage/70772861108609	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/818977715818.jpg?v=1788417841	2026-10-02T08:32:32Z	
 gid://shopify/Product/15524003873153	gid://shopify/MediaImage/77435223179655	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4196473550319.jpg?v=1790886817	2026-10-02T08:32:34Z	
+gid://shopify/Product/15453775495553	gid://shopify/MediaImage/69926703923585	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c80e01d0-d1ca-43c6-a403-7c0e6b2350d7.jpg?v=1783806423	2026-10-03T16:37:12Z	
