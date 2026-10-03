@@ -3037,3 +3037,6 @@ horror-totenkopf-latex-maske-537728	1426405080990617600	16	7.03	ok	landeseite
 damen-sweatshirt-mit-kurbis-laternen-print-617400	2601060757321617700	16	10.69	ok	landeseite
 weihnachts-halloween-digitaldruck-longsleeve-602600	2512301151591604600	16	8.79	ok	landeseite
 halloween-digitaldruck-sweatshirt-damen-615800	2512300445221616100	16	9.88	ok	landeseite
+verzierte-blockabsatz-damenstiefel-oberschenke-628000	2605280132001628700	16	13.40	ok	landeseite
+nordische-fransen-strickdecke-8c46da	-	-	-	unklar keine CJ-SKU	landeseite
+damen-hoodie-bequem-mit-taschen-und-langarm-610500	2607170536031611200	16	10.84	ok	landeseite
