@@ -5671,3 +5671,6 @@ gid://shopify/Product/15454117724545	zugeordnet	40	Retro-Sofa-Tuch
 gid://shopify/Product/15454117790081	zugeordnet	7	Wasserfeste Laufumhängetasche
 gid://shopify/Product/15454117822849	zugeordnet	60	Universal Sofabezüge
 gid://shopify/Product/15454118019457	zugeordnet	2	Grosses Leder-Taschen für unterwegs
+gid://shopify/Product/15454118052225	zugeordnet	13	Eingesticktes Ahornblatt-Kissenbezüge
+gid://shopify/Product/15454118084993	zugeordnet	6	Elektrischer Mini-Topf
+gid://shopify/Product/15454118150529	zugeordnet	2	Männliche Leder-Geldbörse
