@@ -3040,3 +3040,10 @@ halloween-digitaldruck-sweatshirt-damen-615800	2512300445221616100	16	9.88	ok	la
 verzierte-blockabsatz-damenstiefel-oberschenke-628000	2605280132001628700	16	13.40	ok	landeseite
 nordische-fransen-strickdecke-8c46da	-	-	-	unklar keine CJ-SKU	landeseite
 damen-hoodie-bequem-mit-taschen-und-langarm-610500	2607170536031611200	16	10.84	ok	landeseite
+herren-loose-fit-kapuzenjacke-waffelpique-617500	2606110423041618400	16	11.00	ok	landeseite
+hut-handschuhe-schal-3-in-1-set-609900	2605070714591600500	16	13.40	ok	landeseite
+warme-lederhandschuhe-mit-fleecefutter-626600	2512220904121626800	16	6.63	ok	landeseite
+langer-damenmantel-im-kaschmir-look-600600	2601020516591600800	16	18.24	ok	landeseite
+color-block-strick-cardigan-im-old-money-stil-603400	2604220251531603900	16	9.20	ok	landeseite
+damenstiefel-aus-vollnarbenleder-mit-weicher-s-638700	2605080256161639300	16	12.56	ok	landeseite
+trendy-knochelstiefel-fur-herren-631700	2602280245221632900	16	17.66	ok	landeseite
