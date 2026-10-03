@@ -3078,3 +3078,8 @@ led-teelichter-flackernd-batteriebetrieben-594688	1356798178678149120	7	7.58	ok	
 retro-handwarmer-powerbank-5000-mah-97ddfa	-	-	-	unklar keine CJ-SKU	landeseite
 britisches-teeservice-luxury-571968	1533076372594372608	16	16.67	ok	landeseite
 gusseisen-teekessel-diamond-1000ml-622400	2504030353111622600	16	22.91	ok	landeseite
+jacquard-cashew-fransen-schal-fur-damen-621300	2603040132341621700	16	11.60	ok	landeseite
+warme-touchscreen-handschuhe-fur-ski-und-velo-651900	2510271003471652100	16	9.61	ok	landeseite
+eleganter-damenmantel-mit-fellkragen-601300	2512290950491601600	16	11.60	ok	landeseite
+lassiger-kapuzenpullover-fur-damen-612700	2602240223181613100	16	11.00	ok	landeseite
+hohe-damenstiefel-628000	2606100608291628600	16	12.56	ok	landeseite
