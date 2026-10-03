@@ -3047,3 +3047,5 @@ langer-damenmantel-im-kaschmir-look-600600	2601020516591600800	16	18.24	ok	lande
 color-block-strick-cardigan-im-old-money-stil-603400	2604220251531603900	16	9.20	ok	landeseite
 damenstiefel-aus-vollnarbenleder-mit-weicher-s-638700	2605080256161639300	16	12.56	ok	landeseite
 trendy-knochelstiefel-fur-herren-631700	2602280245221632900	16	17.66	ok	landeseite
+borosilikatglas-tasse-mit-skala-957378	2001554398306037762	0	-	KEINE CH-Option → DRAFT	landeseite
+windschutzjacke-623700	2607211537531624400	16	8.79	ok	landeseite
