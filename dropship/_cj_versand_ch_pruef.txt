@@ -3246,3 +3246,5 @@ modell-soft-velvet-wimpern-629800	2506010729471629900	16	5.20	ok	landeseite
 hunde-lederjacke-mit-adler-stickerei-99216d	-	-	-	unklar keine CJ-SKU	landeseite
 lederarmband-mit-verschluss-unisex-604800	2603290529321605300	16	4.50	ok	landeseite
 keramik-gewurztopf-im-nordic-style-492928	1386869403487965184	16	9.20	ok	landeseite
+edelstahl-antihaft-bratpfanne-421504	1379680905043513344	16	21.75	ok	landeseite
+rhinestone-kalenderuhr-fur-herren-980864	1477201536072421376	7	7.13	ok	landeseite
