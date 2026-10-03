@@ -3218,3 +3218,6 @@ herren-sport-sweatshirt-mit-reissverschluss-616500	2605280702371618300	16	9.47	o
 legere-baseballjacke-im-flight-stil-606900	2605040241001607400	16	11.00	ok	landeseite
 freizeitjacke-fur-business-und-pendeln-616400	2606010710241617100	16	12.21	ok	landeseite
 patchwork-hoodie-627700	2601051059511628000	16	9.20	ok	landeseite
+herren-lederimitat-reversjacke-602200	2605220331421602800	16	17.40	ok	landeseite
+herren-hoodie-suede-optik-uni-lassig-624200	2604160852071624800	16	11.00	ok	landeseite
+frauenkreppsohlen-schnurstiefel-in-grossen-bis-607200	2606151045051607800	16	12.32	ok	landeseite
