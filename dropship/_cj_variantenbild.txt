@@ -5667,3 +5667,7 @@ gid://shopify/Product/15454117527937	bild-urls-tot
 gid://shopify/Product/15454117560705	zugeordnet	3	Künstler-Rucksack mit Stauraum
 gid://shopify/Product/15454117593473	zugeordnet	7	Camping-Rucksack Camouflage
 gid://shopify/Product/15454117691777	zugeordnet	12	Rattan-Sesselkissen
+gid://shopify/Product/15454117724545	zugeordnet	40	Retro-Sofa-Tuch
+gid://shopify/Product/15454117790081	zugeordnet	7	Wasserfeste Laufumhängetasche
+gid://shopify/Product/15454117822849	zugeordnet	60	Universal Sofabezüge
+gid://shopify/Product/15454118019457	zugeordnet	2	Grosses Leder-Taschen für unterwegs

@@ -3113,3 +3113,4 @@ extra-dickes-lammwoll-fleece-hoodie-629900	2608030331121620600	16	10.42	ok	lande
 herren-rollkragenpullover-aus-wolle-604000	2608100404521604700	16	7.85	ok	landeseite
 overknee-stiefel-mit-stretch-und-klobigem-absa-618900	2601181210231619200	16	12.32	ok	landeseite
 herren-trenchcoat-im-biker-stil-600900	2606230420541601500	16	15.32	ok	landeseite
+retro-workstiefel-627700	2506050125581627900	16	23.50	ok	landeseite
