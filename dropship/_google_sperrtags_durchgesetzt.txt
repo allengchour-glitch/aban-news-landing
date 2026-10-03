@@ -777,3 +777,6 @@
 2026-10-03T00:20:51Z	gid://shopify/Product/15522242953601	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	smarter-aschenbecher-mit-luftreiniger-fur-auto-042304
 2026-10-03T00:20:52Z	gid://shopify/Product/15523906224513	google-policy-flag	Google & YouTube	intelligenter-intimreiniger-fur-die-frau-723136
 2026-10-03T00:20:53Z	gid://shopify/Product/15524929175937	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	runder-aschenbecher-aus-keramik-2cef8b
+2026-10-03T02:11:26Z	gid://shopify/Product/15448816320897	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	latex-augenmaske-628500
+2026-10-03T02:11:27Z	gid://shopify/Product/15503164113281	medizinprodukt-pruefen	Google & YouTube	beckenboden-muskeltrainer-mit-zahlfunktion-915200
+2026-10-03T02:11:28Z	gid://shopify/Product/15510309634433	medizinprodukt-pruefen	Google & YouTube	beckenboden-trainingsgerat-fur-frauen-b986d0
