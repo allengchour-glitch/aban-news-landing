@@ -3420,3 +3420,7 @@ weihnachts-countdown-katzen-spielzeug-609600	2410230301331609800	16	8.53	ok	land
 weihnachtlicher-katzen-tunnel-607000	2411110234361607200	16	14.84	ok	landeseite
 weihnachts-lippenstift-set-195776	1405448969353564160	3	6.49	ok	landeseite
 weihnachtsbaum-dekorationsfigur-mit-nachricht-616300	2607160255411617200	16	9.54	ok	landeseite
+weihnachtspantoffeln-aus-flanell-630400	2607141536231631000	16	7.23	ok	landeseite
+weihnachts-teppich-leicht-zu-reinigen-624300	2508240254131624500	16	9.61	ok	landeseite
+weihnachtskleid-mit-fellapplikation-625100	2607281217461625800	16	9.88	ok	landeseite
+elektrischer-singender-weihnachtsmann-755008	1458642018032029696	7	15.40	ok	landeseite
