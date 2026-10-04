@@ -3452,3 +3452,5 @@ katzennest-weihnachtsbaum-619600	2508250739321610000	16	28.39	ok	landeseite
 weihnachtsspielzeug-fur-zahnpflege-622200	2512050608581622400	16	6.77	ok	landeseite
 weisser-weihnachten-mit-engel-malen-nach-zahle-751040	1397507125143539712	3	10.01	ok	landeseite
 weihnachtswald-gardine-602800	2508240006251603000	16	8.69	ok	landeseite
+klassischer-jumpsuit-mit-weihnachtsmuster-659600	2510291353161659800	16	14.96	ok	landeseite
+cape-jacke-mit-abstraktem-3d-weihnachtsdruck-629600	2602100327301629900	16	9.20	ok	landeseite
