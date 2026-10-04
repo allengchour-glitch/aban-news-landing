@@ -288,5 +288,15 @@
     "condition": "sub-katze"
    }
   ]
+ },
+ "haustier-hunde": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sub-hund"
+   }
+  ]
  }
 }
