@@ -157,7 +157,7 @@ footer a{color:var(--muted)}
     var scale=Math.min(1, mw/srcImg.width);
     var w=Math.round(srcImg.width*scale), h=Math.round(srcImg.height*scale);
     var c=document.createElement("canvas"); c.width=w; c.height=h;
-    var ctx=c.getContext("2d"); ctx.drawImage(srcImg,0,0,w,h);
+    var ctx=c.getContext("2d"); if(fmt.value==="image/jpeg"){ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);} ctx.drawImage(srcImg,0,0,w,h);
     var type=fmt.value, quality=parseInt(q.value,10)/100;
     c.toBlob(function(blob){
       if(!blob)return;
@@ -169,8 +169,8 @@ footer a{color:var(--muted)}
       dl.download=origName+"-klein."+ext;
       sOrig.textContent=human(origSize);
       sNew.textContent=human(blob.size)+" · "+w+"×"+h;
-      var save=origSize>0?Math.max(0,Math.round((1-blob.size/origSize)*100)):0;
-      sSave.textContent=(blob.size<origSize?"−":"+")+Math.abs(save)+"%";
+      var pct=origSize>0?Math.round((blob.size/origSize-1)*100):0;
+      sSave.textContent=(pct<0?"−":"+")+Math.abs(pct)+"%";
     }, type, type==="image/png"?undefined:quality);
   }
   [maxw,q,fmt].forEach(function(el){el.addEventListener("input",render);el.addEventListener("change",render);});

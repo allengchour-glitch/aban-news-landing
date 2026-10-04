@@ -28,7 +28,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wie füge ich die Signatur in Outlook oder Gmail ein?","acceptedAnswer":{"@type":"Answer","text":"Klick auf „Vorschau kopieren\", öffne die Signatur-Einstellungen deines Mailprogramms und füge sie mit Strg+V ein. Outlook und Apple Mail übernehmen die Formatierung direkt; in Gmail einfach in das Signatur-Feld einfügen."}},
 {"@type":"Question","name":"Werden meine Daten gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Generator läuft komplett im Browser. Deine Angaben verlassen das Gerät nicht, kein Tracking, kein Upload."}},
-{"@type":"Question","name":"Was gehört in eine seriöse Signatur?","acceptedAnswer":{"@type":"Answer","text":"Name, Funktion, Firma, eine erreichbare Telefonnummer und E-Mail, die Website und — je nach Rechtsform — die Pflichtangaben (z. B. Registergericht, USt-IdNr.). Kurz und ohne überladene Grafiken."}}
+{"@type":"Question","name":"Was gehört in eine seriöse Signatur?","acceptedAnswer":{"@type":"Answer","text":"Name, Funktion, Firma, eine erreichbare Telefonnummer und E-Mail, die Website und — je nach Rechtsform — die Pflichtangaben (in Deutschland bei GmbH/UG nach § 35a GmbHG: Rechtsform, Sitz, Registergericht, Registernummer, alle Geschäftsführer). Kurz und ohne überladene Grafiken."}}
 ]}
 </script>
 <style>
@@ -109,7 +109,7 @@ footer a{color:var(--muted)}
       <button type="button" class="btn" id="copy">📋 Vorschau kopieren</button>
       <button type="button" class="btn ghost" id="copyHtml">HTML-Quelltext kopieren</button>
     </div>
-    <div class="warn"><strong>Tipp:</strong> Halte die Signatur kurz und ohne große Bilder — viele Mailprogramme blockieren externe Grafiken. Bei GmbH/UG/AG gehören die handelsrechtlichen Pflichtangaben (Registergericht, HRB, Geschäftsführer) in die Signatur.</div>
+    <div class="warn"><strong>Tipp:</strong> Halte die Signatur kurz und ohne große Bilder — viele Mailprogramme blockieren externe Grafiken. Bei deutschen GmbH/UG/AG gehören die handelsrechtlichen Pflichtangaben (Rechtsform, Sitz, Registergericht, HRB-Nummer, Geschäftsführer bzw. Vorstand) in die Signatur (<a href="https://www.gesetze-im-internet.de/gmbhg/__35a.html" rel="noopener">§ 35a GmbHG</a> / <a href="https://www.gesetze-im-internet.de/aktg/__80.html" rel="noopener">§ 80 AktG</a>, Stand 2026-10).</div>
     <p class="note">„Vorschau kopieren" überträgt die formatierte Signatur (für Outlook/Apple Mail/Gmail). Alles lokal, kein Upload.</p>
   </section>
 

@@ -117,6 +117,7 @@ footer a{color:var(--muted)}
   var removed={};
   function clean(s){return (s||"").toLowerCase()
     .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
     .replace(/[^a-z0-9]+/g," ").trim();}
   function camel(s){return clean(s).split(" ").filter(Boolean).map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join("");}
   function tagify(s){var useCamel=document.getElementById("camel").checked;

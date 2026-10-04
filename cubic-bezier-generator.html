@@ -149,7 +149,7 @@ footer a{color:var(--muted)}
   function toSvg(v,axis){ return axis==="x" ? v*100 : (1-v)*100; } // y flipped
   function clampX(v){ return Math.max(0,Math.min(1,v)); }
   function r(n){ return Math.round(n*100)/100; }
-  function update(){
+  function update(skipId){
     h1.setAttribute("cx",toSvg(P.p1x,"x")); h1.setAttribute("cy",toSvg(P.p1y,"y"));
     h2.setAttribute("cx",toSvg(P.p2x,"x")); h2.setAttribute("cy",toSvg(P.p2y,"y"));
     l1.setAttribute("x2",toSvg(P.p1x,"x")); l1.setAttribute("y2",toSvg(P.p1y,"y"));
@@ -157,8 +157,7 @@ footer a{color:var(--muted)}
     curve.setAttribute("d","M0,100 C"+toSvg(P.p1x,"x")+","+toSvg(P.p1y,"y")+" "+toSvg(P.p2x,"x")+","+toSvg(P.p2y,"y")+" 100,0");
     css="cubic-bezier("+r(P.p1x)+", "+r(P.p1y)+", "+r(P.p2x)+", "+r(P.p2y)+")";
     code.textContent=css;
-    document.getElementById("p1x").value=r(P.p1x); document.getElementById("p1y").value=r(P.p1y);
-    document.getElementById("p2x").value=r(P.p2x); document.getElementById("p2y").value=r(P.p2y);
+    ["p1x","p1y","p2x","p2y"].forEach(function(k){ if(k!==skipId) document.getElementById(k).value=r(P[k]); });
     dot.style.transition="none"; dot.style.left="0";
   }
   function play(){
@@ -179,7 +178,7 @@ footer a{color:var(--muted)}
   window.addEventListener("mousemove",move); window.addEventListener("touchmove",move,{passive:false});
   window.addEventListener("mouseup",function(){dragging=null;}); window.addEventListener("touchend",function(){dragging=null;});
   // inputs
-  ["p1x","p1y","p2x","p2y"].forEach(function(id){ document.getElementById(id).addEventListener("input",function(){ var v=parseFloat(this.value); if(isNaN(v))return; if(id.indexOf("x")>0)v=clampX(v); P[id]=v; update(); }); });
+  ["p1x","p1y","p2x","p2y"].forEach(function(id){ document.getElementById(id).addEventListener("input",function(){ var v=parseFloat(this.value); if(isNaN(v))return; if(id.indexOf("x")>0)v=clampX(v); P[id]=v; update(id); }); });
   // presets
   document.querySelectorAll("#presets button").forEach(function(b){ b.addEventListener("click",function(){ var c=b.getAttribute("data-c").split(",").map(Number); P.p1x=c[0];P.p1y=c[1];P.p2x=c[2];P.p2y=c[3]; update(); play(); }); });
   document.getElementById("play").addEventListener("click",play);

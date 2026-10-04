@@ -113,7 +113,7 @@ footer a{color:var(--muted)}
   var named={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"};
   function encode(s,all){
     var r=s.replace(/[&<>"']/g,function(c){return named[c];});
-    if(all){ r=r.replace(/[^\x00-\x7F]/g,function(c){ return "&#"+c.codePointAt(0)+";"; }); }
+    if(all){ r=r.replace(/[^\x00-\x7F]/gu,function(c){ return "&#"+c.codePointAt(0)+";"; }); }
     return r;
   }
   function decode(s){

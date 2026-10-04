@@ -123,22 +123,24 @@ hallo@abannews</textarea>
 <script>
 (function(){
   var inp=document.getElementById("in");
-  var RE=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-  var typos={"gmail.con":"gmail.com","gmail.co":"gmail.com","gmial.com":"gmail.com","gmai.com":"gmail.com","hotmail.con":"hotmail.com","yahoo.con":"yahoo.com","gmx.de ":"gmx.de","web.de ":"web.de","outlook.con":"outlook.com"};
+  var RE=/^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  var typos={"gmail.con":"gmail.com","gmail.co":"gmail.com","gmial.com":"gmail.com","gmai.com":"gmail.com","hotmail.con":"hotmail.com","yahoo.con":"yahoo.com","outlook.con":"outlook.com"};
   function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
   function render(){
     var raw=inp.value.split(/[\n,;]+/).map(function(x){return x.trim();}).filter(Boolean);
     var ok=[], bad=[], seen={}, dup=0, okOut=[];
     raw.forEach(function(e){
       var low=e.toLowerCase();
-      if(RE.test(e)){
+      var tdom=(e.split("@")[1]||"").toLowerCase();
+      if(typos[tdom]){
+        bad.push({e:e,hint:" → meintest du …@"+typos[tdom]+"?"});
+      } else if(RE.test(e)){
         if(seen[low]){ dup++; }
         else { seen[low]=1; ok.push(e); okOut.push(e); }
       } else {
         var hint="";
         var dom=(e.split("@")[1]||"").toLowerCase();
-        if(typos[dom]) hint=" → meintest du …@"+typos[dom]+"?";
-        else if(e.indexOf("@")<0) hint=" → @ fehlt";
+        if(e.indexOf("@")<0) hint=" → @ fehlt";
         else if(dom && dom.indexOf(".")<0) hint=" → Domain ohne Punkt";
         bad.push({e:e,hint:hint});
       }

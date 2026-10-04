@@ -132,11 +132,11 @@ footer a{color:var(--muted)}
     var c=Math.max(1,Math.min(100,parseInt(document.getElementById("count").value,10)||1));
     var start=document.getElementById("startLorem").checked;
     var out=[];
-    if(unit==="word"){ out=[cap(words(pool,c).join(" "))+"."]; }
+    if(unit==="word"){ var w=words(pool,c); if(start&&lang==="latin"){ var L="lorem ipsum dolor sit amet consectetur adipiscing elit".split(" "); for(var k=0;k<Math.min(c,L.length);k++) w[k]=L[k]; } out=[cap(w.join(" "))+"."]; }
     else if(unit==="sent"){ for(var i=0;i<c;i++) out.push(sentence(pool)); out=[out.join(" ")]; }
     else { for(var j=0;j<c;j++) out.push(para(pool)); }
     var txt=out.join("\n\n");
-    if(start && lang==="latin"){ txt=txt.replace(/^[^.]*?\./, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."); }
+    if(start && lang==="latin" && unit!=="word"){ txt=txt.replace(/^[^.]*?\./, "Lorem ipsum dolor sit amet, consectetur adipiscing elit."); }
     document.getElementById("out").textContent=txt;
   }
   document.querySelectorAll("#lang button").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll("#lang button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");lang=b.getAttribute("data-l");gen();});});

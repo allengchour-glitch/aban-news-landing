@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Welche Markdown-Syntax wird unterstützt?","acceptedAnswer":{"@type":"Answer","text":"Überschriften (# bis ######), fett und kursiv, Listen (geordnet und ungeordnet), Links und Bilder, Inline-Code und Code-Blöcke, Zitate (>), Trennlinien (---) und Absätze. Das deckt die gängige Markdown-Schreibweise ab."}},
-{"@type":"Question","name":"Ist das HTML sicher?","acceptedAnswer":{"@type":"Answer","text":"Der Konverter maskiert HTML-Sonderzeichen aus deinem Text, bevor er Markdown in Tags umwandelt. So entsteht sauberes, vorhersehbares HTML ohne ungewolltes Einschleusen von Code aus dem Eingabetext."}},
+{"@type":"Question","name":"Ist das HTML sicher?","acceptedAnswer":{"@type":"Answer","text":"Der Konverter maskiert HTML-Sonderzeichen (&, <, > und Anführungszeichen) aus deinem Text, bevor er Markdown in Tags umwandelt. Links und Bilder sind nur mit http(s), mailto oder relativen Pfaden erlaubt, andere Adressen wie javascript: werden zu #. Prüfe übernommenes HTML trotzdem, bevor du es auf einer fremden Seite einsetzt."}},
 {"@type":"Question","name":"Wird mein Text gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Umwandlung läuft komplett in deinem Browser. Es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -142,15 +142,24 @@ Code-Block
 (function(){
   var md=document.getElementById("md"), prev=document.getElementById("preview"), htmlBox=document.getElementById("html");
   var lastHTML="";
-  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  // Nur http(s), mailto und relative Pfade; andere Schemata (javascript:, data: …) werden zu "#"
+  function safeUrl(u){
+    var t=u.replace(/[\x00-\x20]/g,"");
+    if(/^[a-z][a-z0-9+.\-]*:/i.test(t) && !/^(https?|mailto):/i.test(t)) return "#";
+    return u;
+  }
   function inline(s){
-    // Code zuerst schützen
-    var codes=[]; s=s.replace(/`([^`]+)`/g,function(m,c){codes.push("<code>"+c+"</code>");return ""+(codes.length-1)+"";});
-    s=s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g,'<img src="$2" alt="$1">');
-    s=s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" rel="noopener">$1</a>');
-    s=s.replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/__([^_]+)__/g,"<strong>$1</strong>");
-    s=s.replace(/(^|[^*])\*([^*]+)\*/g,"$1<em>$2</em>").replace(/(^|[^_])_([^_]+)_/g,"$1<em>$2</em>");
-    s=s.replace(/(\d+)/g,function(m,i){return codes[+i];});
+    // Code, Links und Bilder zuerst schützen, damit * und _ in URLs unverändert bleiben
+    var keep=[];
+    function put(h){keep.push(h);return ""+(keep.length-1)+"";}
+    s=s.replace(/`([^`]+)`/g,function(m,c){return put("<code>"+c+"</code>");});
+    s=s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g,function(m,a,u){return put('<img src="'+safeUrl(u)+'" alt="'+a+'">');});
+    s=s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,function(m,t,u){return put('<a href="'+safeUrl(u)+'" rel="noopener">')+t+put("</a>");});
+    s=s.replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/(^|[^\w])__([^_]+)__(?!\w)/g,"$1<strong>$2</strong>");
+    s=s.replace(/(^|[^*])\*(?!\s)([^*]+?)(?<!\s)\*/g,"$1<em>$2</em>").replace(/(^|[^\w])_([^_]+)_(?!\w)/g,"$1<em>$2</em>");
+    var re=/(\d+)/g;
+    while(re.test(s)){ re.lastIndex=0; s=s.replace(re,function(m,i){return keep[+i];}); }
     return s;
   }
   function toHTML(src){
