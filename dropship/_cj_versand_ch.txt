@@ -1490,3 +1490,7 @@ gid://shopify/Product/16604926017927	ok	Blumentopf Mond-Bonsai aus Purpursand
 gid://shopify/Product/16604932538759	ok	Hantel mit Rundkopf und Gummibeschichtung
 gid://shopify/Product/16604931686791	ok	Senioren-Telefonuhr mit Ortungsfunktion
 gid://shopify/Product/15448959320449	nicht-versendbar	Schwimmnudel aus SBR-Schaum
+gid://shopify/Product/16606108483975	nicht-versendbar	Magnetischer Schraubendreher-Set
+gid://shopify/Product/16606108418439	ok	Schweiss- und Schneidwerkzeug-Set für 100 mm
+gid://shopify/Product/16606108680583	ok	Wasserturm für Wein – Edelstahl-Set
+gid://shopify/Product/16606124867975	ok	Bambus Grillplatten-Set – 3 Stück
