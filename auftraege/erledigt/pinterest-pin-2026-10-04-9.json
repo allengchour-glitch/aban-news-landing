@@ -1,0 +1,34 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-04-9",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 9 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-04T21:29:37.078Z",
+  "dauer_s": 59.9,
+  "ergebnis": {
+    "gepinnt": [
+      "plusch-hundegeschirr-mit-leine-744320"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 35, offen 130",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 782 Z.): Titel nicht da",
+      "Bild 88246 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (832 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-04-9-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-04-9-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-04-9-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "plusch-hundegeschirr-mit-leine-744320",
+      "board": "Home & Geschenkideen",
+      "title": "Plüsch-Hundegeschirr mit Leine"
+    }
+  }
+}
