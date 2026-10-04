@@ -528,3 +528,4 @@ moissanit	ok	29	Moissanit-Schmuck — die clevere Diamant-Alternative
 babykleidung	ok	29	👶 Babykleidung & Kindermode
 strampler-bodys	ok	29	Strampler & Bodys
 baby-kinder-sets	ok	29	Baby- & Kinder-Sets
+adventskalender	ok	20	Adventskalender
