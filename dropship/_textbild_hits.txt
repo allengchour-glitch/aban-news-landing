@@ -16589,3 +16589,5 @@ gid://shopify/Product/16604914909575	133->0	Keramik-Teller mit Dreifuss-Winkel
 gid://shopify/Product/16604915368327	16->0	Weinkrug aus Edelstahl
 gid://shopify/Product/16604915532167	14->0	Elegantes, figurbetontes Etuikleid mit Langarm
 gid://shopify/Product/16604915597703	14->0	Baumwoll-Schürze aus Denim-Canvas
+gid://shopify/Product/16604919857543	180->2	Gefütterter Lammwollmantel für Damen
+gid://shopify/Product/16604920086919	88->0	Schmuckbeutel aus Rindsleder
