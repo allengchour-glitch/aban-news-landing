@@ -16591,3 +16591,5 @@ gid://shopify/Product/16604915532167	14->0	Elegantes, figurbetontes Etuikleid mi
 gid://shopify/Product/16604915597703	14->0	Baumwoll-Schürze aus Denim-Canvas
 gid://shopify/Product/16604919857543	180->2	Gefütterter Lammwollmantel für Damen
 gid://shopify/Product/16604920086919	88->0	Schmuckbeutel aus Rindsleder
+gid://shopify/Product/16604921332103	97->0	Damen Jacke im Leder-Stil, gefüttert
+gid://shopify/Product/16604921823623	24->0	Baumwoll-Cordhemd mit langen Ärmeln
