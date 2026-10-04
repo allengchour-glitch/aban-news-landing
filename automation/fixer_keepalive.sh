@@ -1115,6 +1115,27 @@ while true; do
       echo "$(date -u +%H:%M) SEO-Voll-Audit: $(grep '^SCHARF' "$SVA" | tail -1)"
     fi
   fi
+  # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:
+  # Schuhe 5'498 ohne, 4'293 mit; Schmuck & Uhren 4'932 mit). Meldet Menü-Kollektionen ab 4'800, damit Importe sie nicht still kippen.
+  FGW=/tmp/filtergrenze_wache.log
+  if [ -f "$REPO/automation/filtergrenze_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$FGW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$FGW"
+      ( cd "$REPO" && timeout 600 python3 automation/filtergrenze_wache.py >> "$FGW" 2>&1 )
+      echo "$(date -u +%H:%M) $(tail -1 "$FGW")"
+    fi
+  fi
+  # KATEGORIEN REIN (04.10.2026): Titel ∧ Produkttyp ∧ Ausschluss je Menü-Kategorie → Tag kat-… (Ringe, Taschen, Deko, …)
+  KRL=/tmp/kategorie_rein.log
+  if [ -f "$REPO/automation/kategorie_rein.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KRL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KRL"; then
+      touch "$KRL"
+      ( cd "$REPO" && SCHARF=1 timeout 3000 python3 automation/kategorie_rein.py >> "$KRL" 2>&1 )
+      echo "$(date -u +%H:%M) kategorie_rein: $(grep -c '^==' "$KRL") Kategorien geprüft"
+    fi
+  fi
   # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
   # `bilder-geloescht-speicher` trägt und aktiv ohne Bild ist, geht zurück auf DRAFT (`wartet-auf-bilder`). Eine Suchabfrage.
   if [ -f "$REPO/automation/aktiv_ohne_bild_wache.py" ]; then

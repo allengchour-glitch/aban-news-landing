@@ -38,5 +38,25 @@
     "condition": "schuhe"
    }
   ]
+ },
+ "schmuck-uhren": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Schmuck"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Uhren"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kategorie-uhr"
+   }
+  ]
  }
 }
