@@ -1,9 +1,44 @@
-# Klassen-Kontrolle (VOLLSCAN, 50071 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 50762 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
+
+## «Produktdetails» doppelt — 150
+
+Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
+
+Reparatur: `automation/produktdetails_vereinen.py`
+
+Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
+
+- `15430462636417` Herren Leinen-Hose «Lino» · Straight-Leg
+- `15430462669185` Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor
+- `15430462701953` Herren Strickpullover «Nico» · Half-Neck, Baumwolle
+- `15430464012673` Damen Bikini «Maui» · Neckholder, Floral
+- `15430488326529` Damen Bikini «Sunset» · Front-Zip, Farbverlauf
+- `15430488883585` Damen Bikini «Solé» · One-Shoulder, Cut-out
+- `15430489211265` Damen Strand-Cover-up «Brisa» · Crochet-Strick
+- `15430491275649` Damen Chiffon-Kleid «Capri» · Resort, fliessend
+- `15430491308417` Damen Maxikleid «Sirena» · Seitenschlitz, einfarbig
+- `15430491373953` Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
+- `15430491439489` Damen Sommerkleid «Bloom» · Träger, Print
+- `15430491668865` Damen Kleid «Aria» · Cut-out, einfarbig
+- `15430498353537` Damen Loungewear-Set «Cozy» · Hoodie + Hose
+- `15431384269185` Streifen-Bluse «Marbella» · Colorblock, Kurzarm
+- `15431384498561` Spitzen-Bluse «Dentelle» · V-Ausschnitt, Loose-Fit
+- `15431384859009` Strick-Bluse «Maglia» · Hollow-out, Loose Langarm
+- `15431385121153` Chiffon-Set «Solare» · Bluse + Weite Hose
+- `15447594172801` Elegantes Strickkleid mit Stehkragen
+- `15447594467713` Elegantes Bodycon Halterneck-Kleid mit Schnürung
+- `15447594697089` Minikleid mit Cut-Out und Rückenausschnitt
+- `15447594893697` Boho Maxi-Kleid mit V-Ausschnitt und Fledermausärmeln
+- `15447595090305` Enges ärmelloses Minikleid mit Spaghettiträgern
+- `15447595254145` Damen Langarm-Rollkragenkleid mit Rüschensaum
+- `15447595549057` Figurbetontes schulterfreies Kleid mit Rosenmuster
+- `15447595811201` Elegantes Spitzenkleid mit langen Ärmeln
+- … und 125 weitere
 
 ## Sie-Anrede im Produkttext — 5
 
@@ -19,7 +54,7 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Auswahl-Versprechen bei EINER Variante — 1748
+## Auswahl-Versprechen bei EINER Variante — 1751
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -52,5 +87,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448913871233` Lederrucksack für Herren
 - `15448914592129` Freizeit-Schultertasche
 - `15448918622593` Ma Pi Brusttasche aus Echtleder
-- … und 1723 weitere
+- … und 1726 weitere
 

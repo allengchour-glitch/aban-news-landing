@@ -1,6 +1,6 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 02.10.2026 20:22 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 04.10.2026 21:12 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
@@ -13,10 +13,6 @@ Hallux Valgus Korrektor Schiene  ·  **~320 Suchen/Monat** betroffen
 ## /products/erhohte-futternapfe-fur-hunde-008962  — **DRAFT**
 Erhöhter Hundenapf · 2 Edelstahl-Näpfe im Eisenrahmen  ·  **~260 Suchen/Monat** betroffen
 - «hundenapf erhöht» — Position 41, 260/Monat
-
-## /products/gaming-set-uk-943617  — **DRAFT**
-Gaming Tastatur & Maus Set RGB LED USB für PC & Konsole  ·  **~210 Suchen/Monat** betroffen
-- «gaming tastatur und maus» — Position 41, 210/Monat
 
 ## /products/automatik-huhnerfutterer-rattenfest-4-port-gro-531522  — **DRAFT**
 Automatischer Hühner-Futterautomat · rattensicher, 4 Öffnungen  ·  **~170 Suchen/Monat** betroffen
