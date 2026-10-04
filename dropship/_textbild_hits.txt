@@ -16706,3 +16706,4 @@ gid://shopify/Product/16606907433351	29->1	Elliptische Cone Schleifkopf aus Emer
 gid://shopify/Product/16606917165447	42->0	Schraubzange für Gürtel und Uhren
 gid://shopify/Product/16606943609223	17->0	Digitales Ölgemälde 40×50 cm
 gid://shopify/Product/16606943641991	80->1	HD-Wasserdichter Endoskop mit Bildschirm
+gid://shopify/Product/16607076483463	42->0	Reissverschluss-Entferner für Kleidung
