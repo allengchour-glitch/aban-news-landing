@@ -213,6 +213,15 @@ pruefe("ntfy: ohne Thema nichts senden", SG.push_ntfy("x", env={}) is False)
 pruefe("ntfy: sendet Text an das Thema", SG.push_ntfy("Gold kaufen 2'650", env={"KI_BOT_NTFY": "mein-geheimes-thema", "KI_BOT_NTFY_SERVER": basis})
        and Fake.log[-1][1] == "/mein-geheimes-thema" and "Gold kaufen" in Fake.log[-1][2])
 
+# Wochenbericht
+lbw = {"strategien": {"Ausgleich": {"positionen": {"Gold": {"wert": 5000}}, "eintraege": [
+    {"stand": "2026-09-01", "depot": 10000}, {"stand": "2026-09-25", "depot": 10200}, {"stand": "2026-10-02", "depot": 10404}]}}}
+txt = bot.wochenbericht(lbw, "2026-10-03", {"pruefungen": {"Gold": {"siegel": {"ok": False}}}, "signale": []},
+                        [{"zeit": "2026-10-02T15:00:00+00:00", "modus": "papier", "auftraege": [1, 2]}])
+pruefe("Bericht: Stand seit Start", "+4.0 % seit Start" in txt, txt)
+pruefe("Bericht: Woche gegen Stand vor 7 Tagen", "+2.0 % Woche" in txt, txt)
+pruefe("Bericht: ehrlich ohne Siegel", "kein Markt" in txt and "papier" in txt and "2 Aufträge" in txt, txt)
+
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

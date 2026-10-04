@@ -119,3 +119,5 @@ _pins/
 # KI-Bot: Daytrading-Signale laufen auf dem PC, Logbuch bleibt dort
 data/ki-signale.json
 tools/trading/ki_bot/STOP
+data/ki-bot.json
+data/ki-bot-broker.json
