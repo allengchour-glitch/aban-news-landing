@@ -97,8 +97,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Farben: Silber und …»
 - `15450843578753` · Bodenwischerkopf aus Stahl und Gummi
   - «…Erhältlich in verschiedenen Längen…»
-- `15450843906433` · WC-Sitz mit Absenkautomatik, Oval
-  - «…Erhältlich in verschiedenen Farben…»
 - `15451639710081` · Schutzhülle für XBOX ONE Controller
   - «…Erhältlich in verschiedenen Farben…»
 - `15451640758657` · Nordischer Bettläufer mit Quasten
@@ -2285,8 +2283,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei Farbvarianten…»
 - `15522440413569` · Seidenfaden für Samtblumen, nicht spaltend
   - «…Erhältlich in verschiedenen Farben…»
-- `15522451652993` · Ferngesteuertes Anti-Bell-Gerät für Hunde
-  - «…Erhältlich in verschiedenen Ausführungen…»
 - `15522697609601` · MOQ100 Custom USB Rucksack
   - «…Erhältlich in den Farben…»
 - `15522968535425` · Bedruckte Tragetasche für Schule und Reisen
