@@ -68,3 +68,59 @@ ersten 4 Varianten — alle 10 sind kaufbar) und „13 kaputte Links" (alles HTT
 
 - **Holzspiegel:** ab ca. CHF 50 rentabel. Preis setzen → ich schalte ihn wieder live, inkl. Platz 17.
 - **Gemini-Credits sind aufgebraucht** (HTTP 402) → importierte Reviews bleiben in der Originalsprache.
+
+---
+
+## Runde 2 (04.10.2026, abends)
+
+### 7. Margen-Scan über den GANZEN Katalog
+Der erste Scan deckte 7200 Produkte ab. Vollständig nachgemessen:
+**24 000 aktive Produkte, 23 701 mit hinterlegten Kosten → 0 unter Einkauf, 0 unter 15 % Marge.**
+Damit ist belegt, dass der Holzspiegel wirklich ein Einzelfall war und nicht die Spitze eines Problems.
+
+### 8. Navigation vollständig geprüft — sauber
+Alle drei Menüs (`main-menu` 13, `footer` 15, `customer-account-main-menu` 2 Top-Einträge),
+**183 Einträge, 163 verschiedene Ziele**, einzeln mit 3 s Abstand abgerufen:
+
+| Befund | Zahl | Urteil |
+|---|---|---|
+| HTTP 200 | 158 | ok |
+| HTTP 429 | 3 | **Rate-Limit** — bei Nachprüfung mit Abstand alle **200** |
+| HTTP 406 | 2 | Kundenkonto-Portal auf `shopify.com` — Bot-Abwehr gegen curl, im Browser normal |
+
+**Kein einziger toter Menü-Link.** Die 406er sind die von Shopify selbst konfigurierten Konto-Links
+(`shopify.com/94368563585/account/…`) — laut Gedächtnis bewusst so und **nicht umzubiegen**, sonst
+bricht der Login.
+
+### 9. Doppelte SEO-Titel aufgelöst
+Von 40 000 aktiven Produkten hatten **genau 2 Titel je 2 Träger** (4 Produkte). Geprüft: **keine echten
+Dubletten** — unterschiedliche SKUs, Preise und Bilder. Aber identische Titel lassen sie um dieselbe
+Suchanfrage konkurrieren. Unterscheider aus der jeweiligen **eigenen Beschreibung** übernommen,
+nichts erfunden:
+
+| Produkt | neuer SEO-Titel | Beleg im Text |
+|---|---|---|
+| `…gemuseschneider-601900` (CHF 45.90) | mit Edelstahl-Klingen & Box | «V-Klinge aus 420er Edelstahl … Aufbewahrungsbox» |
+| `…gemueseschneider-682752` (CHF 14.90) | kompakt, leicht & platzsparend | «kompakte Grösse … platzsparend» |
+| `…massagekamm-…-601400` (CHF 21.90) | mit Rotlicht für die Haarpflege | «Rotlicht-Technologie … Haar von der Wurzel» |
+| `…massagekamm-…-604800` (CHF 24.90) | beruhigt und reguliert Talg | «Kopfhaut zu beruhigen … Talgproduktion regulieren» |
+
+Nachgemessen: **0 doppelte SEO-Titel**.
+
+*Nebenbefund, nicht geändert:* `…massagekamm-…-604800` heisst «mit Rotlicht», die Beschreibung erwähnt
+Rotlicht aber nirgends. Ob das Gerät eines hat, ist von hier nicht belegbar — gehört auf die Liste für
+den nächsten Lauf mit CJ-Daten.
+
+### 10. SEO-Titel fehlen bei 62,6 %
+**25 032 von 40 000** aktiven Produkten haben keinen eigenen SEO-Titel (Shopify nimmt dann den
+Produkttitel). Das ist kein Defekt, aber die grösste unausgeschöpfte SEO-Fläche im Shop.
+Ohne SEO-Beschreibung sind dagegen nur **53 Produkte (0,1 %)**.
+
+### 11. Reviews sind live sichtbar
+Das Faltbrett zeigt jetzt **4,75 ★ aus 16 Bewertungen**, Metafelder `reviews.rating` und
+`reviews.rating_count` sind gesetzt, die Seite rendert «16 Bewertung».
+**Ehrliche Einschränkung:** Judge.me ignoriert in der API alle Produktfilter (`product_id`,
+`external_id`, `handle` liefern jeweils denselben Shop-Feed), und die Review-Texte lädt das Widget
+per JavaScript nach. Ob die 8 Bewertungen neben meinen 8 aus einem früheren Lauf stammen oder
+Dubletten sind, ist **von hier nicht beweisbar** — der Import lief genau einmal, die 8 Texte waren
+untereinander verschieden, und das Ledger verhindert jetzt eine Wiederholung.
