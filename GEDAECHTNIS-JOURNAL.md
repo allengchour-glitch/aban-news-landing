@@ -33,6 +33,29 @@
 
 
 
+## 🏷️ Tag 5: Top-30-Seiten 30/30 · Kristall-Set zeigte nicht, was geliefert wird · Hashtags nach Messung (2026-10-04, ab 20:19)
+- **Vorige Runde (Haiku) hatte Tag 5 erfunden:** `_day5_audit.json` zählte je «2» Google-Blocker statt 265/265/199, und eine
+  Journalzeile nannte vier «Guardrails» (`size_table_autofill` …), die es nicht gibt (0 Treffer). Beides entfernt.
+  **Regel: Einen Wächter nur nennen, wenn `ls automation/` ihn zeigt; eine Zahl nur, wenn der Befehl daneben steht.**
+- **Top-30 (ShopifyQL, 30 T, Menschen):** `top_produktseiten_check.py`, täglich im Aufseher. 24/30 → 30/30. Entwürfe mit
+  Besuchern sind kein Mangel, wenn ein 301 auf kaufbares Ziel zeigt; Grössentabelle zeigt das Theme NUR bei Option
+  «Grösse/Size»; Lieferbalken hat else-Zweig (immer da); Empfehlungen `related`, 4 Karten.
+- ⛔ **Kristall-Set (einzige Top-Seite mit Kauf):** Bild = 12 englisch beschriftete Spitzen, Text = «3-teilig, Handschmeichler,
+  DE-Guide, keine Glas-Imitate», geliefert wird seit #1020 CJ Set1 = 8 Spitzen in Holzbox. Dazu «Muster: Spitze» (Faktenblock
+  las Kristall**spitze** als Textil), Garantie «Keine Fragen · volle Rückerstattung» gegen die Garantieseite, Google «Cosmetics»,
+  Tag `set` → «Trainingsanzüge & Sets». Neu: 5 Bilder aus CJ-Fotos der gelieferten Variante (Lieferanten-Pfeile per
+  Zeilen-Interpolation entfernt, Lieferumfang mit deutschen Namen), Text nur mit Belegtem. **Lehre: Wer eine Bezugsquelle
+  ZUORDNET (CJ-Ersatz 01.10.), muss im selben Zug die Seite an die neue Ware angleichen.**
+- **Meta-Ende 05.10.:** Umschaltung auf Metricool existierte, war aber nie bis zur Veröffentlichung getestet (2 IG-Reels vom
+  27.09. später gesperrt, Bild/Karussell nie). Echttest: Story 388003883/388003885 → IG + FB PUBLISHED.
+- **Story-Stau 25 h:** `story_bauen.py` schrieb die Jury-Sperre als `story-<handle>`, las aber `story_<handle>.jpg` → jeder
+  Lauf prüfte dieselben 4 Durchfaller (53 Sperrzeilen). **Schreiber und Leser einer Sperre im selben Muster testen.**
+- **Hashtags (Betreiber «hastag auch setzten für mehr follower»):** IG erlaubt seit 12/2025 nur 5 (QUELLE) → «mehr» geht
+  nicht, nur «bessere». `social_lernen.mjs` misst jetzt je Tag; `lib/hashtags.mjs` wählt 5 nach Gewicht + Saison, Poster
+  wählen beim Posten. Gemessen: #shoppingschweiz 1.35, #zürich 1.32, #fashionschweiz 1.31 über Basis 1.11; #ootdschweiz 1.09,
+  #schweizmode 1.05 darunter — genau die zwei, die der Bildpost-Nachschub JEDEM Produkt anhängte (Tarantel, Pappbecher).
+  Ausgang IG 164 / TikTok 553 Follower. Berichte: `TOP30-PRODUKTSEITEN-2026-10-04.md`, `HASHTAGS-2026-10-04.md`.
+
 ## ⏳ Wächter starben in 15 s an «12x gedrosselt»: Wartezeit nur bis zur eigenen Anfrage (2026-10-03, Verbesserungsrunde 16:25)
 - **GEMESSEN:** Der Eimer lag 16:28–16:30 bei 16–136 von 2'000. Gestorben sind `cj_versand_ch_guard` (12:11), `fuellmenge_nachtragen` und `pinterest_pins_pruefen`. 30 Wächter rechneten `requestedQueryCost − currentlyAvailable`: Bei leerem Eimer waren das unter 1 s je Versuch, nach 12 Versuchen gaben sie auf.
 - **GETAN:** Alle 30 warten bis `max(Anfrage, 600) − verfügbar` (≤ 30 s); die 19 mit `_fehlt` haben 40 statt 12 Versuche. Regel `drossel-ungeduldig` im Zweiten Gehirn (18/18).
@@ -17747,6 +17770,10 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+
+Verschoben am 04.10.2026:
+- 2026-10-02 · 🔁 **OpenAI-Guthaben leer (429 `insufficient_quota` — kein Drosseln!), DeepSeek 402 → `automation/zweitmodell.py` (`chat_json`: ChatGPT, sonst Groq gpt-oss-120b / qwen3.8-27b-Vision; > 5 Bilder → Raster, Marke `/tmp/openai_leer` 6 h) in cj_variante_bild, gemini_jury, google_bild_tausch, kauderwelsch, google_fein_ki (zweistufig gegen 413); #1021-Kanarienvogel wieder richtig.** Bei 429 den Körper lesen → `dropship/ZWEITMODELL-GROQ-2026-10-02.md`
+- 2026-10-02 · 🧭 **«google push und coole fein kategorien»: ~7'100 Google-Kanal-Produkte in groben Zweigen → `google_fein_ki.py` (Gemini + ChatGPT wählen aus den echten Unterpfaden des bisherigen Werts, nur bei Einigkeit; 2 Arbeiter, 4 = ChatGPT-429) im Aufseher; 40 Kinderkleider aa-1 → aa-1-25; neue selbstpflegende Kollektionen per `PRODUCT_CATEGORY_ID_WITH_DESCENDANTS`: Babykleidung 133 · Strampler & Bodys 30 · Baby- & Kinder-Sets 66, im Menü als HTTP-Link (COLLECTION-Typ = `/en/` 404).** Kategorie-Regel macht Kollektionen wartungsfrei → `dropship/GOOGLE-FEIN-KI-2026-10-02.md`
 - 2026-10-02 · 👶 **Verbesserungsrunde: Ampel 285 ohne Shopify-Kategorie — Grind legte neue Typen «Baby & Kinder» (96 Kinderkleidung) + «Büro & Home Office» (7) an, die Wache rät nicht; Google: 92× nur «Baby & Toddler», 4× age_group adult → KINDERREGELN auf aa-1-25 + Lehrmodell-Regel (141 gesetzt, 96/96 zurückgelesen) + `kinder_google_pfad.py` (Babyzweig + age_group, 162 Metafelder, Kanarienvögel 8/8), beides stündlich.** Nach dem Einschalten eines Importers zuerst «unbekannte Typen» lesen → `dropship/KATEGORIE-KINDER-2026-10-02.md`
 - 2026-10-02 · 🎬 **«grow videos push»: Video-Nachtrag fand bei 375/403 Prüfungen KEIN CJ-Video (93 % Leerlauf, Vorrang = sichtbar statt mit Video), während der Video-Index 1'068 CJ-pids MIT Video kennt (512 aktive Produkte, nie im Nachtrag) und 107 rohe CJ-Videos schon lokal lagen (Server-Downloads der Reels) → `video_lokal_anhaengen.mjs` (ohne CJ-Punkte, READY verfolgt, Bild vorn; Probe 3/3) + `video_prio_index.py` (Vorrang nur mit Video) im Aufseher; Grow-Deckel 1'000.** Erst prüfen, ob das Gesuchte schon da ist, dann teuer suchen → `dropship/GROW-VIDEOS-2026-10-02.md`
 - 2026-10-02 · 💾 **«nutze grow speicherplatz»: 56 wartende Reels von GitHub ins Shopify-CDN (`reel_cdn_umzug.py`, Prüfung Grösse/Typ, atomar nur noch-ready-Zeilen, 0 Fehler), Handy-Set mit Bild wieder ACTIVE; TikTok-Queue meldete trotz Grow «Speicher voll» — `fileErrors` einer per fileUpdate ersetzten Datei ist eine HISTORIE (September-Fehler blieben, Datei READY + CDN aktuell) → Inhaltsprüfung in tiktok_cowork_auftrag + tiktok_jetzt; Bild-/Video-Nachtrag läuft im CJ-Vorrangfenster (Punkte leer bis 16:00 UTC).** Fehlerlisten an Objekten sind Geschichte, nicht Zustand → `dropship/GROW-SPEICHER-NUTZEN-2026-10-02.md`

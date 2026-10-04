@@ -62,7 +62,8 @@ const hash = s => [...String(s)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>>
 
 // Stärkste zuerst; der zweite Platz rotiert per Titel zwischen den Besten, damit neue Kandidaten Messwerte bekommen.
 function wahl(kandidaten, n, salz) {
-  const k = [...new Set(kandidaten)].sort((a, b) => gw(b) - gw(a));
+  // belastbar schwächer als der Durchschnitt (< 1.0) → nicht mehr wählen
+  const k = [...new Set(kandidaten)].filter(t => gw(t) >= 1.0).sort((a, b) => gw(b) - gw(a));
   if (k.length <= n) return k;
   const rest = k.slice(1, Math.min(k.length, n + 2));
   const aus = [k[0]];
