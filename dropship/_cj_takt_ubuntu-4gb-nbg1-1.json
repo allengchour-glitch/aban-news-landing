@@ -1,16 +1,14 @@
 {
  "host": "ubuntu-4gb-nbg1-1",
- "stunde": "2026-10-04T14:00Z",
- "stand": "2026-10-04T14:08:21Z",
+ "stunde": "2026-10-04T15:00Z",
+ "stand": "2026-10-04T15:08:33Z",
  "fenster_min": 60,
- "summe": 227,
+ "summe": 195,
  "skripte": {
-  "cj_category_fill.mjs": 161,
-  "versand_stillstand.py": 24,
+  "cj_category_fill.mjs": 149,
+  "versand_stillstand.py": 21,
   "cj_zahlung_offen.py": 16,
-  "cj_fulfill_engine.py": 11,
-  "cj_order_engine.py": 10,
-  "cj_video_index.mjs": 4,
-  "cj_varianten_wache.py": 1
+  "cj_video_index.mjs": 6,
+  "cj_order_engine.py": 3
  }
 }
