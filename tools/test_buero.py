@@ -7,6 +7,13 @@
 Jede Prüfung sichert etwas, das echtes Geld oder Recht berührt: fortlaufende
 Nummern, keine MWST auf der Rechnung, keine Rechnung ohne Konto, Übernahme aus
 der Offerte, Schweizer Zahlenschreibweise.
+
+Voraussetzungen: Python 3 reicht für alles ausser dem QR-Zahlteil. Der braucht
+zusätzlich Node (für js/qr-rechnung.js) und `pip install segno`. Fehlt eines
+davon, werden die beiden QR-Prüfungen übersprungen statt rot gemeldet — die
+Rechnung entsteht dann bewusst ohne Zahlteil. Sind beide da und der Zahlteil
+fehlt trotzdem, schlägt die Prüfung an (am 04.10.2026 mit künstlich kaputter
+js/qr-rechnung.js gegengeprüft).
 """
 import json
 import os
@@ -17,11 +24,30 @@ import sys
 import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-gut = schlecht = 0
+gut = schlecht = uebersprungen = 0
 
 
-def pruef(name, bedingung, detail=""):
-    global gut, schlecht
+def qr_moeglich():
+    """Der QR-Zahlteil braucht Node (für js/qr-rechnung.js) und das Python-Paket segno.
+    Fehlt eines davon, ist das KEIN Fehler der Rechnung — die Rechnung bleibt dann
+    bewusst ohne Zahlteil (siehe qr_zahlteil() in buero.py). Ein rotes Kreuz dafür
+    würde nur Lärm machen und echte Fehler überdecken."""
+    if shutil.which("node") is None:
+        return "node fehlt"
+    try:
+        import segno  # noqa: F401
+    except ImportError:
+        return "Python-Paket segno fehlt → pip install segno"
+    return None
+
+
+def pruef(name, bedingung, detail="", ueberspringen=None):
+    """ueberspringen: Grundtext, wenn die Voraussetzung fehlt — dann weder grün noch rot."""
+    global gut, schlecht, uebersprungen
+    if ueberspringen:
+        print(f"  – {name} — übersprungen: {ueberspringen}")
+        uebersprungen += 1
+        return
     print(("  ✓ " if bedingung else "  ✗ ") + name + (f" — {detail}" if detail and not bedingung else ""))
     if bedingung:
         gut += 1
@@ -95,9 +121,12 @@ def main():
     pruef("Mitteilung = Rechnungsnummer", "2026-003" in r3)
     m3 = open(os.path.join(tmp, "buero", "2026-003-rechnung-mail.txt"), encoding="utf-8").read()
     pruef("Mailtext nennt IBAN statt Warnung", "CH93" in m3 and "IBAN fehlt" not in m3)
+    fehlt = qr_moeglich()
     pruef("Rechnung trägt einen QR-Zahlteil (Swiss QR Code + Empfangsschein)",
-          "Empfangsschein" in r3 and "<svg" in r3 and "Zahlteil" in r3, "braucht node + segno")
-    pruef("QR-Referenz aus der Rechnungsnummer (RF…)", re.search(r"RF\d{2} ", r3) is not None)
+          "Empfangsschein" in r3 and "<svg" in r3 and "Zahlteil" in r3,
+          "node und segno sind da, der Zahlteil fehlt trotzdem", ueberspringen=fehlt)
+    pruef("QR-Referenz aus der Rechnungsnummer (RF…)",
+          re.search(r"RF\d{2} ", r3) is not None, ueberspringen=fehlt)
     pruef("Offerte hat KEINEN Zahlteil", "Empfangsschein" not in open(os.path.join(tmp, "buero", "2026-001-offerte.html"), encoding="utf-8").read())
 
     print("\nTest 6 — Schweizer Schreibweise und Journal:")
@@ -123,7 +152,10 @@ def main():
 
     shutil.rmtree(tmp, ignore_errors=True)
     print("\n" + "=" * 46)
-    print(f"{gut} bestanden, {schlecht} fehlgeschlagen.")
+    rest = f", {uebersprungen} übersprungen" if uebersprungen else ""
+    print(f"{gut} bestanden, {schlecht} fehlgeschlagen{rest}.")
+    if uebersprungen:
+        print('Übersprungenes sind fehlende Voraussetzungen, keine Fehler — siehe Zeilen mit -.')
     sys.exit(1 if schlecht else 0)
 
 
