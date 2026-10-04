@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 20:28 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 20:31 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **36'640**
-- Optionen mit englischen Werten (Kandidaten): 2'620
+- Produkte gesehen: **37'837**
+- Optionen mit englischen Werten (Kandidaten): 2'656
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'355
+- Werte mit unbekanntem Wort (unverändert): 14'436
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 61
-- übersprungen «kollision-nach-uebersetzung»: 37
+- übersprungen «kollision-nach-uebersetzung»: 39
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -89,6 +89,8 @@
 - `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
 - `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
 - `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
+- `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
+- `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -124,5 +126,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 610, `⟨satzbau:adjektiv-vor-nomen⟩` 540, `light` 435, `color` 354, `shell` 162, `degrees` 159, `size` 142, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 126, `powder` 120, `⟨satzbau:nomen-nomen⟩` 111, `no` 109, `diamond` 108, `high` 101, `skin` 101, `to` 98, `three` 97, `bag` 93, `shoes` 93, `belt` 92, `rain` 88, `case` 87, `four` 84, `french` 84, `opp` 81, `dark` 80, `yards` 79, `rope` 75, `code` 73, `spring` 72, `dual` 71, `base` 69, `petal` 68, `chain` 67, `half` 67, `dinosaur` 66, `autumn` 66, `little` 65, `buckle` 65, `cloth` 63, `net` 63, `feet` 62, `mother` 61, `strap` 60, `cherry` 60, `of` 60, `tea` 57, `one` 56, `bottom` 56, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49
+`inner` 610, `⟨satzbau:adjektiv-vor-nomen⟩` 540, `light` 435, `color` 358, `shell` 162, `degrees` 159, `size` 145, `core` 137, `⟨satzbau:material-vor-farbe⟩` 132, `surface` 128, `powder` 120, `⟨satzbau:nomen-nomen⟩` 111, `no` 109, `diamond` 108, `high` 101, `skin` 101, `to` 98, `three` 97, `shoes` 96, `belt` 93, `bag` 93, `rain` 88, `case` 87, `four` 84, `french` 84, `opp` 81, `dark` 80, `yards` 79, `rope` 75, `code` 73, `spring` 72, `dual` 71, `base` 69, `chain` 68, `petal` 68, `half` 67, `dinosaur` 66, `autumn` 66, `little` 65, `buckle` 65, `cloth` 63, `net` 63, `feet` 62, `mother` 61, `strap` 60, `cherry` 60, `of` 60, `tea` 57, `one` 57, `bottom` 56, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49
 
