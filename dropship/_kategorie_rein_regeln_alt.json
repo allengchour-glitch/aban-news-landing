@@ -318,5 +318,40 @@
     "condition": "Haustierbedarf"
    }
   ]
+ },
+ "sub-baby-kids": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "baby-kids"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kinder"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "spielzeug"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Baby"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Kinder"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Spielzeug"
+   }
+  ]
  }
 }

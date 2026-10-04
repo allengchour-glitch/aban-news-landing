@@ -3573,3 +3573,5 @@ weihnachts-pullover-flanell-rundhals-langarm-u-634500	2601020503021634700	16	9.4
 weihnachts-print-hoodie-mit-glitzer-608700	2601010813211608900	16	10.15	ok	landeseite
 weihnachts-style-bequem-damenpullover-621800	2512310310391622000	16	9.20	ok	landeseite
 weihnachts-muster-sweatshirt-634700	2512301957001635000	16	11.00	ok	landeseite
+weihnachts-hoodie-mit-3d-print-606400	2512300859311608700	16	11.00	ok	landeseite
+weihnachts-katze-crew-neck-pullover-damen-600500	2512300846461600800	16	9.61	ok	landeseite
