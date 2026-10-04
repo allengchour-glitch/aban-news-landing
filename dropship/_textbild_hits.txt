@@ -16490,3 +16490,8 @@ gid://shopify/Product/15496539636097	18->0	LED Teelichter Flackernd (Batteriebet
 gid://shopify/Product/15496705900929	63->0	Halsband aus Echtleder für Hunde
 gid://shopify/Product/15496892547457	14->0	Gaming-Griff für Smartphones
 gid://shopify/Product/15497712992641	60->3	DIY Diamond Painting Set
+gid://shopify/Product/15499810275713	17->2	Holzoptik-Diffusor
+gid://shopify/Product/15500202377601	46->2	Haarkurllinie
+gid://shopify/Product/15500349931905	33->0	Silikonabdeckungen
+gid://shopify/Product/15500351963521	68->0	Silberner Pancake-Clip
+gid://shopify/Product/15500373295489	25->1	Hundespielzeug
