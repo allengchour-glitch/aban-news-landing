@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""KI-Krypto-Bot — Bitcoin mit Schwankungsziel, automatisch über Alpaca (Standard: Papierkonto, Spielgeld).
+"""KI-Krypto-Bot — Bitcoin mit Schwankungsziel, automatisch über Alpaca oder Binance (Standard: Spielgeld).
 
 Warum gerade diese Regel? Siehe analyse.py: Von acht vorab festgelegten Strategien schlug keine das einfache Halten von
 Bitcoin. Das Schwankungsziel kam im ungesehenen Test (2022–2026) auf fast dieselbe Rendite mit kleinerem Einbruch
@@ -123,6 +123,7 @@ def main():
     ap.add_argument("--lauf", action="store_true")
     ap.add_argument("--trocken", action="store_true")
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--broker", choices=["alpaca", "binance"], help="Standard: KRYPTO_BROKER oder alpaca")
     a = ap.parse_args()
     import os
     strategie = (os.environ.get("KRYPTO_STRATEGIE") or "schwankungsziel").strip().lower()
@@ -145,10 +146,15 @@ def main():
         lb["entscheide"].append(e)
         lb["entscheide"] = lb["entscheide"][-2000:]
         schreibe(lb)
-    plan = ausfuehren(e, trocken=a.trocken)
+    broker = a.broker or (os.environ.get("KRYPTO_BROKER") or "alpaca").strip().lower()
+    if broker == "binance":
+        import broker_binance as BB
+        plan = BB.ausfuehren(e, trocken=a.trocken)
+    else:
+        plan = ausfuehren(e, trocken=a.trocken)
     if plan or vorher is None or abs(e["quote"] - vorher) >= 0.05:
         import signale as SG
-        SG.push(text + ("\n" + "\n".join(f"{x['seite']} {x['notional']:.0f} USD" for x in plan) if plan else "") + "\nKeine Anlageberatung.")
+        SG.push(text + ("\n" + "\n".join(f"{x['seite']} ca. {x.get('notional', x.get('quote_betrag', x.get('ca_betrag', 0))):.0f} ({broker})" for x in plan) if plan else "") + "\nKeine Anlageberatung.")
     return 0
 
 
