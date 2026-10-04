@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 05:11 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 05:12 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **509**
-- Optionen mit englischen Werten (Kandidaten): 22
+- Produkte gesehen: **613**
+- Optionen mit englischen Werten (Kandidaten): 25
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 64
+- Werte mit unbekanntem Wort (unverändert): 79
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 1
 
@@ -61,5 +61,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`gift` 6, `chest` 6, `pad` 6, `belt` 4, `shell` 3, `case` 3, `alluvial` 3, `spring` 3, `unpredictable` 3, `background` 2, `⟨satzbau:adjektiv-vor-nomen⟩` 2, `imitating` 2, `stone` 2, `spot` 2, `antique` 2, `shoe` 2, `buckle` 2, `color` 1, `ribbon` 1, `hidden` 1, `elevator` 1, `tea` 1, `delightful` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `basic` 1, `2nd` 1, `generation` 1, `embroidery` 1, `angola` 1, `scarlett` 1, `mocha` 1, `snowfield` 1, `ice` 1, `lotus` 1, `oat` 1, `sky` 1, `sugar` 1, `dyed` 1, `fireworks` 1, `angora` 1, `stature` 1, `regular` 1, `light` 1, `pitch` 1, `ballet` 1, `chain` 1
+`shell` 8, `case` 6, `gift` 6, `chest` 6, `pad` 6, `belt` 4, `alluvial` 3, `spring` 3, `unpredictable` 3, `ck` 3, `background` 2, `⟨satzbau:adjektiv-vor-nomen⟩` 2, `imitating` 2, `stone` 2, `spot` 2, `antique` 2, `shoe` 2, `buckle` 2, `replenishment` 2, `color` 1, `ribbon` 1, `hidden` 1, `elevator` 1, `tea` 1, `delightful` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `basic` 1, `2nd` 1, `generation` 1, `embroidery` 1, `angola` 1, `scarlett` 1, `mocha` 1, `snowfield` 1, `ice` 1, `lotus` 1, `oat` 1, `sky` 1, `sugar` 1, `dyed` 1, `fireworks` 1, `angora` 1, `stature` 1, `regular` 1, `light` 1, `pitch` 1, `ballet` 1, `chain` 1, `face` 1, `cologne` 1, `gardenia` 1
 

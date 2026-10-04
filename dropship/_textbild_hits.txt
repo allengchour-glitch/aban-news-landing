@@ -16537,3 +16537,6 @@ gid://shopify/Product/16604588474759	64->0	Weiche Ledersandalen mit quadratische
 gid://shopify/Product/16604816507271	9->0	PLA 3D‑Druckfilament 1 kg – 175 mm, Mehrfarbig
 gid://shopify/Product/16604818801031	9->3	Nylon-Balaclava-Bh mit nahtloser Passform
 gid://shopify/Product/16604831678855	21->0	Digital-Tag-Taschen-Set für Weihnachten
+gid://shopify/Product/16604832858503	133->0	Adventskalender-Set aus Satin-Geschenkbeutel
+gid://shopify/Product/16604837052807	15->0	Weisser Weihnachtsmann-Hut aus Plüsch
+gid://shopify/Product/16604838592903	86->1	Goldener Sequin-Kap für Weihnachtsdekoration
