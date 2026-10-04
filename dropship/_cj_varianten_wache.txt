@@ -9572,3 +9572,23 @@ gid://shopify/Product/15455301435777	1791076108	ok	4 Shop / 4 CJ / 0 fehlend / 0
 gid://shopify/Product/15455301501313	1791076108	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455322571137	1791076108	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455322702209	1791076108	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15431384269185	1791145505	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384498561	1791145505	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384859009	1791145505	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431385121153	1791145505	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15448887001473	1791145505	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
+gid://shopify/Product/15449428525441	1791145505	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450831749505	1791145505	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450836631937	1791145505	unklar	SKU-Form nicht pruefbar: 'CJ-CJY 104172601AZ'
+gid://shopify/Product/15450836861313	1791145505	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450850460033	1791145505	unklar	SKU-DOPPELT: 2 Shop-Varianten teilen einen CJ-Kern, 2 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15455322734977	1791145505	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455322833281	1791145505	ok	81 Shop / 81 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455323128193	1791145505	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455323324801	1791145505	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455323423105	1791145505	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455323554177	1791145505	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455324602753	1791145505	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455324635521	1791145505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455324897665	1791145505	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455372378497	1791145505	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY

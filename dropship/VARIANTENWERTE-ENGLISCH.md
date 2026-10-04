@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 20:25 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 20:28 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **35'444**
-- Optionen mit englischen Werten (Kandidaten): 2'580
+- Produkte gesehen: **36'640**
+- Optionen mit englischen Werten (Kandidaten): 2'620
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'151
+- Werte mit unbekanntem Wort (unverändert): 14'355
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 59
+- übersprungen «kleidungsstueck-im-wert»: 61
 - übersprungen «kollision-nach-uebersetzung»: 37
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -46,6 +46,7 @@
 - `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
 - `15500261392769` [Ausführung] **Schlichter Baumwoll-Top** — weste: Vest | Short
 - `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
+- `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Black Cardigan-Plus Size L | Black Cardigan-Plus Size XL | Black Cardigan-Plus Size 2XL | Black Cardigan-Plus Size 3XL | Black Cardigan-Plus Size 4XL | Black Cardigan | Sleeveless Floral Skirt-Plus Size L | Sleeveless Floral Skirt-Plus Size XL
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -123,5 +124,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 546, `⟨satzbau:adjektiv-vor-nomen⟩` 535, `light` 435, `color` 328, `shell` 162, `degrees` 159, `size` 140, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 122, `powder` 115, `⟨satzbau:nomen-nomen⟩` 111, `no` 109, `diamond` 108, `high` 101, `skin` 101, `to` 98, `three` 97, `bag` 93, `shoes` 93, `belt` 92, `rain` 88, `case` 87, `french` 84, `four` 82, `opp` 81, `dark` 80, `yards` 79, `rope` 75, `code` 73, `spring` 72, `dual` 71, `base` 69, `petal` 68, `chain` 67, `dinosaur` 66, `autumn` 66, `half` 66, `buckle` 63, `net` 63, `feet` 62, `mother` 61, `little` 60, `of` 60, `cherry` 59, `tea` 57, `one` 56, `plush` 56, `electric` 55, `night` 54, `bottom` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49
+`inner` 610, `⟨satzbau:adjektiv-vor-nomen⟩` 540, `light` 435, `color` 354, `shell` 162, `degrees` 159, `size` 142, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 126, `powder` 120, `⟨satzbau:nomen-nomen⟩` 111, `no` 109, `diamond` 108, `high` 101, `skin` 101, `to` 98, `three` 97, `bag` 93, `shoes` 93, `belt` 92, `rain` 88, `case` 87, `four` 84, `french` 84, `opp` 81, `dark` 80, `yards` 79, `rope` 75, `code` 73, `spring` 72, `dual` 71, `base` 69, `petal` 68, `chain` 67, `half` 67, `dinosaur` 66, `autumn` 66, `little` 65, `buckle` 65, `cloth` 63, `net` 63, `feet` 62, `mother` 61, `strap` 60, `cherry` 60, `of` 60, `tea` 57, `one` 56, `bottom` 56, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49
 
