@@ -133,3 +133,40 @@ Bei vier Seiten fehlt genau die eine Angabe, die über den Kauf entscheidet. Nic
 `schrank-organizer-mit-schubladen-620900` → **Masse und Material** ·
 `mini-finger-skateboard-brucke-643400` → Lieferumfang gegenprüfen.
 Steht im Auftrag des geplanten Laufs nach dem Punkte-Reset.
+
+## Runde 4 (04.10.2026) — der vierte Fall, und er sass auf der besten Position
+
+**7. `schrank organizer` (720/Mt, Platz 32) verkaufte ein Wäsche-Faltbrett.**
+`schrank-organizer-mit-schubladen-620900` hiess «Schrank-Organizer mit Schubladen» und beschrieb «Zwei
+Schubladen: 12 Fächer für Oberteile, 9 Fächer für Hosen». Auf dem Herstellerbild steht **«Folding board
+[grey], 23 cm × 28.5 cm»**, das zweite Bild zeigt, wie damit ein T-Shirt gefaltet wird. Die «12 Fächer»
+sind die **12 Löcher in der Plattenfläche** — der automatische Übersetzer hat aus Aussparungen Schubladen
+gemacht.
+
+Seite heisst jetzt **«Faltbrett für Wäsche · 23 × 28,5 cm, klappbar»**, mit den Massen vom Herstellerbild,
+einer klaren Abgrenzung («es ist ein Faltbrett, kein Schrank-Einsatz») und FAQ. Text 730 → 2146 Zeichen,
+live geprüft.
+
+**Folge fürs Ranking, ehrlich gesagt:** Platz 32 für «schrank organizer» wird verschwinden — er beruhte
+darauf, dass die Seite etwas versprach, was sie nicht verkauft. Ein Ranking, das die falsche Ware zeigt,
+bringt Retouren statt Umsatz. Das Keyword gehört an ein echtes Produkt; **Kandidaten im Bestand**:
+`4er-set-stapelbare-kleider-organizer-362946` (CHF 51.90) und `niedlicher-organizer-mit-schubladen-620000`
+(CHF 14.90) — **vorher Bild prüfen**, siehe Regel unten. Dafür ist jetzt «wäsche faltbrett» / «faltbrett
+kleidung» sauber besetzt: im ganzen Shop gab es dafür bisher **0 aktive Produkte**.
+
+### Zwischenstand der Bildprüfung: 4 von 4 geprüften Top-Seiten waren falsch beschriftet
+| Seite | Keyword (Vol.) | Beschriftung | Wirklichkeit |
+|---|---|---|---|
+| `mini-kuhlschrank-629100` | kleiner kühlschrank (4400) | Mini-Kühlschrank | Insulin-Kühlbox |
+| `mini-fotodrucker-c75644` | fotodrucker (1900) | Mini Fotodrucker | Thermodrucker s/w |
+| `mini-finger-skateboard-brucke-643400` | finger skateboard (1300) | Finger-Skateboard-Brücke | 2 Achsen, kein Board |
+| `schrank-organizer-mit-schubladen-620900` | schrank organizer (720) | Organizer mit Schubladen | Wäsche-Faltbrett |
+
+**Das ist keine Pechsträhne, das ist die Regel.** Vier von vier. Die Beschreibungen stammen aus maschinell
+übersetzten CJ-Feldern, und der Übersetzer macht aus Löchern Schubladen, aus Achsen ein Skateboard und aus
+einer Medikamentenbox einen Kühlschrank. Geprüft wurden bisher nur die Seiten mit Google-Positionen —
+der Rest des CJ-Katalogs ist ungeprüft.
+
+**Regel (gilt ab sofort für jede Sitzung):** Bevor an einer CJ-Produktseite Text geschrieben wird, das
+**erste Produktbild ansehen**. Die Herstellerbilder tragen oft die Masse und den echten Produktnamen —
+beim Faltbrett standen 23 × 28,5 cm darauf, während die Beschreibung gar kein Mass hatte.
