@@ -3255,3 +3255,110 @@ armband-fur-apple-watch-mit-weihnachtsmuster-905344	1702214790426402816	16	5.02	
 weihnachts-schneehauschen-kalender-aus-papier-610400	2511070511571610600	16	10.15	ok	landeseite
 kinder-halbstiefel-aus-kunstleder-356928	1377450793258586112	16	12.89	ok	landeseite
 kinder-erdbeer-halbschuhe-332480	1375702297543315456	16	7.85	ok	landeseite
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+kuchenregal-fur-gewurze-messer-7e619d	-	-	-	unklar keine CJ-SKU	klinge
+wetzstein-800-8000er-kornung-d7fafb	-	-	-	unklar keine CJ-SKU	klinge
+gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	-	-	-	unklar keine CJ-SKU	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	-	-	-	unklar keine CJ-SKU	klinge
+diamant-messerscharfer-mit-festem-winkel-c8b87b	-	-	-	unklar keine CJ-SKU	klinge
+diamant-scharfer-fur-kuchen-und-garten-messer-188864	1541381509939212288	16	7.35	ok	klinge
+tutu-kleid-fur-baby-girls-langarm-mit-spitze-7d6d30	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+reise-hangematte-aus-fallschirm-nylon-86eb20	-	-	-	unklar keine CJ-SKU	landeseite
+deformierbare-led-garagenleuchte-60w-7122ff	-	-	-	unklar keine CJ-SKU	landeseite
+babysitz-toilettenstuhl-3e78df	-	-	-	unklar keine CJ-SKU	landeseite
+ferngesteuertes-4wd-high-speed-kletterauto-a2cb0e	-	-	-	unklar keine CJ-SKU	landeseite
+baby-nest-reisebettchen-aus-baumwolle-20552f	-	-	-	unklar keine CJ-SKU	landeseite
+hundebett-warmer-schlafsack-7087d5	-	-	-	unklar keine CJ-SKU	landeseite
+riesiger-teddybar-pluschtier-mit-leder-optik-3e7eb6	-	-	-	unklar keine CJ-SKU	landeseite
+glattburste-mit-dampf-spruhfunktion-e765b5	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloses-ladegerat-kompakt-schnell-139560	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-player-mit-lampe-und-wireless-charge-69373f	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-quarzuhr-4b0f6a	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-3306-quarzuhr-38360c	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-gold-armbanduhr-mit-stahlband-d62c72	-	-	-	unklar keine CJ-SKU	landeseite
+damen-quarzuhr-mit-kalender-und-24-stunden-anz-5f29a0	-	-	-	unklar keine CJ-SKU	landeseite
+nibosi-quarzuhr-mit-edelstahlband-e89d0a	-	-	-	unklar keine CJ-SKU	landeseite
+armbanduhr-manschettenknopfe-kugelschreiber-ge-393b44	-	-	-	unklar keine CJ-SKU	landeseite
+klassische-quarzuhr-mit-leuchtanzeige-cb137b	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-quarzuhr-mit-ultradunnem-gehause-de6886	-	-	-	unklar keine CJ-SKU	landeseite
+smart-armband-mit-temperatur-und-blutsauerstof-a18f60	-	-	-	unklar keine CJ-SKU	landeseite
+led-dual-ladestation-fur-ps4-controller-e4ef04	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-tastatur-fur-ps4-controller-0fc67a	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-gamepad-fur-diverse-gerate-a8b390	-	-	-	unklar keine CJ-SKU	landeseite
+ak66-sechs-finger-gamepad-mit-vier-tasten-37ee65	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloser-controller-fur-switch-ps3-bee6ad	-	-	-	unklar keine CJ-SKU	landeseite
+drahtloses-bluetooth-gamepad-4404b7	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloser-gamecontroller-fur-switch-pc-659d62	-	-	-	unklar keine CJ-SKU	landeseite
+gamepad-fur-pubg-und-andere-games-1032a0	-	-	-	unklar keine CJ-SKU	landeseite
+teleskopisches-bluetooth-gamepad-27c168	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloses-bluetooth-gamepad-fur-ps4-e0e243	-	-	-	unklar keine CJ-SKU	landeseite
+diamantbesetztes-uhren-set-0961cb	-	-	-	unklar keine CJ-SKU	landeseite
+atmospharische-damenuhr-geschenkset-7b8ed1	-	-	-	unklar keine CJ-SKU	landeseite
+stahlband-quarzuhr-fur-sport-und-business-f06ad7	-	-	-	unklar keine CJ-SKU	landeseite
+herren-mechanikuhr-mit-milanaise-armband-b2d61d	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-partneruhr-aus-edelstahl-cd1a14	-	-	-	unklar keine CJ-SKU	landeseite
+gaming-trigger-griff-fur-smartphones-c1a081	-	-	-	unklar keine CJ-SKU	landeseite
+elektrisches-reinigungsgerat-fur-poren-b73b35	-	-	-	unklar keine CJ-SKU	landeseite
+sitzhocker-fur-das-lenkrad-4d96d4	-	-	-	unklar keine CJ-SKU	landeseite
+lidschatten-palette-16-farben-e283c6	-	-	-	unklar keine CJ-SKU	landeseite
+wasserfester-eyeliner-stift-12-farben-3d7198	-	-	-	unklar keine CJ-SKU	landeseite
+miss-rose-highlighter-puder-80c2c1	-	-	-	unklar keine CJ-SKU	landeseite
+avocado-bb-cream-mit-pilzkopf-applikator-69b717	-	-	-	unklar keine CJ-SKU	landeseite
+feuchtigkeitspflegecreme-9e5547	-	-	-	unklar keine CJ-SKU	landeseite
+luminoser-lidschatten-fur-augen-und-gesicht-d6c18d	-	-	-	unklar keine CJ-SKU	landeseite
+langanhaltender-uv-lidschatten-769542	-	-	-	unklar keine CJ-SKU	landeseite
+wimpernserum-3-ml-b5f10d	-	-	-	unklar keine CJ-SKU	landeseite
+reparaturplatten-set-7a9af5	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktionale-flussige-grundierung-8e59e6	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-gesichtsburste-mit-reinigungsfunkt-999bc1	-	-	-	unklar keine CJ-SKU	landeseite
+scheinwerfer-vernebler-becher-a1978c	-	-	-	unklar keine CJ-SKU	landeseite
+leder-lenkradbezug-38cm-19018d	-	-	-	unklar keine CJ-SKU	landeseite
+etagere-fur-kuchen-snacks-abea57	-	-	-	unklar keine CJ-SKU	landeseite
+3-in-1-mini-drohne-fur-land-wasser-luft-f0bc29	-	-	-	unklar keine CJ-SKU	landeseite
+30w-vertikales-usb-ladegerat-mit-6-ports-5cd362	-	-	-	unklar keine CJ-SKU	landeseite
+augenbrauen-stempel-kit-wasserfest-naturlich-546ee8	-	-	-	unklar keine CJ-SKU	landeseite
+astronaut-roboter-uberwachungskamera-90b6f7	-	-	-	unklar keine CJ-SKU	landeseite
+baby-lauflernschuhe-mit-streifen-35f5fd	-	-	-	unklar keine CJ-SKU	landeseite
+e58-faltbare-hd-drohne-c013de	-	-	-	unklar keine CJ-SKU	landeseite
+diy-ohrring-set-aus-pu-leder-00df42	-	-	-	unklar keine CJ-SKU	landeseite
+dreieckiges-bettkissen-2332b1	-	-	-	unklar keine CJ-SKU	landeseite
+ems-bauch-und-muskel-trainer-b08b29	-	-	-	unklar keine CJ-SKU	landeseite
+gesichtsrejuvenation-fur-zu-hause-ebee7a	-	-	-	unklar keine CJ-SKU	landeseite
+gansedaunenkissen-fullung-fur-kissenhullen-520f50	-	-	-	unklar keine CJ-SKU	landeseite
+herren-sakko-aus-azetatfaser-diverse-farben-35f236	-	-	-	unklar keine CJ-SKU	landeseite
+led-halsband-fur-hunde-leopard-muster-1985e6	-	-	-	unklar keine CJ-SKU	landeseite
+paarweise-hausschuhe-eba3ba	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktionaler-vertikal-spiralschneider-58cc21	-	-	-	unklar keine CJ-SKU	landeseite
+personalisierbarer-zugfreier-reflektierender-h-4ce320	-	-	-	unklar keine CJ-SKU	landeseite
+pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78	-	-	-	unklar keine CJ-SKU	landeseite
+selfie-stick-stativ-mit-bluetooth-fernbedienun-dcc6fa	-	-	-	unklar keine CJ-SKU	landeseite
+ultra-dunne-faltbare-bluetooth-tastatur-mit-to-5bddb3	-	-	-	unklar keine CJ-SKU	landeseite
+leuchtende-halloween-party-maske-f9b978	-	-	-	unklar keine CJ-SKU	landeseite
+halloween-kostuem-fuer-hunde-479706	-	-	-	unklar keine CJ-SKU	landeseite
+nordische-fransen-strickdecke-8c46da	-	-	-	unklar keine CJ-SKU	landeseite
+usb-aroma-diffuser-mit-7-led-farben-1b3dcc	-	-	-	unklar keine CJ-SKU	landeseite
+usb-heizkissen-mit-graphen-technologie-acad9f	-	-	-	unklar keine CJ-SKU	landeseite
+retro-handwarmer-powerbank-5000-mah-97ddfa	-	-	-	unklar keine CJ-SKU	landeseite
+u-formige-warmflasche-fur-nacken-und-schultern-bd844c	-	-	-	unklar keine CJ-SKU	landeseite
+wassertropfen-powerbank-handwarmer-f5f25e	-	-	-	unklar keine CJ-SKU	landeseite
+spot-uv-sterilisator-tragbar-a47399	-	-	-	unklar keine CJ-SKU	landeseite
+silikon-gesichtsreinigungsburste-0787a2	-	-	-	unklar keine CJ-SKU	landeseite
+futterspender-fur-hunde-bc09f6	-	-	-	unklar keine CJ-SKU	landeseite
+hunde-lederjacke-mit-adler-stickerei-99216d	-	-	-	unklar keine CJ-SKU	landeseite
+weinoffner-mit-luftdruckpumpe-198db1	-	-	-	unklar keine CJ-SKU	landeseite
+fressnapf-aus-keramik-fur-haustiere-a94de9	-	-	-	unklar keine CJ-SKU	landeseite
+verstellbare-fleece-weste-mit-brustgeschirr-310543	-	-	-	unklar keine CJ-SKU	landeseite
+rote-weihnachts-hundeleine-704320	1423126606439911424	16	6.01	ok	landeseite
+hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112	1385464351045062656	16	6.01	ok	landeseite
+plusch-hundegeschirr-mit-leine-744320	1612024004494241792	16	6.01	ok	landeseite
+diy-diamond-painting-weihnachtskarten-set-a66b3f	-	-	-	unklar keine CJ-SKU	landeseite
+roter-weihnachtsmann-baumwoll-twill-stoff-913600	1617840618896633856	16	27.01	ok	landeseite
+weihnachtliches-hunde-halsband-mit-schleife-4ac495	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachts-langarmshirt-mit-blumenmuster-626400	2512090352111626700	16	7.43	ok	landeseite
+weihnachts-langarmshirt-fur-herren-616700	2512090328431617000	16	7.17	ok	landeseite
+weihnachts-kissenbezug-mit-cartoon-motiven-604700	2411100437011604900	16	6.77	ok	landeseite
+weihnachts-halsband-mit-plusch-kugel-621500	2412081057061621700	16	4.92	ok	landeseite
+weihnachts-manikure-im-cat-s-eye-stil-620800	2406150633201621000	0	-	KEINE CH-Option → DRAFT	landeseite
