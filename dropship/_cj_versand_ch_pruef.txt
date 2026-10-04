@@ -3429,3 +3429,7 @@ kletternder-weihnachtsmann-9186dd	-	-	-	unklar keine CJ-SKU	landeseite
 weihnachtsmann-malerei-set-773888	1425718697984659456	3	9.06	ok	landeseite
 damen-cord-hoodie-mit-3d-weihnachtsbaum-print-639200	2512180514591639400	16	7.99	ok	landeseite
 weihnachts-sweatshirt-mit-digitalprint-608800	2512170904471609100	16	8.25	ok	landeseite
+weihnachts-langarmshirt-fur-damen-622400	2512130319581622900	16	8.25	ok	landeseite
+weihnachts-hoodie-mit-3d-digitaldruck-fur-dame-615400	2512130314201615600	16	8.25	ok	landeseite
+weihnachts-pullover-fur-damen-mit-rundhals-623700	2512110526111623900	16	7.85	ok	landeseite
+weihnachts-falschaugenwimpern-set-603100	2511280404221603300	3	8.89	ok	landeseite

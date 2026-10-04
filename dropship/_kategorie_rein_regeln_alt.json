@@ -48,5 +48,30 @@
     "condition": "Pflanzenständer"
    }
   ]
+ },
+ "kissen-wohntextilien": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Kissen"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Kissenbezug"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Überwurf"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Vorhang"
+   }
+  ]
  }
 }
