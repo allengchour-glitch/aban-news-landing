@@ -98,3 +98,38 @@ Der Zauberstab kostet bei uns **CHF 33.90**. Derselbe Widmann-Artikel liegt bei 
 **rund EUR 9** (karneval-attacke.de, palast-der-spiele.de). Für ein Keyword mit 1000 Suchen/Monat heisst das:
 Ranking allein bringt nichts, wenn der erste Preisvergleich das Vierfache zeigt. Entscheidung über den Preis
 liegt beim User — Schweizer Lager und 1–2 Tage Lieferung rechtfertigen einen Aufschlag, aber kaum 4×.
+
+## Runde 3 (04.10.2026) — dieselbe Falle zum dritten Mal
+
+**5. `finger skateboard` (1300/Mt, Platz 37/41) — es ist gar kein Skateboard.**
+Das Produktfoto zeigt **zwei Fingerboard-Achsen (Trucks)**, kein fertiges Board. Wer «finger skateboard»
+sucht, will ein komplettes Brett und fand hier für CHF 17.90 ein Paar Achsen. Dazu zwei Textfehler:
+«**Catalpa-Legierung**» (Catalpa ist ein Baum, eine Fehlübersetzung aus dem CJ-Feed → jetzt
+«Metalllegierung») und Varianten auf Englisch («Golden Base», «Black Base» …) → jetzt Gold, Schwarz, Blau,
+Rot, Lila, Silber, Roségold. Titel heisst jetzt **«Fingerboard-Achsen 34 mm · 2 Trucks (ohne Deck)»**,
+ein Hinweiskasten sagt ausdrücklich, dass Deck, Rollen und Griptape **nicht** dabei sind.
+Text 707 → 1740 Zeichen. Live geprüft.
+
+**6. `schrank organizer` (720/Mt, Platz 32 — beste Position mit Volumen):** Die Beschreibung enthielt die
+Platzhalterzeile «**Material: siehe Beschreibung**» — eine Angabe, die auf sich selbst verweist. Entfernt.
+Das echte Material kommt aus CJ, sobald die Punkte zurück sind.
+
+### Das Muster, dreimal an einem Tag
+| Seite | Keyword | Was draufstand | Was es ist |
+|---|---|---|---|
+| `mini-kuhlschrank-629100` | kleiner kühlschrank (4400) | «Mini-Kühlschrank für den Haushalt» | Insulin-Kühlbox |
+| `mini-fotodrucker-c75644` | fotodrucker (1900) | «Mini Fotodrucker» | Thermodrucker, schwarz-weiss |
+| `mini-finger-skateboard-brucke-643400` | finger skateboard (1300) | «Finger-Skateboard-Brücke» | 2 Achsen ohne Board |
+
+**Jedes Mal stand die Wahrheit auf dem Produktfoto, nicht in der Beschreibung.** Die Texte stammen aus
+automatisch übersetzten CJ-Feldern; der Übersetzer macht aus einem Bauteil ein Gerät. **Regel: vor jeder
+Textarbeit an einem CJ-Produkt das erste Bild ansehen.** Das kostet 20 Sekunden und hat heute drei
+Fehlkäufe verhindert.
+
+### Noch offen — braucht CJ-Daten (Punkte heute aufgebraucht)
+Bei vier Seiten fehlt genau die eine Angabe, die über den Kauf entscheidet. Nicht schätzen, nachtragen:
+`selbstklebende-mobelfolie-650114` → **Rollenmass** (CHF 32.90 ohne Mass ist nicht beurteilbar) ·
+`edelstahl-trinkflasche-mit-strohhalm-638900` → **Fassungsvermögen in ml** ·
+`schrank-organizer-mit-schubladen-620900` → **Masse und Material** ·
+`mini-finger-skateboard-brucke-643400` → Lieferumfang gegenprüfen.
+Steht im Auftrag des geplanten Laufs nach dem Punkte-Reset.
