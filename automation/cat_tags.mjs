@@ -153,6 +153,9 @@ export function catTags(text) {
     [/bartschneider|haarschneider|rasierer|bartpflege|trimmer/, ['herren']],
     // Geschlecht (breit, für „Für Ihn/Für Sie")
     [/\bherren\b|\bmanner\b|\bmens\b|\bmann\b/,                 ['herren']],
+    // 04.10.2026: eigene Kollektionen (Semrush CH: «diamond painting» 8'100/Mt, «malen nach zahlen» 5'400/Mt) — Tag = Kollektionsregel.
+    [/malen nach zahlen|paint(?:ing)? by numbers?/,              ['malen-nach-zahlen']],
+    [/diamond.?painting|diamant.?malerei|diamantmalerei/,       ['diamond-painting']],
     [/\bdamen\b|\bfrauen\b|\bwomen\b|\bwomens\b/,               ['damen']],
   ];
   for (const [re, tags] of R) if (re.test(s)) tags.forEach(t => out.add(t));
