@@ -276,3 +276,4 @@ gid://shopify/Product/16603739423111	Diebstahlsichere Umhängetasche
 gid://shopify/Product/16604210921863	Bambus-Pizzaschneidebrett 33x18 cm
 gid://shopify/Product/16604889678215	Herren Outdoorjacke mit Samtfutter
 gid://shopify/Product/16604910256519	Kabelloses Ladegerät mit mehreren Anschlüssen
+gid://shopify/Product/16606017749383	Langärmliges Mountainbike-Trikot
