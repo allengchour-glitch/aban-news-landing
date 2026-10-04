@@ -208,5 +208,75 @@
     "condition": "Luftbefeuchter"
    }
   ]
+ },
+ "handy-zubehoer": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "handyhülle"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "panzerglas"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ladekabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "ladegerät"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "powerbank"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "handyhalter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "wireless charger"
+   }
+  ]
+ },
+ "elektronik-laden": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ladegerät"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Powerbank"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ladestation"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ladekabel"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Wireless Charger"
+   }
+  ]
  }
 }
