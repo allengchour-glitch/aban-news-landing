@@ -69,12 +69,30 @@ export const kosten = (usd, grams) => {
 // «2+ Artikel −10 %» standhalten: gefordert ist p·0,9 ≥ Kosten·1,05, also p ≥ Kosten·1,167.
 // Der Boden von 16.90 ist die Untergrenze, unter der auch die leichteste Ware nicht mehr
 // trägt — «relativer Boden ist kein Boden» (Lehre 12.08.2026).
+// ⚠️ 04.10.2026 — DER IMPORTER LAG UNTER DEM BODEN DES VERLUSTSCHUTZES. Gemessen an 837
+// Neuimporten eines Tages: 521 (62 %) hatten eine Variante unter dem Mindestpreis, den
+// `preis_verlustschutz.py` seit dem Betreiber-Entscheid vom 02.10. («15 % Reserve») verlangt —
+// im Median 5 % zu tief (z. B. EK 16.31 → Preis 19.90, Boden 20.90). Zwei Gründe:
+//   1. Diese Formel rechnete den Versanderlös von CHF 7 ein (`fracht − 7`) und 10 % Rabatt;
+//      der Verlustschutz rechnet mit GRATISVERSAND (ab CHF 50, Bündelrabatt) und 15 % Rabatt,
+//      Zahlungsgebühr 2,9 % + 0.30 und 1,5 % Währung (tools/marge_wahrheit.py).
+//   2. `Math.floor(p) + 0.90` rundete AB (20.95 → 20.90) — unter den eigenen Boden.
+// Der Tagesläufer hätte es gehoben, nur sieht er Neuware erst mit dem nächsten Voll-Export
+// (≤ 3 Tage alt) — bis dahin stand sie zu billig. Jetzt gilt derselbe Boden an der QUELLE,
+// und gerundet wird AUF .90, nie darunter.
+const GEB_P = 0.029, GEB_F = 0.30, FX = 0.015, RABATT_RESERVE = 0.15;   // = marge_wahrheit.py + preis_verlustschutz.py
+export const bodenVerlustschutz = kostenVoll => (kostenVoll + GEB_F) / (1 - GEB_P - FX) / (1 - RABATT_RESERVE);
+const aufNeunzig = p => {
+  const b = Math.floor(p) + 0.90;
+  return (b >= p - 1e-9 ? b : b + 1.0).toFixed(2);
+};
+
 export const chf = (usd, grams) => {
   const u = obereGrenze(usd);
   const gap = Math.max(0, fracht(grams) - 7);   // vom Preis zu deckende Fracht-LÜCKE
   const landed = u * 0.9 + gap;
-  const p = Math.max(landed * 1.4, landed * 1.167 + 8.2, 16.90);
-  return (Math.floor(p) + 0.90).toFixed(2);
+  const p = Math.max(landed * 1.4, landed * 1.167 + 8.2, 16.90, bodenVerlustschutz(parseFloat(kosten(usd, grams))));
+  return aufNeunzig(p);
 };
 
 // Gewicht für Shopify. Leeres Objekt, wenn CJ nichts liefert — ein `weight: 0` waere ein

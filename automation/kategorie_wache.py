@@ -99,6 +99,14 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     # 02.10.: Lehrmodelle zuerst — «PVC Hundeskelett-Modell» wäre über «skelett» Halloween-Deko geworden, «Hundeohr
     # Anatomie-Modell» über «hund» Tierbedarf. bi-19-8 = Medical Teaching Equipment (gemessen 02.10.).
     (r"anatomi\w*|\w*skelett-?modell|verdauungssystem|organmodell", "bi-19-8"),
+    # 04.10.2026 (Verbesserungsrunde «kategorie-typ»): Tierware VOR Schuh/Kleid/Kostüm — gemessen standen «Hunde-
+    # Outdoorschuhe» unter Shoes, «Kaschmir-Pullover für Haustiere» unter Clothing, «Halloween-Kostüm für Hunde» unter
+    # Costumes. Wortfallen: hund(?!ert) = «Hunderte», katze(?!nauge) = «Katzenaugen-Sonnenbrille».
+    # Nur eindeutige Tierbedarfs-Konstruktionen — ein Tier als MOTIV («Katzen-Ohrringe», «Stunt-Hund mit Fernbedienung»,
+    # «Schlüsselanhänger Katze») bleibt bei den Warenregeln weiter unten.
+    (r"für (deinen |deine |den |die )?(hunde?|katzen?|haustiere?|welpen?)\b|"
+     r"\bhunde-?(leine|geschirr|halsband|bett|napf|mantel|pullover|schuhe|jacke|kostüm|spielzeug|bürste|outdoorschuhe|regenmantel|weste)\w*|"
+     r"\bkatzen-?(bett|klo|streu|kratz\w*|spielzeug|halsband|tunnel|haus|höhle)\w*|\bhaustier-?(bett|bürste|pullover|kostüm|napf)\w*|kratzbaum|futternapf", "ap-2"),
     (r"\b(rc|ferngesteuert\w*|drohne\w*|quadcopter)\b", "el"),
     (r"baustein|bausatz|baukasten|bauklötz|klemmbaustein|modellbau", "tg-5-7"),
     (r"puzzle", "tg-4"),
@@ -108,7 +116,9 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"perücke", "aa-2-14-12"),
     (r"kostüm|verkleidung", "aa-3-3"),
     (r"(?<!hand)(schuh|sandale|stiefel|sneaker|slipper|pantoffel)", "aa-8"),
-    (r"\b(kleid|shirt|t-shirt|hose|pullover|hoodie|jacke|bluse|rock|bikini|badeanzug|socken|leggings|jumpsuit|strickjacke|mantel|weste|pyjama)\b|kleid\b|hemd\b", "aa-1"),
+    # 04.10.: «\w*shirt\b|sweatshirt» ergänzt — «Langarm-Sweatshirt mit Totenkopf-Print» stand als Party-Supplies, weil
+    # «\bshirt\b» das Kompositum nicht traf und die Halloween-Regel darunter zuerst griff.
+    (r"\b(kleid|shirt|t-shirt|hose|pullover|hoodie|jacke|bluse|rock|bikini|badeanzug|socken|leggings|jumpsuit|strickjacke|mantel|weste|pyjama)\b|kleid\b|hemd\b|\w*shirt\b|sweatshirt", "aa-1"),
     # 24.09. (Prüfer Halloween-Ratgeber): «Skelett-Gerippe für Halloween-Deko» stand als Spass-Elektronik auf Electronics,
     # der «Geist-Anhänger mit Halloween-Beleuchtung» wäre über «anhänger» Schmuck geworden. Saisondeko VOR Schmuck/Lampe,
     # NACH Aufbewahrung/Kostüm/Kleidung (Kürbis-Korb bleibt Ordnung, Halloween-Kleid bleibt Kleid).
@@ -116,7 +126,8 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"halskette|ohrring|ohrstecker|(?<!uhr)armband(?!uhr)|\bring\b|schmuck|anhänger\b|brosche", "aa-6"),
     (r"rucksack", "lb-1"),
     (r"(hand|umhänge|reise|sport|kosmetik|kultur)tasche", "lb"),
-    (r"\b(hund|katze|haustier|welpe)\w*|hundeleine|katzen|futternapf|kratzbaum", "ap-2"),
+    # 04.10.: hund(?!ert) + katze(?!nauge) — «Hunderte LED», «Hundertwasser», «Katzenaugen-Sonnenbrille» wurden Tierbedarf.
+    (r"\bhund(?!ert)\w*|\bkatz(?:e(?!nauge)|en(?!auge))\w*|\bhaustier\w*|\bwelpe\w*|hundeleine|futternapf|kratzbaum", "ap-2"),
     (r"yoga|fitness|hantel|widerstandsband|springseil|trainingsgerät|gymnastik", "sg-2"),
     (r"lippenstift|lidschatten|mascara|blush|make-?up|puder|eyeliner|nagellack", "hb-3-2-6"),
     (r"vase\b|vasen\b", "hg-3-67"),
@@ -199,6 +210,34 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"truhe\b", "hg-10-16"),
     (r"türschloss für kinder|schutzhaube f\w* kinder|kindersitz|schreibhilfe für kinder", "bt"),
     (r"möbelheber", "ha-15"),
+    # 04.10.2026 — vierte Welle (Verbesserungsrunde «kategorie-typ»): 30 aktive Sammeltyp-Produkte ohne Treffer, Titel
+    # gelesen. Nur Titelwörter, die EINE Ware bedeuten; IDs am 04.10. per nodes(ids:) gemessen. Steht hinter allen älteren
+    # Regeln. Was der Titel allein nicht sagt («Gel-Pads», «Antirutsch-Mat», «Karo-Etui»), entscheidet kategorie_ki.py
+    # (zwei Modelle, Beschreibung) — hier wird NICHT geraten.
+    (r"tattoo-?sticker|temporäre?s? tattoos?|klebetattoo|körpertattoo", "hb-3-2-6-7"),
+    (r"wandsticker|wandtattoo|wandaufkleber|(fliesen|möbel|boden|fenster)-?(sticker|aufkleber)", "hg-3"),
+    (r"vision board|\bstickers?\b", "ae-2-1-2-8-4"),
+    (r"\bboots?\b|stiefelette\w*", "aa-8"),
+    (r"latzrock|minirock|maxirock|midirock|faltenrock|jeansrock|wickelrock|bleistiftrock|tüllrock|lederrock|plisseerock", "aa-1"),
+    (r"\bbhs?\b|bralette|büstenhalter|bustier", "aa-1-6-3"),
+    (r"filament\w*", "el-13-1-5"),
+    (r"ladekarte|anti-verlust|gps-?tracker|schlüsselfinder|key ?finder|\btracker\b", "el"),
+    (r"\bmarker\b|marker-?set|textmarker|filzstift\w*|fineliner", "os-11-11-4"),
+    (r"kugelschreiber|gelstift\w*|buntstift\w*|bleistift\w*|radiergummi|füllfeder\w*", "os-11-11"),
+    (r"journal\b|tagebuch|notizheft|notizblock|skizzenbuch", "os-4-9-9"),
+    (r"glücksmünze|gedenkmünze|sammelmünze|\bmünze\b", "ae-2-2-2-2"),
+    (r"tastenkappe\w*|keycaps?\b", "el-7-9-11-3-2"),
+    (r"federmäppchen|federmappe|federtasche|mäppchen|(stifte|schreibwaren|stift)-?etui", "os-3-16"),
+    (r"regenschirm|faltschirm|taschenschirm|stockschirm", "hg-16-2"),
+    (r"filterstrohhalm|wasserfilter-?strohhalm", "sg-4-2-12"),   # «Wasserfilter für Küche» bleibt Küche (hg-11)
+    (r"regentonne|regenfass|regenwassertonne", "hg-12-1-17"),
+    (r"autobürste|felgenbürste|autopflege|auto-?innenraum|kfz-?reinigung|autoschlüssel|"
+     r"(fiat|vw|volkswagen|bmw|audi|mercedes|toyota|ford|opel|skoda|seat|peugeot|renault|hyundai|kia|honda|nissan|mazda|tesla|volvo|porsche|suzuki|dacia)-?schlüssel", "vp-1"),
+    (r"saugglas|gläserbürste|flaschenbürste|spülbürste|geschirrbürste|abwaschbürste|becherbürste", "hg-11-8"),
+    (r"seifengrinder|seifenreibe|seifenhalter|seifenschale", "hg-1"),
+    (r"badematte|badteppich|duschmatte|badvorleger|diatomeen\w*", "hg-1-2"),
+    (r"infrarot-?zähler|zählgerät|handzähler|stückzähler|personenzähler", "os-11"),
+    (r"(baumwoll|strick|fleece|jersey|sport|hosen)-?(set|anzug)\b.*\b(jungen|mädchen|kinder|kids|baby)|\b(jungen|mädchen)-?(set|outfit|anzug)\b", "aa-1-25-5"),
 ]
 _TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
 
@@ -216,7 +255,8 @@ KINDERREGELN = [
     (r"unterwäsche|unterhose|\bslips?\b|boxershorts?\b(?!.*bad)", "aa-1-25-11"),
     (r"faux\w*[- ]zweiteiler", "aa-1-25-3"),
     (r"swaddle|pucktuch|\w*decke\b", "bt-12"),
-    (r"\bset\b|\w+-?set\b|outfit\w*|zweiteiler|dreiteiler|\w*teilig|\bsets\b", "aa-1-25-5"),
+    # 04.10.: Pflege-/Geschenk-/Spielset ist kein Outfit («Tragbares Baby Beauty- und Pflegeset» wäre aa-1-25-5 geworden).
+    (r"(?<!pflege)(?<!geschenk)(?<!spiel)(?<!bastel)(?<!bau)\bset\b|\w+(?<!pflege)(?<!geschenk)(?<!spiel)(?<!bastel)(?<!bau)-?set\b|outfit\w*|zweiteiler|dreiteiler|\w*teilig|\bsets\b", "aa-1-25-5"),
     (r"strampler|strampel\w*|romper|\w*body\b|onesie|overall|jumpsuit|latzhose", "aa-1-25-10"),
     (r"(top|shirt|oberteil|pullover|sweatshirt|polo|weste)\b.*\b(und|mit|&)\b.*(rock|hose\w*|shorts)\b", "aa-1-25-5"),
     (r"kleid\w*", "aa-1-25-3"),

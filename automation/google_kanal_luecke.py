@@ -65,7 +65,12 @@ from klingenregel import ist_klinge  # noqa: E402
 
 TAG_RISIKO = ("kostuem", "kostüm", "erotik", "refurb", "duplikat", "ausverkauft",
               "nicht-lieferbar", "klinge", "messer", "unrentabel",
-              "keine-lieferanten", "entwurf", "medizin", "waffe", "tabak")
+              "keine-lieferanten", "entwurf", "medizin", "waffe", "tabak",
+              # 04.10.2026: die Adult-Klasse (GOOGLE-ADULT-BLOCKER-2026-10-04.md) nimmt Dessous/Fetisch/Intimpflege mit
+              # Tag «adult-nicht-bewerben» aus dem Google-Kanal — ohne diese zwei Wörter hätte DIESER Lauf sie am selben
+              # Abend zurückgeholt (Trockenlauf 22:40: «Pflegeöl für den Intimbereich», «Latex-Gesichtsmaske» unter
+              # 108 «publizierbaren»). Ein Rückholer muss jede Sperre kennen, die ein anderer Wächter setzt.
+              "adult", "nicht-bewerben")
 
 
 def grund(titel, tags):

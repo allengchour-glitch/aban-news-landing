@@ -59,22 +59,41 @@ KARTE = {
 SAMMEL = ("Trend-Gadget", "Trend-Produkt")
 
 
+# 04.10.2026 (Verbesserungsrunde «kategorie-typ»): nach dem ersten Lauf blieben 84 Kleider + 35 Schuhe als «Trend-Gadget»,
+# weil kein Geschlechtswort im Titel stand. Gemessen an den 119 Titeln: Warenwörter, die im Shop nur EIN Geschlecht
+# tragen (Kleid, Rock, Bluse, Bikini, BH, Shapewear, Pumps, High Heels, Stiletto, Sandalette → Damen; Hemd → Herren,
+# Bluse ist das Damenwort), und für den Rest der ehrliche Oberbegriff «Mode» / «Schuhe» (beide als Produkttyp vorhanden,
+# in kategorie_wache.TABELLE auf aa-1 / aa-8). «Mode» sagt im Filter mehr als «Trend-Gadget» und behauptet nichts.
+# Wortfallen (Kanarienvögel 04.10.): «Winterkleidung» ≠ Kleid, «Kleiderbügel» ≠ Kleid, «Barock» ≠ Rock.
+_DAMEN_KLEID = re.compile(r"\b(?!kleider(bügel|sack|schrank|stange|haken|ständer))\w*kleid(?!ung)\w*|\b(?!barock\b)\w*rock\b|rockedress|\bbluse|bikini|\bbh\b|shapewear|\w*shaper\b|formschneider|caprihose|neckholder|rückenfrei|volant|spaghetti|\bdress\b|\blace\b|strumpfhose|leggings mit taillenformer|po-push-up", re.I)
+_HERREN_KLEID = re.compile(r"\bhemd(en)?\b|\w*oberteile\b|maenner|männer", re.I)
+_DAMEN_SCHUH = re.compile(r"pumps|high heels|stiletto|sandalette\w*|peep-toe|\bmules\b|absatz|plattform-?sandale|keil-?sandale", re.I)
+
+
 def _kleid(t):
     if re.search(r"\b(baby|kinder|kids|mädchen|jungen|kleinkind)", t, re.I): return "Baby & Kinder"
     if re.search(r"\b(damen|frauen|women)", t, re.I): return "Damenmode"
-    if re.search(r"\b(herren|männer|men)\b", t, re.I): return "Herrenmode"
-    return None
+    if re.search(r"\b(herren|männer|maenner|men)\b", t, re.I): return "Herrenmode"
+    if _DAMEN_KLEID.search(t): return "Damenmode"
+    if _HERREN_KLEID.search(t): return "Herrenmode"
+    return "Mode"
 
 
 def _schuh(t):
+    if re.search(r"schnürsenkel|schuhspanner|einlegesohle", t, re.I): return None       # Schuhzubehör ist kein Schuh
     if re.search(r"\b(kinder|kids|baby|mädchen|jungen)", t, re.I): return "Kinderschuhe"
     if re.search(r"\b(damen|frauen|women)", t, re.I): return "Damenschuhe"
     if re.search(r"\b(herren|männer|men)\b", t, re.I): return "Herrenschuhe"
-    return None
+    if _DAMEN_SCHUH.search(t): return "Damenschuhe"
+    return "Schuhe"
 
 
 TAX = {
     "aa-1": _kleid, "aa-2": "Accessoires", "aa-8": _schuh,
+    # 04.10.: längeres Präfix gewinnt — Kinderzweig, Lingerie (Damen), Kostüme, Party, Instrumente, Raucher, 3D-Druck
+    "aa-1-25": "Baby & Kinder", "aa-1-6": "Damenmode", "aa-3": "Kostüme & Verkleidung", "aa-7": None,
+    "ae-3": "Partydeko & Ballone", "ae-2-8": "Musikinstrumente", "ae-2-1": "Basteln & DIY", "hg-19": "Raucherzubehör",
+    "el-13": "3D-Druck", "hg-16": "Accessoires",
     "aa-6": lambda t: "Uhren" if re.search(r"uhr\b|uhren|watch", t, re.I) else "Schmuck",
     "ap-2": "Haustierbedarf", "bt": "Baby & Kinder",
     "el-4": "Handy-Zubehör", "el-18": lambda t: "Gaming-Zubehör" if re.search(r"gaming", t, re.I) else "Elektronik",
@@ -87,7 +106,10 @@ TAX = {
 
 
 VORRANG = [(re.compile(r"headset|kopfhörer|ohrhörer|earbuds|lautsprecher", re.I), "Elektronik"),
-           (re.compile(r"handyhülle|handy-hülle|hülle für (iphone|samsung)|phone case", re.I), "Handy-Zubehör")]
+           (re.compile(r"handyhülle|handy-hülle|hülle für (iphone|samsung)|phone case", re.I), "Handy-Zubehör"),
+           # 04.10.: Tierbedarf stand als Clothing/Shoes/Costumes (Hunde-Outdoorschuhe, Pullover für Haustiere) — gleiche
+           # enge Konstruktionen wie kategorie_wache (Tier als Motiv zählt nicht).
+           (re.compile(r"für (deinen |deine |den |die )?(hunde?|katzen?|haustiere?|welpen?)\b|\bhunde-?(leine|geschirr|halsband|bett|napf|mantel|pullover|schuhe|jacke|kostüm|spielzeug|bürste|outdoorschuhe)|\bkatzen-?(bett|klo|streu|kratz|spielzeug|halsband|tunnel|haus)|kratzbaum|futternapf", re.I), "Haustierbedarf")]
 
 
 def aus_kategorie(kat, titel):
@@ -98,7 +120,7 @@ def aus_kategorie(kat, titel):
     for pre in sorted(TAX, key=len, reverse=True):
         if k == pre or k.startswith(pre + "-"):
             z = TAX[pre]
-            return z(titel) if callable(z) else z
+            return z(titel) if callable(z) else z      # None = bewusst offen (z. B. aa-7 Schuhzubehör)
     return None
 
 
@@ -135,10 +157,11 @@ def sperrgrund(alt, neu, regeln):
     return None
 
 
-def produkte(typ):
+def produkte(typ, nur_aktiv=False):
     cur, out = None, []
+    q = f"product_type:'{typ}'" + (" AND status:active" if nur_aktiv else "")
     while True:
-        r = gql(QP, {"q": f"product_type:'{typ}'", "c": cur})["products"]
+        r = gql(QP, {"q": q, "c": cur})["products"]
         out += [p for p in r["nodes"] if p["productType"] == typ]   # Suche ist unscharf → exakt nachfiltern
         if not r["pageInfo"]["hasNextPage"]:
             return out
@@ -197,8 +220,8 @@ def main():
                 led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\n")
     # Sammeltypen über die Produktkategorie
     zahl = {}
-    for alt in SAMMEL:
-        for p in produkte(alt):
+    for alt in SAMMEL:                       # 04.10.: nur aktive — Entwürfe kosten Mutationen und sieht niemand im Filter
+        for p in produkte(alt, nur_aktiv=True):
             if POD.search(" ".join(p["tags"])):
                 continue
             neu = aus_kategorie((p.get("category") or {}).get("id"), p["title"])
