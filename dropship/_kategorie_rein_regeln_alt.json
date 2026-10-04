@@ -278,5 +278,15 @@
     "condition": "Wireless Charger"
    }
   ]
+ },
+ "haustier-katzen": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sub-katze"
+   }
+  ]
  }
 }
