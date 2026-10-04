@@ -1,0 +1,12 @@
+{
+ "sub-ringe": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "ring"
+   }
+  ]
+ }
+}

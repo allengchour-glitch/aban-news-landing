@@ -16,17 +16,18 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-03T09:13:18Z — SCHARF
+## Letzter Lauf 2026-10-04T22:05:13Z — SCHARF
 
-Gescannt 50480 aktive von 50480 (EXACT); Wächter-Stand 20 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 50759 aktive von 50759 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
 | zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
+| taillierte-jeansjacke-fur-herren-282562 | USED | Titel «Taillierte Jeansjacke für Herren – Schwarz im Used-Look» → «Taillierte Jeansjacke für Herren – Schwarz im Vintage-Look»; SEO | ok |
 
 ## Ledger gesamt
 
-45 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+46 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -59,6 +60,7 @@ Geschriebene Titel (rückgelesen):
 - 2026-09-23 EINZEL: «Biden Herren-Quarzuhr, hohl, leger» → «Legere Herren-Quarzuhr mit Kalender»
 - 2026-09-23 USED: «Twill Umhängetasche im Used-Look» → «Twill Umhängetasche im Vintage-Look»
 - 2026-09-23 EINZEL: «Ripsband in Silber mit Glanzeffekt, 75 mm, 50 Yards» → «Ripsband in Gold mit Hologramm-Glanz, 75 mm, 50 Yards»
+- 2026-10-04 USED: «Taillierte Jeansjacke für Herren – Schwarz im Used-Look» → «Taillierte Jeansjacke für Herren – Schwarz im Vintage-Look»
 
 Typ-/Tag-Korrekturen (rückgelesen):
 

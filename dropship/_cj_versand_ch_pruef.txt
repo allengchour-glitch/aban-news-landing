@@ -3390,3 +3390,13 @@ weihnachtskarten-kit-1485e8	-	-	-	unklar keine CJ-SKU	landeseite
 diy-diamond-painting-schlusselanhanger-weihnac-3edb64	-	-	-	unklar keine CJ-SKU	landeseite
 weihnachtsgeschenktasche-622600	2511100621351622800	16	7.68	ok	landeseite
 weihnachts-countdown-kalender-619300	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+weihnachts-bausteine-lebkuchenhaus-co-621500	2411140842391621800	16	10.29	ok	landeseite
+weihnachts-manger-gruppe-623500	2411040954491623800	7	25.61	ok	landeseite
+weihnachtsschleife-fur-hunde-2d52fb	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachts-press-on-nagel-zum-ablosen-623900	2411110516261624100	16	4.40	ok	landeseite
+weihnachts-kissenbezug-mit-stickerei-589312	1576141263009755136	16	5.55	ok	landeseite
+weihnachtsschmuck-fur-katzen-795072	1739176049025486848	16	7.43	ok	landeseite
+diy-diamond-painting-weihnachtsbaum-2er-set-266624	1451020316896792576	16	6.33	ok	landeseite
+diy-diamond-painting-set-weihnachtsposter-628032	1444210694277959680	16	8.61	ok	landeseite
+tanzender-weihnachtsbaum-mit-musik-38524d	-	-	-	unklar keine CJ-SKU	landeseite
+sofa-kissenbezug-mit-weihnachts-digitaldruck-888832	1455105425983803392	16	10.15	ok	landeseite
