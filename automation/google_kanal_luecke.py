@@ -73,8 +73,17 @@ TAG_RISIKO = ("kostuem", "kostüm", "erotik", "refurb", "duplikat", "ausverkauft
               "adult", "nicht-bewerben")
 
 
+try:  # 04.10.2026: EINE Sperrliste — jeder Ausschluss-Tag, den google_sperrtags_durchsetzen kennt, gilt auch hier
+    from google_sperrliste import AUSSCHLUSS_TAGS as _AUSSCHLUSS  # (Sichtung: 26 «nicht-google-bewerben» + 36 «raucher»
+except Exception:                                                  #  galten sonst wieder als «publizierbar»)
+    _AUSSCHLUSS = set()
+
+
 def grund(titel, tags):
     """Nennt den ERSTEN Grund, warum das Produkt nicht in den Google-Kanal darf."""
+    for t in tags:
+        if t.lower() in _AUSSCHLUSS:
+            return f"Tag «{t}»"
     for t in tags:
         tl = t.lower()
         for k in TAG_RISIKO:

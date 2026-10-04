@@ -790,3 +790,15 @@
 2026-10-04T23:01:44Z	gid://shopify/Product/16603690303879	kostuem	Google & YouTube	realistische-tiermaske-614200
 2026-10-04T23:01:45Z	gid://shopify/Product/16604930834823	lizenz-nicht-bewerben	Google & YouTube	puppenkleider-set-fur-anhanger-602500
 2026-10-04T23:01:45Z	gid://shopify/Product/16605481533831	kostuem	Google & YouTube	old-man-wanchristmas-haustier-strickpullover-681024
+2026-10-04T23:19:42Z	gid://shopify/Product/15448022974849	google-policy-flag, nicht-google-bewerben	Google & YouTube	langes-strickjackchen-mit-lochmuster-866818
+2026-10-04T23:19:43Z	gid://shopify/Product/15448646910337	google-policy-flag, nicht-google-bewerben	Google & YouTube	high-waist-slim-fit-yoga-pants-040449
+2026-10-04T23:19:44Z	gid://shopify/Product/15449569952129	google-policy-flag, nicht-google-bewerben	Google & YouTube	formende-apfelpfanne-jeans-in-hellblau-606400
+2026-10-04T23:19:45Z	gid://shopify/Product/15449618153857	google-policy-flag, nicht-google-bewerben	Google & YouTube	satin-maxi-kleid-mit-offenem-rucken-503810
+2026-10-04T23:19:46Z	gid://shopify/Product/15453760225665	nicht-google-bewerben	Google & YouTube	kunstwerk-leinwand-639616
+2026-10-04T23:19:47Z	gid://shopify/Product/15454035739009	google-policy-flag, nicht-google-bewerben	Google & YouTube	retro-tropfen-uhr-624400
+2026-10-04T23:19:48Z	gid://shopify/Product/15465297838465	google-policy-flag, nicht-google-bewerben	Google & YouTube	reflektierender-windbreaker-fur-hunde-676928
+2026-10-04T23:19:49Z	gid://shopify/Product/15497378038145	google-policy-flag	Google & YouTube	portable-auto-waschburste-4-teilig-605000
+2026-10-04T23:19:50Z	gid://shopify/Product/15519840076161	google-policy-flag	Google & YouTube	k68-signal-detektor-46ae1c
+2026-10-04T23:19:51Z	gid://shopify/Product/15523906224513	google-policy-flag	Google & YouTube	intelligenter-intimreiniger-fur-die-frau-723136
+2026-10-04T23:19:52Z	gid://shopify/Product/16603763179911	waffe-pruefen	Google & YouTube	schutzweste-fur-training-und-outdoor-448256
+2026-10-04T23:19:53Z	gid://shopify/Product/16603767112071	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	anatomiemodell-weibliche-brust-608300
