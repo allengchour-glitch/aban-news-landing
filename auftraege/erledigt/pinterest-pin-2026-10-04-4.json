@@ -3,6 +3,22 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-04-4",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 4 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-04T21:25:08.951Z",
+  "dauer_s": 16.5,
+  "ergebnis": {
+    "gepinnt": [
+      "usb-heizkissen-mit-graphen-technologie-acad9f"
+    ],
+    "unklar": [],
+    "uebersprungen": [
+      "usb-heizkissen-mit-graphen-technologie-acad9f: schon auf der Pinnwand"
+    ],
+    "schritte": [
+      "Warteschlange 163, quittiert 30, offen 135",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 782 Z.): Titel SCHON DA"
+    ],
+    "bilder": []
+  }
 }
