@@ -1026,6 +1026,9 @@ while true; do
       touch "$GK"
       ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/groessenwert_kauderwelsch.py >> "$GK" 2>&1 )
       echo "$(date -u +%H:%M) $(tail -1 "$GK")"
+      # 04.10.2026: eine Schreibweise je Grösse im Filter («140cm»→«140 cm», «US 10»→«US10», «S to M»→«S/M», «F»→Einheitsgrösse)
+      ( cd "$REPO" && SCHARF=1 timeout 1800 python3 automation/groessenwert_normieren.py >> "$GK" 2>&1 )
+      echo "$(date -u +%H:%M) groessenwert_normieren: $(tail -1 "$GK")"
     fi
   fi
   # GOOGLE-NACHFRAGE-LÜCKE (02.10.2026, Betreiber «weiter push überall»): 57 % der Google-Sitzungen (150 T) landeten auf

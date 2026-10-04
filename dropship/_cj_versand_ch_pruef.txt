@@ -3368,3 +3368,7 @@ weihnachtsbaum-spieluhr-aus-bausteinen-465408	1721034624995962880	7	23.86	ok	lan
 weihnachts-baustein-set-896768	1674673586944086016	16	14.60	ok	landeseite
 weihnachts-baumhaus-schloss-bausteine-965312	1654777635261657088	16	20.04	ok	landeseite
 12-stuck-weihnachts-nagelaufkleber-cartoon-des-190336	1591989016298270720	16	5.55	ok	landeseite
+weihnachts-nussknacker-aus-holz-12-cm-356800	1588400081584271360	16	7.85	ok	landeseite
+weihnachtsbaumdecke-aus-leinen-98cm-100864	1588383941659209728	16	6.48	ok	landeseite
+weihnachtsbaum-rock-mit-druck-899008	1585523741755453440	16	6.77	ok	landeseite
+bausteine-fur-weihnachtsgeschenke-036288	1606918845887950848	16	8.79	ok	landeseite

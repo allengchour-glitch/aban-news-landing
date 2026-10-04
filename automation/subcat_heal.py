@@ -38,7 +38,7 @@ CFG = {
  'kleider': dict(handle='sub-kleider', tag='kategorie-kleid', searches=['kleid'],
     echt=re.compile(r'\b\w*?(kleid|kleider|dress)\b', re.I),
     mode=None,
-    ban=re.compile(r'arbeitskleidung|berufskleidung|bekleidung|kleidung\b|kleiderschrank|kleiderbügel|kleiderstange|kleiderständer|kleidersack|hunde?kleid|puppenkleid|verkleidung|umkleide', re.I)),
+    ban=re.compile(r'arbeitskleidung|berufskleidung|bekleidung|kleidung\b|kleiderschrank|kleiderbügel|kleiderstange|kleiderständer|kleidersack|hunde?kleid|puppenkleid|verkleidung|umkleide|kleider-?organizer|organizer|vakuum|für kleider|kleiderhaken|kleiderbeutel|kleiderbox', re.I)),
  'taschen': dict(handle='sub-taschen', tag='kategorie-tasche', searches=['tasche', 'rucksack'],
     echt=re.compile(r'\b(hand|umhänge|schulter|abend|strand|shopper|leder|mini|bauch|gürtel|crossbody|hobo|tote|clutch)?(tasche|taschen|rucksack|rucksäcke|bag)\b', re.I),
     mode=None,
