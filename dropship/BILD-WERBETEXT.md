@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-04T22:07:46Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-04T22:18:43Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1273 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4727** in 1261 Produkten
-- Treffer (≥ 4 Wörter): **188** in 159 Produkten
+- Medien geprüft: **4784** in 1277 Produkten
+- Treffer (≥ 4 Wörter): **190** in 161 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -48,6 +48,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Bein-Druck Dumbbell Stange für Beinheben & Muske `15453792469377` | [69926765822337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd047f6d-62fe-46ee-b92d-fa16894d4d1f_trans.jpg) | 18 | Jianxiang Cast iron material NBR Foam Detachable Factory | ENTFERNT |
 | Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | ENTFERNT |
 | Baby Anti-Schreck Kissen `15453778870657` | [69926718275969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9da8281b-246a-470d-89db-9caafda33504.jpg) | 18 | Smart Bionic Patting Sleep Fall Asleep with Gentle | offen |
+| Wandspiegel für Ankleidezimmer `16603764654471` | [77436859253127](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34e4f079-9676-4a69-b5df-f19d90a6d1b3_trans.jpg) | 18 | Float glass for clear imaging lens delivers clear | offen |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
 | Lesekissen mit Armlehne und Getränkehalter `15453793976705` | [69926768411009](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3576b19c-7aef-4e9a-8f0c-1ec78a026d2b.jpg) | 17 | Shoulder Pressure Elhow Pressuree Leg Pressure After Use | ENTFERNT |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
@@ -175,6 +176,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [77431087202695](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans_a9a4f97f-6a9d-494a-b348-ee9500bc4469.jpg) | 5 | Foldable yoga mat available complete | offen |
 | Kratzposten für Katzen `15453785391489` | [77431172235655](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c328a8e-4893-48df-8d5d-6eda77f79ee1_fine.jpg) | 5 | Coconut Tree Two Coconut Fruits | offen |
 | Mehrzweck-Hundeleine mit Frosch Schnalle `15453790142849` | [77431200383367](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/35e1164a-a08f-4ce2-b4b4-78d80f17b055_fine_4140b468-fef4-4c83-8760-70c72a0696a8.jpg) | 5 | Lake Blue Small frog clasp | offen |
+| Magnetisches Schranklicht mit Bewegungssensor `16603589149063` | [77436047032711](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/197284af-6838-4d94-bde9-54e466ab19da_fine.jpg) | 5 | Magnetic Human Body Sensor Light | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |

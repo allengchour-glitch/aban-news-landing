@@ -8,7 +8,11 @@ und «Nageldesign» neben «Nägel & Maniküre». Eine Kundin sieht drei Häkche
 
 REGEL
   - Nur eindeutige Dubletten und Einzelstücke werden auf einen bestehenden Haupttyp gelegt (Tabelle KARTE).
-  - Gemischte Sammeltypen («Haushalt & Wohnen», «Trend-Produkt», «Kinder») bleiben — ein geratener Typ ist schlimmer.
+  - Gemischte Sammeltypen («Haushalt & Wohnen», «Kinder») bleiben — ein geratener Typ ist schlimmer.
+  - 04.10.2026 (Betreiber «kategorien und fein filter verbessern»): «Trend-Gadget» (808) und «Trend-Produkt» (291) sagen
+    im Filter nichts. Sie werden NICHT geraten, sondern aus der Shopify-Produktkategorie abgeleitet (Taxonomie, für den
+    Google-Kanal von zwei Modellen übereinstimmend gesetzt) — Tabelle TAX, längstes Präfix gewinnt; Kleidung/Schuhe nur mit
+    Geschlechtswort im Titel, sonst bleibt der Typ. Gleiche Sperre wie oben.
   - SPERRE Kollektionsregeln: 17 Smart-Kollektionen hängen an TYPE-Bedingungen (live gelesen). Eine Abbildung alt→neu
     wird verweigert, wenn ein Produkt dadurch aus einer Kollektion fiele (ODER-Liste kennt alt, aber nicht neu;
     UND-Anker = alt; NOT_EQUALS = neu). Hinzukommen ist erlaubt.
@@ -52,10 +56,56 @@ KARTE = {
     "Audio": "Elektronik",
 }
 
+SAMMEL = ("Trend-Gadget", "Trend-Produkt")
+
+
+def _kleid(t):
+    if re.search(r"\b(baby|kinder|kids|mädchen|jungen|kleinkind)", t, re.I): return "Baby & Kinder"
+    if re.search(r"\b(damen|frauen|women)", t, re.I): return "Damenmode"
+    if re.search(r"\b(herren|männer|men)\b", t, re.I): return "Herrenmode"
+    return None
+
+
+def _schuh(t):
+    if re.search(r"\b(kinder|kids|baby|mädchen|jungen)", t, re.I): return "Kinderschuhe"
+    if re.search(r"\b(damen|frauen|women)", t, re.I): return "Damenschuhe"
+    if re.search(r"\b(herren|männer|men)\b", t, re.I): return "Herrenschuhe"
+    return None
+
+
+TAX = {
+    "aa-1": _kleid, "aa-2": "Accessoires", "aa-8": _schuh,
+    "aa-6": lambda t: "Uhren" if re.search(r"uhr\b|uhren|watch", t, re.I) else "Schmuck",
+    "ap-2": "Haustierbedarf", "bt": "Baby & Kinder",
+    "el-4": "Handy-Zubehör", "el-18": lambda t: "Gaming-Zubehör" if re.search(r"gaming", t, re.I) else "Elektronik",
+    "el": "Elektronik", "hb-3": "Beauty & Pflege",
+    "hg-1": "Haushalt & Wohnen", "hg-3": "Wohnen & Deko", "hg-9": "Haushalt & Wohnen", "hg-10": "Haushalt & Wohnen",
+    "hg-11": "Küche & Bar", "hg-12": "Garten & Pflanzen", "hg-13": "Beleuchtung", "hg-15": "Heimtextilien",
+    "lb": "Taschen", "sg": "Sport & Outdoor", "tg": "Spielzeug & Spiele", "vp": "Auto-Zubehör",
+    "os": "Büro & Home Office", "ha": "Werkzeug & Heimwerken",
+}
+
+
+VORRANG = [(re.compile(r"headset|kopfhörer|ohrhörer|earbuds|lautsprecher", re.I), "Elektronik"),
+           (re.compile(r"handyhülle|handy-hülle|hülle für (iphone|samsung)|phone case", re.I), "Handy-Zubehör")]
+
+
+def aus_kategorie(kat, titel):
+    for rx, z in VORRANG:                       # eindeutiges Titelwort schlägt eine falsche Kategorie
+        if rx.search(titel):
+            return z
+    k = (kat or "").split("/")[-1]
+    for pre in sorted(TAX, key=len, reverse=True):
+        if k == pre or k.startswith(pre + "-"):
+            z = TAX[pre]
+            return z(titel) if callable(z) else z
+    return None
+
+
 QR = ("query($c:String){collections(first:250,after:$c){pageInfo{hasNextPage endCursor} "
       "nodes{handle ruleSet{appliedDisjunctively rules{column relation condition}}}}}")
 QP = ("query($q:String,$c:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} "
-      "nodes{id productType tags}}}")
+      "nodes{id title productType tags category{id}}}}")
 
 
 def typ_regeln():
@@ -145,6 +195,21 @@ def main():
             paare.append((p["id"], neu))
             if led:
                 led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\n")
+    # Sammeltypen über die Produktkategorie
+    zahl = {}
+    for alt in SAMMEL:
+        for p in produkte(alt):
+            if POD.search(" ".join(p["tags"])):
+                continue
+            neu = aus_kategorie((p.get("category") or {}).get("id"), p["title"])
+            if not neu or neu == alt or sperrgrund(alt, neu, regeln):
+                zahl["bleibt"] = zahl.get("bleibt", 0) + 1
+                continue
+            zahl[neu] = zahl.get(neu, 0) + 1
+            paare.append((p["id"], neu))
+            if led:
+                led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\n")
+    print("  Sammeltypen →", dict(sorted(zahl.items(), key=lambda x: -x[1])))
     if led:
         led.flush()
     ok = schreiben(paare) if SCHARF else 0

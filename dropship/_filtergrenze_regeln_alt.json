@@ -1,0 +1,62 @@
+{
+ "wohnen-dekoration": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wohnen"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "dekoration"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kueche"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wandbild"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "pflanzentopf"
+   }
+  ]
+ },
+ "schuhe": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "schuhe"
+   }
+  ]
+ },
+ "schmuck-uhren": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Schmuck"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Uhren"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kategorie-uhr"
+   }
+  ]
+ }
+}

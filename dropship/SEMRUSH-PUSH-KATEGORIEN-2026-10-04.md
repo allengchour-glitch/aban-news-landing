@@ -46,7 +46,13 @@
 - Kleider-Kategorie: «Kleider-Organizer», «Vakuumbeutel für Kleider» raus, `subcat_heal.py` Ausschluss ergänzt.
 - 301 /collections/haustier → /collections/sub-haustier.
 
+- **Filtergrenze (QUELLE Shopify-Hilfe, GEMESSEN):** Shopify blendet alle Filter aus, sobald eine Kollektion > 5'000 AKTIVE
+  Produkte hat (Schmuck & Uhren 4'932 → Filter da; Schuhe 5'498 → keine). Umgestellt (alte Regeln `_filtergrenze_regeln_alt.json`):
+  Schuhe ohne Kinderschuhe (eigener Menüpunkt) 4'293 ✅ Filter live · Wohnen & Garten ohne Küche (eigener Menüpunkt) 4'772 ✅ live ·
+  Schmuck & Uhren nur noch Schmuck-/Uhren-Typen (842 Smartwatches gehören zu Technik) ~4'250. Wächter `filtergrenze_wache.py` täglich.
+
 ## Offen
-- Grosse Seiten ohne Filter (Damen 11'978, Wohnen & Deko 10'285, Geschenke-Preisseiten): vermutlich Shopify-Grenze für
-  Filter auf grossen Kollektionen — Menü dort auf Unterkategorien führen (nächster Schritt, zuerst Grenze belegen).
+- «Damen» (~9'800 aktiv) und die Preis-Geschenkseiten (28'000–45'000) bleiben ohne Filter — sie unter 5'000 zu bringen würde den
+  Inhalt verfälschen. Die Unterkategorien haben Filter.
 - 118 dünne Produkttexte; 4 Titel-Doppel ohne sichtbaren Unterschied; CJ-Import der gefüllten Adventskalender beobachten.
+- Betreiber: im Semrush-Projekt Crawl-Limit heben und Audit neu starten (per Schnittstelle nicht möglich).

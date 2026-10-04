@@ -33,6 +33,27 @@
 
 
 
+## 🔎 «semrush push · überprüf alle produkten und fix · kategorien und fein filter» (2026-10-04, 21:00–22:30)
+- ⛔ **Semrush `site_audit/snapshot` = 10'000 Einheiten JE Aufruf** (gemessen), `issue_details` 0. Projekt 31464185 (Betreiber)
+  crawlt nur 100 Seiten → die Klassen lokal über ALLE Produkte rechnen (`seo_voll_audit.py`, Bulk, 0 Einheiten), dann fixen.
+- **190 von 222 Seiten hatten eine H1 im Text** (Theme gibt den Titel schon als H1) — Semrush sah 4, weil es 100 Seiten crawlte.
+  **Ein Audit-Befund ist eine Stichprobe einer Klasse: immer die Klasse über den ganzen Bestand messen.**
+- **`seo`-Input ersetzt title UND description:** wer nur description schickt, löscht den Titel (61 frische Titel weg, nachgemessen,
+  behoben). Gleiche Falle wie überall bei Ersetzen-statt-Zusammenführen-Feldern.
+- **Shopify zeigt KEINE Filter ab 5'000 aktiven Produkten** (Entwürfe zählen nicht; gemessen Schmuck 4'932 mit, Schuhe 5'498 ohne).
+  Schuhe ohne Kinderschuhe 4'293, Wohnen ohne Küche 4'772 → Filter live; Schmuck & Uhren 4'954 → nur Typen (Smartwatches raus);
+  `filtergrenze_wache.py` täglich. Damen (~9'800) und Preis-Geschenkseiten bleiben bewusst ohne Filter.
+- **Undichte Kategorien** sieht man am Produkttyp-Filter: «Ringe» 30 Typen (Zugring-Leine, Smartwatch, «Augenringe»-Concealer).
+  ODER-Titelregeln können nichts ausschliessen → `kategorie_rein.py`: Titel ∧ Typ ∧ Ausschluss → eigener Tag `kat-…`.
+  Eigene Regex-Fehler im Trockenlauf gefunden: «Low Top **Boots**» (Ausschluss «top»), «Katze-Halskette» (Ausschluss «katze»),
+  «Tea**ring**/Lette**ring**». **Ausschlusswörter auf Waren-Kontext prüfen, nie auf Motiv-Wörter.**
+- Sammeltypen «Trend-Gadget/Trend-Produkt» (1'099) → aus der Produktkategorie (949), nicht geraten; Titel-Vorrang für Headset.
+- Grössenfilter: «140cm»/«140 cm», «US 10»/«US10», «S to M», «F» → eine Schreibweise (175 Produkte); «0XL/1XL» bewusst nicht.
+- Adventskalender: 27'100 Suchen/Mt, keine Kollektion → neu + Menü + 7 CJ-Suchaufträge für gefüllte Kalender.
+- 14 Jeansjacken mit Lieferantencode im Titel und «Farbe: Y105M» → Farbe aus dem Bild, Option «Grösse».
+- ⚠️ Ein H1-Backup aller Seitentexte enthielt einen Token-PLATZHALTER (unveröffentlichte Anleitungsseite) → GitHub-Push-Schutz.
+  Backups von Shop-Texten nicht ins Repo, sondern in den Scratchpad. Bericht: `dropship/SEMRUSH-PUSH-KATEGORIEN-2026-10-04.md`.
+
 ## 🏷️ Tag 5: Top-30-Seiten 30/30 · Kristall-Set zeigte nicht, was geliefert wird · Hashtags nach Messung (2026-10-04, ab 20:19)
 - **Vorige Runde (Haiku) hatte Tag 5 erfunden:** `_day5_audit.json` zählte je «2» Google-Blocker statt 265/265/199, und eine
   Journalzeile nannte vier «Guardrails» (`size_table_autofill` …), die es nicht gibt (0 Treffer). Beides entfernt.
