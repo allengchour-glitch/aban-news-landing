@@ -268,6 +268,10 @@ const hooksDetail = gruppe(C, c => c.hook);
 const musik = gruppe(C, c => c.musik);
 const stimme = gruppe(C, c => c.stimme);
 const zeitfenster = gruppe(reif, o => `${o.kanal} ${block(o.t)}`);
+// 04.10.2026 (Betreiber «hastag auch setzten für mehr follower»): Hashtags je Post gemessen — jeder Tag eines Posts
+// bekommt dessen ln(rel). IG erlaubt seit 12/2025 nur 5 Tags; welche 5, entscheidet diese Tabelle (hashtag_wahl in lib/hashtags.mjs).
+const hashtags = gruppe(reif.flatMap(o => [...new Set((o.caption.match(/#[\p{L}\p{N}_]+/gu) || []).map(t => t.toLowerCase()))]
+  .map(tag => ({ tag, l: o.l }))), e => e.tag);
 const hooks = Object.fromEntries(Object.entries(hooksDetail).filter(([, v]) => v.belastbar).map(([k, v]) => [k, v.vorsprung]));
 const formate = {};
 for (const o of reif) { const k = `${o.kanal} ${o.format}`; (formate[k] ||= []).push(o.score); }
@@ -282,7 +286,7 @@ const ergebnis = {
   inhalte: C.length, posts: reif.length,
   musik_verlauf: { zeilen: verlaufZeilen, verknuepfte_inhalte: musikVerknuepft },
   quellen_fehler: quellen.fehler,
-  hooks, hooks_detail: hooksDetail, themen, zeitfenster, formate: formatTabelle, musik, stimme,
+  hooks, hooks_detail: hooksDetail, themen, zeitfenster, formate: formatTabelle, musik, stimme, hashtags,
 };
 
 // ---------------------------------------------------------------- Ausgabe
@@ -300,7 +304,7 @@ const md = [
   `Gelesen (letzte ${TAGE} Tage, Posts ab ${MIN_ALTER_H} h Alter): Instagram ${ergebnis.beobachtungen.instagram} · TikTok ${ergebnis.beobachtungen.tiktok} · Pinterest ${ergebnis.beobachtungen.pinterest} → **${C.length} Inhalte**; ${zuJung} zu junge Posts nicht gezählt.${quellen.fehler.length ? ' Lücken: ' + quellen.fehler.join('; ') + '.' : ''}`, '',
   `**So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +${RAUSCH} als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + ${K})): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×${Math.exp(KAPPE / (1 + K)).toFixed(2)}. **n** = Inhalte. **Belastbar erst ab n ≥ ${MIN_N}** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.`, '',
   '## Belastbar (n ≥ ' + MIN_N + ')', '',
-  ...tabelle('Themen', themen, true), ...tabelle('Hooks', hooksDetail, true), ...tabelle('Zeitfenster (Schweizer Zeit, je Kanal)', zeitfenster, true),
+  ...tabelle('Themen', themen, true), ...tabelle('Hooks', hooksDetail, true), ...tabelle('Zeitfenster (Schweizer Zeit, je Kanal)', zeitfenster, true), ...tabelle('Hashtags', hashtags, true),
   ...tabelle('Musik', musik, true), ...tabelle('Stimme', stimme, true),
   '## Alle Werte mit n (vorläufige eingeschlossen)', '',
   ...tabelle('Themen', themen), ...tabelle('Zeitfenster (Schweizer Zeit, je Kanal)', zeitfenster),

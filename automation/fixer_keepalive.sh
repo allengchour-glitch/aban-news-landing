@@ -1087,6 +1087,18 @@ while true; do
       echo "$(date -u +%H:%M) $(tail -1 "$GVG")"
     fi
   fi
+  # TOP-30-PRODUKTSEITEN (04.10.2026, 12-Tage-Plan Tag 5): meistbesuchte Landeseiten (30 T, Menschen) täglich auf
+  # kaufbar/301, ≥ 5 Bilder (POD ≥ 2), Grössen-Option bei Kleidung (sonst keine Grössentabelle), 4 Empfehlungen.
+  # Schreibt nichts im Shop; Mängel stehen im Log und in der Aufseher-Zeile.
+  T30=/tmp/top_produktseiten.log
+  if [ -f "$REPO/automation/top_produktseiten_check.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$T30" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$T30"; then
+      touch "$T30"
+      ( cd "$REPO" && timeout 900 python3 automation/top_produktseiten_check.py > "$T30" 2>&1 )
+      echo "$(date -u +%H:%M) $(tail -1 "$T30") · Mängel: $(grep -vE ' ok( |$)|^TOP' "$T30" | awk '{print $NF}' | head -5 | tr '\n' ' ')"
+    fi
+  fi
   # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
   # `bilder-geloescht-speicher` trägt und aktiv ohne Bild ist, geht zurück auf DRAFT (`wartet-auf-bilder`). Eine Suchabfrage.
   if [ -f "$REPO/automation/aktiv_ohne_bild_wache.py" ]; then

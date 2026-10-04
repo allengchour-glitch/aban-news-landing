@@ -61,11 +61,15 @@ def gepostet_mengen():
         if os.path.exists(f):
             handles_q |= set(re.findall(r"/products/([a-z0-9-]+)", open(f, encoding="utf-8").read()))
             handles_q |= set(re.findall(r"story_([a-z0-9-]+)\.jpg", open(f, encoding="utf-8").read()))
+    # Jury-Sperre steht als «story-<handle[:74]>,…,jury-skip» in der Queue (Bindestrich, ohne .jpg) — die beiden
+    # Muster oben fanden sie nie: 04.10.2026 prüfte jeder Lauf dieselben 4 Durchfaller, 25 h keine Story.
+    if os.path.exists(QUEUE):
+        handles_q |= {"sperre:" + h for h in re.findall(r"^story-([a-z0-9-]+),", open(QUEUE, encoding="utf-8").read(), re.M)}
     return led, namen, handles_q
 
 
 def schon_gepostet(p, led, namen, handles_q):
-    if f"slug:{p['handle']}" in led or p["handle"] in handles_q:
+    if f"slug:{p['handle']}" in led or p["handle"] in handles_q or "sperre:" + p["handle"][:74] in handles_q:
         return True
     voll = re.sub(r"[^a-zäöüß0-9]", "", p["title"].lower())
     return name_key(kurztitel(p["title"])) in led or any(n in voll for n in namen if len(n) >= 8)

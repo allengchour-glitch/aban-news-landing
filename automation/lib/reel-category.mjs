@@ -16,7 +16,7 @@ export function catKey(s){
   if (/herren|männer|menswear|\bmen\b/.test(s)) return 'herren';
   if (/sneaker|slides|sandal|(?<!hand)schuh|stiefel|\bboots?\b|loafer|pumps/.test(s)) return 'schuhe';
   if (/kette|ohrring|armreif|armband|\bring\b|schmuck|halskette|anhänger|moissanite|zirkonia/.test(s)) return 'schmuck';
-  if (/serum|gua-?sha|creme|jade[- ]?roller|gua[- ]?sha|beauty|pflege|skincare|gesichtsmaske|haar|nagel|wimper|make-?up/.test(s)) return 'beauty';
+  if (/serum|gua-?sha|creme|jade[- ]?roller|gua[- ]?sha|beauty|pflege|skincare|gesichtsmaske|haar(?!ig)|nagel|wimper|make-?up/.test(s)) return 'beauty';
   if (/tasche|\bbag\b|handtasche|crossbody|clutch|rucksack/.test(s)) return 'tasche';
   if (/kleid|\brock\b|dress|skirt|bluse/.test(s)) return 'kleid';
   if (/sonnenbrille|brille|\bhut\b|\bcap\b|gürtel|schal(?![et])|accessoire/.test(s)) return 'accessoire';

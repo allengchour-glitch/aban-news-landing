@@ -14,6 +14,7 @@
  * Optional: QUEUE_MAX (Default 3) — wie viele neue Produkte pro Lauf einreihen.
  * Fehlt ein Secret → No-Op (exit 0). Keine Secrets im Log.
  */
+import { hashtagText } from './lib/hashtags.mjs';
 import fs from 'node:fs';
 import https from 'node:https';
 import { balanceByCategory } from './lib/reel-category.mjs';
@@ -69,7 +70,8 @@ function existingHandles(csvText) {
   return set;
 }
 
-// Caption + Hashtags je Produkttyp.
+// Caption + Hashtags je Produkttyp. 04.10.2026: hashtags() unten ist abgelöst durch lib/hashtags.mjs (setzte
+// #ootdschweiz #schweizmode auf JEDES Produkt — Tarantel, Pappbecher; gemessen unter der Basis).
 // REACH-Tags vorne (#schweiz/#ootdschweiz zogen lt. TikTok-Analyse die meiste Reichweite),
 // dann produktspezifische Nischen-Tags.
 function hashtags(pt = '') {
@@ -99,7 +101,7 @@ function caption(title, handle, pt, price, tags) {
   const chf = price ? `CHF ${Number(price).toFixed(2).replace(/\.00$/, '.–')}` : '';
   const t = String(title).replace(/\s+[–—]\s+.*$/, '').replace(/\s+-\s+.*$/, '').replace(/\s*[·|].*$/, '').trim();
   const saison = process.env.VORRANG_TAG ? (process.env.SAISON_ZEILE || '🍂 Herbst-Favorit') + '\n' : '';   // 25.09. Saison-Nachschub
-  return `${saison}${t}${chf ? ` · ${chf}` : ''}\n${ladenZeile(tags)}\nJetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio\n\n${hashtags(pt)}`;
+  return `${saison}${t}${chf ? ` · ${chf}` : ''}\n${ladenZeile(tags)}\nJetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio\n\n${hashtagText(`${title} ${pt}`)}`;
 }
 
 (async () => {

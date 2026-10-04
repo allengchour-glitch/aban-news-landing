@@ -531,7 +531,20 @@ def laden_zeile(tags=None):
             "30 Tage Rückgabe · TWINT oder Rechnung.\nFragen? Schreib sie in die Kommentare 👇")
 
 
-def hashtags(tags):
+def hashtags(tags, titel=None):
+    # 04.10.2026: gemeinsame Wahl aus automation/lib/hashtags.mjs (5 Plätze, gemessene Gewichte, Saison); Tabelle unten = Rückfall.
+    if titel:
+        try:
+            modul = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib", "hashtags.mjs")
+            js = (f"import('{modul}').then(({{hashtagText}})=>"
+                  "console.log(hashtagText(process.argv[1], {plattform: process.env.HT_NETZ || 'instagram'})))")
+            r = subprocess.run(["/opt/node22/bin/node", "-e", js, titel], capture_output=True, text=True, timeout=30,
+                               cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               env={**os.environ, "HT_NETZ": "tiktok" if os.environ.get("FORMAT", "tiktok") == "tiktok" else "instagram"})
+            if r.returncode == 0 and r.stdout.strip().startswith("#"):
+                return r.stdout.strip()
+        except Exception:
+            pass
     fest = ["#schweiz", "#luxestyle"]   # 05.09.: #fyp raus — das Massen-Tag ist ein Scam-Signal
     karte = {"beauty": "#beauty", "skincare": "#skincare", "pflege": "#selfcare",
              "haustier": "#petsoftiktok", "katze": "#katze", "hund": "#hund",
@@ -652,7 +665,7 @@ def bau_produkt(p, benutzt):
     slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower()).strip("-")  # NIE kuerzen: Slug==Handle ist die Vertragsbasis der Live-Pruefung
     cap = (f"{CAPTION_VORSPANN}{titel} · {preis}\n"
            f"{laden_zeile(p.get('tags') or [])}\n"
-           f"{cta_text()}\n\n{hashtags(p.get('tags') or [])}")
+           f"{cta_text()}\n\n{hashtags(p.get('tags') or [], p.get('title'))}")
     return slug, slides, cap, [p["handle"]]
 
 
@@ -685,7 +698,7 @@ def bau_top(kandidaten):
     alle_tags = [t for p, _ in tmp for t in (p.get("tags") or [])]
     cap = (f"{CAPTION_VORSPANN}{hook} 🇨🇭\n\n{liste}\n\n"
            f"{laden_zeile()}\n{cta_text('Alles auf ')}\n\n"
-           f"{hashtags(alle_tags)}")
+           f"{hashtags(alle_tags, tmp[0][0].get('title') if tmp else None)}")
     return slug, slides, cap, [p["handle"] for p, _ in tmp]
 
 

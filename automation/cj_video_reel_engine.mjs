@@ -24,6 +24,7 @@ import { execFileSync, execSync, spawnSync } from 'node:child_process';
 import { nachlauf } from './eimer_etikette.mjs';
 import { takt as cjTakt } from './cj_takt.mjs';
 import { catKey, tagsFor, balanceByCategory } from './lib/reel-category.mjs';
+import { hashtagText } from './lib/hashtags.mjs';
 import { seen as postSeen, produktGepostet } from './post_guard.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
@@ -213,8 +214,9 @@ function nutzen(desc) {
 }
 // 23.09.2026 (Social-Messung, Queue-Regel): nur Sach-Tags, hoechstens 5 — keine #trending/#viral/#fyp/#foryou-Beigaben
 // (51 von 58 wartenden Reels trugen sie). tagsFor() liefert #schweiz, #luxestyle und 2–3 Warengruppen-Tags.
+// 04.10.2026: gemeinsame Wahl (lib/hashtags.mjs) — 5 Plätze, gemessene Gewichte, Saison; die Poster wählen beim Posten neu.
 function hashtags(title, pid) {
-  return [...new Set(tagsFor(title).split(/\s+/).filter(t => t && !/^#(trending|viral|fyp|foryou|foryoupage|reels)$/i.test(t)))].slice(0, 5).join(' ');
+  return hashtagText(title);
 }
 const esc = x => /[",\n]/.test(x) ? '"' + String(x).replace(/"/g, '""') + '"' : x;
 function appendReel(id, url, cap, tags, platforms) {

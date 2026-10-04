@@ -18,6 +18,7 @@
  *      Direktlink (23.09., standardmaessig AUS, siehe dropship/DIREKTLINK.md): DIREKTLINK_TEXT=1 · DIREKTLINK_STICKER=1 ·
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
+import { hashtagSet } from './lib/hashtags.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
@@ -268,7 +269,13 @@ function captionMitDirektlink(c) {
   return alt.test(c) ? c.replace(alt, zeile) : `${c}\n${zeile}`;
 }
 const caption = DL_TEXT ? captionMitDirektlink(get(cand, 'caption')) : get(cand, 'caption');
-const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 8).join(' ')}`.slice(0, 2100);
+// 04.10.2026 (Betreiber «hastag auch setzten für mehr follower»): Tags beim Posten neu wählen — gemessene Gewichte aus
+// social/_lernen.json, Saison nach heutigem Datum, Plattform-Regel (IG/TikTok 5, YouTube #shorts vorne). Ohne Produktnamen
+// in «…» bleibt die Queue-Liste (höchstens 5).
+const produktName = (/«([^»]{4,})»/.exec(caption) || [])[1] || '';
+const tagListe = produktName ? hashtagSet(produktName, { plattform: NETZ })
+  : (NETZ === 'youtube' ? ['#shorts'] : []).concat((tags || '').split(/[,\s]+/).filter(t => t && t !== '#shorts')).slice(0, 5);
+const text = `${caption}\n\n${tagListe.join(' ')}`.slice(0, 2100);
 // Veroeffentlichungszeit in TZ, Format YYYY-MM-DDTHH:mm:ss
 const wann = await besteZeit();
 const teile = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: TZ, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(wann).filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
@@ -276,7 +283,7 @@ const dateTime = `${teile.year}-${teile.month}-${teile.day}T${teile.hour === '24
 console.log(`${NETZ} via Metricool: ${id}\n  Produkt: ${pa.grund}\n  Video: ${url.slice(0, 90)}\n  Zeit: ${dateTime} ${TZ}\n  Text: ${text.slice(0, 100)}…`);
 // YouTube-Titel: der Produktname aus «…» der Caption, sonst die erste Zeile; max. 100 Zeichen inkl. #Shorts.
 const ytTitel = (() => { const m = /«([^»]{4,})»/.exec(caption); const t = (m ? m[1] : caption.split('\n').find(z => z.trim().length > 8) || caption).replace(/[👀✨🔥]/gu, '').trim(); return (t.slice(0, 88) + ' #Shorts').trim(); })();
-const ytTags = (tags || '').split(/[,\s]+/).filter(Boolean).map(t => t.replace(/^#/, '')).slice(0, 12);
+const ytTags = [...new Set([...tagListe, ...(tags || '').split(/[,\s]+/)].filter(Boolean).map(t => t.replace(/^#/, '')))].slice(0, 12);
 if (NETZ === 'youtube') console.log(`  YouTube-Titel: ${ytTitel}`);
 function bauBody(media) {
   const netze = NETZ === 'instagram' ? [{ network: 'instagram' }, { network: 'facebook' }] : [{ network: NETZ }];
