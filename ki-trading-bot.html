@@ -20,7 +20,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"KI-Trading-Bot: ehrlich geprüft — was er kann und was nicht",
 "description":"Was ein Trading-Bot auf 26 Jahren echter Kurse schafft, die Warnzeichen laut FINMA, BaFin und CFTC und eine Prüfliste für jeden Bot.",
-"inLanguage":"de","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://abannews.com/ki-trading-bot.html","image":"https://abannews.com/og-image.png",
+"inLanguage":"de","datePublished":"2026-10-02","dateModified":"2026-10-04","mainEntityOfPage":"https://abannews.com/ki-trading-bot.html","image":"https://abannews.com/og-image.png",
 "author":{"@type":"Person","name":"Allen Chour"},
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com","logo":{"@type":"ImageObject","url":"https://abannews.com/og-image.png"}}}
 </script>
@@ -28,6 +28,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Gibt es einen KI-Trading-Bot, der zuverlässig Geld verdient?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test nicht. Ein Bot, der jedes Kursmuster seit 2000 auswendig lernt, lag auf bekannten Kursen zu 100 % richtig, auf neuen Jahren aber nur so oft wie jemand, der einfach investiert bleibt. Mit klassischen Regeln verdiente er auf keinem von acht Märkten verlässlich mehr als Kaufen und Halten. Die US-Aufsicht CFTC schreibt: KI kann die Zukunft nicht vorhersagen."}},
 {"@type":"Question","name":"Kann Claude oder ChatGPT einen Trading-Bot programmieren, der Geld verdient?","acceptedAnswer":{"@type":"Answer","text":"Programmieren ja, Geld verdienen in unserem Test nein. Die steilen Gewinnkurven in vielen Videos entstehen meist durch einen Fehler im Test: Das Signal nutzt den heutigen Schlusskurs, der Gewinn desselben Tages wird trotzdem mitgezählt. Mit diesem Fehler macht eine einfache 5-Tage-Regel beim S&P 500 +61,6 % pro Jahr, korrekt gerechnet −5,1 %. Unser eigener, mit Claude gebauter KI-Bot dämpfte Einbrüche stark, verdiente aber weniger als einfaches Halten."}},
+{"@type":"Question","name":"Gibt es einen Krypto-Trading-Bot, der sich lohnt?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test nicht. Acht vorab festgelegte Strategien auf zehn grossen Coins, gerechnet mit Kosten und nur auf ungesehenen Jahren ab 2022: Keine schlug das einfache Halten von Bitcoin (+13,6 % pro Jahr, Einbruch −67 %). Am ehesten hilft eine Risikobremse, die bei wilden Kursen weniger investiert: +13,3 % pro Jahr bei einem Einbruch von −53 %. Zehn Coins gleich verteilt brachten −2,4 % pro Jahr."}},
 {"@type":"Question","name":"Woran erkenne ich ein unseriöses Trading-Bot-Angebot?","acceptedAnswer":{"@type":"Answer","text":"Typische Warnzeichen laut CFTC und BaFin: garantierte oder sehr hohe Renditen, Trefferquoten nahe 100 %, Werbung über Influencer oder Fremde im Internet, kein Impressum, viele fast identische Websites und ein niedriger Einstieg wie 250 Euro. Prüfe den Anbieter auf der Warnliste der FINMA und der Kantonspolizei Zürich."}},
 {"@type":"Question","name":"Was kann ein Trading-Bot wirklich?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test vor allem Verluste dämpfen: Beim S&P 500 lag der schlimmste Einbruch bei −34 % statt −57 % beim einfachen Halten. Dafür verdiente er weniger, +6.1 % statt +8.7 % pro Jahr. Er ist eher eine Sicherung als ein Geldautomat."}},
 {"@type":"Question","name":"Wie prüfe ich die Regel eines Bots selbst?","acceptedAnswer":{"@type":"Answer","text":"Nur Jahre zählen, die beim Entwickeln nicht verwendet wurden, das Signal erst am nächsten Tag handeln, Kosten einrechnen und das Ergebnis mit Kaufen und Halten sowie mit Zufallsstrategien vergleichen. Genau das macht unser Strategie-Prüfstand."}}
@@ -172,6 +173,20 @@ Sag mir am Ende in einem Satz, ob die Regel Halten nach Kosten auf den ungesehen
 (function(){var b=document.querySelector('[data-kopier]');if(!b||!navigator.clipboard)return;b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-kopier')).textContent;navigator.clipboard.writeText(t).then(function(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Prüfauftrag kopieren'},1800)}).catch(function(){})})})();
 </script>
 
+<h2 id="krypto">Krypto-Trading-Bots: was wir gemessen haben</h2>
+<p>Krypto-Bots werben mit den grössten Versprechen. Wir haben acht gängige Strategien auf zehn grossen Coins getestet, alle vorab festgelegt: Signal am Tagesschluss, Handel am Folgetag, 0,25 % Kosten je Handel. Gezählt wird nur der Zeitraum ab 2022, den keine Regel beim Entwickeln gesehen hat.</p>
+<div class="tab"><table>
+<thead><tr><th>Strategie</th><th>pro Jahr</th><th>schlimmster Einbruch</th></tr></thead>
+<tbody>
+<tr><td>Bitcoin einfach halten</td><td>+13.6&nbsp;%</td><td>−67&nbsp;%</td></tr>
+<tr><td>Bitcoin mit Schwankungsziel (weniger investiert, wenn es wild wird)</td><td>+13.3&nbsp;%</td><td>−53&nbsp;%</td></tr>
+<tr><td>Trendfilter 200 Tage, alle Coins</td><td>+7.3&nbsp;%</td><td>−48&nbsp;%</td></tr>
+<tr><td>Zehn Coins gleich verteilt</td><td class="nein">−2.4&nbsp;%</td><td>−74&nbsp;%</td></tr>
+<tr><td>Momentum: jeden Monat die 3 stärksten Coins</td><td class="nein">−5.0&nbsp;%</td><td>−74&nbsp;%</td></tr>
+</tbody></table></div>
+<p class="klein">Tageskurse von Yahoo Finance, 2022 bis 3.10.2026, gemessen am 04.10.2026. Getestet wurden nur Coins, die es heute noch gibt. Das schönt alle Zahlen, echte Ergebnisse wären eher schlechter.</p>
+<p><b>Keine Strategie schlug das einfache Halten von Bitcoin.</b> Mehr Coins und häufigeres Umschichten machten es schlechter. Was am ehesten etwas bringt, ist eine Risikobremse: Bei wilden Kursen weniger investiert sein, das drückte den schlimmsten Einbruch von −67 auf −53 Prozent bei fast gleicher Rendite. In den Boomjahren davor kostete dieselbe Bremse aber viel Gewinn.</p>
+
 <h2>Sieben Warnzeichen bei Bot-Angeboten</h2>
 <ol>
   <li><b>Garantierte oder sehr hohe Renditen</b>, etwa „10&nbsp;% im Monat" (CFTC).</li>
@@ -221,6 +236,7 @@ Sag mir am Ende in einem Satz, ob die Regel Halten nach Kosten auf den ungesehen
 <h2>Häufige Fragen</h2>
 <details><summary>Gibt es einen KI-Trading-Bot, der zuverlässig Geld verdient?</summary><p>In unserem Test nicht. Auswendig gelernt lag er auf bekannten Kursen zu 100&nbsp;% richtig, auf neuen Jahren nur so oft, wie der Markt ohnehin steigt. Mit klassischen Regeln verdiente er auf keinem von acht Märkten verlässlich mehr als Kaufen und Halten. Die CFTC schreibt: KI kann die Zukunft nicht vorhersagen.</p></details>
 <details><summary>Kann Claude oder ChatGPT einen Trading-Bot programmieren, der Geld verdient?</summary><p>Programmieren ja, Geld verdienen in unserem Test nein. Die steilen Kurven in vielen Videos entstehen meist durch einen <a href="#claude-bot">Zukunftsblick im Test</a>: mit diesem Fehler +61.6&nbsp;% pro Jahr beim S&amp;P 500, korrekt gerechnet −5.1&nbsp;%. Unser eigener, mit Claude gebauter Bot dämpfte Einbrüche, verdiente aber weniger als Halten.</p></details>
+<details><summary>Gibt es einen Krypto-Trading-Bot, der sich lohnt?</summary><p>In unserem Test nicht: Keine von acht Strategien schlug das einfache Halten von Bitcoin nach Kosten auf ungesehenen Jahren. Am ehesten hilft eine Risikobremse, siehe <a href="#krypto">Krypto-Messung</a>.</p></details>
 <details><summary>Woran erkenne ich ein unseriöses Angebot?</summary><p>Garantierte oder sehr hohe Renditen, Trefferquoten nahe 100&nbsp;%, Werbung über Influencer, kein Impressum, viele gleiche Websites, ein Einstieg ab 250 Euro und Prämien fürs Anwerben. Dann zuerst die Warnlisten der FINMA und der Kantonspolizei Zürich prüfen.</p></details>
 <details><summary>Was kann ein Trading-Bot wirklich?</summary><p>Verluste dämpfen: beim S&amp;P 500 −34&nbsp;% statt −57&nbsp;% im schlimmsten Einbruch. Dafür +6.1&nbsp;% statt +8.7&nbsp;% pro Jahr. Eine Sicherung, kein Geldautomat.</p></details>
 <details><summary>Wie prüfe ich die Regel eines Bots selbst?</summary><p>Nur ungesehene Jahre zählen, das Signal erst am nächsten Tag handeln, Kosten einrechnen und mit Kaufen und Halten sowie mit Zufallsstrategien vergleichen. Das macht der <a href="#pruefstand">Strategie-Prüfstand</a> automatisch.</p></details>
