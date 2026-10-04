@@ -119,6 +119,11 @@
    "n": "narbenpflaster",
    "re": "Narben[- ]?(?:pflaster|gel|silikon|band)\\w*|Silikon[- ]?Narben\\w*",
    "warum": "25.09.2026: «Silikon-Narbenpflaster» — Silikon-Narbenauflagen sind Medizinprodukte (Narbenbehandlung). Vollprobelauf 51'336: genau 1 Treffer."
+  },
+  {
+   "n": "arzneimittel-wirkstoff",
+   "re": "\\bMinoxidil\\b|\\bFinasterid\\w*|Haarwuchs(?:mittel|l[öo]sung|tonikum)|Hair Regrowth|\\bLidocain\\w*|\\bHydrochinon\\w*|\\bTretinoin\\w*|\\bHydrocortison\\w*|\\bMelatonin\\b",
+   "warum": "04.10.2026 Sichtprüfung der Neuimporte: «Haar für kräftigeres Haar» = Bild «Minoxidil 5% Hair Regrowth Treatment», Text sagte nur «Haarwuchslösung». Arzneimittel-Wirkstoffe brauchen in der Schweiz eine Swissmedic-Zulassung (HMG) — Melatonin ist in CH rezeptpflichtig."
   }
  ]
 }
