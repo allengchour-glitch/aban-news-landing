@@ -780,3 +780,9 @@
 2026-10-03T02:11:26Z	gid://shopify/Product/15448816320897	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	latex-augenmaske-628500
 2026-10-03T02:11:27Z	gid://shopify/Product/15503164113281	medizinprodukt-pruefen	Google & YouTube	beckenboden-muskeltrainer-mit-zahlfunktion-915200
 2026-10-03T02:11:28Z	gid://shopify/Product/15510309634433	medizinprodukt-pruefen	Google & YouTube	beckenboden-trainingsgerat-fur-frauen-b986d0
+2026-10-04T22:31:10Z	gid://shopify/Product/15447896916353	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	latex-gesichtsmaske-mit-kopfband-619300
+2026-10-04T22:31:11Z	gid://shopify/Product/15447929979265	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	enger-lederhandschuh-fur-damen-602100
+2026-10-04T22:31:12Z	gid://shopify/Product/15448115642753	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	spitzen-body-mit-blumenmuster-623400
+2026-10-04T22:31:13Z	gid://shopify/Product/15448575672705	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	spitzen-body-mit-stickerei-und-formbugel-615200
+2026-10-04T22:31:14Z	gid://shopify/Product/15448659624321	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	body-mit-spitze-und-wimpern-bordure-617900
+2026-10-04T22:31:15Z	gid://shopify/Product/15493861212545	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	damen-body-mit-spitze-und-cut-outs-609600

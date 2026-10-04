@@ -67,3 +67,10 @@ nach — ohne Neustart-Erkennung, ohne 3/Tag-Zähler. Block ersetzt die Zeilen `
 - Nichts zwingend. Dauerlösung für den Zugang bleibt wie seit 14.08. notiert: `FORTURA_FTP_USER`/`FORTURA_FTP_PW` als
   Umgebungsvariablen in den Claude-Einstellungen (dann überlebt `/tmp/fortura_env.sh` den nächsten Container-Wipe nicht
   mehr als einziger Träger). Heute war der Zugang da — kein Blocker.
+
+## Nachtrag 22:29 UTC — scharfer Lauf mit dem gehärteten Skript
+`START 22:26:17 → FERTIG 22:29:01` (2 min 44 s): Feed 20'161 Zeilen, Fingerabdruck 9972210f1165 (unverändert zu 21:11),
+`8416 unverändert · 0 zu ändern · offen 0`. Drei Nachweise für die Änderungen: die Fortschrittszeilen («Feed … 18796 Artikelnummern»,
+«Shop: 8416 Varianten … 141 Seiten») stehen jetzt im Log (line-buffered); `/tmp/fortura_bestand.stamp` trägt 22:29 (bei FERTIG gesetzt);
+die Ampel gibt `''` (grün) — obwohl die letzte Journalzeile von 21:17 ist (0 Änderungen = keine Zeile), weil sie den Berichtskopf
+«2026-10-04 22:29 UTC» mitliest. Genau der Fall aus Nebenbefund 4.

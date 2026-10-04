@@ -3424,3 +3424,8 @@ weihnachtspantoffeln-aus-flanell-630400	2607141536231631000	16	7.23	ok	landeseit
 weihnachts-teppich-leicht-zu-reinigen-624300	2508240254131624500	16	9.61	ok	landeseite
 weihnachtskleid-mit-fellapplikation-625100	2607281217461625800	16	9.88	ok	landeseite
 elektrischer-singender-weihnachtsmann-755008	1458642018032029696	7	15.40	ok	landeseite
+huhn-mit-schal-weihnachtsdeko-972608	1453176693245218816	7	10.05	ok	landeseite
+kletternder-weihnachtsmann-9186dd	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachtsmann-malerei-set-773888	1425718697984659456	3	9.06	ok	landeseite
+damen-cord-hoodie-mit-3d-weihnachtsbaum-print-639200	2512180514591639400	16	7.99	ok	landeseite
+weihnachts-sweatshirt-mit-digitalprint-608800	2512170904471609100	16	8.25	ok	landeseite
