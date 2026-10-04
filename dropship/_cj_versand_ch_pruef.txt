@@ -3353,3 +3353,12 @@ fressnapf-aus-keramik-fur-haustiere-a94de9	-	-	-	unklar keine CJ-SKU	landeseite
 verstellbare-fleece-weste-mit-brustgeschirr-310543	-	-	-	unklar keine CJ-SKU	landeseite
 rote-weihnachts-hundeleine-704320	1423126606439911424	16	6.01	ok	landeseite
 hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112	1385464351045062656	16	6.01	ok	landeseite
+plusch-hundegeschirr-mit-leine-744320	1612024004494241792	16	6.01	ok	landeseite
+diy-diamond-painting-weihnachtskarten-set-a66b3f	-	-	-	unklar keine CJ-SKU	landeseite
+roter-weihnachtsmann-baumwoll-twill-stoff-913600	1617840618896633856	16	27.01	ok	landeseite
+weihnachtliches-hunde-halsband-mit-schleife-4ac495	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachts-langarmshirt-mit-blumenmuster-626400	2512090352111626700	16	7.43	ok	landeseite
+weihnachts-langarmshirt-fur-herren-616700	2512090328431617000	16	7.17	ok	landeseite
+weihnachts-kissenbezug-mit-cartoon-motiven-604700	2411100437011604900	16	6.77	ok	landeseite
+weihnachts-halsband-mit-plusch-kugel-621500	2412081057061621700	16	4.92	ok	landeseite
+weihnachts-manikure-im-cat-s-eye-stil-620800	2406150633201621000	0	-	KEINE CH-Option → DRAFT	landeseite
