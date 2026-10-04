@@ -3568,3 +3568,5 @@ weihnachts-pluschtier-mit-sound-fur-hunde-katz-301376	1739995458979770368	16	5.5
 vintage-jacquard-weihnachtspullover-631500	2606090624471632400	16	10.15	ok	landeseite
 weihnachts-sweatshirt-mit-digitaldruck-fur-her-622800	2605140840561623300	16	8.93	ok	landeseite
 weihnachts-fleece-pullover-fur-damen-620100	2601170127411620500	16	9.88	ok	landeseite
+weihnachts-sweatshirt-604500	2601041142551604900	16	10.83	ok	landeseite
+weihnachts-pullover-flanell-rundhals-langarm-u-634500	2601020503021634700	16	9.47	ok	landeseite

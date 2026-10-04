@@ -298,5 +298,25 @@
     "condition": "sub-hund"
    }
   ]
+ },
+ "sub-haustier": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "haustier"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "pet"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Haustierbedarf"
+   }
+  ]
  }
 }
