@@ -71,9 +71,31 @@ export function kuerzen(text, maxLen = 70) {
 // sie ist die Angabe, ohne die der Preis missverstanden wird. Bleibt zu wenig übrig,
 // gewinnt der ungekürzte Titel (dieselbe Regel wie bei den Wearable-Titeln: Shopify
 // lehnt einen leeren Titel ab).
+// ⚠️ 04.10.2026 (Neuimport-Qualität, 837 Neuimporte in 24 h gemessen): Die Übersetzer liefern
+// typografische Sonderzeichen — U+2011 (geschützter Bindestrich, 88 Titel), U+202F (schmales
+// Leerzeichen, 51 Titel), zusammen 121 von 837. Für die Kundin unsichtbar, für die Suche tödlich:
+// «12‑in‑1» findet niemand, der «12-in-1» tippt, und JEDE Regex im Haus (Stückzahl-Wache,
+// Multipack-Regel, Kauderwelsch-Wache) sieht «5‑Stück» nicht als Menge. Hier, an der EINEN Stelle,
+// durch die alle drei Importer gehen, werden sie auf ASCII geglättet.
+const SONDERZEICHEN = [[/[‐‑‒⁃]/g, '-'], [/[    ]/g, ' '], [/\s{2,}/g, ' ']];
+export function glaetten(text) {
+  let t = String(text || '');
+  for (const [rx, ersatz] of SONDERZEICHEN) t = t.replace(rx, ersatz);
+  return t.trim();
+}
+
+// Der deutsche Titel nennt die Menge schon — in irgendeiner Form. Gemessen 04.10.2026 an vier
+// Neuimporten: «12 Stück Kuchenformen aus Metall · 12 Stück», «(2 Stück) · 2 Stück»,
+// «12-teiliger Kochset … · 12 Stück», «5-teiliges Küchenhelfer-Set · 5 Stück». Die alte Wache
+// kannte nur die eigene Form «· N Stück».
+const MENGE_IM_TITEL = new RegExp(
+  '\\d+\\s*(?:St[üu]ck|Stk|Blatt|Paar|Rollen?|Teile|Sets?|Packs?)\\b|\\d+\\s*-?\\s*teilig|' +
+  '\\(\\s*\\d+\\s*(?:St|x)\\b|\\d+er[- ]?(?:Set|Pack|Packung)|\\bSet\\s+à\\s*\\d+|' +
+  '\\b(?:zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|zehn|elf|zwölf|zwoelf)teilig', 'i');
+
 export function titelMitMenge(titel, nameEn, maxLen = 70) {
-  const t = String(titel || '').trim();
-  if (/·\s*\d+\s*(?:St[üu]ck|Stk|Blatt|Paar)\b/i.test(t)) return kuerzen(t, maxLen);
+  const t = glaetten(titel);
+  if (MENGE_IM_TITEL.test(t)) return kuerzen(t, maxLen);
   const n = mengeAusName(nameEn);
   if (!n) return kuerzen(t, maxLen);
   const zusatz = ` · ${n} Stück`;

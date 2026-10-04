@@ -20,7 +20,7 @@ Rücklesen nach jeder Änderung, Ledger dropship/_titel_kauderwelsch.tsv (jedes 
   SCHARF=1 python3 automation/titel_kauderwelsch_wache.py
   python3 automation/titel_kauderwelsch_wache.py --kanarienvogel
 """
-import json, os, re, sys, time, urllib.request
+import json, os, re, sys, time, urllib.error, urllib.request
 from datetime import datetime, timedelta, timezone
 
 HIER = os.path.dirname(os.path.abspath(__file__))
@@ -71,10 +71,79 @@ def gql(q, v=None):
     raise RuntimeError("Shopify antwortet nicht — " + letzter)
 
 
+ERSTPRUEFER = "gemini"          # welches Modell zuletzt als Erstprüfer antwortete (Bericht)
+# Gemessen 04.10.2026 (/openai/v1/models): Llama 3.3 70B gibt es in diesem Konto NICHT mehr (404 model_not_found);
+# verfügbar sind gpt-oss-120b/-20b und qwen3.8-27b. Qwen ist die andere Modellfamilie → Erstprüfer; Ausweich gpt-oss-20b.
+GROQ_ERST = os.environ.get("KW_GROQ_ERST", "qwen/qwen3.8-27b")
+GROQ_ERST_AUSWEICH = "openai/gpt-oss-20b"
+
+
+def groq_erst(text):
+    """Erstprüfer-Ersatz, wenn Gemini kein Guthaben hat (04.10.2026).
+
+    GEMESSEN 04.10. 22:11: die Wache starb seit dem 03.10. bei JEDEM Lauf mit «HTTP Error 402: Payment
+    Required» — 837 Neuimporte eines Tages blieben ungeprüft, darunter «Inspirational Dream Cut Letter
+    Sticker Vision Board Set» und «Bicycle Shaft Tool Set – Crank Remover & Puller». Ein Wächter, der
+    bei leerem Guthaben stirbt, ist keiner. Zweitprüfer ist dann Groq gpt-oss (zweitmodell.chat_json,
+    weil auch ChatGPT leer war) — darum nimmt der Erstprüfer BEWUSST ein anderes Groq-Modell
+    (Llama 3.3 70B), sonst fragte die Vier-Augen-Prüfung dasselbe Modell zweimal.
+    """
+    global ERSTPRUEFER
+    import zweitmodell
+    ks = zweitmodell.groq_schluessel()
+    if not ks:
+        raise RuntimeError("GROQ_API_KEY fehlt")
+    letzter = ""
+    # Reihenfolge: Erstprüfer-Modell mit jedem Schlüssel (Schlüssel 3 hängt an einer anderen Organisation = eigenes
+    # Tageskontingent), dann das Ausweichmodell. Ein Tageslimit (429 TPD) ist kein Grund zu warten — nächste Kombination.
+    kombis = [(GROQ_ERST, k) for k in ks] + [(GROQ_ERST_AUSWEICH, k) for k in ks]
+    for a, (modell, k) in enumerate(kombis):
+        body = {"model": modell, "temperature": 0, "response_format": {"type": "json_object"},
+                "messages": [{"role": "user", "content": text}]}
+        if modell.startswith("openai/gpt-oss"):      # gemessen 04.10.: ohne Deckel verbrennt gpt-oss das Tageskontingent im Denken
+            body.update(reasoning_effort="low", max_completion_tokens=2500)
+        try:
+            r = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=json.dumps(body).encode(),
+                                       headers={"Content-Type": "application/json", "Authorization": f"Bearer {k}",
+                                                "User-Agent": "luxestyle-kauderwelsch/1.0"})
+            j = json.load(urllib.request.urlopen(r, timeout=120))
+            ERSTPRUEFER = modell
+            return json.loads(re.search(r"\{.*\}", j["choices"][0]["message"]["content"], re.S).group(0))
+        except urllib.error.HTTPError as e:
+            koerper = e.read().decode("utf-8", "replace")[:200]
+            letzter = f"HTTP {e.code} ({modell}): {koerper}"
+            if e.code == 429 and "per day" in koerper.lower():
+                continue                       # Lehre 02.10.: Tageslimit = nicht warten; hier: nächster Schlüssel/Modell
+            if e.code == 404:
+                continue
+            if e.code == 400 and "json_validate_failed" in koerper:
+                # gpt-oss liefert im JSON-Modus bei langen Blöcken leeren Inhalt (gemessen 04.10. 22:50, failed_generation "")
+                # → derselbe Auftrag ohne response_format; der Prompt verlangt JSON ohnehin, geparst wird mit Regex.
+                try:
+                    body2 = {kk: vv for kk, vv in body.items() if kk != "response_format"}
+                    r = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=json.dumps(body2).encode(),
+                                               headers={"Content-Type": "application/json", "Authorization": f"Bearer {k}",
+                                                        "User-Agent": "luxestyle-kauderwelsch/1.0"})
+                    j = json.load(urllib.request.urlopen(r, timeout=120))
+                    ERSTPRUEFER = modell + " (frei)"
+                    return json.loads(re.search(r"\{.*\}", j["choices"][0]["message"]["content"], re.S).group(0))
+                except Exception as e2:
+                    letzter = f"{modell} ohne JSON-Modus: {type(e2).__name__}: {str(e2)[:120]}"
+                continue
+            time.sleep(6 * (a + 1))
+        except Exception as e:
+            letzter = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(4 * (a + 1))
+    raise RuntimeError("Groq ohne Antwort — " + letzter)
+
+
 def gemini(text):
+    """Erstprüfer: Gemini; bei HTTP 402 (kein Guthaben, Marke /tmp/gemini_leer) sofort groq_erst."""
+    global ERSTPRUEFER
+    import zweitmodell
     k = schluessel()
-    if not k:
-        raise RuntimeError("GEMINI_API_KEY fehlt")
+    if not k or zweitmodell.gemini_leer():
+        ERSTPRUEFER = GROQ_ERST
+        return groq_erst(text)
     body = {"contents": [{"parts": [{"text": text}]}],
             "generationConfig": {"temperature": 0.0, "response_mime_type": "application/json"}}
     letzter = ""
@@ -84,7 +153,16 @@ def gemini(text):
                 f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={k}",
                 data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
             j = json.load(urllib.request.urlopen(r, timeout=120))
+            ERSTPRUEFER = "gemini-2.5-flash"
             return json.loads(re.search(r"\{.*\}", j["candidates"][0]["content"]["parts"][0]["text"], re.S).group(0))
+        except urllib.error.HTTPError as e:
+            koerper = e.read().decode("utf-8", "replace")
+            letzter = f"HTTP {e.code}: {koerper[:150]}"
+            if e.code == 402 or zweitmodell.ist_gemini_402(f"{e.code} {koerper}"):
+                zweitmodell.handle_gemini_402(letzter)
+                ERSTPRUEFER = GROQ_ERST
+                return groq_erst(text)
+            time.sleep(4 * (a + 1))
         except Exception as e:
             letzter = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(4 * (a + 1))
     raise RuntimeError("Gemini ohne Antwort — " + letzter)
@@ -182,7 +260,14 @@ def main():
           f"{'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
     if not prod:
         print("FERTIG: 0 geprüft"); return 0
-    befunde = pruefen([p["title"] for p in prod])
+    try:
+        befunde = pruefen([p["title"] for p in prod])
+    except RuntimeError as e:
+        # 04.10.2026 22:50 gemessen: Gemini 402, ChatGPT leer, Groq qwen/gpt-oss-20b Tageslimit in BEIDEN Organisationen —
+        # ohne zwei Modelle wird nichts geändert (Vier-Augen-Regel). Der Lauf endet sichtbar, nicht mit Traceback;
+        # die Titel bleiben unquittiert und kommen beim nächsten Lauf (Kontingent-Reset) wieder dran.
+        print(f"PAUSE {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: kein Prüfer-Kontingent — {str(e)[:200]}", flush=True)
+        return 0
     led = open(LEDGER, "a", encoding="utf-8")
     geaendert = gemeldet = 0
     bef = {i: (f, k, ok_, e) for i, f, k, ok_, e in befunde}
@@ -206,7 +291,7 @@ def main():
             led.write(f"{p['id']}\t{art}\t{p['title']}\t{korr or okorr}\t{','.join(sorted(falsch))}\n")
         print(f"  ⚠️ {art}: {p['title']}  (G: {korr or '—'} | GPT: {okorr or '—'})", flush=True)
     led.flush()
-    print(f"FERTIG: {len(prod)} geprüft, {geaendert} korrigiert, {gemeldet} gemeldet", flush=True)
+    print(f"FERTIG: {len(prod)} geprüft, {geaendert} korrigiert, {gemeldet} gemeldet · Erstprüfer {ERSTPRUEFER}", flush=True)
     return 0
 
 

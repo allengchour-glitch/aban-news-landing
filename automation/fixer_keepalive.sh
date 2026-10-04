@@ -1139,6 +1139,27 @@ while true; do
       echo "$(date -u +%H:%M) $(tail -1 "$FGW")"
     fi
   fi
+  # KATEGORIE-KI (04.10.2026, Verbesserungsrunde kategorie-typ): aktive Produkte ohne Kategorie, die KEINE Titelregel
+  # trifft, bekommen sie per Zwei-Modell-Einigkeit (Titel + Beschreibung, nur die 93 bekannten Pfade; Eltern/Kind →
+  # gröberer Pfad; Kontingent leer → sauberer Abbruch). Läuft NACH kategorie_wache (Regeln zuerst), einmal täglich.
+  if [ -f "$REPO/automation/kategorie_ki.py" ]; then
+    KK=/tmp/kategorie_ki.log
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && SCHARF=1 MAX=60 timeout 900 python3 automation/kategorie_ki.py >> "$KK" 2>&1 )
+      echo "KATEGORIE-KI: $(grep -E '^FERTIG|ABBRUCH' "$KK" | tail -1)"
+    fi
+  fi
+  # ---- Titel-Sonderzeichen + doppelte Stückzahl (04.10.2026, Neuimport-Qualität): täglich, Neuware 72 h + Voll-Export falls frisch
+  TS=/tmp/titel_sonderzeichen.log
+  if [ -f "$REPO/automation/titel_sonderzeichen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      EXP=""; [ -f /tmp/kost28.jsonl ] && [ $(( $(date +%s) - $(stat -c %Y /tmp/kost28.jsonl) )) -lt 259200 ] && EXP=/tmp/kost28.jsonl
+      ( cd "$REPO" && SCHARF=1 EXPORT="$EXP" timeout 1800 python3 automation/titel_sonderzeichen.py >> "$TS" 2>&1 )
+    fi
+    [ -f "$TS" ] && echo "$(date -u +%H:%M) titel_sonderzeichen: $(tail -n 1 "$TS")"
+  fi
   # KATEGORIEN REIN (04.10.2026): Titel ∧ Produkttyp ∧ Ausschluss je Menü-Kategorie → Tag kat-… (Ringe, Taschen, Deko, …)
   KRL=/tmp/kategorie_rein.log
   if [ -f "$REPO/automation/kategorie_rein.py" ]; then

@@ -65,11 +65,25 @@ from klingenregel import ist_klinge  # noqa: E402
 
 TAG_RISIKO = ("kostuem", "kostüm", "erotik", "refurb", "duplikat", "ausverkauft",
               "nicht-lieferbar", "klinge", "messer", "unrentabel",
-              "keine-lieferanten", "entwurf", "medizin", "waffe", "tabak")
+              "keine-lieferanten", "entwurf", "medizin", "waffe", "tabak",
+              # 04.10.2026: die Adult-Klasse (GOOGLE-ADULT-BLOCKER-2026-10-04.md) nimmt Dessous/Fetisch/Intimpflege mit
+              # Tag «adult-nicht-bewerben» aus dem Google-Kanal — ohne diese zwei Wörter hätte DIESER Lauf sie am selben
+              # Abend zurückgeholt (Trockenlauf 22:40: «Pflegeöl für den Intimbereich», «Latex-Gesichtsmaske» unter
+              # 108 «publizierbaren»). Ein Rückholer muss jede Sperre kennen, die ein anderer Wächter setzt.
+              "adult", "nicht-bewerben")
+
+
+try:  # 04.10.2026: EINE Sperrliste — jeder Ausschluss-Tag, den google_sperrtags_durchsetzen kennt, gilt auch hier
+    from google_sperrliste import AUSSCHLUSS_TAGS as _AUSSCHLUSS  # (Sichtung: 26 «nicht-google-bewerben» + 36 «raucher»
+except Exception:                                                  #  galten sonst wieder als «publizierbar»)
+    _AUSSCHLUSS = set()
 
 
 def grund(titel, tags):
     """Nennt den ERSTEN Grund, warum das Produkt nicht in den Google-Kanal darf."""
+    for t in tags:
+        if t.lower() in _AUSSCHLUSS:
+            return f"Tag «{t}»"
     for t in tags:
         tl = t.lower()
         for k in TAG_RISIKO:
