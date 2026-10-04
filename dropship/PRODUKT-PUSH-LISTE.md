@@ -52,11 +52,37 @@ Difficulty 6–10. Genau die Lücke, die Zalando/Galaxus nicht besetzen.
 | `meerjungfrau kostüm` | 260 | 45 | 9 |
 | (+ `gruselmaske`, `dieb kostüm`, `aladdin kostüm`, `kostüm häftling`, `kostüm kapitän` aus Platz 11–30) |
 
-## 🚨 Gruppe D — Kannibalisierung: eigene Seiten kämpfen gegeneinander
-Das ist ein **struktureller Fehler**, kein Textproblem — und er kostet Platzierungen:
+## 🚨 Gruppe D — Kannibalisierung (ERLEDIGT 2026-10-04)
 
-| Keyword | Eigene Seiten im Rennen | Plätze |
-|---|---|---|
+> ⚠️ **Korrektur der ersten Fassung:** Dort waren 7 Fälle gelistet. Beim Nachprüfen waren die meisten
+> **dieselbe URL mehrfach** (eine Seite, die für mehrere Keywords oder in zwei Messzeitpunkten rankt) —
+> das ist **gut, nicht schlecht**. Ich hatte Zeilen gezählt statt verschiedene URLs. `fotodrucker`,
+> `aufblasbares sofa`, `waschmaschinenschrank`, `velogarage`, `meerjungfrau kostüm` sind **keine**
+> Kannibalisierung. Echt waren drei Fälle:
+
+| Keyword | echte Lage | Zielseite (bleibt) | differenziert |
+|---|---|---|---|
+| **`rucksack business`** | **5 fast identische Produkte** (Plätze 51–58) | `business-laptop-rucksack-134656` („Rucksack Business für Notebooks", beste Position) | 4 Seiten |
+| `sternenhimmel projektor` | 2 verschiedene Produkte | `…-galaxy-…` (behält den generischen Begriff) | «Cosmos» führt jetzt den Modellnamen |
+| `seidenhaube` | 2 verschiedene Produkte | `seiden-satin-haarhaube-…` (behält „Seidenhaube") | Schlafhaube führt „Satin-Schlafhaube" |
+
+**Was gemacht wurde:** Die 6 Nicht-Zielseiten führen jetzt ihr **eigenes Unterscheidungsmerkmal** voran —
+ausschliesslich mit Wörtern aus ihrem eigenen Produkttitel (Stauraum · schlicht/trendig · Laptop/Büro ·
+leicht/grosses Fassungsvermögen · Modellname · Haartypen). Keine erfundenen Eigenschaften, keine
+Material- oder Grössenangaben dazugedichtet.
+
+**Nebeneffekt:** **3 dieser Seiten hatten einen leeren SEO-Titel** (Shopify nahm den Produkttitel) —
+jetzt alle gesetzt, inkl. Meta-Description mit TWINT/Versand/Rückgabe.
+
+**Restliche Unschärfe (ehrlich):** `Schlichter Laptop-Rucksack · trendig` und `Laptop-Rucksack fürs Büro`
+teilen weiterhin den Begriff „Laptop-Rucksack", führen aber unterschiedlich an. Falls sie sich später
+gegenseitig behindern, muss eine der beiden Seiten ein völlig anderes Hauptkeyword bekommen.
+
+**Noch offen (technisch, nicht erledigt):** `aufblasbares sofa` rankt über eine **`?variant=`-URL**
+statt über die saubere Produkt-URL. Das gehört per Canonical auf die Hauptseite gezogen — Theme-/
+Template-Thema, nicht per Produkt-API lösbar.
+
+---|---|---|
 | **`rucksack business`** | **5 verschiedene Produkte** | 51, 55, 56, 57, 58 |
 | `fotodrucker` | 3 URLs auf dasselbe Produkt | 45, 50, 55 |
 | `aufblasbares sofa` | 3 Varianten-URLs | 51, 53 |
