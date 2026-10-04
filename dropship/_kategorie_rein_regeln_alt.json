@@ -113,5 +113,15 @@
     "condition": "Chelsea"
    }
   ]
+ },
+ "sub-halsketten": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kategorie-halskette"
+   }
+  ]
  }
 }
