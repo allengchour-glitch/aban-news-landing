@@ -83,13 +83,13 @@ async function sgql(t, q, v) {
 const GROQ_KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || ''), (process.env.GROQ_API_KEY3 || process.env.GROQ_API_KEY_3 || '')].filter(Boolean);
 // 'llama-3.3-70b-versatile' wird am 16.08.2026 abgeschaltet — aus der Reihe genommen.
 // Modellwahl + Parser liegen seit 02.09.2026 in automation/groq_text.mjs (EINE Quelle).
-async function groq(nameEn, feats) {
+async function groq(nameEn, feats, kat = '') {
   // messSicher(): harte Pruefung der Modellantwort auf Messwerte bei Wearables — ein
   // Prompt-Verbot allein hat am 04.09. nicht gereicht (siehe cj_copy_prompt.mjs).
   // ⚠️ 07.09.2026: Dieser Importer legt IMMER eine Standard-Variante an (Zeile ~212) —
   // ein Auswahl-Versprechen im Text ist hier also nie gedeckt. wahlSicher() schneidet
   // solche Saetze deterministisch heraus; ein Modell kann die Prompt-Regel ignorieren.
-  const o = await textErzeugen(copyPrompt({ nameEn, feats, kat: '' }));   // Groq → DeepSeek → Gemini, EINE Kette (14.09.2026)
+  const o = await textErzeugen(copyPrompt({ nameEn, feats, kat }));   // 04.10.: CJ-Kategorie statt leer   // Groq → DeepSeek → Gemini, EINE Kette (14.09.2026)
   if (!o) return null;
   if (o._modell !== 'groq') console.log('  ✍️ Text via', o._modell);
   return fallenSicher(wahlSicher(textPolieren(wirkSicher(messSicher(o)))), nameEn);
@@ -158,7 +158,7 @@ for (const item of ITEMS) {
   const imgs = (d.productImageSet || []).filter(u => /^https/.test(u)).slice(0, 20);
   if (imgs.length < 2) { console.log('✗ zu wenig Bilder:', item); continue; }
   const feats = (d.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  const g = await groq(d.productNameEn || val, feats);
+  const g = await groq(d.productNameEn || val, feats, d.categoryName || '');
   if (!g) { console.log('✗ keine Texte:', item); ohneText++; continue; }
   // Marken-Filter (14.08.2026), siehe automation/marken_filter.mjs
   const ms = produktSaeubern(g.title, g.html);
@@ -170,7 +170,7 @@ for (const item of ITEMS) {
   {
    const quelle = d.productNameEn || val;
    if (echoVomLieferanten(g.title, quelle)) {
-    const g2 = await groq(quelle, feats);
+    const g2 = await groq(quelle, feats, d.categoryName || '');
     if (g2 && g2.title && g2.html && !echoVomLieferanten(g2.title, quelle)) {
      const m2 = produktSaeubern(g2.title, g2.html);
      if (!m2.verdacht) { g.title = m2.title; g.html = m2.html; }

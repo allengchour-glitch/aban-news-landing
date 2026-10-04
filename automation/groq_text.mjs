@@ -16,6 +16,11 @@ const KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || ''
 
 export const GROQ_MODELLE = [
   { model: 'openai/gpt-oss-20b', body: { reasoning_effort: 'low', max_tokens: 1500 } },
+  // 04.10.2026 22:50: gpt-oss-20b hatte das Tageskontingent (200'000 Tokens JE Modell und Organisation) auf BEIDEN
+  // Organisationen verbraucht, DeepSeek und Gemini 402 → die Importer bekamen keine Texte («skip(gemini)» ~ jeder zweite).
+  // gpt-oss-120b hat ein eigenes Kontingent; mit reasoning_effort low und 2'500 Tokens kommt JSON (gemessen 1,7 s,
+  // «Gepolsterte Kapuzenjacke für Damen» — besser als 20b). Vor compound-mini, das Details erfindet.
+  { model: 'openai/gpt-oss-120b', body: { reasoning_effort: 'low', max_tokens: 2500 } },
   { model: 'groq/compound-mini', body: { max_tokens: 1200, response_format: { type: 'json_object' } } },
 ];
 

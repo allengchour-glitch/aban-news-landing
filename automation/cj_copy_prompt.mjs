@@ -27,7 +27,7 @@ Keine Auswahl behaupten: schreibe NICHT «erhältlich in verschiedenen Farben/Gr
 Keine Wirkversprechen: nichts «fördert Wachstum», «heilt», «gegen Falten/Pigmentflecken» — nur, was das Produkt IST und TUT (pflegt, reinigt, schützt).
 Keine medizinischen Messwerte bei Uhren, Armbändern und Ringen: NIE «Blutdruck», «EKG», «Blutzucker», «Glukose», «Elektrokardiogramm» — ein optischer Sensor am Handgelenk kann das nicht, und wer sich als Diabetikerin darauf verlässt, riskiert eine Unterzuckerung. Erlaubt sind Herzfrequenz, Blutsauerstoff/SpO2, Schritte, Schlaf und Hauttemperatur (nie «Körpertemperatur»).
 VERBOTEN sind diese Wörter und Wendungen: ${VERBOTEN.join(', ')}.
-Kategorie: ${kat || '-'}
+Kategorie: ${kat || '-'}  (benenne die Ware mit dem deutschen Warenwort, das zu dieser Kategorie passt — z. B. «Down Jackets» → Daunenjacke, nicht «Kissenmantel»)
 Name (EN): ${nameEn}
 Features (EN): ${(feats || '').slice(0, 700)}
 Bekannte Übersetzungsfallen: «digital oil painting»/«DIY painting»/«pure hand-painted … coloring» = ein Malen-nach-Zahlen-Set (Titel «Malen nach Zahlen – Motiv», nie «Digitales Ölgemälde» oder «handgemalt» — man malt selbst); «Suit» bei Kosmetik = «Set»; «flush trim bit» = «Bündigfräser».

@@ -732,7 +732,9 @@ for(const [cat,label] of grp.cats){
      if(imgs.length<grp.minImg)continue;
    }
    const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-   let g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
+   // 04.10.2026: CJ-Kategorie mitgeben — der Texter sieht kein Bild; «Down Jackets» verhindert «Kissenmantel» (Sichtprüfung 1'645 Neuimporte: 221 falsche Warenwörter).
+   const katVoll=[grp.kat, d.categoryName||p.categoryName||''].filter(Boolean).join(' · CJ-Kategorie: ');
+   let g=await gemini(nm,feats,katVoll); await sleep(GSLEEP);
    if(!g){console.log('  skip(gemini)',nm.slice(0,30));continue;}
    // Marken-Filter (14.08.2026): CJ-Listings schreiben «Chanel style» in Name/Features, die
    // Übersetzung übernimmt es wörtlich. Ohne diesen Schnitt entstehen mit jedem Lauf neue
@@ -746,7 +748,7 @@ for(const [cat,label] of grp.cats){
    // Erst ein zweiter Übersetzungsversuch, dann übersprungen — KEIN Ledger-Eintrag, das Produkt
    // kommt in einer späteren Runde erneut dran (gleiches Verhalten wie skip(gemini)).
    if(echoVomLieferanten(g.title,nm)){
-    const g2=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
+    const g2=await gemini(nm,feats,katVoll); await sleep(GSLEEP);
     if(g2&&g2.title&&g2.html&&!echoVomLieferanten(g2.title,nm)){
      const m2=produktSaeubern(g2.title,g2.html);
      if(!m2.verdacht){ g.title=m2.title; g.html=m2.html; }
