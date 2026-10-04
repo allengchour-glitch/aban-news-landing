@@ -8,5 +8,20 @@
     "condition": "ring"
    }
   ]
+ },
+ "sub-taschen": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kategorie-tasche"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "tasche"
+   }
+  ]
  }
 }
