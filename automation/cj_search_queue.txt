@@ -9,6 +9,15 @@
 # 2026-10-02 Semrush-Sortimentslücke (CH-Suchvolumen, von 2 Prüfern bestätigt): stehlampe 9900/Mt, orthopädisches hundebett 880/Mt
 # 2026-10-02 Semrush-Sortimentslücken 2 (CH-Suchvolumen, beide Prüfer): skianzug 1900, unterhosen herren 1300, messschieber 880, pilates ring 720, kartoffelpresse 720, rolltop rucksack 390, wickelrock 390, steppweste damen 260, katzentunnel 260, sneaker socken 210
 # 2026-10-02 Dünne Kategorien (Tag 4): 3D-Filament 7, Elektrowerkzeug 7 aktive Produkte
+# 2026-10-04 Semrush «adventskalender» 27100/Mt (frauen 8100, mann 5400, kinder 4400): GEFÜLLTE Kalender fehlen.
+#   Keine Kosmetik zum Auftragen, keine Süssigkeiten/Tee, keine Lizenzen (LEGO/Disney/Pokémon); vor 03.11. bestellbar.
+search:advent calendar jewelry
+search:advent calendar charm bracelet
+search:kids advent calendar toys
+search:christmas countdown calendar toy cars
+search:advent calendar hair accessories
+search:advent calendar socks
+search:pet advent calendar dog toys
 #done search:pla filament 1.75mm
 #done search:cordless drill set
 #done search:mini cordless angle grinder

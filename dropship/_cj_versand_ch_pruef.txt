@@ -3378,3 +3378,27 @@ weihnachtsstimmung-polsterhulle-303680	1737072817012744192	16	6.17	ok	landeseite
 gestricktes-hundehalstuch-im-weihnachtslook-033408	1447801772079976448	16	4.92	ok	landeseite
 weihnachtliche-hundeleine-564096	1437608427017867264	16	6.01	ok	landeseite
 stuhlkissen-aus-baumwoll-leinen-mix-mit-weihna-119744	1724637044456034304	16	9.61	ok	landeseite
+weihnachtsbaum-kit-zum-aufhangen-dcf595	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachtsbaum-stuhluberzug-531840	1530366073600749568	16	6.33	ok	landeseite
+weihnachtliche-kissenhulle-196864	1728962903463694336	16	6.77	ok	landeseite
+weihnachtsgeschenk-tasche-601400	2512010640331601600	16	14.05	ok	landeseite
+weihnachts-geschenksackli-aus-baumwolle-leinen-638400	2511270343091638600	16	6.77	ok	landeseite
+weihnachtliche-kissenhullen-im-cartoon-stil-570624	1726433024335679488	16	8.93	ok	landeseite
+diy-diamant-malerei-weihnachtskarte-27cca8	-	-	-	unklar keine CJ-SKU	landeseite
+diy-diamant-malerei-weihnachtskarten-set-adf74a	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachtskarten-kit-1485e8	-	-	-	unklar keine CJ-SKU	landeseite
+diy-diamond-painting-schlusselanhanger-weihnac-3edb64	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachtsgeschenktasche-622600	2511100621351622800	16	7.68	ok	landeseite
+weihnachts-countdown-kalender-619300	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+weihnachts-bausteine-lebkuchenhaus-co-621500	2411140842391621800	16	10.29	ok	landeseite
+weihnachts-manger-gruppe-623500	2411040954491623800	7	25.61	ok	landeseite
+weihnachtsschleife-fur-hunde-2d52fb	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachts-press-on-nagel-zum-ablosen-623900	2411110516261624100	16	4.40	ok	landeseite
+weihnachts-kissenbezug-mit-stickerei-589312	1576141263009755136	16	5.55	ok	landeseite
+weihnachtsschmuck-fur-katzen-795072	1739176049025486848	16	7.43	ok	landeseite
+diy-diamond-painting-weihnachtsbaum-2er-set-266624	1451020316896792576	16	6.33	ok	landeseite
+diy-diamond-painting-set-weihnachtsposter-628032	1444210694277959680	16	8.61	ok	landeseite
+tanzender-weihnachtsbaum-mit-musik-38524d	-	-	-	unklar keine CJ-SKU	landeseite
+sofa-kissenbezug-mit-weihnachts-digitaldruck-888832	1455105425983803392	16	10.15	ok	landeseite
+stuhlhusse-waldkaros-weihnachts-edition-879232	1453312686518571008	16	6.54	ok	landeseite
+bestickter-weihnachtskissenbezug-mit-bronzing-364416	1447376561367027712	16	6.63	ok	landeseite
