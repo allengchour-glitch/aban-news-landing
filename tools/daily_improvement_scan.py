@@ -112,6 +112,14 @@ def scan_page(p: Path, findings: list):
     HYPE_EXEMPT = ("archive/", "anti-hype-texten.html", "brand.html", "hype-watch")
     if not any(x in rel for x in HYPE_EXEMPT):
         text = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
+        # FREMDE Schlagzeilen zaehlen nicht als unsere Sprache. Die Markt- und
+        # News-Seiten verlinken Originalmeldungen; deren Titel steht woertlich im
+        # Linktext. GEMESSEN 04.10.2026: maerkte/ftse100.html wurde wegen
+        # „The FTSE 100 could skyrocket to 13,560!" gemeldet — ein Google-News-Titel.
+        # Wer das „behebt", faelscht ein Zitat. Nur Links auf FREMDE Hosts fliegen
+        # raus; interne Links bleiben drin, dort steht unsere eigene Copy.
+        text = re.sub(r'<a\b[^>]*\bhref="https?://(?!(?:www\.)?abannews\.com)[^"]*"[^>]*>.*?</a>',
+                      " ", text, flags=re.S | re.I)
         text = re.sub(r"<[^>]+>", " ", text)
         # Debunking-Kontext ignorieren: Hype-Wort in Anführungszeichen oder nach
         # Negation/„verboten"-Marker ist Absicht (die Marke entlarvt Hype), kein

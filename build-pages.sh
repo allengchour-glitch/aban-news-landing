@@ -97,6 +97,7 @@ tar -cf - \
   --exclude='./tools' \
   --exclude='./content' \
   --exclude='./downloads/packs' \
+  --exclude='./buero' \
   --exclude='./apps' \
   --exclude='./automation' \
   --exclude='./server' \
@@ -128,6 +129,11 @@ if [ -e _site/content ]; then echo "FEHLER: content/ ist im Deploy (bezahlte Pro
 # downloads/packs/ = ungeschützte Zwischenstufe von build_kit_zips.py (Klartext-Namen wie schulden-plan.zip).
 # Bis 01.10.2026 lag sie im Deploy: alle bezahlten Pakete waren unter /downloads/packs/<slug>.zip frei abrufbar.
 if [ -e _site/downloads/packs ]; then echo "FEHLER: downloads/packs/ ist im Deploy (bezahlte Produkte öffentlich) — Abbruch." >&2; exit 1; fi
+# buero/ = Rechnungen und Offerten aus tools/buero.py: Kundennamen, Betraege, IBAN, Zahlungsjournal.
+# Bisher schuetzte nur .gitignore — das greift beim Deploy aus einem Checkout, aber NICHT bei einem
+# lokalen "bash build-pages.sh" mit vorhandenen Rechnungen. Gemessen 04.10.2026: ein Testlauf legte
+# buero/2026-001-rechnung.html an, und build-pages.sh haette sie mitkopiert.
+if [ -e _site/buero ]; then echo "FEHLER: buero/ ist im Deploy (Rechnungen mit Kundendaten und IBAN oeffentlich) — Abbruch." >&2; exit 1; fi
 echo "Dateien im Deploy: $(find _site -type f | wc -l)"
 echo "Dateien > 24 MiB (müssen 0 sein):"
 find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true
