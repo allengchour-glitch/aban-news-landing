@@ -71,3 +71,30 @@ Kannibalisierung und Überverkauf.
 3. Produkt-**Bild ansehen**, bevor man Text schreibt. Beim Kühlschrank und beim Fotodrucker stand die
    Wahrheit auf dem Produktfoto, nicht in der Beschreibung.
 4. Versandzeile immer **CHF 50** (Begründung: `dropship/VERSAND-SCHWELLE.md`).
+
+## Runde 2 (04.10.2026 nachmittags)
+
+**3. `slippers` (1600/Mt) — Kategorieseite hatte 142 Zeichen.**
+Gemessen, was wirklich drin ist: **179 aktive Artikel**, davon tragen **126 «Slipper» im Namen** (Schuh zum
+Reinschlüpfen) und **55 «Hausschuh», «Pantoffel» oder «Plüsch»** (einzelne beides). 31 für Kinder, 53 Herren,
+21 Damen, 47 aus Leder, nur **8 nennen ausdrücklich eine rutschhemmende Sohle**. Preise CHF 14.90–115.90,
+Median 23.90. Daraus ein echter Kategorietext (2151 Zeichen): Unterschied Slipper/Hausschuh, Auswahl nach
+Typ, Grösse, Material, Pflege. SEO-Titel nennt jetzt beide Begriffe. Live geprüft.
+⚠️ **Falle:** Die Collection-Seite kam ~20 Sekunden lang aus dem Rand-Cache — der erste Abruf zeigte noch
+den alten Titel. Nach dem Ändern mit Cache-Buster nachprüfen, sonst hält man eine gute Änderung für kaputt.
+
+**4. `zauberstab` (1000/Mt) — zwei Widersprüche auf einer 559-Zeichen-Seite.**
+- Die Seite sagte gleichzeitig **«Lieferumfang: 1 Stück»** und **«📦 Verkauf in Bündeln zu 3 Stück»**.
+  Nachgemessen: von **2390 aktiven Fortura-Artikeln** haben nur **18** diese Zeile — und bei 17 davon steht
+  die Stückzahl im Titel («Draculagebiss · 10 Stück»). Der Zauberstab war die Ausnahme. Extern belegt
+  (Widmann-Artikel 52815, mehrere Händler): **1 Stück pro Packung**, 122 cm. Die Bündel-Zeile ist die
+  Kartonmenge des Grossisten und auf einer Kundenseite irreführend → entfernt, Lieferumfang bleibt 1 Stück.
+- **Es ist kein Handzauberstab, sondern ein 1,22-m-Stab** (Produktfoto: schwarzer Stab, oben eine grüne
+  Klauenhand mit aufgesprungener Kugel). Wer «Zauberstab» sucht, erwartet meist 30–40 cm. Titel und ein
+  Hinweiskasten sagen die Länge jetzt zuerst. Text 559 → 2043 Zeichen, FAQ ergänzt. Live geprüft.
+
+### 🟡 Preisbefund für den User (nicht eigenmächtig geändert)
+Der Zauberstab kostet bei uns **CHF 33.90**. Derselbe Widmann-Artikel liegt bei deutschen Händlern bei
+**rund EUR 9** (karneval-attacke.de, palast-der-spiele.de). Für ein Keyword mit 1000 Suchen/Monat heisst das:
+Ranking allein bringt nichts, wenn der erste Preisvergleich das Vierfache zeigt. Entscheidung über den Preis
+liegt beim User — Schweizer Lager und 1–2 Tage Lieferung rechtfertigen einen Aufschlag, aber kaum 4×.
