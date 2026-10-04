@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-04-1",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 1 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-04T21:14:22.855Z",
+  "dauer_s": 63.2,
+  "ergebnis": {
+    "gepinnt": [
+      "slim-fit-down-jackett-mit-weissem-federfullung-636300"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 28, offen 137",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 990 Z.): Titel nicht da",
+      "Bild 129209 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (1056 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-04-1-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-04-1-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-04-1-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "slim-fit-down-jackett-mit-weissem-federfullung-636300",
+      "board": "Sommerkleider & Damenmode 2026",
+      "title": "Slim-Fit Down-Jackett mit weissem Federfüllung"
+    }
+  }
 }
