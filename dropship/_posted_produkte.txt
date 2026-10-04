@@ -139,3 +139,4 @@ name:walnussholzkerzenwärmerfürzuhause
 slug:herren-loose-fit-kapuzenjacke-waffelpique
 slug:geldborse-kellner-fga26666
 slug:roter-papagei-fga930741
+slug:wassertropfen-powerbank-handwarmer-f5f25e
