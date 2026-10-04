@@ -15,14 +15,14 @@ Difficulty 6–10. Genau die Lücke, die Zalando/Galaxus nicht besetzen.
 
 | Keyword | Vol. | Platz | KD | CPC | Produkt |
 |---|---|---|---|---|---|
-| **`velo garage`** / `velogarage` | **1300** | 47/48 | **6** / 13 | 1.17 | velo-garage-mit-dach-und-stauraum-433410 |
+| ~~`velo garage`~~ ⛔ | ~~1300~~ | 47/48 | 6 | 1.17 | **SACKGASSE** — DRAFT, nicht in CH lieferbar (s. unten) |
 | `edelweiss shirt` | 320 | **34** | **6** | 1.21 | shirt-edelweiss-line |
 | `schwingerhosen` | 320 | 57 | **10** | **1.66** | schwingerhose-fgahb2887ml |
 | `knickerbocker hosen` | 260 | 49 | **10** | 1.14 | knickerbockerhose-fgssor7024 |
 | `wasserfester schmuck` | 720 | 56 | **10** | 1.26 | waterproof-stainless-steel-jewelry-set |
 | `meerjungfrau kostüm` | 260 | 45 | **9** | 0.77 | kostum-meerjungfrau-fgss5814 |
 
-→ `velo garage` ist der auffälligste Treffer des ganzen Datensatzes: **1300 Suchen bei Difficulty 6.**
+→ ⚠️ `velo garage` sah nach dem besten Treffer aus (1300 Suchen, KD 6) — ist aber **nicht lieferbar und 404**. Siehe Abschnitt „5 der 21 Chancen-Seiten waren 404".
 
 ## 🥈 Gruppe B — grosses Volumen, machbare Difficulty
 | Keyword | Vol. | Platz | KD | Produkt |
@@ -97,6 +97,38 @@ Haupt-Keyword) und intern auf die Zielseite verlinken. Varianten-URLs (`?variant
 per Canonical auf die Hauptseite.
 
 ---
+
+---
+
+## 🛑 WICHTIG: 5 der 21 Chancen-Seiten waren 404 (geprüft 2026-10-04)
+
+**Erst Erreichbarkeit prüfen, dann optimieren.** Bei der Arbeit an `velo garage` kam heraus: mehrere
+Top-Chancen sind **DRAFT, in 0 Kanälen, nie veröffentlicht** → öffentlich **HTTP 404**. Google schickt
+Sucher auf Seiten, die es nicht gibt. Das ist die **Publish-Falle** aus dem Runbook.
+
+| Keyword | Vol. | Befund | Urteil |
+|---|---|---|---|
+| ~~`velo garage`~~ | 1300 | DRAFT · Tag **`cj-nicht-versendbar-ch`** | ⛔ **Sackgasse** — CJ liefert nicht in die CH. War in der ersten Fassung meine Priorität 2; das war falsch. |
+| ~~`waschmaschinenschrank`~~ | 880 | DRAFT · Tag **`cj-nicht-versendbar-ch`** | ⛔ Sackgasse |
+| ~~`spin bike`~~ | 1300 | DRAFT · **0 Bilder** · sperrig (§5) | ⛔ nicht veröffentlichbar (wäre eine kaputte Seite) |
+| ~~`mini ventilator`~~ | 1000 | DRAFT · Tag **`cj-nicht-mehr-verfuegbar`** | ⛔ nicht lieferbar |
+| **`holzspiegel`** | 140 | DRAFT, aber **8 Bilder READY**, CHF 15.90, keine Sperre | ✅ **gerettet** → ACTIVE + 9 Kanäle, URL jetzt **200** |
+
+**Folge:** Von 4'620 Suchen/Monat auf 404-Seiten sind **nur 140 wirklich rettbar**. Die grossen Volumen
+(`velo garage`, `spin bike`, `waschmaschinenschrank`, `mini ventilator` = 4'480 Suchen) sind **nicht
+erschliessbar**, weil die Produkte nicht in die Schweiz lieferbar, nicht mehr verfügbar oder bildlos sind.
+
+### 🔑 Zwei Lehren für jede Session
+1. **Erreichbarkeit zuerst messen.** Eine Chancen-Liste aus Semrush enthält Seiten, die längst 404 sind —
+   Semrush zeigt veraltete Index-Einträge. Vor jeder Optimierung: `curl -o /dev/null -w "%{http_code}"`.
+2. **HTTP 429 ist NICHT 404.** Bei schneller Prüfung in Folge liefert luxestyle.ch 429 (Rate-Limit).
+   Vier Seiten (`schwingerhosen`, `camisole`, `zauberstab`, `leinenkleid`) sahen erst „tot" aus und waren
+   mit 3 s Pause alle **200**. Ohne Nachprüfung hätte ich vier gesunde Chancen fälschlich gestrichen.
+
+### Ganze Velo-Kategorie liegt brach
+Nebenbefund: von ~25 Velo-/Fahrrad-Produkten sind **nur 5 ACTIVE**, der Rest DRAFT (viele BigBuy:
+Dunlop, Reebok, Youin). Wenn dort lieferbare Artikel dabei sind, ist das ein eigener Hebel — aber je
+Produkt QA (Bilder, Liefersperre, Verfügbarkeit) nötig, nicht pauschal publizieren.
 
 ## Empfohlene Reihenfolge
 1. **Gruppe D zuerst** — Kannibalisierung aufräumen. Kostet keine neue Nachfrage, hebt Bestehendes.
