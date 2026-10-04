@@ -1,0 +1,42 @@
+{
+ "wohnen-dekoration": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wohnen"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "dekoration"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kueche"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wandbild"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "pflanzentopf"
+   }
+  ]
+ },
+ "schuhe": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "schuhe"
+   }
+  ]
+ }
+}
