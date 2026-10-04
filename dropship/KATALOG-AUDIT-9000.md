@@ -49,11 +49,17 @@ eine Bildprüfung je Produkt. Für die ~30 Seiten mit Google-Position ist das ve
 **Richtige Schlussfolgerung:** Die vier Fälle sind belegt und behoben. Ob es viele oder wenige weitere gibt,
 ist **offen** — und sollte dort geprüft werden, wo Besucher ankommen, nicht im ganzen Katalog.
 
+**Nachtrag, fünfte Bildprüfung:** `baumwoll-camisole-608000` war **sauber** — Bild und Titel stimmen überein.
+Der Stand ist damit **4 von 5**, nicht 4 von 4. Das bleibt viel, ist aber kein Totalbefund.
+
 ## Nächste sinnvolle Schritte
 1. Masse-Nachtrag aus CJ in Chargen (grösster messbarer Hebel: 72 % → idealerweise unter 20 %).
 2. Bildprüfung weiter nur für Seiten mit Position oder Besuchern.
-3. `baumwoll-camisole-608000` prüfen: Handle sagt «Baumwoll-Camisole», Titel «Corsagen-Top mit eckigem
-   Ausschnitt» — die Seite rankt auf Platz 47 für «camisole» (1000 Suchen/Mt).
+3. ~~`baumwoll-camisole-608000` prüfen~~ — **erledigt, kein Defekt.** Das Produktbild zeigt genau das, was
+   der Titel sagt: ein Corsagen-Top mit eckigem Ausschnitt und sichtbaren Stäbchen-Nähten. Der Handle
+   `baumwoll-camisole` ist nur ein alter Slug. Die Seite rankt auf Platz 47 für «camisole» (1000/Mt) —
+   das Ranking ist schwach, weil ein Corsagen-Top etwas anderes ist als eine Camisole, aber die Seite
+   **täuscht niemanden**: Titel und Bild stimmen überein. Nichts zu tun.
 
 ## Messwerkzeug
 `audit.mjs` und `handle.mjs` dieser Sitzung; beide mit eingebauter Gegenprobe. Wiederholbar gegen
