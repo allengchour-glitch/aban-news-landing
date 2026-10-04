@@ -3,6 +3,11 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-03-7",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 7 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "abgebrochen-unklar",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen.",
+  "geschlossen": {
+    "wann": "2026-10-04T00:10:42Z",
+    "durch": "auftrag_haenger_schliessen.py",
+    "grund": "Lauf gestorben; pinterest-pin-2026-10-03-8 hat danach die Pinnwand gelesen (Pin entweder da oder wird dort neu gesetzt) — nicht von Hand wiederholen."
+  }
 }
