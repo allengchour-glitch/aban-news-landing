@@ -1434,3 +1434,9 @@ gid://shopify/Product/16604876734855	a	toddler
 gid://shopify/Product/16604886598023	a	toddler
 gid://shopify/Product/16604893544839	a	toddler
 gid://shopify/Product/16604896330119	a	toddler
+gid://shopify/Product/15450832667009	w	Kleinteile	Riesiger Teddybär – Plüschtier mit Leder-Optik
+gid://shopify/Product/15450849870209	w	Kleinteile	Plüschtier-Set mit Tierstimmen
+gid://shopify/Product/15450854982017	w	Kleinteile	Soft Comfort Elefanten Plüschtier
+gid://shopify/Product/15483934900609	w	Kleinteile	Beruhigendes Kuscheltier
+gid://shopify/Product/15450837680513	a	toddler
+gid://shopify/Product/15469960069505	a	kids

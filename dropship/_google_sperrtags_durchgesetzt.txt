@@ -786,3 +786,7 @@
 2026-10-04T22:31:13Z	gid://shopify/Product/15448575672705	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	spitzen-body-mit-stickerei-und-formbugel-615200
 2026-10-04T22:31:14Z	gid://shopify/Product/15448659624321	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	body-mit-spitze-und-wimpern-bordure-617900
 2026-10-04T22:31:15Z	gid://shopify/Product/15493861212545	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	damen-body-mit-spitze-und-cut-outs-609600
+2026-10-04T23:01:43Z	gid://shopify/Product/16603337425287	adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	muskelmann-schreibtischlampe-aus-pla-615100
+2026-10-04T23:01:44Z	gid://shopify/Product/16603690303879	kostuem	Google & YouTube	realistische-tiermaske-614200
+2026-10-04T23:01:45Z	gid://shopify/Product/16604930834823	lizenz-nicht-bewerben	Google & YouTube	puppenkleider-set-fur-anhanger-602500
+2026-10-04T23:01:45Z	gid://shopify/Product/16605481533831	kostuem	Google & YouTube	old-man-wanchristmas-haustier-strickpullover-681024

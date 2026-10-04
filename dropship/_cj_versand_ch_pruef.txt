@@ -3438,3 +3438,12 @@ weihnachtsmuster-fleece-hoodie-609200	2512110656031609400	16	10.01	ok	landeseite
 weihnachts-pullover-damen-3d-druck-625500	2511280341121625700	16	8.79	ok	landeseite
 weihnachtskatze-pullover-612800	2511260308111613100	16	9.16	ok	landeseite
 weihnachtsbaum-kissen-616600	2606021546041617300	16	10.96	ok	landeseite
+weihnachts-diy-kit-619600	2509051039241619800	16	7.43	ok	landeseite
+diamond-painting-weihnachts-schlusselanhanger-311553	2074710224503500801	0	-	KEINE CH-Option → DRAFT	landeseite
+weihnachtsgirlande-927808	1693566751142842368	16	26.08	ok	landeseite
+weihnachtliche-hausschuh-771072	1584819303739183104	16	8.93	ok	landeseite
+weihnachts-kerzenleuchten-793600	1703652282866348032	7	6.98	ok	landeseite
+weihnachts-projektionslicht-624300	2511281254151624500	16	7.51	ok	landeseite
+3d-druck-weihnachts-shirt-herren-629300	2606250217161620200	16	8.79	ok	landeseite
+weihnachts-fridge-dekoration-620700	2411180335481620900	16	5.81	ok	landeseite
+weihnachtsstrumpf-ornament-630300	2607100920431630900	16	5.69	ok	landeseite
