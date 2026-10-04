@@ -3433,3 +3433,6 @@ weihnachts-langarmshirt-fur-damen-622400	2512130319581622900	16	8.25	ok	landesei
 weihnachts-hoodie-mit-3d-digitaldruck-fur-dame-615400	2512130314201615600	16	8.25	ok	landeseite
 weihnachts-pullover-fur-damen-mit-rundhals-623700	2512110526111623900	16	7.85	ok	landeseite
 weihnachts-falschaugenwimpern-set-603100	2511280404221603300	3	8.89	ok	landeseite
+weihnachts-flanell-hoodie-608300	2512310004411608500	16	10.83	ok	landeseite
+weihnachtsmuster-fleece-hoodie-609200	2512110656031609400	16	10.01	ok	landeseite
+weihnachts-pullover-damen-3d-druck-625500	2511280341121625700	16	8.79	ok	landeseite
