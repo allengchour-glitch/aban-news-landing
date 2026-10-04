@@ -308,12 +308,9 @@ gid://shopify/Product/15522058142081
 gid://shopify/Product/15522109456769
 gid://shopify/Product/15522117288321
 gid://shopify/Product/15522128593281
-gid://shopify/Product/15522164736385
 gid://shopify/Product/15522164900225
 gid://shopify/Product/15522214248833
-gid://shopify/Product/15522214576513
 gid://shopify/Product/15522242527617
-gid://shopify/Product/15522298659201
 gid://shopify/Product/15522930917761
 gid://shopify/Product/15523017490817
 gid://shopify/Product/15523137225089
