@@ -3362,3 +3362,9 @@ weihnachts-langarmshirt-fur-herren-616700	2512090328431617000	16	7.17	ok	landese
 weihnachts-kissenbezug-mit-cartoon-motiven-604700	2411100437011604900	16	6.77	ok	landeseite
 weihnachts-halsband-mit-plusch-kugel-621500	2412081057061621700	16	4.92	ok	landeseite
 weihnachts-manikure-im-cat-s-eye-stil-620800	2406150633201621000	0	-	KEINE CH-Option → DRAFT	landeseite
+diy-weihnachtskissen-stickset-aus-wolle-804416	1731537143530524672	16	10.83	ok	landeseite
+led-kissenbezug-mit-weihnachtsmotiv-051072	1531965078365548544	7	6.90	ok	landeseite
+weihnachtsbaum-spieluhr-aus-bausteinen-465408	1721034624995962880	7	23.86	ok	landeseite
+weihnachts-baustein-set-896768	1674673586944086016	16	14.60	ok	landeseite
+weihnachts-baumhaus-schloss-bausteine-965312	1654777635261657088	16	20.04	ok	landeseite
+12-stuck-weihnachts-nagelaufkleber-cartoon-des-190336	1591989016298270720	16	5.55	ok	landeseite
