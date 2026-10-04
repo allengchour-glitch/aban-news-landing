@@ -73,8 +73,11 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
 6. **Starten:** Doppelklick auf `start-auto.bat`. Er macht den Selbsttest, schichtet einmal am Tag das Depot um
    (Strategie „Ausgleich“) und handelt tagsüber nur Signale mit Gütesiegel als Bracket-Auftrag (Stop + Ziel). 20 Minuten
    vor US-Börsenschluss stellt er alles glatt. Fenster schliessen = Bot aus.
-7. **Not-Aus:** Doppelklick auf `stop.bat`. Danach gehen keine neuen Aufträge mehr raus. Mit `weiter.bat` wieder freigeben.
-8. **Automatisch jeden Tag:** Windows-Aufgabenplanung → „Einfache Aufgabe erstellen“ → täglich 15:00 (US-Börse öffnet
+7. **Wochenbericht:** Einmal pro Woche schickt der Tageslauf automatisch einen Stand aufs Handy (Telegram oder ntfy):
+   jede Strategie seit Start und gegen die Vorwoche, wie viel investiert ist, welche Märkte das Gütesiegel haben und was der
+   Broker zuletzt gemacht hat. Sofort abrufen: `python tools/trading/ki_bot/bot.py --bericht`.
+8. **Not-Aus:** Doppelklick auf `stop.bat`. Danach gehen keine neuen Aufträge mehr raus. Mit `weiter.bat` wieder freigeben.
+9. **Automatisch jeden Tag:** Windows-Aufgabenplanung → „Einfache Aufgabe erstellen“ → täglich 15:00 (US-Börse öffnet
    15:30 Schweizer Zeit) → Programm `start-auto.bat`.
 
 Läuft er mindestens **3 Monate** im Papierkonto, vergleiche mit `python tools/trading/ki_bot/signale.py --rueckblick`
@@ -127,6 +130,6 @@ aussteigt, verpasst die stärksten Erholungstage. Darum kommen diese Daten **nic
 ## Prüfen
 
 ```
-python3 tools/trading/ki_bot/test_ki_bot.py   # 39 Tests, inkl. nachgebautem Alpaca-Server
+python3 tools/trading/ki_bot/test_ki_bot.py   # 42 Tests, inkl. nachgebautem Alpaca-Server
 python3 tools/trading/ki_bot/bot.py --pruefen  # Gegenproben: Wahrsager ~100 %, Zufallsmarkt nicht extrem
 ```

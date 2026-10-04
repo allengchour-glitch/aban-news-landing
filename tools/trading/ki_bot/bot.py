@@ -361,6 +361,55 @@ def lauf(offline, heute=None):
     return lb
 
 
+def wochenbericht(lb, heute=None, signale_lb=None, broker=None):
+    """Kurzer Stand fürs Handy: Depots gegen Start und gegen die Vorwoche, Gütesiegel, letzter Broker-Lauf."""
+    heute = heute or datetime.now(timezone.utc).date().isoformat()
+    vor7 = (datetime.fromisoformat(heute) - timedelta(days=7)).date().isoformat()
+    def chf(x):
+        return f"{x:,.0f}".replace(",", "'")
+    z = [f"📊 KI-Bot Wochenbericht {heute} (Spielgeld, Start je {chf(START)})"]
+    rangliste = []
+    for name, st in lb.get("strategien", {}).items():
+        e = st.get("eintraege") or []
+        if not e:
+            continue
+        jetzt = e[-1]["depot"]
+        alt = next((x["depot"] for x in reversed(e) if x["stand"] <= vor7), e[0]["depot"])
+        invest = sum(p["wert"] for p in st.get("positionen", {}).values()) / jetzt if jetzt else 0.0
+        rangliste.append((jetzt, name))
+        z.append(f"• {name}: {chf(jetzt)} ({(jetzt / START - 1) * 100:+.1f} % seit Start, {(jetzt / alt - 1) * 100:+.1f} % Woche) · "
+                 f"{invest * 100:.0f} % investiert")
+    if rangliste:
+        z.append(f"Vorne: {max(rangliste)[1]}. Eine Woche sagt wenig — erst nach Monaten vergleichen.")
+    if signale_lb and signale_lb.get("pruefungen"):
+        mit = [n for n, v in signale_lb["pruefungen"].items() if v["siegel"].get("ok")]
+        z.append("Daytrading-Gütesiegel: " + (", ".join(mit) if mit else "kein Markt — der Bot handelt dort bewusst nicht"))
+        fertig = [x for x in signale_lb.get("signale", []) if x.get("ergebnis") and x.get("gesendet")]
+        if fertig:
+            z.append(f"Gesendete Signale abgerechnet: {len(fertig)}, Ø {sum(x['ergebnis']['rendite'] for x in fertig) / len(fertig) * 100:+.2f} % je Trade")
+    if broker:
+        b = broker[-1]
+        z.append(f"Broker zuletzt {b['zeit'][:10]} ({b['modus']}): {len(b.get('auftraege', []))} Aufträge" + (f" · {b['hinweis']}" if b.get("hinweis") else ""))
+    z.append("Keine Anlageberatung.")
+    return "\n".join(z)
+
+
+def bericht_senden(lb, erzwingen=False, heute=None):
+    """Höchstens einmal pro 7 Tage (oder sofort mit erzwingen); Push über Telegram und/oder ntfy."""
+    heute = heute or datetime.now(timezone.utc).date().isoformat()
+    zuletzt = lb.get("bericht_gesendet")
+    if not erzwingen and zuletzt and (datetime.fromisoformat(heute) - datetime.fromisoformat(zuletzt)).days < 7:
+        return False
+    import signale as SG
+    bp = ROOT / "data" / "ki-bot-broker.json"
+    text = wochenbericht(lb, heute, SG.lies() if SG.LOGBUCH.exists() else None,
+                         json.loads(bp.read_text(encoding="utf-8")) if bp.exists() else None)
+    SG.push(text)
+    lb["bericht_gesendet"] = heute
+    LOGBUCH.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return True
+
+
 def pruefen():
     gp = gegenproben()
     ok = gp["wahrsager_skill"] is not None and gp["wahrsager_skill"] >= 0.95 and gp["wahrsager_gewicht"] >= 0.5 \
@@ -378,7 +427,15 @@ def main() -> int:
     ap.add_argument("--offline", action="store_true", help="nur zwischengespeicherte Kurse (fehlende werden geholt)")
     ap.add_argument("--broker", choices=["alpaca"])
     ap.add_argument("--trocken", action="store_true", help="Broker: Aufträge nur anzeigen, nichts senden")
+    ap.add_argument("--bericht", action="store_true", help="Wochenbericht jetzt anzeigen und aufs Handy schicken")
     a = ap.parse_args()
+    if a.bericht:
+        lb = lies_logbuch()
+        if not lb.get("strategien"):
+            print("Noch kein Logbuch — zuerst: bot.py --lauf")
+            return 1
+        bericht_senden(lb, erzwingen=True)
+        return 0
     if a.pruefen:
         return 0 if pruefen() else 1
     if a.backtest:
@@ -389,10 +446,12 @@ def main() -> int:
             print("Selbsttest fehlgeschlagen — heute wird nichts geschrieben.")
             return 1
         lb = lauf(a.offline)
+        rc = 0
         if a.broker == "alpaca":
             import broker_alpaca as B
-            return B.ausfuehren(lb, trocken=a.trocken)
-        return 0
+            rc = B.ausfuehren(lb, trocken=a.trocken)
+        bericht_senden(lb)  # einmal pro Woche aufs Handy
+        return rc
     ap.print_help()
     return 0
 
