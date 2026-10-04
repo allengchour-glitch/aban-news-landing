@@ -16513,3 +16513,4 @@ gid://shopify/Product/15509134344577	14->1	Wasserdichter Motorrad-Rucksack 35L
 gid://shopify/Product/15509345010049	29->0	Wurstmaschine für Zuhause
 gid://shopify/Product/15510316089729	10->3	Schaum-Sprühpistole für Autowäsche
 gid://shopify/Product/15510325821825	43->0	Grosses Rückenpolster mit Arm- und Nackenkissen
+gid://shopify/Product/15510791389569	71->0	Multifunktionaler Brustgurt mit Zubehörtasche
