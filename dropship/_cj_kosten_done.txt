@@ -41187,3 +41187,4 @@ gid://shopify/Product/15448076648833	CHF 19.54	4 Varianten	Badeanzug-Set · Dame
 gid://shopify/Product/15448648122753	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Pants mit Print · Modell 2
 gid://shopify/Product/15448648450433	CHF 13.45	4 Varianten	Vier Jahreszeiten Yoga-Hose mit Print · Modell 3
 gid://shopify/Product/15448837587329	CHF 81.47	8 Varianten	Keramik-Antihaft-Bratpfanne
+gid://shopify/Product/15469960069505	keine-cj-referenz
