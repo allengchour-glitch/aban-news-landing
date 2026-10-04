@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-03T09:51:38Z",
+ "stand": "2026-10-04T10:33:45Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,51 +18,75 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Macos: Apple verschärft Full Disk Access wegen KI-Agenten",
-   "u": "https://www.golem.de/news/macos-apple-verschaerft-full-disk-access-wegen-ki-agenten-2610-213673.html",
+   "t": "Frustriert?: GPT Astra betrügt bei Starcraft-Bot-Benchmark",
+   "u": "https://www.golem.de/news/frustriert-gpt-astra-betruegt-bei-starcraft-bot-benchmark-2610-213683.html",
    "q": "Golem",
-   "d": "2026-10-03T09:50:02Z",
-   "s": "Apple plant strengere Kontrollen für Full Disk Access. Grund sind laut Apple wachsende Risiken durch KI-Agenten. (MacOS, Apple)",
+   "d": "2026-10-04T10:17:02Z",
+   "s": "OpenAIs GPT 6 alias Astra hat zu unlauteren Mitteln gegriffen, nachdem eigene Versuche, einen Starcraft-Bot zu programmieren, fehlgeschlagen waren. (OpenAI, KI)",
    "sprache": "de"
   },
   {
-   "t": "KI im IT-Alltag: 89 Prozent konnten ihre Produktivität steigern – aber nicht alle profitieren gleichermaßen",
-   "u": "https://t3n.de/news/ki-im-it-alltag-89-prozent-konnten-ihre-produktivitaet-steigern-aber-nicht-alle-profitieren-gleichermassen-1766467/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Zu viel Autonomie: Metas KI-Agent Muse verrät Wohnadresse ohne Zustimmung",
+   "u": "https://t3n.de/news/meta-muse-ki-agent-verraet-wohnadresse-marketplace-1765382/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-03T09:25:03Z",
-   "s": "In deutschen IT-Abteilungen ist man sich einig: KI spart mehr Zeit, als sie zusätzliche Arbeit verursacht. Je nach Position gehen die Erfahrungen von Fach- und Führungskräften aber immer noch auseinan…",
+   "d": "2026-10-04T10:10:00Z",
+   "s": "Metas KI-Agent Muse kann unter anderem eigenständig Facebook-Marketplace-Accounts managen. Ein Nutzer schilderte, welch unerfreuliche Dinge ihm dabei passierten. weiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Künstliche Intelligenz: Gemini greift auf Google Wallet zu",
-   "u": "https://www.golem.de/news/kuenstliche-intelligenz-gemini-greift-auf-google-wallet-zu-2610-213674.html",
+   "t": "ChatGPT-Effekt: Warum Uni-Absolventen jetzt 13 Prozent weniger verdienen",
+   "u": "https://t3n.de/news/ki-absolventen-gehalt-berufseinstieg-chatgpt-studie-1764272/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-04T09:00:00Z",
+   "s": "KI hat die Einstiegschancen von Absolvent:innen auf dem Arbeitsmarkt deutlich verschlechtert. Laut einem Arbeitspapier der US-Statistikbehörde verdienten etwa Informatik-Student:innen nach ihrem Absch…",
+   "sprache": "de"
+  },
+  {
+   "t": "Speicherkrise: Kleine Raspberry Pis werden teurer, DGX Spark mit weniger RAM",
+   "u": "https://www.golem.de/news/speicherkrise-kleine-raspberry-pis-werden-teurer-dgx-spark-mit-weniger-ram-2610-213680.html",
    "q": "Golem",
-   "d": "2026-10-03T09:02:02Z",
-   "s": "Gemini findet ab sofort Bord- sowie Treuekarten und wertet Ausgaben aus. Vorerst startet die Funktion allerdings nur in den USA. (Gemini, Google)",
+   "d": "2026-10-04T08:16:02Z",
+   "s": "Die Speicherkrise sorgt weiter für steigende Preise. Bislang verschonte Raspberry Pis werden teurer, Nvidias KI-Desktop kommt als kleinere Version. (RAM, Nvidia)",
    "sprache": "de"
   },
   {
-   "t": "Leica bleibt Leica und KI trifft Kunst – Fotonews der Woche 40/2026",
-   "u": "https://www.heise.de/news/Leica-bleibt-Leica-und-KI-trifft-Kunst-Fotonews-der-Woche-40-2026-11474285.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Missing Link: Our Best Machines – Was bin ich ohne meinen KI-Assistenten?",
+   "u": "https://www.heise.de/news/Missing-Link-Our-Best-Machines-Was-bin-ich-ohne-meinen-KI-Assistenten-11467180.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-03T08:00:00Z",
-   "s": "Leica-Verkauf gescheitert, Australiens KI-Gesetz trifft Wandmalerei, In-N-Out gegen Teamshooting und ein spektakuläres Sonnenfinsternisbild.",
+   "d": "2026-10-04T05:31:00Z",
+   "s": "KI-Assistenten ziehen in immer mehr Lebensbereiche ein. Medizininformatikerin und Sci-Fi-Autorin über die Frage wer wir ohne",
    "sprache": "de"
   },
   {
-   "t": "Meta Muse: Warum eure Anrufe nicht von der KI, sondern von Menschen bearbeitet werden",
-   "u": "https://t3n.de/news/meta-muse-anrufe-ki-mensch-1764706/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-03T07:50:00Z",
-   "s": "Verspricht Meta bei Muse AI mehr, als das Unternehmen halten kann? Der KI-Agent soll theoretisch Anrufe für Nutzer:innen tätigen. Jetzt gibt es interne Kommunikation, die darauf hinweist, dass stattde…",
-   "sprache": "de"
+   "t": "The Agent Said It Was Done. The Database Disagreed.",
+   "u": "https://huggingface.co/blog/microsoft/thinkingbox",
+   "q": "Hugging Face",
+   "d": "2026-10-03T22:56:48Z",
+   "s": "",
+   "sprache": "en"
   },
   {
-   "t": "Weniger Prompt, mehr Platz für Code: Pi 1.0.0 ist da",
-   "u": "https://www.heise.de/news/Coding-Agent-Pi-Mehr-Platz-im-Prompt-weniger-Ballast-11474629.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Amazon responds to data center backlash, says it no longer uses NDAs",
+   "u": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-03T18:43:57Z",
+   "s": "The CEO of Amazon Web Services tried to push back against widespread suspicion of data centers.",
+   "sprache": "en"
+  },
+  {
+   "t": "OpenAI safety employee resigns, claiming the company’s ‘culture is broken’",
+   "u": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-03T16:30:01Z",
+   "s": "By his own admission, David Robinson is “something of a cliché”: an employee at a leading AI company who issues a dire warning while resigning from their job.",
+   "sprache": "en"
+  },
+  {
+   "t": "Nvidias DGX Spark wird trotz halbiertem RAM teurer",
+   "u": "https://www.heise.de/news/Nvidias-DGX-Spark-wird-trotz-halbiertem-RAM-teurer-11475117.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-03T06:20:00Z",
-   "s": "Pi ist ein erweiterbarer KI-Coding-Agent fürs Terminal. Version 1.0.0 strafft den Codemode, ergänzt Bildgenerierung und startet im Vollbild.",
+   "d": "2026-10-03T16:02:00Z",
+   "s": "Ein neues Modell der KI-Workstation für lokale KI bringt nur noch 64 GByte RAM mit. Teurer wird es trotzdem.",
    "sprache": "de"
   },
   {
@@ -72,30 +96,6 @@
    "d": "2026-10-03T04:28:56Z",
    "s": "Ein Gesicht reicht: Mit KI lassen sich Fotos für sexualisierte Deepfakes missbrauchen (Symbolbild) – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Egor KomarovEine neue Studie zeigt, wie Politike…",
    "sprache": "de"
-  },
-  {
-   "t": "Meta wants your next gadget to be Muse-infused",
-   "u": "https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-03T00:45:39Z",
-   "s": "Meta wants Muse in your TV and your toaster, so it's giving the code away for free.",
-   "sprache": "en"
-  },
-  {
-   "t": "Sean Parker is rebuilding Stability AI around music",
-   "u": "https://techcrunch.com/2026/10/02/sean-parker-is-rebuilding-stability-ai-around-music/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-02T21:09:14Z",
-   "s": "Sean Parker, who once taught the music industry what asking for forgiveness looks like, is now back with the labels' blessing and money.",
-   "sprache": "en"
-  },
-  {
-   "t": "A model guide for the GPT-6 family",
-   "u": "https://openai.com/index/practical-guide-building-gpt-6",
-   "q": "OpenAI",
-   "d": "2026-10-02T16:15:00Z",
-   "s": "Learn how startups can choose GPT-6 models, tune reasoning effort, improve prompts and skills, coordinate tools, and prepare workflows for production.",
-   "sprache": "en"
   }
  ]
 }
