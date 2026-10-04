@@ -141,15 +141,21 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   const DEBUG = process.env.DEBUG === '1';
   // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
   async function resolvePid(sku) {
+    // Reihenfolge nach Messung 2026-10-04: der aktuelle Katalog nutzt VARIANTEN-SKUs
+    // (z. B. CJYD291530101AZ) → variantSku zuerst = 1 Abfrage statt 2. Die beiden
+    // /product/list-Strategien sind entfernt: sie kosten CJ-API-Punkte und trafen nie.
     const strategies = [
-      ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
       ['query/variantSku', '/product/query', { variantSku: sku }],
-      ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
-      ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
+      ['query/productSku', '/product/query', { productSku: sku }],
     ];
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
       await sleep(1100);
+      // CJ-Tagespunkte erschoepft? Dann NICHT als "keine pid" verschleiern — sonst entsteht
+      // wieder der Fehlschluss "CJ hat keine Kommentare" (teuer gelernt 2026-09/10).
+      if (/insufficient api points/i.test(String(r?.message || ''))) {
+        throw new Error('CJ_QUOTA: ' + r.message);
+      }
       const d = r?.data;
       const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
       const pid = d?.pid || d?.productId || (Array.isArray(listed) ? (listed[0]?.pid || listed[0]?.productId) : null);
@@ -199,7 +205,15 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
       if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} }
-    } catch (e) { fails++; console.error(`✗ ${p.handle}: ${e.message}`); }
+    } catch (e) {
+      if (String(e.message).startsWith('CJ_QUOTA')) {
+        console.error(`\n⛔ CJ-TAGESPUNKTE ERSCHOEPFT — Lauf hier beendet (${e.message}).`);
+        console.error('   Das ist KEIN Hinweis darauf, dass die Produkte keine Reviews haben!');
+        console.error('   Morgen erneut laufen lassen (Punkte setzen taeglich zurueck) oder LIMIT kleiner setzen.');
+        break;
+      }
+      fails++; console.error(`✗ ${p.handle}: ${e.message}`);
+    }
   }
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
   process.exit(0);

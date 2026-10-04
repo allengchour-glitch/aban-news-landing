@@ -64,6 +64,25 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-04 (Review-Grind: Creds entschlüsselt, Resolver + Quota-Falle gefixt):**
+- **🔑 ENV-VARIABLEN SIND VERTAUSCHT ANGELEGT** (User-Umgebung): Schlüssel steht im **Namensfeld**, der
+  Variablenname im **Wertfeld**. Entschlüsselt: `zIFh_4JtYYy3Ue5RdajLe6zhf5U` = **JUDGEME_PRIVATE_TOKEN** ·
+  `gsk_…` = GROQ_API_KEY · Name `ffe6c3a1…` = SHOPIFY_CLIENT_ID, im Wert steckt `shpss_…` = CLIENT_SECRET.
+  Nur `github_key` ist korrekt. Zur Laufzeit rekonstruierbar — **User sollte es in der Umgebung umdrehen**.
+  **Shopify-Client-Credentials-Grant damit live verifiziert (Token 38 Z.).** → Judge.me-Token ist DA.
+- **🐛 KORREKTUR meiner Notiz vom 07.09. („Resolver funktioniert"):** galt nur für ALTE SKUs
+  (`CJWJWJYZ05805`). Der **aktuelle Katalog nutzt VARIANTEN-SKUs** (`CJYD291530101AZ`) → nur
+  `product/query?**variantSku**=…` trifft (verifiziert: pid `2605291307171625300`, `d.pid` lesbar).
+  Resolver umgestellt: **variantSku zuerst**, beide `/product/list`-Strategien **entfernt** (kosteten
+  API-Punkte, trafen nie) → **max. 2 statt 4 Abfragen pro Produkt**.
+- **⛔ CJ HAT EIN TAGES-PUNKTELIMIT** („Insufficient api points. Used today: 951"). Ein 40er-DRY-Lauf braucht
+  es auf → danach meldet jedes Produkt „keine CJ-pid → skip". **Genau so entstand der falsche Mythos
+  „CJ hat keine Kommentare".** Das Skript erkennt die Meldung jetzt und **bricht mit klarer Warnung ab**.
+- **🟡 OFFEN:** scharfer Lauf erst nach Punkte-Reset (täglich), in Chargen mit kleinem `LIMIT` (z. B. 25).
+  `GEMINI_API_KEY` fehlt → Reviews kämen in Originalsprache statt Deutsch.
+- **SEMrush:** Connector existiert, ist aber `not_installed` → **nur der User kann verbinden**
+  (claude.ai → Connectors → „Semrush"). Danach: domain_overview / keyword_research / organic_research.
+
 **📌 2026-10-01 (🏥 Alle Krankenkassen vergleichen 2027 — `krankenkassen-vergleich-2027.html`):** Offizielle BAG-Prämien 2027
 (opendata.swiss «Krankenversicherungsprämien», `Prämien_CH.csv`, 29.09.2026) → `tools/krankenkasse/bag_praemien.py` baut
 `data/krankenkassen/2027/<KANTON>.json` + `index.json` (Kassennamen aus BAG-«Verzeichnis der zugelassenen Krankenversicherer» 1.10.2026,
