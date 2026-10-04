@@ -47,22 +47,43 @@ def einstellungen(env=None):
     }
 
 
+class BinanceFehler(urllib.error.HTTPError):
+    """HTTP-Fehler mit Binance-Code und -Meldung (enthält nie Schlüssel)."""
+
+
 class Binance:
     def __init__(self, cfg):
         self.cfg = cfg
+        self.versatz = None  # Millisekunden Börsenzeit − PC-Zeit
+
+    def _zeit(self):
+        if self.versatz is None:
+            try:
+                server = self._req("GET", "/api/v3/time")["serverTime"]
+                self.versatz = int(server - time.time() * 1000)
+            except Exception:  # noqa: BLE001
+                self.versatz = 0
+        return int(time.time() * 1000) + self.versatz
 
     def _req(self, methode, pfad, params=None, signiert=False):
         params = dict(params or {})
         if signiert:
-            params["timestamp"] = int(time.time() * 1000)
-            params["recvWindow"] = 5000
+            params["timestamp"] = self._zeit()  # PC-Uhr kann falsch gehen: Börsenzeit verwenden
+            params["recvWindow"] = 10000
         q = urllib.parse.urlencode(params)
         if signiert:
             q += "&signature=" + hmac.new(self.cfg["secret"].encode(), q.encode(), hashlib.sha256).hexdigest()
         url = self.cfg["basis"].rstrip("/") + pfad + ("?" + q if q else "")
         req = urllib.request.Request(url, method=methode, headers={"X-MBX-APIKEY": self.cfg["key"]})
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return json.loads(r.read().decode() or "null")
+        try:
+            with urllib.request.urlopen(req, timeout=20) as r:
+                return json.loads(r.read().decode() or "null")
+        except urllib.error.HTTPError as ex:
+            try:
+                d = json.loads(ex.read().decode() or "{}")
+            except Exception:  # noqa: BLE001
+                d = {}
+            raise BinanceFehler(pfad, ex.code, f"{pfad}: Binance-Code {d.get('code')} {d.get('msg', '')}".strip(), ex.headers, None) from None
 
     def konto(self):
         return self._req("GET", "/api/v3/account", signiert=True)
@@ -169,7 +190,8 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
         code = getattr(ex, "code", None)
         e["hinweis"] = ("Binance sperrt deinen Standort (HTTP 451) — in diesem Land/Netz ist Binance nicht nutzbar." if code == 451
                         else "Schlüssel ungültig oder falsch kopiert (HTTP 401)." if code == 401
-                        else f"Binance nicht erreichbar oder Antwort unerwartet: {type(ex).__name__}" + (f" (HTTP {code})" if code else ""))
+                        else f"Binance lehnt ab (HTTP {code}): {getattr(ex, 'msg', '')}" if code
+                        else f"Binance nicht erreichbar: {type(ex).__name__}")
         print("Binance: " + e["hinweis"])
         protokolliere(e)
         return []

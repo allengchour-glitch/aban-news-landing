@@ -62,6 +62,10 @@ class Fake(BaseHTTPRequestHandler):
         self.wfile.write(b)
 
     def _signatur_ok(self, q):
+        import time as _t
+        p = dict(urllib.parse.parse_qsl(q))
+        if "timestamp" in p and abs(int(p["timestamp"]) - (_t.time() * 1000 + 60000)) > 5000:
+            return False  # Zeitstempel ausserhalb des Fensters (wie Binance -1021)
         roh, _, sig = q.rpartition("&signature=")
         return sig == hmac.new(GEHEIM.encode(), roh.encode(), hashlib.sha256).hexdigest()
 
@@ -74,6 +78,9 @@ class Fake(BaseHTTPRequestHandler):
             return self._a({"canTrade": True, "balances": konto["balances"]})
         if pfad == "/sapi/v1/account/apiRestrictions":
             return self._a(Fake.rechte)
+        if pfad == "/api/v3/time":
+            import time as _t
+            return self._a({"serverTime": int(_t.time() * 1000) + 60000})  # Börse 60 s voraus: PC-Uhr falsch
         if pfad == "/api/v3/ticker/price":
             return self._a({"symbol": "BTCUSDT", "price": "50000.00"})
         if pfad == "/api/v3/exchangeInfo":
@@ -125,6 +132,11 @@ class Gesperrt(BB.Binance):
         raise UE.HTTPError("x", 451, "", {}, None)
 BB.ausfuehren(e, env=env, client=Gesperrt(BB.einstellungen(env)), protokolliere=prot.append)
 pruefe("HTTP 451 klar gemeldet", "451" in prot[-1]["hinweis"] and "Standort" in prot[-1]["hinweis"], prot[-1])
+class Abgelehnt(BB.Binance):
+    def konto(self):
+        raise BB.BinanceFehler("/api/v3/account", 400, "/api/v3/account: Binance-Code -1021 Timestamp outside recvWindow", {}, None)
+BB.ausfuehren(e, env=env, client=Abgelehnt(BB.einstellungen(env)), protokolliere=prot.append)
+pruefe("HTTP 400 mit Binance-Grund gemeldet", "-1021" in prot[-1]["hinweis"] and "HTTP 400" in prot[-1]["hinweis"], prot[-1])
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)
