@@ -123,5 +123,15 @@
     "condition": "kategorie-halskette"
    }
   ]
+ },
+ "sub-armbaender": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kategorie-armband"
+   }
+  ]
  }
 }
