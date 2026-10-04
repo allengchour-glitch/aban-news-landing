@@ -13,6 +13,8 @@ from klingenregel import ist_handklinge, ist_klinge
 
 SPERREN = [
     "Fuda Taschenmesser aus Damaststahl",          # die zurueckgesandte Ware selbst
+    "5‑Stück‑Set Küchenmesser mit Obstschneidebrett",   # 04.10.: Kontextwort nur Beigabe
+    "Messerset & Schneidebrett aus Bambus",
     "Damast Kochmesser mit Hammerschlag-Finish",
     "Longquan Knochenhackmesser, handgeschmiedet",
     "Dragon's Descendant Knochenbeil",
@@ -67,6 +69,7 @@ DURCHLASSEN = [
     "Spiralschneider mit 3 Klingen",
     "Handyhülle mit Messer-Motiv",
     "Dagger Earrings aus Silber",
+    "Bambus-Schneidebrett mit Messerhalter",
 ]
 
 def main():

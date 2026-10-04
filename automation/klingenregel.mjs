@@ -55,9 +55,17 @@ export function istKlinge(titel) {
 // ENGER als istKlinge: Zubehoer ohne Klinge im Paket (Block, Halter, Schaerfer,
 // Schwertpflegeoel) und Geraete mit gekapselter Klinge (Mixer, Rasierer, Schere)
 // duerfen weiter in die Schweiz und bleiben im Verkauf.
+// 04.10.2026: «5‑Stück‑Set Küchenmesser mit Obstschneidebrett» — das Kontextwort «schneidebrett» ist hier nur Beigabe
+// hinter dem Messer-Wort; im Karton liegen Messer (#1017-Klasse). Gleiche Regel wie klingenregel.py.
+function beigabeHinterMesser(t, k) {
+  const s = new RegExp(HANDKLINGE_STAMM.source, 'i').exec(t);
+  return !!(s && s.index < k.index && /messer|knife|knives/i.test(s[0])
+    && /(?<![\wäöüß])(?:mit|with|inkl\.?|samt|und|and)(?![\wäöüß])|&/i.test(t.slice(s.index + s[0].length, k.index)));
+}
 export function istHandklinge(titel) {
   const t = titel || '';
-  if (KONTEXT_AUSNAHME.test(t)) return false;
+  const k = KONTEXT_AUSNAHME.exec(t);
+  if (k && !beigabeHinterMesser(t, k)) return false;
   if (HANDKLINGE_SPIELZEUG.test(t)) return false;
   if (MESSGERAET.test(t)) return false;
   if (WAFFENWORT_VORNE.test(t) && VORNE_AUSNAHME.test(t)) return false;

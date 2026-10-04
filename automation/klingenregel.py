@@ -65,6 +65,16 @@ def ist_klinge(titel):
     return False
 
 
+def _beigabe_hinter_messer(t, k):
+    """04.10.2026 (Sichtprüfung der Neuimporte): «5‑Stück‑Set Küchenmesser mit Obstschneidebrett» war für die
+    Versandfrage FALSE — «schneidebrett» steht in der Kontext-Ausnahme (gedacht für das Brett als Hauptware), und die
+    Ausnahme kam vor jeder anderen Prüfung. Im Karton liegen fünf Messer (#1017-Klasse). Das Kontextwort sticht nur
+    noch, wenn es nicht bloss eine BEIGABE hinter einem Messer-Wort ist (Messer … mit/und/& … Kontextwort)."""
+    s = HANDKLINGE_STAMM.search(t)
+    return bool(s and s.start() < k.start() and re.search(r'messer|knife|knives', s.group(0), re.I)
+                and re.search(r'(?<![\wäöüß])(?:mit|with|inkl\.?|samt|und|and)(?![\wäöüß])|&', t[s.end():k.start()], re.I))
+
+
 def ist_handklinge(titel):
     """True, wenn im PAKET eine Handklinge liegt — die Versandfrage, nicht die Werbefrage.
 
@@ -87,7 +97,8 @@ def ist_handklinge(titel):
     Die Kontext-Ausnahme gilt wie bei `ist_klinge` zuerst: «Washed Machete Jeans».
     """
     t = titel or ''
-    if KONTEXT_AUSNAHME.search(t):
+    k = KONTEXT_AUSNAHME.search(t)
+    if k and not _beigabe_hinter_messer(t, k):
         return False
     if HANDKLINGE_SPIELZEUG.search(t):
         return False
