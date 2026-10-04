@@ -16526,3 +16526,4 @@ gid://shopify/Product/16603589345671	35->0	Mini‑Lippenstift‑Set in Vintage�
 gid://shopify/Product/16603594260871	83->0	Amerikanischer Vintage-Wandlampenstil
 gid://shopify/Product/16603594326407	20->2	Solarwandlampe Outdoor mit IP44
 gid://shopify/Product/16603764621703	11->0	Multifunktionsuhr mit grossem Bildschirm
+gid://shopify/Product/16603987116423	69->2	Solar Weihnachts-Zeder für Aussenbereich
