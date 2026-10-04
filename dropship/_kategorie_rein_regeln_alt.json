@@ -133,5 +133,35 @@
     "condition": "kategorie-armband"
    }
   ]
+ },
+ "sub-ohrringe": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ohrring"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ohrhänger"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Creolen"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ohrstecker"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "ohrringe"
+   }
+  ]
  }
 }
