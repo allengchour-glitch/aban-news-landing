@@ -106,8 +106,12 @@ def schreibe(p, feld, alt, neu):
         k = feld.split(".")[1]
         seo = {"title": (p["seo"] or {}).get("title"), "description": (p["seo"] or {}).get("description")}
         seo[k] = neu
+        # ⚠️ 04.10.2026: SEOInput ERSETZT beide Felder — fehlt «title», ist er danach leer (63 frisch gesetzte
+        # Titel wurden so vom Meta-Schritt gelöscht). Darum immer beide schicken und den Stand im Speicher nachführen.
         r = gql("mutation($p:ProductUpdateInput!){productUpdate(product:$p){userErrors{message}}}",
-                {"p": {"id": p["id"], "seo": {k: v for k, v in seo.items() if v is not None}}})["productUpdate"]
+                {"p": {"id": p["id"], "seo": {"title": seo["title"] or "", "description": seo["description"] or ""}}})["productUpdate"]
+        if not r.get("userErrors"):
+            p["seo"] = seo
     else:
         r = gql("mutation($p:ID!,$m:[UpdateMediaInput!]!){productUpdateMedia(productId:$p,media:$m){mediaUserErrors{message}}}",
                 {"p": p["id"], "m": [{"id": p["featuredMedia"]["id"], "alt": neu}]})["productUpdateMedia"]
