@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 09:11 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 11:12 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **15'635**
-- Optionen mit englischen Werten (Kandidaten): 1'774
+- Produkte gesehen: **21'613**
+- Optionen mit englischen Werten (Kandidaten): 2'172
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 9'647
+- Werte mit unbekanntem Wort (unverändert): 12'155
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 41
-- übersprungen «kollision-nach-uebersetzung»: 30
+- übersprungen «kleidungsstueck-im-wert»: 47
+- übersprungen «kollision-nach-uebersetzung»: 33
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -73,6 +73,9 @@
 - `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 - `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
+- `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
+- `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
+- `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: Black-US9 → Schwarz-US9; Black → Schwarz; White-US9 → Weiss-US9; White → Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -108,5 +111,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 413, `light` 339, `inner` 325, `color` 222, `degrees` 159, `surface` 108, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 103, `skin` 98, `core` 92, `powder` 89, `three` 85, `to` 74, `high` 73, `rope` 69, `case` 67, `bag` 62, `feet` 62, `mother` 61, `belt` 60, `dual` 60, `size` 59, `dark` 58, `no` 57, `net` 57, `electric` 54, `of` 53, `code` 52, `chain` 50, `lens` 50, `bear` 49, `line` 48, `hat` 46, `about` 46, `for` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `little` 42, `four` 42, `perforated` 42, `face` 41, `button` 41, `years` 40, `cat` 39, `opp` 39, `camera` 39, `spring` 38, `ice` 38, `carbon` 38, `star` 38, `father` 38, `generation` 37, `suit` 37, `cherry` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `autumn` 37
+`⟨satzbau:adjektiv-vor-nomen⟩` 465, `light` 416, `inner` 327, `color` 281, `shell` 159, `degrees` 159, `core` 137, `surface` 119, `⟨satzbau:material-vor-farbe⟩` 112, `diamond` 108, `powder` 107, `high` 101, `skin` 98, `three` 95, `to` 92, `rain` 88, `case` 87, `bag` 85, `french` 84, `belt` 79, `four` 76, `no` 71, `rope` 70, `dual` 69, `petal` 68, `chain` 67, `base` 65, `dark` 63, `size` 62, `feet` 62, `mother` 61, `of` 60, `half` 58, `net` 57, `buckle` 56, `tea` 55, `plush` 55, `electric` 54, `code` 53, `face` 52, `strap` 52, `one` 52, `person` 51, `opp` 51, `little` 50, `line` 50, `lens` 50, `bear` 49, `ice` 48, `space` 48, `hat` 47, `cloud` 46, `sheet` 46, `for` 46, `about` 46, `warped` 46, `milk` 45, `clock` 45, `spring` 44, `tip` 44
 
