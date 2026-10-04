@@ -1,14 +1,13 @@
 {
  "host": "vm",
- "stunde": "2026-10-04T06:00Z",
- "stand": "2026-10-04T06:10:56Z",
+ "stunde": "2026-10-04T08:00Z",
+ "stand": "2026-10-04T08:08:40Z",
  "fenster_min": 60,
- "summe": 190,
+ "summe": 86,
  "skripte": {
-  "cj_category_fill.mjs": 157,
+  "cj_category_fill.mjs": 67,
   "cj_perpetual.mjs": 17,
-  "cj_kosten_backfill.mjs": 8,
-  "cj_video_reel_engine.mjs": 6,
-  "cj_verfuegbarkeit.py": 2
+  "cj_varianten_wache.py": 1,
+  "cj_video_reel_engine.mjs": 1
  }
 }
