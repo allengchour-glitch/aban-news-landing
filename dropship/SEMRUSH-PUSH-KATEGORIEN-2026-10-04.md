@@ -56,3 +56,17 @@
   Inhalt verfälschen. Die Unterkategorien haben Filter.
 - 118 dünne Produkttexte; 4 Titel-Doppel ohne sichtbaren Unterschied; CJ-Import der gefüllten Adventskalender beobachten.
 - Betreiber: im Semrush-Projekt Crawl-Limit heben und Audit neu starten (per Schnittstelle nicht möglich).
+
+## Nachtrag 23:40 UTC — `kategorie_rein.py` alle 9 Kategorien umgestellt (gebündelt, drosselfest)
+| Kategorie | aktiv | Produkttypen im Filter |
+|---|---:|---|
+| Ringe | 481 | 3 (vorher 30) |
+| Taschen | 3'127 | 8 (Taschen 2'996) |
+| Deko | 193 | 8 |
+| Kissen & Wohntextilien | 1'598 | 8 |
+| Jeans | 661 | 10 (Damen/Herrenmode + Jeans-Schuhe) |
+| Stiefel & Boots | 685 | 6 |
+| Halsketten | 426 | 7 |
+| Armbänder | 1'075 | 6 |
+| Ohrringe | 237 | 3 |
+Lehre: einzeln geschriebene Tags (3'128 bei Taschen) sprengten das 50-min-Fenster → 10 Aliase je Anfrage + «Throttled» = warten.
