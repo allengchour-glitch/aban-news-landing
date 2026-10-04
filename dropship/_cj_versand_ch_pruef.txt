@@ -3418,3 +3418,5 @@ weihnachtsvorhang-mit-christbaum-stickerei-604800	2508221420531605000	16	7.95	ok
 weihnachtsvorhang-mit-schneeflocken-stickerei-619000	2508221416281619300	16	7.95	ok	landeseite
 weihnachts-countdown-katzen-spielzeug-609600	2410230301331609800	16	8.53	ok	landeseite
 weihnachtlicher-katzen-tunnel-607000	2411110234361607200	16	14.84	ok	landeseite
+weihnachts-lippenstift-set-195776	1405448969353564160	3	6.49	ok	landeseite
+weihnachtsbaum-dekorationsfigur-mit-nachricht-616300	2607160255411617200	16	9.54	ok	landeseite
