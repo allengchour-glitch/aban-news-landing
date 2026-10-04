@@ -1906,12 +1906,18 @@ KLT=/tmp/test_klingen_tor.log
     ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; exec bash automation/bewertungen_nachholen.sh" >> "$BN" 2>&1 & )
     echo "$(date -u +%H:%M) Bewertungen nachholen: fortgesetzt"
   fi
-  FB=/tmp/fortura_bestand.stamp
-  if [ -f /tmp/fortura_env.sh ] && { [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] || still_gestorben /tmp/fortura_bestand.log; } \
+  # 📦 FORTURA-BESTAND (04.10.2026 neu): Anspruch (claim, 2 h) getrennt vom Erfolg (stamp, 20 h — setzt fortura_bestand_taeglich.sh
+  # bei FERTIG). Gemessen 04.10.: zwei Läufe starben still (06:18, 08:30), still_gestorben sah den zweiten nicht (Log-Zeit ≥ Boot),
+  # Bestand 36 h eingefroren. Mit dem Claim holt sich ein toter Lauf nach 2 h von selbst nach — ohne Neustart-Erkennung, ohne 3/Tag.
+  # Ersetzt den bisherigen Block «FB=/tmp/fortura_bestand.stamp … fi».
+  FB=/tmp/fortura_bestand.stamp; FBC=/tmp/fortura_bestand.claim; FBL=/tmp/fortura_bestand.log
+  if [ -f /tmp/fortura_env.sh ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FBC" 2>/dev/null || echo 0) )) -gt 7200 ] \
      && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fortura_bestand_taeglich\.sh$/ {f=1} END{exit(f?0:1)}'; then
-    touch "$FB"
-    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> /tmp/fortura_bestand.log 2>&1 & )
-    echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet"
+    touch "$FBC"
+    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> "$FBL" 2>&1 & )
+    echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet (letzter Erfolg vor $(( ( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) ) / 3600 )) h)"
   fi
   SF=/tmp/storefront_auftrag.stamp
   if [ $(( $(date +%s) - $(stat -c %Y "$SF" 2>/dev/null || echo 0) )) -gt 72000 ]; then

@@ -22,14 +22,15 @@ B="https://webtransfer.fortura.ch"
 OUT="${1:-/tmp/fortura_feed.csv}"
 
 # 1) Login → SID
-SID=$(curl -sS -k -X POST "$B/webapi/entry.cgi" \
+# 04.10.2026: --max-time, damit ein hängender Login/Download den Tageslauf nicht ewig blockiert (Lauf sonst ohne Ende).
+SID=$(curl -sS -k --max-time 120 -X POST "$B/webapi/entry.cgi" \
   --data-urlencode "api=SYNO.API.Auth" --data-urlencode "version=6" --data-urlencode "method=login" \
   --data-urlencode "account=$FORTURA_FTP_USER" --data-urlencode "passwd=$FORTURA_FTP_PW" \
   --data-urlencode "session=FileStation" --data-urlencode "format=sid" \
   | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['data']['sid'] if d.get('success') else '')")
 [ -z "$SID" ] && { echo "Fortura-Login fehlgeschlagen"; exit 1; }
 
-dl(){ curl -sS -k "$B/webapi/entry.cgi" -G \
+dl(){ curl -sS -k --max-time 900 "$B/webapi/entry.cgi" -G \
   --data-urlencode "api=SYNO.FileStation.Download" --data-urlencode "version=2" --data-urlencode "method=download" \
   --data-urlencode "path=$1" --data-urlencode "mode=download" --data-urlencode "_sid=$SID" -o "$2"; }
 

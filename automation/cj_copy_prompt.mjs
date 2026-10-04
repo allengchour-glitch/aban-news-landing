@@ -30,6 +30,7 @@ VERBOTEN sind diese Wörter und Wendungen: ${VERBOTEN.join(', ')}.
 Kategorie: ${kat || '-'}
 Name (EN): ${nameEn}
 Features (EN): ${(feats || '').slice(0, 700)}
+Bekannte Übersetzungsfallen: «digital oil painting»/«DIY painting»/«pure hand-painted … coloring» = ein Malen-nach-Zahlen-Set (Titel «Malen nach Zahlen – Motiv», nie «Digitales Ölgemälde» oder «handgemalt» — man malt selbst); «Suit» bei Kosmetik = «Set»; «flush trim bit» = «Bündigfräser».
 Titel: max. 60 Zeichen, deutsch, benennt die Ware (kein Werbeton) und trägt KEIN Wirkversprechen — nicht «Wachstumsserum», «gegen Falten», «Anti-Aging Facelift», «dauerhafte Haarentfernung»; stattdessen «Wimpernserum», «Haaröl», «IPL-Haarentfernungsgerät». Ebenso KEINE Messwerte aus der Verbotsliste im Titel — nicht «Smartwatch mit Blutdruckmessung», sondern «Smartwatch mit Herzfrequenz & Blutsauerstoff».
 Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß, keine Markdown-Fences).`;
 }
@@ -184,6 +185,18 @@ const ANDERE_MAT_KLAUSEL_RE = /\s*(?:,?\s*(?:und|sowie)\s+)?(?:ist|besteht)?\s*a
 // die Klausel faellt, der Rest bleibt ein ganzer Satz («Er hat ein Karomuster.»).
 const META_KLAUSEL_RE = /\s+(?:ist|sind)\s+(?:speziell\s+)?f[üu]r\s+(?:frauen|damen|herren|m[äa]nner|erwachsene|kinder|babys?)\s+(?:konzipiert|gedacht|bestimmt|entwickelt|geeignet)\s+und\s+(?=[\wäöüß])/i;
 const ANDERE_MAT_SATZ_RE = /^\s*(?:er|sie|es|der\s+\w+|die\s+\w+|das\s+\w+)\s+(?:ist|besteht)\s+aus\s+(?:100\s*%\s*)?(?:anderen|andere|sonstigen|sonstige|verschiedenen)\s+materialien?(?:\s+(?:gefertigt|hergestellt))?\s*[.!]?\s*$/i;
+// ⚠️ 04.10.2026 — FESTE ÜBERSETZUNGSFALLE, deterministisch statt Bitte. 数字油画 heisst wörtlich «digitales
+// Ölgemälde» und ist ein Malen-nach-Zahlen-Set; CJ schreibt dazu «pure hand-painted» (= man malt selbst).
+// Die Sichtprüfung der 1'645 Neuimporte seit 01.10. fand «Digitales Ölgemälde 40×50 cm», «Tiermalerei 40×50 cm –
+// handgemalt auf Baumwolle», «Linen-Ölgemälde Blumen» — alle drei Bilder zeigen eine Leinwand mit Zahlenfeldern.
+const MNZ_EN = /digital\s+(?:oil\s+)?painting|diy\s+(?:oil\s+)?painting|drawing\s+digital|paint(?:ing)?\s+by\s+numbers?|number\s+painting/i;
+export function fallenSicher(o, nameEn) {
+  if (!o || !o.title || !MNZ_EN.test(nameEn || '') || /nach\s+zahlen/i.test(o.title)) return o;
+  let t = o.title.replace(/\s*[–-]\s*handgemalt[^–·|]*/i, '').replace(/\bhandgemalt\w*\s*/gi, '')
+    .replace(/\b(?:digital(?:es|e)?\s+|linen-|leinen-)/gi, '').trim().replace(/^(?:Öl)?gemälde\b\s*/i, '').trim();
+  o.title = ('Malen nach Zahlen' + (t ? ' – ' + t : '')).slice(0, 70);
+  return o;
+}
 export function beginntMitDies(html) {
   const t = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   return /^Dies(?:er|e|es)\b/.test(t);

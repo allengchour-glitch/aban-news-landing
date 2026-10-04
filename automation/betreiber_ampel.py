@@ -512,6 +512,15 @@ def fortura_bestand_alter():
         with open(pfad, "rb") as f:
             f.seek(max(0, os.path.getsize(pfad) - 4000)); z = f.read().decode("utf-8", "ignore").strip().splitlines()[-1]
         t = datetime.datetime.strptime(z.split("\t")[0][:19], "%Y-%m-%dT%H:%M:%S")
+        # 04.10.2026: Ein Lauf ohne Änderung schreibt KEINE Journalzeile — die Ampel hielte ihn für ausgeblieben. Der Bericht
+        # (Kopfzeile «— JJJJ-MM-TT HH:MM UTC») entsteht bei jedem FERTIG; es zählt der jüngere der beiden Zeitpunkte.
+        try:
+            with open(os.path.join(REPO, "dropship", "_fortura_bestand_report.md"), encoding="utf-8") as f:
+                m = re.search(r"(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) UTC", f.readline())
+            if m:
+                t = max(t, datetime.datetime.strptime(m.group(1) + "T" + m.group(2), "%Y-%m-%dT%H:%M"))
+        except Exception:
+            pass
         h = (datetime.datetime.utcnow() - t).total_seconds() / 3600
         return f"⚠️ FORTURA-BESTAND {h/24:.0f} T alt (letzter Abgleich {t:%d.%m. %H:%M}) — Ware ab CH-Lager mit eingefrorenem Bestand" if h > 30 else ""
     except Exception as e:

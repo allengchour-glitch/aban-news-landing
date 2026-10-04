@@ -126,12 +126,25 @@ def lauf(handle, c):
         return
     if not SCHARF:
         return
-    for i, p in kand.items():
-        hat = c["tag"] in p["tags"]
-        if i in rein and not hat:
-            gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": i, "t": [c["tag"]]})
-        elif i not in rein and hat:
-            gql('mutation($id:ID!,$t:[String!]!){tagsRemove(id:$id,tags:$t){userErrors{message}}}', {"id": i, "t": [c["tag"]]})
+    # 04.10.2026: einzeln geschrieben brauchte «Taschen» (3'128 neue Tags) allein ~40 min — der Lauf
+    # (timeout 3000) kam nie über die zweite Kategorie hinaus. Jetzt 10 Mutationen je Anfrage (Aliase).
+    ops = [("tagsAdd", i) for i in rein if c["tag"] not in kand[i]["tags"]] + \
+          [("tagsRemove", i) for i, p in kand.items() if i not in rein and c["tag"] in p["tags"]]
+    # Der Shopify-Eimer wird von ~30 Wächtern geteilt: «Throttled» heisst warten, nicht abbrechen (gemessen 22:33).
+    for k in range(0, len(ops), 10):
+        teil = ops[k:k + 10]
+        m = " ".join(f'm{j}:{op}(id:"{i}",tags:["{c["tag"]}"]){{userErrors{{message}}}}' for j, (op, i) in enumerate(teil))
+        for versuch in range(30):
+            try:
+                antwort = gql("mutation{" + m + "}")
+                break
+            except RuntimeError as e:
+                if "Throttled" not in str(e) or versuch == 29:
+                    raise
+                time.sleep(15)
+        fehler = [e for v in (antwort or {}).values() for e in (v or {}).get("userErrors", [])]
+        if fehler:
+            print("   ⚠️", fehler[:2])
     col = gql('query($h:String!){collectionByIdentifier(identifier:{handle:$h}){id ruleSet{appliedDisjunctively '
               'rules{column relation condition}}}}', {"h": handle})["collectionByIdentifier"]
     ziel = [{"column": "TAG", "relation": "EQUALS", "condition": c["tag"]}]

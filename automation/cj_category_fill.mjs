@@ -29,7 +29,7 @@ import { heikelZweck } from './heikel_zweck.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
-import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './cj_copy_prompt.mjs';
+import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSicher } from './cj_copy_prompt.mjs';
 import { textErzeugen } from './groq_text.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2026-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -641,7 +641,7 @@ async function gemini(nameEn,feats,kat){
  // und meldet, wenn nicht Groq schreibt — neun Tage stummes Gemini waren der Anlass.
  const o=await textErzeugen(prompt); if(!o) return null;
  if(o._modell!=='groq') console.log('  ✍️ Text via',o._modell);
- return textPolieren(wirkSicher(messSicher(o)));
+ return fallenSicher(textPolieren(wirkSicher(messSicher(o))), nameEn);
 }
 
 // Groq/DeepSeek/Gemini-Kette: automation/groq_text.mjs → textErzeugen() (14.09.2026)

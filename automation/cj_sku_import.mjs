@@ -15,7 +15,7 @@ import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
-import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './cj_copy_prompt.mjs';
+import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSicher } from './cj_copy_prompt.mjs';
 import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
@@ -92,7 +92,7 @@ async function groq(nameEn, feats) {
   const o = await textErzeugen(copyPrompt({ nameEn, feats, kat: '' }));   // Groq → DeepSeek → Gemini, EINE Kette (14.09.2026)
   if (!o) return null;
   if (o._modell !== 'groq') console.log('  ✍️ Text via', o._modell);
-  return wahlSicher(textPolieren(wirkSicher(messSicher(o))));
+  return fallenSicher(wahlSicher(textPolieren(wirkSicher(messSicher(o)))), nameEn);
 }
 async function attachVideo(t, pid, url, tag) {
   try {
