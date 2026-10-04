@@ -111,6 +111,8 @@ Antworte NUR mit JSON:
 
 
 def fragen(jpgs, caption, typ, ist_video):
+    """Frage Gemini; bei HTTP 402 fallback zu Groq über zweitmodell.chat_json."""
+    import urllib.error
     info = ("Du siehst 4 Standbilder aus dem Video (0,3 s, 1,2 s, Mitte, Ende)." if ist_video and len(jpgs) > 1
             else "Du siehst das Bild des Posts.")
     teile = [{"text": PROMPT.format(typ=typ, bildinfo=info, caption=caption[:1500])}]
@@ -125,6 +127,14 @@ def fragen(jpgs, caption, typ, ist_video):
             j = json.load(urllib.request.urlopen(r, timeout=120))
             txt = j["candidates"][0]["content"]["parts"][0]["text"]
             return json.loads(re.search(r"\{.*\}", txt, re.S).group(0))
+        except urllib.error.HTTPError as e:
+            if e.code == 402:
+                # Gemini HTTP 402: Payment Required — Fallback zu Groq
+                import zweitmodell
+                zweitmodell.handle_gemini_402(f"HTTP {e.code} von Gemini")
+                return fragen_gpt(jpgs, caption, typ, ist_video)
+            letzter = f"HTTP {e.code}: {e.read()[:150].decode('utf-8', 'replace')}"
+            time.sleep(4 * (a + 1))
         except Exception as e:
             letzter = f"{type(e).__name__}: {str(e)[:150]}"
             time.sleep(4 * (a + 1))
