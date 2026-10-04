@@ -47404,3 +47404,16 @@ digitaler-windgeschwindigkeitsmesser-biaozhi-cae769	ha-15	Werkzeug & Heimwerken	
 transparente-schutzabdeckung-fur-werkzeuge-e595e2	ha-15	Werkzeug & Heimwerken	2026-10-04T20:19Z
 mini-claw-hammer-fur-notfalle-cc513b	ha-15	Werkzeug & Heimwerken	2026-10-04T20:19Z
 handlicher-drahtschneider-fur-0-8-2-6-mm-6f6d91	ha-15	Werkzeug & Heimwerken	2026-10-04T20:19Z
+handpumpen-pumpe-fur-autos-779e8d	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+zwei-stelliger-trimm-schnittteller-bb352b	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+3-stuck-profilschneidewerkzeug-1-4-3-stuck-96ce4e	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+triangle-iron-mover-5-stuck-set-717090	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+belt-adapter-fur-winkelschleifer-e7ac77	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+multifunktionaler-schneeknauf-mit-allen-schlus-ca0491	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+silberner-schraubentool-zum-entfernen-von-armb-ff7110	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+3d-masken-stativ-aus-umweltfreundlichem-kunsts-440a59	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+schleifer-fur-saubere-kanten-2-stuck-0e549b	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+holzbohrer-mit-drei-kanten-bohrlochoffner-e85663	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+ppr-schneidewerkzeug-rohrschneider-36-64-mm-9976fa	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+ndfeb-magnet-14x2-mm-hochmagnetische-starke-eecd9a	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z
+gummihammer-mit-rundkopf-8-24-oz-200-mm-227e24	ha-15	Werkzeug & Heimwerken	2026-10-04T20:46Z

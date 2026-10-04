@@ -295,3 +295,9 @@ gid://shopify/Product/16603759935879	outdoor-rucksack-zum-wandern-und-bergsteige
 gid://shopify/Product/16603861418375	langarmpullover-mit-kragen-und-halbzip-636800	Langarmpullover mit Kragen und Halbzip
 gid://shopify/Product/16604558786951	elegante-weisse-mid-length-hose-601800	Elegante weisse Mid-Length Hose
 gid://shopify/Product/16605077668231	rotes-und-weisses-streifenpullover-fur-kleine-295616	Rotes und weisses Streifenpullover für kleine Hunde
+gid://shopify/Product/16606107599239	badminton-tasche-outdoor-sport-610100	Badminton Tasche Outdoor Sport
+gid://shopify/Product/16606107632007	aluminium-oxid-hook-set-2-10-mm-317120	Aluminium-Oxid-Hook-Set 2–10 mm
+gid://shopify/Product/16606107664775	manuelle-teigtaschenmaschine-25-15-15-mm-983488	Manuelle Teigtaschenmaschine 25×15×15 mm
+gid://shopify/Product/16606172774791	tennis-und-badmintontaschen-set-2-stuck-2-stuc-610400	Tennis- und Badmintontaschen-Set (2 Stück) · 2 Stück
+gid://shopify/Product/16606172807559	studentenrucksack-20-35l-mit-laptopfach-721984	Studentenrucksack 20-35L mit Laptopfach
+gid://shopify/Product/16606172840327	multifunktionales-schraubenschlussel-set-8-in-747456	Multifunktionales Schraubenschlüssel-Set 8‑in‑1
