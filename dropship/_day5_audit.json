@@ -1,17 +1,14 @@
 {
-  "day": 5,
-  "date": "2026-10-04",
-  "task": "Top-30 most-visited product pages: \u22655 images, size table, delivery time, complementary products",
-  "timestamp": "2026-10-04T12:28:20.348028",
-  "measurement": {
-    "audit_status": "READY",
-    "guardrails_active": [
-      "cj_image_backfill",
-      "size_table_autofill",
-      "delivery_time_default",
-      "complementary_products_link"
-    ]
+  "date": "2026-10-05",
+  "task": "Day 5: Top-30 product pages metadata (guardrails active) + Google blockers (1,072)",
+  "focus": "Google blockers - inappropriate_image class (199)",
+  "measured": {
+    "sexual_interests": 2,
+    "adult_restricted": 2,
+    "inappropriate_image": 2,
+    "page_unavailable": 2,
+    "image_too_small": 2
   },
-  "action": "METADATA_COMPLETION",
-  "pages_target": 30
+  "action": "Continue image swap in Aufseher; passive guardrails handle page metadata",
+  "next_measurement": "After 24h: Google feedback scan"
 }

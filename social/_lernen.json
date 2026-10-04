@@ -1,51 +1,52 @@
 {
-  "stand": "2026-10-04T12:09:01.780Z",
+  "stand": "2026-10-04T20:10:33.125Z",
   "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
   "fenster_tage": 90,
   "k_glaettung": 3,
   "min_n": 3,
   "beobachtungen": {
-    "instagram": 89,
-    "tiktok": 24,
+    "instagram": 91,
+    "tiktok": 25,
     "pinterest": 162,
-    "zu_jung": 14
+    "zu_jung": 13
   },
-  "inhalte": 189,
-  "posts": 275,
+  "inhalte": 192,
+  "posts": 278,
   "musik_verlauf": {
     "zeilen": 199,
-    "verknuepfte_inhalte": 18
+    "verknuepfte_inhalte": 19
   },
   "quellen_fehler": [],
   "hooks": {
-    "Endlich Ruhe beim Gassi?": 0.354,
-    "Neu bei LuxeStyle": 0.304,
-    "Wusstest du das schon?": 0.118,
-    "Dein neues Lieblingsteil?": 0.036,
-    "Dein Hund wird es lieben": 0.003,
-    "Das fehlt in jeder Küche": -0.008,
-    "Genau das hat gefehlt": -0.041
+    "Neu bei LuxeStyle": 0.309,
+    "Endlich Ruhe beim Gassi?": 0.294,
+    "Wusstest du das schon?": 0.122,
+    "Dein neues Lieblingsteil?": 0.038,
+    "Küche, aber einfacher": 0.021,
+    "Dein Hund wird es lieben": 0.007,
+    "Das fehlt in jeder Küche": -0.007,
+    "Genau das hat gefehlt": -0.033
   },
   "hooks_detail": {
-    "Endlich Ruhe beim Gassi?": {
-      "n": 3,
-      "gewicht": 1.42,
-      "vorsprung": 0.354,
-      "median_rel": 2.83,
-      "belastbar": true
-    },
     "Neu bei LuxeStyle": {
       "n": 4,
       "gewicht": 1.36,
-      "vorsprung": 0.304,
+      "vorsprung": 0.309,
       "median_rel": 1.05,
+      "belastbar": true
+    },
+    "Endlich Ruhe beim Gassi?": {
+      "n": 4,
+      "gewicht": 1.34,
+      "vorsprung": 0.294,
+      "median_rel": 1.64,
       "belastbar": true
     },
     "Echt getragen, nicht im Studio fotografiert.": {
       "n": 1,
       "gewicht": 1.24,
-      "vorsprung": 0.211,
-      "median_rel": 2.33,
+      "vorsprung": 0.217,
+      "median_rel": 2.38,
       "belastbar": false
     },
     "Das Beste von LuxeStyle in 21 Sekunden Mode · Schmuck · Gadg": {
@@ -57,29 +58,29 @@
     },
     "Für die Katze, die alles darf": {
       "n": 2,
-      "gewicht": 1.18,
-      "vorsprung": 0.166,
-      "median_rel": 1.51,
-      "belastbar": false
-    },
-    "Kennst du das schon?": {
-      "n": 2,
-      "gewicht": 1.14,
-      "vorsprung": 0.128,
-      "median_rel": 1.38,
+      "gewicht": 1.19,
+      "vorsprung": 0.172,
+      "median_rel": 1.54,
       "belastbar": false
     },
     "Kleines Upgrade, grosser Glow": {
       "n": 2,
       "gewicht": 1.14,
-      "vorsprung": 0.127,
-      "median_rel": 1.37,
+      "vorsprung": 0.13,
+      "median_rel": 1.39,
+      "belastbar": false
+    },
+    "Kennst du das schon?": {
+      "n": 2,
+      "gewicht": 1.14,
+      "vorsprung": 0.129,
+      "median_rel": 1.38,
       "belastbar": false
     },
     "Wusstest du das schon?": {
       "n": 4,
       "gewicht": 1.13,
-      "vorsprung": 0.118,
+      "vorsprung": 0.122,
       "median_rel": 1.01,
       "belastbar": true
     },
@@ -111,6 +112,13 @@
       "median_rel": 1.18,
       "belastbar": false
     },
+    "Dein neues Lieblingsteil?": {
+      "n": 3,
+      "gewicht": 1.04,
+      "vorsprung": 0.038,
+      "median_rel": 1.04,
+      "belastbar": true
+    },
     "Wasserfescht & edel: 1 oder 2? Welä passt zu dir? Schrib's!": {
       "n": 1,
       "gewicht": 1.04,
@@ -118,32 +126,25 @@
       "median_rel": 1.15,
       "belastbar": false
     },
-    "Dein neues Lieblingsteil?": {
-      "n": 3,
-      "gewicht": 1.04,
-      "vorsprung": 0.036,
-      "median_rel": 1.04,
-      "belastbar": true
-    },
     "Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt": {
       "n": 1,
       "gewicht": 1.03,
-      "vorsprung": 0.027,
+      "vorsprung": 0.028,
       "median_rel": 1.12,
       "belastbar": false
     },
     "Küche, aber einfacher": {
-      "n": 2,
+      "n": 3,
       "gewicht": 1.02,
-      "vorsprung": 0.02,
-      "median_rel": 1.05,
-      "belastbar": false
+      "vorsprung": 0.021,
+      "median_rel": 0.98,
+      "belastbar": true
     },
     "Alltag, aber glänzender": {
       "n": 1,
       "gewicht": 1.01,
-      "vorsprung": 0.009,
-      "median_rel": 1.04,
+      "vorsprung": 0.011,
+      "median_rel": 1.05,
       "belastbar": false
     },
     "Dein Zuhause, gemütlicher": {
@@ -162,24 +163,31 @@
     },
     "Dein Hund wird es lieben": {
       "n": 3,
-      "gewicht": 1,
-      "vorsprung": 0.003,
-      "median_rel": 1,
+      "gewicht": 1.01,
+      "vorsprung": 0.007,
+      "median_rel": 1.01,
       "belastbar": true
     },
     "Training ohne Studio": {
       "n": 1,
       "gewicht": 1,
-      "vorsprung": -0.002,
+      "vorsprung": -0.001,
       "median_rel": 0.99,
       "belastbar": false
     },
     "Frühstück in 2 Minuten": {
       "n": 1,
-      "gewicht": 0.99,
+      "gewicht": 1,
       "vorsprung": -0.005,
       "median_rel": 0.98,
       "belastbar": false
+    },
+    "Das fehlt in jeder Küche": {
+      "n": 3,
+      "gewicht": 0.99,
+      "vorsprung": -0.007,
+      "median_rel": 0.98,
+      "belastbar": true
     },
     "Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend Jet": {
       "n": 1,
@@ -188,18 +196,18 @@
       "median_rel": 0.97,
       "belastbar": false
     },
-    "Das fehlt in jeder Küche": {
-      "n": 3,
-      "gewicht": 0.99,
-      "vorsprung": -0.008,
-      "median_rel": 0.98,
-      "belastbar": true
-    },
     "Das trägt jetzt jeder": {
       "n": 2,
       "gewicht": 0.99,
-      "vorsprung": -0.01,
+      "vorsprung": -0.008,
       "median_rel": 0.98,
+      "belastbar": false
+    },
+    "Kerzenlicht-Aromadiffuser Jetzt bei LuxeStyle — CHF 14.90. S": {
+      "n": 1,
+      "gewicht": 0.99,
+      "vorsprung": -0.009,
+      "median_rel": 0.97,
       "belastbar": false
     },
     "Welä Ohrring nimmsch — 1 oder 2? Schrib's i d Kommentär! Spe": {
@@ -209,52 +217,45 @@
       "median_rel": 0.95,
       "belastbar": false
     },
-    "Kerzenlicht-Aromadiffuser Jetzt bei LuxeStyle — CHF 14.90. S": {
-      "n": 1,
-      "gewicht": 0.98,
-      "vorsprung": -0.018,
-      "median_rel": 0.93,
-      "belastbar": false
-    },
     "Licht an, Stimmung an": {
       "n": 1,
       "gewicht": 0.97,
-      "vorsprung": -0.026,
+      "vorsprung": -0.025,
       "median_rel": 0.9,
       "belastbar": false
     },
+    "Genau das hat gefehlt": {
+      "n": 3,
+      "gewicht": 0.97,
+      "vorsprung": -0.033,
+      "median_rel": 0.95,
+      "belastbar": true
+    },
     "Outfit fertig in 10 Sekunden": {
+      "n": 1,
+      "gewicht": 0.97,
+      "vorsprung": -0.033,
+      "median_rel": 0.88,
+      "belastbar": false
+    },
+    "Augenbrauen in einer Minute: Schablone anlegen, Stempel drüc": {
       "n": 1,
       "gewicht": 0.97,
       "vorsprung": -0.035,
       "median_rel": 0.87,
       "belastbar": false
     },
-    "Augenbrauen in einer Minute: Schablone anlegen, Stempel drüc": {
-      "n": 1,
-      "gewicht": 0.96,
-      "vorsprung": -0.037,
-      "median_rel": 0.86,
-      "belastbar": false
-    },
-    "Genau das hat gefehlt": {
-      "n": 3,
-      "gewicht": 0.96,
-      "vorsprung": -0.041,
-      "median_rel": 0.91,
-      "belastbar": true
-    },
     "Warum hat das niemand früher gebaut?": {
       "n": 2,
-      "gewicht": 0.94,
-      "vorsprung": -0.057,
+      "gewicht": 0.95,
+      "vorsprung": -0.055,
       "median_rel": 0.87,
       "belastbar": false
     },
     "Das eine Teil fürs Wohnzimmer": {
       "n": 1,
       "gewicht": 0.91,
-      "vorsprung": -0.098,
+      "vorsprung": -0.096,
       "median_rel": 0.68,
       "belastbar": false
     },
@@ -270,56 +271,56 @@
     "mode": {
       "n": 38,
       "gewicht": 1.51,
-      "vorsprung": 0.411,
-      "median_rel": 1.06,
+      "vorsprung": 0.413,
+      "median_rel": 1.08,
       "belastbar": true
     },
     "haustier": {
-      "n": 14,
-      "gewicht": 1.36,
-      "vorsprung": 0.309,
-      "median_rel": 1.28,
+      "n": 15,
+      "gewicht": 1.34,
+      "vorsprung": 0.292,
+      "median_rel": 1.26,
       "belastbar": true
     },
     "schmuck": {
       "n": 16,
       "gewicht": 1.32,
       "vorsprung": 0.279,
-      "median_rel": 1.07,
+      "median_rel": 1.08,
       "belastbar": true
     },
     "beauty": {
       "n": 11,
       "gewicht": 1.3,
-      "vorsprung": 0.265,
+      "vorsprung": 0.266,
       "median_rel": 1,
       "belastbar": true
     },
     "allgemein": {
       "n": 42,
       "gewicht": 1.12,
-      "vorsprung": 0.114,
-      "median_rel": 1,
+      "vorsprung": 0.117,
+      "median_rel": 1.01,
       "belastbar": true
     },
     "gadget": {
       "n": 13,
       "gewicht": 1.09,
-      "vorsprung": 0.087,
+      "vorsprung": 0.089,
       "median_rel": 1,
       "belastbar": true
     },
     "kueche": {
-      "n": 16,
+      "n": 17,
       "gewicht": 1.06,
-      "vorsprung": 0.061,
+      "vorsprung": 0.063,
       "median_rel": 1,
       "belastbar": true
     },
     "home": {
-      "n": 28,
-      "gewicht": 1.06,
-      "vorsprung": 0.056,
+      "n": 29,
+      "gewicht": 1.03,
+      "vorsprung": 0.031,
       "median_rel": 1,
       "belastbar": true
     },
@@ -376,23 +377,23 @@
     },
     "instagram 00–03": {
       "n": 6,
-      "gewicht": 1.41,
-      "vorsprung": 0.34,
+      "gewicht": 1.42,
+      "vorsprung": 0.353,
       "median_rel": 1.22,
-      "belastbar": true
-    },
-    "instagram 18–21": {
-      "n": 9,
-      "gewicht": 1.4,
-      "vorsprung": 0.333,
-      "median_rel": 1.2,
       "belastbar": true
     },
     "instagram 15–18": {
       "n": 9,
-      "gewicht": 1.26,
-      "vorsprung": 0.232,
-      "median_rel": 1,
+      "gewicht": 1.27,
+      "vorsprung": 0.242,
+      "median_rel": 1.02,
+      "belastbar": true
+    },
+    "instagram 18–21": {
+      "n": 11,
+      "gewicht": 1.27,
+      "vorsprung": 0.237,
+      "median_rel": 1.2,
       "belastbar": true
     },
     "pinterest 18–21": {
@@ -412,7 +413,7 @@
     "tiktok 06–09": {
       "n": 3,
       "gewicht": 1.13,
-      "vorsprung": 0.12,
+      "vorsprung": 0.121,
       "median_rel": 1.05,
       "belastbar": true
     },
@@ -433,76 +434,76 @@
     "tiktok 15–18": {
       "n": 1,
       "gewicht": 1.03,
-      "vorsprung": 0.027,
+      "vorsprung": 0.028,
       "median_rel": 1.12,
       "belastbar": false
     },
     "instagram 21–24": {
       "n": 15,
       "gewicht": 1.02,
-      "vorsprung": 0.018,
+      "vorsprung": 0.024,
       "median_rel": 1,
       "belastbar": true
     },
     "instagram 12–15": {
       "n": 7,
       "gewicht": 1.01,
-      "vorsprung": 0.011,
+      "vorsprung": 0.013,
       "median_rel": 1,
       "belastbar": true
     },
     "tiktok 09–12": {
       "n": 8,
       "gewicht": 0.99,
-      "vorsprung": -0.006,
+      "vorsprung": -0.005,
       "median_rel": 0.99,
       "belastbar": true
     },
     "tiktok 18–21": {
-      "n": 7,
+      "n": 8,
       "gewicht": 0.99,
-      "vorsprung": -0.011,
-      "median_rel": 0.99,
+      "vorsprung": -0.015,
+      "median_rel": 0.98,
       "belastbar": true
     },
     "instagram 09–12": {
       "n": 25,
       "gewicht": 0.97,
-      "vorsprung": -0.035,
+      "vorsprung": -0.028,
       "median_rel": 0.95,
       "belastbar": true
     },
     "instagram 06–09": {
       "n": 12,
       "gewicht": 0.93,
-      "vorsprung": -0.076,
+      "vorsprung": -0.073,
       "median_rel": 0.67,
       "belastbar": true
     },
     "instagram 03–06": {
       "n": 6,
       "gewicht": 0.77,
-      "vorsprung": -0.267,
+      "vorsprung": -0.255,
       "median_rel": 0.62,
       "belastbar": true
     }
   },
   "formate": {
-    "instagram bild": {
-      "n": 44,
-      "median_score": 15
-    },
     "instagram reel": {
-      "n": 35,
-      "median_score": 32.4
+      "n": 36,
+      "median_score": 29.7
+    },
+    "instagram bild": {
+      "n": 45,
+      "median_score": 15
     },
     "instagram karussell": {
       "n": 10,
       "median_score": 14
     },
     "tiktok reel": {
-      "n": 24,
-      "median_score": 281
+      "n": 25,
+      "median_score": 280
     },
     "pinterest pin-video": {
       "n": 41,
@@ -516,38 +517,45 @@
   "musik": {
     "luxe-epic-anime.wav": {
       "n": 1,
-      "gewicht": 1.15,
-      "vorsprung": 0.143,
-      "median_rel": 1.77,
+      "gewicht": 1.16,
+      "vorsprung": 0.145,
+      "median_rel": 1.79,
       "belastbar": false
     },
     "luxe-orchestra.wav": {
       "n": 7,
       "gewicht": 1.11,
-      "vorsprung": 0.1,
-      "median_rel": 1,
+      "vorsprung": 0.104,
+      "median_rel": 1.01,
       "belastbar": true
     },
     "luxe-adventure-uplift.wav": {
       "n": 10,
-      "gewicht": 0.99,
-      "vorsprung": -0.009,
+      "gewicht": 1,
+      "vorsprung": -0.003,
       "median_rel": 0.99,
       "belastbar": true
+    },
+    "luxe-house2.wav": {
+      "n": 1,
+      "gewicht": 1,
+      "vorsprung": -0.004,
+      "median_rel": 0.98,
+      "belastbar": false
     }
   },
   "stimme": {
     "ohne Stimme": {
-      "n": 11,
+      "n": 12,
       "gewicht": 1.13,
-      "vorsprung": 0.125,
+      "vorsprung": 0.119,
       "median_rel": 1.01,
       "belastbar": true
     },
     "mit Stimme": {
       "n": 7,
-      "gewicht": 0.97,
-      "vorsprung": -0.029,
+      "gewicht": 0.98,
+      "vorsprung": -0.023,
       "median_rel": 0.98,
       "belastbar": true
     }
