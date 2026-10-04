@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **7'831**
-- Optionen mit englischen Werten (Kandidaten): 946
+- Produkte gesehen: **8'429**
+- Optionen mit englischen Werten (Kandidaten): 981
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 4'592
+- Werte mit unbekanntem Wort (unverändert): 4'716
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 33
-- übersprungen «kollision-nach-uebersetzung»: 17
+- übersprungen «kollision-nach-uebersetzung»: 18
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -58,6 +58,7 @@
 - `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
 - `15449065718145` [Farbe] corduroy-weste-im-preppy-stil-fur-herren-635500: Deep Coffee → Dunkelkaffeebraun; Green Coffee → Grün-Kaffeebraun
 - `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Red battery → Rot Batterie; Set2 → Set 2; Set1 → Set 1
+- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -93,5 +94,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 178, `degrees` 159, `⟨satzbau:adjektiv-vor-nomen⟩` 149, `color` 118, `shell` 77, `rope` 61, `mother` 61, `core` 53, `to` 52, `hat` 46, `case` 43, `high` 42, `for` 42, `dark` 41, `powder` 40, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `years` 37, `magnetic` 36, `old` 35, `bag` 34, `no` 33, `surface` 31, `bear` 30, `eyelets` 30, `adjustable` 29, `mom` 28, `tea` 27, `carbon` 27, `suit` 27, `mushroom` 27, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `belt` 25, `dog` 25, `cocoa` 25, `batteries` 24, `dad` 24, `perforated` 24, `stone` 23, `face` 23, `milk` 23, `of` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22, `nail` 21, `bead` 21, `deer` 21, `yadan` 21, `handle` 20, `noodles` 20, `⟨satzbau:material-vor-farbe⟩` 20, `cloud` 20
+`light` 178, `degrees` 159, `⟨satzbau:adjektiv-vor-nomen⟩` 152, `color` 122, `shell` 77, `rope` 61, `mother` 61, `core` 53, `to` 52, `hat` 46, `high` 44, `case` 43, `for` 43, `dark` 41, `powder` 40, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `years` 37, `magnetic` 36, `surface` 36, `old` 35, `bag` 34, `no` 33, `size` 33, `bear` 30, `eyelets` 30, `adjustable` 29, `carbon` 28, `mom` 28, `tea` 27, `suit` 27, `mushroom` 27, `belt` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `flame` 25, `dog` 25, `cocoa` 25, `stone` 24, `regular` 24, `nail` 24, `batteries` 24, `⟨satzbau:material-vor-farbe⟩` 24, `⟨satzbau:adjektivfolge⟩` 24, `dad` 24, `perforated` 24, `face` 23, `milk` 23, `of` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22, `bead` 21, `deer` 21
 
