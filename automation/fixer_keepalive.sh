@@ -1099,6 +1099,19 @@ while true; do
       echo "$(date -u +%H:%M) $(tail -1 "$T30") · Mängel: $(grep -vE ' ok( |$)|^TOP' "$T30" | awk '{print $NF}' | head -5 | tr '\n' ' ')"
     fi
   fi
+  # SEO-VOLL-AUDIT (04.10.2026, Betreiber «semrush push · überprüf alle produkten und fix»): Semrush-Site-Audit-Klassen
+  # lokal über alle aktiven Produkte (doppelte Titel/Metas, H1 im Text, zu lang, Alt-Text) und Reparatur NUR an
+  # seo.title/seo.description/Alt-Text, Altwerte im Ledger. Semrush selbst crawlt nur 100 Seiten (10'000 Einheiten/Übersicht).
+  SVA=/tmp/seo_voll_audit.log
+  if [ -f "$REPO/automation/seo_voll_audit.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$SVA" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$SVA"; then
+      touch "$SVA"
+      ( cd "$REPO" && timeout 1500 python3 automation/seo_voll_audit.py >> "$SVA" 2>&1 \
+        && SCHARF=1 timeout 2400 python3 automation/seo_voll_fix.py >> "$SVA" 2>&1 )
+      echo "$(date -u +%H:%M) SEO-Voll-Audit: $(grep '^SCHARF' "$SVA" | tail -1)"
+    fi
+  fi
   # AKTIV OHNE BILD (01.10.2026, Speicher-Weg B): Rückholer schalten Entwürfe ACTIVE, ohne Bilder zu prüfen. Wer den Tag
   # `bilder-geloescht-speicher` trägt und aktiv ohne Bild ist, geht zurück auf DRAFT (`wartet-auf-bilder`). Eine Suchabfrage.
   if [ -f "$REPO/automation/aktiv_ohne_bild_wache.py" ]; then
