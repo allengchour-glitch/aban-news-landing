@@ -149,14 +149,33 @@ def raster(bilder, nummer_ab=1, zelle=360, spalten=4):
     return out.getvalue()
 
 
+def groq_schluessel():
+    """04.10.2026: GROQ_API_KEY, GROQ_API_KEY2, GROQ_API_KEY3 — gemessen: Key 1 und 2 hängen an DERSELBEN Organisation
+    (Tageskontingent gemeinsam, 197'755/200'000 verbraucht), Key 3 antwortete noch. Rotation nur beim Tageslimit."""
+    ks = [os.environ.get(n, "").strip() for n in ("GROQ_API_KEY", "GROQ_API_KEY2", "GROQ_API_KEY3")]
+    return [k for k in ks if k]
+
+
 def groq_json(text, bilder=None, nummer_ab=1):
-    k = os.environ.get("GROQ_API_KEY", "").strip()
+    ks = groq_schluessel()
+    if not ks:
+        raise RuntimeError("GROQ_API_KEY fehlt")
+    letzter = None
+    for i, k in enumerate(ks):
+        try:
+            return _groq_json_mit(k, text, bilder, nummer_ab)
+        except TagesKontingentLeer as e:
+            letzter = e
+            if i + 1 < len(ks):
+                print(f"  Groq-Tageskontingent leer mit Schlüssel {i + 1} → Schlüssel {i + 2}", file=sys.stderr, flush=True)
+    raise letzter
+
+
+def _groq_json_mit(k, text, bilder=None, nummer_ab=1):
     if bilder and len(bilder) > GROQ_MAX_BILDER:
         text = (f"Die {len(bilder)} Bilder sind zu EINEM Raster zusammengesetzt; jedes trägt oben sein Etikett "
                 f"«Bild {nummer_ab}» bis «Bild {nummer_ab + len(bilder) - 1}». Diese Etiketten sind die Nummern im Auftrag.\n\n" + text)
         bilder = [raster(bilder, nummer_ab)]
-    if not k:
-        raise RuntimeError("GROQ_API_KEY fehlt")
     global LETZTES_MODELL
     # Text: bei 429 (Minutenkontingent, geteilt mit Dauerläufen) zuerst auf das zweite Modell mit eigenem Kontingent
     modelle = [GROQ_BILD] if bilder else [m for m in (GROQ_TEXT, GROQ_AUSWEICH) if m]

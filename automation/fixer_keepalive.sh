@@ -1078,6 +1078,19 @@ while true; do
             KLASSE=\"\$K\" EIN_MODELL=1 SCHARF=1 N=8 timeout 1200 python3 automation/google_bild_tausch.py; done" >> "$GBT" 2>&1 9>&- & )
     fi
   fi
+  # GOOGLE REIZWORT-TITEL (04.10.2026, 12-h-Fixlauf): «Sexy …», «Spicy Girl», «verführerisch» im Google-Kanal → sachlich
+  # (51 Titel + 19 SEO-Titel; Kanarienvögel 10/10, Hot Wheels/«Sexysmart» bleiben). Täglich, damit Neuimporte nachziehen.
+  # Ein zusätzlicher Bildtausch-Tageslauf (N=40) wurde bewusst NICHT eingebaut: der Engpass ist das Groq-Vision-Kontingent
+  # (~200k Tokens/Tag je Organisation), nicht N — und dasselbe Modell vergleicht die Variantenbilder echter Bestellungen.
+  GRT=/tmp/google_reiztitel.log
+  if [ -f "$REPO/automation/google_reiztitel.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GRT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$GRT"
+      ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/google_reiztitel.py >> "$GRT" 2>&1 )
+      echo "$(date -u +%H:%M) google_reiztitel: $(tail -1 "$GRT" | cut -c1-90)"
+    fi
+  fi
   # 03.10.2026: drei Bildklassen statt einer (Adult/Überlagerung mit eigenem Prompt); EIN_MODELL=1 greift nur, wenn der
   # Zweitprüfer leer ist (Groq-Tageskontingent JE Modell) — gemessen 35/46 getauschte frei (76 %) gegen 4/19 unberührte.
   # GOOGLE «Image too small» (03.10.2026): zu kleine VARIANTEN-Bilder (< 250 px) per fileUpdate an Ort und Stelle auf 600 px.

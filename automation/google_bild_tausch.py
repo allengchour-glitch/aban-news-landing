@@ -20,7 +20,7 @@ Modell-Urteile sind Hinweise: nur Übereinstimmung zweier Modelle führt zu eine
   python3 automation/google_bild_tausch.py            Trockenlauf (Standard): zeigt Urteile, ändert nichts
   SCHARF=1 N=40 KONTROLLE=40 python3 automation/google_bild_tausch.py
 """
-import base64, io, json, os, re, subprocess, sys, time, urllib.request
+import base64, io, json, os, re, subprocess, sys, time, urllib.error, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import heilversprechen_wache as hw          # gql() mit Grund bei Fehlern
 import gemini_jury as gj                     # schluessel()
@@ -78,7 +78,15 @@ def json_aus(txt):
     return json.loads(re.search(r"\{.*\}", txt, re.S).group(0))
 
 
+class GeminiLeer(RuntimeError):
+    """04.10.2026: Gemini antwortet HTTP 402 Payment Required (Guthaben leer). Das ist kein Netzfehler — ohne diese
+    Unterscheidung lief der Aufseher-Bildtausch seit dem Abend als «fehler 6 · tausch 0» ins Leere."""
+
+
 def gemini(bilder, text):
+    import zweitmodell
+    if zweitmodell.gemini_leer():
+        raise GeminiLeer("Marke /tmp/gemini_leer (< 6 h)")
     teile = [{"text": text}] + [{"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(b).decode()}} for b in bilder]
     body = {"contents": [{"parts": teile}], "generationConfig": {"temperature": 0.1, "response_mime_type": "application/json"}}
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gj.schluessel()}"
@@ -92,6 +100,12 @@ def gemini(bilder, text):
             if not j.get("candidates") and (j.get("promptFeedback") or {}).get("blockReason"):
                 return {"wahl": 1, "motiv_selbst_problem": True, "grund": "Gemini sperrt die Bilder: " + j["promptFeedback"]["blockReason"]}
             return json_aus(j["candidates"][0]["content"]["parts"][0]["text"])
+        except urllib.error.HTTPError as e:
+            koerper = e.read()[:300].decode("utf-8", "replace")
+            if e.code == 402:
+                zweitmodell.handle_gemini_402(koerper)
+                raise GeminiLeer("HTTP 402: " + koerper[:120])
+            grund = f"HTTP {e.code}: {koerper[:150]}"; time.sleep(4 * (a + 1))
         except Exception as e:
             grund = f"{type(e).__name__}: {str(e)[:150]}"; time.sleep(4 * (a + 1))
     raise RuntimeError("Gemini ohne Antwort — " + grund)
@@ -131,13 +145,32 @@ def main():
             zaehl["zu_wenig_bilder"] += 1; continue
         text = (PROMPT_UEBERLAGERUNG if KLASSE == "Promotional overlay on image" else PROMPT).format(
             titel=p["title"], typ=p.get("productType") or "-", k=len(bilder))
+        allein = False
+        nur_zweit = False
         try:
             g = gemini(bilder, text)
+        except GeminiLeer as e:
+            # 04.10.2026: Gemini-Guthaben leer → mit EIN_MODELL=1 urteilt der Zweitprüfer (ChatGPT, sonst Groq-Vision
+            # qwen) ALLEIN; Ledger-Art «tausch-q», damit die Trefferquote getrennt nachgemessen wird (wie «tausch-g»).
+            if os.environ.get("EIN_MODELL") != "1":
+                zaehl["fehler"] += 1; print(f"  ⚠️ {h}: Gemini leer ({e}) — EIN_MODELL=1 nötig", file=sys.stderr, flush=True); continue
+            nur_zweit = True
+            try:
+                g = chatgpt(bilder, text)
+            except Exception as e2:
+                zaehl["fehler"] += 1; print(f"  ⚠️ {h}: Gemini leer UND Zweitprüfer {e2}", file=sys.stderr, flush=True)
+                if "Tageskontingent" in str(e2):
+                    print("ABBRUCH: beide Prüfer leer", flush=True); break
+                continue
+            c, allein = dict(g), True
         except RuntimeError as e:
             zaehl["fehler"] += 1; print(f"  ⚠️ {h}: {e}", file=sys.stderr, flush=True); continue
-        allein = False
         try:
+            if nur_zweit:
+                raise StopIteration
             c = chatgpt(bilder, text)
+        except StopIteration:
+            pass
         except Exception as e:
             # 03.10.2026: GEMESSEN — von 46 getauschten Produkten (30.09.–01.10.) sind 35 (76 %) nicht mehr blockiert,
             # von 19 «uneinig» (unberührt) nur 4 (21 %). Ist der Zweitprüfer leer (ChatGPT ohne Guthaben, Groq-Tages-
@@ -154,7 +187,7 @@ def main():
         elif gw == cw == 1:
             art = "behalten"
         elif gw == cw and 1 < gw <= len(med):
-            art = "tausch-g" if allein else "tausch"
+            art = ("tausch-q" if nur_zweit else "tausch-g") if allein else "tausch"
         else:
             art = "uneinig"
         zaehl[art] = zaehl.get(art, 0) + 1

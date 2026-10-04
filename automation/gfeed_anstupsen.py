@@ -17,7 +17,11 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
 STAND = os.path.join(REPO, "dropship/_google_feedback_stand.json")
 LEDGER = os.path.join(REPO, "dropship/_gfeed_anstupsen.tsv")
-KLASSE = "Product page unavailable"
+# 04.10.2026: KLASSE und HANDLES_FILE aus der Umgebung — die Google-Fehlalarme «Restricted adult content» bei Uhren,
+# Haustierbedarf, Gadgets (gemessen: ~100 der 299 sind keine Mode) bekommen denselben Anstoss; eine Handle-Datei grenzt
+# den Lauf auf die Fehlalarm-Teilmenge ein, damit die Bildtausch-Messung (Mode) unberührt bleibt.
+KLASSE = os.environ.get("KLASSE", "Product page unavailable")
+HANDLES_FILE = os.environ.get("HANDLES_FILE", "")
 # 03.10.2026: 7 → 3 Tage. 115 der 129 Restfälle hatten seit dem 29.09. nur EINEN Anstoss; zweite Runde 03.10. 00:27 UTC
 # (Nachmessung im nächsten Google-Vollscan). Ein Tag-Update kostet nichts und löst keine Kundenwirkung aus.
 TAGE = int(os.environ.get("TAGE", "3"))
@@ -49,6 +53,9 @@ def main():
     heute = dt.datetime.now(dt.timezone.utc)
     stand = json.load(open(STAND))
     handles = stand["handles"].get(KLASSE, [])
+    if HANDLES_FILE:
+        erlaubt = {l.strip() for l in open(HANDLES_FILE, encoding="utf-8") if l.strip()}
+        handles = [h for h in handles if h in erlaubt]
     zuletzt = {}
     if os.path.exists(LEDGER):
         for l in open(LEDGER, encoding="utf-8"):
