@@ -74,3 +74,12 @@ frei, Bildtausch-Quote bei Gemini-allein war 76–83 %; `tausch-q` erstmals mess
 - Gemini-Guthaben (402) = Betreiber-Klick; bis dahin Groq-Rotation (Key 3) — qwen hat auch dort 200k Tokens/Tag (~80 Produkte).
 - Aufseher-Block: N=8 je Klasse alle 2 h reicht für 250 offene nicht (~100/Tag) → Vorschlag N=25 (siehe waechter_block).
 - Import-Regel an der Quelle (Wäsche/Bademode/Bodys: Hauptbild ohne Model zuerst) bleibt offen.
+
+## Endstand Bildtausch Adult (04.10. 22:44 UTC, Lauf läuft weiter bis N=80 oder Container-Neustart; Ledger macht ihn neustart-fest)
+| heute beurteilt | tausch-q (Groq-Vision allein, Bild gewechselt) | behalten (kein besseres Bild) | motiv | fehler |
+|---:|---:|---:|---:|---:|
+| 24 in 10 Min (~2,4/Min) | **12** | 12 | 0 | 0 |
+Beispiele tausch-q: Maulbeerseiden-Gesichtsmaske → Bild 5 (Maske ohne Gesicht), Taillengürtel → Bild 3 (reines Produktfoto).
+Auffällig: Groq-qwen setzt nie `motiv_selbst_problem` — die Dessous-Entscheide bleiben deshalb Handarbeit am Kontaktbogen (oben).
+Schlüsselrotation lief 22× auf Schlüssel 3 (Key 1+2 = dieselbe Organisation, Tageslimit).
+Rückweg je Produkt: Spalte 4 des Ledgers (`_google_bild_tausch.tsv`) = alte erste Media-ID → `productReorderMedia` newPosition 0.
