@@ -12,7 +12,7 @@ sobald es behoben ist. Nur der unmessbare Rest wird gezählt, nicht behauptet.
 
 Gibt genau eine Zeile aus (oder nichts, wenn nichts blockiert). MELDET NUR.
 """
-import subprocess, json, os, re, subprocess, sys, urllib.request, datetime
+import subprocess, json, os, re, subprocess, sys, time, urllib.request, datetime
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
@@ -822,11 +822,29 @@ def zugang_weg():
             " — Secrets als Umgebungsvariablen setzen (SHOPIFY_CLIENT_ID/_SECRET) oder Schluessel im Chat geben")
 
 
+def ki_guthaben():
+    """04.10.2026: Gemini antwortete 402 (seit 21:53), OpenAI «no credits remaining» (seit 20:11) — alles, was auf zwei
+    Prüfmodelle baut (Kauderwelsch-, Titel-Bild-, Google-Fein-Wache, Bildtausch, SEO-Faktenprüfung), läuft dann nur über
+    Groq (Tageskontingent 200'000 Tokens je Modell, Schlüssel 1+2 teilen eines) oder pausiert. Die Marken setzt zweitmodell.py
+    bei jedem 402/insufficient_quota (gültig 6 h, danach wird erneut versucht → verschwindet von selbst nach dem Aufladen)."""
+    leer = []
+    for name, pfad in (("Gemini", "/tmp/gemini_leer"), ("OpenAI", "/tmp/openai_leer")):
+        try:
+            alter = time.time() - os.path.getmtime(pfad)
+        except OSError:
+            continue
+        if alter < 6 * 3600:
+            leer.append(f"{name} seit {time.strftime('%d.%m. %H:%M', time.gmtime(os.path.getmtime(pfad)))} UTC")
+    if not leer:
+        return None
+    return "KI-Guthaben leer: " + " + ".join(leer) + " → Zweitprüfer-Wachen pausieren/laufen auf Groq (aufladen)"
+
+
 def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
