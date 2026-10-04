@@ -1,25 +1,30 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 05:16 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-04 05:09 UTC, Stand 2026-10-04 06:12 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'815**
-- Optionen mit englischen Werten (Kandidaten): 189
+- Produkte gesehen: **2'415**
+- Optionen mit englischen Werten (Kandidaten): 371
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 858
+- Werte mit unbekanntem Wort (unverändert): 2'007
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 11
-- übersprungen «kleidungsstueck-im-wert»: 1
+- übersprungen «kleidungsstueck-im-wert»: 16
+- übersprungen «kollision-nach-uebersetzung»: 12
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
 > Zwei verschiedene Kleidungsstücke in EINER Option, oder ein Kleidungsstück, das nicht zum Titel passt. Beispiel Jeansjacke: «Blue Coat» / «Blue Pants» — die zweite «Farbe» ist eine Hose. Entscheid am Bild und Preis: Option umbenennen (z. B. «Artikel»: Jacke/Hose) oder Variante entfernen.
 
 - `15449163432321` [Farbe] **Raw-Edge Jeansjacke im Old-Money-Stil** · 1 Sitzungen/30 T — hose, jacke: Blue Coat | Blue Pants
+- `15447951835521` [Farbe] **Weihnachts-Hoodie für die ganze Familie** — hose: Dark Red Winter Fleece Lining-Crawling Suit 66 | Dark Red Winter Fleece Lining-Crawling Suit 73 | Dark Red Winter Fleece Lining-Crawling Suit 80 | Dark Red Winter Fleece Lining-Climbing Suit 90 | Dark Red Winter Fleece Lining-80cm | Dark Red Winter Fleece Lining-90cm | Dark Red Winter Fleece Lining-100cm | Dark Red Winter Fleece Lining-110cm
+- `15447957733761` [Farbe] **Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche** — hose, jacke: coat | coat-100 | coat-110 | coat-120 | coat-130 | coat-140 | coat-150 | coat-Female S
+- `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
+- `15447964516737` [Farbe] **Hoodie & Jogginghose Set im Partnerlook** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers | Grey Suit | Set1
+- `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil, rock · Titel nennt Set: Men's top | Men's Shorts | Women's Shirt | Female Style Skirt | Green Cheongsam Suit
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -36,6 +41,7 @@
 - `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
 - `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
 - `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
+- `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -71,5 +77,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`core` 52, `light` 34, `shell` 31, `generation` 31, `⟨satzbau:adjektiv-vor-nomen⟩` 28, `insert` 26, `case` 24, `batteries` 24, `bag` 21, `of` 21, `surface` 21, `high` 19, `color` 18, `hat` 17, `stone` 16, `face` 16, `gallium` 16, `nitride` 16, `belt` 15, `no` 15, `suit` 15, `handle` 15, `electric` 15, `carbon` 13, `45se6` 12, `steel color` 12, `noodles` 12, `to9mm` 11, `three` 11, `storage` 11, `platinum` 9, `monolever` 9, `watch` 9, `cup` 9, `lens` 9, `ports` 9, `lingyun` 9, `background` 8, `regular` 8, `chain` 8, `line` 8, `one` 8, `two` 8, `phoenix` 8, `feather` 8, `tea` 7, `moissanite` 7, `strap` 7, `gift` 6, `chest` 6, `pad` 6, `laser` 6, `rows` 6, `columns` 6, `starry` 6, `infrared` 6, `obstacle` 6, `avoidance` 6, `only` 6, `streak` 6
+`degrees` 101, `color` 64, `mother` 61, `light` 58, `core` 52, `hat` 46, `rope` 44, `to` 44, `⟨satzbau:adjektiv-vor-nomen⟩` 39, `lens` 38, `father` 38, `for` 35, `generation` 34, `shell` 31, `years` 30, `old` 30, `no` 29, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 22, `tea` 21, `surface` 21, `bear` 21, `⟨satzbau:nomen-vor-farbe⟩` 20, `high` 19, `number` 19, `deer` 19, `clothing` 18, `belt` 16, `stone` 16, `face` 16, `suit` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `handle` 15, `electric` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `pad` 14, `chain` 14, `simple` 14, `mirror` 14, `mother's` 14, `carbon` 13, `open` 13, `⟨satzbau:lehnwort-vor-nomen⟩` 13, `45se6` 12, `full` 12, `steel color` 12, `noodles` 12
 
