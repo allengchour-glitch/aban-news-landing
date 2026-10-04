@@ -1,11 +1,12 @@
-# Füllmenge fehlt — Stand 2026-10-02 10:17 UTC
+# Füllmenge fehlt — Stand 2026-10-04 22:25 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 141 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
 | Produkt | Menge | Status | Beleg (OCR) |
 |---|---|---|---|
+| [Gua-Sha-Set «Jade» · Massage-Tool & Rosehip-Öl](https://luxestyle.ch/products/gua-sha-set-jade-massage-tool-rosehip-ol) | 30 ml | Vorschlag — sichten | 30 1 @ a083eb57-fe88-4722-9860-1de863c00b06.jpg; 1 @ 76cdd042-4c1b-48d5-adca-84fa8b72e511.jpg |
 | [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | 50 ml | Vorschlag — sichten | 50 @ d1c8ff1d-6c86-49b1-b4ee-60e040e0f0d3.jpg; 50 @ 29e06320-c409-4a47-8431-e1d00c98dc60.jpg; 50 @ eace5441-3694-41ab-a12f-96842a3de8ca.jpg; 50 @ 9f33a78a-9764- |
 | [WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials](https://luxestyle.ch/products/wnp-3-hyaluronsaure-serum-ultra-hydrating-vial-606800) | 5 ml | Vorschlag — sichten | 5 @ 46e26515-4ba9-48b0-b1b2-2c6424632e9e_trans.jpg |
 | [Straffendes Serum & Feuchtigkeitscreme Set](https://luxestyle.ch/products/straffendes-serum-feuchtigkeitscreme-set-604900) | 30 ml | Vorschlag — sichten | 30 30 1.01 1.01 @ 29d78e6d-757f-4af4-8197-e50df6680ff2.jpg |
@@ -20,7 +21,6 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Jaysuing Kurkuma Hautcreme](https://luxestyle.ch/products/jaysuing-kurkuma-hautcreme-083010) | — | nichts lesbar |  |
 | [OUHOE Serum für verbesserte Hauttextur](https://luxestyle.ch/products/ouhoe-serum-fur-verbesserte-hauttextur-484993) | — | nichts lesbar |  |
 | [SOUTH MOON Perianalpflege-Creme](https://luxestyle.ch/products/south-moon-perianalpflege-creme-056513) | — | nichts lesbar |  |
-| [Bruststraffende & Feuchtigkeitsspendende Creme](https://luxestyle.ch/products/bruststraffende-feuchtigkeitsspendende-creme-691073) | — | nichts lesbar |  |
 | [OUHOE Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/ouhoe-feuchtigkeitsspendender-lippenbalsam-218241) | — | nichts lesbar |  |
 | [Florales festes Parfum](https://luxestyle.ch/products/florales-festes-parfum-956865) | — | nichts lesbar |  |
 | [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar | 1.7 @ 7b38f857-9c1d-48a3-87f0-b2c914795ab1.jpg |
@@ -147,3 +147,5 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Vital Smooth Rouge-Creme](https://luxestyle.ch/products/vital-smooth-rouge-creme-010560) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/feuchtigkeitsspendender-lippenbalsam-987968) | — | nichts lesbar |  |
 | [Aromatherapie-Öl im Kristallfläschchen](https://luxestyle.ch/products/aromatherapie-ol-im-kristallflaschchen-636500) | — | nichts lesbar |  |
+| [Tattoo-Abdeckcreme](https://luxestyle.ch/products/tattoo-abdeckcreme-601900) | — | nichts lesbar |  |
+| [Feuchtigkeitsspendende Sonnen-BB-Creme](https://luxestyle.ch/products/feuchtigkeitsspendende-sonnen-bb-creme-621100) | — | nichts lesbar |  |
