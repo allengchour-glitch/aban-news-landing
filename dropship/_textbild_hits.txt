@@ -16513,3 +16513,30 @@ gid://shopify/Product/15509134344577	14->1	Wasserdichter Motorrad-Rucksack 35L
 gid://shopify/Product/15509345010049	29->0	Wurstmaschine für Zuhause
 gid://shopify/Product/15510316089729	10->3	Schaum-Sprühpistole für Autowäsche
 gid://shopify/Product/15510325821825	43->0	Grosses Rückenpolster mit Arm- und Nackenkissen
+gid://shopify/Product/15510791389569	71->0	Multifunktionaler Brustgurt mit Zubehörtasche
+gid://shopify/Product/15512244879745	23->0	Warme, wasserdichte Freizeitschuhe für Herren
+gid://shopify/Product/15515088290177	116->0	Bodycon Etuikleid mit V-Ausschnitt
+gid://shopify/Product/15519823036801	144->0	P-Kette für Hunde aus Edelstahl
+gid://shopify/Product/15519831163265	12->0	USB Heizuntersetzer
+gid://shopify/Product/15520169787777	48->3	Winter-Freizeitstiefel aus Leder
+gid://shopify/Product/15523850453377	40->1	Minimalistischer Hautentfernungspenner
+gid://shopify/Product/16603400274311	59->0	Walnussfarbene Deckenlampe für Eingangsbereich
+gid://shopify/Product/16603444806023	25->1	Kopflicht mit langer Batterielebensdauer
+gid://shopify/Product/16603589345671	35->0	Mini‑Lippenstift‑Set in Vintage‑Rot, Tomate, Beere
+gid://shopify/Product/16603594260871	83->0	Amerikanischer Vintage-Wandlampenstil
+gid://shopify/Product/16603594326407	20->2	Solarwandlampe Outdoor mit IP44
+gid://shopify/Product/16603764621703	11->0	Multifunktionsuhr mit grossem Bildschirm
+gid://shopify/Product/16603987116423	69->2	Solar Weihnachts-Zeder für Aussenbereich
+gid://shopify/Product/16604379054471	92->0	Wasserdichte Quarz-Uhr 50 m
+gid://shopify/Product/16604379840903	37->0	Sportuhr mit Quarzwerk, 42 mm Zifferblatt
+gid://shopify/Product/16604380201351	57->0	Männer‑Uhr aus Leder mit Quarzbewegung
+gid://shopify/Product/16604581659015	58->0	G40 Gold LED Edison Glühbirne 1W
+gid://shopify/Product/16604583985543	20->1	Sandalen mit runden Zehen, mittlerer Absatz, Plattform
+gid://shopify/Product/16604587917703	18->3	Linen Sandalen für Zuhause – offene Zehen, Bänder
+gid://shopify/Product/16604588474759	64->0	Weiche Ledersandalen mit quadratischem Bogen
+gid://shopify/Product/16604816507271	9->0	PLA 3D‑Druckfilament 1 kg – 175 mm, Mehrfarbig
+gid://shopify/Product/16604818801031	9->3	Nylon-Balaclava-Bh mit nahtloser Passform
+gid://shopify/Product/16604831678855	21->0	Digital-Tag-Taschen-Set für Weihnachten
+gid://shopify/Product/16604832858503	133->0	Adventskalender-Set aus Satin-Geschenkbeutel
+gid://shopify/Product/16604837052807	15->0	Weisser Weihnachtsmann-Hut aus Plüsch
+gid://shopify/Product/16604838592903	86->1	Goldener Sequin-Kap für Weihnachtsdekoration

@@ -29,6 +29,7 @@ GROQ_AUSWEICH = os.environ.get("GROQ_AUSWEICH", GROQ_BILD)
 class TagesKontingentLeer(RuntimeError):
     pass
 MARKE = "/tmp/openai_leer"
+GEMINI_MARKE = "/tmp/gemini_leer"
 LEER_GUELTIG_S = 6 * 3600
 LETZTES_MODELL = ""
 
@@ -49,6 +50,29 @@ def openai_leer():
         return time.time() - os.path.getmtime(MARKE) < LEER_GUELTIG_S
     except OSError:
         return False
+
+
+def gemini_leer():
+    """Check if Gemini fallback marker is valid (6h)."""
+    try:
+        return time.time() - os.path.getmtime(GEMINI_MARKE) < LEER_GUELTIG_S
+    except OSError:
+        return False
+
+
+def _gemini_leer_markieren(grund):
+    """Mark Gemini as quota-exhausted, create fallback marker."""
+    try:
+        open(GEMINI_MARKE, "w").write(time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()) + " " + grund[:200] + "\n")
+    except OSError:
+        pass
+    print(f"  Gemini HTTP 402 → Zweitprüfer Groq ({grund[:80]})", file=sys.stderr, flush=True)
+
+
+def ist_gemini_402(koerper):
+    """Detect Gemini HTTP 402 Payment Required errors."""
+    k = koerper if isinstance(koerper, str) else koerper.decode("utf-8", "replace")
+    return "402" in k and ("Payment Required" in k or "quota" in k.lower() or "billing" in k.lower())
 
 
 def _leer_markieren(grund):
@@ -189,6 +213,16 @@ def chat_json(text, bilder=None, nummer_ab=1):
             _leer_markieren(str(e))
     out = groq_json(text, bilder, nummer_ab)   # setzt LETZTES_MODELL auf das tatsächlich antwortende Modell
     return out
+
+
+def gemini_fallback_check():
+    """Check if Gemini is in fallback mode (HTTP 402). Use Groq if true."""
+    return gemini_leer()
+
+
+def handle_gemini_402(error_msg):
+    """Call this when catching HTTP 402 from Gemini. Creates fallback marker."""
+    _gemini_leer_markieren(error_msg)
 
 
 if __name__ == "__main__" and "--probe" in sys.argv:
