@@ -163,5 +163,50 @@
     "condition": "ohrringe"
    }
   ]
+ },
+ "buro-home-office": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "buero"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "notizbuch"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "laptop-sleeve"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wireless-charger"
+   }
+  ]
+ },
+ "sub-aroma-diffuser": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Diffuser"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Aroma"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Luftbefeuchter"
+   }
+  ]
  }
 }
