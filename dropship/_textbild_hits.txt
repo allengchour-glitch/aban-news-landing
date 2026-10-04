@@ -16511,3 +16511,5 @@ gid://shopify/Product/15506533876097	75->0	Aroma Diffuser mit Bluetooth-Lautspre
 gid://shopify/Product/15508468400513	37->0	Heizkissen für Rücken und Körper, 12x24"
 gid://shopify/Product/15509134344577	14->1	Wasserdichter Motorrad-Rucksack 35L
 gid://shopify/Product/15509345010049	29->0	Wurstmaschine für Zuhause
+gid://shopify/Product/15510316089729	10->3	Schaum-Sprühpistole für Autowäsche
+gid://shopify/Product/15510325821825	43->0	Grosses Rückenpolster mit Arm- und Nackenkissen
