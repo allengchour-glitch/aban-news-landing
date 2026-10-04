@@ -33,6 +33,19 @@
 
 
 
+
+## 🔍 Sichtprüfung 1'645 Neuimporte + Malen nach Zahlen / Diamond Painting (04.10.2026, 22:20–23:15 UTC)
+«fix 12 h lang alles»: Kontaktbögen mit Titel → Workflow (Sichter + Gegenprüfer, Stichprobe 30/30) → 618 Befunde: 447 Titel,
+105 Hauptbilder, 66 Hausregel. **Lehre 1 (Quelle):** der Texter sah nur den englischen CJ-Namen — «Digital oil painting» (数字油画)
+wurde «Digitales Ölgemälde», «Snowflake Knob» «Schneeknauf». Jetzt CJ-Kategorie im Prompt + `fallenSicher()`. **Lehre 2:**
+Ein «skip(gemini)» im Runner-Log heisst seit dem 402 von Gemini/DeepSeek: Groq-Tageskontingent leer (200k JE MODELL und Organisation,
+Schlüssel 1+2 teilen eine). Ein winziger Probeaufruf antwortet trotzdem «ok» — gemessen wird mit echter Promptgrösse.
+**Lehre 3 (Klingen):** eine Kontext-Ausnahme, die VOR allem steht, öffnet die Versandregel — «Küchenmesser mit Obstschneidebrett».
+**Lehre 4:** «Kosmetik zum Auftragen» ist eine WERBE-Regel, keine Verkaufsregel — Prüfer meldeten 50 Lippenstifte als Verstoss.
+**Lehre 5:** Neue Menüpunkte als Typ COLLECTION rendern als /en/… (404) → immer HTTP + /collections/handle.
+Semrush-Lücke: «diamond painting» 8'100/Mt KD 16 und «malen nach zahlen» 5'400 KD 30 hatten keine Kollektion, obwohl 278 Artikel da waren.
+→ `dropship/NEUIMPORT-SICHTPRUEFUNG-2026-10-04.md`
+
 ## 🔎 «semrush push · überprüf alle produkten und fix · kategorien und fein filter» (2026-10-04, 21:00–22:30)
 - ⛔ **Semrush `site_audit/snapshot` = 10'000 Einheiten JE Aufruf** (gemessen), `issue_details` 0. Projekt 31464185 (Betreiber)
   crawlt nur 100 Seiten → die Klassen lokal über ALLE Produkte rechnen (`seo_voll_audit.py`, Bulk, 0 Einheiten), dann fixen.
