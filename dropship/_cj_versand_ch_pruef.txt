@@ -3447,3 +3447,8 @@ weihnachts-projektionslicht-624300	2511281254151624500	16	7.51	ok	landeseite
 3d-druck-weihnachts-shirt-herren-629300	2606250217161620200	16	8.79	ok	landeseite
 weihnachts-fridge-dekoration-620700	2411180335481620900	16	5.81	ok	landeseite
 weihnachtsstrumpf-ornament-630300	2607100920431630900	16	5.69	ok	landeseite
+weihnachtsstrumpf-mit-samt-optik-639700	2607100900001630300	16	5.77	ok	landeseite
+katzennest-weihnachtsbaum-619600	2508250739321610000	16	28.39	ok	landeseite
+weihnachtsspielzeug-fur-zahnpflege-622200	2512050608581622400	16	6.77	ok	landeseite
+weisser-weihnachten-mit-engel-malen-nach-zahle-751040	1397507125143539712	3	10.01	ok	landeseite
+weihnachtswald-gardine-602800	2508240006251603000	16	8.69	ok	landeseite
