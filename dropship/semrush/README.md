@@ -73,3 +73,18 @@ Restguthaben unbekannt (kein Saldo-Bericht im MCP) — geschätzt 10'000–19'00
   Kaufbegriffe gehören auf die Kollektionsseite, ein Blogartikel würde ihr Konkurrenz machen.
 - **Nebenfunde der Prüfer → gehandelt:** 35 Tierschutz-/Biozid-Geräte (`dropship/TIERSCHUTZ-BIOZID-2026-10-02.md`),
   GPS-Tracker mit Mikrofon (StGB 179sexies) und JBL-Nachahmung «FLIP 6» gedraftet, 2 falsche Titel korrigiert.
+
+## 04.10.2026 · «semrush push» — Projekt + Site-Audit gefunden
+- **Projekt 31464185 «luxestyle.ch»** (vom Betreiber angelegt; Werkzeuge siteaudit, tracking, backlinkAudit, seoideas).
+  `list_projects` 100 Einheiten. Per MCP NICHT anlegbar/startbar (nur lesen) — Audit neu starten und Crawl-Limit
+  heben (jetzt **100 Seiten**) = Betreiber in der Semrush-Oberfläche.
+- ⛔ **PREISE (Semrush-Entwicklerdoku + GEMESSEN): `site_audit` → `snapshot` = 10'000 Einheiten JE AUFRUF** (gemessen
+  04.10. 21:12 UTC), `meta_issues` 100, `page_info` 1'000, **`issue_details` gemessen 0**. Nie `snapshot` in einer
+  Schleife oder in Agenten; die Übersicht unten reicht.
+- Audit 03.10. (100 Seiten): Site-Health **95 %**, **0 Fehler**. Warnungen: 112 wenig Text/HTML 86 · 130 per robots
+  gesperrte interne Ressourcen 87 (Shopify-Standard) · 106 **Meta-Beschreibung fehlt 5** (4 Rechtsseiten + /collections/all)
+  · 105 H1 = Titel 1 (/pages/ueber-uns). Hinweise: 210 gesperrte externe Ressourcen 87 · 213 nur 1 interner Link 17
+  (alle `?variant=`-URLs) · 104 **mehrere H1 4** (versand-lieferung, ueber-uns, tracking, kontakt-support) · 215 6 · 223 1.
+- `domain_rank` ch: 560 Begriffe Top 100 (02.10.: 556), Platz 11–20: 5, 21–30: 35, Verkehr 0.
+- Daten: «adventskalender» 27'100/Mt (KD 20), frauen 8'100, für den mann 5'400, kinder 4'400 — **keine Kollektion
+  vorhanden** (gemessen), 11 aktive Kalender, meist leer/Puzzle. → Workflow «semrush-push-advent».
