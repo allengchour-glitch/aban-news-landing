@@ -3570,3 +3570,6 @@ weihnachts-sweatshirt-mit-digitaldruck-fur-her-622800	2605140840561623300	16	8.9
 weihnachts-fleece-pullover-fur-damen-620100	2601170127411620500	16	9.88	ok	landeseite
 weihnachts-sweatshirt-604500	2601041142551604900	16	10.83	ok	landeseite
 weihnachts-pullover-flanell-rundhals-langarm-u-634500	2601020503021634700	16	9.47	ok	landeseite
+weihnachts-print-hoodie-mit-glitzer-608700	2601010813211608900	16	10.15	ok	landeseite
+weihnachts-style-bequem-damenpullover-621800	2512310310391622000	16	9.20	ok	landeseite
+weihnachts-muster-sweatshirt-634700	2512301957001635000	16	11.00	ok	landeseite
