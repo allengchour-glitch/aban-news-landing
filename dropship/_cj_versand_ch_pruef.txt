@@ -3410,3 +3410,11 @@ halsband-mit-schleife-im-britischen-weihnachts-507648	1725858818313170944	16	5.2
 weihnachtliche-keramikplatte-rechteckig-980544	1613726580415672320	16	11.23	ok	landeseite
 weihnachtsglocken-haarball-fur-haustiere-668416	1561655486888554496	16	6.77	ok	landeseite
 elektrischer-weihnachtsmann-spass-fur-kinder-61e8fe	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachts-stuhlhusse-mit-digitaldruck-da328a	-	-	-	unklar keine CJ-SKU	landeseite
+weihnachtliche-baukasten-box-611400	2509100323321611700	16	14.60	ok	landeseite
+weihnachts-halsband-fur-hunde-911872	1464474340170010624	16	5.26	ok	landeseite
+weihnachts-countdown-auto-spielzeug-639400	2607101051381630100	16	8.79	ok	landeseite
+weihnachtsvorhang-mit-christbaum-stickerei-604800	2508221420531605000	16	7.95	ok	landeseite
+weihnachtsvorhang-mit-schneeflocken-stickerei-619000	2508221416281619300	16	7.95	ok	landeseite
+weihnachts-countdown-katzen-spielzeug-609600	2410230301331609800	16	8.53	ok	landeseite
+weihnachtlicher-katzen-tunnel-607000	2411110234361607200	16	14.84	ok	landeseite
