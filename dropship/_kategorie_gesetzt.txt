@@ -47353,3 +47353,16 @@ roboter-staubsauger-mit-mikrofasertuch-2d411b	hg-9	Gadget	2026-10-04T06:18Z
 wasserdichte-fahrradtasche-13-l-623200	sg	Sport & Outdoor	2026-10-04T06:18Z
 ledergurt-rucksack-mit-mehreren-fachern-714240	lb	Taschen	2026-10-04T06:18Z
 silicone-kochgeschirr-set-mit-holzgriff-12-stu-616300	hg-11	Küche & Bar	2026-10-04T06:18Z
+einweg-saugschlauch-fur-zahnmedizin-09a1d6	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+schrumpfschlauch-set-aus-silikon-fur-kabel-31162b	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+bambus-stander-fur-smartphone-ladung-264853	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+acryl-stander-fur-lightsaber-3f40e7	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+stahlrohr-feuerluftkanule-35-mm-16154c	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+hohl-dream-catcher-schmetterling-aus-kohlensto-81068a	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+pu-leder-schlusselanhanger-mit-30-ml-behalter-0e2387	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+bogenwinkel-hole-positioner-aus-legierung-e9778b	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+stahl-rasierbrett-fur-fusse-402f2b	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+portabler-938d-lotkolben-31f79e	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+nanometer-lichtwellensensor-fur-die-hand-b48d59	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+demonstrationsmodell-intervertebraldisk-hernie-ea9837	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
+digitales-korpermalen-40-50cm-canvas-ohne-rahm-6e2676	ha-15	Werkzeug & Heimwerken	2026-10-04T10:17Z
