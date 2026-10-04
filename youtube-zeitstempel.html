@@ -127,12 +127,12 @@ footer a{color:var(--muted)}
 </main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
   <a href="/youtube-embed-generator.html">YouTube-Embed</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/suchmaschine.html">Suche</a>
-  <a href="/youtube-embed-generator.html">YouTube-Embed</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 (function(){
   var mode="link";
   function getId(u){ u=(u||"").trim(); var m=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/); if(m)return m[1]; if(/^[A-Za-z0-9_-]{11}$/.test(u))return u; return null; }
-  function toSec(t){ t=(t||"").trim(); if(/^\d+$/.test(t))return parseInt(t,10); var p=t.split(":").map(Number); if(p.some(isNaN))return null; if(p.length===2)return p[0]*60+p[1]; if(p.length===3)return p[0]*3600+p[1]*60+p[2]; return null; }
+  function toSec(t){ t=(t||"").trim(); if(!/^\d+(:\d{1,2}){0,2}$/.test(t))return null; var p=t.split(":").map(Number); if(p.slice(1).some(function(x){return x>=60;}))return null; if(p.length===1)return p[0]; if(p.length===2)return p[0]*60+p[1]; return p[0]*3600+p[1]*60+p[2]; }
   var copyText="";
   function renderLink(){
     var id=getId(document.getElementById("url").value), sec=toSec(document.getElementById("zeit").value);
@@ -152,8 +152,15 @@ footer a{color:var(--muted)}
       else { var m2=l.match(/^(.+?)\s+(\d{1,2}:\d{2}(?::\d{2})?)$/); if(m2){ res.push(m2[2]+" "+m2[1]); times.push(toSec(m2[2])); } }
     });
     copyText=res.join("\n"); out.textContent=copyText||"(nichts erkannt)";
-    if(res.length && times[0]!==0) err.textContent="Hinweis: Das erste Kapitel sollte 0:00 sein.";
-    else if(res.length<3) err.textContent="Hinweis: YouTube braucht mind. 3 Kapitel.";
+    var h=[];
+    if(times.some(function(x){return x===null;})) h.push("Ungültige Zeit (Minuten und Sekunden höchstens 59).");
+    if(res.length && times[0]!==0) h.push("Das erste Kapitel sollte 0:00 sein.");
+    if(res.length<3) h.push("YouTube braucht mind. 3 Kapitel.");
+    var auf=true, kurz=false;
+    for(var i=1;i<times.length;i++){ if(times[i]===null||times[i-1]===null)continue; if(times[i]<=times[i-1])auf=false; else if(times[i]-times[i-1]<10)kurz=true; }
+    if(!auf) h.push("Die Zeiten müssen aufsteigen.");
+    if(kurz) h.push("Jedes Kapitel muss mind. 10 Sek. lang sein.");
+    if(h.length) err.textContent="Hinweis: "+h.join(" ");
   }
   function render(){ if(mode==="link")renderLink(); else renderKap(); }
   document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){

@@ -120,7 +120,7 @@ footer a{color:var(--muted)}
 <script>
 (function(){
   var cv=document.getElementById("cv");
-  function num(id,d){var v=parseInt(document.getElementById(id).value,10);return (v>0&&v<=4000)?v:d;}
+  function num(id,d){var el=document.getElementById(id),v=parseInt(el.value,10);if(isNaN(v))return d;if(v>4000){el.value=4000;return 4000;}if(v<1){el.value=1;return 1;}return v;}
   function render(){
     var w=num("w",600),h=num("h",400),bg=document.getElementById("bg").value,fg=document.getElementById("fg").value;
     var txt=document.getElementById("txt").value.trim()||(w+" × "+h);
@@ -138,7 +138,7 @@ footer a{color:var(--muted)}
     ctx.fillText(txt,w/2,h/2);
     // CSS-Darstellungsgröße begrenzen
     var maxDisp=560, scale=Math.min(1,maxDisp/w);
-    cv.style.width=Math.round(w*scale)+"px"; cv.style.height=Math.round(h*scale)+"px";
+    cv.style.width=Math.round(w*scale)+"px"; cv.style.height="auto";
   }
   ["w","h","bg","fg","txt"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
   document.querySelectorAll("#presets button").forEach(function(b){b.addEventListener("click",function(){

@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Welche Schreibweisen kann ich umwandeln?","acceptedAnswer":{"@type":"Answer","text":"GROSSBUCHSTABEN, kleinbuchstaben, Title Case (jedes Wort groß), Satzanfang (nur der erste Buchstabe), sowie camelCase und snake_case für Code und Dateinamen."}},
-{"@type":"Question","name":"Bleiben Umlaute erhalten?","acceptedAnswer":{"@type":"Answer","text":"Ja. Bei Groß-/Kleinschreibung und Title Case bleiben Umlaute (ä, ö, ü) und ß erhalten. Bei camelCase und snake_case werden sie für die Code-Tauglichkeit zu ae/oe/ue/ss umgeschrieben."}},
+{"@type":"Question","name":"Bleiben Umlaute erhalten?","acceptedAnswer":{"@type":"Answer","text":"Ja. Bei Groß-/Kleinschreibung und Title Case bleiben Umlaute (ä, ö, ü) und ß erhalten. Ausnahme: Bei GROSS wird ß zu SS (übliche Schreibweise). Bei camelCase und snake_case werden sie für die Code-Tauglichkeit zu ae/oe/ue/ss umgeschrieben."}},
 {"@type":"Question","name":"Wird mein Text gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, dein Text wird nicht gesendet oder gespeichert."}}
 ]}
 </script>
@@ -113,12 +113,12 @@ footer a{color:var(--muted)}
 (function(){
   var mode="title";
   var inp=document.getElementById("in"), out=document.getElementById("out");
-  function deUml(s){return s.replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/Ä/g,"Ae").replace(/Ö/g,"Oe").replace(/Ü/g,"Ue").replace(/ß/g,"ss");}
+  function deUml(s){return s.replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/Ä/g,"Ae").replace(/Ö/g,"Oe").replace(/Ü/g,"Ue").replace(/ß/g,"ss").normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
   function conv(s){
     switch(mode){
       case "upper": return s.toUpperCase();
       case "lower": return s.toLowerCase();
-      case "title": return s.replace(/\S+/g,function(w){return w.charAt(0).toUpperCase()+w.slice(1).toLowerCase();});
+      case "title": var allUp=s===s.toUpperCase(); return s.replace(/[^\s-]+/g,function(w){return (!allUp&&w.length>1&&w===w.toUpperCase())?w:w.charAt(0).toUpperCase()+w.slice(1).toLowerCase();});
       case "sentence": var l=s.toLowerCase(); return l.replace(/(^\s*|[.!?]\s+)([a-zäöü])/g,function(m,p,c){return p+c.toUpperCase();});
       case "camel": var p=deUml(s).toLowerCase().match(/[a-z0-9]+/g)||[]; return p.map(function(w,i){return i===0?w:w.charAt(0).toUpperCase()+w.slice(1);}).join("");
       case "snake": var q=deUml(s).toLowerCase().match(/[a-z0-9]+/g)||[]; return q.join("_");
