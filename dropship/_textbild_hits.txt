@@ -16489,3 +16489,4 @@ gid://shopify/Product/15479803806081	12->2	Ultra HD Smart Projector
 gid://shopify/Product/15496539636097	18->0	LED Teelichter Flackernd (Batteriebetrieben)
 gid://shopify/Product/15496705900929	63->0	Halsband aus Echtleder für Hunde
 gid://shopify/Product/15496892547457	14->0	Gaming-Griff für Smartphones
+gid://shopify/Product/15497712992641	60->3	DIY Diamond Painting Set
