@@ -3436,3 +3436,5 @@ weihnachts-falschaugenwimpern-set-603100	2511280404221603300	3	8.89	ok	landeseit
 weihnachts-flanell-hoodie-608300	2512310004411608500	16	10.83	ok	landeseite
 weihnachtsmuster-fleece-hoodie-609200	2512110656031609400	16	10.01	ok	landeseite
 weihnachts-pullover-damen-3d-druck-625500	2511280341121625700	16	8.79	ok	landeseite
+weihnachtskatze-pullover-612800	2511260308111613100	16	9.16	ok	landeseite
+weihnachtsbaum-kissen-616600	2606021546041617300	16	10.96	ok	landeseite

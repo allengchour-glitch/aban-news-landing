@@ -1,15 +1,15 @@
 {
- "stand": "2026-10-04T22:45Z",
+ "stand": "2026-10-04T22:58Z",
  "gescannt": 30,
  "ohne_kategorie_vorher": 30,
- "gesetzt": 0,
- "ohne_kategorie_nachher": 30,
+ "gesetzt": 20,
+ "ohne_kategorie_nachher": 10,
  "fehler": 0,
  "unbekannte_typen": {
-  "Trend-Produkt": 12,
-  "Büro & Home Office": 10,
-  "Trend-Gadget": 7,
-  "Kinder": 1
+  "Trend-Produkt": 5,
+  "Trend-Gadget": 3,
+  "Kinder": 1,
+  "Büro & Home Office": 1
  },
- "scharf": false
+ "scharf": true
 }
