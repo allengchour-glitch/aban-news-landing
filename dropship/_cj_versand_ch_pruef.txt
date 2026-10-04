@@ -3454,3 +3454,4 @@ weisser-weihnachten-mit-engel-malen-nach-zahle-751040	1397507125143539712	3	10.0
 weihnachtswald-gardine-602800	2508240006251603000	16	8.69	ok	landeseite
 klassischer-jumpsuit-mit-weihnachtsmuster-659600	2510291353161659800	16	14.96	ok	landeseite
 cape-jacke-mit-abstraktem-3d-weihnachtsdruck-629600	2602100327301629900	16	9.20	ok	landeseite
+weihnachts-pluschtier-mit-sound-fur-hunde-katz-301376	-	-	-	unklar pid 0 	landeseite
