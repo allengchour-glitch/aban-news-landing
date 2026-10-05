@@ -62,7 +62,57 @@ Katzentoilette zu CHF 50.90 bei EK 62.37: jeder Verkauf hätte ~CHF 14 gekostet,
 
 ## 4. CJ-ausgelistete Ware ohne EK (47) → DRAFT
 
-%%WEG%%
+Trockenlauf 00:30–00:36 UTC: 47/47 erneut 1602002 (zweite CJ-Antwort deckungsgleich mit der ersten). Scharf 00:40–00:47 UTC: **47 → DRAFT**, Rücklesen 47/47 `DRAFT` + Tag `cj-entfernt`. Darunter drei «Serum»-Artikel (topische Kosmetik, Betreiber-Entscheid 30.08.) und «Ersatzklinge für elektrische Schaufel» — beides ohnehin nicht im Sortiment gewollt.
+
+| Produkt (Handle) | CJ-Referenz |
+|---|---|
+| `automatischer-futterspender-fur-katzen-hunde-653760` | 1747883348753653760 |
+| `dr-meinaier-sussholz-serum-anti-aging-lsf-50-154306` | 2037766339821154306 |
+| `sussholz-gesichtsserum-mit-vitamin-c-retinol-721473` | 2037764087679721473 |
+| `lakritz-wurzel-anti-aging-serum-lsf-50-572354` | 2033471318793572354 |
+| `mondphase-tourbillon-automatikuhr-fur-herren-639500` | 2602260805271639500 |
+| `profi-dampf-glatteisen-mit-keramik-turmalin-404353` | 2043598066818404353 |
+| `2-stockiger-organizer-fur-die-kaffeestation-561793` | 2066457516934561793 |
+| `besteckkasten-aus-bambus-ausziehbar-348737` | 2064328754111348737 |
+| `geruchsneutrale-katzentoilette-mit-schaufel-ma-987138` | 2044312567296987138 |
+| `moderne-geschlossene-katzentoilette-697858` | 2044311973224697858 |
+| `musikstander-fur-noten-734594` | 2038890961242734594 |
+| `3-zoll-multifunktions-hud-display-531906` | 1981258486785531906 |
+| `doppel-handtuchhalter-aus-edelstahl-820674` | 1990686669601820674 |
+| `micro-suede-sofauberwurf-anthrazit-623554` | 1990425669161623554 |
+| `2er-set-usb-led-taschenlampen-mit-zoom-883906` | 2045027488997883906 |
+| `tragbares-grill-set-aus-edelstahl-213378` | 2074708566250213378 |
+| `duschvorhangstange-ausziehbar-68-193-cm-794242` | 2074709354646794242 |
+| `schuh-organizer-fur-die-tur-10-facher-034946` | 2074709072750034946 |
+| `raven-ohrring-611500` | 2607100849421611500 |
+| `personalisierte-pluschdecke-628600` | 2606010822031628600 |
+| `braunes-uhrenset-fur-herren-898112` | 1726129244343898112 |
+| `dreieckskissenkissen-mit-kegelformigem-design-601300` | 2607150524441601300 |
+| `edelstahl-reisebecher-621900` | 2607150250381621900 |
+| `pimdir-50l-ultraleichtatmungs-rucksack-618300` | 2607151141211618300 |
+| `silikon-schutzcover-fur-game-console-607200` | 2607151217501607200 |
+| `kinder-teleskop-mit-hd-vergro-erung-623900` | 2607151210531623900 |
+| `gelbe-kinderschlauchrutsche-150-cm-604000` | 2607151159591604000 |
+| `sicherheitsgurt-fur-felskletterei-620000` | 2607151134401620000 |
+| `schwerer-karabiner-mit-sicherung-600700` | 2607151127521600700 |
+| `titan-pfanne-mit-anti-haft-beschichtung-603200` | 2607151243191603200 |
+| `universal-kochtopf-24cm-fur-induktion-gasherd-615600` | 2607151219221615600 |
+| `baseball-und-softball-bucket-tasche-mit-schlag-631000` | 2607160348361631000 |
+| `flachboden-topfset-mit-abnehmbaren-griffen-610200` | 2607151239331610200 |
+| `solar-wlan-uberwachungskamera-768896` | 1381186958658768896 |
+| `pfanne-mit-antihaft-beschichtung-622600` | 2607170507061622600 |
+| `ersatzklinge-fur-elektrische-schaufel-628900` | 2607200701141628900 |
+| `acryl-organizer-fur-brett-und-kartenspiele-637800` | 2607300132171637800 |
+| `polyester-aufbewahrungstasche-634900` | 2607300845401634900 |
+| `handheld-mit-drehbarem-bildschirm-603400` | 2606300847291603400 |
+| `gps-tracker-fur-kinder-636000` | 2606010719251636000 |
+| `helm-intercom-mikrofon-3er-set-638600` | 2607280549061638600 |
+| `smart-armband-mit-herzfrequenz-und-schlaf-trac-605824` | 1380840579222605824 |
+| `mini-rc-helikopter-sturzfester-flugspass-604300` | 2605110545101604300 |
+| `high-speed-mobile-ssd-913088` | 1428302779037913088 |
+| `ultradunne-magnetische-powerbank-mit-qi2-611500` | 2511200734111611500 |
+| `non-x-4-lagen-liegetuch-625200` | 2607230551451625200 |
+| `dekokissen-im-modernen-luxus-stil-303936` | 1583273835611303936 |
 
 Regel und Ledger wie `cj_ausgelistet_sichtbar.py` (Tags `cj-entfernt`, `cj-entfernt-2026-10-05`, zusätzlich `ohne-ek-cj-weg`;
 Zeile in `dropship/_cj_nachpruefung.tsv`, Altwerte in `dropship/_preis_marge_cj_weg_2026-10-05.tsv`). Vor jeder Mutation

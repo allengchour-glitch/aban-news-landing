@@ -3710,3 +3710,11 @@ wasserspender-fur-haustiere-45ff2e	-	-	-	unklar keine CJ-SKU	landeseite
 futterspender-mit-schussel-fur-haustiere-9d4c65	-	-	-	unklar keine CJ-SKU	landeseite
 anti-schlingnapf-fur-haustiere-c2cb1d	-	-	-	unklar keine CJ-SKU	landeseite
 tofu-katzenstreu-5b2cdc	-	-	-	unklar keine CJ-SKU	landeseite
+nischen-armband-im-gothic-stil-621500	2512200641291621700	16	5.69	ok	landeseite
+futterspielzeug-fur-hunde-cc0e70	-	-	-	unklar keine CJ-SKU	landeseite
+5-lagiges-handgewebtes-armband-601700	2512200305481601800	16	4.97	ok	landeseite
+hunde-snackspender-fur-training-01f951	-	-	-	unklar keine CJ-SKU	landeseite
+armband-mit-mobius-design-635400	2512191113081635600	16	6.33	ok	landeseite
+automatischer-futterspender-wlan-806a87	-	-	-	unklar keine CJ-SKU	landeseite
+silberarmband-mit-moissanit-besatz-613200	2512190509361613400	16	4.66	ok	landeseite
+anti-schlingnapf-fur-hunde-e2a976	-	-	-	unklar keine CJ-SKU	landeseite
