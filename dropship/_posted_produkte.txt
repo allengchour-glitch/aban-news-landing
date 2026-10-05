@@ -147,3 +147,5 @@ slug:smart-hundespielzeug
 slug:einweg-pappbecher-bayern-fga918b
 slug:liegender-pluschwolf-fga87797
 slug:haarige-tarantel-fga98264
+slug:2-in-1-glatteisen-lockenstab-mit-display-590400
+name:2in1glätteisenlockenstabmit
