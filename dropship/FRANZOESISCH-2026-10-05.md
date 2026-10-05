@@ -67,3 +67,11 @@ elegantes-sommerkleid-a-linie…, herren-strickshirt-riviera…, wide-leg-hose-l
 ## Werkzeuge
 - `automation/fr_stand.py` — Ampel-Zeile «FR: …» (fehlend/veraltet Menü-Links-Policies, Top-58 < 3 Keys oder outdated, Menü-Kollektionen inkl. Emoji-Handles und «nicht auflösbar», /fr live?). Nur lesen, ~55 Anfragen; `menu_handles()` + `kollektionen_stand(handles)` einzeln aufrufbar.
 - Scratch: `scratchpad/fr/register.py` (Bündel-Registrierer mit Ledger), `prod_fr.py`, `coll_fr_1.py`, `coll_fr_2.py`, `neu_versand_fr.html`, `neu_agb_fr.html`.
+
+## ✅ VERÖFFENTLICHT 05.10. ~20:05 UTC (Betreiber «franz fertig machen»)
+- Vorher nachgemessen (`fr_stand.py`): durch die Keyword-Runde 16 neue Menü-Kollektionen + 16 Links + 2 Top-Produkte ohne fr →
+  von Hand übersetzt («vous», `/fr/`-Links), 90 Felder, 0 Fehler, Ledger `_fr_uebersetzung_2026-10-05.jsonl`.
+- `webPresenceUpdate(MarketWebPresence/70968934785, alternateLocales:["fr"])` → fr published; en/it (unpublished) entfernt.
+- WebFetch `https://luxestyle.ch/fr/`: Seite französisch, Menü «Cadeaux & Noël · Femmes · Hommes · Chaussures …».
+- Offen: 129 Menü-Kollektionen mit `body_html` (teils meta) «outdated» — DE am 05.10. neu geschrieben, FR zeigt die ältere
+  Kurzfassung; Startseiten-Reihentitel (Theme-Sektionen) und Produkte ausserhalb der Top-58 noch deutsch.

@@ -35,7 +35,23 @@
 
 
 
-## 2026-10-05 22:30 · 🪟 Clarity: Popup + Cookie-Banner nach 2–7 s gleichzeitig — 40-%-Scroll ist auf dem Handy KEIN Interesse-Signal
+## 2026-10-05 20:15 · 🎼 Musik: 3 Stücke rotierten (22/20/18 von 60 Reels) → 6 neue epische Stücke über Google Lyria 3.5 · 🇫🇷 /fr live
+
+Betreiber: «das neue video mit stimme auf youtube ist toll, aber immer das selbe musik passt nicht mehr». Ursache gemessen in
+`social/_musik_verlauf.txt`: seit «nur episch» (28.09.) erlaubte der Reel-Motor nur adventure-uplift / epic-anime / orchestra.
+vidIQ hatte 15 von 25 nötigen Credits (Auffüllen 24.10.; Erinnerung trig_0156xFzh… gesetzt), GM-SoundFont ist verboten.
+**Neu entdeckt: das Gemini-Konto hat `lyria-3.5` (generateContent → MP3, ~60 s, ~1'200 Tokens je Stück).** Test blind gegen
+adventure-uplift: gleich gut (8/9/8), Einstieg besser (9 vs 7). 6 Stücke erzeugt (trailer, hybrid, hero, fantasy mit Fiedel/
+Tin Whistle, winter mit Schlittenglocken, elegant für Schmuck/Beauty), alle blind episch/Klang ≥ 8, Gesang 0; über
+`musik_aufnehmen.py` gemastert (−12.4…−13.7 LUFS, ≤ −1.2 dBTP), CREDITS «LIZENZIERT» (SynthID-Wasserzeichen vermerkt),
+`EPISCH` im Reel-Motor 3 → 9, Wiederholsperre letzte 3 → 5. Stimme (de-CH-JanNeural/LeniNeural, A/B 50 %) gefällt dem
+Betreiber auf YouTube — Anteil bleibt, Lernschleife entscheidet.
+Französisch (Betreiber «franz fertig machen»): 16 neue Keyword-Kollektionen + 16 Menü-Links + 2 Top-Produkte von Hand übersetzt
+(90 Felder, 0 Fehler), dann `webPresenceUpdate` luxestyle.ch alternateLocales [en,it] → [fr] (published) — WebFetch
+`/fr/`: Menü französisch. Offen: 129 Kollektionstexte «veraltet» (DE heute neu geschrieben, FR = ältere Kurzfassung),
+Startseiten-Reihentitel + Produkte ausserhalb Top-58 deutsch. → `dropship/FRANZOESISCH-2026-10-05.md`
+
+## 2026-10-05 19:45 · 🪟 Clarity: Popup + Cookie-Banner nach 2–7 s gleichzeitig — 40-%-Scroll ist auf dem Handy KEIN Interesse-Signal
 
 Betreiber-Analyse (6 Clarity-Sitzungen, 0 Käufe): Newsletter-Popup und Cookie-Banner überdeckten die Seite 2–7 s nach Ankunft,
 mobil komplett, desktop über «In den Warenkorb». Unser Popup (`custom_liquid_lxpopup`, footer-group.json) hatte am 13.09. einen
@@ -17940,6 +17956,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 🚚 **Gratisversand-Entscheid (Betreiber «entscheide du»): Versprechen = CHF 50 überall; Tarif ≥ 45 nach Rabatt bleibt (50 × 0,9, Bündelrabatt); Automatik-Rabatt «ab CHF 49» → «ab CHF 50», Code FREESHIP49 (0×) aus; Wächter OK.** 45 ist Technik, 50 ist das Versprechen — Texte nie auf 45 → Journal 02.10.
 - 2026-10-02 · 💸 **Preise (Betreiber «entscheide selber» → «15 % Reserve»): 24 Codes > 15 % aus (0× benutzt), `preis_verlustschutz` RABATT 0.15, gesperrte Varianten trugen Lockpreise («ab 14.90», 3'405 behoben), `preis_senken.py` senkte 350'008 Varianten / 34'486 Produkte im Median −11 % (0 Fehler; nur Band alter–neuer Boden, min. CHF 14.90), 7 Ratgeber ohne tote Codes, 64 SEO-Titel mit Semrush-Suchbegriff (`seo_suchbegriff_titel.py`).** Codes in Texten mitprüfen → Journal 02.10.
 - 2026-10-02 · 🏷️ **Verbesserungsrunde: nach der Preissenkung 12/18 Reels preis-veraltet, Tages-Reparatur schon gelaufen → `reel_neu_rendern.py` holt Shopify-Produktvideo als Rückfall + Preis-Modus ohne alte Datei, Aufseher-Reparatur alle 3 h solange preis-veraltet wartet; 2 neu gerendert, ready 8, 32 warten auf Server-Quellen.** Nach Massen-Preisänderung sofort Säuberer + MODUS=preis → `dropship/REEL-PREIS-NACH-SENKUNG-2026-10-02.md`
 - 2026-10-02 · 📈 **Semrush ausgenutzt (~38–40k/50k): 836 Produktarten-Volumen + 40 Kollektions-Zuordnungen (`suchvolumen.fuer_kollektion(titel, handle)`), 12 doppelt geprüfte Sortimentslücken vorne in der CJ-Suchliste, 103 Produkt-SEO-Titel (Gegenprüfer verwarf 38/141; `--aus`, Meta aus geprüftem Titel), 46 Kollektions-SEO (`seo_kollektion_suchbegriff.py`, live), Ratgeber nur echte Fragen; `api_units` = Konto-Differenz → nur nacheinander messen, Filterwert als String.** Nachmessung 08.10., KÜNDIGEN vor 09.10. → `dropship/semrush/README.md`
