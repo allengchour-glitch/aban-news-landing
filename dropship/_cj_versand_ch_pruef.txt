@@ -4126,3 +4126,7 @@ sonnenuntergang-projektor-sunset-stimmungslich-610600	2604230836521611200	6	12.3
 kabellose-kopfhorer-airbeat-bluetooth-tws-600300	2605040350411600900	7	6.98	ok	landeseite
 kabellose-kopfhorer-soundpods-bluetooth-tws-617900	2604280815431618600	7	6.37	ok	landeseite
 kabellose-kopfhorer-bassbuds-bluetooth-tws-637200	2604190551511637700	7	12.44	ok	landeseite
+kabellose-kopfhorer-flowpods-bluetooth-tws-637500	2604080124101637900	7	9.69	ok	landeseite
+kabellose-kopfhorer-echobuds-bluetooth-tws-618500	2604060920271619000	6	7.30	ok	landeseite
+aroma-diffuser-mist-luftbefeuchter-mit-led-381377	2049071353575759874	0	-	KEINE CH-Option → DRAFT	landeseite
+aroma-diffuser-zen-luftbefeuchter-mit-led-208322	2049080019071037442	0	-	KEINE CH-Option → DRAFT	landeseite

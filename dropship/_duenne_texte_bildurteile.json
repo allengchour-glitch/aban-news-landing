@@ -1,1753 +1,1754 @@
 {
-"pflegepuppe-furs-schlafzimmer-b6a070": {
-"objekt": "Plüschkissen in Form von Grillfisch, Hähnchenschenkel, Garnele",
-"farben": [
-"orange",
-"braun"
-],
-"merkmale": [
-"mehrere Lebensmittel-Formen",
-"Plüsch-Optik",
-"auf Sofa"
-],
-"anzahl_teile": null,
-"passt_zum_titel": false,
-"grund": "Titel «Pflegepuppe» passt nicht: Bild zeigt Plüschkissen in Form von gegrilltem Fisch, Hähnchenschenkeln und Garnele"
-},
-"nickel-batterie-set-370368": {
-"objekt": "Akku-Pack für Elektrowerkzeug",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Steckkontakt oben",
-"verschraubtes Gehäuse"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Akku-Block sichtbar"
-},
-"velvet-kissenbezug-mit-goldfaden-647808": {
-"objekt": "Kissenbezug mit goldenem Strahlenmuster",
-"farben": [
-"schwarz",
-"gold"
-],
-"merkmale": [
-"Strahlen-Linien aus Goldfaden",
-"quadratisch",
-"auf Sofa"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"bandercollar-fur-katzen-und-hunde-168448": {
-"objekt": "Halsband mit Schleife und Perle",
-"farben": [
-"dunkelgrün",
-"weiss"
-],
-"merkmale": [
-"grosse Schleife",
-"Perle in der Mitte",
-"Steckverschluss",
-"Zierstiche am Rand"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"schwarzer-krauter-tabak-grinder-mit-box-599746": {
-"objekt": "Grinder mit Kurbel",
-"farben": [
-"schwarz",
-"silber"
-],
-"merkmale": [
-"seitliche Kurbel",
-"Sichtfenster"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"einweg-aschenbecher-mit-schaumsand-geruchsko-646658": {
-"objekt": "Runder Aschenbecher mit blauem Schaum, Wasser wird eingefüllt",
-"farben": [
-"weiss",
-"blau"
-],
-"merkmale": [
-"runde Schale",
-"blauer Schaumsand",
-"wird mit Wasser angesetzt"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"stilvoller-tragbarer-zigarrenaschenbecher-au-618100": {
-"objekt": "Zigarrenablage aus Metall",
-"farben": [
-"silber"
-],
-"merkmale": [
-"längliche Mulde",
-"Zigarrenauflage vorn",
-"Logo-Prägung"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kristall-aschenbecher-fur-zigarren-633700": {
-"objekt": "Zigarrenaschenbecher aus geschliffenem Glas",
-"farben": [
-"grün",
-"bernstein"
-],
-"merkmale": [
-"rechteckig",
-"zwei Auflagen",
-"geschliffene Kanten",
-"zwei Farben abgebildet"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"winddichter-edelstahl-aschenbecher-mit-drehb-638900": {
-"objekt": "Zylindrischer Aschenbecher mit Deckel",
-"farben": [
-"orange",
-"silber"
-],
-"merkmale": [
-"Drehdeckel mit Flügeln",
-"Aufdruck Size 7.3 x 9.5 cm",
-"Farbe Vibrant Orange"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"keramik-aschenbecher-dekorativ-hochwertig-624900": {
-"objekt": "Aschenbecher in Kürbisform mit Deckel",
-"farben": [
-"weiss",
-"silber",
-"orange"
-],
-"merkmale": [
-"Kürbisform",
-"abnehmbarer Deckel",
-"Zigarettenauflage",
-"orange Variante abgebildet"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"keramik-aschenbecher-mit-deckel-600200": {
-"objekt": "Quadratischer Aschenbecher mit Deckel und Knauf",
-"farben": [
-"grün",
-"blau",
-"weiss",
-"gold"
-],
-"merkmale": [
-"Marmor-Muster",
-"Deckel mit goldenem Knauf",
-"vier Auflagen"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kupfer-aschenbecher-graviert-geschenkfertig-609200": {
-"objekt": "Quadratischer Aschenbecher mit Gravur",
-"farben": [
-"gold",
-"messingfarben"
-],
-"merkmale": [
-"gravierte Muster rundum",
-"vier Zigarrenauflagen",
-"Mulde in der Mitte"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"zigarettenhalter-mit-band-sofort-lieferbar-621800": {
-"objekt": "Zigarettenhalter an Umhängeband",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Band mit Aufdruck",
-"Clip-Halter am Ende"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"vintage-blumen-aschenbecher-kristallglas-622800": {
-"objekt": "Aschenbecher aus farbigem Glas in Blütenform",
-"farben": [
-"bernstein",
-"violett"
-],
-"merkmale": [
-"gewellter Rand",
-"dicker Glasboden"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"mechanischer-aschenbecher-aus-metall-622700": {
-"objekt": "Runder Aschenbecher mit Drehmechanik",
-"farben": [
-"blau"
-],
-"merkmale": [
-"Drehdeckel mit Öffnung",
-"Zylinderform"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"metall-aschenbecher-individuell-kreativ-603500": {
-"objekt": "Zwei kleine runde Aschenbecher",
-"farben": [
-"gold"
-],
-"merkmale": [
-"kleine Zylinder",
-"Mulde mit Loch",
-"zwei Stück abgebildet"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kreatives-feuchtigkeitsdichtes-zigarettenetu-627200": {
-"objekt": "Zigarettenetui mit Klappdeckel",
-"farben": [
-"apricot"
-],
-"merkmale": [
-"Klappdeckel",
-"Ziernaht",
-"rechteckig"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"keramik-aschenbecher-schmuckschale-deko-610900": {
-"objekt": "Herzförmige Schale",
-"farben": [
-"weiss",
-"schwarz gesprenkelt"
-],
-"merkmale": [
-"Herzform",
-"gesprenkelte Glasur",
-"Ring liegt in der Schale"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"quadratischer-aschenbecher-mit-deckel-625100": {
-"objekt": "Quadratischer Aschenbecher mit Deckel auf Holztablett",
-"farben": [
-"türkis",
-"blau"
-],
-"merkmale": [
-"zwei Farben abgebildet",
-"Deckel mit runder Öffnung",
-"kleines Holztablett"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"retro-keramik-aschenbecher-613100": {
-"objekt": "Runder Aschenbecher mit Deckel",
-"farben": [
-"weiss",
-"türkis",
-"gold"
-],
-"merkmale": [
-"Berg-Relief",
-"Deckel mit Metallring"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"wand-aschenbecher-wc-design-mit-deckel-630000": {
-"objekt": "Aschenbecher in Form einer Toilette",
-"farben": [
-"weiss",
-"silber"
-],
-"merkmale": [
-"Deckel in Silber",
-"Toilettenform",
-"Aufdruck silver lid version"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"retro-zigarettenetui-metall-kartenhalter-616900": {
-"objekt": "Zigarettenetui aus Metall mit Blumenmotiv",
-"farben": [
-"silber",
-"orange",
-"rosa",
-"grün"
-],
-"merkmale": [
-"Mohnblumen-Druck",
-"Klappverschluss"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"shisha-kopf-zubehor-612000": {
-"objekt": "Shisha-Kopf aus Metall mit Griff",
-"farben": [
-"silber",
-"schwarz"
-],
-"merkmale": [
-"Metallschale mit Löchern",
-"genoppter Griff"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"elektrischer-kohleanzunder-fur-shisha-500w-5-658497": {
-"objekt": "Elektrischer Kohleanzünder mit Drehregler",
-"farben": [
-"schwarz",
-"orange"
-],
-"merkmale": [
-"Heizspirale",
-"Drehregler",
-"Kontrolllampe",
-"Aufdruck 5 Temperature Gear Thermostat Control"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"elektrischer-kohleanzunder-500w-kompakt-5-st-714562": {
-"objekt": "Elektrische Heizplatte mit Kohlewürfeln",
-"farben": [
-"weiss",
-"schwarz",
-"rot"
-],
-"merkmale": [
-"Kohlewürfel auf Gitter",
-"Drehregler",
-"Kontrollleuchte",
-"vier Standfüsse"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"elektrischer-kohleanzunder-shisha-500w-183937": {
-"objekt": "Elektrische Heizplatte mit Kohlen und Zubehör",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Gitter",
-"Zange abgebildet",
-"Drehregler",
-"Netzkabel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"glas-shisha-im-cocktailglas-design-621900": {
-"objekt": "Shisha aus Glas in Cocktailglas-Form",
-"farben": [
-"transparent",
-"blau",
-"gelb"
-],
-"merkmale": [
-"Kelchform",
-"Glasrohr",
-"Fuss"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"shisha-set-bambus-aluminium-legierung-elektr-601500": {
-"objekt": "Hohe Shisha mit Glasbasis",
-"farben": [
-"blau",
-"gold",
-"transparent"
-],
-"merkmale": [
-"Säule in Blau",
-"Teller in Gold",
-"runde Glasbasis",
-"Kopf oben"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"shisha-tabaktopf-fur-eine-schlauch-602900": {
-"objekt": "Kleine Shisha mit einem Schlauch",
-"farben": [
-"rot",
-"silber"
-],
-"merkmale": [
-"Höhe 28 cm laut Bild",
-"Breite 10 cm laut Bild",
-"ein Schlauch",
-"Zange abgebildet"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel sagt Tabaktopf, Bild zeigt eine komplette kleine Shisha"
-},
-"abnehmbarer-shisha-becher-tragbare-wasserpfe-608400": {
-"objekt": "Tragbares Shisha-Gerät mit Schlauch",
-"farben": [
-"schwarz",
-"transparent"
-],
-"merkmale": [
-"Zylinder",
-"Schlauch",
-"Mundstück"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"shisha-zubehor-rauchgerat-620000": {
-"objekt": "Elektrische Shisha-Pumpe mit USB-Kabel",
-"farben": [
-"silber",
-"weiss",
-"schwarz"
-],
-"merkmale": [
-"Verpackung Hookah Pump",
-"USB-Kabel",
-"Zylinderform"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kleine-reise-shisha-flasche-617800": {
-"objekt": "Kleine Pfeife aus Silikon mit Glaskopf",
-"farben": [
-"rosa",
-"blau",
-"transparent"
-],
-"merkmale": [
-"Silikon-Optik",
-"Glasaufsatz",
-"gebogene Form"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"anti-verbruh-silikon-shisha-topf-618400": {
-"objekt": "Shisha-Kopf aus Silikon",
-"farben": [
-"schwarz",
-"weiss"
-],
-"merkmale": [
-"Marmor-Muster",
-"Spiralrillen innen",
-"Loch in der Mitte"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"acryl-shisha-set-mit-led-licht-611100": {
-"objekt": "Shisha aus Acryl mit blauem Licht",
-"farben": [
-"transparent",
-"blau"
-],
-"merkmale": [
-"leuchtende Basis",
-"Glaskopf oben"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"acryl-tabaktopf-fur-shisha-611400": {
-"objekt": "Shisha-Set in Box-Form mit Fernbedienung",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"quadratisches Gehäuse",
-"Schlauch",
-"Fernbedienung",
-"LED-Ring",
-"Zange"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"acryl-shisha-set-mit-kunststoffkessel-600502": {
-"objekt": "Zwei Shishas in Dreiecksform",
-"farben": [
-"grün",
-"schwarz",
-"transparent"
-],
-"merkmale": [
-"Dreieck-Gehäuse",
-"Schlauch",
-"zwei Farben abgebildet"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"led-shisha-becher-mit-licht-616600": {
-"objekt": "Shisha-Becher aus Acryl mit Zubehör",
-"farben": [
-"transparent",
-"hellblau",
-"silber"
-],
-"merkmale": [
-"Becher",
-"Sieb",
-"Schläuche",
-"Mundstück",
-"Zange"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"shisha-ventil-rennversion-602100": {
-"objekt": "Shisha mit gelbem Rohr und Glasbasis",
-"farben": [
-"gelb",
-"schwarz",
-"transparent"
-],
-"merkmale": [
-"komplette Shisha",
-"Schlauch",
-"runde Glasbasis"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"led-shisha-licht-mit-steuerung-602500": {
-"objekt": "LED-Leuchtring",
-"farben": [
-"violett",
-"schwarz"
-],
-"merkmale": [
-"Ring mit LED",
-"Muster in der Mitte"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kupfer-shisha-fur-drehtabak-dual-use-filter-601500": {
-"objekt": "Kleine Pfeife mit Glasbehälter",
-"farben": [
-"gold",
-"transparent"
-],
-"merkmale": [
-"gebogenes Rohr",
-"runder Glasbehälter unten",
-"Metallkopf"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"metallfilter-fur-shisha-4-in-1-629100": {
-"objekt": "Taschen-Wasserpfeife mit Schlauch",
-"farben": [
-"schwarz",
-"gold"
-],
-"merkmale": [
-"rechteckiges Gehäuse",
-"Schlauch mit Mundstück",
-"Metallkopf"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"elektrische-shisha-spruhpistole-622700": {
-"objekt": "Sprühpistole mit Flasche",
-"farben": [
-"türkis",
-"transparent"
-],
-"merkmale": [
-"Pistolenform",
-"Behälter unten",
-"Abzug"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"eyeshadow-palette-610300": {
-"objekt": "Lidschatten-Palette mit vier Feldern",
-"farben": [
-"rosa",
-"braun",
-"beige"
-],
-"merkmale": [
-"vier Farbfelder",
-"Etui in Roségold",
-"Swatches abgebildet"
-],
-"anzahl_teile": 4,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kalter-bierbecher-294274": {
-"objekt": "Becher aus Metall mit buntem Muster",
-"farben": [
-"silber",
-"bunt"
-],
-"merkmale": [
-"bunter Aufdruck",
-"Flüssigkeit wird eingegossen"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kuechenloeffel-set-113792": {
-"objekt": "Set aus fünf Küchenhelfern",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Schöpfkelle",
-"Pfannenwender",
-"Schaumlöffel",
-"Nudelkelle",
-"Löffel",
-"Aufhängeöse"
-],
-"anzahl_teile": 5,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"initial-buchstaben-ring-1e5e9a": {
-"objekt": "Offener Ring mit Buchstabe und Stein",
-"farben": [
-"gold",
-"transparent"
-],
-"merkmale": [
-"Buchstabe B mit kleinen Steinen",
-"runder Stein",
-"offene Ringschiene"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"liebeshalskette-0bb6ab": {
-"objekt": "Kette mit Anhänger eines sich umarmenden Paares",
-"farben": [
-"silber",
-"roségold"
-],
-"merkmale": [
-"Kugelkette",
-"Paar-Anhänger zweifarbig"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"baby-stroller-organizer-a3097b": {
-"objekt": "Organizer-Tasche mit Klappe und Haltebändern",
-"farben": [
-"grau",
-"hellblau"
-],
-"merkmale": [
-"zwei Klettbänder",
-"Klappe",
-"Seitenfächer"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"gelenkte-3-in-1-ladestation-fur-smartphone-uhr-612100": {
-"objekt": "Ladestation für Handy, Uhr und Ohrhörer",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"aufgestelltes Handy",
-"Uhr-Halter",
-"Ablage für Ohrhörer-Etui",
-"Aufdruck Night Light",
-"Aufdruck 3 in 1 Fast Charging"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"vintag-ohrstecker-278145": {
-"objekt": "Ohrstecker mit vielen kleinen Steinen",
-"farben": [
-"silber",
-"transparent"
-],
-"merkmale": [
-"geschwungene Form",
-"Steinbesatz"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kreuzanhanger-607100": {
-"objekt": "Kette mit verziertem Kreuzanhänger",
-"farben": [
-"silber"
-],
-"merkmale": [
-"Gliederkette",
-"Kreuz mit Ornamenten"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"herz-schmuck-set-798018": {
-"objekt": "Kette und Armband aus Perlenelementen mit Herzanhängern",
-"farben": [
-"silber",
-"gold"
-],
-"merkmale": [
-"unregelmässige Glieder",
-"kleine Herzanhänger"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"spiral-armband-616800": {
-"objekt": "Handgelenk mit Uhrenarmband und Armreif",
-"farben": [
-"rosa",
-"weiss"
-],
-"merkmale": [
-"Uhr mit Blumenband",
-"weisser Armreif"
-],
-"anzahl_teile": null,
-"passt_zum_titel": false,
-"grund": "Titel «Spiral-Armband» nicht erkennbar: Bild zeigt ein Uhren-Band mit Blumenmuster und einen Armreif"
-},
-"augen-massager-852034": {
-"objekt": "Stiftförmiges Massagegerät",
-"farben": [
-"silber",
-"rot"
-],
-"merkmale": [
-"runder Kopf mit zwei Kontaktpunkten",
-"Stiftform"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"teufelsaugen-ohrhanger-622800": {
-"objekt": "Ohrstecker in Augenform",
-"farben": [
-"silber",
-"rot"
-],
-"merkmale": [
-"Augenform",
-"rote Iris"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"diamant-tropfen-696386": {
-"objekt": "Ohrhänger mit farbigen Steinen und Perle",
-"farben": [
-"gold",
-"rot",
-"grün",
-"blau",
-"weiss"
-],
-"merkmale": [
-"runder Stecker oben",
-"Hängeelement",
-"Perle unten"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"leder-tote-188993": {
-"objekt": "Handtasche mit zwei Griffen und Schulterriemen",
-"farben": [
-"braun"
-],
-"merkmale": [
-"zwei Tragegriffe",
-"Reissverschluss",
-"abnehmbarer Riemen"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"edelstahl-wassersportflasche-636400": {
-"objekt": "Trinkflasche mit Strohhalm-Deckel",
-"farben": [
-"hellblau",
-"schwarz"
-],
-"merkmale": [
-"Klappdeckel",
-"Trinkhalm",
-"Griff"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"18k-vergoldete-halskette-mit-zirkonia-604900": {
-"objekt": "Kette mit Tennisschläger-Anhänger",
-"farben": [
-"gold"
-],
-"merkmale": [
-"Anhänger 31.7 mm hoch laut Bild",
-"10.1 mm breit laut Bild",
-"Gewicht 3.4 g laut Bild",
-"feine Gliederkette"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"herz-ohrringe-442626": {
-"objekt": "Creolen in Herzform",
-"farben": [
-"gold",
-"silber"
-],
-"merkmale": [
-"zwei Farben abgebildet",
-"kleine Steine",
-"Klappverschluss"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"leder-unterarmtasche-624770": {
-"objekt": "Kleine Handtasche an Person mit Fellpullover",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"kleine Tasche",
-"Kettenriemen"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Tasche nur klein im Bild"
-},
-"haarklammer-frosch-625600": {
-"objekt": "Haarspangen in Gold mit Schleife, Muschel, Seestern und Figur",
-"farben": [
-"gold",
-"weiss"
-],
-"merkmale": [
-"Schleife",
-"Muschel mit Perle",
-"Seestern",
-"Tierfigur"
-],
-"anzahl_teile": 4,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"schonheitsmaske-873665": {
-"objekt": "Gesichtsmaske mit Lichtfläche",
-"farben": [
-"weiss",
-"roségold"
-],
-"merkmale": [
-"Vollgesichtsmaske",
-"Augenfenster",
-"glatte Oberfläche"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"leichtes-korperol-zum-feuchtigkeitsspenden-636900": {
-"objekt": "Fläschchen Körperöl mit Pipette und Verpackung",
-"farben": [
-"braun",
-"beige"
-],
-"merkmale": [
-"Pipettenflasche",
-"Aufdruck Moringa Berberine",
-"Aufdruck 50 ml"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"pudel-kissen-bettdecke-628400": {
-"objekt": "Plüsch-Hundefigur als Kissen",
-"farben": [
-"weiss",
-"schwarz"
-],
-"merkmale": [
-"langgestreckte Form",
-"schwarze Ohren",
-"Umarmungsgrösse"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"stahlteestropfenfilter-160961": {
-"objekt": "Tee-Ei aus Metallgewebe mit Kette und Haken",
-"farben": [
-"silber"
-],
-"merkmale": [
-"zylindrisches Sieb",
-"Deckel",
-"Kette mit Haken"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"schutzcover-fuer-fiat-schlussel-638900": {
-"objekt": "Schlüsselhülle mit drei Tasten",
-"farben": [
-"rosa",
-"schwarz"
-],
-"merkmale": [
-"drei Tastenfelder",
-"Öse",
-"glänzende Oberfläche"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"leopard-print-kleid-617900": {
-"objekt": "Neckholder-Kleid mit Leopardenmuster",
-"farben": [
-"weiss",
-"braun",
-"schwarz"
-],
-"merkmale": [
-"Neckholder",
-"Knopfleiste",
-"Leopardenmuster"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"faltenhundebett-aus-kunststoff-622800": {
-"objekt": "Faltbarer Hundenapf im Tragerahmen",
-"farben": [
-"weiss",
-"schwarz"
-],
-"merkmale": [
-"Napf aus Silikon-Optik",
-"Rahmen mit Griff",
-"Hund daneben"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"perlenring-606900": {
-"objekt": "Ring mit Perlen-Kuppel",
-"farben": [
-"gold",
-"weiss"
-],
-"merkmale": [
-"viele kleine Perlen",
-"gewölbte Form"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"herz-schmuck-link-628800": {
-"objekt": "Kette aus Herz-Gliedern mit Steinen",
-"farben": [
-"gold",
-"transparent"
-],
-"merkmale": [
-"durchgehende Herzglieder",
-"Steckverschluss"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"dunnsolahen-flipflops-633500": {
-"objekt": "Flip-Flops mit dicker Plateausohle",
-"farben": [
-"schwarz",
-"pink"
-],
-"merkmale": [
-"dicke Sohle",
-"Sternchen-Nieten",
-"Zehensteg"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"damenhemd-626500": {
-"objekt": "Oberteil mit V-Ausschnitt und Schleife",
-"farben": [
-"weiss"
-],
-"merkmale": [
-"Schleife am Ausschnitt",
-"lange Ärmel",
-"Raffung unter der Brust"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"laufschuh-429632": {
-"objekt": "Hohe Sneaker mit Schnürung",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"hoher Schaft",
-"Schnürsenkel",
-"Riemen"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"weisses-franzosisches-casual-shirt-611600": {
-"objekt": "Weisse Bluse mit Stehkragen unter Kleid",
-"farben": [
-"weiss",
-"schwarz"
-],
-"merkmale": [
-"Stehkragen",
-"Biesen",
-"Trompetenärmel mit Band"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"apricot-knit-oberteil-613200": {
-"objekt": "Gerippter Strickcardigan mit Kragen",
-"farben": [
-"beige"
-],
-"merkmale": [
-"Knopfleiste",
-"Kragen",
-"3/4-Ärmel",
-"Rippstrick"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"gold-diamanten-haarspange-620700": {
-"objekt": "Haarspangen-Set mit Sternen und Steinen",
-"farben": [
-"gold",
-"transparent"
-],
-"merkmale": [
-"Stern-Spangen",
-"gebogene Spange",
-"auf Karte"
-],
-"anzahl_teile": 3,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"keramik-perlenkette-in-goldenem-finish-638100": {
-"objekt": "Perlenkette mit blauen Elementen und Seestern",
-"farben": [
-"blau",
-"weiss",
-"gold"
-],
-"merkmale": [
-"Seestern-Anhänger",
-"Blütenperlen",
-"Kordel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"gold-schmuckstein-ring-626000": {
-"objekt": "Breiter offener Ring mit grünem Stein",
-"farben": [
-"gold",
-"grün"
-],
-"merkmale": [
-"Rillenstruktur",
-"ovaler Stein",
-"offene Schiene"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"gepacktasche-fur-alltags-631700": {
-"objekt": "Transparente Tragetasche mit Aufdruck",
-"farben": [
-"transparent",
-"schwarz",
-"braun"
-],
-"merkmale": [
-"Aufdruck LIGHT FASHION",
-"zwei Henkel",
-"Inhalt sichtbar"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"sonnenschirm-augen-602700": {
-"objekt": "Sonnenbrille mit eckig-ovalen Gläsern",
-"farben": [
-"braun"
-],
-"merkmale": [
-"dunkle Gläser",
-"breite Bügel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"farbenprachtiges-blutenanhanger-schal-kettchen-628000": {
-"objekt": "Stoffkette mit Blumenmuster und Anhängern",
-"farben": [
-"gelb",
-"orange"
-],
-"merkmale": [
-"Stoffband",
-"Blumen-Anhänger",
-"Karabiner"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"schwarze-lederschuhe-fur-frauen-602200": {
-"objekt": "Schnürschuhe mit dicker Sohle",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Schnürung",
-"Profilsohle",
-"runde Spitze"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"wasserfeste-laufumhangetasche-605000": {
-"objekt": "Gürteltasche mit zwei Reissverschlüssen",
-"farben": [
-"rosa",
-"grau"
-],
-"merkmale": [
-"verstellbarer Gurt",
-"Reflexstreifen",
-"zwei Fächer"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel sagt Umhängetasche, Bild zeigt eine Gürteltasche"
-},
-"klassische-bluse-mit-spitzenbesatz-609800": {
-"objekt": "Bluse mit Rüschenkragen und Bändern",
-"farben": [
-"weiss"
-],
-"merkmale": [
-"grosser Rüschenkragen",
-"Bindeband",
-"lange Ärmel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"schutzglas-630100": {
-"objekt": "Schutzglas mit Montagerahmen",
-"farben": [
-"schwarz",
-"transparent"
-],
-"merkmale": [
-"Aufdruck Anti-Spy Privacy",
-"Aufdruck 9D curved edge",
-"Montage-Set im Lieferumfang"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"amerikanischer-adler-in-garten-610900": {
-"objekt": "Adler-Figur mit ausgebreiteten Flügeln auf Sockel",
-"farben": [
-"blau",
-"rot",
-"gold",
-"braun"
-],
-"merkmale": [
-"bemalte Flügel",
-"Sockel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"grauer-tuchbeutel-626100": {
-"objekt": "Hülle für Laptop oder Tablet",
-"farben": [
-"grau"
-],
-"merkmale": [
-"Klappe",
-"Filz-Optik",
-"Laptop daneben"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"gemusekutter-mit-7-mm-schneide-631200": {
-"objekt": "Gemüseschneider mit Behälter und Einsätzen",
-"farben": [
-"transparent",
-"schwarz",
-"weiss"
-],
-"merkmale": [
-"drei Schneideinsätze",
-"Auffangbehälter",
-"Reinigungsbürste"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"salatdrainer-fur-obstsalate-617100": {
-"objekt": "Salatschleuder mit Reibe-Einsätzen",
-"farben": [
-"grün"
-],
-"merkmale": [
-"Schleuder-Deckel",
-"vier Einsätze",
-"Verpackung"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"handyhalter-fur-unterwegs-611100": {
-"objekt": "Tablet-Halter in der Küche",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Klemme",
-"Arm",
-"Tablet eingespannt"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"blumenhochzeit-case-fur-gro-es-display-629400": {
-"objekt": "Handyhülle mit Blumenmuster",
-"farben": [
-"beige",
-"rosa"
-],
-"merkmale": [
-"Kameraausschnitt",
-"Blumendruck"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"ovale-ohrringe-630000": {
-"objekt": "Ohrstecker mit grünem Stein",
-"farben": [
-"grün",
-"gold"
-],
-"merkmale": [
-"unregelmässig ovale Form",
-"goldener Rand"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"kartenschmuck-armband-629300": {
-"objekt": "Charm-Anhänger in Form einer Spielkarte",
-"farben": [
-"silber",
-"rot",
-"schwarz"
-],
-"merkmale": [
-"Spielkarte K",
-"Öse",
-"Pik-Symbol"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"bikini-set-612400": {
-"objekt": "Zweiteiliges Badeset mit Oberteil und Hose",
-"farben": [
-"blau",
-"weiss"
-],
-"merkmale": [
-"Trägeroberteil",
-"Hose mit Blumenmuster",
-"Bindebänder"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"sonnenschutzpullover-mit-kragen-und-kurzarmel-629700": {
-"objekt": "Poloshirt mit Kragen und kurzen Ärmeln",
-"farben": [
-"grün"
-],
-"merkmale": [
-"Polokragen",
-"Knopfleiste",
-"kurze Ärmel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"bambus-facher-606600": {
-"objekt": "Faltfächer mit Stoffbeutel",
-"farben": [
-"schwarz",
-"dunkelblau"
-],
-"merkmale": [
-"Faltfächer",
-"Aufbewahrungsbeutel"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"sport-shorts-set-609200": {
-"objekt": "T-Shirt und Shorts mit Farbverlauf",
-"farben": [
-"braun",
-"weiss"
-],
-"merkmale": [
-"Farbverlauf",
-"Schriftzug",
-"Kordelzug"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"disc-soccer-trainer-603000": {
-"objekt": "Trainingsscheiben mit Netzbeutel",
-"farben": [
-"rot",
-"blau",
-"grün",
-"orange"
-],
-"merkmale": [
-"Aufdruck 25 pcs",
-"Netzbeutel",
-"Tragestab"
-],
-"anzahl_teile": 25,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"stoffhosen-aus-baumwolle-637900": {
-"objekt": "Weite Hose mit Streifen",
-"farben": [
-"braun",
-"weiss"
-],
-"merkmale": [
-"Längsstreifen",
-"elastischer Bund",
-"weites Bein"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"mini-chiffon-rockedress-605900": {
-"objekt": "Langes schwarzes Kleid mit freien Schultern",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Off-Shoulder",
-"bodenlang",
-"Volant"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"rechteck-textiltruhe-aus-nonwoventragern-633300": {
-"objekt": "Aufbewahrungstasche mit Sichtfenster",
-"farben": [
-"grau"
-],
-"merkmale": [
-"60 cm breit laut Bild",
-"35 cm tief laut Bild",
-"40 cm hoch laut Bild",
-"Sichtfenster",
-"zwei Griffe"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"goldgarnitur-mit-klangkette-634400": {
-"objekt": "Ohrhänger mit langen Fransen",
-"farben": [
-"gold"
-],
-"merkmale": [
-"Creolen-Verschluss",
-"drei Ketten mit Kugeln"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"runde-goldperle-kette-616000": {
-"objekt": "Perlenkette mit kleinen weissen Perlen",
-"farben": [
-"weiss",
-"gold"
-],
-"merkmale": [
-"abgestufte Perlen",
-"Karabiner"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"gold-edelstahl-fingerkette-608300": {
-"objekt": "Handkette mit Perlen",
-"farben": [
-"gold",
-"weiss"
-],
-"merkmale": [
-"Ring am Finger",
-"Kette zum Handgelenk",
-"kleine Perlen"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"schokoladen-ohrring-haarstecker-609700": {
-"objekt": "Haarspange in Form eines Herz-Kekses",
-"farben": [
-"orange",
-"braun"
-],
-"merkmale": [
-"Keksform",
-"Metallspange"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"kuscheldecke-614600": {
-"objekt": "Gestrickte Decke",
-"farben": [
-"rosa"
-],
-"merkmale": [
-"Strickstruktur",
-"gefaltet"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"elektro-kopfmasseur-619700": {
-"objekt": "Kopf- und Augenmassagegerät",
-"farben": [
-"weiss"
-],
-"merkmale": [
-"Helmform",
-"Augenabdeckung",
-"Aufdruck Three-level temperature options"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"elektrische-wimpernwicklung-mit-temperaturrege-618800": {
-"objekt": "Beheizte Wimpernzange mit Display",
-"farben": [
-"rosa"
-],
-"merkmale": [
-"Digitalanzeige",
-"Scherengriffe"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"langlebige-gelnageldarme-612400": {
-"objekt": "Künstliche Fingernägel mit Glitzer",
-"farben": [
-"rosa",
-"transparent"
-],
-"merkmale": [
-"spitze Form",
-"Glitzer",
-"aufgeklebt"
-],
-"anzahl_teile": null,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"halsstutzung-fur-neigung-620600": {
-"objekt": "Halskrause aus Schaum",
-"farben": [
-"weiss"
-],
-"merkmale": [
-"Klettverschluss",
-"gepolstert"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"starkenhimmel-wandlampe-609100": {
-"objekt": "Kugelförmige Lampe in Plastikbeutel",
-"farben": [
-"schwarz",
-"transparent",
-"blau"
-],
-"merkmale": [
-"Kuppel mit Facetten",
-"in Verpackung"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"damen-sonnenschutz-trenchcoat-626300": {
-"objekt": "Transparenter Überwurf mit Punkten",
-"farben": [
-"schwarz",
-"weiss"
-],
-"merkmale": [
-"durchsichtig",
-"Punktmuster",
-"weite Ärmel"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"breite-hosen-fur-den-alltag-627000": {
-"objekt": "Weite Hose mit Bundfalten",
-"farben": [
-"creme"
-],
-"merkmale": [
-"Gürtelschlaufen",
-"weites Bein",
-"Taschen"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"hohe-pumps-aus-suede-603600": {
-"objekt": "Pantoletten mit Absatz und Knotendetail",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"offene Ferse",
-"Trichterabsatz",
-"eckige Spitze"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"thick-soled-frauen-slipper-632800": {
-"objekt": "Pantoletten mit dicker Sohle und bunten Bändern",
-"farben": [
-"schwarz",
-"bunt"
-],
-"merkmale": [
-"Plateausohle",
-"Kreuzriemen",
-"Aufnäher"
-],
-"anzahl_teile": 2,
-"passt_zum_titel": true,
-"grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
-},
-"tablet-halter-629400": {
-"objekt": "Halter mit Klemme und Kugelgelenk",
-"farben": [
-"schwarz"
-],
-"merkmale": [
-"Klemmbacken",
-"Kugelgelenk",
-"Gewinde"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-},
-"schockresistenter-schutz-625600": {
-"objekt": "Transparente Handyhülle mit Blütenmuster",
-"farben": [
-"transparent",
-"rosa"
-],
-"merkmale": [
-"Kirschblüten-Druck",
-"Kameraausschnitt"
-],
-"anzahl_teile": 1,
-"passt_zum_titel": true,
-"grund": "passt"
-}
+ "pflegepuppe-furs-schlafzimmer-b6a070": {
+  "objekt": "Plüschkissen in Form von Grillfisch, Hähnchenschenkel, Garnele",
+  "farben": [
+   "orange",
+   "braun"
+  ],
+  "merkmale": [
+   "mehrere Lebensmittel-Formen",
+   "Plüsch-Optik",
+   "auf Sofa"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": false,
+  "grund": "Titel «Pflegepuppe» passt nicht: Bild zeigt Plüschkissen in Form von gegrilltem Fisch, Hähnchenschenkeln und Garnele"
+ },
+ "nickel-batterie-set-370368": {
+  "objekt": "Akku-Pack für Elektrowerkzeug",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Steckkontakt oben",
+   "verschraubtes Gehäuse"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Akku-Block sichtbar"
+ },
+ "velvet-kissenbezug-mit-goldfaden-647808": {
+  "objekt": "Kissenbezug mit goldenem Strahlenmuster",
+  "farben": [
+   "schwarz",
+   "gold"
+  ],
+  "merkmale": [
+   "Strahlen-Linien aus Goldfaden",
+   "quadratisch",
+   "auf Sofa"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "bandercollar-fur-katzen-und-hunde-168448": {
+  "objekt": "Halsband mit Schleife und Perle",
+  "farben": [
+   "dunkelgrün",
+   "weiss"
+  ],
+  "merkmale": [
+   "grosse Schleife",
+   "Perle in der Mitte",
+   "Steckverschluss",
+   "Zierstiche am Rand"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "schwarzer-krauter-tabak-grinder-mit-box-599746": {
+  "objekt": "Grinder mit Kurbel",
+  "farben": [
+   "schwarz",
+   "silber"
+  ],
+  "merkmale": [
+   "seitliche Kurbel",
+   "Sichtfenster"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "einweg-aschenbecher-mit-schaumsand-geruchsko-646658": {
+  "objekt": "Runder Aschenbecher mit blauem Schaum, Wasser wird eingefüllt",
+  "farben": [
+   "weiss",
+   "blau"
+  ],
+  "merkmale": [
+   "runde Schale",
+   "blauer Schaumsand",
+   "wird mit Wasser angesetzt"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "stilvoller-tragbarer-zigarrenaschenbecher-au-618100": {
+  "objekt": "Zigarrenablage aus Metall",
+  "farben": [
+   "silber"
+  ],
+  "merkmale": [
+   "längliche Mulde",
+   "Zigarrenauflage vorn",
+   "Logo-Prägung"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kristall-aschenbecher-fur-zigarren-633700": {
+  "objekt": "Zigarrenaschenbecher aus geschliffenem Glas",
+  "farben": [
+   "grün",
+   "bernstein"
+  ],
+  "merkmale": [
+   "rechteckig",
+   "zwei Auflagen",
+   "geschliffene Kanten",
+   "zwei Farben abgebildet"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "winddichter-edelstahl-aschenbecher-mit-drehb-638900": {
+  "objekt": "Zylindrischer Aschenbecher mit Deckel",
+  "farben": [
+   "orange",
+   "silber"
+  ],
+  "merkmale": [
+   "Drehdeckel mit Flügeln",
+   "Aufdruck Size 7.3 x 9.5 cm",
+   "Farbe Vibrant Orange"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "keramik-aschenbecher-dekorativ-hochwertig-624900": {
+  "objekt": "Aschenbecher in Kürbisform mit Deckel",
+  "farben": [
+   "weiss",
+   "silber",
+   "orange"
+  ],
+  "merkmale": [
+   "Kürbisform",
+   "abnehmbarer Deckel",
+   "Zigarettenauflage",
+   "orange Variante abgebildet"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "keramik-aschenbecher-mit-deckel-600200": {
+  "objekt": "Quadratischer Aschenbecher mit Deckel und Knauf",
+  "farben": [
+   "grün",
+   "blau",
+   "weiss",
+   "gold"
+  ],
+  "merkmale": [
+   "Marmor-Muster",
+   "Deckel mit goldenem Knauf",
+   "vier Auflagen"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kupfer-aschenbecher-graviert-geschenkfertig-609200": {
+  "objekt": "Quadratischer Aschenbecher mit Gravur",
+  "farben": [
+   "gold",
+   "messingfarben"
+  ],
+  "merkmale": [
+   "gravierte Muster rundum",
+   "vier Zigarrenauflagen",
+   "Mulde in der Mitte"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "zigarettenhalter-mit-band-sofort-lieferbar-621800": {
+  "objekt": "Zigarettenhalter an Umhängeband",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Band mit Aufdruck",
+   "Clip-Halter am Ende"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "vintage-blumen-aschenbecher-kristallglas-622800": {
+  "objekt": "Aschenbecher aus farbigem Glas in Blütenform",
+  "farben": [
+   "bernstein",
+   "violett"
+  ],
+  "merkmale": [
+   "gewellter Rand",
+   "dicker Glasboden"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "mechanischer-aschenbecher-aus-metall-622700": {
+  "objekt": "Runder Aschenbecher mit Drehmechanik",
+  "farben": [
+   "blau"
+  ],
+  "merkmale": [
+   "Drehdeckel mit Öffnung",
+   "Zylinderform"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "metall-aschenbecher-individuell-kreativ-603500": {
+  "objekt": "Zwei kleine runde Aschenbecher",
+  "farben": [
+   "gold"
+  ],
+  "merkmale": [
+   "kleine Zylinder",
+   "Mulde mit Loch",
+   "zwei Stück abgebildet"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kreatives-feuchtigkeitsdichtes-zigarettenetu-627200": {
+  "objekt": "Zigarettenetui mit Klappdeckel",
+  "farben": [
+   "apricot"
+  ],
+  "merkmale": [
+   "Klappdeckel",
+   "Ziernaht",
+   "rechteckig"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "keramik-aschenbecher-schmuckschale-deko-610900": {
+  "objekt": "Herzförmige Schale",
+  "farben": [
+   "weiss",
+   "schwarz gesprenkelt"
+  ],
+  "merkmale": [
+   "Herzform",
+   "gesprenkelte Glasur",
+   "Ring liegt in der Schale"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "quadratischer-aschenbecher-mit-deckel-625100": {
+  "objekt": "Quadratischer Aschenbecher mit Deckel auf Holztablett",
+  "farben": [
+   "türkis",
+   "blau"
+  ],
+  "merkmale": [
+   "zwei Farben abgebildet",
+   "Deckel mit runder Öffnung",
+   "kleines Holztablett"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "retro-keramik-aschenbecher-613100": {
+  "objekt": "Runder Aschenbecher mit Deckel",
+  "farben": [
+   "weiss",
+   "türkis",
+   "gold"
+  ],
+  "merkmale": [
+   "Berg-Relief",
+   "Deckel mit Metallring"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "wand-aschenbecher-wc-design-mit-deckel-630000": {
+  "objekt": "Aschenbecher in Form einer Toilette",
+  "farben": [
+   "weiss",
+   "silber"
+  ],
+  "merkmale": [
+   "Deckel in Silber",
+   "Toilettenform",
+   "Aufdruck silver lid version"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "retro-zigarettenetui-metall-kartenhalter-616900": {
+  "objekt": "Zigarettenetui aus Metall mit Blumenmotiv",
+  "farben": [
+   "silber",
+   "orange",
+   "rosa",
+   "grün"
+  ],
+  "merkmale": [
+   "Mohnblumen-Druck",
+   "Klappverschluss"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "shisha-kopf-zubehor-612000": {
+  "objekt": "Shisha-Kopf aus Metall mit Griff",
+  "farben": [
+   "silber",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Metallschale mit Löchern",
+   "genoppter Griff"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "elektrischer-kohleanzunder-fur-shisha-500w-5-658497": {
+  "objekt": "Elektrischer Kohleanzünder mit Drehregler",
+  "farben": [
+   "schwarz",
+   "orange"
+  ],
+  "merkmale": [
+   "Heizspirale",
+   "Drehregler",
+   "Kontrolllampe",
+   "Aufdruck 5 Temperature Gear Thermostat Control"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "elektrischer-kohleanzunder-500w-kompakt-5-st-714562": {
+  "objekt": "Elektrische Heizplatte mit Kohlewürfeln",
+  "farben": [
+   "weiss",
+   "schwarz",
+   "rot"
+  ],
+  "merkmale": [
+   "Kohlewürfel auf Gitter",
+   "Drehregler",
+   "Kontrollleuchte",
+   "vier Standfüsse"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "elektrischer-kohleanzunder-shisha-500w-183937": {
+  "objekt": "Elektrische Heizplatte mit Kohlen und Zubehör",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Gitter",
+   "Zange abgebildet",
+   "Drehregler",
+   "Netzkabel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "glas-shisha-im-cocktailglas-design-621900": {
+  "objekt": "Shisha aus Glas in Cocktailglas-Form",
+  "farben": [
+   "transparent",
+   "blau",
+   "gelb"
+  ],
+  "merkmale": [
+   "Kelchform",
+   "Glasrohr",
+   "Fuss"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "shisha-set-bambus-aluminium-legierung-elektr-601500": {
+  "objekt": "Hohe Shisha mit Glasbasis",
+  "farben": [
+   "blau",
+   "gold",
+   "transparent"
+  ],
+  "merkmale": [
+   "Säule in Blau",
+   "Teller in Gold",
+   "runde Glasbasis",
+   "Kopf oben"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "shisha-tabaktopf-fur-eine-schlauch-602900": {
+  "objekt": "Kleine Shisha mit einem Schlauch",
+  "farben": [
+   "rot",
+   "silber"
+  ],
+  "merkmale": [
+   "Höhe 28 cm laut Bild",
+   "Breite 10 cm laut Bild",
+   "ein Schlauch",
+   "Zange abgebildet"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel sagt Tabaktopf, Bild zeigt eine komplette kleine Shisha"
+ },
+ "abnehmbarer-shisha-becher-tragbare-wasserpfe-608400": {
+  "objekt": "Tragbares Shisha-Gerät mit Schlauch",
+  "farben": [
+   "schwarz",
+   "transparent"
+  ],
+  "merkmale": [
+   "Zylinder",
+   "Schlauch",
+   "Mundstück"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "shisha-zubehor-rauchgerat-620000": {
+  "objekt": "Elektrische Shisha-Pumpe mit USB-Kabel",
+  "farben": [
+   "silber",
+   "weiss",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Verpackung Hookah Pump",
+   "USB-Kabel",
+   "Zylinderform"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kleine-reise-shisha-flasche-617800": {
+  "objekt": "Kleine Pfeife aus Silikon mit Glaskopf",
+  "farben": [
+   "rosa",
+   "blau",
+   "transparent"
+  ],
+  "merkmale": [
+   "Silikon-Optik",
+   "Glasaufsatz",
+   "gebogene Form"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "anti-verbruh-silikon-shisha-topf-618400": {
+  "objekt": "Shisha-Kopf aus Silikon",
+  "farben": [
+   "schwarz",
+   "weiss"
+  ],
+  "merkmale": [
+   "Marmor-Muster",
+   "Spiralrillen innen",
+   "Loch in der Mitte"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "acryl-shisha-set-mit-led-licht-611100": {
+  "objekt": "Shisha aus Acryl mit blauem Licht",
+  "farben": [
+   "transparent",
+   "blau"
+  ],
+  "merkmale": [
+   "leuchtende Basis",
+   "Glaskopf oben"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "acryl-tabaktopf-fur-shisha-611400": {
+  "objekt": "Shisha-Set in Box-Form mit Fernbedienung",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "quadratisches Gehäuse",
+   "Schlauch",
+   "Fernbedienung",
+   "LED-Ring",
+   "Zange"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "acryl-shisha-set-mit-kunststoffkessel-600502": {
+  "objekt": "Zwei Shishas in Dreiecksform",
+  "farben": [
+   "grün",
+   "schwarz",
+   "transparent"
+  ],
+  "merkmale": [
+   "Dreieck-Gehäuse",
+   "Schlauch",
+   "zwei Farben abgebildet"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "led-shisha-becher-mit-licht-616600": {
+  "objekt": "Shisha-Becher aus Acryl mit Zubehör",
+  "farben": [
+   "transparent",
+   "hellblau",
+   "silber"
+  ],
+  "merkmale": [
+   "Becher",
+   "Sieb",
+   "Schläuche",
+   "Mundstück",
+   "Zange"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "shisha-ventil-rennversion-602100": {
+  "objekt": "Shisha mit gelbem Rohr und Glasbasis",
+  "farben": [
+   "gelb",
+   "schwarz",
+   "transparent"
+  ],
+  "merkmale": [
+   "komplette Shisha",
+   "Schlauch",
+   "runde Glasbasis"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "led-shisha-licht-mit-steuerung-602500": {
+  "objekt": "LED-Leuchtring",
+  "farben": [
+   "violett",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Ring mit LED",
+   "Muster in der Mitte"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kupfer-shisha-fur-drehtabak-dual-use-filter-601500": {
+  "objekt": "Kleine Pfeife mit Glasbehälter",
+  "farben": [
+   "gold",
+   "transparent"
+  ],
+  "merkmale": [
+   "gebogenes Rohr",
+   "runder Glasbehälter unten",
+   "Metallkopf"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "metallfilter-fur-shisha-4-in-1-629100": {
+  "objekt": "Taschen-Wasserpfeife mit Schlauch",
+  "farben": [
+   "schwarz",
+   "gold"
+  ],
+  "merkmale": [
+   "rechteckiges Gehäuse",
+   "Schlauch mit Mundstück",
+   "Metallkopf"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "elektrische-shisha-spruhpistole-622700": {
+  "objekt": "Sprühpistole mit Flasche",
+  "farben": [
+   "türkis",
+   "transparent"
+  ],
+  "merkmale": [
+   "Pistolenform",
+   "Behälter unten",
+   "Abzug"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "eyeshadow-palette-610300": {
+  "objekt": "Lidschatten-Palette mit vier Feldern",
+  "farben": [
+   "rosa",
+   "braun",
+   "beige"
+  ],
+  "merkmale": [
+   "vier Farbfelder",
+   "Etui in Roségold",
+   "Swatches abgebildet"
+  ],
+  "anzahl_teile": 4,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kalter-bierbecher-294274": {
+  "objekt": "Becher aus Metall mit buntem Muster",
+  "farben": [
+   "silber",
+   "bunt"
+  ],
+  "merkmale": [
+   "bunter Aufdruck",
+   "Flüssigkeit wird eingegossen"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kuechenloeffel-set-113792": {
+  "objekt": "Set aus sechs Küchenhelfern",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Schöpfkelle",
+   "Nudelkelle",
+   "Schaumlöffel",
+   "Schlitzlöffel",
+   "Schlitzwender",
+   "Löffel",
+   "Aufhängeöse am Griffende"
+  ],
+  "anzahl_teile": 6,
+  "passt_zum_titel": true,
+  "grund": "Prüfer 05.10.: Bilder 1, 3 und 4 zeigen sechs Teile, CJ-Name «创意尼龙6件套» = 6-teilig (vorher fälschlich 5); Bilder 2/5 zeigen blaue/orange Sets, CJ liefert nur Black"
+ },
+ "initial-buchstaben-ring-1e5e9a": {
+  "objekt": "Offener Ring mit Buchstabe und Stein",
+  "farben": [
+   "gold",
+   "transparent"
+  ],
+  "merkmale": [
+   "Buchstabe B mit kleinen Steinen",
+   "runder Stein",
+   "offene Ringschiene"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "liebeshalskette-0bb6ab": {
+  "objekt": "Kette mit Anhänger eines sich umarmenden Paares",
+  "farben": [
+   "silber",
+   "roségold"
+  ],
+  "merkmale": [
+   "Kugelkette",
+   "Paar-Anhänger zweifarbig"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "baby-stroller-organizer-a3097b": {
+  "objekt": "Organizer-Tasche mit Klappe und Haltebändern",
+  "farben": [
+   "grau",
+   "hellblau"
+  ],
+  "merkmale": [
+   "zwei Klettbänder",
+   "Klappe",
+   "Seitenfächer"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "gelenkte-3-in-1-ladestation-fur-smartphone-uhr-612100": {
+  "objekt": "Ladestation für Handy, Uhr und Ohrhörer",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "aufgestelltes Handy",
+   "Uhr-Halter",
+   "Ablage für Ohrhörer-Etui",
+   "Aufdruck Night Light",
+   "Aufdruck 3 in 1 Fast Charging"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "vintag-ohrstecker-278145": {
+  "objekt": "Ohrstecker mit vielen kleinen Steinen",
+  "farben": [
+   "silber",
+   "transparent"
+  ],
+  "merkmale": [
+   "geschwungene Form",
+   "Steinbesatz"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kreuzanhanger-607100": {
+  "objekt": "Kette mit verziertem Kreuzanhänger",
+  "farben": [
+   "silber"
+  ],
+  "merkmale": [
+   "Gliederkette",
+   "Kreuz mit Ornamenten"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "herz-schmuck-set-798018": {
+  "objekt": "Kette und Armband aus Perlenelementen mit Herzanhängern",
+  "farben": [
+   "silber",
+   "gold"
+  ],
+  "merkmale": [
+   "unregelmässige Glieder",
+   "kleine Herzanhänger"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "spiral-armband-616800": {
+  "objekt": "Handgelenk mit Uhrenarmband und Armreif",
+  "farben": [
+   "rosa",
+   "weiss"
+  ],
+  "merkmale": [
+   "Uhr mit Blumenband",
+   "weisser Armreif"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": false,
+  "grund": "Titel «Spiral-Armband» nicht erkennbar: Bild zeigt ein Uhren-Band mit Blumenmuster und einen Armreif"
+ },
+ "augen-massager-852034": {
+  "objekt": "Stiftförmiges Massagegerät",
+  "farben": [
+   "silber",
+   "rot"
+  ],
+  "merkmale": [
+   "runder Kopf mit zwei Kontaktpunkten",
+   "Stiftform"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "teufelsaugen-ohrhanger-622800": {
+  "objekt": "Ohrstecker in Augenform",
+  "farben": [
+   "silber",
+   "rot"
+  ],
+  "merkmale": [
+   "Augenform",
+   "rote Iris"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "diamant-tropfen-696386": {
+  "objekt": "Ohrhänger mit farbigen Steinen und Perle",
+  "farben": [
+   "gold",
+   "rot",
+   "grün",
+   "blau",
+   "weiss"
+  ],
+  "merkmale": [
+   "runder Stecker oben",
+   "Hängeelement",
+   "Perle unten"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "leder-tote-188993": {
+  "objekt": "Handtasche mit zwei Griffen und Schulterriemen",
+  "farben": [
+   "braun"
+  ],
+  "merkmale": [
+   "zwei Tragegriffe",
+   "Reissverschluss",
+   "abnehmbarer Riemen"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "edelstahl-wassersportflasche-636400": {
+  "objekt": "Trinkflasche mit Strohhalm-Deckel",
+  "farben": [
+   "hellblau",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Klappdeckel",
+   "Trinkhalm",
+   "Griff"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "18k-vergoldete-halskette-mit-zirkonia-604900": {
+  "objekt": "Kette mit Tennisschläger-Anhänger",
+  "farben": [
+   "gold"
+  ],
+  "merkmale": [
+   "Anhänger 31.7 mm hoch laut Bild",
+   "10.1 mm breit laut Bild",
+   "Gewicht 3.4 g laut Bild",
+   "feine Gliederkette"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "herz-ohrringe-442626": {
+  "objekt": "Creolen in Herzform",
+  "farben": [
+   "gold",
+   "silber"
+  ],
+  "merkmale": [
+   "zwei Farben abgebildet",
+   "kleine Steine",
+   "Klappverschluss"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "leder-unterarmtasche-624770": {
+  "objekt": "Kleine Handtasche an Person mit Fellpullover",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "kleine Tasche",
+   "Kettenriemen"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Tasche nur klein im Bild"
+ },
+ "haarklammer-frosch-625600": {
+  "objekt": "Eine goldfarbene Haarspange mit Muschel, Perle und Seestern",
+  "farben": [
+   "gold",
+   "weiss"
+  ],
+  "merkmale": [
+   "gerippte Muschel mit weisser Perle",
+   "Seestern",
+   "flacher Bügel",
+   "Massangabe im Bild 5,6 × 3,3 cm"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Prüfer 05.10.: CJ Packing list Accessories*1 und eine Variante «Starfish Gold»; Bild 2 und 3 zeigen das Einzelteil, Bild 1 ist ein Familienfoto mit Bär und Schleife (vorher fälschlich anzahl_teile 4 vom Familienfoto)"
+ },
+ "schonheitsmaske-873665": {
+  "objekt": "Gesichtsmaske mit Lichtfläche",
+  "farben": [
+   "weiss",
+   "roségold"
+  ],
+  "merkmale": [
+   "Vollgesichtsmaske",
+   "Augenfenster",
+   "glatte Oberfläche"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "leichtes-korperol-zum-feuchtigkeitsspenden-636900": {
+  "objekt": "Fläschchen Körperöl mit Pipette und Verpackung",
+  "farben": [
+   "braun",
+   "beige"
+  ],
+  "merkmale": [
+   "Pipettenflasche",
+   "Aufdruck Moringa Berberine",
+   "Aufdruck 50 ml"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "pudel-kissen-bettdecke-628400": {
+  "objekt": "Plüsch-Hundefigur als Kissen",
+  "farben": [
+   "weiss",
+   "schwarz"
+  ],
+  "merkmale": [
+   "langgestreckte Form",
+   "schwarze Ohren",
+   "Umarmungsgrösse"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "stahlteestropfenfilter-160961": {
+  "objekt": "Tee-Ei aus Metallgewebe mit Kette und Haken",
+  "farben": [
+   "silber"
+  ],
+  "merkmale": [
+   "zylindrisches Sieb",
+   "Deckel",
+   "Kette mit Haken"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "schutzcover-fuer-fiat-schlussel-638900": {
+  "objekt": "Schlüsselhülle mit drei Tasten",
+  "farben": [
+   "rosa",
+   "schwarz"
+  ],
+  "merkmale": [
+   "drei Tastenfelder",
+   "Öse",
+   "glänzende Oberfläche"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "leopard-print-kleid-617900": {
+  "objekt": "Neckholder-Kleid mit Leopardenmuster",
+  "farben": [
+   "weiss",
+   "braun",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Neckholder",
+   "Knopfleiste",
+   "Leopardenmuster"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "faltenhundebett-aus-kunststoff-622800": {
+  "objekt": "Faltbarer Hundenapf im Tragerahmen",
+  "farben": [
+   "weiss",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Napf aus Silikon-Optik",
+   "Rahmen mit Griff",
+   "Hund daneben"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "perlenring-606900": {
+  "objekt": "Ring mit Perlen-Kuppel",
+  "farben": [
+   "gold",
+   "weiss"
+  ],
+  "merkmale": [
+   "viele kleine Perlen",
+   "gewölbte Form"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "herz-schmuck-link-628800": {
+  "objekt": "Kette aus Herz-Gliedern mit Steinen",
+  "farben": [
+   "gold",
+   "transparent"
+  ],
+  "merkmale": [
+   "durchgehende Herzglieder",
+   "Steckverschluss"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "dunnsolahen-flipflops-633500": {
+  "objekt": "Flip-Flops mit dicker Plateausohle",
+  "farben": [
+   "schwarz",
+   "pink"
+  ],
+  "merkmale": [
+   "dicke Sohle",
+   "Sternchen-Nieten",
+   "Zehensteg"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "damenhemd-626500": {
+  "objekt": "Oberteil mit V-Ausschnitt und Schleife",
+  "farben": [
+   "weiss"
+  ],
+  "merkmale": [
+   "Schleife am Ausschnitt",
+   "lange Ärmel",
+   "Raffung unter der Brust"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "laufschuh-429632": {
+  "objekt": "Hohe Sneaker mit Schnürung",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "hoher Schaft",
+   "Schnürsenkel",
+   "Riemen"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "weisses-franzosisches-casual-shirt-611600": {
+  "objekt": "Weisse Bluse mit Stehkragen unter Kleid",
+  "farben": [
+   "weiss",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Stehkragen",
+   "Biesen",
+   "Trompetenärmel mit Band"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "apricot-knit-oberteil-613200": {
+  "objekt": "Gerippter Strickcardigan mit Kragen",
+  "farben": [
+   "beige"
+  ],
+  "merkmale": [
+   "Knopfleiste",
+   "Kragen",
+   "3/4-Ärmel",
+   "Rippstrick"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "gold-diamanten-haarspange-620700": {
+  "objekt": "Haarspangen-Set mit Sternen und Steinen",
+  "farben": [
+   "gold",
+   "transparent"
+  ],
+  "merkmale": [
+   "Stern-Spangen",
+   "gebogene Spange",
+   "auf Karte"
+  ],
+  "anzahl_teile": 3,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "keramik-perlenkette-in-goldenem-finish-638100": {
+  "objekt": "Perlenkette mit blauen Elementen und Seestern",
+  "farben": [
+   "blau",
+   "weiss",
+   "gold"
+  ],
+  "merkmale": [
+   "Seestern-Anhänger",
+   "Blütenperlen",
+   "Kordel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "gold-schmuckstein-ring-626000": {
+  "objekt": "Breiter offener Ring mit grünem Stein",
+  "farben": [
+   "gold",
+   "grün"
+  ],
+  "merkmale": [
+   "Rillenstruktur",
+   "ovaler Stein",
+   "offene Schiene"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "gepacktasche-fur-alltags-631700": {
+  "objekt": "Transparente Tragetasche mit Aufdruck",
+  "farben": [
+   "transparent",
+   "schwarz",
+   "braun"
+  ],
+  "merkmale": [
+   "Aufdruck LIGHT FASHION",
+   "zwei Henkel",
+   "Inhalt sichtbar"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "sonnenschirm-augen-602700": {
+  "objekt": "Sonnenbrille mit eckig-ovalen Gläsern",
+  "farben": [
+   "braun"
+  ],
+  "merkmale": [
+   "dunkle Gläser",
+   "breite Bügel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "farbenprachtiges-blutenanhanger-schal-kettchen-628000": {
+  "objekt": "Stoffkette mit Blumenmuster und Anhängern",
+  "farben": [
+   "gelb",
+   "orange"
+  ],
+  "merkmale": [
+   "Stoffband",
+   "Blumen-Anhänger",
+   "Karabiner"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "schwarze-lederschuhe-fur-frauen-602200": {
+  "objekt": "Schnürschuhe mit dicker Sohle",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Schnürung",
+   "Profilsohle",
+   "runde Spitze"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "wasserfeste-laufumhangetasche-605000": {
+  "objekt": "Gürteltasche mit zwei Reissverschlüssen",
+  "farben": [
+   "rosa",
+   "grau"
+  ],
+  "merkmale": [
+   "verstellbarer Gurt",
+   "Reflexstreifen",
+   "zwei Fächer"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel sagt Umhängetasche, Bild zeigt eine Gürteltasche"
+ },
+ "klassische-bluse-mit-spitzenbesatz-609800": {
+  "objekt": "Bluse mit Rüschenkragen und Bändern",
+  "farben": [
+   "weiss"
+  ],
+  "merkmale": [
+   "grosser Rüschenkragen",
+   "Bindeband",
+   "lange Ärmel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "schutzglas-630100": {
+  "objekt": "Schutzglas mit Montagerahmen",
+  "farben": [
+   "schwarz",
+   "transparent"
+  ],
+  "merkmale": [
+   "Aufdruck Anti-Spy Privacy",
+   "Aufdruck 9D curved edge",
+   "Montage-Set im Lieferumfang"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "amerikanischer-adler-in-garten-610900": {
+  "objekt": "Adler-Figur mit ausgebreiteten Flügeln auf Sockel",
+  "farben": [
+   "blau",
+   "rot",
+   "gold",
+   "braun"
+  ],
+  "merkmale": [
+   "bemalte Flügel",
+   "Sockel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "grauer-tuchbeutel-626100": {
+  "objekt": "Hülle für Laptop oder Tablet",
+  "farben": [
+   "grau"
+  ],
+  "merkmale": [
+   "Klappe",
+   "Filz-Optik",
+   "Laptop daneben"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "gemusekutter-mit-7-mm-schneide-631200": {
+  "objekt": "Gemüseschneider mit Behälter und Einsätzen",
+  "farben": [
+   "transparent",
+   "schwarz",
+   "weiss"
+  ],
+  "merkmale": [
+   "drei Schneideinsätze",
+   "Auffangbehälter",
+   "Reinigungsbürste"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "salatdrainer-fur-obstsalate-617100": {
+  "objekt": "Salatschleuder mit Reibe-Einsätzen",
+  "farben": [
+   "grün"
+  ],
+  "merkmale": [
+   "Schleuder-Deckel",
+   "vier Einsätze",
+   "Verpackung"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "handyhalter-fur-unterwegs-611100": {
+  "objekt": "Tablet-Halter in der Küche",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Klemme",
+   "Arm",
+   "Tablet eingespannt"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "blumenhochzeit-case-fur-gro-es-display-629400": {
+  "objekt": "Handyhülle mit Blumenmuster",
+  "farben": [
+   "beige",
+   "rosa"
+  ],
+  "merkmale": [
+   "Kameraausschnitt",
+   "Blumendruck"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "ovale-ohrringe-630000": {
+  "objekt": "Ohrstecker mit grünem Stein",
+  "farben": [
+   "grün",
+   "gold"
+  ],
+  "merkmale": [
+   "unregelmässig ovale Form",
+   "goldener Rand"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "kartenschmuck-armband-629300": {
+  "objekt": "Charm-Anhänger in Form einer Spielkarte",
+  "farben": [
+   "silber",
+   "rot",
+   "schwarz"
+  ],
+  "merkmale": [
+   "Spielkarte K",
+   "Öse",
+   "Pik-Symbol"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "bikini-set-612400": {
+  "objekt": "Zweiteiliges Badeset mit Oberteil und Hose",
+  "farben": [
+   "blau",
+   "weiss"
+  ],
+  "merkmale": [
+   "Trägeroberteil",
+   "Hose mit Blumenmuster",
+   "Bindebänder"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "sonnenschutzpullover-mit-kragen-und-kurzarmel-629700": {
+  "objekt": "Poloshirt mit Kragen und kurzen Ärmeln",
+  "farben": [
+   "grün"
+  ],
+  "merkmale": [
+   "Polokragen",
+   "Knopfleiste",
+   "kurze Ärmel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "bambus-facher-606600": {
+  "objekt": "Faltfächer mit Stoffbeutel",
+  "farben": [
+   "schwarz",
+   "dunkelblau"
+  ],
+  "merkmale": [
+   "Faltfächer",
+   "Aufbewahrungsbeutel"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "sport-shorts-set-609200": {
+  "objekt": "T-Shirt und Shorts mit Farbverlauf",
+  "farben": [
+   "braun",
+   "weiss"
+  ],
+  "merkmale": [
+   "Farbverlauf",
+   "Schriftzug",
+   "Kordelzug"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "disc-soccer-trainer-603000": {
+  "objekt": "Trainingsscheiben mit Netzbeutel",
+  "farben": [
+   "rot",
+   "blau",
+   "grün",
+   "orange"
+  ],
+  "merkmale": [
+   "Aufdruck 25 pcs",
+   "Netzbeutel",
+   "Tragestab"
+  ],
+  "anzahl_teile": 25,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "stoffhosen-aus-baumwolle-637900": {
+  "objekt": "Weite Hose mit Streifen",
+  "farben": [
+   "braun",
+   "weiss"
+  ],
+  "merkmale": [
+   "Längsstreifen",
+   "elastischer Bund",
+   "weites Bein"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "mini-chiffon-rockedress-605900": {
+  "objekt": "Langes schwarzes Kleid mit freien Schultern",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Off-Shoulder",
+   "bodenlang",
+   "Volant"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "rechteck-textiltruhe-aus-nonwoventragern-633300": {
+  "objekt": "Aufbewahrungstasche mit Sichtfenster",
+  "farben": [
+   "grau"
+  ],
+  "merkmale": [
+   "60 cm breit laut Bild",
+   "35 cm tief laut Bild",
+   "40 cm hoch laut Bild",
+   "Sichtfenster",
+   "zwei Griffe"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "goldgarnitur-mit-klangkette-634400": {
+  "objekt": "Ohrhänger mit langen Fransen",
+  "farben": [
+   "gold"
+  ],
+  "merkmale": [
+   "Creolen-Verschluss",
+   "drei Ketten mit Kugeln"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "runde-goldperle-kette-616000": {
+  "objekt": "Perlenkette mit kleinen weissen Perlen",
+  "farben": [
+   "weiss",
+   "gold"
+  ],
+  "merkmale": [
+   "abgestufte Perlen",
+   "Karabiner"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "gold-edelstahl-fingerkette-608300": {
+  "objekt": "Handkette mit Perlen",
+  "farben": [
+   "gold",
+   "weiss"
+  ],
+  "merkmale": [
+   "Ring am Finger",
+   "Kette zum Handgelenk",
+   "kleine Perlen"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "schokoladen-ohrring-haarstecker-609700": {
+  "objekt": "Haarspange in Form eines Herz-Kekses",
+  "farben": [
+   "orange",
+   "braun"
+  ],
+  "merkmale": [
+   "Keksform",
+   "Metallspange"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "kuscheldecke-614600": {
+  "objekt": "Gestrickte Decke",
+  "farben": [
+   "rosa"
+  ],
+  "merkmale": [
+   "Strickstruktur",
+   "gefaltet"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "elektro-kopfmasseur-619700": {
+  "objekt": "Kopf- und Augenmassagegerät",
+  "farben": [
+   "weiss"
+  ],
+  "merkmale": [
+   "Helmform",
+   "Augenabdeckung",
+   "Aufdruck Three-level temperature options"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "elektrische-wimpernwicklung-mit-temperaturrege-618800": {
+  "objekt": "Beheizte Wimpernzange mit Display",
+  "farben": [
+   "rosa"
+  ],
+  "merkmale": [
+   "Digitalanzeige",
+   "Scherengriffe"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "langlebige-gelnageldarme-612400": {
+  "objekt": "Künstliche Fingernägel mit Glitzer",
+  "farben": [
+   "rosa",
+   "transparent"
+  ],
+  "merkmale": [
+   "spitze Form",
+   "Glitzer",
+   "aufgeklebt"
+  ],
+  "anzahl_teile": null,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "halsstutzung-fur-neigung-620600": {
+  "objekt": "Halskrause aus Schaum",
+  "farben": [
+   "weiss"
+  ],
+  "merkmale": [
+   "Klettverschluss",
+   "gepolstert"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "starkenhimmel-wandlampe-609100": {
+  "objekt": "Kugelförmige Lampe in Plastikbeutel",
+  "farben": [
+   "schwarz",
+   "transparent",
+   "blau"
+  ],
+  "merkmale": [
+   "Kuppel mit Facetten",
+   "in Verpackung"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "damen-sonnenschutz-trenchcoat-626300": {
+  "objekt": "Transparenter Überwurf mit Punkten",
+  "farben": [
+   "schwarz",
+   "weiss"
+  ],
+  "merkmale": [
+   "durchsichtig",
+   "Punktmuster",
+   "weite Ärmel"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "breite-hosen-fur-den-alltag-627000": {
+  "objekt": "Weite Hose mit Bundfalten",
+  "farben": [
+   "creme"
+  ],
+  "merkmale": [
+   "Gürtelschlaufen",
+   "weites Bein",
+   "Taschen"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "hohe-pumps-aus-suede-603600": {
+  "objekt": "Pantoletten mit Absatz und Knotendetail",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "offene Ferse",
+   "Trichterabsatz",
+   "eckige Spitze"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "thick-soled-frauen-slipper-632800": {
+  "objekt": "Pantoletten mit dicker Sohle und bunten Bändern",
+  "farben": [
+   "schwarz",
+   "bunt"
+  ],
+  "merkmale": [
+   "Plateausohle",
+   "Kreuzriemen",
+   "Aufnäher"
+  ],
+  "anzahl_teile": 2,
+  "passt_zum_titel": true,
+  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+ },
+ "tablet-halter-629400": {
+  "objekt": "Halter mit Klemme und Kugelgelenk",
+  "farben": [
+   "schwarz"
+  ],
+  "merkmale": [
+   "Klemmbacken",
+   "Kugelgelenk",
+   "Gewinde"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ },
+ "schockresistenter-schutz-625600": {
+  "objekt": "Transparente Handyhülle mit Blütenmuster",
+  "farben": [
+   "transparent",
+   "rosa"
+  ],
+  "merkmale": [
+   "Kirschblüten-Druck",
+   "Kameraausschnitt"
+  ],
+  "anzahl_teile": 1,
+  "passt_zum_titel": true,
+  "grund": "passt"
+ }
 }

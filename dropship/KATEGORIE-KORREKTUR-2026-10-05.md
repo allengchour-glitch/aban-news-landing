@@ -88,3 +88,22 @@ Beide ≤ 5 %. Hinweis: `productsCount(collection)` zählt Entwürfe mit (2'422/
 - Prüfer Index 3 «optional» (Aroma-BAN `katzen`, Handy-BAN `laptop`, Ladegeräte-FREMD Gaming) — < 10 Produkte, nicht angefasst.
 - Ampel-Altbug (`betreiber_ampel.py` Z. 501 `>` statt `>=`) — Datei nicht in diesem Auftrag; Stand liefert `_kategorie_stand.json`.
 - WARTE_MIN/Timeout-Lücke beim Bulk-Pfad (Ledger erst nach Rückkehr) — nicht geändert, idempotent.
+
+## Nachbesserung 06:36 UTC (Prüferbefund «RC-Regel greift weiter als behauptet», mittel)
+**Befund bestätigt** (`ziel_fuer` gemessen 06:2x UTC): «Staubsauger-Roboter mit Fernbedienung», «Roboter-Staubsauger mit Fernbedienung»,
+«Rasenmäher-Roboter mit Fernbedienung», «Tierkamera mit Fernbedienung», «Katzen-Laserpointer mit Fernbedienung», «Ferngesteuerter
+Futterautomat für Tiere» → alle sechs tg-5-18. Der alte Lookahead `(?:saug|…)-?roboter` deckte nur das Kompositum «Saugroboter».
+- **Tierbedarf VOR der RC-Regel** (neu): Tierwort (`\bhund(?!ert)|\bkatz(?:e(?!nauge)|en(?!auge))|\btier\w*|\bhaustier|\bwelpe`) UND
+  Bedarfswort (`laserpointer|futterautomat|futterspender|trinkbrunnen|wasserspender|kamera|trainings-?(pfeife|pad|matte|unterlage|
+  spielzeug)|clicker|leckerli`) → ap-2. Beides als Lookahead, damit «Überwachungskamera mit Fernbedienung» (el) und «Katzenaugen-
+  Kamera» (el) unberührt bleiben. `trainings\w*` war zu breit — «Trainingsjacke mit Tierprint» wäre von aa-1 auf ap-2 gekippt (9b).
+- **RC-Lookahead erweitert:** `(?:saug|staub|putz|wisch|mäh|küchen|fenster|pool|rasen)\w*-?roboter` (Wortrest vor dem Bindestrich)
+  + Umkehrform `roboter-?(?:staubsauger|sauger|mäher|rasenmäher|wischer|mopp|fensterputzer)`. Die drei Roboter landen jetzt bei
+  hg-9 / hg-9 / el (Rasenmäher-Roboter: keine engere Regel, Gadget-Fallback).
+- **Kanarienvögel 17 → 26** (`--test` 26/26): die sechs Prüfer-Titel + Überwachungskamera, Katzenaugen-Kamera, Trainingsjacke.
+- **Regression** über den Snapshot von 03:52 (5'165 Sammeltyp-Produkte, alte Modulfassung vs. neue, je `ziel_fuer`): **0 Verschiebungen**
+  — die Falle lag ausschliesslich bei Neuware. **Live:** alle 17 aktiven tg-5-18-Produkte bestehen die neuen Regeln (17/17 bleiben);
+  64 Neuimporte seit 03:50 UTC geprüft, 0 aus der RC-/Tierbedarfs-Klasse. **Keine Live-Änderung nötig, Ledger unverändert.**
+- Nebenbefund (nicht geändert, alt = neu): Regel 138 `\bhund\w*` zieht «Trainingsjacke mit Hundemotiv» auf ap-2 (Motiv ≠ Tierbedarf);
+  Regel `anhänger` → aa-6 würde «Weihnachtself-Anhänger für Vorhang und Tür» zu Schmuck machen (live hg-3, vom Importer gesetzt — greift
+  nur bei Ware ohne Kategorie). Beides < 1 Produkt live, eigener Befund.
