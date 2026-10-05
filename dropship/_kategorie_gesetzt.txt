@@ -47507,3 +47507,13 @@ elektrische-kochmaschine-fur-steak-sandwich-wa-603200	hg-11	Küche & Bar	2026-10
 kochbrett-aus-massivholz-doppelseitig-629600	hg-11	Küche & Bar	2026-10-05T07:39Z
 handgefertigter-eisenkessel-24-cm-26-cm-28-cm-613700	hg-11	Küche & Bar	2026-10-05T07:39Z
 thermos-becher-316l-edelstahl-0-6-stunden-isol-601300	hg-11	Küche & Bar	2026-10-05T07:39Z
+pet-sweater-prinzessinrock-aus-wolle-054208	ap-2	Haustierbedarf	2026-10-05T09:31Z
+dicker-warmmantel-fur-haarlose-katzen-pink-727616	ap-2	Haustierbedarf	2026-10-05T09:31Z
+pullover-fur-hund-und-katze-643776	ap-2	Haustierbedarf	2026-10-05T09:31Z
+cardigan-strickpullover-fur-hund-und-katze-814464	ap-2	Haustierbedarf	2026-10-05T09:31Z
+hundewinterjacke-aus-wolle-839168	ap-2	Haustierbedarf	2026-10-05T09:31Z
+warmmantel-fur-hund-und-katze-259264	ap-2	Haustierbedarf	2026-10-05T09:31Z
+gepolsterter-hund-und-katzenpullover-408384	ap-2	Haustierbedarf	2026-10-05T09:31Z
+hundepullover-aus-wolle-jacquard-528896	ap-2	Haustierbedarf	2026-10-05T09:31Z
+plusch-hundepullover-einfarbig-942400	tg-5	Spielzeug & Spiele	2026-10-05T09:31Z
+kontrastierter-vertikal-pullover-fur-haustier-038912	ap-2	Haustierbedarf	2026-10-05T09:31Z
