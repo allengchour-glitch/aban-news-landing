@@ -4429,3 +4429,4 @@ fritteuse-mit-sieb-b05e9b	A486F65D-64F6-451F-B8E1-3857CEAC6822	16	11.80	ok	lande
 elektrische-zitruspresse-1dfd9b	45FC8390-DDDB-49D1-8CD6-8034900CEC1B	3	48.13	ok	landeseite
 wasserdichte-armbanduhr-mit-netzarmband-35d14b	25C42CEC-8AE7-4120-BC20-FAD8E0DDB328	7	6.22	ok	landeseite
 nudelmaschine-mit-teigpresse-1e1464	38D0E7C6-6B2E-4AFD-8311-FF19DCB896AE	11	39.05	ok	landeseite
+nachfullbares-feuerzeug-aus-metall-c167c7	2664F5DF-211D-444B-8435-42B71A910937	0	-	KEINE CH-Option → DRAFT	landeseite
