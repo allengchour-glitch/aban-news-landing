@@ -193,8 +193,12 @@ SEITEN = {
                'titel': ("Geschenke & personalisierte Geschenkideen aus der Schweiz", "Geschenke & personalisierte Geschenkideen für die Schweiz")},
  'weihnachtsgeschenke-last-minute': {'body': [
    ("<li>🚚 <code>SHIP50</code> — Gratis Versand ab CHF 50</li>", "<li>🚚 Gratis Versand ab CHF 50 — automatisch, ohne Code</li>"),
-   # 05.10.: kaputte Sie→du-Umwandlung im Linktext. XMAS25 (25 %) bleibt bewusst stehen = Betreiber-Entscheid
-   # (gemessen 05.10.: kein Rabattcode XMAS25 im Shop, 15-%-Reserve seit 02.10.) — siehe COWORK-BEFEHL.md
+   # 05.10.: kaputte Sie→du-Umwandlung im Linktext. XMAS25 (25 %) bleibt bewusst stehen = Betreiber-Entscheid.
+   # GEMESSEN 05.10. 06:10 UTC (Prüfer-Korrektur): der Code XMAS25 EXISTIERT — codeDiscountNodes(query:"XMAS25") → 1 Node
+   # 2339431317889, SCHEDULED, 25 %, 01.12.–31.12.2026, kein Limit, angelegt 21.05.; dazu 10 weitere terminierte Codes > 15 %
+   # (status:scheduled → 12 Nodes). Die Deaktivierung vom 02.10. traf nur ACTIVE. Seite und Shop sind also konsistent;
+   # ob 25 % im Dezember gelten, ist ein Preis-Entscheid → COWORK-BEFEHL.md. MESS-REGEL: codeDiscountNodes IMMER mit
+   # query:"<CODE>" oder title:<CODE>; «code:<CODE>» filtert NICHT (gibt alle 109 Nodes) — über codes{nodes{code}} verifizieren.
    ("Geschenke für du entdeckst</a>", "Geschenke für sie entdecken</a>")]},
  'marken-kategorien': {'body': [  # Kategorie-Chip «Für Sie» wurde zu «Für du» (Seiten-Scan 05.10., 108 Seiten auf r'\bfür du\b')
    ('class="lx-chip">👩 Für du <span', 'class="lx-chip">👩 Für sie <span')]},
@@ -204,7 +208,10 @@ SEITEN = {
  'fan-trikot-selbst-gestalten': {'body': [
    ("🇨🇭 In der Schweiz gestaltet &amp; versandt — verfolgbare Lieferung (ca. 7–14 Werktage).",
     "🇨🇭 Schweizer Shop · in Europa gedruckt &amp; verschickt — verfolgbare Lieferung (ca. 7–14 Werktage)."),
-   ("In der Schweiz gestaltet und schnell zu dir geliefert.", "Du gestaltest, wir drucken in Europa und liefern mit Tracking zu dir.")]},
+   ("In der Schweiz gestaltet und schnell zu dir geliefert.", "Du gestaltest, wir drucken in Europa und liefern mit Tracking zu dir."),
+   # 05.10. Nachbesserung (Prüferbefund): Schritt 3 der Anleitung sagte weiter «Wir drucken & liefern in der Schweiz.»
+   # direkt neben «in Europa gedruckt» — dritte Fundstelle derselben Klasse, Ampel-Regex sah sie nicht.
+   ("Wir drucken &amp; liefern in der Schweiz. ", "Wir drucken in Europa und liefern mit Tracking in die Schweiz. ")]},
  # 05.10. (Plan Punkt 17): Ratgeber mit Heilversprechen («Glow in 14 Tagen», «Weniger Falten in 4-6 Wochen»), erfundenen
  # Zahlen (25 %/50 % Hyaluron-Rückgang, 1000x, mind. 10 %) und Link auf ein DRAFT-Serum (cj-entfernt-2026-10-05).
  # Kein aktives Produkt trägt «Hyaluron»/«Vitamin C» im Titel (gemessen 05.10.) → Kollektion hautpflege (346 aktiv) ohne
@@ -440,7 +447,10 @@ def messen():
                             r'20–30 Werktage|In der Schweiz gedruckt|Maximum-Zeiten|Versand aus Belp|'
                             # 05.10.: pauschale Lieferzeit, POD-Herkunft, Heilversprechen-/Zahlen-Klasse der Ratgeber, kaputte Sie→du-Form
                             r'in der Regel (?:innerhalb von )?7[–-]14 Werktage|In der Schweiz gestaltet|Glow in \d+ Tagen|Weniger Falten in|'
-                            r'\d\d-\d\d ?% günstiger|für du entdeckst', re.I)
+                            r'\d\d-\d\d ?% günstiger|für du entdeckst|'
+                            # 05.10. Nachbesserung: «Wir drucken & liefern in der Schweiz» (POD druckt in Europa) — Text ist hier
+                            # schon html.unescape'd, die &amp;-Form steht trotzdem mit drin, falls jemand die Regex auf Roh-HTML nutzt
+                            r'drucken (?:&amp;|&|und) liefern in der Schweiz', re.I)
         treffer = []
         for p in pages:
             t = html.unescape(re.sub(r'<[^>]+>', ' ', p['body'] or ''))
@@ -451,6 +461,38 @@ def messen():
               + (f" [{', '.join(treffer[:6])}]" if treffer else ""))
     except Exception as e:
         print(f"ZUSAGEN: unklar ({type(e).__name__}: {str(e)[:80]})")
+    rabatt_termine()
+
+
+def rabatt_termine(grenze=0.15):
+    """Informiert (schreibt nichts): terminierte Rabattcodes über der 15-%-Reserve (Betreiber 02.10.). Die Deaktivierung
+    vom 02.10. traf nur ACTIVE; gemessen 05.10.: 12 SCHEDULED, 11 davon > 15 % (XMAS25/XMAS30/BLACKFRIDAY40/CYBER30 …).
+    Ob sie gelten, ist ein Preis-Entscheid (COWORK-BEFEHL.md 05.10.) — darum nur eine Zeile, keine Mutation.
+    Mess-Regel: query:"status:scheduled"; Prozent aus customerGets.value; Code über codes{nodes{code}} bestätigen."""
+    try:
+        q = ('query($c:String){codeDiscountNodes(first:50,after:$c,query:"status:scheduled"){pageInfo{hasNextPage endCursor} '
+             'nodes{codeDiscount{... on DiscountCodeBasic{status startsAt endsAt customerGets{value{... on DiscountPercentage{percentage}}} '
+             'codes(first:1){nodes{code}}}}}}}')
+        nodes = []; cur = None
+        while True:
+            r = gql(q, {"c": cur})['codeDiscountNodes']; nodes += r['nodes']
+            if not r['pageInfo']['hasNextPage']: break
+            cur = r['pageInfo']['endCursor']
+        hoch = []
+        for n in nodes:
+            d = n.get('codeDiscount') or {}
+            p = ((d.get('customerGets') or {}).get('value') or {}).get('percentage') or 0
+            if p > grenze + 1e-9:
+                code = ((d.get('codes') or {}).get('nodes') or [{}])[0].get('code', '?')
+                hoch.append((p, code, (d.get('startsAt') or '')[:10]))
+        hoch.sort(key=lambda x: x[2])
+        if hoch:
+            print(f"RABATT-TERMINE ℹ️: {len(hoch)} terminierte Codes > {grenze:.0%} (Betreiber-Entscheid, COWORK-BEFEHL.md 05.10.): "
+                  + ", ".join(f"{c} {p:.0%} ab {s}" for p, c, s in hoch[:6]) + (" …" if len(hoch) > 6 else ""))
+        else:
+            print(f"RABATT-TERMINE ✓: 0 terminierte Codes > {grenze:.0%} ({len(nodes)} terminiert)")
+    except Exception as e:
+        print(f"RABATT-TERMINE: unklar ({type(e).__name__}: {str(e)[:80]})")
 
 
 if __name__ == "__main__":

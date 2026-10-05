@@ -4130,3 +4130,9 @@ kabellose-kopfhorer-flowpods-bluetooth-tws-637500	2604080124101637900	7	9.69	ok	
 kabellose-kopfhorer-echobuds-bluetooth-tws-618500	2604060920271619000	6	7.30	ok	landeseite
 aroma-diffuser-mist-luftbefeuchter-mit-led-381377	2049071353575759874	0	-	KEINE CH-Option → DRAFT	landeseite
 aroma-diffuser-zen-luftbefeuchter-mit-led-208322	2049080019071037442	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+powerbank-chargego-schnellladen-579393	2045035613956128769	0	-	KEINE CH-Option → DRAFT	landeseite
+fitness-tracker-activeband-herzfrequenz-schrit-635800	2601310521451636200	7	6.80	ok	landeseite
+smartwatch-prowatch-fitness-anrufe-326528	1737709153574989824	7	6.81	ok	landeseite
+smartwatch-activeone-fitness-anrufe-101440	1734777379161124864	16	5.27	ok	landeseite
+sternenhimmel-projektor-galaxy-led-nachtlicht-527681	2042478274993356801	0	-	KEINE CH-Option → DRAFT	landeseite

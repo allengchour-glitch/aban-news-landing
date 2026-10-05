@@ -188,6 +188,17 @@ UMSCHRIFT_OK = re.compile(r"uell|uett|uenz|aero|poes|israel|michael|duo|statue|a
 # «lässt sich einfach reinigen», «passt auf ein Standard-Kissen» — Eigenschaften, die keine Quelle nennt → zwei weitere Tore.
 ZAHLWORT = re.compile(r"\b(ein(?:en|e|em|er|es)?|zwei|drei|vier|f[üu]nf|sechs|sieben|acht|neun|zehn|elf|zw[öo]lf|zwanzig|dreissig|vierzig|f[üu]nfzig|hundert|"
                       r"etwa|ca\.?|ungef[äa]hr|rund|knapp)\s+(Zentimeter\w*|Millimeter\w*|Meter\w*|Gramm|Kilo\w*|Liter\w*|Milliliter\w*|Zoll|Watt|Volt|Stunden?|Minuten?|Prozent|cm|mm|g|kg|ml|l|W|V)\b", re.I)
+# 05.10. Prüferbefund (hoch): «Haarspangen-Set … vier Spangen» — CJ liefert EINE (Packing list Accessories*1, 1 Variante); das Bild-Urteil
+# zählte das Familienfoto. «Küchenhelfer-Set · 5-teilig» — Bilder und CJ-Name «6件套» sagen sechs. STÜCKZAHL-Tor: Set-Wörter und Stückzahlen
+# in Titel/Text nur, wenn CJ-Packing-List, CJ-Name (en/zh), Optionswert oder — nur ohne CJ-Zahl — das Bild-Urteil sie trägt.
+_ZW = {"zwei": 2, "drei": 3, "vier": 4, "fünf": 5, "fuenf": 5, "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10, "elf": 11, "zwölf": 12, "zwoelf": 12}
+_ZWR = r"zwei|drei|vier|f[üu]nf|sechs|sieben|acht|neun|zehn|elf|zw[öo]lf"
+STUECK_CLAIM = re.compile(r"\b(\d{1,3}|" + _ZWR + r")(?:er)?[\s-]*(?:teilig\w*|St[üu]ck\b|Stk\.?|Teile[ns]?\b|Paar\b|Paare[ns]?\b|-?er[- ]Set\b|Spangen\b|Ketten\b|Ringe[n]?\b|Ohrringe[n]?\b|"
+                          r"Armb[äa]nder[n]?\b|Anh[äa]nger[n]?\b|Flaschen\b|Gl[äa]ser[n]?\b|Tassen\b|Becher[n]?\b|B[üu]rsten\b|Messer[n]?\b|L[öo]ffel[n]?\b|Teller[n]?\b|"
+                          r"Schalen\b|Beutel[n]?\b|T[üu]cher[n]?\b|Socken\b|Haken\b|Kerzen\b|Figuren\b|Motive[n]?\b|Teilen\b)|"
+                          r"\b(?:enth[äa]lt|besteht aus|umfasst|bestehend aus|Geliefert werden|Du erh[äa]ltst|Lieferumfang:?)\s+(\d{1,3}|" + _ZWR + r")\b", re.I)
+SET_WORT = re.compile(r"(?:^|[\s(])(?:\w+-)?(Sets?|Garnitur\w*|Kombi-?[Pp]ack\w*)(?=\b)|\b(\d+|" + _ZWR + r")[\s-]*(?:teilig\w*|-?er[- ]Set)\b|\bSet\s+(?:aus|mit|enth[äa]lt|besteht)\b", re.I)
+SET_BELEG = re.compile(r"\b(set|sets|kit|suit|suite|pcs|pieces?|pairs?|pack|combo|bundle|\d+\s*in\s*1|件套|套装|套|组合)\b|\d+\s*(?:pcs|pc|pieces?|pairs?|件|只|个|对)|\*\s*[2-9]\d*\b", re.I)
 ANSPRUCH = re.compile(r"\b(luftdicht|wasserdicht|wasserabweisend|sp[üu]lmaschinen\w*|waschmaschinen\w*|bruchsicher|rostfrei|hitzebest[äa]ndig|BPA\w*|"
                       r"allergiker\w*|nickelfrei|hypoallergen|antibakteriell|lebensmittelecht|kratzfest|stossfest|sto[ßs]fest|leicht zu reinigen|"
                       r"einfach zu reinigen|pflegeleicht|waschbar|b[üu]gelfrei|atmungsaktiv|rutschfest|auslaufsicher|ergonomisch|faltbar|zusammenklappbar|"
@@ -400,6 +411,19 @@ def cj_fakten(d):
     keys = [k for k in keys if k and not re.search(r"[一-鿿]", k)]
     if keys:
         f.append("CJ-Varianten: " + " | ".join(dict.fromkeys(keys)))
+    # 05.10. Prüferbefund: Lieferumfang («Packing list: Accessories*1», «Hairpin*3pcs») und Stückzahl aus dem chinesischen Namen
+    # («创意尼龙6件套» = 6-teilig) sind die Quelle für Set-/Stückzahl-Wörter — vorher wurden packing-Zeilen bewusst übersprungen.
+    for z in desc.split("\n"):
+        m = re.match(r"^\s*(?:packing|package)\s*(?:list|content|includes?)?\s*[:：]\s*(.{1,120})$", re.sub(r"\s+", " ", z).strip(), re.I)
+        if m and not re.search(r"[一-鿿]", m.group(1)):
+            f.append("Lieferumfang (CJ): " + m.group(1).strip())
+            break
+    namen = d.get("productName")
+    namen = namen if isinstance(namen, list) else [namen] if namen else []
+    for nm in map(str, namen):
+        m = re.search(r"(\d{1,3})\s*(?:件套|件|只装|个装|对装|套装|支装|片装)", nm)
+        if m:
+            f.append(f"CJ-Stückzahl: {m.group(1)} (aus «{nm[:40]}»)"); break
     return f, rows
 
 
@@ -420,14 +444,17 @@ def bild_urteil(titel, urls, handle=None):
         return URTEILE[handle]
     if BILD_AUS or _bild_tot["ja"]:
         return None
-    bilder = [b for b in (bild_bytes(u) for u in urls[:1]) if b]       # 1 Bild à 384 px — qwen ist das Bestell-Bildvergleich-Modell, Kontingent schonen
+    # 05.10. Prüferbefund: 1 Bild allein zählte ein Familienfoto (4 Spangen, geliefert wird 1) → bis 3 Bilder à 384 px; anzahl_teile nur,
+    # wenn alle Bilder dieselbe Zahl zeigen, sonst null. (qwen ist das Bestell-Bildvergleich-Modell — Kontingent bleibt knapp.)
+    bilder = [b for b in (bild_bytes(u) for u in urls[:3]) if b]
     if not bilder:
         return None
-    prompt = (f"Produktbilder eines Online-Shop-Artikels mit dem Titel «{titel}». Beschreibe NUR, was sichtbar ist. "
+    prompt = (f"{len(bilder)} Produktbild(er) eines Online-Shop-Artikels mit dem Titel «{titel}». Beschreibe NUR, was sichtbar ist. "
               "Antworte als JSON: {\"objekt\": \"<was zu sehen ist, 3–8 Wörter, deutsch>\", \"farben\": [\"…\"], "
               "\"merkmale\": [\"<nur sichtbare Merkmale: Form, Teile, Verschluss, Aufdruck, Muster, Anzahl — max. 6, deutsch>\"], "
               "\"anzahl_teile\": <Zahl oder null>, \"passt_zum_titel\": true/false, \"grund\": \"<ein Satz>\"}. "
-              "Keine Materialien raten, keine Masse schätzen, keine Werbung.")
+              "anzahl_teile = Zahl der Teile, die der Kunde erhält: NUR wenn alle Bilder dieselbe Zahl zeigen; zeigt ein Bild ein Einzelteil "
+              "und ein anderes mehrere (Familienfoto, Farbübersicht), dann null. Keine Materialien raten, keine Masse schätzen, keine Werbung.")
     try:
         u = groq(prompt, bilder, max_tokens=1500)
         return u if isinstance(u, dict) else None
@@ -475,13 +502,15 @@ def titel_negativ(handle, titel):
     if not os.path.exists(pfad):
         return []
     neu = (titel or "").lower()
+    out = []                                           # 05.10.: ALLE alten Titel des Handles (Haarspange wurde zweimal korrigiert), nicht nur der erste
     for z in open(pfad):
         t = z.rstrip("\n").split("\t")
         if len(t) >= 5 and t[1] == handle:
             alt = t[2].strip('"')
-            return [w for w in re.split(r"[\s\-/,·]+", alt) if len(w) >= 4 and w.lower()[:4] not in neu and not re.search(r"\d", w)
-                    and not MAT_RE_I.fullmatch(w) and w.lower() not in ("aus", "mit", "für", "fuer", "und", "oder", "frauen", "damen", "herren", "kinder")]
-    return []
+            out += [w for w in re.split(r"[\s\-/,·]+", alt) if len(w) >= 4 and w.lower()[:4] not in neu and not re.search(r"\d", w)
+                    and not MAT_RE_I.fullmatch(w) and w.lower() not in ("aus", "mit", "für", "fuer", "und", "oder", "frauen", "damen", "herren", "kinder")
+                    and w not in out]
+    return out
 
 
 def optionswerte(p):
@@ -554,6 +583,54 @@ def quelle_text(f):
     return q
 
 
+def stueckzahl_beleg(quellen):
+    """Belegte Stückzahlen aus den Quellen (ohne Titel!): CJ-Lieferumfang/-Name/-Stückzahl, Optionswerte, alter Text; Bild-Urteil
+    nur, wenn CJ keine Zahl nennt (05.10.: das Bild-Urteil zählte ein Familienfoto). Rückgabe (Zahlen, set_belegt, cj_vorhanden)."""
+    zahlen, set_ok, cj = set(), False, False
+    cj_zahlen, bild_n = set(), 0
+    for q in quellen:
+        if q.startswith("Titel:") or q.startswith("NICHT verwenden"):
+            continue
+        ist_cj = q.startswith(("CJ-", "Lieferumfang (CJ)", "Material (CJ)"))
+        cj |= ist_cj
+        if SET_BELEG.search(q) and not q.startswith("Bild zeigt"):
+            set_ok = True
+        for m in re.finditer(r"(?<![\d,.])(\d{1,3})\s*(?:pcs|pc|pieces?|pairs?|pack|-?piece|in\s*1|件套|件|只|个|对|St[üu]ck|Stk|Teile?|teilig|Paar|x\b|×)|(?:set of|pack of|\*)\s*(\d{1,3})\b|\bStückzahl:\s*(\d{1,3})", q, re.I):
+            n = int(next(g for g in m.groups() if g))
+            (cj_zahlen if ist_cj else zahlen).add(n)
+        if q.startswith("Anzahl Teile im Bild:"):
+            try:
+                bild_n = int(q.split(":")[1]); zahlen.add(bild_n)
+            except ValueError:
+                pass
+    if cj_zahlen:                                      # CJ nennt eine Zahl → sie gilt, Bild/alter Text zählen nicht dagegen
+        zahlen = cj_zahlen | {n for n in zahlen if n in cj_zahlen}
+        set_ok = set_ok or max(cj_zahlen) >= 2
+    elif cj and not set_ok:                            # CJ-Daten da, aber weder Set-Wort noch Zahl ≥ 2 → Bild-Zahl ist kein Beleg für ein Set
+        zahlen = {n for n in zahlen if n < 2}
+    elif not cj and bild_n >= 2:                       # ohne CJ-Daten ist der Kontaktbogen die einzige Quelle
+        set_ok = True
+    return zahlen, set_ok, cj
+
+
+def stueckzahl_pruefen(t, titel, quellen):
+    """Stückzahl-/Set-Tor über Text UND Titel."""
+    fehler = []
+    zahlen, set_ok, cj = stueckzahl_beleg(quellen)
+    voll = f"{titel or ''} {t}"
+    for m in STUECK_CLAIM.finditer(voll):
+        z = (m.group(1) or m.group(2) or "").lower()
+        n = int(z) if z.isdigit() else _ZW.get(z.replace("ü", "ue").replace("ö", "oe"), _ZW.get(z))
+        if not n or n < 2:
+            continue
+        if n not in zahlen:
+            fehler.append(f"Stückzahl «{m.group(0).strip()}» ohne Beleg (belegt: {sorted(zahlen) or 'keine'}; Quelle = CJ-Lieferumfang/-Name, Option, Bild nur ohne CJ-Zahl)")
+            break
+    if SET_WORT.search(voll) and not set_ok:
+        fehler.append(f"Set-Wort «{SET_WORT.search(voll).group(0).strip()}» ohne Beleg — CJ-Lieferumfang/-Name/Option nennt kein Set und keine Stückzahl ≥ 2")
+    return fehler
+
+
 def pruefen(absaetze, quellen, rauch, einzeln=False, optionen=None, rows=None, min_w=None, titel=""):
     t = " ".join(absaetze)
     fehler = []
@@ -596,6 +673,7 @@ def pruefen(absaetze, quellen, rauch, einzeln=False, optionen=None, rows=None, m
             fehler.append(f"Material im Text ({'/'.join(sorted(ft))}) widerspricht dem Faktenblock ({blk[0]})")
     if any(q.startswith("Material: WIDERSPR") for q in quellen) and mat_familien(t):
         fehler.append("Material bei CJ widersprüchlich — kein Materialwort im Text")
+    fehler += stueckzahl_pruefen(t, titel, quellen)
     if EDEL.search(t):
         fehler.append("Floskel: " + EDEL.search(t).group(0))
     if META.search(t):
@@ -866,7 +944,15 @@ def nachpruefen():
         if absaetze and p["status"] == "ACTIVE" and len(" ".join(absaetze).split()) >= 40:
             fehler = pruefen(absaetze, quellen, rauch, einzeln, optionswerte(p), rows, 70 if len(quellen) < 6 else MIN_W, p["title"])
         elif p["status"] == "ACTIVE" and len(strip(p["descriptionHtml"]).split()) < 40:
-            duenn += 1; print(f"○ {h}: noch dünn (< 40 Wörter) — Sache des Tageslaufs, kein Tor-Treffer", flush=True)
+            duenn += 1
+            # 05.10. Prüferbefund: zwei Pantoletten mit «Grössen 36-43» bei Einzelvariante galten als «noch dünn», nicht als Treffer →
+            # Varianten- und Stückzahl-Tor laufen auch über den alten Import-Text (ganzer Text inkl. <li>, ohne Sorglos-Block)
+            kurz = strip(re.sub(r'<div[^>]*>.*?</div>|<p class="ls-liefer".*?</p>|<p>📦.*?</p>', " ", p["descriptionHtml"] or "", flags=re.S))
+            if einzeln and WAHL_EINZELN.search(kurz):
+                fehler.append("Einzelvariante — Import-Text verspricht Wahl: " + ", ".join(dict.fromkeys(m.group(0) for m in WAHL_EINZELN.finditer(kurz))))
+            fehler += stueckzahl_pruefen(kurz, p["title"], quellen)
+            if not fehler:
+                print(f"○ {h}: noch dünn (< 40 Wörter) — Sache des Tageslaufs, kein Tor-Treffer", flush=True)
         seo_t = ((p.get("seo") or {}).get("title") or p["title"])      # Shopify speichert seo.title == Titel als null
         if p["status"] == "ACTIVE" and not seo_t.lower().startswith(p["title"].lower()[:40]):
             fehler.append(f"SEO-Titel alt: «{seo_t[:60]}» ≠ «{p['title'][:60]}»")
@@ -896,6 +982,14 @@ def selbsttest():
         ("Man kann", ["Man kann das Set zu Kleidern tragen."], ["Titel: Set"], True, set(), [], "Set", "unpersönliche"),
         ("Negativquelle", ["Eine Spange zeigt eine Tierfigur im Frosch-Design."], ["Titel: Haarspangen-Set mit Schleife", "NICHT verwenden (alter Titel war falsch): Frosch"], True, set(), [], "Haarspangen-Set mit Schleife", "alten (falschen) Titels"),
         ("Titanlegierung ok", ["Das Inlay ist aus Titanlegierung."], ["Titel: Spange", "CJ-Beschreibung: Inlay material: Titanium alloy"], True, set(), [], "Spange", None),
+        # 05.10. Prüferbefunde Stückzahl/Set
+        ("Set bei Accessories*1", ["Das Set enthält vier goldfarbene Haarspangen."], ["Titel: Haarspangen-Set goldfarben", "CJ-Produktname (englisch): Starfish And Shell Hair Clip", "Lieferumfang (CJ): Accessories*1", "Anzahl Teile im Bild: 4"], True, set(), [], "Haarspangen-Set goldfarben", "ohne Beleg"),
+        ("fünf statt sechs", ["Das Küchenhelfer-Set besteht aus fünf schwarzen Teilen."], ["Titel: Küchenhelfer-Set · 5-teilig", "CJ-Produktname (englisch): Kitchen Utensils Spoon Set", "Lieferumfang (CJ): Kitchen set", "CJ-Stückzahl: 6 (aus «创意尼龙6件套»)", "Anzahl Teile im Bild: 5"], True, set(), [], "Küchenhelfer-Set · 5-teilig", "Stückzahl"),
+        ("sechs belegt", ["Das Küchenhelfer-Set besteht aus sechs schwarzen Teilen."], ["Titel: Küchenhelfer-Set · 6-teilig", "CJ-Produktname (englisch): Kitchen Utensils Spoon Set", "Lieferumfang (CJ): Kitchen set", "CJ-Stückzahl: 6 (aus «创意尼龙6件套»)"], True, set(), [], "Küchenhelfer-Set · 6-teilig", None),
+        ("3 Stück aus Packing", ["Geliefert werden drei Spangen mit Strass-Sternen."], ["Titel: Haarspangen-Set · 3 Stück", "Lieferumfang (CJ): Hairpin*3pcs"], True, set(), [], "Haarspangen-Set · 3 Stück", None),
+        ("Set ohne CJ, Bild 4", ["Das Set besteht aus vier Tassen."], ["Titel: Tassen-Set", "Alter Text: Tassen", "Anzahl Teile im Bild: 4"], True, set(), [], "Tassen-Set", None),
+        ("Masse sind keine Stückzahl", ["Die Spange misst 5,6 × 3,3 cm. Geliefert wird eine Spange."], ["Titel: Haarspange", "Lieferumfang (CJ): Accessories*1", "Sichtbare Merkmale: Massangabe im Bild 5,6 × 3,3 cm"], True, set(), [], "Haarspange", None),
+        ("Headset ist kein Set", ["Das Headset hat ein Mikrofon."], ["Titel: Headset mit Mikrofon", "CJ-Produktname (englisch): Gaming Headset"], True, set(), [], "Headset mit Mikrofon", None),
     ]
     ok = 0
     for name, abs_, quellen, einzeln, opt, rows, titel, erwartet in faelle:

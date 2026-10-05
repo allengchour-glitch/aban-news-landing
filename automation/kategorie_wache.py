@@ -106,7 +106,15 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     # 05.10.2026: ferngesteuertes TIER ist Spielzeug, kein Tierbedarf — «Smart Sensor Stunt-Hund mit Fernbedienung» stand
     # seit 23.09. auf Pet Supplies (Bindestrich = Wortgrenze, `\bhund` traf). tg-5-18 = Remote Control Toys (gemessen 05.10.).
     # Regression 05.10. (5'165 Sammeltyp-Produkte): «Saugroboter mit Fernbedienung» wäre Spielzeug geworden → Haushaltsroboter raus.
-    (r"^(?!.*(?:saug|staub|putz|wisch|mäh|küchen|fenster|pool|rasen)-?roboter)(?:.*(?:fernbedienung|ferngesteuert\w*|\brc\b).*(?:\bhund(?!ert)|\bkatz|\btier\w*\b|roboter|\bdino)|.*(?:\bhund(?!ert)|\bkatz|\btier\w*\b|roboter|\bdino).*(?:fernbedienung|ferngesteuert\w*|\brc\b))", "tg-5-18"),
+    # Nachbesserung 05.10. (Prüfer): Tierbedarf MIT Fernbedienung ist Tierbedarf, kein Spielzeug — «Tierkamera mit Fern-
+    # bedienung», «Katzen-Laserpointer mit Fernbedienung», «Ferngesteuerter Futterautomat für Tiere» liefen in tg-5-18.
+    # Beide Lookaheads: ein Tierwort UND ein Bedarfswort (Kamera allein bleibt Elektronik, Laserpointer allein unten).
+    (r"(?=.*(?:\bhund(?!ert)|\bkatz(?:e(?!nauge)|en(?!auge))|\btier\w*|\bhaustier|\bwelpe))"
+     r"(?=.*(?:laserpointer|futterautomat|futterspender|trinkbrunnen|wasserspender|kamera|trainings-?(?:pfeife|pad|matte|unterlage|spielzeug)|clicker|leckerli))", "ap-2"),
+    # Nachbesserung 05.10. (Prüfer): der alte Lookahead `(?:saug|…)-?roboter` deckte nur «Saugroboter», nicht «Staubsauger-
+    # Roboter», «Rasenmäher-Roboter» (Wortrest vor dem Bindestrich) oder die Umkehrform «Roboter-Staubsauger» → `\w*` und
+    # Umkehrform ergänzt; Kanarienvögel unten.
+    (r"^(?!.*(?:(?:saug|staub|putz|wisch|mäh|küchen|fenster|pool|rasen)\w*-?roboter|roboter-?(?:staubsauger|sauger|mäher|rasenmäher|wischer|mopp|fensterputzer)))(?:.*(?:fernbedienung|ferngesteuert\w*|\brc\b).*(?:\bhund(?!ert)|\bkatz|\btier\w*\b|roboter|\bdino)|.*(?:\bhund(?!ert)|\bkatz|\btier\w*\b|roboter|\bdino).*(?:fernbedienung|ferngesteuert\w*|\brc\b))", "tg-5-18"),
     # 04.10.2026 (Verbesserungsrunde «kategorie-typ»): Tierware VOR Schuh/Kleid/Kostüm — gemessen standen «Hunde-
     # Outdoorschuhe» unter Shoes, «Kaschmir-Pullover für Haustiere» unter Clothing, «Halloween-Kostüm für Hunde» unter
     # Costumes. Wortfallen: hund(?!ert) = «Hunderte», katze(?!nauge) = «Katzenaugen-Sonnenbrille».
@@ -495,6 +503,16 @@ KANARIEN = [
     ("Trend-Gadget", "PVC Hundeskelett-Modell", "bi-19-8"),
     ("Trend-Gadget", "Ferngesteuertes Auto mit Drift", "el"),
     ("Gadget", "Saugroboter mit Fernbedienung und App-Steuerung", "el"),
+    # Nachbesserung 05.10. (Prüfer «kategorie»): Haushaltsroboter in Bindestrich-/Umkehrform + Tierbedarf mit Fernbedienung
+    ("Gadget", "Staubsauger-Roboter mit Fernbedienung", "hg-9"),
+    ("Gadget", "Roboter-Staubsauger mit Fernbedienung", "hg-9"),
+    ("Gadget", "Rasenmäher-Roboter mit Fernbedienung", "el"),
+    ("Trend-Gadget", "Tierkamera mit Fernbedienung", "ap-2"),
+    ("Trend-Gadget", "Katzen-Laserpointer mit Fernbedienung", "ap-2"),
+    ("Trend-Gadget", "Ferngesteuerter Futterautomat für Tiere", "ap-2"),
+    ("Gadget", "Überwachungskamera mit Fernbedienung", "el"),
+    ("Trend-Gadget", "Katzenaugen-Kamera", "el"),
+    ("Trend-Gadget", "Trainingsjacke mit Tierprint", "aa-1"),   # Wortfalle 9b: Trainings-JACKE ist Mode, kein Hundetraining (`trainings\w*` kippte sie)
     ("Trend-Gadget", "Kreatives Sturmfeuerzeug mit Doppelflamme", "hg-19"),
     ("Trend-Gadget", "Press Lock Schnürsenkel", "aa-8"),
     ("Baby & Kinder", "Pyjama-Set für Mädchen", "aa-1-25-6"),

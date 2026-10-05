@@ -35,6 +35,65 @@ BAND = float(os.environ.get("JURY_BAND", "1.5"))
 # oder bei Ausfall fällt die Runde auf Gemini zurück (kein Urteil ist kein Nein).
 MODELL_GPT = os.environ.get("JURY_MODELL_GPT", "gpt-5.5")
 KRIT = ["erstes_bild", "bildqualitaet", "sauberkeit", "text_im_bild", "stimmigkeit", "wirkung"]
+# 05.10.2026 (Prüfer, Plan 23): seit 02:43 UTC gab die Jury KEIN Urteil — Gemini 402, OpenAI leer, und Groq hat auf allen drei
+# Schlüsseln nur EIN Bildmodell (qwen/qwen3.8-27b; GET /models gemessen: gpt-oss-120b ist reines Textmodell). «Kein Urteil =
+# kein Post» hiess: 9 ready-Reels, 0 Posts, Kadenz ≥ 21 h, an jedem Groq-Tag. Gemessen: 6 der 9 ready-Reels hatten ein
+# POSITIVES Urteil (Note 8.17–8.83) zum früheren Render DERSELBEN Datei — Unterschied nur der Preis (CHF 54.90 → 47.90 nach
+# der Preissenkung vom 02.10.; alter Blob + alte Caption = Cache-Signatur, nachgerechnet). Deshalb RÜCKFALL, nur wenn alle
+# Bildmodelle leer sind: ein früheres ok-Urteil zur selben Datei (Basename, ≤ RUECKFALL_TAGE alt, nach den Cache-Regeln
+# gültig) gilt — der Preis im Bild wird davor vom Meisterwerk-Tor (PREIS_SOLL) gemessen. Ledger: dropship/_jury_rueckfall.tsv.
+RUECKFALL_TAGE = int(os.environ.get("JURY_RUECKFALL_TAGE", "14"))
+RUECKFALL_LEDGER = os.path.join(REPO, "dropship", "_jury_rueckfall.tsv")
+
+
+def _basename(q):
+    return os.path.basename(str(q).split("?")[0].split("#")[0])
+
+
+def cache_gueltig(v):
+    """Dieselbe Regel wie beim Cache-Treffer: ein Einzelurteil im Grenzband (vor 29.09.) zählt nicht mehr."""
+    return not (RUNDEN > 1 and grenzfall(v) and "runden" not in v)
+
+
+def kontingent_leer():
+    """Alle Bild-Jurys leer: Gemini-Marke (402), OpenAI-Marke oder kein Schlüssel, Groq-Bildmodell auf JEDEM Schlüssel gemerkt."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import zweitmodell as z
+    ks = z.groq_schluessel()
+    groq = bool(ks) and all(z.groq_leer(i + 1, [z.GROQ_BILD]) for i in range(len(ks)))
+    openai = z.openai_leer() or not z.openai_schluessel()
+    return z.gemini_leer() and openai and groq
+
+
+def frueheres_urteil(quelle):
+    """Jüngstes gültiges ok-Urteil zu derselben Datei (Basename ohne Query), höchstens RUECKFALL_TAGE alt — sonst None."""
+    name = _basename(quelle)
+    if not name or not os.path.exists(CACHE):
+        return None
+    best = None
+    for l in open(CACHE, encoding="utf-8"):
+        t = l.rstrip("\n").split("\t")
+        if len(t) < 4 or _basename(t[3]) != name:
+            continue
+        try:
+            v = json.loads(t[2]); alter = time.time() - time.mktime(time.strptime(t[1], "%Y-%m-%dT%H:%M:%SZ")) + time.timezone
+        except Exception:
+            continue
+        if v.get("ok") and cache_gueltig(v) and alter <= RUECKFALL_TAGE * 86400 and (best is None or t[1] > best[0]):
+            best = (t[1], v)
+    if not best:
+        return None
+    v = dict(best[1]); v["rueckfall"] = f"Kontingent leer — ok-Urteil vom {best[0][:16]}Z zum früheren Render von {name}"
+    return v
+
+
+def rueckfall_merken(quelle, caption, v):
+    try:
+        with open(RUECKFALL_LEDGER, "a", encoding="utf-8") as f:
+            f.write(f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\t{_basename(quelle)}\t{v['rueckfall']}\t"
+                    f"schnitt {v['schnitt']}\t{hashlib.sha1(caption.encode()).hexdigest()[:12]}\n")
+    except OSError:
+        pass
 
 
 def schluessel():
