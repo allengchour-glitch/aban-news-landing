@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-05 04:41 UTC, Stand 2026-10-05 05:23 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-05 04:41 UTC, Stand 2026-10-05 05:24 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'217**
-- Optionen mit englischen Werten (Kandidaten): 37
+- Produkte gesehen: **1'810**
+- Optionen mit englischen Werten (Kandidaten): 191
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 155
+- Werte mit unbekanntem Wort (unverändert): 876
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
+- übersprungen «kollision-nach-uebersetzung»: 11
 - übersprungen «kleidungsstueck-im-wert»: 1
-- übersprungen «kollision-nach-uebersetzung»: 1
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -26,6 +26,16 @@
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
 - `15443497025921` [Farbe] smartwatch-activeone-fitness-anrufe-101440: Braun Aprikose Gelb → Braun-Aprikose-Gelb; Braun Aprikose Braun → Braun-Aprikose-Braun; Braun Aprikose → Braun-Aprikose
+- `15447596302721` [Farbe] glanzendes-mini-kleid-mit-raffung-634500: Marineblaublau → Marineblau
+- `15447598268801` [Farbe] damen-kleid-mit-puffarmeln-und-taillengurtel-613900: Marineblaublau → Marineblau
+- `15447603413377` [Farbe] leinenhemd-kurzarm-loose-fit-fur-herren-613900: Marineblaublau → Marineblau
+- `15447603806593` [Farbe] casual-loose-fit-t-shirt-mit-zwei-taschen-628400: Marineblaublau → Marineblau
+- `15447603937665` [Farbe] herren-jacquard-polo-shirt-mit-reissverschluss-614101: Marineblaublau → Marineblau
+- `15447604658561` [Farbe] polo-shirt-kurzarm-slim-fit-pique-baumwolle-615000: Marineblaublau → Marineblau
+- `15447605510529` [Farbe] leinenhemd-langarmlig-fur-herren-624700: Marineblaublau → Marineblau
+- `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
+- `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
+- `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -59,5 +69,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`generation` 31, `stone` 14, `high` 12, `carbon` 12, `45se6` 12, `belt` 11, `suit` 11, `to9mm` 11, `shell` 10, `platinum` 9, `case` 8, `chain` 8, `moissanite` 7, `strap` 7, `gift` 6, `chest` 6, `pad` 6, `no` 5, `code` 4, `boxes` 4, `alluvial` 3, `spring` 3, `ck` 3, `background` 2, `⟨satzbau:adjektiv-vor-nomen⟩` 2, `imitating` 2, `spot` 2, `antique` 2, `shoe` 2, `buckle` 2, `replenishment` 2, `strip` 2, `magnetic` 2, `color` 1, `ribbon` 1, `hidden` 1, `elevator` 1, `tea` 1, `delightful` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `basic` 1, `2nd` 1, `embroidery` 1, `angola` 1, `scarlett` 1, `mocha` 1, `snowfield` 1, `ice` 1, `lotus` 1, `oat` 1, `sky` 1, `sugar` 1, `dyed` 1, `fireworks` 1, `angora` 1, `stature` 1, `regular` 1
+`core` 52, `color` 37, `light` 34, `shell` 31, `generation` 31, `⟨satzbau:adjektiv-vor-nomen⟩` 28, `insert` 26, `case` 24, `batteries` 24, `bag` 21, `of` 21, `surface` 21, `high` 19, `number` 19, `hat` 17, `stone` 16, `face` 16, `gallium` 16, `nitride` 16, `belt` 15, `no` 15, `suit` 15, `handle` 15, `electric` 15, `carbon` 13, `45se6` 12, `steel color` 12, `noodles` 12, `to9mm` 11, `three` 11, `storage` 11, `platinum` 9, `monolever` 9, `watch` 9, `cup` 9, `lens` 9, `ports` 9, `lingyun` 9, `background` 8, `regular` 8, `chain` 8, `line` 8, `one` 8, `two` 8, `phoenix` 8, `feather` 8, `tea` 7, `moissanite` 7, `strap` 7, `gift` 6, `chest` 6, `pad` 6, `laser` 6, `rows` 6, `columns` 6, `starry` 6, `infrared` 6, `obstacle` 6, `avoidance` 6, `only` 6
 
