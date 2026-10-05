@@ -65,12 +65,12 @@ CFG = {
         tag="kat-bettwaesche", suche=["bettwäsche", "bettwaesche", "bettbezug"], kw="bettwäsche", volumen=14800, kd=23,
         echt=R(r"bettw(ä|ae)sche|bettbez(u|ü|ue)g|bettgarnitur|duvetbezug"),
         ban=R(HAUS + r"|w(ä|ae)schebeutel|w(ä|ae)schesack|aufbewahrung|puppen|hunde|katzen|haustier|beutel f(ü|ue)r|klammer|"
-              r"spray|duft|stoff f(ü|ue)r|baumwollstoff|meterware|\bstoff\b"),
+              r"spray|duft|stoff f(ü|ue)r|baumwollstoff|meterware|\bstoff\b|sofa"),
         typen={"Wohnen & Deko", "Aufbewahrung & Organizer", "Basteln & DIY", "Heimtextilien", "Haushalt & Wohnen",
                "Bettwäsche"} | SAMMEL,
         ja=["Blumen-Bettwäsche-Set aus Baumwolle, 4-teilig", "Bettbezug 160x210 Leinen"],
         nein=["Wäschebeutel für Bettwäsche", "Hundebett mit Bettwäsche-Optik", "Twill-Baumwollstoff für Bettwäsche & Vorhänge",
-              "Baumwollstoff für Bettwäsche & Vorhänge"],
+              "Baumwollstoff für Bettwäsche & Vorhänge", "Sofa-Bettbezug gestreift"],
         titel="Bettwäsche", sort="BEST_SELLING",
         seo_titel="Bettwäsche kaufen: Baumwolle, Satin & Sets | LuxeStyle",
         seo_text="Bettwäsche-Sets aus Baumwolle, Tencel und Satin: Bettbezüge mit Kissenbezug, einfarbig, gestreift oder mit "
@@ -203,11 +203,11 @@ CFG = {
         echt=R(r"winterjacke|winterjacken|daunenjacke|daunenjacken|wintermantel|winterm(ä|ae)ntel|daunenmantel|"
                r"daunenm(ä|ae)ntel|\bparka\b|winterparka|puffer.?jacke|pufferjacke"),
         ban=R(HAUS + r"|hunde|katzen|haustier|puppen|kinder|baby|kleinkind|jungen|m(ä|ae)dchen|weste\b|westen\b|hund\b|"
-              r"aufbewahrung|kleiderb(ü|ue)gel|reinigung|spray|lego|figur|playmobil|anh(ä|ae)nger|schl(ü|ue)ssel"),
+              r"aufbewahrung|kleiderb(ü|ue)gel|reinigung|spray|lego|figur|playmobil|anh(ä|ae)nger|schl(ü|ue)ssel|ohne (ä|ae)rmel|(ä|ae)rmellos"),
         typen={"Damenmode", "Herrenmode", "Mode", "Jacke", "Jacken", "Mäntel"} | SAMMEL,
         ja=["Kurze Winterjacke mit Kapuze", "Kurze Daunenjacke mit Patchwork-Ärmeln für Damen",
             "Gefütterter Patchwork-Wintermantel mit Kapuze"],
-        nein=["Hunde-Winterjacke wasserdicht", "Daunenweste Herren", "Kinder-Winterjacke mit Fell"],
+        nein=["Hunde-Winterjacke wasserdicht", "Daunenweste Herren", "Kinder-Winterjacke mit Fell", "Wintermantel ohne Ärmel, mittellang"],
         titel="Winterjacken & Daunenjacken", sort="BEST_SELLING",
         seo_titel="Winterjacke Damen & Herren: Daunenjacken | LuxeStyle",
         seo_text="Winterjacken und Daunenjacken für Damen und Herren: kurze Puffer-Jacken, gefütterte Parkas mit Kapuze und "

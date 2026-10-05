@@ -4191,3 +4191,6 @@ farbiger-tricolor-lidschatten-stick-607500	2603220429411607800	3	5.22	ok	landese
 contouring-abdeck-stick-mit-naturlichem-finish-636500	2603110832081636900	3	5.69	ok	landeseite
 12-teiliges-make-up-pinselset-mit-tasche-631200	2602050514251631500	16	6.40	ok	landeseite
 4-in-1-reise-make-up-pinselset-224385	2016394016967081986	0	-	KEINE CH-Option → DRAFT	landeseite
+10er-luxus-make-up-pinselset-mit-kristallgriff-167489	2016346486588219394	0	-	KEINE CH-Option → DRAFT	landeseite
+20-teiliges-make-up-pinselset-628200	2601180618421628500	16	7.25	ok	landeseite
+4-in-1-magnetischer-make-up-pinsel-600800	2601170933191601100	7	5.76	ok	landeseite
