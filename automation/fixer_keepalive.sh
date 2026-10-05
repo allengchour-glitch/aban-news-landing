@@ -1329,6 +1329,11 @@ if [ -f "$REPO/automation/interne_links.py" ] && [ "$(date -u +%u)" = "1" ] && [
   ( cd "$REPO" && timeout 900 python3 automation/interne_links.py --pruefen 2>&1 | tail -1 | tee -a /tmp/interne_links.log )
   ( cd "$REPO" && SCHARF=1 timeout 1800 python3 automation/interne_links.py --scharf >> /tmp/interne_links.log 2>&1; grep "^geschrieben" /tmp/interne_links.log | tail -1 )
 fi
+# REGEL-KANARIEN (05.10.2026, Semrush Runde 3): Welten/Anker in interne_links.py + Semrush-Kategorien (169 Fälle) — stündlich,
+# < 1 s, ohne Shop. Fehler = eine Regeländerung kippt einen bekannten Fall → melden (die Tagesläufe würden Fremdware taggen/verlinken).
+RK1=$(cd "$REPO" && timeout 60 python3 automation/interne_links.py --kanarien 2>&1 | tail -1)
+RK2=$(cd "$REPO" && timeout 60 python3 automation/kategorie_rein_semrush.py 2>&1 | tail -1)
+case "$RK1 $RK2" in *"Fehler 0"*"Fehler 0"*) : ;; *) echo "$(date -u +%H:%M) ⚠️ REGEL-KANARIEN: interne_links «$RK1» · semrush-kategorien «$RK2»" ;; esac
 # --- Checkout-Abbruch-Ampel (05.10.2026, dropship/CHECKOUT-ABBRUCH-2026-10-05.md) — täglich, nur messen (Probelauf 08:05 UTC ok).
 if [ -f "$REPO/automation/checkout_abbruch_messen.py" ] && [ ! -f /tmp/checkout_abbruch_$(date -u +%F).stamp ]; then
   touch /tmp/checkout_abbruch_$(date -u +%F).stamp

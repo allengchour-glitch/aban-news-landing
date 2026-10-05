@@ -39,6 +39,7 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_suchwort_tags.txt"
+NUR = os.environ.get("NUR")   # «synonyme» = nur die Synonym-Tabelle (05.10.2026)
 
 # Grundwort → Wörter, die davorstehen dürfen NICHT gelten (die Zusammensetzung meint etwas
 # anderes). Leere Liste = keine bekannte Falle.
@@ -238,8 +239,36 @@ def muster(grund):
     return re.compile(r'[a-zäöüß]{2,}' + wort + r'(?:e|en|n|s)?\b', re.I)
 
 
+def synonyme_schreiben(syn_aufgaben):
+    """tagsAdd je Produkt; Ledger mit Datum (Altwert = Tag fehlte → Rückweg tagsRemove)."""
+    if not syn_aufgaben:
+        return
+    erledigt = set()
+    if os.path.exists(SYNONYM_LEDGER):
+        erledigt = {tuple(l.split("\t")[1:3]) for l in open(SYNONYM_LEDGER)}
+    neu_datei = not os.path.exists(SYNONYM_LEDGER)
+    f = open(SYNONYM_LEDGER, "a")
+    if neu_datei:
+        f.write("datum\tproduct_id\ttag_neu\ttitel\n")
+    n = 0
+    for gid, titel, tags in syn_aufgaben:
+        tags = [g for g in tags if (gid, g) not in erledigt]
+        if not tags:
+            continue
+        r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": gid, "t": tags})
+        if ((r.get("data") or {}).get("tagsAdd") or {}).get("userErrors"):
+            continue
+        for g in tags:
+            f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{gid}\t{g}\t{titel}\n")
+        f.flush()
+        n += 1
+        time.sleep(0.25)
+    print(f"Synonym-Tags geschrieben: {n} Produkte", flush=True)
+
+
 def main():
     aufgaben, statistik, abgewiesen = [], Counter(), Counter()
+    syn_aufgaben = []
     muster_je = {g: muster(g) for g in GRUNDWOERTER}
     for zeile in open(EXPORT):
         p = json.loads(zeile)
@@ -264,6 +293,11 @@ def main():
                 abgewiesen[(grund, m.group(0))] += 1
                 continue
             neu.append(grund)
+        if NUR == "synonyme":
+            neu = []
+        syn = synonym_tags(t, p.get("productType"), p.get("tags"))
+        if syn:
+            syn_aufgaben.append((p["id"], t, syn))
         if neu:
             aufgaben.append((p["id"], t, neu))
             for g in neu:
@@ -277,16 +311,29 @@ def main():
         print("   — als Ausnahme abgewiesen (Zusammensetzung meint etwas anderes):", flush=True)
         for (g, wort), n in abgewiesen.most_common(8):
             print(f"     {n:>4}  {wort} → NICHT «{g}»", flush=True)
-    if DRY or not aufgaben:
+    syn_stat = Counter(g for _, _, ns in syn_aufgaben for g in ns)
+    print(f"Synonym-Tags: {len(syn_aufgaben)} Produkte · " + ", ".join(f"{g} {n}" for g, n in syn_stat.most_common()), flush=True)
+    if DRY:
+        for gid, t, ns in syn_aufgaben:
+            print(f"     SYN {','.join(ns):<14} {t[:70]}", flush=True)
+        return
+    synonyme_schreiben(syn_aufgaben)
+    if not aufgaben:
         return
 
+    # 05.10.2026: Das Ledger sperrte bisher die ganze Produkt-ID («gid in done») — ein Produkt, das einmal
+    # «uhr» bekam, hätte ein später ergänztes Grundwort NIE bekommen. Gesperrt wird jetzt das Paar (ID, Tag).
     done = set()
     if os.path.exists(LEDGER):
-        done = {l.split("\t")[0] for l in open(LEDGER)}
+        for l in open(LEDGER):
+            teile = l.split("\t")
+            if len(teile) >= 2:
+                done |= {(teile[0], g) for g in teile[1].split(",")}
     f = open(LEDGER, "a")
     n = 0
     for gid, titel, neu in aufgaben:
-        if gid in done:
+        neu = [g for g in neu if (gid, g) not in done]
+        if not neu:
             continue
         r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
                 {"id": gid, "t": neu})
