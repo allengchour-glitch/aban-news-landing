@@ -4569,3 +4569,5 @@ interaktiver-spielball-fur-haustiere-870401	2060270988662779906	0	-	KEINE CH-Opt
 smart-interaktiver-ball-fur-hunde-310081	2059939998861025282	16	5.69	ok	landeseite
 farbige-tennisballe-fur-hunde-987586	2059575887118262273	16	7.71	ok	landeseite
 ersatzfedern-fur-katzenangel-629300	2605250722331629900	16	7.57	ok	landeseite
+interaktiver-hunde-spielball-mit-seil-183490	2058111622789652481	7	8.68	ok	landeseite
+interaktiver-hupfball-fur-hunde-623809	2058102004437315586	16	8.53	ok	landeseite
