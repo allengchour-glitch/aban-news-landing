@@ -1,6 +1,6 @@
-# Heilversprechen in Produkttexten — Stand 2026-10-04T21:45:29Z
+# Heilversprechen in Produkttexten — Stand 2026-10-05T17:47:17Z
 
-Geprüft: 5525 (Filter: `status:active updated_at:>2026-10-03T09:06:44Z`) · entschärft: 0 · offen: 2 · Schreibfehler: 0
+Geprüft: 22727 (Filter: `status:active updated_at:>2026-10-04T21:45:29Z`) · entschärft: 0 · offen: 2 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
