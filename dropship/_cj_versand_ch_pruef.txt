@@ -3671,3 +3671,42 @@ yogamatte-10-mm-071936	1380061818378129408	16	15.81	ok	landeseite
 gleitpads-fur-core-training-286656	1379714865106653184	16	5.12	ok	landeseite
 verstellbares-hantel-set-fur-das-heimtraining-094976	1379714827550855168	4	123.41	ok	landeseite
 waschbares-nackenkissen-fur-zu-hause-632800	2512310333151633000	16	14.96	ok	landeseite
+multifunktionaler-sandsack-fur-das-krafttraini-269760	1380096655034028032	9	70.25	ok	landeseite
+kissen-get-rich-immediately-609300	2512300949001609700	16	9.47	ok	landeseite
+sit-up-hilfe-mit-saugnapf-fur-bauchmuskeln-617216	1379707817027571712	16	15.81	ok	landeseite
+runder-baumwoll-kissenbezug-handgewoben-602600	2512291109531603100	16	22.21	ok	landeseite
+klappbarer-campingtisch-mit-4-stuhlen-613700	2507160313561613900	9	81.93	ok	landeseite
+mini-outdoor-gaskocher-ultraleicht-601300	2507141007151601500	16	5.48	ok	landeseite
+mehrzweck-kissen-fur-seiten-und-bauchschlafer-639100	2512250417251639400	16	27.83	ok	landeseite
+outdoor-camping-erste-hilfe-und-survival-set-602800	2507110801331603100	0	-	KEINE CH-Option → DRAFT	landeseite
+memory-schaum-kissen-mit-langsamer-ruckfederun-631100	2512230827031632000	16	20.72	ok	landeseite
+schlusselanhanger-taschenlampe-mit-magnet-603800	2507060256121604000	6	6.18	ok	landeseite
+armband-aus-925er-silber-mit-zirkonia-626500	2512180707201626800	16	4.34	ok	landeseite
+magnetarmband-aus-titan-und-edelstahl-621900	2512180620591622100	7	5.05	ok	landeseite
+nagelarmreif-mit-diamanten-635800	2512170922091636000	16	4.71	ok	landeseite
+retro-armband-aus-edelstahl-627100	2512170745431627300	16	4.50	ok	landeseite
+armband-mit-zirkon-akzenten-624500	2512170523391624700	16	4.57	ok	landeseite
+armband-aus-925er-silber-mit-zirkonia-nieten-633000	2512170513131633300	16	4.57	ok	landeseite
+damen-armbanduhr-mit-magnetverschluss-b0fb12	-	-	-	unklar keine CJ-SKU	landeseite
+boxhandschuhe-fur-training-und-kampfsport-008768	1381479158986706944	16	14.60	ok	landeseite
+ebenholz-holzuhr-mit-kalenderfunktion-69ca72	-	-	-	unklar keine CJ-SKU	landeseite
+tiefschutz-fur-kampfsport-038272	1381469126849073152	16	7.43	ok	landeseite
+elegante-quarzuhr-mit-lederarmband-0312c4	-	-	-	unklar keine CJ-SKU	landeseite
+fitness-und-yogamatte-fur-anfanger-160896	1381167487562944512	16	21.98	ok	landeseite
+wasserdichte-damenuhr-mit-metallarmband-2a910e	-	-	-	unklar keine CJ-SKU	landeseite
+korrektur-gurt-fur-kinder-555136	1381192831841996800	16	9.33	ok	landeseite
+rutschfeste-fitnessmatte-fur-einsteiger-453952	1380831157100351488	11	41.85	ok	landeseite
+analoguhr-mit-edelstahlarmband-e0f2d3	-	-	-	unklar keine CJ-SKU	landeseite
+damen-hantelpaar-aus-silikon-403008	1381079989331562496	16	17.28	ok	landeseite
+griffband-fur-schlager-atmungsaktiv-5-stuck-619072	1380431137024905216	16	6.01	ok	landeseite
+armbanduhr-aus-holz-mit-chronograph-und-kalend-87818a	-	-	-	unklar keine CJ-SKU	landeseite
+elektrischer-faszienball-zur-muskelentspannung-302656	1380366362047811584	7	12.30	ok	landeseite
+mini-eismaschine-c5ae20	-	-	-	unklar keine CJ-SKU	landeseite
+luvo-schleckmatte-fur-hunde-94ebc1	-	-	-	unklar keine CJ-SKU	landeseite
+automatischer-wasserspender-3-8l-0969ba	-	-	-	unklar keine CJ-SKU	landeseite
+mobiler-entsafter-mit-460-ml-kapazitat-574bd4	-	-	-	unklar keine CJ-SKU	landeseite
+anti-schling-futternapf-fur-hunde-und-katzen-138c12	-	-	-	unklar keine CJ-SKU	landeseite
+wasserspender-fur-haustiere-45ff2e	-	-	-	unklar keine CJ-SKU	landeseite
+futterspender-mit-schussel-fur-haustiere-9d4c65	-	-	-	unklar keine CJ-SKU	landeseite
+anti-schlingnapf-fur-haustiere-c2cb1d	-	-	-	unklar keine CJ-SKU	landeseite
+tofu-katzenstreu-5b2cdc	-	-	-	unklar keine CJ-SKU	landeseite

@@ -79,7 +79,20 @@ künstliche Nägel; «Stärkenhimmel-Wandlampe» → Sternenhimmel-Projektor; «
 - Groq-Tageskontingent: 20b UND 120b auf Org 1 (Schlüssel 1+2) bei 199'6xx/200'000, Org 2 (Schlüssel 3) noch offen →
   Relaunch-Schleife alle 15 Min bis 10:00 UTC (rollendes Fenster), Ledger-idempotent.
 
-ZAHLEN_NACHHER
+## Gemessen nachher (05.10. 00:40 UTC, live je Handle `productByIdentifier` → Wortzahl ohne HTML)
+
+| | vorher | nachher |
+|---|---|---|
+| aktiv mit < 40 Wörtern | **118** | **72** (davon 38 Raucherware `nur-onlineshop`, 34 Google-Ware) |
+| aktiv mit ≥ 40 Wörtern (neu geschrieben) | 0 | **44**, 93–140 Wörter (Median 103), 43 davon mit Faktenblock `ls-produktdetails` |
+| DRAFT mit Grund-Tag | 0 | **2** (Grinder `cj-entfernt`, Pflegepuppe `variante-unklar`/`titel-falsch`) |
+| Titel korrigiert (Ledger) | – | 16 |
+
+Ledger: `dropship/_duenne_texte_ledger.tsv` (46 Zeilen + Kopf: Altwert-HTML, Neu-HTML, Quelle je Zeile; Rücklesen vor jeder
+Quittung). Titel: `dropship/_duenne_texte_titel_ledger.tsv`. Groq-Verbrauch gemessen: ~3–4k Tokens je Produkt (Prompt +
+Reasoning je Versuch), 10 Produkte ≈ 21–39k → bei 200k/Tag je Modell und Org sind ~45 Produkte pro Nacht das Maximum,
+solange Google-Feinkategorien und SEO-Prüfer dasselbe Kontingent trinken. Die Schleife (alle 15 Min bis 10:00 UTC) holt
+nach, was das rollende Fenster freigibt (00:19→00:34: 1 Produkt); der Rest läuft über den täglichen Wächter (LIMIT 40).
 
 ## Bewusst NICHT gemacht
 
@@ -90,4 +103,14 @@ ZAHLEN_NACHHER
 
 ## Offen
 
-OFFEN_LISTE
+- **72 Produkte noch dünn** — Wächter täglich LIMIT 40 (Block im Workflow-Feld), zuerst die 34 Google-Ware-Handles, dann 38
+  Raucherware. CJ-Fakten (Material/Masse) kommen ab 16:00 UTC (Punkte-Reset) in den Faktenblock.
+- **Velvet-Kissenbezug** scheitert 5× je Lauf am Eigenschafts-Tor («Standardkissen», «pflegeleicht») — Quelle zu dünn für 90 Wörter;
+  Kandidat für Hand-Text oder MIN_W 70 für Produkte mit < 6 Quellenzeilen (nicht umgesetzt, Entscheid).
+- **Spiral-Armband** (`_duenne_texte_titel_pruefen.txt`): Bild und Titel widersprechen sich, CJ-Daten fehlen bis 16:00 UTC.
+- **Mode mit nur «Default Title»** (Laufschuh «12 Grösse», Damenhemd, Bikini-Set, Leopard-Kleid u. a.): Grösse nicht wählbar —
+  Klasse `cj_varianten_wache.py`, nicht hier; Texte nennen deshalb keine Grössen.
+- **Shopify-Optionswerte als Codes** («Style 1-1 pair», «welsche Kirsche») bei Herz-Ohrringen/Breite Hosen — Klasse
+  `groessenwert_kauderwelsch.py`; der Text nennt solche Werte nicht mehr, die Facette zeigt sie weiter.
+- **Kontaktbogen-Urteile** liegen nur im Scratch (`urteile.json`); der Wächter läuft ohne Bild-Urteil (Vision-Kontingent) —
+  Texte dann aus Titel/altem Text/CJ. Wer Bild-Fakten will: Bögen neu bauen (Rezept im Skript-Kopf) und `URTEILE_FILE` setzen.
