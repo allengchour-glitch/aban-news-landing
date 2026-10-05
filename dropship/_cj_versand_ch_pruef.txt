@@ -3752,3 +3752,4 @@ wok-aus-316-edelstahl-mit-wabenstruktur-851072	1793220488118931456	16	15.92	ok	l
 japanische-keramikplatte-rechteckig-833728	1793216394138497024	16	11.12	ok	landeseite
 quadratischer-teller-aus-keramik-458560	1793162736323538944	16	17.89	ok	landeseite
 mehrzweck-geflugelschere-aus-edelstahl-729024	1793119184709226496	1	12.95	ok	landeseite
+doppelwandiger-isolierbehalter-aus-edelstahl-997248	1792852516783271936	16	28.95	ok	landeseite
