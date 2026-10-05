@@ -31,10 +31,10 @@
 "menue": 1,
 "footer": 0,
 "start": 1,
-"koll": 13,
+"koll": 14,
 "blog": 11,
 "seiten": 2,
-"total": 28
+"total": 29
 }
 },
 {
@@ -183,10 +183,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 9,
+"koll": 10,
 "blog": 5,
 "seiten": 3,
-"total": 18
+"total": 19
 }
 },
 {
@@ -782,10 +782,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 2,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 2
+"total": 3
 }
 },
 {
@@ -926,10 +926,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 1,
 "seiten": 0,
-"total": 1
+"total": 3
 }
 },
 {
@@ -981,16 +981,17 @@
 "gadgets",
 "elektronik-computer",
 "elektronik-gadgets",
-"elektronik-technik"
+"elektronik-technik",
+"wecker"
 ],
 "links": {
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 2
 }
 },
 {
@@ -1128,10 +1129,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 1,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 1
+"total": 3
 }
 },
 {
@@ -1170,14 +1171,17 @@
 "ok": true,
 "grund": "",
 "kolls": [
+"schule-buro",
 "bestseller-unter-50",
 "neu",
+"berufseinstieg-abschluss",
 "unter-chf-25",
 "kleine-geschenke-mitbringsel",
 "geschenke-unter-50-franken",
 "geschenke-unter-100-franken",
 "sub-baby-kids",
 "trends-gadgets",
+"buero-schreibwaren",
 "trend-gadgets",
 "viral-hits"
 ],
@@ -1185,10 +1189,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 1,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 1
+"total": 3
 }
 },
 {
@@ -1202,21 +1206,24 @@
 "grund": "",
 "kolls": [
 "bestseller-unter-50",
-"wohnen-dekoration",
 "unter-chf-25",
 "kleine-geschenke-mitbringsel",
 "geschenke-unter-50-franken",
 "geschenke-unter-100-franken",
-"aufbewahrung-sub"
+"fitness-sub",
+"sport-outdoor",
+"fitness-training",
+"fitness",
+"wellness-gesundheit"
 ],
 "links": {
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 3
 }
 },
 {
@@ -1521,10 +1528,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 3,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 3
+"total": 2
 }
 },
 {
@@ -1611,10 +1618,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 1,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 1
+"total": 2
 }
 },
 {
@@ -1666,9 +1673,9 @@
 "footer": 0,
 "start": 0,
 "koll": 2,
-"blog": 0,
+"blog": 3,
 "seiten": 0,
-"total": 2
+"total": 5
 }
 },
 {
@@ -1778,7 +1785,8 @@
 "geschenke-unter-50-franken",
 "geschenke-unter-100-franken",
 "sommer-2026",
-"sommer"
+"sommer",
+"sub-kleider"
 ],
 "links": {
 "menue": 0,

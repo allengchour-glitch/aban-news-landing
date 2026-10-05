@@ -4299,3 +4299,5 @@ diamantbesetztes-uhren-set-0961cb	475DDF0C-A9E7-4CE9-B795-09AB2A1223A0	7	9.11	ok
 atmospharische-damenuhr-geschenkset-7b8ed1	6B175998-0BD3-48D1-AFEA-E8566760319D	7	10.44	ok	landeseite
 stahlband-quarzuhr-fur-sport-und-business-f06ad7	177D4701-EAE4-4050-9747-1F4AE2FDB9C0	7	8.10	ok	landeseite
 herren-mechanikuhr-mit-milanaise-armband-b2d61d	120E3C50-5166-4908-91C3-BE27E5AE17C6	7	8.57	ok	landeseite
+wasserdichte-partneruhr-aus-edelstahl-cd1a14	0843A7EE-DBA2-4F78-878B-7BF85EDAB904	7	6.18	ok	landeseite
+gaming-trigger-griff-fur-smartphones-c1a081	C86451EF-D400-46B6-B74F-24DA175E0102	16	5.77	ok	landeseite
