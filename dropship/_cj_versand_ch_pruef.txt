@@ -4420,3 +4420,5 @@ zwei-saftpressen-fur-zitrusfruchte-2ee627	1BA72FDA-CC20-4B39-BFC9-8146BF9D0BCC	3
 damenuhr-mit-diamant-cca13a	95EBC899-1A96-4982-B1DA-CF750E51EDD0	7	6.18	ok	landeseite
 spiegel-serviertablett-aus-metall-087829	52AF9EEC-37B7-4567-BA89-F78BBF3E4B82	16	27.01	ok	landeseite
 messer-und-schneidebretthalter-aus-edelstahl-41c71a	4044BCFB-2688-476E-806C-B77688DA98FB	16	11.10	ok	landeseite
+damen-quarzuhr-af91f2	1B7B3198-3AF8-4CCA-BD39-5F8FEA0D64DC	7	6.18	ok	landeseite
+holz-armbanduhr-mit-quarzwerk-1905f7	276CFCE8-8B7D-41E2-AB72-6F217AE04893	7	8.57	ok	landeseite
