@@ -6,6 +6,8 @@ Betreiber: «keyword mehr machen». Das Semrush-Konto ist leer, deshalb gibt es 
 ## Vorgehen (gemessen)
 1. Gelesen wurden 549 Kollektionen. Davon sind 369 im Onlinestore veröffentlicht und haben mindestens 8 Produkte. 270 davon stehen in keinem gesperrten Ledger (`_neue_kollektionen(_2)`, `_platz41_heben`, `_draft_ersatz`, `_seite2_heben`, `_nacharbeit_runde2`, `_seo_kollektion_ledger`, `seo_titel_geprueft`, `_kannibalisierung`).
 2. Für 109 dieser Kollektionen sind die Produkte geladen (bis 300 je Kollektion, kaufbar = ACTIVE + Variante availableForSale). Jeder gewählte Begriff hat **mindestens 8 kaufbare Treffer per Titel-Regex** (z. B. «ballerinas schwarz»: 15 mit Option Schwarz, «bikini»: 39, «jumpsuit» + Farbe Schwarz: 33, «Katzen-Trinkbrunnen»: 13).
+
+   ⚠️ **Berichtigt 05.10. ~10:45 UTC (Prüferbefund guertel):** Für «gürtel damen leder» stimmte das nicht — nur 2 kaufbare Titel tragen «Damen» UND «Leder». Die Zählung lief über die Kollektion, deren Regel (`TAG = Gürtel`) 17 Nicht-Gürtel enthielt. Begriff auf «gürtel damen» zurückgenommen, Regel bereinigt (Abschnitt «Nachbesserung guertel»).
 3. Pro Kollektion wurde der stärkste Begriff gewählt, der noch nicht bedient ist. Reihenfolge: Semrush-Volumen ≥ 50, dann K, dann suggest. Den Begriff zeigt Shopify noch nicht im SEO-Titel und nicht in der H1 (Prüfung über die Tokens).
 4. Kannibalisierung geprüft gegen:
    - `position_tracking_ziele.tsv` und die Ranking-CSVs,
@@ -19,7 +21,7 @@ Betreiber: «keyword mehr machen». Das Semrush-Konto ist leer, deshalb gibt es 
 ## Geschrieben (alt → neu SEO-Titel; Ledger `_keyword_kollektionen_2026-10-05.tsv` mit Altwerten für Titel, Meta und das ganze descriptionHtml)
 | Handle | Begriff | Beleg | Long-Tail im Text | SEO-Titel alt → neu |
 |---|---|---|---|---|
-| guertel | gürtel damen leder | K | gürtel kaufen damen, gürtel herren leder | Gürtel – Echtleder & Ratschen für Sie & Ihn | LuxeStyle CH → **Gürtel Damen Leder & Gürtel für Herren | LuxeStyle** |
+| guertel | ~~gürtel damen leder~~ → **gürtel damen** | ~~K~~ → Semrush 480/Mt, KD 11 | gürtel kaufen damen, gürtel herren | Gürtel – Echtleder & Ratschen für Sie & Ihn | LuxeStyle CH → ~~Gürtel Damen Leder & Gürtel für Herren~~ → **Gürtel Damen: Leder, Ketten & Punk, auch Herren | LuxeStyle** (Nachbesserung guertel) |
 | sub-roecke | rock damen lang | K | rock damen midi, rock damen elegant | Röcke – Maxiröcke & Sommerröcke | LuxeStyle → **Rock Damen lang & midi: Maxiröcke & Faltenröcke | LuxeStyle** |
 | jeans-denim | jeans damen high waist | suggest | jeans damen baggy, jeans kaufen damen | Jeans & Denim kaufen | LuxeStyle Schweiz → **Jeans Damen High Waist, Baggy & Bootcut | LuxeStyle** |
 | sub-bademode | bikini kaufen schweiz | suggest | bikini damen schweiz | Bademode – Bikinis & Badeanzüge | LuxeStyle Schweiz → **Bikini kaufen Schweiz: Bikini-Sets & Badeanzüge | LuxeStyle** |
@@ -102,6 +104,32 @@ Bei allen ist die H1 unverändert. Die Altwerte stehen in 9 neuen Ledger-Zeilen 
 
 **Lehre.** Die Kannibalisierungs-Prüfung muss jedes Wort des Titels prüfen und die Wortfolge ignorieren. Sie muss den neuesten Stand des Ledgers lesen, also auch zurückgenommene Zeilen.
 
+## Nachbesserung guertel nach Prüferbefund (05.10. ~10:45 UTC) — Komposita-Fehltreffer in der Kollektionsregel
+**Befund (bestätigt).** Die Regel der Kollektion ist `TAG = Gürtel`, und sie trifft auch den Tag `Gurtel`. Diesen Tag setzte `automation/cat_tags.mjs` mit `/\bgurtel\b|\bbelt\b/` auf Titel und englischen Namen, also auf jedes «… mit Gürtel». Gemessen: 44 aktive Produkte, davon 17 keine Gürtel. Für «gürtel damen leder» gab es nur 2 kaufbare Titel mit «Damen» und «Leder». Ausserdem nannten erster Satz und Meta «Vollnarbenleder-Gürtel mit Dornschliesse». Die kaufbaren Vollnarbenleder-Gürtel haben laut Titel aber eine Automatikschliesse oder keine Angabe.
+
+**Behoben:**
+1. **Regel bereinigt.** Bei 17 aktiven Produkten ist der Tag `Gurtel` per `tagsRemove` entfernt, in 2 Bündeln. Vorher lief ein Trockenlauf mit Ausgabe, und die Sperrliste wurde vor jedem Bündel neu gelesen. Betroffen:
+   - Stiefel
+   - 2 Wollmäntel, Midi-Rock, V-Neck-Kleid, Maxi-Kleid «Aria», Jumpsuit, Langarmbluse, Baskenmütze
+   - Strandtasche, Brillenetui, Akku-Gürtel (Elektronik)
+   - 5 Kostüm-Teile (Lederhose ×2, Weihnachtsmann/Pirat, Set Mittelalter, Gürtel mit Felltasche mit Tag `kostuem-accessoire`)
+
+   Der Ledger `_guertel_regel_bereinigt_2026-10-05.tsv` hat alle Alt-Tags je Produkt, die Änderung ist also mit `tagsAdd` umkehrbar. Der Tag `guertel` (umlautfreie Suche) blieb.
+
+   Danach: 43 Produkte in der Kollektion, davon 27 aktiv und alle 27 echte Gürtel. Der Rest sind Entwürfe. Andere Kollektionsregeln nutzen den Tag nicht (alle 549 Regeln geprüft).
+2. **Quelle gestopft.** `cat_tags.mjs` entscheidet «Gurtel» jetzt am Titel-Kopf, also am Text vor « mit »/« und »/« with »/« and », wie bei der Beleuchtung. Dazu kommt ein Ausschluss (etui, tasche, bag, akku, stiefel, boots, lederhose, weihnachtsmann, pirat, mütze, kostüm). 25 Kanarienvögel aus echten Titeln (10 ja, 15 nein), `node automation/cat_tags.mjs --test` → OK. Die alte Regel hätte «Damen Wollmantel mit Gürtel» getroffen. `cj_sort.mjs` hätte die entfernten Tags sonst wieder gesetzt.
+3. **Begriff zurückgenommen:** «gürtel damen leder» → **«gürtel damen»**. Belege: Semrush CH 480/Mt, KD 11 (`kategorie_suchvolumen_ch_produktarten_2026-10-02.csv`). Nach der Bereinigung gibt es 8 kaufbare Titel mit «Damen». Kein anderes Ledger oder Ziel führt den Begriff. «ledergürtel» blieb unberührt: Die Kollektion `lederwaren` hat die Regel «Titel enthält Ledergürtel».
+4. **Text korrigiert, ohne Dornschliesse-Fehler.** Jedes Merkmal steht im Titel eines kaufbaren Gürtels:
+   - Echtleder, Wildleder und PU **mit Dornschliesse**
+   - Vollnarbenleder mit Automatikschliesse oder Kreuzmuster
+   - Ketten, Punk, Strass, Türkis- und Stern-Schnalle
+   - Herren: ein elastischer Gürtel mit Automatikschliesse und ein Utility-Gürtel
+
+   Titel 59 Zeichen, Meta 150, 96 Wörter. Titel und Meta gingen zusammen. Ersetzt wurde nur der erste Absatz, der Trust-Absatz blieb. Am Admin zurückgelesen: ok. Die neue Ledger-Zeile (Status `korrektur ok`) hat als Altwert die Fassung von 09:51Z. Der Ursprungs-Altwert steht weiter in der Zeile 09:51Z.
+5. **Live (WebFetch ~10:46 UTC):** Der `<title>` zeigt «Gürtel Damen: Leder, Ketten & Punk, auch Herren | LuxeStyle», ebenso der neue erste Satz. Die ersten 18 Karten sind alle Gürtel. Wollmantel, Kleid, Rock, Jumpsuit, Bluse, Stiefel, Lederhose, Weihnachtsmann, Brillenetui, Akku-Gürtel, Strandtasche und Baskenmütze: 0 Treffer.
+
+**Lehre.** «≥ 8 Treffer» muss am Titel des Produkts gezählt werden, nicht an der Kollektion. Die Kollektion kann selbst Fehltreffer enthalten. Kollektionsregeln auf Tags aus Titel-Regex erben jede Komposita-Falle des Taggers.
+
 ## Live geprüft (WebFetch, 09:5x UTC)
 Geprüft wurden guertel, sub-bademode, kinderschuhe, haustier-futter-naepfe, jeans-denim und haengematten: **6/6** zeigen den neuen `<title>` und den neuen ersten Satz.
 - Die H1 ist unverändert.
@@ -141,6 +169,7 @@ Geprüft wurden guertel, sub-bademode, kinderschuhe, haustier-futter-naepfe, jea
   - In caps-huete stehen Kostüm-Hüte.
   - In handy-huellen stehen Staubschutzhüllen für Möbel und Küchengeräte.
   - auto-halterungen zeigt bei 231 kaufbaren Produkten keinen Treffer für Handy-Halter oder Magnet.
+  - guertel (Prüferbefund): Die Regel `TAG = Gürtel` hatte 17 Nicht-Gürtel unter 44 aktiven Produkten (Komposita «… mit Gürtel» über `cat_tags.mjs`). **Behoben**, siehe «Nachbesserung guertel». Offen bleiben 16 Entwürfe mit dem Tag, darunter Werkzeuggürtel, Leistenbruchgürtel und Verschluss-Gürtel. Sie sind nicht sichtbar und wurden nicht angefasst. `position_tracking_ziele.tsv` führt für /collections/guertel noch «gürtel damen leder». Die Datei gehört zum Semrush-Positions-Projekt und ist nicht geändert.
   - fitness-geraete zeigt in der Liste weiterhin «Hantelbänke, Heimtrainer, Vibrationsplatten». Das ist nicht gegen den Bestand geprüft.
 - Der Trust-Absatz mit «–10 % mit Code WELCOME10» blieb, wo er separat stand (guertel, sub-ohrringe, wimpern-lashes u. a.). Ob der Code noch aktiv ist, ist nicht gemessen.
 - Das Schreib-Skript lag nur im Scratchpad und ist nicht im Repo. Zurück geht es über den Ledger: Die Spalten alt_seo_titel, alt_meta und alt_desc_html sind vollständig. Ein Rückweg-Skript gibt es noch nicht.
