@@ -4018,3 +4018,5 @@ damen-high-heel-sandalette-capri-offene-spitze	2606120338101619000	16	14.37	ok	l
 damen-sommer-sandalen-lido-geschlossene-spitze	2606120601091616800	16	9.81	ok	landeseite
 damen-beach-slides-mare-slip-on	2606130822201636300	16	8.87	ok	landeseite
 damen-komfort-sandalen-estate-elastik-riemen	2606120821561630400	16	11.37	ok	landeseite
+herren-high-top-sneaker-brooklyn-mesh-atmungsaktiv	2606110809431621300	16	14.13	ok	landeseite
+herren-leder-sandalen-adriano-vollnarbenleder	2606100911071625200	16	9.20	ok	landeseite
