@@ -3575,3 +3575,5 @@ weihnachts-style-bequem-damenpullover-621800	2512310310391622000	16	9.20	ok	land
 weihnachts-muster-sweatshirt-634700	2512301957001635000	16	11.00	ok	landeseite
 weihnachts-hoodie-mit-3d-print-606400	2512300859311608700	16	11.00	ok	landeseite
 weihnachts-katze-crew-neck-pullover-damen-600500	2512300846461600800	16	9.61	ok	landeseite
+damen-weihnachtsdruck-flanell-hoodie-608800	2512300620531609100	16	10.42	ok	landeseite
+damen-weihnachts-hoodie-628700	2512300541451629000	16	10.83	ok	landeseite

@@ -66,9 +66,29 @@ Trockenlauf über die API (23:40 UTC), Zahlen vor dem Schreiben:
 | sub-aroma-diffuser | 284 | 283 | 21 | 20 |
 | buro-home-office | 80 | ~120 | 29 | ~69 (nach Laptop-Korrektur; API-Lauf zeigte 295 mit Rucksäcken) |
 
-## Scharf (SCHARF=1, 23:5x UTC) — Nachher
+## Scharf (SCHARF=1, 23:51–00:25 UTC) — Nachher
 
-NACHHER_PLATZHALTER
+Erster Versuch einzeln (10 Mutationen je Anfrage): **210 Tags in 5 min**, Eimer gemessen 351/2000 bei restoreRate 100 —
+vier andere Schreiber liefen (cj_perpetual, cj_versand_ch_sichtbar, parallele Agenten). 11'000 Tags hätten ~4 h gebraucht,
+der Lauf wäre im Timeout gestorben. Abgebrochen, Bulk-Weg aus `preis_senken.py` eingebaut (stagedUpload JSONL →
+`bulkOperationRunMutation tagsAdd`): Büro 133 Tags in 27 s, Haustier 3'306 in 289 s, 0 Fehler überall.
+
+Nachmessung `--nachmessen` (00:27 UTC; Regel live gelesen, `productsCount(collection_id … status:active)` = `productsCount(tag:kat-…)`):
+
+| Kollektion | vorher aktiv | nachher aktiv | raus | neu | Typen vorher → nachher | Regel |
+|---|---:|---:|---:|---:|---|---|
+| Kinder & Baby | 3'716 | **3'450** | 350 | 85 | 39 → 37 (Haustierbedarf 291 → 0; Rest sind Kinder-Artikel mit anderem Typ) | TAG kat-kinder-baby ✅ |
+| Haustierwelt | 3'254 | **3'306** | 25 | 77 | 10 → 13 (Kostüme 5 → 0, Damenmode 3 → 0, Schmuck 1 → 0) | TAG kat-haustier ✅ |
+| Hunde | 419 | **1'689** | 2 | 1'272 | 5 → 11 (Haustierbedarf 1'634) | TAG kat-hunde ✅ |
+| Katzen | 215 | **740** | 8 | 533 | 7 → 8 (Kostüme 3 → 0, Schmuck 1 → 0) | TAG kat-katzen ✅ |
+| Handy-Zubehör | 621 | **650** | 115 | 144 | 19 → 11 (Nageldesign/Gaming-Controller/Sport raus) | TAG kat-handy ✅ |
+| Ladegeräte & Powerbanks | 697 | **585** | 131 | 19 | 14 → 5 | TAG kat-laden ✅ |
+| Aroma & Diffuser | 284 | **281** | 22 | 19 | 20 → 16 (Werkzeug/Partydeko/Uhren raus; Beauty-Tools 152 bleibt, siehe unten) | TAG kat-aroma ✅ |
+| Büro & Home Office | 80 | **133** | 29 | 82 | 13 → 13 (Damenmode 5 → 0, Auto-Zubehör 4 → 0) | TAG kat-buero ✅ |
+
+`filtergrenze_wache.py` 00:28 UTC: «FILTERGRENZE: ok (alle Menü-Kollektionen < 4800 aktiv)». Tag-Ledger: 10'824 Zeilen (alle tagsAdd,
+Status bulk:COMPLETED; tagsRemove gab es noch keines, weil die Tags neu sind — ab morgen entfernt der Tageslauf `kat-…` von Ware,
+die nicht mehr passt). «Kinder & Baby» steht im Vorher-Ledger zweimal (3'715 + 3'715: abgebrochener Einzel-Lauf + Bulk-Lauf) — harmlos.
 
 Ledger: `dropship/_kategorie_rein_2_vorher.tsv` (alle Mitglieder vor der Umstellung: handle, id, Typ, Titel),
 `dropship/_kategorie_rein_2_tags.tsv` (jede Tag-Änderung: Zeit, handle, tagsAdd/tagsRemove, Tag, id),
