@@ -20,6 +20,8 @@ import json, os, re, struct, subprocess, time, urllib.request
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
 from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+from bildtausch_sperre import gesperrte_ids as _bs_ids    # 05.10.2026: Google-Bildtausch-Sperre (Ping-Pong-Schutz)
+SPERRE_ID = _bs_ids()
 
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -85,7 +87,7 @@ Q = '''query($c:String){ products(first:50, after:$c, query:"status:ACTIVE tag:b
   pageInfo{hasNextPage endCursor}
   nodes{ id title variants(first:1){nodes{sku}} } }}'''
 
-cur = None; getan = 0; fertig = False
+cur = None; getan = 0; fertig = False; gesperrt = 0
 while not fertig:
     d = sgql(Q, {"c": cur})
     pg = (d.get("data") or {}).get("products")
@@ -94,6 +96,9 @@ while not fertig:
         if getan >= CAP: fertig = True; break
         pid = p["id"].split("/")[-1]
         if pid in done: continue
+        # 05.10.2026: Hauptbild vom Google-Bildtausch bewusst gesetzt → nichts nachladen/umsortieren (bildtausch_sperre.py).
+        if p["id"] in SPERRE_ID:
+            gesperrt += 1; print(f"{pid} Bildtausch-Sperre — nicht angefasst", flush=True); continue
         sku = (p["variants"]["nodes"][0]["sku"] or "").strip()
         base = sku[3:] if sku.startswith("CJ-") else sku
         r = {}
@@ -157,4 +162,4 @@ while not fertig:
         print(f"{pid} OK {best[1][0]}x{best[1][1]} <- {p['title'][:45]}", flush=True)
     if fertig or not pg["pageInfo"]["hasNextPage"]: break
     cur = pg["pageInfo"]["endCursor"]
-print(f"FERTIG: {getan} bearbeitet")
+print(f"FERTIG: {getan} bearbeitet, {gesperrt} Bildtausch-Sperre")

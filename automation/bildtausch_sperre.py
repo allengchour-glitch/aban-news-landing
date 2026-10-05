@@ -58,6 +58,32 @@ def letzte_zeilen():
     return out
 
 
+def alle_zeilen():
+    """handle → alle Ledger-Zeilen in Reihenfolge (für die Ursprungs-Tauschzeile hinter einer nachgesetzt-Kette)."""
+    out = {}
+    if not os.path.exists(LEDGER):
+        _warnen(LEDGER)
+        return out
+    for l in open(LEDGER, encoding="utf-8", errors="ignore"):
+        f = l.rstrip("\n").split("\t")
+        if len(f) >= 3:
+            out.setdefault(f[0], []).append(f)
+    return out
+
+
+URSPRUNG = ("tausch", "tausch-g", "tausch-q")
+
+
+def urspruenglicher_tausch(zeilen):
+    """Letzte ECHTE Tausch-Zeile (tausch/tausch-g/tausch-q) einer Handle-Zeilenliste; None, wenn keine.
+    05.10.2026: nach zweimaligem Nachsetzen stand in der Notiz «(nachgesetzt vom 2026-10-05)» — Art und Datum des
+    Ursprungs waren weg, die Bilanz zählte 81 Tausche als «nach dem Scan, ungemessen»."""
+    for f in reversed(zeilen):
+        if f[2] in URSPRUNG:
+            return f
+    return None
+
+
 def gesperrte_handles():
     return {h for h, f in letzte_zeilen().items() if f[2] in GETAUSCHT}
 

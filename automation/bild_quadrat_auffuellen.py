@@ -27,6 +27,9 @@ Das Originalbild bleibt als weiteres Medium erhalten; das neue kommt an Position
 ENV: CAP (Standard 40) · DRY=1 · NUR=<Produkt-ID> für einen Einzelfall
 """
 import io, json, os, re, subprocess, time
+import sys as _sys; _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from bildtausch_sperre import gesperrte_ids as _bs_ids    # 05.10.2026: Google-Bildtausch-Sperre (Ping-Pong-Schutz)
+SPERRE_ID = _bs_ids()
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -125,7 +128,7 @@ def main():
     done = set()
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0] for l in open(LEDGER)}
-    cur, getan, uebersprungen = None, 0, 0
+    cur, getan, uebersprungen, gesperrt = None, 0, 0, 0
     while getan < CAP:
         d = sgql(Q, {"c": cur})
         pg = (d.get("data") or {}).get("products")
@@ -136,6 +139,12 @@ def main():
                 break
             pid = p["id"].split("/")[-1]
             if pid in done or (NUR and pid != NUR):
+                continue
+            # 05.10.2026: Hauptbild vom Google-Bildtausch bewusst gesetzt → hier nicht umsortieren/auffüllen (Ping-Pong-
+            # Schutz, siehe bildtausch_sperre.py). Tag bleibt, Produkt bleibt ungequittet, damit ein Rückweg es freigibt.
+            if p["id"] in SPERRE_ID:
+                gesperrt += 1
+                print(f"{pid} Bildtausch-Sperre — nicht angefasst  {p['title'][:40]}", flush=True)
                 continue
             bilder = [m for m in p["media"]["nodes"] if m.get("image")]
             if not bilder:
@@ -221,7 +230,7 @@ def main():
         if not pg["pageInfo"]["hasNextPage"]:
             break
         cur = pg["pageInfo"]["endCursor"]
-    print(f"FERTIG: {getan} quadratisch aufgefuellt, {uebersprungen} nicht heilbar (auch laengere Kante < 500)"
+    print(f"FERTIG: {getan} quadratisch aufgefuellt, {uebersprungen} nicht heilbar (auch laengere Kante < 500), {gesperrt} Bildtausch-Sperre"
           + (" [DRY]" if DRY else ""))
 
 

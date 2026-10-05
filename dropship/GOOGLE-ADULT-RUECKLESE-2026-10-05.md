@@ -74,3 +74,38 @@ Satzanfang nur an der Fundstelle gross), 18/18 Kanarienvögel, Diff-Prüfung 175
 - Kein Neu-Anstupsen; keine Kundenmails/Erstattungen; CJ nicht berührt.
 - `fixer_keepalive.sh` unverändert (Wächter-Block an den Hauptlauf): Rücklese + Bilanz täglich, siehe Hauptbericht.
 - Google-Vollscan nicht ausgelöst (läuft täglich; Scan 22:02 ist die letzte Wahrheit).
+
+## 6. NACHBESSERUNG 07:05–07:30 UTC — Prüfer «Sperre in der Produktion wirkungslos» (bestätigt, behoben)
+
+**Befund gemessen:** `cd /tmp && python3 -c 'import bildtausch_sperre as b; print(b.LEDGER, len(b.gesperrte_handles()))'` →
+`/dropship/_google_bild_tausch.tsv 0`. Der Aufseher startet `python3 /tmp/textbild_fix.py` (Spiegelkopie, `engine_keepalive.sh` 3b),
+die importiert `/tmp/bildtausch_sperre.py`, dessen `REPO = dirname(dirname(__file__))` = «/». Folge: Lauf 04:43 «0 Bildtausch-Sperre,
+92 umgestellt» → Rücklese 07:13 (SCHARF): **85 abweichend** (81 beim Prüfer um 06:11, dazu 2 nicht in Google, 2 nicht aktiv).
+**Dieselbe Klasse** bei `google_sperrliste.py` (`gfeed_restore`/`google_sperrtags_durchsetzen` laufen ebenfalls aus /tmp): Merchant-Ledger
+aus /tmp **0 statt 17** gesperrte IDs — still. Und `cj_takt.GLOBAL_DATEI` (`/dropship/_cj_vorrang_global`, Datei derzeit nicht vorhanden).
+
+**Getan:**
+- `bildtausch_sperre.py`, `google_sperrliste.py`, `cj_takt.py`: Repo-Wurzel über `_repo()` — Kandidaten `$REPO`, Lage der Datei,
+  Arbeitsverzeichnis (der Aufseher läuft im Repo, `/proc/<pid>/cwd` gemessen), fester Pfad; gültig nur mit `dropship/` UND `automation/`.
+  Fehlt das Ledger trotzdem → WARNUNG auf stderr (einmal je Datei), nie mehr still leer. Proben: aus /tmp **295/295**, aus `/` mit
+  `REPO=/nirgends` **295**, Merchant-Ledger aus /tmp **17**, Warnpfad geprüft.
+- Sperre zusätzlich in `bild_klein_fix.py` (lief 04:43–04:56 im selben Fenster, Aufseher-/tmp-Schleife), `bild_quadrat_auffuellen.py`,
+  `bild_gross_nachladen.py` (beide reorder bei Tag `bild-zu-klein`): Produkt-ID in `_google_bild_tausch_ids.tsv` → nicht angefasst,
+  Zähler «Bildtausch-Sperre» in der FERTIG-Zeile. Kopf-Proben aller drei: SPERRE_ID = 295.
+- Alle acht Dateien nach /tmp gespiegelt (`cmp` Repo = /tmp für bildtausch_sperre, google_sperrliste, cj_takt, bild_klein_fix,
+  bild_quadrat_auffuellen, bild_gross_nachladen, textbild_fix, hauptbild_ohne_text).
+- `SCHARF=1 google_bild_tausch.py --ruecklesen` 07:13: **geprueft 295 · ok 208 · abweichend 85 · nachgesetzt 83 · nicht_aktiv 2 ·
+  nicht_in_google 2 · bild_fehlt 0 · fehler 0**. Trocken danach: **geprueft 295 · ok 291 · abweichend 2 (beide nicht im Google-Kanal:
+  latex-gesichtsmaske, rock-field-cs-spike) · nicht_aktiv 2 → 0 Abweichungen im Google-Kanal.** Stichprobe Admin-API 5/5 live = soll.
+- Ende-zu-Ende wie der Aufseher: `QUERY=<3 nachgesetzte Handles> python3 /tmp/textbild_fix.py` → «2 gescannt, **2 Bildtausch-Sperre**,
+  0 umgestellt», Quittung `bildtausch-sperre`, media[0] danach unverändert (wurstmaschine 70624198918529, winter-freizeitstiefel 70714356138369).
+- Bilanz-Falle: 81 Doppel-`nachgesetzt`-Zeilen trugen «(nachgesetzt vom 2026-10-05)» → `google_bildtausch_bilanz` zählte **113** statt
+  **36** «nach dem Scan ungemessen». Jetzt holt `bs.urspruenglicher_tausch()` Art+Datum der letzten echten Tausch-Zeile; die Rücklese-Notiz
+  nennt künftig immer den Ursprung. Bilanz nachher: tausch 78/103 (75 %) · tausch-g 113/156 (72 %) · uneinig 6/22 · behalten 21/44 · 36 ungemessen.
+
+**Lehre:** Ein Modul, das der Aufseher als /tmp-Kopie startet oder das eine /tmp-Kopie importiert, darf den Repo-Pfad nie allein aus
+`__file__` ableiten — und ein fehlendes Ledger darf nie eine stille leere Sperre ergeben. Der Wächterblock misst darum täglich «Sperre aus /tmp = N».
+
+**Nicht von mir committet:** Commit 074b0a811 (07:12, Session «Semrush») hat `google_sperrliste.py` und `cj_takt.py` mitgenommen;
+`bildtausch_sperre.py`, `google_bild_tausch.py`, `google_bildtausch_bilanz.py`, `bild_klein_fix.py`, `bild_quadrat_auffuellen.py`,
+`bild_gross_nachladen.py` und dieser Abschnitt sind uncommitted (Auftrag: nicht committen).

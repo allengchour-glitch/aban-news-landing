@@ -24,13 +24,15 @@ def main():
     for k in KLASSEN:
         blockiert |= set(stand["handles"].get(k) or [])
     letzte = bs.letzte_zeilen()
-    # «nachgesetzt» (Rücklese 05.10.) trägt die ursprüngliche Art und das Datum in Spalte 6: «… (tausch-g vom 2026-10-03)»
-    import re
+    alle = bs.alle_zeilen()
+    # «nachgesetzt» (Rücklese) ist kein neuer Tausch: Art und Datum kommen von der letzten ECHTEN Tausch-Zeile des Handles.
+    # 05.10.: die Notiz-Regex «(tausch-g vom …)» scheiterte an Ketten («(nachgesetzt vom 2026-10-05)», 81 Zeilen) → 113
+    # statt 32 Tausche galten als «nach dem Scan, ungemessen».
     for h, f in letzte.items():
-        if f[2] == "nachgesetzt" and len(f) > 5:
-            m = re.search(r"\((tausch[^ ]*) vom (\d{4}-\d\d-\d\d)\)", f[5])
-            if m:
-                f[2], f[1] = m.group(1), m.group(2)
+        if f[2] == "nachgesetzt":
+            u = bs.urspruenglicher_tausch(alle.get(h, []))
+            if u:
+                f[2], f[1] = u[2], u[1]
     teile = []
     for art in ARTEN:
         hs = [h for h, f in letzte.items() if f[2] == art and f[1] < scan]      # nur Tausche vor dem Scan-Tag
