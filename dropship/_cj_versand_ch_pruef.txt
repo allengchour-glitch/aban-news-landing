@@ -4045,3 +4045,4 @@ herren-leinen-hose-lino-straight-leg	2606131438051600700	16	7.99	ok	landeseite
 herren-cargo-hose-trail-multi-pocket-outdoor	2606140601531615600	16	10.96	ok	landeseite
 herren-strickpullover-nico-half-neck-baumwolle	2606130935151605600	16	11.00	ok	landeseite
 damen-bikini-maui-neckholder-floral	2606130542531629200	16	6.77	ok	landeseite
+damen-bikini-sunset-front-zip-farbverlauf	2606130521001623300	16	7.03	ok	landeseite
