@@ -4395,3 +4395,9 @@ automatischer-futterspender-wlan-806a87	22130462-A33B-4A0B-B686-D49CE061C63E	3	4
 anti-schlingnapf-fur-hunde-e2a976	5179970D-0176-45C8-82A7-EF91DCFE3347	16	8.25	ok	landeseite
 automatischer-futterautomat-fur-haustiere-0bbe57	1EC1A931-EA9C-4E27-99E9-E643BCF24A42	7	33.41	ok	landeseite
 fruchtschneider-mit-basis-540ad4	C57ECD2C-8012-4DDC-8CAC-F61570839AA7	16	10.29	ok	landeseite
+mikrowellen-eierkocher-6b380a	C969E057-0379-4E30-9A6F-25E09FEDFA1D	16	13.52	ok	landeseite
+silikon-kochschaufel-mit-holzgriff-9e2ada	09581342-0749-4603-B393-906D28B3E843	16	5.89	ok	landeseite
+elektrischer-warmwasserhahn-mit-sofortheizung-8f92cc	2020CA47-868F-47E4-BF97-C5B3153BCCF9	16	17.28	ok	landeseite
+futterautomat-fur-haustiere-71c2cf	1560BCC7-6C99-4C50-B00E-35B6B0C05D50	7	44.34	ok	landeseite
+edelstahl-olfilter-fur-die-kuche-a64176	78066907-C5BE-451E-BA29-6EF3727E0F1D	16	11.00	ok	landeseite
+camping-grillzange-mit-wender-89da17	04853063-591D-4DE3-96EC-4ABDAB6A6936	16	9.07	ok	landeseite
