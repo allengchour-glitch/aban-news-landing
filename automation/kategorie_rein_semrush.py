@@ -388,7 +388,7 @@ CFG.update({
              "Eignung für Mikrowelle oder Geschirrspüler stehen auf jeder Produktseite. Edelstahl gehört nicht in die Mikrowelle; "
              "wer Suppe oder Saucen mitnimmt, achtet auf einen Deckel mit Dichtung.</p>"),
     "winterschuhe": dict(
-        tag="kat-winterschuhe", suche=["winterschuhe", "winterstiefel", "schneestiefel", "snow boots", "winter boots"],
+        tag="kat-winterschuhe", suche=["winterschuhe", "winterstiefel", "schneestiefel", "snow boots", "winter boots", "gefüttert", "snowboots"],
         kw="winterschuhe damen", volumen=3600, kd=19,
         echt=R(r"winterschuh|winterstiefel|schneestiefel|snow.?boots?|winter.?boots?|gef(ü|ue)tterte? (stiefel|boots|sneaker|stiefelette)|"
                r"warm gef(ü|ue)ttert|pl(ü|ue)sch-?gef(ü|ue)ttert|fellgef(ü|ue)ttert|thermo-?winterschuh"),
