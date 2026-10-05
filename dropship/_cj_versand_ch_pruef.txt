@@ -4385,3 +4385,6 @@ luvo-schleckmatte-fur-hunde-94ebc1	02CDBB2C-9D23-4EF2-A193-6CD06F2EAF98	16	12.41
 automatischer-wasserspender-3-8l-0969ba	0F40346A-3C81-43D4-AF00-BB406AE834B9	16	11.00	ok	landeseite
 mobiler-entsafter-mit-460-ml-kapazitat-574bd4	7040285C-A26D-48D7-85BF-92E6E2C663F3	7	8.25	ok	landeseite
 anti-schling-futternapf-fur-hunde-und-katzen-138c12	4647819F-5F5B-4612-A73D-DA199E2FC60A	16	12.93	ok	landeseite
+wasserspender-fur-haustiere-45ff2e	000AA5F1-1B5C-4F76-B53D-0B4539A1EE56	16	11.86	ok	landeseite
+futterspender-mit-schussel-fur-haustiere-9d4c65	15A4354E-A101-46F6-8482-83F3A3718618	16	11.00	ok	landeseite
+anti-schlingnapf-fur-haustiere-c2cb1d	166BB143-1C46-4989-B348-8D9BC79150EC	16	11.11	ok	landeseite
