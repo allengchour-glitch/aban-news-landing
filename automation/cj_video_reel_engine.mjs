@@ -80,7 +80,11 @@ const STIMMUNG = {
 // epische Orchester-Stücke. Blind bewertet (Gemini, Orchester/episch/Klang echt 0–10): adventure-uplift 10/10/10,
 // epic-anime 9/9/9, orchestra 9/9/8. Durchgefallen: anime-battle (Metal), celtic-rock, fashion-elegant (Synth), celtic-epic («Polka»).
 // Die alten Pools bleiben oben stehen (Rückweg), gelten aber nicht, solange EPISCH_NUR gilt.
-const EPISCH = ['luxe-adventure-uplift.wav', 'luxe-epic-anime.wav', 'luxe-orchestra.wav'];
+// 05.10.2026 Betreiber «immer das selbe musik passt nicht mehr» (3 Stücke rotierten: 22/20/18 der letzten 60 Reels) →
+// 6 neue epische Stücke (Google Lyria 3.5 über die Gemini-API, blind episch/Klang ≥ 8, kein Gesang) dazu; Sperre der
+// letzten 5 statt 3 Reels. Quelle/Masse: automation/music/CREDITS.txt (LIZENZIERT).
+const EPISCH = ['luxe-adventure-uplift.wav', 'luxe-epic-anime.wav', 'luxe-orchestra.wav', 'luxe-epic-trailer.wav', 'luxe-epic-hybrid.wav',
+  'luxe-epic-hero.wav', 'luxe-epic-fantasy.wav', 'luxe-epic-winter.wav', 'luxe-epic-elegant.wav'];
 const EPISCH_NUR = true;
 if (EPISCH_NUR) { for (const k of Object.keys(STIMMUNG)) STIMMUNG[k] = [...EPISCH]; MUSIC.splice(0, MUSIC.length, ...EPISCH); }
 // 26.09.2026: Sperrliste automation/music/_gesperrt.txt (Betreiber mag luxe-lounge-sax nicht). Gilt fuer JEDE Wahl unten —
@@ -93,7 +97,7 @@ const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())];
 const VERLAUF = 'social/_musik_verlauf.txt';
 function musikWahl(th, pid) {
   let ein = {}; try { ein = JSON.parse(fs.readFileSync('automation/music/_einstiege.json', 'utf8')); } catch {}
-  const letzte = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-3).map(z => z.split('\t')[1]);
+  const letzte = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-5).map(z => z.split('\t')[1]);
   const pool = (STIMMUNG[th] || ALLE_EIGENEN).filter(m => fs.existsSync('automation/music/' + m));
   const frei = pool.filter(m => !letzte.includes(m));
   const wahl = (frei.length ? frei : pool.length ? pool : MUSIC)[num(pid) % (frei.length || pool.length || MUSIC.length)];
