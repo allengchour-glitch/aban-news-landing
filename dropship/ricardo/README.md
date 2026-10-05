@@ -12,6 +12,7 @@
 
 ## Stand 05.10. 20:45 UTC
 - ✅ Betreiber hat sich bei Ricardo **als Privatperson** registriert (Benutzername `allengchour`, Mitgliedsnummer 404683860, Mail verifiziert).
+- 📝 05.10. Gmail-Entwurf an accountmanagement@ricardo.ch erstellt (Kurz-Mail) — Betreiber sendet.
 - Ricardo-Hilfe: Geschäftskonto ist für **MWST-pflichtige** Firmen; Umstellung nur über den Kundendienst
   ([help.ricardo.ch](https://help.ricardo.ch/hc/de/articles/16882997491996)). LuxeStyle ist nicht MWST-pflichtig (Umsatz < CHF 100'000, keine UID)
   → Ricardo selbst fragen, ob Privatkonto für Feed + Shopify reicht (Kurz-Mail unten), statt auf Verdacht umzustellen.

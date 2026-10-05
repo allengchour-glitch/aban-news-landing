@@ -4540,3 +4540,5 @@ ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
 anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
 mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 ps5-controller-akku-mit-digitalanzeige-605100	2407231105531605300	7	8.42	ok	landeseite
+handy-kuhler-mit-gamepad-griff-617100	2407190545121617400	7	7.11	ok	landeseite
+teleskopisches-wireless-gamepad-fur-smartphone-615600	2407190338271615800	7	10.33	ok	landeseite
