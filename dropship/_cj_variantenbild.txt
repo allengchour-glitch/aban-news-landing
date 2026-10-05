@@ -5840,3 +5840,12 @@ gid://shopify/Product/15454234345857	zugeordnet	4	Digitale Lupe mit Mikroskop
 gid://shopify/Product/15454234411393	zugeordnet	48	Elegantes Freizeitkleid
 gid://shopify/Product/15454234444161	zugeordnet	48	Leise Luxus-Uhr
 gid://shopify/Product/15454234476929	zugeordnet	4	Kalender-Quarzuhr mit Nylonarmband
+gid://shopify/Product/15454234509697	zugeordnet	5	Herren Sportuhr mit Leuchtzifferblatt
+gid://shopify/Product/15454234542465	zugeordnet	5	Zeitgesteuertes Regensystem Regensimulation
+gid://shopify/Product/15454234640769	zugeordnet	8	Elegantes Midi-Kleid mit Patchwork
+gid://shopify/Product/15454235033985	zugeordnet	8	Fitness-Hosen für Damen
+gid://shopify/Product/15454235132289	zugeordnet	14	High-Waist Leggings, schlank machend
+gid://shopify/Product/15454235361665	zugeordnet	8	Braune Leggings mit hoher Elastizität
+gid://shopify/Product/15454235591041	zugeordnet	8	Wool Blend Cord-Hosen
+gid://shopify/Product/15454235689345	zugeordnet	3	High-Waist Yoga-Pants mit Beutlifting-Effekt
+gid://shopify/Product/15454247551361	zugeordnet	60	Etui-Kleid mit Trägern, Kristall-Applikationen & Steinverzie

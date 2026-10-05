@@ -3758,3 +3758,5 @@ nussschale-aus-bambus-594048	1792799536738480128	16	7.43	ok	landeseite
 tarn-rucksack-mit-vielen-fachern-621440	1448891676276953088	11	31.33	ok	landeseite
 manuelle-kaffeemuhle-aus-aluminium-633600	1792550453947936768	16	11.43	ok	landeseite
 akkordeon-tasche-mit-doppelten-schultergurten-035968	1448590419809144832	16	13.76	ok	landeseite
+automatische-mini-sojamilchmaschine-562688	1793100667314253824	3	66.07	ok	landeseite
+rucksack-aus-weichem-lederimitat-406976	1448571312019738624	16	11.60	ok	landeseite
