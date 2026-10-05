@@ -224,3 +224,12 @@ gegen `timeout 3000` beim nächsten Tick prüfen · Haarstyling-Meta im Cache no
 über die gespeicherten CSVs + Positions-Kampagne (Betreiber legt sie für CH/Mobil an, 250 Begriffe in `POSITION-TRACKING-KEYWORDS.txt`) +
 Search Console. Neu zu beobachten: 8 Kollektionen Runde 3, 9 + 4 Redirect-Pfade (dürfen nicht mehr als eigene URL ranken), 34 Platz-41-Produkte,
 «sternenhimmel projektor» → licht-nachtlicht-projektor, «kleiner kühlschrank» → 629400. Kündigung vor 09.10. bleibt.
+
+## 05.10.2026 ~10:25 UTC · Bereich «suche-synonyme» (0 Einheiten) — `KEYWORD-SUCHE-2026-10-05.md`
+- 60 neue Begriffe (17 mit Volumen + 43 suggest-kandidat) gegen die Storefront-Suche: 60/60 mit Vorschlägen, aber **24/60 ohne
+  passende Ware in den Top 3** — Zwei-Wort-Begriffe (Ware + Farbe/Zielgruppe) verlieren gegen Titel, die beide Wörter tragen.
+- `automation/suchwort_tags.py` hat jetzt eine **Synonym-Tabelle** (10 Tags, täglich): 127 Produkte getaggt (blusenkleid 47,
+  gummistiefel 17, jeanskleid 16 …), Pilot `schwarz` auf 18 Ballerinas; Ledger `dropship/_suchwort_synonyme.tsv`. Wirkung: Ein-Wort-
+  Vorschläge und Enter-Suche ja (gummistiefel 2/10 → 10/10, hosenrock, akkuschrauber), Zwei-Wort-Vorschläge kaum (nur hanteln set 1/3 → 3/3)
+  → Synonymgruppen = Betreiber-Klick Search & Discovery. Ledger-Sperre je (ID, Tag) statt je ID; Aschenbecher/Contouring/Monitoring raus.
+- Tracker: +40 Begriffe mit Ziel-URL (jetzt 290). Sortimentslücken: Beamer-Leinwand 1'000/Mt, Holz-Bilderrahmen 720/Mt, Gaming-/Bürostuhl.
