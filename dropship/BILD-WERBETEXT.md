@@ -1,8 +1,8 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-05T20:34:41Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-05T20:41:17Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1276 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4785** in 1277 Produkten
+- Medien geprüft: **4801** in 1280 Produkten
 - Treffer (≥ 4 Wörter): **190** in 161 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
@@ -148,7 +148,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Nixie-Röhrenuhr mit Wecker aus Walnussholz `15501005291905` | [70551630807425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/640bcf9f-7da6-4b62-8469-9399beef9d90.jpg) | 6 | GERALDINI MUUTO ESIGN THE SOLACE SOAKING | offen |
 | Kauenset für Hunde `15453794107777` | [69926768574849](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ff594967-2e75-4732-b025-8e79c783bf96_fine.jpg) | 6 | Teeth firm and ith meaty aroma | ENTFERNT |
 | Edelstahl-Trinkflasche «Hydro» 570 ml `15412899676545` | [69552061251969](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0146b03d-9d8d-4c56-a411-7dea5e6f1758_water_trans.jpg) | 6 | utdoor Travel ion open with ATASAW | ENTFERNT |
-| Kissenbezug Ethno‑Muster aus Baumwolle und Leine `15524474126721` | [70777373983105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1892f474-d266-4770-8e78-4c386aed6a47_trans.jpg) | 6 | Japanese Pattern Mount Fuji Lumbar Pillow | offen |
+| Kissenbezug Ethno-Muster aus Baumwolle und Leine `15524474126721` | [70777373983105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1892f474-d266-4770-8e78-4c386aed6a47_trans.jpg) | 6 | Japanese Pattern Mount Fuji Lumbar Pillow | offen |
 | Schwarzes und weisses abstrakes Bild `15453730242945` | [69926176129409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9fd0a88c-80d6-4be7-a0ce-e489d547c124.jpg) | 6 | Allis Andy Warhol Moderna Stockholm Sweden | offen |
 | Kabelloser Fernbedienungs-Lichtschalter mit Aufl `15500960334209` | [70551213048193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/077ddc62-b373-4967-8369-66c3dcbb8272_trans.jpg) | 6 | REMOTE CONTROL Infrared remote control receiver | offen |
 | Kau-Spielsachen für Hunde `15453772349825` | [69926698877313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ac60f8a-d29e-4171-8051-ee092493a114_trans.jpg) | 6 | Sound Toy Soft and gentle teeth | offen |
