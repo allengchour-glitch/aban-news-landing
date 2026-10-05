@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""kosten_export_bauen — Bulk-Export mit Preis, Einkaufspreis und Gewicht je Variante.
+"""kosten_export_bauen — Bulk-Export mit Preis, Streichpreis, Einkaufspreis und Gewicht je Variante.
+
+05.10.2026: `compareAtPrice` kommt mit — Shopifys Suchfilter `compare_at_price:>0` wird still ignoriert (gemessen:
+liefert Varianten mit compareAtPrice null), ein Streichpreis-Audit (PBV: Streichpreis < Preis, Fantasiewerte) geht
+nur über den Export. Zusätzliches Feld, alle Leser greifen per Schlüssel zu (price/unitCost/weight) — Vertrag unverändert.
 
 WARUM ALS REPO-SKRIPT: `kosten_boden15_korrigieren.py` braucht diesen Export, und er lag
 zuerst nur als Wegwerf-Skript in /tmp. Der Snapshot-Rewind hat ihn prompt entfernt — und
@@ -29,7 +33,7 @@ MAXALTER = int(os.environ.get("MAXALTER", "86400"))
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 BULK = ('{ products(query:"status:active") { edges { node { id title createdAt '
-        'variants { edges { node { id sku price '
+        'variants { edges { node { id sku price compareAtPrice '
         'inventoryItem { id unitCost { amount } '
         'measurement { weight { value unit } } } } } } } } } }')
 

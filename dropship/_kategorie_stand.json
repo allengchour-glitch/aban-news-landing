@@ -1,14 +1,14 @@
 {
- "stand": "2026-10-04T23:12Z",
- "gescannt": 6,
- "ohne_kategorie_vorher": 6,
- "gesetzt": 1,
- "ohne_kategorie_nachher": 5,
+ "stand": "2026-10-05T00:08Z",
+ "gescannt": 4,
+ "ohne_kategorie_vorher": 4,
+ "gesetzt": 0,
+ "ohne_kategorie_nachher": 4,
  "fehler": 0,
  "unbekannte_typen": {
   "Trend-Produkt": 2,
-  "Trend-Gadget": 2,
-  "Kinder": 1
+  "Kinder": 1,
+  "Trend-Gadget": 1
  },
  "scharf": true
 }
