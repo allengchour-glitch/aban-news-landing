@@ -6,17 +6,9 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 
 | Ratgeber | Produktlinks (alle tot/keine) |
 |---|---:|
-| [Ätherische Öle für besseren Schlaf: Die Top 5 (2026)](/blogs/ratgeber/atherische-ole-fur-besseren-schlaf-die-top-5-2026) | 0 |
-| [Echtleder vs. Kunstleder — Wie du beim Wallet-Kauf nicht rei](/blogs/ratgeber/echtleder-vs-kunstleder-wallet-kauf-guide) | 1 |
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
-| [Wellness-Routine ab CHF 100 — So baust du dir dein Spa zuhau](/blogs/ratgeber/wellness-routine-100-chf) | 0 |
-| [Diffuser kaufen 2026 — Worauf du in der Schweiz unbedingt ac](/blogs/ratgeber/diffuser-kaufen-schweiz-2026) | 0 |
-| [Lavendel — Der Wellness-Champion. Warum dieses eine Öl alles](/blogs/ratgeber/lavendel-wellness-champion-schweiz) | 0 |
 | [Schweizer Wohlfühl-Geheimnisse — 7 Rituale, die wir aus den ](/blogs/ratgeber/schweizer-wohlfuhl-geheimnisse) | 0 |
-| [5-Minuten-Selfcare. Für die, die keine Stunde haben.](/blogs/ratgeber/5-minuten-selfcare-rituale) | 0 |
-| [Aromatherapie für Anfänger — Der ehrliche 7-Tage-Plan](/blogs/ratgeber/aromatherapie-fur-anfanger) | 0 |
-| [Geschenke, die Eindruck machen — ohne dass du ein Vermögen a](/blogs/ratgeber/geschenke-die-eindruck-machen) | 0 |
-| [Die besten Aroma-Diffuser 2026 — Kaufratgeber für die Schwei](/blogs/ratgeber/beste-aroma-diffuser-2026-kaufratgeber-schweiz) | 0 |
+| [Galaxy-Projektor & Sternenhimmel-Lampen – Lohnt sich der Hyp](/blogs/ratgeber/galaxy-projektor-sternenhimmel-lampen-test) | 1 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
 | [Aroma-Diffuser kaufen: Der grosse Ratgeber 2026](/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026) | 0 |
 | [Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass](/blogs/ratgeber/geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass) | 0 |
@@ -212,7 +204,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Handtasche richtig wählen: Grösse, Material & Alltagstauglic](/blogs/ratgeber/handtasche-richtig-wahlen-grosse-material-alltagstauglichkeit-im-blick) | 0 |
 | [Herrenhemd-Passform-Guide: so sitzt dein Hemd wie massgeschn](/blogs/ratgeber/herrenhemd-passform-guide-so-sitzt-dein-hemd-wie-massgeschneidert) | 0 |
 | [Gartenmöbel pflegen: so bleiben Tisch, Stühle & Lounge lange](/blogs/ratgeber/gartenmobel-pflegen-so-bleiben-tisch-stuhle-lounge-lange-schon) | 0 |
-| [Grillen für Anfänger: die ersten Schritte zum perfekten BBQ](/blogs/ratgeber/grillen-fur-anfanger-die-ersten-schritte-zum-perfekten-bbq) | 0 |
 | [Auto-Innenreinigung: Tipps für ein sauberes Cockpit & frisch](/blogs/ratgeber/auto-innenreinigung-tipps-fur-ein-sauberes-cockpit-frische-polster) | 0 |
 | [Winter-Essentials: die wichtigsten Dinge für warme & entspan](/blogs/ratgeber/winter-essentials-die-wichtigsten-dinge-fur-warme-entspannte-wintertage) | 0 |
 | [Rucksack für die Uni: der richtige Begleiter für Campus & Vo](/blogs/ratgeber/rucksack-fur-die-uni-der-richtige-begleiter-fur-campus-vorlesung) | 0 |

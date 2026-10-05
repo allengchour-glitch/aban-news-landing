@@ -16911,3 +16911,6 @@ gid://shopify/Product/16608001950087	77->2	Retro Geldbörse mit Blumenprägung
 gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 ml
 gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
 gid://shopify/Product/15430408438145	17->1	Herren Sling-Tasche «Ranger» · Crazy-Horse-Echtleder
+gid://shopify/Product/15450851934593	30->0	6er Set Ätherische Öle
+gid://shopify/Product/15453761601921	9->0	Französische Stickerei mit Metallgriff
+gid://shopify/Product/15453791617409	38->0	Trägerloses Bade-T-Shirt mit versteckten Knöpfen
