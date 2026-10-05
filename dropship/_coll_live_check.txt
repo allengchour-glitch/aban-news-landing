@@ -539,3 +539,7 @@ duschvorhaenge	ok	21	Duschvorhänge
 taschenlampen	ok	29	Taschenlampen & Stirnlampen
 wandregale	ok	21	Wandregale
 winterjacken	ok	29	Winterjacken & Daunenjacken
+etageren	ok	19	Etageren
+usb-sticks	ok	29	USB-Sticks
+wanduhren	ok	26	Wanduhren
+woks	ok	19	Woks & Wokpfannen
