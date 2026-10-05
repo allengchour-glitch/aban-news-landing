@@ -4496,3 +4496,7 @@ vibrations-gamepad-mit-6-achsen-bewegungssenso-615000	2503100504431615200	7	8.57
 tastatur-maus-konverter-fur-mobile-gaming-609000	2503100257001609200	7	8.10	ok	landeseite
 bluetooth-controller-fur-smartphones-split-614400	2502100219341614600	16	7.87	ok	landeseite
 black-lightning-wireless-elite-bluetooth-contr-605000	2501260447161605200	7	10.18	ok	landeseite
+mechanisches-gamepad-ohne-vibration-612200	2412160729201612500	7	6.91	ok	landeseite
+controller-erweiterung-mit-vier-rucktasten-607900	2411010358431608100	7	10.01	ok	landeseite
+hd-wireless-game-simulator-fur-zwei-spieler-603400	2410270545361603600	7	12.09	ok	landeseite
+vr2-ladestation-mit-brillenhalterung-624000	2410231707161624300	7	12.57	ok	landeseite
