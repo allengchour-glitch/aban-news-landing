@@ -4282,3 +4282,7 @@ pagani-design-gold-armbanduhr-mit-stahlband-d62c72	1912581E-7886-4A90-B3FD-4EEDF
 damen-quarzuhr-mit-kalender-und-24-stunden-anz-5f29a0	519653C1-D373-4C17-88B6-F9230A734DEA	7	6.18	ok	landeseite
 nibosi-quarzuhr-mit-edelstahlband-e89d0a	2F958323-FB21-467F-BEBA-0A2EC0EBB263	7	7.92	ok	landeseite
 armbanduhr-manschettenknopfe-kugelschreiber-ge-393b44	10A4D5EF-76D7-4205-9286-9420B481A17C	7	12.30	ok	landeseite
+klassische-quarzuhr-mit-leuchtanzeige-cb137b	0E530F7D-ABBA-4F5F-BB18-13643D4353EA	7	6.09	ok	landeseite
+wasserdichte-quarzuhr-mit-ultradunnem-gehause-de6886	22C6CB39-4086-4B99-A349-740568A3A021	7	5.72	ok	landeseite
+smart-armband-mit-temperatur-und-blutsauerstof-a18f60	01839D16-D9C4-4342-9619-51552A05B07C	7	7.13	ok	landeseite
+led-dual-ladestation-fur-ps4-controller-e4ef04	5EE0767D-20BC-4BFA-8E60-2BE3F9A1FD25	7	8.42	ok	landeseite
