@@ -4563,3 +4563,7 @@ hunde-tennisball-futterspender-321601	2069349540081733633	0	-	KEINE CH-Option �
 huteball-fur-hunde-mit-griffen-45-cm-548482	2068972398356377602	16	13.40	ok	landeseite
 wurm-spielzeug-set-fur-katzen-541762	2066459998851039233	16	7.85	ok	landeseite
 interaktiver-rollball-fur-haustiere-389569	2062816628414910465	0	-	KEINE CH-Option → DRAFT	landeseite
+interaktiver-rollender-ball-fur-haustiere-672450	2062814032526610434	0	-	KEINE CH-Option → DRAFT	landeseite
+interaktiver-hunde-spielball-aus-e-tpu-757633	2061023153695809538	16	6.77	ok	landeseite
+interaktiver-spielball-fur-haustiere-870401	2060270988662779906	0	-	KEINE CH-Option → DRAFT	landeseite
+smart-interaktiver-ball-fur-hunde-310081	2059939998861025282	16	5.69	ok	landeseite
