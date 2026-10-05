@@ -35,6 +35,19 @@
 
 
 
+## 2026-10-05 22:30 · 🪟 Clarity: Popup + Cookie-Banner nach 2–7 s gleichzeitig — 40-%-Scroll ist auf dem Handy KEIN Interesse-Signal
+
+Betreiber-Analyse (6 Clarity-Sitzungen, 0 Käufe): Newsletter-Popup und Cookie-Banner überdeckten die Seite 2–7 s nach Ankunft,
+mobil komplett, desktop über «In den Warenkorb». Unser Popup (`custom_liquid_lxpopup`, footer-group.json) hatte am 13.09. einen
+40-%-Scroll-Auslöser bekommen («wer scrollt, ist interessiert») — auf einer kurzen Handy-Produktseite sind 40 % nach 2–3 s erreicht,
+dazu Exit-Intent auf Desktop. Fix: Tor (20 s / mobil 30 s, nie neben dem Shopify-Banner, nie Warenkorb/Konto), dann 60 % Scroll,
+Exit-Intent nur Desktop, Timer 45/75 s. Handy-Browser 3/8/15/19 s: zu. Wächter `popup_tor_wache.py` (Aufseher, 6 h, liest die
+LIVE-Datei). **Lehre: Ein Auslöser in Prozent der Seitenlänge ist auf kurzen Seiten ein Zeit-Auslöser von 2 s — immer eine
+Mindestzeit davor. Und: Messwerkzeuge des Betreibers (Clarity) zeigen, was unsere API-Messungen nicht sehen.**
+Dazu Betreiber-Daueranweisung 05.10.: «merke alles für zukünftige selbständige verbesserung … da immer mehr produkten kommen» →
+jede Klasse bekommt Regel + Wächter im Aufseher, der auch NEUE Ware erfasst (nicht nur den Bestand von heute).
+→ `dropship/CLARITY-BEFUNDE-2026-10-05.md`
+
 ## 2026-10-05 17:55 · 💸 EK-Boden 15: 3'703 Produkte ohne einen CJ-Punkt — der Plan nannte das teure Werkzeug
 
 FIX-12H Punkt 15 sah `cj_kosten_backfill.mjs NUR_IDS` vor (≈ 40k CJ-Punkte über Tage); CJ setzte den Tageszähler um 16:00
@@ -17927,6 +17940,9 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 💸 **Preise (Betreiber «entscheide selber» → «15 % Reserve»): 24 Codes > 15 % aus (0× benutzt), `preis_verlustschutz` RABATT 0.15, gesperrte Varianten trugen Lockpreise («ab 14.90», 3'405 behoben), `preis_senken.py` senkte 350'008 Varianten / 34'486 Produkte im Median −11 % (0 Fehler; nur Band alter–neuer Boden, min. CHF 14.90), 7 Ratgeber ohne tote Codes, 64 SEO-Titel mit Semrush-Suchbegriff (`seo_suchbegriff_titel.py`).** Codes in Texten mitprüfen → Journal 02.10.
+- 2026-10-02 · 🏷️ **Verbesserungsrunde: nach der Preissenkung 12/18 Reels preis-veraltet, Tages-Reparatur schon gelaufen → `reel_neu_rendern.py` holt Shopify-Produktvideo als Rückfall + Preis-Modus ohne alte Datei, Aufseher-Reparatur alle 3 h solange preis-veraltet wartet; 2 neu gerendert, ready 8, 32 warten auf Server-Quellen.** Nach Massen-Preisänderung sofort Säuberer + MODUS=preis → `dropship/REEL-PREIS-NACH-SENKUNG-2026-10-02.md`
+- 2026-10-02 · 📈 **Semrush ausgenutzt (~38–40k/50k): 836 Produktarten-Volumen + 40 Kollektions-Zuordnungen (`suchvolumen.fuer_kollektion(titel, handle)`), 12 doppelt geprüfte Sortimentslücken vorne in der CJ-Suchliste, 103 Produkt-SEO-Titel (Gegenprüfer verwarf 38/141; `--aus`, Meta aus geprüftem Titel), 46 Kollektions-SEO (`seo_kollektion_suchbegriff.py`, live), Ratgeber nur echte Fragen; `api_units` = Konto-Differenz → nur nacheinander messen, Filterwert als String.** Nachmessung 08.10., KÜNDIGEN vor 09.10. → `dropship/semrush/README.md`
 - 2026-10-02 · 📈 **Semrush-Testabo aktiv bis 09.10. (KÜNDIGEN — Erinnerungen 08./09.10. gesetzt): luxestyle.ch 556 Begriffe Top 100, Verkehr ≈ 0; 38 auf Platz 16–30 mit KD 8–25 (ballettschuhe 590/Mt, Platz 29); 478 Suchvolumen zu 350 Kollektionen → `suchvolumen.py`, SEO-Autopilot wählt nach Volumen; ~5'190/50'000 Einheiten.** Daten in `dropship/semrush/` bleiben nach dem Abo → `dropship/semrush/README.md`
 - 2026-10-02 · 🤖 **«werbungen wie soro … tools selber»: 2 der letzten 4 Bestellungen über ChatGPT (#1021, #1018, direkt Produktseite), ChatGPT-Sitzungen 2→7→16/Monat; ChatGPT/Copilot lesen Bing, Shopify hat kein IndexNow → `indexnow_melden.py` täglich (≤ 10k, 30-T-Sperre, Schlüssel CDN + Redirect), 1. Lauf 10'000 HTTP 200; verworfen nach Messung: Titel-Optimierer, Warenkorb-Rückholung (1 Abbruch/30 T), Chatbot/Upsell.** Kaufquelle je Bestellung messen → `dropship/WERBE-TOOLS-SELBST-GEBAUT-2026-10-02.md`
 - 2026-10-02 · 🧾 **«2021 ist bezahlt»: ich las CJ «UNSHIPPED» als unbezahlt — es heisst «bezahlt, wartet auf Versand» (LX1021 bezahlt 30.09. 23:37) → `bestell_ampel.py` schreibt den CJ-Status deutsch aus + Tracking.** Rohstatus nie ungedeutet melden → Journal 02.10.
