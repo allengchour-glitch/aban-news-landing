@@ -97,7 +97,9 @@ def main():
             continue
         eingabe = {"id": n["id"], "title": neu}
         if seo_neu != seo_alt:
-            eingabe["seo"] = {"title": seo_neu}
+            # 05.10.2026 (Prüfer): SEOInput ERSETZT title UND description — {"title": …} allein löschte bei 17 Produkten die
+            # Meta-Beschreibung. Immer beide Felder senden, Reizwort auch aus der Beschreibung.
+            eingabe["seo"] = {"title": seo_neu, "description": sachlich(n["seo"].get("description") or "")}
         r = gql("mutation($p:ProductUpdateInput!){productUpdate(product:$p){product{title seo{title}} userErrors{message}}}", {"p": eingabe})
         err = r["productUpdate"]["userErrors"]
         ist = (r["productUpdate"]["product"] or {}).get("title")

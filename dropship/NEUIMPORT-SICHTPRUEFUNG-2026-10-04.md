@@ -47,3 +47,13 @@ Beide: SEO-Titel/Meta, Text, 6 Kanäle, Hauptmenü unter «Wohnen & Garten › B
 ## Betreiber
 - **Gemini-Guthaben aufladen** (402 seit 21:53 UTC) und **OpenAI** (leer seit 20:11 UTC) — Zweitprüfer-Wachen pausieren.
 - Optional: Groq Dev-Tier, wenn der Grind mehr als ~200 Texte/Tag braucht.
+
+## Nachtrag 05.10. 02:50 UTC — Prüfer-Befunde des 12-h-Laufs abgearbeitet
+- 🔴 **google_reiztitel.py schrieb `seo:{title}` allein** → SEOInput ersetzt beide Felder → 17 Meta-Beschreibungen gelöscht.
+  Aus dem Produkttext neu aufgebaut (17/17), Werkzeug sendet jetzt beide Felder (Kanarienvögel 10/10).
+- «Sexy» weiter in 23 Meta-Beschreibungen + 18 Produkttexten → entfernt.
+- 5 Masken (Maskenball/Performance) im Google-Kanal → `kostuem`, 3 von «Hautpflege» auf «Kostüme & Verkleidung», aus Werbekanälen.
+- 308 SEO-Titel/-Beschreibungen der Neuimporte mit U+2011/U+202F normiert; `titel_sonderzeichen.py` glättet SEO jetzt mit
+  und erkennt «5-Stück», «3er-Set», «12 Teilen» als vorhandene Menge.
+- Häkelnadel-Set: Text «350 Haken aus Aluminiumoxid» → am Bild 14 eloxierte Alu-Nadeln 2–10 mm, neu geschrieben.
+- Stachelhalsband (Prüfer «hoch»): war um 00:28 schon gedraftet; Regel um Euphemismen erweitert (`STACHELHALSBAND-2026-10-05.md`).
