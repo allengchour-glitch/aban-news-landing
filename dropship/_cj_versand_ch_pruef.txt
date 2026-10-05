@@ -3613,3 +3613,4 @@ belodi-partikel-kinder-bauklotze-445696	1600760006771748864	16	11.60	ok	landesei
 tragbares-usb-haarentfernungsgerat-630000	2603200720211630400	7	6.66	ok	landeseite
 freizeitschuhe-fur-kinder-mit-sternenmuster-118592	1368514978428096512	16	8.11	ok	landeseite
 denim-hemd-mit-umlegekragen-627200	2602240156561627600	16	9.47	ok	landeseite
+doppelreissverschluss-handtasche-aus-rindslede-405824	1379253809955606528	16	10.15	ok	landeseite
