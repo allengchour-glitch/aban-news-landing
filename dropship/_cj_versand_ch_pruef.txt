@@ -3591,3 +3591,14 @@ weihnachts-pyjama-fur-mutter-tochter-611100	2411280523031611300	16	9.61	ok	lande
 weihnachts-partnerlook-blau-weiss-gestreift-600900	2411270325051601500	16	12.21	ok	landeseite
 weihnachtliches-familien-outfit-im-hirsch-desi-600300	2411150601361600600	16	6.17	ok	landeseite
 weihnachts-homewear-im-partnerlook-605400	2411090227391605600	16	9.75	ok	landeseite
+weihnachtsbaum-print-hausanzug-625100	2410120815261625300	16	10.29	ok	landeseite
+weihnachts-pyjama-set-mit-elch-muster-fur-die-627800	2410070346551628600	16	10.15	ok	landeseite
+dino-weihnachtsbaum-pyjama-fur-die-ganze-famil-602400	2409050118291602600	16	11.00	ok	landeseite
+weihnachts-pyjama-im-partnerlook-764352	1739613036794621952	16	8.53	ok	landeseite
+weihnachts-elch-pyjama-fur-die-ganze-familie-884416	1736665898255130624	16	10.42	ok	landeseite
+familien-weihnachtsanzuge-mit-streifen-896320	1728343485226422272	16	7.43	ok	landeseite
+weihnachts-pyjama-set-im-rot-schwarzen-karomus-076864	1724650725529100288	16	10.42	ok	landeseite
+gestreiftes-familien-set-fur-weihnachten-246528	1720720807753687040	16	10.69	ok	landeseite
+weihnachts-t-shirt-fur-damen-mit-aufdruck-630400	2510140315011630700	16	7.17	ok	landeseite
+weihnachtsbaum-pullover-fur-damen-600400	2607020056321601300	16	10.55	ok	landeseite
+retro-weihnachts-hoodie-mit-3d-print-und-tasch-614600	2605140748211615100	16	8.79	ok	landeseite
