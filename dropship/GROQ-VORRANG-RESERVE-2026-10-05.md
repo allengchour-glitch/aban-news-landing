@@ -23,3 +23,10 @@
 
 ## Offen
 - Gemini- und OpenAI-Guthaben aufladen (Betreiber) — dann ist Groq wieder nur Zweitprüfer.
+
+## Nachmessung 14:17 UTC
+- Schlüssel 3 / qwen meldet wieder «Used 198'010 / 200'000» (13:19, 14:16) — die Jury fand ihn nach 20 min erneut voll.
+  Das Fenster gleitet über **24 h**: was die Massenläufe bis 10:33 verbraucht haben, wird erst ab ~04:20 morgen
+  (06.10.) schrittweise frei. Bis dahin reicht das Freiwerdende nur für einzelne Prüfungen (12:40 Probe ok).
+- Seit dem Fix kommt kein Massenlauf mehr auf Schlüssel 3 / qwen (Leer-Marken nur noch aus der Jury: 13:19, 14:16).
+  Volle Wirkung also ab 06.10. — nachmessen: `grep -c "Kein Post" /tmp/social_autopilot.log` am 06.10. mittags.
