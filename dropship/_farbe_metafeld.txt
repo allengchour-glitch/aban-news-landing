@@ -423,3 +423,6 @@ gid://shopify/Product/16604869788039	Transparent
 gid://shopify/Product/16604906258823	Schwarz
 gid://shopify/Product/16604910059911	Grün
 gid://shopify/Product/16604924543367	Schwarz
+gid://shopify/Product/15458467185025	Gold
+gid://shopify/Product/15470013645185	Schwarz
+gid://shopify/Product/15470013743489	Blau
