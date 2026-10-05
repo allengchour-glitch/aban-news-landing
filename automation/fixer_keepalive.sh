@@ -1172,7 +1172,9 @@ while true; do
   fi
 # --- Dünne Produkttexte (< 40 Wörter) sachlich neu schreiben — täglich, NACH seo_voll_audit (05.10.2026) ---
 DT=/tmp/produkttext_duenn.log
-if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ -s /tmp/seo_voll_audit.json ]; then
+# ⏸ 05.10.2026 03:30: ANGEHALTEN — Prüfer fand in den ersten 44 Texten «Diamanten» bei Strass (UWG), Farben/Grössen ohne Optionen,
+# «Leder» neben «Material: Kunststoff», «Grösse 12» aus einem Müll-Namen. Erst Tore reparieren + NACHPRUEFEN, dann Marke löschen.
+if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ -s /tmp/seo_voll_audit.json ] && [ ! -f "$REPO/dropship/_duenne_texte_angehalten" ]; then
   ALTER=$(( $(date +%s) - $(stat -c %Y "$DT" 2>/dev/null || echo 0) ))
   if [ "$ALTER" -gt 86400 ]; then
     ( cd "$REPO" && SCHARF=1 LIMIT=40 TEXT_MODELLE="openai/gpt-oss-120b,openai/gpt-oss-20b" timeout 3000 python3 automation/produkttext_duenn.py >> "$DT" 2>&1 )
