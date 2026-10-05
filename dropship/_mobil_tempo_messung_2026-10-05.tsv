@@ -1,0 +1,10 @@
+zeit_utc	seite	messung	vorher	nachher	befehl
+2026-10-05T01:05Z	/	LCP_ms	5232	2812	node messen.mjs https://luxestyle.ch/ (390px, tools/browser.mjs)
+2026-10-05T01:05Z	/	LCP_bild	tati-model-hero-mobil.jpg 333KB (CSS-Hintergrund, spaet)	tati-model-hero-mobil_800x.jpg 201KB (preload high)	curl -sI
+2026-10-05T01:05Z	/	uebertragen_KB	6818	3014	performance.getEntriesByType(resource) transferSize
+2026-10-05T01:05Z	/	video_KB_beim_Laden	2998 (2839+159)	0	dito, nur .mp4
+2026-10-05T01:05Z	/	bilder_KB	2313	1705	dito, initiatorType img
+2026-10-05T01:05Z	/	eager_karte_width	832 (152KB)	480 (52KB)	karten.mjs currentSrc
+2026-10-05T01:05Z	/collections/halloween	bilder_KB	1002	529	messen.mjs
+2026-10-05T01:05Z	/	scrollWidth	390	390	messen.mjs
+2026-10-05T01:05Z	/products/abendkleid-sirene…	LCP_ms	1628	1404	messen.mjs (unveraendert, fetchpriority=high, kein lazy)

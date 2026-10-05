@@ -3768,3 +3768,8 @@ keramik-servierplatte-schachbrettmuster-355264	1742080763958407168	16	11.04	ok	l
 hunde-brustgeschirr-aus-atmungsaktivem-netzsto-065728	1637369316192563200	16	6.33	ok	landeseite
 hundegeschirr-fur-rehabilitation-und-training-858752	1637350978942939136	16	7.38	ok	landeseite
 multifunktionaler-haustier-rucksack-679424	1637347448664371200	16	10.42	ok	landeseite
+kinder-isolierflasche-550-ml-620100	2604220613151622800	16	8.93	ok	landeseite
+damen-langarmhemd-mit-reverskragen-637700	2602260115231638000	16	7.71	ok	landeseite
+armellose-strickweste-mit-rundhalsausschnitt-633100	2602250949281633500	16	6.33	ok	landeseite
+chiffon-oberteil-mit-kragen-638400	2602250940061638800	16	6.33	ok	landeseite
+duschvorhanghaken-mit-schleifen-aus-harz-601000	2506240956401601200	16	7.87	ok	landeseite

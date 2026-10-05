@@ -150,3 +150,5 @@ gid://shopify/Product/15523199091073	waffe	Damast Klappmesser für Outdoor und K
 gid://shopify/Product/15523199123841	waffe	Sanhe Stahl SKD-11 Klappmesser
 gid://shopify/Product/15523210166657	waffe	Outdoor-Klappmesser mit Stahlgriff
 gid://shopify/Product/16603332837767	rauchzubehoer	Auto-USB-Ladegerät mit Zigarettenanzünder
+gid://shopify/Product/16606127489415	rauchzubehoer	Zigaretten-Drehmaschine aus Kunststoff
+gid://shopify/Product/16606127554951	rauchzubehoer	V-förmiger Zigaretten-Cutter aus Edelstahl
