@@ -1160,6 +1160,16 @@ while true; do
     fi
     [ -f "$TS" ] && echo "$(date -u +%H:%M) titel_sonderzeichen: $(tail -n 1 "$TS")"
   fi
+  # KATEGORIEN REIN 2 (04.10.2026): Kinder & Baby, Haustier/Hunde/Katzen, Handy, Ladegeräte, Aroma, Büro → Tag kat-… (Bulk-Mutation)
+  KR2L=/tmp/kategorie_rein_2.log
+  if [ -f "$REPO/automation/kategorie_rein_2.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KR2L" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$KR2L"
+      ( cd "$REPO" && SCHARF=1 timeout 3300 python3 automation/kategorie_rein_2.py >> "$KR2L" 2>&1 )
+      echo "$(date -u +%H:%M) kategorie_rein_2: $(grep -c '^==' "$KR2L") Kategorien geprüft · $(grep -c 'Bulk tags' "$KR2L") Bulk-Läufe · $(grep -c '⛔' "$KR2L") gestoppt"
+    fi
+  fi
   # KATEGORIEN REIN (04.10.2026): Titel ∧ Produkttyp ∧ Ausschluss je Menü-Kategorie → Tag kat-… (Ringe, Taschen, Deko, …)
   KRL=/tmp/kategorie_rein.log
   if [ -f "$REPO/automation/kategorie_rein.py" ]; then

@@ -107,6 +107,8 @@ TAX = {
 
 VORRANG = [(re.compile(r"headset|kopfhörer|ohrhörer|earbuds|lautsprecher", re.I), "Elektronik"),
            (re.compile(r"handyhülle|handy-hülle|hülle für (iphone|samsung)|phone case", re.I), "Handy-Zubehör"),
+           # 05.10.: 152 Aroma-Diffuser/Luftbefeuchter standen als «Beauty-Tools» (Facette in «Aroma & Diffuser»)
+           (re.compile(r"aroma-?diffus|duftdiffus|diffusor|luftbefeuchter|duftzerstäuber|aromatherapie-(gerät|luftbefeuchter|diffuser)", re.I), "Wellness & Aromatherapie"),
            # 04.10.: Tierbedarf stand als Clothing/Shoes/Costumes (Hunde-Outdoorschuhe, Pullover für Haustiere) — gleiche
            # enge Konstruktionen wie kategorie_wache (Tier als Motiv zählt nicht).
            (re.compile(r"für (deinen |deine |den |die )?(hunde?|katzen?|haustiere?|welpen?)\b|\bhunde-?(leine|geschirr|halsband|bett|napf|mantel|pullover|schuhe|jacke|kostüm|spielzeug|bürste|outdoorschuhe)|\bkatzen-?(bett|klo|streu|kratz|spielzeug|halsband|tunnel|haus)|kratzbaum|futternapf", re.I), "Haustierbedarf")]

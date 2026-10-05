@@ -152,12 +152,15 @@ WIRK = re.compile(r"\b(lindert|lindern|heilt|heilen|therap\w*|entgift\w*|straff\
                   r"Migr[äa]ne|Stress|Entz[üu]ndung\w*|Akne|Pigment\w*|Anti-?Aging|Anti-?Falten|verj[üu]ng\w*|medizinisch\w*|klinisch\w*|"
                   r"gesund\w*|Gesundheit|Heilung|Krankheit\w*|Symptom\w*|regenerier\w*|Kollagen|Hautbild|Poren|Augenringe|"
                   r"Verspannung\w*|Muskelkater|Blutdruck|Immun\w*|beruhig\w*|entspann\w*|wohltuend|Wellness|Heilwirkung|"
-                  r"f[öo]rdert|verbessert|reduziert|st[äa]rkt|sch[üu]tzt vor UV|UV-?Schutz|UPF|SPF|LSF|wasserdicht|wasserfest|"
+                  r"(?:f[öo]rdert|verbessert|reduziert|st[äa]rkt|unterst[üu]tzt)\s+(?:die|das|den|deine?n?|ihre?n?)?\s*(?:Haut\w*|Durchblutung|Schlaf|Gesundheit|"
+                  r"Immunsystem|Stoffwechsel|Heilung|Konzentration|Wohlbefinden|Haar\w*|Stimmung|Atmung|Haltung|Muskel\w*|Gelenk\w*|Augen|Sehkraft)|"
+                  r"sch[üu]tzt vor UV|UV-?Schutz|UPF|SPF|LSF|wasserdicht|wasserfest|"
                   r"schlagfest|kratzfest|bruchsicher|feuerfest|hitzebest[äa]ndig)\b", re.I)
 UMSCHRIFT = re.compile(r"\b(fuer|ueber|groesse\w*|ausfuehrung\w*|moeglich\w*|schoen\w*|koenn\w*|waehl\w*|waerme|kueche|tuer\w*|buero|stueck\w*|"
                        r"zubehoer|gruen\w*|oel\w*|haelt|traeg\w*|laess\w*|faellt|aermel|naehe|hoehe|laenge|gefuehl|muede|fruehling|kaelte|"
                        r"\w*(?<!q)[bcdfghklmnprstvwxz](?:ae|oe|ue)[bcdfghklmnprstvwxz]\w*)\b", re.I)
 UMSCHRIFT_OK = re.compile(r"uell|uett|uenz|aero|poes|israel|michael|duo|statue|aktue|manue|visue|eventue|individue|punktue|rituel|virtue|textue|sexue|kontinue|soue", re.I)
+# Scharflauf 05.10. 00:13: «reduziert Fingerabdrücke» (Schutzglas) fiel 5× am Wirkwort-Tor → generische Verben nur noch mit Körper-/Gesundheits-Objekt.
 # Trockenlauf 3 (05.10. 00:15, gpt-oss-120b): «misst etwa einen Zentimeter» (Zahl als WORT umging das Ziffern-Tor), «luftdicht»,
 # «lässt sich einfach reinigen», «passt auf ein Standard-Kissen» — Eigenschaften, die keine Quelle nennt → zwei weitere Tore.
 ZAHLWORT = re.compile(r"\b(ein(?:en|e|em|er|es)?|zwei|drei|vier|f[üu]nf|sechs|sieben|acht|neun|zehn|elf|zw[öo]lf|zwanzig|dreissig|vierzig|f[üu]nfzig|hundert|"

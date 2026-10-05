@@ -11,10 +11,10 @@
 # 2026-10-02 Dünne Kategorien (Tag 4): 3D-Filament 7, Elektrowerkzeug 7 aktive Produkte
 # 2026-10-04 Semrush «adventskalender» 27100/Mt (frauen 8100, mann 5400, kinder 4400): GEFÜLLTE Kalender fehlen.
 #   Keine Kosmetik zum Auftragen, keine Süssigkeiten/Tee, keine Lizenzen (LEGO/Disney/Pokémon); vor 03.11. bestellbar.
-search:advent calendar jewelry
-search:advent calendar charm bracelet
-search:kids advent calendar toys
-search:christmas countdown calendar toy cars
+#done search:advent calendar jewelry
+#done search:advent calendar charm bracelet
+#done search:kids advent calendar toys
+#done search:christmas countdown calendar toy cars
 search:advent calendar hair accessories
 search:advent calendar socks
 search:pet advent calendar dog toys

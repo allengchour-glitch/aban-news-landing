@@ -21,6 +21,15 @@ LEDGER = "dropship/_ek_varianten_nachgetragen.txt"
 
 
 def produkte():
+    # 05.10.2026: NUR_IDS=<Datei mit Produkt-GIDs> → genau diese Produkte statt der Schreiber-Tags. Anlass: 4 aktive CJ-Produkte
+    # (Abendkleid 48/98, Weihnachts-Hoodie 22/72, Kürbis-Sweatshirt 45/70, Kinder-Canvas 17/67 Varianten ohne EK) ohne Schreiber-Tag —
+    # cj_kosten_backfill überspringt sie («erste Variante hat Kosten»), preis_verlustschutz prüft die EK-losen Varianten nie.
+    nur = os.environ.get("NUR_IDS")
+    if nur:
+        ids = [z.strip() for z in open(nur) if z.strip()]
+        return [p for p in gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle status '
+                               'variants(first:100){nodes{id sku price inventoryItem{unitCost{amount}}}}}}}', {"ids": ids})["nodes"]
+                if p and p.get("status") == "ACTIVE"]
     q = " OR ".join(f"tag:{t}" for t in TAGS)
     after, out = None, []
     while True:

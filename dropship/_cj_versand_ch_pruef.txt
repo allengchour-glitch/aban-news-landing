@@ -3636,3 +3636,38 @@ metall-uhrenarmband-mit-strasssteinen-221184	1679367945044107264	16	5.41	ok	land
 smartwatch-armband-mit-perlen-398208	1677485872058478592	16	5.12	ok	landeseite
 f64-smart-armbanduhr-mit-bluetooth-318912	1662721478682484736	7	5.81	ok	landeseite
 hd-wlan-tragbarer-handy-projektor-073216	1515211101338873856	3	36.21	ok	landeseite
+mini-full-hd-led-projektor-fur-zuhause-971072	1443879108399468544	16	19.42	ok	landeseite
+tragbarer-smart-projektor-p62-hd-auflosung-844800	1444159196777025536	7	25.36	ok	landeseite
+mini-projektor-fur-heim-und-burogebrauch-617280	1439469020666531840	11	33.08	ok	landeseite
+c80-mini-heimprojektor-720p-161152	1439467294693658624	16	15.81	ok	landeseite
+heimprojektor-yg400-hd-296704	1439465042495016960	16	23.15	ok	landeseite
+wlan-android-beamer-fur-zuhause-306304	1439463799521415168	16	19.65	ok	landeseite
+memory-schaum-beinkissen-zur-beinauflage-606700	2512200859581606900	16	12.25	ok	landeseite
+extra-dicke-kissenbezuge-aus-milch-samt-603200	2512190330141603400	16	7.43	ok	landeseite
+kissenbezug-aus-baumwoll-twill-45-120-cm-629600	2512181119051629800	16	8.79	ok	landeseite
+rattanmatte-und-eisseiden-kissenbezug-600900	2512181114351601100	16	8.79	ok	landeseite
+halsband-mit-metallschnalle-18c40a	-	-	-	unklar keine CJ-SKU	landeseite
+outdoor-smartwatch-fur-sport-gesundheit-800384	1699018084431966208	6	6.49	ok	landeseite
+hundeleine-fur-mittlere-und-grosse-hunde-518592	1398894348409638912	16	9.61	ok	landeseite
+smartwatch-mit-bluetooth-anrufen-und-zugangsko-336320	1699014070734696448	6	8.43	ok	landeseite
+zugseil-fur-kleine-hunde-und-katzen-970816	1390829451775971328	16	5.81	ok	landeseite
+senioren-smartwatch-4g-mit-ortungsfunktion-409600	1698637576669769728	7	7.30	ok	landeseite
+automatische-teleskop-hundeleine-371328	1376444458421325824	16	7.25	ok	landeseite
+schwarze-hundeleine-mit-zugkraft-233152	1374207187651530752	16	7.43	ok	landeseite
+runde-smartwatch-mit-bluetooth-telefonie-478848	1692415921907838976	7	5.41	ok	landeseite
+hundeleine-mit-3d-blumen-372992	1369909610076573696	16	5.69	ok	landeseite
+4g-netcom-smartwatch-fur-kinder-391232	1689529363135471616	7	7.78	ok	landeseite
+zl02pro-smartwatch-herzfrequenz-messung-612672	1686574343255498752	7	6.81	ok	landeseite
+hundegeschirr-fur-grosse-hunde-114688	1614912257039806464	16	6.77	ok	landeseite
+smartwatch-herzfrequenz-schrittzahler-532096	1685910492595892224	7	5.49	ok	landeseite
+verstellbares-brustgeschirr-fur-katzen-und-kan-769344	1614625097313169408	16	5.81	ok	landeseite
+bluetooth-sportuhr-mit-runddisplay-193216	1683411166028107776	6	6.90	ok	landeseite
+quarzuhr-fur-damen-mit-farbverlauf-a9cdbd	-	-	-	unklar keine CJ-SKU	landeseite
+saugfuss-seilzug-zum-trainieren-704960	1380136378490294272	16	20.69	ok	landeseite
+armbanduhr-mit-herzfrequenz-und-blutsauerstoff-d2da5c	-	-	-	unklar keine CJ-SKU	landeseite
+sichtbarer-ohrenreiniger-mit-wlan-392640	1380125388600119296	7	6.49	ok	landeseite
+springseil-mit-zahler-und-kalorienanzeige-126848	1380100103154569216	7	9.69	ok	landeseite
+yogamatte-10-mm-071936	1380061818378129408	16	15.81	ok	landeseite
+gleitpads-fur-core-training-286656	1379714865106653184	16	5.12	ok	landeseite
+verstellbares-hantel-set-fur-das-heimtraining-094976	1379714827550855168	4	123.41	ok	landeseite
+waschbares-nackenkissen-fur-zu-hause-632800	2512310333151633000	16	14.96	ok	landeseite
