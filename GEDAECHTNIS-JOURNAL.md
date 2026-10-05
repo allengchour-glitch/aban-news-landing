@@ -58,6 +58,20 @@ Bestellanbindung nach Mail an accountmanagement@ricardo.ch ein — Konto «gewer
 Französisch: Agent zog 129 veraltete Kollektionstexte nach (174 Felder, 103 nur der neue ls-verwandt-Block) → `fr_stand.py`
 «vollständig, /fr live».
 
+## 2026-10-05 21:40 · 🎬 «mann sieht die bilder und videos sehr klein» + «bilder bearbeiten mit stimme»: Reels gross, Bild-Reels mit Stimme
+
+GEMESSEN: 3 aktuelle Reels — Produktvideo füllte 23–32 % der Fläche (make_reel.sh: Hochformat 600×780, quer 1080×608).
+GETAN: `make_reel.sh` Hochformat → VOLLBILD 1080×1920, quadratisch 970 hoch (Band 200–1170), quer 860 hoch mittig beschnitten
+(Test 4 Seitenverhältnisse, meisterwerk_tor ok). Stimme (Azure de-CH, Gratis-Stufe, Werbelizenz) 33 → 50 % (`reel_engine_runner.sh`).
+Neu `automation/reel/bild_reel.py`: Original-Produktbilder → Ken-Burns 1080 breit, 2 schnelle Schnitte in Sekunde 1, Zoom-Weg mit
+Segmentlänge, Stimme, make_reel.sh, Tor; `--weg` (Sichtprüfung), `--freigeben` (CDN + Queue). 10 Top-Landeseiten (90 T) gerendert,
+alle Tor ok, 2 Bilder per Sicht raus (Leselupe: gespiegelte Fremdmarke im Hintergrund; Kristall: leere Box mit Text), 10× ready
+(`bildreel-<handle>`); `meta_reel_post.mjs produktAktiv()` prüft jetzt auch `bildreel-` per Handle (vorher «keine Produkt-ID» = ungeprüft).
+Fallen: (1) Zoom 1.00→1.07 = Tor «HOOK 0.1, STILL 64 %» — Diashow braucht Schnitte in Sekunde 1 und ≥ 0,1 Zoom je Sekunde;
+(2) `while read … done < liste` + ffmpeg im Kind = ffmpeg frisst die Liste (Handles verstümmelt → «nicht aktiv») → `stdin=DEVNULL`;
+(3) Adobe-Freisteller zerstörte beim Sternenprojektor den Verkaufsgrund (Lichtstrahlen) — Betreiber «lieber nicht».
+**Ein neuer Reel-Typ braucht einen eigenen Zweig in der Vor-Post-Prüfung, sonst postet er ungeprüft.**
+
 ## 2026-10-05 20:15 · 🎼 Musik: 3 Stücke rotierten (22/20/18 von 60 Reels) → 6 neue epische Stücke über Google Lyria 3.5 · 🇫🇷 /fr live
 
 Betreiber: «das neue video mit stimme auf youtube ist toll, aber immer das selbe musik passt nicht mehr». Ursache gemessen in

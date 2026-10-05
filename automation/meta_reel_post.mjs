@@ -190,10 +190,14 @@ async function produktAktiv(postId) {
   // cjreel-<Shopify-Produkt-ID> (13–14-stellig). Die alte Fassung fragte JEDE Zahl als Shopify-ID ab →
   // «Produkt existiert nicht mehr» fuer den aktiven Projektor (Zeile faelschlich produkt-nicht-aktiv) und
   // «keine Produkt-ID» fuer UUID-pids (Tor uebersprungen). Jetzt: Shopify-ID direkt, CJ-pid per SKU-Suche.
-  const m = /^cjreel-([0-9A-Za-z-]{6,})$/.exec(postId || '');
+  // 05.10.2026: Bild-Reels (reel/bild_reel.py) heissen bildreel-<Shopify-Handle> → Status + Preis über den Handle.
+  const bh = /^bildreel-([a-z0-9-]+)$/.exec(postId || '');
+  const m = bh ? [null, 'handle'] : /^cjreel-([0-9A-Za-z-]{6,})$/.exec(postId || '');
   if (!m) return { ok: true, grund: 'keine Produkt-ID im Reel-Namen' };
-  const istShopifyId = /^\d{12,15}$/.test(m[1]);
-  const query = istShopifyId
+  const istShopifyId = !bh && /^\d{12,15}$/.test(m[1]);
+  const query = bh
+    ? `{ products(first:1, query:"handle:${bh[1]}"){ nodes{ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`
+    : istShopifyId
     ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`
     : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`;
   const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';

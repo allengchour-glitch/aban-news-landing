@@ -54,13 +54,13 @@ def grund(im):
     return ImageEnhance.Brightness(g).enhance(0.62)
 
 
-def bild_frame(im, bg, u, richtung, rein=True):
+def bild_frame(im, bg, u, richtung, rein=True, amp=0.22):
     """u 0..1 im Segment. Zoom 1.00 ↔ 1.22 (abwechselnd rein/raus) + Schwenk; Ausschnitt mit Gleitkomma-Box (ruhig, kein
     Pixelzittern). 05.10.: 1.00→1.07 fiel durch das Meisterwerk-Tor (HOOK 0.1 < 3, STILL 64 % — «Diashow aus Standbildern»)."""
     s = min(BOX_W / im.width, BOX_H / im.height)
     tw, th = int(im.width * s) // 2 * 2, int(im.height * s) // 2 * 2
     e = u * u * (3 - 2 * u)
-    z = 1.0 + 0.22 * (e if rein else 1 - e)
+    z = 1.0 + amp * (e if rein else 1 - e)
     cw, ch = im.width / z, im.height / z
     dx = (im.width - cw) * (0.5 + 0.45 * richtung * (e - 0.5))
     dy = (im.height - ch) * 0.42
@@ -94,7 +94,8 @@ def diashow(bilder, dauer, out):
         t = k / FPS
         i, t0, t1 = next((x for x in segs if x[1] <= t < x[2]), segs[-1])
         u = min(1.0, (t - t0) / (t1 - t0))
-        f = bild_frame(bilder[i], bgs[i], u, 1 if i % 2 == 0 else -1, rein=i % 2 == 0)
+        # Zoom-Weg mit der Segmentlänge: bei 5 Bildern (3.3 s) war 0.22 zu ruhig (Leselupe STILL 64 %, weisser Grund)
+        f = bild_frame(bilder[i], bgs[i], u, 1 if i % 2 == 0 else -1, rein=i % 2 == 0, amp=min(0.38, max(0.22, 0.1 * (t1 - t0))))
         if i + 1 < n and t1 - t0 > 1.0 and t > t1 - BLENDE:   # Kreuzblende nur zwischen langen Segmenten
             a = (t - (t1 - BLENDE)) / BLENDE
             f = Image.blend(f, bild_frame(bilder[i + 1], bgs[i + 1], 0.0, -1 if i % 2 == 0 else 1, rein=(i + 1) % 2 == 0), max(0, min(1, a)))
@@ -131,6 +132,8 @@ def render(a):
     os.makedirs(a.out_dir, exist_ok=True)
     out = os.path.join(a.out_dir, f"bildreel_{a.handle[:60]}.mp4")
     with tempfile.TemporaryDirectory() as td:
+        weg = {int(x) for x in a.weg.split(",") if x.strip()}   # Sichtprüfung: Bildindex raus (Fremdmarke, Textbild)
+        bilder = [b for i, b in enumerate(bilder) if i not in weg]
         ims = [lade(b["url"]) for b in bilder[:a.max_bilder]]
         src = os.path.join(td, "src.mp4")
         diashow(ims, a.dauer, src)
@@ -150,7 +153,7 @@ def render(a):
         m, ein = musik_wahl(a.musik)
         env["MUSIK_START"] = str(ein)
         subprocess.run(["bash", os.path.join(HIER, "make_reel.sh"), src, out, z1, z2, f"CHF {preis:.2f}", a.hook,
-                        os.path.join(REPO, "automation/music", m)], check=True, env=env)
+                        os.path.join(REPO, "automation/music", m)], check=True, env=env, stdin=subprocess.DEVNULL)  # ffmpeg frisst sonst stdin einer Schleife
     tor = subprocess.run([sys.executable, os.path.join(REPO, "automation/meisterwerk_tor.py"), out], capture_output=True, text=True,
                          env=dict(os.environ, PREIS_SOLL=f"{preis:.2f}"))
     tj = {}
@@ -175,7 +178,7 @@ def freigeben(a):
                           f"Bild-Reel {d['title'][:60]}"], capture_output=True, text=True, env=env, timeout=300).stdout.strip().split("\n")[-1]
     if not url.startswith("https://cdn.shopify.com/"):
         sys.exit(f"⛔ CDN-Upload gescheitert: {url[:120]}")
-    rid = f"bildreel-{a.handle[:60]}"
+    rid = f"bildreel-{a.handle}"
     csvp = os.path.join(REPO, "automation/reels_seed.csv")
     csv = open(csvp, encoding="utf-8").read()
     if re.search("^" + re.escape(rid) + ",", csv, re.M):
@@ -204,6 +207,7 @@ def main():
     ap.add_argument("--max-bilder", type=int, default=7)
     ap.add_argument("--out-dir", default="/tmp/bildreel")
     ap.add_argument("--ohne-stimme", action="store_true")
+    ap.add_argument("--weg", default="", help="Bildindizes (product.media, nur Bilder ≥ 600 px) weglassen, z. B. 4,5")
     ap.add_argument("--freigeben", default="")
     a = ap.parse_args()
     if a.freigeben:

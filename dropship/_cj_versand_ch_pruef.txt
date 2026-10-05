@@ -4582,3 +4582,8 @@ led-sportweste-fur-outdoor-aktivitaten-476929	2058836826264363010	7	8.74	ok	land
 velo-rucklicht-mit-langer-akkulaufzeit-607100	2604230825121607600	7	5.82	ok	landeseite
 gebogenes-lichtempfindliches-rucklicht-614600	2603180206151614900	7	6.49	ok	landeseite
 minimalistische-nachttisch-pendelleuchte-623400	2602240820311623800	16	12.56	ok	landeseite
+smartes-induktions-bremslicht-furs-velo-616000	2602100209101616400	7	6.49	ok	landeseite
+west-biking-velo-fernbedienungs-blinker-635300	2602070314351635600	7	6.37	ok	landeseite
+velo-rucklicht-mit-bewegungssensor-622000	2602060314021622400	7	8.74	ok	landeseite
+usb-fahrradlicht-fur-nachtfahrten-615100	2602040544071615500	7	10.73	ok	landeseite
+usb-led-stirnlampe-mit-4-modi-086530	2013093743072796674	0	-	KEINE CH-Option → DRAFT	landeseite
