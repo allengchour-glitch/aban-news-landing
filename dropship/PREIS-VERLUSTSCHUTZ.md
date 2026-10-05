@@ -1,4 +1,4 @@
-# Preis-Verlustschutz — Trockenlauf 2026-10-05 17:53 UTC
+# Preis-Verlustschutz — scharf 2026-10-05 23:08 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
