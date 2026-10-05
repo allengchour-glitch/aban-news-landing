@@ -4228,3 +4228,13 @@ salz-und-pfefferstreuer-set-2-teilig-936066	2052935108415565826	0	-	KEINE CH-Opt
 dr-reismilch-gesichtscreme-50g-555521	2072573310321721346	3	7.08	ok	landeseite
 dr-reismilch-gesichtsreiniger-919106	2072573052941279234	3	6.18	ok	landeseite
 dr-snail-collagen-cream-50g-287233	2072571844761841666	3	6.16	ok	landeseite
+dr-reis-milch-gesichtswasser-405762	2072573523714154498	3	7.13	ok	landeseite
+repair-cream-ultimative-feuchtigkeitspflege-696129	2072227165453250562	3	6.49	ok	landeseite
+azelaic-acid-niacinamide-serum-741570	2072227410734907393	3	5.06	ok	landeseite
+4-in-1-farbwechselnde-foundation-404610	2072227641467764738	3	5.86	ok	landeseite
+ouhoe-schneckencreme-sanfte-gesichtspflege-632833	2070415419328016386	0	-	KEINE CH-Option → DRAFT	landeseite
+retinol-nachtcreme-fur-glatte-haut-629100	2606240107101629800	3	8.17	ok	landeseite
+elektrische-straffende-augencreme-50g-187650	2067157577459490818	3	7.33	ok	landeseite
+2-in-1-eyelinerstift-bronze-228225	2066797393872834561	16	4.50	ok	landeseite
+2-in-1-eyelinerstift-champagner-069505	2066792206286344194	16	4.50	ok	landeseite
+deep-collagen-peptid-intensiv-ampulle-055618	2064530775508770818	0	-	KEINE CH-Option → DRAFT	landeseite
