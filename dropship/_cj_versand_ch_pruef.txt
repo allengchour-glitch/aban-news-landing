@@ -4302,3 +4302,4 @@ herren-mechanikuhr-mit-milanaise-armband-b2d61d	120E3C50-5166-4908-91C3-BE27E5AE
 wasserdichte-partneruhr-aus-edelstahl-cd1a14	0843A7EE-DBA2-4F78-878B-7BF85EDAB904	7	6.18	ok	landeseite
 gaming-trigger-griff-fur-smartphones-c1a081	C86451EF-D400-46B6-B74F-24DA175E0102	16	5.77	ok	landeseite
 elektrisches-reinigungsgerat-fur-poren-b73b35	5AA813DB-16EB-4A49-9FA1-B94F300DEE33	16	8.11	ok	landeseite
+sitzhocker-fur-das-lenkrad-4d96d4	4E728643-A968-4982-B23A-CB0D17F60369	16	10.12	ok	landeseite
