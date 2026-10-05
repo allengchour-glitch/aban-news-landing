@@ -4035,3 +4035,9 @@ sonnenbrille-aviateur-dual-bridge-uv400	2606120720101628500	5	5.43	ok	landeseite
 susswasserperlen-armband-perla-925-silber-infinity	2065648744874430466	16	7.17	ok	landeseite
 925-silber-armband-onda-kleeblatt-glieder	2065713389650857985	16	7.17	ok	landeseite
 925-silber-armband-cerchio-circle-link	2065686704387760129	16	7.17	ok	landeseite
+herren-kurzarm-hemd-breeze-quick-dry-atmungsaktiv	2606120823541623800	16	7.10	ok	landeseite
+herren-strick-polo-lido-ajour-optik	2606130150161636400	16	8.11	ok	landeseite
+herren-sommer-set-riviera-hemd-shorts	2606120112491636800	16	10.83	ok	landeseite
+herren-chino-shorts-cruise-loose-fit	2606120658491611600	16	8.79	ok	landeseite
+herren-tank-top-court-color-block	2606121022461607900	16	6.77	ok	landeseite
+herren-beach-shorts-coral-reissverschluss-tasche	2606120128541635400	16	7.57	ok	landeseite
