@@ -3649,3 +3649,4 @@ rattanmatte-und-eisseiden-kissenbezug-600900	2512181114351601100	16	8.79	ok	land
 halsband-mit-metallschnalle-18c40a	-	-	-	unklar keine CJ-SKU	landeseite
 outdoor-smartwatch-fur-sport-gesundheit-800384	1699018084431966208	6	6.49	ok	landeseite
 hundeleine-fur-mittlere-und-grosse-hunde-518592	1398894348409638912	16	9.61	ok	landeseite
+smartwatch-mit-bluetooth-anrufen-und-zugangsko-336320	1699014070734696448	6	8.43	ok	landeseite
