@@ -16879,3 +16879,4 @@ gid://shopify/Product/16607277121927	34->0	Pantoletten mit Keilabsatz in Weiss
 gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 ml
 gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
 gid://shopify/Product/15430408438145	17->1	Herren Sling-Tasche «Ranger» · Crazy-Horse-Echtleder
+gid://shopify/Product/15453530456449	8->0	Haarspange Muschel mit Perle und Seestern, goldfarben

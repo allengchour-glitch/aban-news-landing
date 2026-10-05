@@ -4278,3 +4278,7 @@ kabelloses-ladegerat-kompakt-schnell-139560	1E1C4C61-5233-419E-85BF-3670546DAFF9
 bluetooth-player-mit-lampe-und-wireless-charge-69373f	96440C51-B0F4-4644-AA89-6B17FBD54973	7	12.57	ok	landeseite
 pagani-design-berjani-quarzuhr-4b0f6a	3E6CEDA6-2C4B-41C4-A79E-29183F3DF799	7	7.73	ok	landeseite
 pagani-design-berjani-3306-quarzuhr-38360c	0D38790E-5D93-4326-ADB1-14412028968E	7	6.07	ok	landeseite
+pagani-design-gold-armbanduhr-mit-stahlband-d62c72	1912581E-7886-4A90-B3FD-4EEDFEDFAB3C	7	8.57	ok	landeseite
+damen-quarzuhr-mit-kalender-und-24-stunden-anz-5f29a0	519653C1-D373-4C17-88B6-F9230A734DEA	7	6.18	ok	landeseite
+nibosi-quarzuhr-mit-edelstahlband-e89d0a	2F958323-FB21-467F-BEBA-0A2EC0EBB263	7	7.92	ok	landeseite
+armbanduhr-manschettenknopfe-kugelschreiber-ge-393b44	10A4D5EF-76D7-4205-9286-9420B481A17C	7	12.30	ok	landeseite
