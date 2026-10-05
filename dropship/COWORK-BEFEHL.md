@@ -1,5 +1,17 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+
+## 05.10. 16:40 — #1021: Iris NICHT nötig — CJ-Ersatzware (Ticket T202610040937181221)
+- Ursache gefunden (Screenshot Betreiber): Variante **CJZBNSSY02651 «Stainless steel blue» (Nibosi) bei CJ ausverkauft**;
+  CJ bietet ein «similar style» an (Bild: blaues Zifferblatt, Marke TIBERAO statt Nibosi). Betreiber hat am 04.10. 14:21 und
+  05.10. 18:20 (CJ-Zeit) zugestimmt; Status «Awaiting CJ Reply». Tracking EQKPT8612951662YQ: 0 Scans, «Processing» (16:15 UTC).
+- Shop: «Nibosi Quarzuhr mit Edelstahlband» → **DRAFT** + Tags `ausverkauft-lieferant`, `cj-ersatz-1021` (16:35 UTC).
+- ⚠️ Nur Betreiber: Die Kundin/der Kunde bekommt eine ANDERE Marke als bestellt. Vorschlag — kurz informieren, bevor das
+  Paket ankommt (Entwurf, NICHT gesendet):
+  > Grüezi, kurzes Update zu Ihrer Bestellung #1021: Die bestellte Uhr in Blau ist beim Hersteller ausverkauft. Wir senden
+  > Ihnen ein sehr ähnliches Modell (blaues Zifferblatt, Milanaise-Edelstahlband) ohne Aufpreis. Falls Sie lieber die volle
+  > Rückerstattung möchten, antworten Sie einfach auf diese Mail. Danke für Ihre Geduld! — LuxeStyle
+
 ## 🆕 05.10. 08:25 UTC — #1021 ab heute 23:37 UTC bei Iris melden, falls dann noch nicht versendet (~2 Min, CJ-Chat)
 > GEMESSEN 08:20 UTC (CJ `getTrackInfo`): **LX1021** (bezahlt 30.09. 23:37 UTC, CHF 45.90) Tracking EQKPT8612951662YQ = «Processing», 0 Scans;
 > **LX1022** (CHF 80.82) EQKPT8612975206YQ = «Processing», 0 Scans. Normal sind 1–5 Tage bis zur Übergabe; die 120-h-Schwelle für

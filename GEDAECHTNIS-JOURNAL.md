@@ -35,6 +35,17 @@
 
 
 
+## 2026-10-05 16:45 · ⌚ #1021: Fabrikbestand 20'000 und trotzdem «out of stock» — CJ-Ersatzware
+
+Die 120-h-Frage («Iris melden?») löste der Betreiber mit einem Screenshot: CJ-Ticket T202610040937181221 «Products
+Discontinued» — Variante CJZBNSSY02651 «Stainless steel blue» (Nibosi) ausverkauft, CJ beschafft ein «similar style»
+(Bild: TIBERAO), Betreiber stimmte zu. Gemessen danach: `product/stock/queryByVid` meldet für genau diese vid
+`factoryInventoryNum 20000`, `cjInventoryNum 0` — `cj_stock_guard.mjs` summiert `totalInventoryNum` und hätte die Uhr nie
+gedraftet. **Beobachtung (n = 1, noch keine Regel): Fabrikbestand ist eine Angabe des Lieferanten, keine Zusage.** Nicht
+blind auf cjInventoryNum umstellen — der Grossteil der CJ-Ware hat nur Fabrikbestand. Weitere Fälle sammeln (Ticket-Typ
+«Products Discontinued»). Getan: Produkt DRAFT + `ausverkauft-lieferant`, Kunden-Info-Entwurf für den Betreiber
+(andere Marke als bestellt → informieren), FIX-12H Punkt 1 geklärt.
+
 ## 2026-10-05 12:40 · 🎯 Groq-Vorrang-Reserve — ein knappes Kontingent braucht eine Rangordnung
 
 Gemini 402 + OpenAI leer → das EINZIGE Bildmodell war Groq qwen (200k Tokens/Tag je Organisation). Bildtausch, Kauderwelsch-
