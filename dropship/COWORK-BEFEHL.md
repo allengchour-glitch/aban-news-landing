@@ -1,5 +1,17 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 05.10. 03:45 UTC — Entscheid: «XMAS25 — 25 % Rabatt im Dezember» auf der Seite weihnachtsgeschenke-last-minute (~1 Min)
+> GEMESSEN (Admin-API, 05.10. 03:35 UTC): **Es gibt keinen Rabattcode XMAS25 im Shop** (`codeDiscountNodes` code:XMAS25 → 0 Treffer;
+> 49 aktive Codes, höchster Satz 15 %). Die veröffentlichte Seite verspricht ihn trotzdem. Seit 02.10. gilt deine 15-%-Reserve
+> (`preis_verlustschutz` RABATT 0.15, Codes > 15 % deaktiviert). Ich habe die Zeile NICHT geändert, weil 25 % ein Preis-Entscheid ist.
+
+Drei Wege, ein Wort genügt:
+- **«xmas 15»** → ich schreibe die Zeile auf «XMAS15 — 15 % Rabatt im Dezember» und lege den Code XMAS15 (15 %, 01.–24.12.2026,
+  einmal je Kundin) per API an, lese ihn zurück.
+- **«xmas raus»** → ich streiche die Zeile; die Seite behält «Gratis Versand ab CHF 50».
+- **«xmas 25»** → du legst XMAS25 (25 %) selbst an (Shopify → Rabatte); ich prüfe dann den Verlust-Wächter je Produkt, denn 25 % liegt
+  über der Reserve und frisst bei Ware mit knapper Marge den Gewinn.
+
 
 
 ## 🆕 02.10. 22:00 UTC — PC: alte Tagesaufgabe «LuxeMarketing» entschärfen (~2 Min, am PC)
