@@ -15,3 +15,7 @@ Datei: `2026-10-05_mega_export.csv` (Betreiber). ⚠️ Der Crawl ist vom 03.10.
 
 Fazit: 0 Fehler (Errors), nur Warnungen/Hinweise; alles Relevante ist live behoben. Für eine echte Nachmessung im Audit
 «Rerun campaign» drücken (Betreiber) — dann zeigen «Compare Crawls» die Differenz.
+
+## Nachtrag 19:00 UTC — Detail «Pages with only one internal link» (17)
+Alle 17 sind Produkt-URLs **mit `?variant=…`** (Karten-Links der Startseiten-Reihen). Gemessen: Canonical zeigt auf die
+Produkt-URL ohne Parameter (z. B. `rucksack-mit-katzenmotiv-803264`) → Google wertet die Hauptseite, kein Handlungsbedarf.

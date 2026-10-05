@@ -417,3 +417,9 @@
 2026-10-04T22:05:11Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
 2026-10-04T22:05:13Z	SCHREIB	gid://shopify/Product/15448794595713	taillierte-jeansjacke-fur-herren-282562	USED	titel	Taillierte Jeansjacke für Herren – Schwarz im Used-Look	Taillierte Jeansjacke für Herren – Schwarz im Vintage-Look	ok
 2026-10-04T22:05:13Z	SCHREIB	gid://shopify/Product/15448794595713	taillierte-jeansjacke-fur-herren-282562	USED	seo_beschreibung	Taillierte Jeansjacke für Herren – Schwarz im Used-Look: Das robuste Denim-Material gewährleistet Langlebigkeit und hohen Tragekomfort.	Taillierte Jeansjacke für Herren – Schwarz im Vintage-Look: Das robuste Denim-Material gewährleistet Langlebigkeit und hohen Tragekomfort.	ok
+2026-10-05T18:15:58Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
+2026-10-05T18:16:00Z	SCHREIB	gid://shopify/Product/16606127489415	manuelle-zigarettenherstellung-mit-shredder-023488	RAUCH	typ	Werkzeug & Heimwerken	Raucherzubehör	ok
+2026-10-05T18:16:00Z	SCHREIB	gid://shopify/Product/16606127489415	manuelle-zigarettenherstellung-mit-shredder-023488	RAUCH	kategorie	gid://shopify/TaxonomyCategory/ha-15	gid://shopify/TaxonomyCategory/hg-19	ok
+2026-10-05T18:16:00Z	SCHREIB	gid://shopify/Product/16606127489415	manuelle-zigarettenherstellung-mit-shredder-023488	RAUCH	tags_dazu		smoke-zubehoer	ok
+2026-10-05T18:16:00Z	SCHREIB	gid://shopify/Product/16606127489415	manuelle-zigarettenherstellung-mit-shredder-023488	RAUCH	tags_weg	heimwerken,werkzeug		ok
+2026-10-05T18:16:01Z	NACHMESSUNG	gid://shopify/Product/15448794595713	taillierte-jeansjacke-fur-herren-282562	-	google		keine Google-Meldung	ok

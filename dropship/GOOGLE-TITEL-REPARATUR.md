@@ -16,18 +16,18 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-04T22:05:13Z — SCHARF
+## Letzter Lauf 2026-10-05T18:16:01Z — SCHARF
 
-Gescannt 50759 aktive von 50759 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 50709 aktive von 50709 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
 | zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
-| taillierte-jeansjacke-fur-herren-282562 | USED | Titel «Taillierte Jeansjacke für Herren – Schwarz im Used-Look» → «Taillierte Jeansjacke für Herren – Schwarz im Vintage-Look»; SEO | ok |
+| manuelle-zigarettenherstellung-mit-shredder-023488 | RAUCH | Typ Werkzeug & Heimwerken → Raucherzubehör; Kategorie → hg-19; +smoke-zubehoer; −heimwerken,werkzeug | ok |
 
 ## Ledger gesamt
 
-46 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+47 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -74,6 +74,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - k68-signal-detektor-46ae1c: tags_dazu google-policy-flag,google-policy-hacking
 - keramik-aschenbecher-mit-spiral-muster-629100: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - kompakter-zigarrenkasten-627900: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- manuelle-zigarettenherstellung-mit-shredder-023488: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - menstruationscup-fur-frauen-625600: typ Wellness & Gesundheit; tags_dazu google-policy-flag,google-policy-titel,intimpflege
 - multifunktionaler-aschenbecher-mit-luftreinige-617900: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - portable-auto-waschburste-4-teilig-605000: tags_dazu google-policy-drogen,google-policy-flag
@@ -85,3 +86,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
+
+## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
+
+- taillierte-jeansjacke-fur-herren-282562: keine Google-Meldung
