@@ -240,31 +240,123 @@ def muster(grund):
     return re.compile(r'[a-zäöüß]{2,}' + wort + r'(?:e|en|n|s)?\b', re.I)
 
 
+# ── SPERRLISTE (05.10.2026, Prüferbefund) ─────────────────────────────────────────────────────────────────────────
+# Seiten, an denen ein anderer Lauf gerade arbeitet oder deren Text einzeln geprüft wurde, fasst dieser Lauf nicht an —
+# auch keinen unsichtbaren Tag. Bis heute steckte diese Prüfung nur in einem Einmal-Skript (scratchpad/scharf.py); der
+# tägliche Keepalive-Lauf hätte «gummistiefel» auf «Wasserdichte Regenstiefel für Kinder» geschrieben, deren Handle in
+# seo_titel_geprueft_2026-10-02.tsv steht. Jetzt: Handle und Status LIVE lesen, Sperrliste direkt VOR jedem Bündel neu
+# lesen, Treffer mit Wortgrenze am Handle (und an der numerischen ID) prüfen.
+SPERR_MUSTER = [
+    "dropship/semrush/_neue_kollektionen_*.tsv", "dropship/semrush/_platz41_heben_*.tsv",
+    "dropship/semrush/_draft_ersatz_*.tsv", "dropship/semrush/_seite2_heben_*.tsv",
+    "dropship/semrush/_seo_kollektion_ledger.tsv", "dropship/semrush/_seo_seite2_ledger.tsv",
+    "dropship/semrush/seo_titel_geprueft_*.tsv", "dropship/semrush/_kannibalisierung_*.tsv",
+    "dropship/semrush/_nacharbeit_*.tsv", "dropship/semrush/*NACHARBEIT*",
+]
+
+
+def sperr_text():
+    import glob
+    txt = []
+    for m in SPERR_MUSTER:
+        for f in sorted(glob.glob(m)):
+            try:
+                txt.append(open(f, encoding="utf-8", errors="ignore").read())
+            except OSError:
+                pass
+    return "\n".join(txt)
+
+
+def in_sperre(handle, gid, txt):
+    if handle and re.search(r"(?<![a-z0-9-])" + re.escape(handle) + r"(?![a-z0-9-])", txt):
+        return True
+    num = (gid or "").rsplit("/", 1)[-1]
+    return bool(num) and re.search(r"(?<!\d)" + re.escape(num) + r"(?!\d)", txt) is not None
+
+
+try:
+    from kaufwille_zeile import gql as _gql_daten   # gemeinsamer Helfer: Eimer-Etikette + Drossel-Geduld
+except Exception:  # pragma: no cover
+    def _gql_daten(q, v=None):
+        return gql(q, v)["data"]
+
+
+def live_lesen(ids):
+    """id → {id handle title status productType tags}, frisch aus dem Admin (Export kann Stunden alt sein)."""
+    live = {}
+    for i in range(0, len(ids), 50):
+        d = _gql_daten('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle title status productType tags}}}',
+                       {"ids": ids[i:i + 50]})
+        for n in d.get("nodes") or []:
+            if n:
+                live[n["id"]] = n
+    return live
+
+
+def gesperrt_schreiben(auftraege, ledger_zeile, art):
+    """auftraege: [(live_node, [tags])]. Bündel ≤ 10 tagsAdd; Sperrliste direkt vor jedem Bündel neu gelesen.
+    DRY: nichts schreiben, nur zeigen, was geschrieben und was gesperrt würde. Rückgabe: Anzahl geschriebener Produkte."""
+    n = gesperrt = 0
+    for i in range(0, len(auftraege), 10):
+        txt = sperr_text()
+        teil = []
+        for node, tags in auftraege[i:i + 10]:
+            if in_sperre(node["handle"], node["id"], txt):
+                gesperrt += 1
+                print(f"     SPERRE {art}: {node['handle']} ({','.join(tags)}) — Handle steht in einem Sperr-Ledger", flush=True)
+            else:
+                teil.append((node, tags))
+        if DRY:
+            for node, tags in teil:
+                print(f"     WÜRDE {art} {','.join(tags):<14} {node['handle'][:60]}", flush=True)
+            n += len(teil)
+            continue
+        if not teil:
+            continue
+        q = "mutation{" + " ".join(f'm{j}:tagsAdd(id:{json.dumps(node["id"])},tags:{json.dumps(tags)}){{userErrors{{message}}}}'
+                                   for j, (node, tags) in enumerate(teil)) + "}"
+        d = _gql_daten(q)
+        for j, (node, tags) in enumerate(teil):
+            fehler = ((d.get(f"m{j}") or {}).get("userErrors")) if d.get(f"m{j}") is not None else ["keine Antwort"]
+            if fehler:
+                print(f"     FEHLER {node['handle']}: {fehler}", flush=True)
+                continue
+            ledger_zeile(node, tags)
+            n += 1
+        time.sleep(0.5)
+    print(f"{art}: {n} Produkte {'würden geschrieben' if DRY else 'geschrieben'}, {gesperrt} wegen Sperr-Ledger übersprungen", flush=True)
+    return n
+
+
 def synonyme_schreiben(syn_aufgaben):
-    """tagsAdd je Produkt; Ledger mit Datum (Altwert = Tag fehlte → Rückweg tagsRemove)."""
+    """tagsAdd je Produkt; Ledger mit Datum (Altwert = Tag fehlte → Rückweg tagsRemove).
+    Kandidaten aus dem Export, Entscheidung aus dem LIVE-Stand (Status, Titel, Tags, Handle)."""
     if not syn_aufgaben:
         return
     erledigt = set()
     if os.path.exists(SYNONYM_LEDGER):
         erledigt = {tuple(l.split("\t")[1:3]) for l in open(SYNONYM_LEDGER)}
+    live = live_lesen([gid for gid, _, _ in syn_aufgaben])
+    auftraege = []
+    for gid, _, _ in syn_aufgaben:
+        node = live.get(gid)
+        if not node or node.get("status") != "ACTIVE":
+            continue
+        tags = [g for g in synonym_tags(node["title"], node.get("productType"), node.get("tags")) if (gid, g) not in erledigt]
+        if tags:
+            auftraege.append((node, tags))
     neu_datei = not os.path.exists(SYNONYM_LEDGER)
-    f = open(SYNONYM_LEDGER, "a")
-    if neu_datei:
+    f = None if DRY else open(SYNONYM_LEDGER, "a")
+    if f and neu_datei:
         f.write("datum\tproduct_id\ttag_neu\ttitel\n")
-    n = 0
-    for gid, titel, tags in syn_aufgaben:
-        tags = [g for g in tags if (gid, g) not in erledigt]
-        if not tags:
-            continue
-        r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": gid, "t": tags})
-        if ((r.get("data") or {}).get("tagsAdd") or {}).get("userErrors"):
-            continue
+
+    def zeile(node, tags):
         for g in tags:
-            f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{gid}\t{g}\t{titel}\n")
+            f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{node['id']}\t{g}\t{node['title']}\n")
         f.flush()
-        n += 1
-        time.sleep(0.25)
-    print(f"Synonym-Tags geschrieben: {n} Produkte", flush=True)
+    gesperrt_schreiben(auftraege, zeile, "Synonym-Tags")
+    if f:
+        f.close()
 
 
 def main():
@@ -317,9 +409,10 @@ def main():
     if DRY:
         for gid, t, ns in syn_aufgaben:
             print(f"     SYN {','.join(ns):<14} {t[:70]}", flush=True)
-        return
-    synonyme_schreiben(syn_aufgaben)
+    synonyme_schreiben(syn_aufgaben)      # DRY: nur Anzeige inkl. SPERRE-Zeilen, nichts geschrieben
     if not aufgaben:
+        if not DRY:
+            print("FERTIG: 0 Produkte mit Suchwort-Tags versehen (keine Grundwort-Kandidaten)")
         return
 
     # 05.10.2026: Das Ledger sperrte bisher die ganze Produkt-ID («gid in done») — ein Produkt, das einmal
@@ -330,31 +423,29 @@ def main():
             teile = l.split("\t")
             if len(teile) >= 2:
                 done |= {(teile[0], g) for g in teile[1].split(",")}
-    f = open(LEDGER, "a")
-    n = 0
-    for gid, titel, neu in aufgaben:
-        neu = [g for g in neu if (gid, g) not in done]
-        if not neu:
+    # 05.10.2026: auch die Grundwort-Tags gehen über den Live-Stand und die Sperrliste (Bündel ≤ 10, Sperre vor jedem Bündel).
+    offen = [(gid, [g for g in neu if (gid, g) not in done]) for gid, _, neu in aufgaben]
+    offen = [(gid, neu) for gid, neu in offen if neu]
+    live = live_lesen([gid for gid, _ in offen]) if offen else {}
+    auftraege = []
+    for gid, neu in offen:
+        node = live.get(gid)
+        if not node or node.get("status") != "ACTIVE":
             continue
-        r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
-                {"id": gid, "t": neu})
-        if ((r.get("data") or {}).get("tagsAdd") or {}).get("userErrors"):
-            continue
-        n += 1
-        f.write(f"{gid}\t{','.join(neu)}\t{titel}\n")
-        # ⚠️ NACH JEDEM EINTRAG AUF DIE PLATTE SCHREIBEN, nicht alle 200.
-        # Der erste Anlauf tat das nur alle 200 Zeilen — und kam nie so weit: Das
-        # Turn-Reaping killt lange Läufe zuverlässig nach wenigen Minuten, der Puffer war
-        # dann noch nicht geschrieben, das Ledger blieb leer, und der Supervisor startete
-        # den Lauf von vorn. Nach acht Minuten und mehreren Neustarts standen exakt 0
-        # Produkte im Ledger, obwohl die API sauber antwortete. Ein Ledger, das einen
-        # Absturz nicht überlebt, ist kein Ledger. Das Schreiben kostet nichts gegen den
-        # API-Aufruf daneben.
+        vorhanden = {x.lower() for x in node.get("tags") or []}
+        neu = [g for g in neu if g not in vorhanden]
+        if neu:
+            auftraege.append((node, neu))
+    f = None if DRY else open(LEDGER, "a")
+
+    def zeile(node, neu):
+        # ⚠️ NACH JEDEM EINTRAG AUF DIE PLATTE (Lehre: ein Ledger, das einen Absturz nicht überlebt, ist keins).
+        f.write(f"{node['id']}\t{','.join(neu)}\t{node['title']}\n")
         f.flush()
-        if n % 200 == 0:
-            print(f"  … {n}/{len(aufgaben)}", flush=True)
-        time.sleep(0.25)
-    f.flush()
+    n = gesperrt_schreiben(auftraege, zeile, "Grundwort-Tags")
+    if DRY:
+        return
+    f.close()
     print(f"FERTIG: {n} Produkte mit Suchwort-Tags versehen")
 
 
