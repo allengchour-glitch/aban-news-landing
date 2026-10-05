@@ -1,5 +1,19 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 05.10. 08:25 UTC — #1021 ab heute 23:37 UTC bei Iris melden, falls dann noch nicht versendet (~2 Min, CJ-Chat)
+> GEMESSEN 08:20 UTC (CJ `getTrackInfo`): **LX1021** (bezahlt 30.09. 23:37 UTC, CHF 45.90) Tracking EQKPT8612951662YQ = «Processing», 0 Scans;
+> **LX1022** (CHF 80.82) EQKPT8612975206YQ = «Processing», 0 Scans. Normal sind 1–5 Tage bis zur Übergabe; die 120-h-Schwelle für
+> #1021 fällt heute **23:37 UTC**. Die Bestell-Ampel und `versand_stillstand.py` melden es, sobald sie überschritten ist.
+> Nur wenn #1021 dann immer noch «Processing» ist: CJ-App/Web → Chat (`https://chat.cjdropshipping.com/#/chat/openChat`) → Iris Huang:
+
+```
+Hi Iris, order LX1021 (tracking EQKPT8612951662YQ) was paid on 30 Sep and is still "Processing" with no carrier scan after 5 days.
+Could you please check with the warehouse and let me know the expected ship date? If an item is out of stock, please tell me
+which one so I can inform my customer. Thank you!
+```
+> Kundenmail mache ich NICHT von hier — wenn du willst, schreibe ich dir einen Entwurf, sobald Iris antwortet.
+
+
 ## 🆕 05.10. 06:35 UTC — Entscheid: terminierte Rabattcodes über deiner 15-%-Reserve (Black Friday / Weihnachten / Silvester) (~1 Min)
 > ⚠️ KORREKTUR meiner Meldung von 03:45: Ich hatte «kein Rabattcode XMAS25 im Shop» gemeldet — das war eine FEHLMESSUNG
 > (die Abfrage `code:XMAS25` filtert nicht, sie gab alle 109 Codes zurück). GEMESSEN 05.10. 06:10 UTC mit `codeDiscountNodes(query:"XMAS25")`:

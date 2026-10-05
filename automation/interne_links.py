@@ -376,6 +376,22 @@ def plan_bauen(ziele, colls, baum):
                 if len(w) >= 5 and w not in ("alle", "sub", "damen", "herren", "kinder", "premium", "zubehoer", "accessoires")}
 
     plan, offen = {}, []
+    # Bestehende Blöcke einlesen: der Block wird als Ganzes ersetzt, also müssen seine Links in den neuen Plan
+    # (sonst würde der zweite Lauf die Links des ersten löschen — gemessen 05.10. im Trockenlauf nach dem Schreiben).
+    A_RE = re.compile(r'<a href="([^"]+)">(.*?)</a>')
+    for c in colls:
+        m = BLOCK_RE.search(c["descriptionHtml"] or "")
+        if not m:
+            continue
+        e = plan.setdefault(c["handle"], {"links": [], "eltern": None})
+        teil_p = re.search(r'<p class="ls-verwandt">.*?</p>', m.group(0), re.S)
+        teil_e = re.search(r'<p class="ls-verwandt-eltern">.*?</p>', m.group(0), re.S)
+        for href, txt in A_RE.findall(teil_p.group(0) if teil_p else ""):
+            mm = LINK_RE.search(href)
+            if mm:
+                e["links"].append((href, html.unescape(txt), (mm.group(1), urllib.parse.unquote(mm.group(2)))))
+        for href, txt in A_RE.findall(teil_e.group(0) if teil_e else ""):
+            e["eltern"] = (href, html.unescape(txt))
 
     def gib(quelle, href, anker, key):
         q = plan.setdefault(quelle, {"links": [], "eltern": None})
@@ -442,9 +458,16 @@ def plan_bauen(ziele, colls, baum):
             continue
         if el in links_in(BLOCK_RE.sub("", c["descriptionHtml"] or "")):
             continue
-        eltern_fehlt.append((key[1], el[1]))
         q = plan.setdefault(key[1], {"links": [], "eltern": None})
+        if q["eltern"] and LINK_RE.search(q["eltern"][0]) and urllib.parse.unquote(LINK_RE.search(q["eltern"][0]).group(2)) == el[1]:
+            continue                                     # steht schon im Block
+        eltern_fehlt.append((key[1], el[1]))
         q["eltern"] = (f"/collections/{el[1]}", titel_rein((baum.get(el) or {}).get("titel") or ec["title"]))
+    # Nur Quellen behalten, deren Block sich ändern würde
+    for h in list(plan):
+        c = by_handle.get(h)
+        if c and BLOCK_RE.search(c["descriptionHtml"] or "") and BLOCK_RE.search(c["descriptionHtml"]).group(0) == block_html(plan[h]):
+            del plan[h]
     return plan, offen, eltern_fehlt
 
 
@@ -578,8 +601,8 @@ def main():
         return
     plan, offen, eltern_fehlt = plan_bauen(ziele, colls, baum)
     n_links = sum(len(e["links"]) for e in plan.values())
-    print(f"Plan: {len(plan)} Quell-Kollektionen · {n_links} Links · {sum(bool(e['eltern']) for e in plan.values())} Eltern-Links "
-          f"(Unterkollektionen ohne Link zur Oberkategorie: {len(eltern_fehlt)}) · offen {len(offen)}")
+    print(f"Plan: {len(plan)} Quell-Kollektionen zu schreiben · {n_links} Links in ihren Blöcken · {sum(bool(e['eltern']) for e in plan.values())} Eltern-Links "
+          f"(Unterkollektionen, denen der Übersicht-Link NEU fehlt: {len(eltern_fehlt)}) · offen {len(offen)}")
     for handle, e in sorted(plan.items()):
         print(f"  {handle}: " + " · ".join(f"[{a}]→{h}" for h, a, _ in e["links"]) + (f" · Übersicht→{e['eltern'][0]} [{e['eltern'][1]}]" if e["eltern"] else ""))
     for h, b, n in offen:

@@ -35,6 +35,20 @@
 
 
 
+## 2026-10-05 08:30 · 🧰 «fix 12 h»: Folgerunde 2 (11 Bereiche, 32 Agenten, je Fix → Prüfer → Nachbesserung)
+Ergebnis (Schlusskritik live 07:33–07:50): Plan-Punkte 3, 5, 6, 7, 9, 11, 13, 14, 16, 17, 20, 21 erfüllt — u. a. aktiv ohne Kategorie 0,
+900 Neuimporte SEO-Titel = Titel (Shopify kappt seo.title still bei 70 Zeichen → `seo_titel.mjs`/`seo_titel_grenze.py`), dünne Texte mit
+neuen Toren (Varianten nur aus Shopify-Optionen, Edelstein-Sperre, Material-Widerspruch, Müllquelle, Stückzahl) 25/25 Kanarienvögel,
+NACHPRUEFEN 78/0, Marke `_duenne_texte_angehalten` gelöscht; 9 Produkte mit nicht wählbarer Variante DRAFT (variante-unklar);
+Haarspange «Set mit vier» war EINE Spange (Familienfoto als Bildquelle!) → korrigiert. Bildtausch-Sperre las aus /tmp ein leeres REPO
+(«/») → 83 Tausche zurückgedreht; jetzt Rücklese täglich. «Abgebrochener Checkout aktivieren» WIDERLEGT: Klaviyo-Flow Vse76a läuft schon.
+Französisch: Inhalte weiter, aber 135/153 Menü-Kollektionen ohne fr → NICHT veröffentlicht. 11 Wächter-Blöcke in `fixer_keepalive.sh`
+(Backup /tmp/fixer_keepalive.vor_folgerunde2.sh), Aufseher neu gestartet. Nebenfund: 3 Baby-Kollektionen «Gratis Versand ab CHF 45»
+→ 50 (Ledger `_zusagen_kollektionen_2026-10-05.tsv`; zusagen_abgleich prüft Kollektionen noch nicht). #1021/#1022 bei CJ «Processing»,
+0 Scans → Iris-Text in COWORK-BEFEHL (ab 23:37 UTC). **Lehren:** Bild-Urteil vom Lifestyle-/Familienfoto ist keine Stückzahl-Quelle;
+ein Werkzeug, das aus /tmp gespiegelt läuft, muss REPO absolut kennen (sonst wirkt eine Sperre leer); JSON-zitierte Shell-Blöcke vor dem
+Einbau entschärfen (`\\"` → `\"`), sonst `bash -n`-Fehler. → `dropship/FIX-12H-PLAN.md` (Status-Spalte)
+
 ## 2026-10-05 04:30 · 🪣 Verbesserungsrunde: gemeinsamer gql-Helfer `kaufwille_zeile` ohne Eimer-Boden
 Zweites Gehirn meldete 1 NEU `helfer-ohne-eimer`: `kaufwille_zeile.gql` ist seit 04.10. der Helfer von 13 Werkzeugen und der
 Fix-Agenten, hatte aber weder `eimer_etikette.nachlauf` noch Geduld (3 Versuche, 3/6/9 s → «Throttled» = Abbruch). Fix:
