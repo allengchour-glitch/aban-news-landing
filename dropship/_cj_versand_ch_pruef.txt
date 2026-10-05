@@ -4549,3 +4549,5 @@ ghost-cat-universal-joystick-griff-167808	1604404528449859584	16	4.71	ok	landese
 hdmi-scanline-generator-fur-retro-gaming-035904	1493778434239893504	7	7.30	ok	landeseite
 2er-pack-unzerstorbares-zeitungs-hundespielzeu-295298	2059914524570456065	16	4.29	ok	landeseite
 robustes-baumwoll-seilspielzeug-fur-hunde-580289	2059552745993854977	16	10.83	ok	landeseite
+6er-pack-katzenminze-spielzeug-q-tip-sticks-620354	2059221466215895041	16	4.47	ok	landeseite
+beissfester-zahnungsstick-fur-haustiere-618100	2605020459111618600	16	8.19	ok	landeseite
