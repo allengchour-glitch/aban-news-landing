@@ -3825,3 +3825,28 @@ offener-armreif-im-retro-stil-626300	2512200916461626500	16	5.02	ok	landeseite
 fusskette-schildkrote-und-seestern-aus-925er-s-601800	2512200723371602000	16	4.36	ok	landeseite
 kupferring-mit-gravur-und-geburtsstein-633600	2605040617251634200	16	4.60	ok	landeseite
 dreistufiger-ring-18k-vergoldeter-edelstahl-607000	2605040148561607500	16	4.37	ok	landeseite
+minimalistischer-amethyst-damenring-625900	2605031027421626500	16	4.50	ok	landeseite
+damenring-mit-zirkon-einlage-601900	2605030600391602500	16	4.71	ok	landeseite
+verstellbarer-kristall-blumenring-626300	2605030509011626700	16	4.50	ok	landeseite
+birnenformiger-zirkon-ring-610900	2605020925181611500	16	4.58	ok	landeseite
+damenring-mit-rechteckigem-moissanit-628300	2605020851561628800	16	4.37	ok	landeseite
+damen-quarzuhr-af91f2	-	-	-	unklar keine CJ-SKU	landeseite
+holz-armbanduhr-mit-quarzwerk-1905f7	-	-	-	unklar keine CJ-SKU	landeseite
+quarzuhr-fur-damen-und-herren-afe067	-	-	-	unklar keine CJ-SKU	landeseite
+naviforce-quarzuhr-mit-lederarmband-5006cd	-	-	-	unklar keine CJ-SKU	landeseite
+naviforce-quarzuhr-mit-stahlband-8714e6	-	-	-	unklar keine CJ-SKU	landeseite
+fritteuse-mit-sieb-b05e9b	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-zitruspresse-1dfd9b	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-armbanduhr-mit-netzarmband-35d14b	-	-	-	unklar keine CJ-SKU	landeseite
+nudelmaschine-mit-teigpresse-1e1464	-	-	-	unklar keine CJ-SKU	landeseite
+nachfullbares-feuerzeug-aus-metall-c167c7	-	-	-	unklar keine CJ-SKU	landeseite
+umhangetasche-aus-pu-leder-mit-krokopragung-215360	1381817723360776192	16	12.21	ok	landeseite
+elektrischer-multifunktions-kochtopf-3d9627	-	-	-	unklar keine CJ-SKU	landeseite
+madchen-lederschuhe-mit-weicher-sohle-230912	1376379986021322752	16	9.20	ok	landeseite
+topfregal-mit-8-verstellbaren-ebenen-3328ae	-	-	-	unklar keine CJ-SKU	landeseite
+tiefe-obstschale-aus-akazienholz-bf49de	-	-	-	unklar keine CJ-SKU	landeseite
+baby-sommersandalen-mit-weicher-sohle-483968	1376367820220272640	16	7.17	ok	landeseite
+maifan-stein-omelettpfanne-mit-4-mulden-2ec2e4	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktionaler-schaler-923364	-	-	-	unklar keine CJ-SKU	landeseite
+elektrischer-schaler-fur-obst-und-gemuse-6b3f18	-	-	-	unklar keine CJ-SKU	landeseite
+kinder-sportschuhe-zum-schnuren-080000	1375697528468672512	16	7.17	ok	landeseite
