@@ -4325,3 +4325,13 @@ augenbrauen-stempel-kit-wasserfest-naturlich-546ee8	1427105511945408512	1	7.94	o
 astronaut-roboter-uberwachungskamera-90b6f7	1735480719696207872	7	21.19	ok	landeseite
 baby-lauflernschuhe-mit-streifen-35f5fd	0533E2F2-0E28-4946-B218-407A0A1226DD	16	7.57	ok	landeseite
 e58-faltbare-hd-drohne-c013de	0767EF6E-ED44-4CCB-BC9F-A906BFB41FF5	0	-	KEINE CH-Option → DRAFT	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+diy-ohrring-set-aus-pu-leder-00df42	1832288C-090E-424D-BF3F-36E68E34F448	1	13.81	ok	landeseite
+dreieckiges-bettkissen-2332b1	022C621C-F518-4DEE-882C-79B643CA035A	16	20.58	ok	landeseite
+ems-bauch-und-muskel-trainer-b08b29	03126C22-018B-49F0-9A5F-27F7E42682E8	7	8.74	ok	landeseite
+gesichtsrejuvenation-fur-zu-hause-ebee7a	51E6D439-1CC5-4FF9-9502-6C1939E4049B	7	6.26	ok	landeseite
+gansedaunenkissen-fullung-fur-kissenhullen-520f50	1536905341865308160	16	25.49	ok	landeseite
+herren-sakko-aus-azetatfaser-diverse-farben-35f236	000EB619-4F00-4C46-9E33-703640E82B58	16	11.37	ok	landeseite
+led-halsband-fur-hunde-leopard-muster-1985e6	0155EAFD-50DB-4821-8CDE-3FDA0B087AB3	7	5.94	ok	landeseite
+paarweise-hausschuhe-eba3ba	00A852BF-5B73-44BB-9EAC-C7FB68CD5BF4	16	8.64	ok	landeseite
