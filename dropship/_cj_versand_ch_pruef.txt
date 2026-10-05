@@ -4542,3 +4542,7 @@ mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been
 ps5-controller-akku-mit-digitalanzeige-605100	2407231105531605300	7	8.42	ok	landeseite
 handy-kuhler-mit-gamepad-griff-617100	2407190545121617400	7	7.11	ok	landeseite
 teleskopisches-wireless-gamepad-fur-smartphone-615600	2407190338271615800	7	10.33	ok	landeseite
+led-pixel-screen-fur-gaming-atmosphare-628500	2501020937471628800	7	27.14	ok	landeseite
+video-buch-mit-hardcover-und-7-zoll-display-609900	2412060553351600100	7	19.72	ok	landeseite
+handheld-game-tv-spielkonsole-627700	2411180632401627900	7	8.10	ok	landeseite
+ghost-cat-universal-joystick-griff-167808	1604404528449859584	16	4.71	ok	landeseite
