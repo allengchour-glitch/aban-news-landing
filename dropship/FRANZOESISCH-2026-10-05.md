@@ -75,3 +75,18 @@ elegantes-sommerkleid-a-linie…, herren-strickshirt-riviera…, wide-leg-hose-l
 - WebFetch `https://luxestyle.ch/fr/`: Seite französisch, Menü «Cadeaux & Noël · Femmes · Hommes · Chaussures …».
 - Offen: 129 Menü-Kollektionen mit `body_html` (teils meta) «outdated» — DE am 05.10. neu geschrieben, FR zeigt die ältere
   Kurzfassung; Startseiten-Reihentitel (Theme-Sektionen) und Produkte ausserhalb der Top-58 noch deutsch.
+
+## Nachzug 129 veraltete Kollektionen (05.10. ~20:10–20:20 UTC)
+- Gemessen vorher (`fr_stand.menu_handles()` → 161 Handles, 0 nicht auflösbar): **129 Kollektionen, 174 Felder** veraltet —
+  body_html 129, meta_title 21, meta_description 24.
+- Abgleich mit dem DE-Stand vom Morgen (`coll_todo.json`): **103 body_html** unterschieden sich NUR durch den neuen Block
+  `<!-- ls-verwandt -->` (Passend dazu / Zur Übersicht) → bisheriges fr behalten, Block übersetzt («Assorti :», «Vers la vue
+  d’ensemble :», 49 Linktexte von Hand, alle hrefs `/fr/…`). 5 weitere nur mit Ziffer 45→50 im DE oder ohne Morgenstand
+  (baby-kinder-sets, strampler-bodys, buro-home-office, 🎁-geschenke-bis-chf-30, 💎-premium-ab-chf-80) → fr war schon richtig, + Block.
+  **21 Kollektionen mit neu geschriebenem DE-Text** (beamer-heimkino, babykleidung, jeans-denim, midikleider, sub-ohrringe,
+  sub-beleuchtung, wimpern-lashes, westen-gilets …) + 45 Metas von Hand neu übersetzt («vous»).
+- Prüfungen vor dem Schreiben: Tag-Folge DE = FR (inkl. class) 129/129, Kommentare identisch, Linkzahl gleich, 0 interne Links
+  ohne `/fr/`, 0 ß, 0 «CHF 45», 0 Deutsch-Reste (Wortliste), Meta-Titel ≤ 65 (max 62), Meta-Beschreibung ≤ 160 (max 159).
+- `translationsRegister` in Bündeln à 10: **174/174 Felder, 0 userErrors**; Ledger +174 Zeilen (resourceId/key/neu[:200]/digest/zeit).
+- Live per WebFetch: `/fr/collections/kinderschuhe`, `/aufbewahrung-sub`, `/beamer-heimkino` → französisch, Links `/fr/…`, Meta-Titel fr.
+- **Nachmessung `fr_stand.py`: «FR: vollständig (Menü, Policies, Top-58, 161 Menü-Kollektionen), /fr live»** — 0 Menü-Kollektionen ohne fr/veraltet.
