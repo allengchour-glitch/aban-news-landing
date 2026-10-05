@@ -87,6 +87,13 @@ CFG = {
 }
 
 
+try:  # 05.10.2026: Semrush-Landeseiten (Teppiche, Bettwäsche, …) tragen dieselbe Regelform — Tabelle in kategorie_rein_semrush.py
+    from kategorie_rein_semrush import CFG as _CFG_SEMRUSH
+    CFG.update(_CFG_SEMRUSH)
+except Exception as _e:  # pragma: no cover
+    print("⚠️ kategorie_rein_semrush nicht geladen:", _e)
+
+
 def produkte(query=None, handle=None):
     cur, out = None, {}
     while True:

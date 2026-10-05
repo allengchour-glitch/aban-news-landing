@@ -39,13 +39,14 @@ CFG = {
         ban=R(HAUS + r"|wandteppich|teppichreiniger|teppichklopfer|teppichband|teppichklebe|teppichgreifer|"
               r"anti.?rutsch.?(pad|band|unterlage)|yoga|spiel(zeug|matte)|puzzle|kratz|haustier|hunde|katzen|auto|kofferraum|"
               r"mauspad|tischset|tischl(ä|ae)ufer|teppich-?muster|im teppich|teppichoptik|wandbehang|tapisserie|picknick|"
-              r"camping|\bdiy\b|tufting|leim|kleber|deko-?teppich"),
+              r"camping|\bdiy\b|tufting|leim|kleber|deko-?teppich|kehrroboter|staubsauger|saugroboter|wischroboter|krabbelmatte|wecker"),
         typen={"Wohnen & Deko", "Aufbewahrung & Organizer", "Haushalt & Wohnen", "Heimtextilien", "Basteln & DIY",
                "Beauty-Tools", "Auto-Zubehör", "Teppich", "Teppiche"} | SAMMEL,
         ja=["Minimalistischer Teppich, schmutzabweisend", "Flauschige Badematte", "Runder Teppich Wohnzimmer"],
         nein=["Mandala Wandteppich", "Teppichmesser Profi", "Tischläufer Leinen", "Kratzteppich für Katzen",
               "Multifunktionaler wasserdichter Picknick-Teppich", "Wasserdichter Camping-Teppich", "DIY Teppich-Set Faultier",
-              "Weisser Holzleim für Teppich-Tufting", "Deko-Teppich Streifen"],
+              "Weisser Holzleim für Teppich-Tufting", "Deko-Teppich Streifen", "Kehrroboter für Hartböden & Teppiche",
+              "Teppich-Wecker mit LED-Anzeige", "Lange Krabbelmatte & Teppich"],
         titel="Teppiche", sort="BEST_SELLING",
         seo_titel="Teppich kaufen: Wohnzimmer, Schlafzimmer & Bad | LuxeStyle",
         seo_text="Teppiche für Wohnzimmer, Schlafzimmer und Bad: runde Teppiche, Läufer, Badematten und Plüsch-Teppiche in "
@@ -64,12 +65,12 @@ CFG = {
         tag="kat-bettwaesche", suche=["bettwäsche", "bettwaesche", "bettbezug"], kw="bettwäsche", volumen=14800, kd=23,
         echt=R(r"bettw(ä|ae)sche|bettbez(u|ü|ue)g|bettgarnitur|duvetbezug"),
         ban=R(HAUS + r"|w(ä|ae)schebeutel|w(ä|ae)schesack|aufbewahrung|puppen|hunde|katzen|haustier|beutel f(ü|ue)r|klammer|"
-              r"spray|duft|stoff f(ü|ue)r|baumwollstoff|meterware|\bstoff\b"),
+              r"spray|duft|stoff f(ü|ue)r|baumwollstoff|meterware|\bstoff\b|sofa"),
         typen={"Wohnen & Deko", "Aufbewahrung & Organizer", "Basteln & DIY", "Heimtextilien", "Haushalt & Wohnen",
                "Bettwäsche"} | SAMMEL,
         ja=["Blumen-Bettwäsche-Set aus Baumwolle, 4-teilig", "Bettbezug 160x210 Leinen"],
         nein=["Wäschebeutel für Bettwäsche", "Hundebett mit Bettwäsche-Optik", "Twill-Baumwollstoff für Bettwäsche & Vorhänge",
-              "Baumwollstoff für Bettwäsche & Vorhänge"],
+              "Baumwollstoff für Bettwäsche & Vorhänge", "Sofa-Bettbezug gestreift"],
         titel="Bettwäsche", sort="BEST_SELLING",
         seo_titel="Bettwäsche kaufen: Baumwolle, Satin & Sets | LuxeStyle",
         seo_text="Bettwäsche-Sets aus Baumwolle, Tencel und Satin: Bettbezüge mit Kissenbezug, einfarbig, gestreift oder mit "
@@ -93,7 +94,7 @@ CFG = {
         nein=["Mini-Wäschekorb Deko für Puppenhaus"],
         titel="Wäschekörbe", sort="BEST_SELLING",
         seo_titel="Wäschekorb kaufen: faltbar, Deckel & Fächer | LuxeStyle",
-        seo_text="Wäschekörbe und Wäschesammler: faltbar, mit Deckel, mehreren Fächern oder Rollen, aus Oxford-Stoff, "
+        seo_text="Wäschekorb und Wäschesammler: faltbar, mit Deckel, mehreren Fächern oder Rollen, aus Oxford-Stoff, "
                  "Leinen-Optik, Bambus und Metall. Versand in die Schweiz.",
         text="<p>Ein Wäschekorb sammelt, was bis zum nächsten Waschtag anfällt – und sieht im besten Fall nicht nach "
              "Wäsche aus. Hier findest du Wäschekörbe und Wäschesammler für Bad, Schlafzimmer und Waschküche.</p>\n"
@@ -119,7 +120,7 @@ CFG = {
         titel="Wecker", sort="BEST_SELLING",
         seo_titel="Wecker kaufen: digital, LED & Lichtwecker | LuxeStyle",
         seo_text="Wecker für Nachttisch und Reise: digitale LED-Wecker, Lichtwecker mit Sonnenaufgang, Kinderwecker und Modelle "
-                 "mit Ladefunktion fürs Handy. Versand in die Schweiz.",
+                 "mit Ladefunktion. Versand in die Schweiz.",
         text="<p>Ein Wecker neben dem Bett heisst: Das Handy darf draussen bleiben. Hier findest du digitale und analoge "
              "Wecker für Nachttisch, Kinderzimmer und Reise.</p>\n<h2>Was du hier findest</h2>\n<ul>\n<li><strong>"
              "LED-Wecker:</strong> grosse Ziffern, Spiegel-Front, Temperaturanzeige, oft mit USB-Anschluss oder kabelloser "
@@ -139,7 +140,7 @@ CFG = {
         nein=["Duschvorhangstange ohne Bohren", "12 Duschvorhangringe Edelstahl"],
         titel="Duschvorhänge", sort="BEST_SELLING",
         seo_titel="Duschvorhang kaufen: Polyester, Motive & Sets | LuxeStyle",
-        seo_text="Duschvorhänge aus Polyester, wasserabweisend, mit Blumen-, Marmor- und Fotomotiven, einzeln oder als Set mit "
+        seo_text="Duschvorhang aus Polyester, wasserabweisend, mit Blumen-, Marmor- und Fotomotiven, einzeln oder als Set mit "
                  "Badteppich und WC-Vorleger. Versand in die Schweiz.",
         text="<p>Ein Duschvorhang hält das Wasser in der Dusche und ist zugleich die grösste Fläche im Bad – ein Motivwechsel "
              "verändert den ganzen Raum. Hier findest du Duschvorhänge aus Polyester, einzeln oder als Set.</p>\n<h2>Was du "
@@ -164,7 +165,7 @@ CFG = {
         titel="Taschenlampen & Stirnlampen", sort="BEST_SELLING",
         seo_titel="Taschenlampe kaufen: LED, USB & Stirnlampen | LuxeStyle",
         seo_text="LED-Taschenlampen und Stirnlampen: wiederaufladbar per USB, mit Zoom, UV-Licht oder Bewegungssensor, für "
-                 "Outdoor, Velo, Keller und Haushalt. Versand in die Schweiz.",
+                 "Outdoor, Velo und Haushalt. Versand in die Schweiz.",
         text="<p>Eine Taschenlampe gehört in jede Schublade, jedes Auto und jeden Rucksack. Hier findest du LED-Taschenlampen "
              "und Stirnlampen vom Schlüsselbund-Format bis zur taktischen Lampe mit Zoom.</p>\n<h2>Was du hier findest</h2>\n"
              "<ul>\n<li><strong>Mini-Taschenlampen:</strong> Aluminium oder Edelstahl, per USB wiederaufladbar, passen an "
@@ -186,7 +187,7 @@ CFG = {
         titel="Wandregale", sort="BEST_SELLING",
         seo_titel="Wandregal kaufen: Holz, Metall & Küche | LuxeStyle",
         seo_text="Wandregale aus Holz und Metall: Schweberegale, Hexagon-Sets, Küchenregale mit Haken und Bad-Ablagen mit "
-                 "Saugnäpfen oder zum Kleben ohne Bohren. Versand in die Schweiz.",
+                 "Saugnäpfen ohne Bohren. Versand in die Schweiz.",
         text="<p>Ein Wandregal schafft Platz, ohne Boden zu brauchen – für Bücher, Gewürze, Kosmetik oder die Schlüssel "
              "beim Eingang. Hier findest du Wandregale aus Holz, Metall und Bambus für Wohnzimmer, Küche, Bad und Flur.</p>\n"
              "<h2>Was du hier findest</h2>\n<ul>\n<li><strong>Wohnen:</strong> Schweberegale, runde und sechseckige "
@@ -202,15 +203,15 @@ CFG = {
         echt=R(r"winterjacke|winterjacken|daunenjacke|daunenjacken|wintermantel|winterm(ä|ae)ntel|daunenmantel|"
                r"daunenm(ä|ae)ntel|\bparka\b|winterparka|puffer.?jacke|pufferjacke"),
         ban=R(HAUS + r"|hunde|katzen|haustier|puppen|kinder|baby|kleinkind|jungen|m(ä|ae)dchen|weste\b|westen\b|hund\b|"
-              r"aufbewahrung|kleiderb(ü|ue)gel|reinigung|spray|lego|figur|playmobil|anh(ä|ae)nger|schl(ü|ue)ssel"),
+              r"aufbewahrung|kleiderb(ü|ue)gel|reinigung|spray|lego|figur|playmobil|anh(ä|ae)nger|schl(ü|ue)ssel|ohne (ä|ae)rmel|(ä|ae)rmellos"),
         typen={"Damenmode", "Herrenmode", "Mode", "Jacke", "Jacken", "Mäntel"} | SAMMEL,
         ja=["Kurze Winterjacke mit Kapuze", "Kurze Daunenjacke mit Patchwork-Ärmeln für Damen",
             "Gefütterter Patchwork-Wintermantel mit Kapuze"],
-        nein=["Hunde-Winterjacke wasserdicht", "Daunenweste Herren", "Kinder-Winterjacke mit Fell"],
+        nein=["Hunde-Winterjacke wasserdicht", "Daunenweste Herren", "Kinder-Winterjacke mit Fell", "Wintermantel ohne Ärmel, mittellang"],
         titel="Winterjacken & Daunenjacken", sort="BEST_SELLING",
         seo_titel="Winterjacke Damen & Herren: Daunenjacken | LuxeStyle",
         seo_text="Winterjacken und Daunenjacken für Damen und Herren: kurze Puffer-Jacken, gefütterte Parkas mit Kapuze und "
-                 "Fellkragen, lange Wintermäntel. Versand in die Schweiz.",
+                 "Fellkragen, Wintermäntel. Versand in die Schweiz.",
         text="<p>Eine Winterjacke muss zwei Dinge können: warm halten und zum Rest des Kleiderschranks passen. Hier findest "
              "du Winterjacken, Daunenjacken und Wintermäntel für Damen und Herren.</p>\n<h2>Was du hier findest</h2>\n<ul>\n"
              "<li><strong>Daunenjacken Damen:</strong> kurze Puffer-Jacken, leichte Steppjacken für Herbst und Winter, "
