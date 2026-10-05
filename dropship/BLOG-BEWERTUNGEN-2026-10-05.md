@@ -66,3 +66,35 @@ Keine Bewertung ausgeblendet, gelöscht oder erfunden. Wache bleibt bei «12 Nam
 
 ## Nach 16:00 UTC (CJ-Punkte)
 Nichts aus diesem Bereich braucht CJ.
+
+## Nachbesserung 07:15–07:35 UTC (Prüferbefunde)
+**Befund 1 — Untererfassung absolute Links.** `HREF_RE` (blog_linkziele_wache.py) und das `findall` in `blog_tote_links.py` (Z. 309)
+lasen nur `href="/products/…"`; 49 Links in den Artikeln sind absolut (`https://luxestyle.ch/…`). Beide Regex jetzt
+`href="(?:https?://(?:www\.)?luxestyle\.ch)?(/(?:products|collections)/[^"#?]+)` (Selbsttest: relativ, absolut, www, fremder Host → 4/4).
+Erster Lauf der erweiterten Wache (07:20): **2 tote Ziele in 9 Artikeln, 344 Ziele** — der vom Prüfer gefundene absolute
+Paar-Armband-Link UND neu `sternenhimmel-projektor-galaxy-led-nachtlicht-527681` (um 06:42 UTC vom CJ-Versandwächter
+gedraftet, Tag `cj-nicht-versendbar-ch`, 8 Artikel; nach dem Prüferlauf 06:25 entstanden).
+- Partner-Artikel: Abschnitt 3 neu «Geflochtene Armbänder» → `handgewobenes-amulett-armband-fur-paare-613700` (aktiv, CHF 21.90,
+  Fakten Kordel/Rot oder Kaffeebraun/einzeln verpackt von der Produktseite); kein aktives Naturstein-Paar-Armband im Sortiment.
+- 8 Sternenhimmel-Artikel → `sternenhimmel-projektor-cosmos-led-nachtlicht-240961` (aktiv, CHF 32.90, Fernbedienung/Timer/USB laut
+  Produktseite); Texte ohne die alten Behauptungen (6 Melodien, 8 Lichtfarben, Bluetooth, Panda, «statt 60-80 bei anderen Brands»);
+  im Lampen-Test ein zweiter Link auf die Kollektion `licht-nachtlicht-projektor` (181 Produkte, veröffentlicht).
+- Skript `scratchpad/blog_nachbesserung_fix.py` (Trockenlauf 13/13 Treffer → scharf 07:25, 10 Artikel geschrieben), Ledger
+  `_blog_tote_links.txt` +10 Zeilen (`nachbesserung-pruefer`), Vorher-Bodies `dropship/_blog_artikel_vorher_2026-10-05b.json`.
+
+**Befund 2 — Nagellackstift-Karte.** «fünf Stifte im Set» + «ab CHF 15.90» (= Variante 1 Stück; 5er-Set CHF 24.90, 44 Varianten).
+Karte neu: Titel «3-in-1 Nagellackstift · einzeln oder 5er-Set», Text «Einzeln oder als 5er-Set wählbar, der Preis je Variante
+steht auf der Produktseite», Preiszeile «ab CHF 15.90» bleibt (ab = kleinste Variante). Produkt selbst (Multipack-Regel):
+Titel «(5er-Set)» → «3-in-1 Nagellackstift · einzeln oder 5er-Set», Beschreibung 2 Sätze, SEO-Beschreibung (war Sie-Form),
+6 verstümmelte Optionswerte («Farbton 19 · 5 Stück-1 Stück», «11to15 color-5pcs» …) → «Farbton 19-1 Stück», «Farbton 11–15-5 Stück» …;
+alt/neu in `dropship/_nagellackstift_vorher_nachher_2026-10-05.json`.
+
+**Nachher (gemessen):** Wache 07:28 `BLOG-LINKS: 0 tote Ziele in 0 Artikeln · 349 Ziele in 334 Artikeln · 21 per Redirect lebendig
+· 237 Artikel ohne Produktlink`; `blog_preise_aktualisieren.py` Trockenlauf `BLOG-PREISE: 0 abweichend · 143 Preisangaben`;
+absolute Produktlinks mit Preisangabe: 0 (A_RE des Preis-Aktualisierers braucht darum keine Erweiterung). WebFetch live:
+Partner-Artikel zeigt den Amulett-Link, Nagellack-Karte den neuen Text, Produktseite den neuen Titel + Optionswerte,
+`handgewobenes-amulett…` und `…cosmos…` HTTP 200.
+
+**Fehler auf dem Weg:** `--scharf` versehentlich zweimal gestartet — zweiter Lauf schrieb nichts (0 Treffer), überschrieb aber
+die Vorher-Dateien mit dem Nachher-Stand; aus den Rohdumps (`stern_artikel.json`, `alle_artikel.json` 06:23, Trockenlauf-Protokoll)
+rekonstruiert (10/10 mit Alt-Marker). Lehre: Vorher-Datei nie überschreiben, wenn sie schon existiert.
