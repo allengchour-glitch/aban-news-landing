@@ -3987,3 +3987,14 @@ stern-ohrringe-gold-4zack	2065322741278482434	16	4.47	ok	landeseite
 tropfen-ohrringe-emaille-retro	2065323731741990913	16	4.60	ok	landeseite
 statement-ring-zirkonia-kristall	2606120803251601900	16	4.40	ok	landeseite
 ring-you-light-up-my-life-leuchtstein	2606120251271634200	16	4.50	ok	landeseite
+herz-ring-rosegold-zirkonia	2606110544291633900	16	4.42	ok	landeseite
+breiter-ring-silber-floral	2606110404531621900	16	4.37	ok	landeseite
+ring-blauer-stein-elegant	2606110120031608500	16	4.50	ok	landeseite
+ring-schwarz-regenbogen-kristall	2606100928031606900	16	4.81	ok	landeseite
+stapelring-set-gold-mix	2606100702411625900	16	4.40	ok	landeseite
+siegelring-marmor-gold	2606100454231626900	16	4.50	ok	landeseite
+retro-flammen-tischlampe-led	2063908074368376834	7	10.92	ok	landeseite
+isolier-trinkflasche-edelstahl-huelle	2606120913081625000	16	10.49	ok	landeseite
+edelstahl-coffee-to-go-becher	2606111212431606500	16	8.66	ok	landeseite
+canvas-shopper-tote-nachhaltig	2606121029231602100	16	8.79	ok	landeseite
+edelstahl-seifenschale-ohne-bohren	2606100844591622500	3	8.42	ok	landeseite
