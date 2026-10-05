@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-05T02:01Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-05T02:57Z
 
-Aktive gescannt: 21 · ohne Kategorie: 21 · heute gesetzt: 17 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
+Aktive gescannt: 9 · ohne Kategorie: 9 · heute gesetzt: 5 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -13,9 +13,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- pbt-keycap-fur-tastatur-21843c · Gadget → Electronics
-- intelligente-wlan-steckdose-e0e1e2 · Gadget → Home & Garden > Household Supplies > Storage & Organization
-- kissen-im-cartoon-design-wassermelone-avocado-623000 · Wohnen & Deko → Home & Garden > Decor
-- memory-pilz-kissen-fur-nackenstutze-616400 · Wohnen & Deko → Home & Garden > Decor
-- herren-schulterdiagonaltasche-aus-canvas-36-13-eaf3cf · Taschen → Luggage & Bags
+- belt-bag-fur-manner-b9345f · Taschen → Luggage & Bags
+- herrenuhr-mit-zeiger-und-zahlenanzeige-424635 · Uhren → Apparel & Accessories > Jewelry > Watches
+- mechanische-armbanduhr-hollow-24-cm-0b1e70 · Uhren → Apparel & Accessories > Jewelry > Watches
+- sportuhr-mit-wasserfestigkeit-c6a500 · Uhren → Apparel & Accessories > Jewelry > Watches
+- handgewebter-wandteppich-aus-100-baumwolle-609800 · Aufbewahrung & Organizer → Home & Garden > Decor
 
