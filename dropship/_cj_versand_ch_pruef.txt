@@ -4567,3 +4567,23 @@ interaktiver-rollender-ball-fur-haustiere-672450	2062814032526610434	0	-	KEINE C
 interaktiver-hunde-spielball-aus-e-tpu-757633	2061023153695809538	16	6.77	ok	landeseite
 interaktiver-spielball-fur-haustiere-870401	2060270988662779906	0	-	KEINE CH-Option → DRAFT	landeseite
 smart-interaktiver-ball-fur-hunde-310081	2059939998861025282	16	5.69	ok	landeseite
+farbige-tennisballe-fur-hunde-987586	2059575887118262273	16	7.71	ok	landeseite
+ersatzfedern-fur-katzenangel-629300	2605250722331629900	16	7.57	ok	landeseite
+interaktiver-hunde-spielball-mit-seil-183490	2058111622789652481	7	8.68	ok	landeseite
+interaktiver-hupfball-fur-hunde-623809	2058102004437315586	16	8.53	ok	landeseite
+interaktiver-katzenball-mit-federanhangern-739137	2055193245057179649	16	5.12	ok	landeseite
+cartoon-plusch-hundespielzeug-mit-quietscher-951938	2065075526180003842	7	4.64	ok	landeseite
+schnuffel-und-quietsch-pluschtier-fur-hunde-618800	2605260614401619400	16	5.77	ok	landeseite
+rundes-sound-puzzle-spielzeug-fur-haustiere-626000	2604100516331626300	16	10.02	ok	landeseite
+led-laser-offroad-scheinwerfer-638301	2606140914191638900	11	61.83	ok	landeseite
+led-fahrradtasche-mit-fernbedienung-428225	2059113075472617473	7	7.62	ok	landeseite
+led-velo-blinklicht-mit-smarter-richtungsanzei-585729	2059161858583580674	7	7.78	ok	landeseite
+led-sportweste-fur-outdoor-aktivitaten-476929	2058836826264363010	7	8.74	ok	landeseite
+velo-rucklicht-mit-langer-akkulaufzeit-607100	2604230825121607600	7	5.82	ok	landeseite
+gebogenes-lichtempfindliches-rucklicht-614600	2603180206151614900	7	6.49	ok	landeseite
+minimalistische-nachttisch-pendelleuchte-623400	2602240820311623800	16	12.56	ok	landeseite
+smartes-induktions-bremslicht-furs-velo-616000	2602100209101616400	7	6.49	ok	landeseite
+west-biking-velo-fernbedienungs-blinker-635300	2602070314351635600	7	6.37	ok	landeseite
+velo-rucklicht-mit-bewegungssensor-622000	2602060314021622400	7	8.74	ok	landeseite
+usb-fahrradlicht-fur-nachtfahrten-615100	2602040544071615500	7	10.73	ok	landeseite
+usb-led-stirnlampe-mit-4-modi-086530	2013093743072796674	0	-	KEINE CH-Option → DRAFT	landeseite
