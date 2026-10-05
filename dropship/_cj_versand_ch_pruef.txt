@@ -4552,3 +4552,5 @@ robustes-baumwoll-seilspielzeug-fur-hunde-580289	2059552745993854977	16	10.83	ok
 6er-pack-katzenminze-spielzeug-q-tip-sticks-620354	2059221466215895041	16	4.47	ok	landeseite
 beissfester-zahnungsstick-fur-haustiere-618100	2605020459111618600	16	8.19	ok	landeseite
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+chase-buddy-spielball-mit-seilen-620610	2046785025517838337	0	-	KEINE CH-Option → DRAFT	landeseite
+scooby-doo-quietschballe-fur-hunde-8er-set-816066	2041688218441199618	0	-	KEINE CH-Option → DRAFT	landeseite
