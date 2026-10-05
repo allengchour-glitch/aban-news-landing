@@ -3651,3 +3651,4 @@ outdoor-smartwatch-fur-sport-gesundheit-800384	1699018084431966208	6	6.49	ok	lan
 hundeleine-fur-mittlere-und-grosse-hunde-518592	1398894348409638912	16	9.61	ok	landeseite
 smartwatch-mit-bluetooth-anrufen-und-zugangsko-336320	1699014070734696448	6	8.43	ok	landeseite
 zugseil-fur-kleine-hunde-und-katzen-970816	1390829451775971328	16	5.81	ok	landeseite
+senioren-smartwatch-4g-mit-ortungsfunktion-409600	1698637576669769728	7	7.30	ok	landeseite
