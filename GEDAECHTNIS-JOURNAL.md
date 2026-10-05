@@ -35,6 +35,17 @@
 
 
 
+## 2026-10-05 20:30 · 🛒 Ricardo-Feed: nur 364 von 2'388 Schweizer-Lager-Produkten tragen 12 % Provision · 🇫🇷 FR vollständig
+
+Betreiber «kannst du ricardo machen». Gemessen: Fortura-Marge Median 21 % (VK 49.90 / EK 39.46) → nach 12 % Ricardo-Provision
+bleiben meist CHF 2–4; Regel VK·0.88 − EK ≥ CHF 5 → 361 Produkte / 862 Varianten (97 % EAN; 721 Kostüm-Varianten — Halloween/
+Fasnacht). CJ-Ware bewusst nicht (10–20 Werktage). `automation/ricardo_feed.py` (Aufseher täglich, Bestand live, keine EK,
+keine Klingen) → `dropship/ricardo/ricardo_feed.csv`, öffentlich per raw.githubusercontent (200). Ricardo richtet Feed + Shopify-
+Bestellanbindung nach Mail an accountmanagement@ricardo.ch ein — Konto «gewerblich» + Mail = Betreiber (`dropship/ricardo/README.md`).
+**Lehre: Marktplatz-Provision VOR dem Feed gegen die echte Marge rechnen — 85 % der «schnellen» Ware wäre Nullsumme gewesen.**
+Französisch: Agent zog 129 veraltete Kollektionstexte nach (174 Felder, 103 nur der neue ls-verwandt-Block) → `fr_stand.py`
+«vollständig, /fr live».
+
 ## 2026-10-05 20:15 · 🎼 Musik: 3 Stücke rotierten (22/20/18 von 60 Reels) → 6 neue epische Stücke über Google Lyria 3.5 · 🇫🇷 /fr live
 
 Betreiber: «das neue video mit stimme auf youtube ist toll, aber immer das selbe musik passt nicht mehr». Ursache gemessen in
@@ -17956,6 +17967,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 🎁 **Tag 3+4 vorgezogen: Geschenk-Welten zeigten oben 22/24 Schmuck / 22/24 Uhren / 16/24 Babykleider (Zuordnung, nicht Sortierung) → `geschenk_unterwelten.py` (400 je Welt nach Warenart, reihum, täglich); 27 dünne Kategorien → 20 (7 Regeln erweitert, Rest kuratiert/Saison); `google_fein_ki` pausiert 6 h bei leerem Zweitprüfer-Kontingent statt Gemini zu bezahlen.** Nach `collectionUpdate` füllt Shopify asynchron — auf Soll-Menge warten, nicht auf «≥» → Journal 02.10.
 - 2026-10-02 · 🚚 **Gratisversand-Entscheid (Betreiber «entscheide du»): Versprechen = CHF 50 überall; Tarif ≥ 45 nach Rabatt bleibt (50 × 0,9, Bündelrabatt); Automatik-Rabatt «ab CHF 49» → «ab CHF 50», Code FREESHIP49 (0×) aus; Wächter OK.** 45 ist Technik, 50 ist das Versprechen — Texte nie auf 45 → Journal 02.10.
 - 2026-10-02 · 💸 **Preise (Betreiber «entscheide selber» → «15 % Reserve»): 24 Codes > 15 % aus (0× benutzt), `preis_verlustschutz` RABATT 0.15, gesperrte Varianten trugen Lockpreise («ab 14.90», 3'405 behoben), `preis_senken.py` senkte 350'008 Varianten / 34'486 Produkte im Median −11 % (0 Fehler; nur Band alter–neuer Boden, min. CHF 14.90), 7 Ratgeber ohne tote Codes, 64 SEO-Titel mit Semrush-Suchbegriff (`seo_suchbegriff_titel.py`).** Codes in Texten mitprüfen → Journal 02.10.
 - 2026-10-02 · 🏷️ **Verbesserungsrunde: nach der Preissenkung 12/18 Reels preis-veraltet, Tages-Reparatur schon gelaufen → `reel_neu_rendern.py` holt Shopify-Produktvideo als Rückfall + Preis-Modus ohne alte Datei, Aufseher-Reparatur alle 3 h solange preis-veraltet wartet; 2 neu gerendert, ready 8, 32 warten auf Server-Quellen.** Nach Massen-Preisänderung sofort Säuberer + MODUS=preis → `dropship/REEL-PREIS-NACH-SENKUNG-2026-10-02.md`

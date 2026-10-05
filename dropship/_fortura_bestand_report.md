@@ -1,4 +1,4 @@
-# Fortura-Bestandsabgleich — 2026-10-04 22:29 UTC
+# Fortura-Bestandsabgleich — 2026-10-05 20:19 UTC
 
 Feed: /tmp/fortura_feed.csv (20160 Zeilen, 18796 ArtNr, Fingerabdruck 9972210f1165)
 Shop: 8416 Varianten mit SKU `fortura-*`

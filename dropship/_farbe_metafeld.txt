@@ -438,3 +438,4 @@ gid://shopify/Product/16604931162503	Gold
 gid://shopify/Product/16607160205703	Gold
 gid://shopify/Product/16607161647495	Schwarz
 gid://shopify/Product/16607182815623	Schwarz
+gid://shopify/Product/16608028656007	Schwarz

@@ -1208,6 +1208,12 @@ if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ -s /tmp/seo_voll_audit.js
     echo "DUENNE-TEXTE: $(grep -c '^✍️' "$DT" 2>/dev/null) geschrieben gesamt · $(grep '^BILANZ\|^⏸' "$DT" | tail -1 | cut -c1-140)"
   fi
 fi
+# RICARDO-FEED (05.10.2026, Betreiber «kannst du ricardo machen»): Fortura-Ware mit ≥ CHF 5 nach 12 % Provision, Bestand LIVE,
+# täglich neu nach dropship/ricardo/ricardo_feed.csv (Autocommitter pusht; Ricardo holt die Datei per URL). Meldet nur Fehler.
+if [ -f "$REPO/automation/ricardo_feed.py" ] && [ $(( $(date +%s) - $(stat -c %Y /tmp/ricardo_feed.stamp 2>/dev/null || echo 0) )) -gt 86400 ]; then
+  touch /tmp/ricardo_feed.stamp
+  ( cd "$REPO" && timeout 1800 python3 automation/ricardo_feed.py > /tmp/ricardo_feed.log 2>&1 ) || echo "$(date -u +%H:%M) $(tail -n 1 /tmp/ricardo_feed.log)"
+fi
 # POPUP-TOR (05.10.2026, Clarity-Befund Betreiber): Newsletter-Popup nie vor 20/30 s und nie neben dem Cookie-Banner.
 # Liest die LIVE-Datei sections/footer-group.json alle 6 h; meldet nur, wenn das Tor fehlt (Theme-Editor/App kann überschreiben).
 if [ -f "$REPO/automation/popup_tor_wache.py" ] && [ $(( $(date +%s) - $(stat -c %Y /tmp/popup_tor.stamp 2>/dev/null || echo 0) )) -gt 21600 ]; then
