@@ -3982,3 +3982,4 @@ display-reiniger-2in1-handy-tablet	2606090841371627800	0	-	KEINE CH-Option → D
 layering-halsketten-set-gold-silber	2606120851381638800	16	4.75	ok	landeseite
 kreuz-halskette-gold-edelstahl	2606120736221609600	16	4.60	ok	landeseite
 armband-just-breathe-edelstahl	2606120723031615400	16	4.92	ok	landeseite
+tennis-armband-bunt-zirkonia	2606120755051602100	16	4.44	ok	landeseite
