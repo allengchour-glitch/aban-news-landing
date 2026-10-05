@@ -6166,3 +6166,9 @@ gid://shopify/Product/15455226888577	zugeordnet	3	Indoor-Schaukel aus Segeltuch
 gid://shopify/Product/15455227380097	bild-urls-tot
 gid://shopify/Product/15455227412865	bild-urls-tot
 gid://shopify/Product/15455227969921	zugeordnet	35	V-Ausschnitt Kleid mit kurzen Ärmeln
+gid://shopify/Product/15455228133761	bild-urls-tot
+gid://shopify/Product/15455228789121	zugeordnet	16	Reflektierendes Hundehalsband mit Cartoon-Muster
+gid://shopify/Product/15455228952961	zugeordnet	40	Einfaches Kurzarm-Kleid mit Reissverschluss
+gid://shopify/Product/15455229378945	bild-urls-tot
+gid://shopify/Product/15455229411713	zugeordnet	15	Punktiertes Midi-Kleid mit Gürtel
+gid://shopify/Product/15455229804929	zugeordnet	50	Sicheres Zugseil für Haustiere
