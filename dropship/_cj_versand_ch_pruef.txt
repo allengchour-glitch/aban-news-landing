@@ -3747,3 +3747,8 @@ schurze-fur-kuche-haushalt-und-blumenladen-627520	1793542961767124992	16	8.11	ok
 elegante-damenbluse-mit-spitzenbesatz-638400	2602240911411638800	16	8.11	ok	landeseite
 rechteckige-servierplatte-aus-porzellan-801280	1793488318760493056	16	12.15	ok	landeseite
 usb-mixer-fur-unterwegs-208768	1793458281189478400	7	12.75	ok	landeseite
+chiffon-bluse-mit-stehkragen-und-langen-armeln-630200	2602240905321630600	16	7.08	ok	landeseite
+wok-aus-316-edelstahl-mit-wabenstruktur-851072	1793220488118931456	16	15.92	ok	landeseite
+japanische-keramikplatte-rechteckig-833728	1793216394138497024	16	11.12	ok	landeseite
+quadratischer-teller-aus-keramik-458560	1793162736323538944	16	17.89	ok	landeseite
+mehrzweck-geflugelschere-aus-edelstahl-729024	1793119184709226496	1	12.95	ok	landeseite

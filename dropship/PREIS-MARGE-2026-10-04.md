@@ -169,4 +169,13 @@ Getan:
 
 ## 7. Nachmessung
 
-Frischer Export nach dem Lauf (siehe Feld «nachher» im Ergebnis): Verlust-Varianten 0; Varianten ohne EK %%NACHHER%%.
+| Messung | vorher (Export 03.10. 01:18 / 05.10. 00:08) | nachher |
+|---|---|---|
+| Verlust-Varianten, EK bekannt | 5'742 (03.10.) → 0 (00:08) | Export 00:55: 371 — alle Neuware vom Morgen, gehoben 00:47; Neuware-Livecheck (870 Produkte, 36 h) 01:00 UTC: 0 offen |
+| aktive Varianten ohne EK | 908 (315 Produkte) | 674 (Export 00:55); CJ-Anteil 312 → 78 Varianten; nach Wächterlauf 01:01: 6 CJ-Produkte (3 ohne CJ-Referenz, 3× «Variant removed» 1602003) |
+| aktive CJ-Produkte, bei CJ ausgelistet, ohne EK | 47 (verkäuflich, in 6 Kanälen) | 0 (alle DRAFT, Rücklesen 47/47) |
+| Streichpreise gesetzt | 0 | 0 |
+| Preise gehoben heute (Ledger `_preis_verlustschutz.txt`, 2026-10-05) | — | 412 Varianten |
+| Importer-Formel `cj_category_fill.mjs` | eigene August-Kopie (Boden 15, ohne Verlustschutz) | importiert `cj_preis.mjs` |
+
+Trockenlauf → scharf bei jedem Schritt; keine Senkung; nichts gelöscht; Theme/Kundenmails/CJ-Bestellungen unberührt.
