@@ -4429,3 +4429,9 @@ fritteuse-mit-sieb-b05e9b	A486F65D-64F6-451F-B8E1-3857CEAC6822	16	11.80	ok	lande
 elektrische-zitruspresse-1dfd9b	45FC8390-DDDB-49D1-8CD6-8034900CEC1B	3	48.13	ok	landeseite
 wasserdichte-armbanduhr-mit-netzarmband-35d14b	25C42CEC-8AE7-4120-BC20-FAD8E0DDB328	7	6.22	ok	landeseite
 nudelmaschine-mit-teigpresse-1e1464	38D0E7C6-6B2E-4AFD-8311-FF19DCB896AE	11	39.05	ok	landeseite
+nachfullbares-feuerzeug-aus-metall-c167c7	2664F5DF-211D-444B-8435-42B71A910937	0	-	KEINE CH-Option → DRAFT	landeseite
+elektrischer-multifunktions-kochtopf-3d9627	379AA896-1BFC-43D4-AFB2-0827A9A400A3	3	34.18	ok	landeseite
+topfregal-mit-8-verstellbaren-ebenen-3328ae	01360138-87AA-4369-8E41-E395842484ED	16	22.34	ok	landeseite
+tiefe-obstschale-aus-akazienholz-bf49de	08CFBF3C-FD33-4A5E-849E-8A4BFE79156C	16	9.47	ok	landeseite
+maifan-stein-omelettpfanne-mit-4-mulden-2ec2e4	81F71852-616C-4283-8B41-E2DF2CE20FEB	16	12.69	ok	landeseite
+multifunktionaler-schaler-923364	79ED6BD1-9C95-408B-A12C-988E0EF24AB8	16	13.28	ok	landeseite

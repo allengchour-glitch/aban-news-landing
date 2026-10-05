@@ -16899,3 +16899,12 @@ gid://shopify/Product/15470016299393	17->0	Schaumstoffpinsel 4 Stk.
 gid://shopify/Product/15470018888065	86->0	Tischdecke Boneshine Fever
 gid://shopify/Product/15470076920193	191->0	Ticketsabroller Metall
 gid://shopify/Product/15473389076865	22->3	Etagere Metall Rund, 4 Fächer
+gid://shopify/Product/16606142103943	31->0	Schwarze Endkappen für Möbel – 10 Stück pro Grösse
+gid://shopify/Product/16607462818183	33->2	Hundewinterjacke aus Wolle
+gid://shopify/Product/16607463768455	146->1	Hundepullover aus Wolle, Jacquard
+gid://shopify/Product/16607605522823	40->0	Aufbewahrungstasche mit Schnappverschluss und Bienenwachs-Pr
+gid://shopify/Product/16607605588359	113->0	Keramische Butterbox im Retro-Design
+gid://shopify/Product/16607606145415	24->0	Kurzgeldbörse aus Vollnarben-Rindsleder
+gid://shopify/Product/16607824511367	20->0	Eisenkamm für Katzenstreu
+gid://shopify/Product/16607978652039	10->0	Handtasche mit Floraler Print-Füllung aus Echtleder
+gid://shopify/Product/16608001950087	77->2	Retro Geldbörse mit Blumenprägung
