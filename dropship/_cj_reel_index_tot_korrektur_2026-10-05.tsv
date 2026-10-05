@@ -1,0 +1,3 @@
+# Korrektur-Ledger Ausfall-Ledger _cj_reel_index_tot.txt (05.10.2026, Prüferbefund Index 10): alle 312 pids mit den Regeln des Motors neu beurteilt (nur Shopify-Lesezugriffe)
+# Ergebnis: 311 gleich, 1 anders. Format: zeit	pid	alt	neu	aktion
+2026-10-05T04:27:10Z	1432187342642352128	status-DRAFT	2026-10-05	GUT (ACTIVE-Original «Ultraschall-Reinigungsgerät» CHF 18.90, 21 Medien, neben DRAFT-Duplikat)	Zeile entfernt
