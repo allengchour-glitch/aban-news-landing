@@ -4026,3 +4026,11 @@ herren-trainingsschuhe-forza-gym-weightlifting	2606100712381625000	16	16.16	ok	l
 susswasserperlen-ohrringe-perla-925-silber	2065662885040201730	16	7.17	ok	landeseite
 925-silber-fusskettchen-riva-emaille-perlen	2065714732781686786	16	4.50	ok	landeseite
 susswasserperlen-kette-perla-925-silber-bar-design	2065650672965808129	16	7.17	ok	landeseite
+925-silber-armband-maglia-mesh-verstellbar	2065692306953523201	16	7.17	ok	landeseite
+925-silber-ring-anello-mesh-verstellbar	2065709583526805505	16	7.17	ok	landeseite
+herren-sling-tasche-ranger-crazy-horse-echtleder	2606100737171632700	16	8.11	ok	landeseite
+herren-denim-cap-bronx-verstellbar	2606120737401630200	16	6.10	ok	landeseite
+shield-sonnenbrille-vortex-one-piece-uv400	2606130316171630700	5	5.46	ok	landeseite
+sonnenbrille-aviateur-dual-bridge-uv400	2606120720101628500	5	5.43	ok	landeseite
+susswasserperlen-armband-perla-925-silber-infinity	2065648744874430466	16	7.17	ok	landeseite
+925-silber-armband-onda-kleeblatt-glieder	2065713389650857985	16	7.17	ok	landeseite
