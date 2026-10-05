@@ -74,8 +74,17 @@ def pruefe_produkte(handles):
 
 
 def pruefe_kollektionen(handles):
+    """handles koennen eine Filterroute sein: «<kollektion>/<tag>» (Shopify zeigt die Kollektion gefiltert nach Tag;
+    gemessen 05.10.: /collections/ft-pluesch/ch-lager = 221 Artikel live). Lebendig, wenn Kollektion veroeffentlicht
+    UND mindestens ein aktives Produkt den Tag traegt (Schnittmenge ist am Ursprung nicht direkt zaehlbar)."""
     aus = {}
-    hs = [h for h in handles if h != "all"]
+    filter_ = {h: h.split("/", 1) for h in handles if "/" in h}
+    basis = {urllib.parse.unquote(k) for k, _ in filter_.values()}
+    tags = {urllib.parse.unquote(t) for _, t in filter_.values()}
+    tag_n = {}
+    for t in tags:
+        tag_n[t] = gql('query($q:String){productsCount(query:$q){count}}', {"q": f"tag:{t} status:active"})["productsCount"]["count"]
+    hs = [h for h in handles if h != "all" and "/" not in h] + sorted(basis - set(handles))
     for i in range(0, len(hs), 10):
         teil = hs[i:i + 10]
         vars_ = {"pub": ONLINE_STORE}
@@ -94,6 +103,13 @@ def pruefe_kollektionen(handles):
                       "titel": c["title"], "n": c["productsCount"]["count"]}
     if "all" in handles:
         aus["all"] = {"zustand": "ok", "titel": "(eingebaute Route)", "n": None}
+    for h, (koll, tag) in filter_.items():
+        k = aus.get(urllib.parse.unquote(koll)) or {"zustand": "fehlt"}
+        n_tag = tag_n.get(urllib.parse.unquote(tag), 0)
+        lebt = k["zustand"] == "ok" and n_tag > 0
+        aus[h] = {"zustand": "ok" if lebt else ("fehlt" if k["zustand"] == "fehlt" else "tot"),
+                  "titel": f"{k.get('titel', '?')} · Tag-Filter «{tag}» ({n_tag} aktive mit Tag, Schnittmenge nur live zaehlbar)",
+                  "n": k.get("n"), "filterroute": True}
     return aus
 
 

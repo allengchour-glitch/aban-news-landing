@@ -75,9 +75,9 @@ def fundstellen(body):
             aus.append((h, m.start(2) + mi.start(), m.start(2) + mi.end(), bool(mi.group(1)), float(mi.group(2)), "inline"))
             continue
         nach = body[m.end():m.end() + 400]
-        mi = re.match(r'\s*\((ab )?CHF (\d+\.\d\d)\)', nach)
+        mi = re.match(r'\s*(\((ab )?CHF (\d+\.\d\d)\))', nach)       # Klammer-Spanne OHNE das Leerzeichen davor
         if mi:
-            aus.append((h, m.end() + mi.start(), m.end() + mi.end(), bool(mi.group(1)), float(mi.group(2)), "inline"))
+            aus.append((h, m.end() + mi.start(1), m.end() + mi.end(1), bool(mi.group(2)), float(mi.group(3)), "inline"))
             continue
         # b) Karte: Anker schliesst den Titel-Div, Preis in einem der naechsten Divs (vor dem Knopf)
         if nach.startswith("</div>"):

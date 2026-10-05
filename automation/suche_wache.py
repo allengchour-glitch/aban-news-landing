@@ -24,12 +24,14 @@ BEGRIFFE = ["geschenkideen", "nintendo switch", "adventskalender", "halloween", 
             "teppich", "bettwäsche", "kopfhörer", "pool", "powerbank", "smartwatch", "sneaker", "ventilator",
             "vorhänge", "dirndl", "aquarium"]
 # Begriffe, bei denen das Sortiment nur Zubehör führt — Titel tragen den Begriff nicht, die Treffer sind trotzdem richtig.
-NUR_ZUBEHOER = {"3d drucker": "3d", "gaming pc": "gaming", "nintendo switch": "switch", "elektronik": ""}
+NUR_ZUBEHOER = {"3d drucker": "", "gaming pc": "gaming", "nintendo switch": "switch", "elektronik": ""}
 
 
 def norm(s):
+    """Kleinbuchstaben, Umlaute auf den Grundvokal (ä/ae → a): «Parfüm» und «parfum», «Vorhänge» und «Vorhang»
+    treffen sich so — der Vergleich ist grob gewollt, er sucht nur den Wortstamm."""
     s = s.lower()
-    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+    for a, b in (("ä", "a"), ("ö", "o"), ("ü", "u"), ("ß", "ss"), ("ae", "a"), ("oe", "o"), ("ue", "u")):
         s = s.replace(a, b)
     return s
 
