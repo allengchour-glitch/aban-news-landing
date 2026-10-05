@@ -4291,3 +4291,6 @@ bluetooth-gamepad-fur-diverse-gerate-a8b390	2B181C9B-7EE6-411F-9FC3-C806159F5A08
 ak66-sechs-finger-gamepad-mit-vier-tasten-37ee65	2607290646401602300	16	9.99	ok	landeseite
 kabelloser-controller-fur-switch-ps3-bee6ad	409EF7E3-C4CB-44C3-A028-3B60F842294A	7	6.81	ok	landeseite
 drahtloses-bluetooth-gamepad-4404b7	0A0F0FF7-451B-4580-A96F-FB9BEDEF3B21	7	10.45	ok	landeseite
+kabelloser-gamecontroller-fur-switch-pc-659d62	636E2FA0-45E6-4E8C-83E5-E71B7A07DEC9	7	9.54	ok	landeseite
+gamepad-fur-pubg-und-andere-games-1032a0	06ADB8CB-9D07-494D-BFB1-39AD81C96A24	7	8.17	ok	landeseite
+teleskopisches-bluetooth-gamepad-27c168	FE892DC1-62D5-4564-A876-1B455042B1BA	7	10.98	ok	landeseite

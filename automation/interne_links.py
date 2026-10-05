@@ -40,6 +40,7 @@ REGELN (Hausregeln 05.10.)
   python3 automation/interne_links.py --zurueck [datei]
   ZURUECK_VOLL=1 python3 automation/interne_links.py --zurueck-voll [datei]
   python3 automation/interne_links.py --pruefen
+  python3 automation/interne_links.py --kanarien   (Welt- und Anker-Kanarienvögel, 05.10.)
 """
 import csv, datetime as dt, glob, html, json, os, re, sys, time, unicodedata, urllib.parse
 
@@ -72,34 +73,117 @@ SAMMEL_RE = re.compile(r"geschenk|unter-chf|franken|mitbringsel|(^|-)neu(-|$)|ne
 KEINE_QUELLE = {"all", "frontpage", "neu", "neu-eingetroffen", "hype-jetzt", "bestseller", "blitzversand-schweiz",
                 "eu-lager-schnell", "unter-chf-25", "viral-hits", "luxestyle-premium", "sale", "premium-geschenke"}
 
-# Welten für «thematisch verwandt» (Handle + Titel normalisiert; eine Kollektion kann in mehreren Welten liegen)
+# Welten für «thematisch verwandt» (Handle + Titel normalisiert; eine Kollektion kann in mehreren Welten liegen).
+# 05.10. Nacharbeit (Prüferbefund Runde 2): die Muster hatten KEINE Wortgrenzen — «automaTISCHer» → tisch → wohnen (Fehl-Link
+# Kinderwagen-Ventilator in aufbewahrung-sub), «kLEINEr Luftbefeuchter» → leine → tier, «reflekTIERender» → tier,
+# «schreiBHilfe» → bh → damen. Deutsche Komposita enden mit dem Grundwort (halsKETTE, stehLAMPE, damenSCHUHE), Stämme stehen
+# am Wortanfang (WOHNzimmer, KINDerwagen). Regel darum: ein Merkmal zählt nur am WORTANFANG (Stamm) oder am WORTENDE mit
+# Flexion (-e/-en/-er/-es/-n/-s) — nie mitten im Wort.
+# Ausnahme «tisch»: Adjektive auf -tisch (automaTISCHer, prakTISCHe, romanTISCHe) tragen die Flexion am Wortende wie ein
+# Grundwort → Lookbehind-Liste der Adjektivstämme. Kanarienvögel: python3 automation/interne_links.py --kanarien
 WELTEN = {
     "damen": r"damen|frauen|bluse|kleid|rock|roecke|tunika|leggings|shapewear|bikini|bademode|bh",
     "herren": r"herren|maenner|fur-ihn|fuer-ihn|hemd|polo|krawatte",
     "schuhe": r"schuh|sneaker|boots|stiefel|ballerina|pumps|heels|sandale|slipper|pantoffel|loafer",
-    "schmuck": r"schmuck|ring|(?<!lichter)kette|armband|ohrring|anhaenger|perlen|uhr",                  # Lichterkette ≠ Kette
-    "taschen": r"tasche|rucksack|portemonnaie|wallet|koffer|kleinleder",
-    "accessoires": r"accessoire|muetze|schal|guertel|handschuh|sonnenbrille|hut|cap|socken",
-    "wohnen": r"wohn|deko|kissen|decke|vorhang|teppich|bettwaesche|lampe|leucht|beleucht|kerze|spiegel|regal|moebel|tisch|"
-              r"stuhl|aufbewahr|organizer|ordnung|bad|dusch|waesche|wecker|vase|wand|textil|vorhaeng|haengematt|aroma|diffus|licht|"
-              r"heizdeck|kuschel",
-    "kueche": r"kuech|koch|back|kaffee|tee|flasche|(?<!hunde)geschirr(?!e)|besteck|barware|trinken|grill",   # Hundegeschirr ≠ Geschirr
+    "schmuck": r"schmuck|ring(?!-?licht| licht)|(?<!lichter)kette|armband|ohrring|anhaenger|perlen|uhr",   # Lichterkette ≠ Kette, Ringlicht ≠ Ring
+    "taschen": r"tasche(?!nlamp)|rucks(?:a|ae)ck|backpack|portemonnaie|wallet|koffer|kleinleder",            # Taschenlampe ≠ Tasche
+    "accessoires": r"accessoire|muetze|schal(?!l)|guertel|handschuh|sonnenbrille|hut|cap(?!ri)|socken",
+    "wohnen": r"wohn|deko|kissen|decke|vorhang|teppich|bettwaesche|lampe|leucht|beleucht|kerze|spiegel|regal|moebel|(?<!automa)(?<!prak)(?<!roman)(?<!fantas)(?<!elas)(?<!hek)(?<!drama)(?<!magne)(?<!akus)(?<!op)(?<!kri)(?<!exo)(?<!poli)(?<!synthe)(?<!aesthe)(?<!authen)(?<!chao)(?<!realis)(?<!plas)tisch|"
+              r"stuhl|aufbewahr|organizer|ordnung|bad(?!minton)|dusch|waesche|wecker|vase|wand(?!er)|textil|vorhaeng|haengematt|aroma|"
+              r"diffus|licht|heizdeck|kuschel|luftbefeuchter|luftreiniger|klimager|raumklima|heizluefter",
+    "kueche": r"kuech|koch|back(?!pack)|kaffee|tee(?!n)|flasche|(?<!hunde)geschirr(?!e)|besteck|barware|trinken|grill",  # Hundegeschirr ≠ Geschirr
     "garten": r"garten|outdoor|balkon|camping|grill|pflanz|pool",
     "elektronik": r"elektronik|technik|gadget|usb|ladege|kabel|kopfhoerer|lautsprecher|audio|beamer|heimkino|projektor|"
                   r"smart|kamera|foto|drohne|konsole|gaming|nintendo|pc-|tastatur|maus|taschenlampe|adapter|computer|"
-                  r"handy|phone|tablet|3d-druck|haushaltsgeraet|ventilator|wearable",
-    "beauty": r"beauty|kosmetik|pflege|massage|nagel|naegel|manikuere|wimpern|parfum|parfuem|rasier|make-up|haar",
-    "sport": r"sport|fitness|training|yoga|pilates|fahrrad|velo|wander|ski|schwimm|trinkflasche|hydration",
-    "tier": r"tier|hund|katz|haustier|kratz|vogel|aquarium|leine|napf",
-    "kinder": r"kind|baby|spielzeug|spiel|puzzle|bauklotz|bausteine|schul|kids|lern",
+                  r"handy|phone|tablet|3d-druck|haushaltsgeraet|ventilator|wearable|wecker",
+    "beauty": r"beauty|kosmetik|pflege|massage|nagel|naegel|manikuere|wimpern|parfum|parfuem|rasier|make-up|haar|ringlicht",
+    "sport": r"sport|fitness|training|yoga|pilates|fahrrad|velo|wander|ski|schwimm|trinkflasche|hydration|ballett|tanz|"
+             r"badminton|tennis|fussball|basketball|golf|klettern|bandage|gelenkstuetz",
+    "tier": r"tier|hund|katz|haustier|kratz|vogel|aquarium|leine(?!n)|napf",                               # Leinen (Stoff) ≠ Leine
+    "kinder": r"kind|baby|spielzeug|spiel|puzzle|bauklotz|bausteine|schul(?!ter)|kids|lern",               # Schulter ≠ Schule
     "party": r"party|ballon|hochzeit|geburtstag",
     "geschenke": r"geschenk|fuer-sie|fuer-ihn|weihnacht|advent|valentin|muttertag|unter30|unter-chf",
     "saison": r"weihnacht|advent|herbst|winter|sommer|ostern|erste-august|jacke|mantel|maentel",
-    "hobby": r"malen|diamond|basteln|handarbeit|strick|naeh|sticker|aufkleber",
-    "gesundheit": r"gesund|orthop|stuetz|bandage|wellness|schlaf|luftbefeuchter",
-    "werkzeug": r"werkzeug|maschine|bohr|schraub|ersatzteil",
+    "hobby": r"malen|diamond|bastel|handarbeit|strick(?!jacke|pullover|kleid|muetze)|naeh(?!e\b)|sticker|aufkleber",
+    "gesundheit": r"gesund|orthop|stuetz|bandage|wellness|schlaf(?!zimmer)|luftbefeuchter",
+    "werkzeug": r"werkzeug|(?<!kaffee)(?<!wasch)(?<!spuel)(?<!naeh)maschine|bohr|schraub|ersatzteil",
+    "homewear": r"pyjama|nachtwaesche|schlafanzug|loungewear|homewear|bademantel|morgenmantel|hausanzug",
+    "buero": r"buero|schreib|papeterie|notizbuch|schreibwaren",
 }
-WELTEN_RE = {k: re.compile(v) for k, v in WELTEN.items()}
+FLEXION = r"(?:e|en|er|es|n|s)?"
+
+
+def welt_re(muster):
+    """Merkmal am Wortanfang (Stamm, z. B. WOHNzimmer) ODER am Wortende mit Flexion (Grundwort, z. B. halsKETTEn) —
+    nie mitten im Wort (automaTISCHer, kLEINEr, reflekTIERender, schreiBHilfe)."""
+    return re.compile(r"\b(?:" + muster + r")|(?:" + muster + r")" + FLEXION + r"\b")
+
+
+WELTEN_RE = {k: welt_re(v) for k, v in WELTEN.items()}
+
+# Kanarienvögel (Text, muss enthalten, darf nicht enthalten) — Fehlfunde vom 05.10. und deutsche Komposita
+WELT_KANARIEN = [
+    ("Automatischer Schwenkventilator für Kinderwagen", {"elektronik", "kinder"}, {"wohnen"}),
+    ("Kleiner Luftbefeuchter für Zuhause und Büro", {"gesundheit", "wohnen", "buero"}, {"tier"}),
+    ("Reflektierender Rucksack mit grossem Volumen", {"taschen"}, {"tier"}),
+    ("Schreibhilfe für Kinder", {"kinder", "buero"}, {"damen"}),
+    ("Rucksäcke", {"taschen"}, set()),
+    ("Halskette mit Anhänger", {"schmuck"}, set()),
+    ("Stehlampe & Nachttischlampe", {"wohnen"}, set()),
+    ("Damenschuhe", {"schuhe", "damen"}, set()),
+    ("Taschenlampen & Stirnlampen", {"elektronik"}, {"taschen"}),
+    ("Sport- & Wanderrucksäcke", {"sport", "taschen"}, {"wohnen"}),
+    ("Lichterketten", {"wohnen"}, {"schmuck"}),
+    ("Leinen, Geschirre & Tierkleidung", {"tier"}, {"kueche"}),
+    ("Schulterfreies Kleid", {"damen"}, {"kinder"}),
+    ("Jumpsuit Leinen", set(), {"tier"}),
+    ("Kaffeemaschine", {"kueche"}, {"werkzeug"}),
+    ("Weihnachts Pyjama-Sets für die ganze Familie", {"homewear", "saison", "geschenke"}, set()),
+    ("Ballettschuhe aus Leder", {"schuhe", "sport"}, set()),
+    ("Intelligentes Wecker-Armband mit Vibrationsalarm", {"elektronik", "wohnen"}, set()),
+    ("Schlafzimmer-Deko", {"wohnen"}, {"gesundheit"}),
+    ("Geschenke für Teenager", {"geschenke"}, {"kueche"}),
+    ("Backpack", {"taschen"}, {"kueche"}),
+    ("Ringlicht mit Stativ", {"beauty"}, {"schmuck"}),
+    ("Strickjacke Damen", {"damen", "saison"}, {"hobby"}),
+    ("Capri-Hose", set(), {"accessoires"}),
+    ("Esstische & Stühle", {"wohnen"}, set()),
+    ("Praktische Küchenhelfer", {"kueche"}, {"wohnen"}),
+    ("Romantische Geschenke", {"geschenke"}, {"wohnen"}),
+    ("Nachttisch-Organizer", {"wohnen"}, set()),
+    ("Automatische Seifenspender", set(), {"wohnen"}),
+    ("Armbanduhren Herren", {"schmuck", "herren"}, set()),
+    ("Fussgelenkstütze", {"gesundheit", "sport"}, {"wohnen"}),
+    ("Nähmaschinen", {"hobby"}, {"werkzeug"}),
+    ("Waschmaschinen-Zubehör", set(), {"werkzeug"}),
+    ("Winterjacken & Daunenjacken", {"saison"}, set()),
+]
+
+
+def kanarien():
+    f = 0
+    for text, muss, nie in WELT_KANARIEN:
+        w = welten("", text)
+        if not muss <= w or (w & nie):
+            print("FEHLER", text, "→", sorted(w), "| muss", sorted(muss), "| nie", sorted(nie)); f += 1
+    for begriff, titel, handle, erwartet in ANKER_KANARIEN:
+        a = anker_fuer(begriff, titel, handle, produkt=True)
+        if a != erwartet:
+            print("FEHLER Anker", begriff, "→", a, "| erwartet", erwartet); f += 1
+    print(f"Kanarienvögel {len(WELT_KANARIEN) + len(ANKER_KANARIEN)}, Fehler {f}")
+    return f
+
+
+# Anker-Kanarienvögel (Begriff, Produkttitel, Handle, erwarteter Ankertext) — «Baustelle Kinder» auf ein Bausteine-Set (05.10.)
+ANKER_KANARIEN = [
+    ("baustelle kinder", "Bausteine-Set Baufahrzeuge für Kinder", "bausteine-set-baufahrzeuge-fur-kinder-877120", "Bausteine-Set Baufahrzeuge für Kinder"),
+    ("ballettschuhe", "Ballettschuhe aus Leder", "ballettschuhe-aus-leder-622800", "Ballettschuhe"),
+    ("kinderwagen ventilator", "Automatischer Schwenkventilator für Kinderwagen", "automatischer-schwenkventilator-fur-kinderwag", "Kinderwagen Ventilator"),
+    ("leuchtschuhe kinder", "Kinder-Schuhe mit LED-Licht", "kinder-schuhe-mit-led-licht-609000", "Kinder-Schuhe mit LED-Licht"),
+    ("glitzerrock", "Rock mit Pailletten rosa", "rock-mit-pailletten-rosa-fgssck4741", "Rock mit Pailletten rosa"),
+    ("armband vibration wecker", "Intelligentes Wecker-Armband mit Vibrationsalarm", "intelligentes-wecker-armband-mit-vibrationsala-620000", "Armband Vibration Wecker"),
+    ("familien pyjama weihnachten", "Weihnachts Pyjama-Sets für die ganze Familie", "weihnachts-pyjama-sets-fur-die-ganze-familie-613100", "Familien Pyjama Weihnachten"),
+]
 KLEIN = {"und", "mit", "für", "fuer", "von", "im", "in", "der", "die", "das", "aus", "zu", "ab", "bis", "auf"}
 
 
@@ -127,25 +211,25 @@ def anker_aus_begriff(b):
     return " ".join(w)
 
 
-def anker_tauglich(begriff, titel, handle, alle=True):
-    """Suchbegriff nur als Ankertext, wenn seine Wörter (≥ 3 Zeichen, grob gestemmt) im Titel/Handle vorkommen —
+def anker_tauglich(begriff, titel, handle, produkt=False):
+    """Suchbegriff nur als Ankertext, wenn JEDES seiner Wörter (≥ 3 Zeichen, grob gestemmt) im Titel/Handle vorkommt —
     «staubsauger» für «Haushaltsgeräte» oder «regale» für «Aufbewahrung» wäre ein irreführender Anker (05.10.).
-    alle=True: jedes Wort muss passen (Kollektionen); alle=False: eines genügt (Produkte, der Begriff ist ihr Ranking)."""
+    Nacharbeit 05.10.: für Produkte genügte EIN Wort → «Baustelle Kinder» stand dreimal auf einem Bausteine-Set (nur «kinder»
+    passte). Jetzt alle Wörter auch bei Produkten; nur die &-Regel (halber Anker bei «Schmuck & Uhren») gilt für Kollektionen."""
     ziel = norm(titel) + " " + norm(handle)
     woerter = [w for w in norm(begriff).split() if len(w) >= 3]
     if not woerter:
         return False
     st = [re.sub(r"(en|er|es|e|n|s)$", "", w) for w in woerter]
-    treffer = [x in ziel for x in st]
-    if not (all(treffer) if alle else any(treffer)):
+    if not all(x in ziel for x in st):
         return False
-    if alle and "&" in (titel or ""):                      # «Schmuck & Uhren»: «Uhren» allein wäre ein halber Anker
+    if not produkt and "&" in (titel or ""):               # «Schmuck & Uhren»: «Uhren» allein wäre ein halber Anker
         return all(any(x in norm(teil) for x in st) for teil in titel.split("&"))
     return True
 
 
 def anker_fuer(begriff, titel, handle, produkt=False):
-    if begriff and anker_tauglich(begriff, titel, handle, alle=not produkt):
+    if begriff and anker_tauglich(begriff, titel, handle, produkt=produkt):
         return anker_aus_begriff(begriff)
     return titel_rein(titel)
 
@@ -652,6 +736,8 @@ def main():
         zurueck_voll(sys.argv[2] if len(sys.argv) > 2 else None); return
     if arg == "--pruefen":
         pruefen(); return
+    if arg == "--kanarien":
+        raise SystemExit(1 if kanarien() else 0)
     colls, menus, arts, pages, start = lade_alles()
     baum, je_menue = menue_baum(menus)
     ziele = ziele_sammeln(colls, arts, pages, je_menue, start)
