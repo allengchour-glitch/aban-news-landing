@@ -235,3 +235,5 @@
 15463691682177	getrennt:Grösse:2	USB-Heizmatte für Haustiere
 15470352073089	getrennt:Grösse:2	Wasserdichter Camping-Teppich
 15472485269889	einheitlich:38×9×30cm	Vintage Businesstasche aus Rindsleder
+16603588133255	einheitlich:100×80cm	Hahnentritt Jacquard Babydecke mit langen Ärmeln
+16603617952135	einheitlich:77×85cm	Baby Swaddle-Tuch mit Hasenohr-Stirnband

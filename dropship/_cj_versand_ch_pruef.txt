@@ -4354,3 +4354,5 @@ futterspender-fur-hunde-bc09f6	1717888510599901184	16	17.94	ok	landeseite
 hunde-lederjacke-mit-adler-stickerei-99216d	2F7684CE-C43A-4884-82CA-5A9FAB12AF83	16	7.43	ok	landeseite
 weinoffner-mit-luftdruckpumpe-198db1	11D37742-F132-4162-8E2A-FB4028C104E5	1	6.58	ok	landeseite
 fressnapf-aus-keramik-fur-haustiere-a94de9	7040D2BC-561E-4F29-A7D1-69E5F5CF15E2	16	18.40	ok	landeseite
+verstellbare-fleece-weste-mit-brustgeschirr-310543	0AAF65AE-B646-40D1-B70A-DDBA2BAED6FC	16	6.72	ok	landeseite
+diy-diamond-painting-weihnachtskarten-set-a66b3f	695CC82F-3A82-4D9F-B075-791DA4C7C006	16	6.63	ok	landeseite
