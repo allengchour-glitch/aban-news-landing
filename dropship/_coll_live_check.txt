@@ -531,3 +531,10 @@ baby-kinder-sets	ok	29	Baby- & Kinder-Sets
 adventskalender	ok	20	Adventskalender
 malen-nach-zahlen	ok	29	Malen nach Zahlen
 diamond-painting	ok	29	Diamond Painting
+teppiche	http-429	0	Teppiche
+bettwaesche	ok	29	Bettwäsche
+waeschekoerbe	ok	20	Wäschekörbe
+wecker	ok	27	Wecker
+duschvorhaenge	ok	21	Duschvorhänge
+taschenlampen	ok	29	Taschenlampen & Stirnlampen
+wandregale	ok	21	Wandregale
