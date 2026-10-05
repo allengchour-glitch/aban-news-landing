@@ -171,3 +171,45 @@ neu anlegt). Gratis-Keyword-Quelle: Google-CH-Vorschläge (`automation/google_su
 Runde 3 bis hier: 8 neue Kollektionen (Etageren 14, USB-Sticks 42, Wanduhren 21, Woks 14, Abendkleider 104, Lunchboxen 33,
 Winterschuhe 64, Bauchtaschen 77) + 4 bestehende Seiten auf Stiefeletten/Nachttischlampe/Haarglätter/VR-Brille; Teppiche ohne
 Fussmatten/Holz (35), interne Links mit Wortgrenzen. Fable-Limit erreicht → Rest läuft ohne Fable weiter.
+
+## 05.10.2026 · Umsetzung 3 (Betreiber «fix mal weiter semrush») — Workflow, 08:30–10:45 UTC
+**Gemessen vorher:** 541 Kollektionen live → keine Seite für etagere 5'400/Mt, usb stick 4'400, wanduhr 4'400, wok 4'400, abendkleid 3'600,
+lunchbox 3'600, winterschuhe damen 3'600, bauchtasche 2'900. Rankende Entwürfe: 12 mit 301 auf Kollektion statt Produkt (3 mit Fehlern:
+falsches Bild am Kuppelzelt, Lunch-Bag als «Corduroy Rucksack», 2 ohne Bild). CSVs 02.10. Platz 41–100 (Vol ≥ 200, KD ≤ 30): 113 Zeilen
+auf 83 URLs, davon 25 Hausregel-Klassen (POD 9, Kostüm 7, Heil 6, Klinge 1, Absicht 2) und 9 schon erledigt; 8 rankende Entwürfe ohne 301
+(= 404 für Google); Meta meist Leerformel ohne Gratisversand; Regel «Sternenhimmel» zog 23 Fremdartikel in licht-nachtlicht-projektor.
+
+| Bereich | Geändert (Zahlen) | Ledger / Bericht |
+|---|---|---|
+| **kollektionen-runde2** | **8 neue Smart-Kollektionen** (Tag `kat-…`, 6 Kanäle, Menü, Backup `_hauptmenue_backup_2026-10-05_runde3.json`, `menue_links.py` 202 Einträge ok): etageren 14 · usb-sticks 41 · wanduhren 21 · woks 14 · abendkleider 104 · lunchboxen 33 · winterschuhe 64 · bauchtaschen 77 (Hauptbegriffe zusammen 32'100/Mt). Regeln Block «Runde 3» in `kategorie_rein_semrush.py` (jetzt 25 Kategorien, Kanarienvögel 165/0 Fehler nach allen Nachbesserungen). 4 bestehende Seiten erweitert: sub-stiefel-boots + Stiefeletten (4'800), licht-tischlampe + Nachttischlampe (3'600), haarstyling-geraete + Haarglätter (880), vr-ai-neuheiten + VR-Brille (3'600, 14 VR-Produkte getaggt). **Nachbesserung:** Konsolen-Jailbreak-Dongle «USB-Stick für Host-Systeme» + Switch-CFW-Archiv → DRAFT, Google-Kanal weg, Tag `kopierschutz-umgehung`; neue Regel `kopierschutz-umgehung-konsole` in `heikel_zweck.json` (Trockenlauf 49'925 aktive: 2 Treffer, 0 Fehltreffer) → `cj_category_fill.mjs` + `ueberwachung_waffen_guard.py`. | `_neue_kollektionen_2_2026-10-05.tsv`, `NEUE-KOLLEKTIONEN-2-2026-10-05.md` |
+| **nacharbeit-runde2** | teppiche 38 → 35 (2 Holzroste, 1 Diatomit raus, Text ohne Fussmatten); wecker 21 → 22 (Wecker-Armband 620000 drin); `interne_links.py` WELTEN mit Wortgrenzen (`welt_re`, 41/41 Kanarienvögel; 24 Weltwechsel geprüft), Fehl-Link Kinderwagen-Ventilator weg, Anker «Baustelle Kinder» ×3 korrigiert; kaufbare Ziele < 3 Links 16 → 11 von 62; 630500 «Wintermantel» → Kinderjacke Gr. 110–180 (Titel/SEO/Typ/Tags); 121 SEO-Metas gegen Varianten: 2 korrigiert (Fingerskateboard sieben Farben, Luftbett 190 × 100 × 25 cm). | `_nacharbeit_runde2_2026-10-05.tsv` (14), `NACHARBEIT-RUNDE2-2026-10-05.md` |
+| **draft-ersatz** | 4 Entwurfs-301 von Kollektion auf gleichwertiges Produkt umgestellt (Plüsch-Löwe, Kuppelzelt, Pool-Liege, Eisseide → nach Prüferbefund 629800 Waffel-Eisseide-Lendenkissen statt Plüschkissen 612400; 612400-SEO zurückgesetzt) + SEO beider Felder; 3 CJ-Suchaufträge vorne (cat litter box furniture, collapsible water container with tap, corduroy backpack); Marken (Casio, Polaroid, Clinique, Givenchy) + Nova bewusst belassen; 7 Kannibalisierungs-Fälle live konsistent. Kollektions-301 der Entwürfe 11 → 7. | `_draft_ersatz_2026-10-05.tsv` (25), `DRAFT-ERSATZ-2026-10-05.md` |
+| **platz41-100** | 40 Seiten: 34 Produkt-SEO (Zahlen nur aus kaufbaren Varianten), **9 neue 301** (Entwurf → kaufbarer Ersatz, u. a. Kühlbox → Mini-Kühlschrank 6 L für «kleiner kühlschrank» 4'400), 1 Redirect umgezielt (Lichtwecker → /collections/wecker), 4 Kollektions-SEO + 3 Einleitungen (93–102 Wörter), 1 interner Link; licht-nachtlicht-projektor auf Tag-Regel `kat-nachtlicht-projektor` (28 neue Kanarienvögel): 148 Produkte/110 aktiv mit 23 + 19 Fremdartikeln → **91, alle aktiv, 0 Uhren/Leinen/Velolichter**; Tracker 250 Begriffe. | `_platz41_heben_2026-10-05.tsv` (53+), `PLATZ41-HEBEN-2026-10-05.md` |
+
+**Einheiten Runde 3:** 600 (6 × `phrase_organic` ch für die neuen Kollektionen; abendkleid/lunchbox «NOTHING FOUND»), dazu 190 aus «keyword mehr
+machen» → **Konto LEER** (gemessen: «ERROR 132 API UNITS BALANCE IS ZERO», `no_api_units`). Die Deutung «Rest ≈ 400» aus der api_units-Folge
+ist damit überholt; Wahrheit = Fehlermeldung des Kontos.
+
+**Live-Stichproben ~10:50 UTC (WebFetch, Cache-Brecher `?v=s3`):** /collections/usb-sticks Titel «USB-Stick kaufen: Metall, Mini & Motive |
+LuxeStyle», «41 Artikel», kein Host-/Switch-/Jailbreak-/Rogue-Dog-Titel auf Seite 1 · /products/langes-kissen-aus-eisseide-kuhlend-629200 →
+«Eisseide-Lendenkissen mit Kühlfunktion | LuxeStyle», CHF 43.90, «In den Warenkorb legen» · /collections/licht-nachtlicht-projektor Titel
+«Nachtlichter & Sternenhimmel-Projektoren kaufen | LuxeStyle», erster Satz «Ein Sternenhimmel-Projektor wirft Sterne …», «91 Artikel», Seite 1
+ohne Uhr/Leine/Hundegurt/Velo/Zahnbürste.
+
+**Offen (Prüferbefunde nicht behoben, je klein):** bauchtaschen «Heat Gun mit Leder-Bauchtasche» (Werkzeug-Holster; BAN `heat.?gun|heissluft|tint`) ·
+abendkleider «Tüll-Ballkleiderschürze» = Rock (BAN `sch(ü|ue)rze|\brock\b`) · usb-sticks «Wretched Rogue Dog» (Variante ohne Speicher) · HAUS-BAN
+«messer» trifft «Durchmesser», «mini» trifft «Minimalistisch» (wanduhren/woks unterfüllt) · bauchtaschen im Menü nur unter Damen (Bestand
+überwiegend Herren) · Texte: Bauchtaschen «Laufgürtel mit Flaschenfach», «Pastell oder Neon», Woks «Dämpfeinsatz» nicht belegt · Zelt-Meta
+«Festivals» nicht belegt · Kannibalisierungs-Metas der 5 Zielseiten beginnen noch mit dem Begriff der rankenden Seite · Velo-Rücklicht «neun Formen»
+(1 Variante = 3er-Pack), GPS-Tracker «Weiss mit Magnet» gibt es nicht · Kinderjacke 630500 «Er ist …» → «Sie ist …» · lautsprecher-Kollektion
+zieht Rucksack/Tasche/E-Keyboard/Diffuser (Ziel des 301 «sound system») · 8 Sternenlicht-/Galaxy-Projektoren fehlen in licht-nachtlicht-projektor
+· Wirkaussagen Mini-Stepper 998784 («Rehabilitation», H1 «Reha», Ziel eines neuen 301) + Fitness-Band 7e0d5a («Fettdepots») · Superman-/Widmann-SEO
+(Fremdmarke) · 612400/629800: mehrere Motive, 1 Variante · kein Ersatz für velo garage 1'300, spin bike 1'300, kleiderständer holz 590 (CJ-Aufträge
+möglich) · 3 Draft-301 nach CJ-Import umstellen (IDs 1735624130945, 1730175500673, 2036527595911) · kategorie_rein.py mit 25 Kategorien: Laufzeit
+gegen `timeout 3000` beim nächsten Tick prüfen · Haarstyling-Meta im Cache noch alt · winterschuhe nachzählen · Wächterzeilen Kanarienvögel
+(`interne_links.py --kanarien`, `kategorie_rein_semrush.py`) noch nicht im Aufseher · Nichts committet (Autocommitter nahm Teile als Drift mit).
+
+**Nachmessung 08.10.:** mit leerem Konto NICHT möglich (resource_organic ~4'400 Einheiten). Weg ohne Nachkauf: `automation/semrush_positionen.py`
+über die gespeicherten CSVs + Positions-Kampagne (Betreiber legt sie für CH/Mobil an, 250 Begriffe in `POSITION-TRACKING-KEYWORDS.txt`) +
+Search Console. Neu zu beobachten: 8 Kollektionen Runde 3, 9 + 4 Redirect-Pfade (dürfen nicht mehr als eigene URL ranken), 34 Platz-41-Produkte,
+«sternenhimmel projektor» → licht-nachtlicht-projektor, «kleiner kühlschrank» → 629400. Kündigung vor 09.10. bleibt.

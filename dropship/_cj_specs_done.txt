@@ -3390,3 +3390,6 @@ espadrille-sandalen-mit-plateau-617000	hat-liste
 keilsandalen-mit-hanfseil-plateau-600200	hat-liste
 keile-zehensteg-sandalen-aus-wildleder-618800	hat-liste
 mules-mit-geschlossener-zehenpartie-618300	gesetzt-2
+stoff-hausschuhe-mit-schleife-und-weicher-sohl-629200	gesetzt-4
+elegante-sandalette-im-franzosischen-stil-619100	hat-liste
+schafsfell-sandalen-mit-metallschnalle-639300	hat-liste
