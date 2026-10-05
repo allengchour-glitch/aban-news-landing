@@ -4098,3 +4098,11 @@ bluetooth-tastatur-927234	2037015901662367746	0	-	KEINE CH-Option → DRAFT	land
 gaming-set-uk-771841	2036701292431183874	0	-	KEINE CH-Option → DRAFT	landeseite
 bluetooth-headset-629400	2603220650361629700	7	15.71	ok	landeseite
 2-4g-spiel-set-541953	2034109232249298945	0	-	KEINE CH-Option → DRAFT	landeseite
+gaming-headset-610800	2603150608031611200	16	5.41	ok	landeseite
+usb-adapter-626600	2605170116551627200	16	5.17	ok	landeseite
+pflanzen-controller-605300	2604290831021605800	7	14.52	ok	landeseite
+rgb-headset-600300	2509260359571600500	7	10.50	ok	landeseite
+falt-joystick-601000	2509031005201601200	16	4.83	ok	landeseite
+gamepad-halter-617700	2507210638331618100	16	5.69	ok	landeseite
+bluetooth-gamepad-612300	2507160725121612500	7	8.43	ok	landeseite
+ps5-gamepad-618700	2507061257381618900	16	4.37	ok	landeseite
