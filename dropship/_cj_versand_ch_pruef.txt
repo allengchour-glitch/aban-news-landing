@@ -3832,3 +3832,9 @@ birnenformiger-zirkon-ring-610900	2605020925181611500	16	4.58	ok	landeseite
 damenring-mit-rechteckigem-moissanit-628300	2605020851561628800	16	4.37	ok	landeseite
 damen-quarzuhr-af91f2	-	-	-	unklar keine CJ-SKU	landeseite
 holz-armbanduhr-mit-quarzwerk-1905f7	-	-	-	unklar keine CJ-SKU	landeseite
+quarzuhr-fur-damen-und-herren-afe067	-	-	-	unklar keine CJ-SKU	landeseite
+naviforce-quarzuhr-mit-lederarmband-5006cd	-	-	-	unklar keine CJ-SKU	landeseite
+naviforce-quarzuhr-mit-stahlband-8714e6	-	-	-	unklar keine CJ-SKU	landeseite
+fritteuse-mit-sieb-b05e9b	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-zitruspresse-1dfd9b	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-armbanduhr-mit-netzarmband-35d14b	-	-	-	unklar keine CJ-SKU	landeseite
