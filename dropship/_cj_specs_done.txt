@@ -3450,3 +3450,4 @@ atmungsaktive-leder-sandalen-fur-herren-604500	hat-liste
 herren-leder-strandschuhe-atmungsaktiv-625800	gesetzt-4
 herren-outdoor-sandalen-mit-klettverschluss-621300	hat-liste
 atmungsaktive-mesh-sandalen-fur-herren-616500	hat-liste
+rutschfeste-arbeits-freizeitschuhe-620300	gesetzt-1
