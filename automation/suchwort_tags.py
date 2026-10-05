@@ -62,7 +62,8 @@ GRUNDWOERTER = {
     # Lichterkette die Schmucksuche — der Probelauf hatte 383 «kette»-Treffer, viele davon
     # Beleuchtung.
     "kette":       ["fahrrad", "saege", "schnee", "foerder", "lichter", "licht", "schluessel"],
-    "ring":        ["feder", "dicht", "schlauch", "schleif", "lenk", "spring", "hering"],
+    "ring":        ["feder", "dicht", "schlauch", "schleif", "lenk", "spring", "hering", "contouring",
+                    "monitoring", "layering", "mirroring", "wearing", "string", "mountaineering", "augenring"],  # englische -ing-Wörter, Augenringe (05.10.)
     "armband":     [],
     "ohrring":     [],
     "lampe":       [],
@@ -81,7 +82,7 @@ GRUNDWOERTER = {
     "topf":        ["blumen"],
     "messer":      [],
     "flasche":     [],
-    "becher":      [],
+    "becher":      ["aschen"],                      # Aschenbecher = Raucherzubehör, kein Trinkbecher (05.10.)
     "buerste":     [],
     "kamm":        [],
     "schere":      [],
