@@ -15,6 +15,7 @@
   CJ bietet ein «similar style» an (Bild: blaues Zifferblatt, Marke TIBERAO statt Nibosi). Betreiber hat am 04.10. 14:21 und
   05.10. 18:20 (CJ-Zeit) zugestimmt; Status «Awaiting CJ Reply». Tracking EQKPT8612951662YQ: 0 Scans, «Processing» (16:15 UTC).
 - Shop: «Nibosi Quarzuhr mit Edelstahlband» → **DRAFT** + Tags `ausverkauft-lieferant`, `cj-ersatz-1021` (16:35 UTC).
+- ✅ ENTSCHIEDEN 05.10. ~22:00 (Betreiber «es ist ok kein mail senden»): KEINE Kunden-Info-Mail zu #1021. Entwurf unten nur noch Archiv.
 - ⚠️ Nur Betreiber: Die Kundin/der Kunde bekommt eine ANDERE Marke als bestellt. Vorschlag — kurz informieren, bevor das
   Paket ankommt (Entwurf, NICHT gesendet):
   > Grüezi, kurzes Update zu Ihrer Bestellung #1021: Die bestellte Uhr in Blau ist beim Hersteller ausverkauft. Wir senden
