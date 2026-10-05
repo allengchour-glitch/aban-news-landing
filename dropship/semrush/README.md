@@ -232,4 +232,9 @@ Search Console. Neu zu beobachten: 8 Kollektionen Runde 3, 9 + 4 Redirect-Pfade 
   gummistiefel 17, jeanskleid 16 …), Pilot `schwarz` auf 18 Ballerinas; Ledger `dropship/_suchwort_synonyme.tsv`. Wirkung: Ein-Wort-
   Vorschläge und Enter-Suche ja (gummistiefel 2/10 → 10/10, hosenrock, akkuschrauber), Zwei-Wort-Vorschläge kaum (nur hanteln set 1/3 → 3/3)
   → Synonymgruppen = Betreiber-Klick Search & Discovery. Ledger-Sperre je (ID, Tag) statt je ID; Aschenbecher/Contouring/Monitoring raus.
+- ⚠️ Nachbesserung 11:00 UTC (Prüferbefund): der Grundwort-Teil hätte im nächsten Keepalive-Lauf `messer` auf «Durchmesser»/
+  Messgeräte, `uhr` auf «Drahtzufuhr», `matte` auf Hängematten, `bohrer` auf Diamond-Painting-Stifte geschrieben und am alten
+  Export-Titel entschieden. Jetzt: `messer` gestrichen (Klingen-Sperrtag anderer Wächter!), Kopfwort-Regel (nicht nach «mit/für»,
+  nicht vor Bindestrich), Live-Titel, 25 Kanarienvögel als Abbruch-Tor; Trockenlauf 52 → 33, alle von Hand gelesen. Rückbau:
+  `messer` von 46 Messgeräten, `matte` von 19 Hängematten (`dropship/_suchwort_tags_rueckbau_2026-10-05.tsv`).
 - Tracker: +40 Begriffe mit Ziel-URL (jetzt 290). Sortimentslücken: Beamer-Leinwand 1'000/Mt, Holz-Bilderrahmen 720/Mt, Gaming-/Bürostuhl.

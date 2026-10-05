@@ -120,6 +120,33 @@ damen» → «Damenbluse»). Farbe/Zielgruppe stehen bei unserer Ware nur in Var
    Mengenänderung). Dabei gefunden und ausgeschlossen: «Aschenbecher» → `becher` (Raucherzubehör), `ring` aus «Contouring»,
    «Gesundheitsmonitoring», «Layering», «Mirroring», «Wearing», «String», «Mountaineering», «Augenringe»
    (Kanarienvögel «Silberring», «Edelstahlring» weiter getroffen). Täglicher Lauf jetzt 53 statt 67 Kandidaten.
+   ⚠️ **KORREKTUR (Prüferbefund, 10:45–11:00 UTC):** «keine Mengenänderung» war die falsche Abnahme. Die 54 Paare waren
+   nie von Hand gelesen — der nächste scharfe Keepalive-Lauf (fällig ~16:13 UTC) hätte u. a. geschrieben: `messer` auf
+   «Tischuhr … 12 cm Durch**messer**», «Drehwinkelmesser», «Höhenmesser», «Windgeschwindigkeitsmesser», «Haarmesser»;
+   `uhr` auf «Draht**zufuhr**»; `matte` auf «Hänge**matte**»; `bohrer` auf zwei Diamond-Painting-«Punktbohrer»; `kamm` auf
+   einen Lamellenkamm für Klimaanlagen; `kabel` auf eine Crimpzange und einen Schlangen-Fanghaken. Ausserdem entschied das
+   Werkzeug am **Export-Titel** (21:10 UTC vom Vortag), nicht am Live-Titel: 9 der 52 Produkte heissen live längst anders
+   («Reisetasche» = «Rucksack weiss», «Spitzenbluse» = «Jeansjacke», «Motorradsattelanzug» = «Motorradjacke»).
+   **5. Nachbesserung `suchwort_tags.py`:** (a) `messer` ganz gestrichen — Klingen sind seit 16.09. nicht im Verkauf, übrig
+   sind nur Messgeräte, und der Tag `messer` ist ein **Klingen-Sperrtag** anderer Wächter (`google_kanal_luecke` TAG_RISIKO,
+   `cj_versand_ch_revive` KLINGE_TAG) — ein Pulsmesser mit diesem Tag kommt nie in den Google-Kanal zurück. (b) Ausnahmen
+   `uhr` +zufuhr/abfuhr/ausfuhr/einfuhr, `matte` +Hängematte, `bohrer` +Punktbohrer; `KONTEXT_OHNE` für `kamm`
+   (Reinigung/Lamelle/Klima) und `kabel` (Klemme/Tester/Crimp/Einholer). (c) **Kopfwort-Regel:** ein Grundwort nach
+   «mit/für/zur/zum/ohne/inkl.» oder vor einem Bindestrich (ausser -Set/-Kit/-Paar/-Schmuck/-Modell) ist nicht das Produkt
+   («Smartwatch mit Pulsmesser», «Lederarmband mit USB-C-Ladekabel», «Netzwerkkabel-Klemme»). Gegen alle 50'760 aktiven
+   Produkte verglichen: die neue Regel weist 768 Paare ab, die die alte nahm; von Hand gelesen, fast alle zu Recht
+   (Quarzuhr mit Edelstahl**armband** 165×, Kleid mit Taillen**gürtel** 67×); bewusst in Kauf genommen ~5 echte Verluste
+   («Baumwollmantel» nach «mit Kapuze,», «Mini-Suppentopf» nach «für Herd –»). (d) Entscheidung am **Live-Titel**.
+   (e) **25 Kanarienvögel** laufen vor jedem Lauf; einer daneben = Abbruch, bevor etwas geschrieben wird.
+   Trockenlauf danach (10:57 UTC): **33 statt 52 Produkte**, alle 33 von Hand gegen den Live-Titel gelesen, 0 Fehltreffer
+   (Drainagematte, Picknickmatte, Keramikbecher, Studentenrucksack, Gummihammer, Holzbohrer, Tischuhr aus Buchenholz …).
+   Nicht scharf gefahren — das macht der Keepalive-Lauf (~16:13 UTC) mit genau dieser Regel.
+   **6. Rückbau bereits geschriebener Fehltreffer (10:54 UTC):** nur Paare aus `dropship/_suchwort_tags.txt` (= dieses Werkzeug
+   hat sie gesetzt). `messer` von **46 Messgeräten** entfernt (Puls-/Herzfrequenz-/Höhen-/Entfernungs-/Winkel-/Reifendruck-
+   messer, «Durchmesser»; nur wenn `ist_klinge` UND `ist_handklinge` nein), `matte` von **19 Hängematten** (61 ACTIVE + 4 DRAFT insgesamt; inkl. «Katzenbett mit
+   Hängematte»); zusammen 65 Produkte, 3 übersprungen (Handle im Sperr-Ledger des Parallel-Workflows). Ledger mit Altwert
+   `dropship/_suchwort_tags_rueckbau_2026-10-05.tsv` (Rückweg `tagsAdd`). Zurückgelesen: 65/65 ohne den Tag. Admin
+   `tag:messer status:active` danach 11 (3 gesperrte Messgeräte + 8 Klingen/Klingennahe, Tag dort absichtlich belassen).
 
 ## Wirkung gemessen (10:18–10:25 UTC)
 - **Ein-Wort-Suche — wirkt:** «gummistiefel» Vorschläge 10/10 Regen-/Gummistiefel (09:45, Index noch alt: 2/10, Platz 2–5 Schnee-/
@@ -169,4 +196,14 @@ babydecke merinowolle, armbanduhr mit wecker, bürostuhl, chelsea boots mädchen
 - Sortimentslücken für den CJ-Lauf (nach 16:00 UTC): Beamer-Leinwand (1'000/Mt), Gaming-Stuhl, ergonomischer Bürostuhl,
   Holz-Bilderrahmen (720/Mt), Chelsea Boots Kinder.
 - `suchwort_tags.py` Grundwort `ring` trifft weiter Beissring/Schwimmring/Turnringe (kein Schmuck) — nicht angefasst.
+- **Klingen im Verkauf (Befund für die Klingen-Wache, nicht angefasst):** ACTIVE mit Tag `messer`: «Küchenmesser mit Strass»
+  (`ist_handklinge` = ja!), «Garten-Veredelungsmesser aus geschmiedetem Stahl» und «Titanlegierung Faltmesser Mini
+  Schlüsselanhänger» (Regel sagt beide Male NEIN — Regel-Loch), «Vintage Rasiermesser», «Hobelmesser für Elektrohobel».
+- 3 Messgeräte tragen `messer` noch (Handle im Sperr-Ledger): smartes-fitness-armband-mit-pulsmesser-344832,
+  smartes-sport-armband-mit-herzfrequenzmesser-625800, v76-gps-uhr-mit-kompass-und-hohenmesser-625300.
+- Tag `uhr` speist die Kollektion `herrenuhren-schmuck` (Regel TAG = uhr, einzige Regel auf einem Grundwort-Tag): 52 aktive
+  Wand-/Tisch-/Spiel-/Stoppuhren und Wecker stehen dadurch bei den Herrenuhren; der nächste Lauf fügt «Tischuhr aus
+  Buchenholz» hinzu. Lösung gehört in die Kollektionsregel, nicht in den Suchwort-Tag.
+- Bestandstags, die die neue Kopfwort-Regel heute abweisen würde (z. B. `armband` auf 165 Uhren, `guertel` auf 67 Kleidern),
+  bleiben stehen — nur `messer`/`matte` zurückgebaut.
 - Nichts committet (Workflow-Vorgabe).
