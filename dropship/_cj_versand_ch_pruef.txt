@@ -4141,3 +4141,7 @@ sternenhimmel-projektor-cosmos-led-nachtlicht-240961	2039999123513458690	-	-	unk
 led-projektor-aurora-stimmungslicht-612400	2601200614481612700	7	15.42	ok	landeseite
 wireless-charger-powerpad-kabellos-laden-849665	2041062100901318657	0	-	KEINE CH-Option → DRAFT	landeseite
 kabellose-kopfhorer-aeropods-bluetooth-tws-610500	2606100752431611200	7	5.34	ok	landeseite
+kabellose-kopfhorer-wavepods-bluetooth-tws-620700	2606100736031622000	7	5.32	ok	landeseite
+led-projektor-glowcast-stimmungslicht-841793	1968968912627339265	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-drohne-skycam-faltbar-365889	2060192296065355777	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-drohne-aerox-faltbar-123713	2060192497459056642	0	-	KEINE CH-Option → DRAFT	landeseite
