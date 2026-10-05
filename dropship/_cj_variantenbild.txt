@@ -6013,3 +6013,11 @@ gid://shopify/Product/15454642307457	zugeordnet	30	Retro Baumwoll-Leinen T-Shirt
 gid://shopify/Product/15454642667905	zugeordnet	36	Stretch-T-Shirt mit Rollkragen
 gid://shopify/Product/15454643093889	zugeordnet	42	Leichte Sommer-Shirts für Herren
 gid://shopify/Product/15454643388801	zugeordnet	25	Herren-Strick-Weste Slim Fit
+gid://shopify/Product/15454643683713	zugeordnet	36	Leichtes Sport-Shirt
+gid://shopify/Product/15454644142465	zugeordnet	12	Herren-Pullover mit Rundhalsausschnitt
+gid://shopify/Product/15454644765057	zugeordnet	30	Herren Henley-Shirt
+gid://shopify/Product/15454645158273	zugeordnet	30	Fitness-Hoodie für Herren
+gid://shopify/Product/15454645518721	zugeordnet	66	Sweatshirt für Herren
+gid://shopify/Product/15454645911937	zugeordnet	6	Muskulöse Unterwäsche für Herren
+gid://shopify/Product/15454646403457	zugeordnet	28	Retro-Tang-Hemd im chinesischen Stil
+gid://shopify/Product/15454648009089	zugeordnet	15	Kontrast-Kragen Sport Top

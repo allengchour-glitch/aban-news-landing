@@ -3817,3 +3817,5 @@ memory-schlafkissen-60-40-12-cm-619100	2601230323141619500	16	20.58	ok	landeseit
 kissenbezug-im-chinesischen-stil-30-50-cm-636000	2601220826451636500	16	6.01	ok	landeseite
 massagekissen-fur-gesichtsliege-620000	2601210635481620400	16	9.88	ok	landeseite
 tpee-faserkissen-mit-nackenstutze-621300	2601210630151622000	16	22.10	ok	landeseite
+hohenverstellbares-eisseiden-memory-kissen-606800	2601200510201607100	16	20.58	ok	landeseite
+beauty-kissen-aus-memory-schaum-604800	2601190305491605200	16	17.82	ok	landeseite
