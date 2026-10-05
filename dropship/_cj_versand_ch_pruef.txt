@@ -3794,3 +3794,5 @@ schiebeturrolle-d28129	-	-	-	unklar keine CJ-SKU	landeseite
 vakuumiergerat-fur-kleine-plastikbeutel-93e3f9	-	-	-	unklar keine CJ-SKU	landeseite
 haustierhalsband-mit-leine-und-schleife-455104	1423198757729734656	16	7.25	ok	landeseite
 hundeleine-mit-brustgeschirr-571456	1423096552284622848	16	12.21	ok	landeseite
+multifunktions-entsaftermixer-618368	1772618405770698752	7	15.42	ok	landeseite
+reflektierende-nylon-hundeleine-069824	1422069582545424384	16	8.25	ok	landeseite
