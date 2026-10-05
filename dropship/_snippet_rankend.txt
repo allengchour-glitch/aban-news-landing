@@ -5882,3 +5882,165 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15449483346305	Diese Leine für Hunde weist ein Zweiabschnitts-Design auf und ist aus Polyester gefertigt.
 15449483411841	Diese praktische Leine ermöglicht es, zwei Hunde gleichzeitig auszuführen.
 15449483444609	Der Pet Hammock Nagelkürzer ist ein praktisches Werkzeug für die Pflege von Hunden.
+15449484525953	Diese gepolsterte Hunde-Halsung bietet optimalen Komfort und Sicherheit für deinen Hund. Empfohlen für Hunde mit einem Gewicht von 2-50 kg.
+15449484591489	Ein bequemes und sicheres Geschirr für Hunde, ideal für Spaziergänge und Ausflüge.
+15449484624257	Diese Hunde-Halsung ist aus Polyester gefertigt und in den Farben Braun, Schwarz, Grau und Marineblau erhältlich.
+15449485246849	Die Aussenüberwachungskamera ist ideal für die Überwachung von Aussenanlagen. 2.0-Zoll-Full-HD-Display.
+15449485312385	Dieser intelligente 3-Achsen-Stabilisator bietet eine stabile und präzise Handhabung für verschiedene Anwendungen.
+15449485345153	Diese kompakte Sportkamera ist ideal für den Einsatz unterwegs. 4-fach optischer Zoom für flexibles Aufnehmen.
+15449485377921	Diese Kamera ist ideal für Outdoor-Aktivitäten wie Radfahren, Tauchen und Skifahren. High-Definition-Sportkamera mit WIFI-Übertragung (2.4G).
+15449485410689	Die WIFI-Sportkamera ist eine kompakte Kamera für den Outdoor-Einsatz. Kompakte Grösse: 61.5 x 27 x 27mm.
+15449485443457	Die HD Jagdkamera mit Infrarot-Technologie ist ideal für Sicherheitsüberwachung. 36MP-Bilder und 1920x1080p-Videos.
+15449485476225	Diese Sportkamera ist ideal für Outdoorsportler, die ihre Erlebnisse beim Radfahren, Bergsteigen oder anderen Aktivitäten aufnehmen möchten.
+15449485508993	Diese Überwachungskamera ist ideal für die Innenüberwachung. IP65-Schutz gegen Wasser und Staub.
+15449485541761	Die Thumb Sports Camera ist eine HD-Kamera, die speziell für sportliche Aktivitäten konzipiert wurde. Kompakte Grösse: 68*34*26.5mm.
+15449485607297	Diese kompakte Kamera ist speziell für die Montage an Motorrädern konzipiert und bietet eine hohe Auflösung von 3 Megapixeln.
+15449485672833	Diese PTZ-Kamera bietet eine intelligente, vollautomatische Lösung für mobile Geräte. Abmessungen: 109mm x 104mm.
+15449485771137	Diese Überwachungskamera bietet eine zuverlässige Überwachung bei Tag und Nacht. Sprachinterkom für eine einfache Kommunikation.
+15449485869441	Das astronomische Teleskop ist ein monokulares Teleskop aus Metall und Kunststoff. Abmessungen: 59x22x13cm.
+15449485934977	Diese Action-Kamera ist ideal für den Einsatz unter Wasser oder bei rauen Bedingungen. 4K-Auflösung bei 60 Bildern pro Sekunde.
+15449485967745	Diese kompakte Kamera ist ideal für Outdoor-Sport und Konferenzen. 180-Grad-Drehscharnier.
+15449486000513	Dieses elektronische Okular ermöglicht eine einfache und komfortable Beobachtung von Himmelskörpern und terrestrischen Zielen durch ein Teleskop.
+15449486131585	Diese kompakte Kamera ist ideal für unterwegs und bietet eine Vielzahl von Funktionen.
+15449486229889	Diese kompakte Kamera ist ideal für sportliche Aktivitäten und bietet eine hohe Bildqualität. Kompakte Grösse: 30 x 23mm.
+15449486262657	Die 4K Sportkamera ist ein kompaktes und vielseitiges Gerät, das für den Einsatz im Sport und in der Freizeit konzipiert wurde.
+15449486295425	Diese WLAN-Überwachungskamera ermöglicht eine bequeme Überwachung deines Zuhauses. Nachtsicht mit Infrarot-Beleuchtung bis zu 7 Metern.
+15449486328193	Das HD-Infrarot-Nachtsichtgerät ermöglicht eine klare Sicht auch in völliger Dunkelheit. Beobachtungsdistanz bei völliger Dunkelheit: 200-300 m.
+15449486360961	Ein kompaktes, handliches Monokular für unterwegs. 8-fache Vergrösserung.
+15449486950785	Erlebe klare, scharfe und natürliche Klangwiedergabe mit diesem professionellen Lavalier-Mikrofon. Hohe Empfindlichkeit von 3,5 mV/pa.
+15449487114625	Dieser universelle Stromadapter bietet eine zuverlässige Verbindung für deine Geräte.
+15449487311233	Dieser Haarschneider ist ideal für den Hausgebrauch und bietet eine zuverlässige Leistung. Leise: 46–70 dB.
+15449487409537	Diese Heiztasse mit Digitaldisplay eignet sich ideal für 1-2 Personen und bietet eine einfache Bedienung via Touch-Control.
+15449487442305	Das portable Bügeleisen ist ideal für unterwegs oder für den Einsatz zu Hause. Kompakte Abmessungen: 280 x 130 x 100 mm.
+15449487606145	Diese kabellose Baby-Uberwachungskamera bietet eine hohe Auflösung von 1280x720 und ist mit Wireless CarPlay kompatibel.
+15449487638913	Diese kabellose, multifunktionale elektrische Reinigungsbürste ist ein vielseitiges Werkzeug für müheloses Reinigen in Küche, Bad und darüber hinaus.
+15449487671681	Diese Drohne ist ideal für Erwachsene und Anfänger. 6K HD Dual-Kamera für scharfe Bilder.
+15449487802753	Diese externe Festplattenbox ist ideal für die Erweiterung des Speichers von Notebooks und Computern.
+15449487868289	Dieser Adapter bietet eine schnelle Ladeleistung von bis zu 100W und 5A, kompatibel mit verschiedenen Schnelllade-Standards wie QC4.0, QC3.0, QC2.0, SCP …
+15449487933825	Ein vielseitiges Festplatten-Gehäuse für den Einbau von 3,5-Zoll-Festplatten.
+15449487966593	Diese U-Disk bietet eine sichere Möglichkeit, Daten zu speichern und zu transportieren. Duale Schnittstelle: Android Type C + USB 3.0.
+15449487999361	Diese kabellose Bluetooth-Tastatur bietet eine einfache Verbindung zu Desktop-Computern, Notebooks und Tablets.
+15449488621953	Verleiht deinen Wimpern eine natürliche, volle Länge. Inhalt: 5 ml.
+15449488654721	Dieses grosse Wimpern-Set enthält 640 Stücke und ist für die allgemeine Öffentlichkeit geeignet.
+15449489047937	Entdecke die einfache Schönheit mit magnetischen Wimpern!
+15449489113473	Das ICONSIGN Keratin-Lift-Kit erzeugt langanhaltend gewölbte Wimpern. Grösse: 16.2*12*2.2 cm.
+15449489179009	Dieses Falschaugenwimpern-Set ist ideal für die Weihnachtszeit und bietet eine Vielzahl von Stilen für unterschiedliche Vorlieben.
+15449489211777	Diese Wimpern-Styling-Tools sind für professionelle Wimpernsalons konzipiert und bieten eine Vielzahl von Stilen für unterschiedliche Wimpern-Looks.
+15449489277313	Das DIY Wimpern-Set ermöglicht eine individuelle und voluminöse Wimpern-Anwendung. 2 Varianten: 392 oder 600 Wimpern-Cluster.
+15449489310081	Das Magnetic Lashes Set besteht aus künstlichen Wimpern aus chemischen Fasern. Enthält 1, 2 oder 3 Paare künstlicher Wimpern.
+15449489375617	Diese Mascara verleiht deinen Wimpern eine atemberaubende Länge, Fülle und Krümmung. 10ml Inhalt.
+15449490194817	Diese künstlichen Fingernägel bieten ein hübsches Blumenmotiv und verleihen deinen Händen einen sommerlichen Look.
+15449490227585	Diese handbemalten Nägel zeichnen sich durch ein einzigartiges Schmetterlingsdesign aus.
+15449490293121	Diese 3D Nagel-Tips sind handgemachte, tragbare Kunstwerke für deine Nägel. 10 Nagel-Tips pro Packung.
+15449490325889	Diese mandelförmigen Fake Nails bieten eine einfache Möglichkeit, das Nageldesign zu wechseln.
+15449490358657	Dieses Nageldesign-Set bietet eine Vielzahl von Möglichkeiten für individuelle Nagelkunst. 10-teiliges Set mit verschiedenen Metallic-Designs.
+15449490391425	Diese handbemalten Nagel-Patches bieten ein einzigartiges Design mit einem Sternenhimmel-Muster in roter Farbe.
+15449490456961	Diese stylische Tasse ist ein echter Hingucker in der Küche oder auf dem Schreibtisch. Robustes Edelstahlmaterial.
+15449490489729	Dieser Trinkbecher ist ideal für den Outdoor-Einsatz und Sportaktivitäten. Isolationsleistung: 6–12 Stunden.
+15449490522497	Dieser elegante Becher aus 316 Edelstahl ist ideal für den täglichen Gebrauch oder als Geschenk.
+15449490555265	Dieser Isolierte Becher mit Leopardendruck ist ein stylisches Accessoire für deinen Kaffee- oder Teegenuss. Isolationsleistung: 6–12 Stunden.
+15449490620801	Diese portable Wasserflasche ist ideal für unterwegs und kompatibel mit Auto-Haltern. Kapazität: 580 ml oder 450 ml.
+15449490653569	Diese stylische Trinkflasche aus Edelstahl ist ideal für den täglichen Gebrauch, egal ob zu Hause, im Büro, beim Sport oder auf Reisen.
+15449490686337	Dieser Thermosbecher aus hochwertigem 304-Stahl ist ideal für unterwegs.
+15449490719105	Diese Wasserflasche ist ideal für Kinder und hält Getränke über einen langen Zeitraum warm oder kalt. Isolationsleistung: 12–24 Stunden.
+15449490784641	Diese stylische Wasserflasche ist ideal für den Sommer.
+15449490850177	Diese grosszügige Isolierflasche hält Getränke während 6–12 Stunden warm oder kalt.
+15449490882945	Diese Trinkflasche ist ideal für Kinder und unterwegs. 480 ml oder 580 ml Fassungsvermögen.
+15449490915713	Dieser Becher ist ideal für unterwegs und bietet eine praktische Möglichkeit, Getränke zu geniessen.
+15449490948481	Die Stahlflasche aus 304 Edelstahl hält Getränke warm und ist ideal für unterwegs.
+15449490981249	Diese grosse, stylische Trinkflasche fasst 800 ml und ist in verschiedenen Farben erhältlich.
+15449491046785	Diese Wasserflasche aus hochwertigem Tritan-Kunststoff ist ideal für den täglichen Gebrauch.
+15449491145089	Diese portable Trinkflasche aus 316 Edelstahl ist mit einer Keramik-Innenbeschichtung versehen und bietet eine zuverlässige Isolierung.
+15449491177857	Diese kleine Thermosflasche ist ideal für unterwegs und eignet sich für verschiedene Getränke. Edelstahl-Innenfutter (316) für eine lange Haltbarkeit.
+15449491210625	Diese elegante Tassengarnitur eignet sich ideal für den täglichen Gebrauch und bietet eine praktische Funktion zur Wasser-Trennung.
+15449491243393	Diese praktische Wasserflasche ist ideal für unterwegs und kann heisses Wasser aufnehmen. Kapazität: 1100ml.
+15449491308929	Diese portable Trinkflasche bietet ein grosses Volumen von 500 mL und ist in verschiedenen Farben erhältlich.
+15449491341697	Diese Wasserflasche bietet ein grosses Volumen von 650 mL und ist aus hochwertigem PPSU-Material gefertigt.
+15449491407233	Dieser portable Trinkbecher ist ideal für unterwegs. Grosses Fassungsvermögen von 770 ml.
+15449491440001	Diese Trinkflasche aus 316 Edelstahl ist ideal für den täglichen Gebrauch zu Hause oder unterwegs. Gewicht: ca. 294 g.
+15449491472769	Diese moderne und minimalistische Flasche ist ideal für unterwegs. 750 ml Fassungsvermögen.
+15449491538305	Diese handgemachte Tasse in Form eines Dachshunds bringt Freude in deinen Alltag.
+15449491571073	Dieser portable Reise-Isolierbecher aus Edelstahl eignet sich ideal für unterwegs.
+15449491603841	Dieser Isolierbecher aus Edelstahl ist ideal für den täglichen Gebrauch zu Hause oder unterwegs. Edelstahl 304 als äussere Schale für Robustheit.
+15449491636609	Der portable Thermosbecher ist ideal für Schule und Ausbildung. Edelstahl-Material für Langlebigkeit.
+15449491669377	Dieser Thermbecher ist ein kreativer und niedlicher Begleiter für den Alltag.
+15449491702145	Diese Trinkflasche bietet eine grosse Kapazität von 630 mL und ist daher ideal für den täglichen Gebrauch.
+15449491734913	Ein grosses, tragbares Wasser Glas für Kinder, ideal als Geschenk oder für den Gebrauch zu Hause. Isolationsleistung: 6–12 Stunden.
+15449491800449	Dieser kleine Keramik-Holzkohleofen eignet sich ideal für den Einsatz in Innenräumen und kann von einer Person benutzt werden.
+15449491931521	Dieser keramische Reiniger ist ein vielseitiges Küchengerät, das speziell für die gründliche Reinigung von Früchten und Gemüse konzipiert wurde.
+15449492029825	Dieser Metallständer für Kopfhörer bietet eine praktische Aufbewahrungsmöglichkeit für deine Lieblingskopfhörer. 2-stöckige Ausführung.
+15449492095361	Dieser praktische Aufbewahrungsbeutel ist ideal für die Organisation von Toilettensachen und anderen kleinen Gegenständen. wasserdicht.
+15449492128129	Diese Aufbewahrungsbox ist ideal für die Organisation von Gesundheits supplements und Medikamenten. 24 separate Fächer für eine klare Übersicht.
+15449492160897	Diese hochwertige Schmuckbox bietet eine stilvolle Aufbewahrungsmöglichkeit für deine Schmuckstücke. Grosszügige Innenmasse: 250 x 155 x 55 mm.
+15449492226433	Dieser dekorative Korb in Eichhörnchen-Form ist ideal für die Aufbewahrung von Obst und Gemüse.
+15449492324737	Der Fahrrad-Aufbewahrungsbeutel bietet genug Platz, um dein Fahrrad und Zubehor sicher aufzubewahren. Wasserdicht und abriebfest.
+15449492455809	Die 3-in-1 Waschblätter kombinieren Detergenzmittel, Farbschutz und Duftbooster in einem.
+15449492488577	Diese quadratische Lunchbox aus 304-Edelstahl bietet ein minimalistisches Design und hält Mahlzeiten warm und frisch.
+15449492521345	Dieser Brillenhalter aus Holz ist eine praktische und kreative Lösung, um deine Sonnenbrille und andere Sehhilfen ordentlich aufzubewahren und zur Schau …
+15449492554113	Dieses Kleidungsrack bietet eine praktische Lösung für die Aufbewahrung von Kleidung. Maximale Belastbarkeit: 15 kg (33 lbs).
+15449492586881	Diese Aufbewahrungsbox bietet zusätzlichen Stauraum unter dem Sitz und ist ideal für die Organisation von Gegenständen im Innenraum. wasserdicht.
+15449492717953	Dieser praktische Aufbewahrungsbeutel eignet sich ideal für die Organisation von Kleidung, Wäsche, Schuhen und anderen Gegenständen auf Reisen oder zu …
+15449492750721	Diese robusten Vakuum-Aufbewahrungsbeutel helfen, wertvollen Kleiderschrankplatz zu sparen, indem sie maximale Kompression ermöglichen.
+15449492816257	Dieses Aufbewahrungsset besteht aus drei praktischen Taschen in verschiedenen Grössen, ideal für die Organisation von Make-up und anderen Gegenständen im …
+15449492881793	Diese grosse, isolierte Tasche ist ideal für den Transport von Mahlzeiten im Freien, sei es für ein Picknick, den täglichen Mittagstisch oder eine kurze …
+15449492914561	Diese praktische Aufbewahrungsbox ist ideal für dein Auto. Material: Leder.
+15449493012865	Dieser Wandhaken ist ein minimalistisches und vielseitiges Aufbewahrungstool für verschiedene Räume wie Badezimmer, Eingang, Wäschezimmer, Schlafzimmer …
+15449493078401	Dieser praktische Organizer hilft dir, deine Kleinigkeiten wie Snacks, Trinkets und andere Utensilien ordentlich aufzubewahren. Material: Baumwolle.
+15449493176705	Diese Münzsammlungsbox aus hochwertigem Kiefernholz bietet Platz für 100 Münzen.
+15449493307777	Dieser niedliche Tissue-Box ist im Cartoon-Stil gehalten und aus Plüsch gefertigt.
+15449493340545	Dieser Aufbewahrungskorb ist ein dekoratives Accessoire für deinen Schreibtisch.
+15449493504385	Dieser Duschkopf bietet eine Vielzahl von Einstellungen für ein individuelles Duscherlebnis. 9 verschiedene Dusch-Einstellungen für individuellen Komfort.
+15449493537153	Diese Wanduhr ist ideal für Küche, Bad, Büro oder Wohnzimmer. Wasserdicht und spritzwassergeschützt.
+15449493569921	Diese U-förmige Duschstange ist teleskopierbar und eignet sich für die Installation in Duschen, Badezimmern oder auf Balkonen.
+15449493668225	Die Fitness-Matte ist speziell für Frauen entwickelt worden und bietet eine optimale Unterstützung für verschiedene Sportarten wie Fitness, Yoga, Tanz und …
+15449493700993	Diese Yoga-Matte ist ideal für Männer und Frauen, die nach einer rutschfesten Unterlage für ihre Sport-, Tanz- oder Fitnessübungen suchen.
+15449493733761	Das winddichte Feuerzeug ist ideal für den Einsatz im Freien, zum Beispiel beim Campen, für Kerzen, Grillpartys oder zum Anzünden von Herdplatten.
+15449493766529	Dieser portable Sonnenhut mit integriertem Kühlventilator ist ideal für Outdoor-Aktivitäten.
+15449493832065	Diese Picknickmatte bietet Platz für 4-10 Personen und ist in verschiedenen Grössen und Farben erhältlich.
+15449493864833	Dieser portable Infrarot-Gaskocher eignet sich ideal für Outdoor-Aktivitäten und kann problemlos 3-5 Personen versorgen.
+15449494618497	Diese 20 robusten Zeltstangen sind ideal für Zelte und Vordächer, geeignet für Gras, harten Untergrund, Felsen und gepflasterte Flächen.
+15449494913409	Diese Teleskopstangen sind ideal für den Aufbau von Zelten, Vordächern und Sonnenschirmen.
+15449494946177	Die 3-Modi UV-LED-Taschenlampe ist ein kompakter, wasserdichter Begleiter für Outdoor-Aktivitäten. Super kompakte UV-Taschenlampe mit 395nm-Wellenlänge.
+15449495011713	Diese aufblasbare Matte ist ideal für Outdoor-Aktivitäten und bietet eine zuverlässige Unterlage für Zelte oder als Sitzgelegenheit.
+15449496060289	Der gestreifte Off-Shoulder-Sweater ist ein stylischer und bequemer Begleiter für den Alltag.
+15449496224129	Die Silikon Pilzhügel Langsamfutterbowl ist eine praktische Futterstation für Hunde und Katzen. Material: Silikon.
+15449496289665	Dieser Trinkbecher ist speziell für Haustiere konzipiert und fasst 250ml Flüssigkeit.
+15449496355201	Dieser Futternapf ist speziell für Katzen konzipiert und bietet eine stabile Basis dank seiner vier Füssen.
+15449496650113	Diese umweltfreundliche Doppel-Schüssel aus Silikon ist ideal für die Fütterung von Hunden und Katzen im Freien. aus umweltfreundlichem Silikon.
+15449496781185	Die keramische Futterbowle für Katzen bietet mit ihrem hohen Fuss und dem schrägen Mund eine sichere und hygienische Mahlzeit.
+15449496879489	Diese spezielle Katzen-Schüssel ist für die Gesundheit der Halswirbelsäule von Katzen konzipiert. Mass: 16.3 x 3.3 cm (Schüssel), 16 x 4 cm (Boden).
+15449496945025	Der kreative Pilz-Hochfutternapf ist ideal für Hunde und Katzen.
+15449497108865	Diese Futter- und Wasserschalen sind ideal für Hunde und Katzen.
+15449497665921	Dieser Weihnachts-Flanell-Hoodie ist ein stylisches und bequemes Kleidungsstück für die kalte Jahreszeit. 3D-Effekt-Muster.
+15449497764225	Dieser Cardigan ist ein warmer Begleiter für die kalten Jahreszeiten. Grössen: M, L, XL, 2XL, 3XL, 4XL, 5XL.
+15449497895297	Dieser Casual-Hoodie für Damen überzeugt mit einem modernen Farbblock-Design und einer lässigen Passform. in verschiedenen Grössen (S-5XL) erhältlich.
+15449497993601	Der Retro Polo-Pullover ist ein stylischer und bequemer Sweater fur den Alltag. 3D-Effekt-Muster.
+15449498059137	Stilvolles Damen-Western-Shirt im schmalen Fit. Grössen: S bis 4XL.
+15449498091905	Dieser Pullover ist ein casualer und modischer Begleiter für den Alltag. Mittlere Länge (65cm < Länge ≤ 80cm).
+15449498255745	Diese Weihnachtsmuster-Fleece-Hoodie für Damen bietet eine moderne, frische und süsse Optik. Grössen: 2XL, 3XL, 4XL, 5XL, L, M, S, XL.
+15449498354049	Diese Jacke im koreanischen Stil ist ein vielseitiges, lässiges Oberteil für Damen. Material: Baumwolle.
+15449498386817	Langarm-Rundhals-T-Shirt aus reiner Baumwolle in verschiedenen Farben. 100% reine Baumwolle für weiche Haptik.
+15449498452353	Dieser Pullover ist ein stylisches Kleidungsstück für Damen. Grössen: S, M, L, XL, 2XL, 3XL.
+15449498616193	Ein lässiges Sweatshirt für Damen mit botanischem Blumenmuster. Blumenmuster in verschiedenen Stilen (Style 1-9).
+15449498911105	Dieser graue Hoodie Cardigan ist ein vielseitiges Kleidungsstück für Damen.
+15449498943873	Damen lässiger Druck-Sweatshirt Langarm in braun und grün, Grössen S–XL.
+15449499074945	Dieser Weihnachts-Pullover für Damen besticht durch sein einzigartiges 3D-Druck-Muster.
+15449499107713	Dieser gemütliche Pullover für Damen zeigt ein süsses Weihnachtskatze-Motiv und ist in verschiedenen Farben erhältlich. verschiedene Farben (1-10).
+15449499206017	Der weibliche Unifarben Hoodie fuer Herbst und Winter bietet einen lockeren, casual Look.
+15449499304321	Diese lockere Hoodie ist ideal für Damen, die nach einem bequemen und stylishen Kleidungsstück suchen. 100% Polyester.
+15449499435393	Diese Damen-Hoodie ist ein lässiges, art-retro inspiriertes Kleidungsstück mit digitalem Druck. Grössen: S, M, L, XL, 2XL, 3XL, 4XL, 5XL.
+15449499533697	Grünes Damen-Sweatshirt mit Halloween-Motiv, Crew-Neck-Ausschnitt und langen, regulären Ärmeln. Grössen: S, M, L, XL, 2XL, 3XL.
+15449499566465	Dieser Casual-Hoodie besticht durch sein farbenfrohes Block-Design und die praktische Kapuze.
+15449499697537	Dieser Pullover ist ein lässiges, japanisch-koreanisches Modestück für Damen.
+15449499828609	Dieser Rock ist ein vielseitiges und modisches Kleidungsstück für Damen.
+15449500516737	Diese Jeans für Damen sind ein trendiges, europäisches und amerikanisches Design mit ripped-Details.
+15449500615041	Hochwertige Strechhose im eleganten Commuter-Stil mit hohem Bund und flared Silhouette. Hochelastischer Denim aus Baumwolle.
+15449500647809	Diese Damenjeans vereint Retro-Charme mit modernem Komfort.
+15449500680577	Die schwarzen High-Waisted-Jeans mit weitem Bein sind ein stylischer Hingucker. Grösse: XS, S, M, L, XL, 2XL.
+15449500811649	Diese Damenjeans sind ein klassisches, lässiges Kleidungsstück für den Alltag. aus 100% Polyesterfaser.
+15449500909953	Diese eleganten Jeans sind aus leichtem Denim gefertigt und haben eine hohe Taille. Leichter Denim aus Baumwolle.
+15449500975489	Stilvolle Bügelhose mit amerikanischem Touch und farbenfroher Stickerei. Enthält: Hose 1 Stück.
+15449501041025	Diese Jeans bieten einen hohen Tragekomfort durch ihre moderate Dehnbarkeit.
+15449501204865	Diese Damenjeans sind aus dickem Denim gefertigt und zeichnen sich durch ihre einfache, solide Farbgebung aus. Verfügbare Grössen: S, M, L, XL, 2XL, 3XL.
+15449501303169	Diese dunkelblauen Hosen bieten einen hohen Tragekomfort dank ihres Stretch-Gewebes. aus 100% Polyesterfasern.
+15449501368705	Die Sterndruck-Weitenbein-Jeans im hochtaillierten Schnitt überzeugt mit lockerem Sitz und modischem Flair. Manuelle Messung erlaubt 2-3cm Abweichung.
