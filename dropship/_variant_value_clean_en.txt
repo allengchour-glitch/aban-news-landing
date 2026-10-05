@@ -19857,3 +19857,24 @@ gid://shopify/Product/16604954952071	Farbe	gid://shopify/ProductOptionValue/5831
 gid://shopify/Product/16604954952071	Farbe	gid://shopify/ProductOptionValue/58316610961799	43-Brown	43-Braun	2026-10-03T08:53Z
 gid://shopify/Product/16604954952071	Farbe	gid://shopify/ProductOptionValue/58316610994567	44-Black	44-Schwarz	2026-10-03T08:53Z
 gid://shopify/Product/16604954952071	Farbe	gid://shopify/ProductOptionValue/58316611027335	44-Brown	44-Braun	2026-10-03T08:53Z
+gid://shopify/Product/16607165776263	Farbe	gid://shopify/ProductOptionValue/58332444590471	White-9cm	Weiss-9 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460155271	Grey-12.5cm	Grau-12.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460188039	Grey-13.5cm	Grau-13.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460220807	Grey-14.5cm	Grau-14.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460253575	Grey-15.5cm	Grau-15.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460286343	Red-12.5cm	Rot-12.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460319111	Red-13.5cm	Rot-13.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460351879	Red-14.5cm	Rot-14.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460384647	Red-15.5cm	Rot-15.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460417415	Yellow-12.5cm	Gelb-12.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460450183	Yellow-13.5cm	Gelb-13.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460482951	Yellow-14.5cm	Gelb-14.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460515719	Yellow-15.5cm	Gelb-15.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460548487	Black-12.5cm	Schwarz-12.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460581255	Black-13.5cm	Schwarz-13.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460614023	Black-14.5cm	Schwarz-14.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460646791	Black-15.5cm	Schwarz-15.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460679559	Brown-12.5cm	Braun-12.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460712327	Brown-13.5cm	Braun-13.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460745095	Brown-14.5cm	Braun-14.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460777863	Brown-15.5cm	Braun-15.5 cm	2026-10-05T16:58Z
