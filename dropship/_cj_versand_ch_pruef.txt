@@ -4474,3 +4474,6 @@ ximonth-krauter-pflegestift-mit-pfefferminze-461762	2072583034173816833	3	4.82	o
 dr-snail-collagen-047809	2072571039121711106	3	6.77	ok	landeseite
 tunmate-shea-butter-237g-818433	2072560170122178562	3	9.54	ok	landeseite
 ximonth-nagelpflege-pflaster-956673	2072610304975757314	16	4.52	ok	landeseite
+mechanische-hand-skulptur-controller-halter-704513	2059153406452617218	0	-	KEINE CH-Option → DRAFT	landeseite
+bluetooth-gamecontroller-fur-android-smartphon-634800	2604290701581635400	7	9.69	ok	landeseite
+bluetooth-wireless-gaming-controller-628600	2604170731011629100	7	9.47	ok	landeseite
