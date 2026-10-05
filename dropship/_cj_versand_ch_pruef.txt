@@ -4551,3 +4551,19 @@ hdmi-scanline-generator-fur-retro-gaming-035904	1493778434239893504	7	7.30	ok	la
 robustes-baumwoll-seilspielzeug-fur-hunde-580289	2059552745993854977	16	10.83	ok	landeseite
 6er-pack-katzenminze-spielzeug-q-tip-sticks-620354	2059221466215895041	16	4.47	ok	landeseite
 beissfester-zahnungsstick-fur-haustiere-618100	2605020459111618600	16	8.19	ok	landeseite
+interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+chase-buddy-spielball-mit-seilen-620610	2046785025517838337	0	-	KEINE CH-Option → DRAFT	landeseite
+scooby-doo-quietschballe-fur-hunde-8er-set-816066	2041688218441199618	0	-	KEINE CH-Option → DRAFT	landeseite
+xxl-seilspielzeug-fur-grosse-hunde-245954	2034564712106713090	0	-	KEINE CH-Option → DRAFT	landeseite
+loofah-kauspielzeug-fur-katzen-615500	2603151002001615900	16	4.92	ok	landeseite
+2er-set-leckknochen-fur-hunde-623600	2602260643101624000	16	10.92	ok	landeseite
+interaktives-baumwoll-seilspielzeug-fur-hunde-115521	2026874810163048449	0	-	KEINE CH-Option → DRAFT	landeseite
+bouncing-balls-katzenspielzeug-mit-feder-611266	2069266933966274562	16	7.71	ok	landeseite
+hunde-tennisball-futterspender-321601	2069349540081733633	0	-	KEINE CH-Option → DRAFT	landeseite
+huteball-fur-hunde-mit-griffen-45-cm-548482	2068972398356377602	16	13.40	ok	landeseite
+wurm-spielzeug-set-fur-katzen-541762	2066459998851039233	16	7.85	ok	landeseite
+interaktiver-rollball-fur-haustiere-389569	2062816628414910465	0	-	KEINE CH-Option → DRAFT	landeseite
+interaktiver-rollender-ball-fur-haustiere-672450	2062814032526610434	0	-	KEINE CH-Option → DRAFT	landeseite
+interaktiver-hunde-spielball-aus-e-tpu-757633	2061023153695809538	16	6.77	ok	landeseite
+interaktiver-spielball-fur-haustiere-870401	2060270988662779906	0	-	KEINE CH-Option → DRAFT	landeseite
+smart-interaktiver-ball-fur-hunde-310081	2059939998861025282	16	5.69	ok	landeseite

@@ -42,7 +42,7 @@ while true; do
   # Voiceover» vom Juni damit abgelöst). Scheitert Azure, entsteht die Reel ohne Stimme — kein Ausweichen.
   # Die Datei /tmp/azure_speech.env stirbt mit einem Wipe; Dauerlösung = AZURE_SPEECH_KEY/_REGION als Umgebungsvariablen.
   if [ -z "${AZURE_SPEECH_KEY:-}" ] && [ -s /tmp/azure_speech.env ]; then set -a; . /tmp/azure_speech.env; set +a; fi
-  if [ -n "${AZURE_SPEECH_KEY:-}" ]; then export STIMME_MOTOR=azure STIMME_ANTEIL="${STIMME_ANTEIL:-0.33}"; else export STIMME_ANTEIL=0; fi
+  if [ -n "${AZURE_SPEECH_KEY:-}" ]; then export STIMME_MOTOR=azure STIMME_ANTEIL="${STIMME_ANTEIL:-0.5}"; else export STIMME_ANTEIL=0; fi
   # 23.09.: LAUTHEIT_2PASS=1 — der einstufige Weg schrieb AAC 96 kHz Mono (loudnorm gibt 192 kHz aus); zweistufig = -14 LUFS, 48 kHz Stereo.
   LAUTHEIT_2PASS=${LAUTHEIT_2PASS:-1} BATCH=${BATCH:-3} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
   INDEX_CALLS=${INDEX_CALLS:-150} flock -n /tmp/cj_video_index.lock /opt/node22/bin/node automation/cj_video_index.mjs 9>&- || true
