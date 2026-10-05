@@ -3741,3 +3741,6 @@ mikrowellen-eierkocher-6b380a	-	-	-	unklar keine CJ-SKU	landeseite
 silikon-kochschaufel-mit-holzgriff-9e2ada	-	-	-	unklar keine CJ-SKU	landeseite
 elektrischer-warmwasserhahn-mit-sofortheizung-8f92cc	-	-	-	unklar keine CJ-SKU	landeseite
 futterautomat-fur-haustiere-71c2cf	-	-	-	unklar keine CJ-SKU	landeseite
+eingangs-organizer-mit-hasen-design-610900	2504140151261611100	11	35.18	ok	landeseite
+chiffon-bluse-mit-blumenmuster-und-ruschensaum-625400	2602250333281625800	16	7.17	ok	landeseite
+schurze-fur-kuche-haushalt-und-blumenladen-627520	1793542961767124992	16	8.11	ok	landeseite
