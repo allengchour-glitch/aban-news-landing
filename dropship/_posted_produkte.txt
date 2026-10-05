@@ -146,3 +146,4 @@ name:colafröschli200stück
 slug:smart-hundespielzeug
 slug:einweg-pappbecher-bayern-fga918b
 slug:liegender-pluschwolf-fga87797
+slug:haarige-tarantel-fga98264
