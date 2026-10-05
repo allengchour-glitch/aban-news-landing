@@ -4481,3 +4481,7 @@ lay-sda-p5-wireless-game-controller-632500	2603200543381632900	7	10.50	ok	landes
 metall-thumbsticks-fur-ps4-controller-636100	2601280724531631700	16	5.55	ok	landeseite
 kabelloser-bluetooth-game-controller-603500	2601160310321603800	7	9.54	ok	landeseite
 programmierbarer-bluetooth-game-controller-636600	2512040213231636800	7	9.86	ok	landeseite
+rocker-iron-head-fur-gamecontroller-602800	2510240703081603000	16	5.02	ok	landeseite
+wireless-controller-ladestation-mit-led-anzeig-602700	2510240633181602900	7	10.65	ok	landeseite
+x3-game-controller-mit-kuhlfunktion-625000	2507140205511625200	7	9.69	ok	landeseite
+kabelloser-elite-gaming-controller-619800	2507090732091610600	7	13.48	ok	landeseite
