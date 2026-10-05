@@ -3780,3 +3780,8 @@ langarm-oberteil-mit-schleife-611200	2602250836241611600	16	10.15	ok	landeseite
 faltbarer-aufbewahrungsschrank-610000	2504220143251610200	0	-	KEINE CH-Option → DRAFT	landeseite
 damen-langarmshirt-mit-v-ausschnitt-610200	2602250712111610600	16	8.11	ok	landeseite
 stapelbare-kosmetik-aufbewahrungsbox-608900	2504190955291609300	16	12.15	ok	landeseite
+halbliegendes-kissen-fur-magen-und-speiserohre-609600	2601182309271600000	16	27.82	ok	landeseite
+edelstahl-olfilter-fur-die-kuche-a64176	-	-	-	unklar keine CJ-SKU	landeseite
+camping-grillzange-mit-wender-89da17	-	-	-	unklar keine CJ-SKU	landeseite
+schubladenteiler-aus-bambus-a76385	-	-	-	unklar keine CJ-SKU	landeseite
+kissenbezug-fur-dein-zuhause-614000	2601170112521614600	16	8.25	ok	landeseite
