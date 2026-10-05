@@ -4554,3 +4554,10 @@ beissfester-zahnungsstick-fur-haustiere-618100	2605020459111618600	16	8.19	ok	la
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 chase-buddy-spielball-mit-seilen-620610	2046785025517838337	0	-	KEINE CH-Option → DRAFT	landeseite
 scooby-doo-quietschballe-fur-hunde-8er-set-816066	2041688218441199618	0	-	KEINE CH-Option → DRAFT	landeseite
+xxl-seilspielzeug-fur-grosse-hunde-245954	2034564712106713090	0	-	KEINE CH-Option → DRAFT	landeseite
+loofah-kauspielzeug-fur-katzen-615500	2603151002001615900	16	4.92	ok	landeseite
+2er-set-leckknochen-fur-hunde-623600	2602260643101624000	16	10.92	ok	landeseite
+interaktives-baumwoll-seilspielzeug-fur-hunde-115521	2026874810163048449	0	-	KEINE CH-Option → DRAFT	landeseite
+bouncing-balls-katzenspielzeug-mit-feder-611266	2069266933966274562	16	7.71	ok	landeseite
+hunde-tennisball-futterspender-321601	2069349540081733633	0	-	KEINE CH-Option → DRAFT	landeseite
+huteball-fur-hunde-mit-griffen-45-cm-548482	2068972398356377602	16	13.40	ok	landeseite
