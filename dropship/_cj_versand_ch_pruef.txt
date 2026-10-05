@@ -4183,3 +4183,9 @@ lidschatten-augenbrauenpinsel-kombination-569473	2069305852983427074	0	-	KEINE C
 doppelendiger-rougepinsel-635778	2069303660943687681	0	-	KEINE CH-Option → DRAFT	landeseite
 24-teiliges-make-up-pinselset-600200	2605140219311600800	16	9.20	ok	landeseite
 dazzling-star-glitter-spray-258370	2054445665467338753	3	6.98	ok	landeseite
+20-teiliges-make-up-pinselset-champagner-614000	2605080513421614800	16	7.71	ok	landeseite
+13-teiliges-make-up-pinselset-mit-langem-griff-623200	2605040431451623800	16	7.03	ok	landeseite
+7-teiliges-make-up-pinselset-634400	2605010300231634900	16	8.11	ok	landeseite
+ultra-soft-8-teiliges-make-up-pinselset-633100	2604260654501633600	16	7.43	ok	landeseite
+farbiger-tricolor-lidschatten-stick-607500	2603220429411607800	3	5.22	ok	landeseite
+contouring-abdeck-stick-mit-naturlichem-finish-636500	2603110832081636900	3	5.69	ok	landeseite
