@@ -16,3 +16,5 @@ gid://shopify/Product/15523852943745	Rennband mit Trainingsstab
 gid://shopify/Product/15523908321665	Doppelnapf für Katzen
 gid://shopify/Product/15524873240961	FOCALLURE Dreiecks-Augenbrauenstift
 gid://shopify/Product/15525462835585	Windmühlen-Spieluhr aus Klemmbausteinen
+gid://shopify/Product/16606112678279	Babytrage mit Hüftsitz
+gid://shopify/Product/16606123655559	Aluminium-Reifenreparatur-Werkzeug
