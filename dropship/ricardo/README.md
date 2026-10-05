@@ -11,7 +11,7 @@
   2'388 Produkten ≥ CHF 5 → nur diese im Feed. CJ-Ware (10–20 Werktage) bewusst NICHT — Ricardo-Käufer erwarten Tage.
 
 ## Stand 05.10. 20:45 UTC
-- ✅ Betreiber hat sich bei Ricardo **als Privatperson** registriert.
+- ✅ Betreiber hat sich bei Ricardo **als Privatperson** registriert (Benutzername `allengchour`, Mitgliedsnummer 404683860, Mail verifiziert).
 - Ricardo-Hilfe: Geschäftskonto ist für **MWST-pflichtige** Firmen; Umstellung nur über den Kundendienst
   ([help.ricardo.ch](https://help.ricardo.ch/hc/de/articles/16882997491996)). LuxeStyle ist nicht MWST-pflichtig (Umsatz < CHF 100'000, keine UID)
   → Ricardo selbst fragen, ob Privatkonto für Feed + Shopify reicht (Kurz-Mail unten), statt auf Verdacht umzustellen.
@@ -28,7 +28,7 @@
 > Betreff: Produkt-Feed für meinen Shop
 >
 > Grüezi
-> Ich habe ein Ricardo-Konto (Benutzername: ________) und einen kleinen Online-Shop (luxestyle.ch, nicht MWST-pflichtig).
+> Ich habe ein Ricardo-Konto (Benutzername: allengchour, Mitgliedsnummer 404683860) und einen kleinen Online-Shop (luxestyle.ch, nicht MWST-pflichtig).
 > Ich möchte rund 360 Artikel per Produkt-Feed einstellen und die Bestellungen in Shopify erhalten.
 > Geht das mit meinem Konto, oder muss ich etwas umstellen?
 > Freundliche Grüsse
