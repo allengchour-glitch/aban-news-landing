@@ -4365,3 +4365,10 @@ diy-diamond-painting-schlusselanhanger-weihnac-3edb64	2410290242421625700	16	6.2
 weihnachtsschleife-fur-hunde-2d52fb	3441427F-84BA-4A48-91A6-9DCE4A8446BD	16	5.69	ok	landeseite
 tanzender-weihnachtsbaum-mit-musik-38524d	C74D83E6-B438-4A44-951C-95CB95906972	16	9.95	ok	landeseite
 elektrischer-weihnachtsmann-spass-fur-kinder-61e8fe	5B4D00CF-1966-492C-AC19-C4DFB61F69CE	16	11.60	ok	landeseite
+weihnachts-stuhlhusse-mit-digitaldruck-da328a	554B5457-67CE-4967-8A64-E0AE8B218525	16	6.77	ok	landeseite
+kletternder-weihnachtsmann-9186dd	1492755676957642752	7	12.29	ok	landeseite
+smartuhr-mit-multifunktionsarmband-und-kopfhor-519be8	6D22F930-0D6A-45C5-AE7B-7716ECA86608	7	6.49	ok	landeseite
+damenuhr-aus-wolframstahl-2fbd42	07313F77-C1FE-4EBE-84F5-4F7348C32344	7	6.02	ok	landeseite
+kabellose-stereo-kopfhorer-mit-touch-steuerung-7176fb	1077F1AD-1DC9-492D-9263-83396158E74C	7	7.13	ok	landeseite
+quarzuhr-mit-silikonarmband-wasserdicht-e1295b	05B9E052-B9A8-4519-9E08-EFC2780F86F6	7	8.10	ok	landeseite
+halsband-mit-metallschnalle-18c40a	23249014-57A3-454C-880C-9188562203E3	16	6.48	ok	landeseite
