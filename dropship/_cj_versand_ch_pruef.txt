@@ -4242,3 +4242,4 @@ haftcreme-fur-zahnprothesen-28g-780098	2064218886781026306	3	5.20	ok	landeseite
 golden-peptide-collagen-augenmaske-807809	2064289019426660354	0	-	KEINE CH-Option → DRAFT	landeseite
 glitzer-spray-fur-haar-und-korper-784705	2063480448434860033	0	-	KEINE CH-Option → DRAFT	landeseite
 glitzerndes-highlight-puder-fur-gesicht-korper-910657	2063590451434905602	0	-	KEINE CH-Option → DRAFT	landeseite
+kurkuma-kojisaure-reinigungspads-021569	2063093596975570946	0	-	KEINE CH-Option → DRAFT	landeseite
