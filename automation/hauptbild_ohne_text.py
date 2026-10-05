@@ -85,13 +85,21 @@ def main():
         return
 
     f = open(LEDGER, "a")
-    umgestellt = schon_sauber = ohne_alternative = 0
+    umgestellt = schon_sauber = ohne_alternative = gesperrt = 0
+    # 05.10.2026: Hauptbilder, die der Google-Bildtausch bewusst gesetzt hat, bleiben stehen (Lehre textbild_fix: 83 von
+    # 301 Tauschen zurückgedreht). Sperre nach Handle UND Produkt-ID, siehe bildtausch_sperre.py.
+    from bildtausch_sperre import gesperrte_handles, gesperrte_ids
+    sperre_h, sperre_id = gesperrte_handles(), gesperrte_ids()
     for gid in kandidaten[:CAP]:
-        d = gql('query($id:ID!){product(id:$id){title media(first:10){nodes{id '
+        if gid in sperre_id:
+            gesperrt += 1; f.write(f"{gid}\tbildtausch-sperre\t-\n"); f.flush(); continue
+        d = gql('query($id:ID!){product(id:$id){title handle media(first:10){nodes{id '
                 '... on MediaImage{status image{url}}}}}}', {"id": gid})
         p = (d.get("data") or {}).get("product")
         if not p:
             continue
+        if p.get("handle") in sperre_h:
+            gesperrt += 1; f.write(f"{gid}\tbildtausch-sperre\t-\n"); f.flush(); continue
         medien = [m for m in p["media"]["nodes"]
                   if m.get("image") and m.get("status") == "READY"]
         if len(medien) < 2:
@@ -136,7 +144,7 @@ def main():
                   f"{ohne_alternative} ohne textfreie Alternative", flush=True)
         time.sleep(0.3)
     print(f"FERTIG: {umgestellt} Hauptbilder ersetzt, {schon_sauber} waren sauber, "
-          f"{ohne_alternative} haben nur Bilder mit Text")
+          f"{ohne_alternative} haben nur Bilder mit Text, {gesperrt} Bildtausch-Sperre")
 
 
 if __name__ == "__main__":

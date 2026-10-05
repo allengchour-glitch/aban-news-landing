@@ -37,7 +37,13 @@ def textscore(im):
 # Produkte an die Reihe.
 QUERY=os.environ.get("QUERY","status:ACTIVE")
 Q=f'''query($c:String){{products(first:50,after:$c,query:"{QUERY}"){{pageInfo{{hasNextPage endCursor}}
- nodes{{id title media(first:6){{nodes{{id ... on MediaImage{{image{{url}}}}}}}}}}}}}}'''
+ nodes{{id handle title media(first:6){{nodes{{id ... on MediaImage{{image{{url}}}}}}}}}}}}}}'''
+# 05.10.2026: Produkte, deren Hauptbild der Google-Bildtausch bewusst gesetzt hat, bleiben unangetastet. Gemessen: 83 von
+# 301 Bildtauschen hatte DIESER Lauf wieder zurückgedreht (Spitze/Mesh gilt der Dunkel-Lauf-Heuristik als «Text», das alte
+# Model-Bild rückte wieder nach vorn). Die Sperre wird quittiert, damit das Produkt nicht bei jedem Lauf neu geladen wird.
+import sys as _sys; _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from bildtausch_sperre import gesperrte_handles as _gesperrte_handles
+SPERRE=_gesperrte_handles()
 # Cursor und Ledger im Repo, nicht in /tmp: dieser Lauf lädt für JEDES Produkt bis zu fünf
 # Bilder herunter und bewertet sie. Geht der Cursor bei einem Container-Wipe verloren,
 # beginnt die Bildanalyse wieder bei null — das kostet Stunden und Bandbreite umsonst.
@@ -57,7 +63,7 @@ if os.path.exists(GEPRUEFT):
         t=z.rstrip("\n").split("\t")
         if len(t)>=2: quitt[t[0]]=t[1]
 qlog=open(GEPRUEFT,"a")
-sc=hit=fix=skip=0
+sc=hit=fix=skip=gesperrt=0
 log=open("dropship/_textbild_hits.txt","a")
 while True:
     d=gql(Q,{"c":cur}); pg=(d.get("data") or {}).get("products")
@@ -67,6 +73,8 @@ while True:
         ms=[m for m in p["media"]["nodes"] if m.get("image")]
         if len(ms)<2: continue
         if quitt.get(p["id"])==ms[0]["id"]: skip+=1; continue
+        if p.get("handle") in SPERRE:
+            gesperrt+=1; qlog.write(f'{p["id"]}\t{ms[0]["id"]}\tbildtausch-sperre\n'); qlog.flush(); continue
         s0=textscore(fetch(ms[0]["image"]["url"]))
         haupt=ms[0]["id"]
         if s0>=8:
@@ -98,4 +106,4 @@ while True:
 # Cursor am Ende löschen: der Katalog wächst täglich um Hunderte CJ-Importe. Bliebe der Cursor
 # stehen, startete jeder Folgelauf am Ende und prüfte nie wieder etwas ("FERTIG: 37 gescannt").
 if os.path.exists(state): os.remove(state)
-print(f"FERTIG: {sc} gescannt ({skip} per Quittung uebersprungen), {hit} mit Text-Hauptbild, {fix} auf sauberes Bild umgestellt")
+print(f"FERTIG: {sc} gescannt ({skip} per Quittung uebersprungen, {gesperrt} Bildtausch-Sperre), {hit} mit Text-Hauptbild, {fix} auf sauberes Bild umgestellt")

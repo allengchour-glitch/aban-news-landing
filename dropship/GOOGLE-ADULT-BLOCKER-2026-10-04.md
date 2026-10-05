@@ -25,7 +25,7 @@ Bildern von 12 Grenzfällen. Befund je Unterklasse:
 |---|---:|---|---|
 | **Echte Dessous/Fetisch** | 6 | Spitzen-Bodys mit Strapsen/Thong (4), Latex-Gesichtsmaske, «Enger Lederhandschuh» = Bondage-Armhandschuh (Lieferantenbild: «straight-tube glove without opening … can be worn by yourself with a rope») | Tag `adult-nicht-bewerben` → aus Google + TikTok + FB/IG + Pinterest (Hausregel 29.08.), Onlineshop bleibt |
 | **Mode/Schuhe mit Modelfoto** | ~198 | Strumpfhosen, Shapewear, Korsett-Tops, Bikinis, Kleider, Sandalen am Fuss — harmlos, Hauptbild ist eine Pose | Bildtausch (bestehendes Werkzeug), neutrales vorhandenes Bild nach vorne |
-| **Fehlalarm, keine Mode** | 95 | Herrenuhren, Katzenangel-Federn, Hundehalsband, Gesichtsmassager, Drohnen, Nackenkissen, Kuchenteiler, Hantel aus Silikon … | Anstupsen (Tag-Update → App reicht neu ein; 29.09. gemessen 27 % frei vs. 1,6 % Kontrolle) |
+| **Fehlalarm, keine Mode** | 95 → **94** (Korrektur 05.10.: `fitness-leggings-mit-po-push-up-effekt-609216` ist Mode mit Modelfoto → in die Mode-Messung umgebucht; dazu war 1 Produkt der Klasse verboten — Stachelhalsband, 05.10. DRAFT nach TSchV 76) | Herrenuhren, Katzenangel-Federn, Hundehalsband, Gesichtsmassager, Drohnen, Nackenkissen, Kuchenteiler, Hantel aus Silikon … | Anstupsen (Tag-Update → App reicht neu ein; 29.09. gemessen 27 % frei vs. 1,6 % Kontrolle) |
 | Motiv selbst (nicht Dessous, aber jedes Bild knapp) | Rest | Kettentop, rückenfreier Mesh-Hoodie, Sport-Rad-Einteiler, Muskel-Print-Shirt | bewusst NICHTS: bleiben bei Google blockiert, kosten nichts; aus den Werbekanälen nehmen hiesse ein verkäufliches Produkt ohne Not sperren |
 
 ## GETAN
@@ -83,3 +83,7 @@ Beispiele tausch-q: Maulbeerseiden-Gesichtsmaske → Bild 5 (Maske ohne Gesicht)
 Auffällig: Groq-qwen setzt nie `motiv_selbst_problem` — die Dessous-Entscheide bleiben deshalb Handarbeit am Kontaktbogen (oben).
 Schlüsselrotation lief 22× auf Schlüssel 3 (Key 1+2 = dieselbe Organisation, Tageslimit).
 Rückweg je Produkt: Spalte 4 des Ledgers (`_google_bild_tausch.tsv`) = alte erste Media-ID → `productReorderMedia` newPosition 0.
+
+## Korrektur 05.10. (Prüfer, Plan Punkt 14)
+- Die 95 «Fehlalarme» waren 94 Fehlalarme + 1 verboten (Stachelhalsband «Halsband mit Stimulationskette», DRAFT 05.10.) + 1 Mode (`fitness-leggings-mit-po-push-up-effekt-609216`, Leggings am Model = Klasse «Mode/Schuhe mit Modelfoto», Bildtausch statt Anstupsen). Die Leggings sind im Ledger `_gfeed_anstupsen.tsv` mit dem Vermerk `mode-messung` markiert und zählen in der Anstups-Quote NICHT mit (Mode-Messung bleibt dadurch unverfälscht).
+- Figurkleid `traglose-rueckenfreie-sexy-figurkleid-in-gelb-607600`: Titel war nach der Reizwort-Reparatur kein Deutsch («Traglose, rueckenfreie Figurkleid») → 05.10. «Rückenfreies Figurkleid mit Taillenband in Gelb oder Weiss» (Bild: ärmellos mit Schulterpartie, nicht trägerlos), SEO beide Felder, Beschreibung «strapless/rueckenfrei» korrigiert (Ledger `_titel_kauderwelsch.tsv`).

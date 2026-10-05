@@ -15,6 +15,7 @@ import { produktdetails } from './cj_specs.mjs';
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSicher } from './cj_copy_prompt.mjs';
 import { textErzeugen } from './groq_text.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
+import { typAusKategorie } from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt «Trend-Gadget»
 const SHOP='au3j0y-hq.myshopify.com',API='2026-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -302,15 +303,17 @@ for(const p of cand){
   console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) uebersprungen: ${title.slice(0,60)}`);
   fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
  }
- const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
+ // 05.10.2026 (Plan Punkt 16): Typ aus der Google-Kategorie statt Sammeltyp «Trend-Gadget» (bleibt nur ohne Treffer).
+ const gkatTrend=googleKategorie(title,['trend','viral','video-hit','cj-real'],'Trend-Gadget');
+ const typTrend=typAusKategorie(gkatTrend,title)||'Trend-Gadget';
+ const input={title,handle:slug,productType:typTrend,vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neuheit','neu']:['trend','viral','video-hit','cj-real','dropship','neuheit','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},
   // Google-Felder gehören in den Importer (15.08.2026, Muster «condition» vom 11.08.):
   // cj_sku_import hatte dieselbe Lücke — jeder Import ohne diese Felder senkt die
   // Feed-Abdeckung, die ein Backfill zuvor teuer gehoben hat.
   metafields:[
-   ...(function(){const g=googleKategorie(title,['trend','viral','video-hit','cj-real'],'Trend-Gadget');
-     return g?[{namespace:'mm-google-shopping',key:'google_product_category',value:g,type:'single_line_text_field'}]:[];})(),
+   ...(gkatTrend?[{namespace:'mm-google-shopping',key:'google_product_category',value:gkatTrend,type:'single_line_text_field'}]:[]),
    {namespace:'mm-google-shopping',key:'condition',value:'new',type:'single_line_text_field'},
    {namespace:'mm-google-shopping',key:'custom_product',value:'true',type:'boolean'},
    {namespace:'mm-google-shopping',key:'age_group',value:'adult',type:'single_line_text_field'},

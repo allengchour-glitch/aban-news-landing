@@ -15,6 +15,7 @@ import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
+import { typAusKategorie } from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt «Trend-Produkt»
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSicher } from './cj_copy_prompt.mjs';
 import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
@@ -225,7 +226,11 @@ for (const item of ITEMS) {
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`),
       ...saisonTags(title, d.productNameEn || '')])];   // Halloween-Reihe (02.10.), nur Titel/EN-Name
-  const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
+  // 05.10.2026 (Plan Punkt 16): Typ aus der Google-Kategorie statt Sammeltyp «Trend-Produkt» — der Sammeltyp bleibt
+  // nur, wenn keine Kategorie passt (nie raten; produkttyp_vereinheitlichen.py räumt den Rest täglich).
+  const gkatImport = googleKategorie(title, tagsFinal, 'Trend-Produkt');
+  const typImport = typAusKategorie(gkatImport, title) || 'Trend-Produkt';
+  const input = { title, handle: slug, productType: typImport, vendor: 'LuxeStyle',
     status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
     descriptionHtml: (g.html + '\n' + produktdetails(d, title) + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
@@ -240,8 +245,7 @@ for (const item of ITEMS) {
     metafields: [
       // google_product_category gleich mit — dieselbe Funktion wie im Kategorie-Grind;
       // ohne sie fiele die 87-%-Abdeckung mit jedem Queue-Import zurück (Muster 11./12.08.).
-      ...(function(){const g=googleKategorie(title,tagsFinal,'Trend-Produkt');
-        return g?[{namespace:'mm-google-shopping',key:'google_product_category',value:g,type:'single_line_text_field'}]:[];})(),
+      ...(gkatImport?[{namespace:'mm-google-shopping',key:'google_product_category',value:gkatImport,type:'single_line_text_field'}]:[]),
       { namespace: 'mm-google-shopping', key: 'condition', value: 'new', type: 'single_line_text_field' },
       { namespace: 'mm-google-shopping', key: 'custom_product', value: 'true', type: 'boolean' },
       { namespace: 'mm-google-shopping', key: 'age_group', value: 'adult', type: 'single_line_text_field' },

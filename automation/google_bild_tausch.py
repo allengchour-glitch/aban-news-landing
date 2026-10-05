@@ -19,6 +19,15 @@ Modell-Urteile sind Hinweise: nur Übereinstimmung zweier Modelle führt zu eine
 
   python3 automation/google_bild_tausch.py            Trockenlauf (Standard): zeigt Urteile, ändert nichts
   SCHARF=1 N=40 KONTROLLE=40 python3 automation/google_bild_tausch.py
+
+05.10.2026 (Prüfer «Ledger ≠ Live»): gemessen 83 von 301 Tauschen live zurückgedreht — Verursacher textbild_fix.py (jetzt
+mit Sperre, siehe bildtausch_sperre.py). Neu:
+  --ruecklesen            alle Handles mit letzter Zeile tausch*/nachgesetzt: Ledger-neu == live media[0]? Sonst (ACTIVE,
+                          im Google-Kanal, Bild noch vorhanden) mit SCHARF=1 productReorderMedia nachsetzen, Ledger-Art
+                          «nachgesetzt». Ausgabe «RUECKLESE: n geprüft · k abweichend · m nachgesetzt».
+  --rueckweg h1 h2 …      die ALTE erste Media-ID (Spalte 4) wieder nach vorne, Ledger-Art «rueckweg» (gibt die Sperre frei)
+  Produkte ohne Google-Publikation werden übersprungen (kein Vision-Kontingent für Ware, die Google nicht sieht).
+  dropship/_google_bild_tausch_ids.tsv (handle → Produkt-ID) pflegt dieser Lauf für die Sperre der anderen Umsortierer.
 """
 import base64, io, json, os, re, subprocess, sys, time, urllib.error, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -26,8 +35,11 @@ import heilversprechen_wache as hw          # gql() mit Grund bei Fehlern
 import gemini_jury as gj                     # schluessel()
 from PIL import Image
 
+import bildtausch_sperre as bs
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "dropship/_google_bild_tausch.tsv")
+GOOGLE = "gid://shopify/Publication/302872297857"
 STAND = os.path.join(REPO, "dropship/_google_feedback_stand.json")
 SCHARF = os.environ.get("SCHARF") == "1"
 N = int(os.environ.get("N", "40"))
@@ -126,15 +138,19 @@ def main():
     offen = [h for h in handles if h not in erledigt]
     print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {KLASSE} · {len(handles)} gemeldet (Stand {stand['stand']}) · "
           f"{len(offen)} offen · N={N} KONTROLLE={KONTROLLE} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
-    zaehl = {"tausch": 0, "behalten": 0, "motiv": 0, "uneinig": 0, "zu_wenig_bilder": 0, "fehler": 0}
+    zaehl = {"tausch": 0, "behalten": 0, "motiv": 0, "uneinig": 0, "zu_wenig_bilder": 0, "fehler": 0, "nicht_in_google": 0}
     led = open(LEDGER, "a", encoding="utf-8") if SCHARF else None
     for h in offen[:KONTROLLE]:
         if led: led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tkontrolle\t\t\t\n")
     for h in offen[KONTROLLE:KONTROLLE + N]:
         p = (hw.gql('query($h:String!){productByIdentifier(identifier:{handle:$h}){id title productType status '
-                    'media(first:8){nodes{id ... on MediaImage{image{url}}}}}}', {"h": h}).get("data") or {}).get("productByIdentifier")
+                    'publishedOnPublication(publicationId:"%s") '
+                    'media(first:8){nodes{id ... on MediaImage{image{url}}}}}}' % GOOGLE, {"h": h}).get("data") or {}).get("productByIdentifier")
         if not p or p["status"] != "ACTIVE":
             continue
+        if not p.get("publishedOnPublication"):
+            # 05.10.2026: aus dem Google-Kanal genommene Ware (Sperr-Tags) kostet kein Vision-Kontingent mehr.
+            zaehl["nicht_in_google"] += 1; continue
         med = [m for m in p["media"]["nodes"] if (m.get("image") or {}).get("url")]
         if len(med) < 2:
             zaehl["zu_wenig_bilder"] += 1; continue
@@ -210,8 +226,108 @@ def main():
         if led:
             led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\t{art}\t{med[0]['id']}\t{neu}\t"
                       f"G{gw}:{str(g.get('grund'))[:80]} | C{cw}:{str(c.get('grund'))[:80]}\n"); led.flush()
+            if art.startswith("tausch"):
+                bs.ids_merken([(h, p["id"])])
     print("FERTIG: " + " · ".join(f"{k} {v}" for k, v in zaehl.items()), flush=True)
 
 
+def _produkte(handles):
+    """handle → Produkt (id, status, Google-Publikation, Media-IDs) in Bündeln à 20."""
+    out = {}
+    hs = list(handles)
+    for i in range(0, len(hs), 20):
+        teil = hs[i:i + 20]
+        q = "query{" + " ".join(
+            'p%d: productByIdentifier(identifier:{handle:"%s"}){id handle status publishedOnPublication(publicationId:"%s") '
+            'media(first:12){nodes{id}}}' % (j, h, GOOGLE) for j, h in enumerate(teil)) + "}"
+        d = hw.gql(q).get("data") or {}
+        for j, h in enumerate(teil):
+            out[h] = d.get(f"p{j}")
+    return out
+
+
+def _nach_vorn(pid, mid):
+    r = hw.gql('mutation($p:ID!,$m:[MoveInput!]!){productReorderMedia(id:$p,moves:$m){mediaUserErrors{message}}}',
+               {"p": pid, "m": [{"id": mid, "newPosition": "0"}]})
+    err = ((r.get("data") or {}).get("productReorderMedia") or {}).get("mediaUserErrors")
+    if err:
+        return f"Umsortieren gescheitert {err}"
+    erst = ""
+    for _ in range(10):
+        time.sleep(2)
+        erst = hw.gql('{product(id:"%s"){media(first:1){nodes{id}}}}' % pid)["data"]["product"]["media"]["nodes"][0]["id"]
+        if erst == mid:
+            return ""
+    return f"Rücklesen zeigt {erst}"
+
+
+def ruecklesen():
+    """Ledger-neu == live media[0]? Sonst nachsetzen (SCHARF=1). Nur ACTIVE und im Google-Kanal."""
+    letzte = bs.letzte_zeilen()
+    getauscht = {h: f for h, f in letzte.items() if f[2] in bs.GETAUSCHT and len(f) >= 5 and f[4]}
+    prod = _produkte(getauscht)
+    bs.ids_merken([(h, p["id"]) for h, p in prod.items() if p])
+    z = {"geprueft": 0, "ok": 0, "abweichend": 0, "nachgesetzt": 0, "nicht_aktiv": 0, "nicht_in_google": 0, "bild_fehlt": 0, "fehler": 0}
+    led = open(LEDGER, "a", encoding="utf-8") if SCHARF else None
+    for h, f in sorted(getauscht.items()):
+        p = prod.get(h); z["geprueft"] += 1
+        if not p or p["status"] != "ACTIVE":
+            z["nicht_aktiv"] += 1; continue
+        ids = [m["id"] for m in p["media"]["nodes"]]
+        if ids and ids[0] == f[4]:
+            z["ok"] += 1; continue
+        z["abweichend"] += 1
+        if not p.get("publishedOnPublication"):
+            z["nicht_in_google"] += 1; print(f"  abweichend, nicht in Google: {h}"); continue
+        if f[4] not in ids:
+            z["bild_fehlt"] += 1; print(f"  ⚠️ {h}: Ledger-Bild {f[4].split('/')[-1]} nicht mehr am Produkt", flush=True); continue
+        print(f"  abweichend {h[:60]:60} live0={ids[0].split('/')[-1]} soll={f[4].split('/')[-1]}" + ("" if SCHARF else " (TROCKEN)"), flush=True)
+        if not SCHARF:
+            continue
+        grund = _nach_vorn(p["id"], f[4])
+        if grund:
+            z["fehler"] += 1; print(f"  ⚠️ {h}: {grund}", file=sys.stderr, flush=True); continue
+        z["nachgesetzt"] += 1
+        led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tnachgesetzt\t{f[3]}\t{f[4]}\tlive war {ids[0].split('/')[-1]} ({f[2]} vom {f[1]})\n"); led.flush()
+    print("RUECKLESE " + time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime()) + ": " + " · ".join(f"{k} {v}" for k, v in z.items()) +
+          ("" if SCHARF else " (TROCKEN)"), flush=True)
+    return z
+
+
+def rueckweg(handles):
+    """Die alte erste Media-ID (Spalte 4 der letzten Tausch-Zeile) wieder nach vorne; gibt die Sperre frei."""
+    letzte = bs.letzte_zeilen()
+    prod = _produkte(handles)
+    led = open(LEDGER, "a", encoding="utf-8") if SCHARF else None
+    ok = fehler = 0
+    for h in handles:
+        f, p = letzte.get(h), prod.get(h)
+        if not f or f[2] not in bs.GETAUSCHT or not f[3]:
+            print(f"  ⚠️ {h}: keine Tausch-Zeile im Ledger"); fehler += 1; continue
+        if not p:
+            print(f"  ⚠️ {h}: Produkt fehlt"); fehler += 1; continue
+        ids = [m["id"] for m in p["media"]["nodes"]]
+        if f[3] not in ids:
+            print(f"  ⚠️ {h}: altes Bild {f[3].split('/')[-1]} nicht mehr am Produkt"); fehler += 1; continue
+        print(f"  rueckweg {h[:60]:60} {ids[0].split('/')[-1]} → {f[3].split('/')[-1]}" + ("" if SCHARF else " (TROCKEN)"), flush=True)
+        if not SCHARF:
+            continue
+        if ids[0] != f[3]:
+            grund = _nach_vorn(p["id"], f[3])
+            if grund:
+                print(f"  ⚠️ {h}: {grund}", file=sys.stderr, flush=True); fehler += 1; continue
+        ok += 1
+        led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\trueckweg\t{ids[0]}\t{f[3]}\tHand-Sichtung 05.10.: neues Bild nicht neutraler ({f[2]} vom {f[1]})\n"); led.flush()
+    print(f"RUECKWEG: {ok} zurückgedreht · {fehler} Fehler" + ("" if SCHARF else " (TROCKEN)"), flush=True)
+
+
 if __name__ == "__main__":
-    main()
+    if "--ruecklesen" in sys.argv:
+        ruecklesen()
+    elif "--rueckweg" in sys.argv:
+        hs = [a for a in sys.argv[sys.argv.index("--rueckweg") + 1:] if not a.startswith("-")]
+        if os.environ.get("RUECKWEG_FILE"):
+            hs += [l.strip() for l in open(os.environ["RUECKWEG_FILE"]) if l.strip()]
+        rueckweg(hs)
+    else:
+        main()

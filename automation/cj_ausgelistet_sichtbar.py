@@ -201,6 +201,15 @@ def main():
         # und fixer_keepalive.still_gestorben hält den abgebrochenen Lauf für beendet (gemessen 18:09: 567/2277, kein Neustart).
         if n % 25 == 0:
             print(f"  … {n}/{len(alle)} geprüft", flush=True)
+        # 05.10.2026 (Prüfer): die Kandidatenliste stammt aus dem Export — ein anderer Wächter (ek_luecke_cj.py) hatte
+        # 47 davon schon gedraftet, und dieser Lauf fragte 7 erneut bei CJ an (10 Punkte je Abfrage, zweite «weg»-Zeile).
+        # Live-Status vor der CJ-Abfrage: DRAFT/ARCHIVED = schon entschieden, überspringen.
+        try:
+            live = (gql('query($id:ID!){product(id:$id){status}}', {"id": gid}).get("product") or {}).get("status")
+        except Exception:
+            live = None
+        if live and live != "ACTIVE":
+            continue
         s = cj_status(ref, tok)
         if s is None:
             unklar += 1; continue

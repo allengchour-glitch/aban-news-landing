@@ -35,6 +35,14 @@
 
 
 
+## 2026-10-05 04:30 · 🪣 Verbesserungsrunde: gemeinsamer gql-Helfer `kaufwille_zeile` ohne Eimer-Boden
+Zweites Gehirn meldete 1 NEU `helfer-ohne-eimer`: `kaufwille_zeile.gql` ist seit 04.10. der Helfer von 13 Werkzeugen und der
+Fix-Agenten, hatte aber weder `eimer_etikette.nachlauf` noch Geduld (3 Versuche, 3/6/9 s → «Throttled» = Abbruch). Fix:
+nachlauf nach jeder Antwort, Drosselung getrennt gezählt (GQL_GEDULD 40, Wartezeit aus throttleStatus, max 30 s), HTTP 429
+= Drosselung, Fehlertext behält «Throttled» für Aufrufer mit eigener Schleife. Nachgemessen: Abfrage ok, KAUFWILLE-Zeile ok,
+Kanarienvogel 6,34 s / 12 s, Gehirn 0 NEU. **Lehre:** Ein Werkzeug, das einen Helfer exportiert, wird zum gemeinsamen Helfer —
+die Etikette gehört dann hinein (zweiter Fall nach heilversprechen_wache 03.10.). → `dropship/EIMER-KAUFWILLE-HELFER-2026-10-05.md`
+
 ## 🐕 Stachelhalsband als «Stimulationskette» (05.10.2026, Verbesserungsrunde 00:30 UTC)
 Google-Blocker 1'219 = 888 Produkte (Adult-Klassen doppelt). Beim Lesen der Handles: «Halsband mit Stimulationskette für Hunde» =
 Stachelhalsband (TSchV 76, CH verboten), ACTIVE in 7 Kanälen — die Regel kannte nur «Stachel-/Würgehalsband/prong collar».

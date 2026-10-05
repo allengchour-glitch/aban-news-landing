@@ -62,7 +62,7 @@ Katzentoilette zu CHF 50.90 bei EK 62.37: jeder Verkauf hätte ~CHF 14 gekostet,
 
 ## 4. CJ-ausgelistete Ware ohne EK (47) → DRAFT
 
-Trockenlauf 00:30–00:36 UTC: 47/47 erneut 1602002 (zweite CJ-Antwort deckungsgleich mit der ersten). Scharf 00:40–00:47 UTC: **47 → DRAFT**, Rücklesen 47/47 `DRAFT` + Tag `cj-entfernt`. Darunter drei «Serum»-Artikel (topische Kosmetik, Betreiber-Entscheid 30.08.) und «Ersatzklinge für elektrische Schaufel» — beides ohnehin nicht im Sortiment gewollt.
+Trockenlauf (CJ-Antwort 47/47 erneut 1602002, deckungsgleich mit der ersten) und scharfer Lauf: **47 → DRAFT** — gemessen an `updatedAt` zwischen **00:35:08 und 00:42:00 UTC** (Ledger-Datei mtime 00:42; die früher notierten Fenster «00:30–00:36 / 00:40–00:47» waren falsch notiert, Prüfer 05.10.), Rücklesen 47/47 `DRAFT` + Tag `cj-entfernt`. Darunter drei «Serum»-Artikel (topische Kosmetik, Betreiber-Entscheid 30.08.) und «Ersatzklinge für elektrische Schaufel» — beides ohnehin nicht im Sortiment gewollt.
 
 | Produkt (Handle) | CJ-Referenz |
 |---|---|
@@ -179,3 +179,9 @@ Getan:
 | Importer-Formel `cj_category_fill.mjs` | eigene August-Kopie (Boden 15, ohne Verlustschutz) | importiert `cj_preis.mjs` |
 
 Trockenlauf → scharf bei jedem Schritt; keine Senkung; nichts gelöscht; Theme/Kundenmails/CJ-Bestellungen unberührt.
+
+## 8. Nachtrag Prüfer (05.10. 03:xx UTC)
+- «Uncommitted im Arbeitsbaum» ist überholt: `cj_category_fill.mjs` (Import von `chf/kosten/gewicht` aus `cj_preis.mjs`) steckt im Autocommit **5b9f3ad01** «CJ-Ledger [skip ci]» (01:09 UTC, Code unter Ledger-Nachricht); `ek_luecke_cj.py` + dieser Bericht + Keepalive-Block in **083960d58** (02:33 UTC).
+- Die Aussage «einzige Stelle, durch die alle drei Importer gehen» gilt für `chf()` erst seit 05.10. 00:51 UTC (vorher lokale Kopien in cj_category_fill); 10 Unter-Boden-Importe von 01:00–02:02 wurden um 01:01 gehoben (preis_verlustschutz, live 0 unter Boden).
+- 4 Produkte (Abendkleid 98 Var., Weihnachts-Hoodie 72, Kürbis-Sweatshirt 70, Kinder-Canvas 67) tragen PROPORTIONAL geschätzte unitCost (ek_varianten_nachtragen.py) — nach CJ-Punkte-Reset (16:00 UTC) über `product/query` Variantenliste durch echte Werte ersetzen, dann `preis_verlustschutz NUR_IDS`.
+- Doppelarbeit: `cj_ausgelistet_sichtbar.py` fragte 7 der 47 schon gedrafteten Produkte erneut bei CJ an (zweite «weg»-Zeilen in `_cj_nachpruefung.tsv`) → Wächter liest jetzt den Live-Status vor der CJ-Abfrage (DRAFT = überspringen, 05.10.).
