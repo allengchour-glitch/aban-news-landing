@@ -4580,3 +4580,5 @@ led-fahrradtasche-mit-fernbedienung-428225	2059113075472617473	7	7.62	ok	landese
 led-velo-blinklicht-mit-smarter-richtungsanzei-585729	2059161858583580674	7	7.78	ok	landeseite
 led-sportweste-fur-outdoor-aktivitaten-476929	2058836826264363010	7	8.74	ok	landeseite
 velo-rucklicht-mit-langer-akkulaufzeit-607100	2604230825121607600	7	5.82	ok	landeseite
+gebogenes-lichtempfindliches-rucklicht-614600	2603180206151614900	7	6.49	ok	landeseite
+minimalistische-nachttisch-pendelleuchte-623400	2602240820311623800	16	12.56	ok	landeseite
