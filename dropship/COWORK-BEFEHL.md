@@ -2,6 +2,9 @@
 
 
 
+## 05.10. 21:30 — ✅ Google Search Console (Tag live), ✅ Bing Webmaster verifiziert (msvalidate 9023C06C…), ✅ Ahrefs Webmaster Tools bestätigt
+Nächste Gratis-Klicks: Sitemap `https://luxestyle.ch/sitemap.xml` in GSC + Bing einreichen · Microsoft Merchant Center «erneut prüfen» (Ablehnung 01.10. behoben) · Clarity-Aufnahmen der Warenkorb-Sitzungen ansehen · Ahrefs Site Audit + GSC Insights · Coupler.io ↔ Search Console.
+
 ## 05.10. 21:00 — Semrush ✅ gekündigt (Bestätigungsmail 20:50). Nächster Schritt (gratis): Google Search Console einrichten
 - https://search.google.com/search-console → Property `https://luxestyle.ch` → bestätigen (Shopify: Meta-Tag oder DNS).
 - Danach in Coupler.io die Search Console als Quelle verbinden → Claude liest echte Klicks/Positionen täglich.
