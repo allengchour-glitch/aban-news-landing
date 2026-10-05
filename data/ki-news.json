@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-04T10:33:45Z",
+ "stand": "2026-10-05T11:25:22Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,44 +18,76 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Frustriert?: GPT Astra betrügt bei Starcraft-Bot-Benchmark",
-   "u": "https://www.golem.de/news/frustriert-gpt-astra-betruegt-bei-starcraft-bot-benchmark-2610-213683.html",
+   "t": "PTC: Schneider Electric mit Milliardenübernahme in den USA",
+   "u": "https://www.golem.de/news/ptc-schneider-electric-mit-milliardenuebernahme-in-den-usa-2610-213711.html",
    "q": "Golem",
-   "d": "2026-10-04T10:17:02Z",
-   "s": "OpenAIs GPT 6 alias Astra hat zu unlauteren Mitteln gegriffen, nachdem eigene Versuche, einen Starcraft-Bot zu programmieren, fehlgeschlagen waren. (OpenAI, KI)",
+   "d": "2026-10-05T11:09:02Z",
+   "s": "Schneider Electric kauft für 23,7 Milliarden US-Dollar PTC, den Hersteller von Creo, Onshape und Windchill. Der Umsatz bei Schneider wächst durch Ausrüstung für KI-Rechenzentren. (Wirtschaft, Augmente…",
    "sprache": "de"
   },
   {
-   "t": "Zu viel Autonomie: Metas KI-Agent Muse verrät Wohnadresse ohne Zustimmung",
-   "u": "https://t3n.de/news/meta-muse-ki-agent-verraet-wohnadresse-marketplace-1765382/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-04T10:10:00Z",
-   "s": "Metas KI-Agent Muse kann unter anderem eigenständig Facebook-Marketplace-Accounts managen. Ein Nutzer schilderte, welch unerfreuliche Dinge ihm dabei passierten. weiterlesen auf t3n.de",
-   "sprache": "de"
+   "t": "Building advertising for the way people use AI",
+   "u": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+   "q": "OpenAI",
+   "d": "2026-10-05T10:00:00Z",
+   "s": "OpenAI introduces a new visual ad format in ChatGPT and expands measurement tools, attribution partnerships, and brand suitability for advertisers.",
+   "sprache": "en"
   },
   {
-   "t": "ChatGPT-Effekt: Warum Uni-Absolventen jetzt 13 Prozent weniger verdienen",
-   "u": "https://t3n.de/news/ki-absolventen-gehalt-berufseinstieg-chatgpt-studie-1764272/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-04T09:00:00Z",
-   "s": "KI hat die Einstiegschancen von Absolvent:innen auf dem Arbeitsmarkt deutlich verschlechtert. Laut einem Arbeitspapier der US-Statistikbehörde verdienten etwa Informatik-Student:innen nach ihrem Absch…",
-   "sprache": "de"
-  },
-  {
-   "t": "Speicherkrise: Kleine Raspberry Pis werden teurer, DGX Spark mit weniger RAM",
-   "u": "https://www.golem.de/news/speicherkrise-kleine-raspberry-pis-werden-teurer-dgx-spark-mit-weniger-ram-2610-213680.html",
-   "q": "Golem",
-   "d": "2026-10-04T08:16:02Z",
-   "s": "Die Speicherkrise sorgt weiter für steigende Preise. Bislang verschonte Raspberry Pis werden teurer, Nvidias KI-Desktop kommt als kleinere Version. (RAM, Nvidia)",
-   "sprache": "de"
-  },
-  {
-   "t": "Missing Link: Our Best Machines – Was bin ich ohne meinen KI-Assistenten?",
-   "u": "https://www.heise.de/news/Missing-Link-Our-Best-Machines-Was-bin-ich-ohne-meinen-KI-Assistenten-11467180.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise-Angebot: KI-Projekte bauen und betreiben: Jetzt Vortrag für die Mastering AI einreichen",
+   "u": "https://www.heise.de/news/KI-Projekte-bauen-und-betreiben-Jetzt-Vortrag-fuer-die-Mastering-AI-einreichen-11473595.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-04T05:31:00Z",
-   "s": "KI-Assistenten ziehen in immer mehr Lebensbereiche ein. Medizininformatikerin und Sci-Fi-Autorin über die Frage wer wir ohne",
+   "d": "2026-10-05T10:00:00Z",
+   "s": "Am 28. und 29. April 2027 findet in Karlsruhe die Mastering AI statt. Der Call for Proposals für die Fachkonferenz zu KI-Projekten läuft bis zum 19. November.",
    "sprache": "de"
+  },
+  {
+   "t": "Trotz Handelskrieg: KI und 5G-Patentdeal zwischen Huawei und Qualcomm",
+   "u": "https://www.golem.de/news/trotz-handelskrieg-ki-und-5g-patentdeal-zwischen-huawei-und-qualcomm-2610-213705.html",
+   "q": "Golem",
+   "d": "2026-10-05T09:50:02Z",
+   "s": "Huawei und Qualcomm vereinbaren ein Abkommen zur Kreuzlizenzierung von Patenten. Darunter Huaweis Tau-Scaling-Law und neue Optik-Standards für KI-Rechenzentren. (Huawei, FTC)",
+   "sprache": "de"
+  },
+  {
+   "t": "IBM Bob: COBOL trifft KI – ohne Umweg über die Cloud",
+   "u": "https://www.heise.de/news/IBM-Bob-COBOL-trifft-KI-ohne-Umweg-ueber-die-Cloud-11475819.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-05T09:32:00Z",
+   "s": "IBM bietet Bob nun als selbstgehostete Option an. So können Unternehmen KI-gestützte Softwareentwicklung in ihrer eigenen Infrastruktur nutzen.",
+   "sprache": "de"
+  },
+  {
+   "t": "People really hate AI, so why can’t they get enough?",
+   "u": "https://www.technologyreview.com/2026/10/05/1145682/people-really-hate-ai-so-why-cant-they-get-enough/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-05T08:00:00Z",
+   "s": "Over the summer I talked to the CEO of Springboards, a startup building an LLM that’s designed to come up with a wider variety of responses than its mainstream rivals do. At the start of the call, he …",
+   "sprache": "en"
+  },
+  {
+   "t": "EmTech Future 2026: When AI Meets Everything",
+   "u": "https://www.technologyreview.com/2026/10/05/1145413/emtech-future-2026-when-ai-meets-everything/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-05T04:00:00Z",
+   "s": "Yossi Matias, Vice President & Head of Google Research, explores how AI is beginning to reshape biology, infrastructure, manufacturing, and science, and why its greatest impact may come when it inters…",
+   "sprache": "en"
+  },
+  {
+   "t": "Google froze its open source bug bounty program due to a ‘significant rise’ in AI submissions",
+   "u": "https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-04T20:31:07Z",
+   "s": "AI slop seems to be overwhelming bug bounty programs.",
+   "sprache": "en"
+  },
+  {
+   "t": "Can ‘super intelligence’ and a non-binding safety pact solve AI’s image problem?",
+   "u": "https://techcrunch.com/2026/10/04/can-super-intelligence-and-a-non-binding-safety-pact-solve-ais-image-problem/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-04T20:08:34Z",
+   "s": "On Equity, we discussed the Trump administration's attempts to rebrand AI.",
+   "sprache": "en"
   },
   {
    "t": "The Agent Said It Was Done. The Database Disagreed.",
@@ -64,38 +96,6 @@
    "d": "2026-10-03T22:56:48Z",
    "s": "",
    "sprache": "en"
-  },
-  {
-   "t": "Amazon responds to data center backlash, says it no longer uses NDAs",
-   "u": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-03T18:43:57Z",
-   "s": "The CEO of Amazon Web Services tried to push back against widespread suspicion of data centers.",
-   "sprache": "en"
-  },
-  {
-   "t": "OpenAI safety employee resigns, claiming the company’s ‘culture is broken’",
-   "u": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-03T16:30:01Z",
-   "s": "By his own admission, David Robinson is “something of a cliché”: an employee at a leading AI company who issues a dire warning while resigning from their job.",
-   "sprache": "en"
-  },
-  {
-   "t": "Nvidias DGX Spark wird trotz halbiertem RAM teurer",
-   "u": "https://www.heise.de/news/Nvidias-DGX-Spark-wird-trotz-halbiertem-RAM-teurer-11475117.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-03T16:02:00Z",
-   "s": "Ein neues Modell der KI-Workstation für lokale KI bringt nur noch 64 GByte RAM mit. Teurer wird es trotzdem.",
-   "sprache": "de"
-  },
-  {
-   "t": "Betroffene in ganz Europa: Mindestens 147 Abgeordnete wurden Ziel sexualisierter Deepfakes",
-   "u": "https://netzpolitik.org/2026/betroffene-in-ganz-europa-mindestens-147-abgeordnete-wurden-ziel-sexualisierter-deepfakes/",
-   "q": "netzpolitik.org",
-   "d": "2026-10-03T04:28:56Z",
-   "s": "Ein Gesicht reicht: Mit KI lassen sich Fotos für sexualisierte Deepfakes missbrauchen (Symbolbild) – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Egor KomarovEine neue Studie zeigt, wie Politike…",
-   "sprache": "de"
   }
  ]
 }
