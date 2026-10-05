@@ -4409,3 +4409,5 @@ luftreiniger-fur-den-haushalt-09a8c1	044E9E9C-AE8A-406E-9B00-8103199FA05A	16	9.4
 intelligenter-handedesinfektionsspender-156960	1432991758618333184	7	12.09	ok	landeseite
 schiebeturrolle-d28129	9A17E8FD-474F-43DE-990D-C8715AF56D01	16	11.50	ok	landeseite
 vakuumiergerat-fur-kleine-plastikbeutel-93e3f9	35E5EE08-81EF-4EBF-8FAA-10E1DB2E62EE	16	25.26	ok	landeseite
+leder-quarzuhr-mit-kalenderfunktion-4ceddb	0EF76DAD-878F-474F-BEBC-E5A7C2DCABFA	7	6.49	ok	landeseite
+donut-backform-mit-12-mulden-321e02	433C8D98-4842-4E8A-8FD4-12C027F9F6BA	16	14.37	ok	landeseite
