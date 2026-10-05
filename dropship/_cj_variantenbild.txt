@@ -5774,3 +5774,10 @@ gid://shopify/Product/15454180082049	zugeordnet	4	Business-Quarzarmbanduhr
 gid://shopify/Product/15454180114817	zugeordnet	8	Männer Sportuhr mit Lichtsensor
 gid://shopify/Product/15454180147585	zugeordnet	8	Old-Money-Stil V-Ausschnitt Sweaterjacke
 gid://shopify/Product/15454180180353	zugeordnet	15	Business-Polo mit Kontrastfarbe
+gid://shopify/Product/15454180213121	zugeordnet	2	DT Sports Watch mit Herzfrequenz und Bluetooth
+gid://shopify/Product/15454180245889	zugeordnet	12	Herren-Modisch High-Neck Cardigan Pullover Herbst/Winter
+gid://shopify/Product/15454180278657	bild-urls-tot
+gid://shopify/Product/15454180311425	zugeordnet	6	Herren-Sportuhr wasserdicht
+gid://shopify/Product/15454180344193	zugeordnet	14	Stahlarmband mit Fallschirmschliesse
+gid://shopify/Product/15454180376961	zugeordnet	3	Kalender-Mesh-Gurt Armbanduhr Herren wasserdicht
+gid://shopify/Product/15454180409729	zugeordnet	17	Sportliches Armband
