@@ -3676,3 +3676,12 @@ kissen-get-rich-immediately-609300	2512300949001609700	16	9.47	ok	landeseite
 sit-up-hilfe-mit-saugnapf-fur-bauchmuskeln-617216	1379707817027571712	16	15.81	ok	landeseite
 runder-baumwoll-kissenbezug-handgewoben-602600	2512291109531603100	16	22.21	ok	landeseite
 klappbarer-campingtisch-mit-4-stuhlen-613700	2507160313561613900	9	81.93	ok	landeseite
+mini-outdoor-gaskocher-ultraleicht-601300	2507141007151601500	16	5.48	ok	landeseite
+mehrzweck-kissen-fur-seiten-und-bauchschlafer-639100	2512250417251639400	16	27.83	ok	landeseite
+outdoor-camping-erste-hilfe-und-survival-set-602800	2507110801331603100	0	-	KEINE CH-Option → DRAFT	landeseite
+memory-schaum-kissen-mit-langsamer-ruckfederun-631100	2512230827031632000	16	20.72	ok	landeseite
+schlusselanhanger-taschenlampe-mit-magnet-603800	2507060256121604000	6	6.18	ok	landeseite
+armband-aus-925er-silber-mit-zirkonia-626500	2512180707201626800	16	4.34	ok	landeseite
+magnetarmband-aus-titan-und-edelstahl-621900	2512180620591622100	7	5.05	ok	landeseite
+nagelarmreif-mit-diamanten-635800	2512170922091636000	16	4.71	ok	landeseite
+retro-armband-aus-edelstahl-627100	2512170745431627300	16	4.50	ok	landeseite
