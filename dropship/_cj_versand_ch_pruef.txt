@@ -3653,3 +3653,10 @@ smartwatch-mit-bluetooth-anrufen-und-zugangsko-336320	1699014070734696448	6	8.43
 zugseil-fur-kleine-hunde-und-katzen-970816	1390829451775971328	16	5.81	ok	landeseite
 senioren-smartwatch-4g-mit-ortungsfunktion-409600	1698637576669769728	7	7.30	ok	landeseite
 automatische-teleskop-hundeleine-371328	1376444458421325824	16	7.25	ok	landeseite
+schwarze-hundeleine-mit-zugkraft-233152	1374207187651530752	16	7.43	ok	landeseite
+runde-smartwatch-mit-bluetooth-telefonie-478848	1692415921907838976	7	5.41	ok	landeseite
+hundeleine-mit-3d-blumen-372992	1369909610076573696	16	5.69	ok	landeseite
+4g-netcom-smartwatch-fur-kinder-391232	1689529363135471616	7	7.78	ok	landeseite
+zl02pro-smartwatch-herzfrequenz-messung-612672	1686574343255498752	7	6.81	ok	landeseite
+hundegeschirr-fur-grosse-hunde-114688	1614912257039806464	16	6.77	ok	landeseite
+smartwatch-herzfrequenz-schrittzahler-532096	1685910492595892224	7	5.49	ok	landeseite
