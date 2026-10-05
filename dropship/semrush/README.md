@@ -147,3 +147,17 @@ der Autocommitter hat Teile als Drift mitgenommen).
    accessoires, geschirr-servieren, elektronik-audio) und die Produkte Platz 16–30 (ballettschuhe, blumenkleid, kratzsäule, kinderwagen ventilator, leuchtschuhe
    kinder, baustelle kinder, puzzles) → Platz vorher aus `luxestyle_ch_top30_2026-10-02.csv` / `platz31-100` gegen 08.10.
 Vergleich: `python3 automation/suchvolumen.py` + CSV-Diff gegen die 02.10.-Dateien; nur Platzänderung ≥ 3 zählt (Semrush-Rauschen).
+
+## 05.10.2026 ~09:30 UTC · «keyword mehr machen» — Google-Suggest-Ernte + Semrush-Konto LEER
+- **GEMESSEN: Semrush-Einheiten sind aufgebraucht.** `phrase_these` 40 Begriffe → «ERROR 132 API UNITS BALANCE IS ZERO»; 5 → ok (50),
+  10 → ok (100), danach 10/5/2/1 Begriffe → `no_api_units`. Verbrauch in dieser Runde: **190 Einheiten** (19 Begriffe; `api_units` der drei
+  parallelen Einzelaufrufe zählten sich gegenseitig mit: 20/30/20 statt 10/10/10). Die Schätzung «< 10'000 Rest» vom Morgen war zu hoch —
+  Nachmessung 08.10. (`resource_organic` ~4'400) ist OHNE Aufladen NICHT möglich (semrush.com/mcp-access). Kündigung 09.10. bleibt.
+- **Gratis-Ernte Google-Vorschläge Schweiz** (`automation/google_suggest/`): 373 Seeds (Hauptmenü-Kollektionen → Produktbegriffe, Top-Produktarten
+  nach Volumen, Sortimentsbegriffe), 1'338 Anfragen (hl=de, gl=ch; Varianten kaufen/schweiz/damen/herren/kinder) → 11'198 Vorschläge roh,
+  4'303 verworfen (Orte, Läden Manor/Landi/Ikea/Galaxus…, Marken, Kostüm/Erotik/Tabak/Klingen/Arznei/Lebensmittel/POD, Info-Absicht
+  «reinigen/test/anleitung»), 391 schon in den CSVs bekannt → **6'351 neue Begriffe** in `keywords_erweiterung_ch_2026-10-05.csv`
+  (keyword;volume;kd;seed;quelle). quelle=`semrush` 19 gemessen (17 mit ≥ 30/Mt: teppich wohnzimmer 4'400, baby bodys 1'600,
+  beamer leinwand 1'000, bikini set damen 1'000, bilderrahmen holz 720, bettwäsche beige 480 …), `suggest-kandidat` 221 = die
+  vorsortierten Long-Tail-Begriffe, die bei neuem Guthaben ZUERST gemessen werden (je Seed ≤ 3, Produkt-Modifikator vor «kaufen»),
+  `suggest` 6'457 ohne Volumen. Nicht committet (Workflow-Vorgabe).

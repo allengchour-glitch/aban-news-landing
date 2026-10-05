@@ -4277,3 +4277,4 @@ glattburste-mit-dampf-spruhfunktion-e765b5	7493261A-AC06-406D-96C1-4DB2125B1242	
 kabelloses-ladegerat-kompakt-schnell-139560	1E1C4C61-5233-419E-85BF-3670546DAFF9	16	7.70	ok	landeseite
 bluetooth-player-mit-lampe-und-wireless-charge-69373f	96440C51-B0F4-4644-AA89-6B17FBD54973	7	12.57	ok	landeseite
 pagani-design-berjani-quarzuhr-4b0f6a	3E6CEDA6-2C4B-41C4-A79E-29183F3DF799	7	7.73	ok	landeseite
+pagani-design-berjani-3306-quarzuhr-38360c	0D38790E-5D93-4326-ADB1-14412028968E	7	6.07	ok	landeseite
