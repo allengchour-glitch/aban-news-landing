@@ -4162,3 +4162,8 @@ uv-polish-crystal-gel-starter-set-612500	2506251113241612700	3	11.62	ok	landesei
 uv-nagellack-set-glitzer-uni-farben-619500	2506170303301619800	3	6.25	ok	landeseite
 as-nail-art-eternal-classic-farbgel-nagellack-621600	2412040638401621800	3	5.67	ok	landeseite
 painless-fast-nail-art-extension-set-621900	2409110917071622100	3	6.49	ok	landeseite
+nail-art-infiltration-suit-dust-brush-600500	2407240859471600700	3	6.81	ok	landeseite
+3-farben-ice-jelly-nude-gel-nagellack-set-629300	2407110812581620300	3	5.14	ok	landeseite
+magic-color-cat-eye-gel-nagellack-set-611700	2406230126041611900	2	6.81	ok	landeseite
+280w-uv-led-nagellampe-fur-gel-und-acrylnagel-578754	2072215795651407873	0	-	KEINE CH-Option → DRAFT	landeseite
+uv-led-lichthartungsgerat-fur-gelnagel-606800	2601060157501607000	7	14.97	ok	landeseite

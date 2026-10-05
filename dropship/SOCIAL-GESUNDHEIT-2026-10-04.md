@@ -124,3 +124,9 @@ ist für den Poster keine Reparatur. Und: «kein Kandidat» ist kein Post — Ex
 - **Grenze:** Nach Ablauf der 6-h-Marken (~10:20 UTC) versucht die Jury Groq erneut (ein Bild-Upload je Kandidat) und merkt bei 429 wieder 6 h —
   die Reset-Zeit des Tageskontingents steht nur im abgeschnittenen 429-Text (120 Zeichen). Story-/Bild-Posts haben kein früheres Urteil → bleiben
   bis zum Kontingent blockiert (nicht Plan 23).
+- **Live-Nachmessung, Tick 06:54 UTC (erster Autopilot-Lauf mit dem neuen Code, kein Eingriff von Hand):** «Jury-Kontingent leer → 6/9 Kandidaten mit
+  früherem ok-Urteil zuerst» → `cjreel-1673563451437879296` → «RÜCKFALL (… ok-Urteil vom 2026-10-01T12:47Z …) Note 8.83» → **Instagram-Reel live
+  https://www.instagram.com/reel/DeGnRjZD3Vl/ · Facebook-Video 1564870908288266 · Ledger posted-ig-fb**; `dropship/_jury_rueckfall.tsv` 1 Zeile
+  (06:54:28Z, schnitt 8.83). Lücke IG/FB-Reel damit 04.10. 13:10 → 05.10. 06:54 UTC = 17.7 h (vorher offen seit 15.4 h und ohne Ende in Sicht).
+- **Nebenbei:** `zweitmodell.py` schreibt den 429-Text jetzt mit 320 statt 160/120 Zeichen in Fehlermeldung und Leer-Marke — beim nächsten 429 steht
+  die Reset-Zeit («try again in …») im Log.
