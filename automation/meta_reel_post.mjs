@@ -311,9 +311,17 @@ if (altesLayout) console.log('   Cover bei 3,5 s (Reel mit altem Layout, Hook im
 if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 for (let a = 0; a < 30; a++) {
   await sleep(8000);
-  const st = await api(`${c.id}`, { fields: 'status_code' }, 'GET');
+  const st = await api(`${c.id}`, { fields: 'status_code,status' }, 'GET');
   if (st.status_code === 'FINISHED') break;
-  if (st.status_code === 'ERROR') { console.error('IG-Verarbeitung fehlgeschlagen:', JSON.stringify(st).slice(0, 200)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
+  if (st.status_code === 'ERROR') {
+    // 05.10.2026: Container 17888206023685363 meldete ERROR, stand 3 Minuten später auf FINISHED («Media has been uploaded») —
+    // Metas Status flackert. Einmal nachfragen; erst ein zweites ERROR gilt, und dann mit dem Grund (`status`) im Log.
+    await sleep(8000);
+    const st2 = await api(`${c.id}`, { fields: 'status_code,status' }, 'GET');
+    if (st2.status_code === 'FINISHED') break;
+    if (st2.status_code === 'ERROR') { console.error('IG-Verarbeitung fehlgeschlagen (2× ERROR):', JSON.stringify(st2).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
+    console.log('   IG-Status flackerte (ERROR → ' + (st2.status_code || '?') + '), warte weiter');
+  }
 }
 const pub = await api(`${IG}/media_publish`, { creation_id: c.id });
 if (pub.id) {
