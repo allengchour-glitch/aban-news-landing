@@ -3766,3 +3766,5 @@ hundegeschirr-mit-leine-blumendekor-429184	1642732693374898176	16	6.77	ok	landes
 hundegeschirr-mit-reflektor-953920	1640602500178915328	16	6.42	ok	landeseite
 keramik-servierplatte-schachbrettmuster-355264	1742080763958407168	16	11.04	ok	landeseite
 hunde-brustgeschirr-aus-atmungsaktivem-netzsto-065728	1637369316192563200	16	6.33	ok	landeseite
+hundegeschirr-fur-rehabilitation-und-training-858752	1637350978942939136	16	7.38	ok	landeseite
+multifunktionaler-haustier-rucksack-679424	1637347448664371200	16	10.42	ok	landeseite
