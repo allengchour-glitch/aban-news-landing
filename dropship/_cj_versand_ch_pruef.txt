@@ -4256,3 +4256,10 @@ trainingsmaske-fur-mehr-ausdauer-569344	1659480804940066816	16	9.38	ok	landeseit
 augenmassagegerat-mit-warmekompresse-993088	1654720262824267776	7	13.48	ok	landeseite
 multifunktionale-gesichtsmaske-fur-sport-freiz-504576	1603231409068584960	16	5.41	ok	landeseite
 straffendes-pflegeol-fur-den-intimbereich-mit-460097	2072498877640900609	0	-	KEINE CH-Option → DRAFT	landeseite
+diamant-messerscharfer-aus-wolframstahl-746280	0982C315-8D44-400E-B4D8-D3344AF1A6CB	16	6.56	ok	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	1673206272126103552	7	14.22	ok	klinge
+kuchenregal-fur-gewurze-messer-7e619d	2E240497-6E35-4A27-AC88-4E447CC144BA	16	14.96	ok	klinge
+wetzstein-800-8000er-kornung-d7fafb	D7086D7A-A3DD-4249-80F6-A4195182ACA3	16	14.50	ok	klinge
+gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	537195BD-D29D-4C22-8F7A-3FC21B7AFEBF	16	13.76	ok	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	1D82B2C1-207D-4FD7-A97A-98E3379BA161	1	10.18	ok	klinge
+diamant-messerscharfer-mit-festem-winkel-c8b87b	2B9BAFA6-13A1-401C-BBDD-9FE29D150FA4	16	13.76	ok	klinge
