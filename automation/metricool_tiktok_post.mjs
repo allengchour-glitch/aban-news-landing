@@ -148,7 +148,11 @@ const _alle = rows.slice(1).filter(passt);
 const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))], r => get(r, 'caption')), r => get(r, 'id'));   // 25.09. Saison-Vorrang (Herbst) zuerst
 // DRY schreibt nichts (23.09.: vorher setzte schon der DRY-Lauf tote Adressen auf archived-deadurl).
 const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { if (DRY) return; r[idx.status] = st; writeLedger(); });
-if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde.'); process.exit(0); }
+// 05.10.2026: Exit 3 statt 0 — «kein Kandidat» ist KEIN Post. Mit 0 setzte social_autopilot.sh die Kanal-Marke (TikTok 8 h,
+// YouTube 12 h), als waere gepostet worden: 04.10. 20:13 YouTube «Nichts faellig» → naechster Versuch erst 08:13, obwohl um
+// 20:17 neun Reels wieder ready waren (Ampel: YouTube 23,8 h ohne Post). Mit 3 bleibt die Marke alt, der 15-Minuten-Takt
+// nimmt das naechste ready-Reel, sobald es da ist.
+if (!cand) { console.log(`Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (${NETZ}; Marke bleibt alt, Exit 3).`); process.exit(3); }
 
 // 27.09.2026: Ohne Shop-Token (frischer Container, SHOPIFY_CLIENT_* nicht in der Umgebung) lag TikTok/YouTube 37 h still,
 // obwohl der Metricool-Zugang da war. Ersatz: die OEFFENTLICHE Produktseite /products/<handle>.js — 200 + available =

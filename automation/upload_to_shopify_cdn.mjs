@@ -18,6 +18,12 @@
  *
  * stdout = nur die öffentliche URL (für Pipeline-Verkettung). Logs gehen nach stderr.
  * Exit 0 + URL bei Erfolg, Exit 1 ohne URL.
+ *
+ * ERSETZE_FILE_ID=gid://shopify/GenericFile/… (05.10.2026): statt fileCreate ein fileUpdate(originalSource) auf die
+ * BESTEHENDE Datei — gleicher Dateiname, gleiche Adresse (neues ?v=), kein zweiter Speicherplatz, Doppelpost-Sperre
+ * über den Basename bleibt gültig. Anlass: reel_neu_rendern.py ersetzte nur social/reels/…, die Queue zeigte seit
+ * dem CDN-Umzug (02.10.) auf cdn.shopify.com → Poster luden das alte Video mit dem alten Preis (9 Reels im Kreis
+ * ready → meisterwerk-tor-skip → ready, drei Kanäle unter Takt). Ohne die Variable bleibt der Ablauf byte-gleich.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -84,13 +90,39 @@ async function gql(token, query, variables){
   }
   console.error('Bytes hochgeladen (', up.status, ').');
 
-  // 3) Datei in Shopify registrieren
+  // 3) Datei in Shopify registrieren — oder (ERSETZE_FILE_ID) den Inhalt der bestehenden Datei austauschen
+  const ERSETZE = (process.env.ERSETZE_FILE_ID || '').trim();
+  let id;
+  if (ERSETZE) {
+    if (!/^gid:\/\/shopify\/GenericFile\/\d+$/.test(ERSETZE)) { console.error('ERSETZE_FILE_ID muss gid://shopify/GenericFile/<id> sein:', ERSETZE); process.exit(1); }
+    const vorher = (await gql(token, `query($id:ID!){ node(id:$id){ ... on GenericFile{ url } } }`, { id: ERSETZE }))?.node?.url || '';
+    const upd = await gql(token,
+      `mutation($files:[FileUpdateInput!]!){ fileUpdate(files:$files){
+         files{ ... on GenericFile{ id fileStatus } } userErrors{ field message code } } }`,
+      { files: [{ id: ERSETZE, originalSource: t.resourceUrl }] });
+    const uErrs = upd?.fileUpdate?.userErrors || [];
+    id = upd?.fileUpdate?.files?.[0]?.id;
+    if (!id || uErrs.length) { console.error('fileUpdate fehlgeschlagen:', JSON.stringify(uErrs)); process.exit(1); }
+    console.error('fileUpdate angenommen (vorher', vorher.slice(-60), ').');
+    // Shopify liefert nach fileUpdate kurz noch die ALTE url/Version → warten, bis sich ?v= ändert ODER die Grösse stimmt.
+    for (let i=0;i<40;i++){
+      await new Promise(r=>setTimeout(r, i===0?3000:3000));
+      const d = await gql(token, `query($id:ID!){ node(id:$id){ ... on GenericFile{ fileStatus url originalFileSize } } }`, { id });
+      const n = d?.node;
+      if (n?.fileStatus === 'FAILED') { console.error('Verarbeitung FAILED.'); process.exit(1); }
+      if (n?.fileStatus === 'READY' && n.url && (n.url !== vorher || String(n.originalFileSize) === fileSize)) {
+        if (String(n.originalFileSize) !== fileSize) { console.error(`Grösse ${n.originalFileSize} ≠ lokal ${fileSize} — noch nicht ersetzt, warte`); continue; }
+        console.error('READY (ersetzt).'); console.log(n.url); process.exit(0);
+      }
+    }
+    console.error('Timeout: Datei nach fileUpdate nicht neu bereit.'); process.exit(1);
+  }
   const created = await gql(token,
     `mutation($files:[FileCreateInput!]!){ fileCreate(files:$files){
        files{ ... on GenericFile{ id fileStatus } } userErrors{ field message } } }`,
     { files: [{ originalSource: t.resourceUrl, contentType:'FILE', alt }] });
   const cErrs = created?.fileCreate?.userErrors || [];
-  const id = created?.fileCreate?.files?.[0]?.id;
+  id = created?.fileCreate?.files?.[0]?.id;
   if (!id || cErrs.length) { console.error('fileCreate fehlgeschlagen:', JSON.stringify(cErrs)); process.exit(1); }
 
   // 4) Pollen bis READY → öffentliche URL
