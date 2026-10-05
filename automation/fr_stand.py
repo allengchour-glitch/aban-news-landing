@@ -57,6 +57,11 @@ def top_produkte(n_soll=58):
 
 
 def menu_kollektionen():
+    handles = menu_handles()
+    return len(handles), kollektionen_stand(handles)
+
+
+def menu_handles():
     menus = gql('{ menus(first:20){ nodes{ items{ url items{ url items{ url } } } } } }')['menus']['nodes']
     urls = []
     def walk(items):
@@ -67,7 +72,12 @@ def menu_kollektionen():
     # Menü-URLs tragen Emoji-Handles %-kodiert («%F0%9F%8E%81-geschenke-bis-chf-30»); collectionByIdentifier
     # kennt nur den dekodierten Handle («🎁-…») und gab für die rohe Form None — das wurde bis 05.10. still
     # übersprungen (Blindstelle, Prüferbefund). Jetzt: dekodieren, und None = Lücke, nie Erfolg.
-    handles = sorted({unquote(re.search(r'/collections/([^/?#]+)', u).group(1)) for u in urls if '/collections/' in u})
+    return sorted({unquote(re.search(r'/collections/([^/?#]+)', u).group(1)) for u in urls if '/collections/' in u})
+
+
+def kollektionen_stand(handles):
+    """Liste der Handles mit Lücke: nicht auflösbar, fehlendes fr-Feld oder veraltet. Kanarienvogel: ein
+    erfundener Handle MUSS als «(nicht auflösbar)» zurückkommen."""
     fehl = []
     for i in range(0, len(handles), 10):
         ch = handles[i:i + 10]
@@ -89,7 +99,7 @@ def menu_kollektionen():
             have = {x['key'] for x in n['translations']}
             if not soll <= have or any(x['outdated'] for x in n['translations']):
                 fehl.append(ids[n['resourceId']])
-    return len(handles), fehl
+    return fehl
 
 
 def main():
