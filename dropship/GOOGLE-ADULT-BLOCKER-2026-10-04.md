@@ -87,3 +87,17 @@ Rückweg je Produkt: Spalte 4 des Ledgers (`_google_bild_tausch.tsv`) = alte ers
 ## Korrektur 05.10. (Prüfer, Plan Punkt 14)
 - Die 95 «Fehlalarme» waren 94 Fehlalarme + 1 verboten (Stachelhalsband «Halsband mit Stimulationskette», DRAFT 05.10.) + 1 Mode (`fitness-leggings-mit-po-push-up-effekt-609216`, Leggings am Model = Klasse «Mode/Schuhe mit Modelfoto», Bildtausch statt Anstupsen). Die Leggings sind im Ledger `_gfeed_anstupsen.tsv` mit dem Vermerk `mode-messung` markiert und zählen in der Anstups-Quote NICHT mit (Mode-Messung bleibt dadurch unverfälscht).
 - Figurkleid `traglose-rueckenfreie-sexy-figurkleid-in-gelb-607600`: Titel war nach der Reizwort-Reparatur kein Deutsch («Traglose, rueckenfreie Figurkleid») → 05.10. «Rückenfreies Figurkleid mit Taillenband in Gelb oder Weiss» (Bild: ärmellos mit Schulterpartie, nicht trägerlos), SEO beide Felder, Beschreibung «strapless/rueckenfrei» korrigiert (Ledger `_titel_kauderwelsch.tsv`).
+
+## Korrektur 05.10. (Prüfer Index 1, Bereich google-adult) — siehe `dropship/GOOGLE-ADULT-RUECKLESE-2026-10-05.md`
+- **Ledger ≠ Live war kein Einzelfall:** Rücklese 05.10. 04:10 UTC über alle 301 Tausche → **83 live zurückgedreht** (78 davon exakt
+  auf die Reihenfolge vor dem Tausch). Verursacher `textbild_fix.py` (alle 83 alten Media-IDs als Quittung in `_textbild_geprueft.txt`),
+  nicht der Bild-Nachfüller. Jetzt Sperre `bildtausch_sperre.py` in textbild_fix + hauptbild_ohne_text; 82 nachgesetzt, Rücklese 0 Abweichungen im Google-Kanal.
+- **tausch-q am Bild geprüft (42/42, Kontaktbogen alt|neu|live):** 6 Tausche zeigten MEHR Haut/Schritt als vorher (5 Strumpfhosen-Packs,
+  1 Netz-Strickkleid) → über Ledger-Art `rueckweg` zurück; 36 bleiben (davon 21 klar neutraler: Produkt statt Model).
+- **Aufseher-Block:** der Reizwort-Lauf ist täglich eingebaut (lief 04.10. 23:12, 0 Treffer); ein Bildtausch-Tageslauf N=40 ist bewusst
+  NICHT drin (Engpass Groq-Vision-Kontingent). Die Angabe «N=25» im Bericht vom 04.10. war ein Vorschlag, nicht der Stand.
+- **Reizwörter auch in Texten:** 17 Meta-Beschreibungen, 175 Beschreibungen, 50 Alt-Texte im Google-Kanal → `google_reiztitel.py --texte`
+  (jetzt Teil des Tageslaufs), 223 Produkte bereinigt, Rückweg `dropship/_google_reiztitel_texte.jsonl`.
+- **95 Fehlalarme nachgeprüft (Sperrlisten + Kontaktbogen):** neben dem Stachelhalsband noch 4 Hausregel-Treffer — Fasnachts-Plüschhut
+  (Tag `kostuem-hut` traf die Sperrliste nicht), «Date Night»-Spiel (Bilder: Couples Adult Board Game) und ein Metall-Zughalsband ohne Stopp
+  (Kettenwürger, DRAFT); 3 Maskenball-Masken waren vom Kollegen schon aus Google genommen.

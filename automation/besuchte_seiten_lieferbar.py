@@ -44,7 +44,19 @@ VERSUCHE = 3
 # «transient nicht abrufbar» und gibt None zurueck, wo es nichts zu entscheiden gibt.
 # Wer eine Logik baut, sucht zuerst ihren Zwilling.
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
-from cj_versand_ch_guard import versandfaehig, cj            # noqa: E402
+# 05.10.2026 (Pruefer-Befund 9, «fix 12 h»): ATTRAPPE=1 = Trockenlauf OHNE einen einzigen CJ-Aufruf. Der Pruefer konnte
+# die Logik nur nachbauen, weil jeder echte Lauf CJ-Punkte kostet und der Tagesvorrat um 02:00 weg war. Mit der Attrappe
+# antwortet «CJ» immer «16 Optionen» — damit lassen sich Pflichtliste, Ledger-Filter, Reihenfolge und Schlusszeilen
+# pruefen. ⚠️ Attrappen-Urteile landen NIE im Ledger (ledger_schreiben prueft ATTRAPPE) und nie im Register (DRY Pflicht).
+ATTRAPPE = os.environ.get("ATTRAPPE") == "1"
+if ATTRAPPE:
+    def versandfaehig(sku):                                   # noqa: D103
+        return True, (f"ATTRAPPE: 16 Optionen, ab USD 9.99 ({sku})", 9.99)
+
+    def cj(pfad, body=None):                                  # noqa: D103
+        return 200, [{"logisticPrice": "9.99"}] * 16, "ATTRAPPE"
+else:
+    from cj_versand_ch_guard import versandfaehig, cj        # noqa: E402
 
 
 def ch_optionen_vid(vid):
@@ -55,6 +67,51 @@ def ch_optionen_vid(vid):
     if code != 200:
         return None, f"CJ code {code}: {str(msg)[:80]}"
     return len(opts or []), None
+
+
+PUNKTE_RESERVE = int(os.environ.get("PUNKTE_RESERVE", "2000"))
+
+
+def punkte_sonde():
+    """CJ-Punktestand VOR dem Lauf — ueber den GRATIS-Endpunkt productComments (kostet 0 Punkte, Lehre 28.08.;
+    `cj_versand_ch_sichtbar.warte_auf_punkte` nutzt denselben). Gibt {rest,total,used,code,msg} zurueck.
+
+    WARUM (Pruefer-Befund 9, 05.10.2026): Lauf 1 (~305 Aufrufe) lief in genau der Stunde, in der der CJ-Rest von 44'061
+    auf 5'219 fiel; danach antworteten ALLE CJ-Waechter (Bestell-Ampel, Kanarienvoegel, Grind) bis 16:00 UTC mit 16900500.
+    Ein Waechter, der den letzten Rest aufbraucht, nimmt dem Bestell-Motor die Punkte. Unter PUNKTE_RESERVE: PAUSE.
+    ⚠️ `remaining` ist laut cj_kosten_backfill.mjs (23.08.) zeitweise ein nachfliessender Eimer (~300–570), nicht total−used;
+    am 05.10. zeigte er 44'061 → 5'219 → 0 wie ein Tagesvorrat. Beide Lesarten fuehren hier zum selben Schluss: unter der
+    Reserve wird heute nicht gefragt, der Aufseher versucht es spaeter (PAUSE-Zeile)."""
+    if ATTRAPPE:
+        return {"rest": 99999, "total": 99999, "used": 0, "code": 200, "msg": "ATTRAPPE"}
+    import subprocess
+    try:
+        from cj_takt import takt, frei
+        from cj_versand_ch_guard import CJT
+    except Exception as e:                                     # noqa: BLE001
+        return {"rest": None, "total": None, "used": None, "code": 0, "msg": f"Sonde nicht ladbar: {e}"}
+    cmd = ["curl", "-s", "--max-time", "40",
+           "https://developers.cjdropshipping.com/api2.0/v1/product/productComments?pid=2064920992690323457&pageNum=1&pageSize=1",
+           "-H", "CJ-Access-Token: " + CJT]
+    for _ in range(3):
+        takt()
+        out = subprocess.run(cmd, capture_output=True, text=True).stdout
+        frei()
+        try:
+            d = json.loads(out or "{}")
+        except Exception:                                      # noqa: BLE001
+            time.sleep(3); continue
+        code = int(d.get("code") or 0)
+        if code == 1600200:
+            time.sleep(3); continue
+        pi = d.get("pointsInfo") or {}
+        msg = str(d.get("message") or "")
+        rest = pi.get("remaining")
+        if rest is None and code == 16900500:
+            m = re.search(r"Remaining:\s*(\d+)", msg)
+            rest = int(m.group(1)) if m else 0
+        return {"rest": rest, "total": pi.get("total"), "used": pi.get("usedToday"), "code": code, "msg": msg[:100]}
+    return {"rest": None, "total": None, "used": None, "code": 0, "msg": "keine Antwort"}
 
 
 SHOP = "au3j0y-hq.myshopify.com"
@@ -103,10 +160,26 @@ TAGE = int(os.environ.get("TAGE", "60"))
 # dem Urteil — ein «ja» gilt FRIST_JA_TAGE, danach wird neu gefragt; NEIN/unklar werden im
 # naechsten Lauf wieder gefragt (Zwei-Laeufe-Regel unten bleibt), (3) hoechstens MAX_PRODUKTE je
 # Lauf (~3 CJ-Aufrufe je Produkt → ~300 Aufrufe, der Rest kommt im naechsten Lauf dran).
-MAX_SEITEN = int(os.environ.get("MAX_SEITEN", "400"))
+# ⚠️ PRUEFER-BEFUND 9 (05.10.2026, 03:xx): «MAX_SEITEN 400 der 60-T-Liste» deckte die Klasse NIE ab — die 60-T-Abfrage
+# lieferte 880 Produkt-Handles (LIMIT 1000 erreicht, Liste abgeschnitten), [:400] nahm ab Platz ~300 nur noch 1-Sitzungs-
+# Seiten in zufaelliger Reihenfolge; 178 der 387 30-T-Landeseiten und 4 der 5 verkauften ACTIVE-Produkte (Cargo-Hose «Trail»
+# = hoechster Umsatz 90 T, Gemueseschneider, Blumenkleid, Midikleid) standen NICHT in den 400, die der Waechter je fragte.
+# Darum jetzt PFLICHTLISTE (pflichtliste()): (1) verkaufte Produkte 90 T zuerst, (2) ALLE Landeseiten 30 T, (3) Landeseiten
+# 30–150 T in Zeitfenstern, die so lange halbiert werden, bis keines mehr das LIMIT 1000 erreicht (gemessen 05.10.: 30-T-
+# Fenster -90..-60 und -120..-90 liefen je ins LIMIT; 2'753 Handles ueber 150 T, 388 in 30 T). MAX_SEITEN kappt nur noch
+# als Notbremse. Frist fuer ein «ja»: 14 T fuer heisse Seiten (verkauft oder 30 T besucht), 60 T fuer die aelteren —
+# sonst waeren es ~600 CJ-Aufrufe/Tag auf der EINEN geteilten CJ-Uhr (Plan Punkt 12: «nicht mehr Waechter dazubauen»).
+MAX_SEITEN = int(os.environ.get("MAX_SEITEN", "5000"))
 MAX_PRODUKTE = int(os.environ.get("MAX_PRODUKTE", "100"))
 FRIST_JA_TAGE = float(os.environ.get("FRIST_JA_TAGE", "14"))
+FRIST_JA_ALT_TAGE = float(os.environ.get("FRIST_JA_ALT_TAGE", "60"))
+# NUR_NEIN=1 bestaetigt NEIN-Urteile erst nach MIN_ABSTAND_H Stunden: am 05.10. lagen zwischen «erstes NEIN» (01:57) und
+# «zweites NEIN» (01:58) 60 Sekunden — das waren zwei Laeufe, aber keine zwei unabhaengigen Messungen (ein CJ-Aussetzer
+# dauert laenger als eine Minute). DRAFT setzt vollstrecken() nur, wenn das vorige NEIN im Ledger ≥ MIN_ABSTAND_H alt ist.
+MIN_ABSTAND_H = float(os.environ.get("MIN_ABSTAND_H", "12"))
 DRY = os.environ.get("DRY") == "1"
+if ATTRAPPE and not DRY:
+    sys.exit("ATTRAPPE=1 verlangt DRY=1 — Attrappen-Urteile duerfen weder Register noch Shop beruehren.")
 LEDGER = os.path.join(REPO, "dropship", "_besuchte_seiten_geprueft.tsv")   # handle · epoche · ja/NEIN/unklar · grund · sku
 
 
@@ -129,6 +202,8 @@ def ledger_lesen():
 
 
 def ledger_schreiben(handle, urteil, grund, sku):
+    if ATTRAPPE:
+        return                       # Attrappen-Antworten sind keine Messung — nie ins Ledger
     with open(LEDGER, "a", encoding="utf-8") as f:
         f.write(f"{handle}\t{time.time():.0f}\t{urteil}\t{(grund or '').replace(chr(9), ' ')[:120]}\t{sku}\n")
 

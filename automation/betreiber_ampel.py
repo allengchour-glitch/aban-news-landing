@@ -522,7 +522,19 @@ def fortura_bestand_alter():
         except Exception:
             pass
         h = (datetime.datetime.utcnow() - t).total_seconds() / 3600
-        return f"⚠️ FORTURA-BESTAND {h/24:.0f} T alt (letzter Abgleich {t:%d.%m. %H:%M}) — Ware ab CH-Lager mit eingefrorenem Bestand" if h > 30 else ""
+        # 05.10.2026: fortura_bestand_taeglich.sh schreibt bei PAUSE nur noch die Marke /tmp/fortura_bestand.pause («Zeit Grund») und
+        # lässt den Erfolgsstempel in Ruhe (vorher drehte nochmal() ihn auf «jetzt − 18 h» zurück). Steht eine Pause, die jünger ist als
+        # der letzte Erfolg, soll die Ampel den Grund nennen — ein Automat, der still scheitert, ist für die Kundin keiner.
+        pause = ""
+        try:
+            pz = open("/tmp/fortura_bestand.pause", encoding="utf-8").read().strip()
+            if pz and pz[:19] > t.strftime("%Y-%m-%dT%H:%M:%S"):
+                pause = f" · PAUSE seit {pz[11:16]} UTC: {pz[21:111]}"
+        except OSError:
+            pass
+        if h > 30:
+            return f"⚠️ FORTURA-BESTAND {h/24:.0f} T alt (letzter Abgleich {t:%d.%m. %H:%M}) — Ware ab CH-Lager mit eingefrorenem Bestand{pause}"
+        return f"⚠️ FORTURA-BESTAND: letzter Abgleich {t:%d.%m. %H:%M}{pause}" if pause else ""
     except Exception as e:
         return f"FORTURA-BESTAND: unklar ({type(e).__name__})"
 

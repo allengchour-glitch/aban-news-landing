@@ -58555,3 +58555,5 @@ gid://shopify/Product/16607166824839	gid://shopify/MediaImage/77451912216967
 gid://shopify/Product/16607167283591	gid://shopify/MediaImage/77451915395463
 gid://shopify/Product/16607167742343	gid://shopify/MediaImage/77451919425927
 gid://shopify/Product/16607172854151	gid://shopify/MediaImage/77451953308039
+gid://shopify/Product/15448021565825	gid://shopify/MediaImage/69853143695745	bildtausch-sperre
+gid://shopify/Product/15448076484993	gid://shopify/MediaImage/69855045386625	bildtausch-sperre

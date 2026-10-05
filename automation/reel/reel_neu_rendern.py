@@ -34,7 +34,7 @@ dropship/_reel_cdn_ersatz_<datum>.tsv. Gelingt der Ersatz nicht, bleibt der Sper
 MODUS=cdn: nur abgleichen — `ready`-Zeilen mit CDN-Adresse, deren lokale Datei eine andere Grösse hat als die CDN-Kopie
 (= lokal neu gerendert, CDN veraltet), hochladen und Adresse nachtragen. Kein Render.
 """
-import csv, glob, json, os, re, subprocess, sys, tempfile, time
+import csv, glob, json, os, re, subprocess, sys, tempfile
 import numpy as np
 from PIL import Image
 
@@ -183,18 +183,35 @@ def ist_cdn(url):
 
 
 def cdn_groesse(url):
-    """Content-Length der CDN-Kopie (HEAD), -1 bei Fehler.
-    05.10.2026 (Prüferbefund): Shopifys Edge-Cache lieferte an der ALTEN ?v=-Adresse (und ohne ?v=) weiter die alten
-    3'048'119 B, obwohl fileUpdate die Datei längst ersetzt hatte → derselbe Reel wurde 02:02 und 02:07 zweimal ersetzt.
-    Deshalb ein Cache-Brecher (&cb=<jetzt>) an der Adresse: der CDN cached je vollständiger URL, die frische Antwort
-    kommt vom Ursprung. Die Adresse in der Queue bleibt unverändert."""
+    """Content-Length der CDN-Kopie (HEAD) an GENAU dieser Adresse, -1 bei Fehler. ⚠️ Shopify hält je ?v= eine eigene
+    Fassung vor: die alte ?v=-Adresse liefert nach einem fileUpdate weiter die alten Bytes (gemessen 05.10.: 3'048'119 B,
+    auch mit Cache-Brecher &cb=…), erst die neue ?v=-Adresse die neuen. Für «ist die CDN-Kopie aktuell?» darum
+    cdn_groesse_wahrheit() nehmen (Admin-API originalFileSize)."""
     try:
-        frisch = url + ("&" if "?" in url else "?") + f"cb={int(time.time())}"
-        out = subprocess.run(["curl", "-sI", "--max-time", "30", frisch], capture_output=True, text=True, timeout=40).stdout
+        out = subprocess.run(["curl", "-sI", "--max-time", "30", url], capture_output=True, text=True, timeout=40).stdout
         m = re.search(r"content-length:\s*(\d+)", out, re.I)
         return int(m.group(1)) if m else -1
     except Exception:
         return -1
+
+
+def cdn_groesse_wahrheit(pid, url):
+    """Grösse der CDN-Datei laut Admin-API (GenericFile.originalFileSize = Wahrheit am Ursprung), Rückfall HEAD an der
+    Queue-Adresse. 05.10.2026 (Prüferbefund): modus_cdn mass an der ALTEN ?v=-Adresse den Edge-Cache und ersetzte denselben
+    Reel 02:02 und 02:07 zweimal."""
+    try:
+        sys.path.insert(0, os.path.join(REPO, "automation"))
+        import heilversprechen_wache as hw
+        r = hw.gql('query($q:String!){ files(first:10, query:$q){ nodes{ id ... on GenericFile{ url originalFileSize } } } }',
+                   {"q": f"filename:reel_{pid}.mp4"})
+        nodes = (((r.get("data") or {}).get("files") or {}).get("nodes")) if isinstance(r, dict) else None
+        pfad = (url or "").split("?")[0]
+        for n in nodes or []:
+            if (n.get("url") or "").split("?")[0] == pfad and n.get("originalFileSize"):
+                return int(n["originalFileSize"])
+    except Exception:
+        pass
+    return cdn_groesse(url)
 
 
 def cdn_datei_id(pid, url):
@@ -250,7 +267,7 @@ def modus_cdn():
         pid = r["id"][len("cjreel-"):]; lokal = f"social/reels/reel_{pid}.mp4"
         if not os.path.exists(lokal):
             continue
-        lb, cb = os.path.getsize(lokal), cdn_groesse(r["video_url"])
+        lb, cb = os.path.getsize(lokal), cdn_groesse_wahrheit(pid, r["video_url"])   # Admin-API = Wahrheit, nicht der Edge-Cache
         if cb < 0:
             erg.append((pid, lb, "UEBERSPRUNGEN", "CDN nicht lesbar")); continue
         if lb == cb:
