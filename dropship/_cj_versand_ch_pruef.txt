@@ -4022,3 +4022,6 @@ herren-high-top-sneaker-brooklyn-mesh-atmungsaktiv	2606110809431621300	16	14.13	
 herren-leder-sandalen-adriano-vollnarbenleder	2606100911071625200	16	9.20	ok	landeseite
 herren-sport-sneaker-velocita-mesh-wide-toe	2606100634171622000	16	12.44	ok	landeseite
 herren-trainingsschuhe-forza-gym-weightlifting	2606100712381625000	16	16.16	ok	landeseite
+925-silber-ring-fleur-filigrane-blute	2065711624957476865	16	7.17	ok	landeseite
+susswasserperlen-ohrringe-perla-925-silber	2065662885040201730	16	7.17	ok	landeseite
+925-silber-fusskettchen-riva-emaille-perlen	2065714732781686786	16	4.50	ok	landeseite
