@@ -74,3 +74,21 @@ nach — ohne Neustart-Erkennung, ohne 3/Tag-Zähler. Block ersetzt die Zeilen `
 «Shop: 8416 Varianten … 141 Seiten») stehen jetzt im Log (line-buffered); `/tmp/fortura_bestand.stamp` trägt 22:29 (bei FERTIG gesetzt);
 die Ampel gibt `''` (grün) — obwohl die letzte Journalzeile von 21:17 ist (0 Änderungen = keine Zeile), weil sie den Berichtskopf
 «2026-10-04 22:29 UTC» mitliest. Genau der Fall aus Nebenbefund 4.
+
+## Nachtrag 05.10.2026, 04:20–04:30 UTC — Plan Punkt 8 + Prüferbefunde (Index 0)
+- **`fortura_bestand_sync.mjs`:** Pfad «läuft bereits, skip» → **Exit 3** (vorher 0 — im Log belegt: START 00:27:57 … skip … FERTIG 00:28:10, Stempel gesetzt);
+  Dateiende **`process.exit(fehler ? 1 : 0)`** (vorher endete auch ein Lauf mit offenen Zeilen mit 0). `node --check` ok.
+- **`fortura_bestand_taeglich.sh`:** Stempel nur bei rc=0; rc=3 = «KEIN LAUF» (kein FERTIG, kein Stempel, keine Pause); PAUSE schreibt nur die Marke
+  `/tmp/fortura_bestand.pause` («Zeit Grund») — **`nochmal()` (Stempel auf «jetzt − 18 h») ist weg**, der Erfolgsstempel bleibt die Wahrheit. Der Aufseher braucht
+  nichts Neues: nach einer PAUSE ist der Stempel ohnehin > 20 h alt, der 2-h-Anspruch startet den nächsten Versuch (mit stündlichem Tick faktisch nach 2–3 h).
+  Skript endet mit `exit $rc`.
+- **Test mit künstlichem Lock** (`echo $$ > /tmp/fortura_bestand_sync.lock`, dann `bash automation/fortura_bestand_taeglich.sh`): Feed geladen, Node meldet
+  «läuft bereits, skip», Shell «KEIN LAUF …», **rc=3**, kein FERTIG, **Stempel `stat -c %Y` 1791152941 vorher = 1791152941 nachher**, keine Pause-Marke. Lock danach entfernt.
+- **Ampel (`betreiber_ampel.py` `fortura_bestand_alter`)** nennt eine Pause-Marke, die jünger ist als der letzte Erfolg: «⚠️ FORTURA-BESTAND: letzter Abgleich
+  04.10. 22:29 · PAUSE seit HH:MM UTC: Grund» (mit Testmarke gemessen, Marke danach entfernt).
+- **Offen-Liste korrigiert:** (1) «doppelte SKU → Dubletten-Klasse» gestrichen — es sind die bekannten, bewusst gedrafteten Alt-Einzelgrössen
+  (`alt-einzelgroesse-ersetzt`/`duplikat-auto-draft`, im Kopf von sync.mjs seit 21.08. dokumentiert); (2) «Getan (ohne Commit)» war veraltet — taeglich.sh,
+  fetch_feed.sh, betreiber_ampel.py und der Aufseher-Block waren mit 0f4334f96 (04.10. 22:35) committet; der Block steht in fixer_keepalive.sh ~Z. 2013, nicht 1909.
+  (3) Der Ampel-«Beweis» oben war konfundiert (Journalzeile ohnehin < 30 h alt); der Pfad greift, isoliert vom Prüfer nachgewiesen.
+- **Trockenlauf 22:28 lief WÄHREND des scharfen Laufs (22:26–22:29)** — Parallelmessung, keine Vorab-Prüfung; folgenlos (0 Änderungen), aber die Reihenfolge war falsch.
+- **Noch unbewiesen:** erster echter Aufseher-Start (Stempel 22:29 → fällig 05.10. ~18:29 UTC) mit Zeile «Tageslauf gestartet (letzter Erfolg vor ≈ 20 h)».

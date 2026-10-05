@@ -88,3 +88,33 @@ Ledger: `dropship/_mobil_tempo_messung_2026-10-05.tsv`, Screenshots `dropship/_m
 `mobil_tempo_patch.py` ist idempotent und setzt die vier Patches wieder, falls der Theme-Editor («auto-generated … may be overwritten»)
 oder ein Horizon-Update sie überschreibt; findet ein Patch seinen Anker nicht (z. B. Tati-Block bewusst gelöscht), lässt er die Datei
 unangetastet und meldet es. Block für `fixer_keepalive.sh` steht im Workflow-Ergebnis.
+
+## Nachtrag 05.10.2026, 04:20–04:45 UTC — Prüferbefunde (Index 7) eingearbeitet
+**Korrektur Safari/Chrome (der Bericht oben hatte es verkehrt herum):** Safari kennt `sizes="auto"` nicht und überspringt den Eintrag →
+nimmt den Rest der Liste, also seit Patch 3 im Karussell «60vw» → `width=480`. Chrome wertet `auto` zuerst aus; bei noch nicht
+gelayouteten lazy-Karussellkarten fällt es auf 100vw zurück → dort weiter `width=832` (Prüfer-Messung: 11 der 12 grössten Ressourcen der
+Startseite sind lazy-Kartenbilder mit 832). Gesichert sind nur: LCP-Gewinn (5'232 → 2'208–2'812 ms), Video 0 KB beim Laden, 16 eager-Karten 832 → 480.
+Die Zahlen «übertragen 6'818 → 3'014 KB» und «Bilder 2'313 → 1'705 KB» hängen davon ab, wie viele lazy-Bilder bis zur Auswertung geladen
+waren — zeitabhängig, nicht als Gewinn zu lesen.
+
+**«60vw greift auf Kollektionsseiten nicht» — bestätigt und behoben.** `templates/collection.json` (live) kennt kein `mobile_columns`;
+`main-collection` nutzt `product_card_size` (medium) + `mobile_product_card_size` (small = 2 Spalten, `product-grid.liquid`
+`--mobile-columns: 2`). Patch 3 lag im falschen Zweig. Live-HTML `/collections/halloween` vorher: **72× `…, (min-width: 750px) 50vw, 100vw`,
+0× 60vw** — der Halloween-Gewinn oben (529 KB, width=480) kam allein aus Patch 4 (480er-Stufe) + Chromes `sizes=auto`; Safari lud dort weiter 832.
+- **Patch 5 (`mobil_tempo_patch.py`, Teil B, Marke «… (Raster)»):** im `product_card_size`-Zweig `, 100vw` → `, 50vw`, ausser
+  `mobile_product_card_size == 'large'` (1 Spalte). DRY 04:31 UTC (Diff gelesen: 5 Zeilen, nur dieser Zweig), SCHARF 04:33, Rücklesen identisch.
+  Live-HTML 04:35 UTC: **72× `…, (min-width: 750px) 50vw, 50vw`, 0× 100vw** an Produktkarten. Safari lädt jetzt 480 statt 832 (Karte 189 px ≈ 48 vw).
+  Backup vorher: `theme_backup/card-gallery.liquid.vor-raster-50vw-2026-10-05`. Rücknahme: Block mit der Marke löschen.
+  ⚠️ Der Kunden-Umschalter «1 Spalte» (sessionStorage `product-grid-view-mobile`) bekommt mit 50vw ein 480er-Bild für 780 Gerätepixel — bewusst
+  hingenommen (Chrome wählte über `auto` ohnehin 480; Umschalter ist sitzungsgebunden, Standard 2 Spalten).
+- **Backup `snippets/product-media.liquid` nachgeholt:** `theme_backup/product-media.liquid.nach-mobil-tempo-2026-10-05` (Live-Datei 04:27 UTC)
+  + `…vor-mobil-tempo-2026-10-05.rekonstruiert` (Markerzeile raus, 480/600 raus; Diff = genau die 2 Zeilen von Patch 4).
+
+**Grösste verbliebene Mobil-Bildklasse (offen, eigene Runde):** Startseite live 04:36 UTC: **32× Kollektions-Cover `loading="eager"`
+`resource-image__image` mit `sizes="(min-width: 750px) 25vw, 100vw"`** (Abschnitt collection_list, Position 7) → Handy 832w für halbbreite Karten
+(`?width=832` 49 KB vs `?width=480` 22 KB). Fix = `snippets/resource-image.liquid` (Mobil 50vw und/oder lazy unterhalb des Folds) — mit Backup und Messung.
+Zum Vergleich Karten: 354× «…, 60vw» (Karussell), 0× «…, 100vw».
+
+**Wächter-Block (fixer_keepalive.sh, Hauptlauf):** (1) `mobil_tempo_patch.py` schreibt `templates/index.json` komplett wie
+`homepage_katalog_rotation.py` → gleicher `flock` (`/tmp/lock_homepage_katalog_rotation.lock`, wartend), sonst Lost Update; (2) die Meldung zählte
+`grep -c 'schon gepatcht'` über das ganze wachsende Log → nur den letzten Lauf auswerten (`tail -8`).

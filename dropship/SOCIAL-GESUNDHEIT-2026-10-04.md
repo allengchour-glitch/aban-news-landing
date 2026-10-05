@@ -78,3 +78,25 @@ Bearbeitet 05.10.2026 01:55–02:20 UTC. Nichts von Hand gepostet; alle Änderun
 
 Wer die Datei ersetzt, muss die ADRESSE mit ersetzen — eine Reparatur, die nur die lokale Kopie heilt, während die Queue aufs CDN zeigt,
 ist für den Poster keine Reparatur. Und: «kein Kandidat» ist kein Post — Exit 0 setzt Marken.
+
+## Nachtrag 05.10.2026, 04:20–04:45 UTC — Prüferbefunde (Index 10) eingearbeitet
+- **Ist-Stand zu «Kein Commit/Push»:** falsch — `upload_to_shopify_cdn.mjs`, `reel/reel_neu_rendern.py`, `metricool_tiktok_post.mjs` liegen im
+  Autocommit 13e6c8710 (02:09 UTC, Botschaft «CJ-Ledger [skip ci]»), `cj_video_reel_engine.mjs`/`meta_reel_post.mjs` in 083960d58. Das Ausfall-Ledger
+  hatte bereits **312 Zeilen aus zwei SCHARF-Läufen** (083960d58 02:33 ≈ 201 Zeilen, 8bfded806 02:38 +111), die oben nicht genannt sind; 0 neue Reels.
+- **Ausfall-Ledger: Fehlurteil behoben.** pid 1432187342642352128 stand als «status-DRAFT», hat aber ein ACTIVE-Original («Ultraschall-Reinigungsgerät»,
+  CHF 18.90, 21 Medien) neben dem DRAFT-Duplikat. **Alle 312 pids mit den Motor-Regeln neu beurteilt** (Skript, nur Shopify-Lesezugriffe, 16 × 20er-Abfragen):
+  **311 gleich, 1 anders** (genau diese pid → GUT). Zeile entfernt, Ledger jetzt 311 Zeilen; Korrektur-Ledger
+  `dropship/_cj_reel_index_tot_korrektur_2026-10-05.tsv` (alt/neu).
+- **Reihenfolge:** Ledger-Zeile 1 (02:02Z, 8FDAF06D) war ein SCHARFER Vortest vor dem Trockenlauf; derselbe Reel wurde 02:07 nochmals ersetzt, weil
+  `modus_cdn` an der ALTEN `?v=`-Adresse mass. Gemessen 04:32 UTC: HEAD alte Adresse 3'048'119 B (auch mit `&cb=…` — Shopify hält je `?v=` eine Fassung),
+  Admin-API `GenericFile.originalFileSize` 3'007'474 B = lokal. → `cdn_groesse_wahrheit()` (Admin-API, Rückfall HEAD) in `modus_cdn`.
+- **Kadenz-Wache misst Veröffentlichung, nicht Planung.** «TikTok 0.3 h · YouTube 0.3 h» war die Planungszeit (posted_at 02:12/02:13); beide Posts stehen im
+  Planer für 08:05 UTC. `reel_kadenz_wache.py` fragt für `metricool:<id>`-Zeilen ohne öffentliche Adresse den Planer (`publicationDate`; Token aus Env/
+  `/tmp/metricool.env`, Kanarienvögel 5/5): Termin in der Zukunft = «nächster geplant in N h», die Lücke zählt ab dem letzten veröffentlichten Post; ohne
+  Planer-Antwort Zusatz «Planungszeit». Live 04:40 UTC: `REEL-KADENZ: IG/FB 15.3 h (Takt 8 h) · TikTok 15.5 h · nächster geplant in 3.4 h · YouTube 26.5 h · nächster geplant in 3.4 h`
+  — ehrlicher als «0.3 h».
+- **`meta_reel_post.mjs` (Plan Punkt 23):** bei Container-Status ERROR jetzt bis zu 3 Minuten alle 30 s erneut lesen; FINISHED → Publish, erst ein ERROR nach
+  3 Minuten gilt (mit `status`-Grund im Log). Vorher nur eine Nachfrage nach 8 s. `node --check` ok. Kein Post ausgelöst.
+- **IG/FB-Kadenz gemessen (reels_seed.csv + /tmp/social_autopilot.log):** letzte 9 Abstände 8.6/8.1/16.9/8.1/9.2/8.4/8.2/10.1/10.0 h (Mittel 9.7 h),
+  **seit dem letzten IG/FB-Reel (04.10. 13:10 UTC) 15.3 h**; seit 02:28 UTC alle 15 min «Kandidat übersprungen» (Jury), Statuszähler: jury-skip 172,
+  ready 6. Engpass ist die Jury-Quote bei den verbliebenen Kandidaten, nicht der Poster; Plan Punkt 23 bleibt offen (≤ 8 h über 24 h noch nicht erreicht).

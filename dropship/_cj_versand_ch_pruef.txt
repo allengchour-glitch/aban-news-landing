@@ -3964,3 +3964,14 @@ mary-jane-ballerina-dolce-lack-mit-riemchen	2606060538441636200	16	11.10	ok	land
 mule-sandalette-nodo-drapiert-spitze-form	2606081039011614500	16	10.55	ok	landeseite
 herren-sneaker-marco-leder-optik-retro-trainer	2606040818271637600	16	15.92	ok	landeseite
 herren-strickhemd-amalfi-ajour-knit-camp-kragen	2606050830561607600	16	8.11	ok	landeseite
+herren-slip-on-sail-canvas-leichte-sohle	2606040905291637500	16	17.66	ok	landeseite
+herren-slides-porto-cross-strap-wildleder-optik	2606080552381627100	16	11.23	ok	landeseite
+herren-set-costa-kapuzen-shirt-jogger	2606080048411607200	16	10.96	ok	landeseite
+leinen-set-lino-weste-weite-hose	2606080551011636700	16	9.47	ok	landeseite
+zirkonia-kette-stella-kleeblatt-anhanger-silber-optik	2606080646311627500	16	4.34	ok	landeseite
+tennis-kleid-match-plissee-integrierte-shorts	2606080715391631700	16	8.33	ok	landeseite
+statement-ohrringe-onyx-geometrisch-schwarz	2063806856826744833	16	4.47	ok	landeseite
+stiletto-sandalette-gala-violett-knochelriemen	2606020653131601700	16	13.76	ok	landeseite
+gua-sha-set-jade-massage-tool-rosehip-ol	2055199771003097089	0	-	KEINE CH-Option → DRAFT	landeseite
+titan-schneidebrett-chef-food-grade-antibakteriell	2606050539191608800	16	19.12	ok	landeseite
+strickblumen-strauss-fleur-handgestrickt-ewig	2606050248571608200	16	10.95	ok	landeseite
