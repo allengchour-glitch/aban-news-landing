@@ -3773,3 +3773,5 @@ damen-langarmhemd-mit-reverskragen-637700	2602260115231638000	16	7.71	ok	landese
 armellose-strickweste-mit-rundhalsausschnitt-633100	2602250949281633500	16	6.33	ok	landeseite
 chiffon-oberteil-mit-kragen-638400	2602250940061638800	16	6.33	ok	landeseite
 duschvorhanghaken-mit-schleifen-aus-harz-601000	2506240956401601200	16	7.87	ok	landeseite
+damen-halterneck-shirt-mit-langen-armeln-632500	2602250920111632800	16	6.33	ok	landeseite
+flaschen-aufbewahrungstasche-fur-outdoor-612100	2506200138001612400	16	5.96	ok	landeseite
