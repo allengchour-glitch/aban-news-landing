@@ -1,18 +1,26 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 05.10. 03:45 UTC — Entscheid: «XMAS25 — 25 % Rabatt im Dezember» auf der Seite weihnachtsgeschenke-last-minute (~1 Min)
-> GEMESSEN (Admin-API, 05.10. 03:35 UTC): **Es gibt keinen Rabattcode XMAS25 im Shop** (`codeDiscountNodes` code:XMAS25 → 0 Treffer;
-> 49 aktive Codes, höchster Satz 15 %). Die veröffentlichte Seite verspricht ihn trotzdem. Seit 02.10. gilt deine 15-%-Reserve
-> (`preis_verlustschutz` RABATT 0.15, Codes > 15 % deaktiviert). Ich habe die Zeile NICHT geändert, weil 25 % ein Preis-Entscheid ist.
+## 🆕 05.10. 06:35 UTC — Entscheid: terminierte Rabattcodes über deiner 15-%-Reserve (Black Friday / Weihnachten / Silvester) (~1 Min)
+> ⚠️ KORREKTUR meiner Meldung von 03:45: Ich hatte «kein Rabattcode XMAS25 im Shop» gemeldet — das war eine FEHLMESSUNG
+> (die Abfrage `code:XMAS25` filtert nicht, sie gab alle 109 Codes zurück). GEMESSEN 05.10. 06:10 UTC mit `codeDiscountNodes(query:"XMAS25")`:
+> **XMAS25 existiert** — 25 %, Status TERMINIERT (SCHEDULED) für 01.12.–31.12.2026, ohne Nutzungslimit, angelegt am 21.05.2026.
+> Die Seite weihnachtsgeschenke-last-minute («XMAS25 — 25 % Rabatt im Dezember») stimmt also mit dem Shop überein.
+>
+> Dazu gemessen (`status:scheduled` → 12 Codes, 11 davon über 15 %): deine Deaktivierung vom 02.10. traf nur die AKTIVEN Codes
+> (51 aktiv, höchster Satz 15 %). Diese elf schalten sich von selbst ein:
+> GIFT2026 20 % (01.11.–31.12.) · BLACKFRIDAY2026 40 % (25.–30.11.) · BLACKFRIDAY30 30 % (27.11.–01.12.) · BLACKFRIDAY40 40 % (27.–30.11.) ·
+> BLACK30 30 % (27.–30.11.) · CYBER25 25 % (30.11.–02.12.) · CYBER30 30 % (01.–02.12.) · XMAS25 25 % (01.–31.12.) · XMAS30 30 % (01.–26.12.) ·
+> XMAS20 20 % (01.–24.12.) · SILVESTER25 25 % (26.12.–02.01.). Nur NEWYEAR15 (15 %) liegt in der Reserve.
+> Die Preise stehen seit 02.10. auf dem 15-%-Boden: bei 25–40 % Rabatt verkauft ein Teil der Ware unter Einstand.
+> Ich habe NICHTS geändert — das ist dein Preis-Entscheid. Die Ampel zeigt bis dahin täglich «RABATT-TERMINE ℹ️: 11 …».
 
 Drei Wege, ein Wort genügt:
-- **«xmas 15»** → ich schreibe die Zeile auf «XMAS15 — 15 % Rabatt im Dezember» und lege den Code XMAS15 (15 %, 01.–24.12.2026,
-  einmal je Kundin) per API an, lese ihn zurück.
-- **«xmas raus»** → ich streiche die Zeile; die Seite behält «Gratis Versand ab CHF 50».
-- **«xmas 25»** → du legst XMAS25 (25 %) selbst an (Shopify → Rabatte); ich prüfe dann den Verlust-Wächter je Produkt, denn 25 % liegt
-  über der Reserve und frisst bei Ware mit knapper Marge den Gewinn.
-
-
+- **«termine 15»** → ich setze alle elf auf 15 % (Namen/Codes/Zeiträume bleiben, Ledger mit Altwerten zum Zurückdrehen);
+  die Seite weihnachtsgeschenke-last-minute bekommt «XMAS25 — 15 % Rabatt im Dezember» … oder sauberer: Code XMAS15 neu, XMAS25 deaktiviert.
+- **«termine raus»** → ich deaktiviere die elf (wie am 02.10., Liste zum Wiedereinschalten) und streiche die XMAS25-Zeile auf der Seite;
+  bleibt «Gratis Versand ab CHF 50» und der automatische Bündelrabatt 10 %.
+- **«termine behalten»** → alles bleibt; ich lasse dann `preis_verlustschutz` mit RABATT=0.40 trocken laufen und melde dir, wie viele
+  Produkte bei Black Friday 40 % unter Einstand gingen (Zahl, keine Änderung), damit du die Codes ggf. auf Kollektionen einschränkst.
 
 ## 🆕 02.10. 22:00 UTC — PC: alte Tagesaufgabe «LuxeMarketing» entschärfen (~2 Min, am PC)
 > GEMESSEN: Die Windows-Aufgabe «LuxeMarketing» (täglich 10:00) startet `enrich_apparel_descriptions.mjs` von dem alten

@@ -4120,3 +4120,9 @@ cluster-wimpern-volumen-30d-40d-613000	2606240401351613600	3	5.69	ok	landeseite
 cluster-wimpern-glue-free-80-stuck-986626	2069310546678038529	0	-	KEINE CH-Option → DRAFT	landeseite
 magnetische-wimpern-natural-mit-clip-617100	2606160548171617700	7	6.09	ok	landeseite
 selbstklebende-3d-wimpern-wiederverwendbar-941570	2059122034237296641	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetische-wimpern-set-naturlich-614200	2605220147501614800	7	5.49	ok	landeseite
+led-projektor-ambiente-stimmungslicht-628800	2605160525311629500	16	12.81	ok	landeseite
+sonnenuntergang-projektor-sunset-stimmungslich-610600	2604230836521611200	6	12.30	ok	landeseite
+kabellose-kopfhorer-airbeat-bluetooth-tws-600300	2605040350411600900	7	6.98	ok	landeseite
+kabellose-kopfhorer-soundpods-bluetooth-tws-617900	2604280815431618600	7	6.37	ok	landeseite
+kabellose-kopfhorer-bassbuds-bluetooth-tws-637200	2604190551511637700	7	12.44	ok	landeseite
