@@ -3610,3 +3610,5 @@ weihnachts-loungewear-fur-die-ganze-familie-604200	2512260959571604400	16	10.29	
 herren-sportschuhe-mit-breiter-zehenpartie-603700	2410030245061604000	16	11.10	ok	landeseite
 smartuhr-mit-multifunktionsarmband-und-kopfhor-519be8	-	-	-	unklar keine CJ-SKU	landeseite
 belodi-partikel-kinder-bauklotze-445696	1600760006771748864	16	11.60	ok	landeseite
+tragbares-usb-haarentfernungsgerat-630000	2603200720211630400	7	6.66	ok	landeseite
+freizeitschuhe-fur-kinder-mit-sternenmuster-118592	1368514978428096512	16	8.11	ok	landeseite
