@@ -3633,3 +3633,5 @@ faltbare-yogamatte-mit-handyhalter-434432	1452452488316850176	7	12.30	ok	landese
 plusch-sofauberwurf-fur-modulare-sofas-604700	2512240057331605000	16	9.61	ok	landeseite
 hundegeschirr-aus-oxford-stoff-740352	1608634059616432128	16	6.77	ok	landeseite
 metall-uhrenarmband-mit-strasssteinen-221184	1679367945044107264	16	5.41	ok	landeseite
+smartwatch-armband-mit-perlen-398208	1677485872058478592	16	5.12	ok	landeseite
+f64-smart-armbanduhr-mit-bluetooth-318912	1662721478682484736	7	5.81	ok	landeseite
