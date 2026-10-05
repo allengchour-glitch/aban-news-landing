@@ -4590,3 +4590,9 @@ usb-led-stirnlampe-mit-4-modi-086530	2013093743072796674	0	-	KEINE CH-Option →
 kabelloses-fernbedienbares-velo-rucklicht-633400	2601150510401633600	7	8.28	ok	landeseite
 pedal-widerstandsband-mit-4-tubes-389761	2070061789840801793	0	-	KEINE CH-Option → DRAFT	landeseite
 pilates-bar-set-mit-6-widerstandsbandern-488578	2062008182989094913	0	-	KEINE CH-Option → DRAFT	landeseite
+rechteckiger-pool-fur-outdoor-wildnis-608700	2606020641011609300	16	35.44	ok	landeseite
+bluetooth-grip-ring-handtrainer-128322	2061801375326625793	16	5.81	ok	landeseite
+handliche-isoliertasche-fur-unterwegs-619900	2607010921471610600	16	10.83	ok	landeseite
+nussbaumfarbenes-massivholz-tablett-639100	2606300907501639800	16	8.11	ok	landeseite
+magnetischer-brillenhalter-fur-sonnenblende-603300	2606300525071604000	7	7.39	ok	landeseite
+urne-fur-haustiere-234434	2071813428165509121	16	4.71	ok	landeseite
