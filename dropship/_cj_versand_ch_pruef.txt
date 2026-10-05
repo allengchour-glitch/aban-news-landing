@@ -4344,3 +4344,13 @@ leuchtende-halloween-party-maske-f9b978	44395324-0E9F-4272-BB95-3586CD25A3FC	0	-
 halloween-kostuem-fuer-hunde-479706	1434348856455335936	16	7.13	ok	landeseite
 nordische-fransen-strickdecke-8c46da	14FB87E7-99B5-441B-BE80-318EFEC409B5	16	15.17	ok	landeseite
 usb-aroma-diffuser-mit-7-led-farben-1b3dcc	1F15F0EF-BE85-44C8-800B-4235B4767550	16	7.71	ok	landeseite
+usb-heizkissen-mit-graphen-technologie-acad9f	1AF8275D-4C87-45D0-A976-DDFA76A12260	7	8.11	ok	landeseite
+retro-handwarmer-powerbank-5000-mah-97ddfa	3E4CADA3-3C0B-454B-B2A2-B304C513D734	0	-	KEINE CH-Option → DRAFT	landeseite
+u-formige-warmflasche-fur-nacken-und-schultern-bd844c	85082D64-8C4E-481F-8C7A-D42E16B50E01	16	9.47	ok	landeseite
+wassertropfen-powerbank-handwarmer-f5f25e	0A102A40-A703-4623-9EF6-D00E7B6836B7	0	-	KEINE CH-Option → DRAFT	landeseite
+spot-uv-sterilisator-tragbar-a47399	5776F4CE-4663-4BE5-90B8-E542FD800EFB	7	7.51	ok	landeseite
+silikon-gesichtsreinigungsburste-0787a2	0B957882-C728-4BD5-BBD2-B76D058F1E79	7	7.20	ok	landeseite
+futterspender-fur-hunde-bc09f6	1717888510599901184	16	17.94	ok	landeseite
+hunde-lederjacke-mit-adler-stickerei-99216d	2F7684CE-C43A-4884-82CA-5A9FAB12AF83	16	7.43	ok	landeseite
+weinoffner-mit-luftdruckpumpe-198db1	11D37742-F132-4162-8E2A-FB4028C104E5	1	6.58	ok	landeseite
+fressnapf-aus-keramik-fur-haustiere-a94de9	7040D2BC-561E-4F29-A7D1-69E5F5CF15E2	16	18.40	ok	landeseite
