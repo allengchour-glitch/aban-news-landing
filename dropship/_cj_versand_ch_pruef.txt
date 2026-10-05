@@ -4388,3 +4388,10 @@ anti-schling-futternapf-fur-hunde-und-katzen-138c12	4647819F-5F5B-4612-A73D-DA19
 wasserspender-fur-haustiere-45ff2e	000AA5F1-1B5C-4F76-B53D-0B4539A1EE56	16	11.86	ok	landeseite
 futterspender-mit-schussel-fur-haustiere-9d4c65	15A4354E-A101-46F6-8482-83F3A3718618	16	11.00	ok	landeseite
 anti-schlingnapf-fur-haustiere-c2cb1d	166BB143-1C46-4989-B348-8D9BC79150EC	16	11.11	ok	landeseite
+tofu-katzenstreu-5b2cdc	98DC440C-FE8D-4AF8-84A8-FF2CAE244EF9	0	-	KEINE CH-Option → DRAFT	landeseite
+futterspielzeug-fur-hunde-cc0e70	832524E9-924C-4D72-94AE-B975A88DD3F5	16	18.24	ok	landeseite
+hunde-snackspender-fur-training-01f951	1787655931543695360	16	6.85	ok	landeseite
+automatischer-futterspender-wlan-806a87	22130462-A33B-4A0B-B686-D49CE061C63E	3	47.70	ok	landeseite
+anti-schlingnapf-fur-hunde-e2a976	5179970D-0176-45C8-82A7-EF91DCFE3347	16	8.25	ok	landeseite
+automatischer-futterautomat-fur-haustiere-0bbe57	1EC1A931-EA9C-4E27-99E9-E643BCF24A42	7	33.41	ok	landeseite
+fruchtschneider-mit-basis-540ad4	C57ECD2C-8012-4DDC-8CAC-F61570839AA7	16	10.29	ok	landeseite
