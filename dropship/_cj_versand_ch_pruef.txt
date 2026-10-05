@@ -3878,3 +3878,6 @@ baby-sneaker-aus-mesh-fur-madchen-und-jungen-987904	1379711902468411392	16	7.17	
 pu-leder-brusttasche-mit-reissverschluss-215040	1381840195653079040	16	11.00	ok	landeseite
 lala-pig-lauflernschuhe-fur-kinder-048960	1378545407109500928	16	7.99	ok	landeseite
 atmungsaktive-kleinkinderschuhe-mit-klettversc-508800	1378263229368766464	7	10.18	ok	landeseite
+schultertasche-nylon-schwarz-8-zoll-020544	1381818381119918080	16	11.84	ok	landeseite
+16-in-1-gemuseschneider-multi-hobel-wurfler-slicer-mit-auffangbox	2053736494735609857	0	-	KEINE CH-Option → DRAFT	landeseite
+elektrischer-krallenschleifer-fur-hund-katze-leise-usb-akku-mit-led	2605260741111613700	7	8.25	ok	landeseite
