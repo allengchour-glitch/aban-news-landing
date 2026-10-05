@@ -960,6 +960,20 @@ while true; do
       [ -f "$REPO/automation/kinder_google_pfad.py" ] && ( cd "$REPO" && SCHARF=1 timeout 600 python3 automation/kinder_google_pfad.py >> "$KW" 2>&1 )
     fi
   fi
+  # GOOGLE-KATEGORIE-UMZUG (05.10.2026, Verbesserungsrunde): grobe Sammelzweige (Fitness/Decor/Pet/Kitchen/Tools) mit eindeutigem
+  # Warenwort in den richtigen Zweig (Velohelm → Bicycle Helmets, Nackenkissen → Bedding > Pillows …); Fein-Stufe darf nur
+  # innerhalb verfeinern, KI-Stufe ruht ohne Guthaben. Täglich, eigener frischer Bulk-Export, Kanarienvögel im Skript (Abbruch).
+  GKU=/tmp/google_kategorie_umzug.log
+  if [ -f "$REPO/automation/google_kategorie_umzug.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GKU" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GKU"; then
+      touch "$GKU"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_kategorie_umzug.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          SCHARF=1 timeout 2400 python3 automation/google_kategorie_umzug.py 2>&1 | grep -v '^     '" >> "$GKU" 2>&1 9>&- & )
+    elif [ -s "$GKU" ]; then
+      grep '^FERTIG' "$GKU" | tail -1 | sed "s/^/$(date -u +%H:%M) Google-Umzug: /"
+    fi
+  fi
   # GOOGLE-FEIN-KI (02.10.2026, Betreiber «google push und coole fein kategorien»): ~7'100 Google-Kanal-Produkte in groben
   # Zweigen → Gemini + ChatGPT wählen den Unterpfad, geschrieben nur bei Einigkeit. 2 Arbeiter (4 = ChatGPT-429), flock je Anteil,
   # bis die Fertig-Marke dropship/_google_fein_ki_fertig_KvonN.txt steht (übersteht Container-Neustarts über das Ledger).

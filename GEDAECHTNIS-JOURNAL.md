@@ -35,6 +35,14 @@
 
 
 
+## 2026-10-05 08:55 · 🗂️ Verbesserungsrunde: Google-Kategorie-Umzug aus groben Sammelzweigen (653)
+Neuimporte 86 % grob; Fein-Tageslauf «5'319 bleiben grob», KI-Stufe ruht ohne Guthaben. Häufigste Restwörter zeigten: die Ware steht im
+FALSCHEN Zweig (Velohelm/Fahrradlicht/Leggings unter Fitness, Nackenkissen/Bettwäsche/Duschvorhang unter Decor) — die Fein-Stufe darf nur
+innerhalb verfeinern und kann das nie lösen. `google_kategorie_umzug.py`: nur aus benannten Quellzweigen, eindeutiges Warenwort,
+Taxonomie-Prüfung, 29 Kanarienvögel (aus der Stichprobe: Motorradhelm, Helm-Brille, Tischdecke, Küchenhandtuch, Yoga-Handtuch,
+Auto-Nackenkissen); scharf 653/0 Fehler, Aufseher täglich. **Lehre:** Wenn eine Präfix-Regel einen Rest hinterlässt, zuerst fragen, ob
+der Rest im falschen Zweig steht — dann hilft kein feineres Raster, nur ein Umzug. → `dropship/GOOGLE-KATEGORIE-UMZUG-2026-10-05.md`
+
 ## 2026-10-05 09:00 · 📈 «das geht mehr verbesserung mit semrush» + «position tracking»: Umsetzung 2
 GEMESSEN: 559 Begriffe Top 100, 0 Top 10, Verkehr 0; Konkurrenten-Bericht 1'200 Einheiten wertlos (1 gemeinsamer Begriff je Domain);
 Semrush-DATENBANK frischt kleine Begriffe nur alle paar Wochen auf (Timestamps 31.07.–27.09., Position = Vorposition 80/80) → zur
