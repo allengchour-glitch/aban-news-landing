@@ -35,6 +35,20 @@
 
 
 
+## 2026-10-05 11:00 · 📈 «fix mal weiter semrush» / «keyword mehr»: Runde 3 + Keyword-Ernte, Semrush-Konto LEER, Fable-Limit
+Runde 3 (12 Agenten, Prüfer je Bereich): 8 neue Kollektionen (Etageren, USB-Sticks, Wanduhren, Woks, Abendkleider, Lunchboxen,
+Winterschuhe, Bauchtaschen; 32'100 Suchen/Mt) + 4 Seiten auf Stiefeletten/Nachttischlampe/Haarglätter/VR-Brille; Prüfer fand einen
+PS4-Jailbreak-Dongle als «USB-Stick» (Platz 40, ausserhalb des 24er-Kontaktbogens) → neue Regel `kopierschutz-umgehung-konsole` in
+`heikel_zweck.json` (Importer + Wächter, Beschreibung statt Titel), 2 DRAFT. Nacharbeit: Teppiche ohne Holz/Diatomit, interne_links mit
+Wortgrenzen (16 → 11 Ziele < 3 Links), Entwurf-Ersatz 4 Redirects auf gleichwertige Produkte, Platz 41–100: 40 Seiten, Nachtlicht-
+Kollektion von 42 Fremdartikeln befreit (Tag-Regel). Keyword-Ernte: Google-CH-Vorschläge 6'351 neue Begriffe gratis
+(`automation/google_suggest/`). **Semrush: `api_units` in der Antwort ist der KONTOSTAND** (700→400 über 6 Aufrufe), danach «ERROR 132
+API UNITS BALANCE IS ZERO» → Nachmessung 08.10. unmöglich; Archiv `dropship/semrush/ARCHIV.md`. Betreiber fragte «UI-Export mit Hetzner»
+→ abgelehnt: Hetzner-Profil nicht bei Semrush angemeldet, UI-Automatisierung umginge das leere API-Guthaben (Nutzungsbedingungen);
+manuelle Exporte in Drive vorgeschlagen. Fable-Limit erreicht → Agenten ohne Modellvorgabe (Sitzungsmodell) mit Cache-Wiederaufnahme
+(nur Optionen der UNFERTIGEN Agenten ändern, sonst rechnet der Cache alles neu). Eigene Nachkorrektur: «rock» im Abendkleider-BAN hätte
+2 echte Abendkleid-Sets entfernt → nur ohne «abendkleid» im Titel; Kanarienvögel 169/169, stündlich im Aufseher.
+
 ## 2026-10-05 08:55 · 🗂️ Verbesserungsrunde: Google-Kategorie-Umzug aus groben Sammelzweigen (653)
 Neuimporte 86 % grob; Fein-Tageslauf «5'319 bleiben grob», KI-Stufe ruht ohne Guthaben. Häufigste Restwörter zeigten: die Ware steht im
 FALSCHEN Zweig (Velohelm/Fahrradlicht/Leggings unter Fitness, Nackenkissen/Bettwäsche/Duschvorhang unter Decor) — die Fein-Stufe darf nur

@@ -349,10 +349,10 @@ CFG.update({
         tag="kat-abendkleider", suche=["abendkleid", "cocktailkleid", "ballkleid", "partykleid"], kw="abendkleid", volumen=3600, kd=29,
         echt=R(r"abendkleid|cocktailkleid|ballkleid|galakleid|abendrobe|partykleid"),
         ban=R(HAUS + r"|kinder|m(ä|ae)dchen|puppen|barbie|baby|kleinkind|braut|hochzeitskleid|hunde|katzen|aufbewahrung|"
-              r"kleiderb(ü|ue)gel|kleidersack|kleiderh(ü|ue)lle|schnittmuster"),
+              r"kleiderb(ü|ue)gel|kleidersack|kleiderh(ü|ue)lle|schnittmuster|sch(ü|ue)rze|^(?!.*abendkleid).*\brock\b|tüllrock"),
         typen={"Damenmode", "Mode", "Kleid", "Kleider", "Abendkleid"} | SAMMEL,
-        ja=["Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz", "Kurzarm-Cocktailkleid mit Puffärmeln", "Rundhals-Glitzer-Partykleid"],
-        nein=["Abendkleid für Mädchen mit Tüll", "Kleidersack für Abendkleider", "Barbie-Abendkleid Puppenkleid", "Brautkleid Abendkleid Weiss"],
+        ja=["Trägerloses Fishtail Abendkleid-Set mit Mesh-Rock", "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz", "Kurzarm-Cocktailkleid mit Puffärmeln", "Rundhals-Glitzer-Partykleid"],
+        nein=["Tüll-Schürze für Abendkleider", "Tüllrock lang schwarz", "Abendkleid für Mädchen mit Tüll", "Kleidersack für Abendkleider", "Barbie-Abendkleid Puppenkleid", "Brautkleid Abendkleid Weiss"],
         titel="Abendkleider & Cocktailkleider", sort="BEST_SELLING",
         seo_titel="Abendkleid kaufen: lang, Satin & Spitze | LuxeStyle",
         seo_text="Abendkleider und Cocktailkleider für Gala, Hochzeit und Weihnachtsfeier: lange Satin-Kleider mit Schlitz, "
@@ -420,11 +420,11 @@ CFG.update({
         tag="kat-bauchtaschen", suche=["bauchtasche", "gürteltasche", "hüfttasche", "belt bag"], kw="bauchtasche", volumen=2900, kd=16,
         echt=R(r"bauchtasche|g(ü|ue)rteltasche|h(ü|ue)fttasche|bum.?bag|belt.?bag|hip.?bag|fanny.?pack|bauch-?g(ü|ue)rtel-?tasche|laufg(ü|ue)rtel"),
         ban=R(HAUS + r"|hunde|katzen|haustier|puppen|hose\b|hosen\b|jacke|shirt|kleid|mantel|weste\b|overall|mit bauchtasche|"
-              r"mit g(ü|ue)rteltasche|hoodie|pullover|tragetuch|babytrage|trail|chest rig|coiffeur|werkzeug|holster|kellner"),
+              r"mit g(ü|ue)rteltasche|hoodie|pullover|tragetuch|babytrage|trail|chest rig|coiffeur|werkzeug|holster|kellner|heat.?gun|hei(ss|ß)luft"),
         typen={"Taschen", "Accessoires", "Aufbewahrung & Organizer", "Sport & Outdoor", "Herrenmode", "Damenmode", "Tasche"} | SAMMEL,
         ja=["Leder-Bauchtasche für Herren, robust", "Wasserdichte Crossbody-Gürteltasche für Herren", "Retro Hüfttasche aus Rindsleder"],
         nein=["Hoodie mit Bauchtasche", "Taktische Brusttasche für Trail Running", "Leder-Gürteltasche für Coiffeur-Werkzeuge",
-              "Hunde-Gürteltasche für Leckerli", "Daunenweste mit Gürteltasche"],
+              "Hunde-Gürteltasche für Leckerli", "Hitzebeständiger Heat Gun mit Leder-Bauchtasche", "Daunenweste mit Gürteltasche"],
         titel="Bauchtaschen & Gürteltaschen", sort="BEST_SELLING",
         seo_titel="Bauchtasche & Gürteltasche kaufen | LuxeStyle",
         seo_text="Bauchtaschen, Gürteltaschen und Hüfttaschen aus Leder, Canvas und Nylon: wasserdicht für Sport, Retro aus "
@@ -438,6 +438,46 @@ CFG.update({
              "</strong> taktische Gürteltaschen mit mehreren Fächern, Retro-Modelle aus Segeltuch.</li>\n</ul>\n<h2>Worauf du "
              "achten kannst</h2>\n<p>Die Gurtlänge und die Masse stehen auf jeder Produktseite – für ein grosses Handy braucht "
              "es ein Hauptfach von mindestens 17 cm. Leder wird mit der Zeit weicher, Nylon bleibt leicht und regenfest.</p>"),
+})
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Nachbesserung «platz41-100» (05.10.2026 ~10:30 UTC, Prüferbefund): /collections/licht-nachtlicht-projektor (Ziel des neuen
+# 301 für «sternenhimmel projektor») lief mit Titel-ODER-Regeln. «Sternenhimmel» war am Vormittag schon verengt, aber
+# «Nachtlicht» zog weiter fachfremde Ware: GEMESSEN collectionByHandle products(first:250) = 148 Produkte / 110 ACTIVE,
+# darunter 4 Armbanduhren «mit Nachtlicht» (Leucht-Zeiger), Hunde-Rollleine, Hundegurt, zwei Velolichter, Schall-Zahnbürste,
+# RC-Flugsaurier, Feuchttuchwärmer, zwei Ventilatoren, Lautsprecher und vier Ladegeräte «mit Nachtlicht». Regel hier:
+# «X mit Nachtlicht», wenn X ein anderes Gerät ist = Fremdware; «Nachtlicht mit X» = Leuchte zuerst, bleibt.
+# Luftbefeuchter/Diffusoren mit Nachtlicht bleiben bewusst drin (Stimmungslicht-Geräte, werden so gesucht und verkauft).
+# Bestehende Kollektion (sechs Kanäle schon publiziert, gemessen) → neue_kollektionen_anlegen.py meldet nur «existiert».
+CFG.update({
+    "licht-nachtlicht-projektor": dict(
+        tag="kat-nachtlicht-projektor",
+        suche=["nachtlicht", "sternenhimmel", "sternenprojektor", "projektionslampe", "galaxie-projektor"],
+        kw="sternenhimmel projektor", volumen=1600, kd=None,
+        echt=R(r"nachtlicht|sternenhimmel[ -]?projekt|sternenprojektor|galaxie-?projektor|projektionslampe"),
+        ban=R(HAUS + r"|armbanduhr|quarzuhr|herrenuhr|damenuhr|\buhr mit nachtlicht|rollleine|hundeleine|\bleine\b|hundegurt|"
+              r"halsband|\bvelo\b|fahrrad|zahnb(ü|ue)rste|\brc\b|ferngesteuert|feuchttuch|ventilator mit|handventilator|"
+              r"lautsprecher mit|speaker mit nachtlicht|ladeger(ä|ae)t mit|charger mit"),
+        typen={"Beleuchtung", "Elektronik", "Wohnen & Deko", "Wellness & Aromatherapie", "Küche & Bar", "Partydeko & Ballone",
+               "Spass-Elektronik", "Basteln & DIY", "Werkzeug & Heimwerken", "Aufbewahrung & Organizer", "Haustierbedarf",
+               "Beauty-Tools", "Beamer", "Smart Home", "Baby & Kleinkind", "Haushalt & Wohnen"} | SAMMEL,
+        ja=["Kleine Möwe LED-Nachtlicht", "Kleiner Nachtlicht-Luftbefeuchter mit Spray", "Nachtlicht mit kabellosem Ladegerät",
+            "Nachtlicht mit Bluetooth Speaker & Wecker", "Sternenhimmel Projektor mit Musik und App", "Farbprojektionslampe",
+            "Weihnachts-Sternenhimmel-Projektions-Nachtlicht", "Pilz Luftbefeuchter mit Ventilator & Nachtlicht",
+            "LED-Tintenfisch Nachtlicht", "USB Weltraum Kapsel Sternenprojektor"],
+        nein=["Herren Business Quarzuhr mit Nachtlicht", "Holzarmbanduhr mit grossem Zifferblatt und Nachtlicht",
+              "Multifunktionale Herrenuhr mit Nachtlicht", "Männer Armbanduhr mit Nachtlicht", "Hunde-Rollleine mit Nachtlicht",
+              "Hundegurt mit LED-Nachtlicht", "Velo-Nachtlicht mit Helmhalterung", "Fahrrad-Nachtlicht mit USB-Ladung",
+              "Magnetische Schwebe-Zahnbürste mit Nachtlicht", "RC Pterosaurus Nachtlicht", "Feuchttuchwärmer mit Nachtlicht",
+              "Kabelloser Ventilator mit Nachtlicht", "Mini Handventilator mit LED Nachtlicht",
+              "Bluetooth Lautsprecher mit Nachtlicht & Uhr", "3-in-1 Wireless Charger mit Nachtlicht",
+              "5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht", "Sternenhimmel Nägel Gel-Set", "Sternenhimmel Hoodie"],
+        titel="Nachtlicht & Projektoren", sort="CREATED_DESC",
+        seo_titel="Nachtlichter & Sternenhimmel-Projektoren kaufen | LuxeStyle",
+        seo_text="Sternenhimmel Projektor und Nachtlicht für Kinder- und Schlafzimmer: Sterne an der Decke, teils mit Musik. "
+                 "Gratisversand ab CHF 50, TWINT & Klarna.",
+        text=""),
 })
 
 

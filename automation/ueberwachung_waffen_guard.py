@@ -258,7 +258,7 @@ def main():
         print(f"  ✔ {pid} {', '.join(getan)} — {titel[:46]}", flush=True)
         time.sleep(0.3)
     print(f"\nFERTIG: {raus} aus dem Google-Kanal · {gedraftet} auf DRAFT "
-          f"(nach Schweizer Waffenrecht verbotene Ware, bleibt im Katalog und ist "
+          f"(nach Schweizer Recht verbotene Ware — Waffengesetz bzw. Art. 39a URG —, bleibt im Katalog und ist "
           f"jederzeit wieder freischaltbar)", flush=True)
 
 
