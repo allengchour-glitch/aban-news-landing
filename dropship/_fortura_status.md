@@ -51,7 +51,7 @@ Verlust dieser Art). Danach genügt: `bash automation/fortura_fetch_feed.sh && /
 automation/fortura_bestand_sync.mjs`.
 
 ## OFFEN
-- [ ] XML-Bestell-Anbindung (Opacc.ORDERS nach `/home/ORDERS`, DESADV-Rücklauf aus `/home/DESADV`)
+- [~] **05.10.: Stufe 1 live** (`automation/fortura_bestell_engine.py`: erkennen + Paket + Ampel-Warnung bis `--bestellt`). Stufe 2 XML-Bestell-Anbindung (Opacc.ORDERS nach `/home/ORDERS`, DESADV-Rücklauf aus `/home/DESADV`) wartet auf Forturas Muster (Gmail-Entwurf 05.10.)
       für Auto-Fulfillment. Bis dahin: bei Fortura-Verkauf manuell im Fortura-Portal bestellen.
 - Kundennr 544341, Creds in /tmp/fortura_env.sh (600, NICHT im Repo). Setup CHF 200 gutgeschrieben,
   DPD 9.50/Paket, netto 10 Tage, Kreditlimit 2000. ⚠️ Logistikfee ab 2027 (Info Aug 2026).
