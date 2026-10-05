@@ -4021,3 +4021,4 @@ damen-komfort-sandalen-estate-elastik-riemen	2606120821561630400	16	11.37	ok	lan
 herren-high-top-sneaker-brooklyn-mesh-atmungsaktiv	2606110809431621300	16	14.13	ok	landeseite
 herren-leder-sandalen-adriano-vollnarbenleder	2606100911071625200	16	9.20	ok	landeseite
 herren-sport-sneaker-velocita-mesh-wide-toe	2606100634171622000	16	12.44	ok	landeseite
+herren-trainingsschuhe-forza-gym-weightlifting	2606100712381625000	16	16.16	ok	landeseite
