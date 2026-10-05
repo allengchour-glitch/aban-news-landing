@@ -35,6 +35,14 @@
 
 
 
+## 2026-10-05 17:55 · 💸 EK-Boden 15: 3'703 Produkte ohne einen CJ-Punkt — der Plan nannte das teure Werkzeug
+
+FIX-12H Punkt 15 sah `cj_kosten_backfill.mjs NUR_IDS` vor (≈ 40k CJ-Punkte über Tage); CJ setzte den Tageszähler um 16:00
+nicht zurück (usedToday 106'240 > total 63'387). `kosten_boden15_korrigieren.py` (seit 28.08.) rechnet denselben Fehler aus
+Shopify-EK + Gewicht heraus, braucht 0 Punkte, lief aber nur mit LIMIT 400/Tag. Betreiber «nicht drosseln» → alle 3'703 in
+zwei Läufen, DRY 0 offen, Verlustschutz 0. Aufseher-LIMIT 5'000. **Lehre: Bevor ein Plan-Punkt sein Werkzeug startet,
+`ls automation | grep <klasse>` — oft liegt ein billigerer Weg für dieselbe Klasse schon da.** → `dropship/EK-BODEN15-REST-2026-10-05.md`
+
 ## 2026-10-05 16:45 · ⌚ #1021: Fabrikbestand 20'000 und trotzdem «out of stock» — CJ-Ersatzware
 
 Die 120-h-Frage («Iris melden?») löste der Betreiber mit einem Screenshot: CJ-Ticket T202610040937181221 «Products
@@ -17919,6 +17927,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 📈 **Semrush-Testabo aktiv bis 09.10. (KÜNDIGEN — Erinnerungen 08./09.10. gesetzt): luxestyle.ch 556 Begriffe Top 100, Verkehr ≈ 0; 38 auf Platz 16–30 mit KD 8–25 (ballettschuhe 590/Mt, Platz 29); 478 Suchvolumen zu 350 Kollektionen → `suchvolumen.py`, SEO-Autopilot wählt nach Volumen; ~5'190/50'000 Einheiten.** Daten in `dropship/semrush/` bleiben nach dem Abo → `dropship/semrush/README.md`
 - 2026-10-02 · 🤖 **«werbungen wie soro … tools selber»: 2 der letzten 4 Bestellungen über ChatGPT (#1021, #1018, direkt Produktseite), ChatGPT-Sitzungen 2→7→16/Monat; ChatGPT/Copilot lesen Bing, Shopify hat kein IndexNow → `indexnow_melden.py` täglich (≤ 10k, 30-T-Sperre, Schlüssel CDN + Redirect), 1. Lauf 10'000 HTTP 200; verworfen nach Messung: Titel-Optimierer, Warenkorb-Rückholung (1 Abbruch/30 T), Chatbot/Upsell.** Kaufquelle je Bestellung messen → `dropship/WERBE-TOOLS-SELBST-GEBAUT-2026-10-02.md`
 - 2026-10-02 · 🧾 **«2021 ist bezahlt»: ich las CJ «UNSHIPPED» als unbezahlt — es heisst «bezahlt, wartet auf Versand» (LX1021 bezahlt 30.09. 23:37) → `bestell_ampel.py` schreibt den CJ-Status deutsch aus + Tracking.** Rohstatus nie ungedeutet melden → Journal 02.10.
 - 2026-10-02 · 🔎 **«weiter push überall»: Google 84 → 10 Sitz./Woche; 61/185 Google-Landeseiten (150 T) sind Entwürfe = 57 % der Google-Sitzungen (Dry Bag 82, Rizinus-Set 55), der 301 auf den 10L-Dry-Bag brachte 0 — Google listet nur Kaufbares; CJ-Queue war leer → `google_nachfrage_luecke.py` täglich: tote Google-Seiten mit Nachfrage → generischer CJ-Suchauftrag VORNE (Hausregeln am Titel, Lager-Tags zählen nicht, Marke/eigen/Saison), Erstlauf 8 Aufträge.** Vor dem Draften Ersatz importieren → `dropship/GOOGLE-NACHFRAGE-LUECKE-2026-10-02.md`
