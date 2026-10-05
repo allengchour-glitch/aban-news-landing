@@ -13,7 +13,7 @@ Betreiber: «keyword mehr machen». Das Semrush-Konto ist leer, deshalb gibt es 
    - die SEO-Titel aller Kollektionen,
    - den parallel geschriebenen `_keyword_produkte_2026-10-05.tsv`.
 
-   Ein Doppel gibt es in keiner dieser Quellen.
+   ⚠️ **Berichtigt 05.10. ~11 UTC:** Geprüft war hier nur der Hauptbegriff gegen die Quellen. Die Zusätze im Titel liefen nicht durch die Prüfung, und die Wortfolge wurde nicht beachtet («mikrofon bluetooth» = «bluetooth mikrofon»). Die Vollwort-Prüfung im Abschnitt «Nachbesserung» fand 4 Doppel. Diese sind behoben.
 5. Zahlen im Text: nur «Gratisversand ab CHF 50» und «30 Tage Rückgabe». Es gibt keine Masse, Liter oder 925 aus Produkttiteln. Absätze mit Code WELCOME10 wurden nur dort ersetzt, wo sie die Einleitung selbst waren.
 
 ## Geschrieben (alt → neu SEO-Titel; Ledger `_keyword_kollektionen_2026-10-05.tsv` mit Altwerten für Titel, Meta und das ganze descriptionHtml)
@@ -25,8 +25,8 @@ Betreiber: «keyword mehr machen». Das Semrush-Konto ist leer, deshalb gibt es 
 | sub-bademode | bikini kaufen schweiz | suggest | bikini damen schweiz | Bademode – Bikinis & Badeanzüge | LuxeStyle Schweiz → **Bikini kaufen Schweiz: Bikini-Sets & Badeanzüge | LuxeStyle** |
 | sub-ballerinas | ballerinas schwarz | semrush:260 | ballerinas damen bequem, loafers damen | Ballerinas, Flats & Loafers kaufen | LuxeStyle Schweiz → **Ballerinas schwarz, Flats & Loafers für Damen | LuxeStyle** |
 | sub-ohrringe | ohrstecker silber schweiz | suggest | ohrstecker kaufen silber, ohrringe kaufen schweiz | Ohrringe – Creolen, Ohrstecker & Ohrhänger | LuxeStyle Schweiz → **Ohrstecker Silber, Creolen & Ohrhänger Schweiz | LuxeStyle** |
-| sub-pumps-heels | pumps schwarz | K | pumps damen elegant, pumps damen bequem | Pumps & High Heels kaufen | LuxeStyle Schweiz → **Pumps schwarz & farbig: Stiletto bis Blockabsatz | LuxeStyle** |
-| schuhe-absatz | high heels schwarz | K | high heels damen elegant, high heels damen | High Heels & Pumps | LuxeStyle Schweiz → **High Heels schwarz: Stilettos & Sandaletten | LuxeStyle** |
+| sub-pumps-heels | pumps schwarz | K | pumps damen elegant, pumps damen bequem | Pumps & High Heels kaufen | LuxeStyle Schweiz → ~~Pumps schwarz & farbig: Stiletto bis Blockabsatz~~ → **Pumps schwarz & farbig: Blockabsatz & Mary Janes | LuxeStyle** (Nachbesserung) |
+| schuhe-absatz | high heels schwarz | K | high heels damen elegant, high heels damen | High Heels & Pumps | LuxeStyle Schweiz → ~~High Heels schwarz: Stilettos & Sandaletten~~ → **High Heels schwarz & elegant, Sandaletten | LuxeStyle** (Nachbesserung) |
 | sub-sandalen | sandalen damen bequem | K | sandalen damen mit absatz, sandalen damen elegant | Sandalen kaufen | LuxeStyle Schweiz → **Sandalen Damen bequem, mit Absatz & elegant | LuxeStyle** |
 | midikleider | midikleid elegant | suggest | midikleid damen langarm | Midikleider kaufen | LuxeStyle Schweiz → **Midikleid elegant, festlich & für den Alltag | LuxeStyle** |
 | muetzen-schals | schal damen elegant | K | schal damen winter, mütze damen winter | Mützen, Schals & Stirnbänder kaufen | LuxeStyle Schweiz → **Schal Damen elegant, Mützen & Stirnbänder | LuxeStyle** |
@@ -35,13 +35,13 @@ Betreiber: «keyword mehr machen». Das Semrush-Konto ist leer, deshalb gibt es 
 | jumpsuits-overalls | jumpsuit damen schwarz | suggest | jumpsuit damen sommer, jumpsuit kinder | Jumpsuits & Overalls kaufen | LuxeStyle Schweiz → **Jumpsuit Damen schwarz & farbig, Overalls | LuxeStyle** |
 | westen-gilets | weste herren | suggest | weste herren outdoor, weste herren elegant | Westen & Gilets kaufen | LuxeStyle Schweiz → **Weste Herren: Strick, Outdoor & elegant, Gilets | LuxeStyle** |
 | wimpern-lashes | wimpern extensions | suggest | wimpernverlängerung | Wimpern & Lashes – magnetische & künstliche Wimpern | LuxeStyle CH → **Wimpern Extensions, Cluster & Magnetwimpern | LuxeStyle** |
-| rucksaecke-schule | schulranzen kaufen | suggest | schulranzen mädchen, schulranzen jungen | Schulrucksäcke kaufen | LuxeStyle Schweiz → **Schulranzen & Schulrucksack kaufen | LuxeStyle** |
+| rucksaecke-schule | ~~schulranzen kaufen~~ → **schulrucksack kaufen** | Semrush 02.10.: schulrucksack 2'900/Mt | schulrucksack kinder; «Schulranzen» nur als Nebenwort im Text | Schulrucksäcke kaufen | LuxeStyle Schweiz → ~~Schulranzen & Schulrucksack kaufen~~ → **Schulrucksack kaufen für Kinder & Teens | LuxeStyle** (Nachbesserung) |
 | rucksaecke-sport | wanderrucksack kaufen | suggest | wanderrucksack klein, wanderrucksack herren | Sport- & Wanderrucksäcke kaufen | LuxeStyle Schweiz → **Wanderrucksack kaufen: leicht, klein & gross | LuxeStyle** |
 | sub-trinkflaschen | trinkflasche edelstahl | suggest | thermosflasche kinder, trinkflasche kinder edelstahl | Trinkflaschen & Thermo kaufen | LuxeStyle Schweiz → **Trinkflasche Edelstahl, Thermosflasche & Becher | LuxeStyle** |
 | haengematten | hängematte camping schweiz | suggest | hängematte mit moskitonetz | Hängematte kaufen | LuxeStyle Schweiz → **Hängematte Camping Schweiz: Reise & Moskitonetz | LuxeStyle** |
 | babykleidung | babykleidung junge | semrush:170 | babykleidung mädchen, babykleidung neugeborene | Babykleidung & Kindermode online kaufen | LuxeStyle → **Babykleidung Junge & Mädchen: Strampler & Sets | LuxeStyle** |
 | smartwatches-wearables | smartwatch kinder | K | smartwatch für frauen | Smartwatches & Wearables kaufen | LuxeStyle Schweiz → **Smartwatch Kinder, Damen & Herren, Armbänder | LuxeStyle** |
-| mikrofone | mikrofon bluetooth | suggest | mikrofon gaming | Mikrofone & Streaming-Zubehör kaufen | LuxeStyle Schweiz → **Mikrofon Bluetooth, Karaoke & USB-Mikrofon | LuxeStyle** |
+| mikrofone | ~~mikrofon bluetooth~~ → **mikrofon kaufen** | suggest; Kopfbegriff «mikrofon» 4'400/Mt (Semrush 02.10.) | mikrofon gaming | Mikrofone & Streaming-Zubehör kaufen | LuxeStyle Schweiz → ~~Mikrofon Bluetooth, Karaoke & USB-Mikrofon~~ → **Mikrofon kaufen: Ansteckmikrofon, USB & Karaoke | LuxeStyle** (Nachbesserung) |
 | velo-radsport | fahrradhelm kinder | suggest | fahrradhelm damen | Velo & Radsport kaufen | LuxeStyle Schweiz → **Fahrradhelm Kinder & Erwachsene, Velolicht | LuxeStyle** |
 | fitness-geraete | hanteln für zuhause | suggest | hanteln set | Fitness-Geräte & Home-Gym kaufen | Hanteln, Kettlebells & mehr → **Hanteln für zuhause, Kettlebells & Home-Gym | LuxeStyle** |
 | rc-ferngesteuert | ferngesteuertes auto kaufen | suggest | ferngesteuertes auto schweiz | RC-Autos & Ferngesteuerte Fahrzeuge | LuxeStyle CH → **Ferngesteuertes Auto kaufen: Drift & Stunt | LuxeStyle** |
@@ -52,6 +52,55 @@ Betreiber: «keyword mehr machen». Das Semrush-Konto ist leer, deshalb gibt es 
 | haustier-katze | katzenbett kaufen | suggest | katzenbett flauschig | Katzen-Zubehör – Kratzbäume, Betten, Spielzeug & Katzenklo | LuxeStyle → **Katzenbett kaufen, Katzenspielzeug & Katzenklo | LuxeStyle** |
 | wohnen-bad | handtuchhalter bad | K | badematte rutschfest, handtuchhalter ohne bohren | Badezimmer & Bad-Accessoires | LuxeStyle Schweiz → **Handtuchhalter Bad, Badematten & Duschköpfe | LuxeStyle** |
 | geschirr-servieren | servierplatte kaufen | suggest | servierplatte keramik, servierplatte holz | Geschirr & Servierzubehör kaufen | LuxeStyle Schweiz → **Servierplatte kaufen: Keramik, Holz & Porzellan | LuxeStyle** |
+
+## Nachbesserung nach Prüferbefund (05.10. ~11:00 UTC) — Kannibalisierung über alle Titelwörter
+**Neue Prüfung (Vollwort).** Sie läuft über die Titel und Metas aller 33 Seiten. Gesucht wird jeder Zielbegriff einer anderen Seite. Grundlage sind 865 Begriffe aus:
+- position_tracking_ziele
+- den neuesten Zeilen von _keyword_produkte
+- _platz41, _seite2, _draft_ersatz
+- _seo_kollektion_ledger, seo_titel_geprueft, kollektion_seo_final, _seo_seite2_ledger
+- den eigenen Begriffen
+
+Ein Treffer liegt vor, wenn alle Wörter des fremden Begriffs im Titel stehen. Die Wörter werden dafür normalisiert: Umlaute, einfache Endungen, Füllwörter wie «kaufen» und «für» zählen nicht, die Reihenfolge ist egal. Bei Metas zählen nur Begriffe mit mindestens 2 Wörtern.
+
+**Vorher (gemessen am Live-Stand): 5 Titel-Treffer.**
+- sub-pumps-heels und schuhe-absatz: «stiletto». Ziel ist stiletto-high-heels-633500 (Tracking und platz41).
+- mikrofone: «bluetooth mikrofon». Ziel ist 603300, das auf Platz 36 rankt (Tracking und seo_titel_geprueft). Diesen Fall hatte der Prüfer nicht genannt.
+- schuhe-absatz: «high heels schwarz». Im Tracking zeigte der Begriff auf sub-pumps-heels; eingetragen hatte das suche-synonyme.
+
+**Dazu 6 Meta-Treffer:**
+- fitness-geraete: «hanteln verstellbar», «klimmzugstange für zuhause»
+- jumpsuits-overalls: «jumpsuit herren»
+- mikrofone: «mikrofon mit lautsprecher»
+- sub-ballerinas: «ballerinas damen leder»
+- sub-trinkflaschen: «trinkflasche mit strohhalm»
+
+**Behoben.** 9 Kollektionen in einem Bündel. SEO-Titel und Meta gingen immer zusammen. Bei mikrofone und rucksaecke-schule wurde zusätzlich nur der erste Absatz ersetzt. Unmittelbar vorher habe ich die Sperr-Ledger und die urlRedirects geprüft: 9 von 9 waren frei. Danach habe ich alles live zurückgelesen: 9/9.
+- sub-pumps-heels: Titel ohne «Stiletto»; Meta «spitze Pumps» statt «Stiletto-Pumps».
+- schuhe-absatz: Titel ohne «Stilettos». Die Meta nennt keine Stilettos mehr und keine Slingbacks («slingback pumps» ist das Ziel eines Produkts). Für die Belege gibt es kaufbare Produkte: Plateau 10, Pantoletten 7.
+- **mikrofone:** Begriff jetzt «mikrofon kaufen», belegt über Suggest und den Kopfbegriff mit 4'400/Mt. Titel, Meta und erster Absatz enthalten kein «Bluetooth», «Lautsprecher», «Handy» und «singen» mehr. Alle Merkmale stammen aus Titeln kaufbarer Produkte: Ansteck/Lavalier 31, USB 19, Karaoke 17, dazu Schwanenhals, Funkmikrofon-Set und Kragenmikrofon.
+- **rucksaecke-schule:** Begriff jetzt «schulrucksack kaufen». Gezählt: 38 von 54 kaufbaren Produkten tragen «Schulrucksack» im Titel, «Schulranzen» nur 3. Der Kopfbegriff hat 2'900/Mt. «Schulranzen» steht nur noch einmal als Nebenwort im Text. Der Trust-Absatz blieb unverändert, der Text hat jetzt 102 Wörter.
+- smartwatches-wearables: Meta ohne «GPS-Ortung und Videoanruf», jetzt «mit Kamera und Spielen». Damit gibt es keine Überschneidung mehr mit «uhr kinder gps» (203712).
+- Metas ohne die fremden Begriffe: fitness-geraete ohne verstellbare Hanteln und Klimmzugstange, jumpsuits-overalls ohne Herren, sub-ballerinas ohne Leder-Ballerinas, sub-trinkflaschen ohne Strohhalm.
+- `position_tracking_ziele.tsv`: Für «high heels schwarz» ist das Ziel jetzt /collections/schuhe-absatz. Diese Seite trägt den Begriff im Titel; sub-pumps-heels zielt auf «pumps schwarz».
+
+**Nachher: 0 Titel-Treffer und 0 Meta-Treffer.**
+
+**Widerlegt mit Messung: jeans-denim («Bootcut») und sub-trinkflaschen («Thermosflasche»).** Der Prüfer las die Zeilen von 09:31 aus _keyword_produkte. Beide Produkte wurden um 10:17 zurückgenommen, und die Zielseiten-Abstimmung im README legt fest: «jeans damen bootcut → jeans-denim», «thermosflasche edelstahl → sub-trinkflaschen». Live gelesen:
+- 622000 hat den SEO-Titel «Schwarze Schlagjeans mit Schnürung für Damen».
+- 616400 hat den SEO-Titel «Isolierte Edelstahlflasche mit Trageschlaufe».
+
+Keiner der beiden trägt den Begriff noch. In den Kollektionen stehen kaufbar 19 Bootcut- und Schlagjeans, davon 8 ohne «Herren» im Titel, sowie 15 Thermos-, Isolierflaschen und Isolierkannen. Die beiden Titel bleiben deshalb.
+
+**Live per WebFetch (Cache-Brecher `?v=kk2`):**
+- mikrofone: title «Mikrofon kaufen: Ansteckmikrofon, USB & Karaoke | LuxeStyle», erster Satz «Wer ein Mikrofon kaufen möchte, wählt zuerst nach dem Einsatz.»
+- rucksaecke-schule: title «Schulrucksack kaufen für Kinder & Teens | LuxeStyle», erster Satz «Wer einen Schulrucksack kaufen möchte, …»
+- sub-pumps-heels: title «Pumps schwarz & farbig: Blockabsatz & Mary Janes | LuxeStyle»
+- schuhe-absatz: title «High Heels schwarz & elegant, Sandaletten | LuxeStyle»
+
+Bei allen ist die H1 unverändert. Die Altwerte stehen in 9 neuen Ledger-Zeilen mit Status `nachbesserung-kanni`. Wo der Text ersetzt wurde, ist dort das ganze alte descriptionHtml gespeichert.
+
+**Lehre.** Die Kannibalisierungs-Prüfung muss jedes Wort des Titels prüfen und die Wortfolge ignorieren. Sie muss den neuesten Stand des Ledgers lesen, also auch zurückgenommene Zeilen.
 
 ## Live geprüft (WebFetch, 09:5x UTC)
 Geprüft wurden guertel, sub-bademode, kinderschuhe, haustier-futter-naepfe, jeans-denim und haengematten: **6/6** zeigen den neuen `<title>` und den neuen ersten Satz.
