@@ -4567,3 +4567,5 @@ interaktiver-rollender-ball-fur-haustiere-672450	2062814032526610434	0	-	KEINE C
 interaktiver-hunde-spielball-aus-e-tpu-757633	2061023153695809538	16	6.77	ok	landeseite
 interaktiver-spielball-fur-haustiere-870401	2060270988662779906	0	-	KEINE CH-Option → DRAFT	landeseite
 smart-interaktiver-ball-fur-hunde-310081	2059939998861025282	16	5.69	ok	landeseite
+farbige-tennisballe-fur-hunde-987586	2059575887118262273	16	7.71	ok	landeseite
+ersatzfedern-fur-katzenangel-629300	2605250722331629900	16	7.57	ok	landeseite
