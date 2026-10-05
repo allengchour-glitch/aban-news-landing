@@ -3796,3 +3796,14 @@ haustierhalsband-mit-leine-und-schleife-455104	1423198757729734656	16	7.25	ok	la
 hundeleine-mit-brustgeschirr-571456	1423096552284622848	16	12.21	ok	landeseite
 multifunktions-entsaftermixer-618368	1772618405770698752	7	15.42	ok	landeseite
 reflektierende-nylon-hundeleine-069824	1422069582545424384	16	8.25	ok	landeseite
+wasserfall-armaturen-sprinkler-548608	1770370825716240384	16	7.94	ok	landeseite
+verstellbares-hundegeschirr-aus-nylon-598528	1421742409456422912	16	6.40	ok	landeseite
+sparschaler-aus-palisander-und-edelstahl-038464	1766809107962535936	16	6.56	ok	landeseite
+hunde-brustgeschirr-mit-reflektor-356928	1643273022452797440	16	8.93	ok	landeseite
+leder-quarzuhr-mit-kalenderfunktion-4ceddb	-	-	-	unklar keine CJ-SKU	landeseite
+donut-backform-mit-12-mulden-321e02	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktions-quarzuhr-mit-drei-zeigern-e70307	-	-	-	unklar keine CJ-SKU	landeseite
+nylon-armbanduhr-mit-dual-anzeige-4b347e	-	-	-	unklar keine CJ-SKU	landeseite
+elektrische-orangen-saftpresse-ff0de0	-	-	-	unklar keine CJ-SKU	landeseite
+mini-zitruspresse-fur-zuhause-fba155	-	-	-	unklar keine CJ-SKU	landeseite
+quarz-armbanduhr-mit-kalender-ed75ad	-	-	-	unklar keine CJ-SKU	landeseite
