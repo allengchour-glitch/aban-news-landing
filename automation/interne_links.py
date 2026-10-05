@@ -114,6 +114,24 @@ def anker_aus_begriff(b):
     return " ".join(w)
 
 
+def anker_tauglich(begriff, titel, handle, alle=True):
+    """Suchbegriff nur als Ankertext, wenn seine Wörter (≥ 3 Zeichen, grob gestemmt) im Titel/Handle vorkommen —
+    «staubsauger» für «Haushaltsgeräte» oder «regale» für «Aufbewahrung» wäre ein irreführender Anker (05.10.).
+    alle=True: jedes Wort muss passen (Kollektionen); alle=False: eines genügt (Produkte, der Begriff ist ihr Ranking)."""
+    ziel = norm(titel) + " " + norm(handle)
+    woerter = [w for w in norm(begriff).split() if len(w) >= 3]
+    if not woerter:
+        return False
+    treffer = [re.sub(r"(en|er|es|e|n|s)$", "", w) in ziel for w in woerter]
+    return all(treffer) if alle else any(treffer)
+
+
+def anker_fuer(begriff, titel, handle, produkt=False):
+    if begriff and anker_tauglich(begriff, titel, handle, alle=not produkt):
+        return anker_aus_begriff(begriff)
+    return titel_rein(titel)
+
+
 def hausregel(handle, titel):
     return bool(HAUSREGEL_RE.search(norm(handle) + " " + norm(titel)))
 
@@ -285,6 +303,11 @@ def ziele_sammeln(colls, arts, pages, je_menue, start):
     for begriff, pos, vol, art, h in rank:
         if art == "collections":
             c = by_handle.get(h)
+            if c and not (c["online"] and c["n"] > 0):            # 301 folgen (beleuchtung-lampen → sub-beleuchtung, 05.10.)
+                r = gql('query($q:String!){ urlRedirects(first:1, query:$q){ nodes{ target } } }', {"q": f"path:/collections/{h}"})["urlRedirects"]["nodes"]
+                m = LINK_RE.search((r or [{}])[0].get("target") or "")
+                if m and m.group(1) == "collections" and by_handle.get(m.group(2)):
+                    h = m.group(2); c = by_handle[h]; begriff = begriff + " (301)"
             ok = bool(c and c["online"] and c["n"] > 0 and not hausregel(h, c["title"]))
             titel = c["title"] if c else "(fehlt)"
             grund = "" if ok else ("fehlt" if not c else "nicht kaufbar/online" if not (c["online"] and c["n"]) else "Hausregel")
@@ -347,7 +370,7 @@ def plan_bauen(ziele, colls, baum):
         key = (z["art"], z["handle"])
         schon = {c["handle"] for c in colls if c["online"] and c["handle"] != z["handle"] and key in links_in(c["descriptionHtml"])}
         bedarf = ZIEL_LINKS - z["links"]["total"]
-        anker = anker_aus_begriff(z["begriff"])
+        anker = anker_fuer(z["begriff"], z["titel"], z["handle"], produkt=(z["art"] == "products"))
         href = f"/{z['art']}/{z['handle']}"
         kand = []
         if z["art"] == "collections":
@@ -391,7 +414,7 @@ def plan_bauen(ziele, colls, baum):
         eltern_fehlt.append((key[1], el[1]))
         q = plan.setdefault(key[1], {"links": [], "eltern": None})
         ev, eb = suchbegriff_fuer(ec)
-        q["eltern"] = (f"/collections/{el[1]}", anker_aus_begriff(eb) if ev else titel_rein(ec["title"]))
+        q["eltern"] = (f"/collections/{el[1]}", anker_fuer(eb if ev else "", ec["title"], el[1]))
     return plan, offen, eltern_fehlt
 
 
