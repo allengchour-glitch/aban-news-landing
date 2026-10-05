@@ -1208,6 +1208,12 @@ if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ -s /tmp/seo_voll_audit.js
     echo "DUENNE-TEXTE: $(grep -c '^✍️' "$DT" 2>/dev/null) geschrieben gesamt · $(grep '^BILANZ\|^⏸' "$DT" | tail -1 | cut -c1-140)"
   fi
 fi
+# POPUP-TOR (05.10.2026, Clarity-Befund Betreiber): Newsletter-Popup nie vor 20/30 s und nie neben dem Cookie-Banner.
+# Liest die LIVE-Datei sections/footer-group.json alle 6 h; meldet nur, wenn das Tor fehlt (Theme-Editor/App kann überschreiben).
+if [ -f "$REPO/automation/popup_tor_wache.py" ] && [ $(( $(date +%s) - $(stat -c %Y /tmp/popup_tor.stamp 2>/dev/null || echo 0) )) -gt 21600 ]; then
+  touch /tmp/popup_tor.stamp
+  ( cd "$REPO" && timeout 120 python3 automation/popup_tor_wache.py > /tmp/popup_tor.log 2>&1 ) || echo "$(date -u +%H:%M) $(tail -n 1 /tmp/popup_tor.log)"
+fi
 # ===== Folgerunde 05.10.2026 (wf_f1d1b5b0-276): Wächter aus 11 Bereichen =====
 # --- Dünne Texte: Nachprüfung der Tore (05.10.2026, Nachbesserung: Stückzahl-/Set-Tor, Varianten-Tor auch < 40 Wörter) — liest alle Ledger-Handles live, schreibt nichts, CJ nur aus Cache
 DTN=/tmp/produkttext_duenn_nachpruefen.log
