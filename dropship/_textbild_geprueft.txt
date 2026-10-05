@@ -58381,3 +58381,4 @@ gid://shopify/Product/15454068998529	gid://shopify/MediaImage/69930870931841
 gid://shopify/Product/15454091739521	gid://shopify/MediaImage/69931162960257
 gid://shopify/Product/15454115660161	gid://shopify/MediaImage/69931614568833
 gid://shopify/Product/15454161961345	gid://shopify/MediaImage/69932474794369
+gid://shopify/Product/15454414406017	gid://shopify/MediaImage/69935651225985
