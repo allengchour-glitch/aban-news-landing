@@ -3892,3 +3892,4 @@ ohrstecker-lumiere-elegante-high-end-studs	2605310516411637800	16	4.50	ok	landes
 mondstein-blutenring-fleur-zarter-statement-ring	2605300702501634900	16	4.36	ok	landeseite
 kirschbluten-halskette-sakura-zarte-klavikula-kette	2605290725111607100	16	4.34	ok	landeseite
 herren-sommerhemd-monsieur-french-court-style-kurzarm	2605300628401609400	16	8.25	ok	landeseite
+off-shoulder-kleid-brise-locker-armellos	2605300723091637800	16	10.83	ok	landeseite
