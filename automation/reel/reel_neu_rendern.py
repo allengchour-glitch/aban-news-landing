@@ -183,9 +183,14 @@ def ist_cdn(url):
 
 
 def cdn_groesse(url):
-    """Content-Length der CDN-Kopie (HEAD), -1 bei Fehler."""
+    """Content-Length der CDN-Kopie (HEAD), -1 bei Fehler.
+    05.10.2026 (Prüferbefund): Shopifys Edge-Cache lieferte an der ALTEN ?v=-Adresse (und ohne ?v=) weiter die alten
+    3'048'119 B, obwohl fileUpdate die Datei längst ersetzt hatte → derselbe Reel wurde 02:02 und 02:07 zweimal ersetzt.
+    Deshalb ein Cache-Brecher (&cb=<jetzt>) an der Adresse: der CDN cached je vollständiger URL, die frische Antwort
+    kommt vom Ursprung. Die Adresse in der Queue bleibt unverändert."""
     try:
-        out = subprocess.run(["curl", "-sI", "--max-time", "30", url], capture_output=True, text=True, timeout=40).stdout
+        frisch = url + ("&" if "?" in url else "?") + f"cb={int(time.time())}"
+        out = subprocess.run(["curl", "-sI", "--max-time", "30", frisch], capture_output=True, text=True, timeout=40).stdout
         m = re.search(r"content-length:\s*(\d+)", out, re.I)
         return int(m.group(1)) if m else -1
     except Exception:

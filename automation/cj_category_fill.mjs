@@ -16,6 +16,7 @@ const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie} from './google_kategorie.mjs';
+import {typAusKategorie} from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt Sammeltyp
 import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
@@ -869,6 +870,11 @@ for(const [cat,label] of grp.cats){
      if((!KIND.test(ktext)) || (NICHT_SPIELZEUG_TITEL.test(title)&&!kTitel)){
        tagsFinal=tagsFinal.filter(t=>t!=='kinder'&&t!=='spielzeug');
      }
+   }
+   // 05.10.2026 (Plan Punkt 16): Sammeltypen (Gadget/Trend-*) sagen im Filter nichts — Typ aus der Google-Kategorie,
+   // Sammeltyp bleibt nur ohne Treffer. Feste Gruppentypen (Nageldesign, Küche & Bar …) bleiben unberührt.
+   if(['Trend-Produkt','Trend-Gadget','Gadget','Gadgets'].includes(typeFinal)){
+     const tk=typAusKategorie(googleKategorie(title,tagsFinal,typeFinal),title); if(tk) typeFinal=tk;
    }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
     status:(med||tsch)?'DRAFT':'ACTIVE',

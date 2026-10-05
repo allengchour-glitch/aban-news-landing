@@ -170,8 +170,12 @@ def darf_zu_google(pid, tags, sperrliste=None):
 # gepflegte Klingenregel war vollstaendig beschattet, weil HEIKEL VOR ihr geprueft wird.
 # **Die Klingenfrage beantwortet ausschliesslich `klingenregel.ist_klinge()`** — hier
 # stehen deshalb KEINE Klingenwoerter.
+# 05.10.2026 (Prüfer, Google-Adult): `kost[üu]m` traf das Tag «kostuem-hut» NICHT (ASCII-Schreibung «ue»), ein Fasnachts-
+# Plüschhut (Widmann) stand im Google-Kanal; drei Maskenball-/Performance-Masken trugen weder «kostuem» noch ein Wort,
+# das `(?<!\w)maske\b` trifft («Halbmaske», «Maskenbälle»). Beide Schreibungen und die Maskenball-Wörter sind jetzt drin.
 HEIKEL = re.compile(
-    r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|(?<![\wäöüß])maske\b|tutu\b|'
+    r'kost[üu]e?m|verkleid|fasnacht|halloween|per[üu]cke|(?<![\wäöüß])maske\b|halbmaske\b|maskenb[aä]ll|'
+    r'performance-?maske|tutu\b|'
     r'hexe|vampir|zombie|clown|'
     r'dessous|reizw|erotik|18\+|generalüberholt|restauriert|refurb|ersatzteil|ersatzkopf|'
     r'waffen?\b|munition|armbrust|'

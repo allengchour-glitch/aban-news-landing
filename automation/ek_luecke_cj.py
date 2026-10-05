@@ -17,7 +17,7 @@ WAS DER LAUF TUT (täglich, idempotent):
   3b. Alle aktiven Produkte der letzten 36 h ebenfalls live durch den Verlustschutz (Export-Lücke bei Neuimporten).
   4. Produkte, die danach IMMER NOCH ohne EK sind und bei denen CJ live 1602002 antwortet → DRAFT + Tags
      cj-entfernt / cj-entfernt-<datum> / ohne-ek-cj-weg (dieselbe Regel und dasselbe Ledger `_cj_nachpruefung.tsv` wie
-     cj_ausgelistet_sichtbar.py). Vor der Mutation Live-Lesen (Status, EK) + CJ ein zweites Mal; nur 1602002 ist ein Urteil,
+     cj_ausgelistet_sichtbar.py). Vor der Mutation Live-Lesen (Status, EK); CJ wird EINMAL live gefragt — nur 1602002 ist ein Urteil,
      1602003 («Variant removed») und alles andere = kein Urteil, nur Bericht.
   Altwerte: dropship/_ek_luecke_cj_<datum>.tsv. Bericht: dropship/EK-LUECKE-CJ.md.
   Standard = TROCKENLAUF (Schritte 2–4 nur melden). SCHARF=1 schreibt. CAP begrenzt Schritt 4 (Standard 60).

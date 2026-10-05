@@ -37,6 +37,9 @@ SPERREN = [
     "Klappmesser inkl. Etui",
 ]
 DURCHLASSEN = [
+    "Digitaler Windmesser (Anemometer)",            # 05.10.: Messgerät, kein Messer
+    "Diamant-Schärfstab für Küchen- und Gartenmesser",  # 05.10.: Schärfer ohne Klinge
+    "Messerschärf-System mit Winkelführung",         # 05.10.: Bindestrich-Schreibung
     "Magnetischer Messerhalter aus Bambus",        # Zubehoer, keine Klinge im Paket
     "Messerblock aus Massivholz",
     "Elektrischer Messerschärfer",

@@ -60,6 +60,7 @@ def main():
     if os.path.exists(LEDGER):
         for l in open(LEDGER, encoding="utf-8"):
             h, _, d = l.rstrip("\n").partition("\t")
+            d = d.split("\t")[0]          # 05.10.: dritte Spalte = Vermerk (z. B. «mode-messung»), kein Datum
             if h and d:
                 zuletzt[h] = d
     faellig = [h for h in handles if not zuletzt.get(h) or

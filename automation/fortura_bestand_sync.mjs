@@ -143,7 +143,7 @@ async function gql(query, variables) {
 /* ---------- Lock ---------- */
 if (!DRY) {
   try { const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd); }
-  catch { const age = (Date.now() - (fs.statSync(LOCK).mtimeMs || 0)) / 60000; if (age < 60) { console.log('läuft bereits, skip'); process.exit(0); } fs.writeFileSync(LOCK, String(process.pid)); }
+  catch { const age = (Date.now() - (fs.statSync(LOCK).mtimeMs || 0)) / 60000; if (age < 60) { console.log('läuft bereits, skip (Exit 3 = kein Lauf, kein Erfolg — 05.10.2026: Exit 0 hier setzte in taeglich.sh den Erfolgsstempel, 20 h kein Nachholen)'); process.exit(3); } fs.writeFileSync(LOCK, String(process.pid)); }
   process.on('exit', () => { try { fs.unlinkSync(LOCK); } catch {} });
 }
 
@@ -277,3 +277,6 @@ Journal (jede Zeile sofort geflusht): \`${JOURNAL}\`
 `;
 fs.writeFileSync(REPORT, bericht);
 console.log(`\nFERTIG. geändert=${ok} offen=${fehler} unverändert=${unveraendert} → ${REPORT}`);
+// 05.10.2026: Exit-Code = Wahrheit über den Lauf. «offen» geblieben (Shopify sagte nein / keine Antwort) → 1, dann setzt
+// fortura_bestand_taeglich.sh KEINEN Erfolgsstempel und der Aufseher holt in 2 h nach; vorher endete auch ein Lauf mit offenen Zeilen mit 0.
+process.exit(fehler ? 1 : 0);

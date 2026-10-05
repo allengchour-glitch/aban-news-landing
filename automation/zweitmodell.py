@@ -156,18 +156,55 @@ def groq_schluessel():
     return [k for k in ks if k]
 
 
+def _groq_leer_marke(n):
+    return f"/tmp/groq_leer_{n}"
+
+
+def groq_leer(n, modelle):
+    """05.10.2026 (Prüfer): die Rotation hatte kein Gedächtnis — jeder Aufruf schickte das Bildraster erst an Schlüssel 1
+    und 2 (seit Stunden leer), dann an 3: drei Uploads je Produkt. Ein leerer Schlüssel wird je MODELL 6 h gemerkt
+    (/tmp/groq_leer_<n>, Zeilen «Zeit Modell»); das Tageskontingent gilt je Modell und Organisation, ein Textmodell
+    auf demselben Schlüssel bleibt nutzbar."""
+    p = _groq_leer_marke(n)
+    try:
+        if time.time() - os.path.getmtime(p) >= LEER_GUELTIG_S:
+            return False
+        inhalt = open(p).read()
+    except OSError:
+        return False
+    return any(m in inhalt for m in modelle)
+
+
+def _groq_leer_merken(n, modelle, grund):
+    try:
+        with open(_groq_leer_marke(n), "a") as f:
+            for m in modelle:
+                f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())} {m} {grund[:120]}\n")
+        os.utime(_groq_leer_marke(n), None)
+    except OSError:
+        pass
+
+
 def groq_json(text, bilder=None, nummer_ab=1):
     ks = groq_schluessel()
     if not ks:
         raise RuntimeError("GROQ_API_KEY fehlt")
+    modelle = [GROQ_BILD] if bilder else [m for m in (GROQ_TEXT, GROQ_AUSWEICH) if m]
     letzter = None
+    uebersprungen = []
     for i, k in enumerate(ks):
+        if groq_leer(i + 1, modelle):
+            uebersprungen.append(i + 1); continue
         try:
             return _groq_json_mit(k, text, bilder, nummer_ab)
         except TagesKontingentLeer as e:
             letzter = e
+            _groq_leer_merken(i + 1, modelle, str(e))
             if i + 1 < len(ks):
                 print(f"  Groq-Tageskontingent leer mit Schlüssel {i + 1} → Schlüssel {i + 2}", file=sys.stderr, flush=True)
+    if letzter is None:
+        letzter = TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — Schlüssel {uebersprungen} "
+                                      f"als leer gemerkt (/tmp/groq_leer_<n>, {LEER_GUELTIG_S // 3600} h)")
     raise letzter
 
 
@@ -243,6 +280,17 @@ def handle_gemini_402(error_msg):
     """Call this when catching HTTP 402 from Gemini. Creates fallback marker."""
     _gemini_leer_markieren(error_msg)
 
+
+if __name__ == "__main__" and "--leer" in sys.argv:
+    # Stand der Leer-Marken je Schlüssel (ohne Aufruf)
+    for n in range(1, 4):
+        p = _groq_leer_marke(n)
+        if os.path.exists(p):
+            alter = int(time.time() - os.path.getmtime(p))
+            print(f"Schlüssel {n}: {'GÜLTIG' if alter < LEER_GUELTIG_S else 'abgelaufen'} ({alter // 60} min) — " + open(p).read().strip().replace("\n", " | ")[:200])
+        else:
+            print(f"Schlüssel {n}: keine Marke")
+    sys.exit(0)
 
 if __name__ == "__main__" and "--probe" in sys.argv:
     import io

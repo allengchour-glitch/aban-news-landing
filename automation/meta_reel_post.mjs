@@ -314,13 +314,18 @@ for (let a = 0; a < 30; a++) {
   const st = await api(`${c.id}`, { fields: 'status_code,status' }, 'GET');
   if (st.status_code === 'FINISHED') break;
   if (st.status_code === 'ERROR') {
-    // 05.10.2026: Container 17888206023685363 meldete ERROR, stand 3 Minuten später auf FINISHED («Media has been uploaded») —
-    // Metas Status flackert. Einmal nachfragen; erst ein zweites ERROR gilt, und dann mit dem Grund (`status`) im Log.
-    await sleep(8000);
-    const st2 = await api(`${c.id}`, { fields: 'status_code,status' }, 'GET');
-    if (st2.status_code === 'FINISHED') break;
-    if (st2.status_code === 'ERROR') { console.error('IG-Verarbeitung fehlgeschlagen (2× ERROR):', JSON.stringify(st2).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
-    console.log('   IG-Status flackerte (ERROR → ' + (st2.status_code || '?') + '), warte weiter');
+    // 05.10.2026: Container 17888206023685363 meldete 02:12 ERROR, stand 02:15 auf FINISHED («Media has been uploaded») —
+    // Metas Status flackert. Eine Nachfrage nach 8 s reichte nicht (Plan Punkt 23): jetzt bis zu 3 Minuten lang alle 30 s
+    // erneut lesen; FINISHED → weiter zum Publish, erst ein ERROR nach 3 Minuten gilt — mit dem Grund (`status`) im Log.
+    let st2 = st, fertig = false;
+    for (let w = 0; w < 6; w++) {
+      await sleep(30000);
+      st2 = await api(`${c.id}`, { fields: 'status_code,status' }, 'GET');
+      if (st2.status_code === 'FINISHED') { fertig = true; break; }
+      if (st2.status_code !== 'ERROR') { console.log('   IG-Status flackerte (ERROR → ' + (st2.status_code || '?') + ' nach ' + (w + 1) * 30 + ' s), warte weiter'); break; }
+    }
+    if (fertig) { console.log('   IG-Status: ERROR → FINISHED nach erneutem Lesen (Meta flackert)'); break; }
+    if (st2.status_code === 'ERROR') { console.error('IG-Verarbeitung fehlgeschlagen (ERROR auch nach 3 Min erneutem Lesen):', JSON.stringify(st2).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
   }
 }
 const pub = await api(`${IG}/media_publish`, { creation_id: c.id });

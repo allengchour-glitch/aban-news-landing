@@ -11,28 +11,58 @@ Ausgabe (immer genau eine Zeile, Präfix «KAUFWILLE»): Produkt-Landeseiten der
 dann landet Kaufwille auf einer toten Seite (Klasse Rizinusöl-Set 18.09.). Schreibt NICHTS im Shop.
 Bei Fehler «KAUFWILLE: unklar (Grund)», nie «0».
 """
-import json, os, sys, time, urllib.request
+import json, os, sys, time, urllib.error, urllib.request
 
 SHOP = "au3j0y-hq.myshopify.com"
 TAGE = int(os.environ.get("TAGE", "7"))
 
 
+try:  # 05.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer») — 13 Werkzeuge importieren diesen gql
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+
+GEDULD = int(os.environ.get("GQL_GEDULD", "40"))   # Drossel-Versuche (Regel «drossel-ungeduldig»: Geduld in Zeit, nicht 3 Versuche)
+
+
+def _drossel_warte(d):
+    """Wartezeit aus throttleStatus: bis wieder max(Anfrage, 600) Punkte im Eimer liegen (höchstens 30 s je Runde)."""
+    k = (d.get("extensions") or {}).get("cost") or {}
+    t = k.get("throttleStatus") or {}
+    try:
+        fehlt = max(float(k.get("requestedQueryCost") or 0), 600.0) - float(t.get("currentlyAvailable") or 0)
+        rate = float(t.get("restoreRate") or 0)
+    except (TypeError, ValueError):
+        return 12.0
+    return min(30.0, fehlt / rate + 0.5) if (fehlt > 0 and rate > 0) else 12.0
+
+
 def gql(q, v=None):
     tok = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read()).strip()
     grund = ""
-    for a in range(3):
+    fehler = drossel = 0
+    while fehler < 3 and drossel < GEDULD:
         try:
             r = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
                                        data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                        headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
             d = json.load(urllib.request.urlopen(r, timeout=60))
+            if any("THROTTL" in str(e) for e in d.get("errors") or []):
+                grund = "Throttled"; drossel += 1; time.sleep(_drossel_warte(d)); continue
+            _nachlauf(d)
             if d.get("data") is not None and not d.get("errors"):
                 return d["data"]
             grund = str((d.get("errors") or [{}])[0].get("message", "keine Daten"))[:120]
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                grund = "HTTP 429 Throttled"; drossel += 1; time.sleep(4); continue
+            grund = f"HTTPError: {e}"[:120]
         except Exception as e:
             grund = f"{type(e).__name__}: {e}"[:120]
-        time.sleep(3 + 3 * a)
-    raise RuntimeError(grund)
+        fehler += 1
+        time.sleep(3 * fehler)
+    raise RuntimeError(grund + (f" ({drossel}x gedrosselt)" if drossel else ""))
 
 
 def main():
