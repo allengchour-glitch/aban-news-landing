@@ -4272,3 +4272,8 @@ babysitz-toilettenstuhl-3e78df	2407181213561611700	16	26.48	ok	landeseite
 ferngesteuertes-4wd-high-speed-kletterauto-a2cb0e	1410472057682137088	7	45.45	ok	landeseite
 baby-nest-reisebettchen-aus-baumwolle-20552f	1428634942778249216	16	19.76	ok	landeseite
 hundebett-warmer-schlafsack-7087d5	1725396376407777280	16	22.79	ok	landeseite
+riesiger-teddybar-pluschtier-mit-leder-optik-3e7eb6	00F8B935-568F-40B8-A826-585C926A30A1	16	20.01	ok	landeseite
+glattburste-mit-dampf-spruhfunktion-e765b5	7493261A-AC06-406D-96C1-4DB2125B1242	16	11.60	ok	landeseite
+kabelloses-ladegerat-kompakt-schnell-139560	1E1C4C61-5233-419E-85BF-3670546DAFF9	16	7.70	ok	landeseite
+bluetooth-player-mit-lampe-und-wireless-charge-69373f	96440C51-B0F4-4644-AA89-6B17FBD54973	7	12.57	ok	landeseite
+pagani-design-berjani-quarzuhr-4b0f6a	3E6CEDA6-2C4B-41C4-A79E-29183F3DF799	7	7.73	ok	landeseite
