@@ -4174,3 +4174,5 @@ nail-art-pen-world-cup-496001	2072225588871856129	16	6.21	ok	landeseite
 nagelpflege-stift-set-615900	2606250819321616600	3	6.34	ok	landeseite
 gel-nagellack-stifte-set-624900	2606250630521625800	3	6.75	ok	landeseite
 manikure-und-pedikure-set-19-teilig-159554	2060153362758348801	0	-	KEINE CH-Option → DRAFT	landeseite
+handgemachte-press-on-nagel-mit-3d-blumen-607200	2605250943341607800	16	5.41	ok	landeseite
+3d-gradient-nageldesign-mit-meeresmotiven-620400	2605250937441620900	16	5.27	ok	landeseite
