@@ -34,7 +34,7 @@ dropship/_reel_cdn_ersatz_<datum>.tsv. Gelingt der Ersatz nicht, bleibt der Sper
 MODUS=cdn: nur abgleichen — `ready`-Zeilen mit CDN-Adresse, deren lokale Datei eine andere Grösse hat als die CDN-Kopie
 (= lokal neu gerendert, CDN veraltet), hochladen und Adresse nachtragen. Kein Render.
 """
-import csv, glob, json, os, re, subprocess, sys, tempfile
+import csv, glob, json, os, re, subprocess, sys, tempfile, time
 import numpy as np
 from PIL import Image
 

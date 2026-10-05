@@ -28,6 +28,8 @@ WAS DER PATCH TUT (minimal, Design unverändert):
   3. snippets/card-gallery.liquid: bei mobile_columns == 2 heisst der Mobil-Teil von sizes «60vw» (Karte
      gemessen 234/390 px im Karussell, 189/390 im Raster), statt «100vw».
   4. snippets/product-media.liquid: srcset-Stufen 480 und 600 zwischen 352 und 832 ergänzt.
+  5. (05.10., Prüferbefund) snippets/card-gallery.liquid, Zweig product_card_size (Kollektionsseiten, kein mobile_columns):
+     Mobil-Teil von sizes «50vw» statt «100vw», ausser mobile_product_card_size == 'large' (1 Spalte).
 
 NUTZUNG:
     python3 automation/mobil_tempo_patch.py            # DRY: holt live, zeigt Diffs, schreibt nichts
@@ -114,22 +116,48 @@ def patch_index(raw):
     return neu, notizen
 
 
+MARK_RASTER = MARK + " (Raster)"
+
+
 def patch_card_gallery(src):
-    if MARK in src:
-        return src, ["card-gallery: schon gepatcht"]
-    anker = ("    assign sizes_attribute = '(min-width: 750px) [viewport_width]vw, 100vw' | replace: '[viewport_width]', viewport_width\n"
-             "    assign image_sizes = sizes_attribute | strip\n"
-             "  endif\n")
-    assert anker in src, "card-gallery: sizes-Block nicht gefunden"
-    zusatz = (
-        f"  # {MARK}: Bei 2 Spalten auf dem Handy ist eine Karte 50-60 vw breit, nicht 100 vw\n"
-        "  # (gemessen 390 px: Karussell 234 px, Raster 189 px). Mit «100vw» lud der Browser width=832 (152 KB)\n"
-        "  # statt ~480 (52 KB) — 16 eager-Bilder auf der Startseite; Safari kennt sizes=auto nicht, dort alle.\n"
-        "  if section.settings.mobile_columns == '2' or section.settings.mobile_columns == 2\n"
-        "    assign image_sizes = image_sizes | replace: ', 100vw', ', 60vw'\n"
-        "  endif\n"
-    )
-    return src.replace(anker, anker + zusatz, 1), ["card-gallery: Mobil-sizes 60vw bei 2 Spalten"]
+    notizen = []
+    # Teil A (Karussell/product-list mit mobile_columns): 60vw statt 100vw.
+    if MARK in src and MARK_RASTER not in src or MARK_RASTER in src:
+        notizen.append("card-gallery: schon gepatcht (Karussell 60vw)")
+    else:
+        anker = ("    assign sizes_attribute = '(min-width: 750px) [viewport_width]vw, 100vw' | replace: '[viewport_width]', viewport_width\n"
+                 "    assign image_sizes = sizes_attribute | strip\n"
+                 "  endif\n")
+        assert anker in src, "card-gallery: sizes-Block nicht gefunden"
+        zusatz = (
+            f"  # {MARK}: Bei 2 Spalten auf dem Handy ist eine Karte 50-60 vw breit, nicht 100 vw\n"
+            "  # (gemessen 390 px: Karussell 234 px, Raster 189 px). Mit «100vw» lud der Browser width=832 (152 KB)\n"
+            "  # statt ~480 (52 KB) — 16 eager-Bilder auf der Startseite; Safari kennt sizes=auto nicht, dort alle.\n"
+            "  if section.settings.mobile_columns == '2' or section.settings.mobile_columns == 2\n"
+            "    assign image_sizes = image_sizes | replace: ', 100vw', ', 60vw'\n"
+            "  endif\n"
+        )
+        src = src.replace(anker, anker + zusatz, 1); notizen.append("card-gallery: Mobil-sizes 60vw bei 2 Spalten")
+    # Teil B (05.10.2026, Prüferbefund): Auf KOLLEKTIONSSEITEN (sections/main-collection, Setting product_card_size) gibt es
+    # kein mobile_columns — Teil A griff dort nie. Live gemessen /collections/halloween: 72× sizes «…, (min-width: 750px) 50vw, 100vw»,
+    # 0× 60vw. Das Raster ist mobil 2-spaltig (product-grid.liquid: --mobile-columns 2, ausser mobile_product_card_size == 'large'),
+    # Karte 189/390 px ≈ 48 vw. Chrome wählte über sizes=auto schon 480; Safari (kennt auto nicht) nahm 100vw → 832 (152 KB statt 52).
+    if MARK_RASTER in src:
+        notizen.append("card-gallery: schon gepatcht (Raster 50vw)")
+    else:
+        anker_b = ("      render 'util-autofill-img-size-attr', card_size: card_size, card_gap: section.settings.columns_gap_horizontal\n"
+                   "    endcapture\n"
+                   "    assign image_sizes = sizes_attribute | strip\n")
+        assert anker_b in src, "card-gallery: product_card_size-Zweig nicht gefunden"
+        zusatz_b = (
+            f"    # {MARK_RASTER}: Kollektions-Raster ist auf dem Handy 2-spaltig (Karte 189/390 px), ausser bei\n"
+            "    # mobile_product_card_size == 'large' (1 Spalte). «100vw» lud width=832 für eine 189-px-Karte (Safari; Chrome über sizes=auto 480).\n"
+            "    unless section.settings.mobile_product_card_size == 'large'\n"
+            "      assign image_sizes = image_sizes | replace: ', 100vw', ', 50vw'\n"
+            "    endunless\n"
+        )
+        src = src.replace(anker_b, anker_b + zusatz_b, 1); notizen.append("card-gallery: Mobil-sizes 50vw im Kollektions-Raster (2 Spalten)")
+    return src, notizen
 
 
 def patch_product_media(src):
