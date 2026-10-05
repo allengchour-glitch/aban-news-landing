@@ -4085,3 +4085,9 @@ halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
 oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
 ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
 gro-e-maus-matte-610700	2605030704351611200	16	10.15	ok	landeseite
+gaming-headset-637900	2604180954271638500	7	6.18	ok	landeseite
+gaming-headset-rgb-128321	2045018381573017602	0	-	KEINE CH-Option → DRAFT	landeseite
+bluetooth-headset-299137	2045020306272014338	0	-	KEINE CH-Option → DRAFT	landeseite
+spiel-set-t87-981890	2045019490656047105	0	-	KEINE CH-Option → DRAFT	landeseite
+mechanische-tastatur-617400	2604240222551617900	16	14.00	ok	landeseite
+kirschbluten-tastatur-615100	2604180839121616000	16	4.47	ok	landeseite

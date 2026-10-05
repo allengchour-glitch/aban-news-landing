@@ -349,3 +349,4 @@
 2026-10-04	gid://shopify/Product/16606126539143	natel	Q‑Typ Befestigungsclip für iPhone
 2026-10-04	gid://shopify/Product/16606271603079	natel	Bambus‑Ständer für Smartphone‑Ladung
 2026-10-04	gid://shopify/Product/16606856479111	natel	Vertikaler Magnethalter für iPhone 12
+2026-10-05	gid://shopify/Product/16604587917703	finken	Hausschuhe mit Blumen, offene Zehen
