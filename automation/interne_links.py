@@ -4,9 +4,10 @@
 
 ANLASS: Semrush `domain_rank` ch 05.10.: 559 Begriffe in den Top 100, geschätzter Verkehr 0 — fast alles steht auf
 Platz 11–100. Betreiber: «das geht mehr verbesserung mit semrush». Google wertet Seiten höher, auf die von Menü,
-Startseite und anderen Seiten mit passendem Ankertext verlinkt wird. Gemessen 05.10. (--messen): die 40 Kollektionen mit
-dem höchsten Schweizer Suchvolumen hatten im Median 1 eingehenden Link (nur das Menü), 37 Produktseiten auf Platz 16–30
-hatten fast alle 0 — kein Ratgeber, keine Kollektion nennt sie.
+Startseite und anderen Seiten mit passendem Ankertext verlinkt wird. Gemessen 05.10. (--messen): von den 40 Kollektionen
+mit dem höchsten Schweizer Suchvolumen hatten 20 höchstens 2 eingehende Links (10 nur den Menü-Eintrag), Kollektionstexte
+verlinkten einander NIE; von 20 kaufbaren Produktseiten auf Platz 16–30 hatten 19 null Links. Nach dem ersten --scharf:
+149 Blöcke, 192 Links, alle 40 Kollektionen ≥ 3, offen 16 Produkte ohne genug thematische Kollektionen.
 
 WAS ES TUT
   --messen    Tabelle: eingehende Links je Zielseite (Hauptmenü, Footer, Startseite, Kollektionstexte, Ratgeber, Seiten).
@@ -16,7 +17,11 @@ WAS ES TUT
               Suchbegriff), damit jedes Ziel ≥ ZIEL_LINKS (3) eingehende Links hat; dazu Punkt (3): Unterkollektionen im
               Hauptmenü ohne Link zur Oberkategorie bekommen ihn im selben Block.
   --scharf    schreibt die Blöcke (collectionUpdate descriptionHtml, Altwert ins Ledger), liest jede live zurück.
-  --zurueck   stellt descriptionHtml aus dem Ledger wieder her (jüngster ok-Eintrag je Kollektion).
+  --zurueck   Rückweg: liest jede Kollektion aus dem Ledger FRISCH und entfernt nur den ls-verwandt-Block (alles andere
+              bleibt, auch spätere Korrekturen anderer Schreiber). Liest live zurück, schreibt den Live-Stand vorher ins Ledger.
+  --zurueck-voll  NOTFALL (ZURUECK_VOLL=1): schreibt den kompletten Ledger-Altwert zurück; überspringt Kollektionen, die
+              seit dem Schnappschuss verändert wurden (ERZWINGEN=1 hebt das auf). Prüferbefund 05.10.: der Altwert hätte in
+              3 Baby-Kollektionen «Gratis Versand ab CHF 45» statt 50 zurückgebracht.
   --pruefen   Wächter: jeder Link in einem ls-verwandt-Block muss auf eine veröffentlichte, gefüllte Kollektion bzw. ein
               aktives Produkt zeigen; eine Zeile «INTERNE-LINKS: …», ⚠️ bei Befund. Nie «0 Befund» bei Lesefehler.
 
@@ -26,13 +31,14 @@ REGELN (Hausregeln 05.10.)
     Produkte nur ACTIVE mit onlineStoreUrl.
   • Keine Quelle, kein Ziel aus Hausregel-Klassen (Kostüm/Fasnacht/Halloween/Erotik/Tabak/Klingen/Waffen) oder POD/Editor.
   • Quell-Kollektionen nur thematisch verwandt: Menü-Eltern, Menü-Geschwister, Kollektionen des Produkts, gleiche Welt.
-  • Ledger dropship/semrush/_interne_links_<datum>.tsv mit Altwert (JSON) → --zurueck.
+  • Ledger dropship/semrush/_interne_links_<datum>.tsv mit Altwert (JSON) → --zurueck (Block raus) / --zurueck-voll (Altwert).
   • Vor jedem Schreiben wird die Kollektion frisch gelesen (ein paralleler Schreiber darf nichts verlieren).
 
   python3 automation/interne_links.py --messen
   python3 automation/interne_links.py                 (= --trocken)
   python3 automation/interne_links.py --scharf
   python3 automation/interne_links.py --zurueck [datei]
+  ZURUECK_VOLL=1 python3 automation/interne_links.py --zurueck-voll [datei]
   python3 automation/interne_links.py --pruefen
 """
 import csv, datetime as dt, glob, html, json, os, re, sys, time, unicodedata, urllib.parse
@@ -529,24 +535,80 @@ def schreiben(plan, colls):
     print(f"geschrieben ok={ok} fehler={fehler} → {LEDGER}")
 
 
-def zurueck(datei=None):
+def block_entfernen(text):
+    """Nimmt nur den ls-verwandt-Block aus dem Text; einsetzen() hängt ihn mit '\\n' an, der Rest bleibt wörtlich."""
+    return BLOCK_RE.sub("", text or "").rstrip()
+
+
+def _ledger_handles(datei):
     datei = datei or (sorted(glob.glob(os.path.join(ORDNER, "_interne_links_*.tsv"))) or [None])[-1]
     if not datei:
-        print("kein Ledger"); return
+        print("kein Ledger"); return None, {}
     letzte = {}
     for z in csv.DictReader(open(datei, encoding="utf-8"), delimiter="\t"):
         if z["aktion"] == "block" and z["status"] == "ok":
             letzte[z["handle"]] = z
-    n = 0
-    for handle, z in letzte.items():
+    return datei, letzte
+
+
+def zurueck(datei=None):
+    """Rückweg: liest jede Kollektion aus dem Ledger FRISCH und entfernt nur den Block <!-- ls-verwandt -->…<!-- /ls-verwandt -->.
+    NICHT den Ledger-Altwert schreiben (Prüferbefund 05.10.): zwischen Schnappschuss und Rückweg hatte ein paralleler
+    Schreiber in drei Kollektionen «Gratis Versand ab CHF 45» → «CHF 50» korrigiert — der Altwert hätte das falsche
+    Versprechen zurückgebracht. Altwert nur im Notfall: --zurueck-voll."""
+    datei, letzte = _ledger_handles(datei)
+    if not letzte:
+        return
+    n = ohne = fehler = 0
+    for handle, z in sorted(letzte.items()):
+        cid = z["id"]
+        live = gql('query($id:ID!){ collection(id:$id){ descriptionHtml } }', {"id": cid})["collection"]["descriptionHtml"] or ""
+        if not BLOCK_RE.search(live):
+            ohne += 1
+            ledger_schreiben([dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), handle, cid, "zurueck", json.dumps(live, ensure_ascii=False), "", 0, "kein Block"])
+            print("kein Block", handle)
+            continue
+        neu = block_entfernen(live)
+        d = gql('mutation($in:CollectionInput!){ collectionUpdate(input:$in){ collection{ descriptionHtml } userErrors{ message } } }',
+                {"in": {"id": cid, "descriptionHtml": neu}})["collectionUpdate"]
+        if d["userErrors"]:
+            st = "FEHLER " + str(d["userErrors"])[:100]
+        else:
+            rueck = gql('query($id:ID!){ collection(id:$id){ descriptionHtml } }', {"id": cid})["collection"]["descriptionHtml"] or ""
+            st = "ok" if ANFANG not in rueck and rueck.rstrip() == neu else "ZURUECKLESEN-ABWEICHUNG"
+        ledger_schreiben([dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), handle, cid, "zurueck", json.dumps(live, ensure_ascii=False), "", 0, st])
+        n += st == "ok"
+        fehler += st != "ok"
+        print(st, handle)
+    print(f"Block entfernt: {n}/{len(letzte)} · schon ohne Block {ohne} · Fehler {fehler} (Ledger {datei})")
+
+
+def zurueck_voll(datei=None):
+    """NOTFALL: schreibt den kompletten Ledger-Altwert zurück (überschreibt alles, was seit dem Schnappschuss geändert
+    wurde). Nur mit ZURUECK_VOLL=1, und nur wenn der Live-Text ohne Block noch dem Altwert gleicht — sonst wird die
+    Kollektion übersprungen und gemeldet (ERZWINGEN=1 überschreibt auch dann)."""
+    if os.environ.get("ZURUECK_VOLL") != "1":
+        print("--zurueck-voll schreibt den KOMPLETTEN Altwert zurück und überschreibt spätere Korrekturen (z. B. CHF 45 → 50)."
+              " Normaler Rückweg ist --zurueck (entfernt nur den Block). Für den Notfall: ZURUECK_VOLL=1 setzen."); return
+    datei, letzte = _ledger_handles(datei)
+    if not letzte:
+        return
+    n = uebersprungen = 0
+    for handle, z in sorted(letzte.items()):
         alt = json.loads(z["alt_descriptionHtml_json"])
+        live = gql('query($id:ID!){ collection(id:$id){ descriptionHtml } }', {"id": z["id"]})["collection"]["descriptionHtml"] or ""
+        if block_entfernen(live) != alt.rstrip() and os.environ.get("ERZWINGEN") != "1":
+            uebersprungen += 1
+            print("ÜBERSPRUNGEN (seit Schnappschuss verändert)", handle)
+            ledger_schreiben([dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), handle, z["id"], "zurueck-voll", json.dumps(live, ensure_ascii=False), "", 0, "übersprungen: verändert"])
+            continue
         d = gql('mutation($in:CollectionInput!){ collectionUpdate(input:$in){ collection{ descriptionHtml } userErrors{ message } } }',
                 {"in": {"id": z["id"], "descriptionHtml": alt}})["collectionUpdate"]
         st = "ok" if not d["userErrors"] and (d["collection"]["descriptionHtml"] or "") == alt else "FEHLER " + str(d["userErrors"])[:100]
-        ledger_schreiben([dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), handle, z["id"], "zurueck", "", "", 0, st])
+        ledger_schreiben([dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), handle, z["id"], "zurueck-voll", json.dumps(live, ensure_ascii=False), "", 0, st])
         n += st == "ok"
         print(st, handle)
-    print(f"zurückgestellt: {n}/{len(letzte)}")
+    print(f"Altwert zurückgestellt: {n}/{len(letzte)} · übersprungen {uebersprungen}")
 
 
 # ---------------------------------------------------------------- Wächter
@@ -586,6 +648,8 @@ def main():
     arg = sys.argv[1] if len(sys.argv) > 1 else "--trocken"
     if arg == "--zurueck":
         zurueck(sys.argv[2] if len(sys.argv) > 2 else None); return
+    if arg == "--zurueck-voll":
+        zurueck_voll(sys.argv[2] if len(sys.argv) > 2 else None); return
     if arg == "--pruefen":
         pruefen(); return
     colls, menus, arts, pages, start = lade_alles()

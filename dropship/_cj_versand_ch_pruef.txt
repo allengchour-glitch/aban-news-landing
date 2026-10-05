@@ -4225,3 +4225,31 @@ gemuseschneider-15-in-1-mit-schaler-und-hobel-168898	2056584983303467010	0	-	KEI
 silikon-eierpochierer-gondel-145537	2056653624657723393	16	5.81	ok	landeseite
 15-in-1-gemuseschneider-763201	2056583440422563841	0	-	KEINE CH-Option → DRAFT	landeseite
 salz-und-pfefferstreuer-set-2-teilig-936066	2052935108415565826	0	-	KEINE CH-Option → DRAFT	landeseite
+dr-reismilch-gesichtscreme-50g-555521	2072573310321721346	3	7.08	ok	landeseite
+dr-reismilch-gesichtsreiniger-919106	2072573052941279234	3	6.18	ok	landeseite
+dr-snail-collagen-cream-50g-287233	2072571844761841666	3	6.16	ok	landeseite
+dr-reis-milch-gesichtswasser-405762	2072573523714154498	3	7.13	ok	landeseite
+repair-cream-ultimative-feuchtigkeitspflege-696129	2072227165453250562	3	6.49	ok	landeseite
+azelaic-acid-niacinamide-serum-741570	2072227410734907393	3	5.06	ok	landeseite
+4-in-1-farbwechselnde-foundation-404610	2072227641467764738	3	5.86	ok	landeseite
+ouhoe-schneckencreme-sanfte-gesichtspflege-632833	2070415419328016386	0	-	KEINE CH-Option → DRAFT	landeseite
+retinol-nachtcreme-fur-glatte-haut-629100	2606240107101629800	3	8.17	ok	landeseite
+elektrische-straffende-augencreme-50g-187650	2067157577459490818	3	7.33	ok	landeseite
+2-in-1-eyelinerstift-bronze-228225	2066797393872834561	16	4.50	ok	landeseite
+2-in-1-eyelinerstift-champagner-069505	2066792206286344194	16	4.50	ok	landeseite
+deep-collagen-peptid-intensiv-ampulle-055618	2064530775508770818	0	-	KEINE CH-Option → DRAFT	landeseite
+haftcreme-fur-zahnprothesen-28g-780098	2064218886781026306	3	5.20	ok	landeseite
+golden-peptide-collagen-augenmaske-807809	2064289019426660354	0	-	KEINE CH-Option → DRAFT	landeseite
+glitzer-spray-fur-haar-und-korper-784705	2063480448434860033	0	-	KEINE CH-Option → DRAFT	landeseite
+glitzerndes-highlight-puder-fur-gesicht-korper-910657	2063590451434905602	0	-	KEINE CH-Option → DRAFT	landeseite
+kurkuma-kojisaure-reinigungspads-021569	2063093596975570946	0	-	KEINE CH-Option → DRAFT	landeseite
+photon-gesichts-und-augenmassagegerat-639400	2606050219331630000	7	9.37	ok	landeseite
+augenpflege-schlafmaske-mit-warme-massage-602100	2605020807481602600	7	6.90	ok	landeseite
+sonnenschutz-gesichtsmaske-mit-krempe-617900	2604170350211618400	16	7.43	ok	landeseite
+maulbeerseiden-gesichtsmaske-fur-damen-609500	2604161004461600100	16	4.81	ok	landeseite
+nahtlose-gesichtsmaske-aus-nylon-614500	2512280802351614700	16	5.81	ok	landeseite
+sport-gesichtsmaske-mit-aktivkohlefilter-059778	1994308236394528769	0	-	KEINE CH-Option → DRAFT	landeseite
+samtige-gesichtsmaske-atmungsaktiv-schutzend-649900	2510120313071640100	16	5.12	ok	landeseite
+all-in-one-ersatzmaske-620300	2412210617561622200	16	5.81	ok	landeseite
+schlafmaske-gegen-mude-augen-154880	1721805942263652352	7	10.33	ok	landeseite
+trainingsmaske-fur-mehr-ausdauer-569344	1659480804940066816	16	9.38	ok	landeseite

@@ -102,3 +102,48 @@ Restguthaben unbekannt (kein Saldo-Bericht im MCP) — geschätzt 10'000–19'00
   Bericht `NEUE-KOLLEKTIONEN-2026-10-05.md`, Ledger `_neue_kollektionen_2026-10-05.tsv`.
 - **GEMESSEN: `phrase_organic` (ch, 10 Zeilen) = 100 Einheiten je Aufruf**; 8 Aufrufe = 800. Kategorie-Seiten stehen bei 6 der
   8 Begriffe 10/10 in den Top 10.
+
+## 05.10.2026 · Umsetzung 2 (Betreiber «das geht mehr verbesserung mit semrush») — Workflow semrush-umsetzung-2, 07:00–08:10 UTC
+**Gemessen vorher:** `domain_rank` ch 559 Begriffe Top 100, Verkehr 0 (fast alles Platz 11–100). Ranking-CSVs 02.10.: 406 Zeilen;
+Filter Platz 11–40 mit Vol ≥ 50 ∪ Platz ≤ 30 = 100 Zeilen / 99 Begriffe auf 89 URLs (88 Produkte, 1 Kollektion); live 69 ACTIVE,
+19 DRAFT (7 mit 301, 12 ohne). 129 Begriffe ≥ 590/Mt mit ≥ 12 passenden Produkten hatten KEINE Landeseite. Kollektionstexte
+verlinkten einander nie; Top-40-Kollektionen nach Volumen: min. 1 / Ø 3.5 eingehende Links, 20 von 40 ≤ 2.
+
+| Bereich | Geändert (Zahlen) | Ledger / Bericht |
+|---|---|---|
+| **seite2-heben** | 21 Produkt-SEO (Titel ≤ 60 + Meta ≤ 155, beide Felder) + 3 Nachbesserungen (Grössen aus Varianten gemessen: 091200 «36–48», 600600 «39–45», 630100 ohne Grösse, da 40–43 ausverkauft); 2 Kollektionen sub-beleuchtung + beleuchtung-lampen (SEO + 92 Wörter Einleitung «Stimmungslicht»); **12 neue 301** (14 Versuche, 2 Ziele waren selbst Redirects → sonnenbrillen-alle / parfum-duefte). 0 Einheiten. | `_seite2_heben_2026-10-05.tsv` (42 Zeilen + Kopf), `SEITE2-HEBEN-2026-10-05.md` |
+| **neue-kollektionen** | 8 Smart-Kollektionen (Tag `kat-…`, BEST_SELLING, 6 Kanäle wie diamond-painting, Menü mit Backup `_hauptmenue_backup_2026-10-05.json`): teppiche 38 · bettwaesche 32 · waeschekoerbe 15 · wecker 21 · duschvorhaenge 16 · taschenlampen 27 · wandregale 16 · winterjacken 45 = 190 Produkte getaggt; Regeln `automation/kategorie_rein_semrush.py` (täglich via kategorie_rein.py, jetzt 17 Kategorien). `menue_links.py` 0 Befunde. **800 Einheiten** (8 × phrase_organic ch 10 Zeilen = 100/Aufruf). | `_neue_kollektionen_2026-10-05.tsv`, `NEUE-KOLLEKTIONEN-2026-10-05.md` |
+| **interne-links** | `automation/interne_links.py` (--messen/--trocken/--scharf/--zurueck/--pruefen): 149 Kollektionstexte mit Block `<!-- ls-verwandt -->` = 192 Links (63 «Passend dazu» + 129 «Zur Übersicht»), 149/149 zurückgelesen. Nachher: kaufbare Ziele < 3 Links 42 → 16 von 62; Top-40 min. 1 → 3, Ø 3.5 → 5.0, unter 3: 20 → 0. Prüferbefund behoben: `--zurueck` entfernt nur noch den Block live (Altwert-Rückweg nur `ZURUECK_VOLL=1 --zurueck-voll`, überspringt seit Schnappschuss veränderte Texte — 3 Baby-Kollektionen hätten sonst «CHF 45» zurückbekommen). 0 Einheiten. | `_interne_links_2026-10-05.tsv` (154 Zeilen + Kopf), `INTERNE-LINKS-2026-10-05.md`, `_interne_links_messung_*` |
+
+**Einheiten heute:** Messung 1'310 (domain_rank 10 + campaigns 100 + domain_organic_organic 1'200, wertlos) + Umsetzung 800 = **2'110**.
+Restguthaben nicht gemessen (Schätzung < 10'000; 08.10. braucht ~4'400).
+
+**Live-Stichproben 08:1x UTC (WebFetch, je Bereich eine):** /collections/sub-beleuchtung Titel «Stimmungslicht, Lampen & LED-Beleuchtung | LuxeStyle»,
+erster Satz «Stimmungslicht macht aus jedem Raum …», 256 Artikel, Block «Zur Übersicht: Wohnen & Garten» · /collections/teppiche Titel «Teppich kaufen:
+Wohnzimmer, Schlafzimmer & Bad | LuxeStyle», H1 Teppiche, 38 Artikel, kein 404 · /collections/elektronik-technik «Passend dazu» 4 Links
+(nintendo-switch, 3d-drucker, elektronik-audio, pc-komponenten), 4'177 Artikel.
+
+**Offen:** 12 Ranking-Produkte Platz 17–30 sind DRAFT (casio illuminator 320/Mt, katzenklo möbel 320, trinkrucksack 260, Plüsch-Löwe 170, Eisseide-Kissen 140 …)
+→ nur Kollektions-301, echter Ersatz = CJ-Suchaufträge (google_nachfrage_luecke-Klasse) · Kandidaten Runde 2: Abendkleider 3'600 (98 kaufbar), USB-Sticks 4'400 (42),
+Wanduhren 4'400 (22), Etageren 5'400 (14), Lunchboxen 3'600 (36), Schneidebretter 2'400 (Klingen-Ban drin), Winterschuhe 3'600+1'600 · Bestehende SEO-Titel erweitern:
+Stiefeletten (sub-stiefel-boots), Nachttischlampe (licht-tischlampe), VR-Brille (vr-ai-neuheiten) · Regel teppiche: `echt` nennt fussmatte, `suche` nicht
+(«Geprägtes PVC-Leder für Fussmatten» wäre Fehltreffer) · WELTEN-Regexe in interne_links.py ohne Wortgrenzen («autoMATISCHer» → tisch → wohnen; 1 Fehl-Link
+Kinderwagen-Ventilator in aufbewahrung-sub) · Anker «Baustelle Kinder» auf Bausteine-Set (3 Blöcke) · «Leichter Wintermantel aus Baumwolle» ist laut Text ein
+dünnes Polyester-Jäckchen (Titel-Workflow) · collection.productsCount hinkte 13 Min nach dem Taggen (0) — Live-Seite/products-Feld sind die Wahrheit ·
+Wecker-Armband 620000 fehlt in kat-wecker · 6 Ratgeber/Seiten verlinken beleuchtung-lampen über die 301 · 103 SEO-Metas vom 02.10. nicht auf übernommene
+Grössenangaben geprüft · kategorie_rein-Tageslauf mit 17 Kategorien (timeout 3000 s) erst beim nächsten Tick belegt · Nichts committet (Workflow-Vorgabe;
+der Autocommitter hat Teile als Drift mitgenommen).
+
+**Nachmessung 08.10. (resource_organic ch, ~4'400 Einheiten, EINMAL, vor der Kündigung 09.10.):**
+1. Seite-2-Begriffe → Position vorher/nachher: asymmetrisches kleid, fingerskateboard (Platz 37), weihnachten pyjama familie (33), stimmungslicht (20 → URL muss
+   /collections/sub-beleuchtung sein, nicht mehr beleuchtung-lampen), holzspiegel (17), spielkonsole für tv, schrank organizer, luftbett mit pumpe, leichte
+   arbeitsschuhe, spitze stiefeletten, plateau sneaker herren, geblümtes kleid, jumpsuit herren, drohne kinder, kart helm, retro sonnenbrille, 3d projektor hologramm,
+   propeller cap, kostüm superman, wecker armband vibration, langarm-t-shirt (631100 soll NICHT mehr mit gestreiftes langarmshirt ranken, 623300 schon) — volle Liste
+   Spalte `begriff` in `_seite2_heben_2026-10-05.tsv`; 12 Redirect-Quellpfade dürfen nicht mehr als eigene URL erscheinen.
+2. Neue Handles in den Rankings: /collections/teppiche (teppich 14'800), bettwaesche (14'800), waeschekoerbe (9'900), wecker (9'900), duschvorhaenge (8'100),
+   taschenlampen (6'600; «stirnlampe» gegen wandern-trekking beobachten), wandregale (6'600), winterjacken (5'400/2'900/2'400) — Google braucht Wochen, am 08.10.
+   zählt nur «indexiert und erstmals sichtbar»; echte Positionen erst in der Nachmessung nach dem Abo (Daten bleiben lokal).
+3. Interne Links: die Top-40-Kollektionen mit vorher nur Menü-Link (nintendo-switch 27'100, pc-gaming, pool, vorhaenge, puzzles, licht-decken-steh, pc-komponenten,
+   accessoires, geschirr-servieren, elektronik-audio) und die Produkte Platz 16–30 (ballettschuhe, blumenkleid, kratzsäule, kinderwagen ventilator, leuchtschuhe
+   kinder, baustelle kinder, puzzles) → Platz vorher aus `luxestyle_ch_top30_2026-10-02.csv` / `platz31-100` gegen 08.10.
+Vergleich: `python3 automation/suchvolumen.py` + CSV-Diff gegen die 02.10.-Dateien; nur Platzänderung ≥ 3 zählt (Semrush-Rauschen).
