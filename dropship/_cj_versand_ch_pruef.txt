@@ -4136,3 +4136,5 @@ fitness-tracker-activeband-herzfrequenz-schrit-635800	2601310521451636200	7	6.80
 smartwatch-prowatch-fitness-anrufe-326528	1737709153574989824	7	6.81	ok	landeseite
 smartwatch-activeone-fitness-anrufe-101440	1734777379161124864	16	5.27	ok	landeseite
 sternenhimmel-projektor-galaxy-led-nachtlicht-527681	2042478274993356801	0	-	KEINE CH-Option → DRAFT	landeseite
+sternenhimmel-projektor-nova-led-nachtlicht-892738	2042491956120944642	0	-	KEINE CH-Option → DRAFT	landeseite
+sternenhimmel-projektor-cosmos-led-nachtlicht-240961	2039999123513458690	-	-	unklar 200 Success rest=19	landeseite

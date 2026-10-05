@@ -19,7 +19,7 @@ Urteil: ok = Schnitt ≥ MIN (7.0) UND jedes Kriterium ≥ 5 UND kein K.-o.
 Cache: dropship/_gemini_jury.tsv (sha1 der Datei + Caption → Urteil) — dieselbe Datei kostet nur einmal.
 Kosten: gemini-2.5-flash, ~4 Bilder à ~260 Tokens + Prompt ≈ 0,1 Rappen je Post (Budget-Regel 11: kein Veo, keine Schleife).
 """
-import argparse, base64, hashlib, json, os, re, subprocess, sys, tempfile, time, urllib.request
+import argparse, base64, calendar, hashlib, json, os, re, subprocess, sys, tempfile, time, urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(REPO, "dropship", "_gemini_jury.tsv")
@@ -76,7 +76,7 @@ def frueheres_urteil(quelle):
         if len(t) < 4 or _basename(t[3]) != name:
             continue
         try:
-            v = json.loads(t[2]); alter = time.time() - time.mktime(time.strptime(t[1], "%Y-%m-%dT%H:%M:%SZ")) + time.timezone
+            v = json.loads(t[2]); alter = time.time() - calendar.timegm(time.strptime(t[1], "%Y-%m-%dT%H:%M:%SZ"))
         except Exception:
             continue
         if v.get("ok") and cache_gueltig(v) and alter <= RUECKFALL_TAGE * 86400 and (best is None or t[1] > best[0]):
@@ -246,7 +246,16 @@ def main():
     ap.add_argument("quelle"); ap.add_argument("--caption", default=""); ap.add_argument("--typ", default="reel")
     ap.add_argument("--ohne-cache", action="store_true")
     ap.add_argument("--nur-cache", action="store_true", help="nur gecachtes Urteil, keine neue Anfrage (Exit 2 wenn keins)")
+    ap.add_argument("--kontingent", action="store_true", help="nur messen: Exit 0 = alle Bild-Jurys leer, Exit 1 = mindestens eine frei")
+    ap.add_argument("--rueckfall-pruefen", action="store_true", help="ohne Download/Anfrage: gibt es ein früheres ok-Urteil zur Datei? Exit 0/2")
     a = ap.parse_args()
+    if a.kontingent:
+        leer = kontingent_leer()
+        print(json.dumps({"kontingent_leer": leer})); sys.exit(0 if leer else 1)
+    if a.rueckfall_pruefen:
+        v = frueheres_urteil(a.quelle)
+        print(json.dumps(v or {"ok": None, "grund": "kein früheres ok-Urteil zu " + _basename(a.quelle)}, ensure_ascii=False))
+        sys.exit(0 if v else 2)
     if not schluessel():
         print(json.dumps({"ok": None, "grund": "GEMINI_API_KEY fehlt"})); sys.exit(2)
     try:
@@ -265,6 +274,9 @@ def main():
                 v["cache"] = True
                 print(json.dumps(v, ensure_ascii=False)); sys.exit(0 if v["ok"] else 4)
     if a.nur_cache:
+        v = frueheres_urteil(a.quelle) if a.typ == "reel" and kontingent_leer() else None
+        if v:
+            rueckfall_merken(a.quelle, a.caption, v); print(json.dumps(v, ensure_ascii=False)); sys.exit(0)
         print(json.dumps({"ok": None, "grund": "kein gecachtes Urteil (--nur-cache)"})); sys.exit(2)
     jpgs, ist_video = bilder(pfad)
     if not jpgs:
@@ -286,6 +298,11 @@ def main():
             v["modell"] = MODELL
             v = mehrheit([v] + weitere)
     except Exception as e:
+        # 05.10.2026 Rückfall (nur Reels, nur bei leerem Kontingent — jeder andere Ausfall bleibt «kein Urteil = kein Post»)
+        v = frueheres_urteil(a.quelle) if a.typ == "reel" and ("Kontingent leer" in str(e) or kontingent_leer()) else None
+        if v:
+            v["grund_rueckfall"] = str(e)[:160]
+            rueckfall_merken(a.quelle, a.caption, v); print(json.dumps(v, ensure_ascii=False)); sys.exit(0)
         print(json.dumps({"ok": None, "grund": str(e)[:200]})); sys.exit(2)
     with open(CACHE, "a", encoding="utf-8") as f:
         f.write(f"{sig}\t{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\t{json.dumps(v, ensure_ascii=False)}\t{a.quelle[:200]}\n")
