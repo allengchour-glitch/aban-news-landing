@@ -3,7 +3,7 @@
 
 
 ## 05.10. 21:30 — ✅ Google Search Console (Tag live), ✅ Bing Webmaster verifiziert (msvalidate 9023C06C…), ✅ Ahrefs Webmaster Tools bestätigt
-Nächste Gratis-Klicks: Sitemap `https://luxestyle.ch/sitemap.xml` in GSC + Bing einreichen · Microsoft Merchant Center «erneut prüfen» (Ablehnung 01.10. behoben) · Clarity-Aufnahmen der Warenkorb-Sitzungen ansehen · Ahrefs Site Audit + GSC Insights · Coupler.io ↔ Search Console.
+✅ Sitemap in Bing (Success, 1.0M URLs) + Google (05.10. eingereicht; Abruf geprüft: 200, 55 Teil-Sitemaps, robots.txt verweist). Nächste Gratis-Klicks: Microsoft Merchant Center «erneut prüfen» (Ablehnung 01.10. behoben) · Clarity-Aufnahmen der Warenkorb-Sitzungen ansehen · Ahrefs Site Audit + GSC Insights · Coupler.io ↔ Search Console.
 
 ## 05.10. 21:00 — Semrush ✅ gekündigt (Bestätigungsmail 20:50). Nächster Schritt (gratis): Google Search Console einrichten
 - https://search.google.com/search-console → Property `https://luxestyle.ch` → bestätigen (Shopify: Meta-Tag oder DNS).
