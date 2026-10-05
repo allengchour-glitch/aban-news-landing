@@ -1170,6 +1170,64 @@ while true; do
       echo "$(date -u +%H:%M) kategorie_rein_2: $(grep -c '^==' "$KR2L") Kategorien geprüft · $(grep -c 'Bulk tags' "$KR2L") Bulk-Läufe · $(grep -c '⛔' "$KR2L") gestoppt"
     fi
   fi
+# --- Dünne Produkttexte (< 40 Wörter) sachlich neu schreiben — täglich, NACH seo_voll_audit (05.10.2026) ---
+DT=/tmp/produkttext_duenn.log
+if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ -s /tmp/seo_voll_audit.json ]; then
+  ALTER=$(( $(date +%s) - $(stat -c %Y "$DT" 2>/dev/null || echo 0) ))
+  if [ "$ALTER" -gt 86400 ]; then
+    ( cd "$REPO" && SCHARF=1 LIMIT=40 TEXT_MODELLE="openai/gpt-oss-120b,openai/gpt-oss-20b" timeout 3000 python3 automation/produkttext_duenn.py >> "$DT" 2>&1 )
+    echo "DUENNE-TEXTE: $(grep -c '^✍️' "$DT" 2>/dev/null) geschrieben gesamt · $(grep '^BILANZ\|^⏸' "$DT" | tail -1 | cut -c1-140)"
+  fi
+fi
+  # 05.10.2026 (Fixlauf preis-marge): EK-Lücke CJ + Neuware-Verlustschutz, täglich. 87 aktive CJ-Produkte ohne EK waren für
+  # preis_verlustschutz unsichtbar (10 echte Verlustbringer, 47 bei CJ ausgelistet); Neuimporte kennt der Tagesläufer erst mit dem
+  # nächsten Voll-Export (371 Varianten unter Boden am 05.10.). ek_luecke_cj.py: Backfill/Nachtrag NUR_IDS → Verlustschutz live →
+  # alle Produkte der letzten 36 h live → Rest ohne EK bei CJ 1602002 DRAFT. Braucht /tmp/kost28.jsonl (Kosten-Kette) und CJ-Token.
+  EKL=/tmp/ek_luecke_cj.log
+  if [ -f "$REPO/automation/ek_luecke_cj.py" ] && [ -f /tmp/kost28.jsonl ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$EKL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      echo "=== $(date -u '+%F %T') Start durch fixer_keepalive ===" >> "$EKL"
+      ( cd "$REPO" && SCHARF=1 CAP=60 timeout 3000 python3 automation/ek_luecke_cj.py >> "$EKL" 2>&1 )
+      echo "ek_luecke_cj: $(tail -1 "$EKL" | cut -c1-140)"
+    fi
+  fi
+# ZUSAGEN-ABGLEICH (05.10.2026, Bereich Vertrauen & Recht): misst täglich die Widerspruchs-Phrasen (Keine Fragen,
+# Geld-zurück, Versand aus Belp, 7 Tage die Woche, verbotene Seiten-Phrasen) und bringt den Produktblock idempotent
+# zurück auf die Richtlinie. Seiten/Policies werden nur gemessen (einmalige Ersetzungen, schon erledigt).
+ZA=/tmp/zusagen_abgleich.log
+if [ -f "$REPO/automation/zusagen_abgleich.py" ]; then
+  ALTER=$(( $(date +%s) - $(stat -c %Y "$ZA" 2>/dev/null || echo 0) ))
+  if [ "$ALTER" -gt 86400 ]; then
+    ( cd "$REPO" && exec 9>/tmp/lock_produkttext.lock && flock -w 240 9 && SCHARF=1 CAP=300 NUR=produkte timeout 900 python3 automation/zusagen_abgleich.py >> "$ZA" 2>&1 )
+    ( cd "$REPO" && timeout 300 python3 automation/zusagen_abgleich.py >> "$ZA" 2>&1 )
+    echo "$(date -u +%H:%M) zusagen_abgleich gelaufen: $(grep -E '^ZUSAGEN' "$ZA" | tail -1)"
+  fi
+  grep -E '^ZUSAGEN' "$ZA" 2>/dev/null | tail -1
+fi
+  # 🎞️ REEL-CDN-ABGLEICH (05.10.2026, Social-Gesundheit): ready-Reels, deren lokale Datei ≠ CDN-Kopie (neu gerendert, CDN alt)
+  # → CDN per fileUpdate ersetzen + Adresse in reels_seed.csv nachtragen. Ohne das sehen Poster/Metricool den alten Bildpreis.
+  RCDN=/tmp/reel_cdn_abgleich.log
+  if [ -f "$REPO/automation/reel/reel_neu_rendern.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RCDN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$RCDN"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_reel_tor_reparatur.lock; flock -n 9 || exit 0; echo START \$(date -u +%FT%H:%MZ); \
+           MODUS=cdn SCHARF=1 timeout 1500 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|GESCHEITERT|FERTIG'; \
+           bash automation/git_sichern.sh 'Reel-CDN-Abgleich [skip ci]' automation/reels_seed.csv" \
+          >> "$RCDN" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) start reel_cdn_abgleich (täglich, ready-Reels lokal≠CDN)"
+    fi
+  fi
+# ── Mobil & Tempo (05.10.2026): 4 Theme-Patches idempotent halten (Preload LCP-Hero, Lazy-Autoplay Videos, Mobil-sizes, srcset-Stufen).
+#    Theme-Editor/Horizon-Update kann sie überschreiben; findet ein Patch seinen Anker nicht (Tati-Block gelöscht), lässt er die Datei in Ruhe.
+LOG=/tmp/mobil_tempo_patch.log
+if [ -f "$REPO/automation/mobil_tempo_patch.py" ]; then ALTER=$(( $(date +%s) - $(stat -c %Y "$LOG" 2>/dev/null || echo 0) )); else ALTER=0; fi
+if [ "$ALTER" -gt 86400 ]; then
+  ( cd "$REPO" && SCHARF=1 timeout 300 python3 automation/mobil_tempo_patch.py >> "$LOG" 2>&1 )
+  echo "MOBIL-TEMPO: $(grep -c 'schon gepatcht' "$LOG" | tail -1) Patches geprüft · $(tail -1 "$LOG" | cut -c1-120)"
+fi
   # KATEGORIEN REIN (04.10.2026): Titel ∧ Produkttyp ∧ Ausschluss je Menü-Kategorie → Tag kat-… (Ringe, Taschen, Deko, …)
   KRL=/tmp/kategorie_rein.log
   if [ -f "$REPO/automation/kategorie_rein.py" ]; then
@@ -1572,7 +1630,7 @@ KLT=/tmp/test_klingen_tor.log
   BSL=/tmp/besuchte_seiten_lieferbar.log
   if [ -f "$REPO/automation/besuchte_seiten_lieferbar.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BSL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BSL"; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BSL" || still_gestorben "$BSL"; then   # 05.10.: 6 von 8 Läufen starben am Neustart
       touch "$BSL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_besuchte_lieferbar.lock; flock -n 9 || exit 0; exec >> \"$BSL\" 2>&1; \

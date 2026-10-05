@@ -47,6 +47,8 @@ Bearbeitet 05.10.2026 01:55–02:20 UTC. Nichts von Hand gepostet; alle Änderun
 - **Marken auf Wahrheit gesetzt** (`touch -d`): `/tmp/_autopilot_letztes_reel` 13:10:56Z, `…_tiktok` 13:11:12Z, `…_youtube` 02:09:46Z
   (= letzte echte `posted_at` je Kanal aus reels_seed.csv; vorher 21:55 / 21:55 / 20:13 vom Exit-0-Fehler). Kein Handpost — der Autopilot
   entscheidet weiter selbst, mit allen Wachen (Lock, Ledger, ACTIVE, Preis, Tor, Jury).
+- **`automation/meta_reel_post.mjs`** (Zusatz): IG-Container-Status `ERROR` gilt erst nach einer zweiten Abfrage 8 s später (Grund `status` im Log) —
+  gemessen 02:12: ERROR, um 02:15 FINISHED «Media has been uploaded».
 - **`automation/cj_video_reel_engine.mjs`**: Ausfall-Ledger `dropship/_cj_reel_index_tot.txt` (pid, Grund, Datum; 14 Tage gültig, DRAFT kann
   zurückkommen) filtert die Index-pids VOR dem Fenster; je pid EIN Urteil (ACTIVE-Original neben DRAFT-Duplikat zählt als Kandidat);
   Fenster 200 → bis 600 (`IDX_MAX`), Schluss sobald BATCH·3 Kandidaten stehen. DRY gemessen: **816 → 19 Kandidaten** (vorher 0),
@@ -59,7 +61,9 @@ Bearbeitet 05.10.2026 01:55–02:20 UTC. Nichts von Hand gepostet; alle Änderun
 | ready-Reels CDN == lokal | **9 von 9 GLEICH** (neue `?v=1791166020…086`, HEAD content-length = Dateigrösse) |
 | Tor an der neuen CDN-Adresse (wie der Poster) | `PREIS_SOLL=21.90 meisterwerk_tor.py <cdn-url 1377810240736727040>` → ok, bildpreise [21.90], hook 25.43 |
 | Reel-Motor DRY | «816 offene Treffer → 19 Kandidaten · 241 neu ins Ausfall-Ledger»; 3 Kandidaten mit CJ-Video |
-| Autopilot-Tick nach den Fixes | siehe Abschnitt unten |
+| Autopilot-Tick 02:12 UTC (nach Marken-Korrektur) | **TikTok ✅ geplant** (Metricool 388146074, 05.10. 10:05 CH, cjreel-1395916560924807168, Jury 8.83) · **YouTube ✅ geplant** (Metricool 388146149, 10:05 CH, cjreel-9B346B1E, Jury 8.83, «Preis stimmt in Bild und Caption überein») · IG/FB via Meta: Container 17888206023685363 meldete ERROR → Exit 1; 3 Min später stand derselbe Container auf FINISHED (Meta-Status flackert) |
+| Autopilot-Tick 02:28 UTC | IG/FB-Reel: Preis-Tor bestanden, Gemini-Jury Note 7 (Trainingsgerät zu klein im ersten Bild) → jury-skip, nächster Tick nimmt das nächste; Bildpost IG+FB ✅ |
+| Reel-Kadenz | IG/FB 13.3 h (wartet auf nächsten Tick) · **TikTok 0.3 h · YouTube 0.3 h** |
 
 ## Bewusst NICHT
 

@@ -380,21 +380,28 @@ if (fs.existsSync(INDEX_TOT)) for (const z of fs.readFileSync(INDEX_TOT, 'utf8')
 const idxAlle = idx ? Object.keys(idx.shop_video || {}).filter(p => !gebaut.has(p) && !keinVideo.has(p) && !inCsv.has(p)) : [];
 const idxPids = idxAlle.filter(p => !tot.has(p));
 let idxKand = 0; const totNeu = [];
-for (let i = 0; i < Math.min(idxPids.length, 200); i += 20) {
+// Fenster 200 → bis 600 pids, aber Schluss, sobald BATCH·3 Kandidaten stehen: ein Lauf kommt so an den toten pids vorbei,
+// statt erst beim naechsten (6 h spaeter) — jede 20er-Abfrage ist EIN Shopify-Aufruf, kein CJ-Punkt.
+const IDX_MAX = parseInt(process.env.IDX_MAX || '600', 10);
+for (let i = 0; i < Math.min(idxPids.length, IDX_MAX) && idxKand < BATCH * 3; i += 20) {
   const teil = idxPids.slice(i, i + 20);
   const q = teil.map(p => `sku:CJ-${p}`).join(' OR ');
   const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q });
   if (!r) break;
-  const gesehen = new Set();
+  // Je pid EIN Urteil: eine pid kann mehrere Shop-Produkte tragen (Duplikat als DRAFT neben dem ACTIVE-Original) —
+  // qualifiziert eines, zaehlt die pid als Kandidat und landet NICHT im Ausfall-Ledger.
+  const gut = new Set(), grundJe = new Map();
   for (const n of r.data.products.nodes) {
     const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(sku); if (!m || !idxPids.includes(m[1])) continue;
-    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0'); gesehen.add(pid);
-    const grund = n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90' : (n.mediaCount?.count || 0) < 2 ? 'unter-2-bilder' : VERBOTEN.test(n.title) ? 'verbots-titel' : '';
-    if (grund) { totNeu.push([pid, grund]); continue; }
-    if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) { totNeu.push([pid, 'produkt-schon-gepostet']); continue; }
+    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0');
+    if (gut.has(pid)) continue;
+    const grund = n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90' : (n.mediaCount?.count || 0) < 2 ? 'unter-2-bilder' : VERBOTEN.test(n.title) ? 'verbots-titel'
+      : produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`) ? 'produkt-schon-gepostet' : '';
+    if (grund) { grundJe.set(pid, grund); continue; }
+    gut.add(pid); grundJe.delete(pid);
     kand.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [], idx: true }); idxKand++;
   }
-  for (const p of teil) if (!gesehen.has(p)) totNeu.push([p, 'nicht-im-shop']);
+  for (const p of teil) if (!gut.has(p)) totNeu.push([p, grundJe.get(p) || 'nicht-im-shop']);
 }
 if (totNeu.length && !DRY) fs.appendFileSync(INDEX_TOT, totNeu.map(([p, g]) => `${p}\t${g}\t${new Date().toISOString().slice(0, 10)}`).join('\n') + '\n');
 if (idx) console.log(`Video-Index: ${idxAlle.length} offene Treffer (${idxAlle.length - idxPids.length} im Ausfall-Ledger ≤ ${TOT_TAGE} T) → ${idxKand} Kandidaten · ${totNeu.length} neu ins Ausfall-Ledger (Index-Stand ${(idx.stand || '').slice(0, 16)})`);

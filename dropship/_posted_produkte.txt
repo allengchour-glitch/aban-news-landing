@@ -144,3 +144,4 @@ slug:bingo-nummernballe-1-90-fga82017
 slug:cola-froschli-fga87241
 name:colafröschli200stück
 slug:smart-hundespielzeug
+slug:einweg-pappbecher-bayern-fga918b
