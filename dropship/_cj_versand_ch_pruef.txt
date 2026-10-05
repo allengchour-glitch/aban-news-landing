@@ -4489,3 +4489,8 @@ kabellose-gamecontroller-ladestation-600000	2506220642311600200	7	12.57	ok	lande
 dual-mode-gaming-controller-fur-mobil-pc-607600	2505270943401607900	7	9.69	ok	landeseite
 date-night-drinking-creative-brettspiel-602600	2505270905361602800	16	5.41	ok	landeseite
 wiederaufladbares-retro-game-set-mit-2-control-625500	2505080526451625700	7	11.21	ok	landeseite
+vertikaler-gaming-pistolengriff-mit-trigger-610900	2504280143211611300	7	15.51	ok	landeseite
+rgp01-multi-plattform-wireless-gamepad-619700	2504110347161619900	7	11.58	ok	landeseite
+x2-blue-4k-wireless-gaming-konsole-602800	2503140526221603000	7	11.93	ok	landeseite
+vibrations-gamepad-mit-6-achsen-bewegungssenso-615000	2503100504431615200	7	8.57	ok	landeseite
+tastatur-maus-konverter-fur-mobile-gaming-609000	2503100257001609200	7	8.10	ok	landeseite
