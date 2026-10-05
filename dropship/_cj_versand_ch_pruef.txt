@@ -3998,3 +3998,7 @@ isolier-trinkflasche-edelstahl-huelle	2606120913081625000	16	10.49	ok	landeseite
 edelstahl-coffee-to-go-becher	2606111212431606500	16	8.66	ok	landeseite
 canvas-shopper-tote-nachhaltig	2606121029231602100	16	8.79	ok	landeseite
 edelstahl-seifenschale-ohne-bohren	2606100844591622500	3	8.42	ok	landeseite
+partner-halskette-soulmate-magnetischer-herz-anhanger-2-halften	2065705167654637569	7	4.67	ok	landeseite
+paar-armband-herzstein-naturstein-mit-herz-anhanger	2056657238690009090	0	-	KEINE CH-Option → DRAFT	landeseite
+partner-ring-chain-titanstahl-18k-vergoldet-unisex	2059253763690483714	16	4.47	ok	landeseite
+partner-kette-wolfszahn-edelstahl-anhanger-fur-sie-ihn	2605191324221633000	16	4.75	ok	landeseite
