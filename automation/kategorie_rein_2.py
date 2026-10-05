@@ -49,14 +49,16 @@ MODE_SCHMUCK = {"Damenmode", "Herrenmode", "Schmuck", "Ring", "Halskette", "Ohrr
                 "Hüte & Caps", "Shirt", "Hoodies & Pullover", "Damenschuhe", "Herrenschuhe", "Make-up", "Hautpflege",
                 "Nageldesign", "Beauty-Tools", "Kostüme & Verkleidung", "Partydeko & Ballone", "Tasse", "Poster", "Selbst gestalten",
                 "Sticker", "Mauspad"}
-TIER_BAN = (r"kostüm|verkleidung|katzenaugen?-?(sonnen)?brille|cat.?eye|pet-?flasche|\bcat\b|caterpillar|\bbruder\b|bworld|hundert|kissenbezug|sonnenbrille|"
+# 05.10. (Prüfer «kategorie»): `\bpets?\b` traf «USB Mini Luftbefeuchter "Cute Pet Bear"» und «Polyester PET Luftfiltergewebe».
+TIER_BAN = (r"luftbefeuchter|filtergewebe|pet bear|kostüm|verkleidung|katzenaugen?-?(sonnen)?brille|cat.?eye|pet-?flasche|\bcat\b|caterpillar|\bbruder\b|bworld|hundert|kissenbezug|sonnenbrille|"
             r"anhänger|ohrring|halskette|armband|\bring\b|haarreif|haarband|haarspange|ohren-|t-shirt|shorts|socken|pyjama|"
             r"schutzhülle|handyhülle|hülle für|wandtattoo|wandbild|poster|tasse|pferdeschwanz|hot.?dog|dogecoin|anti-?kater|"
             r"für (kinder|babys?|damen|herren|mädchen|jungen)|kinder|baby|kopfhaut|massagebürste|\bstoff\b|baumwollstoff|puzzle|ornament|"
             r"\bfigur|skulptur|(hunde|katzen)-?lampe|kunstharz|quallen|ohrhörer|etui|wandbild|leinwand|malen nach zahlen|diamond painting|brosche|pin\b|schlüsselanhänger|"
             r"gemälde|anatomie|kopfhörer|katzenohren|kätzchenohren|tastenkappe|tastatur|plüsch-?kissen|dekoration|desktop|"
             r"(hunde?|katzen?)-?(design|motiv)|aus pet\b|roboter|robot|\bcase\b|handgriff|kreuzstich|stickbild|stickerei|treibsand")
-TIER_FREMD = MODE_SCHMUCK | {"Wohnen & Deko", "Baby & Kinder", "Kinder", "Kinderschuhe", "Taschen", "Küche & Bar", "Heimtextilien"}
+TIER_FREMD = MODE_SCHMUCK | {"Wohnen & Deko", "Baby & Kinder", "Kinder", "Kinderschuhe", "Taschen", "Küche & Bar", "Heimtextilien",
+                             "Wellness & Aromatherapie"}
 LADE_BAN = (r"(ladestation|ladegerät|ladekabel|lader) für (haarschneide|rasierer|zahnbürste|controller|gamepad|ps[45]|xbox|switch|"
             r"smartwatch|apple watch|galaxy watch|e-?bike|scooter|roller|akkus?|batterien?|kamera|drohne|staubsauger|laptop|notebook|"
             r"macbook)|controller|gamepad|\bps[45]\b|xbox|nintendo|ni-?cd|ni-?mh|18650|21700|16340|cr123|lithium|li-?ion|\baaa?\b|"
@@ -72,7 +74,7 @@ CFG = {
         echt=R(r"kinder|\bkinds?\b|baby|babys\b|kleinkind|säugling|neugeboren|spielzeug|bausteine|klemmbaustein|ferngesteuert|"
                r"\brc\b|puppe|kuscheltier|plüschtier|mädchen|\bjunge[ns]?\b|schulranzen|babyphone|kinderwagen|lätzchen|schnuller|"
                r"windel|stillkissen|wickel|buggy|laufgitter|krabbel|schulkind|teenager|kita\b|schulanfang|bausatz|bauklötze|bauklotz|"
-               r"holzpuzzle|puzzle|modellbau|flugball|plüsch|kuschel|brettspiel|kartenspiel|spielfigur|spielset|spielmatte|holzmodell|"
+               r"holzpuzzle|puzzle|modellbau|flugball|plüsch|kuschel.{0,6}(kinder|baby)|brettspiel|kartenspiel|spielfigur|spielset|spielmatte|holzmodell|"
                r"flugzeugmodell|automodell|modellauto|zusammenbau|bauset|steckbaustein|klemmbaustein|baukasten|bworld|\bbruder\b"),
         ban=R(r"babyliss|babydoll|baby.?(blau|blue|pink|rosa)|kinderwunsch|erotik|\bsex|vibrator|dessous|schaufensterpuppe|"
               r"puppenkopf|übungskopf|frisierkopf|hunde(spielzeug|leine|halsband|geschirr|bett|napf|futter|mantel|kleidung|pullover|"
@@ -82,8 +84,8 @@ CFG = {
               r"katzenspielzeuge|intelligente katzen|interaktives katzen|raucher|zigarette|\bvape|"
               r"junge (männer|frauen|leute|erwachsene|damen|herren|haut|mütter|eltern)|mädchenhaft|für erwachsene\b(?!.*kinder)|"
               r"puppenkragen|\bstoff\b|baumwollstoff|kleiderstoff|meterware|\bjunges\b|\bjunger\b|ihr junges|mädchenherz"),
-        kern_ban=R(r"für (hunde|katzen|haustiere|welpen|hund und katze|hund & katze|hund|katze)|haustier|welpe|\bpets?\b|hundespielzeug|"
-                   r"katzenspielzeug|kauspielzeug|katzenangel|schnüffel|quietsch"),
+        kern_ban=R(r"für (ruhige )?(hunde|katzen|haustiere|welpen|hund und katze|hund & katze|hund|katze)|haustier|welpe|\bpets?\b|hunde-?spielzeug|"
+                   r"katzen-?spielzeug|kauspielzeug|katzenangel|schnüffel|quietsch|katzenhängematte|hunde-?plüschtier|hunde-?nächte|katzen-?plüschkissen"),
         kern={"Kinderschuhe", "Spielzeug & Spiele", "Baby & Kinder", "Kinder", "Spielzeug"},
         kern_tag=("spielzeug", {"Spass-Elektronik", "Gadget", "Elektronik", "Basteln & DIY"}),   # Bausteine, RC, Roboter: Tag + Typ = Spielzeug
         fremd={"Haustierbedarf", "Raucherzubehör", "Erotik"}),
@@ -160,7 +162,7 @@ CFG = {
               r"laptop-?rucksack|monitor-?arm für tv|büro-?damen|ohrring|halskette|armband|\bring\b|uhr\b|topf\b|kocher|pfanne"),
         kern={"Büro & Home Office"},
         fremd=MODE_SCHMUCK | {"Küche & Bar", "Haustierbedarf", "Heimtextilien", "Auto-Zubehör", "Baby & Kinder", "Kinder",
-                              "Kinderschuhe", "Wohnen & Deko"}),
+                              "Kinderschuhe", "Wohnen & Deko", "Wellness & Aromatherapie"}),   # 05.10.: Schreibtisch-Luftbefeuchter sind kein Büromaterial
 }
 
 
@@ -306,9 +308,12 @@ def lauf(handle, c):
         return
     ops = [("tagsAdd", i) for i in rein if c["tag"] not in kand[i]["tags"]] + \
           [("tagsRemove", i) for i, p in kand.items() if i not in rein and c["tag"] in p["tags"] and not pod(p)]
-    with open(VORHER, "a", encoding="utf-8") as f:   # Mitglieder VOR der Umstellung — Rückweg ohne Shopify-Verlauf
-        for i in jetzt:
-            f.write(f"{handle}\t{i}\t{kand[i]['productType']}\t{kand[i]['title']}\n")
+    # 05.10. (Prüfer «kategorie»): vorher schrieb jeder Tageslauf die VOLLE Mitgliederliste (11'000 Zeilen / 1,2 MB pro Tag),
+    # auch bei «raus 0». Der Rückweg braucht nur die Abgänge → nur die, und nur wenn es welche gibt.
+    if raus:
+        with open(VORHER, "a", encoding="utf-8") as f:
+            for i in raus:
+                f.write(f"{handle}\t{i}\t{kand[i]['productType']}\t{kand[i]['title']}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\n")
     print(f"   schreibe {len(ops)} Tag-Änderungen …", flush=True)
     t0 = time.time()
     if len(ops) > 50:

@@ -99,6 +99,14 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     # 02.10.: Lehrmodelle zuerst — «PVC Hundeskelett-Modell» wäre über «skelett» Halloween-Deko geworden, «Hundeohr
     # Anatomie-Modell» über «hund» Tierbedarf. bi-19-8 = Medical Teaching Equipment (gemessen 02.10.).
     (r"anatomi\w*|\w*skelett-?modell|verdauungssystem|organmodell", "bi-19-8"),
+    # 05.10.2026 (Prüfer «kategorie», Plan 6): «Adventskalender Blind Box Sammlung 2026» wurde über `\bbox\b` Storage &
+    # Organization; hg-3-58-1 = Advent Calendars (gemessen 05.10. per taxonomy.categories(search:"advent")) ist genauer
+    # als Party Supplies. Steht VOR Aufbewahrung/Puzzle/Baustein, weil ein Kalender ein Kalender bleibt.
+    (r"adventskalender|advent-?kalender", "hg-3-58-1"),
+    # 05.10.2026: ferngesteuertes TIER ist Spielzeug, kein Tierbedarf — «Smart Sensor Stunt-Hund mit Fernbedienung» stand
+    # seit 23.09. auf Pet Supplies (Bindestrich = Wortgrenze, `\bhund` traf). tg-5-18 = Remote Control Toys (gemessen 05.10.).
+    # Regression 05.10. (5'165 Sammeltyp-Produkte): «Saugroboter mit Fernbedienung» wäre Spielzeug geworden → Haushaltsroboter raus.
+    (r"^(?!.*(?:saug|staub|putz|wisch|mäh|küchen|fenster|pool|rasen)-?roboter)(?:.*(?:fernbedienung|ferngesteuert\w*|\brc\b).*(?:\bhund(?!ert)|\bkatz|\btier\w*\b|roboter|\bdino)|.*(?:\bhund(?!ert)|\bkatz|\btier\w*\b|roboter|\bdino).*(?:fernbedienung|ferngesteuert\w*|\brc\b))", "tg-5-18"),
     # 04.10.2026 (Verbesserungsrunde «kategorie-typ»): Tierware VOR Schuh/Kleid/Kostüm — gemessen standen «Hunde-
     # Outdoorschuhe» unter Shoes, «Kaschmir-Pullover für Haustiere» unter Clothing, «Halloween-Kostüm für Hunde» unter
     # Costumes. Wortfallen: hund(?!ert) = «Hunderte», katze(?!nauge) = «Katzenaugen-Sonnenbrille».
@@ -111,7 +119,7 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"baustein|bausatz|baukasten|bauklötz|klemmbaustein|modellbau", "tg-5-7"),
     (r"puzzle", "tg-4"),
     (r"plüsch|kuscheltier|stofftier", "tg-5-8-11"),
-    (r"aufbewahrung|organizer|\bboxen?\b|box\b|kästchen|(?<!bau)(?<!werkzeug)kasten\b|bügel\b|\bkorb|körbe|schublade|behälter|kiste|\bdosen?\b|staufach|\btray\b|beutel", "hg-10-16"),
+    (r"aufbewahrung|organizer|(?<!blind )(?<!blind-)(?<!blind)\bboxen?\b|(?<!blind )(?<!blind-)(?<!blind)box\b|kästchen|(?<!bau)(?<!werkzeug)kasten\b|bügel\b|\bkorb|körbe|schublade|behälter|kiste|\bdosen?\b|staufach|\btray\b|beutel", "hg-10-16"),
     (r"(?<![a-zäöü])(?:armband|damen|herren|quarz|smart|taschen|kinder)?uhr\b|armbanduhr", "aa-6-11"),
     (r"perücke", "aa-2-14-12"),
     (r"kostüm|verkleidung", "aa-3-3"),
@@ -135,8 +143,12 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"wasserkocher|pfanne|kochtopf|\btopf\b|messbecher|schneidebrett|küchen\w*", "hg-11"),
     (r"lampe|leuchte|nachtlicht|lichterkette|led-licht|\bled\b", "hg-13"),
     (r"smart\s?-?watch|smartuhr|fitness-?tracker|fitnessuhr", "aa-6-12"),
+    # 05.10.2026: «Intelligente WLAN-Steckdose» wurde über `dose\b` Storage & Organization. Keine Taxonomie-Klasse «Smart Plug»
+    # (gemessen 05.10., search "smart plug"/"outlet" leer) → el-7-15 Electronics Accessories > Power; Leisten el-7-15-8.
+    (r"steckdosenleiste|mehrfachsteckdose|steckerleiste", "el-7-15-8"),
+    (r"steckdose|smart-?plug|wlan-?stecker|zwischenstecker", "el-7-15"),
     (r"\b(usb|akku|bluetooth|kopfhörer|lautsprecher|powerbank|ladegerät|ladekabel|kabel|smart\w*|kamera|projektor|beamer|mikrofon|adapter)\b", "el"),
-    (r"aufbewahrung|organizer|\bbox\b|korb|regal|halter\b|ablage|behälter|kiste|schublade|dose\b|haken\b|ordnung", "hg-10-16"),
+    (r"aufbewahrung|organizer|\bbox\b|korb|regal|halter\b|ablage|behälter|kiste|schublade|(?<!steck)dose\b|haken\b|ordnung", "hg-10-16"),
     # 24.09.2026 — zweite Welle fuer «Trend-Produkt»/«Trend-Gadget» (511 ohne Treffer). Niedrigerer Vorrang als alles oben;
     # Wortfallen: Tier-HAAR ≠ Haarpflege, AUTO-matisch ≠ Auto, Kleider-BÜGEL ≠ Kleid, Schw-ESTER ≠ Weste.
     (r"fahne\w*|flagge\w*|lampion\w*|wimpel", "ae-3-2"),
@@ -466,5 +478,41 @@ def korrektur():
     print(f"KORREKTUR FERTIG: {ok} von {len(zu_tun)} rückgelesen · {bilanz()}")
 
 
+# 05.10.2026: Kanarienvögel (`python3 kategorie_wache.py --test`, ohne Shop-Zugriff). Jede Regeländerung muss hier 0 Fehler
+# zeigen; die drei Prüfer-Fälle vom 05.10. stehen oben, die älteren Wortfallen (9b) dahinter.
+KANARIEN = [
+    ("Gadget", "Intelligente WLAN-Steckdose", "el-7-15"),
+    ("Trend-Produkt", "Adventskalender Blind Box Sammlung 2026", "hg-3-58-1"),
+    ("Spass-Elektronik", "Smart Sensor Stunt-Hund mit Fernbedienung", "tg-5-18"),
+    ("Trend-Gadget", "Ferngesteuerter Roboter-Hund für Kinder", "tg-5-18"),
+    ("Gadget", "Steckdosenleiste mit 4 USB-Anschlüssen", "el-7-15-8"),
+    ("Haushalt & Wohnen", "Acryl-Adventskalender Blind Box", "hg-3-58-1"),
+    ("Aufbewahrung & Organizer", "Aufbewahrungsbox mit Deckel", "hg-10-16"),
+    ("Aufbewahrung & Organizer", "Vorratsdose aus Glas", "hg-10-16"),
+    ("Trend-Gadget", "Hundeleine mit Reflektorstreifen", "ap-2"),
+    ("Trend-Gadget", "Hunderte LED Lichterkette", "hg-13"),
+    ("Trend-Gadget", "Katzenaugen-Sonnenbrille", "aa-2-27"),
+    ("Trend-Gadget", "PVC Hundeskelett-Modell", "bi-19-8"),
+    ("Trend-Gadget", "Ferngesteuertes Auto mit Drift", "el"),
+    ("Gadget", "Saugroboter mit Fernbedienung und App-Steuerung", "el"),
+    ("Trend-Gadget", "Kreatives Sturmfeuerzeug mit Doppelflamme", "hg-19"),
+    ("Trend-Gadget", "Press Lock Schnürsenkel", "aa-8"),
+    ("Baby & Kinder", "Pyjama-Set für Mädchen", "aa-1-25-6"),
+]
+
+
+def test():
+    fehler = 0
+    for typ, titel, soll in KANARIEN:
+        ist = ziel_fuer(typ, titel)
+        ok = ist == soll
+        fehler += (not ok)
+        print(f"  {'✅' if ok else '❌'} {typ[:16]:16s} | {titel[:48]:48s} → {ist or 'LEER':10s} (soll {soll})")
+    print(f"KANARIEN: {len(KANARIEN) - fehler}/{len(KANARIEN)} richtig")
+    return fehler
+
+
 if __name__ == "__main__":
+    if "--test" in sys.argv:
+        sys.exit(1 if test() else 0)
     korrektur() if os.environ.get("KORREKTUR") == "1" else main()

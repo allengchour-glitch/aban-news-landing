@@ -30,6 +30,23 @@ Ledger (Altwerte, Rücklesen): dropship/_duenne_texte_ledger.tsv (handle · woer
   HANDLES_FILE=/pfad/liste.txt                           statt /tmp/seo_voll_audit.json (text_duenn)
 Modelle: Text openai/gpt-oss-20b (Massenlauf-Modell, Lehre 02.10.), Bild meta-llama/llama-4-scout-17b-16e-instruct — damit das
 Bestell-Bildvergleich-Modell (qwen) sein Kontingent behält. Tageskontingent leer → Lauf endet ohne Quittung (zweitmodell.TagesKontingentLeer).
+
+NACHTRAG 05.10.2026 (Prüferbefunde, Wache war mit dropship/_duenne_texte_angehalten angehalten) — sechs neue Tore:
+  VARIANTEN: Sätze zu «erhältlich in / Farben / Grössen / Ausführungen / wählbar» nur, wenn die genannten Werte in den
+    Shopify-OPTIONEN stehen (Flipflops bewarben 5 Farben + 3 Grössen bei «Default Title»); bei Einzelvariante jedes Wahl-Wort verboten.
+  EDELSTEIN: Diamant/Brillant/Saphir/Rubin/Smaragd/Echtgold/925 nur bei belegtem Echtschmuck in den Quellen (CJ «Diamond-Inlaid» =
+    Strass; Herz-Link wurde als «mit Diamanten besetzt» verkauft = täuschende Edelstein-Angabe). Gilt auch für den TITEL.
+  MATERIAL-WIDERSPRUCH: Materialwort im Fliesstext muss zur Material-Zeile des Faktenblocks passen (Leder-Tote: Text «Rindleder»,
+    Block «Kunststoff»); widersprechen sich CJ-Name und CJ-materialNameEn, schreibt der Lauf KEINE Material-Zeile.
+  MÜLLQUELLE: CJ productNameEn aus nur Ziffern oder ≤ 3 Zeichen («12» beim Laufschuh wurde «Grösse 12») ist keine Quelle; Alt-Zeilen
+    «12 Grösse» (Zahl + ein Wort ohne Einheit) ebenso nicht. EINHEIT: Zahl+Einheit im Text nur, wenn die Quelle dieselbe Einheit
+    trägt (Variantencode «3 color 32» wurde «32 mm Lichtfläche»). ZIELGRUPPE: «18 bis 59 Jahren» (CJ-Feld) ist kein Produktfakt.
+  NEGATIVQUELLE: wurde der Titel per Kontaktbogen korrigiert (dropship/_duenne_texte_titel_ledger.tsv), sind die Wörter des alten
+    Titels im Text verboten («Frosch» nach Umbenennung auf Bär/Schleife/Muschel). Unpersönliches «Man kann» = Sie-Form-Klasse.
+  MIN_W 70 statt 80, wenn weniger als 6 Quellenzeilen vorliegen (Velvet-Kissenbezug scheiterte 5× am Eigenschafts-Tor).
+  NACHPRUEFEN=1: liest ALLE Ledger-Handles live, schickt den Live-Fliesstext durch die Tore, meldet Treffer + «SEO-Titel alt»
+    (seo.title beginnt nicht mit dem Produkttitel) — schreibt NICHTS, nutzt NUR den CJ-Cache. Exit 0 = 0 Treffer.
+  python3 automation/produkttext_duenn.py --test   Kanarienvögel der neuen Tore (ohne Shopify/CJ/Groq).
 """
 import html as H
 import io
@@ -123,7 +140,8 @@ TITEL_PRUEFEN = os.path.join(REPO, "dropship", "_duenne_texte_titel_pruefen.txt"
 CJ_CACHE = "/tmp/produkttext_duenn_cj.json"
 # URTEILE_FILE: JSON {handle: {"objekt","farben","merkmale","anzahl_teile","passt_zum_titel","grund"}} — Bild-Urteile aus dem
 # Kontaktbogen (Regel 5), gemessen 04.10.: qwen-TPD 200'000 je Org, EIN Bild = 2'143 Tokens → 118 Produkte sprengen den Tag.
-URTEILE = json.load(open(os.environ["URTEILE_FILE"])) if os.environ.get("URTEILE_FILE") else {}
+_URTEILE_STD = os.path.join(REPO, "dropship", "_duenne_texte_bildurteile.json")   # Kontaktbogen-Urteile 04.10. (118), Regel 5
+URTEILE = json.load(open(os.environ.get("URTEILE_FILE") or _URTEILE_STD)) if (os.environ.get("URTEILE_FILE") or os.path.exists(_URTEILE_STD)) else {}
 BILD_AUS = os.environ.get("BILD_AUS") == "1"
 _bild_tot = {"ja": False}
 AUDIT = "/tmp/seo_voll_audit.json"
@@ -133,7 +151,8 @@ FLOSKEL = re.compile(r"\b(hochwertig\w*|perfekt\w*|ideal\w*|sorgt\s+für|sorgen\
                      r"premium|unverzichtbar\w*|highlight\w*|must-?have|hervorragend\w*|optimal\w*|erstklassig\w*|traumhaft\w*|"
                      r"wundersch[öo]n\w*|stilvoll\w*|elegant\w*|trendig\w*|zeitlos\w*|raffiniert\w*|begeister\w*|"
                      r"verleiht|unterstreicht|Blickfang|Statement|Eyecatcher|langlebig\w*|robust\w*|zuverl[äa]ssig\w*|"
-                     r"garantiert|Garantie|zertifiziert|gepr[üu]ft\w*|original\w*|Qualit[äa]t\w*|professionell\w*)\b", re.I)
+                     r"garantiert|Garantie|zertifiziert|gepr[üu]ft\w*|original\w*|Qualit[äa]t\w*|professionell\w*|wird als \w+ bezeichnet|"
+                     r"besonders hervorgehoben|entsprechenden? Gr[öo]ssen|wird mit der entsprechenden|Aufstelldienst)\b", re.I)
 # Gemessen Trockenlauf 04.10.: «edel\w*» traf «Edelstahl» (Kanarienvogel) → eigener Ausschluss, nicht in der Floskel-Liste.
 EDEL = re.compile(r"\bedel(?!stahl|stein|metall)\w*", re.I)
 # Trockenlauf 2 (05.10. 00:10): «Bild\w*» traf «bilden», «erhältlich» und «Angebot» sind normale Wörter → enger gefasst.
@@ -145,7 +164,10 @@ SIE = re.compile(r"(?<![.!?:»«\"]\s)(?<!^)\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ih
 SIE_ANFANG = re.compile(r"(?:^|[.!?]\s+)Sie\s+(k[öo]nnen|erhalten|bekommen|finden|w[äa]hlen|sollten|m[üu]ssen|d[üu]rfen|haben|tragen|nutzen|verwenden|brauchen)\b")
 CODE = re.compile(r"\b(Style|Pattern|Type|Typ|Muster)\s*\d|\d\s*-\s*\d\s*(pair|Paar|pcs|Stk)\b", re.I)
 SYNONYM = {"velours": "samt", "velvet": "samt", "suede": "wildleder", "dacron": "polyester", "vinylon": "kunstfaser polyester", "resin": "harz",
-           "cubic zirconia": "zirkonia", "zirkon": "zirkonia", "alloy": "legierung metall", "pu": "kunstleder pu", "plush": "plüsch", "knitted": "strick",
+           "cubic zirconia": "zirkonia", "zirkon": "zirkonia", "silver": "silber", "golden": "gold", "gold": "gold", "pearl": "perle",
+           "rose gold": "rosegold roségold", "rhinestone": "strass", "crystal": "kristall", "glass": "glas", "stone": "stein",
+           "rubber": "gummi", "foam": "schaum schaumstoff", "ni-mh": "nickel-metallhydrid nimh", "nimh": "nickel-metallhydrid",
+           "synthetic resin": "kunstharz harz", "canvas": "canvas leinwand", "titanium": "titan", "malachite": "malachit", "pc": "polycarbonat", "alloy": "legierung metall", "pu": "kunstleder pu", "plush": "plüsch", "knitted": "strick",
            "cotton": "baumwolle", "polyester": "polyester", "spandex": "elasthan", "edelstahl": "stahl metall", "kupfer": "kupfer metall", "messing": "metall",
            "zinklegierung": "zink legierung metall", "titanstahl": "titan stahl metall", "silikon": "silikon", "glas": "glas", "keramik": "keramik"}
 WIRK = re.compile(r"\b(lindert|lindern|heilt|heilen|therap\w*|entgift\w*|straff\w*|Cellulite|Durchblutung|Schmerz\w*|"
@@ -155,7 +177,8 @@ WIRK = re.compile(r"\b(lindert|lindern|heilt|heilen|therap\w*|entgift\w*|straff\
                   r"(?:f[öo]rdert|verbessert|reduziert|st[äa]rkt|unterst[üu]tzt)\s+(?:die|das|den|deine?n?|ihre?n?)?\s*(?:Haut\w*|Durchblutung|Schlaf|Gesundheit|"
                   r"Immunsystem|Stoffwechsel|Heilung|Konzentration|Wohlbefinden|Haar\w*|Stimmung|Atmung|Haltung|Muskel\w*|Gelenk\w*|Augen|Sehkraft)|"
                   r"sch[üu]tzt vor UV|UV-?Schutz|UPF|SPF|LSF|wasserdicht|wasserfest|"
-                  r"schlagfest|kratzfest|bruchsicher|feuerfest|hitzebest[äa]ndig)\b", re.I)
+                  r"schlagfest|kratzfest|bruchsicher|feuerfest|hitzebest[äa]ndig|Hautproblem\w*|Hautbarriere|Falten|R[öo]tung\w*|repariert|"
+                  r"Hautpflege\w*|Augenpflege\w*|pflegt die|n[äa]hrt)\b", re.I)
 UMSCHRIFT = re.compile(r"\b(fuer|ueber|groesse\w*|ausfuehrung\w*|moeglich\w*|schoen\w*|koenn\w*|waehl\w*|waerme|kueche|tuer\w*|buero|stueck\w*|"
                        r"zubehoer|gruen\w*|oel\w*|haelt|traeg\w*|laess\w*|faellt|aermel|naehe|hoehe|laenge|gefuehl|muede|fruehling|kaelte|"
                        r"\w*(?<!q)[bcdfghklmnprstvwxz](?:ae|oe|ue)[bcdfghklmnprstvwxz]\w*)\b", re.I)
@@ -168,14 +191,31 @@ ZAHLWORT = re.compile(r"\b(ein(?:en|e|em|er|es)?|zwei|drei|vier|f[üu]nf|sechs|s
 ANSPRUCH = re.compile(r"\b(luftdicht|wasserdicht|wasserabweisend|sp[üu]lmaschinen\w*|waschmaschinen\w*|bruchsicher|rostfrei|hitzebest[äa]ndig|BPA\w*|"
                       r"allergiker\w*|nickelfrei|hypoallergen|antibakteriell|lebensmittelecht|kratzfest|stossfest|sto[ßs]fest|leicht zu reinigen|"
                       r"einfach zu reinigen|pflegeleicht|waschbar|b[üu]gelfrei|atmungsaktiv|rutschfest|auslaufsicher|ergonomisch|faltbar|zusammenklappbar|"
-                      r"verstellbar|abnehmbar|wiederverwendbar|recycl\w*|vegan|bio|handgefertigt|handgemacht|Standard-?\w*|universell|kompatibel\w*|passt (?:auf|zu|in) \w+)\b", re.I)
+                      r"verstellbar|abnehmbar|wiederverwendbar|recycl\w*|vegan|bio|handgefertigt|handgemacht|Standard-?\w*|universell|kompatibel\w*|passt (?:auf|zu|in) \w+|"
+                      r"wetterbest[äa]ndig|witterungsbest[äa]ndig|stabil\w*|Messungen|frostsicher|UV-?best[äa]ndig|schwer entflammbar)\b", re.I)
 # Stichprobe 10 vom Scharflauf (05.10. 00:00): «aus Rubber gefertigt», «als Studs konzipiert», «Wallet», «Stroller», «casuales» —
 # englische Restwörter aus Import-Text und CJ-Daten → Liste erweitert; «passend für.» als Satzende → Tor SATZENDE.
 ENGLISCH = re.compile(r"\b(the|and|with|for|your|of|is|are|this|that|high|quality|made|from|free|rubber|steel|plated|cotton|leather|wood|silver|"
                       r"zinc|alloy|stainless|plastic|studs?|strap|casual\w*|wallet|stroller|cloth|fabric|size|color|colour|style|pattern|"
-                      r"light|night|fast|charging|pair|pcs|set of|bag|case|cover|holder)\b", re.I)
-SATZENDE = re.compile(r"\b(f[üu]r|und|oder|mit|zu|zum|zur|von|der|die|das|den|dem|des|auf|in|im|an|am|bei|aus|ein|eine|einen|einem|einer|sowie|als|wie|"
-                      r"durch|ohne|gegen|nach|vor|[üu]ber|unter|leicht|gut|sehr)[.!?]?$", re.I)
+                      r"light|night|fast|charging|pair|pcs|set of|bag|case|cover|holder|shaped|crushed|inlaid|encrusted|top-?grain|cowhide|"
+                      r"fashion|design\s+style|open-?end|plug\s*in|charge)\b", re.I)
+# 05.10.: «hängst … auf.», «stellst … ein.», «spülst … aus.» sind trennbare Verben, kein Satzbruch → Partikel aus der Liste
+SATZENDE = re.compile(r"\b(f[üu]r|und|oder|zum|zur|von|der|die|das|den|dem|des|eine|einen|einem|einer|sowie|als|wie|"
+                      r"durch|ohne|gegen|leicht|gut|sehr)[.!?]?$", re.I)
+# 05.10.: Prüferbefunde — Wahl-Wörter bei Einzelvariante, Edelstein-Täuschung, Zielgruppenfeld, unpersönliche Form, erfundene Einheit
+WAHL_EINZELN = re.compile(r"\b(erh[äa]ltlich|lieferbar|verf[üu]gbar|Ausf[üu]hrung\w*|w[äa]hl\w*|Auswahl|Variante\w*|Farbvariante\w*|"
+                          r"Farbausf[üu]hrung\w*|in (?:den|verschiedenen|mehreren) (?:Farben|Gr[öo]ssen)|Gr[öo]ssen?\s+\d|Gr[öo]ssen\b|"
+                          r"L[äa]ngen? (?:von|zwischen)|Stilvariante\w*)\b", re.I)
+WAHL_LISTE = re.compile(r"\b(?:in (?:den|folgenden|diesen|verschiedenen|mehreren)\s+(?:\w+-)?(?:Farben|Gr[öo]ssen|Ausf[üu]hrungen|Varianten|Modellen|Designs)|"
+                        r"(?:Farben|Gr[öo]ssen|Ausf[üu]hrungen|Varianten):)\s*(?:erh[äa]ltlich\s*)?:?\s*([^.;]+)", re.I)
+EDELSTEIN = re.compile(r"\b(Diamant\w*|Brillant\w*|Saphir\w*|Rubin\w*|Smaragd\w*|Echtgold|Echtsilber|925e?r?|Sterling\w*|Goldkarat|"
+                       r"\d+\s*Karat|Massivgold)\b", re.I)
+ECHT_BELEG = re.compile(r"\b(925|sterling|echtschmuck|echtes? (?:gold|silber)|moissanit|lab.?grown|natural diamond|solid gold)\b", re.I)
+ZIELGRUPPE = re.compile(r"\b\d{1,2}\s*(?:bis|–|-)\s*\d{1,3}\s*Jahr\w*|\bErwachsene\s+(?:von|ab)\s+\d", re.I)
+MAN_KANN = re.compile(r"\b[Mm]an\s+(kann|k[öo]nnte|sollte|muss|darf|nutzt|verwendet|tr[äa]gt|stellt|legt)\b")
+EINHEIT_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(mm|cm|m|g|kg|ml|l|w|v|ah|a|zoll|inch|oz|stunden?|h|st[üu]ck|teil\w*|led\w*)\b", re.I)
+EINHEIT_NORM = {"inch": "zoll", "stunde": "stunden", "h": "stunden", "teil": "teile", "teilen": "teile", "teilig": "teile", "stück": "stueck",
+                "stueck": "stueck", "led": "led", "leds": "led"}
 VERSAND = re.compile(r"\b(Lieferung|Lieferzeit|Versand\w*|Werktag\w*|R[üu]ckgabe|R[üu]cksend\w*|CHF|Fr\.|Preis\w*|Rabatt\w*|"
                      r"bestell\w*|kauf\w*|Warenkorb|Aktion|g[üu]nstig\w*|Schweiz\w*|Shop|LuxeStyle|Lager\w*|sofort|lieferbar)\b", re.I)
 RAUCH_VERBOT = re.compile(r"Genie?ss\w*|Genuss\w*|Aroma\w*|entspann\w*|gem[üu]tlich\w*|Ritual|Lifestyle|cool\w*|stylisch\w*", re.I)
@@ -188,7 +228,10 @@ MATERIALIEN = ["Baumwolle", "Baumwoll", "Polyester", "Edelstahl", "Metall", "Kun
                "Mikrofaser", "Canvas", "Jute", "Porzellan", "Emaille", "Carbon", "Diamant", "Edelstein", "Malachit", "Jade", "Opal",
                "Bernstein", "Achat", "Quarz", "Vlies", "Nonwoven", "Oxford", "Flanell", "Kunstfell", "Fell", "Daunen", "Federn",
                "Teflon", "Antihaft", "Granit", "Gusseisen", "Zinn", "Bronze", "Chrom", "Nickel", "Lithium", "Nickel-Metallhydrid"]
-MAT_RE = re.compile(r"\b(" + "|".join(sorted(map(re.escape, MATERIALIEN), key=len, reverse=True)) + r")\w*", re.I)
+_KURZ = [m for m in MATERIALIEN if len(m) <= 3 and m.isupper()]               # PU, PP, PVC, ABS, TPU, EVA — exakt, sonst traf «PU» «Pullover» (05.10.)
+_LANG = [m for m in MATERIALIEN if m not in _KURZ]
+MAT_RE = re.compile(r"\b(?:(" + "|".join(sorted(map(re.escape, _LANG), key=len, reverse=True)) + r")\w*|(" + "|".join(_KURZ) + r")\b)")
+MAT_RE_I = re.compile(r"\b(" + "|".join(sorted(map(re.escape, _LANG), key=len, reverse=True)) + r")\w*", re.I)
 MAT_DE = {"plastic": "Kunststoff", "metal": "Metall", "glass": "Glas", "stainless steel": "Edelstahl", "cotton": "Baumwolle",
           "polyester": "Polyester", "polyester fiber": "Polyester", "wood": "Holz", "ceramic": "Keramik", "silicone": "Silikon",
           "silica gel": "Silikon", "leather": "Leder", "pu leather": "PU-Leder", "pu": "PU-Leder", "alloy": "Metall-Legierung",
@@ -204,7 +247,7 @@ MAT_DE = {"plastic": "Kunststoff", "metal": "Metall", "glass": "Glas", "stainles
           "marble": "Marmor", "cork": "Kork", "rattan": "Rattan", "jute": "Jute", "felt": "Filz", "mesh": "Mesh-Gewebe", "knitted": "Strick",
           "viscose": "Viskose", "pp cotton": "PP-Baumwolle (Füllung)", "short plush": "Kurzplüsch"}
 
-Q = """query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status tags descriptionHtml
+Q = """query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status tags descriptionHtml seo{title description}
   options{name values} variants(first:30){nodes{sku title price selectedOptions{name value} inventoryItem{measurement{weight{value unit}}}}}
   media(first:6){nodes{ ... on MediaImage{ image{url} } } } } }"""
 
@@ -295,16 +338,49 @@ def cj_holen(sku):
     return ergebnis
 
 
+def muellname(name):
+    """05.10.: CJ productNameEn «12» (Laufschuh) wurde als «Grösse 12» übernommen — nur Ziffern/Zeichen oder ≤ 3 Zeichen = keine Quelle."""
+    n = str(name or "").strip()
+    return len(n) <= 3 or re.fullmatch(r"[\d\s.,;:/+*#()-]+", n) is not None
+
+
+def mat_familien(text):
+    """Materialwörter eines Texts als Familien (leder, kunststoff, metall, stoff, glas, holz, keramik, silikon, gummi …)."""
+    t = (text or "").lower()
+    fam = set()
+    for k, fs in (("leder|cowhide|rindleder|rindsleder|genuine leather|top.?grain", "leder"), ("kunstleder|pu-leder|pu leather|\\bpu\\b", "kunstleder"),
+                  ("kunststoff|plastic|plastik|\\babs\\b|\\bpp\\b|\\bpvc\\b|\\bpet\\b|\\btpu\\b|acryl|resin|harz|polypropylen", "kunststoff"),
+                  ("metall|metal|stahl|steel|alloy|legierung|kupfer|copper|messing|brass|zink|zinc|eisen|iron|aluminium|aluminum|titan|titanium", "metall"),
+                  ("stoff|cloth|fabric|polyester|baumwolle|cotton|nylon|canvas|leinen|linen|samt|velvet|velours|plüsch|plush|wolle|wool|seide|silk|chiffon|strick|knitted|filz|felt|mesh|spandex|elasthan|oxford|flanell|fleece|mikrofaser|microfiber|lycra|dacron|vinylon|viskose", "stoff"),
+                  (r"(?<![a-z])glas\\b|(?<![a-z])glass\\b", "glas"), ("holz|wood|bambus|bamboo", "holz"), ("keramik|ceramic|porzellan", "keramik"), ("silikon|silicone|silica gel", "silikon"),
+                  ("gummi|rubber|latex", "gummi"), ("papier|paper", "papier"), ("stein|stone|marmor|marble|granit", "stein")):
+        if re.search(k, t):
+            fam.add(fs)
+    return fam
+
+
+def material_konflikt(name_en, mats):
+    """CJ-Name nennt ein Material (Leather/Cowhide), materialNameEn ein anderes (Plastic/Cloth) → beschreibender Satz statt Zeile."""
+    a, b = mat_familien(name_en), mat_familien(" ".join(mats or []))
+    if a and b and not (a & b):
+        return f"Name sagt {'/'.join(sorted(a))}, Materialfeld sagt {'/'.join(sorted(b))}"
+    return ""
+
+
 def cj_fakten(d):
     """Belegte Werte aus CJ: Material (nur übersetzt), Gewicht, «key: value»-Zeilen mit Ziffer, Varianten-Schlüssel, Packung."""
     f, rows = [], []
     if not isinstance(d, dict):
         return f, rows
-    if d.get("productNameEn"):
-        f.append("CJ-Produktname (englisch): " + str(d["productNameEn"])[:120])
+    name_en = str(d.get("productNameEn") or "").strip()
+    if name_en and not muellname(name_en):
+        f.append("CJ-Produktname (englisch): " + name_en[:120])
     mats = [MAT_DE.get(str(m).lower().strip()) for m in (d.get("materialNameEnSet") or d.get("materialNameEn") or [])]
     mats = [m for m in mats if m]
-    if mats:
+    konflikt = material_konflikt(name_en, mats)
+    if mats and konflikt:
+        f.append(f"Material: WIDERSPRÜCHLICH bei CJ ({konflikt}) — nenne KEIN Material")
+    elif mats:
         f.append("Material (CJ): " + ", ".join(dict.fromkeys(mats))); rows.append(("Material", ", ".join(dict.fromkeys(mats))))
     try:
         g = float(d.get("productWeight") or 0)
@@ -316,8 +392,9 @@ def cj_fakten(d):
     desc = H.unescape(re.sub(r"<[^>]+>", " ", desc))
     for z in desc.split("\n"):
         z = re.sub(r"\s+", " ", z).strip()
-        m = re.match(r"^([A-Za-z][A-Za-z /]{2,24})\s*[:：]\s*(.{2,120})$", z)
-        if m and re.search(r"\d", m.group(2)) and not re.search(r"[一-鿿]", z):
+        m = re.match(r"^([A-Za-z][A-Za-z /-]{2,28})\s*[:：]\s*(.{2,120})$", z)
+        # 05.10.: vorher nur Zeilen mit Ziffer — «Material: Canvas», «Outsole material: Rubber» fehlten dann als Quelle
+        if m and not re.search(r"[一-鿿]", z) and not re.match(r"(?i)note|overview|tips?|features?|advantages?|product image|packing|package", m.group(1)):
             f.append("CJ-Beschreibung: " + z[:160])
     keys = [str(v.get("variantKey") or "") for v in (d.get("variants") or [])][:12]
     keys = [k for k in keys if k and not re.search(r"[一-鿿]", k)]
@@ -386,13 +463,54 @@ def alt_quellen(p):
             continue
         if CODE.search(s):
             continue                                   # «Style 1-1 pair» aus dem Import ist keine Quelle für Prosa
+        if re.fullmatch(r"\d+\s+(?!(?:cm|mm|m|g|kg|ml|l|Zoll|St[üu]ck|Teile?|Paar|Stunden|Watt|Volt)\b)\w+", s):
+            continue                                   # «12 Grösse» (Laufschuh, 05.10.) — Zahl + ein Wort ohne Einheit = Müll
         f.append("Alter Text: " + s[:200])
     return f, rows
+
+
+def titel_negativ(handle, titel):
+    """05.10.: Titel per Kontaktbogen korrigiert → Wörter des ALTEN Titels, die im neuen nicht vorkommen, sind im Text verboten."""
+    pfad = os.path.join(REPO, "dropship", "_duenne_texte_titel_ledger.tsv")
+    if not os.path.exists(pfad):
+        return []
+    neu = (titel or "").lower()
+    for z in open(pfad):
+        t = z.rstrip("\n").split("\t")
+        if len(t) >= 5 and t[1] == handle:
+            alt = t[2].strip('"')
+            return [w for w in re.split(r"[\s\-/,·]+", alt) if len(w) >= 4 and w.lower()[:4] not in neu and not re.search(r"\d", w)
+                    and not MAT_RE_I.fullmatch(w) and w.lower() not in ("aus", "mit", "für", "fuer", "und", "oder", "frauen", "damen", "herren", "kinder")]
+    return []
+
+
+def optionswerte(p):
+    """Alle Shopify-Optionswerte (normalisiert) — nur diese dürfen als Wahlwerte im Text stehen."""
+    w = set()
+    for o in p["options"]:
+        if o["name"] != "Title":
+            for v in o["values"]:
+                for teil in re.split(r"\s*[-/]\s*", str(v)):
+                    teil = norm(teil)
+                    if teil and teil not in ("default title",):
+                        w.add(teil)
+    return w
+
+
+def norm(s):
+    return re.sub(r"\s+", " ", str(s).lower().replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")).strip()
+
+
+FARBE_DE_EN = {"schwarz": "black", "weiss": "white", "grau": "gray grey", "blau": "blue", "rot": "red", "gruen": "green", "gelb": "yellow",
+               "rosa": "pink", "pink": "pink", "violett": "purple", "lila": "purple", "braun": "brown", "beige": "beige", "khaki": "khaki",
+               "gold": "gold golden", "silber": "silver", "orange": "orange", "dunkelblau": "dark blue navy", "hellblau": "light blue", "rosegold": "rose gold"}
 
 
 def produkt_quellen(p, cjd, urteil):
     f, rows = [], []
     f.append("Titel: " + p["title"])
+    for w in titel_negativ(p["handle"], p["title"]):
+        f.append(f"NICHT verwenden (alter Titel war falsch): {w}")
     for o in p["options"]:
         if o["name"] != "Title":
             werte = [w for w in o["values"] if re.fullmatch(r"[A-Za-zÄÖÜäöüéè\- ]{2,25}", w) and not re.search(r"\b(style|muster|pattern|typ|type|default)\b", w, re.I)]
@@ -436,9 +554,48 @@ def quelle_text(f):
     return q
 
 
-def pruefen(absaetze, quellen, rauch, einzeln=False):
+def pruefen(absaetze, quellen, rauch, einzeln=False, optionen=None, rows=None, min_w=None, titel=""):
     t = " ".join(absaetze)
     fehler = []
+    min_w = min_w or MIN_W
+    optionen = optionen or set()
+    # 05.10. VARIANTEN-Tor: Wahlwerte nur aus Shopify-Optionen
+    if einzeln and WAHL_EINZELN.search(t):
+        fehler.append("Einzelvariante — kein Wahl-/Verfügbarkeitswort: " + ", ".join(dict.fromkeys(m.group(0) for m in WAHL_EINZELN.finditer(t))))
+    elif not einzeln:
+        for m in WAHL_LISTE.finditer(t):
+            werte = [w.strip(" .,") for w in re.split(r"\s*,\s*|\s+und\s+|\s+oder\s+|\s+sowie\s+", m.group(1)) if w.strip(" .,")]
+            for w in werte[:12]:
+                wn = norm(re.sub(r"^(?:in|die|der|den|das|wie|z\.\s*B\.|zum Beispiel|von|bis|sind|ist|angeboten|werden|erhältlich)\s+", "", w)).strip()
+                wn = re.sub(r"\s+(?:erhaeltlich|angeboten|verfuegbar|lieferbar|waehlbar).*$", "", wn)
+                if not wn or len(wn) < 2 or re.fullmatch(r"[a-z]{1,2}", wn):
+                    continue
+                kand = {wn} | set(FARBE_DE_EN.get(wn, "").split())
+                if not any(k and (k in o or o in k) for o in optionen for k in kand):
+                    fehler.append(f"Wahlwert «{w.strip()}» steht in keiner Shopify-Option (nur: {', '.join(sorted(optionen))[:120]})")
+                    break
+    # 05.10. EDELSTEIN-Sperre (auch Titel): nur bei belegtem Echtschmuck
+    qtext = " ".join(quellen)
+    for m in EDELSTEIN.finditer(t + " " + (titel or "")):
+        if not ECHT_BELEG.search(qtext):
+            fehler.append(f"Edelstein-/Echtschmuck-Wort «{m.group(0)}» ohne Beleg (Strass/Zirkonia nie als Diamant)"); break
+    if ZIELGRUPPE.search(t):
+        fehler.append("CJ-Zielgruppenfeld ist kein Produktfakt: " + ZIELGRUPPE.search(t).group(0))
+    if MAN_KANN.search(t):
+        fehler.append("unpersönliche Form (du-Anrede!): " + MAN_KANN.search(t).group(0))
+    for q in quellen:                                   # Negativquelle: Wörter des alten, falschen Titels
+        if q.startswith("NICHT verwenden"):
+            w = q.split(":", 1)[1].strip()
+            if re.search(r"\b" + re.escape(w[:-1] if len(w) > 5 else w), t, re.I):   # ganzes Wort minus Endung («Schut» traf «Schutzhülle», 05.10.)
+                fehler.append(f"Wort des alten (falschen) Titels im Text: {w}")
+    # 05.10. MATERIAL-Widerspruch Fliesstext ↔ Faktenblock
+    blk = [v for k, v in (rows or []) if k == "Material"]
+    if blk:
+        ft, fb = mat_familien(t), mat_familien(blk[0])
+        if ft and fb and not (ft & fb):
+            fehler.append(f"Material im Text ({'/'.join(sorted(ft))}) widerspricht dem Faktenblock ({blk[0]})")
+    if any(q.startswith("Material: WIDERSPR") for q in quellen) and mat_familien(t):
+        fehler.append("Material bei CJ widersprüchlich — kein Materialwort im Text")
     if EDEL.search(t):
         fehler.append("Floskel: " + EDEL.search(t).group(0))
     if META.search(t):
@@ -446,8 +603,8 @@ def pruefen(absaetze, quellen, rauch, einzeln=False):
     if einzeln and WAHL.search(t):
         fehler.append("es gibt keine Auswahl — kein Satz über Wahl/Varianten/Ausführung: " + WAHL.search(t).group(0))
     n = len(t.split())
-    if n < MIN_W:
-        fehler.append(f"nur {n} Wörter — schreibe mindestens 90 Wörter (zwei Absätze à 45–60 Wörter)")
+    if n < min_w:
+        fehler.append(f"nur {n} Wörter — schreibe mindestens {max(min_w + 10, 80)} Wörter (zwei Absätze à 40–60 Wörter)")
     elif n > MAX_W:
         fehler.append(f"{n} Wörter — höchstens {MAX_W}")
     if FLOSKEL.search(t):
@@ -487,9 +644,24 @@ def pruefen(absaetze, quellen, rauch, einzeln=False):
     for z in set(re.findall(r"\d+(?:[.,]\d+)?", t)):
         if z not in qz:
             fehler.append(f"Zahl {z} nicht in den Quellen")
-    for m in MAT_RE.finditer(t):
+    # 05.10. EINHEIT-Tor: Zahl + Einheit nur, wenn die Quelle dieselbe Einheit trägt («3 color 32» wurde «32 mm»)
+    qe = set()
+    _SEP = r"\s*(?:[x×*+–/-]|bis|to|or)\s*"
+    for m in re.finditer(r"(\d+(?:[.,]\d+)?)\s*(?:(?:cm|mm|zoll|inch)?" + _SEP + r"(\d+(?:[.,]\d+)?))?\s*(?:" + _SEP + r"(\d+(?:[.,]\d+)?))?\s*(mm|cm|m|g|kg|ml|l|w|v|ah|a|zoll|inch|oz|stunden?|h|st[üu]ck|teil\w*|led\w*)\b", q, re.I):
+        u = EINHEIT_NORM.get(m.group(4).lower(), m.group(4).lower())
+        for z in (m.group(1), m.group(2), m.group(3)):
+            if z:
+                qe.add((z.replace(",", "."), u))
+    for m in EINHEIT_RE.finditer(t):
+        u = EINHEIT_NORM.get(m.group(2).lower(), m.group(2).lower())
+        if (m.group(1).replace(",", "."), u) not in qe and u not in ("teile", "stueck"):
+            fehler.append(f"Einheit erfunden: «{m.group(0)}» steht so in keiner Quelle")
+    for m in MAT_RE_I.finditer(t):
         stamm = m.group(1).lower()
         if stamm not in q and stamm.rstrip("e") not in q:
+            fehler.append(f"Material «{m.group(0)}» nicht in den Quellen")
+    for m in re.finditer(r"\b(" + "|".join(_KURZ) + r")\b", t):
+        if m.group(1).lower() not in q:
             fehler.append(f"Material «{m.group(0)}» nicht in den Quellen")
     return fehler
 
@@ -508,9 +680,13 @@ def entwurf(titel, quellen, rauch, fehler=None, einzeln=False, modelle=None):
         "Produkt ist, wie es aussieht, welche Teile es hat und wofür man es im Alltag verwendet (nur wenn aus den Quellen ableitbar). "
         "Ziel: 90 bis 115 Wörter — Absatz 1 und Absatz 2 je 45 bis 60 Wörter, zähle nach.")
     if einzeln:
-        regeln += " Es gibt KEINE Auswahl (eine Ausführung) — schreibe nichts über Wahl, Varianten, Ausführungen oder Verfügbarkeit."
+        regeln += (" Es gibt KEINE Auswahl (eine Ausführung) — schreibe nichts über Wahl, Varianten, Ausführungen, Farben zur Auswahl, "
+                   "Grössen oder Verfügbarkeit (auch nicht «erhältlich»).")
     else:
-        regeln += " Nenne die vorhandenen Optionen (Farben, Grössen) sachlich in Absatz 2."
+        regeln += " Nenne NUR die Werte aus den Zeilen «Option …» als Auswahl, sachlich in Absatz 2 — keine Werte aus CJ-Zeilen."
+    regeln += (" Nie Diamant/Brillant/Saphir/Rubin/925 — Glitzersteine heissen Zirkonia oder Strass, nur wenn eine Quelle sie nennt. "
+               "Zahlen mit Einheit nur, wenn die Quelle dieselbe Einheit nennt. Altersangaben, «Man kann», englische Wörter: nie. "
+               "Steht «NICHT verwenden» in den Quellen, kommt dieses Wort nicht vor. Steht «Material: WIDERSPRÜCHLICH», nenne kein Material.")
     if rauch:
         regeln += (" Dies ist Raucherzubehör: rein sachlich, keine Wörter wie Geniesser, Genuss, Aroma, entspannt, gemütlich; "
                    "nichts, was zum Rauchen anregt.")
@@ -611,7 +787,7 @@ def main():
         for versuch in range(5):                        # Versuch 1–2 kleines Modell, 3–5 grosses (Kontingent des Zweitprüfers schonen)
             modelle = TEXT_MODELLE[:1] if versuch < 2 else TEXT_MODELLE[1:] or TEXT_MODELLE
             abs_ = entwurf(p["title"], quellen, rauch, fehler, einzeln, modelle)
-            fehler = pruefen(abs_, quellen, rauch, einzeln) if abs_ else ["leere Antwort"]
+            fehler = pruefen(abs_, quellen, rauch, einzeln, optionswerte(p), rows, 70 if len(quellen) < 6 else MIN_W, p["title"]) if abs_ else ["leere Antwort"]
             if not fehler:
                 break
             print(f"  ↻ {h} Versuch {versuch + 1} verworfen: {'; '.join(fehler)[:200]}", flush=True)
@@ -634,7 +810,111 @@ def main():
     print("BILANZ " + json.dumps(z, ensure_ascii=False) + f" · noch offen nach Lauf: {max(0, len(offen) - LIMIT)} · Groq-Tokens {USAGE}", flush=True)
 
 
+def live_prosa(html_):
+    """Fliesstext-Absätze der Live-Beschreibung: <p> ohne Klasse, ohne 📦-Zeile, vor/neben dem Faktenblock."""
+    out = []
+    for m in re.finditer(r"<p(?![^>]*class=)[^>]*>(?!📦)((?:(?!</p>).)*)</p>", html_ or "", flags=re.S):
+        a = strip(m.group(1))
+        if a and len(a.split()) >= 4:
+            out.append(a)
+    return out
+
+
+def live_rows(html_):
+    m = re.search(r'<div class="ls-produktdetails">(.*?)</ul>\s*</div>', html_ or "", flags=re.S)
+    rows = []
+    for li in re.findall(r"<li>(.*?)</li>", m.group(1) if m else "", flags=re.S):
+        kv = strip(li).split(":", 1)
+        if len(kv) == 2:
+            rows.append((kv[0].strip(), kv[1].strip()))
+    return rows
+
+
+def nachpruefen():
+    """Alle Ledger-Handles live durch die Tore — schreibt nichts, CJ nur aus dem Cache. Rückgabe: Anzahl Handles mit Treffern."""
+    hs = []
+    for pfad in (LEDGER, os.path.join(REPO, "dropship", "_duenne_texte_titel_ledger.tsv")):
+        if os.path.exists(pfad):
+            for z in open(pfad):
+                t = z.rstrip("\n").split("\t")
+                if len(t) >= 4 and t[0] != "zeit" and not t[0].startswith("gid") and t[1] not in hs:
+                    hs.append(t[1])
+    cache = json.load(open(CJ_CACHE)) if os.path.exists(CJ_CACHE) else {}
+    alt_html = {}                                     # Import-Text aus dem Ledger: seine Fakten bleiben Quelle, auch wenn er live ersetzt ist
+    if os.path.exists(LEDGER):
+        for z in open(LEDGER):
+            t = z.rstrip("\n").split("\t")
+            if len(t) >= 7 and t[0] != "zeit" and t[1] not in alt_html:
+                try:
+                    alt_html[t[1]] = json.loads(t[5])
+                except ValueError:
+                    pass
+    treffer, gelesen, duenn = 0, 0, 0
+    for h in hs:
+        p = gql(Q, {"h": h})["productByIdentifier"]
+        if not p:
+            print(f"? {h}: nicht gefunden", flush=True); continue
+        gelesen += 1
+        sku = (p["variants"]["nodes"][0]["sku"] or "") if p["variants"]["nodes"] else ""
+        cjd = cache.get(sku) or {"code": 0, "data": None}
+        quellen, rows, rauch = produkt_quellen(dict(p, descriptionHtml=alt_html.get(h, p["descriptionHtml"])), cjd.get("data"), URTEILE.get(h))
+        rows = live_rows(p["descriptionHtml"]) or rows
+        vs = p["variants"]["nodes"]
+        einzeln = len(vs) == 1 and vs[0]["title"] == "Default Title"
+        absaetze = live_prosa(p["descriptionHtml"])
+        fehler = []
+        if absaetze and p["status"] == "ACTIVE" and len(" ".join(absaetze).split()) >= 40:
+            fehler = pruefen(absaetze, quellen, rauch, einzeln, optionswerte(p), rows, 70 if len(quellen) < 6 else MIN_W, p["title"])
+        elif p["status"] == "ACTIVE" and len(strip(p["descriptionHtml"]).split()) < 40:
+            duenn += 1; print(f"○ {h}: noch dünn (< 40 Wörter) — Sache des Tageslaufs, kein Tor-Treffer", flush=True)
+        seo_t = ((p.get("seo") or {}).get("title") or p["title"])      # Shopify speichert seo.title == Titel als null
+        if p["status"] == "ACTIVE" and not seo_t.lower().startswith(p["title"].lower()[:40]):
+            fehler.append(f"SEO-Titel alt: «{seo_t[:60]}» ≠ «{p['title'][:60]}»")
+        if fehler:
+            treffer += 1
+            print(f"✗ {h} [{p['status']}]: " + " | ".join(fehler)[:400], flush=True)
+        else:
+            print(f"✓ {h} [{p['status']}]", flush=True)
+    print(f"NACHPRUEFEN: {gelesen} gelesen · {treffer} mit Tor-Treffern · {duenn} noch dünn (Tageslauf)", flush=True)
+    return treffer
+
+
+def selbsttest():
+    """Kanarienvögel der Tore vom 05.10. — ohne Shopify/CJ/Groq."""
+    faelle = [
+        ("Diamant-Satz", ["Das Herz ist mit mehreren Reihen kleiner Diamanten besetzt."], ["Titel: Herz-Kette", "CJ-Produktname (englisch): Diamond-Inlaid Cuban Link"], True, set(), [], "Herz-Kette", "Edelstein"),
+        ("Diamant im Titel", ["Die Ohrringe sind goldfarben und tragen bunte Glassteine."], ["Titel: Diamant-Tropfen"], True, set(), [], "Diamant-Tropfen", "Edelstein"),
+        ("925 belegt", ["Der Anhänger ist aus 925er Silber."], ["Titel: Anhänger", "Material (CJ): 925er Silber", "sterling silver"], True, set(), [], "Anhänger", None),
+        ("Wahl bei Einzelvariante", ["Erhältlich in den Farben schwarz, pink und weiss."], ["Titel: Flipflops"], True, set(), [], "Flipflops", "Einzelvariante"),
+        ("Wahl ohne Option", ["Die Tasche gibt es in den Farben Weiss, Grau und Kaffee."], ["Titel: Tasche", "Option Farbe: Schwarz, Blau"], False, {"schwarz", "blau"}, [], "Tasche", "Wahlwert"),
+        ("Wahl aus Option", ["Die Tasche gibt es in den Farben Schwarz und Blau."], ["Titel: Tasche", "Option Farbe: Schwarz, Blau"], False, {"schwarz", "blau"}, [], "Tasche", None),
+        ("Material-Widerspruch", ["Die Tote ist aus Rindleder gefertigt."], ["Titel: Tote", "Alter Text: Rindleder"], True, set(), [("Material", "Kunststoff")], "Tote", "widerspricht"),
+        ("Material passt", ["Die Tote ist aus Kunststoff gefertigt."], ["Titel: Tote", "Material (CJ): Kunststoff"], True, set(), [("Material", "Kunststoff")], "Tote", None),
+        ("Einheit erfunden", ["Es gibt Modelle mit 32 mm Lichtfläche."], ["Titel: Maske", "Option Ausführung: 3 color 32"], False, {"3 color 32"}, [], "Maske", "Einheit erfunden"),
+        ("Einheit belegt", ["Der Bezug misst 45 cm im Quadrat."], ["Titel: Bezug", "Masse: 45 x 45 cm"], True, set(), [], "Bezug", None),
+        ("Zielgruppe", ["Das Modell richtet sich an Erwachsene von 18 bis 59 Jahren."], ["Titel: Schuh"], True, set(), [], "Schuh", "Zielgruppe"),
+        ("Man kann", ["Man kann das Set zu Kleidern tragen."], ["Titel: Set"], True, set(), [], "Set", "unpersönliche"),
+        ("Negativquelle", ["Eine Spange zeigt eine Tierfigur im Frosch-Design."], ["Titel: Haarspangen-Set mit Schleife", "NICHT verwenden (alter Titel war falsch): Frosch"], True, set(), [], "Haarspangen-Set mit Schleife", "alten (falschen) Titels"),
+        ("Titanlegierung ok", ["Das Inlay ist aus Titanlegierung."], ["Titel: Spange", "CJ-Beschreibung: Inlay material: Titanium alloy"], True, set(), [], "Spange", None),
+    ]
+    ok = 0
+    for name, abs_, quellen, einzeln, opt, rows, titel, erwartet in faelle:
+        f = pruefen(abs_, quellen, False, einzeln, opt, rows, 1, titel)
+        f = [x for x in f if not x.startswith("nur ") and "endet nicht" not in x]          # Länge/Satzende sind hier nicht Gegenstand
+        passt = (erwartet is None and not f) or (erwartet and any(erwartet in x for x in f))
+        ok += bool(passt)
+        print(("✓" if passt else "✗") + f" {name}: {f or 'keine Treffer'}")
+    print(f"Selbsttest: {ok}/{len(faelle)} richtig")
+    print("muellname:", muellname("12"), muellname("A1"), not muellname("Beer Cold Cup"))
+    print("konflikt:", bool(material_konflikt("Top Layer Cowhide Bag", ["Kunststoff"])), not material_konflikt("Canvas Shoe", ["Canvas", "Kunststoff"]))
+    return ok == len(faelle)
+
+
 if __name__ == "__main__":
+    if "--test" in sys.argv:
+        sys.exit(0 if selbsttest() else 1)
+    if os.environ.get("NACHPRUEFEN") == "1":
+        sys.exit(1 if nachpruefen() else 0)
     try:
         main()
     except zm.TagesKontingentLeer as e:

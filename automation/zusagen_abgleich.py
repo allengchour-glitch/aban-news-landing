@@ -7,7 +7,9 @@ WAHRHEIT = die shopPolicies (Rückgabe, Versand, AGB), gemessen 05.10.2026 01:25
              Erstattung innert 14 Tagen nach Eingang, Ausnahmen Hygiene/personalisiert, Mangel innert 7 Tagen melden.
   Versand    nur Schweiz, gratis ab CHF 50 (sonst CHF 7.00), CH-Lager 1–2 WT · EU-Lager 2–7 · Druck 7–14 ·
              Direktversand 10–20 WT, Richtwerte (keine garantierten Termine).
-  Zahlung    Visa, Mastercard, TWINT, PayPal, Klarna, Apple Pay, Google Pay.
+  Zahlung    Visa, Mastercard, American Express, TWINT, PayPal, Klarna, Apple Pay, Google Pay.
+             (AMEX gemessen 05.10. 03:40 an der Storefront: Shopify-Payments-Wallet-Konfiguration auf luxestyle.ch
+             nennt supportedNetworks visa/masterCard/amex — die Admin-API hat dafür kein Feld.)
   Garantie   gesetzliche Gewährleistung OR 197 ff., KEINE Geld-zurück-Garantie, KEIN «keine Fragen».
   Service    Antwort in der Regel innert 24 h an Werktagen (kontakt-support: bewusst keine Telefon-Hotline).
 
@@ -66,8 +68,10 @@ def backup(name, body):
 
 
 def ersetze(body, regeln, wer):
-    """regeln: Liste (alt, neu[, erwartet]). Gibt (neu_body, ok, protokoll). ok=False → nichts schreiben."""
-    neu = body; ok = True; prot = []
+    """regeln: Liste (alt, neu[, erwartet]). Gibt (neu_body, ok, protokoll, getroffen). ok=False → nichts schreiben.
+    getroffen = nur die Regeln, die in DIESEM Lauf ersetzt wurden (Prüferbefund 05.10.: das Ledger trug auch
+    «schon erledigt»-Regeln und zählte so eine Ersetzung doppelt)."""
+    neu = body; ok = True; prot = []; getroffen = []
     for r in regeln:
         alt, nn = r[0], r[1]; erw = r[2] if len(r) > 2 else 1
         c = body.count(alt)
@@ -79,8 +83,8 @@ def ersetze(body, regeln, wer):
         if c != erw:
             ok = False
         else:
-            neu = neu.replace(alt, nn)
-    return neu, ok, prot
+            neu = neu.replace(alt, nn); getroffen.append(r)
+    return neu, ok, prot, getroffen
 
 
 # ───────────────────────────── SEITEN ─────────────────────────────
@@ -97,7 +101,10 @@ SEITEN = {
     "Per E-Mail, alles auf Deutsch. " + SERVICE_DE + "."),
    ("11 PREMIUM Produkte sorgfältig getestet und ehrlich beschrieben. Qualität über Quantität.",
     "Angaben, Bilder, Preise und Lieferzeiten werden laufend geprüft und ehrlich beschrieben — was Kundinnen zurückmelden, fliesst direkt ein."),
-   ("Stöber durch unsere 11 handverlesenen Produkte:", "Stöber durch unsere Empfehlungen:")]},
+   ("Stöber durch unsere 11 handverlesenen Produkte:", "Stöber durch unsere Empfehlungen:"),
+   # 05.10. (Plan Punkt 17): «30-50% günstiger als Boutiquen» ist eine unbelegte Zahl → belegbar bleibt der Mechanismus
+   ('<h3>3. Premium-Preise ohne Boutique-Aufschlag</h3>\n<p>Direkt-Versand bedeutet 30-50% günstiger als gleiche Produkte in Schweizer Boutiquen.</p>',
+    '<h3>3. Faire Preise ohne Boutique-Aufschlag</h3>\n<p>Direktversand ab Lieferantenlager spart Zwischenhandel und Ladenmiete — diesen Vorteil geben wir in den Preisen weiter. Alle Preise in CHF; die Versandkosten siehst du im Warenkorb.</p>')]},
  'schweizer-vs-deutsche-marken': {'body': [
    ("<li>✅ Kürzere Lieferketten</li>\n", ""),
    ("<li>🎁 Premium-Geschenkbox bei JEDER Bestellung</li>\n", ""),
@@ -108,7 +115,9 @@ SEITEN = {
    ("Falls trotzdem Reaktion: zurückschicken bei LuxeStyle, 30 Tage Garantie.",
     'Falls trotzdem eine Reaktion auftritt: Melde dich bei uns — wir schauen jeden Fall einzeln an (<a href="/pages/garantie">Garantie &amp; Rückgabe</a>).')]},
  'zahlungsmethoden': {'body': [
-   ("(Visa, Mastercard, AMEX)", "(Visa, Mastercard)"),
+   # 04.10. stand hier AMEX → raus («nicht messbar»); 05.10. an der Storefront gemessen (supportedNetworks amex) → zurück,
+   # ausgeschrieben wie in den AGB §4
+   ("<strong>Kreditkarte</strong> (Visa, Mastercard)</li>", "<strong>Kreditkarte</strong> (Visa, Mastercard, American Express)</li>"),
    ("<li>🏦 <strong>Vorkasse / Banküberweisung</strong>\n</li>\n", ""),
    ("14 Tage Zahlungsziel ohne Zinsen.", "Zahlungsziel und Bedingungen zeigt dir Klarna im Checkout."),
    ("Antwort innerhalb 24h", SERVICE_DE)]},
@@ -160,8 +169,22 @@ SEITEN = {
    ("Non ti piace? Rimborso totale.", "Non ti piace? Restituisci l'articolo non usato, rimborsiamo. Le eccezioni sono nella politica di reso."),
    ("Spedizione 7-14 giorni lavorativi.", "Consegna 10–20 giorni lavorativi in spedizione diretta, 1–2 giorni dal nostro magazzino svizzero."),
    ("Email, WhatsApp, telefono — risposta entro 24h.", "Email — risposta di norma entro 24h nei giorni lavorativi.")]},
- 'personalisierte-geschenke-fuer-sie': {'body': [("Ja. Sie haben 30 Tage Rückgaberecht.", "Ja. Du hast 30 Tage Rückgaberecht.")]},
- 'herren-mode-fuer-ihn': {'body': [("Bezahlen Sie bequem mit", "Bezahle bequem mit")]},
+ 'personalisierte-geschenke-fuer-sie': {'body': [
+   ("Ja. Sie haben 30 Tage Rückgaberecht.", "Ja. Du hast 30 Tage Rückgaberecht."),
+   # 05.10.: pauschal «7–14 Werktage» — die verlinkte Kollektion trägt keine Liefer-Stufe, Richtlinie: je Artikel 1–2 / 7–14 / 10–20
+   ("Wir liefern in der Regel innerhalb von 7–14 Werktagen in die ganze Schweiz.",
+    "Wir liefern in die ganze Schweiz. Die Lieferzeit hängt vom Artikel ab: 1–2 Werktage ab Schweizer Lager, 7–14 Werktage bei Druck auf Bestellung, 10–20 Werktage im Direktversand ab Lieferantenlager — die Angabe steht auf jeder Produktseite."),
+   ("Lieferung in der Regel 7–14 Werktage · Gratis Versand ab CHF 50",
+    "Lieferzeit je Artikel 1–2 bis 10–20 Werktage (steht auf jeder Produktseite) · Gratis Versand ab CHF 50")]},
+ 'herren-mode-fuer-ihn': {'body': [
+   ("Bezahlen Sie bequem mit", "Bezahle bequem mit"),
+   # 05.10.: Rest der Sie-Form (Hausregel du-Form); WELCOME10 gemessen ACTIVE 10 % bis 31.12.2027 → bleibt
+   ("Ihrem Schweizer Online-Shop", "deinem Schweizer Online-Shop"),
+   ("finden Sie sorgfältig ausgewählte Stücke", "findest du sorgfältig ausgewählte Stücke"),
+   ("Hier werden Sie fündig", "Hier wirst du fündig"),
+   ("Sie suchen ein Geschenk für Ihren Partner", "Du suchst ein Geschenk für deinen Partner"),
+   ("So machen Sie eine Freude", "So machst du eine Freude"),
+   ("sichern Sie sich als Neukunde", "sicherst du dir als Neukunde")]},
  'geburtsstein-schmuck-bedeutung': {'body': [("Rechnst du mit einer Lieferzeit", "Rechne mit einer Lieferzeit")]},
  'schmuck-personalisiert-schweiz': {'body': [("Schmuck-Geschenke aus der Schweiz</h2>", "Schmuck-Geschenke für die Schweiz</h2>")],
                                     'titel': ("Personalisierter Schmuck & Schmuck-Geschenke aus der Schweiz", "Personalisierter Schmuck & Schmuck-Geschenke für die Schweiz")},
@@ -169,7 +192,36 @@ SEITEN = {
  'geschenke': {'body': [("Geschenkideen aus der Schweiz</h2>", "Geschenkideen für die Schweiz</h2>")],
                'titel': ("Geschenke & personalisierte Geschenkideen aus der Schweiz", "Geschenke & personalisierte Geschenkideen für die Schweiz")},
  'weihnachtsgeschenke-last-minute': {'body': [
-   ("<li>🚚 <code>SHIP50</code> — Gratis Versand ab CHF 50</li>", "<li>🚚 Gratis Versand ab CHF 50 — automatisch, ohne Code</li>")]},
+   ("<li>🚚 <code>SHIP50</code> — Gratis Versand ab CHF 50</li>", "<li>🚚 Gratis Versand ab CHF 50 — automatisch, ohne Code</li>"),
+   # 05.10.: kaputte Sie→du-Umwandlung im Linktext. XMAS25 (25 %) bleibt bewusst stehen = Betreiber-Entscheid
+   # (gemessen 05.10.: kein Rabattcode XMAS25 im Shop, 15-%-Reserve seit 02.10.) — siehe COWORK-BEFEHL.md
+   ("Geschenke für du entdeckst</a>", "Geschenke für sie entdecken</a>")]},
+ 'marken-kategorien': {'body': [  # Kategorie-Chip «Für Sie» wurde zu «Für du» (Seiten-Scan 05.10., 108 Seiten auf r'\bfür du\b')
+   ('class="lx-chip">👩 Für du <span', 'class="lx-chip">👩 Für sie <span')]},
+ 'geschenkideen-muttertag-2026': {'body': [  # gleiche kaputte Sie→du-Umwandlung, von der neuen Ampel-Regex gefunden (05.10.)
+   ("Geschenkideen für du entdeckst</a>", "Geschenkideen für sie entdecken</a>")]},
+ # 05.10.: POD wird in Europa gedruckt und von dort verschickt (Startseite/selbst-gestalten/firmen-vereine sagen das schon)
+ 'fan-trikot-selbst-gestalten': {'body': [
+   ("🇨🇭 In der Schweiz gestaltet &amp; versandt — verfolgbare Lieferung (ca. 7–14 Werktage).",
+    "🇨🇭 Schweizer Shop · in Europa gedruckt &amp; verschickt — verfolgbare Lieferung (ca. 7–14 Werktage)."),
+   ("In der Schweiz gestaltet und schnell zu dir geliefert.", "Du gestaltest, wir drucken in Europa und liefern mit Tracking zu dir.")]},
+ # 05.10. (Plan Punkt 17): Ratgeber mit Heilversprechen («Glow in 14 Tagen», «Weniger Falten in 4-6 Wochen»), erfundenen
+ # Zahlen (25 %/50 % Hyaluron-Rückgang, 1000x, mind. 10 %) und Link auf ein DRAFT-Serum (cj-entfernt-2026-10-05).
+ # Kein aktives Produkt trägt «Hyaluron»/«Vitamin C» im Titel (gemessen 05.10.) → Kollektion hautpflege (346 aktiv) ohne
+ # Inhaltsstoff-Zusage.
+ 'hyaluron-vitamin-c-skincare': {'body': [
+   ('<p>Zwei Wirkstoffe revolutionieren die Beauty-Welt: <strong>Hyaluronsäure</strong> und <strong>Vitamin C</strong>. Zusammen sind sie unschlagbar.</p>',
+    '<p>Zwei Wirkstoffe tauchen in fast jeder Pflegeroutine auf: <strong>Hyaluronsäure</strong> und <strong>Vitamin C</strong>. Hier liest du, was sie tun und wie du sie kombinierst.</p>'),
+   ('<p>Hyaluronsäure bindet bis zu <strong>1000x ihr Eigengewicht an Wasser</strong>. Sie kommt natürlich in unserer Haut vor, aber:</p><ul>\n<li>👶 Mit 25 produziert dein Körper 25% weniger</li>\n<li>👩 Mit 40 produzierst du nur noch 50%</li>\n<li>👵 Mit 60: praktisch nichts mehr</li>\n</ul><p>Die Folge: Trockene Haut, Falten, Verlust an Spannkraft. Hyaluron-Serum gleicht das aus.</p>',
+    '<p>Hyaluronsäure kann viel Wasser binden und kommt natürlich in der Haut vor. Mit den Jahren nimmt der körpereigene Gehalt ab — die Haut fühlt sich trockener an und wirkt weniger prall.</p><p>Ein Hyaluron-Serum spendet Feuchtigkeit von aussen und lässt die Haut praller wirken, solange du es regelmässig anwendest.</p>'),
+   ('<p>Vitamin C ist <strong>Antioxidant Nr. 1</strong>. Es:</p><ul>\n<li>✅ Schützt vor freien Radikalen (UV, Smog)</li>\n<li>✅ Hellt Hyperpigmentierung auf</li>\n<li>✅ Stimuliert Kollagen-Produktion</li>\n<li>✅ Sorgt für ebenmässigen Hautton</li>\n</ul>',
+    '<p>Vitamin C ist ein bekanntes <strong>Antioxidans</strong> in der Hautpflege. Es wird eingesetzt:</p><ul>\n<li>✅ als Schutz der Haut vor Umwelteinflüssen wie UV und Abgasen</li>\n<li>✅ für einen frischeren, gleichmässiger wirkenden Hautton</li>\n<li>✅ morgens in der Routine — danach immer Sonnenschutz</li>\n</ul>'),
+   ('<p>Vitamin C macht die Haut <strong>aufnahmefähiger</strong>. Hyaluron polstert sie <strong>auf</strong>. Das Ergebnis:</p><ul>\n<li>📈 1+1 = 3 Effekt</li>\n<li>📈 Sichtbarer Glow in 14 Tagen</li>\n<li>📈 Weniger Falten in 4-6 Wochen</li>\n</ul>',
+    '<p>Vitamin C bringt <strong>Frische</strong>, Hyaluron bringt <strong>Feuchtigkeit</strong> — zusammen decken sie zwei Grundbedürfnisse der Haut in einer Routine ab. Wie schnell du etwas siehst, hängt von deiner Haut ab; gib der Routine ein paar Wochen.</p><ul>\n<li>💧 Feuchtigkeit und Frische in einem Schritt</li>\n<li>☀️ Morgens Vitamin C, abends Hyaluron — oder beides kombiniert</li>\n<li>🧴 Tagsüber immer mit Sonnenschutz abschliessen</li>\n</ul>'),
+   ('<li>✅ Mindestens 10% Vitamin C</li>', '<li>✅ Vitamin-C-Gehalt auf der Verpackung ausgewiesen</li>'),
+   ('<p>Unser <a href="/products/dr-meinaier-sussholz-serum-anti-aging-lsf-50-154306">Anti-Aging Serum</a> kombiniert beide Wirkstoffe optimal – vegan, in EU produziert.</p><p><strong>💰 Aktueller Preis auf der Produktseite</strong></p>',
+    '<p>Gesichtspflege für deine Routine findest du in unserer Kollektion <a href="/collections/hautpflege">Gesichts- &amp; Hautpflege</a> — die Inhaltsstoffe stehen auf jeder Produktseite.</p>'),
+   ('<p><em>📅 Mai 2026 · LuxeStyle CH</em></p>', '<p><em>📅 Aktualisiert Oktober 2026 · LuxeStyle CH</em></p>')]},
 }
 
 
@@ -182,7 +234,7 @@ def seiten():
         if not n:
             print(f"⛔ {h}: nicht gefunden"); sk += 1; continue
         p = n[0]
-        neu, ok, prot = ersetze(p['body'], reg['body'], h)
+        neu, ok, prot, getroffen = ersetze(p['body'], reg['body'], h)
         t_alt, t_neu = reg.get('titel', (None, None))
         t_ok = True
         if t_alt is not None:
@@ -208,7 +260,7 @@ def seiten():
         rest = [r0[0] for r0 in reg['body'] if r0[0] in live and r0[1] != r0[0]]
         if rest:
             print("    ⛔ Rücklesen: alte Phrase noch da:", rest[:1]); sk += 1; continue
-        for r0 in reg['body']:
+        for r0 in getroffen:  # nur, was in DIESEM Lauf ersetzt wurde (Prüferbefund 05.10.: Doppelzeile refund-policy-en)
             ledger("seiten", [p['id'].split('/')[-1], h, r0[0], r0[1]])
         if t_alt is not None and "title" in inp:
             ledger("seiten", [p['id'].split('/')[-1], h, "TITEL: " + t_alt, "TITEL: " + t_neu])
@@ -221,7 +273,13 @@ def seiten():
 POLICIES = {
  'TERMS_OF_SERVICE': [
    (" Für EU-Kund:innen gilt zusätzlich das gesetzliche 14-tägige Widerrufsrecht.", ""),
-   ("<strong>Stand: 18. Mai 2026</strong>", "<strong>Stand: 5. Oktober 2026</strong>")],
+   ("<strong>Stand: 18. Mai 2026</strong>", "<strong>Stand: 5. Oktober 2026</strong>"),
+   # 05.10.: AMEX an der Storefront gemessen (supportedNetworks amex) → §4 nennt sie; §7 ohne «Widerrufsrecht»,
+   # weil die verlinkte Rückgaberichtlinie ausdrücklich sagt, dass es in der Schweiz keines gibt
+   ("Kreditkarte (Visa, Mastercard), TWINT", "Kreditkarte (Visa, Mastercard, American Express), TWINT"),
+   ("<h3>7. RÜCKGABE- UND WIDERRUFSRECHT</h3>", "<h3>7. RÜCKGABE</h3>"),
+   ('Es gilt unser <a href="/policies/refund-policy">Widerrufsrecht &amp; Rückgabe</a>.',
+    'Es gilt unsere <a href="/policies/refund-policy">Rückgaberichtlinie</a>.')],
 }
 
 
@@ -231,7 +289,7 @@ def policies():
     for p in d:
         reg = POLICIES.get(p['type'])
         if not reg: continue
-        neu, ok, prot = ersetze(p['body'], reg, p['type'])
+        neu, ok, prot, getroffen = ersetze(p['body'], reg, p['type'])
         schon = all(p['body'].count(r[0]) == 0 for r in reg)
         print(f"{'✅' if ok else '⚠️'} {p['type']}{' — schon erledigt' if schon else ''}")
         for z in prot: print(z)
@@ -244,13 +302,13 @@ def policies():
         live = pu['shopPolicy']['body']
         if any(r0[0] in live for r0 in reg):
             print("    ⛔ Rücklesen: alte Phrase noch da"); continue
-        for r0 in reg: ledger("policies", [pu['shopPolicy']['id'].split('/')[-1], p['type'], r0[0], r0[1]])
+        for r0 in getroffen: ledger("policies", [pu['shopPolicy']['id'].split('/')[-1], p['type'], r0[0], r0[1]])
         print("    ✔ geschrieben + rückgelesen")
 
 
 # ───────────────────────────── PRODUKTE ─────────────────────────────
-NEU_RUECK = ('<strong>30 Tage Rückgaberecht</strong><br><small>Unbenutzt &amp; originalverpackt zurück · Erstattung innert 14 Tagen · '
-             'Rücksendung zahlst du, bei Mangel wir</small>')
+NEU_RUECK = ('<strong>30 Tage Rückgaberecht</strong><br><small>Unbenutzt &amp; originalverpackt zurück · Erstattung innert 14 Tagen nach Eingang · '
+             'Rücksendung zahlst du, bei Mangel wir</small>')  # «nach Eingang» seit 05.10. (Richtlinie knüpft die 14 Tage daran)
 NEU_SERVICE = 'Schweizer Shop · Support auf Deutsch &amp; Englisch · Antwort innert 24 h an Werktagen'
 PROD_REGELN = [  # (alt, neu) — jede darf 0..n× treffen; mindestens EINE muss treffen, sonst kein Schreiben
  ('<strong>30 Tage Geld-zurück-Garantie</strong><br><small>Keine Fragen · volle Rückerstattung · einfacher Retoure-Prozess</small>', NEU_RUECK),
@@ -288,13 +346,29 @@ PROD_REGELN = [  # (alt, neu) — jede darf 0..n× treffen; mindestens EINE muss
  (' – der Endpreis ist der Endpreis', '; Hinweise zu Einfuhrsteuer bei Direktversand stehen in den FAQ'),
  ('Faire Preise und ein transparenter Endpreis ohne versteckte Zusatzkosten.', 'Faire Preise; Hinweise zu Einfuhrsteuer bei Direktversand stehen in den FAQ.'),
  ('Faire Preise und transparente Endpreise – keine versteckten Aufschlaege.', 'Faire Preise ohne versteckte Aufschlaege; Hinweise zu Einfuhrsteuer bei Direktversand stehen in den FAQ.'),
+ # 05.10. (Prüferbefund): Dativ-/Wortstellungs-Varianten der 7-Tage-Zusage — 23 Produkte (6 aktiv), Rohtext gelesen.
+ # Spezifisch vor allgemein; jede Zeile ist eine exakte Zeichenkette aus dem Bestand.
+ ('mit persönlichem DE/EN-Support an 7 Tagen die Woche', 'mit persönlichem DE/EN-Support, Antwort innert 24 h an Werktagen'),
+ ('Persönlicher DE/EN-Support an sieben Tagen die Woche.', 'Persönlicher DE/EN-Support, Antwort innert 24 h an Werktagen.'),
+ ('Persönlicher DE/EN-Support an 7 Tagen die Woche.', 'Persönlicher DE/EN-Support, Antwort innert 24 h an Werktagen.'),
+ ('DE/EN-Support an sieben Tagen die Woche, wenn du Fragen zu deinen Düften hast.', 'DE/EN-Support mit Antwort innert 24 h an Werktagen, wenn du Fragen zu deinen Düften hast.'),
+ ('DE/EN-Support an 7 Tagen die Woche, von Menschen, die ihre Produkte kennen.', 'DE/EN-Support mit Antwort innert 24 h an Werktagen, von Menschen, die ihre Produkte kennen.'),
+ ('persönlich und sieben Tage die Woche erreichbar.', 'persönlich, Antwort innert 24 h an Werktagen.'),
+ ('Persönlicher DE/EN-Support, sieben Tage die Woche erreichbar', 'Persönlicher DE/EN-Support, Antwort innert 24 h an Werktagen'),
+ ('Deutsch- und englischsprachiger Support, sieben Tage die Woche.', 'Deutsch- und englischsprachiger Support, Antwort innert 24 h an Werktagen.'),
+ ('Bestellungen werden aus Belp versendet, mit Tracking und persönlichem DE/EN-Support.', 'Bestellungen gehen mit Tracking raus, dazu persönlicher DE/EN-Support.'),
+ # Block vom 04.10. nachziehen: die Richtlinie knüpft die 14 Tage an den Eingang der Retoure
+ ('Erstattung innert 14 Tagen · Rücksendung', 'Erstattung innert 14 Tagen nach Eingang · Rücksendung'),
 ]
 ZOLL_RE = [  # wenige Entwurfs-Varianten mit freiem Satzende — nur innerhalb eines <li>, DRY zeigt den Treffer
  (re.compile(r'Endpreis ist Endpreis – keine versteckten Zoll[^<]*'), 'Transparente Preise – Hinweise zu Einfuhrsteuer bei Direktversand stehen in den FAQ'),
 ]
 BELP = 'Versand aus Belp · 7–12 Werktage'
-SUCHEN = ['"Keine Fragen"', '"Geld-zurück"', '"Versand aus Belp"', '"7 Tage die Woche"', '"Zoll-Überraschungen"', '"Endpreis"', '"Geld zurück"', '"Anlauf-Garantie"']
-RESTWORTE = re.compile(r'Keine Fragen|Geld[- ]zur[üu]ck|Anlauf-Garantie|Versand aus Belp|7 Tage die Woche|Zoll-Überraschung|Endpreis')
+SUCHEN = ['"Keine Fragen"', '"Geld-zurück"', '"Versand aus Belp"', '"7 Tage die Woche"', '"Zoll-Überraschungen"', '"Endpreis"', '"Geld zurück"', '"Anlauf-Garantie"',
+          # 05.10.: Shopify-Phrasensuche trifft keine Flexionsformen («Endpreis» ≠ «Endpreise», «7 Tage» ≠ «7 Tagen»)
+          '"7 Tagen die Woche"', '"sieben Tage die Woche"', '"sieben Tagen die Woche"', '"Endpreise"', '"aus Belp versendet"',
+          '"Erstattung innert 14 Tagen"']
+RESTWORTE = re.compile(r'Keine Fragen|Geld[- ]zur[üu]ck|Anlauf-Garantie|Versand aus Belp|aus Belp versendet|(?:7|sieben) Tagen? die Woche|Zoll-Überraschung|Endpreis')
 
 
 def produkte():
@@ -353,7 +427,7 @@ def messen():
     try:
         def cnt(q): return gql('query($q:String){productsCount(query:$q,limit:null){count}}', {"q": q})['productsCount']['count']
         a = cnt('status:active AND "Keine Fragen"'); b = cnt('status:active AND "Geld-zurück"'); c = cnt('status:active AND "Versand aus Belp"')
-        d = cnt('status:active AND "7 Tage die Woche"')
+        d = sum(cnt(f'status:active AND "{w}"') for w in ('7 Tage die Woche', '7 Tagen die Woche', 'sieben Tage die Woche', 'sieben Tagen die Woche'))
         # Seiten: verbotene Phrasen in veröffentlichten Seiten
         pages = []; cur = None
         while True:
@@ -363,7 +437,10 @@ def messen():
             cur = r['pageInfo']['endCursor']
         VERBOT = re.compile(r'Geld-zur[üu]ck|money-back|Keine Fragen|No questions asked|Sans discussion|Rimborso totale|bedingungslos|Unconditional|'
                             r'gesetzlich 14|14-t[äa]gig\w* R[üu]ckgabe|7-14 business|7-14 jours|7-14 giorni|WhatsApp|EU customers|EU-Kund|'
-                            r'20–30 Werktage|In der Schweiz gedruckt|Maximum-Zeiten|Versand aus Belp', re.I)
+                            r'20–30 Werktage|In der Schweiz gedruckt|Maximum-Zeiten|Versand aus Belp|'
+                            # 05.10.: pauschale Lieferzeit, POD-Herkunft, Heilversprechen-/Zahlen-Klasse der Ratgeber, kaputte Sie→du-Form
+                            r'in der Regel (?:innerhalb von )?7[–-]14 Werktage|In der Schweiz gestaltet|Glow in \d+ Tagen|Weniger Falten in|'
+                            r'\d\d-\d\d ?% günstiger|für du entdeckst', re.I)
         treffer = []
         for p in pages:
             t = html.unescape(re.sub(r'<[^>]+>', ' ', p['body'] or ''))

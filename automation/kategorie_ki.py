@@ -12,6 +12,7 @@ REGEL (eng, Zweitprüfer-Prinzip wie google_fein_ki.py):
   * Nur aktive Produkte OHNE Kategorie, für die kategorie_wache.ziel_fuer() nichts liefert (die Regeln bleiben erste Wahl).
   * Kandidaten = NUR die Taxonomie-IDs, die kategorie_wache.py schon kennt und beim Start verifiziert (TABELLE +
     TITELREGELN + KINDERREGELN, ~100 Pfade). Kein freier Text, keine erfundene ID.
+  * 05.10.: UNEINIG/KEINER sperren nur SPERRTAGE_UNEINIG (1) Tag, GESETZT/FEHLER weiter SPERRTAGE (30).
   * Erstprüfer (titel_kauderwelsch_wache.gemini: Gemini, bei leerem Guthaben Groq qwen) und Zweitprüfer
     (titel_kauderwelsch_wache.gpt: ChatGPT, bei leerem Guthaben Groq gpt-oss) wählen UNABHÄNGIG je eine Nummer aus
     derselben Liste (oder 0 = «keiner passt»). Geschrieben wird nur bei gleicher Wahl ≠ 0 — oder wenn die eine Wahl
@@ -43,6 +44,10 @@ LEDGER = os.path.join(REPO, "dropship", "_kategorie_ki.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 MAX = int(os.environ.get("MAX", "60"))
 SPERRTAGE = int(os.environ.get("SPERRTAGE", "30"))
+# 05.10.2026 (Prüfer «kategorie», Plan 7): UNEINIG/KEINER sperrte 30 Tage — vier Produkte (Winter-Geschenkset, Antirutsch-Mat,
+# Innenraum-Bürsten-Set, Gel-Pads) wären bis 03.11. ohne Kategorie geblieben. Uneinigkeit ist kein Urteil, nur ein Tag Pause;
+# GESETZT/FEHLER behalten die 30 Tage.
+SPERRTAGE_UNEINIG = int(os.environ.get("SPERRTAGE_UNEINIG", "1"))
 POD = re.compile(r"\bpod\b|printful|selbst-gestalten|editor", re.I)
 BOILER = re.compile(r"(🛡️|🚚|Sorglos shoppen|Gratis-Versand ab|Produktdetails|Das zeichnet (es|sie) aus).*$", re.S)
 TC = kw.TC
@@ -50,6 +55,8 @@ TC = kw.TC
 PROMPT = """Du ordnest Produkte eines Schweizer Onlineshops in die Shopify-Produkt-Taxonomie ein.
 Wähle für JEDES Produkt die EINE Nummer aus der Liste, deren Pfad das Produkt am genauesten beschreibt. Lies die
 Beschreibung — der Titel ist oft unklar. Nimm 0, wenn kein Pfad der Liste klar passt. Lieber 0 als geraten.
+Regel: Spielzeug FÜR Tiere (Hunde-/Katzenspielzeug, Kauspielzeug, Schnüffelspielzeug, Futterspielzeug) gehört zu
+«Animals & Pet Supplies > Pet Supplies», nie zu «Toys & Games». Ein ferngesteuertes Tier oder ein Tier als Motiv ist kein Tierbedarf.
 
 Pfade:
 {liste}
@@ -73,19 +80,30 @@ def kandidaten():
 
 
 def ledger_lesen():
+    """handle → (datum, ergebnis); die jüngste Zeile je Handle zählt."""
     gesperrt = {}
     if os.path.exists(LEDGER):
         for l in open(LEDGER, encoding="utf-8"):
             f = l.rstrip("\n").split("\t")
             if len(f) >= 2:
-                gesperrt[f[1]] = f[0]
+                gesperrt[f[1]] = (f[0], (f[6] if len(f) >= 7 else "").split(" ")[0])
     return gesperrt
+
+
+def gesperrt_bis(eintrag):
+    """Sperrfrist je Ergebnis: UNEINIG/KEINER → SPERRTAGE_UNEINIG, alles andere → SPERRTAGE."""
+    datum, erg = eintrag
+    tage = SPERRTAGE_UNEINIG if erg in ("UNEINIG", "KEINER") else SPERRTAGE
+    try:
+        return (dt.datetime.strptime(datum[:10], "%Y-%m-%d") + dt.timedelta(days=tage)).strftime("%Y-%m-%d")
+    except ValueError:
+        return "9999-12-31"
 
 
 def offene():
     """Aktive ohne Kategorie, ohne Regeltreffer, ohne POD, nicht im Ledger-Sperrfenster."""
     sperre = ledger_lesen()
-    grenze = (dt.datetime.utcnow() - dt.timedelta(days=SPERRTAGE)).strftime("%Y-%m-%d")
+    heute = dt.datetime.utcnow().strftime("%Y-%m-%d")
     out, cur = [], None
     while True:
         d = gql('query($c:String){ products(first:250, after:$c, query:"status:active AND -category_id:*"){ pageInfo{hasNextPage endCursor} '
@@ -99,7 +117,7 @@ def offene():
                 continue                                   # Regel trifft → kategorie_wache setzt es
             if POD.search(" ".join(p.get("tags") or [])):
                 continue
-            if sperre.get(p["handle"], "") >= grenze:
+            if p["handle"] in sperre and gesperrt_bis(sperre[p["handle"]]) > heute:
                 continue
             txt = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", p.get("descriptionHtml") or ""))).strip()
             txt = BOILER.sub("", txt).strip()[:350]

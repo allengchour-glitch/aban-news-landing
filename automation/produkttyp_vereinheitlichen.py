@@ -18,7 +18,11 @@ REGEL
     UND-Anker = alt; NOT_EQUALS = neu). Hinzukommen ist erlaubt.
   - Editor/POD ist heilig: Produkte mit Tag pod/printful/selbst-gestalten/editor werden nie angefasst.
   - Täglich im Aufseher (Importer erzeugen die Dubletten neu). DRY (Standard) zählt; SCHARF=1 schreibt + liest zurück.
-  Ledger dropship/_produkttyp_ledger.tsv (datum, id, alt, neu) — Rückweg: --zurueck (SCHARF=1).
+  Ledger dropship/_produkttyp_ledger.tsv (datum, id, alt, neu, zeit, lauf) — Rückweg: --zurueck LAUF=<kennung> (SCHARF=1).
+  05.10.2026 (Prüfer «kategorie», Plan 9): `--zurueck` las ALLE 3'900 Zeilen (02.10. + 04.10. + 152 Aroma-Zeilen im
+  Fremdformat gid/alt/neu/grund/titel — dort wäre «Beauty-Tools» als Produkt-ID in die Mutation gegangen). Jetzt: jede Zeile
+  trägt ISO-Zeit + Laufkennung (LAUF=… oder Startminute), der Rückweg verlangt LAUF=<kennung> und überspringt Zeilen, deren
+  zweites Feld keine Produkt-ID ist. NOT_EQUALS-Sperre nur, wenn das Produkt wirklich in der Kollektion steht (inCollection).
 """
 import datetime as dt, os, re, sys
 
@@ -29,6 +33,7 @@ from seo_autopilot import gql
 REPO = os.path.dirname(HIER)
 LEDGER = os.path.join(REPO, "dropship", "_produkttyp_ledger.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
+LAUF = os.environ.get("LAUF") or f"{dt.datetime.utcnow():%Y-%m-%dT%H%M}"
 POD = re.compile(r"\bpod\b|printful|selbst-gestalten|editor", re.I)
 
 KARTE = {
@@ -127,7 +132,7 @@ def aus_kategorie(kat, titel):
 
 
 QR = ("query($c:String){collections(first:250,after:$c){pageInfo{hasNextPage endCursor} "
-      "nodes{handle ruleSet{appliedDisjunctively rules{column relation condition}}}}}")
+      "nodes{id handle ruleSet{appliedDisjunctively rules{column relation condition}}}}}")
 QP = ("query($q:String,$c:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} "
       "nodes{id title productType tags category{id}}}}")
 
@@ -139,15 +144,23 @@ def typ_regeln():
         for n in r["nodes"]:
             rs = n["ruleSet"]
             if rs and any(x["column"] == "TYPE" for x in rs["rules"]):
-                out.append((n["handle"], rs["appliedDisjunctively"], [x for x in rs["rules"] if x["column"] == "TYPE"]))
+                out.append((n["handle"], rs["appliedDisjunctively"], [x for x in rs["rules"] if x["column"] == "TYPE"], n["id"]))
         if not r["pageInfo"]["hasNextPage"]:
             return out
         cur = r["pageInfo"]["endCursor"]
 
 
-def sperrgrund(alt, neu, regeln):
+def in_kollektion(pid, cid):
+    r = gql("query($p:ID!,$c:ID!){product(id:$p){inCollection(id:$c)}}", {"p": pid, "c": cid})
+    return bool((r.get("product") or {}).get("inCollection"))
+
+
+def sperrgrund(alt, neu, regeln, pid=None):
+    """Grund, warum alt→neu verweigert wird, sonst None. 05.10.: die NOT_EQUALS-Sperre zählt nur, wenn das Produkt (pid) in der
+    Kollektion steht — zwei Feuerzeuge blieben «Trend-Gadget», weil `gadgets` Raucherzubehör ausschliesst, obwohl sie nie in
+    Gadgets waren. Ohne pid (Dubletten-Tabelle, ganze Klasse) bleibt die Sperre vorsichtig wie bisher."""
     a, n = alt.lower(), neu.lower()
-    for h, oder, rs in regeln:
+    for h, oder, rs, cid in regeln:
         gleich = {x["condition"].lower() for x in rs if x["relation"] == "EQUALS"}
         nicht = {x["condition"].lower() for x in rs if x["relation"] == "NOT_EQUALS"}
         if oder and a in gleich and n not in gleich:
@@ -155,6 +168,8 @@ def sperrgrund(alt, neu, regeln):
         if not oder and a in gleich:
             return f"{h}: UND-Anker «{alt}»"
         if n in nicht and a not in nicht:
+            if pid and not in_kollektion(pid, cid):
+                continue                      # steht gar nicht drin → kann nicht herausfallen
             return f"{h}: schliesst «{neu}» aus"
     return None
 
@@ -189,17 +204,32 @@ def schreiben(paare):
 
 
 def zurueck():
+    """--zurueck LAUF=<kennung>: nur die Zeilen dieses Laufs (Spalte 6) zurück auf `alt`; Fremdformat-Zeilen (zweites Feld keine
+    Produkt-ID) werden gezählt und übersprungen. Ohne LAUF: Kennungen auflisten, nichts tun."""
     zeilen = [z.rstrip("\n").split("\t") for z in open(LEDGER, encoding="utf-8")] if os.path.exists(LEDGER) else []
-    paare = [(f[1], f[2]) for f in zeilen if len(f) >= 4]
-    print(f"Rückweg: {len(paare)} Produkte" + ("" if SCHARF else " (trocken)"))
-    if SCHARF:
+    kennung = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("LAUF=")), None)
+    fremd = [f for f in zeilen if len(f) >= 2 and not f[1].startswith("gid://shopify/Product/")]
+    laeufe = {}
+    for f in zeilen:
+        if len(f) >= 6 and f[1].startswith("gid://shopify/Product/"):
+            laeufe[f[5]] = laeufe.get(f[5], 0) + 1
+    if not kennung:
+        print(f"Rückweg braucht LAUF=<kennung>. Kennungen im Ledger ({len(fremd)} Fremdformat-Zeilen übersprungen):")
+        for k, n in sorted(laeufe.items()):
+            print(f"  {k}: {n} Zeilen")
+        return
+    paare = [(f[1], f[2]) for f in zeilen if len(f) >= 6 and f[5] == kennung and f[1].startswith("gid://shopify/Product/")]
+    print(f"Rückweg LAUF={kennung}: {len(paare)} Produkte · {len(fremd)} Fremdformat-Zeilen übersprungen" + ("" if SCHARF else " (trocken)"))
+    for pid, alt in paare[:15]:
+        print(f"  {pid} → {alt}")
+    if SCHARF and paare:
         print(f"  zurückgeschrieben {schreiben(paare)}")
 
 
 def main():
     if "--zurueck" in sys.argv:
         return zurueck()
-    print(f"START {dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}{'' if SCHARF else ' · TROCKEN'}", flush=True)
+    print(f"START {dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}{'' if SCHARF else ' · TROCKEN'} · LAUF={LAUF}", flush=True)
     regeln = typ_regeln()
     print(f"  {len(regeln)} Kollektionen mit TYPE-Regel")
     paare, gesperrt, pod = [], 0, 0
@@ -219,7 +249,7 @@ def main():
         for p in frei:
             paare.append((p["id"], neu))
             if led:
-                led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\n")
+                led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{LAUF}\n")
     # Sammeltypen über die Produktkategorie
     zahl = {}
     for alt in SAMMEL:                       # 04.10.: nur aktive — Entwürfe kosten Mutationen und sieht niemand im Filter
@@ -227,13 +257,17 @@ def main():
             if POD.search(" ".join(p["tags"])):
                 continue
             neu = aus_kategorie((p.get("category") or {}).get("id"), p["title"])
-            if not neu or neu == alt or sperrgrund(alt, neu, regeln):
-                zahl["bleibt"] = zahl.get("bleibt", 0) + 1
+            g = sperrgrund(alt, neu, regeln, pid=p["id"]) if neu and neu != alt else None
+            if not neu or neu == alt or g:
+                k = "bleibt" if not g else "gesperrt"
+                zahl[k] = zahl.get(k, 0) + 1
+                if g:
+                    print(f"  ✗ {p['title'][:50]} → {neu}: {g}")
                 continue
             zahl[neu] = zahl.get(neu, 0) + 1
             paare.append((p["id"], neu))
             if led:
-                led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\n")
+                led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{LAUF}\n")
     print("  Sammeltypen →", dict(sorted(zahl.items(), key=lambda x: -x[1])))
     if led:
         led.flush()

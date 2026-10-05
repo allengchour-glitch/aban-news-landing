@@ -3941,3 +3941,5 @@ statement-ohrringe-dore-geburstetes-gold-quadratisch	2063489456268795905	16	4.60
 sommer-armband-evil-schmetterling-nazar-auge-vergoldet	2606060332151638100	16	4.40	ok	landeseite
 glucks-halskette-fortune-hufeisen-kreuz-mit-zirkonia	2606080114141614500	16	4.42	ok	landeseite
 doppel-ring-duo-s925-silber-mit-zirkonia-topas-blau	2606070942211620000	16	4.50	ok	landeseite
+boho-jeansjacke-dentelle-denim-mit-spitzen-panel	2606070100431607500	16	14.60	ok	landeseite
+zehensteg-sandalen-riva-flach-mit-metall-detail	2606010933391629300	16	11.37	ok	landeseite
