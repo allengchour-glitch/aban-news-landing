@@ -477,6 +477,9 @@ if [ -f /tmp/kost28.jsonl ] && [ -f "$REPO_AUTO/preis_verlustschutz.py" ] \
 fi
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
+# 05.10.2026 Betreiber «jeder kauf muss auch automatisch auslösen bei fortuna»: Fortura-Positionen bezahlter Bestellungen
+# erkennen + Bestellpaket vorbereiten (Stufe 1; XML nach /home/ORDERS erst mit Fortura-Muster). Zeile nur bei Arbeit.
+( cd "$REPO" && timeout 120 python3 "$REPO_AUTO/fortura_bestell_engine.py" 2>/dev/null ) | grep -v "^FORTURA: 0 offen" || true
 # 29.09.2026 Betreiber «jeden tag ein verkauf machen»: Ziel sichtbar in jeder Meldung (fremde, nicht erstattete Käufe je Tag).
 python3 "$REPO_AUTO/verkauf_ziel.py" 2>/dev/null || echo "VERKAUF-ZIEL: unklar (Skript fehlt)"
 # 01.10.2026 (Grow-Verhaltensberichte): Produktseiten mit Warenkorb ohne Kauf, 14 T — kürzester Weg zum nächsten Verkauf.

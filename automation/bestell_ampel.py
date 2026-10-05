@@ -86,6 +86,20 @@ def main():
         else:
             # 02.10.2026: «LX1021:UNSHIPPED» wurde als «unbezahlt» gelesen (auch von mir) — bei CJ heisst UNSHIPPED
             # «bezahlt, noch nicht versandt». Status deutsch ausschreiben, Tracking dazu.
+            # 05.10.2026: reine Fortura-Bestellung (Schweizer Lager) hat nie einen CJ-Auftrag — Stand aus dem Fortura-Ledger.
+            skus = [(li.get("sku") or "") for li in o["lineItems"]["nodes"]]
+            if skus and all(x.startswith("fortura-") for x in skus):
+                fst = "unbekannt"
+                try:
+                    for z in open(os.path.join(REPO, "dropship/_fortura_bestellungen.tsv"), encoding="utf-8"):
+                        t = z.rstrip("\n").split("\t")
+                        if t[0] == nr: fst = t[3]
+                except Exception:
+                    pass
+                st = f"Fortura: {fst}"
+                warn = "" if fst == "bestellt" else " ⚠️"
+                teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
+                continue
             st = ", ".join(f"{k}: {CJ_STATUS.get(watch[k].get('status'), watch[k].get('status', '?'))}"
                            + (f" ({watch[k]['tracking']})" if watch[k].get("tracking") else "") for k in lx) \
                 if lx else "KEIN CJ-Auftrag"

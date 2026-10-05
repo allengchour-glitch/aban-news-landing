@@ -1,19 +1,17 @@
-# Füllmenge fehlt — Stand 2026-10-04 22:25 UTC
+# Füllmenge fehlt — Stand 2026-10-05 20:23 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 141 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
 | Produkt | Menge | Status | Beleg (OCR) |
 |---|---|---|---|
-| [Gua-Sha-Set «Jade» · Massage-Tool & Rosehip-Öl](https://luxestyle.ch/products/gua-sha-set-jade-massage-tool-rosehip-ol) | 30 ml | Vorschlag — sichten | 30 1 @ a083eb57-fe88-4722-9860-1de863c00b06.jpg; 1 @ 76cdd042-4c1b-48d5-adca-84fa8b72e511.jpg |
 | [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | 50 ml | Vorschlag — sichten | 50 @ d1c8ff1d-6c86-49b1-b4ee-60e040e0f0d3.jpg; 50 @ 29e06320-c409-4a47-8431-e1d00c98dc60.jpg; 50 @ eace5441-3694-41ab-a12f-96842a3de8ca.jpg; 50 @ 9f33a78a-9764- |
 | [WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials](https://luxestyle.ch/products/wnp-3-hyaluronsaure-serum-ultra-hydrating-vial-606800) | 5 ml | Vorschlag — sichten | 5 @ 46e26515-4ba9-48b0-b1b2-2c6424632e9e_trans.jpg |
 | [Straffendes Serum & Feuchtigkeitscreme Set](https://luxestyle.ch/products/straffendes-serum-feuchtigkeitscreme-set-604900) | 30 ml | Vorschlag — sichten | 30 30 1.01 1.01 @ 29d78e6d-757f-4af4-8197-e50df6680ff2.jpg |
 | [DR Reismilch Gesichtsreiniger](https://luxestyle.ch/products/dr-reismilch-gesichtsreiniger-919106) | — | nichts lesbar |  |
 | [DR Reis Milch Gesichtswasser](https://luxestyle.ch/products/dr-reis-milch-gesichtswasser-405762) | — | nichts lesbar |  |
 | [Azelaic Acid & Niacinamide Serum](https://luxestyle.ch/products/azelaic-acid-niacinamide-serum-741570) | — | nichts lesbar |  |
-| [OUHOE Schneckencreme – Sanfte Gesichtspflege](https://luxestyle.ch/products/ouhoe-schneckencreme-sanfte-gesichtspflege-632833) | — | nichts lesbar |  |
 | [HUNMUI Feuchtigkeitsspendendes Fixierspray](https://luxestyle.ch/products/hunmui-feuchtigkeitsspendendes-fixierspray-860866) | — | nichts lesbar |  |
 | [Rizinusöl Wimpernserum](https://luxestyle.ch/products/rizinusol-wimpernserum-313025) | — | nichts lesbar |  |
 | [2-in-1 Lipgloss & Lippenöl](https://luxestyle.ch/products/2-in-1-lipgloss-lippenol-610300) | — | nichts lesbar |  |
@@ -136,7 +134,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Feuchtigkeitspflegecreme](https://luxestyle.ch/products/feuchtigkeitspflegecreme-9e5547) | — | nichts lesbar |  |
 | [Herzförmiger High-Gloss-Toner](https://luxestyle.ch/products/herzformiger-high-gloss-toner-d03e06) | — | nichts lesbar |  |
 | [Wimpernpflege-Fluid](https://luxestyle.ch/products/wimpernpflege-fluid-3f8a60) | — | nichts lesbar |  |
-| [Reiniger-Pads 5‑Pack aus Baumwolle](https://luxestyle.ch/products/reiniger-pads-5-pack-aus-baumwolle-64ccb1) | — | nichts lesbar |  |
+| [Reiniger-Pads 5-Pack aus Baumwolle](https://luxestyle.ch/products/reiniger-pads-5-pack-aus-baumwolle-64ccb1) | — | nichts lesbar |  |
 | [Mushroom Luftkissen BB Creme](https://luxestyle.ch/products/mushroom-luftkissen-bb-creme-c5b628) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendende CC Creme](https://luxestyle.ch/products/feuchtigkeitsspendende-cc-creme-6f4dc5) | — | nichts lesbar |  |
 | [Wimpernserum](https://luxestyle.ch/products/wimpernserum-ec315d) | — | nichts lesbar |  |

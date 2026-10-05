@@ -35,6 +35,18 @@
 
 
 
+## 2026-10-05 20:40 · 📦 Fortura-Bestellautomat Stufe 1 — die XML-Muster (Opacc.ORDERS) kamen seit 22.07. nie
+
+Betreiber «jeder kauf muss auch automatisch auslösen bei fortuna». Gemessen: Fortura-Verkauf = Handbestellung im Portal; Ampel
+zeigte «KEIN CJ-Auftrag ⚠️». Fortura-Server hat /home/ORDERS + /home/DESADV (leer, gleiche Zugangsdaten wie der Feed, Port 443).
+Die am 22.07. erbetenen Musterdateien (Opacc.ORDERS/DELVRY) hat Fortura nie geschickt (Gmail: nur Vertrag + Rechnung 1041116).
+**Keine XML auf Verdacht** — eine falsche Bestelldatei löst echte Lieferungen aus. Stufe 1: `fortura_bestell_engine.py`
+(stündlich in engine_keepalive nach der Bestell-Ampel) erkennt bezahlte Bestellungen mit `fortura-<ArtNr>` (SKU = Fortura-ArtNr,
+am Feed geprüft), baut das Paket (Adresse nur /tmp 600, nie ins öffentliche Repo), Ledger `_fortura_bestellungen.tsv`, Zeile
+«⚠️ FORTURA: #nr bereit — im Portal bestellen: ArtNr×Menge» bis `--bestellt <nr>`; Ampel zeigt reine Fortura-Bestellungen als
+«Fortura: bereit/bestellt». Kanarienvogel (#9999 gemischt CJ+Fortura, #9998 nur CJ) grün. Gmail-Entwurf an rpapini@fortura.ch
+(Muster ORDERS/DESADV, neutraler Versand, Annahmeschluss, Testbestellung). Stufe 2 (XML-Upload + DESADV-Tracking) nach Muster.
+
 ## 2026-10-05 20:30 · 🛒 Ricardo-Feed: nur 364 von 2'388 Schweizer-Lager-Produkten tragen 12 % Provision · 🇫🇷 FR vollständig
 
 Betreiber «kannst du ricardo machen». Gemessen: Fortura-Marge Median 21 % (VK 49.90 / EK 39.46) → nach 12 % Ricardo-Provision
@@ -17967,6 +17979,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 🧭 **«passe webseite alles an»: Hauptmenü «🎁 Geschenke & Weihnachten» an Platz 1 (Weihnachten, Sie/Ihn/Kinder, Hochzeit oben; neu Wimpern, Fahrzeuge & RC, LED-Strips; 183 Links geprüft, Backup `_hauptmenue_backup_2026-10-02.json`); Rotation: Weihnachten ab 01.10. (Lieferzeit 10–20 WT → bis 20.12.), zwei Saison-Reihen nach oben, Geschenk-Welten im Pool; live per WebFetch: Trend → Herbst → Halloween → Weihnachten.** Saisonfenster an der Lieferzeit ausrichten, nicht am Kalender → Journal 02.10.
 - 2026-10-02 · 🎁 **Tag 3+4 vorgezogen: Geschenk-Welten zeigten oben 22/24 Schmuck / 22/24 Uhren / 16/24 Babykleider (Zuordnung, nicht Sortierung) → `geschenk_unterwelten.py` (400 je Welt nach Warenart, reihum, täglich); 27 dünne Kategorien → 20 (7 Regeln erweitert, Rest kuratiert/Saison); `google_fein_ki` pausiert 6 h bei leerem Zweitprüfer-Kontingent statt Gemini zu bezahlen.** Nach `collectionUpdate` füllt Shopify asynchron — auf Soll-Menge warten, nicht auf «≥» → Journal 02.10.
 - 2026-10-02 · 🚚 **Gratisversand-Entscheid (Betreiber «entscheide du»): Versprechen = CHF 50 überall; Tarif ≥ 45 nach Rabatt bleibt (50 × 0,9, Bündelrabatt); Automatik-Rabatt «ab CHF 49» → «ab CHF 50», Code FREESHIP49 (0×) aus; Wächter OK.** 45 ist Technik, 50 ist das Versprechen — Texte nie auf 45 → Journal 02.10.
 - 2026-10-02 · 💸 **Preise (Betreiber «entscheide selber» → «15 % Reserve»): 24 Codes > 15 % aus (0× benutzt), `preis_verlustschutz` RABATT 0.15, gesperrte Varianten trugen Lockpreise («ab 14.90», 3'405 behoben), `preis_senken.py` senkte 350'008 Varianten / 34'486 Produkte im Median −11 % (0 Fehler; nur Band alter–neuer Boden, min. CHF 14.90), 7 Ratgeber ohne tote Codes, 64 SEO-Titel mit Semrush-Suchbegriff (`seo_suchbegriff_titel.py`).** Codes in Texten mitprüfen → Journal 02.10.
