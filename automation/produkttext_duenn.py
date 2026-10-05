@@ -569,6 +569,8 @@ def main():
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = {z.split("\t")[1] for z in open(LEDGER) if "\t" in z and not z.startswith("zeit")}
+    if os.path.exists(TITEL_PRUEFEN):                 # 05.10.: Relaunch-Schleife hängte «Spiral-Armband» bei jedem Lauf erneut an
+        erledigt |= {z.split("\t")[1] for z in open(TITEL_PRUEFEN) if z.count("\t") >= 2}
     offen = [h for h in hs if h not in erledigt]
     rauch_h = re.compile(r"shisha|aschenbecher|zigar|tabak|grinder|kohleanz|raucher|rauchger", re.I)
     offen.sort(key=lambda h: bool(rauch_h.search(h)))        # Raucherware zuletzt — das Kontingent gehört zuerst der Google-Kanal-Ware
