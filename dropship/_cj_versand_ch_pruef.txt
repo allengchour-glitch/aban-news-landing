@@ -4335,3 +4335,12 @@ gansedaunenkissen-fullung-fur-kissenhullen-520f50	1536905341865308160	16	25.49	o
 herren-sakko-aus-azetatfaser-diverse-farben-35f236	000EB619-4F00-4C46-9E33-703640E82B58	16	11.37	ok	landeseite
 led-halsband-fur-hunde-leopard-muster-1985e6	0155EAFD-50DB-4821-8CDE-3FDA0B087AB3	7	5.94	ok	landeseite
 paarweise-hausschuhe-eba3ba	00A852BF-5B73-44BB-9EAC-C7FB68CD5BF4	16	8.64	ok	landeseite
+multifunktionaler-vertikal-spiralschneider-58cc21	A14B907E-69D7-4994-B44A-CF4FE8CDB100	16	13.04	ok	landeseite
+personalisierbarer-zugfreier-reflektierender-h-4ce320	0050B77D-05F1-48B8-898E-013D5B7F3D4A	16	8.84	ok	landeseite
+pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78	0A226618-4151-49C8-A9E1-49B3FC88DD8E	7	8.74	ok	landeseite
+selfie-stick-stativ-mit-bluetooth-fernbedienun-dcc6fa	1387BDB2-AD32-4A7F-902F-C5AFF08D4C3F	7	7.80	ok	landeseite
+ultra-dunne-faltbare-bluetooth-tastatur-mit-to-5bddb3	1506217714204028928	7	9.69	ok	landeseite
+leuchtende-halloween-party-maske-f9b978	44395324-0E9F-4272-BB95-3586CD25A3FC	0	-	KEINE CH-Option → DRAFT	landeseite
+halloween-kostuem-fuer-hunde-479706	1434348856455335936	16	7.13	ok	landeseite
+nordische-fransen-strickdecke-8c46da	14FB87E7-99B5-441B-BE80-318EFEC409B5	16	15.17	ok	landeseite
+usb-aroma-diffuser-mit-7-led-farben-1b3dcc	1F15F0EF-BE85-44C8-800B-4235B4767550	16	7.71	ok	landeseite
