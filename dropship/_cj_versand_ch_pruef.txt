@@ -3904,3 +3904,5 @@ schultertasche-milano-pu-leder-grosse-kapazitat	2605300757541627100	16	10.83	ok	
 sonnenhut-riviera-uv-schutz-breite-krempe	2605290315551602400	16	6.35	ok	landeseite
 baseball-cap-navy-washed-cotton	2060289978965536770	16	6.48	ok	landeseite
 baseball-cap-washed-vintage-damen	2605300832471637700	16	5.96	ok	landeseite
+sport-sonnenbrille-velo-outdoor-radsport	2605280358201633500	5	5.13	ok	landeseite
+herren-sommershirt-breeze-leicht-atmungsaktiv	2605310648231628000	16	7.25	ok	landeseite
