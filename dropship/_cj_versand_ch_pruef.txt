@@ -4253,3 +4253,6 @@ samtige-gesichtsmaske-atmungsaktiv-schutzend-649900	2510120313071640100	16	5.12	
 all-in-one-ersatzmaske-620300	2412210617561622200	16	5.81	ok	landeseite
 schlafmaske-gegen-mude-augen-154880	1721805942263652352	7	10.33	ok	landeseite
 trainingsmaske-fur-mehr-ausdauer-569344	1659480804940066816	16	9.38	ok	landeseite
+augenmassagegerat-mit-warmekompresse-993088	1654720262824267776	7	13.48	ok	landeseite
+multifunktionale-gesichtsmaske-fur-sport-freiz-504576	1603231409068584960	16	5.41	ok	landeseite
+straffendes-pflegeol-fur-den-intimbereich-mit-460097	2072498877640900609	0	-	KEINE CH-Option → DRAFT	landeseite
