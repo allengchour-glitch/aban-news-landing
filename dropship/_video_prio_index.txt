@@ -20,7 +20,6 @@ gid://shopify/Product/15455551816065
 gid://shopify/Product/15455958073729
 gid://shopify/Product/15458641641857
 gid://shopify/Product/15460659626369
-gid://shopify/Product/15465326936449
 gid://shopify/Product/15466165567873
 gid://shopify/Product/15477467283841
 gid://shopify/Product/15479625384321
@@ -145,7 +144,6 @@ gid://shopify/Product/15497458811265
 gid://shopify/Product/15497496527233
 gid://shopify/Product/15498670473601
 gid://shopify/Product/15499122835841
-gid://shopify/Product/15499302502785
 gid://shopify/Product/15499302666625
 gid://shopify/Product/15499302928769
 gid://shopify/Product/15499303584129
