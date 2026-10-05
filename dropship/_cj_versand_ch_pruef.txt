@@ -3577,3 +3577,17 @@ weihnachts-hoodie-mit-3d-print-606400	2512300859311608700	16	11.00	ok	landeseite
 weihnachts-katze-crew-neck-pullover-damen-600500	2512300846461600800	16	9.61	ok	landeseite
 damen-weihnachtsdruck-flanell-hoodie-608800	2512300620531609100	16	10.42	ok	landeseite
 damen-weihnachts-hoodie-628700	2512300541451629000	16	10.83	ok	landeseite
+damen-weihnachts-flanell-hoodie-636700	2512300208171637000	16	11.00	ok	landeseite
+weihnachts-flanell-hoodie-633300	2512300123241633500	16	10.42	ok	landeseite
+weihnachts-pullover-rot-620300	2512291152281620500	16	7.85	ok	landeseite
+weihnachts-sweatshirt-mit-print-und-rei-versch-622900	2512290804191623100	16	9.61	ok	landeseite
+weihnachtliches-plaid-hoodie-mit-druckknopfen-603300	2512290119541604200	16	10.55	ok	landeseite
+weihnachts-pyjama-sets-fur-die-ganze-familie-613100	2512260952261613301	16	12.81	ok	landeseite
+weihnachts-partnerlook-fur-die-ganze-familie-618800	2512030726201619000	16	10.15	ok	landeseite
+weihnachts-hausanzug-fur-die-ganze-familie-617300	2412210947121617700	16	10.29	ok	landeseite
+weihnachts-homewear-fur-die-ganze-familie-615600	2412120310381615700	16	10.88	ok	landeseite
+weihnachts-pyjama-set-fur-die-ganze-familie-615100	2412120258451615300	16	12.09	ok	landeseite
+weihnachts-pyjama-fur-mutter-tochter-611100	2411280523031611300	16	9.61	ok	landeseite
+weihnachts-partnerlook-blau-weiss-gestreift-600900	2411270325051601500	16	12.21	ok	landeseite
+weihnachtliches-familien-outfit-im-hirsch-desi-600300	2411150601361600600	16	6.17	ok	landeseite
+weihnachts-homewear-im-partnerlook-605400	2411090227391605600	16	9.75	ok	landeseite
