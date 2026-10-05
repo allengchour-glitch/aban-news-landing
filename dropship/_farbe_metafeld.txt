@@ -426,3 +426,4 @@ gid://shopify/Product/16604924543367	Schwarz
 gid://shopify/Product/15458467185025	Gold
 gid://shopify/Product/15470013645185	Schwarz
 gid://shopify/Product/15470013743489	Blau
+gid://shopify/Product/15477042872705	Schwarz
