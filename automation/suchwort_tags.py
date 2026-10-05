@@ -57,7 +57,8 @@ GRUNDWOERTER = {
     "rucksack":    [],
     "guertel":     ["sicherheits", "keil"],         # Keilriemen-nah, Sicherheitsgurt
     "brille":      [],
-    "uhr":         ["fuehr", "spur", "natur", "kultur", "geschirr"],   # nur Wortende-Zufall
+    "uhr":         ["fuehr", "spur", "natur", "kultur", "geschirr",    # nur Wortende-Zufall
+                    "zufuhr", "abfuhr", "ausfuhr", "einfuhr"],        # «Drahtzufuhr» ist keine Uhr (Prüferbefund 05.10.)
     # ⚠️ «Lichterkette» ist keine Halskette. Ohne diese Ausnahme füllt eine LED-Solar-
     # Lichterkette die Schmucksuche — der Probelauf hatte 383 «kette»-Treffer, viele davon
     # Beleuchtung.
@@ -80,11 +81,15 @@ GRUNDWOERTER = {
     "vorhang":     [],
     "pfanne":      [],
     "topf":        ["blumen"],
-    "messer":      [],
+    # ⚠️ «messer» ganz herausgenommen (05.10.2026, Prüferbefund). Klingen sind seit dem 16.09. nicht mehr im Verkauf
+    # (Hausregel: nie als Keyword-Ziel) — was jetzt noch auf «-messer» endet, sind Messgeräte: Pulsmesser,
+    # Durchmesser, Höhen-, Winkel-, Windgeschwindigkeitsmesser. Und der Tag «messer» ist ein KLINGEN-SPERRTAG:
+    # google_kanal_luecke (TAG_RISIKO) holt so markierte Ware nie in den Google-Kanal zurück, cj_versand_ch_revive
+    # (KLINGE_TAG) aktiviert sie nie wieder. Ein Suchwort-Tag darf nie einen Sperrtag eines anderen Wächters setzen.
     "flasche":     [],
     "becher":      ["aschen"],                      # Aschenbecher = Raucherzubehör, kein Trinkbecher (05.10.)
     "buerste":     [],
-    "kamm":        [],
+    "kamm":        [],                              # Lamellen-/Reinigungskamm → KONTEXT_OHNE
     "schere":      [],
     "rasierer":    [],
     "parfum":      [],
@@ -123,12 +128,13 @@ GRUNDWOERTER = {
     "geldboerse":  [],
     "portemonnaie": [],
     "werkzeug":    [],
-    "bohrer":      [],
+    "bohrer":      ["punktbohrer"],                 # Diamond-Painting-Stift, kein Bohrer (05.10.)
     "schraubenzieher": [],
     "zange":       [],
     "hammer":      [],
     "leiter":      [],
-    "matte":       ["auto"],                        # Automatte ist Fussmatte, nicht Yogamatte
+    "matte":       ["auto",                         # Automatte ist Fussmatte, nicht Yogamatte
+                    "hängematte", "haengematte", "hangematte"],  # Hängematte ist keine Matte (05.10.)
     "hantel":      [],
     "fahrrad":     [],
     "helm":        [],
@@ -147,6 +153,81 @@ GRUNDWOERTER = {
     "halskette":   [],
     "anhaenger":   ["wohnwagen"],
 }
+# Grundwort → Titel-Muster, das den Treffer abweist, egal wo es im Titel steht (05.10.2026, Prüferbefund).
+# Für Fälle, die keine Vorsilbe verrät: «Stahlkamm zur Luftkonditionskanalreinigung» ist ein Lamellenkamm,
+# «Netzwerkkabel-Klemme mit Tester» eine Crimpzange, «Stahlkabel-Schlangeneinholer» ein Fanggerät.
+KONTEXT_OHNE = {
+    "kamm":  r"reinigung|lamelle|k(?:ü|ue)hler|klima|luftkondition",
+    "kabel": r"klemme|tester|crimp|einholer|abisolier",
+}
+# KOPFWORT-REGEL (05.10.2026, Prüferbefund): Im deutschen Produkttitel steht das Produkt VOR «mit/für/zur/zum/ohne».
+# Was danach kommt, ist Ausstattung oder Zweck: «Tischuhr mit Glockenalarm, 12 cm Durchmesser», «Smartwatch mit
+# Pulsmesser», «Lederarmband mit USB-C-Ladekabel», «Katzenbett mit Hängematte», «Etui für Brille».
+KOPF_ENDE = re.compile(r"\s(?:mit|f(?:ü|ue)r|zur|zum|ohne|inkl\.?|inklusive)\s", re.I)
+# Und ein Bindestrich danach heisst: das Grundwort ist nur Bestimmungswort, der Kopf folgt
+# («Netzwerkkabel-Klemme», «Stahlkabel-Schlangeneinholer»). Auch U+2011 (geschützter Bindestrich, CJ-Titel).
+# Ausnahme: «-Set/-Kit/-Paar/…» ist kein neuer Kopf («Stapelring-Set», «Wandregal-Set», «Messbecher-Set»).
+BINDESTRICH_DANACH = re.compile(r"[-‐‑](?!(?:sets?|kits?|paar|duo|trio|geschenkset|bundle|packs?|schmuck|modell)\b)[a-zäöüß]", re.I)
+
+def grundwort_treffer(grund, t, m_re=None):
+    """(trifft, gefundenes Wort, Abweisungsgrund). Nur der ERSTE Treffer des Grundworts im Titel zählt."""
+    if grund not in GRUNDWOERTER:          # z.B. «messer» — absichtlich gestrichen
+        return False, "", ""
+    m = (m_re or muster(grund)).search(t)
+    if not m:
+        return False, "", ""
+    # Steht eines der verbotenen Wörter davor, meint die Zusammensetzung etwas anderes.
+    vorher = t.lower()[:m.start()] + m.group(0).lower()
+    if any(v in vorher for v in GRUNDWOERTER[grund]):
+        return False, m.group(0), ""
+    # 05.10.2026: Grundwort nach «mit/für/…» oder vor einem Bindestrich ist nicht das Produkt;
+    # KONTEXT_OHNE weist Warenklassen ab, die keine Vorsilbe verrät.
+    if KOPF_ENDE.search(t[:m.start()]):
+        return False, m.group(0), " (nach mit/für)"
+    if BINDESTRICH_DANACH.match(t, m.end()):
+        return False, m.group(0), " (Bestimmungswort vor Bindestrich)"
+    if grund in KONTEXT_OHNE and re.search(KONTEXT_OHNE[grund], t, re.I):
+        return False, m.group(0), " (Kontext)"
+    return True, m.group(0), ""
+
+
+# KANARIENVÖGEL (05.10.2026, Prüferbefund): jeder Fehltreffer aus dem Trockenlauf + echte Treffer, die bleiben müssen.
+# Läuft vor jedem Lauf; ein einziger Ausreisser bricht ab, bevor etwas geschrieben wird.
+KANARIEN = [
+    ("Beech‑Tischuhr mit Glockenalarm, 12 cm Durchmesser", "uhr", True),
+    ("Beech‑Tischuhr mit Glockenalarm, 12 cm Durchmesser", "messer", False),
+    ("Antriebsschiene Verzögerungsdrahtzufuhr Doppel", "uhr", False),
+    ("Hängematte mit Moskitonetz und Sonnenschirm 270x270 cm", "matte", False),
+    ("Diamantmalerei-Punktbohrer aus Kunststoff", "bohrer", False),
+    ("LED-Punktbohrer mit wiederaufladbarer Leuchte", "bohrer", False),
+    ("Drehwinkelmesser für Fahrzeuge 360° Messung", "messer", False),
+    ("Digitaler Windgeschwindigkeitsmesser", "messer", False),
+    ("Stahlkamm zur Luftkonditionskanalreinigung", "kamm", False),
+    ("Netzwerkkabel-Klemme mit Tester – 1988B Set", "kabel", False),
+    ("Stahlkabel-Schlangeneinholer mit telescopischem Griff", "kabel", False),
+    ("Smart-Armband mit Pulsmesser", "messer", False),
+    ("Lederarmband mit USB-C-Ladekabel", "kabel", False),
+    ("Katzenbett mit Hängematte", "matte", False),
+    ("Quarzuhr mit Edelstahlarmband und Datumsanzeige", "armband", False),
+    # echte Treffer
+    ("Holzbohrer mit drei Kanten, Bohrlochöffner", "bohrer", True),
+    ("Gummihammer mit Rundkopf 8-24 oz", "hammer", True),
+    ("Bambus-Drainagematte für Bad, rutschfest", "matte", True),
+    ("Magnetisches 3-in-1 Ladekabel mit LED-Licht", "kabel", True),
+    ("Sandelholz Massagekamm für Haar und Kopfhaut", "kamm", True),
+    ("Stapelring-Set Gold · Mix (Herz & Welle)", "ring", True),
+    ("Wandregal-Set aus Holz, 2-teilig", "regal", True),
+    ("Leichtes Laufschuh-Modell", "schuh", True),
+    ("Retro Stoffuhr für Damen", "uhr", True),
+    ("Reisetasche mit 20-35 L Kapazität", "tasche", True),
+]
+
+
+def kanarien_pruefen():
+    """Liste der Kanarienvögel, die das Soll verfehlen (leer = alles gut)."""
+    return [(t, g, soll) for t, g, soll in KANARIEN if grundwort_treffer(g, t)[0] != soll]
+
+
 # Umlaut-Schreibweise für die Suche im Titel (die Tags selbst bleiben umlautfrei, damit sie
 # auch bei umlautfreier Eingabe treffen).
 MIT_UMLAUT = {"muetze": "mütze", "guertel": "gürtel", "huelle": "hülle",
@@ -362,6 +443,12 @@ def synonyme_schreiben(syn_aufgaben):
 def main():
     aufgaben, statistik, abgewiesen = [], Counter(), Counter()
     syn_aufgaben = []
+    falsch = kanarien_pruefen()
+    if falsch:
+        for t, g, soll in falsch:
+            print(f"KANARIENVOGEL verfehlt: «{t}» → {g} soll {'treffen' if soll else 'NICHT treffen'}", flush=True)
+        raise SystemExit("ABBRUCH: Grundwort-Regel verfehlt Kanarienvögel — nichts geschrieben")
+    print(f"Kanarienvögel: {len(KANARIEN)}/{len(KANARIEN)} richtig", flush=True)
     muster_je = {g: muster(g) for g in GRUNDWOERTER}
     for zeile in open(EXPORT):
         p = json.loads(zeile)
@@ -373,19 +460,14 @@ def main():
         tl = t.lower()
         vorhanden = {x.lower() for x in (p.get("tags") or [])}
         neu = []
-        for grund, verboten in GRUNDWOERTER.items():
+        for grund in GRUNDWOERTER:
             if grund in vorhanden:
                 continue
-            m = muster_je[grund].search(t)
-            if not m:
-                continue
-            # Steht eines der verbotenen Wörter direkt davor, meint die Zusammensetzung
-            # etwas anderes.
-            vorher = tl[:m.start()] + m.group(0).lower()
-            if any(v in vorher for v in verboten):
-                abgewiesen[(grund, m.group(0))] += 1
-                continue
-            neu.append(grund)
+            ok, wort, warum = grundwort_treffer(grund, t, muster_je[grund])
+            if wort and not ok:
+                abgewiesen[(grund, wort + warum)] += 1
+            if ok:
+                neu.append(grund)
         if NUR == "synonyme":
             neu = []
         syn = synonym_tags(t, p.get("productType"), p.get("tags"))
@@ -433,7 +515,9 @@ def main():
         if not node or node.get("status") != "ACTIVE":
             continue
         vorhanden = {x.lower() for x in node.get("tags") or []}
-        neu = [g for g in neu if g not in vorhanden]
+        # 05.10.2026: Der Export kann einen Tag alt sein — Titel werden inzwischen nachgebessert («Vintage Motorrad-
+        # sattelanzug» heisst live «Vintage-Motorradjacke»). Entschieden wird deshalb am LIVE-Titel, nicht am Export.
+        neu = [g for g in neu if g not in vorhanden and grundwort_treffer(g, node["title"])[0]]
         if neu:
             auftraege.append((node, neu))
     f = None if DRY else open(LEDGER, "a")

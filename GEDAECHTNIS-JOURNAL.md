@@ -35,6 +35,16 @@
 
 
 
+## 2026-10-05 11:20 · 🔪 Keyword-Runde fertig + Klingen-Loch: Faltmesser/Rasiermesser/Veredelungsmesser waren ACTIVE
+Keyword-Runde (Google-CH-Vorschläge, Semrush leer): 33 Kollektionen mit Nachfrage-Begriff in SEO-Titel/Meta/erstem Satz (Ledger mit
+Altwert), 60 Produkt-SEO-Titel (Prüfer ok), Suchwort-Tags mit Komposita-Rückbau (65 «messer»-Tags zurück). Beim Rückbau meldete der Agent
+«8 Klingen aktiv» → gemessen: «Titanlegierung Faltmesser Mini Schlüsselanhänger» (Kontext-Ausnahme «anhänger»), «Vintage Rasiermesser»
+(Gerät «rasier»), «Garten-Veredelungsmesser» (Messgerät-Regex «…ungsmesser») — alle drei ACTIVE trotz Hausregel #1017. Fix:
+`handklinge_immer` in `klingenregel.json` (eindeutige Klingen-Komposita VOR allen Ausnahmen, Zubehör/Motiv dahinter und
+`handklinge_kein_paket` bleiben ausgenommen), Python + Node gleich, Tests 65/65 + 28/28 + Tor; `klinge_ch_wache.py FIX=1`: 3 gedraftet,
+2 Drafts mit Sperr-Tag. «Küchenmesser mit Strass» bleibt (Fortura, CH-Lager, Kostüm-Accessoire). **Lehre:** Jede Ausnahme-Liste
+(Kontext, Gerät, Messgerät) frisst irgendwann ein echtes Messer — eindeutige Komposita brauchen Vorrang vor Ausnahmen.
+
 ## 2026-10-05 11:00 · 📈 «fix mal weiter semrush» / «keyword mehr»: Runde 3 + Keyword-Ernte, Semrush-Konto LEER, Fable-Limit
 Runde 3 (12 Agenten, Prüfer je Bereich): 8 neue Kollektionen (Etageren, USB-Sticks, Wanduhren, Woks, Abendkleider, Lunchboxen,
 Winterschuhe, Bauchtaschen; 32'100 Suchen/Mt) + 4 Seiten auf Stiefeletten/Nachttischlampe/Haarglätter/VR-Brille; Prüfer fand einen

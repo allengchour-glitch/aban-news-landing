@@ -4320,3 +4320,8 @@ scheinwerfer-vernebler-becher-a1978c	71E3E0E8-B0AB-4C80-A1C3-DF67EC14241D	16	8.7
 leder-lenkradbezug-38cm-19018d	11C5EB20-7DC7-4CC2-8255-97E9F0BEEA20	16	13.65	ok	landeseite
 etagere-fur-kuchen-snacks-abea57	3398767D-49BD-41D7-8194-8BED77B196C1	16	9.20	ok	landeseite
 3-in-1-mini-drohne-fur-land-wasser-luft-f0bc29	82F408E9-6EF0-40D2-81BF-D03E9F6ADC3F	7	9.37	ok	landeseite
+30w-vertikales-usb-ladegerat-mit-6-ports-5cd362	033C11DC-1D6D-4FE8-8E09-5E4461585591	16	7.15	ok	landeseite
+augenbrauen-stempel-kit-wasserfest-naturlich-546ee8	1427105511945408512	1	7.94	ok	landeseite
+astronaut-roboter-uberwachungskamera-90b6f7	1735480719696207872	7	21.19	ok	landeseite
+baby-lauflernschuhe-mit-streifen-35f5fd	0533E2F2-0E28-4946-B218-407A0A1226DD	16	7.57	ok	landeseite
+e58-faltbare-hd-drohne-c013de	0767EF6E-ED44-4CCB-BC9F-A906BFB41FF5	0	-	KEINE CH-Option → DRAFT	landeseite

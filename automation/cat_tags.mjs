@@ -121,7 +121,7 @@ export function catTags(text) {
     // Taschen & Lederwaren
     [/\btote\b|handtasche|umhangetasche|crossbody|shopper|clutch|schultertasche|\btasche\b|rucksack|backpack/, ['damen-taschen']],
     [/geldborse|\bwallet\b|portemonnaie|kartenetui/,            ['Wallet']],
-    [/\bgurtel\b|\bbelt\b/,                                     ['Gurtel']],
+    // Gurtel: nicht hier, sondern unten (istGuertel) — «Wollmantel mit Gürtel» ist ein Mantel (05.10.2026).
     [/\bcap\b|\bmutze\b|\bhut\b|beanie/,                        ['Hut']],
     // Beauty & Wellness
     [/gesichtsreiniger|reinigungsburste|\bserum\b|hautpflege|gesichtscreme|anti.?aging|cleanser|\btoner\b|gesichtsmaske/, ['beauty', 'hautpflege']],
@@ -161,7 +161,20 @@ export function catTags(text) {
   for (const [re, tags] of R) if (re.test(s)) tags.forEach(t => out.add(t));
   if (PARFUM_JA.test(s) && !PARFUM_NEIN.test(s)) { out.add('beauty'); out.add('parfum'); }
   if (istBeleuchtung(text)) out.add('beleuchtung');
+  if (istGuertel(s)) out.add('Gurtel');
   return [...out];
+}
+
+// ── GÜRTEL (05.10.2026, Prüferbefund Kollektion `guertel`, Regel TAG=Gürtel) ────────────────────────────
+// Die alte Regel `/\bgurtel\b|\bbelt\b/` lief über Titel + EN-Name und traf jedes «… mit Gürtel»: 17 von 44
+// aktiven Produkten der Kollektion waren Mäntel, Kleider, Rock, Jumpsuit, Bluse, Baskenmütze, Stiefel, Strandtasche,
+// Brillenetui, Akku-Gürtel und Kostüm-Teile. Entschieden wird jetzt am KOPF (Text vor « mit »/« und »/« with »/« and »),
+// wie bei der Beleuchtung; dazu ein Ausschluss für Gürtel-Komposita, die keine Gürtel sind.
+const GUERTEL_NEIN = /etui|tasche|\bbag\b|akku|stiefel|\bboots?\b|lederhose|weihnachtsmann|pirat|mutze|kostum|costume/;
+export function istGuertel(s) {
+  const n = ' ' + (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') + ' ';
+  const kopf = n.split(/\s(?:mit|und|with|and)\s/)[0];
+  return /\bgurtel\b|\bbelt\b/.test(kopf) && !GUERTEL_NEIN.test(kopf);
 }
 
 // ── Kanarienvögel (23.09.2026): `node automation/cat_tags.mjs --test` ────────────────────────
@@ -191,6 +204,18 @@ const KANARIEN_BELEUCHTUNG = {
          'Creative Gaming-Headset mit Beleuchtung', 'Herren Quarzuhr, wasserdicht, leuchtend', 'Hundehalsband leuchtend',
          'Mini HD LED Heimkino-Projektor', 'Leuchtende Kinderschuhe mit Klettverschluss', '3D Acryl Notiztafel mit LED-Beleuchtung'],
 };
+const KANARIEN_GUERTEL = {
+  ja: ['Vintage Wildleder-Gürtel mit Dornschliesse', 'Stylischer Jeans-Gürtel für Damen', 'Vielseitiger Damen-Gürtel aus Rindsleder',
+       'Elastischer Herren-Gürtel mit Automatikschliesse', 'Punk-Gürtel mit Nieten und Pailletten', 'Schmaler Echtleder-Gürtel für Damen',
+       'Gedoppelter Vollnarbenleder-Gürtel mit Kreuzmuster', 'Damen Heavy-Duty Spitzen-Gürtel mit Rüschen', 'Vintage Vollnarbenleder-Gürtel',
+       'Funktionaler Utility-Gürtel für Herren'],
+  nein: ['Damen Wollmantel mit Gürtel und Stehkragen', 'Midilanger Wollmantel mit Gürtel', 'Damen Midi-Rock mit Print und Gürtel',
+         'Elegantes V-Neck Kleid mit Gürtel', 'Eleganter Workwear-Jumpsuit mit Gürtel', 'Langarmbluse mit Gürtel und 3D-Effekt',
+         'Baskenmütze im Leo-Look mit Nieten und Gürtel', 'Gürtel-Brillenetui aus Mikrofaser', 'Tragbarer Akku-Gürtel mit USB-Display',
+         'Lederhose kurz mit Gürtel', 'Gürtel für Weihnachtsmann oder Pirat', 'Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel',
+         'Wasserdichte Crossbody-Gürteltasche für Herren', 'Halbhohe Stiefel mit Schnallenriemen Mid-calf boots belt buckle',
+         'Sommer-Strand-Tasche Summer beach bag belt'],
+};
 const KANARIEN_PARFUM = {
   ja: ['Blumig-fruchtiges Eau de Parfum (50ml)', 'Amber Wood Eau de Cologne für Herren', 'Desert Rose Parfüm Spray für Damen',
        'Holzduft-Parfum', 'Langanhaltender Parfum Balsam für Damen', 'Parfüm-Öl Middle East Dubai'],
@@ -208,6 +233,9 @@ if (process.argv[1] && process.argv[1].endsWith('cat_tags.mjs') && process.argv.
   const hatParfum = t => catTags(t).includes('parfum');
   pruefe('parfum', KANARIEN_PARFUM.ja, true, hatParfum);
   pruefe('parfum', KANARIEN_PARFUM.nein, false, hatParfum);
+  const hatGuertel = t => catTags(t).includes('Gurtel');
+  pruefe('guertel', KANARIEN_GUERTEL.ja, true, hatGuertel);
+  pruefe('guertel', KANARIEN_GUERTEL.nein, false, hatGuertel);
   // Nebenwirkungsprobe: die übrigen Regeln bleiben unverändert (Stichprobe)
   const ring = catTags('Silberner Damenring mit Zirkonia');
   if (!ring.includes('schmuck')) { fehler++; console.log('FALSCH Nebenwirkung: Ring ohne schmuck', ring); }

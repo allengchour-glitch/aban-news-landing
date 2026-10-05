@@ -45,6 +45,7 @@ HANDKLINGE_KEIN_PAKET = re.compile(_R['handklinge_kein_paket'], re.I)
 HANDKLINGE_GERAET = re.compile(_R['handklinge_geraet'], re.I)
 HANDKLINGE_SPIELZEUG = re.compile(_R['handklinge_spielzeug'], re.I)
 HANDKLINGE_MIT_ZUBEHOER = re.compile(_R['handklinge_mit_zubehoer'], re.I)
+HANDKLINGE_IMMER = re.compile(_R['handklinge_immer'], re.I)
 _KLINGEN_NOMEN = ('messer', 'messern', 'knife', 'knives')
 
 
@@ -97,10 +98,12 @@ def ist_handklinge(titel):
     Die Kontext-Ausnahme gilt wie bei `ist_klinge` zuerst: «Washed Machete Jeans».
     """
     t = titel or ''
+    if HANDKLINGE_SPIELZEUG.search(t):
+        return False
+    if HANDKLINGE_IMMER.search(t) and not HANDKLINGE_KEIN_PAKET.search(t):     # 05.10.2026: eindeutige Klingen-Komposita vor allen Ausnahmen (Zubehör wie Schärfer bleibt)
+        return True
     k = KONTEXT_AUSNAHME.search(t)
     if k and not _beigabe_hinter_messer(t, k):
-        return False
-    if HANDKLINGE_SPIELZEUG.search(t):
         return False
     if MESSGERAET.search(t):
         return False
