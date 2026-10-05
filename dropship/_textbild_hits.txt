@@ -16907,3 +16907,4 @@ gid://shopify/Product/16607605588359	113->0	Keramische Butterbox im Retro-Design
 gid://shopify/Product/16607606145415	24->0	Kurzgeldbörse aus Vollnarben-Rindsleder
 gid://shopify/Product/16607824511367	20->0	Eisenkamm für Katzenstreu
 gid://shopify/Product/16607978652039	10->0	Handtasche mit Floraler Print-Füllung aus Echtleder
+gid://shopify/Product/16608001950087	77->2	Retro Geldbörse mit Blumenprägung
