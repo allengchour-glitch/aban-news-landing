@@ -3812,3 +3812,8 @@ damenuhr-mit-diamant-cca13a	-	-	-	unklar keine CJ-SKU	landeseite
 spiegel-serviertablett-aus-metall-087829	-	-	-	unklar keine CJ-SKU	landeseite
 messer-und-schneidebretthalter-aus-edelstahl-41c71a	-	-	-	unklar keine CJ-SKU	landeseite
 knoten-zierkissen-im-nordischen-stil-627500	2601230417291627900	16	9.75	ok	landeseite
+rundes-kissen-mit-blumenmuster-635600	2601230412181636200	16	13.10	ok	landeseite
+memory-schlafkissen-60-40-12-cm-619100	2601230323141619500	16	20.58	ok	landeseite
+kissenbezug-im-chinesischen-stil-30-50-cm-636000	2601220826451636500	16	6.01	ok	landeseite
+massagekissen-fur-gesichtsliege-620000	2601210635481620400	16	9.88	ok	landeseite
+tpee-faserkissen-mit-nackenstutze-621300	2601210630151622000	16	22.10	ok	landeseite
