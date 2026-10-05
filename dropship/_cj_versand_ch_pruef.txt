@@ -3731,3 +3731,13 @@ keramik-gewurzglaser-set-mit-loffeln-899264	1791311335309979648	16	24.67	ok	land
 trekking-rucksack-20-35l-aus-nylon-627776	1447740628346736640	16	18.13	ok	landeseite
 rucksack-mit-totenkopfmotiv-898944	1447615447284453376	16	22.15	ok	landeseite
 besteck-aufbewahrungsbox-mit-deckel-726848	1791074279195418624	16	11.49	ok	landeseite
+wasserdichter-rucksack-fur-business-und-sport-648832	1446741404545060864	16	20.23	ok	landeseite
+faltbare-waschmaschine-mit-schleuderfunktion-310080	1584726017883779072	7	33.53	ok	landeseite
+rucksack-mit-grosser-kapazitat-541312	1445680640572919808	16	15.44	ok	landeseite
+korallvlies-haarhandtuch-668928	1583664177061834752	16	7.43	ok	landeseite
+schubladen-organizer-fur-kuche-und-haushalt-262464	1583426409723342848	11	88.19	ok	landeseite
+fruchtschneider-mit-basis-540ad4	-	-	-	unklar keine CJ-SKU	landeseite
+mikrowellen-eierkocher-6b380a	-	-	-	unklar keine CJ-SKU	landeseite
+silikon-kochschaufel-mit-holzgriff-9e2ada	-	-	-	unklar keine CJ-SKU	landeseite
+elektrischer-warmwasserhahn-mit-sofortheizung-8f92cc	-	-	-	unklar keine CJ-SKU	landeseite
+futterautomat-fur-haustiere-71c2cf	-	-	-	unklar keine CJ-SKU	landeseite
