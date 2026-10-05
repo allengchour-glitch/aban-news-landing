@@ -3661,3 +3661,5 @@ zl02pro-smartwatch-herzfrequenz-messung-612672	1686574343255498752	7	6.81	ok	lan
 hundegeschirr-fur-grosse-hunde-114688	1614912257039806464	16	6.77	ok	landeseite
 smartwatch-herzfrequenz-schrittzahler-532096	1685910492595892224	7	5.49	ok	landeseite
 verstellbares-brustgeschirr-fur-katzen-und-kan-769344	1614625097313169408	16	5.81	ok	landeseite
+bluetooth-sportuhr-mit-runddisplay-193216	1683411166028107776	6	6.90	ok	landeseite
+quarzuhr-fur-damen-mit-farbverlauf-a9cdbd	-	-	-	unklar keine CJ-SKU	landeseite
