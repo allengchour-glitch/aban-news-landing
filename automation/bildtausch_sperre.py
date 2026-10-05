@@ -15,18 +15,41 @@ ein Produkt hier wieder freigibt (Ledger-Art `rueckweg`).
   gesperrte_ids()      → dieselben Produkte als gid (aus dropship/_google_bild_tausch_ids.tsv, das google_bild_tausch.py pflegt)
   ist_gesperrt(handle=None, gid=None)
 """
-import os
+import os, sys
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def _repo():
+    """Repo-Wurzel robust finden. ⚠️ 05.10.2026 (Prüfer): der Aufseher startet `python3 /tmp/textbild_fix.py` (Spiegelkopie),
+    die importiert /tmp/bildtausch_sperre.py — dirname(dirname(__file__)) ist dann «/», das Ledger «/dropship/…» fehlt,
+    die Sperre war LEER (0 statt 295) und textbild_fix drehte um 04:43 wieder 81 Tausche zurück. Reihenfolge: $REPO,
+    Lage der Datei, Arbeitsverzeichnis (der Aufseher läuft im Repo), fester Pfad. Ein Kandidat zählt nur mit dropship/ UND
+    automation/ darunter."""
+    hier = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for k in (os.environ.get("REPO"), hier, os.getcwd(), "/home/user/aban-news-landing"):
+        if k and os.path.isdir(os.path.join(k, "dropship")) and os.path.isdir(os.path.join(k, "automation")):
+            return k
+    return hier
+
+
+REPO = _repo()
 LEDGER = os.path.join(REPO, "dropship/_google_bild_tausch.tsv")
 IDS = os.path.join(REPO, "dropship/_google_bild_tausch_ids.tsv")
 GETAUSCHT = ("tausch", "tausch-g", "tausch-q", "nachgesetzt")
+_GEWARNT = set()
+
+
+def _warnen(pfad):
+    # Fehlendes Ledger = keine Sperre. Das darf nie still geschehen (einmal je Datei und Prozess, auf stderr).
+    if pfad not in _GEWARNT:
+        _GEWARNT.add(pfad)
+        print(f"⚠️ bildtausch_sperre: Ledger fehlt → Sperre LEER: {pfad} (REPO={REPO}, __file__={__file__})", file=sys.stderr, flush=True)
 
 
 def letzte_zeilen():
     """handle → letzte Ledger-Zeile (Liste der Spalten)."""
     out = {}
     if not os.path.exists(LEDGER):
+        _warnen(LEDGER)
         return out
     for l in open(LEDGER, encoding="utf-8", errors="ignore"):
         f = l.rstrip("\n").split("\t")
@@ -41,7 +64,9 @@ def gesperrte_handles():
 
 def handle_ids():
     out = {}
-    if os.path.exists(IDS):
+    if not os.path.exists(IDS):
+        _warnen(IDS)
+    else:
         for l in open(IDS, encoding="utf-8", errors="ignore"):
             f = l.rstrip("\n").split("\t")
             if len(f) >= 2:
@@ -75,4 +100,4 @@ def ist_gesperrt(handle=None, gid=None):
 
 if __name__ == "__main__":
     hs, ids = gesperrte_handles(), gesperrte_ids()
-    print(f"Bildtausch-Sperre: {len(hs)} Handles · {len(ids)} davon mit bekannter Produkt-ID")
+    print(f"Bildtausch-Sperre: {len(hs)} Handles · {len(ids)} davon mit bekannter Produkt-ID · Ledger {LEDGER}")

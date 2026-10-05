@@ -16,6 +16,7 @@ import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 import { typAusKategorie } from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt «Trend-Produkt»
+import { seoTitel } from './seo_titel.mjs';   // 05.10.: SEO-Titel ≤ 70 ohne stille Kappung
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSicher } from './cj_copy_prompt.mjs';
 import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
@@ -234,7 +235,8 @@ for (const item of ITEMS) {
     status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
     descriptionHtml: (g.html + '\n' + produktdetails(d, title) + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
-    seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: snippet(g.html, title).slice(0, 320) },
+    seo: { title: seoTitel(title),   // 05.10.: 70er-Grenze an der Wortgrenze, nie halbe Marke (seo_titel.mjs)
+           description: snippet(g.html, title).slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],
     // ⚠️ GOOGLE-FELDER GEHÖREN IN DEN IMPORTER, nicht in einen Backfill (15.08.2026: die 30

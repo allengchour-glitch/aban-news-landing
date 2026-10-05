@@ -17,6 +17,7 @@ import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie} from './google_kategorie.mjs';
 import {typAusKategorie} from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt Sammeltyp
+import {seoTitel} from './seo_titel.mjs';   // 05.10.: SEO-Titel ≤ 70 ohne stille Kappung
 import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
@@ -882,7 +883,8 @@ for(const [cat,label] of grp.cats){
           ...(med?['medizinprodukt-pruefen','medizin-zweck-'+med.grund]:[]),
           ...(tsch?[tsch.tag||'tierschutz-tschv76','tierschutz-'+tsch.grund]:[])],
     descriptionHtml:html,
-    seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},
+    seo:{title:seoTitel(title),   // 05.10.: 70er-Grenze (seo_titel.mjs)
+     description:snippet(html,title).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE',alt:(title+' | LuxeStyle').slice(0,120)}]};
    // Google-Merchant-Attribute für ALLE Produkte (2026-07-11 «google merchant sachen auch»): gender + age_group

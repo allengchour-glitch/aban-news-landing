@@ -67,7 +67,18 @@ VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
 # Kosten-Nachtrag wartete. dropship/_cj_vorrang_global (im Repo, beide Seiten lesen es nach jedem Merge) trägt ein
 # ISO-Enddatum; bis dahin teilen sich alle NICHT-Vorrang-, NICHT-Bestell-Aufrufe je Maschine einen Abstand von
 # GLOBAL_ABSTAND_S (siehe unten), niemand blockiert ganz. Der Kosten-Nachtrag löscht die Datei, sobald eine volle Runde nichts fand.
-GLOBAL_DATEI = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dropship", "_cj_vorrang_global")
+def _repo():
+    """⚠️ 05.10.2026: cj_verfuegbarkeit/cj_varianten_wache/cj_versand_ch_guard laufen als /tmp-Spiegelkopie und importieren
+    /tmp/cj_takt.py — dirname(dirname(__file__)) ist dann «/», der globale Vorrang in «/dropship/…» wäre unsichtbar.
+    Kandidaten: $REPO, Lage der Datei, Arbeitsverzeichnis, fester Pfad; gültig nur mit dropship/ UND automation/."""
+    hier = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for k in (os.environ.get("REPO"), hier, os.getcwd(), "/home/user/aban-news-landing"):
+        if k and os.path.isdir(os.path.join(k, "dropship")) and os.path.isdir(os.path.join(k, "automation")):
+            return k
+    return hier
+
+
+GLOBAL_DATEI = os.path.join(_repo(), "dropship", "_cj_vorrang_global")
 GLOBAL_ABSTAND_S = float(os.environ.get("GLOBAL_ABSTAND_S", "180"))
 GLOBAL_UHR = "/tmp/cj_bremse_letzter"
 # 24.09.2026 18:40 GEMESSEN: usedToday 107'890 (16:51) → 112'620 (18:40) = ~43 Punkte/min Nachfluss, nicht 165. Beide

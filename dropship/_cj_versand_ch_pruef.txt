@@ -4167,3 +4167,10 @@ nail-art-infiltration-suit-dust-brush-600500	2407240859471600700	3	6.81	ok	lande
 magic-color-cat-eye-gel-nagellack-set-611700	2406230126041611900	2	6.81	ok	landeseite
 280w-uv-led-nagellampe-fur-gel-und-acrylnagel-578754	2072215795651407873	0	-	KEINE CH-Option → DRAFT	landeseite
 uv-led-lichthartungsgerat-fur-gelnagel-606800	2601060157501607000	7	14.97	ok	landeseite
+led-licht-nagelpflegegerat-776962	1983801153642070017	0	-	KEINE CH-Option → DRAFT	landeseite
+led-halbmondleuchte-fur-den-nageltisch-301569	1983794278076964865	0	-	KEINE CH-Option → DRAFT	landeseite
+uv-led-nageltrockner-120w-439234	1983071052750102529	7	10.98	ok	landeseite
+nail-art-pen-world-cup-496001	2072225588871856129	16	6.21	ok	landeseite
+nagelpflege-stift-set-615900	2606250819321616600	3	6.34	ok	landeseite
+gel-nagellack-stifte-set-624900	2606250630521625800	3	6.75	ok	landeseite
+manikure-und-pedikure-set-19-teilig-159554	2060153362758348801	0	-	KEINE CH-Option → DRAFT	landeseite

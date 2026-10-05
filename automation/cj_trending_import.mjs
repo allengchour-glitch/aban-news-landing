@@ -16,6 +16,7 @@ import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSic
 import { textErzeugen } from './groq_text.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 import { typAusKategorie } from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt «Trend-Gadget»
+import { seoTitel } from './seo_titel.mjs';   // 05.10.: SEO-Titel ≤ 70 ohne stille Kappung
 const SHOP='au3j0y-hq.myshopify.com',API='2026-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -308,7 +309,8 @@ for(const p of cand){
  const typTrend=typAusKategorie(gkatTrend,title)||'Trend-Gadget';
  const input={title,handle:slug,productType:typTrend,vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neuheit','neu']:['trend','viral','video-hit','cj-real','dropship','neuheit','neu'],descriptionHtml:html,
-  seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},
+  seo:{title:seoTitel(title),   // 05.10.: 70er-Grenze (seo_titel.mjs)
+  description:snippet(html,title).slice(0,320)},
   // Google-Felder gehören in den Importer (15.08.2026, Muster «condition» vom 11.08.):
   // cj_sku_import hatte dieselbe Lücke — jeder Import ohne diese Felder senkt die
   // Feed-Abdeckung, die ein Backfill zuvor teuer gehoben hat.

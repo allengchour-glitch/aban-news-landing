@@ -179,7 +179,7 @@ def _groq_leer_merken(n, modelle, grund):
     try:
         with open(_groq_leer_marke(n), "a") as f:
             for m in modelle:
-                f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())} {m} {grund[:120]}\n")
+                f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())} {m} {grund[:320]}\n")
         os.utime(_groq_leer_marke(n), None)
     except OSError:
         pass
@@ -245,7 +245,7 @@ def _groq_json_mit(k, text, bilder=None, nummer_ab=1):
                 if "per day" in letzter or warte > 180:
                     tageslimit.add(modell)
                     if all(x in tageslimit for x in modelle):
-                        raise TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — {letzter[:160]}")
+                        raise TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — {letzter[:320]}")   # 05.10.: 320 statt 160 — «try again in …» (Reset-Zeit) stand sonst nie im Log
                     continue
                 time.sleep(min(90, warte + 1))
                 continue
@@ -253,7 +253,7 @@ def _groq_json_mit(k, text, bilder=None, nummer_ab=1):
             letzter = f"{type(e).__name__}: {str(e)[:150]}"
         time.sleep(15 * (a + 1))
     if tageslimit or "per day" in letzter:
-        raise TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — {letzter[:160]}")
+        raise TagesKontingentLeer(f"Groq-Tageskontingent leer ({', '.join(modelle)}) — {letzter[:320]}")   # 05.10.: 320 statt 160 — «try again in …» (Reset-Zeit) stand sonst nie im Log
     raise RuntimeError(f"Groq ({modell}) ohne Antwort — " + letzter)
 
 

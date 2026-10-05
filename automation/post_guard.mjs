@@ -308,7 +308,27 @@ export function juryPruefen(quelle, caption, typ = 'reel') {
     { encoding: 'utf8', timeout: 400000 });
   const z = ((r.stdout || '').trim().split('\n').pop() || '');
   let v = {}; try { v = JSON.parse(z); } catch {}
-  const info = v.schnitt != null ? `Note ${v.schnitt}${(v.ko || []).length ? ' K.o. ' + v.ko.join(',') : ''} — ${String(v.gruende || '').slice(0, 160)}`
+  const info = v.schnitt != null ? `${v.rueckfall ? 'RÜCKFALL (' + v.rueckfall + ') ' : ''}Note ${v.schnitt}${(v.ko || []).length ? ' K.o. ' + v.ko.join(',') : ''} — ${String(v.gruende || '').slice(0, 160)}`
     : String(v.grund || z).slice(0, 200);
-  return { status: r.status === 0 ? 0 : (r.status === 4 ? 4 : 2), info };
+  return { status: r.status === 0 ? 0 : (r.status === 4 ? 4 : 2), info, rueckfall: !!v.rueckfall };
+}
+// 05.10.2026 (Prüfer, Plan 23): Sind ALLE Bild-Jurys leer (Gemini 402, OpenAI leer, Groq-Bildmodell auf jedem Schlüssel gemerkt),
+// wählte der Poster trotzdem jeden Lauf denselben ersten Kandidaten ohne jedes Urteil (cjreel-C9F7E167, 15× in Folge) — 6 andere
+// ready-Reels mit früherem ok-Urteil kamen nie dran. Bei leerem Kontingent gehen Kandidaten mit Rückfall-Urteil (gemini_jury.py
+// --rueckfall-pruefen, ohne Download) nach vorn; ist das Kontingent frei, bleibt die Reihenfolge unverändert.
+const JURY_PY = new URL('./gemini_jury.py', import.meta.url).pathname;
+export function juryKontingentLeer() {
+  if (process.env.JURY === '0') return false;
+  const r = spawnSync('python3', [JURY_PY, 'x', '--kontingent'], { encoding: 'utf8', timeout: 60000 });
+  return r.status === 0;
+}
+export function juryRueckfallMoeglich(videoUrl) {
+  const r = spawnSync('python3', [JURY_PY, String(videoUrl || ''), '--rueckfall-pruefen'], { encoding: 'utf8', timeout: 60000 });
+  return r.status === 0;
+}
+export function juryVorrang(rows, urlVon) {
+  if (!rows.length || !juryKontingentLeer()) return rows;
+  const mit = rows.filter(r => juryRueckfallMoeglich(urlVon(r)));
+  console.log(`  Jury-Kontingent leer → ${mit.length}/${rows.length} Kandidaten mit früherem ok-Urteil zuerst`);
+  return [...mit, ...rows.filter(r => !mit.includes(r))];
 }

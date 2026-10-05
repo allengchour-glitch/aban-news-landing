@@ -88,6 +88,8 @@ def frueheres_urteil(quelle):
 
 
 def rueckfall_merken(quelle, caption, v):
+    if os.environ.get("DRY") == "1":      # Trockenlauf des Posters: nichts ins Ledger
+        return
     try:
         with open(RUECKFALL_LEDGER, "a", encoding="utf-8") as f:
             f.write(f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\t{_basename(quelle)}\t{v['rueckfall']}\t"

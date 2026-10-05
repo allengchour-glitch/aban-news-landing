@@ -215,7 +215,7 @@ SATZENDE = re.compile(r"\b(f[üu]r|und|oder|zum|zur|von|der|die|das|den|dem|des|
                       r"durch|ohne|gegen|leicht|gut|sehr)[.!?]?$", re.I)
 # 05.10.: Prüferbefunde — Wahl-Wörter bei Einzelvariante, Edelstein-Täuschung, Zielgruppenfeld, unpersönliche Form, erfundene Einheit
 WAHL_EINZELN = re.compile(r"\b(erh[äa]ltlich|lieferbar|verf[üu]gbar|Ausf[üu]hrung\w*|w[äa]hl\w*|Auswahl|Variante\w*|Farbvariante\w*|"
-                          r"Farbausf[üu]hrung\w*|in (?:den|verschiedenen|mehreren) (?:Farben|Gr[öo]ssen)|Gr[öo]ssen?\s+\d|Gr[öo]ssen\b|"
+                          r"Farbausf[üu]hrung\w*|in (?:den|verschiedenen|mehreren) (?:Farben|Gr[öo]ssen)|(?-i:Gr[öo]ssen?)\s+\d|(?-i:Gr[öo]ssen)\b|"
                           r"L[äa]ngen? (?:von|zwischen)|Stilvariante\w*)\b", re.I)
 WAHL_LISTE = re.compile(r"\b(?:in (?:den|folgenden|diesen|verschiedenen|mehreren)\s+(?:\w+-)?(?:Farben|Gr[öo]ssen|Ausf[üu]hrungen|Varianten|Modellen|Designs)|"
                         r"(?:Farben|Gr[öo]ssen|Ausf[üu]hrungen|Varianten):)\s*(?:erh[äa]ltlich\s*)?:?\s*([^.;]+)", re.I)
@@ -362,7 +362,8 @@ def mat_familien(text):
     for k, fs in (("leder|cowhide|rindleder|rindsleder|genuine leather|top.?grain", "leder"), ("kunstleder|pu-leder|pu leather|\\bpu\\b", "kunstleder"),
                   ("kunststoff|plastic|plastik|\\babs\\b|\\bpp\\b|\\bpvc\\b|\\bpet\\b|\\btpu\\b|acryl|resin|harz|polypropylen", "kunststoff"),
                   ("metall|metal|stahl|steel|alloy|legierung|kupfer|copper|messing|brass|zink|zinc|eisen|iron|aluminium|aluminum|titan|titanium", "metall"),
-                  ("stoff|cloth|fabric|polyester|baumwolle|cotton|nylon|canvas|leinen|linen|samt|velvet|velours|plüsch|plush|wolle|wool|seide|silk|chiffon|strick|knitted|filz|felt|mesh|spandex|elasthan|oxford|flanell|fleece|mikrofaser|microfiber|lycra|dacron|vinylon|viskose", "stoff"),
+                  # 05.10.: «kleinen» traf «leinen», «wollen» träfe «wolle», «gesamt» «samt» → Wortanfang-Grenze für diese drei (Hausregel 9b)
+                  ("stoff|cloth|fabric|polyester|baumwolle|cotton|nylon|canvas|(?<![a-z])leinen|(?<![a-z])linen|(?<![a-z])samt\\b|velvet|velours|plüsch|plush|(?<![a-z])wolle(?!n)|wool|seide|silk|chiffon|strick|knitted|filz|felt|mesh|spandex|elasthan|oxford|flanell|fleece|mikrofaser|microfiber|lycra|dacron|vinylon|viskose", "stoff"),
                   (r"(?<![a-z])glas\\b|(?<![a-z])glass\\b", "glas"), ("holz|wood|bambus|bamboo", "holz"), ("keramik|ceramic|porzellan", "keramik"), ("silikon|silicone|silica gel", "silikon"),
                   ("gummi|rubber|latex", "gummi"), ("papier|paper", "papier"), ("stein|stone|marmor|marble|granit", "stein")):
         if re.search(k, t):
@@ -623,7 +624,11 @@ def stueckzahl_pruefen(t, titel, quellen):
         n = int(z) if z.isdigit() else _ZW.get(z.replace("ü", "ue").replace("ö", "oe"), _ZW.get(z))
         if not n or n < 2:
             continue
-        if n not in zahlen:
+        # Gesamtangabe («3 Stück», «6-teilig», «enthält vier», «Geliefert werden zwei») muss genau belegt sein;
+        # Teilangabe («Zwei Spangen tragen einen Stern» im 3er-Set) darf die belegte Zahl nur nicht übersteigen
+        gesamt = bool(m.group(2)) or bool(re.search(r"teilig|St[üu]ck|Stk|Teile|Set\b", m.group(0), re.I))
+        ok = (n in zahlen) if gesamt else (bool(zahlen) and n <= max(zahlen))
+        if not ok:
             fehler.append(f"Stückzahl «{m.group(0).strip()}» ohne Beleg (belegt: {sorted(zahlen) or 'keine'}; Quelle = CJ-Lieferumfang/-Name, Option, Bild nur ohne CJ-Zahl)")
             break
     if SET_WORT.search(voll) and not set_ok:
@@ -990,6 +995,10 @@ def selbsttest():
         ("Set ohne CJ, Bild 4", ["Das Set besteht aus vier Tassen."], ["Titel: Tassen-Set", "Alter Text: Tassen", "Anzahl Teile im Bild: 4"], True, set(), [], "Tassen-Set", None),
         ("Masse sind keine Stückzahl", ["Die Spange misst 5,6 × 3,3 cm. Geliefert wird eine Spange."], ["Titel: Haarspange", "Lieferumfang (CJ): Accessories*1", "Sichtbare Merkmale: Massangabe im Bild 5,6 × 3,3 cm"], True, set(), [], "Haarspange", None),
         ("Headset ist kein Set", ["Das Headset hat ein Mikrofon."], ["Titel: Headset mit Mikrofon", "CJ-Produktname (englisch): Gaming Headset"], True, set(), [], "Headset mit Mikrofon", None),
+        ("grossen ist keine Grösse", ["Die Bluse hat einen grossen Rüschenkragen."], ["Titel: Bluse"], True, set(), [], "Bluse", None),
+        ("kleinen ist kein Leinen", ["Die Kette hat kleinen Glieder und einen Karabiner."], ["Titel: Kette", "Material (CJ): Zinklegierung"], True, set(), [("Material", "Zinklegierung")], "Kette", None),
+        ("Grössen bei Einzelvariante", ["Die Bluse gibt es in den Grössen 36 bis 42."], ["Titel: Bluse"], True, set(), [], "Bluse", "Einzelvariante"),
+        ("Teilangabe im Set", ["Das Set enthält drei Spangen. Zwei Spangen tragen einen Stern."], ["Titel: Haarspangen-Set · 3 Stück", "Lieferumfang (CJ): Hairpin*3pcs"], True, set(), [], "Haarspangen-Set · 3 Stück", None),
     ]
     ok = 0
     for name, abs_, quellen, einzeln, opt, rows, titel, erwartet in faelle:
