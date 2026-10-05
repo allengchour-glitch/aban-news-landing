@@ -4145,3 +4145,10 @@ kabellose-kopfhorer-wavepods-bluetooth-tws-620700	2606100736031622000	7	5.32	ok	
 led-projektor-glowcast-stimmungslicht-841793	1968968912627339265	0	-	KEINE CH-Option → DRAFT	landeseite
 mini-drohne-skycam-faltbar-365889	2060192296065355777	0	-	KEINE CH-Option → DRAFT	landeseite
 mini-drohne-aerox-faltbar-123713	2060192497459056642	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-drohne-nimbus-mit-hd-kamera-313154	2060193012653805569	0	-	KEINE CH-Option → DRAFT	landeseite
+smartwatch-fitpro-fitness-anrufe-610800	2606170336201612400	7	8.10	ok	landeseite
+fitness-tracker-stepgo-herzfrequenz-schritte-637200	2606090117491638000	6	7.30	ok	landeseite
+smartwatch-smartone-fitness-anrufe-779330	2063886289648328706	7	9.37	ok	landeseite
+smartwatch-vital-fitness-anrufe-631600	2605061154021632200	7	6.98	ok	landeseite
+wireless-charger-qifast-kabellos-laden-625600	2602231205001626000	7	17.94	ok	landeseite
+wireless-charger-chargespot-kabellos-laden-633500	2601250357301633800	7	12.41	ok	landeseite
