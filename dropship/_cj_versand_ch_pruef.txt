@@ -3953,3 +3953,5 @@ herren-henley-waffle-waffelstrick-langarm	2606060600281633400	16	9.10	ok	landese
 strick-cardigan-boheme-pointelle-leicht-offen	2606070606521629800	16	9.61	ok	landeseite
 samt-cap-velours-retro-baseball-mutze-verstellbar	2063886597915447297	16	5.75	ok	landeseite
 strandkleid-mare-boho-midi-mit-volants-quasten	2606080522121623000	16	8.79	ok	landeseite
+boho-jacke-fiore-bluten-stickerei-bindeband	2606071001321602800	16	6.65	ok	landeseite
+boho-kleid-indigo-armellos-mit-knopfleiste-volant	2606070521121609000	16	7.85	ok	landeseite
