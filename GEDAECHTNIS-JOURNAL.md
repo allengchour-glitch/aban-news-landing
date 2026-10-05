@@ -35,6 +35,19 @@
 
 
 
+## 2026-10-05 09:00 · 📈 «das geht mehr verbesserung mit semrush» + «position tracking»: Umsetzung 2
+GEMESSEN: 559 Begriffe Top 100, 0 Top 10, Verkehr 0; Konkurrenten-Bericht 1'200 Einheiten wertlos (1 gemeinsamer Begriff je Domain);
+Semrush-DATENBANK frischt kleine Begriffe nur alle paar Wochen auf (Timestamps 31.07.–27.09., Position = Vorposition 80/80) → zur
+Wirkungsmessung taugt nur eine Positions-Kampagne. Betreiber hatte eine angelegt — aber **Deutschland**, 13 Keywords, per API «campaign
+not found» → Anleitung neu (Schweiz/Mobil/197 Begriffe, Testabo = 1 Kampagne). Eigener Tracker `semrush_positionen.py` fand 7× Kannibali-
+sierung durch die SEO-Runde vom 02.10. (anderes Produkt optimiert als das rankende, einmal ein Entwurf) → behoben. Workflow: 21 Produkt-SEO
++ Stimmungslicht-Kollektion, 12 Redirects für Entwürfe mit Ranking, 8 neue Kollektionen (Teppiche, Bettwäsche, Wäschekörbe, Wecker,
+Duschvorhänge, Taschenlampen, Wandregale, Winterjacken; 190 Produkte, Regeln in `kategorie_rein_semrush.py`), 192 interne Links in 149
+Kollektionstexten (`interne_links.py`, Wochen-Wächter). Prüfer fing erfundene Grössenbereiche in Metas («Gr. 36–41» bei 36–48). **Lehren:**
+Zahlen in SEO-Metas aus Varianten (`selectedOptions`+`availableForSale`) messen, nie aus dem Text; vor SEO-Schreiben `urlRedirects` des
+Pfads prüfen (beleuchtung-lampen war weggeleitet); Redirect-Ziel darf kein Redirect sein; vor «optimieren» prüfen, WELCHE eigene URL rankt.
+Einheiten heute ~2'110. → `dropship/semrush/README.md`, `POSITION-TRACKING-EINRICHTEN.md`, `SEITE2-HEBEN/NEUE-KOLLEKTIONEN/INTERNE-LINKS-2026-10-05.md`
+
 ## 2026-10-05 08:30 · 🧰 «fix 12 h»: Folgerunde 2 (11 Bereiche, 32 Agenten, je Fix → Prüfer → Nachbesserung)
 Ergebnis (Schlusskritik live 07:33–07:50): Plan-Punkte 3, 5, 6, 7, 9, 11, 13, 14, 16, 17, 20, 21 erfüllt — u. a. aktiv ohne Kategorie 0,
 900 Neuimporte SEO-Titel = Titel (Shopify kappt seo.title still bei 70 Zeichen → `seo_titel.mjs`/`seo_titel_grenze.py`), dünne Texte mit
