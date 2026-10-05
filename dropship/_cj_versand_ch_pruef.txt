@@ -4587,3 +4587,5 @@ west-biking-velo-fernbedienungs-blinker-635300	2602070314351635600	7	6.37	ok	lan
 velo-rucklicht-mit-bewegungssensor-622000	2602060314021622400	7	8.74	ok	landeseite
 usb-fahrradlicht-fur-nachtfahrten-615100	2602040544071615500	7	10.73	ok	landeseite
 usb-led-stirnlampe-mit-4-modi-086530	2013093743072796674	0	-	KEINE CH-Option → DRAFT	landeseite
+kabelloses-fernbedienbares-velo-rucklicht-633400	2601150510401633600	7	8.28	ok	landeseite
+pedal-widerstandsband-mit-4-tubes-389761	2070061789840801793	0	-	KEINE CH-Option → DRAFT	landeseite
