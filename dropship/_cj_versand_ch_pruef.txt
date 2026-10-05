@@ -3856,3 +3856,5 @@ atmungsaktive-halbsandalen-fur-kinder-567936	1373964138962882560	16	8.53	ok	land
 kuhlschrank-wasserfilterkartusche-481536	1794251181460561920	16	7.51	ok	landeseite
 kindergarten-tanzschuhe-aus-canvas-577984	1373877262906167296	16	8.93	ok	landeseite
 madchen-sportsandalen-736320	1372846213329719296	16	9.20	ok	landeseite
+kohlenmonoxidmelder-fur-den-haushalt-009728	1790608127159701504	7	9.01	ok	landeseite
+prinzessinnen-lauflernschuhe-fur-madchen-960448	1371803668248137728	16	5.72	ok	landeseite

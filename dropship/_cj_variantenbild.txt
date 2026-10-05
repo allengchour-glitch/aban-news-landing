@@ -6136,3 +6136,13 @@ gid://shopify/Product/15455039750529	zugeordnet	40	Süsses Baby-Mädchen-Schuhe 
 gid://shopify/Product/15455040012673	zugeordnet	61	Prinzessinnen-Lauflernschuhe mit Einlagen
 gid://shopify/Product/15455040143745	zugeordnet	26	Weisse Lederflats für Mädchen
 gid://shopify/Product/15455040209281	zugeordnet	30	Koreanische Kinder-Sandalen mit weicher Sohle
+gid://shopify/Product/15455080644993	zugeordnet	2	Wassertropfen-Halskette
+gid://shopify/Product/15455081038209	zugeordnet	20	Maxi Kleid abnehmend mit Schleifen-Detail
+gid://shopify/Product/15455081070977	zugeordnet	2	Portabler Zahnspülkopf
+gid://shopify/Product/15455081169281	zugeordnet	2	Wachsmaschine
+gid://shopify/Product/15455081234817	zugeordnet	16	Hochwertiges Figurbetontes Westen-Kleid
+gid://shopify/Product/15455081333121	zugeordnet	15	Blumiges Casual-Kleid
+gid://shopify/Product/15455081365889	zugeordnet	8	Silikon-Schalldusche fürs Gesicht
+gid://shopify/Product/15455081431425	zugeordnet	20	Kleid mit 3D-Blumenstickerei
+gid://shopify/Product/15455081496961	zugeordnet	6	Faltbare Aufbewahrungsbox
+gid://shopify/Product/15455081562497	zugeordnet	5	Badezimmer-Teppich mit Memory-Schaum · 40 × 60 cm
