@@ -9,6 +9,7 @@ Nur lesen. Druckt EINE Ampel-Zeile «FR: …» für den Aufseher:
 Veraltet («outdated») heisst: der deutsche Text wurde geändert, die Übersetzung hinkt hinterher.
 Aufruf: python3 automation/fr_stand.py   (Shopify-Token wie kaufwille_zeile)."""
 import sys, os, re, json
+from urllib.parse import unquote
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kaufwille_zeile import gql
 
@@ -63,15 +64,31 @@ def menu_kollektionen():
             urls.append(it.get('url') or ''); walk(it.get('items') or [])
     for m in menus:
         walk(m['items'])
-    handles = sorted({re.search(r'/collections/([^/?#]+)', u).group(1) for u in urls if '/collections/' in u})
+    # Menü-URLs tragen Emoji-Handles %-kodiert («%F0%9F%8E%81-geschenke-bis-chf-30»); collectionByIdentifier
+    # kennt nur den dekodierten Handle («🎁-…») und gab für die rohe Form None — das wurde bis 05.10. still
+    # übersprungen (Blindstelle, Prüferbefund). Jetzt: dekodieren, und None = Lücke, nie Erfolg.
+    handles = sorted({unquote(re.search(r'/collections/([^/?#]+)', u).group(1)) for u in urls if '/collections/' in u})
     fehl = []
     for i in range(0, len(handles), 10):
         ch = handles[i:i + 10]
-        d = gql('{' + ' '.join(f'c{j}: collectionByIdentifier(identifier:{{handle:"{h}"}}){{ handle translations(locale:"fr"){{ key outdated }} }}' for j, h in enumerate(ch)) + '}')
+        d = gql('query(' + ','.join(f'$h{j}:String!' for j in range(len(ch))) + '){' + ' '.join(f'c{j}: collectionByIdentifier(identifier:{{handle:$h{j}}}){{ id }}' for j in range(len(ch))) + '}',
+                {f'h{j}': h for j, h in enumerate(ch)})
+        ids = {}
         for j, h in enumerate(ch):
             c = d.get(f'c{j}')
-            if c and ('title' not in {t['key'] for t in c['translations']} or any(t['outdated'] for t in c['translations'])):
-                fehl.append(h)
+            if not c:
+                fehl.append(h + '(nicht auflösbar)')
+            else:
+                ids[c['id']] = h
+        if not ids:
+            continue
+        # Soll = die DE-Felder, die wirklich Text tragen (ohne handle); Ist = fr-Keys, keiner veraltet
+        t = gql('query($ids:[ID!]!){ translatableResourcesByIds(first:10,resourceIds:$ids){ nodes{ resourceId translatableContent{ key value } translations(locale:"fr"){ key outdated } } } }', {"ids": list(ids)})
+        for n in t['translatableResourcesByIds']['nodes']:
+            soll = {c['key'] for c in n['translatableContent'] if (c['value'] or '').strip()} - {'handle'}
+            have = {x['key'] for x in n['translations']}
+            if not soll <= have or any(x['outdated'] for x in n['translations']):
+                fehl.append(ids[n['resourceId']])
     return len(handles), fehl
 
 

@@ -11,7 +11,7 @@ cj-nicht-versendbar-ch (FIX=1); bei code 16900500 (Budget) ABBRUCH ohne Quittung
 (remaining < 40) wird gewartet, denn eine leere Liste bei leerem Eimer ist kein Befund (Lehre 03.09.).
 Ledger dropship/_cj_versand_ch_pruef.txt: handle · vid · Optionen · billigste USD · Urteil. Idempotent.
 """
-import json, os, re, subprocess, sys, time
+import json, os, re, subprocess, sys, time, urllib.parse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from klingenregel import ist_klinge
 import os as _os_takt, sys as _sys_takt
@@ -76,16 +76,20 @@ def warte_auf_punkte(mind=90):
 
 
 def vid_fuer(sku, var_sku):
-    """SKU-Formen (Lehre 22./25./28.08.): CJ-<pid 15+ Ziffern> · CJ-CJxx… (Varianten-SKU mit 2 Ziffern+2 Buchstaben) · CJxx… Stamm."""
+    """SKU-Formen (Lehre 22./25./28.08.): CJ-<pid 15+ Ziffern> · CJ-CJxx… (Varianten-SKU mit 2 Ziffern+2 Buchstaben) · CJxx… Stamm.
+    05.10.2026 (Prüfer, Nachbesserung Lieferbarkeit): zwei VERKAUFTE ACTIVE-Produkte standen 31× als «unklar keine CJ-SKU» im Ledger —
+    Nibosi-Uhr «CJ-65D5329E-AA72-43AD-910B-F95B35E89D0A» (UUID-pid, wie im Guard seit 09.08. bekannt) und Reise-Hängematte
+    «CJ-CJYDQTLY00023-Green + gray» (Stamm CJ + 2–8 Buchstaben + ≥ 5 Ziffern, dann «-Variantenname»). Beide Formen jetzt erkannt;
+    der Stamm wird URL-kodiert gefragt (Leerzeichen/Plus kommen in dieser Form vor)."""
     sku = (sku or "").strip(); s = sku[3:] if sku.startswith("CJ-") else sku
-    if re.fullmatch(r"\d{15,}", s):
+    if re.fullmatch(r"\d{15,}", s) or re.fullmatch(r"[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}", s, re.I):
         code, d, msg, _ = cj(f"/product/query?pid={s}")
         vs = (d or {}).get("variants") or []
         if not vs: return None, f"pid {code} {msg[:30]}"
         return (next((v for v in vs if v.get("variantSku") == var_sku), vs[0]))["vid"], None
-    m = re.match(r"(CJ[A-Z]{2}\d{7})", s)
+    m = re.match(r"(CJ[A-Z]{2}\d{7})", s) or re.match(r"(CJ[A-Z]{2,8}\d{5,})-.", s)
     if not m: return None, "keine CJ-SKU"
-    code, d, msg, _ = cj(f"/product/variant/query?productSku={m.group(1)}")
+    code, d, msg, _ = cj("/product/variant/query?productSku=" + urllib.parse.quote(m.group(1), safe=""))
     vs = d or []
     if not vs: return None, f"sku {code} {msg[:30]}"
     return (next((v for v in vs if v.get("variantSku") == s), vs[0]))["vid"], None

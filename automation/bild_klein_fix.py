@@ -7,6 +7,11 @@ Resumable ueber /tmp/bildklein_cursor.txt.
 import json,subprocess,time,re,os
 import sys as _sys; _sys.path.insert(0, "/home/user/aban-news-landing/automation")
 import vollrunde
+# 05.10.2026: Produkte, deren Hauptbild der Google-Bildtausch bewusst gesetzt hat, bleiben stehen — dieser Lauf lief am
+# 05.10. 04:43–04:56 im selben Fenster wie textbild_fix (83 Tausche zurückgedreht). Sperre nach Produkt-ID
+# (dropship/_google_bild_tausch_ids.tsv), siehe bildtausch_sperre.py; der Pfad dort löst sich auch aus /tmp korrekt auf.
+from bildtausch_sperre import gesperrte_ids as _bs_ids
+SPERRE_ID=_bs_ids()
 TOK=open("/tmp/cj_shop_token.txt").read().strip()
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
@@ -33,7 +38,8 @@ TAG='mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}
 
 st="/tmp/bildklein_cursor.txt"
 cur=vollrunde.start(st)  # 25.09.: Cursor am Katalogende wird zurueckgesetzt (vollrunde.py)
-n=0; fixed=0; hopeless=0
+n=0; fixed=0; hopeless=0; gesperrt=0
+print(f"Bildtausch-Sperre: {len(SPERRE_ID)} Produkt-IDs",flush=True)
 while True:
     d=gql(Q,{"c":cur})
     pg=(d.get("data") or {}).get("products")
@@ -45,6 +51,8 @@ while True:
         f=med[0]["image"]
         fw,fh=f.get("width") or 0, f.get("height") or 0
         if fw>=500 and fh>=500: continue
+        if p["id"] in SPERRE_ID:
+            gesperrt+=1; print(f"SPERRE {p['title'][:55]} {fw}x{fh} (Google-Bildtausch, nicht umsortiert)",flush=True); continue
         # Ersatz suchen: groesstes Bild mit beiden Kanten >=500
         cands=[m for m in med[1:] if (m["image"].get("width") or 0)>=500 and (m["image"].get("height") or 0)>=500]
         if cands:
@@ -62,4 +70,4 @@ while True:
     if n % 600 < 60: print(f"gescannt {n} | umsortiert {fixed} | ohne Ersatz {hopeless}",flush=True)
     if not pg["pageInfo"]["hasNextPage"]: vollrunde.fertig(st); break
     cur=pg["pageInfo"]["endCursor"]; vollrunde.weiter(st,cur)
-print(f"FERTIG: {n} gescannt, {fixed} Hauptbilder getauscht, {hopeless} ohne grosses Bild (Tag bild-zu-klein)")
+print(f"FERTIG: {n} gescannt, {fixed} Hauptbilder getauscht, {hopeless} ohne grosses Bild (Tag bild-zu-klein), {gesperrt} Bildtausch-Sperre")

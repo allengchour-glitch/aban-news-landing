@@ -264,6 +264,7 @@ def _nach_vorn(pid, mid):
 def ruecklesen():
     """Ledger-neu == live media[0]? Sonst nachsetzen (SCHARF=1). Nur ACTIVE und im Google-Kanal."""
     letzte = bs.letzte_zeilen()
+    alle = bs.alle_zeilen()
     getauscht = {h: f for h, f in letzte.items() if f[2] in bs.GETAUSCHT and len(f) >= 5 and f[4]}
     prod = _produkte(getauscht)
     bs.ids_merken([(h, p["id"]) for h, p in prod.items() if p])
@@ -288,7 +289,10 @@ def ruecklesen():
         if grund:
             z["fehler"] += 1; print(f"  ⚠️ {h}: {grund}", file=sys.stderr, flush=True); continue
         z["nachgesetzt"] += 1
-        led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tnachgesetzt\t{f[3]}\t{f[4]}\tlive war {ids[0].split('/')[-1]} ({f[2]} vom {f[1]})\n"); led.flush()
+        # Notiz trägt IMMER die Ursprungs-Tauschzeile (Art + Datum), auch nach mehrfachem Nachsetzen (05.10.: 81 Zeilen
+        # sagten «nachgesetzt vom 2026-10-05», die Bilanz verlor damit Art und Datum).
+        u = bs.urspruenglicher_tausch(alle.get(h, [])) or f
+        led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tnachgesetzt\t{f[3]}\t{f[4]}\tlive war {ids[0].split('/')[-1]} ({u[2]} vom {u[1]})\n"); led.flush()
     print("RUECKLESE " + time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime()) + ": " + " · ".join(f"{k} {v}" for k, v in z.items()) +
           ("" if SCHARF else " (TROCKEN)"), flush=True)
     return z

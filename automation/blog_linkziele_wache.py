@@ -18,7 +18,9 @@ from kaufwille_zeile import gql  # Eimer-Etikette inklusive
 
 ONLINE_STORE = "gid://shopify/Publication/301970915713"
 AUSGABE = os.environ.get("AUSGABE", "/tmp/blog_linkziele.json")
-HREF_RE = re.compile(r'href="(/(?:products|collections)/[^"#?]+)')
+# 05.10. Nachbesserung (Pruefer): 49 Links in den Artikeln sind ABSOLUT (href="https://luxestyle.ch/…"), einer davon
+# war echt tot und wurde von der relativen Regex uebersehen → optionaler Host-Praefix, Pfad bleibt die Gruppe.
+HREF_RE = re.compile(r'href="(?:https?://(?:www\.)?luxestyle\.ch)?(/(?:products|collections)/[^"#?]+)')
 
 
 def lade_artikel():

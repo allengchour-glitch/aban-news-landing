@@ -21,7 +21,7 @@ das Gewicht am ehesten kritisch.
 
 DRY=1 meldet nur. REVIVE=1 holt zurück, was inzwischen wieder versendbar ist.
 """
-import json, os, re, subprocess, time
+import json, os, re, subprocess, time, urllib.parse
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 def _cj_token():
@@ -113,9 +113,17 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cj_takt import takt, frei   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
 
 
-def cj(pfad, body=None):
-    """Gibt (code, data) zurück. Der Code MUSS ausgewertet werden — siehe Modulkommentar."""
+def cj(pfad, body=None, params=None):
+    """Gibt (code, data, message) zurück. Der Code MUSS ausgewertet werden — siehe Modulkommentar.
+
+    ⚠️ 05.10.2026 (Prüfer, Nachbesserung Lieferbarkeit): `params` werden hier URL-KODIERT angehängt. Vorher hing der
+    Aufrufer den Wert roh an (`basis + pfad`) — die verkaufte Reise-Hängematte trägt die Varianten-SKU
+    «CJYDQTLY00023-Green + gray» (Leerzeichen und Plus), curl bekam eine URL mit Leerzeichen und die Frage
+    kam nie richtig bei CJ an → täglich «unklar», je 2 Aufrufe verbrannt, nie ein Urteil. Fertige Pfade mit
+    schon kodiertem Query (cj_ersatz_suche: `quote(w)`) bleiben unverändert — nur `params` wird kodiert."""
     basis = "https://developers.cjdropshipping.com/api2.0/v1"
+    if params:
+        pfad += ("&" if "?" in pfad else "?") + urllib.parse.urlencode(params, quote_via=urllib.parse.quote, safe="")
     cmd = ["curl", "-s", "--max-time", "45", basis + pfad, "-H", "CJ-Access-Token: " + CJT]
     if body is not None:
         with open("/tmp/_cjb.json", "w") as f:
@@ -158,13 +166,22 @@ def versandfaehig(sku):
         # live belegt an drei Gaming-Tastaturen) versteckte sich hinter «unklar».
         # Varianten-SKUs erkennt man am Anhang zwei Ziffern + zwei GROSSbuchstaben
         # (Lehre 22.08.); deren Produkt-SKU ist der Stamm ohne Anhang.
+        # 05.10.2026 (Prüfer): VIERTE FORM «Stamm-Farbwort» — ältere CJ-Artikel tragen die Varianten-SKU
+        # «CJYDQTLY00023-Green + gray» / «CJJJCFCF00364-Red» (Stamm = CJ + 2–8 Buchstaben + ≥ 5 Ziffern, dann
+        # «-» und der Variantenname). Die Erkennung oben (zwei Ziffern + zwei GROSSbuchstaben am Ende) greift
+        # da nicht, und der alte Rückfall fragte `productSku=<ganze SKU mit Leerzeichen>` — zwei verkaufte
+        # ACTIVE-Produkte (Hängematte, Gemüseschneider) blieben so dauerhaft «unklar». Jetzt: zuerst die
+        # ganze SKU als variantSku (kodiert), dann der Stamm vor dem ersten «-» als productSku.
+        stamm = re.match(r'^(CJ[A-Z]{2,8}\d{5,})-.+$', v)
         if re.search(r'\d{2}[A-Z]{2}$', v):
             versuche = [("variantSku", v), ("productSku", re.sub(r'\d{2}[A-Z]{2}$', '', v))]
+        elif stamm:
+            versuche = [("variantSku", v), ("productSku", stamm.group(1))]
         else:
             versuche = [("productSku", v), ("variantSku", v)]
         pid = None
         for param, wert in versuche:
-            code, data, msg = cj(f"/product/query?{param}={wert}")
+            code, data, msg = cj("/product/query", params={param: wert})
             if code == 1602002:
                 return False, "vom Lieferanten ausgelistet"
             if code == 200 and data:

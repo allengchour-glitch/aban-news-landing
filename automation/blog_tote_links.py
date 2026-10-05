@@ -306,7 +306,7 @@ def tote_ziele_ermitteln(arts, cache=None):
     """Sammelt alle internen Linkziele und prueft sie LIVE."""
     ziele = set()
     for a in arts:
-        for href in re.findall(r'href="(/(?:products|collections)/[^"#?]+)', a.get('body') or ''):
+        for href in re.findall(r'href="(?:https?://(?:www\.)?luxestyle\.ch)?(/(?:products|collections)/[^"#?]+)', a.get('body') or ''):  # 05.10.: auch absolute luxestyle.ch-Links
             ziele.add(href.rstrip('/'))
     tote, offen = set(), []
     for p in sorted(ziele):
