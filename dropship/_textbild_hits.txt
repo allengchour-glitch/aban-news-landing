@@ -16908,3 +16908,5 @@ gid://shopify/Product/16607606145415	24->0	Kurzgeldbörse aus Vollnarben-Rindsle
 gid://shopify/Product/16607824511367	20->0	Eisenkamm für Katzenstreu
 gid://shopify/Product/16607978652039	10->0	Handtasche mit Floraler Print-Füllung aus Echtleder
 gid://shopify/Product/16608001950087	77->2	Retro Geldbörse mit Blumenprägung
+gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
