@@ -138,7 +138,7 @@ footer a{color:var(--muted)}
       o.start();o.stop(ctx.currentTime+0.62);
     }catch(e){}
   }
-  function next(){
+  function next(fromTimer){
     beep();
     if(phase==="work"){
       var c=val("cycles",4);
@@ -148,14 +148,25 @@ footer a{color:var(--muted)}
       round = (phase==="long") ? 1 : round+1;
       phase="work";
     }
-    remaining=dur(phase); paint();
+    remaining=dur(phase);
+    // Vom Timer: nahtlos ans Ende der alten Phase anschliessen; sonst (Überspringen) ab jetzt.
+    if(running){ endAt=(fromTimer?endAt:Date.now())+remaining*1000; remaining=Math.max(1,Math.ceil((endAt-Date.now())/1000)); }
+    paint();
+  }
+  // Echte Zeit messen statt Ticks zählen: Browser bremsen Timer in Hintergrund-Tabs.
+  var endAt=0;
+  function update(){
+    remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));
+    if(remaining===0){ next(true); } else { paint(); }
   }
   function start(){ if(running)return; running=true; toggle.textContent="Pause";
-    tick=setInterval(function(){ if(remaining>0){remaining--;paint();} else {next();} },1000); }
-  function stop(){ running=false; toggle.textContent="Start"; if(tick){clearInterval(tick);tick=null;} }
+    endAt=Date.now()+remaining*1000;
+    tick=setInterval(update,250); }
+  function stop(){ if(running){ remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000)); }
+    running=false; toggle.textContent="Start"; if(tick){clearInterval(tick);tick=null;} paint(); }
   toggle.addEventListener("click",function(){ running?stop():start(); });
   document.getElementById("reset").addEventListener("click",function(){ stop(); phase="work"; round=1; remaining=dur("work"); paint(); });
-  document.getElementById("skip").addEventListener("click",function(){ next(); });
+  document.getElementById("skip").addEventListener("click",function(){ next(false); });
   ["work","short","long","cycles"].forEach(function(id){document.getElementById(id).addEventListener("change",function(){ if(!running){ remaining=dur(phase); paint(); } });});
   paint();
 })();

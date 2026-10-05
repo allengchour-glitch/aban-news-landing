@@ -105,14 +105,15 @@ footer a{color:var(--muted)}
 <script>
 (function(){
   var WD=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
-  function isoWeek(d){var t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));var day=(t.getUTCDay()+6)%7;t.setUTCDate(t.getUTCDate()-day+3);var f=new Date(Date.UTC(t.getUTCFullYear(),0,4));var fd=(f.getUTCDay()+6)%7;f.setUTCDate(f.getUTCDate()-fd+3);return 1+Math.round((t-f)/604800000);}
+  function utc(y,m,d){var x=new Date(0);x.setUTCFullYear(y,m,d);x.setUTCHours(0,0,0,0);return x;}
+  function isoWeek(d){var t=utc(d.getFullYear(),d.getMonth(),d.getDate());var day=(t.getUTCDay()+6)%7;t.setUTCDate(t.getUTCDate()-day+3);var f=utc(t.getUTCFullYear(),0,4);var fd=(f.getUTCDay()+6)%7;f.setUTCDate(f.getUTCDate()-fd+3);return 1+Math.round((t-f)/604800000);}
   function leap(y){return (y%4===0&&y%100!==0)||y%400===0;}
   function render(){
     var v=document.getElementById("date").value, out=document.getElementById("out");
     if(!v){ out.innerHTML='<span style="color:#9aa3ad">Datum wählen.</span>'; return; }
-    var p=v.split("-"), y=+p[0], mo=+p[1], da=+p[2], d=new Date(y,mo-1,da);
+    var p=v.split("-"), y=+p[0], mo=+p[1], da=+p[2], d=new Date(0);d.setFullYear(y,mo-1,da);d.setHours(0,0,0,0);
     var wd=WD[d.getDay()];
-    var start=new Date(y,0,0); var doy=Math.floor((d-start)/86400000);
+    var doy=Math.round((utc(y,mo-1,da)-utc(y,0,0))/86400000);
     out.innerHTML='<div class="big">'+wd+'</div>'+
       '<div class="sub">'+da+'. '+["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"][mo-1]+' '+y+'</div>'+
       '<div class="facts">'+

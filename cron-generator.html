@@ -171,32 +171,67 @@ footer a{color:var(--muted)}
 
   // --- Cron -> Deutsch ---
   function explain(c){
-    var p=c.trim().split(/\s+/);
+    var p=String(c).trim().split(/\s+/);
     if(p.length!==5) return null;
+    // Felder prüfen: nur Zahlen, *, Bereiche a-b, Schritte /n und Listen; Werte im erlaubten Bereich
+    var LIM=[[0,59],[0,23],[1,31],[1,12],[0,7]];
+    var ATOM=/^(\*|(\d+)(?:-(\d+))?)(?:\/(\d+))?$/;
+    for(var i=0;i<5;i++){
+      var items=p[i].split(",");
+      for(var j=0;j<items.length;j++){
+        var a=items[j].match(ATOM); if(!a) return null;
+        var lo=LIM[i][0], hi=LIM[i][1];
+        if(a[2]!==undefined){ var x=+a[2], y=(a[3]!==undefined)?+a[3]:x;
+          if(x<lo||x>hi||y<lo||y>hi||y<x) return null; }
+        if(a[4]!==undefined && +a[4]<1) return null;
+      }
+    }
     var mi=p[0],h=p[1],dom=p[2],mon=p[3],dow=p[4];
     function every(field,unit){var mm=field.match(/^\*\/(\d+)$/);return mm?("alle "+mm[1]+" "+unit):null;}
+    function z(n){n=+n;return (n<10?"0":"")+n;}
+    function und(a){return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" und "+a[a.length-1];}
+    var NUMS=/^\d+(,\d+)*$/;
     var parts=[];
     // Zeit
     var em=every(mi,"Minuten"), eh=every(h,"Stunden");
+    var stepM=em?+mi.split("/")[1]:0, lastM=em?Math.floor(59/stepM)*stepM:0;
+    var hr=h.match(/^(\d+)-(\d+)$/);
     if(mi==="*"&&h==="*"){parts.push("jede Minute");}
     else if(em&&h==="*"){parts.push(em);}
-    else if(mi!=="*"&&h==="*"){parts.push("jede Stunde zur Minute "+mi);}
-    else if(eh){parts.push(eh+(mi!=="*"?(" zur Minute "+mi):""));}
-    else {
-      var hr=h.match(/^(\d+)-(\d+)$/);
-      if(hr){parts.push("stündlich von "+hr[1]+" bis "+hr[2]+" Uhr"+(em?(" "+em):(mi!=="*"?(" zur Minute "+mi):"")));}
-      else {parts.push("um "+(h<10?"0":"")+h+":"+(mi.length<2?"0"+mi:mi)+" Uhr");}
+    else if(h==="*"){parts.push(NUMS.test(mi)&&mi.indexOf(",")>=0?("jede Stunde zu den Minuten "+und(mi.split(","))):("jede Stunde zur Minute "+mi));}
+    else if(eh){parts.push(eh+(mi==="*"?" (jeweils jede Minute dieser Stunde)":em?(" ("+em+" in dieser Stunde)"):(" zur Minute "+mi)));}
+    else if(hr){
+      if(em) parts.push(em+" von "+z(hr[1])+":00 bis "+z(hr[2])+":"+z(lastM)+" Uhr");
+      else if(mi==="*") parts.push("jede Minute von "+z(hr[1])+":00 bis "+z(hr[2])+":59 Uhr");
+      else if(/^\d+$/.test(mi)) parts.push("stündlich von "+z(hr[1])+":"+z(mi)+" bis "+z(hr[2])+":"+z(mi)+" Uhr");
+      else parts.push("von "+hr[1]+" bis "+hr[2]+" Uhr jeweils zu den Minuten "+mi);
     }
+    else if(NUMS.test(h)){
+      var hs=h.split(",");
+      if(NUMS.test(mi)){
+        var t=[]; hs.forEach(function(hh){mi.split(",").forEach(function(m){t.push(z(hh)+":"+z(m));});});
+        parts.push("um "+und(t)+" Uhr");
+      }
+      else if(mi==="*") parts.push(und(hs.map(function(hh){return "jede Minute von "+z(hh)+":00 bis "+z(hh)+":59 Uhr";})));
+      else if(em) parts.push(und(hs.map(function(hh){return em+" von "+z(hh)+":00 bis "+z(hh)+":"+z(lastM)+" Uhr";})));
+      else parts.push("in den Stunden "+h+" zu den Minuten "+mi);
+    }
+    else {parts.push("Minute "+mi+", Stunde "+h);}
     // Wochentag
+    var dowTxt=null, dowOr=null;
     if(dow!=="*"){
       var dr=dow.match(/^(\d)-(\d)$/);
-      if(dow==="1-5")parts.push("werktags (Mo–Fr)");
-      else if(dr)parts.push("von "+TAGE[+dr[1]%7]+" bis "+TAGE[+dr[2]%7]);
-      else if(/^\d$/.test(dow))parts.push("nur "+TAGE[+dow%7]);
-      else parts.push("an Wochentagen "+dow);
+      if(dow==="1-5"){dowTxt="werktags (Mo–Fr)";dowOr="werktags (Mo–Fr)";}
+      else if(dr){dowTxt="von "+TAGE[+dr[1]%7]+" bis "+TAGE[+dr[2]%7];dowOr="jeden Tag von "+TAGE[+dr[1]%7]+" bis "+TAGE[+dr[2]%7];}
+      else if(/^\d$/.test(dow)){dowTxt="nur "+TAGE[+dow%7];dowOr="jeden "+TAGE[+dow%7];}
+      else {dowTxt="an Wochentagen "+dow;dowOr=dowTxt;}
     }
     // Tag im Monat
-    if(dom!=="*"){ if(/^\d+$/.test(dom))parts.push("am "+dom+". des Monats"); else parts.push("an den Tagen "+dom); }
+    var domTxt=null;
+    if(dom!=="*"){ domTxt=/^\d+$/.test(dom)?("am "+dom+". des Monats"):("an den Tagen "+dom); }
+    // Sind beide Felder eingeschränkt (beginnen nicht mit *), läuft Cron, wenn EINES passt (crontab(5)).
+    if(domTxt&&dowTxt&&dom.charAt(0)!=="*"&&dow.charAt(0)!=="*"){ parts.push(dowOr+" oder "+domTxt); }
+    else { if(dowTxt)parts.push(dowTxt); if(domTxt)parts.push(domTxt); }
     // Monat
     if(mon!=="*"){ if(/^\d+$/.test(mon))parts.push("im "+(MON[+mon]||mon)); else parts.push("in den Monaten "+mon); }
     return parts.join(", ")+".";

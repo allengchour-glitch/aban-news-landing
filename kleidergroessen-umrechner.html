@@ -131,14 +131,15 @@ footer a{color:var(--muted)}
   }
   function render(){
     var col=COLS[sysSel.value], v=valSel.value, rows=TAB[gender];
-    var row=rows.find(function(r){ return String(r[col])===v; });
+    var hits=rows.filter(function(r){ return String(r[col])===v; });
     var out=document.getElementById("out");
-    if(!row){ out.innerHTML='<p style="color:#9aa3ad;padding:8px 0">Größe wählen.</p>'; return; }
+    function rng(i){ var a=hits[0][i], z=hits[hits.length-1][i]; return a===z?String(a):a+"–"+z; }
+    if(!hits.length){ out.innerHTML='<p style="color:#9aa3ad;padding:8px 0">Größe wählen.</p>'; return; }
     out.innerHTML="<table><tbody>"+
-      "<tr><td>EU</td><td>"+row[0]+"</td></tr>"+
-      "<tr><td>US</td><td>"+row[1]+"</td></tr>"+
-      "<tr><td>UK</td><td>"+row[2]+"</td></tr>"+
-      "<tr><td>International</td><td>"+row[3]+"</td></tr></tbody></table>";
+      "<tr><td>EU</td><td>"+rng(0)+"</td></tr>"+
+      "<tr><td>US</td><td>"+rng(1)+"</td></tr>"+
+      "<tr><td>UK</td><td>"+rng(2)+"</td></tr>"+
+      "<tr><td>International</td><td>"+rng(3)+"</td></tr></tbody></table>";
   }
   document.querySelectorAll("#gender button").forEach(function(b){b.addEventListener("click",function(){
     document.querySelectorAll("#gender button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");

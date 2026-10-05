@@ -127,13 +127,14 @@ footer a{color:var(--muted)}
     if(!lmp){ssw.textContent="—";sswU.textContent="Datum der letzten Periode wählen.";ter.textContent="—";terU.textContent="";bar.style.width="0%";tri.textContent="";return;}
     var termin=new Date(lmp);termin.setDate(termin.getDate()+280+(z-28));
     var today=new Date();today.setHours(0,0,0,0);
-    var tage=Math.floor((today-lmp)/86400000);
+    function utc(d){return Date.UTC(d.getFullYear(),d.getMonth(),d.getDate());}
+    var tage=Math.round((utc(today)-utc(lmp))/86400000);
     if(tage<0){ssw.textContent="—";sswU.textContent="Datum liegt in der Zukunft.";ter.textContent=fmt(termin);terU.textContent="";bar.style.width="0%";tri.textContent="";return;}
     var w=Math.floor(tage/7),d=tage%7;
     ssw.textContent="SSW "+(w+1);
     sswU.textContent=w+"+"+d+" (≈ "+w+" volle Wochen)";
     ter.textContent=fmt(termin);
-    var rest=Math.ceil((termin-today)/86400000);
+    var rest=Math.round((utc(termin)-utc(today))/86400000);
     terU.textContent=rest>0?("noch "+rest+" Tage"):(rest===0?"heute!":"Termin überschritten ("+(-rest)+" T.)");
     bar.style.width=Math.max(0,Math.min(100,tage/280*100))+"%";
     tri.textContent= w<13?"1. Trimester" : w<27?"2. Trimester" : "3. Trimester";

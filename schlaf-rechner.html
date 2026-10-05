@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wie funktioniert der Schlaf-Rechner?","acceptedAnswer":{"@type":"Answer","text":"Schlaf läuft in Zyklen von rund 90 Minuten ab. Wer am Ende eines Zyklus aufwacht, fühlt sich meist erholter als mitten in einer Tiefschlafphase. Der Rechner zählt von deiner Aufwach- oder Schlafenszeit in 90-Minuten-Schritten und zeigt dir die passenden Zeiten — plus die übliche Einschlafzeit von etwa 15 Minuten."}},
-{"@type":"Question","name":"Wie viele Schlafzyklen brauche ich?","acceptedAnswer":{"@type":"Answer","text":"Für die meisten Erwachsenen sind fünf bis sechs Zyklen ideal, also etwa 7,5 bis 9 Stunden Schlaf. Vier Zyklen (6 Stunden) sind ein Minimum für kurze Nächte. Der Bedarf ist individuell verschieden."}},
+{"@type":"Question","name":"Wie viele Schlafzyklen brauche ich?","acceptedAnswer":{"@type":"Answer","text":"Für die meisten Erwachsenen sind fünf bis sechs Zyklen ideal, also etwa 7,5 bis 9 Stunden Schlaf. Fachgesellschaften empfehlen Erwachsenen regelmässig 7 Stunden oder mehr (AASM, aasm.org, Stand 2026-10). 4 Zyklen (6 h) sind nur eine Notlösung für einzelne kurze Nächte. Der Bedarf ist individuell verschieden."}},
 {"@type":"Question","name":"Ist die 90-Minuten-Regel exakt?","acceptedAnswer":{"@type":"Answer","text":"Nein, sie ist eine grobe Faustregel. Echte Schlafzyklen schwanken von Mensch zu Mensch und Nacht zu Nacht zwischen etwa 80 und 110 Minuten. Der Rechner gibt gute Anhaltspunkte, ersetzt aber keine Schlafmedizin."}}
 ]}
 </script>
@@ -134,10 +134,10 @@ footer a{color:var(--muted)}
       : "Wenn du jetzt einschläfst, wach zu einer dieser Zeiten auf (inkl. ~15 Min Einschlafen):";
     items.forEach(function(it){
       var d=document.createElement("div");d.className="tcard"+((it.c===6||it.c===5)?" best":"");
-      d.innerHTML='<div class="t">'+fmt(it.time)+'</div><div class="c">'+it.c+' Zyklen · '+it.hrs.toLocaleString("de-DE",{maximumFractionDigits:1})+' h</div>';
+      d.innerHTML='<div class="t">'+fmt(it.time)+'</div><div class="c">'+it.c+' Zyklen · '+it.hrs.toLocaleString("de-DE",{maximumFractionDigits:1})+' h'+(it.c<=4?' · unter Empfehlung':'')+'</div>';
       cards.appendChild(d);
     });
-    hint.textContent="Hervorgehoben: 5–6 Zyklen (≈ 7,5–9 h) sind für die meisten Erwachsenen ideal. Faustregel, keine Schlafmedizin.";
+    hint.textContent="Hervorgehoben: 5–6 Zyklen (≈ 7,5–9 h) sind für die meisten Erwachsenen ideal; empfohlen sind 7 Stunden oder mehr (AASM). 3–4 Zyklen liegen darunter. Faustregel, keine Schlafmedizin.";
   }
   function setMode(m){mode=m;
     var q=document.getElementById("q");

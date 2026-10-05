@@ -108,7 +108,10 @@ footer a{color:var(--muted)}
   ];
   var tool=document.getElementById("tool"), toast=document.getElementById("toast"), tt=null;
   function showToast(ch){ toast.textContent=ch+" kopiert ✓"; toast.classList.add("show"); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove("show");},1100); }
-  function copy(ch){ if(navigator.clipboard) navigator.clipboard.writeText(ch).then(function(){showToast(ch);}); else showToast(ch); }
+  function failToast(){ toast.textContent="Kopieren nicht möglich – bitte markieren und Strg+C"; toast.classList.add("show"); clearTimeout(tt); tt=setTimeout(function(){toast.classList.remove("show");},2200); }
+  function fallbackCopy(ch){ var ok=false, ta=document.createElement("textarea"); ta.value=ch; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select();
+    try{ ok=document.execCommand("copy"); }catch(e){ ok=false; } document.body.removeChild(ta); if(ok) showToast(ch); else failToast(); }
+  function copy(ch){ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ch).then(function(){showToast(ch);},function(){fallbackCopy(ch);}); else fallbackCopy(ch); }
   CATS.forEach(function(c){
     var sec=document.createElement("div"); sec.className="cat";
     var h=document.createElement("h2"); h.textContent=c[0]; sec.appendChild(h);

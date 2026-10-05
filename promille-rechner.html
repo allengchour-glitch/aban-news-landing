@@ -26,7 +26,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Wie wird der Promillewert berechnet?","acceptedAnswer":{"@type":"Answer","text":"Mit der Widmark-Formel: Promille = Alkoholmenge in Gramm geteilt durch (Körpergewicht in kg × Verteilungsfaktor). Der Faktor ist bei Männern rund 0,7 und bei Frauen rund 0,6. Pro Stunde baut der Körper grob 0,1 bis 0,15 ‰ ab. All das sind Durchschnittswerte."}},
+{"@type":"Question","name":"Wie wird der Promillewert berechnet?","acceptedAnswer":{"@type":"Answer","text":"Mit der Widmark-Formel: Promille = Alkoholmenge in Gramm geteilt durch (Körpergewicht in kg × Verteilungsfaktor). Der Faktor ist bei Männern rund 0,7 und bei Frauen rund 0,6. Pro Stunde baut der Körper grob 0,1 bis 0,15 ‰ ab (BFU). Der Rechner nimmt vorsichtig 0,1 ‰ pro Stunde, damit die Zeit bis 0,0 ‰ eher zu lang als zu kurz ist. All das sind Durchschnittswerte."}},
 {"@type":"Question","name":"Wie genau ist das Ergebnis?","acceptedAnswer":{"@type":"Answer","text":"Es ist nur eine grobe Schätzung. Der echte Wert hängt von vielen Dingen ab: was und wann du gegessen hast, Tagesform, Medikamente, individueller Abbau. Verlass dich niemals darauf, ob du fahren darfst — der einzige sichere Wert ist 0,0 ‰."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
 ]}
@@ -104,7 +104,7 @@ footer a{color:var(--muted)}
     <div class="fld"><label for="std">Stunden seit dem ersten Getränk</label><div class="unit"><input id="std" type="number" inputmode="decimal" value="1" step="0.5" min="0"><span>h</span></div></div>
     <div class="res"><div class="big" id="o-bak">—</div><div class="sub" id="o-sub">geschätzte Promille</div></div>
     <div class="rows" id="rows"></div>
-    <p class="note">Widmark: ‰ = Alkohol(g) ÷ (kg × Faktor); Faktor ♂ ≈ 0,7 / ♀ ≈ 0,6; Abbau ≈ 0,15 ‰/h. Alkohol(g) = ml × %/100 × 0,8. Grobe Schätzung, keine medizinische/rechtliche Auskunft.</p>
+    <p class="note">Widmark: ‰ = Alkohol(g) ÷ (kg × Faktor); Faktor ♂ ≈ 0,7 / ♀ ≈ 0,6; Abbau ≈ 0,1–0,15 ‰/h (<a href="https://www.bfu.ch/de/ratgeber/alkohol-am-steuer" rel="noopener">BFU</a>, Stand 2026-10); gerechnet wird vorsichtig mit 0,1 ‰/h, also dem langsamen Abbau. Alkohol(g) = ml × %/100 × 0,8. Grobe Schätzung, keine medizinische/rechtliche Auskunft.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -125,7 +125,7 @@ footer a{color:var(--muted)}
   <a href="/bmi-rechner.html">BMI-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 (function(){
-  var sex="m", ABBAU=0.15;
+  var sex="m", ABBAU=0.1; // vorsichtig: langsamer Abbau (BFU: 0,1–0,15 ‰/h)
   function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
   function calc(){
     var kg=num("kg"),ml=num("ml"),vol=num("vol"),std=num("std");
@@ -142,7 +142,7 @@ footer a{color:var(--muted)}
     html+='<div><b>Reiner Alkohol</b><span>'+gramm.toLocaleString("de-DE",{maximumFractionDigits:1})+" g</span></div>";
     html+='<div><b>Höchstwert (ohne Abbau)</b><span>'+bakPeak.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" ‰</span></div>";
     // Abbauzeit bis Grenzen ab JETZT
-    function bis(grenze){var d=bak-grenze;if(d<=0)return "erreicht";var h=d/ABBAU;var hh=Math.floor(h),mm=Math.round((h-hh)*60);return (hh>0?hh+" h ":"")+mm+" min";}
+    function bis(grenze){var d=bak-grenze;if(d<=0)return "erreicht";var tot=Math.round(d/ABBAU*60);var hh=Math.floor(tot/60),mm=tot%60;return (hh>0?hh+" h ":"")+mm+" min";}
     html+='<div><b>Bis 0,5 ‰</b><span>'+bis(0.5)+'</span></div>';
     html+='<div><b>Bis 0,3 ‰</b><span>'+bis(0.3)+'</span></div>';
     html+='<div><b>Bis 0,0 ‰ (nüchtern)</b><span>'+bis(0)+'</span></div>';

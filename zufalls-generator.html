@@ -148,6 +148,7 @@ Eva</textarea>
       var mn=parseInt(document.getElementById("min").value,10), mx=parseInt(document.getElementById("max").value,10), c=Math.max(1,parseInt(document.getElementById("ncount").value,10)||1);
       if(isNaN(mn)||isNaN(mx)||mx<mn){out.innerHTML='<span style="color:#a01616">Gültigen Bereich eingeben (Von ≤ Bis).</span>';return;}
       var span=mx-mn+1, res=[];
+      if(span>4294967296){out.innerHTML='<span style="color:#a01616">Bereich zu gross (höchstens 4 294 967 296 Werte).</span>';return;}
       for(var i=0;i<c;i++){ res.push(mn+rnd(span)); }
       out.innerHTML=c===1?'<div class="big">'+res[0]+'</div>':'<div class="list">'+res.join(", ")+'</div>';
       return;
