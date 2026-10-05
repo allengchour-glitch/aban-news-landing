@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-05T02:57Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-05T03:53Z
 
 Aktive gescannt: 9 · ohne Kategorie: 9 · heute gesetzt: 5 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
 
@@ -13,9 +13,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- belt-bag-fur-manner-b9345f · Taschen → Luggage & Bags
-- herrenuhr-mit-zeiger-und-zahlenanzeige-424635 · Uhren → Apparel & Accessories > Jewelry > Watches
-- mechanische-armbanduhr-hollow-24-cm-0b1e70 · Uhren → Apparel & Accessories > Jewelry > Watches
-- sportuhr-mit-wasserfestigkeit-c6a500 · Uhren → Apparel & Accessories > Jewelry > Watches
-- handgewebter-wandteppich-aus-100-baumwolle-609800 · Aufbewahrung & Organizer → Home & Garden > Decor
+- sandalen-mit-riemchen-und-plattform-385664 · Damenschuhe → Apparel & Accessories > Shoes
+- sandalen-mit-plattform-und-schnallen-381632 · Damenschuhe → Apparel & Accessories > Shoes
+- sommer-sandalen-mit-flachem-absatz-753280 · Damenschuhe → Apparel & Accessories > Shoes
+- einfache-ledersandalen-in-weiss-243968 · Damenschuhe → Apparel & Accessories > Shoes
+- plattformkeil-pantoletten-in-weiss-484544 · Damenschuhe → Apparel & Accessories > Shoes
 

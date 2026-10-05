@@ -1985,3 +1985,53 @@ kaschmir-pullover-fur-haustiere-mit-zopfmuster-938304	aa-1	ap-2	Trend-Gadget	202
 langarm-sweatshirt-mit-totenkopf-print-17304a	ae-3-2	aa-1	Trend-Gadget	2026-10-04T23:00Z
 verstellbare-rutschfeste-hunde-outdoorschuhe-444288	aa-8	ap-2	Trend-Gadget	2026-10-04T23:00Z
 halloween-kostuem-fuer-hunde-479706	aa-3-3	ap-2	Trend-Produkt	2026-10-04T23:00Z
+magnetische-steckdosenleisten-halterung-638300	hg-10-16	el-7-15-8	Aufbewahrung & Organizer	2026-10-05T03:56Z	regel 05.10.
+drehbare-steckdosenleiste-625400	hg-10-16	el-7-15-8	Aufbewahrung & Organizer	2026-10-05T03:56Z	regel 05.10.
+haushalts-steckdosenleiste-teilbar-635200	hg-10-16	el-7-15-8	Aufbewahrung & Organizer	2026-10-05T03:56Z	regel 05.10.
+multifunktionales-universal-steckdosenpanel-615000	hg-10-16	el-7-15	Aufbewahrung & Organizer	2026-10-05T03:56Z	regel 05.10.
+adventskalender-24-tage-puzzle-box-611700	tg-4	hg-3-58-1	Aufbewahrung & Organizer	2026-10-05T03:56Z	regel 05.10.
+funksteckdosen-set-mit-5-steckdosen-2-fernbedi-548866	el	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+wlan-funksteckdose-mit-timer-10a-2200w-759104	el	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+thermostat-steckdose-163008	hg-10-16	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+smart-wifi-steckdose-117888	el	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+smarte-steckdosenleiste-mit-sprachsteuerung-901952	el	el-7-15-8	Gadget	2026-10-05T03:56Z	regel 05.10.
+thermostat-steckdose-mit-timer-f7ff56	hg-10-16	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+thermostatische-smart-steckdose-mit-sprachsteu-294080	el	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+fernbedienbare-zeitschaltuhr-steckdose-b20152	hg-10-16	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+multifunktionaler-steckdosen-tester-mit-displa-436416	el	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+intelligente-wlan-steckdose-e0e1e2	hg-10-16	el-7-15	Gadget	2026-10-05T03:56Z	regel 05.10.
+magnetische-ladesteckdose-fur-iphone-android-t-731438	hg-10-16	el-7-15	Haushalt & Wohnen	2026-10-05T03:56Z	regel 05.10.
+acryl-adventskalender-blind-box-626300	hg-10-16	hg-3-58-1	Haushalt & Wohnen	2026-10-05T03:56Z	regel 05.10.
+rc-roboterhund-mit-touch-und-sound-631300	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+gro-es-interaktives-rc-roboter-modell-fur-kind-606500	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+roboter-hund-mit-licht-musik-ferngesteuert-620500	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+rc-mechanischer-hund-katze-2-in-1-bausatz-628600	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+ferngesteuerter-musik-hund-621000	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+intelligenter-roboterhund-mit-fernbedienung-779008	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+rc-spruh-tierli-spinne-biene-oder-oktopus-889984	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+ferngesteuerter-roboter-mit-sound-licht-199872	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+elektrischer-roboterhund-mit-fernbedienung-815808	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+smart-sensor-stunt-hund-mit-fernbedienung-851136	ap-2	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+ferngesteuerter-roboter-fur-kinder-952d53	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+intelligenter-roboter-mit-fernbedienung-a4fbd7	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+mech-warrior-roboter-mit-fernbedienung-33ca04	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+ferngesteuerter-dinosaurier-roboter-80c30e	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+rc-roboterhund-mit-touch-sensorik-803584	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+rc-dinosaurier-mit-musik-tanz-sprayfunktion-d6af30	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+magnetischer-adventskalender-bausteine-611100	tg-5-7	hg-3-58-1	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+rc-deformationsauto-roboter-891776	el	tg-5-18	Spass-Elektronik	2026-10-05T03:56Z	regel 05.10.
+adventskalender-blind-box-sammlung-2026-636300	hg-10-16	hg-3-58-1	Trend-Produkt	2026-10-05T03:56Z	regel 05.10.
+winter-geschenkset-fur-kinder-654100	LEER	aa-2-33	Kinder	2026-10-05T03:56Z	hand 05.10.: Bild: Box mit Plüsch-Ohrenwärmern, Fäustlingen, Schal, Thermosflasche; Text: Winter-Set für Kindergarten/Primarschule → Accessoires für Kinder, keine Kleidung
+antirutsch-mat-624800	LEER	hg-11-8-67	Trend-Produkt	2026-10-05T03:56Z	hand 05.10.: Bild: 4/4 Matte um den Küchenhahn auf dem Spülbeckenrand; Text: Diatomeenerde, saugfähig, Küche und Bad → Spülbecken-Matte (Küche dominiert)
+schwarzes-innenraum-bursten-set-mit-langen-bor-616800	LEER	vp-1-5-2	Trend-Produkt	2026-10-05T03:56Z	hand 05.10.: Bild: Staubbürste an Lenkrad/Lüftungsschlitz, Verpackung «Car Air Vent Extended Brush»; Text: Car Interior Cleaning Brush → Fahrzeugreinigung
+gel-pads-2er-pack-705d5b	LEER	el-4-8-4	Trend-Gadget	2026-10-05T03:56Z	hand 05.10.: Bild: schwarze Haft-Gel-Pads (Fixate-Typ) für Handy an Flächen; Text: kompatibel mit Smartphones, portable Halterung → Smartphone-Zubehör (kein Halterungs-Blatt in der Taxonomie)
+versteckte-leckereien-b386e5	tg-5	ap-2-3-7	Trend-Gadget	2026-10-05T03:56Z	hand 05.10.: Bild: Plüsch-Kartoffeln mit Taschen und Leckerli-Würfeln; Text: Hundespielzeug mit Futtertäschchen → Dog Toys, nicht Toys & Games
+diy-filz-adventskalender-zum-aufhangen-607700	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+adventskalender-geschenkbox-603200	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+adventskalender-puzzle-blind-box-620600	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+weihnachtsratsel-adventskalender-623700	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+adventskalender-mit-24-turchen-aus-kunststoff-610400	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+adventskalender-set-aus-satin-geschenkbeutel-622900	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+24-tage-adventskalender-mit-grid-design-650200	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+holz-weihnachtsdekoration-mit-led-licht-634400	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
+forest-dragon-adventskalender-aus-acryl-601200	ae-3-2	hg-3-58-1	Partydeko & Ballone	2026-10-05T03:56Z	adventskalender→Advent Calendars 05.10.
