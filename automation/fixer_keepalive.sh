@@ -1307,6 +1307,14 @@ fi
       echo "$(date -u +%H:%M) $(grep '^BLOG-PREISE:' "$BPA" | tail -n 1)"
     fi
   fi
+# INTERNE-LINKS (05.10.2026, Semrush-Umsetzung 2): ls-verwandt-Blöcke in 149 Kollektionstexten — Ziele müssen kaufbar bleiben.
+# Wöchentlich (Montag, einmal über Stempel): prüfen, dann idempotent ergänzen (nur fehlende Blöcke neuer Kollektionen). Rückweg: --zurueck.
+ILW=/tmp/interne_links_$(date -u +%G-%V).stamp
+if [ -f "$REPO/automation/interne_links.py" ] && [ "$(date -u +%u)" = "1" ] && [ ! -f "$ILW" ]; then
+  touch "$ILW"
+  ( cd "$REPO" && timeout 900 python3 automation/interne_links.py --pruefen 2>&1 | tail -1 | tee -a /tmp/interne_links.log )
+  ( cd "$REPO" && SCHARF=1 timeout 1800 python3 automation/interne_links.py --scharf >> /tmp/interne_links.log 2>&1; grep "^geschrieben" /tmp/interne_links.log | tail -1 )
+fi
 # --- Checkout-Abbruch-Ampel (05.10.2026, dropship/CHECKOUT-ABBRUCH-2026-10-05.md) — täglich, nur messen (Probelauf 08:05 UTC ok).
 if [ -f "$REPO/automation/checkout_abbruch_messen.py" ] && [ ! -f /tmp/checkout_abbruch_$(date -u +%F).stamp ]; then
   touch /tmp/checkout_abbruch_$(date -u +%F).stamp
