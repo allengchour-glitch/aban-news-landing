@@ -4494,3 +4494,5 @@ rgp01-multi-plattform-wireless-gamepad-619700	2504110347161619900	7	11.58	ok	lan
 x2-blue-4k-wireless-gaming-konsole-602800	2503140526221603000	7	11.93	ok	landeseite
 vibrations-gamepad-mit-6-achsen-bewegungssenso-615000	2503100504431615200	7	8.57	ok	landeseite
 tastatur-maus-konverter-fur-mobile-gaming-609000	2503100257001609200	7	8.10	ok	landeseite
+bluetooth-controller-fur-smartphones-split-614400	2502100219341614600	16	7.87	ok	landeseite
+black-lightning-wireless-elite-bluetooth-contr-605000	2501260447161605200	7	10.18	ok	landeseite
