@@ -16885,3 +16885,7 @@ gid://shopify/Product/16607377949063	11->3	Handgefertigter Eisenkessel – 24 cm
 gid://shopify/Product/15450851934593	30->0	6er Set Ätherische Öle
 gid://shopify/Product/15453761601921	9->0	Französische Stickerei mit Metallgriff
 gid://shopify/Product/15453791617409	38->0	Trägerloses Bade-T-Shirt mit versteckten Knöpfen
+gid://shopify/Product/15469939294593	18->0	Kinderkostüm Peppa Fairy Dress
+gid://shopify/Product/15469944209793	12->0	Neon Tutu
+gid://shopify/Product/15469950894465	75->0	Roter Kardinal
+gid://shopify/Product/15469970653569	31->0	Tutu Regenbogen
