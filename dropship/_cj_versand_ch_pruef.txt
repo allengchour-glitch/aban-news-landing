@@ -3983,3 +3983,33 @@ layering-halsketten-set-gold-silber	2606120851381638800	16	4.75	ok	landeseite
 kreuz-halskette-gold-edelstahl	2606120736221609600	16	4.60	ok	landeseite
 armband-just-breathe-edelstahl	2606120723031615400	16	4.92	ok	landeseite
 tennis-armband-bunt-zirkonia	2606120755051602100	16	4.44	ok	landeseite
+stern-ohrringe-gold-4zack	2065322741278482434	16	4.47	ok	landeseite
+tropfen-ohrringe-emaille-retro	2065323731741990913	16	4.60	ok	landeseite
+statement-ring-zirkonia-kristall	2606120803251601900	16	4.40	ok	landeseite
+ring-you-light-up-my-life-leuchtstein	2606120251271634200	16	4.50	ok	landeseite
+herz-ring-rosegold-zirkonia	2606110544291633900	16	4.42	ok	landeseite
+breiter-ring-silber-floral	2606110404531621900	16	4.37	ok	landeseite
+ring-blauer-stein-elegant	2606110120031608500	16	4.50	ok	landeseite
+ring-schwarz-regenbogen-kristall	2606100928031606900	16	4.81	ok	landeseite
+stapelring-set-gold-mix	2606100702411625900	16	4.40	ok	landeseite
+siegelring-marmor-gold	2606100454231626900	16	4.50	ok	landeseite
+retro-flammen-tischlampe-led	2063908074368376834	7	10.92	ok	landeseite
+isolier-trinkflasche-edelstahl-huelle	2606120913081625000	16	10.49	ok	landeseite
+edelstahl-coffee-to-go-becher	2606111212431606500	16	8.66	ok	landeseite
+canvas-shopper-tote-nachhaltig	2606121029231602100	16	8.79	ok	landeseite
+edelstahl-seifenschale-ohne-bohren	2606100844591622500	3	8.42	ok	landeseite
+partner-halskette-soulmate-magnetischer-herz-anhanger-2-halften	2065705167654637569	7	4.67	ok	landeseite
+paar-armband-herzstein-naturstein-mit-herz-anhanger	2056657238690009090	0	-	KEINE CH-Option → DRAFT	landeseite
+partner-ring-chain-titanstahl-18k-vergoldet-unisex	2059253763690483714	16	4.47	ok	landeseite
+partner-kette-wolfszahn-edelstahl-anhanger-fur-sie-ihn	2605191324221633000	16	4.75	ok	landeseite
+partner-ring-bar-vintage-edelstahl-unisex	2605200813131617900	16	4.71	ok	landeseite
+partner-ring-set-sword-of-love-herz-schwert-2-ringe	2605290521181619300	16	4.40	ok	landeseite
+aroma-diffuser-persimmon-kaki-frucht-design-mit-licht-🍂	2606040229281607400	16	16.16	ok	landeseite
+rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren-💡	2606100720541636200	16	13.76	ok	landeseite
+bambus-besteckorganizer-schubladen-ordnung-nachhaltig	2064224170325413890	0	-	KEINE CH-Option → DRAFT	landeseite
+weekender-reisetasche-voyage-faltbar-mit-extra-fach	2606130945301620100	16	17.66	ok	landeseite
+solar-gartenleuchte-lumio-aluminium-automatisch-☀️	2606121248121639800	7	26.67	ok	landeseite
+auto-duft-clip-woody-edler-holz-lufterfrischer-🌿	2606121120191607400	7	7.13	ok	landeseite
+leoparden-pluschtier-leo-realistisch-weich-32-cm-🐆	2606121131501600000	16	7.85	ok	landeseite
+holz-lesezahler-leseheld-montessori-tier-tracker	2065686213262340097	16	8.93	ok	landeseite
+wide-leg-midi-rock-studio-fliessend-freigrosse	2606130139311615300	16	8.79	ok	landeseite

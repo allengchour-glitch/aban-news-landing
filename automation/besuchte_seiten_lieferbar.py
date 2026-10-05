@@ -246,7 +246,7 @@ def landeseiten(von_tagen, bis_tagen=0, _tiefe=0):
          f"AND landing_page_type = 'Product' SINCE -{von_tagen}d"
          + (f" UNTIL -{bis_tagen}d" if bis_tagen else "") + f" ORDER BY sessions DESC LIMIT {QL_LIMIT}")
     rows = shopifyql(q)
-    if len(rows) >= QL_LIMIT and von_tagen - bis_tagen > 2 and _tiefe < 6:
+    if len(rows) >= QL_LIMIT and von_tagen - bis_tagen > 1 and _tiefe < 8:
         mitte = (von_tagen + bis_tagen) // 2
         a = landeseiten(von_tagen, mitte, _tiefe + 1)
         b = landeseiten(mitte, bis_tagen, _tiefe + 1)
@@ -254,7 +254,10 @@ def landeseiten(von_tagen, bis_tagen=0, _tiefe=0):
             a[h] = a.get(h, 0) + n
         return a
     if len(rows) >= QL_LIMIT:
-        print(f"⚠️ Fenster -{von_tagen}d..-{bis_tagen}d bleibt am LIMIT {QL_LIMIT} (nicht weiter teilbar) — Liste dort abgeschnitten",
+        # GEMESSEN 05.10.: Anfang Juli (-105..-91 d) gab es an einzelnen TAGEN > 1'000 Produkt-Landeseiten à 1 Sitzung —
+        # das ist kein menschlicher Verkehr. Weil nach Sitzungen absteigend sortiert wird, fallen nur 1-Sitzungs-Seiten weg,
+        # und die werden fuer > 60 T ohnehin nicht gefragt (MIN_SITZUNGEN_ALT). Die Warnung bleibt, damit es sichtbar ist.
+        print(f"⚠️ Fenster -{von_tagen}d..-{bis_tagen}d bleibt am LIMIT {QL_LIMIT} (nicht weiter teilbar) — nur 1-Sitzungs-Seiten abgeschnitten",
               flush=True)
     return _handles_aus_zeilen(rows)
 
@@ -280,18 +283,26 @@ def pflichtliste():
     Landeseiten 30–TAGE_ALT T (nach Sitzungen). Gibt (handles, heiss) zurueck; heiss = verkauft ∪ 30 T (14-T-Frist)."""
     verkauft = verkaufte_handles(90)
     l30 = landeseiten(30, 0)
-    l_alt = landeseiten(TAGE_ALT, 30) if TAGE_ALT > 30 else {}
+    l60 = landeseiten(60, 30)
+    # GEMESSEN 05.10. (Attrappen-Lauf 04:42): 30–150 T = 5'984 Handles, einzelne 2-Tage-Fenster Anfang Juli mit > 1'000
+    # Produkt-Landeseiten à 1 Sitzung — Bot-/Anzeigen-Rauschen, nicht Nachfrage. Jede davon alle 60 T zu fragen waeren
+    # ~300 CJ-Aufrufe/Tag auf der geteilten Uhr. Darum aelter als 60 T nur mit ≥ MIN_SITZUNGEN_ALT Sitzungen; 30–60 T komplett.
+    l_alt = landeseiten(TAGE_ALT, 60) if TAGE_ALT > 60 else {}
+    l_alt = {h: n for h, n in l_alt.items() if n >= MIN_SITZUNGEN_ALT}
     handles = list(verkauft)
     for h, _ in sorted(l30.items(), key=lambda kv: -kv[1]):
         if h not in handles:
             handles.append(h)
     n_heiss = len(handles)
-    for h, _ in sorted(l_alt.items(), key=lambda kv: -kv[1]):
-        if h not in handles:
-            handles.append(h)
+    gesehen = set(handles)
+    for quelle in (l60, l_alt):
+        for h, _ in sorted(quelle.items(), key=lambda kv: -kv[1]):
+            if h not in gesehen:
+                handles.append(h); gesehen.add(h)
     print(f"Pflichtliste: {len(verkauft)} verkaufte Produkte (90 T) · {len(l30)} Landeseiten 30 T ({sum(l30.values())} Sitzungen) · "
-          f"{len(l_alt)} Landeseiten 30–{TAGE_ALT} T ({sum(l_alt.values())} Sitzungen) → {len(handles)} eindeutige Handles, "
-          f"davon {n_heiss} heiss (Frist {FRIST_JA_TAGE:.0f} T), Rest Frist {FRIST_JA_ALT_TAGE:.0f} T", flush=True)
+          f"{len(l60)} Landeseiten 30–60 T ({sum(l60.values())} Sitzungen) · {len(l_alt)} Landeseiten 60–{TAGE_ALT} T mit ≥ {MIN_SITZUNGEN_ALT} "
+          f"Sitzungen ({sum(l_alt.values())} Sitzungen) → {len(handles)} eindeutige Handles, davon {n_heiss} heiss "
+          f"(Frist {FRIST_JA_TAGE:.0f} T), Rest Frist {FRIST_JA_ALT_TAGE:.0f} T", flush=True)
     if not l30:
         # Eine leere 30-T-Liste ist hier NIE ein Ergebnis: es gibt immer besuchte Produktseiten.
         # Sie waere das Zeichen, dass die Abfrage oder die Berechtigung kaputt ist — und ein
@@ -304,36 +315,61 @@ def pflichtliste():
 
 
 TAGE_ALT = int(os.environ.get("TAGE_ALT", "150"))
+MIN_SITZUNGEN_ALT = int(os.environ.get("MIN_SITZUNGEN_ALT", "2"))
 
 
 def main():
     # «START » als ERSTE Zeile (Aufseher-Konvention 29.09.: still_gestorben() zaehlt nur Zeilen danach).
     print(f"START {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} besuchte_seiten_lieferbar "
-          f"DRY={DRY} MAX_SEITEN={MAX_SEITEN} MAX_PRODUKTE={MAX_PRODUKTE}", flush=True)
+          f"DRY={DRY} ATTRAPPE={ATTRAPPE} NUR_NEIN={os.environ.get('NUR_NEIN') == '1'} MAX_SEITEN={MAX_SEITEN} "
+          f"MAX_PRODUKTE={MAX_PRODUKTE} PUNKTE_RESERVE={PUNKTE_RESERVE} MIN_ABSTAND_H={MIN_ABSTAND_H:g}", flush=True)
     handles = [] if sys.stdin.isatty() else [h.strip() for h in sys.stdin if h.strip()]
+    heiss = set(handles)                       # Handreichung per stdin = immer heiss (14-T-Frist)
     if not handles:
-        handles = besuchte_produkt_handles()
-        print(f"{len(handles)} besuchte Produktseiten der letzten {TAGE} Tage (selbst geholt)\n",
+        handles, heiss = pflichtliste()
+        print(f"{len(handles)} Produktseiten in der Pflichtliste (verkauft 90 T ∪ Landeseiten {TAGE_ALT} T, selbst geholt)\n",
               flush=True)
 
-    # ── Ledger: frische «ja» ueberspringen, Rest nach Sitzungen (Reihenfolge der Liste) ──
+    # ── Ledger: frische «ja» ueberspringen, Rest in Reihenfolge der Pflichtliste ──
     led = ledger_lesen()
     jetzt = time.time()
-    frisch_ja = [h for h in handles
-                 if led.get(h, (0, "", ""))[1] == "ja" and jetzt - led[h][0] < FRIST_JA_TAGE * 86400]
+
+    def frist(h):
+        return (FRIST_JA_TAGE if h in heiss else FRIST_JA_ALT_TAGE) * 86400
+
+    frisch_ja = [h for h in handles if led.get(h, (0, "", ""))[1] == "ja" and jetzt - led[h][0] < frist(h)]
     offen = [h for h in handles if h not in set(frisch_ja)]
+    zu_jung = []
     if os.environ.get("NUR_NEIN") == "1":
         # Bestaetigungslauf (05.10.): nur Handles, deren juengstes Ledger-Urteil NEIN ist — das zweite,
         # unabhaengige NEIN fuer die Vollstreckung, ohne den geteilten CJ-Eimer fuer frische Fragen zu belasten.
-        offen = [h for h in offen if led.get(h, (0, "", ""))[1] == "NEIN"]
+        # Unabhaengig heisst: MIN_ABSTAND_H nach der ersten Messung (Pruefer 05.10.: 60 s Abstand sind keine zwei Messungen).
+        nein = [h for h in offen if led.get(h, (0, "", ""))[1] == "NEIN"]
+        zu_jung = [h for h in nein if jetzt - led[h][0] < MIN_ABSTAND_H * 3600]
+        offen = [h for h in nein if h not in set(zu_jung)]
+        if zu_jung:
+            print(f"NUR_NEIN: {len(zu_jung)} NEIN juenger als {MIN_ABSTAND_H:g} h — noch nicht bestaetigbar: "
+                  + ", ".join(f"{h[:45]} ({(jetzt - led[h][0]) / 3600:.1f} h)" for h in zu_jung[:6]), flush=True)
+    nie_gefragt = sum(1 for h in offen if h not in led)
+    offen_heiss = sum(1 for h in offen if h in heiss)
     handles = offen[:MAX_PRODUKTE]
     rest = len(offen) - len(handles)
-    print(f"Ledger: {len(frisch_ja)} mit frischem «ja» (< {FRIST_JA_TAGE:.0f} T) uebersprungen · "
-          f"{len(offen)} offen · dieser Lauf fragt {len(handles)} · {rest} bleiben fuer den naechsten Lauf",
-          flush=True)
+    print(f"Ledger: {len(frisch_ja)} mit frischem «ja» uebersprungen · {len(offen)} offen (davon {nie_gefragt} nie gefragt, {offen_heiss} heiss) · "
+          f"dieser Lauf fragt {len(handles)} · {rest} bleiben fuer den naechsten Lauf", flush=True)
     if not handles:
         print("LIEFERBAR: 0 · NICHT IN DIE CH: 0 · NICHT BEURTEILBAR: 0  (nichts offen — alles frisch im Ledger)")
-        print("FERTIG: nichts zu fragen", flush=True)
+        print(f"FERTIG: nichts zu fragen · {len(zu_jung)} NEIN warten auf den {MIN_ABSTAND_H:g}-h-Abstand", flush=True)
+        return
+
+    # ── Punkte-Reserve (Pruefer-Befund 9): ein Waechter darf dem Bestell-Motor nicht den letzten Rest nehmen ──
+    pk = punkte_sonde()
+    print(f"CJ-Punkte vor dem Lauf: rest={pk['rest']} total={pk['total']} usedToday={pk['used']} (Sonde code {pk['code']} {pk['msg'][:60]})",
+          flush=True)
+    if pk["rest"] is not None and pk["rest"] < PUNKTE_RESERVE:
+        # PAUSE (nicht FERTIG, nicht ABBRUCH): der Aufseher wertet PAUSE als sauberes Ende (still_gestorben) und darf den
+        # Lauf spaeter neu starten; «ABBRUCH» wuerde als Fehler gemeldet, «FERTIG» den Tag als erledigt gelten lassen.
+        print(f"PAUSE: CJ-Punkte-Rest {pk['rest']} < Reserve {PUNKTE_RESERVE} — {len(handles)} Fragen vertagt, es wird ueber NICHTS geurteilt "
+              f"(CJ-Tag endet 16:00 UTC)", flush=True)
         return
 
     # ── Kanarienvogel ────────────────────────────────────────────────────────
@@ -442,7 +478,7 @@ def main():
             f.write("\t".join(teile) + "\n")
     print(f"\n→ dropship/_besuchte_seiten_nicht_lieferbar.txt "
           f"({len(alt_zeilen)} Zeilen gesamt, davon {len(befunde)} aus diesem Lauf)")
-    vollstrecken(befunde, vorher)
+    vollstrecken(befunde, vorher, led)
     if DRY:
         print("DRY=1 — Politur (Faktenblock-Prio, du-Form) uebersprungen")
     else:
@@ -456,21 +492,30 @@ TAG_KEINE_CH = "cj-keine-ch-versandoption"
 BERICHT = os.path.join(REPO, "dropship", "BESUCHTE-SEITEN-NICHT-LIEFERBAR.md")
 
 
-def vollstrecken(befunde, vorher):
+def vollstrecken(befunde, vorher, led_vorher=None):
     """22.09.2026 (Verbesserungsrunde): der Wächter meldete «KEINE Versandoption» nur — der Gesundheits-Tracker-Ring
     stand seit dem 18.09. ACTIVE im Register, wurde besucht und kommt nicht in die Schweiz (die #1016/#1017-Klasse).
     Ein Urteil, das niemand vollstreckt, ist keine Sicherung. Regel: ein ACTIVES Produkt wird auf DRAFT gesetzt,
     wenn ZWEI unabhängige Läufe NEIN sagen (heute UND schon im Register vom letzten Lauf) — ein einzelnes NEIN kann
     ein CJ-Aussetzer sein; der Kanarienvogel (#1018) schützt nur vor dem globalen Ausfall. Tag `cj-keine-ch-versandoption`,
-    Notiz mit Grund, Rücklesen; Bericht in dropship/BESUCHTE-SEITEN-NICHT-LIEFERBAR.md. Rückholbar: Tag entfernen + ACTIVE."""
+    Notiz mit Grund, Rücklesen; Bericht in dropship/BESUCHTE-SEITEN-NICHT-LIEFERBAR.md. Rückholbar: Tag entfernen + ACTIVE.
+    05.10. (Prüfer-Befund 9): «unabhängig» heisst zusätzlich ≥ MIN_ABSTAND_H zwischen dem vorigen NEIN im Ledger
+    (`led_vorher`, Stand vor diesem Lauf) und jetzt — zwei Läufe im Minutenabstand sind EINE Messung."""
     heute = time.strftime("%Y-%m-%d")
     zeilen, n_draft, n_warte = [], 0, 0
+    jetzt = time.time()
     for h, st, g, sku in befunde:
         if st != "ACTIVE":
             continue
         if h not in vorher:
             n_warte += 1
-            zeilen.append(f"| `{h}` | ⏳ erstes NEIN ({heute}) — Draft beim nächsten NEIN | {g} | `{sku}` |")
+            zeilen.append(f"| `{h}` | ⏳ erstes NEIN ({heute}) — Draft beim nächsten NEIN (≥ {MIN_ABSTAND_H:g} h später) | {g} | `{sku}` |")
+            continue
+        alt = (led_vorher or {}).get(h)
+        if alt and alt[1] == "NEIN" and jetzt - alt[0] < MIN_ABSTAND_H * 3600:
+            n_warte += 1
+            zeilen.append(f"| `{h}` | ⏳ zweites NEIN nur {(jetzt - alt[0]) / 3600:.1f} h nach dem ersten — DRAFT erst ab {MIN_ABSTAND_H:g} h Abstand | {g} | `{sku}` |")
+            print(f"   WARTE: /products/{h} — zweites NEIN nach {(jetzt - alt[0]) / 3600:.1f} h, Mindestabstand {MIN_ABSTAND_H:g} h", flush=True)
             continue
         if DRY:
             n_warte += 1

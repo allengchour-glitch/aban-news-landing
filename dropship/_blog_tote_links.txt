@@ -88,3 +88,14 @@ artikel	gid://shopify/Article/1001928032641	metalldetektor-kaufen-der-grosse-ein
 artikel	gid://shopify/Article/1001930588545	arduino-fur-einsteiger-das-erste-projekt	/collections/maker-elektronik=>/collections/basteln-diy
 artikel	gid://shopify/Article/1001931669889	kofferpacken-wie-ein-profi-die-clevere-packliste-fur-jede-reise	/collections/reise-outdoor=>/collections/sub-reise
 artikel	gid://shopify/Article/1001932816769	kaffee-zubereiten-wie-ein-barista-techniken-zubehor-fur-zuhause	/collections/kaffee-maschinen=>/collections/kaffee-ecke
+artikel	gid://shopify/Article/1001546121601	bluetooth-speaker-wasserdicht-outdoor-guide	/products/25l-auto-kuhlbox-fur-unterwegs-631200=>/products/tragbare-15l-kuhlbox-fur-camping-outdoor-619900	2026-10-05
+artikel	gid://shopify/Article/1001546547585	geschenke-fuer-kaffeeliebhaber	/products/handgewobene-wolldecke-635800=>/products/wolldecke-mit-hahnentrittmuster-und-quasten-334336	2026-10-05
+artikel	gid://shopify/Article/1015736369543	hundebett-kaufen-oder-selber-bauen-ratgeber	/products/kuscheliges-cord-hundebett-6038af=>/products/beruhigendes-hundebett-fur-sofa-wasserdicht-504578;/products/hundebett-mit-blachen-sonnendach-598849=>/products/hundebett-sofa-5ede8d	2026-10-05
+artikel	gid://shopify/Article/1015736336775	kratzbaum-kaufen-groesse-stabilitaet-sisal-ratgeber	/products/katzenkratzbaum-mit-sisalsaulen-65-cm-764866=>/products/kratzbaum-mit-kuschelhohle-099520	2026-10-05
+artikel	gid://shopify/Article/1015739580807	kuscheltiere-waschen-plueschtiere-ratgeber	/collections/ft-pluesch/ch-lager=>/collections/ft-pluesch;/collections/ft-pluesch/ch-lager=>/collections/ft-pluesch	2026-10-05
+artikel	gid://shopify/Article/1001546776961	minimalistisch-einrichten-wohnaccessoires	/products/leinwandbild-im-massivholzrahmen-611000=>/products/leinwandbild-weg-der-wahrheit-und-des-lebens-648192	2026-10-05
+artikel	gid://shopify/Article/1015742792071	nagellack-entfernen-ohne-aceton-entsorgen	/products/abziehbarer-nagellack-mit-aprikosenduft-10ml-823809=>/products/3-in-1-nagellackstift-5er-set-625700	2026-10-05
+artikel	gid://shopify/Article/1002368336257	powerbank-kaufen-mah-schwindel-2026	/products/magnetische-3-in-1-wireless-powerbank-606500=>/products/magnetische-10000mah-powerbank-mit-20w-967745	2026-10-05
+artikel	gid://shopify/Article/1001547039105	thermosflasche-edelstahl-vorteile-vergleich	/products/25l-auto-kuhlbox-fur-unterwegs-631200=>/products/tragbare-15l-kuhlbox-fur-camping-outdoor-619900	2026-10-05
+artikel	gid://shopify/Article/1001547137409	weihnachtsgeschenke-2026-schweiz-ideen	/products/handgewobene-wolldecke-635800=>/products/wolldecke-mit-hahnentrittmuster-und-quasten-334336	2026-10-05
+artikel	gid://shopify/Article/1002368369025	wohn-ideen-herbst-2026	/products/geflochtener-aufbewahrungskorb-604900=>/products/grosser-tragbarer-aufbewahrungskorb-611600	2026-10-05
