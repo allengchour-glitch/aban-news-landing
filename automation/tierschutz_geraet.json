@@ -30,7 +30,8 @@
    "n": "stachel-wuerge-halsband",
    "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b",
    "geraet": "halsband|halsb[äa]nder|collar",
-   "wirkung": "stachelhalsband|stachel-halsband|prong collar|w[üu]rgehalsband|w[üu]rge-halsband|metallspitzen|dornen\\w* halsband"
+   "wirkung": "stachelhalsband|stachel-halsband|prong collar|pinch collar|choke collar|w[üu]rgehalsband|w[üu]rge-halsband|kettenw[üu]rger|metallspitzen|dornen\\w* halsband|stimulations(?:kette|punkt\\w*|spitze\\w*)|zacken\\w* halsband|krallen-?halsband",
+   "_04_10": "Sichtung Google-Blocker 05.10.: «Halsband mit Stimulationskette für Hunde» = Stachelhalsband (Bild: Metallzacken nach innen, Text «Stimulationspunkte»), war ACTIVE und im Google-Kanal"
   },
   {
    "n": "antibell-art76-abs6",

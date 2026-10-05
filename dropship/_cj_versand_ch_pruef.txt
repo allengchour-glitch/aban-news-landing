@@ -3639,3 +3639,13 @@ hd-wlan-tragbarer-handy-projektor-073216	1515211101338873856	3	36.21	ok	landesei
 mini-full-hd-led-projektor-fur-zuhause-971072	1443879108399468544	16	19.42	ok	landeseite
 tragbarer-smart-projektor-p62-hd-auflosung-844800	1444159196777025536	7	25.36	ok	landeseite
 mini-projektor-fur-heim-und-burogebrauch-617280	1439469020666531840	11	33.08	ok	landeseite
+c80-mini-heimprojektor-720p-161152	1439467294693658624	16	15.81	ok	landeseite
+heimprojektor-yg400-hd-296704	1439465042495016960	16	23.15	ok	landeseite
+wlan-android-beamer-fur-zuhause-306304	1439463799521415168	16	19.65	ok	landeseite
+memory-schaum-beinkissen-zur-beinauflage-606700	2512200859581606900	16	12.25	ok	landeseite
+extra-dicke-kissenbezuge-aus-milch-samt-603200	2512190330141603400	16	7.43	ok	landeseite
+kissenbezug-aus-baumwoll-twill-45-120-cm-629600	2512181119051629800	16	8.79	ok	landeseite
+rattanmatte-und-eisseiden-kissenbezug-600900	2512181114351601100	16	8.79	ok	landeseite
+halsband-mit-metallschnalle-18c40a	-	-	-	unklar keine CJ-SKU	landeseite
+outdoor-smartwatch-fur-sport-gesundheit-800384	1699018084431966208	6	6.49	ok	landeseite
+hundeleine-fur-mittlere-und-grosse-hunde-518592	1398894348409638912	16	9.61	ok	landeseite

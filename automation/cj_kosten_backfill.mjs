@@ -157,6 +157,11 @@ async function main() {
   let cursor = fs.existsSync(ZEIGER) ? (fs.readFileSync(ZEIGER, 'utf8').trim() || null) : null;
   const startZeiger = cursor;
   let geprueft = 0, gesetzt = 0, ohne = 0, shopifyStumm = false, leerInFolge = 0;
+  // 05.10.2026 (Preis/Marge-Lauf): NUR_IDS=<Datei mit Produkt-GIDs je Zeile> → genau diese Produkte, OHNE Ledger-Sprung.
+  // Anlass: 87 aktive CJ-Produkte (312 Varianten) ohne EK, 78 davon im Ledger quittiert («cj-abgekuendigt-pruefen»,
+  // «cj-ohne-antwort») — live antwortete CJ bei 11 wieder mit Preis. Eine Quittung ist ein Stand, kein Urteil für immer.
+  const NUR_IDS = process.env.NUR_IDS ? fs.readFileSync(process.env.NUR_IDS, 'utf8').split('\n').map(x => x.trim()).filter(Boolean) : null;
+  let nurOffset = 0;
   while (gesetzt + ohne < LIMIT) {
     // ⚠️ DIE SEITENABFRAGE WAR ZU TEUER (27.08.2026). Sie holte je Produkt bis zu 100
     // Varianten und kostete damit 149 Punkte ANGEFRAGT (tatsaechlich verbraucht: 23).
@@ -166,13 +171,21 @@ async function main() {
     // ERSTE Variante gelesen (sie genuegt fuer «hat schon Kosten?» und fuer die SKU):
     // 44 Punkte statt 149. Die vollstaendige Variantenliste holt `variantenVon()` nur
     // fuer die Produkte, die wirklich Arbeit brauchen.
-    const q = await sgql(`query($c:String){products(first:50,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor}
+    let pr;
+    if (NUR_IDS) {
+      const stueck = NUR_IDS.slice(nurOffset, nurOffset + 50); nurOffset += 50;
+      const q = await sgql(`query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status variantsCount{count} variants(first:1){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { ids: stueck });
+      if (!q.data) { console.log('PAUSE (Shopify antwortet nicht)'); shopifyStumm = true; break; }
+      pr = { nodes: (q.data.nodes || []).filter(n => n && n.status === 'ACTIVE'), pageInfo: { hasNextPage: nurOffset < NUR_IDS.length, endCursor: null } };
+    } else {
+      const q = await sgql(`query($c:String){products(first:50,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor}
       nodes{id title variantsCount{count} variants(first:1){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
-    const pr = q.data?.products;
+      pr = q.data?.products;
+    }
     if (!pr) { console.log('PAUSE (Shopify antwortet nicht)'); shopifyStumm = true; break; }
     for (const p of pr.nodes) {
       geprueft++;
-      if (erledigt.has(p.id)) continue;
+      if (!NUR_IDS && erledigt.has(p.id)) continue;
       if (p.variants.nodes.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
       const vs = (p.variantsCount?.count || 1) > 1 ? await variantenVon(p.id) : p.variants.nodes;
       if (!vs.length) continue;
@@ -217,6 +230,15 @@ async function main() {
         if (!j.result && !j.gedrosselt && vier && !/16900500|Insufficient API points/i.test(JSON.stringify(j))) {
           await sleep(1200);
           j = await cj(`product/query?productSku=${vier[1]}`);
+        }
+        // ⚠️ SIEBTE FORM (05.10.2026): `product/query?variantSku=CJNS103688801AZ` — der Weg, den cj_ausgelistet_sichtbar
+        // seit dem 27.09. nimmt. Live gemessen: «Koreanische Freizeitschuhe» (CJNS103688801AZ) und «Dämpfende Laufschuhe»
+        // (CJYD2118910171OL) blieben nach allen Formen oben ohne Antwort, `variantSku=` liefert sellPrice + productWeight
+        // + die Variantenliste (variantSku/variantSellPrice/variantWeight — dieselben Felder wie unten gelesen).
+        if (!j.result && !j.gedrosselt && !/16900500|Insufficient API points|removed from shelves/i.test(JSON.stringify(j))) {
+          await sleep(1200);
+          const jv = await cj(`product/query?variantSku=${mVar[1]}`);
+          if (jv.result && jv.data) { j = jv; if (Array.isArray(j.data.variants) && !Array.isArray(j.data)) j = { ...j, data: j.data.variants.map(v => ({ ...v, sellPrice: j.data.sellPrice, productWeight: j.data.productWeight })) }; }
         }
       }
       else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
@@ -334,6 +356,7 @@ async function main() {
       await sleep(1200);
       if (gesetzt + ohne >= LIMIT) break;
     }
+    if (NUR_IDS && !pr.pageInfo.hasNextPage) { console.log(`FERTIG (NUR_IDS): ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne Antwort/Referenz, ${geprueft} geprüft.`); return; }
     if (!pr.pageInfo.hasNextPage) {
       // Runde durch: Zeiger loeschen, damit der naechste Lauf die taeglich neu
       // hinzugekommenen Produkte wieder von vorne mitnimmt.
@@ -346,6 +369,7 @@ async function main() {
       else console.log(`Stand: Listenende erreicht (${startZeiger ? 'ab Zeiger' : 'volle Runde'}), ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz — nächste Runde von vorn.`);
       return;
     }
+    if (NUR_IDS) continue;
     cursor = pr.pageInfo.endCursor;
     fs.writeFileSync(ZEIGER, cursor);
   }

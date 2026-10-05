@@ -34,6 +34,13 @@
 
 
 
+
+## 🐕 Stachelhalsband als «Stimulationskette» (05.10.2026, Verbesserungsrunde 00:30 UTC)
+Google-Blocker 1'219 = 888 Produkte (Adult-Klassen doppelt). Beim Lesen der Handles: «Halsband mit Stimulationskette für Hunde» =
+Stachelhalsband (TSchV 76, CH verboten), ACTIVE in 7 Kanälen — die Regel kannte nur «Stachel-/Würgehalsband/prong collar».
+**Lehre:** CJ-Texte umschreiben verbotene Ware mit harmlosen Verkaufswörtern; Wirk-Regeln brauchen die Euphemismen.
+Regel erweitert, Bestand 1 Befund / 0 Fehlalarme, gedraftet → `dropship/STACHELHALSBAND-2026-10-05.md`
+
 ## 🔍 Sichtprüfung 1'645 Neuimporte + Malen nach Zahlen / Diamond Painting (04.10.2026, 22:20–23:15 UTC)
 «fix 12 h lang alles»: Kontaktbögen mit Titel → Workflow (Sichter + Gegenprüfer, Stichprobe 30/30) → 618 Befunde: 447 Titel,
 105 Hauptbilder, 66 Hausregel. **Lehre 1 (Quelle):** der Texter sah nur den englischen CJ-Namen — «Digital oil painting» (数字油画)

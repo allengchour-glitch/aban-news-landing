@@ -65,6 +65,12 @@ def netto_schlimmst(preis, ek):
 
 
 def kandidaten():
+    # 05.10.2026: NUR_IDS=<Datei mit Produkt-GIDs> → genau diese Produkte, live geprüft (plane() liest ohnehin live).
+    # Anlass: 16 CJ-Produkte bekamen soeben erst einen EK (cj_kosten_backfill NUR_IDS) — im Export stehen sie ohne EK.
+    nur = os.environ.get("NUR_IDS")
+    if nur:
+        ids = [z.strip() for z in open(nur) if z.strip()]
+        return {i: [] for i in ids}, 0
     if not os.path.exists(EXPORT) or time.time() - os.path.getmtime(EXPORT) > MAXALTER:
         print(f"PAUSE: Export {EXPORT} fehlt oder älter als 3 Tage — nichts wird erfunden"); sys.exit(2)
     prod, unbekannt = collections.defaultdict(list), 0
@@ -212,7 +218,7 @@ def main():
         with SCHLOSS:
             if stopp.is_set() or st["produkte"] >= CAP:
                 return
-            if quittiert and all(v.rsplit("/", 1)[-1] in quittiert for v in prod[pid]):
+            if prod[pid] and quittiert and all(v.rsplit("/", 1)[-1] in quittiert for v in prod[pid]):   # leere Liste (NUR_IDS) = live prüfen
                 st["quittiert"] += 1; return
         try:
             p, heben, sperren, grund = plane(pid)
