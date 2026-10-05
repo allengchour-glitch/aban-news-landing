@@ -3772,3 +3772,6 @@ gid://shopify/Product/16604925362567	taschen	Grosse Umhängetasche im Camouflage
 gid://shopify/Product/16604932243847	taschen	Hänge-Aufbewahrungstasche für den Autositz
 gid://shopify/Product/16604932604295	taschen	Seat Anti-Kick Pad Aufbewahrungstasche
 gid://shopify/Product/16604954984839	ketten	Schildkröten-Beissring mit Schnullerkette
+gid://shopify/Product/16606106780039	taschen	Golfschuhtasche aus Leder, Litchi-Muster
+gid://shopify/Product/16606107369863	taschen	Outdoor Multi-Functional Sporttasche 18L
+gid://shopify/Product/16606125293959	taschen	Reisetasche mit 20‑35 L Kapazität
