@@ -34,7 +34,7 @@ Umkehrbar: Vorher-Bodies `dropship/_blog_artikel_vorher_2026-10-05.json` (11 Art
 ### Nachher
 - Ursprung: `python3 automation/blog_linkziele_wache.py` → **0 tote Ziele** (318 Ziele, 334 Artikel, 20 Redirects) — zweimal gemessen (05:11 und 05:21 nach Filterrouten-Patch).
 - Besucher-Sicht: WebFetch `/blogs/ratgeber/kratzbaum-kaufen-groesse-stabilitaet-sisal-ratgeber` zeigt 5 Karten mit neuen Preisen «(Stand 2026-10-05)», «Kratzbaum mit Kuschelhöhle» drin, 65-cm-Karte weg (nur noch im Bild-Untertitel des Headers genannt).
-- Live (Originalskript, zweiter Lauf 05:13): siehe Zeile «Live nachher» unten.
+- Live nachher (Originalskript, Probelauf 05:13–05:20): `Artikel: 334 | tote Ziele live: 0 | ohne Antwort (offen): 0` — **9 → 0**.
 
 ### Nebenbefund → gleich behoben: veraltete Preise in Artikeln
 Messung über alle 334 Artikel (Admin-API): **143 Preisangaben an 103 Produkten, 84 ausserhalb des Live-Preisbandes in 32 Artikeln** (54 tiefer als live = Leserin sieht einen Preis, den der Shop nicht hält; 28 höher). Ursache: Preissenkung 02.10., Preis-Verlustschutz, einmalig geschriebene Artikel.
