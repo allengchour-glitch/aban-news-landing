@@ -208,36 +208,102 @@ def ledger_schreiben(handle, urteil, grund, sku):
         f.write(f"{handle}\t{time.time():.0f}\t{urteil}\t{(grund or '').replace(chr(9), ' ')[:120]}\t{sku}\n")
 
 
-def besuchte_produkt_handles():
-    """Holt die Liste selbst — ein Waechter, der auf eine Handreichung wartet, laeuft nie.
-
-    GEMESSEN 18.09.2026: die Admin-API kann ShopifyQL (`shopifyqlQuery`), Felder heissen
+def shopifyql(abfrage):
+    """GEMESSEN 18.09.2026: die Admin-API kann ShopifyQL (`shopifyqlQuery`), Felder heissen
     `tableData { rows columns { name } }` — NICHT `rowData`/`unformattedData`, die gibt es in
     2024-10 nicht. Erst das Schema fragen, dann die Abfrage schreiben; geraten kostete hier
-    vier Fehlversuche.
-    """
-    q = ('{ shopifyqlQuery(query: "FROM sessions SHOW sessions GROUP BY landing_page_path '
-         "WHERE human_or_bot_session = 'human' SINCE -%dd ORDER BY sessions DESC LIMIT 1000\") "
-         '{ parseErrors tableData { rows } } }' % TAGE)
-    d = shopify(q)["data"]["shopifyqlQuery"]
+    vier Fehlversuche."""
+    d = shopify('{ shopifyqlQuery(query: %s) { parseErrors tableData { rows } } }' % json.dumps(abfrage))
+    d = d["data"]["shopifyqlQuery"]
     if d.get("parseErrors"):
-        raise RuntimeError(f"ShopifyQL abgelehnt: {d['parseErrors']}")
-    rows = (d.get("tableData") or {}).get("rows") or []
-    handles = []
+        raise RuntimeError(f"ShopifyQL abgelehnt: {d['parseErrors']} — {abfrage[:120]}")
+    return (d.get("tableData") or {}).get("rows") or []
+
+
+QL_LIMIT = 1000
+
+
+def _handles_aus_zeilen(rows):
+    aus = {}
     for r in rows:
         pfad = (r.get("landing_page_path") or "").split("?")[0]
         if "/products/" not in pfad:
             continue
         h = pfad.rsplit("/products/", 1)[1].strip("/")
-        if h and h not in handles:
+        if h:
+            aus[h] = aus.get(h, 0) + int(float(r.get("sessions") or 0))
+    return aus
+
+
+def landeseiten(von_tagen, bis_tagen=0, _tiefe=0):
+    """Produkt-Landeseiten mit menschlichen Sitzungen im Fenster [-von_tagen, -bis_tagen] → {handle: sitzungen}.
+
+    Erreicht ein Fenster das LIMIT 1000, ist die Liste abgeschnitten (Pruefer 05.10.: 60-T-Abfrage = 1000 Zeilen,
+    880 Produkt-Handles, Rest unsichtbar). Dann wird das Fenster halbiert und beide Haelften einzeln geholt —
+    bis keine mehr ans LIMIT stoesst oder das Fenster nur noch 2 Tage breit ist (dann bleibt es abgeschnitten
+    und wird als solches gemeldet). ShopifyQL kennt `SINCE -Nd UNTIL -Md` (gemessen 05.10., parseErrors leer)."""
+    q = ("FROM sessions SHOW sessions GROUP BY landing_page_path WHERE human_or_bot_session = 'human' "
+         f"AND landing_page_type = 'Product' SINCE -{von_tagen}d"
+         + (f" UNTIL -{bis_tagen}d" if bis_tagen else "") + f" ORDER BY sessions DESC LIMIT {QL_LIMIT}")
+    rows = shopifyql(q)
+    if len(rows) >= QL_LIMIT and von_tagen - bis_tagen > 2 and _tiefe < 6:
+        mitte = (von_tagen + bis_tagen) // 2
+        a = landeseiten(von_tagen, mitte, _tiefe + 1)
+        b = landeseiten(mitte, bis_tagen, _tiefe + 1)
+        for h, n in b.items():
+            a[h] = a.get(h, 0) + n
+        return a
+    if len(rows) >= QL_LIMIT:
+        print(f"⚠️ Fenster -{von_tagen}d..-{bis_tagen}d bleibt am LIMIT {QL_LIMIT} (nicht weiter teilbar) — Liste dort abgeschnitten",
+              flush=True)
+    return _handles_aus_zeilen(rows)
+
+
+def verkaufte_handles(tage=90):
+    """Verkaufte Produkte (FROM sales, 90 T) als Handles, hoechster Umsatz zuerst. Verkauft = bewiesen, dass die Seite
+    Geld bringt; ein NEIN hier ist die #1016/#1017-Klasse (bezahlt, nicht lieferbar, erstattet). Gibt [] zurueck,
+    wenn Shopify nichts liefert — das ist bei 18 Verkaeufen in 90 T plausibel leer NUR fuer kurze Fenster, darum
+    wird die Zahl im Log genannt."""
+    rows = shopifyql(f"FROM sales SHOW net_sales GROUP BY product_id SINCE -{tage}d ORDER BY net_sales DESC LIMIT 250")
+    ids = [f"gid://shopify/Product/{r['product_id']}" for r in rows if r.get("product_id")]
+    aus = []
+    for i in range(0, len(ids), 50):
+        d = shopify("query($ids:[ID!]!){nodes(ids:$ids){... on Product{handle}}}", {"ids": ids[i:i + 50]})
+        for n in d["data"]["nodes"]:
+            if n and n.get("handle") and n["handle"] not in aus:
+                aus.append(n["handle"])
+    return aus
+
+
+def pflichtliste():
+    """Reihenfolge = Schaden pro Fehlurteil: verkaufte 90 T → Landeseiten 30 T (alle, nach Sitzungen) →
+    Landeseiten 30–TAGE_ALT T (nach Sitzungen). Gibt (handles, heiss) zurueck; heiss = verkauft ∪ 30 T (14-T-Frist)."""
+    verkauft = verkaufte_handles(90)
+    l30 = landeseiten(30, 0)
+    l_alt = landeseiten(TAGE_ALT, 30) if TAGE_ALT > 30 else {}
+    handles = list(verkauft)
+    for h, _ in sorted(l30.items(), key=lambda kv: -kv[1]):
+        if h not in handles:
             handles.append(h)
-    if not handles:
-        # Eine leere Liste ist hier NIE ein Ergebnis: es gibt immer besuchte Produktseiten.
+    n_heiss = len(handles)
+    for h, _ in sorted(l_alt.items(), key=lambda kv: -kv[1]):
+        if h not in handles:
+            handles.append(h)
+    print(f"Pflichtliste: {len(verkauft)} verkaufte Produkte (90 T) · {len(l30)} Landeseiten 30 T ({sum(l30.values())} Sitzungen) · "
+          f"{len(l_alt)} Landeseiten 30–{TAGE_ALT} T ({sum(l_alt.values())} Sitzungen) → {len(handles)} eindeutige Handles, "
+          f"davon {n_heiss} heiss (Frist {FRIST_JA_TAGE:.0f} T), Rest Frist {FRIST_JA_ALT_TAGE:.0f} T", flush=True)
+    if not l30:
+        # Eine leere 30-T-Liste ist hier NIE ein Ergebnis: es gibt immer besuchte Produktseiten.
         # Sie waere das Zeichen, dass die Abfrage oder die Berechtigung kaputt ist — und ein
         # Waechter, der dann "0 Befunde" meldet, ist die stille Null aus Lehre 18.09.
-        raise RuntimeError(f"ShopifyQL lieferte {len(rows)} Zeilen, aber KEINE Produktseite — "
+        raise RuntimeError("ShopifyQL lieferte KEINE Produkt-Landeseite der letzten 30 Tage — "
                            "Abfrage oder Berechtigung pruefen, es wird nichts geurteilt.")
-    return handles[:MAX_SEITEN]
+    if len(handles) > MAX_SEITEN:
+        print(f"⚠️ Pflichtliste auf MAX_SEITEN={MAX_SEITEN} gekappt ({len(handles) - MAX_SEITEN} aelteste Seiten fallen weg)", flush=True)
+    return handles[:MAX_SEITEN], set(handles[:n_heiss])
+
+
+TAGE_ALT = int(os.environ.get("TAGE_ALT", "150"))
 
 
 def main():
