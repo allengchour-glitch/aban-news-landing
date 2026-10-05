@@ -3694,3 +3694,19 @@ tiefschutz-fur-kampfsport-038272	1381469126849073152	16	7.43	ok	landeseite
 elegante-quarzuhr-mit-lederarmband-0312c4	-	-	-	unklar keine CJ-SKU	landeseite
 fitness-und-yogamatte-fur-anfanger-160896	1381167487562944512	16	21.98	ok	landeseite
 wasserdichte-damenuhr-mit-metallarmband-2a910e	-	-	-	unklar keine CJ-SKU	landeseite
+korrektur-gurt-fur-kinder-555136	1381192831841996800	16	9.33	ok	landeseite
+rutschfeste-fitnessmatte-fur-einsteiger-453952	1380831157100351488	11	41.85	ok	landeseite
+analoguhr-mit-edelstahlarmband-e0f2d3	-	-	-	unklar keine CJ-SKU	landeseite
+damen-hantelpaar-aus-silikon-403008	1381079989331562496	16	17.28	ok	landeseite
+griffband-fur-schlager-atmungsaktiv-5-stuck-619072	1380431137024905216	16	6.01	ok	landeseite
+armbanduhr-aus-holz-mit-chronograph-und-kalend-87818a	-	-	-	unklar keine CJ-SKU	landeseite
+elektrischer-faszienball-zur-muskelentspannung-302656	1380366362047811584	7	12.30	ok	landeseite
+mini-eismaschine-c5ae20	-	-	-	unklar keine CJ-SKU	landeseite
+luvo-schleckmatte-fur-hunde-94ebc1	-	-	-	unklar keine CJ-SKU	landeseite
+automatischer-wasserspender-3-8l-0969ba	-	-	-	unklar keine CJ-SKU	landeseite
+mobiler-entsafter-mit-460-ml-kapazitat-574bd4	-	-	-	unklar keine CJ-SKU	landeseite
+anti-schling-futternapf-fur-hunde-und-katzen-138c12	-	-	-	unklar keine CJ-SKU	landeseite
+wasserspender-fur-haustiere-45ff2e	-	-	-	unklar keine CJ-SKU	landeseite
+futterspender-mit-schussel-fur-haustiere-9d4c65	-	-	-	unklar keine CJ-SKU	landeseite
+anti-schlingnapf-fur-haustiere-c2cb1d	-	-	-	unklar keine CJ-SKU	landeseite
+tofu-katzenstreu-5b2cdc	-	-	-	unklar keine CJ-SKU	landeseite
