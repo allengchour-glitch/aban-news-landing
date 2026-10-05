@@ -4114,3 +4114,9 @@ moissanit-ohrstecker-bluete-925-silber-739713	2070751604118237185	16	7.17	ok	lan
 moissanit-ohrstecker-solitaer-3ct-925-silber-641601	2070749913075527682	16	7.17	ok	landeseite
 moissanit-verlobungsring-solitaer-1ct-925-silber-119746	2070700740976422914	16	7.17	ok	landeseite
 edelstein-halskette-rubin-smaragd-925-silber-136513	2071518782714908673	16	7.17	ok	landeseite
+press-on-nails-handmade-wiederverwendbar-636600	2605260802021637500	0	-	KEINE CH-Option → DRAFT	landeseite
+press-on-nails-french-zum-aufkleben-626300	2605250946301626900	16	5.41	ok	landeseite
+cluster-wimpern-volumen-30d-40d-613000	2606240401351613600	3	5.69	ok	landeseite
+cluster-wimpern-glue-free-80-stuck-986626	2069310546678038529	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetische-wimpern-natural-mit-clip-617100	2606160548171617700	7	6.09	ok	landeseite
+selbstklebende-3d-wimpern-wiederverwendbar-941570	2059122034237296641	0	-	KEINE CH-Option → DRAFT	landeseite
