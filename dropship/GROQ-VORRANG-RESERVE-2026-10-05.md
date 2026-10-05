@@ -30,3 +30,8 @@
   (06.10.) schrittweise frei. Bis dahin reicht das Freiwerdende nur für einzelne Prüfungen (12:40 Probe ok).
 - Seit dem Fix kommt kein Massenlauf mehr auf Schlüssel 3 / qwen (Leer-Marken nur noch aus der Jury: 13:19, 14:16).
   Volle Wirkung also ab 06.10. — nachmessen: `grep -c "Kein Post" /tmp/social_autopilot.log` am 06.10. mittags.
+
+## 15:20 UTC — Gemini wieder aufgeladen (Betreiber)
+- Betreiber lud CHF 16.00 auf (AI Studio, Vorauszahlung, Guthaben 15.88 CHF, automatisches Aufladen AUS).
+- Gemessen: `gemini-2.5-flash` mit GEMINI_API_KEY → HTTP 200. Marke `/tmp/gemini_leer` entfernt; Jury-Kontingent `false`.
+- Offen: Verbrauch je Tag messen (Guthabenstand morgen gegen 15.88 CHF) — die Massenläufe schalten jetzt alle auf Gemini.
