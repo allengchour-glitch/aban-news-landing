@@ -41204,3 +41204,5 @@ gid://shopify/Product/15452295266689	CHF 43.28	1 Varianten	RC Baustellenfahrzeug
 gid://shopify/Product/15452295463297	CHF 45.09	1 Varianten	RC-Muldenkipper für Kinder
 gid://shopify/Product/15452295692673	CHF 62.52	1 Varianten	Intelligenter Roboterhund mit Sprachdialog & App
 gid://shopify/Product/15453524361601	CHF 35.77	1 Varianten	Edelstahl-Becher
+gid://shopify/Product/15503083602305	CHF 19.74	18 Varianten	Koreanische Freizeitschuhe für Herren
+gid://shopify/Product/15450742063489	CHF 77.33	13 Varianten	Dämpfende Laufschuhe mit Rebound-Effekt

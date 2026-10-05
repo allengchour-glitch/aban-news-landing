@@ -3629,3 +3629,7 @@ feizhi-kinder-laufschuh-246080	1369216437809451008	16	9.20	ok	landeseite
 chiffonbluse-mit-kurzen-armeln-605400	2602240905191605700	16	7.17	ok	landeseite
 glas-weindekanter-oder-rotweinglaser-224960	1736547049878859776	16	27.09	ok	landeseite
 quarzuhr-mit-silikonarmband-wasserdicht-e1295b	-	-	-	unklar keine CJ-SKU	landeseite
+faltbare-yogamatte-mit-handyhalter-434432	1452452488316850176	7	12.30	ok	landeseite
+plusch-sofauberwurf-fur-modulare-sofas-604700	2512240057331605000	16	9.61	ok	landeseite
+hundegeschirr-aus-oxford-stoff-740352	1608634059616432128	16	6.77	ok	landeseite
+metall-uhrenarmband-mit-strasssteinen-221184	1679367945044107264	16	5.41	ok	landeseite
