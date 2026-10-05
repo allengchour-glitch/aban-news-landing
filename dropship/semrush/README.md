@@ -94,3 +94,11 @@ Restguthaben unbekannt (kein Saldo-Bericht im MCP) — geschätzt 10'000–19'00
 - `campaigns` Projekt 31464185: **keine Positions-Tracking-Kampagne** angelegt (100 Einheiten) — per MCP nicht anlegbar.
 - `domain_organic_organic` ch (30 Zeilen, **1'200 Einheiten = 40/Zeile**): jede «Konkurrenz» teilt genau 1 Begriff → wertlos, nicht wiederholen.
 - Danach Workflow «semrush-umsetzung-2» (wf_e3919dbd-03e): Seite-2/3-Seiten anheben, neue Kollektionen für Begriffe mit Volumen, interne Links.
+
+## 05.10.2026 ~07:40 UTC · Bereich «neue-kollektionen» (Workflow semrush-umsetzung-2)
+- **8 neue Landeseiten** für Begriffe mit Volumen ohne Seite: /collections/teppiche (14'800/Mt), bettwaesche (14'800), waeschekoerbe
+  (9'900), wecker (9'900), duschvorhaenge (8'100), taschenlampen (6'600), wandregale (6'600), winterjacken (5'400 ×3) — Regel TAG
+  über `automation/kategorie_rein_semrush.py` (täglich via kategorie_rein.py), 6 Kanäle, Menü, live per WebFetch bestätigt.
+  Bericht `NEUE-KOLLEKTIONEN-2026-10-05.md`, Ledger `_neue_kollektionen_2026-10-05.tsv`.
+- **GEMESSEN: `phrase_organic` (ch, 10 Zeilen) = 100 Einheiten je Aufruf**; 8 Aufrufe = 800. Kategorie-Seiten stehen bei 6 der
+  8 Begriffe 10/10 in den Top 10.

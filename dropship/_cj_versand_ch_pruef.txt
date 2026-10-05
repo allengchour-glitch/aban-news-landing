@@ -4199,3 +4199,17 @@ mischschale-fur-gesichtsmasken-090113	2006992695911419905	0	-	KEINE CH-Option �
 2-in-1-farbwechsel-foundation-stick-pinsel-615200	2512300916201616000	3	6.02	ok	landeseite
 gesichtsmassagegerat-060097	2001505791710306305	0	-	KEINE CH-Option → DRAFT	landeseite
 make-up-pinsel-0622-599938	2001506188867846146	0	-	KEINE CH-Option → DRAFT	landeseite
+star-glitter-make-up-stick-15g-092673	2072225848701841410	16	4.71	ok	landeseite
+peel-off-lipgloss-nude-brown-590722	2072140438846865410	3	4.93	ok	landeseite
+glitzer-make-up-stick-724290	2072225938769084418	16	5.34	ok	landeseite
+peel-off-lip-gloss-kakao-3ml-155201	2072221258480709634	3	4.93	ok	landeseite
+schneidebrett-aus-massivem-teakholz-632400	2606270310331633100	16	13.76	ok	landeseite
+4-teiliges-multifunktions-kochtopf-set-618500	2606250317451619100	16	22.45	ok	landeseite
+edelstahl-bratpfanne-mit-wabenstruktur-626300	2606230326411627000	16	15.97	ok	landeseite
+kartoffel-spiralschneider-aus-edelstahl-421890	2065085225061085186	0	-	KEINE CH-Option → DRAFT	landeseite
+wokpfanne-aus-reinem-titan-635700	2606080502531636300	16	24.32	ok	landeseite
+antihaft-bratpfannen-set-aus-maifanit-614000	2606010430161614800	16	16.15	ok	landeseite
+multifunktionaler-mini-elektrokocher-mit-antih-370178	2061375543634661378	0	-	KEINE CH-Option → DRAFT	landeseite
+elektrischer-fleischwolf-mit-5l-edelstahl-schu-108610	2060287505713520642	0	-	KEINE CH-Option → DRAFT	landeseite
+elektrischer-mini-hot-pot-mit-dampfgarer-1-8l-832322	2059106258214244353	0	-	KEINE CH-Option → DRAFT	landeseite
+schneidebrett-lovewood-mit-schachbrettmuster-606500	2605240401171607000	11	33.44	ok	landeseite

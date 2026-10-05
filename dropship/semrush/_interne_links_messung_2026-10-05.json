@@ -1,0 +1,1854 @@
+[
+{
+"art": "collections",
+"handle": "nintendo-switch",
+"titel": "Nintendo & Switch",
+"begriff": "nintendo switch",
+"vol": 27100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "elektronik-technik",
+"titel": "Elektronik & Technik",
+"begriff": "elektronik",
+"vol": 18100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 1,
+"koll": 0,
+"blog": 11,
+"seiten": 2,
+"total": 15
+}
+},
+{
+"art": "collections",
+"handle": "haushaltsgeraete",
+"titel": "Haushaltsgeräte",
+"begriff": "staubsauger",
+"vol": 18100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 3,
+"seiten": 1,
+"total": 5
+}
+},
+{
+"art": "collections",
+"handle": "schmuck-uhren",
+"titel": "Schmuck & Uhren",
+"begriff": "uhren",
+"vol": 18100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "3d-drucker",
+"titel": "3D-Drucker & Stifte",
+"begriff": "3d drucker",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 1,
+"blog": 0,
+"seiten": 1,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "gaming",
+"titel": "Gaming",
+"begriff": "gaming pc",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 4,
+"seiten": 2,
+"total": 7
+}
+},
+{
+"art": "collections",
+"handle": "kaffee-ecke",
+"titel": "Kaffee-Ecke",
+"begriff": "kaffeemaschine",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 3,
+"seiten": 1,
+"total": 4
+}
+},
+{
+"art": "collections",
+"handle": "parfum-duefte",
+"titel": "Parfum & Düfte",
+"begriff": "parfum",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 5,
+"seiten": 3,
+"total": 9
+}
+},
+{
+"art": "collections",
+"handle": "pc-gaming",
+"titel": "PC-Gaming",
+"begriff": "pc gaming",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "schuhe",
+"titel": "Schuhe",
+"begriff": "schuhe",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 5,
+"seiten": 3,
+"total": 9
+}
+},
+{
+"art": "collections",
+"handle": "sub-bademode",
+"titel": "Bademode",
+"begriff": "bikini",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 2,
+"seiten": 2,
+"total": 4
+}
+},
+{
+"art": "collections",
+"handle": "t-shirts-tops",
+"titel": "T-Shirts & Tops",
+"begriff": "t-shirt",
+"vol": 14800,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 1,
+"total": 3
+}
+},
+{
+"art": "collections",
+"handle": "audio-sub",
+"titel": "Audio",
+"begriff": "kopfhörer",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 2,
+"total": 3
+}
+},
+{
+"art": "collections",
+"handle": "elektronik-audio",
+"titel": "Kopfhörer & Lautsprecher",
+"begriff": "kopfhörer",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "elektronik-laden",
+"titel": "Ladegeräte & Powerbanks",
+"begriff": "powerbank",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 5,
+"seiten": 1,
+"total": 7
+}
+},
+{
+"art": "collections",
+"handle": "kopfhoerer-audio",
+"titel": "Kopfhörer & Audio",
+"begriff": "kopfhörer",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 2,
+"seiten": 1,
+"total": 4
+}
+},
+{
+"art": "collections",
+"handle": "pool",
+"titel": "Pool",
+"begriff": "pool",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "smartwatches-wearables",
+"titel": "Smartwatches & Wearables",
+"begriff": "smartwatch",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 4,
+"total": 5
+}
+},
+{
+"art": "collections",
+"handle": "sneaker-sportschuhe",
+"titel": "Sneaker & Sportschuhe",
+"begriff": "sneaker",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "ventilatoren",
+"titel": "Ventilatoren & Kühlung",
+"begriff": "ventilator",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 4,
+"seiten": 1,
+"total": 6
+}
+},
+{
+"art": "collections",
+"handle": "vorhaenge",
+"titel": "Vorhänge",
+"begriff": "vorhänge",
+"vol": 12100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "caps-huete",
+"titel": "Caps & Hüte",
+"begriff": "caps",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 2,
+"total": 3
+}
+},
+{
+"art": "collections",
+"handle": "foto-tech",
+"titel": "Foto & Video",
+"begriff": "kamera",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 2,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "garten-balkon",
+"titel": "Garten & Balkon",
+"begriff": "gartenmöbel",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 5,
+"seiten": 2,
+"total": 7
+}
+},
+{
+"art": "collections",
+"handle": "grill-bbq",
+"titel": "Grill & BBQ",
+"begriff": "gasgrill",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 2,
+"seiten": 2,
+"total": 4
+}
+},
+{
+"art": "collections",
+"handle": "licht-decken-steh",
+"titel": "Steh- & Deckenlampen",
+"begriff": "stehlampe",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "make-up",
+"titel": "Make-up & Kosmetik",
+"begriff": "kosmetik",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 2,
+"total": 3
+}
+},
+{
+"art": "collections",
+"handle": "portemonnaie",
+"titel": "Portemonnaie & Kleinleder",
+"begriff": "portemonnaie",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 3,
+"total": 4
+}
+},
+{
+"art": "collections",
+"handle": "puzzles",
+"titel": "Puzzles",
+"begriff": "puzzles",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "sticker-aufkleber",
+"titel": "Sticker & Aufkleber",
+"begriff": "sticker",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 2,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "sub-ballerinas",
+"titel": "Ballerinas, Flats & Loafers",
+"begriff": "ballerinas",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "wallets-sub",
+"titel": "Wallets",
+"begriff": "portemonnaie",
+"vol": 9900,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 2,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "aufbewahrung-sub",
+"titel": "Aufbewahrung",
+"begriff": "regale",
+"vol": 8100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 1,
+"koll": 0,
+"blog": 0,
+"seiten": 2,
+"total": 4
+}
+},
+{
+"art": "collections",
+"handle": "beamer-heimkino",
+"titel": "Beamer & Heimkino",
+"begriff": "beamer",
+"vol": 8100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 1,
+"total": 3
+}
+},
+{
+"art": "collections",
+"handle": "jeans-denim",
+"titel": "Jeans & Denim",
+"begriff": "jeans",
+"vol": 8100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "kratzbaeume",
+"titel": "Kratzbäume",
+"begriff": "katzenbaum",
+"vol": 8100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 0,
+"total": 2
+}
+},
+{
+"art": "collections",
+"handle": "pc-komponenten",
+"titel": "PC-Komponenten & Speicher",
+"begriff": "speicher",
+"vol": 8100,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "accessoires",
+"titel": "Accessoires: Schals, Mützen, Gürtel & Socken",
+"begriff": "accessoires",
+"vol": 6600,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "geschirr-servieren",
+"titel": "Geschirr & Servieren",
+"begriff": "geschirr set",
+"vol": 6600,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 1
+}
+},
+{
+"art": "collections",
+"handle": "hoodies-sweatshirts",
+"titel": "🔥 Hoodies & Sweatshirts",
+"begriff": "hoodie",
+"vol": 6600,
+"pos": null,
+"ok": true,
+"grund": "",
+"links": {
+"menue": 1,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 1,
+"total": 2
+}
+},
+{
+"art": "products",
+"handle": "ballettschuhe-aus-leder-622800",
+"titel": "Ballettschuhe aus Leder",
+"begriff": "ballettschuhe",
+"vol": 590,
+"pos": 29,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"schuhe",
+"sport-outdoor",
+"sneaker-sportschuhe"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "herrenuhr-casio-world-time-illuminator-rot-43-mm-bb702629",
+"titel": "Herrenuhr Casio WORLD TIME ILLUMINATOR Rot (Ø 43 mm)",
+"begriff": "casio illuminator",
+"vol": 320,
+"pos": 21,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"geschenke-unter-100-franken",
+"sub-uhren",
+"casio",
+"uhren",
+"herren-uhren",
+"💎-premium-ab-chf-80",
+"topseller",
+"premium-marken-lager",
+"uhren-herren",
+"schmuck-uhren"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "katzenklo-mobel-aus-holzwerkstoff-42x-030657",
+"titel": "Katzenklo-Möbel aus Holzwerkstoff 42x",
+"begriff": "katzenklo möbel",
+"vol": 320,
+"pos": 26,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"geschenke-unter-100-franken",
+"haustier-katze",
+"eu-lager-schnell",
+"katzenwelt"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "trinkrucksack-hydration-2l-trinkblase",
+"titel": "Trinkrucksack Hydration · 2L Trinkblase",
+"begriff": "trinkrucksack",
+"vol": 260,
+"pos": 26,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"bestseller-unter-50",
+"reisen-sommer",
+"outdoor-garten",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sommer-2026",
+"sport-outdoor",
+"rucksaecke",
+"angebote"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "elegantes-blumenkleid-639000",
+"titel": "Elegantes Blumenkleid",
+"begriff": "blumenkleid",
+"vol": 260,
+"pos": 29,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-kleider"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "kleiner-luftbefeuchter-fur-zuhause-und-buro-726592",
+"titel": "Kleiner Luftbefeuchter für Zuhause und Büro",
+"begriff": "kleiner luftbefeuchter",
+"vol": 260,
+"pos": 23,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"berufseinstieg-abschluss",
+"aromatherapie",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-aroma-diffuser",
+"buero-schreibwaren",
+"beauty-pflege",
+"luftreiniger-klimageraete"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 1,
+"seiten": 0,
+"total": 1
+}
+},
+{
+"art": "products",
+"handle": "gesichtsmassagegerat-060097",
+"titel": "Gesichtsmassagegerät",
+"begriff": "gesichtsmassagegerät",
+"vol": 210,
+"pos": 26,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"bestseller-unter-50",
+"wellness-komplettset",
+"beauty-selfcare",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"recovery",
+"wellness-beauty-tools",
+"sub-massage",
+"beauty-pflege",
+"beauty-tools",
+"wellness-massage",
+"wellness-gesundheit"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "intelligentes-wecker-armband-mit-vibrationsala-620000",
+"titel": "Intelligentes Wecker-Armband mit Vibrationsalarm",
+"begriff": "armband vibration wecker",
+"vol": 170,
+"pos": 26,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"gadgets",
+"elektronik-computer",
+"elektronik-gadgets",
+"elektronik-technik"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "holzspiegel-im-europaischen-stil-621200",
+"titel": "Holzspiegel im europäischen Stil",
+"begriff": "holzspiegel",
+"vol": 140,
+"pos": 17,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"bestseller-unter-50",
+"unter-chf-25",
+"beauty-selfcare",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"beauty-pflege"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "sisal-kratzsaule-fur-katzen-629500",
+"titel": "Sisal-Kratzsäule für Katzen",
+"begriff": "kratzsäule",
+"vol": 140,
+"pos": 28,
+"ok": true,
+"grund": "",
+"kolls": [
+"geschenke-unter-100-franken",
+"sub-haustier",
+"katzenwelt",
+"haustier-katzen"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "karierte-bluse-633600",
+"titel": "Karierte Bluse · Damen",
+"begriff": "karierte bluse damen",
+"vol": 140,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"damen-blusen"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "langes-kissen-aus-eisseide-kuhlend-629200",
+"titel": "Langes Kissen aus Eisseide, kühlend",
+"begriff": "eisseide",
+"vol": 140,
+"pos": 26,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"bestseller-unter-50",
+"wohnen-dekoration",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "weihnachts-pyjama-sets-fur-die-ganze-familie-613100",
+"titel": "Weihnachts Pyjama-Sets für die ganze Familie",
+"begriff": "familien pyjama weihnachten",
+"vol": 140,
+"pos": 29,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"weihnachten-2026",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"damen-sets",
+"loungewear",
+"sets-bundles",
+"nachtwaesche-pyjamas",
+"fortura-weihnachten"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "elegantes-leopard-kleid-627600",
+"titel": "Elegantes Leopard-Kleid",
+"begriff": "leoparden kleid",
+"vol": 140,
+"pos": 27,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-kleider"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "schreibhilfe-fur-kinder-635600",
+"titel": "Schreibhilfe für Kinder",
+"begriff": "schreibhilfe für kinder",
+"vol": 110,
+"pos": 24,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"neu",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-baby-kids",
+"trends-gadgets",
+"trend-gadgets",
+"viral-hits"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "fussgelenkstutze-616900",
+"titel": "Fussgelenkstütze",
+"begriff": "fußgelenkstütze",
+"vol": 110,
+"pos": 21,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"wohnen-dekoration",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"aufbewahrung-sub"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "einfarbige-damen-tunika-bluse-638900",
+"titel": "Einfarbige Damen-Tunika-Bluse",
+"begriff": "tunika bluse",
+"vol": 110,
+"pos": 25,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"damen-blusen"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "kinder-schuhe-mit-led-licht-609000",
+"titel": "Kinder-Schuhe mit LED-Licht",
+"begriff": "leuchtschuhe kinder",
+"vol": 110,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"baby-kleinkind",
+"bestseller-unter-50",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-baby-kids",
+"kinderschuhe"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "elegantes-off-shoulder-kleid-602200",
+"titel": "Elegantes Off-Shoulder-Kleid",
+"begriff": "off shoulder kleid",
+"vol": 110,
+"pos": 24,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-kleider"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "multifunktionales-push-up-board-fur-oberkorper-94a1d1",
+"titel": "Multifunktionales Push-up Board für Oberkörpertraining",
+"begriff": "push up board",
+"vol": 110,
+"pos": 29,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"bestseller-unter-50",
+"neu",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"trends-gadgets",
+"trend-gadgets",
+"viral-hits"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "retro-spielkonsole-068866",
+"titel": "Mini Retro Game Konsole für TV (821 Spiele, HDMI, 2 Controller)",
+"begriff": "spielkonsole für tv",
+"vol": 110,
+"pos": 27,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"premium-geschenke",
+"geschenke-unter-100-franken",
+"gaming",
+"hype-2026",
+"💎-premium-ab-chf-80",
+"gaming-controller",
+"gaming-zubehor",
+"kabel-adapter"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "elegantes-zweiteiler-kleid-im-a-linien-schnitt-612400",
+"titel": "Elegantes Zweiteiler-Kleid im A-Linien-Schnitt",
+"begriff": "kleid zweiteiler",
+"vol": 110,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"neu-eingetroffen",
+"sub-kleider"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "kostum-dieb-t-shirt-fgss2973",
+"titel": "Kostüm Dieb T-Shirt",
+"begriff": "dieb kostüm",
+"vol": 90,
+"pos": 27,
+"ok": false,
+"grund": "Hausregel-Klasse",
+"kolls": [
+"bestseller-unter-50",
+"neu",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"t-shirts-tops",
+"kostueme-fasnacht",
+"blitzversand-schweiz",
+"ft-herrenkostuem",
+"kostueme-ch-lager"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "collections",
+"handle": "beleuchtung-lampen",
+"titel": "Beleuchtung & Lampen",
+"begriff": "stimmungslicht",
+"vol": 90,
+"pos": 20,
+"ok": false,
+"grund": "nicht kaufbar/online",
+"kolls": [],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 4,
+"seiten": 2,
+"total": 6
+}
+},
+{
+"art": "products",
+"handle": "kostum-aladdin-fgss1022",
+"titel": "Kostüm Aladdin",
+"begriff": "aladdin kostüm",
+"vol": 90,
+"pos": 24,
+"ok": false,
+"grund": "Hausregel-Klasse",
+"kolls": [
+"bestseller-unter-50",
+"neu",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"kostueme-fasnacht",
+"blitzversand-schweiz",
+"ft-herrenkostuem",
+"kostueme-ch-lager"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "corduroy-rucksack-im-preppy-stil-633000",
+"titel": "Corduroy Rucksack im Preppy-Stil",
+"begriff": "corduroy rucksack",
+"vol": 90,
+"pos": 28,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"rucksaecke"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "automatischer-schwenkventilator-fur-kinderwage-638500",
+"titel": "Automatischer Schwenkventilator für Kinderwagen",
+"begriff": "kinderwagen ventilator",
+"vol": 90,
+"pos": 24,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"wohnen-dekoration",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sommer-2026",
+"aufbewahrung-sub",
+"sub-baby-kids",
+"ventilatoren"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "horror-maske-fur-halloween-und-fasnacht-821504",
+"titel": "Horror Maske für Halloween und Fasnacht",
+"begriff": "gruselmaske",
+"vol": 90,
+"pos": 29,
+"ok": false,
+"grund": "Hausregel-Klasse",
+"kolls": [
+"bestseller-unter-50",
+"halloween-2026",
+"unter-chf-25",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"hautpflege-tools",
+"hautpflege-skincare",
+"beauty-pflege",
+"fortura-halloween",
+"halloween"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "kostum-haftling-overall-orange-fgss5842",
+"titel": "Kostüm Häftling Overall orange",
+"begriff": "kostüm häftling",
+"vol": 90,
+"pos": 22,
+"ok": false,
+"grund": "Hausregel-Klasse",
+"kolls": [
+"bestseller-unter-50",
+"neu",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"jumpsuits-overalls",
+"kostueme-fasnacht",
+"blitzversand-schweiz",
+"ft-herrenkostuem",
+"kostueme-ch-lager"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "reflektierender-rucksack-mit-grossem-volumen-143168",
+"titel": "Reflektierender Rucksack mit grossem Volumen",
+"begriff": "reflektierender rucksack",
+"vol": 90,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"neu-eingetroffen",
+"sub-taschen",
+"rucksaecke"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768",
+"titel": "Acryl-Beistelltisch für Wohn- und Schlafzimmer",
+"begriff": "beistelltisch acryl",
+"vol": 70,
+"pos": 16,
+"ok": true,
+"grund": "",
+"kolls": [
+"wohnen-dekoration",
+"geschenke-unter-100-franken",
+"aufbewahrung-sub"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "sonnenbrille-photo-selbsttonend-polarisiert",
+"titel": "Sonnenbrille «Photo» – selbsttönend, polarisiert",
+"begriff": "sonnenbrille selbsttönend",
+"vol": 70,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"sonnenbrillen-eyewear",
+"neu",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sommer-2026",
+"sommer",
+"sonnenbrillen-alle",
+"accessoires"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "bausteine-set-baufahrzeuge-fur-kinder-877120",
+"titel": "Bausteine-Set: Baufahrzeuge für Kinder",
+"begriff": "baustelle kinder",
+"vol": 70,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"baby-kleinkind",
+"bestseller-unter-50",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-baby-kids",
+"spielzeug",
+"kinderspielzeug",
+"sets-bundles",
+"spass-elektronik",
+"spielzeug-neuheiten",
+"klemmbausteine-bausaetze"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "rock-mit-pailletten-rosa-fgssck4741",
+"titel": "Rock mit Pailletten rosa",
+"begriff": "glitzerrock",
+"vol": 70,
+"pos": 30,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"neu",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"kostueme-fasnacht",
+"blitzversand-schweiz",
+"ft-damenkostuem",
+"kostueme-ch-lager"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "cellulite-massage-roller",
+"titel": "Cellulite Massage Roller",
+"begriff": "roller cellulite",
+"vol": 70,
+"pos": 22,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"unter-chf-25",
+"beauty-selfcare",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sub-massage",
+"luxestyle-premium",
+"beauty-tools"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "elegantes-sommerkleid-mit-spaghetti-tragern-608800",
+"titel": "Elegantes Sommerkleid mit Spaghetti-Trägern",
+"begriff": "spaghettiträger kleid",
+"vol": 70,
+"pos": 28,
+"ok": true,
+"grund": "",
+"kolls": [
+"bestseller-unter-50",
+"damen-mode",
+"unter-chf-25",
+"kleine-geschenke-mitbringsel",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sommer-2026",
+"sommer"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "sonnenbrillen-set-retro-polarized",
+"titel": "Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage",
+"begriff": "retro sonnenbrille",
+"vol": 70,
+"pos": 30,
+"ok": false,
+"grund": "Produkt DRAFT / nicht im Onlineshop",
+"kolls": [
+"reise-outdoor",
+"bestseller-unter-50",
+"express-lieferung",
+"tiktok-ads-ready",
+"top-5-start",
+"sonnenbrillen-eyewear",
+"reisen-sommer",
+"geschenke-unter-50-franken",
+"geschenke-unter-100-franken",
+"sommer-2026",
+"sommer",
+"luxestyle-premium",
+"sonnenbrillen-alle"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+},
+{
+"art": "products",
+"handle": "kostum-kapitan-fgssbo8378",
+"titel": "Kostüm Kapitän",
+"begriff": "kostüm kapitän",
+"vol": 70,
+"pos": 29,
+"ok": false,
+"grund": "Hausregel-Klasse",
+"kolls": [
+"neu",
+"geschenke-unter-100-franken",
+"kostueme-fasnacht",
+"blitzversand-schweiz",
+"ft-herrenkostuem",
+"kostueme-ch-lager"
+],
+"links": {
+"menue": 0,
+"footer": 0,
+"start": 0,
+"koll": 0,
+"blog": 0,
+"seiten": 0,
+"total": 0
+}
+}
+]
