@@ -4198,3 +4198,4 @@ magnetisches-lidschattenpinsel-set-618800	2601170925091619200	7	5.99	ok	landesei
 mischschale-fur-gesichtsmasken-090113	2006992695911419905	0	-	KEINE CH-Option → DRAFT	landeseite
 2-in-1-farbwechsel-foundation-stick-pinsel-615200	2512300916201616000	3	6.02	ok	landeseite
 gesichtsmassagegerat-060097	2001505791710306305	0	-	KEINE CH-Option → DRAFT	landeseite
+make-up-pinsel-0622-599938	2001506188867846146	0	-	KEINE CH-Option → DRAFT	landeseite
