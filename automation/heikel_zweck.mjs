@@ -62,7 +62,9 @@ const TREFFER = M.treffer.map(x => ({ n: x.n, alle: x.alle.map(r => new RegExp(r
 
 // Welche Treffer sind zugleich in der Schweiz verbotene Ware? Diese kommen nicht nur aus den
 // Kanälen, sondern werden gar nicht erst aktiv geschaltet.
-const VERBOTEN = new Set(['ch-verbotene-waffe', 'ch-verbotene-waffe-getarnt', 'elektroschock-gegen-menschen']);
+// 05.10.2026: + Konsolen-Jailbreak/Custom-Firmware (Art. 39a Abs. 3 URG verbietet schon das Anbieten).
+const VERBOTEN = new Set(['ch-verbotene-waffe', 'ch-verbotene-waffe-getarnt', 'elektroschock-gegen-menschen',
+                          'kopierschutz-umgehung-konsole']);
 
 // Nimmt HTML oder Klartext. Gibt null zurück oder {gruppe, grund, muster, stelle, verboten}.
 // gruppe: 'ueberwachung' | 'waffe'
@@ -78,7 +80,7 @@ export function heikelZweck(titel, text) {
     if (treffer.some(m => !m)) continue;
     // Der letzte Ausdruck der Kette ist der aussagekräftigste (das Verhalten, nicht das Nomen).
     const m = treffer[treffer.length - 1];
-    const gruppe = /waffe|elektroschock/.test(t.n) ? 'waffe' : 'ueberwachung';
+    const gruppe = /waffe|elektroschock/.test(t.n) ? 'waffe' : (/kopierschutz/.test(t.n) ? 'umgehung' : 'ueberwachung');
     return { gruppe, grund: t.n, muster: m[0].slice(0, 90),
              verboten: VERBOTEN.has(t.n),
              stelle: klar.slice(Math.max(0, m.index - 60), m.index + 140) };

@@ -127,6 +127,9 @@ M = json.load(open(MUSTER, encoding="utf-8"))
 SPERRE = [(s["n"], re.compile(s["re"], re.I)) for s in M["sperre_titel"]]
 TREFFER = [(t["n"], [re.compile(r, re.I) for r in t["alle"]]) for t in M["treffer"]]
 VERBOTEN_REGEL = {"ch-verbotene-waffe", "ch-verbotene-waffe-getarnt", "elektroschock-gegen-menschen"}
+# 05.10.2026: Konsolen-Jailbreak/Custom Firmware — der TEXT ist hier die Funktion (kein Bild nötig):
+# Art. 39a Abs. 3 URG verbietet schon das Anbieten → DRAFT wie BILDGEPRUEFT, Tag kopierschutz-umgehung.
+UMGEHUNG_REGEL = {"kopierschutz-umgehung-konsole"}
 
 
 def heikel(titel, text):
@@ -137,7 +140,8 @@ def heikel(titel, text):
     for name, kette in TREFFER:
         m = [r.search(klar) for r in kette]
         if all(m):
-            gruppe = "waffe" if re.search(r"waffe|elektroschock", name) else "ueberwachung"
+            gruppe = ("waffe" if re.search(r"waffe|elektroschock", name)
+                      else "umgehung" if name in UMGEHUNG_REGEL else "ueberwachung")
             return {"gruppe": gruppe, "grund": name, "muster": m[-1].group(0)[:70]}
     return None
 
@@ -195,7 +199,7 @@ def main():
         p = d["data"]["product"]
         im_kanal = any(n["isPublished"] for n in p["resourcePublications"]["nodes"]
                        if n["publication"]["id"] == GOOGLE)
-        draft = pid in BILDGEPRUEFT
+        draft = pid in BILDGEPRUEFT or r["grund"] in UMGEHUNG_REGEL
         zu_tun.append((pid, p["title"], p["status"], im_kanal, r, draft))
 
     print(f"\n{'ID':<16}{'Kanal':<7}{'Status':<8}Regel / Titel", flush=True)
@@ -204,7 +208,7 @@ def main():
         print(f"{pid:<16}{'JA' if im_kanal else '–':<7}{status:<8}{r['grund']}{mark}\n"
               f"{'':<31}{titel[:58]}", flush=True)
         if draft:
-            print(f"{'':<31}↳ {BILDGEPRUEFT[pid]}", flush=True)
+            print(f"{'':<31}↳ {BILDGEPRUEFT.get(pid) or 'Text: ' + r['muster']}", flush=True)
 
     offen = [x for x in zu_tun if x[3] or (x[5] and x[2] == "ACTIVE")]
     print(f"\nZu ändern: {len(offen)} von {len(zu_tun)} "
@@ -231,7 +235,8 @@ def main():
                 continue
             raus += 1
             getan.append("google-kanal-entfernt")
-        tag = ("waffengesetz-verboten" if draft
+        tag = ("kopierschutz-umgehung" if r["gruppe"] == "umgehung"
+               else "waffengesetz-verboten" if draft
                else ("waffe-pruefen" if r["gruppe"] == "waffe" else "verdeckte-ueberwachung"))
         a = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
                 {"id": gid, "t": [tag]})

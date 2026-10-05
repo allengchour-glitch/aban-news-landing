@@ -46,7 +46,7 @@ Betreiber: «fix mal weiter semrush». Bereich «kollektionen-runde2» des Workf
 | Kollektion | Suchen/Mt | Regel-Treffer SCHARF | live (WebFetch) | Menü |
 |---|---:|---:|---|---|
 | /collections/etageren «Etageren» | 5'400 | 14 | ✅ Titel, H1, 14 Artikel, kein 404 | Wohnen & Garten › nach Küche & Kochen |
-| /collections/usb-sticks «USB-Sticks» | 4'400 | 42 | ✅ 42 Artikel | Technik & Gaming › nach PC & Homeoffice |
+| /collections/usb-sticks «USB-Sticks» | 4'400 | 42 → **41** (Nachbesserung 09:39, s. § 5) | ✅ 41 Artikel (WebFetch 09:4x) | Technik & Gaming › nach PC & Homeoffice |
 | /collections/wanduhren «Wanduhren» | 4'400 | 21 | ✅ 21 Artikel | Wohnen & Garten › nach Wanddeko |
 | /collections/woks «Woks & Wokpfannen» | 4'400 | 14 | ✅ 14 Artikel | Wohnen & Garten › nach Küche & Kochen |
 | /collections/abendkleider «Abendkleider & Cocktailkleider» | 3'600 | 104 | ✅ 104 Artikel | Damen › nach Midikleider |
@@ -55,7 +55,7 @@ Betreiber: «fix mal weiter semrush». Bereich «kollektionen-runde2» des Workf
 | /collections/bauchtaschen «Bauchtaschen & Gürteltaschen» | 2'900 | 77 | ✅ 77 Artikel | Damen › nach Taschen & Rucksäcke |
 
 - Regeln: Block «Runde 3» in `automation/kategorie_rein_semrush.py` (CFG jetzt 16 Semrush-Kategorien + 9 Menü-Kategorien = 25 im
-  täglichen `kategorie_rein.py`); Kanarienvögel 134/134. Anlegen + Menü: `automation/neue_kollektionen_runde3.py` (nutzt die Runde-2-Werkzeuge
+  täglichen `kategorie_rein.py`); Kanarienvögel 134/134 (nach § 5: 137/137). Anlegen + Menü: `automation/neue_kollektionen_runde3.py` (nutzt die Runde-2-Werkzeuge
   mit eigenem Ledger/Backup; `--zurueck` = unpublish, nie löschen).
 - Alle 8 zurückgelesen: SEO-Titel 45–58 Zeichen mit Begriff, Meta 148–155 Zeichen mit Begriff (ohne Preise, «Versand in die Schweiz»),
   Text 115–137 Wörter, Regel TAG=kat-…, 6 Kanäle (Online Store, Shop, TikTok, Facebook & Instagram, Google & YouTube, Pinterest).
@@ -84,4 +84,31 @@ Tags per `tagsRemove` (IDs in der Zeile `tagsAdd vr-ai-neu`).
 - `kategorie_rein.py` läuft täglich mit jetzt 25 Kategorien im Aufseher (timeout 3000 s); der Lauf der 8 neuen dauerte heute ~2,5 min
   (08:56–08:58), der Gesamtlauf ist erst beim nächsten Tick belegt.
 - Haarstyling-Meta: WebFetch lieferte noch die alte Meta (Admin-API = neu) — Cache, in 1–2 h erneut prüfen.
-- Kontaktbögen zeigen nur die ersten 24 — bei Abendkleidern (104) und Bauchtaschen (77) sind 80 bzw. 53 Produkte nur per Regel geprüft.
+- Kontaktbögen zeigen nur die ersten 24 — bei Abendkleidern (104) und Bauchtaschen (77) sind 80 bzw. 53 Produkte nur per Regel geprüft — § 5 zeigt, dass genau dort ein Fehltreffer stehen kann (USB: Position 40).
+
+## 5 · Nachbesserung 09:30–09:45 UTC (Prüferbefund «mittel»)
+- **Befund bestätigt:** «USB-Stick für Host-Systeme» (gid …/Product/15480344641921) stand auf Position 40 von /collections/usb-sticks —
+  ausserhalb des Kontaktbogens. Text: «Direkt einsetzbar bei Systemversionen FW 9.0 bis 11.00 … unterstützt den Wechsel zwischen den
+  Systemversionen» = PS4-Jailbreak-Dongle, kein Speicherstick. Der Titel verrät nichts, die USB-Regel prüft nur Titel.
+- **Zwilling gefunden** (Volltext-Suche über `desc_export.jsonl`, 49'925 aktive Produkte): «U-Disk Archiv für Nintendo Switch»
+  (…/15481842401665) — «ermöglicht den Start von CFW wie Atmosphere, ReiNX oder SXOS», RCMloader/RCMclip; aktiv, im Google-Kanal und in
+  /collections/nintendo-switch. Gleiche Klasse: Umgehung technischer Schutzmassnahmen (Art. 39a Abs. 3 URG verbietet schon das Anbieten).
+- **Regel:** BAN von `usb-sticks` in `automation/kategorie_rein_semrush.py` + `host-system|firmware|\bfw\b|jailbreak|systemversion|\bcfw\b|
+  konsole|nintendo|\bswitch\b|\bps[2-5]\b|playstation|xbox`, 3 Kanarienvögel (u. a. «USB-Stick für PS4 Jailbreak FW 9.0») →
+  `python3 automation/kategorie_rein_semrush.py` = 137/0. `kategorie_rein.py usb-sticks` TROCKEN: «jetzt 42 · gehört 41 · raus 1 · neu 0»
+  (nur dieser Titel), dann SCHARF → `tagsRemove kat-usb-sticks`; Ledger `dropship/_kategorie_rein.tsv` 09:39.
+- **Quelle (Importer + täglicher Wächter):** neue Treffer-Regel `kopierschutz-umgehung-konsole` in `automation/heikel_zweck.json`
+  (Anker 1: Custom Firmware/CFW/Jailbreak/Homebrew/«Systemversion(en) FW n»/«FW n.n»/RCM-loader/Mod-Chip; Anker 2: Konsole/Switch/PS2–5/
+  PlayStation/Xbox/Wii/Nintendo/Host-System/E-Sport/Gaming). Trockenlauf über 49'925 aktive Texte: Anker 1 allein 2, Regel 2 — genau diese
+  beiden, 0 Fehltreffer; Gegenproben Metall-USB-Stick / WLAN-Router mit «Firmware-Update, Gaming-Modus» / PS4-Controller → null.
+  `heikel_zweck.mjs`: Regel in VERBOTEN, Gruppe `umgehung`; `cj_category_fill.mjs`: Tag `kopierschutz-umgehung` + DRAFT statt Publizieren;
+  `ueberwachung_waffen_guard.py`: diese Regel draftet ohne Bildliste (der Text IST die Funktion), Tag `kopierschutz-umgehung`.
+  `node --check` + `py_compile` ok. (`cj_sku_import.mjs` nutzt `heikel_zweck` nicht — dort greift nur die USB-Kollektionsregel.)
+- **Vollzug:** `ueberwachung_waffen_guard.py` mit Export (Status aus `/tmp/export.jsonl` ergänzt) TROCKEN «Zu ändern: 2 von 4», dann SCHARF:
+  beide «google-kanal-entfernt, tag:kopierschutz-umgehung, draft» (Ledger `dropship/_ueberwachung_waffen.txt`). Nicht gelöscht.
+- **Live zurückgelesen:** beide `status DRAFT`, Tag `kopierschutz-umgehung`, ohne `kat-usb-sticks`, keine Google-Publikation;
+  `collection(usb-sticks).products` = 41, alle ACTIVE, Host-Stick nicht drin (`productsCount` zeigt noch 42 — hinkt nach).
+  WebFetch /collections/usb-sticks: «41 Artikel», kein Host-/Switch-Titel; /products/usb-stick-fur-host-systeme-618300 → 404.
+- **Lehre:** Eine Kategorie-Regel über den TITEL hält nur, was der Titel sagt. Bei Elektronik-Kollektionen gehört eine Volltext-
+  Stichprobe über die Beschreibung (Funktionswörter) dazu, nicht nur der Kontaktbogen der ersten 24.
+
