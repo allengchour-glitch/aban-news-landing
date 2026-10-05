@@ -3983,3 +3983,7 @@ layering-halsketten-set-gold-silber	2606120851381638800	16	4.75	ok	landeseite
 kreuz-halskette-gold-edelstahl	2606120736221609600	16	4.60	ok	landeseite
 armband-just-breathe-edelstahl	2606120723031615400	16	4.92	ok	landeseite
 tennis-armband-bunt-zirkonia	2606120755051602100	16	4.44	ok	landeseite
+stern-ohrringe-gold-4zack	2065322741278482434	16	4.47	ok	landeseite
+tropfen-ohrringe-emaille-retro	2065323731741990913	16	4.60	ok	landeseite
+statement-ring-zirkonia-kristall	2606120803251601900	16	4.40	ok	landeseite
+ring-you-light-up-my-life-leuchtstein	2606120251271634200	16	4.50	ok	landeseite
