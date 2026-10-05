@@ -3619,3 +3619,10 @@ damenuhr-aus-wolframstahl-2fbd42	-	-	-	unklar keine CJ-SKU	landeseite
 multifunktionale-wiederaufladbare-notleuchte-609000	2507020526261609400	7	5.89	ok	landeseite
 doppel-kissenbezug-aus-baumwolle-mit-cartoon-p-632700	2512181010461632900	16	8.79	ok	landeseite
 hunde-outdoor-weste-mit-zubehor-806336	1607913324241498112	16	14.60	ok	landeseite
+kinder-smartwatch-mit-gps-ortung-085376	1670303063451639808	7	6.66	ok	landeseite
+zwei-wege-ortungsgerat-fur-kinder-279872	1665973919964209152	7	5.67	ok	landeseite
+yg310-mini-beamer-heimkino-led-758528	1439461538720256000	16	17.28	ok	landeseite
+kabellose-stereo-kopfhorer-mit-touch-steuerung-7176fb	-	-	-	unklar keine CJ-SKU	landeseite
+herren-slipper-zum-reinschlupfen-610200	2410030905291610400	16	13.04	ok	landeseite
+ems-ultraschall-beauty-gerat-620200	2603220725001620600	7	10.50	ok	landeseite
+feizhi-kinder-laufschuh-246080	1369216437809451008	16	9.20	ok	landeseite
