@@ -4485,3 +4485,7 @@ rocker-iron-head-fur-gamecontroller-602800	2510240703081603000	16	5.02	ok	landes
 wireless-controller-ladestation-mit-led-anzeig-602700	2510240633181602900	7	10.65	ok	landeseite
 x3-game-controller-mit-kuhlfunktion-625000	2507140205511625200	7	9.69	ok	landeseite
 kabelloser-elite-gaming-controller-619800	2507090732091610600	7	13.48	ok	landeseite
+kabellose-gamecontroller-ladestation-600000	2506220642311600200	7	12.57	ok	landeseite
+dual-mode-gaming-controller-fur-mobil-pc-607600	2505270943401607900	7	9.69	ok	landeseite
+date-night-drinking-creative-brettspiel-602600	2505270905361602800	16	5.41	ok	landeseite
+wiederaufladbares-retro-game-set-mit-2-control-625500	2505080526451625700	7	11.21	ok	landeseite
