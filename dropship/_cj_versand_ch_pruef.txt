@@ -4025,3 +4025,4 @@ herren-trainingsschuhe-forza-gym-weightlifting	2606100712381625000	16	16.16	ok	l
 925-silber-ring-fleur-filigrane-blute	2065711624957476865	16	7.17	ok	landeseite
 susswasserperlen-ohrringe-perla-925-silber	2065662885040201730	16	7.17	ok	landeseite
 925-silber-fusskettchen-riva-emaille-perlen	2065714732781686786	16	4.50	ok	landeseite
+susswasserperlen-kette-perla-925-silber-bar-design	2065650672965808129	16	7.17	ok	landeseite
