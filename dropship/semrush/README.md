@@ -162,6 +162,17 @@ Vergleich: `python3 automation/suchvolumen.py` + CSV-Diff gegen die 02.10.-Datei
   vorsortierten Long-Tail-Begriffe, die bei neuem Guthaben ZUERST gemessen werden (je Seed ≤ 3, Produkt-Modifikator vor «kaufen»),
   `suggest` 6'457 ohne Volumen. Nicht committet (Workflow-Vorgabe).
 
+### Produkt-Keywords (60 Produkt-SEO, 09:31) + Nachbesserung 10:17 UTC — Zielseiten-Abstimmung
+60 Produkte bekamen Begriff vorne im SEO-Titel (`_keyword_produkte_2026-10-05.tsv`, `KEYWORD-PRODUKTE-2026-10-05.md`). Prüfer fand
+Fremdmarke im Bild und falsche Begriffe → **3 DRAFT + Tag `fremdmarke-bild` + Google weg** (Real-Techniques-Pinsel a689b0, Red-Bull/
+Marlboro-Sweatshirt 636600, Hourglass-Pinsel 001152), «foundation pinsel» → 634600, Bootcut/Sandalen/Wäschekorb zurückgenommen.
+**Regel eine Zielseite je Begriff:** Kollektions-SEO nennt Hauptwort + Modifikator ODER Kopfbegriff ≥ 1'000/Mt → Kollektion ist Ziel,
+Produkt-SEO beginnt mit unterscheidendem Merkmal (bikini set damen → sub-bademode, abendkleid lang → abendkleider, wecker digital → wecker,
+wäschekorb mit deckel → waeschekoerbe, diamond painting zubehör → diamond-painting, hausschuhe herren → sub-hausschuhe, thermosflasche
+edelstahl → sub-trinkflaschen, jeans damen bootcut → jeans-denim). Modifikator fehlt in der Kollektion → Produkt ist Ziel; in
+`position_tracking_ziele.tsv` umgestellt: blusenkleid damen 620500, jeanskleid damen 617700, elektrische zahnbürste kinder 844481,
+handstaubsauger auto 3da44c, ferngesteuertes auto kinder a4852a. «slingback pumps» bleibt bei `slingback-pumps-damen-…-2026`.
+
 ## 05.10.2026 ~09:30 UTC · ⚠️ Semrush-Konto LEER
 GEMESSEN: `api_units` fiel in Runde 3 über 6 Aufrufe 700 → 400 (= Kontostand), danach meldete `phrase_these` «ERROR 132 API UNITS
 BALANCE IS ZERO». **Die Nachmessung am 08.10. (resource_organic ~4'400) ist ohne Nachkauf nicht möglich.** Ersatz: eigener Tracker

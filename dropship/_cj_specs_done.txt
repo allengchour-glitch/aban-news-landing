@@ -3459,3 +3459,8 @@ herrenschuhe-aus-weichem-leder-mit-glanz-finis-615600	gesetzt-3
 business-lederschuhe-im-drachenschuppen-muster-618800	gesetzt-2
 business-freizeitschuh-im-korean-style-620700	gesetzt-4
 herren-lederschuhe-im-britischen-stil-631700	gesetzt-6
+business-lederschuhe-mit-spitzer-zehe-619500	gesetzt-3
+herren-high-top-lederstiefel-mit-spitzer-kappe-612500	hat-liste
+elegante-slip-on-lederschuhe-fur-herren-625400	gesetzt-4
+herren-loafer-aus-weichem-leder-606500	hat-liste
+herren-casual-lederschuhe-mit-metallschnallen-605800	gesetzt-2
