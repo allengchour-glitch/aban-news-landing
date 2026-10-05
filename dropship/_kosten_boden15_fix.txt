@@ -15555,3 +15555,15 @@ gid://shopify/Product/15465843294593	17.66->13.32
 gid://shopify/Product/15455640813953	19.16->14.81
 gid://shopify/Product/15460701634945	18.41->14.06
 gid://shopify/Product/15465842213249	16.66->12.31
+gid://shopify/Product/15468631753089	19.57->15.22
+gid://shopify/Product/15472062693761	20.65->16.30
+gid://shopify/Product/15448114561409	17.07->12.72
+gid://shopify/Product/15484595175809	44.72->40.37
+gid://shopify/Product/15454415421825	17.52->13.18
+gid://shopify/Product/15455322702209	18.86->14.52
+gid://shopify/Product/15471270199681	18.04->13.70
+gid://shopify/Product/15473085284737	17.79->13.45
+gid://shopify/Product/15476126843265	22.95->18.61
+gid://shopify/Product/15478587097473	18.72->14.38
+gid://shopify/Product/15493795479937	15.56->11.21
+gid://shopify/Product/15485500096897	18.17->13.84
