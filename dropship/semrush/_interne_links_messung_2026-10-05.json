@@ -12,10 +12,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -31,10 +31,10 @@
 "menue": 1,
 "footer": 0,
 "start": 1,
-"koll": 0,
+"koll": 13,
 "blog": 11,
 "seiten": 2,
-"total": 15
+"total": 28
 }
 },
 {
@@ -69,10 +69,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 9,
 "blog": 0,
 "seiten": 1,
-"total": 2
+"total": 11
 }
 },
 {
@@ -88,10 +88,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 1,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 2
+"total": 3
 }
 },
 {
@@ -164,10 +164,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -183,10 +183,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 9,
 "blog": 5,
 "seiten": 3,
-"total": 9
+"total": 18
 }
 },
 {
@@ -259,10 +259,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -316,10 +316,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -354,10 +354,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 1,
-"total": 2
+"total": 3
 }
 },
 {
@@ -392,10 +392,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 1
+"total": 3
 }
 },
 {
@@ -430,10 +430,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 2,
-"total": 2
+"total": 3
 }
 },
 {
@@ -487,10 +487,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -544,10 +544,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -563,10 +563,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 2,
-"total": 2
+"total": 3
 }
 },
 {
@@ -582,10 +582,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 1,
-"total": 2
+"total": 3
 }
 },
 {
@@ -601,10 +601,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 2,
-"total": 2
+"total": 3
 }
 },
 {
@@ -658,10 +658,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 1,
-"total": 2
+"total": 3
 }
 },
 {
@@ -677,10 +677,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 1,
 "seiten": 0,
-"total": 2
+"total": 3
 }
 },
 {
@@ -696,10 +696,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -715,10 +715,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 1
+"total": 3
 }
 },
 {
@@ -734,10 +734,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 1,
-"total": 1
+"total": 3
 }
 },
 {
@@ -753,10 +753,10 @@
 "menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 1,
-"total": 2
+"total": 3
 }
 },
 {
@@ -782,10 +782,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 2
 }
 },
 {
@@ -896,10 +896,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 2
 }
 },
 {
@@ -1040,10 +1040,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 3
 }
 },
 {
@@ -1068,10 +1068,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 2
 }
 },
 {
@@ -1128,10 +1128,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {
@@ -1154,10 +1154,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {
@@ -1185,10 +1185,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {
@@ -1241,10 +1241,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {
@@ -1270,10 +1270,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 3
 }
 },
 {
@@ -1298,10 +1298,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {
@@ -1423,22 +1423,22 @@
 },
 {
 "art": "collections",
-"handle": "beleuchtung-lampen",
-"titel": "Beleuchtung & Lampen",
-"begriff": "stimmungslicht",
+"handle": "sub-beleuchtung",
+"titel": "Beleuchtung",
+"begriff": "stimmungslicht (301)",
 "vol": 90,
 "pos": 20,
-"ok": false,
-"grund": "nicht kaufbar/online",
+"ok": true,
+"grund": "",
 "kolls": [],
 "links": {
-"menue": 0,
+"menue": 1,
 "footer": 0,
 "start": 0,
-"koll": 0,
-"blog": 4,
-"seiten": 2,
-"total": 6
+"koll": 1,
+"blog": 0,
+"seiten": 1,
+"total": 3
 }
 },
 {
@@ -1521,10 +1521,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 3
 }
 },
 {
@@ -1611,10 +1611,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {
@@ -1635,10 +1635,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 2
 }
 },
 {
@@ -1665,10 +1665,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 2,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 2
 }
 },
 {
@@ -1697,10 +1697,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 3
 }
 },
 {
@@ -1710,8 +1710,8 @@
 "begriff": "glitzerrock",
 "vol": 70,
 "pos": 30,
-"ok": true,
-"grund": "",
+"ok": false,
+"grund": "Hausregel-Klasse",
 "kolls": [
 "bestseller-unter-50",
 "neu",
@@ -1755,10 +1755,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 3,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 3
 }
 },
 {
@@ -1784,10 +1784,10 @@
 "menue": 0,
 "footer": 0,
 "start": 0,
-"koll": 0,
+"koll": 1,
 "blog": 0,
 "seiten": 0,
-"total": 0
+"total": 1
 }
 },
 {

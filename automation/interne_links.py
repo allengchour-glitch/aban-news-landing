@@ -58,9 +58,11 @@ LINK_RE = re.compile(r"/(collections|products)/([^\s\"'?#<>)]+)")
 
 # Hausregel-Klassen: nie Quelle, nie Ziel (Handle + Titel, normalisiert)
 HAUSREGEL_RE = re.compile(r"kostuem|kostum|fasnacht|halloween|erotik|sexy|dessous|tabak|raucher|shisha|vape|e-zigarette|"
-                          r"messer|klinge|waffe|airsoft|softair")
+                          r"messer|klinge|waffe|airsoft|softair|smoke|kiffer|rauch|18\+")
 POD_RE = re.compile(r"selbst-gestalten|(^|-)pod(-|$)|printful|editor|personalisier")
 # nicht-thematische Sammel-Kollektionen: keine «Passend dazu»-Quelle
+KEINE_ELTERN = {"bestseller"}                       # «Highlights» ist keine Oberkategorie
+SAMMEL_RE = re.compile(r"geschenk|unter-chf|franken|mitbringsel|(^|-)neu(-|$)|neuheit|viral|trend|premium|bestseller|blitz|lager|sale|sets-bundles|sommer-2026|herbst-favoriten")
 KEINE_QUELLE = {"all", "frontpage", "neu", "neu-eingetroffen", "hype-jetzt", "bestseller", "blitzversand-schweiz",
                 "eu-lager-schnell", "unter-chf-25", "viral-hits", "luxestyle-premium", "sale", "premium-geschenke"}
 
@@ -69,12 +71,13 @@ WELTEN = {
     "damen": r"damen|frauen|bluse|kleid|rock|roecke|tunika|leggings|shapewear|bikini|bademode|bh",
     "herren": r"herren|maenner|fur-ihn|fuer-ihn|hemd|polo|krawatte",
     "schuhe": r"schuh|sneaker|boots|stiefel|ballerina|pumps|heels|sandale|slipper|pantoffel|loafer",
-    "schmuck": r"schmuck|ring|kette|armband|ohrring|anhaenger|perlen|uhr",
+    "schmuck": r"schmuck|ring|(?<!lichter)kette|armband|ohrring|anhaenger|perlen|uhr",                  # Lichterkette ≠ Kette
     "taschen": r"tasche|rucksack|portemonnaie|wallet|koffer|kleinleder",
     "accessoires": r"accessoire|muetze|schal|guertel|handschuh|sonnenbrille|hut|cap|socken",
     "wohnen": r"wohn|deko|kissen|decke|vorhang|teppich|bettwaesche|lampe|leucht|beleucht|kerze|spiegel|regal|moebel|tisch|"
-              r"stuhl|aufbewahr|organizer|ordnung|bad|dusch|waesche|wecker|vase|wand|textil",
-    "kueche": r"kuech|koch|back|kaffee|tee|flasche|geschirr|besteck|barware|trinken|grill",
+              r"stuhl|aufbewahr|organizer|ordnung|bad|dusch|waesche|wecker|vase|wand|textil|vorhaeng|haengematt|aroma|diffus|licht|"
+              r"heizdeck|kuschel",
+    "kueche": r"kuech|koch|back|kaffee|tee|flasche|(?<!hunde)geschirr(?!e)|besteck|barware|trinken|grill",   # Hundegeschirr ≠ Geschirr
     "garten": r"garten|outdoor|balkon|camping|grill|pflanz|pool",
     "elektronik": r"elektronik|technik|gadget|usb|ladege|kabel|kopfhoerer|lautsprecher|audio|beamer|heimkino|projektor|"
                   r"smart|kamera|foto|drohne|konsole|gaming|nintendo|pc-|tastatur|maus|taschenlampe|adapter|computer|"
@@ -88,6 +91,7 @@ WELTEN = {
     "saison": r"weihnacht|advent|herbst|winter|sommer|ostern|erste-august|jacke|mantel|maentel",
     "hobby": r"malen|diamond|basteln|handarbeit|strick|naeh|sticker|aufkleber",
     "gesundheit": r"gesund|orthop|stuetz|bandage|wellness|schlaf|luftbefeuchter",
+    "werkzeug": r"werkzeug|maschine|bohr|schraub|ersatzteil",
 }
 WELTEN_RE = {k: re.compile(v) for k, v in WELTEN.items()}
 KLEIN = {"und", "mit", "für", "fuer", "von", "im", "in", "der", "die", "das", "aus", "zu", "ab", "bis", "auf"}
@@ -102,15 +106,18 @@ def norm(s):
 
 def titel_rein(t):
     """Emoji/Symbole aus einem Kollektionstitel, für Ankertexte ohne Suchbegriff."""
-    t = re.sub(r"[^\w\s&:,.\-/()'’]+", " ", t or "", flags=re.U)
+    t = re.sub(r"[^\w\s&:,.\-/()'’]+", " ", (t or "").replace("ß", "ss"), flags=re.U)
     return re.sub(r"\s+", " ", t).strip(" :-·")
 
 
+KUERZEL = {"pc", "3d", "led", "usb", "tv", "rc", "vr", "ai", "ki", "bbq", "dvd", "hdmi"}
+
+
 def anker_aus_begriff(b):
-    """«pullover damen» → «Pullover Damen» (deutsche Substantive gross; Füllwörter klein)."""
+    """«pullover damen» → «Pullover Damen» (deutsche Substantive gross; Füllwörter klein; ß → ss; PC/LED gross)."""
     w = []
-    for i, x in enumerate(b.split()):
-        w.append(x if (x in KLEIN and i > 0) else (x[:1].upper() + x[1:]))
+    for i, x in enumerate(b.replace("ß", "ss").split()):
+        w.append(x.upper() if x in KUERZEL else x if (x in KLEIN and i > 0) else (x[:1].upper() + x[1:]))
     return " ".join(w)
 
 
@@ -122,8 +129,13 @@ def anker_tauglich(begriff, titel, handle, alle=True):
     woerter = [w for w in norm(begriff).split() if len(w) >= 3]
     if not woerter:
         return False
-    treffer = [re.sub(r"(en|er|es|e|n|s)$", "", w) in ziel for w in woerter]
-    return all(treffer) if alle else any(treffer)
+    st = [re.sub(r"(en|er|es|e|n|s)$", "", w) for w in woerter]
+    treffer = [x in ziel for x in st]
+    if not (all(treffer) if alle else any(treffer)):
+        return False
+    if alle and "&" in (titel or ""):                      # «Schmuck & Uhren»: «Uhren» allein wäre ein halber Anker
+        return all(any(x in norm(teil) for x in st) for teil in titel.split("&"))
+    return True
 
 
 def anker_fuer(begriff, titel, handle, produkt=False):
@@ -274,7 +286,7 @@ def produkte_lesen(handles):
     """Status, Onlineshop-URL, Titel und Kollektionen je Produkt-Handle (lebend)."""
     raus = {}
     for h in handles:
-        d = gql('query($h:String!){ productByHandle(handle:$h){ id title status onlineStoreUrl tags collections(first:30){ nodes{ handle } } } }', {"h": h})["productByHandle"]
+        d = gql('query($h:String!){ productByHandle(handle:$h){ id title status onlineStoreUrl tags productType collections(first:100){ nodes{ handle } } } }', {"h": h})["productByHandle"]
         raus[h] = d
     return raus
 
@@ -319,7 +331,8 @@ def ziele_sammeln(colls, arts, pages, je_menue, start):
                 ok, grund = False, "Produkt fehlt"
             elif p["status"] != "ACTIVE" or not p["onlineStoreUrl"]:
                 ok, grund = False, f"Produkt {p['status']} / nicht im Onlineshop"
-            elif hausregel(h, p["title"]) or pod(h, p["title"]) or any(t.lower() in ("pod", "printful", "selbst-gestalten") for t in p["tags"]):
+            elif hausregel(h, p["title"] + " " + (p.get("productType") or "") + " " + " ".join(p["tags"])) or pod(h, p["title"]) \
+                    or any(t.lower() in ("pod", "printful", "selbst-gestalten") for t in p["tags"]):
                 ok, grund = False, "Hausregel-Klasse"
             else:
                 ok, grund = True, ""
@@ -342,7 +355,13 @@ def tabelle(ziele):
 
 # ---------------------------------------------------------------- Planen
 def plan_bauen(ziele, colls, baum):
-    """→ {quell_handle: {'links': [(href, anker, ziel_key)], 'eltern': (href, anker)|None}}"""
+    """→ {quell_handle: {'links': [(href, anker, ziel_key)], 'eltern': (href, anker)|None}}, offen, eltern_fehlt
+
+    Quellen für eine ZIEL-Kollektion, in dieser Reihenfolge: Menü-Eltern, Menü-Geschwister, eigene Menü-Kinder,
+    Kollektionen mit gemeinsamem Wortstamm (Titel/Handle), dann Welt-Verwandte, deren Welten in den Welten des Ziels
+    liegen (Küchenhelfer {kueche, elektronik} ist KEINE Quelle für PC-Komponenten {elektronik} — gemessen 05.10.).
+    Quellen für ein ZIEL-Produkt: seine Kollektionen (ohne Sammel-/Preis-Kollektionen), nur wenn sie eine Welt mit dem
+    Produkttitel teilen (Fussgelenkstütze stand unter «Aufbewahrung» → keine Quelle, sondern Befund), kleinste zuerst."""
     by_handle = {c["handle"]: c for c in colls}
 
     def quelle_ok(h):
@@ -352,8 +371,11 @@ def plan_bauen(ziele, colls, baum):
     def kinder(eltern_key):
         return [k[1] for k, v in baum.items() if v["eltern"] == eltern_key and k[0] == "collections"]
 
-    plan = {}
-    last = {}
+    def staemme(c):
+        return {re.sub(r"(en|er|es|e|n|s)$", "", w) for w in norm(c["title"] + " " + c["handle"].replace("-", " ")).split()
+                if len(w) >= 5 and w not in ("alle", "sub", "damen", "herren", "kinder", "premium", "zubehoer", "accessoires")}
+
+    plan, offen = {}, []
 
     def gib(quelle, href, anker, key):
         q = plan.setdefault(quelle, {"links": [], "eltern": None})
@@ -362,10 +384,8 @@ def plan_bauen(ziele, colls, baum):
         if len(q["links"]) >= MAX_LINKS_JE_BLOCK:
             return False
         q["links"].append((href, anker, key))
-        last[quelle] = last.get(quelle, 0) + 1
         return True
 
-    offen = []
     for z in sorted([z for z in ziele if z["ok"] and z["links"]["total"] < ZIEL_LINKS], key=lambda z: -z["vol"]):
         key = (z["art"], z["handle"])
         schon = {c["handle"] for c in colls if c["online"] and c["handle"] != z["handle"] and key in links_in(c["descriptionHtml"])}
@@ -375,22 +395,35 @@ def plan_bauen(ziele, colls, baum):
         kand = []
         if z["art"] == "collections":
             el = (baum.get(key) or {}).get("eltern")
+            zc = by_handle[z["handle"]]
+            st, w = staemme(zc), welten(z["handle"], z["titel"])
+
+            def nah(h):          # Geschwister mit gemeinsamer Welt zuerst (Küche → Vorhänge war ein blosses Menü-Geschwister)
+                c = by_handle.get(h, {})
+                return (-len(w & welten(h, c.get("title", ""))), -c.get("n", 0))
             if el and el[0] == "collections":
                 kand.append(el[1])
-                kand += sorted(kinder(el), key=lambda h: -by_handle.get(h, {}).get("n", 0))
-            kand += sorted(kinder(key), key=lambda h: -by_handle.get(h, {}).get("n", 0))      # eigene Unterkollektionen
-            w = welten(z["handle"], z["titel"])
-            rest = [(len(w & welten(c["handle"], c["title"])), c["n"], c["handle"]) for c in colls
-                    if c["handle"] != z["handle"] and quelle_ok(c["handle"]) and (w & welten(c["handle"], c["title"]))]
-            kand += [h for _, _, h in sorted(rest, key=lambda r: (-r[0], -r[1]))]
+                kand += sorted(kinder(el), key=nah)
+            kand += sorted(kinder(key), key=nah)
+            # Wortstamm nur bei gemeinsamer Welt: «Geschirr» (Hunde) ≠ «Geschirr & Servieren» (Hausregel 16d, Komposita)
+            wort = [c for c in colls if c["handle"] != z["handle"] and quelle_ok(c["handle"]) and (st & staemme(c))
+                    and (w & welten(c["handle"], c["title"]))]
+            kand += [c["handle"] for c in sorted(wort, key=lambda c: -c["n"])]
+            welt = [c for c in colls if c["handle"] != z["handle"] and quelle_ok(c["handle"]) and w
+                    and welten(c["handle"], c["title"]) and welten(c["handle"], c["title"]) <= w]
+            kand += [c["handle"] for c in sorted(welt, key=lambda c: -c["n"])]
         else:
-            kand = sorted([h for h in z.get("kolls", []) if quelle_ok(h)], key=lambda h: by_handle.get(h, {}).get("n", 0))
-        gefunden = 0
-        gesehen = set()
+            wp = welten("", z["titel"])
+            kand = sorted([h for h in z.get("kolls", []) if quelle_ok(h) and not SAMMEL_RE.search(h)
+                           and (wp & welten(h, by_handle[h]["title"]))], key=lambda h: by_handle[h]["n"])
+            bedarf = min(bedarf, 3)
+        gefunden, gesehen = 0, set()
         for q in kand:
             if q in gesehen or q == z["handle"] or q in schon or not quelle_ok(q):
                 continue
             gesehen.add(q)
+            if (baum.get(("collections", q)) or {}).get("eltern") == key:
+                continue                                     # Kind → Eltern deckt der Übersicht-Link (Punkt 3)
             if gib(q, href, anker, key):
                 gefunden += 1
             if gefunden >= bedarf:
@@ -398,24 +431,22 @@ def plan_bauen(ziele, colls, baum):
         if gefunden < bedarf:
             offen.append((z["handle"], z["begriff"], bedarf - gefunden))
 
-    # (3) Breadcrumb: Unterkollektion → Oberkategorie
+    # (3) Breadcrumb: Unterkollektion → Oberkategorie (Ankertext = Menü-Titel der Oberkategorie)
     eltern_fehlt = []
     for key, v in baum.items():
         el = v["eltern"]
-        if key[0] != "collections" or not el or el[0] != "collections" or el[1] == key[1]:
+        if key[0] != "collections" or not el or el[0] != "collections" or el[1] == key[1] or el[1] in KEINE_ELTERN:
             continue
-        c = by_handle.get(key[1])
-        ec = by_handle.get(el[1])
+        c, ec = by_handle.get(key[1]), by_handle.get(el[1])
         if not (c and ec and quelle_ok(key[1]) and ec["online"] and ec["n"] > 0 and not hausregel(el[1], ec["title"])):
             continue
-        text_ohne = BLOCK_RE.sub("", c["descriptionHtml"] or "")
-        if el in links_in(text_ohne):
+        if el in links_in(BLOCK_RE.sub("", c["descriptionHtml"] or "")):
             continue
         eltern_fehlt.append((key[1], el[1]))
         q = plan.setdefault(key[1], {"links": [], "eltern": None})
-        ev, eb = suchbegriff_fuer(ec)
-        q["eltern"] = (f"/collections/{el[1]}", anker_fuer(eb if ev else "", ec["title"], el[1]))
+        q["eltern"] = (f"/collections/{el[1]}", titel_rein((baum.get(el) or {}).get("titel") or ec["title"]))
     return plan, offen, eltern_fehlt
+
 
 
 def block_html(eintrag):
