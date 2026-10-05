@@ -5993,3 +5993,6 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15449493537153	Diese Wanduhr ist ideal für Küche, Bad, Büro oder Wohnzimmer. Wasserdicht und spritzwassergeschützt.
 15449493569921	Diese U-förmige Duschstange ist teleskopierbar und eignet sich für die Installation in Duschen, Badezimmern oder auf Balkonen.
 15449493668225	Die Fitness-Matte ist speziell für Frauen entwickelt worden und bietet eine optimale Unterstützung für verschiedene Sportarten wie Fitness, Yoga, Tanz und …
+15449493700993	Diese Yoga-Matte ist ideal für Männer und Frauen, die nach einer rutschfesten Unterlage für ihre Sport-, Tanz- oder Fitnessübungen suchen.
+15449493733761	Das winddichte Feuerzeug ist ideal für den Einsatz im Freien, zum Beispiel beim Campen, für Kerzen, Grillpartys oder zum Anzünden von Herdplatten.
+15449493766529	Dieser portable Sonnenhut mit integriertem Kühlventilator ist ideal für Outdoor-Aktivitäten.
