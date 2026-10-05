@@ -3710,3 +3710,34 @@ wasserspender-fur-haustiere-45ff2e	-	-	-	unklar keine CJ-SKU	landeseite
 futterspender-mit-schussel-fur-haustiere-9d4c65	-	-	-	unklar keine CJ-SKU	landeseite
 anti-schlingnapf-fur-haustiere-c2cb1d	-	-	-	unklar keine CJ-SKU	landeseite
 tofu-katzenstreu-5b2cdc	-	-	-	unklar keine CJ-SKU	landeseite
+nischen-armband-im-gothic-stil-621500	2512200641291621700	16	5.69	ok	landeseite
+futterspielzeug-fur-hunde-cc0e70	-	-	-	unklar keine CJ-SKU	landeseite
+5-lagiges-handgewebtes-armband-601700	2512200305481601800	16	4.97	ok	landeseite
+hunde-snackspender-fur-training-01f951	-	-	-	unklar keine CJ-SKU	landeseite
+armband-mit-mobius-design-635400	2512191113081635600	16	6.33	ok	landeseite
+automatischer-futterspender-wlan-806a87	-	-	-	unklar keine CJ-SKU	landeseite
+silberarmband-mit-moissanit-besatz-613200	2512190509361613400	16	4.66	ok	landeseite
+anti-schlingnapf-fur-hunde-e2a976	-	-	-	unklar keine CJ-SKU	landeseite
+verstellbares-armband-mit-schmetterling-und-ke-603100	2512181030361603300	16	4.50	ok	landeseite
+automatischer-futterautomat-fur-haustiere-0bbe57	-	-	-	unklar keine CJ-SKU	landeseite
+personalisiertes-herz-armband-fur-damen-604000	2512180717041604200	16	4.50	ok	landeseite
+insektenschutz-turvorhang-aus-netzstoff-891456	1792078829171777536	7	9.21	ok	landeseite
+schwarze-steampunk-schadelkette-rucksack-025536	1448191495826968576	16	14.60	ok	landeseite
+marmor-nudelholz-fur-den-haushalt-118848	1791707852847976448	11	29.00	ok	landeseite
+oxford-bergsteigerrucksack-30l-658176	1447846967748202496	16	14.60	ok	landeseite
+mini-zerkleinerer-mit-usb-anschluss-342784	1791447751167840256	7	15.57	ok	landeseite
+herren-umhangetasche-mit-diebstahlschutz-902144	1447834731562536960	16	7.43	ok	landeseite
+keramik-gewurzglaser-set-mit-loffeln-899264	1791311335309979648	16	24.67	ok	landeseite
+trekking-rucksack-20-35l-aus-nylon-627776	1447740628346736640	16	18.13	ok	landeseite
+rucksack-mit-totenkopfmotiv-898944	1447615447284453376	16	22.15	ok	landeseite
+besteck-aufbewahrungsbox-mit-deckel-726848	1791074279195418624	16	11.49	ok	landeseite
+wasserdichter-rucksack-fur-business-und-sport-648832	1446741404545060864	16	20.23	ok	landeseite
+faltbare-waschmaschine-mit-schleuderfunktion-310080	1584726017883779072	7	33.53	ok	landeseite
+rucksack-mit-grosser-kapazitat-541312	1445680640572919808	16	15.44	ok	landeseite
+korallvlies-haarhandtuch-668928	1583664177061834752	16	7.43	ok	landeseite
+schubladen-organizer-fur-kuche-und-haushalt-262464	1583426409723342848	11	88.19	ok	landeseite
+fruchtschneider-mit-basis-540ad4	-	-	-	unklar keine CJ-SKU	landeseite
+mikrowellen-eierkocher-6b380a	-	-	-	unklar keine CJ-SKU	landeseite
+silikon-kochschaufel-mit-holzgriff-9e2ada	-	-	-	unklar keine CJ-SKU	landeseite
+elektrischer-warmwasserhahn-mit-sofortheizung-8f92cc	-	-	-	unklar keine CJ-SKU	landeseite
+futterautomat-fur-haustiere-71c2cf	-	-	-	unklar keine CJ-SKU	landeseite
