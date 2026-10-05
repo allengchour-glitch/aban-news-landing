@@ -161,3 +161,13 @@ Vergleich: `python3 automation/suchvolumen.py` + CSV-Diff gegen die 02.10.-Datei
   beamer leinwand 1'000, bikini set damen 1'000, bilderrahmen holz 720, bettwäsche beige 480 …), `suggest-kandidat` 221 = die
   vorsortierten Long-Tail-Begriffe, die bei neuem Guthaben ZUERST gemessen werden (je Seed ≤ 3, Produkt-Modifikator vor «kaufen»),
   `suggest` 6'457 ohne Volumen. Nicht committet (Workflow-Vorgabe).
+
+## 05.10.2026 ~09:30 UTC · ⚠️ Semrush-Konto LEER
+GEMESSEN: `api_units` fiel in Runde 3 über 6 Aufrufe 700 → 400 (= Kontostand), danach meldete `phrase_these` «ERROR 132 API UNITS
+BALANCE IS ZERO». **Die Nachmessung am 08.10. (resource_organic ~4'400) ist ohne Nachkauf nicht möglich.** Ersatz: eigener Tracker
+`automation/semrush_positionen.py` über gespeicherte CSVs + Positions-Kampagne (Projekt-Limit, falls der Betreiber sie für die Schweiz
+neu anlegt). Gratis-Keyword-Quelle: Google-CH-Vorschläge (`automation/google_suggest/`, 6'351 neue Begriffe in
+`keywords_erweiterung_ch_2026-10-05.csv`, 221 vorsortierte Kandidaten zuerst messen, falls wieder Guthaben da ist).
+Runde 3 bis hier: 8 neue Kollektionen (Etageren 14, USB-Sticks 42, Wanduhren 21, Woks 14, Abendkleider 104, Lunchboxen 33,
+Winterschuhe 64, Bauchtaschen 77) + 4 bestehende Seiten auf Stiefeletten/Nachttischlampe/Haarglätter/VR-Brille; Teppiche ohne
+Fussmatten/Holz (35), interne Links mit Wortgrenzen. Fable-Limit erreicht → Rest läuft ohne Fable weiter.

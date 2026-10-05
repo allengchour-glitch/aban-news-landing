@@ -16880,3 +16880,5 @@ gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 
 gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
 gid://shopify/Product/15430408438145	17->1	Herren Sling-Tasche «Ranger» · Crazy-Horse-Echtleder
 gid://shopify/Product/15453530456449	8->0	Haarspange Muschel mit Perle und Seestern, goldfarben
+gid://shopify/Product/16607377883527	49->0	Elektrische Kochmaschine für Steak, Sandwich, Waffeln
+gid://shopify/Product/16607377949063	11->3	Handgefertigter Eisenkessel – 24 cm, 26 cm, 28 cm
