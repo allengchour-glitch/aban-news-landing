@@ -5898,3 +5898,29 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15449485672833	Diese PTZ-Kamera bietet eine intelligente, vollautomatische Lösung für mobile Geräte. Abmessungen: 109mm x 104mm.
 15449485771137	Diese Überwachungskamera bietet eine zuverlässige Überwachung bei Tag und Nacht. Sprachinterkom für eine einfache Kommunikation.
 15449485869441	Das astronomische Teleskop ist ein monokulares Teleskop aus Metall und Kunststoff. Abmessungen: 59x22x13cm.
+15449485934977	Diese Action-Kamera ist ideal für den Einsatz unter Wasser oder bei rauen Bedingungen. 4K-Auflösung bei 60 Bildern pro Sekunde.
+15449485967745	Diese kompakte Kamera ist ideal für Outdoor-Sport und Konferenzen. 180-Grad-Drehscharnier.
+15449486000513	Dieses elektronische Okular ermöglicht eine einfache und komfortable Beobachtung von Himmelskörpern und terrestrischen Zielen durch ein Teleskop.
+15449486131585	Diese kompakte Kamera ist ideal für unterwegs und bietet eine Vielzahl von Funktionen.
+15449486229889	Diese kompakte Kamera ist ideal für sportliche Aktivitäten und bietet eine hohe Bildqualität. Kompakte Grösse: 30 x 23mm.
+15449486262657	Die 4K Sportkamera ist ein kompaktes und vielseitiges Gerät, das für den Einsatz im Sport und in der Freizeit konzipiert wurde.
+15449486295425	Diese WLAN-Überwachungskamera ermöglicht eine bequeme Überwachung deines Zuhauses. Nachtsicht mit Infrarot-Beleuchtung bis zu 7 Metern.
+15449486328193	Das HD-Infrarot-Nachtsichtgerät ermöglicht eine klare Sicht auch in völliger Dunkelheit. Beobachtungsdistanz bei völliger Dunkelheit: 200-300 m.
+15449486360961	Ein kompaktes, handliches Monokular für unterwegs. 8-fache Vergrösserung.
+15449486950785	Erlebe klare, scharfe und natürliche Klangwiedergabe mit diesem professionellen Lavalier-Mikrofon. Hohe Empfindlichkeit von 3,5 mV/pa.
+15449487114625	Dieser universelle Stromadapter bietet eine zuverlässige Verbindung für deine Geräte.
+15449487311233	Dieser Haarschneider ist ideal für den Hausgebrauch und bietet eine zuverlässige Leistung. Leise: 46–70 dB.
+15449487409537	Diese Heiztasse mit Digitaldisplay eignet sich ideal für 1-2 Personen und bietet eine einfache Bedienung via Touch-Control.
+15449487442305	Das portable Bügeleisen ist ideal für unterwegs oder für den Einsatz zu Hause. Kompakte Abmessungen: 280 x 130 x 100 mm.
+15449487606145	Diese kabellose Baby-Uberwachungskamera bietet eine hohe Auflösung von 1280x720 und ist mit Wireless CarPlay kompatibel.
+15449487638913	Diese kabellose, multifunktionale elektrische Reinigungsbürste ist ein vielseitiges Werkzeug für müheloses Reinigen in Küche, Bad und darüber hinaus.
+15449487671681	Diese Drohne ist ideal für Erwachsene und Anfänger. 6K HD Dual-Kamera für scharfe Bilder.
+15449487802753	Diese externe Festplattenbox ist ideal für die Erweiterung des Speichers von Notebooks und Computern.
+15449487868289	Dieser Adapter bietet eine schnelle Ladeleistung von bis zu 100W und 5A, kompatibel mit verschiedenen Schnelllade-Standards wie QC4.0, QC3.0, QC2.0, SCP …
+15449487933825	Ein vielseitiges Festplatten-Gehäuse für den Einbau von 3,5-Zoll-Festplatten.
+15449487966593	Diese U-Disk bietet eine sichere Möglichkeit, Daten zu speichern und zu transportieren. Duale Schnittstelle: Android Type C + USB 3.0.
+15449487999361	Diese kabellose Bluetooth-Tastatur bietet eine einfache Verbindung zu Desktop-Computern, Notebooks und Tablets.
+15449488621953	Verleiht deinen Wimpern eine natürliche, volle Länge. Inhalt: 5 ml.
+15449488654721	Dieses grosse Wimpern-Set enthält 640 Stücke und ist für die allgemeine Öffentlichkeit geeignet.
+15449489047937	Entdecke die einfache Schönheit mit magnetischen Wimpern!
+15449489113473	Das ICONSIGN Keratin-Lift-Kit erzeugt langanhaltend gewölbte Wimpern. Grösse: 16.2*12*2.2 cm.
