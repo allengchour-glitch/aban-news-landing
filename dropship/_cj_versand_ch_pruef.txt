@@ -3893,3 +3893,5 @@ mondstein-blutenring-fleur-zarter-statement-ring	2605300702501634900	16	4.36	ok	
 kirschbluten-halskette-sakura-zarte-klavikula-kette	2605290725111607100	16	4.34	ok	landeseite
 herren-sommerhemd-monsieur-french-court-style-kurzarm	2605300628401609400	16	8.25	ok	landeseite
 off-shoulder-kleid-brise-locker-armellos	2605300723091637800	16	10.83	ok	landeseite
+herrenuhr-executive-business-quarz	2605290544211625600	7	6.49	ok	landeseite
+herrenuhr-carre-minimalist-square	2605290753021619700	7	5.34	ok	landeseite
