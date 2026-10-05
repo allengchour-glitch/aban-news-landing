@@ -3663,3 +3663,11 @@ smartwatch-herzfrequenz-schrittzahler-532096	1685910492595892224	7	5.49	ok	lande
 verstellbares-brustgeschirr-fur-katzen-und-kan-769344	1614625097313169408	16	5.81	ok	landeseite
 bluetooth-sportuhr-mit-runddisplay-193216	1683411166028107776	6	6.90	ok	landeseite
 quarzuhr-fur-damen-mit-farbverlauf-a9cdbd	-	-	-	unklar keine CJ-SKU	landeseite
+saugfuss-seilzug-zum-trainieren-704960	1380136378490294272	16	20.69	ok	landeseite
+armbanduhr-mit-herzfrequenz-und-blutsauerstoff-d2da5c	-	-	-	unklar keine CJ-SKU	landeseite
+sichtbarer-ohrenreiniger-mit-wlan-392640	1380125388600119296	7	6.49	ok	landeseite
+springseil-mit-zahler-und-kalorienanzeige-126848	1380100103154569216	7	9.69	ok	landeseite
+yogamatte-10-mm-071936	1380061818378129408	16	15.81	ok	landeseite
+gleitpads-fur-core-training-286656	1379714865106653184	16	5.12	ok	landeseite
+verstellbares-hantel-set-fur-das-heimtraining-094976	1379714827550855168	4	123.41	ok	landeseite
+waschbares-nackenkissen-fur-zu-hause-632800	2512310333151633000	16	14.96	ok	landeseite
