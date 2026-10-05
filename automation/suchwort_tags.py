@@ -69,7 +69,12 @@ GRUNDWOERTER = {
     "spiegel":     ["rueck"],                       # Rückspiegel ist Autoteil
     "kissen":      [],
     "decke":       ["zimmer", "raum"],              # Zimmerdecke
-    "teppich":     [],
+    # ⚠️ 05.10.2026 (Suche-Messung «teppich», 14'800 Suchen/Mt): 43 der 67 «teppich»-Tags saßen auf
+    # WANDteppichen (Tapisserien) — wer einen Teppich sucht, will Boden, nicht Wand. Dazu Schnüffel-
+    # teppiche (Hundespielzeug), ein Shirt «mit Webteppich» und ein Knüpfteppich-Bastelset.
+    # Die Ausnahme wird im ganzen Titel-Anfang gesucht — «web» allein hätte «Gewebter Wollteppich»
+    # abgewiesen (Kanarienvogel). Darum stets die ganze Zusammensetzung nennen.
+    "teppich":     ["wandteppich", "schnüffelteppich", "schnueffelteppich", "webteppich", "knüpfteppich", "knuepfteppich"],
     "vorhang":     [],
     "pfanne":      [],
     "topf":        ["blumen"],
@@ -109,7 +114,7 @@ GRUNDWOERTER = {
     "drohne":      [],
     "ventilator":  [],
     "heizung":     [],
-    "staubsauger": [],
+    "staubsauger": ["nagelstaubsauger"],            # Nagelstaubsauger = Nagelstudio-Gerät, kein Haushaltsgerät (05.10.)
     "waage":       [],
     "koffergriff": [],
     "schluesselanhaenger": [],
