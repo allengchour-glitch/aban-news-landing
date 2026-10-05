@@ -36,6 +36,7 @@ ein CBD-Pflegeset, ein Umstandskissen und eine Yoga-Shorts selbstverständlich v
 werden — sie dürfen nur nicht über Google beworben werden. Nichts hier draften oder löschen.
 """
 import os
+import sys
 import re
 
 GOOGLE_PUB_ID = "302872297857"
@@ -43,7 +44,19 @@ GOOGLE_PUB = "gid://shopify/Publication/" + GOOGLE_PUB_ID
 TAG_PRAEFIX = "google-gesperrt"
 
 _HIER = os.path.dirname(os.path.abspath(__file__))
-LEDGER = os.path.join(os.path.dirname(_HIER), "dropship", "_merchant_issue_done.txt")
+
+
+def _repo():
+    """⚠️ 05.10.2026: gfeed_restore und google_sperrtags_durchsetzen laufen als /tmp-Spiegelkopie (Aufseher) und importieren
+    /tmp/google_sperrliste.py — dirname(_HIER) war dann «/», das Ledger «/dropship/…» fehlte, gesperrte_ids() gab still
+    0 statt 17. Kandidaten: $REPO, Lage der Datei, Arbeitsverzeichnis, fester Pfad; gültig nur mit dropship/ UND automation/."""
+    for k in (os.environ.get("REPO"), os.path.dirname(_HIER), os.getcwd(), "/home/user/aban-news-landing"):
+        if k and os.path.isdir(os.path.join(k, "dropship")) and os.path.isdir(os.path.join(k, "automation")):
+            return k
+    return os.path.dirname(_HIER)
+
+
+LEDGER = os.path.join(_repo(), "dropship", "_merchant_issue_done.txt")
 
 
 # ─────────────────────────────────────────────────────────────────────────────────────
@@ -123,6 +136,8 @@ def gesperrte_ids(pfad=None):
     pfad = pfad or LEDGER
     ids = set()
     if not os.path.exists(pfad):
+        # 05.10.2026: still leer war die Lücke (siehe _repo) — jetzt wenigstens laut auf stderr.
+        print(f"⚠️ google_sperrliste: Merchant-Ledger fehlt → 0 gesperrte IDs: {pfad}", file=sys.stderr, flush=True)
         return ids
     for zeile in open(pfad, encoding="utf-8"):
         z = zeile.strip()

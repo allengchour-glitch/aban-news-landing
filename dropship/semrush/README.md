@@ -88,3 +88,9 @@ Restguthaben unbekannt (kein Saldo-Bericht im MCP) — geschätzt 10'000–19'00
 - `domain_rank` ch: 560 Begriffe Top 100 (02.10.: 556), Platz 11–20: 5, 21–30: 35, Verkehr 0.
 - Daten: «adventskalender» 27'100/Mt (KD 20), frauen 8'100, für den mann 5'400, kinder 4'400 — **keine Kollektion
   vorhanden** (gemessen), 11 aktive Kalender, meist leer/Puzzle. → Workflow «semrush-push-advent».
+
+## 05.10.2026 ~07:00 UTC · Messung vor Umsetzung 2 (Betreiber «das geht mehr verbesserung mit semrush»)
+- `domain_rank` ch: **559 Begriffe Top 100, Verkehr 0** (10 Einheiten) — es fehlt nicht an Daten, sondern an Positionen.
+- `campaigns` Projekt 31464185: **keine Positions-Tracking-Kampagne** angelegt (100 Einheiten) — per MCP nicht anlegbar.
+- `domain_organic_organic` ch (30 Zeilen, **1'200 Einheiten = 40/Zeile**): jede «Konkurrenz» teilt genau 1 Begriff → wertlos, nicht wiederholen.
+- Danach Workflow «semrush-umsetzung-2» (wf_e3919dbd-03e): Seite-2/3-Seiten anheben, neue Kollektionen für Begriffe mit Volumen, interne Links.

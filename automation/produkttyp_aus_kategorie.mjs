@@ -93,18 +93,50 @@ const VORRANG = [
   [/für (deinen |deine |den |die )?(hunde?|katzen?|haustiere?|welpen?)\b|\bhunde-?(leine|geschirr|halsband|bett|napf|mantel|pullover|schuhe|jacke|kostüm|spielzeug|bürste|outdoorschuhe)|\bkatzen-?(bett|klo|streu|kratz|spielzeug|halsband|tunnel|haus)|kratzbaum|futternapf/i, 'Haustierbedarf'],
 ];
 
+// 05.10.2026 (Prüfer, Nachbesserung): ZWEITE QUELLE, wenn die Google-Kategorie NICHTS liefert. Im Importer-Pfad gibt
+// googleKategorie(titel, tags, 'Trend-Produkt') für beide Adventskalender null (Sammelkorb-Typ, keine NACH_TAG-Treffer)
+// → der Fallback «Trend-Produkt» blieb genau für die dokumentierte Auslöser-Klasse. Die Titelwörter spiegeln die
+// Titelregeln aus kategorie_wache.TITELREGELN (Saisondeko, Kissen, Lampe, Tasche …) auf den deutschen Typ aus
+// produkttyp_vereinheitlichen.TAX. Reihenfolge = Vorrang; Wortfallen deutsch gedacht (Lehre 9b): «Kleiderbügel» ist keine
+// Kleidung (hier gar nicht in der Liste), «Weihnachtskleid» bleibt Kleid (Kleidung steht VOR Saisondeko), «Hunderte» ≠ Hund.
+const TITELWORT = [
+  [/\b(kleid|shirt|t-shirt|hose|pullover|hoodie|jacke|bluse|rock|bikini|badeanzug|socken|leggings|jumpsuit|strickjacke|mantel|weste|pyjama)\b|(?<!winter)(?<!sommer)(?<!arbeits)(?<!schutz)kleid\b|\bhemd\b|\w*shirt\b|sweatshirt/i, kleid],
+  [/(?<!hand)(?<!schnür)(schuhe?|sandalen?|stiefel|sneaker|slipper|pantoffeln?)\b/i, schuh],
+  [/adventskalender|advent-?kalender|weihnachts\w*|christbaum|tannenbaum|nikolaus|rentier|schneemann/i, 'Wohnen & Deko'],
+  [/halloween|kürbis(?!kern)|totenkopf|skelett|fledermaus|spinnennetz|\bgeist(er)?\b|grusel|\bhexen?\b|vampir|zombie/i, 'Partydeko & Ballone'],
+  [/kostüm|verkleidung|cosplay|perücke/i, 'Kostüme & Verkleidung'],
+  [/halskette|ohrring|ohrstecker|(?<!uhr)armband(?!uhr)|\bring\b|schmuck|anhänger\b|brosche/i, 'Schmuck'],
+  [/(?<![a-zäöü])(?:armband|damen|herren|quarz|taschen|kinder)?uhr\b|armbanduhr/i, 'Uhren'],
+  [/rucksack|(hand|umhänge|reise|sport|kosmetik|kultur|gürtel|bauch|kamera|münz)tasche|geldbörse|portemonnaie/i, 'Taschen'],
+  [/\bkissen\b|kopfkissen|kissenbezug|bettwäsche|bettdecke|tagesdecke|vorhang|teppich|handtuch|badetuch|wandteppich/i, 'Heimtextilien'],
+  [/lampe|leuchte|nachtlicht|lichterkette|led-licht|\bled\b/i, 'Beleuchtung'],
+  [/wasserkocher|pfanne|kochtopf|\btopf\b|messbecher|schneidebrett|küchen\w*|kuchenform|backform|besteck/i, 'Küche & Bar'],
+  [/\b(usb|akku|bluetooth|kopfhörer|lautsprecher|powerbank|ladegerät|ladekabel|kabel|kamera|projektor|beamer|mikrofon|adapter)\b/i, 'Elektronik'],
+  [/\b(bohr|schraub|zangen|sägen?|werkzeug|schleif|fräs|blechschneider)\w*|\bschrauben\b|dübel|bits?\b/i, 'Werkzeug & Heimwerken'],
+  [/yoga|fitness|hantel|widerstandsband|springseil|trainingsgerät|gymnastik|fahrrad|camping|wander/i, 'Sport & Outdoor'],
+  [/lippenstift|lidschatten|mascara|make-?up|puder|eyeliner|nagellack|nagelsticker|wimpern/i, 'Make-up'],
+  [/aufbewahrung|organizer|\bboxen?\b|kästchen|\bkorb\b|körbe|schublade|behälter|kiste|beutel|pouf|hocker|regal|vase\b/i, 'Haushalt & Wohnen'],
+  [/plüsch|kuscheltier|stofftier|puzzle|baustein|spielzeug|brettspiel|kartenspiel/i, 'Spielzeug & Spiele'],
+];
+
+export function typAusTitel(titel) {
+  const t = titel || '';
+  for (const [rx, z] of TITELWORT) if (rx.test(t)) return typeof z === 'function' ? z(t) : z;
+  return null;
+}
+
 export function typAusKategorie(gkat, titel) {
   const t = titel || '';
   for (const [rx, z] of VORRANG) if (rx.search ? rx.search(t) : rx.test(t)) return z;
   const p = gkat || '';
-  if (!p) return null;
+  if (!p) return typAusTitel(t);          // keine Kategorie → Titelwort (zweite Quelle), sonst null
   for (const pre of PFADE) {
     if (p === pre || p.startsWith(pre + ' > ')) {
       const z = PFAD[pre];
       return typeof z === 'function' ? z(t) : z;
     }
   }
-  return null;
+  return typAusTitel(t);
 }
 
 if (process.argv.includes('--test')) {
@@ -121,12 +153,35 @@ if (process.argv.includes('--test')) {
     ['Health & Beauty > Health Care', 'Atemschutzmaske', null],
     ['', 'Irgendwas ohne Kategorie', null],
     ['Hardware > Tools', 'Kurbelabzieher für Fahrrad', 'Werkzeug & Heimwerken'],
+    // 05.10. Nachbesserung: gkat = null (Importer-Pfad) → Titelwort als zweite Quelle
+    [null, 'Adventskalender «Hochlandrind» aus PVC', 'Wohnen & Deko'],
+    [null, 'Adventskalender 2026 mit Blind-Box-Überraschungen', 'Wohnen & Deko'],
+    [null, 'Weihnachtskalender mit 24 Türchen', 'Wohnen & Deko'],
+    [null, 'Weihnachtskleid für Damen mit Rentier-Print', 'Damenmode'],      // Kleidung vor Saisondeko
+    [null, 'Kleiderbügel aus Holz', null],                                   // kein Kleid, kein Typ geraten
+    [null, 'Hunderte LED Lichterkette für den Garten', 'Beleuchtung'],       // «Hunderte» ≠ Hund
+    [null, 'Ergonomisches Kopfkissen aus Memory-Schaum mit Armauflagen', 'Heimtextilien'],
+    [null, 'Sitzpouf-Hülle in Lederoptik zum Selbstbefüllen', 'Haushalt & Wohnen'],
+    [null, 'Press Lock Schnürsenkel – Elastisch', null],
+    ['Apparel & Accessories > Shoe Accessories', 'Schnürsenkel elastisch', null],   // bewusstes null im Pfad bleibt null
   ];
   let fehler = 0;
   for (const [g, t, soll] of faelle) {
     const ist = typAusKategorie(g, t);
     if (ist !== soll) { fehler++; console.log(`❌ ${t} (${g}) → ${ist}, soll ${soll}`); }
   }
-  console.log(fehler ? `${fehler} Fehler` : `✅ ${faelle.length}/${faelle.length} Kanarienvögel richtig`);
+  // Importer-Pfad wie in cj_sku_import: googleKategorie(titel, tags, 'Trend-Produkt') → typAusKategorie (Live-Tags vom 05.10.)
+  const { googleKategorie } = await import('./google_kategorie.mjs');
+  const importerFaelle = [
+    [['cj-real', 'dropship', 'neu', 'neuheit', 'trend', 'video-hit', 'viral'], 'Adventskalender «Hochlandrind» aus PVC', 'Wohnen & Deko'],
+    [['cj-real', 'dropship', 'neu', 'neuheit', 'trend', 'video-hit', 'viral'], 'Adventskalender 2026 mit Blind-Box-Überraschungen', 'Wohnen & Deko'],
+    [['cj-real', 'dekoration', 'dropship', 'haushalt', 'neuheit', 'wohnen'], 'Wandteppich mit Weltraum-Katze, bunt', 'Wohnen & Deko'],
+    [['accessoire', 'cj-real', 'dropship', 'kategorie-tasche', 'neuheit', 'tasche'], 'Gürteltasche für Herren', 'Taschen'],
+  ];
+  for (const [tags, t, soll] of importerFaelle) {
+    const ist = typAusKategorie(googleKategorie(t, tags, 'Trend-Produkt'), t) || 'Trend-Produkt';
+    if (ist !== soll) { fehler++; console.log(`❌ Importer-Pfad ${t} → ${ist}, soll ${soll}`); }
+  }
+  console.log(fehler ? `${fehler} Fehler` : `✅ ${faelle.length + importerFaelle.length}/${faelle.length + importerFaelle.length} Kanarienvögel richtig (inkl. ${importerFaelle.length} Importer-Pfad)`);
   process.exit(fehler ? 1 : 0);
 }

@@ -28,6 +28,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
 from kaufwille_zeile import gql   # Shopify-Helfer mit Wiederholung
+from seo_titel_grenze import seo_titel  # 05.10.: SEO-Titel ≤ 70 aus dem neuen Titel
 
 SCHARF = os.environ.get("SCHARF") == "1"
 STUNDEN = float(os.environ.get("STUNDEN", "72"))
@@ -140,7 +141,12 @@ def main():
             # 05.10.2026 (Prüfer): auch der SEO-Titel (den Google zeigt) — immer BEIDE SEO-Felder senden (SEOInput ersetzt beide)
             seo = p.get("seo") or {}
             if seo.get("title") or seo.get("description"):
-                eingabe["seo"] = {"title": glaetten(seo.get("title") or ""), "description": glaetten(seo.get("description") or "")}
+                # 05.10.2026 (Prüfer, Nachbesserung): war der SEO-Titel vom ALTEN Titel abgeleitet («Alt | LuxeStyle CH»), bleibt
+                # sonst die Doppelmenge im Meta-Titel stehen («… · 5 Stück | LuxeStyle CH», 3 Fälle) → aus dem neuen Titel
+                # neu bauen (70er-Grenze, seo_titel_grenze.seo_titel); bewusst abweichende SEO-Titel nur glätten.
+                st = seo.get("title") or ""
+                abgeleitet = st.strip() in (alt, f"{alt} | LuxeStyle", f"{alt} | LuxeStyle CH") or (len(st) == 70 and (alt + " | LuxeStyle CH").startswith(st.rstrip()))
+                eingabe["seo"] = {"title": seo_titel(neu_t) if abgeleitet else glaetten(st), "description": glaetten(seo.get("description") or "")}
             r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{title} userErrors{message}}}',
                     {"i": eingabe})["productUpdate"]
             ok = not r["userErrors"] and r["product"] and r["product"]["title"] == neu_t

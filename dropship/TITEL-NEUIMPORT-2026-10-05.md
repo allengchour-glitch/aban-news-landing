@@ -39,3 +39,48 @@ Kontaktbogen per PIL angesehen), keine bezahlten Aufrufe, keine CJ-Abfragen (Pun
 - 2 Doppel-Titel «1cm Keramik Mosaik Fliesen für DIY(-Projekte)» (16604879028615 / 16604881650055) = mögliche Dublette, nicht geprüft.
 - `_sicht_titel_2026-10-04.tsv`-Werkzeug: Ursache der Zeilenverschiebung (Urteil auf falscher gid) nicht gesucht — Werkzeug vor dem nächsten Lauf prüfen.
 - Der Autocommitter (5-Min-Loop, `dropship/`) hat PREIS-MARGE/Ledger-Änderungen bereits in «CJ-Ledger auto»-Commits eingesammelt (nicht von mir; `automation/`-Änderungen sind uncommitted).
+
+## Nachbesserung 05.10.2026 (06:55–07:10 UTC) nach dem unabhängigen Prüfer
+
+Vier Befunde (alle «mittel»), alle bestätigt und behoben — Zahlen = gemessen, nicht geschätzt.
+
+1. **«86/86 rückgelesen» war mit laxem Kriterium wahr.** Nachgemessen 06:58 über die 900 aktiven Neuimporte seit 03.10. mit
+   **Gleichheit** (`seo.title in {Titel, Titel | LuxeStyle, Titel | LuxeStyle CH}`): 878 gleich, **15 gekappt** (Länge 70,
+   Ende «| LuxeSt», «| », Leerzeichen — Shopify kappt still bei 70), **3 Doppelmenge** nur im SEO-Titel («· 5 Stück | …» —
+   `titel_sonderzeichen.py` hatte den Titel bereinigt, den SEO-Titel aber nur geglättet), 4 ohne SEO-Titel.
+   - **Die 4 «leeren» sind KEIN Fehler** (gemessen 07:0x): setzt man `seo.title = Produkttitel`, speichert Shopify **null**;
+     der Theme-Kopf rendert dann «Titel – LuxeStyle» (WebFetch `luxestyle.ch/products/memory-pilz-kissen-…` → `<title>` =
+     «Kopfkissen aus Memory-Schaum mit Armauflagen, Schmetterlingsform – LuxeStyle»; Gegenprobe Haustierbett mit gesetztem
+     SEO-Titel → «… | LuxeStyle»). Alle 4 hatten Titel von 59–65 Zeichen und waren im Vorlauf auf «Titel allein» gesetzt worden.
+   - **Quelle behoben:** neuer Helfer `automation/seo_titel.mjs` (`seoTitel()`: längste saubere Form ≤ 70 — `| LuxeStyle CH` →
+     `| LuxeStyle` → Titel → Wortgrenze; `--test` 5/5) in `cj_sku_import`, `cj_trending_import`, `cj_category_fill` statt
+     `.slice(0, 70)` (`node --check` 3/3). `titel_sonderzeichen.py` baut den SEO-Titel jetzt aus dem NEUEN Titel, wenn er vom
+     alten abgeleitet war (Kanarienvögel 11/11).
+   - **Bestand repariert:** `automation/seo_titel_grenze.py` (Klassen gekappt/doppelmenge, Rücklesen = Gleichheit, Ledger
+     `dropship/_seo_titel_grenze.tsv` alt→neu; `--test` 15 + 4; `NUR=messen` = Ampel «SEO-TITEL»). SCHARF 07:03–07:05 über
+     1'708 aktive der letzten 14 T: **20 gekappt + 4 Doppelmenge → 24 gesetzt, 24/24 gleich zurückgelesen, 0 Fehler**.
+   - **Nachher 07:06 (900 Neuimporte):** 887 exakt gleich, 13 null (= Titel), **0 abweichend, 0 gekappt, 0 Doppelmenge**;
+     7 SEO-Titel exakt 70 lang = alle legitime Vollformen (58er-Titel + «| LuxeStyle»).
+2. **16607228133767 (Kissen):** Prüfer hat recht — Bilder 3–5 zeigen ein Schlafkissen mit Kopfmulde, Zonen für Rücken-/Seiten-
+   schläfer und Armauflagen. Neu: Titel «Kopfkissen aus Memory-Schaum mit Armauflagen, Schmetterlingsform», Text als Schlaf-
+   kissen mit Armauflagen (ohne Wirbelsäulen-/Nackenversprechen), SEO-Beschreibung neu (der alte Satz trug zudem das
+   Lieferantenwort «CJ-Lager» — Hausregel 3). Rückgelesen gleich; Ledger-Zeile korrigiert; Altwerte in
+   `dropship/_titel_nachbesserung_2026-10-05.json`.
+3. **Plan 16 (Importer-Pfad):** bestätigt — `googleKategorie(titel, tags, 'Trend-Produkt')` gibt für beide Adventskalender null
+   (Sammelkorb-Typ, keine NACH_TAG-Treffer) → `typAusKategorie(null, …)` war null → Fallback «Trend-Produkt». Behoben in
+   `produkttyp_aus_kategorie.mjs`: **zweite Quelle `typAusTitel()`** (Titelwörter nach den Titelregeln aus `kategorie_wache`,
+   Reihenfolge Kleidung → Schuhe → Saisondeko → Halloween → Kostüm → Schmuck … → Spielzeug; Wortfallen: «Weihnachtskleid»
+   bleibt Kleid, «Kleiderbügel» kein Typ, «Hunderte» ≠ Hund). Greift nur, wenn die Google-Kategorie nichts liefert — bewusste
+   `null`-Pfade (Shoe Accessories, Health Care, Schnürsenkel) bleiben null. `--test` jetzt **26/26, davon 4 über den echten
+   Importer-Pfad** (`googleKategorie` → `typAusKategorie` mit den Live-Tags der Kalender → «Wohnen & Deko»). Nachmessung
+   mit einem echten Neuimport bleibt offen (CJ-Punkte erst ab 16:00 UTC). `sammeltyp_zaehler.py` 07:08: 2 aktiv (Atemschutz-
+   maske 10.07., Schnürsenkel 08.07. — bewusst ohne Typ); in den 900 Neuimporten: **0** Trend-*.
+4. **16605817241991 (Pouf):** bestätigt — Lieferantenbilder sagen 53 cm Ø × 35 cm und «old clothes need to be filled in by
+   yourself»; Text/SEO sagten noch «Leder-Sessel mit Stauraum». Neu: «Sitzpouf-Hülle in Lederoptik zum Selbstbefüllen,
+   ca. 53 × 35 cm», Text/SEO als Hülle ohne Füllung (Masse «laut Lieferantenbild», Farbe «laut Lieferant zufällig» —
+   stand so im CJ-Text; «Leder» nur Lieferantenwort → Lederoptik). Rückgelesen gleich; Ledger + Backup wie oben.
+
+### Lehre
+- **Rücklesen heisst Gleichheit** — «beginnt mit» übersieht genau die Kappung, um die es geht. Und: ein leerer SEO-Titel
+  kann «= Titel» bedeuten (Shopify speichert null), ein 70-Zeichen-SEO-Titel ist verdächtig, aber nicht automatisch falsch.
+- Ein Kanarienvogel muss den **echten Aufrufpfad** füttern (googleKategorie → typAusKategorie), nicht ein fertiges Ergebnis.

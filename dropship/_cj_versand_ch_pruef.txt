@@ -4145,3 +4145,36 @@ kabellose-kopfhorer-wavepods-bluetooth-tws-620700	2606100736031622000	7	5.32	ok	
 led-projektor-glowcast-stimmungslicht-841793	1968968912627339265	0	-	KEINE CH-Option → DRAFT	landeseite
 mini-drohne-skycam-faltbar-365889	2060192296065355777	0	-	KEINE CH-Option → DRAFT	landeseite
 mini-drohne-aerox-faltbar-123713	2060192497459056642	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-drohne-nimbus-mit-hd-kamera-313154	2060193012653805569	0	-	KEINE CH-Option → DRAFT	landeseite
+smartwatch-fitpro-fitness-anrufe-610800	2606170336201612400	7	8.10	ok	landeseite
+fitness-tracker-stepgo-herzfrequenz-schritte-637200	2606090117491638000	6	7.30	ok	landeseite
+smartwatch-smartone-fitness-anrufe-779330	2063886289648328706	7	9.37	ok	landeseite
+smartwatch-vital-fitness-anrufe-631600	2605061154021632200	7	6.98	ok	landeseite
+wireless-charger-qifast-kabellos-laden-625600	2602231205001626000	7	17.94	ok	landeseite
+wireless-charger-chargespot-kabellos-laden-633500	2601250357301633800	7	12.41	ok	landeseite
+powerbank-volt-schnellladen-114818	1972237803114389506	0	-	KEINE CH-Option → DRAFT	landeseite
+powerbank-maxpower-schnellladen-255746	1956640756196724737	0	-	KEINE CH-Option → DRAFT	landeseite
+professionelle-uv-led-nageltrocknerlampe-813249	2033429923089002497	0	-	KEINE CH-Option → DRAFT	landeseite
+handgemachte-french-nails-weiss-629800	2602090848411620200	3	5.30	ok	landeseite
+aufbau-gel-fur-nagel-25g-658700	2510100613541659000	3	5.86	ok	landeseite
+3-in-1-nagellackstift-5er-set-625700	2507170212151626200	3	5.06	ok	landeseite
+uv-polish-crystal-gel-starter-set-612500	2506251113241612700	3	11.62	ok	landeseite
+uv-nagellack-set-glitzer-uni-farben-619500	2506170303301619800	3	6.25	ok	landeseite
+as-nail-art-eternal-classic-farbgel-nagellack-621600	2412040638401621800	3	5.67	ok	landeseite
+painless-fast-nail-art-extension-set-621900	2409110917071622100	3	6.49	ok	landeseite
+nail-art-infiltration-suit-dust-brush-600500	2407240859471600700	3	6.81	ok	landeseite
+3-farben-ice-jelly-nude-gel-nagellack-set-629300	2407110812581620300	3	5.14	ok	landeseite
+magic-color-cat-eye-gel-nagellack-set-611700	2406230126041611900	2	6.81	ok	landeseite
+280w-uv-led-nagellampe-fur-gel-und-acrylnagel-578754	2072215795651407873	0	-	KEINE CH-Option → DRAFT	landeseite
+uv-led-lichthartungsgerat-fur-gelnagel-606800	2601060157501607000	7	14.97	ok	landeseite
+led-licht-nagelpflegegerat-776962	1983801153642070017	0	-	KEINE CH-Option → DRAFT	landeseite
+led-halbmondleuchte-fur-den-nageltisch-301569	1983794278076964865	0	-	KEINE CH-Option → DRAFT	landeseite
+uv-led-nageltrockner-120w-439234	1983071052750102529	7	10.98	ok	landeseite
+nail-art-pen-world-cup-496001	2072225588871856129	16	6.21	ok	landeseite
+nagelpflege-stift-set-615900	2606250819321616600	3	6.34	ok	landeseite
+gel-nagellack-stifte-set-624900	2606250630521625800	3	6.75	ok	landeseite
+manikure-und-pedikure-set-19-teilig-159554	2060153362758348801	0	-	KEINE CH-Option → DRAFT	landeseite
+handgemachte-press-on-nagel-mit-3d-blumen-607200	2605250943341607800	16	5.41	ok	landeseite
+3d-gradient-nageldesign-mit-meeresmotiven-620400	2605250937441620900	16	5.27	ok	landeseite
+mattes-make-up-pinselset-mit-nylonborsten-618800	2606290226071619500	16	9.47	ok	landeseite
+lidschatten-pinsel-mit-zwei-enden-143490	2069307409692749826	0	-	KEINE CH-Option → DRAFT	landeseite
