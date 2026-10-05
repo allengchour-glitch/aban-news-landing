@@ -3660,3 +3660,4 @@ hundeleine-mit-3d-blumen-372992	1369909610076573696	16	5.69	ok	landeseite
 zl02pro-smartwatch-herzfrequenz-messung-612672	1686574343255498752	7	6.81	ok	landeseite
 hundegeschirr-fur-grosse-hunde-114688	1614912257039806464	16	6.77	ok	landeseite
 smartwatch-herzfrequenz-schrittzahler-532096	1685910492595892224	7	5.49	ok	landeseite
+verstellbares-brustgeschirr-fur-katzen-und-kan-769344	1614625097313169408	16	5.81	ok	landeseite
