@@ -3873,3 +3873,8 @@ baby-lauflernschuhe-aus-stretch-canvas-380928	1382939733600112640	16	6.77	ok	lan
 brusttasche-mit-mehreren-fachern-383424	1382175465132920832	16	11.12	ok	landeseite
 sportschuh-mit-luftpolster-und-schnurung-349120	1381944756833226752	16	19.60	ok	landeseite
 umhangetasche-fur-ipad-mit-usb-ladeanschluss-481280	1381916225990430720	16	12.21	ok	landeseite
+nylon-umhangetasche-mit-reissverschluss-031232	1381902370560151552	16	8.79	ok	landeseite
+baby-sneaker-aus-mesh-fur-madchen-und-jungen-987904	1379711902468411392	16	7.17	ok	landeseite
+pu-leder-brusttasche-mit-reissverschluss-215040	1381840195653079040	16	11.00	ok	landeseite
+lala-pig-lauflernschuhe-fur-kinder-048960	1378545407109500928	16	7.99	ok	landeseite
+atmungsaktive-kleinkinderschuhe-mit-klettversc-508800	1378263229368766464	7	10.18	ok	landeseite
