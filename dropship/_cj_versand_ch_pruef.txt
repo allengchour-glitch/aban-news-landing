@@ -4411,3 +4411,12 @@ schiebeturrolle-d28129	9A17E8FD-474F-43DE-990D-C8715AF56D01	16	11.50	ok	landesei
 vakuumiergerat-fur-kleine-plastikbeutel-93e3f9	35E5EE08-81EF-4EBF-8FAA-10E1DB2E62EE	16	25.26	ok	landeseite
 leder-quarzuhr-mit-kalenderfunktion-4ceddb	0EF76DAD-878F-474F-BEBC-E5A7C2DCABFA	7	6.49	ok	landeseite
 donut-backform-mit-12-mulden-321e02	433C8D98-4842-4E8A-8FD4-12C027F9F6BA	16	14.37	ok	landeseite
+multifunktions-quarzuhr-mit-drei-zeigern-e70307	39E4A22F-FFA9-4961-9482-EB665B08AE29	7	7.39	ok	landeseite
+nylon-armbanduhr-mit-dual-anzeige-4b347e	52328D1E-27D2-419E-B818-CAAF331FEC30	7	6.73	ok	landeseite
+elektrische-orangen-saftpresse-ff0de0	01BDA493-C4AC-41E7-8D1C-EDF7EE6230D1	16	19.42	ok	landeseite
+mini-zitruspresse-fur-zuhause-fba155	B563AB26-89F9-4798-A9E3-59A0A5C5068F	16	14.86	ok	landeseite
+quarz-armbanduhr-mit-kalender-ed75ad	07C0CA46-0111-46D1-A91B-FD2897D2625C	7	6.66	ok	landeseite
+zwei-saftpressen-fur-zitrusfruchte-2ee627	1BA72FDA-CC20-4B39-BFC9-8146BF9D0BCC	3	39.59	ok	landeseite
+damenuhr-mit-diamant-cca13a	95EBC899-1A96-4982-B1DA-CF750E51EDD0	7	6.18	ok	landeseite
+spiegel-serviertablett-aus-metall-087829	52AF9EEC-37B7-4567-BA89-F78BBF3E4B82	16	27.01	ok	landeseite
+messer-und-schneidebretthalter-aus-edelstahl-41c71a	4044BCFB-2688-476E-806C-B77688DA98FB	16	11.10	ok	landeseite
