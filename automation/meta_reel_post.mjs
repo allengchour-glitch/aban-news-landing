@@ -148,9 +148,11 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
 const _alle = rows.slice(1).filter(_passt);
 const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))], r => r[idx.caption]), r => r[idx.id]);   // 25.09. Saison-Vorrang (Herbst) vor v2/alt
 const cand = ersterErreichbare(_reihe, r => r[idx.video_url] || '', (r, st) => { r[idx.status] = st; if (!DRY) writeLedger(); });   // DRY schreibt nichts
-if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
+// 05.10.2026: Exit 3 statt 0 — «kein Kandidat» ist KEIN Post; mit 0 setzte social_autopilot.sh die 8-h-Reel-Marke, als waere
+// gepostet worden (gleiche Falle wie metricool_tiktok_post.mjs: YouTube 23,8 h ohne Post). Marke bleibt alt → naechster 15-Min-Takt.
+if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet) — Marke bleibt alt, Exit 3.'); process.exit(3); }
 // Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
-if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
+if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(3); }
 
 // ⛔⛔ LIVE-IG-ABGLEICH (GEHIRN 10, «darf kein Doppelpost mehr passieren»): der einzige wasserdichte
 //    Check ist gegen die WAHRHEIT auf IG selbst — fängt Posts, die im ungeschützten Fenster entstanden

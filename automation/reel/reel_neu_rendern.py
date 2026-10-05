@@ -22,6 +22,17 @@ sie zu Recht (Preis in Caption UND im Bild ≠ Live-Preis), aber niemand reparie
 Hier: Live-Preis aus Shopify (Handle aus dem Caption-Link), Video mit neuem Preis neu rendern, Tor mit PREIS_SOLL = Live,
 Caption-Preis ersetzen (Versand-Schwellen bleiben), Zeile atomar zurück auf `ready`. Ohne Quelle: tor_quellen_anfragen.mjs
 fordert sie über den Server an (STATUS enthält preis-veraltet-skip).
+
+CDN-ERSATZ (05.10.2026, Social-Gesundheit): seit dem CDN-Umzug (02.10.) zeigt `video_url` auf cdn.shopify.com — dieses Skript
+ersetzte aber nur social/reels/… Die Poster holen das Video von der Adresse (Metricool ebenso) → Meisterwerk-Tor sah den
+ALTEN Bildpreis, Zeile zurück auf meisterwerk-tor-skip, MODUS=hook rendert neu, «wieder ready», und so weiter: 9 Reels drehten
+sich im Kreis, IG/FB 12,8 h · TikTok 12,8 h · YouTube 23,8 h ohne Post. Jetzt: nach jedem bestandenen Render wird die
+CDN-Datei per fileUpdate(originalSource) ERSETZT (gleiche Datei-ID, gleicher Dateiname → Doppelpost-Sperre bleibt, kein
+zweiter Speicherplatz; upload_to_shopify_cdn.mjs ERSETZE_FILE_ID), die neue ?v=-Adresse kommt in die Zeile; Altwerte in
+dropship/_reel_cdn_ersatz_<datum>.tsv. Gelingt der Ersatz nicht, bleibt der Sperr-Status (gesperrt ≠ verloren).
+
+MODUS=cdn: nur abgleichen — `ready`-Zeilen mit CDN-Adresse, deren lokale Datei eine andere Grösse hat als die CDN-Kopie
+(= lokal neu gerendert, CDN veraltet), hochladen und Adresse nachtragen. Kein Render.
 """
 import csv, glob, json, os, re, subprocess, sys, tempfile
 import numpy as np
@@ -142,15 +153,20 @@ def caption_preis(cap, neu):
     return re.sub(r"CHF\s?\d+[.,]\d{2}\b", ersetze, cap)
 
 
-def zeile_ersetzen(rid, alt_status, neu_status, neue_caption):
-    """Wie status_setzen, aber mit Caption — nur wenn die Zeile noch alt_status trägt (Lost-Update-Lehre 28.09.)."""
+def zeile_ersetzen(rid, alt_status, neu_status, neue_caption, neue_url=None):
+    """Wie status_setzen, aber mit Caption (und optional video_url) — nur wenn die Zeile noch alt_status trägt
+    (Lost-Update-Lehre 28.09.). neue_caption=None lässt die Caption stehen."""
     import io
     with open(CSV, newline="") as f:
         rows = list(csv.reader(f))
-    h = rows[0]; iid, ist, ica = h.index("id"), h.index("status"), h.index("caption"); n = 0
+    h = rows[0]; iid, ist, ica, iur = h.index("id"), h.index("status"), h.index("caption"), h.index("video_url"); n = 0
     for r in rows[1:]:
         if len(r) > ist and r[iid] == rid and r[ist] == alt_status:
-            r[ist] = neu_status; r[ica] = neue_caption; n += 1
+            r[ist] = neu_status; n += 1
+            if neue_caption is not None:
+                r[ica] = neue_caption
+            if neue_url:
+                r[iur] = neue_url
     buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows(rows)
     with open(CSV + ".tmp", "w", newline="") as f:
         f.write(buf.getvalue())
@@ -158,7 +174,101 @@ def zeile_ersetzen(rid, alt_status, neu_status, neue_caption):
     return n
 
 
+CDN_LEDGER = f"dropship/_reel_cdn_ersatz_{__import__('datetime').date.today().isoformat()}.tsv"
+NODE = "/opt/node22/bin/node"
+
+
+def ist_cdn(url):
+    return "cdn.shopify.com/" in (url or "")
+
+
+def cdn_groesse(url):
+    """Content-Length der CDN-Kopie (HEAD), -1 bei Fehler."""
+    try:
+        out = subprocess.run(["curl", "-sI", "--max-time", "30", url], capture_output=True, text=True, timeout=40).stdout
+        m = re.search(r"content-length:\s*(\d+)", out, re.I)
+        return int(m.group(1)) if m else -1
+    except Exception:
+        return -1
+
+
+def cdn_datei_id(pid, url):
+    """GenericFile-GID zur CDN-Adresse (Dateiname reel_<pid>.mp4; Pfad ohne ?v= muss übereinstimmen) — None, wenn unklar."""
+    sys.path.insert(0, os.path.join(REPO, "automation"))
+    import heilversprechen_wache as hw
+    r = hw.gql('query($q:String!){ files(first:10, query:$q){ nodes{ id ... on GenericFile{ url } } } }',
+               {"q": f"filename:reel_{pid}.mp4"})
+    nodes = (((r.get("data") or {}).get("files") or {}).get("nodes")) if isinstance(r, dict) else None
+    pfad = (url or "").split("?")[0]
+    for n in nodes or []:
+        if (n.get("url") or "").split("?")[0] == pfad and str(n.get("id", "")).startswith("gid://shopify/GenericFile/"):
+            return n["id"]
+    return None
+
+
+def cdn_ersetzen(rid, pid, lokal, alt_url):
+    """Lokale (neu gerenderte, Tor-geprüfte) Datei in die BESTEHENDE CDN-Datei schreiben. Gibt die neue Adresse zurück
+    oder wirft RuntimeError. Altwerte landen in CDN_LEDGER (zeit, id, gid, alt_url, alt_bytes, neu_url, neu_bytes)."""
+    gid = cdn_datei_id(pid, alt_url)
+    if not gid:
+        raise RuntimeError("CDN-Datei nicht gefunden (files filename:… ohne passenden Pfad)")
+    alt_bytes = cdn_groesse(alt_url); neu_bytes_lokal = os.path.getsize(lokal)
+    env = {k: v for k, v in os.environ.items() if k not in ("SHOPIFY_CLIENT_ID", "SHOPIFY_CLIENT_SECRET")}
+    env["SHOPIFY_SHOP"] = os.environ.get("SHOPIFY_SHOP") or "au3j0y-hq.myshopify.com"
+    env["SHOPIFY_ADMIN_TOKEN"] = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read()).strip()
+    env["ERSETZE_FILE_ID"] = gid
+    p = subprocess.run([NODE, "automation/upload_to_shopify_cdn.mjs", lokal], env=env, capture_output=True, text=True, timeout=600)
+    urls = [l.strip() for l in p.stdout.splitlines() if l.strip().startswith("https://cdn.shopify.com/")]
+    if p.returncode != 0 or not urls:
+        raise RuntimeError(f"Upload rc {p.returncode}: {(p.stderr or p.stdout)[-160:].strip()}")
+    neu_url = urls[-1]
+    if neu_url.split("?")[0] != alt_url.split("?")[0]:
+        raise RuntimeError(f"Pfad hat sich geändert: {neu_url[-60:]}")
+    neu_bytes = cdn_groesse(neu_url)
+    if neu_bytes != neu_bytes_lokal:
+        raise RuntimeError(f"CDN-Grösse {neu_bytes} ≠ lokal {neu_bytes_lokal}")
+    neu = not os.path.exists(CDN_LEDGER)
+    with open(CDN_LEDGER, "a") as f:
+        if neu:
+            f.write("zeit\tid\tfile_gid\talt_url\talt_bytes\tneu_url\tneu_bytes\n")
+        f.write("\t".join([__import__("datetime").datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), rid, gid, alt_url, str(alt_bytes), neu_url, str(neu_bytes)]) + "\n")
+    return neu_url
+
+
+def modus_cdn():
+    """ready-Zeilen mit CDN-Adresse: lokale Datei ≠ CDN-Kopie (Bytes) → hochladen + Adresse nachtragen."""
+    rows = list(csv.DictReader(open(CSV)))
+    erg = []
+    for r in rows:
+        if r.get("status") != "ready" or not r["id"].startswith("cjreel-") or not ist_cdn(r.get("video_url")):
+            continue
+        pid = r["id"][len("cjreel-"):]; lokal = f"social/reels/reel_{pid}.mp4"
+        if not os.path.exists(lokal):
+            continue
+        lb, cb = os.path.getsize(lokal), cdn_groesse(r["video_url"])
+        if cb < 0:
+            erg.append((pid, lb, "UEBERSPRUNGEN", "CDN nicht lesbar")); continue
+        if lb == cb:
+            continue
+        print(f"{pid}: lokal {lb} B ≠ CDN {cb} B → CDN-Ersatz", flush=True)
+        if not SCHARF:
+            erg.append((pid, lb, "TROCKEN", f"CDN {cb} B")); continue
+        try:
+            neu_url = cdn_ersetzen(r["id"], pid, lokal, r["video_url"])
+            n = zeile_ersetzen(r["id"], "ready", "ready", None, neu_url)
+            erg.append((pid, lb, "ERSETZT", f"CDN neu {neu_url[-14:]}" + (" · Adresse nachgetragen" if n else " · ⚠️ Zeile nicht mehr ready")))
+        except Exception as e:
+            erg.append((pid, lb, "CDN-ERSATZ GESCHEITERT", str(e)[:160]))
+    print("\nERGEBNIS:")
+    for e in erg:
+        print("  " + " · ".join(str(x) for x in e))
+    print(f"FERTIG: {sum(1 for e in erg if e[2]=='ERSETZT')} ersetzt, {sum(1 for e in erg if e[2] not in ('ERSETZT','TROCKEN'))} nicht, "
+          f"{sum(1 for e in erg if e[2]=='TROCKEN')} im Trockenlauf")
+
+
 def main():
+    if MODUS == "cdn":
+        return modus_cdn()
     rows = list(csv.DictReader(open("automation/reels_seed.csv")))
     erg = []
     for r in rows:
@@ -213,13 +323,20 @@ def main():
         if tor.returncode != 0:
             erg.append((pid, b, "TOR-DURCHGEFALLEN", tor.stdout.strip()[-200:])); os.unlink(tmp); continue
         os.replace(tmp, lokal)
+        # 05.10.2026: zeigt die Zeile aufs CDN, muss die CDN-Kopie mit — sonst posten die Poster das alte Video (alter Preis).
+        neue_url = None; cdn_info = ""
+        if ist_cdn(r.get("video_url")):
+            try:
+                neue_url = cdn_ersetzen(r["id"], pid, lokal, r["video_url"]); cdn_info = f" · CDN {neue_url[-14:]}"
+            except Exception as e:
+                erg.append((pid, b, "CDN-ERSATZ GESCHEITERT", f"lokal neu, Status bleibt {soll}: {str(e)[:140]}")); continue
         if MODUS == "hook":
-            zurueck = status_setzen({r["id"]}, "meisterwerk-tor-skip", "ready")
+            zurueck = zeile_ersetzen(r["id"], "meisterwerk-tor-skip", "ready", None, neue_url)
         elif MODUS == "preis":
-            zurueck = zeile_ersetzen(r["id"], "preis-veraltet-skip", "ready", cap)
+            zurueck = zeile_ersetzen(r["id"], "preis-veraltet-skip", "ready", cap, neue_url)
         else:
-            zurueck = 0
-        erg.append((pid, b, "ERSETZT", f"neu {nb} px · Einstieg {st}s" + (" · wieder ready" if zurueck else "")))
+            zurueck = zeile_ersetzen(r["id"], "ready", "ready", None, neue_url) if neue_url else 0
+        erg.append((pid, b, "ERSETZT", f"neu {nb} px · Einstieg {st}s{cdn_info}" + (" · wieder ready" if zurueck and MODUS in ("hook", "preis") else "")))
     print("\nERGEBNIS:")
     for e in erg:
         print("  " + " · ".join(str(x) for x in e))

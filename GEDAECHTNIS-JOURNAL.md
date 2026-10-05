@@ -74,6 +74,26 @@ Semrush-Lücke: «diamond painting» 8'100/Mt KD 16 und «malen nach zahlen» 5'
 - ⚠️ Ein H1-Backup aller Seitentexte enthielt einen Token-PLATZHALTER (unveröffentlichte Anleitungsseite) → GitHub-Push-Schutz.
   Backups von Shop-Texten nicht ins Repo, sondern in den Scratchpad. Bericht: `dropship/SEMRUSH-PUSH-KATEGORIEN-2026-10-04.md`.
 
+## 🧾 Vertrauen & Recht: 125 Produkttexte + 22 Seiten + AGB §7 an die Richtlinien angeglichen (2026-10-05, 01:20–01:55 UTC)
+Betreiber «fix 12 h lang alles», Bereich vertrauen-recht. Wahrheit = shopPolicies (30 T freiwillig, Rücksendung Kundin,
+nur CH, CH-Lager 1–2 / EU 2–7 / Druck 7–14 / Direkt 10–20 WT, keine Geld-zurück-Garantie). Gemessen und behoben:
+- **Produkte:** Block «Schweizer Versprechen» aus den Mai-Importen — «30 Tage Geld-zurück-Garantie · Keine Fragen · volle
+  Rückerstattung» 106 (14 aktiv), «Versand aus Belp · 7–12 Werktage» 85 (Belp = Impressum, kein Lager, 0 `ch-lager`),
+  «7 Tage die Woche» 106, «Endpreis ist Endpreis / ohne Zoll-Überraschungen» 19 (FAQ sagt: Einfuhrsteuer ab ~CHF 60 möglich),
+  «Anlauf-Garantie – oder Geld zurück» 9 Schmuckstücke (Garantieseite: keine separate Garantie) → alle 0, 125 geschrieben,
+  Ledger `_zusagen_abgleich_produkte.tsv`. Nicht angefasst: 39'369 Sorglos-Bausteine (stimmen), 2'389 «Versand aus der
+  Schweiz» (alle `ch-lager`), `ls-liefer` vs. Sorglos 0 Widersprüche.
+- **Seiten (108 veröffentlichte gescannt, 22 korrigiert, 52 exakte Ersetzungen):** «gesetzlich 14» (CH kennt kein
+  Widerrufsrecht), «30 Tage Garantie» bei Allergie an getragenem Schmuck, AMEX/Vorkasse ohne Beleg, POD «10-20» statt 7–14,
+  «Maximum-Zeiten», «20–30 Werktage — steht am Produkt» (kein Produkt trägt die Stufe), «In der Schweiz gedruckt» (Europa),
+  EN/FR/IT-About-Seiten mit «7-14 business days», «money-back / Sans discussion / Rimborso totale», WhatsApp/Telefon
+  (kontakt-support: bewusst keine Hotline), H1 «… aus der Schweiz» bei nicht-schweizer Ware, «SHIP50» für automatischen
+  Gratisversand. AGB §7 EU-Widerruf gestrichen, Stand 05.10.2026. WebFetch bestätigt 3 Seiten.
+- **Lehre:** Die grosszügigere Fassung steht auf der früher geschriebenen Seite — und jede SPRACHE einer Seite ist eine eigene
+  Fundstelle (die DE-About war längst ehrlich, EN/FR/IT versprachen weiter 7-14 Tage und «keine Fragen»). Shopify-Suche
+  (106) und Vollexport (15 aktiv) zählen verschieden → beide Linsen. Werkzeug `automation/zusagen_abgleich.py`
+  (`NUR=messen` = Ampelzeile «ZUSAGEN»). Bericht `dropship/VERTRAUEN-RECHT-ZUSAGEN-2026-10-04.md`.
+
 ## 🏷️ Tag 5: Top-30-Seiten 30/30 · Kristall-Set zeigte nicht, was geliefert wird · Hashtags nach Messung (2026-10-04, ab 20:19)
 - **Vorige Runde (Haiku) hatte Tag 5 erfunden:** `_day5_audit.json` zählte je «2» Google-Blocker statt 265/265/199, und eine
   Journalzeile nannte vier «Guardrails» (`size_table_autofill` …), die es nicht gibt (0 Treffer). Beides entfernt.

@@ -209,6 +209,7 @@ def main():
     print(f"{'handle':58} {'status':7} {'CH-Versand':>11}  Grund")
     print("-" * 110)
     befunde, unklar, ok = [], [], 0
+    uebersprungen = set()          # nicht ACTIVE → nicht beurteilt → Register-Eintrag bleibt
     for h in handles:
         q = ('{products(first:1, query:"handle:%s"){nodes{handle status '
              'variants(first:1){nodes{sku}}}}}' % h)
@@ -223,14 +224,16 @@ def main():
         p = nodes[0]
         if p["status"] != "ACTIVE":
             # 05.10.: Entwuerfe kosten keine Kundin Geld — kein CJ-Aufruf dafuer (der Eimer ist geteilt).
+            # Ihr Register-Eintrag bleibt stehen (nicht «gefragt» — sonst verschwand er, 1. Lauf 05.10.: 3 Zeilen weg, vereinigt).
             print(f"{h[:58]:58} {p['status']:7} {'-':>11}  nicht ACTIVE, nicht bei CJ gefragt", flush=True)
+            uebersprungen.add(h)
             continue
         sku = (p["variants"]["nodes"] or [{}])[0].get("sku") or ""
         # 22.09.2026: Nicht-CJ-Ware (Printful-POD «9000001_4011», Fortura CH-Lager, eigene
         # Buendel LX-) hat keine CJ-Frage zu beantworten — vorher landete «shirt-eidgenoss»
         # als «unklar (1602001 Product not found)» im Bericht: eine Absage von der falschen
         # Adresse (Lehre 09.08./21.09.). Diese Ware gilt hier als lieferbar (CH-Lager/POD).
-        if re.fullmatch(r"\d{6,8}_\d{4,6}", sku) or sku.startswith(("fortura-", "LX-", "lx-")):   # 05.10.: Printful «9000001_10163» hat 5 Stellen nach dem Strich — galt als CJ und wurde «unklar»
+        if re.fullmatch(r"\d{6,8}_\d{4,6}", sku) or sku.startswith(("fortura-", "LX-", "lx-")) or not sku.upper().startswith("CJ"):   # 05.10.: alle drei CJ-SKU-Formen beginnen mit «CJ» (CJ-pid, CJ-UUID, CJxx…); Prodigi «GLOBAL-FAP-A4» landete sonst als «unklar»   # 05.10.: Printful «9000001_10163» hat 5 Stellen nach dem Strich — galt als CJ und wurde «unklar»
             print(f"{h[:58]:58} {p['status']:7} {'ja':>11}  kein CJ-Artikel (POD/CH-Lager), nicht bei CJ gefragt", flush=True)
             ok += 1
             ledger_schreiben(h, "ja", "kein CJ-Artikel (POD/CH-Lager)", sku)
@@ -285,7 +288,7 @@ def main():
             if teile and teile[0]:
                 alt_zeilen[teile[0]] = teile
     vorher = set(alt_zeilen)               # Urteile frueherer Laeufe (fuer die Zwei-Laeufe-Regel der Vollstreckung)
-    gefragt = {h for h in handles}
+    gefragt = {h for h in handles} - uebersprungen
     for h in gefragt:                      # dieser Lauf hat geurteilt: alter Eintrag faellt
         alt_zeilen.pop(h, None)
     for h, st, g, sku in befunde:          # … und wird durch das neue Urteil ersetzt

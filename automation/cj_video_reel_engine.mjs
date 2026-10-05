@@ -364,21 +364,40 @@ const kand = []; let cursor = null, gescannt = 0;
 // (20 je Aufruf, gemessen 22.09.), gleiche Schwellen wie der Scan.
 const INDEX = 'dropship/_cj_video_index.json';
 const idx = fs.existsSync(INDEX) ? JSON.parse(fs.readFileSync(INDEX, 'utf8')) : null;
-const idxPids = idx ? Object.keys(idx.shop_video || {}).filter(p => !gebaut.has(p) && !keinVideo.has(p) && !inCsv.has(p)) : [];
-let idxKand = 0;
+// 05.10.2026 (Social-Gesundheit): «816 offene Treffer → 0 Kandidaten» bei jedem Lauf. Gemessen an den ersten 200 Index-pids:
+// 127 nicht mehr im Shop, 57 DRAFT, 1 unter 2 Bildern — und das Fenster ist auf die ERSTEN 200 begrenzt, die nie aus dem
+// Index fallen → dieselben toten pids jeden Lauf, die brauchbaren dahinter kamen nie dran. Jetzt: Ausfall-Ledger
+// dropship/_cj_reel_index_tot.txt (pid<TAB>grund<TAB>datum), 14 Tage gueltig (DRAFT kann wieder ACTIVE werden), filtert
+// die Index-Kandidaten VOR dem 200er-Fenster.
+const INDEX_TOT = 'dropship/_cj_reel_index_tot.txt';
+const TOT_TAGE = 14;
+const _heute = Date.now();
+const tot = new Map();
+if (fs.existsSync(INDEX_TOT)) for (const z of fs.readFileSync(INDEX_TOT, 'utf8').split('\n')) {
+  const [p, , d] = z.split('\t'); if (!p) continue;
+  const t = Date.parse(d || ''); if (!isNaN(t) && (_heute - t) / 86400000 <= TOT_TAGE) tot.set(p.trim(), d);
+}
+const idxAlle = idx ? Object.keys(idx.shop_video || {}).filter(p => !gebaut.has(p) && !keinVideo.has(p) && !inCsv.has(p)) : [];
+const idxPids = idxAlle.filter(p => !tot.has(p));
+let idxKand = 0; const totNeu = [];
 for (let i = 0; i < Math.min(idxPids.length, 200); i += 20) {
-  const q = idxPids.slice(i, i + 20).map(p => `sku:CJ-${p}`).join(' OR ');
+  const teil = idxPids.slice(i, i + 20);
+  const q = teil.map(p => `sku:CJ-${p}`).join(' OR ');
   const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q });
   if (!r) break;
+  const gesehen = new Set();
   for (const n of r.data.products.nodes) {
     const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(sku); if (!m || !idxPids.includes(m[1])) continue;
-    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0');
-    if (n.status !== 'ACTIVE' || price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title)) continue;
-    if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) continue;
+    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0'); gesehen.add(pid);
+    const grund = n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90' : (n.mediaCount?.count || 0) < 2 ? 'unter-2-bilder' : VERBOTEN.test(n.title) ? 'verbots-titel' : '';
+    if (grund) { totNeu.push([pid, grund]); continue; }
+    if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) { totNeu.push([pid, 'produkt-schon-gepostet']); continue; }
     kand.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [], idx: true }); idxKand++;
   }
+  for (const p of teil) if (!gesehen.has(p)) totNeu.push([p, 'nicht-im-shop']);
 }
-if (idx) console.log(`Video-Index: ${idxPids.length} offene Treffer → ${idxKand} Kandidaten (Index-Stand ${(idx.stand || '').slice(0, 16)})`);
+if (totNeu.length && !DRY) fs.appendFileSync(INDEX_TOT, totNeu.map(([p, g]) => `${p}\t${g}\t${new Date().toISOString().slice(0, 10)}`).join('\n') + '\n');
+if (idx) console.log(`Video-Index: ${idxAlle.length} offene Treffer (${idxAlle.length - idxPids.length} im Ausfall-Ledger ≤ ${TOT_TAGE} T) → ${idxKand} Kandidaten · ${totNeu.length} neu ins Ausfall-Ledger (Index-Stand ${(idx.stand || '').slice(0, 16)})`);
 while (gescannt < SCAN && idxKand < BATCH * 3) {
   const r = await gql(`query($c:String){ products(first:50, after:$c, sortKey:CREATED_AT, reverse:true, query:"status:active tag:cj-real"){ pageInfo{hasNextPage endCursor} nodes{ id title handle tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { c: cursor });
   if (!r) break;
