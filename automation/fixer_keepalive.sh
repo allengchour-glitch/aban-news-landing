@@ -1257,6 +1257,13 @@ fi
       ( cd "$REPO" && timeout 30 python3 automation/gemini_jury.py "$u" --rueckfall-pruefen >/dev/null 2>&1 ) && JR=$((JR+1)); done
     echo "⚠️ JURY-KONTINGENT: alle Bildmodelle leer (Marken /tmp/groq_leer_1..3 $(stat -c %y /tmp/groq_leer_1 2>/dev/null | cut -c12-16) UTC) · Rückfall trägt $JR ready-Reel(s) · Story/Bild warten · $(wc -l < "$REPO/dropship/_jury_rueckfall.tsv" 2>/dev/null || echo 0) Rückfall-Posts gesamt"
   fi
+  # ── GROQ-VORRANG-RESERVE (05.10.2026, Verbesserungsrunde): Bildmodell auf Schlüssel 3 nur für Posts (gemini_jury.py) und
+  #    Bestellungen (cj_variante_bild.py) — Massenläufe hatten es um 04:20/10:33 aufgebraucht, die Jury lehnte jeden Post ab.
+  #    Stündlich: Selbsttest der Regel (6 Kanarienvögel, ohne Modellaufruf); meldet nur bei Fehler.
+  if [ -f "$REPO/automation/zweitmodell.py" ]; then
+    ( cd "$REPO" && timeout 30 python3 automation/zweitmodell.py --reserve-test >/tmp/groq_reserve_test.log 2>&1 ) \
+      || echo "⚠️ GROQ-RESERVE: $(tail -n 1 /tmp/groq_reserve_test.log) — Massenläufe könnten das Post-Kontingent wieder aufbrauchen"
+  fi
 # SUCHE-WACHE (05.10.2026, Bereich Suche, FIX-12H Punkt 11): misst täglich, ob die Shop-Vorschlagsliste die 26 volumenstärksten
 # Semrush-Begriffe trifft und ob oben Fremdware steht («schuhe» → Schulrucksäcke). Nur lesend (Storefront, kein Token), Ledger
 # dropship/_suche_wache.tsv, Bericht dropship/SUCHE-2026-10-05.md. suchwort_tags.py läuft weiter in der Werkzeug-Schleife oben.

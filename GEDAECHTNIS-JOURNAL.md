@@ -35,6 +35,16 @@
 
 
 
+## 2026-10-05 12:40 · 🎯 Groq-Vorrang-Reserve — ein knappes Kontingent braucht eine Rangordnung
+
+Gemini 402 + OpenAI leer → das EINZIGE Bildmodell war Groq qwen (200k Tokens/Tag je Organisation). Bildtausch, Kauderwelsch-
+Wache (qwen als TEXT-Prüfer!) und Produkttexte verbrauchten es auf allen drei Schlüsseln bis 10:33; die Social-Jury lehnte
+danach jeden Post ab, der Bestell-Bildvergleich hätte ebenso gestanden. Fix: `zweitmodell.reserviert()` — Bildmodell auf
+Schlüssel 3 (eigene Organisation) nur für gemini_jury.py + cj_variante_bild.py; Vorrang prüft die Leer-Marke dort 20 min statt
+6 h (Groq-Fenster gleitet). Wächter `--reserve-test` stündlich. Nachgemessen: Probe auf Schlüssel 3 antwortet, Jury-Kontingent
+nicht mehr leer. **Lehre: Teilen sich Massenläufe und Kundenwege ein Kontingent, bekommt der Kundenweg eine feste Reserve —
+sonst gewinnt, wer zuerst aufsteht.** → `dropship/GROQ-VORRANG-RESERVE-2026-10-05.md`
+
 ## 2026-10-05 11:20 · 🔪 Keyword-Runde fertig + Klingen-Loch: Faltmesser/Rasiermesser/Veredelungsmesser waren ACTIVE
 Keyword-Runde (Google-CH-Vorschläge, Semrush leer): 33 Kollektionen mit Nachfrage-Begriff in SEO-Titel/Meta/erstem Satz (Ledger mit
 Altwert), 60 Produkt-SEO-Titel (Prüfer ok), Suchwort-Tags mit Komposita-Rückbau (65 «messer»-Tags zurück). Beim Rückbau meldete der Agent

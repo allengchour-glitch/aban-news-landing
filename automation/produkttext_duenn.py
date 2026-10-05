@@ -98,6 +98,8 @@ def groq(prompt, bilder=None, modelle=None, effort="low", max_tokens=3000):
         for ki, k in enumerate(ks):
             if not weiter:
                 break
+            if zm.reserviert(ki + 1, modell):          # Vorrang-Reserve für Posts/Bestellungen (05.10.)
+                continue
             if TOT.get((modell, ki), 0) > time.time():
                 tageslimit.add((modell, ki)); continue
             for a in range(3):

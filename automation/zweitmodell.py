@@ -156,6 +156,25 @@ def groq_schluessel():
     return [k for k in ks if k]
 
 
+# 05.10.2026 (Verbesserungsrunde): VORRANG-RESERVE. Groq hat EIN Bildmodell (GROQ_BILD) mit 200'000 Tokens/Tag je
+# Organisation; Schlüssel 1+2 teilen eine Organisation, Schlüssel 3 hat eine eigene. Gemessen 05.10. 12:22: Gemini + OpenAI
+# leer, qwen auf allen drei Schlüsseln seit 04:20/10:33 aufgebraucht (Bildtausch, Kauderwelsch, Produkttexte) → die
+# Social-Jury lehnte jeden Post ab («⛔ Kein Post — Groq-Tageskontingent leer»), Bestell-Bildvergleich ebenso. Regel: das
+# Bildmodell auf dem Reserve-Schlüssel bekommen NUR Vorrang-Aufrufer (Posts, Bestellungen); Massenläufe nehmen 1+2.
+RESERVE_SCHLUESSEL = int(os.environ.get("GROQ_RESERVE_SCHLUESSEL", "3"))
+VORRANG_SKRIPTE = {"gemini_jury.py", "cj_variante_bild.py"}
+
+
+def vorrang():
+    """Vorrang = das laufende Hauptskript ist ein Vorrang-Skript (nicht bloss importiert) oder GROQ_VORRANG=1."""
+    return os.environ.get("GROQ_VORRANG") == "1" or os.path.basename(sys.argv[0] or "") in VORRANG_SKRIPTE
+
+
+def reserviert(n, modell):
+    """True = Schlüssel n (1-basiert) mit diesem Modell ist für Vorrang-Aufrufer reserviert und hier tabu."""
+    return modell == GROQ_BILD and n == RESERVE_SCHLUESSEL and not vorrang()
+
+
 def _groq_leer_marke(n):
     return f"/tmp/groq_leer_{n}"
 
@@ -166,8 +185,11 @@ def groq_leer(n, modelle):
     (/tmp/groq_leer_<n>, Zeilen «Zeit Modell»); das Tageskontingent gilt je Modell und Organisation, ein Textmodell
     auf demselben Schlüssel bleibt nutzbar."""
     p = _groq_leer_marke(n)
+    # 05.10.: das Groq-Tageskontingent ist ein GLEITENDES 24-h-Fenster («try again in 16m»), keine Mitternachts-Uhr —
+    # für Vorrang-Aufrufer auf dem Reserve-Schlüssel gilt die Marke nur 20 min, sonst stand die Jury 6 h still.
+    gueltig = 1200 if (n == RESERVE_SCHLUESSEL and vorrang()) else LEER_GUELTIG_S
     try:
-        if time.time() - os.path.getmtime(p) >= LEER_GUELTIG_S:
+        if time.time() - os.path.getmtime(p) >= gueltig:
             return False
         inhalt = open(p).read()
     except OSError:
@@ -195,8 +217,10 @@ def groq_json(text, bilder=None, nummer_ab=1):
     for i, k in enumerate(ks):
         if groq_leer(i + 1, modelle):
             uebersprungen.append(i + 1); continue
+        if bilder and reserviert(i + 1, GROQ_BILD):
+            uebersprungen.append(i + 1); continue     # Vorrang-Reserve (05.10.)
         try:
-            return _groq_json_mit(k, text, bilder, nummer_ab)
+            return _groq_json_mit(k, text, bilder, nummer_ab, n=i + 1)
         except TagesKontingentLeer as e:
             letzter = e
             _groq_leer_merken(i + 1, modelle, str(e))
@@ -208,14 +232,14 @@ def groq_json(text, bilder=None, nummer_ab=1):
     raise letzter
 
 
-def _groq_json_mit(k, text, bilder=None, nummer_ab=1):
+def _groq_json_mit(k, text, bilder=None, nummer_ab=1, n=0):
     if bilder and len(bilder) > GROQ_MAX_BILDER:
         text = (f"Die {len(bilder)} Bilder sind zu EINEM Raster zusammengesetzt; jedes trägt oben sein Etikett "
                 f"«Bild {nummer_ab}» bis «Bild {nummer_ab + len(bilder) - 1}». Diese Etiketten sind die Nummern im Auftrag.\n\n" + text)
         bilder = [raster(bilder, nummer_ab)]
     global LETZTES_MODELL
     # Text: bei 429 (Minutenkontingent, geteilt mit Dauerläufen) zuerst auf das zweite Modell mit eigenem Kontingent
-    modelle = [GROQ_BILD] if bilder else [m for m in (GROQ_TEXT, GROQ_AUSWEICH) if m]
+    modelle = [GROQ_BILD] if bilder else [m for m in (GROQ_TEXT, GROQ_AUSWEICH) if m and not reserviert(n, m)]
     modell = modelle[0]
     body = {"model": modell, "temperature": 0, "messages": [{"role": "user", "content": _inhalt(text, bilder)}],
             "response_format": {"type": "json_object"}}
@@ -280,6 +304,20 @@ def handle_gemini_402(error_msg):
     """Call this when catching HTTP 402 from Gemini. Creates fallback marker."""
     _gemini_leer_markieren(error_msg)
 
+
+if __name__ == "__main__" and "--reserve-test" in sys.argv:
+    # Kanarienvögel der Vorrang-Reserve (05.10.2026)
+    alt_argv = sys.argv[0]
+    fehler = []
+    for skript, n, modell, soll in [("google_bild_tausch.py", 3, GROQ_BILD, True), ("titel_kauderwelsch_wache.py", 3, GROQ_BILD, True),
+                                    ("produkttext_duenn.py", 1, GROQ_BILD, False), ("produkttext_duenn.py", 3, GROQ_TEXT, False),
+                                    ("gemini_jury.py", 3, GROQ_BILD, False), ("cj_variante_bild.py", 3, GROQ_BILD, False)]:
+        sys.argv[0] = "/x/automation/" + skript
+        if reserviert(n, modell) != soll:
+            fehler.append(f"{skript} Schlüssel {n} {modell}: {not soll} statt {soll}")
+    sys.argv[0] = alt_argv
+    print("RESERVE-TEST: " + ("6/6 ok" if not fehler else "FEHLER " + "; ".join(fehler)))
+    sys.exit(1 if fehler else 0)
 
 if __name__ == "__main__" and "--leer" in sys.argv:
     # Stand der Leer-Marken je Schlüssel (ohne Aufruf)
