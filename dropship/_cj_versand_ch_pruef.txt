@@ -3685,3 +3685,12 @@ armband-aus-925er-silber-mit-zirkonia-626500	2512180707201626800	16	4.34	ok	land
 magnetarmband-aus-titan-und-edelstahl-621900	2512180620591622100	7	5.05	ok	landeseite
 nagelarmreif-mit-diamanten-635800	2512170922091636000	16	4.71	ok	landeseite
 retro-armband-aus-edelstahl-627100	2512170745431627300	16	4.50	ok	landeseite
+armband-mit-zirkon-akzenten-624500	2512170523391624700	16	4.57	ok	landeseite
+armband-aus-925er-silber-mit-zirkonia-nieten-633000	2512170513131633300	16	4.57	ok	landeseite
+damen-armbanduhr-mit-magnetverschluss-b0fb12	-	-	-	unklar keine CJ-SKU	landeseite
+boxhandschuhe-fur-training-und-kampfsport-008768	1381479158986706944	16	14.60	ok	landeseite
+ebenholz-holzuhr-mit-kalenderfunktion-69ca72	-	-	-	unklar keine CJ-SKU	landeseite
+tiefschutz-fur-kampfsport-038272	1381469126849073152	16	7.43	ok	landeseite
+elegante-quarzuhr-mit-lederarmband-0312c4	-	-	-	unklar keine CJ-SKU	landeseite
+fitness-und-yogamatte-fur-anfanger-160896	1381167487562944512	16	21.98	ok	landeseite
+wasserdichte-damenuhr-mit-metallarmband-2a910e	-	-	-	unklar keine CJ-SKU	landeseite
