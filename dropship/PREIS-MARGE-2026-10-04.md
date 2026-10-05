@@ -118,6 +118,27 @@ Regel und Ledger wie `cj_ausgelistet_sichtbar.py` (Tags `cj-entfernt`, `cj-entfe
 Zeile in `dropship/_cj_nachpruefung.tsv`, Altwerte in `dropship/_preis_marge_cj_weg_2026-10-05.tsv`). Vor jeder Mutation
 Live-Lesen + CJ ein zweites Mal gefragt; nur 1602002 zählt.
 
+## 4b. Zweite Messung 00:55 UTC: 371 NEUE Verlust-Varianten — alle vom selben Morgen
+
+Frischer Export nach dem Lauf (`MAXALTER=0 kosten_export_bauen.py`, 486'016 Zeilen): **371 Verlust-Varianten in 27 Produkten**,
+alle `cj-real`, alle angelegt 05.10. 00:13–00:41 UTC vom laufenden Grind (`cj_category_fill.mjs`, Kinderschuhe/Schmuck/Rucksäcke).
+Beispiel «Studentenschulranzen» (140 g): Preis 25.90, EK 21.48 → Boden 26.90.
+
+**Ursache (an der Zahl nachgerechnet):** `cj_category_fill.mjs` hatte EIGENE Kopien von `chf()`, `kosten()`, `gewicht()` aus dem
+August — Fracht-Boden 15 (widerlegt 23.08.), `.split('--')`-Spannenfehler, kein Verlustschutz-Boden, Abrundung. Der Fix vom
+04.10. in `cj_preis.mjs` (`bodenVerlustschutz`, `aufNeunzig`) kam dort nie an (`cj_sku_import.mjs` importiert seit 27.08. aus
+`cj_preis.mjs`, diese Datei nicht). Rechnung Schulranzen mit der alten Kopie: CJ $7.20 → EK 6.48 + 15 = **21.48** ✓, Preis
+landed 6.48 + (15 − 7) = 14.48 → max(20.27, 25.10, 16.90) → **25.90** ✓ — beide Zahlen exakt. Wahre Kosten 6.48 + 5.68 = 12.16.
+Folge seit 28.08.: EK leichter Ware um 15 − max(5, 3.4 + 16.3·kg) zu hoch (bis CHF 10), `kosten_boden15_korrigieren.py`
+reparierte täglich ~400 davon («war NIE unter Einstand») — die Quelle lief weiter.
+
+Getan:
+- `cj_category_fill.mjs`: die drei Kopien entfernt, `import { chf, kosten, gewicht } from './cj_preis.mjs'` (Signaturen identisch,
+  `node --check` ok; laufende Runner laden es beim nächsten Node-Start, Backup der alten Fassung im Scratchpad).
+- Die 27 Produkte / 371 Varianten: `preis_verlustschutz NUR_IDS` scharf 00:47 UTC gehoben (Faktor 1.04–1.10, Ledger 05.10.).
+  ⚠️ Diese Hebung rechnete mit dem AUFGEBLÄHTEN EK — die Preise sind damit etwas höher als nötig (≈ +1 CHF), nie zu tief.
+  Nicht zurückgesetzt: ohne den wahren EK (CJ-Preis je Produkt) gibt es keinen Boden, unter den man senken dürfte.
+
 ## 5. Werkzeuge erweitert (kein Neubau)
 
 - `automation/kosten_export_bauen.py`: Feld `compareAtPrice` im Bulk-Export.
@@ -126,12 +147,22 @@ Live-Lesen + CJ ein zweites Mal gefragt; nur 1602002 zählt.
 - `automation/ek_varianten_nachtragen.py`: `NUR_IDS=<Datei>` statt Schreiber-Tags.
 - `automation/preis_verlustschutz.py`: `NUR_IDS=<Datei>` (live prüfen statt Export-Kandidaten); leere Kandidatenliste zählt nicht
   mehr als «heute quittiert» (sonst übersprang der Lauf alle NUR_IDS-Produkte, sobald das Ledger eine Zeile von heute hatte).
+- **NEU `automation/ek_luecke_cj.py`** (täglicher Wächter, Trockenlauf Standard, `SCHARF=1`): (1) aktive CJ-Produkte ohne EK aus
+  `/tmp/kost28.jsonl` → Backfill / Varianten-Nachtrag → Verlustschutz live; (2) **alle aktiven Produkte der letzten 36 h live
+  durch den Verlustschutz** (schliesst die Export-Lücke bei Neuimporten: Selbsttest 00:55 — 870 Neuprodukte, 4 unter Boden);
+  (3) wer dann noch ohne EK ist und bei CJ 1602002 bekommt → DRAFT wie `cj_ausgelistet_sichtbar`. Halbgeschriebener Export →
+  PAUSE statt Traceback (eigene Falle beim ersten Lauf).
 
 ## 6. Bewusst NICHT gemacht
 
 - **Printful-/POD-Varianten ohne EK (481)** und Eigenmarke/Sets (114): kein Lieferanten-Endpunkt in diesem Lauf, Editor/POD ist tabu;
   Preise dort 11.90–199.90 ohne Kostenbasis → offen, nicht geraten.
 - Keine Preissenkung, kein Start von `reprice_to_benchmark.py`.
+- **Aufgeblähter EK im Altbestand NICHT korrigiert:** Schätzung aus Export (cj-real, ab 28.08., eine Variante mit Gewicht < 712 g
+  und EK ≥ 15): **~3'940 Produkte** tragen vermutlich den Boden 15 im EK. Für Ein-Varianten-Produkte gibt es keine Signatur
+  (`kosten_boden15_korrigieren` fasst sie bewusst nicht an); Beweis nur über CJ `product/query` (10 Punkte je Produkt ≈ 40'000
+  Punkte). Empfehlung: `cj_kosten_backfill.mjs NUR_IDS` mit Überschreib-Modus über mehrere Tage, dann Verlustschutz — eine eigene
+  Klasse, nicht in diesem Lauf.
 - Die 5 «Variante entfernt» (1602003) nicht gedraftet: Produkt bei CJ vorhanden, nur die hinterlegte Varianten-SKU fehlt — braucht
   Varianten-Neuzuordnung oder Urteil; der tägliche Wächter wertet 1602003 als «kein Urteil».
 - Kein Theme, keine Kundenmail, nichts gelöscht.

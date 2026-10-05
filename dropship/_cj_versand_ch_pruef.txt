@@ -3744,3 +3744,4 @@ futterautomat-fur-haustiere-71c2cf	-	-	-	unklar keine CJ-SKU	landeseite
 eingangs-organizer-mit-hasen-design-610900	2504140151261611100	11	35.18	ok	landeseite
 chiffon-bluse-mit-blumenmuster-und-ruschensaum-625400	2602250333281625800	16	7.17	ok	landeseite
 schurze-fur-kuche-haushalt-und-blumenladen-627520	1793542961767124992	16	8.11	ok	landeseite
+elegante-damenbluse-mit-spitzenbesatz-638400	2602240911411638800	16	8.11	ok	landeseite
