@@ -14,6 +14,7 @@ WAS DER LAUF TUT (täglich, idempotent):
   2. Ganz ohne EK  → `cj_kosten_backfill.mjs NUR_IDS=…` (alle sieben SKU-Formen, Ledger-Quittung gilt nicht als Urteil für immer).
      Teils ohne EK  → `ek_varianten_nachtragen.py NUR_IDS=…` (bekannter EK × Preisverhältnis, Rücklesen).
   3. `preis_verlustschutz.py NUR_IDS=…` (live) hebt, was nach Schritt 2 unter dem Boden liegt. Nie senken.
+  3b. Alle aktiven Produkte der letzten 36 h ebenfalls live durch den Verlustschutz (Export-Lücke bei Neuimporten).
   4. Produkte, die danach IMMER NOCH ohne EK sind und bei denen CJ live 1602002 antwortet → DRAFT + Tags
      cj-entfernt / cj-entfernt-<datum> / ohne-ek-cj-weg (dieselbe Regel und dasselbe Ledger `_cj_nachpruefung.tsv` wie
      cj_ausgelistet_sichtbar.py). Vor der Mutation Live-Lesen (Status, EK) + CJ ein zweites Mal; nur 1602002 ist ein Urteil,
@@ -50,13 +51,18 @@ def cj_ref(sku):
 def kandidaten():
     if not os.path.exists(EXPORT) or time.time() - os.path.getmtime(EXPORT) > 3 * 86400:
         print(f"PAUSE: {EXPORT} fehlt oder älter als 3 Tage"); sys.exit(2)
-    vs = {}
+    vs, kaputt = {}, 0
     for z in open(EXPORT, encoding="utf-8"):
-        o = json.loads(z)
+        try:
+            o = json.loads(z)
+        except ValueError:
+            kaputt += 1; continue      # Export wird gerade geschrieben (curl -o) — eigene Falle 05.10.: JSONDecodeError
         if "/ProductVariant/" not in o["id"]:
             continue
         uc = ((o.get("inventoryItem") or {}).get("unitCost") or {}).get("amount")
         vs.setdefault(o["__parentId"], []).append((o.get("sku") or "", uc))
+    if kaputt:
+        print(f"PAUSE: {kaputt} unlesbare Zeilen in {EXPORT} — Export in Arbeit, nächster Lauf"); sys.exit(2)
     ganz, teils = [], []
     for pid, v in vs.items():
         if not any(x[1] is None for x in v) or not re.search(r"\bCJ", " ".join(x[0] for x in v)):
@@ -87,6 +93,23 @@ def main():
             open(f"{TMP}/alle.txt", "w").write("\n".join(ganz + teils) + "\n")
             lauf([sys.executable, "automation/preis_verlustschutz.py"],
                  {"NUR_IDS": f"{TMP}/alle.txt", "SCHARF": "1", "SPERRE": f"{TMP}/pv.lock"}, "preis_verlustschutz")
+    # Schritt 3b (05.10.): NEUWARE der letzten 36 h live durch den Verlustschutz. Der Tagesläufer sieht Neuimporte erst
+    # mit dem nächsten Voll-Export (≤ 3 Tage) — gemessen 05.10. 00:55: 27 Produkte / 371 Varianten vom selben Morgen unter dem
+    # Boden, Export 00:08 kannte sie noch nicht. Nur IDs lesen (billig), preis_verlustschutz liest selbst live.
+    seit = (datetime.datetime.utcnow() - datetime.timedelta(hours=36)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    neu, cur = [], None
+    while True:
+        d = gql('query($q:String!,$c:String){products(first:250,query:$q,after:$c){pageInfo{hasNextPage endCursor} nodes{id}}}',
+                {"q": f"status:active created_at:>{seit}", "c": cur})["products"]
+        neu += [n["id"] for n in d["nodes"]]
+        if not d["pageInfo"]["hasNextPage"] or len(neu) >= 5000:
+            break
+        cur = d["pageInfo"]["endCursor"]
+    print(f"Neuware seit {seit}: {len(neu)} aktive Produkte → preis_verlustschutz live", flush=True)
+    if neu:
+        open(f"{TMP}/neu.txt", "w").write("\n".join(neu) + "\n")
+        lauf([sys.executable, "automation/preis_verlustschutz.py"],
+             {"NUR_IDS": f"{TMP}/neu.txt", "SPERRE": f"{TMP}/pv.lock", **({"SCHARF": "1"} if SCHARF else {})}, "preis_verlustschutz (Neuware)")
     # Schritt 4: wer jetzt noch ohne EK ist → CJ fragen
     weg, kein_urteil, ek_da, n = [], [], 0, 0
     for pid in ganz[:CAP * 3]:

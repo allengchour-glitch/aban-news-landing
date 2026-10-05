@@ -92,7 +92,45 @@ def shopify(query, variables=None):
 
 
 TAGE = int(os.environ.get("TAGE", "60"))
-MAX_SEITEN = int(os.environ.get("MAX_SEITEN", "45"))
+# ⚠️ 05.10.2026 (Betreiber «fix 12 h lang alles», Bereich Lieferbarkeit CH) — GEMESSEN:
+# 329 aktive CJ-Produkte hatten in 30 Tagen menschliche Besucher (ShopifyQL landing_page_path),
+# 209 davon (303 Sitzungen, darunter der Bestseller «Leinen-Set Provence», 42 Sitzungen, verkauft)
+# hatten NIE eine CH-Versandpruefung — in keinem der vier Ledger. Dieser Waechter fragte nur die
+# Top-45 und kam seit dem 27.09. in 2 von 8 Laeufen durch (Container startet ~stuendlich neu; die
+# geteilte CJ-Uhr gibt ihm neben 4 Grind-Runnern + 3 Waechtern einen Platz alle ~15 s, 45 Seiten
+# x 3 Aufrufe = ~35 min). Ein gestorbener Lauf hinterliess NICHTS: kein Ledger, nur die NEIN-Datei.
+# Darum jetzt: (1) ALLE Produkt-Landeseiten (MAX_SEITEN 400), (2) Ledger je Handle SOFORT nach
+# dem Urteil — ein «ja» gilt FRIST_JA_TAGE, danach wird neu gefragt; NEIN/unklar werden im
+# naechsten Lauf wieder gefragt (Zwei-Laeufe-Regel unten bleibt), (3) hoechstens MAX_PRODUKTE je
+# Lauf (~3 CJ-Aufrufe je Produkt → ~300 Aufrufe, der Rest kommt im naechsten Lauf dran).
+MAX_SEITEN = int(os.environ.get("MAX_SEITEN", "400"))
+MAX_PRODUKTE = int(os.environ.get("MAX_PRODUKTE", "100"))
+FRIST_JA_TAGE = float(os.environ.get("FRIST_JA_TAGE", "14"))
+DRY = os.environ.get("DRY") == "1"
+LEDGER = os.path.join(REPO, "dropship", "_besuchte_seiten_geprueft.tsv")   # handle · epoche · ja/NEIN/unklar · grund · sku
+
+
+def ledger_lesen():
+    """Juengstes Urteil je Handle: {handle: (epoche, urteil, grund)}. Fehlt die Datei: leer."""
+    aus = {}
+    if not os.path.exists(LEDGER):
+        return aus
+    for z in open(LEDGER, encoding="utf-8"):
+        t = z.rstrip("\n").split("\t")
+        if len(t) < 3:
+            continue
+        try:
+            ts = float(t[1])
+        except ValueError:
+            continue
+        if t[0] not in aus or aus[t[0]][0] < ts:
+            aus[t[0]] = (ts, t[2], t[3] if len(t) > 3 else "")
+    return aus
+
+
+def ledger_schreiben(handle, urteil, grund, sku):
+    with open(LEDGER, "a", encoding="utf-8") as f:
+        f.write(f"{handle}\t{time.time():.0f}\t{urteil}\t{(grund or '').replace(chr(9), ' ')[:120]}\t{sku}\n")
 
 
 def besuchte_produkt_handles():
@@ -104,7 +142,7 @@ def besuchte_produkt_handles():
     vier Fehlversuche.
     """
     q = ('{ shopifyqlQuery(query: "FROM sessions SHOW sessions GROUP BY landing_page_path '
-         "WHERE human_or_bot_session = 'human' SINCE -%dd ORDER BY sessions DESC LIMIT 250\") "
+         "WHERE human_or_bot_session = 'human' SINCE -%dd ORDER BY sessions DESC LIMIT 1000\") "
          '{ parseErrors tableData { rows } } }' % TAGE)
     d = shopify(q)["data"]["shopifyqlQuery"]
     if d.get("parseErrors"):
@@ -128,11 +166,34 @@ def besuchte_produkt_handles():
 
 
 def main():
+    # «START » als ERSTE Zeile (Aufseher-Konvention 29.09.: still_gestorben() zaehlt nur Zeilen danach).
+    print(f"START {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} besuchte_seiten_lieferbar "
+          f"DRY={DRY} MAX_SEITEN={MAX_SEITEN} MAX_PRODUKTE={MAX_PRODUKTE}", flush=True)
     handles = [] if sys.stdin.isatty() else [h.strip() for h in sys.stdin if h.strip()]
     if not handles:
         handles = besuchte_produkt_handles()
         print(f"{len(handles)} besuchte Produktseiten der letzten {TAGE} Tage (selbst geholt)\n",
               flush=True)
+
+    # ── Ledger: frische «ja» ueberspringen, Rest nach Sitzungen (Reihenfolge der Liste) ──
+    led = ledger_lesen()
+    jetzt = time.time()
+    frisch_ja = [h for h in handles
+                 if led.get(h, (0, "", ""))[1] == "ja" and jetzt - led[h][0] < FRIST_JA_TAGE * 86400]
+    offen = [h for h in handles if h not in set(frisch_ja)]
+    if os.environ.get("NUR_NEIN") == "1":
+        # Bestaetigungslauf (05.10.): nur Handles, deren juengstes Ledger-Urteil NEIN ist — das zweite,
+        # unabhaengige NEIN fuer die Vollstreckung, ohne den geteilten CJ-Eimer fuer frische Fragen zu belasten.
+        offen = [h for h in offen if led.get(h, (0, "", ""))[1] == "NEIN"]
+    handles = offen[:MAX_PRODUKTE]
+    rest = len(offen) - len(handles)
+    print(f"Ledger: {len(frisch_ja)} mit frischem «ja» (< {FRIST_JA_TAGE:.0f} T) uebersprungen · "
+          f"{len(offen)} offen · dieser Lauf fragt {len(handles)} · {rest} bleiben fuer den naechsten Lauf",
+          flush=True)
+    if not handles:
+        print("LIEFERBAR: 0 · NICHT IN DIE CH: 0 · NICHT BEURTEILBAR: 0  (nichts offen — alles frisch im Ledger)")
+        print("FERTIG: nichts zu fragen", flush=True)
+        return
 
     # ── Kanarienvogel ────────────────────────────────────────────────────────
     n, grund = ch_optionen_vid(KANARIENVOGEL_VID)
@@ -160,18 +221,36 @@ def main():
             unklar.append((h, "Produkt existiert nicht mehr"))
             continue
         p = nodes[0]
+        if p["status"] != "ACTIVE":
+            # 05.10.: Entwuerfe kosten keine Kundin Geld — kein CJ-Aufruf dafuer (der Eimer ist geteilt).
+            print(f"{h[:58]:58} {p['status']:7} {'-':>11}  nicht ACTIVE, nicht bei CJ gefragt", flush=True)
+            continue
         sku = (p["variants"]["nodes"] or [{}])[0].get("sku") or ""
         # 22.09.2026: Nicht-CJ-Ware (Printful-POD «9000001_4011», Fortura CH-Lager, eigene
         # Buendel LX-) hat keine CJ-Frage zu beantworten — vorher landete «shirt-eidgenoss»
         # als «unklar (1602001 Product not found)» im Bericht: eine Absage von der falschen
         # Adresse (Lehre 09.08./21.09.). Diese Ware gilt hier als lieferbar (CH-Lager/POD).
-        if re.fullmatch(r"\d{6,8}_\d{4}", sku) or sku.startswith(("fortura-", "LX-", "lx-")):
+        if re.fullmatch(r"\d{6,8}_\d{4,6}", sku) or sku.startswith(("fortura-", "LX-", "lx-")):   # 05.10.: Printful «9000001_10163» hat 5 Stellen nach dem Strich — galt als CJ und wurde «unklar»
             print(f"{h[:58]:58} {p['status']:7} {'ja':>11}  kein CJ-Artikel (POD/CH-Lager), nicht bei CJ gefragt", flush=True)
             ok += 1
+            ledger_schreiben(h, "ja", "kein CJ-Artikel (POD/CH-Lager)", sku)
             continue
         urteil, grund = versandfaehig(sku)
+        if isinstance(grund, tuple):          # versandfaehig gibt bei «ja» (Text, Fracht-USD)
+            grund = grund[0]
+        if urteil is False and "KEINE Versandoption" in str(grund):
+            # 05.10.: Ein einzelnes NEIN kann ein CJ-Aussetzer in genau dieser Sekunde sein. Eine zweite
+            # Messung 15 s spaeter kostet einen Aufruf und trennt «widerspruechlich» (→ unklar, kein Befund)
+            # von einem belastbaren NEIN. Die Zwei-Laeufe-Regel der Vollstreckung bleibt zusaetzlich bestehen.
+            time.sleep(15)
+            urteil2, grund2 = versandfaehig(sku)
+            if urteil2 is True:
+                urteil, grund = None, f"widerspruechlich: 1. Messung {grund} / 2. Messung {grund2[0] if isinstance(grund2, tuple) else grund2}"
+            elif urteil2 is False:
+                grund = f"{grund} · 2. Messung bestaetigt"
         zeichen = {True: "ja", False: "NEIN", None: "unklar"}[urteil]
         print(f"{h[:58]:58} {p['status']:7} {zeichen:>11}  {grund}", flush=True)
+        ledger_schreiben(h, zeichen, grund, sku)       # SOFORT — ein sterbender Lauf verliert nur ein Produkt
         if urteil is False:
             befunde.append((h, p["status"], grund, sku))
         elif urteil is True:
@@ -211,13 +290,22 @@ def main():
         alt_zeilen.pop(h, None)
     for h, st, g, sku in befunde:          # … und wird durch das neue Urteil ersetzt
         alt_zeilen[h] = [h, st, g, sku]
-    with open(reg, "w") as f:
+    if DRY:
+        print("\nDRY=1 — Register dropship/_besuchte_seiten_nicht_lieferbar.txt NICHT geschrieben (ein Probelauf zaehlt nicht als Lauf)")
+    else:
+      with open(reg, "w") as f:
         for teile in sorted(alt_zeilen.values()):
             f.write("\t".join(teile) + "\n")
     print(f"\n→ dropship/_besuchte_seiten_nicht_lieferbar.txt "
           f"({len(alt_zeilen)} Zeilen gesamt, davon {len(befunde)} aus diesem Lauf)")
     vollstrecken(befunde, vorher)
-    politur(handles)
+    if DRY:
+        print("DRY=1 — Politur (Faktenblock-Prio, du-Form) uebersprungen")
+    else:
+        politur(handles)
+    # Schlusszeile fuer still_gestorben(): fehlt sie, holt der Aufseher den Lauf nach (bis 3x/Tag).
+    print(f"FERTIG: {len(handles)} gefragt · lieferbar {ok} · NEIN {len(befunde)} · unklar {len(unklar)} · "
+          f"{rest} offen fuer den naechsten Lauf", flush=True)
 
 
 TAG_KEINE_CH = "cj-keine-ch-versandoption"
@@ -240,6 +328,10 @@ def vollstrecken(befunde, vorher):
             n_warte += 1
             zeilen.append(f"| `{h}` | ⏳ erstes NEIN ({heute}) — Draft beim nächsten NEIN | {g} | `{sku}` |")
             continue
+        if DRY:
+            n_warte += 1
+            print(f"   DRY: wuerde DRAFT setzen: /products/{h} ({g})", flush=True)
+            continue
         q = '{products(first:1, query:"handle:%s"){nodes{id status tags}}}' % h
         try:
             p = shopify(q)["data"]["products"]["nodes"][0]
@@ -256,7 +348,7 @@ def vollstrecken(befunde, vorher):
             print(f"   → DRAFT: /products/{h} ({g})", flush=True)
         except Exception as e:  # noqa: BLE001
             zeilen.append(f"| `{h}` | ❌ Fehler {type(e).__name__}: {str(e)[:80]} | {g} | `{sku}` |")
-    if befunde:
+    if befunde and not DRY:
         neu = not os.path.exists(BERICHT)
         with open(BERICHT, "a") as f:
             if neu:

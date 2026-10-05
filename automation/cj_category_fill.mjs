@@ -39,46 +39,17 @@ const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
 import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
- // 2026-08-03: China→CH-Fracht REAL ~CHF 15 (Order #1011: $15.77) — MUSS in den Preis, sonst Verlust bei billiger Ware!
- const kg=(parseFloat(grams)||0)/1000;
- // Kunde zahlt CHF 7 Versand unter Gratis-Schwelle → nur die Fracht-LÜCKE (Fracht - 7) in den Preis
- const freight=Math.max(15, 3.4+16.3*kg);       // reale Fracht CHF
- const gap=Math.max(0, freight-7);              // vom Preis zu deckende Fracht-Lücke (~CHF 8 leicht)
- const landed=u*0.9+gap;                        // Kosten die der Produktpreis tragen muss
- // ⚠️ 20.08.2026 — DIE ALTE MARGE WAR SYSTEMATISCH ZU KNAPP: `landed+5`.
- // `landed` trägt nur die Fracht-LÜCKE (freight−7), die VOLLEN Stückkosten sind `landed+7`.
- // Der Aufschlag von 5 lag also 2 Franken UNTER den Kosten, sobald der Kunde keine
- // Versandpauschale zahlt. Genau das passiert ab CHF 50 Warenwert (Gratis-Versand) — und
- // der automatische «2+ Artikel −10 %» trifft dieselben Warenkörbe ein zweites Mal.
- // Durchgerechnet an echten Kostendaten (665 Varianten, erstmals vorhanden am 20.08.):
- //   EK $3 / 0,3 kg → Preis 15.90, Kosten 17.70 → mit Versandbeitrag +5.20,
- //   bei Gratis-Versand −1.80, mit Rabatt −3.39. Von 665 Varianten standen 200 unter Einstand.
- // Der Aufschlag deckt jetzt die vollen Kosten UND hält dem 10-%-Rabatt stand:
- // gefordert ist p·0,9 ≥ Kosten·1,05, also p ≥ (landed+7)·1,167.
- let p=Math.max(landed*1.4, landed*1.167+8.2, 16.90);
- return (Math.floor(p)+0.90).toFixed(2);};
-
-// ⚠️ KOSTEN MITSCHREIBEN (20.08.2026). Die Rechnung oben KENNT den Einkaufspreis — sie hat ihn
-// bisher nur weggeworfen. Folge: Shopifys «Kosten pro Artikel» war bei 86 % der Produkte leer,
-// und damit konnte NIEMAND sagen, ob eine Bestellung Gewinn bringt. Bei Order #1011 (Hängematte
-// CHF 14.90 + CHF 7 Versand) ist das keine akademische Frage.
-// Definition: Warenkosten + VOLLE Fracht. Die CHF 7, die der Kunde für den Versand zahlt, sind
-// Erlös und stehen in der Bestellung — sie gehören nicht in die Stückkosten, sonst rechnet sich
-// die Marge künstlich schön (genau das täte der `landed`-Wert oben, der nur die Fracht-LÜCKE trägt).
-// ⚠️ DAS GEWICHT WURDE BISHER WEGGEWORFEN (22.08.2026). chf() und kosten() lesen es von CJ
-// und rechnen die Fracht daraus — geschrieben wurde es nie. Ergebnis: 45'700 von 45'741
-// aktiven Produkten stehen in Shopify auf Gewicht 0. Damit ist weder eine gewichtsbasierte
-// Versandregel moeglich noch die Frage «welche Ware ist schwer?» beantwortbar — und genau
-// das Gewicht entscheidet ueber Gewinn oder Verlust (Fracht gemessen: $6.34 · $9.49 · $19.35).
-// Exakt dasselbe Muster wie beim Einkaufspreis vor dem 20.08.: bekannt, benutzt, verworfen.
-const gewicht=(grams)=>{const g=parseFloat(grams)||0;
-  return g>0?{measurement:{weight:{value:g,unit:'GRAMS'}}}:{};};
-
-const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
- const kg=(parseFloat(grams)||0)/1000;
- const freight=Math.max(15, 3.4+16.3*kg);
- return (u*0.9+freight).toFixed(2);};
+// ⚠️ 05.10.2026 — DREI LOKALE KOPIEN ENTFERNT (chf, gewicht, kosten), siebte Wiederholung der Geschwister-Lehre.
+// Diese Datei rechnete bis heute mit ihrer EIGENEN Preis- und Kostenformel aus dem August:
+//   * Fracht-Boden 15 (widerlegt 23.08.: 20 g → CHF 4.34) → jeder EK leichter Ware um bis zu CHF 10 zu hoch,
+//     kosten_boden15_korrigieren.py reparierte TÄGLICH ~400 davon («war NIE unter Einstand») — die Quelle lief weiter;
+//   * `.split('--')` (sucht zwei Bindestriche, trennt nie) → Spannen «4.41-12.22» als billigste Variante gelesen;
+//   * kein Verlustschutz-Boden (15 % Reserve + Gratisversand, Betreiber 02.10.) und `Math.floor(p)+0.90` rundete AB.
+// Gemessen 05.10. 00:55 UTC: 27 Produkte / 371 Varianten des laufenden Grinds (angelegt 00:13–00:41) lagen unter dem
+// Boden von preis_verlustschutz — die 04.10. in cj_preis.mjs eingebaute Korrektur (bodenVerlustschutz, aufNeunzig)
+// kam hier nie an. Jetzt gilt EINE Quelle: cj_preis.mjs (wie cj_sku_import.mjs seit dem 27.08.).
+// Signaturen identisch: chf(usd, grams) → String .90 · kosten(usd, grams) → String · gewicht(grams) → {measurement} | {}.
+import { chf, kosten, gewicht } from './cj_preis.mjs';
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
 // Farbtabelle liegt seit 21.08.2026 in automation/farben_de.mjs — es gab drei
