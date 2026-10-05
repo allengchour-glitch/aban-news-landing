@@ -3,6 +3,9 @@
 # Rueckwaerts-kompatibel: 5 Argumente = alte Form <src> <out> "<Titel>" "<Preis>" <musik>.
 #
 # ⚠️ Die statische ffmpeg-Fassung im Container hat KEIN drawtext (gemessen 22.09.). Text kommt deshalb
+# 05.10.: GROSS (Betreiber «mann sieht die bilder und videos sehr klein»; gemessen 3 Reels: Video = 23-32 % der Flaeche).
+# Hochformat (> 1,3) jetzt VOLLBILD 1080×1920 (Ebenen liegen darueber wie bei nativen Reels); quadratisch/leicht hoch
+# 970 hoch im Band 200-1170 (Unterkante = Infofeld); quer 860 hoch, mittig auf 1080 beschnitten (16:9 behaelt 71 % der Breite).
 # 28.09.: BAND 390-1170 (780 hoch) statt 600-1180 (Betreiber-Screenshot TikTok «das video ist sehr klein?»: ein 9:16-Lederrucksack
 # stand 326×580 px = 9 % der Flaeche). Quer/quadratisch: volle Breite 1080; Hochformat bis 1,3: 780 hoch; steiler (9:16): 600 breit,
 # mittig auf 780 beschnitten (73 % der Hoehe bleiben) → 600×780 = 2,5× Flaeche. Der Hook (400-600, nur 0-3,2 s) liegt halbdurchsichtig
@@ -31,8 +34,8 @@ MUSIK_START="${MUSIK_START:-0}"
 # musik_roh / musik_geduckt / stimme (vor der Endnormierung) zum Nachmessen des Duckings.
 VIDEO_GRAPH="
 [0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.06[bg];
-[0:v]scale=w='if(gt(ih/iw\,1.3)\,600\,if(gt(ih/iw\,0.7222)\,-2\,1080))':h='if(gt(ih/iw\,1.3)\,-2\,if(gt(ih/iw\,0.7222)\,780\,-2))',crop=w='min(iw\,1080)':h='min(ih\,780)'[fg];
-[bg][fg]overlay=(W-w)/2:390+(780-h)/2[base];
+[0:v]scale=w='if(gt(ih/iw\,1.3)\,trunc(max(1080\,1920*iw/ih)/2)*2\,-2)':h='if(gt(ih/iw\,1.3)\,-2\,if(gt(ih/iw\,0.7222)\,970\,860))',crop=w='min(iw\,1080)':h='min(ih\,if(gte(ih\,1900)\,1920\,970))'[fg];
+[bg][fg]overlay=x=(W-w)/2:y='if(gte(h\,1900)\,0\,1170-h)'[base];
 [base][2:v]overlay=0:0[v1];
 [v1][3:v]overlay=0:0:enable='lt(t,3.2)'[v]"
 if [ -n "${STIMME:-}" ] || [ "${LAUTHEIT_2PASS:-0}" = "1" ]; then
@@ -72,8 +75,8 @@ fi
 # «neu geschnittene» Reel begann trotzdem bei Quellsekunde 0 (13/13 wieder am Hook-Tor gescheitert). Gleicher Eingangs-Seek wie oben.
 ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -ss "${START:-0}" -i "$SRC" -ss "$MUSIK_START" -i "$MUSIC" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "
 [0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.06[bg];
-[0:v]scale=w='if(gt(ih/iw\,1.3)\,600\,if(gt(ih/iw\,0.7222)\,-2\,1080))':h='if(gt(ih/iw\,1.3)\,-2\,if(gt(ih/iw\,0.7222)\,780\,-2))',crop=w='min(iw\,1080)':h='min(ih\,780)'[fg];
-[bg][fg]overlay=(W-w)/2:390+(780-h)/2[base];
+[0:v]scale=w='if(gt(ih/iw\,1.3)\,trunc(max(1080\,1920*iw/ih)/2)*2\,-2)':h='if(gt(ih/iw\,1.3)\,-2\,if(gt(ih/iw\,0.7222)\,970\,860))',crop=w='min(iw\,1080)':h='min(ih\,if(gte(ih\,1900)\,1920\,970))'[fg];
+[bg][fg]overlay=x=(W-w)/2:y='if(gte(h\,1900)\,0\,1170-h)'[base];
 [base][2:v]overlay=0:0[v1];
 [v1][3:v]overlay=0:0:enable='lt(t,3.2)'[v]
 " -map "[v]" -map 1:a -af "afade=t=in:d=0.3,afade=t=out:st=$((DUR-1)):d=1,loudnorm=I=-14:TP=-1.5:LRA=11" \
