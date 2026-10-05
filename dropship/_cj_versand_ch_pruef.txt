@@ -4034,3 +4034,4 @@ shield-sonnenbrille-vortex-one-piece-uv400	2606130316171630700	5	5.46	ok	landese
 sonnenbrille-aviateur-dual-bridge-uv400	2606120720101628500	5	5.43	ok	landeseite
 susswasserperlen-armband-perla-925-silber-infinity	2065648744874430466	16	7.17	ok	landeseite
 925-silber-armband-onda-kleeblatt-glieder	2065713389650857985	16	7.17	ok	landeseite
+925-silber-armband-cerchio-circle-link	2065686704387760129	16	7.17	ok	landeseite
