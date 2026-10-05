@@ -3474,3 +3474,13 @@ elegante-business-schuhe-fur-herren-627300	hat-liste
 business-casual-lederschuhe-fur-herren-626900	gesetzt-2
 loafer-im-retro-look-fur-herren-628600	hat-liste
 herren-sandalen-mit-geschlossenem-zehenbereich-610900	hat-liste
+elegante-business-lederschuhe-fur-herren-618200	gesetzt-3
+herren-low-top-leder-sneaker-626800	hat-liste
+business-oxford-schuhe-aus-leder-611600	hat-liste
+business-casual-leder-slipper-fur-herren-613400	gesetzt-5
+lassige-leder-loafer-fur-herren-602800	hat-liste
+business-schuhe-aus-echtleder-603200	hat-liste
+bullock-derby-business-schuhe-mit-8cm-erhohung-612200	hat-liste
+mesh-low-top-sneaker-fur-herren-619400	hat-liste
+high-top-wrestling-schuhe-608700	hat-liste
+atmungsaktiver-herren-sneaker-mit-dampfung-614100	hat-liste
