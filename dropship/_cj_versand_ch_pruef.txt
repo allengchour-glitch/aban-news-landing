@@ -3636,3 +3636,6 @@ metall-uhrenarmband-mit-strasssteinen-221184	1679367945044107264	16	5.41	ok	land
 smartwatch-armband-mit-perlen-398208	1677485872058478592	16	5.12	ok	landeseite
 f64-smart-armbanduhr-mit-bluetooth-318912	1662721478682484736	7	5.81	ok	landeseite
 hd-wlan-tragbarer-handy-projektor-073216	1515211101338873856	3	36.21	ok	landeseite
+mini-full-hd-led-projektor-fur-zuhause-971072	1443879108399468544	16	19.42	ok	landeseite
+tragbarer-smart-projektor-p62-hd-auflosung-844800	1444159196777025536	7	25.36	ok	landeseite
+mini-projektor-fur-heim-und-burogebrauch-617280	1439469020666531840	11	33.08	ok	landeseite
