@@ -3906,3 +3906,7 @@ baseball-cap-navy-washed-cotton	2060289978965536770	16	6.48	ok	landeseite
 baseball-cap-washed-vintage-damen	2605300832471637700	16	5.96	ok	landeseite
 sport-sonnenbrille-velo-outdoor-radsport	2605280358201633500	5	5.13	ok	landeseite
 herren-sommershirt-breeze-leicht-atmungsaktiv	2605310648231628000	16	7.25	ok	landeseite
+herren-strickshirt-riviera-cord-kurzarm	2605310658081609300	16	10.15	ok	landeseite
+vintage-cap-heritage-washed-bestickt-unisex	2060541327115476994	16	6.48	ok	landeseite
+vintage-cap-blessed-washed-bestickt-unisex	2060281582421913601	16	6.48	ok	landeseite
+bucket-hat-leo-leoparden-print-sonnenschutz	2060257138868674562	16	5.39	ok	landeseite
