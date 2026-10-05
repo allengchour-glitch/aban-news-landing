@@ -3602,3 +3602,11 @@ gestreiftes-familien-set-fur-weihnachten-246528	1720720807753687040	16	10.69	ok	
 weihnachts-t-shirt-fur-damen-mit-aufdruck-630400	2510140315011630700	16	7.17	ok	landeseite
 weihnachtsbaum-pullover-fur-damen-600400	2607020056321601300	16	10.55	ok	landeseite
 retro-weihnachts-hoodie-mit-3d-print-und-tasch-614600	2605140748211615100	16	8.79	ok	landeseite
+weihnachts-hundespielzeug-set-mit-sound-6-teil-613500	2605250954441614200	16	8.79	ok	landeseite
+weihnachts-hoodie-fur-die-ganze-familie-619500	2601010948141619800	16	8.79	ok	landeseite
+weihnachts-pullover-fur-damen-620100	2412180748461620400	16	11.23	ok	landeseite
+weihnachts-pyjama-fur-die-ganze-familie-600900	2512261006461601200	16	10.29	ok	landeseite
+weihnachts-loungewear-fur-die-ganze-familie-604200	2512260959571604400	16	10.29	ok	landeseite
+herren-sportschuhe-mit-breiter-zehenpartie-603700	2410030245061604000	16	11.10	ok	landeseite
+smartuhr-mit-multifunktionsarmband-und-kopfhor-519be8	-	-	-	unklar keine CJ-SKU	landeseite
+belodi-partikel-kinder-bauklotze-445696	1600760006771748864	16	11.60	ok	landeseite
