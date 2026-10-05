@@ -4225,3 +4225,6 @@ gemuseschneider-15-in-1-mit-schaler-und-hobel-168898	2056584983303467010	0	-	KEI
 silikon-eierpochierer-gondel-145537	2056653624657723393	16	5.81	ok	landeseite
 15-in-1-gemuseschneider-763201	2056583440422563841	0	-	KEINE CH-Option → DRAFT	landeseite
 salz-und-pfefferstreuer-set-2-teilig-936066	2052935108415565826	0	-	KEINE CH-Option → DRAFT	landeseite
+dr-reismilch-gesichtscreme-50g-555521	2072573310321721346	3	7.08	ok	landeseite
+dr-reismilch-gesichtsreiniger-919106	2072573052941279234	3	6.18	ok	landeseite
+dr-snail-collagen-cream-50g-287233	2072571844761841666	3	6.16	ok	landeseite
