@@ -427,3 +427,14 @@ gid://shopify/Product/15458467185025	Gold
 gid://shopify/Product/15470013645185	Schwarz
 gid://shopify/Product/15470013743489	Blau
 gid://shopify/Product/15477042872705	Schwarz
+gid://shopify/Product/15453119218049	Silber
+gid://shopify/Product/15453415997825	Gold
+gid://shopify/Product/15453417767297	Braun
+gid://shopify/Product/15453526720897	Schwarz
+gid://shopify/Product/16604846129543	Hellblau
+gid://shopify/Product/16604848488839	Gold
+gid://shopify/Product/16604848750983	Gelb
+gid://shopify/Product/16604931162503	Gold
+gid://shopify/Product/16607160205703	Gold
+gid://shopify/Product/16607161647495	Schwarz
+gid://shopify/Product/16607182815623	Schwarz
