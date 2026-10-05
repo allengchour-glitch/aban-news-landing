@@ -16,5 +16,5 @@
 - Gmail-Entwurf an rpapini@fortura.ch (cc info@): Muster ORDERS + DESADV, neutraler Versand, Annahmeschluss, Testbestellung.
 
 ## Offen
-- Betreiber: Entwurf senden (am besten von info@luxestyle.ch).
+- ✅ 05.10. ~20:30 UTC vom Betreiber GESENDET (Kurzfassung: nur «Beispiel-Bestelldatei für Ordner ORDERS?»). Nächster Schritt: Antwort von Papini abwarten → Muster in FORTURA_XML_MUSTER → Stufe 2.
 - Stufe 2 nach Muster: XML bauen → `SYNO.FileStation.Upload` nach /home/ORDERS; DESADV lesen → Fulfillment + Tracking in Shopify.
