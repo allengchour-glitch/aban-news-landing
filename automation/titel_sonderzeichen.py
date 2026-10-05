@@ -52,8 +52,9 @@ def ohne_doppelmenge(t):
     if not m:
         return t, None
     n, vorne = m.group(1), t[:m.start()]
-    if re.search(r"(?<!\d)%s\s*(?:St(?:ü|ue)ck|Stk|Teile|Paar|Rollen?)\b|(?<!\d)%s\s*-?\s*teilig|\(\s*%s\s*(?:St|x)\b"
-                 % (n, n, n), vorne, re.I):
+    # 05.10.2026 (Prüfer): enger als stueckzahl.mjs — «N-Stück», «Ner-Set/-Pack», «N Teilen» galten nicht als vorhandene Menge
+    if re.search(r"(?<!\d)%s\s*-?\s*(?:St(?:ü|ue)ck|Stk|Teilen?|Paar|Rollen?)\b|(?<!\d)%s\s*-?\s*teilig|(?<!\d)%ser[- ]?(?:Set|Pack|Packung)\b|\(\s*%s\s*(?:St|x)\b"
+                 % (n, n, n, n), vorne, re.I):
         return vorne.rstrip(" ·"), "doppelmenge"
     return t, None
 
@@ -127,7 +128,7 @@ def main():
     geaendert = uebersprungen = fehler = 0
     for i in range(0, len(treffer), 50):
         block = treffer[i:i + 50]
-        live = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status tags}}}', {"ids": [p for p, _ in block]})["nodes"]
+        live = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status tags seo{title description}}}}', {"ids": [p for p, _ in block]})["nodes"]
         for p in live:
             if not p or p["status"] != "ACTIVE" or any(POD.search(x) for x in p["tags"]):
                 uebersprungen += 1; continue
@@ -135,8 +136,13 @@ def main():
             neu_t, regeln = korrigieren(alt)
             if neu_t == alt or not neu_t:
                 uebersprungen += 1; continue
+            eingabe = {"id": p["id"], "title": neu_t}
+            # 05.10.2026 (Prüfer): auch der SEO-Titel (den Google zeigt) — immer BEIDE SEO-Felder senden (SEOInput ersetzt beide)
+            seo = p.get("seo") or {}
+            if seo.get("title") or seo.get("description"):
+                eingabe["seo"] = {"title": glaetten(seo.get("title") or ""), "description": glaetten(seo.get("description") or "")}
             r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{title} userErrors{message}}}',
-                    {"i": {"id": p["id"], "title": neu_t}})["productUpdate"]
+                    {"i": eingabe})["productUpdate"]
             ok = not r["userErrors"] and r["product"] and r["product"]["title"] == neu_t
             geaendert += ok; fehler += not ok
             led.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{p['id']}\t{alt}\t{neu_t}\t{','.join(regeln)}\t{'ok' if ok else 'FEHLER ' + str(r['userErrors'])[:80]}\n")
