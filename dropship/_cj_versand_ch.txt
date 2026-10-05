@@ -1494,3 +1494,9 @@ gid://shopify/Product/16606108483975	nicht-versendbar	Magnetischer Schraubendreh
 gid://shopify/Product/16606108418439	ok	Schweiss- und Schneidwerkzeug-Set für 100 mm
 gid://shopify/Product/16606108680583	ok	Wasserturm für Wein – Edelstahl-Set
 gid://shopify/Product/16606124867975	ok	Bambus Grillplatten-Set – 3 Stück
+gid://shopify/Product/15448946672001	nicht-versendbar	Agility-Trainingsset für Hunde
+gid://shopify/Product/16604870607239	ok	Herren-Stiefeletten mit Schnürung und dicker Sohle
+gid://shopify/Product/16606142235015	ok	Stahl-Deckel für Schnellöffnung von Schächten
+gid://shopify/Product/16607377916295	ok	Kochbrett aus Massivholz – doppelseitig
+gid://shopify/Product/15448837587329	nicht-versendbar	Keramik-Antihaft-Bratpfanne
+gid://shopify/Product/16604913729927	ok	Grosse Schmuckschatulle in Himmelblau
