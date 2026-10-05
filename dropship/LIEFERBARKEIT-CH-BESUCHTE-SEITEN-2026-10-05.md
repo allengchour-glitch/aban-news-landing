@@ -43,9 +43,28 @@ Rückstand der anderen Wächter (nur gemessen, nicht angefasst — laufen gerade
 Trockenlauf 00:49 UTC (`DRY=1 MAX_PRODUKTE=6`): Kanarienvogel 16 Optionen; 5 ja (Leinen-Set Provence 16 Optionen ab USD 10.49,
 Plateau-Sneaker 16 ab USD 14.72, Tunmate-Rizinusöl 3 ab USD 6.67), 1 NEIN = das bekannte Rizinusöl-Wickel-Set (schon DRAFT), 2. Messung bestätigt.
 
-## Nachher
+## Nachher (gemessen 05.10. 02:00 UTC)
 
-(wird unten nach dem scharfen Lauf ergänzt)
+**Lauf 1, scharf, 00:54–01:57 UTC** (63 min für 100 Produkte — die geteilte CJ-Uhr gibt ~10 s je Aufruf): Kanarienvogel 16 Optionen;
+`FERTIG: 100 gefragt · lieferbar 79 · NEIN 2 · unklar 5 · 295 offen` — 14 Entwürfe ohne CJ-Aufruf übersprungen, 4 der 5 «unklar» waren
+POD-SKUs (`9000001_10163`, `GLOBAL-FAP-A4`), die der alte Filter nicht kannte → Regel jetzt «alles ohne CJ-Anfang ist kein CJ-Artikel».
+
+**Lauf 2, Bestätigung `NUR_NEIN=1`, 01:58 UTC** (zweiter, unabhängiger Lauf, Kanarienvogel 16): beide NEIN erneut 0 Optionen (je 2 Messungen)
+→ **2 auf DRAFT mit Tag `cj-keine-ch-versandoption`**, zurückgelesen (Status DRAFT, Tag vorhanden):
+- `/products/ubersetzer-kopfhorer-144-sprachen-echtzeit-bluetooth-5-3` — CHF 69.90, SKU CJFU29004820001, Tags **bestseller, hero**, in 8 Kanälen inkl. Google; 1 Sitzung 30 T. Kein CH-Versandweg (101 g, Akku).
+- `/products/outdoor-bluetooth-speaker-solar-rgb-licht-wasserdicht-tragbar` — SKU CJ-CJYS260671001AZ, 545 g, Solar/Akku; Landeseite der letzten 60 T.
+
+| Zahl | Was |
+|---|---|
+| 93 | Zeilen im neuen Ledger `dropship/_besuchte_seiten_geprueft.tsv` (84 ja · 5 NEIN · 4 unklar) |
+| 86 | der 209 ungeprüften Landeseiten jetzt geprüft (die mit den meisten Sitzungen zuerst; Leinen-Set Provence 16 Optionen ab USD 10.49, Cargo-Hose, Gemüseschneider, Blumen-/Midikleid alle «ja») |
+| 295 | offen → der tägliche Lauf (MAX_PRODUKTE 100) braucht 3 Tage; danach Dauerkosten ≈ 400/14 ≈ 30 Produkte ≈ 90 CJ-Aufrufe je Tag |
+| ~330 | CJ-Aufrufe dieser Runde (Trockenlauf 18, Lauf 1 ≈ 305, Lauf 2 ≈ 8) — Vorgabe war ~300 |
+| 5'219 | CJ-Punkte Rest um 02:00 (44'061 um 00:45; `usedToday` 63'580 > `total` 63'387) — der Tagesvorrat ist praktisch weg, Hauptverbraucher sind die 4 Grind-Runner + 3 Dauerwächter + ein Nachbar-Agent; ab jetzt antworten alle CJ-Wächter bis Mitternacht CJ-Zeit «unklar» |
+| 10 | Zeilen im NEIN-Register `_besuchte_seiten_nicht_lieferbar.txt` — Lauf 1 hatte 3 Alt-Einträge (DRAFT-Ware, nicht mehr gefragt) stillschweigend entfernt; aus dem Git-Verlauf (30f02f796, 295a83ec8) vereinigt, Ursache behoben (`gefragt` = nur wirklich beurteilte Handles) |
+
+Verbleibender Rückstand der anderen Wächter (nicht angefasst): `cj_verfuegbarkeit` 1'359 offen, `cj_ausgelistet_sichtbar` Stufe B ~73 Tage je Umlauf,
+`cj_versand_ch_sichtbar` 44'900 offen bei ~100/h — alle drei hängen an derselben CJ-Uhr; mehr Wächter machen jeden einzelnen langsamer.
 
 ## Bewusst NICHT
 - Kein Einzel-NEIN wird in dieser Runde gedraftet: DRAFT nur nach zweitem NEIN aus einem späteren Lauf (Tag `cj-keine-ch-versandoption`).

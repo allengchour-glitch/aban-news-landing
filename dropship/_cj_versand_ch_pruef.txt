@@ -3850,3 +3850,19 @@ maifan-stein-omelettpfanne-mit-4-mulden-2ec2e4	-	-	-	unklar keine CJ-SKU	landese
 multifunktionaler-schaler-923364	-	-	-	unklar keine CJ-SKU	landeseite
 elektrischer-schaler-fur-obst-und-gemuse-6b3f18	-	-	-	unklar keine CJ-SKU	landeseite
 kinder-sportschuhe-zum-schnuren-080000	1375697528468672512	16	7.17	ok	landeseite
+elektrischer-schaler-mit-eu-stecker-299f86	-	-	-	unklar keine CJ-SKU	landeseite
+kuchen-gewurzmuhle-aus-zinklegierung-616300	2406150919131616500	16	7.99	ok	landeseite
+atmungsaktive-halbsandalen-fur-kinder-567936	1373964138962882560	16	8.53	ok	landeseite
+kuhlschrank-wasserfilterkartusche-481536	1794251181460561920	16	7.51	ok	landeseite
+kindergarten-tanzschuhe-aus-canvas-577984	1373877262906167296	16	8.93	ok	landeseite
+madchen-sportsandalen-736320	1372846213329719296	16	9.20	ok	landeseite
+kohlenmonoxidmelder-fur-den-haushalt-009728	1790608127159701504	7	9.01	ok	landeseite
+prinzessinnen-lauflernschuhe-fur-madchen-960448	1371803668248137728	16	5.72	ok	landeseite
+schlangenmuster-armband-mit-nieten-610800	2512210215091611000	16	5.79	ok	landeseite
+edelstahl-armband-mit-buchstaben-603400	2512210145391603600	16	4.40	ok	landeseite
+rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling	2601080332391639200	6	10.71	ok	landeseite
+mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf	1403289835522887680	7	9.06	ok	landeseite
+sunset-projektor-led-lampe-stimmungslicht-usb-16-farben-fur-foto-deko	1747142248724176896	7	12.37	ok	landeseite
+elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln	1653268220524109824	7	28.63	ok	landeseite
+solar-camping-laterne-im-vintage-look-wiederaufladbar-ip44-wetterfest	2605290115061614600	7	16.45	ok	landeseite
+vintage-sonnenbrille-oval-metallrahmen-uv-schutz-damen	2605160247441602900	5	5.64	ok	landeseite
