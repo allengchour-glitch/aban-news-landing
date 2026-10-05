@@ -96,7 +96,8 @@ def groq_erst(text):
     letzter = ""
     # Reihenfolge: Erstprüfer-Modell mit jedem Schlüssel (Schlüssel 3 hängt an einer anderen Organisation = eigenes
     # Tageskontingent), dann das Ausweichmodell. Ein Tageslimit (429 TPD) ist kein Grund zu warten — nächste Kombination.
-    kombis = [(GROQ_ERST, k) for k in ks] + [(GROQ_ERST_AUSWEICH, k) for k in ks]
+    kombis = [(m, k) for m in (GROQ_ERST, GROQ_ERST_AUSWEICH) for i, k in enumerate(ks)
+              if not zweitmodell.reserviert(i + 1, m)]          # 05.10.: Bildmodell auf Schlüssel 3 = Vorrang-Reserve
     for a, (modell, k) in enumerate(kombis):
         body = {"model": modell, "temperature": 0, "response_format": {"type": "json_object"},
                 "messages": [{"role": "user", "content": text}]}
