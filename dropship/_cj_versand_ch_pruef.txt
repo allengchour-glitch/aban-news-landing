@@ -4372,3 +4372,5 @@ damenuhr-aus-wolframstahl-2fbd42	07313F77-C1FE-4EBE-84F5-4F7348C32344	7	6.02	ok	
 kabellose-stereo-kopfhorer-mit-touch-steuerung-7176fb	1077F1AD-1DC9-492D-9263-83396158E74C	7	7.13	ok	landeseite
 quarzuhr-mit-silikonarmband-wasserdicht-e1295b	05B9E052-B9A8-4519-9E08-EFC2780F86F6	7	8.10	ok	landeseite
 halsband-mit-metallschnalle-18c40a	23249014-57A3-454C-880C-9188562203E3	16	6.48	ok	landeseite
+quarzuhr-fur-damen-mit-farbverlauf-a9cdbd	2AD7435B-FE0A-4FA3-AE08-89C64AFC4125	7	5.35	ok	landeseite
+armbanduhr-mit-herzfrequenz-und-blutsauerstoff-d2da5c	E0DFED2D-8566-40F2-8A02-88E4A65EAD91	7	6.49	ok	landeseite
