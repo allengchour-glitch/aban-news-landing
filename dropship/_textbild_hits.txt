@@ -16740,3 +16740,6 @@ gid://shopify/Product/15500926157185	82->0	Malen nach Zahlen – Katze
 gid://shopify/Product/15500983501185	100->0	Malen nach Zahlen – bunter Affe
 gid://shopify/Product/15501883605377	114->0	Malen nach Zahlen für Erwachsene – Kunstklassiker
 gid://shopify/Product/15501883769217	32->0	Malen nach Zahlen – abstrakte Frau mit Katze
+gid://shopify/Product/15506284347777	138->0	Malen nach Zahlen – 24 Farben, Motiv nach Wahl
+gid://shopify/Product/15506881511809	76->0	Malen nach Zahlen – Tiere, Blumen & Landschaft
+gid://shopify/Product/15506885509505	107->0	Malen nach Zahlen – lila Blumen (rahmenlos)
