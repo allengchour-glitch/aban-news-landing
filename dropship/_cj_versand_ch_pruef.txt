@@ -4500,3 +4500,8 @@ mechanisches-gamepad-ohne-vibration-612200	2412160729201612500	7	6.91	ok	landese
 controller-erweiterung-mit-vier-rucktasten-607900	2411010358431608100	7	10.01	ok	landeseite
 hd-wireless-game-simulator-fur-zwei-spieler-603400	2410270545361603600	7	12.09	ok	landeseite
 vr2-ladestation-mit-brillenhalterung-624000	2410231707161624300	7	12.57	ok	landeseite
+kabelgebundener-hall-rocker-game-controller-624000	2409270348501624200	7	8.65	ok	landeseite
+f1-spray-racing-auto-mit-gestensteuerung-613300	2409191206361613800	7	22.91	ok	landeseite
+kabelloser-gaming-controller-mit-bluetooth-605800	2408110750581606000	7	10.98	ok	landeseite
+mini-bluetooth-gamepad-fur-smartphone-pc-612800	2408010615311613100	7	7.62	ok	landeseite
+pocket-remote-controller-hall-rocker-603700	2407240517591603900	7	10.09	ok	landeseite
