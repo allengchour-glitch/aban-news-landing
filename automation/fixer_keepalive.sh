@@ -935,12 +935,25 @@ while true; do
       ( cd "$REPO" && SCHARF=1 STUNDEN=3 timeout 600 python3 automation/google_neuimport.py >> "$GN" 2>&1 )
     fi
   fi
+  # 05.10.2026 (Bereich «kategorie», unverändert aus dem Ursprungsergebnis; Nachbesserung erhöht nur die Kanarienzahl 17 → 26):
+  # Kanarienvögel der Titelregeln VOR dem scharfen kategorie_wache-Lauf — eine Regeländerung, die einen der 26 Fälle (Steckdose,
+  # Adventskalender Blind Box, Stunt-Hund mit Fernbedienung, Saugroboter/Staubsauger-Roboter/Roboter-Staubsauger, Tierkamera,
+  # Katzen-Laserpointer, Futterautomat, Trainingsjacke …) kippt, darf nicht schreiben. Ohne Shop-Zugriff, < 1 s.
+  if [ -f "$REPO/automation/kategorie_wache.py" ]; then
+    if ! ( cd "$REPO" && timeout 60 python3 automation/kategorie_wache.py --test > /tmp/kategorie_kanarien.log 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ KATEGORIE-KANARIEN: $(grep -c '❌' /tmp/kategorie_kanarien.log) von $(grep -c '^  ' /tmp/kategorie_kanarien.log) Regeln falsch — kategorie_wache NICHT scharf starten (SCHARF-Block Z. ~945 überspringen), Regeln prüfen"
+      touch /tmp/kategorie_wache.kanarien_fehler
+    else
+      rm -f /tmp/kategorie_wache.kanarien_fehler
+    fi
+  fi
+  # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
   # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
   # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.
   KW=/tmp/kategorie_neuware.log
   if [ -f "$REPO/automation/kategorie_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 3300 ]; then
+    if [ "$ALTER" -gt 3300 ] && [ ! -f /tmp/kategorie_wache.kanarien_fehler ]; then
       touch "$KW"
       ( cd "$REPO" && SCHARF=1 CAP=1500 timeout 900 python3 automation/kategorie_wache.py >> "$KW" 2>&1 )
       # danach Kinderkleidung bei Google auf den Babyzweig + age_group (liest die eben gesetzte Shopify-Kategorie)
@@ -1181,6 +1194,124 @@ if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ -s /tmp/seo_voll_audit.js
     echo "DUENNE-TEXTE: $(grep -c '^✍️' "$DT" 2>/dev/null) geschrieben gesamt · $(grep '^BILANZ\|^⏸' "$DT" | tail -1 | cut -c1-140)"
   fi
 fi
+# ===== Folgerunde 05.10.2026 (wf_f1d1b5b0-276): Wächter aus 11 Bereichen =====
+# --- Dünne Texte: Nachprüfung der Tore (05.10.2026, Nachbesserung: Stückzahl-/Set-Tor, Varianten-Tor auch < 40 Wörter) — liest alle Ledger-Handles live, schreibt nichts, CJ nur aus Cache
+DTN=/tmp/produkttext_duenn_nachpruefen.log
+if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ ! -f "$REPO/dropship/_duenne_texte_angehalten" ] && { [ ! -f "$DTN" ] || [ $(( $(date +%s) - $(stat -c %Y "$DTN") )) -gt 82800 ]; }; then
+    ( cd "$REPO" && NACHPRUEFEN=1 BILD_AUS=1 timeout 1500 python3 automation/produkttext_duenn.py > "$DTN" 2>&1 )
+    Z=$(grep "^NACHPRUEFEN:" "$DTN" | tail -1)
+    T=$(echo "$Z" | grep -o "[0-9]* mit Tor-Treffern" | grep -o "^[0-9]*")
+    if [ -n "$T" ] && [ "$T" -gt 0 ]; then
+        echo "TEXTE-TORE: ⚠️ $Z — Treffer in $DTN (✗-Zeilen); Wache bleibt an, Treffer von Hand neu schreiben"
+        echo "$(date -u +%Y-%m-%dT%H:%MZ) — NACHPRUEFEN $T Tor-Treffer, siehe /tmp/produkttext_duenn_nachpruefen.log" > "$REPO/dropship/_duenne_texte_angehalten"
+    else
+        echo "TEXTE-TORE: ${Z:-unklar (kein NACHPRUEFEN-Ergebnis)}"
+    fi
+fi
+  # ---- FR-Stand (05.10.2026, Plan Punkt 10; Nachbesserung: Emoji-Handles dekodiert, None = Lücke): Ampel-Zeile, nur lesen, 1×/Tag ----
+  FRS=/tmp/fr_stand.log
+  if [ -f "$REPO/automation/fr_stand.py" ]; then
+    if [ ! -f "$FRS" ] || [ "$(( $(date +%s) - $(stat -c %Y "$FRS") ))" -gt 86400 ]; then
+      ( cd "$REPO" && timeout 900 python3 automation/fr_stand.py > "$FRS" 2>&1 )
+    fi
+    tail -1 "$FRS" 2>/dev/null | grep -q 'FR:' && echo "$(tail -1 "$FRS")" || echo "FR: unklar (kein Ergebnis in $FRS)"
+  fi
+  # GOOGLE-BILDTAUSCH: SPERRE-PROBE + RÜCKLESE + QUOTE (05.10.2026, Prüfer «Ledger ≠ Live» / «Sperre aus /tmp = 0»):
+  # textbild_fix lief als /tmp-Spiegelkopie, bildtausch_sperre.py löste REPO als «/» auf → Sperre leer, 83 Tausche zurückgedreht.
+  # Täglich: (1) Sperre GENAU so messen, wie der Aufseher sie nutzt (Import aus /tmp) — 0 heisst Pfad-/Spiegel-Fehler, laut melden;
+  # (2) Ledger-neu == live media[0]? sonst nachsetzen (nur ACTIVE + im Google-Kanal); (3) Trefferquote je Art aus dem jüngsten
+  # google_feedback_wache-Stand. Alle drei Zeilen gehören in den Tick-Bericht.
+  GBR=/tmp/google_bild_ruecklese.log
+  if [ -f "$REPO/automation/google_bild_tausch.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GBR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$GBR"
+      SP=$(cd /tmp && python3 -c 'import bildtausch_sperre as b; print(len(b.gesperrte_handles()))' 2>/dev/null || echo 0)
+      case "$SP" in ''|*[!0-9]*) SP=0 ;; esac
+      if [ "$SP" -gt 0 ]; then echo "$(date -u +%H:%M) BILDTAUSCH-SPERRE aus /tmp = $SP"; \
+      else echo "$(date -u +%H:%M) ⚠️ BILDTAUSCH-SPERRE aus /tmp = 0 — textbild_fix/bild_klein_fix würden Tausche zurückdrehen (bildtausch_sperre.py nach /tmp spiegeln, REPO prüfen)"; fi
+      ( cd "$REPO" && SCHARF=1 timeout 1200 python3 automation/google_bild_tausch.py --ruecklesen >> "$GBR" 2>&1 )
+      echo "$(date -u +%H:%M) $(grep RUECKLESE "$GBR" | tail -1 | cut -c1-160)"
+      ( cd "$REPO" && timeout 120 python3 automation/google_bildtausch_bilanz.py 2>&1 | tail -1 | cut -c1-200 )
+    fi
+  fi
+  # ── Jury-Kontingent (05.10.2026, neu, z. B. direkt nach der REEL-KADENZ-Zeile): sagt in jedem Tick, ob alle Bild-Jurys leer sind
+  #    (Gemini 402, OpenAI leer, Groq-Bildmodell qwen/qwen3.8-27b auf jedem Schlüssel gemerkt) und ob der Rückfall auf frühere ok-Urteile trägt.
+  #    Kein Aufruf eines Modells, nur Marken + Jury-Cache; Prüferbefund Plan 23: «kein Urteil» blockierte IG/FB-Reels 16 Ticks lang unsichtbar.
+  if [ -f "$REPO/automation/gemini_jury.py" ] && [ $(( $(date +%s) - $(stat -c %Y /tmp/jury_kontingent.stamp 2>/dev/null || echo 0) )) -gt 3600 ] && touch /tmp/jury_kontingent.stamp && ( cd "$REPO" && timeout 60 python3 automation/gemini_jury.py x --kontingent >/dev/null 2>&1 ); then
+    JR=0; for u in $(cd "$REPO" && python3 -c "import csv;[print(r['video_url']) for r in csv.DictReader(open('automation/reels_seed.csv',encoding='utf-8')) if r['status']=='ready' and 'instagram' in r['platforms']]" 2>/dev/null); do
+      ( cd "$REPO" && timeout 30 python3 automation/gemini_jury.py "$u" --rueckfall-pruefen >/dev/null 2>&1 ) && JR=$((JR+1)); done
+    echo "⚠️ JURY-KONTINGENT: alle Bildmodelle leer (Marken /tmp/groq_leer_1..3 $(stat -c %y /tmp/groq_leer_1 2>/dev/null | cut -c12-16) UTC) · Rückfall trägt $JR ready-Reel(s) · Story/Bild warten · $(wc -l < "$REPO/dropship/_jury_rueckfall.tsv" 2>/dev/null || echo 0) Rückfall-Posts gesamt"
+  fi
+# SUCHE-WACHE (05.10.2026, Bereich Suche, FIX-12H Punkt 11): misst täglich, ob die Shop-Vorschlagsliste die 26 volumenstärksten
+# Semrush-Begriffe trifft und ob oben Fremdware steht («schuhe» → Schulrucksäcke). Nur lesend (Storefront, kein Token), Ledger
+# dropship/_suche_wache.tsv, Bericht dropship/SUCHE-2026-10-05.md. suchwort_tags.py läuft weiter in der Werkzeug-Schleife oben.
+SW=/tmp/suche_wache.log
+if [ -f "$REPO/automation/suche_wache.py" ]; then
+  ALTER=$(( $(date +%s) - $(stat -c %Y "$SW" 2>/dev/null || echo 0) ))
+  if [ "$ALTER" -gt 86400 ]; then
+    ( cd "$REPO" && echo "$(date -u +%FT%TZ) START suche_wache (Aufseher)" >> "$SW" && timeout 600 python3 automation/suche_wache.py >> "$SW" 2>&1 )
+    echo "$(date -u +%H:%M) suche_wache gelaufen: $(grep -E '^SUCHE' "$SW" | tail -1)"
+  fi
+  grep -E '^SUCHE' "$SW" 2>/dev/null | tail -1
+fi
+  # 05.10.2026 (titel-neuimport, Nachbesserung Prüfer): SEO-Titel-Grenze — Shopify kappt seo.title still bei 70 Zeichen; die Importer
+  # bauen ihn jetzt über seo_titel.mjs, der Bestand wird täglich repariert (nur Klassen gekappt/Doppelmenge, Rücklesen = Gleichheit,
+  # Ledger dropship/_seo_titel_grenze.tsv) und danach ziehen Bild-Alts korrigierter Titel nach (alt_nach_titel.py, Ledger _alt_nach_titel.tsv).
+  # Ampel «SEO-TITEL: …» bei jedem Lauf (leer = Titel ist KEIN Fehler, Theme zeigt «Titel – LuxeStyle»).
+  if [ ! -f /tmp/seo_titel_grenze_$(date -u +%F) ] && [ -f "$REPO/automation/seo_titel_grenze.py" ]; then
+    touch "/tmp/seo_titel_grenze_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_seo_titel_grenze.lock; flock -n 9 || exit 0; SCHARF=1 TAGE=14 timeout 600 python3 automation/seo_titel_grenze.py | tail -2; SCHARF=1 timeout 900 python3 automation/alt_nach_titel.py | tail -1" \
+        >> /tmp/seo_titel_grenze.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start seo_titel_grenze + alt_nach_titel (täglich)"
+  fi
+  if [ -f "$REPO/automation/seo_titel_grenze.py" ]; then
+    ( cd "$REPO" && NUR=messen TAGE=14 timeout 120 python3 automation/seo_titel_grenze.py 2>/dev/null || echo "SEO-TITEL: unklar (Messung ohne Antwort)" )
+  fi
+  # 📰 BLOG-LINKZIELE + BLOG-PREISE (05.10.2026, Fix-12h Punkt 18; Nachbesserung 07:30: beide Wachen lesen jetzt auch ABSOLUTE
+  # luxestyle.ch-Links — 49 Stueck in den Artikeln, einer war echt tot und wurde uebersehen). blog_linkziele_wache.py misst AM URSPRUNG
+  # (Admin-API, nicht der Bot-Cache unserer IP; Filterrouten /collections/<k>/<tag> und Redirects gelten als lebendig) und schreibt
+  # NICHTS — Ampel «BLOG-LINKS: N tote Ziele …», Details /tmp/blog_linkziele.json; tote Ziele → Hand-Zuordnung
+  # (dropship/BLOG-BEWERTUNGEN-2026-10-05.md, Muster scratchpad/blog_nachbesserung_fix.py), nie Entwürfe republizieren.
+  # blog_preise_aktualisieren.py SCHREIBT (articleUpdate ersetzt den ganzen Body → nie parallel zu anderen Blog-Schreibern,
+  # darum shopify_schranke + eigener flock): Live-Preis in Anker/Karte, «(Stand …)» auf heute, Ledger
+  # dropship/_blog_preise_ledger.tsv + Vorher-Bodies dropship/_blog_preise_vorher/. Beide ~20–60 s, einmal am Tag.
+  BLW=/tmp/blog_linkziele_wache.log; BPA=/tmp/blog_preise_aktualisieren.log
+  if [ -f "$REPO/automation/blog_linkziele_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BLW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BLW"; then
+      touch "$BLW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_blog_linkziele.lock; flock -n 9 || exit 0; exec >> \"$BLW\" 2>&1; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+           exec bash automation/shopify_schranke.sh python3 automation/blog_linkziele_wache.py" 9>&- & )
+    fi
+    if [ -s "$BLW" ] && tail -n 3 "$BLW" | grep -q "Traceback\\|BLOG-LINKS: unklar"; then
+      echo "$(date -u +%H:%M) ⚠️ Blog-Linkziele: letzter Lauf unklar ($BLW)"
+    elif [ -s "$BLW" ]; then
+      Z=$(grep '^BLOG-LINKS:' "$BLW" | tail -n 1); echo "$(date -u +%H:%M) $Z"
+      echo "$Z" | grep -q '^BLOG-LINKS: 0 tote' || echo "$(date -u +%H:%M) ⚠️ Blog verlinkt tote Ziele — Hand-Zuordnung nach dropship/BLOG-BEWERTUNGEN-2026-10-05.md"
+    fi
+  fi
+  if [ -f "$REPO/automation/blog_preise_aktualisieren.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BPA" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BPA"; then
+      touch "$BPA"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_blog_preise.lock; flock -n 9 || exit 0; exec >> \"$BPA\" 2>&1; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+           SCHARF=1 LIMIT=40 exec bash automation/shopify_schranke.sh python3 automation/blog_preise_aktualisieren.py" 9>&- & )
+    fi
+    if [ -s "$BPA" ] && tail -n 3 "$BPA" | grep -q "Traceback\\|BLOG-PREISE: unklar"; then
+      echo "$(date -u +%H:%M) ⚠️ Blog-Preise: letzter Lauf unklar ($BPA)"
+    elif [ -s "$BPA" ]; then
+      echo "$(date -u +%H:%M) $(grep '^BLOG-PREISE:' "$BPA" | tail -n 1)"
+    fi
+  fi
+# --- Checkout-Abbruch-Ampel (05.10.2026, dropship/CHECKOUT-ABBRUCH-2026-10-05.md) — täglich, nur messen (Probelauf 08:05 UTC ok).
+if [ -f "$REPO/automation/checkout_abbruch_messen.py" ] && [ ! -f /tmp/checkout_abbruch_$(date -u +%F).stamp ]; then
+  touch /tmp/checkout_abbruch_$(date -u +%F).stamp
+  ( cd "$REPO" && timeout 170 python3 automation/checkout_abbruch_messen.py 2>&1 | tail -1 | tee -a /tmp/checkout_abbruch.log )
+fi
   # 05.10.2026 (Fixlauf preis-marge): EK-Lücke CJ + Neuware-Verlustschutz, täglich. 87 aktive CJ-Produkte ohne EK waren für
   # preis_verlustschutz unsichtbar (10 echte Verlustbringer, 47 bei CJ ausgelistet); Neuimporte kennt der Tagesläufer erst mit dem
   # nächsten Voll-Export (371 Varianten unter Boden am 05.10.). ek_luecke_cj.py: Backfill/Nachtrag NUR_IDS → Verlustschutz live →
@@ -1203,9 +1334,9 @@ if [ -f "$REPO/automation/zusagen_abgleich.py" ]; then
   if [ "$ALTER" -gt 86400 ]; then
     ( cd "$REPO" && exec 9>/tmp/lock_produkttext.lock && flock -w 240 9 && SCHARF=1 CAP=300 NUR=produkte timeout 900 python3 automation/zusagen_abgleich.py >> "$ZA" 2>&1 )
     ( cd "$REPO" && timeout 300 python3 automation/zusagen_abgleich.py >> "$ZA" 2>&1 )
-    echo "$(date -u +%H:%M) zusagen_abgleich gelaufen: $(grep -E '^ZUSAGEN' "$ZA" | tail -1)"
+    echo "$(date -u +%H:%M) zusagen_abgleich gelaufen: $(grep -E '^(ZUSAGEN|RABATT-TERMINE)' "$ZA" | tail -1)"
   fi
-  grep -E '^ZUSAGEN' "$ZA" 2>/dev/null | tail -1
+  grep -E '^(ZUSAGEN|RABATT-TERMINE)' "$ZA" 2>/dev/null | tail -1
 fi
   # 🎞️ REEL-CDN-ABGLEICH (05.10.2026, Social-Gesundheit): ready-Reels, deren lokale Datei ≠ CDN-Kopie (neu gerendert, CDN alt)
   # → CDN per fileUpdate ersetzen + Adresse in reels_seed.csv nachtragen. Ohne das sehen Poster/Metricool den alten Bildpreis.
@@ -1629,26 +1760,46 @@ KLT=/tmp/test_klingen_tor.log
   # ueber die Sichtbarkeit: die Befundzahl steht in dieser stuendlichen Ausgabe, die Liste in
   # dropship/_besuchte_seiten_nicht_lieferbar.txt. (Der Kanarienvogel im Skript bricht ohnehin
   # ab, falls CJ fuer ALLES 0 Optionen meldet.)
+  # Besuchte-Seiten-Wache (05.10., Prüfer-Befund 9 / Plan 12) — ERSETZT den Block ab «BSL=/tmp/besuchte_seiten_lieferbar.log».
+  # Tageslauf (Pflichtliste verkauft 90 T ∪ Landeseiten 30/60/150 T, MAX_PRODUKTE 100) über eigenen Stempel, nicht über das Log-Alter
+  # (der NUR_NEIN-Lauf schreibt ins selbe Log). PAUSE (CJ-Punkte < Reserve) → nach ≥ 2 h erneut, höchstens 6×/Tag.
+  # Bestätigungslauf NUR_NEIN=1 (zweites NEIN ≥ 12 h nach dem ersten) frühestens 12 h nach dem Tageslauf, 1×/Tag, nur wenn ein NEIN im Ledger steht.
+  # 05.10. 07:2x (Prüfer-Nachbesserung): versandfaehig() kennt jetzt die SKU-Form «Stamm-Farbwort» (Hängematte, Gemüseschneider) und cj() kodiert
+  # Query-Werte — unverändert an diesem Block; der Guard wird von engine_keepalive nach /tmp gespiegelt (Repo-Fassung gewinnt).
   BSL=/tmp/besuchte_seiten_lieferbar.log
+  BSL_TAG=/tmp/besuchte_seiten_tageslauf.stamp
   if [ -f "$REPO/automation/besuchte_seiten_lieferbar.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BSL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BSL" || still_gestorben "$BSL"; then   # 05.10.: 6 von 8 Läufen starben am Neustart
-      touch "$BSL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
+    ALTER_TAG=$(( $(date +%s) - $(stat -c %Y "$BSL_TAG" 2>/dev/null || echo 0) ))
+    PAUSIERT=0; [ -s "$BSL" ] && letzter_lauf "$BSL" | grep -q "^PAUSE" && PAUSIERT=1
+    PZ="/tmp/_pause_besuchte_$(date -u +%Y%m%d)"; PN=$(cat "$PZ" 2>/dev/null); case "$PN" in (''|*[!0-9]*) PN=0 ;; esac
+    NNZ="/tmp/_nurnein_besuchte_$(date -u +%Y%m%d)"
+    START_BSL=""; NN=0
+    if [ "$ALTER_TAG" -gt 86400 ] || absturz_nachholen "$BSL" || still_gestorben "$BSL"; then
+      START_BSL="tageslauf"; touch "$BSL_TAG"
+    elif [ "$PAUSIERT" = 1 ] && [ "$ALTER" -ge 7200 ] && [ "$PN" -lt 6 ]; then
+      echo $(( PN + 1 )) > "$PZ"; START_BSL="nach PAUSE, Versuch $(( PN + 1 ))/6"
+    elif [ "$ALTER_TAG" -ge 43200 ] && [ ! -f "$NNZ" ] && awk -F'\t' '$3=="NEIN"' "$REPO/dropship/_besuchte_seiten_geprueft.tsv" 2>/dev/null | grep -q .; then
+      touch "$NNZ"; START_BSL="NUR_NEIN-Bestätigung"; NN=1
+    fi
+    if [ -n "$START_BSL" ]; then
+      touch "$BSL"   # Anspruch VOR dem Start (21.09.)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_besuchte_lieferbar.lock; flock -n 9 || exit 0; exec >> \"$BSL\" 2>&1; \
-           exec python3 automation/besuchte_seiten_lieferbar.py < /dev/null" 9>&- & )
+           NUR_NEIN=$NN exec python3 automation/besuchte_seiten_lieferbar.py < /dev/null" 9>&- & )
+      echo "$(date -u +%H:%M) Besuchte-Seiten-Wache gestartet ($START_BSL)"
     fi
     # Ergebnis des VORIGEN Laufs melden, nie den Start (Lehre 15.09.).
     if [ -s "$BSL" ] && tail -n 40 "$BSL" | grep -q "^ABBRUCH\|Traceback"; then
       echo "$(date -u +%H:%M) ⚠️ Besuchte-Seiten-Wache: letzter Lauf abgebrochen ($BSL)"
+    elif [ "$PAUSIERT" = 1 ]; then
+      echo "$(date -u +%H:%M) $(letzter_lauf "$BSL" | grep '^PAUSE' | tail -n 1)"
     elif [ -s "$BSL" ]; then
-      echo "$(date -u +%H:%M) $(grep '^LIEFERBAR:' "$BSL" | tail -n 1)"
+      echo "$(date -u +%H:%M) $(grep '^LIEFERBAR:' "$BSL" | tail -n 1) · $(grep '^FERTIG:' "$BSL" | tail -n 1)"
     else
       echo "$(date -u +%H:%M) Besuchte-Seiten-Wache gestartet (erster Lauf)"
     fi
   else
-    # Kein stilles `continue` (Lehre 17.09.: engine_keepalive uebersprang fortura_img_runner
-    # schweigend und meldete weiter «alles laeuft»).
     echo "$(date -u +%H:%M) ⚠️ automation/besuchte_seiten_lieferbar.py FEHLT"
   fi
   # Google-Kanal-Luecke. Google ist der EINZIGE Kanal mit belegten Verkaeufen

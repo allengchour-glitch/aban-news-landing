@@ -1,0 +1,83 @@
+Kollektionen 541 (online+gefüllt 371) · Artikel 322 · Seiten 108 · Startseite 28 Links · Ziele 78
+| # | Ziel | Suchbegriff | Vol./Mt | Pos. | Menü | Footer | Start | Koll. | Blog | Seiten | **Σ** | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | /collections/nintendo-switch | nintendo switch | 27100 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 2 | /collections/elektronik-technik | elektronik | 18100 |  | 1 | 0 | 1 | 0 | 11 | 2 | **15** | ok |
+| 3 | /collections/haushaltsgeraete | staubsauger | 18100 |  | 1 | 0 | 0 | 0 | 3 | 1 | **5** | ok |
+| 4 | /collections/schmuck-uhren | uhren | 18100 |  | 1 | 0 | 0 | 0 | 0 | 1 | **2** | ok |
+| 5 | /collections/3d-drucker | 3d drucker | 14800 |  | 0 | 0 | 0 | 1 | 0 | 1 | **2** | ok |
+| 6 | /collections/gaming | gaming pc | 14800 |  | 1 | 0 | 0 | 0 | 4 | 2 | **7** | ok |
+| 7 | /collections/kaffee-ecke | kaffeemaschine | 14800 |  | 0 | 0 | 0 | 0 | 3 | 1 | **4** | ok |
+| 8 | /collections/parfum-duefte | parfum | 14800 |  | 1 | 0 | 0 | 0 | 5 | 3 | **9** | ok |
+| 9 | /collections/pc-gaming | pc gaming | 14800 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 10 | /collections/schuhe | schuhe | 14800 |  | 1 | 0 | 0 | 0 | 5 | 3 | **9** | ok |
+| 11 | /collections/sub-bademode | bikini | 14800 |  | 0 | 0 | 0 | 0 | 2 | 2 | **4** | ok |
+| 12 | /collections/t-shirts-tops | t-shirt | 14800 |  | 1 | 0 | 0 | 0 | 1 | 1 | **3** | ok |
+| 13 | /collections/audio-sub | kopfhörer | 12100 |  | 0 | 0 | 0 | 0 | 1 | 2 | **3** | ok |
+| 14 | /collections/elektronik-audio | kopfhörer | 12100 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 15 | /collections/elektronik-laden | powerbank | 12100 |  | 1 | 0 | 0 | 0 | 5 | 1 | **7** | ok |
+| 16 | /collections/kopfhoerer-audio | kopfhörer | 12100 |  | 1 | 0 | 0 | 0 | 2 | 1 | **4** | ok |
+| 17 | /collections/pool | pool | 12100 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 18 | /collections/smartwatches-wearables | smartwatch | 12100 |  | 1 | 0 | 0 | 0 | 0 | 4 | **5** | ok |
+| 19 | /collections/sneaker-sportschuhe | sneaker | 12100 |  | 1 | 0 | 0 | 0 | 0 | 1 | **2** | ok |
+| 20 | /collections/ventilatoren | ventilator | 12100 |  | 1 | 0 | 0 | 0 | 4 | 1 | **6** | ok |
+| 21 | /collections/vorhaenge | vorhänge | 12100 |  | 1 | 0 | 0 | 0 | 0 | 0 | **1** | ok |
+| 22 | /collections/caps-huete | caps | 9900 |  | 0 | 0 | 0 | 0 | 1 | 2 | **3** | ok |
+| 23 | /collections/foto-tech | kamera | 9900 |  | 0 | 0 | 0 | 0 | 0 | 2 | **2** | ok |
+| 24 | /collections/garten-balkon | gartenmöbel | 9900 |  | 0 | 0 | 0 | 0 | 5 | 2 | **7** | ok |
+| 25 | /collections/grill-bbq | gasgrill | 9900 |  | 0 | 0 | 0 | 0 | 2 | 2 | **4** | ok |
+| 26 | /collections/licht-decken-steh | stehlampe | 9900 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 27 | /collections/make-up | kosmetik | 9900 |  | 1 | 0 | 0 | 0 | 0 | 2 | **3** | ok |
+| 28 | /collections/portemonnaie | portemonnaie | 9900 |  | 0 | 0 | 0 | 0 | 1 | 3 | **4** | ok |
+| 29 | /collections/puzzles | puzzles | 9900 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 30 | /collections/sticker-aufkleber | sticker | 9900 |  | 0 | 0 | 0 | 0 | 0 | 2 | **2** | ok |
+| 31 | /collections/sub-ballerinas | ballerinas | 9900 |  | 1 | 0 | 0 | 0 | 0 | 1 | **2** | ok |
+| 32 | /collections/wallets-sub | portemonnaie | 9900 |  | 0 | 0 | 0 | 0 | 0 | 2 | **2** | ok |
+| 33 | /collections/aufbewahrung-sub | regale | 8100 |  | 1 | 0 | 1 | 0 | 0 | 2 | **4** | ok |
+| 34 | /collections/beamer-heimkino | beamer | 8100 |  | 1 | 0 | 0 | 0 | 1 | 1 | **3** | ok |
+| 35 | /collections/jeans-denim | jeans | 8100 |  | 1 | 0 | 0 | 0 | 0 | 1 | **2** | ok |
+| 36 | /collections/kratzbaeume | katzenbaum | 8100 |  | 1 | 0 | 0 | 0 | 1 | 0 | **2** | ok |
+| 37 | /collections/pc-komponenten | speicher | 8100 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 38 | /collections/accessoires | accessoires | 6600 |  | 1 | 0 | 0 | 0 | 0 | 0 | **1** | ok |
+| 39 | /collections/geschirr-servieren | geschirr set | 6600 |  | 0 | 0 | 0 | 0 | 0 | 1 | **1** | ok |
+| 40 | /collections/hoodies-sweatshirts | hoodie | 6600 |  | 1 | 0 | 0 | 0 | 0 | 1 | **2** | ok |
+| 41 | /products/ballettschuhe-aus-leder-622800 | ballettschuhe | 590 | 29 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 42 | /products/herrenuhr-casio-world-time-illuminator-rot-43 | casio illuminator | 320 | 21 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 43 | /products/katzenklo-mobel-aus-holzwerkstoff-42x-030657 | katzenklo möbel | 320 | 26 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 44 | /products/trinkrucksack-hydration-2l-trinkblase | trinkrucksack | 260 | 26 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 45 | /products/elegantes-blumenkleid-639000 | blumenkleid | 260 | 29 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 46 | /products/kleiner-luftbefeuchter-fur-zuhause-und-buro-7 | kleiner luftbefeuchter | 260 | 23 | 0 | 0 | 0 | 0 | 1 | 0 | **1** | ok |
+| 47 | /products/gesichtsmassagegerat-060097 | gesichtsmassagegerät | 210 | 26 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 48 | /products/intelligentes-wecker-armband-mit-vibrationsal | armband vibration wecker | 170 | 26 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 49 | /products/holzspiegel-im-europaischen-stil-621200 | holzspiegel | 140 | 17 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 50 | /products/sisal-kratzsaule-fur-katzen-629500 | kratzsäule | 140 | 28 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 51 | /products/karierte-bluse-633600 | karierte bluse damen | 140 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 52 | /products/langes-kissen-aus-eisseide-kuhlend-629200 | eisseide | 140 | 26 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 53 | /products/weihnachts-pyjama-sets-fur-die-ganze-familie- | familien pyjama weihnachten | 140 | 29 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 54 | /products/elegantes-leopard-kleid-627600 | leoparden kleid | 140 | 27 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 55 | /products/schreibhilfe-fur-kinder-635600 | schreibhilfe für kinder | 110 | 24 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 56 | /products/fussgelenkstutze-616900 | fußgelenkstütze | 110 | 21 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 57 | /products/einfarbige-damen-tunika-bluse-638900 | tunika bluse | 110 | 25 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 58 | /products/kinder-schuhe-mit-led-licht-609000 | leuchtschuhe kinder | 110 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 59 | /products/elegantes-off-shoulder-kleid-602200 | off shoulder kleid | 110 | 24 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 60 | /products/multifunktionales-push-up-board-fur-oberkorpe | push up board | 110 | 29 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 61 | /products/retro-spielkonsole-068866 | spielkonsole für tv | 110 | 27 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 62 | /products/elegantes-zweiteiler-kleid-im-a-linien-schnit | kleid zweiteiler | 110 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 63 | /products/kostum-dieb-t-shirt-fgss2973 | dieb kostüm | 90 | 27 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Hausregel-Klasse |
+| 64 | /collections/beleuchtung-lampen | stimmungslicht | 90 | 20 | 0 | 0 | 0 | 0 | 4 | 2 | **6** | nicht kaufbar/online |
+| 65 | /products/kostum-aladdin-fgss1022 | aladdin kostüm | 90 | 24 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Hausregel-Klasse |
+| 66 | /products/corduroy-rucksack-im-preppy-stil-633000 | corduroy rucksack | 90 | 28 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 67 | /products/automatischer-schwenkventilator-fur-kinderwag | kinderwagen ventilator | 90 | 24 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 68 | /products/horror-maske-fur-halloween-und-fasnacht-82150 | gruselmaske | 90 | 29 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Hausregel-Klasse |
+| 69 | /products/kostum-haftling-overall-orange-fgss5842 | kostüm häftling | 90 | 22 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Hausregel-Klasse |
+| 70 | /products/reflektierender-rucksack-mit-grossem-volumen- | reflektierender rucksack | 90 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 71 | /products/acryl-beistelltisch-fur-wohn-und-schlafzimmer | beistelltisch acryl | 70 | 16 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 72 | /products/sonnenbrille-photo-selbsttonend-polarisiert | sonnenbrille selbsttönend | 70 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 73 | /products/bausteine-set-baufahrzeuge-fur-kinder-877120 | baustelle kinder | 70 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 74 | /products/rock-mit-pailletten-rosa-fgssck4741 | glitzerrock | 70 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 75 | /products/cellulite-massage-roller | roller cellulite | 70 | 22 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 76 | /products/elegantes-sommerkleid-mit-spaghetti-tragern-6 | spaghettiträger kleid | 70 | 28 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | ok |
+| 77 | /products/sonnenbrillen-set-retro-polarized | retro sonnenbrille | 70 | 30 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Produkt DRAFT / nicht im Onlineshop |
+| 78 | /products/kostum-kapitan-fgssbo8378 | kostüm kapitän | 70 | 29 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | Hausregel-Klasse |
+
+Ziele mit < 3 eingehenden Links: 42 von 62 kaufbaren

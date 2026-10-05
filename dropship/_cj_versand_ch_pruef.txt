@@ -4213,3 +4213,15 @@ multifunktionaler-mini-elektrokocher-mit-antih-370178	2061375543634661378	0	-	KE
 elektrischer-fleischwolf-mit-5l-edelstahl-schu-108610	2060287505713520642	0	-	KEINE CH-Option → DRAFT	landeseite
 elektrischer-mini-hot-pot-mit-dampfgarer-1-8l-832322	2059106258214244353	0	-	KEINE CH-Option → DRAFT	landeseite
 schneidebrett-lovewood-mit-schachbrettmuster-606500	2605240401171607000	11	33.44	ok	landeseite
+kartoffelpresse-mit-hebel-edelstahl-309442	2057394112358555650	0	-	KEINE CH-Option → DRAFT	landeseite
+pancake-dispenser-mit-dosierskala-797569	2057393685477289986	0	-	KEINE CH-Option → DRAFT	landeseite
+zitruspresse-aus-metall-236545	2065725620606226433	0	-	KEINE CH-Option → DRAFT	landeseite
+fleischzartmacher-aus-edelstahl-804418	2062470950782410753	0	-	KEINE CH-Option → DRAFT	landeseite
+zitruspresse-aus-metall-mit-doppelform-743298	2062459516823728129	0	-	KEINE CH-Option → DRAFT	landeseite
+16-in-1-gemuseschneider-und-salatschneider-532482	2061717011804807174	0	-	KEINE CH-Option → DRAFT	landeseite
+zitruspresse-fur-zitrone-und-limette-502081	2057739056666497025	0	-	KEINE CH-Option → DRAFT	landeseite
+beheizter-eisportionierer-usb-aufladbar-574914	2056638491193655298	16	6.90	ok	landeseite
+gemuseschneider-15-in-1-mit-schaler-und-hobel-168898	2056584983303467010	0	-	KEINE CH-Option → DRAFT	landeseite
+silikon-eierpochierer-gondel-145537	2056653624657723393	16	5.81	ok	landeseite
+15-in-1-gemuseschneider-763201	2056583440422563841	0	-	KEINE CH-Option → DRAFT	landeseite
+salz-und-pfefferstreuer-set-2-teilig-936066	2052935108415565826	0	-	KEINE CH-Option → DRAFT	landeseite

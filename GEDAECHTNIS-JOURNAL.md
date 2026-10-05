@@ -35,6 +35,20 @@
 
 
 
+## 2026-10-05 08:30 · 🧰 «fix 12 h»: Folgerunde 2 (11 Bereiche, 32 Agenten, je Fix → Prüfer → Nachbesserung)
+Ergebnis (Schlusskritik live 07:33–07:50): Plan-Punkte 3, 5, 6, 7, 9, 11, 13, 14, 16, 17, 20, 21 erfüllt — u. a. aktiv ohne Kategorie 0,
+900 Neuimporte SEO-Titel = Titel (Shopify kappt seo.title still bei 70 Zeichen → `seo_titel.mjs`/`seo_titel_grenze.py`), dünne Texte mit
+neuen Toren (Varianten nur aus Shopify-Optionen, Edelstein-Sperre, Material-Widerspruch, Müllquelle, Stückzahl) 25/25 Kanarienvögel,
+NACHPRUEFEN 78/0, Marke `_duenne_texte_angehalten` gelöscht; 9 Produkte mit nicht wählbarer Variante DRAFT (variante-unklar);
+Haarspange «Set mit vier» war EINE Spange (Familienfoto als Bildquelle!) → korrigiert. Bildtausch-Sperre las aus /tmp ein leeres REPO
+(«/») → 83 Tausche zurückgedreht; jetzt Rücklese täglich. «Abgebrochener Checkout aktivieren» WIDERLEGT: Klaviyo-Flow Vse76a läuft schon.
+Französisch: Inhalte weiter, aber 135/153 Menü-Kollektionen ohne fr → NICHT veröffentlicht. 11 Wächter-Blöcke in `fixer_keepalive.sh`
+(Backup /tmp/fixer_keepalive.vor_folgerunde2.sh), Aufseher neu gestartet. Nebenfund: 3 Baby-Kollektionen «Gratis Versand ab CHF 45»
+→ 50 (Ledger `_zusagen_kollektionen_2026-10-05.tsv`; zusagen_abgleich prüft Kollektionen noch nicht). #1021/#1022 bei CJ «Processing»,
+0 Scans → Iris-Text in COWORK-BEFEHL (ab 23:37 UTC). **Lehren:** Bild-Urteil vom Lifestyle-/Familienfoto ist keine Stückzahl-Quelle;
+ein Werkzeug, das aus /tmp gespiegelt läuft, muss REPO absolut kennen (sonst wirkt eine Sperre leer); JSON-zitierte Shell-Blöcke vor dem
+Einbau entschärfen (`\\"` → `\"`), sonst `bash -n`-Fehler. → `dropship/FIX-12H-PLAN.md` (Status-Spalte)
+
 ## 2026-10-05 04:30 · 🪣 Verbesserungsrunde: gemeinsamer gql-Helfer `kaufwille_zeile` ohne Eimer-Boden
 Zweites Gehirn meldete 1 NEU `helfer-ohne-eimer`: `kaufwille_zeile.gql` ist seit 04.10. der Helfer von 13 Werkzeugen und der
 Fix-Agenten, hatte aber weder `eimer_etikette.nachlauf` noch Geduld (3 Versuche, 3/6/9 s → «Throttled» = Abbruch). Fix:
@@ -17839,6 +17853,12 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 🤖 **«werbungen wie soro … tools selber»: 2 der letzten 4 Bestellungen über ChatGPT (#1021, #1018, direkt Produktseite), ChatGPT-Sitzungen 2→7→16/Monat; ChatGPT/Copilot lesen Bing, Shopify hat kein IndexNow → `indexnow_melden.py` täglich (≤ 10k, 30-T-Sperre, Schlüssel CDN + Redirect), 1. Lauf 10'000 HTTP 200; verworfen nach Messung: Titel-Optimierer, Warenkorb-Rückholung (1 Abbruch/30 T), Chatbot/Upsell.** Kaufquelle je Bestellung messen → `dropship/WERBE-TOOLS-SELBST-GEBAUT-2026-10-02.md`
+- 2026-10-02 · 🧾 **«2021 ist bezahlt»: ich las CJ «UNSHIPPED» als unbezahlt — es heisst «bezahlt, wartet auf Versand» (LX1021 bezahlt 30.09. 23:37) → `bestell_ampel.py` schreibt den CJ-Status deutsch aus + Tracking.** Rohstatus nie ungedeutet melden → Journal 02.10.
+- 2026-10-02 · 🔎 **«weiter push überall»: Google 84 → 10 Sitz./Woche; 61/185 Google-Landeseiten (150 T) sind Entwürfe = 57 % der Google-Sitzungen (Dry Bag 82, Rizinus-Set 55), der 301 auf den 10L-Dry-Bag brachte 0 — Google listet nur Kaufbares; CJ-Queue war leer → `google_nachfrage_luecke.py` täglich: tote Google-Seiten mit Nachfrage → generischer CJ-Suchauftrag VORNE (Hausregeln am Titel, Lager-Tags zählen nicht, Marke/eigen/Saison), Erstlauf 8 Aufträge.** Vor dem Draften Ersatz importieren → `dropship/GOOGLE-NACHFRAGE-LUECKE-2026-10-02.md`
+- 2026-10-02 · 🇱🇮 **Verbesserungsrunde: Google-Ampel 723 → 2'568 — 1'771 «Missing shipping info … [LI]» = nur Liechtenstein (Shop liefert nur CH, Schweizer Einträge unberührt) → `google_feedback_wache.py` zählt Meldungen ohne «CH» getrennt (Kanarienvögel 4/4); Betreiber optional: LI im Merchant Center als Zielland entfernen.** Land in der Klammer zuerst lesen → `dropship/GOOGLE-LAENDER-2026-10-02.md`
+- 2026-10-02 · 🔁 **«mache das besser»: 231/320 Artikel ohne Produktlink → `seo_autopilot.py --auffrischen` (15/Tag, Text unverändert, Blöcke «Passend dazu im Shop» + FAQ/JSON-LD, ersetzbar); Produkte nur, wenn der Titel das von Gemini genannte Produkt-Suchwort trägt (erste Kollektion/längstes Wort gaben live Quarzuhr zur Salzlampe, Baumwolle zu Seide); Groq = 200k Tokens/Tag JE MODELL → Massenlauf auf gpt-oss-20b, Tageslimit = sofortiger Abbruch.** Relevanz vor Menge → `dropship/SEO-AUTOPILOT-BESSER-ALS-SORO-2026-10-02.md`
+- 2026-10-02 · ✍️ **«mach besser als soro»: 331 Artikel brachten 90 T ~45 Sitzungen/0 Warenkörbe → `seo_autopilot.py` täglich im Aufseher: CH-Google-Vorschläge je Menü-Kollektion, nur Themen mit ≥ 6 kaufbaren Produkten (Live-Preis), Kannibalisierungs-Schutz, Fakten-Tor (Gemini schreibt, Zweitprüfer prüft, Heilversprechen/Du/ss/Konkurrenz/Preis-Link-Regeln), FAQ-JSON-LD, `--messen`; Kanarienvögel 8/8; erster Artikel live (Hochzeitsgast-Kleider).** Sie-Erkennung nur mitten im Satz → `dropship/SEO-AUTOPILOT-BESSER-ALS-SORO-2026-10-02.md`
 
 Verschoben am 04.10.2026:
 - 2026-10-02 · 🔁 **OpenAI-Guthaben leer (429 `insufficient_quota` — kein Drosseln!), DeepSeek 402 → `automation/zweitmodell.py` (`chat_json`: ChatGPT, sonst Groq gpt-oss-120b / qwen3.8-27b-Vision; > 5 Bilder → Raster, Marke `/tmp/openai_leer` 6 h) in cj_variante_bild, gemini_jury, google_bild_tausch, kauderwelsch, google_fein_ki (zweistufig gegen 413); #1021-Kanarienvogel wieder richtig.** Bei 429 den Körper lesen → `dropship/ZWEITMODELL-GROQ-2026-10-02.md`
