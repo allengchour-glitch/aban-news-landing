@@ -10,6 +10,12 @@
 - **Rechnung (gemessen 05.10.):** Fortura-Marge Median 21 % (z. B. VK 49.90 / EK 39.46). Nach 12 % Provision bleiben bei 364 von
   2'388 Produkten ≥ CHF 5 → nur diese im Feed. CJ-Ware (10–20 Werktage) bewusst NICHT — Ricardo-Käufer erwarten Tage.
 
+## Stand 05.10. 20:45 UTC
+- ✅ Betreiber hat sich bei Ricardo **als Privatperson** registriert.
+- Ricardo-Hilfe: Geschäftskonto ist für **MWST-pflichtige** Firmen; Umstellung nur über den Kundendienst
+  ([help.ricardo.ch](https://help.ricardo.ch/hc/de/articles/16882997491996)). LuxeStyle ist nicht MWST-pflichtig (Umsatz < CHF 100'000, keine UID)
+  → Ricardo selbst fragen, ob Privatkonto für Feed + Shopify reicht (Kurz-Mail unten), statt auf Verdacht umzustellen.
+
 ## Was nur der Betreiber kann (≈ 15 Min)
 1. **Ricardo-Konto als gewerblicher Verkäufer** anlegen/umstellen: ricardo.ch → Mein Ricardo → Konto → «Gewerblicher Verkäufer»
    (Verifizierung mit Firmenangaben; LuxeStyle hat keine UID/HR — Einzelfirma angeben, Ricardo fragt ggf. nach).
@@ -18,7 +24,16 @@
 4. Ricardo schickt einen **Installationslink für Shopify** → anklicken (Shop `au3j0y-hq`) → Ricardo-Bestellungen landen in Shopify
    und laufen durch die normale Bestell-Ampel.
 
-### Mail an accountmanagement@ricardo.ch
+### Kurz-Mail an accountmanagement@ricardo.ch (seit 05.10., ersetzt die lange)
+> Betreff: Produkt-Feed für meinen Shop
+>
+> Grüezi
+> Ich habe ein Ricardo-Konto (Benutzername: ________) und einen kleinen Online-Shop (luxestyle.ch, nicht MWST-pflichtig).
+> Ich möchte rund 360 Artikel per Produkt-Feed einstellen und die Bestellungen in Shopify erhalten.
+> Geht das mit meinem Konto, oder muss ich etwas umstellen?
+> Freundliche Grüsse
+
+### (alt) Mail an accountmanagement@ricardo.ch
 > Betreff: Produkt-Feed + Shopify-Anbindung für LuxeStyle
 >
 > Grüezi
