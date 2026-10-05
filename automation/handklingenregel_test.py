@@ -35,8 +35,17 @@ SPERREN = [
     "Messerblock mit 6 Messern",
     "Knife Block Set with 5 Knives",
     "Klappmesser inkl. Etui",
+    # 05.10.2026: Klingen-Komposita vor den Ausnahmen
+    "Titanlegierung Faltmesser Mini Schlüsselanhänger",
+    "Vintage Rasiermesser aus Edelstahl",
+    "Garten-Veredelungsmesser aus geschmiedetem Stahl",
+    "Küchenmesser mit Strass",
 ]
 DURCHLASSEN = [
+    "Küchenmesser Aufbewahrung",                   # 05.10.: Zubehör hinter dem Kompositum
+    "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+    "Küchenmesser-Schärfer mit 3 Stufen",
+    "Elektrischer Rasierer für Herren",
     "Digitaler Windmesser (Anemometer)",            # 05.10.: Messgerät, kein Messer
     "Diamant-Schärfstab für Küchen- und Gartenmesser",  # 05.10.: Schärfer ohne Klinge
     "Messerschärf-System mit Winkelführung",         # 05.10.: Bindestrich-Schreibung

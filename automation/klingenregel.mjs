@@ -62,11 +62,13 @@ function beigabeHinterMesser(t, k) {
   return !!(s && s.index < k.index && /messer|knife|knives/i.test(s[0])
     && /(?<![\wäöüß])(?:mit|with|inkl\.?|samt|und|and)(?![\wäöüß])|&/i.test(t.slice(s.index + s[0].length, k.index)));
 }
+export const HANDKLINGE_IMMER = new RegExp(R.handklinge_immer, 'i');
 export function istHandklinge(titel) {
   const t = titel || '';
+  if (HANDKLINGE_SPIELZEUG.test(t)) return false;
+  if (HANDKLINGE_IMMER.test(t) && !HANDKLINGE_KEIN_PAKET.test(t)) return true;   // 05.10.2026: eindeutige Klingen-Komposita vor allen Ausnahmen
   const k = KONTEXT_AUSNAHME.exec(t);
   if (k && !beigabeHinterMesser(t, k)) return false;
-  if (HANDKLINGE_SPIELZEUG.test(t)) return false;
   if (MESSGERAET.test(t)) return false;
   if (WAFFENWORT_VORNE.test(t) && VORNE_AUSNAHME.test(t)) return false;
   // 23.09.2026: Paket MIT Klinge — «Hackmesser mit Schutzhülle», «Messerblock mit 6 Messern».
