@@ -4294,3 +4294,8 @@ drahtloses-bluetooth-gamepad-4404b7	0A0F0FF7-451B-4580-A96F-FB9BEDEF3B21	7	10.45
 kabelloser-gamecontroller-fur-switch-pc-659d62	636E2FA0-45E6-4E8C-83E5-E71B7A07DEC9	7	9.54	ok	landeseite
 gamepad-fur-pubg-und-andere-games-1032a0	06ADB8CB-9D07-494D-BFB1-39AD81C96A24	7	8.17	ok	landeseite
 teleskopisches-bluetooth-gamepad-27c168	FE892DC1-62D5-4564-A876-1B455042B1BA	7	10.98	ok	landeseite
+kabelloses-bluetooth-gamepad-fur-ps4-e0e243	2DD4213C-8E42-442C-80B3-3AFA2B83A91D	7	9.86	ok	landeseite
+diamantbesetztes-uhren-set-0961cb	475DDF0C-A9E7-4CE9-B795-09AB2A1223A0	7	9.11	ok	landeseite
+atmospharische-damenuhr-geschenkset-7b8ed1	6B175998-0BD3-48D1-AFEA-E8566760319D	7	10.44	ok	landeseite
+stahlband-quarzuhr-fur-sport-und-business-f06ad7	177D4701-EAE4-4050-9747-1F4AE2FDB9C0	7	8.10	ok	landeseite
+herren-mechanikuhr-mit-milanaise-armband-b2d61d	120E3C50-5166-4908-91C3-BE27E5AE17C6	7	8.57	ok	landeseite
