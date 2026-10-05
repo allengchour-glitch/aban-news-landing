@@ -538,3 +538,4 @@ wecker	ok	27	Wecker
 duschvorhaenge	ok	21	Duschvorhänge
 taschenlampen	ok	29	Taschenlampen & Stirnlampen
 wandregale	ok	21	Wandregale
+winterjacken	ok	29	Winterjacken & Daunenjacken
