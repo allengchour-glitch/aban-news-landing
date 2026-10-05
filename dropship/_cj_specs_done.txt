@@ -3454,3 +3454,7 @@ rutschfeste-arbeits-freizeitschuhe-620300	gesetzt-1
 herren-ultra-leichte-eva-trekkingschuhe-625900	gesetzt-4
 herren-leder-schnurschuhe-casual-business-628200	gesetzt-5
 leder-business-schuhe-fur-herren-625600	hat-liste
+britische-casual-lederschuhe-im-retro-stil-617900	gesetzt-5
+herrenschuhe-aus-weichem-leder-mit-glanz-finis-615600	gesetzt-3
+business-lederschuhe-im-drachenschuppen-muster-618800	gesetzt-2
+business-freizeitschuh-im-korean-style-620700	gesetzt-4
