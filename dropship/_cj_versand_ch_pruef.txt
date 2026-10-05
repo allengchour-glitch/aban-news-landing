@@ -4263,3 +4263,4 @@ wetzstein-800-8000er-kornung-d7fafb	D7086D7A-A3DD-4249-80F6-A4195182ACA3	16	14.5
 gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	537195BD-D29D-4C22-8F7A-3FC21B7AFEBF	16	13.76	ok	klinge
 keramik-sparschaler-mit-zirkonia-klinge-6829c8	1D82B2C1-207D-4FD7-A97A-98E3379BA161	1	10.18	ok	klinge
 diamant-messerscharfer-mit-festem-winkel-c8b87b	2B9BAFA6-13A1-401C-BBDD-9FE29D150FA4	16	13.76	ok	klinge
+tutu-kleid-fur-baby-girls-langarm-mit-spitze-7d6d30	06DFB9BE-D670-4944-AA0A-E3890279843A	16	7.71	ok	landeseite
