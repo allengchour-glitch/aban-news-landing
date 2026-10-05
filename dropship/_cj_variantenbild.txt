@@ -6104,3 +6104,14 @@ gid://shopify/Product/15454915133825	bild-urls-tot
 gid://shopify/Product/15454915166593	zugeordnet	24	Automatischer Haarlockenwickler 32mm
 gid://shopify/Product/15454915232129	zugeordnet	6	Aufblasbare Schwimmplattform mit Motor
 gid://shopify/Product/15454915264897	zugeordnet	3	Wasserwellen-Haarkräusler 3-in-1
+gid://shopify/Product/15454915297665	zugeordnet	4	Leistungsstarker Staubsauger-Stick 2-in-1
+gid://shopify/Product/15454915330433	zugeordnet	6	6-in-1 Haarstyling-Set
+gid://shopify/Product/15454915395969	zugeordnet	3	Kühlbox-Aufbewahrung
+gid://shopify/Product/15454915461505	zugeordnet	4	Mandala-Vorlage Lineal
+gid://shopify/Product/15454915494273	bild-urls-tot
+gid://shopify/Product/15455004623233	zugeordnet	3	S85 Flugroboter mit 4K-Dualkamera und Hinderniserkennung
+gid://shopify/Product/15455004688769	zugeordnet	3	Faltbare HD-Drohne mit Hinderniserkennung
+gid://shopify/Product/15455004787073	bild-urls-tot
+gid://shopify/Product/15455004819841	bild-urls-tot
+gid://shopify/Product/15455004852609	zugeordnet	2	Rollendes Kamera-Drohne für Kinder
+gid://shopify/Product/15455004918145	zugeordnet	3	Kinder-Drohne mit Doppelfoto-Hochflug
