@@ -575,3 +575,4 @@ gid://shopify/Product/15499302502785	ok-lokal
 gid://shopify/Product/15465326936449	ok-lokal
 gid://shopify/Product/15522214248833	ok-lokal
 gid://shopify/Product/15496393163137	ok-lokal
+gid://shopify/Product/15497443148161	ok-lokal
