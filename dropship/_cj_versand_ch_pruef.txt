@@ -4561,3 +4561,5 @@ interaktives-baumwoll-seilspielzeug-fur-hunde-115521	2026874810163048449	0	-	KEI
 bouncing-balls-katzenspielzeug-mit-feder-611266	2069266933966274562	16	7.71	ok	landeseite
 hunde-tennisball-futterspender-321601	2069349540081733633	0	-	KEINE CH-Option → DRAFT	landeseite
 huteball-fur-hunde-mit-griffen-45-cm-548482	2068972398356377602	16	13.40	ok	landeseite
+wurm-spielzeug-set-fur-katzen-541762	2066459998851039233	16	7.85	ok	landeseite
+interaktiver-rollball-fur-haustiere-389569	2062816628414910465	0	-	KEINE CH-Option → DRAFT	landeseite
