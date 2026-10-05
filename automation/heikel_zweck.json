@@ -150,6 +150,15 @@
     "Feuerzeug|Lighter|Anz[üu]nder|Flaschen[öo]ffner|Kugelschreiber|Schl[üu]sselanh[äa]nger|Wasserspender|Seifenspender"
    ],
    "warum": "Alltagsgegenstand in Waffenform: nicht der Gegenstand ist das Problem, sondern die Verwechselbarkeit mit einer echten Schusswaffe (öffentlicher Raum, Polizei). Wir werben nicht damit (Google-Kanal raus, Tag waffe-pruefen); DRAFT nur nach Bildprüfung."
+  },
+  {
+   "n": "kopierschutz-umgehung-konsole",
+   "_": "05.10.2026: «USB-Stick für Host-Systeme» stand in /collections/usb-sticks (Google-Kanal) — laut Text «Direkt einsetzbar bei Systemversionen FW 9.0 bis 11.00, unterstützt den Wechsel zwischen den Systemversionen» = PS4-Jailbreak-Dongle. Daneben «U-Disk Archiv für Nintendo Switch»: «ermöglicht den Start von CFW wie Atmosphere, ReiNX oder SXOS», RCMloader/RCMclip. Beide Titel nennen weder Jailbreak noch Firmware — nur der Text verrät die Funktion.",
+   "alle": [
+    "Custom[- ]?Firmware|\\bCFW\\b|Jailbreak|Homebrew|Systemversion(?:en)?\\s+(?:FW\\s?)?\\d|\\bFW\\s?\\d{1,2}\\.\\d{1,2}\\b|RCM-?(?:loader|clip|jig)|Mod-?Chip|Payload-?(?:Injektor|Injector|Dongle)",
+    "Konsole|\\bSwitch\\b|\\bPS\\s?[2-5]\\b|PlayStation|\\bXbox\\b|\\bWii\\b|Nintendo|\\b3DS\\b|\\bPSP\\b|Host-?System|E-?Sport|Gaming"
+   ],
+   "warum": "Vorrichtungen zur Umgehung technischer Schutzmassnahmen (Konsolen-Jailbreak, Custom Firmware) darf man in der Schweiz weder anbieten noch verkaufen (Art. 39a Abs. 3 URG). Zweiter Anker Pflicht (Konsole/Gaming), damit eine Router- oder Drucker-Firmwareangabe nicht trifft. Folge: DRAFT, Tag kopierschutz-umgehung, kein Kanal."
   }
  ]
 }

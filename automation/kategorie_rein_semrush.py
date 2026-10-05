@@ -278,12 +278,15 @@ CFG.update({
         echt=R(r"usb.?stick|usb.?flash|flash.?drive|speicherstick|pen.?drive|usb.?speicher|memory.?stick"),
         ban=R(HAUS + r"|\bhub\b|adapter|kabel|ladeger|ventilator|lampe|licht|leuchte|mikrofon|bluetooth|wifi|wlan|empf(ä|ae)nger|"
               r"receiver|dongle|k(ü|ue)hl|heiz|w(ä|ae)rm|h(ü|ue)lle|halter|kartenleser|card.?reader|aufkleber|sticker|stick-?optik|"
-              r"feuerzeug|spion|kamera|recorder|diktier|mp3|player|lautsprecher|tastatur|maus\b|controller|usb-?c.?stick.*(lade|charg)"),
+              r"feuerzeug|spion|kamera|recorder|diktier|mp3|player|lautsprecher|tastatur|maus\b|controller|usb-?c.?stick.*(lade|charg)|"
+              # 05.10.: «USB-Stick für Host-Systeme» war ein PS4-Jailbreak-Dongle (Text: «Systemversionen FW 9.0 bis 11.00»)
+              r"host-?system|firmware|\bfw\b|jailbreak|systemversion|\bcfw\b|konsole|nintendo|\bswitch\b|\bps\s?[2-5]\b|playstation|xbox"),
         typen={"Elektronik", "Gadget", "Spass-Elektronik", "Gaming-Zubehör", "Büro & Schreibwaren", "Computer-Zubehör",
                "USB-Stick"} | SAMMEL,
         ja=["3.0 Metall-USB-Stick 32 GB", "USB-Stick «Wunschflasche» aus Holz", "Pinguin USB-Stick 3.0"],
         nein=["USB-Stick Feuerzeug", "4-Port USB Hub Stick", "USB-Stick Ventilator", "USB-Stick-Optik Spion-Kamera",
-              "USB Stick Mikrofon für Konferenz"],
+              "USB Stick Mikrofon für Konferenz", "USB-Stick für Host-Systeme", "USB-Stick für PS4 Jailbreak FW 9.0",
+              "USB-Stick mit Custom Firmware CFW für Switch"],
         titel="USB-Sticks", sort="BEST_SELLING",
         seo_titel="USB-Stick kaufen: Metall, Mini & Motive | LuxeStyle",
         seo_text="USB-Sticks: Mini-Sticks aus Metall, wasserdichte Schlüssel-Modelle, Dual-Sticks mit USB-C, USB 3.0 und "

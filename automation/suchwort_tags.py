@@ -153,6 +153,50 @@ MIT_UMLAUT = {"muetze": "mütze", "guertel": "gürtel", "huelle": "hülle",
               "schluesselanhaenger": "schlüsselanhänger", "anhaenger": "anhänger",
               "fuehr": "führ", "foerder": "förder", "rueck": "rück", "kuehl": "kühl"}
 
+# ── SYNONYME (05.10.2026, «keyword mehr machen», Storefront-Messung 60 Google-CH-Begriffe) ──────────────────────
+# Kundinnen tippen ein anderes Wort als der Titel trägt: «blusenkleid» (Titel «Hemdblusenkleid»), «jeanskleid»
+# («Denim-Kleid»), «hosenrock» («Culotte»), «gummistiefel» («Regenstiefel»), «deckenlampe» («Deckenleuchte»),
+# «hanteln» («Kurzhantel»), «akkuschrauber» («Akku-Schrauber»), «bodys» («Baby-Body»). Gemessen: Top-3 der
+# Vorschlagsliste 0/3 oder 1/3 passend, obwohl 6–52 passende Produkte aktiv sind. Das Grundwort-Muster oben
+# hilft hier nicht — es fängt nur das Ende einer Zusammensetzung, kein anderes Wort.
+# Tag → (Titel trifft, Titel-Ausschluss, Produkttyp muss treffen). Ausschlüsse sind die Kanarienvögel aus dem
+# Trockenlauf: «Hantel-Armband» ist Schmuck, «Deko-Set Glitzer-Kronleuchter» Partydeko, «Jeans-Look Top mit
+# Tupfenkleid» ein Top, «Nachttisch-Pendelleuchte» eine Tischlampe, «Strampler für Haustiere» kein Baby-Body.
+# Kein Tag hier wird von einer Kollektionsregel benutzt (549 Regeln geprüft 05.10.).
+SYNONYME = {
+    "blusenkleid":   (r"hemdblusenkleid|hemdkleid", None, None),
+    "jeanskleid":    (r"denim-?kleid|jeans-\w*kleid", r"jeans-look", None),
+    "hosenrock":     (r"culotte|rockhose", None, None),
+    "gummistiefel":  (r"regenstiefel", None, None),
+    "deckenlampe":   (r"deckenleuchte|pendelleuchte|kronleuchter|h(?:ä|ae)ngelampe", r"deko-set|nachttisch|glitzer", None),
+    "hanteln":       (r"hantel", r"armband|catnip|halterung|schutzpolster|hantelgriff|hantelstange|atem-hantel", r"sport"),
+    "akkuschrauber": (r"akku-\w*schrauber", None, None),
+    "gartendeko":    (r"gartenstecker|gartenfigur|gartenfee", None, None),
+    "katzenbett":    (r"katzen-?h(?:ä|ae)ngematte|katzenplattform", None, r"haustier|spielzeug"),
+    "bodys":         (r"baby-?body|baby\b.*\bbody\b", r"strampler|haustier", r"baby"),
+}
+# Nie: POD/Editor-Ware und Kostüme (Hausregel) — auch wenn ein Titel passt.
+SYNONYM_NIE_TYP = re.compile(r"kost(?:ü|ue)m|verkleid", re.I)
+SYNONYM_NIE_TAG = {"pod", "selbst-gestalten", "editor", "printful"}
+SYNONYM_LEDGER = "dropship/_suchwort_synonyme.tsv"
+
+
+def synonym_tags(titel, typ, tags):
+    """Synonym-Tags, die ein aktives Produkt bekommen soll (ohne die schon vorhandenen)."""
+    vorhanden = {x.lower() for x in (tags or [])}
+    if SYNONYM_NIE_TYP.search(typ or "") or (vorhanden & SYNONYM_NIE_TAG):
+        return []
+    neu = []
+    for tag, (trifft, ohne, typ_muss) in SYNONYME.items():
+        if tag in vorhanden or not re.search(trifft, titel, re.I):
+            continue
+        if ohne and re.search(ohne, titel, re.I):
+            continue
+        if typ_muss and not re.search(typ_muss, typ or "", re.I):
+            continue
+        neu.append(tag)
+    return neu
+
 
 try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
     from eimer_etikette import nachlauf as _nachlauf

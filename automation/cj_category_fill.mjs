@@ -1119,7 +1119,7 @@ for(const [cat,label] of grp.cats){
    // geschaltet — bereits das ANBIETEN ist nach Art. 5 verboten. Alles andere Heikle bleibt
    // im Shop kaufbar, kommt aber in KEINEN Kanal: der Kanal ist das Risiko, nicht das Regal.
    if(heik){
-    const tag = heik.verboten ? 'waffengesetz-verboten'
+    const tag = heik.gruppe==='umgehung' ? 'kopierschutz-umgehung' : heik.verboten ? 'waffengesetz-verboten'
               : (heik.gruppe==='waffe' ? 'waffe-pruefen' : 'verdeckte-ueberwachung');
     await sgql(st,`mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
                {i:{id:pid, tags:[...tagsFinal, tag], ...(heik.verboten?{status:'DRAFT'}:{})}});
