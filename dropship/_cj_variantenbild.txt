@@ -6190,3 +6190,10 @@ gid://shopify/Product/15455268372865	zugeordnet	30	Retro Baumwoll-Leinen Langarm
 gid://shopify/Product/15455268503937	zugeordnet	30	Herren-High-Neck-Langarmshirt Winterpullover
 gid://shopify/Product/15455268635009	zugeordnet	98	Baumwoll-Pullover mit Batik-Technik
 gid://shopify/Product/15455268766081	zugeordnet	15	Halbzip-Sweater für Herren
+gid://shopify/Product/15455268962689	zugeordnet	36	Gestricktes T-Shirt Herren Kurzarm Rundhals
+gid://shopify/Product/15455269093761	zugeordnet	10	Armee-Grünes Kleid mit Gürtel
+gid://shopify/Product/15455269126529	zugeordnet	15	Leichter Kurzarm Pullover mit Lochmuster
+gid://shopify/Product/15455269159297	bild-urls-tot
+gid://shopify/Product/15455269224833	zugeordnet	12	Relaxation-Strick-Oberteil Herren
+gid://shopify/Product/15455269257601	zugeordnet	42	Herren Cotton-Linien Kurzarm-Einfarbig Hoodie
+gid://shopify/Product/15455269323137	zugeordnet	25	Herren-Westen Business-Casual Loose Fit für Anzüge
