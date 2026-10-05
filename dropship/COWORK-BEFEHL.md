@@ -1,6 +1,15 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
 
+
+## 05.10. 21:30 — ✅ Google Search Console (Tag live), ✅ Bing Webmaster verifiziert (msvalidate 9023C06C…), ✅ Ahrefs Webmaster Tools bestätigt
+Nächste Gratis-Klicks: Sitemap `https://luxestyle.ch/sitemap.xml` in GSC + Bing einreichen · Microsoft Merchant Center «erneut prüfen» (Ablehnung 01.10. behoben) · Clarity-Aufnahmen der Warenkorb-Sitzungen ansehen · Ahrefs Site Audit + GSC Insights · Coupler.io ↔ Search Console.
+
+## 05.10. 21:00 — Semrush ✅ gekündigt (Bestätigungsmail 20:50). Nächster Schritt (gratis): Google Search Console einrichten
+- https://search.google.com/search-console → Property `https://luxestyle.ch` → bestätigen (Shopify: Meta-Tag oder DNS).
+- Danach in Coupler.io die Search Console als Quelle verbinden → Claude liest echte Klicks/Positionen täglich.
+- Optional: https://www.bing.com/webmasters (Import aus der Search Console mit einem Klick).
+
 ## 05.10. 16:40 — #1021: Iris NICHT nötig — CJ-Ersatzware (Ticket T202610040937181221)
 - Ursache gefunden (Screenshot Betreiber): Variante **CJZBNSSY02651 «Stainless steel blue» (Nibosi) bei CJ ausverkauft**;
   CJ bietet ein «similar style» an (Bild: blaues Zifferblatt, Marke TIBERAO statt Nibosi). Betreiber hat am 04.10. 14:21 und

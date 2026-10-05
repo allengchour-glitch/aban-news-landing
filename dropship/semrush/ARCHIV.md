@@ -33,3 +33,9 @@ buro-home-office, Oversized-Sonnenbrille → sonnenbrillen-alle; `sonnenbrillen-
 Bewusst NICHT: «smart ring» (2'900/Mt, Platz 68) — SEO-Titel enthält den Begriff schon; «mini skateboard» rankt mit einem
 Finger-Skateboard (andere Ware), «schrank schubladen» mit einem Wäsche-Faltbrett (andere Ware), «uhren adventskalender» mit einer
 Retro-Uhr — Titel nicht auf fremde Suchabsicht biegen.
+
+## ✅ GEKÜNDIGT 05.10.2026 20:50 (Mail Semrush «Ihr Abonnement wurde erfolgreich gekündigt»)
+Konto wird am 09.10.2026 auf das kostenlose Paket herabgestuft — **Projekte (31464185, Site Audit) werden gelöscht**, die Daten
+oben bleiben im Repo. Die drei Semrush-Routinen (trig_01MN3e4…, trig_01DXWkv6…, trig_013ZFovS…) am 05.10. 18:52 UTC deaktiviert.
+Nachfolger (gratis): Google Search Console (+ Coupler.io zum Auslesen), Bing Webmaster Tools, Ahrefs Webmaster Tools;
+Probe später: Sistrix 14 Tage (Schweizer Index).
