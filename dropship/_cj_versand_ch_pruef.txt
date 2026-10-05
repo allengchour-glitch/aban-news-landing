@@ -3775,3 +3775,8 @@ chiffon-oberteil-mit-kragen-638400	2602250940061638800	16	6.33	ok	landeseite
 duschvorhanghaken-mit-schleifen-aus-harz-601000	2506240956401601200	16	7.87	ok	landeseite
 damen-halterneck-shirt-mit-langen-armeln-632500	2602250920111632800	16	6.33	ok	landeseite
 flaschen-aufbewahrungstasche-fur-outdoor-612100	2506200138001612400	16	5.96	ok	landeseite
+blumenmuster-hemd-oder-strandhose-614000	2602250844061614400	16	11.00	ok	landeseite
+langarm-oberteil-mit-schleife-611200	2602250836241611600	16	10.15	ok	landeseite
+faltbarer-aufbewahrungsschrank-610000	2504220143251610200	0	-	KEINE CH-Option → DRAFT	landeseite
+damen-langarmshirt-mit-v-ausschnitt-610200	2602250712111610600	16	8.11	ok	landeseite
+stapelbare-kosmetik-aufbewahrungsbox-608900	2504190955291609300	16	12.15	ok	landeseite
