@@ -16841,3 +16841,8 @@ gid://shopify/Product/15500351963521	68->0	Silberner Pancake-Clip
 gid://shopify/Product/15500373295489	25->1	Hundespielzeug
 gid://shopify/Product/15502186742145	10->0	Wasserwellen-Lockenstab mit drei Heizstäben
 gid://shopify/Product/15502187168129	30->1	Retro-Doppelring «Sonne» aus Edelstahl
+gid://shopify/Product/15502960427393	17->2	Winkelbohrvorsatz-Set für schwer zugängliche Stellen
+gid://shopify/Product/15503113748865	82->0	Herren Kurzarmhemd aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15503121744257	9->0	Mini Luftbefeuchter für unterwegs
+gid://shopify/Product/15503121875329	49->0	USB Aroma Diffusor mit dimmbarer Vulkan-Beleuchtung
+gid://shopify/Product/15503165030785	12->0	Nacken- und Schultermassagegerät mit Wärmefunktion
