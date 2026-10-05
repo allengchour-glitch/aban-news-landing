@@ -14693,3 +14693,16 @@ gid://shopify/Product/16606124540295	hammer	Kleiner Holzhammer 14 cm
 gid://shopify/Product/16606124900743	huelle	Putter-Schutzhülle mit Golf-Tee-Muster
 gid://shopify/Product/16606125359495	regal	Wandregal aus Fichte für Bücher und Kosmetik
 gid://shopify/Product/16606125392263	tasche	Sporttasche mit Trocken-Feucht-Trennung
+gid://shopify/Product/16606142529927	becher	Eisbecher aus Edelstahl 1 L mit Kupferbeschichtung
+gid://shopify/Product/16606158094727	tasche	Sporttasche mit Nass-Trocken-Trennung
+gid://shopify/Product/16606172447111	tasche	Wasserdichte Fahrradtasche 13 L
+gid://shopify/Product/16606172643719	rucksack	Studentenrucksack Blumenmuster
+gid://shopify/Product/16606172774791	tasche	Tennis- und Badmintontaschen-Set (2 Stück)
+gid://shopify/Product/16606172807559	rucksack	Studentenrucksack 20-35L mit Laptopfach
+gid://shopify/Product/16606216946055	rucksack	Outdoor-Reiserucksack für Studierende und Berufstätige
+gid://shopify/Product/16606248763783	becher	Messbecher- und Messlöffelset aus Edelstahl
+gid://shopify/Product/16606271734151	anhaenger	PU Leder Schlüsselanhänger mit 30 ml-Behälter
+gid://shopify/Product/16606916968839	buerste	Spülbürste mit Seifenbehälter für Töpfe und Pfannen
+gid://shopify/Product/16606917165447	zange	Lochzange für Gürtel und Uhrenarmbänder
+gid://shopify/Product/16607079072135	bohrer	Holzbohrer mit drei Kanten – Bohrlochöffner
+gid://shopify/Product/16607079727495	hammer	Gummihammer mit Rundkopf, 8–24 oz, 200 mm
