@@ -4244,3 +4244,12 @@ glitzer-spray-fur-haar-und-korper-784705	2063480448434860033	0	-	KEINE CH-Option
 glitzerndes-highlight-puder-fur-gesicht-korper-910657	2063590451434905602	0	-	KEINE CH-Option → DRAFT	landeseite
 kurkuma-kojisaure-reinigungspads-021569	2063093596975570946	0	-	KEINE CH-Option → DRAFT	landeseite
 photon-gesichts-und-augenmassagegerat-639400	2606050219331630000	7	9.37	ok	landeseite
+augenpflege-schlafmaske-mit-warme-massage-602100	2605020807481602600	7	6.90	ok	landeseite
+sonnenschutz-gesichtsmaske-mit-krempe-617900	2604170350211618400	16	7.43	ok	landeseite
+maulbeerseiden-gesichtsmaske-fur-damen-609500	2604161004461600100	16	4.81	ok	landeseite
+nahtlose-gesichtsmaske-aus-nylon-614500	2512280802351614700	16	5.81	ok	landeseite
+sport-gesichtsmaske-mit-aktivkohlefilter-059778	1994308236394528769	0	-	KEINE CH-Option → DRAFT	landeseite
+samtige-gesichtsmaske-atmungsaktiv-schutzend-649900	2510120313071640100	16	5.12	ok	landeseite
+all-in-one-ersatzmaske-620300	2412210617561622200	16	5.81	ok	landeseite
+schlafmaske-gegen-mude-augen-154880	1721805942263652352	7	10.33	ok	landeseite
+trainingsmaske-fur-mehr-ausdauer-569344	1659480804940066816	16	9.38	ok	landeseite
