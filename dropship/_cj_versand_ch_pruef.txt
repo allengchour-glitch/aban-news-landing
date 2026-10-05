@@ -4435,3 +4435,42 @@ topfregal-mit-8-verstellbaren-ebenen-3328ae	01360138-87AA-4369-8E41-E395842484ED
 tiefe-obstschale-aus-akazienholz-bf49de	08CFBF3C-FD33-4A5E-849E-8A4BFE79156C	16	9.47	ok	landeseite
 maifan-stein-omelettpfanne-mit-4-mulden-2ec2e4	81F71852-616C-4283-8B41-E2DF2CE20FEB	16	12.69	ok	landeseite
 multifunktionaler-schaler-923364	79ED6BD1-9C95-408B-A12C-988E0EF24AB8	16	13.28	ok	landeseite
+elektrischer-schaler-fur-obst-und-gemuse-6b3f18	11F709A5-C33C-4A7B-BF91-D90898D7FB55	16	13.28	ok	landeseite
+elektrischer-schaler-mit-eu-stecker-299f86	1375083559206916096	16	13.28	ok	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite
+5-panel-cap-sprint-nylon-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-l-a-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-classic-rot-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+bucket-hat-banana-schwarz-print	-	-	-	unklar keine CJ-SKU	landeseite
+cord-bucket-hat-manchester-navy	-	-	-	unklar keine CJ-SKU	landeseite
+denim-cap-bleu-washed-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-wellness-rot-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-paris-schwarz-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-amore-herz-geburtsstein-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-coeur-herz-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-tresor-doppellagig-mit-charms-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-halskette-goutte-tropfen-anhanger-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armreif-couleur-verstellbar-gold	-	-	-	unklar keine CJ-SKU	landeseite
+titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU	landeseite
+schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
+ohrstecker-minou-katzchen-925-silber	-	-	-	unklar keine CJ-SKU	landeseite
+ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+statement-ohrstecker-etincelle-blute-kristall	-	-	-	unklar keine CJ-SKU	landeseite
+halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
+oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
+ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
+anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
+mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+sternenhimmel-projektor-cosmos-led-nachtlicht-240961	2039999123513458690	0	-	KEINE CH-Option → DRAFT	landeseite
+ximonth-krauter-pflegestift-mit-pfefferminze-461762	2072583034173816833	3	4.82	ok	landeseite
+dr-snail-collagen-047809	2072571039121711106	3	6.77	ok	landeseite
+tunmate-shea-butter-237g-818433	2072560170122178562	3	9.54	ok	landeseite
+ximonth-nagelpflege-pflaster-956673	2072610304975757314	16	4.52	ok	landeseite
