@@ -4264,3 +4264,11 @@ gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	537195BD-D29D-4C22-8F7A-3F
 keramik-sparschaler-mit-zirkonia-klinge-6829c8	1D82B2C1-207D-4FD7-A97A-98E3379BA161	1	10.18	ok	klinge
 diamant-messerscharfer-mit-festem-winkel-c8b87b	2B9BAFA6-13A1-401C-BBDD-9FE29D150FA4	16	13.76	ok	klinge
 tutu-kleid-fur-baby-girls-langarm-mit-spitze-7d6d30	06DFB9BE-D670-4944-AA0A-E3890279843A	16	7.71	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+reise-hangematte-aus-fallschirm-nylon-86eb20	08996708-6842-4750-A1B8-47B0F43ED8C6	16	11.96	ok	landeseite
+deformierbare-led-garagenleuchte-60w-7122ff	0E849C03-0547-42FA-8F1D-74BB5107FE08	11	29.72	ok	landeseite
+babysitz-toilettenstuhl-3e78df	2407181213561611700	16	26.48	ok	landeseite
+ferngesteuertes-4wd-high-speed-kletterauto-a2cb0e	1410472057682137088	7	45.45	ok	landeseite
+baby-nest-reisebettchen-aus-baumwolle-20552f	1428634942778249216	16	19.76	ok	landeseite
+hundebett-warmer-schlafsack-7087d5	1725396376407777280	16	22.79	ok	landeseite
