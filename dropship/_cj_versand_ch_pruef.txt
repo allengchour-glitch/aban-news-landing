@@ -4303,3 +4303,20 @@ wasserdichte-partneruhr-aus-edelstahl-cd1a14	0843A7EE-DBA2-4F78-878B-7BF85EDAB90
 gaming-trigger-griff-fur-smartphones-c1a081	C86451EF-D400-46B6-B74F-24DA175E0102	16	5.77	ok	landeseite
 elektrisches-reinigungsgerat-fur-poren-b73b35	5AA813DB-16EB-4A49-9FA1-B94F300DEE33	16	8.11	ok	landeseite
 sitzhocker-fur-das-lenkrad-4d96d4	4E728643-A968-4982-B23A-CB0D17F60369	16	10.12	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+lidschatten-palette-16-farben-e283c6	51121D4B-04FD-4E04-8BAE-BA9193D5AA81	1	8.05	ok	landeseite
+wasserfester-eyeliner-stift-12-farben-3d7198	039387FE-747E-425A-9232-F2FA1738477C	3	5.14	ok	landeseite
+miss-rose-highlighter-puder-80c2c1	FB549E1E-FCA5-427E-858E-DC0C696BFF90	1	7.10	ok	landeseite
+avocado-bb-cream-mit-pilzkopf-applikator-69b717	4999071F-3545-4D62-87A9-FD91E7611DCF	3	7.78	ok	landeseite
+feuchtigkeitspflegecreme-9e5547	0371D452-428E-4358-9F06-013F5D9B6F94	3	6.18	ok	landeseite
+luminoser-lidschatten-fur-augen-und-gesicht-d6c18d	BF64AD0C-0630-417D-AE6E-E2AC7889AC96	1	11.64	ok	landeseite
+langanhaltender-uv-lidschatten-769542	ABFFEA57-4189-408C-A812-C9D272519540	1	10.55	ok	landeseite
+wimpernserum-3-ml-b5f10d	F9DDD530-AF94-4905-9F6C-577421419221	3	5.37	ok	landeseite
+reparaturplatten-set-7a9af5	1E586854-6BCC-4F05-BF09-35496586823C	1	8.05	ok	landeseite
+multifunktionale-flussige-grundierung-8e59e6	200FF403-8BE0-422E-B79C-09FEF0CA889F	3	6.81	ok	landeseite
+elektrische-gesichtsburste-mit-reinigungsfunkt-999bc1	1826000F-7310-47E5-97FA-AC92654D2770	7	8.89	ok	landeseite
+scheinwerfer-vernebler-becher-a1978c	71E3E0E8-B0AB-4C80-A1C3-DF67EC14241D	16	8.79	ok	landeseite
+leder-lenkradbezug-38cm-19018d	11C5EB20-7DC7-4CC2-8255-97E9F0BEEA20	16	13.65	ok	landeseite
+etagere-fur-kuchen-snacks-abea57	3398767D-49BD-41D7-8194-8BED77B196C1	16	9.20	ok	landeseite
+3-in-1-mini-drohne-fur-land-wasser-luft-f0bc29	82F408E9-6EF0-40D2-81BF-D03E9F6ADC3F	7	9.37	ok	landeseite
