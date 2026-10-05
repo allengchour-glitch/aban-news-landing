@@ -3775,3 +3775,7 @@ gid://shopify/Product/16604954984839	ketten	Schildkröten-Beissring mit Schnulle
 gid://shopify/Product/16606106780039	taschen	Golfschuhtasche aus Leder, Litchi-Muster
 gid://shopify/Product/16606107369863	taschen	Outdoor Multi-Functional Sporttasche 18L
 gid://shopify/Product/16606125293959	taschen	Reisetasche mit 20‑35 L Kapazität
+gid://shopify/Product/16606125392263	taschen	Sporttasche mit Trocken‑Feucht‑Trennung
+gid://shopify/Product/16606158094727	taschen	Sporttasche mit Trocken-Wettrückhaltung
+gid://shopify/Product/16606172447111	taschen	Wasserdichte Fahrradtasche 13 L
+gid://shopify/Product/16606172774791	taschen	Tennis- und Badmintontaschen-Set (2 Stück) · 2 Stück
