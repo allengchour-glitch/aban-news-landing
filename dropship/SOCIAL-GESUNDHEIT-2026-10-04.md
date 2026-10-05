@@ -100,3 +100,27 @@ ist für den Poster keine Reparatur. Und: «kein Kandidat» ist kein Post — Ex
 - **IG/FB-Kadenz gemessen (reels_seed.csv + /tmp/social_autopilot.log):** letzte 9 Abstände 8.6/8.1/16.9/8.1/9.2/8.4/8.2/10.1/10.0 h (Mittel 9.7 h),
   **seit dem letzten IG/FB-Reel (04.10. 13:10 UTC) 15.3 h**; seit 02:28 UTC alle 15 min «Kandidat übersprungen» (Jury), Statuszähler: jury-skip 172,
   ready 6. Engpass ist die Jury-Quote bei den verbliebenen Kandidaten, nicht der Poster; Plan Punkt 23 bleibt offen (≤ 8 h über 24 h noch nicht erreicht).
+
+## Nachtrag 05.10.2026, 06:37–06:50 UTC — Prüferbefund zu Plan 23 (Nachbesserung): Ursache war das Kontingent, nicht die Kandidaten
+- **Korrektur der Ursache.** Nur der Skip um 02:28 UTC war ein Jury-Urteil (Note 7). Ab 02:43 gab die Jury KEIN Urteil: Gemini 402, OpenAI leer, Groq
+  `qwen/qwen3.8-27b` HTTP 429 («Rate limit reached … organization org_01m3mfdfxaeecv920ws7yejk5y»), Marken `/tmp/groq_leer_1..3` 04:20/04:21 UTC
+  (6 h). `meta_reel_post.mjs` wertet «kein Urteil» bewusst als «kein Post» (Exit 3, keine Marke) — 15 Ticks in Folge (02:43–06:23) derselbe erste Kandidat
+  `cjreel-C9F7E167` (DRY mit `JURY=0` gemessen). Die Zeile «Jury-Quote (jury-skip 172)» im Vorlauf war falsch: jury-skip ist Altbestand, heute +0.
+- **Gemessen, was ein Rückfall überhaupt sein kann:** `GET /openai/v1/models` auf allen drei Groq-Schlüsseln → 11 Modelle, einziges Bildmodell
+  `qwen/qwen3.8-27b`; `openai/gpt-oss-120b` ist reines Textmodell und kann keine Standbilder beurteilen → «zweites Groq-Modell in der Jury» geht NICHT.
+  Dafür: **6 der 9 ready-Reels haben ein positives Urteil (Note 8.17–8.83, Grenzfälle mit 3 Runden) zum früheren Render DERSELBEN Datei** — nachgerechnet:
+  alter Git-Blob + alte Caption = Cache-Signatur; einziger Unterschied der Preis (CHF 54.90 → 47.90, 24.90 → 21.90; Preis-Reparatur 04.10. nach der
+  Senkung vom 02.10.). Die 3 übrigen (C9F7E167, 4743765A, 1547106675654668288) hatten nie ein Urteil.
+- **Entscheid + Umsetzung (Rückfall nur bei leerem Kontingent):** `gemini_jury.py` — `kontingent_leer()` (Gemini-Marke ∧ OpenAI leer/kein Schlüssel ∧
+  Groq-Bildmodell auf JEDEM Schlüssel gemerkt), `frueheres_urteil()` (jüngstes ok-Urteil zum Basename, ≤ 14 T, nach den Cache-Regeln gültig),
+  Modi `--kontingent` (Exit 0 = leer) und `--rueckfall-pruefen` (ohne Download). Greift nur für `--typ reel`, nur wenn die Anfrage am Kontingent
+  scheitert; jeder andere Ausfall bleibt «kein Urteil = kein Post». Der Preis im Bild wird davor vom Meisterwerk-Tor (PREIS_SOLL) gemessen.
+  Ledger `dropship/_jury_rueckfall.tsv` (Zeit, Datei, altes Urteil, Note, Caption-Hash); DRY schreibt nicht.
+  `post_guard.mjs` — `juryVorrang()`: bei leerem Kontingent Kandidaten mit Rückfall-Urteil zuerst (sonst Reihenfolge unverändert); `juryPruefen` nennt
+  den Rückfall im Log («RÜCKFALL (…)»). `meta_reel_post.mjs` ruft `juryVorrang` vor `ersterErreichbare`.
+- **Trockenlauf 06:46 UTC (`DRY=1`, echte Jury):** «Jury-Kontingent leer → 6/9 Kandidaten mit früherem ok-Urteil zuerst» → Kandidat
+  `cjreel-1673563451437879296` (Business-Rucksack, CHF 47.90), Tor bestanden, «Gemini-Jury: RÜCKFALL (Kontingent leer — ok-Urteil vom 2026-10-01T12:47Z …)
+  Note 8.83», Exit 0; `--rueckfall-pruefen` 6× Exit 0 / 3× Exit 2; Ledger nicht geschrieben (DRY).
+- **Grenze:** Nach Ablauf der 6-h-Marken (~10:20 UTC) versucht die Jury Groq erneut (ein Bild-Upload je Kandidat) und merkt bei 429 wieder 6 h —
+  die Reset-Zeit des Tageskontingents steht nur im abgeschnittenen 429-Text (120 Zeichen). Story-/Bild-Posts haben kein früheres Urteil → bleiben
+  bis zum Kontingent blockiert (nicht Plan 23).

@@ -513,20 +513,26 @@
   "grund": "passt"
  },
  "acryl-tabaktopf-fur-shisha-611400": {
-  "objekt": "Shisha-Set in Box-Form mit Fernbedienung",
+  "objekt": "Shisha-Set mit flacher Basis, Schlauch, Kopf, LED-Leuchte, Fernbedienung und Zange",
   "farben": [
-   "schwarz"
+   "schwarz",
+   "grün",
+   "blau",
+   "violett",
+   "rot"
   ],
   "merkmale": [
-   "quadratisches Gehäuse",
+   "flache Basis aus Acryl",
    "Schlauch",
-   "Fernbedienung",
-   "LED-Ring",
-   "Zange"
+   "Kopf",
+   "runde LED-Leuchte",
+   "Fernbedienung mit Farbtasten",
+   "Zange",
+   "Karton mit Aufdruck HOOKAH"
   ],
-  "anzahl_teile": null,
+  "anzahl_teile": 6,
   "passt_zum_titel": true,
-  "grund": "Titel am 04.10. nach Kontaktbogen korrigiert"
+  "grund": "Nachprüfung 05.10. (Stückzahl-Tor): alle 6 Bilder zeigen denselben Satz aus 6 Teilen in verschiedenen Farben; CJ-Cache ohne Daten, Bild ist die einzige Quelle"
  },
  "acryl-shisha-set-mit-kunststoffkessel-600502": {
   "objekt": "Zwei Shishas in Dreiecksform",

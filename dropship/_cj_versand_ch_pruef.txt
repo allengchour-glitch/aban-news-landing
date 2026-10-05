@@ -4138,3 +4138,6 @@ smartwatch-activeone-fitness-anrufe-101440	1734777379161124864	16	5.27	ok	landes
 sternenhimmel-projektor-galaxy-led-nachtlicht-527681	2042478274993356801	0	-	KEINE CH-Option → DRAFT	landeseite
 sternenhimmel-projektor-nova-led-nachtlicht-892738	2042491956120944642	0	-	KEINE CH-Option → DRAFT	landeseite
 sternenhimmel-projektor-cosmos-led-nachtlicht-240961	2039999123513458690	-	-	unklar 200 Success rest=19	landeseite
+led-projektor-aurora-stimmungslicht-612400	2601200614481612700	7	15.42	ok	landeseite
+wireless-charger-powerpad-kabellos-laden-849665	2041062100901318657	0	-	KEINE CH-Option → DRAFT	landeseite
+kabellose-kopfhorer-aeropods-bluetooth-tws-610500	2606100752431611200	7	5.34	ok	landeseite
