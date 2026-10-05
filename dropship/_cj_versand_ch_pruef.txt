@@ -4477,3 +4477,7 @@ ximonth-nagelpflege-pflaster-956673	2072610304975757314	16	4.52	ok	landeseite
 mechanische-hand-skulptur-controller-halter-704513	2059153406452617218	0	-	KEINE CH-Option → DRAFT	landeseite
 bluetooth-gamecontroller-fur-android-smartphon-634800	2604290701581635400	7	9.69	ok	landeseite
 bluetooth-wireless-gaming-controller-628600	2604170731011629100	7	9.47	ok	landeseite
+lay-sda-p5-wireless-game-controller-632500	2603200543381632900	7	10.50	ok	landeseite
+metall-thumbsticks-fur-ps4-controller-636100	2601280724531631700	16	5.55	ok	landeseite
+kabelloser-bluetooth-game-controller-603500	2601160310321603800	7	9.54	ok	landeseite
+programmierbarer-bluetooth-game-controller-636600	2512040213231636800	7	9.86	ok	landeseite

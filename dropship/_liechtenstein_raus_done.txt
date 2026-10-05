@@ -1218,3 +1218,6 @@ gid://shopify/Product/15446064726401	produkt	ohne
 gid://shopify/Product/15446065021313	produkt	ohne
 gid://shopify/Product/15446065611137	produkt	ohne
 gid://shopify/Product/15446065873281	produkt	ohne
+gid://shopify/Product/15446066299265	produkt	ohne
+gid://shopify/Product/15446066954625	produkt	ohne
+gid://shopify/Product/15446067249537	produkt	ohne
