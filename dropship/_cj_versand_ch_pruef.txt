@@ -4364,3 +4364,4 @@ weihnachtskarten-kit-1485e8	3F5920B2-8724-410F-A032-C45B9BC871B2	16	9.07	ok	land
 diy-diamond-painting-schlusselanhanger-weihnac-3edb64	2410290242421625700	16	6.25	ok	landeseite
 weihnachtsschleife-fur-hunde-2d52fb	3441427F-84BA-4A48-91A6-9DCE4A8446BD	16	5.69	ok	landeseite
 tanzender-weihnachtsbaum-mit-musik-38524d	C74D83E6-B438-4A44-951C-95CB95906972	16	9.95	ok	landeseite
+elektrischer-weihnachtsmann-spass-fur-kinder-61e8fe	5B4D00CF-1966-492C-AC19-C4DFB61F69CE	16	11.60	ok	landeseite
