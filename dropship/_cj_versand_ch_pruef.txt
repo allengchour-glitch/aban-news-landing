@@ -4678,3 +4678,4 @@ blauer-halsausschnitt-rock-604400	2607051425581605000	16	8.11	ok	landeseite
 langarmliger-maxi-rock-637000	2607051420311637600	16	9.07	ok	landeseite
 langarm-dress-609300	2607051416141600300	16	7.17	ok	landeseite
 orangefarbene-sommerkleid-609700	2607051326451600300	16	8.79	ok	landeseite
+langarm-dress-mit-fliege-638600	2607051324161639200	16	10.15	ok	landeseite
