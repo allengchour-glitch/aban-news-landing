@@ -310,3 +310,4 @@
 2026-10-06T17:10:02.049Z	luxe-epic-winter.wav	34	home	cjreel-494BAA05-2679-4827-A836-584BC00D243E	stimme:ja	azure:de-CH-JanNeural
 2026-10-06T17:11:30.400Z	luxe-epic-fantasy.wav	31.25	home	cjreel-1285585B-7C1A-457C-B1A2-FDA0430EC295	stimme:ja	azure:de-CH-JanNeural
 2026-10-06T17:13:05.848Z	luxe-epic-hero.wav	7	kinder	cjreel-1636285455035543552	stimme:nein	anteil
+2026-10-06T18:13:26.292Z	luxe-epic-hybrid.wav	37.5	home	cjreel-1A614413-3A74-4F71-8E1A-53C5F385A690	stimme:ja	azure:de-CH-JanNeural
