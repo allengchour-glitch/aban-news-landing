@@ -4679,3 +4679,7 @@ langarmliger-maxi-rock-637000	2607051420311637600	16	9.07	ok	landeseite
 langarm-dress-609300	2607051416141600300	16	7.17	ok	landeseite
 orangefarbene-sommerkleid-609700	2607051326451600300	16	8.79	ok	landeseite
 langarm-dress-mit-fliege-638600	2607051324161639200	16	10.15	ok	landeseite
+schwarze-patchwork-mermaid-rock-627800	2607051301561628500	16	9.47	ok	landeseite
+pink-lace-rockchen-603700	2607051257401604300	16	7.99	ok	landeseite
+blauer-linienrock-mit-stickerei-639800	2607051254361630400	16	8.11	ok	landeseite
+blauer-rock-mit-asymmetrischem-kleid-606400	2607051247541607000	16	10.83	ok	landeseite
