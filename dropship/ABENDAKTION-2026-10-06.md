@@ -1,6 +1,6 @@
 # Abendaktion 06.10.2026 — «Ziel heute 1 Verkauf»
 
-## GEMESSEN (18:15 UTC)
+## GEMESSEN (17:00 UTC)
 - Heute 36 Sitzungen (direct 17, social 14, search 5) → 1 Warenkorb → 1 Checkout → 0 Kauf.
 - Klaviyo: Email List 2, Newsletter 4 Profile → Mail-Aktion wirkungslos. Grösste gemessene Checkout-Hürde: CHF 7 Versand unter
   CHF 45 (5/7 Abbruch-Körbe, `WARENKORB-GRATISVERSAND-2026-10-06.md`).

@@ -44,7 +44,7 @@
 
 
 
-## 2026-10-06 18:45 UTC · 🌙 «Ziel heute 1 Verkauf»: Abendaktion Gratisversand bis 24 Uhr
+## 2026-10-06 17:12 UTC · 🌙 «Ziel heute 1 Verkauf»: Abendaktion Gratisversand bis 24 Uhr
 GEMESSEN: 36 Sitzungen heute, 1 Checkout, 0 Kauf; Klaviyo-Listen 2/4 Profile; Versand CHF 7 = grösste Checkout-Hürde. GETAN:
 `abendaktion.py` (automatischer Gratisversand-Rabatt bis 21:59 UTC, Leiste, Warenkorb-Zeitbedingung, Aufräumen stündlich im
 Keepalive) + Aktions-Story IG/FB ohne Produkt (Doppelpost-Regel). Bericht `dropship/ABENDAKTION-2026-10-06.md`.
