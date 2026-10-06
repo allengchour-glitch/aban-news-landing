@@ -1,8 +1,8 @@
 {
-  "letzter_lauf": "2026-10-06T01:37:01.120Z",
+  "letzter_lauf": "2026-10-06T02:34:55.320Z",
   "zustand": "arbeitet",
   "offene_auftraege": 12,
   "laeufe_seit_push": 0,
-  "zuletzt_gepusht": "2026-10-06T01:37:01.120Z",
+  "zuletzt_gepusht": "2026-10-06T02:34:55.320Z",
   "hinweis": "Geschrieben von server/luxe_auftrag_runner.mjs. Die REPO-Fassung wird nur beim stuendlichen Push angefasst (sonst committet der Starter sie alle 5 Minuten unter falschem Namen, gemessen 21.09.2026). Ist letzter_lauf aelter als 2 h, steht der Hetzner-Agent — die Ampel (automation/bot_puls.py) meldet das."
 }
