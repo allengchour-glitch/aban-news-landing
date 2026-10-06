@@ -159,6 +159,22 @@
     "Konsole|\\bSwitch\\b|\\bPS\\s?[2-5]\\b|PlayStation|\\bXbox\\b|\\bWii\\b|Nintendo|\\b3DS\\b|\\bPSP\\b|Host-?System|E-?Sport|Gaming"
    ],
    "warum": "Vorrichtungen zur Umgehung technischer Schutzmassnahmen (Konsolen-Jailbreak, Custom Firmware) darf man in der Schweiz weder anbieten noch verkaufen (Art. 39a Abs. 3 URG). Zweiter Anker Pflicht (Konsole/Gaming), damit eine Router- oder Drucker-Firmwareangabe nicht trifft. Folge: DRAFT, Tag kopierschutz-umgehung, kein Kanal."
+  },
+  {
+   "n": "schusswaffen-laser",
+   "alle": [
+    "\\bGewehr\\w*|\\bFlinte\\w*|\\bRifle\\b|\\bShotgun\\b|Firearm|Schusswaffe|\\bKaliber\\b",
+    "Boresight|Laser(?!\\s?-?\\s?[Tt]ag)"
+   ],
+   "warum": "06.10.2026: «Laser-Boresight für Gewehr und Flinte» (CJ-Neuimport) stand ACTIVE in allen Kanälen — die Waffen-Regeln verlangten zu «Gewehr» einen Bausatz-/Nachbildungs-Kontext. Laser-Zielgeräte gelten in der Schweiz als Waffenzubehör (Art. 4 Abs. 2 WG); dazu die #1017-Lehre (verbotene Ware kam aus Shanghai zurück). Darum DRAFT. «Laser-Tag»/«Lasertag» (Spielzeug) ausgenommen."
+  },
+  {
+   "n": "schusswaffen-zubehoer",
+   "alle": [
+    "\\bGewehr\\w*|\\bFlinte\\w*|\\bRifle\\b|\\bShotgun\\b|Firearm|Schusswaffe",
+    "Riemen|Sling|Zielfernrohr|\\bScope\\b|Montage|Picatinny|Weaver|Magazin|Halfter|Holster|Schalld[äa]mpfer|Zweibein|Bipod|Putzstock|Laufreinig"
+   ],
+   "warum": "06.10.2026: «Nylon Gewehrriemen, 2-Punkt» ACTIVE im Google-Kanal. Zubehör für echte Schusswaffen fällt bei Google unter «Guns and Parts» (Free-Listings-Blocker, Kontorisiko). In der Schweiz legal → bleibt im Shop, nur aus dem Google-Kanal."
   }
  ]
 }

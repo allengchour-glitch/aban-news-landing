@@ -99,6 +99,7 @@ BILDGEPRUEFT = {
     "15463586726273": "Nunchaku: zwei Edelstahlstäbe an einer Kette, Verkäufer nennt es «Übungsstab»",
     "15477388280193": "Balisong; Listing bietet ausdrücklich «spitze Klinge ohne Öffnung» an",
     "15454473388417": "Elektroschockgerät, Produktbild wirbt mit «Strong electric arc»",
+    "16608572670343": "grüner Laser-Einschiesser (Boresight) mit 8 Kaliber-Adaptern, Marke «ohhunt» — Laser für Schusswaffen (06.10.2026)",
 }
 
 
@@ -126,7 +127,8 @@ def gql(query, variables=None):
 M = json.load(open(MUSTER, encoding="utf-8"))
 SPERRE = [(s["n"], re.compile(s["re"], re.I)) for s in M["sperre_titel"]]
 TREFFER = [(t["n"], [re.compile(r, re.I) for r in t["alle"]]) for t in M["treffer"]]
-VERBOTEN_REGEL = {"ch-verbotene-waffe", "ch-verbotene-waffe-getarnt", "elektroschock-gegen-menschen"}
+VERBOTEN_REGEL = {"ch-verbotene-waffe", "ch-verbotene-waffe-getarnt", "elektroschock-gegen-menschen",
+                  "schusswaffen-laser"}  # 06.10.2026: Laser-Zielgerät/Boresight für Schusswaffen (Art. 4 Abs. 2 WG)
 # 05.10.2026: Konsolen-Jailbreak/Custom Firmware — der TEXT ist hier die Funktion (kein Bild nötig):
 # Art. 39a Abs. 3 URG verbietet schon das Anbieten → DRAFT wie BILDGEPRUEFT, Tag kopierschutz-umgehung.
 UMGEHUNG_REGEL = {"kopierschutz-umgehung-konsole"}

@@ -58,6 +58,13 @@ Bestellanbindung nach Mail an accountmanagement@ricardo.ch ein — Konto «gewer
 Französisch: Agent zog 129 veraltete Kollektionstexte nach (174 Felder, 103 nur der neue ls-verwandt-Block) → `fr_stand.py`
 «vollständig, /fr live».
 
+## 2026-10-06 04:40 · 🔫 Verbesserungsrunde: «Laser-Boresight für Gewehr» ACTIVE — Waffen-Regel kannte «Gewehr» nur als Spielzeug-Nachbildung
+
+GEMESSEN: Neuimporte 8 h, Katalog-Titelsuche → 2 echte Fälle (Boresight, Gewehrriemen). GETAN: `heikel_zweck.json` +
+`schusswaffen-laser` (verboten → DRAFT, Importer + Wache) + `schusswaffen-zubehoer` (nur Google-Kanal raus); Kanarienvögel 10/10,
+Voll-Export 2/2; Boresight per Bild bestätigt und gedraftet. **Eine Regel gegen Nachbildungen lässt das Original durch: wer
+«Gewehr» an «Bausatz» bindet, hat die echte Ware nie geprüft.** → `dropship/SCHUSSWAFFEN-ZUBEHOER-2026-10-06.md`
+
 ## 2026-10-06 00:30 · 🔄 Verbesserungsrunde: Bildtausch liess «uneinig» liegen, obwohl beide Prüfer Bild 1 ablehnten
 
 GEMESSEN: Google-Blocker 1'070 (Adult 228/228, Image under review 200, Inappropriate 197); Bilanz uneinig 36 % frei vs. Einzelprüfer
@@ -18303,3 +18310,5 @@ Verschoben am 04.10.2026:
 - 2026-09-27 · 🔑 **Zugänge da, aber ungenutzt: FORTURA_FTP_* standen in der Umgebung, 4 Skripte lasen nur `/tmp/fortura_env.sh` → Keepalive schreibt die Datei aus der Umgebung (Feed 20'148 Zeilen); Metricool-TikTok/YouTube brach ohne Shop-Token ab (37 h still) → Kaufbar-Prüfung über öffentliche `/products/<handle>.js`, 404 ohne Ledger-Urteil; SHOPIFY_CLIENT_* fehlen weiter (Pinterest, IG/FB, Bestell-Ampel).** Zugang dort suchen, wo er heute liegt → Journal Nachtrag 98
 
 - 2026-10-04 · ⛔ **KORRIGIERT 04.10. 20:40:** hier stand eine Zeile über vier «Guardrails» (`cj_image_backfill`, `size_table_autofill`, `delivery_time_default`, `complementary_products_link`) — **keine davon existiert** (0 Treffer im Repo), und `_day5_audit.json` zählte je «2» statt 265/265/199 Google-Blocker. Beides entfernt; echte Tag-5-Messung: `automation/top_produktseiten_check.py` + `dropship/TOP30-PRODUKTSEITEN-2026-10-04.md`. Lehre: Wächter nie nennen, ohne `ls automation/` geprüft zu haben.
+- 2026-10-02 · 🎛️ **«feinkategorie filter verbessern?»: Facette «Farbe» las die Option «Farbe & Grösse» (8 Produkte; Kleider zeigten nur «Gelb»), keine Grösse/Kategorie, 151 Produkttypen → `produkttyp_vereinheitlichen.py` (2'620, Sperre gegen TYPE-Regeln, POD nie) + `farbmuster_filter.py` (19 Grundfarben → shopify.color-pattern, 13'612; nur Kategorien mit Merkmal «Color», sonst kippt die Charge), täglich; Filter-Umstellung = Betreiber-Klick Search & Discovery (keine API).** Facette nach Quelle prüfen, nicht nach Beschriftung → `dropship/FILTER-FEINKATEGORIE-2026-10-02.md`
+- 2026-10-02 · 🐾 **Tierschutz/Biozid: SEO-Lauf zeigte «Anti-Bell Halsband» mit Kontaktstiften im Bild (Text sagte nur «Vibration»); TSchV 76 Abs. 6 verbietet JEDEN Bellstopper (Zweck genügt), Floh-Halsbänder = Biozid mit Zulassungspflicht → Bildprüfung 35 Kandidaten (13 Strom, 4 davon ohne Wirkwort), 35 DRAFT, 4 Regeln + `nicht` je Regel in `tierschutz_geraet.json` (Node = Python 10/10); Nebenfunde Abhör-Tracker (StGB 179sexies) + JBL-Nachahmung gedraftet.** Rechts-Klassen brauchen eine ZWECK-Regel neben der Wirk-Regel → `dropship/TIERSCHUTZ-BIOZID-2026-10-02.md`
