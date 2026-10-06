@@ -313,3 +313,4 @@ gid://shopify/Product/16608572670343	laser-boresight-fur-gewehr-und-flinte-69cbb
 gid://shopify/Product/16608572899719	blaue-cosmos-wandteppich-212b34	Blaue Cosmos Wandteppich
 gid://shopify/Product/16608573227399	klappbarer-kleiderbugel-fur-auto-schwarz-silbe-216448	Klappbarer Kleiderbügel für Auto, schwarz/silber
 gid://shopify/Product/16608601178503	leopard-kissen-ohne-kern-quadratisch-schwarz-w-609200	Leopard Kissen ohne Kern, quadratisch, schwarz-weiss
+gid://shopify/Product/16609371095431	federklappe-fur-waschbecken-1b488c	Federklappe für Waschbecken
