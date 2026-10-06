@@ -42,6 +42,14 @@
 
 
 
+
+## 2026-10-06 18:00 UTC · 🧹 «lösch selber, verbessere selber»: Versandreste weg, Fortura-Tracking in Shopify
+Zwei inaktive Gratis-Raten gelöscht (Tarif vorher = nachher, Wächter grün). Falle: «Standard ab 65 gratis» ist eine Preisstufe IN der
+Standardrate (ID `…/1108712784257?source=RateRangeCondition&source_id=…`) — Löschen per ID hätte die CHF-7-Rate treffen können →
+stehen gelassen. Fortura: `sendung_eintragen()` (fulfillmentCreate, nur Fortura-Positionen, gelieferte Menge, Kunde wie CJ benachrichtigt),
+Attrappe 4/4. Storefront-Ratenprüfung (`/cart/async_shipping_rates.json`) gab 411 ohne Body und danach 429 — kein Beleg, Admin-Daten
+sind die Wahrheit.
+
 ## 2026-10-06 17:40 UTC · 📦 Fortura-Bestellautomat Stufe 2 live — XML nach ORDERS, Lieferschein aus DESADV
 Muster (Opacc.ORDERS/DELVRY) vom Betreiber hochgeladen (Gmail-Konnektor gibt keine Anhang-Bytes; Fortura-Server und Drive hatten sie
 nicht). `fortura_xml.py` (Selbsttest 7/7, Gerüst-Abgleich gegen das Template) + Stufe 2 in `fortura_bestell_engine.py` (Schalter

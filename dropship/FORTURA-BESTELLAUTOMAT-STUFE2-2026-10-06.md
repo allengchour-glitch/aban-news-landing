@@ -27,6 +27,8 @@ ORDER_NO = unsere DOC_NO, TRACKING_NO (DPD, mehrfach), je Position bestellt/geli
 ## Offen
 - Erste echte Fortura-Bestellung beobachten: Lieferschein in /home/DESADV binnen ~1–2 Werktagen? Sonst bei Papini nachfragen, ob
   ORDERS-Dateien für Kundennr. 544341 abgeholt werden (Ampel meldet nach 48 h).
-- Tracking aus DESADV in Shopify als Sendung eintragen (heute nur Ampel) = nächster Schritt (ohne Kundenmail → `notifyCustomer:false`
-  oder Betreiber-Entscheid).
+- ✅ 06.10. 18:00 (Betreiber «verbessere selber»): `sendung_eintragen()` trägt das DPD-Tracking aus dem Lieferschein als Shopify-
+  Sendung ein (`fulfillmentCreate`, Schema validiert; wie der CJ-Automat mit Shopifys normaler Versandbestätigung, `NOTIFY=0` schaltet
+  sie ab) — NUR die Fortura-Positionen mit der gelieferten Menge, CJ-Positionen gemischter Bestellungen bleiben offen. Status
+  «erfuellt»; scheitert der Eintrag → ⚠️ und der nächste Lauf versucht es erneut. Test mit Attrappe 4/4.
 - Schalter aus = Datei `dropship/_fortura_xml_aktiv` löschen.
