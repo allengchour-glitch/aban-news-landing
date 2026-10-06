@@ -4,6 +4,29 @@
   "skript": "tiktok_video_lesen.mjs",
   "url": "https://vm.tiktok.com/ZN8kfmmNH/",
   "bilder_alle_s": 6,
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-06T21:09:48.822Z",
+  "dauer_s": 6.9,
+  "ergebnis": {
+    "ziel": "https://www.tiktok.com/@arbeitemitki/video/7689875836383530272?_r=1&_t=ZN-9AL3xcOfCkA",
+    "kanal": "arbeitemitki",
+    "name": "Philipp | Arbeite mit KI",
+    "caption": "KI-Videos komplett kostenlos auf deinem eigenen Rechner – mit LTX 2.5 statt Veo oder Kling. So funktioniert es: 1. LTX 2.5 ist ein Open-Weight-Modell (seit August 2026, über 1,6 Millionen Downloads). 2. Über Hugging Face herunterladen. 3. Lokal laufen lassen – kostenlos, deine Daten bleiben bei dir. Der Haken: Du brauchst eine starke Grafikkarte mit viel Grafikspeicher. Anleitung: Link in Bio #kivideo #kitipps #ltx",
+    "dauer_s": 30,
+    "erstellt": "1790438723",
+    "stats": {
+      "diggCount": 635,
+      "shareCount": 290,
+      "commentCount": 47,
+      "playCount": 28200,
+      "collectCount": "1238"
+    },
+    "untertitel": [
+      {
+        "sprache": "deu-DE",
+        "text": "du kannst jetzt KI Videos komplett kostenlos auf deinem lokalen Rechner machen. teure Modelle wie Vio oder kling brauchst du dafür nicht mehr. nimm einfach ltx 2 Punkt 51 Open Weight Modell. es wurde im 08.20. 26 veröffentlicht und hat stand heute schon über 1 Komma 6 Millionen Downloads. über die Webseite Hacking Face kannst du das ganze einfach runterladen und dann Lokal laufen lassen. es ist kostenlos und deine Daten sind komplett sicher. der Haken, du brauchst eine starke Grafikkarte und ganz viel Grafik speichern. suche ltx auf meiner Webseite, dann findest du eine komplette Anleitung wie du das ganze Lokal nutzen kannst. der Link ist in der Bio."
+      }
+    ],
+    "bilder": []
+  }
 }
