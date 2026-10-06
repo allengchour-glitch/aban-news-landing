@@ -4659,3 +4659,4 @@ gid://shopify/Product/15412831256961	ersetzt
 gid://shopify/Product/15412899676545	ersetzt
 gid://shopify/Product/15412902756737	ersetzt
 gid://shopify/Product/15412902789505	ersetzt
+gid://shopify/Product/15412902855041	ersetzt
