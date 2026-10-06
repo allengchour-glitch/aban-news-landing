@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 14:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 14:20 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **2'400**
-- Optionen mit englischen Werten (Kandidaten): 371
+- Produkte gesehen: **3'058**
+- Optionen mit englischen Werten (Kandidaten): 438
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'002
+- Werte mit unbekanntem Wort (unverändert): 2'142
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 17
+- übersprungen «kleidungsstueck-im-wert»: 18
 - übersprungen «kollision-nach-uebersetzung»: 13
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -26,6 +26,7 @@
 - `15447964516737` [Farbe] **Hoodie & Jogginghose Set im Partnerlook** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers | Grey Suit | Set1
 - `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil, rock · Titel nennt Set: Men's top | Men's Shorts | Women's Shirt | Female Style Skirt | Green Cheongsam Suit
 - `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Yellow Letters | Three Rows Lettered Rabbit
+- `15448509383041` [Farbe] **Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie** — hose, pullover: Black-Hoodie | Black-Pants | Milky Apricot-Hoodie | Milky Apricot-Pants | Slate Blue-Hoodie | Slate Blue-Pants | Olive Green-Hoodie | Olive Green-Pants
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -80,5 +81,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 101, `mother` 61, `color` 60, `light` 57, `core` 52, `hat` 46, `⟨satzbau:adjektiv-vor-nomen⟩` 44, `rope` 44, `to` 40, `lens` 38, `father` 38, `for` 35, `generation` 34, `shell` 31, `years` 30, `old` 30, `no` 29, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 22, `tea` 21, `surface` 21, `bear` 21, `⟨satzbau:nomen-vor-farbe⟩` 20, `high` 19, `number` 19, `deer` 19, `clothing` 18, `belt` 16, `stone` 16, `face` 16, `suit` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `handle` 15, `electric` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `pad` 14, `chain` 14, `simple` 14, `mirror` 14, `mother's` 14, `carbon` 13, `open` 13, `⟨satzbau:lehnwort-vor-nomen⟩` 13, `45se6` 12, `full` 12, `steel color` 12, `noodles` 12
+`degrees` 101, `color` 66, `light` 65, `mother` 61, `core` 52, `⟨satzbau:adjektiv-vor-nomen⟩` 46, `hat` 46, `rope` 44, `to` 40, `lens` 38, `father` 38, `for` 35, `generation` 34, `shell` 31, `years` 30, `old` 30, `no` 29, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 22, `tea` 21, `surface` 21, `bear` 21, `⟨satzbau:nomen-vor-farbe⟩` 20, `high` 19, `number` 19, `deer` 19, `clothing` 18, `powder` 17, `belt` 16, `stone` 16, `pad` 16, `face` 16, `suit` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `handle` 15, `electric` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `buckle` 14, `chain` 14, `carbon` 14, `simple` 14, `mirror` 14, `mother's` 14, `open` 13, `⟨satzbau:lehnwort-vor-nomen⟩` 13, `background` 12, `45se6` 12
 
