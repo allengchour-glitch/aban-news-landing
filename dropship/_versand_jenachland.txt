@@ -4928,3 +4928,4 @@ gid://shopify/Product/15427238363521	ersetzt
 gid://shopify/Product/15427238396289	ersetzt
 gid://shopify/Product/15427238429057	ersetzt
 gid://shopify/Product/15427238461825	ersetzt
+gid://shopify/Product/15427238494593	ersetzt
