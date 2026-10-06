@@ -64,7 +64,8 @@ const TREFFER = M.treffer.map(x => ({ n: x.n, alle: x.alle.map(r => new RegExp(r
 // Kanälen, sondern werden gar nicht erst aktiv geschaltet.
 // 05.10.2026: + Konsolen-Jailbreak/Custom-Firmware (Art. 39a Abs. 3 URG verbietet schon das Anbieten).
 const VERBOTEN = new Set(['ch-verbotene-waffe', 'ch-verbotene-waffe-getarnt', 'elektroschock-gegen-menschen',
-                          'kopierschutz-umgehung-konsole']);
+                          'kopierschutz-umgehung-konsole',
+                          'schusswaffen-laser']);  // 06.10.2026: Laser für Schusswaffen (Art. 4 Abs. 2 WG)
 
 // Nimmt HTML oder Klartext. Gibt null zurück oder {gruppe, grund, muster, stelle, verboten}.
 // gruppe: 'ueberwachung' | 'waffe'
