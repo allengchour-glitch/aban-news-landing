@@ -47744,3 +47744,4 @@ wassermasken-schutzmanschette-aus-nylon-260943	ha-15	Werkzeug & Heimwerken	2026-
 multifunktionswerkzeug-aus-edelstahl-74aba2	ha-15	Werkzeug & Heimwerken	2026-10-06T05:09Z
 flache-glaszange-mit-pvc-griff-8bd9d5	ha-15	Werkzeug & Heimwerken	2026-10-06T05:09Z
 pcb-engraving-fraser-aus-wolframkarbid-af6b41	ha-15	Werkzeug & Heimwerken	2026-10-06T05:09Z
+silikon-kuchenform-unregelmassige-form-66d104	ha-15	Werkzeug & Heimwerken	2026-10-06T07:10Z
