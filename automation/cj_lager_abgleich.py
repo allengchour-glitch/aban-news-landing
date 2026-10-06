@@ -2,7 +2,7 @@
 """cj_lager_abgleich.py — CJ-Lagerbestand je VARIANTE → Shop zeigt «ausverkauft» (06.10.2026).
 
 Betreiber 06.10.: «cj lagerstatus check und dann unser webseite auch bei alle produkten».
-GEMESSEN 06.10.: CJ-Ware läuft mit inventoryPolicy CONTINUE (kein Bestand geführt) → jede Variante wirkt kaufbar.
+GEMESSEN 06.10.: CJ-Ware läuft ohne Bestandsführung (tracked:false, ab Import DENY) → jede Variante ist kaufbar.
 Vorhandene Wächter prüfen nur «gibt es das Produkt/die Variante noch» (cj_verfuegbarkeit, cj_varianten_wache) — beide
 standen am 06.10. still («Insufficient API points … Remaining 0», der Grind braucht ~110–126k Punkte/Tag, Topf ab ~04:30
 leer). Der BESTAND (totalInventory) wurde nur von cj_stock_guard.mjs geprüft, der in keiner Startliste stand.
@@ -62,7 +62,9 @@ def bestand(variante):
 
 
 def entscheiden(shop_varianten, cj_varianten, eigene_deny):
-    """→ (deny_ids, zurueck_ids, unklar). shop: [{id, sku, inventoryPolicy}], cj: [{variantSku, inventories}]."""
+    """→ (sperren_ids, freigeben_ids, unklar). shop: [{id, sku, kaufbar}], cj: [{variantSku, inventories}].
+    Entscheidet nach KAUFBARKEIT (availableForSale), nie nach inventoryPolicy: CJ-Ware steht ab Import auf DENY + tracked:false
+    (427'616 Varianten, gemessen 06.10.) und ist trotzdem kaufbar — DENY allein sperrt nichts (Journal 08.09.)."""
     cj = {kern(v.get("variantSku")): bestand(v) for v in cj_varianten or []}
     einzeln = len(shop_varianten) == 1 and len(cj_varianten or []) == 1   # Produkt-SKU ohne Anhang ↔ einzige CJ-Variante
     deny, zurueck, unklar = [], [], 0
@@ -72,9 +74,9 @@ def entscheiden(shop_varianten, cj_varianten, eigene_deny):
             b = bestand(cj_varianten[0])
         if b is None:
             unklar += 1; continue
-        if b == 0 and v.get("inventoryPolicy") == "CONTINUE":
+        if b == 0 and v.get("kaufbar"):
             deny.append(v["id"])
-        elif b > 0 and v.get("inventoryPolicy") == "DENY" and v["id"] in eigene_deny:
+        elif b > 0 and not v.get("kaufbar") and v["id"] in eigene_deny:
             zurueck.append(v["id"])
     return deny, zurueck, unklar
 
@@ -84,7 +86,7 @@ def export_holen():
     if os.path.exists(EXPORT) and time.time() - os.path.getmtime(EXPORT) < 20 * 3600:
         return
     q = ('{ products(query:"tag:cj-real status:active") { edges { node { id handle title '
-         'variants { edges { node { id sku inventoryPolicy } } } } } } }')
+         'variants { edges { node { id sku inventoryPolicy availableForSale inventoryItem { tracked } } } } } } } }')
     b = gql("mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id} userErrors{message}}}", {"q": q})["bulkOperationRunQuery"]
     if b["userErrors"]:
         raise SystemExit(f"Bulk: {b['userErrors']}")
@@ -140,7 +142,7 @@ def main():
     stat = collections.Counter(); bsp = []; geprueft_format = False
     led = open(LEDGER if not DRY else os.devnull, "a", encoding="utf-8")   # DRY schreibt keinen Ledger (sonst gilt «geprüft»)
     for pid in arbeit:
-        p = P[pid]; shop_v = [{"id": v["id"], "sku": v.get("sku"), "inventoryPolicy": v.get("inventoryPolicy")} for v in p["v"]]
+        p = P[pid]; shop_v = [{"id": v["id"], "sku": v.get("sku"), "kaufbar": v.get("availableForSale")} for v in p["v"]]
         ps = next((produkt_sku(v["sku"]) for v in shop_v if produkt_sku(v["sku"])), None)
         if not ps:
             stat["keine-cj-sku"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tkeine-cj-sku\n"); continue
@@ -163,17 +165,12 @@ def main():
             if len(bsp) < 12:
                 bsp.append(f"{p.get('title', '')[:50]} — {len(deny)} ausverkauft, {len(zurueck)} wieder da (von {len(shop_v)})")
             if not DRY:
-                eingaben = [{"id": i, "inventoryPolicy": "DENY"} for i in deny] + [{"id": i, "inventoryPolicy": "CONTINUE"} for i in zurueck]
+                import ausverkauft
                 try:
-                    r = w.gql('mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){'
-                              'productVariants{id inventoryPolicy} userErrors{message}}}', {"p": pid, "v": eingaben})
-                    x = (r.get("data") or {}).get("productVariantsBulkUpdate") or {}
-                    if x.get("userErrors"):
-                        raise RuntimeError(str(x["userErrors"])[:120])
-                    soll = {i: "DENY" for i in deny} | {i: "CONTINUE" for i in zurueck}
-                    ist = {v["id"]: v["inventoryPolicy"] for v in x.get("productVariants") or []}
-                    if any(ist.get(i) != s for i, s in soll.items()):
-                        raise RuntimeError("Rücklesen weicht ab")
+                    ist = ausverkauft.sperren(w.gql, pid, deny)
+                    ist2 = ausverkauft.freigeben(w.gql, pid, zurueck)
+                    if any(ist.get(i) is not False for i in deny) or any(ist2.get(i) is not True for i in zurueck):
+                        raise RuntimeError(f"Rücklesen: gesperrt {ist} / frei {ist2}")
                 except Exception as e:
                     stat["schreibfehler"] += 1
                     led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}\n"); led.flush(); continue
@@ -193,11 +190,11 @@ def main():
 
 
 def selbsttest():
-    sv = [{"id": "a", "sku": "CJ-CJDS233779601AZ", "inventoryPolicy": "CONTINUE"},
-          {"id": "b", "sku": "CJ-CJDS233779602BY", "inventoryPolicy": "CONTINUE"},
-          {"id": "c", "sku": "CJ-CJDS233779603CX", "inventoryPolicy": "DENY"},
-          {"id": "d", "sku": "CJ-CJDS233779604DW", "inventoryPolicy": "DENY"},
-          {"id": "e", "sku": "CJ-CJDS233779605EV", "inventoryPolicy": "CONTINUE"}]
+    sv = [{"id": "a", "sku": "CJ-CJDS233779601AZ", "kaufbar": True},
+          {"id": "b", "sku": "CJ-CJDS233779602BY", "kaufbar": True},
+          {"id": "c", "sku": "CJ-CJDS233779603CX", "kaufbar": False},
+          {"id": "d", "sku": "CJ-CJDS233779604DW", "kaufbar": False},
+          {"id": "e", "sku": "CJ-CJDS233779605EV", "kaufbar": True}]
     cv = [{"variantSku": "CJDS233779601AZ", "inventories": [{"totalInventory": 0}, {"totalInventory": 0}]},
           {"variantSku": "CJDS233779602BY", "inventories": [{"totalInventory": 0}, {"totalInventory": 12}]},
           {"variantSku": "CJDS233779603CX", "inventories": [{"totalInventory": 5}]},
@@ -209,12 +206,12 @@ def selbsttest():
         (produkt_sku("fortura-12345") is None, "Nicht-CJ = nichts"),
         (produkt_sku("CJYD291508502BY") == "CJYD2915085", "ohne CJ-Präfix"),
         (produkt_sku("CJ-CJJJJTJT22925") == "CJJJJTJT22925", "Produkt-SKU ohne Anhang"),
-        (entscheiden([{"id": "x", "sku": "CJJJJTJT22925", "inventoryPolicy": "CONTINUE"}], [{"variantSku": "CJJJJTJT2292501AZ", "inventories": [{"totalInventory": 0}]}], set())[0] == ["x"], "Einzelvariante zugeordnet"),
-        (entscheiden([{"id": "y", "sku": "CJYD291508502BY", "inventoryPolicy": "CONTINUE"}], [{"variantSku": "CJYD291508502BY", "inventories": [{"totalInventory": 0}]}, {"variantSku": "CJYD291508501AZ", "inventories": [{"totalInventory": 3}]}], set())[0] == ["y"], "Shop-SKU ohne CJ- trifft"),
-        (d == ["a"], "Bestand 0 → DENY"),
+        (entscheiden([{"id": "x", "sku": "CJJJJTJT22925", "kaufbar": True}], [{"variantSku": "CJJJJTJT2292501AZ", "inventories": [{"totalInventory": 0}]}], set())[0] == ["x"], "Einzelvariante zugeordnet"),
+        (entscheiden([{"id": "y", "sku": "CJYD291508502BY", "kaufbar": True}], [{"variantSku": "CJYD291508502BY", "inventories": [{"totalInventory": 0}]}, {"variantSku": "CJYD291508501AZ", "inventories": [{"totalInventory": 3}]}], set())[0] == ["y"], "Shop-SKU ohne CJ- trifft"),
+        (d == ["a"], "Bestand 0 + kaufbar → sperren"),
         ("b" not in d, "Fabrik/ein Lager > 0 → bleibt kaufbar"),
-        (z == ["c"], "eigenes DENY + Bestand → zurück"),
-        ("d" not in z, "fremdes DENY bleibt"),
+        (z == ["c"], "eigene Sperre + Bestand → freigeben"),
+        ("d" not in z, "fremde Sperre bleibt"),
         (u == 1, "fehlt bei CJ → unklar, nichts tun"),
         (bestand({"inventories": None}) is None and bestand({}) is None, "ohne inventories = unbekannt, nie 0"),
     ]

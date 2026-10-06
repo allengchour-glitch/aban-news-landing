@@ -44,6 +44,19 @@
 
 
 
+## 2026-10-06 21:30 UTC · 🔒 «schaue memory das hatte ich mal»: DENY sperrt nichts — und bei CJ ist DENY der Normalzustand
+
+Betreiber-Hinweis auf die Lehre vom 08.09. («DENY allein tut gar nichts», drei Schalter). GEMESSEN 06.10.:
+- Bulk aller DENY-Varianten (524'781): **427'616 aktive CJ-Varianten = DENY + tracked:false + kaufbar** — der CJ-Import setzt DENY
+  ab Werk, ohne Bestandsführung. DENY ist dort KEIN Sperr-Zeichen.
+- `cj_varianten_wache.py` (seit 21.09.) sperrte nur Varianten mit Policy CONTINUE und setzte nur DENY → 219 «gesperrte» Varianten,
+  177/179 weiter kaufbar; dazu 8 Produkte / 24 fehlende Varianten nie angefasst, weil sie schon DENY waren.
+- Fix: `automation/ausverkauft.py` (sperren = tracked + DENY + Menge 0, Rücklesen availableForSale; freigeben = tracked:false).
+  Probe «5 Core Plektren-Set»: Geister-Variante availableForSale false, 2 andere bleiben kaufbar. cj_varianten_wache +
+  cj_lager_abgleich entscheiden jetzt nach availableForSale und schreiben über den Helfer; 29 Produkte zur Neuprüfung
+  aus dem Varianten-Ledger genommen. Betreiber «ja ich will» → Grind 4 → 3 Runner, Lagerabgleich stündlich (CAP 4000).
+- Regel: **«gesperrt?» = availableForSale lesen, nie inventoryPolicy.**
+
 ## 2026-10-06 21:00 UTC · 📦 CJ-Lagerbestand je Variante → Shop «ausverkauft» (`cj_lager_abgleich.py`)
 
 Betreiber «cj lagerstatus check und dann unser webseite auch bei alle produkten» + «filter hinzugefügt checke mal».
