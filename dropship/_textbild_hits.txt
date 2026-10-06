@@ -17010,3 +17010,28 @@ gid://shopify/Product/16608455852423	19->0	Memory Cotton Kissen mit Nackenstütz
 gid://shopify/Product/16608455983495	43->0	Kurzarm-Hemd mit Farb-Muster und Kragen
 gid://shopify/Product/16608456114567	39->1	Gedächtnisschaum Nackenstützkissen 60×35×13 cm
 gid://shopify/Product/16608456278407	20->0	Verstellbarer Schraubenschlüssel 200 mm, japanischer Stil
+gid://shopify/Product/16608490815879	97->0	Sitzbezug Classic Skull Universal
+gid://shopify/Product/16608491110791	29->3	Weihnachts-Schlittenkalender aus Schima superba
+gid://shopify/Product/16608491307399	46->0	Sofakissen in Chenille mit chinesischem Muster
+gid://shopify/Product/16608492716423	16->2	Handzangen-Set: Rund-, Flach- und Tschim-Zange
+gid://shopify/Product/16608493339015	22->0	Cartoon 3D Bauchkissen für Sofa und Bett
+gid://shopify/Product/16608566083975	27->0	Magnetischer Schweisshalter
+gid://shopify/Product/16608566739335	18->0	Stromadapter 18 V für Lithiumbatterien
+gid://shopify/Product/16608567525767	8->0	Baby-Buchweizen-Kissen
+gid://shopify/Product/16608568869255	168->0	Bambushemd Slim Fit mit Druck
+gid://shopify/Product/16608569590151	16->1	Kopfstützen-Lendenkissen mit Nackenpolster
+gid://shopify/Product/16608597016967	77->0	Bambus- und Leinen-Herrenshirt
+gid://shopify/Product/16608599081351	46->0	Elektrostatische Haarentfernungsbürste
+gid://shopify/Product/16608599998855	148->0	Jacquard Kissenbezug für Lendenstützkissen
+gid://shopify/Product/16608628572551	53->0	Diamantroller für dickes Glas schneiden
+gid://shopify/Product/16608628801927	34->0	Schräglöcher-Finder für Holzarbeiten 25-Teilig
+gid://shopify/Product/16608628932999	14->0	Armlehnenhülle aus Leder & Carbonfaser
+gid://shopify/Product/16608628965767	8->0	Leichtes atmungsaktives Kragenhemd
+gid://shopify/Product/16608629129607	42->0	Halboffenes Leinenhemd, atmungsaktiv
+gid://shopify/Product/16608629162375	8->0	Wasserdichte Autositzauflage
+gid://shopify/Product/16608629457287	56->2	Elektrischer Haarschneider mit Akku
+gid://shopify/Product/16608629555591	19->0	Silikon-Backform für Früchte
+gid://shopify/Product/16608629588359	62->0	Haus-Silikon-Backform 26,5 × 26,5 × 6 cm
+gid://shopify/Product/16608629752199	48->2	Multifunktionswerkzeug aus Edelstahl
+gid://shopify/Product/16608700039559	36->0	Keramische Wellenscheibe mit Diamantbeschichtung
+gid://shopify/Product/16608734708103	18->0	Heissklebepistole mit Sicherheitsschalter
