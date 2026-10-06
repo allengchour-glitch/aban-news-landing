@@ -505,6 +505,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-06 · 🖥️ **«hetzner verbessern»: Server-CJ-Runner ohne Text-KI = 3'903× skip(gemini), 0 angelegt, ~39k Punkte/Tag nach bezahlter Abfrage; /tmp 97 %, numpy/PIL fehlten → Keepalive lädt /etc/luxe/secrets.env, /tmp-Hygiene, apt, `KI_DA=0` → Grind+Such-Runner aus, Importer bricht VOR CJ ab.** Voraussetzung vor der bezahlten Abfrage prüfen → `dropship/HETZNER-AUTOMATION-2026-10-06.md`
 - 2026-10-06 · 🔒 **DENY sperrt nichts ohne tracked+Menge 0 (Lehre 08.09., Betreiber «schaue memory») — und 427'616 CJ-Varianten stehen ab Import auf DENY und sind kaufbar → `ausverkauft.py` (sperren/freigeben, Rücklesen availableForSale); cj_varianten_wache sperrte 177/179 wirkungslos; Grind 3 Runner, Lagerabgleich stündlich.** «gesperrt?» = availableForSale → Journal 06.10. 21:30
 - 2026-10-06 · 📦 **«cj lagerstatus … alle produkten»: Bestand nur in cj_stock_guard (nie gestartet), Existenz-Wächter ohne CJ-Punkte → `cj_lager_abgleich.py` (product/query + `features=enable_inventory` — Doku falsch, ohne = None), 0 → «ausverkauft» (DENY, umkehrbar), Vorrang-Fenster CAP 2000; Filter Kategorie/Länge/Ärmel live geprüft.** → Journal 06.10. 21:00
 - 2026-10-06 · 👶 **Verbesserungsrunde: 42 Kinderprodukte mit Alter im einzigen Farbwert («White-6 TO 9M») → `alter_im_farbwert.py` (Option «Grösse» + Variantenwerte, Kanarie «Pink-MS»), Aufseher täglich.** Eine Option, zwei Merkmale = teilen → `dropship/ALTER-IM-FARBWERT-2026-10-06.md`
