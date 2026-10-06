@@ -203,6 +203,45 @@ starte() {  # starte <logname> <befehl…>
   sleep 3          # gestaffelt: alle gleichzeitig reissen Shopify-OAuth + CJ-Token-Limit
 }
 
+# ── 0. /tmp-HYGIENE + Server-Grundausstattung (06.10.2026, Betreiber «hetzner verbessern und für die automation»).
+#    GEMESSEN 06.10. 21:50 (Auftrag server-zustand): auf dem Hetzner-Server ist /tmp ein tmpfs von 1,9 GB und war zu 97 % voll
+#    (Exporte *.jsonl à 20–100 MB, Logs) → «No space left on device» in fixer_keepalive/farbe_metafeld, fehlende /tmp/export.jsonl
+#    für 6 Wächter, und weil tmpfs im RAM liegt: 1,9 GB «shared», nur 1 GB frei, kein Swap. Ab 85 %: grosse Dateien (> 20 MB,
+#    älter als 4 h, ausser der Kosten-Kette kost*) löschen, Logs > 20 MB auf die letzten 2 MB kürzen (gleicher Inode — laufende
+#    Schreiber hängen weiter an). Gilt auf jeder Maschine; im Cloud-Container ist /tmp keine RAM-Platte, dort greift es selten.
+TMPV=$(df --output=pcent /tmp 2>/dev/null | tail -1 | tr -dc 0-9)
+if [ "${TMPV:-0}" -ge 85 ]; then
+  find /tmp -maxdepth 1 -type f -size +20M -mmin +240 ! -name 'kost*' \
+       \( -name '*.jsonl' -o -name '*.mp4' -o -name '*.teil' -o -name '*.wav' -o -name '*.png' -o -name '*.jpg' -o -name '*.csv' -o -name '*.zip' -o -name '*.json' \) \
+       -delete 2>/dev/null
+  for f in /tmp/*.log; do
+    [ -f "$f" ] && [ "$(stat -c %s "$f" 2>/dev/null || echo 0)" -gt 20000000 ] && { tail -c 2000000 "$f" > "$f.kurz" && cat "$f.kurz" > "$f"; rm -f "$f.kurz"; }
+  done
+  echo "TMP-HYGIENE: /tmp ${TMPV}% → $(df --output=pcent /tmp | tail -1 | tr -d ' ')"
+fi
+#    Server: Geheimnis-Datei (root, 600) direkt in die Umgebung der Motoren laden — bisher reichte luxe-secrets-nach-tmp.sh nur
+#    Shopify/CJ/Judge.me als /tmp-Dateien durch; GROQ_API_KEY*/DEEPSEEK/GEMINI und die CJ-Zusatzkonten kamen nie an. Werte nie loggen.
+if [ -r /etc/luxe/secrets.env ]; then
+  set -a; . /etc/luxe/secrets.env; set +a
+  if [ -n "${CJ2_API_KEY:-}${CJ3_API_KEY:-}" ] && [ ! -s /tmp/cj_konten.env ]; then
+    ( umask 077; printf "CJ2_API_KEY='%s'\nCJ3_API_KEY='%s'\n" "${CJ2_API_KEY:-}" "${CJ3_API_KEY:-}" > /tmp/cj_konten.env )
+  fi
+  [ -n "${GEMINI_API_KEY:-}" ] && [ ! -s /tmp/gemini_key ] && ( umask 077; printf '%s' "$GEMINI_API_KEY" > /tmp/gemini_key )
+fi
+#    Text-KI vorhanden? (für Grind/Such-Runner, Abschnitte 2/3) — früh berechnet, damit es auch im Vorrang-Fenster gilt.
+KI_DA=0
+for v in "${GROQ_API_KEY:-}" "${GROQ_API_KEY2:-}" "${GROQ_API_KEY3:-}" "${DEEPSEEK_API_KEY:-}" "${GEMINI_API_KEY:-}"; do [ -n "$v" ] && KI_DA=1; done
+[ -s /tmp/gemini_key ] && KI_DA=1
+#    Server ohne numpy/PIL (gemessen: reel_engine_runner «No module named 'numpy'», textbild_fix «No module named 'PIL'»):
+#    einmal täglich apt-Pakete nachziehen, nur auf dem Server (root), im Hintergrund, mit Zeitlimit.
+case "$(hostname)" in ubuntu-4gb-*)
+  if ! python3 -c 'import numpy, PIL' 2>/dev/null && [ "$(id -u)" = 0 ] && [ ! -f /tmp/py_module_$(date -u +%F).stamp ]; then
+    touch /tmp/py_module_$(date -u +%F).stamp
+    ( DEBIAN_FRONTEND=noninteractive timeout 900 apt-get install -y -qq python3-numpy python3-pil >> /tmp/py_module.log 2>&1 & )
+    echo "SERVER: python3-numpy/python3-pil werden nachinstalliert (Log /tmp/py_module.log)"
+  fi ;;
+esac
+
 # ── 1. Der Aufseher zuerst. Er startet ALLE täglichen Qualitäts-Wächter; steht er still,
 #       stehen sie alle still, und keine andere Routine merkt es (Lehre 0c).
 #
@@ -355,6 +394,12 @@ done
 GRZ=$(cat "${REPO_AUTO%/automation}/dropship/_GRIND_RUNNER_ZAHL" 2>/dev/null | tr -dc '0-9')
 case "$GRZ" in ''|*[!0-9]*) GRZ=4;; esac
 [ "$GRZ" -gt 4 ] && GRZ=4
+# 06.10.2026: ohne Text-KI-Schlüssel kein Grind auf DIESEM Rechner (Server: 3'903× skip(gemini), 0 angelegt, ~39'000 CJ-Punkte/Tag
+# verbrannt). Der Grind bleibt dort, wo Groq/Gemini/DeepSeek da sind (Cloud-Container); der Importer prüft es zusätzlich selbst.
+KI_DA=0
+for v in "${GROQ_API_KEY:-}" "${GROQ_API_KEY2:-}" "${GROQ_API_KEY3:-}" "${DEEPSEEK_API_KEY:-}" "${GEMINI_API_KEY:-}"; do [ -n "$v" ] && KI_DA=1; done
+[ -s /tmp/gemini_key ] && KI_DA=1
+if [ "$KI_DA" = 0 ] && [ "$GRZ" -gt 0 ]; then echo "GRIND AUS auf $(hostname): keine Text-KI-Schlüssel (sonst skip(gemini) nach bezahlter CJ-Abfrage)"; GRZ=0; fi
 RUNNERS=""; i=2; while [ "$i" -lt $((2+GRZ)) ]; do RUNNERS="$RUNNERS cj_runner$i"; i=$((i+1)); done
 # ueberzaehlige Runner beenden, wenn die Zahl gesenkt wurde
 for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
@@ -384,6 +429,10 @@ fi
 # ── 3. Übrige /tmp-Dauerläufer. Hier ist der Dateiname AUCH der Prozessname (kein exec).
 for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
          fortura_img_runner website_hygiene_runner; do
+  # 06.10.2026: Such-Runner importiert wie der Grind → ohne Text-KI nicht starten, laufenden beenden (siehe KI_DA oben).
+  if [ "$S" = cj_queue_runner ] && [ "${KI_DA:-1}" = 0 ]; then
+    ps -eo pid,args --no-headers | awk '/cj_queue_runner\.sh/ && !/awk/ {print $1}' | xargs -r kill 2>/dev/null; continue
+  fi
   # ⚠️ Die Repo-Fassung hat Vorrang. autocommit.sh lag bis zum 23.08. NUR unter /tmp —
   # dieselbe Klasse, die dieses Projekt schon zweimal verloren hat. Wer eine Engine ins
   # Repo holt, muss auch die Startliste umhaengen, sonst laeuft weiter die /tmp-Kopie.
