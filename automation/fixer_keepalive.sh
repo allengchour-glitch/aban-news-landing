@@ -1362,6 +1362,18 @@ if [ -f "$REPO/automation/checkout_abbruch_messen.py" ] && [ ! -f /tmp/checkout_
   touch /tmp/checkout_abbruch_$(date -u +%F).stamp
   ( cd "$REPO" && timeout 170 python3 automation/checkout_abbruch_messen.py 2>&1 | tail -1 | tee -a /tmp/checkout_abbruch.log )
 fi
+# --- Versand-Hinweis im Warenkorb-Drawer (06.10.2026, dropship/WARENKORB-GRATISVERSAND-2026-10-06.md) — täglich prüfen:
+#     Hinweis noch im Live-Snippet (Theme-Updates überschreiben Snippets), Tarif CH 7.00 / gratis ab ≤ 45 passt zum Text.
+#     Fehlt nur der Hinweis → einmal neu einfügen (idempotent, Anker-geprüft, Sicherung in /tmp); Tarif-Abweichung nur melden.
+if [ -f "$REPO/automation/warenkorb_gratisversand.py" ] && [ ! -f /tmp/warenkorb_versand_$(date -u +%F).stamp ]; then
+  touch /tmp/warenkorb_versand_$(date -u +%F).stamp
+  WV=$(cd "$REPO" && timeout 120 python3 automation/warenkorb_gratisversand.py --pruefen 2>&1 | tail -1)
+  case "$WV" in
+    *"Hinweis fehlt"*) ( cd "$REPO" && SCHARF=1 timeout 120 python3 automation/warenkorb_gratisversand.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) warenkorb-versand neu: /" ;;
+    *"⚠️"*) echo "$(date -u +%H:%M) $WV" ;;
+  esac
+  echo "$WV" >> /tmp/warenkorb_versand.log
+fi
   # 05.10.2026 (Fixlauf preis-marge): EK-Lücke CJ + Neuware-Verlustschutz, täglich. 87 aktive CJ-Produkte ohne EK waren für
   # preis_verlustschutz unsichtbar (10 echte Verlustbringer, 47 bei CJ ausgelistet); Neuimporte kennt der Tagesläufer erst mit dem
   # nächsten Voll-Export (371 Varianten unter Boden am 05.10.). ek_luecke_cj.py: Backfill/Nachtrag NUR_IDS → Verlustschutz live →
