@@ -43,6 +43,12 @@
 
 
 
+
+## 2026-10-06 18:45 UTC · 🌙 «Ziel heute 1 Verkauf»: Abendaktion Gratisversand bis 24 Uhr
+GEMESSEN: 36 Sitzungen heute, 1 Checkout, 0 Kauf; Klaviyo-Listen 2/4 Profile; Versand CHF 7 = grösste Checkout-Hürde. GETAN:
+`abendaktion.py` (automatischer Gratisversand-Rabatt bis 21:59 UTC, Leiste, Warenkorb-Zeitbedingung, Aufräumen stündlich im
+Keepalive) + Aktions-Story IG/FB ohne Produkt (Doppelpost-Regel). Bericht `dropship/ABENDAKTION-2026-10-06.md`.
+
 ## 2026-10-06 18:00 UTC · 🧹 «lösch selber, verbessere selber»: Versandreste weg, Fortura-Tracking in Shopify
 Zwei inaktive Gratis-Raten gelöscht (Tarif vorher = nachher, Wächter grün). Falle: «Standard ab 65 gratis» ist eine Preisstufe IN der
 Standardrate (ID `…/1108712784257?source=RateRangeCondition&source_id=…`) — Löschen per ID hätte die CHF-7-Rate treffen können →
