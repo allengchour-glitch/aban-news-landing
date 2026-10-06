@@ -319,7 +319,7 @@ def faktenpruefung(art, produkte):
             r = zweitmodell.chat_json(PRUEF.format(fakten=fakten_text(produkte), text=t[:12000]))
             break
         except RuntimeError as e:
-            if "429" not in str(e) or "Tageskontingent" in str(e) or a == 4:
+            if "429" not in str(e) or isinstance(e, zweitmodell.TagesKontingentLeer) or a == 4:   # 06.10.: Typ statt Wortlaut
                 raise
             time.sleep(60 * (a + 1))
     return [str(x) for x in (r.get("probleme") or [])][:8], zweitmodell.LETZTES_MODELL
@@ -474,7 +474,7 @@ def faq_erzeugen(titel, text):
             r = zweitmodell.chat_json(FAQ_PRUEF.format(text=text[:9000], faq=json.dumps(faq, ensure_ascii=False)))
             break
         except RuntimeError as e:
-            if "429" not in str(e) or "Tageskontingent" in str(e) or a == 4:
+            if "429" not in str(e) or isinstance(e, zweitmodell.TagesKontingentLeer) or a == 4:   # 06.10.: Typ statt Wortlaut
                 raise
             time.sleep(60 * (a + 1))
     probleme = [str(x) for x in (r.get("probleme") or [])]
