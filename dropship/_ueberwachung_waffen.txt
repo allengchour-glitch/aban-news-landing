@@ -22,3 +22,5 @@
 15501006799233	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	IR-Nachtsicht-Kamera-Stift mit Bildschirm
 15480344641921	umgehung	kopierschutz-umgehung-konsole	google-kanal-entfernt,tag:kopierschutz-umgehung,draft	USB-Stick für Host-Systeme
 15481842401665	umgehung	kopierschutz-umgehung-konsole	google-kanal-entfernt,tag:kopierschutz-umgehung,draft	U-Disk Archiv für Nintendo Switch
+15477425176961	waffe	schusswaffen-zubehoer	google-kanal-entfernt,tag:waffe-pruefen	Nylon Gewehrriemen, 2-Punkt, verstellbar
+16608572670343	waffe	schusswaffen-laser	tag:waffe-pruefen	Laser-Boresight für Gewehr und Flinte
