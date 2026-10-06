@@ -1500,3 +1500,5 @@ gid://shopify/Product/16606142235015	ok	Stahl-Deckel für Schnellöffnung von Sc
 gid://shopify/Product/16607377916295	ok	Kochbrett aus Massivholz – doppelseitig
 gid://shopify/Product/15448837587329	nicht-versendbar	Keramik-Antihaft-Bratpfanne
 gid://shopify/Product/16604913729927	ok	Grosse Schmuckschatulle in Himmelblau
+gid://shopify/Product/16608455328135	ok	Kettensäge mit Lithiumbatterie
+gid://shopify/Product/16608490357127	ok	Satinstreifen-Kissen mit Baumwollfüllung
