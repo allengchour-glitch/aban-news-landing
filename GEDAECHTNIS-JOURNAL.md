@@ -58,6 +58,13 @@ Bestellanbindung nach Mail an accountmanagement@ricardo.ch ein — Konto «gewer
 Französisch: Agent zog 129 veraltete Kollektionstexte nach (174 Felder, 103 nur der neue ls-verwandt-Block) → `fr_stand.py`
 «vollständig, /fr live».
 
+## 2026-10-06 00:30 · 🔄 Verbesserungsrunde: Bildtausch liess «uneinig» liegen, obwohl beide Prüfer Bild 1 ablehnten
+
+GEMESSEN: Google-Blocker 1'070 (Adult 228/228, Image under review 200, Inappropriate 197); Bilanz uneinig 36 % frei vs. Einzelprüfer
+76–78 %; im Lauf 2/9 «uneinig» mit G≠1 UND C≠1. GETAN: Art «tausch-u» (Geminis Wahl), 12 alte Fälle einmal neu, Sperre + Bilanz +
+Rücklesen kennen die Art; Trockenlauf 1 tausch-u. **«Uneinig» heisst nicht «unklar»: wenn beide dasselbe Bild verwerfen, ist die
+Hauptfrage entschieden — nur die Nebenfrage ist offen.** → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`
+
 ## 2026-10-05 21:40 · 🎬 «mann sieht die bilder und videos sehr klein» + «bilder bearbeiten mit stimme»: Reels gross, Bild-Reels mit Stimme
 
 GEMESSEN: 3 aktuelle Reels — Produktvideo füllte 23–32 % der Fläche (make_reel.sh: Hochformat 600×780, quer 1080×608).

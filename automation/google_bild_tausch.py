@@ -135,6 +135,15 @@ def main():
     zeilen = [l.rstrip("\n").split("\t") for l in open(LEDGER)] if os.path.exists(LEDGER) else []
     # NOCHMAL_UNEINIG=1 (03.10.): «uneinig»/«fehler» zählen nicht als erledigt — sie bekommen eine neue Runde.
     erledigt = {f[0] for f in zeilen if len(f) > 2 and not (os.environ.get("NOCHMAL_UNEINIG") == "1" and f[2] in ("uneinig", "fehler"))}
+    # 06.10.2026: «uneinig» mit BEIDEN Wahlen ≠ 1 (beide Prüfer gegen das aktuelle Bild, nur verschiedene Ersatzbilder) bekommt
+    # EINE neue Runde mit der Regel «tausch-u» (unten) — höchstens einmal je Handle (zweites «uneinig» = fertig).
+    _un = {}
+    for f in zeilen:
+        if len(f) > 5 and f[2] == "uneinig":
+            m = re.match(r"G(\d+):.*\| C(\d+):", f[5])
+            _un.setdefault(f[0], []).append(bool(m and int(m.group(1)) > 1 and int(m.group(2)) > 1))
+    _letzte = {f[0]: f[2] for f in zeilen if len(f) > 2}
+    erledigt -= {h for h, v in _un.items() if _letzte.get(h) == "uneinig" and len(v) == 1 and v[0]}
     offen = [h for h in handles if h not in erledigt]
     print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {KLASSE} · {len(handles)} gemeldet (Stand {stand['stand']}) · "
           f"{len(offen)} offen · N={N} KONTROLLE={KONTROLLE} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
@@ -204,6 +213,11 @@ def main():
             art = "behalten"
         elif gw == cw and 1 < gw <= len(med):
             art = ("tausch-q" if nur_zweit else "tausch-g") if allein else "tausch"
+        elif 1 < gw <= len(med) and 1 < cw <= len(med):
+            # 06.10.2026: beide Prüfer gegen Bild 1, nur das Ersatzbild verschieden. GEMESSEN (Bilanz 05.10.): unberührte
+            # «uneinig» 8/22 frei (36 %), ein Prüfer allein («tausch-g» 76 %, «tausch-q» 78 %) → Geminis Wahl, Art «tausch-u»
+            # (getrennt nachgemessen, umkehrbar wie jeder Tausch).
+            art = "tausch-u"
         else:
             art = "uneinig"
         zaehl[art] = zaehl.get(art, 0) + 1

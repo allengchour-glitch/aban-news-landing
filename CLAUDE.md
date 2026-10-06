@@ -505,6 +505,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-06 · 🔄 **Verbesserungsrunde: Bildtausch liess «uneinig» liegen (36 % frei), obwohl beide Prüfer Bild 1 ablehnten → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu, Sperre/Bilanz/Rücklesen kennen die Art.** Hauptfrage entschieden ≠ unklar → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`
 - 2026-10-05 · 🎬 **«bilder und videos sehr klein»: Reel-Produktvideo 23–32 % der Fläche → Hochformat Vollbild/quadratisch 970/quer 860; Stimme 50 %; `reel/bild_reel.py` (Original-Bilder + Stimme, Tor, `--weg`, `--freigeben`) → 10 Top-Produkte ready; `produktAktiv` prüft `bildreel-<handle>`.** Neuer Reel-Typ = eigener Zweig in der Vor-Post-Prüfung → Journal 05.10. 21:40
 - 2026-10-05 · 📦 **Fortura-Bestellautomat Stufe 1: bezahlte Bestellung mit `fortura-<ArtNr>` → Paket + Ampel «⚠️ FORTURA: im Portal bestellen» bis `--bestellt`; XML (Opacc.ORDERS nach /home/ORDERS) erst mit Fortura-Muster — seit 22.07. angefragt, nie gekommen, Entwurf in Gmail.** Keine Bestelldatei auf Verdacht → Journal 05.10. 20:40
 - 2026-10-05 · 🛒 **Ricardo: Fortura-Marge Median 21 % → nach 12 % Provision nur 361/2'388 Produkte ≥ CHF 5 → Feed `ricardo_feed.py` (täglich, öffentlich), Konto + Mail = Betreiber; FR vollständig (129 Kollektionen nachgezogen).** Provision vor dem Feed gegen die Marge rechnen → `dropship/ricardo/README.md`
