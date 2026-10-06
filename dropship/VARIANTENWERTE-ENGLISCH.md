@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 14:20 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 15:11 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **3'058**
-- Optionen mit englischen Werten (Kandidaten): 438
+- Produkte gesehen: **4'245**
+- Optionen mit englischen Werten (Kandidaten): 587
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'142
+- Werte mit unbekanntem Wort (unverändert): 2'681
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 18
-- übersprungen «kollision-nach-uebersetzung»: 13
+- übersprungen «kleidungsstueck-im-wert»: 26
+- übersprungen «kollision-nach-uebersetzung»: 15
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -27,6 +27,8 @@
 - `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil, rock · Titel nennt Set: Men's top | Men's Shorts | Women's Shirt | Female Style Skirt | Green Cheongsam Suit
 - `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Yellow Letters | Three Rows Lettered Rabbit
 - `15448509383041` [Farbe] **Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie** — hose, pullover: Black-Hoodie | Black-Pants | Milky Apricot-Hoodie | Milky Apricot-Pants | Slate Blue-Hoodie | Slate Blue-Pants | Olive Green-Hoodie | Olive Green-Pants
+- `15448574099841` [Farbe] **Eleganter Off-Shoulder Jumpsuit** — oberteil · Titel nennt Set: OliveGreen | Blau | a white Tshirt
+- `15448670273921` [Farbe] **Damen Wollmantel für Winter Business** — oberteil: Marineblau | White Long Sleeve Shirt
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -45,6 +47,8 @@
 - `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
 - `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
+- `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
+- `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert; Gray Brown → Grau-Braun
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -81,5 +85,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 101, `color` 66, `light` 65, `mother` 61, `core` 52, `⟨satzbau:adjektiv-vor-nomen⟩` 46, `hat` 46, `rope` 44, `to` 40, `lens` 38, `father` 38, `for` 35, `generation` 34, `shell` 31, `years` 30, `old` 30, `no` 29, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 22, `tea` 21, `surface` 21, `bear` 21, `⟨satzbau:nomen-vor-farbe⟩` 20, `high` 19, `number` 19, `deer` 19, `clothing` 18, `powder` 17, `belt` 16, `stone` 16, `pad` 16, `face` 16, `suit` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `handle` 15, `electric` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `buckle` 14, `chain` 14, `carbon` 14, `simple` 14, `mirror` 14, `mother's` 14, `open` 13, `⟨satzbau:lehnwort-vor-nomen⟩` 13, `background` 12, `45se6` 12
+`degrees` 156, `light` 99, `color` 80, `mother` 61, `⟨satzbau:adjektiv-vor-nomen⟩` 59, `core` 52, `hat` 46, `rope` 44, `to` 40, `lens` 38, `father` 38, `high` 35, `for` 35, `generation` 34, `shell` 32, `years` 30, `old` 30, `no` 29, `adjustable` 29, `powder` 28, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `tea` 21, `surface` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `comfortable` 20, `suit` 19, `number` 19, `deer` 19, `cocoa` 19, `clothing` 18, `background` 17, `carbon` 17, `⟨satzbau:material-vor-farbe⟩` 17, `belt` 16, `pad` 16, `face` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `milk` 15, `handle` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `cool brown` 15, `grid` 14, `buckle` 14
 
