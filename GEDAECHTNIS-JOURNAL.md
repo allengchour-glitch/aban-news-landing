@@ -44,6 +44,14 @@
 
 
 
+## 2026-10-06 20:15 UTC · ⏱️ Aufseher erreicht späte Blöcke nicht mehr: Fortura-Bestand 3,5 h ohne zweiten Versuch
+
+GEMESSEN: Fortura-Abgleich PAUSE 16:42 («Shopify antwortete nicht»), Claim 16:37 → nach 2 h hätte der Aufseher neu starten
+sollen. `/tmp/fixer_keepalive.log` zeigt je Container-Stunde nur ~5 min Aktivität (18:09–18:13, 19:08–19:12, 20:08–), dann
+Stille bis zum Neustart — der Block bei Zeile ~2260 von 2781 wurde nie erreicht. → Fortura-Block an den RUNDENBEGINN
+(Backup /tmp/fixer_keepalive.vor-fortura-vorne.sh). Lehre: bei stündlichen Neustarts zählt die POSITION im Aufseher;
+Kundenschutz-Blöcke gehören nach vorn. Offen: welcher Schritt nach ~5 min blockiert (synchroner Python-Lauf?).
+
 ## 2026-10-06 19:30 UTC · 🗂️ «feinkategorie und filter verbessern»: Shopify-Kategorie über die Google-Kategorie verfeinern
 
 GEMESSEN (Bulk 50'914 aktive): Shopify-Kategorie Tiefe 1: 9'728 · 2: 28'705 · 3+: 12'481 — `kategorie_wache.py` setzt

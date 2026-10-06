@@ -505,6 +505,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-06 · ⏱️ **Keepalive: Fortura-Bestand PAUSE 16:42, 3,5 h kein Neuversuch — Aufseher loggt je Container-Stunde nur ~5 min, Block bei Zeile ~2260 nie erreicht → an den Rundenbeginn.** Kundenschutz-Blöcke nach vorn → Journal 06.10. 20:15
 - 2026-10-06 · 🗂️ **«feinkategorie und filter»: 38'433/50'914 aktive auf Shopify-Oberklassen (Typ-Signal) → `kategorie_fein.py` verfeinert über die Google-Kategorie + Shopifys offizielle Zuordnung (nur Nachfahren, Titelprobe: Rock→Dresses, Velolampe→Fitness kamen aus Google), ~22'600, color-pattern bleibt; Aufseher 6 h; Filter «Kategorie» = Betreiber-Klick.** Zwei Signale einig, sonst grob lassen → Journal 06.10. 19:30
 - 2026-10-06 · ⛔ **Betreiber «1 nein 2 nein»: KEINE Creator-Anfragen, KEINE eigenen Gesichts-/Handyvideos — nicht erneut vorschlagen; Reichweite nur automatisch.** → Journal 06.10. 19:40
 - 2026-10-06 · 📣 **«ja mach alles gratis sachen»: TikTok Median 280 Aufrufe/Post vs Pinterest 1 → TikTok 6 h + täglicher Abendpost 21–23 Uhr (×8 gemessen), Pinterest 48 h; Creator-Vorlage `dropship/CREATOR-ANFRAGE.md`; TikTok-Bio-Link erst ab 1'000 Followern (falsch empfohlen).** Vor Empfehlung Code lesen → Journal 06.10. 19:25
