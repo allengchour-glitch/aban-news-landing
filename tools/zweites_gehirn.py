@@ -332,6 +332,20 @@ def r_drossel_ungeduldig(dateien):
     return treffer
 
 
+def r_kontingent_wortlaut(dateien):
+    """06.10.2026 — «Prüfer leer?» am Wortlaut der Fehlermeldung entschieden. google_bild_tausch prüfte
+    `"Kontingent" in str(e) or "429" in str(e)`: die Meldung heisst «Groq-Tageskontingent leer» (kleines k), und seit der
+    Leer-Marke (05.10.) fehlt «HTTP 429» → 153 Adult-Bildtausche endeten als «fehler» statt Gemini allein.
+    Richtig: `zweitmodell.ist_kontingent_leer(e)` (Typ zuerst, dann Wortlaut ohne Gross/Klein)."""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix != ".py" or AUTO not in p.parents or p.name == "zweitmodell.py":
+            continue
+        for m in re.finditer(r'"(?:Kontingent|Tageskontingent|Kontingent leer|Guthaben)"\s+in\s+str\(', t):
+            treffer.append((p, t.count("\n", 0, m.start()) + 1, "Leer-Erkennung am Wortlaut (zweitmodell.ist_kontingent_leer nehmen)"))
+    return treffer
+
+
 REGELN = [
     ("stille-null", r_stille_null, "17.09.2026"),
     ("grund-verschluckt", r_grund_verschluckt, "17.09.2026"),
@@ -342,6 +356,7 @@ REGELN = [
     ("eimer-fehlt", r_eimer_fehlt, "02.10.2026"),
     ("helfer-ohne-eimer", r_helfer_ohne_eimer, "03.10.2026"),
     ("drossel-ungeduldig", r_drossel_ungeduldig, "03.10.2026"),
+    ("kontingent-wortlaut", r_kontingent_wortlaut, "06.10.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -367,6 +382,9 @@ KOEDER = {
                           "    d = json.loads(out)\n    return d\n"),
     "drossel-ungeduldig": ("automation/koeder_drossel.py",
                            '_fehlt = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)\n'),
+    # Der ECHTE Fall aus google_bild_tausch.py (bis 06.10.):
+    "kontingent-wortlaut": ("automation/koeder_kont.py",
+                            'if os.environ.get("EIN_MODELL") == "1" and ("Kontingent" in str(e) or "429" in str(e)):\n'),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -388,6 +406,8 @@ ECHT = {
                           "def gql(q, v=None):\n    d = json.loads(subprocess.run(['curl', URL]).stdout)\n    _nachlauf(d)\n    return d\n"),
     "drossel-ungeduldig": ("automation/koeder_drossel.py",
                            '_fehlt = max(float(_k.get("requestedQueryCost") or 0), 600.0) - float(_t.get("currentlyAvailable") or 0)\n'),
+    "kontingent-wortlaut": ("automation/koeder_kont.py",
+                            'if os.environ.get("EIN_MODELL") == "1" and zweitmodell.ist_kontingent_leer(e):\n'),
 }
 
 

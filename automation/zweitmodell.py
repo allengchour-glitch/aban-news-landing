@@ -38,6 +38,16 @@ class OpenAILeer(RuntimeError):
     pass
 
 
+def ist_kontingent_leer(e):
+    """06.10.2026: «Prüfer leer?» nach TYP entscheiden, nie nach Wortlaut. google_bild_tausch prüfte `"Kontingent" in
+    str(e)` — die Meldung heisst aber «Groq-Tageskontingent leer» (kleines k), und seit der Leer-Marke (05.10.) fehlt
+    auch «HTTP 429» → jeder Adult-Bildtausch endete als «fehler» statt Gemini allein (153 offen, 5/5 fehler)."""
+    if isinstance(e, (TagesKontingentLeer, OpenAILeer)):
+        return True
+    t = str(e).lower()
+    return any(w in t for w in ("kontingent", "http 429", "http 402", "guthaben", "insufficient_quota"))
+
+
 def openai_schluessel():
     k = os.environ.get("OPENAI_API_KEY", "").strip()
     if not k and os.path.exists("/tmp/openai_key"):

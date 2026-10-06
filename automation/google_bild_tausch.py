@@ -36,6 +36,7 @@ import gemini_jury as gj                     # schluessel()
 from PIL import Image
 
 import bildtausch_sperre as bs
+import zweitmodell                           # ist_kontingent_leer() (06.10.)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "dropship/_google_bild_tausch.tsv")
@@ -184,7 +185,7 @@ def main():
                 g = chatgpt(bilder, text)
             except Exception as e2:
                 zaehl["fehler"] += 1; print(f"  ⚠️ {h}: Gemini leer UND Zweitprüfer {e2}", file=sys.stderr, flush=True)
-                if "Tageskontingent" in str(e2):
+                if zweitmodell.ist_kontingent_leer(e2):
                     print("ABBRUCH: beide Prüfer leer", flush=True); break
                 continue
             c, allein = dict(g), True
@@ -201,7 +202,7 @@ def main():
             # von 19 «uneinig» (unberührt) nur 4 (21 %). Ist der Zweitprüfer leer (ChatGPT ohne Guthaben, Groq-Tages-
             # kontingent je Modell), entscheidet mit EIN_MODELL=1 Gemini allein — jeder Tausch ist umkehrbar und wird als
             # «tausch-g» protokolliert (Nachmessung getrennt).
-            if os.environ.get("EIN_MODELL") == "1" and ("Kontingent" in str(e) or "429" in str(e) or "Guthaben" in str(e)):
+            if os.environ.get("EIN_MODELL") == "1" and zweitmodell.ist_kontingent_leer(e):   # 06.10.: Typ statt Wortlaut
                 c, allein = dict(g), True
             else:
                 zaehl["fehler"] += 1; print(f"  ⚠️ {h}: {e}", file=sys.stderr, flush=True); continue

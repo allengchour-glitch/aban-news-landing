@@ -301,7 +301,7 @@ def main():
             v = mehrheit([v] + weitere)
     except Exception as e:
         # 05.10.2026 Rückfall (nur Reels, nur bei leerem Kontingent — jeder andere Ausfall bleibt «kein Urteil = kein Post»)
-        v = frueheres_urteil(a.quelle) if a.typ == "reel" and ("Kontingent leer" in str(e) or kontingent_leer()) else None
+        v = frueheres_urteil(a.quelle) if a.typ == "reel" and ("kontingent leer" in str(e).lower() or kontingent_leer()) else None
         if v:
             v["grund_rueckfall"] = str(e)[:160]
             rueckfall_merken(a.quelle, a.caption, v); print(json.dumps(v, ensure_ascii=False)); sys.exit(0)
