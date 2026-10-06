@@ -290,3 +290,6 @@
 2026-10-06T12:28:47.132Z	luxe-adventure-uplift.wav	41	haustier	cjreel-01446A03-4F86-41FE-9718-569651FF4697	stimme:nein	anteil
 2026-10-06T12:30:13.247Z	luxe-orchestra.wav	18	allgemein	cjreel-0716DCCB-708B-4683-93C0-BEA5FE97EAC7	stimme:nein	anteil
 2026-10-06T12:32:09.637Z	luxe-epic-anime.wav	4.75	schmuck	cjreel-1742882364319080448	stimme:ja	azure:de-CH-LeniNeural
+2026-10-06T13:16:24.380Z	luxe-epic-elegant.wav	48	haustier	cjreel-1359763644052803584	stimme:nein	anteil
+2026-10-06T13:17:40.735Z	luxe-epic-winter.wav	34	allgemein	cjreel-A540AE1F-4FB7-4FBA-9843-216B0AF2553E	stimme:nein	anteil
+2026-10-06T13:19:08.929Z	luxe-epic-hybrid.wav	30	kueche	cjreel-1734123258338881536	stimme:nein	anteil
