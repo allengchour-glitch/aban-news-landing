@@ -4923,3 +4923,6 @@ gid://shopify/Product/15427238166913	ersetzt
 gid://shopify/Product/15427238199681	ersetzt
 gid://shopify/Product/15427238232449	ersetzt
 gid://shopify/Product/15427238265217	ersetzt
+gid://shopify/Product/15427238297985	ersetzt
+gid://shopify/Product/15427238363521	ersetzt
+gid://shopify/Product/15427238396289	ersetzt
