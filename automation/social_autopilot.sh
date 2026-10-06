@@ -215,6 +215,15 @@ while true; do
     touch /tmp/_autopilot_letztes_tiktok_pruefen
   fi
 
+  # 06.10.2026: IG/FB laufen seit dem Meta-Ablauf (05.10.) über Metricool — «posted» heisst nur GEPLANT. Nachmessen wie bei
+  # TikTok: PUBLISHED → URL ins Ledger, IG-ERROR → EIN neuer Versuch nur auf IG (Produkt muss ACTIVE sein), danach «ig-fehler».
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig /tmp/_autopilot_letztes_ig_pruefen 7200; then
+    for L in social/posts_image.csv social/ig_karussell.csv; do
+      CSV=$L $NODE automation/metricool_ledger_pruefen.mjs || echo "$(date -u +%H:%M) IG-Pruefung $L: Fehler gemeldet (status ig-fehler)"
+    done
+    touch /tmp/_autopilot_letztes_ig_pruefen
+  fi
+
   # TikTok ueber Metricool (22.09.2026): nur wenn ein Token da ist (Env oder /tmp/metricool.env);
   # ein eigenes, nie gepostetes Reel je Tag; Guards im Poster (Lock, Ledger, ACTIVE).
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_TIKTOK" "$TIKTOK_ABSTAND"; then
