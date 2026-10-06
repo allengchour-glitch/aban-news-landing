@@ -191,7 +191,8 @@ def main():
         rc, v = jury(datei, cap)
         if rc != 0:
             print(f"  ⛔ Jury {'durchgefallen' if rc == 4 else 'ohne Urteil'}: {p['handle']} · {str(v.get('gruende') or v.get('grund'))[:150]}")
-            os.unlink(datei)
+            if os.path.exists(datei):   # 06.10.: fehlte die Karte schon, brach der Lauf ab, bevor die Sperre geschrieben war
+                os.unlink(datei)
             if rc == 4:   # nicht wieder versuchen: Produkt-Ledger nicht, aber Story-Sperre über die Queue-Zeile
                 with open(QUEUE, "a", encoding="utf-8") as f:
                     f.write(f"story-{p['handle'][:74]},{time.strftime('%Y-%m-%d')},image,,instagram,jury-skip,,\n")
