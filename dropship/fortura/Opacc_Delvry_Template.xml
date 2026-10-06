@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Opacc.DELVRY>											<!-- Pflicht - Definition für Nachrichtentyp DELVRY (Lieferungen) -->
+	<DOC>												<!-- Pflicht - Liefer Dokument -->
+		<HEADER>										<!-- Pflicht - Kopf-Daten -->
+			<DOC_NO></DOC_NO>							<!-- Pflicht - Unsere Lieferscheinnummer -->
+			<ORDER_NO></ORDER_NO>						<!-- Pflicht - Ihre Auftragsnummer -->
+			<DELIVERYDATE></DELIVERYDATE>				<!-- Pflicht - Lieferdatum (Rüstdatum + 1 Tag)-->
+		</HEADER>
+		<TRACKINGLIST>									<!-- Pflicht - Liste der Trackingnummern -->
+			<TRACKING_NO></TRACKING_NO>					<!-- Pflicht - Trackingnummer DPD [kann mehrfach vorkommen] -->
+		</TRACKINGLIST>
+		<POSITIONS>										<!-- Pflicht - Liste der gelieferten Positionen -->
+			<POS>										<!-- Pflicht - Lieferposition [kann mehrfach vorkommen] -->
+				<POS_NO></POS_NO>						<!-- Pflicht - Unsere fortlaufende Positionsnummer -->
+				<ORDER_POS_NO></ORDER_POS_NO>			<!-- Optional - Ihre Positionsnummer von der Bestellung -->
+				<ARTICLE_NO></ARTICLE_NO>				<!-- Pflicht - Fortura Artikelnummer -->
+				<ARTICLE_NAME></ARTICLE_NAME>			<!-- Pflicht - Fortura Artikelbezeichnung -->
+				<EAN></EAN>								<!-- Optional - Artikel EAN Nummer -->
+				<ORDER_QUANTITY></ORDER_QUANTITY>		<!-- Pflicht - Bestellte Menge der Position -->
+				<DELVRY_QUANTITY></DELVRY_QUANTITY>		<!-- Pflicht - Gelieferte Menge der Position -->
+				<TEXT></TEXT> 							<!-- Optional - Hinweistext pro Position. Z.B. bei Ersatzartikel -->
+			</POS>
+			<POS>										<!-- Pflicht - Lieferposition [kann mehrfach vorkommen] -->
+				<POS_NO></POS_NO>						<!-- Pflicht - Unsere fortlaufende Positionsnummer -->
+				<ORDER_POS_NO></ORDER_POS_NO>			<!-- Optional - Ihre Positionsnummer von der Bestellung -->
+				<ARTICLE_NO></ARTICLE_NO>				<!-- Pflicht - Fortura Artikelnummer -->
+				<ARTICLE_NAME></ARTICLE_NAME>			<!-- Pflicht - Fortura Artikelbezeichnung -->
+				<EAN></EAN>								<!-- Optional - Artikel EAN Nummer -->
+				<ORDER_QUANTITY></ORDER_QUANTITY>		<!-- Pflicht - Bestellte Menge der Position -->
+				<DELVRY_QUANTITY></DELVRY_QUANTITY>		<!-- Pflicht - Gelieferte Menge der Position -->
+				<TEXT></TEXT> 							<!-- Optional - Hinweistext pro Position. Z.B. bei Ersatzartikel -->
+			</POS>
+		</POSITIONS>
+	</DOC>
+</Opacc.DELVRY>
+

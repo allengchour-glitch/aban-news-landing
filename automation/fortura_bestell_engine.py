@@ -12,8 +12,11 @@ STUFEN
       NIE ins Repo — öffentlich), Ledger dropship/_fortura_bestellungen.tsv (nr, zeit, ArtNr×Menge, status — ohne Personendaten),
     - Ampel-Zeile «FORTURA: #nr bereit — im Portal bestellen: ArtNr×Menge …» (bis der Betreiber «bestellt» quittiert:
       `python3 automation/fortura_bestell_engine.py --bestellt <nr> [Fortura-Auftragsnr]`).
-  2 (sobald FORTURA_XML_MUSTER=<pfad> eine echte Musterdatei von Fortura enthält): XML nach dem Muster bauen und per
-    SYNO.FileStation.Upload nach /home/ORDERS legen; DESADV-Rücklauf → Tracking in Shopify. Bis dahin Exit-Text «Stufe 2 aus».
+  2 (AKTIV seit 06.10.2026, Schalter dropship/_fortura_xml_aktiv; Muster von Fortura 06.10. in dropship/fortura/):
+    `fortura_xml.bau_orders_xml` baut Opacc.ORDERS (DOC_NO = LX<nr>), prüft Pflichtfelder + Gerüst gegen das Template und legt
+    ORDERS_LX<nr>.xml per SYNO.FileStation.Upload nach /home/ORDERS (overwrite=false; vorher Liste → nie doppelt).
+    Status «xml-hochgeladen»; jeder Lauf liest /home/DESADV (Opacc.DELVRY, ORDER_NO = LX<nr>) → Status «versandt» + DPD-Tracking
+    in der Ampel. Fehlt ein Pflichtfeld/Zugang → KEIN Upload, Ampel «⚠️ … im Portal bestellen» wie Stufe 1.
 Gemischte Bestellungen (CJ + Fortura): nur die Fortura-Positionen hier; CJ-Teil bleibt beim CJ-Automaten.
   python3 automation/fortura_bestell_engine.py            → Ampel-Zeile(n), schreibt Ledger/Pakete
 """
@@ -25,7 +28,7 @@ from kaufwille_zeile import gql
 LEDGER = os.path.join(REPO, 'dropship', '_fortura_bestellungen.tsv')
 PAKETE = '/tmp/fortura_bestellungen'
 Q = ('{orders(first:30,query:"financial_status:paid AND status:open AND created_at:>=2026-10-01",sortKey:CREATED_AT,reverse:true){nodes{'
-     'name createdAt displayFulfillmentStatus email shippingAddress{name company address1 address2 zip city countryCodeV2 phone} '
+     'name createdAt displayFulfillmentStatus email shippingAddress{name firstName lastName company address1 address2 zip city countryCodeV2 phone} '
      'lineItems(first:30){nodes{sku title quantity unfulfilledQuantity variant{barcode}}}}}}')
 
 
@@ -44,6 +47,61 @@ def schreibe(d):
         f.write('nr\tzeit\tpositionen\tstatus\tfortura_auftrag\n')
         for t in sorted(d.values()):
             f.write('\t'.join((t + [''] * 5)[:5]) + '\n')
+
+
+SCHALTER = os.path.join(REPO, 'dropship', '_fortura_xml_aktiv')
+
+
+def stufe2(led, zeilen):
+    """XML-Upload für «bereit», DESADV-Rücklauf für «xml-hochgeladen». Ersetzt die Stufe-1-Zeilen der betroffenen Bestellungen."""
+    import fortura_xml as fx
+    try:
+        sid = fx.anmelden()
+    except Exception as e:
+        return zeilen + [f'⚠️ FORTURA-XML: Server nicht erreichbar ({str(e)[:90]}) — Stufe-1-Zeilen gelten']
+    neu = {}
+    try:
+        vorhanden = set(fx.liste(sid, '/home/ORDERS'))
+        for nr, t in sorted(led.items()):
+            if t[3] != 'bereit':
+                continue
+            p = os.path.join(PAKETE, f'{nr}.json')
+            if not os.path.exists(p):
+                neu[nr] = f'⚠️ FORTURA: #{nr} Paket fehlt in {PAKETE} (Neustart?) — im Portal bestellen: {t[2]}'; continue
+            pk = json.load(open(p, encoding='utf-8'))
+            name = f'ORDERS_LX{nr}.xml'
+            x, fehler = fx.bau_orders_xml(f'LX{nr}', pk.get('lieferadresse'), pk.get('email'),
+                                          [{'artnr': q['artnr'], 'ean': q.get('ean'), 'menge': int(q['menge'])} for q in pk['positionen']],
+                                          f'LuxeStyle Dropship #{nr} - neutraler Versand an Endkundin')
+            if fehler:
+                neu[nr] = f'⚠️ FORTURA: #{nr} XML NICHT gesendet ({"; ".join(fehler)[:120]}) — im Portal bestellen: {t[2]}'; continue
+            if name not in vorhanden:
+                fx.hochladen(sid, '/home/ORDERS', name, x)
+                if name not in set(fx.liste(sid, '/home/ORDERS')):
+                    neu[nr] = f'⚠️ FORTURA: #{nr} Upload nicht zurücklesbar — im Portal prüfen: {t[2]}'; continue
+            t[3] = 'xml-hochgeladen'; t[4] = name
+            neu[nr] = f'FORTURA: #{nr} als {name} an Fortura übermittelt ({t[2]}) — wartet auf Lieferschein'
+        # DESADV: Lieferscheine von Fortura
+        for datei in fx.liste(sid, '/home/DESADV'):
+            for d in fx.lies_delvry(fx.herunterladen(sid, '/home/DESADV/' + datei)):
+                nr = d['order_no'].upper().lstrip('LX')
+                if nr in led and led[nr][3] == 'xml-hochgeladen':
+                    led[nr][3] = 'versandt'
+                    led[nr][4] = f"{led[nr][4]} · Lieferschein {d['doc_no']} {d['datum']} · DPD {','.join(d['tracking'])}"
+                    teil = [f'{a} {g}/{b}' for a, b, g, _ in d['positionen'] if g != b]
+                    neu[nr] = (f"FORTURA: #{nr} versandt {d['datum']} · DPD {','.join(d['tracking'])}"
+                               + (f" · ⚠️ Teillieferung {', '.join(teil)}" if teil else ''))
+        for nr, t in led.items():
+            if t[3] == 'xml-hochgeladen' and nr not in neu:
+                alter = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(t[1].replace('Z', '+00:00'))).total_seconds() / 3600
+                neu[nr] = (f"{'⚠️ ' if alter > 48 else ''}FORTURA: #{nr} XML seit {alter:.0f} h bei Fortura, noch kein Lieferschein"
+                           + (' — bei Fortura nachfragen' if alter > 48 else ''))
+    except Exception as e:
+        neu['_'] = f'⚠️ FORTURA-XML: {str(e)[:140]}'
+    finally:
+        fx.abmelden(sid)
+    alt = [z for z in zeilen if not any(f'#{nr} ' in z for nr in neu)]
+    return alt + list(neu.values())
 
 
 def main():
@@ -65,23 +123,26 @@ def main():
         if not pos:
             continue
         txt = ', '.join(f'{a}×{m}' for a, _, m, _ in pos)
-        if nr not in led:
+        p = os.path.join(PAKETE, f'{nr}.json')
+        if nr not in led or not os.path.exists(p):     # 06.10.: /tmp stirbt beim Neustart → Paket aus Shopify neu bauen
             paket = {'bestellref': f'LX{nr}', 'kundennr': '544341', 'erstellt': o['createdAt'], 'positionen':
                      [{'artnr': a, 'ean': e, 'menge': m, 'titel': t} for a, e, m, t in pos],
                      'lieferadresse': o.get('shippingAddress'), 'email': o.get('email'), 'versand': 'neutral (Dropship), Absender LuxeStyle'}
-            p = os.path.join(PAKETE, f'{nr}.json')
             with open(p, 'w', encoding='utf-8') as f:
                 json.dump(paket, f, ensure_ascii=False, indent=1)
             os.chmod(p, 0o600)
+        if nr not in led:
             led[nr] = [nr, dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'), txt, 'bereit', '']
         st = led[nr][3]
-        if st != 'bestellt':
+        if st == 'versandt':
+            zeilen.append(f'FORTURA: #{nr} versandt — {led[nr][4]} (Sendung in Shopify noch offen)'); continue
+        if st == 'bereit':
             alter = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(o['createdAt'].replace('Z', '+00:00'))).total_seconds() / 3600
             zeilen.append(f"⚠️ FORTURA: #{nr} ({alter:.0f} h) bereit — im Fortura-Portal bestellen: {txt} · danach "
                           f"`python3 automation/fortura_bestell_engine.py --bestellt {nr}`")
+    if os.path.exists(SCHALTER) and any(t[3] in ('bereit', 'xml-hochgeladen') for t in led.values()):
+        zeilen = stufe2(led, zeilen)
     schreibe(led)
-    if not os.environ.get('FORTURA_XML_MUSTER'):
-        pass  # Stufe 2 aus, bis Fortura ein Muster liefert
     print('\n'.join(zeilen) if zeilen else 'FORTURA: 0 offen')
     return 0
 

@@ -41,6 +41,14 @@
 
 
 
+
+## 2026-10-06 17:40 UTC · 📦 Fortura-Bestellautomat Stufe 2 live — XML nach ORDERS, Lieferschein aus DESADV
+Muster (Opacc.ORDERS/DELVRY) vom Betreiber hochgeladen (Gmail-Konnektor gibt keine Anhang-Bytes; Fortura-Server und Drive hatten sie
+nicht). `fortura_xml.py` (Selbsttest 7/7, Gerüst-Abgleich gegen das Template) + Stufe 2 in `fortura_bestell_engine.py` (Schalter
+`dropship/_fortura_xml_aktiv`): Upload `ORDERS_LX<nr>.xml` einmalig/zurückgelesen, DESADV → Tracking/Teillieferung, 48-h-Alarm,
+Paket aus Shopify neu bei Neustart. Ablauf-Test mit Attrappe 6/6; echter Server unberührt. Lehre: **Upload = echte Bestellung → nie
+gegen den echten Ordner testen; Attrappe + Template-Abgleich.** Bericht `dropship/FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`.
+
 ## 2026-10-06 16:45 UTC · 🏷️ Verbesserungsrunde: Google-Händlereinträge ohne Versand-/Rückgaberegel
 GEMESSEN: Search Console 06.10. «shippingDetails/hasMerchantReturnPolicy fehlt (in offers)»; Live-JSON-LD: Organization nur
 name/logo/url, Offer ohne beide Felder. Google empfiehlt die globale Regel unter Organization. GETAN:
@@ -18070,6 +18078,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-03 · 🔄 **Verbesserungsrunde: Google-Scan 10:09 (dank Fortsetzung fertig) Adult 92 → 265 (Grind-Mode), Inappropriate 250 → 199 — Bildtausch lief stur Klasse 1 (63 offen, ~11/h, Neustart stündlich), Adult kam nie dran → Wechselbetrieb `/tmp/gbt_klasse_idx`, N=8 je Klasse.** Mehrere Schlangen in einem Lauf reihum beginnen → `dropship/BILDTAUSCH-WECHSEL-2026-10-03.md`
 - 2026-10-03 · 🎁 **Plan-Tag 3 Rest: «Geschenke bis CHF 30» (Menü, 9 Kanäle) oben 12/24 Partydeko + 11/24 Schmuck → Welt `unter30` in `geschenk_unterwelten.py` (Preisband je Welt 12–30, 8 Warenarten, 10 Kanarienvögel draussen); Bildtausch-Pilot: Tausch 83 % frei vs. Kontrolle 42 % → echter Gewinn ~+40 Pkt., Klasse schon ausgerollt.** Aufzählungs-Punkte Glied für Glied messen; A/B-Ledger beim Ausrollen nie überschreiben → `dropship/GESCHENKE-UNTER-30-2026-10-03.md`
 - 2026-10-03 · 🪣 **Verbesserungsrunde: farbe_metafeld + textbild_fix starben nachts «12x gedrosselt» — Bildtausch schrieb über `heilversprechen_wache.gql` (5 Importeure, kein Boden); 15 importierte gql-Helfer ohne `nachlauf` gepatcht + Gehirn-Regel `helfer-ohne-eimer` (16/16).** Etikette gehört in den Helfer, nicht in jeden Aufrufer → `dropship/EIMER-HELFER-2026-10-03.md`
 - 2026-10-03 · 🔧 **«fix alles» Google-Blocker (790): Bildtausch gemessen 76 % frei vs. 21 % unberührt → 171 neu (Gemini allein bei leerem Groq, «tausch-g»), Adult 92 + Überlagerung 8 in derselben Runde; «Image too small» = 45 Variantenbilder → `google_variantenbild_gross.py` (fileUpdate, 600 px); «Product page unavailable» 129 alle kaufbar → Anstoss alle 3 T; Tabak-/Marken-Titel korrigiert.** Bildbefund kann ein Variantenbild meinen → `dropship/GOOGLE-BLOCKER-FIX-2026-10-03.md`

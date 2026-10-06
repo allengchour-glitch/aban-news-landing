@@ -3,11 +3,13 @@
 
 
 
-## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (3 Betreiber-Klicks)
+## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (Stand 17:40: alle 3 ✅ — 1: Betreiber lud die Muster hoch → Stufe 2 live, `FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`)
 1. **Fortura hat die Bestell-Muster geschickt** (Papini, 06.10. 14:56: `Opacc_Orders_Muster.xml`, `Opacc_Orders_Template.xml`,
    `Opacc_Delvry_Template.xml`, `Art_DataFeed (Beispiel).CSV`). Der Gmail-Zugang hier kann **keine Anhänge herunterladen**.
    → In Gmail die Mail öffnen → bei den 3 XML-Dateien «In Drive speichern» (Ordner egal). Dann baut die nächste Runde Stufe 2 des
    Bestellautomaten (XML nach /home/ORDERS statt Ampel «im Portal bestellen»). Keine Antwort an Fortura nötig.
+   ⚠️ 06.10. 17:10 geprüft: Muster liegen NICHT auf webtransfer.fortura.ch (/home/ORDERS und /home/DESADV leer) und NICHT in Drive;
+   Gmail-Konnektor gibt keine Anhang-Bytes → nur der Drive-Klick (oder Papini legt sie in ORDERS) bringt sie hierher.
 2. **CJ-Ticket wartet auf deine Antwort** (CJ-Mail 05.10. 17:18 UTC «Awaiting your reply») — vermutlich #1021-Ersatzuhr
    T202610040937181221. → cjdropshipping.com/newmycj/ticket öffnen und bestätigen, damit #1021 rausgeht (6 Tage «Processing»).
 3. **Ricardo**: Feed-Anbindung abgelehnt (Warteliste, «auch in naher Zukunft nicht»); Ricardo empfiehlt manuell einstellen
