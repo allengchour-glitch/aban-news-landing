@@ -203,6 +203,32 @@ starte() {  # starte <logname> <befehl…>
   sleep 3          # gestaffelt: alle gleichzeitig reissen Shopify-OAuth + CJ-Token-Limit
 }
 
+# ── 0. /tmp-HYGIENE + Server-Grundausstattung (06.10.2026, Betreiber «hetzner verbessern und für die automation»).
+#    GEMESSEN 06.10. 21:50 (Auftrag server-zustand): auf dem Hetzner-Server ist /tmp ein tmpfs von 1,9 GB und war zu 97 % voll
+#    (Exporte *.jsonl à 20–100 MB, Logs) → «No space left on device» in fixer_keepalive/farbe_metafeld, fehlende /tmp/export.jsonl
+#    für 6 Wächter, und weil tmpfs im RAM liegt: 1,9 GB «shared», nur 1 GB frei, kein Swap. Ab 85 %: grosse Dateien (> 20 MB,
+#    älter als 4 h, ausser der Kosten-Kette kost*) löschen, Logs > 20 MB auf die letzten 2 MB kürzen (gleicher Inode — laufende
+#    Schreiber hängen weiter an). Gilt auf jeder Maschine; im Cloud-Container ist /tmp keine RAM-Platte, dort greift es selten.
+TMPV=$(df --output=pcent /tmp 2>/dev/null | tail -1 | tr -dc 0-9)
+if [ "${TMPV:-0}" -ge 85 ]; then
+  find /tmp -maxdepth 1 -type f -size +20M -mmin +240 ! -name 'kost*' \
+       \( -name '*.jsonl' -o -name '*.mp4' -o -name '*.teil' -o -name '*.wav' -o -name '*.png' -o -name '*.jpg' -o -name '*.csv' -o -name '*.zip' -o -name '*.json' \) \
+       -delete 2>/dev/null
+  for f in /tmp/*.log; do
+    [ -f "$f" ] && [ "$(stat -c %s "$f" 2>/dev/null || echo 0)" -gt 20000000 ] && { tail -c 2000000 "$f" > "$f.kurz" && cat "$f.kurz" > "$f"; rm -f "$f.kurz"; }
+  done
+  echo "TMP-HYGIENE: /tmp ${TMPV}% → $(df --output=pcent /tmp | tail -1 | tr -d ' ')"
+fi
+#    Server ohne numpy/PIL (gemessen: reel_engine_runner «No module named 'numpy'», textbild_fix «No module named 'PIL'»):
+#    einmal täglich apt-Pakete nachziehen, nur auf dem Server (root), im Hintergrund, mit Zeitlimit.
+case "$(hostname)" in ubuntu-4gb-*)
+  if ! python3 -c 'import numpy, PIL' 2>/dev/null && [ "$(id -u)" = 0 ] && [ ! -f /tmp/py_module_$(date -u +%F).stamp ]; then
+    touch /tmp/py_module_$(date -u +%F).stamp
+    ( DEBIAN_FRONTEND=noninteractive timeout 900 apt-get install -y -qq python3-numpy python3-pil >> /tmp/py_module.log 2>&1 & )
+    echo "SERVER: python3-numpy/python3-pil werden nachinstalliert (Log /tmp/py_module.log)"
+  fi ;;
+esac
+
 # ── 1. Der Aufseher zuerst. Er startet ALLE täglichen Qualitäts-Wächter; steht er still,
 #       stehen sie alle still, und keine andere Routine merkt es (Lehre 0c).
 #
