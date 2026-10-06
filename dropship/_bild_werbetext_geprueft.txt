@@ -4801,3 +4801,4 @@ gid://shopify/Product/16606172807559	gid://shopify/MediaImage/77457461215623	0	h
 gid://shopify/Product/16606172807559	gid://shopify/MediaImage/77457461248391	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620802010756.jpg?v=1791217261	2026-10-05T20:41:08Z	
 gid://shopify/Product/16606172807559	gid://shopify/MediaImage/77457461281159	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620802010750.jpg?v=1791217261	2026-10-05T20:41:10Z	
 gid://shopify/Product/16606172807559	gid://shopify/MediaImage/77457461313927	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620802010751.jpg?v=1791217262	2026-10-05T20:41:11Z	
+gid://shopify/Product/15522140619137	gid://shopify/MediaImage/70744150311297	0	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8288606182786.jpg?v=1788228816	2026-10-06T21:29:31Z	
