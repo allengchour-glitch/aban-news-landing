@@ -4642,3 +4642,5 @@ selbstklebende-leinen-wandverkleidung-629400	2607020916101620100	0	-	KEINE CH-Op
 yukihira-topf-edelstahl-18-cm-mit-deckel-613600	2607011157331614200	16	15.20	ok	landeseite
 l-formige-coral-fleece-kuchenmatte-623100	2607010802171623800	16	11.32	ok	landeseite
 matcha-schale-mit-deckel-631100	2607010709091631800	16	13.16	ok	landeseite
+boden-reinigungstucher-mit-frischeduft-12-stk-780162	2072216045247832065	16	5.20	ok	landeseite
+zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	2606301129211638600	16	10.55	ok	landeseite
