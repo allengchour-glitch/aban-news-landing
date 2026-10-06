@@ -44,6 +44,16 @@
 
 
 
+## 2026-10-06 19:25 UTC · 📣 «ja mach alles gratis sachen»: Kraft von Pinterest zu TikTok, Abendpost, Creator-Vorlage
+
+GEMESSEN (`social/_lernen.json`, 90 T): Median Aufrufe/Post TikTok 280 (n 26), IG-Reel 30 (38), IG-Bild 15 (46),
+Pinterest 1 (176). Zeitfenster «tiktok 21–24» Gewicht 2.17 (×8, n 5). Themen: Mode 1.49, Haustier 1.44, Schmuck 1.36.
+- `social_autopilot.sh`: TikTok 8 h → 6 h, Pinterest 24 h → 48 h, NEU Abendpost: einmal je Tag 19–21 Uhr Zürich mit
+  `VORLAUF_MIN` bis 21:05 + `FENSTER_H=2` → Termin 21–23 Uhr; setzt die TikTok-Marke (kein Doppel kurz danach). Backup /tmp/social_autopilot.vor-abend.sh.
+- **Korrektur meiner Antwort an den Betreiber:** «TikTok-Bio-Link setzen» geht NICHT — TikTok gibt den Bio-Link erst ab
+  1'000 Followern (steht seit 23.09. im Autopiloten, DIREKTLINK_TEXT=1). Vor einer Empfehlung den Code lesen.
+- `dropship/CREATOR-ANFRAGE.md`: DM-Vorlage, Kriterien, #werbung-Pflicht (UWG), Messtabelle.
+
 ## 2026-10-06 19:05 UTC · 🔎 «tool installieren selber programmieren»: eigenes Perplexity, Hype-Recherche ohne Session
 
 Anlass: TikTok «5 Konnektoren für Claude» (Perplexity, Composio, HyperFrames, Firecrawl, Playwright). Bestand GEMESSEN:

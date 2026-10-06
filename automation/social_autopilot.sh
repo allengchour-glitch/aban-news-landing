@@ -26,10 +26,10 @@ NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
 REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
 KARUSSELL_ABSTAND=${KARUSSELL_ABSTAND:-86400}   # 23.09.: 1 Instagram-Karussell je Tag (Betreiber «insta karusell brauchen»), FB-Album dazu
-TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-28800}   # 8 h (27.09.2026, Betreiber «du bist metricool master … analysiert was am besten ist»: TikTok Median 272 Aufrufe/Post = bester Kanal; vorher 12 h)
+TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-21600}   # 6 h (06.10.2026, Betreiber «ja mach alles gratis sachen» auf «Pinterest zurück, frei werdende Posts auf TikTok am Abend»: 90 T TikTok Median 280 Aufrufe/Post, Pinterest 1); davor 8 h (27.09.2026, Betreiber «du bist metricool master … analysiert was am besten ist»: TikTok Median 272 Aufrufe/Post = bester Kanal; vorher 12 h)
 # 23.09.2026 «metricool maximal nutzen»: YouTube Shorts und Pinterest ueber denselben Metricool-Zugang.
 YOUTUBE_ABSTAND=${YOUTUBE_ABSTAND:-43200} # 12 h zwischen zwei YouTube Shorts (eigenes Reel je Post, Bestzeit-Planung)
-PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-86400}  # 24 h (27.09.2026: 44 Pins in 30 T = 55 Impressionen, 0 Klicks, 0 Merken → 1/Tag als Drossel-Test; vorher 6 h)
+PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-172800}  # 48 h (06.10.2026: 176 Pins in 90 T, Median 1 Aufruf/Pin → Kraft zu TikTok); davor 24 h (27.09.2026: 44 Pins in 30 T = 55 Impressionen, 0 Klicks, 0 Merken → 1/Tag als Drossel-Test; vorher 6 h)
 MARKE_YOUTUBE=/tmp/_autopilot_letztes_youtube
 MARKE_PINTEREST=/tmp/_autopilot_letzter_pin
 LERN_ABSTAND=${LERN_ABSTAND:-21600}       # alle 6 h: Instagram-Zahlen lesen, Gewichte fuer Hooks/Themen schreiben
@@ -236,6 +236,18 @@ while true; do
     elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) TikTok: Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
     else echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
     fi
+  fi
+  # 06.10.2026 TikTok-ABENDPOST: social_lernen misst «tiktok 21–24» Gewicht 2.17 (Median ×8, n=5) — bester Zeitraum aller Kanäle.
+  # Einmal je Tag zwischen 19 und 21 Uhr Schweizer Zeit ein Post mit Bestzeit-Fenster 2 h (→ landet 21–23 Uhr). Zählt als
+  # regulärer TikTok-Post (Marke wird neu gesetzt), damit nicht kurz danach der 6-h-Takt einen zweiten nachschiebt.
+  ZH_H=$(TZ=Europe/Zurich date +%H)
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && [ "$ZH_H" -ge 19 ] && [ "$ZH_H" -lt 21 ] \
+     && [ ! -f "/tmp/_autopilot_tiktok_abend_$(TZ=Europe/Zurich date +%F)" ] && faellig "$MARKE_TIKTOK" 7200; then
+    echo "$(date -u +%H:%M) TikTok-Abendpost faellig (Metricool, Ziel 21–23 Uhr)"
+    VORLAUF_MIN=$(( (21 - 10#$ZH_H) * 60 - 10#$(TZ=Europe/Zurich date +%M) + 5 )) FENSTER_H=2 DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; RC=$?
+    if [ "$RC" = 0 ]; then touch "$MARKE_TIKTOK" "/tmp/_autopilot_tiktok_abend_$(TZ=Europe/Zurich date +%F)"
+    elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) TikTok-Abend: Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
+    else echo "$(date -u +%H:%M) TikTok-Abendpost fehlgeschlagen"; fi
   fi
   # YouTube Shorts ueber Metricool (23.09.): gleicher Poster, NETZ=youtube; Nachmessen wie bei TikTok.
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; }; then
