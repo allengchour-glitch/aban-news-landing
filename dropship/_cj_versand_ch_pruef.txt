@@ -4646,3 +4646,8 @@ boden-reinigungstucher-mit-frischeduft-12-stk-780162	2072216045247832065	16	5.20
 zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	2606301129211638600	16	10.55	ok	landeseite
 faltbare-elektrische-grillburste-626600	2606280859391627300	7	13.11	ok	landeseite
 panda-handtuch-636700	2606280804161637400	16	6.56	ok	landeseite
+garkorb-set-mit-zubehor-fur-sauerteigbrot-004225	2070121085186211841	0	-	KEINE CH-Option → DRAFT	landeseite
+garkorbchen-set-fur-sauerteigbrot-rund-9-zoll-097538	2070123730771869698	0	-	KEINE CH-Option → DRAFT	landeseite
+schmetterling-badewannenkissen-mit-saugnapfen-632000	2607020147521632600	16	9.47	ok	landeseite
+wandmontierter-wc-papierhalter-aus-aluminium-619900	2607010725221610700	16	9.23	ok	landeseite
+5-core-plektren-set-12-stuck-115201	2055189669203304451	0	-	KEINE CH-Option → DRAFT	landeseite

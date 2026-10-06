@@ -50,3 +50,4 @@
 2026-10-05T17:54Z	gid://shopify/Product/15504228647297	+	ig-seit-2026-10-03	herren-loose-fit-kapuzenjacke-waffelpique-617500
 2026-10-05T17:54Z	gid://shopify/Product/15500350128513	+	ig-seit-2026-10-04	smart-hundespielzeug-346624
 2026-10-05T17:54Z	gid://shopify/Product/15411563823489	-	ig-gepostet,ig-seit-2026-09-03	outdoor-bluetooth-speaker-solar-rgb-licht-wasserdicht-tragbar
+2026-10-06T21:10Z	gid://shopify/Product/15449920995713	+	ig-seit-2026-10-05	damenstiefel-aus-vollnarbenleder-mit-weicher-s-638700

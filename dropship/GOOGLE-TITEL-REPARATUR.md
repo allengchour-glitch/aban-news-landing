@@ -16,14 +16,13 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-05T18:16:01Z — SCHARF
+## Letzter Lauf 2026-10-06T21:12:34Z — SCHARF
 
-Gescannt 50709 aktive von 50709 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 50912 aktive von 50912 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
 | zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
-| manuelle-zigarettenherstellung-mit-shredder-023488 | RAUCH | Typ Werkzeug & Heimwerken → Raucherzubehör; Kategorie → hg-19; +smoke-zubehoer; −heimwerken,werkzeug | ok |
 
 ## Ledger gesamt
 
@@ -89,4 +88,4 @@ Typ-/Tag-Korrekturen (rückgelesen):
 
 ## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
 
-- taillierte-jeansjacke-fur-herren-282562: keine Google-Meldung
+- manuelle-zigarettenherstellung-mit-shredder-023488: keine Google-Meldung
