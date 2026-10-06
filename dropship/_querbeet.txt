@@ -97,3 +97,5 @@ gid://shopify/Product/16603762983303	2026-10-05	Kinder & Baby
 gid://shopify/Product/16604878864775	2026-10-05	Sport, Fitness & Outdoor
 gid://shopify/Product/16604925133191	2026-10-05	Taschen & Rucksäcke
 gid://shopify/Product/15503122825601	2026-10-05	Handy-Zubehör
+gid://shopify/Product/16604914418055	2026-10-06	Damen-Mode
+gid://shopify/Product/16607377949063	2026-10-06	Küche & Kochen
