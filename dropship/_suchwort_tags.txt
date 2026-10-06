@@ -14816,3 +14816,13 @@ gid://shopify/Product/16606157865351	zange	Netzwerkkabel-Crimpzange mit Tester �
 gid://shopify/Product/16606157930887	uhr	Messuhr mit Zeiger und Halterung 10–30 mm
 gid://shopify/Product/16606158029191	tasche	Umhängetasche aus PU mit grossem Stauraum
 gid://shopify/Product/16606158160263	tasche	Tagestasche mit Reissverschluss, wasserabweisend
+gid://shopify/Product/16606172250503	schere	Blechschere für dünne Bleche
+gid://shopify/Product/16606172316039	hammer	T-förmiger Lederhammer mit Nylonkopf
+gid://shopify/Product/16606172348807	rucksack	Laufrucksack 5 L für Trailrunning
+gid://shopify/Product/16606217240967	rucksack	Wickelrucksack aus Oxford-Gewebe 42×26×15 cm
+gid://shopify/Product/16606217929095	zange	Sicherungsringzange 2-in-1 für 3–24 mm
+gid://shopify/Product/16606906974599	jacke	Jeansjacke mit Schnürung am Rücken, lockere Passform
+gid://shopify/Product/16606916477319	hammer	Mini-Klauenhammer für Notfälle
+gid://shopify/Product/16606916673927	zange	Abisolierzange für Kabel 0,8–2,6 mm
+gid://shopify/Product/16607159845255	armband	Tennisarmband mit farbigen Glitzersteinen
+gid://shopify/Product/16607159878023	armband	S925 Silberarmband mit natürlichem Topas
