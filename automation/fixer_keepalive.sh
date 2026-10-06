@@ -198,6 +198,16 @@ while true; do
           SCHARF=1 CAP=30000 timeout 5400 python3 automation/kategorie_fein.py" >> "$KF" 2>&1 9>&- & )
     fi
   fi
+  # ALTER-IM-FARBWERT (06.10.2026, Verbesserungsrunde): «White-6 TO 9M» als einzige Option → Farbe + neue Option «Grösse»
+  # («6–9 Monate»); liest den täglichen Optionen-Export von farbmuster_filter.py, nur eindeutige Fälle, Ledger.
+  AF=/tmp/alter_im_farbwert.log
+  if [ -f "$REPO/automation/alter_im_farbwert.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$AF" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 30 python3 automation/alter_im_farbwert.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$AF"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_alter_im_farbwert.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 3000 python3 automation/alter_im_farbwert.py" >> "$AF" 2>&1 9>&- & )
+  fi
   # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
   # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
   KM=/tmp/kleider_merkmale.log

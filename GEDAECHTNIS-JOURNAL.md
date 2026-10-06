@@ -44,6 +44,13 @@
 
 
 
+## 2026-10-06 20:50 UTC · 👶 Verbesserungsrunde: Alter im Farbwert («White-6 TO 9M») → Option «Grösse»
+
+GEMESSEN: 42 Kinder-/Babyprodukte mit nur EINER Option Farbe, Werte «Farbe-Alter» (313 Werte, CJ-variantKey ungeteilt) →
+Farbfilter verschmutzt, Grösse fehlt in Filter und Google-size. Fix `alter_im_farbwert.py`: productOptionsCreate «Grösse»
+(LEAVE_AS_IS) + productVariantsBulkUpdate beider Werte + Rücklesen; nur eindeutige Fälle, Kanarie «Pink-MS» bleibt.
+~40 s je Produkt (zwei Mutationen + Rücklesen unter Eimer-Etikette). Aufseher täglich. Bericht `ALTER-IM-FARBWERT-2026-10-06.md`.
+
 ## 2026-10-06 20:35 UTC · 👗 Neue Filterwerte «Kleider-/Rocklänge» und «Ärmellänge» aus dem Titel
 
 Betreiber «neue feinkategorien und filter erstellen?» → Wahl «Länge + Ärmel aus Titel». GEMESSEN: 549 Kollektionen — die
