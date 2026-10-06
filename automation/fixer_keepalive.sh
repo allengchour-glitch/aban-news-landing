@@ -1374,6 +1374,17 @@ if [ -f "$REPO/automation/warenkorb_gratisversand.py" ] && [ ! -f /tmp/warenkorb
   esac
   echo "$WV" >> /tmp/warenkorb_versand.log
 fi
+# --- Google: Rückgabe-/Versandregel als Organization-Markup (06.10.2026, dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md) — täglich:
+#     Markup noch im Live-Header? Tarif (CHF 7 / gratis ab 45) = Markup? Fehlt nur das Markup → einmal neu einfügen.
+if [ -f "$REPO/automation/google_org_richtlinien.py" ] && [ ! -f /tmp/google_org_richtlinien_$(date -u +%F).stamp ]; then
+  touch /tmp/google_org_richtlinien_$(date -u +%F).stamp
+  GO=$(cd "$REPO" && timeout 120 python3 automation/google_org_richtlinien.py --pruefen 2>&1 | tail -1)
+  case "$GO" in
+    *"Markup fehlt"*) ( cd "$REPO" && SCHARF=1 timeout 120 python3 automation/google_org_richtlinien.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) google-org-richtlinien neu: /" ;;
+    *"⚠️"*) echo "$(date -u +%H:%M) $GO" ;;
+  esac
+  echo "$GO" >> /tmp/google_org_richtlinien.log
+fi
   # 05.10.2026 (Fixlauf preis-marge): EK-Lücke CJ + Neuware-Verlustschutz, täglich. 87 aktive CJ-Produkte ohne EK waren für
   # preis_verlustschutz unsichtbar (10 echte Verlustbringer, 47 bei CJ ausgelistet); Neuimporte kennt der Tagesläufer erst mit dem
   # nächsten Voll-Export (371 Varianten unter Boden am 05.10.). ek_luecke_cj.py: Backfill/Nachtrag NUR_IDS → Verlustschutz live →

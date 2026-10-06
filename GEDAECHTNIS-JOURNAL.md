@@ -40,6 +40,14 @@
 
 
 
+
+## 2026-10-06 16:45 UTC · 🏷️ Verbesserungsrunde: Google-Händlereinträge ohne Versand-/Rückgaberegel
+GEMESSEN: Search Console 06.10. «shippingDetails/hasMerchantReturnPolicy fehlt (in offers)»; Live-JSON-LD: Organization nur
+name/logo/url, Offer ohne beide Felder. Google empfiehlt die globale Regel unter Organization. GETAN:
+`google_org_richtlinien.py` → Header-Organization + MerchantReturnPolicy (30 T, Post, Porto Kundin, volle Erstattung, CH) +
+ShippingService (CHF 7 bis 44.99, ab 45 gratis); live auf Produkt/Kollektion/Start gültiges JSON; Wächter täglich vergleicht mit
+deliveryProfiles. Bericht `dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md`.
+
 ## 2026-10-06 16:00 UTC · 📬 Mail-Durchsicht: Fortura-Muster da, Ricardo-Feed abgelehnt, Microsoft-Sperre weg
 Fortura (Papini) schickte Orders-Muster/Template, Delvry-Template, DataFeed-CSV — **Gmail-Konnektor liefert nur Anhang-IDs, keinen
 Inhalt** (get_message FULL_CONTENT ohne Daten, RAW nicht unterstützt) → Betreiber «In Drive speichern», dann Drive-Konnektor lesen.
@@ -18062,6 +18070,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-03 · 🎁 **Plan-Tag 3 Rest: «Geschenke bis CHF 30» (Menü, 9 Kanäle) oben 12/24 Partydeko + 11/24 Schmuck → Welt `unter30` in `geschenk_unterwelten.py` (Preisband je Welt 12–30, 8 Warenarten, 10 Kanarienvögel draussen); Bildtausch-Pilot: Tausch 83 % frei vs. Kontrolle 42 % → echter Gewinn ~+40 Pkt., Klasse schon ausgerollt.** Aufzählungs-Punkte Glied für Glied messen; A/B-Ledger beim Ausrollen nie überschreiben → `dropship/GESCHENKE-UNTER-30-2026-10-03.md`
 - 2026-10-03 · 🪣 **Verbesserungsrunde: farbe_metafeld + textbild_fix starben nachts «12x gedrosselt» — Bildtausch schrieb über `heilversprechen_wache.gql` (5 Importeure, kein Boden); 15 importierte gql-Helfer ohne `nachlauf` gepatcht + Gehirn-Regel `helfer-ohne-eimer` (16/16).** Etikette gehört in den Helfer, nicht in jeden Aufrufer → `dropship/EIMER-HELFER-2026-10-03.md`
 - 2026-10-03 · 🔧 **«fix alles» Google-Blocker (790): Bildtausch gemessen 76 % frei vs. 21 % unberührt → 171 neu (Gemini allein bei leerem Groq, «tausch-g»), Adult 92 + Überlagerung 8 in derselben Runde; «Image too small» = 45 Variantenbilder → `google_variantenbild_gross.py` (fileUpdate, 600 px); «Product page unavailable» 129 alle kaufbar → Anstoss alle 3 T; Tabak-/Marken-Titel korrigiert.** Bildbefund kann ein Variantenbild meinen → `dropship/GOOGLE-BLOCKER-FIX-2026-10-03.md`
 - 2026-10-02 · 🧟 **«mach 1 bis 4»: 150× «Produktdetails doppelt» kam täglich zurück — Verursacher = PC-Aufgabe «LuxeMarketing» (`enrich_apparel_descriptions.mjs`, alter Branch CizQ6), erkennt Erledigtes nur an `ls-feed-details`, die Vereinigung entfernte genau das → Kommentar-Markierung im Block, 150 vereint; Gadgets ohne Raucherzubehör (Typ-Regel); `groessenwert_kauderwelsch.py`; Farbfeld aus Titel (nur ganzes deutsches Farbwort, 1'773).** Zombie ohne Container-Spur → Git-Verlauf aller Branches + PC-Skripte → `dropship/FILTER-FEINKATEGORIE-2026-10-02.md`
