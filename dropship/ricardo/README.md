@@ -50,3 +50,8 @@
 ## Danach (Claude)
 - Erste Ricardo-Bestellung → Bestell-Ampel prüfen (Fortura-Versand), Provision gegen Rechnung nachmessen.
 - Läuft es: Schwelle prüfen (Ricardo-Preis +10 % wäre möglich, um mehr Fortura-Ware rentabel zu machen — Betreiber-Entscheid).
+
+## 06.10.2026 — Antwort Ricardo (Anfrage 3869500)
+Feed-Anbindung: **Warteliste, derzeit keine neuen Anbindungen, «auch in naher Zukunft voraussichtlich nicht»**; bevorzugt werden
+Secondhand/Restposten/Refurbished/Retouren/Sammlerstücke. Empfehlung: manuell starten (App «Ricardo AI»). `ricardo_feed.py` bleibt
+liegen (läuft täglich, kostet nichts); Entscheid manuell testen = Betreiber.

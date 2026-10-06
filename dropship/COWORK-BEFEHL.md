@@ -2,6 +2,20 @@
 
 
 
+
+## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (3 Betreiber-Klicks)
+1. **Fortura hat die Bestell-Muster geschickt** (Papini, 06.10. 14:56: `Opacc_Orders_Muster.xml`, `Opacc_Orders_Template.xml`,
+   `Opacc_Delvry_Template.xml`, `Art_DataFeed (Beispiel).CSV`). Der Gmail-Zugang hier kann **keine Anhänge herunterladen**.
+   → In Gmail die Mail öffnen → bei den 3 XML-Dateien «In Drive speichern» (Ordner egal). Dann baut die nächste Runde Stufe 2 des
+   Bestellautomaten (XML nach /home/ORDERS statt Ampel «im Portal bestellen»). Keine Antwort an Fortura nötig.
+2. **CJ-Ticket wartet auf deine Antwort** (CJ-Mail 05.10. 17:18 UTC «Awaiting your reply») — vermutlich #1021-Ersatzuhr
+   T202610040937181221. → cjdropshipping.com/newmycj/ticket öffnen und bestätigen, damit #1021 rausgeht (6 Tage «Processing»).
+3. **Ricardo**: Feed-Anbindung abgelehnt (Warteliste, «auch in naher Zukunft nicht»); Ricardo empfiehlt manuell einstellen
+   (App «Ricardo AI», Foto → Titel/Text). Entscheid bei dir: ein paar Fortura-Artikel von Hand testen oder Ricardo ruhen lassen.
+Erledigt ohne dich: Microsoft Advertising — **Sperre des Stores «LuxeStyle CH» aufgehoben** (Einspruch angenommen, 06.10. 12:54);
+Metricool-Fehler 10:31 (IG-Bild nicht abrufbar) wurde automatisch neu geplant und veröffentlicht; Search Console meldet nur
+nicht-kritische Hinweise (Produktdaten ohne Versand-/Rückgabeangaben, ohne Bewertungen) → nächste Google-Runde.
+
 ## 05.10. 21:30 — ✅ Google Search Console (Tag live), ✅ Bing Webmaster verifiziert (msvalidate 9023C06C…), ✅ Ahrefs Webmaster Tools bestätigt
 ✅ Sitemap in Bing (Success, 1.0M URLs) + Google (05.10. eingereicht; Abruf geprüft: 200, 55 Teil-Sitemaps, robots.txt verweist). Nächste Gratis-Klicks: Microsoft Merchant Center «erneut prüfen» (Ablehnung 01.10. behoben) · Clarity-Aufnahmen der Warenkorb-Sitzungen ansehen · Ahrefs Site Audit + GSC Insights · Coupler.io ↔ Search Console.
 
