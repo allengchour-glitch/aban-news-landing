@@ -1,10 +1,8 @@
 {
  "host": "ubuntu-4gb-nbg1-1",
- "stunde": "2026-10-06T00:00Z",
- "stand": "2026-10-06T00:00:33Z",
+ "stunde": "2026-10-06T01:00Z",
+ "stand": "2026-10-06T01:02:40Z",
  "fenster_min": 60,
- "summe": 1,
- "skripte": {
-  "cj_category_fill.mjs": 1
- }
+ "summe": 0,
+ "skripte": {}
 }
