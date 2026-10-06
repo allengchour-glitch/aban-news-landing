@@ -44,6 +44,18 @@
 
 
 
+## 2026-10-06 22:05 UTC · 🖥️ Hetzner: Server-Grind verbrannte ~39k CJ-Punkte/Tag ohne ein einziges Produkt
+Betreiber «hetzner verbessern und für die automation». GEMESSEN (Aufträge server_zustand/server_runner_bilanz, nur lesend):
+/tmp (tmpfs 1,9 GB) 97 % voll, numpy/PIL fehlen, und die CJ-Runner liefen dort OHNE Text-KI-Schlüssel → 3'903× skip(gemini),
+0 angelegt — jedes nach einer bezahlten product/query (10 Punkte). Der Server-Grind war ein Punkteleck, kein Mehrwert.
+GETAN: engine_keepalive Abschnitt 0 lädt /etc/luxe/secrets.env (CJ2/CJ3 → /tmp/cj_konten.env, Gemini → /tmp/gemini_key),
+/tmp-Hygiene ab 85 %, apt numpy/PIL täglich nur auf ubuntu-4gb-*; KI_DA=0 → Grind 0 + cj_queue_runner aus; cj_category_fill
+bricht ohne KI VOR der ersten CJ-Abfrage ab. Cloud hat alle Schlüssel → Grind dort unverändert.
+**LEHRE: Ein Motor, der eine Voraussetzung erst NACH der bezahlten Abfrage prüft, zahlt für jedes Nein.** Voraussetzungen
+(Schlüssel, Speicher, Module) gehören an den Start — und ein zweiter Rechner erbt nur, was man ihm ausdrücklich gibt.
+Bericht `dropship/HETZNER-AUTOMATION-2026-10-06.md`. OFFEN: Nachmessen beim nächsten Server-Lauf; Betreiber kann
+GROQ/GEMINI/CJ2/CJ3 in /etc/luxe/secrets.env ergänzen (SSH), dann importiert der Server rund um die Uhr.
+
 ## 2026-10-06 21:20 UTC · 🎞️ TikTok ZN8kfmmNH (@arbeitemitki, 28k Aufrufe): LTX 2.5 lokal statt Veo — hier nicht nutzbar
 
 QUELLE: Open-Weight-Videomodell LTX 2.5 (BEHAUPTUNG: seit 08/2026, 1,6 Mio. Downloads), über Hugging Face, «kostenlos, braucht

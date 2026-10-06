@@ -37,6 +37,14 @@ SHOPIFY_CLIENT_SECRET=
 CJ_EMAIL=
 CJ_API_KEY=
 JUDGEME_PRIVATE_TOKEN=
+# optional (06.10.2026): Text-KI — ohne sie laufen Grind/Such-Runner auf dem Server NICHT (skip(gemini) verbrennt CJ-Punkte)
+GROQ_API_KEY=
+GROQ_API_KEY2=
+GEMINI_API_KEY=
+DEEPSEEK_API_KEY=
+# optional: CJ-Zusatzkonten für den Lagerabgleich (je 1'000 Abfragen/Tag)
+CJ2_API_KEY=
+CJ3_API_KEY=
 V
   chmod 600 "$SECRETS.VORLAGE"
   echo "FEHLT: $SECRETS — Vorlage liegt unter $SECRETS.VORLAGE. Werte eintragen, dann erneut ausführen."; exit 2
