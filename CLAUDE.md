@@ -505,6 +505,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-06 · 🗂️ **«feinkategorie und filter»: 38'433/50'914 aktive auf Shopify-Oberklassen (Typ-Signal) → `kategorie_fein.py` verfeinert über die Google-Kategorie + Shopifys offizielle Zuordnung (nur Nachfahren, Titelprobe: Rock→Dresses, Velolampe→Fitness kamen aus Google), ~22'600, color-pattern bleibt; Aufseher 6 h; Filter «Kategorie» = Betreiber-Klick.** Zwei Signale einig, sonst grob lassen → Journal 06.10. 19:30
 - 2026-10-06 · ⛔ **Betreiber «1 nein 2 nein»: KEINE Creator-Anfragen, KEINE eigenen Gesichts-/Handyvideos — nicht erneut vorschlagen; Reichweite nur automatisch.** → Journal 06.10. 19:40
 - 2026-10-06 · 📣 **«ja mach alles gratis sachen»: TikTok Median 280 Aufrufe/Post vs Pinterest 1 → TikTok 6 h + täglicher Abendpost 21–23 Uhr (×8 gemessen), Pinterest 48 h; Creator-Vorlage `dropship/CREATOR-ANFRAGE.md`; TikTok-Bio-Link erst ab 1'000 Followern (falsch empfohlen).** Vor Empfehlung Code lesen → Journal 06.10. 19:25
 - 2026-10-06 · 🔎 **«tool installieren selber programmieren»: eigenes Perplexity `tools/recherche.py` (Groq gpt-oss + `browser_search`, gratis, Quellen aus der Werkzeug-Ausgabe) + `automation/hype_recherche.py` täglich → `dropship/HYPE-RECHERCHE.md` mit Gegenprobe am Bestand; Bing von unserer IP = Pizzerien in Genf, compound = 404.** Automatik kann jetzt selbst im Netz nachsehen → Journal 06.10. 19:05

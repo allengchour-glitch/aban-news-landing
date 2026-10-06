@@ -44,6 +44,23 @@
 
 
 
+## 2026-10-06 19:30 UTC · 🗂️ «feinkategorie und filter verbessern»: Shopify-Kategorie über die Google-Kategorie verfeinern
+
+GEMESSEN (Bulk 50'914 aktive): Shopify-Kategorie Tiefe 1: 9'728 · 2: 28'705 · 3+: 12'481 — `kategorie_wache.py` setzt
+sie aus dem Produkttyp («Damenmode» → Clothing). Die Google-Kategorie (google_kategorie_fein/umzug) war bei 38'344 davon
+feiner. Shopify-Kategoriemetafelder: nur `color-pattern` (15'507). Farbfilter-Lücke: 561 «Kategorie ohne Farbmerkmal»,
+431 davon auf der Oberklasse aa-1.
+- **Weg:** Shopifys OFFIZIELLE Zuordnung (product-taxonomy `from_shopify.yml`, es gibt nur diese Richtung → umgekehrt,
+  flachster EINDEUTIGER Knoten je Google-ID) + Google-Taxonomie mit IDs → `automation/data/google_zu_shopify_kategorie.json`
+  (5'367 Namen). Nur VERFEINERN (Ziel = Nachfahre der heutigen Kategorie, zwei Signale einig), Ziel-IDs per nodes() gegen
+  die Shop-Taxonomie geprüft.
+- **Falle:** die Google-Kategorie ist selbst nicht immer richtig — «Blauer A-Linien-Rock» → Dresses, «Rad-Sicherheitslampe»,
+  «Moskitonetz» → Fitness-Geräte, «Goldener Armband» → Necklaces. → TITELPROBE für 17 Ziele (Kleid/Rock/Hose/Schmuck/
+  Fitness…), sonst bleibt die Oberklasse. Erste Probe zu eng (Sweatpants, Sakko, Ohrclips, Tubedress) → erweitert; 219 bleiben grob.
+- **Gemessen nach Probe:** 155 geschrieben, 0 Fehler, `color-pattern` bleibt erhalten (5/5 mit Farbe geprüft).
+- Werkzeug `automation/kategorie_fein.py` (24/24), Aufseher alle 6 h (Ledger `_kategorie_fein.tsv`, Bericht `KATEGORIE-FEIN.md`).
+- Offen (Betreiber, keine API): Search & Discovery → Filter «Kategorie» hinzufügen — jetzt mit feinen Werten sinnvoll.
+
 ## 2026-10-06 19:40 UTC · ⛔ Betreiber-Entscheid: keine Creator-Anfragen, keine eigenen Gesichtsvideos
 
 Auf die Vorschläge «Creator anschreiben» und «Handyvideos mit Gesicht» antwortete der Betreiber «1 nein 2 nein».
