@@ -4687,3 +4687,8 @@ polkadot-mesh-oberteil-ohne-armel-kleid-617600	2607051240151618300	16	8.79	ok	la
 sommerkleid-624700	2607050851451625400	16	10.83	ok	landeseite
 elegante-taille-verjungung-rock-fur-frauen-609600	2607050346051600200	16	10.96	ok	landeseite
 langes-sonnenschutz-tuch-603200	2607050259481603800	16	6.77	ok	landeseite
+navy-blazer-dress-636600	2607040249301637200	16	10.15	ok	landeseite
+casual-pullover-638500	2607060227401639100	16	8.66	ok	landeseite
+knitpullover-mit-geradem-kragen-608000	2607060219561608600	16	8.79	ok	landeseite
+beige-blockpullover-627400	2607050332081628000	16	8.79	ok	landeseite
+warm-pullover-fur-herren-639500	2605280214371630000	16	10.55	ok	landeseite
