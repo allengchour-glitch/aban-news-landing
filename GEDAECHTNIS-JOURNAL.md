@@ -44,6 +44,12 @@
 
 
 
+## 2026-10-06 21:20 UTC · 🎞️ TikTok ZN8kfmmNH (@arbeitemitki, 28k Aufrufe): LTX 2.5 lokal statt Veo — hier nicht nutzbar
+
+QUELLE: Open-Weight-Videomodell LTX 2.5 (BEHAUPTUNG: seit 08/2026, 1,6 Mio. Downloads), über Hugging Face, «kostenlos, braucht
+starke Grafikkarte». GEMESSEN: Container ohne GPU (nvidia-smi fehlt), Hetzner-Server 4 GB ohne GPU → lokal nicht lauffähig.
+Reels kommen weiter aus echten CJ-Produktvideos (zeigt das echte Produkt; KI-Video kann Ware erfinden — Trikot-Falle Regel 4).
+
 ## 2026-10-06 21:30 UTC · 🔒 «schaue memory das hatte ich mal»: DENY sperrt nichts — und bei CJ ist DENY der Normalzustand
 
 Betreiber-Hinweis auf die Lehre vom 08.09. («DENY allein tut gar nichts», drei Schalter). GEMESSEN 06.10.:

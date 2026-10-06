@@ -4644,3 +4644,5 @@ l-formige-coral-fleece-kuchenmatte-623100	2607010802171623800	16	11.32	ok	landes
 matcha-schale-mit-deckel-631100	2607010709091631800	16	13.16	ok	landeseite
 boden-reinigungstucher-mit-frischeduft-12-stk-780162	2072216045247832065	16	5.20	ok	landeseite
 zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	2606301129211638600	16	10.55	ok	landeseite
+faltbare-elektrische-grillburste-626600	2606280859391627300	7	13.11	ok	landeseite
+panda-handtuch-636700	2606280804161637400	16	6.56	ok	landeseite
