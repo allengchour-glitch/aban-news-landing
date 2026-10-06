@@ -144,7 +144,7 @@ footer a{color:var(--muted)}
       sumW+=w;sumWN+=w*n;count++;
     });
     var avg=document.getElementById("avg"),sub=document.getElementById("sub"),hint=document.getElementById("hint");
-    if(count===0||sumW===0){avg.textContent="—";sub.textContent="Noten eingeben.";return;}
+    if(count===0||sumW===0){avg.textContent="—";sub.textContent="Noten eingeben.";hint.textContent="";return;}
     var a=sumWN/sumW;
     avg.textContent=a.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2});
     sub.textContent=count+" Note"+(count>1?"n":"")+" · Summe Gewichte "+sumW.toLocaleString("de-DE",{maximumFractionDigits:2});

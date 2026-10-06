@@ -155,6 +155,9 @@ footer a{color:var(--muted)}
       if(isNaN(n)||isNaN(lo)||isNaN(hi)||hi<lo||n<1||n>(hi-lo+1)){
         err.hidden=false;err.textContent="⚠️ Ungültige Regeln: „Wie viele“ muss zwischen 1 und der Anzahl der möglichen Zahlen liegen.";
         document.getElementById("balls").innerHTML="";document.getElementById("extraWrap").hidden=true;return;}
+      if(hi-lo+1>100000){
+        err.hidden=false;err.textContent="⚠️ Bereich zu groß (max. 100 000 mögliche Zahlen).";
+        document.getElementById("balls").innerHTML="";document.getElementById("extraWrap").hidden=true;return;}
       mainCfg={n:n,lo:lo,hi:hi,label:n+" Zahlen aus "+lo+"–"+hi};extraCfg=null;
     } else { mainCfg=GAMES[game].main; extraCfg=GAMES[game].extra; }
     var m=drawSet(mainCfg.n,mainCfg.lo,mainCfg.hi);

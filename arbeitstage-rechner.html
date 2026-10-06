@@ -114,11 +114,11 @@ footer a{color:var(--muted)}
 </main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
   <a href="/tage-rechner.html">Tage-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/suchmaschine.html">Suche</a>
-  <a href="/tage-rechner.html">Tage-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 (function(){
   function parse(v){if(!v)return null;var p=v.split("-");if(p.length!==3)return null;
-    var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?null:d;}
+    var d=new Date(+p[0],+p[1]-1,+p[2]);if(isNaN(d)||d.getFullYear()!==+p[0]||d.getMonth()!==+p[1]-1||d.getDate()!==+p[2])return null;return d;}
   function calc(){
     var s=parse(document.getElementById("start").value),e=parse(document.getElementById("end").value);
     var daysEl=document.getElementById("days"),sub=document.getElementById("sub");

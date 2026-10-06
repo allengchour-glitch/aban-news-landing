@@ -147,7 +147,7 @@ footer a{color:var(--muted)}
   <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 (function(){
-  function num(id){var v=document.getElementById(id).value.trim().replace(",",".");return v===""?NaN:parseFloat(v);}
+  function num(id){var v=document.getElementById(id).value.trim().replace(/[\s'’]/g,"");if(v==="")return NaN;if(/,/.test(v))v=v.replace(/\./g,"").replace(",",".");else if(/^-?\d{1,3}(\.\d{3})+$/.test(v))v=v.replace(/\./g,"");return Number(v);}
   function fmt(n){if(!isFinite(n))return "—";return n.toLocaleString("de-DE",{maximumFractionDigits:2});}
   function on(ids,fn){ids.forEach(function(id){document.getElementById(id).addEventListener("input",fn);});}
 

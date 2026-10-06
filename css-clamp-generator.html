@@ -116,7 +116,7 @@ footer a{color:var(--muted)}
   function render(){
     var minF=num("minF"),maxF=num("maxF"),minV=num("minV"),maxV=num("maxV"),root=num("root")||16;
     var code=document.getElementById("code"), demo=document.getElementById("demo");
-    if([minF,maxF,minV,maxV].some(function(x){return isNaN(x);})||maxV<=minV){ code.textContent="Werte prüfen (größter > kleinster Viewport)."; return; }
+    if([minF,maxF,minV,maxV].some(function(x){return isNaN(x);})||maxV<=minV){ css=""; code.textContent="Werte prüfen (größter > kleinster Viewport)."; return; }
     var minRem=minF/root, maxRem=maxF/root;
     // slope in px per px viewport
     var slope=(maxF-minF)/(maxV-minV);

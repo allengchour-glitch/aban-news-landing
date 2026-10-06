@@ -108,10 +108,11 @@ Authorization: Bearer DEIN_TOKEN</textarea>
   function ok(m){status.className="status ok";status.textContent="✓ "+m;}
   function bad(m){status.className="status bad";status.textContent="✗ "+m;}
   function unquote(s){s=s.trim();
-    if((s[0]==='"'&&s[s.length-1]==='"')||(s[0]==="'"&&s[s.length-1]==="'"))return s.slice(1,-1);
+    if(s.length>1&&s[0]==='"'&&s[s.length-1]==='"')return s.slice(1,-1).replace(/\\(["\\nr])/g,function(m,c){return c==="n"?"\n":c==="r"?"\r":c;});
+    if(s.length>1&&s[0]==="'"&&s[s.length-1]==="'")return s.slice(1,-1);
     return s;}
   function toj(text){
-    var o={},n=0;
+    var o={},n=0,dup=[];
     text.split("\n").forEach(function(line){
       var l=line.trim();
       if(!l||l[0]==="#")return;
@@ -119,9 +120,11 @@ Authorization: Bearer DEIN_TOKEN</textarea>
       if((m=l.match(/^([^:=]+?)\s*=\s*(.*)$/))){k=m[1].trim();v=unquote(m[2]);}
       else if((m=l.match(/^([^:=]+?)\s*:\s*(.*)$/))){k=m[1].trim();v=m[2].trim();}
       else return;
+      if(Object.prototype.hasOwnProperty.call(o,k)){if(dup.indexOf(k)<0)dup.push(k);}
       o[k]=v;n++;
     });
     if(!n)throw new Error("keine KEY=value- oder Header-Zeilen gefunden");
+    toj.dup=dup;
     return JSON.stringify(o,null,2);
   }
   function obj(text){
@@ -132,8 +135,9 @@ Authorization: Bearer DEIN_TOKEN</textarea>
   function toenv(text){
     var o=obj(text);
     return Object.keys(o).map(function(k){
-      var v=String(o[k]);
-      if(/\s|#|"/.test(v))v='"'+v.replace(/"/g,'\\"')+'"';
+      var raw=o[k];
+      var v=(raw!==null&&typeof raw==="object")?JSON.stringify(raw):String(raw);
+      if(/\s|#|"|\\/.test(v))v='"'+v.replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/\r/g,'\\r').replace(/\n/g,'\\n')+'"';
       return k+"="+v;
     }).join("\n");
   }
@@ -146,7 +150,7 @@ Authorization: Bearer DEIN_TOKEN</textarea>
   document.querySelectorAll("[data-op]").forEach(function(b){
     b.addEventListener("click",function(){
       var op=b.getAttribute("data-op");
-      try{out.value=ops[op](inp.value);ok(names[op]);}
+      try{toj.dup=[];out.value=ops[op](inp.value);ok(names[op]+(op==="toj"&&toj.dup.length?" — Achtung: doppelte Schlüssel, nur der letzte Wert bleibt: "+toj.dup.join(", "):""));}
       catch(e){out.value="";bad("Geht nicht: "+(e.message||e));}
     });
   });

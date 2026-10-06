@@ -94,7 +94,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="res"><div class="big" id="days">—</div><div class="sub" id="sub"></div></div>
     <div class="hl"><h3 id="hl-title">Feiertage</h3><div id="hl-list"></div></div>
-    <p class="note">Mo–Fr gezählt, Feiertage (angehakt) abgezogen. Gängige Auswahl je Kanton — regionale/halbe Feiertage können abweichen, einzeln anpassbar. Alles lokal.</p>
+    <p class="note">Mo–Fr gezählt, Feiertage (angehakt) abgezogen. Gängige Auswahl je Kanton inklusive der eigenen kantonalen Feiertage (Quelle: <a href="https://www.bj.admin.ch/dam/de/sd-web/MW4dthCLc4Nv/kant-feiertage.pdf">Bundesamt für Justiz, gesetzliche Feiertage der Kantone</a>). Gemeinden und Branchen können abweichen, jeder Tag ist einzeln abwählbar. Alles lokal.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -135,7 +135,15 @@ footer a{color:var(--muted)}
     allerheiligen:["Allerheiligen",function(y){return new Date(y,10,1);}],
     mariaempfaengnis:["Mariä Empfängnis",function(y){return new Date(y,11,8);}],
     weihnachten:["Weihnachten",function(y){return new Date(y,11,25);}],
-    stephan:["Stephanstag",function(y){return new Date(y,11,26);}]
+    stephan:["Stephanstag",function(y){return new Date(y,11,26);}],
+    republiqueNE:["Instauration de la République",function(y){return new Date(y,2,1);}],
+    naefels:["Näfelser Fahrt",function(y){var d=new Date(y,3,1);while(d.getDay()!==4)d.setDate(d.getDate()+1);var o=easter(y),palm=off(o,-7);if(d>=palm&&d<=off(o,1))d.setDate(d.getDate()+7);return d;}],
+    plebiscite:["Plébiscite jurassien",function(y){return new Date(y,5,23);}],
+    peterpaul:["San Pietro e Paolo",function(y){return new Date(y,5,29);}],
+    jeunegenevois:["Jeûne genevois",function(y){var d=new Date(y,8,1);while(d.getDay()!==0)d.setDate(d.getDate()+1);return off(d,4);}],
+    jeunefederal:["Lundi du Jeûne fédéral",function(y){var d=new Date(y,8,1);while(d.getDay()!==0)d.setDate(d.getDate()+1);return off(d,15);}],
+    bruderklaus:["Bruderklausenfest",function(y){return new Date(y,8,25);}],
+    restauration:["Restauration de la République",function(y){return new Date(y,11,31);}]
   };
   var BASE=["neujahr","auffahrt","nationalfeiertag","weihnachten"]; // landesweit gebräuchlich
   var KT={
@@ -144,9 +152,9 @@ footer a{color:var(--muted)}
     LU:["Luzern",["berchtold","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
     UR:["Uri",["dreikoenige","josef","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
     SZ:["Schwyz",["dreikoenige","josef","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
-    OW:["Obwalden",["karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    OW:["Obwalden",["bruderklaus","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
     NW:["Nidwalden",["josef","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
-    GL:["Glarus",["berchtold","karfreitag","ostermontag","pfingstmontag","allerheiligen","stephan"]],
+    GL:["Glarus",["naefels","berchtold","karfreitag","ostermontag","pfingstmontag","allerheiligen","stephan"]],
     ZG:["Zug",["berchtold","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
     FR:["Freiburg",["karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]],
     SO:["Solothurn",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]],
@@ -159,12 +167,12 @@ footer a{color:var(--muted)}
     GR:["Graubünden",["karfreitag","ostermontag","pfingstmontag","stephan"]],
     AG:["Aargau",["berchtold","karfreitag","ostermontag","pfingstmontag","stephan"]],
     TG:["Thurgau",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","stephan"]],
-    TI:["Tessin",["dreikoenige","josef","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
-    VD:["Waadt",["berchtold","karfreitag","ostermontag","pfingstmontag"]],
+    TI:["Tessin",["peterpaul","dreikoenige","josef","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    VD:["Waadt",["jeunefederal","berchtold","karfreitag","ostermontag","pfingstmontag"]],
     VS:["Wallis",["josef","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis"]],
-    NE:["Neuenburg",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag"]],
-    GE:["Genf",["karfreitag","ostermontag","pfingstmontag"]],
-    JU:["Jura",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]]
+    NE:["Neuenburg",["republiqueNE","berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag"]],
+    GE:["Genf",["jeunegenevois","restauration","karfreitag","ostermontag","pfingstmontag"]],
+    JU:["Jura",["plebiscite","berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]]
   };
   var WD=["So","Mo","Di","Mi","Do","Fr","Sa"];
   function pad(n){return String(n).padStart(2,"0");}

@@ -125,7 +125,7 @@ footer a{color:var(--muted)}
       html+='<div><span>Kosten pro km</span><b>'+proKm.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:3})+'</b></div>';
       html+='<div><span>Kosten dieser Tankfüllung</span><b>'+gesamt.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+'</b></div>';
     }
-    html+='<div><span>Reichweite je Tankfüllung</span><b>'+km.toLocaleString("de-DE",{maximumFractionDigits:0})+' km</b></div>';
+    html+='<div><span>Strecke mit dieser Tankmenge</span><b>'+km.toLocaleString("de-DE",{maximumFractionDigits:0})+' km</b></div>';
     extra.innerHTML=html;
   }
   ["liter","km","preis"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});

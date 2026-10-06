@@ -73,6 +73,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 .rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
 .rel a{color:var(--amber);text-decoration:none}
 .rel a:hover{text-decoration:underline}
+@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
 </style>
 <meta property="og:image" content="https://abannews.com/og/hypothek-rechner-schweiz.png">
 <meta property="og:image:width" content="1200">
@@ -91,7 +92,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 <main>
   <div class="answer-first">
     <strong>Faustregel Hypothek Schweiz</strong>
-    Mindestens <strong>20% Eigenkapital</strong> (davon max. 10% aus Pensionskasse/3a) · Die erste Hypothek beträgt max. <strong>65% des Kaufpreises</strong> (nicht amortisierungspflichtig) · Die zweite Hypothek (bis 80%) muss <strong>innerhalb von 15 Jahren</strong> amortisiert sein · Die jährliche Gesamtbelastung darf <strong>max. 33% des Bruttoeinkommens</strong> betragen (Tragbarkeitsregel der Banken).
+    Mindestens <strong>20% Eigenkapital</strong> (mindestens 10 % hart, also nicht aus der Pensionskasse) · Die erste Hypothek beträgt max. <strong>2/3 des Belehnungswerts</strong> (nicht amortisierungspflichtig) · Der Teil darüber (bis 80 %) muss <strong>innert höchstens 15 Jahren</strong> auf 2/3 amortisiert sein (<a href="https://www.finma.ch/de/~/media/finma/dokumente/dokumentencenter/myfinma/4dokumentation/selbstregulierung/sbvg_rl_hypofinanzierungen_20231213.pdf">SBVg-Richtlinien</a>) · Die jährliche Gesamtbelastung darf <strong>max. 33% des Bruttoeinkommens</strong> betragen (Tragbarkeitsregel der Banken).
   </div>
 
   <h2>Hypothek berechnen</h2>
@@ -120,19 +121,10 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
         <input type="number" id="zins1" value="2.0" min="0.1" max="10" step="0.05">
         <div class="hint">Aktuelle Richtwerte: 1.5–2.5% (Festhypothek)</div>
       </div>
-      <div class="field">
-        <label for="laufzeit">Laufzeit Festhypothek</label>
-        <select id="laufzeit">
-          <option value="15">15 Jahre</option>
-          <option value="20" selected>20 Jahre</option>
-          <option value="25">25 Jahre</option>
-          <option value="30">30 Jahre</option>
-        </select>
-      </div>
     </div>
 
     <div class="hyp2-section" id="hyp2-section">
-      <div class="hyp2-title">⬇️ 2. Hypothek (falls Belehnungsgrad &gt; 65%)</div>
+      <div class="hyp2-title">⬇️ 2. Hypothek (falls Belehnungsgrad über 2/3)</div>
       <div class="field2-grid">
         <div class="field">
           <label for="zins2">Zinssatz 2. Hypothek (%)</label>
@@ -144,8 +136,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
           <select id="amort">
             <option value="10">10 Jahre</option>
             <option value="15" selected>15 Jahre (CH-Standard)</option>
-            <option value="20">20 Jahre</option>
-          </select>
+                      </select>
         </div>
       </div>
     </div>
@@ -158,8 +149,8 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
       <div class="result-line"><span class="lbl">Eigenkapital</span><span class="val" id="r-ek">—</span></div>
       <div class="result-line"><span class="lbl">Eigenkapital-Anteil</span><span class="val" id="r-ek-pct">—</span></div>
       <div class="result-line"><span class="lbl">Hypothekarbetrag total</span><span class="val" id="r-hyp-total">—</span></div>
-      <div class="result-line"><span class="lbl">1. Hypothek (bis 65% des Kaufpreises)</span><span class="val" id="r-hyp1">—</span></div>
-      <div class="result-line" id="row-hyp2"><span class="lbl">2. Hypothek (65%–80%)</span><span class="val" id="r-hyp2">—</span></div>
+      <div class="result-line"><span class="lbl">1. Hypothek (bis 2/3 des Kaufpreises)</span><span class="val" id="r-hyp1">—</span></div>
+      <div class="result-line" id="row-hyp2"><span class="lbl">2. Hypothek (2/3 bis 80 %)</span><span class="val" id="r-hyp2">—</span></div>
       <div class="result-line" id="row-belehnung"><span class="lbl">Belehnungsgrad</span><span class="val" id="r-belehnung">—</span></div>
 
       <div class="result-section-title">Monatliche Kosten</div>
@@ -170,7 +161,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
       <div class="result-section-title">Jährliche Kosten &amp; Tragbarkeit</div>
       <div class="result-line"><span class="lbl">Gesamtbelastung / Jahr</span><span class="val" id="r-total-year">—</span></div>
-      <div class="result-line"><span class="lbl">Mindest-Bruttoeinkommen (33%-Regel)</span><span class="val" id="r-min-income">—</span></div>
+      <div class="result-line"><span class="lbl">Mindest-Bruttoeinkommen (Bank-Tragbarkeit: 5 % kalk. Zins + 1 % Nebenkosten + Amortisation, × 3)</span><span class="val" id="r-min-income">—</span></div>
       <div class="result-line" id="row-trag"><span class="lbl">Tragbarkeit</span><span class="val" id="r-trag-val">—</span></div>
 
       <div id="trag-box-div"></div>
@@ -233,7 +224,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
     </div>
     <div class="tip">
       <strong>💰 Indirekte Amortisation (3a)</strong>
-      <p>Statt direkter Schuldenrückzahlung zahlen Sie in die Säule 3a ein — und können diese bei Fälligkeit für die Amortisation nutzen. Steuerlich vorteilhaft: die Schuldzinsen bleiben abzugsfähig.</p>
+      <p>Statt direkter Schuldenrückzahlung zahlen Sie in die Säule 3a ein — und können diese bei Fälligkeit für die Amortisation nutzen. Steuerlich vorteilhaft, solange die Schuldzinsen abziehbar sind: bis Ende 2028; mit der Abschaffung des Eigenmietwerts ab 2029 fällt dieser Abzug für selbst bewohnte Liegenschaften weitgehend weg.</p>
     </div>
   </div>
 
@@ -260,10 +251,10 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
       <ul>
         <li>Kalkulatorische Jahreskosten bei 5%: CHF 32'000 Zinsen</li>
         <li>Plus 1% Unterhaltskosten: CHF 8'000</li>
-        <li>Plus Amortisation 2. Hypothek: ~CHF 10'000/Jahr</li>
-        <li>Total: ~CHF 50'000/Jahr → Mindest-Bruttoeinkommen ~CHF 150'000</li>
+        <li>Plus Amortisation 2. Hypothek (CHF 106'667 in 15 Jahren): CHF 7'111/Jahr</li>
+        <li>Total: CHF 47'111/Jahr → Mindest-Bruttoeinkommen rund CHF 141'000</li>
       </ul>
-      <p>Dieser Rechner zeigt die <strong>marktzinsbasierte</strong> Tragbarkeit. Für die Bankberechnung ist der kalkulatorische Satz massgebend.</p>
+      <p>Dieser Rechner zeigt beides: die monatlichen Kosten zum Marktzins und das Mindesteinkommen nach der Bankrechnung mit kalkulatorischem Zins (Annahme 5 %, Nebenkosten 1 %; einzelne Banken rechnen leicht anders).</p>
     </div>
   </details>
   <details>
@@ -279,7 +270,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
     <summary>Was bedeutet indirekte Amortisation über die Säule 3a?</summary>
     <div>
       <p>Bei der <strong>indirekten Amortisation</strong> zahlen Sie die Hypothek nicht direkt zurück. Stattdessen zahlen Sie regelmässig in ein <strong>Säule-3a-Konto</strong> (oder eine Lebensversicherung) ein. Bei Fälligkeit (Pensionierung oder Vertragsende) wird das angesparte Kapital für die Amortisation der Hypothek verwendet.</p>
-      <p><strong>Steuerlicher Vorteil:</strong> Die Hypothekschuld bleibt während der Laufzeit bestehen. Das bedeutet, die Schuldzinsen bleiben steuerlich abzugsfähig (Vermögenssteuer). Gleichzeitig reduzieren die 3a-Einzahlungen (max. CHF 7'258 p.a. für Angestellte, 2026) das steuerbare Einkommen.</p>
+      <p><strong>Steuerlicher Vorteil:</strong> Die Hypothekschuld bleibt während der Laufzeit bestehen. Die Schuldzinsen sind bis Ende 2028 vom steuerbaren Einkommen abziehbar, die Schuld vom Vermögen. Ab 2029 wird der Eigenmietwert abgeschafft (Volksabstimmung vom 28.09.2025), und damit entfällt der Schuldzinsabzug für das selbst bewohnte Eigenheim weitgehend; für Ersterwerbende gibt es einen befristeten, sinkenden Abzug (<a href="https://www.efd.admin.ch/de/abstimmung-reform-wohneigentumsbesteuerung">EFD</a>). Gleichzeitig reduzieren die 3a-Einzahlungen (max. CHF 7'258 p.a. für Angestellte, 2026) das steuerbare Einkommen.</p>
       <p>Nachteil: Die Schuld sinkt nicht im Laufe der Zeit. Bei der Auflösung wird das 3a-Kapital zu einem reduzierten Satz als Kapitalleistung besteuert. Lassen Sie sich individuell beraten — indirekte Amortisation ist nicht für jeden Haushalt optimal.</p>
     </div>
   </details>
@@ -319,10 +310,13 @@ function berechnen(){
   var ek=parseFloat(document.getElementById('eigenkapital').value)||0;
   var zins1=parseFloat(document.getElementById('zins1').value)||0;
   var zins2=parseFloat(document.getElementById('zins2').value)||0;
-  var amortJahre=parseInt(document.getElementById('amort').value)||15;
+  var amortJahre=Math.min(15,parseInt(document.getElementById('amort').value)||15); // SBVg: höchstens 15 Jahre
+  if(kaufpreis<=0){alert('Bitte einen Kaufpreis eingeben.');return;}
+  if(ek>=kaufpreis){alert('Das Eigenkapital deckt den Kaufpreis: keine Hypothek nötig.');return;}
+  ek=Math.max(0,ek);
 
   var hypTotal=kaufpreis-ek;
-  var hyp1max=kaufpreis*0.65;
+  var hyp1max=kaufpreis*2/3;
   var hyp1=Math.min(hypTotal,hyp1max);
   var hyp2=Math.max(0,hypTotal-hyp1);
   var belehnung=(hypTotal/kaufpreis)*100;
@@ -334,7 +328,8 @@ function berechnen(){
   var amortMo=amortJaehr/12;
   var totalMo=zins1mo+zins2mo+amortMo;
   var totalYear=totalMo*12;
-  var minIncome=totalYear*3;
+  // Bank-Tragbarkeit: kalkulatorischer Zins 5 % + Nebenkosten 1 % des Kaufpreises + Amortisation, höchstens 1/3 des Einkommens
+  var minIncome=(hypTotal*0.05+kaufpreis*0.01+amortJaehr)*3;
 
   // Display
   document.getElementById('r-kaufpreis').textContent=fmt(kaufpreis);
@@ -342,7 +337,7 @@ function berechnen(){
   document.getElementById('r-ek-pct').textContent=fmtPct(ekPct);
   document.getElementById('r-hyp-total').textContent=fmt(hypTotal);
   document.getElementById('r-hyp1').textContent=fmt(hyp1);
-  document.getElementById('r-hyp2').textContent=hyp2>0?fmt(hyp2):'keine (Belehnungsgrad ≤65%)';
+  document.getElementById('r-hyp2').textContent=hyp2>0?fmt(hyp2):'keine (Belehnung bis 2/3)';
   document.getElementById('r-belehnung').textContent=fmtPct(belehnung);
   document.getElementById('r-zins1-mo').textContent=fmt(zins1mo)+' / Mt.';
 
@@ -423,7 +418,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Enter')berechnen();}
       "name": "Was bedeutet indirekte Amortisation über die Säule 3a?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Statt direkter Schuldenrückzahlung zahlen Sie in ein Säule-3a-Konto ein. Bei Fälligkeit wird das angesparte Kapital für die Amortisation eingesetzt. Steuerlicher Vorteil: Die Hypothekschuld bleibt abzugsfähig, und 3a-Einzahlungen reduzieren das steuerbare Einkommen."
+        "text": "Statt direkter Schuldenrückzahlung zahlen Sie in ein Säule-3a-Konto ein. Bei Fälligkeit wird das angesparte Kapital für die Amortisation eingesetzt. Die 3a-Einzahlungen reduzieren das steuerbare Einkommen. Die Schuldzinsen sind bis Ende 2028 abziehbar; mit der Abschaffung des Eigenmietwerts ab 2029 fällt dieser Abzug für das selbst bewohnte Eigenheim weitgehend weg."
       }
     }
   ]

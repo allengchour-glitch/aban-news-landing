@@ -159,7 +159,8 @@ footer a{color:var(--muted)}
     var s="";
     if(ta===tb)s="Beide kosten dich gleich viel: "+chf(ta)+" pro Jahr.";
     else s="<strong>Franchise "+(ta<tb?fa:fb)+"</strong> ist bei "+chf(k)+" Kosten um <strong>"+chf(diff)+"/Jahr günstiger.</strong>";
-    if(be!==null)s+="<br><span style=\"color:var(--muted);font-size:.86rem\">Break-even: ab ca. "+chf(be)+" Jahreskosten lohnt sich die andere Variante.</span>";
+    if(be!==null){var unten=total(Math.max(0,be-10),fa,pa)<total(Math.max(0,be-10),fb,pb)?fa:fb, oben=unten===fa?fb:fa;
+      s+="<br><span style=\"color:var(--muted);font-size:.86rem\">Break-even bei ca. "+chf(be)+" Jahreskosten: darunter ist Franchise "+unten+" günstiger, darüber Franchise "+oben+".</span>";}
     document.getElementById("summary").innerHTML=s;
   }
   ["kosten","fa","pa","fb","pb"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});

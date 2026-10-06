@@ -28,7 +28,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wird mein Passwort übertragen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Prüfung läuft zu 100 % in deinem Browser. Dein Passwort wird nicht gesendet, nicht gespeichert und nicht protokolliert. Du kannst die Seite zur Sicherheit auch offline nutzen."}},
 {"@type":"Question","name":"Was macht ein Passwort stark?","acceptedAnswer":{"@type":"Answer","text":"Vor allem die Länge: 12–16+ Zeichen sind wichtiger als Sonderzeichen-Wirrwarr. Eine Mischung aus Groß-/Kleinbuchstaben, Zahlen und Symbolen erhöht die Vielfalt. Eine lange Passphrase aus mehreren zufälligen Wörtern ist gut merkbar und sehr stark."}},
-{"@type":"Question","name":"Wie wird die Knackzeit geschätzt?","acceptedAnswer":{"@type":"Answer","text":"Aus dem Zeichenraum (welche Zeichenarten vorkommen) und der Länge ergibt sich die Anzahl möglicher Kombinationen. Die Schätzung nimmt schnelles Offline-Raten an und ist eine grobe Orientierung, keine Garantie."}}
+{"@type":"Question","name":"Wie wird die Knackzeit geschätzt?","acceptedAnswer":{"@type":"Answer","text":"Aus dem Zeichenraum (welche Zeichenarten vorkommen) und der Länge ergibt sich die Anzahl möglicher Kombinationen. Die Schätzung nimmt schnelles Offline-Raten an (10 Milliarden Versuche pro Sekunde) und gilt nur für zufällig gewählte Zeichen. Häufige Wörter (z. B. Passwort, Sommer), Jahreszahlen, Folgen wie 1234 und Wiederholungen erkennt der Check und wertet sie ab: Wer ein Wörterbuchwort mit Zahl und Zeichen kombiniert, hat ein schwaches Passwort. Die Schätzung ist eine grobe Orientierung, keine Garantie."}}
 ]}
 </script>
 <style>
@@ -89,7 +89,7 @@ footer a{color:var(--muted)}
     <div class="meta" id="meta"></div>
     <div class="checks" id="checks"></div>
     <div class="safe"><strong>Faustregel:</strong> Länge schlägt Komplexität. 12–16+ Zeichen, pro Dienst ein eigenes Passwort, am besten aus einem Passwort-Manager. Niemals echte Passwörter auf fremden Seiten eingeben — hier ist es sicher, weil rein lokal.</div>
-    <p class="note">Schätzung = grobe Orientierung (Offline-Raten), keine Garantie. Kein Upload, kein Tracking.</p>
+    <p class="note">Schätzung = grobe Orientierung (Offline-Raten), keine Garantie. Die Knackzeit gilt nur für zufällig gewählte Zeichen; Wörter, Jahreszahlen und Folgen machen ein Passwort deutlich schwächer. Kein Upload, kein Tracking.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -117,22 +117,67 @@ footer a{color:var(--muted)}
     for(var i=0;i<u.length;i++){ if(sec>=u[i][1]){ var n=sec/u[i][1]; if(n>1e6) return Math.round(n).toLocaleString("de-DE")+" "+u[i][0]; return (n<10?n.toFixed(1):Math.round(n))+" "+u[i][0]; } }
     return "sofort";
   }
+  // häufige Wörter (klein, ohne Umlaute; Prüfung auch mit 1337-Ersetzungen)
+  var WOERTER=["passwort","password","passwd","kennwort","geheim","sommer","winter","herbst","fruehling","fruhling","hallo","hello","welcome","willkommen","admin","login","master","letmein","iloveyou","ichliebedich","schatz","liebe","sonne","blume","mausi","schalke","bayern","dortmund","borussia","fussball","football","dragon","monkey","qwertz","qwerty","asdfgh","asdf","yxcvbn","zxcvbn","test","user","benutzer","januar","februar","august","oktober","dezember","schweiz","deutschland","berlin","zuerich","zurich","michael","thomas","andreas","stefan","daniel","sabine","julia","anna"];
+  var LEET={"0":"o","1":"i","3":"e","4":"a","5":"s","7":"t","8":"b","@":"a","$":"s","!":"i"};
+  function muster(p){
+    var n=p.length, belegt=new Array(n).fill(false), bits=0, hinweis=[], wort=false;
+    var klein=p.toLowerCase().replace(/ä/g,"a").replace(/ö/g,"o").replace(/ü/g,"u").replace(/ß/g,"s");
+    var leet=klein.split("").map(function(c){return LEET[c]||c;}).join("");
+    function markiere(a,l,b){var neu=false;for(var k=a;k<a+l;k++){if(!belegt[k]){belegt[k]=true;neu=true;}}if(neu)bits+=b;return neu;}
+    var gefunden=[];
+    WOERTER.slice().sort(function(a,b){return b.length-a.length;}).forEach(function(w){
+      [klein,leet].forEach(function(s){var i=s.indexOf(w);while(i>=0){if(markiere(i,w.length,10)&&gefunden.indexOf(w)<0)gefunden.push(w);i=s.indexOf(w,i+1);}});
+    });
+    if(gefunden.length){wort=true;hinweis.push("Wörterbuchwort erkannt ("+gefunden.join(", ")+"), wird in Sekunden geknackt");}
+    var re=/(19|20)\d\d/g, r, jahr=false;
+    while((r=re.exec(p))){ if(markiere(r.index,4,7)) jahr=true; }
+    if(jahr) hinweis.push("Jahreszahl erkannt");
+    var folge=false;
+    for(var a=0;a<n;){var e=a+1,d=klein.charCodeAt(a+1)-klein.charCodeAt(a);
+      if(d===1||d===-1){while(e<n&&klein.charCodeAt(e)-klein.charCodeAt(e-1)===d)e++;}
+      if(e-a>=4){if(markiere(a,e-a,5))folge=true;a=e;}else a++;}
+    if(folge) hinweis.push("Zeichenfolge erkannt (z. B. 1234, abcd)");
+    var wdh=false, rr=/(.)\1{2,}/g;
+    while((r=rr.exec(p))){ if(markiere(r.index,r[0].length,Math.log(r[0].length*95)/Math.log(2))) wdh=true; }
+    if(wdh) hinweis.push("Wiederholung erkannt (z. B. aaa)");
+    var abgedeckt=belegt.filter(Boolean).length;
+    return {treffer:abgedeckt>0,abgedeckt:abgedeckt,bits:bits,hinweis:hinweis,wort:wort};
+  }
   function render(){
     var p=pw.value, n=p.length;
     var lower=/[a-z]/.test(p),upper=/[A-Z]/.test(p),dig=/[0-9]/.test(p),sym=/[^a-zA-Z0-9]/.test(p);
     var pool=(lower?26:0)+(upper?26:0)+(dig?10:0)+(sym?33:0);
     var fill=document.getElementById("fill"),verd=document.getElementById("verdict"),meta=document.getElementById("meta");
     if(!n){fill.style.width="0";verd.textContent="—";verd.style.color="var(--muted)";meta.textContent="";drawChecks(false,false,false,false,0);return;}
-    var entropy = n * (Math.log(pool||1)/Math.log(2));
+    var bitsZ = Math.log(pool||1)/Math.log(2);
+    var entropy = n * bitsZ;
+    // Muster: Wörterbuchwörter, Jahreszahlen, Folgen, Wiederholungen
+    var m = muster(p), hinweis = [];
+    if(m.treffer){
+      var eff = (n - m.abgedeckt) * bitsZ + m.bits;
+      if(eff < entropy) entropy = eff;
+      hinweis = m.hinweis;
+    }
+    // Passphrase: mehrere Wörter, getrennt durch Leerzeichen o. Ä.
+    var teile = p.split(/[\s\-_.,;+]+/).filter(function(t){return t.length;});
+    if(teile.length>=3 && teile.every(function(t){return /^[a-zA-ZäöüÄÖÜß]+$/.test(t);})){
+      var bitsW = teile.length * (Math.log(7776)/Math.log(2));
+      if(bitsW < entropy){ entropy = bitsW; hinweis.push("als Passphrase gewertet: "+teile.length+" Wörter aus einer Liste mit rund 7776 Wörtern ≈ "+bitsW.toFixed(0)+" Bit"); }
+    }
     // 10^10 Versuche/Sek (schnelles Offline-Cracking)
     var combos = Math.pow(2, entropy);
     var sec = combos/2/1e10;
     var score = Math.max(0, Math.min(100, Math.round(entropy/0.9)));
     var col = entropy<40?"var(--bad)":entropy<60?"var(--mid)":"var(--ok)";
     var label = entropy<28?"Sehr schwach":entropy<40?"Schwach":entropy<60?"Okay":entropy<80?"Stark":"Sehr stark";
+    if(m.wort && entropy>=28){ label="Schwach"; col="var(--bad)"; score=Math.min(score,40); }
     fill.style.width=score+"%"; fill.style.background=col;
     verd.textContent=label; verd.style.color=col;
-    meta.innerHTML="Länge: <strong>"+n+"</strong> · Zeichenraum: <strong>"+pool+"</strong> · geschätzte Knackzeit: <strong>"+human(sec)+"</strong>";
+    var zeit = m.wort ? "Sekunden (Wörterbuchwort erkannt)" : human(sec);
+    meta.innerHTML="Länge: <strong>"+n+"</strong> · Zeichenraum: <strong>"+pool+"</strong> · geschätzte Knackzeit: <strong>"+zeit+"</strong>"
+      +(hinweis.length?"<br>⚠ "+hinweis.join(" · "):"")
+      +"<br><small>Die Knackzeit stimmt nur für zufällig gewählte Zeichen bzw. Wörter. Erkannte Muster sind eingerechnet, aber nicht jedes Muster wird erkannt.</small>";
     drawChecks(n>=12,upper&&lower,dig,sym,n);
   }
   function drawChecks(lenOk,caseOk,dig,sym,n){

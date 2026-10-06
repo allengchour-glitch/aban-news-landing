@@ -90,11 +90,11 @@ footer a{color:var(--muted)}
       <div class="fld"><label for="wert">Ø Auftragswert</label><div class="unit"><input id="wert" type="number" inputmode="decimal" value="300"><span>CHF</span></div></div>
       <div class="fld"><label for="marge">Gewinn-Marge</label><div class="unit"><input id="marge" type="number" inputmode="decimal" value="40" step="1"><span>%</span></div></div>
       <div class="fld"><label for="budget">SEO-Budget / Monat</label><div class="unit"><input id="budget" type="number" inputmode="decimal" value="1500"><span>/Mt</span></div></div>
-      <div class="fld"><label for="repeat">Käufe pro Kunde / Jahr</label><div class="unit"><input id="repeat" type="number" inputmode="decimal" value="1" step="0.1"><span>×</span></div></div>
+      <div class="fld"><label for="repeat">Käufe pro Kunde (gesamt)</label><div class="unit"><input id="repeat" type="number" inputmode="decimal" value="1" step="0.1"><span>×</span></div></div>
     </div>
-    <div class="res"><div class="big" id="o-roi">—</div><div class="sub">ROI pro Monat (Gewinn ÷ SEO-Budget)</div></div>
+    <div class="res"><div class="big" id="o-roi">—</div><div class="sub">ROI je Monatsbudget (Gewinn ÷ SEO-Budget)</div></div>
     <div class="rows" id="rows"></div>
-    <p class="note">Kunden = Besucher × CR. Umsatz = Kunden × Auftragswert × Käufe/Kunde. Gewinn = Umsatz × Marge − Budget. ROI = Gewinn ÷ Budget × 100. Richtwert, keine Erfolgsgarantie.</p>
+    <p class="note">Kunden = Besucher × CR. Umsatz = Kunden × Auftragswert × Käufe pro Kunde (gesamt, auch spätere Wiederkäufe) — also der Umsatz der Neukunden eines Monats, nicht der Umsatz, der im selben Monat hereinkommt. Gewinn = Umsatz × Marge − Budget. ROI = Gewinn ÷ Budget × 100. Richtwert, keine Erfolgsgarantie.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -131,11 +131,11 @@ footer a{color:var(--muted)}
     var breakeven=(w*m/100*rep)>0 ? b/(w*m/100*rep) : NaN; // nötige Kunden, damit Gewinn 0
     var html="";
     html+='<div><b>Neue Kunden / Monat</b><span>'+kunden.toLocaleString("de-CH",{maximumFractionDigits:1})+'</span></div>';
-    html+='<div><b>Umsatz / Monat</b><span>'+chf(umsatz)+'</span></div>';
+    html+='<div><b>Umsatz aus Neukunden eines Monats (alle Käufe)</b><span>'+chf(umsatz)+'</span></div>';
     html+='<div><b>Deckungsbeitrag (× Marge)</b><span>'+chf(umsatz*m/100)+'</span></div>';
     html+='<div><b>Gewinn nach SEO-Budget</b><span>'+chf(gewinn)+'</span></div>';
     if(isFinite(breakeven))html+='<div><b>Break-even: nötige Kunden/Mt</b><span>'+breakeven.toLocaleString("de-CH",{maximumFractionDigits:1})+'</span></div>';
-    html+='<div><b>Gewinn / Jahr</b><span>'+chf(gewinn*12)+'</span></div>';
+    html+='<div><b>Gewinn aus 12 Monatsbudgets</b><span>'+chf(gewinn*12)+'</span></div>';
     rows.innerHTML=html;
   }
   ["traffic","cr","wert","marge","budget","repeat"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});

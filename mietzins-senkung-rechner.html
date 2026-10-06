@@ -89,8 +89,8 @@ footer a{color:var(--muted)}
   <section class="panel" id="tool">
     <div class="fld"><label for="miete">Aktueller Netto-Mietzins / Monat</label><div class="unit"><input id="miete" type="number" inputmode="decimal" value="2000" min="0"><span>CHF</span></div></div>
     <div class="cols">
-      <div class="fld"><label for="alt">Bisheriger Referenzzins</label><div class="unit"><input id="alt" type="number" inputmode="decimal" value="1.75" step="0.25"><span>%</span></div></div>
-      <div class="fld"><label for="neu">Neuer Referenzzins</label><div class="unit"><input id="neu" type="number" inputmode="decimal" value="1.25" step="0.25"><span>%</span></div></div>
+      <div class="fld"><label for="alt">Bisheriger Referenzzins</label><div class="unit"><input id="alt" type="number" inputmode="decimal" value="1.75" step="0.25"><span>%</span></div><div class="hint" style="font-size:.8rem;color:var(--muted)">Steht in deinem Mietvertrag oder der letzten Mietzinsanpassung (Beispielwert).</div></div>
+      <div class="fld"><label for="neu">Neuer Referenzzins</label><div class="unit"><input id="neu" type="number" inputmode="decimal" value="1.25" step="0.25"><span>%</span></div><div class="hint" style="font-size:.8rem;color:var(--muted)">Aktuell 1,25 % (BWO, gilt seit 2.9.2025, bestätigt am 1.9.2026; nächste Publikation 1.12.2026). <a href="https://www.bwo.admin.ch/de/referenzzinssatz">Quelle</a></div></div>
     </div>
     <div class="res"><div class="big" id="o-neu">—</div><div class="sub" id="o-sub">neuer Mietzins / Monat</div></div>
     <div class="rows" id="rows"></div>
@@ -109,7 +109,7 @@ footer a{color:var(--muted)}
     <p class="note">Eine HTML-Datei mit Anleitung, läuft offline in jedem Browser, auch auf dem Handy. Deine Angaben bleiben auf deinem Gerät. Planungshilfe, keine Rechtsberatung.</p>
     <a class="btn" id="paket-kauf" href="/shop.html">Mietzins-Paket Schweiz — CHF 14</a>
     <p class="note">Sofort-Download nach der Zahlung. <a href="/agb.html">AGB &amp; Widerruf</a></p>
-    <p class="note"><b>Alles zusammen günstiger:</b> Der <a href="/finanz-kompass-schweiz.html">Finanz-Kompass Schweiz</a> enthält Budget-Plan, Mietzins-Paket, Schulden-Plan und Hochzeits-Budget-Plan plus einen Gesamtplan mit Daten. CHF 29 statt 52.</p>
+    <p class="note"><b>Alles zusammen günstiger:</b> Der <a href="/finanz-kompass-schweiz.html">Finanz-Kompass Schweiz</a> enthält Budget-Plan, Mietzins-Paket, Schulden-Plan und Hochzeits-Budget-Plan plus einen Gesamtplan mit Daten. CHF 24 statt 52.</p>
   </section>
   <div class="cta"><strong>Passt dazu</strong>
     <p class="note" style="margin:.4rem 0 .8rem">für Wohnen &amp; Geld CH.</p>
@@ -229,6 +229,7 @@ footer a{color:var(--muted)}
     if(!isFinite(m)||m<0||!isFinite(alt)||!isFinite(neu)){big.textContent="—";sub.textContent="Miete & beide Zinssätze eingeben.";rows.innerHTML="";return;}
     if(neu>=alt){big.textContent=chf(m);sub.textContent="keine Senkung (Referenzzins nicht gesunken)";rows.innerHTML="";return;}
     var schritte=Math.round((alt-neu)/0.25);
+    if(schritte<1){big.textContent=chf(m);sub.textContent="keine Senkung: Der Referenzzins ändert sich nur in Schritten von 0,25 %";rows.innerHTML="";return;}
     var senkProz=-MietzinsEngine.zinsAnteil(alt,neu)*100;
     var neuMiete=m*(1-senkProz/100);
     var diff=m-neuMiete;

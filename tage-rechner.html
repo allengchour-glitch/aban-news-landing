@@ -102,7 +102,7 @@ footer a{color:var(--muted)}
     </div>
 
     <div class="out" id="out" aria-live="polite"></div>
-    <p class="note">Tipp: Werktage zählen Mo–Fr (ohne Feiertage). Alles lokal, kein Upload.</p>
+    <p class="note">Tipp: Werktage zählen Mo–Fr (ohne Feiertage), der Starttag zählt nicht mit. Fehlt bei einer Monatsfrist der Tag im Zielmonat (z. B. 31.1. + 1 Monat), gilt der letzte Tag dieses Monats (<a href="https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de#art_77">Art. 77 Abs. 1 Ziff. 3 OR</a>). Alles lokal, kein Upload.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -128,7 +128,7 @@ footer a{color:var(--muted)}
   function parse(id){var x=document.getElementById(id).value;if(!x)return null;var p=x.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
   function fmt(d){return WD[d.getDay()]+", "+d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();}
   function workdays(a,b){var s=new Date(Math.min(a,b)),e=new Date(Math.max(a,b)),n=0;
-    for(var t=new Date(s);t<=e;t.setDate(t.getDate()+1)){var w=t.getDay();if(w!==0&&w!==6)n++;}
+    for(var t=new Date(s.getFullYear(),s.getMonth(),s.getDate()+1);t<=e;t.setDate(t.getDate()+1)){var w=t.getDay();if(w!==0&&w!==6)n++;}
     return n;}
   function render(){
     var out=document.getElementById("out");
@@ -137,7 +137,7 @@ footer a{color:var(--muted)}
       if(!a||!b){out.innerHTML='<span style="color:#9aa3ad">Start- und Enddatum wählen.</span>';return;}
       var days=Math.round((b-a)/86400000);
       var abs=Math.abs(days);
-      var wd=workdays(a,b)-1; if(wd<0)wd=0;
+      var wd=workdays(a,b);
       out.innerHTML='<div class="big">'+abs+' Tag'+(abs===1?"":"e")+'</div>'+
         '<div style="margin-top:6px;color:#374151">davon ca. <strong>'+wd+' Werktage</strong> (Mo–Fr)</div>'+
         '<div style="color:#5c6773;font-size:.88rem;margin-top:4px">'+fmt(a)+' → '+fmt(b)+(days<0?' (Enddatum liegt davor)':'')+'</div>';
@@ -149,7 +149,7 @@ footer a{color:var(--muted)}
       var r=new Date(d);
       if(u==="d") r.setDate(r.getDate()+sign*n);
       else if(u==="w") r.setDate(r.getDate()+sign*n*7);
-      else r.setMonth(r.getMonth()+sign*n);
+      else { var tag=r.getDate(); r.setDate(1); r.setMonth(r.getMonth()+sign*n); var ende=new Date(r.getFullYear(),r.getMonth()+1,0).getDate(); r.setDate(Math.min(tag,ende)); }
       out.innerHTML='<div class="big">'+fmt(r)+'</div>'+
         '<div style="color:#5c6773;font-size:.88rem;margin-top:4px">ab '+fmt(d)+' '+(sign>0?"+":"−")+n+' '+(u==="d"?"Tage":u==="w"?"Wochen":"Monate")+'</div>';
     }

@@ -138,7 +138,7 @@ footer a{color:var(--muted)}
       var s2=distM(num("s"),document.getElementById("su").value);
       if(!isFinite(v2)||v2<=0||!isFinite(s2)){big.textContent="—";sub.textContent="Strecke und Geschwindigkeit (>0) eingeben.";return;}
       var sec=s2/v2;
-      var h=Math.floor(sec/3600),mn=Math.floor((sec%3600)/60),se=Math.round(sec%60);
+      var tot=Math.round(sec);var h=Math.floor(tot/3600),mn=Math.floor((tot%3600)/60),se=tot%60;
       big.textContent=(h>0?h+" h ":"")+(mn>0||h>0?mn+" min ":"")+se+" s";
       sub.textContent="= "+fmt(sec/3600,3)+" Stunden · "+fmt(sec,0)+" Sekunden";
     }

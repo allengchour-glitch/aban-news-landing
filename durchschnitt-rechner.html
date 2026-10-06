@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Was ist der Unterschied zwischen Mittelwert und Median?","acceptedAnswer":{"@type":"Answer","text":"Der Mittelwert ist die Summe aller Werte geteilt durch ihre Anzahl. Der Median ist der mittlere Wert, wenn man alle der Größe nach sortiert. Der Median ist robuster gegen Ausreißer — ein einzelner sehr großer Wert verzerrt den Mittelwert stärker."}},
-{"@type":"Question","name":"Wie gebe ich die Zahlen ein?","acceptedAnswer":{"@type":"Answer","text":"Getrennt durch Komma, Leerzeichen oder Zeilenumbruch — egal. Dezimalzahlen mit Punkt oder Komma werden erkannt. Der Rechner aktualisiert alle Kennzahlen sofort."}},
+{"@type":"Question","name":"Wie gebe ich die Zahlen ein?","acceptedAnswer":{"@type":"Answer","text":"Getrennt durch Komma, Leerzeichen oder Zeilenumbruch. Dezimalzahlen mit Punkt oder Komma werden erkannt, Tausender-Apostrophe (1'000) auch. Nur zwei Zahlen mit Komma ohne Leerzeichen («12,15») liest der Rechner als Dezimalzahl — setze dann ein Leerzeichen nach dem Komma. Der Rechner aktualisiert alle Kennzahlen sofort."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -114,7 +114,11 @@ footer a{color:var(--muted)}
   var inp=document.getElementById("nums");
   function fmt(n){ if(!isFinite(n))return "—"; return (Math.round(n*1e6)/1e6).toLocaleString("de-DE",{maximumFractionDigits:6}); }
   function parse(s){
-    return (s.match(/-?\d+(?:[.,]\d+)?/g)||[]).map(function(x){return parseFloat(x.replace(",","."));}).filter(function(x){return isFinite(x);});
+    s=s.replace(/(\d)['’](?=\d{3})/g,"$1");
+    // Nur Kommas als Trenner (keine Leerzeichen/Zeilen/;): ab zwei Kommas oder neben Punkten sind Kommas Trenner
+    var nurKomma=!/[\s;]/.test(s.trim()) && ((s.match(/,/g)||[]).length>=2 || /\./.test(s));
+    var re=nurKomma ? /-?\d+(?:\.\d+)?/g : /-?\d+(?:[.,]\d+)?/g;
+    return (s.match(re)||[]).map(function(x){return parseFloat(x.replace(",","."));}).filter(function(x){return isFinite(x);});
   }
   function set(id,v){ document.getElementById(id).textContent=v; }
   function render(){

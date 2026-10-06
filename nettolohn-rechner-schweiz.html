@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nettolohn Rechner Schweiz 2025 — AHV, BVG, Steuern online berechnen</title>
-<meta name="description" content="Schweizer Nettolohn Rechner: Brutto-Netto kostenlos berechnen (AHV 8.7 %, BVG, ALV, NBU). Kanton, Zivilstand &amp; Quellensteuer berücksichtigt. 2025.">
+<meta name="description" content="Schweizer Nettolohn Rechner: Brutto-Netto kostenlos berechnen (AHV/IV/EO 5,3 %, BVG, ALV, NBU). Optional mit Quellensteuer-Näherung. Werte 2026.">
 <link rel="canonical" href="https://abannews.com/nettolohn-rechner-schweiz.html">
 <meta property="og:title" content="Nettolohn Rechner Schweiz 2025 — Brutto-Netto berechnen">
-<meta property="og:description" content="Nettolohn Schweiz kostenlos berechnen: AHV 8.7 %, BVG, ALV, NBU und Quellensteuer-Näherung. Für Angestellte und Freelancer.">
+<meta property="og:description" content="Nettolohn Schweiz kostenlos berechnen: AHV/IV/EO 5,3 %, BVG, ALV, NBU und optional Quellensteuer-Näherung. Für Angestellte und Freelancer.">
 <meta property="og:type" content="article">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -48,6 +48,7 @@ summary::after{content:"＋";color:var(--amber)}
 details[open] summary::after{content:"－"}
 details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 .rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
+@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
 </style>
 <meta property="og:image" content="https://abannews.com/og/nettolohn-rechner-schweiz.png">
 <meta property="og:image:width" content="1200">
@@ -60,7 +61,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
   <div class="in">
     <div style="font-size:2.2rem;margin-bottom:8px">💼</div>
     <h1>Nettolohn Rechner Schweiz 2025</h1>
-    <p>Brutto-Netto online berechnen — AHV/IV/EO, BVG, ALV und Quellensteuer-Näherung (2025)</p>
+    <p>Brutto-Netto online berechnen — AHV/IV/EO, BVG, ALV und optional Quellensteuer-Näherung (Werte 2026)</p>
   </div>
 </div>
 <main>
@@ -93,7 +94,16 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
   </div>
   <div class="calc-row">
     <div class="field">
-      <label for="kanton">Kanton (Quellensteuer-Näherung)</label>
+      <label for="qst">Quellensteuerpflichtig?</label>
+      <select id="qst">
+        <option value="nein" selected>Nein (Schweizer, Ausweis C)</option>
+        <option value="ja">Ja (z. B. Ausweis B)</option>
+      </select>
+    </div>
+  </div>
+  <div class="calc-row">
+    <div class="field">
+      <label for="kanton">Kanton (nur für Quellensteuer)</label>
       <select id="kanton">
         <option value="ZH">Zürich (ZH)</option>
         <option value="BE">Bern (BE)</option>
@@ -110,9 +120,9 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
     <div class="field">
       <label for="bvg">BVG-Koordinationsabzug</label>
       <select id="bvg">
-        <option value="standard">Standard (CHF 26'460/Jahr)</option>
+        <option value="standard">Standard (CHF 26'460/Jahr, 2025/2026)</option>
         <option value="kein">Kein Abzug (eigenes Pensionskassen-Modell)</option>
-        <option value="halv">Halbierter Koordinationsabzug (Teilzeit)</option>
+        <option value="halv">An Beschäftigungsgrad angepasst (Teilzeit)</option>
       </select>
     </div>
   </div>
@@ -120,18 +130,18 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
   <div class="result-box" id="result">
     <div class="result-line"><span class="lbl">Bruttolohn</span><span class="val" id="r-brutto">—</span></div>
-    <div class="result-line deduct"><span class="lbl">AHV/IV/EO (8.7%)</span><span class="val" id="r-ahv">—</span></div>
-    <div class="result-line deduct"><span class="lbl">ALV (1.1%, bis CHF 148'200 Lohn)</span><span class="val" id="r-alv">—</span></div>
-    <div class="result-line deduct"><span class="lbl">NBUV / Unfallversicherung (ca. 0.5%)</span><span class="val" id="r-nbu">—</span></div>
-    <div class="result-line deduct"><span class="lbl">BVG Arbeitnehmer-Anteil (ca. 8–14%)</span><span class="val" id="r-bvg">—</span></div>
+    <div class="result-line deduct"><span class="lbl" id="l-ahv">AHV/IV/EO (5,3 %)</span><span class="val" id="r-ahv">—</span></div>
+    <div class="result-line deduct"><span class="lbl">ALV (1,1 %, bis CHF 148'200 Jahreslohn)</span><span class="val" id="r-alv">—</span></div>
+    <div class="result-line deduct"><span class="lbl">NBU-Prämie (Annahme 0,7 %, bis CHF 148'200)</span><span class="val" id="r-nbu">—</span></div>
+    <div class="result-line deduct"><span class="lbl" id="l-bvg">BVG Arbeitnehmer-Anteil (gesetzliches Minimum)</span><span class="val" id="r-bvg">—</span></div>
     <div class="result-line deduct"><span class="lbl">Quellensteuer (Näherung)</span><span class="val" id="r-qs">—</span></div>
     <div class="result-line netto"><span class="lbl">Nettolohn (Näherung)</span><span class="val" id="r-netto">—</span></div>
-    <p class="disclaimer">⚠️ Diese Berechnung ist eine <strong>Näherung</strong> und ersetzt keine offizielle Lohnabrechnung. BVG-Satz variiert je nach Pensionskasse und Lohnklasse. Quellensteuer-Näherung basiert auf kantonalen Durchschnittssätzen 2025 — für die genaue QST wende dich an die kantonale Steuerverwaltung.</p>
+    <p class="disclaimer">⚠️ Diese Berechnung ist eine <strong>Näherung</strong> und ersetzt keine offizielle Lohnabrechnung. BVG-Satz variiert je nach Pensionskasse und Lohnklasse. Gerechnet mit 12 Monatslöhnen, BVG als gesetzliches Minimum (viele Pensionskassen verlangen mehr). Die Quellensteuer-Näherung (nur wenn «Ja») basiert auf groben kantonalen Durchschnittssätzen — für die genaue QST wende dich an die kantonale Steuerverwaltung.</p>
   </div>
 </div>
 
 <h2>Was wird vom Lohn abgezogen?</h2>
-<p>In der Schweiz unterscheidet man zwischen Pflichtabzügen (gesetzlich vorgeschrieben) und freiwilligen Abzügen. Pflicht: AHV/IV/EO (8.7 % Arbeitnehmeranteil ab 2025), ALV (1.1 % auf erstem Lohnanteil bis CHF 148'200/Jahr), NBUV (Nichtberufsunfallversicherung, ca. 0.5–1 %, bei Vollzeit trägt Arbeitgeber BUUV). BVG (Pensionskasse): Arbeitnehmer zahlt i.d.R. den halben Beitrag — je nach Lohnklasse ca. 7–18 %.</p>
+<p>In der Schweiz unterscheidet man zwischen Pflichtabzügen (gesetzlich vorgeschrieben) und freiwilligen Abzügen. Pflicht: AHV/IV/EO (5,3 % Arbeitnehmeranteil, der Arbeitgeber zahlt nochmals 5,3 %, total 10,6 %), ALV (1,1 % bis CHF 148'200 Jahreslohn, darüber nichts), NBU (Nichtberufsunfall, je nach Versicherer, versichert bis CHF 148'200). BVG (Pensionskasse): Die gesetzlichen Altersgutschriften betragen je nach Alter 7–18 % des koordinierten Lohns, Arbeitnehmer und Arbeitgeber zusammen; der Arbeitnehmer trägt höchstens die Hälfte. Quellen: <a href="https://www.ahv-iv.ch/p/2.01.d">Merkblatt 2.01</a>, <a href="https://www.ahv-iv.ch/p/2.08.d">2.08</a>, <a href="https://www.bsv.admin.ch/de/altersvorsorge-beruflichen-vorsorge">BSV</a>, Stand 2026.</p>
 <p>Einkommenssteuer: Anders als in Deutschland wird sie in der Schweiz nicht direkt vom Lohn einbehalten, ausser bei Quellensteuer-Pflicht (Ausländer ohne Niederlassungsbewilligung C). Alle übrigen zahlen ihre Steuern selbst per Steuererklärung. Das macht den Vergleich zwischen Brutto und Netto in der Schweiz schwieriger.</p>
 
 <table>
@@ -139,10 +149,10 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
     <tr><th>Abzug</th><th>Satz (AN-Anteil)</th><th>Grundlage</th><th>Bemerkung</th></tr>
   </thead>
   <tbody>
-    <tr><td>AHV/IV/EO</td><td>8.7 % (ab 2025)</td><td>Gesamtlohn</td><td>Arbeitgeber zahlt nochmals 8.7 %</td></tr>
-    <tr><td>ALV</td><td>1.1 %</td><td>Lohn bis CHF 148'200/Jahr</td><td>Zusatzbeitrag 0.5 % auf Teil über 148'200</td></tr>
-    <tr><td>BVG (Pensionskasse)</td><td>ca. 8–14 %</td><td>Koordinierter Lohn</td><td>Variiert stark je nach Pensionskasse</td></tr>
-    <tr><td>NBUV (Nichtberufsunfall)</td><td>ca. 0.5–1.5 %</td><td>Lohn bis CHF 316'800/Jahr</td><td>Nur bei ≥ 8h/Woche Arbeit beim gleichen AG</td></tr>
+    <tr><td>AHV/IV/EO</td><td>5,3 %</td><td>Gesamtlohn, ohne Obergrenze</td><td>Arbeitgeber zahlt nochmals 5,3 %</td></tr>
+    <tr><td>ALV</td><td>1,1 %</td><td>Lohn bis CHF 148'200/Jahr</td><td>Darüber kein Beitrag (Solidaritätsbeitrag seit 2023 abgeschafft)</td></tr>
+    <tr><td>BVG (Pensionskasse)</td><td>mind. 3,5–9 %</td><td>Koordinierter Lohn (höchstens CHF 64'260)</td><td>Hälfte der Altersgutschrift 7–18 %; viele Kassen verlangen mehr</td></tr>
+    <tr><td>NBUV (Nichtberufsunfall)</td><td>ca. 0.5–1.5 %</td><td>Lohn bis CHF 148'200/Jahr</td><td>Nur bei ≥ 8h/Woche Arbeit beim gleichen AG</td></tr>
     <tr><td>Krankentaggeld (KTG)</td><td>ca. 0.3–0.8 %</td><td>Gesamtlohn</td><td>Je nach Arbeitgeber-Modell</td></tr>
     <tr><td>Quellensteuer</td><td>Variiert stark</td><td>Bruttolohn</td><td>Nur für QST-Pflichtige, kantonale Tarife</td></tr>
   </tbody>
@@ -157,7 +167,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
 <details>
   <summary>Was ist der Unterschied zwischen AHV-Pflicht und BVG-Pflicht?</summary>
-  <div>AHV (Alters- und Hinterlassenenversicherung) ist für alle Erwerbstätigen ab dem ersten Franken Lohn Pflicht — keine Einkommensschwelle, kein Mindestalter. BVG (Berufliche Vorsorge, 2. Säule) ist erst ab einem Jahreslohn von CHF 22'050 (2025) und ab Alter 17 obligatorisch. Teilzeitbeschäftigte unter dieser Schwelle sind nicht BVG-versichert. Obergrenze: BVG gilt bis CHF 90'720 koordinierter Lohn/Jahr — höhere Anteile werden nur mit überobligatorischen Modellen versichert.</div>
+  <div>Angestellte zahlen AHV-Beiträge ab dem 1. Januar nach dem 17. Geburtstag, grundsätzlich ab dem ersten Franken; Kleinlöhne bis CHF 2'500 im Jahr pro Arbeitgeber nur auf Wunsch. Ab dem Referenzalter gilt ein Freibetrag von CHF 1'400 im Monat. BVG (2. Säule) ist ab einem Jahreslohn von CHF 22'680 obligatorisch (2025/2026; 2027: 23'040). Versichert ist der koordinierte Lohn: Jahreslohn bis CHF 90'720 minus Koordinationsabzug CHF 26'460, also höchstens CHF 64'260. Höhere Löhne versichern nur überobligatorische Pläne.</div>
 </details>
 
 <details>
@@ -167,7 +177,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
 <details>
   <summary>Kann ich meinen Nettolohn erhöhen?</summary>
-  <div>Ja — durch legale Steueroptimierung: Freiwillige BVG-Einkäufe (3. Säule a, max. CHF 7'258/Jahr für Angestellte, CHF 36'288 für Selbständige) sind vollständig steuerbar abzugsfähig. Berufsauslagen (Fahrkosten, auswärtige Verpflegung, Weiterbildung) reduzieren das steuerbare Einkommen. Hypothekarschulden bei Wohneigentum sind abziehbar. Für Quellensteuer-Pflichtige kann eine Korrektur der Tarife bei der kantonalen Steuerverwaltung beantragt werden.</div>
+  <div>Ja — durch legale Steueroptimierung: Einzahlungen in die Säule 3a (mit Pensionskasse max. CHF 7'258 pro Jahr, ohne Pensionskasse 20 % des Erwerbseinkommens, höchstens CHF 36'288) und freiwillige Einkäufe in die Pensionskasse sind vom steuerbaren Einkommen abziehbar. Berufsauslagen (Fahrkosten, auswärtige Verpflegung, Weiterbildung) reduzieren das steuerbare Einkommen. Hypothekarschulden bei Wohneigentum sind abziehbar. Für Quellensteuer-Pflichtige kann eine Korrektur der Tarife bei der kantonalen Steuerverwaltung beantragt werden.</div>
 </details>
 
 <section style="background:var(--cream);border-radius:14px;padding:22px 24px;margin-top:32px;text-align:center">
@@ -183,52 +193,57 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
 <script>
 function chf(n){return 'CHF '+Math.round(n).toLocaleString('de-CH')}
+/* Werte 2026: AHV/IV/EO AN 5,3 % (Merkblatt 2.01), ALV 1,1 % bis 148'200 (2.08), UVG-Höchstlohn 148'200,
+   BVG Schwelle 22'680, Koordinationsabzug 26'460, obere Limite 90'720, min. koordiniert 3'780 (BSV) */
 function berechneNetto(){
   var brutto=parseFloat(document.getElementById('brutto').value)||0;
-  var pensum=parseFloat(document.getElementById('pensum').value)||100;
+  var pensum=Math.min(100,Math.max(1,parseFloat(document.getElementById('pensum').value)||100));
   var alter=parseInt(document.getElementById('alter').value)||35;
   var zivilstand=document.getElementById('zivilstand').value;
   var kanton=document.getElementById('kanton').value;
   var bvgModus=document.getElementById('bvg').value;
+  var qstPflicht=document.getElementById('qst').value==='ja';
   if(brutto<=0){alert('Bitte einen Bruttolohn eingeben.');return;}
-  // AHV/IV/EO
-  var ahv=brutto*0.087;
-  // ALV: 1.1% bis Jahresmaximum 148200/12=12350/Monat
-  var alvBasis=Math.min(brutto,12350);
-  var alv=alvBasis*0.011;
-  // NBU: ca 0.7% (Durchschnitt)
-  var nbu=brutto*0.007;
-  // BVG: koordinierter Lohn = Brutto - Koordinationsabzug 26460/12=2205/Monat
-  var bvgAnteil=0;
-  if(bvgModus!=='kein'){
-    var koordAbzug=bvgModus==='halv'?1102.5:2205;
-    var koordLohn=Math.max(0,brutto-koordAbzug);
-    // BVG-Satz nach Alter
-    var bvgSatz=(alter<25)?0:alter<35?0.07:alter<45?0.10:alter<55?0.15:0.18;
-    bvgAnteil=koordLohn*bvgSatz*0.5; // AN-Anteil ~50%
+  var rentner=alter>=65, jahr=brutto*12, MAXM=148200/12;
+  // AHV/IV/EO 5,3 %; ab Referenzalter Freibetrag 1'400/Monat
+  var ahvBasis=rentner?Math.max(0,brutto-1400):brutto;
+  var ahv=ahvBasis*0.053;
+  // ALV 1,1 % bis 148'200/Jahr; ab Referenzalter keine ALV
+  var alv=rentner?0:Math.min(brutto,MAXM)*0.011;
+  // NBU: Annahme 0,7 % bis UVG-Höchstlohn
+  var nbu=Math.min(brutto,MAXM)*0.007;
+  // BVG gesetzliches Minimum (Altersgutschrift, AN-Hälfte)
+  var bvgAnteil=0, koord=0;
+  if(bvgModus!=='kein'&&!rentner&&alter>=25&&jahr>=22680){
+    var abzug=bvgModus==='halv'?26460*pensum/100:26460;
+    koord=Math.max(3780,Math.min(jahr,90720)-abzug);
+    var satz=alter<35?0.07:alter<45?0.10:alter<55?0.15:0.18;
+    bvgAnteil=koord*satz*0.5/12;
+  } else if(bvgModus==='kein'&&!rentner&&alter>=25){
+    var satz2=alter<35?0.07:alter<45?0.10:alter<55?0.15:0.18;
+    koord=jahr; bvgAnteil=jahr*satz2*0.5/12;
   }
-  // Quellensteuer-Näherung (kantonale Durchschnittssätze ledig 2025)
-  var qstSaetze={ZH:0.12,BE:0.14,VD:0.16,GE:0.17,AG:0.11,LU:0.12,SG:0.11,BS:0.13,TI:0.12,VS:0.11};
-  var qstBase=qstSaetze[kanton]||0.13;
-  // Zivilstandsmodifikation
-  if(zivilstand==='verheiratet') qstBase*=0.85;
-  if(zivilstand==='kinder') qstBase*=0.78;
-  // Brutto-Staffel
-  if(brutto<4000) qstBase*=0.7;
-  else if(brutto<7000) qstBase*=0.9;
-  else if(brutto>12000) qstBase*=1.15;
-  var qs=brutto*qstBase;
-  var totalAbzug=ahv+alv+nbu+bvgAnteil+qs;
-  var netto=brutto-totalAbzug;
+  // Quellensteuer-Näherung nur für Quellensteuerpflichtige
+  var qs=0;
+  if(qstPflicht){
+    var qstSaetze={ZH:0.12,BE:0.14,VD:0.16,GE:0.17,AG:0.11,LU:0.12,SG:0.11,BS:0.13,TI:0.12,VS:0.11};
+    var qstBase=qstSaetze[kanton]||0.13;
+    if(zivilstand==='verheiratet') qstBase*=0.85;
+    if(zivilstand==='kinder') qstBase*=0.78;
+    if(brutto<4000) qstBase*=0.7; else if(brutto<7000) qstBase*=0.9; else if(brutto>12000) qstBase*=1.15;
+    qs=brutto*qstBase;
+  }
+  var netto=brutto-(ahv+alv+nbu+bvgAnteil+qs);
+  document.getElementById('l-ahv').textContent=rentner?'AHV/IV/EO (5,3 % nach Freibetrag CHF 1\'400)':'AHV/IV/EO (5,3 %)';
+  document.getElementById('l-bvg').textContent=rentner?'BVG (entfällt ab Referenzalter)':'BVG Arbeitnehmer-Anteil (Minimum, koordinierter Lohn '+chf(koord)+'/Jahr)';
   document.getElementById('r-brutto').textContent=chf(brutto);
   document.getElementById('r-ahv').textContent='−'+chf(ahv);
   document.getElementById('r-alv').textContent='−'+chf(alv);
   document.getElementById('r-nbu').textContent='−'+chf(nbu);
   document.getElementById('r-bvg').textContent='−'+chf(bvgAnteil);
-  document.getElementById('r-qs').textContent='−'+chf(qs);
+  document.getElementById('r-qs').textContent=qstPflicht?'−'+chf(qs):'nicht quellensteuerpflichtig';
   document.getElementById('r-netto').textContent=chf(netto);
-  var el=document.getElementById('result');
-  el.classList.add('show');
+  document.getElementById('result').classList.add('show');
 }
 </script>
 
@@ -250,7 +265,7 @@ function berechneNetto(){
       "name": "Was ist der Unterschied zwischen AHV-Pflicht und BVG-Pflicht?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "AHV ist für alle Erwerbstätigen ab dem ersten Franken Pflicht. BVG (2. Säule) ist erst ab einem Jahreslohn von CHF 22'050 (2025) und ab Alter 17 obligatorisch. Teilzeitbeschäftigte unter dieser Schwelle sind nicht BVG-versichert."
+        "text": "Angestellte zahlen AHV-Beiträge ab dem 1. Januar nach dem 17. Geburtstag, grundsätzlich ab dem ersten Franken (Kleinlöhne bis CHF 2'500 pro Jahr und Arbeitgeber nur auf Wunsch). BVG (2. Säule) ist ab einem Jahreslohn von CHF 22'680 obligatorisch (2025/2026). Versichert ist der koordinierte Lohn, höchstens CHF 64'260."
       }
     },
     {

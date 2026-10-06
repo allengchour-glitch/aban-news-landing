@@ -128,13 +128,16 @@ footer a{color:var(--muted)}
     var map={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}, total=0, prev=0;
     for(var i=s.length-1;i>=0;i--){ var v=map[s[i]]; if(v<prev)total-=v; else {total+=v;prev=v;} }
     // Rückprobe: nur gültig, wenn kanonische Schreibweise
+    if(/MMMM/.test(s)) return {value:total,canonical:false,ueber:true};
     if(toRoman(total)!==s) return {value:total,canonical:false};
     return {value:total,canonical:true};
   }
   function render(){
     var v=inp.value.trim();
     if(mode==="toRoman"){
-      var n=parseInt(v.replace(/[^\d]/g,""),10);
+      var z=v.replace(/[\s'’]/g,"");
+      if(/^\d{1,3}(\.\d{3})+$/.test(z)) z=z.replace(/\./g,"");
+      var n=/^\d+$/.test(z)?parseInt(z,10):NaN;
       if(isNaN(n)||n<1){ out.innerHTML='<span style="color:#9aa3ad">Ganze Zahl ≥ 1 eingeben.</span>'; last=""; return; }
       if(n>3999999){ out.innerHTML='<span class="err">Maximal 3 999 999.</span>'; last=""; return; }
       var r=bigRoman(n);
@@ -147,7 +150,7 @@ footer a{color:var(--muted)}
       if(!res){ out.innerHTML='<span class="err">Ungültige Zeichen — erlaubt sind I V X L C D M.</span>'; last=""; return; }
       last=String(res.value);
       out.innerHTML='<div class="big">'+res.value.toLocaleString("de-DE")+'</div>'+
-        (res.canonical?'':'<div class="note err" style="margin-top:6px">Hinweis: ungewöhnliche Schreibweise — kanonisch wäre '+toRoman(res.value)+'</div>');
+        (res.canonical?'':'<div class="note err" style="margin-top:6px">'+(res.ueber?'Hinweis: mehr als drei M hintereinander sind klassisch nicht erlaubt — die klassische Schreibweise reicht nur bis 3999 = MMMCMXCIX. Größere Zahlen schreibt man mit Überstrich (× 1000).':'Hinweis: ungewöhnliche Schreibweise — kanonisch wäre '+toRoman(res.value))+'</div>');
     }
   }
   document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){

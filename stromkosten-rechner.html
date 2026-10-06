@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wie berechne ich die Stromkosten eines Geräts?","acceptedAnswer":{"@type":"Answer","text":"Leistung in Watt mal Nutzungsstunden ergibt Wattstunden; geteilt durch 1000 sind das Kilowattstunden (kWh). Mal dem Strompreis pro kWh ergeben sich die Kosten. Der Rechner macht das für Tag, Monat und Jahr."}},
-{"@type":"Question","name":"Was kostet eine Kilowattstunde?","acceptedAnswer":{"@type":"Answer","text":"Der Strompreis schwankt je nach Anbieter und Land. In Deutschland liegt er häufig um 0,30–0,40 €/kWh, in der Schweiz teils darunter. Trage einfach deinen tatsächlichen Preis vom Vertrag oder der Abrechnung ein."}},
+{"@type":"Question","name":"Was kostet eine Kilowattstunde?","acceptedAnswer":{"@type":"Answer","text":"Der Strompreis schwankt je nach Anbieter und Land. Deutschland 2026: im Schnitt 37,0 ct/kWh für einen Haushalt mit 3.500 kWh/Jahr (BDEW-Strompreisanalyse, Stand Oktober 2026). Schweiz 2026: Median 27,7 Rp./kWh für einen typischen Haushalt mit 4.500 kWh/Jahr, 2027: 26,5 Rp./kWh (ElCom/Bund, Stand Oktober 2026). Trage einfach deinen tatsächlichen Preis vom Vertrag oder der Abrechnung ein."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -105,7 +105,7 @@ footer a{color:var(--muted)}
       </div>
     </div>
     <div class="out" id="out" aria-live="polite"></div>
-    <p class="note">1 kWh = 1000 Watt für eine Stunde. Strompreis aus deinem Vertrag eintragen. Alles lokal, kein Upload.</p>
+    <p class="note">1 kWh = 1000 Watt für eine Stunde. Strompreis aus deinem Vertrag eintragen. Richtwerte: Deutschland 2026 im Schnitt 37,0 ct/kWh (<a href="https://www.bdew.de/service/daten-und-grafiken/bdew-strompreisanalyse/" rel="noopener">BDEW</a>); Schweiz 2026 Median 27,7 Rp./kWh (<a href="https://www.admin.ch/de/newnsb/8nuE_fvwnfqCu8OHNOwKu" rel="noopener">ElCom/Bund</a>), 2027: 26,5 Rp./kWh (<a href="https://www.admin.ch/de/newnsb/1miE201yRzoA" rel="noopener">ElCom/Bund</a>). Stand: Oktober 2026. Alles lokal, kein Upload.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -139,7 +139,8 @@ footer a{color:var(--muted)}
     out.innerHTML="<table><tbody>"+
       '<tr><td>Kosten pro Jahr<span class="note"> ('+kwhJahr.toLocaleString("de-DE",{maximumFractionDigits:1})+" kWh)</span></td><td class=\"big\">"+eur(kostenJahr)+"</td></tr>"+
       "<tr><td>pro Monat</td><td>"+eur(kostenJahr/12)+"</td></tr>"+
-      "<tr><td>pro Tag</td><td>"+eur(kostenJahr/365)+"</td></tr></tbody></table>";
+      "<tr><td>Ø pro Kalendertag</td><td>"+eur(kostenJahr/365)+"</td></tr>"+
+      (mode==="watt"?"<tr><td>pro Nutzungstag</td><td>"+eur(num("watt")/1000*num("std")*preis)+"</td></tr>":"")+"</tbody></table>";
   }
   document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
     document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");

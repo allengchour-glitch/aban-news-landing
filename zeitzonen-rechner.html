@@ -144,8 +144,10 @@ footer a{color:var(--muted)}
     var d=dateEl.value, t=timeEl.value; if(!d||!t)return null;
     var dp=d.split("-"), tp=t.split(":");
     var guess=Date.UTC(+dp[0],+dp[1]-1,+dp[2],+tp[0],+tp[1],0);
+    // zwei Schritte: Versatz am geschätzten Moment, dann am korrigierten (Stunde um die Zeitumstellung)
     var off=tzOffset(new Date(guess),citySel.value);
-    return new Date(guess-off*60000);
+    var off2=tzOffset(new Date(guess-off*60000),citySel.value);
+    return new Date(guess-(off2!==off?off2:off)*60000);
   }
   function fmt(instant,tz){
     var dtf=new Intl.DateTimeFormat("de-DE",{timeZone:tz,weekday:"short",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});

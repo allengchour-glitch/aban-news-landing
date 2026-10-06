@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Was ist eine modulare Schriftgrößen-Skala?","acceptedAnswer":{"@type":"Answer","text":"Eine harmonische Reihe von Schriftgrößen, die durch ein festes Verhältnis (z. B. 1,25 = Major Third) aus einer Basisgröße entsteht. Jede Stufe ist die vorige mal dem Verhältnis. Das sorgt für ein stimmiges, professionelles Typo-System."}},
-{"@type":"Question","name":"px oder rem nutzen?","acceptedAnswer":{"@type":"Answer","text":"rem ist für Web meist besser, weil es mit den Nutzereinstellungen skaliert und damit barrierefreier ist. Der Generator gibt beide Werte aus; 1 rem entspricht hier deiner Basisgröße in px."}},
+{"@type":"Question","name":"px oder rem nutzen?","acceptedAnswer":{"@type":"Answer","text":"rem ist für Web meist besser, weil es mit den Nutzereinstellungen skaliert und damit barrierefreier ist. Der Generator gibt beide Werte aus; 1 rem = 16 px (Browser-Standard), daraus rechnet der Generator die rem-Werte."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -99,7 +99,7 @@ footer a{color:var(--muted)}
     <div class="scale" id="scale"></div>
     <div class="code" id="code"></div>
     <div class="row"><button type="button" class="btn" id="copy">📋 CSS-Variablen kopieren</button></div>
-    <p class="note">1 rem = Basisgröße. Stufen unter der Basis (small) sind enthalten. Alles lokal, kein Upload.</p>
+    <p class="note">1 rem = 16 px (Browser-Standard). Stufen unter der Basis (small) sind enthalten. Alles lokal, kein Upload.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -120,7 +120,7 @@ footer a{color:var(--muted)}
   <a href="/px-rem-umrechner.html">px-rem-Umrechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 <script>
 (function(){
-  var names=["small","base","md","lg","xl","2xl","3xl","4xl","5xl","6xl","7xl"];
+  var names=["small","base","md","lg","xl","2xl","3xl","4xl","5xl","6xl","7xl","8xl"];
   var base=document.getElementById("base"), ratio=document.getElementById("ratio"), steps=document.getElementById("steps");
   var scale=document.getElementById("scale"), code=document.getElementById("code");
   var cssText="";
@@ -131,7 +131,7 @@ footer a{color:var(--muted)}
     for(var i=0;i<=n;i++){ rows.push({name:names[i+1]||("step"+i),px:b*Math.pow(r,i)}); }
     scale.innerHTML=""; var css=[":root {"];
     rows.forEach(function(row){
-      var px=Math.round(row.px*100)/100, rem=Math.round(row.px/b*1000)/1000;
+      var px=Math.round(row.px*100)/100, rem=Math.round(row.px/16*1000)/1000;
       var line=document.createElement("div"); line.className="line";
       var fs=Math.min(px,52);
       line.innerHTML='<span class="lbl">'+row.name+' · '+px+'px / '+rem+'rem</span><span class="sample" style="font-size:'+fs+'px">Aa Beispiel</span>';

@@ -110,6 +110,7 @@ footer a{color:var(--muted)}
   var inp=document.getElementById("url"), err=document.getElementById("err");
   var partsBody=document.querySelector("#parts tbody"), paramsBody=document.querySelector("#params tbody");
   function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function dec(s){try{return decodeURIComponent(s);}catch(e){return s;}}
   function row(k,v){ return "<tr><th>"+k+"</th><td>"+(v?esc(v):"<span class='empty'>—</span>")+"</td></tr>"; }
   function render(){
     var raw=inp.value.trim(); err.textContent=""; partsBody.innerHTML=""; paramsBody.innerHTML="";
@@ -119,10 +120,10 @@ footer a{color:var(--muted)}
     try{ u=new URL(s); }catch(e){ err.textContent="Keine gültige URL."; return; }
     partsBody.innerHTML=
       row("Protokoll",u.protocol.replace(/:$/,""))+
-      row("Host",u.hostname)+
+      row("Host",u.hostname+(/(^|\.)xn--/.test(u.hostname)?" (Punycode, d. h. Domain mit Umlauten)":""))+
       row("Port",u.port||"(Standard)")+
-      row("Pfad",u.pathname)+
-      row("Anker (#)",u.hash.replace(/^#/,""))+
+      row("Pfad",dec(u.pathname))+
+      row("Anker (#)",dec(u.hash.replace(/^#/,"")))+
       (u.username?row("Benutzer",u.username):"");
     var entries=[];
     u.searchParams.forEach(function(val,key){ entries.push([key,val]); });
