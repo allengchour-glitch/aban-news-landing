@@ -63,6 +63,21 @@ ziel = {"BTC-USD": 0.5}
 x = AN.lauf([ziel, ziel, ziel, ziel], R, 1, 4)
 pruefe("Gewichte laufen zwischen Handelstagen frei", abs(x[1] - (0.5 * 1.1 / 1.05) * -0.1) < 1e-12, x)
 
+# Futures-Mechanik
+import futures as FU
+c = [100.0, 100.0, 100.0, 100.0]
+h = [100.0, 101.0, 101.0, 101.0]
+l = [100.0, 99.0, 60.0, 99.0]
+x, liq, geb, fund = FU.lauf([3.0] * 4, h, l, c, 1, 4, 0.0)
+pruefe("Futures: 3× Long, Tagestief −40 % → Konto weg", liq == 2, (liq, x))
+x, liq, geb, fund = FU.lauf([1.0] * 4, h, l, c, 1, 4, 0.0001)
+pruefe("Futures: 1× Long übersteht −40 %, zahlt Funding", liq is None and fund > 0 and abs(fund - 3 * 0.0003) < 1e-9, (liq, fund))
+x, liq, geb, fund = FU.lauf([-1.0] * 4, h, l, c, 1, 4, 0.0001)
+pruefe("Futures: Short bekommt Funding", fund < 0, fund)
+c2 = [100.0, 110.0, 121.0]
+x, liq, _, _ = FU.lauf([0.0, 1.0, 1.0], [100, 110, 121], [100, 110, 121], c2, 1, 3, 0.0)
+pruefe("Futures: Signal gilt erst ab dem Folgetag", abs(x[0]) < 1e-12 and x[1] > 0.09, x)
+
 # Broker gegen nachgebauten Alpaca-Server
 class Fake(BaseHTTPRequestHandler):
     log, positionen = [], []

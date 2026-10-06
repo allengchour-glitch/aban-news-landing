@@ -27,6 +27,36 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 - Keine Timing-Strategie ist klar besser als Zufall: Skill 78 % heisst, 22 % der zeitversetzten Zufallskopien waren besser.
 - Gegenprobe: Eine Regel, die den nächsten Tag kennt, erreicht 100 % Skill. Der Test findet echte Vorteile also.
 
+## Futures (Hebel) — ehrlich gerechnet
+
+`python3 tools/trading/krypto_bot/futures.py` rechnet Bitcoin-Perpetuals wie bei Binance Futures: Entscheidung am
+Tagesschluss, Gebühr 0,05 %, Funding (Longs zahlen, Shorts bekommen), Liquidation über das Tagestief bzw. -hoch.
+Stand 06.10.2026, Funding 0,01 % je 8 Stunden (in Boomphasen oft 0,03 %, dann noch schlechter für Longs):
+
+| Strategie | ab 2015 pro Jahr | ab 2022 pro Jahr | schlimmster Einbruch ab 2022 |
+|---|---|---|---|
+| Long 1× (wie Halten, plus Funding) | +47,5 % | +1,6 % | −73 % |
+| Long 2× | +24,1 % | −21,8 % | −94 % |
+| Long 3× | **Konto weg** (12.03.2020) | −51,7 % | −99 % |
+| Long 5× / 10× | **Konto weg** (Januar 2015) | −93,5 % / Konto weg | −100 % |
+| Trend 200 Long/Short 1× | +35,0 % | **+33,6 %** | −56 % |
+| Trend 200 Long/Short 2× | +7,2 % | +35,4 % | −86 % |
+| Nur Short unter 200-Tage-Schnitt 1× | −11,1 % | +7,6 % | −57 % |
+
+- **Hebel zerstört Geld.** Funding kostet Longs rund 11 % pro Jahr, und Schwankungen fressen bei Hebel überproportional
+  (−50 % und +50 % ergibt −25 %). Ab 3× war das Konto in einem einzigen Crash-Tag weg.
+- **Einziger Kandidat: Trend 200 Long/Short ohne Hebel.** Er schlug 95 % von 200 zeitversetzten Zufallskopien, in beiden
+  Zeiträumen. Aber: Der Vorsprung ab 2022 stammt vor allem aus einer einzigen Baisse (2022), ab 2015 lag er unter Halten,
+  und es wurden mehrere Regeln getestet. Das ist ein Hinweis, kein Beweis. Mit 2× Hebel stieg die Rendite kaum, der
+  Einbruch aber auf −86 %.
+- Gegenprobe: Eine Regel, die den nächsten Tag kennt, kommt ab 2022 auf über 50'000 % pro Jahr. Der Test findet echte
+  Vorteile also.
+- Tageskurse von Yahoo: An der Börse waren die Ausschläge innerhalb des Tages teils tiefer (März 2020). Echte Liquidationen
+  kämen eher früher.
+
+Ein Futures-Bot ist **nicht** gebaut: Der Schlüssel-Schutz im Binance-Anschluss verweigert absichtlich jeden Schlüssel mit
+Futures-Recht. Wer es trotzdem will, sollte zuerst Trend 200 Long/Short ohne Hebel im Testnetz laufen lassen.
+
 ## Regel
 
 Jeden Tag mit den Kursen bis gestern: Schwankung = EWMA der Tagesrenditen (λ 0,94), auf ein Jahr hochgerechnet.
@@ -77,6 +107,6 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 ## Prüfen
 
 ```
-python3 tools/trading/krypto_bot/test_krypto.py   # 15 Tests, inkl. nachgebautem Alpaca-Server
+python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 18 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 ```
