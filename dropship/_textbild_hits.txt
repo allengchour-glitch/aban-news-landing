@@ -17015,3 +17015,8 @@ gid://shopify/Product/16608491110791	29->3	Weihnachts-Schlittenkalender aus Schi
 gid://shopify/Product/16608491307399	46->0	Sofakissen in Chenille mit chinesischem Muster
 gid://shopify/Product/16608492716423	16->2	Handzangen-Set: Rund-, Flach- und Tschim-Zange
 gid://shopify/Product/16608493339015	22->0	Cartoon 3D Bauchkissen für Sofa und Bett
+gid://shopify/Product/16608566083975	27->0	Magnetischer Schweisshalter
+gid://shopify/Product/16608566739335	18->0	Stromadapter 18 V für Lithiumbatterien
+gid://shopify/Product/16608567525767	8->0	Baby-Buchweizen-Kissen
+gid://shopify/Product/16608568869255	168->0	Bambushemd Slim Fit mit Druck
+gid://shopify/Product/16608569590151	16->1	Kopfstützen-Lendenkissen mit Nackenpolster
