@@ -298,8 +298,9 @@ fi
 # Deshalb bekommt der Kosten-Backfill die erste Stunde nach dem Punkte-Reset (~16:00 UTC)
 # allein — das kostet den Grind 1,5 von 24 Stunden.
 VORRANG=0; VORRANG_ZEIT=0
-STD=$(date -u +%H); MIN=$(date -u +%M)
-if [ "$STD" = "16" ] || { [ "$STD" = "17" ] && [ "$MIN" -lt 30 ]; }; then VORRANG=1; VORRANG_ZEIT=1; fi
+# 06.10.2026: Fenster DIREKT nach dem Punkte-Reset (gemessen 00:00 UTC, nicht 16:00) — eine Stelle für alle Skripte.
+source "${REPO_AUTO:-$(dirname "$0")}/cj_vorrang_fenster.sh"
+if cj_vorrang_zeit; then VORRANG=1; VORRANG_ZEIT=1; fi
 # 03.09.2026: Vorrang auch auf Zuruf — dropship/_GRIND_PAUSE_BIS trägt eine UTC-Epoche; bis dahin ruht der
 # Grind, damit ein Prüflauf (z. B. CH-Versendbarkeit, Klasse #1016) den geteilten CJ-Eimer bekommt.
 # Vier Runner halten den Eimer sonst dauerhaft bei ~0 (gemessen: remaining 11 → 1 → 16900500 in 20 s).
@@ -313,7 +314,7 @@ fi
 # er startete 47× am 22.09. und verbrauchte die CJ-Punkte (Varianten-Wache: 324× «Insufficient API points»).
 # Jetzt: Grind-Runner ruhen bei beidem, die Kühlungen laufen nur im ECHTEN Zeitfenster (VORRANG_ZEIT).
 if [ "$VORRANG" = "1" ]; then
-  [ "$VORRANG_ZEIT" = "1" ] && echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren Kosten-Backfill + Bewertungen"
+  [ "$VORRANG_ZEIT" = "1" ] && echo "VORRANG-FENSTER ($CJ_FENSTER_TEXT): CJ-Punkte gehoeren Kosten-Backfill + Videos + Bewertungen"
   # Der Aufseher überspringt einen Lauf, dessen Log seit weniger als einer Stunde auf PAUSE
   # steht. Hat der Backfill kurz vor 16:00 wegen leerer Punkte pausiert, verlöre er dadurch
   # das halbe Vorrang-Fenster — also die Kühlung hier gezielt ablaufen lassen.
@@ -482,6 +483,8 @@ python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar 
 ( cd "$REPO" && timeout 120 python3 "$REPO_AUTO/fortura_bestell_engine.py" 2>/dev/null ) | grep -v "^FORTURA: 0 offen" || true
 # 29.09.2026 Betreiber «jeden tag ein verkauf machen»: Ziel sichtbar in jeder Meldung (fremde, nicht erstattete Käufe je Tag).
 python3 "$REPO_AUTO/verkauf_ziel.py" 2>/dev/null || echo "VERKAUF-ZIEL: unklar (Skript fehlt)"
+# 06.10.2026: misst die Punkte-Reset-Stunde an den Runner-Logs; ⚠️ wenn das Vorrang-Fenster nicht mehr dahinter liegt.
+python3 "$REPO_AUTO/cj_reset_wache.py" 2>/dev/null || echo "CJ-RESET: unklar (Wache fehlt)"
 # 01.10.2026 (Grow-Verhaltensberichte): Produktseiten mit Warenkorb ohne Kauf, 14 T — kürzester Weg zum nächsten Verkauf.
 TAGE=14 timeout 60 python3 "$REPO_AUTO/kaufwille_zeile.py" 2>/dev/null || echo "KAUFWILLE: unklar (Skript fehlt)"
 [ -f "$REPO_AUTO/../dropship/_gfeed_nachpruefen_2909.json" ] && python3 "$REPO_AUTO/gfeed_nachpruefen.py" --auswerten 2>/dev/null | sed 's/^/GOOGLE-VERSUCH /'

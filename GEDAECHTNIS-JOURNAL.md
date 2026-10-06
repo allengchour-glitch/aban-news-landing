@@ -36,6 +36,14 @@
 
 
 
+
+## 2026-10-06 11:00 UTC · ⏰ CJ-Vorrang-Fenster lag 16 h hinter dem Punkte-Reset
+GEMESSEN: Reset 00:00 UTC (Runner 23:08 leer, 00:09 liest; 20/37 Wechsel in Stunde 00, 0 in Stunde 16), Topf heute
+leer 04:09 (74'510). Fenster stand seit 15.08. fest auf 16:00 → Video-Nachfüller 05.10. 16:14 sofort 16900500, 0 Videos;
+Kosten-Nachtrag/Bewertungen dito. GETAN: `cj_vorrang_fenster.sh` (Stunde aus `dropship/_CJ_PUNKTE_RESET_UTC`=0, 90 min),
+engine_/fixer_keepalive lesen nur noch den Helfer; Wächter `cj_reset_wache.py` (6/6) druckt «CJ-RESET» stündlich, ⚠️ bei
+Abweichung. OFFEN: erster Lauf 07.10. 00:00 nachmessen (Videos > 0). Bericht `dropship/CJ-VORRANG-FENSTER-2026-10-06.md`.
+
 ## 2026-10-06 08:50 UTC · 🧁 Verbesserungsrunde: Backformen/Haarschneider unter «Hardware > Tools»
 GEMESSEN: 315 Neuimporte in 30 h, 65 mit Google-Kategorie Tools — CJ-Gruppe «Werkzeug & Heimwerken» bringt Küchen- und
 Pflegeware mit. `google_kategorie_umzug.py` hatte für Tools nur Werkzeug-Ziele. GETAN: 4 Kreuz-Regeln (Bakeware, Hair
@@ -18030,6 +18038,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-02 · 🧟 **«mach 1 bis 4»: 150× «Produktdetails doppelt» kam täglich zurück — Verursacher = PC-Aufgabe «LuxeMarketing» (`enrich_apparel_descriptions.mjs`, alter Branch CizQ6), erkennt Erledigtes nur an `ls-feed-details`, die Vereinigung entfernte genau das → Kommentar-Markierung im Block, 150 vereint; Gadgets ohne Raucherzubehör (Typ-Regel); `groessenwert_kauderwelsch.py`; Farbfeld aus Titel (nur ganzes deutsches Farbwort, 1'773).** Zombie ohne Container-Spur → Git-Verlauf aller Branches + PC-Skripte → `dropship/FILTER-FEINKATEGORIE-2026-10-02.md`
 - 2026-10-02 · 🧭 **«passe webseite alles an»: Hauptmenü «🎁 Geschenke & Weihnachten» an Platz 1 (Weihnachten, Sie/Ihn/Kinder, Hochzeit oben; neu Wimpern, Fahrzeuge & RC, LED-Strips; 183 Links geprüft, Backup `_hauptmenue_backup_2026-10-02.json`); Rotation: Weihnachten ab 01.10. (Lieferzeit 10–20 WT → bis 20.12.), zwei Saison-Reihen nach oben, Geschenk-Welten im Pool; live per WebFetch: Trend → Herbst → Halloween → Weihnachten.** Saisonfenster an der Lieferzeit ausrichten, nicht am Kalender → Journal 02.10.
 - 2026-10-02 · 🎁 **Tag 3+4 vorgezogen: Geschenk-Welten zeigten oben 22/24 Schmuck / 22/24 Uhren / 16/24 Babykleider (Zuordnung, nicht Sortierung) → `geschenk_unterwelten.py` (400 je Welt nach Warenart, reihum, täglich); 27 dünne Kategorien → 20 (7 Regeln erweitert, Rest kuratiert/Saison); `google_fein_ki` pausiert 6 h bei leerem Zweitprüfer-Kontingent statt Gemini zu bezahlen.** Nach `collectionUpdate` füllt Shopify asynchron — auf Soll-Menge warten, nicht auf «≥» → Journal 02.10.
 - 2026-10-02 · 🚚 **Gratisversand-Entscheid (Betreiber «entscheide du»): Versprechen = CHF 50 überall; Tarif ≥ 45 nach Rabatt bleibt (50 × 0,9, Bündelrabatt); Automatik-Rabatt «ab CHF 49» → «ab CHF 50», Code FREESHIP49 (0×) aus; Wächter OK.** 45 ist Technik, 50 ist das Versprechen — Texte nie auf 45 → Journal 02.10.
