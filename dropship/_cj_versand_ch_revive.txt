@@ -686,3 +686,6 @@
 15450850591105	keine-linie	e58-faltbare-hd-drohne-c013de
 15495119176065	keine-linie	leuchtende-halloween-party-maske-f9b978
 15497442623873	keine-linie	retro-handwarmer-powerbank-5000-mah-97ddfa
+15509383152001	keine-linie	wassertropfen-powerbank-handwarmer-f5f25e
+15525490950529	keine-linie	nachfullbares-feuerzeug-aus-metall-c167c7
+15525499339137	keine-linie	tofu-katzenstreu-5b2cdc
