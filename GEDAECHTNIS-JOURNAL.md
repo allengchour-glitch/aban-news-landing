@@ -35,6 +35,14 @@
 
 
 
+
+## 2026-10-06 08:50 UTC · 🧁 Verbesserungsrunde: Backformen/Haarschneider unter «Hardware > Tools»
+GEMESSEN: 315 Neuimporte in 30 h, 65 mit Google-Kategorie Tools — CJ-Gruppe «Werkzeug & Heimwerken» bringt Küchen- und
+Pflegeware mit. `google_kategorie_umzug.py` hatte für Tools nur Werkzeug-Ziele. GETAN: 4 Kreuz-Regeln (Bakeware, Hair
+Clippers, Nail Tools, Household Cleaning), erster Trockenlauf hätte Kerzen-/Epoxidformen zu Bakeware gemacht → Ausschluss
++ Kanarien 39/39; frischer Export, SCHARF 21 umgezogen, 0 Fehler; Aufseher läuft täglich. OFFEN: Shopify-Standardkategorie
+bleibt Tools (Shop-Filter «Kategorie»). Bericht `dropship/GOOGLE-KATEGORIE-WERKZEUG-2026-10-06.md`.
+
 ## 2026-10-05 20:40 · 📦 Fortura-Bestellautomat Stufe 1 — die XML-Muster (Opacc.ORDERS) kamen seit 22.07. nie
 
 Betreiber «jeder kauf muss auch automatisch auslösen bei fortuna». Gemessen: Fortura-Verkauf = Handbestellung im Portal; Ampel
