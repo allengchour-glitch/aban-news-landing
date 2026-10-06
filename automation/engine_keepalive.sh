@@ -483,6 +483,8 @@ python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar 
 ( cd "$REPO" && timeout 120 python3 "$REPO_AUTO/fortura_bestell_engine.py" 2>/dev/null ) | grep -v "^FORTURA: 0 offen" || true
 # 29.09.2026 Betreiber «jeden tag ein verkauf machen»: Ziel sichtbar in jeder Meldung (fremde, nicht erstattete Käufe je Tag).
 python3 "$REPO_AUTO/verkauf_ziel.py" 2>/dev/null || echo "VERKAUF-ZIEL: unklar (Skript fehlt)"
+# 06.10.2026: zeitlich begrenzte Aktion (abendaktion.py) nach Ablauf zurückstellen — Leiste + Warenkorb-Zeitbedingung; Rabatt läuft selbst aus.
+( cd "${REPO_AUTO%/automation}" && SCHARF=1 timeout 120 python3 "$REPO_AUTO/abendaktion.py" --aufraeumen 2>&1 | tail -1 ) || true
 # 06.10.2026: misst die Punkte-Reset-Stunde an den Runner-Logs; ⚠️ wenn das Vorrang-Fenster nicht mehr dahinter liegt.
 python3 "$REPO_AUTO/cj_reset_wache.py" 2>/dev/null || echo "CJ-RESET: unklar (Wache fehlt)"
 # 01.10.2026 (Grow-Verhaltensberichte): Produktseiten mit Warenkorb ohne Kauf, 14 T — kürzester Weg zum nächsten Verkauf.
