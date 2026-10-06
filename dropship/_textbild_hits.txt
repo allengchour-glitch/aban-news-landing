@@ -16974,3 +16974,13 @@ gid://shopify/Product/16603338408327	29->1	Slim-Fit Daunenjacke mit weisser Fede
 gid://shopify/Product/16603352760711	21->0	Spiegelleuchte zur Wandmontage mit Fernbedienung
 gid://shopify/Product/16603592556935	38->0	Rosenförmige Tischlampe in Weiss und Rosa
 gid://shopify/Product/16603594326407	20->2	Solarwandlampe Outdoor mit IP44
+gid://shopify/Product/16603738898823	33->3	Drahtloser Wasserleck-Melder
+gid://shopify/Product/16603739718023	17->0	Elektrische U-Zahnbürste mit USB-Ladefunktion
+gid://shopify/Product/16603765145991	8->0	Eismaschine
+gid://shopify/Product/16603986297223	62->0	Weihnachtsdeko: Solar-Santa-Lampe
+gid://shopify/Product/16604173697415	85->0	Portabler Mini-Barbecue-Grill mit Holzkohle
+gid://shopify/Product/16604585427335	38->1	Sandalen mit Schnallen und dicker Sohle
+gid://shopify/Product/16604589916551	26->0	Zehentrenner mit Strass-Schleife und Absatz, Satin
+gid://shopify/Product/16604905046407	17->0	USB-Stick mit Sprachfunktion
+gid://shopify/Product/16604907831687	19->0	Keramik-Teetassen und Teekanne
+gid://shopify/Product/16604927721863	68->0	Auto Fussmatte Leder
