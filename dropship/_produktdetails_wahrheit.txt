@@ -72305,3 +72305,7 @@
 15448092443009	material-floskel-entfernt	Patchwork Hoodie Pullover für Damen
 15448092475777	material-floskel-entfernt	Langarmshirt im Post-Apokalypse-Stil
 15448092508545	material-floskel-entfernt	Mesh-Cardigan mit Laternenärmeln
+15448092574081	material-floskel-entfernt	Lyocell Off-Shoulder Langarmshirt
+15448092606849	material-floskel-entfernt	Gestreiftes Langarmshirt im Color-Blocking-Stil
+15448092737921	material-floskel-entfernt	Langarm-Baselayer Top für Damen Slim-Fit
+15448092770689	farbe-floskel-entfernt,material-floskel-entfernt	Langarmshirt mit Blumenprint für Damen
