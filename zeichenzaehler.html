@@ -86,7 +86,7 @@ footer a{color:var(--muted)}
       <div class="stat"><b id="read">0 s</b><span>Lesezeit</span></div>
     </div>
     <div class="limits" id="limits"></div>
-    <p class="note">Lesezeit grob mit 200 Wörtern/Minute. „Sätze" zählt nach <code>. ! ?</code>. Die Limits sind gängige Richtwerte (können sich bei den Plattformen ändern) — keine Garantie. Alles lokal, kein Upload.</p>
+    <p class="note">Lesezeit grob mit 200 Wörtern/Minute. „Sätze" zählt nach <code>. ! ?</code>. X zählt gewichtet: Emojis je 2, jeder Link 23 (<a href="https://docs.x.com/fundamentals/counting-characters" rel="noopener">Quelle X</a>, Stand 2026-10). Eine SMS fasst 160 Zeichen nur ohne Emojis und Sonderzeichen ausserhalb des GSM-Zeichensatzes, sonst 70. Die Limits sind gängige Richtwerte (können sich bei den Plattformen ändern) — keine Garantie. Alles lokal, kein Upload.</p>
   </section>
   <div class="cta"><strong>Mehr Tools</strong>
     <p class="note" style="margin:.4rem 0 .8rem">fürs Texten &amp; Veröffentlichen.</p>
@@ -111,6 +111,25 @@ footer a{color:var(--muted)}
     ["Tweet / X",280],["Meta-Description",160],["Title-Tag (SEO)",60],
     ["LinkedIn-Post",3000],["Instagram-Caption",2200],["SMS",160]
   ];
+  // X zählt gewichtet (docs.x.com/fundamentals/counting-characters): jede URL 23,
+  // Emoji und Zeichen ausserhalb von U+0000–U+10FF (u. a. CJK) je 2, übrige 1.
+  function xCount(s){
+    var n=0;
+    s=s.replace(/https?:\/\/\S+/gi,function(){n+=23;return "";});
+    var segs=(typeof Intl!=="undefined"&&Intl.Segmenter)?Array.from(new Intl.Segmenter(undefined,{granularity:"grapheme"}).segment(s),function(x){return x.segment;}):Array.from(s);
+    segs.forEach(function(g){
+      if(/\p{Extended_Pictographic}/u.test(g)){n+=2;return;}
+      Array.from(g).forEach(function(c){
+        var cp=c.codePointAt(0);
+        n+=(cp<=0x10FF||(cp>=0x2000&&cp<=0x200D)||(cp>=0x2010&&cp<=0x201F)||(cp>=0x2032&&cp<=0x2037))?1:2;
+      });
+    });
+    return n;
+  }
+  // SMS: nur GSM-7-Zeichen → 160 pro SMS (^{}\\[~]|€ zählen 2); sonst Unicode → 70
+  var GSM="@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&'()*+,-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà",GSMX="^{}\\[~]|€";
+  function sms(t){var n=0,uni=false;Array.from(t).forEach(function(c){if(GSM.indexOf(c)>=0)n++;else if(GSMX.indexOf(c)>=0)n+=2;else uni=true;});
+    return uni?{n:Array.from(t).length,max:70}:{n:n,max:160};}
   function set(id,v){document.getElementById(id).textContent=v;}
   function run(){
     var t=inp.value;
@@ -124,13 +143,17 @@ footer a{color:var(--muted)}
     set("sentences",sentences);set("paras",paras);
     set("read",secs<60?secs+" s":Math.round(secs/60)+" min");
     var html="";
+    var xn=xCount(t), sm=sms(t);
     LIMITS.forEach(function(l){
-      var pct=Math.min(100,Math.round(chars/l[1]*100));
-      var over=chars>l[1];
+      var c=chars, max=l[1], name=l[0];
+      if(name==="Tweet / X")c=xn;
+      if(name==="SMS"){c=sm.n;max=sm.max;name=max===70?"SMS (mit Emoji/Sonderzeichen)":"SMS";}
+      var pct=Math.min(100,Math.round(c/max*100));
+      var over=c>max;
       var col=over?"var(--bad)":pct>85?"var(--amber)":"var(--ok)";
-      html+='<div class="lim"><span class="name">'+l[0]+'</span>'+
+      html+='<div class="lim"><span class="name">'+name+'</span>'+
         '<span class="track"><i style="width:'+pct+'%;background:'+col+'"></i></span>'+
-        '<span class="cnt" style="color:'+(over?"var(--bad)":"var(--ink2)")+'">'+chars+" / "+l[1]+'</span></div>';
+        '<span class="cnt" style="color:'+(over?"var(--bad)":"var(--ink2)")+'">'+c+" / "+max+'</span></div>';
     });
     document.getElementById("limits").innerHTML=html;
   }

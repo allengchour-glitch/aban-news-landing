@@ -116,8 +116,8 @@ footer a{color:var(--muted)}
   <h2 class="sec">Die Regeln: so viel Hebel ist erlaubt</h2>
   <p>Die ESMA begrenzt für Privatkunden in der EU den Hebel beim Eröffnen einer Position:</p>
   <ul style="margin:6px 0 10px 20px">
-    <li><b>30:1</b> für die wichtigsten Währungspaare</li>
-    <li><b>20:1</b> für andere Währungspaare, Gold und grosse Aktienindizes</li>
+    <li><b>30:1</b> für die Hauptwährungspaare, also Kombinationen aus USD, EUR, JPY, GBP, CAD und CHF</li>
+    <li><b>20:1</b> für andere Währungspaare (etwa AUD/USD), Gold und grosse Aktienindizes</li>
     <li>10:1 für andere Rohstoffe, 5:1 für Einzelaktien, 2:1 für Kryptowährungen</li>
   </ul>
   <p>Dazu kommen ein Schutz vor negativem Kontostand und eine <b>Zwangsschliessung</b>, sobald das Konto unter 50 % der Mindestmarge fällt (<a href="https://www.esma.europa.eu/press-news/esma-news/esma-adopts-final-product-intervention-measures-cfds-and-binary-options" target="_blank" rel="noopener">ESMA</a>). In der Schweiz braucht ein Anbieter eine Bewilligung der FINMA. Auf der <a href="https://www.finma.ch/de/finma-public/warnungen/warnliste/" target="_blank" rel="noopener">Warnliste der FINMA</a> stehen auffällig viele Namen mit „FX“ oder „Swiss“ darin, etwa „Swiss Bank FX“, „Fx Zurich“ oder „SwissFutureFX“. Ein Schweizer Name heisst nicht Schweizer Bewilligung.</p>
@@ -227,11 +227,15 @@ if(typeof module!=='undefined')module.exports=FX;
       +z('Abstand bis Zwangsschliessung (50 % Margin)',r.marginZuGross?'–':nf(r.pipsBisClose,0)+' Pips');
     var w=[];if(r.marginZuGross)w.push('Die Margin ist grösser als dein Konto: Diese Position kann dein Anbieter bei diesem Hebel gar nicht eröffnen. Stop weiter weg oder Risiko kleiner wählen.');
     else if(r.effHebel>o.hebel)w.push('Der effektive Hebel liegt über dem erlaubten Hebel. Der Anbieter würde die Position ablehnen.');
+    if(o.hebel>20&&!hauptpaar())w.push('Für '+$('paar').value+' erlaubt die ESMA Privatkunden höchstens 20:1. Hauptpaare sind nur Kombinationen aus USD, EUR, JPY, GBP, CAD und CHF.');
     if(o.risikoPct>2)w.push('Mehr als 2 % Risiko pro Trade: Fünf Verlust-Trades in Folge, was oft vorkommt, kosten dann rund '+nf(100-100*Math.pow(1-o.risikoPct/100,5),0)+' % des Kontos.');
     if(o.stopPips<5)w.push('Ein Stop unter 5 Pips liegt oft im Bereich des Spreads und wird schon durch normales Rauschen ausgelöst.');
     $('warn').innerHTML=w.map(function(t){return '<p class="opt" style="margin-top:10px">⚠️ '+t+'</p>';}).join('');}
-  $('paar').addEventListener('change',function(){$('kurs').value=BSP[this.value];$('kurs').step=quote()==='JPY'?'0.01':'0.0001';q2kFeld(true);calc();});
+  var HAUPT=['USD','EUR','JPY','GBP','CAD','CHF'];
+  function hauptpaar(){return HAUPT.indexOf(base())>=0&&HAUPT.indexOf(quote())>=0;}
+  $('paar').addEventListener('change',function(){$('kurs').value=BSP[this.value];if(!hauptpaar()&&$('hebel').value==='30')$('hebel').value='20';$('kurs').step=quote()==='JPY'?'0.01':'0.0001';q2kFeld(true);calc();});
   $('kw').addEventListener('change',function(){q2kFeld(true);calc();});
+  $('kurs').addEventListener('input',function(){if(base()===$('kw').value)q2kFeld(true);});
   ['konto','risiko','stop','kurs','q2k','hebel'].forEach(function(id){$(id).addEventListener('input',calc);$(id).addEventListener('change',calc);});
   q2kFeld(true);calc();
   var a=$('pruefstand-kauf');fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[];}).then(function(l){var p=(l||[]).filter(function(x){return x.slug==='strategie-pruefstand';})[0];if(p&&p.buy){a.href=p.buy;a.rel='noopener';a.textContent='Strategie-Prüfstand kaufen — '+p.price;}}).catch(function(){});

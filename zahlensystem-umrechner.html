@@ -105,6 +105,10 @@ footer a{color:var(--muted)}
   var fields=[document.getElementById("dec"),document.getElementById("bin"),document.getElementById("oct"),document.getElementById("hex")];
   var err=document.getElementById("err");
   var re={2:/^[01]+$/,8:/^[0-7]+$/,10:/^[0-9]+$/,16:/^[0-9a-fA-F]+$/};
+  function toBig(v,base){
+    var B=BigInt(base);
+    return v.toLowerCase().split("").reduce(function(acc,c){return acc*B+BigInt(parseInt(c,16));},BigInt(0));
+  }
   function setAll(n,except){
     fields.forEach(function(f){
       if(f===except)return;
@@ -119,16 +123,12 @@ footer a{color:var(--muted)}
     if(v===""){ fields.forEach(function(x){if(x!==f)x.value="";x.classList.remove("bad");}); return; }
     if(!re[base].test(v)){ f.classList.add("bad"); err.textContent="Ungültige Ziffer für dieses System."; return; }
     f.classList.remove("bad");
-    // BigInt für große Werte
-    var n;
-    try{ n=parseInt(v,base); }catch(_){ n=NaN; }
-    if(!isFinite(n)){ err.textContent="Zahl zu groß."; return; }
-    if(n>Number.MAX_SAFE_INTEGER){ err.textContent="Sehr große Zahl — Anzeige evtl. gerundet."; }
-    setAll(n,f);
+    // BigInt: exakt auch für große Werte
+    setAll(toBig(v,base),f);
   }
   fields.forEach(function(f){ f.addEventListener("input",onInput); });
   // init aus Dezimal
-  (function(){ var d=fields[0]; setAll(parseInt(d.value,10),d); })();
+  (function(){ var d=fields[0]; if(re[10].test(d.value.trim()))setAll(toBig(d.value.trim(),10),d); })();
 })();
 </script>
 </body>

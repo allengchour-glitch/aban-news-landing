@@ -108,7 +108,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="res" id="res"></div>
     <p class="err" id="err" hidden></p>
-    <p class="note">Arbeitet mit ganzen Zahlen. Bei Shift gibt B an, um wie viele Stellen verschoben wird. Alles lokal, kein Upload.</p>
+    <p class="note">Arbeitet mit ganzen Zahlen ohne Grössenbeschränkung (keine 32-Bit-Grenze). Bei Shift gibt B an, um wie viele Stellen verschoben wird. Alles lokal, kein Upload.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -134,8 +134,7 @@ footer a{color:var(--muted)}
     if(str==="")return null;
     var re = base===2?/^[01]+$/ : base===16?/^[0-9a-f]+$/ : /^\d+$/;
     if(!re.test(str))return null;
-    var n=parseInt(str,base);
-    return isNaN(n)?null:n;
+    return BigInt((base===2?"0b":base===16?"0x":"")+str);
   }
   function row(lab,val){return '<div class="rowr"><b>'+lab+'</b><span>'+val+'</span></div>';}
   function calc(){
@@ -146,16 +145,17 @@ footer a{color:var(--muted)}
     var op=document.getElementById("op").value, r, rest=null;
     switch(op){
       case "+": r=a+b;break; case "-": r=a-b;break; case "*": r=a*b;break;
-      case "/": if(b===0){res.innerHTML="";err.hidden=false;err.textContent="⚠️ Division durch 0 ist nicht definiert.";return;}
-        r=Math.floor(a/b);rest=a%b;break;
+      case "/": if(b===0n){res.innerHTML="";err.hidden=false;err.textContent="⚠️ Division durch 0 ist nicht definiert.";return;}
+        r=a/b;rest=a%b;break;
       case "and": r=a&b;break; case "or": r=a|b;break; case "xor": r=a^b;break;
-      case "shl": r=a<<b;break; case "shr": r=a>>b;break;
+      case "shl": case "shr":
+        if(b>4096n){res.innerHTML="";err.hidden=false;err.textContent="⚠️ Shift höchstens um 4096 Stellen.";return;}
+        r=op==="shl"?a<<b:a>>b;break;
     }
-    var html="";
-    if(r<0){ html+=row("Binär","− "+Math.abs(r).toString(2)); }
-    else html+=row("Binär", r.toString(2));
+    var html="", neg=r<0n, abs=neg?-r:r;
+    html+=row("Binär", (neg?"− ":"")+abs.toString(2));
     html+=row("Dezimal", r.toLocaleString("de-DE"));
-    html+=row("Hexadezimal", (r<0?"−0x"+Math.abs(r).toString(16).toUpperCase():"0x"+r.toString(16).toUpperCase()));
+    html+=row("Hexadezimal", (neg?"−0x":"0x")+abs.toString(16).toUpperCase());
     if(rest!==null)html+=row("Rest", rest.toString(2)+" (binär) · "+rest+" (dez)");
     res.innerHTML=html;
   }

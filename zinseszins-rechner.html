@@ -26,7 +26,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Was ist der Zinseszins-Effekt?","acceptedAnswer":{"@type":"Answer","text":"Zinsen werden mitverzinst: Erträge bleiben im Kapital und erwirtschaften im nächsten Jahr selbst wieder Zinsen. Über viele Jahre wächst das Guthaben dadurch nicht linear, sondern beschleunigt."}},
+{"@type":"Question","name":"Was ist der Zinseszins-Effekt?","acceptedAnswer":{"@type":"Answer","text":"Zinsen werden mitverzinst: Erträge bleiben im Kapital und werden selbst wieder verzinst. Der Rechner schreibt die Zinsen monatlich gut (Nominalzins ÷ 12). Über viele Jahre wächst das Guthaben dadurch nicht linear, sondern beschleunigt."}},
 {"@type":"Question","name":"Wird die Sparrate berücksichtigt?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der Rechner verzinst das Startkapital und addiert deine monatliche Sparrate, die ab Einzahlung anteilig mitverzinst wird. So siehst du Endkapital, eingezahlte Summe und reinen Zinsertrag getrennt."}},
 {"@type":"Question","name":"Ist das eine Anlageberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Rechner ist eine neutrale Modellrechnung mit einem festen Zinssatz und ohne Steuern oder Inflation. Reale Renditen schwanken. Alles läuft lokal im Browser, es wird nichts gesendet."}}
 ]}
@@ -87,7 +87,7 @@ footer a{color:var(--muted)}
       <div class="fld"><label for="jahre">Laufzeit (Jahre)</label><input id="jahre" type="number" value="15" min="1" max="80" step="1"></div>
     </div>
     <div class="out" id="out" aria-live="polite"></div>
-    <p class="note">Modellrechnung mit festem Zins, monatliche Sparrate, ohne Steuern/Inflation. Keine Anlageberatung. Alles lokal.</p>
+    <p class="note">Modellrechnung mit festem Zins, monatliche Sparrate, Zinsen monatlich gutgeschrieben (Nominalzins ÷ 12), ohne Steuern/Inflation. Keine Anlageberatung. Alles lokal.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>

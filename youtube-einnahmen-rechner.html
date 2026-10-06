@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Was ist RPM und CPM?","acceptedAnswer":{"@type":"Answer","text":"CPM ist, was Werbetreibende pro 1.000 Anzeigen-Einblendungen zahlen. RPM ist, was bei dir pro 1.000 Videoaufrufe nach YouTubes Anteil tatsächlich ankommt — die für Creator entscheidende Zahl. RPM schwankt stark nach Thema, Land und Jahreszeit."}},
-{"@type":"Question","name":"Wie zuverlässig ist die Schätzung?","acceptedAnswer":{"@type":"Answer","text":"Es ist eine grobe Orientierung, keine Garantie. Nur ein Teil der Aufrufe wird überhaupt monetarisiert, und Finanz- oder B2B-Themen erzielen ein Vielfaches von Unterhaltung. Der Rechner zeigt deshalb eine Spanne statt einer einzelnen Zahl."}},
+{"@type":"Question","name":"Wie zuverlässig ist die Schätzung?","acceptedAnswer":{"@type":"Answer","text":"Es ist eine grobe Orientierung, keine Garantie. Dass nur ein Teil der Aufrufe Werbung zeigt, steckt schon im RPM: YouTube rechnet ihn über alle Aufrufe, auch die nicht monetarisierten. Finanz- oder B2B-Themen erzielen ein Vielfaches von Unterhaltung. Der Rechner zeigt deshalb eine Spanne statt einer einzelnen Zahl."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -96,9 +96,9 @@ footer a{color:var(--muted)}
       <div class="fld"><label for="rpmLow">RPM von (€)</label><input id="rpmLow" type="number" value="1" min="0" step="0.5"></div>
       <div class="fld"><label for="rpmHigh">RPM bis (€)</label><input id="rpmHigh" type="number" value="3" min="0" step="0.5"></div>
     </div>
-    <div class="fld" style="margin-top:12px"><label for="monet">Anteil monetarisierter Aufrufe (%)</label><input id="monet" type="number" value="60" min="0" max="100" step="5"></div>
     <div class="out" id="out" aria-live="polite"></div>
-    <p class="note">RPM = Verdienst je 1.000 Aufrufe nach YouTube-Anteil. Grobe Schätzung, keine Garantie, keine Steuern. Alles lokal.</p>
+    <p class="note">RPM = Verdienst je 1.000 Aufrufe nach YouTube-Anteil. Er umfasst alle Aufrufe, auch die ohne Werbung, darum wird hier nichts mehr abgezogen (<a href="https://support.google.com/youtube/answer/9314357?hl=de" rel="noopener">YouTube-Hilfe zum RPM</a>). Grobe Schätzung, keine Garantie, keine Steuern. Alles lokal.</p>
+    <p class="note">Voraussetzung: Werbeeinnahmen gibt es erst im YouTube-Partnerprogramm, also ab 1.000 Abonnent*innen und zusätzlich 4.000 Stunden gültige öffentliche Wiedergabezeit in den letzten 12 Monaten oder 10 Millionen gültige Shorts-Aufrufe in den letzten 90 Tagen. Quelle: <a href="https://support.google.com/youtube/answer/72851?hl=de" rel="noopener">YouTube-Hilfe zum Partnerprogramm</a>, Stand: Oktober 2026.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -123,21 +123,19 @@ footer a{color:var(--muted)}
   function eur(v){return v.toLocaleString("de-DE",{minimumFractionDigits:0,maximumFractionDigits:0})+" €";}
   var thema=document.getElementById("thema");
   function render(){
-    var views=num("views"), monet=Math.max(0,Math.min(100,num("monet")))/100, out=document.getElementById("out");
+    var views=num("views"), out=document.getElementById("out");
     var low,high;
     if(thema.value==="custom"){ low=num("rpmLow"); high=num("rpmHigh"); }
     else { var p=thema.value.split(","); low=parseFloat(p[0]); high=parseFloat(p[1]); }
     if(high<low){ var t=low;low=high;high=t; }
-    var effViews=views*monet;
-    var mLow=effViews/1000*low, mHigh=effViews/1000*high;
+    var mLow=views/1000*low, mHigh=views/1000*high;
     out.innerHTML="<table><tbody>"+
       '<tr><td>Pro Monat (Spanne)</td><td class="big">'+eur(mLow)+" – "+eur(mHigh)+"</td></tr>"+
       "<tr><td>Pro Jahr</td><td>"+eur(mLow*12)+" – "+eur(mHigh*12)+"</td></tr>"+
-      "<tr><td>Monetarisierte Aufrufe</td><td>"+Math.round(effViews).toLocaleString("de-DE")+"</td></tr>"+
       "<tr><td>RPM-Annahme</td><td>"+low.toLocaleString("de-DE")+" – "+high.toLocaleString("de-DE")+" €</td></tr></tbody></table>";
   }
   thema.addEventListener("change",function(){ document.getElementById("customBox").style.display=thema.value==="custom"?"grid":"none"; render(); });
-  ["views","monet","rpmLow","rpmHigh"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
+  ["views","rpmLow","rpmHigh"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
   render();
 })();
 </script>

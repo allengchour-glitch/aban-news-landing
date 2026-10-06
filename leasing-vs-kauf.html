@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wie wird verglichen?","acceptedAnswer":{"@type":"Answer","text":"Über dieselbe Laufzeit: Beim Leasing zählen Anzahlung plus alle Monatsraten (am Ende gibst du das Auto zurück, kein Eigentum). Beim Kauf zählt der Kaufpreis minus der geschätzte Restwert am Ende (du behältst bzw. verkaufst das Auto) — optional plus Finanzierungszinsen. So werden die echten Netto-Kosten vergleichbar."}},
-{"@type":"Question","name":"Was ist der Restwert?","acceptedAnswer":{"@type":"Answer","text":"Der voraussichtliche Verkaufswert deines gekauften Autos am Ende der Laufzeit. Er ist eine Schätzung — viele Autos sind nach 3–4 Jahren noch rund 50–60 % wert. Trag deinen realistischen Wert ein, er beeinflusst das Ergebnis stark."}},
+{"@type":"Question","name":"Was ist der Restwert?","acceptedAnswer":{"@type":"Answer","text":"Der voraussichtliche Verkaufswert deines gekauften Autos am Ende der Laufzeit. Er ist eine Schätzung — schau für dein Modell bei Occasions-Inseraten nach. Trag deinen realistischen Wert ein, er beeinflusst das Ergebnis stark."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert. Versicherung, Wartung und Steuern sind in beiden Fällen ähnlich und hier nicht enthalten."}}
 ]}
 </script>
@@ -102,7 +102,7 @@ footer a{color:var(--muted)}
       <div class="opt" id="ok"><h3>🔑 Kauf</h3><div class="big" id="ok-big">—</div><div class="small" id="ok-small"></div><div id="ok-tag"></div></div>
     </div>
     <div class="summary" id="summary"></div>
-    <p class="note">Leasing-Kosten = Anzahlung + Rate × Monate. Kauf-Kosten = Kaufpreis − Restwert (+ einfacher Zins auf den Kaufpreis über die Laufzeit, falls finanziert). Richtwert; Versicherung/Wartung/Steuer nicht enthalten.</p>
+    <p class="note">Leasing-Kosten = Anzahlung + Rate × Monate. Kauf-Kosten = Kaufpreis − Restwert (+ Zinsen eines Ratenkredits über den Kaufpreis mit monatlichen Raten über die Laufzeit, falls finanziert). Richtwert; Versicherung/Wartung/Steuer nicht enthalten.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -130,7 +130,8 @@ footer a{color:var(--muted)}
     var sum=document.getElementById("summary");
     if([j,lanz,lrate,kp,kr].some(function(x){return !isFinite(x);})){sum.textContent="Bitte Felder ausfüllen.";return;}
     var leasing=lanz+lrate*12*j;
-    var zins=isFinite(kz)?kp*(kz/100)*j:0;       // einfacher Zins über Laufzeit
+    var zins=0;                                  // Zinsen eines Ratenkredits (Annuität) über den Kaufpreis
+    if(isFinite(kz)&&kz>0&&kp>0){var i=kz/100/12,n=Math.round(12*j);if(n>0){var rate=kp*i/(1-Math.pow(1+i,-n));zins=rate*n-kp;}}
     var kauf=kp-kr+zins;
     document.getElementById("ol-big").textContent=chf(leasing);
     document.getElementById("ok-big").textContent=chf(kauf);

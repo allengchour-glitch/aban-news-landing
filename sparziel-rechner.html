@@ -126,7 +126,7 @@ footer a{color:var(--muted)}
     out.innerHTML="<table><tbody>"+
       '<tr><td>Monatliche Sparrate<span class="note"> ('+n+" Monate)</span></td><td class=\"big\">"+eur(pmt)+"</td></tr>"+
       "<tr><td>Selbst eingezahlt</td><td>"+eur(eingezahlt)+"</td></tr>"+
-      '<tr><td>davon Zinsen</td><td><span style="color:#059669">'+eur(Math.max(0,zinsen))+"</span></td></tr>"+
+      '<tr><td>Zinsertrag</td><td><span style="color:#059669">'+eur(Math.max(0,zinsen))+"</span></td></tr>"+
       "<tr><td>Zielbetrag</td><td>"+eur(ziel)+"</td></tr></tbody></table>";
   }
   ["ziel","jahre","start","zins"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});

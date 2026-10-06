@@ -112,8 +112,9 @@ footer a{color:var(--muted)}
 (function(){
   var mode="addtime";
   function parseDur(v){v=(""+v).trim();if(!v)return null;
-    if(v.indexOf(":")>=0){var p=v.split(":");var h=parseInt(p[0],10),m=parseInt(p[1],10);
-      if(isNaN(h)||isNaN(m))return null;return h*60+m;}
+    if(v.indexOf(":")>=0){var neg=/^[-−]/.test(v);v=v.replace(/^[-−]\s*/,"");
+      var p=v.split(":");var h=parseInt(p[0],10),m=parseInt(p[1],10);
+      if(isNaN(h)||isNaN(m)||h<0||m<0)return null;return (neg?-1:1)*(h*60+m);}
     var n=parseFloat(v.replace(",","."));if(isNaN(n))return null;return Math.round(n);}
   function parseTime(v){if(!v)return null;var p=v.split(":");if(p.length<2)return null;
     var h=+p[0],m=+p[1];if(isNaN(h)||isNaN(m))return null;return h*60+m;}
