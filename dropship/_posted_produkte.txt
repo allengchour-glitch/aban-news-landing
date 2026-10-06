@@ -151,3 +151,5 @@ slug:2-in-1-glatteisen-lockenstab-mit-display-590400
 name:2in1glätteisenlockenstabmit
 slug:warme-touchscreen-handschuhe-fur-ski-und-velo
 slug:damenstiefel-aus-vollnarbenleder-mit-weicher-s
+slug:bruder-man-tgs-lkw-mit-abroll-fga03767
+name:brudermantgslkwmitabroll
