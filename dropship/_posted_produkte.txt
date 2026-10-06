@@ -160,3 +160,5 @@ slug:warme-wasserdichte-high-top-winterschuhe-fur-d
 slug:franzosische-bulldogge-tasse
 slug:kostum-hexe-schwarz-weiss-fgssor9436
 name:kostümhexeschwarzweiss
+slug:gefutterter-kapuzenpullover-mit-reissverschlus
+slug:bodenstativ-mit-led-ringlicht-fur-livestreams
