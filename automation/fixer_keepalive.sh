@@ -168,6 +168,22 @@ md5sum "$0" 2>/dev/null | cut -d' ' -f1 > /tmp/_fixer_version
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
+  # 06.10.2026: FORTURA-BESTAND ZUERST. Gemessen: Claim 16:37, PAUSE 16:42 (Shopify antwortete nicht), danach 3,5 h kein
+  # zweiter Versuch — der Aufseher loggte je Container-Stunde nur ~5 min (18:09–18:13, 19:08–19:12) und erreichte den Block
+  # bei Zeile ~2260 nie vor dem nächsten Neustart. Bestand ist Kundenschutz; der Block selbst ist billig (Start im Hintergrund).
+  # 📦 FORTURA-BESTAND (04.10.2026 neu): Anspruch (claim, 2 h) getrennt vom Erfolg (stamp, 20 h — setzt fortura_bestand_taeglich.sh
+  # bei FERTIG). Gemessen 04.10.: zwei Läufe starben still (06:18, 08:30), still_gestorben sah den zweiten nicht (Log-Zeit ≥ Boot),
+  # Bestand 36 h eingefroren. Mit dem Claim holt sich ein toter Lauf nach 2 h von selbst nach — ohne Neustart-Erkennung, ohne 3/Tag.
+  # Ersetzt den bisherigen Block «FB=/tmp/fortura_bestand.stamp … fi».
+  FB=/tmp/fortura_bestand.stamp; FBC=/tmp/fortura_bestand.claim; FBL=/tmp/fortura_bestand.log
+  if [ -f /tmp/fortura_env.sh ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FBC" 2>/dev/null || echo 0) )) -gt 7200 ] \
+     && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fortura_bestand_taeglich\.sh$/ {f=1} END{exit(f?0:1)}'; then
+    touch "$FBC"
+    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> "$FBL" 2>&1 & )
+    echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet (letzter Erfolg vor $(( ( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) ) / 3600 )) h)"
+  fi
   # ⚠️ HERZSCHLAG GLEICH ZU RUNDENBEGINN (29.08.2026). Bis heute stand er nur GANZ AM ENDE
   # der Runde (vor dem sleep 120). Eine Runde dauert aber laenger als die 10-Minuten-Schwelle,
   # gegen die engine_keepalive prueft — allein die 13 Reiniger werden mit je 10 s Abstand
@@ -2256,19 +2272,7 @@ KLT=/tmp/test_klingen_tor.log
     ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; exec bash automation/bewertungen_nachholen.sh" >> "$BN" 2>&1 & )
     echo "$(date -u +%H:%M) Bewertungen nachholen: fortgesetzt"
   fi
-  # 📦 FORTURA-BESTAND (04.10.2026 neu): Anspruch (claim, 2 h) getrennt vom Erfolg (stamp, 20 h — setzt fortura_bestand_taeglich.sh
-  # bei FERTIG). Gemessen 04.10.: zwei Läufe starben still (06:18, 08:30), still_gestorben sah den zweiten nicht (Log-Zeit ≥ Boot),
-  # Bestand 36 h eingefroren. Mit dem Claim holt sich ein toter Lauf nach 2 h von selbst nach — ohne Neustart-Erkennung, ohne 3/Tag.
-  # Ersetzt den bisherigen Block «FB=/tmp/fortura_bestand.stamp … fi».
-  FB=/tmp/fortura_bestand.stamp; FBC=/tmp/fortura_bestand.claim; FBL=/tmp/fortura_bestand.log
-  if [ -f /tmp/fortura_env.sh ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$FBC" 2>/dev/null || echo 0) )) -gt 7200 ] \
-     && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fortura_bestand_taeglich\.sh$/ {f=1} END{exit(f?0:1)}'; then
-    touch "$FBC"
-    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> "$FBL" 2>&1 & )
-    echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet (letzter Erfolg vor $(( ( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) ) / 3600 )) h)"
-  fi
+  # 📦 FORTURA-BESTAND → seit 06.10.2026 am RUNDENBEGINN (siehe dort).
   SF=/tmp/storefront_auftrag.stamp
   if [ $(( $(date +%s) - $(stat -c %Y "$SF" 2>/dev/null || echo 0) )) -gt 72000 ]; then
     mkdir -p "$REPO/auftraege/offen"
