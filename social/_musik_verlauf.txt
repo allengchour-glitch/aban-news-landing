@@ -296,3 +296,4 @@
 2026-10-06T14:18:04.943Z	luxe-epic-fantasy.wav	22	haustier	cjreel-1601129173983178752	stimme:nein	anteil
 2026-10-06T14:19:35.695Z	luxe-orchestra.wav	18	allgemein	cjreel-1604658817084698624	stimme:nein	anteil
 2026-10-06T14:21:15.805Z	luxe-epic-hero.wav	46	allgemein	cjreel-63196286-E043-40BB-825C-52A06FE26A79	stimme:nein	anteil
+2026-10-06T15:10:29.826Z	luxe-epic-anime.wav	4.75	allgemein	cjreel-1604036681487888384	stimme:ja	azure:de-CH-JanNeural
