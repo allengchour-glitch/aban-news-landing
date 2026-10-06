@@ -4674,3 +4674,7 @@ floral-strandkleid-638800	2607060209501639700	16	7.15	ok	landeseite
 versatiler-kleid-611400	2607060117351612100	16	6.77	ok	landeseite
 blumenapfel-611300	2607060032311611900	16	7.43	ok	landeseite
 schwarzes-oder-blaues-kleid-mit-sequinen-622400	2607051431371623000	16	8.79	ok	landeseite
+blauer-halsausschnitt-rock-604400	2607051425581605000	16	8.11	ok	landeseite
+langarmliger-maxi-rock-637000	2607051420311637600	16	9.07	ok	landeseite
+langarm-dress-609300	2607051416141600300	16	7.17	ok	landeseite
+orangefarbene-sommerkleid-609700	2607051326451600300	16	8.79	ok	landeseite

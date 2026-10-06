@@ -50,6 +50,14 @@ QUELLE: Open-Weight-Videomodell LTX 2.5 (BEHAUPTUNG: seit 08/2026, 1,6 Mio. Down
 starke Grafikkarte». GEMESSEN: Container ohne GPU (nvidia-smi fehlt), Hetzner-Server 4 GB ohne GPU → lokal nicht lauffähig.
 Reels kommen weiter aus echten CJ-Produktvideos (zeigt das echte Produkt; KI-Video kann Ware erfinden — Trikot-Falle Regel 4).
 
+## 2026-10-06 21:50 UTC · ➕ Zusatzkonten aktiv: +2'000 Lagerprüfungen/Tag mit eigenem Kontingent
+
+Betreiber «beide reaktiviert» → CJ5602869 + CJ5603488: getAccessToken + product/query ok. GEMESSEN get_account_settings: je Konto
+`/product/query` **1'000/Tag** (auch getInventoryByPid, queryBySku je 1'000), qpsLimit 100 — eigenes Kontingent, nicht der Grind-
+Punktetopf des Hauptkontos. `cj_lager_abgleich.zusatz_abfrage()`: Zusatzkonten zuerst (je ≥ 1,1 s), erschöpft/gesperrt → Konto
+aus dem Lauf, dann Hauptkonto über cj_takt. DRY 190 Produkte: 3 Varianten Bestand 0 (Samt-Cap Rosa/Blau/Khaki — gegen CJ
+nachgeprüft: 0, im Shop kaufbar) → SCHARF CAP 1800 gestartet. Kein Bestellweg über die Zusatzkonten (nur Lesen).
+
 ## 2026-10-06 21:30 UTC · 🔌 CJ-MCP angebunden (Nachtrag 21:40: Zusatzkonten nach Betreiber «cj an» mit frischem Token weiter 1600014 «API access disabled» — QUELLE (Recherche, unbelegt): neue Konten brauchen Shop-Autorisierung/Verifizierung bzw. Kontostufe; Auth (getAccessToken) geht trotzdem) — aber KEIN Weg am Punktetopf vorbei
 
 Betreiber gab den MCP-Schlüssel (Hauptkonto CJ5452995) und zwei Zusatzkonten (CJ5602869, CJ5603488; API- + MCP-Schlüssel) —

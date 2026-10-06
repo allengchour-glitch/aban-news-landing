@@ -127,6 +127,75 @@ def ledger():
     return zuletzt, eigene
 
 
+# ── Zusatzkonten (Betreiber 06.10. «beide reaktiviert»): GEMESSEN get_account_settings je Konto: /product/query 1000/Tag,
+#    eigenes Kontingent, unabhängig vom Grind-Punktetopf des Hauptkontos. Schlüssel nur /tmp/cj_konten.env (600), Tokens
+#    /tmp/cj_konten_token.json (gültig bis 2027-04). Je Konto ≥ 1,1 s Abstand; Kontingent-/Sperrmeldung → Konto für diesen Lauf weg.
+import threading as _th
+_KONTEN, _KLOCK = None, _th.Lock()
+
+
+def _konten():
+    global _KONTEN
+    if _KONTEN is not None:
+        return _KONTEN
+    _KONTEN = []
+    try:
+        env = {l.split("=", 1)[0]: l.split("=", 1)[1].strip().strip("'") for l in open("/tmp/cj_konten.env") if "=" in l and not l.startswith("#")}
+    except Exception:
+        return _KONTEN
+    try:
+        tok = json.load(open("/tmp/cj_konten_token.json"))
+    except Exception:
+        tok = {}
+    import subprocess
+    for n in ("2", "3"):
+        key = env.get(f"CJ{n}_API_KEY")
+        if not key:
+            continue
+        t = (tok.get(n) or {}).get("accessToken")
+        if not t:
+            try:
+                d = json.loads(subprocess.run(["curl", "-s", "-m", "30", "-X", "POST",
+                    "https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken", "-H", "Content-Type: application/json",
+                    "-d", json.dumps({"apiKey": key})], capture_output=True, text=True).stdout)
+                t = d["data"]["accessToken"]; tok[n] = d["data"]
+                old = os.umask(0o077); json.dump(tok, open("/tmp/cj_konten_token.json", "w")); os.umask(old)
+            except Exception:
+                continue
+        _KONTEN.append({"n": n, "t": t, "zuletzt": 0.0, "aktiv": True})
+    return _KONTEN
+
+
+def zusatz_abfrage(product_sku):
+    """→ (data|None, grund). None + 'kein-konto' = alle Zusatzkonten erschöpft → Hauptkonto nehmen."""
+    import subprocess
+    while True:
+        with _KLOCK:
+            frei = [k for k in _konten() if k["aktiv"]]
+            if not frei:
+                return None, "kein-konto"
+            k = min(frei, key=lambda x: x["zuletzt"])
+            warte = k["zuletzt"] + 1.1 - time.time()
+            k["zuletzt"] = max(time.time(), k["zuletzt"] + 1.1)
+        if warte > 0:
+            time.sleep(warte)
+        out = subprocess.run(["curl", "-s", "-m", "40", "-H", "CJ-Access-Token: " + k["t"],
+            f"https://developers.cjdropshipping.com/api2.0/v1/product/query?productSku={product_sku}&features=enable_inventory"],
+            capture_output=True, text=True).stdout
+        try:
+            d = json.loads(out)
+        except Exception:
+            return None, "netz"
+        msg = str(d.get("message") or "")
+        if str(d.get("code")) in ("1600200", "1600201") or "Too Many" in msg:
+            time.sleep(1.5); continue
+        if "quota" in msg.lower() or "Insufficient" in msg or "disabled" in msg or str(d.get("code")) in ("1600014", "16900500"):
+            with _KLOCK:
+                k["aktiv"] = False
+            print(f"  Zusatzkonto {k['n']} erschöpft/gesperrt: {msg[:80]}", flush=True); continue
+        return (d.get("data") if isinstance(d.get("data"), dict) else {}), f"konto{k['n']} code {d.get('code')} {msg[:30]}"
+
+
 def main():
     import cj_varianten_wache as w          # gemeinsamer CJ-Takt, Token, Drossel (gleiches cj() wie die Varianten-Wache)
     export_holen()
@@ -168,6 +237,9 @@ def main():
                         return pid, shop_v, {}, "cj-kennt-nicht"
                     time.sleep(2 * (versuch + 1))
             return pid, shop_v, None, f"mcp {fehler[:50]}"
+        data, grund = zusatz_abfrage(ps)            # Zusatzkonten zuerst (eigenes Kontingent)
+        if grund != "kein-konto":
+            return pid, shop_v, data, grund
         d = w.cj(f"/api2.0/v1/product/query?productSku={ps}&features=enable_inventory")   # ohne features: inventories None (gemessen 06.10.)
         msg = str(d.get("message") or "")
         if "Insufficient API points" in msg or str(d.get("code")) == "16900500":
@@ -175,7 +247,7 @@ def main():
         return pid, shop_v, (d.get("data") if isinstance(d.get("data"), dict) else {}), f"code {d.get('code')} {msg[:40]}"
 
     from concurrent.futures import ThreadPoolExecutor
-    pool = ThreadPoolExecutor(1)   # Konto-QPS 1/s gilt für REST UND MCP (gemessen 06.10.)
+    pool = ThreadPoolExecutor(2)   # 2 Zusatzkonten je 1/s parallel; das Hauptkonto bleibt über cj_takt gedrosselt
     for pid, shop_v, data, grund in pool.map(holen, arbeit):
         p = P[pid]
         if grund == "PUNKTE-LEER":
