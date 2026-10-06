@@ -2,6 +2,61 @@
   "id": "server-zustand-2026-10-06",
   "typ": "skript",
   "skript": "server_zustand.mjs",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-06T21:50:33.036Z",
+  "dauer_s": 0.7,
+  "ergebnis": {
+    "uptime": "21:50:33 up 106 days,  6:12,  1 user,  load average: 0.52, 0.27, 0.19",
+    "speicher": "total        used        free      shared  buff/cache   available\nMem:            3814        2750         672        1908        2562        1064\nSwap:              0           0           0",
+    "platte": "/dev/sda1        38G   32G  4.5G  88% /\nFilesystem      Size  Used Avail Use% Mounted on\ntmpfs           1.9G  1.8G   74M  97% /tmp",
+    "cpu": "2",
+    "prozesse": "3 0m 4MB cj_runner_template.sh\n      1 87h 40MB fail2ban-server\n      1 461h 2MB \n      1 2550h 15MB networkd-dispatcher\n      1 2550h 14MB unattended-upgrade-shutdown\n      1 1m 75MB cj_video_reel_engine.mjs\n      1 1m 4MB social_autopilot.sh\n      1 1m 4MB reel_engine_runner.sh\n      1 1m 4MB engine_keepalive.sh\n      1 1m 4MB cj_fulfill_runner.sh\n      1 0m 4MB website_hygiene_runner.sh\n      1 0m 4MB luxe-auftrag\n      1 0m 4MB fortura_img_runner.sh\n      1 0m 4MB autocommit.sh\n      1 0m 2MB engine_keepalive.sh\n      1 0m 183MB luxe_auftrag_runner.mjs",
+    "timer": "Tue 2026-10-06 21:51:39 UTC  1min 6s Tue 2026-10-06 21:48:39 UTC  1min 53s ago abannews-deploy.timer          abannews-deploy.service\n-                                  - Tue 2026-10-06 21:50:25 UTC        7s ago luxe-agent.timer               luxe-agent.service\n-                                  - Tue 2026-10-06 21:49:24 UTC   1min 8s ago luxe-waechter.timer            luxe-waechter.service",
+    "dienste": "abannews-deploy.service                                                                                                                   loaded    inactive   dead            abannews Auto-Deploy (poll main → build → Cloudflare Pages)\nluxe-agent.service                                                                                                                        loaded    activating start     start LuxeStyle Browser-Auftragsnehmer\nluxe-waechter.service                                                                                                                     loaded    activating start     start LuxeStyle Aufseher-Keepalive (Tages-Waechter)\nabannews-deploy.timer                                                                                                                     loaded    active     waiting         abannews Auto-Deploy alle 3min\nluxe-agent.timer                                                                                                                          loaded    active     running         LuxeStyle Browser-Auftragsnehmer (alle 5min)\nluxe-waechter.timer                                                                                                                       loaded    active     running         LuxeStyle Aufseher alle 10min",
+    "fehlgeschlagen": "UNIT                    LOAD   ACTIVE SUB    DESCRIPTION\ncloud-init-main.service loaded failed failed Cloud-init: Single Process\n\nLegend: LOAD   → Reflects whether the unit definition was properly loaded.\n        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.\n        SUB    → The low-level unit activation state, values depend on unit type.\n\n1 loaded units listed.",
+    "journal_fehler": "Oct 06 15:52:28 ubuntu-4gb-nbg1-1 sshd-session[2667880]: error: kex_exchange_identification: read: Connection reset by peer\nOct 06 15:53:36 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 15:58:51 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 16:03:51 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 16:08:56 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 16:13:56 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 16:41:59 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 16:46:59 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.\nOct 06 21:45:27 ubuntu-4gb-nbg1-1 systemd[1]: Failed to start luxe-agent.service - LuxeStyle Browser-Auftragsnehmer.",
+    "log_fehler": {
+      "cj_runner2.log": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 121020, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 121020, Remaining: 0, R) — Gruppe bleibt offen.",
+      "website_hygiene_runner.log": "API: [{'message': 'Throttled', 'extensions': {'code': 'THROTTLED', 'documentation': 'https://shopify.dev/api/usage/rate-limit\n   API: [{'message': 'Throttled', 'extensions': {'code': 'THROTTLED', 'documentation': 'https://shopify.dev/api/usage/rate-limit",
+      "cj_runner4.log": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 121020, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 121020, Remaining: 0, R) — Gruppe bleibt offen.",
+      "cj_runner3.log": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 121010, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 121010, Remaining: 0, R) — Gruppe bleibt offen.",
+      "fixer_keepalive.log": "cut: write error: No space left on device\ncut: write error: No space left on device",
+      "reel_engine_runner.log": "Traceback (most recent call last):\nModuleNotFoundError: No module named 'numpy'",
+      "cj_fulfill_runner.log": "if \"THROTTLED\" in grund.upper():\nRuntimeError: Shopify antwortet nicht (4 Versuche). Letzter Grund: [{'message': 'Throttled', 'extensions': {'code': 'THROTTLED', 'documentation': 'https://shopify.dev/api/usage/rate-limits'}}]",
+      "social_autopilot.log": "Auto-Queue-Fehler: Shopify: [{\"message\":\"Throttled\",\"extensions\":{\"code\":\"THROTTLED\",\"documentation\":\"https://shopify.dev/api/usage/rate-limits\"}}]",
+      "lagerstand_hygiene.log": "⛔ DRAFT (nicht kaufbar): Kostüm Voodoo Priesterin\n  ⛔ DRAFT (nicht kaufbar): Tutu weiss giltzernder Stoff",
+      "unpublizierte_finden.log": "⛔ 404: Laser-Boresight für Gewehr und Flinte  (angelegt 2026-10-06)\n  ⛔ 404: Blaue Cosmos Wandteppich  (angelegt 2026-10-06)",
+      "cj_versand_ch_guard.log": "IndentationError: expected an indented block after 'elif' statement on line 294\nIndentationError: expected an indented block after 'elif' statement on line 294",
+      "cj_runner5.log": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 119440, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 119440, Remaining: 0, R) — Gruppe bleibt offen.",
+      "farbe_metafeld.log": "OSError: [Errno 28] No space left on device\nTraceback (most recent call last):",
+      "cj_varianten_wache.log": "PAUSE: CJ-Punkte-Eimer leer (Insufficient API points. Used today: 118070, Remaining: 0, Required: 1) — Lauf beendet nach 30 Produkten, nichts geschrieben",
+      "textbild_fix.log": "Traceback (most recent call last):\nModuleNotFoundError: No module named 'PIL'",
+      "suchwort_tags.log": "Traceback (most recent call last):\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/export.jsonl'",
+      "google_identifier.log": "Traceback (most recent call last):\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/export.jsonl'",
+      "suchwort_mehrzahl.log": "Traceback (most recent call last):\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/export.jsonl'",
+      "farbwerte_zusammengesetzt.log": "Traceback (most recent call last):\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/export.jsonl'",
+      "preisboden.log": "Traceback (most recent call last):\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/export.jsonl'",
+      "variant_value_clean.log": "RuntimeError: Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird\nTraceback (most recent call last):"
+    },
+    "zugangsdateien": {
+      "/tmp/cj_shop_token.txt": "da (6 h alt)",
+      "/tmp/cj_token.json": "da (97 h alt)",
+      "/tmp/cj_konten.env": "fehlt",
+      "/tmp/cj_mcp.env": "fehlt",
+      "/tmp/fortura_env.sh": "fehlt",
+      "/tmp/metricool.env": "fehlt",
+      "/tmp/secrets_env.sh": "da (0 h alt)",
+      "/etc/luxe/secrets.env": "da (337 h alt)"
+    },
+    "geheimnis_namen": [
+      "SHOPIFY_SHOP",
+      "SHOPIFY_CLIENT_ID",
+      "SHOPIFY_CLIENT_SECRET",
+      "CJ_EMAIL",
+      "CJ_API_KEY",
+      "JUDGEME_PRIVATE_TOKEN"
+    ],
+    "repo": "9faa1406f 2026-10-06 21:48:22 +0000 Merge remote-tracking branch 'origin/claude/luxestyle-status-tztnn1' into claude/luxestyle-status-tztnn1\n## claude/luxestyle-status-tztnn1...origin/claude/luxestyle-status-tztnn1",
+    "cj_takt": "bild_kontaktbogen.py\nbild_kontaktbogen_liste.py\ncj_takt.py\ncj_takt.stempel\ncj_takt_2026-09-24.log\ncj_takt_2026-09-25.log\ncj_takt_2026-09-26.log\ncj_takt_2026-09-27.log\ncj_takt_2026-09-28.log\ncj_takt_2026-09-29.log"
+  }
 }
