@@ -55,3 +55,5 @@
 Feed-Anbindung: **Warteliste, derzeit keine neuen Anbindungen, «auch in naher Zukunft voraussichtlich nicht»**; bevorzugt werden
 Secondhand/Restposten/Refurbished/Retouren/Sammlerstücke. Empfehlung: manuell starten (App «Ricardo AI»). `ricardo_feed.py` bleibt
 liegen (läuft täglich, kostet nichts); Entscheid manuell testen = Betreiber.
+
+Betreiber 06.10. 17:10: «3 ok» → Ricardo ruht; kein manuelles Einstellen. Feed-Skript bleibt für den Fall einer späteren Freischaltung.
