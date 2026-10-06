@@ -47754,3 +47754,4 @@ schweisserschutzbrille-mit-lcd-anzeige-53fdaf	ha-15	Werkzeug & Heimwerken	2026-1
 aroma-diffusor-aus-holz-3b7c22	ha-15	Werkzeug & Heimwerken	2026-10-06T09:10Z
 fahrrad-rahmenmontage-set-bd94ba	ha-15	Werkzeug & Heimwerken	2026-10-06T09:10Z
 heissklebepistole-mit-sicherheitsschalter-90e6ba	ha-15	Werkzeug & Heimwerken	2026-10-06T09:10Z
+pneumatisches-spritzwerkzeug-mit-hoher-zerstau-56dc6e	ha-15	Werkzeug & Heimwerken	2026-10-06T10:09Z
