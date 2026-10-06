@@ -301,3 +301,6 @@ gid://shopify/Product/16606107664775	manuelle-teigtaschenmaschine-25-15-15-mm-98
 gid://shopify/Product/16606172774791	tennis-und-badmintontaschen-set-2-stuck-2-stuc-610400	Tennis- und Badmintontaschen-Set (2 Stück) · 2 Stück
 gid://shopify/Product/16606172807559	studentenrucksack-20-35l-mit-laptopfach-721984	Studentenrucksack 20-35L mit Laptopfach
 gid://shopify/Product/16606172840327	multifunktionales-schraubenschlussel-set-8-in-747456	Multifunktionales Schraubenschlüssel-Set 8‑in‑1
+gid://shopify/Product/16608446448007	langarm-herren-shirt-mit-lockerer-passform-612900	Langarm-Herren-Shirt mit lockerer Passform
+gid://shopify/Product/16608446513543	sofaabdeckung-mit-pflanzenmuster-stretch-976256	Sofaabdeckung mit Pflanzenmuster – Stretch
+gid://shopify/Product/16608446546311	diamond-painting-notizbuch-in-moderner-form-dcbeec	Diamond Painting Notizbuch in moderner Form
