@@ -352,3 +352,6 @@
 15510323298689	repariert:5	Kurzes Camisole-Kleid mit eckigem Ausschnitt
 15510327427457	repariert:3	Tailliertes Off-Shoulder Maxikleid
 15510330900865	repariert:7	Lockere 3D-Druck Strickjacke für Herren
+15470368096641	repariert:5	Elegantes figurbetontes Midi-Abendkleid
+15463582368129	repariert:42	Minimalistisches One-Shoulder Abendkleid
+15473387241857	repariert:22	Elegantes Spitzen-Abendkleid mit V-Ausschnitt
