@@ -4852,3 +4852,4 @@ gid://shopify/Product/15427217392001	ersetzt
 gid://shopify/Product/15427229942145	ersetzt
 gid://shopify/Product/15427229974913	ersetzt
 gid://shopify/Product/15427230007681	ersetzt
+gid://shopify/Product/15427230040449	ersetzt

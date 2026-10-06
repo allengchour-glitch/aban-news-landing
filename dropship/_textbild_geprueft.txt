@@ -58870,3 +58870,4 @@ gid://shopify/Product/15523850191233	gid://shopify/MediaImage/70767945056641
 gid://shopify/Product/15523853533569	gid://shopify/MediaImage/70768260350337
 gid://shopify/Product/15523864084865	gid://shopify/MediaImage/70769763516801
 gid://shopify/Product/15523906978177	gid://shopify/MediaImage/70770222825857
+gid://shopify/Product/15523920707969	gid://shopify/MediaImage/77406928339335
