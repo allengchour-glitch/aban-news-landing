@@ -47756,3 +47756,13 @@ fahrrad-rahmenmontage-set-bd94ba	ha-15	Werkzeug & Heimwerken	2026-10-06T09:10Z
 heissklebepistole-mit-sicherheitsschalter-90e6ba	ha-15	Werkzeug & Heimwerken	2026-10-06T09:10Z
 pneumatisches-spritzwerkzeug-mit-hoher-zerstau-56dc6e	ha-15	Werkzeug & Heimwerken	2026-10-06T10:09Z
 kerward-steckschlussel-set-17-24-mm-eb5d5a	ha-15	Werkzeug & Heimwerken	2026-10-06T11:09Z
+bogenkragen-shirt-aus-leinen-viskose-623300	aa-1	Herrenmode	2026-10-06T12:21Z
+leinen-shirt-mit-langen-armeln-kaffee-rot-629600	aa-1	Herrenmode	2026-10-06T12:21Z
+linen-stripes-langarmeliges-shirt-mit-kragen-600600	aa-1	Herrenmode	2026-10-06T12:21Z
+gestreiftes-kurzarmhemd-fur-freizeit-608100	aa-1	Herrenmode	2026-10-06T12:21Z
+karo-shortshirt-mit-farbkontrast-fur-herren-608600	aa-1	Herrenmode	2026-10-06T12:21Z
+corduroy-langarmhemd-fur-herren-613800	aa-1	Herrenmode	2026-10-06T12:21Z
+grunes-retro-kariertes-overshirt-fur-herren-603600	aa-1	Herrenmode	2026-10-06T12:21Z
+gestreiftes-slim-fit-kurzarmhemd-615000	aa-1	Herrenmode	2026-10-06T12:21Z
+kurzarmhemd-mit-schmalen-streifen-626000	aa-1	Herrenmode	2026-10-06T12:21Z
+kurzarmliges-bedrucktes-herrenhemd-mit-kragen-622100	aa-1	Herrenmode	2026-10-06T12:21Z

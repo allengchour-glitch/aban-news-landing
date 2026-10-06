@@ -17023,3 +17023,4 @@ gid://shopify/Product/16608569590151	16->1	Kopfstützen-Lendenkissen mit Nackenp
 gid://shopify/Product/16608597016967	77->0	Bambus- und Leinen-Herrenshirt
 gid://shopify/Product/16608599081351	46->0	Elektrostatische Haarentfernungsbürste
 gid://shopify/Product/16608599998855	148->0	Jacquard Kissenbezug für Lendenstützkissen
+gid://shopify/Product/16608628572551	53->0	Diamantroller für dickes Glas schneiden
