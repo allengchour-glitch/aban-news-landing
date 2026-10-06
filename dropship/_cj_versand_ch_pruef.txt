@@ -4697,3 +4697,6 @@ entspannter-pullover-613500	2603300253021613900	16	9.07	ok	landeseite
 cashmere-pullover-mit-feder-design-629900	2603251238261620300	16	6.77	ok	landeseite
 regenbogen-mohair-pullover-602800	2603230942511603200	16	8.11	ok	landeseite
 wollpullover-631100	2603230343301631500	16	7.85	ok	landeseite
+patchwork-top-aus-polyester-610500	2603220517501610900	16	9.20	ok	landeseite
+apricot-polsterpulli-619900	2603210810331610200	16	6.33	ok	landeseite
+farbenfrohes-pullover-616400	2603190834201616900	16	11.00	ok	landeseite

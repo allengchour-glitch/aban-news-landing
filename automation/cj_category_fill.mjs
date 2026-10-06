@@ -38,6 +38,11 @@ const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
 const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
+// 06.10.2026 — KEIN TEXT, KEINE CJ-ABFRAGE. GEMESSEN (Auftrag server-runner-bilanz): auf dem Hetzner-Server ohne Groq/Gemini/
+// DeepSeek-Schlüssel endeten 3'903 Produkte in «skip(gemini)», 0 angelegt — jedes kostete vorher product/query (10 CJ-Punkte),
+// ~39'000 Punkte/Tag für nichts, ein Drittel des Kontotopfs. Ohne Text-KI wird hier sauber beendet, bevor CJ gefragt wird.
+{ const ki=[process.env.GROQ_API_KEY,process.env.GROQ_API_KEY2,process.env.GROQ_API_KEY3,process.env.DEEPSEEK_API_KEY,GK].some(k=>(k||'').trim());
+  if(!ki && process.env.OHNE_KI_OK!=='1'){ console.log('⛔ KEINE TEXT-KI (GROQ_API_KEY*/GEMINI/DEEPSEEK fehlen) — kein Import, keine CJ-Punkte verbraucht'); process.exit(0); } }
 const LEDGER='dropship/cj_niche_done.txt';
 import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
