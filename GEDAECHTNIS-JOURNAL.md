@@ -42,6 +42,20 @@
 
 
 
+
+
+## 2026-10-06 18:45 UTC · 🌙 «Ziel heute 1 Verkauf»: Abendaktion Gratisversand bis 24 Uhr
+GEMESSEN: 36 Sitzungen heute, 1 Checkout, 0 Kauf; Klaviyo-Listen 2/4 Profile; Versand CHF 7 = grösste Checkout-Hürde. GETAN:
+`abendaktion.py` (automatischer Gratisversand-Rabatt bis 21:59 UTC, Leiste, Warenkorb-Zeitbedingung, Aufräumen stündlich im
+Keepalive) + Aktions-Story IG/FB ohne Produkt (Doppelpost-Regel). Bericht `dropship/ABENDAKTION-2026-10-06.md`.
+
+## 2026-10-06 18:00 UTC · 🧹 «lösch selber, verbessere selber»: Versandreste weg, Fortura-Tracking in Shopify
+Zwei inaktive Gratis-Raten gelöscht (Tarif vorher = nachher, Wächter grün). Falle: «Standard ab 65 gratis» ist eine Preisstufe IN der
+Standardrate (ID `…/1108712784257?source=RateRangeCondition&source_id=…`) — Löschen per ID hätte die CHF-7-Rate treffen können →
+stehen gelassen. Fortura: `sendung_eintragen()` (fulfillmentCreate, nur Fortura-Positionen, gelieferte Menge, Kunde wie CJ benachrichtigt),
+Attrappe 4/4. Storefront-Ratenprüfung (`/cart/async_shipping_rates.json`) gab 411 ohne Body und danach 429 — kein Beleg, Admin-Daten
+sind die Wahrheit.
+
 ## 2026-10-06 17:40 UTC · 📦 Fortura-Bestellautomat Stufe 2 live — XML nach ORDERS, Lieferschein aus DESADV
 Muster (Opacc.ORDERS/DELVRY) vom Betreiber hochgeladen (Gmail-Konnektor gibt keine Anhang-Bytes; Fortura-Server und Drive hatten sie
 nicht). `fortura_xml.py` (Selbsttest 7/7, Gerüst-Abgleich gegen das Template) + Stufe 2 in `fortura_bestell_engine.py` (Schalter

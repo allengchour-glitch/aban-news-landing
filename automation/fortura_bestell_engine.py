@@ -50,6 +50,39 @@ def schreibe(d):
 
 
 SCHALTER = os.path.join(REPO, 'dropship', '_fortura_xml_aktiv')
+NOTIFY = os.environ.get('NOTIFY', '1') == '1'     # wie cj_fulfill_engine: Shopifys normale Versandbestätigung an die Kundin
+
+
+def sendung_eintragen(nr, tracking, geliefert):
+    """06.10.2026: DPD-Tracking aus dem Fortura-Lieferschein als Sendung in Shopify — NUR die Fortura-Positionen
+    (gemischte Bestellungen: CJ-Teil bleibt offen für den CJ-Automaten), Menge = geliefert laut DELVRY.
+    geliefert: {artnr: menge}. Rückgabe (ok, text)."""
+    q = ('query($q:String!){orders(first:1,query:$q){nodes{id name fulfillmentOrders(first:10){nodes{id status '
+         'lineItems(first:50){nodes{id remainingQuantity lineItem{sku}}}}}}}}')
+    o = (gql(q, {'q': f'name:#{nr}'})['orders']['nodes'] or [None])[0]
+    if not o:
+        return False, 'Bestellung nicht gefunden'
+    gruppen = []
+    for fo in o['fulfillmentOrders']['nodes']:
+        if fo['status'] not in ('OPEN', 'IN_PROGRESS', 'SCHEDULED'):
+            continue
+        teile = []
+        for li in fo['lineItems']['nodes']:
+            sku = (li['lineItem'] or {}).get('sku') or ''
+            menge = min(int(geliefert.get(sku[8:], 0)), li['remainingQuantity']) if sku.startswith('fortura-') else 0
+            if menge > 0:
+                teile.append({'id': li['id'], 'quantity': menge})
+        if teile:
+            gruppen.append({'fulfillmentOrderId': fo['id'], 'fulfillmentOrderLineItems': teile})
+    if not gruppen:
+        return False, 'keine offene Fortura-Position'
+    m = ('mutation($f:FulfillmentInput!){fulfillmentCreate(fulfillment:$f){fulfillment{status trackingInfo{number company}} '
+         'userErrors{message}}}')
+    r = gql(m, {'f': {'lineItemsByFulfillmentOrder': gruppen, 'notifyCustomer': NOTIFY,
+                      'trackingInfo': {'company': 'DPD', 'numbers': tracking}}})['fulfillmentCreate']
+    if r['userErrors']:
+        return False, r['userErrors'][0]['message'][:120]
+    return True, f"Sendung {r['fulfillment']['status']} · DPD {','.join(tracking)}"
 
 
 def stufe2(led, zeilen):
@@ -85,11 +118,19 @@ def stufe2(led, zeilen):
         for datei in fx.liste(sid, '/home/DESADV'):
             for d in fx.lies_delvry(fx.herunterladen(sid, '/home/DESADV/' + datei)):
                 nr = d['order_no'].upper().lstrip('LX')
-                if nr in led and led[nr][3] == 'xml-hochgeladen':
-                    led[nr][3] = 'versandt'
-                    led[nr][4] = f"{led[nr][4]} · Lieferschein {d['doc_no']} {d['datum']} · DPD {','.join(d['tracking'])}"
+                if nr in led and led[nr][3] in ('xml-hochgeladen', 'versandt'):
+                    if led[nr][3] == 'xml-hochgeladen':
+                        led[nr][4] = f"{led[nr][4]} · Lieferschein {d['doc_no']} {d['datum']} · DPD {','.join(d['tracking'])}"
                     teil = [f'{a} {g}/{b}' for a, b, g, _ in d['positionen'] if g != b]
-                    neu[nr] = (f"FORTURA: #{nr} versandt {d['datum']} · DPD {','.join(d['tracking'])}"
+                    led[nr][3] = 'versandt'
+                    geliefert = {}
+                    for a, _, g, _ in d['positionen']:
+                        geliefert[a] = geliefert.get(a, 0) + int(float(g or 0))
+                    ok, info = sendung_eintragen(nr, d['tracking'], geliefert) if d['tracking'] else (False, 'Lieferschein ohne Tracking')
+                    if ok:
+                        led[nr][3] = 'erfuellt'
+                    neu[nr] = (f"{'' if ok else '⚠️ '}FORTURA: #{nr} versandt {d['datum']} · DPD {','.join(d['tracking'])} · "
+                               f"{'Shopify: ' + info if ok else 'Shopify-Sendung NICHT eingetragen: ' + info}"
                                + (f" · ⚠️ Teillieferung {', '.join(teil)}" if teil else ''))
         for nr, t in led.items():
             if t[3] == 'xml-hochgeladen' and nr not in neu:
@@ -135,12 +176,14 @@ def main():
             led[nr] = [nr, dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'), txt, 'bereit', '']
         st = led[nr][3]
         if st == 'versandt':
-            zeilen.append(f'FORTURA: #{nr} versandt — {led[nr][4]} (Sendung in Shopify noch offen)'); continue
+            zeilen.append(f'⚠️ FORTURA: #{nr} versandt — {led[nr][4]} (Sendung in Shopify noch offen, nächster Lauf versucht es)'); continue
+        if st == 'erfuellt':
+            continue
         if st == 'bereit':
             alter = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(o['createdAt'].replace('Z', '+00:00'))).total_seconds() / 3600
             zeilen.append(f"⚠️ FORTURA: #{nr} ({alter:.0f} h) bereit — im Fortura-Portal bestellen: {txt} · danach "
                           f"`python3 automation/fortura_bestell_engine.py --bestellt {nr}`")
-    if os.path.exists(SCHALTER) and any(t[3] in ('bereit', 'xml-hochgeladen') for t in led.values()):
+    if os.path.exists(SCHALTER) and any(t[3] in ('bereit', 'xml-hochgeladen', 'versandt') for t in led.values()):
         zeilen = stufe2(led, zeilen)
     schreibe(led)
     print('\n'.join(zeilen) if zeilen else 'FORTURA: 0 offen')

@@ -25,5 +25,8 @@
 ## OFFEN
 - Wirkung messen: Checkout-Abbrüche unter CHF 45 und Warenkorb→Checkout→Kauf der Kleider-Seiten in 7/14 Tagen
   (`checkout_abbruch_messen.py`, Ampel «CHECKOUT 7 T»).
-- Betreiber-Klick (unverändert aus dem 05.10.-Bericht): Versandprofil aufräumen — zweite aktive Nullrate «Standard ab 65» und die zwei
-  inaktiven Reste entfernen.
+- ✅ 06.10. 18:00 (Betreiber «lösch selber»): die zwei INAKTIVEN Reste «Kostenloser Versand ab 50/45» gelöscht
+  (`deliveryProfileUpdate.methodDefinitionsToDelete`, Tarif vorher = nachher (7.00 / gratis ab 45), beide Wächter grün).
+  **Bewusst NICHT gelöscht:** «Standard ab 65 gratis» ist keine eigene Rate, sondern eine Preisstufe IN der Standardrate (gleiche ID mit
+  `?source=RateRangeCondition`) — Löschen hätte die CHF-7-Rate mitnehmen können (Checkout unter CHF 45 ohne Versand). Folge bleibt
+  kosmetisch: ab CHF 65 zwei Gratis-Zeilen.
