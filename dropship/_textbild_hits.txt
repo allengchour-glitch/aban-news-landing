@@ -16984,3 +16984,12 @@ gid://shopify/Product/16604589916551	26->0	Zehentrenner mit Strass-Schleife und 
 gid://shopify/Product/16604905046407	17->0	USB-Stick mit Sprachfunktion
 gid://shopify/Product/16604907831687	19->0	Keramik-Teetassen und Teekanne
 gid://shopify/Product/16604927721863	68->0	Auto Fussmatte Leder
+gid://shopify/Product/16604940730759	11->0	Outdoor Bluetooth Karaoke Lautsprecher
+gid://shopify/Product/16605038182791	37->0	Hundepullover mit Bären-Muster, braun
+gid://shopify/Product/16606120477063	24->0	Ölfilterschlüssel mit 3 Backen
+gid://shopify/Product/16606123491719	79->0	Kupferstift für intern beheizte Lötkolben
+gid://shopify/Product/16606126244231	84->0	Farbroller für Wandfarben
+gid://shopify/Product/16606943609223	17->0	Malen nach Zahlen – Palmenstrand 40×50 cm
+gid://shopify/Product/16607377949063	11->3	Handgefertigter Eisenkessel – 24 cm, 26 cm, 28 cm
+gid://shopify/Product/16607606145415	24->0	Kurzgeldbörse aus Vollnarben-Rindsleder
+gid://shopify/Product/16608002244999	23->2	Vintage-prägtes Vollnarbe-Portemonnaie
