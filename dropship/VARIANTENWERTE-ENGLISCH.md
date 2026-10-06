@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 15:11 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 15:52 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **4'245**
-- Optionen mit englischen Werten (Kandidaten): 587
+- Produkte gesehen: **7'822**
+- Optionen mit englischen Werten (Kandidaten): 951
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'681
+- Werte mit unbekanntem Wort (unverändert): 4'597
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 26
-- übersprungen «kollision-nach-uebersetzung»: 15
+- übersprungen «kleidungsstueck-im-wert»: 33
+- übersprungen «kollision-nach-uebersetzung»: 18
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -29,6 +29,13 @@
 - `15448509383041` [Farbe] **Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie** — hose, pullover: Black-Hoodie | Black-Pants | Milky Apricot-Hoodie | Milky Apricot-Pants | Slate Blue-Hoodie | Slate Blue-Pants | Olive Green-Hoodie | Olive Green-Pants
 - `15448574099841` [Farbe] **Eleganter Off-Shoulder Jumpsuit** — oberteil · Titel nennt Set: OliveGreen | Blau | a white Tshirt
 - `15448670273921` [Farbe] **Damen Wollmantel für Winter Business** — oberteil: Marineblau | White Long Sleeve Shirt
+- `15448718180737` [Farbe] **Gestreifter Business-Anzug für Herren** — jacke, weste · Titel nennt Set: Caramel Jacket | Sugar Coffee Vest | Set
+- `15449055854977` [Farbe] **Kapuzen-Sweatshirt-Set, Fleece-gefüttert · Modell 2** — hose, pullover · Titel nennt Set: Blue-Hoodie | Blue-Pants | Grayish Brown-Hoodie | Grayish Brown-Pants | Navy Blue-Hoodie | Navy Blue-Pants | Leafy Gray-Hoodie | Leafy Gray-Pants
+- `15449066766721` [Farbe] **Vintage Patchwork Distressed Jeansjacke für Herren** — hose, jacke: Single Jacket | Single Pants
+- `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Long sleeves | Vest | Off shoulder
+- `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
+- `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
+- `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -49,6 +56,9 @@
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 - `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert; Gray Brown → Grau-Braun
+- `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
+- `15449065718145` [Farbe] corduroy-weste-im-preppy-stil-fur-herren-635500: Deep Coffee → Dunkelkaffeebraun; Green Coffee → Grün-Kaffeebraun
+- `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Red battery → Rot Batterie; Set2 → Set 2; Set1 → Set 1
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -85,5 +95,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 156, `light` 99, `color` 80, `mother` 61, `⟨satzbau:adjektiv-vor-nomen⟩` 59, `core` 52, `hat` 46, `rope` 44, `to` 40, `lens` 38, `father` 38, `high` 35, `for` 35, `generation` 34, `shell` 32, `years` 30, `old` 30, `no` 29, `adjustable` 29, `powder` 28, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `tea` 21, `surface` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `comfortable` 20, `suit` 19, `number` 19, `deer` 19, `cocoa` 19, `clothing` 18, `background` 17, `carbon` 17, `⟨satzbau:material-vor-farbe⟩` 17, `belt` 16, `pad` 16, `face` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `milk` 15, `handle` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `cool brown` 15, `grid` 14, `buckle` 14
+`light` 177, `degrees` 159, `⟨satzbau:adjektiv-vor-nomen⟩` 155, `color` 114, `shell` 77, `rope` 61, `mother` 61, `core` 53, `to` 48, `hat` 46, `high` 44, `case` 43, `for` 42, `dark` 41, `powder` 40, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `years` 37, `magnetic` 36, `old` 35, `bag` 34, `no` 33, `surface` 31, `bear` 30, `eyelets` 30, `adjustable` 29, `carbon` 28, `mom` 28, `tea` 27, `suit` 27, `mushroom` 27, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `belt` 25, `dog` 25, `cocoa` 25, `batteries` 24, `dad` 24, `perforated` 24, `stone` 23, `face` 23, `milk` 23, `of` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22, `nail` 21, `bead` 21, `deer` 21, `yadan` 21, `handle` 20, `noodles` 20, `⟨satzbau:material-vor-farbe⟩` 20, `cloud` 20
 
