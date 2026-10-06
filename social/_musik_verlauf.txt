@@ -285,3 +285,5 @@
 2026-10-06T11:11:52.542Z	luxe-epic-anime.wav	4.75	schmuck	cjreel-2411251126191606800	stimme:nein	anteil
 2026-10-06T11:13:53.462Z	luxe-epic-winter.wav	21.5	allgemein	cjreel-1791348913472020480	stimme:ja	azure:de-CH-JanNeural
 2026-10-06T12:19:54.852Z	luxe-epic-elegant.wav	48	haustier	cjreel-1385533991431573504	stimme:ja	azure:de-CH-JanNeural
+2026-10-06T12:21:05.920Z	luxe-epic-trailer.wav	15.5	allgemein	cjreel-FC154BCD-29CD-436E-89F9-50DF9538524D	stimme:ja	azure:de-CH-JanNeural
+2026-10-06T12:22:30.428Z	luxe-epic-hybrid.wav	22.5	kinder	cjreel-AE255857-2B3C-46A0-97CD-0A647B8DF11C	stimme:nein	anteil

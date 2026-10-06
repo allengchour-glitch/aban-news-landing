@@ -17024,3 +17024,14 @@ gid://shopify/Product/16608597016967	77->0	Bambus- und Leinen-Herrenshirt
 gid://shopify/Product/16608599081351	46->0	Elektrostatische Haarentfernungsbürste
 gid://shopify/Product/16608599998855	148->0	Jacquard Kissenbezug für Lendenstützkissen
 gid://shopify/Product/16608628572551	53->0	Diamantroller für dickes Glas schneiden
+gid://shopify/Product/16608628801927	34->0	Schräglöcher-Finder für Holzarbeiten 25-Teilig
+gid://shopify/Product/16608628932999	14->0	Armlehnenhülle aus Leder & Carbonfaser
+gid://shopify/Product/16608628965767	8->0	Leichtes atmungsaktives Kragenhemd
+gid://shopify/Product/16608629129607	42->0	Halboffenes Leinenhemd, atmungsaktiv
+gid://shopify/Product/16608629162375	8->0	Wasserdichte Autositzauflage
+gid://shopify/Product/16608629457287	56->2	Elektrischer Haarschneider mit Akku
+gid://shopify/Product/16608629555591	19->0	Silikon-Backform für Früchte
+gid://shopify/Product/16608629588359	62->0	Haus-Silikon-Backform 26,5 × 26,5 × 6 cm
+gid://shopify/Product/16608629752199	48->2	Multifunktionswerkzeug aus Edelstahl
+gid://shopify/Product/16608700039559	36->0	Keramische Wellenscheibe mit Diamantbeschichtung
+gid://shopify/Product/16608734708103	18->0	Heissklebepistole mit Sicherheitsschalter

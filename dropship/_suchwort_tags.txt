@@ -14786,3 +14786,33 @@ gid://shopify/Product/16605072589191	stiefel	Kinderstiefel mit Samtbesatz, braun
 gid://shopify/Product/16605111288199	pullover	Wollpullover für Hunde und Katzen, pink/blau
 gid://shopify/Product/16605114401159	pullover	Hundepullover mit Herzen, rosa
 gid://shopify/Product/16605114794375	pullover	Hundepullover mit Muster, braun, M/L
+gid://shopify/Product/16605116006791	jacke	Hunde-Kapuzenjacke mit Elchgeweih, blau
+gid://shopify/Product/16605480911239	pullover	Roter Weihnachtspullover für Hunde
+gid://shopify/Product/16605480944007	pullover	Hundepullover aus Wolle, rot
+gid://shopify/Product/16605480976775	pullover	Hundepullover mit roten Herzen, weiss
+gid://shopify/Product/16605481042311	weste	Plüsch-Hundeweste mit Fliege, grau/weiss
+gid://shopify/Product/16605481107847	pullover	Hundepullover schwarz für grosse Hunde
+gid://shopify/Product/16605481206151	pullover	Hundepullover aus Acryl, rosa/pink
+gid://shopify/Product/16605481501063	pullover	Hundepullover mit Kapuze, Weihnachtsbaum-Design
+gid://shopify/Product/16605481697671	muetze	Wollmütze für Hunde mit Bommel, rot
+gid://shopify/Product/16605481795975	pullover	Hundepullover schwarz-weiss
+gid://shopify/Product/16606017388935	jacke	Kapuzenjacke aus Polyester, blau/schwarz
+gid://shopify/Product/16606017421703	jacke	Herren-Bomberjacke mit 3D-Motocross-Druck
+gid://shopify/Product/16606017487239	guertel	Vibrationsgürtel für Bauchmuskeln
+gid://shopify/Product/16606017683847	jacke	Vintage-Motorradjacke aus PU-Kunstleder
+gid://shopify/Product/16606017782151	jacke	Herren-Strickjacke mit Reissverschluss, grau
+gid://shopify/Product/16606105928071	matte	Anti-Rutsch-Badematte, smaragdgrün
+gid://shopify/Product/16606106550663	topf	3D-gedruckter Pflanztopf in Baumwurzel-Form
+gid://shopify/Product/16606106878343	tasche	Golftasche mit grosser Kapazität
+gid://shopify/Product/16606107500935	tasche	Tennistasche mit grosser Kapazität, weiss
+gid://shopify/Product/16606108877191	tasche	Weisse Tennistasche für Damen
+gid://shopify/Product/16606122574215	armband	Leder-Wickelarmband mit Edelstahl-Verschluss, braun
+gid://shopify/Product/16606124999047	topf	Keramik-Schmortopf in Birnenform
+gid://shopify/Product/16606126702983	schere	Friseurscheren-Set mit Drachen-Griff · 4 Stück
+gid://shopify/Product/16606126866823	zange	Blindnietzange, manuell, mit Nietdornen
+gid://shopify/Product/16606142497159	tasche	Angel-Umhängetasche mit mehreren Fächern
+gid://shopify/Product/16606142562695	zange	Sicherungsringzangen-Set für Innen- und Aussenringe · 4 Stück
+gid://shopify/Product/16606157865351	zange	Netzwerkkabel-Crimpzange mit Tester – 1988B Set
+gid://shopify/Product/16606157930887	uhr	Messuhr mit Zeiger und Halterung 10–30 mm
+gid://shopify/Product/16606158029191	tasche	Umhängetasche aus PU mit grossem Stauraum
+gid://shopify/Product/16606158160263	tasche	Tagestasche mit Reissverschluss, wasserabweisend
