@@ -4660,3 +4660,4 @@ gitarren-wandhalterung-mit-auto-lock-319426	2046146195391537154	0	-	KEINE CH-Opt
 ahorn-violinbrucke-4-4-647233	2046132837253476353	0	-	KEINE CH-Option → DRAFT	landeseite
 rotes-kinder-keyboard-mit-mikrofon-37-tasten-737089	2013829300222537730	0	-	KEINE CH-Option → DRAFT	landeseite
 ammoon-violinsaiten-set-g-d-a-e-613954	2059122716736860161	0	-	KEINE CH-Option → DRAFT	landeseite
+werkzeug-fur-e-violinen-halterung-604800	2507250644541605000	16	10.42	ok	landeseite
