@@ -505,6 +505,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-06 · 🧁 **Verbesserungsrunde: 65/315 Neuimporte unter Google «Tools», darunter Backformen/Haarschneider/Nagelset → 4 Kreuz-Regeln in `google_kategorie_umzug.py`; «Silikonform» traf Kerzen-/Epoxidformen → Ausschluss, Kanarien 39/39, 21 umgezogen.** Trockenlauf mit allen Treffern (`ZEIGEN=n`) → `dropship/GOOGLE-KATEGORIE-WERKZEUG-2026-10-06.md`
 - 2026-10-06 · 📏 **«fix alles» Filter: Farbe/Grösse live ok, Kategorie = Betreiber-Klick; 4 Kleider US/EU belegt beschriftet, Grösse im Farbwert («-16 W», «-US0») → `groesse_im_farbwert.py` (69 Varianten), «10 W» = Watt übersprungen; fast gegen `groessenwert_normieren.py` («US10») gearbeitet.** Vorhandenen Normierer zuerst lesen → `dropship/FILTER-GROESSEN-2026-10-06.md`
 - 2026-10-06 · 🔫 **Verbesserungsrunde: «Laser-Boresight für Gewehr» ACTIVE — Waffen-Regel band «Gewehr» an Bausatz-Kontext → `schusswaffen-laser` (DRAFT, Importer + Wache) + `schusswaffen-zubehoer` (Google raus), 10/10 Kanarien, Voll-Export 2/2.** Regel gegen Nachbildungen lässt das Original durch → `dropship/SCHUSSWAFFEN-ZUBEHOER-2026-10-06.md`
 - 2026-10-06 · 🔄 **Verbesserungsrunde: Bildtausch liess «uneinig» liegen (36 % frei), obwohl beide Prüfer Bild 1 ablehnten → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu, Sperre/Bilanz/Rücklesen kennen die Art.** Hauptfrage entschieden ≠ unklar → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`

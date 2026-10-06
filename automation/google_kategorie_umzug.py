@@ -77,6 +77,12 @@ UMZUG = {
     TO: [
         (r"crimpzange|abisolierzange|presszange|kabelschuhzange", TO + " > Pliers"),
         (r"\blineal\b|winkellineal|anschlagwinkel|schieblehre", TO + " > Measuring Tools & Sensors"),
+        # 06.10.2026 (Verbesserungsrunde 08:25): CJ-Gruppe «Werkzeug» füllt Hardware > Tools mit Küchen-/Pflegeware —
+        # 315 Neuimporte in 30 h, 65 unter Tools, davon Backformen, Haarschneider, Nagelknipser, Küchentuch. Kreuz-Umzug.
+        (r"backform|kuchenform|silikonform(?!.*(?:kerze|harz|epoxid|gips|vase|blumentopf|schale|teller|aufbewahrung|bastel|diy|seife))|muffinform|tortenform|ausstechform|keksform", KD + " > Cookware & Bakeware > Bakeware"),
+        (r"haarschneider|haarschneidemaschine|bartschneider|haartrimmer", "Health & Beauty > Personal Care > Shaving & Grooming > Hair Clippers & Trimmers"),
+        (r"nagelknipser|nagelschere|nagelfeile|nagelzange", "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools"),
+        (r"k[üu]chen(?:reinigungs)?tuch|sp[üu]ltuch|putzschwamm|reinigungsschwamm|schwammtuch", "Home & Garden > Household Supplies > Household Cleaning Supplies"),
     ],
 }
 _R = {q: [(re.compile(m, re.I), z) for m, z in r] for q, r in UMZUG.items()}
@@ -92,6 +98,16 @@ def ziel(titel, alt):
 
 
 KANARIEN = [
+    ("Silikon-Backform 8-teilige Weihnachtsbaum-Form", TO, KD + " > Cookware & Bakeware > Bakeware"),
+    ("Silikonform: Tulpenblüten-Kerze", TO, None),
+    ("DIY Silikonform: Meeresmotive für Epoxidharz", TO, None),
+    ("Sushi-Rohrform zum Formen von Sushi", TO, None),
+    ("Elektrischer Haarschneider mit Akku", TO, "Health & Beauty > Personal Care > Shaving & Grooming > Hair Clippers & Trimmers"),
+    ("Nagelknipser-Set", TO, "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools"),
+    ("Küchenreinigungstuch mit Schwammblock", TO, "Home & Garden > Household Supplies > Household Cleaning Supplies"),
+    ("Rasentrimmer mit Akku", TO, None),
+    ("Elektrischer Lötkolben", TO, None),
+    ("Schneidwerkzeug: Rundschaft-Meissel-Set", TO, None),
     ("Velohelm für Erwachsene mit LED-Rücklicht", EF, CY + " > Cycling Apparel & Accessories > Bicycle Helmets"),
     ("Fahrrad-Rücklicht USB aufladbar", EF, CY + " > Bicycle Accessories"),
     ("Mountainbike Frontlicht 800 Lumen", EF, CY + " > Bicycle Accessories"),
@@ -161,7 +177,7 @@ def main():
     for alt, teil in plan.items():
         z = collections.Counter(x[3] for x in teil)
         print(f"  {alt} ({len(teil)}): " + " · ".join(f"{k.split(' > ')[-1]} {v}" for k, v in z.most_common()))
-        for _, h, t, zz in teil[:4]:
+        for _, h, t, zz in teil[:int(os.environ.get("ZEIGEN", "4"))]:
             print(f"     {t[:60]!r} → {zz.split(' > ')[-1]}")
     if not SCHARF:
         print("FERTIG (trocken)"); return 0
