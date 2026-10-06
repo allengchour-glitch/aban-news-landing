@@ -44,6 +44,43 @@
 
 
 
+## 2026-10-06 21:20 UTC · 🎞️ TikTok ZN8kfmmNH (@arbeitemitki, 28k Aufrufe): LTX 2.5 lokal statt Veo — hier nicht nutzbar
+
+QUELLE: Open-Weight-Videomodell LTX 2.5 (BEHAUPTUNG: seit 08/2026, 1,6 Mio. Downloads), über Hugging Face, «kostenlos, braucht
+starke Grafikkarte». GEMESSEN: Container ohne GPU (nvidia-smi fehlt), Hetzner-Server 4 GB ohne GPU → lokal nicht lauffähig.
+Reels kommen weiter aus echten CJ-Produktvideos (zeigt das echte Produkt; KI-Video kann Ware erfinden — Trikot-Falle Regel 4).
+
+## 2026-10-06 21:30 UTC · 🔒 «schaue memory das hatte ich mal»: DENY sperrt nichts — und bei CJ ist DENY der Normalzustand
+
+Betreiber-Hinweis auf die Lehre vom 08.09. («DENY allein tut gar nichts», drei Schalter). GEMESSEN 06.10.:
+- Bulk aller DENY-Varianten (524'781): **427'616 aktive CJ-Varianten = DENY + tracked:false + kaufbar** — der CJ-Import setzt DENY
+  ab Werk, ohne Bestandsführung. DENY ist dort KEIN Sperr-Zeichen.
+- `cj_varianten_wache.py` (seit 21.09.) sperrte nur Varianten mit Policy CONTINUE und setzte nur DENY → 219 «gesperrte» Varianten,
+  177/179 weiter kaufbar; dazu 8 Produkte / 24 fehlende Varianten nie angefasst, weil sie schon DENY waren.
+- Fix: `automation/ausverkauft.py` (sperren = tracked + DENY + Menge 0, Rücklesen availableForSale; freigeben = tracked:false).
+  Probe «5 Core Plektren-Set»: Geister-Variante availableForSale false, 2 andere bleiben kaufbar. cj_varianten_wache +
+  cj_lager_abgleich entscheiden jetzt nach availableForSale und schreiben über den Helfer; 29 Produkte zur Neuprüfung
+  aus dem Varianten-Ledger genommen. Betreiber «ja ich will» → Grind 4 → 3 Runner, Lagerabgleich stündlich (CAP 4000).
+- Regel: **«gesperrt?» = availableForSale lesen, nie inventoryPolicy.**
+
+## 2026-10-06 21:00 UTC · 📦 CJ-Lagerbestand je Variante → Shop «ausverkauft» (`cj_lager_abgleich.py`)
+
+Betreiber «cj lagerstatus check und dann unser webseite auch bei alle produkten» + «filter hinzugefügt checke mal».
+- Filter GEMESSEN (WebFetch /collections/sub-kleider): Verfügbarkeit · Preis · Produkttyp · Farbe · Grösse · **Kategorie**
+  (Bekleidung, Bekleidungsaccessoires, Kleider, Kleider für Babys & Kinder) · **Art der Rock-/Kleidlänge** (Maxi/Midi/Mini) ·
+  **Ärmellängentyp** (3/4 … Trägerlos) ✅. Storefront zeigt die TAXONOMIE-Übersetzung («Weiß», «Braun»), nicht unser Label «Weiss».
+- CJ GEMESSEN: Bestand wird nur geprüft von cj_stock_guard.mjs (in keiner Startliste); cj_verfuegbarkeit/cj_varianten_wache
+  prüfen Existenz und standen still («Insufficient API points», Grind ~110–126k Punkte/Tag).
+- **Falle (Doku falsch):** CJ-Doku 1.10 sagt, product/query liefere `variants[].inventories` automatisch — gemessen `None`;
+  erst `&features=enable_inventory` liefert sie (1 Anfrage je Produkt für alle Varianten). getInventoryByPid liefert nur `vid`.
+- **Falle:** 44'956 Shop-Varianten-SKUs OHNE «CJ-»-Präfix, Produkt-SKUs ohne Anhang («CJ-CJJJJTJT22925») → `kern()` + Einzel-
+  variante zuordnen; sonst «unklar» statt falsch.
+- Regel: Summe totalInventory (cj+factory) == 0 → DENY; eigenes DENY + Bestand → CONTINUE; fremdes DENY bleibt; Kanarie:
+  inventories muss da sein. Aufseher: täglich im Vorrang-Fenster 00:00–01:30, CAP 2000 (Vollzyklus ~23 Tage), besuchte
+  Landeseiten zuerst. Prüf-Erinnerung 07.10. 01:45 (trig_01X2yRrjqfDSfsmEKoHARtgb).
+- TikTok ZN8kfSUmJ (über Hetzner-Auftrag gelesen): «Agency Agents», Open-Source-Bibliothek mit 200 Rollen-Agenten
+  (BEHAUPTUNG 155k Sterne) — hier gibt es Skills/Subagenten schon; nichts übernommen.
+
 ## 2026-10-06 20:50 UTC · 👶 Verbesserungsrunde: Alter im Farbwert («White-6 TO 9M») → Option «Grösse»
 
 GEMESSEN: 42 Kinder-/Babyprodukte mit nur EINER Option Farbe, Werte «Farbe-Alter» (313 Werte, CJ-variantKey ungeteilt) →
@@ -18171,6 +18208,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-03 · 🇫🇷 **OFFEN (Betreiber «Französisch ja»): fr-Übersetzung läuft (`translate_content.mjs`, Menü/Links/Rechtstexte ✅, Top-58 via HANDLES_FILE + Kollektionen); NOCH NICHT veröffentlicht — nächster Schritt: Versand-Policy «tu»→«vous», Stichprobe, dann fr als alternateLocale im WebPresence luxestyle.ch + shopLocale published. Wartet auf Betreiber: Semrush-Projekt/Site-Audit, Checkout-Automatik, Judge.me, TikTok-Link.**
+- 2026-10-03 · ⏳ **Verbesserungsrunde: cj_versand_ch_guard/fuellmenge/pinterest starben «12x gedrosselt» — Eimer 16–136/2000, 30 Wächter warteten nur `Anfrage − verfügbar` (< 1 s, Aufgabe nach ~15 s) → `max(Anfrage, 600) − verfügbar`, 19× Geduld 40; Gehirn-Regel `drossel-ungeduldig` (18/18).** Geduld in Zeit, nicht in Versuchen → `dropship/DROSSEL-GEDULD-2026-10-03.md`
 - 2026-10-03 · 🔄 **Verbesserungsrunde: Google-Scan 10:09 (dank Fortsetzung fertig) Adult 92 → 265 (Grind-Mode), Inappropriate 250 → 199 — Bildtausch lief stur Klasse 1 (63 offen, ~11/h, Neustart stündlich), Adult kam nie dran → Wechselbetrieb `/tmp/gbt_klasse_idx`, N=8 je Klasse.** Mehrere Schlangen in einem Lauf reihum beginnen → `dropship/BILDTAUSCH-WECHSEL-2026-10-03.md`
 - 2026-10-03 · 🎁 **Plan-Tag 3 Rest: «Geschenke bis CHF 30» (Menü, 9 Kanäle) oben 12/24 Partydeko + 11/24 Schmuck → Welt `unter30` in `geschenk_unterwelten.py` (Preisband je Welt 12–30, 8 Warenarten, 10 Kanarienvögel draussen); Bildtausch-Pilot: Tausch 83 % frei vs. Kontrolle 42 % → echter Gewinn ~+40 Pkt., Klasse schon ausgerollt.** Aufzählungs-Punkte Glied für Glied messen; A/B-Ledger beim Ausrollen nie überschreiben → `dropship/GESCHENKE-UNTER-30-2026-10-03.md`
 - 2026-10-03 · 🪣 **Verbesserungsrunde: farbe_metafeld + textbild_fix starben nachts «12x gedrosselt» — Bildtausch schrieb über `heilversprechen_wache.gql` (5 Importeure, kein Boden); 15 importierte gql-Helfer ohne `nachlauf` gepatcht + Gehirn-Regel `helfer-ohne-eimer` (16/16).** Etikette gehört in den Helfer, nicht in jeden Aufrufer → `dropship/EIMER-HELFER-2026-10-03.md`

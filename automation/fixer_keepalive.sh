@@ -198,6 +198,17 @@ while true; do
           SCHARF=1 CAP=30000 timeout 5400 python3 automation/kategorie_fein.py" >> "$KF" 2>&1 9>&- & )
     fi
   fi
+  # CJ-LAGER (06.10.2026, Betreiber «cj lagerstatus check und dann unser webseite auch bei alle produkten» + «ja ich will» schneller
+  # → Grind 4 → 3 Runner): Bestand je Variante (product/query + features=enable_inventory, 1 Anfrage je Produkt) → Bestand 0 =
+  # «ausverkauft» (DENY), zurück = CONTINUE. STÜNDLICH als vierter CJ-Verbraucher am gemeinsamen Takt (statt nur im Fenster):
+  # er bekommt ~¼ der Anfragen, bis der Tagestopf leer ist, und endet dann sauber. flock gegen Doppel, Ledger idempotent.
+  CL=/tmp/cj_lager.log
+  if [ -f "$REPO/automation/cj_lager_abgleich.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$CL" 2>/dev/null || echo 0) )) -gt 3300 ] \
+     && ( cd "$REPO" && timeout 30 python3 automation/cj_lager_abgleich.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$CL"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_cj_lager.lock; flock -n 9 || exit 0; \
+        CAP=4000 timeout 3500 python3 automation/cj_lager_abgleich.py" >> "$CL" 2>&1 9>&- & )
+  fi
   # ALTER-IM-FARBWERT (06.10.2026, Verbesserungsrunde): «White-6 TO 9M» als einzige Option → Farbe + neue Option «Grösse»
   # («6–9 Monate»); liest den täglichen Optionen-Export von farbmuster_filter.py, nur eindeutige Fälle, Ledger.
   AF=/tmp/alter_im_farbwert.log

@@ -253,7 +253,6 @@ gid://shopify/Product/15509371519361
 gid://shopify/Product/15509385085313
 gid://shopify/Product/15509401207169
 gid://shopify/Product/15509401502081
-gid://shopify/Product/15509401698689
 gid://shopify/Product/15509520712065
 gid://shopify/Product/15509712929153
 gid://shopify/Product/15510313959809

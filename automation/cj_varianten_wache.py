@@ -215,7 +215,7 @@ def main():
     # Shopify in 50er-Buendeln (nodes(ids:)) statt einer Abfrage je Produkt: 0,5 s → ~0,01 s je Produkt
     for i in range(0, len(arbeit), 50):
         try:
-            d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status variants(first:100){nodes{id sku title inventoryPolicy}}}}}', {"ids": arbeit[i:i+50]})
+            d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status variants(first:250){nodes{id sku title inventoryPolicy availableForSale}}}}}', {"ids": arbeit[i:i+50]})
         except RuntimeError as e:
             print("ABBRUCH (Shopify):", e); break
         for p in (d.get("data") or {}).get("nodes") or []:
@@ -306,14 +306,19 @@ def main():
             unklar += 1
             fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tALLE {len(vs)} Shop-SKUs fehlen bei CJ ({len(live)} lebend) — Ableitung pruefen\n"); fl.flush()
             print(f"  ❔ {p.get('title','')[:45]} — alle {len(vs)} Shop-SKUs fehlen bei CJ ({len(live)} lebend): Ableitung?", flush=True); continue
-        zu_deny = [v for v in fehlend if v["inventoryPolicy"] == "CONTINUE"]
+        # 06.10.2026: nach KAUFBARKEIT, nicht nach Policy. CJ-Ware steht ab Import auf DENY + tracked:false und ist trotzdem
+        # kaufbar — «nur CONTINUE sperren» liess genau diese fehlenden Varianten liegen, und ein reines DENY sperrte nichts
+        # (177/179 «gesperrte» waren weiter kaufbar). ausverkauft.sperren = tracked + DENY + Menge 0, Rücklesen availableForSale.
+        zu_deny = [v for v in fehlend if v.get("availableForSale")]
         if zu_deny and not DRY:
-            r = gql('mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}',
-                    {"p": pid, "v": [{"id": v["id"], "inventoryPolicy": "DENY"} for v in zu_deny]})
-            e = ((r.get("data") or {}).get("productVariantsBulkUpdate") or {}).get("userErrors")
-            if e:
+            import ausverkauft
+            try:
+                ist = ausverkauft.sperren(gql, pid, [v["id"] for v in zu_deny])
+                if any(x is not False for x in ist.values()):
+                    raise RuntimeError(f"Rücklesen: noch kaufbar {[k for k, x in ist.items() if x is not False][:3]}")
+            except Exception as e:
                 print(f"  FEHLER {pid}: {e}", flush=True); unklar += 1
-                fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tDENY-Fehler {str(e)[:60]}\n"); fl.flush(); continue
+                fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tSPERR-Fehler {str(e)[:60]}\n"); fl.flush(); continue
         deny += len(zu_deny)
         fl.write(f"{pid}\t{jetzt:.0f}\tok\t{len(vs)} Shop / {len(live)} CJ / {len(fehlend)} fehlend / {len(zu_deny)} {'wuerde-DENY' if DRY else 'DENY'}\n"); fl.flush()
         if fehlend:
