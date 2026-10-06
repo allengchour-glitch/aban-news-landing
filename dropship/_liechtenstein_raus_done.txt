@@ -1281,3 +1281,4 @@ gid://shopify/Product/15446271066497	produkt	ohne
 gid://shopify/Product/15446271492481	produkt	ohne
 gid://shopify/Product/15446271623553	produkt	ohne
 gid://shopify/Product/15446271656321	produkt	ohne
+gid://shopify/Product/15446271721857	produkt	ohne
