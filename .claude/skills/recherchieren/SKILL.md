@@ -16,6 +16,14 @@ description: Immer wenn im Netz gelernt werden soll - ein YouTube-Link, "schau m
 Ohne diese Marken wird aus „ein Kanal behauptet 2,7 Mio." nach zwei Sessions eine Tatsache im
 Gedächtnis. **Jede übernommene Zahl braucht die Marke direkt daneben.**
 
+## Ohne Session im Netz suchen (06.10.2026)
+
+`python3 tools/recherche.py "frage"` — Groq `openai/gpt-oss-120b`/`-20b` mit dem eingebauten Werkzeug
+`browser_search` (gratis, ~10 s). Quellen kommen aus der Werkzeug-Ausgabe (`URL:`-Zeilen, auch umbrochen, und
+`【n†Titel†domain】`), nicht aus dem Antworttext. **GEMESSEN:** direkte Suche von unserer IP taugt nicht (Bing liefert auf
+«tiktok trend produkte» Pizzerien in Genf, DuckDuckGo 202-Bot-Prüfung); `groq/compound` = 404 auf unseren Schlüsseln;
+Schlüssel 3 zuletzt (Jury-Reserve), sonst 429.
+
 ## YouTube: was geht und was nicht
 
 **Transkripte gehen aus diesem Container NICHT.** `captionTracks` steht im Seitenquelltext, aber
