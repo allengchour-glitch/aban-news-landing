@@ -94,3 +94,4 @@ gid://shopify/Product/15450836631937	1791160911	SKU-Form nicht pruefbar: 'CJ-CJY
 gid://shopify/Product/16603762819463	1791195338	CJ-Code 16900500: Insufficient API points. Used today: 90440, Remaining: 0, Re	CJ-CJYE279118501AZ
 gid://shopify/Product/15450696843649	1791212971	PRODUKT-DA-VARIANTE-WEG: Produkt CJYD2750194 lebt (7 Varianten), Shop-Variante CJYD275019401AZ fehlt	CJ-CJYD275019401AZ
 gid://shopify/Product/15448794497409	1791246375	PRODUKT-DA-VARIANTE-WEG: Produkt CJMJ2918132 lebt (2 Varianten), Shop-Variante CJMJ291813201AZ fehlt	CJ-CJMJ291813201AZ
+gid://shopify/Product/15449431277953	1791260794	CJ-Code 16900500: Insufficient API points. Used today: 75090, Remaining: 0, Re	CJ-CJMY187079002BY
