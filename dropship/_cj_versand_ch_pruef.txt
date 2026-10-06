@@ -4692,3 +4692,4 @@ casual-pullover-638500	2607060227401639100	16	8.66	ok	landeseite
 knitpullover-mit-geradem-kragen-608000	2607060219561608600	16	8.79	ok	landeseite
 beige-blockpullover-627400	2607050332081628000	16	8.79	ok	landeseite
 warm-pullover-fur-herren-639500	2605280214371630000	16	10.55	ok	landeseite
+gruner-oktopus-pulli-617600	2605251155301618200	16	11.60	ok	landeseite
