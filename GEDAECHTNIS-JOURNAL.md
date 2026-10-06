@@ -58,6 +58,13 @@ Bestellanbindung nach Mail an accountmanagement@ricardo.ch ein — Konto «gewer
 Französisch: Agent zog 129 veraltete Kollektionstexte nach (174 Felder, 103 nur der neue ls-verwandt-Block) → `fr_stand.py`
 «vollständig, /fr live».
 
+## 2026-10-06 07:40 · 📮 Meta aus → IG/FB über Metricool: läuft, aber «posted» hiess nur «geplant»
+
+GEMESSEN: meta_token_status abgelaufen; seit 05.10. IG+FB PUBLISHED (Bild, Karussell, Reel, Story); 1× IG ERROR «media could not be
+fetched» (Bild ok, Meta-Abruffehler), Ledger trotzdem `posted`. GETAN: `metricool_ledger_pruefen.mjs` (Bild- + Karussell-Ledger, 2 h
+im Autopilot): PUBLISHED → URL, IG-ERROR → 1 neuer IG-Versuch (Produkt ACTIVE, FB nie doppelt), dann `ig-fehler`. **Jeder neue
+Weg zum Posten braucht sein eigenes Nachmessen — das TikTok-PRUEFEN deckte die IG-Ledger nicht ab.** → `dropship/META-AUS-METRICOOL-2026-10-06.md`
+
 ## 2026-10-06 ~07:30 · 📏 «fix alles» Filter: Zahlengrössen + Grösse im Farbwert — und fast gegen die eigene Hausregel gearbeitet
 
 GEMESSEN live: Farbe/Grösse-Filter wirken (Betreiber-Umstellung), Kategorie fehlt; 4/2'728 Kleider mit Zahlengrössen, 106 in aller
