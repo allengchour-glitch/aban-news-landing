@@ -1,0 +1,36 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-05-3",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 3 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-06T16:21:40.769Z",
+  "dauer_s": 22.1,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 38, offen 127",
+      "Boards auf dem Profil: /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 138 Z.): Titel nicht da",
+      "Bild 65449 Bytes (image/jpeg)",
+      "Bildfeld #storyboard-upload-input fehlt"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-05-3-kein-bildfeld.png"
+    ],
+    "knoepfe": [
+      {
+        "text": "Pin erstellen",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "",
+        "testid": "header-accounts-options-button",
+        "disabled": false
+      }
+    ]
+  }
+}

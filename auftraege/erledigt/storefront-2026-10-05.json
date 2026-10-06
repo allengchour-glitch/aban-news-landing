@@ -1,10 +1,114 @@
 {
+  "id": "storefront-2026-10-05",
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
-  "id": "storefront-2026-10-05",
-  "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]",
-  "stand": "fehler",
-  "begonnen": "2026-10-05T00:03:44.908Z",
-  "dauer_s": 71.1,
-  "fehler": "browserContext.newPage: Target page, context or browser has been closed"
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
+  "stand": "ok",
+  "begonnen": "2026-10-06T16:25:44.035Z",
+  "dauer_s": 36.8,
+  "ergebnis": {
+    "zusammenfassung": "⚠️ 2 von 3 Seiten mit Befund: startseite (1/5 geladen), faq (1/2 geladen)",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/",
+        "erreichbar": false,
+        "geladen": "1/5",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "0/4",
+        "fehlversuche": [
+          {
+            "nr": 2,
+            "kalt": true,
+            "zeichen": null,
+            "grund": "page.goto: Page crashed\nCall log:\n  - navigating to \"https://luxestyle.ch/?frisch=storefront-2026-10-05-2\", waiting until \"load\"\n"
+          },
+          {
+            "nr": 3,
+            "kalt": true,
+            "zeichen": null,
+            "grund": "page.goto: Page crashed\nCall log:\n  - navigating to \"https://luxestyle.ch/?frisch=storefront-2026-10-05-3\", waiting until \"load\"\n"
+          },
+          {
+            "nr": 4,
+            "kalt": true,
+            "zeichen": null,
+            "grund": "page.goto: Page crashed\nCall log:\n  - navigating to \"https://luxestyle.ch/?frisch=storefront-2026-10-05-4\", waiting until \"load\"\n"
+          },
+          {
+            "nr": 5,
+            "kalt": true,
+            "zeichen": null,
+            "grund": "page.goto: Page crashed\nCall log:\n  - navigating to \"https://luxestyle.ch/?frisch=storefront-2026-10-05-5\", waiting until \"load\"\n"
+          }
+        ],
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 6271,
+        "zeichen_spanne": [
+          0,
+          6271
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-05-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen?frisch=storefront-2026-10-05-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3907,
+        "zeichen_spanne": [
+          3907,
+          3907
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-05-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq",
+        "erreichbar": false,
+        "geladen": "1/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "0/1",
+        "fehlversuche": [
+          {
+            "nr": 2,
+            "kalt": true,
+            "zeichen": null,
+            "grund": "page.goto: Page crashed\nCall log:\n  - navigating to \"https://luxestyle.ch/pages/faq?frisch=storefront-2026-10-05-2\", waiting until \"load\"\n"
+          }
+        ],
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3027,
+        "zeichen_spanne": [
+          0,
+          3027
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-05-faq.png"
+      }
+    ]
+  }
 }
