@@ -32,3 +32,4 @@ Sitzungen, Startseite 46 · Speicher 107,7 GB (Grow ab heute) · 29 meistbesucht
 - Tatis Fotos auf Blumenkleid + Midikleid (erste Bilder). KAUFWILLE-Zeile in jeder Keepalive-Meldung.
 - 06.10. 00:30 (Tag 6 war vorgezogen → Tag-7-Arbeit): Bildtausch «uneinig, beide gegen Bild 1» (bisher 36 % frei, unberührt) → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu → `BILDTAUSCH-UNEINIG-2026-10-06.md`
 - 06.10. 12:45 (Tag 7 vorgezogen): Adult-Bildtausch stand still («fehler 5 · tausch 0», Leer-Erkennung am Wortlaut) → `zweitmodell.ist_kontingent_leer`, SCHARF tausch-g 3 / fehler 0, Gehirn-Regel `kontingent-wortlaut`; 153 offen laufen alle 2 h ab → `BILDTAUSCH-KONTINGENT-WORTLAUT-2026-10-06.md`
+- 06.10. 16:45 (Tag 7 vorgezogen): Search Console «Versand/Rückgabe fehlt in offers» → Shop-weite Regel als Organization-Markup, live gültig, Wächter → `GOOGLE-ORG-RICHTLINIEN-2026-10-06.md`
