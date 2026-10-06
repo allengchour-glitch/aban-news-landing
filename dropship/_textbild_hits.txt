@@ -17010,3 +17010,8 @@ gid://shopify/Product/16608455852423	19->0	Memory Cotton Kissen mit Nackenstütz
 gid://shopify/Product/16608455983495	43->0	Kurzarm-Hemd mit Farb-Muster und Kragen
 gid://shopify/Product/16608456114567	39->1	Gedächtnisschaum Nackenstützkissen 60×35×13 cm
 gid://shopify/Product/16608456278407	20->0	Verstellbarer Schraubenschlüssel 200 mm, japanischer Stil
+gid://shopify/Product/16608490815879	97->0	Sitzbezug Classic Skull Universal
+gid://shopify/Product/16608491110791	29->3	Weihnachts-Schlittenkalender aus Schima superba
+gid://shopify/Product/16608491307399	46->0	Sofakissen in Chenille mit chinesischem Muster
+gid://shopify/Product/16608492716423	16->2	Handzangen-Set: Rund-, Flach- und Tschim-Zange
+gid://shopify/Product/16608493339015	22->0	Cartoon 3D Bauchkissen für Sofa und Bett
