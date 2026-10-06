@@ -293,3 +293,4 @@
 2026-10-06T13:16:24.380Z	luxe-epic-elegant.wav	48	haustier	cjreel-1359763644052803584	stimme:nein	anteil
 2026-10-06T13:17:40.735Z	luxe-epic-winter.wav	34	allgemein	cjreel-A540AE1F-4FB7-4FBA-9843-216B0AF2553E	stimme:nein	anteil
 2026-10-06T13:19:08.929Z	luxe-epic-hybrid.wav	30	kueche	cjreel-1734123258338881536	stimme:nein	anteil
+2026-10-06T14:18:04.943Z	luxe-epic-fantasy.wav	22	haustier	cjreel-1601129173983178752	stimme:nein	anteil
