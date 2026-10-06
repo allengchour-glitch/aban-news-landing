@@ -16950,3 +16950,27 @@ gid://shopify/Product/15524697538945	9->1	Reise-Freizeit-Rucksack mit Laptopfach
 gid://shopify/Product/15524698653057	29->1	Kabellose Luftpumpe für Reifen und Bälle
 gid://shopify/Product/15524700389761	25->0	Kupferarmband mit Magneten für Damen
 gid://shopify/Product/15524779622785	12->0	Aufblasbares Kissen aus Polyesterfaser
+gid://shopify/Product/15524857381249	25->1	Futterautomat mit 6 Fächern für Haustiere
+gid://shopify/Product/15524857807233	56->0	Hundehalsband aus Stoff
+gid://shopify/Product/15524858659201	46->2	Reflektierendes Hundegeschirr gepolstert
+gid://shopify/Product/15524864262529	43->3	Kühlendes Hundegeschirr
+gid://shopify/Product/15524865212801	46->0	Brustgeschirr und Leine für Katzen
+gid://shopify/Product/15524868620673	10->0	Reflektierende Hunde-Führleine
+gid://shopify/Product/15524893753729	13->3	Hundeleine mit zwei Kupferhaken
+gid://shopify/Product/15524900143489	132->0	Herren Hemd mit Tiermuster
+gid://shopify/Product/15524901192065	14->0	Herren Fitness-Shirt Kurzarm
+gid://shopify/Product/15524926652801	19->0	Herren Kurzarm Polo-Shirt
+gid://shopify/Product/15524929503617	24->0	Leinenartiges Herrenhemd
+gid://shopify/Product/15524945789313	112->3	Kurzarmhemd und Strandhose
+gid://shopify/Product/15525265703297	36->0	Makeup-Set mit 24 Farb-Lids, 8 Lippen, 4 Rouge, 3 Puderkuche
+gid://shopify/Product/15525461459329	22->1	Metall-Wanddeko fliegender Vogel
+gid://shopify/Product/15525493834113	25->1	Hunde-Brustgeschirr mit Reflektor
+gid://shopify/Product/15525494587777	13->0	Kinder-Isolierflasche 550 ml
+gid://shopify/Product/15525499896193	17->0	Anti-Schlingnapf für Hunde
+gid://shopify/Product/15525508841857	20->0	Multifunktionaler Sandsack für das Krafttraining
+gid://shopify/Product/16603331985799	26->0	Mittellanger Steppmantel mit Kapuze
+gid://shopify/Product/16603334607239	140->0	Langtrench mit Slim-Fit
+gid://shopify/Product/16603338408327	29->1	Slim-Fit Daunenjacke mit weisser Federfüllung
+gid://shopify/Product/16603352760711	21->0	Spiegelleuchte zur Wandmontage mit Fernbedienung
+gid://shopify/Product/16603592556935	38->0	Rosenförmige Tischlampe in Weiss und Rosa
+gid://shopify/Product/16603594326407	20->2	Solarwandlampe Outdoor mit IP44
