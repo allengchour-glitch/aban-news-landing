@@ -184,6 +184,29 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> "$FBL" 2>&1 & )
     echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet (letzter Erfolg vor $(( ( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) ) / 3600 )) h)"
   fi
+  # 06.10.2026: billige Hintergrund-Starter ebenfalls VORN (der Aufseher erreicht späte Blöcke vor dem Neustart oft nicht).
+  # KATEGORIE-FEIN (06.10.2026, Betreiber «feinkategorie und filter verbessern»): grobe Shopify-Kategorie (Typ-Signal) über die
+  # feine Google-Kategorie verfeinern — nur Nachfahren, Titelprobe für Kleid/Rock/Hose/Schmuck/Fitness, Shopifys offizielle
+  # Zuordnung. Stündlich versucht (flock gegen Doppel, Export 6 h im Cache, Ledger idempotent — ~100/min, der Erstlauf über
+  # ~22k braucht mehrere Container-Stunden), Selbsttest vorher.
+  KF=/tmp/kategorie_fein.log
+  if [ -f "$REPO/automation/kategorie_fein.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KF" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 3300 ] && ( cd "$REPO" && timeout 30 python3 automation/kategorie_fein.py --selbsttest > /dev/null 2>&1 ); then
+      touch "$KF"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kategorie_fein.lock; flock -n 9 || exit 0; \
+          SCHARF=1 CAP=30000 timeout 5400 python3 automation/kategorie_fein.py" >> "$KF" 2>&1 9>&- & )
+    fi
+  fi
+  # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
+  # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
+  KM=/tmp/kleider_merkmale.log
+  if [ -f "$REPO/automation/kleider_merkmale.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$KM" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 30 python3 automation/kleider_merkmale.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$KM"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kleider_merkmale.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 1800 python3 automation/kleider_merkmale.py" >> "$KM" 2>&1 9>&- & )
+  fi
   # ⚠️ HERZSCHLAG GLEICH ZU RUNDENBEGINN (29.08.2026). Bis heute stand er nur GANZ AM ENDE
   # der Runde (vor dem sleep 120). Eine Runde dauert aber laenger als die 10-Minuten-Schwelle,
   # gegen die engine_keepalive prueft — allein die 13 Reiniger werden mit je 10 s Abstand
@@ -994,19 +1017,7 @@ while true; do
       grep '^FERTIG' "$GKU" | tail -1 | sed "s/^/$(date -u +%H:%M) Google-Umzug: /"
     fi
   fi
-  # KATEGORIE-FEIN (06.10.2026, Betreiber «feinkategorie und filter verbessern»): grobe Shopify-Kategorie (Typ-Signal) über die
-  # feine Google-Kategorie verfeinern — nur Nachfahren, Titelprobe für Kleid/Rock/Hose/Schmuck/Fitness, Shopifys offizielle
-  # Zuordnung. Stündlich versucht (flock gegen Doppel, Export 6 h im Cache, Ledger idempotent — ~100/min, der Erstlauf über
-  # ~22k braucht mehrere Container-Stunden), Selbsttest vorher.
-  KF=/tmp/kategorie_fein.log
-  if [ -f "$REPO/automation/kategorie_fein.py" ]; then
-    ALTER=$(( $(date +%s) - $(stat -c %Y "$KF" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 3300 ] && ( cd "$REPO" && timeout 30 python3 automation/kategorie_fein.py --selbsttest > /dev/null 2>&1 ); then
-      touch "$KF"
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kategorie_fein.lock; flock -n 9 || exit 0; \
-          SCHARF=1 CAP=30000 timeout 5400 python3 automation/kategorie_fein.py" >> "$KF" 2>&1 9>&- & )
-    fi
-  fi
+  # KATEGORIE-FEIN + KLEIDER-MERKMALE → seit 06.10.2026 am Rundenbeginn (siehe dort).
   # GOOGLE-FEIN-KI (02.10.2026, Betreiber «google push und coole fein kategorien»): ~7'100 Google-Kanal-Produkte in groben
   # Zweigen → Gemini + ChatGPT wählen den Unterpfad, geschrieben nur bei Einigkeit. 2 Arbeiter (4 = ChatGPT-429), flock je Anteil,
   # bis die Fertig-Marke dropship/_google_fein_ki_fertig_KvonN.txt steht (übersteht Container-Neustarts über das Ledger).

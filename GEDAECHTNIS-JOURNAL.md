@@ -44,6 +44,20 @@
 
 
 
+## 2026-10-06 20:35 UTC · 👗 Neue Filterwerte «Kleider-/Rocklänge» und «Ärmellänge» aus dem Titel
+
+Betreiber «neue feinkategorien und filter erstellen?» → Wahl «Länge + Ärmel aus Titel». GEMESSEN: 549 Kollektionen — die
+Feinkategorien (Röcke 273, Armbänder 1'078, Rucksäcke 2'059, Halsketten 427 …) gibt es schon; neue Kollektionen bringen nichts.
+Filter lassen sich NICHT per API anlegen (Search & Discovery = Betreiber-Klick), aber die WERTE schon.
+- Aktiviert: `standardMetaobjectDefinitionEnable` (shopify--skirt-dress-length-type / --sleeve-length-type) +
+  `standardMetafieldDefinitionEnable` (Templates 11190/10015). **Falle:** `pin:true` → «Constrained metafield definitions do not
+  support pinning» → ohne pin.
+- `automation/kleider_merkmale.py` (16/16): eindeutige Titelwörter, zwei Werte = nichts (ausser Spaghetti/Trägerlos schlägt
+  «ärmellos»), nie überschreiben, nur erlaubte Kategorien (Bedingungsliste der Definition). Kanarien: «Langarm-Kleid» ≠ lang,
+  «Midilanges» = Midi (nicht Maxi). Erster Lauf 484 Werte, 0 Fehler, rückgelesen. Mehr Kandidaten, sobald kategorie_fein die
+  Kleider von «Clothing» auf «Dresses» verfeinert (Bedingung verlangt Dresses/Skirts/Tops).
+- Aufseher: Fortura-Bestand, kategorie_fein und kleider_merkmale jetzt am RUNDENBEGINN (billige Hintergrundstarts).
+
 ## 2026-10-06 20:15 UTC · ⏱️ Aufseher erreicht späte Blöcke nicht mehr: Fortura-Bestand 3,5 h ohne zweiten Versuch
 
 GEMESSEN: Fortura-Abgleich PAUSE 16:42 («Shopify antwortete nicht»), Claim 16:37 → nach 2 h hätte der Aufseher neu starten
