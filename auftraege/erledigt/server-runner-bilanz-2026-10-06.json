@@ -1,0 +1,58 @@
+{
+  "id": "server-runner-bilanz-2026-10-06",
+  "typ": "skript",
+  "skript": "server_runner_bilanz.mjs",
+  "stand": "ok",
+  "begonnen": "2026-10-06T21:55:40.702Z",
+  "dauer_s": 0.2,
+  "ergebnis": {
+    "cj_queue_runner.log": {
+      "groesse_mb": 0,
+      "skip_gemini": 0,
+      "angelegt": 0,
+      "skip_gewicht": 0,
+      "punkte_leer": 0,
+      "letzte": ""
+    },
+    "cj_runner2.log": {
+      "groesse_mb": 0,
+      "skip_gemini": 2562,
+      "angelegt": 0,
+      "skip_gewicht": 3,
+      "punkte_leer": 296,
+      "letzte": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 121070, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 121070, Remain"
+    },
+    "cj_runner3.log": {
+      "groesse_mb": 0,
+      "skip_gemini": 9,
+      "angelegt": 0,
+      "skip_gewicht": 0,
+      "punkte_leer": 898,
+      "letzte": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 121070, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 121070, Remain"
+    },
+    "cj_runner4.log": {
+      "groesse_mb": 0,
+      "skip_gemini": 1285,
+      "angelegt": 0,
+      "skip_gewicht": 0,
+      "punkte_leer": 467,
+      "letzte": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 121080, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 121080, Remain"
+    },
+    "cj_runner5.log": {
+      "groesse_mb": 0,
+      "skip_gemini": 47,
+      "angelegt": 0,
+      "skip_gewicht": 0,
+      "punkte_leer": 871,
+      "letzte": "⛔ CJ-Fehler 16900500: Insufficient API points. Used today: 119440, Remaining: 0, R — Zeiger bleibt\nABBRUCH: keine einzige Kategorie lesbar (1 Fehler, zuletzt 16900500: Insufficient API points. Used today: 119440, Remain"
+    },
+    "ki_schluessel_env": [
+      "GROQ_API_KEY:fehlt",
+      "GROQ_API_KEY2:fehlt",
+      "GROQ_API_KEY3:fehlt",
+      "GEMINI_API_KEY:fehlt",
+      "DEEPSEEK_API_KEY:fehlt"
+    ],
+    "gemini_key_datei": "fehlt"
+  }
+}
