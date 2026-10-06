@@ -16949,3 +16949,4 @@ gid://shopify/Product/15524695474561	40->2	Formschöne Schokoladen- und Eiswürf
 gid://shopify/Product/15524697538945	9->1	Reise-Freizeit-Rucksack mit Laptopfach
 gid://shopify/Product/15524698653057	29->1	Kabellose Luftpumpe für Reifen und Bälle
 gid://shopify/Product/15524700389761	25->0	Kupferarmband mit Magneten für Damen
+gid://shopify/Product/15524779622785	12->0	Aufblasbares Kissen aus Polyesterfaser
