@@ -25,7 +25,7 @@ SCHARF = os.environ.get("SCHARF") == "1"
 GROESSE = re.compile(r"grösse|groesse|size", re.I)
 REGELN = [
     (re.compile(r"^(\d{2,3})\s?cm$", re.I), lambda m: f"{m.group(1)} cm"),
-    (re.compile(r"^US (\d{1,2})$"), lambda m: f"US{m.group(1)}"),
+    (re.compile(r"^US (\d{1,2}W?)$"), lambda m: f"US{m.group(1)}"),   # 06.10.: + Plus-Grössen «US 16W»
     (re.compile(r"^Girls (\d+) To (\d+)Y$", re.I), lambda m: f"{m.group(1)}–{m.group(2)} Jahre"),
     (re.compile(r"^(XXS|XS|S|M|L|XL|XXL|XXXL) (\d+) To (\d+)$", re.I), lambda m: f"{m.group(1).upper()} ({m.group(2)}–{m.group(3)})"),
     (re.compile(r"^(XXS|XS|S|M|L|XL|XXL|XXXL) to (XXS|XS|S|M|L|XL|XXL|XXXL)$", re.I), lambda m: f"{m.group(1).upper()}/{m.group(2).upper()}"),

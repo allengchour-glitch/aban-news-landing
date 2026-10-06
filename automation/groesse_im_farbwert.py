@@ -38,7 +38,11 @@ MAX = int(os.environ.get("MAX") or 0)
 
 # Nur eindeutige Grössen-Anhänge. «S», «M», «L», «XL» stehen bewusst NICHT drin: ein
 # Farbwert wie «Navy-M» wäre nicht von einem Farbnamen zu unterscheiden, der auf -M endet.
-ANHANG = re.compile(r'^(.+?)-(\d{1,2}XL|XXS|XXL|XXXL|XS)$', re.I)
+ANHANG = re.compile(r'^(.+?)-(\d{1,2}XL|XXS|XXL|XXXL|XS|\d{2}\s?W|US\s?\d{1,2}W?)$', re.I)
+# 06.10.2026: + US-Plus-Grössen «-16 W»/«-18W» (CJ-Abendkleider: «Grün-16 W», «154Chiffon-18W» neben Grösse US 2–16).
+# Nur ZWEI Ziffern + W — «-W» allein oder «-2W» bleibt unberührt (könnte Farbcode sein). «-10 W» kann auch WATT sein
+# (Ladegerät «Weiss-10 W», Lockenstab): geschützt, weil plan() eine erkannte Grössen-Option verlangt (Kanarienvögel 06.10.).
+# + «-US0»/«-US2» (Spitzen-Abendkleid 616000: Farbe «Komplett Weiss-US0», Grösse «US10»).
 
 
 def gql(q, v=None):
@@ -76,7 +80,7 @@ def plan(p):
         return None, "nur eine Option"
     vs = p["variants"]["nodes"]
     # Grössen-Option: die, deren Werte ueberwiegend wie Groessen aussehen.
-    gr = re.compile(r'^(?:\d{1,2}XL|XXS|XS|S|M|L|XL|XXL|XXXL)$', re.I)
+    gr = re.compile(r'^(?:\d{1,2}XL|XXS|XS|S|M|L|XL|XXL|XXXL|US\s?\d{1,2}W?|\d{2}W)$', re.I)
     kandidat = [o for o in opts
                 if sum(bool(gr.match(v["name"].strip())) for v in o["optionValues"])
                 > len(o["optionValues"]) * 0.6]
@@ -94,7 +98,14 @@ def plan(p):
             m = ANHANG.match(wert.strip())
             if not m:
                 continue
-            basis, groesse = m.group(1).strip(), m.group(2).upper()
+            basis, groesse = m.group(1).strip(), m.group(2).upper().replace(" ", "")
+            us = [v["name"] for v in gopt["optionValues"] if v["name"].upper().startswith("US")]
+            if us:                                   # US-Werte immer «US10»/«US16W»
+                sp = ""                              # Hausregel groessenwert_normieren.py: «US10» (Mehrheit), nie «US 10»
+                if groesse.startswith("US"):
+                    groesse = "US" + sp + groesse[2:]
+                elif groesse.endswith("W") and groesse[:-1].isdigit():
+                    groesse = "US" + sp + groesse      # «16W» → «US16W»
             ziel = dict(sel)
             ziel[name] = basis
             ziel[gopt["name"]] = groesse
