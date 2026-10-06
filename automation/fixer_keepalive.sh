@@ -198,6 +198,17 @@ while true; do
           SCHARF=1 CAP=30000 timeout 5400 python3 automation/kategorie_fein.py" >> "$KF" 2>&1 9>&- & )
     fi
   fi
+  # CJ-LAGER (06.10.2026, Betreiber «cj lagerstatus check und dann unser webseite auch bei alle produkten»): Bestand je Variante
+  # (product/query + features=enable_inventory, 1 Anfrage je Produkt) → Bestand 0 = «ausverkauft» (DENY), zurück = CONTINUE.
+  # NUR im CJ-Vorrang-Fenster direkt nach dem Punkte-Reset (tagsüber ist der Topf vom Grind leer); einmal je Tag, CAP 2000.
+  if [ -f "$REPO/automation/cj_lager_abgleich.py" ] && [ ! -f /tmp/cj_lager_$(date -u +%F).stamp ] \
+     && ( source "$REPO/automation/cj_vorrang_fenster.sh"; cj_vorrang_zeit ) \
+     && ( cd "$REPO" && timeout 30 python3 automation/cj_lager_abgleich.py --selbsttest > /dev/null 2>&1 ); then
+    touch /tmp/cj_lager_$(date -u +%F).stamp
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_cj_lager.lock; flock -n 9 || exit 0; \
+        CAP=2000 timeout 4800 python3 automation/cj_lager_abgleich.py" >> /tmp/cj_lager.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start cj_lager_abgleich (Bestand je Variante, CAP 2000, Vorrang-Fenster)"
+  fi
   # ALTER-IM-FARBWERT (06.10.2026, Verbesserungsrunde): «White-6 TO 9M» als einzige Option → Farbe + neue Option «Grösse»
   # («6–9 Monate»); liest den täglichen Optionen-Export von farbmuster_filter.py, nur eindeutige Fälle, Ledger.
   AF=/tmp/alter_im_farbwert.log
