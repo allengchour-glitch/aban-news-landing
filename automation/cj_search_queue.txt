@@ -12,16 +12,16 @@
 # 2026-10-04 Semrush «adventskalender» 27100/Mt (frauen 8100, mann 5400, kinder 4400): GEFÜLLTE Kalender fehlen.
 #   Keine Kosmetik zum Auftragen, keine Süssigkeiten/Tee, keine Lizenzen (LEGO/Disney/Pokémon); vor 03.11. bestellbar.
 # 2026-10-05 semrush draft-ersatz: Entwürfe ranken bei Google (katzenklo möbel 320/Mt Platz 26, camping wasserkanister 210/34, corduroy rucksack 90/28) → nach Import Redirect umstellen, Ledger dropship/semrush/_draft_ersatz_2026-10-05.tsv
-search:cat litter box furniture
-search:collapsible water container with tap
-search:corduroy backpack
+#done search:cat litter box furniture
+#done search:collapsible water container with tap
+#done search:corduroy backpack
 #done search:advent calendar jewelry
 #done search:advent calendar charm bracelet
 #done search:kids advent calendar toys
 #done search:christmas countdown calendar toy cars
-search:advent calendar hair accessories
-search:advent calendar socks
-search:pet advent calendar dog toys
+#done search:advent calendar hair accessories
+#done search:advent calendar socks
+#done search:pet advent calendar dog toys
 #done search:pla filament 1.75mm
 #done search:cordless drill set
 #done search:mini cordless angle grinder

@@ -34,7 +34,7 @@ def _repo():
 REPO = _repo()
 LEDGER = os.path.join(REPO, "dropship/_google_bild_tausch.tsv")
 IDS = os.path.join(REPO, "dropship/_google_bild_tausch_ids.tsv")
-GETAUSCHT = ("tausch", "tausch-g", "tausch-q", "nachgesetzt")
+GETAUSCHT = ("tausch", "tausch-g", "tausch-q", "tausch-u", "nachgesetzt")
 _GEWARNT = set()
 
 

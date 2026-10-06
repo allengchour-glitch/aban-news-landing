@@ -14,7 +14,7 @@ import bildtausch_sperre as bs
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STAND = os.path.join(REPO, "dropship/_google_feedback_stand.json")
 KLASSEN = ("Inappropriate image", "Restricted adult content", "Personalized advertising: Sexual interests", "Promotional overlay on image")
-ARTEN = ("tausch", "tausch-g", "tausch-q", "nachgesetzt", "rueckweg", "kontrolle", "uneinig", "behalten")
+ARTEN = ("tausch", "tausch-g", "tausch-q", "tausch-u", "nachgesetzt", "rueckweg", "kontrolle", "uneinig", "behalten")
 
 
 def main():
