@@ -58,6 +58,14 @@ Bestellanbindung nach Mail an accountmanagement@ricardo.ch ein — Konto «gewer
 Französisch: Agent zog 129 veraltete Kollektionstexte nach (174 Felder, 103 nur der neue ls-verwandt-Block) → `fr_stand.py`
 «vollständig, /fr live».
 
+## 2026-10-06 ~07:30 · 📏 «fix alles» Filter: Zahlengrössen + Grösse im Farbwert — und fast gegen die eigene Hausregel gearbeitet
+
+GEMESSEN live: Farbe/Grösse-Filter wirken (Betreiber-Umstellung), Kategorie fehlt; 4/2'728 Kleider mit Zahlengrössen, 106 in aller
+Mode mit vier verschiedenen Bedeutungen. GETAN: 4 Kleider belegt beschriftet, `groesse_im_farbwert.py` + «-16 W»/«-US0» (3 Produkte,
+69 Varianten), Watt-Kanarienvögel übersprungen. **Falle: ich schrieb «US 10», `groessenwert_normieren.py` normiert seit Wochen auf
+«US10» — zwei Wächter hätten sich täglich gegenseitig umgeschrieben. Vor jedem Umbenennen: `ls automation | grep <feld>` und die
+Regeln des vorhandenen Normierers lesen.** → `dropship/FILTER-GROESSEN-2026-10-06.md`
+
 ## 2026-10-06 04:40 · 🔫 Verbesserungsrunde: «Laser-Boresight für Gewehr» ACTIVE — Waffen-Regel kannte «Gewehr» nur als Spielzeug-Nachbildung
 
 GEMESSEN: Neuimporte 8 h, Katalog-Titelsuche → 2 echte Fälle (Boresight, Gewehrriemen). GETAN: `heikel_zweck.json` +
@@ -18312,3 +18320,4 @@ Verschoben am 04.10.2026:
 - 2026-10-04 · ⛔ **KORRIGIERT 04.10. 20:40:** hier stand eine Zeile über vier «Guardrails» (`cj_image_backfill`, `size_table_autofill`, `delivery_time_default`, `complementary_products_link`) — **keine davon existiert** (0 Treffer im Repo), und `_day5_audit.json` zählte je «2» statt 265/265/199 Google-Blocker. Beides entfernt; echte Tag-5-Messung: `automation/top_produktseiten_check.py` + `dropship/TOP30-PRODUKTSEITEN-2026-10-04.md`. Lehre: Wächter nie nennen, ohne `ls automation/` geprüft zu haben.
 - 2026-10-02 · 🎛️ **«feinkategorie filter verbessern?»: Facette «Farbe» las die Option «Farbe & Grösse» (8 Produkte; Kleider zeigten nur «Gelb»), keine Grösse/Kategorie, 151 Produkttypen → `produkttyp_vereinheitlichen.py` (2'620, Sperre gegen TYPE-Regeln, POD nie) + `farbmuster_filter.py` (19 Grundfarben → shopify.color-pattern, 13'612; nur Kategorien mit Merkmal «Color», sonst kippt die Charge), täglich; Filter-Umstellung = Betreiber-Klick Search & Discovery (keine API).** Facette nach Quelle prüfen, nicht nach Beschriftung → `dropship/FILTER-FEINKATEGORIE-2026-10-02.md`
 - 2026-10-02 · 🐾 **Tierschutz/Biozid: SEO-Lauf zeigte «Anti-Bell Halsband» mit Kontaktstiften im Bild (Text sagte nur «Vibration»); TSchV 76 Abs. 6 verbietet JEDEN Bellstopper (Zweck genügt), Floh-Halsbänder = Biozid mit Zulassungspflicht → Bildprüfung 35 Kandidaten (13 Strom, 4 davon ohne Wirkwort), 35 DRAFT, 4 Regeln + `nicht` je Regel in `tierschutz_geraet.json` (Node = Python 10/10); Nebenfunde Abhör-Tracker (StGB 179sexies) + JBL-Nachahmung gedraftet.** Rechts-Klassen brauchen eine ZWECK-Regel neben der Wirk-Regel → `dropship/TIERSCHUTZ-BIOZID-2026-10-02.md`
+- 2026-10-02 · 📦 **«ab wann bei iris cj melden»: #1020 als ⛔ «63h ohne Scan» gemeldet, CJ zeigt «Label created, Warehouse processing» seit 30.09. 04:48 — gemessen Übergabe 1–5 T → `versand_stillstand.py`: Info ab 48 h mit «Iris erst ab …», ⛔ «JETZT Iris melden» ab 120 h.** Alarm-Schwelle an der gemessenen Normalzeit → Journal 02.10.
