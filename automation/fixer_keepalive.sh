@@ -573,7 +573,9 @@ while true; do
   # NICHT pausiert wird `cj_fulfill_runner` — der bearbeitet echte Kundenbestellungen.
   VSTD=$(date -u +%H); VMIN=$(date -u +%M | sed 's/^0//')
   VORRANGZEIT=0
-  if [ "$VSTD" = "16" ] || { [ "$VSTD" = "17" ] && [ "${VMIN:-0}" -lt 30 ]; }; then VORRANGZEIT=1; fi
+  # 06.10.2026: Fenster aus cj_vorrang_fenster.sh (Reset gemessen 00:00 UTC; um 16:00 war der Topf jeden Tag leer).
+  source "$REPO/automation/cj_vorrang_fenster.sh"
+  if cj_vorrang_zeit; then VORRANGZEIT=1; fi
   for N in cj_bild_backfill cj_variantenbild cj_kosten_backfill schulstart_import alt_text_backfill frosch_maske_import; do
     if [ "$VORRANGZEIT" = "1" ] && [ "$N" != "cj_kosten_backfill" ]; then
       # 01.10.2026 (Grow, «fülle bilder»): cj_bild_backfill darf ins Fenster — ausserhalb verbraucht der Grind das CJ-Tageslimit
@@ -717,6 +719,8 @@ while true; do
   # 01.10.2026 GROW: Deckel 1'000 statt 250 Videos (Shopify-Hilfe; Upload-Probe wieder offen). Gemessen: die Tagesläufe
   # starteten zu irgendeiner Stunde, wenn der Grind die CJ-Punkte längst verbraucht hatte (Logs enden nach «Kandidaten»,
   # 0 Videos) → Start nur noch IM VORRANG-FENSTER (16:00–17:30, Grind ruht) und 250 statt 60.
+  # 06.10.2026: Fenster liegt jetzt DIREKT nach dem Punkte-Reset (gemessen 00:00 UTC, cj_vorrang_fenster.sh + cj_reset_wache.py) —
+  # um 16:00 war der Topf jeden Tag leer (05.10. 16:14: sofort 16900500, 0 Videos).
   # 02.10.2026 «grow videos push»: 375 von 403 Prüfungen (93 %) fanden KEIN Video → Vorrangliste jetzt aus dem Video-Index
   # (`video_prio_index.py`: nur Produkte, deren CJ-pid laut product/list ein Video hat; sichtbare zuerst; 502 offen).
   if [ "$VORRANGZEIT" = "1" ] && [ ! -f /tmp/videos_$(date -u +%F) ]; then
@@ -2686,7 +2690,8 @@ JSON
   # engine_keepalive.sh — sonst startet DIESER Block die Runner 20 Minuten nach dem Stopp wieder.
   PAUSE_ZURUF=0; PBF="$REPO/dropship/_GRIND_PAUSE_BIS"
   if [ -f "$PBF" ] && [ "$(tr -dc 0-9 < "$PBF")" -gt "$(date -u +%s)" ] 2>/dev/null; then PAUSE_ZURUF=1; fi
-  if { [ "$(date -u +%H)" = "16" ] && [ "$PRIO_OFFEN" = "1" ]; } || [ "$PAUSE_ZURUF" = "1" ]; then
+  source "$REPO/automation/cj_vorrang_fenster.sh"
+  if { cj_vorrang_zeit && [ "$PRIO_OFFEN" = "1" ]; } || [ "$PAUSE_ZURUF" = "1" ]; then
     touch /tmp/cj_prio_fenster
     pkill -f "cj_runner_template.sh" 2>/dev/null
     echo "$(date -u +%H:%M) Prio-Fenster: Grind-Runner pausiert (Punkte den Prio-Jobs)"
