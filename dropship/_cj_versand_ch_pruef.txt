@@ -4633,3 +4633,9 @@ mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 urne-fur-tierasche-feuchtigkeitsdicht-401474	2071503298321813506	16	4.92	ok	landeseite
 keramikurne-fur-haustierasche-125185	2071491682256011265	16	14.37	ok	landeseite
+transparente-wasserdichte-kosmetiktasche-612900	2606281118081613700	16	6.90	ok	landeseite
+farb-und-pigmentstifthalter-600500	2606250352481602200	16	11.37	ok	landeseite
+4er-set-faltbare-aufbewahrungstaschen-mit-reis-820097	2070062083126558722	0	-	KEINE CH-Option → DRAFT	landeseite
+samt-armband-aufbewahrungsbeutel-611900	2606240548231612500	16	6.17	ok	landeseite
+schachbrett-schneidebrett-aus-kautschuk-und-eb-627800	2607021035261628400	16	15.32	ok	landeseite
+selbstklebende-leinen-wandverkleidung-629400	2607020916101620100	0	-	KEINE CH-Option → DRAFT	landeseite

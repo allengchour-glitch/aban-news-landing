@@ -19878,3 +19878,32 @@ gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/5833
 gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460712327	Brown-13.5cm	Braun-13.5 cm	2026-10-05T16:58Z
 gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460745095	Brown-14.5cm	Braun-14.5 cm	2026-10-05T16:58Z
 gid://shopify/Product/16607167283591	Farbe	gid://shopify/ProductOptionValue/58332460777863	Brown-15.5cm	Braun-15.5 cm	2026-10-05T16:58Z
+gid://shopify/Product/15523903537537	Farbe	gid://shopify/ProductOptionValue/58348292899207	Black	Schwarz	2026-10-06T21:02Z
+gid://shopify/Product/15523903537537	Farbe	gid://shopify/ProductOptionValue/58348292964743	White	Weiss	2026-10-06T21:02Z
+gid://shopify/Product/15523903537537	Farbe	gid://shopify/ProductOptionValue/58348292997511	Yellow	Gelb	2026-10-06T21:02Z
+gid://shopify/Product/16603587576199	Farbe	gid://shopify/ProductOptionValue/58348294832519	Blue 1139	Blau 1139	2026-10-06T21:03Z
+gid://shopify/Product/16603587576199	Farbe	gid://shopify/ProductOptionValue/58348294865287	Brown 1143	Braun 1143	2026-10-06T21:03Z
+gid://shopify/Product/16603587576199	Farbe	gid://shopify/ProductOptionValue/58348294898055	Blue 1140	Blau 1140	2026-10-06T21:03Z
+gid://shopify/Product/16603595735431	Farbe	gid://shopify/ProductOptionValue/58348297814407	Sea Blue	Meerblau	2026-10-06T21:03Z
+gid://shopify/Product/16603616608647	Farbe	gid://shopify/ProductOptionValue/58348299682183	Man Blue 6671	Herren Blau 6671	2026-10-06T21:04Z
+gid://shopify/Product/16603616838023	Farbe	gid://shopify/ProductOptionValue/58348303679879	Apricot	Aprikose	2026-10-06T21:04Z
+gid://shopify/Product/16603616936327	Farbe	gid://shopify/ProductOptionValue/58348305383815	Apricot	Aprikose	2026-10-06T21:04Z
+gid://shopify/Product/16603617329543	Farbe	gid://shopify/ProductOptionValue/58348309971335	Apricot	Aprikose	2026-10-06T21:04Z
+gid://shopify/Product/16603690008967	Farbe	gid://shopify/ProductOptionValue/58348317409671	Blue	Blau	2026-10-06T21:04Z
+gid://shopify/Product/16603690008967	Farbe	gid://shopify/ProductOptionValue/58348317442439	Green	Grün	2026-10-06T21:04Z
+gid://shopify/Product/16603690008967	Farbe	gid://shopify/ProductOptionValue/58348317475207	Reddish Brown	Rotbraun	2026-10-06T21:04Z
+gid://shopify/Product/16603690008967	Farbe	gid://shopify/ProductOptionValue/58348317507975	Apricot	Aprikose	2026-10-06T21:04Z
+gid://shopify/Product/16603690238343	Farbe	gid://shopify/ProductOptionValue/58348319244679	Blue	Blau	2026-10-06T21:04Z
+gid://shopify/Product/16603690238343	Farbe	gid://shopify/ProductOptionValue/58348319277447	Army Green	Armeegrün	2026-10-06T21:04Z
+gid://shopify/Product/16603690238343	Farbe	gid://shopify/ProductOptionValue/58348319310215	Green	Grün	2026-10-06T21:04Z
+gid://shopify/Product/16603690238343	Farbe	gid://shopify/ProductOptionValue/58348319342983	Black	Schwarz	2026-10-06T21:04Z
+gid://shopify/Product/16603737653639	Farbe	gid://shopify/ProductOptionValue/58348319867271	Black	Schwarz	2026-10-06T21:04Z
+gid://shopify/Product/16603739128199	Farbe	gid://shopify/ProductOptionValue/58348321767815	White	Weiss	2026-10-06T21:04Z
+gid://shopify/Product/16603739128199	Farbe	gid://shopify/ProductOptionValue/58348321833351	Dark Blue	Dunkelblau	2026-10-06T21:04Z
+gid://shopify/Product/16603739128199	Farbe	gid://shopify/ProductOptionValue/58348321866119	Dark Brown	Dunkelbraun	2026-10-06T21:04Z
+gid://shopify/Product/16603739128199	Farbe	gid://shopify/ProductOptionValue/58348321898887	Blue	Blau	2026-10-06T21:04Z
+gid://shopify/Product/16603739128199	Farbe	gid://shopify/ProductOptionValue/58348321931655	Green	Grün	2026-10-06T21:04Z
+gid://shopify/Product/16603739259271	Farbe	gid://shopify/ProductOptionValue/58348322652551	Light Green	Hellgrün	2026-10-06T21:04Z
+gid://shopify/Product/16603739586951	Farbe	gid://shopify/ProductOptionValue/58348324422023	Type A	Typ A	2026-10-06T21:04Z
+gid://shopify/Product/16603739586951	Farbe	gid://shopify/ProductOptionValue/58348324454791	Type B	Typ B	2026-10-06T21:04Z
+gid://shopify/Product/16603739586951	Farbe	gid://shopify/ProductOptionValue/58348324487559	Type C	USB-C	2026-10-06T21:04Z
