@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 13:16 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-06 13:16 UTC, Stand 2026-10-06 13:18 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **647**
-- Optionen mit englischen Werten (Kandidaten): 27
+- Produkte gesehen: **1'208**
+- Optionen mit englischen Werten (Kandidaten): 48
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 84
+- Werte mit unbekanntem Wort (unverändert): 234
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 1
+- übersprungen «kollision-nach-uebersetzung»: 2
 - übersprungen «kleidungsstueck-im-wert»: 1
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -26,6 +26,7 @@
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
 - `15450839777665` [Farbe] xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264: 120cm pink → 120 cm Pink; 120cm black → 120 cm Schwarz; 120cm navy blue → 120 cm Marineblau; 120cm grey → 120 cm Grau; 150cm pink → 150 cm Pink
+- `15443497025921` [Farbe] smartwatch-activeone-fitness-anrufe-101440: Braun Aprikose Gelb → Braun-Aprikose-Gelb; Braun Aprikose Braun → Braun-Aprikose-Braun; Braun Aprikose → Braun-Aprikose
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -62,5 +63,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`shell` 8, `⟨satzbau:adjektiv-vor-nomen⟩` 7, `case` 6, `gift` 6, `chest` 6, `pad` 6, `belt` 4, `alluvial` 3, `spring` 3, `ck` 3, `background` 2, `grid` 2, `imitating` 2, `stone` 2, `spot` 2, `shoe` 2, `buckle` 2, `replenishment` 2, `color` 1, `ribbon` 1, `hidden` 1, `elevator` 1, `tea` 1, `letters` 1, `delightful` 1, `mosquito` 1, `coil` 1, `copper` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `antique` 1, `wipe` 1, `embroidery` 1, `basic` 1, `2nd` 1, `generation` 1, `angola` 1, `scarlett` 1, `mocha` 1, `snowfield` 1, `ice` 1, `lotus` 1, `oat` 1, `sky` 1, `dyed` 1, `fireworks` 1, `angora` 1, `sugar` 1, `stature` 1, `regular` 1, `ballet` 1, `chain` 1, `face` 1, `cologne` 1, `gardenia` 1
+`generation` 31, `stone` 15, `suit` 13, `high` 12, `carbon` 12, `45se6` 12, `belt` 11, `to9mm` 11, `shell` 10, `platinum` 9, `case` 8, `chain` 8, `⟨satzbau:adjektiv-vor-nomen⟩` 7, `moissanite` 7, `strap` 7, `tea` 6, `gift` 6, `chest` 6, `pad` 6, `no` 5, `code` 4, `boxes` 4, `milk` 4, `bag` 4, `alluvial` 3, `spring` 3, `ice` 3, `ck` 3, `color` 2, `background` 2, `grid` 2, `imitating` 2, `spot` 2, `shoe` 2, `buckle` 2, `sugar` 2, `replenishment` 2, `strip` 2, `magnetic` 2, `ladder` 2, `eye` 2, `diamond` 2, `dark` 2, `plum` 2, `makeup` 2, `bucket` 2, `ribbon` 1, `hidden` 1, `elevator` 1, `letters` 1, `delightful` 1, `mosquito` 1, `coil` 1, `copper` 1, `foundation` 1, `on` 1, `little` 1, `spotted` 1, `antique` 1, `wipe` 1
 
