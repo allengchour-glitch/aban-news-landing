@@ -505,6 +505,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-06 · ⛔ **Betreiber «1 nein 2 nein»: KEINE Creator-Anfragen, KEINE eigenen Gesichts-/Handyvideos — nicht erneut vorschlagen; Reichweite nur automatisch.** → Journal 06.10. 19:40
 - 2026-10-06 · 📣 **«ja mach alles gratis sachen»: TikTok Median 280 Aufrufe/Post vs Pinterest 1 → TikTok 6 h + täglicher Abendpost 21–23 Uhr (×8 gemessen), Pinterest 48 h; Creator-Vorlage `dropship/CREATOR-ANFRAGE.md`; TikTok-Bio-Link erst ab 1'000 Followern (falsch empfohlen).** Vor Empfehlung Code lesen → Journal 06.10. 19:25
 - 2026-10-06 · 🔎 **«tool installieren selber programmieren»: eigenes Perplexity `tools/recherche.py` (Groq gpt-oss + `browser_search`, gratis, Quellen aus der Werkzeug-Ausgabe) + `automation/hype_recherche.py` täglich → `dropship/HYPE-RECHERCHE.md` mit Gegenprobe am Bestand; Bing von unserer IP = Pizzerien in Genf, compound = 404.** Automatik kann jetzt selbst im Netz nachsehen → Journal 06.10. 19:05
 - 2026-10-06 · 📦 **Fortura Stufe 2 live: Muster vom Betreiber → `fortura_xml.py` (Opacc.ORDERS, Template-Abgleich, 7/7) + Engine lädt `ORDERS_LX<nr>.xml` einmalig hoch, liest DESADV (Tracking, Teillieferung, 48-h-Alarm); Schalter `_fortura_xml_aktiv`; Test nur mit Attrappe (Upload = echte Bestellung).** → `dropship/FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`

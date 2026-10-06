@@ -44,6 +44,11 @@
 
 
 
+## 2026-10-06 19:40 UTC · ⛔ Betreiber-Entscheid: keine Creator-Anfragen, keine eigenen Gesichtsvideos
+
+Auf die Vorschläge «Creator anschreiben» und «Handyvideos mit Gesicht» antwortete der Betreiber «1 nein 2 nein».
+Nicht erneut vorschlagen. Reichweite nur über Automatik (Takt, Zeitfenster, Hooks, Themen, Hype-Reels, Google-Gratis).
+
 ## 2026-10-06 19:25 UTC · 📣 «ja mach alles gratis sachen»: Kraft von Pinterest zu TikTok, Abendpost, Creator-Vorlage
 
 GEMESSEN (`social/_lernen.json`, 90 T): Median Aufrufe/Post TikTok 280 (n 26), IG-Reel 30 (38), IG-Bild 15 (46),

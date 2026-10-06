@@ -1,5 +1,8 @@
 # Kleine Schweizer Creator gratis gewinnen (06.10.2026, Betreiber «ja mach alles gratis sachen»)
 
+> ⛔ **ABGELEHNT vom Betreiber 06.10.2026 19:40 UTC («1 nein 2 nein»): keine Creator-Anfragen UND keine eigenen
+> Gesichts-/Handyvideos.** Nicht erneut vorschlagen; Reichweite nur über automatische Wege. Datei bleibt als Archiv.
+
 **Warum:** Gemessen (social_lernen, 90 T, 297 Posts): TikTok Median 280 Aufrufe/Post, Instagram-Reel 30, Pinterest 1.
 Eigene Posts erreichen fast nur die eigenen wenigen Follower. Ein Video bei einer Creatorin mit 2'000–20'000 Followern
 bringt fremdes Publikum — Kosten nur die Ware (Einkauf CHF 10–25).
