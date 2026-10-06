@@ -50,6 +50,18 @@ QUELLE: Open-Weight-Videomodell LTX 2.5 (BEHAUPTUNG: seit 08/2026, 1,6 Mio. Down
 starke Grafikkarte». GEMESSEN: Container ohne GPU (nvidia-smi fehlt), Hetzner-Server 4 GB ohne GPU → lokal nicht lauffähig.
 Reels kommen weiter aus echten CJ-Produktvideos (zeigt das echte Produkt; KI-Video kann Ware erfinden — Trikot-Falle Regel 4).
 
+## 2026-10-06 21:30 UTC · 🔌 CJ-MCP angebunden — aber KEIN Weg am Punktetopf vorbei
+
+Betreiber gab den MCP-Schlüssel (Hauptkonto CJ5452995) und zwei Zusatzkonten (CJ5602869, CJ5603488; API- + MCP-Schlüssel) —
+alle nur in /tmp/cj_mcp.env bzw. /tmp/cj_konten.env (600), nie im Repo.
+- GEMESSEN: `https://developers.cjdropshipping.com/mcp/<Schlüssel>` — Schlüssel ROH im Pfad (URL-kodiert: «apiKey URL 登录已下线»),
+  Streamable HTTP ohne Session-Id, 62 Werkzeuge. `get_product_detail(productSku, features="enable_inventory")` = Bestand je Variante.
+- **Falle:** `get_rate_limit_status` zeigt «Lesen 10/s», die ersten 2 Abfragen gingen durch, während REST «Remaining 0» meldete →
+  Fehlschluss «eigener Topf». 60 Proben: «Insufficient API points … Required: 10» und «QPS limit is 1 time/1second» — MCP rechnet
+  über dasselbe Konto ab. **Erst messen, dann umbauen: zwei Treffer sind keine Messung.**
+- Zusatzkonten: «Your API access has been disabled» → Betreiber muss unter my.html#/authorize/APIStores aktivieren.
+- `automation/cj_mcp.py` (lesend, Bestell-/Zahl-Werkzeuge gesperrt) bleibt als Rückfall; Lagerabgleich nutzt REST über cj_takt.
+
 ## 2026-10-06 21:30 UTC · 🔒 «schaue memory das hatte ich mal»: DENY sperrt nichts — und bei CJ ist DENY der Normalzustand
 
 Betreiber-Hinweis auf die Lehre vom 08.09. («DENY allein tut gar nichts», drei Schalter). GEMESSEN 06.10.:

@@ -141,22 +141,54 @@ def main():
     print(f"CJ-Ware aktiv {len(P)} · fällig {len(arbeit)} (CAP {CAP}) · eigene DENY {len(eigene)} · {'DRY' if DRY else 'SCHARF'}", flush=True)
     stat = collections.Counter(); bsp = []; geprueft_format = False
     led = open(LEDGER if not DRY else os.devnull, "a", encoding="utf-8")   # DRY schreibt keinen Ledger (sonst gilt «geprüft»)
-    for pid in arbeit:
-        p = P[pid]; shop_v = [{"id": v["id"], "sku": v.get("sku"), "kaufbar": v.get("availableForSale")} for v in p["v"]]
+    # 06.10. 21:25: CJ-MCP nur auf Wunsch (USE_MCP=1) — gemessen: gleicher Punktetopf + gleiche Konto-QPS 1/s wie REST,
+    # aber OHNE den gemeinsamen cj_takt → würde mit den Grind-Runnern um die QPS kollidieren («Too Many Requests»).
+    mcp = None
+    if os.environ.get("USE_MCP") == "1":
+        try:
+            import cj_mcp
+            mcp = cj_mcp.Sitzung()
+        except Exception as e:
+            print(f"  MCP nicht verfügbar ({str(e)[:80]}) → REST", flush=True)
+
+    def holen(pid):
+        shop_v = [{"id": v["id"], "sku": v.get("sku"), "kaufbar": v.get("availableForSale")} for v in P[pid]["v"]]
         ps = next((produkt_sku(v["sku"]) for v in shop_v if produkt_sku(v["sku"])), None)
         if not ps:
-            stat["keine-cj-sku"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tkeine-cj-sku\n"); continue
+            return pid, shop_v, None, "keine-cj-sku"
+        if mcp:
+            for versuch in range(3):
+                try:
+                    return pid, shop_v, mcp.produkt(ps), ""
+                except Exception as e:
+                    fehler = str(e)
+                    if "Insufficient API points" in fehler:
+                        return pid, shop_v, None, "PUNKTE-LEER"
+                    if "not found" in fehler.lower() or "不存在" in fehler:
+                        return pid, shop_v, {}, "cj-kennt-nicht"
+                    time.sleep(2 * (versuch + 1))
+            return pid, shop_v, None, f"mcp {fehler[:50]}"
         d = w.cj(f"/api2.0/v1/product/query?productSku={ps}&features=enable_inventory")   # ohne features: inventories None (gemessen 06.10.)
         msg = str(d.get("message") or "")
         if "Insufficient API points" in msg or str(d.get("code")) == "16900500":
+            return pid, shop_v, None, "PUNKTE-LEER"
+        return pid, shop_v, (d.get("data") if isinstance(d.get("data"), dict) else {}), f"code {d.get('code')} {msg[:40]}"
+
+    from concurrent.futures import ThreadPoolExecutor
+    pool = ThreadPoolExecutor(1)   # Konto-QPS 1/s gilt für REST UND MCP (gemessen 06.10.)
+    for pid, shop_v, data, grund in pool.map(holen, arbeit):
+        p = P[pid]
+        if grund == "PUNKTE-LEER":
             stat["punkte-leer"] += 1; print("  CJ-Punkte leer — sauberer Abbruch", flush=True); break
-        data = d.get("data") or {}
+        if data is None:
+            stat["keine-cj-sku" if grund == "keine-cj-sku" else "unklar"] += 1
+            led.write(f"{pid}\t{jetzt:.0f}\t{grund or 'unklar'}\n"); continue
         vs = data.get("variants") if isinstance(data, dict) else None
         if not vs:
-            stat["unklar"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tunklar\tcode {d.get('code')} {msg[:50]}\n"); continue
+            stat["unklar"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund or 'keine Varianten'}\n"); continue
         if not geprueft_format:
             if not any(isinstance(v.get("inventories"), list) for v in vs):
-                print(f"  ⛔ KANARIENVOGEL: variants[].inventories fehlt ({ps}) — CJ-Format geändert, Abbruch ohne Schreiben", flush=True)
+                print(f"  ⛔ KANARIENVOGEL: variants[].inventories fehlt ({p.get('title', '')[:40]}) — CJ-Format geändert, Abbruch ohne Schreiben", flush=True)
                 stat["format-fehlt"] += 1; break
             geprueft_format = True
         deny, zurueck, unklar = entscheiden(shop_v, vs, eigene)
@@ -178,6 +210,9 @@ def main():
             stat["produkte-ganz-ausverkauft"] += int(len(deny) == len(shop_v))
         led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:{','.join(zurueck) if not DRY else ''}\n")
         led.flush()
+        if stat["geprüft"] % 500 == 0:
+            print(f"  … {stat['geprüft']} geprüft · ausverkauft {stat['varianten-ausverkauft']} · wieder da {stat['varianten-wieder-da']}", flush=True)
+    pool.shutdown(wait=False, cancel_futures=True)
     led.close()
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# CJ-Lagerabgleich ({datetime.datetime.utcnow():%Y-%m-%d %H:%M} UTC, {'DRY' if DRY else 'SCHARF'})\n\n"
