@@ -9598,3 +9598,24 @@ gid://shopify/Product/15431384859009	1791177240	unklar	SKU-DOPPELT: 4 Shop-Varia
 gid://shopify/Product/15431385121153	1791177240	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
 gid://shopify/Product/15431384269185	1791212975	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
 gid://shopify/Product/15431384498561	1791212975	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384269185	1791248916	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384498561	1791248916	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384859009	1791248916	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431385121153	1791248916	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15448887001473	1791248916	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
+gid://shopify/Product/15449428525441	1791248916	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450831749505	1791248916	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450836631937	1791248916	unklar	SKU-Form nicht pruefbar: 'CJ-CJY 104172601AZ'
+gid://shopify/Product/15450836861313	1791248916	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15450850460033	1791248916	unklar	SKU-DOPPELT: 2 Shop-Varianten teilen einen CJ-Kern, 2 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15455372476801	1791248916	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455372542337	1791248916	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455372640641	1791248916	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455373033857	1791248916	ok	66 Shop / 66 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455373230465	1791248916	ok	22 Shop / 22 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455373296001	1791248916	ok	31 Shop / 31 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455373427073	1791248916	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455373590913	1791248916	ok	54 Shop / 54 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455374049665	1791248916	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455374082433	1791248916	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455375098241	1791248916	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
