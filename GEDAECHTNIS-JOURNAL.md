@@ -50,7 +50,7 @@ QUELLE: Open-Weight-Videomodell LTX 2.5 (BEHAUPTUNG: seit 08/2026, 1,6 Mio. Down
 starke Grafikkarte». GEMESSEN: Container ohne GPU (nvidia-smi fehlt), Hetzner-Server 4 GB ohne GPU → lokal nicht lauffähig.
 Reels kommen weiter aus echten CJ-Produktvideos (zeigt das echte Produkt; KI-Video kann Ware erfinden — Trikot-Falle Regel 4).
 
-## 2026-10-06 21:30 UTC · 🔌 CJ-MCP angebunden — aber KEIN Weg am Punktetopf vorbei
+## 2026-10-06 21:30 UTC · 🔌 CJ-MCP angebunden (Nachtrag 21:40: Zusatzkonten nach Betreiber «cj an» mit frischem Token weiter 1600014 «API access disabled» — QUELLE (Recherche, unbelegt): neue Konten brauchen Shop-Autorisierung/Verifizierung bzw. Kontostufe; Auth (getAccessToken) geht trotzdem) — aber KEIN Weg am Punktetopf vorbei
 
 Betreiber gab den MCP-Schlüssel (Hauptkonto CJ5452995) und zwei Zusatzkonten (CJ5602869, CJ5603488; API- + MCP-Schlüssel) —
 alle nur in /tmp/cj_mcp.env bzw. /tmp/cj_konten.env (600), nie im Repo.
