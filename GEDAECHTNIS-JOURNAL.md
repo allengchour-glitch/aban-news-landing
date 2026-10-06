@@ -44,6 +44,39 @@
 
 
 
+## 2026-10-06 19:40 UTC · ⛔ Betreiber-Entscheid: keine Creator-Anfragen, keine eigenen Gesichtsvideos
+
+Auf die Vorschläge «Creator anschreiben» und «Handyvideos mit Gesicht» antwortete der Betreiber «1 nein 2 nein».
+Nicht erneut vorschlagen. Reichweite nur über Automatik (Takt, Zeitfenster, Hooks, Themen, Hype-Reels, Google-Gratis).
+
+## 2026-10-06 19:25 UTC · 📣 «ja mach alles gratis sachen»: Kraft von Pinterest zu TikTok, Abendpost, Creator-Vorlage
+
+GEMESSEN (`social/_lernen.json`, 90 T): Median Aufrufe/Post TikTok 280 (n 26), IG-Reel 30 (38), IG-Bild 15 (46),
+Pinterest 1 (176). Zeitfenster «tiktok 21–24» Gewicht 2.17 (×8, n 5). Themen: Mode 1.49, Haustier 1.44, Schmuck 1.36.
+- `social_autopilot.sh`: TikTok 8 h → 6 h, Pinterest 24 h → 48 h, NEU Abendpost: einmal je Tag 19–21 Uhr Zürich mit
+  `VORLAUF_MIN` bis 21:05 + `FENSTER_H=2` → Termin 21–23 Uhr; setzt die TikTok-Marke (kein Doppel kurz danach). Backup /tmp/social_autopilot.vor-abend.sh.
+- **Korrektur meiner Antwort an den Betreiber:** «TikTok-Bio-Link setzen» geht NICHT — TikTok gibt den Bio-Link erst ab
+  1'000 Followern (steht seit 23.09. im Autopiloten, DIREKTLINK_TEXT=1). Vor einer Empfehlung den Code lesen.
+- `dropship/CREATOR-ANFRAGE.md`: DM-Vorlage, Kriterien, #werbung-Pflicht (UWG), Messtabelle.
+
+## 2026-10-06 19:05 UTC · 🔎 «tool installieren selber programmieren»: eigenes Perplexity, Hype-Recherche ohne Session
+
+Anlass: TikTok «5 Konnektoren für Claude» (Perplexity, Composio, HyperFrames, Firecrawl, Playwright). Bestand GEMESSEN:
+Browser `tools/browser.mjs` (Selbsttest 12/12), HyperFrames-Probe 28.09., Firecrawl + WebSearch nur in einer Session.
+Lücke: die Automatik konnte nie selbst im Netz nachsehen — der Dauerauftrag «Hype-Produkte recherchieren» hing an Sessions.
+Perplexity kostet; Composio ersetzt nichts, was die Konnektoren nicht schon können.
+- **GEMESSEN:** Groq `gpt-oss-120b` + `tools:[{type:"browser_search"}]`, `tool_choice:"required"` → 8–11 s, ~12k Tokens,
+  echte Quellen (tokconnect.com Oktober-Report, playfulmedia.de 01.10., interiordaily.com 24.09.). `groq/compound`: 404.
+  Bing von unserer IP: Pizzerien in Genf auf eine TikTok-Frage; DuckDuckGo: 202. Schlüssel 3 sofort 429 (Jury-Reserve) → zuletzt.
+- **Falle:** `URL:` steht teils auf der nächsten Zeile (`L1: URL:` / `L2: https://…`) und Treffer-Titel brechen um →
+  Zeilennummern entfernen, dann suchen. Erste Fassung lieferte «L2:» als Quelle.
+- **Falle:** das Extraktionsmodell baute Suchwörter wie «HausSparschweinBank» → 13/13 Themen = 0 im Bestand. Mit Beispielen
+  für Grundwörter (Heizjacke, Whiskeyglas, Vernebler, Wasserwaage) → 14 Themen, 5 neu mit Ware. Kanarie «Ladestation» 121.
+- **Falle:** Marker «heikel» traf «Tür**klingel**» (klinge) und «Magnetische Handy-Halterung» (magnet) → `klinge(?!l)`,
+  magnet nur mit Armband/Therapie/Schmuck.
+- Werkzeuge: `tools/recherche.py` (6/6), `automation/hype_recherche.py` (9/9) täglich im Aufseher ab 06 UTC →
+  `dropship/HYPE-RECHERCHE.md`. THEMEN ändert weiter nur die Verbesserungsrunde.
+
 ## 2026-10-06 17:12 UTC · 🌙 «Ziel heute 1 Verkauf»: Abendaktion Gratisversand bis 24 Uhr
 GEMESSEN: 36 Sitzungen heute, 1 Checkout, 0 Kauf; Klaviyo-Listen 2/4 Profile; Versand CHF 7 = grösste Checkout-Hürde. GETAN:
 `abendaktion.py` (automatischer Gratisversand-Rabatt bis 21:59 UTC, Leiste, Warenkorb-Zeitbedingung, Aufräumen stündlich im

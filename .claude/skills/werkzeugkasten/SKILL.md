@@ -56,6 +56,8 @@ Einzeiler-Köder liess die Regel dreimal «0» melden, während der Anlassfall i
 | Werkzeug | tut |
 |---|---|
 | `tools/preis_marge.mjs` | Rohmarge des Katalogs aus Verkaufs- und Einkaufspreis (`inventoryItem.unitCost`): Verlustfälle, dünne Margen, Median je Preisklasse, Wirkung von WELCOME10. Daten in `dropship/preise-kosten-*.csv` | `… tools/preis_marge.mjs` |
+| `tools/recherche.py` | **eigenes «Perplexity» (06.10.)**: Frage → Groq `gpt-oss-120b` mit `browser_search` (sucht + öffnet Seiten serverseitig, gratis) → Antwort + Quellen-URLs **aus der Werkzeug-Ausgabe** (nicht aus dem Text). Läuft OHNE Session, also auch im Aufseher. `--ablegen` → `dropship/recherche/`, `--json`, `--selbsttest` (6/6). Alles darin ist QUELLE | `python3 tools/recherche.py "frage"` |
+| `automation/hype_recherche.py` | täglicher Hype-Vorschlag: Recherche → Produktarten → Gegenprobe `productsCount title:*wort*` (Kanarie «Ladestation» > 0) → `dropship/HYPE-RECHERCHE.md`; THEMEN ändert nur die Runde | Aufseher täglich ab 06 UTC |
 | `tools/yt_lernen.mjs` | Titel, Kanal, Datum, Aufrufe, Dauer und Beschreibung samt **Kapitelmarken** einer YouTube-Seite. Transkripte gehen nicht — siehe Skill `recherchieren` |
 | `tools/tiktok_analyze.py` | echte Leistungsdaten des eigenen TikTok-Kontos (`--insecure` im Sandkasten) |
 

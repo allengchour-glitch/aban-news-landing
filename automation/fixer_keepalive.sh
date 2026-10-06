@@ -1385,6 +1385,15 @@ if [ -f "$REPO/automation/google_org_richtlinien.py" ] && [ ! -f /tmp/google_org
   esac
   echo "$GO" >> /tmp/google_org_richtlinien.log
 fi
+# --- Hype-Recherche OHNE Session (06.10.2026, Betreiber «tool installieren selber programmieren»): eigenes «Perplexity»
+#     (tools/recherche.py, Groq gpt-oss + browser_search) → Produktarten → Gegenprobe productsCount → dropship/HYPE-RECHERCHE.md.
+#     Täglich einmal; THEMEN in hype_kuratieren.py ändert weiter nur die Verbesserungsrunde (Ablehnungsklassen).
+if [ -f "$REPO/automation/hype_recherche.py" ] && [ ! -f /tmp/hype_recherche_$(date -u +%F).stamp ] && [ "$(date -u +%H)" -ge 6 ]; then
+  touch /tmp/hype_recherche_$(date -u +%F).stamp
+  HR=$(cd "$REPO" && timeout 400 python3 automation/hype_recherche.py 2>&1 | tail -1)
+  echo "$(date -u +%F\ %H:%M) $HR" >> /tmp/hype_recherche.log
+  case "$HR" in *FEHLER*|*kaputt*) echo "$(date -u +%H:%M) ⚠️ $HR" ;; esac
+fi
   # 05.10.2026 (Fixlauf preis-marge): EK-Lücke CJ + Neuware-Verlustschutz, täglich. 87 aktive CJ-Produkte ohne EK waren für
   # preis_verlustschutz unsichtbar (10 echte Verlustbringer, 47 bei CJ ausgelistet); Neuimporte kennt der Tagesläufer erst mit dem
   # nächsten Voll-Export (371 Varianten unter Boden am 05.10.). ek_luecke_cj.py: Backfill/Nachtrag NUR_IDS → Verlustschutz live →
