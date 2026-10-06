@@ -1,0 +1,335 @@
+{
+ "stand": "2026-10-06",
+ "gebuehr": 0.0005,
+ "marge_min": 0.005,
+ "zeitraeume": {
+  "2015 bis heute": {
+   "Long 1×": {
+    "funding_0.01": {
+     "cagr": 0.47451247168019517,
+     "endwert": 96.70105391608712,
+     "einbruch": -0.8670867885758267,
+     "liquidiert": null,
+     "gebuehren": 0.028102173900724906,
+     "funding": 64.8094846619617
+    },
+    "funding_0.03": {
+     "cagr": 0.13083761057324717,
+     "endwert": 4.2526521641747275,
+     "einbruch": -0.9245430811518508,
+     "liquidiert": null,
+     "gebuehren": 0.013005863270649166,
+     "funding": 25.50701483023567
+    }
+   },
+   "Long 2×": {
+    "funding_0.01": {
+     "cagr": 0.24104042890149002,
+     "endwert": 12.708798427366357,
+     "einbruch": -0.9934034325928155,
+     "liquidiert": null,
+     "gebuehren": 0.9369643949943238,
+     "funding": 46.78436194166031
+    },
+    "funding_0.03": {
+     "cagr": -0.20021198746839042,
+     "endwert": 0.07207122936528794,
+     "einbruch": -0.9994537767519509,
+     "liquidiert": null,
+     "gebuehren": 0.15998889376026132,
+     "funding": 14.595382288201408
+    }
+   },
+   "Long 3×": {
+    "funding_0.01": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2020-03-12",
+     "gebuehren": 1.8667171124106379,
+     "funding": 12.651495528732461
+    },
+    "funding_0.03": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2020-03-12",
+     "gebuehren": 0.28911903986778253,
+     "funding": 5.969057175091543
+    }
+   },
+   "Long 5×": {
+    "funding_0.01": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2015-01-14",
+     "gebuehren": 0.005328170379928821,
+     "funding": 0.009732264193260353
+    },
+    "funding_0.03": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2015-01-14",
+     "gebuehren": 0.005301290508243845,
+     "funding": 0.028686647225320747
+    }
+   },
+   "Long 10×": {
+    "funding_0.01": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2015-01-03",
+     "gebuehren": 0.005875371218911325,
+     "funding": 0.0054190858540591165
+    },
+    "funding_0.03": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2015-01-03",
+     "gebuehren": 0.005905371218911325,
+     "funding": 0.01620325756217735
+    }
+   },
+   "Schwankungsziel × 2": {
+    "funding_0.01": {
+     "cagr": 0.4027738100660774,
+     "endwert": 53.7560313908397,
+     "einbruch": -0.8862338900746913,
+     "liquidiert": null,
+     "gebuehren": 1.2441360123044998,
+     "funding": 73.71701642393104
+    },
+    "funding_0.03": {
+     "cagr": 0.04674029295013393,
+     "endwert": 1.712205880272921,
+     "einbruch": -0.9583644326045463,
+     "liquidiert": null,
+     "gebuehren": 0.17421058306178244,
+     "funding": 27.23791166824087
+    }
+   },
+   "Trend 200 Long/Short 1×": {
+    "funding_0.01": {
+     "cagr": 0.34971488917545046,
+     "endwert": 34.141907579810756,
+     "einbruch": -0.8594359795522133,
+     "liquidiert": null,
+     "gebuehren": 1.3957359508741831,
+     "funding": 6.000339143584225
+    },
+    "funding_0.03": {
+     "cagr": 0.29583215642959027,
+     "endwert": 21.13448923327232,
+     "einbruch": -0.869782391885214,
+     "liquidiert": null,
+     "gebuehren": 0.9661068704041844,
+     "funding": 15.264551218099918
+    }
+   },
+   "Trend 200 Long/Short 2×": {
+    "funding_0.01": {
+     "cagr": 0.07159295227810869,
+     "endwert": 2.2569891873199737,
+     "einbruch": -0.9983968212971749,
+     "liquidiert": null,
+     "gebuehren": 1.2619842760671325,
+     "funding": 9.693551585786127
+    },
+    "funding_0.03": {
+     "cagr": 0.004298861240001894,
+     "endwert": 1.051797196028144,
+     "einbruch": -0.9982942864398706,
+     "liquidiert": null,
+     "gebuehren": 0.6434915754988741,
+     "funding": 15.214708019152836
+    }
+   },
+   "Nur Short unter 200-Tage-Schnitt 1×": {
+    "funding_0.01": {
+     "cagr": -0.11102810276089403,
+     "endwert": 0.2501952759511375,
+     "einbruch": -0.8569655804752317,
+     "liquidiert": null,
+     "gebuehren": 0.019133978493962426,
+     "funding": -0.22010284801056051
+    },
+    "funding_0.03": {
+     "cagr": -0.03501743671407742,
+     "endwert": 0.6572851530270909,
+     "einbruch": -0.8118048104729036,
+     "liquidiert": null,
+     "gebuehren": 0.028156020934406646,
+     "funding": -0.9645407742802296
+    }
+   }
+  },
+  "2022 bis heute (ungesehen)": {
+   "Long 1×": {
+    "funding_0.01": {
+     "cagr": 0.015465948216554226,
+     "endwert": 1.0759067083274712,
+     "einbruch": -0.7299136347784201,
+     "liquidiert": null,
+     "gebuehren": 0.0007134638036737031,
+     "funding": 0.5261251636148494
+    },
+    "funding_0.03": {
+     "cagr": -0.20568163865271005,
+     "endwert": 0.3336275737329788,
+     "einbruch": -0.7857098057636818,
+     "liquidiert": null,
+     "gebuehren": 0.0008946340101837082,
+     "funding": 0.8283048545404199
+    }
+   },
+   "Long 2×": {
+    "funding_0.01": {
+     "cagr": -0.2178951806846937,
+     "endwert": 0.3098709865229499,
+     "einbruch": -0.9429640156983665,
+     "liquidiert": null,
+     "gebuehren": 0.004281625433443372,
+     "funding": 0.41988151267895124
+    },
+    "funding_0.03": {
+     "cagr": -0.4701089151460096,
+     "endwert": 0.04843547674400311,
+     "einbruch": -0.9739306773961427,
+     "liquidiert": null,
+     "gebuehren": 0.0023963666696480935,
+     "funding": 0.5393502987538249
+    }
+   },
+   "Long 3×": {
+    "funding_0.01": {
+     "cagr": -0.5173699231510364,
+     "endwert": 0.03102778386744362,
+     "einbruch": -0.9920444365295691,
+     "liquidiert": null,
+     "gebuehren": 0.008738760252790563,
+     "funding": 0.19249893352622532
+    },
+    "funding_0.03": {
+     "cagr": -0.7488255576818161,
+     "endwert": 0.0013791419812429553,
+     "einbruch": -0.9994232395845305,
+     "liquidiert": null,
+     "gebuehren": 0.005103338451352365,
+     "funding": 0.2491529528019026
+    }
+   },
+   "Long 5×": {
+    "funding_0.01": {
+     "cagr": -0.9353205172065377,
+     "endwert": 2.1417928818835255e-06,
+     "einbruch": -0.9999995327577709,
+     "liquidiert": null,
+     "gebuehren": 0.009907745085116949,
+     "funding": 0.05527520149545301
+    },
+    "funding_0.03": {
+     "cagr": -0.9790880545658713,
+     "endwert": 9.842676393397079e-09,
+     "einbruch": -0.999999997130918,
+     "liquidiert": null,
+     "gebuehren": 0.009029342192529616,
+     "funding": 0.14527032433010914
+    }
+   },
+   "Long 10×": {
+    "funding_0.01": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2022-01-21",
+     "gebuehren": 0.013053454508578395,
+     "funding": 0.02859222317994198
+    },
+    "funding_0.03": {
+     "cagr": -1.0,
+     "endwert": 0.0,
+     "einbruch": -1.0,
+     "liquidiert": "2022-01-21",
+     "gebuehren": 0.012960386478314934,
+     "funding": 0.08220317089056116
+    }
+   },
+   "Schwankungsziel × 2": {
+    "funding_0.01": {
+     "cagr": -0.05240662664790241,
+     "endwert": 0.7736673390936009,
+     "einbruch": -0.8364340137799003,
+     "liquidiert": null,
+     "gebuehren": 0.013118614126970218,
+     "funding": 0.797479777867126
+    },
+    "funding_0.03": {
+     "cagr": -0.32870021363740265,
+     "endwert": 0.14958555572135995,
+     "einbruch": -0.9163017254585009,
+     "liquidiert": null,
+     "gebuehren": 0.007113441966058745,
+     "funding": 1.0396095928658102
+    }
+   },
+   "Trend 200 Long/Short 1×": {
+    "funding_0.01": {
+     "cagr": 0.3357990081235165,
+     "endwert": 3.975789710447994,
+     "einbruch": -0.5554991081207266,
+     "liquidiert": null,
+     "gebuehren": 0.10004980176639586,
+     "funding": 0.3114324766616062
+    },
+    "funding_0.03": {
+     "cagr": 0.30154915000849525,
+     "endwert": 3.512753397743134,
+     "einbruch": -0.6700883855774535,
+     "liquidiert": null,
+     "gebuehren": 0.09356858085328876,
+     "funding": 1.1124785427503678
+    }
+   },
+   "Trend 200 Long/Short 2×": {
+    "funding_0.01": {
+     "cagr": 0.35340409823558394,
+     "endwert": 4.231857498314111,
+     "einbruch": -0.8579283486919608,
+     "liquidiert": null,
+     "gebuehren": 0.2965324783423962,
+     "funding": 1.2014023621181569
+    },
+    "funding_0.03": {
+     "cagr": 0.3583183789661315,
+     "endwert": 4.305612241214155,
+     "einbruch": -0.9015588771526625,
+     "liquidiert": null,
+     "gebuehren": 0.2991674152569087,
+     "funding": 3.8053310976465653
+    }
+   },
+   "Nur Short unter 200-Tage-Schnitt 1×": {
+    "funding_0.01": {
+     "cagr": 0.07564482060865863,
+     "endwert": 1.415694369448502,
+     "einbruch": -0.56547808925241,
+     "liquidiert": null,
+     "gebuehren": 0.02768316220113512,
+     "funding": -0.35511249507571446
+    },
+    "funding_0.03": {
+     "cagr": 0.1893841914358494,
+     "endwert": 2.285967395024662,
+     "einbruch": -0.5010262015552349,
+     "liquidiert": null,
+     "gebuehren": 0.03654352341119141,
+     "funding": -1.375781934742489
+    }
+   }
+  }
+ }
+}

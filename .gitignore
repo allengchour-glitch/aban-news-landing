@@ -122,3 +122,4 @@ tools/trading/ki_bot/STOP
 data/ki-bot.json
 data/ki-bot-broker.json
 data/krypto-bot.json
+tools/trading/daten/BTC-USD_ohlc.json
