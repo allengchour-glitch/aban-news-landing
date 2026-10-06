@@ -4913,3 +4913,7 @@ gid://shopify/Product/15427237675393	ersetzt
 gid://shopify/Product/15427237708161	ersetzt
 gid://shopify/Product/15427237740929	ersetzt
 gid://shopify/Product/15427237937537	ersetzt
+gid://shopify/Product/15427237970305	ersetzt
+gid://shopify/Product/15427238003073	ersetzt
+gid://shopify/Product/15427238035841	ersetzt
+gid://shopify/Product/15427238068609	ersetzt
