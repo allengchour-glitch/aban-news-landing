@@ -4672,3 +4672,5 @@ jacquard-pullover-fur-herren-623800	2604140641011624400	16	14.00	ok	landeseite
 pflegevolle-bommel-sonnenkleid-619000	2607060227371619800	16	7.43	ok	landeseite
 floral-strandkleid-638800	2607060209501639700	16	7.15	ok	landeseite
 versatiler-kleid-611400	2607060117351612100	16	6.77	ok	landeseite
+blumenapfel-611300	2607060032311611900	16	7.43	ok	landeseite
+schwarzes-oder-blaues-kleid-mit-sequinen-622400	2607051431371623000	16	8.79	ok	landeseite
