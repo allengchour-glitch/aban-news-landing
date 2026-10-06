@@ -4702,3 +4702,5 @@ apricot-polsterpulli-619900	2603210810331610200	16	6.33	ok	landeseite
 farbenfrohes-pullover-616400	2603190834201616900	16	11.00	ok	landeseite
 strickpullover-mit-streifen-629400	2603190603111629800	16	9.07	ok	landeseite
 kardigan-sweater-621000	2603180748171621400	16	8.53	ok	landeseite
+farbblock-pullover-636001	2603180313491636400	16	9.07	ok	landeseite
+casual-langarm-pullover-638200	2603171427321638700	16	10.88	ok	landeseite
