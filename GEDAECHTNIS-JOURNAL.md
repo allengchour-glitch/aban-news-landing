@@ -39,6 +39,14 @@
 
 
 
+
+## 2026-10-06 16:00 UTC · 📬 Mail-Durchsicht: Fortura-Muster da, Ricardo-Feed abgelehnt, Microsoft-Sperre weg
+Fortura (Papini) schickte Orders-Muster/Template, Delvry-Template, DataFeed-CSV — **Gmail-Konnektor liefert nur Anhang-IDs, keinen
+Inhalt** (get_message FULL_CONTENT ohne Daten, RAW nicht unterstützt) → Betreiber «In Drive speichern», dann Drive-Konnektor lesen.
+Ricardo: Feed-Warteliste ohne Aussicht, manuell empfohlen. Microsoft Advertising: Store-Sperre per Einspruch aufgehoben. Metricool
+10:31 Fehler → `metricool_ledger_pruefen` hat neu geplant, veröffentlicht. Search Console: shippingDetails/hasMerchantReturnPolicy/
+aggregateRating fehlen im Produkt-JSON-LD (gemessen: Offer ohne beide Felder) — nicht kritisch, Google-Runde. CJ-Ticket wartet.
+
 ## 2026-10-06 15:40 UTC · 🚚 «verbessere»: Warenkorb-Drawer zeigte keine Versandkosten
 GEMESSEN: Kleider-Landeseiten 14 T 563 Sitzungen → 8 Warenkorb → 6 Checkout → 0 Kauf (Provence 4/4 Checkout, 0 Kauf); 5/7 Abbruch-
 Körbe unter CHF 45 sahen CHF 7 erst im Checkout; Tarif CH 7.00, gratis ab 45 (Versprechen 50); Drawer-Snippet `cart-summary`
