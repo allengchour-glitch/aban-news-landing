@@ -44,6 +44,14 @@
 
 
 
+## 2026-10-06 22:25 UTC · 📦 «fix fortuna»: Fortura-Bestand 26 h eingefroren — Eimer leer, Helfer gab nach 3 min auf
+GEMESSEN: zwei PAUSEN rc=2 (16:42, 20:39 UTC) «Shopify antwortete nicht», letzter Erfolg 05.10. 20:19. Token (12:18) gültig,
+Probe-Abfrage 141/141 Seiten ok. Zur selben Zeit brach kategorie_fein «40x gedrosselt» ab → Eimer leer; `gql()` in
+fortura_bestand_sync.mjs gab nach 20 kurzen Versuchen auf und nannte keinen Grund. GETAN: Wartezeit aus throttleStatus bis
+max(Anfrage, 600) Punkte (≤ 30 s/Runde), 40 Runden, HTTP 429/5xx mit Backoff, letzter Grund im Log («abgebrochen nach Seite N
+(Grund: …)»). Lauf von Hand: **1'117 Varianten nachgeführt (12 auf 0), offen 0**, Stempel 22:24, Pause-Marke weg.
+LEHRE: dieselbe Klasse wie «drossel-ungeduldig» (03.10.) — die Gehirn-Regel sah nur Python; JS-Helfer mit eigenem gql() fallen durch.
+
 ## 2026-10-06 22:05 UTC · 🖥️ Hetzner: Server-Grind verbrannte ~39k CJ-Punkte/Tag ohne ein einziges Produkt
 Betreiber «hetzner verbessern und für die automation». GEMESSEN (Aufträge server_zustand/server_runner_bilanz, nur lesend):
 /tmp (tmpfs 1,9 GB) 97 % voll, numpy/PIL fehlen, und die CJ-Runner liefen dort OHNE Text-KI-Schlüssel → 3'903× skip(gemini),

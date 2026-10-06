@@ -125,16 +125,30 @@ async function newToken() {
 if (!TOK) TOK = await newToken();
 if (!TOK) { console.error('OFFEN: kein Shopify-Token (weder ' + TOKFILE + ' noch SHOPIFY_CLIENT_ID/SECRET). Nichts geschrieben.'); process.exit(2); }
 
+// 06.10.2026 (zwei PAUSEN rc=2, 16:42 + 20:39 UTC, «Shopify antwortete nicht»): Token gültig, Abfrage nachgemessen
+// 141/141 Seiten ok. Zur selben Zeit brach kategorie_fein «40x gedrosselt» ab — der Eimer war leer, und dieser Helfer
+// gab nach 20 kurzen Versuchen (~3 min) auf, ohne einen Grund zu nennen. Jetzt wie kaufwille_zeile.gql: Wartezeit aus
+// throttleStatus bis wieder max(Anfrage, 600) Punkte da sind (≤ 30 s je Runde), 40 Runden, letzter Grund in gqlGrund.
+let gqlGrund = '';
 async function gql(query, variables) {
-  for (let a = 0; a < 20; a++) {
+  for (let a = 0; a < 40; a++) {
     let j;
     try {
       const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOK }, body: JSON.stringify({ query, variables }) });
-      if (r.status === 401 || r.status === 403) { if (!await newToken()) break; continue; }
+      if (r.status === 401 || r.status === 403) { gqlGrund = `HTTP ${r.status}`; if (!await newToken()) { gqlGrund += ' (kein neuer Token: SHOPIFY_CLIENT_ID/SECRET fehlen)'; break; } continue; }
+      if (r.status === 429 || r.status >= 500) { gqlGrund = `HTTP ${r.status}`; await sleep(Math.min(30000, 3000 * (a + 1))); continue; }
       j = JSON.parse(await r.text());
-    } catch { await sleep(2000 * (a + 1)); continue; }
-    if (j.data) return j;
-    if (JSON.stringify(j.errors || '').includes('Throttled')) { await sleep(2000 + 800 * a); continue; }
+    } catch (e) { gqlGrund = `Netz: ${String(e && e.message || e).slice(0, 80)}`; await sleep(Math.min(30000, 2000 * (a + 1))); continue; }
+    if (j.data) { gqlGrund = ''; return j; }
+    const err = JSON.stringify(j.errors || '');
+    if (err.includes('Throttled')) {
+      const k = j.extensions?.cost || {}, t = k.throttleStatus || {};
+      const fehlt = Math.max(Number(k.requestedQueryCost) || 0, 600) - (Number(t.currentlyAvailable) || 0);
+      const s = fehlt > 0 ? fehlt / (Number(t.restoreRate) || 50) : 2;
+      gqlGrund = `Throttled (${a + 1}x, Eimer ${t.currentlyAvailable ?? '?'})`;
+      await sleep(Math.min(30, Math.max(2, s + 1)) * 1000); continue;
+    }
+    gqlGrund = `GraphQL: ${err.slice(0, 160)}`;
     await sleep(2000);
   }
   return null; // gescheiterte Anfrage ist KEIN Ergebnis — Aufrufer behandelt das als offen
@@ -170,7 +184,7 @@ while (true) {
   cursor = p.pageInfo.endCursor;
   await sleep(700);
 }
-if (leseFehler) { console.error('OFFEN: Varianten-Abfrage abgebrochen (Shopify antwortete nicht). Nichts geschrieben.'); process.exit(2); }
+if (leseFehler) { console.error(`OFFEN: Varianten-Abfrage abgebrochen nach Seite ${seiten} (Grund: ${gqlGrund || 'unbekannt'}). Nichts geschrieben.`); process.exit(2); }
 console.log(`Shop: ${live.length} Varianten mit SKU fortura-* auf ${seiten} Seiten`);
 
 /* ---------- Abgleich ---------- */
