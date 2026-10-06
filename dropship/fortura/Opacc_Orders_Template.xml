@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Opacc.ORDERS>									<!-- Pflicht - Definition für Nachrichtentyp ORDERS (Bestellungen) -->
+	<DOC>										<!-- Pflicht - Bestell Dokument -->
+		<HEADER>								<!-- Pflicht - Kopf-Daten -->
+			<DOC_NO></DOC_NO>					<!-- Pflicht - Ihre Auftragsnummer -->
+			<SHIPMENT></SHIPMENT>				<!-- Optional - Versandart (zugelassener Wert: EXPRESS) -->
+			<DELIVERYDATE></DELIVERYDATE>		<!-- Optional - Lieferdatum -->
+			<TEXT></TEXT> 						<!-- Optional - Hinweistext pro Dokument. Wird auf Lieferschein nicht angedruckt -->
+		</HEADER>
+		<CUSTOMER>								<!-- Pflicht - Kunden-Daten -->
+			<CUST_NO></CUST_NO>					<!-- Pflicht - Ihre Kundennummer bei der Fortura -->
+		</CUSTOMER>
+		<DELIVERYADDR>							<!-- Pflicht - Lieferadress-Daten -->
+			<COMPANY></COMPANY>					<!-- Optional - Lieferadresse Firmenname -->
+			<FIRSTNAME></FIRSTNAME>				<!-- Pflicht - Lieferadresse Vorname -->
+			<LASTNAME></LASTNAME>				<!-- Pflicht - Lieferadresse Nachname -->
+			<EXTRALINE></EXTRALINE>				<!-- Optional - Lieferadresse zusatz Zeile -->
+			<STREET></STREET>					<!-- Pflicht - Lieferadresse Strasse + Nr. -->
+			<ZIP></ZIP>							<!-- Pflicht - Lieferadresse PLZ -->
+			<CITY></CITY>						<!-- Pflicht - Lieferadresse ORT -->
+			<EMAIL></EMAIL>						<!-- Pflicht - Lieferadresse Mailadresse (für DPD-PRO) -->
+		</DELIVERYADDR>			
+		<POSITIONS>								<!-- Pflicht - Liste der Bestellpositionen -->
+			<POS>								<!-- Pflicht - Bestellposition [kann mehrfach vorkommen] -->
+				<POS_NO></POS_NO>				<!-- Optional - Fortlaufende Positionsnummer -->
+				<ARTICLE_NO></ARTICLE_NO>		<!-- Pflicht - Fortura Artikelnummer -->
+				<EAN></EAN>						<!-- Optional - Artikel EAN Nummer -->
+				<QUANTITY></QUANTITY>			<!-- Pflicht - Menge der Position -->
+				<TEXT></TEXT> 					<!-- Optional - Hinweistext pro Position. Wird auf Lieferschein nicht angedruckt -->
+			</POS>
+			<POS>								<!-- Pflicht - Bestellposition (kann mehrfach vorkommen) -->
+				<POS_NO></POS_NO>				<!-- Optional - Fortlaufende Positionsnummer -->
+				<ARTICLE_NO></ARTICLE_NO>		<!-- Pflicht - Fortura Artikelnummer -->
+				<EAN></EAN>						<!-- Optional - Artikel EAN Nummer -->
+				<QUANTITY></QUANTITY>			<!-- Pflicht - Menge der Position -->
+				<TEXT></TEXT> 					<!-- Optional - Hinweistext pro Position. Wird auf Lieferschein angedruckt -->
+			</POS>
+		</POSITIONS>
+	</DOC>
+</Opacc.ORDERS>
+

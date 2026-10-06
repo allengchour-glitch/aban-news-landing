@@ -3,7 +3,7 @@
 
 
 
-## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (Stand 17:10: 2 ✅ Betreiber hat CJ geantwortet · 3 ✅ «ok» = Ricardo ruht · 1 offen)
+## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (Stand 17:40: alle 3 ✅ — 1: Betreiber lud die Muster hoch → Stufe 2 live, `FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`)
 1. **Fortura hat die Bestell-Muster geschickt** (Papini, 06.10. 14:56: `Opacc_Orders_Muster.xml`, `Opacc_Orders_Template.xml`,
    `Opacc_Delvry_Template.xml`, `Art_DataFeed (Beispiel).CSV`). Der Gmail-Zugang hier kann **keine Anhänge herunterladen**.
    → In Gmail die Mail öffnen → bei den 3 XML-Dateien «In Drive speichern» (Ordner egal). Dann baut die nächste Runde Stufe 2 des
