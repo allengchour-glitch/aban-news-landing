@@ -14766,3 +14766,13 @@ gid://shopify/Product/16604821094791	rock	Sommer-Set: Crop-Top und Faltenrock, S
 gid://shopify/Product/16604838592903	muetze	Weihnachtsmütze mit Pailletten, Blau
 gid://shopify/Product/16604840952199	anhaenger	Weihnachts-Holzanhänger mit Namen, 11 Varianten
 gid://shopify/Product/16604841214343	muetze	Weihnachtsdeko-Figur aus weichem Stoff, rote Zipfelmütze
+gid://shopify/Product/16604861268359	pullover	Haustierpullover in Lila im Cardigan-Stil
+gid://shopify/Product/16604867297671	armband	Edelstahl-Gliederarmband mit Strass für Smartwatch
+gid://shopify/Product/16604867428743	pullover	Hundepullover mit Ärmeln für die Vorderbeine
+gid://shopify/Product/16604872900999	jacke	Angel-Kapuzenjacke mit UV-Schutz
+gid://shopify/Product/16604877095303	shirt	Taktisches Langarmshirt mit Reissverschluss für Outdoor
+gid://shopify/Product/16604902097287	tasche	Angel-Umhängetasche in Tarnmuster mit Ködertasche
+gid://shopify/Product/16604919038343	huelle	Reisepasshülle aus Vollnarben-Rindleder
+gid://shopify/Product/16604919267719	huelle	Ausweishülle aus Echtleder mit Sichtfenster
+gid://shopify/Product/16604928246151	decke	Beheizbare Fleecedecke 145x100 cm
+gid://shopify/Product/16604931162503	uhr	Quadratische Armbanduhr mit Strass, goldfarben

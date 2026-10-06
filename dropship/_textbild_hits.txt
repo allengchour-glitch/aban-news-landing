@@ -17020,3 +17020,6 @@ gid://shopify/Product/16608566739335	18->0	Stromadapter 18 V für Lithiumbatteri
 gid://shopify/Product/16608567525767	8->0	Baby-Buchweizen-Kissen
 gid://shopify/Product/16608568869255	168->0	Bambushemd Slim Fit mit Druck
 gid://shopify/Product/16608569590151	16->1	Kopfstützen-Lendenkissen mit Nackenpolster
+gid://shopify/Product/16608597016967	77->0	Bambus- und Leinen-Herrenshirt
+gid://shopify/Product/16608599081351	46->0	Elektrostatische Haarentfernungsbürste
+gid://shopify/Product/16608599998855	148->0	Jacquard Kissenbezug für Lendenstützkissen
