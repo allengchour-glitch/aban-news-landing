@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-05T11:25:22Z",
+ "stand": "2026-10-06T11:14:28Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "PTC: Schneider Electric mit Milliardenübernahme in den USA",
-   "u": "https://www.golem.de/news/ptc-schneider-electric-mit-milliardenuebernahme-in-den-usa-2610-213711.html",
+   "t": "Forschung: KI-Agenten identifizieren neue Antiferromagneten",
+   "u": "https://www.golem.de/news/forschung-ki-agenten-identifizieren-neue-antiferromagneten-2610-213763.html",
    "q": "Golem",
-   "d": "2026-10-05T11:09:02Z",
-   "s": "Schneider Electric kauft für 23,7 Milliarden US-Dollar PTC, den Hersteller von Creo, Onshape und Windchill. Der Umsatz bei Schneider wächst durch Ausrüstung für KI-Rechenzentren. (Wirtschaft, Augmente…",
+   "d": "2026-10-06T11:12:02Z",
+   "s": "Ein Unternehmen für KI-Evaluierung hat zwei bei Raumtemperatur stabile antiferromagnetische Materialien entdeckt. Einen Haken haben aber beide. (Innovation & Forschung, KI)",
    "sprache": "de"
   },
   {
-   "t": "Building advertising for the way people use AI",
-   "u": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
-   "q": "OpenAI",
-   "d": "2026-10-05T10:00:00Z",
-   "s": "OpenAI introduces a new visual ad format in ChatGPT and expands measurement tools, attribution partnerships, and brand suitability for advertisers.",
-   "sprache": "en"
-  },
-  {
-   "t": "heise-Angebot: KI-Projekte bauen und betreiben: Jetzt Vortrag für die Mastering AI einreichen",
-   "u": "https://www.heise.de/news/KI-Projekte-bauen-und-betreiben-Jetzt-Vortrag-fuer-die-Mastering-AI-einreichen-11473595.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-05T10:00:00Z",
-   "s": "Am 28. und 29. April 2027 findet in Karlsruhe die Mastering AI statt. Der Call for Proposals für die Fachkonferenz zu KI-Projekten läuft bis zum 19. November.",
+   "t": "Claude Code: Microsoft und Meta schränken Nutzung für Entwickler ein – das ist der Grund",
+   "u": "https://t3n.de/news/claude-code-microsoft-meta-schraenken-entwickler-ein-1766817/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-06T11:00:43Z",
+   "s": "Entwickler:innen bei Microsoft und Meta sollen künftig seltener auf Claude Code zurückgreifen. Das ist zumindest der Plan der beiden Unternehmen. Warum sie Anthropics KI jetzt wieder zurückfahren. wei…",
    "sprache": "de"
   },
   {
-   "t": "Trotz Handelskrieg: KI und 5G-Patentdeal zwischen Huawei und Qualcomm",
-   "u": "https://www.golem.de/news/trotz-handelskrieg-ki-und-5g-patentdeal-zwischen-huawei-und-qualcomm-2610-213705.html",
+   "t": "Firmen reagieren mit Umstellung: KI-Ausgaben steigen in Deutschland auf Milliardenhöhe",
+   "u": "https://www.golem.de/news/firmen-reagieren-mit-umstellung-ki-ausgaben-steigen-in-deutschland-auf-milliardenhoehe-2610-213758.html",
    "q": "Golem",
-   "d": "2026-10-05T09:50:02Z",
-   "s": "Huawei und Qualcomm vereinbaren ein Abkommen zur Kreuzlizenzierung von Patenten. Darunter Huaweis Tau-Scaling-Law und neue Optik-Standards für KI-Rechenzentren. (Huawei, FTC)",
+   "d": "2026-10-06T10:53:02Z",
+   "s": "Trotz sinkender Tokenpreise steigen die Kosten für KI-Anwendungen in deutschen Unternehmen weiter an. Erste Firmen reagieren darauf. (KI, Wirtschaft)",
    "sprache": "de"
   },
   {
-   "t": "IBM Bob: COBOL trifft KI – ohne Umweg über die Cloud",
-   "u": "https://www.heise.de/news/IBM-Bob-COBOL-trifft-KI-ohne-Umweg-ueber-die-Cloud-11475819.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Umfrage: KI auf dem Amt? Ja, bitte!",
+   "u": "https://www.heise.de/news/Umfrage-KI-auf-dem-Amt-Ja-bitte-11477642.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-05T09:32:00Z",
-   "s": "IBM bietet Bob nun als selbstgehostete Option an. So können Unternehmen KI-gestützte Softwareentwicklung in ihrer eigenen Infrastruktur nutzen.",
+   "d": "2026-10-06T10:39:00Z",
+   "s": "Eine Mehrheit der Deutschen ist dafür, dass Behörden KI bei der Bearbeitung von Anträgen einsetzen. Und mehr Digitalisierungstempo ist auch gewünscht.",
    "sprache": "de"
   },
   {
-   "t": "People really hate AI, so why can’t they get enough?",
-   "u": "https://www.technologyreview.com/2026/10/05/1145682/people-really-hate-ai-so-why-cant-they-get-enough/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-05T08:00:00Z",
-   "s": "Over the summer I talked to the CEO of Springboards, a startup building an LLM that’s designed to come up with a wider variety of responses than its mainstream rivals do. At the start of the call, he …",
-   "sprache": "en"
+   "t": "KI aus Deutschland: Aleph Alpha stellt Open-Weight-Modell Kolibri vor",
+   "u": "https://www.heise.de/news/KI-aus-Deutschland-Aleph-Alpha-stellt-Open-Weight-Modell-Kolibri-vor-11477451.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-06T09:25:00Z",
+   "s": "Das KI-Modell Kolibri des deutschen Start-ups Aleph Alpha richtet sich an Unternehmen und Behörden, die KI auf eigener Infrastruktur betreiben wollen.",
+   "sprache": "de"
   },
   {
-   "t": "EmTech Future 2026: When AI Meets Everything",
-   "u": "https://www.technologyreview.com/2026/10/05/1145413/emtech-future-2026-when-ai-meets-everything/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-05T04:00:00Z",
-   "s": "Yossi Matias, Vice President & Head of Google Research, explores how AI is beginning to reshape biology, infrastructure, manufacturing, and science, and why its greatest impact may come when it inters…",
-   "sprache": "en"
-  },
-  {
-   "t": "Google froze its open source bug bounty program due to a ‘significant rise’ in AI submissions",
-   "u": "https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-04T20:31:07Z",
-   "s": "AI slop seems to be overwhelming bug bounty programs.",
-   "sprache": "en"
-  },
-  {
-   "t": "Can ‘super intelligence’ and a non-binding safety pact solve AI’s image problem?",
-   "u": "https://techcrunch.com/2026/10/04/can-super-intelligence-and-a-non-binding-safety-pact-solve-ais-image-problem/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-04T20:08:34Z",
-   "s": "On Equity, we discussed the Trump administration's attempts to rebrand AI.",
-   "sprache": "en"
-  },
-  {
-   "t": "The Agent Said It Was Done. The Database Disagreed.",
-   "u": "https://huggingface.co/blog/microsoft/thinkingbox",
+   "t": "Falcon-Emirati: When an LLM Learns the Dialect, the Culture, and the Nuance",
+   "u": "https://huggingface.co/blog/tiiuae/falcon-emirati",
    "q": "Hugging Face",
-   "d": "2026-10-03T22:56:48Z",
+   "d": "2026-10-06T06:44:39Z",
    "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Eigenes GPT statt ChatGPT: So führt L’Oréal KI bei 90.000 Beschäftigten ein",
+   "u": "https://t3n.de/news/eigenes-gpt-statt-chatgpt-so-fuehrt-loreal-ki-bei-90-000-beschaeftigten-ein-1766586/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-06T06:30:19Z",
+   "s": "Mitarbeitende zur KI-Nutzung bringen und sinnvolle Use Cases finden: L’Oréal setzt dafür auf einen mehrstufigen Plan. Arooj Humayun, CIO bei L’Oréal DACH, gibt Einblicke, wo das Unternehmen steht, wie…",
+   "sprache": "de"
+  },
+  {
+   "t": "OpenAI will start watermarking ChatGPT’s text in the EU",
+   "u": "https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-05T20:36:48Z",
+   "s": "OpenAI will watermark ChatGPT and Codex text in the EU to comply with the AI Act. Editing can make the invisible marks harder to detect, it says.",
+   "sprache": "en"
+  },
+  {
+   "t": "Reflection debuts Beam, an open-weight AI model to rival Chinese models at lower compute cost",
+   "u": "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-05T19:33:53Z",
+   "s": "Reflection is aiming Beam and future models at enterprises and sovereign nations. The pitch is to build “AI factories,” a product that would let institutions build their own customized, local AI syste…",
+   "sprache": "en"
+  },
+  {
+   "t": "Our approach to EU text provenance rules",
+   "u": "https://openai.com/index/eu-text-provenance",
+   "q": "OpenAI",
+   "d": "2026-10-05T15:00:00Z",
+   "s": "How OpenAI is approaching text watermarking under EU rules. Learn where watermarks apply, how detection works, and why access starts with researchers.",
    "sprache": "en"
   }
  ]
