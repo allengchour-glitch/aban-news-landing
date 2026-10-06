@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-06T10:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-06T11:09Z
 
 Aktive gescannt: 1 · ohne Kategorie: 1 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
@@ -7,5 +7,5 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- pneumatisches-spritzwerkzeug-mit-hoher-zerstau-56dc6e · Werkzeug & Heimwerken → Hardware > Tools
+- kerward-steckschlussel-set-17-24-mm-eb5d5a · Werkzeug & Heimwerken → Hardware > Tools
 
