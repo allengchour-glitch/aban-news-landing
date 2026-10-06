@@ -4640,3 +4640,5 @@ samt-armband-aufbewahrungsbeutel-611900	2606240548231612500	16	6.17	ok	landeseit
 schachbrett-schneidebrett-aus-kautschuk-und-eb-627800	2607021035261628400	16	15.32	ok	landeseite
 selbstklebende-leinen-wandverkleidung-629400	2607020916101620100	0	-	KEINE CH-Option → DRAFT	landeseite
 yukihira-topf-edelstahl-18-cm-mit-deckel-613600	2607011157331614200	16	15.20	ok	landeseite
+l-formige-coral-fleece-kuchenmatte-623100	2607010802171623800	16	11.32	ok	landeseite
+matcha-schale-mit-deckel-631100	2607010709091631800	16	13.16	ok	landeseite
