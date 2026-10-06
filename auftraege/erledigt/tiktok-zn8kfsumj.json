@@ -1,0 +1,32 @@
+{
+  "id": "tiktok-zn8kfsumj",
+  "typ": "skript",
+  "skript": "tiktok_video_lesen.mjs",
+  "url": "https://vm.tiktok.com/ZN8kfSUmJ/",
+  "bilder_alle_s": 6,
+  "stand": "ok",
+  "begonnen": "2026-10-06T20:54:14.195Z",
+  "dauer_s": 7.4,
+  "ergebnis": {
+    "ziel": "https://www.tiktok.com/@build.withnate/video/7693323031552249120?_r=1&_t=ZN-9AL1Kyfqw9G",
+    "kanal": "build.withnate",
+    "name": "Nate Calloway",
+    "caption": "Mobbin gives Claude Code access to 600,000+ real design references to create smarter UI and onboarding flows. This AI-powered design tool studies top apps and websites to build better user experiences using proven patterns and examples. #AI #AITools #UIDesign #Productivity #TechInnovation ",
+    "dauer_s": 79,
+    "erstellt": "1791241368",
+    "stats": {
+      "diggCount": 140,
+      "shareCount": 71,
+      "commentCount": 2,
+      "playCount": 3116,
+      "collectCount": "207"
+    },
+    "untertitel": [
+      {
+        "sprache": "eng-US",
+        "text": "If you go to this repo, you can actually build a one person agency company with 200 agents. It's called Agency Agents and it has already crossed 155,000 stars and 25,000 forks on Github, which tells you how many builders are quietly using it. So what is it? It's an open source library of more than 200 AI agents, and every single one is a specialist with its own personality, workflow, deliverables, and way of measuring success. These aren't generic prompts. Each agent is a carefully written role, so when you activate one, your AI stops behaving like a chatbot and starts behaving like a hired expert. And the roster is organized exactly like a real agency. You get an engineering division with front end developers, back end architects, AI engineers and code reviewers. You get a design division, a marketing team, a sales team, a finance team. And sitting on top of them is an agent's orchestrator, which acts like your operations head and coordinates multiple agents on one big project. You can download their desktop app for Mac, Windows or Linux, browse every agent and install them into Claude, Code, Cursor, Codex, or Gemini with a single click. It's completely free and MIT licensed, so you can even take these agents and customize them around your own workflow. If you want the link, the link is in the description."
+      }
+    ],
+    "bilder": []
+  }
+}
