@@ -1,0 +1,139 @@
+{
+ "stand": "2026-10-04",
+ "test_ab": "2022-01-01",
+ "kosten": 0.0025,
+ "coins": [
+  "BTC-USD",
+  "ETH-USD",
+  "SOL-USD",
+  "XRP-USD",
+  "LTC-USD",
+  "DOGE-USD",
+  "LINK-USD",
+  "AVAX-USD",
+  "BCH-USD",
+  "DOT-USD"
+ ],
+ "strategien": {
+  "Bitcoin halten": {
+   "entwickeln": {
+    "cagr": 0.8828286027408174,
+    "sharpe": 1.226706386763651,
+    "einbruch": -0.8339900882218972
+   },
+   "test": {
+    "cagr": 0.13617903164793677,
+    "sharpe": 0.5052095386381351,
+    "einbruch": -0.6689381539248921
+   },
+   "umschichtung_jahr": 0.0,
+   "quote_test": 1.0,
+   "skill_test": null
+  },
+  "Alle gleich verteilt": {
+   "entwickeln": {
+    "cagr": 1.8121737184499551,
+    "sharpe": 1.6137015329012108,
+    "einbruch": -0.877637273136849
+   },
+   "test": {
+    "cagr": -0.024334982358997004,
+    "sharpe": 0.3025414397066945,
+    "einbruch": -0.738546527989892
+   },
+   "umschichtung_jahr": 0.0,
+   "quote_test": 0.9999999999999999,
+   "skill_test": null
+  },
+  "Trend 200": {
+   "entwickeln": {
+    "cagr": 1.2173295916948685,
+    "sharpe": 1.405322107251252,
+    "einbruch": -0.7458480758433632
+   },
+   "test": {
+    "cagr": 0.07346862550477251,
+    "sharpe": 0.37854735288293184,
+    "einbruch": -0.47704420995037145
+   },
+   "umschichtung_jahr": 10.353567318757252,
+   "quote_test": 0.3882623705408539,
+   "skill_test": 0.82
+  },
+  "Momentum-Rotation": {
+   "entwickeln": {
+    "cagr": 1.4229871644688603,
+    "sharpe": 1.332614437436249,
+    "einbruch": -0.7347926970937528
+   },
+   "test": {
+    "cagr": -0.050423366165496364,
+    "sharpe": 0.1898982590892592,
+    "einbruch": -0.7395601197783661
+   },
+   "umschichtung_jahr": 7.280398925968545,
+   "quote_test": 0.6555427694668191,
+   "skill_test": 0.545
+  },
+  "Bitcoin, Schwankungsziel 40 %": {
+   "entwickeln": {
+    "cagr": 0.5454173022394064,
+    "sharpe": 1.2435149109456847,
+    "einbruch": -0.5854880393506705
+   },
+   "test": {
+    "cagr": 0.13319340516171607,
+    "sharpe": 0.5125712840179402,
+    "einbruch": -0.5332811258173678
+   },
+   "umschichtung_jahr": 6.689593993330004,
+   "quote_test": 0.8293071373841916,
+   "skill_test": 0.785
+  },
+  "Bitcoin, Schwankungsziel 40 % + Band": {
+   "entwickeln": {
+    "cagr": 0.60148343503858,
+    "sharpe": 1.3380003299049517,
+    "einbruch": -0.5759423252579585
+   },
+   "test": {
+    "cagr": 0.12236521380980547,
+    "sharpe": 0.49120252692319394,
+    "einbruch": -0.5230617060523858
+   },
+   "umschichtung_jahr": 3.5139917348197085,
+   "quote_test": 0.8059857432872471,
+   "skill_test": 0.63
+  },
+  "KI-Komitee": {
+   "entwickeln": {
+    "cagr": 0.22136997191103802,
+    "sharpe": 1.4231421102994293,
+    "einbruch": -0.3189113377369639
+   },
+   "test": {
+    "cagr": 0.00358601174299511,
+    "sharpe": 0.0856577889734111,
+    "einbruch": -0.13302078805046802
+   },
+   "umschichtung_jahr": 1.2031064563119924,
+   "quote_test": 0.10711309040878797,
+   "skill_test": 0.275
+  },
+  "Gegenprobe: kennt morgen": {
+   "entwickeln": {
+    "cagr": 2676.3684661291586,
+    "sharpe": 10.848927068410998,
+    "einbruch": -0.007783718701110276
+   },
+   "test": {
+    "cagr": 605.0150417965324,
+    "sharpe": 14.851440698096246,
+    "einbruch": -0.007881043240819285
+   },
+   "umschichtung_jahr": 399.0320314355126,
+   "quote_test": 0.80897583429229,
+   "skill_test": 1.0
+  }
+ }
+}

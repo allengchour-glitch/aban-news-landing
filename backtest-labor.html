@@ -81,6 +81,7 @@ th{font-size:.78rem;color:var(--muted);font-weight:700}
 .chart .split{stroke:var(--muted);stroke-dasharray:3 3}
 .chart text{fill:var(--muted);font-size:11px}
 .leg{display:inline-block;width:18px;height:3px;vertical-align:middle;margin:0 4px 0 10px}
+.opt.falle{border-left-color:var(--bad)}
 .opt{border-left:4px solid var(--amber-dk);padding:10px 14px;background:var(--cream);border-radius:0 10px 10px 0;margin-top:14px;font-size:.93rem}
 .kasten{border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:16px 18px;background:var(--card);margin:20px 0}
 .kasten ul{margin:8px 0 8px 18px}
@@ -170,6 +171,8 @@ footer a{color:var(--muted)}
       <div><label for="kosten">Kosten pro Wechsel (%)</label><input id="kosten" type="number" value="0.1" step="0.05" min="0"></div>
       <div><label for="anteil">Davon zum Entwickeln (%)</label><input id="anteil" type="number" value="60" step="5" min="20" max="90"></div>
     </div>
+    <label style="display:flex;gap:8px;align-items:flex-start;font-weight:600;margin-top:12px"><input type="checkbox" id="zukunft" style="margin-top:5px"> <span>Fehler aus den Bot-Videos einschalten: Signal am selben Tag handeln (Zukunftsblick)</span></label>
+    <p class="hint" style="margin-top:2px">Zeigt, wie die Traumkurven in vielen Claude- und ChatGPT-Bot-Videos entstehen. <a href="/ki-trading-bot.html#claude-bot">Mehr dazu</a></p>
     <div class="actions">
       <button class="btn" id="go" type="button">Ehrlich testen</button>
       <button class="btn ghost" id="opt" type="button">Beste Durchschnitte suchen (die Falle)</button>
@@ -449,9 +452,11 @@ if(typeof module!=='undefined')module.exports=BT;
       else if(name==='ind'||name.indexOf('p_')===0){var be=bed('e'),bx=bed('x'),f=$('f200').checked;pos=BT.indikatorPos(D.p,be,bx,f);
         label='Kaufen: '+be.txt+' · Verkaufen: '+bx.txt+(f?' · nur über dem 200-Tage-Schnitt':'');sig={p:D.p,d:D.d,pos:pos,ser:BT.serien(D.p,be),ser2:be.t.split('_')[0]===bx.t.split('_')[0]?null:BT.serien(D.p,bx),extra:be.t.split('_')[0]===bx.t.split('_')[0]&&/^(rsi|stoch)/.test(bx.t)?[bx.b]:[]};name='ind';}
       else pos=BT.regelPos(name,D.p,D.d,r);
+      if($('zukunft').checked&&name!=='wahrsager'){var ehrlich=BT.kennzahlen(pos,r,cut,D.p.length,kosten);pos=pos.slice(1).concat([pos[pos.length-1]]);var falsch=BT.kennzahlen(pos,r,cut,D.p.length,kosten);
+        label='Mit Video-Fehler · '+label;info+='<div class="opt falle"><b>Video-Fehler eingeschaltet:</b> Die Regel entscheidet mit dem heutigen Schlusskurs, gutgeschrieben wird ihr aber schon die Bewegung desselben Tages. Im Test macht sie so '+pct(falsch.cagr)+' pro Jahr, ehrlich gerechnet '+pct(ehrlich.cagr)+' (Halten '+pct(ehrlich.haltenCagr)+'). Kein Mensch und kein Bot kann so handeln. '+(falsch.cagr-ehrlich.cagr>0.02?'Wenn ein Backtest so aussieht, steckt oft dieser Fehler drin.':'Bei dieser Regel ändert der Fehler wenig, weil sie selten wechselt. Probier Momentum oder RSI 2: Je öfter eine Regel handelt, desto stärker schönt der Fehler die Kurve.')+'</div>';}
       zeigen(name,label,pos,D,r,cut,kosten,info);signale(sig);$('ergebnis').scrollIntoView({behavior:'smooth',block:'start'});
     }catch(e){$('err').textContent=e.message;}btn.disabled=false;},20);}
-  $('go').addEventListener('click',function(){laufen(false);});$('opt').addEventListener('click',function(){laufen(true);});
+  $('go').addEventListener('click',function(){laufen(false);});$('zukunft').addEventListener('change',function(){$('go').textContent=this.checked?'Mit Video-Fehler testen':'Ehrlich testen';});$('opt').addEventListener('click',function(){laufen(true);});
   var a=$('pruefstand-kauf');fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[];}).then(function(l){var p=(l||[]).filter(function(x){return x.slug==='strategie-pruefstand';})[0];if(p&&p.buy){a.href=p.buy;a.rel='noopener';a.textContent='Strategie-Prüfstand kaufen — '+p.price;}}).catch(function(){});
 })();
 </script>

@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-02T10:29:17Z",
+ "stand": "2026-10-06T11:14:28Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Das Ende des Gedankenstrichs: Warum sich KI-Modelle in Texten immer noch verraten",
-   "u": "https://t3n.de/news/das-ende-des-gedankenstrichs-warum-sich-ki-modelle-in-texten-immer-noch-verraten-1766310/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-02T10:00:13Z",
-   "s": "Unternehmen wie OpenAI und Anthropic arbeiten hart daran, typische Muster aus ihren Sprachmodellen zu entfernen. Trotzdem gibt es weiterhin Lieblingsphrasen, die sie deutlich häufiger als Menschen ben…",
-   "sprache": "de"
-  },
-  {
-   "t": "Neue Kolumne Gewissenskonflikt: Ist Vibecoding okay - oder nur wenn ich es mache?",
-   "u": "https://www.golem.de/news/neue-kolumne-gewissenskonflikt-ist-vibecoding-okay-oder-nur-wenn-ich-es-mache-2610-213613.html",
+   "t": "Forschung: KI-Agenten identifizieren neue Antiferromagneten",
+   "u": "https://www.golem.de/news/forschung-ki-agenten-identifizieren-neue-antiferromagneten-2610-213763.html",
    "q": "Golem",
-   "d": "2026-10-02T10:00:02Z",
-   "s": "Ich lasse mir selbst ab und zu Code und Bilder von KI generieren. Über KI-Slop darf ich mich trotzdem aufregen. Oder? Eine Kolumne von Tim Reinboth (Gewissenskonflikt, KI)",
+   "d": "2026-10-06T11:12:02Z",
+   "s": "Ein Unternehmen für KI-Evaluierung hat zwei bei Raumtemperatur stabile antiferromagnetische Materialien entdeckt. Einen Haken haben aber beide. (Innovation & Forschung, KI)",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: Kostenloses Whitepaper: Wenn Hacker KI nutzen.",
-   "u": "https://www.heise.de/news/Kostenloses-Whitepaper-Wenn-Hacker-KI-nutzen-11438392.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-02T10:00:00Z",
-   "s": "KI verändert nicht nur Arbeitsprozesse, sondern auch die Möglichkeiten von Angreifern. Für Unternehmen verschärft sich damit die Bedrohungslage.",
-   "sprache": "de"
-  },
-  {
-   "t": "Google-Analyse: Weltraumrechenzentren wohl nicht vor 2035 kosteneffizient",
-   "u": "https://www.golem.de/news/google-analyse-weltraumrechenzentren-wohl-nicht-vor-2035-kosteneffizient-2610-213644.html",
-   "q": "Golem",
-   "d": "2026-10-02T09:43:01Z",
-   "s": "Google hat seinen ersten KI-Satelliten gestartet. Aufgrund der Startkosten bleiben irdische Rechenzentren aber wohl auf Jahre günstiger. (Weltall, Google)",
-   "sprache": "de"
-  },
-  {
-   "t": "Fobizz: Lehrkräfte entwickeln eher Lernbegleiter als Assistenten für sich selbst",
-   "u": "https://www.heise.de/hintergrund/Fobizz-Lehrkraefte-entwickeln-eher-Lernbegleiter-als-Assistenten-fuer-sich-selbst-11474035.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-02T09:39:00Z",
-   "s": "Lehrkräfte entwickeln KI-Assistenten mehrheitlich als Lernbegleiter für Schüler. Doch ob die Systeme tatsächlich im Unterricht ankommen, bleibt offen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Vom Chatbot zur Bild-KI: Diese 7 lokalen KI-Tools solltet ihr kennen",
-   "u": "https://t3n.de/news/statt-chatgpt-7-lokale-ki-anwendungen-1643976/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Claude Code: Microsoft und Meta schränken Nutzung für Entwickler ein – das ist der Grund",
+   "u": "https://t3n.de/news/claude-code-microsoft-meta-schraenken-entwickler-ein-1766817/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-02T09:30:00Z",
-   "s": "Es muss nicht immer ChatGPT, Claude, Jev oder Midjourney sein. Mit den richtigen Tools könnt ihr auch auf eurem Rechner KI-Anwendungen ausführen. Wir geben euch einen Überblick. weiterlesen auf t3n.de",
+   "d": "2026-10-06T11:00:43Z",
+   "s": "Entwickler:innen bei Microsoft und Meta sollen künftig seltener auf Claude Code zurückgreifen. Das ist zumindest der Plan der beiden Unternehmen. Warum sie Anthropics KI jetzt wieder zurückfahren. wei…",
    "sprache": "de"
   },
   {
-   "t": "AutoSynthData: Generating Training Data for Enterprise Agents",
-   "u": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
+   "t": "Firmen reagieren mit Umstellung: KI-Ausgaben steigen in Deutschland auf Milliardenhöhe",
+   "u": "https://www.golem.de/news/firmen-reagieren-mit-umstellung-ki-ausgaben-steigen-in-deutschland-auf-milliardenhoehe-2610-213758.html",
+   "q": "Golem",
+   "d": "2026-10-06T10:53:02Z",
+   "s": "Trotz sinkender Tokenpreise steigen die Kosten für KI-Anwendungen in deutschen Unternehmen weiter an. Erste Firmen reagieren darauf. (KI, Wirtschaft)",
+   "sprache": "de"
+  },
+  {
+   "t": "Umfrage: KI auf dem Amt? Ja, bitte!",
+   "u": "https://www.heise.de/news/Umfrage-KI-auf-dem-Amt-Ja-bitte-11477642.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-06T10:39:00Z",
+   "s": "Eine Mehrheit der Deutschen ist dafür, dass Behörden KI bei der Bearbeitung von Anträgen einsetzen. Und mehr Digitalisierungstempo ist auch gewünscht.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI aus Deutschland: Aleph Alpha stellt Open-Weight-Modell Kolibri vor",
+   "u": "https://www.heise.de/news/KI-aus-Deutschland-Aleph-Alpha-stellt-Open-Weight-Modell-Kolibri-vor-11477451.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-06T09:25:00Z",
+   "s": "Das KI-Modell Kolibri des deutschen Start-ups Aleph Alpha richtet sich an Unternehmen und Behörden, die KI auf eigener Infrastruktur betreiben wollen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Falcon-Emirati: When an LLM Learns the Dialect, the Culture, and the Nuance",
+   "u": "https://huggingface.co/blog/tiiuae/falcon-emirati",
    "q": "Hugging Face",
-   "d": "2026-10-02T04:01:31Z",
+   "d": "2026-10-06T06:44:39Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "Musk’s AI chatbot Grok reportedly encouraged Trump to capture Venezuela’s president",
-   "u": "https://techcrunch.com/2026/10/01/musks-ai-chatbot-grok-reportedly-encouraged-trump-to-capture-venezuelas-president/",
+   "t": "Eigenes GPT statt ChatGPT: So führt L’Oréal KI bei 90.000 Beschäftigten ein",
+   "u": "https://t3n.de/news/eigenes-gpt-statt-chatgpt-so-fuehrt-loreal-ki-bei-90-000-beschaeftigten-ein-1766586/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-06T06:30:19Z",
+   "s": "Mitarbeitende zur KI-Nutzung bringen und sinnvolle Use Cases finden: L’Oréal setzt dafür auf einen mehrstufigen Plan. Arooj Humayun, CIO bei L’Oréal DACH, gibt Einblicke, wo das Unternehmen steht, wie…",
+   "sprache": "de"
+  },
+  {
+   "t": "OpenAI will start watermarking ChatGPT’s text in the EU",
+   "u": "https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/",
    "q": "TechCrunch AI",
-   "d": "2026-10-01T21:08:11Z",
-   "s": "President Trump reportedly asked for Grok's opinion before invading Venezuela and capturing Nicolás Maduro.",
+   "d": "2026-10-05T20:36:48Z",
+   "s": "OpenAI will watermark ChatGPT and Codex text in the EU to comply with the AI Act. Editing can make the invisible marks harder to detect, it says.",
    "sprache": "en"
   },
   {
-   "t": "ChatGPT can now virtually try on clothes for you",
-   "u": "https://techcrunch.com/2026/10/01/chatgpt-can-now-virtually-try-on-clothes-for-you/",
+   "t": "Reflection debuts Beam, an open-weight AI model to rival Chinese models at lower compute cost",
+   "u": "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/",
    "q": "TechCrunch AI",
-   "d": "2026-10-01T19:21:53Z",
-   "s": "OpenAI is rolling out new shopping features for ChatGPT that let users virtually try on clothing and accessories using their own photos and save products they like to a Favorites library.",
+   "d": "2026-10-05T19:33:53Z",
+   "s": "Reflection is aiming Beam and future models at enterprises and sovereign nations. The pitch is to build “AI factories,” a product that would let institutions build their own customized, local AI syste…",
    "sprache": "en"
   },
   {
-   "t": "The eternal complement",
-   "u": "https://openai.com/index/the-eternal-complement",
+   "t": "Our approach to EU text provenance rules",
+   "u": "https://openai.com/index/eu-text-provenance",
    "q": "OpenAI",
-   "d": "2026-10-01T17:00:00Z",
-   "s": "Advanced AI may matter most for the routine work behind breakthrough ideas. Explore why execution could shape the next economy and the pace of progress.",
+   "d": "2026-10-05T15:00:00Z",
+   "s": "How OpenAI is approaching text watermarking under EU rules. Learn where watermarks apply, how detection works, and why access starts with researchers.",
    "sprache": "en"
   }
  ]

@@ -115,3 +115,10 @@ tools/trading/daten/h_*.json
 # es ist oeffentlich, der gehashte Name schuetzt dort nichts.
 downloads/kits/
 _pins/
+
+# KI-Bot: Daytrading-Signale laufen auf dem PC, Logbuch bleibt dort
+data/ki-signale.json
+tools/trading/ki_bot/STOP
+data/ki-bot.json
+data/ki-bot-broker.json
+data/krypto-bot.json

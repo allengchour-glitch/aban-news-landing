@@ -5,7 +5,8 @@
  * nach Judge.me. KEINE erfundenen Reviews — der Inhalt kommt 1:1 von echten CJ-Käufern.
  *
  * Pipeline pro Produkt:
- *   Shopify-Produkt (tag:cj-real) → erste Varianten-SKU (`CJ-<sku>`) → CJ `product/query?variantSku` → pid
+ *   Shopify-Produkt (tag:cj-real) → erste Varianten-SKU (`CJ-<sku>`) → CJ `product/query`
+ *   (pid= bei reiner Ziffern-SKU, sonst variantSku= / productSku=) → pid
  *   → CJ `product/productComments?pid&score>=MIN` → (optional Gemini-DE-Übersetzung) → POST Judge.me /reviews
  *
  * No-op-safe: ohne CJ-/Judge.me-/Shopify-Creds passiert nichts (Exit 0). Idempotent über Ledger.
@@ -88,7 +89,14 @@ async function translateDE(texts) {
   try {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GKEY)}`;
     const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3 } }) });
-    const j = await r.json().catch(() => ({}));
+    const roh = await r.text();
+    let j = {};
+    try { j = JSON.parse(roh); } catch { /* unten als Klartext melden */ }
+    // Den ECHTEN Grund nennen. Vorher wurde jeder Fehler zu „Unexpected end of JSON input",
+    // weil r.json() auf einer Fehlerantwort scheitert — gemessen 2026-10-04: Gemini
+    // antwortete HTTP 402 „Your prepayment credits are depleted", und im Log stand nur der
+    // Parse-Fehler. Ein Fehler, der seine Ursache verdeckt, kostet die naechste Sitzung Stunden.
+    if (!r.ok) throw new Error(`Gemini HTTP ${r.status}: ${String(j?.error?.message || roh).slice(0, 160)}`);
     let t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
     t = t.replace(/^```(json)?/i, '').replace(/```$/, '').trim();
     const arr = JSON.parse(t);
@@ -141,15 +149,32 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   const DEBUG = process.env.DEBUG === '1';
   // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
   async function resolvePid(sku) {
-    const strategies = [
-      ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
+    // Reihenfolge nach Messung 2026-10-04: der aktuelle Katalog nutzt VARIANTEN-SKUs
+    // (z. B. CJYD291530101AZ) → variantSku zuerst = 1 Abfrage statt 2. Die beiden
+    // /product/list-Strategien sind entfernt: sie kosten CJ-API-Punkte und trafen nie.
+    //
+    // ⚠️ 2026-10-04 nachgemessen: 4466 von 12 000 aktiven cj-real-Produkten (37,2 %) tragen
+    // als SKU eine reine Ziffernfolge — das IST die CJ-pid, keine SKU. Für die trafen weder
+    // variantSku noch productSku, sie wurden alle still als „keine CJ-pid → skip" verworfen
+    // (dieselbe Fehlerklasse wie der apiKey/password-Auth-Bug: ein stummer Skip sieht aus
+    // wie „keine Daten"). Belegt an 2502070858141620900 → pid-Abfrage trifft sofort und
+    // lieferte 8 echte Reviews auf einer Seite, die vorher als leer galt.
+    const istPid = /^\d{15,}$/.test(sku);
+    const strategies = istPid ? [
+      ['query/pid', '/product/query', { pid: sku }],
       ['query/variantSku', '/product/query', { variantSku: sku }],
-      ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
-      ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
+    ] : [
+      ['query/variantSku', '/product/query', { variantSku: sku }],
+      ['query/productSku', '/product/query', { productSku: sku }],
     ];
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
       await sleep(1100);
+      // CJ-Tagespunkte erschoepft? Dann NICHT als "keine pid" verschleiern — sonst entsteht
+      // wieder der Fehlschluss "CJ hat keine Kommentare" (teuer gelernt 2026-09/10).
+      if (/insufficient api points/i.test(String(r?.message || ''))) {
+        throw new Error('CJ_QUOTA: ' + r.message);
+      }
       const d = r?.data;
       const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
       const pid = d?.pid || d?.productId || (Array.isArray(listed) ? (listed[0]?.pid || listed[0]?.productId) : null);
@@ -198,8 +223,23 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         await sleep(700);
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
-      if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} }
-    } catch (e) { fails++; console.error(`✗ ${p.handle}: ${e.message}`); }
+      // Ledger laut melden, wenn er nicht geschrieben werden kann: ohne Eintrag importiert
+      // der naechste Lauf dieselben Reviews ein zweites Mal. Der stumme catch hat das
+      // verdeckt (2026-10-04 aufgefallen, nachdem ein versehentliches `git checkout -- .`
+      // den frischen Eintrag zurueckgesetzt hatte und niemand es gemerkt haette).
+      if (!DRY) {
+        try { fs.appendFileSync(LEDGER, pidNum + '\n'); }
+        catch (e) { console.error(`  ⚠️  LEDGER NICHT GESCHRIEBEN fuer ${p.handle} (${pidNum}): ${e.message}`); console.error('     Ohne Eintrag importiert der naechste Lauf diese Reviews doppelt.'); }
+      }
+    } catch (e) {
+      if (String(e.message).startsWith('CJ_QUOTA')) {
+        console.error(`\n⛔ CJ-TAGESPUNKTE ERSCHOEPFT — Lauf hier beendet (${e.message}).`);
+        console.error('   Das ist KEIN Hinweis darauf, dass die Produkte keine Reviews haben!');
+        console.error('   Morgen erneut laufen lassen (Punkte setzen taeglich zurueck) oder LIMIT kleiner setzen.');
+        break;
+      }
+      fails++; console.error(`✗ ${p.handle}: ${e.message}`);
+    }
   }
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
   process.exit(0);

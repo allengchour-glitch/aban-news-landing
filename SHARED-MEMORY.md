@@ -205,6 +205,27 @@
 > - **Eigentum:** **BigBuy-Import = die Session mit dem Key.** Die „Luxestyle product"-Session fasst BigBuy nicht an (vermeidet Dubletten).
 
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
+
+### 🚨 VERSAND-SCHWELLE: 50 im Text, 45 in der Regel — BEIDES RICHTIG (04.10.2026)
+**Nicht „korrigieren".** Die Versandregel gibt gratis ab **CHF 45 auf den Korb NACH Rabatt**; in allen Texten
+steht **CHF 50**, weil 50 × 0,9 = 45 und WELCOME10 (−10 %) sonst das Versprechen bricht. Am 04.10. haben
+**zwei Sitzungen am selben Tag** unabhängig voneinander auf 45 „korrigiert" — einmal auf 5 Produktseiten,
+einmal auf 365 Objekten + Theme (vollständig zurückgesetzt, 377/377 geprüft). Vollständige Messung,
+Gegenprobe und die offene User-Entscheidung (15 %-Codes brechen auch die 50): **`dropship/VERSAND-SCHWELLE.md`**.
+Messwerkzeug mit Selbsttest: `tools/versandregel.mjs` + `tools/versandregel_test.mjs`.
+
+
+> ⛔ **CJ-API-TAGESPUNKTE SIND EINE GETEILTE RESSOURCE (gemessen 2026-10-04).** CJ rechnet pro Abfrage
+> **10 Punkte** ab und das Tagesbudget ist endlich. An diesem Tag waren um 12:00 UTC **95'410 Punkte
+> verbraucht, Remaining: 0** — also ~9'500 Abfragen, mutmasslich aus einem Katalog-Füll-Lauf
+> (`cj_perpetual.mjs` / `cj_category_fill.mjs`). **Folge: der Judge.me-Review-Import konnte nicht laufen.**
+> - **Vor einem grossen CJ-Lauf** (Füllen/Importieren) kurz hier vermerken, damit andere Sessions wissen,
+>   dass das Budget belegt ist.
+> - **Review-Import braucht nur wenig** (max. 2 Abfragen pro Produkt) → bitte etwas Budget übrig lassen.
+> - **Punkte-Reset** ist täglich (mutmasslich 00:00 China-Zeit = 16:00 UTC).
+> - ⚠️ **„Insufficient API points" NIE als „Produkt hat keine Reviews" deuten** — genau so entstand der
+>   falsche Mythos „CJ hat keine Kommentare". `cj_reviews_import.mjs` bricht deshalb seit #2589 sauber ab.
+
 - **1 Shopify-Shop** (LuxeStyle) — Zugriff über die **Shopify-MCP** (direkt in jeder Session, KEIN Key nötig).
 - **1 Repo**, **1 `main`** → vor jedem Push `git pull --rebase`; **nie zwei Sessions gleichzeitig nach `main`**.
 - **`social/posts_image.csv`** = Post-Queue (der Autopost-Bot committet sie auf `main`).

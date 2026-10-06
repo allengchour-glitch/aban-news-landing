@@ -64,6 +64,53 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
+- **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**
+  Die Versandregel gibt Gratis-Versand ab **CHF 45 auf den Korb NACH Rabatt** (live gemessen, Gegenprobe:
+  54.90 → „Kostenloser Versand 0.00", 44.90 → nur „Standard 7.00"). In allen Texten steht trotzdem **CHF 50** —
+  **absichtlich**: 50 × 0,9 = 45, damit das Versprechen auch mit WELCOME10 (−10 %, aktiv bis 31.12.2027) in
+  JEDEM Korb hält. Policy, Theme, Warenkorb-Balken (`SCHWELLE=4500`) und ~2'300 Produkte sind auf 50 konsistent.
+  Ich hatte 365 Objekte + das Theme auf 45 „korrigiert" → **alles zurückgesetzt und nachgeprüft (377/377, 0 Reste)**.
+- **Echt korrigiert:** 7 Produktseiten sagten „gratis ab CHF 65" (von mir geschrieben), 5 weitere „ab CHF 45"
+  (Parallelsitzung) → alle 12 auf **CHF 50 + „darunter CHF 7"**. PR #2526 („AGB sagt 65") ist überholt: die
+  Versandrichtlinie sagt live **50**.
+- **Mess-Lehre:** Das erste grobe Suchmuster meldete **23'611 „Fehler"** — darunter „Länge von 50-65 cm",
+  „Fassungsvermögen von 70 Litern". Erst das enge, in BEIDE Richtungen geprüfte Muster
+  (`tools/versandregel.mjs` + `tools/versandregel_test.mjs`) zeigte: 12 Formulierungen, alle „CHF 50", alle richtig.
+- **🧊 „kleiner kühlschrank" (4400 Suchen/Mt, Platz 56) — NICHT bespielbar, zwei Produkte gesperrt:**
+  - `mini-kuhlschrank-629100` war laut CJ und laut eigenem Produktbild eine **„Insulin Refrigeration Box"**
+    (Medikamenten-Kühlbox, 25 × 13 × 12 cm, 15 W) — verkauft als „Mini-Kühlschrank … ideal für den Haushalt",
+    SEO-Titel „Kleiner Kühlschrank im Mini-Format". CJ nennt **keine Temperaturangabe und keine Zertifizierung**
+    → als Insulin-Kühlung nicht verantwortbar, als Mini-Kühlschrank falsch. **Auf DRAFT gesetzt**, ehrlich
+    umbenannt, Tags `geprueft-gesperrt-0410`, `medizinprodukt-pruefen`.
+  - `mini-kuhlschrank-furs-auto-636100` (echte 8-L-Box, 22 °C Kühldifferenz) gibt es bei CJ **nur als US-Variante
+    (110 V, US-Stecker)** → in der Schweiz nur am 12-V-Anschluss nutzbar, Netzteil unbrauchbar/gefährlich.
+    **Auf DRAFT gesetzt** (`us-netzteil-110v`). Beide hatten **nie eine Bestellung** (geprüft).
+  - Google-Vorschläge zu „kleiner kühlschrank" = Landi, Fust, „mit Gefrierfach", „für Getränke" → echte
+    40–100-L-Geräte. **Ohne passendes Produkt kein Platz 1** — das Keyword bleibt offen, nichts vortäuschen.
+- **💰 Nebenbefund: der Shop verkauft.** Letzte Bestellungen #1011–#1022 (3.8.–3.10.), **8× PAID**
+  (Cargo-Hose, Quarzuhr, Kristall-Set, E-Scooter-Ladegerät, Gemüseschneider, Leinen-Set, Midikleid,
+  Katzenspielzeug, Hängematte), 4 Rückerstattungen. Die alte Notiz „0 Käufe" ist überholt.
+- **CJ-Punkte:** heute fast aufgebraucht (Rest 39 von ~98'000 genutzt). QPS-Limit **1 Abfrage/Sekunde**.
+**📌 2026-10-04 (Review-Grind: Creds entschlüsselt, Resolver + Quota-Falle gefixt):**
+- **🔑 ENV-VARIABLEN SIND VERTAUSCHT ANGELEGT** (User-Umgebung): Schlüssel steht im **Namensfeld**, der
+  Variablenname im **Wertfeld**. Entschlüsselt: `zIFh_4JtYYy3Ue5RdajLe6zhf5U` = **JUDGEME_PRIVATE_TOKEN** ·
+  `gsk_…` = GROQ_API_KEY · Name `ffe6c3a1…` = SHOPIFY_CLIENT_ID, im Wert steckt `shpss_…` = CLIENT_SECRET.
+  Nur `github_key` ist korrekt. Zur Laufzeit rekonstruierbar — **User sollte es in der Umgebung umdrehen**.
+  **Shopify-Client-Credentials-Grant damit live verifiziert (Token 38 Z.).** → Judge.me-Token ist DA.
+- **🐛 KORREKTUR meiner Notiz vom 07.09. („Resolver funktioniert"):** galt nur für ALTE SKUs
+  (`CJWJWJYZ05805`). Der **aktuelle Katalog nutzt VARIANTEN-SKUs** (`CJYD291530101AZ`) → nur
+  `product/query?**variantSku**=…` trifft (verifiziert: pid `2605291307171625300`, `d.pid` lesbar).
+  Resolver umgestellt: **variantSku zuerst**, beide `/product/list`-Strategien **entfernt** (kosteten
+  API-Punkte, trafen nie) → **max. 2 statt 4 Abfragen pro Produkt**.
+- **⛔ CJ HAT EIN TAGES-PUNKTELIMIT** („Insufficient api points. Used today: 951"). Ein 40er-DRY-Lauf braucht
+  es auf → danach meldet jedes Produkt „keine CJ-pid → skip". **Genau so entstand der falsche Mythos
+  „CJ hat keine Kommentare".** Das Skript erkennt die Meldung jetzt und **bricht mit klarer Warnung ab**.
+- **🟡 OFFEN:** scharfer Lauf erst nach Punkte-Reset (täglich), in Chargen mit kleinem `LIMIT` (z. B. 25).
+  `GEMINI_API_KEY` fehlt → Reviews kämen in Originalsprache statt Deutsch.
+- **SEMrush:** Connector existiert, ist aber `not_installed` → **nur der User kann verbinden**
+  (claude.ai → Connectors → „Semrush"). Danach: domain_overview / keyword_research / organic_research.
+
 **📌 2026-10-01 (🏥 Alle Krankenkassen vergleichen 2027 — `krankenkassen-vergleich-2027.html`):** Offizielle BAG-Prämien 2027
 (opendata.swiss «Krankenversicherungsprämien», `Prämien_CH.csv`, 29.09.2026) → `tools/krankenkasse/bag_praemien.py` baut
 `data/krankenkassen/2027/<KANTON>.json` + `index.json` (Kassennamen aus BAG-«Verzeichnis der zugelassenen Krankenversicherer» 1.10.2026,
