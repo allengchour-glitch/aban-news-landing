@@ -5042,3 +5042,10 @@ vintage-slim-hosen-mit-zip-629400	2606061328291620000	16	12.81	ok	landeseite
 herren-jeans-gerade-geschnitten-plus-size-632200	2606060210321633000	16	11.00	ok	landeseite
 elastische-herren-boxershorts-823233	2061327048591585282	0	-	KEINE CH-Option → DRAFT	landeseite
 elastische-herrenunterwasche-233665	2061329898948308993	0	-	KEINE CH-Option → DRAFT	landeseite
+stretch-hosen-fur-herren-schmal-geschnitten-120002	2061290150372356098	0	-	KEINE CH-Option → DRAFT	landeseite
+stretch-hosen-fur-herren-schmal-geschnitten-416898	2061335122811334658	0	-	KEINE CH-Option → DRAFT	landeseite
+stretch-hosen-fur-herren-schmal-geschnitten-192449	2061286945227845634	0	-	KEINE CH-Option → DRAFT	landeseite
+gerade-geschnittene-herren-hose-212162	2061320501408870402	0	-	KEINE CH-Option → DRAFT	landeseite
+d2-mikro-briefs-ohne-elastik-640385	2061328805515739138	0	-	KEINE CH-Option → DRAFT	landeseite
+stretch-hosen-fur-herren-schmal-geschnitten-268353	2061285385644253185	0	-	KEINE CH-Option → DRAFT	landeseite
+stretch-hosen-slim-straight-900609	2061298923631587329	0	-	KEINE CH-Option → DRAFT	landeseite
