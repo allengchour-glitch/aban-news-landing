@@ -5206,3 +5206,5 @@ magnetischer-wireless-ladegeraet-605000	2606120758131606000	7	12.03	ok	landeseit
 schnellladegerat-618500	2606091132431619200	16	6.57	ok	landeseite
 schnellladegerat-30w-633400	2606091115411634100	16	5.41	ok	landeseite
 usb-c-magsafe-lader-624100	2606010524141624800	16	9.47	ok	landeseite
+magnetischer-4-in-1-ladegeraet-611000	2605190941191611700	6	11.30	ok	landeseite
+schuhe-mit-chunky-absatz-635200	2607061034261635800	16	11.23	ok	landeseite
