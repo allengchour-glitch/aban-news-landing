@@ -610,3 +610,4 @@ gid://shopify/Product/15480284578177	ok	Farbprojektionslampe
 gid://shopify/Product/15480409293185	ok	Kindersitz-Schutzmatte
 gid://shopify/Product/15480489279873	ok	Handgemachte UV-Nagelpatches Schmetterling
 gid://shopify/Product/15480823873921	ok	Weissrauschen-Schlafhilfe
+gid://shopify/Product/15481691996545	ok	Sternenhimmel Projektionslampe Luftbefeuchter
