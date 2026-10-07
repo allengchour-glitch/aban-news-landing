@@ -19916,3 +19916,14 @@ gid://shopify/Product/16608942817671	Farbe	gid://shopify/ProductOptionValue/5834
 gid://shopify/Product/16608942817671	Farbe	gid://shopify/ProductOptionValue/58345180201351	Army Green 008 Short Sleeve-XXXXL	Armeegrün 008 Kurzarm-XXXXL	2026-10-06T21:06Z
 gid://shopify/Product/16608942817671	Farbe	gid://shopify/ProductOptionValue/58345180234119	Dark Blue 008 Short Sleeve	Dunkelblau 008 Kurzarm	2026-10-06T21:06Z
 gid://shopify/Product/16608942817671	Farbe	gid://shopify/ProductOptionValue/58345180266887	Dark Blue 008 Short Sleeve-XXXXL	Dunkelblau 008 Kurzarm-XXXXL	2026-10-06T21:06Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288573831	Light Blue	Hellblau	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288606599	Taro Purple	Taro-Violett	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288639367	Yellow	Gelb	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288672135	White	Weiss	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288704903	Beige Camel	Beige-Camel	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288737671	Camel Gray	Camel-Grau	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288770439	Light Gray	Hellgrau	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288803207	Dark Gray	Dunkelgrau	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288835975	Red	Rot	2026-10-07T17:10Z
+gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288868743	Black	Schwarz	2026-10-07T17:10Z
+gid://shopify/Product/15447964025217	Farbe	gid://shopify/ProductOptionValue/58348289360263	White	Weiss	2026-10-07T17:10Z
