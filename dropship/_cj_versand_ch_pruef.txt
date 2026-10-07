@@ -5216,3 +5216,10 @@ hohe-stiletto-sandalen-156226	2073593197928013825	16	11.23	ok	landeseite
 retro-sandalen-962754	2073597538802237441	16	11.23	ok	landeseite
 sommer-sandalen-619300	2607041423231610000	16	9.72	ok	landeseite
 kristall-sandalen-633900	2607041420191634500	16	10.42	ok	landeseite
+pumps-mit-chunky-absatz-620500	2607041044151621600	16	12.21	ok	landeseite
+satin-sandalen-350466	2072865642178568193	16	11.23	ok	landeseite
+offene-sandalen-617600	2607011127081618500	16	11.23	ok	landeseite
+weiche-keil-sandalen-605300	2607010827201606100	16	11.43	ok	landeseite
+damen-toeffelsandaletten-637800	2607010358051638500	16	10.55	ok	landeseite
+romische-sandalen-626000	2607010158511626700	16	11.60	ok	landeseite
+rote-pumps-525761	2072214840010383362	16	11.23	ok	landeseite
