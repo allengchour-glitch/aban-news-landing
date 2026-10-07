@@ -5069,3 +5069,5 @@ kartenhalter-aus-olfarben-leder-607400	2604231015561608000	16	6.77	ok	landeseite
 taktisches-portemonnaie-aus-carbonfaser-618900	2603200953311619400	16	6.01	ok	landeseite
 kartenhalter-id-tasche-632800	2603010530521633200	16	6.48	ok	landeseite
 grosses-clutch-set-aus-rindsleder-615400	2602250849311615800	16	11.00	ok	landeseite
+kartenetui-mit-ortungschip-601900	2602240312561602200	7	6.21	ok	landeseite
+magnetischer-kartenhalter-mit-sicherheitsschut-616000	2602050816321616400	7	7.30	ok	landeseite
