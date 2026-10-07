@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-07 17:09 UTC, Stand 2026-10-07 17:47 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-07 17:09 UTC, Stand 2026-10-07 17:48 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **9'027**
-- Optionen mit englischen Werten (Kandidaten): 1'045
+- Produkte gesehen: **9'618**
+- Optionen mit englischen Werten (Kandidaten): 1'239
 - Optionen übersetzt: **2** · Werte übersetzt: **11**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 4'936
+- Werte mit unbekanntem Wort (unverändert): 6'224
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 33
-- übersprungen «kollision-nach-uebersetzung»: 19
+- übersprungen «kollision-nach-uebersetzung»: 22
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -60,6 +60,9 @@
 - `15449065718145` [Farbe] corduroy-weste-im-preppy-stil-fur-herren-635500: Deep Coffee → Dunkelkaffeebraun; Green Coffee → Grün-Kaffeebraun
 - `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Red battery → Rot Batterie; Set2 → Set 2; Set1 → Set 1
 - `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
+- `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Army Green Blue → Armeegrün-Blau; Army Green 2pcs → Armeegrün · 2 Stück; Coffee 2pcs → Kaffeebraun · 2 Stück; Grey 2pcs → Grau · 2 Stück
+- `15450837975425` [Farbe] hangematte-mit-moskitonetz-pop-up-241216: Blue blue → Blau; Green green → Grün
+- `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Camouflage grey → Camouflage Grau; Army green camouflage → Armeegrün Camouflage; Weissweiss → Weiss; Schwarzschwarz → Schwarz; White camouflage → Weiss Camouflage
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -96,5 +99,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 195, `⟨satzbau:adjektiv-vor-nomen⟩` 170, `degrees` 159, `color` 121, `shell` 77, `rope` 61, `mother` 61, `core` 53, `surface` 49, `hat` 46, `high` 44, `case` 43, `for` 43, `dark` 41, `powder` 41, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `magnetic` 36, `no` 35, `bag` 34, `size` 33, `to` 33, `tea` 30, `bear` 30, `eyelets` 30, `adjustable` 29, `belt` 28, `carbon` 28, `mom` 28, `suit` 27, `mushroom` 27, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `⟨satzbau:material-vor-farbe⟩` 25, `flame` 25, `dog` 25, `cocoa` 25, `stone` 24, `regular` 24, `nail` 24, `milk` 24, `batteries` 24, `⟨satzbau:adjektivfolge⟩` 24, `dad` 24, `perforated` 24, `button` 24, `buckle` 23, `face` 23, `of` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22, `bead` 21, `deer` 21
+`⟨satzbau:adjektiv-vor-nomen⟩` 232, `light` 232, `color` 168, `degrees` 159, `shell` 81, `skin` 77, `high` 68, `rope` 66, `feet` 62, `mother` 61, `core` 53, `no` 51, `surface` 49, `dark` 47, `line` 46, `hat` 46, `powder` 46, `case` 43, `for` 43, `bag` 42, `to` 41, `⟨satzbau:material-vor-farbe⟩` 40, `acupuncture` 40, `opp` 39, `lens` 38, `father` 38, `generation` 37, `magnetic` 36, `adjustable` 36, `suit` 35, `belt` 34, `electric` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `carbon` 33, `size` 33, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `tea` 31, `bear` 30, `eyelets` 30, `plush` 30, `⟨satzbau:nomen-vor-farbe⟩` 28, `mom` 28, `lamp` 28, `of` 27, `three` 27, `⟨satzbau:nomen-nomen⟩` 27, `mushroom` 27, `simple` 26, `insert` 26, `crotch` 26, `cocoa` 26, `face` 25, `code` 25, `flame` 25, `dog` 25, `stone` 24, `buckle` 24, `regular` 24, `nail` 24
 
