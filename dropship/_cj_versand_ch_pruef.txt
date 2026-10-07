@@ -4897,3 +4897,5 @@ anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
 mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 damen-arbeitshose-mit-destroyed-look-und-boden-638600	2604280532441639300	16	15.20	ok	landeseite
+formoptimierte-mode-jeans-mit-geradem-bein-622900	2604270153481623600	16	8.48	ok	landeseite
+gedruckte-gewaschene-kurzjeans-638000	2604251117131638500	16	11.00	ok	landeseite
