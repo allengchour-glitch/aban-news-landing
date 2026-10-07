@@ -6,13 +6,13 @@
 
 ## Zahlen
 
-- Produkte gesehen: **19'230**
-- Optionen mit englischen Werten (Kandidaten): 1'961
+- Produkte gesehen: **19'827**
+- Optionen mit englischen Werten (Kandidaten): 2'042
 - Optionen übersetzt: **3** · Werte übersetzt: **12**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 10'767
+- Werte mit unbekanntem Wort (unverändert): 11'299
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 43
+- übersprungen «kleidungsstueck-im-wert»: 47
 - übersprungen «kollision-nach-uebersetzung»: 32
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -111,5 +111,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 437, `light` 396, `inner` 325, `color` 258, `degrees` 159, `shell` 140, `surface` 108, `diamond` 107, `⟨satzbau:material-vor-farbe⟩` 104, `powder` 103, `skin` 98, `core` 96, `three` 87, `rain` 87, `high` 79, `bag` 79, `belt` 72, `case` 71, `to` 71, `rope` 70, `petal` 68, `dark` 62, `feet` 62, `no` 61, `mother` 61, `dual` 60, `chain` 59, `size` 59, `half` 58, `of` 57, `net` 57, `electric` 54, `code` 52, `person` 51, `lens` 50, `line` 49, `four` 49, `bear` 49, `tea` 48, `space` 48, `ice` 47, `little` 46, `hat` 46, `for` 46, `about` 46, `clock` 45, `buckle` 44, `night` 43, `acupuncture` 43, `cherry` 42, `cloud` 42, `mirror` 42, `perforated` 42, `spring` 41, `face` 41, `button` 41, `fiber` 40, `hook` 40, `⟨satzbau:menge-vor-nomen⟩` 40, `camera` 40
+`⟨satzbau:adjektiv-vor-nomen⟩` 454, `light` 398, `inner` 325, `color` 273, `degrees` 159, `shell` 151, `core` 137, `surface` 109, `⟨satzbau:material-vor-farbe⟩` 108, `diamond` 107, `powder` 104, `skin` 98, `rain` 88, `three` 87, `high` 81, `bag` 79, `case` 78, `belt` 77, `to` 73, `rope` 70, `petal` 68, `chain` 67, `no` 67, `dark` 62, `feet` 62, `size` 61, `mother` 61, `of` 60, `dual` 60, `half` 58, `net` 57, `electric` 54, `code` 52, `face` 51, `person` 51, `little` 50, `lens` 50, `line` 49, `four` 49, `bear` 49, `tea` 48, `ice` 48, `space` 48, `hat` 47, `for` 46, `about` 46, `clock` 45, `buckle` 44, `⟨satzbau:menge-vor-nomen⟩` 44, `cherry` 43, `cloud` 43, `night` 43, `acupuncture` 43, `suit` 42, `star` 42, `one` 42, `⟨satzbau:adjektivfolge⟩` 42, `mirror` 42, `perforated` 42, `spring` 41
 
