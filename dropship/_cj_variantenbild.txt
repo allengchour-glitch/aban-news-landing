@@ -6240,3 +6240,19 @@ gid://shopify/Product/15455431754113	zugeordnet	40	Taktisches Brustgeschirr für
 gid://shopify/Product/15455431950721	zugeordnet	12	Hunde Brust- und Rückengurt
 gid://shopify/Product/15455432049025	zugeordnet	25	Asymmetrischer Rock mit Schnürung
 gid://shopify/Product/15455515574657	zugeordnet	55	Leichte Velcro-Sneaker
+gid://shopify/Product/15455515672961	zugeordnet	55	Atmungsvelcroschuhe für Kinder
+gid://shopify/Product/15455515967873	zugeordnet	84	Kinder-Laufsneaker
+gid://shopify/Product/15455516066177	zugeordnet	78	Wintersneaker für Kinder
+gid://shopify/Product/15455516131713	zugeordnet	10	Rote Mädchenstiefel
+gid://shopify/Product/15455516230017	zugeordnet	40	Wasserdichte Kindermartinsschuhe
+gid://shopify/Product/15455516524929	zugeordnet	30	Jungen Lederpumps
+gid://shopify/Product/15455516623233	zugeordnet	39	Kinder-Strandsschuhe mit weichem Boden
+gid://shopify/Product/15455516754305	zugeordnet	48	Jungen Sommer-Sandalen
+gid://shopify/Product/15455516819841	zugeordnet	24	Jungen-Sandalen mit Klett
+gid://shopify/Product/15455516918145	zugeordnet	22	Kinder-Sandalen Sommer
+gid://shopify/Product/15455517180289	zugeordnet	24	Kinder Martin Stiefel
+gid://shopify/Product/15455517901185	bild-urls-tot
+gid://shopify/Product/15455517933953	zugeordnet	32	Kleinkinderschuhe mit rutschfester Sohle
+gid://shopify/Product/15455518032257	zugeordnet	20	Transparente Kinderschuhe
+gid://shopify/Product/15455518097793	zugeordnet	40	Kinder Schuhe für Jungen und Mädchen
+gid://shopify/Product/15455518327169	zugeordnet	13	Fliegende Schnürschuhe für Kinder
