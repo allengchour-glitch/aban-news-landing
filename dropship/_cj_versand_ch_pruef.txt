@@ -5195,3 +5195,7 @@ elegantes-wickelkleid-mit-v-ausschnitt-611800	2607060307541612500	16	8.79	ok	lan
 lange-lassige-sundress-611900	2607060230131612600	16	10.15	ok	landeseite
 satin-maxi-kleid-mit-offenem-rucken-503810	2074057560476778498	16	9.88	ok	landeseite
 damen-top-mit-stehbund-und-3-4-armeln-638200	2607060735501638900	16	7.17	ok	landeseite
+elegantes-blusen-top-mit-asymmetrischem-design-617600	2607060326381619000	16	6.90	ok	landeseite
+sommer-top-mit-lochmuster-618100	2607060243421618800	16	6.90	ok	landeseite
+faith-sweatshirt-601100	2607060839311601700	16	7.71	ok	landeseite
+cropped-sweatshirt-mit-knopfen-605100	2607060749111606200	16	8.53	ok	landeseite
