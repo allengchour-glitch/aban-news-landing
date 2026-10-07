@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-07 17:09 UTC, Stand 2026-10-07 18:17 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-07 17:09 UTC, Stand 2026-10-07 19:08 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **18'634**
-- Optionen mit englischen Werten (Kandidaten): 1'862
+- Produkte gesehen: **19'230**
+- Optionen mit englischen Werten (Kandidaten): 1'961
 - Optionen übersetzt: **3** · Werte übersetzt: **12**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 10'070
+- Werte mit unbekanntem Wort (unverändert): 10'767
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 43
 - übersprungen «kollision-nach-uebersetzung»: 32
@@ -111,5 +111,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 417, `light` 357, `inner` 325, `color` 234, `degrees` 159, `surface` 108, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 103, `skin` 98, `powder` 93, `core` 92, `rain` 87, `three` 86, `high` 76, `case` 71, `to` 71, `rope` 69, `belt` 68, `petal` 68, `bag` 62, `feet` 62, `no` 61, `mother` 61, `dual` 60, `dark` 59, `size` 59, `half` 58, `of` 57, `net` 57, `electric` 54, `code` 52, `chain` 50, `lens` 50, `line` 49, `bear` 49, `four` 48, `hat` 46, `for` 46, `about` 46, `clock` 45, `buckle` 44, `little` 43, `acupuncture` 43, `perforated` 42, `face` 41, `button` 41, `hook` 40, `⟨satzbau:menge-vor-nomen⟩` 40, `camera` 40, `cat` 39, `⟨satzbau:nomen-nomen⟩` 39, `opp` 39, `spring` 38, `ice` 38, `carbon` 38, `star` 38, `⟨satzbau:adjektivfolge⟩` 38, `father` 38, `generation` 37, `suit` 37
+`⟨satzbau:adjektiv-vor-nomen⟩` 437, `light` 396, `inner` 325, `color` 258, `degrees` 159, `shell` 140, `surface` 108, `diamond` 107, `⟨satzbau:material-vor-farbe⟩` 104, `powder` 103, `skin` 98, `core` 96, `three` 87, `rain` 87, `high` 79, `bag` 79, `belt` 72, `case` 71, `to` 71, `rope` 70, `petal` 68, `dark` 62, `feet` 62, `no` 61, `mother` 61, `dual` 60, `chain` 59, `size` 59, `half` 58, `of` 57, `net` 57, `electric` 54, `code` 52, `person` 51, `lens` 50, `line` 49, `four` 49, `bear` 49, `tea` 48, `space` 48, `ice` 47, `little` 46, `hat` 46, `for` 46, `about` 46, `clock` 45, `buckle` 44, `night` 43, `acupuncture` 43, `cherry` 42, `cloud` 42, `mirror` 42, `perforated` 42, `spring` 41, `face` 41, `button` 41, `fiber` 40, `hook` 40, `⟨satzbau:menge-vor-nomen⟩` 40, `camera` 40
 
