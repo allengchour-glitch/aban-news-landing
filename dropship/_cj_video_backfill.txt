@@ -615,3 +615,4 @@ gid://shopify/Product/15481800294785	ok	Wasserdichtes Ultraschall Mückenarmband
 gid://shopify/Product/15496611168641	ok-lokal
 gid://shopify/Product/15497434202497	ok-lokal
 gid://shopify/Product/15497443705217	ok-lokal
+gid://shopify/Product/15493500305793	ok-lokal
