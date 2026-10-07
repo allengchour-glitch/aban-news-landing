@@ -5124,3 +5124,5 @@ sternenhimmel-halskette-mit-cz-steinen-457538	2073893615887343617	16	4.71	ok	lan
 elegante-cz-halskette-839234	2073885949265862657	16	4.81	ok	landeseite
 sterlingsilber-halskette-mit-quadratischem-des-734721	2073894283696037889	16	4.71	ok	landeseite
 herzanhanger-aus-titanstahl-317569	2073887689503563777	16	4.66	ok	landeseite
+vintage-ohrhanger-mit-zirkon-283649	2073999512315781121	16	5.02	ok	landeseite
+retro-ohrhanger-mit-emaille-blumen-066370	2074027977282838530	16	5.20	ok	landeseite
