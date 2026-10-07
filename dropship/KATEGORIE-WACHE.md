@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-07T10:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-07T12:23Z
 
-Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 7 · ohne Kategorie: 7 · heute gesetzt: 6 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- patchwork-puffer-halterkleid-639100 · Damenmode → Apparel & Accessories > Clothing
-- intelligenter-sprungball-fur-hunde-604900 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- kasegeschmack-maus-mit-knistergerausch-635700 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- katzenbett-plattform-mit-saugnapf-58x30-cm-602300 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- elektrisches-ufo-spielzeug-fur-katzen-613200 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- pluschspielzeug-elch-braunbar-632500 · Spielzeug & Spiele → Toys & Games > Toys
+- elektrischer-katzenspielzeug-mit-fernsteuerung-602200 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- lange-a-linien-top-jacke-mit-kordelzug-626000 · Damenmode → Apparel & Accessories > Clothing
+- polo-hemd-mit-3d-print-und-shorts-set-612700 · Herrenmode → Apparel & Accessories > Clothing
+- weitlaufiger-damen-kleid-mit-batwing-armeln-617400 · Damenmode → Apparel & Accessories > Clothing
 

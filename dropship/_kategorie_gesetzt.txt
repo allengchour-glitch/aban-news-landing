@@ -48267,3 +48267,9 @@ elektrischer-katzenspielzeug-mit-glocke-611100	ap-2	Haustierbedarf	2026-10-07T10
 hund-oxford-stoff-kauspielzeug-mit-quietschfun-636500	ap-2	Haustierbedarf	2026-10-07T10:09Z
 pluschspielzeug-patchwork-tier-620400	tg-5	Spielzeug & Spiele	2026-10-07T10:09Z
 automatisch-rollendes-katzenball-spielzeug-615900	ap-2	Haustierbedarf	2026-10-07T10:09Z
+pluschspielzeug-elch-braunbar-632500	tg-5	Spielzeug & Spiele	2026-10-07T12:23Z
+elektrischer-katzenspielzeug-mit-fernsteuerung-602200	ap-2	Haustierbedarf	2026-10-07T12:23Z
+lange-a-linien-top-jacke-mit-kordelzug-626000	aa-1	Damenmode	2026-10-07T12:23Z
+polo-hemd-mit-3d-print-und-shorts-set-612700	aa-1	Herrenmode	2026-10-07T12:23Z
+weitlaufiger-damen-kleid-mit-batwing-armeln-617400	aa-1	Damenmode	2026-10-07T12:23Z
+off-shoulder-partykleid-mit-weitem-rock-607500	aa-1	Damenmode	2026-10-07T12:23Z
