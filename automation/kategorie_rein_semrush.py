@@ -324,6 +324,50 @@ CFG.update({
              "</ul>\n<h2>Worauf du achten kannst</h2>\n<p>Der Durchmesser und die Stromversorgung – Batterie oder Netzteil – stehen "
              "auf jeder Produktseite. Für das Schlafzimmer lohnt sich ein lautloses Sweep-Uhrwerk; LED-Uhren brauchen eine "
              "Steckdose in der Nähe.</p>"),
+    # Runde 4 (07.10.2026, Betreiber «semrush kannst noch ausnützen»): API-Guthaben 0 (gemessen 18:55 «no_api_units»), Daten aus der
+    # Ernte 02.10. (ch): schneidebrett 2'400/Mt, wandteppich 720/Mt — beide in Runde 2 an der Grenze «höchstens 8» liegen geblieben.
+    # GEMESSEN live 07.10. (aktiv + Google-Kanal): 84 Titel mit Schneidebrett/Hackbrett, 65 mit Wandteppich/Wandbehang.
+    "schneidebretter": dict(
+        tag="kat-schneidebretter", suche=["schneidebrett", "schneidebretter", "hackbrett"], kw="schneidebrett", volumen=2400, kd=None,
+        echt=R(r"schneidebrett|hackbrett"),
+        # HAUS bannt «Messer-» (Messerhalter, Messerblock); Hobel/Schärfer/Schleifstein = Klinge oder Schleifzubehör → nicht hier.
+        ban=R(HAUS + r"|halter|hobel|sch(ä|ae)rfer|schleifstein|besteck|bento|lunch|kinder"),
+        typen={"Küche & Bar", "Aufbewahrung & Organizer", "Haushalt & Wohnen"} | SAMMEL,
+        ja=["Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell", "Schneidebrett aus massivem Teakholz",
+            "4er-Schneidebrett-Set mit Antirutsch-Ständer", "Hackbrett aus Akazien- oder Mangoholz", "Schneidebretter 2 Stk. aus gehärtetem Glas"],
+        nein=["Messer- und Schneidebretthalter aus Edelstahl", "2-in-1 Schneidebrett mit Hobel-Set", "Schneidebrett mit Schärfer, doppelseitig",
+              "Doppelseitiges Schneidebrett mit Schleifstein", "Bento Box mit Bambus-Schneidebrett-Deckel",
+              "Edelstahl Besteckset für Kinder mit Schneidebrett", "Multifunktionaler Schneidebrett-Halter"],
+        titel="Schneidebretter", sort="BEST_SELLING",
+        seo_titel="Schneidebrett kaufen: Holz, Titan & Bambus | LuxeStyle",
+        seo_text="Schneidebretter aus Holz, Bambus, Titan, Edelstahl und Glas – einzeln und im Set, mit Saftrinne. Versand in die Schweiz.",
+        text="<p>Auf einem guten Schneidebrett rutscht nichts weg, und Saft bleibt in der Rinne statt auf der Arbeitsfläche. Hier "
+             "findest du Schneidebretter für Gemüse, Fleisch, Brot und Käse – vom massiven Holzbrett bis zum Titan-Brett.</p>\n"
+             "<h2>Was du hier findest</h2>\n<ul>\n<li><strong>Holz:</strong> Akazie, Nussbaum, Olive, Teak und Bambus, auch als "
+             "grosses Brett zum Servieren.</li>\n<li><strong>Titan und Edelstahl:</strong> leicht, schnittfest und schnell "
+             "abgespült.</li>\n<li><strong>Kunststoff und Glas:</strong> farbige Sets, um Rohes und Gekochtes zu trennen.</li>\n"
+             "<li><strong>Sets:</strong> mehrere Grössen mit Ständer, faltbare Bretter für unterwegs.</li>\n</ul>\n"
+             "<h2>Worauf du achten kannst</h2>\n<p>Holz schont die Klinge und wird von Hand gewaschen und ab und zu geölt. "
+             "Kunststoff und Edelstahl vertragen meist die Spülmaschine – das steht auf jeder Produktseite, ebenso die Masse.</p>"),
+    "wandteppiche": dict(
+        tag="kat-wandteppiche", suche=["wandteppich", "wandbehang", "tapisserie"], kw="wandteppich", volumen=720, kd=None,
+        echt=R(r"wandteppich|wandbeh(a|ä)ng|tapisserie"),
+        ban=R(HAUS + r"|\bdiy\b|bastel|kn(ü|ue)pf-?set|bausatz|anleitung|garn\b|f(ü|ue)r kinder|puppen"),
+        typen={"Wohnen & Deko", "Basteln & DIY", "Aufbewahrung & Organizer", "Haushalt & Wohnen"} | SAMMEL,
+        ja=["Handgewobener Baumwoll-Wandteppich", "Boho Wandteppich mit Quasten", "Mandala Wandteppich",
+            "Wandbehang mit Blättern, handgewoben", "Makramee Wandteppich aus Baumwolle, beige"],
+        nein=["DIY Makramee Wandteppich im Bohème-Stil", "Weihnachtsbaum-Wandbehang für Kinder", "Knüpf-Set für Wandteppich"],
+        titel="Wandteppiche & Wandbehänge", sort="BEST_SELLING",
+        seo_titel="Wandteppich kaufen: Boho, Makramee & Mandala | LuxeStyle",
+        seo_text="Wandteppiche und Wandbehänge: Boho mit Quasten, Makramee aus Baumwolle, Mandala und Landschaftsmotive. Versand in die Schweiz.",
+        text="<p>Ein Wandteppich füllt eine leere Wand schneller als ein Bild und dämpft nebenbei den Hall im Raum. Hier findest "
+             "du Wandteppiche und Wandbehänge für Wohnzimmer, Schlafzimmer und Flur.</p>\n<h2>Was du hier findest</h2>\n<ul>\n"
+             "<li><strong>Boho und Makramee:</strong> handgewebte Behänge aus Baumwolle mit Quasten, in Beige und Naturtönen."
+             "</li>\n<li><strong>Bedruckte Wandteppiche:</strong> Mandala, Landschaften, Wellen, Weltall und Tiermotive in "
+             "grossen Formaten.</li>\n<li><strong>Klein und gross:</strong> vom 40 × 60 cm Akzent bis zum Wandtuch über dem "
+             "Bett.</li>\n</ul>\n<h2>Aufhängen</h2>\n<p>Leichte Wandbehänge hängen an einem Holzstab mit zwei Nägeln oder "
+             "Klebehaken. Bedruckte Tücher lassen sich mit Klemmen oder einer Gardinenstange befestigen. Die Masse stehen auf "
+             "jeder Produktseite.</p>"),
     "woks": dict(
         tag="kat-woks", suche=["wok", "wokpfanne", "wok-pfanne"], kw="wok", volumen=4400, kd=21,
         echt=R(r"\bwok\b|\bwoks\b|wokpfanne|wok-?pfanne|induktions-?wok|edelstahl-?wok|titan-?wok|keramik-?wok|antihaft-?wok|wok-?set"),
