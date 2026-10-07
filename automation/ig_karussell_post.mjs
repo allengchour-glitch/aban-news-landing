@@ -19,7 +19,7 @@
  *
  * ENV: IG_USER_ID (/tmp/meta_ig_id) · META_ACCESS_TOKEN (/tmp/meta_page_token) · FB_PAGE_ID · DRY=1 · NUR_SLUG=<slug>
  */
-import { mitFolgen } from './lib/fb_text.mjs';
+import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen, modelSperre } from './post_guard.mjs';
@@ -236,7 +236,7 @@ for (const r of bereit) {
 }
 if (!cand) { console.log('Kein postbares Karussell.'); process.exit(0); }
 console.log(`Karussell: ${get(cand, 'slug')} (${get(cand, 'modus')}, ${bilder.length} Slides)\n${caption.slice(0, 200)}…`);
-const fbCaption = mitFolgen(fbText(caption, shopUrl, 'karussell'));   // 07.10. «fb zu wenig follower»
+const fbCaption = mitFolgen(fbTextLib(caption, shopUrl, 'karussell'));   // 07.10. «fb zu wenig follower»
 if (DRY) {
   console.log('[DRY] wuerde jetzt IG-Karussell + FB-Album posten (nichts gepostet, nichts geschrieben).');
   console.log(`── Instagram-Caption ──\n${caption}\n── Facebook-Text ──\n${fbCaption}`);
