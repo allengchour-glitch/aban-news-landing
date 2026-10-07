@@ -235,6 +235,14 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kleider_merkmale.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 1800 python3 automation/kleider_merkmale.py" >> "$KM" 2>&1 9>&- & )
   fi
+  # 🤖 HANDY-BOT (07.10.2026, Betreiber «entwickle eine bot für automation»): holt Befehle vom ntfy-Thema «<thema>-befehl»,
+  # antwortet (nur lesen), und schickt einmal am Morgen den Tagesbericht. Am RUNDENBEGINN, weil Befehle sonst erst nach einer
+  # ganzen Runde beantwortet würden (Lehre 06.10.: hintere Blöcke erreicht der Aufseher je Container-Stunde kaum).
+  if [ -f "$REPO/automation/handy_bot.py" ]; then
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_handy_bot.lock; flock -n 9 || exit 0; \
+        timeout 240 python3 automation/handy_bot.py --abholen; timeout 300 python3 automation/handy_bot.py --tagesbericht" \
+        >> /tmp/handy_bot.log 2>&1 9>&- & )
+  fi
   # ⚠️ HERZSCHLAG GLEICH ZU RUNDENBEGINN (29.08.2026). Bis heute stand er nur GANZ AM ENDE
   # der Runde (vor dem sleep 120). Eine Runde dauert aber laenger als die 10-Minuten-Schwelle,
   # gegen die engine_keepalive prueft — allein die 13 Reiniger werden mit je 10 s Abstand

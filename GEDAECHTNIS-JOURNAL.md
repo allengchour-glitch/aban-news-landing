@@ -44,6 +44,13 @@
 
 
 
+## 2026-10-07 18:20 UTC · 🤖 «entwickle eine bot für automation»: Handy-Bot über ntfy (Befehle + Tagesbericht)
+- `automation/handy_bot.py`: Befehle status/bestellungen/umsatz/social/hilfe auf dem Thema «<thema>-befehl», Antwort auf dem
+  Push-Thema; Tagesbericht ab 06:00 UTC (Ledger). Nur lesen. Am Aufseher-Rundenbeginn. Selbsttest 5/5, Probe zugestellt.
+- LEHRE: Ein Kanal, der nur sendet, erzieht zum Nachfragen in der Session. Ein Zweiweg-Kanal mit festen Lese-Befehlen
+  beantwortet die häufigste Frage («wie steht es?») ohne Session. Neue Betreiber-Meldungen dort einhängen, nicht in neue Logs.
+  → `dropship/HANDY-BOT-2026-10-07.md`
+
 ## 2026-10-07 18:25 UTC · 🌐 «lerne im internet»: FB-Link im Text zurückgenommen + Schleckmatte in die Hype-Reihe
 - QUELLE Social Media Examiner: Meta testet «2 Link-Posts/Monat» für Seiten ohne Meta Verified. GEMESSEN an unserer Seite:
   27 Reels mit https-Link 0–4 Aufrufe, 3 Reels mit Adresse als Text 206–232. Das ist durch den Wechsel zu Metricool
@@ -18379,6 +18386,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-05 · 🛒 **Ricardo: Fortura-Marge Median 21 % → nach 12 % Provision nur 361/2'388 Produkte ≥ CHF 5 → Feed `ricardo_feed.py` (täglich, öffentlich), Konto + Mail = Betreiber; FR vollständig (129 Kollektionen nachgezogen).** Provision vor dem Feed gegen die Marge rechnen → `dropship/ricardo/README.md`
 - 2026-10-05 · 🎼 **Musik + FR: nur 3 epische Stücke rotierten → Gemini-Konto hat `lyria-3.5` (≈1'200 Tokens/Stück, blind = bestes vidIQ-Stück) → 6 neue (trailer/hybrid/hero/fantasy/winter/elegant), Pool 3 → 9, Sperre 5; Französisch live (`webPresenceUpdate` [fr], 90 Felder nachübersetzt), 129 FR-Kollektionstexte veraltet.** Erst messen, welche Werkzeuge das Konto schon hat → Journal 05.10. 20:15
 - 2026-10-05 · 🪟 **Clarity (Betreiber, 6 Sitzungen, 0 Käufe): Popup + Cookie-Banner nach 2–7 s gleichzeitig — Ursache 40-%-Scroll-Auslöser (Handy = 2 s) + Exit-Intent → Tor 20/30 s, nie neben Banner, Wächter `popup_tor_wache.py`; Handy-Browser 19 s zu.** Prozent-Auslöser brauchen Mindestzeit → `dropship/CLARITY-BEFUNDE-2026-10-05.md`
 - 2026-10-05 · 🗂️ **Verbesserungsrunde: Google-Kategorie 5'319 «bleiben grob» — Ware im FALSCHEN Zweig (Velohelm unter Fitness, Nackenkissen unter Decor), Fein-Stufe darf nur innerhalb → `google_kategorie_umzug.py` (Quellzweige + eindeutiges Warenwort + 29 Kanarienvögel), 653 umgezogen, täglich.** Rest nach Präfix-Regel = falscher Zweig? → `dropship/GOOGLE-KATEGORIE-UMZUG-2026-10-05.md`

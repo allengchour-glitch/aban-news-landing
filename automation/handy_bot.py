@@ -78,7 +78,7 @@ def social_text():
     teile = []
     for d, n in ((heute, "heute"), (heute - datetime.timedelta(days=1), "gestern")):
         v = s.get(d.isoformat())
-        teile.append(f"{n}: {v['geplant']} geplant, {v['uebersprungen']} übersprungen" if v else f"{n}: keine Daten")
+        teile.append(f"{n}: {v['geplant']} Planungen (IG/FB/Story je einzeln), {v['uebersprungen']} übersprungen" if v else f"{n}: keine Daten")
     return "SOCIAL " + " · ".join(teile)
 
 
