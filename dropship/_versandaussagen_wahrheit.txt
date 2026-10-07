@@ -49639,3 +49639,46 @@ gid://shopify/Product/15412945355137	direkt	1	Herrenuhr-Set «Magnate» – Quar
 gid://shopify/Product/15412959871361	direkt	1	S925 Silber-Halskette «Eternal» – Herz-Anhänger
 gid://shopify/Product/15412960002433	direkt	1	S925 Silber-Halskette «Camélia» – Blüten-Anhänger
 gid://shopify/Product/15412960067969	direkt	1	999 Silber-Anhänger «Fortuna» – Glücksmünze filigran
+gid://shopify/Product/15412960592257	direkt	1	Satin-Seidenkissenbezug 2er-Set – sanft zu Haut & Haar
+gid://shopify/Product/15412960133505	direkt	1	Halskette & Armband «Planet» – minimalistischer Anhänger
+gid://shopify/Product/15412964458881	direkt	1	Pusteblumen-Ring «Dandelion» – filigran graviert
+gid://shopify/Product/15412964557185	direkt	1	Herren-Ring «Vintage» – Edelstahl Retro
+gid://shopify/Product/15412964655489	direkt	1	Tigerauge-Armband «Savana» – Naturstein doppelreihig
+gid://shopify/Product/15412964688257	direkt	1	Ohrringe «Barque» – geprägtes Design
+gid://shopify/Product/15412964786561	direkt	1	Ear-Cuffs «Papillon» – blauer Schmetterling
+gid://shopify/Product/15412964852097	direkt	1	999 Silber-Armband «Trèfle» – Kleeblatt mit Zirkonia
+gid://shopify/Product/15412976681345	direkt	1	Schultertasche «Milano» – PU-Leder, grosse Kapazität
+gid://shopify/Product/15412969144705	direkt	1	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+gid://shopify/Product/15412969406849	direkt	1	T-Shirt-Kleid «Casa» – locker mit Print
+gid://shopify/Product/15412976845185	direkt	1	Baseball-Cap «Washed» – Vintage Damen
+gid://shopify/Product/15412976714113	direkt	1	Sonnenhut «Riviera» – UV-Schutz, breite Krempe
+gid://shopify/Product/15412977926529	direkt	1	Sonnenbrille «Chrome» – polarisiert, Color-Changing
+gid://shopify/Product/15412976746881	direkt	1	Baseball-Cap «Navy» – Washed Cotton
+gid://shopify/Product/15412978352513	direkt	1	Sonnenbrille «Photo» – selbsttönend, polarisiert
+gid://shopify/Product/15412978483585	direkt	1	Cat-Eye-Sonnenbrille «Felina» – polarisiert
+gid://shopify/Product/15412978516353	direkt	1	Sport-Sonnenbrille «Velo» – Outdoor & Radsport
+gid://shopify/Product/15413023015297	direkt	1	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+gid://shopify/Product/15413023342977	direkt	1	Herren-Leinenhose «Lino» – locker & atmungsaktiv
+gid://shopify/Product/15413023113601	direkt	1	Herren-Strickshirt «Riviera» – Cord-Kurzarm
+gid://shopify/Product/15413025145217	direkt	1	Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
+gid://shopify/Product/15413041168769	direkt	1	Vintage-Cap «Heritage» – Washed, bestickt (Unisex)
+gid://shopify/Product/15413042479489	direkt	1	Bucket-Hat «Leo» – Leoparden-Print, Sonnenschutz
+gid://shopify/Product/15413024915841	direkt	1	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+gid://shopify/Product/15413043200385	direkt	1	Denim-Tasche «Jeans» – Colorblock, Herringbone
+gid://shopify/Product/15413041889665	direkt	1	Vintage-Cap «Blessed» – Washed, bestickt (Unisex)
+gid://shopify/Product/15413076853121	direkt	1	Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock
+gid://shopify/Product/15413077115265	direkt	1	Wide-Leg-Hose «Largo» – gerades Bein, elegant
+gid://shopify/Product/15413077279105	direkt	1	Blütenring «Fleur Rose» – rosa Zirkonia, verstellbar
+gid://shopify/Product/15413079343489	direkt	1	Sonnenbrille «Carré» – Retro Small-Square
+gid://shopify/Product/15413077410177	direkt	1	Halskette «Coquille» – Muschel-Anhänger mit Tassel
+gid://shopify/Product/15413083242881	direkt	1	Boho Resort-Set · 2-teilig (Top & Hose)
+gid://shopify/Product/15413074985345	direkt	1	Sommer-Top «Sole» – V-Neck mit Knopfleiste
+gid://shopify/Product/15413083832705	direkt	1	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
+gid://shopify/Product/15413083898241	direkt	1	Herren Leder-Slipper · elegant, zum Reinschlüpfen (Business & Freizeit
+gid://shopify/Product/15413084062081	direkt	1	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
+gid://shopify/Product/15413083931009	direkt	1	Herren Laufschuhe · Flyknit, atmungsaktiv, leicht (Sport & Alltag)
+gid://shopify/Product/15413084160385	direkt	1	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
+gid://shopify/Product/15413085733249	direkt	1	Ingwerreibe aus Keramik · für Knoblauch & Wasabi, mit Schälchen
+gid://shopify/Product/15413086323073	direkt	1	Thermo-Isolierbecher · Edelstahl, hält warm & kalt (Suppe & Kaffee)
+gid://shopify/Product/15413241184641	direkt	1	Picknick-Matte XXL · faltbar, wasserdicht, isoliert (Camping & Strand)
+gid://shopify/Product/15413245510017	direkt	1	Smart Auto-Lufterfrischer · nachfüllbar, Aromatherapie-Diffuser fürs A
