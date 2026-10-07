@@ -5248,3 +5248,4 @@ hohl-geschnittene-sandalen-mit-kopfbandern-632300	2606260749531633000	16	9.88	ok
 flache-sandale-mit-farbkasten-casual-629900	2606260743421620900	16	10.55	ok	landeseite
 blumen-sandalen-mit-blockabsatz-617300	2606260736001618200	16	12.56	ok	landeseite
 echte-leder-sandalen-mit-kreuzriemen-609900	2606260730351600500	16	12.56	ok	landeseite
+geflochtene-cowhide-flachsandale-626500	2606260723211627100	16	13.52	ok	landeseite
