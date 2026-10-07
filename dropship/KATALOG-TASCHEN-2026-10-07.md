@@ -65,3 +65,15 @@ geprüft; Rücklesen aus der Antwort; täglich im Aufseher (Block Google-Umzug) 
 
 **OFFEN:** Rest «anderer Zweig» ~4'400: Luggage ‖ Handbags ohne Titelwort (542: Kühlbeutel, Handytasche …), Drohnen 300,
 Bettwäsche als Decor 203, Kameras 151, Ventilatoren 90; 56 Fremdkörper im Haar-Korb ohne Ziel (Socken, Teppich, Humidor).
+
+## ERGEBNIS 23:20 UTC (GEMESSEN)
+| Lauf | gesetzt | Fehler |
+|---|---:|---:|
+| `kosmetik_fein.py` | 2'301 | 0 |
+| `haar_fein.py` | 910 | 0 |
+| `rc_fein.py` (Drohnen → Shopify «Flying Toys > Drones», Akkus/Landeplätze eigene Klassen; 20 Kanarien) | 297 | 0 |
+| `kategorie_fein` KREUZ Bettwaren Decor → Pillows/Blankets/Duvet Covers/Towels | 225 | 0 |
+| `kategorie_fein` KREUZ «Electronics» → Ventilator/Wecker/Staubsauger/Massage/Kamera/Luftbefeuchter … (23 Ziele, je Pflichtwort; PS5-Lüfter, «Roboter mit Licht», Haar-«Diffuser», Kamera-Detektor ausgeschlossen) | 439 | 0 |
+Frischer Export (51'5xx aktive): **«anderer Zweig» 9'661 (Morgen) → 4'070**, **«gleich» 36'135 → 41'732**.
+Rücklesen live: 30/30 zufällige Produkte aus Kosmetik/Haar/RC tragen Google- UND Shopify-Wert wie geschrieben.
+Aufseher (Block Google-Umzug, täglich): haar_fein → kosmetik_fein → rc_fein; kategorie_fein stündlich (KREUZ inklusive).
