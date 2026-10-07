@@ -5164,3 +5164,5 @@ trendige-leuchtarmbanduhr-607700	2508300243031607900	7	6.98	ok	landeseite
 nylon-armband-617800	2508300235341618100	16	5.12	ok	landeseite
 einfache-digitaluhr-fur-herren-609300	2508290116261609600	7	7.30	ok	landeseite
 schnellverschluss-armband-622800	2508281042591623000	16	4.71	ok	landeseite
+herren-armband-aus-hochwertigem-rindleder-627900	2508260247481628100	16	6.05	ok	landeseite
+verstellbares-keilkissen-set-616900	2606100328531617500	16	26.08	ok	landeseite

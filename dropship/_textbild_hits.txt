@@ -17268,3 +17268,8 @@ gid://shopify/Product/16611612885383	11->0	Medium Reise-Rucksack aus PU-Leder, 2
 gid://shopify/Product/16611613147527	62->0	Laptop-Rucksack 16 Zoll, 36-55 L, wasserdicht
 gid://shopify/Product/16611613409671	24->2	Canvas-Rucksack mit doppeltem Schultergurt, 20-35 l
 gid://shopify/Product/16611627565447	9->0	Computerrucksack mit Hard Shell
+gid://shopify/Product/16611667149191	10->0	Nassfester Anti-Diebstahl-Rucksack 20-35 L
+gid://shopify/Product/16611679601031	48->0	Multifunktionaler Rucksack 20-35 l
+gid://shopify/Product/16611681599879	40->1	Solarbetriebener Rucksack mit Wasserdichtem Oxford
+gid://shopify/Product/16611682058631	19->0	Kinder Spacebag Wasserdichter Reisesack
+gid://shopify/Product/16611702309255	38->3	Weisses Ledersandale mit Plattform
