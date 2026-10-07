@@ -5186,3 +5186,9 @@ midi-kleid-mit-hochkragen-und-taillebetonung-605100	2607060757561605700	16	8.93	
 blumen-dress-damen-xxl-lang-607000	2607060755061607600	16	9.07	ok	landeseite
 damen-denim-rock-midi-sexy-cool-602100	2607060735151602700	16	10.69	ok	landeseite
 v-ausschnitt-langrock-mit-halter-druck-605100	2607060728351605700	16	7.17	ok	landeseite
+vintage-polka-dot-oberteil-ohne-armel-slim-fit-613700	2607060655381614300	16	6.01	ok	landeseite
+damen-sommerkleid-ohne-armel-blumenprint-622600	2607060556231623300	16	8.79	ok	landeseite
+elegantes-off-shoulder-kleid-602200	2607060521081602800	16	7.71	ok	landeseite
+elegantes-sommerkleid-mit-spaghetti-tragern-608800	2607060520231609500	16	10.15	ok	landeseite
+vintage-blumenkleid-614800	2607060312351615600	16	9.47	ok	landeseite
+elegantes-wickelkleid-mit-v-ausschnitt-611800	2607060307541612500	16	8.79	ok	landeseite
