@@ -1,15 +1,14 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-06T23:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-07T00:13Z
 
-Aktive gescannt: 11 · ohne Kategorie: 11 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- schraubenauszieher-set-fur-armaturen-6-teilig-eeb9be · Werkzeug & Heimwerken → Hardware > Tools
-- 33-teiliges-bit-set-aus-karbonstahl-be731c · Werkzeug & Heimwerken → Hardware > Tools
-- 6-in-1-schneeschaufel-mit-teleskopgriff-da9e26 · Werkzeug & Heimwerken → Hardware > Tools
-- retro-spiegel-in-schwarz-r-9078f7 · Werkzeug & Heimwerken → Hardware > Tools
-- multifunktions-schraubendreher-set-fur-handyre-f67bfe · Werkzeug & Heimwerken → Hardware > Tools
+- chunky-heel-sandalen-mit-quadratischer-zehenpa-390784 · Damenschuhe → Apparel & Accessories > Shoes
+- plateau-wedge-sandalen-mit-fischmund-print-177280 · Damenschuhe → Apparel & Accessories > Shoes
+- schwarze-damen-sandalen-aus-pu-612800 · Damenschuhe → Apparel & Accessories > Shoes
+- cowhide-retro-zehen-sandalen-479744 · Damenschuhe → Apparel & Accessories > Shoes
 

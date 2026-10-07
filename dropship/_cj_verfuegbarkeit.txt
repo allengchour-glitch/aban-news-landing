@@ -50227,3 +50227,4 @@ gid://shopify/Product/16603767112071	ok
 gid://shopify/Product/16603767144839	ok
 gid://shopify/Product/16603762819463	ok
 gid://shopify/Product/16603767177607	ok
+gid://shopify/Product/15448704352641	bei-cj-weg	CJ-CJMY292704001AZ	via-varianten-wache-2026-10-07
