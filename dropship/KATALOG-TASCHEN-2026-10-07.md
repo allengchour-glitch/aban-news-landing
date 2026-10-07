@@ -77,3 +77,22 @@ Bettwäsche als Decor 203, Kameras 151, Ventilatoren 90; 56 Fremdkörper im Haar
 Frischer Export (51'5xx aktive): **«anderer Zweig» 9'661 (Morgen) → 4'070**, **«gleich» 36'135 → 41'732**.
 Rücklesen live: 30/30 zufällige Produkte aus Kosmetik/Haar/RC tragen Google- UND Shopify-Wert wie geschrieben.
 Aufseher (Block Google-Umzug, täglich): haar_fein → kosmetik_fein → rc_fein; kategorie_fein stündlich (KREUZ inklusive).
+
+## RUNDE 3 (07.10. 21:15–23:xx UTC) — Betreiber «weiter genau das wollte ich, mach es alles perfekt, alles andere auch»
+**Messfehler zuerst:** `kategorie_fein` zählte «Shopify feiner als die Google-Zuordnung» (Drohnen → Shopify «Drones»,
+Diffuser) als Widerspruch → neue Klasse `shopify-feiner` (= einig). Echte Widersprüche danach: **3'480** (+ ~470 Kosmetik-Reste).
+**«Alles andere» gemessen:** ohne Google-Kategorie 1'662 = 1'557 Kostüme + 40 Raucherwaren (absichtlich nicht im Google-Kanal,
+bleibt); «keine Zuordnung» 3'472 = Shopifys Tabelle mehrdeutig, v. a. **Uhren 2'876** (1'001 nur «Electronics»), dazu 39 Google-
+Werte als nackte NUMMER («1» = Tiere für eine UV-Gesichtsmaske, «567» Skin Care für Windmasken).
+| Lauf | gesetzt | Fehler |
+|---|---:|---:|
+| `uhren_fein.py` (Uhr aa-6-11 / Smartwatch aa-6-12 / Armband für … Watch → Watch Bands aa-6-10-1 / Hülle, Ladegerät → Watch Accessories; 24 Kanarien) | 1'030 | 0 |
+| `google_id_zu_name.py` (Nummer → Pfad, Titelwort zuerst; täglich) | 39 | 0 |
+| Runde 1 Einzelurteile: 3'954 Widersprüche, je Produkt am Titel beurteilt (G 2'101 · S 738 · X 929 · ? 186), `kategorie_urteile_anwenden.py` mit Schutz (Drohnen, Kinderkleidung, 3D-Druck nie auf gröber) | 3'534 | 0 |
+| Runde 2: 12'583 Produkte auf groben Google-OBERKLASSEN (Electronics, Hardware > Tools, Storage, Dog Supplies …) verfeinert — 8'477 Änderungen, 4'106 bleiben (vage / kein passendes Blatt / Klingen-Tabak-Kostüm-Erotik nie verschoben) | läuft | 0 |
+Rücklesen live Runde 1: **30/30**. Stichprobe Runde 2 vor dem Schreiben: 70/70 plausibel (Velo-Kassette, Hundeweste, Rollo, Gamepad,
+Fotofalle …). Fundstücke: Sticker unter «Kaffeemaschinen»/«Kleidung», Poster unter «Gepäck», Velosattel unter «Aufbewahrung»,
+Gehhilfe unter «Basteln», Kindersitzerhöhung unter «Autoteile», Angelschnur unter «Haustiere».
+**Lehren:** (1) Shopify-Drossel bei zwei Schreibern → `kategorie_urteile_anwenden` wartet jetzt (8 Versuche) statt abzubrechen
+(Runde 2 brach nach 375 ab). (2) Ein «Bereichsschutz» (erste zwei ID-Stufen gleich → Shopify bleibt) wurde verworfen, bevor er
+lief: er hätte Zahnbürste Skin Care → Oral Care blockiert. (3) Langer Schwanz ≠ Regel: ab ~80 Paaren lohnt Einzelurteil + Stichprobe.
