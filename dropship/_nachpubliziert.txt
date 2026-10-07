@@ -314,3 +314,7 @@ gid://shopify/Product/16608572899719	blaue-cosmos-wandteppich-212b34	Blaue Cosmo
 gid://shopify/Product/16608573227399	klappbarer-kleiderbugel-fur-auto-schwarz-silbe-216448	Klappbarer Kleiderbügel für Auto, schwarz/silber
 gid://shopify/Product/16608601178503	leopard-kissen-ohne-kern-quadratisch-schwarz-w-609200	Leopard Kissen ohne Kern, quadratisch, schwarz-weiss
 gid://shopify/Product/16609371095431	federklappe-fur-waschbecken-1b488c	Federklappe für Waschbecken
+gid://shopify/Product/16609858126215	schraubendreher-karabiner-mit-licht-7657a2	Schraubendreher-Karabiner mit Licht
+gid://shopify/Product/16610040709511	winter-freizeitschuhe-aus-baumwolle-619600	Winter-Freizeitschuhe aus Baumwolle
+gid://shopify/Product/16610040775047	zirkon-armband-zweifarbig-gelb-und-weiss-607600	Zirkon-Armband zweifarbig Gelb und Weiss
+gid://shopify/Product/16610185412999	zweiteiliges-damenkleid-mit-3d-effekt-626000	Zweiteiliges Damenkleid mit 3D-Effekt

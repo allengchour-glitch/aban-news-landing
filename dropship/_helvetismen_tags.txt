@@ -352,3 +352,6 @@
 2026-10-05	gid://shopify/Product/16604587917703	finken	Hausschuhe mit Blumen, offene Zehen
 2026-10-06	gid://shopify/Product/16608597213575	natel	Handy-Reparatur-Werkzeugset 11-teilig
 2026-10-07	gid://shopify/Product/16609675280775	natel	Multifunktions-Schraubendreher-Set für Handyreparatur
+2026-10-07	gid://shopify/Product/16609707917703	natel	21-teiliges Handy-Demontage-Werkzeugset
+2026-10-07	gid://shopify/Product/16609739702663	trottinett	Wandhalterung für Scooter
+2026-10-07	gid://shopify/Product/16610069184903	finken	Gestreifte Hausschuhe mit dicker Sohle
