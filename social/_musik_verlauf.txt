@@ -386,3 +386,6 @@
 2026-10-07T14:52:08.769Z	luxe-epic-winter.wav	38.75	schmuck	cjreel-E2994750-104F-4C07-B1CF-27B350633B77	stimme:nein	anteil
 2026-10-07T14:53:50.298Z	luxe-epic-fantasy.wav	22	allgemein	cjreel-1382873540822437888	stimme:ja	azure:de-CH-JanNeural
 2026-10-07T14:55:09.840Z	luxe-epic-hybrid.wav	30	gadget	cjreel-BA257983-9F9D-43E4-A7CA-2E3AD99FC7CD	stimme:nein	anteil
+2026-10-07T15:10:20.642Z	luxe-epic-hero.wav	43	allgemein	cjreel-BE21C384-CCF3-4EF7-9794-EE666491F82B	stimme:nein	anteil
+2026-10-07T15:12:54.411Z	luxe-adventure-uplift.wav	41	gadget	cjreel-1493C485-AF5A-44B9-90B2-4A3B2198943D	stimme:nein	anteil
+2026-10-07T15:15:41.094Z	luxe-epic-trailer.wav	15.5	gadget	cjreel-31212860-294A-411B-B186-0A09D0BAB88A	stimme:ja	azure:de-CH-JanNeural
