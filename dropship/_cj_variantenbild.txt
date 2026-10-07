@@ -6259,3 +6259,12 @@ gid://shopify/Product/15455518327169	zugeordnet	13	Fliegende Schnürschuhe für 
 gid://shopify/Product/15455518491009	zugeordnet	21	Leuchtende Sommer-Schuhe für Babys
 gid://shopify/Product/15455518654849	zugeordnet	12	Weiche Babyschuhe aus Plüsch
 gid://shopify/Product/15455518818689	zugeordnet	51	Kinder-Webbing-Sandalen
+gid://shopify/Product/15455520031105	zugeordnet	48	Regen-Laufschuhe mit weicher Sohle
+gid://shopify/Product/15455521112449	zugeordnet	32	Kinder-Martin-Stiefel
+gid://shopify/Product/15455521407361	zugeordnet	12	Kinder-Badeschuhe rutschfest
+gid://shopify/Product/15455521931649	zugeordnet	12	Wasserdichte Herren-Fleecejacke mit abnehmbarer Innenfutter
+gid://shopify/Product/15455522292097	zugeordnet	5	Wolljacke für Herren, grau, Slim-Fit
+gid://shopify/Product/15455522390401	zugeordnet	15	Leichte Linen-Hoodie für Herren
+gid://shopify/Product/15455522521473	zugeordnet	8	Lässige Overalls für Herren
+gid://shopify/Product/15455587008897	zugeordnet	36	Elegantes Damenkleid
+gid://shopify/Product/15455587041665	zugeordnet	36	Leichtes Damenkleid
