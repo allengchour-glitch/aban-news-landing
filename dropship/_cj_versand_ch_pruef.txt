@@ -5249,3 +5249,5 @@ flache-sandale-mit-farbkasten-casual-629900	2606260743421620900	16	10.55	ok	land
 blumen-sandalen-mit-blockabsatz-617300	2606260736001618200	16	12.56	ok	landeseite
 echte-leder-sandalen-mit-kreuzriemen-609900	2606260730351600500	16	12.56	ok	landeseite
 geflochtene-cowhide-flachsandale-626500	2606260723211627100	16	13.52	ok	landeseite
+designer-roman-sandalen-mit-ziersteppnahten-610400	2606260605171611100	16	14.48	ok	landeseite
+sommerneuheit-plattform-sneaker-mit-atm-600700	2606250914151601300	16	14.72	ok	landeseite
