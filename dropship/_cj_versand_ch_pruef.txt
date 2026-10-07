@@ -5179,3 +5179,5 @@ druckentlastendes-kissen-mit-tencel-bezug-608600	2604270745231609300	16	32.65	ok
 blumenkissenhulle-mit-stickerei-605900	2604270326421606400	16	6.90	ok	landeseite
 kopfstutze-mit-plaid-muster-614900	2604260655361615500	16	8.79	ok	landeseite
 memory-foam-kissen-mit-heizfunktion-622800	2604100757271623100	16	15.81	ok	landeseite
+zylindrisches-seitenschlafkissen-630700	2603050215011631300	16	20.79	ok	landeseite
+erde-ton-kissenbezug-ohne-kissen-fur-sofa-628800	2605190213321629400	16	7.99	ok	landeseite
