@@ -17273,3 +17273,15 @@ gid://shopify/Product/16611679601031	48->0	Multifunktionaler Rucksack 20-35 l
 gid://shopify/Product/16611681599879	40->1	Solarbetriebener Rucksack mit Wasserdichtem Oxford
 gid://shopify/Product/16611682058631	19->0	Kinder Spacebag Wasserdichter Reisesack
 gid://shopify/Product/16611702309255	38->3	Weisses Ledersandale mit Plattform
+gid://shopify/Product/16611705127303	35->0	Lederstiefel mit spitzem Zeh und mittlerem Absatz
+gid://shopify/Product/16611709780359	23->0	Flache Beach-Sandalen mit Zopfmuster und Schnalle
+gid://shopify/Product/16611713941895	23->0	Höhenverstellbare Einlegesohle für Herrenschuhe
+gid://shopify/Product/16611714793863	85->1	Winterfleece gefütterte High-Top Herrenschuhe
+gid://shopify/Product/16611716530567	14->0	Atmungsaktiver Mesh Sneaker mit Plattform
+gid://shopify/Product/16611721150855	36->0	Bauchschuhe Herren, atmungsaktiv, bequeme Sneaker
+gid://shopify/Product/16611748315527	35->0	Kinder Snackbehälter mit Drehscheibe
+gid://shopify/Product/16611761160583	22->0	Kupfer-Wasserhahn mit Universalarm
+gid://shopify/Product/16611761979783	9->0	Multifunktionale Küchenschere aus Edelstahl
+gid://shopify/Product/16611762405767	14->1	Stahlsatz mit Sternmuster, 6-teilig
+gid://shopify/Product/16611773612423	25->0	Doppelkopf-Wandlampe Aussenlicht IP54
+gid://shopify/Product/16611777413511	14->1	Baby-Olympia-Fleece-Romper, warm & dick
