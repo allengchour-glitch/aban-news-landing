@@ -5031,3 +5031,6 @@ leopard-muster-jeans-628600	2606171008031629900	16	10.96	ok	landeseite
 gerade-passform-vielseitige-lange-hose-623200	2606150535561623800	16	11.00	ok	landeseite
 vintage-blau-jeanshose-606500	2606130746501607100	16	8.53	ok	landeseite
 retro-slim-fit-jeans-610100	2606121342561610700	16	11.00	ok	landeseite
+schlanke-herren-jeans-638900	2606121140541639500	16	11.00	ok	landeseite
+hellblaue-skinny-jeans-617500	2606110718521618100	16	13.88	ok	landeseite
+ripped-jeans-fur-herren-635600	2606101244301636200	16	11.00	ok	landeseite
