@@ -94,8 +94,9 @@ def ziel_fuer(cat_id, google_name, karte):
 # Schulter-/Crossbody-Taschen und 115 Geldbörsen standen in Shopify unter «Luggage & Bags» (lb), Google sagt Handbags/Wallets.
 # (heutige Shopify-ID, Ziel-ID) → Pflichtwort im Titel. Alles andere bleibt «anderer-zweig» (nie raten).
 KREUZ = {
-    ("lb", "aa-5-4"): re.compile(r"handtasche|umh[äa]nge|schultertasche|crossbody|clutch|abendtasche|\btote\b|shopper|henkeltasche|"
-                                 r"beuteltasche|satteltasche|baguette|hobo|bucket|sling", re.I),
+    ("lb", "aa-5-4"): re.compile(r"^(?!.*(?:motorrad|fahrrad|velo|bike|roller|pferd|sattel))"   # 07.10.: «Motorrad-Satteltasche»
+                                 r".*(?:handtasche|umh[äa]nge|schultertasche|crossbody|clutch|abendtasche|\btote\b|shopper|"
+                                 r"henkeltasche|beuteltasche|baguette|hobo|bucket|sling)", re.I),
     ("lb", "aa-5-5"): re.compile(r"geldb[öo]rse|portemonnaie|portmonee|brieftasche|\bwallet\b|kartenetui|kartenhalter|geldklammer", re.I),
 }
 
@@ -243,7 +244,8 @@ def kreuz_test():
     t = [(kreuz_ziel("lb", H, k, "Cord Canvas Schulter- und Umhängetasche") == "aa-5-4", "Umhängetasche lb→Handbags"),
          (kreuz_ziel("lb", W, k, "Herren-Geldbörse aus Rindsleder") == "aa-5-5", "Geldbörse lb→Wallets"),
          (kreuz_ziel("lb", H, k, "Marco Laiden Business Bag") is None, "ohne Pflichtwort bleibt"),
-         (kreuz_ziel("el", H, k, "Umhängetasche") is None, "nur aus lb")]
+         (kreuz_ziel("el", H, k, "Umhängetasche") is None, "nur aus lb"),
+         (kreuz_ziel("lb", H, k, "Motorrad-Satteltasche 20L") is None, "Fahrzeugtasche bleibt")]
     for ok, n in t: print(("✓ " if ok else "✗ ") + n)
     return all(o for o, _ in t)
 
