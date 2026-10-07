@@ -5128,3 +5128,6 @@ vintage-ohrhanger-mit-zirkon-283649	2073999512315781121	16	5.02	ok	landeseite
 retro-ohrhanger-mit-emaille-blumen-066370	2074027977282838530	16	5.20	ok	landeseite
 retro-blumen-ohrstecker-646402	2074043198840143874	16	5.20	ok	landeseite
 vintage-blumenstecker-813633	2074044224200671234	16	5.20	ok	landeseite
+vintage-ohrstecker-im-palaststil-453825	2074014084284448769	16	5.02	ok	landeseite
+silicone-armband-610200	2505120718021610500	16	5.81	ok	landeseite
+manner-sportuhr-612300	2505050626241613300	7	6.49	ok	landeseite
