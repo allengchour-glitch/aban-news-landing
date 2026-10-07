@@ -61,6 +61,14 @@ def bestand(variante):
         return None
 
 
+def cj_entfernt(grund):
+    """07.10.2026 (Prüf-Routine): CJ-Code 1602002 «Product has been removed from shelves» = nicht mehr lieferbar. Gemessen:
+    9 «unklar», davon 8 ACTIVE und VOLL kaufbar (149 Varianten) — Geisterverkauf. Jetzt: alle kaufbaren Varianten sperren
+    (umkehrbar: die IDs stehen als eigene Sperre im Ledger und werden frei, sobald CJ wieder Bestand meldet)."""
+    g = str(grund or "")
+    return "1602002" in g or "removed from" in g.lower()
+
+
 def entscheiden(shop_varianten, cj_varianten, eigene_deny):
     """→ (sperren_ids, freigeben_ids, unklar). shop: [{id, sku, kaufbar}], cj: [{variantSku, inventories}].
     Entscheidet nach KAUFBARKEIT (availableForSale), nie nach inventoryPolicy: CJ-Ware steht ab Import auf DENY + tracked:false
@@ -256,6 +264,23 @@ def main():
             stat["keine-cj-sku" if grund == "keine-cj-sku" else "unklar"] += 1
             led.write(f"{pid}\t{jetzt:.0f}\t{grund or 'unklar'}\n"); continue
         vs = data.get("variants") if isinstance(data, dict) else None
+        if not vs and cj_entfernt(grund):
+            deny = [v["id"] for v in shop_v if v.get("kaufbar")]
+            stat["produkte-cj-entfernt"] += 1
+            if deny and not DRY:
+                import ausverkauft
+                try:
+                    ist = ausverkauft.sperren(w.gql, pid, deny)
+                    if any(ist.get(i) is not False for i in deny):
+                        raise RuntimeError(f"Rücklesen: {ist}")
+                except Exception as e:
+                    stat["schreibfehler"] += 1
+                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}\n"); led.flush(); continue
+            stat["varianten-ausverkauft"] += len(deny)
+            if len(bsp) < 12:
+                bsp.append(f"{p.get('title', '')[:50]} — bei CJ aus dem Sortiment: {len(deny)} gesperrt")
+            led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:\tcj-entfernt\n"); led.flush()
+            continue
         if not vs:
             stat["unklar"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund or 'keine Varianten'}\n"); continue
         if not geprueft_format:
@@ -321,6 +346,10 @@ def selbsttest():
         ("d" not in z, "fremde Sperre bleibt"),
         (u == 1, "fehlt bei CJ → unklar, nichts tun"),
         (bestand({"inventories": None}) is None and bestand({}) is None, "ohne inventories = unbekannt, nie 0"),
+        (cj_entfernt("konto3 code 1602002 Product has been removed from shelves"), "CJ 1602002 = aus dem Sortiment"),
+        (cj_entfernt("code 1602002 Product has been removed"), "Hauptkonto-Wortlaut"),
+        (not cj_entfernt("konto2 code 200 Success"), "Kanarie: Erfolg ist nicht entfernt"),
+        (not cj_entfernt("netz"), "Kanarie: Netzfehler bleibt unklar"),
     ]
     ok = sum(b for b, _ in t)
     for b, n in t:
