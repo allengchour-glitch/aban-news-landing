@@ -612,3 +612,4 @@ gid://shopify/Product/15480489279873	ok	Handgemachte UV-Nagelpatches Schmetterli
 gid://shopify/Product/15480823873921	ok	Weissrauschen-Schlafhilfe
 gid://shopify/Product/15481691996545	ok	Sternenhimmel Projektionslampe Luftbefeuchter
 gid://shopify/Product/15481800294785	ok	Wasserdichtes Ultraschall Mückenarmband
+gid://shopify/Product/15496611168641	ok-lokal
