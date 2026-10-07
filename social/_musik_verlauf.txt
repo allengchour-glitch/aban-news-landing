@@ -330,3 +330,4 @@
 2026-10-06T23:12:10.582Z	luxe-adventure-uplift.wav	45.5	allgemein	cjreel-1614847664858869760	stimme:ja	azure:de-CH-JanNeural
 2026-10-07T00:14:15.316Z	luxe-epic-winter.wav	38.75	home	cjreel-1726502588339728384	stimme:ja	azure:de-CH-JanNeural
 2026-10-07T00:17:41.479Z	luxe-orchestra.wav	18	allgemein	cjreel-1789978280632782848	stimme:nein	anteil
+2026-10-07T00:19:10.062Z	luxe-epic-fantasy.wav	26.25	gadget	cjreel-1734474815634939904	stimme:nein	anteil

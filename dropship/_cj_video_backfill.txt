@@ -595,3 +595,8 @@ gid://shopify/Product/15495081918849	ok-lokal
 gid://shopify/Product/15506447991169	ok-lokal
 gid://shopify/Product/15454124179841	ok-lokal
 gid://shopify/Product/15499996037505	ok-lokal
+gid://shopify/Product/15454193746305	ok	Haartrockner mit mehreren Funktionen
+gid://shopify/Product/15454249124225	ok	Katzenspielzeug mit Feder und Glöckchen
+gid://shopify/Product/15455532384641	ok	Kompakter Luftbefeuchter für Büro und Zuhause
+gid://shopify/Product/15455551816065	ok	Katzenwasserspender
+gid://shopify/Product/15458641641857	ok	Winter-Doggenmantel mit Plaidschur und Zipper
