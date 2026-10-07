@@ -614,3 +614,4 @@ gid://shopify/Product/15481691996545	ok	Sternenhimmel Projektionslampe Luftbefeu
 gid://shopify/Product/15481800294785	ok	Wasserdichtes Ultraschall Mückenarmband
 gid://shopify/Product/15496611168641	ok-lokal
 gid://shopify/Product/15497434202497	ok-lokal
+gid://shopify/Product/15497443705217	ok-lokal

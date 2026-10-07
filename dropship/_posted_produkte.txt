@@ -162,3 +162,5 @@ slug:kostum-hexe-schwarz-weiss-fgssor9436
 name:kostümhexeschwarzweiss
 slug:gefutterter-kapuzenpullover-mit-reissverschlus
 slug:bodenstativ-mit-led-ringlicht-fur-livestreams
+slug:plusch-nashorn-32-cm-fga17861
+name:plüschnashorn32cm
