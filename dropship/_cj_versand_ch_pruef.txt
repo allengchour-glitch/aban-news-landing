@@ -4783,3 +4783,13 @@ schmale-arbeitshosen-634100	2606170337021634700	16	8.79	ok	landeseite
 bequeme-freizeithose-625500	2606161003371626500	16	12.21	ok	landeseite
 distress-jeans-slim-fit-610700	2606160906211611300	16	12.21	ok	landeseite
 stretch-blue-jeans-617800	2606160124121618500	16	11.84	ok	landeseite
+stretch-hose-589186	2061282590962991105	0	-	KEINE CH-Option → DRAFT	landeseite
+schmale-stretch-hosen-132033	2061299744185761794	0	-	KEINE CH-Option → DRAFT	landeseite
+geradehose-aus-stretchfreiem-stoff-364353	2061323156190633985	0	-	KEINE CH-Option → DRAFT	landeseite
+v-ausschnitt-bluse-611000	2607060207451611900	16	7.43	ok	landeseite
+waffel-maschen-top-621500	2607060152581622200	16	8.53	ok	landeseite
+waffel-pullover-600600	2607060140591601200	16	8.53	ok	landeseite
+einfarbige-waffelgewebe-button-up-hemd-mit-kra-610000	2607060120571610700	16	9.20	ok	landeseite
+damen-color-block-langarm-shirt-mit-slim-fit-2-633300	2607060116361633900	16	8.38	ok	landeseite
+franzosisches-taschenhemd-607400	2607060044241608200	16	6.70	ok	landeseite
+elegantes-midi-kleid-600300	2607060715561600900	16	10.15	ok	landeseite
