@@ -166,3 +166,5 @@ slug:plusch-nashorn-32-cm-fga17861
 name:plüschnashorn32cm
 pid:15412306772353
 slug:locker-geschnittenes-pullover-kleid-mit-schlit
+slug:krone-silber-aus-schaumstoff-fgack14414
+name:kronesilberausschaumstoff

@@ -331,3 +331,4 @@ gid://shopify/Product/15448673812865	draft-ausverkauft	Gefütterter Daunenmantel
 gid://shopify/Product/15500155748737	draft-ausverkauft	Schwarze Halbschuhe mit Rundabsatz und Klettverschluss
 gid://shopify/Product/15500930285953	draft-ausverkauft	Sandalen mit Klettverschluss im Römer-Stil
 gid://shopify/Product/15502187299201	draft-ausverkauft	Plateau-Sandalen mit klobigem Absatz
+gid://shopify/Product/15520381337985	draft-ausverkauft	Sandalen mit Schleife und transparentem Riemen
