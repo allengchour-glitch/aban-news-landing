@@ -66,3 +66,19 @@
 - **Weiter offen:**
   - Der Importer typisiert die Gruppe «Werkzeug» an der Quelle noch pauschal. Der tägliche Nachzug fängt das zwar ab, aber erst nach bis zu 24 h.
   - 533 unklare Produkte bleiben vorerst Werkzeug.
+
+## Nachtrag 16:25 UTC — an der Quelle (Betreiber «mache verbesserung»)
+- **Eine Regelquelle:** `automation/data/werkzeug_korb.json`, in drei Teilen:
+  - `vorrang`: 4 Regeln vom 06.10. (Backform, Haarschneider, Nagelknipser/-zange, Küchentuch), geprüft vor dem Werkzeugwort.
+  - `werkzeugwort`: der Schutz für echte Werkzeuge.
+  - `kreuz`: 15 eindeutige Warenwörter.
+- **Wer die Datei liest:**
+  - `google_kategorie_umzug.py`: der tägliche Umzug, Kanarien 65/65 unverändert.
+  - `google_kategorie.mjs` → `werkzeugKorb()`.
+- **Importer `cj_category_fill.mjs`:** Bei Typ «Werkzeug & Heimwerken» mit Treffer setzt er schon beim Anlegen
+  - den Typ aus dem Zielpfad (`typAusKategorie`),
+  - die Tags ohne `werkzeug`/`heimwerken`,
+  - die Google-Kategorie direkt auf den Zielpfad (`googleKategorie` fragt den Korb zuerst).
+- **Gleichlauf JS↔Python:** 1'253 Titel (1'188 Bestand + 65 Kanarien), **0 Abweichungen** ausserhalb von Hardware. Werkzeug-Verfeinerungen wie Zange → Pliers macht bewusst nur der tägliche Lauf; beim Import bleiben sie «Tools».
+- **Ergänzt:** `produkttyp_aus_kategorie.mjs` kennt jetzt «Musical Instrument & Orchestra Accessories» → Musikinstrumente. Kanarien 26/26.
+- **Folge:** Neuware steht nicht mehr bis zu 24 h im Werkzeug-Regal. `werkzeug_korb_shop.py` bleibt als Wächter für alles, was am Import vorbeikommt (andere Importer, Altbestand).

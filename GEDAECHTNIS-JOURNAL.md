@@ -44,6 +44,14 @@
 
 
 
+## 2026-10-07 16:25 UTC · 🧰 «mache verbesserung»: Werkzeug-Sammelkorb an der Quelle — eine Regeldatei für Importer und Wächter
+Regeln aus google_kategorie_umzug.py nach `automation/data/werkzeug_korb.json` (vorrang 4 / werkzeugwort / kreuz 15); Python und
+`google_kategorie.mjs::werkzeugKorb()` lesen dieselbe Datei; `cj_category_fill.mjs` setzt bei «Werkzeug & Heimwerken» mit Treffer schon
+beim Anlegen Typ (typAusKategorie), Tags ohne werkzeug/heimwerken und Google-Kategorie. Gleichlauf-Test 1'253 Titel: 0 Abweichungen
+ausserhalb Hardware (erste Fassung 21 — die 4 alten Vorrang-Regeln standen nur in Python, «Nagelzange» braucht Vorrang VOR dem
+Werkzeugwort). produkttyp_aus_kategorie.mjs + Musical Instrument Accessories. LEHRE: Wer Regeln in zwei Sprachen braucht, legt sie
+in EINE Datendatei und testet den Gleichlauf auf dem ganzen Bestand — nicht nur auf den Kanarien.
+
 ## 2026-10-07 15:05 UTC · 🧰 «mache verbesserung»: Shop-Seite des Werkzeug-Sammelkorbs nachgezogen (80 Produkte)
 Nach dem Google-Umzug standen Kalimba/Regenschirm/Kerzenhalter im SHOP weiter als Typ «Werkzeug & Heimwerken», Tags werkzeug/
 heimwerken (Werkzeug-Kollektion) und Shopify-Kategorie Tools. Neu `automation/werkzeug_korb_shop.py`: Quelle NUR das Umzugs-Ledger
