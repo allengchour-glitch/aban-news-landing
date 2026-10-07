@@ -158,10 +158,14 @@ def voll_export():
     ue = d["data"]["bulkOperationRunQuery"]["userErrors"]
     if ue:
         raise RuntimeError("Bulk abgelehnt: " + json.dumps(ue))
+    # 07.10.2026: NUR die eigene Bulk-ID abfragen. `currentBulkOperation` ist der zuletzt gestartete Export der App — lief
+    # gleichzeitig ein anderer Wächter, las diese Wache dessen Datei (gemessen: 47'084 statt 81'415 Produkte) und meldete
+    # trotzdem «0 Handklingen im Verkauf», während zwei Messer ACTIVE standen.
+    bid = d["data"]["bulkOperationRunQuery"]["bulkOperation"]["id"]
     url = None
     for _ in range(180):                     # bis 30 Minuten, Katalog ist gross
         time.sleep(10)
-        c = gql("{currentBulkOperation{status url errorCode objectCount}}")["data"]["currentBulkOperation"]
+        c = gql("query($i:ID!){node(id:$i){... on BulkOperation{status url errorCode objectCount}}}", {"i": bid})["data"]["node"]
         if c["status"] == "COMPLETED":
             url = c["url"]
             break
@@ -170,7 +174,13 @@ def voll_export():
     if not url:
         raise RuntimeError("Bulk lief in die Zeitgrenze")
     roh = urllib.request.urlopen(url, timeout=300).read().decode("utf-8")
-    return export_lesen(roh.splitlines())
+    alle = export_lesen(roh.splitlines())
+    # Vollständigkeit gegen die Zählung: ein zu kurzer Export ist «unklar», nie «0 Befunde».
+    soll = gql('{a:productsCount(query:"status:active",limit:null){count} d:productsCount(query:"status:draft",limit:null){count}}')["data"]
+    soll = soll["a"]["count"] + soll["d"]["count"]
+    if len(alle) < 0.97 * soll:
+        raise RuntimeError(f"Export unvollständig: {len(alle)} von {soll} Produkten")
+    return alle
 
 
 def export_lesen(zeilen):

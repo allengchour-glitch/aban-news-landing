@@ -332,6 +332,21 @@ def r_drossel_ungeduldig(dateien):
     return treffer
 
 
+def r_fremder_bulk(dateien):
+    """07.10.2026 — Bulk-Export über `currentBulkOperation` abgeholt. Das ist der ZULETZT gestartete Export der App, nicht
+    der eigene: klinge_ch_wache las 47'084 statt 81'415 Produkte (Export eines anderen Wächters) und meldete «0 Handklingen
+    im Verkauf», während zwei Messer ACTIVE standen. Richtig: Status über die eigene ID (`node(id:)`)."""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix not in (".py", ".mjs", ".js") or AUTO not in p.parents:
+            continue
+        if "bulkOperationRunQuery" not in t:
+            continue
+        for m in re.finditer(r"currentBulkOperation\s*\{", t):
+            treffer.append((p, t.count("\n", 0, m.start()) + 1, "Bulk-Status über currentBulkOperation — eigene ID per node(id:) abfragen"))
+    return treffer
+
+
 def r_kontingent_wortlaut(dateien):
     """06.10.2026 — «Prüfer leer?» am Wortlaut der Fehlermeldung entschieden. google_bild_tausch prüfte
     `"Kontingent" in str(e) or "429" in str(e)`: die Meldung heisst «Groq-Tageskontingent leer» (kleines k), und seit der
@@ -357,6 +372,7 @@ REGELN = [
     ("helfer-ohne-eimer", r_helfer_ohne_eimer, "03.10.2026"),
     ("drossel-ungeduldig", r_drossel_ungeduldig, "03.10.2026"),
     ("kontingent-wortlaut", r_kontingent_wortlaut, "06.10.2026"),
+    ("fremder-bulk", r_fremder_bulk, "07.10.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -385,6 +401,9 @@ KOEDER = {
     # Der ECHTE Fall aus google_bild_tausch.py (bis 06.10.):
     "kontingent-wortlaut": ("automation/koeder_kont.py",
                             'if os.environ.get("EIN_MODELL") == "1" and ("Kontingent" in str(e) or "429" in str(e)):\n'),
+    # Der ECHTE Fall aus klinge_ch_wache.py (bis 07.10.):
+    "fremder-bulk": ("automation/koeder_bulk.py",
+                     'gql("mutation{bulkOperationRunQuery(query:Q){bulkOperation{id}}}")\nc = gql("{currentBulkOperation{status url}}")\n'),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -408,6 +427,8 @@ ECHT = {
                            '_fehlt = max(float(_k.get("requestedQueryCost") or 0), 600.0) - float(_t.get("currentlyAvailable") or 0)\n'),
     "kontingent-wortlaut": ("automation/koeder_kont.py",
                             'if os.environ.get("EIN_MODELL") == "1" and zweitmodell.ist_kontingent_leer(e):\n'),
+    "fremder-bulk": ("automation/koeder_bulk.py",
+                     'gql("mutation{bulkOperationRunQuery(query:Q){bulkOperation{id}}}")\nc = gql("query($i:ID!){node(id:$i){... on BulkOperation{status url}}}")\n'),
 }
 
 

@@ -76,6 +76,9 @@ def _beigabe_hinter_messer(t, k):
                 and re.search(r'(?<![\wäöüß])(?:mit|with|inkl\.?|samt|und|and)(?![\wäöüß])|&', t[s.end():k.start()], re.I))
 
 
+_BEIGABE = re.compile(r"(?<![\wäöüß])(?:mit|und|inkl\.?|samt|with|and)(?![\wäöüß])|&", re.I)
+
+
 def ist_handklinge(titel):
     """True, wenn im PAKET eine Handklinge liegt — die Versandfrage, nicht die Werbefrage.
 
@@ -109,6 +112,20 @@ def ist_handklinge(titel):
         return False
     if WAFFENWORT_VORNE.search(t) and VORNE_AUSNAHME.search(t):
         return False
+    # 07.10.2026 KOPFWORT: ist das ERSTE Wort selbst ein Klingenwort ohne Zubehör-/Geräte-Endung, liegt eine Klinge im
+    # Paket — egal was dahinter steht. Gemessen (Neuimporte 04:26 UTC, ACTIVE): «Keramikmesser-Set mit vier Messern und
+    # Schäler» (Beigabe «Schäler» = Geräte-Ausnahme) und «Boningmesser … ohne Schutzhülle» («ohne» verneint sogar).
+    # Englisch steht das Zubehör als ZWEITES Wort («Knife Sharpener») → Kopf + Folgewort prüfen.
+    # Kanarien aus dem Voll-Export (Trockenlauf 07.10.): «Messer- und Schneidebretthalter» (Ergänzungsstrich → Hauptwort
+    # steht hinten) und «Haarmesser … 12-Zahn-Schere» (Gerätewort OHNE und/mit davor = das Produkt selbst, keine Beigabe).
+    worte = t.split()
+    kopf2 = " ".join(worte[:2])
+    if worte and not worte[0].endswith("-") and HANDKLINGE_STAMM.search(worte[0]) \
+            and not HANDKLINGE_KEIN_PAKET.search(kopf2) and not HANDKLINGE_GERAET.search(kopf2):
+        rest = t[len(worte[0]):]
+        g = HANDKLINGE_GERAET.search(rest)
+        if not g or _BEIGABE.search(rest[:g.start()]):
+            return True
     # 23.09.2026: Paket MIT Klinge — «Hackmesser mit Schutzhülle», «Messerblock mit 6 Messern».
     # Steht VOR der Zubehör-Ausnahme, weil «schutzhülle»/«scheide» dort als reines Zubehör gelten.
     m = HANDKLINGE_MIT_ZUBEHOER.search(t)
