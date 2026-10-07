@@ -1507,3 +1507,11 @@ gid://shopify/Product/16609740456327	ok	Vollautomatische elektrische Bindemaschi
 gid://shopify/Product/16609996996999	ok	Edo Asterism Kristallglas
 gid://shopify/Product/16610154250631	ok	Hunde-Autositz mit Polster
 gid://shopify/Product/16609945092487	ok	316 Edelstahl Backblech für Camping
+gid://shopify/Product/16610294301063	nicht-versendbar	Couchtisch für kleine Wohnungen
+gid://shopify/Product/16610070364551	ok	Couchtisch im nordischen Stil
+gid://shopify/Product/16610168111495	ok	Katzenhaus mit integrierter Katzentoilette
+gid://shopify/Product/16610290368903	nicht-versendbar	Klassischer Doppelstock Couchtisch aus Leichtwalnuss
+gid://shopify/Product/16610066596231	ok	Multifunktionale Pizzamaschine
+gid://shopify/Product/16610388803975	ok	Intelligenter Brotbackautomat mit Gärfunktion
+gid://shopify/Product/16609980187015	ok	Manuelle Kartoffelschneidemaschine
+gid://shopify/Product/16610287518087	nicht-versendbar	Ultraleichter Rollkoffer aus Oxford-Stoff
