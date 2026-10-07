@@ -17235,3 +17235,5 @@ gid://shopify/Product/16610526921095	45->2	Schlanker Swing-Kleid in Weinrot
 gid://shopify/Product/16610533867911	66->3	Langarm Casual Kleid mit A-Linienrock
 gid://shopify/Product/16610538324359	49->2	Ärmelloses Midikleid mit Neckholder
 gid://shopify/Product/16610643968391	26->0	Keramik Napf für Hund & Katze, gross, 300 ml
+gid://shopify/Product/16610646196615	74->0	Spielball mit Leck-Funktion für Hunde
+gid://shopify/Product/16610812559751	28->0	Schulterpartie mit hoher Taille – Abendkleid
