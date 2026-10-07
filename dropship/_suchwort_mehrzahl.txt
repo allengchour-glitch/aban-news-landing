@@ -3808,3 +3808,5 @@ gid://shopify/Product/16607978652039	taschen	Handtasche mit Floraler Print-Füll
 gid://shopify/Product/16608000672135	taschen	Handtasche mit Prägung, Flurblumen-Innenfutter
 gid://shopify/Product/16608028524935	taschen	Fleece-Gepäcktasche mit Leoparden-Print
 gid://shopify/Product/16608165757319	taschen	Handtasche aus Vollschicht-Rindleder
+gid://shopify/Product/16607730631047	kleider	Boho-Leinenkleid mit asymmetrischem Rock
+gid://shopify/Product/16608700170631	brillen	Schweisserschutzbrille mit LCD-Anzeige
