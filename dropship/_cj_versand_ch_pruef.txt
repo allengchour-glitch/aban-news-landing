@@ -5136,3 +5136,5 @@ sport-armband-616500	2504160325371616800	16	6.17	ok	landeseite
 herren-armbanduhr-mit-diamanten-624200	2504070203311624600	7	7.13	ok	landeseite
 elektronische-sportuhr-mit-led-display-601000	2503290650151601200	7	5.69	ok	landeseite
 mannliche-armbanduhr-mit-gro-em-zifferblatt-604000	2503150629061604200	7	6.13	ok	landeseite
+diamant-rap-hip-hop-armbanduhr-627700	2502190515201627900	7	9.54	ok	landeseite
+elektronische-herren-uhr-608000	2501230245421608300	7	6.49	ok	landeseite
