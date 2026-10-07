@@ -5109,3 +5109,6 @@ grosskugel-ring-edelstahl-601500	2606200202241602100	16	4.66	ok	landeseite
 schmetterling-schale-pferd-ring-639700	2606200132101630400	16	4.36	ok	landeseite
 piraten-schadelring-edelstahl-622800	2606191247151623500	16	4.60	ok	landeseite
 eleganter-edelstahlring-fur-herren-631700	2606190556261632600	16	4.40	ok	landeseite
+eleganter-rock-anhanger-ring-987906	2068116954592485377	16	4.50	ok	landeseite
+doppelter-schmetterlingsring-571330	2068110464041263106	16	4.50	ok	landeseite
+rubin-diamant-ring-846018	2068114177545732097	16	4.50	ok	landeseite
