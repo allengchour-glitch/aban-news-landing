@@ -19,6 +19,7 @@
  *
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
+import { mitFolgen } from './lib/fb_text.mjs';
 import fs from 'node:fs';
 import { execFileSync as _exf } from 'node:child_process';
 import { markierungFehlt,
@@ -375,7 +376,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     if (j.status !== 0) { console.log(`   ⚠️ Gemini-Jury ohne Urteil (${j.info}) → Zeile bleibt ready: ${next[idx.id]}`); continue; }
     console.log(`   ✅ Gemini-Jury: ${j.info}`);
   }
-  const fbCaption = fbText(caption, pa.url, 'bild');
+  const fbCaption = mitFolgen(fbText(caption, pa.url, 'bild'));   // 07.10. «fb zu wenig follower»
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
