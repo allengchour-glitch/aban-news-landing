@@ -5034,3 +5034,5 @@ retro-slim-fit-jeans-610100	2606121342561610700	16	11.00	ok	landeseite
 schlanke-herren-jeans-638900	2606121140541639500	16	11.00	ok	landeseite
 hellblaue-skinny-jeans-617500	2606110718521618100	16	13.88	ok	landeseite
 ripped-jeans-fur-herren-635600	2606101244301636200	16	11.00	ok	landeseite
+vintage-jeanshose-615600	2606100359461616300	16	11.00	ok	landeseite
+lichtblaue-herrenjeans-636600	2606100232021638700	16	9.47	ok	landeseite
