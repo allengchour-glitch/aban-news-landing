@@ -56,6 +56,16 @@ für Produkt-Karussell und Top-Liste ausgelassen; unter 3 sauberen Bildern fäll
 8/8 echter montierter Text («Chewing sound», «17.7 Inch - For Medium to Large Dogs»). Der Post selbst (IG DeK8Kk_CA33, 06.10.)
 bleibt live — Löschen nur auf Betreiber-Wort. LEHRE: «verzogen» zuerst am Quellbild messen, nicht am eigenen Code; eine
 Format-Heuristik (quadratisch = Studiofoto) belohnt gerade die Bilder, die der Lieferant auf Quadrat gepresst hat.
+**Nachtrag 11:35 UTC (Betreiber «bleiben, für die nächsten verbessern»):** Post bleibt live. Sperre als gemeinsames Modul
+`automation/fremdtext.py` (Selbsttest 3/3, CLI `python3 automation/fremdtext.py <url>…`) und an ALLE vier Wege gehängt, die
+Lieferantenbilder posten: Karussell (IG+TikTok), Einzelbild-Nachschub `queue_new_products.mjs` (erstes JPG ohne Text aus 4 Bildern,
+sonst Produkt auslassen — Probelauf: 6 eingereiht, 1 ausgelassen), `story_bauen.py` (Trockenlauf 2/2), `reel/bild_reel.py`
+(Stativ: 5 raus, 3 bleiben). Bestand geprüft: 47 fertige Einzelbild-Posts alle sauber (45×0, 2×1 Wort); 48 fertige Karussell-Sets
+per Slide-OCR (2× vergrössert, Caption-Wörter abgezogen) → 15 Sets mit ≥6 Fremdwörtern auf `fremdtext-skip` (4 IG, 11 TikTok;
+Schwelle 6, weil «Dein Design» im Editor-Mockup und «LUXURIOUS GLOW» auf Slides 4–5 zählten). NEU_BAUEN scheiterte an der
+Eignungs-Wache (Meldung «schon beworben» ist irreführend — die Reihenfolge der Gründe prüft `benutzt` vor der Wache).
+⚠️ Falle: nach einem Container-Neustart setzt `engine_keepalive.sh` → `repo_vorspulen.sh` das Repo hart zurück — eine
+UNVERSIONIERTE neue Datei (fremdtext.py) war weg. Nach Neustart erst den Keepalive fertig laufen lassen, dann schreiben.
 
 ## 2026-10-07 09:35 UTC · 💳 #1004 auf Betreiber-Auftrag erstattet («1004 war meine bestellung, zurückfodern»)
 Eigenbestellung des Betreibers (LED-Laterne «Boho», BigBuy bb-S3414715, 25.06.), Ausführung am 12.09. vom Betreiber storniert,
