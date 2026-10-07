@@ -5251,3 +5251,7 @@ echte-leder-sandalen-mit-kreuzriemen-609900	2606260730351600500	16	12.56	ok	land
 geflochtene-cowhide-flachsandale-626500	2606260723211627100	16	13.52	ok	landeseite
 designer-roman-sandalen-mit-ziersteppnahten-610400	2606260605171611100	16	14.48	ok	landeseite
 sommerneuheit-plattform-sneaker-mit-atm-600700	2606250914151601300	16	14.72	ok	landeseite
+bequeme-romische-sandalen-fur-grossen-614500	2606240525591615100	16	10.88	ok	landeseite
+damen-sandalen-mit-wedge-absatz-offener-zeh-ho-615000	2606230727271615700	16	13.04	ok	landeseite
+rhinestenblume-wedge-sandalen-607600	2606220354211608300	16	11.10	ok	landeseite
+sommer-sandalen-mit-riemen-und-schmuckverschlu-600000	2606200806281600600	16	12.56	ok	landeseite
