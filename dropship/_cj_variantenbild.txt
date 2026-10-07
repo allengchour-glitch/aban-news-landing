@@ -6256,3 +6256,6 @@ gid://shopify/Product/15455517933953	zugeordnet	32	Kleinkinderschuhe mit rutschf
 gid://shopify/Product/15455518032257	zugeordnet	20	Transparente Kinderschuhe
 gid://shopify/Product/15455518097793	zugeordnet	40	Kinder Schuhe für Jungen und Mädchen
 gid://shopify/Product/15455518327169	zugeordnet	13	Fliegende Schnürschuhe für Kinder
+gid://shopify/Product/15455518491009	zugeordnet	21	Leuchtende Sommer-Schuhe für Babys
+gid://shopify/Product/15455518654849	zugeordnet	12	Weiche Babyschuhe aus Plüsch
+gid://shopify/Product/15455518818689	zugeordnet	51	Kinder-Webbing-Sandalen
