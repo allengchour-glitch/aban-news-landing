@@ -1502,3 +1502,8 @@ gid://shopify/Product/15448837587329	nicht-versendbar	Keramik-Antihaft-Bratpfann
 gid://shopify/Product/16604913729927	ok	Grosse Schmuckschatulle in Himmelblau
 gid://shopify/Product/16608455328135	ok	Kettensäge mit Lithiumbatterie
 gid://shopify/Product/16608490357127	ok	Satinstreifen-Kissen mit Baumwollfüllung
+gid://shopify/Product/16609740358023	ok	Selbstzentrierendes Vierbacken-Drehfutter
+gid://shopify/Product/16609740456327	ok	Vollautomatische elektrische Bindemaschine
+gid://shopify/Product/16609996996999	ok	Edo Asterism Kristallglas
+gid://shopify/Product/16610154250631	ok	Hunde-Autositz mit Polster
+gid://shopify/Product/16609945092487	ok	316 Edelstahl Backblech für Camping

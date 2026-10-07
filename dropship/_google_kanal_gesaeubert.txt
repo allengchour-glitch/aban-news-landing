@@ -152,3 +152,4 @@ gid://shopify/Product/15523210166657	waffe	Outdoor-Klappmesser mit Stahlgriff
 gid://shopify/Product/16603332837767	rauchzubehoer	Auto-USB-Ladegerät mit Zigarettenanzünder
 gid://shopify/Product/16606127489415	rauchzubehoer	Zigaretten-Drehmaschine aus Kunststoff
 gid://shopify/Product/16606127554951	rauchzubehoer	V-förmiger Zigaretten-Cutter aus Edelstahl
+gid://shopify/Product/16609737802119	rauchzubehoer	Arabische Shisha mit Doppelrohr
