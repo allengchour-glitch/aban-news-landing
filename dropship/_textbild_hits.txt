@@ -17037,3 +17037,4 @@ gid://shopify/Product/16608700039559	36->0	Keramische Wellenscheibe mit Diamantb
 gid://shopify/Product/16608734708103	18->0	Heissklebepistole mit Sicherheitsschalter
 gid://shopify/Product/15503113912705	101->0	Augenbrauen-Schablonen-Set mit Halteband
 gid://shopify/Product/15504009363841	19->2	Beruhigende Antioxidans Emulsion
+gid://shopify/Product/15508421542273	42->2	Geschirrspüler-Zubehörkorb
