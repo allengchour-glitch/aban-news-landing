@@ -600,3 +600,12 @@ gid://shopify/Product/15454249124225	ok	Katzenspielzeug mit Feder und Glöckchen
 gid://shopify/Product/15455532384641	ok	Kompakter Luftbefeuchter für Büro und Zuhause
 gid://shopify/Product/15455551816065	ok	Katzenwasserspender
 gid://shopify/Product/15458641641857	ok	Winter-Doggenmantel mit Plaidschur und Zipper
+gid://shopify/Product/15460659626369	ok	Mini-Drohne mit LED & Kamera
+gid://shopify/Product/15466165567873	ok	Hund Jacke
+gid://shopify/Product/15477467283841	ok	Stern-Bodysuit-Kit
+gid://shopify/Product/15479625384321	ok	Drehbares Anti-Rutsch-Sitzkissen fürs Auto
+gid://shopify/Product/15480279761281	ok	Haustier-Reisematte für das Auto
+gid://shopify/Product/15480284053889	ok	Cosmo Dog Sternenhimmel Projektionslampe
+gid://shopify/Product/15480284578177	ok	Farbprojektionslampe
+gid://shopify/Product/15480409293185	ok	Kindersitz-Schutzmatte
+gid://shopify/Product/15480489279873	ok	Handgemachte UV-Nagelpatches Schmetterling
