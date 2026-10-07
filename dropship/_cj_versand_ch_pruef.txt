@@ -5144,3 +5144,5 @@ wasserdichte-quarz-armbanduhr-608700	2501030158531608900	7	6.00	ok	landeseite
 uhrenschutzhulle-fur-samsung-620700	2412270155541621100	16	4.79	ok	landeseite
 mannliche-multifunktionsuhr-628100	2412221205051628500	7	6.81	ok	landeseite
 herrenuhr-quarz-edel-629300	2412221107241629400	7	7.13	ok	landeseite
+herren-armbanduhr-quadratisch-624500	2412221102461624700	7	6.90	ok	landeseite
+herren-armbanduhr-einfarbig-608700	2412040237151608900	7	6.29	ok	landeseite
