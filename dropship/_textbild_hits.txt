@@ -17047,3 +17047,5 @@ gid://shopify/Product/15523924017537	43->0	Napf mit Saugnapf gegen Umkippen
 gid://shopify/Product/15523936272769	34->2	Weites A-Linien-Shirt mit 3D-Effekt
 gid://shopify/Product/15523936764289	25->1	Doppelnapf aus Massivholz, geneigt
 gid://shopify/Product/15523938369921	18->0	Rutschfeste Futterschale für Haustiere
+gid://shopify/Product/15523938468225	16->0	WLAN Handy Beamer
+gid://shopify/Product/15523985686913	15->0	Futter- und Trinkautomat für Haustiere
