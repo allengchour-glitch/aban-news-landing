@@ -4710,3 +4710,16 @@ beige-fleece-hemd-607900	2603150638311608300	16	10.15	ok	landeseite
 bunte-blumen-strickpullover-618000	2603150311301618400	16	10.83	ok	landeseite
 slim-fit-pullover-619300	2603141203501610000	16	8.79	ok	landeseite
 strickrock-shorts-617400	2607051408371618000	16	7.25	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite
+5-panel-cap-sprint-nylon-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-l-a-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-classic-rot-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
