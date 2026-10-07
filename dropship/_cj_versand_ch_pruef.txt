@@ -5258,3 +5258,11 @@ sommer-sandalen-mit-riemen-und-schmuckverschlu-600000	2606200806281600600	16	12.
 keilabsatze-sandalen-633200	2606191030371633800	16	8.05	ok	landeseite
 spitzschuh-sandalen-aus-leder-620200	2606180917371620900	16	11.37	ok	landeseite
 hohlkehlsandalen-mit-blockabsatz-626600	2606180916361627200	16	13.76	ok	landeseite
+dicksohlige-hochhackige-sandalen-634100	2606180851481634700	16	10.69	ok	landeseite
+rivetten-boots-mit-blockabsatz-621600	2607050233051622300	16	17.52	ok	landeseite
+spitzschuh-boots-mit-stiletto-absatz-uberknie-632600	2607050211331633200	16	17.66	ok	landeseite
+fringen-stiefel-kamel-619800	2607041507381610700	16	16.40	ok	landeseite
+bequeme-kniehoch-boots-mit-nietenriemen-massiv-615700	2607041351301616400	16	16.40	ok	landeseite
+retro-western-boots-612900	2607040816551613600	16	17.16	ok	landeseite
+hochhackige-chunky-sohlen-leder-kniehochschuhe-613100	2607040221211613900	11	29.34	ok	landeseite
+patent-leder-reitstiefel-mit-absatz-622800	2607020647261623400	16	15.63	ok	landeseite
