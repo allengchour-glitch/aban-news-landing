@@ -54,11 +54,16 @@ def _lesen():
 # Bestell-/Zahlungs-/Versandwaechtern (Kundinnen zuerst). Eine Vorrang-Datei aelter als 120 s zaehlt nicht (Leiche);
 # niemand wartet laenger als VORRANG_MAX_S (Standard 90 min).
 VORRANG_DATEI = "/tmp/cj_vorrang"
-VORRANG_SKRIPTE = ("cj_kosten_backfill",)
+# 07.10.2026 (Plan Tag 8 «≥ 50 Produktvideos»): GEMESSEN im Vorrang-Fenster 00:00–01:30 — 06.10. 763 CJ-Aufrufe, davon
+# cj_category_fill 377 / cj_perpetual 42 / cj_sku_import 23 (Grind ausserhalb der pausierten Runner 2–5), der Video-Nachtrag
+# meldete sofort «Tagesbudget erschöpft» (0 Videos); 05.10. 27 Videos, 07.10. 17 (Ziel 250). Jetzt Vorrang wie der Kosten-Nachtrag.
+VORRANG_SKRIPTE = ("cj_kosten_backfill", "cj_video_backfill")
 # 27.09.2026 (#1019): cj_ausgelistet_sichtbar schützt Bestellungen (ausgelistete, aber beworbene Ware) — wartete hinter
 # dem Kosten-Nachtrag (Vorrang, bis 90 min) und kam nie an die Reihe. ≤ ~700 Aufrufe/Tag.
 # 28.09.2026: cj_ersatz_suche (Einzelsuche für besuchte, nicht lieferbare Seiten, wenige Aufrufe).
-IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bestell", "cj_takt", "cj_ausgelistet", "cj_ersatz")
+# 07.10.2026: besuchte_seiten_lieferbar (Seiten mit Besuchern auf Lieferbarkeit) ist Kundenschutz wie cj_ausgelistet.
+IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bestell", "cj_takt", "cj_ausgelistet", "cj_ersatz",
+              "besuchte_seiten")
 VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
 
 
