@@ -4955,3 +4955,8 @@ gerissene-slim-fit-dehnbare-damenjeans-616900	2604180934271617400	16	10.69	ok	la
 damenhose-gerade-einfarbig-632200	2604180929491633100	16	9.20	ok	landeseite
 herren-einfarbig-vielseitiges-split-oberteil-602200	2607060358121602800	16	8.79	ok	landeseite
 herren-halb-hals-pullover-611200	2606130854521614100	16	9.47	ok	landeseite
+herren-streifen-strickpullover-mit-kontrastkra-601900	2606120644031602600	16	9.61	ok	landeseite
+herren-weit-schnitt-streifen-lapel-pullover-613000	2606120331321613700	16	10.88	ok	landeseite
+herren-2-in-1-strickpullover-mit-hemdkragen-623200	2606100913181623800	16	11.72	ok	landeseite
+herren-cardigan-mit-polohalsausschnitt-613100	2606100137101614100	16	11.60	ok	landeseite
+herren-strickpulli-plusgro-en-628900	2606081257531629500	16	16.40	ok	landeseite
