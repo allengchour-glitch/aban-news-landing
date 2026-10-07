@@ -5102,3 +5102,6 @@ edler-padparadscha-ring-mit-marquise-schliff-890562	2069214014972805121	16	4.50	
 retro-paraiba-ring-mit-aquamarin-cz-524802	2069212207487827970	16	4.50	ok	landeseite
 personalisierter-ring-mit-stein-602600	2606220844361603200	16	4.60	ok	landeseite
 glaskunst-ring-mit-fruchtemuster-639500	2606220721301630600	16	4.40	ok	landeseite
+silberner-relief-ring-mit-stern-633400	2606220711191634000	16	4.40	ok	landeseite
+sternenring-aus-titanstahl-629100	2606210142121629800	16	4.40	ok	landeseite
+zircon-ring-mit-edelstein-618800	2606200839121619500	16	4.71	ok	landeseite
