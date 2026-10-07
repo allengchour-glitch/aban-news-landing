@@ -203,7 +203,14 @@ while true; do
   # «ausverkauft» (DENY), zurück = CONTINUE. STÜNDLICH als vierter CJ-Verbraucher am gemeinsamen Takt (statt nur im Fenster):
   # er bekommt ~¼ der Anfragen, bis der Tagestopf leer ist, und endet dann sauber. flock gegen Doppel, Ledger idempotent.
   CL=/tmp/cj_lager.log
-  if [ -f "$REPO/automation/cj_lager_abgleich.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$CL" 2>/dev/null || echo 0) )) -gt 3300 ] \
+  # 07.10.2026 (Prüf-Routine 01:45): der Anspruch (touch) galt 55 min — starb der Lauf am Container-Neustart, blieb die
+  # Stunde gesperrt. Gemessen: Fenster 00:00–01:30 brachte nur 840 statt 4'000 Prüfungen (Lauf 00:12 tot um ~00:20, Log
+  # still bis 01:45). Jetzt: 55 min nur nach SAUBEREM Ende (letzte Zeile «CJ-LAGER: {…}»); gestorben oder im Vorrang-Fenster
+  # → 10 min. flock verhindert weiter Doppel, Ledger macht den Neustart idempotent.
+  CL_SPERRE=3300
+  tail -n 3 "$CL" 2>/dev/null | grep -q '^CJ-LAGER: {' || CL_SPERRE=600
+  source "$REPO/automation/cj_vorrang_fenster.sh" 2>/dev/null && cj_vorrang_zeit && CL_SPERRE=600
+  if [ -f "$REPO/automation/cj_lager_abgleich.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$CL" 2>/dev/null || echo 0) )) -gt "$CL_SPERRE" ] \
      && ( cd "$REPO" && timeout 30 python3 automation/cj_lager_abgleich.py --selbsttest > /dev/null 2>&1 ); then
     touch "$CL"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_cj_lager.lock; flock -n 9 || exit 0; \

@@ -44,6 +44,15 @@
 
 
 
+## 2026-10-07 01:55 UTC · 📦 CJ-Lagerabgleich erster Fensterlauf geprüft: nur 840 statt 4'000, und 8 Geisterverkäufe
+GEMESSEN: Fensterlauf 00:12 starb am Container-Neustart (~00:20), Log still bis 01:45 — Aufseher-Anspruch (touch vor Start)
+galt 55 min. Stichprobe 3 gesperrte Produkte gegen CJ (Zusatzkonten): 12/12 Varianten Bestand 0, keine falsch gesperrt.
+9 «unklar» = CJ 1602002 «Product has been removed from shelves», davon 8 ACTIVE und voll kaufbar (131 Varianten).
+GETAN: Sperre im Aufseher 55 min nur nach sauberem Ende («CJ-LAGER: {…}»), gestorben oder Vorrang-Fenster → 10 min;
+`cj_entfernt()` in cj_lager_abgleich.py (17/17): 1602002 → alle kaufbaren Varianten sperren, IDs als eigene Sperre im Ledger
+(umkehrbar); die 8 sofort gesperrt, 131/131 zurückgelesen. kategorie_fein 20'630/~22'600, kleider_merkmale 484.
+LEHRE: «unklar» ist ein Sammeltopf — eine Lieferanten-Antwort mit eindeutigem Code gehört in eine eigene Regel.
+
 ## 2026-10-07 00:45 UTC · 🧾 Verbesserungsrunde: .tsv-Ledger gingen bei jedem Rewind verloren → Doppeltausch
 GEMESSEN: Blocker 1'052; Bildtausch-Log 06.10. 17:17 tauschte Hawaiihemd + BB-Creme, Ledger ohne die Zeilen, 20:43 erneut
 getauscht (4/606 doppelt). repo_vorspulen.sh sicherte/vereinigte nur dropship/*.txt — 85 .tsv-Ledger verloren bei reset --hard
