@@ -5266,3 +5266,5 @@ bequeme-kniehoch-boots-mit-nietenriemen-massiv-615700	2607041351301616400	16	16.
 retro-western-boots-612900	2607040816551613600	16	17.16	ok	landeseite
 hochhackige-chunky-sohlen-leder-kniehochschuhe-613100	2607040221211613900	11	29.34	ok	landeseite
 patent-leder-reitstiefel-mit-absatz-622800	2607020647261623400	16	15.63	ok	landeseite
+stretch-stilettos-oberschenkelhoch-mit-spitzen-616000	2607011224271616600	16	15.20	ok	landeseite
+rundspitzige-knochelboots-mit-stitch-detail-612600	2607010332531613600	16	9.20	ok	landeseite
