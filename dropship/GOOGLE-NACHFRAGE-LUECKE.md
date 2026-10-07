@@ -1,6 +1,6 @@
-# Google-Nachfrage-Lücke (automatisch, 2026-10-06 21:16 UTC)
+# Google-Nachfrage-Lücke (automatisch, 2026-10-07 21:22 UTC)
 
-Google-Landeseiten 180 T: 194. Neu bewertet: 0 — . CJ-Aufträge vorne eingereiht: 0.
+Google-Landeseiten 180 T: 198. Neu bewertet: 0 — . CJ-Aufträge vorne eingereiht: 0.
 
 | Seite | Sitz. | WK | Ergebnis | Suchbegriff / Grund |
 |---|---|---|---|---|
