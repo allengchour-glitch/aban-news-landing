@@ -1082,3 +1082,6 @@ gid://shopify/Product/15493720146305	im-google-kanal	Bestickter Samt-Kissenbezug
 gid://shopify/Product/15493810028929	im-google-kanal	RX-008 Metall-Schleifgerät mit festem Winkel
 gid://shopify/Product/15493849350529	im-google-kanal	Make-up Pinsel Set
 gid://shopify/Product/15493864161665	im-google-kanal	Smarter Bluetooth Lautsprecher
+gid://shopify/Product/15413739684225	im-google-kanal	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
+gid://shopify/Product/16610185412999	im-google-kanal	Zweiteiliges Damenkleid mit 3D-Effekt
+gid://shopify/Product/16611393241479	im-google-kanal	Langärmliges Bodycon-Kleid mit Halte-Raum und Kragen

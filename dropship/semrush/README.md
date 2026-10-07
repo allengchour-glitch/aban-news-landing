@@ -238,3 +238,14 @@ Search Console. Neu zu beobachten: 8 Kollektionen Runde 3, 9 + 4 Redirect-Pfade 
   nicht vor Bindestrich), Live-Titel, 25 Kanarienvögel als Abbruch-Tor; Trockenlauf 52 → 33, alle von Hand gelesen. Rückbau:
   `messer` von 46 Messgeräten, `matte` von 19 Hängematten (`dropship/_suchwort_tags_rueckbau_2026-10-05.tsv`).
 - Tracker: +40 Begriffe mit Ziel-URL (jetzt 290). Sortimentslücken: Beamer-Leinwand 1'000/Mt, Holz-Bilderrahmen 720/Mt, Gaming-/Bürostuhl.
+
+## 07.10.2026 ~19:05 UTC · Runde 4 (Betreiber «semrush kannst noch ausnützen») — 0 Einheiten
+- GEMESSEN: MCP `projects` → `no_api_units` (Abo aktiv bis 09.10., API-Guthaben leer). Neue Abfragen gehen nur mit nachgekauften
+  Einheiten. Genutzt wurden deshalb die gespeicherten Daten der Ernte vom 02.10.
+- Aus «nicht umgesetzt (Grenze 8)» der Runde 2: **Schneidebretter** (schneidebrett 2'400/Mt) und **Wandteppiche & Wandbehänge**
+  (wandteppich 720/Mt). Einträge in `kategorie_rein_semrush.CFG` (Kanarien 189/0; Messer/Hobel/Schärfer/Schleifstein/Halter/
+  Bento/Kinder bzw. DIY/Bastel/Knüpfset raus), `neue_kollektionen_runde4.py` (Ledger `_neue_kollektionen_4_2026-10-07.tsv`,
+  Menü-Backup `_hauptmenue_backup_2026-10-07_runde4.json`). Live: 6 Kanäle, 73 + 63 Produkte getaggt, Menü Wohnen & Garten
+  (nach «Küche & Kochen» / «Wanddeko»), zurückgelesen ✅. Der tägliche `kategorie_rein.py`-Lauf hält beide Seiten frisch.
+- Weitere Kandidaten aus den gespeicherten Daten: lederjacke damen 1'900 (Bestand überwiegend Herren → passt nicht).
+  Alle anderen Runde-2/3-Kandidaten haben inzwischen eine Seite (abendkleider, usb-sticks, etageren, wanduhren gemessen).

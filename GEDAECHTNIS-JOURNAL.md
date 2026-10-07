@@ -44,6 +44,15 @@
 
 
 
+## 2026-10-07 19:10 UTC · 🔎 «google merchant push» + «semrush kannst noch ausnützen»
+- GOOGLE GEMESSEN: 51'458 aktive, 49'666 im Google-Kanal. Von 1'792 draussen sind 1'789 bewusst draussen (heikle Ware 1'665,
+  Ausschluss-Tags nicht-google-bewerben/google-policy-flag/raucher/18plus/kostuem/lizenz 104+, 1 nicht im Shop). Nur 3 Kleider ohne
+  Grund → in den Kanal (Ledger `_google_kanal_nachziehen.txt`). Blocker 1'052 (Scan 06.10.): alle Klassen haben eigene Werkzeuge;
+  Bildtausch-Quote 77–86 % frei. `google_kanal_nachziehen.py` sah 0, weil `/tmp/export.jsonl` vom Vortag stammt.
+- SEMRUSH: API-Guthaben 0 → Runde 4 aus gespeicherten Daten: /collections/schneidebretter (73) + /collections/wandteppiche (63).
+- LEHRE: «draussen» ist nicht «ohne Grund». Bevor ein Kanal «gepusht» wird, die Ausschluss-Tags mitzählen (die Kanal-Regel im
+  Werkzeug kannte nur Titelmuster). → `dropship/semrush/README.md` (Runde 4)
+
 ## 2026-10-07 18:20 UTC · 🤖 «entwickle eine bot für automation»: Handy-Bot über ntfy (Befehle + Tagesbericht)
 - `automation/handy_bot.py`: Befehle status/bestellungen/umsatz/social/hilfe auf dem Thema «<thema>-befehl», Antwort auf dem
   Push-Thema; Tagesbericht ab 06:00 UTC (Ledger). Nur lesen. Am Aufseher-Rundenbeginn. Selbsttest 5/5, Probe zugestellt.
@@ -18386,6 +18395,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-05 · 📦 **Fortura-Bestellautomat Stufe 1: bezahlte Bestellung mit `fortura-<ArtNr>` → Paket + Ampel «⚠️ FORTURA: im Portal bestellen» bis `--bestellt`; XML (Opacc.ORDERS nach /home/ORDERS) erst mit Fortura-Muster — seit 22.07. angefragt, nie gekommen, Entwurf in Gmail.** Keine Bestelldatei auf Verdacht → Journal 05.10. 20:40
 - 2026-10-05 · 🛒 **Ricardo: Fortura-Marge Median 21 % → nach 12 % Provision nur 361/2'388 Produkte ≥ CHF 5 → Feed `ricardo_feed.py` (täglich, öffentlich), Konto + Mail = Betreiber; FR vollständig (129 Kollektionen nachgezogen).** Provision vor dem Feed gegen die Marge rechnen → `dropship/ricardo/README.md`
 - 2026-10-05 · 🎼 **Musik + FR: nur 3 epische Stücke rotierten → Gemini-Konto hat `lyria-3.5` (≈1'200 Tokens/Stück, blind = bestes vidIQ-Stück) → 6 neue (trailer/hybrid/hero/fantasy/winter/elegant), Pool 3 → 9, Sperre 5; Französisch live (`webPresenceUpdate` [fr], 90 Felder nachübersetzt), 129 FR-Kollektionstexte veraltet.** Erst messen, welche Werkzeuge das Konto schon hat → Journal 05.10. 20:15
 - 2026-10-05 · 🪟 **Clarity (Betreiber, 6 Sitzungen, 0 Käufe): Popup + Cookie-Banner nach 2–7 s gleichzeitig — Ursache 40-%-Scroll-Auslöser (Handy = 2 s) + Exit-Intent → Tor 20/30 s, nie neben Banner, Wächter `popup_tor_wache.py`; Handy-Browser 19 s zu.** Prozent-Auslöser brauchen Mindestzeit → `dropship/CLARITY-BEFUNDE-2026-10-05.md`
