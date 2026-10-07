@@ -9670,3 +9670,4 @@ gid://shopify/Product/15455521931649	1791331881	ok	12 Shop / 12 CJ / 0 fehlend /
 gid://shopify/Product/15455521964417	1791331881	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455522095489	1791331881	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455522128257	1791331881	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455522161025	1791331881	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
