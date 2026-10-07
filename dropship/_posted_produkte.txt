@@ -169,3 +169,5 @@ slug:locker-geschnittenes-pullover-kleid-mit-schlit
 slug:krone-silber-aus-schaumstoff-fgack14414
 name:kronesilberausschaumstoff
 pid:15412307657089
+slug:magnetischer-kartenhalter-mit-magsafe-632200
+name:magnetischerkartenhaltermitmagsafe
