@@ -171,3 +171,4 @@ name:kronesilberausschaumstoff
 pid:15412307657089
 slug:magnetischer-kartenhalter-mit-magsafe-632200
 name:magnetischerkartenhaltermitmagsafe
+slug:herren-pullover-langarm-strickpullover
