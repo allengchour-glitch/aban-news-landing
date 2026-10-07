@@ -5083,3 +5083,6 @@ stylische-leder-tasche-fur-herren-619100	2601210324501619500	16	9.20	ok	landesei
 retro-geldborse-aus-oko-leder-611300	2601150649041611500	16	6.01	ok	landeseite
 smart-clutch-fur-herren-614500	2601150314501614800	7	12.44	ok	landeseite
 einfaches-portemonnaie-mit-rfid-schutz-612300	2601140616421612600	16	6.33	ok	landeseite
+herren-leder-geldbeutel-289921	2011358633495924737	0	-	KEINE CH-Option → DRAFT	landeseite
+minimalistisches-airtag-geldborse-fur-herren-757377	2011356185445363714	0	-	KEINE CH-Option → DRAFT	landeseite
+minimales-kartenhalter-wallet-mit-rfid-schutz-720065	2011353697635549185	0	-	KEINE CH-Option → DRAFT	landeseite
