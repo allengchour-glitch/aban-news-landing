@@ -21,6 +21,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HIER, "..", ".."))
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from kaufwille_zeile import gql  # noqa: E402  (Eimer-Etikette eingebaut)
+from fremdtext import woerter_url as fremdtext_woerter, GRENZE as FREMDTEXT_GRENZE  # noqa: E402
 
 W, H, FPS = 1080, 1920, 30
 BOX_W, BOX_H, MITTE_Y = 1080, 1060, 740      # Produktfeld 210–1270 (Kopf 200–380 und Infofeld 1170–1440 liegen darüber)
@@ -35,8 +36,14 @@ def produkt(handle):
         sys.exit(f"⛔ {handle}: nicht aktiv/nicht im Onlineshop")
     bilder = [m["image"] for m in d["media"]["nodes"] if m["mediaContentType"] == "IMAGE" and m.get("image")
               and min(m["image"]["width"], m["image"]["height"]) >= 600]
+    # 07.10.2026 (Betreiber «das bild ist verzogen?»): Lieferanten-Infografiken mit englischem Text sind oft auf 800x800
+    # gestaucht → raus (fremdtext.py, >= 4 Wörter); OCR nicht verfügbar → Bild bleibt.
+    vorher = len(bilder)
+    bilder = [b for b in bilder if (lambda n: n is None or n < FREMDTEXT_GRENZE)(fremdtext_woerter(b["url"]))]
+    if len(bilder) < vorher:
+        print(f"  {handle}: {vorher - len(bilder)} Bild(er) mit montiertem Text ausgelassen")
     if len(bilder) < 2:
-        sys.exit(f"⛔ {handle}: weniger als 2 Bilder ≥ 600 px")
+        sys.exit(f"⛔ {handle}: weniger als 2 Bilder ≥ 600 px ohne montierten Text")
     return d, bilder
 
 
