@@ -17,6 +17,7 @@
 import { hashtagText } from './lib/hashtags.mjs';
 import fs from 'node:fs';
 import https from 'node:https';
+import { spawnSync } from 'node:child_process';
 import { balanceByCategory } from './lib/reel-category.mjs';
 
 const { SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET } = process.env;
@@ -115,7 +116,7 @@ function caption(title, handle, pt, price, tags) {
   // 25.09.2026: VORRANG_TAG=herbst-2026 → Saison-Ware statt der neuesten CJ-Produkte (Herbst stand in 0 von 56 wartenden Bild-Posts).
   const VT = (process.env.VORRANG_TAG || '').replace(/[^a-z0-9-]/gi, '');
   const d = await shopify(`query{ products(first:${VT ? 250 : 50}, query:"status:active AND tag:${VT || 'cj-real'}", sortKey:CREATED_AT, reverse:true){
-      nodes{ title handle productType tags featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`);
+      nodes{ title handle productType tags featuredImage{ url } media(first:5){ nodes{ ... on MediaImage{ image{ url } } } } priceRangeV2{ minVariantPrice{ amount } } } } }`);
   const prods = balanceByCategory(d.products?.nodes || [], p => `${p.title} ${p.productType||''} ${p.handle||''}`);
 
   const rows = [];
@@ -123,9 +124,18 @@ function caption(title, handle, pt, price, tags) {
   for (const p of prods) {
     if (rows.length >= QUEUE_MAX) break;
     const handle = (p.handle || '').toLowerCase();
-    const img = p.featuredImage?.url || '';
     if (!handle || have.has(handle)) continue;       // schon in Queue
-    if (!isJpg(img)) continue;                        // Meta-JPG-Pflicht
+    // 07.10.2026 (Betreiber «das bild ist verzogen?» → «für die nächsten verbessern»): das Hauptbild ist bei CJ oft eine
+    // englische Infografik, auf 800x800 gestaucht. Erstes JPG ohne montierten Text (automation/fremdtext.py, >= 4 Wörter);
+    // keins sauber → Produkt auslassen. OCR nicht verfügbar (-1) → Bild zulassen wie bisher.
+    const kandidaten = [p.featuredImage?.url, ...((p.media?.nodes || []).map(m => m?.image?.url))]
+      .filter((u, i, a) => u && isJpg(u) && a.indexOf(u) === i).slice(0, 4);   // Meta-JPG-Pflicht
+    if (!kandidaten.length) continue;
+    const ocr = spawnSync('python3', ['automation/fremdtext.py', ...kandidaten], { encoding: 'utf8', timeout: 120000 });
+    const zahl = new Map((ocr.stdout || '').trim().split('\n').filter(Boolean).map(l => { const [n, u] = l.split('\t'); return [u, Number(n)]; }));
+    const img = kandidaten.find(u => !(zahl.get(u) >= 4));
+    if (!img) { console.log(`  – ${handle}: alle Bilder mit montiertem Text — ausgelassen`); continue; }
+    if (img !== kandidaten[0]) console.log(`  · ${handle}: Hauptbild trägt Text (${zahl.get(kandidaten[0])} Wörter) → Bild ${kandidaten.indexOf(img) + 1}`);
     const price = p.priceRangeV2?.minVariantPrice?.amount || '';
     const cap = caption(p.title, handle, p.productType || '', price, p.tags || []);
     rows.push([handle, today, img, q(cap), q('instagram,facebook'), 'ready', '', ''].join(','));

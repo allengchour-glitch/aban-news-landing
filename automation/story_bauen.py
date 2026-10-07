@@ -24,6 +24,7 @@ Was dieses Skript tut (je Lauf N Stories, Standard 1):
 import csv, io, json, os, re, subprocess, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import heilversprechen_wache as hw          # gql() mit Grund bei Fehlern
+from fremdtext import woerter_url as fremdtext_woerter, GRENZE as FREMDTEXT_GRENZE
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -95,7 +96,7 @@ def kandidaten():
         if schon_gepostet(p, led, namen, handles_q):
             continue
         rang = min(TAGS.index(t) for t in TAGS if t in p["tags"])
-        out.append(dict(handle=p["handle"], title=p["title"], preis=preis, bild=bilder[0], rang=rang))
+        out.append(dict(handle=p["handle"], title=p["title"], preis=preis, bild=bilder[0], bilder=bilder, rang=rang))
     out.sort(key=lambda x: x["rang"])
     return out
 
@@ -179,6 +180,12 @@ def main():
         if len(gebaut) >= N or versucht >= N + 3:
             break
         versucht += 1
+        # 07.10.2026 (Betreiber «das bild ist verzogen?» → «für die nächsten verbessern»): CJ-Bild 1 ist oft eine englische
+        # Infografik, auf 800x800 gestaucht → erstes Bild ohne montierten Text (fremdtext.py); keins sauber → nächstes Produkt.
+        sauber = next((u for u in p["bilder"] if (lambda n: n is None or n < FREMDTEXT_GRENZE)(fremdtext_woerter(u))), None)
+        if not sauber:
+            print(f"  – {p['handle']}: alle Bilder mit montiertem Text — ausgelassen", flush=True); continue
+        p["bild"] = sauber
         endung = "-markiert" if MODEL.search(p["bild"]) else ""     # post_guard.modelSperre(…, null) verlangt «markiert»
         datei = f"social/stories/story_{p['handle'][:70]}{endung}.jpg" if SCHARF else f"/tmp/story_{p['handle'][:70]}{endung}.jpg"
         try:
