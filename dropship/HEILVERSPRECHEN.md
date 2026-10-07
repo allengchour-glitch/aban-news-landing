@@ -1,10 +1,8 @@
-# Heilversprechen in Produkttexten — Stand 2026-10-06T16:12:56Z
+# Heilversprechen in Produkttexten — Stand 2026-10-07T12:22:10Z
 
-Geprüft: 8100 (Filter: `status:active updated_at:>2026-10-05T17:47:17Z`) · entschärft: 0 · offen: 2 · Schreibfehler: 0
+Geprüft: 24753 (Filter: `status:active updated_at:>2026-10-06T16:12:56Z`) · entschärft: 0 · offen: 1 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
-- **Notizbuch für Gewichtsverfolgung** (`notizbuch-fur-gewichtsverfolgung-639400`)
-  - …Für das tägliche Festhalten von Fortschritten beim Abnehmen. Das Notizbuch hat einen Kupferplatten‑Buchdeckel und enthä…
-- **Kristallanhänger-Stand mit Aufbewahrungstasche** (`kristallanhanger-stand-mit-aufbewahrungstasche-623200`)
-  - …t und 1 Aufbewahrungstasche. Set besteht aus Kristallen und Heilsteinen. Geeignet als Geschenk für Unternehmen. Das zeichnet es au…
+- **Antihaft-Vierloch-Omelettpfanne** (`antihaft-vierloch-omelettpfanne-622500`)
+  - …von 19 cm und ist mit einer Antihaftbeschichtung aus Weizen-Heilsteinen versehen. Sie ist in den Farben Blaugrau, Milchweiss und Sc…
