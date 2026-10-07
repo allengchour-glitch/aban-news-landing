@@ -1,6 +1,6 @@
 # Liechtenstein raus — Weg B (Betreiber-Entscheid 22.09.2026)
 
-Stand: 2026-10-06 17:11 UTC · Werkzeug `automation/liechtenstein_raus.py`
+Stand: 2026-10-07 13:17 UTC · Werkzeug `automation/liechtenstein_raus.py`
 
 Warum: Markt «Switzerland» = [CH]; LI-Korb 0 Versandoptionen. Eine Zusage, die die Kasse bricht, ist keine.
 
