@@ -133,7 +133,6 @@ gid://shopify/Product/15500509675905
 gid://shopify/Product/15500526027137
 gid://shopify/Product/15500743868801
 gid://shopify/Product/15500836471169
-gid://shopify/Product/15500905578881
 gid://shopify/Product/15500905709953
 gid://shopify/Product/15500909805953
 gid://shopify/Product/15500912066945
