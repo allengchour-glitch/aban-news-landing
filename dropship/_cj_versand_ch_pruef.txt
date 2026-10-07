@@ -5119,3 +5119,5 @@ taille-anhanger-aus-titanstahl-245250	2073892941975937025	16	4.71	ok	landeseite
 kristall-halskette-mit-troddel-696002	2073886797182164994	16	4.83	ok	landeseite
 damen-titan-halskette-107265	2073889193148964865	16	4.71	ok	landeseite
 luxuriose-perlen-halskette-865922	2073891769290752001	16	4.81	ok	landeseite
+elegante-pita-halskette-mit-manik-und-anhanger-861314	2073885095817273346	16	4.81	ok	landeseite
+sternenhimmel-halskette-mit-cz-steinen-457538	2073893615887343617	16	4.71	ok	landeseite
