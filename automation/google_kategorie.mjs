@@ -252,9 +252,28 @@ const KLEIDUNG = [
 const PLUESCHTIER = /pl[üu]schtier\w*|kuscheltier\w*|pl[üu]schfigur\w*|stofftier\w*/i;
 const PLUESCH_NICHT = /rucksack|kost[üu]m\w*|\bmaske\w*|\bhut\b|\bm[üu]tze\w*|hausschuh\w*|pantoffel\w*|\bdecke\b|kissen\w*|\btasche\w*|aufbewahrung\w*|beanbag|sitzsack/i;
 
+// (5) SAMMELKORB «WERKZEUG» (07.10.2026): die CJ-Gruppe «Werkzeug» stempelt alles als «Werkzeug & Heimwerken» —
+// gemessen 1'188 aktive, nur 566 mit Werkzeugwort (Kalimba, Regenschirm, Kerzenhalter, Auto-Pflege). EINE Regelquelle
+// mit google_kategorie_umzug.py: automation/data/werkzeug_korb.json. Ein Werkzeugwort schützt (bleibt Tools); sonst zieht
+// nur ein eindeutiges Warenwort um; Unklares bleibt Werkzeug. Kanarien: python3 automation/google_kategorie_umzug.py --kanarienvogel
+import fs from 'node:fs';
+const _WK = JSON.parse(fs.readFileSync(new URL('./data/werkzeug_korb.json', import.meta.url), 'utf8'));
+const WERKZEUGWORT = new RegExp(_WK.werkzeugwort, 'i');
+const WK_KREUZ = _WK.kreuz.map(([m, z]) => [new RegExp(m, 'i'), z]);
+const WK_VORRANG = (_WK.vorrang || []).map(([m, z]) => [new RegExp(m, 'i'), z]);   // vor dem Werkzeugwort (Nagelzange)
+export const WERKZEUG_TYPEN = new Set(['Werkzeug & Heimwerken', 'Werkzeug']);
+export function werkzeugKorb(title) {
+  const ti = title || '';
+  for (const [rx, z] of WK_VORRANG) if (rx.test(ti)) return z;
+  if (WERKZEUGWORT.test(ti)) return null;
+  for (const [rx, z] of WK_KREUZ) if (rx.test(ti)) return z;
+  return null;
+}
+
 export function googleKategorie(title, tags, productType) {
   const ti = title || '';
   const t = new Set((tags || []).map(x => String(x).toLowerCase()));
+  if (WERKZEUG_TYPEN.has(productType)) { const wk = werkzeugKorb(ti); if (wk) return wk; }
 
   // (3) Haustier sticht Spielzeug — ein Hundespielzeug ist kein Kinderspielzeug.
   const istPet = PET_TAGS.some(x => t.has(x)) || PET_TITEL.test(ti);

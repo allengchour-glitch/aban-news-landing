@@ -79,10 +79,7 @@ UMZUG = {
         (r"\blineal\b|winkellineal|anschlagwinkel|schieblehre", TO + " > Measuring Tools & Sensors"),
         # 06.10.2026 (Verbesserungsrunde 08:25): CJ-Gruppe «Werkzeug» füllt Hardware > Tools mit Küchen-/Pflegeware —
         # 315 Neuimporte in 30 h, 65 unter Tools, davon Backformen, Haarschneider, Nagelknipser, Küchentuch. Kreuz-Umzug.
-        (r"backform|kuchenform|silikonform(?!.*(?:kerze|harz|epoxid|gips|vase|blumentopf|schale|teller|aufbewahrung|bastel|diy|seife))|muffinform|tortenform|ausstechform|keksform", KD + " > Cookware & Bakeware > Bakeware"),
-        (r"haarschneider|haarschneidemaschine|bartschneider|haartrimmer", "Health & Beauty > Personal Care > Shaving & Grooming > Hair Clippers & Trimmers"),
-        (r"nagelknipser|nagelschere|nagelfeile|nagelzange", "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools"),
-        (r"k[üu]chen(?:reinigungs)?tuch|sp[üu]ltuch|putzschwamm|reinigungsschwamm|schwammtuch", "Home & Garden > Household Supplies > Household Cleaning Supplies"),
+        *[tuple(x) for x in __import__("json").load(open(__import__("os").path.join(__import__("os").path.dirname(__import__("os").path.abspath(__file__)), "data", "werkzeug_korb.json"), encoding="utf-8"))["vorrang"]],   # 07.10.: gemeinsame Quelle mit dem Importer
     ],
 }
 _R = {q: [(re.compile(m, re.I), z) for m, z in r] for q, r in UMZUG.items()}
@@ -92,35 +89,13 @@ _R = {q: [(re.compile(m, re.I), z) for m, z in r] for q, r in UMZUG.items()}
 # Die allgemeinen Titelregeln (kategorie_wache.TITELREGELN) sind für diese Ware zu grob («Crimpzange für Kabelschuhe» →
 # Schuhe, «Reifen-Glanzcreme» → Beauty). Deshalb: (1) die Werkzeug-Verfeinerungen oben, (2) WERKZEUGWORT schützt echte
 # Werkzeuge (bleiben Tools), (3) nur eindeutige Warenwörter ziehen um. Unklares bleibt, wo es ist.
-WERKZEUGWORT = re.compile(
-    r"werkzeug\w*|\w*zange\b|zangen\w*|schraubendreher|schraubenzieher|\w*schrauber\b|ratsche\w*|steckschl[üu]ssel|"
-    r"stecknuss|\w*bohrer\b|bohrmaschine|\bbits?\b|bit-?(?:satz|set|halter)|\w*s[äa]ge\b|s[äa]geblatt|\w*hammer\b|"
-    r"mei[sß]{1,2}el|\w*feile\b|schleif(?:maschine|scheibe|papier|ger[äa]t)|trennscheibe|l[öo]tkolben|l[öo]tstation|"
-    r"multimeter|messschieber|schieblehre|wasserwaage|ma[sß]{1,2}band|bandma[sß]{1,2}|zollstock|schwei[sß]{1,2}ger[äa]t|"
-    r"nagelpistole|\btacker\b|zwinge\b|inbus|innensechskant|drehmoment|abzieher\b|spachtel|crimp|abisolier|"
-    r"klebepistole|hei[sß]{1,2}klebe|werkbank|schraubstock|d[üu]bel|nietzange|drahtb[üu]rste|glasschneider|"
-    r"fliesenschneider|gewindeschneider|entgrater|spannfutter|hei[sß]{1,2}luft|silikonpistole|kartuschenpistole|"
-    r"kompressor|\bhobel\b|stemmeisen|lochzange|\bahle\b|schl[üu]sselsatz|schraubenschl[üu]ssel|\w*schl[üu]ssel-?set", re.I)
+# Regeln stehen seit 07.10. 16:15 in automation/data/werkzeug_korb.json — der Importer (google_kategorie.mjs) liest
+# dieselbe Datei, damit Neuware schon beim Anlegen richtig steht (eine Regelquelle, Kanarien hier unten).
+_WK = __import__("json").load(open(os.path.join(HIER, "data", "werkzeug_korb.json"), encoding="utf-8"))
+WERKZEUGWORT = re.compile(_WK["werkzeugwort"], re.I)
 VK = "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor"
 MU = "Arts & Entertainment > Hobbies & Creative Arts"
-TO_KREUZ = [
-    (r"diagnoseger[äa]t|\bobd-?2?\b|elm327", VK + " > Vehicle Repair & Specialty Tools > Vehicle Diagnostic Scanners"),
-    (r"starthilfe", VK + " > Vehicle Repair & Specialty Tools > Vehicle Jump Starters"),
-    (r"^(?=.*(?:\bauto\w*|kfz|reifen|fahrzeug\w*|motorrad\w*|felge\w*|radnabe\w*|autoscheibe\w*|windschutzscheibe\w*)).*"
-     r"(?:pflege|glanz|politur|polier|wachs|reinig|spray|creme|paste|fluid|shampoo|b[üu]rste|schwamm|wasch)", VK + " > Vehicle Cleaning"),
-    (r"^(?!.*haken).*(?:(?<!lampen)(?<!bild)regenschirm|sonnenschirm|(?:uv|regen|sonnen)-?schutz-?schirm|\bschirm\b(?!m[üu]tze))", "Home & Garden > Parasols & Rain Umbrellas"),
-    (r"\bgolf\w*", "Sporting Goods > Outdoor Recreation > Golf"),
-    (r"kalimba|daumenklavier|zungentrommel|ukulele|mundharmonika", MU + " > Musical Instruments"),
-    (r"gitarr\w*|kapodaster|plektr\w*|gitarrensaite\w*", MU + " > Musical Instrument & Orchestra Accessories > String Instrument Accessories"),
-    (r"kerzenhalter|kerzenst[äa]nder|teelichthalter", "Home & Garden > Decor > Home Fragrance Accessories > Candle Holders"),
-    (r"(?:kerzen|seifen)\w*form|silikonform\b.*(?:kerze|seife|harz|epoxid)|gie[sß]form", MU + " > Arts & Crafts > Crafting Patterns & Molds > Craft Molds"),
-    (r"uhrenbeweger", "Apparel & Accessories > Jewelry > Watch Accessories > Watch Winders"),
-    (r"watte-?st[äa]bchen|wattest[äa]bchen", "Health & Beauty > Personal Care > Cotton Swabs"),
-    (r"staubsauger-?(?:adapter|schlauch|aufsatz|d[üu]se|filter|b[üu]rste)|ersatzschlauch.*staubsauger", "Home & Garden > Household Appliance Accessories > Vacuum Accessories"),
-    (r"^(?!.*bohr).*\w*staubsauger\b", "Home & Garden > Household Appliances > Vacuums"),
-    (r"wischmopp|\bmopp\b|staubwedel|spinnenf[äa]nger", "Home & Garden > Household Supplies > Household Cleaning Supplies"),
-    (r"^(?!.*k[äa]ltemittel).*(?:eierschneider|brotschneider|flaschen[öo]ffner|fass[öo]ffner|dosen[öo]ffner|knoblauchpresse)", "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils"),
-]
+TO_KREUZ = [tuple(x) for x in _WK["kreuz"]]
 _TK = [(re.compile(m, re.I), z) for m, z in TO_KREUZ]
 
 

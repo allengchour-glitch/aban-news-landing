@@ -1,0 +1,84 @@
+{
+ "_hinweis": "07.10.2026 — gemeinsame Regelquelle für den CJ-Werkzeug-Sammelkorb: google_kategorie_umzug.py (täglicher Umzug, Kanarien) und cj_category_fill.mjs via google_kategorie.mjs (schon beim Import). Nur hier ändern; Kanarien: python3 automation/google_kategorie_umzug.py --kanarienvogel Reihenfolge: vorrang (vor dem Werkzeugwort-Schutz, z. B. Nagelzange) → werkzeugwort → kreuz.",
+ "werkzeugwort": "werkzeug\\w*|\\w*zange\\b|zangen\\w*|schraubendreher|schraubenzieher|\\w*schrauber\\b|ratsche\\w*|steckschl[üu]ssel|stecknuss|\\w*bohrer\\b|bohrmaschine|\\bbits?\\b|bit-?(?:satz|set|halter)|\\w*s[äa]ge\\b|s[äa]geblatt|\\w*hammer\\b|mei[sß]{1,2}el|\\w*feile\\b|schleif(?:maschine|scheibe|papier|ger[äa]t)|trennscheibe|l[öo]tkolben|l[öo]tstation|multimeter|messschieber|schieblehre|wasserwaage|ma[sß]{1,2}band|bandma[sß]{1,2}|zollstock|schwei[sß]{1,2}ger[äa]t|nagelpistole|\\btacker\\b|zwinge\\b|inbus|innensechskant|drehmoment|abzieher\\b|spachtel|crimp|abisolier|klebepistole|hei[sß]{1,2}klebe|werkbank|schraubstock|d[üu]bel|nietzange|drahtb[üu]rste|glasschneider|fliesenschneider|gewindeschneider|entgrater|spannfutter|hei[sß]{1,2}luft|silikonpistole|kartuschenpistole|kompressor|\\bhobel\\b|stemmeisen|lochzange|\\bahle\\b|schl[üu]sselsatz|schraubenschl[üu]ssel|\\w*schl[üu]ssel-?set",
+ "kreuz": [
+  [
+   "diagnoseger[äa]t|\\bobd-?2?\\b|elm327",
+   "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor > Vehicle Repair & Specialty Tools > Vehicle Diagnostic Scanners"
+  ],
+  [
+   "starthilfe",
+   "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor > Vehicle Repair & Specialty Tools > Vehicle Jump Starters"
+  ],
+  [
+   "^(?=.*(?:\\bauto\\w*|kfz|reifen|fahrzeug\\w*|motorrad\\w*|felge\\w*|radnabe\\w*|autoscheibe\\w*|windschutzscheibe\\w*)).*(?:pflege|glanz|politur|polier|wachs|reinig|spray|creme|paste|fluid|shampoo|b[üu]rste|schwamm|wasch)",
+   "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor > Vehicle Cleaning"
+  ],
+  [
+   "^(?!.*haken).*(?:(?<!lampen)(?<!bild)regenschirm|sonnenschirm|(?:uv|regen|sonnen)-?schutz-?schirm|\\bschirm\\b(?!m[üu]tze))",
+   "Home & Garden > Parasols & Rain Umbrellas"
+  ],
+  [
+   "\\bgolf\\w*",
+   "Sporting Goods > Outdoor Recreation > Golf"
+  ],
+  [
+   "kalimba|daumenklavier|zungentrommel|ukulele|mundharmonika",
+   "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments"
+  ],
+  [
+   "gitarr\\w*|kapodaster|plektr\\w*|gitarrensaite\\w*",
+   "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > String Instrument Accessories"
+  ],
+  [
+   "kerzenhalter|kerzenst[äa]nder|teelichthalter",
+   "Home & Garden > Decor > Home Fragrance Accessories > Candle Holders"
+  ],
+  [
+   "(?:kerzen|seifen)\\w*form|silikonform\\b.*(?:kerze|seife|harz|epoxid)|gie[sß]form",
+   "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Crafting Patterns & Molds > Craft Molds"
+  ],
+  [
+   "uhrenbeweger",
+   "Apparel & Accessories > Jewelry > Watch Accessories > Watch Winders"
+  ],
+  [
+   "watte-?st[äa]bchen|wattest[äa]bchen",
+   "Health & Beauty > Personal Care > Cotton Swabs"
+  ],
+  [
+   "staubsauger-?(?:adapter|schlauch|aufsatz|d[üu]se|filter|b[üu]rste)|ersatzschlauch.*staubsauger",
+   "Home & Garden > Household Appliance Accessories > Vacuum Accessories"
+  ],
+  [
+   "^(?!.*bohr).*\\w*staubsauger\\b",
+   "Home & Garden > Household Appliances > Vacuums"
+  ],
+  [
+   "wischmopp|\\bmopp\\b|staubwedel|spinnenf[äa]nger",
+   "Home & Garden > Household Supplies > Household Cleaning Supplies"
+  ],
+  [
+   "^(?!.*k[äa]ltemittel).*(?:eierschneider|brotschneider|flaschen[öo]ffner|fass[öo]ffner|dosen[öo]ffner|knoblauchpresse)",
+   "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils"
+  ]
+ ],
+ "vorrang": [
+  [
+   "backform|kuchenform|silikonform(?!.*(?:kerze|harz|epoxid|gips|vase|blumentopf|schale|teller|aufbewahrung|bastel|diy|seife))|muffinform|tortenform|ausstechform|keksform",
+   "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Bakeware"
+  ],
+  [
+   "haarschneider|haarschneidemaschine|bartschneider|haartrimmer",
+   "Health & Beauty > Personal Care > Shaving & Grooming > Hair Clippers & Trimmers"
+  ],
+  [
+   "nagelknipser|nagelschere|nagelfeile|nagelzange",
+   "Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools > Nail Tools"
+  ],
+  [
+   "k[üu]chen(?:reinigungs)?tuch|sp[üu]ltuch|putzschwamm|reinigungsschwamm|schwammtuch",
+   "Home & Garden > Household Supplies > Household Cleaning Supplies"
+  ]
+ ]
+}

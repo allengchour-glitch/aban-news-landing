@@ -54,6 +54,7 @@ const PFAD = {
   'Animals & Pet Supplies': 'Haustierbedarf',
   'Arts & Entertainment > Party & Celebration': 'Partydeko & Ballone',
   'Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments': 'Musikinstrumente',
+  'Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories': 'Musikinstrumente',   // 07.10.: Gitarrensaiten, Kapodaster (Werkzeug-Sammelkorb)
   'Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts': 'Basteln & DIY',
   'Baby & Toddler': 'Baby & Kinder',
   'Electronics': 'Elektronik',
