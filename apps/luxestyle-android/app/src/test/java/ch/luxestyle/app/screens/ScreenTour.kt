@@ -198,7 +198,7 @@ class ScreenTour : TourBase() {
         rule.onAllNodesWithText("Schmuck & Uhren").onFirst().performClick()
         settle(20000)
         shot("09a-kategorien-schmuck")
-        rule.onAllNodesWithText("Geschenke & Mehr").onFirst().performClick()
+        rule.onAllNodesWithText("Geschenke &", substring = true).onFirst().performClick()
         settle(20000)
         shot("09a2-kategorien-geschenke")
         rule.onAllNodesWithText("Damen").onFirst().performClick()

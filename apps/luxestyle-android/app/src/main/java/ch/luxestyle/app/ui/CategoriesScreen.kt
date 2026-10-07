@@ -46,6 +46,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -77,7 +78,7 @@ fun CategoriesScreen() {
             val sel = selected.coerceIn(0, (items.size - 1).coerceAtLeast(0))
             Row(Modifier.fillMaxSize()) {
                 LazyColumn(
-                    Modifier.width(112.dp).fillMaxHeight().background(MaterialTheme.colorScheme.surfaceVariant).testTag("bereiche"),
+                    Modifier.width(120.dp).fillMaxHeight().background(MaterialTheme.colorScheme.surfaceVariant).testTag("bereiche"),
                 ) {
                     itemsIndexed(items, key = { _, m -> m.url }) { i, m ->
                         RailItem(m.title, i == sel) { selected = i }
@@ -99,8 +100,9 @@ private fun RailItem(title: String, selected: Boolean, onClick: () -> Unit) {
     ) {
         Box(Modifier.width(3.dp).height(44.dp).background(if (selected) c.secondary else Color.Transparent))
         Text(
-            title, Modifier.padding(horizontal = 10.dp, vertical = 14.dp),
-            style = MaterialTheme.typography.labelLarge,
+            title, Modifier.padding(start = 10.dp, end = 6.dp, top = 14.dp, bottom = 14.dp),
+            // Silbentrennung: „Geschenke & Weihnachten" passt sonst nicht in die schmale Spalte
+            style = MaterialTheme.typography.labelLarge.copy(hyphens = Hyphens.Auto),
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
             color = if (selected) c.onSurface else LocalLuxe.current.muted,
             maxLines = 3, overflow = TextOverflow.Ellipsis,
@@ -171,7 +173,7 @@ private fun DepartmentBanner(top: MenuItem, pictures: List<Image>, onClick: () -
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(1f)) {
-                Text(top.title, style = MaterialTheme.typography.titleLarge, color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(top.title, style = MaterialTheme.typography.titleLarge, color = Color.White, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 Text("Alles ansehen", style = MaterialTheme.typography.labelMedium, color = Color.White.copy(alpha = 0.85f))
             }
             Icon(painterResource(R.drawable.ic_chevron), null, tint = Color.White, modifier = Modifier.size(18.dp))
