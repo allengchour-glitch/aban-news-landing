@@ -798,10 +798,12 @@ while true; do
   # um 16:00 war der Topf jeden Tag leer (05.10. 16:14: sofort 16900500, 0 Videos).
   # 02.10.2026 «grow videos push»: 375 von 403 Prüfungen (93 %) fanden KEIN Video → Vorrangliste jetzt aus dem Video-Index
   # (`video_prio_index.py`: nur Produkte, deren CJ-pid laut product/list ein Video hat; sichtbare zuerst; 502 offen).
-  if [ "$VORRANGZEIT" = "1" ] && [ ! -f /tmp/videos_$(date -u +%F) ]; then
+  # 07.10.2026 (Plan Tag 8): heute 00:15–00:22 17 Videos, dann Container-Neustart — der Tages-Stempel liess keinen zweiten
+  # Start zu (Rest des Fensters verschenkt). START-Marke + still_gestorben → im selben Fenster bis 3× nachholen.
+  if [ "$VORRANGZEIT" = "1" ] && { [ ! -f /tmp/videos_$(date -u +%F) ] || still_gestorben /tmp/cj_video_backfill.log; }; then
     touch "/tmp/videos_$(date -u +%F)"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_cj_video_backfill.lock; flock -n 9 || exit 0;
+        "exec 9>/tmp/lock_cj_video_backfill.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\";
          python3 automation/video_prio_index.py; PRIO=dropship/_video_prio_index.txt CAP=250 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
         >> /tmp/cj_video_backfill.log 2>&1 9>&- & )
     # ⚠️ CAP 300 war sinnlos: der Plan deckelt bei 250 Videos FUER DEN GANZEN SHOP. Der
