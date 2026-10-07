@@ -5146,3 +5146,12 @@ mannliche-multifunktionsuhr-628100	2412221205051628500	7	6.81	ok	landeseite
 herrenuhr-quarz-edel-629300	2412221107241629400	7	7.13	ok	landeseite
 herren-armbanduhr-quadratisch-624500	2412221102461624700	7	6.90	ok	landeseite
 herren-armbanduhr-einfarbig-608700	2412040237151608900	7	6.29	ok	landeseite
+wasserdichte-sportuhr-fur-herren-615700	2411290728481616000	7	5.94	ok	landeseite
+militar-armbanduhr-wasserdicht-606800	2411251126191607000	7	6.73	ok	landeseite
+smart-armbanduhr-mit-multi-funktionen-636600	2510060856531636800	7	6.26	ok	landeseite
+sportliche-armbanduhr-mit-leuchtzifferblatt-622800	2509290316211623100	7	6.02	ok	landeseite
+herren-elektronuhr-mit-3d-rad-627600	2509290128501627800	7	7.13	ok	landeseite
+solar-5-smartwatch-607400	2509180756551607600	7	6.12	ok	landeseite
+elektronische-casual-uhr-603300	2509150754121603500	7	6.81	ok	landeseite
+business-uhr-fur-herren-617400	2509090844351617600	7	6.09	ok	landeseite
+elastisches-nylon-armband-mit-schirmverschluss-625900	2509081316071626100	16	5.12	ok	landeseite
