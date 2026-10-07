@@ -178,5 +178,63 @@
     ]
    }
   }
+ },
+ "2026-10-07": {
+  "sie": {
+   "id": "gid://shopify/Collection/689718428033",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-sie"
+     }
+    ]
+   }
+  },
+  "ihn": {
+   "id": "gid://shopify/Collection/689718362497",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-ihn"
+     }
+    ]
+   }
+  },
+  "kinder": {
+   "id": "gid://shopify/Collection/689718460801",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-kinder"
+     }
+    ]
+   }
+  },
+  "unter30": {
+   "id": "gid://shopify/Collection/689055629697",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-unter30"
+     }
+    ]
+   }
+  }
  }
 }
