@@ -5140,3 +5140,7 @@ diamant-rap-hip-hop-armbanduhr-627700	2502190515201627900	7	9.54	ok	landeseite
 elektronische-herren-uhr-608000	2501230245421608300	7	6.49	ok	landeseite
 mannliche-stahl-armbanduhr-628400	2501051203461628600	7	6.66	ok	landeseite
 lederarmband-fur-uhren-616800	2501030206471617000	16	5.34	ok	landeseite
+wasserdichte-quarz-armbanduhr-608700	2501030158531608900	7	6.00	ok	landeseite
+uhrenschutzhulle-fur-samsung-620700	2412270155541621100	16	4.79	ok	landeseite
+mannliche-multifunktionsuhr-628100	2412221205051628500	7	6.81	ok	landeseite
+herrenuhr-quarz-edel-629300	2412221107241629400	7	7.13	ok	landeseite
