@@ -17121,3 +17121,18 @@ gid://shopify/Product/16609720828295	9->1	Palmholz-Pfeife mit fünf Fingern
 gid://shopify/Product/16609737539975	10->0	Ratschenschlüssel verstellbar
 gid://shopify/Product/16609737605511	14->1	Fliesenleger-Werkzeug
 gid://shopify/Product/16609737900423	11->0	Wasserdichte 3D Wandfolie selbstklebend
+gid://shopify/Product/16609739473287	9->1	Flache Ledersandalen mit runder Zehenpartie
+gid://shopify/Product/16609739637127	28->1	Sandalen mit Blockabsatz
+gid://shopify/Product/16609739669895	23->3	Schleuderkraft-Wasserpistole
+gid://shopify/Product/16609739899271	8->0	Smarter Ohrenschmalzentferner
+gid://shopify/Product/16609739932039	10->0	Lötloser LED-Verbinder
+gid://shopify/Product/16609740095879	9->0	Kabelloser Handventilator mit bürstenlosem Motor
+gid://shopify/Product/16609740226951	13->3	Tragbare elektrische Mini-Nähmaschine
+gid://shopify/Product/16609740390791	9->0	Akku-Schraubenzieher-Set
+gid://shopify/Product/16609740456327	42->3	Vollautomatische elektrische Bindemaschine
+gid://shopify/Product/16609840005511	8->0	E-Gitarren-Pickup in Chrom+Schwarz
+gid://shopify/Product/16609846067591	12->3	Faltbare Besen-Kehrschaufel-Kombination
+gid://shopify/Product/16609856061831	78->0	Warme, bequeme Herrenschuhe
+gid://shopify/Product/16609857012103	60->0	Mini-Elektroschrauber mit Schraubenset
+gid://shopify/Product/16609858126215	51->0	Schraubendreher-Karabiner mit Licht
+gid://shopify/Product/16609907868039	10->1	Transparente Rundaufkleber 2,5 cm
