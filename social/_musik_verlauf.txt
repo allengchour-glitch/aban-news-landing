@@ -401,3 +401,4 @@
 2026-10-07T17:39:01.390Z	luxe-epic-hybrid.wav	30	gadget	cjreel-23BEFA0A-1295-4ACE-B841-5C6146738D37	stimme:ja	azure:de-CH-JanNeural
 2026-10-07T17:39:53.447Z	luxe-orchestra.wav	11.25	home	cjreel-1602480145124831232	stimme:nein	anteil
 2026-10-07T17:41:37.098Z	luxe-epic-winter.wav	34	gadget	cjreel-42A840DE-F9C8-4346-9569-FF6828EB86AA	stimme:ja	azure:de-CH-JanNeural
+2026-10-07T18:09:40.997Z	luxe-epic-anime.wav	23.25	beauty	cjreel-1746037061829799936	stimme:nein	anteil
