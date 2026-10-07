@@ -17113,3 +17113,11 @@ gid://shopify/Product/16609705623943	58->0	Abflussfilter für Waschbecken – 35
 gid://shopify/Product/16609705722247	13->1	Uhrenbeweger mit Piano-Lack
 gid://shopify/Product/16609705755015	16->0	Aluminium-Legierung Magnet-Lehrtafel 45 × 30,5 cm
 gid://shopify/Product/16609705820551	33->0	Zangen-Set aus Nickel-Chrom-Legierung
+gid://shopify/Product/16609706410375	47->0	LED-Licht-Accessoire für Gesicht
+gid://shopify/Product/16609707590023	34->0	Kerzenhalter aus Schmiedeeisen mit Glas
+gid://shopify/Product/16609707786631	26->0	Modifizierte Programmierklammer
+gid://shopify/Product/16609707852167	71->0	Handbrause mit Druckluft
+gid://shopify/Product/16609720828295	9->1	Palmholz-Pfeife mit fünf Fingern
+gid://shopify/Product/16609737539975	10->0	Ratschenschlüssel verstellbar
+gid://shopify/Product/16609737605511	14->1	Fliesenleger-Werkzeug
+gid://shopify/Product/16609737900423	11->0	Wasserdichte 3D Wandfolie selbstklebend
