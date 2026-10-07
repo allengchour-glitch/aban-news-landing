@@ -7,7 +7,7 @@ const SITE = "https://abannews.com";
 const PAGES = [
   {
     slug: "auto-kaufen-schweiz", icon: "🚗", h1: "Auto kaufen in der Schweiz",
-    title: "Auto kaufen Schweiz — Occasionen & Neuwagen finden | aban",
+    title: "Auto kaufen Schweiz — Occasionen & Neuwagen finden | aban news",
     desc: "Auto kaufen in der Schweiz: Occasionen, Neuwagen, Teile & Zubehör an einem Ort suchen und vergleichen — nach Marke, Zustand und Preis filtern.",
     cta: "/auto-suche.html", ctaLabel: "Fahrzeuge jetzt durchsuchen",
     intro: "Vom günstigen Occasionswagen bis zum Töff: Hier durchsuchst du Fahrzeuge, Teile und Zubehör an einem Ort — und vergleichst Zustand und Preis, bevor du beim Anbieter zuschlägst.",
@@ -24,7 +24,7 @@ const PAGES = [
   },
   {
     slug: "wohnung-mieten-schweiz", icon: "🏠", h1: "Wohnung mieten in der Schweiz",
-    title: "Wohnung mieten Schweiz — Mietwohnungen & WG finden | aban",
+    title: "Wohnung mieten Schweiz — Mietwohnungen & WG finden | aban news",
     desc: "Wohnung mieten in der Schweiz: Mietwohnungen, Häuser und WG-Zimmer nach Ort und Kanton suchen — oder kostenlos selbst inserieren.",
     cta: "/immobilien.html?q=wohnung+miete", ctaLabel: "Mietwohnungen durchsuchen",
     intro: "Ob 2,5-Zimmer in der Stadt oder WG-Zimmer zum Studienstart: Such nach Ort oder Kanton und finde passende Mietobjekte — oder stell dein eigenes Inserat kostenlos ein.",
@@ -41,7 +41,7 @@ const PAGES = [
   },
   {
     slug: "moebel-kaufen-schweiz", icon: "🛋️", h1: "Möbel kaufen in der Schweiz",
-    title: "Möbel kaufen Schweiz — neu & gebraucht finden | aban",
+    title: "Möbel kaufen Schweiz — neu & gebraucht finden | aban news",
     desc: "Möbel kaufen in der Schweiz: Sofas, Tische, Schränke und Wohnaccessoires neu oder gebraucht an einem Ort suchen und vergleichen.",
     cta: "/angebote-suche.html?cat=M%C3%B6bel", ctaLabel: "Möbel-Angebote ansehen",
     intro: "Vom Sofa über den Esstisch bis zum Schrank: Durchsuche Möbel-Angebote, vergleiche Preise und filtere nach Zustand — neu oder gebraucht.",
@@ -58,7 +58,7 @@ const PAGES = [
   },
   {
     slug: "handy-kaufen-schweiz", icon: "📱", h1: "Handy kaufen in der Schweiz",
-    title: "Handy kaufen Schweiz — Smartphones neu & gebraucht | aban",
+    title: "Handy kaufen Schweiz — Smartphones neu & gebraucht | aban news",
     desc: "Handy kaufen in der Schweiz: Smartphones von iPhone bis Android neu oder gebraucht suchen, nach Zustand und Preis filtern und vergleichen.",
     cta: "/angebote-suche.html?cat=Handy", ctaLabel: "Handy-Angebote ansehen",
     intro: "iPhone, Samsung & Co. — neu oder generalüberholt. Vergleiche Smartphone-Angebote, filtere nach Zustand und Preis und finde das passende Gerät.",
@@ -75,7 +75,7 @@ const PAGES = [
   },
   {
     slug: "velo-kaufen-schweiz", icon: "🚲", h1: "Velo kaufen in der Schweiz",
-    title: "Velo kaufen Schweiz — Fahrräder & E-Bikes finden | aban",
+    title: "Velo kaufen Schweiz — Fahrräder & E-Bikes finden | aban news",
     desc: "Velo kaufen in der Schweiz: Fahrräder, E-Bikes, Mountainbikes und Zubehör neu oder gebraucht suchen, nach Preis und Zustand filtern.",
     cta: "/angebote-suche.html?q=Velo", ctaLabel: "Velo-Angebote ansehen",
     intro: "Stadtvelo, Mountainbike oder E-Bike: Durchsuche Velo-Angebote, vergleiche Preise und finde das passende Rad — neu oder gebraucht.",
@@ -92,7 +92,7 @@ const PAGES = [
   },
   {
     slug: "job-finden-schweiz", icon: "💼", h1: "Job finden in der Schweiz",
-    title: "Job finden Schweiz — offene Stellen & Remote suchen | aban",
+    title: "Job finden Schweiz — offene Stellen & Remote suchen | aban news",
     desc: "Job finden in der Schweiz: tausende offene Stellen aus mehreren Job-Börsen an einem Ort durchsuchen — nach Beruf, Ort und Remote filtern.",
     cta: "/stellenangebote.html", ctaLabel: "Stellen jetzt durchsuchen",
     intro: "Tausende offene Stellen aus mehreren Job-Börsen an einem Ort: Such nach Beruf, Ort oder Remote und bewirb dich direkt bei der Originalanzeige.",
@@ -109,7 +109,7 @@ const PAGES = [
   },
   {
     slug: "garten-kaufen-schweiz", icon: "🪴", h1: "Garten & Pflanzen kaufen in der Schweiz",
-    title: "Garten kaufen Schweiz — Gartenmöbel, Geräte & Pflanzen | aban",
+    title: "Garten kaufen Schweiz — Gartenmöbel, Geräte & Pflanzen",
     desc: "Für Garten & Balkon in der Schweiz: Gartenmöbel, Grill, Geräte und Pflanzen neu oder gebraucht suchen und vergleichen.",
     cta: "/angebote-suche.html?cat=Garten", ctaLabel: "Garten-Angebote ansehen",
     intro: "Gartenmöbel, Grill, Rasenmäher oder Pflanzen — durchsuche Angebote für draussen, vergleiche Preise und filtere nach Zustand.",
@@ -126,7 +126,7 @@ const PAGES = [
   },
   {
     slug: "werkzeug-kaufen-schweiz", icon: "🔧", h1: "Werkzeug kaufen in der Schweiz",
-    title: "Werkzeug kaufen Schweiz — Maschinen & Heimwerker | aban",
+    title: "Werkzeug kaufen Schweiz — Maschinen & Heimwerker | aban news",
     desc: "Werkzeug in der Schweiz kaufen: Akkuschrauber, Maschinen, Heimwerker- und Profi-Werkzeug neu oder gebraucht suchen und vergleichen.",
     cta: "/angebote-suche.html?cat=Werkzeug", ctaLabel: "Werkzeug-Angebote ansehen",
     intro: "Vom Akkuschrauber bis zur Kreissäge: Durchsuche Werkzeug-Angebote, vergleiche Marken und Preise und filtere nach Zustand.",
@@ -143,7 +143,7 @@ const PAGES = [
   },
   {
     slug: "mode-kaufen-schweiz", icon: "👗", h1: "Mode & Kleidung kaufen in der Schweiz",
-    title: "Mode kaufen Schweiz — Kleidung, Schuhe & Accessoires | aban",
+    title: "Mode kaufen Schweiz — Kleidung, Schuhe & Accessoires | aban news",
     desc: "Mode in der Schweiz kaufen: Kleidung, Schuhe, Taschen und Accessoires neu oder Secondhand suchen, vergleichen und filtern.",
     cta: "/angebote-suche.html?cat=Mode", ctaLabel: "Mode-Angebote ansehen",
     intro: "Kleidung, Schuhe, Taschen und Accessoires — neu oder Secondhand. Durchsuche Mode-Angebote und filtere nach Preis und Zustand.",
@@ -160,7 +160,7 @@ const PAGES = [
   },
   {
     slug: "gaming-kaufen-schweiz", icon: "🎮", h1: "Gaming kaufen in der Schweiz",
-    title: "Gaming kaufen Schweiz — Konsolen, Spiele & PC | aban",
+    title: "Gaming kaufen Schweiz — Konsolen, Spiele & PC | aban news",
     desc: "Gaming in der Schweiz kaufen: Konsolen (PlayStation, Xbox, Switch), Spiele, Gaming-PCs und Zubehör neu oder gebraucht finden.",
     cta: "/angebote-suche.html?q=Gaming", ctaLabel: "Gaming-Angebote ansehen",
     intro: "Konsolen, Spiele, Controller und Gaming-PCs — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis und Zustand.",
@@ -177,7 +177,7 @@ const PAGES = [
   },
   {
     slug: "haustier-zubehoer-schweiz", icon: "🐾", h1: "Haustier-Zubehör in der Schweiz",
-    title: "Haustier-Zubehör Schweiz — für Hund, Katze & Co. | aban",
+    title: "Haustier-Zubehör Schweiz — für Hund, Katze & Co. | aban news",
     desc: "Haustier-Zubehör in der Schweiz: Zubehör, Käfige, Transportboxen und mehr für Hund, Katze & Co. finden — oder kostenlos inserieren.",
     cta: "/inserate.html?kat=Haustier", ctaLabel: "Haustier-Inserate ansehen",
     intro: "Zubehör, Transportboxen, Kratzbäume und mehr für deine Tiere — stöbere in lokalen Inseraten oder gib selbst eines auf.",
@@ -194,7 +194,7 @@ const PAGES = [
   },
   {
     slug: "sport-kaufen-schweiz", icon: "⚽", h1: "Sport & Freizeit kaufen in der Schweiz",
-    title: "Sportartikel kaufen Schweiz — Fitness, Ski & Outdoor | aban",
+    title: "Sportartikel kaufen Schweiz — Fitness, Ski & Outdoor | aban news",
     desc: "Sportartikel in der Schweiz kaufen: Fitnessgeräte, Ski, Outdoor- und Freizeitausrüstung neu oder gebraucht suchen und vergleichen.",
     cta: "/angebote-suche.html?cat=Sport", ctaLabel: "Sport-Angebote ansehen",
     intro: "Fitnessgeräte, Ski, Wander- und Outdoor-Ausrüstung — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis und Zustand.",
@@ -211,7 +211,7 @@ const PAGES = [
   },
   {
     slug: "kamera-kaufen-schweiz", icon: "📷", h1: "Kamera & Foto kaufen in der Schweiz",
-    title: "Kamera kaufen Schweiz — Foto, Objektive & Zubehör | aban",
+    title: "Kamera kaufen Schweiz — Foto, Objektive & Zubehör | aban news",
     desc: "Kamera in der Schweiz kaufen: Spiegelreflex, Systemkameras, Objektive und Foto-Zubehör neu oder gebraucht suchen und vergleichen.",
     cta: "/angebote-suche.html?q=Kamera", ctaLabel: "Kamera-Angebote ansehen",
     intro: "Kameras, Objektive und Zubehör — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis und Zustand.",
@@ -228,7 +228,7 @@ const PAGES = [
   },
   {
     slug: "computer-kaufen-schweiz", icon: "💻", h1: "Computer & Laptop kaufen in der Schweiz",
-    title: "Computer kaufen Schweiz — Laptops, PCs & Zubehör | aban",
+    title: "Computer kaufen Schweiz — Laptops, PCs & Zubehör | aban news",
     desc: "Computer in der Schweiz kaufen: Laptops, Desktop-PCs, Monitore und Zubehör neu oder gebraucht suchen, nach Preis und Zustand filtern.",
     cta: "/angebote-suche.html?cat=Computer", ctaLabel: "Computer-Angebote ansehen",
     intro: "Laptops, Desktop-PCs, Monitore und Zubehör — neu oder refurbished. Vergleiche Angebote und filtere nach Preis und Zustand.",
@@ -245,7 +245,7 @@ const PAGES = [
   },
   {
     slug: "kueche-kaufen-schweiz", icon: "🍳", h1: "Küche & Haushalt kaufen in der Schweiz",
-    title: "Küche & Haushalt kaufen Schweiz — Geräte & Zubehör | aban",
+    title: "Küche & Haushalt kaufen Schweiz — Geräte & Zubehör | aban news",
     desc: "Küche und Haushalt in der Schweiz: Küchengeräte, Maschinen und Haushaltsartikel neu oder gebraucht suchen und vergleichen.",
     cta: "/angebote-suche.html?cat=Haushalt", ctaLabel: "Haushalt-Angebote ansehen",
     intro: "Kaffeemaschine, Küchenmaschine, Geschirr oder Kleingeräte — neu oder gebraucht. Vergleiche Angebote und filtere nach Preis.",
@@ -262,7 +262,7 @@ const PAGES = [
   },
   {
     slug: "baby-kind-kaufen-schweiz", icon: "🍼", h1: "Baby & Kind kaufen in der Schweiz",
-    title: "Baby & Kind kaufen Schweiz — Kinderwagen, Kleidung & Spielzeug | aban",
+    title: "Baby & Kind kaufen Schweiz — Kinderwagen, Kleidung & Spielzeug",
     desc: "Für Baby & Kind in der Schweiz: Kinderwagen, Autositze, Kleidung und Spielzeug neu oder gebraucht suchen — oder kostenlos inserieren.",
     cta: "/inserate.html?kat=Baby+%26+Kind", ctaLabel: "Baby & Kind ansehen",
     intro: "Kinderwagen, Autositze, Kleidung und Spielzeug — vieles wird kaum genutzt und gebraucht weitergegeben. Stöbere lokal oder inseriere selbst.",
@@ -279,7 +279,7 @@ const PAGES = [
   },
   {
     slug: "ebike-kaufen-schweiz", icon: "🔋", h1: "E-Bike kaufen in der Schweiz",
-    title: "E-Bike kaufen Schweiz — Elektrovelos neu & gebraucht | aban",
+    title: "E-Bike kaufen Schweiz — Elektrovelos neu & gebraucht | aban news",
     desc: "E-Bike in der Schweiz kaufen: Elektrovelos, E-Mountainbikes und Zubehör neu oder gebraucht suchen, nach Preis und Zustand filtern.",
     cta: "/angebote-suche.html?q=E-Bike", ctaLabel: "E-Bike-Angebote ansehen",
     intro: "Elektrovelo fürs Pendeln oder E-Mountainbike fürs Gelände — neu oder gebraucht. Vergleiche Angebote und achte besonders auf den Akku.",
@@ -296,7 +296,7 @@ const PAGES = [
   },
   {
     slug: "uhren-schmuck-kaufen-schweiz", icon: "⌚", h1: "Uhren & Schmuck kaufen in der Schweiz",
-    title: "Uhren & Schmuck kaufen Schweiz — neu & second-hand | aban",
+    title: "Uhren & Schmuck kaufen Schweiz — neu & second-hand | aban news",
     desc: "Uhren und Schmuck in der Schweiz: Armbanduhren, Schmuck und Accessoires neu oder second-hand suchen und vergleichen.",
     cta: "/angebote-suche.html?q=Uhr", ctaLabel: "Uhren-Angebote ansehen",
     intro: "Armbanduhren, Schmuck und Accessoires — neu oder second-hand. Vergleiche Angebote und filtere nach Preis und Zustand.",
@@ -313,7 +313,7 @@ const PAGES = [
   },
   {
     slug: "occasion-auto-schweiz", icon: "🚙", h1: "Occasion Auto kaufen in der Schweiz",
-    title: "Occasion Auto Schweiz — gebrauchte Autos finden & vergleichen | aban",
+    title: "Occasion Auto Schweiz — gebrauchte Autos finden & vergleichen",
     desc: "Occasion (Gebrauchtwagen) in der Schweiz kaufen: gebrauchte Autos nach Marke, Zustand und Preis suchen und vergleichen — plus Tipps zu MFK, Kilometern und Probefahrt.",
     cta: "/auto-suche.html", ctaLabel: "Occasionen durchsuchen",
     intro: "Eine Occasion ist oft das beste Preis-Leistungs-Verhältnis. Durchsuche Gebrauchtwagen-Angebote, vergleiche Preise und achte auf Zustand, Kilometer und MFK.",
@@ -330,7 +330,7 @@ const PAGES = [
   },
   {
     slug: "motorrad-kaufen-schweiz", icon: "🏍️", h1: "Motorrad & Töff kaufen in der Schweiz",
-    title: "Motorrad kaufen Schweiz — Töff, Roller & Zubehör finden | aban",
+    title: "Motorrad kaufen Schweiz — Töff, Roller & Zubehör finden",
     desc: "Motorrad in der Schweiz kaufen: Töff, Roller, Motorräder und Zubehör neu oder gebraucht suchen, nach Marke, Zustand und Preis filtern.",
     cta: "/auto-suche.html?cat=Motorrad", ctaLabel: "Motorräder durchsuchen",
     intro: "Vom Roller bis zur Reiseenduro — neu oder gebraucht. Durchsuche Töff-Angebote, vergleiche Preise und achte auf Zustand, Kilometer und MFK.",
@@ -347,7 +347,7 @@ const PAGES = [
   },
   {
     slug: "wohnmobil-kaufen-schweiz", icon: "🚐", h1: "Wohnmobil & Camper kaufen in der Schweiz",
-    title: "Wohnmobil kaufen Schweiz — Camper & Wohnwagen finden | aban",
+    title: "Wohnmobil kaufen Schweiz — Camper & Wohnwagen finden | aban news",
     desc: "Wohnmobil in der Schweiz kaufen: Camper, Wohnmobile und Wohnwagen neu oder gebraucht suchen, nach Zustand und Preis filtern — plus Kauf-Tipps.",
     cta: "/auto-suche.html?cat=Wohnmobil", ctaLabel: "Wohnmobile durchsuchen",
     intro: "Camper für die Ferien oder Vanlife — neu oder gebraucht. Durchsuche Wohnmobil-Angebote, vergleiche Preise und achte auf Aufbau, Feuchtigkeit und Kilometer.",
@@ -364,7 +364,7 @@ const PAGES = [
   },
   {
     slug: "umzug-schweiz", icon: "📦", h1: "Umzug in der Schweiz — Zügelfirma & Helfer finden",
-    title: "Umzug Schweiz — Zügelfirma finden, vergleichen & Inserate | aban",
+    title: "Umzug Schweiz — Zügelfirma finden, vergleichen & Inserate",
     desc: "Umzug in der Schweiz organisieren: Zügelfirmen und Umzugshelfer finden, Angebote vergleichen und Umzugs-Inserate aufgeben — plus Checkliste.",
     cta: "/inserate.html?kat=Dienstleistungen", ctaLabel: "Umzugs-Inserate ansehen",
     intro: "Zügeln ohne Stress: Finde Zügelfirmen und Helfer, vergleiche Angebote und nutze die Checkliste für einen reibungslosen Umzug in der Schweiz.",
@@ -381,7 +381,7 @@ const PAGES = [
   },
   {
     slug: "haus-kaufen-schweiz", icon: "🏡", h1: "Haus kaufen in der Schweiz",
-    title: "Haus kaufen Schweiz — Einfamilienhäuser & mehr finden | aban",
+    title: "Haus kaufen Schweiz — Einfamilienhäuser & mehr finden | aban news",
     desc: "Haus kaufen in der Schweiz: Einfamilienhäuser, Reihenhäuser und Liegenschaften nach Ort und Kanton suchen — plus Tipps zu Finanzierung, Tragbarkeit und Eigenkapital.",
     cta: "/immobilien.html?q=haus", ctaLabel: "Häuser durchsuchen",
     intro: "Vom Einfamilienhaus bis zur Liegenschaft — such nach Ort oder Kanton und prüfe früh Finanzierung und Tragbarkeit, bevor du dich verliebst.",
@@ -398,7 +398,7 @@ const PAGES = [
   },
   {
     slug: "wohnung-kaufen-schweiz", icon: "🔑", h1: "Wohnung kaufen in der Schweiz",
-    title: "Wohnung kaufen Schweiz — Eigentumswohnungen finden | aban",
+    title: "Wohnung kaufen Schweiz — Eigentumswohnungen finden | aban news",
     desc: "Eigentumswohnung in der Schweiz kaufen: Stockwerkeigentum nach Ort und Kanton suchen — plus Tipps zu Finanzierung, Stockwerkeigentum und Nebenkosten.",
     cta: "/immobilien.html?q=wohnung+kauf", ctaLabel: "Eigentumswohnungen durchsuchen",
     intro: "Eigentumswohnung statt Miete: such nach Ort oder Kanton, prüfe Finanzierung, Stockwerkeigentum-Reglement und den Erneuerungsfonds.",
@@ -415,7 +415,7 @@ const PAGES = [
   },
   {
     slug: "buero-mieten-schweiz", icon: "🏢", h1: "Büro & Gewerbe mieten in der Schweiz",
-    title: "Büro mieten Schweiz — Gewerbe- & Büroräume finden | aban",
+    title: "Büro mieten Schweiz — Gewerbe- & Büroräume finden | aban news",
     desc: "Büro oder Gewerbe in der Schweiz mieten: Büroräume, Praxen, Ateliers und Gewerbeflächen nach Ort und Kanton suchen — oder kostenlos inserieren.",
     cta: "/immobilien.html?q=gewerbe+büro", ctaLabel: "Büro & Gewerbe durchsuchen",
     intro: "Büro, Praxis, Atelier oder Lager — such nach Ort oder Kanton und finde passende Gewerbeflächen, oder schreib dein Gesuch/Angebot aus.",
@@ -432,7 +432,7 @@ const PAGES = [
   },
   {
     slug: "pflege-jobs-schweiz", icon: "🩺", h1: "Pflege-Jobs in der Schweiz", jobq: "pflege",
-    title: "Pflege-Jobs Schweiz — offene Stellen finden | aban",
+    title: "Pflege-Jobs Schweiz — offene Stellen finden | aban news",
     desc: "Pflege-Jobs in der Schweiz finden: offene Stellen in Spital, Spitex, Heim und Praxis — nach Ort und Pensum suchen, direkt zur Original-Anzeige bewerben.",
     cta: "/stellenangebote.html?q=pflege", ctaLabel: "Pflege-Stellen durchsuchen",
     intro: "Pflegefachpersonen sind in der ganzen Schweiz gesucht. Durchsuche aktuelle Stellen in Spital, Spitex, Heim und Praxis und bewirb dich direkt beim Arbeitgeber.",
@@ -449,7 +449,7 @@ const PAGES = [
   },
   {
     slug: "gastro-jobs-schweiz", icon: "🍽️", h1: "Gastro-Jobs in der Schweiz", jobq: "gastronomie",
-    title: "Gastro-Jobs Schweiz — Koch, Service & Küche finden | aban",
+    title: "Gastro-Jobs Schweiz — Koch, Service & Küche finden | aban news",
     desc: "Gastronomie-Jobs in der Schweiz finden: Koch, Service, Küchenhilfe und Hotellerie — offene Stellen nach Ort suchen, direkt bewerben.",
     cta: "/stellenangebote.html?q=gastronomie", ctaLabel: "Gastro-Stellen durchsuchen",
     intro: "Von der Saison-Stelle bis zur Festanstellung: Koch, Service, Küche und Hotellerie sind in der ganzen Schweiz gesucht. Durchsuche aktuelle Stellen und bewirb dich direkt.",
@@ -466,7 +466,7 @@ const PAGES = [
   },
   {
     slug: "verkauf-jobs-schweiz", icon: "🛒", h1: "Verkauf- & Detailhandel-Jobs in der Schweiz", jobq: "verkauf",
-    title: "Verkauf-Jobs Schweiz — Detailhandel & Beratung finden | aban",
+    title: "Verkauf-Jobs Schweiz — Detailhandel & Beratung finden | aban news",
     desc: "Verkauf- und Detailhandel-Jobs in der Schweiz finden: Verkäufer/in, Filialleitung, Kasse und Kundenberatung — Stellen nach Ort suchen, direkt bewerben.",
     cta: "/stellenangebote.html?q=verkauf", ctaLabel: "Verkauf-Stellen durchsuchen",
     intro: "Detailhandel sucht laufend Personal: Verkauf, Beratung, Kasse und Filialleitung. Durchsuche aktuelle Stellen in deiner Region und bewirb dich direkt beim Arbeitgeber.",
@@ -483,7 +483,7 @@ const PAGES = [
   },
   {
     slug: "jobs-zuerich", icon: "🏙️", h1: "Jobs in Zürich", jobloc: "zürich",
-    title: "Jobs Zürich — offene Stellen in der Region Zürich finden | aban",
+    title: "Jobs Zürich — offene Stellen in der Region Zürich finden",
     desc: "Jobs in Zürich finden: offene Stellen aus mehreren Job-Börsen für die Region Zürich — nach Beruf und Branche filtern, direkt zur Original-Anzeige bewerben.",
     cta: "/stellenangebote.html?loc=Z%C3%BCrich", ctaLabel: "Stellen in Zürich durchsuchen",
     intro: "Zürich ist der grösste Arbeitsmarkt der Schweiz. Durchsuche aktuelle Stellen in und um Zürich — von IT und Finance über Gesundheit bis Detailhandel — und bewirb dich direkt beim Arbeitgeber.",
@@ -500,7 +500,7 @@ const PAGES = [
   },
   {
     slug: "jobs-bern", icon: "🐻", h1: "Jobs in Bern", jobloc: "bern",
-    title: "Jobs Bern — offene Stellen in der Region Bern finden | aban",
+    title: "Jobs Bern — offene Stellen in der Region Bern finden | aban news",
     desc: "Jobs in Bern finden: offene Stellen aus mehreren Job-Börsen für die Region Bern und das Mittelland — nach Beruf filtern, direkt bewerben.",
     cta: "/stellenangebote.html?loc=Bern", ctaLabel: "Stellen in Bern durchsuchen",
     intro: "Bundesstadt und Mittelland: In Bern findest du Stellen in Verwaltung, Gesundheit, Bildung, IT und Gewerbe. Durchsuche aktuelle Angebote und bewirb dich direkt.",
@@ -517,7 +517,7 @@ const PAGES = [
   },
   {
     slug: "jobs-basel", icon: "💊", h1: "Jobs in Basel", jobloc: "basel",
-    title: "Jobs Basel — offene Stellen in der Region Basel finden | aban",
+    title: "Jobs Basel — offene Stellen in der Region Basel finden",
     desc: "Jobs in Basel finden: offene Stellen aus mehreren Job-Börsen für die Region Basel — Pharma, Chemie, Logistik & mehr. Nach Beruf filtern, direkt bewerben.",
     cta: "/stellenangebote.html?loc=Basel", ctaLabel: "Stellen in Basel durchsuchen",
     intro: "Basel ist das Pharma- und Life-Sciences-Zentrum der Schweiz. Durchsuche aktuelle Stellen in Pharma, Chemie, Logistik, Gesundheit und mehr — und bewirb dich direkt.",
@@ -534,7 +534,7 @@ const PAGES = [
   },
   {
     slug: "jobs-genf", icon: "🌍", h1: "Jobs in Genf", jobloc: "genf",
-    title: "Jobs Genf — offene Stellen in der Region Genf finden | aban",
+    title: "Jobs Genf — offene Stellen in der Region Genf finden | aban news",
     desc: "Jobs in Genf finden: offene Stellen aus mehreren Job-Börsen für die Region Genf — internationale Organisationen, Uhren, Finanz & mehr. Direkt zur Original-Anzeige bewerben.",
     cta: "/stellenangebote.html?loc=Genf", ctaLabel: "Stellen in Genf durchsuchen",
     intro: "Genf ist Sitz vieler internationaler Organisationen und ein starker Finanz- und Uhrenstandort. Durchsuche aktuelle Stellen in der Region Genf und bewirb dich direkt beim Arbeitgeber.",
@@ -551,7 +551,7 @@ const PAGES = [
   },
   {
     slug: "jobs-lausanne", icon: "⛵", h1: "Jobs in Lausanne", jobloc: "lausanne",
-    title: "Jobs Lausanne — offene Stellen in der Region Lausanne finden | aban",
+    title: "Jobs Lausanne — offene Stellen in der Region Lausanne finden",
     desc: "Jobs in Lausanne finden: offene Stellen aus mehreren Job-Börsen für die Region Lausanne und die Waadt — Bildung, Gesundheit, Sport & mehr. Direkt bewerben.",
     cta: "/stellenangebote.html?loc=Lausanne", ctaLabel: "Stellen in Lausanne durchsuchen",
     intro: "Lausanne ist Hochschul-, Sport- und Verwaltungsstandort am Genfersee. Durchsuche aktuelle Stellen in der Region Lausanne und bewirb dich direkt beim Arbeitgeber.",
@@ -568,7 +568,7 @@ const PAGES = [
   },
   {
     slug: "jobs-lugano", icon: "🌴", h1: "Jobs in Lugano", jobloc: "lugano",
-    title: "Jobs Lugano — offene Stellen im Tessin finden | aban",
+    title: "Jobs Lugano — offene Stellen im Tessin finden | aban news",
     desc: "Jobs in Lugano und im Tessin finden: offene Stellen aus mehreren Job-Börsen — Finanz, Tourismus, Handel & mehr. Direkt zur Original-Anzeige bewerben.",
     cta: "/stellenangebote.html?loc=Lugano", ctaLabel: "Stellen in Lugano durchsuchen",
     intro: "Lugano ist das Wirtschaftszentrum des Tessins mit Schwerpunkt Finanz, Handel und Tourismus. Durchsuche aktuelle Stellen in der Region Lugano und bewirb dich direkt.",
@@ -585,7 +585,7 @@ const PAGES = [
   },
   {
     slug: "laptop-kaufen-schweiz", icon: "💻", h1: "Laptop kaufen in der Schweiz",
-    title: "Laptop kaufen Schweiz — neu & gebraucht vergleichen | aban",
+    title: "Laptop kaufen Schweiz — neu & gebraucht vergleichen | aban news",
     desc: "Laptop kaufen in der Schweiz: Notebooks neu und gebraucht nach Preis, Marke und Zustand vergleichen — und beim besten Angebot zuschlagen.",
     cta: "/angebote-suche.html?q=Laptop", ctaLabel: "Laptop-Angebote ansehen",
     intro: "Vom günstigen Office-Notebook bis zum Gaming-Laptop: Hier vergleichst du Modelle und Preise an einem Ort — neu oder gebraucht — bevor du beim Anbieter kaufst.",
@@ -602,7 +602,7 @@ const PAGES = [
   },
   {
     slug: "kaffeemaschine-kaufen-schweiz", icon: "☕", h1: "Kaffeemaschine kaufen in der Schweiz",
-    title: "Kaffeemaschine kaufen Schweiz — Vollautomat & mehr | aban",
+    title: "Kaffeemaschine kaufen Schweiz — Vollautomat & mehr | aban news",
     desc: "Kaffeemaschine kaufen in der Schweiz: Vollautomaten, Siebträger und Kapselmaschinen nach Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Kaffeemaschine", ctaLabel: "Kaffeemaschinen ansehen",
     intro: "Vollautomat, Siebträger oder Kapsel: Hier vergleichst du Kaffeemaschinen nach Preis und Zustand — neu oder gepflegt gebraucht.",
@@ -619,7 +619,7 @@ const PAGES = [
   },
   {
     slug: "waschmaschine-kaufen-schweiz", icon: "🧺", h1: "Waschmaschine kaufen in der Schweiz",
-    title: "Waschmaschine kaufen Schweiz — neu & gebraucht | aban",
+    title: "Waschmaschine kaufen Schweiz — neu & gebraucht | aban news",
     desc: "Waschmaschine kaufen in der Schweiz: Geräte nach Preis, Energieklasse und Zustand vergleichen — und beim passenden Angebot zuschlagen.",
     cta: "/angebote-suche.html?q=Waschmaschine", ctaLabel: "Waschmaschinen ansehen",
     intro: "Standgerät oder Einbau: Hier vergleichst du Waschmaschinen nach Preis und Zustand — neu oder gebraucht — und sparst bei Strom und Wasser.",
@@ -636,7 +636,7 @@ const PAGES = [
   },
   {
     slug: "kuehlschrank-kaufen-schweiz", icon: "🧊", h1: "Kühlschrank kaufen in der Schweiz",
-    title: "Kühlschrank kaufen Schweiz — Kühl- & Gefrierschränke | aban",
+    title: "Kühlschrank kaufen Schweiz — Kühl- & Gefrierschränke | aban news",
     desc: "Kühlschrank kaufen in der Schweiz: Kühl- und Gefrierschränke nach Grösse, Energieklasse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=K%C3%BChlschrank", ctaLabel: "Kühlschränke ansehen",
     intro: "Vom kompakten Single-Kühlschrank bis zur Kühl-Gefrier-Kombi: Hier vergleichst du nach Grösse, Energie und Preis — neu oder gebraucht.",
@@ -653,7 +653,7 @@ const PAGES = [
   },
   {
     slug: "staubsauger-kaufen-schweiz", icon: "🧹", h1: "Staubsauger kaufen in der Schweiz",
-    title: "Staubsauger kaufen Schweiz — Akku & Saugroboter | aban",
+    title: "Staubsauger kaufen Schweiz — Akku & Saugroboter | aban news",
     desc: "Staubsauger kaufen in der Schweiz: Akku-, Boden- und Saugroboter nach Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Staubsauger", ctaLabel: "Staubsauger ansehen",
     intro: "Akkusauger, klassischer Bodenstaubsauger oder Saugroboter: Hier vergleichst du nach Preis und Zustand und findest das passende Modell.",
@@ -670,7 +670,7 @@ const PAGES = [
   },
   {
     slug: "matratze-kaufen-schweiz", icon: "🛏️", h1: "Matratze kaufen in der Schweiz",
-    title: "Matratze kaufen Schweiz — Grössen & Härtegrade | aban",
+    title: "Matratze kaufen Schweiz — Grössen & Härtegrade | aban news",
     desc: "Matratze kaufen in der Schweiz: Grössen, Härtegrade und Typen vergleichen — und die passende Matratze zum fairen Preis finden.",
     cta: "/angebote-suche.html?q=Matratze", ctaLabel: "Matratzen ansehen",
     intro: "Kaltschaum, Federkern oder Latex: Hier vergleichst du Matratzen nach Grösse, Härtegrad und Preis — neu (Hygiene beachten) oder geprüft.",
@@ -687,7 +687,7 @@ const PAGES = [
   },
   {
     slug: "grill-kaufen-schweiz", icon: "🔥", h1: "Grill kaufen in der Schweiz",
-    title: "Grill kaufen Schweiz — Gas, Kohle & Elektro | aban",
+    title: "Grill kaufen Schweiz — Gas, Kohle & Elektro | aban news",
     desc: "Grill kaufen in der Schweiz: Gas-, Kohle- und Elektrogrills nach Preis und Zustand vergleichen — rechtzeitig vor der Grillsaison.",
     cta: "/angebote-suche.html?q=Grill", ctaLabel: "Grills ansehen",
     intro: "Gas, Kohle oder Elektro: Hier vergleichst du Grills nach Typ, Preis und Zustand — und bist rechtzeitig zur Saison ausgerüstet.",
@@ -704,7 +704,7 @@ const PAGES = [
   },
   {
     slug: "klimageraet-kaufen-schweiz", icon: "❄️", h1: "Klimagerät kaufen in der Schweiz",
-    title: "Klimagerät kaufen Schweiz — mobil & Split | aban",
+    title: "Klimagerät kaufen Schweiz — mobil & Split | aban news",
     desc: "Klimagerät kaufen in der Schweiz: mobile Klimaanlagen und Split-Geräte nach Leistung, Lautstärke und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Klimager%C3%A4t", ctaLabel: "Klimageräte ansehen",
     intro: "Mobiles Monogerät oder fest installiertes Split: Hier vergleichst du Klimageräte nach Leistung, Lautstärke und Preis — rechtzeitig vor der Hitze.",
@@ -721,7 +721,7 @@ const PAGES = [
   },
   {
     slug: "tablet-kaufen-schweiz", icon: "📲", h1: "Tablet kaufen in der Schweiz",
-    title: "Tablet kaufen Schweiz — neu & gebraucht vergleichen | aban",
+    title: "Tablet kaufen Schweiz — neu & gebraucht vergleichen | aban news",
     desc: "Tablet kaufen in der Schweiz: Tablets nach Grösse, Speicher und Preis vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Tablet", ctaLabel: "Tablets ansehen",
     intro: "Zum Surfen, Lesen oder Arbeiten: Hier vergleichst du Tablets nach Grösse, Speicher und Preis — neu oder geprüft gebraucht.",
@@ -738,7 +738,7 @@ const PAGES = [
   },
   {
     slug: "kinderwagen-kaufen-schweiz", icon: "👶", h1: "Kinderwagen kaufen in der Schweiz",
-    title: "Kinderwagen kaufen Schweiz — neu & gebraucht | aban",
+    title: "Kinderwagen kaufen Schweiz — neu & gebraucht | aban news",
     desc: "Kinderwagen kaufen in der Schweiz: Buggys, Kombi- und Geschwisterwagen nach Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Kinderwagen", ctaLabel: "Kinderwagen ansehen",
     intro: "Vom kompakten Buggy bis zum Kombikinderwagen: Hier vergleichst du nach Typ, Preis und Zustand — neu oder gepflegt gebraucht.",
@@ -755,7 +755,7 @@ const PAGES = [
   },
   {
     slug: "drucker-kaufen-schweiz", icon: "🖨️", h1: "Drucker kaufen in der Schweiz",
-    title: "Drucker kaufen Schweiz — Tinte & Laser vergleichen | aban",
+    title: "Drucker kaufen Schweiz — Tinte & Laser vergleichen | aban news",
     desc: "Drucker kaufen in der Schweiz: Tinten- und Laserdrucker nach Folgekosten, Funktion und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Drucker", ctaLabel: "Drucker ansehen",
     intro: "Tinte oder Laser, Drucken oder Multifunktion: Hier vergleichst du Drucker nach Funktion, Folgekosten und Preis.",
@@ -772,7 +772,7 @@ const PAGES = [
   },
   {
     slug: "geschirrspueler-kaufen-schweiz", icon: "🍽️", h1: "Geschirrspüler kaufen in der Schweiz",
-    title: "Geschirrspüler kaufen Schweiz — Spülmaschinen vergleichen | aban",
+    title: "Geschirrspüler kaufen Schweiz — Spülmaschinen vergleichen",
     desc: "Geschirrspüler kaufen in der Schweiz: Spülmaschinen nach Grösse, Energieklasse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Geschirrsp%C3%BCler", ctaLabel: "Geschirrspüler ansehen",
     intro: "Voll integriert, teilintegriert oder freistehend: Hier vergleichst du Geschirrspüler nach Grösse, Verbrauch und Preis.",
@@ -789,7 +789,7 @@ const PAGES = [
   },
   {
     slug: "spielkonsole-kaufen-schweiz", icon: "🎮", h1: "Spielkonsole kaufen in der Schweiz",
-    title: "Spielkonsole kaufen Schweiz — neu & gebraucht | aban",
+    title: "Spielkonsole kaufen Schweiz — neu & gebraucht | aban news",
     desc: "Spielkonsole kaufen in der Schweiz: Konsolen und Spiele nach Preis und Zustand vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Spielkonsole", ctaLabel: "Konsolen ansehen",
     intro: "Heim- oder Handheld-Konsole, mit Spielen im Bundle: Hier vergleichst du nach Preis und Zustand — neu oder gepflegt gebraucht.",
@@ -806,7 +806,7 @@ const PAGES = [
   },
   {
     slug: "gartenmoebel-kaufen-schweiz", icon: "🪑", h1: "Gartenmöbel kaufen in der Schweiz",
-    title: "Gartenmöbel kaufen Schweiz — Lounge & Sets | aban",
+    title: "Gartenmöbel kaufen Schweiz — Lounge & Sets | aban news",
     desc: "Gartenmöbel kaufen in der Schweiz: Lounge-Sets, Tische und Stühle nach Material, Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Gartenm%C3%B6bel", ctaLabel: "Gartenmöbel ansehen",
     intro: "Lounge-Set, Esstisch oder Sonnenliege: Hier vergleichst du Gartenmöbel nach Material, Preis und Zustand — rechtzeitig zur Saison.",
@@ -823,7 +823,7 @@ const PAGES = [
   },
   {
     slug: "monitor-kaufen-schweiz", icon: "🖥️", h1: "Monitor kaufen in der Schweiz",
-    title: "Monitor kaufen Schweiz — Büro & Gaming vergleichen | aban",
+    title: "Monitor kaufen Schweiz — Büro & Gaming vergleichen | aban news",
     desc: "Monitor kaufen in der Schweiz: Bildschirme nach Grösse, Auflösung und Preis vergleichen — fürs Büro oder Gaming.",
     cta: "/angebote-suche.html?q=Monitor", ctaLabel: "Monitore ansehen",
     intro: "Fürs Büro, Homeoffice oder Gaming: Hier vergleichst du Monitore nach Grösse, Auflösung und Preis — neu oder gebraucht.",
@@ -840,7 +840,7 @@ const PAGES = [
   },
   {
     slug: "bohrmaschine-kaufen-schweiz", icon: "🔩", h1: "Bohrmaschine kaufen in der Schweiz",
-    title: "Bohrmaschine kaufen Schweiz — Akku & Schlagbohrer | aban",
+    title: "Bohrmaschine kaufen Schweiz — Akku & Schlagbohrer | aban news",
     desc: "Bohrmaschine kaufen in der Schweiz: Akkuschrauber, Schlagbohrer und Bohrhämmer nach Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bohrmaschine", ctaLabel: "Bohrmaschinen ansehen",
     intro: "Akkuschrauber für Möbel, Schlagbohrer für Mauerwerk: Hier vergleichst du nach Leistung, Akku-System und Preis.",
@@ -857,7 +857,7 @@ const PAGES = [
   },
   {
     slug: "naehmaschine-kaufen-schweiz", icon: "🧵", h1: "Nähmaschine kaufen in der Schweiz",
-    title: "Nähmaschine kaufen Schweiz — Einsteiger & mehr | aban",
+    title: "Nähmaschine kaufen Schweiz — Einsteiger & mehr | aban news",
     desc: "Nähmaschine kaufen in der Schweiz: mechanische und computergesteuerte Modelle nach Funktion und Preis vergleichen.",
     cta: "/angebote-suche.html?q=N%C3%A4hmaschine", ctaLabel: "Nähmaschinen ansehen",
     intro: "Für Einsteiger oder Fortgeschrittene: Hier vergleichst du Nähmaschinen nach Funktionen, Stichen und Preis — neu oder gebraucht.",
@@ -874,7 +874,7 @@ const PAGES = [
   },
   {
     slug: "trockner-kaufen-schweiz", icon: "🌀", h1: "Wäschetrockner kaufen in der Schweiz",
-    title: "Wäschetrockner kaufen Schweiz — Wärmepumpe & mehr | aban",
+    title: "Wäschetrockner kaufen Schweiz — Wärmepumpe & mehr | aban news",
     desc: "Wäschetrockner kaufen in der Schweiz: Wärmepumpen- und Kondenstrockner nach Energieklasse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=W%C3%A4schetrockner", ctaLabel: "Trockner ansehen",
     intro: "Wärmepumpe oder Kondens: Hier vergleichst du Wäschetrockner nach Energieklasse, Fassungsvermögen und Preis.",
@@ -891,7 +891,7 @@ const PAGES = [
   },
   {
     slug: "rasenmaeher-kaufen-schweiz", icon: "🌱", h1: "Rasenmäher kaufen in der Schweiz",
-    title: "Rasenmäher kaufen Schweiz — Akku, Benzin & Roboter | aban",
+    title: "Rasenmäher kaufen Schweiz — Akku, Benzin & Roboter | aban news",
     desc: "Rasenmäher kaufen in der Schweiz: Akku-, Benzin- und Mähroboter nach Rasengrösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Rasenm%C3%A4her", ctaLabel: "Rasenmäher ansehen",
     intro: "Akku, Benzin oder Mähroboter: Hier vergleichst du Rasenmäher nach Rasengrösse, Komfort und Preis.",
@@ -908,7 +908,7 @@ const PAGES = [
   },
   {
     slug: "hochdruckreiniger-kaufen-schweiz", icon: "💦", h1: "Hochdruckreiniger kaufen in der Schweiz",
-    title: "Hochdruckreiniger kaufen Schweiz — vergleichen & sparen | aban",
+    title: "Hochdruckreiniger kaufen Schweiz — vergleichen & sparen",
     desc: "Hochdruckreiniger kaufen in der Schweiz: Geräte nach Druck, Leistung und Preis vergleichen — für Terrasse, Auto & Fassade.",
     cta: "/angebote-suche.html?q=Hochdruckreiniger", ctaLabel: "Hochdruckreiniger ansehen",
     intro: "Für Terrasse, Auto oder Fassade: Hier vergleichst du Hochdruckreiniger nach Druck, Leistung und Preis.",
@@ -925,7 +925,7 @@ const PAGES = [
   },
   {
     slug: "spielzeug-kaufen-schweiz", icon: "🧸", h1: "Spielzeug kaufen in der Schweiz",
-    title: "Spielzeug kaufen Schweiz — neu & gebraucht | aban",
+    title: "Spielzeug kaufen Schweiz — neu & gebraucht | aban news",
     desc: "Spielzeug kaufen in der Schweiz: Lego, Brettspiele, Holzspielzeug und mehr nach Alter, Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Spielzeug", ctaLabel: "Spielzeug ansehen",
     intro: "Vom Lego-Set bis zum Brettspiel: Hier vergleichst du Spielzeug nach Alter, Preis und Zustand — neu oder gut erhalten gebraucht.",
@@ -942,7 +942,7 @@ const PAGES = [
   },
   {
     slug: "haustierbedarf-kaufen-schweiz", icon: "🐾", h1: "Haustierbedarf kaufen in der Schweiz",
-    title: "Haustierbedarf kaufen Schweiz — Zubehör für Hund, Katze & Co | aban",
+    title: "Haustierbedarf kaufen Schweiz — Zubehör für Hund, Katze & Co",
     desc: "Haustierbedarf kaufen in der Schweiz: Zubehör, Transportboxen, Kratzbäume und mehr nach Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Haustier", ctaLabel: "Haustierbedarf ansehen",
     intro: "Von der Transportbox bis zum Kratzbaum: Hier vergleichst du Haustierbedarf nach Preis und Zustand — neu oder gepflegt gebraucht.",
@@ -959,7 +959,7 @@ const PAGES = [
   },
   {
     slug: "skiausruestung-kaufen-schweiz", icon: "🎿", h1: "Skiausrüstung kaufen in der Schweiz",
-    title: "Skiausrüstung kaufen Schweiz — Ski, Schuhe & mehr | aban",
+    title: "Skiausrüstung kaufen Schweiz — Ski, Schuhe & mehr | aban news",
     desc: "Skiausrüstung kaufen in der Schweiz: Ski, Skischuhe, Stöcke und Helme nach Grösse, Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Ski", ctaLabel: "Skiausrüstung ansehen",
     intro: "Ski, Schuhe, Stöcke und Helm: Hier vergleichst du Skiausrüstung nach Grösse, Preis und Zustand — rechtzeitig vor der Saison.",
@@ -976,7 +976,7 @@ const PAGES = [
   },
   {
     slug: "wanderschuhe-kaufen-schweiz", icon: "🥾", h1: "Wanderschuhe kaufen in der Schweiz",
-    title: "Wanderschuhe kaufen Schweiz — richtig wählen | aban",
+    title: "Wanderschuhe kaufen Schweiz — richtig wählen | aban news",
     desc: "Wanderschuhe kaufen in der Schweiz: Modelle nach Einsatz, Passform und Preis vergleichen — für Wanderung und Bergtour.",
     cta: "/angebote-suche.html?q=Wanderschuhe", ctaLabel: "Wanderschuhe ansehen",
     intro: "Für die Tageswanderung oder die Bergtour: Hier vergleichst du Wanderschuhe nach Einsatz, Passform und Preis.",
@@ -993,7 +993,7 @@ const PAGES = [
   },
   {
     slug: "kinderfahrrad-kaufen-schweiz", icon: "🚲", h1: "Kinderfahrrad kaufen in der Schweiz",
-    title: "Kinderfahrrad kaufen Schweiz — passende Grösse finden | aban",
+    title: "Kinderfahrrad kaufen Schweiz — passende Grösse finden | aban news",
     desc: "Kinderfahrrad kaufen in der Schweiz: Räder nach Zollgrösse, Alter und Preis vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Kinderfahrrad", ctaLabel: "Kinderfahrräder ansehen",
     intro: "Vom Laufrad bis zum 24-Zöller: Hier vergleichst du Kinderfahrräder nach Grösse, Alter und Preis — neu oder gut erhalten gebraucht.",
@@ -1010,7 +1010,7 @@ const PAGES = [
   },
   {
     slug: "smartwatch-kaufen-schweiz", icon: "⌚", h1: "Smartwatch kaufen in der Schweiz",
-    title: "Smartwatch kaufen Schweiz — Fitness & Smart vergleichen | aban",
+    title: "Smartwatch kaufen Schweiz — Fitness & Smart vergleichen",
     desc: "Smartwatch kaufen in der Schweiz: Modelle nach Funktion, Akkulaufzeit und Preis vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Smartwatch", ctaLabel: "Smartwatches ansehen",
     intro: "Fitness-Tracker oder volle Smartwatch: Hier vergleichst du nach Funktion, Akkulaufzeit und Preis — neu oder gepflegt gebraucht.",
@@ -1027,7 +1027,7 @@ const PAGES = [
   },
   {
     slug: "mikrofon-kaufen-schweiz", icon: "🎙️", h1: "Mikrofon kaufen in der Schweiz",
-    title: "Mikrofon kaufen Schweiz — Podcast, Streaming & Studio | aban",
+    title: "Mikrofon kaufen Schweiz — Podcast, Streaming & Studio | aban news",
     desc: "Mikrofon kaufen in der Schweiz: USB- und XLR-Mikrofone nach Einsatz und Preis vergleichen — für Podcast, Streaming, Studio.",
     cta: "/angebote-suche.html?q=Mikrofon", ctaLabel: "Mikrofone ansehen",
     intro: "Für Podcast, Streaming oder Aufnahme: Hier vergleichst du Mikrofone nach Anschluss (USB/XLR), Einsatz und Preis.",
@@ -1044,7 +1044,7 @@ const PAGES = [
   },
   {
     slug: "beamer-kaufen-schweiz", icon: "📽️", h1: "Beamer kaufen in der Schweiz",
-    title: "Beamer kaufen Schweiz — Heimkino & Präsentation | aban",
+    title: "Beamer kaufen Schweiz — Heimkino & Präsentation | aban news",
     desc: "Beamer kaufen in der Schweiz: Projektoren nach Helligkeit, Auflösung und Preis vergleichen — für Heimkino und Büro.",
     cta: "/angebote-suche.html?q=Beamer", ctaLabel: "Beamer ansehen",
     intro: "Fürs Heimkino oder die Präsentation: Hier vergleichst du Beamer nach Helligkeit, Auflösung und Preis.",
@@ -1061,7 +1061,7 @@ const PAGES = [
   },
   {
     slug: "fitnessgeraete-kaufen-schweiz", icon: "🏋️", h1: "Fitnessgeräte kaufen in der Schweiz",
-    title: "Fitnessgeräte kaufen Schweiz — Hanteln, Laufband & mehr | aban",
+    title: "Fitnessgeräte kaufen Schweiz — Hanteln, Laufband & mehr",
     desc: "Fitnessgeräte kaufen in der Schweiz: Hanteln, Laufband, Ergometer und Kraftstationen nach Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Fitnessger%C3%A4t", ctaLabel: "Fitnessgeräte ansehen",
     intro: "Hanteln, Laufband oder Ergometer fürs Heimtraining: Hier vergleichst du Fitnessgeräte nach Preis und Zustand — neu oder gebraucht.",
@@ -1078,7 +1078,7 @@ const PAGES = [
   },
   {
     slug: "gitarre-kaufen-schweiz", icon: "🎸", h1: "Gitarre kaufen in der Schweiz",
-    title: "Gitarre kaufen Schweiz — Akustik & E-Gitarre | aban",
+    title: "Gitarre kaufen Schweiz — Akustik & E-Gitarre | aban news",
     desc: "Gitarre kaufen in der Schweiz: Akustik-, Konzert- und E-Gitarren nach Einsatz, Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Gitarre", ctaLabel: "Gitarren ansehen",
     intro: "Akustik, Konzert oder E-Gitarre: Hier vergleichst du Gitarren nach Einsatz, Preis und Zustand — neu oder gut erhalten gebraucht.",
@@ -1095,7 +1095,7 @@ const PAGES = [
   },
   {
     slug: "sofa-kaufen-schweiz", icon: "🛋️", h1: "Sofa kaufen in der Schweiz",
-    title: "Sofa kaufen Schweiz — Couch neu & gebraucht | aban",
+    title: "Sofa kaufen Schweiz — Couch neu & gebraucht | aban news",
     desc: "Sofa kaufen in der Schweiz: Couch, Ecksofa und Schlafsofa nach Grösse, Material und Preis vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Sofa", ctaLabel: "Sofas ansehen",
     intro: "Couch, Ecksofa oder Schlafsofa: Hier vergleichst du Sofas nach Grösse, Material und Preis — neu oder gepflegt gebraucht.",
@@ -1112,7 +1112,7 @@ const PAGES = [
   },
   {
     slug: "bett-kaufen-schweiz", icon: "🛏️", h1: "Bett kaufen in der Schweiz",
-    title: "Bett kaufen Schweiz — Bettgestell & Boxspring | aban",
+    title: "Bett kaufen Schweiz — Bettgestell & Boxspring | aban news",
     desc: "Bett kaufen in der Schweiz: Bettgestelle, Boxspring- und Stauraumbetten nach Grösse, Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Bett", ctaLabel: "Betten ansehen",
     intro: "Gestell, Boxspring oder Bett mit Stauraum: Hier vergleichst du Betten nach Grösse, Preis und Zustand — neu oder gebraucht.",
@@ -1129,7 +1129,7 @@ const PAGES = [
   },
   {
     slug: "teppich-kaufen-schweiz", icon: "🧶", h1: "Teppich kaufen in der Schweiz",
-    title: "Teppich kaufen Schweiz — Grössen & Stile vergleichen | aban",
+    title: "Teppich kaufen Schweiz — Grössen & Stile vergleichen | aban news",
     desc: "Teppich kaufen in der Schweiz: Wohn-, Kurzflor- und Läuferteppiche nach Grösse, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Teppich", ctaLabel: "Teppiche ansehen",
     intro: "Wohnzimmer-Teppich, Läufer oder Kurzflor: Hier vergleichst du nach Grösse, Material und Preis — neu oder gut erhalten gebraucht.",
@@ -1146,7 +1146,7 @@ const PAGES = [
   },
   {
     slug: "kindersitz-kaufen-schweiz", icon: "🪑", h1: "Auto-Kindersitz kaufen in der Schweiz",
-    title: "Kindersitz kaufen Schweiz — Autositze sicher wählen | aban",
+    title: "Kindersitz kaufen Schweiz — Autositze sicher wählen | aban news",
     desc: "Auto-Kindersitz kaufen in der Schweiz: Sitze nach Gewicht/Grösse, Norm und Preis vergleichen — Sicherheit zuerst.",
     cta: "/angebote-suche.html?q=Kindersitz", ctaLabel: "Kindersitze ansehen",
     intro: "Vom Babyschalen-Sitz bis zur Sitzerhöhung: Hier vergleichst du Auto-Kindersitze nach Grösse, Norm und Preis — Sicherheit vor Preis.",
@@ -1163,7 +1163,7 @@ const PAGES = [
   },
   {
     slug: "babyphone-kaufen-schweiz", icon: "📡", h1: "Babyphone kaufen in der Schweiz",
-    title: "Babyphone kaufen Schweiz — Audio & Video vergleichen | aban",
+    title: "Babyphone kaufen Schweiz — Audio & Video vergleichen | aban news",
     desc: "Babyphone kaufen in der Schweiz: Audio- und Video-Babyphones nach Reichweite, Funktion und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Babyphone", ctaLabel: "Babyphones ansehen",
     intro: "Reines Audio oder mit Kamera: Hier vergleichst du Babyphones nach Reichweite, Funktionen und Preis — neu oder gepflegt gebraucht.",
@@ -1180,7 +1180,7 @@ const PAGES = [
   },
   {
     slug: "aquarium-kaufen-schweiz", icon: "🐠", h1: "Aquarium kaufen in der Schweiz",
-    title: "Aquarium kaufen Schweiz — Becken & Sets vergleichen | aban",
+    title: "Aquarium kaufen Schweiz — Becken & Sets vergleichen | aban news",
     desc: "Aquarium kaufen in der Schweiz: Becken, Komplettsets und Zubehör nach Grösse, Preis und Zustand vergleichen.",
     cta: "/angebote-suche.html?q=Aquarium", ctaLabel: "Aquarien ansehen",
     intro: "Nano-Becken oder grosses Aquarium mit Set: Hier vergleichst du nach Grösse, Ausstattung und Preis — neu oder gebraucht.",
@@ -1197,7 +1197,7 @@ const PAGES = [
   },
   {
     slug: "werkbank-kaufen-schweiz", icon: "🪚", h1: "Werkbank kaufen in der Schweiz",
-    title: "Werkbank kaufen Schweiz — Hobby & Werkstatt | aban",
+    title: "Werkbank kaufen Schweiz — Hobby & Werkstatt | aban news",
     desc: "Werkbank kaufen in der Schweiz: Werkbänke und Werkstattwagen nach Grösse, Stabilität und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Werkbank", ctaLabel: "Werkbänke ansehen",
     intro: "Für Keller, Garage oder Werkstatt: Hier vergleichst du Werkbänke nach Grösse, Stabilität und Preis — neu oder gebraucht.",
@@ -1214,7 +1214,7 @@ const PAGES = [
   },
   {
     slug: "heizluefter-kaufen-schweiz", icon: "🔥", h1: "Heizlüfter kaufen in der Schweiz",
-    title: "Heizlüfter kaufen Schweiz — Heizung für Räume | aban",
+    title: "Heizlüfter kaufen Schweiz — Heizung für Räume | aban news",
     desc: "Heizlüfter kaufen in der Schweiz: Heizlüfter, Keramik- und Ölradiatoren nach Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Heizl%C3%BCfter", ctaLabel: "Heizlüfter ansehen",
     intro: "Schnelle Zusatzwärme für Bad, Büro oder Übergangszeit: Hier vergleichst du Heizgeräte nach Leistung, Sicherheit und Preis.",
@@ -1231,7 +1231,7 @@ const PAGES = [
   },
   {
     slug: "trottinett-kaufen-schweiz", icon: "🛴", h1: "Trottinett kaufen in der Schweiz",
-    title: "Trottinett kaufen Schweiz — Kinder & Erwachsene | aban",
+    title: "Trottinett kaufen Schweiz — Kinder & Erwachsene | aban news",
     desc: "Trottinett kaufen in der Schweiz: Tretroller für Kinder und Erwachsene nach Grösse, Stabilität und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Trottinett", ctaLabel: "Trottinetts ansehen",
     intro: "Für den Schulweg, Pendeln oder Spass: Hier vergleichst du Trottinetts (Tretroller) nach Grösse, Stabilität und Preis.",
@@ -1248,7 +1248,7 @@ const PAGES = [
   },
   {
     slug: "actioncam-kaufen-schweiz", icon: "📸", h1: "Action-Kamera kaufen in der Schweiz",
-    title: "Action-Kamera kaufen Schweiz — robust filmen | aban",
+    title: "Action-Kamera kaufen Schweiz — robust filmen | aban news",
     desc: "Action-Kamera kaufen in der Schweiz: robuste Kameras für Sport und Outdoor nach Auflösung, Stabilisierung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Action-Kamera", ctaLabel: "Action-Kameras ansehen",
     intro: "Für Velo, Wasser oder Wintersport: Hier vergleichst du Action-Kameras nach Auflösung, Bildstabilisierung und Preis — neu oder gebraucht.",
@@ -1265,7 +1265,7 @@ const PAGES = [
   },
   {
     slug: "airfryer-kaufen-schweiz", icon: "🍟", h1: "Heissluftfritteuse kaufen in der Schweiz",
-    title: "Airfryer kaufen Schweiz — Heissluftfritteuse vergleichen | aban",
+    title: "Airfryer kaufen Schweiz — Heissluftfritteuse vergleichen",
     desc: "Heissluftfritteuse (Airfryer) kaufen in der Schweiz: Geräte nach Grösse, Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Heissluftfritteuse", ctaLabel: "Airfryer ansehen",
     intro: "Knusprig mit wenig Öl: Hier vergleichst du Heissluftfritteusen nach Korbgrösse, Leistung und Preis — neu oder gebraucht.",
@@ -1282,7 +1282,7 @@ const PAGES = [
   },
   {
     slug: "mikrowelle-kaufen-schweiz", icon: "🍲", h1: "Mikrowelle kaufen in der Schweiz",
-    title: "Mikrowelle kaufen Schweiz — Solo, Grill & Kombi | aban",
+    title: "Mikrowelle kaufen Schweiz — Solo, Grill & Kombi | aban news",
     desc: "Mikrowelle kaufen in der Schweiz: Solo-, Grill- und Kombigeräte nach Grösse, Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Mikrowelle", ctaLabel: "Mikrowellen ansehen",
     intro: "Nur erwärmen oder auch grillen/backen: Hier vergleichst du Mikrowellen nach Typ, Grösse und Preis — neu oder gebraucht.",
@@ -1299,7 +1299,7 @@ const PAGES = [
   },
   {
     slug: "saugroboter-kaufen-schweiz", icon: "🤖", h1: "Saugroboter kaufen in der Schweiz",
-    title: "Saugroboter kaufen Schweiz — mit Wischen & App | aban",
+    title: "Saugroboter kaufen Schweiz — mit Wischen & App | aban news",
     desc: "Saugroboter kaufen in der Schweiz: Modelle nach Saugkraft, Navigation, Wischfunktion und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Saugroboter", ctaLabel: "Saugroboter ansehen",
     intro: "Täglich saubere Böden ohne Aufwand: Hier vergleichst du Saugroboter nach Saugkraft, Navigation und Preis — neu oder gebraucht.",
@@ -1316,7 +1316,7 @@ const PAGES = [
   },
   {
     slug: "raclette-kaufen-schweiz", icon: "🧀", h1: "Raclette-Ofen kaufen in der Schweiz",
-    title: "Raclette kaufen Schweiz — Raclette-Öfen & Grills | aban",
+    title: "Raclette kaufen Schweiz — Raclette-Öfen & Grills | aban news",
     desc: "Raclette-Ofen kaufen in der Schweiz: Tisch-Raclettes und Kombigeräte nach Personenzahl, Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Raclette", ctaLabel: "Raclette-Öfen ansehen",
     intro: "Der Klassiker für gemütliche Abende: Hier vergleichst du Raclette-Öfen nach Personenzahl, Ausstattung und Preis.",
@@ -1333,7 +1333,7 @@ const PAGES = [
   },
   {
     slug: "snowboard-kaufen-schweiz", icon: "🏂", h1: "Snowboard kaufen in der Schweiz",
-    title: "Snowboard kaufen Schweiz — Board, Bindung & Boots | aban",
+    title: "Snowboard kaufen Schweiz — Board, Bindung & Boots | aban news",
     desc: "Snowboard kaufen in der Schweiz: Boards, Bindungen und Boots nach Grösse, Fahrstil und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Snowboard", ctaLabel: "Snowboards ansehen",
     intro: "Allmountain, Freestyle oder Einsteiger: Hier vergleichst du Snowboards, Bindungen und Boots nach Grösse, Stil und Preis.",
@@ -1350,7 +1350,7 @@ const PAGES = [
   },
   {
     slug: "pool-kaufen-schweiz", icon: "🏊", h1: "Pool kaufen in der Schweiz",
-    title: "Pool kaufen Schweiz — Garten- & Aufstellpool | aban",
+    title: "Pool kaufen Schweiz — Garten- & Aufstellpool | aban news",
     desc: "Pool kaufen in der Schweiz: Aufstell-, Frame- und Planschbecken nach Grösse, Ausstattung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Pool", ctaLabel: "Pools ansehen",
     intro: "Erfrischung im eigenen Garten: Hier vergleichst du Pools (Aufstell-, Frame-, Planschbecken) nach Grösse, Ausstattung und Preis.",
@@ -1367,7 +1367,7 @@ const PAGES = [
   },
   {
     slug: "trampolin-kaufen-schweiz", icon: "🤸", h1: "Trampolin kaufen in der Schweiz",
-    title: "Trampolin kaufen Schweiz — Garten-Trampolin sicher | aban",
+    title: "Trampolin kaufen Schweiz — Garten-Trampolin sicher | aban news",
     desc: "Trampolin kaufen in der Schweiz: Garten-Trampoline nach Grösse, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Trampolin", ctaLabel: "Trampoline ansehen",
     intro: "Spass und Bewegung im Garten: Hier vergleichst du Trampoline nach Grösse, Sicherheitsnetz und Preis — neu oder gebraucht.",
@@ -1384,7 +1384,7 @@ const PAGES = [
   },
   {
     slug: "hochbeet-kaufen-schweiz", icon: "🌿", h1: "Hochbeet kaufen in der Schweiz",
-    title: "Hochbeet kaufen Schweiz — Garten & Balkon | aban",
+    title: "Hochbeet kaufen Schweiz — Garten & Balkon | aban news",
     desc: "Hochbeet kaufen in der Schweiz: Hochbeete aus Holz, Metall und für den Balkon nach Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Hochbeet", ctaLabel: "Hochbeete ansehen",
     intro: "Rückenschonend gärtnern auf Garten oder Balkon: Hier vergleichst du Hochbeete nach Material, Grösse und Preis.",
@@ -1401,7 +1401,7 @@ const PAGES = [
   },
   {
     slug: "pavillon-kaufen-schweiz", icon: "⛱️", h1: "Pavillon kaufen in der Schweiz",
-    title: "Pavillon kaufen Schweiz — Garten-Pavillon & Pergola | aban",
+    title: "Pavillon kaufen Schweiz — Garten-Pavillon & Pergola | aban news",
     desc: "Pavillon kaufen in der Schweiz: Garten-Pavillons und Pergolen nach Grösse, Stabilität und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Pavillon", ctaLabel: "Pavillons ansehen",
     intro: "Schatten und Wetterschutz im Garten: Hier vergleichst du Pavillons und Pergolen nach Grösse, Stabilität und Preis.",
@@ -1418,7 +1418,7 @@ const PAGES = [
   },
   {
     slug: "dampfreiniger-kaufen-schweiz", icon: "💨", h1: "Dampfreiniger kaufen in der Schweiz",
-    title: "Dampfreiniger kaufen Schweiz — Boden & Polster | aban",
+    title: "Dampfreiniger kaufen Schweiz — Boden & Polster | aban news",
     desc: "Dampfreiniger kaufen in der Schweiz: Boden-, Hand- und Multidampfreiniger nach Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Dampfreiniger", ctaLabel: "Dampfreiniger ansehen",
     intro: "Reinigen ohne Chemie mit heissem Dampf: Hier vergleichst du Dampfreiniger (Boden, Hand, Multi) nach Leistung und Preis.",
@@ -1435,7 +1435,7 @@ const PAGES = [
   },
   {
     slug: "esstisch-kaufen-schweiz", icon: "🍽️", h1: "Esstisch kaufen in der Schweiz",
-    title: "Esstisch kaufen Schweiz — Tische neu & gebraucht | aban",
+    title: "Esstisch kaufen Schweiz — Tische neu & gebraucht | aban news",
     desc: "Esstisch kaufen in der Schweiz: ausziehbare Tische, Massivholz und mehr nach Grösse, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Esstisch", ctaLabel: "Esstische ansehen",
     intro: "Massivholz, ausziehbar oder rund: Hier vergleichst du Esstische nach Grösse, Material und Preis — neu oder gepflegt gebraucht.",
@@ -1452,7 +1452,7 @@ const PAGES = [
   },
   {
     slug: "buerostuhl-kaufen-schweiz", icon: "🪑", h1: "Bürostuhl kaufen in der Schweiz",
-    title: "Bürostuhl kaufen Schweiz — ergonomisch fürs Homeoffice | aban",
+    title: "Bürostuhl kaufen Schweiz — ergonomisch fürs Homeoffice",
     desc: "Bürostuhl kaufen in der Schweiz: ergonomische Stühle nach Verstellbarkeit, Komfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=B%C3%BCrostuhl", ctaLabel: "Bürostühle ansehen",
     intro: "Stundenlang bequem sitzen im Homeoffice: Hier vergleichst du Bürostühle nach Ergonomie, Verstellbarkeit und Preis.",
@@ -1486,7 +1486,7 @@ const PAGES = [
   },
   {
     slug: "kleiderschrank-kaufen-schweiz", icon: "🚪", h1: "Kleiderschrank kaufen in der Schweiz",
-    title: "Kleiderschrank kaufen Schweiz — Schwebetür & mehr | aban",
+    title: "Kleiderschrank kaufen Schweiz — Schwebetür & mehr | aban news",
     desc: "Kleiderschrank kaufen in der Schweiz: Schwebetüren-, Dreh- und Eckschränke nach Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kleiderschrank", ctaLabel: "Kleiderschränke ansehen",
     intro: "Schwebetür, Drehtür oder Eckschrank: Hier vergleichst du Kleiderschränke nach Grösse, Aufteilung und Preis — neu oder gebraucht.",
@@ -1503,7 +1503,7 @@ const PAGES = [
   },
   {
     slug: "kommode-kaufen-schweiz", icon: "🗄️", h1: "Kommode kaufen in der Schweiz",
-    title: "Kommode kaufen Schweiz — Sideboard & Schubladen | aban",
+    title: "Kommode kaufen Schweiz — Sideboard & Schubladen | aban news",
     desc: "Kommode kaufen in der Schweiz: Schubladenkommoden und Sideboards nach Grösse, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kommode", ctaLabel: "Kommoden ansehen",
     intro: "Stauraum fürs Schlaf- oder Wohnzimmer: Hier vergleichst du Kommoden und Sideboards nach Grösse, Material und Preis.",
@@ -1520,7 +1520,7 @@ const PAGES = [
   },
   {
     slug: "lautsprecher-kaufen-schweiz", icon: "🔊", h1: "Lautsprecher kaufen in der Schweiz",
-    title: "Lautsprecher kaufen Schweiz — Bluetooth & HiFi | aban",
+    title: "Lautsprecher kaufen Schweiz — Bluetooth & HiFi | aban news",
     desc: "Lautsprecher kaufen in der Schweiz: Bluetooth-Boxen, Regal- und HiFi-Lautsprecher nach Klang und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Lautsprecher", ctaLabel: "Lautsprecher ansehen",
     intro: "Mobile Bluetooth-Box oder HiFi fürs Wohnzimmer: Hier vergleichst du Lautsprecher nach Einsatz, Klang und Preis.",
@@ -1537,7 +1537,7 @@ const PAGES = [
   },
   {
     slug: "gefriertruhe-kaufen-schweiz", icon: "🧊", h1: "Gefriertruhe kaufen in der Schweiz",
-    title: "Gefriertruhe kaufen Schweiz — Truhe & Schrank | aban",
+    title: "Gefriertruhe kaufen Schweiz — Truhe & Schrank | aban news",
     desc: "Gefriertruhe kaufen in der Schweiz: Tiefkühltruhen und -schränke nach Volumen, Energieklasse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gefriertruhe", ctaLabel: "Gefriertruhen ansehen",
     intro: "Mehr Vorrat einfrieren: Hier vergleichst du Gefriertruhen und -schränke nach Volumen, Energieklasse und Preis.",
@@ -1554,7 +1554,7 @@ const PAGES = [
   },
   {
     slug: "velohelm-kaufen-schweiz", icon: "🪖", h1: "Velohelm kaufen in der Schweiz",
-    title: "Velohelm kaufen Schweiz — sicher fürs Velo & E-Bike | aban",
+    title: "Velohelm kaufen Schweiz — sicher fürs Velo & E-Bike | aban news",
     desc: "Velohelm kaufen in der Schweiz: Helme nach Grösse, Norm und Preis vergleichen — Sicherheit fürs Velo und E-Bike.",
     cta: "/angebote-suche.html?q=Velohelm", ctaLabel: "Velohelme ansehen",
     intro: "Sicher unterwegs auf Velo und E-Bike: Hier vergleichst du Velohelme nach Passform, Norm und Preis. Helme am besten neu kaufen.",
@@ -1571,7 +1571,7 @@ const PAGES = [
   },
   {
     slug: "hochstuhl-kaufen-schweiz", icon: "🍼", h1: "Hochstuhl kaufen in der Schweiz",
-    title: "Hochstuhl kaufen Schweiz — Kinderhochstühle vergleichen | aban",
+    title: "Hochstuhl kaufen Schweiz — Kinderhochstühle vergleichen",
     desc: "Hochstuhl kaufen in der Schweiz: mitwachsende und klappbare Kinderhochstühle nach Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Hochstuhl", ctaLabel: "Hochstühle ansehen",
     intro: "Sicher mit am Tisch: Hier vergleichst du Kinderhochstühle (mitwachsend, klappbar) nach Sicherheit, Komfort und Preis.",
@@ -1588,7 +1588,7 @@ const PAGES = [
   },
   {
     slug: "kettensaege-kaufen-schweiz", icon: "🪚", h1: "Kettensäge kaufen in der Schweiz",
-    title: "Kettensäge kaufen Schweiz — Akku, Elektro & Benzin | aban",
+    title: "Kettensäge kaufen Schweiz — Akku, Elektro & Benzin | aban news",
     desc: "Kettensäge kaufen in der Schweiz: Akku-, Elektro- und Benzin-Kettensägen nach Leistung, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kettens%C3%A4ge", ctaLabel: "Kettensägen ansehen",
     intro: "Für Brennholz und Gartenarbeit: Hier vergleichst du Kettensägen (Akku, Elektro, Benzin) nach Leistung, Schwertlänge und Preis.",
@@ -1605,7 +1605,7 @@ const PAGES = [
   },
   {
     slug: "koffer-kaufen-schweiz", icon: "🧳", h1: "Koffer kaufen in der Schweiz",
-    title: "Koffer kaufen Schweiz — Reisekoffer & Trolleys | aban",
+    title: "Koffer kaufen Schweiz — Reisekoffer & Trolleys | aban news",
     desc: "Koffer kaufen in der Schweiz: Hartschalen-, Weichschalen- und Handgepäck-Koffer nach Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Koffer", ctaLabel: "Koffer ansehen",
     intro: "Hartschale, Weichschale oder Handgepäck: Hier vergleichst du Reisekoffer nach Grösse, Gewicht und Preis.",
@@ -1622,7 +1622,7 @@ const PAGES = [
   },
   {
     slug: "winterreifen-kaufen-schweiz", icon: "🛞", h1: "Winterreifen kaufen in der Schweiz",
-    title: "Winterreifen kaufen Schweiz — Reifen & Felgen | aban",
+    title: "Winterreifen kaufen Schweiz — Reifen & Felgen | aban news",
     desc: "Winterreifen kaufen in der Schweiz: Reifen und Kompletträder nach Grösse, Profil und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Winterreifen", ctaLabel: "Winterreifen ansehen",
     intro: "Sicher durch den Winter: Hier vergleichst du Winterreifen und Kompletträder nach Grösse, Zustand und Preis.",
@@ -1639,7 +1639,7 @@ const PAGES = [
   },
   {
     slug: "dachbox-kaufen-schweiz", icon: "🚙", h1: "Dachbox kaufen in der Schweiz",
-    title: "Dachbox kaufen Schweiz — Auto-Dachboxen vergleichen | aban",
+    title: "Dachbox kaufen Schweiz — Auto-Dachboxen vergleichen | aban news",
     desc: "Dachbox kaufen in der Schweiz: Auto-Dachboxen nach Volumen, Befestigung und Preis vergleichen — für Ferien & Ski.",
     cta: "/angebote-suche.html?q=Dachbox", ctaLabel: "Dachboxen ansehen",
     intro: "Mehr Platz für Ferien und Ski: Hier vergleichst du Auto-Dachboxen nach Volumen, Befestigung und Preis.",
@@ -1656,7 +1656,7 @@ const PAGES = [
   },
   {
     slug: "sonnenschirm-kaufen-schweiz", icon: "⛱️", h1: "Sonnenschirm kaufen in der Schweiz",
-    title: "Sonnenschirm kaufen Schweiz — Ampel- & Marktschirme | aban",
+    title: "Sonnenschirm kaufen Schweiz — Ampel- & Marktschirme | aban news",
     desc: "Sonnenschirm kaufen in der Schweiz: Ampel-, Markt- und Balkonschirme nach Grösse, UV-Schutz und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sonnenschirm", ctaLabel: "Sonnenschirme ansehen",
     intro: "Schatten für Terrasse und Balkon: Hier vergleichst du Sonnenschirme (Ampel, Markt, Balkon) nach Grösse, UV-Schutz und Preis.",
@@ -1673,7 +1673,7 @@ const PAGES = [
   },
   {
     slug: "gartenliege-kaufen-schweiz", icon: "🌞", h1: "Gartenliege kaufen in der Schweiz",
-    title: "Gartenliege kaufen Schweiz — Sonnenliegen & Relaxsessel | aban",
+    title: "Gartenliege kaufen Schweiz — Sonnenliegen & Relaxsessel",
     desc: "Gartenliege kaufen in der Schweiz: Sonnenliegen, Relaxsessel und Hängematten nach Material, Komfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gartenliege", ctaLabel: "Gartenliegen ansehen",
     intro: "Entspannen im Garten: Hier vergleichst du Gartenliegen, Relaxsessel und Hängematten nach Material, Komfort und Preis.",
@@ -1690,7 +1690,7 @@ const PAGES = [
   },
   {
     slug: "laubblaeser-kaufen-schweiz", icon: "🍂", h1: "Laubbläser kaufen in der Schweiz",
-    title: "Laubbläser kaufen Schweiz — Akku, Elektro & Benzin | aban",
+    title: "Laubbläser kaufen Schweiz — Akku, Elektro & Benzin | aban news",
     desc: "Laubbläser kaufen in der Schweiz: Akku-, Elektro- und Benzin-Laubbläser nach Leistung, Lautstärke und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Laubbl%C3%A4ser", ctaLabel: "Laubbläser ansehen",
     intro: "Laub schnell weg: Hier vergleichst du Laubbläser (Akku, Elektro, Benzin) nach Leistung, Lautstärke und Preis.",
@@ -1707,7 +1707,7 @@ const PAGES = [
   },
   {
     slug: "rasentrimmer-kaufen-schweiz", icon: "🌾", h1: "Rasentrimmer kaufen in der Schweiz",
-    title: "Rasentrimmer kaufen Schweiz — Akku & Motorsense | aban",
+    title: "Rasentrimmer kaufen Schweiz — Akku & Motorsense | aban news",
     desc: "Rasentrimmer kaufen in der Schweiz: Akku-Trimmer und Motorsensen nach Leistung, Schnittbreite und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Rasentrimmer", ctaLabel: "Rasentrimmer ansehen",
     intro: "Für Kanten und hohes Gras: Hier vergleichst du Rasentrimmer und Motorsensen nach Leistung, Schnittbreite und Preis.",
@@ -1724,7 +1724,7 @@ const PAGES = [
   },
   {
     slug: "whirlpool-kaufen-schweiz", icon: "🛁", h1: "Whirlpool kaufen in der Schweiz",
-    title: "Whirlpool kaufen Schweiz — aufblasbar & fest | aban",
+    title: "Whirlpool kaufen Schweiz — aufblasbar & fest | aban news",
     desc: "Whirlpool kaufen in der Schweiz: aufblasbare und feste Whirlpools nach Grösse, Ausstattung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Whirlpool", ctaLabel: "Whirlpools ansehen",
     intro: "Entspannung im eigenen Garten: Hier vergleichst du Whirlpools (aufblasbar oder fest) nach Grösse, Ausstattung und Preis.",
@@ -1741,7 +1741,7 @@ const PAGES = [
   },
   {
     slug: "buegelstation-kaufen-schweiz", icon: "👔", h1: "Bügelstation kaufen in der Schweiz",
-    title: "Bügelstation kaufen Schweiz — Dampfstationen vergleichen | aban",
+    title: "Bügelstation kaufen Schweiz — Dampfstationen vergleichen",
     desc: "Bügelstation kaufen in der Schweiz: Dampfbügelstationen nach Dampfleistung, Tank und Preis vergleichen.",
     cta: "/angebote-suche.html?q=B%C3%BCgelstation", ctaLabel: "Bügelstationen ansehen",
     intro: "Schneller bügeln mit viel Dampf: Hier vergleichst du Dampfbügelstationen nach Dampfleistung, Tankgrösse und Preis.",
@@ -1758,7 +1758,7 @@ const PAGES = [
   },
   {
     slug: "standmixer-kaufen-schweiz", icon: "🥤", h1: "Standmixer kaufen in der Schweiz",
-    title: "Standmixer kaufen Schweiz — Smoothies & mehr | aban",
+    title: "Standmixer kaufen Schweiz — Smoothies & mehr | aban news",
     desc: "Standmixer kaufen in der Schweiz: Hochleistungs- und Kompaktmixer nach Leistung, Volumen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Standmixer", ctaLabel: "Standmixer ansehen",
     intro: "Smoothies, Suppen und mehr: Hier vergleichst du Standmixer nach Leistung, Krugvolumen und Preis — neu oder gebraucht.",
@@ -1775,7 +1775,7 @@ const PAGES = [
   },
   {
     slug: "laufband-kaufen-schweiz", icon: "🏃", h1: "Laufband kaufen in der Schweiz",
-    title: "Laufband kaufen Schweiz — fürs Heimtraining vergleichen | aban",
+    title: "Laufband kaufen Schweiz — fürs Heimtraining vergleichen",
     desc: "Laufband kaufen in der Schweiz: Laufbänder nach Motorleistung, Lauffläche und Preis vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Laufband", ctaLabel: "Laufbänder ansehen",
     intro: "Ausdauer trainieren zuhause bei jedem Wetter: Hier vergleichst du Laufbänder nach Motorleistung, Lauffläche und Preis.",
@@ -1792,7 +1792,7 @@ const PAGES = [
   },
   {
     slug: "crosstrainer-kaufen-schweiz", icon: "🚴", h1: "Crosstrainer kaufen in der Schweiz",
-    title: "Crosstrainer kaufen Schweiz — Ellipsentrainer vergleichen | aban",
+    title: "Crosstrainer kaufen Schweiz — Ellipsentrainer vergleichen",
     desc: "Crosstrainer kaufen in der Schweiz: Ellipsentrainer nach Schwungmasse, Bremssystem und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Crosstrainer", ctaLabel: "Crosstrainer ansehen",
     intro: "Gelenkschonendes Ganzkörper-Cardio zuhause: Hier vergleichst du Crosstrainer nach Schwungmasse, Bremse und Preis.",
@@ -1809,7 +1809,7 @@ const PAGES = [
   },
   {
     slug: "e-piano-kaufen-schweiz", icon: "🎹", h1: "E-Piano kaufen in der Schweiz",
-    title: "E-Piano kaufen Schweiz — Digitalpiano & Keyboard | aban",
+    title: "E-Piano kaufen Schweiz — Digitalpiano & Keyboard | aban news",
     desc: "E-Piano kaufen in der Schweiz: Digitalpianos und Keyboards nach Tastatur, Klang und Preis vergleichen.",
     cta: "/angebote-suche.html?q=E-Piano", ctaLabel: "E-Pianos ansehen",
     intro: "Zum Lernen oder Spielen ohne Stimmen: Hier vergleichst du Digitalpianos und Keyboards nach Tastatur, Klang und Preis.",
@@ -1826,7 +1826,7 @@ const PAGES = [
   },
   {
     slug: "plattenspieler-kaufen-schweiz", icon: "🎶", h1: "Plattenspieler kaufen in der Schweiz",
-    title: "Plattenspieler kaufen Schweiz — Turntables vergleichen | aban",
+    title: "Plattenspieler kaufen Schweiz — Turntables vergleichen",
     desc: "Plattenspieler kaufen in der Schweiz: Turntables nach Antrieb, Tonabnehmer und Preis vergleichen — neu oder gebraucht.",
     cta: "/angebote-suche.html?q=Plattenspieler", ctaLabel: "Plattenspieler ansehen",
     intro: "Vinyl in gutem Klang: Hier vergleichst du Plattenspieler nach Antrieb, Tonabnehmer, Vorverstärker und Preis.",
@@ -1843,7 +1843,7 @@ const PAGES = [
   },
   {
     slug: "zelt-kaufen-schweiz", icon: "⛺", h1: "Zelt kaufen in der Schweiz",
-    title: "Zelt kaufen Schweiz — Camping- & Familienzelte | aban",
+    title: "Zelt kaufen Schweiz — Camping- & Familienzelte | aban news",
     desc: "Zelt kaufen in der Schweiz: Camping-, Familien- und Trekkingzelte nach Personenzahl, Wassersäule und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Zelt", ctaLabel: "Zelte ansehen",
     intro: "Für Festival, Camping oder Trekking: Hier vergleichst du Zelte nach Personenzahl, Wetterschutz und Preis.",
@@ -1860,7 +1860,7 @@ const PAGES = [
   },
   {
     slug: "schlafsack-kaufen-schweiz", icon: "🛌", h1: "Schlafsack kaufen in der Schweiz",
-    title: "Schlafsack kaufen Schweiz — Komfort & Temperatur | aban",
+    title: "Schlafsack kaufen Schweiz — Komfort & Temperatur | aban news",
     desc: "Schlafsack kaufen in der Schweiz: Schlafsäcke nach Temperaturbereich, Form und Preis vergleichen — Camping & Trekking.",
     cta: "/angebote-suche.html?q=Schlafsack", ctaLabel: "Schlafsäcke ansehen",
     intro: "Warm schlafen unterwegs: Hier vergleichst du Schlafsäcke nach Temperaturbereich, Form (Deckel/Mumie) und Preis.",
@@ -1877,7 +1877,7 @@ const PAGES = [
   },
   {
     slug: "wanderrucksack-kaufen-schweiz", icon: "🎒", h1: "Wanderrucksack kaufen in der Schweiz",
-    title: "Wanderrucksack kaufen Schweiz — Tages- & Trekkingrucksack | aban",
+    title: "Wanderrucksack kaufen Schweiz — Tages- & Trekkingrucksack",
     desc: "Wanderrucksack kaufen in der Schweiz: Tages- und Trekkingrucksäcke nach Volumen, Tragekomfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Wanderrucksack", ctaLabel: "Wanderrucksäcke ansehen",
     intro: "Für die Tagestour oder mehrtägige Trekkings: Hier vergleichst du Wanderrucksäcke nach Volumen, Tragesystem und Preis.",
@@ -1894,7 +1894,7 @@ const PAGES = [
   },
   {
     slug: "sup-kaufen-schweiz", icon: "🏄", h1: "Stand-Up-Paddle (SUP) kaufen in der Schweiz",
-    title: "SUP kaufen Schweiz — Stand-Up-Paddle vergleichen | aban",
+    title: "SUP kaufen Schweiz — Stand-Up-Paddle vergleichen | aban news",
     desc: "SUP kaufen in der Schweiz: aufblasbare Stand-Up-Paddle-Boards nach Grösse, Tragkraft und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Stand-Up-Paddle", ctaLabel: "SUP-Boards ansehen",
     intro: "Auf Schweizer Seen unterwegs: Hier vergleichst du SUP-Boards (meist aufblasbar) nach Grösse, Tragkraft und Preis.",
@@ -1911,7 +1911,7 @@ const PAGES = [
   },
   {
     slug: "tischtennisplatte-kaufen-schweiz", icon: "🏓", h1: "Tischtennisplatte kaufen in der Schweiz",
-    title: "Tischtennisplatte kaufen Schweiz — Indoor & Outdoor | aban",
+    title: "Tischtennisplatte kaufen Schweiz — Indoor & Outdoor | aban news",
     desc: "Tischtennisplatte kaufen in der Schweiz: Indoor- und Outdoor-Platten nach Stärke, Wetterfestigkeit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Tischtennisplatte", ctaLabel: "Tischtennisplatten ansehen",
     intro: "Spass für Garten oder Keller: Hier vergleichst du Tischtennisplatten (Indoor/Outdoor) nach Qualität, Wetterfestigkeit und Preis.",
@@ -1928,7 +1928,7 @@ const PAGES = [
   },
   {
     slug: "spielturm-kaufen-schweiz", icon: "🛝", h1: "Spielturm kaufen in der Schweiz",
-    title: "Spielturm kaufen Schweiz — Schaukel & Klettergerüst | aban",
+    title: "Spielturm kaufen Schweiz — Schaukel & Klettergerüst | aban news",
     desc: "Spielturm kaufen in der Schweiz: Spieltürme, Schaukeln und Klettergerüste nach Grösse, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Spielturm", ctaLabel: "Spieltürme ansehen",
     intro: "Abenteuer im eigenen Garten: Hier vergleichst du Spieltürme, Schaukeln und Rutschen nach Grösse, Sicherheit und Preis.",
@@ -1945,7 +1945,7 @@ const PAGES = [
   },
   {
     slug: "luftreiniger-kaufen-schweiz", icon: "🌬️", h1: "Luftreiniger kaufen in der Schweiz",
-    title: "Luftreiniger kaufen Schweiz — HEPA & Allergie | aban",
+    title: "Luftreiniger kaufen Schweiz — HEPA & Allergie | aban news",
     desc: "Luftreiniger kaufen in der Schweiz: Geräte mit HEPA-Filter nach Raumgrösse, Lautstärke und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Luftreiniger", ctaLabel: "Luftreiniger ansehen",
     intro: "Gegen Pollen, Staub und Gerüche: Hier vergleichst du Luftreiniger nach Raumgrösse, Filtertyp und Preis.",
@@ -1962,7 +1962,7 @@ const PAGES = [
   },
   {
     slug: "luftentfeuchter-kaufen-schweiz", icon: "💧", h1: "Luftentfeuchter kaufen in der Schweiz",
-    title: "Luftentfeuchter kaufen Schweiz — gegen Feuchte & Schimmel | aban",
+    title: "Luftentfeuchter kaufen Schweiz — gegen Feuchte & Schimmel",
     desc: "Luftentfeuchter kaufen in der Schweiz: Geräte nach Entzugsleistung, Raumgrösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Luftentfeuchter", ctaLabel: "Luftentfeuchter ansehen",
     intro: "Gegen feuchte Keller und Schimmel: Hier vergleichst du Luftentfeuchter nach Entzugsleistung, Raumgrösse und Preis.",
@@ -1979,7 +1979,7 @@ const PAGES = [
   },
   {
     slug: "regal-kaufen-schweiz", icon: "🗄️", h1: "Regal kaufen in der Schweiz",
-    title: "Regal kaufen Schweiz — Bücher-, Wand- & Standregale | aban",
+    title: "Regal kaufen Schweiz — Bücher-, Wand- & Standregale | aban news",
     desc: "Regal kaufen in der Schweiz: Bücher-, Wand- und Standregale nach Grösse, Traglast und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Regal", ctaLabel: "Regale ansehen",
     intro: "Bücher-, Wand- oder Standregal: Hier vergleichst du Regale nach Grösse, Traglast und Preis — neu oder gebraucht.",
@@ -1996,7 +1996,7 @@ const PAGES = [
   },
   {
     slug: "gartenhaus-kaufen-schweiz", icon: "🏚️", h1: "Gartenhaus kaufen in der Schweiz",
-    title: "Gartenhaus kaufen Schweiz — Geräteschuppen & mehr | aban",
+    title: "Gartenhaus kaufen Schweiz — Geräteschuppen & mehr | aban news",
     desc: "Gartenhaus kaufen in der Schweiz: Gartenhäuser und Geräteschuppen aus Holz und Metall nach Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gartenhaus", ctaLabel: "Gartenhäuser ansehen",
     intro: "Stauraum oder Rückzugsort im Garten: Hier vergleichst du Gartenhäuser und Geräteschuppen nach Material, Grösse und Preis.",
@@ -2013,7 +2013,7 @@ const PAGES = [
   },
   {
     slug: "pfannen-kaufen-schweiz", icon: "🍳", h1: "Pfannen kaufen in der Schweiz",
-    title: "Pfannen kaufen Schweiz — Bratpfannen & Sets | aban",
+    title: "Pfannen kaufen Schweiz — Bratpfannen & Sets | aban news",
     desc: "Pfannen kaufen in der Schweiz: beschichtete, Edelstahl- und Gusspfannen nach Herdtyp und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bratpfanne", ctaLabel: "Pfannen ansehen",
     intro: "Beschichtet, Edelstahl oder Guss: Hier vergleichst du Bratpfannen und Sets nach Herdtyp, Material und Preis.",
@@ -2030,7 +2030,7 @@ const PAGES = [
   },
   {
     slug: "toaster-kaufen-schweiz", icon: "🍞", h1: "Toaster kaufen in der Schweiz",
-    title: "Toaster kaufen Schweiz — 2- & 4-Schlitz vergleichen | aban",
+    title: "Toaster kaufen Schweiz — 2- & 4-Schlitz vergleichen | aban news",
     desc: "Toaster kaufen in der Schweiz: 2- und 4-Schlitz-Toaster nach Funktion, Bräunung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Toaster", ctaLabel: "Toaster ansehen",
     intro: "Knusprig am Morgen: Hier vergleichst du Toaster (2- oder 4-Schlitz) nach Funktionen, Bräunungsstufen und Preis.",
@@ -2047,7 +2047,7 @@ const PAGES = [
   },
   {
     slug: "wasserkocher-kaufen-schweiz", icon: "🫖", h1: "Wasserkocher kaufen in der Schweiz",
-    title: "Wasserkocher kaufen Schweiz — schnell & sparsam | aban",
+    title: "Wasserkocher kaufen Schweiz — schnell & sparsam | aban news",
     desc: "Wasserkocher kaufen in der Schweiz: Geräte nach Volumen, Temperaturwahl und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Wasserkocher", ctaLabel: "Wasserkocher ansehen",
     intro: "Schnell heisses Wasser: Hier vergleichst du Wasserkocher nach Volumen, Temperaturwahl und Preis.",
@@ -2064,7 +2064,7 @@ const PAGES = [
   },
   {
     slug: "vakuumierer-kaufen-schweiz", icon: "🥡", h1: "Vakuumierer kaufen in der Schweiz",
-    title: "Vakuumierer kaufen Schweiz — länger frisch & Sous-vide | aban",
+    title: "Vakuumierer kaufen Schweiz — länger frisch & Sous-vide",
     desc: "Vakuumierer kaufen in der Schweiz: Geräte zum Einschweissen nach Leistung, Beutel und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Vakuumierer", ctaLabel: "Vakuumierer ansehen",
     intro: "Lebensmittel länger frisch halten und Sous-vide vorbereiten: Hier vergleichst du Vakuumierer nach Leistung, Beuteln und Preis.",
@@ -2081,7 +2081,7 @@ const PAGES = [
   },
   {
     slug: "duvet-kaufen-schweiz", icon: "🛌", h1: "Duvet kaufen in der Schweiz",
-    title: "Duvet kaufen Schweiz — Bettdecken nach Wärme & Grösse | aban",
+    title: "Duvet kaufen Schweiz — Bettdecken nach Wärme & Grösse | aban news",
     desc: "Duvet kaufen in der Schweiz: Bettdecken nach Wärmegrad, Füllung und Grösse vergleichen — Daune oder Kunstfaser.",
     cta: "/angebote-suche.html?q=Duvet", ctaLabel: "Duvets ansehen",
     intro: "Warm und passend schlafen: Hier vergleichst du Duvets (Bettdecken) nach Wärmegrad, Füllung und Schweizer Grösse.",
@@ -2098,7 +2098,7 @@ const PAGES = [
   },
   {
     slug: "heizstrahler-kaufen-schweiz", icon: "🔆", h1: "Heizstrahler kaufen in der Schweiz",
-    title: "Heizstrahler kaufen Schweiz — Terrasse & Balkon | aban",
+    title: "Heizstrahler kaufen Schweiz — Terrasse & Balkon | aban news",
     desc: "Heizstrahler kaufen in der Schweiz: Terrassen-Heizstrahler (Infrarot, Gas) nach Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Heizstrahler", ctaLabel: "Heizstrahler ansehen",
     intro: "Länger draussen sitzen: Hier vergleichst du Terrassen-Heizstrahler (Infrarot oder Gas) nach Leistung, Sicherheit und Preis.",
@@ -2115,7 +2115,7 @@ const PAGES = [
   },
   {
     slug: "kaffeevollautomat-kaufen-schweiz", icon: "☕", h1: "Kaffeevollautomat kaufen in der Schweiz",
-    title: "Kaffeevollautomat kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Kaffeevollautomat kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Kaffeevollautomat kaufen in der Schweiz: Geräte nach Mahlwerk, Milchsystem, Reinigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kaffeevollautomat", ctaLabel: "Kaffeevollautomaten ansehen",
     intro: "Frischer Espresso auf Knopfdruck: Hier vergleichst du Kaffeevollautomaten nach Mahlwerk, Milchsystem, Reinigung und Preis.",
@@ -2132,7 +2132,7 @@ const PAGES = [
   },
   {
     slug: "espressomaschine-kaufen-schweiz", icon: "☕", h1: "Espressomaschine kaufen in der Schweiz",
-    title: "Espressomaschine kaufen Schweiz — Siebträger & Co. | aban",
+    title: "Espressomaschine kaufen Schweiz — Siebträger & Co. | aban news",
     desc: "Espressomaschine kaufen in der Schweiz: Siebträger, Kapsel- und Padmaschinen nach Druck, Aufwand und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Espressomaschine", ctaLabel: "Espressomaschinen ansehen",
     intro: "Barista-Gefühl zu Hause: Hier vergleichst du Espressomaschinen (Siebträger, Kapsel, Pad) nach Druck, Aufwand und Preis.",
@@ -2149,7 +2149,7 @@ const PAGES = [
   },
   {
     slug: "ventilator-kaufen-schweiz", icon: "🌀", h1: "Ventilator kaufen in der Schweiz",
-    title: "Ventilator kaufen Schweiz — Stand, Turm & Tisch | aban",
+    title: "Ventilator kaufen Schweiz — Stand, Turm & Tisch | aban news",
     desc: "Ventilator kaufen in der Schweiz: Stand-, Turm- und Tischventilatoren nach Lautstärke, Leistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Ventilator", ctaLabel: "Ventilatoren ansehen",
     intro: "Kühle an heissen Tagen: Hier vergleichst du Ventilatoren (Stand, Turm, Tisch) nach Lautstärke, Leistung und Preis.",
@@ -2166,7 +2166,7 @@ const PAGES = [
   },
   {
     slug: "heckenschere-kaufen-schweiz", icon: "🌿", h1: "Heckenschere kaufen in der Schweiz",
-    title: "Heckenschere kaufen Schweiz — Akku, Elektro & Benzin | aban",
+    title: "Heckenschere kaufen Schweiz — Akku, Elektro & Benzin | aban news",
     desc: "Heckenschere kaufen in der Schweiz: Akku-, Elektro- und Benzin-Heckenscheren nach Schnittlänge, Gewicht und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Heckenschere", ctaLabel: "Heckenscheren ansehen",
     intro: "Gepflegte Hecken: Hier vergleichst du Heckenscheren (Akku, Elektro, Benzin) nach Schnittlänge, Gewicht und Preis.",
@@ -2183,7 +2183,7 @@ const PAGES = [
   },
   {
     slug: "friteuse-kaufen-schweiz", icon: "🍟", h1: "Friteuse kaufen in der Schweiz",
-    title: "Friteuse kaufen Schweiz — Heissluft & klassisch | aban",
+    title: "Friteuse kaufen Schweiz — Heissluft & klassisch | aban news",
     desc: "Friteuse kaufen in der Schweiz: Heissluft- und klassische Fritteusen nach Fassungsvermögen, Reinigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Friteuse", ctaLabel: "Fritteusen ansehen",
     intro: "Knusprig ohne viel Fett: Hier vergleichst du Fritteusen (Heissluft oder klassisch) nach Fassungsvermögen, Reinigung und Preis.",
@@ -2200,7 +2200,7 @@ const PAGES = [
   },
   {
     slug: "dampfgarer-kaufen-schweiz", icon: "🥦", h1: "Dampfgarer kaufen in der Schweiz",
-    title: "Dampfgarer kaufen Schweiz — schonend kochen | aban",
+    title: "Dampfgarer kaufen Schweiz — schonend kochen | aban news",
     desc: "Dampfgarer kaufen in der Schweiz: Geräte nach Etagen, Fassungsvermögen, Funktionen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Dampfgarer", ctaLabel: "Dampfgarer ansehen",
     intro: "Schonend und vitaminreich garen: Hier vergleichst du Dampfgarer nach Etagen, Fassungsvermögen, Funktionen und Preis.",
@@ -2217,7 +2217,7 @@ const PAGES = [
   },
   {
     slug: "kuechenmaschine-kaufen-schweiz", icon: "🥣", h1: "Küchenmaschine kaufen in der Schweiz",
-    title: "Küchenmaschine kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Küchenmaschine kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Küchenmaschine kaufen in der Schweiz: Geräte nach Leistung, Schüsselvolumen, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Küchenmaschine", ctaLabel: "Küchenmaschinen ansehen",
     intro: "Rühren, kneten, mixen: Hier vergleichst du Küchenmaschinen nach Leistung, Schüsselvolumen, Zubehör und Preis.",
@@ -2234,7 +2234,7 @@ const PAGES = [
   },
   {
     slug: "brotbackautomat-kaufen-schweiz", icon: "🍞", h1: "Brotbackautomat kaufen in der Schweiz",
-    title: "Brotbackautomat kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Brotbackautomat kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Brotbackautomat kaufen in der Schweiz: Geräte nach Brotgrösse, Programmen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Brotbackautomat", ctaLabel: "Brotbackautomaten ansehen",
     intro: "Frisches Brot ohne Aufwand: Hier vergleichst du Brotbackautomaten nach Brotgrösse, Programmen und Preis.",
@@ -2251,7 +2251,7 @@ const PAGES = [
   },
   {
     slug: "buegeleisen-kaufen-schweiz", icon: "👔", h1: "Bügeleisen kaufen in der Schweiz",
-    title: "Bügeleisen kaufen Schweiz — Dampf & Dampfstation | aban",
+    title: "Bügeleisen kaufen Schweiz — Dampf & Dampfstation | aban news",
     desc: "Bügeleisen kaufen in der Schweiz: Dampfbügeleisen und Dampfstationen nach Dampfleistung, Sohle und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bügeleisen", ctaLabel: "Bügeleisen ansehen",
     intro: "Knitterfrei in kürzerer Zeit: Hier vergleichst du Bügeleisen und Dampfstationen nach Dampfleistung, Sohle und Preis.",
@@ -2268,7 +2268,7 @@ const PAGES = [
   },
   {
     slug: "weinkuehlschrank-kaufen-schweiz", icon: "🍷", h1: "Weinkühlschrank kaufen in der Schweiz",
-    title: "Weinkühlschrank kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Weinkühlschrank kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Weinkühlschrank kaufen in der Schweiz: Geräte nach Flaschenzahl, Temperaturzonen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Weinkühlschrank", ctaLabel: "Weinkühlschränke ansehen",
     intro: "Wein bei idealer Temperatur lagern: Hier vergleichst du Weinkühlschränke nach Flaschenzahl, Temperaturzonen und Preis.",
@@ -2285,7 +2285,7 @@ const PAGES = [
   },
   {
     slug: "fernseher-kaufen-schweiz", icon: "📺", h1: "Fernseher kaufen in der Schweiz",
-    title: "Fernseher kaufen Schweiz — OLED, QLED & LED | aban",
+    title: "Fernseher kaufen Schweiz — OLED, QLED & LED | aban news",
     desc: "Fernseher kaufen in der Schweiz: TVs nach Grösse, Panel (OLED/QLED/LED), Auflösung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Fernseher", ctaLabel: "Fernseher ansehen",
     intro: "Bestes Bild fürs Wohnzimmer: Hier vergleichst du Fernseher nach Grösse, Paneltyp, Auflösung und Preis.",
@@ -2302,7 +2302,7 @@ const PAGES = [
   },
   {
     slug: "soundbar-kaufen-schweiz", icon: "🔊", h1: "Soundbar kaufen in der Schweiz",
-    title: "Soundbar kaufen Schweiz — besserer TV-Ton | aban",
+    title: "Soundbar kaufen Schweiz — besserer TV-Ton | aban news",
     desc: "Soundbar kaufen in der Schweiz: Soundbars nach Kanälen, Subwoofer, Anschlüssen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Soundbar", ctaLabel: "Soundbars ansehen",
     intro: "Klar besserer Fernsehton: Hier vergleichst du Soundbars nach Kanälen, Subwoofer, Anschlüssen und Preis.",
@@ -2319,7 +2319,7 @@ const PAGES = [
   },
   {
     slug: "kopfhoerer-kaufen-schweiz", icon: "🎧", h1: "Kopfhörer kaufen in der Schweiz",
-    title: "Kopfhörer kaufen Schweiz — Over-Ear, In-Ear & ANC | aban",
+    title: "Kopfhörer kaufen Schweiz — Over-Ear, In-Ear & ANC | aban news",
     desc: "Kopfhörer kaufen in der Schweiz: Over-Ear, In-Ear und ANC-Modelle nach Klang, Akku und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kopfhörer", ctaLabel: "Kopfhörer ansehen",
     intro: "Musik unterwegs und zu Hause: Hier vergleichst du Kopfhörer (Over-Ear, In-Ear, mit ANC) nach Klang, Akku und Preis.",
@@ -2336,7 +2336,7 @@ const PAGES = [
   },
   {
     slug: "bluetooth-lautsprecher-kaufen-schweiz", icon: "🔈", h1: "Bluetooth-Lautsprecher kaufen in der Schweiz",
-    title: "Bluetooth-Lautsprecher kaufen Schweiz — Vergleich | aban",
+    title: "Bluetooth-Lautsprecher kaufen Schweiz — Vergleich | aban news",
     desc: "Bluetooth-Lautsprecher kaufen in der Schweiz: Modelle nach Klang, Akku, Wasserschutz und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bluetooth Lautsprecher", ctaLabel: "Lautsprecher ansehen",
     intro: "Musik überall: Hier vergleichst du Bluetooth-Lautsprecher nach Klang, Akku, Wasserschutz und Preis.",
@@ -2353,7 +2353,7 @@ const PAGES = [
   },
   {
     slug: "router-kaufen-schweiz", icon: "📶", h1: "WLAN-Router kaufen in der Schweiz",
-    title: "WLAN-Router kaufen Schweiz — Wi-Fi 6 & Mesh | aban",
+    title: "WLAN-Router kaufen Schweiz — Wi-Fi 6 & Mesh | aban news",
     desc: "WLAN-Router kaufen in der Schweiz: Router und Mesh-Systeme nach Standard, Reichweite und Preis vergleichen.",
     cta: "/angebote-suche.html?q=WLAN Router", ctaLabel: "Router ansehen",
     intro: "Schnelles, stabiles WLAN: Hier vergleichst du Router und Mesh-Systeme nach Standard, Reichweite und Preis.",
@@ -2370,7 +2370,7 @@ const PAGES = [
   },
   {
     slug: "powerbank-kaufen-schweiz", icon: "🔋", h1: "Powerbank kaufen in der Schweiz",
-    title: "Powerbank kaufen Schweiz — Kapazität & Tempo | aban",
+    title: "Powerbank kaufen Schweiz — Kapazität & Tempo | aban news",
     desc: "Powerbank kaufen in der Schweiz: mobile Akkus nach Kapazität, Ladeleistung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Powerbank", ctaLabel: "Powerbanks ansehen",
     intro: "Strom für unterwegs: Hier vergleichst du Powerbanks nach Kapazität, Ladeleistung und Preis.",
@@ -2387,7 +2387,7 @@ const PAGES = [
   },
   {
     slug: "fitnesstracker-kaufen-schweiz", icon: "⌚", h1: "Fitnesstracker kaufen in der Schweiz",
-    title: "Fitnesstracker kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Fitnesstracker kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Fitnesstracker kaufen in der Schweiz: Tracker nach Sensoren, Akku, App und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Fitnesstracker", ctaLabel: "Fitnesstracker ansehen",
     intro: "Aktivität und Schlaf im Blick: Hier vergleichst du Fitnesstracker nach Sensoren, Akku, App und Preis.",
@@ -2404,7 +2404,7 @@ const PAGES = [
   },
   {
     slug: "koerperwaage-kaufen-schweiz", icon: "⚖️", h1: "Körperwaage kaufen in der Schweiz",
-    title: "Körperwaage kaufen Schweiz — digital & smart | aban",
+    title: "Körperwaage kaufen Schweiz — digital & smart | aban news",
     desc: "Körperwaage kaufen in der Schweiz: digitale und smarte Waagen nach Funktionen, Genauigkeit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Körperwaage", ctaLabel: "Körperwaagen ansehen",
     intro: "Gewicht und mehr im Blick: Hier vergleichst du Körperwaagen (digital, smart) nach Funktionen, Genauigkeit und Preis.",
@@ -2421,7 +2421,7 @@ const PAGES = [
   },
   {
     slug: "blutdruckmessgeraet-kaufen-schweiz", icon: "🩺", h1: "Blutdruckmessgerät kaufen in der Schweiz",
-    title: "Blutdruckmessgerät kaufen Schweiz — Oberarm & Co. | aban",
+    title: "Blutdruckmessgerät kaufen Schweiz — Oberarm & Co. | aban news",
     desc: "Blutdruckmessgerät kaufen in der Schweiz: Oberarm- und Handgelenkgeräte nach Genauigkeit, Komfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Blutdruckmessgerät", ctaLabel: "Blutdruckmessgeräte ansehen",
     intro: "Blutdruck zu Hause messen: Hier vergleichst du Blutdruckmessgeräte (Oberarm, Handgelenk) nach Genauigkeit, Komfort und Preis.",
@@ -2438,7 +2438,7 @@ const PAGES = [
   },
   {
     slug: "e-reader-kaufen-schweiz", icon: "📖", h1: "E-Reader kaufen in der Schweiz",
-    title: "E-Reader kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "E-Reader kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "E-Reader kaufen in der Schweiz: Lesegeräte nach Display, Beleuchtung, Formaten und Preis vergleichen.",
     cta: "/angebote-suche.html?q=E-Reader", ctaLabel: "E-Reader ansehen",
     intro: "Hunderte Bücher in einem Gerät: Hier vergleichst du E-Reader nach Display, Beleuchtung, Formaten und Preis.",
@@ -2455,7 +2455,7 @@ const PAGES = [
   },
   {
     slug: "gewaechshaus-kaufen-schweiz", icon: "🏡", h1: "Gewächshaus kaufen in der Schweiz",
-    title: "Gewächshaus kaufen Schweiz — Glas, Folie & Co. | aban",
+    title: "Gewächshaus kaufen Schweiz — Glas, Folie & Co. | aban news",
     desc: "Gewächshaus kaufen in der Schweiz: Gewächshäuser nach Material, Grösse, Stabilität und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gewächshaus", ctaLabel: "Gewächshäuser ansehen",
     intro: "Länger ernten, früher säen: Hier vergleichst du Gewächshäuser nach Material, Grösse, Stabilität und Preis.",
@@ -2472,7 +2472,7 @@ const PAGES = [
   },
   {
     slug: "gartenpumpe-kaufen-schweiz", icon: "🚿", h1: "Gartenpumpe kaufen in der Schweiz",
-    title: "Gartenpumpe kaufen Schweiz — bewässern & fördern | aban",
+    title: "Gartenpumpe kaufen Schweiz — bewässern & fördern | aban news",
     desc: "Gartenpumpe kaufen in der Schweiz: Garten-, Hauswasser- und Tauchpumpen nach Fördermenge, Druck und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gartenpumpe", ctaLabel: "Gartenpumpen ansehen",
     intro: "Wasser fördern und bewässern: Hier vergleichst du Gartenpumpen nach Fördermenge, Druck und Preis.",
@@ -2489,7 +2489,7 @@ const PAGES = [
   },
   {
     slug: "sauna-kaufen-schweiz", icon: "🧖", h1: "Sauna kaufen in der Schweiz",
-    title: "Sauna kaufen Schweiz — Heimsauna & Fasssauna | aban",
+    title: "Sauna kaufen Schweiz — Heimsauna & Fasssauna | aban news",
     desc: "Sauna kaufen in der Schweiz: Heim-, Fass- und Aussensaunen nach Grösse, Ofen, Strom und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sauna", ctaLabel: "Saunen ansehen",
     intro: "Entspannung zu Hause: Hier vergleichst du Saunen (Heimsauna, Fasssauna) nach Grösse, Ofen, Stromanschluss und Preis.",
@@ -2506,7 +2506,7 @@ const PAGES = [
   },
   {
     slug: "infrarotkabine-kaufen-schweiz", icon: "♨️", h1: "Infrarotkabine kaufen in der Schweiz",
-    title: "Infrarotkabine kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Infrarotkabine kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Infrarotkabine kaufen in der Schweiz: Kabinen nach Strahlertyp, Grösse, Stromanschluss und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Infrarotkabine", ctaLabel: "Infrarotkabinen ansehen",
     intro: "Sanfte Wärme statt Hitze: Hier vergleichst du Infrarotkabinen nach Strahlertyp, Grösse, Stromanschluss und Preis.",
@@ -2523,7 +2523,7 @@ const PAGES = [
   },
   {
     slug: "kaminofen-kaufen-schweiz", icon: "🔥", h1: "Kaminofen kaufen in der Schweiz",
-    title: "Kaminofen kaufen Schweiz — Holz & Speicherofen | aban",
+    title: "Kaminofen kaufen Schweiz — Holz & Speicherofen | aban news",
     desc: "Kaminofen kaufen in der Schweiz: Holz- und Speicheröfen nach Leistung, Effizienz und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kaminofen", ctaLabel: "Kaminöfen ansehen",
     intro: "Behagliche Wärme im Winter: Hier vergleichst du Kaminöfen nach Heizleistung, Effizienz und Preis.",
@@ -2540,7 +2540,7 @@ const PAGES = [
   },
   {
     slug: "akkuschrauber-kaufen-schweiz", icon: "🔩", h1: "Akkuschrauber kaufen in der Schweiz",
-    title: "Akkuschrauber kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Akkuschrauber kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Akkuschrauber kaufen in der Schweiz: Geräte nach Drehmoment, Akku, Gewicht und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Akkuschrauber", ctaLabel: "Akkuschrauber ansehen",
     intro: "Schrauben und bohren ohne Kabel: Hier vergleichst du Akkuschrauber nach Drehmoment, Akku, Gewicht und Preis.",
@@ -2557,7 +2557,7 @@ const PAGES = [
   },
   {
     slug: "stichsaege-kaufen-schweiz", icon: "🪚", h1: "Stichsäge kaufen in der Schweiz",
-    title: "Stichsäge kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Stichsäge kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Stichsäge kaufen in der Schweiz: Stichsägen nach Leistung, Pendelhub, Führung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Stichsäge", ctaLabel: "Stichsägen ansehen",
     intro: "Kurven und gerade Schnitte: Hier vergleichst du Stichsägen nach Leistung, Pendelhub, Führung und Preis.",
@@ -2574,7 +2574,7 @@ const PAGES = [
   },
   {
     slug: "winkelschleifer-kaufen-schweiz", icon: "⚙️", h1: "Winkelschleifer kaufen in der Schweiz",
-    title: "Winkelschleifer kaufen Schweiz — Flex im Vergleich | aban",
+    title: "Winkelschleifer kaufen Schweiz — Flex im Vergleich | aban news",
     desc: "Winkelschleifer kaufen in der Schweiz: Flex-Geräte nach Scheibengrösse, Leistung, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Winkelschleifer", ctaLabel: "Winkelschleifer ansehen",
     intro: "Trennen und schleifen: Hier vergleichst du Winkelschleifer (Flex) nach Scheibengrösse, Leistung, Sicherheit und Preis.",
@@ -2591,7 +2591,7 @@ const PAGES = [
   },
   {
     slug: "kompressor-kaufen-schweiz", icon: "🛠️", h1: "Kompressor kaufen in der Schweiz",
-    title: "Kompressor kaufen Schweiz — Druckluft im Vergleich | aban",
+    title: "Kompressor kaufen Schweiz — Druckluft im Vergleich | aban news",
     desc: "Kompressor kaufen in der Schweiz: Druckluftkompressoren nach Kesselgrösse, Leistung, Lautstärke und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kompressor", ctaLabel: "Kompressoren ansehen",
     intro: "Druckluft für Werkstatt und Garage: Hier vergleichst du Kompressoren nach Kesselgrösse, Leistung, Lautstärke und Preis.",
@@ -2608,7 +2608,7 @@ const PAGES = [
   },
   {
     slug: "leiter-kaufen-schweiz", icon: "🪜", h1: "Leiter kaufen in der Schweiz",
-    title: "Leiter kaufen Schweiz — Steh-, Anlege- & Teleskop | aban",
+    title: "Leiter kaufen Schweiz — Steh-, Anlege- & Teleskop | aban news",
     desc: "Leiter kaufen in der Schweiz: Steh-, Anlege-, Mehrzweck- und Teleskopleitern nach Höhe, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Leiter", ctaLabel: "Leitern ansehen",
     intro: "Sicher hoch hinaus: Hier vergleichst du Leitern (Steh-, Anlege-, Teleskop) nach Höhe, Material, Sicherheit und Preis.",
@@ -2625,7 +2625,7 @@ const PAGES = [
   },
   {
     slug: "hometrainer-kaufen-schweiz", icon: "🚴", h1: "Hometrainer kaufen in der Schweiz",
-    title: "Hometrainer kaufen Schweiz — Heimrad im Vergleich | aban",
+    title: "Hometrainer kaufen Schweiz — Heimrad im Vergleich | aban news",
     desc: "Hometrainer kaufen in der Schweiz: Heimtrainer nach Widerstand, Komfort, Stabilität und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Hometrainer", ctaLabel: "Hometrainer ansehen",
     intro: "Radfahren zu Hause: Hier vergleichst du Hometrainer nach Widerstandssystem, Komfort, Stabilität und Preis.",
@@ -2642,7 +2642,7 @@ const PAGES = [
   },
   {
     slug: "rudergeraet-kaufen-schweiz", icon: "🚣", h1: "Rudergerät kaufen in der Schweiz",
-    title: "Rudergerät kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Rudergerät kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Rudergerät kaufen in der Schweiz: Rudergeräte nach Widerstandsart, Lauf, Platzbedarf und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Rudergerät", ctaLabel: "Rudergeräte ansehen",
     intro: "Ganzkörpertraining zu Hause: Hier vergleichst du Rudergeräte nach Widerstandsart, Laufeigenschaften, Platzbedarf und Preis.",
@@ -2659,7 +2659,7 @@ const PAGES = [
   },
   {
     slug: "hantelbank-kaufen-schweiz", icon: "🏋️", h1: "Hantelbank kaufen in der Schweiz",
-    title: "Hantelbank kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Hantelbank kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Hantelbank kaufen in der Schweiz: Hantelbänke nach Belastbarkeit, Verstellbarkeit, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Hantelbank", ctaLabel: "Hantelbänke ansehen",
     intro: "Krafttraining zu Hause: Hier vergleichst du Hantelbänke nach Belastbarkeit, Verstellbarkeit, Zubehör und Preis.",
@@ -2676,7 +2676,7 @@ const PAGES = [
   },
   {
     slug: "kettlebell-kaufen-schweiz", icon: "🪨", h1: "Kettlebell kaufen in der Schweiz",
-    title: "Kettlebell kaufen Schweiz — Gewicht & Material | aban",
+    title: "Kettlebell kaufen Schweiz — Gewicht & Material | aban news",
     desc: "Kettlebell kaufen in der Schweiz: Kugelhanteln nach Gewicht, Material, Griff und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kettlebell", ctaLabel: "Kettlebells ansehen",
     intro: "Funktionelles Training: Hier vergleichst du Kettlebells nach Gewicht, Material, Griff und Preis.",
@@ -2693,7 +2693,7 @@ const PAGES = [
   },
   {
     slug: "yogamatte-kaufen-schweiz", icon: "🧘", h1: "Yogamatte kaufen in der Schweiz",
-    title: "Yogamatte kaufen Schweiz — Dicke & Material | aban",
+    title: "Yogamatte kaufen Schweiz — Dicke & Material | aban news",
     desc: "Yogamatte kaufen in der Schweiz: Matten nach Dicke, Material, Rutschfestigkeit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Yogamatte", ctaLabel: "Yogamatten ansehen",
     intro: "Sicherer Halt bei Yoga & Gymnastik: Hier vergleichst du Yogamatten nach Dicke, Material, Rutschfestigkeit und Preis.",
@@ -2710,7 +2710,7 @@ const PAGES = [
   },
   {
     slug: "kuehlbox-kaufen-schweiz", icon: "🧊", h1: "Kühlbox kaufen in der Schweiz",
-    title: "Kühlbox kaufen Schweiz — passiv, elektrisch & Kompressor | aban",
+    title: "Kühlbox kaufen Schweiz — passiv, elektrisch & Kompressor",
     desc: "Kühlbox kaufen in der Schweiz: passive, elektrische und Kompressor-Kühlboxen nach Kühlung, Volumen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kühlbox", ctaLabel: "Kühlboxen ansehen",
     intro: "Kühl unterwegs: Hier vergleichst du Kühlboxen (passiv, elektrisch, Kompressor) nach Kühlleistung, Volumen und Preis.",
@@ -2727,7 +2727,7 @@ const PAGES = [
   },
   {
     slug: "gaskocher-kaufen-schweiz", icon: "🔥", h1: "Gaskocher kaufen in der Schweiz",
-    title: "Gaskocher kaufen Schweiz — Camping & Outdoor | aban",
+    title: "Gaskocher kaufen Schweiz — Camping & Outdoor | aban news",
     desc: "Gaskocher kaufen in der Schweiz: Camping-Gaskocher nach Leistung, Kartuschentyp, Gewicht und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gaskocher", ctaLabel: "Gaskocher ansehen",
     intro: "Kochen unterwegs: Hier vergleichst du Gaskocher nach Leistung, Kartuschentyp, Gewicht und Preis.",
@@ -2744,7 +2744,7 @@ const PAGES = [
   },
   {
     slug: "stirnlampe-kaufen-schweiz", icon: "🔦", h1: "Stirnlampe kaufen in der Schweiz",
-    title: "Stirnlampe kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Stirnlampe kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Stirnlampe kaufen in der Schweiz: Stirnlampen nach Helligkeit, Akku, Gewicht und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Stirnlampe", ctaLabel: "Stirnlampen ansehen",
     intro: "Licht und Hände frei: Hier vergleichst du Stirnlampen nach Helligkeit, Akkulaufzeit, Gewicht und Preis.",
@@ -2761,7 +2761,7 @@ const PAGES = [
   },
   {
     slug: "fernglas-kaufen-schweiz", icon: "🔭", h1: "Fernglas kaufen in der Schweiz",
-    title: "Fernglas kaufen Schweiz — Vergrösserung & Optik | aban",
+    title: "Fernglas kaufen Schweiz — Vergrösserung & Optik | aban news",
     desc: "Fernglas kaufen in der Schweiz: Ferngläser nach Vergrösserung, Objektivgrösse, Optik und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Fernglas", ctaLabel: "Ferngläser ansehen",
     intro: "Natur und Sport näher ran: Hier vergleichst du Ferngläser nach Vergrösserung, Objektiv, Optik und Preis.",
@@ -2778,7 +2778,7 @@ const PAGES = [
   },
   {
     slug: "dartscheibe-kaufen-schweiz", icon: "🎯", h1: "Dartscheibe kaufen in der Schweiz",
-    title: "Dartscheibe kaufen Schweiz — Steel & E-Dart | aban",
+    title: "Dartscheibe kaufen Schweiz — Steel & E-Dart | aban news",
     desc: "Dartscheibe kaufen in der Schweiz: Steel- und elektronische Dartscheiben nach Typ, Qualität und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Dartscheibe", ctaLabel: "Dartscheiben ansehen",
     intro: "Dart für zu Hause: Hier vergleichst du Dartscheiben (Steel-Dart, E-Dart) nach Typ, Qualität und Preis.",
@@ -2795,7 +2795,7 @@ const PAGES = [
   },
   {
     slug: "lattenrost-kaufen-schweiz", icon: "🛏️", h1: "Lattenrost kaufen in der Schweiz",
-    title: "Lattenrost kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Lattenrost kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Lattenrost kaufen in der Schweiz: Lattenroste nach Verstellbarkeit, Härte, Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Lattenrost", ctaLabel: "Lattenroste ansehen",
     intro: "Gute Basis für die Matratze: Hier vergleichst du Lattenroste nach Verstellbarkeit, Härteeinstellung, Grösse und Preis.",
@@ -2812,7 +2812,7 @@ const PAGES = [
   },
   {
     slug: "boxspringbett-kaufen-schweiz", icon: "🛏️", h1: "Boxspringbett kaufen in der Schweiz",
-    title: "Boxspringbett kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Boxspringbett kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Boxspringbett kaufen in der Schweiz: Boxspringbetten nach Aufbau, Härte, Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Boxspringbett", ctaLabel: "Boxspringbetten ansehen",
     intro: "Hoher Liegekomfort: Hier vergleichst du Boxspringbetten nach Aufbau, Härtegrad, Grösse und Preis.",
@@ -2829,7 +2829,7 @@ const PAGES = [
   },
   {
     slug: "sessel-kaufen-schweiz", icon: "🪑", h1: "Sessel kaufen in der Schweiz",
-    title: "Sessel kaufen Schweiz — Relax, Ohren- & Drehsessel | aban",
+    title: "Sessel kaufen Schweiz — Relax, Ohren- & Drehsessel | aban news",
     desc: "Sessel kaufen in der Schweiz: Relax-, Ohren- und Drehsessel nach Komfort, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sessel", ctaLabel: "Sessel ansehen",
     intro: "Gemütlich sitzen: Hier vergleichst du Sessel (Relax, Ohren, Dreh) nach Komfort, Material und Preis.",
@@ -2846,7 +2846,7 @@ const PAGES = [
   },
   {
     slug: "gamingstuhl-kaufen-schweiz", icon: "🎮", h1: "Gamingstuhl kaufen in der Schweiz",
-    title: "Gamingstuhl kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Gamingstuhl kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Gamingstuhl kaufen in der Schweiz: Gaming-Stühle nach Ergonomie, Verstellbarkeit, Belastbarkeit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Gamingstuhl", ctaLabel: "Gamingstühle ansehen",
     intro: "Bequem zocken und arbeiten: Hier vergleichst du Gamingstühle nach Ergonomie, Verstellbarkeit, Belastbarkeit und Preis.",
@@ -2863,7 +2863,7 @@ const PAGES = [
   },
   {
     slug: "sideboard-kaufen-schweiz", icon: "🗄️", h1: "Sideboard kaufen in der Schweiz",
-    title: "Sideboard kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Sideboard kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Sideboard kaufen in der Schweiz: Sideboards nach Grösse, Stauraum, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sideboard", ctaLabel: "Sideboards ansehen",
     intro: "Stauraum mit Stil: Hier vergleichst du Sideboards nach Grösse, Stauraum, Material und Preis.",
@@ -2880,7 +2880,7 @@ const PAGES = [
   },
   {
     slug: "buecherregal-kaufen-schweiz", icon: "📚", h1: "Bücherregal kaufen in der Schweiz",
-    title: "Bücherregal kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Bücherregal kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Bücherregal kaufen in der Schweiz: Bücherregale nach Grösse, Belastbarkeit, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bücherregal", ctaLabel: "Bücherregale ansehen",
     intro: "Platz für Bücher und Deko: Hier vergleichst du Bücherregale nach Grösse, Belastbarkeit, Material und Preis.",
@@ -2897,7 +2897,7 @@ const PAGES = [
   },
   {
     slug: "schuhschrank-kaufen-schweiz", icon: "👟", h1: "Schuhschrank kaufen in der Schweiz",
-    title: "Schuhschrank kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Schuhschrank kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Schuhschrank kaufen in der Schweiz: Schuhschränke nach Kapazität, Bauform, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Schuhschrank", ctaLabel: "Schuhschränke ansehen",
     intro: "Ordnung im Flur: Hier vergleichst du Schuhschränke nach Kapazität, Bauform, Material und Preis.",
@@ -2914,7 +2914,7 @@ const PAGES = [
   },
   {
     slug: "garderobe-kaufen-schweiz", icon: "🧥", h1: "Garderobe kaufen in der Schweiz",
-    title: "Garderobe kaufen Schweiz — Wand & Stand | aban",
+    title: "Garderobe kaufen Schweiz — Wand & Stand | aban news",
     desc: "Garderobe kaufen in der Schweiz: Wand- und Standgarderoben nach Stauraum, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Garderobe", ctaLabel: "Garderoben ansehen",
     intro: "Ordnung für Jacken & Co.: Hier vergleichst du Garderoben (Wand, Stand) nach Stauraum, Material und Preis.",
@@ -2931,7 +2931,7 @@ const PAGES = [
   },
   {
     slug: "nachttisch-kaufen-schweiz", icon: "🛋️", h1: "Nachttisch kaufen in der Schweiz",
-    title: "Nachttisch kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Nachttisch kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Nachttisch kaufen in der Schweiz: Nachttische nach Höhe, Stauraum, Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Nachttisch", ctaLabel: "Nachttische ansehen",
     intro: "Praktisch neben dem Bett: Hier vergleichst du Nachttische nach Höhe, Stauraum, Material und Preis.",
@@ -2948,7 +2948,7 @@ const PAGES = [
   },
   {
     slug: "sonnenliege-kaufen-schweiz", icon: "🌞", h1: "Sonnenliege kaufen in der Schweiz",
-    title: "Sonnenliege kaufen Schweiz — Garten & Balkon | aban",
+    title: "Sonnenliege kaufen Schweiz — Garten & Balkon | aban news",
     desc: "Sonnenliege kaufen in der Schweiz: Sonnenliegen nach Material, Verstellbarkeit, Komfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sonnenliege", ctaLabel: "Sonnenliegen ansehen",
     intro: "Entspannen im Freien: Hier vergleichst du Sonnenliegen nach Material, Verstellbarkeit, Komfort und Preis.",
@@ -2965,7 +2965,7 @@ const PAGES = [
   },
   {
     slug: "sommerreifen-kaufen-schweiz", icon: "🛞", h1: "Sommerreifen kaufen in der Schweiz",
-    title: "Sommerreifen kaufen Schweiz — Grösse & Vergleich | aban",
+    title: "Sommerreifen kaufen Schweiz — Grösse & Vergleich | aban news",
     desc: "Sommerreifen kaufen in der Schweiz: Reifen nach Grösse, Labelwerten, Marke und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sommerreifen", ctaLabel: "Sommerreifen ansehen",
     intro: "Sicher durch den Sommer: Hier vergleichst du Sommerreifen nach Grösse, EU-Labelwerten, Marke und Preis.",
@@ -2982,7 +2982,7 @@ const PAGES = [
   },
   {
     slug: "autobatterie-kaufen-schweiz", icon: "🔋", h1: "Autobatterie kaufen in der Schweiz",
-    title: "Autobatterie kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Autobatterie kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Autobatterie kaufen in der Schweiz: Starterbatterien nach Kapazität, Kaltstartstrom, Typ und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Autobatterie", ctaLabel: "Autobatterien ansehen",
     intro: "Zuverlässiger Start: Hier vergleichst du Autobatterien nach Kapazität, Kaltstartstrom, Typ und Preis.",
@@ -2999,7 +2999,7 @@ const PAGES = [
   },
   {
     slug: "fahrradtraeger-kaufen-schweiz", icon: "🚲", h1: "Fahrradträger kaufen in der Schweiz",
-    title: "Fahrradträger kaufen Schweiz — Kupplung, Heck & Dach | aban",
+    title: "Fahrradträger kaufen Schweiz — Kupplung, Heck & Dach | aban news",
     desc: "Fahrradträger kaufen in der Schweiz: Kupplungs-, Heck- und Dachträger nach Radzahl, Last und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Fahrradträger", ctaLabel: "Fahrradträger ansehen",
     intro: "Velos sicher transportieren: Hier vergleichst du Fahrradträger (Kupplung, Heck, Dach) nach Radzahl, Last und Preis.",
@@ -3016,7 +3016,7 @@ const PAGES = [
   },
   {
     slug: "anhaengerkupplung-kaufen-schweiz", icon: "🚗", h1: "Anhängerkupplung kaufen in der Schweiz",
-    title: "Anhängerkupplung kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Anhängerkupplung kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Anhängerkupplung kaufen in der Schweiz: starre, abnehmbare und schwenkbare Kupplungen nach Last und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Anhängerkupplung", ctaLabel: "Anhängerkupplungen ansehen",
     intro: "Anhänger und Träger ziehen: Hier vergleichst du Anhängerkupplungen (starr, abnehmbar, schwenkbar) nach Last und Preis.",
@@ -3033,7 +3033,7 @@ const PAGES = [
   },
   {
     slug: "kindersitz-auto-kaufen-schweiz", icon: "🚸", h1: "Kindersitz fürs Auto kaufen in der Schweiz",
-    title: "Auto-Kindersitz kaufen Schweiz — Normen & Vergleich | aban",
+    title: "Auto-Kindersitz kaufen Schweiz — Normen & Vergleich | aban news",
     desc: "Auto-Kindersitz kaufen in der Schweiz: Kindersitze nach Norm, Grösse/Gewicht, Befestigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kindersitz Auto", ctaLabel: "Kindersitze ansehen",
     intro: "Sicher unterwegs mit Kind: Hier vergleichst du Auto-Kindersitze nach Norm, Grösse/Gewicht, Befestigung und Preis.",
@@ -3050,7 +3050,7 @@ const PAGES = [
   },
   {
     slug: "motoroel-kaufen-schweiz", icon: "🛢️", h1: "Motoröl kaufen in der Schweiz",
-    title: "Motoröl kaufen Schweiz — Viskosität & Freigaben | aban",
+    title: "Motoröl kaufen Schweiz — Viskosität & Freigaben | aban news",
     desc: "Motoröl kaufen in der Schweiz: Öle nach Viskosität, Herstellerfreigabe, Gebinde und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Motoröl", ctaLabel: "Motoröle ansehen",
     intro: "Das richtige Öl für den Motor: Hier vergleichst du Motoröle nach Viskosität, Freigaben, Gebindegrösse und Preis.",
@@ -3067,7 +3067,7 @@ const PAGES = [
   },
   {
     slug: "scheibenwischer-kaufen-schweiz", icon: "🌧️", h1: "Scheibenwischer kaufen in der Schweiz",
-    title: "Scheibenwischer kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Scheibenwischer kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Scheibenwischer kaufen in der Schweiz: Wischerblätter nach Länge, Bauart, Befestigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Scheibenwischer", ctaLabel: "Scheibenwischer ansehen",
     intro: "Klare Sicht bei Regen: Hier vergleichst du Scheibenwischer nach Länge, Bauart, Befestigung und Preis.",
@@ -3084,7 +3084,7 @@ const PAGES = [
   },
   {
     slug: "dashcam-kaufen-schweiz", icon: "🎥", h1: "Dashcam kaufen in der Schweiz",
-    title: "Dashcam kaufen Schweiz — Vergleich & Datenschutz | aban",
+    title: "Dashcam kaufen Schweiz — Vergleich & Datenschutz | aban news",
     desc: "Dashcam kaufen in der Schweiz: Auto-Kameras nach Auflösung, Funktionen, Datenschutz und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Dashcam", ctaLabel: "Dashcams ansehen",
     intro: "Aufnahmen während der Fahrt: Hier vergleichst du Dashcams nach Auflösung, Funktionen, Datenschutz und Preis.",
@@ -3101,7 +3101,7 @@ const PAGES = [
   },
   {
     slug: "standheizung-kaufen-schweiz", icon: "♨️", h1: "Standheizung kaufen in der Schweiz",
-    title: "Standheizung kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Standheizung kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Standheizung kaufen in der Schweiz: Luft- und Wasserstandheizungen nach Typ, Leistung, Steuerung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Standheizung", ctaLabel: "Standheizungen ansehen",
     intro: "Warmes Auto im Winter: Hier vergleichst du Standheizungen (Luft, Wasser) nach Typ, Leistung, Steuerung und Preis.",
@@ -3118,7 +3118,7 @@ const PAGES = [
   },
   {
     slug: "autostaubsauger-kaufen-schweiz", icon: "🚙", h1: "Autostaubsauger kaufen in der Schweiz",
-    title: "Autostaubsauger kaufen Schweiz — Akku & 12 V | aban",
+    title: "Autostaubsauger kaufen Schweiz — Akku & 12 V | aban news",
     desc: "Autostaubsauger kaufen in der Schweiz: Akku- und 12-V-Sauger nach Saugkraft, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Autostaubsauger", ctaLabel: "Autostaubsauger ansehen",
     intro: "Sauberer Innenraum: Hier vergleichst du Autostaubsauger (Akku, 12 V) nach Saugkraft, Zubehör und Preis.",
@@ -3135,7 +3135,7 @@ const PAGES = [
   },
   {
     slug: "kinderwagen-buggy-kaufen-schweiz", icon: "👶", h1: "Kinderwagen & Buggy kaufen in der Schweiz",
-    title: "Kinderwagen & Buggy kaufen Schweiz — Vergleich | aban",
+    title: "Kinderwagen & Buggy kaufen Schweiz — Vergleich | aban news",
     desc: "Kinderwagen und Buggy kaufen in der Schweiz: Modelle nach Alter, Federung, Gewicht und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kinderwagen", ctaLabel: "Kinderwagen ansehen",
     intro: "Mobil mit Baby und Kleinkind: Hier vergleichst du Kinderwagen und Buggys nach Alter, Federung, Gewicht und Preis.",
@@ -3152,7 +3152,7 @@ const PAGES = [
   },
   {
     slug: "babytrage-kaufen-schweiz", icon: "🤱", h1: "Babytrage kaufen in der Schweiz",
-    title: "Babytrage kaufen Schweiz — ergonomisch & sicher | aban",
+    title: "Babytrage kaufen Schweiz — ergonomisch & sicher | aban news",
     desc: "Babytrage kaufen in der Schweiz: Tragen und Tragetücher nach Ergonomie, Alter, Komfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Babytrage", ctaLabel: "Babytragen ansehen",
     intro: "Nähe und freie Hände: Hier vergleichst du Babytragen und Tragetücher nach Ergonomie, Alter, Komfort und Preis.",
@@ -3169,7 +3169,7 @@ const PAGES = [
   },
   {
     slug: "wickeltisch-kaufen-schweiz", icon: "🧷", h1: "Wickeltisch kaufen in der Schweiz",
-    title: "Wickeltisch kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Wickeltisch kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Wickeltisch kaufen in der Schweiz: Wickelkommoden und -aufsätze nach Höhe, Stauraum, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Wickeltisch", ctaLabel: "Wickeltische ansehen",
     intro: "Bequem wickeln: Hier vergleichst du Wickeltische und -kommoden nach Höhe, Stauraum, Sicherheit und Preis.",
@@ -3186,7 +3186,7 @@ const PAGES = [
   },
   {
     slug: "babybett-kaufen-schweiz", icon: "🛏️", h1: "Babybett kaufen in der Schweiz",
-    title: "Babybett kaufen Schweiz — Gitterbett & Beistellbett | aban",
+    title: "Babybett kaufen Schweiz — Gitterbett & Beistellbett | aban news",
     desc: "Babybett kaufen in der Schweiz: Gitter-, Beistell- und mitwachsende Betten nach Sicherheit, Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Babybett", ctaLabel: "Babybetten ansehen",
     intro: "Sicherer Schlaf fürs Baby: Hier vergleichst du Babybetten (Gitter, Beistell, mitwachsend) nach Sicherheit, Grösse und Preis.",
@@ -3203,7 +3203,7 @@ const PAGES = [
   },
   {
     slug: "laufgitter-kaufen-schweiz", icon: "🧒", h1: "Laufgitter kaufen in der Schweiz",
-    title: "Laufgitter kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Laufgitter kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Laufgitter kaufen in der Schweiz: Laufställe nach Grösse, Material, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Laufgitter", ctaLabel: "Laufgitter ansehen",
     intro: "Sicherer Spielbereich: Hier vergleichst du Laufgitter nach Grösse, Material, Sicherheit und Preis.",
@@ -3220,7 +3220,7 @@ const PAGES = [
   },
   {
     slug: "reisebett-baby-kaufen-schweiz", icon: "🧳", h1: "Reisebett fürs Baby kaufen in der Schweiz",
-    title: "Baby-Reisebett kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Baby-Reisebett kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Baby-Reisebett kaufen in der Schweiz: Reisebetten nach Gewicht, Aufbau, Matratze und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Reisebett Baby", ctaLabel: "Reisebetten ansehen",
     intro: "Schlafplatz für unterwegs: Hier vergleichst du Baby-Reisebetten nach Gewicht, Aufbau, Matratze und Preis.",
@@ -3237,7 +3237,7 @@ const PAGES = [
   },
   {
     slug: "treppenschutzgitter-kaufen-schweiz", icon: "🚧", h1: "Treppenschutzgitter kaufen in der Schweiz",
-    title: "Treppenschutzgitter kaufen Schweiz — Vergleich | aban",
+    title: "Treppenschutzgitter kaufen Schweiz — Vergleich | aban news",
     desc: "Treppenschutzgitter kaufen in der Schweiz: Schutzgitter nach Befestigung, Breite, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Treppenschutzgitter", ctaLabel: "Schutzgitter ansehen",
     intro: "Sicherheit für Kleinkinder: Hier vergleichst du Treppenschutzgitter nach Befestigung, Breite, Sicherheit und Preis.",
@@ -3254,7 +3254,7 @@ const PAGES = [
   },
   {
     slug: "dreirad-kaufen-schweiz", icon: "🚲", h1: "Dreirad kaufen in der Schweiz",
-    title: "Dreirad kaufen Schweiz — Kinderdreirad im Vergleich | aban",
+    title: "Dreirad kaufen Schweiz — Kinderdreirad im Vergleich | aban news",
     desc: "Dreirad kaufen in der Schweiz: Kinderdreiräder nach Alter, Schiebefunktion, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Dreirad", ctaLabel: "Dreiräder ansehen",
     intro: "Erste Fahrversuche: Hier vergleichst du Kinderdreiräder nach Alter, Schiebefunktion, Sicherheit und Preis.",
@@ -3271,7 +3271,7 @@ const PAGES = [
   },
   {
     slug: "bobbycar-kaufen-schweiz", icon: "🚗", h1: "Bobbycar kaufen in der Schweiz",
-    title: "Bobbycar kaufen Schweiz — Rutschauto im Vergleich | aban",
+    title: "Bobbycar kaufen Schweiz — Rutschauto im Vergleich | aban news",
     desc: "Bobbycar kaufen in der Schweiz: Rutschautos nach Alter, Stabilität, Ausstattung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bobbycar", ctaLabel: "Rutschautos ansehen",
     intro: "Beliebtes Rutschauto: Hier vergleichst du Bobbycars und Rutschautos nach Alter, Stabilität, Ausstattung und Preis.",
@@ -3288,7 +3288,7 @@ const PAGES = [
   },
   {
     slug: "kinderroller-kaufen-schweiz", icon: "🛴", h1: "Kinderroller kaufen in der Schweiz",
-    title: "Kinderroller kaufen Schweiz — Scooter im Vergleich | aban",
+    title: "Kinderroller kaufen Schweiz — Scooter im Vergleich | aban news",
     desc: "Kinderroller kaufen in der Schweiz: Kinder-Scooter nach Alter, Räderzahl, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Kinderroller", ctaLabel: "Kinderroller ansehen",
     intro: "Roller für Kinder: Hier vergleichst du Kinder-Scooter nach Alter, Räderzahl, Sicherheit und Preis.",
@@ -3305,7 +3305,7 @@ const PAGES = [
   },
   {
     slug: "haartrockner-kaufen-schweiz", icon: "💨", h1: "Haartrockner kaufen in der Schweiz",
-    title: "Haartrockner kaufen Schweiz — Föhn im Vergleich | aban",
+    title: "Haartrockner kaufen Schweiz — Föhn im Vergleich | aban news",
     desc: "Haartrockner kaufen in der Schweiz: Föhne nach Leistung, Ionen-Funktion, Aufsätzen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Haartrockner", ctaLabel: "Haartrockner ansehen",
     intro: "Schnell und schonend trocknen: Hier vergleichst du Haartrockner nach Leistung, Ionen-Funktion, Aufsätzen und Preis.",
@@ -3322,7 +3322,7 @@ const PAGES = [
   },
   {
     slug: "gluetteisen-kaufen-schweiz", icon: "💇", h1: "Glätteisen kaufen in der Schweiz",
-    title: "Glätteisen kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Glätteisen kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Glätteisen kaufen in der Schweiz: Haarglätter nach Plattenmaterial, Temperatur und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Glätteisen", ctaLabel: "Glätteisen ansehen",
     intro: "Glatte Haare zu Hause: Hier vergleichst du Glätteisen nach Plattenmaterial, Temperaturregelung und Preis.",
@@ -3339,7 +3339,7 @@ const PAGES = [
   },
   {
     slug: "epilierer-kaufen-schweiz", icon: "✨", h1: "Epilierer kaufen in der Schweiz",
-    title: "Epilierer kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Epilierer kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Epilierer kaufen in der Schweiz: Geräte nach Pinzettenzahl, Nass-/Trockenbetrieb, Aufsätzen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Epilierer", ctaLabel: "Epilierer ansehen",
     intro: "Lang anhaltend glatte Haut: Hier vergleichst du Epilierer nach Pinzettenzahl, Nass-/Trockenbetrieb, Aufsätzen und Preis.",
@@ -3356,7 +3356,7 @@ const PAGES = [
   },
   {
     slug: "bartschneider-kaufen-schweiz", icon: "🧔", h1: "Bartschneider kaufen in der Schweiz",
-    title: "Bartschneider kaufen Schweiz — Trimmer im Vergleich | aban",
+    title: "Bartschneider kaufen Schweiz — Trimmer im Vergleich | aban news",
     desc: "Bartschneider kaufen in der Schweiz: Barttrimmer nach Längenstufen, Akku, Aufsätzen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Bartschneider", ctaLabel: "Bartschneider ansehen",
     intro: "Gepflegter Bart: Hier vergleichst du Bartschneider nach Längenstufen, Akkulaufzeit, Aufsätzen und Preis.",
@@ -3373,7 +3373,7 @@ const PAGES = [
   },
   {
     slug: "zahnbuerste-elektrisch-kaufen-schweiz", icon: "🦷", h1: "Elektrische Zahnbürste kaufen in der Schweiz",
-    title: "Elektrische Zahnbürste kaufen Schweiz — Vergleich | aban",
+    title: "Elektrische Zahnbürste kaufen Schweiz — Vergleich | aban news",
     desc: "Elektrische Zahnbürste kaufen in der Schweiz: Schall- und Rotationsbürsten nach Putztechnik, Akku und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Elektrische Zahnbürste", ctaLabel: "Zahnbürsten ansehen",
     intro: "Gründlicher putzen: Hier vergleichst du elektrische Zahnbürsten (Schall, Rotation) nach Putztechnik, Akku und Preis.",
@@ -3390,7 +3390,7 @@ const PAGES = [
   },
   {
     slug: "munddusche-kaufen-schweiz", icon: "💧", h1: "Munddusche kaufen in der Schweiz",
-    title: "Munddusche kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Munddusche kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Munddusche kaufen in der Schweiz: Mundduschen nach Bauart, Druckstufen, Tank und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Munddusche", ctaLabel: "Mundduschen ansehen",
     intro: "Saubere Zahnzwischenräume: Hier vergleichst du Mundduschen nach Bauart, Druckstufen, Tankgrösse und Preis.",
@@ -3407,7 +3407,7 @@ const PAGES = [
   },
   {
     slug: "massagepistole-kaufen-schweiz", icon: "💆", h1: "Massagepistole kaufen in der Schweiz",
-    title: "Massagepistole kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Massagepistole kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Massagepistole kaufen in der Schweiz: Massagegeräte nach Leistung, Lautstärke, Aufsätzen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Massagepistole", ctaLabel: "Massagepistolen ansehen",
     intro: "Verspannungen lösen: Hier vergleichst du Massagepistolen nach Leistung, Lautstärke, Aufsätzen und Preis.",
@@ -3424,7 +3424,7 @@ const PAGES = [
   },
   {
     slug: "ipl-geraet-kaufen-schweiz", icon: "💡", h1: "IPL-Gerät kaufen in der Schweiz",
-    title: "IPL-Gerät kaufen Schweiz — Haarentfernung im Vergleich | aban",
+    title: "IPL-Gerät kaufen Schweiz — Haarentfernung im Vergleich",
     desc: "IPL-Gerät kaufen in der Schweiz: Geräte zur Haarentfernung nach Blitzzahl, Hauttyp-Eignung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=IPL Gerät", ctaLabel: "IPL-Geräte ansehen",
     intro: "Haarentfernung mit Lichtimpulsen: Hier vergleichst du IPL-Geräte nach Blitzzahl, Hauttyp-Eignung, Fenstergrösse und Preis.",
@@ -3441,7 +3441,7 @@ const PAGES = [
   },
   {
     slug: "inhalator-kaufen-schweiz", icon: "🌬️", h1: "Inhalator kaufen in der Schweiz",
-    title: "Inhalator kaufen Schweiz — Vernebler im Vergleich | aban",
+    title: "Inhalator kaufen Schweiz — Vernebler im Vergleich | aban news",
     desc: "Inhalator kaufen in der Schweiz: Vernebler nach Technik, Verneblungsleistung, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Inhalator", ctaLabel: "Inhalatoren ansehen",
     intro: "Hilfe bei den Atemwegen: Hier vergleichst du Inhalatoren (Vernebler) nach Technik, Verneblungsleistung, Zubehör und Preis.",
@@ -3458,7 +3458,7 @@ const PAGES = [
   },
   {
     slug: "fieberthermometer-kaufen-schweiz", icon: "🌡️", h1: "Fieberthermometer kaufen in der Schweiz",
-    title: "Fieberthermometer kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Fieberthermometer kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Fieberthermometer kaufen in der Schweiz: Kontakt-, Ohr- und Stirnthermometer nach Genauigkeit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Fieberthermometer", ctaLabel: "Fieberthermometer ansehen",
     intro: "Temperatur zuverlässig messen: Hier vergleichst du Fieberthermometer (Kontakt, Ohr, Stirn) nach Genauigkeit, Komfort und Preis.",
@@ -3475,7 +3475,7 @@ const PAGES = [
   },
   {
     slug: "katzenbaum-kaufen-schweiz", icon: "🐈", h1: "Katzenbaum kaufen in der Schweiz",
-    title: "Katzenbaum kaufen Schweiz — Kratzbaum im Vergleich | aban",
+    title: "Katzenbaum kaufen Schweiz — Kratzbaum im Vergleich | aban news",
     desc: "Katzenbaum kaufen in der Schweiz: Kratzbäume nach Höhe, Stabilität, Ausstattung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Katzenbaum", ctaLabel: "Katzenbäume ansehen",
     intro: "Klettern, Kratzen, Ruhen: Hier vergleichst du Katzenbäume nach Höhe, Stabilität, Ausstattung und Preis.",
@@ -3492,7 +3492,7 @@ const PAGES = [
   },
   {
     slug: "hundebett-kaufen-schweiz", icon: "🐕", h1: "Hundebett kaufen in der Schweiz",
-    title: "Hundebett kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Hundebett kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Hundebett kaufen in der Schweiz: Hundebetten nach Grösse, Material, Reinigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Hundebett", ctaLabel: "Hundebetten ansehen",
     intro: "Gemütlicher Schlafplatz: Hier vergleichst du Hundebetten nach Grösse, Material, Reinigung und Preis.",
@@ -3509,7 +3509,7 @@ const PAGES = [
   },
   {
     slug: "hundebox-kaufen-schweiz", icon: "🐶", h1: "Hundebox kaufen in der Schweiz",
-    title: "Hundebox kaufen Schweiz — Auto & Transport | aban",
+    title: "Hundebox kaufen Schweiz — Auto & Transport | aban news",
     desc: "Hundebox kaufen in der Schweiz: Transportboxen nach Grösse, Material, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Hundebox", ctaLabel: "Hundeboxen ansehen",
     intro: "Sicher unterwegs mit Hund: Hier vergleichst du Hundeboxen nach Grösse, Material, Sicherheit und Preis.",
@@ -3526,7 +3526,7 @@ const PAGES = [
   },
   {
     slug: "terrarium-kaufen-schweiz", icon: "🦎", h1: "Terrarium kaufen in der Schweiz",
-    title: "Terrarium kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Terrarium kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Terrarium kaufen in der Schweiz: Terrarien nach Grösse, Belüftung, Ausstattung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Terrarium", ctaLabel: "Terrarien ansehen",
     intro: "Lebensraum für Reptilien & Co.: Hier vergleichst du Terrarien nach Grösse, Belüftung, Ausstattung und Preis.",
@@ -3543,7 +3543,7 @@ const PAGES = [
   },
   {
     slug: "futterautomat-kaufen-schweiz", icon: "🍽️", h1: "Futterautomat kaufen in der Schweiz",
-    title: "Futterautomat kaufen Schweiz — Haustiere im Vergleich | aban",
+    title: "Futterautomat kaufen Schweiz — Haustiere im Vergleich | aban news",
     desc: "Futterautomat kaufen in der Schweiz: automatische Futterspender nach Portionierung, Stromquelle und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Futterautomat", ctaLabel: "Futterautomaten ansehen",
     intro: "Füttern nach Plan: Hier vergleichst du Futterautomaten für Hund und Katze nach Portionierung, Stromquelle und Preis.",
@@ -3560,7 +3560,7 @@ const PAGES = [
   },
   {
     slug: "ueberwachungskamera-kaufen-schweiz", icon: "📷", h1: "Überwachungskamera kaufen in der Schweiz",
-    title: "Überwachungskamera kaufen Schweiz — Vergleich | aban",
+    title: "Überwachungskamera kaufen Schweiz — Vergleich | aban news",
     desc: "Überwachungskamera kaufen in der Schweiz: Innen- und Aussenkameras nach Auflösung, Speicher, Datenschutz und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Überwachungskamera", ctaLabel: "Kameras ansehen",
     intro: "Mehr Sicherheit zu Hause: Hier vergleichst du Überwachungskameras nach Auflösung, Speicher, Datenschutz und Preis.",
@@ -3577,7 +3577,7 @@ const PAGES = [
   },
   {
     slug: "tuerklingel-smart-kaufen-schweiz", icon: "🔔", h1: "Smarte Türklingel kaufen in der Schweiz",
-    title: "Smarte Türklingel kaufen Schweiz — Video-Doorbell | aban",
+    title: "Smarte Türklingel kaufen Schweiz — Video-Doorbell | aban news",
     desc: "Smarte Türklingel kaufen in der Schweiz: Video-Türklingeln nach Bild, Stromversorgung, Datenschutz und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Smarte Türklingel", ctaLabel: "Türklingeln ansehen",
     intro: "Sehen, wer klingelt: Hier vergleichst du smarte Video-Türklingeln nach Bildqualität, Stromversorgung, Datenschutz und Preis.",
@@ -3594,7 +3594,7 @@ const PAGES = [
   },
   {
     slug: "heizkoerperthermostat-kaufen-schweiz", icon: "🌡️", h1: "Heizkörperthermostat kaufen in der Schweiz",
-    title: "Heizkörperthermostat kaufen Schweiz — smart & sparen | aban",
+    title: "Heizkörperthermostat kaufen Schweiz — smart & sparen | aban news",
     desc: "Heizkörperthermostat kaufen in der Schweiz: smarte und programmierbare Thermostate nach Steuerung, Passung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Heizkörperthermostat", ctaLabel: "Thermostate ansehen",
     intro: "Heizen nach Plan und sparen: Hier vergleichst du Heizkörperthermostate nach Steuerung, Passung und Preis.",
@@ -3611,7 +3611,7 @@ const PAGES = [
   },
   {
     slug: "rauchmelder-kaufen-schweiz", icon: "🚨", h1: "Rauchmelder kaufen in der Schweiz",
-    title: "Rauchmelder kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Rauchmelder kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Rauchmelder kaufen in der Schweiz: Rauchwarnmelder nach Batterie, Vernetzung, Norm und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Rauchmelder", ctaLabel: "Rauchmelder ansehen",
     intro: "Früh gewarnt im Brandfall: Hier vergleichst du Rauchmelder nach Batterie, Vernetzung, Norm und Preis.",
@@ -3628,7 +3628,7 @@ const PAGES = [
   },
   {
     slug: "tuerschloss-smart-kaufen-schweiz", icon: "🔐", h1: "Smartes Türschloss kaufen in der Schweiz",
-    title: "Smartes Türschloss kaufen Schweiz — Vergleich | aban",
+    title: "Smartes Türschloss kaufen Schweiz — Vergleich | aban news",
     desc: "Smartes Türschloss kaufen in der Schweiz: smarte Schlösser nach Montage, Zugang, Sicherheit und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Smartes Türschloss", ctaLabel: "Türschlösser ansehen",
     intro: "Schlüsselfrei aufschliessen: Hier vergleichst du smarte Türschlösser nach Montage, Zugangsart, Sicherheit und Preis.",
@@ -3645,7 +3645,7 @@ const PAGES = [
   },
   {
     slug: "keyboard-musik-kaufen-schweiz", icon: "🎹", h1: "Keyboard kaufen in der Schweiz",
-    title: "Keyboard kaufen Schweiz — Einsteiger & mehr | aban",
+    title: "Keyboard kaufen Schweiz — Einsteiger & mehr | aban news",
     desc: "Keyboard kaufen in der Schweiz: Musik-Keyboards nach Tastenzahl, Anschlag, Funktionen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Keyboard Musik", ctaLabel: "Keyboards ansehen",
     intro: "Einstieg ins Tastenspiel: Hier vergleichst du Keyboards nach Tastenzahl, Anschlag, Funktionen und Preis.",
@@ -3662,7 +3662,7 @@ const PAGES = [
   },
   {
     slug: "gitarre-akustik-kaufen-schweiz", icon: "🎸", h1: "Akustikgitarre kaufen in der Schweiz",
-    title: "Akustikgitarre kaufen Schweiz — Einsteiger & mehr | aban",
+    title: "Akustikgitarre kaufen Schweiz — Einsteiger & mehr | aban news",
     desc: "Akustikgitarre kaufen in der Schweiz: Western- und Konzertgitarren nach Bauart, Grösse und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Akustikgitarre", ctaLabel: "Akustikgitarren ansehen",
     intro: "Erste Akkorde: Hier vergleichst du Akustikgitarren (Konzert, Western) nach Bauart, Grösse und Preis.",
@@ -3679,7 +3679,7 @@ const PAGES = [
   },
   {
     slug: "e-gitarre-kaufen-schweiz", icon: "🎸", h1: "E-Gitarre kaufen in der Schweiz",
-    title: "E-Gitarre kaufen Schweiz — Einsteiger-Sets & mehr | aban",
+    title: "E-Gitarre kaufen Schweiz — Einsteiger-Sets & mehr | aban news",
     desc: "E-Gitarre kaufen in der Schweiz: E-Gitarren und Sets nach Bauform, Tonabnehmern, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=E-Gitarre", ctaLabel: "E-Gitarren ansehen",
     intro: "Rock und mehr: Hier vergleichst du E-Gitarren nach Bauform, Tonabnehmern, Zubehör und Preis.",
@@ -3696,7 +3696,7 @@ const PAGES = [
   },
   {
     slug: "ukulele-kaufen-schweiz", icon: "🎶", h1: "Ukulele kaufen in der Schweiz",
-    title: "Ukulele kaufen Schweiz — Einsteiger im Vergleich | aban",
+    title: "Ukulele kaufen Schweiz — Einsteiger im Vergleich | aban news",
     desc: "Ukulele kaufen in der Schweiz: Ukulelen nach Grösse (Sopran/Konzert/Tenor), Material und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Ukulele", ctaLabel: "Ukulelen ansehen",
     intro: "Einfacher Einstieg in die Musik: Hier vergleichst du Ukulelen nach Grösse, Material und Preis.",
@@ -3713,7 +3713,7 @@ const PAGES = [
   },
   {
     slug: "mikrofon-podcast-kaufen-schweiz", icon: "🎙️", h1: "Podcast-Mikrofon kaufen in der Schweiz",
-    title: "Podcast-Mikrofon kaufen Schweiz — USB & XLR | aban",
+    title: "Podcast-Mikrofon kaufen Schweiz — USB & XLR | aban news",
     desc: "Podcast-Mikrofon kaufen in der Schweiz: USB- und XLR-Mikrofone nach Klang, Anschluss, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Podcast Mikrofon", ctaLabel: "Mikrofone ansehen",
     intro: "Klarer Ton für Podcast & Stream: Hier vergleichst du Mikrofone (USB, XLR) nach Klang, Anschluss, Zubehör und Preis.",
@@ -3730,7 +3730,7 @@ const PAGES = [
   },
   {
     slug: "3d-drucker-kaufen-schweiz", icon: "🖨️", h1: "3D-Drucker kaufen in der Schweiz",
-    title: "3D-Drucker kaufen Schweiz — Einsteiger & mehr | aban",
+    title: "3D-Drucker kaufen Schweiz — Einsteiger & mehr | aban news",
     desc: "3D-Drucker kaufen in der Schweiz: FDM- und Resin-Drucker nach Bauraum, Genauigkeit, Bedienung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=3D-Drucker", ctaLabel: "3D-Drucker ansehen",
     intro: "Selbst drucken zu Hause: Hier vergleichst du 3D-Drucker (FDM, Resin) nach Bauraum, Genauigkeit, Bedienung und Preis.",
@@ -3747,7 +3747,7 @@ const PAGES = [
   },
   {
     slug: "grafiktablett-kaufen-schweiz", icon: "🖌️", h1: "Grafiktablett kaufen in der Schweiz",
-    title: "Grafiktablett kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Grafiktablett kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Grafiktablett kaufen in der Schweiz: Stift-Tablets nach Fläche, Drucksensitivität, Display und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Grafiktablett", ctaLabel: "Grafiktabletts ansehen",
     intro: "Digital zeichnen: Hier vergleichst du Grafiktabletts nach Fläche, Drucksensitivität, Display und Preis.",
@@ -3764,7 +3764,7 @@ const PAGES = [
   },
   {
     slug: "aktenvernichter-kaufen-schweiz", icon: "📄", h1: "Aktenvernichter kaufen in der Schweiz",
-    title: "Aktenvernichter kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Aktenvernichter kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Aktenvernichter kaufen in der Schweiz: Shredder nach Schnittart, Sicherheitsstufe, Volumen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Aktenvernichter", ctaLabel: "Aktenvernichter ansehen",
     intro: "Dokumente sicher entsorgen: Hier vergleichst du Aktenvernichter nach Schnittart, Sicherheitsstufe, Volumen und Preis.",
@@ -3781,7 +3781,7 @@ const PAGES = [
   },
   {
     slug: "vr-brille-kaufen-schweiz", icon: "🥽", h1: "VR-Brille kaufen in der Schweiz",
-    title: "VR-Brille kaufen Schweiz — Headsets im Vergleich | aban",
+    title: "VR-Brille kaufen Schweiz — Headsets im Vergleich | aban news",
     desc: "VR-Brille kaufen in der Schweiz: VR-Headsets nach Auflösung, Standalone/PC, Komfort und Preis vergleichen.",
     cta: "/angebote-suche.html?q=VR-Brille", ctaLabel: "VR-Brillen ansehen",
     intro: "Eintauchen in virtuelle Welten: Hier vergleichst du VR-Brillen nach Auflösung, Standalone/PC, Komfort und Preis.",
@@ -3798,7 +3798,7 @@ const PAGES = [
   },
   {
     slug: "drohne-kaufen-schweiz", icon: "🚁", h1: "Drohne kaufen in der Schweiz",
-    title: "Drohne kaufen Schweiz — Kamera-Drohnen & Regeln | aban",
+    title: "Drohne kaufen Schweiz — Kamera-Drohnen & Regeln | aban news",
     desc: "Drohne kaufen in der Schweiz: Kamera-Drohnen nach Kamera, Flugzeit, Gewicht, Regeln und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Drohne", ctaLabel: "Drohnen ansehen",
     intro: "Luftaufnahmen und Flugspass: Hier vergleichst du Drohnen nach Kamera, Flugzeit, Gewicht, Regeln und Preis.",
@@ -3815,7 +3815,7 @@ const PAGES = [
   },
   {
     slug: "fenstersauger-kaufen-schweiz", icon: "🪟", h1: "Fenstersauger kaufen in der Schweiz",
-    title: "Fenstersauger kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Fenstersauger kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Fenstersauger kaufen in der Schweiz: Akku-Fenstersauger nach Akku, Tank, Düsenbreite und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Fenstersauger", ctaLabel: "Fenstersauger ansehen",
     intro: "Streifenfrei putzen: Hier vergleichst du Fenstersauger nach Akkulaufzeit, Tankgrösse, Düsenbreite und Preis.",
@@ -3832,7 +3832,7 @@ const PAGES = [
   },
   {
     slug: "klimaanlage-mobil-kaufen-schweiz", icon: "❄️", h1: "Mobile Klimaanlage kaufen in der Schweiz",
-    title: "Mobile Klimaanlage kaufen Schweiz — Vergleich | aban",
+    title: "Mobile Klimaanlage kaufen Schweiz — Vergleich | aban news",
     desc: "Mobile Klimaanlage kaufen in der Schweiz: Monoblock-Klimageräte nach Kühlleistung, Lautstärke, Energie und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Mobile Klimaanlage", ctaLabel: "Klimageräte ansehen",
     intro: "Kühlung im Sommer: Hier vergleichst du mobile Klimaanlagen nach Kühlleistung, Lautstärke, Energieverbrauch und Preis.",
@@ -3849,7 +3849,7 @@ const PAGES = [
   },
   {
     slug: "waeschetrockner-kaufen-schweiz", icon: "🧺", h1: "Wäschetrockner kaufen in der Schweiz",
-    title: "Wäschetrockner kaufen Schweiz — Wärmepumpe & Co. | aban",
+    title: "Wäschetrockner kaufen Schweiz — Wärmepumpe & Co. | aban news",
     desc: "Wäschetrockner kaufen in der Schweiz: Wärmepumpen- und Kondenstrockner nach Effizienz, Fassung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Wäschetrockner", ctaLabel: "Wäschetrockner ansehen",
     intro: "Trockene Wäsche ohne Leine: Hier vergleichst du Wäschetrockner nach Technik, Effizienz, Fassungsvermögen und Preis.",
@@ -3866,7 +3866,7 @@ const PAGES = [
   },
   {
     slug: "handstaubsauger-kaufen-schweiz", icon: "🧹", h1: "Handstaubsauger kaufen in der Schweiz",
-    title: "Handstaubsauger kaufen Schweiz — Akku im Vergleich | aban",
+    title: "Handstaubsauger kaufen Schweiz — Akku im Vergleich | aban news",
     desc: "Handstaubsauger kaufen in der Schweiz: Akku-Handsauger nach Saugkraft, Laufzeit, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Handstaubsauger", ctaLabel: "Handstaubsauger ansehen",
     intro: "Schnell mal saugen: Hier vergleichst du Handstaubsauger nach Saugkraft, Akkulaufzeit, Zubehör und Preis.",
@@ -3883,7 +3883,7 @@ const PAGES = [
   },
   {
     slug: "nass-trockensauger-kaufen-schweiz", icon: "🪣", h1: "Nass-Trockensauger kaufen in der Schweiz",
-    title: "Nass-Trockensauger kaufen Schweiz — Vergleich | aban",
+    title: "Nass-Trockensauger kaufen Schweiz — Vergleich | aban news",
     desc: "Nass-Trockensauger kaufen in der Schweiz: Mehrzwecksauger nach Leistung, Behälter, Zubehör und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Nass-Trockensauger", ctaLabel: "Nass-Trockensauger ansehen",
     intro: "Für Werkstatt, Keller und mehr: Hier vergleichst du Nass-Trockensauger nach Leistung, Behältergrösse, Zubehör und Preis.",
@@ -3900,7 +3900,7 @@ const PAGES = [
   },
   {
     slug: "wischroboter-kaufen-schweiz", icon: "🤖", h1: "Wischroboter kaufen in der Schweiz",
-    title: "Wischroboter kaufen Schweiz — Saug-Wisch-Roboter | aban",
+    title: "Wischroboter kaufen Schweiz — Saug-Wisch-Roboter | aban news",
     desc: "Wischroboter kaufen in der Schweiz: Saug-Wisch-Roboter nach Navigation, Wischfunktion, App und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Wischroboter", ctaLabel: "Wischroboter ansehen",
     intro: "Böden automatisch reinigen: Hier vergleichst du Wisch- und Saugroboter nach Navigation, Wischfunktion, App und Preis.",
@@ -3917,7 +3917,7 @@ const PAGES = [
   },
   {
     slug: "elektrogrill-kaufen-schweiz", icon: "🍖", h1: "Elektrogrill kaufen in der Schweiz",
-    title: "Elektrogrill kaufen Schweiz — Tisch & Standgrill | aban",
+    title: "Elektrogrill kaufen Schweiz — Tisch & Standgrill | aban news",
     desc: "Elektrogrill kaufen in der Schweiz: Tisch- und Standgrills nach Leistung, Fläche, Reinigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Elektrogrill", ctaLabel: "Elektrogrills ansehen",
     intro: "Grillen ohne Kohle: Hier vergleichst du Elektrogrills (Tisch, Stand) nach Leistung, Grillfläche, Reinigung und Preis.",
@@ -3934,7 +3934,7 @@ const PAGES = [
   },
   {
     slug: "milchaufschaeumer-kaufen-schweiz", icon: "☕", h1: "Milchaufschäumer kaufen in der Schweiz",
-    title: "Milchaufschäumer kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Milchaufschäumer kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Milchaufschäumer kaufen in der Schweiz: elektrische und manuelle Aufschäumer nach Funktion, Fassung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Milchaufschäumer", ctaLabel: "Milchaufschäumer ansehen",
     intro: "Cremiger Milchschaum zu Hause: Hier vergleichst du Milchaufschäumer (elektrisch, manuell) nach Funktion, Fassung und Preis.",
@@ -3951,7 +3951,7 @@ const PAGES = [
   },
   {
     slug: "eierkocher-kaufen-schweiz", icon: "🥚", h1: "Eierkocher kaufen in der Schweiz",
-    title: "Eierkocher kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Eierkocher kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Eierkocher kaufen in der Schweiz: Eierkocher nach Eierzahl, Härtegrad-Einstellung, Funktionen und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Eierkocher", ctaLabel: "Eierkocher ansehen",
     intro: "Eier auf den Punkt: Hier vergleichst du Eierkocher nach Eierzahl, Härtegrad-Einstellung, Funktionen und Preis.",
@@ -3968,7 +3968,7 @@ const PAGES = [
   },
   {
     slug: "sandwichmaker-kaufen-schweiz", icon: "🥪", h1: "Sandwichmaker kaufen in der Schweiz",
-    title: "Sandwichmaker kaufen Schweiz — Vergleich & Tipps | aban",
+    title: "Sandwichmaker kaufen Schweiz — Vergleich & Tipps | aban news",
     desc: "Sandwichmaker kaufen in der Schweiz: Sandwichtoaster nach Plattenart, Wechselplatten, Reinigung und Preis vergleichen.",
     cta: "/angebote-suche.html?q=Sandwichmaker", ctaLabel: "Sandwichmaker ansehen",
     intro: "Warme Sandwiches in Minuten: Hier vergleichst du Sandwichmaker nach Plattenart, Wechselplatten, Reinigung und Preis.",
