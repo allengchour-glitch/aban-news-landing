@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-07 17:09 UTC, Stand 2026-10-07 17:13 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-07 17:09 UTC, Stand 2026-10-07 17:15 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **4'255**
-- Optionen mit englischen Werten (Kandidaten): 589
+- Produkte gesehen: **4'850**
+- Optionen mit englischen Werten (Kandidaten): 681
 - Optionen übersetzt: **2** · Werte übersetzt: **11**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'650
+- Werte mit unbekanntem Wort (unverändert): 3'007
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 27
 - übersprungen «kollision-nach-uebersetzung»: 15
@@ -86,5 +86,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 156, `light` 99, `color` 80, `mother` 61, `⟨satzbau:adjektiv-vor-nomen⟩` 59, `core` 52, `hat` 46, `rope` 44, `lens` 38, `father` 38, `high` 35, `for` 35, `generation` 34, `shell` 32, `no` 29, `adjustable` 29, `powder` 28, `mom` 28, `insert` 26, `crotch` 26, `to` 25, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `tea` 21, `surface` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `comfortable` 20, `suit` 19, `number` 19, `deer` 19, `cocoa` 19, `clothing` 18, `background` 17, `carbon` 17, `belt` 16, `pad` 16, `face` 16, `gallium` 16, `nitride` 16, `⟨satzbau:material-vor-farbe⟩` 16, `sunglasses` 16, `parent` 16, `milk` 15, `handle` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `cool brown` 15, `grid` 14, `buckle` 14, `chain` 14, `simple` 14
+`degrees` 159, `light` 107, `color` 93, `⟨satzbau:adjektiv-vor-nomen⟩` 67, `mother` 61, `core` 53, `hat` 46, `rope` 44, `lens` 38, `father` 38, `high` 37, `for` 37, `generation` 34, `shell` 32, `powder` 32, `no` 29, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `to` 26, `case` 24, `tea` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `suit` 21, `nail` 21, `surface` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `belt` 20, `handle` 20, `cocoa` 20, `comfortable` 20, `number` 19, `deer` 19, `carbon` 18, `one` 18, `⟨satzbau:material-vor-farbe⟩` 18, `clothing` 18, `background` 17, `face` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `pad` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `grid` 15, `buckle` 15, `milk` 15, `three` 15, `waist` 15
 
