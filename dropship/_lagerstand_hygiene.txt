@@ -320,3 +320,14 @@ gid://shopify/Product/15469978878337	draft-ausverkauft	Hut Regenbogen mit Paille
 gid://shopify/Product/15470020231553	draft-ausverkauft	Bild 3D Clown Hologram
 gid://shopify/Product/15469974061441	draft-ausverkauft	Dirndl 2-teilig silber altrosa
 gid://shopify/Product/15470034485633	draft-ausverkauft	Plüsch Maulwurf
+gid://shopify/Product/15447942136193	draft-ausverkauft	Elegantes Chiffon-Tuch mit Magnetverschluss
+gid://shopify/Product/15447967596929	draft-ausverkauft	Elch-Pyjama für die ganze Familie
+gid://shopify/Product/15447991189889	draft-ausverkauft	Kurzes Plissée-Top mit Rundhals
+gid://shopify/Product/15448107843969	draft-ausverkauft	Fisoew Cropped Sweatshirt Waffelstrick
+gid://shopify/Product/15448667062657	draft-ausverkauft	Chenille Wollmantel mit schmaler Passform
+gid://shopify/Product/15448667652481	draft-ausverkauft	Extra-langer dunkelroter Wollmantel für Damen
+gid://shopify/Product/15448673157505	draft-ausverkauft	Kurze Daunenjacke für Damen
+gid://shopify/Product/15448673812865	draft-ausverkauft	Gefütterter Daunenmantel mit Kapuze
+gid://shopify/Product/15500155748737	draft-ausverkauft	Schwarze Halbschuhe mit Rundabsatz und Klettverschluss
+gid://shopify/Product/15500930285953	draft-ausverkauft	Sandalen mit Klettverschluss im Römer-Stil
+gid://shopify/Product/15502187299201	draft-ausverkauft	Plateau-Sandalen mit klobigem Absatz
