@@ -281,3 +281,4 @@ gid://shopify/Product/16606063001991	Wetterfestes Wanderjacke mit Atmungsaktivit
 gid://shopify/Product/16607078089095	Bandschleifer-Aufsatz für Winkelschleifer
 gid://shopify/Product/16608700170631	Schweisserschutzbrille mit LCD-Anzeige
 gid://shopify/Product/16609720959367	Messing dekorative Schnalle
+gid://shopify/Product/16610081046919	Quarzuhr mit Stahlband

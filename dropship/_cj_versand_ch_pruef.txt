@@ -5255,3 +5255,6 @@ bequeme-romische-sandalen-fur-grossen-614500	2606240525591615100	16	10.88	ok	lan
 damen-sandalen-mit-wedge-absatz-offener-zeh-ho-615000	2606230727271615700	16	13.04	ok	landeseite
 rhinestenblume-wedge-sandalen-607600	2606220354211608300	16	11.10	ok	landeseite
 sommer-sandalen-mit-riemen-und-schmuckverschlu-600000	2606200806281600600	16	12.56	ok	landeseite
+keilabsatze-sandalen-633200	2606191030371633800	16	8.05	ok	landeseite
+spitzschuh-sandalen-aus-leder-620200	2606180917371620900	16	11.37	ok	landeseite
+hohlkehlsandalen-mit-blockabsatz-626600	2606180916361627200	16	13.76	ok	landeseite
