@@ -1060,7 +1060,8 @@ while true; do
           SCHARF=1 ZEIGEN=0 timeout 900 python3 automation/werkzeug_korb_shop.py 2>&1 | grep -v '^   '; \
           SCHARF=1 ZEIGEN=0 timeout 600 python3 automation/aroma_kategorie.py 2>&1 | grep -E '^(PLAN|FERTIG|ABBRUCH)'; \
           SCHARF=1 timeout 1800 python3 automation/haar_fein.py 2>&1 | grep -E '^(HAAR-FEIN|Kanarien|Google-Pfad)'; \
-          SCHARF=1 timeout 2400 python3 automation/kosmetik_fein.py 2>&1 | grep -E '^(KOSMETIK-FEIN|Kanarien|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+          SCHARF=1 timeout 2400 python3 automation/kosmetik_fein.py 2>&1 | grep -E '^(KOSMETIK-FEIN|Kanarien|Google-Pfad)'; \
+          SCHARF=1 timeout 900 python3 automation/rc_fein.py 2>&1 | grep -E '^(RC-FEIN|Kanarien|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
     # 07.10.2026 (Betreiber «das muss perfekt sein» / «super mache mehr»): haar_fein.py löst Googles Sammelkorb «Hair Care» auf
     # (Glätteisen/Föhn/Bürsten fein, Gesichtsdampfer/Rasierer/Munddusche/Luftreiniger in ihren Zweig), kosmetik_fein.py ordnet
     # «Cosmetics» per Titelwort fein (Pinsel → Makeup Brushes, Press-on → False Nails …) — beide setzen Google UND Shopify.

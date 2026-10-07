@@ -345,7 +345,10 @@ def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad):
             stat["kein-treffer"] += 1
             if len(bsp["(kein Treffer)"]) < ZEIGEN: bsp["(kein Treffer)"].append(f'{p["title"][:60]}  [G: {g[len(zweig):] or "—"}]')
             continue
-        sid = shopify_ziel(neu, karte)
+        if isinstance(neu, tuple):      # (Google-Pfad, Shopify-ID) — Regel kennt eine feinere Shopify-Klasse als die Zuordnung
+            neu, sid = neu
+        else:
+            sid = shopify_ziel(neu, karte)
         cid = ((p.get("category") or {}).get("id") or "").split("/")[-1]
         if neu == g and sid == cid:
             stat["stimmt"] += 1; continue
