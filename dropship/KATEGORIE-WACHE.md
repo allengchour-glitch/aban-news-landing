@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-07T15:17Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-07T16:14Z
 
-Aktive gescannt: 9 · ohne Kategorie: 9 · heute gesetzt: 8 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 18 · ohne Kategorie: 18 · heute gesetzt: 17 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- v-ausschnitt-langrock-mit-doppelblusenarmel-612700 · Damenmode → Apparel & Accessories > Clothing
-- navy-blauer-drapierter-maxi-rock-618900 · Damenmode → Apparel & Accessories > Clothing
-- gruner-blumenprint-top-mit-v-ausschnitt-622700 · Damenmode → Apparel & Accessories > Clothing
-- halloween-blumen-kleid-629300 · Damenmode → Apparel & Accessories > Clothing
-- a-linien-blumenkleid-in-weiss-639700 · Damenmode → Apparel & Accessories > Clothing
+- stainless-steel-futter-fur-hund-katze-908032 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- ceramische-katzen-und-hundeschale-2-l-746048 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- katzen-trinkschussel-mit-automatischer-zirkula-163584 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- katzenwasserschussel-aus-keramik-607936 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- katzen-wasserspender-aus-keramik-409152 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
 

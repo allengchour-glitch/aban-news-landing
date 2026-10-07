@@ -131,6 +131,16 @@ def main():
               for e in blockiert]
         z += [""]
     open(BERICHT, "w", encoding="utf-8").write("\n".join(z) + "\n")
+    # 07.10.2026 (Betreiber «mir den paylink schicken»): einmal pro Tag und Auftrag eine Erinnerung aufs Handy (ntfy).
+    try:
+        from betreiber_push import senden, CJ_BESTELLUNGEN
+        tag = time.strftime("%Y-%m-%d")
+        for e in offen:
+            senden(f"{e['nr']}-erinnerung-{tag}", f"💳 Noch unbezahlt: {e['nr']} · ${e['betrag']:.2f}",
+                   f"Liegt seit {e['datum']} im CJ-Warenkorb. Tippen → CJ → Bestellungen → {e['nr']} → Pay.",
+                   klick=CJ_BESTELLUNGEN, prio="default")
+    except Exception as ex:
+        print(f"   (Push-Erinnerung gescheitert: {type(ex).__name__})")
 
     teile = []
     if offen:

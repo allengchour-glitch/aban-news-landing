@@ -44,6 +44,25 @@
 
 
 
+## 2026-10-07 16:35 UTC · 💳 «bei bestellung sofort alles erledigen und mir den paylink schicken» — Handy-Push über ntfy
+GEMESSEN: CJ verbunden (Token 4,2 T), `cj_fulfill_runner.sh` legt bezahlte Bestellungen selbst bei CJ an (createOrderV2) und schiebt
+Tracking zurück — aber nur alle 20 min, und «zu zahlen $X» stand nur im Log/in der Stunden-Ampel. Bezahlen bleibt Betreiber-Klick
+(CJ-Guthaben erst ab USD 2'000). Kein Benachrichtigungskanal vorhanden (Telegram-Helfer ohne Token; Skripte erreichen keine Konnektoren).
+GETAN: `automation/betreiber_push.py` (ntfy.sh, gratis, ohne Konto; geheimes Thema NUR in Env NTFY_TOPIC / /etc/luxe/secrets.env /
+/tmp/ntfy_topic — nie im öffentlichen Repo; Doppel-Sperre dropship/_betreiber_push.txt). `cj_order_engine.py` meldet sofort: angelegt
+(Betrag, Kundenpreis, Marge, Versand, Klick → CJ-Konsole) + jeden Fehlerfall (Telefon, gemischt, Variante, kein CH-Versand, CJ lehnt ab).
+`cj_zahlung_offen.py`: tägliche Erinnerung je unbezahltem Auftrag. Runner 20 → 5 min (greift nach dem nächsten Neustart des Runners).
+Testnachricht zugestellt. OFFEN: Betreiber abonniert das Thema in der ntfy-App; genaue CJ-Bestellseiten-URL unbekannt (Link = Konsole
+my.html); für Dauerhaftigkeit NTFY_TOPIC als Umgebungsvariable (Cloud) bzw. in /etc/luxe/secrets.env (Hetzner, dort läuft die Engine auch).
+
+## 2026-10-07 16:25 UTC · 🧰 «mache verbesserung»: Werkzeug-Sammelkorb an der Quelle — eine Regeldatei für Importer und Wächter
+Regeln aus google_kategorie_umzug.py nach `automation/data/werkzeug_korb.json` (vorrang 4 / werkzeugwort / kreuz 15); Python und
+`google_kategorie.mjs::werkzeugKorb()` lesen dieselbe Datei; `cj_category_fill.mjs` setzt bei «Werkzeug & Heimwerken» mit Treffer schon
+beim Anlegen Typ (typAusKategorie), Tags ohne werkzeug/heimwerken und Google-Kategorie. Gleichlauf-Test 1'253 Titel: 0 Abweichungen
+ausserhalb Hardware (erste Fassung 21 — die 4 alten Vorrang-Regeln standen nur in Python, «Nagelzange» braucht Vorrang VOR dem
+Werkzeugwort). produkttyp_aus_kategorie.mjs + Musical Instrument Accessories. LEHRE: Wer Regeln in zwei Sprachen braucht, legt sie
+in EINE Datendatei und testet den Gleichlauf auf dem ganzen Bestand — nicht nur auf den Kanarien.
+
 ## 2026-10-07 15:05 UTC · 🧰 «mache verbesserung»: Shop-Seite des Werkzeug-Sammelkorbs nachgezogen (80 Produkte)
 Nach dem Google-Umzug standen Kalimba/Regenschirm/Kerzenhalter im SHOP weiter als Typ «Werkzeug & Heimwerken», Tags werkzeug/
 heimwerken (Werkzeug-Kollektion) und Shopify-Kategorie Tools. Neu `automation/werkzeug_korb_shop.py`: Quelle NUR das Umzugs-Ledger
@@ -18655,3 +18674,4 @@ Verschoben am 04.10.2026:
 - 2026-10-02 · 📦 **«ab wann bei iris cj melden»: #1020 als ⛔ «63h ohne Scan» gemeldet, CJ zeigt «Label created, Warehouse processing» seit 30.09. 04:48 — gemessen Übergabe 1–5 T → `versand_stillstand.py`: Info ab 48 h mit «Iris erst ab …», ⛔ «JETZT Iris melden» ab 120 h.** Alarm-Schwelle an der gemessenen Normalzeit → Journal 02.10.
 - 2026-10-05 · 📈 **Semrush Runde 3 + Keyword-Ernte: 8 neue Kollektionen (32'100/Mt), 40 Seiten Platz 41–100, Jailbreak-Dongle als «USB-Stick» (Platz 40 ausserhalb des Kontaktbogens) → `heikel_zweck` Kopierschutz-Regel; 6'351 Google-CH-Vorschläge gratis; `api_units` = Kontostand → Semrush LEER, Archiv `dropship/semrush/ARCHIV.md`; UI-Export per Bot abgelehnt (ToS).** Kontaktbogen deckt nur 24 → Rest per Beschreibungsregel → `dropship/semrush/README.md`
 - 2026-10-05 · 🔪 **Klingen-Loch: Faltmesser (Ausnahme «anhänger»), Rasiermesser (Gerät «rasier»), Veredelungsmesser (Messgerät «…ungsmesser») ACTIVE trotz #1017 → `handklinge_immer` vor allen Ausnahmen (py+mjs, 65/65), 3 gedraftet; Keyword-Runde: 33 Kollektionen + 60 Produkte mit CH-Nachfrage-Begriff.** Ausnahmelisten fressen echte Messer → Journal 05.10. 11:20
+- 2026-10-05 · 🎯 **Verbesserungsrunde: Social-Jury lehnte jeden Post ab — Gemini/OpenAI leer, Groq-Bildmodell (einziges) von Bildtausch/Kauderwelsch/Produkttext auf allen 3 Schlüsseln aufgebraucht → `zweitmodell.reserviert()`: qwen auf Schlüssel 3 nur für Jury + Bestell-Bildvergleich, Marke dort 20 min; Wächter `--reserve-test`.** Kundenweg bekommt Reserve → `dropship/GROQ-VORRANG-RESERVE-2026-10-05.md`

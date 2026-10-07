@@ -15,7 +15,7 @@ const PLUESCH_TEXTIL=new RegExp(_plt.textil,'i');
 const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
-import {googleKategorie} from './google_kategorie.mjs';
+import {googleKategorie, werkzeugKorb, WERKZEUG_TYPEN} from './google_kategorie.mjs';
 import {typAusKategorie} from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt Sammeltyp
 import {seoTitel} from './seo_titel.mjs';   // 05.10.: SEO-Titel ≤ 70 ohne stille Kappung
 import {materialKanonisch} from './material_kanonisch.mjs';
@@ -879,6 +879,13 @@ for(const [cat,label] of grp.cats){
    }
    // 05.10.2026 (Plan Punkt 16): Sammeltypen (Gadget/Trend-*) sagen im Filter nichts — Typ aus der Google-Kategorie,
    // Sammeltyp bleibt nur ohne Treffer. Feste Gruppentypen (Nageldesign, Küche & Bar …) bleiben unberührt.
+   // 07.10.2026: Sammelkorb «Werkzeug» — Kalimba, Regenschirm, Kerzenhalter kamen als «Werkzeug & Heimwerken» mit Tags
+   // werkzeug/heimwerken (= Werkzeug-Kollektion). Ohne Werkzeugwort + eindeutiges Warenwort → Typ aus dem Zielpfad, Tags weg.
+   // Gleiche Regel wie google_kategorie_umzug.py / werkzeug_korb_shop.py (automation/data/werkzeug_korb.json).
+   if(WERKZEUG_TYPEN.has(typeFinal)){
+     const wk=werkzeugKorb(title); const tk=wk&&typAusKategorie(wk,title);
+     if(tk){ typeFinal=tk; tagsFinal=tagsFinal.filter(t=>t!=='werkzeug'&&t!=='heimwerken'); }
+   }
    if(['Trend-Produkt','Trend-Gadget','Gadget','Gadgets'].includes(typeFinal)){
      const tk=typAusKategorie(googleKategorie(title,tagsFinal,typeFinal),title); if(tk) typeFinal=tk;
    }

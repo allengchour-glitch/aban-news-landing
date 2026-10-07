@@ -31,5 +31,7 @@ while true; do
   git add dropship/_cj_orders_done.txt 2>/dev/null
   git diff --cached --quiet || git commit -q -m "CJ-Bestell-Ledger [skip ci]"
 
-  sleep 1200
+  # 07.10.2026 (Betreiber «bei bestellung sofort»): 20 → 5 Minuten; ein Lauf ohne neue Bestellung kostet nur die
+  # CJ-Listenabfrage (~3 Aufrufe), bei ~288 Läufen/Tag weit unter dem Punkte-Topf.
+  sleep 300
 done

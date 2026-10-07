@@ -25,6 +25,20 @@ import urllib.parse
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
+# 07.10.2026 (Betreiber «bei bestellung sofort alles erledigen und mir den paylink schicken»): jede Bestellung, die
+# den Betreiber braucht (bezahlen ODER Fehler), geht sofort als Handy-Nachricht raus (ntfy, einmal je Schlüssel).
+try:
+    from betreiber_push import senden as _push, CJ_BESTELLUNGEN
+except Exception:          # Push darf den Bestell-Automaten nie aufhalten
+    _push, CJ_BESTELLUNGEN = None, "https://www.cjdropshipping.com/my.html"
+
+
+def melde(schluessel, titel, text):
+    if _push and not DRY:
+        try:
+            _push(schluessel, titel, text, klick=CJ_BESTELLUNGEN)
+        except Exception as e:
+            print(f"    (Push gescheitert: {type(e).__name__})", flush=True)
 
 CJTOK = open("/tmp/_cjtok").read().strip()
 STOK  = open("/tmp/cj_shop_token.txt").read().strip()
@@ -396,6 +410,7 @@ def main():
             print(f"  {o['name']}: ℹ️ keine Kunden-Telefonnummer — Händler-Nummer als Kontakt", flush=True)
         if not re.fullmatch(r'[\d +\-()]{6,32}', tel or ""):
             print(f"  {o['name']}: ⚠️ keine brauchbare Telefonnummer — CJ lehnt das ab, User fragen", flush=True)
+            melde(f"{o['name']}-tel", f"⚠️ Bestellung {o['name']}: Telefonnummer fehlt", "CJ nimmt die Bestellung ohne Telefonnummer nicht an — bitte in Shopify ergänzen.")
             continue
 
         alle = o["lineItems"]["nodes"]
@@ -415,6 +430,7 @@ def main():
             # Fulfillment eine "versendet"-Mail fuer Ware ausloesen, die nie bestellt wurde.
             fremd = [li.get("sku") for li in alle if li not in items]
             print(f"  {o['name']}: ⚠️ gemischte Bestellung (auch {fremd}) — manuell aufteilen", flush=True)
+            melde(f"{o['name']}-gemischt", f"⚠️ Bestellung {o['name']}: gemischt", f"Enthält auch Nicht-CJ-Ware ({', '.join(str(x) for x in fremd)[:120]}) — bitte manuell aufteilen.")
             continue
 
         produkte, ware_usd, fehler = [], 0.0, None
@@ -427,11 +443,13 @@ def main():
             time.sleep(0.5)
         if fehler:
             print(f"  {o['name']}: ⚠️ {fehler}", flush=True)
+            melde(f"{o['name']}-variante", f"⚠️ Bestellung {o['name']}: Variante nicht gefunden", f"{fehler[:180]}")
             continue
 
         opts = fracht(produkte)
         if not opts:
             print(f"  {o['name']}: ⚠️ keine Versandoption in die CH", flush=True)
+            melde(f"{o['name']}-versand", f"⚠️ Bestellung {o['name']}: kein CJ-Versand in die CH", "CJ bietet für diese Ware keine Versandoption in die Schweiz — Kunde informieren oder erstatten.")
             continue
         vk = float(o["totalPriceSet"]["shopMoney"]["amount"])
         wahl, hinweise = waehle_versand(opts, ware_usd, vk)
@@ -461,11 +479,15 @@ def main():
         r = cj("/api2.0/v1/shopping/order/createOrderV2", body)
         if r.get("code") != 200:
             print(f"    ❌ CJ lehnt ab: {r.get('message')}", flush=True)
+            melde(f"{o['name']}-abgelehnt", f"❌ Bestellung {o['name']}: CJ lehnt ab", f"{str(r.get('message'))[:180]}")
             continue
         d = r.get("data") or {}
         cjid = d.get("orderId") or ""
         f.write(f"{o['name']}\t{cjid}\tLX{nr}\t${gesamt:.2f}\n"); f.flush()
         print(f"    ✅ angelegt LX{nr} ({cjid}) — liegt im CJ-Warenkorb, zu zahlen ${gesamt:.2f}", flush=True)
+        melde(f"LX{nr}-angelegt", f"💳 Bestellung {o['name']} bezahlen: ${gesamt:.2f}",
+              f"CJ-Auftrag LX{nr} liegt bezahlbereit im Warenkorb. Kunde zahlte CHF {vk:.2f}, Marge ≈ CHF {marge:.2f}, "
+              f"Versand {wahl['logisticName']} ({wahl['logisticAging']} Tage). Tippen → CJ → Bestellungen → LX{nr} → Pay.")
         time.sleep(1)
 
 
