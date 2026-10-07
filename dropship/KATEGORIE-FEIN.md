@@ -1,22 +1,25 @@
-# Feinkategorie (automatisch, 2026-10-07 21:04 UTC)
+# Feinkategorie (automatisch, 2026-10-07 21:08 UTC)
 
-Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
+Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
 
 | Zustand | Produkte |
 |---|---:|
 | gleich | 37773 |
-| anderer-zweig | 8000 |
+| anderer-zweig | 7775 |
 | keine-zuordnung | 3395 |
 | kein-google | 1662 |
 | schon-im-ledger | 424 |
+| kreuz | 343 |
 | titelprobe-nein | 230 |
-| kreuz | 118 |
+| verfeinern | 225 |
 | ohne-kategorie | 12 |
-| verfeinern | 0 |
-| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
+- 124 → Linens & Bedding > Bedding > Pillows
+- 50 → Linens & Bedding > Bedding > Blankets
+- 29 → Linens & Bedding > Bedding > Duvet Covers
+- 22 → Linens & Bedding > Towels > Bath Towels & Washcloths
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

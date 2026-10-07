@@ -5086,3 +5086,9 @@ einfaches-portemonnaie-mit-rfid-schutz-612300	2601140616421612600	16	6.33	ok	lan
 herren-leder-geldbeutel-289921	2011358633495924737	0	-	KEINE CH-Option → DRAFT	landeseite
 minimalistisches-airtag-geldborse-fur-herren-757377	2011356185445363714	0	-	KEINE CH-Option → DRAFT	landeseite
 minimales-kartenhalter-wallet-mit-rfid-schutz-720065	2011353697635549185	0	-	KEINE CH-Option → DRAFT	landeseite
+minimalistisches-portemonnaie-mit-kartenfach-370946	2011352289862782978	0	-	KEINE CH-Option → DRAFT	landeseite
+smart-wallet-mit-airtag-halter-286978	2011357060574310401	0	-	KEINE CH-Option → DRAFT	landeseite
+retro-leder-geldborse-616300	2601120649441616600	16	6.77	ok	landeseite
+grosses-leder-geldborse-mit-kartenfachern-634800	2601100629311635000	16	6.77	ok	landeseite
+adjustable-silberringe-616300	2607060703231612400	16	4.47	ok	landeseite
+opalring-mit-iris-effekt-604400	2607060209261605000	16	4.40	ok	landeseite
