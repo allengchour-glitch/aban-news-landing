@@ -5127,3 +5127,4 @@ herzanhanger-aus-titanstahl-317569	2073887689503563777	16	4.66	ok	landeseite
 vintage-ohrhanger-mit-zirkon-283649	2073999512315781121	16	5.02	ok	landeseite
 retro-ohrhanger-mit-emaille-blumen-066370	2074027977282838530	16	5.20	ok	landeseite
 retro-blumen-ohrstecker-646402	2074043198840143874	16	5.20	ok	landeseite
+vintage-blumenstecker-813633	2074044224200671234	16	5.20	ok	landeseite
