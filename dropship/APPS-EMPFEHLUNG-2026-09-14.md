@@ -56,3 +56,4 @@ umgestellt ist** — sonst verkauft der Shop ein Produkt ohne Drucker. Sicher we
 WAZP+, Collective, SEOWILL Sticky Cart, Shopwaive, SimGym (falls keine Simulation läuft), Chatty (Shopify Inbox ist der Chat).
 BEHALTEN: CJdropshipping, Swiss Post Labels, Forms, MetaShop erst nach Blick auf «letzte Aktivität» (offizieller Kanal
 «Facebook & Instagram» ist zusätzlich verbunden → MetaShop ist vermutlich doppelt).
+- 07.10. 18:40: MetaShop-Detailseite (Betreiber-Screenshot): 0 Erweiterungen aktiv, «Keine Aktivität in den letzten 30 Tagen», liest Kunden + Produkte, schreibt Shop-Analysen → **deinstallieren**; der offizielle Kanal «Facebook & Instagram» bleibt verbunden.
