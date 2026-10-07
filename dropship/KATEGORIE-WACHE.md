@@ -1,15 +1,14 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-07T21:07Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-07T22:03Z
 
-Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- eisenpfanne-mit-elektrischem-heizsystem-619900 · Küche & Bar → Home & Garden > Kitchen & Dining
-- baby-essstuhl-mit-kopfkissen-rutschbalken-und-600600 · Küche & Bar → Home & Garden > Kitchen & Dining
-- intelligenter-mullbehalter-8-l-zylindrisch-616500 · Küche & Bar → Home & Garden > Kitchen & Dining
-- kupfer-wasserhahn-mit-universalarm-623900 · Küche & Bar → Home & Garden > Kitchen & Dining
-- 7-er-eierkocher-mit-dampf-und-edelstahl-heizpl-615900 · Küche & Bar → Home & Garden > Kitchen & Dining
+- led-lichtstreifen-cartoon-lowe-nachtlicht-635400 · Beleuchtung → Home & Garden > Lighting
+- doppelkopf-wandlampe-aussenlicht-ip54-608300 · Beleuchtung → Home & Garden > Lighting
+- nachtlicht-mit-duft-aroma-609200 · Beleuchtung → Home & Garden > Lighting
+- baby-olympia-fleece-romper-warm-dick-607800 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's One-Pieces
 
