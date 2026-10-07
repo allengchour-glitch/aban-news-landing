@@ -9626,3 +9626,9 @@ gid://shopify/Product/15448525046145	1791331881	ok	15 Shop / 12 CJ / 3 fehlend /
 gid://shopify/Product/15448704352641	1791331881	produkt-weg	gedraftet (CJ-CJMY292704001AZ)
 gid://shopify/Product/15448794497409	1791331881	ok	6 Shop / 2 CJ / 4 fehlend / 4 DENY
 gid://shopify/Product/15448887001473	1791331881	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
+gid://shopify/Product/15449064898945	1791331881	ok	5 Shop / 4 CJ / 1 fehlend / 1 DENY
+gid://shopify/Product/15449426067841	1791331881	ok	26 Shop / 27 CJ / 2 fehlend / 2 DENY
+gid://shopify/Product/15449427247489	1791331881	ok	96 Shop / 41 CJ / 55 fehlend / 55 DENY
+gid://shopify/Product/15449428525441	1791331881	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15449431081345	1791331881	ok	9 Shop / 6 CJ / 3 fehlend / 3 DENY
+gid://shopify/Product/15449431277953	1791331881	ok	7 Shop / 3 CJ / 4 fehlend / 4 DENY
