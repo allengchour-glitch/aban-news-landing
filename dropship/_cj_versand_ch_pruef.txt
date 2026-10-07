@@ -4780,3 +4780,6 @@ bequeme-schlabberhosen-618700	2606180957341619400	16	10.83	ok	landeseite
 slim-fit-jeans-606600	2606171222131607300	16	11.00	ok	landeseite
 bequeme-jeans-612200	2606171013221612900	16	11.60	ok	landeseite
 schmale-arbeitshosen-634100	2606170337021634700	16	8.79	ok	landeseite
+bequeme-freizeithose-625500	2606161003371626500	16	12.21	ok	landeseite
+distress-jeans-slim-fit-610700	2606160906211611300	16	12.21	ok	landeseite
+stretch-blue-jeans-617800	2606160124121618500	16	11.84	ok	landeseite
