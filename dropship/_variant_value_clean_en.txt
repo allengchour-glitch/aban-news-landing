@@ -19928,3 +19928,24 @@ gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/5834
 gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288868743	Black	Schwarz	2026-10-07T17:10Z
 gid://shopify/Product/15447964025217	Farbe	gid://shopify/ProductOptionValue/58348289360263	White	Weiss	2026-10-07T17:10Z
 gid://shopify/Product/15455957156225	Farbe	gid://shopify/ProductOptionValue/58358221734279	Comb	Kamm	2026-10-07T18:10Z
+gid://shopify/Product/16603759378823	Farbe	gid://shopify/ProductOptionValue/58358206202247	Apricot Black	Aprikose-Schwarz	2026-10-07T19:38Z
+gid://shopify/Product/16603759378823	Farbe	gid://shopify/ProductOptionValue/58358206235015	Apricot Blue	Aprikose-Blau	2026-10-07T19:38Z
+gid://shopify/Product/16603759378823	Farbe	gid://shopify/ProductOptionValue/58358206267783	Apricot Green	Aprikose-Grün	2026-10-07T19:38Z
+gid://shopify/Product/16603759378823	Farbe	gid://shopify/ProductOptionValue/58358206366087	White Brown	Weiss-Braun	2026-10-07T19:38Z
+gid://shopify/Product/16603759378823	Farbe	gid://shopify/ProductOptionValue/58358206497159	Apricot Blue Boy	Aprikose-Blau Jungen	2026-10-07T19:38Z
+gid://shopify/Product/16603759804807	Farbe	gid://shopify/ProductOptionValue/58358207775111	Blue	Blau	2026-10-07T19:38Z
+gid://shopify/Product/16603759804807	Farbe	gid://shopify/ProductOptionValue/58358207807879	Gray	Grau	2026-10-07T19:38Z
+gid://shopify/Product/16603759804807	Farbe	gid://shopify/ProductOptionValue/58358207840647	Apricot	Aprikose	2026-10-07T19:38Z
+gid://shopify/Product/16603759804807	Farbe	gid://shopify/ProductOptionValue/58358207873415	Green	Grün	2026-10-07T19:38Z
+gid://shopify/Product/16603763376519	Farbe	gid://shopify/ProductOptionValue/58358208627079	Green	Grün	2026-10-07T19:38Z
+gid://shopify/Product/16603763376519	Farbe	gid://shopify/ProductOptionValue/58358208659847	Blue	Blau	2026-10-07T19:38Z
+gid://shopify/Product/16603763376519	Farbe	gid://shopify/ProductOptionValue/58358208692615	Apricot	Aprikose	2026-10-07T19:38Z
+gid://shopify/Product/16603763671431	Farbe	gid://shopify/ProductOptionValue/58358209741191	Red	Rot	2026-10-07T19:38Z
+gid://shopify/Product/16603763671431	Farbe	gid://shopify/ProductOptionValue/58358209773959	Green	Grün	2026-10-07T19:38Z
+gid://shopify/Product/16603763671431	Farbe	gid://shopify/ProductOptionValue/58358209806727	Blue	Blau	2026-10-07T19:38Z
+gid://shopify/Product/16603763868039	Farbe	gid://shopify/ProductOptionValue/58358211051911	Blue	Blau	2026-10-07T19:38Z
+gid://shopify/Product/16603763868039	Farbe	gid://shopify/ProductOptionValue/58358211084679	Green	Grün	2026-10-07T19:38Z
+gid://shopify/Product/16603763868039	Farbe	gid://shopify/ProductOptionValue/58358211150215	Red	Rot	2026-10-07T19:38Z
+gid://shopify/Product/16603764064647	Farbe	gid://shopify/ProductOptionValue/58358212100487	Blue	Blau	2026-10-07T19:38Z
+gid://shopify/Product/16603764064647	Farbe	gid://shopify/ProductOptionValue/58358212133255	Green	Grün	2026-10-07T19:38Z
+gid://shopify/Product/16603764752775	Farbe	gid://shopify/ProductOptionValue/58358213345671	Apricot	Aprikose	2026-10-07T19:38Z
