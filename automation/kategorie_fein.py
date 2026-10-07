@@ -84,6 +84,8 @@ def ziel_fuer(cat_id, google_name, karte):
         return None, "keine-zuordnung"
     if sid == cat_id:
         return None, "gleich"
+    if cat_id.startswith(sid + "-"):
+        return None, "shopify-feiner"   # 07.10.: Shopify ist eine Unterklasse der Google-Zuordnung = einig (Drohnen, Diffuser)
     if not sid.startswith(cat_id + "-"):
         return None, "anderer-zweig"
     return sid, "verfeinern"
@@ -301,7 +303,7 @@ def selbsttest():
         (ziel_fuer("aa-1", "Apparel & Accessories > Clothing > Dresses", k) == ("aa-1-4", "verfeinern"), "verfeinert Nachfahre"),
         (ziel_fuer("aa-1", "Apparel & Accessories > Clothing", k)[1] == "gleich", "gleich bleibt"),
         (ziel_fuer("el", "Home & Garden > Decor", k)[1] == "anderer-zweig", "anderer Zweig nie"),
-        (ziel_fuer("aa-1-4", "Apparel & Accessories > Clothing", k)[1] == "anderer-zweig", "nie gröber"),
+        (ziel_fuer("aa-1-4", "Apparel & Accessories > Clothing", k) == (None, "shopify-feiner"), "nie gröber"),
         (ziel_fuer("aa-1", None, k)[1] == "kein-google", "ohne Google"),
         (ziel_fuer("aa-1", "Unbekannt > X", k)[1] == "keine-zuordnung", "unbekannter Name"),
         (ziel_fuer("ap-2", "Animals & Pet Supplies > Pet Supplies > Pet Leashes", k)[0] == "ap-2-1-9", "Präfix mit Bindestrich"),
