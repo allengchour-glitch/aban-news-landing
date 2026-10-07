@@ -1,52 +1,25 @@
-# Feinkategorie (automatisch, 2026-10-07 20:37 UTC)
+# Feinkategorie (automatisch, 2026-10-07 20:42 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36151 |
-| anderer-zweig | 8123 |
+| gleich | 37773 |
+| anderer-zweig | 8000 |
 | keine-zuordnung | 3395 |
-| kein-google | 1663 |
-| verfeinern | 1634 |
-| kreuz | 645 |
+| kein-google | 1662 |
 | schon-im-ledger | 300 |
 | titelprobe-nein | 230 |
+| verfeinern | 124 |
+| kreuz | 118 |
 | ohne-kategorie | 12 |
-| **geschrieben** | 1634 (Fehler 0) |
+| **geschrieben** | 124 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 582 → Backpacks
-- 500 → Handbags, Wallets & Cases > Handbags
-- 145 → Handbags, Wallets & Cases > Wallets & Money Clips
-- 107 → Duffel Bags
-- 68 → Fanny Packs
-- 43 → Messenger Bags
-- 31 → Briefcases
-- 28 → Suitcases
-- 16 → Clothing > Dresses
-- 13 → Pet Supplies > Cat Supplies
-- 10 → Pet Supplies > Pet Bowls, Feeders & Waterers
-- 10 → Pet Supplies > Dog Supplies
-- 10 → Clothing > Shirts & Tops
-- 6 → Kitchen & Dining > Kitchen Tools & Utensils
-- 6 → Jewelry > Rings
-- 5 → Cosmetic & Toiletry Bags
-- 5 → Tools > Screwdrivers
-- 5 → Kitchen & Dining > Cookware & Bakeware > Cookware > Cookware Sets
-- 5 → Decor > Throw Pillows
-- 4 → Kitchen & Dining > Kitchen Appliances
-- 4 → Pet Supplies > Pet Leashes
-- 3 → Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans
-- 3 → Kitchen & Dining > Kitchen Tools & Utensils > Cutting Boards
-- 2 → Tools > Tool Sets
-- 2 → Kitchen & Dining > Tableware > Coffee Servers & Tea Pots
-- 2 → Kitchen & Dining > Tableware > Dinnerware > Dinnerware Sets
-- 2 → Kitchen & Dining > Tableware > Flatware
-- 2 → Kitchen & Dining > Food & Beverage Carriers > Lunch Boxes & Totes
-- 2 → Decor > Artwork > Decorative Tapestries
-- 1 → Tools > Grinders
+- 118 → Handbags, Wallets & Cases > Handbags
+- 4 → Diaper Bags
+- 2 → Backpacks
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

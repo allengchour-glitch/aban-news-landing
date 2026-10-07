@@ -5036,3 +5036,7 @@ hellblaue-skinny-jeans-617500	2606110718521618100	16	13.88	ok	landeseite
 ripped-jeans-fur-herren-635600	2606101244301636200	16	11.00	ok	landeseite
 vintage-jeanshose-615600	2606100359461616300	16	11.00	ok	landeseite
 lichtblaue-herrenjeans-636600	2606100232021638700	16	9.47	ok	landeseite
+herren-capri-hosen-613400	2606090758481614400	16	11.24	ok	landeseite
+vintage-jeans-fur-herren-628700	2606070111071629400	16	12.21	ok	landeseite
+vintage-slim-hosen-mit-zip-629400	2606061328291620000	16	12.81	ok	landeseite
+herren-jeans-gerade-geschnitten-plus-size-632200	2606060210321633000	16	11.00	ok	landeseite
