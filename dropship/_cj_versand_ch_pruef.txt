@@ -4951,3 +4951,5 @@ tagliche-stretch-gewaschene-jeans-604500	2604200631221605000	16	13.16	ok	landese
 casual-jeans-mit-geraden-beinen-und-schlankmac-631200	2604190904071631700	16	12.56	ok	landeseite
 blauer-stretch-hosen-625500	2604190825461626000	16	11.00	ok	landeseite
 hochtaillierte-weitbeinige-damen-casualhosen-624400	2604190809131625000	16	11.49	ok	landeseite
+gerissene-slim-fit-dehnbare-damenjeans-616900	2604180934271617400	16	10.69	ok	landeseite
+damenhose-gerade-einfarbig-632200	2604180929491633100	16	9.20	ok	landeseite
