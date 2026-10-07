@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-10-07 22:02 UTC)
+# Feinkategorie (automatisch, 2026-10-07 22:58 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
@@ -9,15 +9,14 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 | keine-zuordnung | 3472 |
 | kein-google | 1662 |
 | shopify-feiner | 590 |
-| schon-im-ledger | 300 |
+| schon-im-ledger | 301 |
 | titelprobe-nein | 230 |
 | ohne-kategorie | 2 |
-| verfeinern | 1 |
-| **geschrieben** | 1 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 1 → Kitchen & Dining > Kitchen Appliances > Knife Sharpeners
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
