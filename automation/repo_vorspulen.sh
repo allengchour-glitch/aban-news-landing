@@ -10,6 +10,8 @@ cd "$(dirname "$0")/.." || exit 1
 B=claude/luxestyle-status-tztnn1
 S=$(mktemp -d)
 cp dropship/*.txt "$S"/ 2>/dev/null
+# 07.10.2026: auch die .tsv-Ledger sichern (85 Dateien, bisher bei reset --hard verloren) — Union unten nur als Schwanz-Union.
+cp dropship/*.tsv "$S"/ 2>/dev/null
 find .git -name "*.lock" -delete 2>/dev/null
 # Snapshot kann einen Tracking-Ref hinterlassen, dessen erwarteter Stand nicht mehr
 # existiert («cannot lock ref … is at X but expected Y», 26.08.) — Ref loeschen,
@@ -53,6 +55,11 @@ for f in os.listdir(snap):
         mehr += len(neu); print(f, "+", len(neu))
 print("union:", mehr)
 EOF
+# 07.10.2026: .tsv-Ledger per Schwanz-Union (nur Anhänge nach der letzten gemeinsamen Zeile; Gelöschtes bleibt draussen).
+# Gemessen: Bildtausch-Zeilen 06.10. 17:17 fehlten nach einem Restore → dieselben zwei Produkte 20:43 erneut getauscht.
+if python3 automation/ledger_union.py --selbsttest >/dev/null 2>&1; then
+  python3 automation/ledger_union.py "$S" "*.tsv" 2>&1 | sed "s/^/  [tsv] /"
+else echo "  [tsv] ⚠️ ledger_union Selbsttest rot — .tsv-Union übersprungen (Sicherung bleibt in $S)"; KEEP_S=1; fi
 # 24.09.2026: Die Union oben deckt nur dropship/*.txt. Post-Quittungen in den Queue-CSVs (Bildpost «Smartwatch Pro»
 # 02:13, IG 18138612319620139) blieben im Stash — Link-in-Bio und FB-Linkkommentar fanden das Produkt nicht mehr.
 if [ "$HAT_STASH" = 1 ]; then
@@ -63,6 +70,6 @@ if [ "$HAT_STASH" = 1 ]; then
   git stash show --name-only stash@{0} 2>/dev/null | sed "s/^/  /"
   echo "  zurueckholen: git checkout stash@{0} -- <datei>   ·  Liste: git stash list"
 fi
-rm -rf "$S"
+[ "${KEEP_S:-0}" = 1 ] || rm -rf "$S"
 git add -A dropship/ social/posts_image.csv social/ig_karussell.csv social/tiktok_karussell.csv automation/reels_seed.csv && git commit -q -m "Ledger-Union + Quittungs-Rückspiel nach Snapshot-Restore [skip ci]" 2>/dev/null
 timeout 45 git push origin "$B" 2>&1 | tail -1
