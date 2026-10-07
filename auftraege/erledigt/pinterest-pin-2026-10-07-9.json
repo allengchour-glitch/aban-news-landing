@@ -1,10 +1,10 @@
 {
   "typ": "skript",
   "skript": "pinterest_pin_erstellen.mjs",
-  "id": "pinterest-pin-2026-10-07-8",
-  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 8 von 10 heute.",
+  "id": "pinterest-pin-2026-10-07-9",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 9 von 10 heute.",
   "stand": "ok",
-  "begonnen": "2026-10-07T00:26:53.821Z",
+  "begonnen": "2026-10-07T00:27:01.110Z",
   "dauer_s": 5.9,
   "ergebnis": {
     "gepinnt": [],
