@@ -1,2 +1,0 @@
-console.log('intro vor Start:',await p.evaluate(()=>running='+!!window.__thRunning|running='+!!window.__thRunning));
-console.log('intro nach Start:',await p.evaluate(()=>running='+!!window.__thRunning|running='+!!window.__thRunning));
