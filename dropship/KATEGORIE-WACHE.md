@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-07T13:20Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-07T14:18Z
 
-Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 3 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 13 · ohne Kategorie: 13 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,7 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- long-partykleid-mit-tiefem-ausschnitt-626500 · Damenmode → Apparel & Accessories > Clothing
-- a-linien-top-mit-rundhalsausschnitt-lockerer-s-626100 · Damenmode → Apparel & Accessories > Clothing
-- lockere-lantern-armel-bluse-in-pastellfarben-633200 · Damenmode → Apparel & Accessories > Clothing
+- elegantes-sommerkleid-mit-taillenbinde-635700 · Damenmode → Apparel & Accessories > Clothing
+- automatischer-trinkbrunnen-fur-katzen-und-hund-244928 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- a-linien-kleid-mit-spitzenoptik-602400 · Damenmode → Apparel & Accessories > Clothing
+- grosse-keramik-naschschale-fur-hunde-782016 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- v-ausschnitt-lockeres-tie-dye-kleid-bis-knie-603100 · Damenmode → Apparel & Accessories > Clothing
 
