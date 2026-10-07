@@ -19949,3 +19949,4 @@ gid://shopify/Product/16603763868039	Farbe	gid://shopify/ProductOptionValue/5835
 gid://shopify/Product/16603764064647	Farbe	gid://shopify/ProductOptionValue/58358212100487	Blue	Blau	2026-10-07T19:38Z
 gid://shopify/Product/16603764064647	Farbe	gid://shopify/ProductOptionValue/58358212133255	Green	Grün	2026-10-07T19:38Z
 gid://shopify/Product/16603764752775	Farbe	gid://shopify/ProductOptionValue/58358213345671	Apricot	Aprikose	2026-10-07T19:38Z
+gid://shopify/Product/16603764883847	Farbe	gid://shopify/ProductOptionValue/58358213902727	Violet	Violett	2026-10-07T19:39Z

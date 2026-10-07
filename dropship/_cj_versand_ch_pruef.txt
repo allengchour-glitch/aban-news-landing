@@ -4942,3 +4942,6 @@ retro-jacquard-hose-hohem-bund-613300	2604240250411613800	16	14.60	ok	landeseite
 weite-damenjeans-mit-stickerei-610500	2604240146491611100	16	10.55	ok	landeseite
 rustikale-bestickte-denim-jeans-mit-hundemotiv-615300	2604240135351615900	16	10.83	ok	landeseite
 blaue-jeans-mit-cartoon-stickerei-609100	2604240128491609600	16	9.33	ok	landeseite
+modegewaschene-high-waist-jeans-fur-damen-601800	2604220641361602400	16	11.00	ok	landeseite
+hohe-gerade-jeans-612100	2604220137441612600	16	16.76	ok	landeseite
+patchwork-jeans-626800	2604211114481627300	16	19.65	ok	landeseite

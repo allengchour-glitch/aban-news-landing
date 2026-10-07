@@ -3555,3 +3555,4 @@ gid://shopify/Product/16603763671431	Farbe	3
 gid://shopify/Product/16603763868039	Farbe	3
 gid://shopify/Product/16603764064647	Farbe	2
 gid://shopify/Product/16603764752775	Farbe	1
+gid://shopify/Product/16603764883847	Farbe	1
