@@ -19,6 +19,10 @@ echo Tages-Depot (einmal pro Tag, ein zweiter Lauf am selben Tag aendert nichts)
 python tools\trading\ki_bot\bot.py --lauf --broker alpaca
 echo Krypto-Bot (einmal pro Tag) ...
 python tools\trading\krypto_bot\krypto.py --lauf
+if not "%BINANCE_FUTURES_API_KEY%"=="" (
+  echo Krypto-Pilot ^(Futures, einmal pro Tag^) ...
+  python tools\trading\krypto_bot\pilot.py --lauf
+)
 echo Daytrading-Waechter laeuft. Fenster schliessen = Bot aus. Not-Aus: stop.bat
 python tools\trading\ki_bot\signale.py --dauer --minuten 15 --broker alpaca
 pause

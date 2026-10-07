@@ -27,6 +27,40 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 - Keine Timing-Strategie ist klar besser als Zufall: Skill 78 % heisst, 22 % der zeitversetzten Zufallskopien waren besser.
 - Gegenprobe: Eine Regel, die den nächsten Tag kennt, erreicht 100 % Skill. Der Test findet echte Vorteile also.
 
+## 🛩️ Krypto-Pilot (Bitcoin-Futures, das Beste, was unsere Tests hergeben)
+
+`pilot.py` handelt die einzige Regel, die alle Prüfungen überstanden hat:
+- **Richtung:** über dem 200-Tage-Schnitt long, darunter short (`KRYPTO_SHORT=0` = nur long).
+- **Grösse:** Schwankungsziel 40 % pro Jahr, also bei wildem Markt automatisch kleiner. Höchstens `KRYPTO_MAX_HEBEL`
+  (Standard 1×, hart gedeckelt auf 2×).
+- **Stop an der Börse:** 4 Tages-Schwankungen unter bzw. über dem Kurs, auf den Markpreis, nach jedem Lauf neu gesetzt.
+- **Lügendetektor:** misst täglich, ob die Regel in den letzten 2 Jahren besser war als Zufall, und meldet es aufs Handy.
+  Er handelt bewusst **nicht**: Als Abschalter getestet, kostete er ab 2022 über 20 Prozentpunkte Rendite pro Jahr.
+
+Gerechnet im Futures-Modell (Gebühren, Funding, Liquidation über Tagestief und -hoch, Stand 07.10.2026):
+
+| Zeitraum | Pilot pro Jahr | Pilot schlimmster Einbruch | Long 1× pro Jahr | Long 1× Einbruch | Skill (Zufallstest) |
+|---|---|---|---|---|---|
+| ab 2015 | +32,2 % | −65 % | +47,2 % | −87 % | 94 % |
+| ab 2018 | +14,1 % | −65 % | +9,2 % | −85 % | 91 % |
+| ab 2022 | +30,7 % | −41 % | +1,2 % | −73 % | 92 % |
+
+Ehrlich: In der grossen Hausse bis 2017 verdiente einfaches Halten mehr. Der Pilot gewinnt vor allem in Baissen
+(short) und verliert weniger in Crashs. Ein Skill um 92 % ist ein Hinweis, kein Beweis. Ein −65-%-Einbruch kann auch mit
+dem Piloten passieren.
+
+**Starten (Testnetz):**
+1. Auf [testnet.binancefuture.com](https://testnet.binancefuture.com) anmelden, API-Schlüssel erzeugen (Spielgeld in USDT).
+   Antwortet die Adresse nicht mehr: `setx BINANCE_FUTURES_URL "https://demo-fapi.binance.com"` (Binance-Demo-Handel).
+2. `setx BINANCE_FUTURES_API_KEY "…"` und `setx BINANCE_FUTURES_API_SECRET "…"`, neues Fenster öffnen.
+3. `py tools\trading\krypto_bot\pilot.py --status`, dann `--lauf --trocken`, dann `--lauf`.
+4. Im Futures-Konto muss der **Einweg-Modus** eingestellt sein (kein Hedge-Modus), sonst verweigert der Pilot.
+5. `start-auto.bat` startet den Piloten einmal pro Tag mit, sobald die Futures-Schlüssel gesetzt sind.
+
+**Echtes Geld** nur mit `BINANCE_FUTURES_TESTNET=false` **und** `KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"`, nur mit einem
+Schlüssel **ohne** Auszahlungsrecht (wird geprüft) und erst nach Monaten im Testnetz. Futures können in deinem Land
+eingeschränkt sein. Not-Aus `stop.bat`: Der Pilot schliesst dann die Position und eröffnet keine neue.
+
 ## Futures (Hebel) — ehrlich gerechnet
 
 `python3 tools/trading/krypto_bot/futures.py` rechnet Bitcoin-Perpetuals wie bei Binance Futures: Entscheidung am
@@ -54,8 +88,8 @@ Stand 06.10.2026, Funding 0,01 % je 8 Stunden (in Boomphasen oft 0,03 %, dann no
 - Tageskurse von Yahoo: An der Börse waren die Ausschläge innerhalb des Tages teils tiefer (März 2020). Echte Liquidationen
   kämen eher früher.
 
-Ein Futures-Bot ist **nicht** gebaut: Der Schlüssel-Schutz im Binance-Anschluss verweigert absichtlich jeden Schlüssel mit
-Futures-Recht. Wer es trotzdem will, sollte zuerst Trend 200 Long/Short ohne Hebel im Testnetz laufen lassen.
+Der Spot-Anschluss (`broker_binance.py`) verweigert weiterhin jeden Schlüssel mit Futures-Recht. Futures laufen nur über
+den Krypto-Pilot oben, mit eigenen Schlüsseln und Testnetz als Standard.
 
 ## Regel
 
@@ -108,5 +142,6 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
+python3 tools/trading/krypto_bot/test_pilot.py    # 29 Tests, inkl. nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 18 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 ```
