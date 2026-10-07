@@ -5117,3 +5117,5 @@ geometrischer-titanium-stahl-halsketten-anhang-616400	2607060205581617100	16	4.4
 edles-kreuz-anhanger-625400	2607060126231626300	16	5.42	ok	landeseite
 taille-anhanger-aus-titanstahl-245250	2073892941975937025	16	4.71	ok	landeseite
 kristall-halskette-mit-troddel-696002	2073886797182164994	16	4.83	ok	landeseite
+damen-titan-halskette-107265	2073889193148964865	16	4.71	ok	landeseite
+luxuriose-perlen-halskette-865922	2073891769290752001	16	4.81	ok	landeseite
