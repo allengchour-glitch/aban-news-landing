@@ -351,3 +351,4 @@
 2026-10-04	gid://shopify/Product/16606856479111	natel	Vertikaler Magnethalter für iPhone 12
 2026-10-05	gid://shopify/Product/16604587917703	finken	Hausschuhe mit Blumen, offene Zehen
 2026-10-06	gid://shopify/Product/16608597213575	natel	Handy-Reparatur-Werkzeugset 11-teilig
+2026-10-07	gid://shopify/Product/16609675280775	natel	Multifunktions-Schraubendreher-Set für Handyreparatur

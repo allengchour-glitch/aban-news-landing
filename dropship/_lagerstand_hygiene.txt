@@ -318,3 +318,5 @@ gid://shopify/Product/15469943685505	draft-ausverkauft	Kostüm Hippie-Girl
 gid://shopify/Product/15469960823169	draft-ausverkauft	Kostüm Bierglas Overall
 gid://shopify/Product/15469978878337	draft-ausverkauft	Hut Regenbogen mit Pailletten
 gid://shopify/Product/15470020231553	draft-ausverkauft	Bild 3D Clown Hologram
+gid://shopify/Product/15469974061441	draft-ausverkauft	Dirndl 2-teilig silber altrosa
+gid://shopify/Product/15470034485633	draft-ausverkauft	Plüsch Maulwurf
