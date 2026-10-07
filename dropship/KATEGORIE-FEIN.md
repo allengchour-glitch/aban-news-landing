@@ -1,16 +1,16 @@
-# Feinkategorie (automatisch, 2026-10-07 14:14 UTC)
+# Feinkategorie (automatisch, 2026-10-07 15:12 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36010 |
-| anderer-zweig | 9644 |
-| keine-zuordnung | 3393 |
-| kein-google | 1651 |
-| schon-im-ledger | 323 |
-| titelprobe-nein | 221 |
-| ohne-kategorie | 119 |
+| gleich | 36164 |
+| anderer-zweig | 9661 |
+| keine-zuordnung | 3395 |
+| kein-google | 1663 |
+| schon-im-ledger | 300 |
+| titelprobe-nein | 226 |
+| ohne-kategorie | 9 |
 | verfeinern | 0 |
 | **geschrieben** | 0 (Fehler 0) |
 
@@ -19,7 +19,7 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
-- 133 × Dresses
+- 138 × Dresses
 - 56 × Bracelets
 - 8 × Necklaces
 - 7 × Coats & Jackets
