@@ -91,13 +91,20 @@ for probe in [
 import json  # noqa: E402
 
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                       "titel_dubletten.json"), encoding="utf-8") as f:
+                       "titel_handarbeit.json"), encoding="utf-8") as f:
     liste = json.load(f)
 liste.pop("_doku", None)
 for pfad, wert in liste.items():
-    # titel.py haengt das Jahr der alten Fassung wieder an -> 7 Zeichen Reserve
-    pruefe(f"Dubletten-Eintrag {pfad} passt mit Jahr",
-           len(t.ohne_jahr(wert)) + 7 <= 65, True)
+    # titel.py haengt die Jahresklammer der ALTEN Fassung wieder an. Nur wo die
+    # Seite eine trug, braucht der Eintrag die 7 Zeichen Reserve.
+    seite = os.path.join(t.ROOT, pfad)
+    reserve = 0
+    if os.path.exists(seite):
+        _, alter_titel = t.titel_von(t.lies(pfad))
+        if alter_titel and t.JAHR.search(alter_titel):
+            reserve = 7
+    pruefe(f"Handarbeit-Eintrag {pfad} passt in 65 Zeichen",
+           len(t.ohne_jahr(wert)) + reserve <= 65, True)
 # Innerhalb einer Sprache muss jeder Eintrag einmalig sein
 gesehen = {}
 for pfad, wert in liste.items():

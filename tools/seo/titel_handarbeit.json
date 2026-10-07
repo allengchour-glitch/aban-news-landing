@@ -1,5 +1,5 @@
 {
-  "_doku": "Uebersetzte Titel, die bei der Uebersetzung zusammengefallen sind. Je Paar spiegelt der neue Titel wieder den deutschen Titel der GLEICHEN Datei (Einzahl/Mehrzahl bzw. Synonym), damit beide Seiten eigenstaendig ranken koennen. Schluessel = Pfad, Wert = neuer Titel-Kern ohne Marken-Suffix.",
+  "_doku": "Von Hand geschriebene Titel-Kerne (ohne Marken-Suffix), Schluessel = Pfad. Zwei Anlaesse: (1) uebersetzte Titel, die bei der Uebersetzung zusammengefallen sind — je Paar spiegelt der neue Titel wieder den deutschen Titel der GLEICHEN Datei (Einzahl/Mehrzahl bzw. Synonym), damit beide Seiten eigenstaendig ranken koennen; (2) einzelne Seiten, bei denen die automatische Kuerzung einen unschoenen Satzrest liefert. titel.py haengt die Jahresklammer der alten Fassung wieder an, darum hoechstens 58 Zeichen pro Eintrag.",
   "en/ki-fuer-abbruch.html": "AI for demolition contractors — where it really saves time (2026)",
   "en/ki-fuer-buchhandlung.html": "AI for independent bookshops — where it really saves time (2026)",
   "en/ki-fuer-eisdiele.html": "AI for your ice cream parlour — help with the office work (2026)",
@@ -65,5 +65,8 @@
   "it/ki-fuer-sprachschule.html": "L'IA per la tua scuola di lingue — risparmiare tempo (2026)",
   "it/ki-fuer-sprachschulen.html": "L'IA per le scuole di lingue — risparmiare tempo (2026)",
   "it/ki-fuer-wintergarten.html": "L'IA per i costruttori di verande — risparmiare tempo (2026)",
-  "it/ki-fuer-wintergartenbau.html": "L'IA per i costruttori di verande — lavoro d'ufficio (2026)"
+  "it/ki-fuer-wintergartenbau.html": "L'IA per i costruttori di verande — lavoro d'ufficio (2026)",
+
+  "ki-sichtbarkeit-audit.html": "KI-Sichtbarkeits-Audit — nennen ChatGPT & Co. dich?",
+  "hypothek-rechner-schweiz.html": "Hypothekenrechner Schweiz 2026 — kann ich mir ein Haus leisten?"
 }

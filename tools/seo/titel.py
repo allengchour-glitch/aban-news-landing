@@ -44,6 +44,7 @@
 
 import collections
 import html
+import subprocess
 import json
 import os
 import re
@@ -52,7 +53,8 @@ import sys
 MAX = 65                 # Zeichen, ab hier schneidet Google ab
 MIN_KOPF = 45            # kuerzer als das ist ein Kopf-Titel Verschwendung
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DUBLETTEN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "titel_dubletten.json")
+HANDARBEIT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "titel_handarbeit.json")
 
 # Nicht ausgelieferte oder fremde Ordner: Spiele, Videos, App, bezahlte Pakete,
 # das Archiv alter Ausgaben und der Build-Ordner.
@@ -78,7 +80,12 @@ HAENGER = {"für", "und", "mit", "oder", "the", "for", "and", "with", "de", "des
            # haeufige attributive Adjektive ohne eigenes Bezugswort
            # ("… Lattenrost & Schweizer"), ebenfalls gemessen
            "schweizer", "schweizerische", "schweizerischen", "echte", "echten",
-           "beste", "besten", "richtige", "richtigen", "ganze", "ganzen"}
+           "beste", "besten", "richtige", "richtigen", "ganze", "ganzen",
+           # nackte Artikel und Pronomen am Schluss ("… nicht die",
+           # "… mehr Zeit am", "… ob ChatGPT & Co. dich") — im Diff gefunden
+           "die", "das", "dem", "am", "im", "beim", "zum", "zur", "ans",
+           "aufs", "dich", "dir", "mich", "mir", "sich", "uns", "euch",
+           "ihn", "ihm", "them", "its", "il", "la", "lo", "gli", "une", "un"}
 
 
 # Beim Schneiden am Wortende kann ein Marken-Bruchstueck uebrig bleiben:
@@ -134,11 +141,19 @@ def kuerzen(titel):
 
 
 def seiten():
-    for pfad, ordner, dateien in os.walk(ROOT):
-        ordner[:] = [o for o in ordner if o not in SKIP and not o.startswith(".")]
-        for datei in sorted(dateien):
-            if datei.endswith(".html"):
-                yield os.path.relpath(os.path.join(pfad, datei), ROOT)
+    """Nur eingecheckte Seiten. Ueber os.walk kamen die 10 310 generierten
+    Seiten aus ki-tools-radar/ mit (gitignorierte Build-Ausgabe, je nachdem
+    ob gerade ein Generator gelaufen ist) — und damit waere das Ergebnis
+    davon abhaengig, was vorher lief."""
+    roh = subprocess.run(["git", "-C", ROOT, "ls-files", "*.html"],
+                         capture_output=True, text=True, check=True).stdout
+    for pfad in sorted(roh.split("\n")):
+        if not pfad:
+            continue
+        if pfad.split("/")[0] in SKIP:
+            continue
+        if os.path.exists(os.path.join(ROOT, pfad)):
+            yield pfad
 
 
 def titel_von(text):
@@ -169,7 +184,7 @@ def ohne_jahr(titel):
 
 def dubletten_plan():
     """Neue Titel-Kerne fuer die zusammengefallenen Uebersetzungen."""
-    with open(DUBLETTEN, encoding="utf-8") as f:
+    with open(HANDARBEIT, encoding="utf-8") as f:
         daten = json.load(f)
     daten.pop("_doku", None)
     plan = []
@@ -186,9 +201,15 @@ def dubletten_plan():
         # twitter:title, JSON-LD "name" und <h1> nicht. Der jahreslose Kern
         # steckt in allen fuenf — ein Ersetzen haelt sie damit zusammen.
         alt = ohne_jahr(SUFFIX.sub("", titel))
-        plan.append({"file": pfad, "alt": alt, "neu": ohne_jahr(neu),
-                     "jahr_alt": JAHR.search(titel) is not None,
-                     "treffer": text.count(alt)})
+        # Im Dokument kann derselbe Text roh ("&") oder maskiert ("&amp;")
+        # stehen — beide Formen probieren, sonst trifft das Ersetzen nichts.
+        formen = [alt, html.escape(alt, quote=False)]
+        gefunden = next((f_ for f_ in formen if f_ in text), None)
+        plan.append({"file": pfad,
+                     "alt": gefunden or alt,
+                     "neu": html.escape(ohne_jahr(neu), quote=False)
+                            if gefunden and gefunden != alt else ohne_jahr(neu),
+                     "treffer": text.count(gefunden) if gefunden else 0})
     return plan
 
 
