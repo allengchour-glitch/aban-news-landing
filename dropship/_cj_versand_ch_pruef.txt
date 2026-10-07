@@ -4964,3 +4964,7 @@ weisser-pullover-mit-fleece-futter-632200	2606040954471632800	16	7.85	ok	landese
 herren-knit-sweater-mit-niedlichem-katzenprint-606100	2606020538121606800	16	10.50	ok	landeseite
 wollpullover-fur-herren-einfarbig-605600	2606020347531606300	16	8.53	ok	landeseite
 herren-thermal-halsbund-pullover-602900	2606011033281603600	16	10.15	ok	landeseite
+herren-warm-strickpullover-628300	2606010747161629300	16	10.15	ok	landeseite
+dick-gestrickter-pullover-611200	2605270526221611700	16	10.83	ok	landeseite
+twist-knit-cardigan-605300	2605270251571605900	16	10.15	ok	landeseite
+fleecegefutterter-rundhals-high-neck-pullover-621100	2605270246201621600	16	11.84	ok	landeseite
