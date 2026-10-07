@@ -44,6 +44,19 @@
 
 
 
+## 2026-10-07 10:30 UTC · 🖼️ «das bild ist verzogen?» — IG-Karussell zeigte eine gestauchte englische Lieferanten-Infografik
+Betreiber-Screenshot: Karussell «Bodenstativ mit LED-Ringlicht für Livestreams» (CHF 64.90), Slide 6/8, Menschen schmal und lang,
+englischer Text («Storage of three major functions»). GEMESSEN: alle 8 Shopify-Bilder sind 800×800; `grund()` skaliert beide Achsen
+mit demselben Faktor → die Stauchung steckt im Lieferantenbild (hohe Infografik auf Quadrat gepresst). 5 der 8 Bilder sind solche
+Infografiken (OCR 9–32 englische Wörter), 3 Studiofotos (0). Die alte Rangfolge in `bilder()` bevorzugte «JPG quadratisch» — genau
+diese gestauchten Infografiken. FIX `automation/tiktok_karussell.py`: `_fremdtext()` (tesseract eng, psm 11, zwei Durchgänge
+Grau + Schwellwert >200 für weisse Schrift — ohne Schwellwert las Bild 2 «MULTI FUNCTION» 0 Wörter), ab 4 Wörtern wird das Bild
+für Produkt-Karussell und Top-Liste ausgelassen; unter 3 sauberen Bildern fällt das Produkt aus der Auswahl. Selbsttest
+`--fremdtext-test` 2/2. Stichprobe 40 neueste aktive × 3 Bilder: 25/120 markiert, Grenzfälle 4–6 Wörter per Kontaktbogen
+8/8 echter montierter Text («Chewing sound», «17.7 Inch - For Medium to Large Dogs»). Der Post selbst (IG DeK8Kk_CA33, 06.10.)
+bleibt live — Löschen nur auf Betreiber-Wort. LEHRE: «verzogen» zuerst am Quellbild messen, nicht am eigenen Code; eine
+Format-Heuristik (quadratisch = Studiofoto) belohnt gerade die Bilder, die der Lieferant auf Quadrat gepresst hat.
+
 ## 2026-10-07 09:35 UTC · 💳 #1004 auf Betreiber-Auftrag erstattet («1004 war meine bestellung, zurückfodern»)
 Eigenbestellung des Betreibers (LED-Laterne «Boho», BigBuy bb-S3414715, 25.06.), Ausführung am 12.09. vom Betreiber storniert,
 nie versendet, bezahlt CHF 31.90 über Shopify Payments, 0 erstattet. refundCreate (notify:false, Notiz) → Refund
@@ -18611,3 +18624,4 @@ Verschoben am 04.10.2026:
 - 2026-10-02 · 🎛️ **«feinkategorie filter verbessern?»: Facette «Farbe» las die Option «Farbe & Grösse» (8 Produkte; Kleider zeigten nur «Gelb»), keine Grösse/Kategorie, 151 Produkttypen → `produkttyp_vereinheitlichen.py` (2'620, Sperre gegen TYPE-Regeln, POD nie) + `farbmuster_filter.py` (19 Grundfarben → shopify.color-pattern, 13'612; nur Kategorien mit Merkmal «Color», sonst kippt die Charge), täglich; Filter-Umstellung = Betreiber-Klick Search & Discovery (keine API).** Facette nach Quelle prüfen, nicht nach Beschriftung → `dropship/FILTER-FEINKATEGORIE-2026-10-02.md`
 - 2026-10-02 · 🐾 **Tierschutz/Biozid: SEO-Lauf zeigte «Anti-Bell Halsband» mit Kontaktstiften im Bild (Text sagte nur «Vibration»); TSchV 76 Abs. 6 verbietet JEDEN Bellstopper (Zweck genügt), Floh-Halsbänder = Biozid mit Zulassungspflicht → Bildprüfung 35 Kandidaten (13 Strom, 4 davon ohne Wirkwort), 35 DRAFT, 4 Regeln + `nicht` je Regel in `tierschutz_geraet.json` (Node = Python 10/10); Nebenfunde Abhör-Tracker (StGB 179sexies) + JBL-Nachahmung gedraftet.** Rechts-Klassen brauchen eine ZWECK-Regel neben der Wirk-Regel → `dropship/TIERSCHUTZ-BIOZID-2026-10-02.md`
 - 2026-10-02 · 📦 **«ab wann bei iris cj melden»: #1020 als ⛔ «63h ohne Scan» gemeldet, CJ zeigt «Label created, Warehouse processing» seit 30.09. 04:48 — gemessen Übergabe 1–5 T → `versand_stillstand.py`: Info ab 48 h mit «Iris erst ab …», ⛔ «JETZT Iris melden» ab 120 h.** Alarm-Schwelle an der gemessenen Normalzeit → Journal 02.10.
+- 2026-10-05 · 📈 **Semrush Runde 3 + Keyword-Ernte: 8 neue Kollektionen (32'100/Mt), 40 Seiten Platz 41–100, Jailbreak-Dongle als «USB-Stick» (Platz 40 ausserhalb des Kontaktbogens) → `heikel_zweck` Kopierschutz-Regel; 6'351 Google-CH-Vorschläge gratis; `api_units` = Kontostand → Semrush LEER, Archiv `dropship/semrush/ARCHIV.md`; UI-Export per Bot abgelehnt (ToS).** Kontaktbogen deckt nur 24 → Rest per Beschreibungsregel → `dropship/semrush/README.md`
