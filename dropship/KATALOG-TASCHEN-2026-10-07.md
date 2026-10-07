@@ -36,3 +36,32 @@ Shopifys KI-Katalog (ChatGPT/Copilot lesen die Shopify-Kategorie) zeigen Taschen
 ## OFFEN
 8'116 «anderer Zweig» bleiben. Nächste grosse Paare (Export 15:09): Elektronik ↔ Ferngesteuertes Spielzeug (300,
 Drohnen), Elektronik ↔ Kameras (151), Elektronik ↔ Klimageräte (90, Ventilatoren). Gleiche Methode: Wortliste → beide Felder.
+
+## NACHTRAG 22:30 UTC — «das muss perfekt sein» / «super mache mehr»
+**Taschen fertig (GEMESSEN):** Google-Umzug Runde 2 (Wickeltasche → Diaper Bags, Postman → Messenger, Tiertragen bleiben
+draussen, Motiv-Rucksack bleibt Backpack; Kanarien 95/95) **9 gesetzt, 0 Fehler**; Shopify `kategorie_fein` mit frischem Export
+(51'496): KREUZ Brusttasche/Brustbeutel/Kreuzbody → Handbags 118, Diaper Bags 4, Backpacks 2 → **124 gesetzt, 0 Fehler**
+(vorher 1'634). Rücklese-Stichprobe 30 zufällige Produkte des Tages: **30/30 Google und Shopify im selben Zweig.**
+
+**Die 8'000 «anderer Zweig» waren zu einem Drittel keine Widersprüche, sondern Sammelkörbe:**
+| Paar (Shopify ‖ Google) | Anzahl | Befund |
+|---|---:|---|
+| Makeup / Nail Care / Skin Care ‖ «Cosmetics» | 2'662 | Google grob; Shopify-Feinklasse oft FALSCH (Pinselset = Makeup, Badeset = Makeup, Nagellack = Makeup, Organizer = Skin Care) |
+| Cosmetic Tools ‖ «Hair Care» | 891 | Google-Sammelkorb: Glätteisen, aber auch Gesichtsdampfer, Rasierer, Munddusche, Luftreiniger |
+
+Google aus Shopify ableiten hätte die Shopify-Fehler kopiert → **beide Felder aus dem Titel** (nie raten):
+1. **`kosmetik_fein.py`** (82 Kanarien): ~90 geordnete Wortregeln im Zweig Cosmetics — Bad vor Make-up, Nägel vor Make-up,
+   Werkzeug vor Ware («Lidschatten-Pinsel» = Pinsel), mehrere Make-up-Klassen = gemeinsame Oberklasse, über Gruppen hinweg
+   mit «Set» = Cosmetic Sets. Fallen aus dem Trockenlauf: «Nä**gel**» enthält «gel», «Peel-off Lipgloss» ≠ Maske,
+   «Haftcreme für Zahnprothesen»/«Haarcreme» ≠ Lotion, «Maniküre-Set «American Star»» = Kunstnägel, nicht Werkzeug,
+   «Spiegelglanz» ≠ Spiegel, LED-/EMS-Masken = Gerät. Plan 2'293 (Kunstnägel 436, Pinsel 234, Lidschatten 162 …),
+   ohne Treffer 548 bleiben.
+2. **`haar_fein.py`** (51 Kanarien, nutzt denselben Lauf): Fremdes zuerst (Munddusche, Zahnbürste, Rasierer, Epilierer,
+   Luftreiniger/-befeuchter, Ventilator, Gesichtsdampfer, Porenreiniger, Massage), dann Haar (Glätten+Locken in einem Gerät
+   = Styling-Gerät allgemein, Glätteisen, Lockenstab inkl. maschinell übersetzter Titel «Kurzlocken-Stick», «Haarkräusler»,
+   Föhn, Bürsten), Rest über die Kosmetik-Regeln. Plan 910 (580 verfeinert, 330 Zweigwechsel), ohne Treffer 56.
+Beide: Google-Ziel gegen die Google-Taxonomie, Shopify-Ziel aus Shopifys offizieller Zuordnung, gegen die Shop-Taxonomie
+geprüft; Rücklesen aus der Antwort; täglich im Aufseher (Block Google-Umzug) für Neuimporte.
+
+**OFFEN:** Rest «anderer Zweig» ~4'400: Luggage ‖ Handbags ohne Titelwort (542: Kühlbeutel, Handytasche …), Drohnen 300,
+Bettwäsche als Decor 203, Kameras 151, Ventilatoren 90; 56 Fremdkörper im Haar-Korb ohne Ziel (Socken, Teppich, Humidor).
