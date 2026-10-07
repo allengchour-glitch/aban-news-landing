@@ -319,3 +319,4 @@ gid://shopify/Product/16610040709511	winter-freizeitschuhe-aus-baumwolle-619600	
 gid://shopify/Product/16610040775047	zirkon-armband-zweifarbig-gelb-und-weiss-607600	Zirkon-Armband zweifarbig Gelb und Weiss
 gid://shopify/Product/16610185412999	zweiteiliges-damenkleid-mit-3d-effekt-626000	Zweiteiliges Damenkleid mit 3D-Effekt
 gid://shopify/Product/16611385246087	sommer-shirt-retro-blumenmuster-manner-610500	Sommer Shirt Retro Blumenmuster Männer
+gid://shopify/Product/16611393241479	langarmliges-bodycon-kleid-mit-halte-raum-und-619400	Langärmliges Bodycon-Kleid mit Halte-Raum und Kragen

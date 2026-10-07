@@ -44,6 +44,14 @@
 
 
 
+## 2026-10-07 16:45 UTC · 🌫️ Verbesserungsrunde: 154 Diffuser/Luftbefeuchter bei Google als «Hair Care», im Shop als «Cosmetic Tools»
+Ampel «unbekannte Typen 1 (Wellness & Aromatherapie)» → gemessen 154 aktive: Typ am 05.10. korrigiert, Shopify-Kategorie (hb-3-2-5)
+und Google (Hair Care) nie nachgezogen; kategorie_wache kannte den Typ nicht. `aroma_kategorie.py` (Titel am «für» teilen, Kopfstück
+entscheidet: Befeuchter/Diffuser/Duftöl; Kanarien 12/12 inkl. Trockenlauf-Fehltreffer «Aromadiffusor mit Duftölen»), SCHARF 154/0,
+zweiter Lauf 0; `kategorie_wache.typen_abgleich()` im --test meldet jeden vergebenen, unbekannten Typ (Gegenprobe vorher/nachher).
+LEHRE: Zweiter Fall heute — eine Typ-Korrektur ohne Kategorie/Google-Nachzug. Wer ein Feld umbenennt/neu vergibt, braucht einen
+Abgleich gegen alle Tabellen, die daraus ableiten. → `dropship/AROMA-KATEGORIE-2026-10-07.md`
+
 ## 2026-10-07 16:35 UTC · 💳 «bei bestellung sofort alles erledigen und mir den paylink schicken» — Handy-Push über ntfy
 GEMESSEN: CJ verbunden (Token 4,2 T), `cj_fulfill_runner.sh` legt bezahlte Bestellungen selbst bei CJ an (createOrderV2) und schiebt
 Tracking zurück — aber nur alle 20 min, und «zu zahlen $X» stand nur im Log/in der Stunden-Ampel. Bezahlen bleibt Betreiber-Klick
@@ -18675,3 +18683,4 @@ Verschoben am 04.10.2026:
 - 2026-10-05 · 📈 **Semrush Runde 3 + Keyword-Ernte: 8 neue Kollektionen (32'100/Mt), 40 Seiten Platz 41–100, Jailbreak-Dongle als «USB-Stick» (Platz 40 ausserhalb des Kontaktbogens) → `heikel_zweck` Kopierschutz-Regel; 6'351 Google-CH-Vorschläge gratis; `api_units` = Kontostand → Semrush LEER, Archiv `dropship/semrush/ARCHIV.md`; UI-Export per Bot abgelehnt (ToS).** Kontaktbogen deckt nur 24 → Rest per Beschreibungsregel → `dropship/semrush/README.md`
 - 2026-10-05 · 🔪 **Klingen-Loch: Faltmesser (Ausnahme «anhänger»), Rasiermesser (Gerät «rasier»), Veredelungsmesser (Messgerät «…ungsmesser») ACTIVE trotz #1017 → `handklinge_immer` vor allen Ausnahmen (py+mjs, 65/65), 3 gedraftet; Keyword-Runde: 33 Kollektionen + 60 Produkte mit CH-Nachfrage-Begriff.** Ausnahmelisten fressen echte Messer → Journal 05.10. 11:20
 - 2026-10-05 · 🎯 **Verbesserungsrunde: Social-Jury lehnte jeden Post ab — Gemini/OpenAI leer, Groq-Bildmodell (einziges) von Bildtausch/Kauderwelsch/Produkttext auf allen 3 Schlüsseln aufgebraucht → `zweitmodell.reserviert()`: qwen auf Schlüssel 3 nur für Jury + Bestell-Bildvergleich, Marke dort 20 min; Wächter `--reserve-test`.** Kundenweg bekommt Reserve → `dropship/GROQ-VORRANG-RESERVE-2026-10-05.md`
+- 2026-10-05 · 💸 **CJ-Fenster/Runde: EK-Boden 15 bei 3'703 Produkten OHNE CJ-Punkte (`kosten_boden15_korrigieren.py`, Aufseher-LIMIT 400 → 5'000, DRY 0 offen, Verlust 0) statt 40k Punkte über `cj_kosten_backfill`; #1021 = CJ-Ersatzware (Ticket), Nibosi gedraftet, Fabrikbestand 20'000 ≠ lieferbar (n=1).** Billigeres Werkzeug zuerst suchen → `dropship/EK-BODEN15-REST-2026-10-05.md`

@@ -78,7 +78,8 @@ TABELLE = {
     "Basteln & DIY": "ae-2-1", "Musikinstrumente": "ae-2-8", "Spielzeug & Spiele": "tg-5", "Spielzeug": "tg-5",
     "Auto-Zubehör": "vp-1", "Büro": "os", "Baby": "bt", "Partydeko": "ae-3-2",
     # Nachtrag 23.09. nach dem ersten Vollscan (4'181 unbekannt): IDs per taxonomy.categories(search:) gemessen.
-    "Kostüme & Verkleidung": "aa-3-3", "Werkzeug & Heimwerken": "ha-15", "Gaming-Zubehör": "el-18",
+    "Kostüme & Verkleidung": "aa-3-3", "Werkzeug & Heimwerken": "ha-15", "Wellness & Aromatherapie": "hg-3-39-5",   # 07.10.: Diffuser; Befeuchter/Duftöl zieht aroma_kategorie.py nach
+    "Gaming-Zubehör": "el-18",
     "Partydeko & Ballone": "ae-3-2", "Raucherzubehör": "hg-19", "3D-Druck": "el-13-2", "Süsswaren & Esswaren": "fb-2-3-1",
     "Haushalt & Wohnen": "hg-10", "Home & Living": "hg-3", "Wohnen & Dekoration": "hg-3", "Aufbewahrung & Ordnung": "hg-10-16",
     "Bügeltransfer": "ae-2-1", "Geschenkset": "hg-3",
@@ -527,7 +528,26 @@ def test():
         fehler += (not ok)
         print(f"  {'✅' if ok else '❌'} {typ[:16]:16s} | {titel[:48]:48s} → {ist or 'LEER':10s} (soll {soll})")
     print(f"KANARIEN: {len(KANARIEN) - fehler}/{len(KANARIEN)} richtig")
+    fehler += len(typen_abgleich())
     return fehler
+
+
+def typen_abgleich():
+    """07.10.2026: Typen, die die Typ-Werkzeuge VERGEBEN, die diese Tabelle aber nicht kennt. Anlass: produkttyp_vereinheitlichen
+    vergab seit 05.10. «Wellness & Aromatherapie» (VORRANG Diffuser) — hier unbekannt, neue Diffuser blieben ohne Kategorie,
+    154 alte standen weiter in «Cosmetic Tools». Jeder neue Typ muss hier landen, bevor er vergeben wird."""
+    import re as _r
+    import produkttyp_vereinheitlichen as ptv
+    bekannt = set(TABELLE) | set(SAMMELTYPEN) | set(KINDERTYPEN)
+    ziele = {v for v in ptv.TAX.values() if isinstance(v, str)} | {z for _, z in ptv.VORRANG}
+    try:
+        s = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "produkttyp_aus_kategorie.mjs"), encoding="utf-8").read()
+        ziele |= set(_r.findall(r":\s*'([^']+)',", s)) | set(_r.findall(r"\],\s*'([^']+)'\]", s))
+    except OSError:
+        pass
+    fehlend = sorted(z for z in ziele if z not in bekannt)
+    print(f"TYPEN-ABGLEICH: {'alle vergebenen Typen bekannt' if not fehlend else 'UNBEKANNT ' + ', '.join(fehlend)}")
+    return fehlend
 
 
 if __name__ == "__main__":
