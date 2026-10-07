@@ -96,7 +96,7 @@ def ziel_fuer(cat_id, google_name, karte):
 KREUZ = {
     ("lb", "aa-5-4"): re.compile(r"^(?!.*(?:motorrad|fahrrad|velo|bike|roller|pferd|sattel))"   # 07.10.: «Motorrad-Satteltasche»
                                  r".*(?:handtasche|umh[äa]nge|schultertasche|crossbody|clutch|abendtasche|\btote\b|shopper|"
-                                 r"henkeltasche|beuteltasche|baguette|hobo|bucket|sling)", re.I),
+                                 r"henkeltasche|beuteltasche|baguette|hobo|bucket|sling|brusttasche|brustbeutel|kreuzbody|einzeltrage|one-shoulder|schulterbeutel)", re.I),
     ("lb", "aa-5-5"): re.compile(r"geldb[öo]rse|portemonnaie|portmonee|brieftasche|\bwallet\b|kartenetui|kartenhalter|geldklammer", re.I),
 }
 
@@ -245,7 +245,9 @@ def kreuz_test():
          (kreuz_ziel("lb", W, k, "Herren-Geldbörse aus Rindsleder") == "aa-5-5", "Geldbörse lb→Wallets"),
          (kreuz_ziel("lb", H, k, "Marco Laiden Business Bag") is None, "ohne Pflichtwort bleibt"),
          (kreuz_ziel("el", H, k, "Umhängetasche") is None, "nur aus lb"),
-         (kreuz_ziel("lb", H, k, "Motorrad-Satteltasche 20L") is None, "Fahrzeugtasche bleibt")]
+         (kreuz_ziel("lb", H, k, "Motorrad-Satteltasche 20L") is None, "Fahrzeugtasche bleibt"),
+         (kreuz_ziel("lb", H, k, "Anti-Diebstahl Brusttasche für Herren") == "aa-5-4", "Brusttasche lb→Handbags"),
+         (kreuz_ziel("lb", H, k, "Isolierte Outdoor-Tasche · 28×22×40cm") is None, "Kühltasche bleibt")]
     for ok, n in t: print(("✓ " if ok else "✗ ") + n)
     return all(o for o, _ in t)
 
