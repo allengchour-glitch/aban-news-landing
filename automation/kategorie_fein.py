@@ -105,6 +105,35 @@ KREUZ = {
     ("hg-3", "hg-15-1-5"): re.compile(r"bettwäsche|bettbezug|bett-?set|duvet|bettdeckenbezug", re.I),
     ("hg-3", "hg-15-4-1"): re.compile(r"handt[uü]ch|badet[uü]ch|duscht[uü]ch|strandt[uü]ch|waschlappen", re.I),
 }
+# 07.10.2026 23:00 («super mache mehr»): Shopify «Electronics» (el) ist das grobe Typ-Signal für alles mit Akku/USB; Google kennt
+# die Ware (Ventilator, Wecker, Staubsauger, Massagegerät …). Zweigwechsel nur mit Pflichtwort; vage Ziele (Toys, Baby,
+# Fahrzeugteile) bleiben bewusst draussen.
+_EL = {
+    "hg-9-1-6": r"^(?!.*(ps5|ps4|xbox|raspberry|gehäuse|reinigungsspray|\bpc\b|cpu|laptop|notebook|kühler)).*(ventilator|lüfter|\bfan\b)",
+    "hg-9-1-9": r"luftbefeucht|befeuchter|humidifier",
+    "hg-9-1-2": r"luftreiniger|air purifier",
+    "hg-9-1-12": r"^(?!.*radiator-?thermostat).*(heizgerät|heizlüfter|heizer\b|radiator|heater)",
+    "hg-3-17": r"^(?!.*(ladestation|lautsprecher|speaker)).*(uhr\b|wecker|wanduhr|uhren\b|tischuhr)",
+    "hg-9-10": r"^(?!.*(akku|aufsatz|filter|ersatz|zubehör)).*(staubsauger|saugroboter|handsauger|nass-?trocken-?sauger)",
+    "hb-3-11": r"^(?!.*powerbank).*(massage|massager|massierer)",
+    "hb-3-12": r"zahnbürste|munddusche|flosser|zahnreinig",
+    "hb-3-14-7": r"haarentfern|epilier|nasenhaar|rasierer",
+    "hb-3-14-6": r"haarschneider|clipper|trimmer",
+    "hg-13": r"^(?!.*(mit\s+(\w+\s+)?licht|&\s*licht|und\s+licht|licht\s*(&|und)|roboter|dinosaurier|eisenbahn|auto\b|modell|kabel|pumpe|sterilisator|alarmanlage|selfie|stativ|ps5|nivellier|karussell|selbstauslöser|beauty-licht)).*(licht\b|lampe|leuchte|lichtleiste|projektionslicht)",
+    "hg-13-10": r"projektor|nachtlicht|sternen|galaxy",
+    "hg-2": r"türklingel|überwachung|alarm|sicherheitskamera",
+    "hg-2-3": r"sensor",
+    "hg-3-39": r"^(?!.*(locken|haar|well)).*(diffuser|diffusor|aroma)",
+    "hg-11-7": r"blender|mixer|entsafter|saftpresse|smoothie",
+    "co-1-4-17": r"stativ|gimbal|selfie",
+    "co": r"^(?!.*(detektor|detector)).*(kamera|camera|objektiv|fernglas|teleskop|mikroskop|lupe|nachtsicht)",
+    "tg-5-21": r"roboter|robot",
+    "tg-5-7": r"bauklotz|bausatz|\bmoc\b|bausteine|bauklötze",
+    "ha-15-30": r"feuerzeug",
+    "ae-2-8": r"gitarre|trommel|verstärker|klavier|keyboard|ukulele|kalimba",
+    "tg-5-15": r"modellauto|spielzeugauto|rennwagen",
+}
+KREUZ.update({("el", z): re.compile(m, re.I) for z, m in _EL.items()})
 
 
 def kreuz_ziel(cat_id, google_name, karte, titel):
