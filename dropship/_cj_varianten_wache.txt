@@ -9789,3 +9789,8 @@ gid://shopify/Product/15455730368897	1791347171	ok	2 Shop / 2 CJ / 0 fehlend / 0
 gid://shopify/Product/15455730532737	1791347171	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455730762113	1791347171	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455730794881	1791347171	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455730893185	1791347171	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455730925953	1791347171	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455745147265	1791347171	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455745180033	1791347171	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455745245569	1791347171	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
