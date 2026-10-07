@@ -9904,3 +9904,12 @@ gid://shopify/Product/15455825527169	1791347171	ok	15 Shop / 16 CJ / 0 fehlend /
 gid://shopify/Product/15455825625473	1791347171	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455825723777	1791347171	ok	66 Shop / 66 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455825854849	1791347171	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455825985921	1791347171	ok	60 Shop / 60 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455887950209	1791347171	ok	60 Shop / 60 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455890735489	1791347171	ok	60 Shop / 99 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455890932097	1791347171	ok	72 Shop / 72 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455891292545	1791347171	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455891784065	1791347171	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455892373889	1791347171	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455892603265	1791347171	ok	28 Shop / 28 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455895683457	1791347171	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
