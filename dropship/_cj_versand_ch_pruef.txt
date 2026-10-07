@@ -4795,3 +4795,16 @@ franzosisches-taschenhemd-607400	2607060044241608200	16	6.70	ok	landeseite
 elegantes-midi-kleid-600300	2607060715561600900	16	10.15	ok	landeseite
 losgelegtes-maxi-kleid-601500	2607060710591602100	16	8.11	ok	landeseite
 schwarzes-spitzenkleid-616100	2607060656481616700	16	8.04	ok	landeseite
+elegantes-sommerkleid-608700	2607060643481609300	16	8.79	ok	landeseite
+elegantes-kleid-616300	2607060549381617000	16	9.47	ok	landeseite
+weiter-midi-rock-635400	2607060510291636000	16	8.11	ok	landeseite
+ruckenfreies-satin-kleid-614000	2607060345541614600	16	7.85	ok	landeseite
+suede-fringed-dress-627500	2607060235361628200	16	10.29	ok	landeseite
+plaid-hemd-mit-weitem-schnitt-631800	2607060605431632800	16	10.96	ok	landeseite
+karierte-bluse-633600	2607060515201634200	16	7.03	ok	landeseite
+sommerbluse-mit-knopfleiste-165761	2072620203496075265	16	7.43	ok	landeseite
+lockere-strickjacke-609200	2607060619491609900	16	7.99	ok	landeseite
+bikini-mit-maxi-rock-522561	2073671207750631425	16	8.25	ok	landeseite
+sommer-sweater-584130	2073676154692853761	16	7.57	ok	landeseite
+einfarbiger-vielseitiger-pullover-mit-schlankm-552961	2073679505023467521	16	9.33	ok	landeseite
+rundhals-franzosisch-retro-gestreifter-strickp-330817	2072964340066828289	16	7.17	ok	landeseite

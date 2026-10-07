@@ -71,6 +71,15 @@ export function istHandklinge(titel) {
   if (k && !beigabeHinterMesser(t, k)) return false;
   if (MESSGERAET.test(t)) return false;
   if (WAFFENWORT_VORNE.test(t) && VORNE_AUSNAHME.test(t)) return false;
+  // 07.10.2026 KOPFWORT (wie klingenregel.py): erstes Wort = Klingenwort ohne Zubehör-/Geräte-Endung → Klinge im Paket.
+  // Englisch steht das Zubehör als ZWEITES Wort («Knife Sharpener») → Kopf + Folgewort prüfen.
+  // Kanarien 07.10.: «Messer- und Schneidebretthalter» (Ergänzungsstrich), «Haarmesser … 12-Zahn-Schere» (Gerät ohne und/mit davor).
+  const worte = t.trim().split(/\s+/).filter(Boolean), kopf2 = worte.slice(0, 2).join(' ');
+  if (worte.length && !worte[0].endsWith('-') && HANDKLINGE_STAMM.test(worte[0]) && !HANDKLINGE_KEIN_PAKET.test(kopf2) && !HANDKLINGE_GERAET.test(kopf2)) {
+    const rest = t.trim().slice(worte[0].length);
+    const g = new RegExp(HANDKLINGE_GERAET.source, 'i').exec(rest);
+    if (!g || /(?<![\wäöüß])(?:mit|und|inkl\.?|samt|with|and)(?![\wäöüß])|&/i.test(rest.slice(0, g.index))) return true;
+  }
   // 23.09.2026: Paket MIT Klinge — «Hackmesser mit Schutzhülle», «Messerblock mit 6 Messern».
   // Steht VOR der Zubehör-Ausnahme, weil «schutzhülle»/«scheide» dort als reines Zubehör gelten.
   const m = HANDKLINGE_MIT_ZUBEHOER.exec(t);

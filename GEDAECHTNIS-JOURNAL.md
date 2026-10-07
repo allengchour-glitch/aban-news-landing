@@ -44,6 +44,15 @@
 
 
 
+## 2026-10-07 04:50 UTC · 🔪 Verbesserungsrunde: zwei Messer ACTIVE, und die Klingen-Wache las einen fremden Export
+GEMESSEN: Neuimporte 4 h: «Keramikmesser-Set mit vier Messern und Schäler» (Beigabe = Geräte-Ausnahme) und «Boningmesser …
+ohne Schutzhülle» («ohne» als Zubehör gelesen) ACTIVE — Ausnahmelisten-Klasse vom 05.10. Die Wache meldete scharf «0», weil
+`currentBulkOperation` den Export eines ANDEREN Wächters lieferte (47'084 statt 81'415). GETAN: Kopfwort-Regel py+mjs (Kopf +
+Folgewort, Ergänzungsstrich und Gerät-ohne-und/mit als Ausnahme; 70/70, Voll-Export 2/0), Wache auf eigene Bulk-ID +
+Vollständigkeit ≥ 97 % von productsCount, 2 gedraftet + getaggt; Gehirn-Regel `fremder-bulk` (5 weitere Werkzeuge).
+LEHRE: Ein «0 Befunde» ist nur so gut wie die Grundgesamtheit dahinter — jede Wache prüft, ob sie alles gelesen hat.
+Bericht `dropship/KLINGEN-KOPFWORT-2026-10-07.md`.
+
 ## 2026-10-07 01:55 UTC · 📦 CJ-Lagerabgleich erster Fensterlauf geprüft: nur 840 statt 4'000, und 8 Geisterverkäufe
 GEMESSEN: Fensterlauf 00:12 starb am Container-Neustart (~00:20), Log still bis 01:45 — Aufseher-Anspruch (touch vor Start)
 galt 55 min. Stichprobe 3 gesperrte Produkte gegen CJ (Zusatzkonten): 12/12 Varianten Bestand 0, keine falsch gesperrt.
@@ -18267,6 +18276,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-05 · 📈 **Semrush Umsetzung 2: Verkehr 0 bei 559 Begriffen; Datenbank frischt nur alle Wochen auf → Positions-Kampagne nötig (Betreiber legte DEUTSCHLAND an → neu CH/Mobil/197); Tracker fand 7× Kannibalisierung (02.10. falsches Produkt optimiert); 21 SEO, 12 Redirects, 8 neue Kollektionen, 192 interne Links.** Meta-Zahlen aus Varianten, rankende URL zuerst → `dropship/semrush/README.md`
+- 2026-10-05 · 🧰 **«fix 12 h» Folgerunde 2 (32 Agenten): 12 Plan-Punkte erfüllt, 11 Wächter im Aufseher; Haarspangen-«Set mit vier» war EINE Spange (Familienfoto als Quelle), Bildtausch-Sperre aus /tmp leer (REPO «/»), «Checkout-Automation» widerlegt (Klaviyo läuft), FR nicht live (135/153 ohne fr).** Lifestyle-Foto ≠ Stückzahl → `dropship/FIX-12H-PLAN.md`
 - 2026-10-05 · 🪣 **Verbesserungsrunde: `kaufwille_zeile.gql` (Helfer von 13 Werkzeugen seit 04.10.) ohne Eimer-Boden, 3 Versuche → «Throttled» = Abbruch; nachlauf + 40 Drossel-Runden aus throttleStatus, Gehirn 0 NEU.** Exportierter Helfer = gemeinsamer Helfer → `dropship/EIMER-KAUFWILLE-HELFER-2026-10-05.md`
 - 2026-10-05 · 🧾 **Vertrauen & Recht («fix 12 h lang alles»): Block «Keine Fragen · volle Rückerstattung» 106 Produkte (14 aktiv) + «Versand aus Belp 7–12 WT» 85 + «Anlauf-Garantie oder Geld zurück» 9 → 0; 22 Seiten (DE/EN/FR/IT: «7-14 business days», «money-back», «gesetzlich 14», WhatsApp, AMEX/Vorkasse, «In der Schweiz gedruckt») + AGB §7 EU-Widerruf an die Richtlinien angeglichen; `zusagen_abgleich.py` (`NUR=messen` Ampel «ZUSAGEN»).** Jede Sprache einer Seite ist eine eigene Fundstelle → `dropship/VERTRAUEN-RECHT-ZUSAGEN-2026-10-04.md`
 - 2026-10-05 · 🐕 **Verbesserungsrunde: Google-Blocker 1'219 = 888 Produkte; dabei Stachelhalsband als «Halsband mit Stimulationskette» ACTIVE in 7 Kanälen (TSchV 76) → Regel um Euphemismen erweitert, 1/0 Fehlalarme, gedraftet.** Verkaufswörter in Wirk-Regeln → `dropship/STACHELHALSBAND-2026-10-05.md`

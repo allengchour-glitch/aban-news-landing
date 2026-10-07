@@ -12,6 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from klingenregel import ist_handklinge, ist_klinge
 
 SPERREN = [
+    "Keramikmesser-Set mit vier Messern und Schäler",        # 07.10.2026 Kopfwort: Beigabe «Schäler» kippte das Urteil
+    "Boningmesser MTG15 Blut Sandelholz ohne Schutzhülle",   # 07.10.2026 Kopfwort: «ohne Schutzhülle» las als Zubehör
     "Fuda Taschenmesser aus Damaststahl",          # die zurueckgesandte Ware selbst
     "5‑Stück‑Set Küchenmesser mit Obstschneidebrett",   # 04.10.: Kontextwort nur Beigabe
     "Messerset & Schneidebrett aus Bambus",
@@ -42,6 +44,9 @@ SPERREN = [
     "Küchenmesser mit Strass",
 ]
 DURCHLASSEN = [
+    "Messer- und Schneidebretthalter aus Edelstahl",          # 07.10.2026 Kopfwort-Kanarie: Ergänzungsstrich = Halter
+    "Messer- und Schneidebrettständer aus Holz",              # 07.10.2026 Kopfwort-Kanarie
+    "Haarmesser 6″ – 17,5 cm, 12-Zahn-Schere",                # 07.10.2026 Kopfwort-Kanarie: Schere ist das Produkt
     "Küchenmesser Aufbewahrung",                   # 05.10.: Zubehör hinter dem Kompositum
     "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
     "Küchenmesser-Schärfer mit 3 Stufen",
