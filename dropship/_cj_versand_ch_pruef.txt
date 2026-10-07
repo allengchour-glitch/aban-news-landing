@@ -5121,3 +5121,6 @@ damen-titan-halskette-107265	2073889193148964865	16	4.71	ok	landeseite
 luxuriose-perlen-halskette-865922	2073891769290752001	16	4.81	ok	landeseite
 elegante-pita-halskette-mit-manik-und-anhanger-861314	2073885095817273346	16	4.81	ok	landeseite
 sternenhimmel-halskette-mit-cz-steinen-457538	2073893615887343617	16	4.71	ok	landeseite
+elegante-cz-halskette-839234	2073885949265862657	16	4.81	ok	landeseite
+sterlingsilber-halskette-mit-quadratischem-des-734721	2073894283696037889	16	4.71	ok	landeseite
+herzanhanger-aus-titanstahl-317569	2073887689503563777	16	4.66	ok	landeseite

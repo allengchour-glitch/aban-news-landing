@@ -15,6 +15,10 @@ auf eine Oberklasse der heutigen Shopify-Kategorie zurückfallen. Produkte, dere
 geändert hat, werden übersprungen (frischer Export).
 
   python3 automation/kategorie_urteile_anwenden.py      # Trockenlauf  ·  SCHARF=1 … schreibt
+  MODUS=grob python3 automation/kategorie_urteile_anwenden.py   # zweite Runde: grobe Google-Oberklassen verfeinert
+      (dropship/_kategorie_grob_2026-10-07.jsonl, {"id","google"}; "" = bleibt; Eingaben ALT=/tmp/taxo/grob/g??.tsv)
+(Ein Bereichsschutz «erste zwei ID-Stufen gleich → Shopify bleibt» wurde verworfen: er hätte auch richtige Umzüge wie
+Zahnbürste Skin Care → Oral Care blockiert — beide «hb-3».)
 """
 import collections, json, os, sys, time
 
@@ -23,9 +27,10 @@ sys.path.insert(0, HIER)
 import kosmetik_fein as kos  # noqa: E402
 import kategorie_fein as kf  # noqa: E402
 
-URTEILE = os.path.join(REPO, "dropship", "_kategorie_urteile_2026-10-07.jsonl")
-ALT = os.environ.get("ALT", "/tmp/taxo/batch")        # Eingaben der Prüfer (Google-Wert zum Urteilszeitpunkt)
-LEDGER = os.path.join(REPO, "dropship", "_kategorie_urteile.tsv")
+GROB = os.environ.get("MODUS") == "grob"
+URTEILE = os.path.join(REPO, "dropship", "_kategorie_grob_2026-10-07.jsonl" if GROB else "_kategorie_urteile_2026-10-07.jsonl")
+ALT = os.environ.get("ALT", "/tmp/taxo/grob" if GROB else "/tmp/taxo/batch")   # Eingaben (Google-Wert zum Urteilszeitpunkt)
+LEDGER = os.path.join(REPO, "dropship", "_kategorie_grob.tsv" if GROB else "_kategorie_urteile.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 SCHUTZ_G = ("tg-5-12-2", "aa-1-25", "el-13")
 
@@ -35,7 +40,7 @@ def main():
     gueltig = kos.google_taxonomie()
     karte = json.load(open(kf.KARTE, encoding="utf-8"))["karte"]
     damals = {}
-    for f in glob.glob(os.path.join(ALT, "b??.tsv")):
+    for f in glob.glob(os.path.join(ALT, "g??.tsv" if GROB else "b??.tsv")):
         for r in csv.DictReader(open(f, encoding="utf-8"), delimiter="\t"):
             damals[r["id"]] = r["google_jetzt"]
     kf.export_holen()
@@ -50,7 +55,7 @@ def main():
         erledigt = set()
     st = collections.Counter(); plan = []
     for l in open(URTEILE, encoding="utf-8"):
-        d = json.loads(l); i = d["id"]; e = d["e"]; g = d.get("google") or ""
+        d = json.loads(l); i = d["id"]; e = "X" if GROB else d["e"]; g = d.get("google") or ""
         gid = "gid://shopify/Product/" + i
         if e == "?" or not g:
             st["vage"] += 1; continue
@@ -69,6 +74,8 @@ def main():
         else:
             sid = ziel or cid
             if e == "G" and (cid.startswith(SCHUTZ_G) or cid.startswith(sid + "-")):
+                sid = cid
+            if GROB and (cid.startswith(SCHUTZ_G) or cid.startswith(sid + "-")):
                 sid = cid
         if g == gjetzt and sid == cid:
             st["nichts-zu-tun"] += 1; continue
