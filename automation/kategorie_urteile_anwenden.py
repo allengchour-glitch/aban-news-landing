@@ -88,10 +88,17 @@ def main():
     if SCHARF and plan:
         with open(LEDGER, "a", encoding="utf-8") as f:
             for k in range(0, len(plan), 25):
-                for pid, s, g, sid, fehler in kos.schreiben(plan[k:k + 25]):
+                for versuch in range(8):       # Drossel (mehrere Schreiber) → warten statt abbrechen
+                    try:
+                        antwort = kos.schreiben(plan[k:k + 25]); break
+                    except RuntimeError as e:
+                        if "hrottl" not in str(e) or versuch == 7:
+                            raise
+                        print(f"  gedrosselt, warte {30 * (versuch + 1)} s", flush=True); time.sleep(30 * (versuch + 1))
+                for pid, s, g, sid, fehler in antwort:
                     f.write(f"{pid}\t{s}\t{g}\t{sid}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{fehler}\n")
                     ok += s == "gesetzt"; fe += s == "fehler"
-                f.flush(); time.sleep(0.3)
+                f.flush(); time.sleep(float(os.environ.get("PAUSE", "0.8")))
     print(f"KATEGORIE-URTEILE: {len(plan)} geplant{f' · gesetzt {ok} · fehler {fe}' if SCHARF else ' (TROCKEN)'}")
 
 
