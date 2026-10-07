@@ -5241,3 +5241,6 @@ flache-sandalen-628100	2606300514061628700	16	10.69	ok	landeseite
 runde-sandalen-601300	2606290138311602200	16	9.45	ok	landeseite
 neue-plus-grosse-wedgesandalen-im-boho-stil-954817	2071439299915911169	16	11.23	ok	landeseite
 spitzschuhe-mit-gewebtem-design-in-mehreren-fa-639701	2606280707071630300	16	13.46	ok	landeseite
+mesh-verzierter-peep-toe-slide-sandalen-932993	2070755213639790593	16	11.23	ok	landeseite
+platform-espadrille-sandalen-mit-knochelriemen-621500	2606260847561622100	16	13.76	ok	landeseite
+patentleder-keilsandaletten-mit-bugelverschlus-600900	2606260755141601500	16	11.60	ok	landeseite
