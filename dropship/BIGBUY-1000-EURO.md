@@ -260,3 +260,5 @@ Nächster Auszahlungs-Dienstag: **22.09.** Der Weg bleibt das Ticket in der Abte
 - **Was nur der Betreiber kann:** am Computer (nicht Handy) einloggen → https://www.bigbuy.eu/en/contact#tabpanel3 →
   Administration → Ticket mit dem Text oben (englische Fassung im Chat vom 07.10.) → Referenz in
   `dropship/_bigbuy_ticket_ref.txt`. Die Ampel meldet den Punkt, bis die Datei existiert.
+- **✅ 07.10. ~10:15 UTC: Ticket vom Betreiber gesendet** (Administration → «Enquiry about Topping up/Withdrawing from your
+  Moneybox», Text Punkte 1–4). Referenz in `dropship/_bigbuy_ticket_ref.txt` (Nummer folgt). Nachkontrolle 09.10.
