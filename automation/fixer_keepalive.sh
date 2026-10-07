@@ -1061,7 +1061,11 @@ while true; do
           SCHARF=1 ZEIGEN=0 timeout 600 python3 automation/aroma_kategorie.py 2>&1 | grep -E '^(PLAN|FERTIG|ABBRUCH)'; \
           SCHARF=1 timeout 1800 python3 automation/haar_fein.py 2>&1 | grep -E '^(HAAR-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 2400 python3 automation/kosmetik_fein.py 2>&1 | grep -E '^(KOSMETIK-FEIN|Kanarien|Google-Pfad)'; \
-          SCHARF=1 timeout 900 python3 automation/rc_fein.py 2>&1 | grep -E '^(RC-FEIN|Kanarien|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+          SCHARF=1 timeout 900 python3 automation/rc_fein.py 2>&1 | grep -E '^(RC-FEIN|Kanarien|Google-Pfad)'; \
+          SCHARF=1 timeout 1500 python3 automation/uhren_fein.py 2>&1 | grep -E '^(UHREN-FEIN|Kanarien|Google-Pfad)'; \
+          SCHARF=1 timeout 600 python3 automation/google_id_zu_name.py 2>&1 | grep -E '^(GOOGLE-ID|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+    # 07.10.2026 (Betreiber «alles andere auch»): uhren_fein.py trennt Uhr/Smartwatch/Armband (Shopify aa-6-11/-12/-10-1),
+    # google_id_zu_name.py übersetzt nackte Google-Nummern («567», «1») in Pfade (Titelwort zuerst).
     # 07.10.2026 (Betreiber «das muss perfekt sein» / «super mache mehr»): haar_fein.py löst Googles Sammelkorb «Hair Care» auf
     # (Glätteisen/Föhn/Bürsten fein, Gesichtsdampfer/Rasierer/Munddusche/Luftreiniger in ihren Zweig), kosmetik_fein.py ordnet
     # «Cosmetics» per Titelwort fein (Pinsel → Makeup Brushes, Press-on → False Nails …) — beide setzen Google UND Shopify.
