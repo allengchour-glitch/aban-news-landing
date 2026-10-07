@@ -547,3 +547,5 @@ abendkleider	ok	29	Abendkleider & Cocktailkleider
 lunchboxen	ok	29	Lunchboxen & Bento-Boxen
 winterschuhe	ok	29	Winterschuhe & Winterstiefel
 bauchtaschen	ok	29	Bauchtaschen & Gürteltaschen
+schneidebretter	ok	29	Schneidebretter
+wandteppiche	ok	29	Wandteppiche & Wandbehänge

@@ -44,6 +44,18 @@
 
 
 
+## 2026-10-07 19:55 UTC · 🤖 «bing microsoft und so auch»: Agentic Storefronts LÄUFT (CHF 155.62/30 T) — meine Katalog-Probe war falsch
+- GEMESSEN (Betreiber-Screenshot admin.shopify.com/agentic 19:50): 113 Besuche, CHF 155.62 in 30 T über Agentic Storefronts —
+  ChatGPT CHF 74.80, Shop CHF 80.82, Copilot CHF 0; «Von Shopify verwalten lassen» an, 10'000+ Produkte im Shopify Catalog,
+  Richtlinien aktuell, **Knowledge Base nicht installiert**. Suchanfragen mit unseren Produkten: «wide leg hose damen»,
+  «herrenuhren luxuriös automatik», «uhren herren».
+- FALSCH GEMESSEN vorher: `catalog.shopify.com/api/ucp/mcp` mit Shopifys TEST-Agentenprofil (ohne Markt/Sprache) fand
+  luxestyle.ch bei 5 eindeutigen Titeln nicht → ich hätte fast «nicht im Katalog» gemeldet. **Eine Test-Probe ist kein
+  Schweizer Käufer; vor einer Aussage über Sichtbarkeit die Plattform-Auswertung des Betreibers ansehen (Admin-Seite).**
+- GETAN: `dropship/KNOWLEDGE-BASE-ANTWORTEN.md` (10 Antworten, jede aus den Shop-Richtlinien, Zoll/Umtausch/Gutscheine
+  bewusst NICHT, weil keine Richtlinie sie regelt); `dropship/BING-MICROSOFT-2026-10-07.md` (IndexNow läuft, Rückstand 1'842;
+  Microsoft Merchant: Store-Prüfung nie neu angestossen → Betreiber; Bing Webmaster API-Schlüssel optional).
+
 ## 2026-10-07 19:30 UTC · 🎬 «verbessere» (Tag 8 vorgezogen): Video-Nachtrag verlor das CJ-Fenster an den Grind
 - GEMESSEN: Video-Nachtrag 27 / 0 / 17 Videos (05.–07.10., Ziel 250). Im Vorrang-Fenster 00:00–01:30 lief der Grind weiter
   (cj_category_fill 377 Aufrufe am 06.10.), pausiert waren nur die Runner 2–5. `cj_takt` gab Vorrang nur dem Kosten-Nachtrag.
@@ -18404,6 +18416,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-06 · 🔄 **Verbesserungsrunde: Bildtausch liess «uneinig» liegen (36 % frei), obwohl beide Prüfer Bild 1 ablehnten → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu, Sperre/Bilanz/Rücklesen kennen die Art.** Hauptfrage entschieden ≠ unklar → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`
 - 2026-10-05 · 🎬 **«bilder und videos sehr klein»: Reel-Produktvideo 23–32 % der Fläche → Hochformat Vollbild/quadratisch 970/quer 860; Stimme 50 %; `reel/bild_reel.py` (Original-Bilder + Stimme, Tor, `--weg`, `--freigeben`) → 10 Top-Produkte ready; `produktAktiv` prüft `bildreel-<handle>`.** Neuer Reel-Typ = eigener Zweig in der Vor-Post-Prüfung → Journal 05.10. 21:40
 - 2026-10-05 · 📦 **Fortura-Bestellautomat Stufe 1: bezahlte Bestellung mit `fortura-<ArtNr>` → Paket + Ampel «⚠️ FORTURA: im Portal bestellen» bis `--bestellt`; XML (Opacc.ORDERS nach /home/ORDERS) erst mit Fortura-Muster — seit 22.07. angefragt, nie gekommen, Entwurf in Gmail.** Keine Bestelldatei auf Verdacht → Journal 05.10. 20:40
 - 2026-10-05 · 🛒 **Ricardo: Fortura-Marge Median 21 % → nach 12 % Provision nur 361/2'388 Produkte ≥ CHF 5 → Feed `ricardo_feed.py` (täglich, öffentlich), Konto + Mail = Betreiber; FR vollständig (129 Kollektionen nachgezogen).** Provision vor dem Feed gegen die Marge rechnen → `dropship/ricardo/README.md`
