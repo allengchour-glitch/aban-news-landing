@@ -17146,3 +17146,11 @@ gid://shopify/Product/16609947091335	36->0	Heissluftfritteusen-Zubehör-Set aus 
 gid://shopify/Product/16609952334215	10->0	Multifunktions-Gemüsehobel
 gid://shopify/Product/16609956430215	181->0	Fleischklopfer aus Edelstahl
 gid://shopify/Product/16609963344263	15->0	Keramikform für Bierkrug
+gid://shopify/Product/16609975828871	33->0	Glas-Ölfiltertopf für die Küche
+gid://shopify/Product/16609976942983	41->0	Gewürzregal mit 6 Gewürzflaschen
+gid://shopify/Product/16609977926023	11->0	Gemüse- und Salatschleuder
+gid://shopify/Product/16609980187015	58->2	Manuelle Kartoffelschneidemaschine
+gid://shopify/Product/16609980875143	39->3	Vierteiliges Antihaft-Topfset mit Glasdeckel
+gid://shopify/Product/16610003845511	80->0	Ausziehbarer Wasserhahn aus Edelstahl
+gid://shopify/Product/16610004599175	35->0	Küchen-Wasserfilter mit Drei-in-Eins-Armatur
+gid://shopify/Product/16610007646599	19->0	Edelstahl-Topfset 16-20-22 cm
