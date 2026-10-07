@@ -17035,3 +17035,5 @@ gid://shopify/Product/16608629588359	62->0	Haus-Silikon-Backform 26,5 × 26,5 ×
 gid://shopify/Product/16608629752199	48->2	Multifunktionswerkzeug aus Edelstahl
 gid://shopify/Product/16608700039559	36->0	Keramische Wellenscheibe mit Diamantbeschichtung
 gid://shopify/Product/16608734708103	18->0	Heissklebepistole mit Sicherheitsschalter
+gid://shopify/Product/15503113912705	101->0	Augenbrauen-Schablonen-Set mit Halteband
+gid://shopify/Product/15504009363841	19->2	Beruhigende Antioxidans Emulsion
