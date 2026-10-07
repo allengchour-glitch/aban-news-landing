@@ -396,3 +396,4 @@
 2026-10-07T16:31:58.382Z	luxe-epic-hero.wav	46	fitness	cjreel-30D2AD26-3B0D-40F1-AC87-327D00078F3B	stimme:ja	azure:de-CH-JanNeural
 2026-10-07T16:33:19.727Z	luxe-adventure-uplift.wav	41	allgemein	cjreel-1509728177428639744	stimme:ja	azure:de-CH-JanNeural
 2026-10-07T17:10:05.940Z	luxe-epic-fantasy.wav	31.25	gadget	cjreel-3EE5AD24-50B2-4520-B15B-FF27A4C0073F	stimme:nein	anteil
+2026-10-07T17:11:31.862Z	luxe-epic-elegant.wav	42.5	home	cjreel-1614537350909014016	stimme:ja	azure:de-CH-JanNeural
