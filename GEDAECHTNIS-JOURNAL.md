@@ -44,6 +44,11 @@
 
 
 
+## 2026-10-07 09:35 UTC · 💳 #1004 auf Betreiber-Auftrag erstattet («1004 war meine bestellung, zurückfodern»)
+Eigenbestellung des Betreibers (LED-Laterne «Boho», BigBuy bb-S3414715, 25.06.), Ausführung am 12.09. vom Betreiber storniert,
+nie versendet, bezahlt CHF 31.90 über Shopify Payments, 0 erstattet. refundCreate (notify:false, Notiz) → Refund
+gid://shopify/Refund/1248265306503, Transaktion REFUND 31.90 PENDING (Shopify Payments bucht nach). Zählt nicht als Kunde.
+
 ## 2026-10-07 08:45 UTC · 🪣 Verbesserungsrunde: 8 Werkzeuge lasen fremde Bulk-Exporte, 2 brachen sie sogar ab
 GEMESSEN: Gehirn-Regel `fremder-bulk` (04:50 angelegt) meldete 5; die Schreibweise `currentBulkOperation(type: QUERY)` war ihr
 entgangen → 3 weitere, darunter preis_senken (Export UND Bulk-Mutation). hype_export_bauen + kosten_export_bauen riefen vor dem
