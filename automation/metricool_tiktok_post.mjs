@@ -19,6 +19,7 @@
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import { hashtagSet } from './lib/hashtags.mjs';
+import { fbText, mitFolgen } from './lib/fb_text.mjs';   // 07.10.: FB-eigener Text (klickbarer Link + Folge-Zeile)
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
@@ -289,23 +290,30 @@ console.log(`${NETZ} via Metricool: ${id}\n  Produkt: ${pa.grund}\n  Video: ${ur
 const ytTitel = (() => { const m = /«([^»]{4,})»/.exec(caption); const t = (m ? m[1] : caption.split('\n').find(z => z.trim().length > 8) || caption).replace(/[👀✨🔥]/gu, '').trim(); return (t.slice(0, 88) + ' #Shorts').trim(); })();
 const ytTags = [...new Set([...tagListe, ...(tags || '').split(/[,\s]+/)].filter(Boolean).map(t => t.replace(/^#/, '')))].slice(0, 12);
 if (NETZ === 'youtube') console.log(`  YouTube-Titel: ${ytTitel}`);
-function bauBody(media) {
-  const netze = NETZ === 'instagram' ? [{ network: 'instagram' }, { network: 'facebook' }] : [{ network: NETZ }];
-  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: netze, media: [media],
+// 07.10.2026 (Betreiber «fb zu wenig follower»): IG und FB waren EIN Metricool-Post mit EINEM Text — Facebook bekam
+// «(Link in Bio)» und keine Folge-Aufforderung (7 Follower, 659 Reel-Aufrufe → 0 Follows). Jetzt zwei Posts: IG mit IG-Text,
+// FB-Reel mit klickbarem Produktlink + Folge-Zeile (lib/fb_text.mjs). Metricool kennt keinen Text je Netz.
+const fbReelText = mitFolgen(fbText(text, produktUrl, 'reel'));
+function bauBody(media, nur) {
+  const netze = nur ? [{ network: nur }] : (NETZ === 'instagram' ? [{ network: 'instagram' }, { network: 'facebook' }] : [{ network: NETZ }]);
+  const body = { publicationDate: { dateTime, timezone: TZ }, text: nur === 'facebook' ? fbReelText : text, providers: netze, media: [media],
                  autoPublish: true, draft: false, shortener: false };
   // TikTok verlangt die Kennzeichnung von Werbung fuer die eigene Marke (Content-Disclosure «Your brand»).
   if (NETZ === 'tiktok') body.tiktokData = { autoPublish: true, commercialContentOwnBrand: true, commercialContentThirdParty: false };
   if (NETZ === 'tiktok' && DL_STICKER && linkUtm) body.tiktokData.articleLink = { url: linkUtm, title: 'Zum Produkt' };
   if (NETZ === 'youtube') body.youtubeData = { title: ytTitel, type: 'short', privacy: 'public', category: 'HOWTO_STYLE',
                                                madeForKids: false, notifySubscribers: true, isAiGeneratedContent: false, tags: ytTags };
-  if (NETZ === 'instagram') { body.instagramData = { autoPublish: true, type: 'REEL', showReelOnFeed: true, isAiGenerated: false };
-                              body.facebookData = { type: 'REEL' }; }
+  if (NETZ === 'instagram' && nur !== 'facebook') body.instagramData = { autoPublish: true, type: 'REEL', showReelOnFeed: true, isAiGenerated: false };
+  if (NETZ === 'instagram' && nur !== 'instagram') body.facebookData = { type: 'REEL' };
   if (SMARTLINK_ID && linkUtm) body.smartLinkData = { targetUrl: linkUtm, ids: [Number(SMARTLINK_ID)] };
   return body;
 }
 if (DRY) {
   console.log(`  Direktlink: Text ${DL_TEXT ? 'AN' : 'aus'} · Sticker ${DL_STICKER ? 'AN' : 'aus'} · SmartLink ${SMARTLINK_ID || 'aus'} · Produkt-URL ${linkUtm || '(keine: Reel ohne Produkt-ID)'}`);
-  console.log(`[DRY] Body (media wird im echten Lauf ueber Metricool normalisiert, hier Platzhalter; NICHTS geplant):\n${JSON.stringify(bauBody(`(normalisiert aus ${url})`), null, 1)}`);
+  if (NETZ === 'instagram') {
+    console.log(`[DRY] Instagram-Body:\n${JSON.stringify(bauBody('(normalisiert)', 'instagram'), null, 1)}`);
+    console.log(`[DRY] Facebook-Body:\n${JSON.stringify(bauBody('(normalisiert)', 'facebook'), null, 1)}`);
+  } else console.log(`[DRY] Body (media wird im echten Lauf ueber Metricool normalisiert, hier Platzhalter; NICHTS geplant):\n${JSON.stringify(bauBody(`(normalisiert aus ${url})`), null, 1)}`);
   process.exit(0);
 }
 
@@ -317,12 +325,21 @@ try {
   if (!n.ok) throw new Error(`normalize ${n.status}: ${nt.slice(0, 200)}`);
   let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data === 'string' ? j.data : '') || (typeof j === 'string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g, ''); }
   if (!norm) throw new Error('normalize: keine URL in der Antwort: ' + nt.slice(0, 120));
-  const body = bauBody(norm);
-  const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}`, { method: 'POST',
-    headers: { 'X-Mc-Auth': TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  const rt = await r.text();
-  if (!r.ok) throw new Error(`schedule ${r.status}: ${rt.slice(0, 300)}`);
-  let pid = ''; try { const j = JSON.parse(rt); pid = String(j.data?.id || j.id || ''); } catch {}
+  const planen = async body => {
+    const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}`, { method: 'POST',
+      headers: { 'X-Mc-Auth': TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const rt = await r.text();
+    if (!r.ok) throw new Error(`schedule ${r.status}: ${rt.slice(0, 300)}`);
+    try { const j = JSON.parse(rt); return String(j.data?.id || j.id || ''); } catch { return ''; }
+  };
+  let pid = '';
+  if (NETZ === 'instagram') {
+    pid = await planen(bauBody(norm, 'instagram'));                 // IG zuerst: scheitert es, ist nichts raus (Claim zurück)
+    try { const fid = await planen(bauBody(norm, 'facebook')); if (fid) pid += ` fb:${fid}`; console.log(`   facebook: eigener Text (Link klickbar + Folge-Zeile) geplant ${fid || '?'}`); }
+    catch (fe) { console.error(`   ⚠️ Facebook-Reel nicht geplant (IG ist raus): ${String(fe.message || fe).slice(0, 200)}`); }
+  } else {
+    pid = await planen(bauBody(norm));
+  }
   postMark(url);                                                   // Ledger SOFORT (plattformuebergreifend)
   cand[idx.status] = POSTED; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
   console.log(`✅ auf ${NETZ} geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} ${POSTED}`);
