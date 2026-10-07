@@ -19927,3 +19927,4 @@ gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/5834
 gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288835975	Red	Rot	2026-10-07T17:10Z
 gid://shopify/Product/15447933157761	Farbe	gid://shopify/ProductOptionValue/58348288868743	Black	Schwarz	2026-10-07T17:10Z
 gid://shopify/Product/15447964025217	Farbe	gid://shopify/ProductOptionValue/58348289360263	White	Weiss	2026-10-07T17:10Z
+gid://shopify/Product/15455957156225	Farbe	gid://shopify/ProductOptionValue/58358221734279	Comb	Kamm	2026-10-07T18:10Z
