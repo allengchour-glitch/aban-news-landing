@@ -5208,3 +5208,8 @@ schnellladegerat-30w-633400	2606091115411634100	16	5.41	ok	landeseite
 usb-c-magsafe-lader-624100	2606010524141624800	16	9.47	ok	landeseite
 magnetischer-4-in-1-ladegeraet-611000	2605190941191611700	6	11.30	ok	landeseite
 schuhe-mit-chunky-absatz-635200	2607061034261635800	16	11.23	ok	landeseite
+retro-pumps-605300	2607060928581605900	16	9.20	ok	landeseite
+leichte-sneaker-622400	2607060353271623100	16	9.61	ok	landeseite
+hohe-sandalen-615200	2607050347071615800	16	8.14	ok	landeseite
+stiletto-sandalen-632200	2607050108201633000	16	17.66	ok	landeseite
+hohe-stiletto-sandalen-156226	2073593197928013825	16	11.23	ok	landeseite
