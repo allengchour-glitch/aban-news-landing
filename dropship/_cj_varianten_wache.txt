@@ -9652,3 +9652,4 @@ gid://shopify/Product/15455516623233	1791331881	ok	39 Shop / 39 CJ / 0 fehlend /
 gid://shopify/Product/15455516754305	1791331881	ok	48 Shop / 48 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455516819841	1791331881	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15455516918145	1791331881	ok	22 Shop / 22 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15455517180289	1791331881	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
