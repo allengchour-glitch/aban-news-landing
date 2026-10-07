@@ -44,6 +44,21 @@
 
 
 
+## 2026-10-07 23:30 UTC · 🗂️ «alles perfekt, alles andere auch»: Messfehler, Uhren, Nummern, 16'000 Einzelurteile
+- **Messfehler im eigenen Zähler:** `kategorie_fein` zählte «Shopify feiner als Googles Zuordnung» als Widerspruch (Drohnen,
+  Diffuser) → Klasse `shopify-feiner`. Ein Zähler, der Absicht als Fehler meldet, lädt dazu ein, Absicht «zu reparieren».
+- **«keine Zuordnung» 3'472 war fast nur Uhren** (Shopifys Tabelle mehrdeutig Watches/Smart Watches) → `uhren_fein.py`
+  1'030/0; 39 Google-NUMMERN statt Pfade (Altlast) → `google_id_zu_name.py` 39/0. Beides täglich im Aufseher.
+- **Langer Schwanz (3'954 Widersprüche, ~80 Paare) + 12'583 grobe Oberklassen:** Einzelurteil am Titel (8 parallele Prüfer,
+  jeder Pfad gegen die Taxonomie validiert, Urteile im Repo `dropship/_kategorie_urteile_2026-10-07.jsonl` und
+  `_kategorie_grob_2026-10-07.jsonl`), dann EIN Anwender mit Schutzregeln. Runde 1 3'534/0, Rücklesen 30/30.
+- **Fallen:** (1) Zwei Massen-Schreiber gleichzeitig → Drossel-Abbruch nach 375 → Anwender wartet jetzt statt abzubrechen.
+  (2) Hintergrund-Befehl der Session hat ein Zeitlimit (30 min Standard) — lange Schreibläufe mit Ledger bauen und
+  fortsetzen. (3) Schutzregel «gleicher Bereich (2 ID-Stufen) → Shopify bleibt» vor dem Lauf verworfen: hätte Zahnbürste
+  Skin Care → Oral Care blockiert. (4) Prüfer teilten das Scratchpad und überschrieben sich gegenseitig Hilfsskripte —
+  jedem Prüfer ein eigenes Arbeitsverzeichnis geben.
+→ `dropship/KATALOG-TASCHEN-2026-10-07.md` (Runde 3)
+
 ## 2026-10-07 22:30 UTC · 🗂️ «das muss perfekt sein»: Taschen fertig, «anderer Zweig» war oft ein SAMMELKORB — Kosmetik + Haar aus dem Titel
 - Taschen Runde 2: Google 9 + Shopify 124 gesetzt, 0 Fehler; Rücklesen 30/30 zufällige Produkte beide Felder im selben Zweig.
 - Von 8'000 «anderer Zweig» waren 2'662 Kosmetik (Google «Cosmetics» grob, Shopify fein) und 891 Haar (Google «Hair Care»
@@ -18447,6 +18462,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-06 · 🔤 **Verbesserungsrunde: Adult-Bildtausch 153 offen, «fehler 5 · tausch 0» — Rückfall «Gemini allein» prüfte `"Kontingent" in str(e)`, Meldung heisst «Tages**k**ontingent», seit Leer-Marke ohne 429 → `zweitmodell.ist_kontingent_leer(e)` (Typ zuerst), SCHARF tausch-g 3/fehler 0, Gehirn-Regel `kontingent-wortlaut` fand seo_autopilot.** Leer-Erkennung nach Typ → `dropship/BILDTAUSCH-KONTINGENT-WORTLAUT-2026-10-06.md`
 - 2026-10-06 · ⏰ **CJ-Punkte-Reset gemessen 00:00 UTC (20/37 Wechsel), Vorrang-Fenster stand seit 15.08. auf 16:00 → Topf dann leer, Video-Nachfüller 0 Videos → `cj_vorrang_fenster.sh` (00:00–01:30, Stunde aus `_CJ_PUNKTE_RESET_UTC`) + Wache `cj_reset_wache.py`.** Fenster an gemessener Grenze → `dropship/CJ-VORRANG-FENSTER-2026-10-06.md`
 - 2026-10-06 · 🧁 **Verbesserungsrunde: 65/315 Neuimporte unter Google «Tools», darunter Backformen/Haarschneider/Nagelset → 4 Kreuz-Regeln in `google_kategorie_umzug.py`; «Silikonform» traf Kerzen-/Epoxidformen → Ausschluss, Kanarien 39/39, 21 umgezogen.** Trockenlauf mit allen Treffern (`ZEIGEN=n`) → `dropship/GOOGLE-KATEGORIE-WERKZEUG-2026-10-06.md`
 - 2026-10-06 · 📏 **«fix alles» Filter: Farbe/Grösse live ok, Kategorie = Betreiber-Klick; 4 Kleider US/EU belegt beschriftet, Grösse im Farbwert («-16 W», «-US0») → `groesse_im_farbwert.py` (69 Varianten), «10 W» = Watt übersprungen; fast gegen `groessenwert_normieren.py` («US10») gearbeitet.** Vorhandenen Normierer zuerst lesen → `dropship/FILTER-GROESSEN-2026-10-06.md`
