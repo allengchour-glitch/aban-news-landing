@@ -4793,3 +4793,5 @@ einfarbige-waffelgewebe-button-up-hemd-mit-kra-610000	2607060120571610700	16	9.2
 damen-color-block-langarm-shirt-mit-slim-fit-2-633300	2607060116361633900	16	8.38	ok	landeseite
 franzosisches-taschenhemd-607400	2607060044241608200	16	6.70	ok	landeseite
 elegantes-midi-kleid-600300	2607060715561600900	16	10.15	ok	landeseite
+losgelegtes-maxi-kleid-601500	2607060710591602100	16	8.11	ok	landeseite
+schwarzes-spitzenkleid-616100	2607060656481616700	16	8.04	ok	landeseite

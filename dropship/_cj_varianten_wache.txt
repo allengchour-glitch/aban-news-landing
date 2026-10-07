@@ -10001,3 +10001,9 @@ gid://shopify/Product/15458722972033	1791347171	ok	4 Shop / 4 CJ / 0 fehlend / 0
 gid://shopify/Product/15458723234177	1791347171	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15458723332481	1791347171	ok	5 Shop / 6 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15458723496321	1791347171	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15458723660161	1791347171	ok	25 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15458723824001	1791347171	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15458723955073	1791347171	ok	20 Shop / 25 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15458724086145	1791347171	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15458724315521	1791347171	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15458724479361	1791347171	ok	4 Shop / 5 CJ / 0 fehlend / 0 DENY
