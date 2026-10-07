@@ -4962,3 +4962,5 @@ herren-cardigan-mit-polohalsausschnitt-613100	2606100137101614100	16	11.60	ok	la
 herren-strickpulli-plusgro-en-628900	2606081257531629500	16	16.40	ok	landeseite
 weisser-pullover-mit-fleece-futter-632200	2606040954471632800	16	7.85	ok	landeseite
 herren-knit-sweater-mit-niedlichem-katzenprint-606100	2606020538121606800	16	10.50	ok	landeseite
+wollpullover-fur-herren-einfarbig-605600	2606020347531606300	16	8.53	ok	landeseite
+herren-thermal-halsbund-pullover-602900	2606011033281603600	16	10.15	ok	landeseite
