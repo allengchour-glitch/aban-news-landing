@@ -47,6 +47,7 @@ summary::after{content:"＋";color:var(--amber)}
 details[open] summary::after{content:"－"}
 details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 .rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
+@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
 </style>
 <meta property="og:image" content="https://abannews.com/og/pensum-rechner-schweiz.png">
 <meta property="og:image:width" content="1200">
@@ -124,7 +125,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
 <h2>Was ändert sich beim Pensum?</h2>
 <p>In der Schweiz wird das Teilzeitpensum linear berechnet: Lohn, Stunden und Ferienanspruch sind alle proportional zum Vollzeitpensum (100 %). Das ist gesetzlich so geregelt — diskriminierende Schlechterstellung von Teilzeitangestellten bei Lohn oder Ferien ist unzulässig (Gleichstellungsgesetz GlG).</p>
-<p>Wichtige Sonderregeln: AHV-Beiträge fallen ab dem ersten Franken an, unabhängig vom Pensum. BVG (Pensionskasse) ist jedoch erst ab einem Jahreslohn über CHF 22'050 obligatorisch — wer unter 50 % arbeitet und einen Lohn unter dieser Schwelle hat, ist oft nicht BVG-versichert. Bei zwei Teilzeitstellen gilt: Jeder Arbeitgeber rechnet separat. Krankentaggeld und NBUV gelten ab 8 Stunden pro Woche beim gleichen Arbeitgeber.</p>
+<p>Wichtige Sonderregeln: AHV-Beiträge fallen ab dem ersten Franken an, unabhängig vom Pensum. BVG (Pensionskasse) ist jedoch erst ab einem Jahreslohn über CHF 22'680 obligatorisch (Stand 2026-10, gilt 2025/2026, ab 2027 CHF 23'040; Quelle: BSV) — wer unter 50 % arbeitet und einen Lohn unter dieser Schwelle hat, ist oft nicht BVG-versichert. Bei zwei Teilzeitstellen gilt: Jeder Arbeitgeber rechnet separat. Krankentaggeld und NBUV gelten ab 8 Stunden pro Woche beim gleichen Arbeitgeber.</p>
 
 <h2>Häufige Fragen zum Pensum</h2>
 
@@ -140,7 +141,7 @@ details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
 
 <details>
   <summary>Was gilt bei mehreren Teilzeitstellen gleichzeitig?</summary>
-  <div>Jeder Arbeitgeber rechnet seinen Anteil separat ab: Lohn, AHV, ALV, BVG-Pflicht. Die Gesamtsumme der AHV-Beiträge aller Stellen wird zusammengerechnet. Für das BVG-Obligatorium zählt jede Stelle einzeln — wer bei Arbeitgeber A 40 % mit CHF 3'200/Monat verdient, unterschreitet die BVG-Eintrittsschwelle (CHF 22'050/Jahr), ist dort also nicht BVG-pflichtversichert. Es empfiehlt sich, die Pensionskasse freiwillig zu informieren, damit keine Versicherungslücken entstehen.</div>
+  <div>Jeder Arbeitgeber rechnet seinen Anteil separat ab: Lohn, AHV, ALV, BVG-Pflicht. Die Gesamtsumme der AHV-Beiträge aller Stellen wird zusammengerechnet. Für das BVG-Obligatorium zählt jede Stelle einzeln — wer bei Arbeitgeber A 20 % mit CHF 1'600/Monat (CHF 19'200/Jahr) verdient, unterschreitet die BVG-Eintrittsschwelle (CHF 22'680/Jahr, Stand 2026), ist dort also nicht BVG-pflichtversichert. Es empfiehlt sich, die Pensionskasse freiwillig zu informieren, damit keine Versicherungslücken entstehen.</div>
 </details>
 
 <details>
@@ -206,7 +207,7 @@ function berechnePensum(){
       "name": "Was gilt bei mehreren Teilzeitstellen gleichzeitig?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Jeder Arbeitgeber rechnet seinen Anteil separat ab. Für das BVG-Obligatorium zählt jede Stelle einzeln — wer bei einem Arbeitgeber unter die Eintrittsschwelle (CHF 22'050/Jahr) fällt, ist dort nicht BVG-pflichtversichert."
+        "text": "Jeder Arbeitgeber rechnet seinen Anteil separat ab. Für das BVG-Obligatorium zählt jede Stelle einzeln — wer bei einem Arbeitgeber unter die Eintrittsschwelle (CHF 22'680/Jahr, Stand 2026) fällt, ist dort nicht BVG-pflichtversichert."
       }
     },
     {

@@ -111,8 +111,8 @@ footer a{color:var(--muted)}
       <canvas role="img" id="mwst-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:190px;touch-action:none" aria-label="3D-Diagramm: Netto, MwSt und Brutto"></canvas>
     </div>
     <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0" id="mchartCap">3D: Netto · MwSt · Brutto aus deiner Eingabe.</p>
-    <div class="warn"><strong>Hinweis:</strong> Die Sätze sind die gängigen Regel-/ermäßigten Sätze (Stand 2024/2025) und dienen der schnellen Schätzung — <strong>keine Steuerberatung</strong>. Für deine konkrete Rechnung gilt immer der amtliche Satz; im Zweifel Steuerberater oder offizielle Quelle prüfen.</div>
-    <p class="note">CH: 8,1 % regulär · 3,8 % Beherbergung · 2,6 % ermäßigt. DE: 19 % regulär · 7 % ermäßigt. AT: 20 % regulär · 13 % / 10 % ermäßigt. Alles lokal, kein Upload.</p>
+    <div class="warn"><strong>Hinweis:</strong> Die Sätze sind die gängigen Regel-/ermäßigten Sätze (Stand Oktober 2026) und dienen der schnellen Schätzung — <strong>keine Steuerberatung</strong>. Für deine konkrete Rechnung gilt immer der amtliche Satz; im Zweifel Steuerberater oder offizielle Quelle prüfen.</div>
+    <p class="note">CH: 8,1 % regulär · 3,8 % Beherbergung · 2,6 % ermäßigt. DE: 19 % regulär · 7 % ermäßigt. AT: 20 % regulär · 13 % / 10 % ermäßigt · 4,9 % für bestimmte Grundnahrungsmittel seit 1.7.2026 (§ 10 UStG AT). Alles lokal, kein Upload.</p>
   </section>
   <div class="cta"><strong>Mehr Rechner</strong>
     <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
@@ -136,7 +136,7 @@ footer a{color:var(--muted)}
   var RATES={
     CH:{cur:"CHF",rows:[["8.1","8,1 % – Normalsatz"],["3.8","3,8 % – Beherbergung"],["2.6","2,6 % – ermäßigt"]]},
     DE:{cur:"€",rows:[["19","19 % – Regelsatz"],["7","7 % – ermäßigt"]]},
-    AT:{cur:"€",rows:[["20","20 % – Normalsatz"],["13","13 % – ermäßigt"],["10","10 % – ermäßigt"]]}
+    AT:{cur:"€",rows:[["20","20 % – Normalsatz"],["13","13 % – ermäßigt"],["10","10 % – ermäßigt"],["4.9","4,9 % – Grundnahrungsmittel (ab 1.7.2026)"]]}
   };
   var mode="net";
   var landEl=document.getElementById("land"),satzEl=document.getElementById("satz"),
@@ -149,7 +149,7 @@ footer a{color:var(--muted)}
   function run(){
     var cur=RATES[landEl.value].cur;
     var p=parseFloat(satzEl.value);
-    var b=parseFloat(betragEl.value.trim().replace(",","."));
+    var b=(function(v){var s=String(v).trim().replace(/[\s'’]/g,"");if(s.indexOf(",")>=0){s=s.replace(/\./g,"").replace(",",".");}else if((s.match(/\./g)||[]).length>1){s=s.replace(/\./g,"");}return parseFloat(s);})(betragEl.value);
     if(!isFinite(b)){out.innerHTML='<div class="box" style="grid-column:1/-1"><span>Bitte einen Betrag eingeben.</span></div>';return;}
     var net,gross,tax;
     if(mode==="net"){net=b;tax=b*p/100;gross=b+tax;}

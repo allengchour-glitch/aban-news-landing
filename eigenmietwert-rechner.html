@@ -28,7 +28,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Was ist der Eigenmietwert?","acceptedAnswer":{"@type":"Answer","text":"Wer in den eigenen vier Wänden wohnt, muss in der Schweiz einen fiktiven Mietwert als Einkommen versteuern — den Eigenmietwert. Im Gegenzug darfst du Schuldzinsen und Unterhaltskosten abziehen. Der Eigenmietwert liegt grob bei 60–70 % der ortsüblichen Marktmiete, je nach Kanton."}},
 {"@type":"Question","name":"Wie genau ist diese Schätzung?","acceptedAnswer":{"@type":"Answer","text":"Es ist nur ein Richtwert. Den verbindlichen Eigenmietwert legt dein Kanton fest (amtliche Schätzung) — die Methoden unterscheiden sich stark. Nutze diesen Rechner, um die Größenordnung und den Steuer-Effekt abzuschätzen, nicht für die Steuererklärung selbst."}},
-{"@type":"Question","name":"Wird der Eigenmietwert abgeschafft?","acceptedAnswer":{"@type":"Answer","text":"Eine Abschaffung des Eigenmietwerts ist in der Schweiz politisch seit Jahren in Diskussion und könnte künftig kommen. Bis zu einer rechtskräftigen Umsetzung gilt aber die heutige Regelung. Prüfe den aktuellen Stand bei deiner Steuerverwaltung. Alles wird nur lokal berechnet."}}
+{"@type":"Question","name":"Wird der Eigenmietwert abgeschafft?","acceptedAnswer":{"@type":"Answer","text":"Ja. Das Stimmvolk hat die Reform der Wohneigentumsbesteuerung am 28. September 2025 mit 57,7 % Ja angenommen. Der Eigenmietwert auf selbst bewohntem Wohneigentum fällt ab dem 1. Januar 2029 weg; bis Ende 2028 wird er weiter besteuert. Gleichzeitig entfallen weitgehend der Abzug der Schuldzinsen und der Unterhaltskosten (befristeter Schuldzinsabzug für Ersterwerbende). Quelle: Eidgenössisches Finanzdepartement."}}
 ]}
 </script>
 <style>
@@ -151,7 +151,8 @@ footer a{color:var(--muted)}
     html+='<div><b>Eigenmietwert ('+quote.toLocaleString("de-CH",{maximumFractionDigits:0})+' %)</b><span>'+chf(eigen)+'</span></div>';
     if(abzug>0)html+='<div><b>− Unterhalt + Schuldzinsen</b><span>'+chf(abzug)+'</span></div>';
     html+='<div><b>Steuerbar (netto)</b><span>'+chf(steuerbar)+'</span></div>';
-    if(isFinite(effekt))html+='<div><b>Geschätzte Mehr-Steuer / Jahr</b><span>'+chf(effekt)+'</span></div>';
+    if(isFinite(effekt))html+=effekt>=0?'<div><b>Geschätzte Mehr-Steuer / Jahr</b><span>'+chf(effekt)+'</span></div>':'<div><b>Geschätzte Steuerersparnis / Jahr</b><span>'+chf(-effekt)+'</span></div>';
+    html+='<div><b>Gilt bis</b><span>Ende 2028 (ab 2029 abgeschafft)</span></div>';
     rows.innerHTML=html;
   }
   document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){

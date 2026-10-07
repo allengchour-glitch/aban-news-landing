@@ -129,12 +129,13 @@ Ben,Zürich,2025</textarea>
     if(cur!==""||row.length){row.push(cur);rows.push(row);}
     return rows.filter(function(r){return r.length>1||r[0]!=="";});
   }
-  function csvField(v,sep){ v=String(v==null?"":v); if(v.indexOf(sep)>=0||v.indexOf('"')>=0||v.indexOf("\n")>=0){return '"'+v.replace(/"/g,'""')+'"';} return v; }
+  function csvField(v,sep){ if(v!==null && typeof v==="object") v=JSON.stringify(v); v=String(v==null?"":v); if(v.indexOf(sep)>=0||v.indexOf('"')>=0||v.indexOf("\n")>=0){return '"'+v.replace(/"/g,'""')+'"';} return v; }
   function run(){
     err.textContent=""; var sep=document.getElementById("sep").value; var t=inp.value;
     try{
       if(dir==="c2j"){
         if(!t.trim()){out.value="";return;}
+        t=t.replace(/^\uFEFF/,"");
         var rows=parseCSV(t,sep); if(!rows.length){out.value="[]";return;}
         var head=rows[0], arr=[];
         for(var i=1;i<rows.length;i++){var o={};for(var j=0;j<head.length;j++){o[head[j]]=rows[i][j]!==undefined?rows[i][j]:"";}arr.push(o);}

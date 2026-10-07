@@ -134,6 +134,7 @@ footer a{color:var(--muted)}
     var area=document.getElementById("area"),peri=document.getElementById("peri"),
         periLab=document.getElementById("periLab"),formula=document.getElementById("formula");
     var A,P,f,hasP=true;
+    if(FIELDS[shape].some(function(x){return num(x[0])<0;})){area.textContent="—";peri.textContent="—";formula.textContent="Nur positive Werte eingeben – eine Länge kann nicht negativ sein.";return;}
     if(shape==="rect"){var a=num("a"),b=num("b");A=a*b;P=2*(a+b);f="A = a × b · U = 2 (a + b)";}
     else if(shape==="square"){var s=num("a");A=s*s;P=4*s;f="A = a² · U = 4 a";}
     else if(shape==="circle"){var r=num("r");A=Math.PI*r*r;P=2*Math.PI*r;f="A = π r² · U = 2 π r";}

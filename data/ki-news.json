@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-04T10:33:45Z",
+ "stand": "2026-10-07T11:02:25Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Frustriert?: GPT Astra betrügt bei Starcraft-Bot-Benchmark",
-   "u": "https://www.golem.de/news/frustriert-gpt-astra-betruegt-bei-starcraft-bot-benchmark-2610-213683.html",
-   "q": "Golem",
-   "d": "2026-10-04T10:17:02Z",
-   "s": "OpenAIs GPT 6 alias Astra hat zu unlauteren Mitteln gegriffen, nachdem eigene Versuche, einen Starcraft-Bot zu programmieren, fehlgeschlagen waren. (OpenAI, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Zu viel Autonomie: Metas KI-Agent Muse verrät Wohnadresse ohne Zustimmung",
-   "u": "https://t3n.de/news/meta-muse-ki-agent-verraet-wohnadresse-marketplace-1765382/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "KI-Modelle wie Medikamente zulassen: Das steckt hinter der Idee von KI-Godfather Hinton",
+   "u": "https://t3n.de/news/ki-medikamente-zulassen-hinton-1766990/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-04T10:10:00Z",
-   "s": "Metas KI-Agent Muse kann unter anderem eigenständig Facebook-Marketplace-Accounts managen. Ein Nutzer schilderte, welch unerfreuliche Dinge ihm dabei passierten. weiterlesen auf t3n.de",
+   "d": "2026-10-07T10:30:25Z",
+   "s": "Der oft „Godfather of AI“ genannte Nobelpreisträger Geoffrey Hinton empfiehlt, dass KI-Modelle vor ihrer Veröffentlichung ein ähnliches Genehmigungsverfahren durchlaufen sollten wie Medikamente. Anges…",
    "sprache": "de"
   },
   {
-   "t": "ChatGPT-Effekt: Warum Uni-Absolventen jetzt 13 Prozent weniger verdienen",
-   "u": "https://t3n.de/news/ki-absolventen-gehalt-berufseinstieg-chatgpt-studie-1764272/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-04T09:00:00Z",
-   "s": "KI hat die Einstiegschancen von Absolvent:innen auf dem Arbeitsmarkt deutlich verschlechtert. Laut einem Arbeitspapier der US-Statistikbehörde verdienten etwa Informatik-Student:innen nach ihrem Absch…",
-   "sprache": "de"
-  },
-  {
-   "t": "Speicherkrise: Kleine Raspberry Pis werden teurer, DGX Spark mit weniger RAM",
-   "u": "https://www.golem.de/news/speicherkrise-kleine-raspberry-pis-werden-teurer-dgx-spark-mit-weniger-ram-2610-213680.html",
+   "t": "Tech-Beschäftigte sind unzufriedener: Mehr Entwickler wechseln in die Selbstständigkeit",
+   "u": "https://www.golem.de/news/tech-beschaeftigte-sind-unzufriedener-mehr-entwickler-wechseln-in-die-selbststaendigkeit-2610-213803.html",
    "q": "Golem",
-   "d": "2026-10-04T08:16:02Z",
-   "s": "Die Speicherkrise sorgt weiter für steigende Preise. Bislang verschonte Raspberry Pis werden teurer, Nvidias KI-Desktop kommt als kleinere Version. (RAM, Nvidia)",
+   "d": "2026-10-07T10:15:02Z",
+   "s": "Während der Einsatz von KI weiter steigt, sinkt die Arbeitszufriedenheit von Entwicklern deutlich. (KI, Studien)",
    "sprache": "de"
   },
   {
-   "t": "Missing Link: Our Best Machines – Was bin ich ohne meinen KI-Assistenten?",
-   "u": "https://www.heise.de/news/Missing-Link-Our-Best-Machines-Was-bin-ich-ohne-meinen-KI-Assistenten-11467180.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Physics-LLM: Der künstliche Physiker",
+   "u": "https://www.golem.de/news/physics-llm-der-kuenstliche-physiker-2610-213799.html",
+   "q": "Golem",
+   "d": "2026-10-07T10:00:02Z",
+   "s": "Eine KI verbessert Analysesoftware in Stunden statt Monaten. Mit Physics-LLM soll daraus ein offenes Werkzeug für Europas Physikforschung werden. Ein Bericht von Dirk Eidemüller (Wissenschaft, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: KI in der Cybersecurity – Sicherheit trotz Coding-Agenten, LLMs und Deepfakes",
+   "u": "https://www.heise.de/news/KI-in-der-Cybersecurity-Sicherheit-trotz-Coding-Agenten-LLMs-und-Deepfakes-11447449.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-04T05:31:00Z",
-   "s": "KI-Assistenten ziehen in immer mehr Lebensbereiche ein. Medizininformatikerin und Sci-Fi-Autorin über die Frage wer wir ohne",
+   "d": "2026-10-07T10:00:00Z",
+   "s": "Künstliche Intelligenz verändert die IT-Sicherheit und schafft neue Herausforderungen. Sie bietet neue Angriffsflächen, aber auch Möglichkeiten.",
    "sprache": "de"
   },
   {
-   "t": "The Agent Said It Was Done. The Database Disagreed.",
-   "u": "https://huggingface.co/blog/microsoft/thinkingbox",
-   "q": "Hugging Face",
-   "d": "2026-10-03T22:56:48Z",
-   "s": "",
-   "sprache": "en"
+   "t": "Eine Milliarde Nutzer von ChatGPT: Dennoch hat KI ein Akzeptanz-Problem bei uns",
+   "u": "https://t3n.de/news/eine-milliarde-nutzer-von-chatgpt-dennoch-hat-ki-ein-akzeptanz-problem-bei-uns-1766749/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-07T09:30:15Z",
+   "s": "Umfragen der Stanford University und Gallup belegen, dass die Menschen kein gutes Bild von KI-Produkten und den Rechenzentren haben. Gleichzeitig steigen die Nuweiterlesen auf t3n.de",
+   "sprache": "de"
   },
   {
-   "t": "Amazon responds to data center backlash, says it no longer uses NDAs",
-   "u": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-03T18:43:57Z",
-   "s": "The CEO of Amazon Web Services tried to push back against widespread suspicion of data centers.",
-   "sprache": "en"
-  },
-  {
-   "t": "OpenAI safety employee resigns, claiming the company’s ‘culture is broken’",
-   "u": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-03T16:30:01Z",
-   "s": "By his own admission, David Robinson is “something of a cliché”: an employee at a leading AI company who issues a dire warning while resigning from their job.",
-   "sprache": "en"
-  },
-  {
-   "t": "Nvidias DGX Spark wird trotz halbiertem RAM teurer",
-   "u": "https://www.heise.de/news/Nvidias-DGX-Spark-wird-trotz-halbiertem-RAM-teurer-11475117.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Copilot auf Platz eins: GitHub stellt neuen Review-Benchmark vor",
+   "u": "https://www.heise.de/news/GitHub-ReviewBench-Benchmark-fuer-KI-gestuetzte-Code-Reviews-11478889.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-03T16:02:00Z",
-   "s": "Ein neues Modell der KI-Workstation für lokale KI bringt nur noch 64 GByte RAM mit. Teurer wird es trotzdem.",
+   "d": "2026-10-07T09:26:00Z",
+   "s": "Mit ReviewBench will GitHub Code-Reviews durch KI fair vergleichbar machen. Auf Platz eins landet ausgerechnet Copilot, ein unabhängiger Test sieht das anders.",
    "sprache": "de"
   },
   {
-   "t": "Betroffene in ganz Europa: Mindestens 147 Abgeordnete wurden Ziel sexualisierter Deepfakes",
-   "u": "https://netzpolitik.org/2026/betroffene-in-ganz-europa-mindestens-147-abgeordnete-wurden-ziel-sexualisierter-deepfakes/",
+   "t": "Ex-Ramp engineers raise $20M for platform Melius after scrapping their first product",
+   "u": "https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-06T22:34:03Z",
+   "s": "Instead of helping marketers manage and optimize ad spend, the company is focusing on building the tools that generate the creative assets and campaigns.",
+   "sprache": "en"
+  },
+  {
+   "t": "How AI decision models could change content moderation",
+   "u": "https://techcrunch.com/2026/10/06/how-ai-decision-models-could-change-content-moderation/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-06T20:35:20Z",
+   "s": "On Tuesday, Musubi announced a lightweight decision model made for real-time moderation called PolicyLM-1.7B, released with open weights.",
+   "sprache": "en"
+  },
+  {
+   "t": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
+   "u": "https://openai.com/index/atlassian-partnership",
+   "q": "OpenAI",
+   "d": "2026-10-06T16:00:00Z",
+   "s": "Atlassian and OpenAI are expanding their partnership to connect frontier models with enterprise knowledge and help teams plan, build, and deliver work.",
+   "sprache": "en"
+  },
+  {
+   "t": "Einigung absehbar: EU-Staaten entscheiden über Cookie-Banner, KI-Training und Co.",
+   "u": "https://netzpolitik.org/2026/einigung-absehbar-eu-staaten-entscheiden-ueber-cookie-banner-ki-training-und-co/",
    "q": "netzpolitik.org",
-   "d": "2026-10-03T04:28:56Z",
-   "s": "Ein Gesicht reicht: Mit KI lassen sich Fotos für sexualisierte Deepfakes missbrauchen (Symbolbild) – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Egor KomarovEine neue Studie zeigt, wie Politike…",
+   "d": "2026-10-06T15:13:14Z",
+   "s": "Die EU will Unternehmen das Training von KI mit unseren Daten erleichtern. – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Huzeyfe TuranDie Verhandlungen rund um den Daten-Omnibus im Rat sind in …",
    "sprache": "de"
   }
  ]

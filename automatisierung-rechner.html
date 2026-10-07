@@ -181,7 +181,7 @@ footer a{color:var(--muted)}
     if(netMonth>0 && buildCost>0){
       var months=buildCost/netMonth;
       weeks=months*4.33;
-      payTxt = months<1 ? Math.round(weeks)+" Wochen" : months.toFixed(1)+" Monate";
+      payTxt = months<1 ? (weeks<1 ? "< 1 Woche" : (Math.round(weeks)===1 ? "1 Woche" : Math.round(weeks)+" Wochen")) : months.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" Monate";
     } else if(buildCost===0){ payTxt="sofort"; }
     document.getElementById("mPay").textContent=payTxt;
     updateChart(grossYear,toolYear,netYear);
@@ -189,7 +189,8 @@ footer a{color:var(--muted)}
     d.textContent="Bauaufwand kostet rund "+euro(buildCost)+" deiner Zeit · "+
       Math.round(runsYear)+" Durchläufe/Jahr · "+euro(grossYear)+" Brutto-Ersparnis minus "+euro(toolYear)+" Tool-Kosten.";
     v.className="verdict";
-    if(netYear<=0){ v.classList.add("bad"); v.textContent="❌ Lohnt sich nicht — die Tool-Kosten fressen die Ersparnis. Anders lösen oder lassen."; }
+    if(grossYear<=0){ v.classList.add("bad"); v.textContent="❌ Keine Zeitersparnis — die Restzeit ist so hoch wie heute. So lohnt sich das Automatisieren nicht."; }
+    else if(netYear<=0){ v.classList.add("bad"); v.textContent="❌ Lohnt sich nicht — die Tool-Kosten fressen die Ersparnis. Anders lösen oder lassen."; }
     else if(weeks!==null && weeks>52){ v.classList.add("warn"); v.textContent="⚠️ Grenzwertig — Amortisation über einem Jahr. Nur automatisieren, wenn die Aufgabe sicher bleibt."; }
     else if(savedHrsYear<5){ v.classList.add("warn"); v.textContent="⚠️ Wenig Hebel — unter 5 Std./Jahr. Lohnt meist nur, wenn die Aufgabe nervt oder fehleranfällig ist."; }
     else { v.classList.add("ok"); v.textContent="✅ Lohnt sich — spürbarer Zeitgewinn und schnelle Amortisation. Bau es, plane etwas Wartung ein."; }

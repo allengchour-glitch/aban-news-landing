@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JWT-Decoder · aban news</title>
-<meta name="description" content="Kostenloses Tool: JSON Web Token (JWT) lesbar machen — Header und Payload entschlüsseln, Ablauf-Datum prüfen. Lokal im Browser, Token verlässt den Browser nicht.">
+<meta name="description" content="Kostenloses Tool: JSON Web Token (JWT) lesbar machen — Header und Payload dekodieren, Ablauf-Datum prüfen. Lokal im Browser, Token verlässt den Browser nicht.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/jwt-decoder.html">
 <meta property="og:title" content="JWT-Decoder">
@@ -21,7 +21,7 @@
 {"@context":"https://schema.org","@type":"WebApplication","name":"JWT-Decoder",
 "url":"https://abannews.com/jwt-decoder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
 "inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Entschlüsselt Header und Payload eines JSON Web Token (JWT) lesbar.",
+"description":"Dekodiert Header und Payload eines JSON Web Token (JWT) und macht sie lesbar.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -70,9 +70,9 @@ footer a{color:var(--muted)}
 <main><div class="wrap">
   <section class="hero">
     <h1><span class="a">JWT</span> lesbar machen</h1>
-    <p>Ein JSON Web Token (z. B. aus einem API-Header) in Header und Payload zerlegen und entschlüsseln — inklusive Ablauf- und Ausstelldatum im Klartext. Lokal im Browser, der Token wird nicht gesendet.</p>
+    <p>Ein JSON Web Token (z. B. aus einem API-Header) in Header und Payload zerlegen und dekodieren — inklusive Ablauf- und Ausstelldatum im Klartext. Lokal im Browser, der Token wird nicht gesendet.</p>
   </section>
-<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Entschlüsselt ein Login-Token (JWT) und zeigt seinen Inhalt im Klartext.</p>
+<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Dekodiert ein Login-Token (JWT) und zeigt seinen Inhalt im Klartext.</p>
   <section class="panel" id="tool">
     <label for="in">JWT einfügen (drei Teile, durch Punkte getrennt)</label>
     <textarea id="in" spellcheck="false">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFiYW4iLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MTcwMDAwMzYwMH0.signature</textarea>

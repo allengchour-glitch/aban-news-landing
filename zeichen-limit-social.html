@@ -83,7 +83,7 @@ footer a{color:var(--muted)}
     <label for="txt">Text eingeben</label>
     <textarea id="txt" placeholder="Dein Posting, Titel oder Meta-Text …">5 Minuten KI ohne Hype — jeden Werktag. Ehrlich, kurz, für Selbstständige.</textarea>
     <div class="list" id="list"></div>
-    <p class="note">Richtwerte (Plattformen ändern sie gelegentlich). SEO-Felder werden in Pixeln abgeschnitten — Zeichen sind eine gute Näherung. Alles lokal, kein Upload.</p>
+    <p class="note">X zählt gewichtet: Emojis und z. B. chinesische Zeichen je 2, jeder Link immer 23 (<a href="https://docs.x.com/fundamentals/counting-characters" rel="noopener">Quelle X</a>, Stand 2026-10). Threads: 500 Zeichen pro Textpost, Emojis zählen dort nach UTF-8-Bytes, also mehr als 1 (<a href="https://developers.facebook.com/docs/threads/posts" rel="noopener">Quelle Meta</a>, Stand 2026-10). Richtwerte (Plattformen ändern sie gelegentlich). SEO-Felder werden in Pixeln abgeschnitten — Zeichen sind eine gute Näherung. Alles lokal, kein Upload.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -106,16 +106,33 @@ footer a{color:var(--muted)}
 (function(){
   var LIMITS=[
     ["X / Twitter",280],["Meta-Title (SEO)",60],["Meta-Description (SEO)",160],
-    ["Instagram-Caption",2200],["LinkedIn-Beitrag",3000],["Facebook-Post (ideal)",80],
+    ["Instagram-Caption",2200],["LinkedIn-Beitrag",3000],["Threads",500],
     ["YouTube-Titel",100],["Bluesky",300]
   ];
   var txt=document.getElementById("txt"), list=document.getElementById("list");
   list.innerHTML=LIMITS.map(function(l,i){
     return '<div class="lim"><span class="name">'+l[0]+'</span><span class="bar"><i id="b'+i+'"></i></span><span class="cnt" id="c'+i+'"></span></div>';
   }).join("");
+  // X zählt gewichtet (docs.x.com/fundamentals/counting-characters): jede URL 23,
+  // Emoji und Zeichen ausserhalb von U+0000–U+10FF (u. a. CJK) je 2, übrige 1.
+  function xCount(s){
+    var n=0;
+    s=s.replace(/https?:\/\/\S+/gi,function(){n+=23;return "";});
+    var segs=(typeof Intl!=="undefined"&&Intl.Segmenter)?Array.from(new Intl.Segmenter(undefined,{granularity:"grapheme"}).segment(s),function(x){return x.segment;}):Array.from(s);
+    segs.forEach(function(g){
+      if(/\p{Extended_Pictographic}/u.test(g)){n+=2;return;}
+      Array.from(g).forEach(function(c){
+        var cp=c.codePointAt(0);
+        n+=(cp<=0x10FF||(cp>=0x2000&&cp<=0x200D)||(cp>=0x2010&&cp<=0x201F)||(cp>=0x2032&&cp<=0x2037))?1:2;
+      });
+    });
+    return n;
+  }
   function render(){
-    var n=[].concat(Array.from(txt.value)).length; // codepoints (Emojis als 1)
+    var cp=Array.from(txt.value).length; // Codepoints (Emojis als 1)
+    var xn=xCount(txt.value);
     LIMITS.forEach(function(l,i){
+      var n=i===0?xn:cp;
       var max=l[1], pct=Math.min(100,Math.round(n/max*100));
       var col=n>max?"var(--bad)":(n>max*0.9?"var(--warn)":"var(--ok)");
       var bar=document.getElementById("b"+i), cnt=document.getElementById("c"+i);

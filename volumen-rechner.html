@@ -127,7 +127,7 @@ footer a{color:var(--muted)}
     cone:[["r","Radius r"],["h","Höhe h"]],
     pyramid:[["a","Grundkante a"],["h","Höhe h"]]
   };
-  function num(id){var el=document.getElementById("in_"+id);if(!el)return NaN;var v=el.value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function num(id){var el=document.getElementById("in_"+id);if(!el)return NaN;var v=el.value.replace(",",".");if(v==="")return NaN;var n=parseFloat(v);return n<0?NaN:n;}
   function calc(){
     var vol=document.getElementById("vol"),liter=document.getElementById("liter"),formula=document.getElementById("formula");
     var V,f;
@@ -139,7 +139,7 @@ footer a{color:var(--muted)}
     else {var pa=num("a"),ph=num("h");V=1/3*pa*pa*ph;f="V = 1/3 · a² · h";}
     if(!isFinite(V)){vol.textContent="—";liter.textContent="";formula.textContent=f;return;}
     var u=document.getElementById("u").value;
-    vol.textContent=V.toLocaleString("de-DE",{maximumFractionDigits:2})+" "+u+"³";
+    vol.textContent=V.toLocaleString("de-DE",(V!==0&&V<1?{maximumSignificantDigits:6}:{maximumFractionDigits:2}))+" "+u+"³";
     // liters: convert to cm³ then /1000
     var toCm = u==="cm"?1 : u==="m"?100 : 0.1;
     var cm3=V*Math.pow(toCm,3);
@@ -149,7 +149,7 @@ footer a{color:var(--muted)}
   }
   function setShape(s){shape=s;var box=document.getElementById("inputs");box.innerHTML="";
     FIELDS[s].forEach(function(f){var d=document.createElement("div");
-      d.innerHTML='<label for="in_'+f[0]+'">'+f[1]+'</label><input id="in_'+f[0]+'" type="number" inputmode="decimal" value="">';
+      d.innerHTML='<label for="in_'+f[0]+'">'+f[1]+'</label><input id="in_'+f[0]+'" type="number" min="0" inputmode="decimal" value="">';
       box.appendChild(d);});
     box.querySelectorAll("input").forEach(function(i){i.addEventListener("input",calc);});
     var def={cube:{a:10},cuboid:{a:20,b:10,c:5},sphere:{r:5},cylinder:{r:4,h:10},cone:{r:4,h:9},pyramid:{a:6,h:9}}[s];

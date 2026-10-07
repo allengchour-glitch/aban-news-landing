@@ -106,7 +106,7 @@ footer a{color:var(--muted)}
 <script>
 (function(){
   var inp=document.getElementById("url"), err=document.getElementById("err"), rows=document.getElementById("rows");
-  function getId(u){ u=(u||"").trim(); var m=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/); if(m)return m[1]; if(/^[A-Za-z0-9_-]{11}$/.test(u))return u; return null; }
+  function getId(u){ u=(u||"").trim(); var m=u.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/); if(m)return m[1]; if(/^[A-Za-z0-9_-]{11}$/.test(u))return u; return null; }
   function render(){
     err.textContent=""; rows.innerHTML="";
     var v=inp.value.trim(); if(!v)return;

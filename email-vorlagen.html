@@ -155,7 +155,7 @@ footer a{color:var(--muted)}
      gen:function(c){return{subject:"Kurze Nachfrage zu "+v(c.detail,"meinem Angebot"),
       body:greet(c)+"\n\nich wollte mich kurz melden zu "+v(c.detail,"meinem Angebot")+". Ich weiß, wie schnell so etwas im Alltag untergeht — kein Stress.\n\nFalls noch Fragen offen sind oder du etwas angepasst haben möchtest, sag einfach Bescheid, ich kümmere mich gern darum. Und wenn es gerade nicht passt, ist das auch völlig in Ordnung — dann weiß ich Bescheid.\n\n"+sign(c)};}},
     {id:"preiserhoehung",label:"Preiserhöhung ankündigen",hint:"Klar, fair und mit Vorlauf — ohne dich zu entschuldigen.",
-     fields:[{k:"detail",label:"Was wird teurer? (Leistung)",ph:"z. B. die monatliche Betreuung"},{k:"datum",label:"Ab wann?",ph:"z. B. 1. Januar 2026"}],
+     fields:[{k:"detail",label:"Was wird teurer? (Leistung)",ph:"z. B. die monatliche Betreuung"},{k:"datum",label:"Ab wann?",ph:"z. B. 1. Januar 2027"}],
      gen:function(c){return{subject:"Anpassung meiner Preise ab "+v(c.datum,"[Datum]"),
       body:greet(c)+"\n\nich schätze unsere Zusammenarbeit sehr und möchte dich rechtzeitig informieren: Zum "+v(c.datum,"[Datum]")+" passe ich die Preise für "+v(c.detail,"meine Leistungen")+" an.\n\nDer Schritt fällt mir nicht leicht, ist aber nötig, damit die Qualität und Verfügbarkeit so bleiben, wie du sie kennst. Alles bis "+v(c.datum,"[Datum]")+" läuft noch zu den bisherigen Konditionen.\n\nDie neuen Konditionen schicke ich dir gern im Detail — und natürlich bin ich für Fragen da.\n\n"+sign(c)};}},
     {id:"absagen",label:"Auftrag höflich absagen",hint:"Nein sagen, ohne Türen zuzuschlagen.",
@@ -197,7 +197,7 @@ footer a{color:var(--muted)}
     {id:"briefing",label:"Fehlende Infos anfordern",hint:"Freundlich nachhaken, damit du loslegen kannst.",
      fields:[{k:"detail",label:"Was brauchst du?",ph:"z. B. die Texte und das Logo"}],
      gen:function(c){return{subject:"Kurz noch: das brauche ich von dir",
-      body:greet(c)+"\n\nich würde gern mit "+v(c.detail,"deinem Projekt")+" loslegen — dafür fehlt mir nur noch eine Kleinigkeit von dir:\n\n• "+v(c.detail,"[was genau du brauchst]")+"\n\nSobald ich das habe, geht es bei mir direkt weiter. Schick es mir einfach als Antwort auf diese Mail. Danke dir!\n\n"+sign(c)};}},
+      body:greet(c)+"\n\nich würde gern loslegen — dafür fehlt mir nur noch eine Kleinigkeit von dir:\n\n• "+v(c.detail,"[was genau du brauchst]")+"\n\nSobald ich das habe, geht es bei mir direkt weiter. Schick es mir einfach als Antwort auf diese Mail. Danke dir!\n\n"+sign(c)};}},
     {id:"skonto-anbieten",label:"Skonto / Frühzahlung anbieten",hint:"Schneller an dein Geld — mit kleinem Anreiz.",
      fields:[{k:"detail",label:"Welche Rechnung?",ph:"z. B. Rechnung 2026-014"},{k:"prozent",label:"Skonto-Satz",ph:"z. B. 2 %"}],
      gen:function(c){return{subject:"Angebot: "+v(c.prozent,"Skonto")+" bei schneller Zahlung",
@@ -218,7 +218,7 @@ footer a{color:var(--muted)}
   function buildFields(){
     var s=curr(); hintEl.textContent=s.hint; fieldsEl.innerHTML="";
     // feste Felder: Empfänger + Dein Name
-    fieldsEl.appendChild(field("name","3 · Name des Empfängers (optional)","z. B. Frau Meier"));
+    fieldsEl.appendChild(field("name","3 · Name des Empfängers (optional, die Vorlagen duzen)","z. B. Anna"));
     s.fields.forEach(function(f){ fieldsEl.appendChild(field(f.k,f.label,f.ph)); });
     fieldsEl.appendChild(field("me","Dein Name (Absender)","z. B. Lena Bauer"));
     var me=""; try{me=localStorage.getItem(LS)||"";}catch(e){}

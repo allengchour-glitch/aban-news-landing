@@ -1,5 +1,20 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
+- **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
+  gesetze-im-internet.de, Bundesbank, europa.eu): AHV/IV/EO AN 5,3 % · Selbständige 10,0 % mit sinkender Skala 10'100–60'500
+  (2027: 10'300–61'500), Mindestbeitrag 530 (2027: 541) · BVG Schwelle 22'680, Koord. 26'460, Limite 90'720 (2027: 23'040/26'880/92'160)
+  · 3a 7'258/36'288 (2027: 7'373/36'864) · UVG/ALV-Höchstlohn 148'200 · MWST 8,1/2,6/3,8 · Referenzzins 1,25 % (nächste Publ. 1.12.2026)
+  · DE Basiszins 1,52 % (B2B 10,52 %) · § 5 DDG statt TMG · EU-OS-Plattform seit 20.07.2025 abgeschaltet · EE 24 %, RO 21 %, AT 4,9 %.
+- **Ablauf:** 22 Stapel prüfen → je zwei unabhängige Gegenprüfer → reparieren → Kritiker. Schwere CH/DE-Fehler (Stapel 10, 20–22) von Hand
+  behoben und im Browser nachgerechnet (Nettolohn zog 8,7 % AHV ab, AHV-Freelancer mit erfundenem Freibetrag, Hypothek 65 % statt 2/3,
+  Feiertage ohne Kantonsfeiertage …). Kritiker fand 5 Folgefehler (u. a. Import-MWST-Grenze „CHF 300“ → richtig rund CHF 62) → behoben.
+- **Abnahme:** JSON-LD 131 Seiten ok, Playwright 390 px ohne Überlauf/JS-Fehler, Backtest-Engine 63/63, Tool-Brain 100, Links ok.
+- **Lehre:** Sub-Agenten laufen in Session-Limits (Reset alle ~5 h) → Workflow mit resumeFromRunId + Args aus scratchpad/wfargs.json
+  fortsetzen; schwere Fälle lieber selbst fixen. Fertige Teilstände sofort committen.
+- **Jährlich nachführen:** Faktenblatt-Werte (AHV/BVG/3a jeweils Bundesratsentscheid Anfang Oktober), Referenzzins (BWO quartalsweise),
+  DE-Basiszins (1.1./1.7.).
+
 ## 🤖 2026-10-03 — KI-Bot-Trader (`tools/trading/ki_bot/`, Anleitung README.md)
 > - **Kern** (`kern.py`): Komitee aus 18 Experten (9 Stile aus stil_labor, 6 Indikator-Regeln, Halten, Cash, Online-Logit
 >   auf 13 Merkmalen) + lernender Gewichter (Hedge, eta 10, Vergessen 0.995) + Vol-Ziel 15 %, Verlust-Bremse, Umschicht-Band.

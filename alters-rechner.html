@@ -114,16 +114,22 @@ footer a{color:var(--muted)}
     var b=parse("birth"); if(!b){out.innerHTML='<span style="color:#9aa3ad">Geburtsdatum wählen.</span>';return;}
     var ref=parse("ref")||new Date(); ref=new Date(ref.getFullYear(),ref.getMonth(),ref.getDate());
     if(b>ref){out.innerHTML='<span style="color:#a01616">Das Geburtsdatum liegt nach dem Stichdatum.</span>';return;}
-    var y=ref.getFullYear()-b.getFullYear(), m=ref.getMonth()-b.getMonth(), d=ref.getDate()-b.getDate();
-    if(d<0){ m--; var pm=new Date(ref.getFullYear(),ref.getMonth(),0).getDate(); d+=pm; }
-    if(m<0){ y--; m+=12; }
+    // Anker = Geburtsdatum + volle Monate (Tag aufs Monatsende begrenzt; 29.02. gilt in Nicht-Schaltjahren als 1.3.)
+    function anchor(k){
+      var am=b.getMonth()+k, last=new Date(b.getFullYear(),am+1,0).getDate();
+      if(b.getMonth()===1&&b.getDate()===29&&last===28) return new Date(b.getFullYear(),am,29);
+      return new Date(b.getFullYear(),am,Math.min(b.getDate(),last));
+    }
+    var mon=(ref.getFullYear()-b.getFullYear())*12+ref.getMonth()-b.getMonth();
+    var an=anchor(mon); while(mon>0&&an>ref){ mon--; an=anchor(mon); }
+    var y=Math.floor(mon/12), m=mon%12, d=Math.round((ref-an)/86400000);
     var totalDays=Math.round((ref-b)/86400000);
     var weeks=Math.floor(totalDays/7);
     // nächster Geburtstag
     var nb=new Date(ref.getFullYear(),b.getMonth(),b.getDate());
-    if(nb<=ref) nb=new Date(ref.getFullYear()+1,b.getMonth(),b.getDate());
+    if(nb<ref) nb=new Date(ref.getFullYear()+1,b.getMonth(),b.getDate());
     var dleft=Math.round((nb-ref)/86400000);
-    out.innerHTML='<div class="big">'+y+' Jahre, '+m+' Monate, '+d+' Tage</div>'+
+    out.innerHTML='<div class="big">'+y+' Jahr'+(y===1?'':'e')+', '+m+' Monat'+(m===1?'':'e')+', '+d+' Tag'+(d===1?'':'e')+'</div>'+
       '<div class="split">'+
         '<div>Gelebte Tage:<br><strong>'+totalDays.toLocaleString("de-DE")+'</strong></div>'+
         '<div>Gelebte Wochen:<br><strong>'+weeks.toLocaleString("de-DE")+'</strong></div>'+

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QR-Code-Generator (lokal) · aban news</title>
-<meta name="description" content="Kostenloses Tool: QR-Code aus Text oder Link erzeugen und als PNG oder SVG herunterladen. Fehlerkorrektur waehlbar. Lokal im Browser, ohne Login, ohne Upload.">
+<meta name="description" content="Kostenloses Tool: QR-Code aus Text oder Link erzeugen und als PNG oder SVG herunterladen. Fehlerkorrektur wählbar. Lokal im Browser, ohne Login, ohne Upload.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/qr-code.html">
 <meta property="og:title" content="QR-Code-Generator (lokal)">
@@ -21,7 +21,7 @@
 {"@context":"https://schema.org","@type":"WebApplication","name":"QR-Code-Generator (lokal)",
 "url":"https://abannews.com/qr-code.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
 "inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Erzeugt QR-Codes aus Text oder Links und exportiert sie als PNG oder SVG. Laeuft komplett im Browser.",
+"description":"Erzeugt QR-Codes aus Text oder Links und exportiert sie als PNG oder SVG. Läuft komplett im Browser.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -73,7 +73,7 @@ footer a{color:var(--muted)}
 <main><div class="wrap">
   <section class="hero">
     <h1><span class="a">QR-Code</span> erzeugen</h1>
-    <p>Aus Text oder Link einen QR-Code machen und als PNG oder SVG herunterladen. Fehlerkorrektur waehlbar. Laeuft komplett im Browser &mdash; nichts wird hochgeladen, nichts gespeichert.</p>
+    <p>Aus Text oder Link einen QR-Code machen und als PNG oder SVG herunterladen. Fehlerkorrektur wählbar. Läuft komplett im Browser &mdash; nichts wird hochgeladen, nichts gespeichert.</p>
   </section>
 <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Macht aus einem Link oder Text einen QR-Code zum Ausdrucken oder Teilen.</p>
   <section class="panel" id="tool">
@@ -106,10 +106,10 @@ footer a{color:var(--muted)}
         </div>
       </div>
     </div>
-    <p class="note">Byte-Modus (UTF-8), Versionen 1&ndash;40, Maske automatisch nach ISO/IEC 18004. Hoehere Fehlerkorrektur = robuster gegen Kratzer/Logo, aber groesserer Code. Der QR-Code ist immer dunkel auf weiss (am besten scanbar) &mdash; auch im Dark-Mode. Alles lokal, kein Upload, kein Tracking. <strong>Tipp:</strong> nach dem Erzeugen kurz mit dem Handy gegenpruefen.</p>
+    <p class="note">Byte-Modus (UTF-8), Versionen 1&ndash;40, Maske automatisch nach ISO/IEC 18004. Höhere Fehlerkorrektur = robuster gegen Kratzer/Logo, aber grösserer Code. Der QR-Code ist immer dunkel auf weiss (am besten scanbar) &mdash; auch im Dark-Mode. Alles lokal, kein Upload, kein Tracking. <strong>Tipp:</strong> nach dem Erzeugen kurz mit dem Handy gegenprüfen.</p>
   </section>
   <div class="cta"><strong>Mehr Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">fuer Web, Links &amp; Automatisierung.</p>
+    <p class="note" style="margin:.4rem 0 .8rem">für Web, Links &amp; Automatisierung.</p>
     <p><a class="btn" href="/encoder.html">Base64/URL</a>
       <a class="btn ghost" href="/uuid-generator.html">UUID/Slug</a>
       <a class="btn ghost" href="/kontrast-checker.html">Kontrast</a></p></div>
@@ -142,7 +142,7 @@ function buildQR(text, eccLevel, forceMask){
   }
   var ver=0,i;
   for(i=1;i<=40;i++){ if(fits(i)){ver=i;break;} }
-  if(!ver) throw new Error("Text zu lang für QR (max ~2900 Zeichen).");
+  if(!ver) throw new Error("Text zu lang für Fehlerkorrektur "+eccLevel+" (max. "+(dataCodewords(40,eccLevel)-3)+" Bytes). Tipp: niedrigere Fehlerkorrektur wählen.");
   // build bitstream
   var bb=[];
   function put(val,len){ for(var b=len-1;b>=0;b--) bb.push((val>>b)&1); }

@@ -26,7 +26,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Welche Umwandlungen gibt es?","acceptedAnswer":{"@type":"Answer","text":"GROSSBUCHSTABEN (alles gross), kleinbuchstaben (alles klein), Titel-Schreibung (jeder Wortanfang gross), Satz-Schreibung (nur nach Satzzeichen gross) und gross/klein tauschen (jeden Buchstaben umkehren)."}},
+{"@type":"Question","name":"Welche Umwandlungen gibt es?","acceptedAnswer":{"@type":"Answer","text":"GROSSBUCHSTABEN (alles gross), kleinbuchstaben (alles klein), Titel-Schreibung (jeder Wortanfang gross), Satz-Schreibung (nur nach Satzzeichen gross, alles andere klein, auch Nomen und Namen, die du danach von Hand gross schreibst) und gross/klein tauschen (jeden Buchstaben umkehren)."}},
 {"@type":"Question","name":"Werden Umlaute und Akzente korrekt behandelt?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die Umwandlung nutzt die sprachbewusste Gross-/Kleinschreibung des Browsers, daher werden ä/ö/ü, ß und Akzentzeichen korrekt umgewandelt."}},
 {"@type":"Question","name":"Wird mein Text gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles passiert lokal in deinem Browser — der Text wird nicht hochgeladen oder gespeichert, kein Konto nötig."}}
 ]}
@@ -93,7 +93,7 @@ footer a{color:var(--muted)}
       <button class="btn ghost sm" id="copy" type="button">Kopieren</button>
     </div>
     <textarea id="out" readonly aria-labelledby="outLbl"></textarea>
-    <p class="note">„Titel-Schreibung" macht den ersten Buchstaben jedes Wortes gross; „Satz-Schreibung" nur nach Satzzeichen (. ! ?). Nichts wird hochgeladen — alles lokal im Browser.</p>
+    <p class="note">„Titel-Schreibung" macht den ersten Buchstaben jedes Wortes gross; „Satz-Schreibung" nur nach Satzzeichen (. ! ?). Achtung: Satz-Schreibung schreibt alles andere klein, auch Nomen und Namen. Auf Deutsch danach Nomen von Hand gross schreiben. Nichts wird hochgeladen — alles lokal im Browser.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -116,6 +116,7 @@ footer a{color:var(--muted)}
 (function(){
   var inp=document.getElementById("in"),out=document.getElementById("out"),stat=document.getElementById("stat"),copy=document.getElementById("copy");
   function up(s){return s.toLocaleUpperCase();}
+  function zl(t){if(typeof Intl!=="undefined"&&Intl.Segmenter){var n=0,it=new Intl.Segmenter("de",{granularity:"grapheme"}).segment(t);for(var x of it)n++;return n;}return Array.from(t).length;}
   function lo(s){return s.toLocaleLowerCase();}
   function title(s){return s.replace(/(^|[\s\-_/(\[{"'»«„])(\S)/g,function(m,p,c){return p+up(c);});}
   function sentence(s){var r=lo(s);return r.replace(/(^\s*|[.!?]\s+)([^\s])/g,function(m,p,c){return p+up(c);});}
@@ -129,7 +130,7 @@ footer a{color:var(--muted)}
     return s;
   }
   function count(){
-    var s=inp.value,chars=s.length,noSp=s.replace(/\s/g,"").length;
+    var s=inp.value,chars=zl(s),noSp=zl(s.replace(/\s/g,""));
     var words=(s.trim().match(/\S+/g)||[]).length;
     var lines=s===""?0:s.split(/\r\n|\r|\n/).length;
     stat.textContent=chars+" Zeichen · "+noSp+" ohne Leerzeichen · "+words+" Wörter · "+lines+" Zeilen";

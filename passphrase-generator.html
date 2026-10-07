@@ -26,8 +26,8 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Warum eine Passphrase statt eines Passworts?","acceptedAnswer":{"@type":"Answer","text":"Mehrere zufällige Wörter (z. B. „Anker-Wolke-Pfeffer-7“) sind leichter zu merken als ein Zeichenwirrwarr und durch ihre Länge trotzdem sehr sicher. Wichtig ist, dass die Wörter wirklich zufällig gewählt sind — genau das macht dieser Generator."}},
-{"@type":"Question","name":"Ist das zufällig genug?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die Auswahl nutzt die kryptografisch starke Zufallsquelle des Browsers (crypto.getRandomValues) ohne Verzerrung. Bei vier Wörtern aus dieser Liste plus Zahl ergibt sich eine sehr hohe Anzahl möglicher Kombinationen."}},
+{"@type":"Question","name":"Warum eine Passphrase statt eines Passworts?","acceptedAnswer":{"@type":"Answer","text":"Mehrere zufällige Wörter (z. B. „Anker-Wolke-Pfeffer-7“) sind leichter zu merken als ein Zeichenwirrwarr. Wie stark sie sind, hängt von der Wortzahl ab: Die Liste hat 152 Wörter (rund 7,25 Bit je Wort). Mit 4 Wörtern plus Zahl sind es ≈ 35 Bit – für wichtige Konten 6–7 Wörter wählen (≈ 50–57 Bit). Wichtig ist, dass die Wörter wirklich zufällig gewählt sind — genau das macht dieser Generator."}},
+{"@type":"Question","name":"Ist das zufällig genug?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die Auswahl nutzt die kryptografisch starke Zufallsquelle des Browsers (crypto.getRandomValues) ohne Verzerrung. Die Stärke hängt aber von der Wortzahl ab: Mit 4 Wörtern plus Zahl sind es ≈ 35 Bit – für wichtige Konten 6–7 Wörter wählen (≈ 50–57 Bit). Die Seite zeigt den Wert jeweils unter der Passphrase an."}},
 {"@type":"Question","name":"Wird die Passphrase gespeichert oder gesendet?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Erzeugung läuft komplett in deinem Browser. Nichts wird gesendet oder gespeichert — du kannst die Seite auch offline nutzen."}}
 ]}
 </script>
@@ -88,7 +88,7 @@ footer a{color:var(--muted)}
       <div class="ent" id="ent"></div>
     </div>
     <div class="opts">
-      <div class="fld"><label for="count">Wörter: <span id="cv">4</span></label><input id="count" type="range" min="3" max="7" value="4"></div>
+      <div class="fld"><label for="count">Wörter: <span id="cv">6</span></label><input id="count" type="range" min="3" max="7" value="6"></div>
       <div class="fld"><label for="sep">Trennzeichen</label><select id="sep"><option value="-">Bindestrich (-)</option><option value=".">Punkt (.)</option><option value="_">Unterstrich (_)</option><option value=" ">Leerzeichen</option></select></div>
       <label class="chk"><input id="num" type="checkbox" checked> Zahl anhängen</label>
       <label class="chk"><input id="sym" type="checkbox"> Sonderzeichen anhängen</label>

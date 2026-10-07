@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WLAN-QR-Code erstellen â Gäste-WLAN zum Scannen · aban news</title>
+<title>WLAN-QR-Code erstellen — Gäste-WLAN zum Scannen · aban news</title>
 <meta name="description" content="Kostenloser WLAN-QR-Code-Generator: WLAN-Name und Passwort eingeben → QR-Code, den Gäste einfach scannen, um sich ohne Tippen zu verbinden. Lokal im Browser, ohne Upload.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/wlan-qr.html">
-<meta property="og:title" content="WLAN-QR-Code erstellen â Gäste-WLAN zum Scannen">
+<meta property="og:title" content="WLAN-QR-Code erstellen — Gäste-WLAN zum Scannen">
 <meta property="og:description" content="WLAN-Name + Passwort → QR-Code zum Verbinden ohne Tippen. Lokal im Browser, kein Upload.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abannews.com/wlan-qr.html">
@@ -332,6 +332,7 @@ function rsEncode(data,nec){var gen=genPoly(nec);var res=new Array(nec).fill(0);
   function draw(){
     status.textContent="";
     if(!ssid.value){ meta.textContent=""; var c=cv.getContext("2d"); c.fillStyle=LIGHT; c.fillRect(0,0,cv.width,cv.height); current=null; status.textContent="WLAN-Name eingeben."; return; }
+    if(enc.value!=="nopass"&&!pass.value){ meta.textContent=""; var c2=cv.getContext("2d"); c2.fillStyle=LIGHT; c2.fillRect(0,0,cv.width,cv.height); current=null; status.textContent="Passwort eingeben oder ‹Kein Passwort› wählen."; return; }
     var r;
     try{ r=buildQR(wifiString(),"M",null); }
     catch(e){ status.textContent="\u2717 "+(e.message||e); current=null; return; }

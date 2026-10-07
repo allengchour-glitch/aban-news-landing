@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Was bringt das Minifizieren von CSS?","acceptedAnswer":{"@type":"Answer","text":"Kleinere CSS-Dateien laden schneller und sparen Bandbreite. Entfernt werden Kommentare, Zeilenumbrüche und überflüssige Leerzeichen — die Funktion des Codes bleibt identisch, nur die Datei wird kompakter."}},
-{"@type":"Question","name":"Ist das verlustfrei?","acceptedAnswer":{"@type":"Answer","text":"Für gängiges CSS ja: nur Whitespace und Kommentare werden entfernt, keine Regeln verändert. Bei sehr ausgefallenem CSS (etwa Kommentare innerhalb von Strings) lohnt ein kurzer Blick aufs Ergebnis. Das Original behältst du ohnehin."}},
+{"@type":"Question","name":"Ist das verlustfrei?","acceptedAnswer":{"@type":"Answer","text":"Für gängiges CSS ja: entfernt werden Kommentare und überflüssige Leerzeichen. Texte in Anführungszeichen bleiben unverändert, ebenso die Leerzeichen um + (nötig in calc()) und vor einem Doppelpunkt (etwa bei «div :first-child»). Bei ausgefallenem CSS lohnt trotzdem ein kurzer Blick aufs Ergebnis. Das Original behältst du ohnehin."}},
 {"@type":"Question","name":"Wird mein Code hochgeladen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Verarbeitung passiert komplett in deinem Browser. Es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -119,12 +119,17 @@ footer a{color:var(--muted)}
 (function(){
   var inp=document.getElementById("in"), out=document.getElementById("out");
   function minify(css){
-    var s=css;
-    s=s.replace(/\/\*[\s\S]*?\*\//g,"");        // Kommentare
+    var strs=[];
+    // Strings schützen, Kommentare entfernen (in einem Durchgang, damit "/*" in Strings bleibt)
+    var s=css.replace(/("(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\])*')|\/\*[\s\S]*?\*\//g,function(m,str){
+      if(str){ strs.push(str); return "\u0000"+(strs.length-1)+"\u0000"; } return ""; });
     s=s.replace(/\s+/g," ");                       // Whitespace zusammenfassen
-    s=s.replace(/\s*([{}:;,>~+])\s*/g,"$1");     // um Sonderzeichen trimmen
+    s=s.replace(/\s*([{};,>~])\s*/g,"$1");       // um Sonderzeichen trimmen (+ bleibt: calc() braucht Leerzeichen)
+    s=s.replace(/:\s+/g,":");                       // nur nach dem Doppelpunkt (davor kann ein Selektor-Leerzeichen stehen)
+    s=s.replace(/([{;][-\w]+) :(?=[^{};]*[;}])/g,"$1:"); // Leerzeichen vor : nur in Deklarationen entfernen
     s=s.replace(/;}/g,"}");                         // letztes Semikolon
     s=s.replace(/}/g,"}\n");                        // optisch je Regel eine Zeile
+    s=s.replace(/\u0000(\d+)\u0000/g,function(m,i){ return strs[+i]; });
     return s.trim();
   }
   function human(n){ if(n<1024)return n+" B"; return (n/1024).toFixed(1)+" KB"; }

@@ -28,7 +28,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wie hoch sind die Verzugszinsen?","acceptedAnswer":{"@type":"Answer","text":"In der Schweiz gelten gesetzlich 5 % pro Jahr (Art. 104 OR), wenn nichts anderes vereinbart ist. In Deutschland sind es bei Geschäften ohne Verbraucher (B2B) der Basiszinssatz plus 9 Prozentpunkte, bei Verbrauchern plus 5 Prozentpunkte. Vereinbarte höhere Zinssätze im Vertrag gehen vor."}},
 {"@type":"Question","name":"Darf ich eine Mahnpauschale verlangen?","acceptedAnswer":{"@type":"Answer","text":"In Deutschland kannst du bei B2B-Geschäften zusätzlich eine pauschale Verzugsentschädigung von 40 € verlangen (§ 288 Abs. 5 BGB). In der Schweiz gibt es keine gesetzliche Pauschale; Mahnspesen sind nur fällig, wenn sie vereinbart wurden."}},
-{"@type":"Question","name":"Ab wann gerät der Kunde in Verzug?","acceptedAnswer":{"@type":"Answer","text":"Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung tritt Verzug automatisch ein — bei Verbrauchern nur, wenn auf der Rechnung darauf hingewiesen wurde. Früher gerät der Kunde in Verzug durch ein konkretes Zahlungsziel oder eine Mahnung nach Fälligkeit."}},
+{"@type":"Question","name":"Ab wann gerät der Kunde in Verzug?","acceptedAnswer":{"@type":"Answer","text":"Schweiz: Ist ein fester Verfalltag vereinbart (z. B. «zahlbar bis 31. März»), tritt Verzug mit diesem Tag ein; sonst erst mit einer Mahnung nach Fälligkeit (Art. 102 OR). Deutschland: spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung (§ 286 Abs. 3 BGB), bei Verbrauchern nur mit Hinweis auf der Rechnung; früher durch ein kalendermässig bestimmtes Zahlungsziel oder eine Mahnung."}},
 {"@type":"Question","name":"Wie werden die Verzugszinsen berechnet?","acceptedAnswer":{"@type":"Answer","text":"Offener Betrag mal Zinssatz geteilt durch 100, mal Verzugstage geteilt durch 360. Das ist die übliche kaufmännische Tagesberechnung (360-Tage-Jahr). Die Gesamtforderung ist der offene Betrag plus Verzugszinsen plus eine etwaige Mahnpauschale."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal in deinem Browser. Es wird nichts an einen Server gesendet, kein Konto, kein Tracking."}}]}
 </script>
@@ -103,7 +103,7 @@ footer a{color:var(--muted)}
   <section class="panel" id="tool">
     <div class="presets" role="group" aria-label="Land-Voreinstellung">
       <button type="button" class="preset" data-p="ch" aria-pressed="true">🇨🇭 Schweiz — 5 % (OR)</button>
-      <button type="button" class="preset" data-p="de" aria-pressed="false">🇩🇪 Deutschland — B2B 9,12 % + 40 €</button>
+      <button type="button" class="preset" data-p="de" aria-pressed="false">🇩🇪 Deutschland — B2B 10,52 % + 40 €</button>
     </div>
     <div class="grid">
       <div class="fld"><label for="betrag">Offener Rechnungsbetrag</label>
@@ -161,9 +161,11 @@ footer a{color:var(--muted)}
   var betragEl=document.getElementById("betrag"),zinsEl=document.getElementById("zins"),
       tageEl=document.getElementById("tage"),pauschEl=document.getElementById("pausch"),
       out=document.getElementById("out"),verdict=document.getElementById("verdict");
-  function num(el){return parseFloat(String(el.value).trim().replace(",","."));}
-  function fmt(n){return (isFinite(n)?n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2}):"—")+" €";}
-  var presets={ch:{zins:"5",pausch:"0"},de:{zins:"9.12",pausch:"40"}};
+  var parseZahl=function(v){var s=String(v).trim().replace(/[\s'’]/g,"");if(s.indexOf(",")>=0){s=s.replace(/\./g,"").replace(",",".");}else if((s.match(/\./g)||[]).length>1){s=s.replace(/\./g,"");}return parseFloat(s);}
+  function num(el){return parseZahl(el.value);}
+  function fmt(n){return (isFinite(n)?n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2}):"—")+" "+CUR;}
+  /* DE: Basiszinssatz 1,52 % ab 1.7.2026 (Bundesbank) + 9 PP (§ 288 Abs. 2 BGB) */
+  var presets={ch:{zins:"5",pausch:"0",cur:"CHF"},de:{zins:"10.52",pausch:"40",cur:"€"}}, CUR="CHF";
   function run(){
     var B=num(betragEl), z=num(zinsEl), T=num(tageEl), P=num(pauschEl);
     if(!isFinite(P)) P=0;
@@ -205,7 +207,7 @@ footer a{color:var(--muted)}
   [].forEach.call(document.querySelectorAll(".preset"),function(b){
     b.addEventListener("click",function(){
       var p=presets[b.dataset.p]; if(!p) return;
-      zinsEl.value=p.zins; pauschEl.value=p.pausch;
+      zinsEl.value=p.zins; pauschEl.value=p.pausch; CUR=p.cur;
       [].forEach.call(document.querySelectorAll(".preset"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
       run();
     });

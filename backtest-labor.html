@@ -26,7 +26,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Was macht einen Backtest ehrlich?","acceptedAnswer":{"@type":"Answer","text":"Vier Dinge: Das Signal wird erst am nächsten Tag gehandelt, Kosten werden bei jedem Wechsel abgezogen, beurteilt werden nur Jahre, die beim Entwickeln nicht verwendet wurden, und das Ergebnis wird mit Kaufen und Halten sowie mit Zufallsstrategien verglichen."}},
-{"@type":"Question","name":"Was bedeutet Skill in Prozent?","acceptedAnswer":{"@type":"Answer","text":"Der Anteil von 200 Zufallsstrategien, die die Regel schlägt. Die Zufallsstrategien sind gleich lang investiert und wechseln gleich oft. 50 Prozent heisst: kein Können, nur Zufall."}},
+{"@type":"Question","name":"Was bedeutet Skill in Prozent?","acceptedAnswer":{"@type":"Answer","text":"Der Anteil von 200 Zufallsstrategien, die die Regel schlägt. Die Zufallsstrategien sind gleich lang investiert und wechseln gleich oft. Gleichstände zählen halb. 50 Prozent heisst: kein Können, nur Zufall."}},
 {"@type":"Question","name":"Warum funktioniert eine Regel auf einem Zufallsmarkt?","acceptedAnswer":{"@type":"Answer","text":"Weil im Rauschen immer Muster auftauchen. Wer lange genug sucht, findet auf vergangenen Kursen eine Regel, die gut aussieht. Auf den ungesehenen Jahren verschwindet der Vorteil dann meist. Genau das zeigt der Knopf „Beste Regel suchen“."}},
 {"@type":"Question","name":"Funktioniert der goldene Schnitt (Fibonacci) beim Trading?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test nicht verlässlich. Auf sieben Märkten seit 2000 schlägt eine Regel mit dem 61,8-Prozent-Retracement einfaches Halten nirgends nachweisbar, und 38,2 oder 50 Prozent schneiden praktisch gleich ab. Die Zahl selbst bringt keinen Vorteil."}},
 {"@type":"Question","name":"Werden meine Kursdaten hochgeladen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die CSV-Datei wird nur in deinem Browser gelesen und gerechnet. Es wird nichts gesendet oder gespeichert. Keine Anlageberatung."}}
@@ -136,7 +136,7 @@ footer a{color:var(--muted)}
           <option value="ma">Trendfolge mit eigenen Durchschnitten</option>
           <option value="momentum">Momentum: Kurs über dem Vorjahr</option>
           <option value="ausbruch">Ausbruch (Turtle): 55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen</option>
-          <option value="rsi2">Mean Reversion: RSI(2) unter 10 kaufen, über 70 verkaufen</option>
+          <option value="rsi2">Mean Reversion: RSI(2) unter 10 kaufen, über 70 verkaufen, nur über dem 200-Tage-Schnitt</option>
           <option value="dip">Buy the Dip: nach −5 % in 5 Tagen kaufen, 10 Tage halten</option>
           <option value="swing">Swing: nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus</option>
           <option value="saison">Saison: November bis April investiert</option>
@@ -232,7 +232,7 @@ footer a{color:var(--muted)}
 
   <h2 class="sec">Häufige Fragen</h2>
   <details><summary>Was macht einen Backtest ehrlich?</summary><p>Signal erst am nächsten Tag handeln, Kosten bei jedem Wechsel abziehen, nur Jahre beurteilen, die beim Entwickeln nicht verwendet wurden, und mit Kaufen und Halten sowie mit Zufallsstrategien vergleichen.</p></details>
-  <details><summary>Was bedeutet Skill in Prozent?</summary><p>Der Anteil von 200 Zufallsstrategien, die deine Regel schlägt. Sie sind gleich lang investiert und wechseln gleich oft, damit nur das Timing zählt. 50 % heisst: kein Können.</p></details>
+  <details><summary>Was bedeutet Skill in Prozent?</summary><p>Der Anteil von 200 Zufallsstrategien, die deine Regel schlägt. Sie sind gleich lang investiert und wechseln gleich oft, damit nur das Timing zählt. Gleichstände zählen halb. 50 % heisst: kein Können.</p></details>
   <details><summary>Warum „funktioniert“ eine Regel auf dem Zufallsmarkt?</summary><p>Weil im Rauschen immer Muster auftauchen. Drück auf „Beste Durchschnitte suchen“: Auf den Entwicklungsjahren findet die Suche fast immer etwas Schönes, im Test verschwindet es meist.</p></details>
   <details><summary>Kann ich Forex-Paare testen?</summary><p>Ja: Tageskurse als CSV laden (z. B. Yahoo Finance, Symbol EURUSD=X) und die Kosten auf rund 0.02 % setzen, das entspricht engen Forex-Spreads. Swap-Kosten sind nicht eingerechnet. Unsere Ergebnisse auf sieben Paaren stehen auf <a href="/forex-lernen.html#test">Forex lernen</a>.</p></details>
   <details><summary>Welche Indikatoren kann ich verwenden?</summary><p>RSI, MACD mit Signallinie, Fibonacci-Retracements (goldener Schnitt), Bollinger-Bänder (unteres, oberes Band, Mitte), Stochastik, EMA-Kreuzung und Kurs über oder unter einem Durchschnitt. Kauf- und Verkaufsbedingung wählst du getrennt, dazu optional einen 200-Tage-Trendfilter. Alle rechnen mit Schlusskursen und nur mit Kursen bis zum jeweiligen Tag.</p></details>
@@ -277,7 +277,7 @@ var BT=(function(){
   function rng(seed){var t=seed>>>0;return function(){t+=0x6D2B79F5;var z=t;z=Math.imul(z^z>>>15,z|1);z^=z+Math.imul(z^z>>>7,z|61);return((z^z>>>14)>>>0)/4294967296;};}
   function zufallPos(n,anteil,wechsel,rnd){if(wechsel===0||anteil===0||anteil===1)return new Array(n).fill(anteil>=0.5?1:0);var rein=wechsel/2/Math.max(n*(1-anteil),1),raus=wechsel/2/Math.max(n*anteil,1),s=rnd()<anteil?1:0,o=[];for(var i=0;i<n;i++){o.push(s);if(rnd()<(s?raus:rein))s=1-s;}return o;}
   // Skill: Anteil Zufallsstrategien (gleiches Engagement, gleich viele Wechsel) mit schlechterer Sharpe, im Abschnitt [a,b)
-  function skill(pos,r,a,b,kosten,n){var seg=pos.slice(a,b),rs=r.slice(a,b);var ziel=sharpe(lauf(seg,rs,0,seg.length,kosten));var anteil=seg.reduce(function(s,x){return s+x;},0)/seg.length;var w=0;for(var i=1;i<seg.length;i++)if(seg[i]!==seg[i-1])w++;var rnd=rng(42),besser=0;for(var k=0;k<n;k++){var z=zufallPos(seg.length,anteil,w,rnd);if(sharpe(lauf(z,rs,0,z.length,kosten))<ziel)besser++;}return besser/n;}
+  function skill(pos,r,a,b,kosten,n){var seg=pos.slice(a,b),rs=r.slice(a,b);var ziel=sharpe(lauf(seg,rs,0,seg.length,kosten));var anteil=seg.reduce(function(s,x){return s+x;},0)/seg.length;var w=0;for(var i=1;i<seg.length;i++)if(seg[i]!==seg[i-1])w++;var rnd=rng(42),besser=0;for(var k=0;k<n;k++){var z=zufallPos(seg.length,anteil,w,rnd);var sz=sharpe(lauf(z,rs,0,z.length,kosten));if(sz<ziel)besser++;else if(sz===ziel)besser+=0.5;}return besser/n;}
   function trades(pos,r,a,b,kosten){var t=[],w=1,drin=false,laenge=0;for(var i=Math.max(a,1);i<b;i++){if(pos[i-1]){if(!drin){w=1-kosten;drin=true;laenge=0;}w*=1+r[i];laenge++;}else if(drin){t.push({r:w*(1-kosten)-1,tage:laenge});drin=false;}}
     if(drin)t.push({r:w-1,tage:laenge,offen:true});var g=t.filter(function(x){return x.r>0;});
     return {anzahl:t.length,quote:t.length?g.length/t.length:null,schnitt:t.length?t.reduce(function(s,x){return s+x.r;},0)/t.length:null,

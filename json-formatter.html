@@ -125,6 +125,16 @@ footer a{color:var(--muted)}
   function countKeys(o){var n=0;(function walk(x){if(Array.isArray(x))x.forEach(walk);else if(x&&typeof x==="object"){for(var k in x){n++;walk(x[k]);}}})(o);return n;}
   function parse(){return JSON.parse(io.value);}
   function ok(msg){status.className="status ok";status.textContent="✓ "+msg;}
+  // JSON.parse rechnet mit 64-Bit-Gleitkommazahlen: mehr als 15 gültige Stellen werden gerundet
+  function precisionWarn(src){
+    var t=src.replace(/"(?:[^"\\]|\\.)*"/g,'""');
+    var nums=t.match(/-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/g)||[];
+    for(var i=0;i<nums.length;i++){
+      var d=nums[i].replace(/^-/,"").replace(/[eE].*$/,"").replace(".","").replace(/^0+/,"").replace(/0+$/,"");
+      if(d.length>15) return " · ⚠ Zahlen mit mehr als 15 Stellen werden gerundet – IDs als String übergeben";
+    }
+    return "";
+  }
   function bad(e){
     status.className="status bad";
     var m=String(e.message||e);
@@ -137,10 +147,10 @@ footer a{color:var(--muted)}
     stat.textContent=countKeys(obj)+" Schlüssel · "+bytes(io.value).toLocaleString("de-DE")+" Bytes";
   }
   document.getElementById("format").addEventListener("click",function(){
-    try{var o=parse();io.value=JSON.stringify(o,null,indent());ok("formatiert");setStat(o);}catch(e){bad(e);}
+    try{var o=parse(),w=precisionWarn(io.value);io.value=JSON.stringify(o,null,indent());ok("formatiert"+w);setStat(o);}catch(e){bad(e);}
   });
   document.getElementById("min").addEventListener("click",function(){
-    try{var o=parse();io.value=JSON.stringify(o);ok("minifiziert — "+bytes(io.value).toLocaleString("de-DE")+" Bytes");setStat(o);}catch(e){bad(e);}
+    try{var o=parse(),w=precisionWarn(io.value);io.value=JSON.stringify(o);ok("minifiziert — "+bytes(io.value).toLocaleString("de-DE")+" Bytes"+w);setStat(o);}catch(e){bad(e);}
   });
   document.getElementById("check").addEventListener("click",function(){
     try{var o=parse();ok("gültiges JSON");setStat(o);}catch(e){bad(e);}

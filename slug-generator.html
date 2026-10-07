@@ -111,6 +111,7 @@ footer a{color:var(--muted)}
   function slugify(s){
     var umlaut=document.getElementById("umlaut").checked, lower=document.getElementById("lower").checked, sep=document.getElementById("sep").value;
     if(umlaut){ s=s.replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/Ä/g,"Ae").replace(/Ö/g,"Oe").replace(/Ü/g,"Ue").replace(/ß/g,"ss"); }
+    s=s.replace(/ß/g,"ss").replace(/ẞ/g,"SS").replace(/ø/g,"o").replace(/Ø/g,"O").replace(/æ/g,"ae").replace(/Æ/g,"Ae").replace(/ł/g,"l").replace(/Ł/g,"L");
     // weitere Akzente entfernen
     s=s.normalize("NFD").replace(/[̀-ͯ]/g,"");
     if(lower) s=s.toLowerCase();

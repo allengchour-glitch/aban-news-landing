@@ -128,9 +128,9 @@ footer a{color:var(--muted)}
     function peek(){return s[i];}
     function err(m){throw new Error(m||"Fehler");}
     function pExpr(){var v=pTerm();while(peek()==="+"||peek()==="-"){var o=s[i++];var r=pTerm();v=o==="+"?v+r:v-r;}return v;}
-    function pTerm(){var v=pFactor();while(peek()==="*"||peek()==="/"||peek()==="%"){var o=s[i++];var r=pFactor();v=o==="*"?v*r:o==="/"?v/r:v%r;}return v;}
-    function pFactor(){var v=pUnary();if(peek()==="^"){i++;var r=pFactor();v=Math.pow(v,r);}return v;}
-    function pUnary(){if(peek()==="-"){i++;return -pUnary();}if(peek()==="+"){i++;return pUnary();}return pPost();}
+    function pTerm(){var v=pUnary();while(peek()==="*"||peek()==="/"||peek()==="%"){var o=s[i++];var r=pUnary();v=o==="*"?v*r:o==="/"?v/r:v%r;}return v;}
+    function pFactor(){var v=pPost();if(peek()==="^"){i++;var r=pUnary();v=Math.pow(v,r);}return v;}
+    function pUnary(){if(peek()==="-"){i++;return -pUnary();}if(peek()==="+"){i++;return pUnary();}return pFactor();}
     function pPost(){var v=pPrim();while(peek()==="!"){i++;v=fact(v);}return v;}
     function fact(n){if(n<0||n!==Math.floor(n))err("Fakultät nur für ganze Zahlen ≥ 0");var r=1;for(var k=2;k<=n;k++)r*=k;return r;}
     function tr(x){return deg?x*Math.PI/180:x;}
@@ -153,13 +153,17 @@ footer a{color:var(--muted)}
     }
     var v=pExpr(); if(i<s.length)err("Rest nicht verstanden"); return v;
   }
+  function rund(v){return Number(v.toPrecision(12));}
+  function fmt(v){var r=rund(v),a=Math.abs(r);
+    if(a!==0&&(a>=1e15||a<1e-6))return r.toExponential(9).replace(/\.?0+e/,"e").replace(".",",");
+    return r.toLocaleString("de-DE",{maximumFractionDigits:12});}
   function show(){ exprEl.textContent=expr||"0";
     if(!expr){resEl.textContent="";resEl.classList.remove("bad");return;}
     try{ var v=evalExpr(expr); if(!isFinite(v)){resEl.textContent="= ∞ / undefiniert";resEl.classList.add("bad");return;}
-      resEl.classList.remove("bad"); resEl.textContent="= "+(Math.round(v*1e10)/1e10).toLocaleString("de-DE",{maximumFractionDigits:10});
+      resEl.classList.remove("bad"); resEl.textContent="= "+fmt(v);
     }catch(e){ resEl.textContent="…"; resEl.classList.remove("bad"); }
   }
-  function commit(){ try{ var v=evalExpr(expr); if(!isFinite(v))throw 0; expr=String(Math.round(v*1e10)/1e10); show(); }catch(e){ resEl.textContent="Fehler"; resEl.classList.add("bad"); } }
+  function commit(){ try{ var v=evalExpr(expr); if(!isFinite(v))throw 0; expr=String(rund(v)); show(); }catch(e){ resEl.textContent="Fehler"; resEl.classList.add("bad"); } }
   document.querySelectorAll("#pad button[data-i]").forEach(function(b){ b.addEventListener("click",function(){ expr+=b.getAttribute("data-i"); show(); }); });
   document.getElementById("back").addEventListener("click",function(){ expr=expr.slice(0,-1); show(); });
   document.getElementById("eq").addEventListener("click",commit);
@@ -169,7 +173,8 @@ footer a{color:var(--muted)}
     if(e.key==="Enter"){e.preventDefault();commit();return;}
     if(e.key==="Backspace"){expr=expr.slice(0,-1);show();return;}
     if(e.key==="Escape"){expr="";show();return;}
-    if(/^[0-9+\-*/^%().!]$/.test(e.key)){ expr+=e.key; show(); }
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    if(/^[0-9a-zA-Z+\-*/^%().!,]$/.test(e.key)){ expr+=e.key; show(); }
   });
   show();
 })();

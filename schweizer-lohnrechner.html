@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Welche Abzüge gibt es vom Bruttolohn?","acceptedAnswer":{"@type":"Answer","text":"Gesetzlich und für alle gleich: AHV/IV/EO 5,3 % (Arbeitnehmer-Anteil) und ALV 1,1 % auf Lohn bis CHF 148'200 pro Jahr. Dazu kommen die Pensionskasse (BVG, je nach Alter und Plan unterschiedlich), die Nichtberufsunfallversicherung (NBU, oft rund 1 %) und – wenn du quellenbesteuert bist – die Quellensteuer. Diese letzten drei gibst du selbst ein, weil sie individuell sind."}},
-{"@type":"Question","name":"Warum ist mein BVG-Abzug nicht vorgegeben?","acceptedAnswer":{"@type":"Answer","text":"Der BVG-Abzug hängt von deinem Alter, deinem versicherten Lohn und dem Vorsorgeplan deines Arbeitgebers ab und liegt grob zwischen 7 % und 18 % des versicherten Lohns. Schau auf deine Lohnabrechnung und trag deinen tatsächlichen Prozentsatz ein."}},
+{"@type":"Question","name":"Warum ist mein BVG-Abzug nicht vorgegeben?","acceptedAnswer":{"@type":"Answer","text":"Der BVG-Abzug hängt von deinem Alter, deinem versicherten Lohn und dem Vorsorgeplan deines Arbeitgebers ab und Die gesetzlichen Altersgutschriften betragen je nach Alter 7, 10, 15 oder 18 % des versicherten Lohns, Arbeitnehmer und Arbeitgeber zusammen (Art. 16 BVG); der Arbeitgeber trägt mindestens die Hälfte (Art. 66 BVG). Dein Lohnabzug liegt deshalb meist bei etwa 3,5–9 % des versicherten Lohns, umgerechnet auf den Bruttolohn oft weniger. Am genausten: den Betrag auf der Lohnabrechnung durch den Bruttolohn teilen und diesen Prozentsatz eintragen."}},
 {"@type":"Question","name":"Wie genau ist der Nettolohn?","acceptedAnswer":{"@type":"Answer","text":"AHV und ALV sind exakt. BVG, NBU und Quellensteuer sind individuell – mit deinen eigenen Prozentwerten wird das Ergebnis sehr genau. Es ist trotzdem ein Richtwert; verbindlich ist deine Lohnabrechnung. Alles wird lokal berechnet."}}
 ]}
 </script>
@@ -93,15 +93,15 @@ footer a{color:var(--muted)}
     </div>
     <div class="fld"><label for="brutto" id="b-lbl">Bruttolohn / Monat</label><div class="unit"><input id="brutto" type="number" inputmode="decimal" value="7000" min="0"><span>CHF</span></div></div>
     <div class="cols">
-      <div class="fld"><label for="bvg">BVG (Pensionskasse)</label><div class="unit"><input id="bvg" type="number" inputmode="decimal" value="6" step="0.5"><span>%</span></div></div>
-      <div class="fld"><label for="nbu">NBU (Unfall)</label><div class="unit"><input id="nbu" type="number" inputmode="decimal" value="1" step="0.1"><span>%</span></div></div>
+      <div class="fld"><label for="bvg">BVG-Abzug (% vom Brutto)</label><div class="unit"><input id="bvg" type="number" inputmode="decimal" value="6" step="0.5"><span>%</span></div></div>
+      <div class="fld"><label for="nbu">NBU (Unfall, bis CHF 148'200)</label><div class="unit"><input id="nbu" type="number" inputmode="decimal" value="1" step="0.1"><span>%</span></div></div>
       <div class="fld"><label for="quelle">Quellensteuer (falls)</label><div class="unit"><input id="quelle" type="number" inputmode="decimal" value="0" step="0.5"><span>%</span></div></div>
       <div class="fld"><label for="x13">13. Monatslohn?</label>
         <select id="x13" style="font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%;font-weight:700"><option value="12">Nein (12×)</option><option value="13">Ja (13×)</option></select></div>
     </div>
     <div class="net"><div class="big" id="o-net">—</div><div class="u" id="o-net-u">Nettolohn / Monat</div></div>
     <div class="rows" id="rows"></div>
-    <p class="note">AHV/IV/EO 5,3 % &amp; ALV 1,1 % (bis CHF 148'200/Jahr) sind gesetzlich exakt. BVG/NBU/Quellensteuer sind individuell. Richtwert — verbindlich ist die Lohnabrechnung.</p>
+    <p class="note">AHV/IV/EO 5,3 % &amp; ALV 1,1 % (bis CHF 148'200/Jahr) sind gesetzlich exakt (Stand 2026, Quellen: <a href="https://www.ahv-iv.ch/p/2.01.d">Merkblatt 2.01</a>, <a href="https://www.ahv-iv.ch/p/2.08.d">2.08</a>). NBU wird höchstens auf CHF 148'200 erhoben (Art. 22 UVV). BVG/NBU/Quellensteuer sind individuell. Richtwert — verbindlich ist die Lohnabrechnung.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -135,7 +135,7 @@ footer a{color:var(--muted)}
     var ahv=jahr*AHV/100;
     var alv=Math.min(jahr,ALV_CAP)*ALV/100;
     var bvgB=jahr*(isFinite(bvg)?bvg:0)/100;
-    var nbuB=jahr*(isFinite(nbu)?nbu:0)/100;
+    var nbuB=Math.min(jahr,148200)*(isFinite(nbu)?nbu:0)/100; // UVG: versichert höchstens 148'200/Jahr (Art. 22 UVV)
     var qB=jahr*(isFinite(q)?q:0)/100;
     var abz=ahv+alv+bvgB+nbuB+qB;
     var netJahr=jahr-abz;

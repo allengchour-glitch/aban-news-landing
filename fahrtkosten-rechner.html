@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Wie berechne ich die Spritkosten einer Fahrt?","acceptedAnswer":{"@type":"Answer","text":"Strecke in Kilometer mal Verbrauch (Liter pro 100 km) geteilt durch 100 ergibt die verbrauchten Liter; multipliziert mit dem Spritpreis ergeben sich die Kosten. Der Rechner zeigt zusätzlich die Kosten pro Kilometer und kann Hin- und Rückfahrt einrechnen."}},
-{"@type":"Question","name":"Was ist die Kilometerpauschale?","acceptedAnswer":{"@type":"Answer","text":"Eine Pauschale, mit der Geschäfts- oder Dienstfahrten mit dem eigenen Auto abgerechnet werden, in Deutschland üblich 0,30 € pro Kilometer (ab dem 21. Entfernungskilometer bei der Pendlerpauschale mehr). Der konkrete Satz kann je nach Land und Zweck abweichen — du kannst ihn frei anpassen."}},
+{"@type":"Question","name":"Was ist die Kilometerpauschale?","acceptedAnswer":{"@type":"Answer","text":"Eine Pauschale, mit der Geschäfts- oder Dienstfahrten mit dem eigenen Auto abgerechnet werden, in Deutschland üblich 0,30 € pro Kilometer (für den Arbeitsweg gilt seit 2026 dagegen die Entfernungspauschale von 0,38 € je Entfernungskilometer ab dem ersten Kilometer, § 9 Abs. 1 Nr. 4 EStG). Der konkrete Satz kann je nach Land und Zweck abweichen — du kannst ihn frei anpassen."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
 ]}
 </script>
@@ -107,7 +107,7 @@ footer a{color:var(--muted)}
     </div>
     <label class="opt"><input id="rt" type="checkbox" checked> Hin- und Rückfahrt (× 2)</label>
     <div class="out" id="out" aria-live="polite"></div>
-    <p class="note">Steuerlicher Satz variiert je Land/Zweck — Pauschale frei anpassbar, keine Steuerberatung. Alles lokal.</p>
+    <p class="note">0,30 €/km = Dienstreise-Pauschale Pkw in Deutschland (<a href="https://www.gesetze-im-internet.de/estg/__9.html" rel="noopener">§ 9 Abs. 1 Nr. 4a EStG</a> i. V. m. <a href="https://www.gesetze-im-internet.de/brkg_2005/__5.html" rel="noopener">§ 5 BRKG</a>), Stand Oktober 2026. In anderen Ländern und für andere Zwecke gelten andere Sätze — Pauschale frei anpassbar, keine Steuerberatung. Alles lokal.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>

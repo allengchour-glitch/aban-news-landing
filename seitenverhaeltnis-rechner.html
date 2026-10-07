@@ -140,7 +140,9 @@ footer a{color:var(--muted)}
     if(mode==="ratio"){
       var w=num("w"),h=num("h");
       if(w<=0||h<=0){out.innerHTML='<span style="color:#9aa3ad">Breite und Höhe eingeben.</span>';return;}
-      var g=gcd(w,h), rw=Math.round(w/g), rh=Math.round(h/g);
+      function stellen(x){var m=/\.(\d+)$/.exec(String(x));return m?Math.min(m[1].length,6):0;}
+      var k=Math.pow(10,Math.max(stellen(w),stellen(h))), wi=Math.round(w*k), hi=Math.round(h*k);
+      var g=gcd(wi,hi), rw=Math.round(wi/g), rh=Math.round(hi/g);
       var dec=(w/h);
       out.innerHTML='<div class="big">'+rw+':'+rh+'</div>'+
         '<div style="margin-top:4px;color:#374151">Dezimal '+dec.toLocaleString("de-DE",{maximumFractionDigits:4})+' · '+(w>h?"Querformat":w<h?"Hochformat":"quadratisch")+'</div>'+

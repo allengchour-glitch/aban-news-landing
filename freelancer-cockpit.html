@@ -51,8 +51,8 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .hero h1{font-size:clamp(23px,4.4vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:10px}
 .hero h1 .a{color:var(--amber)}
 .hero p{font-size:clamp(14px,2.1vw,16px);color:var(--ink2);max-width:620px;margin:0 auto}
-.app{display:grid;grid-template-columns:210px 1fr;gap:16px;margin:18px 0}
-@media(max-width:720px){.app{grid-template-columns:1fr}}
+.app{display:grid;grid-template-columns:210px minmax(0,1fr);gap:16px;margin:18px 0}
+@media(max-width:720px){.app{grid-template-columns:minmax(0,1fr)}}
 .nav{display:flex;flex-direction:column;gap:4px;align-self:start;position:sticky;top:64px}
 @media(max-width:720px){.nav{flex-direction:row;flex-wrap:wrap;position:static}}
 .nav button{text-align:left;background:var(--card);border:1px solid var(--line);color:var(--ink2);border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:600;font-size:.9rem}
@@ -96,6 +96,7 @@ footer a{color:var(--muted)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:8px;font-size:.86rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
 .toast.show{opacity:1}
 @media print{header.site,.nav,.hero,.cta,footer,[data-aban-news-cta],.noprint{display:none!important}.app{grid-template-columns:1fr}.view:not(.on){display:none}}
+#v-calc table{display:block;overflow-x:auto;max-width:100%}
 </style>
 </head>
 <body>
@@ -129,7 +130,7 @@ footer a{color:var(--muted)}
         <div class="kpis">
           <div class="kpi"><div class="lab">Stundensatz</div><div class="big" id="d-rate">—</div></div>
           <div class="kpi"><div class="lab">Erfasste Zeit heute</div><div class="big" id="d-time">—</div></div>
-          <div class="kpi"><div class="lab">Wert erfasste Zeit</div><div class="big" id="d-val">—</div></div>
+          <div class="kpi"><div class="lab">Wert der Zeit heute</div><div class="big" id="d-val">—</div></div>
           <div class="kpi"><div class="lab">Offene To-dos</div><div class="big" id="d-todo">—</div></div>
         </div>
         <p class="note">Tipp: Lege oben links los — die Module merken sich deine Eingaben automatisch. <button type="button" class="btn ghost sm noprint" id="wipe">Alle App-Daten löschen</button></p>
@@ -334,14 +335,14 @@ footer a{color:var(--muted)}
   $("t-toggle").addEventListener("click",function(){
     if(state.timer.running){state.timer.acc=curMs();state.timer.running=false;clearInterval(tick);
       var min=Math.round(state.timer.acc/60000);
-      if(min>0){state.time.push({task:$("t-task").value||state.timer.task||"Ohne Titel",min:min});state.timer.acc=0;renderTime();}
+      if(min>0){state.time.push({task:$("t-task").value||state.timer.task||"Ohne Titel",min:min,d:heute()});state.timer.acc=0;renderTime();}
       this.textContent="▶ Start";dispTimer();
     } else {state.timer.running=true;state.timer.start=Date.now();state.timer.task=$("t-task").value;startTick();this.textContent="⏸ Stop & buchen";}
     save();
   });
   $("t-add").addEventListener("click",function(){
     var m=prompt("Wie viele Minuten erfassen?","30");if(m===null)return;m=parseInt(m,10);if(isNaN(m)||m<=0)return;
-    state.time.push({task:$("t-task").value||"Manuell",min:m});renderTime();save();});
+    state.time.push({task:$("t-task").value||"Manuell",min:m,d:heute()});renderTime();save();});
   function renderTime(){
     var b=$("t-rows");b.innerHTML="";var total=0;
     var rate=(state.rate&&state.rate.netto)||0;
@@ -402,9 +403,10 @@ footer a{color:var(--muted)}
   renderTodos();
 
   // ---- Dashboard ----
+  function heute(){var t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");}
   function renderDash(){
     $("d-rate").textContent=(state.rate&&state.rate.netto&&isFinite(state.rate.netto))?eur(state.rate.netto):"—";
-    var min=state.time.reduce(function(a,e){return a+e.min;},0);
+    var h=heute(),min=state.time.reduce(function(a,e){return a+(e.d===h?e.min:0);},0);
     $("d-time").textContent=Math.floor(min/60)+":"+String(min%60).padStart(2,"0")+" h";
     var rate=(state.rate&&state.rate.netto)||0;$("d-val").textContent=eur(min/60*rate);
     $("d-todo").textContent=state.todos.filter(function(t){return !t.done;}).length;

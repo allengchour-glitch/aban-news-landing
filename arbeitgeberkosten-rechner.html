@@ -101,7 +101,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="total"><div class="big" id="o-total">—</div><div class="u" id="o-total-u">Gesamtkosten / Jahr</div></div>
     <div class="rows" id="rows"></div>
-    <p class="note">Fix: AHV/IV/EO 5,3 % + ALV 1,1 % (bis CHF 148'200) + Verwaltungskosten ~0,2 %. BVG/UVG/FAK individuell (Plan, Versicherer, Kanton). Richtwert für die Budgetierung.</p>
+    <p class="note">Fix: AHV/IV/EO 5,3 % + ALV 1,1 % (bis CHF 148'200) + Verwaltungskosten ~0,2 % (Stand 2026, Quellen: <a href="https://www.ahv-iv.ch/p/2.01.d">Merkblatt 2.01</a>, <a href="https://www.ahv-iv.ch/p/2.08.d">2.08</a>). UVG/BU wird höchstens auf CHF 148'200 erhoben (Art. 22 UVV). BVG/UVG/FAK individuell (Plan, Versicherer, Kanton). Richtwert für die Budgetierung.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -127,6 +127,7 @@ footer a{color:var(--muted)}
   function chf(n){return (isFinite(n)?Math.round(n):0).toLocaleString("de-CH")+" CHF";}
   function row(l,v){return '<div><b>'+l+'</b><span>'+v+'</span></div>';}
   function calc(){
+    function pz(x){return (+x).toLocaleString("de-CH",{maximumFractionDigits:2}).replace(".",",");}
     var b=num("brutto"),mult=parseInt(document.getElementById("x13").value,10)||13,bvg=num("bvg"),uvg=num("uvg"),fak=num("fak");
     var rows=document.getElementById("rows"),tot=document.getElementById("o-total");
     /* ⚠️ Die Wache raeumte die Gesamtsumme und die Tabelle, aber NICHT die Zeile
@@ -139,7 +140,7 @@ footer a{color:var(--muted)}
     var ahv=jahr*(AHV+ADMIN)/100;
     var alv=Math.min(jahr,ALV_CAP)*ALV/100;
     var bvgB=jahr*(isFinite(bvg)?bvg:0)/100;
-    var uvgB=jahr*(isFinite(uvg)?uvg:0)/100;
+    var uvgB=Math.min(jahr,148200)*(isFinite(uvg)?uvg:0)/100; // UVG: höchstens 148'200/Jahr (Art. 22 UVV)
     var fakB=jahr*(isFinite(fak)?fak:0)/100;
     var ag=ahv+alv+bvgB+uvgB+fakB;
     var gesamt=jahr+ag;
@@ -147,22 +148,23 @@ footer a{color:var(--muted)}
     /* ⚠️ Bei Bruttolohn 0 ist der Aufschlag in Prozent nicht 0, sondern undefiniert:
        ag/jahr wird 0/0 = NaN, und auf dem Bildschirm stand "NaN % über Brutto".
        Die Wache eine Zeile weiter oben faengt nur b<0 und nicht-endliche Werte ab. */
-    var aufschlag = jahr>0 ? (ag/jahr*100).toLocaleString("de-CH",{maximumFractionDigits:1})+" % über Brutto" : "—";
+    var aufschlag = jahr>0 ? pz(ag/jahr*100)+" % über Brutto" : "—";
+    document.getElementById("b-lbl").textContent=period==="month"?"Bruttolohn / Monat (×"+mult+")":"Bruttolohn / Jahr";
     document.getElementById("o-total-u").textContent="Gesamtkosten / Jahr ("+aufschlag+" · "+chf(gesamt/12)+"/Mt.)";
     var html="";
     html+=row("Bruttolohn / Jahr",chf(jahr));
-    html+=row("+ AHV/IV/EO + Verw. ("+(AHV+ADMIN)+" %)",chf(ahv));
+    html+=row("+ AHV/IV/EO + Verw. ("+pz(AHV+ADMIN)+" %)",chf(ahv));
     html+=row("+ ALV (1,1 %)",chf(alv));
-    if(bvgB>0)html+=row("+ BVG ("+bvg+" %)",chf(bvgB));
-    if(uvgB>0)html+=row("+ UVG/BU ("+uvg+" %)",chf(uvgB));
-    if(fakB>0)html+=row("+ FAK ("+fak+" %)",chf(fakB));
+    if(bvgB>0)html+=row("+ BVG ("+pz(bvg)+" %)",chf(bvgB));
+    if(uvgB>0)html+=row("+ UVG/BU ("+pz(uvg)+" %"+(jahr>148200?", bis CHF 148'200":"")+")",chf(uvgB));
+    if(fakB>0)html+=row("+ FAK ("+pz(fak)+" %)",chf(fakB));
     html+=row("Arbeitgeber-Beiträge gesamt",chf(ag));
     html+=row("Gesamtkosten / Jahr",chf(gesamt));
     rows.innerHTML=html;
   }
   document.querySelectorAll("#period button").forEach(function(x){x.addEventListener("click",function(){
     document.querySelectorAll("#period button").forEach(function(y){y.classList.remove("on");});this.classList.add("on");
-    period=this.getAttribute("data-p");document.getElementById("b-lbl").textContent=period==="month"?"Bruttolohn / Monat (×13)":"Bruttolohn / Jahr";calc();});});
+    period=this.getAttribute("data-p");calc();});});
   ["brutto","x13","bvg","uvg","fak"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
   calc();
 })();

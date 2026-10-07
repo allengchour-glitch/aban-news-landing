@@ -108,7 +108,7 @@ footer a{color:var(--muted)}
   var PAT={
     DE:[/^DE\d{9}$/,"Deutschland: DE + 9 Ziffern"],
     AT:[/^ATU\d{8}$/,"Österreich: ATU + 8 Ziffern"],
-    BE:[/^BE0\d{9}$/,"Belgien: BE + 0 + 9 Ziffern"],
+    BE:[/^BE[01]\d{9}$/,"Belgien: BE + 0 oder 1 + 9 Ziffern"],
     BG:[/^BG\d{9,10}$/,"Bulgarien: BG + 9–10 Ziffern"],
     CY:[/^CY\d{8}[A-Z]$/,"Zypern: CY + 8 Ziffern + 1 Buchstabe"],
     CZ:[/^CZ\d{8,10}$/,"Tschechien: CZ + 8–10 Ziffern"],
@@ -138,7 +138,13 @@ footer a{color:var(--muted)}
   function render(){
     var raw=inp.value.toUpperCase().replace(/[\s.\-]/g,"");
     if(!raw){out.className="out";out.textContent="";return;}
-    if(/^CHE/.test(raw)){ out.className="out ok"; out.innerHTML="🇨🇭 Sieht nach Schweizer UID aus.<small>Format CHE + 9 Ziffern (+ MWST). Nicht in VIES — die Schweiz ist kein EU-Land.</small>"; return; }
+    if(/^CHE/.test(raw)){
+      var m=/^CHE(\d{9})(MWST|TVA|IVA)?$/.exec(raw);
+      if(!m){ out.className="out bad"; out.innerHTML="Kein gültiges Format für eine Schweizer UID.<small>Format: CHE + 9 Ziffern, optional mit Zusatz MWST/TVA/IVA, z. B. CHE-123.456.788 MWST.</small>"; return; }
+      var z=m[1], w=[5,4,3,2,7,6,5,4], sum=0; for(var i=0;i<8;i++) sum+=w[i]*(+z[i]);
+      var pz=11-sum%11; if(pz===11) pz=0;
+      if(pz===10||pz!==+z[8]){ out.className="out bad"; out.innerHTML="🇨🇭 Prüfziffer stimmt nicht.<small>Die letzte Ziffer einer Schweizer UID ist eine Prüfziffer (Modulo 11). Tippfehler prüfen.</small>"; return; }
+      out.className="out ok"; out.innerHTML="🇨🇭 Format und Prüfziffer einer Schweizer UID stimmen.<small>Ob die Firma existiert, zeigt nur das <a href=\"https://www.uid.admin.ch\" target=\"_blank\" rel=\"noopener\">UID-Register</a>. Nicht in VIES — die Schweiz ist kein EU-Land.</small>"; return; }
     var cc=raw.slice(0,2);
     if(!PAT[cc]){ out.className="out bad"; out.innerHTML="Unbekanntes oder fehlendes Länderkürzel.<small>Beginne mit einem EU-Länderkürzel, z. B. DE, AT, FR, IT …</small>"; return; }
     var p=PAT[cc];

@@ -26,7 +26,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Wann ist der Eisprung?","acceptedAnswer":{"@type":"Answer","text":"Der Eisprung findet typischerweise rund 14 Tage vor der nächsten Periode statt — bei einem 28-Tage-Zyklus also etwa an Zyklustag 14. Der Rechner nimmt deine Zykluslänge und rechnet von der erwarteten nächsten Periode 14 Tage zurück."}},
+{"@type":"Question","name":"Wann ist der Eisprung?","acceptedAnswer":{"@type":"Answer","text":"Der Eisprung findet typischerweise rund 14 Tage vor der nächsten Periode statt — bei einem 28-Tage-Zyklus also etwa an Zyklustag 14–15. Der Rechner nimmt deine Zykluslänge und rechnet von der erwarteten nächsten Periode 14 Tage zurück."}},
 {"@type":"Question","name":"Welche Tage sind fruchtbar?","acceptedAnswer":{"@type":"Answer","text":"Das fruchtbare Fenster umfasst grob die fünf Tage vor dem Eisprung und den Eisprungtag selbst, weil Spermien mehrere Tage überleben. Der Rechner markiert dieses Fenster."}},
 {"@type":"Question","name":"Kann ich das zur Verhütung nutzen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Diese Schätzung ist nur eine grobe Orientierung (z. B. bei Kinderwunsch). Der echte Eisprung schwankt von Zyklus zu Zyklus. Zur Verhütung ist die Methode nicht sicher — sprich mit deiner Ärztin/deinem Arzt. Alles wird nur lokal berechnet."}}
 ]}
@@ -88,7 +88,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="res"><div class="big" id="o-es">—</div><div class="sub" id="o-es-sub">voraussichtlicher Eisprung</div></div>
     <div class="rows" id="rows"></div>
-    <p class="note">Annahme: Eisprung = nächste Periode − 14 Tage; fruchtbares Fenster Eisprung −5 bis +1 Tag. Echte Zyklen schwanken — Orientierung, keine Verhütung, kein Arztersatz.</p>
+    <p class="note">Annahme: Eisprung = nächste Periode − 14 Tage; fruchtbares Fenster Eisprung −5 bis 0 Tage (Eisprungtag eingeschlossen). Echte Zyklen schwanken — Orientierung, keine Verhütung, kein Arztersatz.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>
@@ -120,9 +120,9 @@ footer a{color:var(--muted)}
     if(!lmp){es.textContent="—";sub.textContent="Datum der letzten Periode wählen.";rows.innerHTML="";return;}
     var naechste=add(lmp,z);
     var eisprung=add(naechste,-14);
-    var fStart=add(eisprung,-5), fEnd=add(eisprung,1);
+    var fStart=add(eisprung,-5), fEnd=add(eisprung,0);
     es.textContent=fmt(eisprung);
-    sub.textContent="voraussichtlicher Eisprung (Zyklustag "+(z-14)+")";
+    sub.textContent="voraussichtlicher Eisprung (Zyklustag "+(z-13)+")";
     var html="";
     html+='<div><b>Fruchtbare Tage</b><span>'+pad(fStart.getDate())+"."+pad(fStart.getMonth()+1)+". – "+fmt(fEnd)+'</span></div>';
     html+='<div><b>Nächste Periode</b><span>'+fmt(naechste)+'</span></div>';

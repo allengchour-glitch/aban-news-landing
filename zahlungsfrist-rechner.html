@@ -122,11 +122,11 @@ footer a{color:var(--muted)}
     <div class="out" id="out"></div>
     <div class="timeline" id="timeline" hidden></div>
     <div class="verdict" id="verdict" role="status" hidden></div>
-    <div class="warn"><strong>Hinweis:</strong> Orientierung für den Geschäftsalltag — <strong>keine Rechtsberatung</strong>. Der gesetzliche Verzug „spätestens 30 Tage nach Fälligkeit" gilt im B2B automatisch; gegenüber Verbrauchern nur mit Hinweis auf der Rechnung. Vereinbarte Fristen oder ein konkretes Zahlungsdatum im Vertrag gehen vor.</div>
+    <div class="warn"><strong>Hinweis:</strong> Orientierung für den Geschäftsalltag — <strong>keine Rechtsberatung</strong>. In Deutschland gilt der gesetzliche Verzug „spätestens 30 Tage nach Fälligkeit" (§ 286 Abs. 3 BGB) im B2B automatisch, gegenüber Verbrauchern nur mit Hinweis auf der Rechnung. In der Schweiz gibt es diese Regel nicht. Vereinbarte Fristen oder ein konkretes Zahlungsdatum im Vertrag gehen vor.</div>
     <details class="how"><summary>Wie der Rechner rechnet</summary>
       <div class="body">
         <p><strong>Fälligkeitsdatum</strong> = Rechnungsdatum + Zahlungsziel (Tage).<br>
-        <strong>Verzug spätestens</strong> = Fälligkeitsdatum + 30 Tage (gesetzliche Auffangregel, sofern nicht früher durch Mahnung oder kalendermäßiges Datum).</p>
+        <strong>Verzug spätestens</strong> = Tag 31 nach Fälligkeit (deutsche Auffangregel, § 286 Abs. 3 BGB, sofern nicht früher durch Mahnung oder ein kalendermässiges Datum). In der Schweiz gilt sie nicht: Dort tritt Verzug mit einem vereinbarten Verfalltag oder nach einer Mahnung ein (Art. 102 OR).</p>
         <p style="margin-top:.6rem">Die „Resttage" zählen ab heute bis zur Fälligkeit. Negative Werte bedeuten: die Rechnung ist bereits überfällig — dann lohnt der Blick in den Verzugszinsen-Rechner.</p>
         <p style="margin-top:.6rem;color:var(--muted)">Alles läuft lokal in deinem Browser. Nichts wird gesendet, kein Konto, kein Tracking.</p>
       </div>
@@ -167,23 +167,23 @@ footer a{color:var(--muted)}
     if(isNaN(rd.getTime())){out.innerHTML='<div class="box" style="grid-column:1/-1"><span>Bitte ein gültiges Rechnungsdatum wählen.</span></div>';tl.hidden=true;verdict.hidden=true;return;}
     if(isNaN(ziel)||ziel<0) ziel=0;
     rd.setHours(0,0,0,0);
-    var faellig=addDays(rd,ziel), verzug=addDays(faellig,30);
+    var faellig=addDays(rd,ziel), verzug=addDays(faellig,31); /* § 286 Abs. 3 BGB: nicht innerhalb von 30 Tagen gezahlt → Verzug ab Tag 31 */
     var rest=Math.round((faellig-today)/86400000);
     var statusCls=rest>=0?"ok":"bad";
     var statusTxt=rest>0?("in "+rest+" Tag"+(rest===1?"":"en")):rest===0?"heute fällig":("überfällig seit "+(-rest)+" Tag"+(-rest===1?"":"en"));
     out.innerHTML=
       '<div class="box big '+statusCls+'"><b>'+fmtDate(faellig)+'</b><span>Fälligkeitsdatum</span></div>'+
       '<div class="box '+statusCls+'"><b>'+statusTxt+'</b><span>Status (ab heute)</span></div>'+
-      '<div class="box"><b>'+fmtDate(verzug)+'</b><span>Verzug spätestens ab</span></div>';
+      '<div class="box"><b>'+fmtDate(verzug)+'</b><span>Verzug spätestens ab (DE, § 286 BGB)</span></div>';
     tl.innerHTML=
       '<div class="tl-step"><div class="k">Rechnung</div><div class="d">'+fmtDate(rd)+'</div></div>'+
       '<div class="tl-step'+(rest>=0?' now':'')+'"><div class="k">Fällig</div><div class="d">'+fmtDate(faellig)+'</div></div>'+
-      '<div class="tl-step'+(rest<0?' now':'')+'"><div class="k">Verzug</div><div class="d">'+fmtDate(verzug)+'</div></div>';
+      '<div class="tl-step'+(rest<0?' now':'')+'"><div class="k">Verzug (DE)</div><div class="d">'+fmtDate(verzug)+'</div></div>';
     tl.hidden=false;
     if(rest<0){
       verdict.innerHTML='Die Rechnung ist <strong>seit '+(-rest)+' Tag'+(-rest===1?"":"en")+' überfällig</strong>. Du kannst die Zahlung verlangen — und ab dem Verzugsdatum Verzugszinsen. <a href="/verzugszinsen-rechner.html">Verzugszinsen jetzt berechnen →</a>';
     } else {
-      verdict.innerHTML='Noch alles im Plan: <strong>'+statusTxt+'</strong>. Zahlt der Kunde nicht, beginnt der gesetzliche Verzug spätestens am <strong>'+fmtDate(verzug)+'</strong>.';
+      verdict.innerHTML='Noch alles im Plan: <strong>'+statusTxt+'</strong>. Zahlt der Kunde nicht, beginnt der Verzug in Deutschland spätestens am <strong>'+fmtDate(verzug)+'</strong>. In der Schweiz gibt es diese 30-Tage-Regel nicht: Ohne festen Verfalltag braucht es eine Mahnung (Art. 102 OR).';
     }
     verdict.hidden=false;
   }

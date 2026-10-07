@@ -120,7 +120,9 @@ footer a{color:var(--muted)}
     var verlust=b-kaufkraft;
     out.innerHTML="<table><tbody>"+
       '<tr><td>Kaufkraft in '+j+' Jahren</td><td class="big">'+eur(kaufkraft)+"</td></tr>"+
-      '<tr><td>Wertverlust</td><td><span style="color:#a01616">−'+eur(verlust)+" ("+(b>0?Math.round((1-kaufkraft/b)*100):0)+" %)</span></td></tr>"+
+      (verlust<0
+        ? '<tr><td>Kaufkraftgewinn</td><td><span style="color:#166534">+'+eur(-verlust)+" (+"+Math.round((kaufkraft/b-1)*100)+" %)</span></td></tr>"
+        : '<tr><td>Wertverlust</td><td><span style="color:#a01616">−'+eur(verlust)+" ("+Math.round((1-kaufkraft/b)*100)+" %)</span></td></tr>")+
       '<tr><td>Nötig für gleiche Kaufkraft</td><td>'+eur(noetig)+"</td></tr>"+
       "</tbody></table>";
   }

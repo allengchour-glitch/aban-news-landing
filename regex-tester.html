@@ -48,7 +48,7 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 .rxrow{display:flex;align-items:center;gap:8px}
 .rxrow .slash{font-size:1.3rem;color:var(--muted);font-weight:700}
-#pat{flex:1;font-size:1.05rem;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--field);color:var(--ink)}
+#pat{flex:1;min-width:0;font-size:1.05rem;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--field);color:var(--ink)}
 #pat:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
 #flags{width:74px;font-size:1.05rem;padding:10px 8px;border:1px solid var(--line);border-radius:14px;background:var(--field);color:var(--ink);text-align:center}
 .flagset{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 0;font-size:.86rem;color:var(--ink2)}
@@ -147,7 +147,7 @@ PLZ 3123 Belp.</textarea>
   var presets=[
     ["E-Mail","\\b[\\w.+-]+@[\\w-]+\\.[\\w.-]+\\b","gi"],
     ["URL","https?:\\/\\/[^\\s]+","gi"],
-    ["Telefon (DACH)","(?:\\+|00)?[\\d\\s().\\/-]{7,}","g"],
+    ["Telefon (DACH)","(?:\\+|00)\\d{2}[\\s\\d]{7,}\\d|\\b0\\d{2,4}[\\s\\/-]?\\d{3,8}(?:[\\s-]?\\d{2}){0,2}\\b","g"],
     ["PLZ (DE/AT 4–5)","\\b\\d{4,5}\\b","g"],
     ["Datum TT.MM.JJJJ","\\b\\d{1,2}\\.\\d{1,2}\\.\\d{2,4}\\b","g"],
     ["Wort doppelt","\\b(\\w+)\\s+\\1\\b","gi"],
@@ -161,6 +161,7 @@ PLZ 3123 Belp.</textarea>
   });
   function syncFlagsFromChecks(){
     var f=(fg.checked?"g":"")+(fi.checked?"i":"")+(fm.checked?"m":"")+(fs.checked?"s":"");
+    f+=flags.value.replace(/[^uy]/g,"");
     flags.value=f;
   }
   function syncChecks(){
@@ -174,10 +175,10 @@ PLZ 3123 Belp.</textarea>
     var re;
     try{ re=new RegExp(p, f.indexOf("g")<0 ? f+"g" : f); }
     catch(e){ status.className="status bad";status.textContent="✗ Ungültiges Muster: "+e.message;hl.innerHTML=esc(t);groups.innerHTML="";return; }
-    var out="",last=0,m,count=0,grp=[],guard=0;
+    var out="",last=0,m,count=0,grp=[],cut=false;
     re.lastIndex=0;
     while((m=re.exec(t))!==null){
-      if(guard++>10000)break;
+      if(count>=10000){cut=true;break;}
       out+=esc(t.slice(last,m.index))+"<mark>"+esc(m[0]||"")+"</mark>";
       last=m.index+(m[0].length||0);
       count++;
@@ -187,7 +188,7 @@ PLZ 3123 Belp.</textarea>
     }
     out+=esc(t.slice(last));
     hl.innerHTML=out||"&nbsp;";
-    status.className="status ok";status.textContent="✓ "+count+" Treffer";
+    status.className="status ok";status.textContent=cut?"✓ mehr als 10 000 Treffer (Anzeige nach 10 000 abgebrochen)":"✓ "+count+" Treffer";
     if(grp.length){
       var rows=grp.map(function(g){
         return "<tr><td>"+g.n+"</td><td>"+esc(g.full)+"</td><td>"+g.groups.map(function(x,i){return "$"+(i+1)+"="+esc(x===undefined?"∅":x);}).join("  ")+"</td></tr>";

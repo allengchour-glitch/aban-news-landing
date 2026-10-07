@@ -128,8 +128,16 @@ footer a{color:var(--muted)}
     var parts=[["utm_source",slug(v("source"))],["utm_medium",slug(v("medium"))],["utm_campaign",slug(v("campaign"))],["utm_term",slug(v("term"))],["utm_content",slug(v("content"))]];
     var q=parts.filter(function(p){return p[1];}).map(function(p){return p[0]+"="+encodeURIComponent(p[1]);});
     if(!q.length) return base;
-    var sep=base.indexOf("?")>=0?"&":"?";
-    return base+sep+q.join("&");
+    try{
+      var u=new URL(base);
+      parts.forEach(function(p){ if(p[1]) u.searchParams.set(p[0],p[1]); });
+      return u.toString();
+    }catch(e){
+      var hash="",hi=base.indexOf("#");
+      if(hi>=0){ hash=base.slice(hi); base=base.slice(0,hi); }
+      var sep=base.indexOf("?")>=0?"&":"?";
+      return base+sep+q.join("&")+hash;
+    }
   }
   function render(){var t=build();document.getElementById("out").textContent=t||"Trag oben deine Ziel-URL ein — der fertige Link erscheint hier.";}
   ["url","source","medium","campaign","term","content"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener("input",render);});

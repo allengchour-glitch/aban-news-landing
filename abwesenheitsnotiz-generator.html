@@ -151,7 +151,7 @@ footer a{color:var(--muted)}
           :reason==="feiertag"?(sie?"wegen eines Feiertags bin ich nicht im Büro":"wegen Feiertag bin ich nicht da")
           :reason==="allg"?(sie?"ich bin aktuell nicht erreichbar":"ich bin gerade nicht erreichbar")
           :(sie?"ich bin derzeit im Urlaub":"ich bin gerade im Urlaub");
-    L.push(danke+" "+r+(ret?(sie?(" und ab dem "+ret+" wieder für Sie da."):(" und ab dem "+ret+" wieder da.")):"."));
+    L.push(danke+" "+r.charAt(0).toUpperCase()+r.slice(1)+(ret?(sie?(" und ab dem "+ret+" wieder für Sie da."):(" und ab dem "+ret+" wieder da.")):"."));
     if(nofw) L.push(sie?"Ihre E-Mail wird nicht automatisch weitergeleitet.":"Deine E-Mail wird nicht weitergeleitet.");
     if(vn){ var k=vn+(vm?(" ("+vm+")"):""); L.push(sie?("In dringenden Fällen wenden Sie sich bitte an "+k+"."):("In dringenden Fällen melde dich bei "+k+".")); }
     L.push(""); L.push(sie?"Freundliche Grüße":"Liebe Grüße"); if(sig) L.push(sig);

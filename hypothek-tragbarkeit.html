@@ -163,7 +163,7 @@ footer a{color:var(--muted)}
     var html="";
     html+=row("Hypothek (Fremdkapital)",chf(hypo));
     html+=row("Belehnung",belehnung.toLocaleString("de-CH",{maximumFractionDigits:1})+" %"+(belehnung>80?" ⚠️ über 80 %":""));
-    html+=row("Kalkulatorischer Zins (5 %)",chf(zinsKosten)+" / Jahr");
+    html+=row("Kalkulatorischer Zins ("+zins.toLocaleString("de-CH",{maximumFractionDigits:2})+" %)",chf(zinsKosten)+" / Jahr");
     html+=row("Nebenkosten/Unterhalt",chf(nebenKosten)+" / Jahr");
     html+=row("Amortisation (2. Hypothek, 15 J.)",chf(amort)+" / Jahr");
     html+=row("Kalkulatorische Wohnkosten",chf(wohnkostenKalk)+" / Jahr");

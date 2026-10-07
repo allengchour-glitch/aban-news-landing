@@ -26,7 +26,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Wie viel darf ich in die Säule 3a einzahlen?","acceptedAnswer":{"@type":"Answer","text":"Erwerbstätige mit Pensionskasse dürfen einen vom Bund jährlich festgelegten Maximalbetrag einzahlen (2025: CHF 7'056). Selbstständige ohne Pensionskasse dürfen bis zu 20 % des Erwerbseinkommens, begrenzt auf einen höheren Maximalbetrag (2025: CHF 35'280). Prüfe den aktuellen Betrag, er wird regelmäßig angepasst."}},
+{"@type":"Question","name":"Wie viel darf ich in die Säule 3a einzahlen?","acceptedAnswer":{"@type":"Answer","text":"Erwerbstätige mit Pensionskasse dürfen einen vom Bund jährlich festgelegten Maximalbetrag einzahlen (2025 und 2026: CHF 7'258, 2027: CHF 7'373). Selbstständige ohne Pensionskasse dürfen bis zu 20 % des Erwerbseinkommens, begrenzt auf einen höheren Maximalbetrag (2025 und 2026: CHF 36'288, 2027: CHF 36'864). Prüfe den aktuellen Betrag, er wird regelmässig angepasst."}},
 {"@type":"Question","name":"Wie spare ich mit der 3a Steuern?","acceptedAnswer":{"@type":"Answer","text":"Deine 3a-Einzahlung kannst du vom steuerbaren Einkommen abziehen. Die Ersparnis ist die Einzahlung multipliziert mit deinem Grenzsteuersatz — also dem Steuersatz auf deinem zuletzt verdienten Franken. Bei einem Grenzsteuersatz von 30 % und CHF 7'056 Einzahlung sparst du rund CHF 2'117 Steuern pro Jahr."}},
 {"@type":"Question","name":"Wie genau ist das Ergebnis?","acceptedAnswer":{"@type":"Answer","text":"Es ist eine Orientierung. Dein Grenzsteuersatz hängt von Wohnkanton, Gemeinde, Einkommen und Zivilstand ab — gib deinen eigenen Wert ein. Bei der Auszahlung der 3a fällt zudem eine (reduzierte) Kapitalauszahlungssteuer an. Für Verbindliches frag deine Steuerbehörde oder Bank. Alles wird lokal berechnet."}}
 ]}
@@ -87,8 +87,8 @@ footer a{color:var(--muted)}
 
   <section class="panel" id="tool">
     <div class="cols">
-      <div class="fld"><label for="einzahlung">Jährliche 3a-Einzahlung</label><div class="unit"><input id="einzahlung" type="number" inputmode="decimal" value="7056" min="0"><span>CHF</span></div>
-        <div class="qa"><button type="button" data-v="7056">Max mit PK (7'056)</button><button type="button" data-v="35280">Max Selbstst. (35'280)</button></div></div>
+      <div class="fld"><label for="einzahlung">Jährliche 3a-Einzahlung</label><div class="unit"><input id="einzahlung" type="number" inputmode="decimal" value="7258" min="0"><span>CHF</span></div>
+        <div class="qa"><button type="button" data-v="7258">Max mit PK (7'258)</button><button type="button" data-v="36288">Max Selbstst. (36'288)</button></div></div>
       <div class="fld"><label for="grenz">Dein Grenzsteuersatz</label><div class="unit"><input id="grenz" type="number" inputmode="decimal" value="30" step="1"><span>%</span></div>
         <div class="qa"><button type="button" data-g="22">22 %</button><button type="button" data-g="30">30 %</button><button type="button" data-g="38">38 %</button></div></div>
     </div>
@@ -102,7 +102,7 @@ footer a{color:var(--muted)}
       <div class="rc"><div class="lab">Eingezahlt gesamt</div><div class="big" id="o-eingezahlt">—</div></div>
       <div class="rc"><div class="lab">3a-Guthaben nach X Jahren</div><div class="big" id="o-guthaben">—</div><div class="u" id="o-guthaben-u"></div></div>
     </div>
-    <p class="note">Maximalbeträge 2025: CHF 7'056 (mit PK) bzw. CHF 35'280 (Selbstständige ohne PK) — jährlich prüfen. Bei Auszahlung fällt eine reduzierte Kapitalsteuer an. Richtwert, keine Steuerberatung.</p>
+    <p class="note">Maximalbeträge 2025 und 2026: CHF 7'258 (mit PK) bzw. CHF 36'288 (ohne PK, höchstens 20 % des Erwerbseinkommens); 2027: CHF 7'373 bzw. 36'864. Quelle: <a href="https://www.estv.admin.ch/estv/de/home/direkte-bundessteuer/dbst-steuertarife/zinssaetze.html">ESTV</a>, <a href="https://www.admin.ch/de/newnsb/BqB41FVYi5FB">Bundesrat 02.10.2026</a>. Bei Auszahlung fällt eine reduzierte Kapitalsteuer an. Richtwert, keine Steuerberatung.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>

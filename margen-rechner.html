@@ -120,14 +120,14 @@ footer a{color:var(--muted)}
   var mode="from";
   function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v;}
   function eur(v){return v.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";}
-  function pct(v){return v.toLocaleString("de-DE",{maximumFractionDigits:1})+" %";}
+  function pct(v){if(v===null||!isFinite(v))return "— (nicht definiert)";return v.toLocaleString("de-DE",{maximumFractionDigits:1})+" %";}
   function show(rows){document.getElementById("out").innerHTML="<table><tbody>"+rows.map(function(r){return "<tr><td>"+r[0]+"</td><td>"+r[1]+"</td></tr>";}).join("")+"</tbody></table>";}
   function render(){
     var cost=num("cost");
     if(mode==="from"){
       var price=num("price");
       if(cost===null||price===null||price<=0){show([["Hinweis","Einkauf und Verkauf eingeben"]]);return;}
-      var profit=price-cost, markup=cost>0?profit/cost*100:0, margin=profit/price*100;
+      var profit=price-cost, markup=cost>0?profit/cost*100:null, margin=price>0?profit/price*100:null;
       show([["Gewinn / Stück",eur(profit)],["Aufschlag (auf Einkauf)",pct(markup)],["Marge (auf Verkauf)",pct(margin)]]);
     } else {
       var p=num("pct");
@@ -135,7 +135,7 @@ footer a{color:var(--muted)}
       var price2, label;
       if(mode==="margin"){ if(p>=100){show([["Hinweis","Marge muss unter 100 % liegen"]]);return;} price2=cost/(1-p/100); label="Marge "+pct(p); }
       else { price2=cost*(1+p/100); label="Aufschlag "+pct(p); }
-      var profit2=price2-cost, markup2=cost>0?profit2/cost*100:0, margin2=profit2/price2*100;
+      var profit2=price2-cost, markup2=cost>0?profit2/cost*100:null, margin2=price2>0?profit2/price2*100:null;
       show([["Verkaufspreis ("+label+")",eur(price2)],["Gewinn / Stück",eur(profit2)],["Aufschlag",pct(markup2)],["Marge",pct(margin2)]]);
     }
   }

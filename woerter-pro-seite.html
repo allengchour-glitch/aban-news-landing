@@ -26,7 +26,7 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Wie viele Wörter passen auf eine Seite?","acceptedAnswer":{"@type":"Answer","text":"Als Faustregel passen auf eine A4-Seite mit Schriftgröße 12 und einfachem Zeilenabstand rund 500 Wörter, bei 1,5-fachem Abstand etwa 350 und bei doppeltem Abstand rund 275. Schriftgröße 11 erhöht die Werte leicht."}},
+{"@type":"Question","name":"Wie viele Wörter passen auf eine Seite?","acceptedAnswer":{"@type":"Answer","text":"Als Faustregel passen auf eine A4-Seite mit Schriftgröße 12 und einfachem Zeilenabstand rund 500 Wörter, Der Wert ist eine Schätzung ohne amtliche Grundlage. Die anderen Werte sind daraus abgeleitet: Mehr Zeilenabstand heißt weniger Zeilen, also bei 1,5-fachem Abstand rund 333 (500 / 1,5) und bei doppeltem Abstand rund 250 (500 / 2). Schriftgröße 11 statt 12 macht Zeichen und Zeilen kleiner, das ergibt rund ein Fünftel mehr Wörter ((12/11)² ≈ 1,19)."}},
 {"@type":"Question","name":"Ist die Seitenzahl exakt?","acceptedAnswer":{"@type":"Answer","text":"Es ist eine Schätzung. Die echte Seitenzahl hängt von Schriftart, Rändern, Absätzen, Überschriften und Bildern ab. Für die grobe Planung von Angeboten, Berichten oder Arbeiten ist der Wert gut geeignet."}},
 {"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
 ]}
@@ -88,11 +88,11 @@ footer a{color:var(--muted)}
     </div></div>
     <div class="grid">
       <div class="fld" id="inBox"><label for="amount" id="amlbl">Anzahl Wörter</label><input id="amount" type="number" value="1500" min="0" step="50"></div>
-      <div class="fld"><label for="size">Schriftgröße</label><select id="size"><option value="1.08">11 pt</option><option value="1" selected>12 pt</option></select></div>
-      <div class="fld"><label for="space">Zeilenabstand</label><select id="space"><option value="500">einfach</option><option value="350" selected>1,5-fach</option><option value="275">doppelt</option></select></div>
+      <div class="fld"><label for="size">Schriftgröße</label><select id="size"><option value="1.19">11 pt</option><option value="1" selected>12 pt</option></select></div>
+      <div class="fld"><label for="space">Zeilenabstand</label><select id="space"><option value="500">einfach</option><option value="333" selected>1,5-fach</option><option value="250">doppelt</option></select></div>
     </div>
     <div class="out" id="out" aria-live="polite"></div>
-    <p class="note">Richtwert A4, Standardränder, Fließtext. Schätzung — echte Seitenzahl variiert. Alles lokal.</p>
+    <p class="note">Richtwert A4, Standardränder, Fließtext: rund 500 Wörter bei 12 pt und einfachem Abstand, die übrigen Werte sind daraus abgeleitet. Schätzung — echte Seitenzahl variiert. Alles lokal.</p>
   </section>
 
   <div class="cta"><strong>Passt dazu</strong>

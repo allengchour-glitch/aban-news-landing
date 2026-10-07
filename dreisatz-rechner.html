@@ -120,6 +120,7 @@ footer a{color:var(--muted)}
   function render(){
     var a=num("a"),b=num("b"),c=num("c"),out=document.getElementById("out"),d=document.getElementById("d");
     if(a===null||b===null||c===null||a===0){ d.value=""; out.innerHTML='<span style="color:#9aa3ad">Drei Werte eingeben (A, Wert, C).</span>'; return; }
+    if(mode==="inv" && c===0){ d.value=""; out.innerHTML='<span style="color:#a01616">C darf beim umgekehrten Dreisatz nicht 0 sein (Division durch 0).</span>'; return; }
     var res, way;
     if(mode==="prop"){ res=b/a*c; way="Pro Einheit: "+fmt(b)+" ÷ "+fmt(a)+" = "+fmt(b/a)+", × "+fmt(c)+" = "+fmt(res); }
     else { res=a*b/c; way="Konstantes Produkt: "+fmt(a)+" × "+fmt(b)+" = "+fmt(a*b)+", ÷ "+fmt(c)+" = "+fmt(res); }
