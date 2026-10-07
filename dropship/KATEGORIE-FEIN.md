@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-10-07 08:16 UTC)
+# Feinkategorie (automatisch, 2026-10-07 09:12 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
@@ -8,22 +8,14 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 | anderer-zweig | 9644 |
 | keine-zuordnung | 3393 |
 | kein-google | 1651 |
-| schon-im-ledger | 300 |
+| schon-im-ledger | 323 |
 | titelprobe-nein | 221 |
 | ohne-kategorie | 119 |
-| verfeinern | 23 |
-| **geschrieben** | 23 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 7 → Jewelry > Bracelets
-- 6 → Backpacks
-- 3 → Clothing > Dresses
-- 2 → Jewelry > Necklaces
-- 2 → Kitchen & Dining > Kitchen Tools & Utensils
-- 1 → Cosmetic & Toiletry Bags
-- 1 → Kitchen & Dining > Cookware & Bakeware
-- 1 → Kitchen & Dining > Kitchen Appliances
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
