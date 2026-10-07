@@ -96,3 +96,17 @@ Gehhilfe unter «Basteln», Kindersitzerhöhung unter «Autoteile», Angelschnur
 **Lehren:** (1) Shopify-Drossel bei zwei Schreibern → `kategorie_urteile_anwenden` wartet jetzt (8 Versuche) statt abzubrechen
 (Runde 2 brach nach 375 ab). (2) Ein «Bereichsschutz» (erste zwei ID-Stufen gleich → Shopify bleibt) wurde verworfen, bevor er
 lief: er hätte Zahnbürste Skin Care → Oral Care blockiert. (3) Langer Schwanz ≠ Regel: ab ~80 Paaren lohnt Einzelurteil + Stichprobe.
+
+## ENDSTAND 07.10.2026 ~23:45 UTC (frischer Bulk-Export, GEMESSEN)
+| | Morgen 07.10. | jetzt |
+|---|---:|---:|
+| Google und Shopify einig («gleich» + «Shopify feiner») | 36'135 | **49'077** |
+| Widerspruch («anderer Zweig») | 9'661 | **243** |
+| keine Zuordnung | 3'395 | **12** |
+| ohne Google-Kategorie (Kostüme/Tabak, gewollt) | 1'662 | 1'662 |
+| Titelprobe nein (Google-Feinklasse widerspricht Titel, Shopify bleibt grob) | 230 | 233 |
+Runde 2 (grobe Oberklassen): **8'477 gesetzt, 0 Fehler, Rücklesen live 40/40**. Abschluss `kategorie_fein`: ZUSATZ-Zuordnung für
+29 mehrdeutige Google-Klassen (Uhren, Jumpsuits, Hüte, Kissen, Tierkleidung/-betten …), GLEICHWERTIG (Smartwatch/Armband,
+Drohnen, Kinderkleidung = einig, nicht Widerspruch), KREUZ Hüte/Hautpflege-Geräte/Tiere/Hängematten → **739 gesetzt, 0 Fehler**.
+**OFFEN (klein):** 243 Rest-Widersprüche (u. a. 56 Nicht-Uhren unter Google «Watches» wie Mückenarmband, 28 Holster/Leinen
+unter Handbags, 20 Fremdgeräte im alten Haar-Korb), 233 Titelprobe-Fälle — nächste Runde mit derselben Einzelprüfung.

@@ -5269,3 +5269,11 @@ patent-leder-reitstiefel-mit-absatz-622800	2607020647261623400	16	15.63	ok	lande
 stretch-stilettos-oberschenkelhoch-mit-spitzen-616000	2607011224271616600	16	15.20	ok	landeseite
 rundspitzige-knochelboots-mit-stitch-detail-612600	2607010332531613600	16	9.20	ok	landeseite
 sportliche-knochelboots-604600	2606250840261605400	16	13.28	ok	landeseite
+stiefeletten-mit-stickereimuster-616800	2606250720561617600	16	14.96	ok	landeseite
+plus-gro-en-damenstiefel-mit-blockabsatz-604200	2606231347461604900	16	13.52	ok	landeseite
+warme-velours-stiefel-mit-absatz-609400	2606200702041600100	16	13.16	ok	landeseite
+hohe-stiefel-mit-dicken-sohlen-622400	2606180710211623400	16	13.76	ok	landeseite
+gestickte-rundzehen-hochstiefel-damen-606100	2606170312071606800	16	16.16	ok	landeseite
+britisch-franzosisch-vintage-knochelstiefel-623600	2606170228311624800	16	23.50	ok	landeseite
+winterstiefel-mit-dicken-absatzen-637200	2606140948461637800	16	22.57	ok	landeseite
+warme-winterstiefel-fur-damen-610300	2606110939291611100	16	12.56	ok	landeseite

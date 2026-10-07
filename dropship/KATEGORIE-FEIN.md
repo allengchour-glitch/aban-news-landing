@@ -1,33 +1,20 @@
-# Feinkategorie (automatisch, 2026-10-07 23:22 UTC)
+# Feinkategorie (automatisch, 2026-10-07 23:25 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 47990 |
+| gleich | 48951 |
 | kein-google | 1662 |
-| anderer-zweig | 725 |
-| verfeinern | 479 |
 | schon-im-ledger | 262 |
+| anderer-zweig | 243 |
 | titelprobe-nein | 233 |
 | shopify-feiner | 126 |
 | keine-zuordnung | 12 |
+| verfeinern | 0 |
 
 ## Ziele (dieser Lauf)
 
-- 269 → Clothing > One-Pieces > Jumpsuits & Rompers
-- 87 → Decor > Chair & Sofa Cushions
-- 83 → Personal Care > Cosmetics > Skin Care > Lotion & Moisturizer
-- 8 → Pet Supplies > Dog Supplies > Dog Apparel
-- 7 → Outdoor Recreation > Equestrian > Riding Apparel & Accessories > Equestrian Helmets
-- 5 → Clothing Accessories > Hats
-- 5 → Exercise & Fitness > Weight Lifting > Weight Lifting Belts
-- 4 → Pet Supplies > Cat Supplies > Cat Beds
-- 4 → Lawn & Garden > Outdoor Living > Hammocks
-- 2 → Jewelry > Watches
-- 2 → Audio > Audio Players & Recorders > CD Players & Recorders
-- 2 → Exercise & Fitness > Weight Lifting > Weight Lifting Machine & Exercise Bench Accessories
-- 1 → Audio > Audio Players & Recorders > MP3 Players
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

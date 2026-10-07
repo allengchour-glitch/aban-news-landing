@@ -75,11 +75,61 @@ def titel_ok(ziel_name, titel):
     return True if m is None else bool(re.search(m, norm(titel)))
 
 
+# 07.10.2026 23:30: Shopifys offizielle Zuordnung ist für diese Google-Klassen MEHRDEUTIG (darum fehlen sie in der Karte) —
+# gemessen 3'810 «keine Zuordnung», davon 2'761 Uhren. Geprüfte Ergänzung (Shopify-IDs per taxonomy-Suche bestätigt).
+ZUSATZ = {
+    "Apparel & Accessories > Jewelry > Watches": "aa-6-11",
+    "Apparel & Accessories > Clothing > One-Pieces > Jumpsuits & Rompers": "aa-1-9",
+    "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Apparel": "ap-2-6",
+    "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Apparel": "ap-2-6",
+    "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Beds": "ap-2-9",
+    "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Beds": "ap-2-9",
+    "Apparel & Accessories > Clothing Accessories > Hats": "aa-2-17",
+    "Home & Garden > Decor > Chair & Sofa Cushions": "hg-3-15",
+    "Health & Beauty > Personal Care > Cosmetics > Skin Care > Lotion & Moisturizer": "hb-3-2-9-10",
+    "Apparel & Accessories > Clothing Accessories > Scarves & Shawls > Scarves": "aa-2-26",
+    "Apparel & Accessories > Clothing Accessories > Scarves & Shawls > Shawls": "aa-2-26",
+    "Apparel & Accessories > Clothing > Skirts > Mini Skirts": "aa-1-15",
+    "Apparel & Accessories > Clothing > Skirts > Long Skirts": "aa-1-15",
+    "Apparel & Accessories > Clothing > Skirts > Knee-Length Skirts": "aa-1-15",
+    "Sporting Goods > Outdoor Recreation > Cycling > Bicycle Accessories > Bicycle Bags & Panniers": "sg-4-4-1",
+    "Home & Garden > Lawn & Garden > Outdoor Living > Hammocks": "hg-12-2-4",
+    "Apparel & Accessories > Clothing > Underwear & Socks > Bras": "aa-1-8",
+    "Apparel & Accessories > Clothing > Underwear & Socks > Underwear": "aa-1-8",
+    "Sporting Goods > Outdoor Recreation > Equestrian > Riding Apparel & Accessories > Equestrian Helmets": "sg-4-5-5-2",
+    "Sporting Goods > Exercise & Fitness > Weight Lifting > Weight Lifting Belts": "sg-2-24-3",
+    "Sporting Goods > Exercise & Fitness > Weight Lifting > Weight Lifting Machine & Exercise Bench Accessories": "sg-2-24",
+    "Apparel & Accessories > Clothing > Activewear > Bicycle Activewear": "aa-1-1",
+    "Sporting Goods > Outdoor Recreation > Camping & Hiking > Tent Accessories > Tent Poles & Stakes": "sg-4-2-16",
+    "Electronics > Audio > Audio Players & Recorders > MP3 Players": "el-2-3",
+    "Electronics > Audio > Audio Players & Recorders > CD Players & Recorders": "el-2-3",
+    "Baby & Toddler > Potty Training > Potty Seats": "bt-11",
+    "Apparel & Accessories > Clothing Accessories > Hair Accessories > Hair Pins, Claws & Clips > Hair Claws & Clips": "aa-2-14-6",
+    "Apparel & Accessories > Clothing Accessories > Hair Accessories > Hair Pins, Claws & Clips > Barrettes": "aa-2-14-6",
+    "Toys & Games > Toys > Musical Toys > Toy Instruments": "tg-5-13",
+}
+# Gleichwertige Shopify-Klassen je Google-Klasse (Google kennt keine Smartwatch-/Armband-Unterklasse; uhren_fein.py setzt sie).
+GLEICHWERTIG = {"Apparel & Accessories > Jewelry > Watches": ("aa-6-12", "aa-6-10"),
+                # Drohnen: Google hat keine Klasse, Shopify «Flying Toys > Drones» (rc_fein.py setzt es)
+                "Toys & Games > Toys > Remote Control Toys": ("tg-5-12-2",),
+                # Kinderkleidung: Google regelt das Alter über age_group, Shopify hat eigene Kinder-Klassen (aa-1-25-*)
+                "Apparel & Accessories > Clothing > Outfit Sets": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Shirts & Tops": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Dresses": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Swimwear": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Pants": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Shorts": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > Sleepwear & Loungewear": ("aa-1-25",)}
+
+
 def ziel_fuer(cat_id, google_name, karte):
     """(ziel_id | None, grund) — reine Logik ohne Netz, für Selbsttest und Lauf."""
     if not google_name:
         return None, "kein-google"
-    sid = karte.get(google_name)
+    if any(cat_id == x or cat_id.startswith(x + "-") for x in GLEICHWERTIG.get(google_name, ())):
+        return None, "gleich"
+    sid = karte.get(google_name) or ZUSATZ.get(google_name)
     if not sid:
         return None, "keine-zuordnung"
     if sid == cat_id:
@@ -136,10 +186,17 @@ _EL = {
     "tg-5-15": r"modellauto|spielzeugauto|rennwagen",
 }
 KREUZ.update({("el", z): re.compile(m, re.I) for z, m in _EL.items()})
+# Google ist hier schon die feine Tier-Klasse (Dog Apparel/Beds …); Shopify führt Tierkleidung/-betten tierübergreifend.
+KREUZ.update({(von, nach): re.compile(r".", re.I) for von in ("ap-2", "ap-2-2", "ap-2-3", "ap") for nach in ("ap-2-6", "ap-2-9")})
+KREUZ[("sg", "hg-12-2-4")] = re.compile(r"hängematte|hammock", re.I)
+KREUZ[("hb-3-2-9", "hb-3-2-5-3")] = re.compile(r"gerät|apparat|instrument|lift|roller|maske|bürste|stein", re.I)
+KREUZ[("hb-3-2-9", "hb-3-2-5-3-6")] = re.compile(r"roller|stein", re.I)
+for _von in ("aa-1", "tg-5", "ap", "aa-2"):
+    KREUZ[(_von, "aa-2-17")] = re.compile(r"hut\b|hüte|mütze|\bcap\b|kappe|beanie|fischerhut|sonnenhut", re.I)
 
 
 def kreuz_ziel(cat_id, google_name, karte, titel):
-    sid = karte.get(google_name or "")
+    sid = karte.get(google_name or "") or ZUSATZ.get(google_name or "")
     rx = KREUZ.get((cat_id, sid))
     return sid if rx and rx.search(titel or "") else None
 
