@@ -49597,3 +49597,8 @@ gid://shopify/Product/15412307657089	direkt	1	XXL Leselupe mit LED-Licht – 5×
 gid://shopify/Product/15412361593217	direkt	1	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlaf
 gid://shopify/Product/15412408615297	direkt	1	Monitor-Lichtleiste mit Bewegungssensor – blendfreies Schreibtischlich
 gid://shopify/Product/15412432175489	direkt	1	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+gid://shopify/Product/15412433256833	direkt	1	Handliches Massagegerät – Vibrations-Massage mit mehreren Stufen
+gid://shopify/Product/15412447543681	direkt	1	Auto-Schnellladegerät PD – ausziehbares Kabel, für Apple & Android
+gid://shopify/Product/15412463108481	direkt	1	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, Fashion-Look (Herren
+gid://shopify/Product/15412659978625	direkt	1	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund 
+gid://shopify/Product/15412677607809	direkt	1	Elektrischer Krallenschleifer für Hund & Katze – leise, USB-Akku, mit 
