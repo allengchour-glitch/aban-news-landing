@@ -5155,3 +5155,5 @@ solar-5-smartwatch-607400	2509180756551607600	7	6.12	ok	landeseite
 elektronische-casual-uhr-603300	2509150754121603500	7	6.81	ok	landeseite
 business-uhr-fur-herren-617400	2509090844351617600	7	6.09	ok	landeseite
 elastisches-nylon-armband-mit-schirmverschluss-625900	2509081316071626100	16	5.12	ok	landeseite
+geflochtenes-armband-602100	2509070655031602300	16	4.89	ok	landeseite
+einzelnes-schnallengurt-armband-614200	2509060628441614400	16	5.20	ok	landeseite
