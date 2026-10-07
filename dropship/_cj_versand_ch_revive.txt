@@ -694,3 +694,6 @@
 15446276800897	keine-linie	garkorb-set-mit-zubehor-fur-sauerteigbrot-004225
 15446276997505	keine-linie	garkorbchen-set-fur-sauerteigbrot-rund-9-zoll-097538
 15446277587329	keine-linie	5-core-plektren-set-12-stuck-115201
+15446277652865	keine-linie	geflochtenes-gitarren-abschirmkabel-300-cm-332482
+15446277718401	keine-linie	violin-schulterstutze-schwarz-014081
+15446277816705	keine-linie	violinsaiten-set-nickel-silber-umsponnen-086529
