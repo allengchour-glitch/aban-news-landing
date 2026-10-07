@@ -317,60 +317,72 @@ def schreiben(charge):
     return aus
 
 
-def main():
+def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad):
+    """Gemeinsamer Lauf: Produkte mit Google-Kategorie im ZWEIG → zielfn(titel) = voller Google-Pfad oder None.
+    ziele = alle möglichen Google-Pfade (gegen die Taxonomie geprüft); Shopify-Ziel aus Shopifys Zuordnung."""
     import kategorie_fein as kf
     gueltig = google_taxonomie()
-    for _, z in REGELN + MAKEUP + [(None, "Cosmetic Sets"), (None, "Makeup")]:
-        if f"{K} > {z}" not in gueltig:
+    for z in ziele:
+        if z not in gueltig:
             raise SystemExit(f"Google-Pfad unbekannt: {z} — nichts geschrieben")
-    if not kanarien(gueltig):
+    if not kanarien_ok(gueltig):
         raise SystemExit("Kanarienvögel gescheitert — nichts geschrieben")
     karte = json.load(open(kf.KARTE, encoding="utf-8"))["karte"]
     kf.export_holen()
-    erledigt = ledger()
+    try:
+        erledigt = {(l.split("\t")[0], l.split("\t")[2]) for l in open(ledger_pfad, encoding="utf-8") if l.count("\t") >= 3}
+    except OSError:
+        erledigt = set()
     stat = collections.Counter(); plan = []; bsp = collections.defaultdict(list); art = collections.Counter()
     for l in open(kf.EXPORT, encoding="utf-8"):
         p = json.loads(l)
         g = (p.get("metafield") or {}).get("value") or ""
-        if not (g == K or g.startswith(K + " > ")):
+        if not (g == zweig or g.startswith(zweig + " > ")):
             continue
         stat["im-zweig"] += 1
-        z = ziel(p["title"])
-        if not z:
+        neu = zielfn(p["title"])
+        if not neu:
             stat["kein-treffer"] += 1
-            if len(bsp["(kein Treffer)"]) < ZEIGEN: bsp["(kein Treffer)"].append(f'{p["title"][:60]}  [G: {g[len(K):] or "—"}]')
+            if len(bsp["(kein Treffer)"]) < ZEIGEN: bsp["(kein Treffer)"].append(f'{p["title"][:60]}  [G: {g[len(zweig):] or "—"}]')
             continue
-        neu = f"{K} > {z}"
-        sid = shopify_ziel(neu, karte)
+        if isinstance(neu, tuple):      # (Google-Pfad, Shopify-ID) — Regel kennt eine feinere Shopify-Klasse als die Zuordnung
+            neu, sid = neu
+        else:
+            sid = shopify_ziel(neu, karte)
         cid = ((p.get("category") or {}).get("id") or "").split("/")[-1]
         if neu == g and sid == cid:
             stat["stimmt"] += 1; continue
         if (p["id"], neu) in erledigt:
             stat["schon-im-ledger"] += 1; continue
-        art["verfeinern" if neu.startswith(g + " > ") or neu == g else "seitwärts"] += 1
+        art["verfeinern" if neu.startswith(g + " > ") or neu == g else ("im Zweig" if neu.startswith(zweig) else "Zweigwechsel")] += 1
         plan.append((p["id"], neu, sid))
-        if len(bsp[z]) < ZEIGEN: bsp[z].append(f'{p["title"][:60]}  [G alt: {g[len(K):] or "—"}]')
+        if len(bsp[neu]) < ZEIGEN: bsp[neu].append(f'{p["title"][:60]}  [G alt: {g[len(zweig):] or "—"}]')
     gueltig_s = kf.ids_pruefen({x[2] for x in plan if x[2]}) if plan else set()
     weg = [x for x in plan if x[2] not in gueltig_s]
     plan = [x for x in plan if x[2] in gueltig_s]
     print("Stand:", dict(stat), "· Art:", dict(art), f"· Shopify-ID unbekannt: {len(weg)}")
-    for z, n in collections.Counter(x[1][len(K) + 3:] for x in plan).most_common(60):
-        print(f"  {n:5} → {z}")
+    for z, n in collections.Counter(x[1] for x in plan).most_common(80):
+        print(f"  {n:5} → {z[len(zweig) + 3:] if z.startswith(zweig + ' > ') else z}")
         for b in bsp.get(z, []):
             print("        ", b)
     for b in bsp.get("(kein Treffer)", []):
         print("   ohne Treffer:", b)
     gesetzt = fehler = 0
     if SCHARF and plan:
-        with open(LEDGER, "a", encoding="utf-8") as f:
+        with open(ledger_pfad, "a", encoding="utf-8") as f:
             for i in range(0, min(len(plan), CAP), 25):
                 for pid, st, g, sid, fe in schreiben(plan[i:i + 25]):
                     f.write(f"{pid}\t{st}\t{g}\t{sid}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{fe}\n")
                     gesetzt += st == "gesetzt"; fehler += st == "fehler"
                 f.flush()
                 time.sleep(0.4)
-    print(f"KOSMETIK-FEIN: {len(plan)} umzuordnen{f' · gesetzt {gesetzt} · fehler {fehler}' if SCHARF else ' (TROCKEN)'} · "
+    print(f"{name}: {len(plan)} umzuordnen{f' · gesetzt {gesetzt} · fehler {fehler}' if SCHARF else ' (TROCKEN)'} · "
           f"im Zweig {stat['im-zweig']} · ohne Treffer {stat['kein-treffer']}")
+
+
+def main():
+    ziele = [f"{K} > {z}" for _, z in REGELN + MAKEUP] + [f"{K} > Cosmetic Sets", f"{K} > Makeup"]
+    lauf("KOSMETIK-FEIN", K, lambda t: (f"{K} > {z}" if (z := ziel(t)) else None), ziele, kanarien, LEDGER)
 
 
 if __name__ == "__main__":

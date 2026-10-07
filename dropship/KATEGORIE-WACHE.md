@@ -1,15 +1,15 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-07T20:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-07T21:07Z
 
-Aktive gescannt: 37 · ohne Kategorie: 37 · heute gesetzt: 37 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- wasserdichter-multifunktionsrucksack-fur-manne-619136 · Taschen → Luggage & Bags
-- mehrzweck-wasserfester-reiseregenrucksack-922304 · Taschen → Luggage & Bags
-- solarbetriebener-rucksack-mit-wasserdichtem-ox-552704 · Taschen → Luggage & Bags
-- kinder-spacebag-wasserdichter-reisesack-896128 · Taschen → Luggage & Bags
-- grosser-babyflaschen-rucksack-mit-diapersack-971648 · Taschen → Luggage & Bags
+- eisenpfanne-mit-elektrischem-heizsystem-619900 · Küche & Bar → Home & Garden > Kitchen & Dining
+- baby-essstuhl-mit-kopfkissen-rutschbalken-und-600600 · Küche & Bar → Home & Garden > Kitchen & Dining
+- intelligenter-mullbehalter-8-l-zylindrisch-616500 · Küche & Bar → Home & Garden > Kitchen & Dining
+- kupfer-wasserhahn-mit-universalarm-623900 · Küche & Bar → Home & Garden > Kitchen & Dining
+- 7-er-eierkocher-mit-dampf-und-edelstahl-heizpl-615900 · Küche & Bar → Home & Garden > Kitchen & Dining
 

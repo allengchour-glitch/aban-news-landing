@@ -44,6 +44,20 @@
 
 
 
+## 2026-10-07 22:30 UTC · 🗂️ «das muss perfekt sein»: Taschen fertig, «anderer Zweig» war oft ein SAMMELKORB — Kosmetik + Haar aus dem Titel
+- Taschen Runde 2: Google 9 + Shopify 124 gesetzt, 0 Fehler; Rücklesen 30/30 zufällige Produkte beide Felder im selben Zweig.
+- Von 8'000 «anderer Zweig» waren 2'662 Kosmetik (Google «Cosmetics» grob, Shopify fein) und 891 Haar (Google «Hair Care»
+  als Sammelkorb). **Google aus Shopify ableiten hätte Shopifys Fehler kopiert** (Pinselset = Makeup, Badeset = Makeup,
+  Kosmetik-Organizer = Skin Care) — der Trockenlauf dieser Idee zeigte es. Darum beide Felder aus dem TITEL.
+- `kosmetik_fein.py` (82 Kanarien) + `haar_fein.py` (51 Kanarien, gemeinsamer `lauf()`): Plan 2'293 + 910; täglich im Aufseher.
+- Fallen: «Nä**gel**» enthält «gel» (Ausschlusswort griff jeden Nageltitel) → `(?<!nä)gel`; `\b` vor «&» greift nie
+  («Stick & Pinsel»); «Peel-off Lipgloss» ≠ Maske; «Spiegelglanz» ≠ Spiegel; «Maniküre-Set «American Star»» = Kunstnägel;
+  eine Regel, die eine Ware vor einer anderen nennt («Lidschatten-Pinsel»), braucht Werkzeug-vor-Ware-Reihenfolge.
+- **Lehre:** Ein «Widerspruch» zweier Felder ist oft ein grobes Feld neben einem feinen — und das feine kann trotzdem falsch
+  sein. Erst die Paare aufschlüsseln, dann am Titel entscheiden; jede Regelrunde gegen die VOLLE Liste je Ziel lesen
+  (Stichprobe 8 je Ziel fand 6 Fehlerklassen nicht, die volle Liste schon).
+→ `dropship/KATALOG-TASCHEN-2026-10-07.md` (Nachtrag)
+
 ## 2026-10-07 20:45 UTC · 🍪 «verbessere mehr»: der eigene Cookie-Banner verdeckte den Preis auf den TikTok-Landeseiten
 - GEMESSEN: Sirène/Provence/Aurora 563 TikTok-Sitzungen (14 T), 93–96 % Absprung nach 7–19 s, 8 Warenkörbe, 0 Käufe; Aurora
   0 Warenkörbe auf 158. Bild 390×844: `#lx-cookie-banner` nach 0,8 s genau über Titel + Preis. Alle Varianten kaufbar.
@@ -18433,6 +18447,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-06 · ⏰ **CJ-Punkte-Reset gemessen 00:00 UTC (20/37 Wechsel), Vorrang-Fenster stand seit 15.08. auf 16:00 → Topf dann leer, Video-Nachfüller 0 Videos → `cj_vorrang_fenster.sh` (00:00–01:30, Stunde aus `_CJ_PUNKTE_RESET_UTC`) + Wache `cj_reset_wache.py`.** Fenster an gemessener Grenze → `dropship/CJ-VORRANG-FENSTER-2026-10-06.md`
+- 2026-10-06 · 🧁 **Verbesserungsrunde: 65/315 Neuimporte unter Google «Tools», darunter Backformen/Haarschneider/Nagelset → 4 Kreuz-Regeln in `google_kategorie_umzug.py`; «Silikonform» traf Kerzen-/Epoxidformen → Ausschluss, Kanarien 39/39, 21 umgezogen.** Trockenlauf mit allen Treffern (`ZEIGEN=n`) → `dropship/GOOGLE-KATEGORIE-WERKZEUG-2026-10-06.md`
 - 2026-10-06 · 📏 **«fix alles» Filter: Farbe/Grösse live ok, Kategorie = Betreiber-Klick; 4 Kleider US/EU belegt beschriftet, Grösse im Farbwert («-16 W», «-US0») → `groesse_im_farbwert.py` (69 Varianten), «10 W» = Watt übersprungen; fast gegen `groessenwert_normieren.py` («US10») gearbeitet.** Vorhandenen Normierer zuerst lesen → `dropship/FILTER-GROESSEN-2026-10-06.md`
 - 2026-10-06 · 🔫 **Verbesserungsrunde: «Laser-Boresight für Gewehr» ACTIVE — Waffen-Regel band «Gewehr» an Bausatz-Kontext → `schusswaffen-laser` (DRAFT, Importer + Wache) + `schusswaffen-zubehoer` (Google raus), 10/10 Kanarien, Voll-Export 2/2.** Regel gegen Nachbildungen lässt das Original durch → `dropship/SCHUSSWAFFEN-ZUBEHOER-2026-10-06.md`
 - 2026-10-06 · 🔄 **Verbesserungsrunde: Bildtausch liess «uneinig» liegen (36 % frei), obwohl beide Prüfer Bild 1 ablehnten → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu, Sperre/Bilanz/Rücklesen kennen die Art.** Hauptfrage entschieden ≠ unklar → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`

@@ -1,25 +1,26 @@
-# Feinkategorie (automatisch, 2026-10-07 20:42 UTC)
+# Feinkategorie (automatisch, 2026-10-07 21:09 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
 | gleich | 37773 |
-| anderer-zweig | 8000 |
+| anderer-zweig | 7775 |
 | keine-zuordnung | 3395 |
 | kein-google | 1662 |
-| schon-im-ledger | 300 |
+| schon-im-ledger | 424 |
+| kreuz | 343 |
 | titelprobe-nein | 230 |
-| verfeinern | 124 |
-| kreuz | 118 |
+| verfeinern | 225 |
 | ohne-kategorie | 12 |
-| **geschrieben** | 124 (Fehler 0) |
+| **geschrieben** | 225 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 118 → Handbags, Wallets & Cases > Handbags
-- 4 → Diaper Bags
-- 2 → Backpacks
+- 124 → Linens & Bedding > Bedding > Pillows
+- 50 → Linens & Bedding > Bedding > Blankets
+- 29 → Linens & Bedding > Bedding > Duvet Covers
+- 22 → Linens & Bedding > Towels > Bath Towels & Washcloths
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

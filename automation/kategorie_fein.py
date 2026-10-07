@@ -98,6 +98,12 @@ KREUZ = {
                                  r".*(?:handtasche|umh[äa]nge|schultertasche|crossbody|clutch|abendtasche|\btote\b|shopper|"
                                  r"henkeltasche|beuteltasche|baguette|hobo|bucket|sling|brusttasche|brustbeutel|kreuzbody|einzeltrage|one-shoulder|schulterbeutel)", re.I),
     ("lb", "aa-5-5"): re.compile(r"geldb[öo]rse|portemonnaie|portmonee|brieftasche|\bwallet\b|kartenetui|kartenhalter|geldklammer", re.I),
+    # 07.10.2026 22:45 («super mache mehr»): 225 Bettwaren/Handtücher standen in Shopify unter «Decor» (hg-3), Google sagt Bedding/Towels.
+    ("hg-3", "hg-15-1-9"): re.compile(r"^(?!.*(kissen-?hülle|kissenhülle|kissen-?bezug|kissenbezug|bezug für|sofa|deko|zier|auto|sitz))"
+                                      r".*(kopfkissen|nackenkissen|nackenstütz|schlafkissen|beinkissen|reisekissen|memory|latex|kissen\b)", re.I),
+    ("hg-3", "hg-15-1-4"): re.compile(r"^(?!.*(tisch|wand|teppich)).*(decke\b|kuscheldecke|wolldecke|fleecedecke|plaid|überwurf|\bdecke)", re.I),
+    ("hg-3", "hg-15-1-5"): re.compile(r"bettwäsche|bettbezug|bett-?set|duvet|bettdeckenbezug", re.I),
+    ("hg-3", "hg-15-4-1"): re.compile(r"handt[uü]ch|badet[uü]ch|duscht[uü]ch|strandt[uü]ch|waschlappen", re.I),
 }
 
 
@@ -241,7 +247,14 @@ def kreuz_test():
     k = {"Apparel & Accessories > Handbags, Wallets & Cases > Handbags": "aa-5-4",
          "Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips": "aa-5-5"}
     H, W = list(k)
-    t = [(kreuz_ziel("lb", H, k, "Cord Canvas Schulter- und Umhängetasche") == "aa-5-4", "Umhängetasche lb→Handbags"),
+    karte = dict(k, **{"Home & Garden > Linens & Bedding > Bedding > Pillows": "hg-15-1-9",
+                       "Home & Garden > Linens & Bedding > Bedding > Blankets": "hg-15-1-4",
+                       "Home & Garden > Linens & Bedding > Towels > Bath Towels & Washcloths": "hg-15-4-1"})
+    t = [
+        (kreuz_ziel("hg-3", "Home & Garden > Linens & Bedding > Bedding > Pillows", karte, "Memory Foam Nackenkissen U-Form") == "hg-15-1-9", "Nackenkissen Decor→Pillows"),
+        (kreuz_ziel("hg-3", "Home & Garden > Linens & Bedding > Bedding > Pillows", karte, "Sofakissenhülle mit Quasten") is None, "Kissenhülle bleibt Decor"),
+        (kreuz_ziel("hg-3", "Home & Garden > Linens & Bedding > Bedding > Blankets", karte, "Retro-Strickdecke mit Tigermotiv") == "hg-15-1-4", "Strickdecke→Blankets"),
+        (kreuz_ziel("hg-3", "Home & Garden > Linens & Bedding > Towels > Bath Towels & Washcloths", karte, "Drei-Pack reine Baumwollhandtücher") == "hg-15-4-1", "Handtücher→Towels"),(kreuz_ziel("lb", H, k, "Cord Canvas Schulter- und Umhängetasche") == "aa-5-4", "Umhängetasche lb→Handbags"),
          (kreuz_ziel("lb", W, k, "Herren-Geldbörse aus Rindsleder") == "aa-5-5", "Geldbörse lb→Wallets"),
          (kreuz_ziel("lb", H, k, "Marco Laiden Business Bag") is None, "ohne Pflichtwort bleibt"),
          (kreuz_ziel("el", H, k, "Umhängetasche") is None, "nur aus lb"),
