@@ -5235,3 +5235,9 @@ bequeme-sandalen-625600	2606300814271626300	16	9.20	ok	landeseite
 suede-stiletto-sandalen-607500	2606300742221608300	16	13.76	ok	landeseite
 platform-wedgesandalen-623500	2606300737321624200	16	12.56	ok	landeseite
 romische-sandalen-635000	2606300734431635700	16	11.37	ok	landeseite
+romer-sandalen-616900	2606300716061617600	16	12.09	ok	landeseite
+jute-riemen-sandalen-635700	2606300514561636500	16	10.01	ok	landeseite
+flache-sandalen-628100	2606300514061628700	16	10.69	ok	landeseite
+runde-sandalen-601300	2606290138311602200	16	9.45	ok	landeseite
+neue-plus-grosse-wedgesandalen-im-boho-stil-954817	2071439299915911169	16	11.23	ok	landeseite
+spitzschuhe-mit-gewebtem-design-in-mehreren-fa-639701	2606280707071630300	16	13.46	ok	landeseite
