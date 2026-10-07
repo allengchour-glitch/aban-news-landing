@@ -45,3 +45,24 @@
   Das ist eigene Klasse für die nächste Runde: `kategorie_wache` müsste «Werkzeug & Heimwerken» als Sammeltyp mit
   Werkzeugwort-Schutz führen.
 - An der Quelle: Der Importer sollte die Gruppe «Werkzeug» nur bei Werkzeugwort als Werkzeug typisieren.
+
+## Nachtrag 15:05 UTC — Shop-Seite nachgezogen (Betreiber «mache verbesserung»)
+- **Neu:** `automation/werkzeug_korb_shop.py`.
+  - Quelle ist allein das Umzugs-Ledger: Zeilen mit «alt = Hardware > Tools» und einem Ziel ausserhalb von Hardware.
+  - Es fasst nur Produkte an, die heute noch den Typ «Werkzeug & Heimwerken» tragen.
+  - Je Produkt drei Änderungen:
+    - **Shopify-Kategorie:** Shopifys offizielle Zuordnung des Google-Pfads, vorher gegen die Taxonomie des Shops geprüft.
+    - **Produkttyp:** über `produkttyp_vereinheitlichen.aus_kategorie`, ergänzt um zwei Zweige ohne Tabellenwert.
+    - **Tags:** `werkzeug` und `heimwerken` fallen weg, das Produkt verlässt damit die Werkzeug-Kollektion.
+- **Selbsttest:** 8/8.
+- **Scharfer Lauf: 80 nachgezogen, 0 Fehler.** Das sind die 63 von heute und 17 aus dem Umzug vom 06.10.: Backformen, Nagelknipser, Haarschneider, Küchentuch.
+- **Rücklesen 2/2:**
+  - Kalimba → Musikinstrumente / Musical Instruments.
+  - Regenschirm → Accessoires / Parasols & Rain Umbrellas.
+  - Beide ohne Werkzeug-Tag.
+  - Ein zweiter Lauf findet 0 Produkte, das Werkzeug ist also idempotent.
+- **Aufseher:** läuft täglich direkt nach `google_kategorie_umzug.py`, in derselben Sperre. Neu umgezogene Produkte bekommen ihre Shop-Seite also gleich mit.
+- **Rückweg:** Ledger `dropship/_werkzeug_korb_shop.tsv` mit Typ alt/neu und Kategorie alt/neu.
+- **Weiter offen:**
+  - Der Importer typisiert die Gruppe «Werkzeug» an der Quelle noch pauschal. Der tägliche Nachzug fängt das zwar ab, aber erst nach bis zu 24 h.
+  - 533 unklare Produkte bleiben vorerst Werkzeug.

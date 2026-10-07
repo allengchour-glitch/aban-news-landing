@@ -44,6 +44,15 @@
 
 
 
+## 2026-10-07 15:05 UTC · 🧰 «mache verbesserung»: Shop-Seite des Werkzeug-Sammelkorbs nachgezogen (80 Produkte)
+Nach dem Google-Umzug standen Kalimba/Regenschirm/Kerzenhalter im SHOP weiter als Typ «Werkzeug & Heimwerken», Tags werkzeug/
+heimwerken (Werkzeug-Kollektion) und Shopify-Kategorie Tools. Neu `automation/werkzeug_korb_shop.py`: Quelle NUR das Umzugs-Ledger
+(ein schon geprüftes Signal), Kategorie über Shopifys offizielle Google→Shopify-Karte (taxonomie-geprüft), Typ über
+produkttyp_vereinheitlichen.aus_kategorie (+2 Ergänzungen), Tags weg; nur wer heute noch Werkzeug-Typ trägt. Selbsttest 8/8,
+SCHARF 80/0 Fehler (63 heute + 17 vom 06.10.), Rücklesen 2/2, zweiter Lauf 0. Aufseher: direkt nach dem Google-Umzug in derselben Sperre.
+LEHRE: Ein Umzug in EINEM Feld (Google) lässt die Geschwisterfelder (Typ, Shopify-Kategorie, Kollektions-Tags) falsch stehen —
+jede Korrektur fragt: welche anderen Felder leiten sich aus demselben falschen Urteil ab?
+
 ## 2026-10-07 12:45 UTC · 🧰 Verbesserungsrunde: Sammelkorb «Werkzeug» — Kalimba, Regenschirm, Kerzenhalter unter Hardware > Tools
 GEMESSEN: Neuimporte 4 h 490 aktiv, 110 unter Hardware > Tools; Bestand 1'188 aktive «Werkzeug & Heimwerken», nur 566 mit Werkzeugwort.
 Die CJ-Gruppe stempelt alles als Werkzeug (Klasse «Aufbewahrung» vom 20.08.). Allgemeine TITELREGELN zu grob (Crimpzange → Schuhe),

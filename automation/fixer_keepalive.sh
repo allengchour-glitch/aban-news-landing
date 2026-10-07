@@ -1040,7 +1040,10 @@ while true; do
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GKU"; then
       touch "$GKU"
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_kategorie_umzug.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
-          SCHARF=1 timeout 2400 python3 automation/google_kategorie_umzug.py 2>&1 | grep -v '^     '" >> "$GKU" 2>&1 9>&- & )
+          SCHARF=1 timeout 2400 python3 automation/google_kategorie_umzug.py 2>&1 | grep -v '^     '; \
+          SCHARF=1 ZEIGEN=0 timeout 900 python3 automation/werkzeug_korb_shop.py 2>&1 | grep -v '^   '" >> "$GKU" 2>&1 9>&- & )
+    # 07.10.2026: werkzeug_korb_shop.py zieht danach die SHOP-Seite nach (Typ, Shopify-Kategorie, Tags werkzeug/heimwerken)
+    # für alles, was der Umzug aus «Hardware > Tools» geholt hat — Kalimba nicht mehr im Werkzeug-Regal.
     elif [ -s "$GKU" ]; then
       grep '^FERTIG' "$GKU" | tail -1 | sed "s/^/$(date -u +%H:%M) Google-Umzug: /"
     fi
