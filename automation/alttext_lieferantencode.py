@@ -215,18 +215,18 @@ mutation($q: String!) {
   }
 }
 """
-BULK_STAND = "{ currentBulkOperation(type: QUERY) { status url errorCode } }"
+BULK_STAND = "query($i:ID!){node(id:$i){... on BulkOperation{id status objectCount url errorCode}}}"   # 07.10.2026: eigene Bulk-ID (Gehirn-Regel fremder-bulk), nie currentBulkOperation
 BULK_ABFRAGE = ('{ products(query: "status:active") { edges { node { id title '
                 'media(first: 60) { edges { node { ... on MediaImage { id alt } } } } } } } }')
 
 
 def katalog_scannen():
     """Sucht im GANZEN Katalog nach verwaisten Codes und liefert die Produkt-IDs."""
-    gql(BULK_START, {"q": BULK_ABFRAGE})
+    bid = gql(BULK_START, {"q": BULK_ABFRAGE})["data"]["bulkOperationRunQuery"]["bulkOperation"]["id"]
     url = None
     for _ in range(60):
         time.sleep(10)
-        st = gql(BULK_STAND)["data"]["currentBulkOperation"]
+        st = gql(BULK_STAND, {"i": bid})["data"]["node"]
         if st["status"] == "COMPLETED":
             url = st["url"]; break
         if st["status"] in ("FAILED", "CANCELED"):

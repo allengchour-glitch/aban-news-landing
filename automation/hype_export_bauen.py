@@ -81,22 +81,19 @@ def main():
             # tags/mediaCount) — jung genug, also «kein neuer Export nötig»; Hype, Herbst und Querbeet fanden danach
             # still 0 Kandidaten. Das Alter sagt nichts über den Vertrag: das Format wird geprüft.
             print(f"   {ZIEL} ist jung, aber im falschen Format (kein status/mediaCount) → neu bauen")
-    cur = gql('{currentBulkOperation{id status}}')
-    c = (cur.get("data") or {}).get("currentBulkOperation") or {}
-    if c.get("status") in ("RUNNING", "CREATED"):
-        print(f"   laufende Bulk-Operation ({c['status']}) → abbrechen")
-        gql('mutation($id:ID!){bulkOperationCancel(id:$id){userErrors{message}}}', {"id": c["id"]})
-        time.sleep(8)
+    # 07.10.2026: brach früher den LAUFENDEN Export eines anderen Werkzeugs ab (Abbruch der fremden Operation)
+    # und las danach currentBulkOperation — jetzt nur die eigene Bulk-ID (Gehirn-Regel fremder-bulk).
     r = gql('mutation($q:String!){bulkOperationRunQuery(query:$q)'
             '{bulkOperation{id} userErrors{field message}}}', {"q": BULK})
     ue = ((r.get("data") or {}).get("bulkOperationRunQuery") or {}).get("userErrors") or []
     if ue:
         print("PAUSE: Export nicht gestartet —", str(ue)[:160])
         return
+    bid = r["data"]["bulkOperationRunQuery"]["bulkOperation"]["id"]
     for i in range(160):
         time.sleep(15)
-        d = gql('{currentBulkOperation{status objectCount url errorCode}}')
-        o = (d.get("data") or {}).get("currentBulkOperation") or {}
+        d = gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})
+        o = (d.get("data") or {}).get("node") or {}
         if o.get("status") == "COMPLETED":
             if not o.get("url"):
                 print("PAUSE: fertig, aber ohne URL")

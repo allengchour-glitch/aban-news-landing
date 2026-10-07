@@ -168,12 +168,13 @@ def katalog_laden(neu=False):
             'userErrors { message } } }' % BULK)
     if not m or m.get("data", {}).get("bulkOperationRunQuery", {}).get("userErrors"):
         raise SystemExit(f"Bulk-Start fehlgeschlagen: {m}")
+    bid = m["data"]["bulkOperationRunQuery"]["bulkOperation"]["id"]   # 07.10.2026: eigene ID statt currentBulkOperation
     while True:
         time.sleep(15)
-        s = gql("{ currentBulkOperation { status objectCount url errorCode } }")
+        s = gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})
         if not s:
             continue
-        b = s["data"]["currentBulkOperation"]
+        b = s["data"]["node"]
         print("   bulk:", b["status"], b["objectCount"], flush=True)
         if b["status"] == "COMPLETED":
             subprocess.run(["curl", "-sS", "-o", CACHE, b["url"]], check=True)

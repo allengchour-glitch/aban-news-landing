@@ -46,10 +46,15 @@ def boden(ek, rabatt):
     return round(b if b >= roh - 1e-9 else b + 1.0, 2)
 
 
-def warte_bulk(art="QUERY"):
+def warte_bulk(art="QUERY", bid=None):
+    """Ohne bid: warten, bis keine Operation dieser Art läuft. Mit bid (07.10.2026, Gehirn-Regel fremder-bulk): NUR die eigene
+    Operation abfragen — currentBulkOperation kann der Export/die Mutation eines anderen Werkzeugs sein (Preise!)."""
     for _ in range(int(os.environ.get("WARTE_MIN", "180")) * 4):
-        c = gql('query($t:BulkOperationType!){currentBulkOperation(type:$t){id status objectCount url errorCode}}',
-                {"t": art})["currentBulkOperation"]
+        if bid:
+            c = gql('query($i:ID!){node(id:$i){... on BulkOperation{id status objectCount url errorCode}}}', {"i": bid})["node"]
+        else:
+            c = gql('query($t:BulkOperationType!){currentBulkOperation(type:$t){id status errorCode}}',
+                    {"t": art})["currentBulkOperation"]
         if not c or c["status"] not in ("CREATED", "RUNNING", "CANCELING"):
             return c
         time.sleep(15)
@@ -65,7 +70,7 @@ def export():
     if r["bulkOperationRunQuery"]["userErrors"]:
         raise RuntimeError(f"Export nicht gestartet: {r['bulkOperationRunQuery']['userErrors']}")
     time.sleep(10)
-    c = warte_bulk("QUERY")
+    c = warte_bulk("QUERY", r["bulkOperationRunQuery"]["bulkOperation"]["id"])
     if c["status"] != "COMPLETED" or not c.get("url"):
         raise RuntimeError(f"Export {c['status']} {c.get('errorCode')}")
     subprocess.run(["curl", "-sL", "--max-time", "600", "-o", EXPORT, c["url"]], check=True)
@@ -132,7 +137,7 @@ def bulk_schreiben(plan):
     if m["bulkOperationRunMutation"]["userErrors"]:
         raise RuntimeError(f"Bulk-Mutation nicht gestartet: {m['bulkOperationRunMutation']['userErrors']}")
     time.sleep(15)
-    c = warte_bulk("MUTATION")
+    c = warte_bulk("MUTATION", m["bulkOperationRunMutation"]["bulkOperation"]["id"])
     print(f"  Bulk-Mutation {c['status']} · {c.get('objectCount')} Objekte", flush=True)
     fehler, ok = collections.Counter(), 0
     if c.get("url"):

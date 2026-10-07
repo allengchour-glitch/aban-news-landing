@@ -342,7 +342,9 @@ def r_fremder_bulk(dateien):
             continue
         if "bulkOperationRunQuery" not in t:
             continue
-        for m in re.finditer(r"currentBulkOperation\s*\{", t):
+        # 07.10.2026 nachgeschärft: auch `currentBulkOperation(type: QUERY){…}`; gemeldet wird nur, wer die URL liest
+        # (ein Status-Blick vor dem Start ist harmlos). bulkOperationCancel auf fremde Operationen fällt ebenfalls hierunter.
+        for m in re.finditer(r"currentBulkOperation\s*(?:\([^)]*\))?\s*\{[^}]*\burl\b|bulkOperationCancel", t):
             treffer.append((p, t.count("\n", 0, m.start()) + 1, "Bulk-Status über currentBulkOperation — eigene ID per node(id:) abfragen"))
     return treffer
 

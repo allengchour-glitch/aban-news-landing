@@ -36,9 +36,10 @@ def export():
     m = gql('mutation { bulkOperationRunQuery(query: """%s""") { bulkOperation { id } userErrors { message } } }' % BULK)
     if m["bulkOperationRunQuery"]["userErrors"]:
         raise SystemExit(f"Bulk-Start fehlgeschlagen: {m}")
+    bid = m["bulkOperationRunQuery"]["bulkOperation"]["id"]   # 07.10.2026: eigene ID (Gehirn-Regel fremder-bulk)
     while True:
         time.sleep(15)
-        b = gql("{ currentBulkOperation(type: QUERY) { status objectCount url } }")["currentBulkOperation"]
+        b = gql('query($i:ID!){node(id:$i){... on BulkOperation{id status objectCount url errorCode}}}', {"i": bid})["node"]
         print("   bulk:", b["status"], b["objectCount"], flush=True)
         if b["status"] == "COMPLETED":
             subprocess.run(["curl", "-sS", "-o", CACHE, b["url"]], check=True)

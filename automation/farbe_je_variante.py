@@ -156,12 +156,14 @@ def bulk_export():
     vorhanden = os.environ.get("BULK")
     if vorhanden and os.path.exists(vorhanden):
         return vorhanden
-    gql("""mutation($q:String!){bulkOperationRunQuery(query:$q){
-             bulkOperation{id} userErrors{message}}}""", {"q": BULK_QUERY})
+    # 07.10.2026 (Gehirn-Regel fremder-bulk): eigene Bulk-ID abfragen, nie currentBulkOperation (= zuletzt gestarteter
+    # Export der App, ggf. der eines anderen Wächters).
+    bid = gql("""mutation($q:String!){bulkOperationRunQuery(query:$q){
+             bulkOperation{id} userErrors{message}}}""", {"q": BULK_QUERY})["data"]["bulkOperationRunQuery"]["bulkOperation"]["id"]
     while True:
         time.sleep(15)
-        op = gql("{ currentBulkOperation { status url errorCode objectCount } }")
-        op = op["data"]["currentBulkOperation"]
+        op = gql("query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}", {"i": bid})
+        op = op["data"]["node"]
         if op["status"] == "COMPLETED":
             break
         if op["status"] in ("FAILED", "CANCELED"):

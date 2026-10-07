@@ -43,15 +43,14 @@ def treffer(t):
 
 
 def export():
-    s = hw.gql("{ currentBulkOperation { status } }")
-    if ((s.get("data") or {}).get("currentBulkOperation") or {}).get("status") in ("CREATED", "RUNNING"):
-        raise SystemExit("ABBRUCH: eine andere Bulk-Operation läuft — später erneut")
+    # 07.10.2026: kein Vorab-Blick auf currentBulkOperation mehr — Status nur über die eigene Bulk-ID (Regel fremder-bulk).
     m = hw.gql('mutation { bulkOperationRunQuery(query: """%s""") { bulkOperation { id } userErrors { message } } }' % BULK)
     if m.get("data", {}).get("bulkOperationRunQuery", {}).get("userErrors"):
         raise SystemExit(f"Bulk-Start fehlgeschlagen: {m}")
+    bid = m["data"]["bulkOperationRunQuery"]["bulkOperation"]["id"]
     while True:
         time.sleep(15)
-        b = hw.gql("{ currentBulkOperation { status objectCount url } }")["data"]["currentBulkOperation"]
+        b = hw.gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})["data"]["node"]
         print("   bulk:", b["status"], b["objectCount"], flush=True)
         if b["status"] == "COMPLETED":
             subprocess.run(["curl", "-sS", "-o", CACHE, b["url"]], check=True)
