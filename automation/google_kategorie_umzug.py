@@ -44,11 +44,11 @@ LG = "Luggage & Bags"
 UMZUG = {
     HB: [
         (r"^(?!.*(?:kofferraum|einkaufstrolley|einkaufswagen|organizer|anh[äa]nger|schutzh[üu]lle|kofferband)).*(?:\w*koffer\b|trolley)", LG + " > Suitcases"),
-        (r"^(?!.*(?:hund|katze|haustier|baby|kinderwagen|trage\b|tragerucksack)).*(?:\w*rucksack\w*|backpack|daypack)", LG + " > Backpacks"),
+        (r"^(?!.*(?:hund|katze|haustier|baby|kinderwagen|trage\b|tragerucksack|\w*shirt\b|pullover|\w*jacke\b|\w*hose\b|\w*kleid\b|regenschutz|regenh[üu]lle|schnalle)).*(?:\w*rucksack\w*|backpack|daypack)", LG + " > Backpacks"),
         (r"\w*reisetasche|weekender|\w*sporttasche|duffel|seesack|gym-?bag|fitnesstasche", LG + " > Duffel Bags"),
         (r"aktentasche|laptoptasche|laptop-?tasche|notebooktasche|businesstasche\b.*laptop|tasche f[üu]r \d+[,.]?\d* ?zoll", LG + " > Briefcases"),
         (r"messenger", LG + " > Messenger Bags"),
-        (r"bauchtasche|g[üu]rteltasche|h[üu]fttasche|fanny", LG + " > Fanny Packs"),
+        (r"^(?!\W*\w*\W*umh[äa]ngetasche).*(?:bauchtasche|g[üu]rteltasche|h[üu]fttasche|fanny)", LG + " > Fanny Packs"),
         (r"kulturbeutel|kulturtasche|kosmetiktasche|schminktasche|make-?up-?tasche|toiletry", LG + " > Cosmetic & Toiletry Bags"),
         (r"^(?!.*(?:tasche mit|umh[äa]nge|handtasche)).*(?:geldb[öo]rse|portemonnaie|portmonee|brieftasche|\bwallet\b|kartenetui|kartenhalter|geldklammer)",
          "Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips"),
@@ -146,6 +146,9 @@ KANARIEN = [
     ("Umhängetasche mit Geldbörse für Damen", HB, None),
     ("Cord Canvas Schulter- und Umhängetasche", HB, None),
     ("Retro Crossbody Bag aus echtem Leder für Herren", HB, None),
+    ("Langarmshirt mit Rucksack-Schnalle", HB, None),
+    ("Plaid Umhängetasche, Crossbody und Bauchtasche", HB, None),
+    ("Plüsch-Rucksack mit Hasenohren für Kinder", HB, LG + " > Backpacks"),
     ("Silikon-Backform 8-teilige Weihnachtsbaum-Form", TO, KD + " > Cookware & Bakeware > Bakeware"),
     ("Silikonform: Tulpenblüten-Kerze", TO, MU + " > Arts & Crafts > Crafting Patterns & Molds > Craft Molds"),   # 07.10.: Bastelform statt Backform
     ("DIY Silikonform: Meeresmotive für Epoxidharz", TO, MU + " > Arts & Crafts > Crafting Patterns & Molds > Craft Molds"),   # 07.10.: Bastelform statt Backform
