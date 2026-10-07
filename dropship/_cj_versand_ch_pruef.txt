@@ -5079,3 +5079,7 @@ mehrfach-geldborse-aus-leder-614000	2601301053561614400	16	5.27	ok	landeseite
 manner-kartentasche-603600	2601300530031604000	16	6.17	ok	landeseite
 mannliche-leder-geldborse-mit-kartenslots-633300	2601280906401633700	16	6.33	ok	landeseite
 manner-geldborse-aus-echtleder-631500	2601221110501631900	16	6.17	ok	landeseite
+stylische-leder-tasche-fur-herren-619100	2601210324501619500	16	9.20	ok	landeseite
+retro-geldborse-aus-oko-leder-611300	2601150649041611500	16	6.01	ok	landeseite
+smart-clutch-fur-herren-614500	2601150314501614800	7	12.44	ok	landeseite
+einfaches-portemonnaie-mit-rfid-schutz-612300	2601140616421612600	16	6.33	ok	landeseite
