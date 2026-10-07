@@ -99,7 +99,6 @@ gid://shopify/Product/15497361097089
 gid://shopify/Product/15497361228161
 gid://shopify/Product/15497421783425
 gid://shopify/Product/15497423585665
-gid://shopify/Product/15497434202497
 gid://shopify/Product/15497434759553
 gid://shopify/Product/15497437348225
 gid://shopify/Product/15497437675905

@@ -6225,3 +6225,5 @@ gid://shopify/Product/15455373033857	zugeordnet	66	Einheitsfarbenes T-Shirt für
 gid://shopify/Product/15455373230465	zugeordnet	11	Amerikanisches T-Shirt Bordeauxrot abgeflachte Schultern
 gid://shopify/Product/15455373296001	zugeordnet	31	Gestreiftes Poloshirt für Herren
 gid://shopify/Product/15455373427073	zugeordnet	30	Herren Halbzipfelpolo mit Kragen und Kurzarm
+gid://shopify/Product/15455373590913	zugeordnet	54	Herren V-Ausschnitt Raglan Waffelstrick T-Shirt
+gid://shopify/Product/15455374049665	zugeordnet	6	Mid-Century Kissenbezug
