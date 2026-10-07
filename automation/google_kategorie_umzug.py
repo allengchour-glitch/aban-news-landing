@@ -36,7 +36,23 @@ CH = "Sporting Goods > Outdoor Recreation > Camping & Hiking"
 LB = "Home & Garden > Linens & Bedding"
 KLEID = r"leggings|\bshorts\b|\w*hose\b|sport-?bh|\bbra\b|\w*shirt\b|\w*jacke\b|\w*top\b|jumpsuit|overall|trainingsanzug|\w*weste\b"
 
+# 07.10.2026 (Betreiber «verbessere katalog und fein katalog»): GEMESSEN Export 15:09 — 2'028 aktive mit Shopify «Luggage &
+# Bags», Google aber «Handbags»: 575 Rucksäcke, 176 Reise-/Sporttaschen, 75 Laptop-/Aktentaschen, 65 Gürteltaschen, 15 Koffer
+# (Google falsch) · 504 Umhänge-/Schultertaschen, 115 Geldbörsen (Shopify falsch → kategorie_fein.KREUZ). Nur eindeutige Wörter.
+HB = "Apparel & Accessories > Handbags, Wallets & Cases > Handbags"
+LG = "Luggage & Bags"
 UMZUG = {
+    HB: [
+        (r"^(?!.*(?:kofferraum|einkaufstrolley|einkaufswagen|organizer|anh[äa]nger|schutzh[üu]lle|kofferband)).*(?:\w*koffer\b|trolley)", LG + " > Suitcases"),
+        (r"^(?!.*(?:hund|katze|haustier|baby|kinderwagen|trage\b|tragerucksack|\w*shirt\b|pullover|\w*jacke\b|\w*hose\b|\w*kleid\b|regenschutz|regenh[üu]lle|schnalle)).*(?:\w*rucksack\w*|backpack|daypack)", LG + " > Backpacks"),
+        (r"\w*reisetasche|weekender|\w*sporttasche|duffel|seesack|gym-?bag|fitnesstasche", LG + " > Duffel Bags"),
+        (r"aktentasche|laptoptasche|laptop-?tasche|notebooktasche|businesstasche\b.*laptop|tasche f[üu]r \d+[,.]?\d* ?zoll", LG + " > Briefcases"),
+        (r"messenger", LG + " > Messenger Bags"),
+        (r"^(?!\W*\w*\W*umh[äa]ngetasche).*(?:bauchtasche|g[üu]rteltasche|h[üu]fttasche|fanny)", LG + " > Fanny Packs"),
+        (r"kulturbeutel|kulturtasche|kosmetiktasche|schminktasche|make-?up-?tasche|toiletry", LG + " > Cosmetic & Toiletry Bags"),
+        (r"^(?!.*(?:tasche mit|umh[äa]nge|handtasche)).*(?:geldb[öo]rse|portemonnaie|portmonee|brieftasche|\bwallet\b|kartenetui|kartenhalter|geldklammer)",
+         "Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips"),
+    ],
     EF: [
         (r"^(?!.*(?:motorrad|polster|brille\b|-brille|visier\b)).*(?:(?:fahrrad|velo|bike|mtb|rad)\w*[- ]?helm|velohelm|fahrradhelm)", CY + " > Cycling Apparel & Accessories > Bicycle Helmets"),
         (r"^(?!.*(?:visier|polster)).*reithelm", "Sporting Goods > Outdoor Recreation > Equestrian > Riding Apparel & Accessories > Equestrian Helmets"),
@@ -114,6 +130,25 @@ def ziel(titel, alt):
 
 
 KANARIEN = [
+    ("Wasserdichter Business Rucksack", HB, LG + " > Backpacks"),
+    ("LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung", HB, LG + " > Backpacks"),
+    ("Hunde-Tragerucksack für kleine Hunde", HB, None),
+    ("Weekender-Reisetasche «Voyage» · faltbar", HB, LG + " > Duffel Bags"),
+    ("Leder Aktentasche im Retro-Stil für Herren", HB, LG + " > Briefcases"),
+    ("Leder Businesstasche für 16 Zoll Laptops", HB, LG + " > Briefcases"),
+    ("Japanische Retro Messenger Bag für Herren", HB, LG + " > Messenger Bags"),
+    ("Retro-Gürteltasche aus Canvas für Herren", HB, LG + " > Fanny Packs"),
+    ("42-Zoll-Trolley-Koffer, erweiterbar", HB, LG + " > Suitcases"),
+    ("Kofferraum-Organizer, 3 Fächer, Schwarz", HB, None),
+    ("Leichter Einkaufstrolley, 40L, faltbar", HB, None),
+    ("Leder Kulturbeutel mit viel Stauraum", HB, LG + " > Cosmetic & Toiletry Bags"),
+    ("Herren-Geldbörse aus Rindsleder", HB, "Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips"),
+    ("Umhängetasche mit Geldbörse für Damen", HB, None),
+    ("Cord Canvas Schulter- und Umhängetasche", HB, None),
+    ("Retro Crossbody Bag aus echtem Leder für Herren", HB, None),
+    ("Langarmshirt mit Rucksack-Schnalle", HB, None),
+    ("Plaid Umhängetasche, Crossbody und Bauchtasche", HB, None),
+    ("Plüsch-Rucksack mit Hasenohren für Kinder", HB, LG + " > Backpacks"),
     ("Silikon-Backform 8-teilige Weihnachtsbaum-Form", TO, KD + " > Cookware & Bakeware > Bakeware"),
     ("Silikonform: Tulpenblüten-Kerze", TO, MU + " > Arts & Crafts > Crafting Patterns & Molds > Craft Molds"),   # 07.10.: Bastelform statt Backform
     ("DIY Silikonform: Meeresmotive für Epoxidharz", TO, MU + " > Arts & Crafts > Crafting Patterns & Molds > Craft Molds"),   # 07.10.: Bastelform statt Backform
