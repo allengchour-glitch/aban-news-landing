@@ -44,6 +44,16 @@
 
 
 
+## 2026-10-07 12:45 UTC · 🧰 Verbesserungsrunde: Sammelkorb «Werkzeug» — Kalimba, Regenschirm, Kerzenhalter unter Hardware > Tools
+GEMESSEN: Neuimporte 4 h 490 aktiv, 110 unter Hardware > Tools; Bestand 1'188 aktive «Werkzeug & Heimwerken», nur 566 mit Werkzeugwort.
+Die CJ-Gruppe stempelt alles als Werkzeug (Klasse «Aufbewahrung» vom 20.08.). Allgemeine TITELREGELN zu grob (Crimpzange → Schuhe),
+Feld leeren hilft nicht (Feed fällt auf die Shopify-Kategorie zurück, auch Tools). FIX in `google_kategorie_umzug.py` (Aufseher täglich):
+Werkzeug-Verfeinerung → `WERKZEUGWORT`-Schutz → 15 eindeutige Kreuzregeln `TO_KREUZ` (taxonomie-geprüft), Kanarien 65/65 (3 eigene
+Trockenlauf-Fehltreffer: Schirm-Haken, Kältemittel-Öffner, Bohrstaubsauger). SCHARF 70 gesetzt / 0 Fehler, Rücklesen 4/4.
+LEHRE: Eine Sammelgruppe des Lieferanten ist kein Warenurteil — erst das Werkzeugwort schützen, dann nur eindeutige Wörter umziehen,
+Unklares stehen lassen. OFFEN: Shopify-Kategorie/Typ/Tags derselben Produkte (kategorie_wache-Sammeltyp) + Importer-Quelle.
+→ `dropship/GOOGLE-WERKZEUG-SAMMELKORB-2026-10-07.md`
+
 ## 2026-10-07 10:30 UTC · 🖼️ «das bild ist verzogen?» — IG-Karussell zeigte eine gestauchte englische Lieferanten-Infografik
 Betreiber-Screenshot: Karussell «Bodenstativ mit LED-Ringlicht für Livestreams» (CHF 64.90), Slide 6/8, Menschen schmal und lang,
 englischer Text («Storage of three major functions»). GEMESSEN: alle 8 Shopify-Bilder sind 800×800; `grund()` skaliert beide Achsen
@@ -18635,3 +18645,4 @@ Verschoben am 04.10.2026:
 - 2026-10-02 · 🐾 **Tierschutz/Biozid: SEO-Lauf zeigte «Anti-Bell Halsband» mit Kontaktstiften im Bild (Text sagte nur «Vibration»); TSchV 76 Abs. 6 verbietet JEDEN Bellstopper (Zweck genügt), Floh-Halsbänder = Biozid mit Zulassungspflicht → Bildprüfung 35 Kandidaten (13 Strom, 4 davon ohne Wirkwort), 35 DRAFT, 4 Regeln + `nicht` je Regel in `tierschutz_geraet.json` (Node = Python 10/10); Nebenfunde Abhör-Tracker (StGB 179sexies) + JBL-Nachahmung gedraftet.** Rechts-Klassen brauchen eine ZWECK-Regel neben der Wirk-Regel → `dropship/TIERSCHUTZ-BIOZID-2026-10-02.md`
 - 2026-10-02 · 📦 **«ab wann bei iris cj melden»: #1020 als ⛔ «63h ohne Scan» gemeldet, CJ zeigt «Label created, Warehouse processing» seit 30.09. 04:48 — gemessen Übergabe 1–5 T → `versand_stillstand.py`: Info ab 48 h mit «Iris erst ab …», ⛔ «JETZT Iris melden» ab 120 h.** Alarm-Schwelle an der gemessenen Normalzeit → Journal 02.10.
 - 2026-10-05 · 📈 **Semrush Runde 3 + Keyword-Ernte: 8 neue Kollektionen (32'100/Mt), 40 Seiten Platz 41–100, Jailbreak-Dongle als «USB-Stick» (Platz 40 ausserhalb des Kontaktbogens) → `heikel_zweck` Kopierschutz-Regel; 6'351 Google-CH-Vorschläge gratis; `api_units` = Kontostand → Semrush LEER, Archiv `dropship/semrush/ARCHIV.md`; UI-Export per Bot abgelehnt (ToS).** Kontaktbogen deckt nur 24 → Rest per Beschreibungsregel → `dropship/semrush/README.md`
+- 2026-10-05 · 🔪 **Klingen-Loch: Faltmesser (Ausnahme «anhänger»), Rasiermesser (Gerät «rasier»), Veredelungsmesser (Messgerät «…ungsmesser») ACTIVE trotz #1017 → `handklinge_immer` vor allen Ausnahmen (py+mjs, 65/65), 3 gedraftet; Keyword-Runde: 33 Kollektionen + 60 Produkte mit CH-Nachfrage-Begriff.** Ausnahmelisten fressen echte Messer → Journal 05.10. 11:20
