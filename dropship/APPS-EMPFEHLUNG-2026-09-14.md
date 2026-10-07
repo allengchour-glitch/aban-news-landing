@@ -43,3 +43,16 @@ QUELLE (Listen wie delightchat/yotpo/cartylabs sind Werbung): «Trust Badges Bea
 ## 5. Lehre
 33 Apps, 4 wirken, 1 schadet, 1 fehlt eingeschaltet. **Vor jeder App-Suche den Bestand messen** — die meiste
 Wirkung liegt im Einschalten (Inbox) und Ausschalten (Hextom), nicht im Installieren.
+
+## Nachtrag 07.10.2026 18:30 UTC — Betreiber-Screenshot «Apps · Installiert» (Seite 1, 15 Apps)
+GEMESSEN (Admin-API; `appInstallations` = «access denied», also kein Abo-/Kostenblick von hier):
+- Produkte je App: Spocket 0 · DSers 0 · DropCommerce 0 · Printify 0 · WAZP+ 0 · Collective 1 (nicht aktiv) ·
+  **Gelato 1 aktiv** («Schweiz-Poster «Grüezi»», 3 gesamt) · CJ 48'550 aktiv.
+- Theme-Einbettungen AN: Judge.me, UpPromote, Clarity. AUS: SEOWILL Sticky Cart, Google-Store-Widget, Clarity-brandAgents.
+  Script-Tags: 0. Hextom (Währungsrechner) steht nicht mehr auf Seite 1 und lädt nichts mehr (0 Treffer im HTML).
+- Chatty: kein Chat-Knopf, nur 1 Pixel-Treffer im HTML.
+URTEIL unverändert zu §4, mit einer Ausnahme: **Gelato erst deinstallieren, wenn das Grüezi-Poster gedraftet oder
+umgestellt ist** — sonst verkauft der Shop ein Produkt ohne Drucker. Sicher weg: Spocket, DSers, DropCommerce, Printify,
+WAZP+, Collective, SEOWILL Sticky Cart, Shopwaive, SimGym (falls keine Simulation läuft), Chatty (Shopify Inbox ist der Chat).
+BEHALTEN: CJdropshipping, Swiss Post Labels, Forms, MetaShop erst nach Blick auf «letzte Aktivität» (offizieller Kanal
+«Facebook & Instagram» ist zusätzlich verbunden → MetaShop ist vermutlich doppelt).
