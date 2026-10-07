@@ -44,6 +44,14 @@
 
 
 
+## 2026-10-07 20:45 UTC · 🍪 «verbessere mehr»: der eigene Cookie-Banner verdeckte den Preis auf den TikTok-Landeseiten
+- GEMESSEN: Sirène/Provence/Aurora 563 TikTok-Sitzungen (14 T), 93–96 % Absprung nach 7–19 s, 8 Warenkörbe, 0 Käufe; Aurora
+  0 Warenkörbe auf 158. Bild 390×844: `#lx-cookie-banner` nach 0,8 s genau über Titel + Preis. Alle Varianten kaufbar.
+- GETAN: Produktseiten → Banner erst nach erstem Scrollen (Rückfall 20 s); mobil kompakt. Nachher-Bild: Preis frei.
+- LEHRE: **Bei hohem Absprung zuerst den ersten Handy-Bildschirm ansehen** — Tabellen zeigen, DASS Leute gehen, das Bild
+  zeigt, WARUM. Eine 5-s-Zeitregel half nicht (der Screenshot kam nach 5 s, Besucher bleiben 7–19 s).
+  → `dropship/COOKIE-BANNER-PREIS-2026-10-07.md`
+
 ## 2026-10-07 20:15 UTC · 🧠 «knowledge installiert»: App-Vorschläge waren falsch — 10 belegte Fakten + Wache
 - Die App «Knowledge Base» legt Metaobjekte `shopify--knowledge-base-fact` an (unveröffentlicht, nur `suggested_*`). Die
   Vorschläge enthielten «ohne Zwischenhändler», «50–70 % unter Boutiquen» und Gutscheine/Geschenkbeleg/Geschenkverpackung
@@ -18425,6 +18433,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-06 · 📏 **«fix alles» Filter: Farbe/Grösse live ok, Kategorie = Betreiber-Klick; 4 Kleider US/EU belegt beschriftet, Grösse im Farbwert («-16 W», «-US0») → `groesse_im_farbwert.py` (69 Varianten), «10 W» = Watt übersprungen; fast gegen `groessenwert_normieren.py` («US10») gearbeitet.** Vorhandenen Normierer zuerst lesen → `dropship/FILTER-GROESSEN-2026-10-06.md`
 - 2026-10-06 · 🔫 **Verbesserungsrunde: «Laser-Boresight für Gewehr» ACTIVE — Waffen-Regel band «Gewehr» an Bausatz-Kontext → `schusswaffen-laser` (DRAFT, Importer + Wache) + `schusswaffen-zubehoer` (Google raus), 10/10 Kanarien, Voll-Export 2/2.** Regel gegen Nachbildungen lässt das Original durch → `dropship/SCHUSSWAFFEN-ZUBEHOER-2026-10-06.md`
 - 2026-10-06 · 🔄 **Verbesserungsrunde: Bildtausch liess «uneinig» liegen (36 % frei), obwohl beide Prüfer Bild 1 ablehnten → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu, Sperre/Bilanz/Rücklesen kennen die Art.** Hauptfrage entschieden ≠ unklar → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`
 - 2026-10-05 · 🎬 **«bilder und videos sehr klein»: Reel-Produktvideo 23–32 % der Fläche → Hochformat Vollbild/quadratisch 970/quer 860; Stimme 50 %; `reel/bild_reel.py` (Original-Bilder + Stimme, Tor, `--weg`, `--freigeben`) → 10 Top-Produkte ready; `produktAktiv` prüft `bildreel-<handle>`.** Neuer Reel-Typ = eigener Zweig in der Vor-Post-Prüfung → Journal 05.10. 21:40

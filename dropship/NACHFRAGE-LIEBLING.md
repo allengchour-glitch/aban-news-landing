@@ -1,10 +1,10 @@
-# Nachfrage-Lieblinge (automatisch, 2026-10-06 21:39 UTC)
+# Nachfrage-Lieblinge (automatisch, 2026-10-07 19:54 UTC)
 
 > `automation/nachfrage_liebling.py`: Produktseiten mit ≥2 Warenkorb- oder ≥1 Kassen-Sitzung (90 T, nur Menschen) → Tag `nachfrage-liebling` → Vorrang in allen Social-Queues (nach `kunden-liebling`).
 
 | Handle | Sitzungen | Warenkorb | Kasse | Status |
 |---|---:|---:|---:|---|
-| rizinusol-wickel-set-mit-bio-ol-323457 | 66 | 3 | 2 | — DRAFT |
+| rizinusol-wickel-set-mit-bio-ol-323457 | 65 | 3 | 2 | — DRAFT |
 | 2-teiliges-leinen-set-provence-hemd-wide-leg-hose | 48 | 3 | 3 | ✅ Tag |
 | kristall-set-3-teilig | 9 | 2 | 2 | — keine Bezugsquelle |
 | abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe | 70 | 1 | 1 | ✅ Tag |
