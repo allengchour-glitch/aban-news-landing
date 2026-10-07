@@ -39,3 +39,9 @@ Betreiber 07.10.: «mache verbesserung, fb zu wenig follower».
   Einstellungen → Benutzername.
 - **Freunde einladen**: Seite → «…» → «Freunde einladen». Das ist der schnellste Weg von 7 auf ~50 Follower.
 - Nachmessen am 14.10.: Follower (Ausgang 7), Klicks mit `utm_source=facebook` in Shopify.
+
+## NACHTRAG 18:25 UTC — klickbarer Link zurückgenommen
+Recherche + eigene Messung (`dropship/LERNEN-FB-UND-TRENDS-2026-10-07.md`): Die 27 FB-Reels mit https-Link (24.09.–05.10.)
+hatten 0–4 Aufrufe, die 3 ohne https (06.10.+) 206–232. Meta testet ein Limit von 2 Link-Posts pro Monat für Seiten.
+→ `fbText()` schreibt die Adresse jetzt als Text (luxestyle.ch/products/…), ohne Schema und UTM. Folge-Zeile bleibt.
+Punkt 1 unter GETAN («Link klickbar») gilt damit nicht mehr.

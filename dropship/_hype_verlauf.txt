@@ -203,3 +203,23 @@
 2026-09-23	Haustier-Spielzeug smart	gid://shopify/Product/15500350128513	Smart Hundespielzeug
 2026-09-23	Sternenhimmel-Projektor	gid://shopify/Product/15449432621441	Sternenprojektor für Kinderzimmer
 2026-09-23	Mini-Staubsauger	gid://shopify/Product/15496383660417	Kabelloser Mini-Staubsauger mit Gebläse
+2026-10-07	Beauty-Gerät	gid://shopify/Product/15454067917185	LED-Maske für Hautverjüngung
+2026-10-07	Schleckmatte Haustier	gid://shopify/Product/15510928261505	Leckmatte für Hunde & Katzen
+2026-10-07	Mini-Beamer	gid://shopify/Product/15481681019265	Tragbarer Mini-Projektor mit WiFi · 720p nativ
+2026-10-07	Hygiene-Gadget	gid://shopify/Product/16603739849095	UV-Ozon-Desinfektionsbox für Unterwäsche
+2026-10-07	Ordnung & Aesthetic	gid://shopify/Product/16607605752199	Klappbare Aufbewahrungsbox für Kinderspielzeug 21 L
+2026-10-07	Shapewear	gid://shopify/Product/15447900750209	Sportlicher Taillenformer mit Reissverschluss
+2026-10-07	Ladestation 3-in-1	gid://shopify/Product/16604922937735	Magnetischer Kartenhalter mit MagSafe
+2026-10-07	Haarglätter & Styler	gid://shopify/Product/15502559084929	Glättbürste mit Dampf-Sprühfunktion
+2026-10-07	Sunset-Lampe	gid://shopify/Product/15443495879041	Sonnenuntergang-Projektor «Sunset» · Stimmungslicht
+2026-10-07	Smoothie-Mixer	gid://shopify/Product/15493810291073	Soja-Milch & Smoothie Maker
+2026-10-07	Faszienrolle	gid://shopify/Product/15502558790017	Verstellbare Teleskop-Faszienrolle aus Schaumstoff
+2026-10-07	LED-Strip	gid://shopify/Product/16603588034951	LED-Streifen für Weinregal – kabellose Beleuchtung
+2026-10-07	Wärme & Kuschel	gid://shopify/Product/15454161994113	Büro-Heizdecke mit Bauchstütze
+2026-10-07	Karaoke-Mikrofon	gid://shopify/Product/16604940730759	Outdoor Bluetooth Karaoke Lautsprecher
+2026-10-07	Ringlicht	gid://shopify/Product/15450838761857	LED Ringlicht für Streaming & Fotografie
+2026-10-07	Futterautomat	gid://shopify/Product/15504178086273	Automatischer Futter- und Wasserspender für Haustiere
+2026-10-07	Hoodie-Decke	gid://shopify/Product/15448104698241	Britischer Oversize Hoodie mit Polo-Kragen
+2026-10-07	Haustier-Spielzeug smart	gid://shopify/Product/15523992174977	Futterball für Haustiere
+2026-10-07	Sternenhimmel-Projektor	gid://shopify/Product/15483889779073	Galaxy-Projektor · Schwarz
+2026-10-07	Hunde-Trinkflasche	gid://shopify/Product/15449426100609	3-in-1 Hunde Trinkflasche mit Futterbox & Müllbeutel
