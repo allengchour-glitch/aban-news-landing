@@ -5192,3 +5192,6 @@ elegantes-off-shoulder-kleid-602200	2607060521081602800	16	7.71	ok	landeseite
 elegantes-sommerkleid-mit-spaghetti-tragern-608800	2607060520231609500	16	10.15	ok	landeseite
 vintage-blumenkleid-614800	2607060312351615600	16	9.47	ok	landeseite
 elegantes-wickelkleid-mit-v-ausschnitt-611800	2607060307541612500	16	8.79	ok	landeseite
+lange-lassige-sundress-611900	2607060230131612600	16	10.15	ok	landeseite
+satin-maxi-kleid-mit-offenem-rucken-503810	2074057560476778498	16	9.88	ok	landeseite
+damen-top-mit-stehbund-und-3-4-armeln-638200	2607060735501638900	16	7.17	ok	landeseite
