@@ -1563,3 +1563,16 @@ gid://shopify/Product/16607165776263	a	toddler
 gid://shopify/Product/16607166824839	a	toddler
 gid://shopify/Product/16608447234439	a	toddler
 gid://shopify/Product/16608456311175	a	toddler
+gid://shopify/Product/16610065744263	w	Kleinteile	Geländewagen Bausteine Lernspielzeug
+gid://shopify/Product/16610066465159	w	Kleinteile	Baukasten Käfer Auto
+gid://shopify/Product/16610068660615	w	Kleinteile	LED-Beleuchtung für Baustein-Strassenansicht
+gid://shopify/Product/16610069217671	w	Kleinteile	Magische Soft-Gummibausteine
+gid://shopify/Product/16610070167943	w	Kleinteile	Sonnensystem-Modell zum Zusammenbauen
+gid://shopify/Product/16610071019911	w	Kleinteile	Kugelzelt-Bausatz für Kinder
+gid://shopify/Product/16610072658311	w	Kleinteile	Bausteine Kleiner Holzturm Bausatz
+gid://shopify/Product/16610073903495	w	Kleinteile	Militär-Puzzle Bausteine Gangster Polizei Minifiguren
+gid://shopify/Product/16610075083143	w	Kleinteile	Baustein-Container-LKW – Mechanisches Bauspielzeug
+gid://shopify/Product/16610076656007	w	Kleinteile	Weihnachtszug Bausteine-Set zum Zusammenbauen
+gid://shopify/Product/16608567525767	a	toddler
+gid://shopify/Product/16610104410503	a	toddler
+gid://shopify/Product/16610122400135	a	toddler

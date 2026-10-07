@@ -10,8 +10,8 @@
    Bestellautomaten (XML nach /home/ORDERS statt Ampel «im Portal bestellen»). Keine Antwort an Fortura nötig.
    ⚠️ 06.10. 17:10 geprüft: Muster liegen NICHT auf webtransfer.fortura.ch (/home/ORDERS und /home/DESADV leer) und NICHT in Drive;
    Gmail-Konnektor gibt keine Anhang-Bytes → nur der Drive-Klick (oder Papini legt sie in ORDERS) bringt sie hierher.
-2. **CJ-Ticket wartet auf deine Antwort** (CJ-Mail 05.10. 17:18 UTC «Awaiting your reply») — vermutlich #1021-Ersatzuhr
-   T202610040937181221. → cjdropshipping.com/newmycj/ticket öffnen und bestätigen, damit #1021 rausgeht (6 Tage «Processing»).
+2. ✅ ERLEDIGT 07.10. (Mail-Check 20:55 UTC): #1021 versendet 07.10. 01:35 UTC, Tracking EQKPT8612951662YQ — die CJ-Mail vom 05.10. 17:18 kam VOR deiner Bestätigung (18:20). ~~**CJ-Ticket wartet auf deine Antwort** (CJ-Mail 05.10. 17:18 UTC «Awaiting your reply») — vermutlich #1021-Ersatzuhr
+   T202610040937181221. → cjdropshipping.com/newmycj/ticket öffnen und bestätigen, damit #1021 rausgeht (6 Tage «Processing»).~~
 3. **Ricardo**: Feed-Anbindung abgelehnt (Warteliste, «auch in naher Zukunft nicht»); Ricardo empfiehlt manuell einstellen
    (App «Ricardo AI», Foto → Titel/Text). Entscheid bei dir: ein paar Fortura-Artikel von Hand testen oder Ricardo ruhen lassen.
 Erledigt ohne dich: Microsoft Advertising — **Sperre des Stores «LuxeStyle CH» aufgehoben** (Einspruch angenommen, 06.10. 12:54);
