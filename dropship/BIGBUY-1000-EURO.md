@@ -248,3 +248,15 @@ Nächster Auszahlungs-Dienstag: **22.09.** Der Weg bleibt das Ticket in der Abte
   unverändert» heisst: zuletzt 15.09. gemessen, nicht «bis heute»).
 - Die BigBuy-Bestätigung vom 16.08. liegt als Thread `1a00a46178541bba` im Gmail-**Papierkorb** — vor dem Ticket
   wiederherstellen (Betreiber-Klick, COWORK-BEFEHL Punkt G).
+
+---
+
+# NACHTRAG 07.10.2026, 09:50 UTC — Betreiber: «bigbuy 1000 euro auch zurückfordern»
+
+- **Mailweg geprüft:** Auf die Mail vom 15.09. 08:31 kam am 17.09. 12:50 UTC wieder nur der Textbaustein («submit a ticket
+  in the Contact Area … Administration»). Seither keine weitere BigBuy-Mail. `_bigbuy_ticket_ref.txt` existiert nicht →
+  **das Ticket wurde noch nie eröffnet.** Eine sechste Mail ist zwecklos.
+- **Guthaben heute nicht messbar:** kein BigBuy-API-Schlüssel mehr in dieser Umgebung (Abo seit 15.09. beendet).
+- **Was nur der Betreiber kann:** am Computer (nicht Handy) einloggen → https://www.bigbuy.eu/en/contact#tabpanel3 →
+  Administration → Ticket mit dem Text oben (englische Fassung im Chat vom 07.10.) → Referenz in
+  `dropship/_bigbuy_ticket_ref.txt`. Die Ampel meldet den Punkt, bis die Datei existiert.
