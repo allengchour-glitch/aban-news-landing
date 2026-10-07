@@ -4756,3 +4756,42 @@ baseball-cap-paris-schwarz-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
 edelstahl-armband-amore-herz-geburtsstein-gold	-	-	-	unklar keine CJ-SKU	landeseite
 edelstahl-armband-coeur-herz-gold	-	-	-	unklar keine CJ-SKU	landeseite
 edelstahl-armband-tresor-doppellagig-mit-charms-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-halskette-goutte-tropfen-anhanger-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armreif-couleur-verstellbar-gold	-	-	-	unklar keine CJ-SKU	landeseite
+titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU	landeseite
+schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
+ohrstecker-minou-katzchen-925-silber	-	-	-	unklar keine CJ-SKU	landeseite
+ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+statement-ohrstecker-etincelle-blute-kristall	-	-	-	unklar keine CJ-SKU	landeseite
+halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
+oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
+ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
+anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
+mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+purpurnes-mesh-rockchen-620000	2607051358411620600	16	8.53	ok	landeseite
+floral-fischtailrock-612800	2607051349331613400	16	6.33	ok	landeseite
+hip-heber-yoga-hosen-010434	2073790535325868033	16	8.53	ok	landeseite
+weite-jeans-in-hellblau-620300	2606150047491620900	16	10.42	ok	landeseite
+hoodie-jacke-636700	2607051030291637300	16	12.56	ok	landeseite
+retro-style-jeans-mit-streifen-633000	2606240118401633600	16	13.65	ok	landeseite
+bequeme-schlabberhosen-618700	2606180957341619400	16	10.83	ok	landeseite
+slim-fit-jeans-606600	2606171222131607300	16	11.00	ok	landeseite
+bequeme-jeans-612200	2606171013221612900	16	11.60	ok	landeseite
+schmale-arbeitshosen-634100	2606170337021634700	16	8.79	ok	landeseite
+bequeme-freizeithose-625500	2606161003371626500	16	12.21	ok	landeseite
+distress-jeans-slim-fit-610700	2606160906211611300	16	12.21	ok	landeseite
+stretch-blue-jeans-617800	2606160124121618500	16	11.84	ok	landeseite
+stretch-hose-589186	2061282590962991105	0	-	KEINE CH-Option → DRAFT	landeseite
+schmale-stretch-hosen-132033	2061299744185761794	0	-	KEINE CH-Option → DRAFT	landeseite
+geradehose-aus-stretchfreiem-stoff-364353	2061323156190633985	0	-	KEINE CH-Option → DRAFT	landeseite
+v-ausschnitt-bluse-611000	2607060207451611900	16	7.43	ok	landeseite
+waffel-maschen-top-621500	2607060152581622200	16	8.53	ok	landeseite
+waffel-pullover-600600	2607060140591601200	16	8.53	ok	landeseite
+einfarbige-waffelgewebe-button-up-hemd-mit-kra-610000	2607060120571610700	16	9.20	ok	landeseite
+damen-color-block-langarm-shirt-mit-slim-fit-2-633300	2607060116361633900	16	8.38	ok	landeseite
+franzosisches-taschenhemd-607400	2607060044241608200	16	6.70	ok	landeseite
+elegantes-midi-kleid-600300	2607060715561600900	16	10.15	ok	landeseite
+losgelegtes-maxi-kleid-601500	2607060710591602100	16	8.11	ok	landeseite
+schwarzes-spitzenkleid-616100	2607060656481616700	16	8.04	ok	landeseite
