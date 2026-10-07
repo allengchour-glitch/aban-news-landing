@@ -171,6 +171,17 @@ Antworte NUR mit JSON:
  "ko": [], "gruende": "max. 2 Sätze, konkret was stört", "verbesserung": "1 konkreter Vorschlag"}}"""
 
 
+class GeminiSperre(RuntimeError):
+    """07.10.2026: Gemini lehnt die ANFRAGE ab (promptFeedback.blockReason, z. B. «OTHER») — kein Netzfehler, sondern bei
+    denselben Bildern jedes Mal gleich. GEMESSEN: cjreel-1365530192042397696 (Kosmetikpinsel-Tasche) bekam 12:21–17:39 UTC
+    bei jedem Lauf «KeyError: 'candidates'» → Exit 2 «kein Urteil» → Kandidat blieb vorne in der Warteschlange → 0 Reels auf
+    IG/FB/TikTok in 5 h (18 Fehlversuche). Jetzt urteilt der Zweitprüfer; fällt auch er aus, gilt es als durchgefallen (Exit 4,
+    Poster markiert jury-skip und nimmt das nächste Reel) — ohne Urteil wird weiter nichts gepostet."""
+    def __init__(self, grund):
+        super().__init__(f"Gemini sperrt die Anfrage (blockReason {grund})")
+        self.grund = grund
+
+
 def fragen(jpgs, caption, typ, ist_video):
     """Frage Gemini; bei HTTP 402 fallback zu Groq über zweitmodell.chat_json."""
     import urllib.error
@@ -186,8 +197,13 @@ def fragen(jpgs, caption, typ, ist_video):
         try:
             r = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
             j = json.load(urllib.request.urlopen(r, timeout=120))
+            sperre = (j.get("promptFeedback") or {}).get("blockReason")
+            if sperre and not j.get("candidates"):
+                raise GeminiSperre(sperre)
             txt = j["candidates"][0]["content"]["parts"][0]["text"]
             return json.loads(re.search(r"\{.*\}", txt, re.S).group(0))
+        except GeminiSperre:
+            raise                                  # gleiche Anfrage = gleiche Sperre: nicht wiederholen
         except urllib.error.HTTPError as e:
             if e.code == 402:
                 # Gemini HTTP 402: Payment Required — Fallback zu Groq
@@ -284,8 +300,19 @@ def main():
     if not jpgs:
         print(json.dumps({"ok": None, "grund": "keine Standbilder"})); sys.exit(2)
     try:
-        v = urteilen(fragen(jpgs, a.caption, a.typ, ist_video))
-        if RUNDEN > 1 and grenzfall(v):
+        try:
+            v = urteilen(fragen(jpgs, a.caption, a.typ, ist_video))
+        except GeminiSperre as e:
+            try:
+                v = urteilen(fragen_gpt(jpgs, a.caption, a.typ, ist_video))
+                v["modell"] = __import__("zweitmodell").LETZTES_MODELL or MODELL_GPT
+                v["gemini_sperre"] = e.grund
+            except Exception as e2:
+                v = {"ok": False, "schnitt": None, "noten": {}, "ko": ["gemini_sperre"],
+                     "gruende": f"{e} — Zweitprüfer ausgefallen ({str(e2)[:100]})", "verbesserung": "", "gemini_sperre": e.grund,
+                     "grund": f"{e}; Zweitprüfer ausgefallen"}
+                print(json.dumps(v, ensure_ascii=False)); sys.exit(4)   # nicht cachen: morgen darf der Zweitprüfer noch einmal
+        if RUNDEN > 1 and grenzfall(v) and not v.get("gemini_sperre"):   # Gemini-Runden würden erneut gesperrt
             weitere = []
             for i in range(RUNDEN - 1):
                 u = None
