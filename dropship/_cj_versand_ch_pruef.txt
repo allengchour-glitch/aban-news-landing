@@ -5092,3 +5092,9 @@ retro-leder-geldborse-616300	2601120649441616600	16	6.77	ok	landeseite
 grosses-leder-geldborse-mit-kartenfachern-634800	2601100629311635000	16	6.77	ok	landeseite
 adjustable-silberringe-616300	2607060703231612400	16	4.47	ok	landeseite
 opalring-mit-iris-effekt-604400	2607060209261605000	16	4.40	ok	landeseite
+verstellbarer-ring-mit-doppelschicht-edelstein-359618	2073894876217245697	16	4.50	ok	landeseite
+edelstahlring-mit-26-buchstaben-624500	2606240639381625200	16	4.40	ok	landeseite
+paraiba-tourmalin-ring-mit-diamanten-264577	2069901931290746882	16	4.50	ok	landeseite
+katzenring-anpassbar-383937	2069904271662047234	16	4.60	ok	landeseite
+damenring-mit-gelbem-diamant-448130	2069903228618334209	16	4.50	ok	landeseite
+18k-gold-damenring-edelstahl-639500	2606230152041630200	16	4.52	ok	landeseite
