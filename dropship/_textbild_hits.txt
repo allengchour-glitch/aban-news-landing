@@ -17252,3 +17252,19 @@ gid://shopify/Product/16611583820167	88->0	Cherry Blossom Pink A-Linien Miniklei
 gid://shopify/Product/16611604070791	23->0	Stainless-Steel-Futter für Hund & Katze
 gid://shopify/Product/16611604234631	38->0	Ceramische Katzen- und Hundeschale 2 L
 gid://shopify/Product/16611604431239	8->3	Katzenwasserschüssel aus Keramik
+gid://shopify/Product/16611604660615	23->0	Keramik-Katzenmahlbecher mit hohen Beinen
+gid://shopify/Product/16611604857223	70->3	Keramik-Katzenmahlschüssel mit Neigungsschutz
+gid://shopify/Product/16611605119367	26->0	Kopfkrug für Haustiere – 300 ml
+gid://shopify/Product/16611607544199	24->2	Polka-dot-Topschickling
+gid://shopify/Product/16611608592775	23->0	Patchwork Kleid mit hohem Taillenb
+gid://shopify/Product/16611609117063	182->0	Pinkes Bodycon Mini Kleid mit Patchwork
+gid://shopify/Product/16611609346439	16->0	Sommerkleid mit V-Ausschnitt und Kapuze
+gid://shopify/Product/16611609739655	48->0	Ärmeloses V-Neck Kleid mit Rüschen, Midimitte
+gid://shopify/Product/16611612361095	11->3	Schwarzes Off-Shoulder Spliced Kleid
+gid://shopify/Product/16611612393863	64->0	Langes Wickelkleid mit Taillengürtel
+gid://shopify/Product/16611612492167	119->2	V-Neck Kleid mit Taillenschnitt, ärmellos
+gid://shopify/Product/16611612623239	131->1	Grosser Mummy-Rucksack für unterwegs
+gid://shopify/Product/16611612885383	11->0	Medium Reise-Rucksack aus PU-Leder, 20-35 L
+gid://shopify/Product/16611613147527	62->0	Laptop-Rucksack 16 Zoll, 36-55 L, wasserdicht
+gid://shopify/Product/16611613409671	24->2	Canvas-Rucksack mit doppeltem Schultergurt, 20-35 l
+gid://shopify/Product/16611627565447	9->0	Computerrucksack mit Hard Shell

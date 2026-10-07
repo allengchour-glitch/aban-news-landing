@@ -15,8 +15,18 @@ export function fbLink(shopUrl, inhalt) {
   return `${basis}${basis.includes('?') ? '&' : '?'}${FB_UTM}${inhalt ? `&utm_content=${inhalt}` : ''}`;
 }
 
+// 07.10.2026 18:20 (Betreiber «lerne im internet»): KEIN klickbarer https-Link mehr im FB-Text. QUELLE Social Media Examiner
+// 2026: Meta testet für Seiten ohne Meta Verified «2 Link-Posts pro Monat», Links im Beitragstext drosseln die Reichweite.
+// GEMESSEN an unserer Seite (Graph /videos): 27 FB-Reels mit https-Link (24.09.–05.10.) = 0–4 Aufrufe; 3 Reels seit 06.10.
+// nur mit «luxestyle.ch/products/…» als Text = 206–232. Darum: Adresse als Text (ohne Schema/UTM), «(Link in Bio)» weg.
+// fbLink() bleibt für Kanäle, in denen ein klickbarer Link erwünscht ist (KLICKBAR=1 schaltet den alten Weg zurück).
+export function fbAdresse(shopUrl) {
+  const u = /^https:\/\/(www\.)?luxestyle\.ch\//i.test(shopUrl || '') ? shopUrl : 'https://luxestyle.ch/';
+  return u.replace(/^https?:\/\/(www\.)?/i, '').split(/[?#]/)[0].replace(/\/$/, '');
+}
+
 export function fbText(caption, shopUrl, inhalt) {
-  const link = fbLink(shopUrl, inhalt);
+  const link = process.env.FB_KLICKBAR === '1' ? fbLink(shopUrl, inhalt) : fbAdresse(shopUrl);
   const BIO = /\s*[–—·|-]?\s*\(?\s*link\s+in\s+(?:der\s+)?bio\b(?:\s*\))?/gi;
   const DOM = /(?<![@#\w.\/-])(?:https?:\/\/)?(?:www\.)?luxestyle\.ch(?:\/[^\s)]*)?/i;
   const zeilen = String(caption || '').split('\n');
@@ -49,7 +59,8 @@ if (process.argv.includes('--test')) {
   const fb = mitFolgen(fbText(ig, 'https://luxestyle.ch/products/handwaermer', 'reel'));
   const t = [
     [!/link in bio/i.test(fb), '«(Link in Bio)» ist weg'],
-    [/https:\/\/luxestyle\.ch\/products\/handwaermer\?utm_source=facebook/.test(fb), 'klickbarer Produktlink mit UTM'],
+    [/🔗 luxestyle\.ch\/products\/handwaermer\s*$/m.test(fb), 'Produktadresse als Text'],
+    [!/https?:\/\//.test(fb), 'kein https-Link (Meta drosselt Links, gemessen 0–4 Aufrufe)'],
     [fb.indexOf(FOLGE_ZEILE) > -1 && fb.indexOf(FOLGE_ZEILE) < fb.indexOf('#luxestyle'), 'Folge-Zeile vor den Hashtags'],
     [mitFolgen(fb) === fb, 'Folge-Zeile nicht doppelt'],
     [ig.includes('(Link in Bio)'), 'Instagram-Text unverändert'],
