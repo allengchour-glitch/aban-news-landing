@@ -5063,3 +5063,9 @@ stretch-hosen-fur-herren-schmal-geschnitten-310273	2061288689799774210	0	-	KEINE
 leichte-sommer-denim-shorts-609500	2605310621581600100	16	9.47	ok	landeseite
 kompressions-tight-leggings-013185	2060255285879558145	0	-	KEINE CH-Option → DRAFT	landeseite
 gerade-herren-hosen-653377	2060539627781599233	0	-	KEINE CH-Option → DRAFT	landeseite
+gerade-geschnittene-herren-hose-146113	2060545555888132098	0	-	KEINE CH-Option → DRAFT	landeseite
+gerade-geschnittene-herren-hosen-664770	2060541974750539778	0	-	KEINE CH-Option → DRAFT	landeseite
+kartenhalter-aus-olfarben-leder-607400	2604231015561608000	16	6.77	ok	landeseite
+taktisches-portemonnaie-aus-carbonfaser-618900	2603200953311619400	16	6.01	ok	landeseite
+kartenhalter-id-tasche-632800	2603010530521633200	16	6.48	ok	landeseite
+grosses-clutch-set-aus-rindsleder-615400	2602250849311615800	16	11.00	ok	landeseite
