@@ -6238,3 +6238,5 @@ gid://shopify/Product/15455431557505	zugeordnet	12	Hundegurt mit Reflektoren
 gid://shopify/Product/15455431721345	zugeordnet	8	Damen-Shorts mit Spitzenbesatz
 gid://shopify/Product/15455431754113	zugeordnet	40	Taktisches Brustgeschirr für Hunde
 gid://shopify/Product/15455431950721	zugeordnet	12	Hunde Brust- und Rückengurt
+gid://shopify/Product/15455432049025	zugeordnet	25	Asymmetrischer Rock mit Schnürung
+gid://shopify/Product/15455515574657	zugeordnet	55	Leichte Velcro-Sneaker
