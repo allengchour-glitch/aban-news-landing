@@ -5040,3 +5040,5 @@ herren-capri-hosen-613400	2606090758481614400	16	11.24	ok	landeseite
 vintage-jeans-fur-herren-628700	2606070111071629400	16	12.21	ok	landeseite
 vintage-slim-hosen-mit-zip-629400	2606061328291620000	16	12.81	ok	landeseite
 herren-jeans-gerade-geschnitten-plus-size-632200	2606060210321633000	16	11.00	ok	landeseite
+elastische-herren-boxershorts-823233	2061327048591585282	0	-	KEINE CH-Option → DRAFT	landeseite
+elastische-herrenunterwasche-233665	2061329898948308993	0	-	KEINE CH-Option → DRAFT	landeseite
