@@ -4719,3 +4719,7 @@ chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
 flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
 vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
 baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite
+5-panel-cap-sprint-nylon-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-l-a-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-classic-rot-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
