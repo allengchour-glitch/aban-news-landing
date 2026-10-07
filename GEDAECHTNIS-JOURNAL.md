@@ -44,6 +44,15 @@
 
 
 
+## 2026-10-07 18:25 UTC · 🌐 «lerne im internet»: FB-Link im Text zurückgenommen + Schleckmatte in die Hype-Reihe
+- QUELLE Social Media Examiner: Meta testet «2 Link-Posts/Monat» für Seiten ohne Meta Verified. GEMESSEN an unserer Seite:
+  27 Reels mit https-Link 0–4 Aufrufe, 3 Reels mit Adresse als Text 206–232. Das ist durch den Wechsel zu Metricool
+  verwechselt, aber eindeutig genug, um den eben gebauten klickbaren Link zurückzunehmen.
+- LEHRE: **Bevor eine Plattform-Regel gebaut wird (wie «Link klickbar machen»), erst die eigene Historie nach dieser Variable
+  aufteilen.** Die Zahlen lagen seit Tagen im Graph. Ich hatte «FB-Links sind klickbar = gut» aus dem IG-Gegensatz abgeleitet.
+- Trends Oktober: nur 1 von 9 Nennungen tauglich (Schleckmatte). Claw-Clips scheitern am Preisboden, 4 haben 0 Bestand.
+  → `dropship/LERNEN-FB-UND-TRENDS-2026-10-07.md`
+
 ## 2026-10-07 17:55 UTC · 📘 «fb zu wenig follower»: FB-eigener Text + ein gesperrtes Reel blockierte 5 h alle Reels
 - GEMESSEN: 7 Follower, 60 Posts 0 Reaktionen. Reels 206–232 Aufrufe, aber 0 Follows. FB bekam seit 05.10. die IG-Caption
   mit «(Link in Bio)» und ohne Folge-Aufforderung (ein Metricool-Post, ein Text).
@@ -18370,6 +18379,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-05 · 🎼 **Musik + FR: nur 3 epische Stücke rotierten → Gemini-Konto hat `lyria-3.5` (≈1'200 Tokens/Stück, blind = bestes vidIQ-Stück) → 6 neue (trailer/hybrid/hero/fantasy/winter/elegant), Pool 3 → 9, Sperre 5; Französisch live (`webPresenceUpdate` [fr], 90 Felder nachübersetzt), 129 FR-Kollektionstexte veraltet.** Erst messen, welche Werkzeuge das Konto schon hat → Journal 05.10. 20:15
 - 2026-10-05 · 🪟 **Clarity (Betreiber, 6 Sitzungen, 0 Käufe): Popup + Cookie-Banner nach 2–7 s gleichzeitig — Ursache 40-%-Scroll-Auslöser (Handy = 2 s) + Exit-Intent → Tor 20/30 s, nie neben Banner, Wächter `popup_tor_wache.py`; Handy-Browser 19 s zu.** Prozent-Auslöser brauchen Mindestzeit → `dropship/CLARITY-BEFUNDE-2026-10-05.md`
 - 2026-10-05 · 🗂️ **Verbesserungsrunde: Google-Kategorie 5'319 «bleiben grob» — Ware im FALSCHEN Zweig (Velohelm unter Fitness, Nackenkissen unter Decor), Fein-Stufe darf nur innerhalb → `google_kategorie_umzug.py` (Quellzweige + eindeutiges Warenwort + 29 Kanarienvögel), 653 umgezogen, täglich.** Rest nach Präfix-Regel = falscher Zweig? → `dropship/GOOGLE-KATEGORIE-UMZUG-2026-10-05.md`
 - 2026-10-05 · 📈 **Semrush Umsetzung 2: Verkehr 0 bei 559 Begriffen; Datenbank frischt nur alle Wochen auf → Positions-Kampagne nötig (Betreiber legte DEUTSCHLAND an → neu CH/Mobil/197); Tracker fand 7× Kannibalisierung (02.10. falsches Produkt optimiert); 21 SEO, 12 Redirects, 8 neue Kollektionen, 192 interne Links.** Meta-Zahlen aus Varianten, rankende URL zuerst → `dropship/semrush/README.md`
