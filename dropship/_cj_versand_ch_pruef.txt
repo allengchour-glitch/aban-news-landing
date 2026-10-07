@@ -5049,3 +5049,5 @@ gerade-geschnittene-herren-hose-212162	2061320501408870402	0	-	KEINE CH-Option �
 d2-mikro-briefs-ohne-elastik-640385	2061328805515739138	0	-	KEINE CH-Option → DRAFT	landeseite
 stretch-hosen-fur-herren-schmal-geschnitten-268353	2061285385644253185	0	-	KEINE CH-Option → DRAFT	landeseite
 stretch-hosen-slim-straight-900609	2061298923631587329	0	-	KEINE CH-Option → DRAFT	landeseite
+stretch-hosen-slim-straight-242369	2061277469029670914	0	-	KEINE CH-Option → DRAFT	landeseite
+gerade-geschnittene-herren-hosen-913858	2061325728058155010	0	-	KEINE CH-Option → DRAFT	landeseite
