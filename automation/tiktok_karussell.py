@@ -620,45 +620,12 @@ def _ahash(pfad):
 # Gemessen an den 8 Bildern des Produkts: die 5 Infografiken tragen 9–33 englische Woerter, die 3 Studiofotos 0.
 # Gestauchte Bilder sind fast immer solche Infografiken → wer den Fremdtext sperrt, sperrt die Stauchung mit.
 # Zwei Durchgaenge, weil weisse Schrift auf Blau ohne Schwellwert unsichtbar bleibt (Bild 2: 0 → 13 Woerter).
-FREMDTEXT_WOERTER = 4   # >= 4 Woerter = montierter Text; Aufdruck auf der Ware («Happy Birthday») bleibt darunter
-
-
-def _fremdtext(pfad):
-    """Zahl lesbarer lateinischer Woerter (>= 3 Buchstaben, Konfidenz >= 70) im Bild; None = OCR nicht verfuegbar."""
-    try:
-        import pytesseract
-        g = Image.open(pfad).convert("L")
-        best = 0
-        for x in (g, g.point(lambda v: 0 if v > 200 else 255)):
-            d = pytesseract.image_to_data(x, lang="eng", config="--psm 11", output_type=pytesseract.Output.DICT)
-            n = sum(1 for t, c in zip(d["text"], d["conf"])
-                    if float(c) >= 70 and re.fullmatch(r"[A-Za-z]{3,}", (t or "").strip())
-                    and re.search(r"[aeiouyAEIOUY]", t) and not re.fullmatch(r"(.)\1+", t.strip().lower()))
-            best = max(best, n)
-        return best
-    except Exception:
-        return None
+from fremdtext import GRENZE as FREMDTEXT_WOERTER, woerter as _fremdtext   # gemeinsames Modul (auch Einzelbild-Post, Story, Bild-Reel)
 
 
 def fremdtext_selbsttest():
-    from PIL import Image as _I
-    leer = "/tmp/_ft_leer.png"; text = "/tmp/_ft_text.png"
-    _I.new("RGB", (800, 800), "white").save(leer)
-    im = _I.new("RGB", (800, 800), (40, 70, 140)); d = ImageDraw.Draw(im)
-    try:
-        fo = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 44)
-    except Exception:
-        fo = ImageFont.load_default()
-    d.text((40, 60), "MULTI FUNCTION LIVE", fill="white", font=fo)
-    d.text((40, 140), "Storage of three major functions", fill="white", font=fo)
-    im.save(text)
-    a, b = _fremdtext(leer), _fremdtext(text)
-    t = [(a == 0, f"leeres Bild → 0 Woerter (gemessen {a})"),
-         (b is not None and b >= FREMDTEXT_WOERTER, f"weisse Schrift auf Blau → >= {FREMDTEXT_WOERTER} (gemessen {b})")]
-    for ok, n in t:
-        print(("✓ " if ok else "✗ ") + n)
-    print(f"{sum(o for o, _ in t)}/{len(t)}")
-    return all(o for o, _ in t)
+    from fremdtext import selbsttest
+    return selbsttest()
 
 
 def _farbe(pfad):
