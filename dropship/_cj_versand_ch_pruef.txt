@@ -5060,3 +5060,6 @@ stretch-hosen-slim-straight-874881	2061278768811196418	0	-	KEINE CH-Option → D
 stretch-hosen-fur-herren-schmal-geschnitten-788353	2061284121005830145	0	-	KEINE CH-Option → DRAFT	landeseite
 gerade-herren-hosen-ohne-stretch-252866	2061331017636294658	0	-	KEINE CH-Option → DRAFT	landeseite
 stretch-hosen-fur-herren-schmal-geschnitten-310273	2061288689799774210	0	-	KEINE CH-Option → DRAFT	landeseite
+leichte-sommer-denim-shorts-609500	2605310621581600100	16	9.47	ok	landeseite
+kompressions-tight-leggings-013185	2060255285879558145	0	-	KEINE CH-Option → DRAFT	landeseite
+gerade-herren-hosen-653377	2060539627781599233	0	-	KEINE CH-Option → DRAFT	landeseite
