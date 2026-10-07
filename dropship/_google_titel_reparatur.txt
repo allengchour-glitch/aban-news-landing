@@ -425,3 +425,7 @@
 2026-10-05T18:16:01Z	NACHMESSUNG	gid://shopify/Product/15448794595713	taillierte-jeansjacke-fur-herren-282562	-	google		keine Google-Meldung	ok
 2026-10-06T21:12:33Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg-11-10	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
 2026-10-06T21:12:34Z	NACHMESSUNG	gid://shopify/Product/16606127489415	manuelle-zigarettenherstellung-mit-shredder-023488	-	google		keine Google-Meldung	ok
+2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	typ	Werkzeug & Heimwerken	Raucherzubehör	ok
+2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	kategorie	gid://shopify/TaxonomyCategory/ha-15	gid://shopify/TaxonomyCategory/hg-19	ok
+2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	tags_dazu		raucher,smoke-zubehoer	ok
+2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	tags_weg	heimwerken,werkzeug		ok

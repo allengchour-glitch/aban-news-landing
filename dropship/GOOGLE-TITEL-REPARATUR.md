@@ -16,17 +16,17 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-06T21:12:34Z — SCHARF
+## Letzter Lauf 2026-10-07T19:33:09Z — SCHARF
 
-Gescannt 50912 aktive von 50912 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 51470 aktive von 51458 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 162x gewartet, 1303 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
+| arabische-shisha-mit-doppelrohr-580d31 | RAUCH | Typ Werkzeug & Heimwerken → Raucherzubehör; Kategorie → hg-19; +raucher,smoke-zubehoer; −heimwerken,werkzeug | ok |
 
 ## Ledger gesamt
 
-47 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+48 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -63,6 +63,7 @@ Geschriebene Titel (rückgelesen):
 
 Typ-/Tag-Korrekturen (rückgelesen):
 
+- arabische-shisha-mit-doppelrohr-580d31: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - aschenbecher-mit-deckel-602700: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - auberginen-zigarrenanzunder-mit-doppelflamme-947328: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - baustein-luxuslimousine-auf-raedern-334528: typ Spielzeug
@@ -85,7 +86,3 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
-
-## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
-
-- manuelle-zigarettenherstellung-mit-shredder-023488: keine Google-Meldung
