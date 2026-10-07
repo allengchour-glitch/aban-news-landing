@@ -1,29 +1,35 @@
-# Feinkategorie (automatisch, 2026-10-07 23:22 UTC)
+# Feinkategorie (automatisch, 2026-10-07 23:25 UTC)
 
-Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
+Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 47990 |
+| gleich | 48212 |
 | kein-google | 1662 |
-| anderer-zweig | 725 |
-| verfeinern | 479 |
+| verfeinern | 739 |
 | schon-im-ledger | 262 |
+| kreuz | 260 |
+| anderer-zweig | 243 |
 | titelprobe-nein | 233 |
 | shopify-feiner | 126 |
 | keine-zuordnung | 12 |
+| **geschrieben** | 739 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
 - 269 → Clothing > One-Pieces > Jumpsuits & Rompers
+- 162 → Pet Supplies > Dog Supplies > Dog Apparel
 - 87 → Decor > Chair & Sofa Cushions
 - 83 → Personal Care > Cosmetics > Skin Care > Lotion & Moisturizer
-- 8 → Pet Supplies > Dog Supplies > Dog Apparel
+- 28 → Pet Supplies > Cat Supplies > Cat Beds
+- 22 → Pet Supplies > Dog Supplies > Dog Beds
+- 21 → Clothing Accessories > Hats
+- 17 → Pet Supplies > Cat Supplies > Cat Apparel
+- 15 → Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools
+- 13 → Lawn & Garden > Outdoor Living > Hammocks
 - 7 → Outdoor Recreation > Equestrian > Riding Apparel & Accessories > Equestrian Helmets
-- 5 → Clothing Accessories > Hats
 - 5 → Exercise & Fitness > Weight Lifting > Weight Lifting Belts
-- 4 → Pet Supplies > Cat Supplies > Cat Beds
-- 4 → Lawn & Garden > Outdoor Living > Hammocks
+- 3 → Personal Care > Cosmetics > Cosmetic Tools > Skin Care Tools > Skin Care Rollers
 - 2 → Jewelry > Watches
 - 2 → Audio > Audio Players & Recorders > CD Players & Recorders
 - 2 → Exercise & Fitness > Weight Lifting > Weight Lifting Machine & Exercise Bench Accessories
