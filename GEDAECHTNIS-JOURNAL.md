@@ -44,6 +44,15 @@
 
 
 
+## 2026-10-07 20:15 UTC · 🧠 «knowledge installiert»: App-Vorschläge waren falsch — 10 belegte Fakten + Wache
+- Die App «Knowledge Base» legt Metaobjekte `shopify--knowledge-base-fact` an (unveröffentlicht, nur `suggested_*`). Die
+  Vorschläge enthielten «ohne Zwischenhändler», «50–70 % unter Boutiquen» und Gutscheine/Geschenkbeleg/Geschenkverpackung
+  = ja (alle 0). → `knowledge_base_fakten.py` setzt 10 belegte Werte + published, `--wache` täglich. «Über uns»: zwei
+  unbelegte Versprechen («laufend geprüft», «Premium-Qualität») ersetzt.
+- LEHRE: **Was eine KI über den Shop «ableitet», ist eine Behauptung.** Bevor sie Kunden erreicht (ChatGPT, Copilot), wird
+  jeder Wert am Shop gemessen. Vergleich gespeicherter JSON-Listen: geparst vergleichen (Shopify kürzt Leerzeichen).
+  → `dropship/KNOWLEDGE-BASE-2026-10-07.md`
+
 ## 2026-10-07 19:55 UTC · 🤖 «bing microsoft und so auch»: Agentic Storefronts LÄUFT (CHF 155.62/30 T) — meine Katalog-Probe war falsch
 - GEMESSEN (Betreiber-Screenshot admin.shopify.com/agentic 19:50): 113 Besuche, CHF 155.62 in 30 T über Agentic Storefronts —
   ChatGPT CHF 74.80, Shop CHF 80.82, Copilot CHF 0; «Von Shopify verwalten lassen» an, 10'000+ Produkte im Shopify Catalog,
@@ -18416,6 +18425,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-06 · 🔫 **Verbesserungsrunde: «Laser-Boresight für Gewehr» ACTIVE — Waffen-Regel band «Gewehr» an Bausatz-Kontext → `schusswaffen-laser` (DRAFT, Importer + Wache) + `schusswaffen-zubehoer` (Google raus), 10/10 Kanarien, Voll-Export 2/2.** Regel gegen Nachbildungen lässt das Original durch → `dropship/SCHUSSWAFFEN-ZUBEHOER-2026-10-06.md`
 - 2026-10-06 · 🔄 **Verbesserungsrunde: Bildtausch liess «uneinig» liegen (36 % frei), obwohl beide Prüfer Bild 1 ablehnten → «tausch-u» (Gemini-Wahl, Einzelprüfer 76–78 %), 12 alte Fälle neu, Sperre/Bilanz/Rücklesen kennen die Art.** Hauptfrage entschieden ≠ unklar → `dropship/BILDTAUSCH-UNEINIG-2026-10-06.md`
 - 2026-10-05 · 🎬 **«bilder und videos sehr klein»: Reel-Produktvideo 23–32 % der Fläche → Hochformat Vollbild/quadratisch 970/quer 860; Stimme 50 %; `reel/bild_reel.py` (Original-Bilder + Stimme, Tor, `--weg`, `--freigeben`) → 10 Top-Produkte ready; `produktAktiv` prüft `bildreel-<handle>`.** Neuer Reel-Typ = eigener Zweig in der Vor-Post-Prüfung → Journal 05.10. 21:40
 - 2026-10-05 · 📦 **Fortura-Bestellautomat Stufe 1: bezahlte Bestellung mit `fortura-<ArtNr>` → Paket + Ampel «⚠️ FORTURA: im Portal bestellen» bis `--bestellt`; XML (Opacc.ORDERS nach /home/ORDERS) erst mit Fortura-Muster — seit 22.07. angefragt, nie gekommen, Entwurf in Gmail.** Keine Bestelldatei auf Verdacht → Journal 05.10. 20:40

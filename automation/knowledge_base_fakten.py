@@ -10,6 +10,9 @@ Jeder Wert hier ist belegt: Richtlinien (Versand/Rückgabe/AGB/Impressum), Seite
 Ledger dropship/_knowledge_base_fakten.tsv (handle, alter Wert, neuer Wert). Rückweg: published=false.
   python3 automation/knowledge_base_fakten.py          # Trockenlauf
   SCHARF=1 python3 automation/knowledge_base_fakten.py
+  python3 automation/knowledge_base_fakten.py --wache   # eine Zeile «KNOWLEDGE-BASE: …» für den Aufseher (täglich)
+Wache: meldet Fakten, die die App NEU angelegt hat (Handle nicht in FAKTEN — Vorschläge ungeprüft) und belegte Fakten,
+deren Wert jemand/etwas geändert hat. Schreibt nichts.
 """
 import json, os, sys, time
 HIER = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HIER); sys.path.insert(0, HIER)
@@ -56,6 +59,9 @@ def main():
             print(f"   fehlt in der App: {h}"); continue
         alt = {f["key"]: f["value"] for f in n["fields"]}
         neu = json.dumps(wert, ensure_ascii=False) if isinstance(wert, list) else ("true" if wert is True else "false" if wert is False else wert)
+        gleich = lambda a, b: (json.loads(a) == json.loads(b)) if (a or "").startswith("[") and (b or "").startswith("[") else a == b
+        if gleich(alt.get(feld), neu) and alt.get("published") == "true":
+            print(f"{h:45s} schon gesetzt"); continue
         print(f"{h:45s} {feld:18s} → {str(neu)[:90]}")
         if not SCHARF:
             continue
@@ -63,7 +69,7 @@ def main():
                 {"id": n["id"], "m": {"fields": [{"key": feld, "value": neu}, {"key": "published", "value": "true"}]}})
         u = r["metaobjectUpdate"]
         ist = {f["key"]: f["value"] for f in ((u.get("metaobject") or {}).get("fields") or [])}
-        if not u["userErrors"] and ist.get(feld) == neu and ist.get("published") == "true":
+        if not u["userErrors"] and gleich(ist.get(feld), neu) and ist.get("published") == "true":
             ok += 1
             with open(LEDGER, "a", encoding="utf-8") as f:
                 f.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{h}\t{alt.get(feld) or ''}\t{neu}\t{beleg}\n")
@@ -72,5 +78,28 @@ def main():
     print(f"FERTIG: {ok} gesetzt + veröffentlicht, {fehl} Fehler" if SCHARF else "FERTIG (trocken)")
 
 
+def wache():
+    try:
+        r = gql('{metaobjects(type:"shopify--knowledge-base-fact",first:100){nodes{handle fields{key value}}}}')
+    except Exception as e:
+        print(f"KNOWLEDGE-BASE: unklar ({type(e).__name__})"); return
+    neu, weg = [], []
+    for n in r["metaobjects"]["nodes"]:
+        f = {x["key"]: x["value"] for x in n["fields"]}
+        if n["handle"] not in FAKTEN:
+            neu.append(n["handle"]); continue
+        feld, wert, _ = FAKTEN[n["handle"]]
+        soll = json.dumps(wert, ensure_ascii=False) if isinstance(wert, list) else ("true" if wert is True else "false" if wert is False else wert)
+        ist = f.get(feld) or ""
+        gleich = (json.loads(ist) == json.loads(soll)) if ist.startswith("[") and soll.startswith("[") else ist == soll
+        if not gleich or f.get("published") != "true":
+            weg.append(n["handle"])
+    if neu or weg:
+        print(f"⚠️ KNOWLEDGE-BASE: {len(neu)} neue Fakten ungeprüft ({', '.join(neu[:4])}) · {len(weg)} abweichend ({', '.join(weg[:4])})"
+              f" → automation/knowledge_base_fakten.py prüfen")
+    else:
+        print(f"KNOWLEDGE-BASE: {len(FAKTEN)}/{len(FAKTEN)} Fakten belegt + veröffentlicht")
+
+
 if __name__ == "__main__":
-    main()
+    wache() if "--wache" in sys.argv else main()

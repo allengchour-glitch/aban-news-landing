@@ -243,6 +243,12 @@ while true; do
         timeout 240 python3 automation/handy_bot.py --abholen; timeout 300 python3 automation/handy_bot.py --tagesbericht" \
         >> /tmp/handy_bot.log 2>&1 9>&- & )
   fi
+  # 🧠 KNOWLEDGE-BASE-WACHE (07.10.2026): die App «Knowledge Base» legt Fakten mit KI-Vorschlägen an (06.10. falsch: «ohne
+  # Zwischenhändler», «50–70 % unter Boutiquen», Geschenkverpackung ja). Täglich: neue/abweichende Fakten melden, nichts schreiben.
+  if [ -f "$REPO/automation/knowledge_base_fakten.py" ] && [ ! -f /tmp/kb_wache_$(date -u +%F) ]; then
+    touch "/tmp/kb_wache_$(date -u +%F)"
+    ( cd "$REPO" && timeout 120 python3 automation/knowledge_base_fakten.py --wache >> /tmp/knowledge_base_wache.log 2>&1 & )
+  fi
   # ⚠️ HERZSCHLAG GLEICH ZU RUNDENBEGINN (29.08.2026). Bis heute stand er nur GANZ AM ENDE
   # der Runde (vor dem sleep 120). Eine Runde dauert aber laenger als die 10-Minuten-Schwelle,
   # gegen die engine_keepalive prueft — allein die 13 Reiniger werden mit je 10 s Abstand

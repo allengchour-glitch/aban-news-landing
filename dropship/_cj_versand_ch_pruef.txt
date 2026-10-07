@@ -4945,3 +4945,4 @@ blaue-jeans-mit-cartoon-stickerei-609100	2604240128491609600	16	9.33	ok	landesei
 modegewaschene-high-waist-jeans-fur-damen-601800	2604220641361602400	16	11.00	ok	landeseite
 hohe-gerade-jeans-612100	2604220137441612600	16	16.76	ok	landeseite
 patchwork-jeans-626800	2604211114481627300	16	19.65	ok	landeseite
+patchwork-denim-jeans-fur-damen-601700	2604211109121602200	16	12.21	ok	landeseite
