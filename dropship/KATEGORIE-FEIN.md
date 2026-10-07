@@ -1,50 +1,50 @@
-# Feinkategorie (automatisch, 2026-10-06 19:24 UTC)
+# Feinkategorie (automatisch, 2026-10-07 02:09 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| verfeinern | 22636 |
-| gleich | 13344 |
-| anderer-zweig | 9629 |
+| gleich | 35872 |
+| anderer-zweig | 9627 |
 | keine-zuordnung | 3381 |
-| kein-google | 1650 |
+| kein-google | 1649 |
 | titelprobe-nein | 219 |
-| schon-im-ledger | 55 |
-| **geschrieben** | 100 (Fehler 0) |
+| verfeinern | 178 |
+| ohne-kategorie | 42 |
+| **geschrieben** | 178 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 4595 → Clothing > Shirts & Tops
-- 2771 → Clothing > Dresses
-- 971 → Jewelry > Bracelets
-- 968 → Backpacks
-- 886 → Decor > Throw Pillows
-- 780 → Clothing > Pants
-- 680 → Pet Supplies > Pet Leashes
-- 676 → Clothing > Outerwear > Coats & Jackets
-- 665 → Electronics Accessories > Power > Power Adapters & Chargers
-- 635 → Pet Supplies > Pet Collars & Harnesses
-- 604 → Pet Supplies > Dog Supplies
-- 540 → Exercise & Fitness
-- 453 → Jewelry > Rings
-- 452 → Pet Supplies > Pet Bowls, Feeders & Waterers
-- 363 → Jewelry > Necklaces
-- 334 → Pet Supplies > Cat Supplies
-- 314 → Clothing > Skirts
-- 253 → Kitchen & Dining > Tableware > Drinkware
-- 252 → Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Decorative Stickers
-- 246 → Toys > Dolls, Playsets & Toy Figures > Stuffed Animals
-- 233 → Toys > Play Vehicles
-- 213 → Kitchen & Dining > Kitchen Tools & Utensils
-- 195 → Clothing > Activewear
-- 179 → Jewelry > Earrings
-- 151 → Clothing > Outerwear > Vests
-- 141 → Audio > Audio Components > Headphones & Headsets
-- 130 → Kitchen & Dining > Tableware > Dinnerware
-- 130 → Audio > Audio Components > Microphones
-- 117 → Decor > Slipcovers
-- 112 → Kitchen & Dining > Kitchen Appliances
+- 56 → Clothing > Shirts & Tops
+- 25 → Decor > Throw Pillows
+- 13 → Jewelry > Bracelets
+- 11 → Jewelry > Rings
+- 8 → Kitchen & Dining > Tableware > Dinnerware
+- 6 → Clothing > Dresses
+- 5 → Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans
+- 4 → Decor > Slipcovers
+- 3 → Tools > Pliers
+- 3 → Kitchen & Dining > Kitchen Tools & Utensils
+- 3 → Kitchen & Dining > Tableware > Drinkware
+- 2 → Vehicle Parts & Accessories > Vehicle Storage & Cargo > Vehicle Organizers
+- 2 → Tools > Tool Sets
+- 2 → Decor > Artwork > Decorative Tapestries
+- 2 → Tools > Wrenches
+- 2 → Electronics Accessories > Power > Power Adapters & Chargers
+- 2 → Kitchen & Dining > Tableware > Flatware
+- 2 → Kitchen & Dining > Kitchen Appliances > Juicers
+- 2 → Kitchen & Dining > Kitchen Appliances
+- 2 → Kitchen & Dining > Tableware > Coffee & Tea Sets
+- 2 → Pet Supplies > Pet Collars & Harnesses
+- 1 → Tools > Saws
+- 1 → Clothing > Outerwear > Coats & Jackets
+- 1 → Tools > Screwdrivers
+- 1 → Tools > Soldering Irons
+- 1 → Audio > Audio Components > Speakers
+- 1 → Kitchen & Dining > Food & Beverage Carriers > Lunch Boxes & Totes
+- 1 → Kitchen & Dining > Cookware & Bakeware > Cookware > Cookware Sets
+- 1 → Tools > Measuring Tools & Sensors
+- 1 → Tools > Cutters > Tile & Shingle Cutters
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
