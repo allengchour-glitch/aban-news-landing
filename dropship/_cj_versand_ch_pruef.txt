@@ -5228,3 +5228,6 @@ flache-sandalen-628800	2606300837161629600	16	11.37	ok	landeseite
 schwarze-sandalen-602600	2606300833351603300	16	11.00	ok	landeseite
 suede-sandalen-637900	2606300830091638800	16	11.37	ok	landeseite
 sommer-sandalen-611300	2606300826451612000	16	8.25	ok	landeseite
+hohe-sandalen-638500	2606300823461639100	16	8.79	ok	landeseite
+runde-sandalen-mit-hohem-absatz-638000	2606300821281639000	16	8.11	ok	landeseite
+hohe-riemchensandalen-621600	2606300819021622500	16	9.33	ok	landeseite
