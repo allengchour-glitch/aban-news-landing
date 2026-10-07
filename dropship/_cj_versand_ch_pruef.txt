@@ -5071,3 +5071,11 @@ kartenhalter-id-tasche-632800	2603010530521633200	16	6.48	ok	landeseite
 grosses-clutch-set-aus-rindsleder-615400	2602250849311615800	16	11.00	ok	landeseite
 kartenetui-mit-ortungschip-601900	2602240312561602200	7	6.21	ok	landeseite
 magnetischer-kartenhalter-mit-sicherheitsschut-616000	2602050816321616400	7	7.30	ok	landeseite
+leder-kartenhalter-fur-herren-623300	2602040256141623600	16	6.18	ok	landeseite
+leder-kartenetui-mit-knopf-und-elastischem-ban-636400	2602021210541636700	7	6.41	ok	landeseite
+kartenhalter-geldborse-608300	2601310124131608600	7	8.10	ok	landeseite
+kartenhalter-braun-619600	2601310117491610000	7	6.98	ok	landeseite
+mehrfach-geldborse-aus-leder-614000	2601301053561614400	16	5.27	ok	landeseite
+manner-kartentasche-603600	2601300530031604000	16	6.17	ok	landeseite
+mannliche-leder-geldborse-mit-kartenslots-633300	2601280906401633700	16	6.33	ok	landeseite
+manner-geldborse-aus-echtleder-631500	2601221110501631900	16	6.17	ok	landeseite
