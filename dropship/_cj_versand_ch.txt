@@ -1523,3 +1523,8 @@ gid://shopify/Product/16610296004999	ok	Gusseisen-Emaille-Topf
 gid://shopify/Product/16609739768199	ok	Ortungsgerät für Wandobjekte
 gid://shopify/Product/16610054177159	ok	Fleischwolf aus Edelstahl für den Haushalt
 gid://shopify/Product/16609944371591	ok	Nordisches Keramik-Geschirrset für 2 Personen
+gid://shopify/Product/16611760341383	ok	Baby Essstuhl mit Kopfkissen, Rutschbalken und Rollen
+gid://shopify/Product/16611759686023	ok	Eisenpfanne mit elektrischem Heizsystem
+gid://shopify/Product/16611686678919	nicht-versendbar	Trolley mit Aluminiumrahmen, grosse Kapazität
+gid://shopify/Product/16611683172743	nicht-versendbar	Aluminiumrahmen Koffer mit robustem Gehäuse
+gid://shopify/Product/16611683303815	nicht-versendbar	Aluminium-Magnesium-Luggage-Trolley
