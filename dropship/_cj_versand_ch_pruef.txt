@@ -5131,3 +5131,5 @@ vintage-blumenstecker-813633	2074044224200671234	16	5.20	ok	landeseite
 vintage-ohrstecker-im-palaststil-453825	2074014084284448769	16	5.02	ok	landeseite
 silicone-armband-610200	2505120718021610500	16	5.81	ok	landeseite
 manner-sportuhr-612300	2505050626241613300	7	6.49	ok	landeseite
+goldene-herrenarmbanduhr-620200	2504241321001622100	7	7.30	ok	landeseite
+sport-armband-616500	2504160325371616800	16	6.17	ok	landeseite
