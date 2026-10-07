@@ -48256,3 +48256,14 @@ weitenrock-mit-puffarmel-langes-damenkleid-600100	aa-1	Damenmode	2026-10-07T09:1
 patchwork-blumen-kleid-mit-v-ausschnitt-618600	aa-1	Damenmode	2026-10-07T09:12Z
 schulterpartie-mit-hoher-taille-abendkleid-607600	aa-1	Damenmode	2026-10-07T09:12Z
 highwaist-a-linien-rock-mittellang-612600	aa-1	Damenmode	2026-10-07T09:12Z
+patchwork-puffer-halterkleid-639100	aa-1	Damenmode	2026-10-07T10:09Z
+intelligenter-sprungball-fur-hunde-604900	ap-2	Haustierbedarf	2026-10-07T10:09Z
+kasegeschmack-maus-mit-knistergerausch-635700	ap-2	Haustierbedarf	2026-10-07T10:09Z
+katzenbett-plattform-mit-saugnapf-58x30-cm-602300	ap-2	Haustierbedarf	2026-10-07T10:09Z
+elektrisches-ufo-spielzeug-fur-katzen-613200	ap-2	Haustierbedarf	2026-10-07T10:09Z
+hundespielmatte-zum-riechen-602200	ap-2	Haustierbedarf	2026-10-07T10:09Z
+mehrzweck-frisbee-mit-belohnung-und-quietschfu-630200	ap-2	Haustierbedarf	2026-10-07T10:09Z
+elektrischer-katzenspielzeug-mit-glocke-611100	ap-2	Haustierbedarf	2026-10-07T10:09Z
+hund-oxford-stoff-kauspielzeug-mit-quietschfun-636500	ap-2	Haustierbedarf	2026-10-07T10:09Z
+pluschspielzeug-patchwork-tier-620400	tg-5	Spielzeug & Spiele	2026-10-07T10:09Z
+automatisch-rollendes-katzenball-spielzeug-615900	ap-2	Haustierbedarf	2026-10-07T10:09Z
