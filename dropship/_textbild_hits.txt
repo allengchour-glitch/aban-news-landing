@@ -17049,3 +17049,7 @@ gid://shopify/Product/15523936764289	25->1	Doppelnapf aus Massivholz, geneigt
 gid://shopify/Product/15523938369921	18->0	Rutschfeste Futterschale für Haustiere
 gid://shopify/Product/15523938468225	16->0	WLAN Handy Beamer
 gid://shopify/Product/15523985686913	15->0	Futter- und Trinkautomat für Haustiere
+gid://shopify/Product/15524000072065	116->0	Aladdin Wunderlampe Zinklegierung
+gid://shopify/Product/15524002988417	11->2	Wasserdichte Partneruhr aus Edelstahl
+gid://shopify/Product/15524003283329	84->2	Kinder Sportschuhe mit Leuchtsohle
+gid://shopify/Product/15524695474561	40->2	Formschöne Schokoladen- und Eiswürfelform
