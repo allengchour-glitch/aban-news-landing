@@ -280,9 +280,10 @@ def google_taxonomie():
 
 
 def shopify_ziel(gname, karte):
+    import kategorie_fein as kf
     teile = gname.split(" > ")
     while teile:
-        s = karte.get(" > ".join(teile))
+        s = karte.get(" > ".join(teile)) or kf.ZUSATZ.get(" > ".join(teile))
         if s:
             return s
         teile.pop()
