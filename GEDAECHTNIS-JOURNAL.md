@@ -44,6 +44,16 @@
 
 
 
+## 2026-10-07 00:45 UTC · 🧾 Verbesserungsrunde: .tsv-Ledger gingen bei jedem Rewind verloren → Doppeltausch
+GEMESSEN: Blocker 1'052; Bildtausch-Log 06.10. 17:17 tauschte Hawaiihemd + BB-Creme, Ledger ohne die Zeilen, 20:43 erneut
+getauscht (4/606 doppelt). repo_vorspulen.sh sicherte/vereinigte nur dropship/*.txt — 85 .tsv-Ledger verloren bei reset --hard
+jede ungepushte Zeile. Nebenbefund: «Page unavailable» 60/60 kaufbar + HTTP 200, viele Varianten (Median 32 vs 2), aber
+auch die 331 Befreiten sind variantenreich → Anstupser wirkt, kein eigener Hebel. GETAN: `ledger_union.py` Schwanz-Union
+(nur Zeilen hinter der letzten gemeinsamen; Purges bleiben draussen; keine gemeinsame Zeile = nichts; 8/8), in repo_vorspulen
+mit Selbsttest-Schranke; Gegenprobe 8 Zeilen = alle neuen, 0 Zombies. LEHRE: Eine Sicherung, die nur EIN Dateimuster kennt,
+lässt jedes neue Ledger-Format still fallen — beim Einführen eines neuen Ledger-Typs die Rewind-Union mitprüfen.
+Bericht `dropship/LEDGER-UNION-TSV-2026-10-07.md`.
+
 ## 2026-10-06 22:25 UTC · 📦 «fix fortuna»: Fortura-Bestand 26 h eingefroren — Eimer leer, Helfer gab nach 3 min auf
 GEMESSEN: zwei PAUSEN rc=2 (16:42, 20:39 UTC) «Shopify antwortete nicht», letzter Erfolg 05.10. 20:19. Token (12:18) gültig,
 Probe-Abfrage 141/141 Seiten ok. Zur selben Zeit brach kategorie_fein «40x gedrosselt» ab → Eimer leer; `gql()` in
@@ -18248,6 +18258,9 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-04 · 🔍 **«fix 12 h»: Sichtprüfung 1'645 Neuimporte (Workflow, Stichprobe 30/30) → 447 Titel, 105 Hauptbilder, Klingen-Loch «Küchenmesser mit Obstschneidebrett» (Kontextwort = Beigabe), Minoxidil gedraftet + Wirkstoff-Sperre; Quelle: CJ-Kategorie im Prompt, gpt-oss-120b als 2. Groq-Stufe (20b-Kontingent leer, Gemini/OpenAI 402); neue Kollektionen Malen nach Zahlen (5'400/Mt) + Diamond Painting (8'100/Mt, KD 16), 132 Titel.** Kosmetik-Regel = Werbung, nicht Verkauf → `dropship/NEUIMPORT-SICHTPRUEFUNG-2026-10-04.md`
+- 2026-10-04 · 🔎 **«semrush push … alle produkten fix … kategorien/fein filter»: Semrush-Snapshot kostet 10'000 Einheiten → Klassen lokal über alle 50'760 Produkte (`seo_voll_audit/fix.py` täglich: 85→4 Titel-Doppel, 276→0 Metas, 233→0 Alt); 190/222 Seiten H1 im Text; Meta-Fallback Policies; Adventskalender-Kollektion (27'100/Mt); Shopify-Filter verschwinden ab 5'000 aktiven → Schuhe/Wohnen/Schmuck darunter + `filtergrenze_wache.py`; `kategorie_rein.py` (Ringe 30 Typen); Sammeltypen aus Kategorie; Grössenwerte normiert.** `seo`-Input ersetzt beide Felder → `dropship/SEMRUSH-PUSH-KATEGORIEN-2026-10-04.md`
+- 2026-10-04 · 🏷️ **Tag 5 vorgezogen: Top-30-Produktseiten 24/30 → 30/30 (`top_produktseiten_check.py` täglich); Kristall-Set zeigte 12 Spitzen, geliefert werden 8 (CJ Set1) → 5 echte Bilder + Text; IG/FB über Metricool echt getestet (Story PUBLISHED); Story-Sperre `story-` vs `story_` → 25 h Stau; Hashtags: IG max 5 → `lib/hashtags.mjs` wählt nach `social_lernen`-Gewicht (#shoppingschweiz 1.35 > #schweizmode 1.05).** Vorige Runde hatte 4 Wächter erfunden → nur nennen, was `ls` zeigt → `dropship/TOP30-PRODUKTSEITEN-2026-10-04.md`, `HASHTAGS-2026-10-04.md`
 - 2026-10-03 · 🇫🇷 **OFFEN (Betreiber «Französisch ja»): fr-Übersetzung läuft (`translate_content.mjs`, Menü/Links/Rechtstexte ✅, Top-58 via HANDLES_FILE + Kollektionen); NOCH NICHT veröffentlicht — nächster Schritt: Versand-Policy «tu»→«vous», Stichprobe, dann fr als alternateLocale im WebPresence luxestyle.ch + shopLocale published. Wartet auf Betreiber: Semrush-Projekt/Site-Audit, Checkout-Automatik, Judge.me, TikTok-Link.**
 - 2026-10-03 · ⏳ **Verbesserungsrunde: cj_versand_ch_guard/fuellmenge/pinterest starben «12x gedrosselt» — Eimer 16–136/2000, 30 Wächter warteten nur `Anfrage − verfügbar` (< 1 s, Aufgabe nach ~15 s) → `max(Anfrage, 600) − verfügbar`, 19× Geduld 40; Gehirn-Regel `drossel-ungeduldig` (18/18).** Geduld in Zeit, nicht in Versuchen → `dropship/DROSSEL-GEDULD-2026-10-03.md`
 - 2026-10-03 · 🔄 **Verbesserungsrunde: Google-Scan 10:09 (dank Fortsetzung fertig) Adult 92 → 265 (Grind-Mode), Inappropriate 250 → 199 — Bildtausch lief stur Klasse 1 (63 offen, ~11/h, Neustart stündlich), Adult kam nie dran → Wechselbetrieb `/tmp/gbt_klasse_idx`, N=8 je Klasse.** Mehrere Schlangen in einem Lauf reihum beginnen → `dropship/BILDTAUSCH-WECHSEL-2026-10-03.md`
