@@ -89,6 +89,23 @@ def ziel_fuer(cat_id, google_name, karte):
     return sid, "verfeinern"
 
 
+# 07.10.2026 (Betreiber «verbessere katalog und fein katalog»): KREUZ = erlaubte Zweigwechsel, wenn GOOGLE und ein
+# eindeutiges TITELWORT übereinstimmen und die Shopify-Kategorie nachweislich zu grob/falsch ist. GEMESSEN: 504 Umhänge-/
+# Schulter-/Crossbody-Taschen und 115 Geldbörsen standen in Shopify unter «Luggage & Bags» (lb), Google sagt Handbags/Wallets.
+# (heutige Shopify-ID, Ziel-ID) → Pflichtwort im Titel. Alles andere bleibt «anderer-zweig» (nie raten).
+KREUZ = {
+    ("lb", "aa-5-4"): re.compile(r"handtasche|umh[äa]nge|schultertasche|crossbody|clutch|abendtasche|\btote\b|shopper|henkeltasche|"
+                                 r"beuteltasche|satteltasche|baguette|hobo|bucket|sling", re.I),
+    ("lb", "aa-5-5"): re.compile(r"geldb[öo]rse|portemonnaie|portmonee|brieftasche|\bwallet\b|kartenetui|kartenhalter|geldklammer", re.I),
+}
+
+
+def kreuz_ziel(cat_id, google_name, karte, titel):
+    sid = karte.get(google_name or "")
+    rx = KREUZ.get((cat_id, sid))
+    return sid if rx and rx.search(titel or "") else None
+
+
 def export_holen():
     from kaufwille_zeile import gql
     if os.path.exists(EXPORT) and time.time() - os.path.getmtime(EXPORT) < 6 * 3600:
@@ -158,6 +175,10 @@ def main():
         cid = cat["id"].split("/")[-1]
         g = (p.get("metafield") or {}).get("value")
         sid, grund = ziel_fuer(cid, g, karte)
+        if not sid and grund == "anderer-zweig":
+            sid = kreuz_ziel(cid, g, karte, p["title"])
+            if sid:
+                stat["kreuz"] += 1
         if not sid:
             stat[grund] += 1; continue
         if (p["id"], sid) in erledigt:
@@ -215,6 +236,18 @@ def main():
     return 0
 
 
+def kreuz_test():
+    k = {"Apparel & Accessories > Handbags, Wallets & Cases > Handbags": "aa-5-4",
+         "Apparel & Accessories > Handbags, Wallets & Cases > Wallets & Money Clips": "aa-5-5"}
+    H, W = list(k)
+    t = [(kreuz_ziel("lb", H, k, "Cord Canvas Schulter- und Umhängetasche") == "aa-5-4", "Umhängetasche lb→Handbags"),
+         (kreuz_ziel("lb", W, k, "Herren-Geldbörse aus Rindsleder") == "aa-5-5", "Geldbörse lb→Wallets"),
+         (kreuz_ziel("lb", H, k, "Marco Laiden Business Bag") is None, "ohne Pflichtwort bleibt"),
+         (kreuz_ziel("el", H, k, "Umhängetasche") is None, "nur aus lb")]
+    for ok, n in t: print(("✓ " if ok else "✗ ") + n)
+    return all(o for o, _ in t)
+
+
 def selbsttest():
     k = {"Apparel & Accessories > Clothing > Dresses": "aa-1-4", "Apparel & Accessories > Clothing": "aa-1",
          "Home & Garden > Decor": "hg-3", "Animals & Pet Supplies > Pet Supplies > Pet Leashes": "ap-2-1-9"}
@@ -251,6 +284,8 @@ def selbsttest():
 
 
 if __name__ == "__main__":
+    if "--kreuz-test" in sys.argv:
+        sys.exit(0 if kreuz_test() else 1)
     if "--selbsttest" in sys.argv:
         sys.exit(selbsttest())
     sys.exit(main())
