@@ -1,4 +1,4 @@
-# Tag 11 «Tempo & Mobil»: Startseite lädt beim Öffnen 1,0 statt 10,8 MB Bilder (08.10.2026, 11:30–12:15 UTC)
+# Tag 11 «Tempo & Mobil»: Startseite lädt beim Öffnen 1,0 statt 9,4 MB Bilder (08.10.2026, 11:30–12:15 UTC)
 
 Betreiber 08.10.: «mehr verbesserung». Plan-Punkt Tag 11 (`WEBSEITE-12-TAGE-PLAN.md`): Ladezeit und Bildgrössen der
 Startseite und der Top-Seiten, mobile Darstellung. Messlatte: Messung vorher/nachher, keine Überbreite.
@@ -10,16 +10,17 @@ Vorrunde 04./05.10.: `MOBIL-TEMPO-2026-10-04.md`. Deren offener Punkt waren die 
 |---|---:|
 | übertragen gesamt | **10'817 KB** |
 | davon Bilder | 9'658 KB |
-| `<img>` geladen / im DOM | **171 / 398** (der erste Bildschirm zeigt 2: Logo + Hero) |
-| Kartenbilder geladen | 137 (9'233 KB) |
-| Kollektions-Cover geladen | 32 (1'438 KB), alle `loading="eager"`, Mobil `100vw` → `width=832` |
+| Bilder geladen (verschiedene Dateien) / `<img>` im DOM | **150 / 398** (der erste Bildschirm zeigt 2: Logo + Hero) |
+| Bild-KB dieser 150 Dateien | 9'390 KB |
+| Kartenbilder geladen | 132 (8'583 KB) |
+| Kollektions-Cover geladen | 16 Dateien (719 KB) in 32 `<img>`, alle `loading="eager"`, Mobil `100vw` → `width=832` |
 | LCP | 3'520 ms (Hero-Hintergrund, vorgeladen) |
 | CLS · Überbreite | 0,04 · 0 (scrollWidth 390) |
 
 Jede der 16 Karussell-Reihen lud sofort **8 Bilder**, auch die Reihe `pl_spass_gadgets` bei y = 8'790 px. Beispiel
 `product_list_schweiz` (y = 5'579): 8 Bilder / 1'220 KB, jedes `width=832` für eine Karte von 172 px Breite.
 
-## Ursache 1: Horizon lädt das ZWEITE Kartenbild sofort vor (≈ 8 MB)
+## Ursache 1: Horizon lädt das ZWEITE Kartenbild sofort vor (≈ 7,7 MB)
 
 Im Server-HTML haben alle Kartenbilder unterhalb der Reihen 1 bis 4 `loading="lazy"` (per curl geprüft). Im Browser fehlt das
 Attribut bei genau einem Bild je Karte: beim **zweiten**. Das kommt aus `assets/product-card.js`:
@@ -32,9 +33,9 @@ korrekt, das verdeckte Zweitbild lädt. Ohne `lazy` ist `sizes="auto, …"` ung�
 Bildschirm). Als `sizes` bekommt es die gemessene Kartenbreite (172 px → `width=352`, Hero-Reihe 234 px → `width=480`). Der Zweck
 des Originals bleibt erhalten, nämlich kein weisser Blitz beim Wischen oder Hover: vorgeladen wird weiterhin, aber nicht mehr blind.
 **Vor dem Live-Schreiben getestet:** Die Datei wurde nur im Testbrowser ersetzt (Playwright `route`), der Shop war unverändert. Ergebnis
-171 → 70 Bilder, 10'759 → 2'446 KB.
+150 → 54 Bilddateien, 9'390 → 1'727 KB (die Cover waren im Test noch alt).
 
-## Ursache 2: Kollektions-Cover immer eager (1'438 KB)
+## Ursache 2: Kollektions-Cover immer eager (719 KB)
 
 `snippets/resource-image.liquid` setzt bei den Layouts grid und carousel immer `loading="eager"`, mobil mit `100vw`. Die Sektion
 `collection_list` steht an Position 7 (y ≈ 2'000 px). Wegen grid + carousel_on_mobile rendert sie doppelt: 16 Cover sichtbar,
@@ -50,23 +51,26 @@ aus (Kommentare entfernt, Marke darum nicht sichtbar); die neue Funktion `vorlad
 
 | Messgrösse | vorher | nachher |
 |---|---:|---:|
-| `<img>` geladen beim Öffnen | 171 | **38** |
-| Bild-KB beim Öffnen | 10'759 | **1'008** |
-| Kartenbilder | 137 / 9'233 KB | **36 / 920 KB** |
-| Kollektions-Cover | 32 / 1'438 KB | **0** (laden beim Scrollen) |
-| übertragen gesamt | 10'817 KB | **2'358 KB** |
+| Bilddateien geladen beim Öffnen | 150 | **38** |
+| Bild-KB beim Öffnen | 9'390 | **1'008** |
+| Kartenbilder | 132 / 8'583 KB | **36 / 920 KB** |
+| Kollektions-Cover | 16 / 719 KB | **0** (laden beim Scrollen) |
+| übertragen gesamt (alle Ressourcen, `transferSize`) | 10'817 KB | **2'358 · 2'350 · 2'186 KB** (3 Läufe) |
 | CLS · Überbreite | 0,04 · 0 | **0,03 · 0** (scrollWidth 390) |
 | ganze Seite durchgescrollt (16 Halte à 700 px) | 223 Bilder / 10'162 KB | **194 / 3'934 KB** |
 | sichtbare Bilder leer nach dem Scrollen (2,5 s je Halt) | 0 von 85 (Original-Skript) | **0 von 85** |
 
-**LCP:** LCP_ZEILE
+**LCP** (Hero-Hintergrund, vorgeladen): vorher 3'520 ms (1 Lauf), nachher 4'264 · 2'160 · 2'316 ms. Über den Proxy hier stark
+schwankend, darum nur als Tendenz lesen: Das Hero-Bild konkurriert nicht mehr mit ~150 gleichzeitigen Bild-Downloads.
 
 Weitere Seiten (Wächter, 390 px, ohne Scrollen): `/collections/halloween` 9 von 81 Bildern / 242 KB, Produktseite
-(Hundepullover) 22 von 32 / 1'113 KB (davon die Galerie 21 / 1'108 KB, siehe OFFEN).
+(Hundepullover) 7 Dateien / 285 KB: 5 Galeriebilder je 832 px für 390 px × DPR 2, korrekt. Die übrigen `<img>` sind
+dieselben Dateien in der versteckten Desktop-Galerie und im Zoom; sie werden nicht zweimal übertragen.
 
 ## Wächter (neue Produkte, neue Reihen, Theme-Updates)
 
-- `automation/startseite_bildlast.mjs`: Startseite 390 px ohne Scrollen. Gemessen werden geladene Bilder und KB je Sektion; über der
+- `automation/startseite_bildlast.mjs`: Startseite 390 px ohne Scrollen. Gemessen werden geladene Bilddateien (jede URL einmal: die erste
+  Fassung zählte Doppel-`<img>` derselben Datei mehrfach, die Produktseite schien 1'113 statt 285 KB schwer) und KB je Sektion; über der
   Grenze 60 Bilder / 3'000 KB kommt ⚠️. Bei 0 Bildern im DOM gibt es bis 3 Versuche, danach «unklar» und nie «0». Das wurde gemessen:
   `/collections/halloween` kam zweimal mit 0 `<img>` zurück. Ledger `dropship/_startseite_bildlast.tsv`.
 - Aufseher (`fixer_keepalive.sh`) täglich: zuerst `mobil_tempo_patch_2.py` idempotent, denn ein Horizon-Update überschreibt
@@ -74,8 +78,6 @@ Weitere Seiten (Wächter, 390 px, ohne Scrollen): `/collections/halloween` 9 von
 - Neue Startseiten-Reihen (`homepage_katalog_rotation.py`) sind Karussell-Karten; sie fallen automatisch unter Patch 1.
 
 ## OFFEN
-- **Produktseite:** Die Galerie lädt beim Öffnen 21 Bilder / 1'108 KB (Hundepullover). Zu prüfen ist, ob alle Galerie-Slides eager
-  sind. Das ist eine eigene Klasse, eigene Runde.
 - **Startseite HTML 2,9 MB entpackt, 15'219 DOM-Knoten** (18 Reihen à 8 Karten mit je bis zu 4 Bildern). Das bremst das Parsen auf
   schwachen Handys. Weniger Reihen wären ein Betreiber-Entscheid (Startseiten-Inhalt).
 - Messungen von unserer IP sind laut, weil der Proxy hier ~25 s Gesamtladezeit erzeugt. Die KB-Zahlen sind exakt (`transferSize`),
