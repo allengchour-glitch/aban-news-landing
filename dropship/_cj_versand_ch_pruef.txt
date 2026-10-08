@@ -5582,3 +5582,5 @@ vintage-herrenschuhe-mit-karomuster-618300	2604171214311618900	16	24.67	ok	lande
 herren-chelsea-stiefel-616500	2604160636311617000	16	23.50	ok	landeseite
 britische-stiefel-im-biker-stil-626000	2604130315541626700	16	14.96	ok	landeseite
 braune-casual-stiefel-607500	2604100852051607900	16	14.72	ok	landeseite
+herren-knochelstiefel-im-britischen-stil-615200	2604040512291615600	16	17.66	ok	landeseite
+winterstiefel-fur-herren-gefuttert-601300	2603270306371602100	16	19.99	ok	landeseite
