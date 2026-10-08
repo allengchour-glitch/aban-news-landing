@@ -6040,3 +6040,5 @@ universal-echtleder-lenkradbezug-631400	2604260628111632000	16	11.00	ok	landesei
 universal-antibakterieller-lenkradbezug-610300	2604240947201610900	16	11.60	ok	landeseite
 ultra-dunn-lenkradschutz-fur-toyota-es300h-nx2-629200	2604240907501629700	16	11.60	ok	landeseite
 ultraflacher-lenkradbezug-aus-echtleder-608600	2604230438481609000	16	11.60	ok	landeseite
+voll-leder-lenkradbezug-mit-kohlefaser-602400	2604220743221602800	16	12.21	ok	landeseite
+lenkradschutz-aus-leder-elastisch-sportlich-623300	2511250841021623500	16	5.55	ok	landeseite
