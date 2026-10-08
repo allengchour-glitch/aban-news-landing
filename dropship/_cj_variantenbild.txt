@@ -6359,3 +6359,5 @@ gid://shopify/Product/15455746654593	zugeordnet	60	Herren Polo-Shirt mit Kragen 
 gid://shopify/Product/15455746818433	zugeordnet	24	Herren-Polo mit Waffel-Webmuster
 gid://shopify/Product/15455746851201	zugeordnet	30	Herren Kurzarm-Basisschicht-Shirt Einfarbig, Slim Fit
 gid://shopify/Product/15455759237505	zugeordnet	84	3D Blumen Damen-Satin-Kleid
+gid://shopify/Product/15455759565185	zugeordnet	10	Westenkleid mit Perlenblüten-Brosche
+gid://shopify/Product/15455759597953	zugeordnet	5	Ohrenreiniger mit 8-teiligem Satz
