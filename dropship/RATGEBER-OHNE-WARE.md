@@ -8,7 +8,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 |---|---:|
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
 | [Schweizer Wohlfühl-Geheimnisse — 7 Rituale, die wir aus den ](/blogs/ratgeber/schweizer-wohlfuhl-geheimnisse) | 0 |
-| [Galaxy-Projektor & Sternenhimmel-Lampen – Lohnt sich der Hyp](/blogs/ratgeber/galaxy-projektor-sternenhimmel-lampen-test) | 1 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
 | [Aroma-Diffuser kaufen: Der grosse Ratgeber 2026](/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026) | 0 |
 | [Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass](/blogs/ratgeber/geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass) | 0 |
