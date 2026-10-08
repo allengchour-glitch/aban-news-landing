@@ -665,3 +665,4 @@ gid://shopify/Product/15494693585281	ok	Magisches Katzenkratzbrett mit Orgel-Des
 gid://shopify/Product/15495048495489	ok	Kabellose 5-in-1 Ladestation mit Wecker
 gid://shopify/Product/15495720796545	ok	U-förmiges Seitenschläferkissen mit Beinstütze
 gid://shopify/Product/15495725449601	ok	V17 RC-Kampfjet Drohne aus Schaumstoff
+gid://shopify/Product/15495731544449	ok	Mini-Drohne im Koffer-Design
