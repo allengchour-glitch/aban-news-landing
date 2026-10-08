@@ -5709,3 +5709,8 @@ leichte-mesh-sneaker-611000	2411070650151611300	16	9.61	ok	landeseite
 sticken-kit-625100	2509040727281625400	16	7.17	ok	landeseite
 tier-motiv-stickerei-set-621100	2509040722261621400	16	7.17	ok	landeseite
 anfanger-embroidery-set-su-e-tier-motive-619800	2508290907551610200	16	6.77	ok	landeseite
+stickerei-set-612600	2508290853321612700	16	6.77	ok	landeseite
+digitalmalerie-steinberg-moderne-einrichtung-227328	1794227115085279232	3	8.57	ok	landeseite
+30-teiliges-universelles-rei-verschluss-repara-205825	2069325358241452033	0	-	KEINE CH-Option → DRAFT	landeseite
+portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+kleine-nahmaschine-fur-unterwegs-806849	2056303874806550529	0	-	KEINE CH-Option → DRAFT	landeseite
