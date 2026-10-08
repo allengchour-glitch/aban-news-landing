@@ -342,6 +342,71 @@ def schreiben(charge):
     return aus
 
 
+
+def bulk_schreiben(plan):
+    """08.10.2026: Massenweg ohne Eimer — [(pid, google, shopify_id)] → [(pid, status, google, sid, fehler)] wie schreiben().
+    EINE Bulk-Mutation productUpdate(category + metafields); productUpdate legt das Google-Metafeld per namespace/key an oder
+    überschreibt es (Probe 08.10.: gleiche Metafeld-ID). Gemessen: einzeln 25/min neben einem Lese-Scan (Eimer ~120/2000).
+    Verfolgt den EIGENEN Lauf über node(id:) (Lehre 07.10. «fremder-bulk»); wartet auf eine laufende Mutation, bricht keine ab."""
+    import subprocess
+    from kaufwille_zeile import gql
+    import kategorie_fein as kf
+    os.makedirs("/tmp/kos_bulk", exist_ok=True)
+    pfad = f"/tmp/kos_bulk/plan_{os.getpid()}.jsonl"
+    with open(pfad, "w", encoding="utf-8") as fh:
+        for pid, g, sid in plan:
+            fh.write(json.dumps({"product": {"id": pid, "category": kf.TC + sid, "metafields": [
+                {"namespace": "mm-google-shopping", "key": "google_product_category", "type": "single_line_text_field", "value": g}]}}) + "\n")
+    st = gql('mutation{stagedUploadsCreate(input:[{resource:BULK_MUTATION_VARIABLES,filename:"kategorie.jsonl",'
+             'mimeType:"text/jsonl",httpMethod:POST}]){stagedTargets{url parameters{name value}} userErrors{message}}}')
+    t = st["stagedUploadsCreate"]["stagedTargets"][0]
+    form = []
+    for q in t["parameters"]:
+        form += ["-F", f"{q['name']}={q['value']}"]
+    key = next(q["value"] for q in t["parameters"] if q["name"] == "key")
+    r = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "--max-time", "600", "-X", "POST", t["url"]]
+                       + form + ["-F", f"file=@{pfad}"], capture_output=True, text=True)
+    if r.stdout.strip() not in ("200", "201", "204"):
+        raise RuntimeError(f"Upload HTTP {r.stdout}")
+    for _ in range(360):
+        c = gql('{currentBulkOperation(type:MUTATION){status}}')["currentBulkOperation"]
+        if not c or c["status"] not in ("CREATED", "RUNNING", "CANCELING"):
+            break
+        time.sleep(10)
+    mut = ('mutation call($product: ProductUpdateInput!) { productUpdate(product: $product) { product { id category { id } '
+           'metafield(namespace: "mm-google-shopping", key: "google_product_category") { value } } userErrors { message } } }')
+    m = gql('mutation($m:String!,$p:String!){bulkOperationRunMutation(mutation:$m,stagedUploadPath:$p){bulkOperation{id} userErrors{message}}}',
+            {"m": mut, "p": key})["bulkOperationRunMutation"]
+    if m["userErrors"]:
+        raise RuntimeError(f"Bulk nicht gestartet: {m['userErrors']}")
+    bid = m["bulkOperation"]["id"]
+    print(f"BULK gestartet {bid} · {len(plan)} Produkte", flush=True)
+    for _ in range(720):
+        n = gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})["node"]
+        if n["status"] not in ("CREATED", "RUNNING", "CANCELING"):
+            break
+        time.sleep(10)
+    print(f"BULK {n['status']} · {n.get('objectCount')} Objekte · {n.get('errorCode') or ''}", flush=True)
+    soll = {pid: (g, sid) for pid, g, sid in plan}
+    out = subprocess.run(["curl", "-sL", "--max-time", "600", n["url"]], capture_output=True, text=True).stdout if n.get("url") else ""
+    aus, gesehen = [], set()
+    for z in out.splitlines():
+        d = json.loads(z)
+        pu = ((d.get("data") or {}).get("productUpdate") or {})
+        pr = pu.get("product") or {}
+        pid = pr.get("id") or ""
+        if pid not in soll:
+            continue
+        gesehen.add(pid)
+        g, sid = soll[pid]
+        cat = ((pr.get("category") or {}).get("id") or "").split("/")[-1]
+        val = (pr.get("metafield") or {}).get("value")
+        fe = "; ".join(e.get("message", "") for e in (pu.get("userErrors") or []))[:120] or str(d.get("errors") or "")[:120]
+        aus.append((pid, "gesetzt" if cat == sid and val == g and not fe else "fehler", g, sid, fe))
+    if len(gesehen) < len(soll):
+        print(f"⚠️ {len(soll) - len(gesehen)} ohne Ergebniszeile (nicht im Ledger — nächster Lauf nimmt sie wieder)", flush=True)
+    return aus
+
 def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad, ueberspringen=()):
     """Gemeinsamer Lauf: Produkte mit Google-Kategorie im ZWEIG → zielfn(titel) = voller Google-Pfad oder None.
     ziele = alle möglichen Google-Pfade (gegen die Taxonomie geprüft); Shopify-Ziel aus Shopifys Zuordnung."""

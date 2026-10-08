@@ -111,7 +111,13 @@ def main():
     plan = [x for x in plan if x[2] in gs]
     print("Stand:", dict(st), "· Plan", len(plan))
     ok = fe = 0
-    if SCHARF and plan:
+    if SCHARF and plan and (os.environ.get("BULK") == "1" or len(plan) >= 300):
+        # 08.10.2026: ab 300 eine Bulk-Mutation (kein Eimer) — einzeln liefen neben einem Lese-Scan nur ~25/min
+        with open(LEDGER, "a", encoding="utf-8") as f:
+            for pid, s, g, sid, fehler in kos.bulk_schreiben(plan):
+                f.write(f"{pid}\t{s}\t{g}\t{sid}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{fehler}\n")
+                ok += s == "gesetzt"; fe += s == "fehler"
+    elif SCHARF and plan:
         with open(LEDGER, "a", encoding="utf-8") as f:
             for k in range(0, len(plan), 25):
                 for versuch in range(8):       # Drossel (mehrere Schreiber) → warten statt abbrechen

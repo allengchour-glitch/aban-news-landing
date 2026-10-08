@@ -134,7 +134,10 @@ GLEICHWERTIG = {"Apparel & Accessories > Jewelry > Watches": ("aa-6-12", "aa-6-1
                 "Apparel & Accessories > Clothing > Pants": ("aa-1-25",),
                 "Apparel & Accessories > Clothing > Shorts": ("aa-1-25",),
                 "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets": ("aa-1-25",),
-                "Apparel & Accessories > Clothing > Sleepwear & Loungewear": ("aa-1-25",)}
+                "Apparel & Accessories > Clothing > Sleepwear & Loungewear": ("aa-1-25",),
+                # 08.10.2026: Google-Blätter unter diesen Klassen (Kinder-Pyjama, Kinder-Overall) galten sonst als «anderer Zweig»
+                "Apparel & Accessories > Clothing > Sleepwear & Loungewear > Pajamas": ("aa-1-25",),
+                "Apparel & Accessories > Clothing > One-Pieces > Jumpsuits & Rompers": ("aa-1-25",)}
 
 
 def ziel_fuer(cat_id, google_name, karte):
@@ -207,6 +210,9 @@ KREUZ[("sg", "hg-12-2-4")] = re.compile(r"hängematte|hammock", re.I)
 # Gear»; Motorrad-Protektorenjacken unter «Activewear», Shopify hat «Motorcycle Protective Gear».
 KREUZ[("sg-4-1-2", "sg-4-1-12-2")] = re.compile(r"helm", re.I)
 KREUZ[("aa-1-1", "vp-1-6-1")] = re.compile(r"motorrad|motorcycle", re.I)
+# 3D-Drucker-ZUBEHÖR (Filament, Heizbett, Extruder, Sensor, Netzteil) stand in Shopify unter «3D Printers» (el-13-2).
+KREUZ[("el-13-2", "el-13-1")] = re.compile(r"filament|heizbett|extruder|hotend|düse|nozzle|leveling|sensor|glasplatte|pei-?platte|"
+                                           r"netzteil|druckplatte|druckbett", re.I)
 KREUZ[("hb-3-2-9", "hb-3-2-5-3")] = re.compile(r"gerät|apparat|instrument|lift|roller|maske|bürste|stein", re.I)
 KREUZ[("hb-3-2-9", "hb-3-2-5-3-6")] = re.compile(r"roller|stein", re.I)
 for _von in ("aa-1", "tg-5", "ap", "aa-2"):

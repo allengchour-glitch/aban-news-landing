@@ -44,7 +44,24 @@
 
 
 
-## 2026-10-08 17:30 UTC · 🧥² «weiter»: Feinkategorie Runde 2 — 15 Klassen, 1'839 Produkte, Entwurf parallel, Urteil selbst
+## 2026-10-08 17:50 UTC · 🗂️ «ordne alles sauber ein»: Zweigwechsel erlaubt — 2'662 Urteile, Trachten, Press-on, und ein Wächter, der zurückgesetzt hätte
+
+**GEMESSEN:** 6'457 Produkte bei Google auf einer Oberklasse, 18'990 auf Shopify-Klassen mit Unterklassen, 76 Zweig-Widersprüche.
+Die Einzelurteile vom 07.10. hatten den Zweigwechsel verboten («bleibt» statt «falscher Zweig»). **Gefunden beim Prüfen:**
+`kosmetik_fein.lauf` (auch Haar/Uhren/RC) kannte nur «gleich» und hätte am nächsten Morgen 262 feinere Shopify-Klassen und
+82 feinere Google-Werte vergröbert. Er läuft VOR `shopify_fein`, und dessen Ledger hätte das nicht repariert.
+**GETAN:** Nie-vergröbern-Schutz im Lauf + Geräte-Wortfallen (14/0). Trachten aus Kostümen per «umzug» in `shopify_fein` (91/0).
+`nagel_fein.py`: Press-on nach Grössenoption/Beschreibung (96 + 34 Sticker, 0 Fehler), Vorrang vor der Titelregel. 6'054 Einzel-
+urteile MIT Zweigwechsel (10 Prüfer), Midi verworfen (Prüfer uneinig), nichts gröber → **2'662 / 0, Rücklesen 30/30**, Rest per
+Bulk-Mutation mit Metafeld (`kosmetik_fein.bulk_schreiben`, 2'587 in ~2 min statt ~90 min). `shopify_fein` 167/0, `kategorie_fein`
+35/0 (ZUSATZ/KREUZ/GLEICHWERTIG). Lerndaten 18'045, Gegenprobe 97,4 %. Nachher: Google-Oberklasse 4'194, Widersprüche 49.
+**LEHRE:** (1) Ein täglicher Wächter, der nur «gleich» kennt, setzt jede feinere Arbeit anderer zurück. Jeder Lauf braucht die
+Regel «nie vergröbern», für BEIDE Felder. (2) Wenn mehrere Prüfer dieselbe Lücke unterschiedlich füllen (Midi: Knie oder lang),
+ist die Lücke in der Taxonomie: verwerfen statt mitteln. (3) Der Titel ist bei CJ kein Warenurteil («Nagelsticker» = Press-on).
+Grössenoption und Lieferumfang entscheiden. (4) Meine eigene Schätzung «die meisten» war falsch (51/145). Nachbefunde messen, bevor
+sie im Bericht stehen. → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md` (Runde 3)
+
+## 2026-10-08 16:45 UTC · 🧥² «weiter»: Feinkategorie Runde 2 — 15 Klassen, 1'839 Produkte, Entwurf parallel, Urteil selbst
 
 **GEMESSEN:** frischer Export: 20'561 auf Shopify-Klassen mit Unterklassen (924 davon Hemden, die richtig auf «Shirts» stehen).
 **GETAN:** 15 Klassen (Rucksäcke, Sportbekleidung, Hundekleidung, Kostüme, Velozubehör, Lidschatten, Portemonnaies, Katzenspielzeug,
@@ -18982,3 +18999,6 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · 🖥️ **«hetzner verbessern»: Server-CJ-Runner ohne Text-KI = 3'903× skip(gemini), 0 angelegt, ~39k Punkte/Tag nach bezahlter Abfrage; /tmp 97 %, numpy/PIL fehlten → Keepalive lädt /etc/luxe/secrets.env, /tmp-Hygiene, apt, `KI_DA=0` → Grind+Such-Runner aus, Importer bricht VOR CJ ab.** Voraussetzung vor der bezahlten Abfrage prüfen → `dropship/HETZNER-AUTOMATION-2026-10-06.md`
 - 2026-10-06 · 📦 **«fix fortuna»: Bestand 26 h eingefroren (2× rc=2 «Shopify antwortete nicht») — Token gültig, Eimer leer (kategorie_fein zeitgleich «40x gedrosselt»), JS-`gql()` gab nach 20 Kurzversuchen ohne Grund auf → throttleStatus-Warten max(Anfrage,600), 40 Runden, Grund im Log; 1'117 Varianten nachgeführt (12 auf 0).** Drossel-Regel gilt auch für .mjs → Journal 06.10. 22:25
 - 2026-10-07 · 🧾 **Verbesserungsrunde (Tag 7): repo_vorspulen vereinigte nur *.txt — 85 .tsv-Ledger verloren bei jedem Rewind die ungepushten Zeilen (Bildtausch 17:17 weg → 20:43 doppelt getauscht) → `ledger_union.py` Schwanz-Union (Purges bleiben draussen, 8/8, 0 Zombies); «Page unavailable» 60/60 kaufbar, Anstupser wirkt.** Neuer Ledger-Typ = Rewind-Union mitprüfen → `dropship/LEDGER-UNION-TSV-2026-10-07.md`
+- 2026-10-07 · 🪣 **Verbesserungsrunde: 8 Werkzeuge (u. a. preis_senken) lasen Bulk-Status/URL über `currentBulkOperation` (= fremder Export möglich), 2 brachen fremde Exporte per bulkOperationCancel ab → eigene ID `node(id:)`, kein Abbruch; Gehirn-Regel erkennt jetzt `(type:…)` (erste Fassung sah 5/8), 0 NEU.** Neue Regel gegen alle Schreibweisen kalibrieren → `dropship/FREMDER-BULK-2026-10-07.md`
+- 2026-10-07 · 🔪 **Verbesserungsrunde: Keramikmesser-Set «…und Schäler» + Boningmesser «ohne Schutzhülle» ACTIVE (Ausnahmewort hinten kippte das Urteil) → Kopfwort-Regel py+mjs (70/70, Voll-Export 2/0); Klingen-Wache meldete «0», weil `currentBulkOperation` einen FREMDEN Export lieferte (47k statt 81k) → eigene Bulk-ID + Vollständigkeit, Gehirn-Regel `fremder-bulk`.** «0 Befunde» nur mit geprüfter Grundgesamtheit → `dropship/KLINGEN-KOPFWORT-2026-10-07.md`
+- 2026-10-07 · 📦 **CJ-Lager Fensterlauf: nur 840/4'000 (Lauf starb am Neustart, 55-min-Anspruch sperrte) → 10 min nach Tod/im Fenster; 8 ACTIVE voll kaufbar trotz CJ 1602002 «removed from shelves» → `cj_entfernt()` sperrt (131 Varianten, umkehrbar); Stichprobe 12/12 korrekt gesperrt.** «unklar» mit eindeutigem Code = eigene Regel → Journal 07.10. 01:55
