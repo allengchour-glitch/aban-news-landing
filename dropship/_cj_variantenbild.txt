@@ -6361,3 +6361,8 @@ gid://shopify/Product/15455746851201	zugeordnet	30	Herren Kurzarm-Basisschicht-S
 gid://shopify/Product/15455759237505	zugeordnet	84	3D Blumen Damen-Satin-Kleid
 gid://shopify/Product/15455759565185	zugeordnet	10	Westenkleid mit Perlenblüten-Brosche
 gid://shopify/Product/15455759597953	zugeordnet	5	Ohrenreiniger mit 8-teiligem Satz
+gid://shopify/Product/15455759663489	zugeordnet	3	Reise-Rucksack mit Trocken-Feucht-Trennung
+gid://shopify/Product/15455759860097	zugeordnet	3	Perlengeschmückter offener Titanstahl-Armband
+gid://shopify/Product/15455760089473	zugeordnet	35	Chinesischer Cardigan mit Knopfleiste und Sonnenfaktor
+gid://shopify/Product/15455760122241	zugeordnet	30	Cuban-Kette mit Anhänger
+gid://shopify/Product/15455760286081	zugeordnet	21	Herren Winterjacke mit Stehkragen
