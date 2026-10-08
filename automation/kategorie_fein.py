@@ -277,7 +277,10 @@ def main():
         if not sid:
             stat[grund] += 1; continue
         if (p["id"], sid) in erledigt:
-            stat["schon-im-ledger"] += 1; continue
+            # 08.10.2026: geschrieben UND wieder grob = jemand setzt zurück. GEMESSEN 363/432 Printful-Produkte (SKU «9000…_…»)
+            # + 6 LX, aber nur 53/23'053 CJ — keines unserer Werkzeuge schreibt diese Werte (Ledger/Logs geprüft), Verdacht:
+            # Printful-Sync setzt seine Grobklasse. Nicht erneut schreiben (Hin und Her), sondern sichtbar zählen.
+            stat["rueckfall-grob" if sid.startswith(cid + "-") else "schon-im-ledger"] += 1; continue
         if not titel_ok(g, p["title"]):
             stat["titelprobe-nein"] += 1; probe_weg[g.split(" > ")[-1]] += 1
             if len(bsp["nein"]) < 10: bsp["nein"].append((p["title"][:60], g.split(" > ")[-1]))
