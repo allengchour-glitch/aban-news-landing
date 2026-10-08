@@ -5562,3 +5562,23 @@ mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 outdoor-arbeitsstiefel-low-top-kampftraining-628300	2606090806501628900	16	21.16	ok	landeseite
 atmungsaktive-lederhikingboots-outdoor-arbeit-610800	2606081052121611700	16	21.16	ok	landeseite
+herren-knochelstiefel-625900	2605280541271626500	16	17.66	ok	landeseite
+britische-chelsea-boots-614000	2605271051111614600	16	16.16	ok	landeseite
+herren-arbeitsstiefel-605700	2605270641051606300	16	12.81	ok	landeseite
+retro-high-top-schuhe-fur-herren-600800	2605260652171601500	16	14.37	ok	landeseite
+herren-arbeitsstiefel-suede-614700	2605180819381615400	16	17.66	ok	landeseite
+herren-wanderstiefel-602900	2605141139121603600	16	24.09	ok	landeseite
+retro-halbschuhe-herren-602900	2605130834111603500	16	17.66	ok	landeseite
+herren-lederstiefel-600900	2605110246141601800	16	18.72	ok	landeseite
+wanderschuhe-mid-top-grosse-47-637800	2605071245421638400	16	20.58	ok	landeseite
+herren-stiefel-casual-wustenstil-603900	2605050455051604600	16	27.01	ok	landeseite
+retro-engineer-stiefel-622000	2604300711071622800	16	13.88	ok	landeseite
+mid-calf-martin-boots-629500	2604240548011620000	16	14.37	ok	landeseite
+herren-business-schuhe-aus-leder-604200	2604220847431604600	16	11.84	ok	landeseite
+schwarze-kampfstiefel-612800	2604220403441613700	16	18.83	ok	landeseite
+retro-punk-schuhe-mit-metall-details-622800	2604190823251623400	16	17.52	ok	landeseite
+vintage-stiefel-mit-seitenrei-verschluss-609500	2604171246051600100	16	24.67	ok	landeseite
+vintage-herrenschuhe-mit-karomuster-618300	2604171214311618900	16	24.67	ok	landeseite
+herren-chelsea-stiefel-616500	2604160636311617000	16	23.50	ok	landeseite
+britische-stiefel-im-biker-stil-626000	2604130315541626700	16	14.96	ok	landeseite
+braune-casual-stiefel-607500	2604100852051607900	16	14.72	ok	landeseite
