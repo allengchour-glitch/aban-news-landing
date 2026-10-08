@@ -764,3 +764,4 @@ gid://shopify/Product/15508416954753	ok	Bausteine Rosenstrauss im Topf
 gid://shopify/Product/15508420264321	ok	Gewürz-Organizer für den Kühlschrank
 gid://shopify/Product/15508420854145	ok	Wasserdichte Handybox zur Wandmontage
 gid://shopify/Product/15508423016833	ok	Anti-Rutsch Gummifüsse für Waschmaschinen
+gid://shopify/Product/15451636334977	ok-lokal
