@@ -5707,3 +5707,5 @@ leichte-rutschfeste-sneaker-606200	2502070620151606500	16	16.52	ok	landeseite
 drehbare-laufschuhe-602800	2411300200361603900	16	10.15	ok	landeseite
 leichte-mesh-sneaker-611000	2411070650151611300	16	9.61	ok	landeseite
 sticken-kit-625100	2509040727281625400	16	7.17	ok	landeseite
+tier-motiv-stickerei-set-621100	2509040722261621400	16	7.17	ok	landeseite
+anfanger-embroidery-set-su-e-tier-motive-619800	2508290907551610200	16	6.77	ok	landeseite
