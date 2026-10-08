@@ -1495,6 +1495,13 @@ if [ -f "$REPO/automation/checkout_abbruch_messen.py" ] && [ ! -f /tmp/checkout_
   touch /tmp/checkout_abbruch_$(date -u +%F).stamp
   ( cd "$REPO" && timeout 170 python3 automation/checkout_abbruch_messen.py 2>&1 | tail -1 | tee -a /tmp/checkout_abbruch.log )
 fi
+# --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
+#     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
+#     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).
+if [ -f "$REPO/automation/kollektion_mengen_wache.py" ] && [ ! -f /tmp/kollektion_mengen_$(date -u +%F).stamp ]; then
+  touch /tmp/kollektion_mengen_$(date -u +%F).stamp
+  ( cd "$REPO" && SCHARF=1 setsid timeout 1500 bash automation/shopify_schranke.sh python3 automation/kollektion_mengen_wache.py >> /tmp/kollektion_mengen.log 2>&1 & )   # Hintergrund: Aufseher wartet nicht
+fi
 # --- Versand-Hinweis im Warenkorb-Drawer (06.10.2026, dropship/WARENKORB-GRATISVERSAND-2026-10-06.md) — täglich prüfen:
 #     Hinweis noch im Live-Snippet (Theme-Updates überschreiben Snippets), Tarif CH 7.00 / gratis ab ≤ 45 passt zum Text.
 #     Fehlt nur der Hinweis → einmal neu einfügen (idempotent, Anker-geprüft, Sicherung in /tmp); Tarif-Abweichung nur melden.
