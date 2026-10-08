@@ -65,4 +65,11 @@ Nachmessen 09./10.10.: geprüfte Neuware, Bewertungen auf Neuware.
 
 **OFFEN (andere Klasse, lit. b):** allgemeine Umweltwörter in Lieferantentexten. «umweltfreundlich» steht in 476 Produkten,
 «nachhaltig…» in ~190, «biologisch abbaubar» in 10. Das sind keine Klimaaussagen; jede einzelne wäre am Lieferanten zu
-belegen. Ebenso offen: «für du gedruckt» (Grammatik) in den Gelato-Postern.
+belegen. 
+
+## 3. Nebenbefund: «für du und deinen Hund»
+
+GEMESSEN: 14 aktive Produkte mit einem Überbleibsel der Sie→du-Umstellung (11× «für du», 2× «um du … warm zu hältst»,
+1× «ohne du zu belastest»). GETAN: auf der LIVE-Fassung korrigiert («für dich», «um dich … zu halten», «ohne dich zu belasten»),
+**14 gesetzt / 0 Fehler**, zurückgelesen, Altwerte in `_du_akkusativ_2026-10-08.tsv`. Neue Importe schreiben seit 02.09. direkt in
+du-Form (Prompt), darum kein eigener Wächter; bei einem neuen Fund wird es eine Regel in `textPolieren`.
