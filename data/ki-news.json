@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-07T11:02:25Z",
+ "stand": "2026-10-08T11:20:14Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "KI-Modelle wie Medikamente zulassen: Das steckt hinter der Idee von KI-Godfather Hinton",
-   "u": "https://t3n.de/news/ki-medikamente-zulassen-hinton-1766990/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-07T10:30:25Z",
-   "s": "Der oft „Godfather of AI“ genannte Nobelpreisträger Geoffrey Hinton empfiehlt, dass KI-Modelle vor ihrer Veröffentlichung ein ähnliches Genehmigungsverfahren durchlaufen sollten wie Medikamente. Anges…",
-   "sprache": "de"
-  },
-  {
-   "t": "Tech-Beschäftigte sind unzufriedener: Mehr Entwickler wechseln in die Selbstständigkeit",
-   "u": "https://www.golem.de/news/tech-beschaeftigte-sind-unzufriedener-mehr-entwickler-wechseln-in-die-selbststaendigkeit-2610-213803.html",
+   "t": "Gesetz gegen digitale Gewalt: Kabinett beschließt Strafen für Deepfakes und GPS-Tracking",
+   "u": "https://www.golem.de/news/gesetz-gegen-digitale-gewalt-kabinett-beschliesst-strafen-fuer-deepfakes-und-gps-tracking-2610-213868.html",
    "q": "Golem",
-   "d": "2026-10-07T10:15:02Z",
-   "s": "Während der Einsatz von KI weiter steigt, sinkt die Arbeitszufriedenheit von Entwicklern deutlich. (KI, Studien)",
+   "d": "2026-10-08T11:01:01Z",
+   "s": "Die sexualisierte Aufnahme eines bekleideten Pos kann künftig strafbar sein. Vor allem Frauen sollen vor digitaler Gewalt besser geschützt werden. (Deepfake, KI)",
    "sprache": "de"
   },
   {
-   "t": "Physics-LLM: Der künstliche Physiker",
-   "u": "https://www.golem.de/news/physics-llm-der-kuenstliche-physiker-2610-213799.html",
-   "q": "Golem",
-   "d": "2026-10-07T10:00:02Z",
-   "s": "Eine KI verbessert Analysesoftware in Stunden statt Monaten. Mit Physics-LLM soll daraus ein offenes Werkzeug für Europas Physikforschung werden. Ein Bericht von Dirk Eidemüller (Wissenschaft, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: KI in der Cybersecurity – Sicherheit trotz Coding-Agenten, LLMs und Deepfakes",
-   "u": "https://www.heise.de/news/KI-in-der-Cybersecurity-Sicherheit-trotz-Coding-Agenten-LLMs-und-Deepfakes-11447449.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-07T10:00:00Z",
-   "s": "Künstliche Intelligenz verändert die IT-Sicherheit und schafft neue Herausforderungen. Sie bietet neue Angriffsflächen, aber auch Möglichkeiten.",
-   "sprache": "de"
-  },
-  {
-   "t": "Eine Milliarde Nutzer von ChatGPT: Dennoch hat KI ein Akzeptanz-Problem bei uns",
-   "u": "https://t3n.de/news/eine-milliarde-nutzer-von-chatgpt-dennoch-hat-ki-ein-akzeptanz-problem-bei-uns-1766749/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Entdeckung oder Routine? Was Anthropics KI-Labor für die Bewertung echter Forschungsdurchbrüche bedeutet",
+   "u": "https://t3n.de/news/entdeckung-routine-anthropic-ki-labor-1765931/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-07T09:30:15Z",
-   "s": "Umfragen der Stanford University und Gallup belegen, dass die Menschen kein gutes Bild von KI-Produkten und den Rechenzentren haben. Gleichzeitig steigen die Nuweiterlesen auf t3n.de",
+   "d": "2026-10-08T10:55:00Z",
+   "s": "KI-Firmen bestehen darauf, dass ihre Agenten und Sprachmodelle bahnbrechende Fortschritte erzielen. Jüngstes Beispiel aus der Biologie ist ein Vorstoß von Anthrweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Copilot auf Platz eins: GitHub stellt neuen Review-Benchmark vor",
-   "u": "https://www.heise.de/news/GitHub-ReviewBench-Benchmark-fuer-KI-gestuetzte-Code-Reviews-11478889.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Gods Don't Give Gifts: Erster KI-generierter Spielfilm will Oscar gewinnen",
+   "u": "https://www.golem.de/news/gods-don-t-give-gifts-erster-ki-generierter-film-will-einen-oscar-gewinnen-2610-213872.html",
+   "q": "Golem",
+   "d": "2026-10-08T10:34:02Z",
+   "s": "Spektakuläre Bilder: Die Macher eines mit KI erstellen Films hoffen ganz offiziell auf einen Oscar. (Filme & Serien, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "40 Milliarden Dollar für Nvidia-Chips: SpaceX soll riesige Finanzierung planen",
+   "u": "https://t3n.de/news/40-milliarden-dollar-fuer-nvidia-chips-spacex-soll-riesige-finanzierung-planen-1767184/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-08T10:30:52Z",
+   "s": "Elon Musks Raumfahrtunternehmen will offenbar Milliarden aufnehmen, um den Kauf von Nvidia-Chips zu finanzieren. Gleichzeitig wächst bei Anlegern die Skepsis gegenüber schuldenfinanzierten KI-Investit…",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Features für Webex-Telefonie: Persönliche Assistenz und Echtzeitübersetzung",
+   "u": "https://www.heise.de/news/KI-Features-fuer-Webex-Telefonie-Persoenliche-Assistenz-und-Echtzeituebersetzung-11480604.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-07T09:26:00Z",
-   "s": "Mit ReviewBench will GitHub Code-Reviews durch KI fair vergleichbar machen. Auf Platz eins landet ausgerechnet Copilot, ein unabhängiger Test sieht das anders.",
+   "d": "2026-10-08T10:18:00Z",
+   "s": "Cisco stellt auf der WebexOne-Konferenz zahlreiche KI-Features für Webex Calling vor, darunter einen Anruf-Assistenten und Echtzeitübersetzung.",
    "sprache": "de"
   },
   {
-   "t": "Ex-Ramp engineers raise $20M for platform Melius after scrapping their first product",
-   "u": "https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-06T22:34:03Z",
-   "s": "Instead of helping marketers manage and optimize ad spend, the company is focusing on building the tools that generate the creative assets and campaigns.",
-   "sprache": "en"
-  },
-  {
-   "t": "How AI decision models could change content moderation",
-   "u": "https://techcrunch.com/2026/10/06/how-ai-decision-models-could-change-content-moderation/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-06T20:35:20Z",
-   "s": "On Tuesday, Musubi announced a lightweight decision model made for real-time moderation called PolicyLM-1.7B, released with open weights.",
-   "sprache": "en"
-  },
-  {
-   "t": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
-   "u": "https://openai.com/index/atlassian-partnership",
-   "q": "OpenAI",
-   "d": "2026-10-06T16:00:00Z",
-   "s": "Atlassian and OpenAI are expanding their partnership to connect frontier models with enterprise knowledge and help teams plan, build, and deliver work.",
-   "sprache": "en"
-  },
-  {
-   "t": "Einigung absehbar: EU-Staaten entscheiden über Cookie-Banner, KI-Training und Co.",
-   "u": "https://netzpolitik.org/2026/einigung-absehbar-eu-staaten-entscheiden-ueber-cookie-banner-ki-training-und-co/",
-   "q": "netzpolitik.org",
-   "d": "2026-10-06T15:13:14Z",
-   "s": "Die EU will Unternehmen das Training von KI mit unseren Daten erleichtern. – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Huzeyfe TuranDie Verhandlungen rund um den Daten-Omnibus im Rat sind in …",
+   "t": "heise-Angebot: M365 Copilot im Unternehmen – Agents mit Copilot Studio und Foundry entwickeln",
+   "u": "https://www.heise.de/news/M365-Copilot-im-Unternehmen-Agents-mit-Copilot-Studio-und-Foundry-entwickeln-11458173.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-08T10:00:00Z",
+   "s": "M365 Copilot ist mehr als ein KI-Assistent in Office. Agents lassen sich produktiv entwickeln und mit Copilot Studio und Foundry unternehmensweit skalieren.",
    "sprache": "de"
+  },
+  {
+   "t": "AI breakthroughs in robotics won’t change your life any time soon",
+   "u": "https://www.technologyreview.com/2026/10/08/1145923/ai-breakthroughs-in-robotics-wont-change-your-life-any-time-soon/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-08T09:00:00Z",
+   "s": "The story is a collaboration between MIT Technology Review and Aventine, a non-profit research foundation that creates and supports content about how technology and science are changing the way we liv…",
+   "sprache": "en"
+  },
+  {
+   "t": "Building a safer path to autonomous industrial AI",
+   "u": "https://www.technologyreview.com/2026/10/08/1144020/building-a-safer-path-to-autonomous-industrial-ai/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-08T08:17:32Z",
+   "s": "Industrial AI is entering a new phase. After decades of predictive analytics and other specialized applications, advances in foundation models, physical AI, and agentic AI are making it possible to au…",
+   "sprache": "en"
+  },
+  {
+   "t": "Nous Research confirms it hit $1.5B valuation, launches AI agents for business users",
+   "u": "https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-07T20:48:45Z",
+   "s": "The developer of Hermes Agent raised a $90 million Series B.",
+   "sprache": "en"
+  },
+  {
+   "t": "Microsoft releases new Nvidia-chip AI PCs with revamped Windows 11",
+   "u": "https://techcrunch.com/2026/10/07/microsoft-releases-new-nvidia-chip-ai-pcs-with-revamped-windows-11/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-07T20:22:37Z",
+   "s": "Microsoft revealed the specs and price for its Surface Laptop Ultra, AI PCs that run on Nvidia chips that are designed to run AI models and agents.",
+   "sprache": "en"
   }
  ]
 }
