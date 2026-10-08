@@ -633,3 +633,6 @@ gid://shopify/Product/15495109968257	ok	Maus Teaser Ball für Haustiere
 gid://shopify/Product/15495110295937	ok	Laptop-Tasche für Herren
 gid://shopify/Product/15495110361473	ok	Hundespielzeug Beissball mit Sound
 gid://shopify/Product/15495114752385	ok	Interaktiver Plüschvogel für Katzen
+gid://shopify/Product/15495115178369	ok	Hunde-Plüschtier mit Beissring
+gid://shopify/Product/15495115407745	ok	Kleine Möwe LED-Nachtlicht
+gid://shopify/Product/15495125336449	ok	Schnellladegerät Auto
