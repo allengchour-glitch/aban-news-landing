@@ -1,5 +1,19 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🛩️ 2026-10-08 — Krypto-Pilot (BTC + ETH Futures) + ETH-Sammler mit Staking (`tools/trading/krypto_bot/`, README.md)
+- **Pilot** (`pilot.py`): Trend Long/Short + Schwankungsziel 40 % + Börsen-Stop 4σ, **BTC 150 Tage + ETH 200 Tage je 50 %**,
+  Lügendetektor nur Warnung (als Abschalter kostete er >20 Pp./J), Wochenbericht Kontostand per Push. Binance USDⓈ-M, Testnetz
+  Standard, Echtgeld doppelt gesperrt, Schlüssel mit Auszahlungsrecht verweigert, Einweg-Modus Pflicht, ISOLATED, reduceOnly.
+  Backtest mit Stop+Schlupf: ab 2019 +28 %/J, Einbruch −41 % (BTC halten −82 %); ab 2022 +24 %/J, −28 %.
+- **Prüfstand** `pilot_pruefung.py`: Regel VORHER fest (nur ändern, wenn Rendite÷Einbruch in ALLEN Zeiträumen besser) +
+  **getrennte Abschnitte** gegen Überlappungs-Verzerrung. Cache `*_hlc.json` (nicht `*_ohlc.json` — das ist futures.py, 5 Spalten).
+- **ETH-Sammler** (`eth_sammler.py`): Sparplan Spot (Betrag/Tage/Obergrenze), Staking `/sapi/v2/eth-staking/eth/stake` (amount,
+  4 Stellen → WBETH) NUR Echtgeld + `ETH_STAKEN=1`; stakt nur selbst gekaufte ETH; Test-/Echtgeld-Buch getrennt.
+  Sparplan ab Hoch Nov. 2021: 817 von 1796 Tagen im Minus. Steuern CH: Staking-Ertrag = Einkommen (ESTV).
+- **Läuft auf dem PC des Users** (`C:\Users\allen\aban-bot`, git sparse clone, Update = `git pull`), `krypto-auto.bat auto`
+  per Aufgabenplanung. **Cloud kann Binance nicht testen (HTTP 451)** → nur Fake-Server-Tests (Pilot 39, Sammler 34).
+  Windows: `py` statt `python` (Store-Alias), `setx` wirkt erst im neuen Fenster. Vom User gepostete Schlüssel NIE speichern.
+
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
   gesetze-im-internet.de, Bundesbank, europa.eu): AHV/IV/EO AN 5,3 % · Selbständige 10,0 % mit sinkender Skala 10'100–60'500
