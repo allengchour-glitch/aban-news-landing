@@ -60337,3 +60337,5 @@ gid://shopify/Product/15470076821889	gid://shopify/MediaImage/70169499697537	bil
 gid://shopify/Product/15478787834241	gid://shopify/MediaImage/70334883398017	bildtausch-sperre
 gid://shopify/Product/15479377756545	gid://shopify/MediaImage/70340056940929	bildtausch-sperre
 gid://shopify/Product/15480832196993	gid://shopify/MediaImage/70352515793281	bildtausch-sperre
+gid://shopify/Product/15495191986561	gid://shopify/MediaImage/70501491605889	bildtausch-sperre
+gid://shopify/Product/15495225082241	gid://shopify/MediaImage/70501708267905
