@@ -5326,3 +5326,5 @@ hohe-stiefel-aus-wildleder-623600	2605280728581624200	16	17.66	ok	landeseite
 stilvolle-alltags-booties-608200	2605280336211608800	16	12.44	ok	landeseite
 ballett-sandalen-boots-mit-gurtelverschluss-un-530049	2059120939815776257	16	11.23	ok	landeseite
 western-stiefel-mit-stickerei-631900	2605251108431632500	16	12.68	ok	landeseite
+schmale-buckle-halbschuhe-mit-gepolsterte-sohl-116802	2058738659561140225	16	11.23	ok	landeseite
+schwarze-ballerina-boots-retro-mit-schleife-031937	2058730178078666753	16	11.23	ok	landeseite
