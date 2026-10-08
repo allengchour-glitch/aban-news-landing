@@ -1,28 +1,28 @@
-# Titelprobe-Fein — Stand 2026-10-08 05:52 UTC
+# Titelprobe-Fein — Stand 2026-10-08 05:54 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). TROCKEN: Plan 176.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 172 · gesetzt 172 · fehler 0.
 
 - 57 → Skirts
-- 30 → Shirts & Tops
-- 20 → Necklaces
+- 28 → Shirts & Tops
+- 19 → Necklaces
 - 10 → Dresses
+- 9 → Outfit Sets
 - 7 → Jumpsuits & Rompers
-- 7 → Outfit Sets
-- 5 → Bracelets
 - 5 → Nightgowns
+- 4 → Bracelets
 - 4 → Coats & Jackets
 - 3 → Watches
 - 3 → Pants
 - 3 → Rings
-- 3 → Charms & Pendants
 - 3 → Jewelry Sets
 - 2 → Pajamas
 - 2 → Swimwear
 - 2 → Robes
-- 2 → Body Jewelry
 - 2 → Vests
+- 2 → Charms & Pendants
 - 1 → Belts
 - 1 → Kimonos
+- 1 → Body Jewelry
 - 1 → Anklets
 - 1 → Hair Pins, Claws & Clips
 - 1 → Keychains
@@ -41,7 +41,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). TROCKEN: Plan 176.
 - Minirock mit Spaghettiträgern und A-Linie
 - Kurzer Rock mit Perlen und langen Ärmeln
 
-## Ohne Treffer — bleibt grob (48)
+## Ohne Treffer — bleibt grob (49)
 
 - Ear-Cuffs «Papillon» – blauer Schmetterling  [G: Earrings]
 - Capri-Schwimmanzug mit Farbverlauf  [G: Swimwear]
@@ -64,6 +64,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). TROCKEN: Plan 176.
 - Langschürze mit abstraktem Druck  [G: Dresses]
 - Schwungvolles Ballett-Design  [G: Dresses]
 - Sterling-Silber-Handschmuck  [G: Bracelets]
+- Sterling Silber Luftschlaucharm  [G: Bracelets]
 - Stahlschmuck-LEDerband  [G: Bracelets]
 - Grasformband  [G: Bracelets]
 - Kristall-Handschmeichler  [G: Bracelets]

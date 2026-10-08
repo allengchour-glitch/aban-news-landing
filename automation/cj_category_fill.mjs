@@ -635,6 +635,17 @@ const LABEL_KEINE_TASCHE=/storage|organiz|wardrobe|kitchen|bathroom|home office/
 const LABELTAG=[[/dress/i,'kategorie-kleid'],[/skirt/i,'kategorie-rock'],[/necklace|pendant/i,'kategorie-halskette'],
  [/bracelet|bangle/i,'kategorie-armband'],[/watch/i,'kategorie-uhr'],
  [/\bbags?\b|backpack|handbag|tote/i,'kategorie-tasche',LABEL_KEINE_TASCHE]];
+// 08.10.2026: CJs Kategorie «Dresses» enthält Röcke, Blusen, Jumpsuits, Nachthemden — der Tag kam allein aus dem Kategorienamen,
+// google_kategorie leitete daraus Google «Dresses» ab (142 falsche gemessen). Jetzt entscheidet der TITEL (EINE Wortregel mit dem
+// Wächter kleid_rock_tags.py: data/kleid_rock_woerter.json): Kleidwort → kategorie-kleid, sonst Rockwort → kategorie-rock, sonst kein Tag.
+const _KR=JSON.parse(fs.readFileSync(new URL('./data/kleid_rock_woerter.json', import.meta.url),'utf8'));
+const KLEIDW=new RegExp(_KR.kleid,'i'), ROCKW=new RegExp(_KR.rock,'i');
+export function kleidRockTag(katTag,title){
+ if(katTag!=='kategorie-kleid'&&katTag!=='kategorie-rock') return katTag;
+ if(KLEIDW.test(title||'')) return 'kategorie-kleid';
+ if(ROCKW.test(title||'')) return 'kategorie-rock';
+ return undefined;
+}
 const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP');process.exit(1);}
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
@@ -808,7 +819,7 @@ for(const [cat,label] of grp.cats){
    if(variants.length===1) g=wahlSicher(g);
    // 📋 Faktenblock (02.09.2026): Material/Gewicht/Masse aus CJ → Tabelle «Spezifikationen» im Theme. Quelle: cj_specs.mjs
    const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
-   const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
+   const katTag=kleidRockTag((LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1], title);
    // 03.09.2026: Der Tag «neuheit» speist die Startseiten-Reihe «Neuheiten 2026»
    // (Smart-Regel TAG=neuheit, CREATED_DESC). KEIN Importer setzte ihn — der juengste
    // Artikel darin war vom 10.08., die Reihe zeigte 24 Tage lang dieselbe Ware, waehrend

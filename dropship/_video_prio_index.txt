@@ -2,7 +2,6 @@ gid://shopify/Product/15495140508033
 gid://shopify/Product/15495140344193
 gid://shopify/Product/15505118364033
 gid://shopify/Product/15525499470209
-gid://shopify/Product/15451636334977
 gid://shopify/Product/15452598501761
 gid://shopify/Product/15452603187585
 gid://shopify/Product/15452605448577
