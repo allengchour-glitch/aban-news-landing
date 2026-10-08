@@ -2,30 +2,35 @@
 
 Gescannt: 51470 aktive Produkte in 206 Seiten (vollständig), 1895 s. Meldungen nur für Shopping Ads (ignoriert): 24003.
 
-## Free-Listings-Blocker: 1114
+## Free-Listings-Blocker: 823
 
-| Klasse | Produkte | davon ohne onlineStoreUrl |
-|---|---:|---:|
-| Image under review | 283 | 0 |
-| Personalized advertising: Sexual interests | 216 | 0 |
-| Restricted adult content | 216 | 0 |
-| Inappropriate image | 214 | 0 |
-| Personalized advertising: personal hardships | 71 | 0 |
-| Product page unavailable | 53 | 0 |
-| Promotional overlay on image | 32 | 0 |
-| Title under review | 9 | 0 |
-| Adult-oriented content | 5 | 0 |
-| Unable to show image | 5 | 0 |
-| Personalized advertising: legal restrictions | 4 | 0 |
-| Image too small | 3 | 0 |
-| Tobacco products & related equipment | 2 | 0 |
-| Local Requirements | 1 | 0 |
+| Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
+|---|---:|---:|---:|
+| Image under review | 283 | 0 | – |
+| Restricted adult content | 216 | 0 | – |
+| Inappropriate image | 214 | 0 | – |
+| Product page unavailable | 53 | 0 | – |
+| Promotional overlay on image | 32 | 0 | – |
+| Title under review | 9 | 0 | – |
+| Adult-oriented content | 5 | 0 | – |
+| Unable to show image | 5 | 0 | – |
+| Image too small | 3 | 0 | – |
+| Tobacco products & related equipment | 2 | 0 | – |
+| Local Requirements | 1 | 0 | – |
+
+Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
 ## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
 
 - Missing shipping info in some countries [LI]: 5733
 
 Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.
+
+## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
+
+- Personalized advertising: Sexual interests: 216
+- Personalized advertising: personal hardships: 71
+- Personalized advertising: legal restrictions: 4
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
@@ -95,70 +100,6 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - franzosischer-stil-rock-mit-ruschen-600100
 - einheitliches-fahrradhelm-304704
 - fitness-hosen-mit-po-lift-effekt-603000
-- …
-
-### Personalized advertising: Sexual interests (216)
-
-- tennis-kleid-match-plissee-integrierte-shorts
-- shirt-alphorn
-- maulbeerseiden-gesichtsmaske-fur-damen-609500
-- business-herrenuhr-lederarmband-multifunktion-630800
-- mechanische-herrenuhr-im-skelett-design-604000
-- puffarmel-kleid-mit-schnurung-626900
-- fpv-softbag-lithium-akku-fur-crossing-machine-614600
-- quadratisches-baumwoll-seidentuch-mit-blumenmu-623400
-- ice-silk-gesichtsmaske-mit-uv-schutz-622000
-- korsett-mit-fischgrat-stabchen-und-3-verschlus-603600
-- taillengurtel-aus-baumwolle-628300
-- satin-korsett-mit-funf-knopfen-616000
-- atmungsaktives-korsett-zur-haltungskorrektur-623100
-- gothic-korsett-mit-stickereien-632500
-- revival-gurtel-im-mittelalter-und-wikinger-sti-606200
-- latex-sport-shapewear-weste-fur-definierte-mit-618600
-- nahtlose-hauchdunne-seiden-strumpfhose-605000
-- overknee-strumpfe-in-leder-optik-639401
-- 3er-pack-ultra-soft-sheer-tights-382018
-- 3er-pack-sheer-tights-40d-mit-t-crotch-082753
-- 3-paar-20d-ultra-sheer-strumpfhosen-mit-shapin-235970
-- 6-paar-20d-ultra-sheer-tights-mit-shaping-hosc-791425
-- 6-paar-plus-size-strumpfhosen-fur-damen-556481
-- 3-paar-shiny-strumpfhosen-fur-damen-plus-size-545090
-- 2-paar-20d-ultra-toeless-sheer-tights-539906
-- beinwarmer-mit-stern-und-knochen-elementen-632500
-- japanische-jk-style-strumpfhose-mit-muster-616600
-- baskenmutze-im-leo-look-mit-nieten-und-gurtel-870209
-- retro-zip-up-hoodie-mit-3d-digitalprint-614100
-- loose-fit-t-shirt-mit-cartoon-print-620800
-- mesh-t-shirt-mit-schlangenhaut-design-622100
-- freizeit-hoodie-set-fur-damen-629700
-- sommerliches-tanktop-kleid-mit-u-ausschnitt-876097
-- figurbetonendes-tanktop-mit-u-ausschnitt-628900
-- high-neck-bikini-set-fur-den-strand-259970
-- damen-spitzen-tube-top-mit-offener-ruckenparti-601800
-- figurbetontes-mesh-shirt-mit-kurzen-armeln-616500
-- armelloses-bedrucktes-rollkragen-top-639300
-- ruckenfreies-camisole-mit-spitze-623400
-- spitzentop-mit-tiefem-v-ausschnitt-634100
-- elfenbeinfarbenes-camisole-top-mit-spitze-571457
-- samt-camisole-mit-schnurung-958338
-- strand-kimono-mit-v-ausschnitt-seitenschlitz-012290
-- mesh-cardigan-mit-laternenarmeln-637500
-- milchseide-langarmshirt-mit-eckigem-ausschnitt-623800
-- damen-langarm-bodysuit-mit-herz-print-614400
-- nahtloser-body-mit-bauch-und-po-kontrolle-386434
-- taillenformer-korsett-top-mit-stahlstaben-333890
-- shapewear-bodysuit-mit-bauchkontrolle-534274
-- eleganter-jumpsuit-mit-woll-applikationen-616100
-- tanktop-shorts-set-mit-letter-print-616300
-- einteiliger-casual-overall-mit-prinzessinnenar-621800
-- nahtloser-casual-jumpsuit-mit-thong-boden-639600
-- figurbetontes-tragerloses-spitzenkleid-614500
-- gerippter-bodycon-jumpsuit-mit-spaghettitrager-604100
-- gestreiftes-strick-pyjama-set-mit-shorts-630300
-- high-waist-flared-pants-mit-bauchkontrolle-626100
-- nahtlose-high-waist-yoga-hose-fur-damen-625200
-- high-waist-yoga-pants-im-europaischen-stil-631500
-- legging-tights-621800
 - …
 
 ### Restricted adult content (216)
@@ -332,70 +273,6 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
 - vital-smooth-rouge-creme-010560
 
-### Personalized advertising: personal hardships (71)
-
-- lendenwirbel-stutzgurt-fur-personen-mit-behind-629400
-- sportlich-legeres-sweatshirt-mit-rundhals-621900
-- umstands-capri-leggings-mit-hohem-bund-631600
-- umstands-leggings-mit-hoher-taille-und-ausgest-630700
-- schwangerschafts-leggings-mit-bauchstutze-633800
-- umstandsjeans-weiss-mit-bauchstutze-625800
-- high-waist-boxer-style-umstandsunterhose-611100
-- gelenkpflege-salbe-040769
-- gelenk-pflegespray-fur-kniegelenke-578562
-- brustpump-spray-fur-stillzeit-114817
-- tragetasche-fur-sauerstoffkonzentrator-613100
-- 1ml-spritzen-mit-kappen-25er-pack-220353
-- mutterschutz-hosen-weiter-bein-637600
-- stillkissen-mit-taillenstutze-619100
-- perforierter-gripp-steuerungshulle-636700
-- hallux-valgus-korrektor-mit-zehenspreizer-031cf2
-- teufelsaugen-ohrhanger-622800
-- gehhilfe-fur-senioren-654900
-- schwangerschafts-kleid-mit-streifen-623600
-- bauchstutzgurtel-fur-schwangere-627600
-- elegantes-midi-kleid-mit-front-reissverschluss-609100
-- thermo-leggings-fur-schwangerschaft-hohe-elast-657800
-- folienballon-gender-reveal-fga33974
-- erfrischendes-mundwasser-fur-unterwegs-624000
-- stillkissen-mit-lagerungskissen-608100
-- u-formiges-schwangerschafts-und-stillkissen-617200
-- schwangerschafts-stillkleid-601800
-- kabellose-tattoo-maschine-4-gang-einstellbar-627008
-- stillkissenbezug-u-form-baby-stretch-087168
-- umstands-maxikleid-mit-schnurung-perlen-619400
-- multifunktionales-schwangerschaftskissen-325312
-- u-formiger-kissenbezug-fur-schwangerschaftskis-1e7279
-- schwangerschafts-maxikleid-mit-swing-ausschnit-609300
-- umstands-strickkleid-mit-halbem-rollkragen-611700
-- gepunktetes-off-shoulder-mini-schwangerschafts-615000
-- stillkissen-fur-den-arm-aus-baumwolle-089280
-- strandfestliche-maternity-kleid-632500
-- langarmelige-schwangerschaftsrobe-614600
-- schwangerschafts-midikleid-armellos-623400
-- knie-uberstreckungsorthese-615900
-- schwangerschafts-sommerkleid-a-linie-629600
-- schickes-umstandskleid-mit-v-ausschnitt-628200
-- armelloses-strickkleid-fur-schwangerschaft-im-612200
-- gestricktes-umstandskleid-sommer-etuirock-600500
-- fussheberorthese-mit-airbag-637000
-- usb-nagel-piercing-gerat-627000
-- microneedling-gerat-dg04-mit-zwei-akkus-622300
-- ink-stroke-kissen-schwarz-weiss-786432
-- zahnaufhellungs-gelstift-4er-pack-609000
-- ultraschall-muckenarmband-fur-schwangerschaft-743296
-- sportlich-legeres-herrenhemd-mit-knopfkragen-617800
-- kreatives-schwangerschaftskissen-044160
-- verstellbare-kniegelenk-gehhilfe-229376
-- lendenkissen-fur-schwangerschaft-und-buro-403456
-- elektrisches-manikure-und-nagelpiercing-gerat-782272
-- schwangerschafts-stutzkissen-fur-seitenlage-601984
-- u-formiges-schwangerschaftskissen-fur-rucken-u-470592
-- high-speed-nagel-piercing-frasgerat-786112
-- totenkopf-tattoo-maschinen-set-356032
-- handgemachte-kunstnagel-fur-schwangerschaft-618048
-- …
-
 ### Product page unavailable (53)
 
 - loungewear-pyjama-set-fur-die-ganze-familie-603800
@@ -463,13 +340,6 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - polster-fur-stuhle-845632
 - chunky-dad-sneakers-mit-mesh-obermaterial-606500
 - resistente-strand-sandalen-622600
-
-### Personalized advertising: legal restrictions (4)
-
-- kartoon-kurbisschlupfchen-682752
-- mobelheber-299330
-- haarentferner-106496
-- schulterfreies-strickkleid-gestreift-604200
 
 ### Tobacco products & related equipment (2)
 

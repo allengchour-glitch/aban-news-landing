@@ -444,3 +444,6 @@ gid://shopify/Product/16610031796615	Gold
 gid://shopify/Product/16610072625543	Mehrfarbig
 gid://shopify/Product/16611793830279	Rot
 gid://shopify/Product/16611793863047	Silber
+gid://shopify/Product/16611916841351	Beige
+gid://shopify/Product/16611920216455	Schwarz
+gid://shopify/Product/16611925328263	Schwarz

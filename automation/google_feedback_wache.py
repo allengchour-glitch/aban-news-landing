@@ -31,6 +31,16 @@ TOK = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or (open("/tmp/cj_shop_token.txt").
 HANDLES_MAX = int(os.environ.get("HANDLES_MAX", "300"))
 SEITEN_MAX = int(os.environ.get("SEITEN_MAX", "400"))
 NUR_ANZEIGEN = re.compile(r"\[Shopping_ads\]")
+# 08.10.2026: «Personalized advertising: …» (personal hardships, sexual interests, legal restrictions) regelt nur das TARGETING
+# personalisierter Werbung (QUELLE support.google.com/adspolicy/answer/143465: «unable to use advertiser-curated audiences») —
+# Gratis-Einträge nutzen keine Zielgruppen; schon am 08.08. im CJ-Import-Log: «Google verbietet Remarketing auf Schwangerschaft».
+# GEMESSEN 07.10.: 291 der 1'114 gemeldeten «Blocker» waren solche Meldungen (Umstandsmode, Stillkissen, Orthesen, Strumpfhosen).
+# Sie werden getrennt ausgewiesen, nicht als Free-Listings-Blocker gezählt. «Restricted adult content» bleibt ein Blocker.
+NUR_PERSONALISIERT = re.compile(r"^\s*Personalized advertising:", re.I)
+# 08.10. GEMESSEN (863 Produkte): «Image under review», «Inappropriate image», «Restricted adult content» u. a. tragen die
+# Zielliste «[]», nur «Product page unavailable», «Promotional overlay», «Image too small» nennen [Free_listings,Shopping_ads].
+# Bedeutung unbelegt → nur zählen (Spalte im Bericht), nicht umdeuten.
+ZIEL_LEER = re.compile(r" in \[\]")
 TEIL = "/tmp/google_feedback_teil.json"            # Zwischenstand je Seite (überlebt Container-Neustarts in /tmp)
 TEIL_MAX_H = float(os.environ.get("TEIL_MAX_H", "8"))
 
@@ -79,6 +89,32 @@ def trifft_ch(txt):
     return not l or "CH" in l
 
 
+def bericht_schreiben(stand):
+    """Bericht aus dem Stand — auch für Umrechnungen ohne Neuscan (--umrechnen)."""
+    with open(BERICHT, "w", encoding="utf-8") as f:
+        f.write(f"# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand {stand['stand']}\n\n")
+        f.write(f"Gescannt: {stand['gescannt']} aktive Produkte in {stand['seiten']} Seiten ({'vollständig' if stand['vollstaendig'] else '⚠️ DECKEL erreicht'}), "
+                f"{stand['dauer_s']} s. Meldungen nur für Shopping Ads (ignoriert): {stand['anzeigen_meldungen']}.\n\n")
+        f.write(f"## Free-Listings-Blocker: {stand['blocker']}\n\n| Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |\n|---|---:|---:|---:|\n")
+        for k, v in stand["klassen"].items():
+            f.write(f"| {k} | {v} | {stand['ohne_onlineStoreUrl'].get(k, 0)} | {(stand.get('ziel_leer') or {}).get(k, '–')} |\n")
+        f.write("\nZiel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). "
+                "Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.\n")
+        if stand.get('nur_ausland'):
+            f.write("\n## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in stand["nur_ausland"].items())
+                    + "\n\nAbhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.\n")
+        if stand.get('nur_personalisiert'):
+            f.write("\n## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in stand["nur_personalisiert"].items()) + "\n")
+        if stand.get('andere_apps'):
+            f.write("\n## Meldungen anderer Kanal-Apps (kein Google-Blocker)\n\n" + "\n".join(f"- {k}: {v}" for k, v in stand["andere_apps"].items()) + "\n")
+        f.write("\n«ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. "
+                "Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).\n\n")
+        for k, hs in stand['handles'].items():
+            f.write(f"### {k} ({stand['klassen'][k]})\n\n" + "\n".join(f"- {h}" for h in hs[:60]) + ("\n- …" if stand['klassen'][k] > 60 else "") + "\n\n")
+
+
 def main():
     if "--kanarienvogel" in sys.argv:
         faelle = [("Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI].", False),
@@ -88,12 +124,32 @@ def main():
         ok = sum(trifft_ch(t) == soll for t, soll in faelle)
         for t, soll in faelle:
             print(f"{'✓' if trifft_ch(t) == soll else '✗'} {t} → {trifft_ch(t)}")
-        print(f"Kanarienvögel {ok}/{len(faelle)}")
+        pers = [("Personalized advertising: Sexual interests in [Free_listings,Shopping_ads] [CH].", True),
+                ("Personalized advertising: personal hardships in [Free_listings] [CH].", True),
+                ("Restricted adult content in [Free_listings,Shopping_ads] [CH].", False),   # bleibt Blocker
+                ("Adult-oriented content in [Free_listings] [CH].", False)]
+        ok += sum(bool(NUR_PERSONALISIERT.search(t)) == soll for t, soll in pers)
+        for t, soll in pers:
+            print(f"{'✓' if bool(NUR_PERSONALISIERT.search(t)) == soll else '✗'} nur-personalisiert {t} → {bool(NUR_PERSONALISIERT.search(t))}")
+        print(f"Kanarienvögel {ok}/{len(faelle) + len(pers)}")
+        return
+    if "--umrechnen" in sys.argv:          # 08.10.2026: alten Stand nach neuer Regel umrechnen, ohne 35-min-Neuscan
+        st = json.load(open(STAND, encoding="utf-8"))
+        np_ = st.setdefault("nur_personalisiert", {})
+        for k in [k for k in st["klassen"] if NUR_PERSONALISIERT.search(k)]:
+            np_[k] = np_.get(k, 0) + st["klassen"].pop(k)
+            st.setdefault("handles_personalisiert", {})[k] = st["handles"].pop(k, [])
+            st["ohne_onlineStoreUrl"].pop(k, None)
+        st["nur_personalisiert"] = dict(sorted(np_.items(), key=lambda x: -x[1]))
+        st["blocker"] = sum(st["klassen"].values())
+        json.dump(st, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        bericht_schreiben(st)
+        print(f"UMGERECHNET: {st['blocker']} Free-Listings-Blocker · nur personalisiert {sum(st['nur_personalisiert'].values())}")
         return
     if not TOK:
         print("kein Shop-Token → No-op"); return
     cursor, seiten, gescannt = None, 0, 0
-    klassen, handles, ohne_url, andere, ausland = {}, {}, {}, {}, {}
+    klassen, handles, ohne_url, andere, ausland, personal, handles_pers, ziel_leer = {}, {}, {}, {}, {}, {}, {}, {}
     anzeigen_meldungen = 0
     t0 = time.time()
     # 03.10.2026 FORTSETZEN: Der Vollscan (~206 Seiten, Eimer-Wartezeiten) braucht länger als eine Stunde; der Container
@@ -110,6 +166,8 @@ def main():
         cursor, seiten, gescannt = teil_alt["cursor"], teil_alt["seiten"], teil_alt["gescannt"]
         klassen, handles, ohne_url = teil_alt["klassen"], teil_alt["handles"], teil_alt["ohne_url"]
         andere, ausland, anzeigen_meldungen = teil_alt["andere"], teil_alt["ausland"], teil_alt["anzeigen"]
+        personal, handles_pers = teil_alt.get("personal", {}), teil_alt.get("handles_pers", {})
+        ziel_leer = teil_alt.get("ziel_leer", {})
         t0 -= teil_alt.get("dauer_s", 0)
         print(f"FORTSETZEN ab Seite {seiten} ({gescannt} gescannt)", flush=True)
     while True:
@@ -136,7 +194,15 @@ def main():
                         ka = f"{k} [{','.join(sorted(laender(txt)))}]"
                         ausland[ka] = ausland.get(ka, 0) + 1
                         continue
+                    if NUR_PERSONALISIERT.search(txt):
+                        personal[k] = personal.get(k, 0) + 1
+                        hp = handles_pers.setdefault(k, [])
+                        if len(hp) < HANDLES_MAX:
+                            hp.append(n["handle"])
+                        continue
                     klassen[k] = klassen.get(k, 0) + 1
+                    if ZIEL_LEER.search(txt):
+                        ziel_leer[k] = ziel_leer.get(k, 0) + 1
                     h = handles.setdefault(k, [])
                     if len(h) < HANDLES_MAX:
                         h.append(n["handle"])
@@ -147,7 +213,7 @@ def main():
         cursor = pg["pageInfo"]["endCursor"]
         tmp = TEIL + ".neu"
         json.dump({"cursor": cursor, "seiten": seiten, "gescannt": gescannt, "klassen": klassen, "handles": handles,
-                   "ohne_url": ohne_url, "andere": andere, "ausland": ausland, "anzeigen": anzeigen_meldungen,
+                   "ohne_url": ohne_url, "andere": andere, "ausland": ausland, "anzeigen": anzeigen_meldungen, "personal": personal, "handles_pers": handles_pers, "ziel_leer": ziel_leer,
                    "dauer_s": round(time.time() - t0)}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
         os.replace(tmp, TEIL)
     voll = seiten < SEITEN_MAX
@@ -157,29 +223,16 @@ def main():
              "ohne_onlineStoreUrl": ohne_url, "anzeigen_meldungen": anzeigen_meldungen, "handles": handles,
              "andere_apps": dict(sorted(andere.items(), key=lambda x: -x[1])),
              "nur_ausland": dict(sorted(ausland.items(), key=lambda x: -x[1])),
+             "nur_personalisiert": dict(sorted(personal.items(), key=lambda x: -x[1])),
+             "ziel_leer": ziel_leer,
+             "handles_personalisiert": handles_pers,          # google_bildtausch_bilanz liest sie mit (Bildsignal)
              "dauer_s": round(time.time() - t0)}
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     try:
         os.remove(TEIL)
     except FileNotFoundError:
         pass
-    with open(BERICHT, "w", encoding="utf-8") as f:
-        f.write(f"# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand {stand['stand']}\n\n")
-        f.write(f"Gescannt: {gescannt} aktive Produkte in {seiten} Seiten ({'vollständig' if voll else '⚠️ DECKEL erreicht'}), "
-                f"{stand['dauer_s']} s. Meldungen nur für Shopping Ads (ignoriert): {anzeigen_meldungen}.\n\n")
-        f.write(f"## Free-Listings-Blocker: {blocker}\n\n| Klasse | Produkte | davon ohne onlineStoreUrl |\n|---|---:|---:|\n")
-        for k, v in stand["klassen"].items():
-            f.write(f"| {k} | {v} | {ohne_url.get(k, 0)} |\n")
-        if ausland:
-            f.write("\n## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)\n\n"
-                    + "\n".join(f"- {k}: {v}" for k, v in stand["nur_ausland"].items())
-                    + "\n\nAbhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.\n")
-        if andere:
-            f.write("\n## Meldungen anderer Kanal-Apps (kein Google-Blocker)\n\n" + "\n".join(f"- {k}: {v}" for k, v in stand["andere_apps"].items()) + "\n")
-        f.write("\n«ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. "
-                "Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).\n\n")
-        for k, hs in handles.items():
-            f.write(f"### {k} ({klassen[k]})\n\n" + "\n".join(f"- {h}" for h in hs[:60]) + ("\n- …" if klassen[k] > 60 else "") + "\n\n")
+    bericht_schreiben(stand)
     print(f"FERTIG: {gescannt} gescannt · {blocker} Free-Listings-Blocker (Google) · andere Apps {sum(andere.values())} · {dict(list(stand['klassen'].items())[:5])} · {bilanz()}")
 
 

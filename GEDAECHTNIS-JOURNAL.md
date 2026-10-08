@@ -44,6 +44,29 @@
 
 
 
+## 2026-10-08 07:30 UTC · 🔎 «weiter»: Google-Wächter zählte Targeting-Hinweise als Gratis-Eintrag-Blocker
+
+**GEMESSEN:** Von 1'114 «Free-Listings-Blockern» im Stand vom 07.10. waren 291 «Personalized advertising: …»-Meldungen.
+Davon waren 216 «Sexual interests» (Uhren, Hoodies, Strumpfhosen, Korsetts), 71 «personal hardships» (Umstandsmode,
+Stützgurte) und 4 «legal restrictions». Die Live-Meldung lautet `Personalized advertising: personal hardships in [] [CH].`
+Die Zielliste ist leer.
+**QUELLE:** [Google Ads Policy «Personalized advertising»](https://support.google.com/adspolicy/answer/143465) — die Regel
+beschränkt nur Zielgruppen und personalisierte Ausrichtung. Gratis-Einträge nutzen keine Zielgruppen. Schon am 08.08. stand
+im CJ-Import-Log: «Google verbietet Remarketing auf Schwangerschaft».
+**GETAN:** `google_feedback_wache.py` bucht die Klasse unter `nur_personalisiert` und führt die Handles getrennt
+(`handles_personalisiert`). `google_bildtausch_bilanz.py` liest diese mit, die Quote vorher und nachher ist identisch. Dazu
+kommen `--umrechnen` (alter Stand nach neuer Regel ohne den 35-Minuten-Scan) und Kanarien 8/8 («Restricted adult
+content» bleibt ein Blocker). Ergebnis: **1'114 → 823**. Die Ampel zeigt 823.
+**NEBENBEFUND (unbelegt, nur gezählt):** Bei 863 gemeldeten Produkten tragen auch «Image under review» (209),
+«Inappropriate image» (139), «Restricted adult content» (154) und «Title under review» die Zielliste `[]`. Nur «Product page
+unavailable», «Promotional overlay», «Unable to show image» und «Image too small» nennen `[Free_listings,Shopping_ads]`.
+Was `[]` bei Google bedeutet, ist nirgends dokumentiert (Suche 08.10.). Deshalb wird nichts umgedeutet. Der Wächter zählt
+es als Spalte «davon Ziel «[]»»; die Wahrheit liefert der Status im Merchant Center (Betreiber).
+**OFFEN (Betreiber):** `merchant_sperre_durchsetzen.py` hält 8 «personal hardships»-Artikel vorsichtshalber aus dem ganzen
+Google-Kanal. Nach dieser Quelle wäre das nicht nötig. Es bleibt aber ein Betreiber-Entscheid, nicht meiner.
+**LEHRE:** Eine Meldung im Diagnose-Kanal ist nicht automatisch ein Blocker. Zuerst klären, was die Regel regelt (Ausrichtung
+oder Eintrag), und die Ziel-Angabe der Meldung lesen.
+
 ## 2026-10-08 07:00 UTC · 👗 «weiter fein katalog verbessern»: Titelprobe-Rest war Google-Fehler, Kleider/Röcke-Kollektion hing am CJ-Namen
 - GEMESSEN: 233 Titelprobe-Ablehnungen — 142 Google «Dresses» waren Röcke/Blusen/Jumpsuits/Nachthemden/Bikinis, 56 «Bracelets»
   Ketten/Ringe/Uhren/Gürtel; dazu Wortlücken der Probe (Röckchen, Partnerarmbänder, Blouson, Trouser, Vest, Pillow, Hoops, Kettchen).
@@ -18851,3 +18874,5 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · 🔎 **«tool installieren selber programmieren»: eigenes Perplexity `tools/recherche.py` (Groq gpt-oss + `browser_search`, gratis, Quellen aus der Werkzeug-Ausgabe) + `automation/hype_recherche.py` täglich → `dropship/HYPE-RECHERCHE.md` mit Gegenprobe am Bestand; Bing von unserer IP = Pizzerien in Genf, compound = 404.** Automatik kann jetzt selbst im Netz nachsehen → Journal 06.10. 19:05
 - 2026-10-06 · 📦 **Fortura Stufe 2 live: Muster vom Betreiber → `fortura_xml.py` (Opacc.ORDERS, Template-Abgleich, 7/7) + Engine lädt `ORDERS_LX<nr>.xml` einmalig hoch, liest DESADV (Tracking, Teillieferung, 48-h-Alarm); Schalter `_fortura_xml_aktiv`; Test nur mit Attrappe (Upload = echte Bestellung).** → `dropship/FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`
 - 2026-10-06 · 📣 **«ja mach alles gratis sachen»: TikTok Median 280 Aufrufe/Post vs Pinterest 1 → TikTok 6 h + täglicher Abendpost 21–23 Uhr (×8 gemessen), Pinterest 48 h; Creator-Vorlage `dropship/CREATOR-ANFRAGE.md`; TikTok-Bio-Link erst ab 1'000 Followern (falsch empfohlen).** Vor Empfehlung Code lesen → Journal 06.10. 19:25
+- 2026-10-06 · ⏱️ **Keepalive: Fortura-Bestand PAUSE 16:42, 3,5 h kein Neuversuch — Aufseher loggt je Container-Stunde nur ~5 min, Block bei Zeile ~2260 nie erreicht → an den Rundenbeginn.** Kundenschutz-Blöcke nach vorn → Journal 06.10. 20:15
+- 2026-10-06 · 🗂️ **«feinkategorie und filter»: 38'433/50'914 aktive auf Shopify-Oberklassen (Typ-Signal) → `kategorie_fein.py` verfeinert über die Google-Kategorie + Shopifys offizielle Zuordnung (nur Nachfahren, Titelprobe: Rock→Dresses, Velolampe→Fitness kamen aus Google), ~22'600, color-pattern bleibt; Aufseher 6 h; Filter «Kategorie» = Betreiber-Klick.** Zwei Signale einig, sonst grob lassen → Journal 06.10. 19:30
