@@ -5714,3 +5714,4 @@ digitalmalerie-steinberg-moderne-einrichtung-227328	1794227115085279232	3	8.57	o
 30-teiliges-universelles-rei-verschluss-repara-205825	2069325358241452033	0	-	KEINE CH-Option → DRAFT	landeseite
 portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 kleine-nahmaschine-fur-unterwegs-806849	2056303874806550529	0	-	KEINE CH-Option → DRAFT	landeseite
+3d-notizblock-klavier-gold-911616	1727919875827437568	16	7.03	ok	landeseite
