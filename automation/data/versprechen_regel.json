@@ -182,5 +182,329 @@
       "dieses Modell"
     ]
   ],
-  "_gross": "eigen_text_gross wird OHNE Ignorieren der Gross-/Kleinschreibung angewandt (Satzanfang bleibt gross); alle anderen Listen mit Flag i."
+  "_gross": "eigen_text_gross wird OHNE Ignorieren der Gross-/Kleinschreibung angewandt (Satzanfang bleibt gross); alle anderen Listen mit Flag i.",
+  "diamant": {
+    "_zweck": "«Diamanten» als Verzierung bei Mode/Modeschmuck/Uhren/Taschen/Halsbändern/Pinseln = Strasssteine (bzw. Zirkonia, wenn der Text Zirkonia nennt). Echte Diamanten führt der Shop nicht (gemessen 08.10.: teuerstes Produkt mit «Diamant» CHF 150.90, ein Moissanit-Ring). Ersatz in der Form [Muster, Ersatz] mit $1 für die erste Gruppe (Python setzt \\1 ein). Drittes Element = Dativform (wenn vor dem Wort im selben Satz eine Dativ-Präposition steht, ohne Akkusativ-Präposition/Verb dazwischen: «aus Nieten, Diamanten und Prägungen» → «Strasssteinen»). Produkte mit Karat/VVS/Labor/Moissanit bleiben unberührt (Echtheitsangabe → Einzelprüfung, Bericht). Viertes Element = Singularform (schwaches Nomen: «mit einem grünen Diamanten» → «Strassstein»). «High-Carbon-Diamanten» (Lieferantenwort für Simulanten) → «Schmucksteine».",
+    "ausnahme_produkt": "diamond[- ]?painting|diamant-?malerei|diamantbild|diamant-?mosaik|\\b5d\\b|klemmbaustein|bausteine?|bausatz|diamantpartikel|partikel|schleif|schärf|feile|körnung|bohrer|trennscheibe|säge|abzieh|moissanit|wetzstein|harzdiamant|kristalldiamant|diamantstickerei|diamant-?stickerei|diamantkleber|diamant-?bild|diamant-?stift|labor|lab[- ]?grown|gezüchtet|karat|\\bct\\b|carat|vvs|\\bgia\\b|\\bigi\\b|tester|prüfgerät|leinwand|canvas|resin-?(?:rund-?)?diamant|nagellack|gel-?lack|farbgel|mikrodermabrasion|glasschneid|glas schneiden|drill",
+    "ausnahme_kontext": "als (?:ein )?diamant|eines diamanten|wie (?:ein |echte )?diamant|an diamanten erinnern|diamant-?(?:design|muster|form|quadrat|optik|look|schliff|gitter|netz|brillanz|preis|grad|stein-kombination)|geometrisch\\w* diamant|echte diamanten\\?|diamond|(?:eines|des) (?:[^\\s<>.,;!?]+ ){0,2}diamanten|keine (?:echten )?diamanten|kein (?:echter )?diamant|nicht (?:um )?(?:echte )?diamant",
+    "zirkon_beleg": "zirkon",
+    "strass": [
+      [
+        "\\b(Zirkon(?:ia)?)-Diamant-",
+        "$1-"
+      ],
+      [
+        "\\bZirkon(?:ia)?-Diamanten\\b(?!-)",
+        "Zirkonia-Steine",
+        "Zirkonia-Steinen",
+        "Zirkonia-Stein"
+      ],
+      [
+        "\\b(?:[Hh]ochkohlenstoffreiche[nr]?\\s+|High-Carbon-)Diamanten\\b(?!-)",
+        "Schmucksteine",
+        "Schmucksteinen"
+      ],
+      [
+        "\\b([Mm]it\\s+(?:(?:funkelnden|glitzernden|kleinen|eingelegten|farbigen|weissen|schwarzen|bunten|vielen|glänzenden|zahlreichen)\\s+)*)Diamanten\\b(?!-)",
+        "$1Strasssteinen"
+      ],
+      [
+        "\\bDiamanten\\b(?!-)",
+        "Strasssteine",
+        "Strasssteinen",
+        "Strassstein"
+      ],
+      [
+        "\\bdiamantbesetzt",
+        "strassbesetzt"
+      ],
+      [
+        "\\bDiamantbesetzt",
+        "Strassbesetzt"
+      ],
+      [
+        "\\bDiamantbesatz\\b",
+        "Strassbesatz"
+      ],
+      [
+        "\\bDiamant-(Besatz|Akzenten?|Akzente|Verzierungen|Verzierung|Dekoration|Einlagen?|Inlays?|Details|Knopf|Anhängern|Anhänger|Ornamenten|Ornamente|Zifferblatt|Stahlarmband|Finish|Applikationen|Applikation|Steinen|Steine|Stein|Halsband|Hundehalsband|Ring|Ohrringe|Ohrring|Armband|Kette|Uhr|Schnalle|Verschluss|besetzt|besetzte|verziert|verzierte)\\b(?!-)",
+        "Strass-$1"
+      ],
+      [
+        "\\bDiamantring\\b",
+        "Strassring"
+      ],
+      [
+        "\\bDiamant-?Hundehalsband\\b",
+        "Strass-Hundehalsband"
+      ],
+      [
+        "\\b([Mm]it\\s+(?:(?:grünem|gelbem|rosa|blauem|rotem|weissem|schwarzem|funkelndem|kleinem|grossem|einem|einzelnem)\\s+)+)Diamant\\b(?!-)",
+        "$1Strassstein"
+      ],
+      [
+        "\\b([Mm]it\\s+)Diamant\\b(?!-)",
+        "$1Strassstein"
+      ],
+      [
+        "\\bDiamantverzier(t|te|ten|tes|ter|tem|ung)\\b",
+        "Strassverzier$1"
+      ],
+      [
+        "\\bdiamantverzier(t|te|ten|tes|ter|tem|ung)\\b",
+        "strassverzier$1"
+      ]
+    ],
+    "zirkonia": [
+      [
+        "\\b(Zirkon(?:ia)?)-Diamant-",
+        "$1-"
+      ],
+      [
+        "\\bZirkon(?:ia)?-Diamanten\\b(?!-)",
+        "Zirkonia-Steine",
+        "Zirkonia-Steinen",
+        "Zirkonia-Stein"
+      ],
+      [
+        "\\b(?:[Hh]ochkohlenstoffreiche[nr]?\\s+|High-Carbon-)Diamanten\\b(?!-)",
+        "Schmucksteine",
+        "Schmucksteinen"
+      ],
+      [
+        "\\b([Mm]it\\s+(?:(?:funkelnden|glitzernden|kleinen|eingelegten|farbigen|weissen|schwarzen|bunten|vielen|glänzenden|zahlreichen)\\s+)*)Diamanten\\b(?!-)",
+        "$1Zirkonia-Steinen"
+      ],
+      [
+        "\\bDiamanten\\b(?!-)",
+        "Zirkonia-Steine",
+        "Zirkonia-Steinen",
+        "Zirkonia-Stein"
+      ],
+      [
+        "\\bdiamantbesetzt",
+        "zirkoniabesetzt"
+      ],
+      [
+        "\\bDiamantbesetzt",
+        "Zirkoniabesetzt"
+      ],
+      [
+        "\\bDiamantbesatz\\b",
+        "Zirkonia-Besatz"
+      ],
+      [
+        "\\bDiamant-(Besatz|Akzenten?|Akzente|Verzierungen|Verzierung|Dekoration|Einlagen?|Inlays?|Details|Knopf|Anhängern|Anhänger|Ornamenten|Ornamente|Zifferblatt|Stahlarmband|Finish|Applikationen|Applikation|Steinen|Steine|Stein|Halsband|Hundehalsband|Ring|Ohrringe|Ohrring|Armband|Kette|Uhr|Schnalle|Verschluss|besetzt|besetzte|verziert|verzierte)\\b(?!-)",
+        "Zirkonia-$1"
+      ],
+      [
+        "\\bDiamantring\\b",
+        "Zirkonia-Ring"
+      ],
+      [
+        "\\bDiamant-?Hundehalsband\\b",
+        "Zirkonia-Hundehalsband"
+      ],
+      [
+        "\\b([Mm]it\\s+(?:(?:grünem|gelbem|rosa|blauem|rotem|weissem|schwarzem|funkelndem|kleinem|grossem|einem|einzelnem)\\s+)+)Diamant\\b(?!-)",
+        "$1Zirkonia-Stein"
+      ],
+      [
+        "\\b([Mm]it\\s+)Diamant\\b(?!-)",
+        "$1Zirkonia-Stein"
+      ],
+      [
+        "\\bDiamantverzier(t|te|ten|tes|ter|tem|ung)\\b",
+        "Zirkoniaverzier$1"
+      ],
+      [
+        "\\bdiamantverzier(t|te|ten|tes|ter|tem|ung)\\b",
+        "zirkoniaverzier$1"
+      ]
+    ],
+    "kanarien": [
+      [
+        "Federarmband mit Diamanten",
+        "",
+        "Federarmband mit Strasssteinen"
+      ],
+      [
+        "Elegante Quarzuhr mit Diamanten für Herren",
+        "",
+        "Elegante Quarzuhr mit Strasssteinen für Herren"
+      ],
+      [
+        "Die Tasche ist mit funkelnden Diamanten verziert.",
+        "",
+        "Die Tasche ist mit funkelnden Strasssteinen verziert."
+      ],
+      [
+        "Die Kombination aus Nieten, Diamanten und Prägungen.",
+        "",
+        "Die Kombination aus Nieten, Strasssteinen und Prägungen."
+      ],
+      [
+        "Trendige Damenuhr mit Diamant-Zifferblatt",
+        "",
+        "Trendige Damenuhr mit Strass-Zifferblatt"
+      ],
+      [
+        "8er-Set Make-up Pinsel mit Diamant-Besatz",
+        "",
+        "8er-Set Make-up Pinsel mit Strass-Besatz"
+      ],
+      [
+        "Luxuriöser Diamantring aus S925 Sterling Silber",
+        "Besetzt mit funkelnden Zirkonia-Steinen.",
+        "Luxuriöser Zirkonia-Ring aus S925 Sterling Silber"
+      ],
+      [
+        "Die Oberfläche ist mit Diamanten besetzt.",
+        "Zirkonia",
+        "Die Oberfläche ist mit Zirkonia-Steinen besetzt."
+      ],
+      [
+        "Diamant-Schleifblock für Glas und Fliesen",
+        "",
+        "Diamant-Schleifblock für Glas und Fliesen"
+      ],
+      [
+        "Diamond Painting «Schädelmädchen» Halloween",
+        "",
+        "Diamond Painting «Schädelmädchen» Halloween"
+      ],
+      [
+        "Mit über 800 Diamant-Kleinstbausteinen",
+        "",
+        "Mit über 800 Diamant-Kleinstbausteinen"
+      ],
+      [
+        "brillanter als Diamant, Härte 9.25",
+        "",
+        "brillanter als Diamant, Härte 9.25"
+      ],
+      [
+        "Strasssteine, die an Diamanten erinnern.",
+        "",
+        "Strasssteine, die an Diamanten erinnern."
+      ],
+      [
+        "Nordic Glas-Dekanter Diamant-Design",
+        "",
+        "Nordic Glas-Dekanter Diamant-Design"
+      ],
+      [
+        "Sind die Steine echte Diamanten? Nein, es ist Zirkonia.",
+        "Zirkonia",
+        "Sind die Steine echte Diamanten? Nein, es ist Zirkonia."
+      ],
+      [
+        "10 Make-up Pinsel-Set Flieder-Lila mit Diamant",
+        "",
+        "10 Make-up Pinsel-Set Flieder-Lila mit Strassstein"
+      ],
+      [
+        "Hundehalsband aus Titanstahl mit Diamant-Knopf",
+        "",
+        "Hundehalsband aus Titanstahl mit Strass-Knopf"
+      ],
+      [
+        "Funkelnde Diamanten verleihen der Uhr Glanz.",
+        "",
+        "Funkelnde Strasssteine verleihen der Uhr Glanz."
+      ],
+      [
+        "Ein Ring mit einem Diamanten in der Mitte.",
+        "",
+        "Ein Ring mit einem Strassstein in der Mitte."
+      ],
+      [
+        "Die Steine sind in D-E/VVS-Qualität gefasst, die Diamanten funkeln.",
+        "",
+        "Die Steine sind in D-E/VVS-Qualität gefasst, die Diamanten funkeln."
+      ],
+      [
+        "Halskette mit Harzdiamanten und runden Diamanten",
+        "",
+        "Halskette mit Harzdiamanten und runden Diamanten"
+      ],
+      [
+        "Die Uhr ist für Diamanten-Liebhaber gemacht, die Diamanten glänzen.",
+        "",
+        "Die Uhr ist für Diamanten-Liebhaber gemacht, die Strasssteine glänzen."
+      ],
+      [
+        "Zirkon-Diamant-Armband kreativ gefasst",
+        "Zirkon",
+        "Zirkon-Armband kreativ gefasst"
+      ],
+      [
+        "Messinstrument zur Identifikation von Diamanten",
+        "Diamant-Tester",
+        "Messinstrument zur Identifikation von Diamanten"
+      ],
+      [
+        "Erhältlich mit einem grünen Diamanten in Goldtönen.",
+        "",
+        "Erhältlich mit einem grünen Strassstein in Goldtönen."
+      ],
+      [
+        "mit einem Paraiba-Tourmalin und High-Carbon-Diamanten besetzt.",
+        "",
+        "mit einem Paraiba-Tourmalin und Schmucksteinen besetzt."
+      ],
+      [
+        "Damen-Armband mit grünem Diamant",
+        "",
+        "Damen-Armband mit grünem Strassstein"
+      ],
+      [
+        "Automatikarmbanduhr mit Diamantverzierung Herren",
+        "",
+        "Automatikarmbanduhr mit Strassverzierung Herren"
+      ],
+      [
+        "Edle Silberohrringe mit Diamant-Inlay",
+        "",
+        "Edle Silberohrringe mit Strass-Inlay"
+      ],
+      [
+        "Kit mit Leinwand, hochwertigen Diamanten und Werkzeugen",
+        "",
+        "Kit mit Leinwand, hochwertigen Diamanten und Werkzeugen"
+      ],
+      [
+        "Pailletten, Diamanten in Fragmenten",
+        "Farbgel Nagellack",
+        "Pailletten, Diamanten in Fragmenten"
+      ],
+      [
+        "Der Glanz eines funkelnden Diamanten.",
+        "",
+        "Der Glanz eines funkelnden Diamanten."
+      ],
+      [
+        "Hochwertig gefasste Schmucksteine, keine Diamanten.",
+        "",
+        "Hochwertig gefasste Schmucksteine, keine Diamanten."
+      ],
+      [
+        "Das Gehäuse ist mit Zirkonia-Diamanten besetzt.",
+        "",
+        "Das Gehäuse ist mit Zirkonia-Steinen besetzt."
+      ],
+      [
+        "Die Steine sind im Diamant-Inlay-Verfahren eingefasst.",
+        "",
+        "Die Steine sind im Diamant-Inlay-Verfahren eingefasst."
+      ],
+      [
+        "Ovale Damenring mit Diamant-Setting",
+        "",
+        "Ovale Damenring mit Diamant-Setting"
+      ]
+    ],
+    "dativ_vor": "\\b(?:mit|aus|von|vom|zu|zum|zur|bei|beim|nach|seit|samt|mitsamt|den)\\b(?:(?!\\b(?:für|durch|gegen|ohne|um|die|ist|sind)\\b)[^.!?;:<>])*$",
+    "singular_vor": "\\b(?:einen|einem|dem|(?:für|durch|gegen|ohne|um) den)\\s+(?:[^\\s<>.,;!?]+\\s+){0,2}$"
+  }
 }

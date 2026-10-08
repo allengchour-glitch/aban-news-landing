@@ -75,6 +75,51 @@ def text_eigen(t):
     return anwenden(EIGEN_GROSS, anwenden(EIGEN_TEXT, t))
 
 
+# ── «Diamanten» bei Modeschmuck/Uhren/Taschen (08.10. «weiter sauber machen») ─────────────────────────────────────────
+# Gemessen: 622 aktive mit «Diamant», teuerstes CHF 150.90 (Moissanit) — echte Diamanten führt der Shop nicht. Ersetzt wird
+# nur die Verzierung («mit funkelnden Diamanten», «Diamant-Zifferblatt»); Vergleiche («brillanter als Diamant»), Formen
+# («Diamant-Design»), Diamond Painting, Bausteine, Schleifwerkzeug und Karat/VVS/Moissanit-Angaben bleiben unberührt.
+D = REGEL.get("diamant") or {}
+
+
+def _drx(liste):
+    return [(re.compile(r[0]), r[1].replace("$1", r"\1"), r[2] if len(r) > 2 else None, r[3] if len(r) > 3 else None)
+            for r in liste]
+
+
+D_STRASS, D_ZIRKONIA = _drx(D.get("strass", [])), _drx(D.get("zirkonia", []))
+D_PRODUKT = re.compile(D.get("ausnahme_produkt") or r"(?!x)x", re.I)
+D_KONTEXT = re.compile(D.get("ausnahme_kontext") or r"(?!x)x", re.I)
+D_ZIRKON = re.compile(D.get("zirkon_beleg") or r"(?!x)x", re.I)
+D_DATIV = re.compile(D.get("dativ_vor") or r"(?!x)x", re.I)
+D_SINGULAR = re.compile(D.get("singular_vor") or r"(?!x)x", re.I)
+
+
+def diamant(t, produkt=""):
+    """Dekorative «Diamanten» → Strasssteine (Zirkonia, wenn Titel/Text Zirkonia nennen). produkt = Titel + Text."""
+    t = t or ""
+    if "iamant" not in t:
+        return t
+    ganz = f"{t} {produkt}"
+    if D_PRODUKT.search(ganz):
+        return t
+    neu = t
+    for rx, ers, dativ, einzahl in (D_ZIRKONIA if D_ZIRKON.search(ganz) else D_STRASS):
+        def tausch(m, ers=ers, dativ=dativ, einzahl=einzahl):
+            s = m.string
+            if D_KONTEXT.search(s[max(0, m.start() - 50):m.end() + 50]):
+                return m.group(0)
+            e = ers
+            vor = re.split(r"[.!?;:<>]", s[max(0, m.start() - 80):m.start()])[-1]
+            if einzahl and D_SINGULAR.search(vor):
+                e = einzahl
+            elif dativ and D_DATIV.search(vor):
+                e = dativ
+            return m.expand(e)
+        neu = rx.sub(tausch, neu)
+    return neu
+
+
 def schweiz_lager(tags, sku):
     tl = {x.lower() for x in tags or []}
     return bool(tl & set(REGEL["schweiz_lager"]["tags"])) or any(
@@ -88,7 +133,13 @@ def selbsttest():
         if ist != soll:
             f += 1
             print(f"  ✗ {art}: {ein!r}\n      ist  {ist!r}\n      soll {soll!r}")
-    print(f"Selbsttest: {len(REGEL['kanarien']) - f}/{len(REGEL['kanarien'])} ok")
+    for ein, produkt, soll in D.get("kanarien", []):
+        ist = diamant(ein, produkt)
+        if ist != soll:
+            f += 1
+            print(f"  ✗ diamant: {ein!r}\n      ist  {ist!r}\n      soll {soll!r}")
+    n = len(REGEL["kanarien"]) + len(D.get("kanarien", []))
+    print(f"Selbsttest: {n - f}/{n} ok")
     return f == 0
 
 
@@ -135,30 +186,37 @@ def main():
     if not (os.environ.get("CACHE_NUTZEN") == "1" and os.path.exists(CACHE)):
         export()
     n = fix = fehl = 0
-    zaehl, handles, beispiele = {}, [], []
+    zaehl, handles, beispiele, echt = {}, [], [], []
     for p in produkte():
         n += 1
         lager = schweiz_lager(p.get("tags"), p["_sku"])
         s = p.get("seo") or {}
         neu = {}
-        t_neu = p["title"] if lager else titel(p["title"])
+        h = p.get("descriptionHtml") or ""
+        ctx = f"{p['title']} {h}"
+        t_neu = diamant(p["title"] if lager else titel(p["title"]), ctx)
         if t_neu != p["title"] and t_neu:
             neu["title"] = t_neu
-        h = p.get("descriptionHtml") or ""
-        h_neu = text_eigen(h if lager else text_liefer(h))
+        h_neu = diamant(text_eigen(h if lager else text_liefer(h)), ctx)
         if h_neu != h:
             neu["descriptionHtml"] = h_neu
         st, sd = s.get("title"), s.get("description")
-        st_neu = st if lager or not st else seo(st)
-        sd_neu = sd if lager or not sd else seo(sd)
+        st_neu = st if not st else diamant(st if lager else seo(st), ctx)
+        sd_neu = sd if not sd else diamant(sd if lager else seo(sd), ctx)
         if (st_neu, sd_neu) != (st, sd):
             neu["seo"] = {"title": st_neu, "description": sd_neu}
+        if re.search(r"[Dd]iamant", ctx) and re.search(r"vvs|karat|\bct\b|lab[- ]?grown|labor", ctx, re.I) \
+                and not re.search(r"moissanit", ctx, re.I):
+            echt.append((p["handle"], p["title"]))
         if re.search(r"sofort-lieferbar|schnell-lieferbar", p["handle"]) and not lager:
             handles.append((p["handle"], p["title"]))
         if not neu:
             continue
         for k in neu:
             zaehl[k] = zaehl.get(k, 0) + 1
+        if "iamant" in json.dumps(p, ensure_ascii=False) and any(
+                "Strass" in json.dumps(v, ensure_ascii=False) or "Zirkonia" in json.dumps(v, ensure_ascii=False) for v in neu.values()):
+            zaehl["diamant"] = zaehl.get("diamant", 0) + 1
         if len(beispiele) < 40:
             beispiele.append((p["handle"], {k: (v if k != "descriptionHtml" else "…") for k, v in neu.items()}))
         print(f"  {p['handle'][:55]:55} {'+'.join(neu)}", flush=True)
@@ -174,7 +232,8 @@ def main():
             ok = got.get("title") == neu["title"]
         if ok and "descriptionHtml" in neu:
             # Shopify normalisiert HTML leicht — verglichen wird, dass KEIN Versprechen mehr drinsteht
-            ok = text_eigen(got.get("descriptionHtml") or "") == (got.get("descriptionHtml") or "")
+            gh = got.get("descriptionHtml") or ""
+            ok = text_eigen(gh) == gh and diamant(gh, f"{got.get('title') or ''} {gh}") == gh
         if ok and "seo" in neu:
             g = got.get("seo") or {}
             # SEO-Titel gleich Produkttitel speichert Shopify als null (heisst: Produkttitel gilt)
@@ -190,10 +249,15 @@ def main():
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# Versprechen ohne Beleg — Stand {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC\n\n"
                 f"Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», "
-                f"«meistverkauft», «unser Bestseller» nie). Geprüft: {n} aktive · {'zu ändern' if DRY else 'geändert'}: {fix} "
+                f"«meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: {n} aktive · {'zu ändern' if DRY else 'geändert'}: {fix} "
                 f"({', '.join(f'{k} {v}' for k, v in sorted(zaehl.items()))}) · Fehler: {fehl}\n\n## Beispiele\n\n")
         for hd, nn in beispiele:
             f.write(f"- `{hd}` — {json.dumps(nn, ensure_ascii=False)[:300]}\n")
+        f.write(f"\n## «Diamant» mit Echtheitsangabe (Karat/VVS/Labor, ohne Moissanit) — Einzelprüfung ({len(echt)})\n\n"
+                "Der Wächter lässt diese Produkte unberührt: eine Karat- oder Reinheitsangabe ist entweder wahr (dann darf «Diamant» "
+                "stehen) oder eine Echtheitsbehauptung ohne Beleg (dann Produkt prüfen, nicht Wörter tauschen).\n\n")
+        for hd, t in echt:
+            f.write(f"- `{hd}` — {t}\n")
         f.write(f"\n## Handles mit Lieferversprechen ({len(handles)}) — Umbenennen nur mit 301\n\n")
         for hd, t in handles:
             f.write(f"- `{hd}` — {t}\n")

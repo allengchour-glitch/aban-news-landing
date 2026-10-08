@@ -272,10 +272,38 @@ export const versprechenTitel = (t) => { const n = vAnwenden(V_TITEL, t); return
 export const versprechenSeo = (t) => vAnwenden(V_SEO, t);
 export const versprechenTextLiefer = (t) => vAnwenden(V_TEXT, t);
 export const versprechenTextEigen = (t) => vAnwenden(V_GROSS, vAnwenden(V_EIGEN, t));
+// «Diamanten» als Verzierung = Strasssteine (Zirkonia, wenn Titel/Text Zirkonia nennen) — dieselbe Regel wie diamant() in
+// versprechen_wache.py (Abschnitt «diamant» der Regeldatei; Element 3 = Dativ-, Element 4 = Singularform).
+const VD = VERSPRECHEN.diamant || {};
+const NIE = /(?!x)x/;
+const dRx = (l) => (l || []).map(r => [new RegExp(r[0], 'g'), r[1], r[2] || null, r[3] || null]);
+const D_STRASS = dRx(VD.strass), D_ZIRK = dRx(VD.zirkonia);
+const dRe = (k) => (VD[k] ? new RegExp(VD[k], 'i') : NIE);
+const D_PRODUKT = dRe('ausnahme_produkt'), D_KONTEXT = dRe('ausnahme_kontext'), D_ZIRKON = dRe('zirkon_beleg');
+const D_DATIV = dRe('dativ_vor'), D_SINGULAR = dRe('singular_vor');
+export function versprechenDiamant(t, produkt = '') {
+  let s = String(t || '');
+  if (!s.includes('iamant')) return s;
+  const ganz = `${s} ${produkt}`;
+  if (D_PRODUKT.test(ganz)) return s;
+  for (const [rx, ers, dativ, einzahl] of (D_ZIRKON.test(ganz) ? D_ZIRK : D_STRASS)) {
+    s = s.replace(rx, (...a) => {
+      const m = a[0], off = a[a.length - 2], str = a[a.length - 1];
+      if (D_KONTEXT.test(str.slice(Math.max(0, off - 50), off + m.length + 50))) return m;
+      const vor = str.slice(Math.max(0, off - 80), off).split(/[.!?;:<>]/).pop();
+      let e = ers;
+      if (einzahl && D_SINGULAR.test(vor)) e = einzahl;
+      else if (dativ && D_DATIV.test(vor)) e = dativ;
+      return e.replace(/\$1/g, a.length > 3 && typeof a[1] === 'string' ? a[1] : '');
+    });
+  }
+  return s;
+}
 export function versprechenSicher(o) {
   if (!o) return o;
-  if (o.title) { const t = versprechenTitel(o.title); if (t) o.title = t; }
-  if (o.html) o.html = versprechenTextEigen(versprechenTextLiefer(o.html));
+  const ctx = `${o.title || ''} ${o.html || ''}`;
+  if (o.title) { const t = versprechenDiamant(versprechenTitel(o.title), ctx); if (t) o.title = t; }
+  if (o.html) o.html = versprechenDiamant(versprechenTextEigen(versprechenTextLiefer(o.html)), ctx);
   return o;
 }
 export function textPolieren(o) {
