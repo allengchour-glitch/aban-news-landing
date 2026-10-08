@@ -646,3 +646,4 @@ gid://shopify/Product/15495215382913	ok	Rollender Katzen-Teaserball
 gid://shopify/Product/15495238320513	ok	Kabelloser Glätt- und Lockenstab-Kamm
 gid://shopify/Product/15495319585153	ok	Mini USB Lockenstab & Glätteisen
 gid://shopify/Product/15495319847297	ok	Audio-Adapter iPhone auf USB-C (Digital)
+gid://shopify/Product/15517578985857	ok-lokal
