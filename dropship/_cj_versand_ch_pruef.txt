@@ -5961,3 +5961,7 @@ auto-notstarter-734913	1978660648558981121	0	-	KEINE CH-Option → DRAFT	landese
 auto-notstarter-12v-296258	1948993838596542466	0	-	KEINE CH-Option → DRAFT	landeseite
 carbon-zundschalter-608000	2507080538041608200	16	4.92	ok	landeseite
 auto-booster-800a-852098	1941034973008875522	0	-	KEINE CH-Option → DRAFT	landeseite
+auto-heizer-627000	2409230751491627300	7	11.13	ok	landeseite
+notstart-powerbank-12v-147136	1776781120416256000	0	-	KEINE CH-Option → DRAFT	landeseite
+fernbedienungsschlussel-901760	1637003427748261888	16	5.18	ok	landeseite
+notstart-hilfe-903680	1621777357608595456	0	-	KEINE CH-Option → DRAFT	landeseite
