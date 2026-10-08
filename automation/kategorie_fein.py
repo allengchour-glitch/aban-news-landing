@@ -78,6 +78,20 @@ def titel_ok(ziel_name, titel):
 # 07.10.2026 23:30: Shopifys offizielle Zuordnung ist für diese Google-Klassen MEHRDEUTIG (darum fehlen sie in der Karte) —
 # gemessen 3'810 «keine Zuordnung», davon 2'761 Uhren. Geprüfte Ergänzung (Shopify-IDs per taxonomy-Suche bestätigt).
 ZUSATZ = {
+    # 08.10.2026 («ordne alles sauber ein»): 13 Produkte zählten «keine-zuordnung» — Shopifys Tabelle kennt diese Google-Blätter
+    # nicht, die Shop-Taxonomie hat die Klasse aber (IDs per cats.txt geprüft). Paintball & Airsoft bleibt bewusst offen.
+    "Sporting Goods > Outdoor Recreation > Boating & Water Sports > Boating & Water Sport Apparel > Water Sport Helmets": "sg-4-1-12-2",
+    "Sporting Goods > Outdoor Recreation > Camping & Hiking > Navigational Compasses": "sg-4-2-10",
+    "Sporting Goods > Athletics > Baseball & Softball > Pitching Machines": "sg-1-2-12",
+    "Sporting Goods > Athletics > Boxing & Martial Arts > Boxing & Martial Arts Training Equipment > Boxing & MMA Punch Mitts": "sg-1-4-2-1",
+    "Arts & Entertainment > Party & Celebration > Party Supplies > Drinking Games > Beer Pong": "ae-3-2-10",
+    "Sporting Goods > Athletics > General Purpose Athletic Equipment > Athletic Cups": "sg-1-13-2",
+    "Electronics > Electronics Accessories > Computer Components > Storage Devices > Floppy Drives": "el-7-9-14",
+    "Home & Garden > Lawn & Garden > Outdoor Living > Hammock Parts & Accessories": "hg-12-2-3",
+    "Sporting Goods > Outdoor Recreation > Golf > Golf Clubs": "sg-4-7-9",
+    "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Safety & Security > Vehicle Safety Equipment": "vp-1-6-4",
+    "Apparel & Accessories > Clothing > Activewear > Hunting Clothing > Hunting & Fishing Vests": "aa-1-1-8-1",
+    "Apparel & Accessories > Clothing > Activewear > Motorcycle Protective Clothing > Motorcycle Jackets": "vp-1-6-1",
     "Apparel & Accessories > Jewelry > Watches": "aa-6-11",
     "Apparel & Accessories > Clothing > One-Pieces > Jumpsuits & Rompers": "aa-1-9",
     "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Apparel": "ap-2-6",
@@ -189,6 +203,10 @@ KREUZ.update({("el", z): re.compile(m, re.I) for z, m in _EL.items()})
 # Google ist hier schon die feine Tier-Klasse (Dog Apparel/Beds …); Shopify führt Tierkleidung/-betten tierübergreifend.
 KREUZ.update({(von, nach): re.compile(r".", re.I) for von in ("ap-2", "ap-2-2", "ap-2-3", "ap") for nach in ("ap-2-6", "ap-2-9")})
 KREUZ[("sg", "hg-12-2-4")] = re.compile(r"hängematte|hammock", re.I)
+# 08.10.2026 («ordne alles sauber ein»): Wassersport-Helme stehen in Shopify unter «Apparel», Shopify führt sie unter «Protective
+# Gear»; Motorrad-Protektorenjacken unter «Activewear», Shopify hat «Motorcycle Protective Gear».
+KREUZ[("sg-4-1-2", "sg-4-1-12-2")] = re.compile(r"helm", re.I)
+KREUZ[("aa-1-1", "vp-1-6-1")] = re.compile(r"motorrad|motorcycle", re.I)
 KREUZ[("hb-3-2-9", "hb-3-2-5-3")] = re.compile(r"gerät|apparat|instrument|lift|roller|maske|bürste|stein", re.I)
 KREUZ[("hb-3-2-9", "hb-3-2-5-3-6")] = re.compile(r"roller|stein", re.I)
 for _von in ("aa-1", "tg-5", "ap", "aa-2"):
