@@ -6101,3 +6101,4 @@ hohe-chunky-boots-mit-nieten-und-schnallen-620900	2605020614441621400	16	18.72	o
 chunky-boots-aus-wildleder-mit-blockabsatz-614600	2604300346551615200	16	13.88	ok	landeseite
 mid-calf-chunky-boots-mit-schnalle-621000	2604270209271621700	16	15.56	ok	landeseite
 denim-stiefel-mit-hohem-absatz-627600	2604250705281628100	16	20.58	ok	landeseite
+western-ankle-boots-mit-fransen-613000	2604230149401613500	16	11.82	ok	landeseite
