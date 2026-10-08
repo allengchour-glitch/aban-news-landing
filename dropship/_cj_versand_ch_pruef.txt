@@ -5662,3 +5662,8 @@ outdoor-laufschuhe-mit-luftpolster-708736	1704676432175177728	16	18.24	ok	landes
 funf-finger-trekking-schuhe-835968	1676861184642916352	16	9.95	ok	landeseite
 schutzschuhe-mit-stahlkappe-094016	1625343665872842752	16	16.52	ok	landeseite
 warme-outdoor-schuhe-fur-herren-218560	1573581167515938816	16	21.31	ok	landeseite
+leichte-stahlkappe-arbeitsschuhe-556032	1573505305739276288	16	17.66	ok	landeseite
+leichte-laufschuhe-614700	2508120812441615000	16	9.75	ok	landeseite
+golfschuh-mit-beweglichem-stift-grosse-grossen-609700	2503311045171600000	16	18.83	ok	landeseite
+jugend-basketball-schuhe-mit-flyknit-605900	2502130348471606100	16	14.72	ok	landeseite
+trainings-schuhe-fur-kids-und-teens-602500	2502120622401602700	16	12.56	ok	landeseite
