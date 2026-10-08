@@ -6082,3 +6082,10 @@ armlehnen-schutzbezug-410049	1990620001857101825	0	-	KEINE CH-Option → DRAFT	l
 warmende-sitzauflage-fur-model-3-y-vorderreihe-610300	2509040910091610500	11	29.00	ok	landeseite
 universelle-auto-sitzauflage-fur-kinder-614300	2508030610481614600	16	12.07	ok	landeseite
 armaturenbrettmatte-fur-dodge-ram-1500-2500-35-002817	1941744034252083201	0	-	KEINE CH-Option → DRAFT	landeseite
+3d-luftkissen-airbag-607300	2506291219221607600	16	13.20	ok	landeseite
+heizkissen-fur-autositz-609600	2502070212251600200	7	15.85	ok	landeseite
+huft-taille-sitzpolster-608300	2501210754441608600	16	36.74	ok	landeseite
+winter-autoreisekissen-3er-set-schmutzabweisen-628700	2412300112311628900	16	16.33	ok	landeseite
+nackenstutze-fur-auto-610000	2412080413431610200	16	11.88	ok	landeseite
+elegante-sandalen-mit-geschlossener-spitze-614978	2074380925544325121	16	11.23	ok	landeseite
+franzosische-sommer-sandalen-mit-keilabsatz-604162	2074320579005669378	16	11.23	ok	landeseite
