@@ -683,3 +683,12 @@ gid://shopify/Product/15496428192129	ok	USB-Rollball für Katzen (wiederaufladba
 gid://shopify/Product/15496518926721	ok	Multifunktionaler Elektro-Kochtopf
 gid://shopify/Product/15496536490369	ok	Elektrische Kopfmassagebürste mit Lichttherapie
 gid://shopify/Product/15496581611905	ok	Herzli-Waffeleisen für de schnälle Zmorge
+gid://shopify/Product/15497423585665	ok	Elektrischer Eierschüttler für goldene Eier
+gid://shopify/Product/15497437348225	ok	Interaktives 9-Loch Versteckspiel für Katzen
+gid://shopify/Product/15497437675905	ok	Wurfball mit Seil für Hunde & Katzen
+gid://shopify/Product/15497438134657	ok	Lustiges Entenküken Katzenangel-Spielzeug
+gid://shopify/Product/15497444852097	ok	RC-Flugzeug Glider Fighter Modell
+gid://shopify/Product/15497452978561	ok	Beissfester Spielball zur Zahnreinigung
+gid://shopify/Product/15497457860993	ok	Ball Spinner
+gid://shopify/Product/15499700142465	ok	Magnetische 3-in-1-Ladestation
+gid://shopify/Product/15499784880513	ok	Auto-Ladegerät 115W
