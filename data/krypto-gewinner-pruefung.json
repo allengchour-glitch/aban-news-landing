@@ -1,0 +1,141 @@
+{
+ "stand": "2026-10-07",
+ "regel": "ist eine Gewinner-Strategie NUR, wenn BEIDES gilt:\n  1) Rendite ÷ schlimmster Einbruch ist besser als bei Bitcoin halten — in beiden Abschnitten (02/2018–2021, 2022–heute).\n  2) Zufallsprobe: Sie schlägt mindestens 90 % von 200 Kopien, die statt der Gewinner zufällige Coins aus demselben\n     Universum nehmen (gleich viele Plätze, gleiche Filter-Wochen) — gemessen ab 02/2018. Sonst steckt der Erfolg nicht im\n     «Gewinner wählen», sondern nur im Krypto-Markt selbst.",
+ "strategien": {
+  "G1": {
+   "name": "G1 Gewinner folgen (Top 3, 30 T.)",
+   "2018–2021": {
+    "cagr": 0.3963196472948587,
+    "einbruch": -0.835130742157617,
+    "mar": 0.4745600027499167,
+    "ende": 3.6950950469327104
+   },
+   "2022–heute": {
+    "cagr": -0.676400297130627,
+    "einbruch": -0.9974515449137242,
+    "mar": -0.6781284770972339,
+    "ende": 0.004614750975529458
+   },
+   "gesamt": {
+    "cagr": -0.37270178143973176,
+    "einbruch": -0.9976221134631806,
+    "mar": -0.37359013639535477,
+    "ende": 0.01742111840058053
+   },
+   "zufall": 0.445,
+   "schlaegt_btc_alle_abschnitte": false,
+   "urteil": "nein"
+  },
+  "G2": {
+   "name": "G2 Gewinner + Trendfilter",
+   "2018–2021": {
+    "cagr": 0.08775824373924057,
+    "einbruch": -0.8886116548340515,
+    "mar": 0.09875882593012969,
+    "ende": 1.3900383524463429
+   },
+   "2022–heute": {
+    "cagr": -0.1299326698186073,
+    "einbruch": -0.842228071881539,
+    "mar": -0.1542725470172675,
+    "ende": 0.5150400954793208
+   },
+   "gesamt": {
+    "cagr": -0.0377471694812469,
+    "einbruch": -0.8886116548340515,
+    "mar": -0.04247881431208124,
+    "ende": 0.7159254857638823
+   },
+   "zufall": 0.725,
+   "schlaegt_btc_alle_abschnitte": false,
+   "urteil": "nein"
+  },
+  "G3": {
+   "name": "G3 Gewinner 90 T. + Filter",
+   "2018–2021": {
+    "cagr": 0.34904477663746714,
+    "einbruch": -0.7610617593800991,
+    "mar": 0.45862871486510043,
+    "ende": 3.228955976244506
+   },
+   "2022–heute": {
+    "cagr": -0.17756677862286452,
+    "einbruch": -0.8107606852901325,
+    "mar": -0.21901256664822352,
+    "ende": 0.3937987263710601
+   },
+   "gesamt": {
+    "cagr": 0.028048256152735984,
+    "einbruch": -0.8107606852901316,
+    "mar": 0.0345949879682423,
+    "ende": 1.2715587509533146
+   },
+   "zufall": 0.69,
+   "schlaegt_btc_alle_abschnitte": false,
+   "urteil": "nein"
+  },
+  "btc": {
+   "name": "Bitcoin halten",
+   "2018–2021": {
+    "cagr": 0.5086670252799457,
+    "einbruch": -0.7210838037342597,
+    "mar": 0.7054201226621978,
+    "ende": 5.002710667330117
+   },
+   "2022–heute": {
+    "cagr": 0.12365962080070858,
+    "einbruch": -0.6698084019852208,
+    "mar": 0.18461939329843924,
+    "ende": 1.7433404742821288
+   },
+   "gesamt": {
+    "cagr": 0.28818825321639796,
+    "einbruch": -0.7662925431645935,
+    "mar": 0.37608124441124496,
+    "ende": 9.019095550229174
+   }
+  },
+  "top20": {
+   "name": "Top 20 gleich verteilt",
+   "2018–2021": {
+    "cagr": 0.13129601361443055,
+    "einbruch": -0.8795205911812158,
+    "mar": 0.14928134137041302,
+    "ende": 1.6208943743016635
+   },
+   "2022–heute": {
+    "cagr": -0.426537725784202,
+    "einbruch": -0.9488321735940208,
+    "mar": -0.4495396948530392,
+    "ende": 0.07059319843897774
+   },
+   "gesamt": {
+    "cagr": -0.2171516914569671,
+    "einbruch": -0.9609457084456287,
+    "mar": -0.2259770656640107,
+    "ende": 0.11928817403974097
+   }
+  },
+  "btc_trend": {
+   "name": "Bitcoin mit Trend 150",
+   "2018–2021": {
+    "cagr": 0.2621265940773141,
+    "einbruch": -0.7052102455527101,
+    "mar": 0.37169992315110484,
+    "ende": 2.487853758514389
+   },
+   "2022–heute": {
+    "cagr": 0.2867847210253487,
+    "einbruch": -0.27534846190396745,
+    "mar": 1.0415337679473577,
+    "ende": 3.326810816350262
+   },
+   "gesamt": {
+    "cagr": 0.2755085794703991,
+    "einbruch": -0.7052102455527101,
+    "mar": 0.390675803716477,
+    "ende": 8.276618793323303
+   }
+  }
+ }
+}
