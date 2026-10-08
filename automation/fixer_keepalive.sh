@@ -1914,6 +1914,29 @@ fi
       fi
     fi
   fi
+  # 🎨 AUSWAHL NACHRÜSTEN (08.10.2026, Betreiber am «Adventskalender Geschenkbox»: «rot oder pink auswahl, checke das auch bei
+  # anderen produkten»). Die Klassenliste oben (5'511 aktive mit EINER Variante, deren Text eine Wahl verspricht — seit heute
+  # auch nackte Farbnamen «in Rot oder Pink erhältlich») wird bei CJ nachgemessen (auswahl_fehlt_messen, idempotent, ~1'200/h
+  # über cj_takt) und, wo CJ die Varianten führt, zur echten Auswahl umgebaut (auswahl_nachruesten: exakte CJ-SKU je Variante,
+  # eigenes Bild — fehlende werden seit dem Grow-Plan nachgeladen —, Preis nie tiefer, Rücklesen + Rückbau, Abbruch beim ersten
+  # Schreibfehler). Stündlich versucht (flock), damit der lange Messlauf über die Container-Neustarts kommt.
+  AN=/tmp/auswahl_nachruesten.log
+  if [ -f "$REPO/automation/auswahl_nachruesten.py" ] && [ -s "$REPO/dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$AN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 3300 ]; then
+      touch "$AN"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_auswahl.lock; flock -n 9 || exit 0; exec >> \"$AN\" 2>&1; \
+          echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          LISTE=dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt MIN_BILDER=1 LIMIT=6000 \
+            timeout 2400 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
+          SCHARF=1 CAP=60 timeout 900 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -80" 9>&- & )
+      if [ -s "$AN" ] && tail -n 30 "$AN" | grep -q "Traceback\|⛔"; then
+        echo "$(date -u +%H:%M) ⚠️ auswahl_nachruesten: letzter Lauf mit Fehler ($AN)"
+      else
+        echo "$(date -u +%H:%M) auswahl messen+nachrüsten gestartet"
+      fi
+    fi
+  fi
   # 🔪 KEINE KLINGE IM VERKAUF, DIE KEIN LIEFERANT LIEFERN KANN (16.09.2026, #1017).
   # CJ schickte ein bezahltes Damast-Taschenmesser aus Shanghai zurueck: verbotener
   # Artikel, keine Linie in die Schweiz. Derselbe Kunde hatte dieselbe Ware schon am

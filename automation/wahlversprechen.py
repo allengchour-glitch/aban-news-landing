@@ -32,6 +32,10 @@ FIX = os.environ.get('FIX') == '1'
 
 # ⚠️ Nur Formulierungen, die eine WAHL ankuendigen. «Erhaeltlich in Blau» allein ist eine
 # Beschreibung, keine Auswahl — «erhaeltlich in verschiedenen Farben» ist eine.
+# 08.10.2026: Farbwortschatz für «in Rot oder Pink erhältlich» (siehe letzte Alternative in WAHL)
+_FN = (r"(?:rot|pink|rosa|blau|gr[üu]n|gelb|schwarz|wei(?:ss|ß)|grau|braun|beige|lila|violett|orange|gold|silber|t[üu]rkis|khaki|"
+       r"navy|marine(?:blau)?|bordeaux|weinrot|hell\w*|dunkel\w*|mint\w*|creme|champagner|ros[ée]gold|kupfer|natur\w*|transparent|"
+       r"aprikose|apricot|koralle|fuchsia|magenta|oliv\w*|sand|taupe|camel|petrol|anthrazit)")
 WAHL = re.compile(
     # 31.08.: auch Zahlwoerter («In zwei Farben erhältlich: Weiss und Grau») — der
     # Kopfhaut-Roller mit EINER Variante trug genau diese Form, und sie entging dem Muster.
@@ -87,7 +91,14 @@ WAHL = re.compile(
     # 951 aktive Produkte mit EINER Variante: «Verfügbare Farben: Violett, Grau, Ice Ink Blau» (Yogamatte), «Farben: Blau,
     # Grau, Grau mit Pfotenabdruck» (Kratzbaum). Fehlalarme sind Set-Inhalte («Neun Farben: …» an einer Lidschatten-Palette)
     # → farbinhalt() prüft Anzahl davor und Set-Titel, siehe unten.
-    r'|verf[üu]gbare?\s+farben?\s*:|(?<![\wäöüß])farben\s*:\s*[^.\n]{0,80}(?:,|/| und | oder )', re.I)
+    r'|verf[üu]gbare?\s+farben?\s*:|(?<![\wäöüß])farben\s*:\s*[^.\n]{0,80}(?:,|/| und | oder )'
+    # 08.10.2026 (Betreiber am «Adventskalender Geschenkbox»: «rot oder pink auswahl, checke das auch bei anderen produkten»):
+    # NACKTE FARBNAMEN fehlten — «Die Box ist in Rot oder Pink erhältlich», «Erhältlich in Schwarz, Grau und Grün». Kein
+    # Muster oben trifft das, weil das Wort «Farben» fehlt. Am Voll-Export 08.10.: 30'273 aktive mit EINER Variante, altes Muster
+    # 4'326, NUR dieses Muster 1'162 (Tastatur «Schwarz oder Weiss», Rucksäcke, Hundespielzeug, Haarglätter). Ein Fehlalarm
+    # kostet hier nur eine CJ-Nachfrage — umgebaut wird nur, was CJ als echte Varianten führt (auswahl_nachruesten.py).
+    rf'|(?:erh[äa]ltlich|verf[üu]gbar|lieferbar|wahlweise)\s+in\s+(?:den\s+farben\s+)?(?:elegantem\s+|klassischem\s+)?{_FN}(?:\s*,\s*{_FN})*\s+(?:oder|und|bzw\.?)\s+{_FN}(?![\wäöüß-])'
+    rf'|(?<![\wäöüß-]){_FN}(?:\s*,\s*{_FN})*\s+(?:oder|bzw\.?)\s+{_FN}\s+(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)', re.I)
 
 FARBDOPPEL = re.compile(r'farben?\s*:', re.I)
 ANZAHL_VOR = re.compile(r'(?<![\d.,x×*])\b(?:\d+|[Zz]wei|[Dd]rei|[Vv]ier|[Ff][üu]nf|[Ss]echs|[Ss]ieben|[Aa]cht|[Nn]eun|[Zz]ehn|[Ee]lf|[Zz]w[öo]lf)\s+(?:[a-zäöüß]+(?:e|en|er)\s+)?$')
