@@ -6404,3 +6404,6 @@ gid://shopify/Product/15455796101505	zugeordnet	14	Weisse Bluse mit Falten
 gid://shopify/Product/15455796298113	zugeordnet	15	Elegantes Jacquard-Hemd
 gid://shopify/Product/15455796560257	zugeordnet	16	Polyester-Bluse mit 3D-Muster
 gid://shopify/Product/15455797444993	zugeordnet	2	Sommer-Bikini-Anhänger Edelstahl
+gid://shopify/Product/15455797510529	zugeordnet	55	Herren-Tarnmuster-Cargo-Pants
+gid://shopify/Product/15455797641601	zugeordnet	2	Männlicher Leder Messenger Beutel
+gid://shopify/Product/15455822610817	zugeordnet	56	Hochtaillierter Sportrock
