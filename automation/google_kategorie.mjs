@@ -270,10 +270,23 @@ export function werkzeugKorb(title) {
   return null;
 }
 
+// (6) SAMMELKORB «BÜRO & HOME OFFICE» (08.10.2026): die CJ-Gruppe stempelt jeden Treffer als «Office Supplies» —
+// gemessen 14 von 55 aktiven grob (Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender).
+// EINE Regelquelle mit google_kategorie_umzug.py: automation/data/buero_korb.json. Unklares bleibt «Office Supplies».
+const _BK = JSON.parse(fs.readFileSync(new URL('./data/buero_korb.json', import.meta.url), 'utf8'));
+const BK_KREUZ = _BK.kreuz.map(([m, z]) => [new RegExp(m, 'i'), z]);
+export const BUERO_TYPEN = new Set(['Büro & Home Office', 'Büro']);
+export function bueroKorb(title) {
+  const ti = title || '';
+  for (const [rx, z] of BK_KREUZ) if (rx.test(ti)) return z;
+  return null;
+}
+
 export function googleKategorie(title, tags, productType) {
   const ti = title || '';
   const t = new Set((tags || []).map(x => String(x).toLowerCase()));
   if (WERKZEUG_TYPEN.has(productType)) { const wk = werkzeugKorb(ti); if (wk) return wk; }
+  if (BUERO_TYPEN.has(productType)) { const bk = bueroKorb(ti); if (bk) return bk; }
 
   // (3) Haustier sticht Spielzeug — ein Hundespielzeug ist kein Kinderspielzeug.
   const istPet = PET_TAGS.some(x => t.has(x)) || PET_TITEL.test(ti);

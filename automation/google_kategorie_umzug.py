@@ -99,6 +99,13 @@ UMZUG = {
         *[tuple(x) for x in __import__("json").load(open(__import__("os").path.join(__import__("os").path.dirname(__import__("os").path.abspath(__file__)), "data", "werkzeug_korb.json"), encoding="utf-8"))["vorrang"]],   # 07.10.: gemeinsame Quelle mit dem Importer
     ],
 }
+# 08.10.2026 Sammelkorb «Büro & Home Office» (Verbesserungsrunde 12:30): die CJ-Gruppe stempelt jeden Treffer als Google
+# «Office Supplies» — gemessen 14 von 55 aktiven grob, darunter Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber,
+# Golf-Adventskalender. Die KI-Stufe verfeinert nur INNERHALB der Oberklasse, eine Tastatur bleibt dort im falschen Zweig.
+# Regeln in automation/data/buero_korb.json — der Importer (google_kategorie.mjs, bueroKorb) liest dieselbe Datei.
+OS = "Office Supplies"
+_BK = __import__("json").load(open(os.path.join(HIER, "data", "buero_korb.json"), encoding="utf-8"))
+UMZUG[OS] = [tuple(x) for x in _BK["kreuz"]]
 _R = {q: [(re.compile(m, re.I), z) for m, z in r] for q, r in UMZUG.items()}
 # 07.10.2026 (Verbesserungsrunde 12:25, Plan-Tag 7): die CJ-Gruppe «Werkzeug» stempelt ALLES, was ihre Suche liefert,
 # als «Werkzeug & Heimwerken» / Hardware > Tools — gemessen 1'188 aktive, nur 566 mit einem Werkzeugwort im Titel; in 4 h
@@ -229,6 +236,8 @@ KANARIEN = [
     ("Elektrischer Bohrstaubsauger mit Laser", TO, None),               # Bohr-Absaugung = Werkzeug
     ("Kalimba Daumenklavier 17-Töne", DE, None),                       # nur aus dem Tools-Zweig
 ]
+
+KANARIEN += [(t, OS, z) for t, z in _BK["kanarien"]]   # 08.10.: Büro-Sammelkorb (eine Quelle mit dem Importer)
 
 
 def kanarienvogel(gueltig=None):

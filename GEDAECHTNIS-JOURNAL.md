@@ -44,6 +44,20 @@
 
 
 
+## 2026-10-08 13:15 UTC · 🗄️ Verbesserungsrunde: Sammelkorb «Büro & Home Office» — Tastatur bei Google unter «Office Supplies»
+
+**GEMESSEN:** Von 33 Neuimporten in 4 h kamen 11 aus der CJ-Gruppe «Büro & Home Office», alle auf Google «Office Supplies»
+(Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender, Moissanit-Tester); im Bestand 14 von 55.
+Die KI-Stufe verfeinert nur innerhalb der Oberklasse, `oberklasse_lernen` hatte keine Regel → diese Ware bleibt im falschen Zweig.
+TikTok-Einbruch ab 05.10. = Ende der CHF-80-Lernkampagne (geplant); die 429 in google_fein_ki-Logs waren vom 02.10.
+**GETAN:** `data/buero_korb.json` (17 Regeln) für Importer (`bueroKorb()` in google_kategorie.mjs, Typ folgt mit) und täglichen
+Umzug (Quelle «Office Supplies»); Kanarien 120/120 (25 neu, mit Ködern Mausefalle/Keyboard-Klavier/Kalorienrechner), Gleichlauf
+py=js 51'586 Titel / 0; 13 gesetzt / 0 Fehler, Rücklesen 13/13.
+**LEHRE:** (1) Jede CJ-Gruppe mit eigenem Typ ist ein möglicher Sammelkorb: Nach Werkzeug (07.10.) jetzt Büro. Prüffrage bei neuen
+Gruppen: Wie viele Titel tragen ein Wort der Gruppe? (2) Eine Fehlerzeile im Log ist erst ein Befund, wenn ihr Zeitstempel aktuell
+ist; meine Traceback-Suche fand 6 Tage alte 429. (3) Ein Einbruch der Sitzungen kann ein geplantes Kampagnenende sein, deshalb zuerst
+Quelle und Landeseite je Tag aufteilen. Bericht `dropship/GOOGLE-BUERO-SAMMELKORB-2026-10-08.md`.
+
 ## 2026-10-08 12:15 UTC · ⚡ «mehr verbesserung» (Tag 11 vorgezogen): Startseite lud 150 Bilder beim Öffnen — ein Standard-Skript nahm das lazy weg
 
 **GEMESSEN:** Die Startseite (390 px, DPR 2, ohne Scrollen) lud 150 Bilddateien / 9'390 KB, übertragen insgesamt 10'817 KB; der
@@ -18938,3 +18952,4 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · 📦 **«cj lagerstatus … alle produkten»: Bestand nur in cj_stock_guard (nie gestartet), Existenz-Wächter ohne CJ-Punkte → `cj_lager_abgleich.py` (product/query + `features=enable_inventory` — Doku falsch, ohne = None), 0 → «ausverkauft» (DENY, umkehrbar), Vorrang-Fenster CAP 2000; Filter Kategorie/Länge/Ärmel live geprüft.** → Journal 06.10. 21:00
 - 2026-10-06 · 🔒 **DENY sperrt nichts ohne tracked+Menge 0 (Lehre 08.09., Betreiber «schaue memory») — und 427'616 CJ-Varianten stehen ab Import auf DENY und sind kaufbar → `ausverkauft.py` (sperren/freigeben, Rücklesen availableForSale); cj_varianten_wache sperrte 177/179 wirkungslos; Grind 3 Runner, Lagerabgleich stündlich.** «gesperrt?» = availableForSale → Journal 06.10. 21:30
 - 2026-10-06 · 🖥️ **«hetzner verbessern»: Server-CJ-Runner ohne Text-KI = 3'903× skip(gemini), 0 angelegt, ~39k Punkte/Tag nach bezahlter Abfrage; /tmp 97 %, numpy/PIL fehlten → Keepalive lädt /etc/luxe/secrets.env, /tmp-Hygiene, apt, `KI_DA=0` → Grind+Such-Runner aus, Importer bricht VOR CJ ab.** Voraussetzung vor der bezahlten Abfrage prüfen → `dropship/HETZNER-AUTOMATION-2026-10-06.md`
+- 2026-10-06 · 📦 **«fix fortuna»: Bestand 26 h eingefroren (2× rc=2 «Shopify antwortete nicht») — Token gültig, Eimer leer (kategorie_fein zeitgleich «40x gedrosselt»), JS-`gql()` gab nach 20 Kurzversuchen ohne Grund auf → throttleStatus-Warten max(Anfrage,600), 40 Runden, Grund im Log; 1'117 Varianten nachgeführt (12 auf 0).** Drossel-Regel gilt auch für .mjs → Journal 06.10. 22:25

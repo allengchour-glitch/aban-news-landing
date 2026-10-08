@@ -1,0 +1,175 @@
+{
+  "_hinweis": "08.10.2026 — Sammelkorb «Büro & Home Office»: die CJ-Gruppe stempelt jeden Treffer als Google «Office Supplies» (gemessen 08.10. 12:30: 14 von 55 aktiven grob, darunter Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender, Moissanit-Tester). EINE Regelquelle für den Importer (google_kategorie.mjs, schon beim Anlegen) und den täglichen Umzug (google_kategorie_umzug.py, Quelle = genau «Office Supplies»). Erste Regel gewinnt; Unklares bleibt «Office Supplies» (Feinstufe/KI). Kanarien: python3 automation/google_kategorie_umzug.py --kanarienvogel",
+  "kreuz": [
+    [
+      "tastenkappe\\w*|keycaps?",
+      "Electronics > Electronics Accessories > Computer Components > Input Device Accessories > Keyboard Keys & Caps"
+    ],
+    [
+      "handgelenk\\w*|handballenauflage|armlehne\\w*|armauflage",
+      "Electronics > Electronics Accessories > Computer Accessories > Keyboard & Mouse Wrist Rests"
+    ],
+    [
+      "mauspad\\w*|mausmatte|schreibtischunterlage|desk-?pad",
+      "Electronics > Electronics Accessories > Computer Accessories > Mouse Pads"
+    ],
+    [
+      "^(?!.*(?:klavier|piano|musik|reinig|abdeck|schutzfolie|h[üu]lle|ablage)).*(?:\\w*tastatur\\b|keyboard)",
+      "Electronics > Electronics Accessories > Computer Components > Input Devices > Keyboards"
+    ],
+    [
+      "^(?!.*(?:falle|spielzeug|pl[üu]sch|kost[üu]m|figur)).*(?:\\b(?:bluetooth-?|funk-?|gaming-?|computer-?|pc-?)maus\\b|\\bmaus\\b(?=.*(?:dpi|bluetooth|kabellos|usb|klick)))",
+      "Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs"
+    ],
+    [
+      "diskette\\w*|floppy",
+      "Electronics > Electronics Accessories > Computer Components > Storage Devices > Floppy Drives"
+    ],
+    [
+      "monitorst[äa]nder|monitorerh[öo]hung|bildschirmst[äa]nder|bildschirmerh[öo]hung|laptopst[äa]nder|laptop-?st[äa]nder|notebookst[äa]nder",
+      "Electronics > Electronics Accessories > Computer Accessories > Computer Risers & Stands"
+    ],
+    [
+      "tischtennis-?(?:kleber|belag|bel[äa]ge|schl[äa]gerh[üu]lle)",
+      "Sporting Goods > Indoor Games > Ping Pong > Ping Pong Paddle Accessories"
+    ],
+    [
+      "tischtennis\\w*|ping-?pong",
+      "Sporting Goods > Indoor Games > Ping Pong"
+    ],
+    [
+      "adventskalender",
+      "Home & Garden > Decor > Seasonal & Holiday Decorations > Advent Calendars"
+    ],
+    [
+      "moissanit\\w*|diamant\\w*-?(?:tester|test|detektor)|edelstein-?tester|diamanttester",
+      "Hardware > Tools > Measuring Tools & Sensors"
+    ],
+    [
+      "[üu]bersetz\\w*",
+      "Office Supplies > Office Equipment > Electronic Dictionaries & Translators"
+    ],
+    [
+      "^(?!.*(?:notizbuch|notizblock|kalorien)).*(?:taschenrechner|\\w*rechner\\b)",
+      "Office Supplies > Office Equipment > Calculators"
+    ],
+    [
+      "post-?its?\\b|haftnotiz\\w*|klebezettel|sticky ?notes?",
+      "Office Supplies > General Office Supplies > Paper Products > Sticky Notes"
+    ],
+    [
+      "\\w*ordner\\b",
+      "Office Supplies > Filing & Organization > Binding Supplies > Binders"
+    ],
+    [
+      "dokumentenmappe|\\w*mappe\\b|sammelmappe|schnellhefter",
+      "Office Supplies > Filing & Organization > Folders & Report Covers"
+    ],
+    [
+      "^(?!.*(?:brille|schmuck|handy|karten|kosmetik|make-?up|uhr)).*(?:federm[äa]ppchen|stifte-?etui|\\w*etui\\b|stiftetasche)",
+      "Office Supplies > Filing & Organization > Pen & Pencil Cases"
+    ]
+  ],
+  "kanarien": [
+    [
+      "Kabelloses Bluetooth-Keyboard mit Mute-Funktion",
+      "Electronics > Electronics Accessories > Computer Components > Input Devices > Keyboards"
+    ],
+    [
+      "Bluetooth-Maus mit 5-Gang-DPI und Silikon-Handauflage",
+      "Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs"
+    ],
+    [
+      "Externer 35-mm-Diskettenlaufwerk USB",
+      "Electronics > Electronics Accessories > Computer Components > Storage Devices > Floppy Drives"
+    ],
+    [
+      "Inorganischer Tischtennis-Kleber 50 ml",
+      "Sporting Goods > Indoor Games > Ping Pong > Ping Pong Paddle Accessories"
+    ],
+    [
+      "Golf Adventskalender 24 Stück",
+      "Home & Garden > Decor > Seasonal & Holiday Decorations > Advent Calendars"
+    ],
+    [
+      "Moissanite-Detektor zum Diamantentest",
+      "Hardware > Tools > Measuring Tools & Sensors"
+    ],
+    [
+      "Elektronischer Übersetzungsstift",
+      "Office Supplies > Office Equipment > Electronic Dictionaries & Translators"
+    ],
+    [
+      "Solarbambus-Rechner für Büro",
+      "Office Supplies > Office Equipment > Calculators"
+    ],
+    [
+      "Post-It-Set mit Papier-Tasche",
+      "Office Supplies > General Office Supplies > Paper Products > Sticky Notes"
+    ],
+    [
+      "A4 Leder Ordner mit Multifunktion",
+      "Office Supplies > Filing & Organization > Binding Supplies > Binders"
+    ],
+    [
+      "Plissiertes Karo-Etui mit grosser Kapazität",
+      "Office Supplies > Filing & Organization > Pen & Pencil Cases"
+    ],
+    [
+      "Monitorständer mit zwei Ablagen",
+      "Electronics > Electronics Accessories > Computer Accessories > Computer Risers & Stands"
+    ],
+    [
+      "PBT-Tastenkappen in Lila, Originalhöhe",
+      "Electronics > Electronics Accessories > Computer Components > Input Device Accessories > Keyboard Keys & Caps"
+    ],
+    [
+      "Anti-Rutsch Wolken-Handgelenkauflage für die Maus",
+      "Electronics > Electronics Accessories > Computer Accessories > Keyboard & Mouse Wrist Rests"
+    ],
+    [
+      "Ergonomischer Mausarmlehnen-Schutz aus Silikongel",
+      "Electronics > Electronics Accessories > Computer Accessories > Keyboard & Mouse Wrist Rests"
+    ],
+    [
+      "Mauspad mit kabelloser Ladefunktion",
+      "Electronics > Electronics Accessories > Computer Accessories > Mouse Pads"
+    ],
+    [
+      "Kinder-Schreibtraining-Set",
+      null
+    ],
+    [
+      "Stoffhalter – 15-fach Aufbewahrung",
+      null
+    ],
+    [
+      "Brillenetui aus Leder",
+      null
+    ],
+    [
+      "Mausefalle aus Kunststoff",
+      null
+    ],
+    [
+      "Plüsch-Maus Katzenspielzeug",
+      null
+    ],
+    [
+      "Keyboard-Klavier für Kinder mit 37 Tasten",
+      null
+    ],
+    [
+      "Tastatur-Reinigungsgel",
+      null
+    ],
+    [
+      "Kalorienrechner-Notizbuch",
+      null
+    ],
+    [
+      "Schreibtisch-Ordner aus Leder",
+      "Office Supplies > Filing & Organization > Binding Supplies > Binders"
+    ]
+  ]
+}
