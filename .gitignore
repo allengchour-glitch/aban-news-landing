@@ -122,5 +122,8 @@ tools/trading/ki_bot/STOP
 data/ki-bot.json
 data/ki-bot-broker.json
 data/krypto-bot.json
-tools/trading/daten/BTC-USD_ohlc.json
+tools/trading/daten/*_ohlc.json
+tools/trading/daten/*_hlc.json
+tools/trading/daten/ETH-USD.json
 data/krypto-pilot.json
+data/eth-sammler.json

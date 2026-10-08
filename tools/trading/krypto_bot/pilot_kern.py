@@ -2,11 +2,14 @@
 """Krypto-Pilot, Rechenkern (ohne Netz, testbar).
 
 Regel (vorab festgelegt, aus futures.py die einzige, die den Zufallstest bestand):
-  Richtung: Schlusskurs über dem 200-Tage-Schnitt → long, darunter → short (abschaltbar: nur long).
+  Richtung: Schlusskurs über dem Trend-Schnitt → long, darunter → short (abschaltbar: nur long).
+            Bitcoin 150 Tage, Ethereum 200 Tage (pilot_pruefung.py: 150 war bei BTC auf allen getrennten Abschnitten
+            besser, bei ETH nicht — darum je Coin der Wert, der die vorab festgelegte Regel bestand).
   Grösse:   Schwankungsziel — Hebel = min(MAX_HEBEL, ZIEL_VOL ÷ Jahresschwankung). Wilder Markt → kleinere Position.
   Lügendetektor: Jeden Tag wird gemessen, ob die Regel in den letzten 730 Tagen besser war als zeitversetzte
                  Kopien ihrer selbst (gleiche Positionen, falsches Timing). Schlägt sie weniger als SKILL_MIN davon,
-                 oder lag sie im letzten Jahr mehr als EINBRUCH_MAX im Minus vom Hoch, geht der Pilot flach (0).
+                 oder lag sie im letzten Jahr mehr als EINBRUCH_MAX im Minus vom Hoch, gibt es eine WARNUNG.
+                 Als Notbremse (flach gehen) kostete er im Test Rendite — darum handelt der Pilot live trotzdem.
   Stop:     Abstand = STOP_SIGMA × Tages-Schwankung × Kurs (als Sicherung an der Börse gegen Crash-Tage).
 Alle Werte nur aus abgeschlossenen Tagen; die Entscheidung von Tag i gilt ab Tag i+1.
 """
@@ -48,10 +51,10 @@ def schwankung(p):
     return o
 
 
-def roh_hebel(p, short=True, max_hebel=MAX_HEBEL):
+def roh_hebel(p, short=True, max_hebel=MAX_HEBEL, n_sma=200):
     """Ziel-Hebel je Tag OHNE Lügendetektor (positiv long, negativ short)."""
     m = min(abs(max_hebel), HEBEL_HART)
-    s200, vol = sma(p, 200), schwankung(p)
+    s200, vol = sma(p, n_sma), schwankung(p)
     z = []
     for i in range(len(p)):
         if s200[i] is None or vol[i] is None:
@@ -108,9 +111,9 @@ def detektor(z, p, i, n=100, seed=1):
     return (skill >= SKILL_MIN and dd > EINBRUCH_MAX), skill, dd
 
 
-def ziel_hebel(p, short=True, max_hebel=MAX_HEBEL, mit_detektor=True, detektor_alle=7):
+def ziel_hebel(p, short=True, max_hebel=MAX_HEBEL, mit_detektor=True, detektor_alle=7, n_sma=200):
     """Ziel-Hebel je Tag MIT Lügendetektor. Der Detektor wird alle `detektor_alle` Tage neu bewertet (Rechenzeit)."""
-    z = roh_hebel(p, short, max_hebel)
+    z = roh_hebel(p, short, max_hebel, n_sma)
     if not mit_detektor:
         return z, [None] * len(p)
     out, urteile, ok, letzt = [], [], True, None

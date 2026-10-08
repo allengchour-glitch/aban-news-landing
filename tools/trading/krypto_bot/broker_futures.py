@@ -151,10 +151,10 @@ def runde(x, schritt):
     return math.floor(abs(x) / schritt + 1e-9) * schritt * (1 if x >= 0 else -1)
 
 
-def plane(cfg, kapital, menge_ist, mark, regeln, ziel):
+def plane(cfg, kapital, menge_ist, mark, regeln, ziel, gewicht=1.0):
     """Reine Rechnung: Ziel-Hebel → Liste von Aufträgen [(seite, menge, reduceOnly)]. Kapital = Kontowert inkl. offener Gewinne."""
     ziel = max(-cfg["max_hebel"], min(cfg["max_hebel"], ziel))
-    basis = kapital * cfg["anteil"]
+    basis = kapital * cfg["anteil"] * gewicht
     if basis <= 0 or mark <= 0:
         return []
     ist_hebel = menge_ist * mark / basis
@@ -182,7 +182,7 @@ def plane(cfg, kapital, menge_ist, mark, regeln, ziel):
     return auftraege
 
 
-def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=None):
+def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=None, symbol=None, gewicht=1.0):
     """entscheid: {'hebel': Ziel-Hebel, 'stop_long': Preis, 'stop_short': Preis, 'stand': Datum}."""
     cfg = einstellungen(env)
     if protokolliere is None:
@@ -215,7 +215,8 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
             print("Futures: " + e["hinweis"])
             protokolliere(e)
             return []
-        sym = cfg["symbol"]
+        sym = (symbol or cfg["symbol"]).upper()
+        e["symbol"], e["gewicht"] = sym, gewicht
         regeln = c.regeln(sym)
         if regeln.get("status") not in (None, "TRADING"):
             e["hinweis"] = f"{sym} ist nicht handelbar."
@@ -226,7 +227,8 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
         menge = c.position(sym)
         mark, funding = c.markpreis(sym)
         e.update({"kapital": round(kapital, 2), "position": menge, "mark": mark, "funding_8h": funding})
-        plan = plane(cfg, kapital, menge, mark, regeln, ziel)
+        entscheid["kapital"] = round(kapital, 2)
+        plan = plane(cfg, kapital, menge, mark, regeln, ziel, gewicht)
     except (urllib.error.URLError, KeyError, ValueError, StopIteration) as ex:
         code = getattr(ex, "code", None)
         e["hinweis"] = ("Binance sperrt deinen Standort (HTTP 451)." if code == 451 else "Schlüssel ungültig (HTTP 401)." if code == 401
