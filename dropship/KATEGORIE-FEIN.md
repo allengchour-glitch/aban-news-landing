@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-10-08 06:23 UTC)
+# Feinkategorie (automatisch, 2026-10-08 06:33 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
 
@@ -6,7 +6,7 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
 |---|---:|
 | gleich | 49309 |
 | kein-google | 1662 |
-| schon-im-ledger | 422 |
+| rueckfall-grob | 422 |
 | shopify-feiner | 139 |
 | anderer-zweig | 69 |
 | keine-zuordnung | 10 |

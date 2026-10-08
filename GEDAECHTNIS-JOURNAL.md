@@ -44,6 +44,23 @@
 
 
 
+## 2026-10-08 07:00 UTC · 👗 «weiter fein katalog verbessern»: Titelprobe-Rest war Google-Fehler, Kleider/Röcke-Kollektion hing am CJ-Namen
+- GEMESSEN: 233 Titelprobe-Ablehnungen — 142 Google «Dresses» waren Röcke/Blusen/Jumpsuits/Nachthemden/Bikinis, 56 «Bracelets»
+  Ketten/Ringe/Uhren/Gürtel; dazu Wortlücken der Probe (Röckchen, Partnerarmbänder, Blouson, Trouser, Vest, Pillow, Hoops, Kettchen).
+  Kollektionen hängen an Tags: `kategorie-kleid` 2'886 (57 Röcke, Oberteile …), `kategorie-rock` 240 (29 echte Kleider);
+  203 Kleider + 196 Röcke ohne ihren Tag. Ursache: `cj_category_fill` setzte den Tag aus CJs Kategorienamen.
+- GETAN: TITELPROBE erweitert (34/34); `titelprobe_fein.py` (Kopfwort, 47 Kanarien) 172/0; 10 «Röcke mit Ärmeln» per
+  Bild-Kontaktbogen als Kleider bestätigt und umbenannt; `kleid_rock_tags.py` (Kategorie UND Titel) 453/0; Importer
+  `kleidRockTag()` mit EINER Wortregel `data/kleid_rock_woerter.json` (py=js 51'616/0); 328 Rest-Einzelurteile (8 Prüfer,
+  Taxonomie validiert) 245/0 mit neuem REGEL-VORRANG (Urteil weicht, wenn eine tägliche Titelregel anders entscheiden würde).
+  Nachher: Zweig-Widerspruch 243 → 69, Titelprobe 233 → 5.
+- BEFUND: 363/432 Printful-Produkte (+6 LX, nur 53/23'053 CJ) fielen nach der Verfeinerung auf die Grobklasse zurück — kein
+  eigenes Werkzeug schreibt das (Ledger/Logs/Tests), Verdacht Printful-Sync; Sonde Sticker «Matterhorn» 06:24 fein gesetzt.
+  `kategorie_fein` zählt das jetzt als `rueckfall-grob` statt im Ledger-Zähler zu verstecken.
+- LEHRE: (1) Eine Titelprobe, die ablehnt, hat oft recht — die Gegenrichtung (Google korrigieren) ist die eigentliche Arbeit.
+  (2) Ein Einzelurteil ohne Vorrang-Regel gegenüber täglichen Wächtern erzeugt ein tägliches Hin und Her. (3) Ein «schon im
+  Ledger»-Zähler, der wächst, ist ein Rückfall-Signal, kein Erfolg. → `dropship/FEINKATALOG-KLEID-ROCK-2026-10-08.md`
+
 ## 2026-10-08 05:00 UTC · ⭐ «weiter verbessern» (Tag 9 vorgezogen): Bewertungen erreichen die Neuware + Klimaaussagen raus
 - GEMESSEN: 2'695 aktive Neuimporte seit 01.10., auf Bewertungen geprüft 107 (4 %). Drei Ursachen: (1) die Arbeitsliste
   nahm Neuware nur über 60 Karten von «neu-eingetroffen»; (2) die Tagesläufe starben am stündlichen Neustart (31 bzw. 38
@@ -18833,3 +18850,4 @@ Verschoben am 04.10.2026:
 - 2026-10-05 · 💸 **CJ-Fenster/Runde: EK-Boden 15 bei 3'703 Produkten OHNE CJ-Punkte (`kosten_boden15_korrigieren.py`, Aufseher-LIMIT 400 → 5'000, DRY 0 offen, Verlust 0) statt 40k Punkte über `cj_kosten_backfill`; #1021 = CJ-Ersatzware (Ticket), Nibosi gedraftet, Fabrikbestand 20'000 ≠ lieferbar (n=1).** Billigeres Werkzeug zuerst suchen → `dropship/EK-BODEN15-REST-2026-10-05.md`
 - 2026-10-06 · 🔎 **«tool installieren selber programmieren»: eigenes Perplexity `tools/recherche.py` (Groq gpt-oss + `browser_search`, gratis, Quellen aus der Werkzeug-Ausgabe) + `automation/hype_recherche.py` täglich → `dropship/HYPE-RECHERCHE.md` mit Gegenprobe am Bestand; Bing von unserer IP = Pizzerien in Genf, compound = 404.** Automatik kann jetzt selbst im Netz nachsehen → Journal 06.10. 19:05
 - 2026-10-06 · 📦 **Fortura Stufe 2 live: Muster vom Betreiber → `fortura_xml.py` (Opacc.ORDERS, Template-Abgleich, 7/7) + Engine lädt `ORDERS_LX<nr>.xml` einmalig hoch, liest DESADV (Tracking, Teillieferung, 48-h-Alarm); Schalter `_fortura_xml_aktiv`; Test nur mit Attrappe (Upload = echte Bestellung).** → `dropship/FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`
+- 2026-10-06 · 📣 **«ja mach alles gratis sachen»: TikTok Median 280 Aufrufe/Post vs Pinterest 1 → TikTok 6 h + täglicher Abendpost 21–23 Uhr (×8 gemessen), Pinterest 48 h; Creator-Vorlage `dropship/CREATOR-ANFRAGE.md`; TikTok-Bio-Link erst ab 1'000 Followern (falsch empfohlen).** Vor Empfehlung Code lesen → Journal 06.10. 19:25

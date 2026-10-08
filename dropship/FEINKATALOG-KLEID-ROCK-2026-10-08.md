@@ -47,7 +47,35 @@ Jeder Google-Pfad wurde gegen die Google-Taxonomie validiert (Ablauf `kategorie_
 Wert morgen anders setzen würde, bleibt das Urteil liegen. Sonst kippt ein Produkt jeden Tag hin und her; ein Prüfer hatte das
 beim Diffuser gemeldet.
 
-ERGEBNIS: siehe Nachtrag unten.
+ERGEBNIS:
+- 328 Urteile, alle gegen die Taxonomie geprüft: G 136, X 86, S 59, «?» 47 (Kauderwelsch wie «Laminierkissen», «Nano-Duscher» —
+  bleiben, wie sie sind).
+- Drei Prüfer haben bei unklaren Titeln die Produkttexte gelesen, aber nichts geändert. So wurden sechs «Armbänder» als
+  Fitbit-/Apple-Watch-Bänder erkannt und ein «Holster» als Umhängetasche; fünf Kauderwelsch-Haartitel sind Locken- oder Glätteisen.
+- Anwendung: **245 gesetzt / 0 Fehler**, 29 waren schon richtig, 7 liess der Regel-Vorrang liegen.
+
+## Nachmessung (frischer Export, kategorie_fein trocken)
+
+| Zustand | 08.10. 05:08 | nachher |
+|---|---:|---:|
+| gleich (Google und Shopify einig) | 48'951 | **49'309** |
+| Zweig-Widerspruch | 243 | **69** |
+| Titelprobe-Ablehnung | 233 | **5** |
+| keine Zuordnung | 12 | **10** |
+| Shopify feiner als Google (Absicht) | 126 | 139 |
+
+## 4. Befund: Printful-Produkte fallen auf die Grobklasse zurück
+
+Der Ledger-Zähler stieg von 262 auf 422. Diese Produkte hatte `kategorie_fein` am 06.10. verfeinert; heute stehen sie wieder auf
+der Oberklasse («ae», «hg», «el», «aa-1»). GEMESSEN je Herkunft (die Kategorie ist heute eine Oberklasse des geschriebenen Ziels):
+**Printful 363/432**, LX 6/8, CJ 53/23'053. Ausgeschlossen wurden: `versand_jenachland` (Test: Beschreibung ändern lässt die
+Kategorie stehen), `kategorie_wache` (nicht im Ledger, fasst nur leere/pauschale an), die Sticker-Werkzeuge (letzter Lauf
+26.09.), `kategorie_ki` (0 Treffer) und meine Urteils-Läufe. Verdacht: Printfuls Synchronisation setzt die eigene Grobklasse
+(Aufkleber → Arts & Entertainment, Kissen → Home & Garden, Mauspad → Electronics); ein Beweis steht aus. Sonde: Der Sticker
+«Matterhorn» wurde um 06:24 wieder fein gesetzt. Fällt er zurück, ist es extern.
+Folge: begrenzt. Das Google-Feld (`mm-google-shopping`), das der Feed liest, bleibt fein; grob ist nur Shopifys Filter
+«Kategorie» auf Druck-Artikeln. `kategorie_fein` schreibt sie nicht erneut (Ledger, sonst Hin und Her) und zählt sie jetzt
+getrennt als `rueckfall-grob` im Tagesbericht.
 
 Nebenbefund: 2 Produkte trugen einen Google-Wert, den es in der Taxonomie nicht gibt («Paper Shredders», «Athletics >
 Football»). Beide sind in den Urteilen enthalten; eine eigene Klasse ist das nicht.
