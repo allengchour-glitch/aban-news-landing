@@ -16,6 +16,13 @@ REGEL (nur starke Merkmale, nie raten):
   Google bleibt «Nail Art Kits & Accessories».
   Alles andere bleibt (shopify_fein ordnet Pinsel/Folien/Strass nach Titel).
 Geltungsbereich: aktive Produkte, Shopify in hb-3-2-7 / hb-3-2-7-4 / hb-3-2-7-4-2 / hb-3-2-7-4-3, Google leer oder im Zweig Nail Care.
+TITEL (08.10.2026 abends, Betreiber «weiter»): Ein Press-on-Set, das «Nagelsticker» heisst, führt Käuferinnen in die Irre. Der Titel
+  wird nur geändert, wenn die BESCHREIBUNG Nägel belegt (künstliche Nägel, Nagelstücke/-spitzen/-platten, Jelly-Kleber, Mandelform …)
+  — die Grössenoption allein reicht für die Kategorie, nicht für einen neuen Titel. «Nagelsticker/Nagelaufkleber/Sticker» →
+  «Press-on-Nägel» (Begriff wie google_titel_reparatur.py); ohne Nagel-Nomen « · Press-on-Nägel» angehängt; Verlängerungs-Sets
+  (Tips + Kleber) bleiben. SEO-Titel, die mit dem alten Titel beginnen, ziehen mit. Neuer Titel, der schon bei einem anderen
+  Produkt steht → übersprungen (dup_title_fix würde sonst draften). Bereich zusätzlich «False Nails» (hb-3-2-7-2) für Neuimporte.
+  Ledger dropship/_nagel_titel.tsv.
 VORRANG: kosmetik_fein.lauf überspringt die hier gesetzten Press-on-Produkte (sonst setzt seine Titelregel «nagelsticker → Nail Art»
 sie jeden Morgen zurück). Ledger dropship/_nagel_fein.tsv. Täglich im Aufseher (Kategorie-Kette, NACH kosmetik_fein).
 
@@ -27,6 +34,7 @@ HIER = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
 
 LEDGER = os.path.join(REPO, "dropship", "_nagel_fein.tsv")
+TITEL_LEDGER = os.path.join(REPO, "dropship", "_nagel_titel.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 NC = "Health & Beauty > Personal Care > Cosmetics > Nail Care"
 FALSE_NAILS = (NC + " > False Nails", "hb-3-2-7-2")
@@ -64,6 +72,60 @@ def ziel(cid, titel, optionen, beschreibung):
     return None, None, ""
 
 
+
+# Beleg für ECHTE Nägel in der Beschreibung (für den Titel; die Kategorie reicht schon mit der Grössenoption).
+# «ultra-dünn, nahtlos» ist bei CJ ein Stilname der Press-on-Sets, KEIN Folienmerkmal (08.10. an 8 Beschreibungen gesehen).
+NAGEL_BELEG = re.compile(
+    r"k[üu]nstliche[n]?\s+n[äa]gel|kunstn[äa]gel|n[äa]gel\s+zum\s+aufkleben|press[\s-]?on|tragbare[nrs]?\s+n[äa]gel|"
+    r"nagelst[üu]cke|nagelspitzen|nagelpl[äa]ttchen|nagelplatten|(mandel|sarg|ballerina)-?form|\bcoffin\b|\balmond\b|"
+    r"(jelly|gelee)[\s-]?(glue|kleber)|wearing nail|wear(able)? nails?|nagel-?tips", re.I)
+STICKER_WORT = re.compile(r"nagel-?stickers?|nail-?stickers?|nail\s+stickers?|nailstickers?|nagel-?aufkleber|\bstickers?\b", re.I)
+# Titel sagt schon «Nägel/Nails» (Mehrzahl = die Nägel selbst) → nichts anhängen; «Nail Art», «Nagel-Set» reichen nicht
+NAGEL_NOMEN = re.compile(r"press[\s-]?on|nägel|naegel|\bnails\b|nail\s?tips|nagelspitzen|nagel-?tipp?s?\b|kunstnagel", re.I)
+VERLAENGERUNG = re.compile(r"extension|verl[äa]ngerung", re.I)
+
+
+def titel_ehrlich(titel):
+    """Ehrlicher Titel für ein belegtes Press-on-Set (oder derselbe Titel, wenn nichts zu tun ist)."""
+    t = titel or ""
+    if VERLAENGERUNG.search(t) or NAGEL_NOMEN.search(t):
+        return t                      # Titel nennt die Nägel schon («Nagel-Tips mit Polka-Dot Sticker» = Tips MIT Sticker)
+    neu = STICKER_WORT.sub("Press-on-Nägel", t)
+    if not NAGEL_NOMEN.search(neu):
+        neu = neu.rstrip() + " · Press-on-Nägel"
+    return re.sub(r"\s{2,}", " ", neu)
+
+
+def _norm(t):
+    t = (t or "").lower()
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+        t = t.replace(a, b)
+    return re.sub(r"[^a-z0-9]+", " ", t).strip()
+
+
+TITEL_KANARIEN = [
+    ("Nagelsticker Weiss", "Press-on-Nägel Weiss"),
+    ("Handgemachte abnehmbare Mandel-Nagelsticker", "Handgemachte abnehmbare Mandel-Press-on-Nägel"),
+    ("Mädchenhafte Schleifen-Nailsticker", "Mädchenhafte Schleifen-Press-on-Nägel"),
+    ("Nationale Stil Nagel-Sticker Drachen-Biographie", "Nationale Stil Press-on-Nägel Drachen-Biographie"),
+    ("Cat's Eye Nails: Abnehmbare Sticker in Mint", "Cat's Eye Nails: Abnehmbare Sticker in Mint"),   # nennt «Nails» schon
+    ("Wassermelonen-Nagelaufkleber", "Wassermelonen-Press-on-Nägel"),
+    ("Fairy White Polarised Nagelstickers", "Fairy White Polarised Press-on-Nägel"),
+    ("Sterntaler-Maniküre", "Sterntaler-Maniküre · Press-on-Nägel"),
+    ("Kurz, Katzenaugen-Form", "Kurz, Katzenaugen-Form · Press-on-Nägel"),
+    ("Blutroter Guokui-Nagel-Set", "Blutroter Guokui-Nagel-Set · Press-on-Nägel"),
+    ("Herz-Muster 3D Nagel-Kunst Mandelform", "Herz-Muster 3D Nagel-Kunst Mandelform · Press-on-Nägel"),
+    ("Kaffee-Leopardenprint Cat-Eye Nägel", "Kaffee-Leopardenprint Cat-Eye Nägel"),
+    ("Handgemachte French Nails mit Zirkon & Kristall", "Handgemachte French Nails mit Zirkon & Kristall"),
+    # schon ehrlich / bewusst nicht
+    ("24er Set Schwarze Schmetterling Press-On Nägel", "24er Set Schwarze Schmetterling Press-On Nägel"),
+    ("Rote und weisse Herz-Kunstnägel, lang, eckig", "Rote und weisse Herz-Kunstnägel, lang, eckig"),
+    ("Painless Fast Nail Art Extension Set", "Painless Fast Nail Art Extension Set"),
+    ("Cat-Eye Nagel-Tips mit Polka-Dot Sticker", "Cat-Eye Nagel-Tips mit Polka-Dot Sticker"),
+    ("Aurora Nagel-Tipps mit Blumenmotiv", "Aurora Nagel-Tipps mit Blumenmotiv"),
+    ("Weinroter Kunstnagel zum Aufkleben, extra lang", "Weinroter Kunstnagel zum Aufkleben, extra lang"),
+]
+
 KANARIEN = [   # (cid, Titel, Optionen, Beschreibungsausschnitt, Google-Ziel, Shopify-Ziel) — echte Fälle 08.10.
     ("hb-3-2-7-4", "Handgemachte Luxus-Nagelsticker", [{"name": "Grösse", "values": ["XS", "S", "M", "L"]}], "handgemachte Nagelsticker", FALSE_NAILS[0], "hb-3-2-7-2"),
     ("hb-3-2-7-4", "Nagelsticker Weiss", [], "Lieferumfang: Nagelstücke, Jelly-Glue, Glue, Alkohol-Cotton", FALSE_NAILS[0], "hb-3-2-7-2"),
@@ -82,6 +144,14 @@ KANARIEN = [   # (cid, Titel, Optionen, Beschreibungsausschnitt, Google-Ziel, Sh
 
 
 def kanarien():
+    tok = 0
+    for alt, soll in TITEL_KANARIEN:
+        ist = titel_ehrlich(alt); tok += ist == soll
+        if ist != soll:
+            print(f"  ✗ Titel {alt!r} → {ist!r} (soll {soll!r})")
+    print(f"NAGEL-TITEL-KANARIEN {tok}/{len(TITEL_KANARIEN)}")
+    if tok != len(TITEL_KANARIEN):
+        return False
     ok = 0
     for cid, t, o, d, g, s in KANARIEN:
         ist = ziel(cid, t, o, d)[:2]
@@ -108,12 +178,13 @@ def main():
     if FALSE_NAILS[0] not in kos.google_taxonomie():
         raise SystemExit("Google-Pfad unbekannt — nichts geschrieben")
     kf.export_holen()
-    kand = {}
+    kand = {}; titel_alle = collections.Counter(); titel_plan = []
     for l in open(kf.EXPORT, encoding="utf-8"):
         p = json.loads(l)
         cid = ((p.get("category") or {}).get("id") or "").split("/")[-1]
         g = (p.get("metafield") or {}).get("value") or ""
-        if cid in BEREICH and (not g or g == NC or g.startswith(NC + " > ")):
+        titel_alle[_norm(p["title"])] += 1
+        if (cid in BEREICH or cid == FALSE_NAILS[1]) and (not g or g == NC or g.startswith(NC + " > ")):
             kand[p["id"]] = (cid, g, p["title"])
     try:
         erledigt = {(l.split("\t")[0], l.split("\t")[3]) for l in open(LEDGER, encoding="utf-8") if l.count("\t") >= 4}
@@ -121,12 +192,26 @@ def main():
         erledigt = set()
     ids = list(kand); plan = []; st = collections.Counter(); bsp = collections.defaultdict(list)
     for i in range(0, len(ids), 40):
-        r = gql("query($i:[ID!]!){nodes(ids:$i){... on Product{id description options{name values}}}}", {"i": ids[i:i + 40]})
+        r = gql("query($i:[ID!]!){nodes(ids:$i){... on Product{id title description options{name values} seo{title}}}}", {"i": ids[i:i + 40]})
         for n in r["nodes"]:
             if not n:
                 continue
             cid, g, t = kand[n["id"]]
             gz, sz, grund = ziel(cid, t, n["options"], n["description"])
+            # Titel: nur belegte Press-on-Sets (Kategorie False Nails jetzt oder nach diesem Lauf), Live-Titel massgeblich
+            if (sz == FALSE_NAILS[1] or (not sz and cid == FALSE_NAILS[1])) and NAGEL_BELEG.search(n["description"] or ""):
+                tn = titel_ehrlich(n["title"])
+                if tn != n["title"]:
+                    if titel_alle[_norm(tn)]:
+                        st["titel-dublette"] += 1
+                    else:
+                        seo = (n.get("seo") or {}).get("title") or ""
+                        seo_neu = tn + seo[len(n["title"]):] if seo.startswith(n["title"]) else None
+                        titel_plan.append((n["id"], n["title"], tn, seo_neu)); titel_alle[_norm(tn)] += 1
+                        if len(bsp["titel"]) < int(os.environ.get("ZEIGEN", "8")):
+                            bsp["titel"].append(f"{n['title'][:45]} → {tn[:60]}")
+            if cid == FALSE_NAILS[1]:
+                continue                     # schon eingeordnet — hier nur der Titel
             if not sz:
                 st["bleibt"] += 1; continue
             gz = gz or g or NC + " > Nail Art Kits & Accessories"   # metafieldsSet verlangt einen Wert; Sticker = Nail Art
@@ -138,7 +223,7 @@ def main():
             if len(bsp[sz]) < 6:
                 bsp[sz].append(f"{t[:50]}  [{grund}]")
         time.sleep(0.3)
-    print("Stand:", dict(st), f"· Plan {len(plan)}")
+    print("Stand:", dict(st), f"· Plan {len(plan)} · Titel {len(titel_plan)}")
     for z, b in bsp.items():
         print(f"  → {z}:", *b, sep="\n      ")
     ok = fe = 0
@@ -150,7 +235,21 @@ def main():
                     f.write(f"{pid}\t{s_}\t{g_}\t{sid}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{feh}\t{kand[pid][0]}\n")
                     ok += s_ == "gesetzt"; fe += s_ == "fehler"
                 f.flush(); time.sleep(0.4)
-    print(f"FERTIG: NAGEL-FEIN {len(plan)} geplant{f' · gesetzt {ok} · fehler {fe}' if SCHARF else ' (TROCKEN)'} · {dict(st)}")
+    tok = tfe = 0
+    if SCHARF and titel_plan:
+        with open(TITEL_LEDGER, "a", encoding="utf-8") as f:
+            for pid, alt, tn, seo_neu in titel_plan:
+                inp = {"id": pid, "title": tn}
+                if seo_neu:
+                    inp["seo"] = {"title": seo_neu}
+                r = gql("mutation($p:ProductUpdateInput!){productUpdate(product:$p){product{title seo{title}} userErrors{message}}}", {"p": inp})
+                pu = r["productUpdate"]; gut = (pu.get("product") or {}).get("title") == tn and not pu["userErrors"]
+                tok += gut; tfe += not gut
+                f.write(f"{pid}\t{'gesetzt' if gut else 'fehler'}\t{alt}\t{tn}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t"
+                        f"{'; '.join(e['message'] for e in pu['userErrors'])[:120]}\n")
+                f.flush(); time.sleep(0.3)
+    print(f"FERTIG: NAGEL-FEIN {len(plan)} geplant{f' · gesetzt {ok} · fehler {fe}' if SCHARF else ' (TROCKEN)'} · "
+          f"Titel {len(titel_plan)}{f' · gesetzt {tok} · fehler {tfe}' if SCHARF else ''} · {dict(st)}")
 
 
 if __name__ == "__main__":

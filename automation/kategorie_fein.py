@@ -92,6 +92,18 @@ ZUSATZ = {
     "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Safety & Security > Vehicle Safety Equipment": "vp-1-6-4",
     "Apparel & Accessories > Clothing > Activewear > Hunting Clothing > Hunting & Fishing Vests": "aa-1-1-8-1",
     "Apparel & Accessories > Clothing > Activewear > Motorcycle Protective Clothing > Motorcycle Jackets": "vp-1-6-1",
+    # 08.10.2026 abends: neue Google-Blätter aus den Einzelurteilen Runde 5 (14 «keine-zuordnung»)
+    "Apparel & Accessories > Costumes & Accessories > Costume Accessories > Costume Capes": "aa-3-1",
+    "Apparel & Accessories > Costumes & Accessories > Costume Accessories > Costume Hats": "aa-3-1",
+    "Apparel & Accessories > Costumes & Accessories > Costume Accessories > Costume Accessory Sets": "aa-3-1",
+    "Apparel & Accessories > Clothing Accessories > Bandanas & Headties > Hair Care Wraps": "aa-2-14-15",
+    "Sporting Goods > Outdoor Recreation > Hunting & Shooting > Hunting > Hunting Blinds & Screens": "sg-4-9-3-3",
+    "Apparel & Accessories > Clothing > Uniforms > Food Service Uniforms > Chef's Hats": "aa-1-24-3-1",
+    "Sporting Goods > Athletics > Volleyball > Volleyball Nets": "sg-1-22-1",
+    "Sporting Goods > Outdoor Recreation > Cycling > Bicycle Accessories > Bicycle Pumps": "sg-4-4-1-15",
+    "Sporting Goods > Outdoor Recreation > Fishing > Fishing Nets": "sg-4-6-7",
+    "Sporting Goods > Outdoor Recreation > Fishing > Fishing Traps": "sg-4-6-14",
+    "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials": "ae-2-1-2",
     "Apparel & Accessories > Jewelry > Watches": "aa-6-11",
     "Apparel & Accessories > Clothing > One-Pieces > Jumpsuits & Rompers": "aa-1-9",
     "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Apparel": "ap-2-6",
@@ -211,6 +223,7 @@ KREUZ[("sg", "hg-12-2-4")] = re.compile(r"hängematte|hammock", re.I)
 KREUZ[("sg-4-1-2", "sg-4-1-12-2")] = re.compile(r"helm", re.I)
 KREUZ[("aa-1-1", "vp-1-6-1")] = re.compile(r"motorrad|motorcycle", re.I)
 # 3D-Drucker-ZUBEHÖR (Filament, Heizbett, Extruder, Sensor, Netzteil) stand in Shopify unter «3D Printers» (el-13-2).
+KREUZ[("aa-2-4", "aa-2-14-15")] = re.compile(r"turban|haar-?handtuch|haartuch|hair\s?wrap", re.I)   # Haar-Turban ≠ Bandana
 KREUZ[("el-13-2", "el-13-1")] = re.compile(r"filament|heizbett|extruder|hotend|düse|nozzle|leveling|sensor|glasplatte|pei-?platte|"
                                            r"netzteil|druckplatte|druckbett", re.I)
 KREUZ[("hb-3-2-9", "hb-3-2-5-3")] = re.compile(r"gerät|apparat|instrument|lift|roller|maske|bürste|stein", re.I)
