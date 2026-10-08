@@ -666,3 +666,20 @@ gid://shopify/Product/15495048495489	ok	Kabellose 5-in-1 Ladestation mit Wecker
 gid://shopify/Product/15495720796545	ok	U-förmiges Seitenschläferkissen mit Beinstütze
 gid://shopify/Product/15495725449601	ok	V17 RC-Kampfjet Drohne aus Schaumstoff
 gid://shopify/Product/15495731544449	ok	Mini-Drohne im Koffer-Design
+gid://shopify/Product/15495748026753	ok	Plüsch Beissspielzeug für Katzen und Hunde
+gid://shopify/Product/15495784038785	ok	Katzenklettergerüst
+gid://shopify/Product/15495900135809	ok	Hundespielzeug mit Geräusch & Versteckfunktion
+gid://shopify/Product/15495901380993	ok	Milky Cute Plüschtier mit Sound für Hunde
+gid://shopify/Product/15496228929921	ok	Matcha-Set mit Schale und Zubehör
+gid://shopify/Product/15496336605569	ok	RC Kampfjet Zhiyang Mig 530 Gleiter
+gid://shopify/Product/15496371143041	ok	George Dinosaur Mückenlampe
+gid://shopify/Product/15496372355457	ok	Zahnpflege Spielball für Hunde
+gid://shopify/Product/15496373338497	ok	XINGX Rolling Ball Katzenspielzeug
+gid://shopify/Product/15496378024321	ok	Interaktives Spielzeug
+gid://shopify/Product/15496380219777	ok	Plüsch-Geburtstagskuchen für Haustiere
+gid://shopify/Product/15496385102209	ok	Kabelloses Bluetooth Gamepad mit Vibration
+gid://shopify/Product/15496426488193	ok	Drahtlose Retro-Konsole für HDMI TV
+gid://shopify/Product/15496428192129	ok	USB-Rollball für Katzen (wiederaufladbar)
+gid://shopify/Product/15496518926721	ok	Multifunktionaler Elektro-Kochtopf
+gid://shopify/Product/15496536490369	ok	Elektrische Kopfmassagebürste mit Lichttherapie
+gid://shopify/Product/15496581611905	ok	Herzli-Waffeleisen für de schnälle Zmorge
