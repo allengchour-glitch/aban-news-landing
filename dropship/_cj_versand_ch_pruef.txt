@@ -5595,3 +5595,7 @@ distressed-biker-schuhe-mit-stollen-632500	2603120152041633200	16	25.95	ok	lande
 camo-python-stiefel-622900	2602260635311623200	16	19.65	ok	landeseite
 warme-herren-schuhe-mit-kunstfell-futterung-600000	2602260620481600300	16	14.96	ok	landeseite
 herren-stiefel-hoch-britischer-stil-613300	2602260255131613600	16	12.56	ok	landeseite
+britische-martens-stiefel-602200	2602200204141602500	16	17.66	ok	landeseite
+herren-business-ankle-boots-610900	2602040336331611300	16	24.90	ok	landeseite
+braune-winterstiefel-fur-herren-639200	2602020533441639600	16	16.06	ok	landeseite
+sommerliche-herren-slipper-611500	2605250847421612000	16	11.24	ok	landeseite
