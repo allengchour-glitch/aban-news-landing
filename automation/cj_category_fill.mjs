@@ -646,6 +646,17 @@ export function kleidRockTag(katTag,title){
  if(ROCKW.test(title||'')) return 'kategorie-rock';
  return undefined;
 }
+// 🧸 08.10.2026 saubere Trennung (Betreiber): die Gruppe cjspielelektronik gab JEDEM Import Typ «Spass-Elektronik» + Tag rc —
+// 828 Bausteine/Holzpuzzles standen in der RC-Kollektion (TAG=rc). EINE Regel mit dem Wächter spielzeug_trennung.py:
+// data/spielzeug_trennung.json. rc bleibt nur bei RC- oder Elektronik-Wort; Bau-/Puzzlewort ohne Elektronik → «Spielzeug & Spiele».
+const _ST=JSON.parse(fs.readFileSync(new URL('./data/spielzeug_trennung.json', import.meta.url),'utf8'));
+const ST_RC=new RegExp(_ST.rc,'i'), ST_EL=new RegExp(_ST.el,'i'), ST_BAU=new RegExp(_ST.bau,'i');
+export function spielzeugTrennung(title,type,tags){
+ const t=title||'';
+ const tg=tags.filter(x=>!(x==='rc'&&!ST_RC.test(t)&&!ST_EL.test(t)));
+ const ty=(type===_ST.typ_alt&&ST_BAU.test(t)&&!ST_EL.test(t))?_ST.typ_neu:type;
+ return {type:ty,tags:tg};
+}
 const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP');process.exit(1);}
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
@@ -834,6 +845,7 @@ for(const [cat,label] of grp.cats){
      tagsFinal=tagsFinal.filter(t=>!['kueche','kochen','haushalt','wohnen','dekoration'].includes(t)).concat(['outdoor-messer','messer-outdoor']);
      typeFinal='Outdoor-Messer';
    }
+   ({type:typeFinal,tags:tagsFinal}=spielzeugTrennung(title,typeFinal,tagsFinal));   // 🧸 08.10.2026 data/spielzeug_trennung.json
    // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)
    if(/hundehalsband|\bhalsband\b|hundeleine|hundegeschirr|katzenspielzeug|kratzbaum|katzenklo|futternapf|hundebett|katzenbett/i.test(title)&&!/smart|gps|led|leucht/i.test(title)){
      tagsFinal=tagsFinal.filter(t=>!['elektronik','tech','gadget','gadgets','trend'].includes(t)).concat(['haustier','pet']);

@@ -1,0 +1,214 @@
+{
+ "_quelle": "08.10.2026 spielzeug_trennung.py + cj_category_fill.mjs spielzeugTrennung() — Betreiber «saubere trennung». GEMESSEN: 841 von 1'040 Produkten mit Tag rc nicht ferngesteuert (828 Bausteine/Puzzles der CJ-Gruppe cjspielelektronik), Kollektion spass-elektronik (TAG=rc) voll davon; 614 Spielzeuge ohne Elektronik mit Typ Spass-Elektronik.",
+ "rc": "ferngesteuert|fernsteuer|fernbedien|\\brc\\b|r/c|\\brc-|-rc\\b|drohne|quadrocopter|2[,.]4 ?ghz|funkgesteuert|remote|\\bdji\\b|\\bfpv\\b|propeller|servo|brushless|crawler|helikopter|copter",
+ "el": "ferngesteuert|fernsteuer|fernbedien|\\brc\\b|r/c|drohne|roboter|elektrisch|elektronisch|\\bled\\b|licht|leucht|sound|musik|akku|batterie|usb|\\bapp\\b|bluetooth|\\bmotor\\b|motorbetrieb|elektromotor|motorisiert|sensor|laser|lautsprecher|kamera|smart|spielkonsole|game ?player|handheld|interaktiv|sprech|singend|tanzend|solar",
+ "bau": "baustein|klemmbau|bausatz|bauset|bauspielzeug|puzzle|knobel|modellbau|holzmodell|building ?block|\\bmoc-|block-set|blocks\\b|stapelspiel|zusammenbauen|zum bauen",
+ "typ_alt": "Spass-Elektronik",
+ "typ_neu": "Spielzeug & Spiele",
+ "kanarien": [
+  [
+   "Pumpkin-Block-Set",
+   "Spass-Elektronik",
+   [
+    "spielzeug",
+    "rc",
+    "gadgets"
+   ],
+   "Spielzeug & Spiele",
+   [
+    "spielzeug",
+    "gadgets"
+   ]
+  ],
+  [
+   "Super Schwieriges Katzen-Alien Holzpuzzle",
+   "Spass-Elektronik",
+   [
+    "rc",
+    "kinder"
+   ],
+   "Spielzeug & Spiele",
+   [
+    "kinder"
+   ]
+  ],
+  [
+   "MOC-157310 Spielzeugauto Bausteine Modell",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "3D Holzpuzzle Globus Bausatz",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "Leuchtende Bausteine mit LED-Licht",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "RC Bagger Spielzeug für Kinder (mit Licht & Sound)",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Propellerschutzring-Set für DJI FPV",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Faltbare Mini-Drohne mit Kamera & 2 Akkus, Schwarz",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Elektrischer Tanzaffe mit Licht & Musik",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Landzo Kunxi Malroboter für Kinder",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Kinder-Smartphone mit Kamera, Pinguin-Design Rosa",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Ferngesteuerter Anti-Fall Helikopter aus Legierung",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Holz-Stapelspiel Icebreaker",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "Klemmbausteine Bausatz",
+   "Elektronik",
+   [
+    "rc"
+   ],
+   "Elektronik",
+   []
+  ],
+  [
+   "Sticker «Ch Baehnli» · 1 Stück",
+   "Arts",
+   [
+    "sticker"
+   ],
+   "Arts",
+   [
+    "sticker"
+   ]
+  ],
+  [
+   "3D Holzpuzzle Motorrad Modellbausatz",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "Bausatz mit Motor und Fernbedienung",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Mini-Falt-Helikopter mit Kamera",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Elefant mit schwebendem Ball – elektrisches Spielzeug",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ]
+ ],
+ "_regel_rc": "Tag rc (Kollektion «RC-Autos, Drohnen & Spass-Elektronik») bleibt bei RC-Wort ODER Elektronik-Wort; weg nur bei reinem Spielzeug"
+}
