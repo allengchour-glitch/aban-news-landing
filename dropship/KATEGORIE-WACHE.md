@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-08T13:16Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-08T14:14Z
 
-Aktive gescannt: 7 · ohne Kategorie: 7 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 19 · ohne Kategorie: 19 · heute gesetzt: 16 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,8 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- strickvest-mit-langarmshirt-zweiteiliges-set-613000 · Herrenmode → Apparel & Accessories > Clothing
-- sommer-jacquard-shorts-mit-farbvarianten-611600 · Herrenmode → Apparel & Accessories > Clothing
-- langarmliges-herren-t-shirt-603500 · Herrenmode → Apparel & Accessories > Clothing
-- einfaches-langportemonnaie-fur-unterwegs-601700 · Taschen → Luggage & Bags
+- keramik-hundeschussel-mit-neigungswinkel-561216 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- katzen-und-hundereisenschussel-mit-schragen-of-310528 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- katzen-und-hundebowle-aus-bambus-und-keramik-361c5b · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- katzenfutterbowl-aus-keramik-mit-bambusstander-cf5da9 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- faltbarer-doppelbecher-aus-oxfordstoff-fur-hau-ac67df · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
 
