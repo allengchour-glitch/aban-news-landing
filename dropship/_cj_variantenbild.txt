@@ -6391,3 +6391,4 @@ gid://shopify/Product/15455794135425	zugeordnet	24	Sport-Top mit verstellbaren T
 gid://shopify/Product/15455794266497	zugeordnet	24	Wasserdichte Fahrradlampe für Nachtfahrten
 gid://shopify/Product/15455794397569	zugeordnet	20	Schlankmachendes Langarm-Shirt mit Spitze
 gid://shopify/Product/15455794528641	zugeordnet	12	Leinenbluse für Damen
+gid://shopify/Product/15455794692481	zugeordnet	6	Wasserdichte Crossbody-Tasche
