@@ -5974,3 +5974,4 @@ notstarter-powerbank-1487f7	184C66A0-C843-4120-97A0-69A7C5F74A13	0	-	KEINE CH-Op
 notstarter-mit-led-c9d41b	B102C4AF-0213-48FB-8F1C-537121FC2276	0	-	KEINE CH-Option → DRAFT	landeseite
 batterie-schalter-9b3270	112B6D7F-2890-42F5-9C8F-73E07F96BFE8	16	5.69	ok	landeseite
 faltbare-fernbedienungsschlussel-075ef0	01038A78-36A0-484C-9BBE-A25B1953725E	16	5.41	ok	landeseite
+2-tasten-auto-schlussel-1ef019	525725FE-DD73-49B7-A911-5A71B38FEA85	7	5.69	ok	landeseite
