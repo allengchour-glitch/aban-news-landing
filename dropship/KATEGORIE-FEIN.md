@@ -1,6 +1,6 @@
-# Feinkategorie (automatisch, 2026-10-08 06:33 UTC)
+# Feinkategorie (automatisch, 2026-10-08 07:01 UTC)
 
-Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
+Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
@@ -13,6 +13,7 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. TROCKEN.
 | ohne-kategorie | 10 |
 | titelprobe-nein | 5 |
 | verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
