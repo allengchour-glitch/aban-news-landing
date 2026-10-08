@@ -5934,3 +5934,8 @@ hud-display-furs-auto-285248	1395560381375713280	16	5.55	ok	landeseite
 gps-ortungsgerat-484480	1385108683352051712	7	5.52	ok	landeseite
 gps-auto-ortungsgerat-d21f56	9989BFE9-ECB7-49CE-842A-D2826C827751	7	8.48	ok	landeseite
 4-kamera-dashcam-675969	2058081844946722817	7	12.57	ok	landeseite
+gps-lokator-231c58	24A8EA56-07D3-49D4-B89F-22AFC4321AE6	7	5.52	ok	landeseite
+gps-locator-mit-90-tage-batterie-mini-design-u-21579f	196EFE95-A9A9-47F9-93DB-88B9D003B894	7	12.60	ok	landeseite
+mini-gps-tracker-fur-outdoor-auto-b7cf0e	1A5E8AD7-6B62-4440-BB42-671321C4826E	7	6.66	ok	landeseite
+intelligenter-auto-duftverteiler-632200	2606231133301632900	3	7.93	ok	landeseite
+natur-agarholz-anhanger-080962	2039690333410578434	16	8.53	ok	landeseite
