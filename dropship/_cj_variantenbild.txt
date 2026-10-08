@@ -6436,3 +6436,5 @@ gid://shopify/Product/15455825854849	zugeordnet	30	Herren-Polo mit Langarm
 gid://shopify/Product/15455825985921	zugeordnet	60	Minimalistischer Pullover
 gid://shopify/Product/15455887950209	zugeordnet	60	Blumen-Slip-Dress
 gid://shopify/Product/15455890735489	zugeordnet	60	Moderner Anti-Rutsch Chenille Sofabezug
+gid://shopify/Product/15455890932097	zugeordnet	72	Sportiv-Locker Kurzarm-Shirt mit Turn-Down Kragen
+gid://shopify/Product/15455891292545	zugeordnet	24	Retro-Kissenbezüge mit Jacquard-Muster
