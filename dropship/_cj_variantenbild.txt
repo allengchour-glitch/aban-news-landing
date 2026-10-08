@@ -6312,3 +6312,4 @@ gid://shopify/Product/15455662768513	zugeordnet	8	Weisser Tierspitzen-Mini-Rock
 gid://shopify/Product/15455678103937	zugeordnet	18	Blumiges Kleid mit Schnürung
 gid://shopify/Product/15455678726529	zugeordnet	8	Dünn transparente Feinstrumpfhose – Casual und tailliert
 gid://shopify/Product/15455680266625	zugeordnet	12	Herren-PU-Jacke, wärmend & stylisch für Frühling/Autumn
+gid://shopify/Product/15455680659841	zugeordnet	30	Sport-Hoodie für Herren
