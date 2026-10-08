@@ -44,6 +44,25 @@
 
 
 
+## 2026-10-08 10:30 UTC · 👟🧸 «verbessere feinkataloge» + «saubere trennung»: Schuhe, Spielzeug ≠ RC, Oberklassen mit Zweigwechsel
+
+**GEMESSEN:** Die grösste grobe Klasse war Shopify «Shoes» mit 5'646 Produkten. Google hat darunter kein Blatt, also kam
+`kategorie_fein` (Weg über Google) nie weiter. Die CJ-Gruppe `cjspielelektronik` stempelte jedem Import Typ «Spass-Elektronik» und
+Tag `rc` auf; 841 von 1'040 `rc` waren nicht ferngesteuert (Bausteine, Holzpuzzles) und standen alle in der sichtbaren Kollektion
+«Spass-Elektronik & RC» (TAG=rc). 772 Produkte lagen in Google UND Shopify auf einer Oberklasse (Electronics/Decor/Toys); die
+Runde vom 07.10. hatte sie mit «bleibt» beurteilt, weil Zweigwechsel nicht erlaubt war.
+**GETAN:** `schuhe_fein.py` (Titelwort → 13 Shopify-Schuhklassen, nur grobe aa-8/aa-8-11, Kanarien 52/52, Stichprobe 46/48 →
+2 Regeln nachgeschärft, Plan 4'939). `spielzeug_trennung.py` + EINE Regeldatei `data/spielzeug_trennung.json` für Wächter und
+Importer (`spielzeugTrennung()`): rc nur bei RC- oder Elektronik-Wort, Typ «Spielzeug & Spiele» ohne Elektronik; Kanarien 19/19
+(«Motorrad» ≠ Motor), Gleichlauf py=js 1'040/0; Schreiben gebündelt (10 je Mutation; einzeln 3 Aufrufe/Produkt, ~7/min).
+772 Einzelurteile mit Zweigwechsel (3 Prüfer, 0 ungültige Pfade, 39 «?»), 727 geplant mit Regel-Vorrang. Beide Werkzeuge
+täglich in der Kategorie-Kette.
+**LEHRE:** (1) Ein Verfeinerer, der nur über EIN Feld läuft, sieht die Klassen nicht, die das andere Feld feiner kennt (Shopify
+Schuhe). Darum die Tiefe beider Felder messen, nicht nur ihre Einigkeit. (2) «Einig» heisst nicht «fein»: Beide Seiten können
+gleich grob sein. (3) Ein Gruppen-Stempel beim Import (Typ und Tags je CJ-Gruppe) ist kein Warenurteil (vgl. 07.10. «Werkzeug»),
+deshalb gehört die Titelregel an die Quelle. (4) Eine Prüfer-Runde mit verbotenem Zweigwechsel produziert «bleibt», wo
+«falscher Zweig» die Antwort wäre. Bericht `dropship/FEINKATALOG-SCHUHE-SPIELZEUG-2026-10-08.md`.
+
 ## 2026-10-08 09:15 UTC · 📝 «verbessere weiter» (Tag 10 vorgezogen): Saison-Texte nach Messung, Mengen-Wächter, 0 tote Links
 
 **GEMESSEN:** 3 von 12 Mengenangaben in Kollektionstexten waren falsch gegen die AKTIVEN Produkte: «über 7'000» stand bei 4'913,
@@ -18895,3 +18914,5 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · ⏱️ **Keepalive: Fortura-Bestand PAUSE 16:42, 3,5 h kein Neuversuch — Aufseher loggt je Container-Stunde nur ~5 min, Block bei Zeile ~2260 nie erreicht → an den Rundenbeginn.** Kundenschutz-Blöcke nach vorn → Journal 06.10. 20:15
 - 2026-10-06 · 🗂️ **«feinkategorie und filter»: 38'433/50'914 aktive auf Shopify-Oberklassen (Typ-Signal) → `kategorie_fein.py` verfeinert über die Google-Kategorie + Shopifys offizielle Zuordnung (nur Nachfahren, Titelprobe: Rock→Dresses, Velolampe→Fitness kamen aus Google), ~22'600, color-pattern bleibt; Aufseher 6 h; Filter «Kategorie» = Betreiber-Klick.** Zwei Signale einig, sonst grob lassen → Journal 06.10. 19:30
 - 2026-10-06 · 👗 **«neue feinkategorien und filter»: Kollektionen gibt es schon (549); Filter nur per S&D-Klick, Werte per API → Standardfelder Kleider-/Rocklänge + Ärmellänge aktiviert (pin geht nicht), `kleider_merkmale.py` aus eindeutigen Titelwörtern, 484 gesetzt.** Werte füllen, Filter schaltet der Betreiber → Journal 06.10. 20:35
+- 2026-10-06 · 👶 **Verbesserungsrunde: 42 Kinderprodukte mit Alter im einzigen Farbwert («White-6 TO 9M») → `alter_im_farbwert.py` (Option «Grösse» + Variantenwerte, Kanarie «Pink-MS»), Aufseher täglich.** Eine Option, zwei Merkmale = teilen → `dropship/ALTER-IM-FARBWERT-2026-10-06.md`
+- 2026-10-06 · 📦 **«cj lagerstatus … alle produkten»: Bestand nur in cj_stock_guard (nie gestartet), Existenz-Wächter ohne CJ-Punkte → `cj_lager_abgleich.py` (product/query + `features=enable_inventory` — Doku falsch, ohne = None), 0 → «ausverkauft» (DENY, umkehrbar), Vorrang-Fenster CAP 2000; Filter Kategorie/Länge/Ärmel live geprüft.** → Journal 06.10. 21:00
