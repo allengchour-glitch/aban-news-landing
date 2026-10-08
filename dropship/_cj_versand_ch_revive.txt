@@ -706,3 +706,16 @@
 15449511330177	keine-linie	stretch-hose-589186
 15449511362945	keine-linie	schmale-stretch-hosen-132033
 15449511395713	keine-linie	geradehose-aus-stretchfreiem-stoff-364353
+15449582272897	keine-linie	elastische-herren-boxershorts-823233
+15449582305665	keine-linie	elastische-herrenunterwasche-233665
+15449582338433	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-120002
+15449582403969	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-416898
+15449582469505	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-192449
+15449582502273	keine-linie	gerade-geschnittene-herren-hose-212162
+15449582535041	keine-linie	d2-mikro-briefs-ohne-elastik-640385
+15449582600577	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-268353
+15449582633345	keine-linie	stretch-hosen-slim-straight-900609
+15449582731649	keine-linie	stretch-hosen-slim-straight-242369
+15449582764417	keine-linie	gerade-geschnittene-herren-hosen-913858
+15449582797185	keine-linie	gerade-geschnittene-herren-hosen-445186
+15449582829953	keine-linie	gerade-geschnittene-herren-hosen-859714
