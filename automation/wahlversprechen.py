@@ -444,10 +444,24 @@ def bereinige(html):
     return neu, weg
 
 gefixt = 0
+# 08.10.2026 (Betreiber «rot oder pink auswahl, checke das auch bei anderen produkten»): ERST die echte Auswahl, DANN streichen.
+# Gestrichen wird nur, wenn die CJ-Messung (dropship/_auswahl_fehlt.jsonl, auswahl_fehlt_messen.py) für das Produkt höchstens EINE
+# Variante kennt — dann ist das Versprechen falsch. Führt CJ mehrere, rüstet auswahl_nachruesten.py die Auswahl nach; ein vorher
+# gestrichener Satz hätte der Kundin die Information genommen, ohne ihr die Wahl zu geben. Ungemessen = nur melden.
+_CJ_EINS = set()
+try:
+    for _z in open('dropship/_auswahl_fehlt.jsonl', encoding='utf-8'):
+        _d = json.loads(_z)
+        if (_d.get('cj') or 0) <= 1:
+            _CJ_EINS.add(_d['id'].split('/')[-1])
+        else:
+            _CJ_EINS.discard(_d['id'].split('/')[-1])
+except Exception:
+    pass
 if FIX and treffer:
     with open(LEDGER, 'a') as led:
         for pid, t, stelle in treffer:
-            if pid in erledigt:
+            if pid in erledigt or pid not in _CJ_EINS:
                 continue
             d = gql('query($i:ID!){product(id:$i){descriptionHtml}}', {'i': 'gid://shopify/Product/' + pid})
             h = ((d.get('data') or {}).get('product') or {}).get('descriptionHtml') or ''
