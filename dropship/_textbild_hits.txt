@@ -17286,3 +17286,7 @@ gid://shopify/Product/16611762405767	14->1	Stahlsatz mit Sternmuster, 6-teilig
 gid://shopify/Product/16611773612423	25->0	Doppelkopf-Wandlampe Aussenlicht IP54
 gid://shopify/Product/16611777413511	14->1	Baby-Olympia-Fleece-Romper, warm & dick
 gid://shopify/Product/15512306352513	12->0	Leinen Kissenbezug Fischschwanz
+gid://shopify/Product/16609675968903	26->0	Winddichte Kunststoff-Besen- und Kehrschüssel-Set
+gid://shopify/Product/16609846067591	40->3	Faltbare Besen-Kehrschaufel-Kombination
+gid://shopify/Product/16609921499527	34->3	Spinnen- und Insektenfänger 81 cm
+gid://shopify/Product/16609945092487	132->2	316 Edelstahl Backblech für Camping
