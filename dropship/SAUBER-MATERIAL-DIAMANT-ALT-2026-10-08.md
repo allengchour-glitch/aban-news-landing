@@ -56,6 +56,17 @@ englische Rohtitel), 447 mit gekürztem (Mass-Zusatz kam später), 80 mit einem 
   bleiben; live entschieden, Rücklesen, Ledger `dropship/_alt_titel_abgleich.tsv`. Ergebnis: siehe
   `dropship/ALT-TITEL-ABGLEICH.md`.
 
+## 4. Adressen (Handles) — 155 mit 301, 0 Fehler
+
+Die sechste Stelle: `/products/leder-schultertasche-mit-diamanten-…` blieb, als der Titel schon «Schultertasche aus
+Kunstleder mit Strass» hiess. `automation/handle_messversprechen.py` (täglich, seit 21.08. für Blutzucker/Blutdruck/EKG)
+kennt jetzt auch «diamant» und «leder»: neue Adresse aus dem aktuellen Titel, Eindeutigkeitsnummer bleibt, **immer 301**;
+steht der Begriff noch im Titel (echtes Leder, 1'630 Fälle), bleibt die Adresse. Neu: Diamond-Painting-Schutz (Titel mit
+«Diamond/Painting/Malerei» → Adresse bleibt), POD-Schutz, und CAP zählt nur echte Änderungen — vorher wäre der tägliche
+Lauf an den ersten 60 «Begriff steht im Titel»-Fällen hängen geblieben. Live: alte Adressen antworten 301 auf die neue
+(u. a. `klassischer-lederrucksack-fur-manner-…` → `diamond-painting-stift-mit-led-licht-…` — die Adresse versprach eine
+ganz andere Ware).
+
 ## Lehren
 
 1. **Nach jeder Titel-Korrektur gehören die Bilder dazu.** Titel, Text, zwei SEO-Felder, URL-Handle und Bild-Alts sind
