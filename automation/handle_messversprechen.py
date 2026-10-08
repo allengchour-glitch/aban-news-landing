@@ -35,7 +35,14 @@ TOKEN = os.environ.get('SHOPIFY_ADMIN_TOKEN') or open('/tmp/cj_shop_token.txt').
 DRY   = os.environ.get('DRY') == '1'
 CAP   = int(os.environ.get('CAP', '60'))
 LEDGER = 'dropship/_handle_mess.txt'
-BEGRIFFE = ['blutzucker', 'blutdruck', 'ekg', 'harnsaeure', 'harnsäure', 'blutfett', 'glukose']
+BEGRIFFE = ['blutzucker', 'blutdruck', 'ekg', 'harnsaeure', 'harnsäure', 'blutfett', 'glukose',
+            # 08.10.2026 («weiter sauber machen»): Titel heissen jetzt «… mit Strasssteinen» / «… aus Kunstleder», die
+            # Adresse versprach weiter «diamanten» / «leder» (versprechen_wache.py, material_widerspruch.py). Echtes Leder
+            # und Diamond Painting bleiben: der Begriff steht dort noch im Titel bzw. SCHUTZ greift.
+            'diamant', 'leder']
+# Titel, bei denen der Begriff zwar fehlt, aber kein Versprechen war (Diamond Painting hiess früher «Diamant-Malerei»)
+SCHUTZ = {'diamant': re.compile(r'diamond|painting|malerei|mosaik|stickerei', re.I)}
+POD = re.compile(r'printful|\bpod\b|selbst-gestalten|editor', re.I)
 
 def gql(q, v=None):
     req = urllib.request.Request(
@@ -93,11 +100,13 @@ def main():
         cur = None
         while True:
             r = gql('''query($q:String!,$c:String){products(first:100,after:$c,query:$q){
-                       pageInfo{hasNextPage endCursor} nodes{id handle title}}}''',
+                       pageInfo{hasNextPage endCursor} nodes{id handle title tags}}}''',
                     {'q': f'status:active AND handle:*{begriff}*', 'c': cur})
             p = r['data']['products']
             for n in p['nodes']:
-                if re.search(rf'(^|-){begriff}[a-z]*(-|$)', n['handle'], re.I) and n['id'] not in fertig:
+                if re.search(rf'(^|-){begriff}[a-z]*(-|$)', n['handle'], re.I) and n['id'] not in fertig \
+                        and not POD.search(' '.join(n.get('tags') or [])) \
+                        and not (begriff in SCHUTZ and SCHUTZ[begriff].search(n['title'])):
                     kand[n['id']] = n
             if not p['pageInfo']['hasNextPage']: break
             cur = p['pageInfo']['endCursor']; time.sleep(0.4)
@@ -105,7 +114,11 @@ def main():
 
     print(f"Kandidaten: {len(kand)}")
     ok = titel_schuld = 0
-    for n in list(kand.values())[:CAP]:
+    # 08.10.2026: CAP zählt nur echte Änderungen — sonst blieben Läufe an denselben «Begriff steht im Titel»-Fällen
+    # (220 echte Lederprodukte) hängen und kämen nie zu den Adressen dahinter.
+    for n in list(kand.values()):
+        if ok >= CAP:
+            print(f"CAP {CAP} erreicht — Rest im nächsten Lauf"); break
         alt = n['handle']
         # Die Eindeutigkeitsnummer des Importers am Ende erhalten
         # Die Eindeutigkeitsnummer ist NICHT immer rein numerisch: der Importer haengt auch
