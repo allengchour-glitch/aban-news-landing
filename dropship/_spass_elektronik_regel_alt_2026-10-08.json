@@ -1,0 +1,78 @@
+{
+ "id": "gid://shopify/Collection/689776329089",
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "rc"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "RC-Auto"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "RC-Heli"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "RC Motorrad"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "RC Rennboot"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Ferngesteuert"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Drohne"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Elektronisches Haustier"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Roboter-Spielzeug"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Bausteine"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Mini-Konsole"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Retro-Konsole"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Spielkonsole"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Tamagotchi"
+   }
+  ]
+ }
+}

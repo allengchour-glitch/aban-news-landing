@@ -5614,3 +5614,11 @@ leichte-loafers-fur-herren-638300	2512041150011638600	16	13.65	ok	landeseite
 leichte-plattform-sneaker-609100	2511210843111609200	16	13.04	ok	landeseite
 grosse-outdoor-trainingsschuhe-648400	2510280808021648700	16	13.76	ok	landeseite
 mehrzweck-trekking-schuhe-611100	2510260913481611300	16	10.15	ok	landeseite
+trendy-sports-sneaker-608600	2510160540531608800	16	9.20	ok	landeseite
+weisse-casual-sneaker-fur-herren-658300	2510080930401658500	16	14.48	ok	landeseite
+leichte-casual-sneaker-652300	2510060324131652500	16	11.72	ok	landeseite
+herren-martin-stiefel-629500	2509220326391629900	16	20.82	ok	landeseite
+atmungsaktive-wanderschuhe-623100	2509200255391623300	16	11.23	ok	landeseite
+schwarze-sneaker-fur-herren-606500	2509170712431606800	16	14.96	ok	landeseite
+retro-business-schuhe-615100	2509130813281615600	16	19.99	ok	landeseite
+sommerschuhe-mit-unsichtbarer-hohenverstarkung-609000	2508290956011609200	16	13.88	ok	landeseite
