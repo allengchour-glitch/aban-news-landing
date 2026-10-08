@@ -17,7 +17,7 @@ schrumpft also von Lauf zu Lauf, und ein Container-Neustart kostet höchstens ei
 
 Nutzung: python3 automation/bewertungen_prio.py   → dropship/_bewertungen_prio.txt (Handles)
 """
-import json, os, time, urllib.request
+import json, os, re, time, urllib.request
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -73,6 +73,20 @@ def main():
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0].strip() for l in open(LEDGER)}
     handles, gesehen = [], set()
+    # 08.10.2026: Der pid-Nachschlag kostet 10 CJ-Punkte, der Kommentar-Abruf nichts (cj_reviews_import.resolvePid). GEMESSEN
+    # 05:46: 158 von 400 Plätzen belegten Produkte OHNE pid in der SKU — ausserhalb des Punktefensters bleiben sie liegen und
+    # verdrängen kostenlose Neuware. Darum: im CJ-Vorrang-Fenster (00:00–01:30 UTC, Punkte frisch) die kostenpflichtigen zuerst,
+    # sonst die kostenlosen (rohe pid oder schon im Cache). Unbekannte SKU zählt als kostenpflichtig.
+    try:
+        cache = json.load(open(os.path.join(REPO, "dropship", "_cj_pid_cache.json"), encoding="utf-8"))
+    except Exception:
+        cache = {}
+    kostenlos = set()
+
+    def gratis(n):
+        sku = (((n.get("variants") or {}).get("nodes") or [{}])[0].get("sku") or "")
+        roh = re.sub(r"^CJ-", "", sku, flags=re.I).strip()
+        return bool(roh) and (bool(re.match(r"^\d{15,}$|^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-", roh)) or roh in cache)
 
     def nimm(nodes, ziel=None):
         ziel = handles if ziel is None else ziel
@@ -83,6 +97,8 @@ def main():
             if n.get("rc") and int(n["rc"]["value"]) > 0:
                 continue
             gesehen.add(pid); ziel.append(n["handle"])
+            if gratis(n):
+                kostenlos.add(n["handle"])
 
     # ZUERST die Produktseiten, auf denen tatsächlich jemand ankommt (30 Tage). Sie sind die
     # wertvollsten Bewertungsplätze des Shops: Suchbesucher haben Kaufabsicht, und die grösste
@@ -99,7 +115,7 @@ def main():
     for i in range(0, len(pfade), 40):
         q = " OR ".join(f"handle:{x}" for x in pfade[i:i + 40])
         r = (gql('query($q:String!){products(first:60,query:$q){nodes{id handle status '
-                 'rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}', {"q": q}).get("data") or {}).get("products")
+                 'variants(first:1){nodes{sku}} rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}', {"q": q}).get("data") or {}).get("products")
         if r:
             nimm([n for n in r["nodes"] if n["status"] == "ACTIVE"])
     print(f"Landeseiten mit Verkehr, ohne Bewertung: {len(handles)}")
@@ -107,7 +123,7 @@ def main():
     sichtbar, neuware = [], []
     for h in SICHTBAR:
         c = (gql('query($h:String!){collectionByHandle(handle:$h){products(first:60){nodes{id handle status '
-                 'rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}}', {"h": h})
+                 'variants(first:1){nodes{sku}} rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}}', {"h": h})
              .get("data") or {}).get("collectionByHandle")
         if not c:
             continue
@@ -137,7 +153,7 @@ def main():
         cur = None
         for _ in range(3):
             d = (gql('query($q:String!,$c:String){products(first:250,after:$c,query:$q,sortKey:CREATED_AT,reverse:true)'
-                     '{pageInfo{hasNextPage endCursor} nodes{id handle rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}',
+                     '{pageInfo{hasNextPage endCursor} nodes{id handle variants(first:1){nodes{sku}} rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}',
                      {"q": q, "c": cur}).get("data") or {}).get("products")
             if not d:
                 break
@@ -145,6 +161,11 @@ def main():
             if not d["pageInfo"]["hasNextPage"]:
                 break
             cur = d["pageInfo"]["endCursor"]
+    stunde = time.gmtime(); fenster = stunde.tm_hour == 0 or (stunde.tm_hour == 1 and stunde.tm_min < 30)
+    vorn = [h for h in handles if (h not in kostenlos) == fenster]
+    handles = vorn + [h for h in handles if (h not in kostenlos) != fenster]
+    print(f"kostenlos (pid bekannt): {len(kostenlos)} · kostenpflichtig: {len(handles) - len(kostenlos)} · "
+          f"{'Punktefenster: kostenpflichtige zuerst' if fenster else 'ausserhalb: kostenlose zuerst'}")
     open(ZIEL, "w").write("\n".join(handles) + "\n")
     # 08.10.2026: nicht mehr «FERTIG: …» — diese Zeile steht MITTEN im Lauf (danach kommt der Import), und der Aufseher
     # liest «FERTIG» am Zeilenanfang als «Lauf beendet» (still_gestorben).
