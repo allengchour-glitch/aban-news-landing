@@ -165,3 +165,6 @@
 15495190315393	Grösse:6:6	2026-10-08	kupfervergoldetes-18k-schwarz-nano-tennis-armb-606800
 15495189561729	Farbe:2:2	2026-10-08	kammreiniger-fur-haare-und-staub-618600
 15495149945217	Farbe:3:3	2026-10-08	make-up-pinselset-mit-12-synthetikhaarpinseln-c4ac74
+15495149781377	Farbe:2:2	2026-10-08	auberginen-zigarrenanzunder-mit-doppelflamme-947328
+15495143096705	Farbe:3:3	2026-10-08	retro-business-umhangetasche-mit-grosser-kapaz-222784
+15495143031169	Farbe:4:4	2026-10-08	herren-rucksack-grosses-fassungsvermogen-091648
