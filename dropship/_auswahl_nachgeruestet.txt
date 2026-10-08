@@ -80,3 +80,6 @@
 15494498550145	Farbe:3+Grösse:2:6	2026-10-08	nylon-kameratasche-fur-dslr-791808
 15494467682689	Farbe:4:4	2026-10-08	retro-leder-schultertasche-972992
 15494464635265	Farbe:2:2	2026-10-08	mr-brillen-etui-aus-mikrofaser-592128
+15494462964097	Farbe:5:5	2026-10-08	taktische-outdoor-brusttasche-827456
+15494461817217	Farbe:2+Grösse:2:3	2026-10-08	business-notebook-rucksack-multi-layer-gross-797888
+15494393987457	Farbe:2:2	2026-10-08	grosser-85l-outdoor-rucksack-703232
