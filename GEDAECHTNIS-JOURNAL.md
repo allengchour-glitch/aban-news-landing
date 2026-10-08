@@ -55,7 +55,7 @@ Einzahl; Vergleiche, Formen, Verneinungen, Techniknamen, Diamond Painting, Werkz
 **Bild-Alts:** Live-Check zeigte H1 «Strasssteinen», Bilder «Diamanten» → GEMESSEN 11'730 Alts an 1'604 Produkten mit
 altem Titel, darunter entfernte Messversprechen («& Blutdruckmessung», «zur Blutzuckermessung»). Versprechen-Wächter liest
 jetzt Alts (817/0), `alt_nach_titel.py` + Material-Ledger (617/0), neu `alt_titel_abgleich.py` (Alt-Titel := Titel, live,
-täglich).
+täglich) — Schluss 22:20: **10'374 Alts an 1'421 Produkten, 0 Fehler** (gesamt 11'808).
 **Adressen:** `handle_messversprechen.py` + «diamant»/«leder» (Titel schon sauber), Diamond-Painting- und POD-Schutz,
 CAP zählt nur echte Änderungen → **155 Handles mit 301, 0 Fehler** (live 301 geprüft).
 

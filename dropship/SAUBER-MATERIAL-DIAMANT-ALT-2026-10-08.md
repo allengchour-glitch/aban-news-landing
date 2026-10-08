@@ -53,8 +53,11 @@ englische Rohtitel), 447 mit gekürztem (Mass-Zusatz kam später), 80 mit einem 
 - `alt_nach_titel.py` liest zusätzlich den Material-Ledger: **617 Alt-Texte, 0 Fehler**.
 - **`automation/alt_titel_abgleich.py` (neu, täglich):** fragt nicht, wer den Titel änderte — Alt im Schema
   «<Titel> – Bild N | LuxeStyle» bekommt den aktuellen Titel, Bildnummer bleibt; handgeschriebene Alts und POD/Editor-Ware
-  bleiben; live entschieden, Rücklesen, Ledger `dropship/_alt_titel_abgleich.tsv`. Ergebnis: siehe
-  `dropship/ALT-TITEL-ABGLEICH.md`.
+  bleiben; live entschieden, Rücklesen, Ledger `dropship/_alt_titel_abgleich.tsv`. **Ergebnis (3 Läufe bis 22:20 UTC):
+  10'374 Alt-Texte an 1'421 Produkten, 0 Fehler, 0 offen** (Rest der 1'603 Kandidaten: inzwischen nicht aktiv, POD oder
+  schon durch die zwei anderen Läufe richtig). Zusammen mit Wächter und `alt_nach_titel.py`: **11'808 Alt-Texte**.
+  ⚠️ Ein Hintergrundbefehl ohne eigenes `timeout` wird nach 30 min gestoppt — der zweite Lauf starb so um 21:54 ohne
+  Bericht; deshalb jetzt `ZEIT_S` im Skript (sauberes Ende vor jedem äusseren Limit).
 
 ## 4. Adressen (Handles) — 155 mit 301, 0 Fehler
 
