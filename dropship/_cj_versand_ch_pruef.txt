@@ -5909,3 +5909,5 @@ handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has be
 allround-dashcam-mit-4-linsen-325186	2058033128378822657	7	12.57	ok	landeseite
 3-kanal-dashcam-mit-1080p-und-nachtsicht-445377	1981217032524554241	0	-	KEINE CH-Option → DRAFT	landeseite
 3-kanal-dashcam-mit-bewegungsmelder-026754	1980170173198495745	0	-	KEINE CH-Option → DRAFT	landeseite
+2k-dashcam-mit-nachtsicht-802497	1979003680599437313	0	-	KEINE CH-Option → DRAFT	landeseite
+3-kanal-dashcam-mit-nachtsicht-739842	1979014340840431617	0	-	KEINE CH-Option → DRAFT	landeseite
