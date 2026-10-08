@@ -46,7 +46,7 @@ NICHT_KOSMETIK = R(r"organi[sz]er|aufbewahrung|ständer|staender|display|kosmeti
                    r"[\w-]*tasche\b|[\w-]*beutel\b|ablagematte")
 REGELN = [
     # Bad & Körper
-    (R(r"(bade|dusch)[\w-]*set|geschenkset.*(dusch|bade)|(dusch|bade).*geschenkset"), "Bath & Body Gift Sets"),
+    (R(r"(bade|dusch)(?!-?haube|-?bürste)[\w-]*set|geschenkset.*(dusch|bade)|(dusch|bade).*geschenkset"), "Bath & Body Gift Sets"),   # 08.10.: «Duschhauben-Set» ≠ Geschenkset
     (R(r"badebombe|badekugel|badesalz|badefizzer|badeperle|badezusatz|badeöl|schaumbad"), "Bath & Body > Bath Additives"),
     (R(r"duschgel|showergel|shower gel|body ?wash|duschschaum"), "Bath & Body > Body Wash"),
     (R(r"\bseife\b|seifenstück|naturseife"), "Bath & Body > Bar Soap"),
@@ -81,10 +81,14 @@ REGELN = [
     (R(r"n[äa]gel|nagel|\bnails?\b|manik[üu]re|pedik[üu]re"), "Nail Care"),
     (R(r"wimpern-?serum|brauen-?serum|augenbrauenserum|wimpernwachstum|(wimpern|brauen)[\w-]*\s*&\s*\w*serum"), "Makeup > Eye Makeup > Lash & Brow Growth Treatments"),
     # Werkzeug (vor Make-up-Ware)
+    (R(r"porensauger|poren-?sauger|mitesser-?sauger|(elektr|ultraschall|vakuum)[\w\s-]*poren|poren[\w-]*(gerät|spatel)|spatel.*poren|"
+       r"^(?!.*(\d+\s?ml\b|\bgel\b|schaum|creme|lotion|flüssig|maske|peeling)).*porenreinig"),
+     "Cosmetic Tools > Skin Care Tools > Skin Care Extractors"),   # 08.10.: Porenreiniger-GERÄT; «Porenreiniger 120ml» bleibt Reinigungsmittel
     (R(r"(pinsel|bürsten?)[\w-]*\s?reinig|reinig[\w-]*\s.*(pinsel|bürsten)|reiniger für .*(pinsel|bürsten)|reinigungstank"), "Cosmetic Tool Cleansers"),
     (R(r"^(?!.*(\bmit|&|\bund)\s+pinsel\b).*(pinsel|\bbrush(es)?\b|kabuki|profi-?bürsten|make-?up-?bürste|kosmetikbürste)"), "Cosmetic Tools > Makeup Tools > Makeup Brushes"),
     (R(r"schwamm|schwämmchen|beauty ?blender|puderquaste|\bpuff\b|make-?up-?ei\b|beauty-?ei\b|make-?up ei\b"), "Cosmetic Tools > Makeup Tools > Makeup Sponges"),
     (R(r"wimpernzange|eyelash curler|wimpernformer"), "Cosmetic Tools > Makeup Tools > Eyelash Curlers"),
+    (R(r"wimpernkleber-?entferner|(kleber|glue)[\w-]*\s?(entferner|remover)"), "Cosmetic Tools > Makeup Tools > False Eyelash Accessories > False Eyelash Remover"),   # 08.10.
     (R(r"wimpernkleber|eyelash glue|lash glue"), "Cosmetic Tools > Makeup Tools > False Eyelash Accessories > False Eyelash Adhesive"),
     (R(r"lidstreifen|augenlid-?tape|doppellid|doppel-?lid|schlupflid"), "Cosmetic Tools > Makeup Tools > Double Eyelid Glue & Tape"),
     (R(r"augenbrauen-?schablone|brauenschablone|brow stencil|augenbrauen-?stempel"), "Cosmetic Tools > Makeup Tools > Eyebrow Stencils"),
@@ -92,12 +96,15 @@ REGELN = [
     (R(r"blotting|ölabsorbier|mattierungspapier"), "Cosmetic Tools > Makeup Tools > Facial Blotting Paper"),
     (R(r"gua ?sha|jade[\s-]?roller|gesichts[\s-]?roller|eis[\s-]?roller|ice[\s-]?roller|derma[\s-]?roller|quarz[\s-]?roller|stein[\s-]?roller|massage-?roller.*gesicht"),
      "Cosmetic Tools > Skin Care Tools > Skin Care Rollers"),
-    (R(r"gesichtsreinigungsbürste|gesichtsbürste|gesichts-?reinigungs-?bürste"), "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    (R(r"gesichtssauna|gesichtsdampfer|gesichts-?dampfer|facial steamer|ione?n?-?dampf|dampf-?gerät.*gesicht|dampf-?gesichts"),
+     "Cosmetic Tools > Skin Care Tools > Facial Saunas"),   # 08.10.: vor die Reinigungsgeräte gezogen («Nano-Ion-Dampf-Gesichtsreiniger»)
+    (R(r"gesichtsreinigungsbürste|gesichtsbürste|gesichts-?reinigungs-?bürste|gesichts-?reinigungs-?(gerät|instrument|system)|"
+       r"gesichtsreiniger.*(warm|kalt|licht|led|elektr|ultraschall|vibration|gerät)|(heiss|warm)-?kalt[\w-]*\s?gesichtsreiniger|"
+       r"(elektrisch|ultraschall|silikon|sonic)[\w\s-]*gesichtsreinig|gesichtsreiniger.*(silikon|massage|lifter)|\d-in-1[\w\s-]*gesichtsreinig|gesichtsreinigungs-?\s.*gerät|reinigungsgerät"), "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),   # 08.10.: Geräte ≠ Reinigungsmittel
     (R(r"^(?=.*(\bled\b|led-|photon|rotlicht|infrarot|lichtpeeling|\bems\b|instrument|app-?steuerung|leuchtmaske)).*(maske|apparat|gerät)|schönheitsinstrument"), "Cosmetic Tools > Skin Care Tools"),
     (R(r"mitesser|komedonen|blackhead|pickel-?entferner"), "Cosmetic Tools > Skin Care Tools > Skin Care Extractors"),
     (R(r"hornhaut|fussfeile|fußfeile|foot file"), "Cosmetic Tools > Skin Care Tools > Foot Files"),
     (R(r"bimsstein"), "Cosmetic Tools > Skin Care Tools > Pumice Stones"),
-    (R(r"gesichtssauna|gesichtsdampfer|gesichts-?dampfer|facial steamer"), "Cosmetic Tools > Skin Care Tools > Facial Saunas"),
     # Parfum
     (R(r"eau de (parfum|toilette|cologne)|parf[uü]m|\bcologne\b|duftstäbchen.*haut|festes parfum"), "Perfume & Cologne"),
     (R(r"fixierspray|setting ?spray|make-?up-?fixier"), "Makeup > Makeup Finishing Sprays"),
@@ -111,13 +118,13 @@ REGELN = [
     (R(r"^(?!.*(staub|schutz|thermo|bike|biking|transparent|vollgesicht|\brand\b|glitzer|\bski|motorrad|halloween|karneval|party|"
        r"venezian|kostüm|bandage|schlaf)).*(tuchmaske|sheet mask|maske\b|peel-?off-?maske|peeling|scrub|augenpads|augen-pads|eye pads)"),
      "Skin Care > Skin Care Masks & Peels"),
-    (R(r"reinigungsschaum|waschgel|cleanser|gesichtsreinigung|reinigungsmilch|reinigungscreme|-reiniger\b|feuchtigkeits-?reiniger|gesichtsreiniger"), "Skin Care > Facial Cleansers"),
+    (R(r"reinigungsschaum|waschgel|cleanser|gesichtsreinigung|reinigungsmilch|reinigungscreme|-reiniger\b|feuchtigkeits-?reiniger|gesichtsreiniger|porenreinig"), "Skin Care > Facial Cleansers"),
     (R(r"gesichtswasser|\btoner\b"), "Skin Care > Toners & Astringents"),
     (R(r"akne|\bacne\b|pickel"), "Skin Care > Acne Treatments & Kits"),
     (R(r"körperöl|body ?oil"), "Skin Care > Body Oil"),
     (R(r"^(?!.*(lippenstift|lipgloss|lidschatten|make-?up|mascara|eyeliner|foundation|concealer|rouge|blush|puder)).*"
        r"(serum|essenz|gesichtsöl|öl-?set|pflege[\s-]?set|feuchtigkeits[\s-]?set|skin ?care.*set|geschenkset.*pflege|pflege.*geschenkset)"), "Skin Care"),
-    (R(r"^(?!.*(augenbrau|brauen|lippen|\blip|gloss|fixier|\blid|foundation|concealer|abdeck|bb[\s-]?cre|cc[\s-]?cre|cushion|luftkissen|mascara|eyeliner|tattoo-?muster|tätowier|rouge|blush|highlighter|contour)).*(creme|lotion|feuchtigkeit|moisturi[sz]er|bodybutter|body butter)"), "Skin Care > Lotion & Moisturizer"),
+    (R(r"^(?!.*(augenbrau|brauen|lippen|\blip|gloss|fixier|\blid|foundation|concealer|abdeck|bb[\s-]?cre|cc[\s-]?cre|cushion|luftkissen|mascara|eyeliner|tattoo-?muster|tätowier|rouge|blush|highlighter|contour|gerät|sprayer|bedampfer|dampfer|vernebler|zerstäuber|nano-?spray)).*(creme|lotion|feuchtigkeit|moisturi[sz]er|bodybutter|body butter)"), "Skin Care > Lotion & Moisturizer"),   # 08.10.: Geräte raus
 ]
 # Make-up-Klassen: alle Treffer sammeln (mehrere = gemeinsame Oberklasse)
 MAKEUP = [
@@ -174,6 +181,23 @@ def ziel(titel):
 
 
 KANARIEN = [
+    # 08.10.2026 («ordne alles sauber ein»): Geräte waren keine Reinigungsmittel/Cremes, Duschhauben kein Geschenkset
+    ("Heiss-Kalt Gesichtsreiniger für Zuhause & Reise", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    ("Multifunktionales Silikon-Gesichtsreinigungsgerät", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    ("Gesichtsreiniger mit Rot- und Blaulicht, Warm- & Kaltfunktion", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    ("Feuchtigkeitsspendender Nano-Sprayer", None),
+    ("Duschhauben-Set mit 4 Designs", "Bath & Body > Shower Caps"),
+    ("Wimpernkleber-Entferner mit Schallvibration", "Cosmetic Tools > Makeup Tools > False Eyelash Accessories > False Eyelash Remover"),
+    ("Elektrischer Porenreiniger mit 3 Bürstenköpfen", "Cosmetic Tools > Skin Care Tools > Skin Care Extractors"),
+    ("Porenreiniger 120ml", "Skin Care > Facial Cleansers"),
+    ("Ultraschall-Gesichtsreiniger aus Silikon", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    ("Gesichtsreiniger mit Massagefunktion", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    ("Ultraschall-Spatel zur Porenreinigung", "Cosmetic Tools > Skin Care Tools > Skin Care Extractors"),
+    ("Porenreiniger mit Vakuum-Saugfunktion", "Cosmetic Tools > Skin Care Tools > Skin Care Extractors"),
+    ("Porenreiniger JM-101", "Cosmetic Tools > Skin Care Tools > Skin Care Extractors"),
+    ("Nano-Ion-Dampf-Gesichtsreiniger", "Cosmetic Tools > Skin Care Tools > Facial Saunas"),
+    ("7-in-1 Gesichtsreiniger & Lifter", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
+    ("Gesichtsreinigungs- und Massagegerät", "Cosmetic Tools > Skin Care Tools > Skin Cleansing Brushes & Systems"),
     ("Make-up Pinselset (16-teilig)", "Cosmetic Tools > Makeup Tools > Makeup Brushes"),
     ("12-teiliges Lidschatten- & Eyeliner-Pinselset", "Cosmetic Tools > Makeup Tools > Makeup Brushes"),
     ("Badeset OCEAN SPA, Duschgel 100 ml, Badefizzer 50 g", "Bath & Body Gift Sets"),
@@ -318,7 +342,7 @@ def schreiben(charge):
     return aus
 
 
-def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad):
+def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad, ueberspringen=()):
     """Gemeinsamer Lauf: Produkte mit Google-Kategorie im ZWEIG → zielfn(titel) = voller Google-Pfad oder None.
     ziele = alle möglichen Google-Pfade (gegen die Taxonomie geprüft); Shopify-Ziel aus Shopifys Zuordnung."""
     import kategorie_fein as kf
@@ -341,6 +365,8 @@ def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad):
         if not (g == zweig or g.startswith(zweig + " > ")):
             continue
         stat["im-zweig"] += 1
+        if p["id"] in ueberspringen:     # 08.10.: ein anderer Wächter entscheidet nach Beschreibung/Option (nagel_fein: Press-on)
+            stat["vorrang-anderer"] += 1; continue
         neu = zielfn(p["title"])
         if not neu:
             stat["kein-treffer"] += 1
@@ -351,6 +377,15 @@ def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad):
         else:
             sid = shopify_ziel(neu, karte)
         cid = ((p.get("category") or {}).get("id") or "").split("/")[-1]
+        # 08.10.2026: Shopify steht schon FEINER als die Zuordnung (shopify_fein/schuhe_fein: «Lidschatten-Paletten» unter
+        # «Eye Shadow», «Nail Stickers» unter «Nail Art») → behalten. Ohne das hätte dieser Lauf, der VOR shopify_fein in der
+        # Kette steht, jeden Morgen auf die Elternklasse zurückgesetzt, und shopify_fein hätte wegen seines Ledgers nicht nachgezogen.
+        if sid and cid.startswith(sid + "-"):
+            sid = cid; stat["shopify-feiner"] += 1
+        if g.startswith(neu + " > "):
+            # 08.10.2026: Google steht schon FEINER als die Titelregel (Einzelurteil/KI: «False Nails» unter der Sammelregel
+            # «Nail Care») → nie vergröbern; sonst kippt ein Urteil jeden Morgen zurück.
+            stat["google-feiner"] += 1; continue
         if neu == g and sid == cid:
             stat["stimmt"] += 1; continue
         if (p["id"], neu) in erledigt:
@@ -383,7 +418,9 @@ def lauf(name, zweig, zielfn, ziele, kanarien_ok, ledger_pfad):
 
 def main():
     ziele = [f"{K} > {z}" for _, z in REGELN + MAKEUP] + [f"{K} > Cosmetic Sets", f"{K} > Makeup"]
-    lauf("KOSMETIK-FEIN", K, lambda t: (f"{K} > {z}" if (z := ziel(t)) else None), ziele, kanarien, LEDGER)
+    import nagel_fein   # 08.10.2026: Press-on-Urteile (Grössenoption/Beschreibung) schlagen die Titelregel «nagelsticker → Nail Art»
+    lauf("KOSMETIK-FEIN", K, lambda t: (f"{K} > {z}" if (z := ziel(t)) else None), ziele, kanarien, LEDGER,
+         ueberspringen=nagel_fein.vorrang_ids())
 
 
 if __name__ == "__main__":

@@ -1409,11 +1409,11 @@
     ],
     [
      "Dirndlbluse Spitze weiss",
-     null
+     "aa-1-23"
     ],
     [
      "Trachtenhemd rot/weiss",
-     null
+     "aa-1-23"
     ],
     [
      "Kleiderteile-Set Entdecker,Hut",
@@ -1442,6 +1442,128 @@
     [
      "Clown Latzhose rot",
      null
+    ],
+    [
+     "Tirolerdirndl schwarz/rot",
+     "aa-1-23-5"
+    ],
+    [
+     "Dirndl mit H-Trägern Grösse 44",
+     "aa-1-23-5"
+    ],
+    [
+     "Dirndl retro ohne Bluse",
+     "aa-1-23-5"
+    ],
+    [
+     "Dirndlbluse Spitze weiss",
+     "aa-1-23"
+    ],
+    [
+     "Bayrische Trachtenbluse",
+     "aa-1-23"
+    ],
+    [
+     "Lederhose kurz mit Gürtel · Oktoberfest",
+     "aa-1-23"
+    ],
+    [
+     "Bayrische Lederhosen kurz braun",
+     "aa-1-23"
+    ],
+    [
+     "Trachtenweste Samt schwarz",
+     "aa-1-23"
+    ],
+    [
+     "Schwingerhose",
+     "aa-1-23"
+    ],
+    [
+     "Herrenhemd Oktoberfest",
+     "aa-1-23"
+    ],
+    [
+     "Strickjacke Oktoberfest",
+     "aa-1-23"
+    ],
+    [
+     "Trachtenhemd Kurzarm Weiss-Rot kariert",
+     "aa-1-23"
+    ],
+    [
+     "Graue Trachten Kniestrümpfe",
+     "aa-1-18-8"
+    ],
+    [
+     "Trachtenkniestrümpfe grün lang",
+     "aa-1-18-8"
+    ],
+    [
+     "Trachtensocken",
+     "aa-1-18"
+    ],
+    [
+     "Trachtenstrümpfe de luxe",
+     "aa-1-18"
+    ],
+    [
+     "Trachtenkette mit Perlen rosa",
+     "aa-6-8"
+    ],
+    [
+     "Bayernhut mit Feder",
+     "aa-2-17"
+    ],
+    [
+     "Hut Bayern",
+     "aa-2-17"
+    ],
+    [
+     "Dirndltasche herzförmig rot",
+     "aa-5-4"
+    ],
+    [
+     "Dirndl Spange in Herzform",
+     null
+    ],
+    [
+     "Perücke Bayerin Blonde Zöpfe",
+     null
+    ],
+    [
+     "Trachtenband / Kragenschmuck",
+     null
+    ]
+   ],
+   "umzug": [
+    [
+     "^(?!.*dirndl-?\\s?(bluse|tasche|spange|sch[üu]rze)).*dirndl",
+     "aa-1-23-5"
+    ],
+    [
+     "kniestr[üu]mpfe",
+     "aa-1-18-8"
+    ],
+    [
+     "trachten-?(socken|str[üu]mpfe)",
+     "aa-1-18"
+    ],
+    [
+     "trachtenkette",
+     "aa-6-8"
+    ],
+    [
+     "bayernhut|\\bhut bayern\\b|trachtenhut",
+     "aa-2-17"
+    ],
+    [
+     "dirndltasche",
+     "aa-5-4"
+    ],
+    [
+     "lederhose|trachten-?(bluse|hemd|shirt|shorts|weste|jacke)|dirndlbluse|schwingerhose|(herrenhemd|strickjacke).*oktoberfest",
+     "aa-1-23"
     ]
    ]
   },

@@ -44,11 +44,13 @@ def regel_vorrang(g_neu, titel, st):
         if g_neu == zweig or g_neu.startswith(zweig + " > "):
             z = fn(titel)
             z = z[0] if isinstance(z, tuple) else z
-            if z and z != g_neu:
+            # 08.10.2026: ein Urteil, das die Regel nur VERFEINERT (Regel «Nail Care», Urteil «Nail Care > False Nails»), ist
+            # kein Widerspruch — kosmetik_fein.lauf vergröbert seither nie (google-feiner)
+            if z and z != g_neu and not g_neu.startswith(z + " > "):
                 st["regel-vorrang"] += 1; return True
     if g_neu.startswith((titelprobe_fein.C, titelprobe_fein.J)) and not kf.titel_ok(g_neu, titel):
         z = titelprobe_fein.ziel(titel, g_neu)
-        if z and z[0] != g_neu:
+        if z and z[0] != g_neu and not g_neu.startswith(z[0] + " > "):
             st["regel-vorrang"] += 1; return True
     if re.search(r"diffus|aroma|befeuchter|vernebler|humidif", titel or "", re.I):
         st["regel-vorrang"] += 1; return True          # aroma_kategorie (nach Produkttyp) hat den Vorrang

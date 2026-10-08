@@ -5787,3 +5787,65 @@ kinder-knitting-set-610700	2601290209491611000	16	9.47	ok	landeseite
 stickpunch-set-mit-austauschbaren-spitzen-627200	2601220205291627500	16	5.40	ok	landeseite
 regenbogen-grune-stickerei-stoff-627600	2601130226141627800	16	8.11	ok	landeseite
 leinwandbild-kunstlerische-individualitat-646656	1600338643238006784	16	13.16	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite
+5-panel-cap-sprint-nylon-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-l-a-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-classic-rot-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+bucket-hat-banana-schwarz-print	-	-	-	unklar keine CJ-SKU	landeseite
+cord-bucket-hat-manchester-navy	-	-	-	unklar keine CJ-SKU	landeseite
+denim-cap-bleu-washed-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-wellness-rot-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-paris-schwarz-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-amore-herz-geburtsstein-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-coeur-herz-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-tresor-doppellagig-mit-charms-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-halskette-goutte-tropfen-anhanger-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armreif-couleur-verstellbar-gold	-	-	-	unklar keine CJ-SKU	landeseite
+titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU	landeseite
+schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
+ohrstecker-minou-katzchen-925-silber	-	-	-	unklar keine CJ-SKU	landeseite
+ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+statement-ohrstecker-etincelle-blute-kristall	-	-	-	unklar keine CJ-SKU	landeseite
+halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
+oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
+ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
+anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
+mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+marseille-panorama-leinwandbild-033664	1600337364977725440	16	10.83	ok	landeseite
+3er-set-seestern-olgemalde-fur-ihr-zuhause-754688	1597568956750114816	16	5.85	ok	landeseite
+sofakissen-mit-pflanzen-blumen-muster-licht-lu-600300	2601040657231600500	16	11.24	ok	landeseite
+portable-nahmaschine-507393	2000457404946771970	0	-	KEINE CH-Option → DRAFT	landeseite
+automatische-mini-nahmaschine-679298	1999012363952119810	0	-	KEINE CH-Option → DRAFT	landeseite
+gruner-tischlaufer-mit-blumenmuster-636600	2512101140371636800	16	7.99	ok	landeseite
+knochelstutze-637300	2512101107171637600	16	7.15	ok	landeseite
+leopard-schal-aus-faux-cashmere-613300	2512080745321613600	16	10.88	ok	landeseite
+dekorative-treppenstufen-556545	1990495315831336962	0	-	KEINE CH-Option → DRAFT	landeseite
+eps-fullmaterial-fur-kissen-443713	1990490780686016513	0	-	KEINE CH-Option → DRAFT	landeseite
+strasssteine-zum-aufnahen-215937	2020042029474684929	16	5.12	ok	landeseite
+diy-diamantmalm-schlusselanhanger-tiermuster-140162	2009160706238414850	16	5.81	ok	landeseite
+diy-diamantpiktur-schlusselanhanger-tiermuster-873410	2009161355453759489	16	5.81	ok	landeseite
+diy-diamantmalerei-schlusselanhanger-absatzmus-241218	2009190951578738689	16	5.81	ok	landeseite
+diamant-malerei-kit-geburtstagskarte-652545	2008848406692732930	16	6.63	ok	landeseite
+diamant-muster-kit-fur-geburtstagskarten-220354	2008857426241495041	16	6.63	ok	landeseite
+dekorative-schmetterling-schlusselanhanger-469442	2008863692482715649	16	5.81	ok	landeseite
+delfin-gru-karte-diy-diamantmalerei-745281	2008852254022934530	16	6.63	ok	landeseite
+diamant-mosaik-schlusselanhanger-adler-muster-863873	2008868447974555649	16	5.81	ok	landeseite
+delfin-schlusselanhanger-diy-585538	2008866712767471618	16	5.81	ok	landeseite
+diamant-muster-schlusselanhanger-917249	2008869328816414722	16	5.81	ok	landeseite
+diy-diamant-malerei-schlusselanhanger-713794	2008862860947988482	16	5.81	ok	landeseite
+dekorative-schlusselanhanger-mit-diamant-muste-766722	2008867694300069890	16	5.81	ok	landeseite
+diamant-muster-karte-zum-selbermachen-847810	2008840419802316801	16	6.63	ok	landeseite
+diamant-muster-untersetzer-430465	2007358502005927938	16	7.17	ok	landeseite

@@ -9,7 +9,8 @@ darum kommt kategorie_fein (Weg über Google) dort nie weiter — gleiche Lage w
 Der Shop-Filter «Kategorie» kann so Hoodies nicht von Blusen oder Powerbanks nicht von Autoladegeräten trennen.
 
 REGEL (EINE Datei automation/data/shopify_fein.json, je Elternklasse):
-  «nicht» trifft → bleibt grob · sonst erste passende Titelregel → Unterklasse · keine Regel → bleibt grob.
+  «umzug» trifft → anderer Zweig (08.10., nur ausdrücklich gelistet) · «nicht» trifft → bleibt grob · sonst erste passende
+  Titelregel → Unterklasse (beim Laden geprüft) · keine Regel → bleibt grob.
   NUR Produkte, deren Shopify-Kategorie GENAU die Elternklasse ist (eine schon feine Klasse wird nie überschrieben).
   Geschrieben wird NUR die Shopify-Kategorie; der Google-Wert bleibt unberührt (auch leer, z. B. Kostüme). Ziel-IDs werden vor dem Schreiben gegen
   die Taxonomie des Shops geprüft (kategorie_fein.ids_pruefen). Kanarien je Klasse aus echten Titeln vor jedem Lauf.
@@ -37,7 +38,15 @@ _D = json.load(open(REGELN, encoding="utf-8"))["klassen"]
 K = {cid: {"name": k["name"],
            "nicht": re.compile(k["nicht"], re.I) if k.get("nicht") else None,
            "regeln": [(re.compile(m, re.I), z) for m, z in k["regeln"]],
+           "umzug": [(re.compile(m, re.I), z) for m, z in k.get("umzug", [])],
            "kanarien": k.get("kanarien", [])} for cid, k in _D.items()}
+# 08.10.2026 (Betreiber «ordne alles sauber ein»): «regeln» bleiben im Zweig (Ziel = Unterklasse der Elternklasse) — das prüft
+# dieser Wächter beim Laden. Ein Zweigwechsel steht ausdrücklich unter «umzug» und wird VOR «nicht» geprüft (Trachten unter
+# «Costumes»: Dirndl → Dirndls, Lederhose → Traditional Clothing, Kniestrümpfe → Knee Socks).
+for _cid, _k in K.items():
+    for _rx, _z in _k["regeln"]:
+        if not _z.startswith(_cid + "-"):
+            raise SystemExit(f"Regel {_rx.pattern!r} in {_cid} zielt auf {_z} (keine Unterklasse) — gehört unter «umzug»")
 
 
 def ziel(cid, titel):
@@ -45,6 +54,9 @@ def ziel(cid, titel):
     if not k:
         return None
     t = titel or ""
+    for rx, z in k["umzug"]:
+        if rx.search(t):
+            return z
     if k["nicht"] and k["nicht"].search(t):
         return None
     for rx, z in k["regeln"]:
@@ -171,7 +183,9 @@ def main():
                 bsp[(name, "—")].append(p["title"][:55])
             continue
         if (p["id"], sid) in erledigt:
-            st[(name, "schon-im-ledger")] += 1; continue
+            # 08.10.: geschrieben UND wieder auf der Elternklasse = jemand hat zurückgesetzt (z. B. Printful-Sync, vgl.
+            # kategorie_fein «rueckfall-grob»). Nicht erneut schreiben (kein Hin und Her), aber sichtbar zählen.
+            st[(name, "rueckfall-grob")] += 1; continue
         plan.append((p["id"], g, sid)); alt[p["id"]] = cid; st[(name, "plan")] += 1; st[("ziel", sid)] += 1
         if len(bsp[(name, sid)]) < 3:
             bsp[(name, sid)].append(p["title"][:55])
@@ -184,7 +198,7 @@ def main():
         n = k["name"]
         if st[(n, "grob")]:
             print(f"  {n:32} grob {st[(n, 'grob')]:5} · Plan {st[(n, 'plan')]:5} · bleibt {st[(n, 'bleibt')]:5}"
-                  f" · ohne Google {st[(n, 'ohne-google')]} · Ledger {st[(n, 'schon-im-ledger')]}")
+                  f" · ohne Google {st[(n, 'ohne-google')]} · Rückfall {st[(n, 'rueckfall-grob')]}")
     if os.environ.get("ZEIGEN"):
         for k, v in bsp.items():
             print(f"    {k[0]} → {k[1]}: {v}")
@@ -200,7 +214,8 @@ def main():
                 f.flush()
                 time.sleep(0.4)
     print(f"FERTIG: SHOPIFY-FEIN {len(plan)} geplant{f' · gesetzt {ok} · fehler {fe}' if SCHARF else ' (TROCKEN)'}"
-          f" · grob {sum(v for k, v in st.items() if k[1] == 'grob')} · bleibt {sum(v for k, v in st.items() if k[1] == 'bleibt')}")
+          f" · grob {sum(v for k, v in st.items() if k[1] == 'grob')} · bleibt {sum(v for k, v in st.items() if k[1] == 'bleibt')}"
+          f" · Rückfall {sum(v for k, v in st.items() if k[1] == 'rueckfall-grob')}")
 
 
 if __name__ == "__main__":
