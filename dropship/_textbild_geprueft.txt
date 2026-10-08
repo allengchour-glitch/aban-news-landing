@@ -60235,3 +60235,4 @@ gid://shopify/Product/16611965862279	gid://shopify/MediaImage/77474669494663
 gid://shopify/Product/16611965895047	gid://shopify/MediaImage/77474669756807
 gid://shopify/Product/16611965927815	gid://shopify/MediaImage/77474670117255
 gid://shopify/Product/16611965960583	gid://shopify/MediaImage/77474670412167
+gid://shopify/Product/15447933550977	gid://shopify/MediaImage/69852653879681	bildtausch-sperre

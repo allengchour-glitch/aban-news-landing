@@ -5584,3 +5584,12 @@ britische-stiefel-im-biker-stil-626000	2604130315541626700	16	14.96	ok	landeseit
 braune-casual-stiefel-607500	2604100852051607900	16	14.72	ok	landeseite
 herren-knochelstiefel-im-britischen-stil-615200	2604040512291615600	16	17.66	ok	landeseite
 winterstiefel-fur-herren-gefuttert-601300	2603270306371602100	16	19.99	ok	landeseite
+handgenahte-herrenschuhe-633200	2603260919311634200	16	13.76	ok	landeseite
+herren-stiefel-mit-handstich-sohle-610300	2603260916061610700	16	13.76	ok	landeseite
+herren-wanderschuhe-615900	2603200511201616300	16	14.37	ok	landeseite
+trendy-herrenarbeitsstiefel-626400	2603190232121626800	16	16.76	ok	landeseite
+herren-business-loafer-626900	2603180856001627500	16	18.83	ok	landeseite
+herren-derby-schuhe-mit-dicker-sohle-608000	2603150435031608400	16	22.80	ok	landeseite
+wanderschuhe-fur-herren-623500	2603120759221624100	16	15.56	ok	landeseite
+distressed-biker-schuhe-mit-stollen-632500	2603120152041633200	16	25.95	ok	landeseite
+camo-python-stiefel-622900	2602260635311623200	16	19.65	ok	landeseite
