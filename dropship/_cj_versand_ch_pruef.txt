@@ -6047,3 +6047,6 @@ lenkradschutz-sued-optik-atmungsaktiv-608500	2507210947001608800	16	9.20	ok	land
 rutschfester-lenkradbezug-38-cm-848257	1916670047482540033	0	-	KEINE CH-Option → DRAFT	landeseite
 4-saison-leder-silikon-lenkradbezug-608000	2411250339431608200	16	12.68	ok	landeseite
 elektroplattierter-schaltknuppel-fur-toyota-co-609900	2408160704481600200	16	6.04	ok	landeseite
+luxus-auto-parfum-spray-627100	2408020644431627400	3	8.42	ok	landeseite
+kohlenstofffaser-schaltkopf-universal-627600	2406190749381627900	16	7.11	ok	landeseite
+glanz-carbon-faser-lenkradbezug-039680	1791700760703537152	16	7.25	ok	landeseite
