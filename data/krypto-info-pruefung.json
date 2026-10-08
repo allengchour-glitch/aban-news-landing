@@ -1,0 +1,499 @@
+{
+ "stand": "2026-10-07",
+ "regel": "wird eine Info NUR, wenn BEIDES gilt:\n  1) Rendite ÷ schlimmster Einbruch ist in JEDEM Feld besser: Bitcoin und Ethereum × zwei getrennte Abschnitte\n     (02/2018–2021, 2022–heute). Gleich gut zählt nicht.\n  2) Zufallsprobe: Die echte Info schlägt mindestens 90 % von 200 zeitversetzten Kopien derselben Info (gleich viele\n     Bremstage, falsches Timing) — gemessen am 50/50-Konto ab 02/2018. Sonst ist der «Vorteil» nur weniger Risiko,\n     das jede beliebige Bremse auch gebracht hätte.\nAchtung Mehrfachtest: 13 Kandidaten — bei 90 % Schwelle besteht rein zufällig etwa einer die Zufallsprobe. Darum braucht\nes zusätzlich Regel 1.",
+ "basis": {
+  "btc 2018–2021": {
+   "cagr": 0.31257513945530646,
+   "einbruch": -0.4762288636604327,
+   "mar": 0.6563548816692117
+  },
+  "eth 2018–2021": {
+   "cagr": 0.5085494422967314,
+   "einbruch": -0.4570035611087262,
+   "mar": 1.1127909836478098
+  },
+  "btc 2022–heute": {
+   "cagr": 0.27720473621052544,
+   "einbruch": -0.3635726076692454,
+   "mar": 0.7624467035280837
+  },
+  "eth 2022–heute": {
+   "cagr": 0.1999345186689543,
+   "einbruch": -0.3213933168271619,
+   "mar": 0.6220867336095685
+  },
+  "50/50 ab 02/2018": {
+   "cagr": 0.31315896759664086,
+   "einbruch": -0.4116625036266709,
+   "mar": 0.7607177356153839
+  }
+ },
+ "infos": {
+  "gier": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.21496530850202622,
+     "einbruch": -0.4767826380033324,
+     "mar": 0.45086647744191505,
+     "besser": false
+    },
+    "eth 2018–2021": {
+     "cagr": 0.4145330942592085,
+     "einbruch": -0.42271418642686187,
+     "mar": 0.9806462796131663,
+     "besser": false
+    },
+    "btc 2022–heute": {
+     "cagr": 0.2621081580171103,
+     "einbruch": -0.3700254656101709,
+     "mar": 0.7083516740797683,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.2107550033452983,
+     "einbruch": -0.3213933168271609,
+     "mar": 0.6557541563897492,
+     "besser": true
+    }
+   },
+   "mix": {
+    "cagr": 0.2727811833200595,
+    "einbruch": -0.37226134834281654,
+    "mar": 0.7327679452470434
+   },
+   "zufall": 0.155,
+   "bremstage": 330,
+   "urteil": "nein"
+  },
+  "funding_hoch": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.32675179704776536,
+     "einbruch": -0.46062163105855747,
+     "mar": 0.7093713690710856,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.3920678785303038,
+     "einbruch": -0.41166677656871653,
+     "mar": 0.9523913535073889,
+     "besser": false
+    },
+    "btc 2022–heute": {
+     "cagr": 0.27720473621052544,
+     "einbruch": -0.3635726076692454,
+     "mar": 0.7624467035280837,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.18467883085636316,
+     "einbruch": -0.3213933168271611,
+     "mar": 0.5746193874830314,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.28721602133473034,
+    "einbruch": -0.3569263957329346,
+    "mar": 0.8046925774288655
+   },
+   "zufall": 0.67,
+   "bremstage": 680,
+   "urteil": "nein"
+  },
+  "mvrv_hoch": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.3299245916023086,
+     "einbruch": -0.4697008370007777,
+     "mar": 0.7024143148413472,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.27720473621052544,
+     "einbruch": -0.3635726076692454,
+     "mar": 0.7624467035280837,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.31656702817465576,
+    "einbruch": -0.4116625036266709,
+    "mar": 0.7689965089988972
+   },
+   "zufall": 0.905,
+   "bremstage": 25,
+   "urteil": "nein"
+  },
+  "vix": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.3142191638237104,
+     "einbruch": -0.4708020205070953,
+     "mar": 0.6674125219030892,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.5639636063615852,
+     "einbruch": -0.37478351875203775,
+     "mar": 1.5047716298717813,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.27216293732248853,
+     "einbruch": -0.3754671579259289,
+     "mar": 0.7248648292593944,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.1999345186689543,
+     "einbruch": -0.3213933168271619,
+     "mar": 0.6220867336095685,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.32466153935425224,
+    "einbruch": -0.3762421039906533,
+    "mar": 0.8629059212424497
+   },
+   "zufall": 0.89,
+   "bremstage": 158,
+   "urteil": "nein"
+  },
+  "dollar": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.297282771246423,
+     "einbruch": -0.43106644396977534,
+     "mar": 0.6896448921161381,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.49231100629558444,
+     "einbruch": -0.3715619372808632,
+     "mar": 1.3249769604991783,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.25651284603574687,
+     "einbruch": -0.3604512937342853,
+     "mar": 0.7116435715301969,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.20989371902274545,
+     "einbruch": -0.3044007194832107,
+     "mar": 0.689530955705649,
+     "besser": true
+    }
+   },
+   "mix": {
+    "cagr": 0.30451420052331524,
+    "einbruch": -0.31311987038536004,
+    "mar": 0.972516372559002
+   },
+   "zufall": 0.985,
+   "bremstage": 1393,
+   "urteil": "nein"
+  },
+  "zins": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.19876824868026266,
+     "einbruch": -0.4752218722910794,
+     "mar": 0.4182640999287057,
+     "besser": false
+    },
+    "eth 2018–2021": {
+     "cagr": 0.38158014017603725,
+     "einbruch": -0.4570035611087262,
+     "mar": 0.8349609776569227,
+     "besser": false
+    },
+    "btc 2022–heute": {
+     "cagr": 0.19222454467602867,
+     "einbruch": -0.4257347047467044,
+     "mar": 0.45151250892359085,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.16907565193880547,
+     "einbruch": -0.32139378570056065,
+     "mar": 0.5260700718598571,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.227989895564485,
+    "einbruch": -0.4084718810912157,
+    "mar": 0.5581532196424867
+   },
+   "zufall": 0.11,
+   "bremstage": 1621,
+   "urteil": "nein"
+  },
+  "bilanz": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.22169939723272547,
+     "einbruch": -0.47622886366043315,
+     "mar": 0.4655312060018362,
+     "besser": false
+    },
+    "eth 2018–2021": {
+     "cagr": 0.5100914107000638,
+     "einbruch": -0.43734134655073587,
+     "mar": 1.1663461841033322,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.19012635615833484,
+     "einbruch": -0.28768603014375016,
+     "mar": 0.6608814340527173,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.15100274949020553,
+     "einbruch": -0.22951940544261829,
+     "mar": 0.6579084204187582,
+     "besser": true
+    }
+   },
+   "mix": {
+    "cagr": 0.26046650199666654,
+    "einbruch": -0.3697022762883797,
+    "mar": 0.7045304254320962
+   },
+   "zufall": 0.66,
+   "bremstage": 1727,
+   "urteil": "nein"
+  },
+  "stablecoins": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.30901681863068475,
+     "einbruch": -0.4762288636604334,
+     "mar": 0.6488830102726066,
+     "besser": false
+    },
+    "eth 2018–2021": {
+     "cagr": 0.5319311497101973,
+     "einbruch": -0.4232776811326203,
+     "mar": 1.2566954824710777,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.21237470962864125,
+     "einbruch": -0.37376978190813515,
+     "mar": 0.5681965742239659,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.1743001411923497,
+     "einbruch": -0.32139331682716055,
+     "mar": 0.5423265888446746,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.29359491595262743,
+    "einbruch": -0.3987419692213884,
+    "mar": 0.7363030195339646
+   },
+   "zufall": 0.475,
+   "bremstage": 490,
+   "urteil": "nein"
+  },
+  "angst": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.3891325860253547,
+     "einbruch": -0.5061540933332282,
+     "mar": 0.7688026060655959,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.5730585881562933,
+     "einbruch": -0.3184500791853758,
+     "mar": 1.7995240874872103,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.28787914774101675,
+     "einbruch": -0.3061219910836426,
+     "mar": 0.9404066226080396,
+     "besser": true
+    },
+    "eth 2022–heute": {
+     "cagr": 0.1793300013624668,
+     "einbruch": -0.3176320147246231,
+     "mar": 0.564584150996052,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.33817995955039004,
+    "einbruch": -0.3819503454534523,
+    "mar": 0.8854029419685484
+   },
+   "zufall": 0.79,
+   "bremstage": 758,
+   "urteil": "nein"
+  },
+  "funding_negativ": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.540325073938289,
+     "einbruch": -0.39744553770788793,
+     "mar": 1.3594946292626735,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.5352982745521961,
+     "einbruch": -0.45700356110872564,
+     "mar": 1.17132188916323,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.2394813360048531,
+     "einbruch": -0.3587880943594648,
+     "mar": 0.6674729172170359,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.1940236678911127,
+     "einbruch": -0.3213933168271621,
+     "mar": 0.6036954028992897,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.35276153258762166,
+    "einbruch": -0.2978035353589854,
+    "mar": 1.1845444754790688
+   },
+   "zufall": 1.0,
+   "bremstage": 735,
+   "urteil": "nein"
+  },
+  "mvrv_tief": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.3615900803997627,
+     "einbruch": -0.4762288636604324,
+     "mar": 0.7592779606437062,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.47209238859181446,
+     "einbruch": -0.36733609672298684,
+     "mar": 1.2851783225317652,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.33185265423538457,
+     "einbruch": -0.3635726076692438,
+     "mar": 0.9127548314566203,
+     "besser": true
+    },
+    "eth 2022–heute": {
+     "cagr": 0.24868164289844064,
+     "einbruch": -0.318455971386129,
+     "mar": 0.7808980369123405,
+     "besser": true
+    }
+   },
+   "mix": {
+    "cagr": 0.3451902608856714,
+    "einbruch": -0.3469429668384224,
+    "mar": 0.9949481438729747
+   },
+   "zufall": 0.93,
+   "bremstage": 1192,
+   "urteil": "ÜBERNEHMEN",
+   "empfindlichkeit": {
+    "0.8": {
+     "mix_mar": 0.9453458578842178,
+     "felder_besser": 4
+    },
+    "0.9": {
+     "mix_mar": 1.1374434562882034,
+     "felder_besser": 4
+    },
+    "1.0": {
+     "mix_mar": 0.9949481438729747,
+     "felder_besser": 4
+    },
+    "1.1": {
+     "mix_mar": 0.905493531561302,
+     "felder_besser": 4
+    },
+    "1.2": {
+     "mix_mar": 0.8552542092058398,
+     "felder_besser": 4
+    }
+   }
+  },
+  "hash_kapitulation": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.29097357516709477,
+     "einbruch": -0.37640157676292507,
+     "mar": 0.7730402663811454,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.3428243011164347,
+     "einbruch": -0.32602561189715773,
+     "mar": 1.0515256734632736,
+     "besser": true
+    }
+   },
+   "mix": {
+    "cagr": 0.32512096329356543,
+    "einbruch": -0.3917823813761194,
+    "mar": 0.8298509038400131
+   },
+   "zufall": 0.69,
+   "bremstage": 554,
+   "urteil": "nein"
+  },
+  "alle": {
+   "felder": {
+    "btc 2018–2021": {
+     "cagr": 0.463842735433289,
+     "einbruch": -0.4212278219705149,
+     "mar": 1.1011683256424527,
+     "besser": true
+    },
+    "eth 2018–2021": {
+     "cagr": 0.5296058412377866,
+     "einbruch": -0.2900002367285943,
+     "mar": 1.8262255479930336,
+     "besser": true
+    },
+    "btc 2022–heute": {
+     "cagr": 0.2450549210086428,
+     "einbruch": -0.38992821853709403,
+     "mar": 0.6284616228289993,
+     "besser": false
+    },
+    "eth 2022–heute": {
+     "cagr": 0.15497708340816763,
+     "einbruch": -0.3184559713861297,
+     "mar": 0.486651522763431,
+     "besser": false
+    }
+   },
+   "mix": {
+    "cagr": 0.3250203854195366,
+    "einbruch": -0.3331491037929374,
+    "mar": 0.975600359476119
+   },
+   "zufall": 0.94,
+   "bremstage": 1906,
+   "urteil": "nein"
+  }
+ }
+}

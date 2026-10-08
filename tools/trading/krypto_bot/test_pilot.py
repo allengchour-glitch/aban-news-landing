@@ -78,10 +78,10 @@ pruefe("nur BTC einstellbar, Unsinn ignoriert", PI.maerkte({"KRYPTO_PILOT_MAERKT
 from datetime import date as _d, datetime as _dt, timedelta as _td, timezone as _tz  # noqa: E402
 kurse = [((_d(2024, 1, 1) + _td(days=i)).isoformat(), x) for i, x in enumerate(wild)]
 j = _dt(2030, 1, 1, tzinfo=_tz.utc)
-eb, ee = PI.entscheid("BTC", env={}, jetzt=j, kurse=kurse), PI.entscheid("ETH", env={}, jetzt=j, kurse=kurse)
+eb, ee = PI.entscheid("BTC", env={}, jetzt=j, kurse=kurse, mvrv={}), PI.entscheid("ETH", env={}, jetzt=j, kurse=kurse, mvrv={})
 pruefe("BTC rechnet mit 150, ETH mit 200 Tagen", eb["trend_tage"] == 150 and ee["trend_tage"] == 200 and eb["symbol"] == "BTCUSDT"
        and ee["symbol"] == "ETHUSDT" and eb["schnitt"] == round(K.sma(wild, 150)[-1], 2))
-pruefe("laufender Tag zählt nicht", PI.entscheid("BTC", env={}, jetzt=_dt(2024, 1, 11, tzinfo=_tz.utc), kurse=kurse)["stand"] == "2024-01-10")
+pruefe("laufender Tag zählt nicht", PI.entscheid("BTC", env={}, jetzt=_dt(2024, 1, 11, tzinfo=_tz.utc), kurse=kurse, mvrv={})["stand"] == "2024-01-10")
 lb = {"entscheide": [{"stand": "2026-10-01", "hebel": 0.5}, {"markt": "ETH", "stand": "2026-10-02", "hebel": -0.3}], "kontostand": []}
 pruefe("altes Logbuch (ohne Markt) zählt als Bitcoin", PI.letzter(lb, "BTC")["stand"] == "2026-10-01" and PI.letzter(lb, "ETH")["hebel"] == -0.3)
 PI.kontostand_merken(lb, "2026-10-01", 10000)

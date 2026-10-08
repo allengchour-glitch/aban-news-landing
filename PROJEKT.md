@@ -13,6 +13,12 @@
 - **Läuft auf dem PC des Users** (`C:\Users\allen\aban-bot`, git sparse clone, Update = `git pull`), `krypto-auto.bat auto`
   per Aufgabenplanung. **Cloud kann Binance nicht testen (HTTP 451)** → nur Fake-Server-Tests (Pilot 39, Sammler 34).
   Windows: `py` statt `python` (Store-Alias), `setx` wirkt erst im neuen Fenster. Vom User gepostete Schlüssel NIE speichern.
+- **„Alle Infos" (`info_pruefung.py`, `infos.py`, 2026-10-08):** 13 freie Markt-Infos vorab festgelegt getestet (Angst&Gier
+  alternative.me, Funding BitMEX+OKX, MVRV/Hashrate CoinMetrics Community, VIX/Dollar/Zins/Notenbank-Bilanz FRED, Stablecoins
+  DefiLlama). Nur **MVRV < 1 → kein Short** bestand (4/4 Felder, Zufall 93 %, Schwelle 0,8–1,2 robust) → live im Pilot
+  (ab 2019 +36 %/J, −35 % statt +28 %, −41 %). Rest nur Lagebild. **Fallen:** FRED trennt Python-urllib mit Browser-UA
+  (RemoteDisconnected) → UA `curl/8.5.0`; BitMEX-Funding endet teils Wochen früher → OKX ergänzt; Binance-Funding = 451;
+  nach `sed`-Mutationen `__pycache__` löschen (gleiche Grösse + gleiche Sekunde → alter Bytecode läuft).
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

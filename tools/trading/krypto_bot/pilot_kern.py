@@ -11,6 +11,8 @@ Regel (vorab festgelegt, aus futures.py die einzige, die den Zufallstest bestand
                  oder lag sie im letzten Jahr mehr als EINBRUCH_MAX im Minus vom Hoch, gibt es eine WARNUNG.
                  Als Notbremse (flach gehen) kostete er im Test Rendite — darum handelt der Pilot live trotzdem.
   Stop:     Abstand = STOP_SIGMA × Tages-Schwankung × Kurs (als Sicherung an der Börse gegen Crash-Tage).
+  MVRV-Bremse: Liegt der Kurs unter dem Einstandswert aller Coins (MVRV < 1, CoinMetrics, Stand Vortag), kein Short —
+            die einzige von 13 freien Markt-Infos, die info_pruefung.py bestand (alle 4 Felder besser, Zufallsprobe 93 %).
 Alle Werte nur aus abgeschlossenen Tagen; die Entscheidung von Tag i gilt ab Tag i+1.
 """
 from __future__ import annotations
@@ -25,6 +27,7 @@ FENSTER = 730
 SKILL_MIN = 0.60
 EINBRUCH_MAX = -0.45
 STOP_SIGMA = 4.0
+MVRV_TIEF = 1.0
 GEBUEHR = 0.0005
 FUNDING_8H = 0.0001
 
@@ -133,3 +136,8 @@ def stop_kurs(p, richtung):
         return None
     abstand = STOP_SIGMA * vol / math.sqrt(365) * p[-1]
     return p[-1] - abstand if richtung > 0 else p[-1] + abstand
+
+
+def mvrv_bremse(hebel, mvrv):
+    """Short → 0, wenn MVRV unter MVRV_TIEF liegt. Ohne MVRV-Wert (None) bleibt die Grundregel."""
+    return 0.0 if hebel < 0 and mvrv is not None and mvrv < MVRV_TIEF else hebel
