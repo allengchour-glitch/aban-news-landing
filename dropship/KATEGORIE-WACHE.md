@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-08T20:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-08T21:05Z
 
-Aktive gescannt: 15 · ohne Kategorie: 15 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,5 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- stahlmesh-wasserfeste-armbanduhr-mit-zeiger-3e7ecb · Uhren → Apparel & Accessories > Jewelry > Watches
-- quarz-uhr-mit-glitzerperlen-7aab7a · Uhren → Apparel & Accessories > Jewelry > Watches
-- bambus-holz-uhr-mit-quarzbewegung-5c1248 · Uhren → Apparel & Accessories > Jewelry > Watches
-- stahlarmband-fur-armbanduhr-4-mm-dick-209540 · Uhren → Apparel & Accessories > Jewelry > Watches
-- holzarmbanduhr-mit-bambusbewegung-424a3d · Uhren → Apparel & Accessories > Jewelry > Watches
+- one-shoulder-outdoor-rucksack-444288 · Taschen → Luggage & Bags
 
