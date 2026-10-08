@@ -5403,3 +5403,5 @@ damen-open-toe-stilettos-mit-schleifen-detail-635300	2606270417001636000	16	10.5
 stiletto-pumps-mit-mesh-glitzer-633400	2606260930401634100	16	11.84	ok	landeseite
 retro-high-heels-mit-chunky-absatz-617600	2606260803291619100	16	10.83	ok	landeseite
 elegante-t-strap-sandalen-622000	2606260642081622800	16	16.40	ok	landeseite
+franzosische-stiletto-sandalen-634100	2606260625551634700	16	12.56	ok	landeseite
+ein-strap-high-heeled-sandalen-608600	2606260619161609200	16	12.93	ok	landeseite
