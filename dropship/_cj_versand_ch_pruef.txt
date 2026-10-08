@@ -5355,3 +5355,23 @@ titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU
 schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
 ohrstecker-minou-katzchen-925-silber	-	-	-	unklar keine CJ-SKU	landeseite
 ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+statement-ohrstecker-etincelle-blute-kristall	-	-	-	unklar keine CJ-SKU	landeseite
+halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
+oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
+ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
+anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
+mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+casual-sandalen-mit-blockabsatz-quadratischer-625600	2605211157561626200	16	13.04	ok	landeseite
+damen-retro-weitgeschnitten-westerncowboystief-637200	2605200545551637700	16	13.76	ok	landeseite
+retro-kurzstiefel-622500	2605190608471623100	16	12.56	ok	landeseite
+khaki-nubukleder-spitzstiefel-damen-627000	2605190549321627600	16	14.96	ok	landeseite
+knielange-denimstiefel-mit-metall-gurtelversch-617800	2605190153401618400	16	12.68	ok	landeseite
+grosse-chunky-high-absatz-stiefel-639300	2605190141031639900	16	13.52	ok	landeseite
+patentleder-high-top-reitstiefel-mit-kreppabsa-606600	2605120909581607200	16	19.99	ok	landeseite
+frauen-martin-stiefel-mit-niedrigem-absatz-613900	2605110735531614500	16	12.56	ok	landeseite
+europaisch-amerikanische-hochhackstiefel-609700	2605100242291600700	16	17.66	ok	landeseite
+retro-stiefel-mit-chunky-absatz-636100	2605090302521636600	16	15.32	ok	landeseite
+damen-booties-mit-massiver-sohle-winterfest-634300	2605071152471634800	16	11.37	ok	landeseite
+spitzschuh-blockabsatz-knochelstiefel-mit-schl-625000	2605070513241625500	16	13.52	ok	landeseite
