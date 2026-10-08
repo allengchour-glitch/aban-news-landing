@@ -63,7 +63,7 @@ Taxonomie-Lücken (Version 2021): keine eigene Klasse für Küchenwaagen, Food-P
 | Typ «Spass-Elektronik» (aktiv) | 1'026 | **377** |
 | Typ «Spielzeug & Spiele» (aktiv) | 655 | **1'304** |
 | Oberklassen-Reste per Einzelurteil | 772 | **727 gesetzt / 0 Fehler** (Rücklesen 15/15), 39 «?», 6 Regel-Vorrang |
-| Schuhe auf grobem «Shoes» | 5'646 | 2'725 von 4'939 gesetzt / 0 Fehler (Lauf geht nach dem Container-Neustart weiter) |
+| Schuhe auf grobem «Shoes» | 5'646 | **4'939 gesetzt / 0 Fehler** (Rücklesen 20/20), 707 bleiben (zweideutig) |
 
 **Nachbefund beim Messen:** Die RC-Kollektion hatte zusätzlich die Regel «Titel enthält ‹Bausteine›». Damit wären alle
 Bausteine trotz entferntem Tag drin geblieben. Die Bedingung ist entfernt, die Altregel liegt in
@@ -72,3 +72,6 @@ Bausteine trotz entferntem Tag drin geblieben. Die Bedingung ist entfernt, die A
 nur das MODELL. Für diese Titel zählen deshalb nur echte Elektronik-Merkmale (`rc_bau`/`el_bau`: Fernsteuerung, programmierbar,
 Akku/USB, LED/Beleuchtung, Solar, Motor). Ergebnis: Kanarien 27/27, Gleichlauf 1'040/0, 23 Nachzügler gesetzt. Die
 22 Restfälle in der Kollektion wurden erst Sekunden vorher umgetaggt; Shopify berechnet die Mitgliedschaft im Hintergrund nach.
+
+**ENDSTAND 11:20 UTC:** Alle 4'939 Schuhe sind gesetzt (0 Fehler, Rücklesen 20/20). In der RC-Kollektion stehen jetzt 443 aktive
+Produkte und **0 reine Bausteine/Puzzles**: Shopify hat die Mitgliedschaft nachgerechnet, die 22 Restfälle von 10:55 sind weg.

@@ -62,6 +62,7 @@ Schuhe). Darum die Tiefe beider Felder messen, nicht nur ihre Einigkeit. (2) «E
 gleich grob sein. (3) Ein Gruppen-Stempel beim Import (Typ und Tags je CJ-Gruppe) ist kein Warenurteil (vgl. 07.10. «Werkzeug»),
 deshalb gehört die Titelregel an die Quelle. (4) Eine Prüfer-Runde mit verbotenem Zweigwechsel produziert «bleibt», wo
 «falscher Zweig» die Antwort wäre. Bericht `dropship/FEINKATALOG-SCHUHE-SPIELZEUG-2026-10-08.md`.
+**ENDSTAND 11:20:** Schuhe 4'939/0 (Rücklesen 20/20); RC-Kollektion 1'446 → 726 (443 aktiv, 0 reine Bausteine — dazu musste die Titelregel «Bausteine» raus); rc 1'040 → 309; Urteile 727/0 (15/15). Drei Massen-Schreiber gleichzeitig = «Throttled 40x» → nacheinander, Schreiben bündeln.
 
 ## 2026-10-08 09:15 UTC · 📝 «verbessere weiter» (Tag 10 vorgezogen): Saison-Texte nach Messung, Mengen-Wächter, 0 tote Links
 
