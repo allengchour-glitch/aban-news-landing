@@ -92,6 +92,9 @@ AKTIONEN = {
     "selbsttest": ([], 900, "Selbsttest"),
     "bericht": ([], 120, "Wochenbericht aufs Handy"),
     "auto_an": ([], 10, "Auto-Handel an"),
+    "risiko_1": ([], 10, "Risiko-Stufe 1× (Standard)"),
+    "risiko_1_5": ([], 10, "Risiko-Stufe 1,5×"),
+    "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
 SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py"]
@@ -126,6 +129,17 @@ def aktion(name, starter=None):
         elif name == "auto_aus":
             ok, text = True, notaus_an(schliessen=False).replace("🛑 Not-Aus aktiv.", "⏸ Auto-Handel aus.") + \
                 " Offene Positionen bleiben stehen, ihr Stop an der Börse bleibt aktiv. Sofort schliessen: roter Not-Aus-Knopf."
+        elif name.startswith("risiko_"):
+            import pilot_kern as K
+            stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_2": 2.0}[name]
+            K.EINSTELLUNGEN.parent.mkdir(parents=True, exist_ok=True)
+            K.EINSTELLUNGEN.write_text(json.dumps({"risiko": stufe, "geaendert": datetime.now(timezone.utc).isoformat(timespec="seconds")}) + "\n",
+                                       encoding="utf-8")
+            r = K.risiko()
+            ok, text = True, (f"Risiko-Stufe {r['stufe']:g}×: Schwankungsziel {r['ziel_vol'] * 100:.0f} %, Hebel höchstens {r['max_hebel']:g}×. "
+                              "Gilt ab dem nächsten Lauf." + ("" if stufe == 1 else " Achtung: im Test deutlich tiefere Einbrüche als mit 1×."))
+            if os.environ.get("KRYPTO_RISIKO"):
+                ok, text = False, f"KRYPTO_RISIKO={os.environ['KRYPTO_RISIKO']} ist als Umgebungsvariable gesetzt und hat Vorrang. Erst entfernen (setx KRYPTO_RISIKO \"\")."
         elif name == "handeln" and STOP.exists():
             ok, text = False, "Auto-Handel ist aus (Not-Aus aktiv). Erst einschalten — sonst würde dieser Lauf die Positionen schliessen."
         elif name == "selbsttest":
@@ -227,6 +241,13 @@ def stand(env=None):
             vgl = KT.vergleich(ki, lb["entscheide"], {c: dict(reihen[c]) for c in KT.COINS})
         except Exception:  # noqa: BLE001
             vgl = {}
+    import pilot_kern as K
+    hb = _json("krypto-hebel-pruefung.json", {}).get("varianten", {})
+    stufen = {}
+    for st, name in ((1.0, "B alles × 1×"), (1.5, "B alles × 1.5×"), (2.0, "B alles × 2×")):
+        v = hb.get(name, {})
+        stufen[f"{st:g}"] = {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
+    risiko = {"stufe": K.risiko()["stufe"], "test": stufen}
     sam = _json("eth-sammler.json", {})
     echt_futures = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
     echt_spot = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
@@ -242,7 +263,7 @@ def stand(env=None):
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
-            "sammler": sammler, "backtest": backtest_kurven(), "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID"))}
+            "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID"))}
 
 
 # ───────────────────────── Webserver (nur 127.0.0.1) ─────────────────────────

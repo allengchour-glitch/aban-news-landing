@@ -237,6 +237,29 @@ Stand 07.10.2026 (1 = Startkapital Februar 2018):
 - **Darum gibt es dafür keinen Handels-Bot.** Im Live-Markt (`/markt`) kannst du die Gewinner und Verlierer des Tages
   trotzdem sortiert ansehen — als Anzeige. Gehandelt werden nur Bitcoin und Ethereum mit Trendregel (Krypto-Pilot).
 
+## ⚡ Mehr Hebel? — ehrlich getestet (`hebel_pruefung.py`)
+
+Der Pilot (BTC 150 + ETH 200, MVRV-Bremse, Stop 4σ) im Futures-Modell mit Gebühren, Funding und Liquidation, Stand 07.10.2026.
+«Alles × L» heisst: Schwankungsziel und Deckel L-mal so gross (jede Position L-mal so gross):
+
+| Hebel | ab 2019 pro Jahr | schlimmster Einbruch | ab 2022 pro Jahr | Einbruch ab 2022 |
+|---|---|---|---|---|
+| **1× (Standard)** | **+36,3 %** | **−35 %** | **+29,3 %** | **−28 %** |
+| 1,5× | +49,8 % | −51 % | +38,4 % | −42 % |
+| 2× | +56,2 % | −67 % | +43,4 % | −62 % |
+| 3× | +56,5 % | −86 % | +36,6 % | −86 % |
+| 5× | +8,2 % | −99 % | −18,6 % | −99 % |
+| 10× | −98,6 % | **−100 %** | −99,2 % | −100 % |
+
+- Mehr Hebel bringt bis 2× mehr Rendite, aber die Einbrüche wachsen schneller als der Gewinn. Ab 3× sinkt sogar die
+  Rendite, ab 5× ist das Konto praktisch weg — schon eine einzige schlechte Woche reicht.
+- Nur den Deckel höher stellen (Schwankungsziel bleibt) ändert fast nichts: Das Schwankungsziel hält den Hebel ohnehin klein.
+- Regel vorab: mehr Hebel nur, wenn nie liquidiert, Einbruch nie tiefer als −50 % und Rendite ÷ Einbruch überall besser
+  als 1×. **Keine Stufe hat bestanden.** Darum bleibt 1× Standard und 2× die harte Grenze.
+- Wer bewusst mehr Risiko will: im Cockpit **Risiko-Stufe 1,5× oder 2×** wählen (oder `setx KRYPTO_RISIKO "1.5"`), mit
+  Rückfrage und den Zahlen oben. Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
+  die Prozente oben gelten für diesen Teil.
+
 ## Futures (Hebel) — ehrlich gerechnet
 
 `python3 tools/trading/krypto_bot/futures.py` rechnet Bitcoin-Perpetuals wie bei Binance Futures: Entscheidung am
@@ -318,13 +341,14 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
-python3 tools/trading/krypto_bot/test_pilot.py    # 39 Tests, inkl. nachgebautem Binance-Futures-Server
+python3 tools/trading/krypto_bot/test_pilot.py    # 48 Tests, inkl. Risiko-Stufen und nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 34 Tests, inkl. nachgebautem Binance-Server mit Staking
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
-python3 tools/trading/krypto_bot/test_cockpit.py  # 49 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Live-Markt, Not-Aus, Telegram
+python3 tools/trading/krypto_bot/test_cockpit.py  # 52 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Risiko-Stufe, Live-Markt, Not-Aus, Telegram
 python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos
+python3 tools/trading/krypto_bot/hebel_pruefung.py   # Prüfstand: 1× bis 10× Hebel
 python3 tools/trading/krypto_bot/test_gewinner.py     # 12 Tests: tote Coins, keine Zukunftsdaten, Filter, Simulation
 python3 tools/trading/krypto_bot/gewinner_pruefung.py # Prüfstand «Gewinnern folgen» (lädt zuerst alle Binance-Paare)
 ```

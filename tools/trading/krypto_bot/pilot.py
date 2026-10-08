@@ -12,7 +12,7 @@ Trend-Schnitt je Coin: Bitcoin 150 Tage, Ethereum 200 Tage (pilot_pruefung.py, R
 MVRV-Bremse: kein Short, solange der Kurs unter dem Einstandswert aller Coins liegt (MVRV < 1). Die übrigen freien
 Markt-Infos (Angst & Gier, Funding, VIX, Dollar, Zins, Notenbank, Stablecoins) erscheinen nur als Lagebild — sie
 bestanden den Test in info_pruefung.py nicht und beeinflussen keinen Auftrag.
-Einstellungen: KRYPTO_MAX_HEBEL (1, höchstens 2) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
+Einstellungen: Risiko-Stufe 1 / 1,5 / 2 (Cockpit-Knopf oder KRYPTO_RISIKO; hebel_pruefung.py) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
 broker_futures.py. Einmal pro Woche kommt der Kontostand als Push (Telegram/ntfy). Keine Anlageberatung.
 """
 from __future__ import annotations
@@ -71,13 +71,11 @@ def entscheid(markt="BTC", offline=False, env=None, jetzt=None, kurse=None, mvrv
     env = os.environ if env is None else env
     symbol, yahoo, n = MAERKTE[markt]
     short = (env.get("KRYPTO_SHORT") or "1").strip() != "0"
-    try:
-        hebel = min(K.HEBEL_HART, max(0.0, float(env.get("KRYPTO_MAX_HEBEL") or "1")))
-    except ValueError:
-        hebel = 1.0
+    r = K.risiko(None if env is os.environ else env)
+    hebel = r["max_hebel"]
     reihe = abgeschlossen(kurse if kurse is not None else L.kurse(yahoo, offline), jetzt)
     p = [x[1] for x in reihe]
-    z = K.roh_hebel(p, short, hebel, n)
+    z = K.roh_hebel(p, short, hebel, n, r["ziel_vol"])
     ok, skill, dd = K.detektor(z, p, len(p) - 1)
     schnitt = K.sma(p, n)[-1]
     vol = K.schwankung(p)[-1]
@@ -86,7 +84,7 @@ def entscheid(markt="BTC", offline=False, env=None, jetzt=None, kurse=None, mvrv
     return {"markt": markt, "symbol": symbol, "stand": reihe[-1][0], "kurs": round(p[-1], 2), "hebel": round(ziel, 3),
             "hebel_roh": round(z[-1], 3), "mvrv": {"tag": m_tag, "wert": round(m_wert, 3) if m_wert is not None else None},
             "bremse": "MVRV unter 1: kein Short" if ziel != z[-1] else None, "trend_tage": n, "schnitt": round(schnitt, 2) if schnitt else None,
-            "schwankung": round(vol, 4) if vol else None, "short_erlaubt": short, "max_hebel": hebel,
+            "schwankung": round(vol, 4) if vol else None, "short_erlaubt": short, "max_hebel": hebel, "risiko": r["stufe"],
             "detektor": {"ok": ok, "skill_2j": skill, "einbruch_1j": round(dd, 4) if dd is not None else None},
             "stop_long": K.stop_kurs(p, 1), "stop_short": K.stop_kurs(p, -1)}
 

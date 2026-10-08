@@ -17,8 +17,11 @@ Alle Werte nur aus abgeschlossenen Tagen; die Entscheidung von Tag i gilt ab Tag
 """
 from __future__ import annotations
 
+import json
 import math
+import os
 import random
+from pathlib import Path
 
 ZIEL_VOL = 0.40
 MAX_HEBEL = 1.0
@@ -28,6 +31,10 @@ SKILL_MIN = 0.60
 EINBRUCH_MAX = -0.45
 STOP_SIGMA = 4.0
 MVRV_TIEF = 1.0
+# Risiko-Stufe (hebel_pruefung.py): 1 = Standard und im Test am besten (Rendite ÷ Einbruch). 1,5 und 2 = alles grösser
+# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber Einbrüche bis −51 % bzw. −67 %. Über 2: Konto im Test vernichtet.
+STUFEN = (1.0, 1.5, 2.0)
+EINSTELLUNGEN = Path(__file__).resolve().parents[3] / "data" / "krypto-einstellungen.json"
 GEBUEHR = 0.0005
 FUNDING_8H = 0.0001
 
@@ -54,7 +61,33 @@ def schwankung(p):
     return o
 
 
-def roh_hebel(p, short=True, max_hebel=MAX_HEBEL, n_sma=200):
+def risiko(env=None, datei=None):
+    """→ {stufe, ziel_vol, max_hebel}. Quelle: KRYPTO_RISIKO, sonst die Cockpit-Einstellung (nur wenn env nicht vorgegeben
+    oder eine Datei übergeben wird), sonst 1. Werte werden auf 1 / 1,5 / 2 gerundet — mehr gibt es nicht.
+    Altes KRYPTO_MAX_HEBEL ohne Stufe: wirkt wie bisher nur als Deckel."""
+    nur_env = env is not None and datei is None
+    env = os.environ if env is None else env
+    roh = env.get("KRYPTO_RISIKO")
+    if not roh and not nur_env:
+        try:
+            roh = json.loads((datei or EINSTELLUNGEN).read_text(encoding="utf-8")).get("risiko")
+        except (OSError, ValueError, AttributeError):
+            roh = None
+    try:
+        s = float(roh) if roh not in (None, "") else None
+    except (TypeError, ValueError):
+        s = None
+    if s is None or s <= 0:
+        try:
+            deckel = min(HEBEL_HART, max(0.0, float(env.get("KRYPTO_MAX_HEBEL") or "1")))
+        except ValueError:
+            deckel = 1.0
+        return {"stufe": 1.0, "ziel_vol": ZIEL_VOL, "max_hebel": deckel}
+    s = min(STUFEN, key=lambda x: abs(x - s))
+    return {"stufe": s, "ziel_vol": ZIEL_VOL * s, "max_hebel": min(s, HEBEL_HART)}
+
+
+def roh_hebel(p, short=True, max_hebel=MAX_HEBEL, n_sma=200, ziel_vol=ZIEL_VOL):
     """Ziel-Hebel je Tag OHNE Lügendetektor (positiv long, negativ short)."""
     m = min(abs(max_hebel), HEBEL_HART)
     s200, vol = sma(p, n_sma), schwankung(p)
@@ -64,7 +97,7 @@ def roh_hebel(p, short=True, max_hebel=MAX_HEBEL, n_sma=200):
             z.append(0.0)
             continue
         richtung = 1.0 if p[i] > s200[i] else (-1.0 if short else 0.0)
-        z.append(richtung * min(m, ZIEL_VOL / vol[i]))
+        z.append(richtung * min(m, ziel_vol / vol[i]))
     return z
 
 
