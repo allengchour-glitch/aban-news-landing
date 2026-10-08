@@ -87,19 +87,26 @@ def main():
         print(f"  {x[1][:55]:55} {x[2]} → {x[3]} · −{x[4]}")
     ok = fe = 0
     if SCHARF and plan:
+        # 08.10.: gebündelt (10 Produkte je Mutation + 1 Rücklese-Abfrage) — einzeln waren es 3 Aufrufe/Produkt, ~7/min
         with open(LEDGER, "a", encoding="utf-8") as f:
-            for pid, titel, alt, typ, weg in plan:
-                fehler = []
-                if weg:
-                    fehler += gql('mutation($i:ID!,$t:[String!]!){tagsRemove(id:$i,tags:$t){userErrors{message}}}', {"i": pid, "t": weg})["tagsRemove"]["userErrors"]
-                if typ != alt:
-                    fehler += gql('mutation($p:ProductUpdateInput!){productUpdate(product:$p){userErrors{message}}}',
-                                  {"p": {"id": pid, "productType": typ}})["productUpdate"]["userErrors"]
-                jetzt = gql('query($i:ID!){product(id:$i){productType tags}}', {"i": pid})["product"]
-                gut = not fehler and jetzt["productType"] == typ and not (set(weg) & set(jetzt["tags"]))
-                ok += gut; fe += not gut
-                f.write("\t".join([pid.split("/")[-1], "gesetzt" if gut else "fehler", alt, typ, ",".join(weg),
-                                   time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), titel[:80]]) + "\n")
+            for i in range(0, len(plan), 10):
+                charge = plan[i:i + 10]
+                teile = []
+                for k, (pid, titel, alt, typ, weg) in enumerate(charge):
+                    if weg:
+                        teile.append(f't{k}: tagsRemove(id:"{pid}", tags:{json.dumps(weg)}){{userErrors{{message}}}}')
+                    if typ != alt:
+                        teile.append(f'p{k}: productUpdate(product:{{id:"{pid}", productType:{json.dumps(typ)}}}){{userErrors{{message}}}}')
+                r = gql("mutation{" + " ".join(teile) + "}")
+                jetzt = {n["id"]: n for n in gql('query($i:[ID!]!){nodes(ids:$i){... on Product{id productType tags}}}',
+                                                  {"i": [x[0] for x in charge]})["nodes"] if n}
+                for k, (pid, titel, alt, typ, weg) in enumerate(charge):
+                    fehler = [e for a_ in (f"t{k}", f"p{k}") for e in ((r.get(a_) or {}).get("userErrors") or [])]
+                    j = jetzt.get(pid) or {}
+                    gut = not fehler and j.get("productType") == typ and not (set(weg) & set(j.get("tags") or []))
+                    ok += gut; fe += not gut
+                    f.write("\t".join([pid.split("/")[-1], "gesetzt" if gut else "fehler", alt, typ, ",".join(weg),
+                                       time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), titel[:80]]) + "\n")
                 f.flush()
     print(f"FERTIG: SPIELZEUG-TRENNUNG {len(plan)} geplant{f' · gesetzt {ok} · fehler {fe}' if SCHARF else ' (TROCKEN)'} · {dict(st)}")
 
