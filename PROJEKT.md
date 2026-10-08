@@ -19,6 +19,12 @@
   (ab 2019 +36 %/J, −35 % statt +28 %, −41 %). Rest nur Lagebild. **Fallen:** FRED trennt Python-urllib mit Browser-UA
   (RemoteDisconnected) → UA `curl/8.5.0`; BitMEX-Funding endet teils Wochen früher → OKX ergänzt; Binance-Funding = 451;
   nach `sed`-Mutationen `__pycache__` löschen (gleiche Grösse + gleiche Sekunde → alter Bytecode läuft).
+- **„Bot wie auf YouTube" (2026-10-08):** `cockpit.py` + `cockpit.html` (Dashboard 127.0.0.1:8765, Not-Aus-Knopf mit X-Cockpit-
+  Kopf + Origin-Prüfung, Telegram-Befehle nur aus TELEGRAM_CHAT_ID, alte Nachrichten ignoriert), `ki_trader.py` (Claude Opus 5.5,
+  `fallbacks:"default"` + Beta `server-side-fallback-2026-07-01`, JSON-Schema-Ausgabe, effort high) **nur Schattenkonto** gegen
+  Pilot/Halten — kein Backtest möglich (Modell kennt die Geschichte). SDK-Anfrage gegen lokalen Fake-Server geprüft.
+  Tests `test_cockpit.py` 33 (Mutation 3/3). Bildschirmfotos mit Beispieldaten: keine JS-Fehler, kein Querüberlauf 390 px.
+  **Falle:** `pkill -f "<muster>"` trifft die eigene Shell, wenn das Muster im Befehl steht (Exit 144) → per PID beenden.
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

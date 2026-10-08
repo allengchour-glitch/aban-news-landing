@@ -102,7 +102,7 @@ besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzt
    (`setx` wirkt nur in neuen Fenstern).
 3. `py tools\trading\krypto_bot\pilot.py --status`, dann `--lauf --trocken`, dann `--lauf`.
 4. Im Futures-Konto muss der **Einweg-Modus** eingestellt sein (kein Hedge-Modus), sonst verweigert der Pilot.
-5. **Täglich automatisch:** `krypto-auto.bat` (braucht kein Alpaca) startet Pilot und ETH-Sammler. Einmal einrichten:
+5. **Täglich automatisch:** `krypto-auto.bat` (braucht kein Alpaca) startet Pilot, ETH-Sammler und KI-Trader. Einmal einrichten:
    `schtasks /create /sc daily /st 02:30 /tn "Krypto-Pilot" /tr "C:\…\tools\trading\krypto_bot\krypto-auto.bat auto"`.
    Die Tageskerze schliesst um 00:00 UTC (02:00 Sommerzeit), darum kurz danach.
 
@@ -157,6 +157,40 @@ an 817 von 1796 Tagen im Minus, zuletzt noch im August 2026.
 - **Echtes Geld:** `BINANCE_TESTNET=false` **und** `KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"` **und** `ETH_STAKEN=1`.
   Der Schlüssel braucht nur „Spot- und Margin-Handel aktivieren“. Mit Auszahlungs-, Margin-Leihe- oder Futures-Recht
   verweigert der Sammler. Lehnt Binance das Staking ab, bleiben die ETH im Spot-Konto, der nächste Lauf versucht es wieder.
+
+## 🖥️ Cockpit, Claude als Trader, Telegram-Steuerung — wie die YouTube-Bots, aber ehrlich
+
+Was die Bots auf YouTube zeigen, gibt es hier auch: ein Live-Dashboard, eine KI, die jeden Tag entscheidet und begründet,
+und Steuerung per Handy. Der Unterschied liegt in den Zahlen:
+
+| YouTube-Bot | Hier |
+|---|---|
+| «KI hat im Backtest +900 % gemacht» | Für Claude gibt es **keinen** ehrlichen Backtest: Das Modell kennt die Kursgeschichte aus dem Training. Darum läuft Claude ab dem ersten Tag **vorwärts** in einem Schattenkonto gegen den Pilot und gegen Halten — mit Gebühren und Funding. |
+| KI handelt echtes Geld | Echtes Geld handelt nur der getestete Pilot. Claude bekommt erst mehr, wenn das Schattenkonto über Monate besser ist. |
+| Gewinnkurve ohne Kosten | Jede Kurve rechnet Gebühr 0,05 % je Umschichtung und Funding. |
+
+**Cockpit** (`cockpit.bat` oder `py tools\trading\krypto_bot\cockpit.py`) öffnet `http://127.0.0.1:8765`:
+Konto, BTC/ETH mit Richtung, Trend, Stop, MVRV und Bremse, Claudes Einschätzung mit Begründung, die Kurve
+«Claude gegen Pilot gegen Halten», der Kontostand, der Backtest seit 2019, das Lagebild, die letzten Aufträge und der
+ETH-Sammler. Dazu ein **Not-Aus-Knopf**: Er schliesst die Pilot-Positionen sofort (nur verkleinern) und stoppt alle Bots.
+Das Cockpit liest nur die Logbücher auf deinem PC, lauscht nur auf 127.0.0.1 und lehnt Anfragen fremder Webseiten ab.
+
+**KI-Trader** (`ki_trader.py --lauf`, einmal pro Tag, läuft in `krypto-auto.bat` mit):
+1. Schlüssel auf [console.anthropic.com](https://console.anthropic.com) anlegen, `setx ANTHROPIC_API_KEY "…"`, neues Fenster.
+2. `py -m pip install anthropic`
+3. `py tools\trading\krypto_bot\ki_trader.py --lauf`, später `--stand` für den Vergleich.
+
+Claude (Modell `claude-opus-5-5`, änderbar mit `KI_TRADER_MODELL`) bekommt nur abgeschlossene Tage: Kurse,
+Veränderungen, Abstand zu den Trend-Schnitten, Schwankung und das Lagebild. Daraus gibt es pro Coin eine Position
+von −1 bis +1, eine Begründung, eine Sicherheit und einen Marktkommentar. Den Entscheid des Piloten sieht Claude nicht —
+sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernimmt serverseitig ein Ersatzmodell.
+**Kosten (Schätzung):** pro Lauf rund 2'000 Tokens hinein und 1'500–4'000 heraus (inkl. Denken), nach Preisliste
+(4 / 20 USD je Million) also etwa 4–10 US-Cent pro Tag. Die echten Kosten jedes Laufs stehen im Logbuch `data/ki-trader.json` und im Cockpit.
+
+**Telegram-Steuerung** läuft mit dem Cockpit, sobald `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` gesetzt sind
+(Einrichtung: `tools/trading/ki_bot/README.md`). Befehle nur aus deinem eigenen Chat: `/status`, `/konto`, `/ki`, `/lage`,
+`/stop` (Not-Aus mit Schliessen), `/weiter`, `/hilfe`. Nachrichten von vor dem Start werden ignoriert, damit ein altes
+`/stop` nicht plötzlich wirkt.
 
 ## Futures (Hebel) — ehrlich gerechnet
 
@@ -242,6 +276,7 @@ python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mech
 python3 tools/trading/krypto_bot/test_pilot.py    # 39 Tests, inkl. nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 34 Tests, inkl. nachgebautem Binance-Server mit Staking
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
+python3 tools/trading/krypto_bot/test_cockpit.py  # 33 Tests: Claude-Antwort, Schattenkonto, Cockpit, Not-Aus, Telegram
 python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos
