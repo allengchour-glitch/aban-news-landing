@@ -6321,3 +6321,4 @@ gid://shopify/Product/15455682298241	zugeordnet	27	Warme Schneeschuhe für Kinde
 gid://shopify/Product/15455682396545	zugeordnet	51	Winter Plus Velours Kinder-Schneestiefel
 gid://shopify/Product/15455682462081	zugeordnet	44	Kinder-Wanderschuhe aus Baumwolle
 gid://shopify/Product/15455682593153	zugeordnet	9	Elegantes Abendkleid mit Schulter slits
+gid://shopify/Product/15455682658689	zugeordnet	10	Sternen-Sneaker für Kleinkinder
