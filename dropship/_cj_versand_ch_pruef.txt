@@ -5375,3 +5375,4 @@ europaisch-amerikanische-hochhackstiefel-609700	2605100242291600700	16	17.66	ok	
 retro-stiefel-mit-chunky-absatz-636100	2605090302521636600	16	15.32	ok	landeseite
 damen-booties-mit-massiver-sohle-winterfest-634300	2605071152471634800	16	11.37	ok	landeseite
 spitzschuh-blockabsatz-knochelstiefel-mit-schl-625000	2605070513241625500	16	13.52	ok	landeseite
+retro-hohenverstarkende-mid-calf-martin-boots-632100	2605061444121632800	16	13.76	ok	landeseite
