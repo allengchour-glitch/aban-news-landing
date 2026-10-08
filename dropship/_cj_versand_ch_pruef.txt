@@ -5386,3 +5386,6 @@ ruckenriemen-spitzschuh-mit-bugel-624400	2607020838221625100	16	13.76	ok	landese
 chic-sandalen-mit-massiver-hacke-625500	2607020614101626800	16	12.81	ok	landeseite
 damen-sandalen-mit-fischmund-absatz-623600	2607020206411624300	16	12.09	ok	landeseite
 spitzschuh-mit-holzkorn-optik-hochhackige-ankl-601000	2607020204201601600	16	18.01	ok	landeseite
+massive-absatze-spitzschuhe-mit-ruckenriemen-628500	2607011121281629100	16	12.32	ok	landeseite
+neu-elegante-damenhohe-absatze-vielseitig-607200	2607010707341607800	16	9.04	ok	landeseite
+schlangenmuster-strap-sandalen-mit-hohem-absat-631600	2607010147551632500	16	10.88	ok	landeseite

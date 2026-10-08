@@ -17285,3 +17285,4 @@ gid://shopify/Product/16611761979783	9->0	Multifunktionale Küchenschere aus Ede
 gid://shopify/Product/16611762405767	14->1	Stahlsatz mit Sternmuster, 6-teilig
 gid://shopify/Product/16611773612423	25->0	Doppelkopf-Wandlampe Aussenlicht IP54
 gid://shopify/Product/16611777413511	14->1	Baby-Olympia-Fleece-Romper, warm & dick
+gid://shopify/Product/15512306352513	12->0	Leinen Kissenbezug Fischschwanz
