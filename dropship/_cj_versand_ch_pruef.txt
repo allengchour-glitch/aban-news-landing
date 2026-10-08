@@ -6023,3 +6023,11 @@ kombi-abfalleimer-papiertuchbox-fur-auto-608400	2605091151411608900	16	7.43	ok	l
 kuhl-seidenkissen-sitzauflage-609800	2605080909261600700	0	-	KEINE CH-Option → DRAFT	landeseite
 leder-sitzauflage-atmungsaktiv-608700	2605070342301609300	16	8.92	ok	landeseite
 dickschale-memory-foam-sitze-621300	2605060712011621800	16	14.35	ok	landeseite
+carbon-faser-lenkradschutz-sportlich-626000	2605090716451626700	16	13.65	ok	landeseite
+lederlenkradbezug-sportstil-619000	2605050514521619700	16	12.21	ok	landeseite
+nicht-rutschige-abriebfeste-lenkergriffe-fur-a-611500	2605050159311612000	16	14.51	ok	landeseite
+handgenahtes-lenkradbezug-modifiziert-620500	2605050150041621100	16	13.88	ok	landeseite
+kunstleder-lenkradbezug-607800	2605050142051608700	16	12.21	ok	landeseite
+universeller-15-zoll-lenkradbezug-613300	2605030237581613900	16	15.40	ok	landeseite
+leder-lenkradbezug-608100	2605020510201608700	16	12.21	ok	landeseite
+sport-lederlenkradbezug-628100	2605020145351628600	16	15.87	ok	landeseite
