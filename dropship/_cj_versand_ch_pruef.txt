@@ -5519,3 +5519,9 @@ retro-flugzeugkopf-schuhe-mit-arganol-602800	2607030853031603500	16	17.66	ok	lan
 romische-cut-out-sandalen-mit-schlupfriemen-st-156866	2072889485639180290	16	11.23	ok	landeseite
 leopard-sandalen-mit-weicher-sohle-239809	2072935393890291713	16	11.23	ok	landeseite
 silberne-mary-jane-flats-mit-verstecktem-absat-262337	2072939891245342722	16	11.23	ok	landeseite
+vintage-sandalen-mit-schnalle-630400	2607021125121631000	16	12.81	ok	landeseite
+mary-jane-schuhe-mit-chunky-absatz-607000	2607020817201607600	16	12.56	ok	landeseite
+leichtgewichtige-mary-jane-sandalen-mit-atmung-619100	2607020707021619901	16	17.66	ok	landeseite
+herren-taktische-outdoor-boots-622200	2607011122121622800	16	14.58	ok	landeseite
+herren-high-top-lederboots-europaisch-amerikan-621400	2606260701121622000	16	18.83	ok	landeseite
+abriebfeste-rutschfeste-arbeitsschuhe-herren-608700	2606240317531609500	16	21.16	ok	landeseite
