@@ -1598,6 +1598,17 @@ if [ "$ALTER" -gt 86400 ]; then
   ( cd "$REPO" && SCHARF=1 timeout 300 python3 automation/mobil_tempo_patch.py >> "$LOG" 2>&1 )
   echo "MOBIL-TEMPO: $(grep -c 'schon gepatcht' "$LOG" | tail -1) Patches geprüft · $(tail -1 "$LOG" | cut -c1-120)"
 fi
+# ── Bildlast beim Öffnen (08.10.2026, Plan-Tag 11): Startseite 390 px OHNE Scrollen. Vorher 171 Bilder / 10'759 KB
+#    (Horizon product-card.js nahm jedem Karussell-Zweitbild das lazy weg; Cover immer eager) → mobil_tempo_patch_2.py: 38 / 1'008 KB.
+#    Täglich: Patch idempotent halten (Theme-Update überschreibt assets/product-card.js) + messen (Grenze 60 Bilder / 3'000 KB → ⚠️).
+BLL=/tmp/startseite_bildlast.log
+if [ -f "$REPO/automation/startseite_bildlast.mjs" ]; then ALTER=$(( $(date +%s) - $(stat -c %Y "$BLL" 2>/dev/null || echo 0) )); else ALTER=0; fi
+if [ "$ALTER" -gt 86400 ]; then
+  echo "START $(date -u +%FT%H:%MZ)" >> "$BLL"
+  ( cd "$REPO" && SCHARF=1 timeout 300 python3 automation/mobil_tempo_patch_2.py 2>&1 | grep -E '^  |geschrieben|Rücklesen|FEHLER' >> "$BLL" )
+  ( cd "$REPO" && setsid bash -c "timeout 240 /opt/node22/bin/node automation/startseite_bildlast.mjs" >> "$BLL" 2>&1 & )
+  echo "$(date -u +%H:%M) start startseite_bildlast (täglich) · letzte: $(grep '^BILDLAST' "$BLL" | tail -1 | cut -c1-150)"
+fi
   # KATEGORIEN REIN (04.10.2026): Titel ∧ Produkttyp ∧ Ausschluss je Menü-Kategorie → Tag kat-… (Ringe, Taschen, Deko, …)
   KRL=/tmp/kategorie_rein.log
   if [ -f "$REPO/automation/kategorie_rein.py" ]; then

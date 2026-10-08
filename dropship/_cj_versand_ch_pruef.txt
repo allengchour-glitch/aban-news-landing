@@ -5667,3 +5667,10 @@ leichte-laufschuhe-614700	2508120812441615000	16	9.75	ok	landeseite
 golfschuh-mit-beweglichem-stift-grosse-grossen-609700	2503311045171600000	16	18.83	ok	landeseite
 jugend-basketball-schuhe-mit-flyknit-605900	2502130348471606100	16	14.72	ok	landeseite
 trainings-schuhe-fur-kids-und-teens-602500	2502120622401602700	16	12.56	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
