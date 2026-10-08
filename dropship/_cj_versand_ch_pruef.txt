@@ -5624,3 +5624,5 @@ retro-business-schuhe-615100	2509130813281615600	16	19.99	ok	landeseite
 sommerschuhe-mit-unsichtbarer-hohenverstarkung-609000	2508290956011609200	16	13.88	ok	landeseite
 retro-sneakers-herren-45-46-621600	2508170223271621800	16	11.12	ok	landeseite
 weisse-platform-schuhe-fur-herren-610100	2508050845281610300	16	11.37	ok	landeseite
+sneaker-mit-unsichtbarer-absatz-erhohung-610600	2508040216311611200	16	20.12	ok	landeseite
+outdoor-schuhe-fur-freizeit-und-sport-608600	2601240231091609000	16	10.42	ok	landeseite
