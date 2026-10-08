@@ -18,11 +18,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 import threading
 import time
 import urllib.parse
 import urllib.request
+from collections import deque
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -76,6 +78,78 @@ def notaus_aus():
     if STOP.exists():
         STOP.unlink()
     return "✅ Not-Aus aufgehoben. Der nächste Lauf handelt wieder."
+
+
+# ───────────────────────── Knöpfe (nur fest eingetragene Aktionen, kein beliebiger Befehl) ─────────────────────────
+# Name → (Skript und Argumente, Zeitlimit in Sekunden, Titel)
+AKTIONEN = {
+    "probe": (["pilot.py", "--lauf", "--trocken"], 300, "Pilot – Probelauf ohne Aufträge"),
+    "handeln": (["pilot.py", "--lauf"], 300, "Pilot – jetzt handeln"),
+    "ki": (["ki_trader.py", "--lauf"], 300, "Claude fragen"),
+    "sparplan": (["eth_sammler.py", "--lauf"], 300, "ETH-Sparplan ausführen"),
+    "infos": (["infos.py"], 600, "Markt-Infos aktualisieren"),
+    "backtest": (["pilot.py", "--backtest"], 600, "Backtest rechnen"),
+    "selbsttest": ([], 900, "Selbsttest"),
+    "bericht": ([], 120, "Wochenbericht aufs Handy"),
+    "auto_an": ([], 10, "Auto-Handel an"),
+    "auto_aus": ([], 10, "Auto-Handel aus"),
+}
+SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py"]
+PROTOKOLL = deque(maxlen=40)
+_LAUFEND, _SPERRE = {}, threading.Lock()  # Name → Startzeit
+
+
+def _skript(args, zeit):
+    """Ein Bot-Skript als eigenen Prozess starten (wie von Hand), Ausgabe einsammeln."""
+    env = dict(os.environ, PYTHONIOENCODING="utf-8")
+    try:
+        r = subprocess.run([sys.executable, str(HIER / args[0]), *args[1:]], capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=zeit, cwd=str(ROOT), env=env)
+        return r.returncode == 0, (r.stdout + ("\n" + r.stderr if r.stderr.strip() else "")).strip()
+    except subprocess.TimeoutExpired:
+        return False, f"Abgebrochen: länger als {zeit} Sekunden."
+
+
+def aktion(name, starter=None):
+    """Führt eine Knopf-Aktion aus → Protokoll-Eintrag {zeit, aktion, titel, ok, text}. starter: für Tests."""
+    if name not in AKTIONEN:
+        raise KeyError(name)
+    args, zeit, titel = AKTIONEN[name]
+    with _SPERRE:
+        if name in _LAUFEND:
+            return {"aktion": name, "titel": titel, "ok": False, "text": "Läuft schon — bitte warten.", "besetzt": True}
+        _LAUFEND[name] = time.time()
+    try:
+        starter = starter or _skript
+        if name == "auto_an":
+            ok, text = True, notaus_aus().replace("Not-Aus aufgehoben", "Auto-Handel an")
+        elif name == "auto_aus":
+            ok, text = True, notaus_an(schliessen=False).replace("🛑 Not-Aus aktiv.", "⏸ Auto-Handel aus.") + \
+                " Offene Positionen bleiben stehen, ihr Stop an der Börse bleibt aktiv. Sofort schliessen: roter Not-Aus-Knopf."
+        elif name == "handeln" and STOP.exists():
+            ok, text = False, "Auto-Handel ist aus (Not-Aus aktiv). Erst einschalten — sonst würde dieser Lauf die Positionen schliessen."
+        elif name == "selbsttest":
+            teile, ok = [], True
+            for t in SELBSTTESTS:
+                o, out = starter([t], zeit)
+                ok = ok and o
+                teile.append(f"{t}: {out.strip().splitlines()[-1] if out.strip() else 'keine Ausgabe'}")
+            text = "\n".join(teile)
+        elif name == "bericht":
+            import pilot as PI
+            import signale as SG
+            t = PI.wochenbericht(PI.lies(), datetime.now(timezone.utc).date().isoformat(), erzwingen=True)
+            ok, text = (True, t + "\n\n→ gesendet (Telegram/ntfy, falls eingerichtet)") if t else (False, "Noch kein Kontostand — erst ein Lauf mit Futures-Schlüssel.")
+            if t:
+                SG.push(t + "\nKeine Anlageberatung.")
+        else:
+            ok, text = starter(args, zeit)
+    finally:
+        with _SPERRE:
+            _LAUFEND.pop(name, None)
+    e = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "aktion": name, "titel": titel, "ok": ok, "text": text[-6000:]}
+    PROTOKOLL.appendleft(e)
+    return e
 
 
 # ───────────────────────── Daten fürs Cockpit ─────────────────────────
@@ -190,6 +264,10 @@ class Cockpit(BaseHTTPRequestHandler):
             return self._senden(200, SEITE.read_bytes(), "text/html; charset=utf-8")
         if pfad in ("/markt", "/markt.html"):
             return self._senden(200, MARKT.read_bytes(), "text/html; charset=utf-8")
+        if pfad == "/api/protokoll":
+            jetzt = time.time()
+            return self._senden(200, {"protokoll": list(PROTOKOLL), "laufend": [
+                {"aktion": n, "titel": AKTIONEN[n][2], "sekunden": round(jetzt - t)} for n, t in sorted(_LAUFEND.items())]})
         if pfad == "/api/stand":
             try:
                 return self._senden(200, stand())
@@ -203,14 +281,27 @@ class Cockpit(BaseHTTPRequestHandler):
         erlaubt = {f"http://127.0.0.1:{self.port}", f"http://localhost:{self.port}"}
         if self.headers.get("X-Cockpit") != "1" or (herkunft and herkunft not in erlaubt):
             return self._senden(403, {"fehler": "verboten"})
-        if urllib.parse.urlparse(self.path).path != "/api/notaus":
+        pfad = urllib.parse.urlparse(self.path).path
+        if pfad not in ("/api/notaus", "/api/aktion"):
             return self._senden(404, {"fehler": "nicht gefunden"})
         try:
             n = int(self.headers.get("Content-Length") or 0)
-            an = bool(json.loads(self.rfile.read(n).decode() or "{}").get("an"))
+            daten = json.loads(self.rfile.read(n).decode() or "{}")
         except ValueError:
             return self._senden(400, {"fehler": "ungültig"})
+        if pfad == "/api/aktion":
+            name = str(daten.get("aktion", ""))
+            if name not in AKTIONEN:
+                return self._senden(400, {"fehler": "unbekannte Aktion"})
+            if name in _LAUFEND:
+                return self._senden(409, {"fehler": "läuft schon"})
+            # Im Hintergrund: manche Läufe dauern Minuten (erster Abruf der Markt-Infos), der Browser fragt das Protokoll ab
+            threading.Thread(target=aktion, args=(name,), daemon=True).start()
+            return self._senden(202, {"gestartet": name})
+        an = bool(daten.get("an"))
         meldung = notaus_an() if an else notaus_aus()
+        PROTOKOLL.appendleft({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "aktion": "notaus" if an else "auto_an",
+                              "titel": "Not-Aus" if an else "Not-Aus aufgehoben", "ok": True, "text": meldung})
         return self._senden(200, {"meldung": meldung, "notaus": STOP.exists()})
 
     def log_message(self, *a):

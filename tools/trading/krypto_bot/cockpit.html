@@ -77,6 +77,26 @@ th{color:var(--ink-3);font-weight:600}
 details{margin-top:8px;font-size:13px;color:var(--ink-2)}
 .leer{color:var(--ink-3);font-size:14px}
 footer{color:var(--ink-3);font-size:12px;margin:16px 0}
+.steuerkopf{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:12px}
+.schalter{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:15px;padding:6px 14px 6px 6px;border-radius:999px}
+.schalter .bahn{width:46px;height:26px;border-radius:999px;background:var(--grid);position:relative;transition:background .2s}
+.schalter .bahn::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--ink-3);transition:left .2s,background .2s}
+.schalter[aria-checked="true"] .bahn{background:var(--good)}
+.schalter[aria-checked="true"] .bahn::after{left:23px;background:#fff}
+.knoepfe{display:grid;gap:8px;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:860px){.knoepfe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.knoepfe button{padding:11px 12px;font-weight:600;text-align:left;display:flex;flex-direction:column;gap:2px}
+.knoepfe button small{font-weight:400;color:var(--ink-3);font-size:12px}
+.knoepfe button.primaer{background:var(--s-claude);border-color:var(--s-claude);color:#fff}
+.knoepfe button.primaer small{color:rgba(255,255,255,.8)}
+.knoepfe button:hover:not(:disabled){border-color:var(--ink-3)}
+.knoepfe button:disabled{opacity:.55;cursor:progress}
+.konsole{margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-s);max-height:300px;overflow:auto;
+  font:12.5px/1.45 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;padding:8px 10px}
+.konsole .ekopf{color:var(--ink-2);font-weight:700;margin-top:6px}
+.konsole .ekopf:first-child{margin-top:0}
+.konsole pre{margin:2px 0 8px;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
+.konsole .gut{color:var(--good)}.konsole .schlecht{color:var(--critical)}
 </style>
 </head>
 <body>
@@ -96,6 +116,25 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
     <div class="karte kpi w3"><h2>Seit Start</h2><div class="zahl" id="k-seit">—</div><div class="unter">Futures-Konto (Pilot)</div></div>
     <div class="karte kpi w3"><h2>Seit Vorwoche</h2><div class="zahl" id="k-woche">—</div><div class="unter">7 Tage</div></div>
     <div class="karte kpi w3"><h2>Unter Höchststand</h2><div class="zahl" id="k-hoch">—</div><div class="unter">Abstand zum besten Kontostand</div></div>
+  </section>
+
+  <section class="karte" style="margin-top:12px" aria-label="Steuerung">
+    <div class="steuerkopf">
+      <h2 style="margin:0">Steuerung</h2>
+      <button type="button" id="auto" class="schalter" role="switch" aria-checked="true"><span class="bahn" aria-hidden="true"></span><span id="autoText">Auto-Handel AN</span></button>
+      <span class="unter" id="autoInfo">Täglich über krypto-auto.bat bzw. die Aufgabenplanung.</span>
+    </div>
+    <div class="knoepfe">
+      <button type="button" data-a="probe">▶ Probelauf<small>zeigt Aufträge, handelt nicht</small></button>
+      <button type="button" data-a="handeln" class="primaer">⚡ Jetzt handeln<small>Pilot BTC + ETH</small></button>
+      <button type="button" data-a="ki">🤖 Claude fragen<small>Einschätzung von heute</small></button>
+      <button type="button" data-a="sparplan">🪙 Sparplan<small>ETH kaufen, wenn fällig</small></button>
+      <button type="button" data-a="bericht">📨 Bericht aufs Handy<small>Kontostand jetzt senden</small></button>
+      <button type="button" data-a="infos">🔄 Markt-Infos<small>Angst&amp;Gier, Funding, MVRV …</small></button>
+      <button type="button" data-a="backtest">📊 Backtest<small>Regel seit 2019 rechnen</small></button>
+      <button type="button" data-a="selbsttest">🧪 Selbsttest<small>alle Prüfungen laufen lassen</small></button>
+    </div>
+    <div class="konsole" id="konsole" aria-live="polite"><div class="ekopf">Bereit. Ausgaben der Knöpfe erscheinen hier.</div></div>
   </section>
 
   <section class="raster" style="margin-top:12px" aria-label="Märkte" id="maerkte"></section>
@@ -212,8 +251,11 @@ function zeichne(d) {
   $("tg").hidden = !d.telegram;
   $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
   $("notausHinweis").hidden = !d.notaus;
-  $("notaus").textContent = d.notaus ? "Not-Aus aufheben" : "Not-Aus";
-  $("notaus").className = d.notaus ? "" : "stop";
+  $("notaus").textContent = "🛑 Not-Aus";
+  $("auto").setAttribute("aria-checked", String(!d.notaus));
+  $("autoText").textContent = d.notaus ? "Auto-Handel AUS" : "Auto-Handel AN";
+  $("autoInfo").textContent = d.notaus ? "Die Bots handeln nicht. Offene Positionen behalten ihren Stop an der Börse."
+    : "Täglich über krypto-auto.bat bzw. die Aufgabenplanung.";
   const k = d.konto;
   $("k-wert").textContent = k ? fmtZahl(k.wert, 2) + " USDT" : "—";
   $("k-start").textContent = k ? "seit " + k.start_tag : "noch kein Lauf mit Schlüssel";
@@ -283,11 +325,49 @@ async function laden() {
 }
 
 $("notaus").addEventListener("click", async () => {
-  const an = !(letzterStand && letzterStand.notaus);
-  if (an && !confirm("Not-Aus: Pilot-Positionen sofort schliessen und alle Bots stoppen?")) return;
-  const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an})});
-  const j = await r.json(); alert(j.meldung || j.fehler); laden();
+  if (!confirm("Not-Aus: Pilot-Positionen sofort schliessen und alle Bots stoppen?")) return;
+  const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an: true})});
+  const j = await r.json(); alert(j.meldung || j.fehler); laden(); ladeProtokoll();
 });
+
+// ───────── Knöpfe + Terminal ─────────
+const FRAGE = {
+  handeln: d => `Pilot jetzt handeln lassen?\nModus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz (Spielgeld)"}\nEr kauft oder verkauft nur, wenn die Position nicht im Zielbereich liegt.`,
+  ki: () => "Claude jetzt fragen?\nKostet etwa 4–10 US-Cent. Pro Tag gibt es eine Einschätzung (ein zweiter Klick am selben Tag kostet nichts).",
+  sparplan: d => "ETH-Sparplan jetzt ausführen?\nEr kauft nur, wenn der nächste Termin fällig ist.",
+  auto_aus: () => "Auto-Handel ausschalten?\nDie Bots handeln dann nicht mehr. Offene Positionen bleiben stehen (Stop an der Börse bleibt).",
+};
+const uhr = z => new Date(z).toLocaleTimeString("de-CH");
+function zeigeProtokoll(liste, laufend) {
+  const k = $("konsole");
+  const lauf = laufend.map(a => `<div class="ekopf">⏳ ${esc(a.titel)} läuft … ${a.sekunden} s</div>`).join("");
+  k.innerHTML = lauf + (liste.length ? liste.map(e => `<div class="ekopf"><span class="${e.ok ? "gut" : "schlecht"}">${e.ok ? "✓" : "✗"}</span> ${uhr(e.zeit)} · ${esc(e.titel)}</div><pre>${esc(e.text)}</pre>`).join("")
+    : `<div class="ekopf">Bereit. Ausgaben der Knöpfe erscheinen hier.</div>`);
+  const namen = laufend.map(a => a.aktion);
+  document.querySelectorAll(".knoepfe button").forEach(b => { b.disabled = namen.includes(b.dataset.a); });
+  $("auto").disabled = namen.includes("auto_an") || namen.includes("auto_aus");
+  return namen;
+}
+async function ladeProtokoll() {
+  try { const j = await (await fetch("/api/protokoll", {cache: "no-store"})).json(); return zeigeProtokoll(j.protokoll, j.laufend); }
+  catch (e) { return []; }
+}
+async function knopf(name) {
+  const f = FRAGE[name];
+  if (f && !confirm(f(letzterStand || {}))) return;
+  const b = document.querySelector(`.knoepfe button[data-a="${name}"]`);
+  if (b) b.disabled = true;
+  try {
+    const r = await fetch("/api/aktion", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({aktion: name})});
+    if (r.status === 409) $("konsole").insertAdjacentHTML("afterbegin", `<div class="ekopf">⏳ läuft schon — bitte warten</div>`);
+  } catch (e) { $("konsole").insertAdjacentHTML("afterbegin", `<div class="ekopf schlecht">Cockpit-Server nicht erreichbar</div>`); return; }
+  // bis die Aktion fertig ist, alle 2 Sekunden nachsehen
+  while ((await ladeProtokoll()).includes(name)) await new Promise(ok => setTimeout(ok, 2000));
+  laden();
+}
+document.querySelector(".knoepfe").addEventListener("click", e => { const b = e.target.closest("button[data-a]"); if (b && !b.disabled) knopf(b.dataset.a); });
+$("auto").addEventListener("click", () => knopf(letzterStand && letzterStand.notaus ? "auto_an" : "auto_aus"));
+ladeProtokoll();
 addEventListener("resize", () => letzterStand && zeichne(letzterStand));
 laden(); setInterval(laden, 60000);
 </script>
