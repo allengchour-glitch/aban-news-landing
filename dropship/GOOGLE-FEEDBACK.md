@@ -1,366 +1,340 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-07T19:31Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-08T15:38Z
 
-Gescannt: 51470 aktive Produkte in 206 Seiten (vollständig), 1895 s. Meldungen nur für Shopping Ads (ignoriert): 24003.
+Gescannt: 51701 aktive Produkte in 207 Seiten (vollständig), 298 s. Meldungen nur für Shopping Ads (ignoriert): 18107.
 
-## Free-Listings-Blocker: 823
+## Free-Listings-Blocker: 696
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Image under review | 283 | 0 | – |
-| Restricted adult content | 216 | 0 | – |
-| Inappropriate image | 214 | 0 | – |
-| Product page unavailable | 53 | 0 | – |
-| Promotional overlay on image | 32 | 0 | – |
-| Title under review | 9 | 0 | – |
-| Adult-oriented content | 5 | 0 | – |
-| Unable to show image | 5 | 0 | – |
-| Image too small | 3 | 0 | – |
-| Tobacco products & related equipment | 2 | 0 | – |
-| Local Requirements | 1 | 0 | – |
+| Image under review | 256 | 0 | 256 |
+| Inappropriate image | 176 | 0 | 176 |
+| Restricted adult content | 176 | 0 | 176 |
+| Product page unavailable | 51 | 0 | – |
+| Promotional overlay on image | 24 | 0 | – |
+| Image too small | 5 | 0 | – |
+| Title under review | 3 | 0 | 3 |
+| Adult-oriented content | 2 | 0 | 2 |
+| Unable to show image | 2 | 0 | – |
+| Additional text found | 1 | 0 | – |
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
 ## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
 
-- Missing shipping info in some countries [LI]: 5733
+- Missing shipping info in some countries [LI]: 1066
 
 Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: Sexual interests: 216
-- Personalized advertising: personal hardships: 71
-- Personalized advertising: legal restrictions: 4
+- Personalized advertising: Sexual interests: 176
+- Personalized advertising: personal hardships: 51
+- Personalized advertising: legal restrictions: 5
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 8
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 1
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Image under review (283)
+### Image under review (256)
 
-- rosenquarz-gua-sha-set
 - kristall-set-3-teilig
-- sonnenbrille-carre-retro-small-square
+- phone-makeover-set-charms-grip-magsafe-holder
 - fransen-minirock-santa-fe-wildleder-optik-2-lagig
-- kiss-cut-aufkleber-selbst-gestalten
+- hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten
 - transparente-iphone®-hulle-selbst-gestalten
 - recycelter-unisex-allover-pullover-selbst-gestalten
+- schweiz-poster-alpsee-see-spiegelung-kunstdruck
 - poster-zum-selbstgestalten
 - magnet-zum-selbstgestalten
+- pod-sticker-basketball
+- pod-sticker-capybara
+- pod-sticker-moon-face
 - pod-sticker-shooting-star
-- pod-sticker-tattoo-anchor
-- shirt-text-merci
+- pod-sticker-zodiac-sagittarius
+- tasse-basel
+- tasse-braunvieh
 - tote-zum-selbstgestalten
+- rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren-💡
 - edelstahl-anhanger-sternzeichen-und-monate-620600
 - hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
-- kaschmirahnlicher-schal-mit-totem-muster-607900
-- paisley-jacquard-schal-mit-quasten-600200
 - retro-zip-up-hoodie-mit-3d-digitalprint-614100
-- strickpullover-mit-laternenarmeln-615200
 - gleitende-pizza-schaufel-aus-holz-799360
-- tragbarer-kabelloser-flaschenwarmer-mit-usb-079104
+- kabellose-multifunktions-reinigungsburste-622500
 - smart-armband-1-3-zoll-display-tpu-band-e49535
 - usb-hd-kamera-064832
 - slim-fit-herrenweste-korean-style-603700
+- sandalen-mit-riemchen-und-nieten-5cm-keilabsat-111425
 - kinder-retro-sneakers-mit-klettverschluss-611200
-- faltbares-edelstahl-futtergeschirr-606700
-- mini-led-fotolicht-mit-lithium-akku-636096
 - hd-quadrocopter-mit-fernbedienung-622700
-- ferngesteuertes-fluggerat-mit-hd-bildschirm-625500
 - katzenfestes-einheitssofauberwurf-603200
 - 3d-bubble-chiffon-esstuhl-bezug-618900
-- chenille-bolsterkissen-extra-lang-verschiedene-874242
 - sommerdecke-mit-kuhlung-618000
 - sommer-duvet-mit-tencel-und-stickerei-621100
 - anstecknadel-halter-639100
-- gesichtsfirma-gel-609900
 - schonheitspflaster-628100
-- kottensack-fur-wohnzimmer-623000
-- katzenspielzeug-622200
 - dehnbare-yoga-hose-aus-ice-silk-622700
-- weihnachtsstrumpf-mit-samt-optik-639700
+- kristall-samt-kissen-fur-seitenschlafer-623100
 - ruckenstutzkissen-fur-burostuhle-615400
 - wasserdichte-sportuhr-627700
 - schonheits-nacken-pflege-memory-kopfkissen-631300
 - dreiweg-lautsprecher-fur-regale-606100
-- damen-sneaker-375296
 - vierlagiges-gaze-tuch-613200
 - einlegesohlen-schuhe-mit-stickereien-610800
-- bequeme-casual-gerade-leg-cargohose-mit-mehrer-621600
-- outdoor-hosen-fur-herren-weich-und-atmungsakti-655100
+- atmungsaktive-mesh-laufschuhe-fur-jungen-gr-m-844736
+- kinder-sportsschuhe-mit-drehverschluss-056960
+- lauflern-socken-mit-grip-288576
 - herren-geldborse-aus-echtem-leder-634700
 - slim-fit-sport-unterhemd-637500
+- lauflernschuhe-mit-bandern-619100
+- kinder-laufschuhe-outdoor-611800
 - damen-maxikleid-mit-3d-druckarmeln-632800
-- babygeschirr-set-628000
+- sommer-schuhe-fur-madchen-mehrfarbig-634240
 - atmungsaktive-casual-schuhe-198016
-- sommer-trainings-shirt-617100
 - mountainbike-helm-011328
 - franzosischer-stil-rock-mit-ruschen-600100
 - einheitliches-fahrradhelm-304704
 - fitness-hosen-mit-po-lift-effekt-603000
+- weiche-lauflernschuhe-anti-rutschsohle-623400
+- kinder-lauflernschuhe-fur-latein-tanz-601800
+- leichte-sommerschuhe-fur-kinder-051136
 - …
 
-### Restricted adult content (216)
+### Inappropriate image (176)
 
-- tennis-kleid-match-plissee-integrierte-shorts
-- shirt-alphorn
-- maulbeerseiden-gesichtsmaske-fur-damen-609500
-- business-herrenuhr-lederarmband-multifunktion-630800
-- mechanische-herrenuhr-im-skelett-design-604000
-- puffarmel-kleid-mit-schnurung-626900
-- fpv-softbag-lithium-akku-fur-crossing-machine-614600
-- quadratisches-baumwoll-seidentuch-mit-blumenmu-623400
-- ice-silk-gesichtsmaske-mit-uv-schutz-622000
-- korsett-mit-fischgrat-stabchen-und-3-verschlus-603600
-- taillengurtel-aus-baumwolle-628300
-- satin-korsett-mit-funf-knopfen-616000
-- atmungsaktives-korsett-zur-haltungskorrektur-623100
-- gothic-korsett-mit-stickereien-632500
-- revival-gurtel-im-mittelalter-und-wikinger-sti-606200
-- latex-sport-shapewear-weste-fur-definierte-mit-618600
-- nahtlose-hauchdunne-seiden-strumpfhose-605000
-- overknee-strumpfe-in-leder-optik-639401
-- 3er-pack-ultra-soft-sheer-tights-382018
-- 3er-pack-sheer-tights-40d-mit-t-crotch-082753
-- 3-paar-20d-ultra-sheer-strumpfhosen-mit-shapin-235970
-- 6-paar-20d-ultra-sheer-tights-mit-shaping-hosc-791425
-- 6-paar-plus-size-strumpfhosen-fur-damen-556481
-- 3-paar-shiny-strumpfhosen-fur-damen-plus-size-545090
-- 2-paar-20d-ultra-toeless-sheer-tights-539906
-- beinwarmer-mit-stern-und-knochen-elementen-632500
-- japanische-jk-style-strumpfhose-mit-muster-616600
-- baskenmutze-im-leo-look-mit-nieten-und-gurtel-870209
-- retro-zip-up-hoodie-mit-3d-digitalprint-614100
-- loose-fit-t-shirt-mit-cartoon-print-620800
-- mesh-t-shirt-mit-schlangenhaut-design-622100
-- freizeit-hoodie-set-fur-damen-629700
-- sommerliches-tanktop-kleid-mit-u-ausschnitt-876097
-- figurbetonendes-tanktop-mit-u-ausschnitt-628900
-- high-neck-bikini-set-fur-den-strand-259970
-- damen-spitzen-tube-top-mit-offener-ruckenparti-601800
-- figurbetontes-mesh-shirt-mit-kurzen-armeln-616500
-- armelloses-bedrucktes-rollkragen-top-639300
-- ruckenfreies-camisole-mit-spitze-623400
-- spitzentop-mit-tiefem-v-ausschnitt-634100
-- elfenbeinfarbenes-camisole-top-mit-spitze-571457
-- samt-camisole-mit-schnurung-958338
-- strand-kimono-mit-v-ausschnitt-seitenschlitz-012290
-- mesh-cardigan-mit-laternenarmeln-637500
-- milchseide-langarmshirt-mit-eckigem-ausschnitt-623800
-- damen-langarm-bodysuit-mit-herz-print-614400
-- nahtloser-body-mit-bauch-und-po-kontrolle-386434
-- taillenformer-korsett-top-mit-stahlstaben-333890
-- shapewear-bodysuit-mit-bauchkontrolle-534274
-- eleganter-jumpsuit-mit-woll-applikationen-616100
-- tanktop-shorts-set-mit-letter-print-616300
-- einteiliger-casual-overall-mit-prinzessinnenar-621800
-- nahtloser-casual-jumpsuit-mit-thong-boden-639600
-- figurbetontes-tragerloses-spitzenkleid-614500
-- gerippter-bodycon-jumpsuit-mit-spaghettitrager-604100
-- gestreiftes-strick-pyjama-set-mit-shorts-630300
-- high-waist-flared-pants-mit-bauchkontrolle-626100
-- nahtlose-high-waist-yoga-hose-fur-damen-625200
-- high-waist-yoga-pants-im-europaischen-stil-631500
-- legging-tights-621800
-- …
-
-### Adult-oriented content (5)
-
-- schweiz-sticker-alphorn
-- korperschmuck-kette-384896
-- porenreiniger-mit-vakuum-saugfunktion-5236f9
-- plusch-hundegeschirr-mit-leine-744320
-- tpr-aktivspielzeug-fur-hunde-625000
-
-### Inappropriate image (214)
-
-- pod-sticker-ice-hockey
-- rc-fernsteuerung-fur-modellautos-boote-600600
+- herren-ring-vintage-edelstahl-retro
+- pod-sticker-flame-graffiti
+- retro-flammen-tischlampe-led
+- herren-cargo-hose-trail-multi-pocket-outdoor
 - abendkleid-mit-perlen-ruschen-604000
 - punk-motorrad-seiten-taschen-602000
 - gedruckter-baumwoll-leinen-schal-fur-herbst-wi-626100
 - vielseitiger-dreiecksschal-mit-bindebandern-616400
 - ice-silk-gesichtsmaske-mit-uv-schutz-622000
 - uv-schutz-gesichtsmaske-mit-ohrenschlaufen-606900
-- unisex-wind-und-staubschutz-gesichtsmaske-401536
 - vielseitiger-pu-gurtel-mit-dornschliesse-622600
 - lederhandschuhe-mit-fleecefutter-638000
+- lolita-stirnband-mit-hexenhut-und-rosen-636900
 - weihnachts-hoodie-fur-die-ganze-familie-619500
 - leuchtendes-hai-t-shirt-fur-kinder-622300
 - french-chic-color-block-bandeau-top-607000
 - spitzen-neckholder-top-mit-integrierten-pads-632800
 - strick-top-mit-eckigem-ausschnitt-und-volantsa-603500
-- satin-camisole-mit-neckholder-622900
 - figurbetonte-bandeau-spitzencorsage-603100
 - damen-spitzen-tube-top-mit-offener-ruckenparti-601800
-- samt-camisole-mit-schnurung-958338
 - gepolsterte-half-zip-jacke-fur-damen-611400
-- halloween-kapuzenpullover-mit-totenkopf-print-603500
 - nahtloser-body-mit-bauch-und-po-kontrolle-386434
-- shapewear-bodysuit-mit-bauchkontrolle-534274
 - skelett-digital-jumpsuit-fur-damen-639800
-- sportlicher-jumpsuit-mit-v-ausschnitt-und-knop-615900
-- sexy-bikini-jumpsuit-mit-tiefem-v-601500
-- figurbetontes-tragerloses-spitzenkleid-614500
 - gerippter-bodycon-jumpsuit-mit-spaghettitrager-604100
+- overall-playsuit-mit-spaghettitragern-654594
+- a-linien-tennisrock-mit-anti-expositions-unter-618900
 - chic-halter-top-shorts-mit-spitze-630000
-- high-waist-yoga-pants-huftstraffend-schnelltro-607900
 - legging-tights-621800
-- kurze-wattierte-jacke-mit-karomuster-607300
-- nachthemd-aus-polyester-606600
-- nachthemd-602300
 - horror-maske-blutung-totenkopf-285312
 - tyrant-rotten-face-mask-861120
-- horror-maske-fur-halloween-und-fasnacht-821504
 - horror-totenkopf-latex-maske-537728
-- west-moon-hals-pflege-pads-glatte-zarte-halsha-898498
 - handlicher-sturmfeuerzeug-brenner-618300
-- lassiger-hoodie-mit-uberschnittenen-armeln-619800
+- winter-herren-fleece-gefutterte-jacke-mit-kapu-611700
 - silikon-photon-maske-led-620400
 - ultraschall-luftbefeuchter-mit-aromatherapie-327744
-- personalisierbarer-zugfreier-reflektierender-h-4ce320
 - antigravitations-nebel-feuchter-580ml-354048
-- damen-loose-sweatshirt-mit-3d-digitaldruck-634800
-- silikon-futternapf-fur-hunde-605800
-- casual-pullover-mit-print-614300
-- casual-polyester-pullover-609400
-- casual-pullover-mit-print-609800
-- skull-print-hoodie-fur-herren-623600
-- pullover-mit-kapuze-und-print-633000
-- gruner-hoodie-mit-totenkopf-608400
-- infrarot-nachtsichtgerat-1080p-687680
-- stahlflasche-sport-damen-500-ml-631500
 - gepolsterte-mid-calf-winterstiefel-fur-damen-611800
-- vulkan-flammen-aroma-diffusor-luftbefeuchter-860288
 - crystal-jelly-lippenbalsam-spiegelglanz-pflege-824576
 - olgo-gaming-mauspad-verschiedene-grossen-396160
+- jellyfish-luftbefeuchter-mit-nachtlicht-367552
+- interaktiver-futterspender-fur-haustiere-653376
+- rucken-tattoo-sticker-609700
+- retro-kupfer-schadel-anhanger-604400
+- farbenfroher-luftbefeuchter-mit-mikroatomisier-549504
+- overall-mit-langen-armeln-602100
+- taille-rucksack-set-627500
+- weisse-madchen-schuhe-mit-schleife-621600
+- digitalolmalerei-rahmenlose-landschaftsdekorat-037376
+- tarnmuster-stiefel-0ada0b
+- sexy-3d-digital-gedruckte-slim-fit-leggings-634500
+- leopard-jumpsuit-622400
+- einfacher-feldfahrer-helm-96ba85
+- camping-rucksack-camouflage-639200
+- camo-overalls-fur-herren-618700
+- mini-luftbefeuchter-fur-zuhause-592768
+- dualer-usb-luftbefeuchter-fur-zuhause-538560
+- peach-yoga-pants-mit-bauch-und-huftformung-613400
+- leuchte-mit-zoom-5-modi-usb-ladbar-wasserdicht-257152
+- retro-tribal-kurzarm-shirt-herren-636500
+- weiche-leder-cotton-boots-fur-kinder-524992
 - …
 
-### Promotional overlay on image (32)
+### Restricted adult content (176)
+
+- shirt-alphorn
+- king-queen-partner-shirts-couple-t-shirts-👑
+- maulbeerseiden-gesichtsmaske-fur-damen-609500
+- mechanische-herrenuhr-im-skelett-design-604000
+- minikleid-mit-cut-out-und-ruckenausschnitt-633700
+- puffarmel-kleid-mit-schnurung-626900
+- fpv-softbag-lithium-akku-fur-crossing-machine-614600
+- ice-silk-gesichtsmaske-mit-uv-schutz-622000
+- atmungsaktive-ice-silk-gesichtsmaske-618800
+- taillengurtel-aus-baumwolle-628300
+- atmungsaktiver-taillengurtel-mit-fischgrat-sha-624200
+- satin-korsett-mit-funf-knopfen-616000
+- atmungsaktives-korsett-zur-haltungskorrektur-623100
+- revival-gurtel-im-mittelalter-und-wikinger-sti-606200
+- nahtlose-hauchdunne-seiden-strumpfhose-605000
+- overknee-strumpfe-in-leder-optik-639401
+- 3er-pack-ultra-soft-sheer-tights-382018
+- 3er-pack-sheer-tights-40d-mit-t-crotch-082753
+- ethno-strandtuch-mit-vielseitigem-design-631400
+- retro-zip-up-hoodie-mit-3d-digitalprint-614100
+- loose-fit-t-shirt-mit-cartoon-print-620800
+- freizeit-hoodie-set-fur-damen-629700
+- sommerliches-tanktop-kleid-mit-u-ausschnitt-876097
+- high-neck-bikini-set-fur-den-strand-259970
+- damen-spitzen-tube-top-mit-offener-ruckenparti-601800
+- armelloses-bedrucktes-rollkragen-top-639300
+- spitzentop-mit-tiefem-v-ausschnitt-634100
+- glitzerndes-dekollete-kettentop-616700
+- eleganter-jumpsuit-mit-woll-applikationen-616100
+- tanktop-shorts-set-mit-letter-print-616300
+- einteiliger-casual-overall-mit-prinzessinnenar-621800
+- damen-jumpsuit-mit-spitze-und-ruckenausschnitt-608000
+- mesh-jumpsuit-fur-damen-607200
+- color-block-jumpsuit-mit-langen-armeln-602600
+- gerippter-bodycon-jumpsuit-mit-spaghettitrager-604100
+- nahtlose-high-waist-yoga-hose-fur-damen-625200
+- po-lift-leggings-mit-mesh-taschen-470849
+- legging-tights-621800
+- high-waist-leggings-mit-leopardenmuster-626500
+- doppellagiges-mesh-neckholder-top-fur-damen-630800
+- pu-haube-fur-den-ganzen-kopf-637900
+- blueretro-wireless-controller-adapter-fur-ps1-031232
+- jade-gesichtsroller-fur-naturliche-massage-7f9ca2
+- yoga-gurt-fur-stretching-training-03d0d3
+- lace-backless-top-mit-asymmetrischem-ausschnit-274944
+- fitness-gewichthebergurt-71a9c2
+- love-bags-plusch-handtasche-herz-259904
+- creative-bear-claw-shredder-2-stuck-f04ffb
+- mikrostrom-gesichtsmassagegerat-mit-doppelroll-903488
+- elegante-square-toe-thong-sandalen-135042
+- lace-up-jumpsuit-slim-fit-durchsichtiges-spitz-617800
+- sexy-3d-digital-gedruckte-slim-fit-leggings-634500
+- shaping-jumpsuit-mit-bauchkontrolle-618700
+- ruckenfreier-jumpsuit-600400
+- mesh-patchwork-jumpsuit-619500
+- hollow-back-jumpsuit-fur-yoga-und-sport-617500
+- dunne-durchsichtige-leggings-605400
+- retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
+- breiter-ring-aus-titanstahl-615500
+- edler-stahlring-624500
+- …
+
+### Promotional overlay on image (24)
 
 - painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
 - magnetische-lesebrille-zum-umhangen-601100
-- 10-paar-unsichtbare-socken-fur-damen-195841
 - 10-paar-damen-fusslinge-seidig-glatt-257473
-- schimmernder-thermo-gel-nagellack-619200
-- wlan-garagentor-steuerung-mit-app-161024
+- uberwachungskamera-mit-1080p-und-zoom-356544
 - klein-robust-4k-auflosung-626700
-- 3-in-1-wireless-ladestation-fur-mehrere-gerate-9b0c4e
-- tragbare-2-in-1-trinkflasche-fur-hunde-269760
+- faltbare-hd-drohne-mit-hinderniserkennung-692992
+- mini-drohne-mit-dual-kamera-und-fernsteuerung-649344
 - mini-quadcopter-mit-dual-kamera-221888
 - s68-mini-drohne-mit-4k-dual-kamera-220928
-- man-tgs-abschlepp-lkw-mit-bruder-roadster-fga03750
 - handy-mikrofon-167488
-- digitaler-thermostat-fur-fussbodenheizung-992000
-- 9mm-super-slim-lockenstab-fur-ringellockchen-593152
+- faltbarer-hd-quadrocopter-mit-dual-kamera-b9dfb4
+- hautfarbenkorektur-fur-die-stirnlinie-622500
 - happy-mary-kinder-und-lauflernschuhe-99e12e
 - herren-quarz-armbanduhr-mit-kalender-058624
-- megapixel-wifi-aussenkamera-4k-338816
-- leinenhemd-fur-herren-stehkragen-langarm-639300
-- bluetooth-mp3-decoder-fm-radio-modul-170688
-- langanhaltender-lidschatten-pen-12er-set-836480
+- tragbarer-usb-mini-klimaanlagen-ventilator-027968
 - bambusfaser-stretch-businesshemd-fur-herren-656400
 - elektrisches-fussbad-mit-heizfunktion-285312
 - multifunktionale-slr-kameratasche-5505ab
-- intelligenter-sprachubersetzer-468980
 - 18-farben-lidschatten-palette-rose-gold-184960
 - leinen-langarm-hemd-herren-fruhlings-weiss-629000
 - kompakter-bluetooth-subwoofer-mit-mikrofon-ad9885
-- hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
 - vital-smooth-rouge-creme-010560
 
-### Product page unavailable (53)
+### Product page unavailable (51)
 
-- loungewear-pyjama-set-fur-die-ganze-familie-603800
-- leichte-leinen-baumwollhose-mit-geradem-bein-609700
-- personalisierbarer-zugfreier-reflektierender-h-4ce320
+- hiphop-chic-y2k-baumwoll-t-shirt-mit-harajuku-616000
 - slip-on-sandalen-mit-blockabsatz-629700
 - warme-herren-winterjacke-mit-fleece-fellkragen-152256
 - fashion-ripped-shirt-jacket-damen-421120
 - vr-brille-fur-3d-filme-games-612200
-- damen-kurzarm-elegant-kleid-605400
 - figurbetontes-a-linien-maxikleid-mit-v-ausschn-613900
 - vintage-langarm-kleid-mit-stehkragen-626900
 - samt-top-mit-peter-pan-kragen-605100
-- langarmellose-chiffon-dress-627800
 - armelloses-v-neck-top-mit-schleife-637200
 - kapuzen-leinenkleid-mit-langen-armeln-622600
 - muller-stiletto-sandalen-mit-schleife-621900
-- retro-sandalen-mit-riemchen-und-rundspitze-617900
+- high-heel-sandalen-mit-offener-spitze-625600
 - outdoor-schlankheits-sandalen-619800
-- plateau-wedge-pantoletten-mit-kreuzriemen-616400
-- keramik-futternapf-fur-katzen-erhoht-065024
+- martin-boots-fur-herren-mid-top-608100
 - herren-mesh-sneaker-atmungsaktiv-einfarbig-912064
-- cardigan-mit-blumenstickerei-636300
-- strickjacke-mit-reverskragen-fur-herren-608700
+- atmungsaktive-kindersneakers-mit-weicher-sohle-121792
+- ethno-sandalen-mit-klettverschluss-und-dicker-624200
+- bohemian-strass-sandalen-fur-madchen-615400
 - sandalen-mit-hanfseil-und-plateau-sohle-605900
-- trendige-freizeitschuhe-fur-herren-605200
 - sommerliches-camisole-kleid-mit-u-ausschnitt-630700
 - elegantes-armelloses-leinenkleid-611900
 - einfarbiges-armelloses-a-linien-kleid-mit-gurt-626400
-- zweiteiler-halterneck-top-midi-rock-637900
 - kariertes-langarmhemd-aus-baumwolle-fur-herren-618000
 - businesshemd-langarm-bugelfrei-629800
 - tragerloses-chiffon-maxi-kleid-613100
+- madchen-leder-prinzessinnen-schuhe-598400
 - lassige-sportschuhe-mit-speziellem-design-629600
 - boho-kleid-mit-3d-ethno-muster-615900
 - niedliche-casual-low-top-kleinkinderschuhe-380608
 - gefaltetes-patchwork-bandeau-abendkleid-616700
 - retro-frosted-schnallen-sandalen-aus-leder-826688
-- kurzarmhemd-aus-baumwolle-fur-herren-609900
-- kurzarm-t-shirt-aus-baumwolle-fur-herren-614500
-- business-t-shirt-aus-eisseide-624500
-- kurzarm-polohemd-aus-baumwollmischung-605600
-- ultraleichte-mesh-sandalen-mit-weicher-sohle-585280
+- fly-knit-leichte-sportschuhe-fur-kinder-116032
+- lauflernschuhe-prinzessin-aus-leder-533312
 - elegantes-maxikleid-mit-kurzen-armeln-600000
 - polo-shirt-aus-gewaschener-baumwolle-627100
 - seiden-polohemd-mit-revers-fur-herren-601000
 - furry-high-heel-sandalen-mit-spitzer-zehe-828096
 - retro-leinen-baumwoll-cardigan-bestickt-621500
+- warme-lauflernschuhe-fur-herbst-und-winter-c41a16
+- hawaii-kurzarmhemd-fur-herren-vielseitig-trend-628000
 - retro-streifen-fake-zweiteiler-shirt-fur-damen-634700
+- kinder-cartoon-badeschuhe-mit-hohem-schaft-630000
+- vintage-leder-halbschuhe-fur-madchen-337728
+- freistehendes-kurzarmling-und-hose-608300
 - freizeit-plateau-sportschuhe-fur-herren-616100
 - futter-und-trinkbrunnen-fur-haustiere-76d3dd
 - damen-sandalen-mit-riemen-699520
 - herren-strickjacke-mit-revers-612400
 - damen-shirt-mit-schnurung-und-ruschen-608600
 - herren-fitness-shirt-kurzarm-627400
+- freizeitschuhe-fur-kinder-mit-sternenmuster-118592
 
-### Title under review (9)
+### Adult-oriented content (2)
 
-- baseball-low-cut-leder-sneaker-fur-herren-618500
-- anti-aging-augencreme-615300
-- augenmassagegerat-gegen-dunkle-ringe-und-falte-344192
-- saugfahiges-baumwoll-gauze-badetuch-601400
-- kuschelige-coral-fleece-decke-614700
-- 4-lagiger-baumwollbadetuch-612000
-- polster-fur-stuhle-845632
-- chunky-dad-sneakers-mit-mesh-obermaterial-606500
-- resistente-strand-sandalen-622600
+- korperschmuck-kette-384896
+- porenreiniger-mit-vakuumfunktion-1d414d
 
-### Tobacco products & related equipment (2)
+### Image too small (5)
 
-- katzenspielzeug-mit-drehkopf-618400
-- cigarren-etui-aus-pu-leder-8er-8-stuck-473344
-
-### Image too small (3)
-
-- elegantes-one-shoulder-sommerkleid-mit-schlitz-624600
-- extra-langes-sommerkleid-fur-die-ferien-622800
+- winter-laufschuhe-mit-klettverschluss-263680
+- keilsandalen-im-bohemian-stil-mit-blumen-621400
 - kurzes-v-neck-kleid-mit-lochstickerei-625400
+- retro-blumen-sandalen-fur-damen-921536
+- brustgeschirr-und-leine-fur-katzen-645632
 
-### Local Requirements (1)
+### Title under review (3)
 
-- elektrischer-milchshaker-mit-konstanter-temper-619200
+- weiche-leder-cotton-boots-fur-kinder-524992
+- plusch-kotzen-britischer-stil-509888
+- ethno-retro-sandalen-fur-madchen-mit-weichen-s-614600
 
-### Unable to show image (5)
+### Additional text found (1)
 
-- auto-sicherheitsgurt-polster-fur-kinder-607600
-- hexagon-knob-schlussel-mit-ballkopf-5cced1
+- herren-fleece-sport-freizeitschuhe-483776
+
+### Unable to show image (2)
+
 - boho-linen-kleid-mit-asymmetrischem-rock-616600
 - sporthulle-ohne-armel-farbig-636300
-- poloshirt-kurzarmlig-manschettenknopf-polyeste-619300
 
