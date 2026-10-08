@@ -9,6 +9,9 @@
 
 Märkte: KRYPTO_PILOT_MAERKTE (Standard «BTC,ETH», je gleicher Anteil; «BTC» = nur Bitcoin).
 Trend-Schnitt je Coin: Bitcoin 150 Tage, Ethereum 200 Tage (pilot_pruefung.py, Regel vorab festgelegt).
+MVRV-Bremse: kein Short, solange der Kurs unter dem Einstandswert aller Coins liegt (MVRV < 1). Die übrigen freien
+Markt-Infos (Angst & Gier, Funding, VIX, Dollar, Zins, Notenbank, Stablecoins) erscheinen nur als Lagebild — sie
+bestanden den Test in info_pruefung.py nicht und beeinflussen keinen Auftrag.
 Einstellungen: KRYPTO_MAX_HEBEL (1, höchstens 2) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
 broker_futures.py. Einmal pro Woche kommt der Kontostand als Push (Telegram/ntfy). Keine Anlageberatung.
 """
@@ -50,7 +53,21 @@ def abgeschlossen(reihe, jetzt=None):
     return [x for x in reihe if x[0] < heute]
 
 
-def entscheid(markt="BTC", offline=False, env=None, jetzt=None, kurse=None):
+def mvrv_stand(markt, stand, mvrv=None):
+    """MVRV vom Vortag der Entscheidung (wie im Test). Veraltet (> 5 Tage) oder nicht erreichbar → None."""
+    try:
+        import infos as I
+        if mvrv is None:
+            mvrv = I.reihe(f"mvrv_{markt.lower()}")
+        tag, wert = I.stand(mvrv, stand, 1)
+    except Exception:  # noqa: BLE001
+        return None, None
+    if tag is None or (date.fromisoformat(stand) - date.fromisoformat(tag)).days > 5:
+        return tag, None
+    return tag, wert
+
+
+def entscheid(markt="BTC", offline=False, env=None, jetzt=None, kurse=None, mvrv=None):
     env = os.environ if env is None else env
     symbol, yahoo, n = MAERKTE[markt]
     short = (env.get("KRYPTO_SHORT") or "1").strip() != "0"
@@ -64,8 +81,11 @@ def entscheid(markt="BTC", offline=False, env=None, jetzt=None, kurse=None):
     ok, skill, dd = K.detektor(z, p, len(p) - 1)
     schnitt = K.sma(p, n)[-1]
     vol = K.schwankung(p)[-1]
-    return {"markt": markt, "symbol": symbol, "stand": reihe[-1][0], "kurs": round(p[-1], 2), "hebel": round(z[-1], 3),
-            "trend_tage": n, "schnitt": round(schnitt, 2) if schnitt else None,
+    m_tag, m_wert = mvrv_stand(markt, reihe[-1][0], mvrv)
+    ziel = K.mvrv_bremse(z[-1], m_wert)
+    return {"markt": markt, "symbol": symbol, "stand": reihe[-1][0], "kurs": round(p[-1], 2), "hebel": round(ziel, 3),
+            "hebel_roh": round(z[-1], 3), "mvrv": {"tag": m_tag, "wert": round(m_wert, 3) if m_wert is not None else None},
+            "bremse": "MVRV unter 1: kein Short" if ziel != z[-1] else None, "trend_tage": n, "schnitt": round(schnitt, 2) if schnitt else None,
             "schwankung": round(vol, 4) if vol else None, "short_erlaubt": short, "max_hebel": hebel,
             "detektor": {"ok": ok, "skill_2j": skill, "einbruch_1j": round(dd, 4) if dd is not None else None},
             "stop_long": K.stop_kurs(p, 1), "stop_short": K.stop_kurs(p, -1)}
@@ -77,6 +97,12 @@ def text(e):
     lage = "über" if e["schnitt"] and e["kurs"] > e["schnitt"] else "unter"
     zeile = (f"🛩️ {e['markt']} {e['stand']}: {r} {abs(e['hebel']):.2f}× · {fmt_zahl(e['kurs'])} USD · "
              f"{lage} {e['trend_tage']}-Tage-Schnitt · Schwankung {e['schwankung'] * 100:.0f} %/Jahr")
+    if e.get("mvrv", {}).get("wert") is not None:
+        zeile += f" · MVRV {e['mvrv']['wert']:.2f} ({e['mvrv']['tag']})"
+    elif e.get("mvrv"):
+        zeile += " · MVRV fehlt/veraltet (Grundregel ohne Bremse)"
+    if e.get("bremse"):
+        zeile += f"\n   🛑 {e['bremse']} (Trend sagt short {abs(e['hebel_roh']):.2f}×, Pilot bleibt flach)"
     if d["skill_2j"] is not None:
         zeile += f"\n   Lügendetektor: Regel schlug in den letzten 2 Jahren {d['skill_2j'] * 100:.0f} % der Zufallskopien"
         zeile += "" if d["ok"] else " — ⚠️ WARNUNG: Vorteil zurzeit nicht belegt (Pilot handelt trotzdem; Not-Aus: stop.bat)"
@@ -132,19 +158,25 @@ def wochenbericht(lb, heute, erzwingen=False):
 
 
 def backtest():
-    """BTC 150 + ETH 200 (je 50 %) gegen nur Bitcoin und gegen Kaufen-und-Halten — mit Börsen-Stop und Schlupf."""
+    """BTC 150 + ETH 200 (je 50 %) mit und ohne MVRV-Bremse, gegen nur Bitcoin und Halten — mit Börsen-Stop und Schlupf."""
+    import info_pruefung as IP
     import pilot_pruefung as P
     btc, eth = P.ohlc("BTC-USD"), P.ohlc("ETH-USD")
     tage, ((hb, lb_, cb), (he, le, ce)) = P.ausrichten([btc, eth])
     zb150, zb200, ze = K.roh_hebel(cb, n_sma=150), K.roh_hebel(cb, n_sma=200), K.roh_hebel(ce, n_sma=200)
+    zb_m = IP.filter_z(zb150, *IP.bremsen("mvrv_tief", IP.flaggen("btc", tage)))
+    ze_m = IP.filter_z(ze, *IP.bremsen("mvrv_tief", IP.flaggen("eth", tage)))
     print("Krypto-Pilot im Futures-Modell (Gebühr 0,05 %, Funding 0,01 % je 8 h, Stop 4σ mit 0,1 % Schlupf, Liquidation):")
     for start in ("2019-01-01", "2022-01-01"):
         a = next(i for i, t in enumerate(tage) if t >= start)
         wb, _ = P.lauf(zb150, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
         we, _ = P.lauf(ze, he, le, ce, a, len(ce), K.STOP_SIGMA)
+        wbm, _ = P.lauf(zb_m, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
+        wem, _ = P.lauf(ze_m, he, le, ce, a, len(ce), K.STOP_SIGMA)
         alt, _ = P.lauf(zb200, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
         halten, _ = P.lauf([1.0] * len(cb), hb, lb_, cb, a, len(cb))
-        varianten = {"BTC 150 + ETH 200 (neu)": [0.5 * x + 0.5 * y for x, y in zip(wb, we)], "nur BTC 150": wb,
+        varianten = {"+ MVRV-Bremse (live)": [0.5 * x + 0.5 * y for x, y in zip(wbm, wem)],
+                     "BTC 150 + ETH 200": [0.5 * x + 0.5 * y for x, y in zip(wb, we)], "nur BTC 150": wb,
                      "nur BTC 200 (bisher)": alt, "BTC long 1× halten": halten}
         print(f"\n  ab {start} bis {tage[-1]}:")
         for name, w in varianten.items():
@@ -175,6 +207,12 @@ def main():
     ents = [entscheid(m, a.offline) for m in maerkte()]
     for e in ents:
         print(text(e))
+    try:
+        import infos as I
+        lage = "Lagebild (nur Info, handelt nicht danach): " + I.text(I.lagebild())
+    except Exception as ex:  # noqa: BLE001
+        lage = f"Lagebild nicht verfügbar ({type(ex).__name__})"
+    print(lage)
     if a.status:
         return 0
     import broker_futures as BF
@@ -197,7 +235,7 @@ def main():
     LOGBUCH.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     if alle or wechsel_da or bericht:
         import signale as SG
-        SG.push("\n".join(zeilen) + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
+        SG.push("\n".join(zeilen) + f"\n{lage}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
     return 0
 
 

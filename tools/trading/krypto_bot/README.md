@@ -38,6 +38,9 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 - **Stop an der Börse:** 4 Tages-Schwankungen unter bzw. über dem Kurs, auf den Markpreis, nach jedem Lauf neu gesetzt.
 - **Lügendetektor:** misst täglich, ob die Regel in den letzten 2 Jahren besser war als Zufall, und meldet es aufs Handy.
   Er handelt bewusst **nicht**: Als Abschalter getestet, kostete er ab 2022 über 20 Prozentpunkte Rendite pro Jahr.
+- **MVRV-Bremse:** kein Short, solange der Kurs unter dem Einstandswert aller Coins liegt (MVRV < 1, CoinMetrics). Die
+  einzige von 13 freien Markt-Infos, die den Test bestand (siehe «Alle Infos» unten).
+- **Lagebild:** Angst & Gier, Funding, MVRV, VIX und US-Zins stehen bei jedem Lauf dabei — nur zur Information.
 - **Wochenbericht:** einmal pro Woche kommt der Kontostand aufs Handy (seit Start, seit Vorwoche, Abstand zum Höchststand).
   Jederzeit: `pilot.py --bericht`.
 
@@ -45,11 +48,13 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 
 | ab | Variante | pro Jahr | schlimmster Einbruch | Rendite ÷ Einbruch |
 |---|---|---|---|---|
-| 2019 | **BTC 150 + ETH 200 (neu)** | **+28,3 %** | **−41 %** | **0,70** |
+| 2019 | **+ MVRV-Bremse (live)** | **+36,3 %** | **−35 %** | **1,04** |
+| 2019 | BTC 150 + ETH 200 | +28,3 % | −41 % | 0,70 |
 | 2019 | nur BTC 150 | +29,3 % | −48 % | 0,62 |
 | 2019 | nur BTC 200 (bisher) | +14,4 % | −70 % | 0,21 |
 | 2019 | BTC long 1× halten | +34,9 % | −82 % | 0,43 |
-| 2022 | **BTC 150 + ETH 200 (neu)** | **+24,1 %** | **−28 %** | **0,85** |
+| 2022 | **+ MVRV-Bremse (live)** | **+29,3 %** | **−28 %** | **1,03** |
+| 2022 | BTC 150 + ETH 200 | +24,1 % | −28 % | 0,85 |
 | 2022 | nur BTC 150 | +27,7 % | −36 % | 0,76 |
 | 2022 | nur BTC 200 (bisher) | +30,4 % | −44 % | 0,69 |
 | 2022 | BTC long 1× halten | +0,9 % | −73 % | 0,01 |
@@ -63,6 +68,32 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 - **Schwankungsziel 40 % bleibt:** keine Alternative war überall besser.
 - Ehrlich: Die Trendlänge wurde aus 5 Kandidaten gewählt. Diese Auswahl schönt die Zahlen etwas, getrennte Abschnitte
   mildern das nur. In der Hausse 2019–2021 verdiente einfaches Halten mehr, der Pilot gewinnt vor allem in Baissen.
+
+**Alle Infos** (`info_pruefung.py`, Regel vorab festgelegt): 13 freie Markt-Infos als Filter auf die Pilot-Position.
+Übernommen wird eine Info nur, wenn sie in **allen vier Feldern** (Bitcoin und Ethereum × 2018–2021 und 2022–heute) ein
+besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzten Kopien derselben Info schlägt
+(sonst ist der «Vorteil» nur weniger Risiko, das jede beliebige Bremse auch gebracht hätte). Stand 07.10.2026:
+
+| Info (Quelle) | Regel | Felder besser | Zufallsprobe | Urteil |
+|---|---|---|---|---|
+| **MVRV tief** (CoinMetrics) | MVRV < 1 → kein Short | **4 von 4** | **93 %** | **übernommen** |
+| Funding negativ (BitMEX/OKX) | Funding 7 T. < 0 → kein Short | 2 von 4 | 100 % | nein, ab 2022 schlechter |
+| Dollar (FRED) | Dollar über 200-T.-Schnitt → Long halb | 3 von 4 | 98 % | nein |
+| Alle zusammen (Abstimmung) | ≥ 3 Long- bzw. ≥ 2 Short-Bremsen | 2 von 4 | 94 % | nein, ab 2022 schlechter |
+| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 79 % | nein |
+| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 16 % | nein |
+| VIX (FRED) | > 30 → Long halb | 2 von 4 | 89 % | nein |
+| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 2 von 2 (nur BTC) | 69 % | nein |
+| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–2 von 4 | 11–90 % | nein |
+
+- Die MVRV-Bremse ist nicht an die Schwelle 1 gebunden: von 0,8 bis 1,2 war sie jedes Mal in allen 4 Feldern besser.
+  Sie wirkt nur auf Shorts: Unter dem Einstandswert aller Coins ist der Ausverkauf meist schon weit fortgeschritten.
+- **Ehrlich:** 13 Kandidaten getestet. Bei einer 90-%-Schwelle besteht rein zufällig etwa einer die Zufallsprobe —
+  93 % liegt knapp darüber. Darum zusätzlich die Bedingung «alle vier Felder besser». Ein Beweis ist das nicht.
+- Keine Zukunftsdaten: jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz zwei Tage), getestet in
+  `test_infos.py`. Fehlt MVRV oder ist es älter als 5 Tage, handelt der Pilot nach der Grundregel ohne Bremse.
+- Daten: alternative.me, BitMEX + OKX, CoinMetrics Community, FRED, DefiLlama — alle gratis, ohne Konto. Zwischenspeicher
+  in `tools/trading/daten/info_*.json`, täglich nachgeladen. `py tools\trading\krypto_bot\infos.py` zeigt das Lagebild.
 
 **Starten (Testnetz):**
 1. Auf [testnet.binancefuture.com](https://testnet.binancefuture.com) anmelden, API-Schlüssel erzeugen (Spielgeld in USDT).
@@ -210,6 +241,8 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
 python3 tools/trading/krypto_bot/test_pilot.py    # 39 Tests, inkl. nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 34 Tests, inkl. nachgebautem Binance-Server mit Staking
+python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
+python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos
 ```

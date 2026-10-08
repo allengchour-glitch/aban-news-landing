@@ -125,5 +125,6 @@ data/krypto-bot.json
 tools/trading/daten/*_ohlc.json
 tools/trading/daten/*_hlc.json
 tools/trading/daten/ETH-USD.json
+tools/trading/daten/info_*.json
 data/krypto-pilot.json
 data/eth-sammler.json
