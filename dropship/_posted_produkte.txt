@@ -177,3 +177,5 @@ slug:kabelloser-mini-staubsauger-mit-geblase-616100
 name:kabelloserministaubsaugermitgebläse
 slug:overknee-stiefel-mit-stretch-und-klobigem-absa
 slug:kabellose-kaffeemuhle-mit-usb-ladefunktion
+slug:uv-ozon-desinfektionsbox-fur-unterwasche-1987b1
+name:uvozondesinfektionsboxfürunterwäsche

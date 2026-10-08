@@ -6366,3 +6366,6 @@ gid://shopify/Product/15455759860097	zugeordnet	3	Perlengeschmückter offener Ti
 gid://shopify/Product/15455760089473	zugeordnet	35	Chinesischer Cardigan mit Knopfleiste und Sonnenfaktor
 gid://shopify/Product/15455760122241	zugeordnet	30	Cuban-Kette mit Anhänger
 gid://shopify/Product/15455760286081	zugeordnet	21	Herren Winterjacke mit Stehkragen
+gid://shopify/Product/15455760318849	zugeordnet	70	Kürbis-Design Sweatshirts für Herren
+gid://shopify/Product/15455760449921	zugeordnet	10	Anti-Haft-Pfanne für Steak & Co.
+gid://shopify/Product/15455760482689	bild-urls-tot
