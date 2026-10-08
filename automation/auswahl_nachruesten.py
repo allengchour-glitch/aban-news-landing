@@ -79,6 +79,14 @@ STECKER = {"EU", "US", "UK", "AU", "JP", "KR", "CN", "BR", "IN"}
 # 08.10.2026: Optionen mit Bildpflicht — wer «Modell 3» oder «Hase · Blau» wählt, muss es SEHEN.
 BILD_PFLICHT = {"Farbe", "Modell", "Motiv", "Typ", "Muster", "Ausführung", "Variante", "Stil", "Set"}
 KI = os.environ.get("KI", "1") == "1"                       # Reste über auswahl_werte.uebersetze_ki (Ledger, Prüfung)
+# Google je Variante (wie cj_category_fill.mjs seit 14./28.08.): Farbe/Grösse als Varianten-Metafeld, sonst erbt jede
+# Variante die EINE Produktfarbe (farbe_je_variante.py: 80 % falsch). Nur saubere Werte — ein falscher ist schlechter als keiner.
+GROESSE_OK = re.compile(r"^(?:[0-9]?X{0,5}(?:S|M|L)|XXS|XS|[0-9]{1,3}(?:[.,][05])?|[0-9]{2,3}\s?cm|EU\s?[0-9]{2}|"
+                        r"Einheitsgr(?:ö|oe)sse)$", re.I)
+
+
+def farbe_sauber(w):
+    return bool(w) and len(w) <= 40 and not re.search(r"\d|·|Modell|Typ|Set\b", w)
 
 
 def preis(v):
@@ -128,7 +136,8 @@ def plane(zeile):
     p = gql('query($h:String!){productByIdentifier(identifier:{handle:$h}){id handle title status tags variantsCount{count} '
             'options{id name values} '
             'variants(first:2){nodes{id sku price compareAtPrice inventoryPolicy inventoryItem{tracked unitCost{amount} '
-            'measurement{weight{value unit}}}}} media(first:100){nodes{id ... on MediaImage{image{url}}}}}}',
+            'measurement{weight{value unit}}}}} media(first:100){nodes{id ... on MediaImage{image{url}}}} '
+            'farbfeld: metafield(namespace:"mm-google-shopping", key:"color"){id value}}}',
             {"h": zeile["handle"]})["productByIdentifier"]
     if not p or p["status"] != "ACTIVE":
         return None, "nicht mehr aktiv"
@@ -173,12 +182,17 @@ def plane(zeile):
         if preis(v) > cmin_alle * 1.15:
             return None, f"EU-Variante teurer ({preis(v)} vs. {cmin_alle}) — Preis/EK müssten mit → Mensch"
         return {"p": p, "var": var, "optionen": [], "plan": [{"werte": (), "sku": v["variantSku"]}]}, None
-    if len(rows) > 60:
-        return None, f"{len(rows)} CJ-Varianten — kein Auswahlmenü mehr"
+    # 08.10.2026: Grenzen je AUSWAHLLISTE statt je Produkt — 12 Farben × 6 Grössen (72) sind zwei kurze Listen, 60 Farben
+    # in EINER Liste sind keine Wahl mehr.
+    if len(rows) > 250:
+        return None, f"{len(rows)} CJ-Varianten — mehr als 250"
+    for name, ws in op["optionen"]:
+        if len(ws) > (60 if len(op["optionen"]) == 1 else 40):
+            return None, f"Option {name} mit {len(ws)} Werten — keine überschaubare Auswahl"
     raster = 1
     for _, ws in op["optionen"]:
         raster *= len(ws)
-    if raster > 100:
+    if raster > 250:
         return None, f"Raster {raster} Kombinationen — productOptionsCreate legt jede an"
     m = MENGE.search(p["title"])
     if m:
@@ -188,8 +202,14 @@ def plane(zeile):
     cmin = min(preis(v) for v, _ in rows)
     if cmin <= 0:
         return None, "CJ-Preis fehlt"
-    if max(preis(v) for v, _ in rows) > 2 * cmin:
-        return None, f"Preisspreizung > 2× ({cmin}–{max(preis(v) for v, _ in rows)})"
+    # Preisspreizung: echte Staffeln (Kissen 40×40 bis 60×60) steigen in Stufen; ein Datenfehler springt (Sandale 147 → 1'332,
+    # cj_category_fill 21.08.). Bis 4× zulässig, solange kein Preis mehr als 2,5× über dem nächstkleineren liegt.
+    stufen = sorted({preis(v) for v, _ in rows})
+    if stufen[-1] > 4 * cmin:
+        return None, f"Preisspreizung > 4× ({cmin}–{stufen[-1]})"
+    sprung = max((b / a for a, b in zip(stufen, stufen[1:]) if a > 0), default=1)
+    if sprung > 2.5:
+        return None, f"Preissprung {sprung:.1f}× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch"
     medien = {stamm(n["image"]["url"]): n["id"] for n in p["media"]["nodes"] if n.get("image")}
     # Bildpflicht: jede Option, die man SEHEN muss (Farbe, Modell, Motiv …), braucht je Wert ein eigenes Bild.
     for i, (name, ws) in enumerate(op["optionen"]):
@@ -271,7 +291,7 @@ def sperren(pl, grund):
     """Letzte Linie: alle Varianten nicht kaufbar (DENY) + Tag. Lieber kurz ausverkauft als falsche Ware."""
     p = pl["p"]
     try:
-        vs = gql('query($id:ID!){product(id:$id){variants(first:100){nodes{id}}}}', {"id": p["id"]})["product"]["variants"]["nodes"]
+        vs = gql('query($id:ID!){product(id:$id){variants(first:250){nodes{id}}}}', {"id": p["id"]})["product"]["variants"]["nodes"]
         gql('mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}',
             {"p": p["id"], "v": [{"id": v["id"], "inventoryPolicy": "DENY", "inventoryItem": {"tracked": True}} for v in vs]})
         tag(p["id"], "auswahl-halb-pruefen")
@@ -344,7 +364,7 @@ def schreibe(pl):
     except Exception as e:
         r = {"userErrors": [{"message": f"Ausnahme: {str(e)[:120]}", "code": "AUSNAHME"}]}
     # Nicht idempotent + gql wiederholt bei Zeitüberschreitung: WAS am Produkt steht, entscheidet — nicht die Antwort.
-    live = gql('query($id:ID!){product(id:$id){options{name values} variants(first:100){nodes{id selectedOptions{name value}}}}}',
+    live = gql('query($id:ID!){product(id:$id){options{name values} variants(first:250){nodes{id selectedOptions{name value}}}}}',
                {"id": p["id"]})["product"]
     opt_live = {o["name"]: o["values"] for o in live["options"]}
     if not any(n in opt_live for n in namen):
@@ -384,6 +404,15 @@ def schreibe(pl):
                 item["measurement"] = {"weight": {"value": w["value"], "unit": w["unit"]}}
             u = {"id": byval[x["werte"]], "price": x["preis"],
                  "inventoryPolicy": var.get("inventoryPolicy") or "CONTINUE", "inventoryItem": item}
+            mf = []
+            if "Farbe" in namen and len(dict(optionen)["Farbe"]) > 1 and farbe_sauber(x["werte"][namen.index("Farbe")]):
+                mf.append({"namespace": "mm-google-shopping", "key": "color", "type": "single_line_text_field",
+                           "value": x["werte"][namen.index("Farbe")]})
+            if "Grösse" in namen and GROESSE_OK.match(x["werte"][namen.index("Grösse")]):
+                mf.append({"namespace": "mm-google-shopping", "key": "size", "type": "single_line_text_field",
+                           "value": x["werte"][namen.index("Grösse")]})
+            if mf:
+                u["metafields"] = mf
             if x.get("media"):
                 u["mediaId"] = x["media"]
             if x["streich"]:
@@ -393,7 +422,7 @@ def schreibe(pl):
                  {"pid": p["id"], "v": upd})["productVariantsBulkUpdate"]
         if r2["userErrors"]:
             return rueckbau(pl, f"Varianten-Update: {r2['userErrors']}")
-        lv = gql('query($id:ID!){product(id:$id){variants(first:100){nodes{sku price compareAtPrice media(first:1){nodes{id}} '
+        lv = gql('query($id:ID!){product(id:$id){variants(first:250){nodes{sku price compareAtPrice media(first:1){nodes{id}} '
                  'inventoryItem{unitCost{amount} measurement{weight{value}}}}}}}', {"id": p["id"]})["product"]["variants"]["nodes"]
 
         def geld(a):
@@ -408,6 +437,12 @@ def schreibe(pl):
         if w.get("value") and any(not (((v["inventoryItem"] or {}).get("measurement") or {}).get("weight") or {}).get("value") for v in lv):
             return rueckbau(pl, "Varianten ohne Gewicht (Original hat eins) — Versandtarif wäre falsch")
         tag(p["id"], "auswahl-nachgeruestet")
+        # Produktfarbe (z. B. aus dem Titel gesetzt) gilt bei mehreren Farben für keine Variante mehr → weg (erst setzen,
+        # dann löschen: farbe_je_variante-Regel).
+        ff = p.get("farbfeld")
+        if ff and "Farbe" in namen and len(dict(optionen)["Farbe"]) > 1:
+            gql('mutation($m:[MetafieldIdentifierInput!]!){metafieldsDelete(metafields:$m){userErrors{message}}}',
+                {"m": [{"ownerId": p["id"], "namespace": "mm-google-shopping", "key": "color"}]})
     except Exception as e:
         return rueckbau(pl, f"Ausnahme beim Schreiben: {str(e)[:160]}")
     with open(LEDGER, "a") as fh:

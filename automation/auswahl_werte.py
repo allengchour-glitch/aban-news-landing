@@ -498,6 +498,8 @@ def normalisiere_ki(name, werte):
     name = {"Grosse": "Grösse", "Groesse": "Grösse", "Size": "Grösse", "Color": "Farbe"}.get(name, name)
     werte = [re.sub(r"[\u2010\u2011\u2012\u2013\u2014\u2015](?=\S)", "-", str(w)).strip() for w in werte]
     werte = [re.sub(r"(\d)-(\d)", r"\1–\2", w) for w in werte]          # Zahlenbereich mit Halbgeviertstrich
+    werte = [w.replace("ß", "ss") for w in werte]                          # Schweizer Schreibweise
+    werte = [re.sub(r"\s*·\s*", " · ", w) for w in werte]                   # «Hase·Lila» → «Hase · Lila»
     return name, werte
 
 
@@ -541,6 +543,7 @@ GLEICH_DE = {"khaki", "beige", "orange", "pink", "gold", "mini", "set", "oval", 
              "panda", "koala", "dinosaur", "tiger", "zebra", "lama", "alpaka", "flamingo", "einhorn", "unicorn", "elefant",
              "rose", "lotus", "jasmin", "vanille", "kaktus", "kakadu", "pinguin", "delfin", "hamster", "film", "led", "usb",
              "hd", "rgb", "ring", "bluetooth", "wifi", "smart", "mix", "neon", "metall", "nylon", "polyester", "silikon",
+             "upgrade", "highlight", "pedal", "laser", "turbo", "mini", "power", "display", "touch", "spray", "gel",
              "velvet", "denim", "jeans", "leder", "holz", "bambus", "edelstahl", "kristall", "glitter", "satin", "rattan",
              "monster", "robot", "roboter", "astronaut", "safari", "comic", "emoji", "boho", "vintage", "retro"}
 
@@ -552,7 +555,8 @@ FAMILIE = {"black": ("schwarz", "anthrazit"), "white": ("weiss", "creme", "elfen
            "orange": ("orange",), "khaki": ("khaki",), "navy": ("marine", "blau")}
 
 
-KI_VERSION = 2          # 08.10.2026 19:55: v1 liess «Bean paste → Bohnenpaste» und «90to140 → 90×140» durch → Zweitprüfer
+KI_VERSION = 3          # 08.10.2026 19:55: v1 liess «Bean paste → Bohnenpaste» und «90to140 → 90×140» durch → Zweitprüfer;
+                        # v3 (20:15): ß → ss und «·»-Abstände normalisiert statt abgelehnt, «Upgrade»/«Pedal» sind deutsch
 
 
 def _ki_ledger_lesen():
