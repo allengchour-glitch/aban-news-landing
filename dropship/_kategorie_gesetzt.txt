@@ -48667,3 +48667,15 @@ hexagon-scharfer-universell-4bef5f	ha-15	Werkzeug & Heimwerken	2026-10-08T19:05Z
 telescopischer-seilspannmechanismus-860231	ha-15	Werkzeug & Heimwerken	2026-10-08T19:05Z
 keramische-blumenvase-fur-den-schreibtisch-088731	ha-15	Werkzeug & Heimwerken	2026-10-08T19:05Z
 jade-rollerset-fur-gesicht-15e51f	ha-15	Werkzeug & Heimwerken	2026-10-08T19:05Z
+stahlmesh-wasserfeste-armbanduhr-mit-zeiger-3e7ecb	aa-6-11	Uhren	2026-10-08T20:09Z
+quarz-uhr-mit-glitzerperlen-7aab7a	aa-6-11	Uhren	2026-10-08T20:09Z
+bambus-holz-uhr-mit-quarzbewegung-5c1248	aa-6-11	Uhren	2026-10-08T20:09Z
+stahlarmband-fur-armbanduhr-4-mm-dick-209540	aa-6-11	Uhren	2026-10-08T20:09Z
+holzarmbanduhr-mit-bambusbewegung-424a3d	aa-6-11	Uhren	2026-10-08T20:09Z
+holz-uhr-manner-r12-r13-43-7-mm-a006e2	aa-6-11	Uhren	2026-10-08T20:09Z
+mannliche-holz-uhr-mit-quarzwerk-665010	aa-6-11	Uhren	2026-10-08T20:09Z
+mechanische-armbanduhr-mit-stahlband-7a5522	aa-6-11	Uhren	2026-10-08T20:09Z
+armbanduhr-mit-kalenderanzeige-ab9b73	aa-6-11	Uhren	2026-10-08T20:09Z
+quarzarmbanduhr-mit-chronograph-4eea5b	aa-6-11	Uhren	2026-10-08T20:09Z
+quarz-uhr-mit-pu-armband-3-9-cm-8753ca	aa-6-11	Uhren	2026-10-08T20:09Z
+modegurtel-quarz-uhr-a4eee7	aa-6-11	Uhren	2026-10-08T20:09Z
