@@ -44,6 +44,17 @@
 
 
 
+## 2026-10-08 00:50 UTC · 🧠 Verbesserungsrunde: Wächter für grobe Neuimporte — gelernt aus Urteilen, Rest an die KI-Stufe
+- GEMESSEN: 483 Neuimporte seit 01.10. auf Google-Oberklassen (~70/Tag). Die KI-Stufe vom 02.10. war ein Einmal-Lauf über einen
+  festen Export — eine Bereinigung ohne Wächter füllt sich wieder (gestern 12'583 von Hand geprüft).
+- `oberklasse_lernen.py`: Regeln aus 16'351 geprüften Urteilen, Gegenprobe 80/20 (Pflicht ≥ 95 %). **Lehre zur Merkmalswahl:**
+  alle Titelwörter 92,1 % (Füllwörter «Set», «handgemacht» entschieden), nur Nomen 93,0 %, **Kopfwort vor «mit/für/aus» 97,4 %**
+  («Leckschale mit Ball» ist eine Leckschale, kein Ballspielzeug). Abdeckung auf Neuimporten aber nur 6/442 — langer Schwanz.
+- Rest → `google_fein_ki.py` per Export (Zwei-Modell-Einigkeit). **Falle:** `gpt-oss-20b` leer; 120b/qwen funktionieren, sind aber
+  laut `zweitmodell.py` für Bestellungen + SEO reserviert → Massenlauf bleibt auf 20b, pausiert und macht morgen weiter.
+- Tag 8: 106 Produktvideos im CJ-Fenster (Ziel 50) — der Vorrang-Fix vom 07.10. wirkt.
+→ `dropship/OBERKLASSE-NEUIMPORT-2026-10-08.md`
+
 ## 2026-10-07 23:30 UTC · 🗂️ «alles perfekt, alles andere auch»: Messfehler, Uhren, Nummern, 16'000 Einzelurteile
 - **Messfehler im eigenen Zähler:** `kategorie_fein` zählte «Shopify feiner als Googles Zuordnung» als Widerspruch (Drohnen,
   Diffuser) → Klasse `shopify-feiner`. Ein Zähler, der Absicht als Fehler meldet, lädt dazu ein, Absicht «zu reparieren».
@@ -18462,6 +18473,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-06 · 🏷️ **Verbesserungsrunde: Search Console «shippingDetails/hasMerchantReturnPolicy fehlt» — Offer ohne beide Felder → Shop-weite Regel im Header-Organization (`google_org_richtlinien.py`: 30 T Rückgabe, CHF 7 / gratis ab 45), live gültig, Wächter gegen Versandtarif.** Globale Regel statt je Offer → `dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md`
+- 2026-10-06 · 🚚 **«verbessere»: Kleider-Seiten 563 Sitzungen → 6 Checkout → 0 Kauf, 5/7 Abbruch-Körbe < CHF 45 sahen CHF 7 erst im Checkout; Drawer-Snippet ohne Versandwort → `warenkorb_gratisversand.py` (live, Testkorb 10.10 / «inklusive»), Wächter täglich.** Hinweis dorthin, wo der Kunde ist → `dropship/WARENKORB-GRATISVERSAND-2026-10-06.md`
 - 2026-10-06 · 🔤 **Verbesserungsrunde: Adult-Bildtausch 153 offen, «fehler 5 · tausch 0» — Rückfall «Gemini allein» prüfte `"Kontingent" in str(e)`, Meldung heisst «Tages**k**ontingent», seit Leer-Marke ohne 429 → `zweitmodell.ist_kontingent_leer(e)` (Typ zuerst), SCHARF tausch-g 3/fehler 0, Gehirn-Regel `kontingent-wortlaut` fand seo_autopilot.** Leer-Erkennung nach Typ → `dropship/BILDTAUSCH-KONTINGENT-WORTLAUT-2026-10-06.md`
 - 2026-10-06 · ⏰ **CJ-Punkte-Reset gemessen 00:00 UTC (20/37 Wechsel), Vorrang-Fenster stand seit 15.08. auf 16:00 → Topf dann leer, Video-Nachfüller 0 Videos → `cj_vorrang_fenster.sh` (00:00–01:30, Stunde aus `_CJ_PUNKTE_RESET_UTC`) + Wache `cj_reset_wache.py`.** Fenster an gemessener Grenze → `dropship/CJ-VORRANG-FENSTER-2026-10-06.md`
 - 2026-10-06 · 🧁 **Verbesserungsrunde: 65/315 Neuimporte unter Google «Tools», darunter Backformen/Haarschneider/Nagelset → 4 Kreuz-Regeln in `google_kategorie_umzug.py`; «Silikonform» traf Kerzen-/Epoxidformen → Ausschluss, Kanarien 39/39, 21 umgezogen.** Trockenlauf mit allen Treffern (`ZEIGEN=n`) → `dropship/GOOGLE-KATEGORIE-WERKZEUG-2026-10-06.md`

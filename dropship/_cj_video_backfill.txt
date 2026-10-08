@@ -717,3 +717,26 @@ gid://shopify/Product/15500972065153	ok	Automatischer Futterspender (5L)
 gid://shopify/Product/15501023084929	ok	Automatischer Lockenstab mit Temperaturregelung
 gid://shopify/Product/15501656752513	ok	Intelligente Hundeball
 gid://shopify/Product/15501657964929	ok	Automatisches Springball für Katzen
+gid://shopify/Product/15501679264129	ok	Fliegendes Feder Spielzeug
+gid://shopify/Product/15501679853953	ok	Sitzmüller-Spielzeug
+gid://shopify/Product/15501683884417	ok	Hundebrett aus Silikon
+gid://shopify/Product/15501684277633	ok	Hundebrett
+gid://shopify/Product/15501846741377	ok	Schwarzer Überwachungskamera
+gid://shopify/Product/15501899563393	ok	Hüftstütze
+gid://shopify/Product/15501899727233	ok	Magnetischer Uhrenhalter
+gid://shopify/Product/15501918503297	ok	Hundewasserflasche
+gid://shopify/Product/15502250049921	ok	Kabellose elektrische WC-Reinigungsbürste
+gid://shopify/Product/15502483980673	ok	Multifunktions-Doppelmaulschlüssel 8-22mm
+gid://shopify/Product/15502528807297	ok	Universal Blush Trio
+gid://shopify/Product/15502530380161	ok	Farbwechsel-Blusher für strahlende Wangen
+gid://shopify/Product/15502661779841	ok	Faltbarer Outdoor-Doppelnapf für Hunde
+gid://shopify/Product/15503117746561	ok	Luftbefeuchter mit Aroma-Diffusor & Schüttelfunktion
+gid://shopify/Product/15503118008705	ok	Automatischer USB Luftbefeuchter Magic Shadow
+gid://shopify/Product/15503131378049	ok	Interaktives Katzenspielzeug mit Ball und Versteck
+gid://shopify/Product/15503133049217	ok	Silikon Anti-Schling Napf & Leckmatte
+gid://shopify/Product/15503133180289	ok	Schwimmender Edelstahl-Wassernapf für Haustiere
+gid://shopify/Product/15503164375425	ok	Bauchroller mit Automatik-Rebound & Yoga-Matte
+gid://shopify/Product/15503234892161	ok	Multifunktionaler Lockenstab & Glättbürste
+gid://shopify/Product/15503235940737	ok	Kabelloser Glätt- und Lockenkamm
+gid://shopify/Product/15503236366721	ok	Kabelloser Glättkamm mit Schnellaufheizung
+gid://shopify/Product/15503237742977	ok	Elektrischer Weinspender mit Belüfter

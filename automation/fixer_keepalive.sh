@@ -1089,6 +1089,22 @@ while true; do
           EXPORT=/tmp/google_fein_ki_export.jsonl SCHARF=1 TEIL=$GK/2 GROQ_MODELL=openai/gpt-oss-20b GROQ_AUSWEICH= exec python3 automation/google_fein_ki.py" >> "/tmp/google_fein_ki_$GK.log" 2>&1 & )
     done
   fi
+  # OBERKLASSE-NEUIMPORT (08.10.2026, Verbesserungsrunde): ~70 Neuimporte/Tag landen bei Google auf einer Oberklasse (CJ-Gruppe
+  # stempelt nur den Korb; gemessen 483 seit 01.10.). Die KI-Stufe oben lief nur EINMAL über einen festen Export (02.10.).
+  # Täglich: (1) oberklasse_lernen.py — Regeln gelernt aus 16'351 geprüften Urteilen vom 07.10. (Gegenprobe 80/20 ≥ 95 % Pflicht,
+  # sonst schreibt es nichts); (2) der Rest ohne Regel → google_fein_ki.py (Zwei-Modell-Einigkeit, nur innerhalb der Oberklasse).
+  # KI-Stufe mit dem MASSEN-Modell gpt-oss-20b ohne Ausweichen (zweitmodell.py: 120b/qwen bleiben für Bestellungen + SEO);
+  # Kontingent leer → Lauf endet, Ledger hält den Stand, nächster Tag macht weiter.
+  OKL=/tmp/oberklasse_lernen.log
+  if [ -f "$REPO/automation/oberklasse_lernen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$OKL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$OKL"; then
+      touch "$OKL"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_oberklasse_lernen.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          SCHARF=1 TAGE=14 KI_EXPORT=/tmp/oberklasse_ki.jsonl timeout 1800 python3 automation/oberklasse_lernen.py 2>&1 | grep -E '^(OBERKLASSE|GEGENPROBE|  KI-Export|Präzision)'; \
+          EXPORT=/tmp/oberklasse_ki.jsonl SCHARF=1 GROQ_MODELL=openai/gpt-oss-20b GROQ_AUSWEICH= timeout 3600 python3 automation/google_fein_ki.py 2>&1 | grep -E '^(geprüft|FERTIG|PAUSE)'" >> "$OKL" 2>&1 9>&- & )
+    fi
+  fi
   # SEO-AUTOPILOT (02.10.2026, Betreiber «mach besser als soro»): täglich EIN Ratgeber aus echter CH-Suchnachfrage
   # (Google-Vorschläge gl=ch), nur Themen mit ≥ 6 kaufbaren Produkten, Faktenprüfung durch Zweitmodell, FAQ-JSON-LD;
   # danach Wirkungsmessung (dropship/SEO-AUTOPILOT.md) und 15 bestehende Artikel aufwerten (passende Produkte + FAQ/JSON-LD,
