@@ -6071,3 +6071,9 @@ vordersitz-abdeckung-058690	2044320428119748610	0	-	KEINE CH-Option → DRAFT	la
 vordersitzabdeckung-023425	2041685261608710145	0	-	KEINE CH-Option → DRAFT	landeseite
 ruckenstutze-auto-615900	2603050304401616400	16	37.67	ok	landeseite
 ruecklehnenhaenger-635500	2602210204071635800	16	20.42	ok	landeseite
+hochsteller-612700	2601261024261613300	16	11.37	ok	landeseite
+auto-nackenstuetze-625000	2512021057111625300	16	8.53	ok	landeseite
+sonnenschutz-fur-fahrerseite-403586	1990607288522678274	0	-	KEINE CH-Option → DRAFT	landeseite
+universeller-lenkradbezug-aus-faserleder-14-5-160898	1990615094537658369	0	-	KEINE CH-Option → DRAFT	landeseite
+heizbare-auto-sitzauflage-12v-mit-2-stufen-reg-516353	1990663832880402433	0	-	KEINE CH-Option → DRAFT	landeseite
+armlehnen-schutzbezug-410049	1990620001857101825	0	-	KEINE CH-Option → DRAFT	landeseite
