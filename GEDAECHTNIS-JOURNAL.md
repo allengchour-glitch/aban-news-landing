@@ -308,6 +308,7 @@ UNVERSIONIERTE neue Datei (fremdtext.py) war weg. Nach Neustart erst den Keepali
 Eigenbestellung des Betreibers (LED-Laterne «Boho», BigBuy bb-S3414715, 25.06.), Ausführung am 12.09. vom Betreiber storniert,
 nie versendet, bezahlt CHF 31.90 über Shopify Payments, 0 erstattet. refundCreate (notify:false, Notiz) → Refund
 gid://shopify/Refund/1248265306503, Transaktion REFUND 31.90 PENDING (Shopify Payments bucht nach). Zählt nicht als Kunde.
+**NACHTRAG 08.10. 09:35:** Betreiber bestätigt «31.90 fr twint bekommen». Gemessen: Shopify-Payments-Buchung REFUND −31.90 am 08.10. 09:23 (Event «autopilot2 refunded CHF31.90 to TWINT»), Guthaben jetzt −31.90 → wird von der Auszahlung am 09.10. abgezogen. Erledigt.
 
 ## 2026-10-07 08:45 UTC · 🪣 Verbesserungsrunde: 8 Werkzeuge lasen fremde Bulk-Exporte, 2 brachen sie sogar ab
 GEMESSEN: Gehirn-Regel `fremder-bulk` (04:50 angelegt) meldete 5; die Schreibweise `currentBulkOperation(type: QUERY)` war ihr
