@@ -4,19 +4,21 @@ Gescannt: 51470 aktive Produkte in 206 Seiten (vollständig), 1895 s. Meldungen 
 
 ## Free-Listings-Blocker: 823
 
-| Klasse | Produkte | davon ohne onlineStoreUrl |
-|---|---:|---:|
-| Image under review | 283 | 0 |
-| Restricted adult content | 216 | 0 |
-| Inappropriate image | 214 | 0 |
-| Product page unavailable | 53 | 0 |
-| Promotional overlay on image | 32 | 0 |
-| Title under review | 9 | 0 |
-| Adult-oriented content | 5 | 0 |
-| Unable to show image | 5 | 0 |
-| Image too small | 3 | 0 |
-| Tobacco products & related equipment | 2 | 0 |
-| Local Requirements | 1 | 0 |
+| Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
+|---|---:|---:|---:|
+| Image under review | 283 | 0 | – |
+| Restricted adult content | 216 | 0 | – |
+| Inappropriate image | 214 | 0 | – |
+| Product page unavailable | 53 | 0 | – |
+| Promotional overlay on image | 32 | 0 | – |
+| Title under review | 9 | 0 | – |
+| Adult-oriented content | 5 | 0 | – |
+| Unable to show image | 5 | 0 | – |
+| Image too small | 3 | 0 | – |
+| Tobacco products & related equipment | 2 | 0 | – |
+| Local Requirements | 1 | 0 | – |
+
+Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
 ## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
 

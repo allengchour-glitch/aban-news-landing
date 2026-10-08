@@ -23,6 +23,7 @@ def main():
     blockiert = set()
     for k in KLASSEN:
         blockiert |= set(stand["handles"].get(k) or [])
+        blockiert |= set((stand.get("handles_personalisiert") or {}).get(k) or [])   # 08.10.: dort seit der Umbuchung
     letzte = bs.letzte_zeilen()
     alle = bs.alle_zeilen()
     # «nachgesetzt» (Rücklese) ist kein neuer Tausch: Art und Datum kommen von der letzten ECHTEN Tausch-Zeile des Handles.
