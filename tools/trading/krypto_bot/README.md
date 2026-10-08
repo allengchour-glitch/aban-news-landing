@@ -175,6 +175,15 @@ Konto, BTC/ETH mit Richtung, Trend, Stop, MVRV und Bremse, Claudes Einschätzung
 ETH-Sammler. Dazu ein **Not-Aus-Knopf**: Er schliesst die Pilot-Positionen sofort (nur verkleinern) und stoppt alle Bots.
 Das Cockpit liest nur die Logbücher auf deinem PC, lauscht nur auf 127.0.0.1 und lehnt Anfragen fremder Webseiten ab.
 
+**🎛️ Steuerung im Cockpit** — Knöpfe wie in den Bot-Videos, mit Terminal-Fenster für die Ausgabe:
+**Auto-Handel AN/AUS** (aus = die Bots handeln nicht, offene Positionen bleiben mit ihrem Börsen-Stop stehen) ·
+**▶ Probelauf** (zeigt, was der Pilot tun würde) · **⚡ Jetzt handeln** · **🤖 Claude fragen** · **🪙 Sparplan** ·
+**📨 Bericht aufs Handy** · **🔄 Markt-Infos** · **📊 Backtest** · **🧪 Selbsttest** · und rot **🛑 Not-Aus** (schliesst
+sofort alle Pilot-Positionen und stoppt alles). Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
+im Hintergrund, mit Rückfrage vor Handel und Kosten. «Jetzt handeln» geht nicht, solange Auto-Handel aus ist (der Lauf
+würde sonst die Positionen schliessen). Echtes Geld bleibt doppelt gesperrt wie überall. Nur feste Aktionen, kein
+beliebiger Befehl, nur von diesem PC aus (127.0.0.1) und nicht von fremden Webseiten.
+
 **📈 Live-Markt** (Knopf oben im Cockpit, `http://127.0.0.1:8765/markt`) — die Börsen-Ansicht wie bei Binance:
 Live-Kerzen (1 Minute bis 1 Woche) mit Volumen, MA 7/25/99 und Bollinger-Bändern, RSI und MACD darunter (gekoppelt
 beim Zoomen), Orderbuch mit Tiefenbalken, Markttiefe-Grafik, letzte Trades und 16 Top-Coins mit 7-Tage-Mini-Chart,
@@ -312,7 +321,7 @@ python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mech
 python3 tools/trading/krypto_bot/test_pilot.py    # 39 Tests, inkl. nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 34 Tests, inkl. nachgebautem Binance-Server mit Staking
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
-python3 tools/trading/krypto_bot/test_cockpit.py  # 35 Tests: Claude-Antwort, Schattenkonto, Cockpit, Live-Markt, Not-Aus, Telegram
+python3 tools/trading/krypto_bot/test_cockpit.py  # 49 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Live-Markt, Not-Aus, Telegram
 python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos

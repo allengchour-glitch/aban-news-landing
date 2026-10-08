@@ -38,6 +38,11 @@
   point-in-time, Lücken > 5 T. = neuer Coin): G1 Top-3-Momentum **×0,02 seit 2018** (−67,6 %/J ab 2022), G2/G3 mit Filter
   0,72/1,27, Top 20 gleich ×0,12, BTC halten ×9,02, BTC Trend 150 ×8,28 (−28 % Einbruch ab 2022). Zufallsprobe 44–72 %.
   Tests `test_gewinner.py` 12 (Mutation 3/3). Daten-Cache `tools/trading/daten/binance_1d/` gitignored.
+- **Cockpit-Knöpfe „wie bei YouTube" (2026-10-08):** Auto-Handel-Schalter (= STOP-Datei ohne Schliessen), Probelauf, Jetzt
+  handeln (gesperrt bei STOP, sonst würde der Lauf schliessen), Claude, Sparplan, Bericht, Markt-Infos, Backtest, Selbsttest +
+  Terminal. `POST /api/aktion` nur Whitelist `AKTIONEN`, Start als Prozess (`sys.executable`, `PYTHONIOENCODING=utf-8`) **im
+  Hintergrund-Thread → 202**, Browser pollt `/api/protokoll` (Erstlauf lädt alle Markt-Infos > 2 min, das hält kein Request).
+  Tests 49 (Mutation 3/3).
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

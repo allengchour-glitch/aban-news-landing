@@ -170,6 +170,83 @@ with tempfile.TemporaryDirectory() as tmp:
         code, j = post({"X-Cockpit": "1"}, an=False)
         pruefe("Not-Aus aufheben", code == 200 and not j["notaus"] and not C.STOP.exists())
         C.notaus_an = alt_an
+
+        # ── Knöpfe ──
+        gestartet = []
+
+        def starter(args, zeit):
+            gestartet.append(args)
+            return True, f"lief: {' '.join(args)}\n9 bestanden, 0 fehlgeschlagen"
+
+        e = C.aktion("probe", starter)
+        pruefe("Knopf Probelauf startet pilot.py --lauf --trocken", gestartet[-1] == ["pilot.py", "--lauf", "--trocken"] and e["ok"]
+               and C.PROTOKOLL[0]["aktion"] == "probe", gestartet)
+        import broker_futures as BFm
+        alt_bf, geschlossen = BFm.ausfuehren, []
+        BFm.ausfuehren = lambda *a, **k: geschlossen.append(k) or []
+        e = C.aktion("auto_aus", starter)
+        BFm.ausfuehren = alt_bf
+        pruefe("Auto aus: STOP gesetzt, nichts geschlossen, kein Skript", C.STOP.exists() and "Auto-Handel aus" in e["text"]
+               and len(gestartet) == 1 and geschlossen == [], (e["text"], geschlossen))
+        e = C.aktion("handeln", starter)
+        pruefe("Jetzt handeln bei Auto aus: verweigert (würde sonst schliessen)", not e["ok"] and len(gestartet) == 1)
+        e = C.aktion("auto_an", starter)
+        pruefe("Auto an: STOP weg", not C.STOP.exists() and "Auto-Handel an" in e["text"])
+        C.aktion("handeln", starter)
+        pruefe("Jetzt handeln startet pilot.py --lauf", gestartet[-1] == ["pilot.py", "--lauf"])
+        e = C.aktion("selbsttest", starter)
+        pruefe("Selbsttest: alle Testdateien, letzte Zeile je Datei", [g[0] for g in gestartet[-4:]] == C.SELBSTTESTS
+               and e["text"].count("9 bestanden") == 4)
+        C._LAUFEND["ki"] = 0
+        e = C.aktion("ki", starter)
+        pruefe("Doppelklick: läuft schon → besetzt, kein zweiter Start", e.get("besetzt") and gestartet[-1][0] != "ki_trader.py")
+        C._LAUFEND.pop("ki")
+
+        def http_aktion(kopf, name):
+            req = urllib.request.Request(basis + "/api/aktion", data=json.dumps({"aktion": name}).encode(), method="POST", headers=kopf)
+            try:
+                with urllib.request.urlopen(req, timeout=10) as r:
+                    return r.status, json.load(r)
+            except urllib.error.HTTPError as ex:
+                return ex.code, None
+
+        pruefe("Aktion ohne Cockpit-Kopf: verboten", http_aktion({}, "probe")[0] == 403)
+        pruefe("Unbekannte Aktion (z. B. Befehl einschleusen): abgelehnt", http_aktion({"X-Cockpit": "1"}, "rm -rf /")[0] == 400)
+        alt_skript = C._skript
+        langsam = threading.Event()
+
+        def langsamer_starter(args, zeit):
+            langsam.wait(5)
+            return starter(args, zeit)
+
+        C._skript = langsamer_starter
+        code, j = http_aktion({"X-Cockpit": "1", "Origin": basis}, "backtest")
+        pruefe("Aktion über HTTP: startet im Hintergrund (202)", code == 202 and j["gestartet"] == "backtest", (code, j))
+        with urllib.request.urlopen(basis + "/api/protokoll") as r:
+            pr = json.load(r)
+        pruefe("Protokoll zeigt «läuft» mit Titel", [x["aktion"] for x in pr["laufend"]] == ["backtest"] and pr["laufend"][0]["titel"] == "Backtest rechnen", pr["laufend"])
+        pruefe("Doppelklick über HTTP: 409", http_aktion({"X-Cockpit": "1"}, "backtest")[0] == 409)
+        langsam.set()
+        import time as _time
+        for _ in range(50):
+            with urllib.request.urlopen(basis + "/api/protokoll") as r:
+                pr = json.load(r)
+            if not pr["laufend"]:
+                break
+            _time.sleep(0.1)
+        C._skript = alt_skript
+        pruefe("danach: Ergebnis im Protokoll, neueste zuerst", pr["protokoll"][0]["aktion"] == "backtest" and pr["protokoll"][0]["ok"]
+               and "pilot.py --backtest" in pr["protokoll"][0]["text"] and pr["laufend"] == [], pr["protokoll"][:1])
+        # echter Prozessstart: UTF-8-Ausgabe (Windows-Konsole), Rückgabecode
+        with tempfile.TemporaryDirectory() as td:
+            (Path(td) / "hallo.py").write_text("print('Hallo ✓ 🛩️')\nraise SystemExit(3)\n", encoding="utf-8")
+            alt_hier = C.HIER
+            C.HIER = Path(td)
+            try:
+                ok, out = C._skript(["hallo.py"], 30)
+            finally:
+                C.HIER = alt_hier
+        pruefe("Skript als Prozess: Ausgabe in UTF-8, Fehlercode erkannt", not ok and "Hallo ✓ 🛩️" in out, out)
         srv.shutdown()
 
         # echter Not-Aus-Ablauf mit nachgebautem Broker: schliesst je Markt, Gewicht 1/2
