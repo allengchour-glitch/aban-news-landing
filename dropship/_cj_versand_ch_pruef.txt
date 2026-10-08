@@ -5395,3 +5395,7 @@ rundes-pumps-mit-blockabsatz-533825	2072151393784197122	16	11.23	ok	landeseite
 stiletto-sandalen-mit-plattform-605100	2606300944361605700	16	11.37	ok	landeseite
 damen-low-cut-pumps-mit-zufallsdrucken-und-blo-612700	2606300938401613400	16	11.49	ok	landeseite
 mary-jane-mit-weicher-sohle-und-blockabsatz-621700	2606300555361622400	16	11.12	ok	landeseite
+mid-heel-pumps-mit-grip-603500	2606300549461604200	16	11.12	ok	landeseite
+vintage-sandalen-mit-blockabsatz-629700	2606300538301620400	16	11.37	ok	landeseite
+damen-schuhe-taschen-set-mit-rhinestone-buckle-637500	2606300132551638100	16	19.99	ok	landeseite
+mittelhoch-ruckenriemen-pumps-fur-den-alltag-608100	2606280723461608800	16	13.76	ok	landeseite
