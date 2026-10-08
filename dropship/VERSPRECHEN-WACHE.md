@@ -1,6 +1,6 @@
-# Versprechen ohne Beleg — Stand 2026-10-08 20:30 UTC
+# Versprechen ohne Beleg — Stand 2026-10-08 20:36 UTC
 
-Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie). Geprüft: 51720 aktive · zu ändern: 119 (descriptionHtml 11, seo 107, title 1) · Fehler: 0
+Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie). Geprüft: 51720 aktive · geändert: 118 (descriptionHtml 11, seo 107) · Fehler: 0
 
 ## Beispiele
 
