@@ -1502,6 +1502,13 @@ if [ -f "$REPO/automation/kollektion_mengen_wache.py" ] && [ ! -f /tmp/kollektio
   touch /tmp/kollektion_mengen_$(date -u +%F).stamp
   ( cd "$REPO" && SCHARF=1 setsid timeout 1500 bash automation/shopify_schranke.sh python3 automation/kollektion_mengen_wache.py >> /tmp/kollektion_mengen.log 2>&1 & )   # Hintergrund: Aufseher wartet nicht
 fi
+# --- «Winter & Kälte» per Tag (08.10.2026, dropship/SEO-TAG10-2026-10-08.md) — täglich, auch Neuimporte:
+#     Titel-ODER-Regel zog Boxhandschuhe, Lockenstab «mit Keramikheizung», beheizbare Wimpernzangen … (27/497) → Tag aus
+#     data/winter_kaelte.json (ja minus nein, Kanarien 26/26), Kollektion = Tag-Regel. Hintergrund, Aufseher wartet nicht.
+if [ -f "$REPO/automation/winter_kaelte_tags.py" ] && [ ! -f /tmp/winter_kaelte_$(date -u +%F).stamp ]; then
+  touch /tmp/winter_kaelte_$(date -u +%F).stamp
+  ( cd "$REPO" && SCHARF=1 setsid timeout 2400 bash automation/shopify_schranke.sh python3 automation/winter_kaelte_tags.py >> /tmp/winter_kaelte.log 2>&1 & )
+fi
 # --- Versand-Hinweis im Warenkorb-Drawer (06.10.2026, dropship/WARENKORB-GRATISVERSAND-2026-10-06.md) — täglich prüfen:
 #     Hinweis noch im Live-Snippet (Theme-Updates überschreiben Snippets), Tarif CH 7.00 / gratis ab ≤ 45 passt zum Text.
 #     Fehlt nur der Hinweis → einmal neu einfügen (idempotent, Anker-geprüft, Sicherung in /tmp); Tarif-Abweichung nur melden.

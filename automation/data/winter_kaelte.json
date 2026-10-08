@@ -1,0 +1,111 @@
+{
+ "_quelle": "08.10.2026 winter_kaelte_tags.py — JA = alte Kollektionsregel (Titel enthält …, Teilwort wie Shopify CONTAINS); NEIN = gemessene Fremdware (25 von 497 aktiven)",
+ "ja": "heizung|heizdecke|handschuhe|handwärmer|beheizbar|winter",
+ "nein": "lockenstab|glätt|wimpern|haarstyl|warmwasser|lunchbox|tastenkappe|thermostat|uv-schutz|uv schutz|sonnenschutz|fitness|krafttrain|boxhandschuh|ofenhandschuh|spülhandschuh|einweghandschuh|reithandschuh|gartenhandschuh|arbeitshandschuh|grillhandschuh|backhandschuh|nitril|kühlend|keramikheizung|fussbodenheizung|sofortheizung|schnellheizung|schnellaufheizung|ptc-heizung",
+ "kanarien": [
+  [
+   "Warme Touchscreen-Handschuhe mit Fleecefutter",
+   true
+  ],
+  [
+   "Beheizbare Weste Powerbank",
+   true
+  ],
+  [
+   "OUHOE Einweg-Handwärmer",
+   true
+  ],
+  [
+   "Beheizbare Sturmhaube für Motorradfahrer",
+   true
+  ],
+  [
+   "Winterjacke für Hunde",
+   true
+  ],
+  [
+   "Thermo Outdoor Winterstiefel Mid Cut",
+   true
+  ],
+  [
+   "Büro-Heizdecke mit Bauchstütze",
+   true
+  ],
+  [
+   "Mini Raumluft-Heizer mit Keramik-Heizung",
+   true
+  ],
+  [
+   "USB Beheizbare Halbfinger-Handschuhe",
+   true
+  ],
+  [
+   "Wärmende Hundekleidung für Herbst und Winter",
+   true
+  ],
+  [
+   "Kabelloser Lockenstab mit Keramikheizung",
+   false
+  ],
+  [
+   "USB-Beheizbare Wimpernzange",
+   false
+  ],
+  [
+   "Boxhandschuhe für Training und Kampfsport",
+   false
+  ],
+  [
+   "Ofenhandschuhe Baumwolle Silikon",
+   false
+  ],
+  [
+   "UV-Schutz Handschuhe, dünn & lang",
+   false
+  ],
+  [
+   "Elektrischer Warmwasserhahn mit Sofortheizung",
+   false
+  ],
+  [
+   "Digitaler Thermostat für Fussbodenheizung",
+   false
+  ],
+  [
+   "5-in-1 Lunchbox mit Schnellheizung für Zuhause und Auto",
+   false
+  ],
+  [
+   "Halbfinger-Fitnesshandschuhe für Krafttraining",
+   false
+  ],
+  [
+   "Kühlendes Hundegeschirr für Sommer und Winter",
+   false
+  ],
+  [
+   "Beheizbare Tastenkappe für mechanische Tastatur",
+   false
+  ],
+  [
+   "Silikon-Spülhandschuhe mit Bürstenfunktion",
+   false
+  ],
+  [
+   "Einweghandschuhe einzeln verpackt",
+   false
+  ],
+  [
+   "Eisseide-Sonnenschutzhandschuhe Touchscreen UV-Schutz",
+   false
+  ],
+  [
+   "Anion Haarglättungsbürste mit PTC-Heizung",
+   false
+  ],
+  [
+   "Kuscheldecke Rot-Schwarz Kariert",
+   false
+  ]
+ ]
+}
