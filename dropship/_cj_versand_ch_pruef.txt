@@ -5941,3 +5941,4 @@ intelligenter-auto-duftverteiler-632200	2606231133301632900	3	7.93	ok	landeseite
 natur-agarholz-anhanger-080962	2039690333410578434	16	8.53	ok	landeseite
 premium-sojawachskerze-mit-rotwein-leder-espre-287874	2038148367961477122	0	-	KEINE CH-Option → DRAFT	landeseite
 zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+luftfrischer-fur-auto-ventile-618626	2014167660300447746	16	5.08	ok	landeseite
