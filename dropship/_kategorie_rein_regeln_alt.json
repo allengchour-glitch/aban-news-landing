@@ -393,5 +393,15 @@
     "condition": "Projektionslampe"
    }
   ]
+ },
+ "buero-schreibwaren@2026-10-08": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "buero"
+   }
+  ]
  }
 }
