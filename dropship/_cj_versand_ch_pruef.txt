@@ -5626,3 +5626,10 @@ retro-sneakers-herren-45-46-621600	2508170223271621800	16	11.12	ok	landeseite
 weisse-platform-schuhe-fur-herren-610100	2508050845281610300	16	11.37	ok	landeseite
 sneaker-mit-unsichtbarer-absatz-erhohung-610600	2508040216311611200	16	20.12	ok	landeseite
 outdoor-schuhe-fur-freizeit-und-sport-608600	2601240231091609000	16	10.42	ok	landeseite
+wasserdichte-winterstiefel-fur-herren-605600	2512210523371605800	16	13.46	ok	landeseite
+herren-wanderschuhe-aus-leder-632300	2511291146531632500	16	12.83	ok	landeseite
+warmende-winterstiefel-fur-herren-602600	2511210846351602800	16	18.83	ok	landeseite
+leichte-atmungsaktive-wading-schuhe-615600	2504280302171615800	16	8.39	ok	landeseite
+outdoor-laufschuhe-mit-grip-608200	2412120333271608400	16	14.60	ok	landeseite
+outdoor-wanderschuhe-600100	2411120120291600300	16	12.44	ok	landeseite
+wasserdichte-schneestiefel-611900	2409220651591612100	16	11.72	ok	landeseite
