@@ -6100,3 +6100,4 @@ retro-roman-sandalen-mit-quasten-627800	2605040636261628300	16	12.56	ok	landesei
 hohe-chunky-boots-mit-nieten-und-schnallen-620900	2605020614441621400	16	18.72	ok	landeseite
 chunky-boots-aus-wildleder-mit-blockabsatz-614600	2604300346551615200	16	13.88	ok	landeseite
 mid-calf-chunky-boots-mit-schnalle-621000	2604270209271621700	16	15.56	ok	landeseite
+denim-stiefel-mit-hohem-absatz-627600	2604250705281628100	16	20.58	ok	landeseite
