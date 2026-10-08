@@ -1,11 +1,10 @@
 {
  "host": "ubuntu-4gb-nbg1-1",
- "stunde": "2026-10-08T12:00Z",
- "stand": "2026-10-08T12:06:39Z",
+ "stunde": "2026-10-08T13:00Z",
+ "stand": "2026-10-08T13:00:36Z",
  "fenster_min": 60,
- "summe": 3,
+ "summe": 1,
  "skripte": {
-  "cj_order_engine.py": 2,
-  "cj": 1
+  "cj_order_engine.py": 1
  }
 }
