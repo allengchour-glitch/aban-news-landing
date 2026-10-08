@@ -44,6 +44,34 @@
 
 
 
+## 2026-10-08 19:45 UTC · 🎨 «rot oder pink auswahl … ja fix das alles sehr sauber ganze katalog»: echte Auswahl statt Versprechen
+
+**Anlass:** Adventskalender-Geschenkbox — Text «in Rot oder Pink», im Shop EINE Variante. Gemessen: **5'511 aktive
+Produkte** mit einer Variante versprechen im Text eine Wahl; von 604 bei CJ gemessenen führen **~87 % wirklich mehrere
+Varianten**. Die Kundin kann nicht wählen, der Bestell-Automat bekommt `CJ-<pid>` und legt auf «manuell prüfen».
+
+**Gebaut:** `automation/auswahl_werte.py` (45 Kanarien): CJ-variantKey → bis zu drei deutsche Optionen (Stecker-Teil →
+nur EU, Bindestrich-Dimensionen, Hauslexika für Farben, Masse/Mengen mit Einheit, Codes → «Modell N»), Rest per
+Sprachmodell mit harter Prüfung **und Zweitprüfer** (qwen, andere Modellfamilie). `auswahl_nachruesten.py`: Raster
+anlegen, fehlende Kombinationen löschen, Google-Farbe/-Grösse je Variante, Grenzen je Liste, Preisstufen, MANUELL-/
+Fehler-Ledger, Zeitbudget. Wegwerf-Entwurf 2× getestet (Raster, Löschen, Rücklesen, Rückbau), dann **46 Produkte
+scharf, 0 Fehler**, live per WebFetch bestätigt. Aufseher: stündlich messen → 150 umbauen; Notbremse-Datei.
+
+**Lehren:**
+1. **Formal gültig ≠ richtig.** Die harte Prüfung (Zahlen, Farben, Restwörter) liess «Bean paste → Bohnenpaste»
+   (gemeint Altrosa) und «90to140 → 90×140» durch. Erst ein Zweitprüfer aus einer anderen Modellfamilie fing beides.
+   KI-Werte, die Kundinnen sehen, brauchen ZWEI Urteile — oder gar keine KI.
+2. **`None` ist keine Zahl.** `wahlversprechen.py` zählte `cj: null` (CJ nicht erreicht) als «≤ 1 Variante» und hätte
+   den Text gestrichen, obwohl CJ zehn Farben führt. Ein Messfehler darf nie wie ein Messwert wirken.
+3. **`timeout` um einen Schreiber ist gefährlich.** SIGTERM zwischen productOptionsCreate und dem Varianten-Update
+   hinterlässt ein halbes Produkt ohne Rückbau. Zeitbudget im Programm (kein neues Produkt nach ZEIT_S), `timeout`
+   nur als ferne Notbremse.
+4. **Zwei Prozesse, eine Cache-Datei** = jeder löscht die Einträge des anderen. Vor dem Schreiben einmischen, atomar ersetzen.
+5. **Ein MANUELL-Fall ohne Gedächtnis blockiert den Lauf**: stündlich dieselben 1'000 Fälle neu planen (oder denselben
+   Schreibfehler als erstes) — bekannte Fälle mit Datum merken, vorübergehende Gründe (CJ/KI weg) NICHT merken.
+
+→ `dropship/AUSWAHL-NACHRUESTEN-2026-10-08.md`
+
 ## 2026-10-08 18:40 UTC · 💅 «weiter»: Press-on-Sets heissen jetzt Press-on-Nägel — nur mit Beleg in der Beschreibung
 
 **GEMESSEN:** 96 Press-on-Sets (Kategorie seit 17:20 richtig), Titel «Nagelsticker …» oder ohne Nagel-Nomen («Sterntaler-Maniküre»).
@@ -18660,6 +18688,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-07 · 🧰 **Verbesserungsrunde: CJ-Gruppe «Werkzeug» stempelt alles als Hardware > Tools (110/490 Neuimporte in 4 h, 1'188 aktive, nur 566 mit Werkzeugwort: Kalimba, Regenschirm, Kerzenhalter, Auto-Diagnose) → `google_kategorie_umzug.py` Werkzeugwort-Schutz + 15 Kreuzregeln, Kanarien 65/65, 70 umgezogen/0 Fehler; Shop-Seite (Typ, Shopify-Kategorie, Tags) per `werkzeug_korb_shop.py` 80/0 nachgezogen, Aufseher direkt danach; an der Quelle: eine Regeldatei `data/werkzeug_korb.json` für Importer + Wächter, Gleichlauf 1'253 Titel 0 Abweichungen.** Ein Feld korrigiert = Geschwisterfelder prüfen; Sammelgruppe ≠ Warenurteil → `dropship/GOOGLE-WERKZEUG-SAMMELKORB-2026-10-07.md`
+- 2026-10-07 · 🖼️ **«das bild ist verzogen?»: IG-Karussell-Slide = Lieferanten-Infografik, von CJ auf 800×800 gestaucht (unser grund() hält das Verhältnis) → `automation/fremdtext.py` (OCR Grau + Schwellwert, ≥4 Wörter = raus) in Karussell, Einzelbild-Nachschub, Story, Bild-Reel; 15/48 fertige Sets `fremdtext-skip`. Nach Neustart erst Keepalive abwarten (Reset löschte die neue Datei).** Verzerrung zuerst am Quellbild messen → Journal 07.10. 10:30
 - 2026-10-06 · 🏷️ **Verbesserungsrunde: Search Console «shippingDetails/hasMerchantReturnPolicy fehlt» — Offer ohne beide Felder → Shop-weite Regel im Header-Organization (`google_org_richtlinien.py`: 30 T Rückgabe, CHF 7 / gratis ab 45), live gültig, Wächter gegen Versandtarif.** Globale Regel statt je Offer → `dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md`
 - 2026-10-06 · 🚚 **«verbessere»: Kleider-Seiten 563 Sitzungen → 6 Checkout → 0 Kauf, 5/7 Abbruch-Körbe < CHF 45 sahen CHF 7 erst im Checkout; Drawer-Snippet ohne Versandwort → `warenkorb_gratisversand.py` (live, Testkorb 10.10 / «inklusive»), Wächter täglich.** Hinweis dorthin, wo der Kunde ist → `dropship/WARENKORB-GRATISVERSAND-2026-10-06.md`
 - 2026-10-06 · 🔤 **Verbesserungsrunde: Adult-Bildtausch 153 offen, «fehler 5 · tausch 0» — Rückfall «Gemini allein» prüfte `"Kontingent" in str(e)`, Meldung heisst «Tages**k**ontingent», seit Leer-Marke ohne 429 → `zweitmodell.ist_kontingent_leer(e)` (Typ zuerst), SCHARF tausch-g 3/fehler 0, Gehirn-Regel `kontingent-wortlaut` fand seo_autopilot.** Leer-Erkennung nach Typ → `dropship/BILDTAUSCH-KONTINGENT-WORTLAUT-2026-10-06.md`
