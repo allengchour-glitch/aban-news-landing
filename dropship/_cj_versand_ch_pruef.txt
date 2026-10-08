@@ -5644,3 +5644,9 @@ sicherer-arbeitsschuh-mit-stahlkappe-695168	1778734550533804032	16	14.72	ok	land
 sicherheitschuhe-mit-stahlkappe-044416	1778699283529736192	16	15.68	ok	landeseite
 stahlkappe-arbeitsschuhe-026048	1778694171440717824	16	17.89	ok	landeseite
 stahlkappe-kampfstiefel-105152	1778688705541185536	16	14.12	ok	landeseite
+wasserdichte-wanderschuhe-fur-herren-531776	1768099491271417856	16	20.58	ok	landeseite
+taktische-wustenstiefel-848384	1765222804808540160	16	24.67	ok	landeseite
+leichte-bergschuhe-fur-herren-839040	1755823247746142208	16	17.66	ok	landeseite
+herren-combat-boots-890880	1750766383903805440	16	16.16	ok	landeseite
+leichte-sommerschuhe-fur-herren-868288	1744547454890029056	16	14.12	ok	landeseite
+atmungsaktive-outdoor-schuhe-578816	1743202703758602240	16	8.79	ok	landeseite

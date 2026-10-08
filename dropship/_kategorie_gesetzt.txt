@@ -48588,3 +48588,11 @@ warmpullover-fur-haustiere-12ae44	ap-2	Haustierbedarf	2026-10-08T08:44Z
 strick-hundepullover-regenbogen-d11c08	ap-2	Haustierbedarf	2026-10-08T08:44Z
 strickpullover-fur-kleinen-und-mittleren-h-50d96d	ap-2	Haustierbedarf	2026-10-08T08:44Z
 weihnachtlicher-haustierpullover-5345f4	ap-2	Haustierbedarf	2026-10-08T08:44Z
+post-it-set-mit-papier-tasche-605300	lb	Büro & Home Office	2026-10-08T11:04Z
+solarbambus-rechner-fur-buro-627100	os	Büro & Home Office	2026-10-08T11:04Z
+golf-adventskalender-24-stuck-620300	hg-3-58-1	Büro & Home Office	2026-10-08T11:04Z
+stoffhalter-15-fach-aufbewahrung-601700	hg-10-16	Büro & Home Office	2026-10-08T11:04Z
+kabelloses-bluetooth-keyboard-mit-mute-funktio-604300	el	Büro & Home Office	2026-10-08T11:04Z
+bluetooth-maus-mit-5-gang-dpi-und-silikon-hand-605100	el	Büro & Home Office	2026-10-08T11:04Z
+inorganischer-tischtennis-kleber-50-ml-620800	sg	Büro & Home Office	2026-10-08T11:04Z
+externer-35-mm-diskettenlaufwerk-usb-604200	el	Büro & Home Office	2026-10-08T11:04Z
