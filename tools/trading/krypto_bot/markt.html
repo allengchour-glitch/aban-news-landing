@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live-Markt</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f4f4f2; --panel:#fcfcfb; --line:#e3e2de; --grid:#ebeae6;
+  --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#7a7974;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#e87ba4;
+  --good:#0ca30c; --critical:#d03b3b; --good-bg:rgba(12,163,12,.14); --critical-bg:rgba(208,59,59,.14);
+  --r-s:8px; --r-c:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#111110; --panel:#1a1a19; --line:#2c2c2a; --grid:#262624;
+    --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#8d8c84;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#d55181;
+    --good-bg:rgba(12,163,12,.22); --critical-bg:rgba(208,59,59,.22);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111110; --panel:#1a1a19; --line:#2c2c2a; --grid:#262624;
+  --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#8d8c84;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#d55181;
+  --good-bg:rgba(12,163,12,.22); --critical-bg:rgba(208,59,59,.22);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.kopf{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;padding:10px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
+.kopf .sym{font-size:20px;font-weight:800}
+.kopf .preis{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.stat{display:flex;flex-direction:column;font-size:12px;color:var(--ink-3)}
+.stat b{color:var(--ink);font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.auf{color:var(--good)}.ab{color:var(--critical)}
+.pill{border-radius:999px;padding:3px 10px;font-size:12px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
+.punkt{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ink-3);margin-right:6px}
+.punkt.an{background:var(--good)}
+.zurueck{margin-left:auto;text-decoration:none;font-weight:600}
+.flaeche{display:grid;gap:8px;padding:8px;grid-template-columns:270px minmax(0,1fr) 290px;grid-template-areas:"maerkte chart buch" "maerkte chart trades" "tiefe tiefe trades"}
+@media (max-width:1180px){.flaeche{grid-template-columns:minmax(0,1fr) 290px;grid-template-areas:"chart buch" "chart trades" "maerkte tiefe"}}
+@media (max-width:760px){.flaeche{grid-template-columns:minmax(0,1fr);grid-template-areas:"chart" "maerkte" "buch" "tiefe" "trades"}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-c);padding:10px;min-width:0}
+h2{font-size:12px;margin:0 0 8px;color:var(--ink-2);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-s);overflow:hidden;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:13px;border:0;padding:5px 10px;background:transparent;color:var(--ink-2);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--grid);color:var(--ink);font-weight:700}
+button:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+.leiste{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.legende{font-size:12px;color:var(--ink-3);min-height:18px;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;gap:4px 12px}
+.legende i{display:inline-block;width:10px;height:2px;vertical-align:middle;margin-right:4px}
+#haupt{height:430px}#rsi{height:110px}#macd{height:130px}
+@media (max-width:760px){#haupt{height:330px}#rsi{height:90px}#macd{height:110px}}
+.unterchart{border-top:1px solid var(--line);margin-top:4px;padding-top:2px;position:relative}
+.unterchart .titel{position:absolute;left:6px;top:4px;z-index:2;font-size:11px;color:var(--ink-3);pointer-events:none}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:12.5px}
+td,th{padding:3px 4px;white-space:nowrap}
+th{color:var(--ink-3);font-weight:600;text-align:left;font-size:11.5px}
+.r{text-align:right}
+.buchzeile{position:relative}
+.buchzeile td{position:relative;z-index:1}
+.balken{position:absolute;right:0;top:1px;bottom:1px;z-index:0;border-radius:2px}
+.mitte{font-size:17px;font-weight:800;padding:6px 4px;font-variant-numeric:tabular-nums}
+.markt{cursor:pointer}
+.markt:hover td{background:var(--grid)}
+.markt[aria-current="true"] td{background:var(--grid);font-weight:700}
+.funke{display:block}
+#tiefe svg,#maerkte svg{display:block;width:100%;height:auto}
+.klein{font-size:11.5px;color:var(--ink-3)}
+.scroll{max-height:560px;overflow:auto}
+</style>
+</head>
+<body>
+<div class="kopf">
+  <span class="sym" id="k-sym">BTC/USDT</span>
+  <span class="preis" id="k-preis">—</span>
+  <div class="stat"><span>24h Veränderung</span><b id="k-ver">—</b></div>
+  <div class="stat"><span>24h Hoch</span><b id="k-hoch">—</b></div>
+  <div class="stat"><span>24h Tief</span><b id="k-tief">—</b></div>
+  <div class="stat"><span>24h Volumen (USDT)</span><b id="k-vol">—</b></div>
+  <span class="pill"><span class="punkt" id="k-punkt"></span><span id="k-status">verbinde …</span></span>
+  <a class="zurueck pill" href="/">← Cockpit</a>
+</div>
+
+<div class="flaeche">
+  <section class="box" style="grid-area:maerkte" aria-label="Märkte">
+    <h2>Märkte</h2>
+    <div class="tabs" id="m-sort" style="margin-bottom:6px"><button type="button" data-w="cap" aria-pressed="true">Top</button><button type="button" data-w="auf" aria-pressed="false">▲ Gewinner 24h</button><button type="button" data-w="ab" aria-pressed="false">▼ Verlierer 24h</button></div>
+    <div class="scroll"><table id="maerkte"><thead><tr><th>Coin</th><th class="r">Preis</th><th class="r">24h</th><th>7 Tage</th></tr></thead><tbody></tbody></table></div>
+    <p class="klein">Mini-Chart: 7 Tage, Stundenschluss. Klick wechselt den Chart.</p>
+  </section>
+
+  <section class="box" style="grid-area:chart" aria-label="Chart">
+    <div class="leiste">
+      <div class="tabs" id="iv"><button type="button" data-w="1m" aria-pressed="false">1m</button><button type="button" data-w="5m" aria-pressed="false">5m</button><button type="button" data-w="15m" aria-pressed="false">15m</button><button type="button" data-w="1h" aria-pressed="true">1h</button><button type="button" data-w="4h" aria-pressed="false">4h</button><button type="button" data-w="1d" aria-pressed="false">1T</button><button type="button" data-w="1w" aria-pressed="false">1W</button></div>
+      <div class="tabs" id="ind"><button type="button" data-w="ma" aria-pressed="true">MA</button><button type="button" data-w="boll" aria-pressed="false">BOLL</button><button type="button" data-w="bot" aria-pressed="true">Bot</button></div>
+    </div>
+    <div class="legende" id="leg-haupt"></div>
+    <div id="haupt"></div>
+    <div class="unterchart"><span class="titel" id="leg-rsi">RSI (14)</span><div id="rsi"></div></div>
+    <div class="unterchart"><span class="titel" id="leg-macd">MACD (12, 26, 9)</span><div id="macd"></div></div>
+    <p class="klein">Hohle Kerze = gestiegen, volle Kerze = gefallen. «Bot»: Trend-Schnitt und Stop des Piloten, Pfeile = seine Aufträge. Indikatoren sind Anzeigen, keine Signale — getestet hat nur der Pilot.</p>
+  </section>
+
+  <section class="box" style="grid-area:buch" aria-label="Orderbuch">
+    <h2>Orderbuch</h2>
+    <table><thead><tr><th>Preis</th><th class="r">Menge</th><th class="r">Summe</th></tr></thead><tbody id="asks"></tbody></table>
+    <div class="mitte" id="mitte">—</div>
+    <table><tbody id="bids"></tbody></table>
+    <p class="klein" id="spread"></p>
+  </section>
+
+  <section class="box" style="grid-area:trades" aria-label="Letzte Trades">
+    <h2>Letzte Trades</h2>
+    <div class="scroll" style="max-height:470px"><table><thead><tr><th>Preis</th><th class="r">Menge</th><th class="r">Zeit</th></tr></thead><tbody id="trades"></tbody></table></div>
+  </section>
+
+  <section class="box" style="grid-area:tiefe" aria-label="Markttiefe">
+    <h2>Markttiefe</h2>
+    <div id="tiefe"></div>
+    <p class="klein">Kumulierte Kauf- (links) und Verkaufsaufträge (rechts) um den aktuellen Preis, alle 5 Sekunden.</p>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"
+  integrity="sha384-stKllnUqA9AD0gsKCuUtf5XlqAW7PwIgDagoNsTWkjkBmJ/GZ/uHTgEBxdLV2VSK" crossorigin="anonymous"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const REST = ["https://data-api.binance.vision", "https://api.binance.com"];
+const WSS = ["wss://data-stream.binance.vision/stream", "wss://stream.binance.com:9443/stream"];
+const COINS = ["BTC", "ETH", "BNB", "SOL", "XRP", "DOGE", "ADA", "TRX", "AVAX", "LINK", "TON", "DOT", "SUI", "LTC", "BCH", "NEAR"];
+const SEK = {"1m": 60, "5m": 300, "15m": 900, "1h": 3600, "4h": 14400, "1d": 86400, "1w": 604800};
+const st = {sym: "BTCUSDT", iv: "1h", ind: {ma: true, boll: false, bot: true}, bars: [], vol: [], nr: 0, ws: null, quelle: 0,
+  ticker: {}, funken: {}, sort: "cap", bot: null, linien: [], stellen: 2, trades: [], buch: null, hover: null};
+
+const stellen = p => p >= 1000 ? 2 : p >= 10 ? 3 : p >= 1 ? 4 : p >= 0.01 ? 5 : 7;
+const zahl = (x, s) => x == null || isNaN(x) ? "—" : (+x).toLocaleString("de-CH", {minimumFractionDigits: s, maximumFractionDigits: s});
+const preis = x => zahl(x, st.stellen);
+const pct = x => x == null || isNaN(x) ? "—" : (x >= 0 ? "▲ +" : "▼ ") + zahl(x, 2) + " %";
+const kurz = x => x >= 1e9 ? zahl(x / 1e9, 2) + " Mrd." : x >= 1e6 ? zahl(x / 1e6, 2) + " Mio." : zahl(x, 0);
+const lokal = ms => ms / 1000 - (SEK[st.iv] >= 86400 ? 0 : new Date(ms).getTimezoneOffset() * 60);
+
+async function rest(pfad) {
+  for (let i = 0; i < REST.length; i++) {
+    const q = REST[(st.quelle + i) % REST.length];
+    try { const r = await fetch(q + pfad, {cache: "no-store"}); if (r.ok) { st.quelle = (st.quelle + i) % REST.length; return await r.json(); } } catch (e) { /* nächste */ }
+  }
+  throw new Error("keine Kursquelle erreichbar");
+}
+function status(an, t) { $("k-punkt").className = "punkt" + (an ? " an" : ""); $("k-status").textContent = t; }
+
+// ───────── Indikatoren ─────────
+function sma(w, n) { const o = []; let s = 0; w.forEach((x, i) => { s += x; if (i >= n) s -= w[i - n]; o.push(i >= n - 1 ? s / n : null); }); return o; }
+function ema(w, n) { const o = [], k = 2 / (n + 1); let e = null; w.forEach((x, i) => { e = e == null ? x : x * k + e * (1 - k); o.push(i >= n - 1 ? e : null); }); return o; }
+function boll(w, n = 20, f = 2) {
+  const m = sma(w, n);
+  return w.map((_, i) => { if (m[i] == null) return null; let v = 0; for (let j = i - n + 1; j <= i; j++) v += (w[j] - m[i]) ** 2; const sd = Math.sqrt(v / n); return [m[i] + f * sd, m[i], m[i] - f * sd]; });
+}
+function rsi(w, n = 14) {
+  const o = [null]; let g = 0, l = 0;
+  for (let i = 1; i < w.length; i++) {
+    const d = w[i] - w[i - 1], up = Math.max(d, 0), dn = Math.max(-d, 0);
+    if (i <= n) { g += up / n; l += dn / n; o.push(i === n ? (l === 0 ? 100 : 100 - 100 / (1 + g / l)) : null); continue; }
+    g = (g * (n - 1) + up) / n; l = (l * (n - 1) + dn) / n;
+    o.push(l === 0 ? 100 : 100 - 100 / (1 + g / l));
+  }
+  return o;
+}
+function macd(w) {
+  const a = ema(w, 12), b = ema(w, 26), m = w.map((_, i) => a[i] != null && b[i] != null ? a[i] - b[i] : null);
+  const start = m.findIndex(x => x != null), sig = Array(w.length).fill(null);
+  if (start >= 0) ema(m.slice(start), 9).forEach((x, j) => sig[start + j] = x);
+  return m.map((x, i) => [x, sig[i], x != null && sig[i] != null ? x - sig[i] : null]);
+}
+
+// ───────── Charts ─────────
+const C = {};
+function chartBasis(el, zeitachse) {
+  return LightweightCharts.createChart(el, {autoSize: true, crosshair: {mode: 0}, localization: {locale: "de-CH", priceFormatter: p => zahl(p, st.stellen)},
+    rightPriceScale: {minimumWidth: 78}, timeScale: {visible: zeitachse, timeVisible: true, secondsVisible: false, rightOffset: 4},
+    handleScale: {axisPressedMouseMove: {time: true, price: true}}});
+}
+function farben() {
+  const basis = {layout: {background: {type: "solid", color: css("--panel")}, textColor: css("--ink-2"), fontSize: 11},
+    grid: {vertLines: {color: css("--grid")}, horzLines: {color: css("--grid")}},
+    rightPriceScale: {borderColor: css("--line")}, timeScale: {borderColor: css("--line")}};
+  [C.haupt, C.rsi, C.macd].forEach(c => c.applyOptions(basis));
+  C.kerzen.applyOptions({upColor: "rgba(0,0,0,0)", borderUpColor: css("--good"), wickUpColor: css("--good"),
+    downColor: css("--critical"), borderDownColor: css("--critical"), wickDownColor: css("--critical")});
+  C.ma7.applyOptions({color: css("--s4")}); C.ma25.applyOptions({color: css("--s2")}); C.ma99.applyOptions({color: css("--s1")});
+  [C.bo, C.bm, C.bu].forEach(s => s.applyOptions({color: css("--s3")}));
+  C.trend.applyOptions({color: css("--s2")});
+  C.rsiLinie.applyOptions({color: css("--s1")}); C.macdLinie.applyOptions({color: css("--s1")}); C.signal.applyOptions({color: css("--s2")});
+  if (st.bars.length) zeichneAlles();
+}
+function linie(c, opt = {}) { return c.addLineSeries({lineWidth: 1, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false, ...opt}); }
+
+function aufbauen() {
+  C.haupt = chartBasis($("haupt"), false);
+  C.kerzen = C.haupt.addCandlestickSeries({priceLineVisible: true});
+  C.volumen = C.haupt.addHistogramSeries({priceFormat: {type: "volume"}, priceScaleId: "vol", lastValueVisible: false, priceLineVisible: false});
+  C.haupt.priceScale("vol").applyOptions({scaleMargins: {top: 0.82, bottom: 0}});
+  C.ma7 = linie(C.haupt); C.ma25 = linie(C.haupt); C.ma99 = linie(C.haupt);
+  C.bo = linie(C.haupt, {lineStyle: 2}); C.bm = linie(C.haupt); C.bu = linie(C.haupt, {lineStyle: 2});
+  C.trend = linie(C.haupt, {lineWidth: 2});
+  C.rsi = chartBasis($("rsi"), false);
+  C.rsiLinie = linie(C.rsi, {lineWidth: 2, lastValueVisible: true});
+  C.macd = chartBasis($("macd"), true);
+  C.hist = C.macd.addHistogramSeries({priceLineVisible: false, lastValueVisible: false});
+  C.macdLinie = linie(C.macd, {lineWidth: 2}); C.signal = linie(C.macd, {lineWidth: 2});
+  farben();
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => setTimeout(farben, 50));
+  // Zeitachsen gekoppelt: Zoom/Verschieben gilt für alle drei
+  let sperre = false;
+  [C.haupt, C.rsi, C.macd].forEach(c => c.timeScale().subscribeVisibleLogicalRangeChange(r => {
+    if (sperre || !r) return; sperre = true;
+    [C.haupt, C.rsi, C.macd].forEach(o => o !== c && o.timeScale().setVisibleLogicalRange(r));
+    sperre = false;
+  }));
+  [C.haupt, C.rsi, C.macd].forEach(c => c.subscribeCrosshairMove(p => { st.hover = p && p.time != null ? p.time : null; legende(st.hover); }));
+  for (const w of [70, 30]) C.rsiLinie.createPriceLine({price: w, color: css("--ink-3"), lineWidth: 1, lineStyle: 2, axisLabelVisible: true, title: ""});
+}
+
+function legende(t) {
+  const i = t == null ? st.bars.length - 1 : st.bars.findIndex(b => b.time === t);
+  const b = st.bars[i]; if (!b) return;
+  const w = st.bars.map(x => x.close), ma = [7, 25, 99].map(n => sma(w, n)[i]);
+  const auf = b.close >= b.open ? "auf" : "ab";
+  let h = `<span>O <b class="${auf}">${preis(b.open)}</b></span><span>H <b class="${auf}">${preis(b.high)}</b></span><span>T <b class="${auf}">${preis(b.low)}</b></span><span>S <b class="${auf}">${preis(b.close)}</b></span><span class="${auf}">${pct((b.close / b.open - 1) * 100)}</span><span>Vol ${kurz(st.vol[i]?.value || 0)}</span>`;
+  if (st.ind.ma) h += `<span><i style="background:var(--s4)"></i>MA7 ${preis(ma[0])}</span><span><i style="background:var(--s2)"></i>MA25 ${preis(ma[1])}</span><span><i style="background:var(--s1)"></i>MA99 ${preis(ma[2])}</span>`;
+  if (st.ind.boll) { const bb = boll(w)[i]; if (bb) h += `<span><i style="background:var(--s3)"></i>BOLL ${preis(bb[0])} / ${preis(bb[1])} / ${preis(bb[2])}</span>`; }
+  $("leg-haupt").innerHTML = h;
+  const r = rsi(w)[i], m = macd(w)[i];
+  $("leg-rsi").textContent = `RSI (14) ${r == null ? "—" : zahl(r, 1)}`;
+  $("leg-macd").textContent = `MACD (12, 26, 9)  ${m[0] == null ? "—" : zahl(m[0], st.stellen)}  Signal ${m[1] == null ? "—" : zahl(m[1], st.stellen)}`;
+}
+
+function serie(werte, idx = null) {
+  // Lücken als «Whitespace»-Punkte, damit alle drei Charts dieselben Zeitpunkte haben (sonst verrutschen RSI/MACD)
+  return st.bars.map((b, i) => { const v = idx == null ? werte[i] : werte[i] && werte[i][idx]; return v == null ? {time: b.time} : {time: b.time, value: v}; });
+}
+
+function zeichneAlles() {
+  const w = st.bars.map(b => b.close);
+  C.kerzen.setData(st.bars);
+  C.volumen.setData(st.vol.map((v, i) => ({...v, color: st.bars[i].close >= st.bars[i].open ? css("--good-bg") : css("--critical-bg")})));
+  for (const [s, n] of [[C.ma7, 7], [C.ma25, 25], [C.ma99, 99]]) s.setData(st.ind.ma ? serie(sma(w, n)) : []);
+  const bb = boll(w);
+  [C.bo, C.bm, C.bu].forEach((s, k) => s.setData(st.ind.boll ? serie(bb, k) : []));
+  C.rsiLinie.setData(serie(rsi(w)));
+  const m = macd(w);
+  C.macdLinie.setData(serie(m, 0)); C.signal.setData(serie(m, 1));
+  C.hist.setData(serie(m, 2).map(x => x.value == null ? x : ({...x, color: x.value >= 0 ? css("--good-bg").replace(/[\d.]+\)$/, ".6)") : css("--critical-bg").replace(/[\d.]+\)$/, ".6)")})));
+  botEbene();
+  legende(st.hover);
+}
+
+function botEbene() {
+  st.linien.forEach(l => C.kerzen.removePriceLine(l)); st.linien = [];
+  C.trend.setData([]); C.trend.applyOptions({title: ""});
+  C.kerzen.setMarkers([]);
+  if (!st.ind.bot || !st.bot) return;
+  const m = (st.bot.maerkte || []).find(x => x.symbol === st.sym);
+  if (m) {
+    if (SEK[st.iv] === 86400) {
+      const n = m.trend_tage || 200;
+      C.trend.setData(serie(sma(st.bars.map(b => b.close), n))); C.trend.applyOptions({title: `${n}-T-Schnitt`});
+    } else if (m.schnitt) {
+      st.linien.push(C.kerzen.createPriceLine({price: m.schnitt, color: css("--s2"), lineWidth: 2, lineStyle: 2, axisLabelVisible: true, title: `${m.trend_tage}-T-Schnitt`}));
+    }
+    const stop = m.hebel > 0 ? m.stop_long : m.hebel < 0 ? m.stop_short : null;
+    if (stop) st.linien.push(C.kerzen.createPriceLine({price: stop, color: css("--critical"), lineWidth: 1, lineStyle: 2, axisLabelVisible: true, title: "Stop"}));
+  }
+  const sek = SEK[st.iv], erste = st.bars[0]?.time ?? 0, zeiten = new Set(st.bars.map(b => b.time));
+  C.kerzen.setMarkers((st.bot.auftraege || []).filter(a => a.symbol === st.sym && a.seite && !a.trocken).map(a => {
+    const kauf = a.seite === "BUY", ms = Date.parse(a.zeit);
+    return {time: lokal(Math.floor(ms / 1000 / sek) * sek * 1000), position: kauf ? "belowBar" : "aboveBar", color: kauf ? css("--good") : css("--critical"),
+      shape: kauf ? "arrowUp" : "arrowDown", text: `${kauf ? "Bot kauft" : "Bot verkauft"} ${a.menge}`};
+  }).filter(x => x.time >= erste && zeiten.has(x.time)).sort((a, b) => a.time - b.time));
+}
+
+// ───────── Daten laden + live ─────────
+async function ladeChart() {
+  const nr = ++st.nr;
+  status(false, "lade …");
+  try {
+    const k = await rest(`/api/v3/klines?symbol=${st.sym}&interval=${st.iv}&limit=1000`);
+    if (nr !== st.nr) return;
+    st.stellen = stellen(+k.at(-1)[4]);
+    const pf = {type: "price", precision: st.stellen, minMove: 10 ** -st.stellen};
+    C.kerzen.applyOptions({priceFormat: pf});
+    [C.ma7, C.ma25, C.ma99, C.bo, C.bm, C.bu, C.trend, C.macdLinie, C.signal, C.hist].forEach(s => s.applyOptions({priceFormat: pf}));
+    st.bars = k.map(x => ({time: lokal(x[0]), open: +x[1], high: +x[2], low: +x[3], close: +x[4]}));
+    st.vol = k.map(x => ({time: lokal(x[0]), value: +x[7]}));
+    zeichneAlles();
+    C.haupt.timeScale().setVisibleLogicalRange({from: st.bars.length - 140, to: st.bars.length + 4});
+    $("k-sym").textContent = st.sym.replace("USDT", "/USDT");
+    verbinden(nr, 0);
+    ladeTiefe(nr);
+  } catch (e) { status(false, "keine Kursquelle erreichbar"); }
+}
+
+function verbinden(nr, versuch) {
+  if (st.ws) { st.ws.onclose = null; st.ws.close(); }
+  const s = st.sym.toLowerCase();
+  const stroeme = [`${s}@kline_${st.iv}`, `${s}@depth20@100ms`, `${s}@aggTrade`, ...COINS.map(c => `${c.toLowerCase()}usdt@miniTicker`)];
+  const ws = new WebSocket(`${WSS[versuch % WSS.length]}?streams=${stroeme.join("/")}`);
+  st.ws = ws;
+  let letzteZeichnung = 0;
+  ws.onopen = () => status(true, "live");
+  ws.onmessage = ev => {
+    if (nr !== st.nr) return;
+    const {stream, data} = JSON.parse(ev.data);
+    if (stream.endsWith("@miniTicker")) { tick(data); return; }
+    if (stream.includes("@kline_")) {
+      const k = data.k, t = lokal(k.t), b = {time: t, open: +k.o, high: +k.h, low: +k.l, close: +k.c}, v = {time: t, value: +k.q};
+      if (st.bars.length && st.bars.at(-1).time === t) { st.bars[st.bars.length - 1] = b; st.vol[st.vol.length - 1] = v; }
+      else if (!st.bars.length || t > st.bars.at(-1).time) { st.bars.push(b); st.vol.push(v); }
+      const jetzt = Date.now();
+      if (jetzt - letzteZeichnung > 400) { letzteZeichnung = jetzt; aktualisiereLetzte(); }
+      return;
+    }
+    if (stream.includes("@depth")) { st.buch = data; return; }
+    if (stream.endsWith("@aggTrade")) { st.trades.unshift(data); st.trades.length = Math.min(st.trades.length, 40); }
+  };
+  ws.onclose = () => {
+    if (nr !== st.nr) return;
+    status(false, "getrennt — verbinde neu …");
+    setTimeout(() => verbinden(nr, versuch + 1), Math.min(30000, 2000 * 2 ** Math.min(versuch, 4)));
+  };
+}
+
+function aktualisiereLetzte() {
+  // Indikatoren hängen von allen Kerzen ab, darum alles neu; 1000 Kerzen sind schnell genug
+  const r = C.haupt.timeScale().getVisibleLogicalRange();
+  zeichneAlles();
+  if (r) C.haupt.timeScale().setVisibleLogicalRange(r);
+}
+
+function tick(d) {
+  st.ticker[d.s] = d;
+  if (d.s === st.sym) {
+    const ver = (+d.c / +d.o - 1) * 100;
+    $("k-preis").textContent = preis(+d.c); $("k-preis").className = "preis " + (ver >= 0 ? "auf" : "ab");
+    $("k-ver").textContent = pct(ver); $("k-ver").className = ver >= 0 ? "auf" : "ab";
+    $("k-hoch").textContent = preis(+d.h); $("k-tief").textContent = preis(+d.l); $("k-vol").textContent = kurz(+d.q);
+    document.title = `${preis(+d.c)} ${st.sym.replace("USDT", "")} · Live-Markt`;
+  }
+}
+
+// Orderbuch und Trades: höchstens 5× pro Sekunde zeichnen
+setInterval(() => {
+  const b = st.buch;
+  if (b) {
+    const asks = b.asks.slice(0, 12).map(([p, q]) => [+p, +q]), bids = b.bids.slice(0, 12).map(([p, q]) => [+p, +q]);
+    let s = 0; const ak = asks.map(([p, q]) => [p, q, s += q]); s = 0; const bk = bids.map(([p, q]) => [p, q, s += q]);
+    const max = Math.max(ak.at(-1)?.[2] || 1, bk.at(-1)?.[2] || 1);
+    const zeile = (p, q, sum, art) => `<tr class="buchzeile"><td class="${art}">${preis(p)}</td><td class="r">${zahl(q, 4)}</td><td class="r">${zahl(sum, 3)}<span class="balken" style="width:${(sum / max * 100).toFixed(1)}%;background:var(--${art === "auf" ? "good" : "critical"}-bg)"></span></td></tr>`;
+    $("asks").innerHTML = ak.slice().reverse().map(x => zeile(...x, "ab")).join("");
+    $("bids").innerHTML = bk.map(x => zeile(...x, "auf")).join("");
+    if (asks.length && bids.length) {
+      const mitte = (asks[0][0] + bids[0][0]) / 2, letzter = st.bars.at(-1)?.close;
+      $("mitte").innerHTML = `<span class="${letzter >= mitte ? "auf" : "ab"}">${preis(letzter ?? mitte)}</span>`;
+      $("spread").textContent = `Spanne ${preis(asks[0][0] - bids[0][0])} (${zahl((asks[0][0] - bids[0][0]) / mitte * 100, 4)} %)`;
+    }
+  }
+  if (st.trades.length) $("trades").innerHTML = st.trades.map(t => `<tr><td class="${t.m ? "ab" : "auf"}">${preis(+t.p)}</td><td class="r">${zahl(+t.q, 4)}</td><td class="r">${new Date(t.T).toLocaleTimeString("de-CH")}</td></tr>`).join("");
+}, 200);
+
+// Märkte-Liste mit 7-Tage-Mini-Chart
+function funke(werte) {
+  if (!werte || werte.length < 2) return "";
+  const W = 90, H = 24, lo = Math.min(...werte), hi = Math.max(...werte), sp = hi - lo || 1;
+  const d = werte.map((v, i) => `${i ? "L" : "M"}${(i / (werte.length - 1) * W).toFixed(1)},${(H - 2 - (v - lo) / sp * (H - 4)).toFixed(1)}`).join("");
+  const farbe = werte.at(-1) >= werte[0] ? "var(--good)" : "var(--critical)";
+  return `<svg class="funke" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" aria-hidden="true"><path d="${d}" fill="none" stroke="${farbe}" stroke-width="1.5"/></svg>`;
+}
+async function ladeTicker() {
+  try {
+    const liste = await rest(`/api/v3/ticker/24hr?symbols=${encodeURIComponent(JSON.stringify(COINS.map(c => c + "USDT")))}`);
+    liste.forEach(t => tick({s: t.symbol, c: t.lastPrice, o: t.openPrice, h: t.highPrice, l: t.lowPrice, q: t.quoteVolume}));
+    zeichneMaerkte();
+  } catch (e) { /* kommt per WebSocket */ }
+}
+async function ladeFunken() {
+  for (const c of COINS) {
+    try { const k = await rest(`/api/v3/klines?symbol=${c}USDT&interval=1h&limit=168`); st.funken[c + "USDT"] = k.map(x => +x[4]); } catch (e) { /* ohne Mini-Chart */ }
+  }
+}
+function zeichneMaerkte() {
+  let liste = COINS.map(c => ({c, s: c + "USDT", t: st.ticker[c + "USDT"]}));
+  const ver = x => x.t ? +x.t.c / +x.t.o - 1 : null;
+  if (st.sort === "auf") liste = liste.filter(x => x.t).sort((a, b) => ver(b) - ver(a));
+  if (st.sort === "ab") liste = liste.filter(x => x.t).sort((a, b) => ver(a) - ver(b));
+  $("maerkte").querySelector("tbody").innerHTML = liste.map(x => {
+    const v = ver(x), p = x.t ? +x.t.c : null;
+    return `<tr class="markt" data-s="${x.s}" aria-current="${x.s === st.sym}" tabindex="0"><td><b>${x.c}</b></td><td class="r">${p == null ? "—" : zahl(p, stellen(p))}</td><td class="r ${v >= 0 ? "auf" : "ab"}">${v == null ? "—" : pct(v * 100).replace(/^[▲▼] /, "")}</td><td>${funke(st.funken[x.s])}</td></tr>`;
+  }).join("");
+}
+$("maerkte").addEventListener("click", e => { const s = e.target.closest("tr.markt")?.dataset.s; if (s && s !== st.sym) { st.sym = s; st.trades = []; st.buch = null; ladeChart(); zeichneMaerkte(); } });
+$("maerkte").addEventListener("keydown", e => { if (e.key === "Enter") e.target.closest("tr.markt")?.click(); });
+
+// Markttiefe-Grafik (Fläche, Preis auf der x-Achse)
+async function ladeTiefe(nr) {
+  try {
+    const d = await rest(`/api/v3/depth?symbol=${st.sym}&limit=500`);
+    if (nr !== st.nr) return;
+    const bids = d.bids.map(([p, q]) => [+p, +q]), asks = d.asks.map(([p, q]) => [+p, +q]);
+    const mitte = (bids[0][0] + asks[0][0]) / 2, band = mitte * 0.01;  // ±1 % um den Preis
+    let s = 0; const b = bids.filter(x => x[0] >= mitte - band).map(([p, q]) => [p, s += q]);
+    s = 0; const a = asks.filter(x => x[0] <= mitte + band).map(([p, q]) => [p, s += q]);
+    const W = Math.max(300, $("tiefe").clientWidth), H = 170, L = 6, R = 6, T = 6, B = 20;
+    const xmin = mitte - band, xmax = mitte + band, ymax = Math.max(b.at(-1)?.[1] || 1, a.at(-1)?.[1] || 1);
+    const X = p => L + (p - xmin) / (xmax - xmin) * (W - L - R), Y = v => T + (1 - v / ymax) * (H - T - B);
+    const flaeche = (pkt, links) => {
+      if (!pkt.length) return "";
+      let d2 = `M${X(pkt[0][0])},${Y(0)}`;
+      pkt.forEach(([p, v], i) => { d2 += `L${X(p)},${Y(i ? pkt[i - 1][1] : 0)}L${X(p)},${Y(v)}`; });
+      d2 += `L${X(links ? xmin : xmax)},${Y(pkt.at(-1)[1])}L${X(links ? xmin : xmax)},${Y(0)}Z`;
+      return d2;
+    };
+    $("tiefe").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Markttiefe">
+      <line x1="${X(mitte)}" x2="${X(mitte)}" y1="${T}" y2="${H - B}" stroke="var(--ink-3)" stroke-dasharray="3 3"/>
+      <path d="${flaeche(b, true)}" fill="var(--good-bg)" stroke="var(--good)" stroke-width="1.5"/>
+      <path d="${flaeche(a, false)}" fill="var(--critical-bg)" stroke="var(--critical)" stroke-width="1.5"/>
+      <text x="${L}" y="${H - 5}" font-size="11" fill="var(--ink-3)">${esc(preis(xmin))}</text>
+      <text x="${X(mitte)}" y="${H - 5}" font-size="11" fill="var(--ink-2)" text-anchor="middle">${esc(preis(mitte))}</text>
+      <text x="${W - R}" y="${H - 5}" font-size="11" fill="var(--ink-3)" text-anchor="end">${esc(preis(xmax))}</text>
+      <text x="${L + 2}" y="${T + 12}" font-size="11" fill="var(--ink-2)">Kauf ${esc(zahl(b.at(-1)?.[1] || 0, 2))}</text>
+      <text x="${W - R - 2}" y="${T + 12}" font-size="11" fill="var(--ink-2)" text-anchor="end">Verkauf ${esc(zahl(a.at(-1)?.[1] || 0, 2))}</text></svg>`;
+  } catch (e) { $("tiefe").innerHTML = `<p class="klein">Markttiefe nicht erreichbar.</p>`; }
+}
+setInterval(() => ladeTiefe(st.nr), 5000);
+
+// Bot-Daten vom Cockpit (fehlt, wenn die Seite ohne Cockpit geöffnet wird)
+async function ladeBot() { try { const r = await fetch("/api/stand", {cache: "no-store"}); if (r.ok) { st.bot = await r.json(); if (st.bars.length) botEbene(); } } catch (e) { st.bot = null; } }
+
+for (const [id, f] of [["iv", w => { st.iv = w; ladeChart(); }], ["ind", w => { st.ind[w] = !st.ind[w]; zeichneAlles(); }], ["m-sort", w => { st.sort = w; zeichneMaerkte(); }]]) {
+  $(id).addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const w = b.dataset.w;
+    if (id === "ind") { f(w); b.setAttribute("aria-pressed", String(st.ind[w])); return; }
+    $(id).querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    f(w);
+  });
+}
+
+if (!window.LightweightCharts) {
+  $("haupt").innerHTML = `<p class="klein">Die Charts brauchen Internet (Bibliothek lightweight-charts von jsdelivr).</p>`;
+  status(false, "offline");
+} else {
+  aufbauen();
+  ladeBot().then(ladeChart);
+  setInterval(ladeBot, 60000);
+  ladeTicker();
+  ladeFunken().then(zeichneMaerkte);
+  setInterval(() => ladeFunken().then(zeichneMaerkte), 600000);
+  setInterval(zeichneMaerkte, 2000);
+}
+</script>
+</body>
+</html>

@@ -4,8 +4,9 @@
   py tools/trading/krypto_bot/cockpit.py            # startet http://127.0.0.1:8765 und öffnet den Browser
   py tools/trading/krypto_bot/cockpit.py --kein-browser --port 8765
 
-Das Cockpit liest nur die Logbücher in data/ und den Zwischenspeicher der Markt-Infos — es holt keine Kurse und handelt
-nicht selbst. Einzige Aktion: der Not-Aus-Knopf (schliesst die Pilot-Positionen und stoppt alle Bots, wie stop.bat).
+Das Cockpit liest nur die Logbücher in data/ und den Zwischenspeicher der Markt-Infos und handelt nicht selbst.
+/markt ist die Live-Ansicht im Stil einer Börse (Kerzen, Volumen, MA/BOLL, RSI, MACD, Orderbuch, Markttiefe, Trades, Märkte):
+der Browser holt die Kurse direkt bei Binance (öffentliche Marktdaten, ohne Schlüssel). Einzige Aktion: der Not-Aus-Knopf (schliesst die Pilot-Positionen und stoppt alle Bots, wie stop.bat).
 Es lauscht nur auf diesem PC (127.0.0.1), nicht im Netzwerk.
 
 Telegram-Steuerung (läuft mit, wenn TELEGRAM_BOT_TOKEN und TELEGRAM_CHAT_ID gesetzt sind). Befehle nur aus deinem Chat:
@@ -35,6 +36,7 @@ ROOT = HIER.parents[2]
 DATA = ROOT / "data"
 STOP = HIER.parent / "ki_bot" / "STOP"
 SEITE = HIER / "cockpit.html"
+MARKT = HIER / "markt.html"
 HILFE = ("Befehle: /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
@@ -186,6 +188,8 @@ class Cockpit(BaseHTTPRequestHandler):
         pfad = urllib.parse.urlparse(self.path).path
         if pfad in ("/", "/index.html"):
             return self._senden(200, SEITE.read_bytes(), "text/html; charset=utf-8")
+        if pfad in ("/markt", "/markt.html"):
+            return self._senden(200, MARKT.read_bytes(), "text/html; charset=utf-8")
         if pfad == "/api/stand":
             try:
                 return self._senden(200, stand())
