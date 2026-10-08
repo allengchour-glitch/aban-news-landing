@@ -66,6 +66,36 @@ pruefe("Echtgeld nur doppelt", not BF.einstellungen({"BINANCE_FUTURES_TESTNET": 
        and BF.einstellungen({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["echtgeld"])
 pruefe("eingestellter Hebel 5 → 2", BF.einstellungen({"KRYPTO_MAX_HEBEL": "5"})["max_hebel"] == 2.0)
 
+pruefe("Gewicht 0.5: halbe Position je Markt", BF.plane(cfg, 20000, 0.0, 50000, R, 1.0, gewicht=0.5) == [("BUY", 0.1, False)],
+       BF.plane(cfg, 20000, 0.0, 50000, R, 1.0, gewicht=0.5))
+
+# ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
+import pilot as PI  # noqa: E402
+
+pruefe("Standard: Bitcoin + Ethereum", PI.maerkte({}) == ["BTC", "ETH"])
+pruefe("nur BTC einstellbar, Unsinn ignoriert", PI.maerkte({"KRYPTO_PILOT_MAERKTE": "btc, doge"}) == ["BTC"]
+       and PI.maerkte({"KRYPTO_PILOT_MAERKTE": "xyz"}) == ["BTC"])
+from datetime import date as _d, datetime as _dt, timedelta as _td, timezone as _tz  # noqa: E402
+kurse = [((_d(2024, 1, 1) + _td(days=i)).isoformat(), x) for i, x in enumerate(wild)]
+j = _dt(2030, 1, 1, tzinfo=_tz.utc)
+eb, ee = PI.entscheid("BTC", env={}, jetzt=j, kurse=kurse), PI.entscheid("ETH", env={}, jetzt=j, kurse=kurse)
+pruefe("BTC rechnet mit 150, ETH mit 200 Tagen", eb["trend_tage"] == 150 and ee["trend_tage"] == 200 and eb["symbol"] == "BTCUSDT"
+       and ee["symbol"] == "ETHUSDT" and eb["schnitt"] == round(K.sma(wild, 150)[-1], 2))
+pruefe("laufender Tag zählt nicht", PI.entscheid("BTC", env={}, jetzt=_dt(2024, 1, 11, tzinfo=_tz.utc), kurse=kurse)["stand"] == "2024-01-10")
+lb = {"entscheide": [{"stand": "2026-10-01", "hebel": 0.5}, {"markt": "ETH", "stand": "2026-10-02", "hebel": -0.3}], "kontostand": []}
+pruefe("altes Logbuch (ohne Markt) zählt als Bitcoin", PI.letzter(lb, "BTC")["stand"] == "2026-10-01" and PI.letzter(lb, "ETH")["hebel"] == -0.3)
+PI.kontostand_merken(lb, "2026-10-01", 10000)
+PI.kontostand_merken(lb, "2026-10-01", 10100)
+pruefe("ein Kontostand je Tag", lb["kontostand"] == [{"tag": "2026-10-01", "kapital": 10100.0}])
+w1 = PI.wochenbericht(lb, "2026-10-01")
+pruefe("erster Bericht kommt sofort", w1 and "10'100.00" in w1 and lb["letzter_bericht"] == "2026-10-01", w1)
+PI.kontostand_merken(lb, "2026-10-05", 10500)
+pruefe("vor 7 Tagen kein zweiter Bericht", PI.wochenbericht(lb, "2026-10-07") is None)
+PI.kontostand_merken(lb, "2026-10-08", 9595)
+w2 = PI.wochenbericht(lb, "2026-10-08")
+pruefe("Wochenbericht: seit Start, Vorwoche, unter Höchststand", w2 and "-5.0 %" in w2 and "seit Vorwoche: -5.0 %" in w2
+       and "unter Höchststand: -8.6 %" in w2, w2)
+
 # ── nachgebauter Binance-Futures-Server ──
 GEHEIM = "futures-geheim"
 
