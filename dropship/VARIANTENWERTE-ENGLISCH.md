@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-08 15:41 UTC, Stand 2026-10-08 16:09 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-08 15:41 UTC, Stand 2026-10-08 16:10 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **14'458**
-- Optionen mit englischen Werten (Kandidaten): 1'671
+- Produkte gesehen: **15'057**
+- Optionen mit englischen Werten (Kandidaten): 1'714
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 8'712
+- Werte mit unbekanntem Wort (unverändert): 9'115
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 38
-- übersprungen «kollision-nach-uebersetzung»: 29
+- übersprungen «kleidungsstueck-im-wert»: 39
+- übersprungen «kollision-nach-uebersetzung»: 30
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -37,6 +37,7 @@
 - `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
 - `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 - `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
+- `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -71,6 +72,7 @@
 - `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
 - `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
+- `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -107,5 +109,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 333, `light` 247, `color` 202, `inner` 178, `degrees` 159, `shell` 99, `core` 92, `skin` 83, `three` 83, `⟨satzbau:material-vor-farbe⟩` 80, `powder` 79, `high` 73, `surface` 72, `case` 66, `rope` 66, `bag` 62, `feet` 62, `mother` 61, `belt` 59, `dark` 58, `no` 57, `size` 55, `to` 55, `electric` 54, `code` 52, `of` 51, `lens` 50, `line` 48, `hat` 46, `dual` 46, `bear` 46, `for` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `four` 42, `perforated` 42, `button` 41, `face` 40, `cat` 39, `opp` 39, `camera` 39, `carbon` 38, `father` 38, `little` 37, `generation` 37, `ice` 37, `suit` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `tea` 36, `magnetic` 36, `person` 36, `star` 35, `⟨satzbau:nomen-nomen⟩` 35, `⟨satzbau:nomen-vor-farbe⟩` 35, `fiber` 35, `⟨satzbau:menge-vor-nomen⟩` 35
+`⟨satzbau:adjektiv-vor-nomen⟩` 343, `light` 322, `color` 209, `inner` 178, `degrees` 159, `shell` 103, `⟨satzbau:material-vor-farbe⟩` 102, `skin` 98, `core` 92, `three` 84, `powder` 79, `high` 73, `surface` 73, `rope` 69, `case` 67, `bag` 62, `feet` 62, `mother` 61, `belt` 60, `dark` 58, `no` 57, `size` 56, `to` 55, `electric` 54, `of` 53, `code` 52, `chain` 50, `lens` 50, `line` 48, `bear` 47, `hat` 46, `dual` 46, `for` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `net` 43, `four` 42, `perforated` 42, `face` 41, `button` 41, `cat` 39, `opp` 39, `camera` 39, `spring` 38, `ice` 38, `carbon` 38, `star` 38, `father` 38, `little` 37, `generation` 37, `suit` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `autumn` 37, `tea` 36, `magnetic` 36, `⟨satzbau:nomen-vor-farbe⟩` 36
 
