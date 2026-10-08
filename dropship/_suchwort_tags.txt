@@ -15073,3 +15073,4 @@ gid://shopify/Product/16611721150855	schuh	Bauchschuhe Herren, atmungsaktiv, beq
 gid://shopify/Product/16611759686023	pfanne	Eisenpfanne mit elektrischem Heizsystem
 gid://shopify/Product/16611760341383	stuhl	Baby Essstuhl mit Kopfkissen, Rutschbalken und Rollen
 gid://shopify/Product/16611761979783	schere	Multifunktionale Küchenschere aus Edelstahl
+gid://shopify/Product/15449177653633	spiegel	LED Faltbarer Schminkspiegel mit L
