@@ -148,3 +148,31 @@ läuft stündlich mit den neuen Zuordnungen.
   (Fischernetze, Volleyballnetze, Kostüm-Umhänge) und lassen sich bei Bedarf als ZUSATZ nachtragen.
 - Press-on-Sets heissen im Titel weiter «Nagelsticker». Die Kategorie stimmt jetzt, der Titel führt Käuferinnen aber in die Irre.
   Das ist ein Kandidat für eine eigene Runde (Titel ehrlich machen).
+
+## Nachtrag «weiter» (08.10.2026, 18:05–18:40 UTC): Titel ehrlich, letzte Zuordnungen
+
+**Press-on-Titel.** CJ nennt Press-on-Sets «Nagelsticker». Käuferinnen lesen dann «Aufkleber» und bekommen 10 Kunstnägel mit
+Kleber. `nagel_fein.py` korrigiert jetzt auch den Titel, aber nur, wenn die BESCHREIBUNG Nägel belegt: künstliche Nägel,
+Nagelstücke/-spitzen/-platten, Jelly-Kleber oder Mandelform. Die Grössenoption allein reicht für die Kategorie, nicht für einen
+neuen Titel.
+- **Falle beim Gegenlesen:** Mein erster Folien-Filter wertete «ultra-dünn, nahtlos» als Nagelfolie. Bei CJ ist das ein
+  **Stilname der Press-on-Sets** («Ultra-Thin Seamless», 8 Beschreibungen mit künstlichen Nägeln UND diesem Wort). Zudem
+  steckte «gelstick» in «Na**gelstick**er». Beide Regeln sind verworfen.
+- **Regel:** «Nagelsticker/Nagelaufkleber/Sticker» → «Press-on-Nägel» (Begriff wie `google_titel_reparatur.py`). Ohne
+  Nagel-Nomen wird « · Press-on-Nägel» angehängt. Titel, die die Nägel schon nennen («Nägel», «Nails», «Nagel-Tips»,
+  «Kunstnagel»), bleiben unverändert. So wird «Cat-Eye Nagel-Tips mit Polka-Dot Sticker» nicht zu «… Press-on-Nägel».
+  Verlängerungs-Sets bleiben ebenfalls. SEO-Titel, die mit dem alten Titel beginnen, ziehen mit. Ein neuer Titel, der schon
+  bei einem anderen Produkt steht, wird übersprungen (1 Fall).
+- **Geschrieben: 109 Titel / 0 Fehler, Rücklesen 12/12** (inkl. SEO-Titel). Kanarien 19 Titel + 12 Kategorie. Keine
+  Kollektion hängt an den geänderten Wörtern; die Titelregeln der Nagel-Kollektionen («Nageldesign», «Nagelset», «Nagelpatch»)
+  sind weiter erfüllt, weil nur ersetzt oder angehängt wird.
+- Beispiele: «Nagelsticker Weiss» → «Press-on-Nägel Weiss» · «Sterntaler-Maniküre» → «Sterntaler-Maniküre · Press-on-Nägel» ·
+  «Wassermelonen-Nagelaufkleber» → «Wassermelonen-Press-on-Nägel».
+- Läuft täglich im Aufseher mit (nach `kosmetik_fein`), erfasst also Neuimporte. Zusätzlich 3 echte Sticker → «Nail Stickers».
+
+**Letzte Zuordnungen:** 11 neue Google-Blätter aus Runde 5 als ZUSATZ (Kostüm-Umhänge/-Hüte/-Sets, Haar-Turban, Tarnnetz,
+Kochmützen, Volleyballnetz, Velopumpe, Fischernetz/-falle, Bastelmaterial) und KREUZ Haar-Turban ≠ Bandana: **9/0**.
+«Keine Zuordnung» 14 → **1** (Paintball & Airsoft, bewusst offen). 17 klare Widersprüche, bei denen Google recht hat
+(Gua-Sha, Diffuser in «Health & Beauty», Auto-Lufterfrischer, Druckerpatronen, Aktenvernichter, Thermodrucker,
+Monitorständer, Schmuckbox …): Shopify nachgezogen, **17/0**. Widersprüche 49 → **~32**, alle mit vagem Titel
+(«Reparatur-Box», «Kaninchenbeutel», «Nano-Duscher»).

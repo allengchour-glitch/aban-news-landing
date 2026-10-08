@@ -44,6 +44,18 @@
 
 
 
+## 2026-10-08 18:40 UTC · 💅 «weiter»: Press-on-Sets heissen jetzt Press-on-Nägel — nur mit Beleg in der Beschreibung
+
+**GEMESSEN:** 96 Press-on-Sets (Kategorie seit 17:20 richtig), Titel «Nagelsticker …» oder ohne Nagel-Nomen («Sterntaler-Maniküre»).
+Erster Folien-Filter falsch: «ultra-dünn, nahtlos» ist bei CJ ein Stilname der Press-on-Sets, «gelstick» steckt in «Nagelsticker».
+**GETAN:** `nagel_fein.titel_ehrlich()` (19 Kanarien): Sticker-Wort → «Press-on-Nägel», sonst « · Press-on-Nägel» angehängt; Titel mit
+«Nägel/Nails/Nagel-Tips/Kunstnagel» bleiben; nur bei Beschreibungs-Beleg; Dubletten-Schutz; SEO-Titel zieht mit → **109/0, Rücklesen
+12/12**, täglich im Aufseher. Dazu 11 ZUSATZ + 1 KREUZ (9/0, «keine Zuordnung» 14 → 1) und 17 Widersprüche, bei denen Google recht
+hatte (17/0, Widersprüche → ~32 vage).
+**LEHRE:** (1) Einen Ausschluss-Filter («Folie») an echten Beschreibungen gegenlesen, bevor er etwas verhindert — ein Stilname kann
+wie ein Warenmerkmal aussehen. (2) Regex ohne Wortanfang trifft Komposita von innen («gel» in «Nagel»). (3) Für den TITEL braucht es
+stärkere Belege als für die Kategorie: ein falscher Titel ist ein Versprechen an die Käuferin.
+
 ## 2026-10-08 17:50 UTC · 🗂️ «ordne alles sauber ein»: Zweigwechsel erlaubt — 2'662 Urteile, Trachten, Press-on, und ein Wächter, der zurückgesetzt hätte
 
 **GEMESSEN:** 6'457 Produkte bei Google auf einer Oberklasse, 18'990 auf Shopify-Klassen mit Unterklassen, 76 Zweig-Widersprüche.
