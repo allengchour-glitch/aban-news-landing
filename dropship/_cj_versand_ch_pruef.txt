@@ -5734,3 +5734,6 @@ denim-cap-bleu-washed-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
 baseball-cap-wellness-rot-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
 baseball-cap-paris-schwarz-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
 edelstahl-armband-amore-herz-geburtsstein-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-coeur-herz-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-tresor-doppellagig-mit-charms-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-halskette-goutte-tropfen-anhanger-silber	-	-	-	unklar keine CJ-SKU	landeseite
