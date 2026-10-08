@@ -6452,3 +6452,11 @@ gid://shopify/Product/15455953682817	zugeordnet	13	Ovaler Minimalistischer Moiss
 gid://shopify/Product/15455953748353	zugeordnet	2	Voll-Diamant Statement Ring japanisch-koreanisch
 gid://shopify/Product/15455956140417	zugeordnet	22	Weiche Kinderschuhe für Mädchen mit Prinzessin-Stil
 gid://shopify/Product/15455956435329	zugeordnet	24	Mädchen Sportsschuhe
+gid://shopify/Product/15455956664705	zugeordnet	29	Sommer-Sandalen mit weichen Sohlen
+gid://shopify/Product/15455956697473	zugeordnet	33	Jugendliche Lederrollschuhe mit Doppellaufrollen
+gid://shopify/Product/15455956926849	zugeordnet	24	Atmungsaktive Kinder-Sneakers im Cartoon-Design
+gid://shopify/Product/15455957025153	zugeordnet	36	Atmungsaktive Mesh-Sneaker mit Drehknopf
+gid://shopify/Product/15455957156225	zugeordnet	33	Schnürschuhe mit Haarband und Strass
+gid://shopify/Product/15455957254529	bild-urls-tot
+gid://shopify/Product/15455957320065	bild-urls-tot
+gid://shopify/Product/15455957451137	zugeordnet	36	Weiche Kinderschuhe mit Klettverschluss
