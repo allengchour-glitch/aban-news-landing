@@ -6066,3 +6066,8 @@ kopfstutze-aus-nappaleder-636100	2605020830471636600	16	7.64	ok	landeseite
 auto-sitzbezuege-623400	2605020403161623900	0	-	KEINE CH-Option → DRAFT	landeseite
 autositzkissen-621700	2605020126261622200	16	11.12	ok	landeseite
 kopfstutze-mit-lendenstutze-624600	2604270755041625200	16	9.47	ok	landeseite
+sitzkissen-mit-lendenstuetze-638000	2604270255181638500	16	16.33	ok	landeseite
+vordersitz-abdeckung-058690	2044320428119748610	0	-	KEINE CH-Option → DRAFT	landeseite
+vordersitzabdeckung-023425	2041685261608710145	0	-	KEINE CH-Option → DRAFT	landeseite
+ruckenstutze-auto-615900	2603050304401616400	16	37.67	ok	landeseite
+ruecklehnenhaenger-635500	2602210204071635800	16	20.42	ok	landeseite
