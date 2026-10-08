@@ -637,3 +637,12 @@ gid://shopify/Product/15495115178369	ok	Hunde-Plüschtier mit Beissring
 gid://shopify/Product/15495115407745	ok	Kleine Möwe LED-Nachtlicht
 gid://shopify/Product/15495125336449	ok	Schnellladegerät Auto
 gid://shopify/Product/15495126352257	ok	3-in-1 Wireless Charger mit Nachtlicht
+gid://shopify/Product/15495131431297	ok	Antihaft Silikon Küchenhelfer Set
+gid://shopify/Product/15495135134081	ok	Interaktiver Puzzle-Spielball für Hunde
+gid://shopify/Product/15495135560065	ok	Leuchtende USB-Maus für Katzen
+gid://shopify/Product/15495142736257	ok	Multifunktionaler Make-up-Spiegel mit Tischlampe
+gid://shopify/Product/15495187333505	ok	RC Roboterhund mit Touch-Sensorik
+gid://shopify/Product/15495215382913	ok	Rollender Katzen-Teaserball
+gid://shopify/Product/15495238320513	ok	Kabelloser Glätt- und Lockenstab-Kamm
+gid://shopify/Product/15495319585153	ok	Mini USB Lockenstab & Glätteisen
+gid://shopify/Product/15495319847297	ok	Audio-Adapter iPhone auf USB-C (Digital)
