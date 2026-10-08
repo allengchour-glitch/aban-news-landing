@@ -44,6 +44,25 @@
 
 
 
+## 2026-10-08 05:00 UTC · ⭐ «weiter verbessern» (Tag 9 vorgezogen): Bewertungen erreichen die Neuware + Klimaaussagen raus
+- GEMESSEN: 2'695 aktive Neuimporte seit 01.10., auf Bewertungen geprüft 107 (4 %). Drei Ursachen: (1) die Arbeitsliste
+  nahm Neuware nur über 60 Karten von «neu-eingetroffen»; (2) die Tagesläufe starben am stündlichen Neustart (31 bzw. 38
+  von 150), Tor «Log > 24 h» → Rest erst morgen; (3) 1'931 Neuimporte tragen `CJ-<pid>`, der Importer schlug die pid
+  trotzdem nach (10 CJ-Punkte, scheitert bei leerem Topf ab ~04 UTC) — der Kommentar-Abruf selbst ist kostenlos und
+  läuft bei leerem Topf (nachgemessen 04:10: Code 200 mit Kommentaren).
+- GETAN: rohe pid direkt; Neuware 21 T im Reissverschluss mit den sichtbaren Reihen; START/FERTIG + still_gestorben +
+  «WEITER»-Kette (stündlich, solange volle Charge mit ≥ 50 quittierten), Charge 400. Erste Charge: 19 echte Bewertungen
+  auf 4 Produkten, Shopify zeigt sie. Echtheit geprüft (Kabel-Organizer mit «Geldbörse»-Kommentaren = dieselbe pid,
+  PU-Clip-Tasche für Scheine/Kopfhörer).
+- Versand-FAQ: «gratis ab 50» vs Profil 45 ist GEWOLLT (Gedächtnis zuerst fragen — fast als Befund gemeldet). Echter
+  Befund: «spart CO2», «Direkt-Versand reduziert Transport-CO2», «recyclebare Verpackung» auf der öffentlichen
+  Versandseite; Art. 3 Abs. 1 lit. x UWG (seit 2025) verlangt Belege, BAFU hält «klimaneutral» für unbeweisbar.
+  Vollscan: 11 Produkte + 1 Blogartikel → Regeldatei `data/klima_regel.json` für Wächter UND Importer (klimaSicher in
+  textPolieren), 11/0, Gleichlauf py=js 11/11, JS über 51'511 Texte genau dieselben 11. Nebenbei 14× «für du» → «für dich».
+- LEHRE: Ein Abruf, der Punkte kostet, gehört nur dorthin, wo die Antwort unbekannt ist — eine pid in der SKU nachzuschlagen
+  kostete jeden Tag die Hälfte der Läufe. Und: ein Tageslauf ohne Schlusszeile ist für still_gestorben unsichtbar.
+  → `dropship/VERTRAUEN-TAG9-2026-10-08.md`
+
 ## 2026-10-08 00:50 UTC · 🧠 Verbesserungsrunde: Wächter für grobe Neuimporte — gelernt aus Urteilen, Rest an die KI-Stufe
 - GEMESSEN: 483 Neuimporte seit 01.10. auf Google-Oberklassen (~70/Tag). Die KI-Stufe vom 02.10. war ein Einmal-Lauf über einen
   festen Export — eine Bereinigung ohne Wächter füllt sich wieder (gestern 12'583 von Hand geprüft).
@@ -18812,3 +18831,5 @@ Verschoben am 04.10.2026:
 - 2026-10-05 · 🔪 **Klingen-Loch: Faltmesser (Ausnahme «anhänger»), Rasiermesser (Gerät «rasier»), Veredelungsmesser (Messgerät «…ungsmesser») ACTIVE trotz #1017 → `handklinge_immer` vor allen Ausnahmen (py+mjs, 65/65), 3 gedraftet; Keyword-Runde: 33 Kollektionen + 60 Produkte mit CH-Nachfrage-Begriff.** Ausnahmelisten fressen echte Messer → Journal 05.10. 11:20
 - 2026-10-05 · 🎯 **Verbesserungsrunde: Social-Jury lehnte jeden Post ab — Gemini/OpenAI leer, Groq-Bildmodell (einziges) von Bildtausch/Kauderwelsch/Produkttext auf allen 3 Schlüsseln aufgebraucht → `zweitmodell.reserviert()`: qwen auf Schlüssel 3 nur für Jury + Bestell-Bildvergleich, Marke dort 20 min; Wächter `--reserve-test`.** Kundenweg bekommt Reserve → `dropship/GROQ-VORRANG-RESERVE-2026-10-05.md`
 - 2026-10-05 · 💸 **CJ-Fenster/Runde: EK-Boden 15 bei 3'703 Produkten OHNE CJ-Punkte (`kosten_boden15_korrigieren.py`, Aufseher-LIMIT 400 → 5'000, DRY 0 offen, Verlust 0) statt 40k Punkte über `cj_kosten_backfill`; #1021 = CJ-Ersatzware (Ticket), Nibosi gedraftet, Fabrikbestand 20'000 ≠ lieferbar (n=1).** Billigeres Werkzeug zuerst suchen → `dropship/EK-BODEN15-REST-2026-10-05.md`
+- 2026-10-06 · 🔎 **«tool installieren selber programmieren»: eigenes Perplexity `tools/recherche.py` (Groq gpt-oss + `browser_search`, gratis, Quellen aus der Werkzeug-Ausgabe) + `automation/hype_recherche.py` täglich → `dropship/HYPE-RECHERCHE.md` mit Gegenprobe am Bestand; Bing von unserer IP = Pizzerien in Genf, compound = 404.** Automatik kann jetzt selbst im Netz nachsehen → Journal 06.10. 19:05
+- 2026-10-06 · 📦 **Fortura Stufe 2 live: Muster vom Betreiber → `fortura_xml.py` (Opacc.ORDERS, Template-Abgleich, 7/7) + Engine lädt `ORDERS_LX<nr>.xml` einmalig hoch, liest DESADV (Tracking, Teillieferung, 48-h-Alarm); Schalter `_fortura_xml_aktiv`; Test nur mit Attrappe (Upload = echte Bestellung).** → `dropship/FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`

@@ -1278,6 +1278,13 @@ while true; do
       ( cd "$REPO" && timeout 1500 python3 automation/seo_voll_audit.py >> "$SVA" 2>&1 \
         && SCHARF=1 timeout 2400 python3 automation/seo_voll_fix.py >> "$SVA" 2>&1 )
       echo "$(date -u +%H:%M) SEO-Voll-Audit: $(grep '^SCHARF' "$SVA" | tail -1)"
+      # 08.10.2026 KLIMAAUSSAGEN (Art. 3 Abs. 1 lit. x UWG): liest denselben frischen Export (kein zweiter Bulk), nimmt
+      # «klimaneutral»/«spart CO2» aus Produkttexten (Regel automation/data/klima_regel.json, auch im Importer) und
+      # meldet veröffentlichte Seiten/Blog/Kollektionen in dropship/KLIMAAUSSAGEN.md. GEMESSEN 08.10.: 11 Produkte + 2 Seiten.
+      if [ -f "$REPO/automation/klimaaussagen_wache.py" ]; then
+        ( cd "$REPO" && SCHARF=1 timeout 1200 python3 automation/klimaaussagen_wache.py >> "$SVA" 2>&1 )
+        echo "$(date -u +%H:%M) $(grep -E '^(FERTIG|PAUSE): KLIMA|^PAUSE' "$SVA" | tail -1)"
+      fi
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:

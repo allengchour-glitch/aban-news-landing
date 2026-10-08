@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 // cj_copy_prompt.mjs — EINE Quelle fuer den Beschreibungs-Prompt aller drei CJ-Importer
 // (cj_category_fill, cj_sku_import, cj_trending_import). Bis 02.09.2026 trug jeder Importer
 // seine eigene Fassung («Beauty-Shop», «Online-Shop», mit/ohne Umlaut-Regel) — dieselbe
@@ -25,6 +26,7 @@ Aus dem englischen Produktnamen und den Features machst du:
 Regeln: Kurze Sätze. Keine Superlative. NICHTS erfinden — was nicht in den Features steht, steht nicht im Text.
 Keine Auswahl behaupten: schreibe NICHT «erhältlich in verschiedenen Farben/Grössen», «reicht von … bis …», «wähle zwischen …» — auch dann nicht, wenn die Features mehrere Grössen nennen. Welche Ausführung verkauft wird, zeigt der Shop selbst; nenne höchstens EINE Grössenangabe, wenn sie in den Features steht.
 Keine Wirkversprechen: nichts «fördert Wachstum», «heilt», «gegen Falten/Pigmentflecken» — nur, was das Produkt IST und TUT (pflegt, reinigt, schützt).
+Keine Klima- oder CO2-Aussagen: NIE «klimaneutral», «klimafreundlich», «spart CO2», «CO2-Fussabdruck», «emissionsfrei» — dafür gibt es keinen Beleg (Art. 3 Abs. 1 lit. x UWG).
 Keine medizinischen Messwerte bei Uhren, Armbändern und Ringen: NIE «Blutdruck», «EKG», «Blutzucker», «Glukose», «Elektrokardiogramm» — ein optischer Sensor am Handgelenk kann das nicht, und wer sich als Diabetikerin darauf verlässt, riskiert eine Unterzuckerung. Erlaubt sind Herzfrequenz, Blutsauerstoff/SpO2, Schritte, Schlaf und Hauttemperatur (nie «Körpertemperatur»).
 VERBOTEN sind diese Wörter und Wendungen: ${VERBOTEN.join(', ')}.
 Kategorie: ${kat || '-'}  (benenne die Ware mit dem deutschen Warenwort, das zu dieser Kategorie passt — z. B. «Down Jackets» → Daunenjacke, nicht «Kissenmantel»)
@@ -201,7 +203,58 @@ export function beginntMitDies(html) {
   const t = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   return /^Dies(?:er|e|es)\b/.test(t);
 }
+// ⚠️ 08.10.2026 — KLIMAAUSSAGEN, deterministisch statt Bitte (Lehre messSicher/wirkSicher: ein Modell kann eine
+// Prompt-Regel ignorieren). Art. 3 Abs. 1 lit. x UWG (seit 01.01.2025): Klimaaussagen ohne objektive, überprüfbare
+// Grundlage sind unlauter; GEMESSEN 08.10.: 11 aktive Produkte («klimaneutral gedruckt», «reduziert den CO2-Fussabdruck»,
+// «klimafreundliche PU-Dämpfung»). EINE Regeldatei mit dem Wächter automation/klimaaussagen_wache.py:
+// automation/data/klima_regel.json — Satz mit Aussage: Wort/Nebensatz weg, bleibt eine Aussage, fällt der Satz.
+const KLIMA = JSON.parse(fs.readFileSync(new URL('./data/klima_regel.json', import.meta.url), 'utf8'));
+const K_ANSPRUCH = new RegExp(KLIMA.anspruch, 'i');
+const K_AUSNAHME = new RegExp(KLIMA.ausnahme, 'i');
+const K_WEG = KLIMA.wort_weg.map(([a, b]) => [new RegExp(a, 'gi'), b]);
+const kKlar = (s) => String(s || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&quot;/g, '"')
+  .replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+const kIst = (satz) => { const t = kKlar(satz); return K_ANSPRUCH.test(t) && !K_AUSNAHME.test(t); };
+const kSaetze = (t) => t.split(/(?<=[.!?])\s+/);
+function kSatz(satz) {
+  if (!kIst(satz)) return satz;
+  let neu = satz;
+  for (const [rx, ers] of K_WEG) neu = neu.replace(rx, ers);
+  if (kIst(neu)) return '';
+  const a = kKlar(satz), b = kKlar(neu);
+  if (a && b && a[0] !== a[0].toLowerCase() && b[0] !== b[0].toUpperCase()) {
+    const i = neu.indexOf(b[0]);
+    neu = neu.slice(0, i) + neu[i].toUpperCase() + neu.slice(i + 1);
+  }
+  return neu;
+}
+function kText(inner) {
+  const teile = inner.split(/(?<=[.!?])(\s+)/), raus = [];
+  for (let i = 0; i < teile.length; i += 2) {
+    const s = kSatz(teile[i]);
+    raus.push(s);
+    if (i + 1 < teile.length && s.trim()) raus.push(teile[i + 1]);
+  }
+  return raus.join('').trim();
+}
+export function klimaSaeubern(html) {
+  if (!kSaetze(kKlar(html)).some(kIst)) return html;
+  const blk = (m, auf, tag, inner, zu) => {
+    if (/<(p|li|div|h[1-6]|td)\b/i.test(inner)) return auf + inner.replace(/(<(p|li|h[1-6]|td|span|div|strong|em)\b[^>]*>)([\s\S]*?)(<\/\2>)/gi, blk) + zu;
+    if (!kIst(inner) && !kSaetze(inner).some(kIst)) return m;
+    const neu = kText(inner);
+    return kKlar(neu) ? auf + neu + zu : '';
+  };
+  let neu = String(html).replace(/(<(p|li|h[1-6]|td|span|div|strong|em)\b[^>]*>)([\s\S]*?)(<\/\2>)/gi, blk);
+  if (kSaetze(kKlar(neu)).some(kIst)) neu = kText(neu);
+  return neu.replace(/<(ul|ol)\b[^>]*>\s*<\/\1>/gi, '');
+}
+export function klimaSicher(o) {
+  if (o && o.html) o.html = klimaSaeubern(o.html);
+  return o;
+}
 export function textPolieren(o) {
+  o = klimaSicher(o);   // 08.10.2026: alle drei CJ-Importer rufen textPolieren — EIN Einhängepunkt
   if (!o || !o.html) return o;
   let h = o.html.replace(/<p>([\s\S]*?)<\/p>/gi, (m, inner) => {
     if (/<[a-z]/i.test(inner)) return m;                       // Auszeichnung: nicht anfassen

@@ -173,3 +173,5 @@ slug:magnetischer-kartenhalter-mit-magsafe-632200
 name:magnetischerkartenhaltermitmagsafe
 slug:herren-pullover-langarm-strickpullover
 slug:jacquard-cashew-fransen-schal-fur-damen
+slug:kabelloser-mini-staubsauger-mit-geblase-616100
+name:kabelloserministaubsaugermitgebläse

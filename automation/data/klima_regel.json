@@ -1,0 +1,26 @@
+{
+  "_zweck": "EINE Regel für Klimaaussagen (Art. 3 Abs. 1 lit. x UWG, seit 01.01.2025): Importer (cj_copy_prompt.mjs klimaSicher) und Wächter (klimaaussagen_wache.py) lesen dieselbe Datei. Angelegt 08.10.2026. Muster ohne \\b neben Umlauten (JS ohne u-Flag kennt ä nicht als Wortzeichen).",
+  "anspruch": "klima[\\s-]?(?:neutral|freundlich|schonend|positiv|kompensiert|bewusst)\\w*|co[2₂][\\s-]?(?:neutral|fussabdruck|fußabdruck|bilanz|ausstoss|ausstoß|emissionen|emission|einsparung|sparend\\w*|ersparnis|reduziert\\w*|arm\\w*)|(?:^|[^\\wäöü])co[2₂][\\s-]frei|emissionsfrei\\w*|carbon[\\s-]?neutral|(?:spart|sparen|einsparen|reduziert|reduzieren|senkt|senken|verringert|verringern|vermeidet|vermeiden|minimiert|weniger)\\s(?:[^.!?<]{0,40}?[\\s-])?(?:co[2₂]|treibhausgas\\w*)",
+  "ausnahme": "messger|sensor|melder|kartusche|patrone|gaskammer|\\bppm\\b|kohlendioxid-?(?:mess|sensor|wert)|(?:gibt|setzt)\\s+(?:das\\s+)?co[2₂]\\s+frei|aquarium|sprudel|soda",
+  "wort_weg": [
+    ["\\s+(?:und|sowie)\\s+klima[\\s-]?(?:neutral|freundlich|schonend)\\w*", ""],
+    ["klima[\\s-]?(?:neutral|freundlich|schonend)\\w*\\s+(?:und|sowie)\\s+", ""],
+    [",?\\s+(?:was|wodurch|womit|damit|und so)\\s+[^.!?<]*?(?:co[2₂]|treibhausgas|klima)[^.!?<]*", ""],
+    ["klima[\\s-]?(?:neutral|freundlich|schonend)\\w*\\s+(?=[a-zäöü])", ""]
+  ],
+  "kanarien": [
+    ["Jeder Print wird klimaneutral und \"on-demand\" für dich produziert, was Abfall reduziert.", true, "Jeder Print wird \"on-demand\" für dich produziert, was Abfall reduziert."],
+    ["Er wird klimaneutral im Print-on-Demand-Verfahren hergestellt.", true, "Er wird im Print-on-Demand-Verfahren hergestellt."],
+    ["Er wird klimaneutral sowie on-demand für dich gedruckt.", true, "Er wird on-demand für dich gedruckt."],
+    ["Der Kocher braucht keine Batterien, was den CO2-Fussabdruck reduziert. Er wiegt 300 g.", true, "Der Kocher braucht keine Batterien. Er wiegt 300 g."],
+    ["Direkt-Versand reduziert Transport-CO2.", true, ""],
+    ["Das spart CO2, unnötige Transportwege und Kosten. Lieferung 10–20 Werktage.", true, "Lieferung 10–20 Werktage."],
+    ["Versand CO₂-neutral mit der Post.", true, ""],
+    ["Misst CO2, Temperatur und Luftfeuchtigkeit (400–5000 ppm).", false, null],
+    ["CO2-Messgerät für Raumluft mit Ampel.", false, null],
+    ["Warte 30 Sekunden – das frische Pulver gibt CO₂ frei.", false, null],
+    ["CO2-Gaskammer für Fahrradreifen, 93 g, CNC-Aluminium.", false, null],
+    ["Klimagerät mit 9000 BTU für Räume bis 30 m².", false, null],
+    ["Robuster Rucksack aus recyceltem Polyester.", false, null]
+  ]
+}
