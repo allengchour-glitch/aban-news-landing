@@ -48425,3 +48425,15 @@ herzformige-rot-agate-brosche-625500	aa-6	Schmuck	2026-10-07T23:00Z
 leopardenbrosche-in-purpur-silber-mit-kristall-611400	aa-6	Schmuck	2026-10-07T23:00Z
 silberne-blumen-und-perlenbrosche-632200	aa-6	Schmuck	2026-10-07T23:00Z
 handgefertigter-anhanger-fur-rucksackventilato-621900	aa-6	Schmuck	2026-10-07T23:00Z
+elch-pullover-fur-haustiere-farbe-grosse-frei-370240	ap-2	Haustierbedarf	2026-10-08T00:10Z
+hundemutze-vintage-mit-hohem-kragen-048320	ap-2	Haustierbedarf	2026-10-08T00:10Z
+dogger-plaid-pullover-in-lila-877696	ap-2	Haustierbedarf	2026-10-08T00:10Z
+hundemutze-herbst-winter-in-gelb-159808	ap-2	Haustierbedarf	2026-10-08T00:10Z
+hundemantel-mit-reissverschluss-121664	ap-2	Haustierbedarf	2026-10-08T00:10Z
+hundemutze-aus-wollpullover-384000	ap-2	Haustierbedarf	2026-10-08T00:10Z
+hundewarmer-pullover-aus-baumwolle-507520	ap-2	Haustierbedarf	2026-10-08T00:10Z
+wollpullover-fur-hunde-blau-mit-bar-945920	ap-2	Haustierbedarf	2026-10-08T00:10Z
+hundepullover-fur-kleine-hunde-026496	ap-2	Haustierbedarf	2026-10-08T00:10Z
+wollpullover-fur-hund-und-katze-dunkelrot-348416	ap-2	Haustierbedarf	2026-10-08T00:10Z
+pullover-fur-hund-und-katze-himmelblau-067648	ap-2	Haustierbedarf	2026-10-08T00:10Z
+pullover-fur-hund-und-katze-aus-wolle-607424	ap-2	Haustierbedarf	2026-10-08T00:10Z
