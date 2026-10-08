@@ -6319,3 +6319,5 @@ gid://shopify/Product/15455682199937	zugeordnet	36	Jungen Sneakers 7-16 Jahre
 gid://shopify/Product/15455682265473	zugeordnet	33	Handgestrickte Baby-Boots mit Weichsohlen
 gid://shopify/Product/15455682298241	zugeordnet	27	Warme Schneeschuhe für Kinder
 gid://shopify/Product/15455682396545	zugeordnet	51	Winter Plus Velours Kinder-Schneestiefel
+gid://shopify/Product/15455682462081	zugeordnet	44	Kinder-Wanderschuhe aus Baumwolle
+gid://shopify/Product/15455682593153	zugeordnet	9	Elegantes Abendkleid mit Schulter slits
