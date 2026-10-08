@@ -17329,3 +17329,9 @@ gid://shopify/Product/16611936010631	36->1	Hundekuscheldecke mit V-Ausschnitt, S
 gid://shopify/Product/16611965731207	13->2	Hundestrickpullover mit Blumenmuster
 gid://shopify/Product/16611965763975	47->0	Hundemütze Herbst/Winter aus Wolle
 gid://shopify/Product/15509401764225	22->0	Elektrisches Mitesser-Sauggerät
+gid://shopify/Product/16611973497223	85->0	Weicher gestreifter Hundepullover
+gid://shopify/Product/16611973562759	73->2	Wollpullover für Hund – Regenbogen, Grösse S–XXL
+gid://shopify/Product/16611990831495	47->0	Hundemantel aus Wolle – Xs bis L
+gid://shopify/Product/16611990962567	141->0	Warmpullover für Haustiere
+gid://shopify/Product/16611990995335	65->0	Strick-Hundepullover Regenbogen
+gid://shopify/Product/16611991224711	16->0	Weihnachtlicher Haustierpullover
