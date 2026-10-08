@@ -143,7 +143,7 @@ for (const c of cands) {
   const desc = `<p><strong>${name}</strong></p>${bbDesc ? `<div>${bbDesc}</div>` : ''}<ul><li>✔ Original-Markenware, fabrikneu</li><li>📦 Lagergeprüft — versandbereit ab EU-Lager</li><li>🚚 Lieferung in die Schweiz per Spedition/Paket</li><li>↩️ 30 Tage Rückgaberecht</li></ul><p>✓ Geprüfte Qualität · Gratis-Versand ab CHF 50 · 🇨🇭 LuxeStyle</p>`;
   const input = { title: name, handle, productType: 'Premium', vendor: 'LuxeStyle', status: 'ACTIVE',
     tags: ['bigbuy', 'dropship', 'marke', 'premium-lager', 'lager-geprueft'],
-    descriptionHtml: desc, seo: { title: `${name} | LuxeStyle`, description: `${name} – Original-Markenware an Lager, schnelle Lieferung in die Schweiz.` },
+    descriptionHtml: desc, seo: { title: `${name} | LuxeStyle`, description: `${name} – Original-Markenware, Lieferung in die ganze Schweiz.` },
     files: good.map(u => ({ originalSource: u, contentType: 'IMAGE' })),
     productOptions: [{ name: 'Titel', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Titel', name: 'Standard' }], price,

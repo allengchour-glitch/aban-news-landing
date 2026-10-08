@@ -1,0 +1,186 @@
+{
+  "_zweck": "EINE Regel für Liefer- und Eigenversprechen ohne Beleg (UWG Art. 3 Abs. 1 lit. b/i). Wächter automation/versprechen_wache.py (täglich, Bestand) und Importer cj_copy_prompt.mjs versprechenSicher (Neuware) lesen dieselbe Datei. Angelegt 08.10.2026: 106 aktive Produkte mit «schnelle Lieferung» in der Google-Beschreibung bei 7–20 Werktagen, Titel «Zigarettenhalter mit Band – Sofort Lieferbar» (CJ, wieder eingeschleppt nach dem Fix vom 12.08.), 4× «Schweizer Shop · Qualität geprüft», 6× «meistverkauft» (3 Verkäufe in 30 Tagen). Muster ohne \\b neben Umlauten (JS ohne u-Flag).",
+  "schweiz_lager": {
+    "tags": [
+      "ch-lager",
+      "fortura",
+      "eu-lager"
+    ],
+    "sku_praefix": [
+      "fortura-"
+    ],
+    "_hinweis": "Ware, bei der ein Tempo-Wort stimmt: Schweizer Lager (ch-lager 1–2 Werktage, Fortura) und EU-Lager (gemessen 08.10.: Vertrauensblock «Lieferung 2–7 Werktage»). Eigenversprechen gelten trotzdem."
+  },
+  "liefer_titel": [
+    [
+      "\\s*[–—·-]?\\s*\\b(?:sofort|schnell)\\s+lieferbar\\b\\s*",
+      " "
+    ],
+    [
+      "\\s*[–—·-]?\\s*\\b(?:Express|Schnell)versand\\b\\s*",
+      " "
+    ]
+  ],
+  "liefer_seo": [
+    [
+      "schnell(?:e|er|en)?\\s+(?:Lieferung|Versand|Zustellung)(?:\\s*\\(\\s*\\d+\\s*[–-]\\s*\\d+\\s*(?:Werk)?[Tt]age\\s*\\))?(?:\\s+(?:in|aus)\\s+(?:die|der)\\s+Schweiz)?",
+      "Lieferung in die ganze Schweiz"
+    ],
+    [
+      "(?:Schnell|Express)versand|Express-Versand|Expresslieferung",
+      "Versand in die ganze Schweiz"
+    ],
+    [
+      "\\s*[–—·-]?\\s*\\bsofort\\s+lieferbar\\b",
+      ""
+    ]
+  ],
+  "liefer_text": [
+    [
+      "\\s*(?:ist|sind)\\s+sofort\\s+(?:lieferbar|verf[üu]gbar)\\s+und\\s+(?=(?:wird|werden|kann|k[öo]nnen|kommt|hat|haben|liegt|passt)\\b)",
+      " "
+    ],
+    [
+      "sofort\\s+(?:lieferbar|verf[üu]gbar)\\s+und\\s+",
+      ""
+    ],
+    [
+      "\\s*,?\\s+und\\s+sofort\\s+(?:lieferbar|verf[üu]gbar)",
+      ""
+    ],
+    [
+      "\\s*(?:ist|sind)\\s+sofort\\s+(?:lieferbar|verf[üu]gbar)",
+      ""
+    ],
+    [
+      "\\s*\\bsofort\\s+(?:lieferbar|verf[üu]gbar)",
+      ""
+    ],
+    [
+      "[^.<>]*\\bExpresslieferung\\s+innerhalb\\s+von\\s+\\d+\\s*Tag\\w*[^.<>]*\\.?",
+      ""
+    ],
+    [
+      "schnell(?:e|er|en)?\\s+Lieferung(?:\\s*\\(\\s*\\d+\\s*[–-]\\s*\\d+\\s*(?:Werk)?[Tt]age\\s*\\))?",
+      "Lieferung in die ganze Schweiz"
+    ]
+  ],
+  "eigen_text": [
+    [
+      "\\s*·\\s*Qualität\\s+geprüft",
+      ""
+    ],
+    [
+      "\\b[Mm]eistverkauft(?:e|es|er|en)?,?\\s+",
+      ""
+    ]
+  ],
+  "kanarien": [
+    [
+      "seo",
+      "Elegante Crossbody-Umhängetasche, 3 Farben. Schweizer Shop, schnelle Lieferung. -10% mit Code WELCOME10.",
+      "Elegante Crossbody-Umhängetasche, 3 Farben. Schweizer Shop, Lieferung in die ganze Schweiz. -10% mit Code WELCOME10."
+    ],
+    [
+      "seo",
+      "Poster: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, schnelle Lieferung (7–14 Tage), 30 Tage Rückgabe.",
+      "Poster: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, Lieferung in die ganze Schweiz, 30 Tage Rückgabe."
+    ],
+    [
+      "seo",
+      "Zigarettenhalter mit Band – Sofort Lieferbar – Raucher-Zubehör.",
+      "Zigarettenhalter mit Band – Raucher-Zubehör."
+    ],
+    [
+      "seo",
+      "Original-Markenware an Lager, schnelle Lieferung in die Schweiz.",
+      "Original-Markenware an Lager, Lieferung in die ganze Schweiz."
+    ],
+    [
+      "seo",
+      "Wimpernserum · 24 h wasserfest | LuxeStyle CH",
+      "Wimpernserum · 24 h wasserfest | LuxeStyle CH"
+    ],
+    [
+      "titel",
+      "Zigarettenhalter mit Band – Sofort Lieferbar",
+      "Zigarettenhalter mit Band"
+    ],
+    [
+      "titel",
+      "Sofort lieferbar: Thermobecher 500 ml",
+      "Thermobecher 500 ml"
+    ],
+    [
+      "titel",
+      "Thermobecher «Express» 500 ml",
+      "Thermobecher «Express» 500 ml"
+    ],
+    [
+      "text",
+      "Das Werkzeug ist sofort lieferbar und kommt mit einer umfassenden Ausstattung.",
+      "Das Werkzeug kommt mit einer umfassenden Ausstattung."
+    ],
+    [
+      "text",
+      "Das Kleid ist sofort lieferbar und in den Grössen S–XL erhältlich.",
+      "Das Kleid ist in den Grössen S–XL erhältlich."
+    ],
+    [
+      "text",
+      "Vielseitig einsetzbar für Einkauf, Expresslieferungen und mehr.",
+      "Vielseitig einsetzbar für Einkauf, Expresslieferungen und mehr."
+    ],
+    [
+      "eigen",
+      "🇨🇭 Schweizer Shop · Qualität geprüft Produktdetails",
+      "🇨🇭 Schweizer Shop Produktdetails"
+    ],
+    [
+      "eigen",
+      "Dieser meistverkaufte, nahtlose Casual Jumpsuit ist speziell für Damen.",
+      "Dieser nahtlose Casual Jumpsuit ist speziell für Damen."
+    ],
+    [
+      "eigen",
+      "Entdecke unser meistverkauftes Mini Bubble-Armband.",
+      "Entdecke unser Mini Bubble-Armband."
+    ],
+    [
+      "eigen",
+      "Diese meistverkaufte Reise-Schmuckbox ist ideal.",
+      "Diese Reise-Schmuckbox ist ideal."
+    ],
+    [
+      "eigen",
+      "🛍️ Das könnte dir auch gefallen: Wohnen & Deko · Bestseller",
+      "🛍️ Das könnte dir auch gefallen: Wohnen & Deko · Bestseller"
+    ],
+    [
+      "eigen",
+      "Unser absoluter Bestseller für den Winter.",
+      "Dieses Modell für den Winter."
+    ],
+    [
+      "eigen",
+      "Hol dir unseren Bestseller jetzt.",
+      "Hol dir dieses Modell jetzt."
+    ],
+    [
+      "titel",
+      "Geometrisches Schmuckset mit Kubischen Zirkonia – Passendes Halsketten-",
+      "Geometrisches Schmuckset mit Kubischen Zirkonia – Passendes Halsketten-"
+    ]
+  ],
+  "eigen_text_gross": [
+    [
+      "\\bUnser(?:e|en|em)?\\s+(?:absoluter?\\s+)?(?:Bestseller|Topseller)\\b",
+      "Dieses Modell"
+    ],
+    [
+      "\\bunser(?:e|en|em)?\\s+(?:absoluter?\\s+)?(?:Bestseller|Topseller)\\b",
+      "dieses Modell"
+    ]
+  ],
+  "_gross": "eigen_text_gross wird OHNE Ignorieren der Gross-/Kleinschreibung angewandt (Satzanfang bleibt gross); alle anderen Listen mit Flag i."
+}

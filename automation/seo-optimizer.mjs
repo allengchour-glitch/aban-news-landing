@@ -45,7 +45,7 @@ const clip = (s,n) => s.length<=n ? s : s.slice(0,n-1).replace(/\s+\S*$/,'')+'�
 function mkSeo(title){
   const base = title.replace(/\s*[·–—-]\s*/g,' – ').replace(/\s+/g,' ').trim();
   const seoTitle = clip(`${base} | LuxeStyle CH`, 60);
-  const seoDesc = clip(`${base} bei LuxeStyle – Schweizer Online-Shop, schnelle Lieferung. Jetzt –10% mit Code WELCOME10.`, 155);
+  const seoDesc = clip(`${base} bei LuxeStyle – Schweizer Online-Shop, Lieferung in die ganze Schweiz. Jetzt –10% mit Code WELCOME10.`, 155);
   return { title: seoTitle, description: seoDesc };
 }
 

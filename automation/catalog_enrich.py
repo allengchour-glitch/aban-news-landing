@@ -53,7 +53,7 @@ def mk_title(name):
         n=cut
     return (n.rstrip(" ,;:·–-")+" | LuxeStyle")[:70]
 def mk_desc(name):
-    return f"{clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, schnelle Lieferung (7–14 Tage), 30 Tage Rückgabe. −10% mit Code WELCOME10."[:315]
+    return f"{clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, Lieferung in die ganze Schweiz, 30 Tage Rückgabe. −10% mit Code WELCOME10."[:315]
 
 nodes=[]
 for f in sorted(glob.glob("/tmp/seonew_0*.txt")):

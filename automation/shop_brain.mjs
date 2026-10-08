@@ -57,7 +57,7 @@ const CAT = {
 const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{2190}-\u{21FF}\u{2300}-\u{23FF}]/gu;
 const clean = (s) => (s || "").replace(EMOJI, "").replace(/\s{2,}/g, " ").trim().replace(/[ ,;:·–-]+$/, "");
 function mkTitle(name){ let n=clean(name); if(n.length>50){let c=n.slice(0,50); if(c.includes(" "))c=c.slice(0,c.lastIndexOf(" ")); n=c.replace(/[ ,;:·–-]+$/,"");} return (n+" | LuxeStyle").slice(0,70); }
-const mkDesc = (name)=>`${clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, schnelle Lieferung (7–14 Tage), 30 Tage Rückgabe. −10% mit Code WELCOME10.`.slice(0,320);
+const mkDesc = (name)=>`${clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, Lieferung in die ganze Schweiz, 30 Tage Rückgabe. −10% mit Code WELCOME10.`.slice(0,320);
 const esc = (s)=>s.replace(/\\/g,"\\\\").replace(/"/g,'\\"');
 
 async function getToken(){

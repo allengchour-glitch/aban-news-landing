@@ -253,8 +253,34 @@ export function klimaSicher(o) {
   if (o && o.html) o.html = klimaSaeubern(o.html);
   return o;
 }
+// 08.10.2026 — LIEFER- UND EIGENVERSPRECHEN ohne Beleg (Betreiber «verbessere alles und sauber»): «Zigarettenhalter mit
+// Band – Sofort Lieferbar» kam als CJ-Neuimport zurück, obwohl der Bestand am 12.08. bereinigt war; «meistverkauft» und
+// «Qualität geprüft» stammen aus Lieferanten- bzw. Altvorlagen. CJ-Ware hat nie ein Schweizer Lager → Lieferversprechen
+// immer weg. EINE Regeldatei mit dem Wächter automation/versprechen_wache.py: automation/data/versprechen_regel.json.
+const VERSPRECHEN = JSON.parse(fs.readFileSync(new URL('./data/versprechen_regel.json', import.meta.url), 'utf8'));
+const vRegeln = (k, fl = 'gi') => (VERSPRECHEN[k] || []).map(([a, b]) => [new RegExp(a, fl), b]);
+const V_TITEL = vRegeln('liefer_titel'), V_SEO = vRegeln('liefer_seo'), V_TEXT = vRegeln('liefer_text');
+const V_EIGEN = vRegeln('eigen_text'), V_GROSS = vRegeln('eigen_text_gross', 'g');
+function vGlaetten(neu, alt) {
+  if (neu === alt) return alt;
+  neu = neu.replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;:!?])/g, '$1').replace(/\s*[–—·-]\s*(?=<\/|$)/g, '')
+    .replace(/([.,;:])\1+/g, '$1');
+  return alt === alt.trim() ? neu.trim() : neu;
+}
+const vAnwenden = (regeln, t) => { const alt = String(t || ''); let n = alt; for (const [rx, e] of regeln) n = n.replace(rx, e); return vGlaetten(n, alt); };
+export const versprechenTitel = (t) => { const n = vAnwenden(V_TITEL, t); return n === String(t || '') ? String(t || '') : n.replace(/^[\s–—·:-]+|[\s–—·:-]+$/g, ''); };
+export const versprechenSeo = (t) => vAnwenden(V_SEO, t);
+export const versprechenTextLiefer = (t) => vAnwenden(V_TEXT, t);
+export const versprechenTextEigen = (t) => vAnwenden(V_GROSS, vAnwenden(V_EIGEN, t));
+export function versprechenSicher(o) {
+  if (!o) return o;
+  if (o.title) { const t = versprechenTitel(o.title); if (t) o.title = t; }
+  if (o.html) o.html = versprechenTextEigen(versprechenTextLiefer(o.html));
+  return o;
+}
 export function textPolieren(o) {
   o = klimaSicher(o);   // 08.10.2026: alle drei CJ-Importer rufen textPolieren — EIN Einhängepunkt
+  o = versprechenSicher(o);   // 08.10.2026: Liefer-/Eigenversprechen (CJ = nie Schweizer Lager)
   if (!o || !o.html) return o;
   let h = o.html.replace(/<p>([\s\S]*?)<\/p>/gi, (m, inner) => {
     if (/<[a-z]/i.test(inner)) return m;                       // Auszeichnung: nicht anfassen

@@ -40,7 +40,7 @@ def mk_title(name):
 
 def mk_desc(name, ptype):
     n=clean(name)
-    base=f"{n}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, schnelle Lieferung (7–14 Tage), 30 Tage Rückgabe. −10% mit Code WELCOME10."
+    base=f"{n}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, Lieferung in die ganze Schweiz, 30 Tage Rückgabe. −10% mit Code WELCOME10."
     return base[:315]
 
 def load(files):
