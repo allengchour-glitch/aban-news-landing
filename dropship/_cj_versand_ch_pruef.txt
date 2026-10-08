@@ -5376,3 +5376,6 @@ retro-stiefel-mit-chunky-absatz-636100	2605090302521636600	16	15.32	ok	landeseit
 damen-booties-mit-massiver-sohle-winterfest-634300	2605071152471634800	16	11.37	ok	landeseite
 spitzschuh-blockabsatz-knochelstiefel-mit-schl-625000	2605070513241625500	16	13.52	ok	landeseite
 retro-hohenverstarkende-mid-calf-martin-boots-632100	2605061444121632800	16	13.76	ok	landeseite
+sequen-schuhe-mit-stilettoabsatz-uberknie-624600	2605060532111625100	16	15.92	ok	landeseite
+farbige-stiletto-over-the-knee-stiefel-631800	2605060359511632300	16	15.92	ok	landeseite
+hochzeitsschuhe-609200	2607060801221609900	16	14.96	ok	landeseite

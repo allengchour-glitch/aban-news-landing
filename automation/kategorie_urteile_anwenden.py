@@ -28,9 +28,10 @@ import kosmetik_fein as kos  # noqa: E402
 import kategorie_fein as kf  # noqa: E402
 
 GROB = os.environ.get("MODUS") == "grob"
-URTEILE = os.path.join(REPO, "dropship", "_kategorie_grob_2026-10-07.jsonl" if GROB else "_kategorie_urteile_2026-10-07.jsonl")
+# 08.10.2026: weitere Runden über URTEILE=/LEDGER= (Runde 3: Zweig-Widersprüche + Titelprobe-Reste, ALT=/tmp/taxo/r3)
+URTEILE = os.environ.get("URTEILE") or os.path.join(REPO, "dropship", "_kategorie_grob_2026-10-07.jsonl" if GROB else "_kategorie_urteile_2026-10-07.jsonl")
 ALT = os.environ.get("ALT", "/tmp/taxo/grob" if GROB else "/tmp/taxo/batch")   # Eingaben (Google-Wert zum Urteilszeitpunkt)
-LEDGER = os.path.join(REPO, "dropship", "_kategorie_grob.tsv" if GROB else "_kategorie_urteile.tsv")
+LEDGER = os.environ.get("LEDGER") or os.path.join(REPO, "dropship", "_kategorie_grob.tsv" if GROB else "_kategorie_urteile.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 SCHUTZ_G = ("tg-5-12-2", "aa-1-25", "el-13")
 

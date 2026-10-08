@@ -1069,7 +1069,12 @@ while true; do
           SCHARF=1 timeout 2400 python3 automation/kosmetik_fein.py 2>&1 | grep -E '^(KOSMETIK-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 900 python3 automation/rc_fein.py 2>&1 | grep -E '^(RC-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 1500 python3 automation/uhren_fein.py 2>&1 | grep -E '^(UHREN-FEIN|Kanarien|Google-Pfad)'; \
+          SCHARF=1 timeout 1500 python3 automation/titelprobe_fein.py 2>&1 | grep -E '^(TITELPROBE|Google-Pfad|Kanarien)'; \
+          SCHARF=1 timeout 2400 python3 automation/kleid_rock_tags.py 2>&1 | grep -E '^(KLEID-ROCK|Kanarien)'; \
           SCHARF=1 timeout 600 python3 automation/google_id_zu_name.py 2>&1 | grep -E '^(GOOGLE-ID|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+    # 08.10.2026 (Betreiber «weiter fein katalog verbessern»): titelprobe_fein.py — Kleidung/Schmuck, deren Titel der
+    # Google-Klasse widerspricht (142 «Dresses» waren Röcke/Blusen/Nachthemden), setzt Google + Shopify aus dem Titelwort;
+    # kleid_rock_tags.py bindet die Kollektionen «Kleider»/«Röcke» (Tags kategorie-kleid/-rock) an Kategorie + Titel.
     # 07.10.2026 (Betreiber «alles andere auch»): uhren_fein.py trennt Uhr/Smartwatch/Armband (Shopify aa-6-11/-12/-10-1),
     # google_id_zu_name.py übersetzt nackte Google-Nummern («567», «1») in Pfade (Titelwort zuerst).
     # 07.10.2026 (Betreiber «das muss perfekt sein» / «super mache mehr»): haar_fein.py löst Googles Sammelkorb «Hair Care» auf

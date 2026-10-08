@@ -43,23 +43,23 @@ TC = "gid://shopify/TaxonomyCategory/"
 
 # Ziel-Endung (letzter Teil des Shopify-Namens) → Pflichtwort im Titel. Wortfallen deutsch denken (Lehre 9b).
 TITELPROBE = {
-    "Dresses": r"kleid(?!er-?(?:organizer|bügel|sack|schrank|ständer|stange))|dress\b|\brobe\b|abaya|kaftan",
-    "Skirts": r"\brock\b|röcke|\w+rock\b|jupe|\bskirt|skort",
-    "Pants": r"hose|jeans|leggings|chino|jogger|pants\b|culotte|palazzo|capri",
+    "Dresses": r"kleid(?!er-?(?:organizer|bügel|sack|schrank|ständer|stange))|dress\b|(?<!nacht)(?<!garde)(?<!bade)robe\b|abaya|kaftan|cheongsam|qipao",
+    "Skirts": r"\brock\b|röck|\w+rock\b|jupe|\bskirt|skort",
+    "Pants": r"hose|jeans|leggings|chino|jogger|pants\b|culotte|palazzo|capri|trouser|pantalon",
     "Shorts": r"shorts|kurze hose|bermuda|hotpants",
     "Clothing Tops": r"shirt|top\b|bluse|hemd|pullover|pulli|hoodie|sweat|strick|cardigan|tunika|polo|tanktop|oberteil|body\b|crop|kapuze|rollkragen",
-    "Coats & Jackets": r"jacke|mantel|parka|blazer|sakko|jackett|anorak|windbreaker|trenchcoat|daunen|steppjacke|coat\b|cape\b|poncho",
-    "Vests": r"weste|gilet",
+    "Coats & Jackets": r"jacke|mantel|parka|blazer|sakko|jackett|anorak|windbreaker|trenchcoat|daunen|steppjacke|coat\b|cape\b|poncho|blouson",
+    "Vests": r"weste|gilet|\bvest\b",
     "Jumpsuits & Rompers": r"jumpsuit|overall|romper|einteiler|latzhose|playsuit",
     "Activewear": r"sport|yoga|fitness|lauf|training|gym|radler|radhose|leggings",
     "Swimwear": r"bikini|badeanzug|badehose|bade|swim|tankini|monokini|burkini|cover-?up|facekini|strand",
     "Fitness & General Exercise Equipment": r"fitness|hantel|yoga|widerstand|expander|springseil|trainings|gymnastik|bauchtrainer|klimmzug|reck\b|liegestütz|balance|massage-?ball|faszien|stepper|kettlebell|gewicht|sprossenwand|sit-?up|ab-?roller|pilates",
-    "Throw Pillows": r"kissen|polster",
+    "Throw Pillows": r"kissen|polster|pillow",
     "Backpacks": r"rucksack|backpack|daypack|ranzen",
     "Rings": r"\bring\b|ringe\b|\w+ring\b(?<!ohrring)(?<!schlüsselring)",
-    "Necklaces": r"halskette|kette|collier|anhänger|pendant|necklace|choker|halsband(?!.*(?:hund|katze))",
-    "Bracelets": r"armband(?!uhr)|armreif|armkette|bracelet|fusskettchen|armspange",
-    "Earrings": r"ohrring|ohrstecker|creolen|ohrh[äa]nger|ohrhaken|ohrclip|ear\s?cuff|ohrklemme",
+    "Necklaces": r"halskette|kette|kettchen|collier|anhänger|pendant|necklace|choker|halsband(?!.*(?:hund|katze))",
+    "Bracelets": r"armband(?!uhr)|armbänd|armreif|armkette|bracelet|fusskettchen|armspange",
+    "Earrings": r"ohrring|ohrstecker|creolen|ohrh[äa]nger|ohrhaken|ohrclip|ear\s?cuff|ohrklemme|hoops?\b|huggie",
 }
 # Grundsätzlich nie verfeinern (Google-Kategorie auf Sammelbegriffen unzuverlässig, gemessen 06.10.)
 NIE = set()
@@ -380,6 +380,17 @@ def selbsttest():
         (titel_ok("A > Jewelry > Earrings", "Elegante S925 Silber Ohrclips"), "Ohrclips ok"),
         (titel_ok("A > Clothing > Pants", "Freizeit-Sweatpants für Herren"), "Sweatpants ok"),
         (not titel_ok("A > Jewelry > Necklaces", "Goldener Armband · Damen"), "Kanarie: Armband ≠ Halskette"),
+        # 08.10.2026: Wortlücken aus der Titelprobe-Ablehnung (233) — Röckchen, Partnerarmbänder, Blouson, Trouser, Vest, Pillow
+        (titel_ok("A > Clothing > Skirts", "Pink-Lace-Röckchen"), "Röckchen ok"),
+        (titel_ok("A > Jewelry > Earrings", "Fächerförmige Doppelstreifen Huggie Hoops"), "Hoops ok"),
+        (titel_ok("A > Jewelry > Necklaces", "Elegantes Kreuzkettchen"), "Kettchen ok"),
+        (titel_ok("A > Jewelry > Bracelets", "Tiger Eye Partnerarmbänder aus mattem Achat"), "Armbänder ok"),
+        (titel_ok("A > Clothing > Pants", "Retro-Herren-Trouser"), "Trouser ok"),
+        (titel_ok("A > Clothing > Outerwear > Vests", "Strapless-Vest · Damen"), "Vest ok"),
+        (not titel_ok("A > Clothing > Outerwear > Vests", "Investment-Buch"), "Kanarie: Investment ≠ Vest"),
+        (not titel_ok("A > Clothing > Dresses", "Durchsichtige Nachtrobe"), "Kanarie: Nachtrobe ≠ Kleid"),
+        (not titel_ok("A > Clothing > Dresses", "Garderobe mit Spiegel"), "Kanarie: Garderobe ≠ Kleid"),
+        (titel_ok("A > Clothing > Dresses", "Elegante Damenrobe mit Taillenweite"), "Damenrobe ok"),
         (titel_ok("X > Unbekannt", "irgendwas"), "ohne Probe frei"),
     ]
     ok = sum(b for b, _ in t)

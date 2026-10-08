@@ -1,0 +1,5 @@
+{
+  "_zweck": "EINE Wortregel Kleid/Rock (08.10.2026) für kleid_rock_tags.py (Wächter) UND cj_category_fill.mjs (Importer, Tag beim Anlegen). Python re + JS RegExp, Flag i.",
+  "kleid": "kleid(?!er-?(?:organizer|bügel|sack|schrank|ständer|stange))|dress\\b|(?<!nacht)(?<!garde)(?<!bade)robe\\b|cheongsam|qipao|abaya|kaftan|tutu",
+  "rock": "(?<!shirt)(?<!hemd)(?<!hosen)(?:\\brock\\b|röck|\\w+rock\\b)|jupe\\b|\\bskirt|skort"
+}
