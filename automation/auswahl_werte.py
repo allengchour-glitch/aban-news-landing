@@ -389,6 +389,23 @@ def farbe_groesse_trennen(werte):
     return (out, namen.pop() if len(namen) == 1 else "Grösse")
 
 
+_GR_FOLGE = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "2XL", "XXXL", "3XL", "4XL", "5XL", "6XL", "7XL"]
+_WORT_FOLGE = ["Mini", "Sehr klein", "Klein", "Mittel", "Gross", "Sehr gross", "Übergrösse"]
+
+
+def groessen_rang(w):
+    """Sortierschlüssel: (Art, Wert). Art 9 = unbekannt (dann wird nicht umsortiert)."""
+    t = (w or "").strip()
+    if t.upper() in _GR_FOLGE:
+        return (0, {"XXL": 6.5, "XXXL": 8.5}.get(t.upper(), _GR_FOLGE.index(t.upper())))
+    if t in _WORT_FOLGE:
+        return (1, _WORT_FOLGE.index(t))
+    m = re.match(r"^(?:Gr\. )?(\d+(?:\.\d+)?)", t)
+    if m:
+        return (2, float(m.group(1)))
+    return (9, 0)
+
+
 OPTION_NAMEN = ("Farbe", "Grösse", "Ausführung", "Modell", "Typ", "Motiv", "Variante", "Volumen", "Länge", "Menge",
                 "Gewicht", "Leistung", "Akku", "Spannung", "Speicher", "Material", "Muster", "Stil")
 KI_NAMEN = {"Farbe", "Grösse", "Ausführung", "Modell", "Typ", "Motiv", "Variante", "Volumen", "Länge", "Menge", "Material",
@@ -466,6 +483,23 @@ def _zusammensetzen(vs, dims, fertig, n_st, titel, ki):
     if len({z[1] for z in zeilen}) != len(zeilen):
         return None, "zwei CJ-Varianten ergäben dieselbe Auswahl"
     optionen = [(namen[i], list(dict.fromkeys(abb[i][x] for x in dims[i]))) for i in range(len(dims))]
+    # Grössen in Grössenfolge (S, M, L statt CJ-Reihenfolge «L, XL, M») — aber nur, wenn die erste Kombination aller
+    # Optionen bei CJ existiert: productOptionsCreate hängt die Ursprungsvariante an die erste Kombination (08.10.2026).
+    neu = [(n, sorted(ws, key=groessen_rang) if n == "Grösse" and all(groessen_rang(w)[0] < 9 for w in ws) else ws)
+           for n, ws in optionen]
+    if neu != optionen and tuple(ws[0] for _, ws in neu) in {z[1] for z in zeilen}:
+        optionen = neu
+    elif neu != optionen:
+        # erste Kombination fehlt bei CJ → die Grösse der ersten CJ-Variante bleibt vorn, der Rest geordnet (die ersten
+        # Werte der übrigen Optionen sind ohnehin die der ersten CJ-Variante — dict.fromkeys in Zeilenfolge)
+        erste, alt = zeilen[0][1], optionen
+        optionen = []
+        for i, (n, ws) in enumerate(alt):
+            if n == "Grösse" and all(groessen_rang(w)[0] < 9 for w in ws):
+                ws = [erste[i]] + sorted([w for w in ws if w != erste[i]], key=groessen_rang)
+            optionen.append((n, ws))
+        if tuple(ws[0] for _, ws in optionen) not in {z[1] for z in zeilen}:
+            optionen = alt
     for n, ws in optionen:
         if not _eindeutig(ws) or any(len(w) > 40 for w in ws):
             return None, f"Werte der Option {n} nicht eindeutig/zu lang: {ws[:4]}"
@@ -698,8 +732,8 @@ def _v(*keys):
 
 KANARIEN = [
     (_v("Pink", "Red"), [("Farbe", ["Rosa", "Rot"])]),
-    (_v("White-70cm", "Blue-90cm", "White-80cm", "Blue-70cm"), [("Farbe", ["Weiss", "Blau"]), ("Grösse", ["70 cm", "90 cm", "80 cm"])]),
-    (_v("Green-L", "Green-S", "Sky Blue-L", "Sky Blue-S"), [("Farbe", ["Grün", "Himmelblau"]), ("Grösse", ["L", "S"])]),
+    (_v("White-70cm", "Blue-90cm", "White-80cm", "Blue-70cm"), [("Farbe", ["Weiss", "Blau"]), ("Grösse", ["70 cm", "80 cm", "90 cm"])]),
+    (_v("Green-L", "Green-S", "Sky Blue-L", "Sky Blue-S"), [("Farbe", ["Grün", "Himmelblau"]), ("Grösse", ["S", "L"])]),
     (_v("Red-EU", "Red-UK", "Blue-EU", "Blue-UK"), [("Farbe", ["Rot", "Blau"])]),
     (_v("Pink-Europlug", "Pink-American Standard Plug", "White-Europlug", "White-British Regulatory Plug"),
      [("Farbe", ["Rosa", "Weiss"])]),
@@ -707,8 +741,8 @@ KANARIEN = [
     (_v("Black-16inch", "Khaki-16inch", "Beige-16inch"), [("Farbe", ["Schwarz", "Khaki", "Beige"])]),
     (_v("Black-12 inch", "Black-13 inch", "Gray-12 inch", "Gray-13 inch"), [("Farbe", ["Schwarz", "Grau"]), ("Grösse", ["12 Zoll", "13 Zoll"])]),
     (_v("400ml", "800ml"), [("Volumen", ["400 ml", "800 ml"])]),
-    (_v("60x40x2.5cm", "45x30x2.5cm"), [("Grösse", ["60×40×2.5 cm", "45×30×2.5 cm"])]),
-    (_v("Black Large", "Black Small", "Gray Large", "Gray Small Size"), [("Farbe", ["Schwarz", "Grau"]), ("Grösse", ["Gross", "Klein"])]),
+    (_v("60x40x2.5cm", "45x30x2.5cm"), [("Grösse", ["45×30×2.5 cm", "60×40×2.5 cm"])]),
+    (_v("Black Large", "Black Small", "Gray Large", "Gray Small Size"), [("Farbe", ["Schwarz", "Grau"]), ("Grösse", ["Klein", "Gross"])]),
     (_v("Large Blue", "Small Size Black"), [("Farbe", ["Blau", "Schwarz"]), ("Grösse", ["Gross", "Klein"])]),
     (_v("Black-A", "Black-B", "White-A", "White-B"), [("Farbe", ["Schwarz", "Weiss"]), ("Typ", ["Typ A", "Typ B"])]),
     (_v("99001Style", "99002Style", "99003Style"), [("Modell", ["Modell 1", "Modell 2", "Modell 3"])]),
@@ -717,7 +751,7 @@ KANARIEN = [
     (_v("Khaki-85L", "Black-85L"), [("Farbe", ["Khaki", "Schwarz"])]),
     (_v("Blue-Below 20L", "Black-Below 20L"), [("Farbe", ["Blau", "Schwarz"])]),
     (_v("Army Green-large size", "Army Green-Small", "Black-large size", "Black-Small"),
-     [("Farbe", ["Armeegrün", "Schwarz"]), ("Grösse", ["Gross", "Klein"])]),
+     [("Farbe", ["Armeegrün", "Schwarz"]), ("Grösse", ["Klein", "Gross"])]),
     (_v("Ti'an Green-L", "Ti'an Green-XL", "Ti'an Green-2XL"), [("Grösse", ["L", "XL", "2XL"])]),
     (_v("Red Single Bag-20to35L", "Blue Single Bag-20to35L"), [("Farbe", ["Rot", "Blau"])]),   # gemeinsames «Single Bag» weg
     (_v("Purple Bunny-38x31x16CM", "Pink Bunny-38x31x16CM"), [("Farbe", ["Violett", "Rosa"])]),
@@ -727,6 +761,9 @@ KANARIEN = [
     (_v("Black-US", "Black-UK"), "kein EU-Stecker bei CJ"),
     (_v("Short Ellipse XS", "Long Almond M"), [("Ausführung", ["Kurz Oval · XS", "Lang Mandel · M"])]),
     (_v("Gold-17 Yards", "Gold-18 Yards"), [("Grösse", ["Gr. 17", "Gr. 18"])]),
+    (_v("L", "XL", "M"), [("Grösse", ["M", "L", "XL"])]),
+    (_v("Red-L", "Red-M", "Blue-L", "Blue-M"), [("Farbe", ["Rot", "Blau"]), ("Grösse", ["M", "L"])]),
+    (_v("Red-L", "Blue-M"), [("Farbe", ["Rot", "Blau"]), ("Grösse", ["L", "M"])]),     # Rot·M fehlt → L bleibt vorn
     (_v("Type A-Single basket", "Type B-Single basket"), [("Typ", ["Typ A", "Typ B"])]),
     (_v("Black-USB", "White-USB"), [("Farbe", ["Schwarz", "Weiss"])]),
     (_v("8901 Dark Brown", "8901 Light Brown"), [("Farbe", ["Dunkelbraun", "Hellbraun"])]),
@@ -737,7 +774,7 @@ KANARIEN = [
     (_v("green-One size", "Wathet-One size", "black-One size"), [("Farbe", ["Grün", "Hellblau", "Schwarz"])]),
     (_v("Silver Black", "Gold", "Black Gray"), [("Farbe", ["Silber-Schwarz", "Gold", "Schwarz-Grau"])]),
     (_v("Navy Blue", "Sapphire Blue"), [("Farbe", ["Marineblau", "Saphirblau"])]),
-    (_v("Pink Large Sized", "Small Pink", "Navy Blue Small", "Navy Blue Large Size"), [("Farbe", ["Rosa", "Marineblau"]), ("Grösse", ["Gross", "Klein"])]),
+    (_v("Pink Large Sized", "Small Pink", "Navy Blue Small", "Navy Blue Large Size"), [("Farbe", ["Rosa", "Marineblau"]), ("Grösse", ["Klein", "Gross"])]),
 ]
 
 
