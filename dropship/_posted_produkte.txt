@@ -179,3 +179,4 @@ slug:overknee-stiefel-mit-stretch-und-klobigem-absa
 slug:kabellose-kaffeemuhle-mit-usb-ladefunktion
 slug:uv-ozon-desinfektionsbox-fur-unterwasche-1987b1
 name:uvozondesinfektionsboxfürunterwäsche
+pid:15412408615297

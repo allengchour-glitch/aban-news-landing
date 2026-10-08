@@ -5921,3 +5921,16 @@ auto-mp5-player-mit-7-zoll-bildschirm-37f330	8E6AD684-DA64-4FBA-AEE1-C3E47505F85
 7-zoll-ruckfahrdisplay-a0bae2	B81837AC-8C40-4B1A-AB83-DED4FBE2654E	16	12.32	ok	landeseite
 fahrzeug-tracker-mit-gps-075522	2066805300371767297	0	-	KEINE CH-Option → DRAFT	landeseite
 karten-tracker-779202	2066811501312774145	7	5.35	ok	landeseite
+universal-navi-furs-auto-624200	2601080613551624400	7	27.61	ok	landeseite
+fahrzeug-tracker-mit-langer-akku-lebensdauer-244802	1988173077764296709	0	-	KEINE CH-Option → DRAFT	landeseite
+gps-ortungsgerat-fur-fahrzeuge-623800	2506200707031624000	7	6.58	ok	landeseite
+bluetooth-ortungstracker-568450	1881911431244705794	7	4.74	ok	landeseite
+gps-auto-ortungstracker-298432	1851094735503904768	7	8.25	ok	landeseite
+2-in-1-wireless-auto-adapter-559232	1788393046334251008	7	5.62	ok	landeseite
+laser-geschwindigkeitsmessgerat-303552	1770643506206355456	7	8.25	ok	landeseite
+kleiner-gps-tracker-879232	1413728485070999552	7	6.88	ok	landeseite
+obd-gps-locator-649024	1400267787435380736	16	6.01	ok	landeseite
+hud-display-furs-auto-285248	1395560381375713280	16	5.55	ok	landeseite
+gps-ortungsgerat-484480	1385108683352051712	7	5.52	ok	landeseite
+gps-auto-ortungsgerat-d21f56	9989BFE9-ECB7-49CE-842A-D2826C827751	7	8.48	ok	landeseite
+4-kamera-dashcam-675969	2058081844946722817	7	12.57	ok	landeseite
