@@ -321,3 +321,6 @@ gid://shopify/Product/16610185412999	zweiteiliges-damenkleid-mit-3d-effekt-62600
 gid://shopify/Product/16611385246087	sommer-shirt-retro-blumenmuster-manner-610500	Sommer Shirt Retro Blumenmuster Männer
 gid://shopify/Product/16611393241479	langarmliges-bodycon-kleid-mit-halte-raum-und-619400	Langärmliges Bodycon-Kleid mit Halte-Raum und Kragen
 gid://shopify/Product/16611667149191	nassfester-anti-diebstahl-rucksack-20-35-l-913600	Nassfester Anti-Diebstahl-Rucksack 20-35 L
+gid://shopify/Product/16611903177095	japanische-holzsandalen-mit-stoffoberteil-251392	Japanische Holzsandalen mit Stoffoberteil
+gid://shopify/Product/16611903963527	wollpullover-fur-hund-herbst-winter-900672	Wollpullover für Hund – Herbst/Winter
+gid://shopify/Product/16611917726087	hundepullover-aus-acryl-mehrfarbig-851648	Hundepullover aus Acryl, mehrfarbig
