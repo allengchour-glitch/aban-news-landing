@@ -20,7 +20,7 @@ geändert hat, werden übersprungen (frischer Export).
 (Ein Bereichsschutz «erste zwei ID-Stufen gleich → Shopify bleibt» wurde verworfen: er hätte auch richtige Umzüge wie
 Zahnbürste Skin Care → Oral Care blockiert — beide «hb-3».)
 """
-import collections, json, os, sys, time
+import collections, json, os, re, sys, time
 
 HIER = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
@@ -34,6 +34,25 @@ ALT = os.environ.get("ALT", "/tmp/taxo/grob" if GROB else "/tmp/taxo/batch")   #
 LEDGER = os.environ.get("LEDGER") or os.path.join(REPO, "dropship", "_kategorie_grob.tsv" if GROB else "_kategorie_urteile.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 SCHUTZ_G = ("tg-5-12-2", "aa-1-25", "el-13")
+
+
+def regel_vorrang(g_neu, titel, st):
+    import haar_fein, rc_fein, uhren_fein, titelprobe_fein
+    regeln = [(haar_fein.HC, lambda t: haar_fein.ziel(t)), (kos.K, lambda t: (f"{kos.K} > {z}" if (z := kos.ziel(t)) else None)),
+              (rc_fein.RC, lambda t: rc_fein.ziel(t)), (uhren_fein.W, lambda t: uhren_fein.ziel(t))]
+    for zweig, fn in regeln:
+        if g_neu == zweig or g_neu.startswith(zweig + " > "):
+            z = fn(titel)
+            z = z[0] if isinstance(z, tuple) else z
+            if z and z != g_neu:
+                st["regel-vorrang"] += 1; return True
+    if g_neu.startswith((titelprobe_fein.C, titelprobe_fein.J)) and not kf.titel_ok(g_neu, titel):
+        z = titelprobe_fein.ziel(titel, g_neu)
+        if z and z[0] != g_neu:
+            st["regel-vorrang"] += 1; return True
+    if re.search(r"diffus|aroma|befeuchter|vernebler|humidif", titel or "", re.I):
+        st["regel-vorrang"] += 1; return True          # aroma_kategorie (nach Produkttyp) hat den Vorrang
+    return False
 
 
 def main():
@@ -82,6 +101,10 @@ def main():
             st["nichts-zu-tun"] += 1; continue
         st[f"plan-{e}"] += 1
         plan.append((gid, g, sid))
+    # 08.10.2026 REGEL-VORRANG: Ein Einzelurteil darf keine tägliche Titelregel überstimmen — sonst kippt das Produkt jeden
+    # Tag hin und her (Prüfer meldete: Diffuser «Home Fragrance» vs aroma_kategorie «Humidifiers»). Liegt der NEUE Google-Wert
+    # im Zweig einer Regel und gibt die Regel für den Titel ein anderes Ziel, gewinnt die Regel (Urteil übersprungen).
+    plan = [x for x in plan if not regel_vorrang(x[1], jetzt[x[0].split("/")[-1]][2], st)]
     gs = kf.ids_pruefen({x[2] for x in plan})
     plan = [x for x in plan if x[2] in gs]
     print("Stand:", dict(st), "· Plan", len(plan))

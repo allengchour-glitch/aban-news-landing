@@ -5382,3 +5382,5 @@ hochzeitsschuhe-609200	2607060801221609900	16	14.96	ok	landeseite
 schleife-quadratische-spitze-niedriger-absatz-613000	2607040845111613700	16	11.37	ok	landeseite
 cowhide-minimalist-vielseitige-schuhe-611100	2607030506551612100	16	13.16	ok	landeseite
 leopard-print-spitzschuh-stiletto-pumps-fur-ab-546177	2072868154798432258	16	11.23	ok	landeseite
+ruckenriemen-spitzschuh-mit-bugel-624400	2607020838221625100	16	13.76	ok	landeseite
+chic-sandalen-mit-massiver-hacke-625500	2607020614101626800	16	12.81	ok	landeseite

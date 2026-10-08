@@ -7440,3 +7440,11 @@ gid://shopify/Product/15443243663745	ersetzt
 gid://shopify/Product/15443243696513	ersetzt
 gid://shopify/Product/15443243729281	ersetzt
 gid://shopify/Product/15443243762049	ersetzt
+gid://shopify/Product/15443245465985	ersetzt
+gid://shopify/Product/15443245597057	ersetzt
+gid://shopify/Product/15443245662593	ersetzt
+gid://shopify/Product/15443245760897	ersetzt
+gid://shopify/Product/15443495846273	ersetzt
+gid://shopify/Product/15443495879041	ersetzt
+gid://shopify/Product/15443496108417	ersetzt
+gid://shopify/Product/15443496141185	ersetzt
