@@ -740,3 +740,4 @@ gid://shopify/Product/15503234892161	ok	Multifunktionaler Lockenstab & Glättbü
 gid://shopify/Product/15503235940737	ok	Kabelloser Glätt- und Lockenkamm
 gid://shopify/Product/15503236366721	ok	Kabelloser Glättkamm mit Schnellaufheizung
 gid://shopify/Product/15503237742977	ok	Elektrischer Weinspender mit Belüfter
+gid://shopify/Product/15503284601217	ok	Herren Business-Uhr mit Kalender
