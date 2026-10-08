@@ -127,3 +127,7 @@
 15493923045761	Farbe:4:4	2026-10-08	leichter-business-rucksack-fur-reise-und-allta-612800
 15493922161025	Farbe:2+Grösse:2:4	2026-10-08	atmungsaktiver-leichter-schulrucksack-fur-kind-629700
 15493921046913	Farbe:2:2	2026-10-08	rc-drift-fahrzeug-mit-uberrollkafig-e12503
+15449461653889	Menge:3:3	2026-10-08	falsche-nagel-zum-aufkleben-627800
+15449461293441	Modell:14:14	2026-10-08	transparente-nagel-tips-614400
+15448834736513	Modell:17:17	2026-10-08	schimmernder-thermo-gel-nagellack-619200
+15445274263937	Modell:6:6	2026-10-08	as-nail-art-eternal-classic-farbgel-nagellack-621600
