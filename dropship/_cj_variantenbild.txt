@@ -6438,3 +6438,9 @@ gid://shopify/Product/15455887950209	zugeordnet	60	Blumen-Slip-Dress
 gid://shopify/Product/15455890735489	zugeordnet	60	Moderner Anti-Rutsch Chenille Sofabezug
 gid://shopify/Product/15455890932097	zugeordnet	72	Sportiv-Locker Kurzarm-Shirt mit Turn-Down Kragen
 gid://shopify/Product/15455891292545	zugeordnet	24	Retro-Kissenbezüge mit Jacquard-Muster
+gid://shopify/Product/15455891784065	zugeordnet	8	Sofa Rückenlehnenbezug amerikanischem Stil verlängert
+gid://shopify/Product/15455892373889	zugeordnet	10	Moderne Plüsch-Kissenhülle mit Jacquard-Muster
+gid://shopify/Product/15455892603265	zugeordnet	28	Wasserdichter Einheitsfarben-Sofabezug Set
+gid://shopify/Product/15455897354625	zugeordnet	1	Stillungs- und Liegekissen aus Baumwolle
+gid://shopify/Product/15455897682305	zugeordnet	16	Damen-Langarm-Weiten-Shirt
+gid://shopify/Product/15455898239361	zugeordnet	30	5-in-1 Lunchbox mit Schnellheizung für Zuhause und Auto
