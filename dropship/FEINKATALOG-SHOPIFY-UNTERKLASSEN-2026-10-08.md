@@ -56,3 +56,43 @@ Betreiber 08.10.: «weiter feinkategorie verbessern».
   Storage & Organization 484, Hardware > Tools 387, Arts & Entertainment 251 (Sticker; Printful setzt sie zurück, siehe
   `rueckfall-grob`).
 - Kein Betreiber-Klick nötig.
+
+## Runde 2 (08.10.2026, 16:20–17:30 UTC, Betreiber «weiter»)
+
+**GEMESSEN** (frischer Export 51'701 aktive): Auf einer Shopify-Klasse mit Unterklassen stehen noch 20'561 Produkte. Darin
+924 Hemden, die richtig auf «Shirts» stehen; darunter gibt es nur Henley und Dress Shirts.
+
+**GETAN:** 15 weitere Klassen in derselben Regeldatei. Vier Helfer entwarfen je Klasse die Regeln aus den echten Titeln, mit
+Kanarien, Stichproben über mehrere Seeds und Gleichlauf py = js mit 0 Abweichungen. Danach habe ich jede Klasse an
+Zufallsstichproben selbst geprüft. Nachgeschärft: Bügelfreie **Kurzarm**hemden sind keine Dress Shirts. Der Schreibweg setzt jetzt
+NUR die Shopify-Kategorie; die Kostüme haben bewusst keinen Google-Wert, die alte Fassung übersprang deshalb 1'557 von ihnen.
+**Kanarien gesamt 510/510.**
+
+**Geschrieben: 1'839 gesetzt / 0 Fehler (Bulk), Rücklesen 30/30.**
+
+| Klasse | grob vorher | eingeordnet | bleibt grob |
+|---|---:|---:|---:|
+| Rucksäcke | 1'651 | 400 (Laptop 221, Wandern 78, Schule 69, Militär 32) | 1'251 Mode-Rucksäcke (richtig) |
+| Sportbekleidung | 260 | 232 (Hosen 195, Tops 18, Bodys 10, Jacken 6, BH 2, Hoodie 1) | 28 |
+| Hundekleidung | 235 | 196 (Pullover 95, Jacken 32, Mäntel 31, Regen 8 …) | 39 |
+| Kostüme | 1'589 | 168 (Tops 53, Overalls 40, Umhänge 39, Sets 25, Kleider 11) | 1'421 (kein Formwort im Titel) |
+| Velozubehör | 175 | 167 (Licht 140, Taschen 26, Halter 1) | 8 |
+| Lidschatten | 175 | 163 (Paletten 140, flüssig/Stift 22, Glitzer 1) | 12 |
+| Portemonnaies | 163 | 151 (Geldbörsen 114, Kartenetuis 32, Münzbörsen 4, Reise 1) | 12 |
+| Katzenspielzeug | 175 | 145 (interaktiv 56, Bälle 52, Federn 9, Katzenminze 9 …) | 30 |
+| Hundebedarf | 160 | 47 (Spielzeug) | 113 (Fremdware: Autogurte, Gehhilfen, Schleckmatten) |
+| Hemden | 924 | 43 (Business/Anzug) | 881 Freizeithemden (richtig) |
+| Nageldeko | 185 | 40 (Folien 17, Strass 16, Pinsel 6, Sticker 1) | 145 |
+| Aufbewahrung | 484 | 39 | 445 |
+| Sporttaschen | 139 | 28 (Gym) | 111 Reisetaschen (richtig) |
+| Fitnessgeräte | 212 | 9 | 203 (Fremdware: Helme, EMS-Gurte, Camping) |
+| Ringe | 495 | 6 (Verlobung 4, Ehe 2) | 489 Modeschmuck (richtig) |
+
+**Nachbefunde (andere Zweige — `shopify_fein` zieht nur Eltern → Kind, nie über Zweige):**
+- ~95 **Dirndl/Lederhosen/Trachten** stehen unter «Kostüme»; richtig wäre «Traditional & Ceremonial Clothing».
+- Die meisten **«Nagelsticker»** in «Nail Art» sind laut Beschreibung **Press-on-Nägel** (Grössen XS–L, «10 Nägel + Kleber»), also «False Nails».
+- «Fitnessgeräte» und «Hundebedarf» enthalten Fremdware (Helme, EMS-Bauchgurte, Autogurte, Gehhilfen).
+Das sind Kandidaten für einen Zweig-Umzug mit eigener Regel (wie `google_kategorie_umzug` auf der Google-Seite).
+
+**Stand nach Runde 2:** Von den 20'561 groben Shopify-Klassen sind 1'839 verfeinert, also ~18'700. Davon ist ein grosser Teil
+richtig grob (Mode-Rucksäcke, Modeschmuck-Ringe, Freizeithemden, Reisetaschen, Kostüme ohne Formwort).
