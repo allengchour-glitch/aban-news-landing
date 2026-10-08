@@ -44,6 +44,23 @@
 
 
 
+## 2026-10-08 09:15 UTC · 📝 «verbessere weiter» (Tag 10 vorgezogen): Saison-Texte nach Messung, Mengen-Wächter, 0 tote Links
+
+**GEMESSEN:** 3 von 12 Mengenangaben in Kollektionstexten waren falsch gegen die AKTIVEN Produkte: «über 7'000» stand bei 4'913,
+«über 400» bei 368, «rund 160» bei 250. Der Weihnachten-Text sagte «grösster Teil Pullover», tatsächlich ist Partydeko die grösste
+Gruppe (97/250). Die Geschenkwelten versprachen «garantiert/sicher, hochwertig/handverlesen», obwohl ein Skript auswählt. Die
+Titel-ODER-Regel von «Winter & Kälte» zog 27/497 Fremdartikel herein (Boxhandschuhe, Lockenstab «mit Keramikheizung»,
+Wimpernzangen). Der Herbst-Ratgeber hatte 1'085 Zeichen. 2 tote Ratgeber-Ziele (CJ ohne CH-Linie → DRAFT) in 9 Artikeln.
+**GETAN:** `kollektion_mengen_wache.py` (täglich, 3/0, Kanarien 12/12); `saison_texte_2026_10_08.py` 7/7, Verbotswörter vor dem
+Schreiben geprüft; Ratgeber Herbst-Deko neu (14 Produkte live geprüft, Kerzenwärmer-Lampe = laut Text Nachtlicht → draussen),
+Weihnachten mit Abschnitt «Geschenkwelten 2026»; Projektor «Cosmos» → «Aurora» (einziger mit Fernbedienung+Timer; Text Galaxie →
+Nordlicht, Preis nur in Ankernähe), Portemonnaie-Listenpunkt raus (Ersatz «mit Airtag-Chip» = unbelegtes Versprechen) →
+BLOG-LINKS 0; `winter_kaelte_tags.py` + `data/winter_kaelte.json` (26/26), Abgleich vor dem Umstellen fand 2 Mäntel, die im 6 h
+alten Export fehlten → Wächter liest auch die Kollektionsmitglieder.
+**LEHRE:** Eine Zahl im Text ist eine Behauptung mit Verfallsdatum. Entweder ein Wächter führt sie nach, oder sie gehört nicht hinein.
+Vor jedem Regelwechsel einer Kollektion zuerst «heute vs. geplant» abgleichen (wer fällt raus, wer kommt dazu), nicht nur die Summe.
+Bericht `dropship/SEO-TAG10-2026-10-08.md`.
+
 ## 2026-10-08 07:30 UTC · 🔎 «weiter»: Google-Wächter zählte Targeting-Hinweise als Gratis-Eintrag-Blocker
 
 **GEMESSEN:** Von 1'114 «Free-Listings-Blockern» im Stand vom 07.10. waren 291 «Personalized advertising: …»-Meldungen.
@@ -18876,3 +18893,4 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · 📣 **«ja mach alles gratis sachen»: TikTok Median 280 Aufrufe/Post vs Pinterest 1 → TikTok 6 h + täglicher Abendpost 21–23 Uhr (×8 gemessen), Pinterest 48 h; Creator-Vorlage `dropship/CREATOR-ANFRAGE.md`; TikTok-Bio-Link erst ab 1'000 Followern (falsch empfohlen).** Vor Empfehlung Code lesen → Journal 06.10. 19:25
 - 2026-10-06 · ⏱️ **Keepalive: Fortura-Bestand PAUSE 16:42, 3,5 h kein Neuversuch — Aufseher loggt je Container-Stunde nur ~5 min, Block bei Zeile ~2260 nie erreicht → an den Rundenbeginn.** Kundenschutz-Blöcke nach vorn → Journal 06.10. 20:15
 - 2026-10-06 · 🗂️ **«feinkategorie und filter»: 38'433/50'914 aktive auf Shopify-Oberklassen (Typ-Signal) → `kategorie_fein.py` verfeinert über die Google-Kategorie + Shopifys offizielle Zuordnung (nur Nachfahren, Titelprobe: Rock→Dresses, Velolampe→Fitness kamen aus Google), ~22'600, color-pattern bleibt; Aufseher 6 h; Filter «Kategorie» = Betreiber-Klick.** Zwei Signale einig, sonst grob lassen → Journal 06.10. 19:30
+- 2026-10-06 · 👗 **«neue feinkategorien und filter»: Kollektionen gibt es schon (549); Filter nur per S&D-Klick, Werte per API → Standardfelder Kleider-/Rocklänge + Ärmellänge aktiviert (pin geht nicht), `kleider_merkmale.py` aus eindeutigen Titelwörtern, 484 gesetzt.** Werte füllen, Filter schaltet der Betreiber → Journal 06.10. 20:35
