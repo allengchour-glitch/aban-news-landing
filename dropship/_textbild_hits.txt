@@ -17336,3 +17336,4 @@ gid://shopify/Product/16611990962567	141->0	Warmpullover für Haustiere
 gid://shopify/Product/16611990995335	65->0	Strick-Hundepullover Regenbogen
 gid://shopify/Product/16611991224711	16->0	Weihnachtlicher Haustierpullover
 gid://shopify/Product/15513563922817	105->0	Chiffon Maxi-Kleid mit Spitze
+gid://shopify/Product/16612064362887	31->0	Post-It-Set mit Papier-Tasche

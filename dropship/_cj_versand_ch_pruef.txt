@@ -5762,3 +5762,19 @@ edelstahl-halskette-goutte-tropfen-anhanger-silber	-	-	-	unklar keine CJ-SKU	lan
 edelstahl-armreif-couleur-verstellbar-gold	-	-	-	unklar keine CJ-SKU	landeseite
 titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU	landeseite
 schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
+ohrstecker-minou-katzchen-925-silber	-	-	-	unklar keine CJ-SKU	landeseite
+ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+statement-ohrstecker-etincelle-blute-kristall	-	-	-	unklar keine CJ-SKU	landeseite
+halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
+oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
+ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
+anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
+mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+stickereikit-pflanzen-blumen-636300	2604281229031636800	16	6.48	ok	landeseite
+dmc-kreuzstich-set-pullover-tier-hase-394944	1626146173440503808	16	8.79	ok	landeseite
+diy-set-handgestrickter-schal-aus-wolle-121280	1604030389813784576	1	7.39	ok	landeseite
+aufbugler-buchstaben-und-zahlen-430977	2031176679285231617	0	-	KEINE CH-Option → DRAFT	landeseite
