@@ -5452,3 +5452,7 @@ anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
 mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 sommer-sandalen-mit-keilabsatz-618700	2606180251251619300	16	9.20	ok	landeseite
+fruhling-herbst-pumps-mit-spitzspitze-und-bloc-617300	2606171129401618000	16	11.60	ok	landeseite
+damenleder-pumps-berufsbekleidung-600100	2606170349141600700	16	11.37	ok	landeseite
+dicker-hacke-pumps-im-britischen-stil-606500	2606170122411607100	16	11.23	ok	landeseite
+schwarze-plus-grosse-schlankes-absatz-626800	2606160536021627500	16	15.20	ok	landeseite
