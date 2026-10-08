@@ -5911,3 +5911,11 @@ allround-dashcam-mit-4-linsen-325186	2058033128378822657	7	12.57	ok	landeseite
 3-kanal-dashcam-mit-bewegungsmelder-026754	1980170173198495745	0	-	KEINE CH-Option → DRAFT	landeseite
 2k-dashcam-mit-nachtsicht-802497	1979003680599437313	0	-	KEINE CH-Option → DRAFT	landeseite
 3-kanal-dashcam-mit-nachtsicht-739842	1979014340840431617	0	-	KEINE CH-Option → DRAFT	landeseite
+ruckfahrkamera-system-mit-7-bildschirm-775681	1965687286520467457	0	-	KEINE CH-Option → DRAFT	landeseite
+bluetooth-player-furs-auto-611700	2410110220121611900	7	5.69	ok	landeseite
+hud-display-fur-tesla-model-3-y-301824	1601120961787604992	16	7.43	ok	landeseite
+hd-nachtfahrkamera-051520	1379645023162863616	16	9.20	ok	landeseite
+ruckspiegel-dashcam-mit-2k-auflosung-205248	1355803338070953984	16	15.20	ok	landeseite
+klein-aber-leistungsstark-140-dashcam-8636b6	45186888-4995-458C-A747-AE6EC7F4FCCD	7	10.94	ok	landeseite
+auto-mp5-player-mit-7-zoll-bildschirm-37f330	8E6AD684-DA64-4FBA-AEE1-C3E47505F85F	16	15.56	ok	landeseite
+7-zoll-ruckfahrdisplay-a0bae2	B81837AC-8C40-4B1A-AB83-DED4FBE2654E	16	12.32	ok	landeseite
