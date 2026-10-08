@@ -13,6 +13,7 @@ echo Selbsttest ...
 %PY% tools\trading\krypto_bot\test_pilot.py >nul || (echo Selbsttest Pilot fehlgeschlagen - nichts gehandelt. & goto ende)
 %PY% tools\trading\krypto_bot\test_sammler.py >nul || (echo Selbsttest Sammler fehlgeschlagen - nichts gehandelt. & goto ende)
 %PY% tools\trading\krypto_bot\test_infos.py >nul || (echo Selbsttest Infos fehlgeschlagen - nichts gehandelt. & goto ende)
+%PY% tools\trading\krypto_bot\test_cockpit.py >nul || (echo Selbsttest Cockpit/KI fehlgeschlagen - nichts gehandelt. & goto ende)
 if not "%BINANCE_FUTURES_API_KEY%"=="" (
   echo Krypto-Pilot ^(BTC + ETH, Futures^) ...
   %PY% tools\trading\krypto_bot\pilot.py --lauf
@@ -24,6 +25,12 @@ if not "%BINANCE_API_KEY%"=="" (
   %PY% tools\trading\krypto_bot\eth_sammler.py --lauf
 ) else (
   echo ETH-Sammler uebersprungen: BINANCE_API_KEY fehlt.
+)
+if not "%ANTHROPIC_API_KEY%"=="" (
+  echo KI-Trader ^(Claude, nur Schattenkonto^) ...
+  %PY% tools\trading\krypto_bot\ki_trader.py --lauf
+) else (
+  echo KI-Trader uebersprungen: ANTHROPIC_API_KEY fehlt.
 )
 :ende
 if /i not "%~1"=="auto" pause

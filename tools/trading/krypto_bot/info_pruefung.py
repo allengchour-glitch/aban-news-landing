@@ -77,11 +77,12 @@ def aenderung(x, n):
     return [None if i < n or x[i] is None or not x[i - n] else x[i] / x[i - n] - 1 for i in range(len(x))]
 
 
-def flaggen(coin, tage, schwellen=None):
-    """Bedingungen je Tag (True/False/None = keine Daten) für einen Coin."""
+def flaggen(coin, tage, schwellen=None, nur_speicher=False):
+    """Bedingungen je Tag (True/False/None = keine Daten) für einen Coin. nur_speicher: nichts aus dem Netz nachladen."""
     sw = {**SCHWELLEN, **(schwellen or {})}
+
     def r(name, verzug=1):
-        return I.auf_tage(I.reihe(name), tage, verzug)
+        return I.auf_tage(I.reihe(name, nur_speicher=True) if nur_speicher else I.reihe(name), tage, verzug)
 
     fg, f7 = r("angst_gier"), schnitt(r(f"funding_{coin}"), 7)
     mvrv, vix = r(f"mvrv_{coin}"), r("vix")

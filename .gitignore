@@ -128,3 +128,4 @@ tools/trading/daten/ETH-USD.json
 tools/trading/daten/info_*.json
 data/krypto-pilot.json
 data/eth-sammler.json
+data/ki-trader.json

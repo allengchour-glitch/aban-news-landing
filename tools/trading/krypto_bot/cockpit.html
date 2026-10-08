@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Krypto-Cockpit</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f4f4f2; --panel:#fcfcfb; --line:#e3e2de; --grid:#ebeae6;
+  --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#7a7974;
+  --s-claude:#2a78d6; --s-pilot:#eb6834; --s-halten:#1baf7a;
+  --good:#0ca30c; --critical:#d03b3b; --warning:#fab219;
+  --r-s:8px; --r-c:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#111110; --panel:#1a1a19; --line:#2c2c2a; --grid:#262624;
+    --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#8d8c84;
+    --s-claude:#3987e5; --s-pilot:#d95926; --s-halten:#199e70;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111110; --panel:#1a1a19; --line:#2c2c2a; --grid:#262624;
+  --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#8d8c84;
+  --s-claude:#3987e5; --s-pilot:#d95926; --s-halten:#199e70;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:14px}
+h1{font-size:20px;margin:0;letter-spacing:-.01em}
+h2{font-size:13px;margin:0 0 10px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.pill{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;border:1px solid var(--line);color:var(--ink-2)}
+.pill.echt{border-color:var(--critical);color:var(--critical)}
+.zeit{color:var(--ink-3);font-size:13px;margin-left:auto}
+button{font:inherit;border-radius:var(--r-s);border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 14px;cursor:pointer}
+button.stop{background:var(--critical);border-color:var(--critical);color:#fff;font-weight:700}
+button:focus-visible{outline:2px solid var(--s-claude);outline-offset:2px}
+.raster{display:grid;gap:12px;grid-template-columns:repeat(12,1fr)}
+.karte{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-c);padding:14px;min-width:0}
+.w12{grid-column:span 12}.w8{grid-column:span 8}.w6{grid-column:span 6}.w4{grid-column:span 4}.w3{grid-column:span 3}
+@media (max-width:860px){.w8,.w6,.w4{grid-column:span 12}.w3{grid-column:span 6}}
+.kpi .zahl{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.kpi .unter{color:var(--ink-3);font-size:13px}
+.markt{display:flex;flex-direction:column;gap:8px}
+.kopf{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.kopf .name{font-size:18px;font-weight:700}
+.kopf .kurs{color:var(--ink-2)}
+.richtung{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:22px}
+.richtung .ic{font-size:16px}
+.r-long{color:var(--good)}.r-short{color:var(--critical)}.r-flach{color:var(--ink-3)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:14px}
+dt{color:var(--ink-3)}dd{margin:0;font-variant-numeric:tabular-nums}
+.hinweis{border-left:3px solid var(--warning);padding:4px 10px;color:var(--ink-2);font-size:14px}
+.brems{border-left-color:var(--critical)}
+.ki p{margin:6px 0;color:var(--ink-2);font-size:14px}
+.bar{height:6px;border-radius:999px;background:var(--grid);overflow:hidden;width:120px;display:inline-block;vertical-align:middle}
+.bar i{display:block;height:100%;background:var(--ink-3)}
+.lage{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.lage div{border:1px solid var(--line);border-radius:var(--r-s);padding:8px 10px}
+.lage b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.lage span{color:var(--ink-3);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--ink-3);font-weight:600}
+.tabelle{overflow-x:auto}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.legende{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-bottom:6px}
+.legende i,.punkt{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-s);padding:6px 9px;
+  font-size:12px;color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.18);display:none;white-space:nowrap;z-index:2}
+details{margin-top:8px;font-size:13px;color:var(--ink-2)}
+.leer{color:var(--ink-3);font-size:14px}
+footer{color:var(--ink-3);font-size:12px;margin:16px 0}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>🛩️ Krypto-Cockpit</h1>
+    <span id="modus" class="pill">…</span>
+    <span id="tg" class="pill" hidden>Telegram aktiv</span>
+    <span class="zeit" id="zeit"></span>
+    <button id="notaus" class="stop" type="button">Not-Aus</button>
+  </header>
+  <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — die Bots handeln nicht.</div>
+
+  <section class="raster" aria-label="Konto">
+    <div class="karte kpi w3"><h2>Konto</h2><div class="zahl" id="k-wert">—</div><div class="unter" id="k-start"></div></div>
+    <div class="karte kpi w3"><h2>Seit Start</h2><div class="zahl" id="k-seit">—</div><div class="unter">Futures-Konto (Pilot)</div></div>
+    <div class="karte kpi w3"><h2>Seit Vorwoche</h2><div class="zahl" id="k-woche">—</div><div class="unter">7 Tage</div></div>
+    <div class="karte kpi w3"><h2>Unter Höchststand</h2><div class="zahl" id="k-hoch">—</div><div class="unter">Abstand zum besten Kontostand</div></div>
+  </section>
+
+  <section class="raster" style="margin-top:12px" aria-label="Märkte" id="maerkte"></section>
+
+  <section class="raster" style="margin-top:12px">
+    <div class="karte w6 ki"><h2>🤖 Claude (Schattenkonto)</h2><div id="ki"></div></div>
+    <div class="karte w6"><h2>Claude gegen Pilot gegen Halten</h2><div id="c-vgl" class="chart"></div></div>
+  </section>
+
+  <section class="raster" style="margin-top:12px">
+    <div class="karte w6"><h2>Kontostand (Futures, Pilot)</h2><div id="c-konto" class="chart"></div></div>
+    <div class="karte w6"><h2>Backtest seit 2019 (Vergangenheit, log)</h2><div id="c-bt" class="chart"></div></div>
+  </section>
+
+  <section class="karte" style="margin-top:12px"><h2>Lagebild (nur Info — der Pilot handelt nur nach der MVRV-Bremse)</h2><div class="lage" id="lage"></div></section>
+
+  <section class="raster" style="margin-top:12px">
+    <div class="karte w8"><h2>Letzte Aufträge</h2><div class="tabelle" id="auftraege"></div></div>
+    <div class="karte w4"><h2>🪙 ETH-Sammler</h2><div id="sammler"></div></div>
+  </section>
+
+  <footer>Aktualisiert jede Minute aus den Logbüchern auf diesem PC. Backtest = Vergangenheit, keine Garantie. Keine Anlageberatung.</footer>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const fmtZahl = (x, s = 0) => x == null ? "—" : x.toLocaleString("de-CH", {minimumFractionDigits: s, maximumFractionDigits: s});
+const fmtPct = x => x == null ? "—" : (x >= 0 ? "+" : "") + fmtZahl(x * 100, 1) + " %";
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS = "http://www.w3.org/2000/svg";
+
+function richtung(h) {
+  if (h > 0) return `<span class="richtung r-long"><span class="ic" aria-hidden="true">▲</span>LONG ${fmtZahl(h, 2)}×</span>`;
+  if (h < 0) return `<span class="richtung r-short"><span class="ic" aria-hidden="true">▼</span>SHORT ${fmtZahl(-h, 2)}×</span>`;
+  return `<span class="richtung r-flach"><span class="ic" aria-hidden="true">■</span>FLACH</span>`;
+}
+
+// Linien-Diagramm: eine y-Achse, 2-px-Linien, ruhiges Raster, Fadenkreuz + Tooltip, Legende ab 2 Reihen, Tabelle.
+function linie(host, reihen, opt = {}) {
+  host.innerHTML = "";
+  reihen = reihen.filter(r => r.punkte && r.punkte.length > 1);
+  if (!reihen.length) { host.innerHTML = `<p class="leer">${opt.leer || "Noch keine Daten."}</p>`; return; }
+  const W = Math.max(280, host.clientWidth), H = 230, L = 58, R = W < 420 ? 76 : 118, T = 8, B = 24;
+  const tage = [...new Set(reihen.flatMap(r => r.punkte.map(p => p[0])))].sort();
+  const ix = new Map(tage.map((t, i) => [t, i]));
+  const werte = reihen.flatMap(r => r.punkte.map(p => p[1]));
+  const f = opt.log ? Math.log : (v => v);
+  let lo = f(Math.min(...werte)), hi = f(Math.max(...werte));
+  if (hi - lo < 1e-9) { lo -= 0.01; hi += 0.01; }
+  const pad = (hi - lo) * 0.06; lo -= pad; hi += pad;
+  const X = i => L + (W - L - R) * (tage.length > 1 ? i / (tage.length - 1) : 0.5);
+  const Y = v => T + (H - T - B) * (1 - (f(v) - lo) / (hi - lo));
+  const fy = opt.fmt || (v => fmtZahl(v, 2)), fa = opt.achse || fy;
+  if (reihen.length > 1) {
+    const lg = document.createElement("div"); lg.className = "legende";
+    lg.innerHTML = reihen.map(r => `<span><i style="background:var(${r.farbe})"></i>${esc(r.name)}</span>`).join("");
+    host.appendChild(lg);
+  }
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", opt.titel || "Diagramm");
+  let s = "";
+  for (let k = 0; k <= 3; k++) {
+    const v = opt.log ? Math.exp(lo + (hi - lo) * k / 3) : lo + (hi - lo) * k / 3, y = Y(v);
+    s += `<line x1="${L}" x2="${W - R}" y1="${y}" y2="${y}" stroke="var(--grid)" stroke-width="1"/>`;
+    s += `<text x="${L - 6}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--ink-3)">${esc(fa(v))}</text>`;
+  }
+  const xs = W < 520 ? [[0, "start"], [tage.length - 1, "end"]] : [[0, "start"], [Math.floor((tage.length - 1) / 2), "middle"], [tage.length - 1, "end"]];
+  xs.forEach(([i, a]) => { s += `<text x="${X(i)}" y="${H - 6}" text-anchor="${a}" font-size="11" fill="var(--ink-3)">${tage[i]}</text>`; });
+  reihen.forEach(r => {
+    const d = r.punkte.map((p, j) => `${j ? "L" : "M"}${X(ix.get(p[0])).toFixed(1)},${Y(p[1]).toFixed(1)}`).join("");
+    s += `<path d="${d}" fill="none" stroke="var(${r.farbe})" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  });
+  // Direktbeschriftung am Linienende (Text in Textfarbe, Punkt in Reihenfarbe), Überlappung vermeiden
+  const enden = reihen.map(r => ({r, y: Y(r.punkte.at(-1)[1]), v: r.punkte.at(-1)[1]})).sort((a, b) => a.y - b.y);
+  for (let k = 1; k < enden.length; k++) if (enden[k].y - enden[k - 1].y < 14) enden[k].y = enden[k - 1].y + 14;
+  enden.forEach(e => {
+    s += `<circle cx="${W - R + 8}" cy="${e.y}" r="4" fill="var(${e.r.farbe})"/>`;
+    s += `<text x="${W - R + 16}" y="${e.y + 4}" font-size="11" fill="var(--ink-2)">${esc(opt.kurz || W < 420 ? fy(e.v) : e.r.name + " " + fy(e.v))}</text>`;
+  });
+  s += `<line id="fk" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="var(--ink-3)" stroke-width="1" visibility="hidden"/>`;
+  s += `<rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent"/>`;
+  svg.innerHTML = s;
+  host.appendChild(svg);
+  const tip = document.createElement("div"); tip.className = "tip"; host.appendChild(tip);
+  const fk = svg.querySelector("#fk");
+  const zeige = ev => {
+    const pt = svg.getBoundingClientRect(), sx = W / pt.width;
+    const x = (ev.clientX - pt.left) * sx;
+    const i = Math.max(0, Math.min(tage.length - 1, Math.round((x - L) / (W - L - R) * (tage.length - 1))));
+    fk.setAttribute("x1", X(i)); fk.setAttribute("x2", X(i)); fk.setAttribute("visibility", "visible");
+    const zeilen = reihen.map(r => { const p = r.punkte.find(q => q[0] === tage[i]); return p ? `<div><span class="punkt" style="background:var(${r.farbe})"></span>${esc(r.name)}: <b>${esc(fy(p[1]))}</b></div>` : ""; }).join("");
+    tip.innerHTML = `<div style="color:var(--ink-3)">${tage[i]}</div>${zeilen}`;
+    tip.style.display = "block";
+    const px = X(i) / sx;
+    tip.style.left = (px > pt.width * 0.6 ? px - tip.offsetWidth - 12 : px + 12) + "px";
+    tip.style.top = (host.querySelector(".legende") ? 30 : 4) + "px";
+  };
+  svg.addEventListener("pointermove", zeige);
+  svg.addEventListener("pointerleave", () => { tip.style.display = "none"; fk.setAttribute("visibility", "hidden"); });
+  const det = document.createElement("details");
+  const zeilen = tage.slice(-30).reverse().map(t => `<tr><td>${t}</td>${reihen.map(r => { const p = r.punkte.find(q => q[0] === t); return `<td>${p ? esc(fy(p[1])) : "—"}</td>`; }).join("")}</tr>`).join("");
+  det.innerHTML = `<summary>Als Tabelle (letzte 30)</summary><div class="tabelle"><table><tr><th>Tag</th>${reihen.map(r => `<th>${esc(r.name)}</th>`).join("")}</tr>${zeilen}</table></div>`;
+  host.appendChild(det);
+}
+
+const relPct = v => fmtPct(v - 1);
+let letzterStand = null;
+
+function zeichne(d) {
+  letzterStand = d;
+  $("modus").textContent = d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
+  $("modus").className = "pill" + (d.modus === "ECHTGELD" ? " echt" : "");
+  $("tg").hidden = !d.telegram;
+  $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
+  $("notausHinweis").hidden = !d.notaus;
+  $("notaus").textContent = d.notaus ? "Not-Aus aufheben" : "Not-Aus";
+  $("notaus").className = d.notaus ? "" : "stop";
+  const k = d.konto;
+  $("k-wert").textContent = k ? fmtZahl(k.wert, 2) + " USDT" : "—";
+  $("k-start").textContent = k ? "seit " + k.start_tag : "noch kein Lauf mit Schlüssel";
+  $("k-seit").textContent = k ? fmtPct(k.seit_start) : "—";
+  $("k-woche").textContent = k ? fmtPct(k.seit_woche) : "—";
+  $("k-hoch").textContent = k ? fmtPct(k.unter_hoch) : "—";
+
+  $("maerkte").innerHTML = d.maerkte.length ? d.maerkte.map(m => `
+    <div class="karte w6 markt">
+      <div class="kopf"><span class="name">${esc(m.markt)}</span><span class="kurs">${fmtZahl(m.kurs)} USD · ${esc(m.stand)}</span></div>
+      ${richtung(m.hebel)}
+      ${m.bremse ? `<div class="hinweis brems">🛑 ${esc(m.bremse)} (Trend sagt short ${fmtZahl(Math.abs(m.hebel_roh), 2)}×)</div>` : ""}
+      <dl>
+        <dt>Trend</dt><dd>${m.schnitt && m.kurs > m.schnitt ? "über" : "unter"} ${m.trend_tage}-Tage-Schnitt (${fmtZahl(m.schnitt)})</dd>
+        <dt>Schwankung</dt><dd>${m.schwankung ? fmtZahl(m.schwankung * 100) + " %/Jahr" : "—"}</dd>
+        <dt>MVRV</dt><dd>${m.mvrv && m.mvrv.wert != null ? fmtZahl(m.mvrv.wert, 2) + " (" + esc(m.mvrv.tag) + ")" : "—"}</dd>
+        <dt>Stop</dt><dd>${m.hebel > 0 && m.stop_long ? fmtZahl(m.stop_long) : m.hebel < 0 && m.stop_short ? fmtZahl(m.stop_short) : "—"}</dd>
+        <dt>Lügendetektor</dt><dd>${m.detektor && m.detektor.skill_2j != null ? fmtZahl(m.detektor.skill_2j * 100) + " % der Zufallskopien geschlagen" + (m.detektor.ok ? "" : " ⚠️") : "—"}</dd>
+      </dl>
+    </div>`).join("") : `<div class="karte w12 leer">Noch kein Pilot-Lauf. Start: py tools\\trading\\krypto_bot\\pilot.py --lauf --trocken</div>`;
+
+  const ki = d.ki.letzter;
+  $("ki").innerHTML = ki ? ["btc", "eth"].map(c => `
+      <div style="margin-bottom:10px"><div class="kopf"><span class="name">${c.toUpperCase()}</span>${richtung(ki[c].position)}</div>
+      <p>${esc(ki[c].begruendung)}</p>
+      <div style="font-size:13px;color:var(--ink-3)">Sicherheit <span class="bar"><i style="width:${Math.round(ki[c].sicherheit * 100)}%"></i></span> ${fmtZahl(ki[c].sicherheit * 100)} %</div></div>`).join("")
+      + `<p>💬 ${esc(ki.kommentar)}</p><div style="font-size:12px;color:var(--ink-3)">${esc(ki.stand)} · ${esc(ki.modell)} · API-Kosten bisher ${fmtZahl(d.ki.kosten, 2)} USD</div>`
+    : `<p class="leer">Noch keine Einschätzung. ANTHROPIC_API_KEY setzen, dann: py tools\\trading\\krypto_bot\\ki_trader.py --lauf</p>`;
+  const v = d.ki.vergleich || {};
+  linie($("c-vgl"), [["Claude", "--s-claude"], ["Pilot", "--s-pilot"], ["Halten", "--s-halten"]].map(([n, f]) => ({name: n, farbe: f, punkte: v[n] || []})),
+    {fmt: relPct, titel: "Schattenkonto seit Claudes Start", leer: "Startet mit Claudes erster Einschätzung. Zwei Tage braucht es für die erste Linie."});
+  linie($("c-konto"), [{name: "Konto", farbe: "--s-pilot", punkte: d.kontostand}],
+    {fmt: x => fmtZahl(x) + " USDT", achse: x => fmtZahl(x), kurz: true, titel: "Kontostand in USDT", leer: "Noch kein Kontostand — kommt mit dem ersten --lauf mit Futures-Schlüssel."});
+  const bt = d.backtest || {};
+  linie($("c-bt"), [{name: "Pilot", farbe: "--s-pilot", punkte: bt["Pilot"] || []}, {name: "BTC halten", farbe: "--s-halten", punkte: bt["BTC halten"] || []}],
+    {log: true, fmt: relPct, achse: v => fmtPct(Math.round((v - 1) * 10) / 10), titel: "Backtest seit 2019", leer: "Backtest-Daten fehlen: einmal py tools\\trading\\krypto_bot\\pilot.py --backtest ausführen."});
+
+  const L = d.lage || {}, w = (n, f) => L[n] && L[n].wert != null ? f(L[n].wert) : "—", t = n => L[n] ? "Stand " + L[n].tag : "";
+  const fg = L.angst_gier && L.angst_gier.wert;
+  const fgWort = fg == null ? "" : fg <= 20 ? "extreme Angst" : fg < 45 ? "Angst" : fg <= 55 ? "neutral" : fg < 80 ? "Gier" : "extreme Gier";
+  $("lage").innerHTML = [
+    ["Angst & Gier", w("angst_gier", x => fmtZahl(x)), fgWort + " · " + t("angst_gier")],
+    ["Funding BTC", w("funding_btc", x => fmtZahl(x * 100, 4) + " %"), "je 8 h · " + t("funding_btc")],
+    ["Funding ETH", w("funding_eth", x => fmtZahl(x * 100, 4) + " %"), "je 8 h · " + t("funding_eth")],
+    ["MVRV BTC", w("mvrv_btc", x => fmtZahl(x, 2)), "unter 1 = kein Short · " + t("mvrv_btc")],
+    ["MVRV ETH", w("mvrv_eth", x => fmtZahl(x, 2)), "unter 1 = kein Short · " + t("mvrv_eth")],
+    ["VIX", w("vix", x => fmtZahl(x, 1)), "Angst an der Börse · " + t("vix")],
+    ["US-Zins 10 J.", w("zins10", x => fmtZahl(x, 2) + " %"), t("zins10")],
+  ].map(([n, x, u]) => `<div><span>${n}</span><b>${x}</b><span>${esc(u)}</span></div>`).join("");
+
+  $("auftraege").innerHTML = d.auftraege.length ? `<table><tr><th>Zeit</th><th>Markt</th><th>Seite</th><th>Menge</th><th>Status</th></tr>${d.auftraege.map(a =>
+    a.hinweis ? `<tr><td>${esc(a.zeit.replace("T", " ").slice(0, 16))}</td><td>${esc(a.symbol || "")}</td><td colspan="3" style="white-space:normal">${esc(a.hinweis)}</td></tr>`
+      : `<tr><td>${esc(a.zeit.replace("T", " ").slice(0, 16))}</td><td>${esc(a.symbol)}</td><td>${esc(a.seite)}${a.nur_verkleinern ? " (verkleinern)" : ""}</td><td>${esc(a.menge)}</td><td>${esc(a.status)}${a.modus === "ECHTGELD" ? " ⚠️" : ""}</td></tr>`).join("")}</table>`
+    : `<p class="leer">Noch keine Aufträge.</p>`;
+
+  const s = d.sammler;
+  $("sammler").innerHTML = s ? `<dl><dt>Käufe</dt><dd>${s.kaeufe}</dd><dt>Eingesetzt</dt><dd>${fmtZahl(s.eingesetzt, 2)} USDT</dd>
+      <dt>Gesammelt</dt><dd>${fmtZahl(s.eth, 5)} ETH</dd><dt>Ø-Preis</dt><dd>${fmtZahl(s.schnitt, 2)}</dd><dt>Gestakt</dt><dd>${fmtZahl(s.gestakt, 4)} ETH</dd></dl>`
+    : `<p class="leer">Noch keine Käufe. Start: py tools\\trading\\krypto_bot\\eth_sammler.py --lauf --trocken</p>`;
+}
+
+async function laden() {
+  try {
+    const r = await fetch("/api/stand", {cache: "no-store"});
+    zeichne(await r.json());
+  } catch (e) { $("zeit").textContent = "Cockpit-Server nicht erreichbar"; }
+}
+
+$("notaus").addEventListener("click", async () => {
+  const an = !(letzterStand && letzterStand.notaus);
+  if (an && !confirm("Not-Aus: Pilot-Positionen sofort schliessen und alle Bots stoppen?")) return;
+  const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an})});
+  const j = await r.json(); alert(j.meldung || j.fehler); laden();
+});
+addEventListener("resize", () => letzterStand && zeichne(letzterStand));
+laden(); setInterval(laden, 60000);
+</script>
+</body>
+</html>

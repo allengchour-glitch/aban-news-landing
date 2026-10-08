@@ -131,9 +131,11 @@ QUELLEN = {
 }
 
 
-def reihe(name, neu=False, max_alter_h=20):
+def reihe(name, neu=False, max_alter_h=20, nur_speicher=False):
     """{Datum: Wert} aus dem Zwischenspeicher, sonst aus dem Netz. Fällt das Netz aus, gilt der alte Stand."""
     datei = DATEN / f"info_{name}.json"
+    if nur_speicher:
+        return json.loads(datei.read_text()) if datei.exists() else {}
     frisch = datei.exists() and time.time() - datei.stat().st_mtime < max_alter_h * 3600
     if datei.exists() and (frisch and not neu):
         return json.loads(datei.read_text())
@@ -172,12 +174,12 @@ def auf_tage(d, tage, verzug=1):
     return out
 
 
-def lagebild(neu=False):
+def lagebild(neu=False, nur_speicher=False):
     """Heutige Werte aller Infos (was am Schluss von gestern bekannt war)."""
     heute = datetime.now(timezone.utc).date().isoformat()
     lage = {}
     for name in QUELLEN:
-        d = reihe(name, neu)
+        d = reihe(name, neu, nur_speicher=nur_speicher)
         if d:
             t, v = stand(d, heute, 2 if name == "bilanz" else 1)
             lage[name] = {"tag": t, "wert": v}
