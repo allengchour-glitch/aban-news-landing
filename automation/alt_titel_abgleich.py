@@ -29,6 +29,7 @@ sys.path.insert(0, HIER)
 
 SCHARF = os.environ.get("SCHARF") == "1"
 CAP = int(os.environ.get("CAP") or 100000)
+ZEIT_S = int(os.environ.get("ZEIT_S") or 2000)   # sauberes Ende VOR dem äusseren timeout (Bericht + Ledger bleiben ganz)
 EXPORT = os.environ.get("EXPORT") or "/tmp/versprechen_export.jsonl"
 LEDGER = os.path.join(REPO, "dropship", "_alt_titel_abgleich.tsv")
 BERICHT = os.path.join(REPO, "dropship", "ALT-TITEL-ABGLEICH.md")
@@ -115,7 +116,12 @@ def main():
     getan = fehler = produkte = 0
     arten, bsp = collections.Counter(), collections.defaultdict(list)
     led = open(LEDGER, "a", encoding="utf-8") if SCHARF else None
-    for pid in kand[:CAP]:
+    t0, rest = time.time(), 0
+    for nr, pid in enumerate(kand[:CAP]):
+        if time.time() - t0 > ZEIT_S:
+            rest = len(kand[:CAP]) - nr
+            print(f"ZEIT: {ZEIT_S} s um, {rest} Kandidaten für den nächsten Lauf", flush=True)
+            break
         p = gql(Q, {"id": pid})["product"]
         if not p or p["status"] != "ACTIVE" or POD.search(" ".join(p.get("tags") or [])):
             continue
@@ -145,14 +151,14 @@ def main():
         f.write(f"# Bild-Alt-Texte ↔ aktueller Titel — Stand {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC\n\n"
                 f"Regel: `automation/alt_titel_abgleich.py` (nur Schema «<Titel> – Bild N | LuxeStyle», POD/Editor ausgenommen, "
                 f"live entschieden). Export: {n_prod} aktive · Produkte {'geändert' if SCHARF else 'zu ändern'}: {produkte} · "
-                f"Alt-Texte: {getan} · Fehler: {fehler}\n\n")
+                f"Alt-Texte: {getan} · Fehler: {fehler} · offen für den nächsten Lauf: {rest}\n\n")
         for k, v in arten.most_common():
             f.write(f"## {k} ({v} Produkte)\n\n")
             for a, n in bsp[k]:
                 f.write(f"- «{a}» → «{n}»\n")
             f.write("\n")
     print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {produkte} Produkte, {getan} Alt-Texte "
-          f"{'gesetzt (gleich zurückgelesen)' if SCHARF else 'würden gesetzt'}, {fehler} Fehler · {dict(arten)}", flush=True)
+          f"{'gesetzt (gleich zurückgelesen)' if SCHARF else 'würden gesetzt'}, {fehler} Fehler, {rest} offen · {dict(arten)}", flush=True)
     return 1 if fehler else 0
 
 
