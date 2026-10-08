@@ -16,13 +16,13 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-07T19:33:09Z — SCHARF
+## Letzter Lauf 2026-10-08T15:40:59Z — SCHARF
 
-Gescannt 51470 aktive von 51458 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 162x gewartet, 1303 s gesamt.
+Gescannt 51701 aktive von 51701 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| arabische-shisha-mit-doppelrohr-580d31 | RAUCH | Typ Werkzeug & Heimwerken → Raucherzubehör; Kategorie → hg-19; +raucher,smoke-zubehoer; −heimwerken,werkzeug | ok |
+| baustein-luxuslimousine-auf-raedern-334528 | EINZEL | Kategorie → tg-5-7 | ok |
 
 ## Ledger gesamt
 
@@ -86,3 +86,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
+
+## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
+
+- arabische-shisha-mit-doppelrohr-580d31: keine Google-Meldung

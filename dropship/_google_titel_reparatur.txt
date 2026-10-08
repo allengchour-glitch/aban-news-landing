@@ -429,3 +429,5 @@
 2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	kategorie	gid://shopify/TaxonomyCategory/ha-15	gid://shopify/TaxonomyCategory/hg-19	ok
 2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	tags_dazu		raucher,smoke-zubehoer	ok
 2026-10-07T19:33:09Z	SCHREIB	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	RAUCH	tags_weg	heimwerken,werkzeug		ok
+2026-10-08T15:40:59Z	SCHREIB	gid://shopify/Product/15504006873473	baustein-luxuslimousine-auf-raedern-334528	EINZEL	kategorie	gid://shopify/TaxonomyCategory/tg-5-7-12	gid://shopify/TaxonomyCategory/tg-5-7	ok
+2026-10-08T15:40:59Z	NACHMESSUNG	gid://shopify/Product/16609737802119	arabische-shisha-mit-doppelrohr-580d31	-	google		keine Google-Meldung	ok
