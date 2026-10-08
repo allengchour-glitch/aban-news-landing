@@ -156,13 +156,22 @@ CFG = {
         echt=R(r"büro|schreibtisch|notizbuch|notizblock|mauspad|home-?office|kugelschreiber|füllfeder|gelstift|textmarker|"
                r"\blocher|tacker|hefter|aktenordner|ringordner|laptop-?(sleeve|ständer|stand|halter|tasche|hülle|tisch|unterlage|kühler|"
                r"kissen)|dokumentenmappe|stifthalter|stiftebox|stifteköcher|"
-               r"schreibunterlage|haftnotiz|büroklammer|tischorganizer|monitor|tastatur|schreibset|visitenkarten"),
+               r"schreibunterlage|haftnotiz|büroklammer|tischorganizer|monitor|tastatur|schreibset|visitenkarten|"
+               r"füller\b|füllhalter|bleistift\w*|\w*spitzer\b|aktenvernichter|papierzerstörer|tastenkappe\w*|keycaps?|"
+               r"\w*marker\b|post-?it|radiergummi|lineal\b|ordner\b|locher|\bmaus\b|handgelenkauflage|handballenauflage|"
+               r"etikettendrucker|taschenrechner|\w*rechner für büro|schreibtischlampe|schreibtischunterlage|stiftehalter"),
         ban=R(r"kleid|\brock\b|bluse|hose\b|hosen\b|shirt|blazer|pumps|schuh|lunchbox|becher|schale|snack|heizschal|\bschal\b|"
-              r"strickdecke|heizdecke|\bdecke\b|reispapier|prägefolie|etikettenpapier|thermodrucker|kinder|baby|hunde|katzen|"
+              r"strickdecke|heizdecke|\bdecke\b|reispapier|prägefolie|etikettenpapier|thermodrucker|kinder|baby|hunde|katzen(?!ohr)|"
+              r"vase\b|blumenvase|dekotablett|plüsch|"
               r"laptop-?rucksack|monitor-?arm für tv|büro-?damen|ohrring|halskette|armband|\bring\b|uhr\b|topf\b|kocher|pfanne"),
-        kern={"Büro & Home Office"},
+        # 08.10.2026 (Betreiber «verbessere alles und sauber»): Typ «Büro & Home Office» ist KEIN Beleg mehr — er stammt aus der
+        # groben Google-Kategorie der CJ-Gruppe (Sammelkorb, siehe data/buero_korb.json). GEMESSEN: Badebomben, Gartenfee,
+        # Golf-Adventskalender, Jakobsmuschel mit Perle, Glücksmünze, Halloween-Süssigkeitenschale, Regenschirm und
+        # Tischtennis-Kleber standen im Menü «Büro & Home Office». Jetzt zählt nur ein Bürowort im Titel (Liste erweitert um
+        # Schreibwaren ohne «Büro» im Namen: Füller, Bleistift, Spitzer, Aktenvernichter, Tastenkappen …).
+        kern=set(),
         fremd=MODE_SCHMUCK | {"Küche & Bar", "Haustierbedarf", "Heimtextilien", "Auto-Zubehör", "Baby & Kinder", "Kinder",
-                              "Kinderschuhe", "Wohnen & Deko", "Wellness & Aromatherapie"}),   # 05.10.: Schreibtisch-Luftbefeuchter sind kein Büromaterial
+                              "Kinderschuhe", "Wohnen & Deko", "Wellness & Aromatherapie", "Spielzeug & Spiele"}),   # 05.10.: Schreibtisch-Luftbefeuchter sind kein Büromaterial
 }
 
 

@@ -1309,6 +1309,18 @@ while true; do
       fi
     fi
   fi
+  # 🚚 VERSPRECHEN OHNE BELEG (08.10.2026, Betreiber «verbessere alles und sauber»): «schnelle Lieferung» in 107 Google-
+  # Beschreibungen bei 7–20 Werktagen, «Sofort Lieferbar» im Titel eines CJ-Neuimports, «Qualität geprüft», «meistverkauft».
+  # Täglich (eigener Bulk-Export mit Texten und SEO-Feldern); Regel automation/data/versprechen_regel.json, auch im Importer.
+  VSW=/tmp/versprechen_wache.log
+  if [ -f "$REPO/automation/versprechen_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VSW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$VSW"
+      ( cd "$REPO" && timeout 2400 python3 automation/versprechen_wache.py >> "$VSW" 2>&1 )
+      echo "$(date -u +%H:%M) VERSPRECHEN: $(grep -E '^FERTIG|Kanarien rot|Bulk' "$VSW" | tail -1)"
+    fi
+  fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:
   # Schuhe 5'498 ohne, 4'293 mit; Schmuck & Uhren 4'932 mit). Meldet Menü-Kollektionen ab 4'800, damit Importe sie nicht still kippen.
   FGW=/tmp/filtergrenze_wache.log
@@ -1349,6 +1361,8 @@ while true; do
       touch "$KR2L"
       ( cd "$REPO" && SCHARF=1 timeout 3300 python3 automation/kategorie_rein_2.py >> "$KR2L" 2>&1 )
       echo "$(date -u +%H:%M) kategorie_rein_2: $(grep -c '^==' "$KR2L") Kategorien geprüft · $(grep -c 'Bulk tags' "$KR2L") Bulk-Läufe · $(grep -c '⛔' "$KR2L") gestoppt"
+      # 08.10.2026: Typ «Büro & Home Office» nur für Büroware (CJ-Sammelkorb; Typ geht in den Google-Feed und den Typ-Filter)
+      [ -f "$REPO/automation/buero_korb_typ.py" ] && ( cd "$REPO" && SCHARF=1 timeout 600 python3 automation/buero_korb_typ.py 2>&1 | tail -1 >> "$KR2L" )
     fi
   fi
 # --- Dünne Produkttexte (< 40 Wörter) sachlich neu schreiben — täglich, NACH seo_voll_audit (05.10.2026) ---
