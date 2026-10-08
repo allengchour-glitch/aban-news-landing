@@ -38,6 +38,11 @@ SICHTBAR = ["herbst-favoriten", "halloween", "hype-jetzt", "bestseller", "neu-ei
 # Aenderung an GRUPPEN: automation/bewertungen_quote_probe.py an NIE gefragten Produkten laufen lassen.
 GRUPPEN = ["status:active AND product_type:Uhren", "status:active AND product_type:Schmuck",
            "status:active AND tag:kueche", "status:active AND tag:haustier"]
+# 08.10.2026 (Plan Tag 9 «Bewertungs-Import für Neuware»): GEMESSEN 2'695 aktive Neuimporte seit 01.10., geprüft 107 (4 %),
+# 8 mit Bewertung. Die Neuware kam in dieser Liste nur über die ersten 60 von «neu-eingetroffen» vor und stand hinter 711
+# ungeprüften sichtbaren Produkten. Sie trägt meist `CJ-<pid>` → der Kommentar-Abruf kostet keine CJ-Punkte
+# (cj_reviews_import.resolvePid). Darum: Neuware der letzten NEU_TAGE, neueste zuerst, im Reissverschluss mit den Reihen.
+NEU_TAGE = int(os.environ.get("NEU_TAGE", "21"))
 
 
 def gql(q, v=None):
@@ -69,14 +74,15 @@ def main():
         done = {l.split("\t")[0].strip() for l in open(LEDGER)}
     handles, gesehen = [], set()
 
-    def nimm(nodes):
+    def nimm(nodes, ziel=None):
+        ziel = handles if ziel is None else ziel
         for n in nodes:
             pid = n["id"].split("/")[-1]
             if pid in done or pid in gesehen:
                 continue
             if n.get("rc") and int(n["rc"]["value"]) > 0:
                 continue
-            gesehen.add(pid); handles.append(n["handle"])
+            gesehen.add(pid); ziel.append(n["handle"])
 
     # ZUERST die Produktseiten, auf denen tatsächlich jemand ankommt (30 Tage). Sie sind die
     # wertvollsten Bewertungsplätze des Shops: Suchbesucher haben Kaufabsicht, und die grösste
@@ -98,14 +104,34 @@ def main():
             nimm([n for n in r["nodes"] if n["status"] == "ACTIVE"])
     print(f"Landeseiten mit Verkehr, ohne Bewertung: {len(handles)}")
 
+    sichtbar, neuware = [], []
     for h in SICHTBAR:
         c = (gql('query($h:String!){collectionByHandle(handle:$h){products(first:60){nodes{id handle status '
                  'rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}}', {"h": h})
              .get("data") or {}).get("collectionByHandle")
         if not c:
             continue
-        nimm([n for n in c["products"]["nodes"] if n["status"] == "ACTIVE"])
-    print(f"sichtbar ohne Bewertung, noch ungeprüft: {len(handles)}")
+        nimm([n for n in c["products"]["nodes"] if n["status"] == "ACTIVE"], sichtbar)
+    print(f"sichtbar ohne Bewertung, noch ungeprüft: {len(sichtbar)}")
+
+    ab = time.strftime("%Y-%m-%d", time.gmtime(time.time() - NEU_TAGE * 86400))
+    cur = None
+    while True:
+        d = (gql('query($q:String!,$c:String){products(first:250,after:$c,query:$q,sortKey:CREATED_AT,reverse:true)'
+                 '{pageInfo{hasNextPage endCursor} nodes{id handle variants(first:1){nodes{sku}} '
+                 'rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}',
+                 {"q": f"status:active AND created_at:>={ab}", "c": cur}).get("data") or {}).get("products")
+        if not d:
+            break
+        nimm([n for n in d["nodes"] if ((n["variants"]["nodes"] or [{}])[0].get("sku") or "").upper().startswith("CJ")], neuware)
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        cur = d["pageInfo"]["endCursor"]
+    print(f"Neuware {NEU_TAGE} T ohne Bewertung, noch ungeprüft: {len(neuware)}")
+    # Reissverschluss: Neuware (kostenlos prüfbar, frisch im Google-Kanal) und sichtbare Reihen abwechselnd —
+    # keine der beiden Gruppen verhungert hinter der anderen.
+    for i in range(max(len(neuware), len(sichtbar))):
+        handles.extend(x[i] for x in (neuware, sichtbar) if i < len(x))
 
     for q in GRUPPEN:
         cur = None
@@ -120,7 +146,9 @@ def main():
                 break
             cur = d["pageInfo"]["endCursor"]
     open(ZIEL, "w").write("\n".join(handles) + "\n")
-    print(f"FERTIG: {len(handles)} Kandidaten → {ZIEL}")
+    # 08.10.2026: nicht mehr «FERTIG: …» — diese Zeile steht MITTEN im Lauf (danach kommt der Import), und der Aufseher
+    # liest «FERTIG» am Zeilenanfang als «Lauf beendet» (still_gestorben).
+    print(f"Arbeitsliste: {len(handles)} Kandidaten → {ZIEL}")
 
 
 if __name__ == "__main__":

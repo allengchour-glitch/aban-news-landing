@@ -196,7 +196,8 @@ async function jmPost(pid, r) {
 const numId = (gid) => String(gid).split('/').pop();
 // NACHHOLEN quittiert zusätzlich den Handle («h:…»): bewertungen_nachholen.sh führt seine Liste nach Handles und fand
 // die Zahlen-IDs nie — jedes Paket nach dem ersten meldete «Nichts zu tun» (24.09.). Eine «h:»-Zeile ist nie eine Zahl-ID.
-const quittiere = (pidNum, handle) => fs.appendFileSync(LEDGER, pidNum + '\n' + (NACHHOLEN && handle ? `h:${handle}\n` : ''));
+let _quittiert = 0;
+const quittiere = (pidNum, handle) => { fs.appendFileSync(LEDGER, pidNum + '\n' + (NACHHOLEN && handle ? `h:${handle}\n` : '')); _quittiert++; };
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 
 (async () => {
@@ -218,8 +219,10 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     after = conn.pageInfo.endCursor;
   }
   prods = prods.slice(0, LIMIT);
-  console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT})${DRY ? ' [DRY]' : ''}`);
-  if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
+  console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q.length > 300 ? q.slice(0, 300) + ` … (${ONLY.length} Handles)` : q}", LIMIT=${LIMIT})${DRY ? ' [DRY]' : ''}`);
+  // 08.10.2026: Schlusszeile immer «FERTIG …» bzw. «PAUSE …» — der Aufseher holt einen am Container-Neustart gestorbenen
+  // Lauf nur nach (still_gestorben), wenn ein beendeter Lauf erkennbar ist. Vorher «Fertig:»/«Nichts zu tun.».
+  if (!prods.length) { console.log('FERTIG: nichts zu tun.'); process.exit(0); }
 
   const ctok = await cjToken();
   if (!ctok) process.exit(0);
@@ -229,6 +232,13 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
   async function resolvePid(sku) {
     if (pidCache[sku]) return { pid: pidCache[sku], via: 'cache' };
+    // 08.10.2026: Eine rohe pid IST die pid — der Bestätigungs-Abruf `product/query?pid=` kostete 10 CJ-Punkte je Produkt
+    // und scheiterte, sobald der Punktetopf leer war (gemessen ab ~04:26 UTC bis Mitternacht) → «später erneut», jeden Tag.
+    // GEMESSEN 08.10.: 1'931 von 2'695 aktiven Neuimporten (seit 01.10.) tragen `CJ-<pid>`; geprüft waren 107. Der
+    // Kommentar-Abruf selbst kostet nichts (28.08.). Eine falsche pid liefert schlicht 0 Kommentare — nie fremde, denn die
+    // SKU hat unser Importer aus genau dieser pid gebaut (anders als die Stichwortsuche, siehe unten).
+    if (/^\d{15,}$/.test(sku) || /^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/.test(sku))
+      return { pid: sku, via: 'sku=pid' };
     // Ohne Punkte ist ein Nachschlag zwecklos — dann lieber sauber überspringen, statt das
     // Produkt fälschlich als «keine pid» ins Ledger zu schreiben und nie wieder anzusehen.
     if (punkteLeer) return null;
@@ -262,7 +272,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     return null;
   }
 
-  let totalReviews = 0, prodWith = 0, fails = 0;
+  let totalReviews = 0, prodWith = 0, fails = 0, quittiert = 0, ohnePunkte = 0;
   for (const p of prods) {
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
@@ -275,7 +285,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         // ⚠️ Nur quittieren, wenn CJ das Produkt WIRKLICH nicht kennt. Fehlten bloss die
         // Punkte, wäre die Ledger-Zeile eine Lüge und das Produkt für immer übersprungen —
         // dieselbe Falle wie beim Kosten-Backfill am 20.08. («falsch quittierte Zeilen»).
-        if (punkteLeer) { console.log(`· ${p.handle}: pid unbekannt und keine Punkte → später erneut`); continue; }
+        if (punkteLeer) { ohnePunkte++; console.log(`· ${p.handle}: pid unbekannt und keine Punkte → später erneut`); continue; }
         console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`);
         if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} }
         continue;
@@ -313,6 +323,11 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} }
     } catch (e) { fails++; console.error(`✗ ${p.handle}: ${e.message}`); }
   }
-  console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
+  quittiert = _quittiert;
+  // WEITER = volle Charge mit echtem Fortschritt → der Aufseher startet nach einer Stunde die nächste (fixer_keepalive.sh).
+  // Ohne Fortschritt (nur «keine Punkte») kein WEITER, sonst drehte sich der Lauf stündlich um dieselben Produkte.
+  const weiter = !DRY && prods.length >= LIMIT && quittiert >= 50;
+  console.log(`\nFERTIG: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e) · quittiert ${quittiert}/${prods.length}`
+    + `${ohnePunkte ? ` · ${ohnePunkte} ohne Punkte offen` : ''}${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}${weiter ? ' · WEITER' : ''}.`);
   process.exit(0);
 })();
