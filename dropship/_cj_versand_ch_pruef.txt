@@ -5599,3 +5599,4 @@ britische-martens-stiefel-602200	2602200204141602500	16	17.66	ok	landeseite
 herren-business-ankle-boots-610900	2602040336331611300	16	24.90	ok	landeseite
 braune-winterstiefel-fur-herren-639200	2602020533441639600	16	16.06	ok	landeseite
 sommerliche-herren-slipper-611500	2605250847421612000	16	11.24	ok	landeseite
+herren-leder-schuhe-beige-khaki-schwarz-607200	2604300246201607700	16	13.40	ok	landeseite
