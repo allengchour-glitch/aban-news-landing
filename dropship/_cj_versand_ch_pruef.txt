@@ -6033,3 +6033,6 @@ leder-lenkradbezug-608100	2605020510201608700	16	12.21	ok	landeseite
 sport-lederlenkradbezug-628100	2605020145351628600	16	15.87	ok	landeseite
 carbon-faser-lenkradgriffe-mit-leder-623500	2605010841281624000	16	16.16	ok	landeseite
 leder-lenkradbezug-rutschfest-627700	2604300229501628200	16	12.81	ok	landeseite
+carbon-faser-lenkradbezug-clip-on-griffe-613000	2604270819391613600	16	7.99	ok	landeseite
+perforierter-gripp-steuerungshulle-636700	2604270751271637600	16	9.47	ok	landeseite
+universal-lenkradbezug-636200	2604260740511636700	16	7.85	ok	landeseite
