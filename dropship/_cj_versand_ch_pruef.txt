@@ -5929,3 +5929,5 @@ gps-auto-ortungstracker-298432	1851094735503904768	7	8.25	ok	landeseite
 2-in-1-wireless-auto-adapter-559232	1788393046334251008	7	5.62	ok	landeseite
 laser-geschwindigkeitsmessgerat-303552	1770643506206355456	7	8.25	ok	landeseite
 kleiner-gps-tracker-879232	1413728485070999552	7	6.88	ok	landeseite
+obd-gps-locator-649024	1400267787435380736	16	6.01	ok	landeseite
+hud-display-furs-auto-285248	1395560381375713280	16	5.55	ok	landeseite
