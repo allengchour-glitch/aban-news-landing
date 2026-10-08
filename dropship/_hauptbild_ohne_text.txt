@@ -52780,3 +52780,8 @@ gid://shopify/Product/16610071019911	schon-sauber	0
 gid://shopify/Product/16610071183751	schon-sauber	0
 gid://shopify/Product/16610071544199	schon-sauber	0
 gid://shopify/Product/16610071970183	schon-sauber	0
+gid://shopify/Product/16610072232327	schon-sauber	1
+gid://shopify/Product/16610072625543	schon-sauber	0
+gid://shopify/Product/16610072658311	schon-sauber	0
+gid://shopify/Product/16610072887687	schon-sauber	3
+gid://shopify/Product/16610073018759	schon-sauber	0
