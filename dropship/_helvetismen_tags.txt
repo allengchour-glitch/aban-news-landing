@@ -355,3 +355,4 @@
 2026-10-07	gid://shopify/Product/16609707917703	natel	21-teiliges Handy-Demontage-Werkzeugset
 2026-10-07	gid://shopify/Product/16609739702663	trottinett	Wandhalterung für Scooter
 2026-10-07	gid://shopify/Product/16610069184903	finken	Gestreifte Hausschuhe mit dicker Sohle
+2026-10-08	gid://shopify/Product/16612105126279	natel	Handtasche für Handy – Einfarbig, PU-Leder
