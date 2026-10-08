@@ -6384,3 +6384,4 @@ gid://shopify/Product/15455792267649	zugeordnet	7	Tungsten-Ring mit Schalen-Einl
 gid://shopify/Product/15455792857473	zugeordnet	24	Einfarbiger Kurzarm-Lockerkleid mit Taschen
 gid://shopify/Product/15455793185153	zugeordnet	5	Fahrradlampe USB-ladbar · extrem hell, wasserdicht
 gid://shopify/Product/15455793643905	zugeordnet	2	Fahrrad-Nachtlicht mit USB-Ladung
+gid://shopify/Product/15455793676673	zugeordnet	2	Herren-Kreuzbodybag
