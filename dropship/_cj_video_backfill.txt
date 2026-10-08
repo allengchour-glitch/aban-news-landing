@@ -743,3 +743,4 @@ gid://shopify/Product/15503237742977	ok	Elektrischer Weinspender mit Belüfter
 gid://shopify/Product/15503284601217	ok	Herren Business-Uhr mit Kalender
 gid://shopify/Product/15504074244481	ok	Mini-Handventilator mit leisem Betrieb
 gid://shopify/Product/15504106619265	ok	Pizzaroller und Teiglocher
+gid://shopify/Product/15504120578433	ok	LED Schminkspiegel, doppelseitig mit Licht
