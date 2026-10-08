@@ -5600,3 +5600,14 @@ herren-business-ankle-boots-610900	2602040336331611300	16	24.90	ok	landeseite
 braune-winterstiefel-fur-herren-639200	2602020533441639600	16	16.06	ok	landeseite
 sommerliche-herren-slipper-611500	2605250847421612000	16	11.24	ok	landeseite
 herren-leder-schuhe-beige-khaki-schwarz-607200	2604300246201607700	16	13.40	ok	landeseite
+bequeme-casual-sneaker-621900	2604090846381622400	16	13.16	ok	landeseite
+manner-leder-sneaker-mit-hohen-boost-634200	2602021029081634600	16	15.20	ok	landeseite
+leichte-sommer-sneaker-604700	2601280901421605100	16	13.40	ok	landeseite
+leichte-herren-sneaker-631200	2601270903451631700	16	13.65	ok	landeseite
+retro-loafer-mit-schnalle-631100	2601210220301631600	16	11.00	ok	landeseite
+wanderschuhe-fur-herren-und-damen-619000	2601201010331619400	16	18.24	ok	landeseite
+farbblock-loafer-631100	2601080221181631300	16	13.28	ok	landeseite
+weisse-casual-sneaker-636800	2601070834381637000	16	14.96	ok	landeseite
+atmungsaktive-rindsleder-sneakers-mit-flacher-622200	2512120230221622600	16	17.28	ok	landeseite
+warmende-sportschuhe-fur-herren-622100	2512061158231622300	16	12.44	ok	landeseite
+leichte-loafers-fur-herren-638300	2512041150011638600	16	13.65	ok	landeseite

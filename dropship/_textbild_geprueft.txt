@@ -60236,3 +60236,7 @@ gid://shopify/Product/16611965895047	gid://shopify/MediaImage/77474669756807
 gid://shopify/Product/16611965927815	gid://shopify/MediaImage/77474670117255
 gid://shopify/Product/16611965960583	gid://shopify/MediaImage/77474670412167
 gid://shopify/Product/15447933550977	gid://shopify/MediaImage/69852653879681	bildtausch-sperre
+gid://shopify/Product/15503931310465	gid://shopify/MediaImage/70580956889473	bildtausch-sperre
+gid://shopify/Product/15509401764225	gid://shopify/MediaImage/70626926330241
+gid://shopify/Product/15510310748545	gid://shopify/MediaImage/70632936341889
+gid://shopify/Product/15512306352513	gid://shopify/MediaImage/70649348260225	bildtausch-sperre

@@ -17328,3 +17328,4 @@ gid://shopify/Product/16611935977863	60->0	Weicher Hundemäntel in Blau und Rot
 gid://shopify/Product/16611936010631	36->1	Hundekuscheldecke mit V-Ausschnitt, Streifen
 gid://shopify/Product/16611965731207	13->2	Hundestrickpullover mit Blumenmuster
 gid://shopify/Product/16611965763975	47->0	Hundemütze Herbst/Winter aus Wolle
+gid://shopify/Product/15509401764225	22->0	Elektrisches Mitesser-Sauggerät
