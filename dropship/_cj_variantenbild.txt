@@ -6428,3 +6428,7 @@ gid://shopify/Product/15455824904577	zugeordnet	12	Casual Pullover für Herren
 gid://shopify/Product/15455825035649	zugeordnet	12	Herren Langarm Pullover, dünn
 gid://shopify/Product/15455825232257	zugeordnet	10	Retro-Kardigan für Herren
 gid://shopify/Product/15455825297793	zugeordnet	28	Casual-Set mit Ruché-Textur
+gid://shopify/Product/15455825396097	zugeordnet	66	Woll-Pullover für Herren
+gid://shopify/Product/15455825527169	zugeordnet	15	Gradient-Farben Pullover
+gid://shopify/Product/15455825625473	zugeordnet	24	Woll-Kardigan mit Kragen und Knöpfen
+gid://shopify/Product/15455825723777	bild-urls-tot
