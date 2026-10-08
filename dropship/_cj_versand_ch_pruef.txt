@@ -5971,3 +5971,4 @@ doppel-ladegerat-567104	1509879568663064576	7	7.20	ok	landeseite
 uberspannungsschutz-686976	1384781088911659008	16	5.85	ok	landeseite
 auto-diebstahlalarm-198464	1354984023792947200	7	6.90	ok	landeseite
 notstarter-powerbank-1487f7	184C66A0-C843-4120-97A0-69A7C5F74A13	0	-	KEINE CH-Option → DRAFT	landeseite
+notstarter-mit-led-c9d41b	B102C4AF-0213-48FB-8F1C-537121FC2276	0	-	KEINE CH-Option → DRAFT	landeseite
