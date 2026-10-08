@@ -5323,3 +5323,6 @@ hohe-stiefel-612000	2606010228471612700	16	17.66	ok	landeseite
 gold-silber-stiefeletten-mit-spitze-627000	2605301002161627700	16	16.40	ok	landeseite
 dunne-martin-boots-mit-suede-607200	2605300938301607800	16	13.76	ok	landeseite
 hohe-stiefel-aus-wildleder-623600	2605280728581624200	16	17.66	ok	landeseite
+stilvolle-alltags-booties-608200	2605280336211608800	16	12.44	ok	landeseite
+ballett-sandalen-boots-mit-gurtelverschluss-un-530049	2059120939815776257	16	11.23	ok	landeseite
+western-stiefel-mit-stickerei-631900	2605251108431632500	16	12.68	ok	landeseite
