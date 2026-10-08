@@ -185,7 +185,7 @@
   "_gross": "eigen_text_gross wird OHNE Ignorieren der Gross-/Kleinschreibung angewandt (Satzanfang bleibt gross); alle anderen Listen mit Flag i.",
   "diamant": {
     "_zweck": "«Diamanten» als Verzierung bei Mode/Modeschmuck/Uhren/Taschen/Halsbändern/Pinseln = Strasssteine (bzw. Zirkonia, wenn der Text Zirkonia nennt). Echte Diamanten führt der Shop nicht (gemessen 08.10.: teuerstes Produkt mit «Diamant» CHF 150.90, ein Moissanit-Ring). Ersatz in der Form [Muster, Ersatz] mit $1 für die erste Gruppe (Python setzt \\1 ein). Drittes Element = Dativform (wenn vor dem Wort im selben Satz eine Dativ-Präposition steht, ohne Akkusativ-Präposition/Verb dazwischen: «aus Nieten, Diamanten und Prägungen» → «Strasssteinen»). Produkte mit Karat/VVS/Labor/Moissanit bleiben unberührt (Echtheitsangabe → Einzelprüfung, Bericht). Viertes Element = Singularform (schwaches Nomen: «mit einem grünen Diamanten» → «Strassstein»). «High-Carbon-Diamanten» (Lieferantenwort für Simulanten) → «Schmucksteine».",
-    "ausnahme_produkt": "diamond[- ]?painting|diamant-?malerei|diamantbild|diamant-?mosaik|\\b5d\\b|klemmbaustein|bausteine?|bausatz|diamantpartikel|partikel|schleif|schärf|feile|körnung|bohrer|trennscheibe|säge|abzieh|moissanit|wetzstein|harzdiamant|kristalldiamant|diamantstickerei|diamant-?stickerei|diamantkleber|diamant-?bild|diamant-?stift|labor|lab[- ]?grown|gezüchtet|karat|\\bct\\b|carat|vvs|\\bgia\\b|\\bigi\\b|tester|prüfgerät|leinwand|canvas|resin-?(?:rund-?)?diamant|nagellack|gel-?lack|farbgel|mikrodermabrasion|glasschneid|glas schneiden|drill",
+    "ausnahme_produkt": "diamond[- ]?painting|diamant-?malerei|diamantbild|diamant-?mosaik|\\b5d\\b|klemmbaustein|bausteine?|bausatz|diamantpartikel|partikel|schleif|schärf|feile|körnung|bohrer|trennscheibe|säge|abzieh|moissanit|wetzstein|harzdiamant|kristalldiamant|diamantstickerei|diamant-?stickerei|diamantkleber|diamant-?bild|diamant-?stift|labor|lab[- ]?grown|gezüchtet|\\d(?:[.,]\\d+)?[\\s-]*(?:karat|ct|carat)\\b(?![\\s-]*(?:gold|vergold))|vvs|\\bgia\\b|\\bigi\\b|tester|prüfgerät|leinwand|canvas|resin-?(?:rund-?)?diamant|nagellack|gel-?lack|farbgel|mikrodermabrasion|glasschneid|glas schneiden|drill",
     "ausnahme_kontext": "als (?:ein )?diamant|eines diamanten|wie (?:ein |echte )?diamant|an diamanten erinnern|diamant-?(?:design|muster|form|quadrat|optik|look|schliff|gitter|netz|brillanz|preis|grad|stein-kombination)|geometrisch\\w* diamant|echte diamanten\\?|diamond|(?:eines|des) (?:[^\\s<>.,;!?]+ ){0,2}diamanten|keine (?:echten )?diamanten|kein (?:echter )?diamant|nicht (?:um )?(?:echte )?diamant",
     "zirkon_beleg": "zirkon",
     "strass": [
@@ -502,6 +502,21 @@
         "Ovale Damenring mit Diamant-Setting",
         "",
         "Ovale Damenring mit Diamant-Setting"
+      ],
+      [
+        "Schlangenketten-Armband mit runden Diamanten",
+        "Wahlweise in Platin- oder 18-Karat-Vergoldung, mit 18 Karat Gold überzogen.",
+        "Schlangenketten-Armband mit runden Strasssteinen"
+      ],
+      [
+        "Ring mit Diamanten",
+        "Ein 4 Karat Stein im Radiant-Schliff.",
+        "Ring mit Diamanten"
+      ],
+      [
+        "Ring mit Diamanten",
+        "Mittelstein 0.5 ct.",
+        "Ring mit Diamanten"
       ]
     ],
     "dativ_vor": "\\b(?:mit|aus|von|vom|zu|zum|zur|bei|beim|nach|seit|samt|mitsamt|den)\\b(?:(?!\\b(?:für|durch|gegen|ohne|um|die|ist|sind)\\b)[^.!?;:<>])*$",

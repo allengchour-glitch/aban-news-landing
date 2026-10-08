@@ -324,3 +324,4 @@ gid://shopify/Product/16611667149191	nassfester-anti-diebstahl-rucksack-20-35-l-
 gid://shopify/Product/16611903177095	japanische-holzsandalen-mit-stoffoberteil-251392	Japanische Holzsandalen mit Stoffoberteil
 gid://shopify/Product/16611903963527	wollpullover-fur-hund-herbst-winter-900672	Wollpullover für Hund – Herbst/Winter
 gid://shopify/Product/16611917726087	hundepullover-aus-acryl-mehrfarbig-851648	Hundepullover aus Acryl, mehrfarbig
+gid://shopify/Product/16612324344199	glock-holster-mit-infrarot-ziel-c1f827	Glock-Holster mit Infrarot-Ziel

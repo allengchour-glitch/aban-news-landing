@@ -30,6 +30,12 @@ führt der Shop nicht. Treffer: Schmuck 206, Basteln & DIY 145 (Diamond Painting
   Mikrodermabrasion — und **alle Produkte mit Karat-, VVS- oder Labor-Angabe** (Echtheitsangabe → Einzelprüfung, Liste im
   Bericht `dropship/VERSPRECHEN-WACHE.md`; dort u. a. «Die Diamanten sind in D-E/VVS-Qualität gefasst» bei einem Ring).
 - Geändert: 112 Titel, 180 Texte, 108 SEO-Felder; live geprüft (Lederrucksack-Seite: H1 und Text «Strasssteinen»).
+- **Einzelprüfung (Karat/VVS/Labor), 5 Produkte:** «Verdrehter Ring mit Diamantbesatz» (CHF 85.90) schrieb «Die Diamanten sind
+  in D-E/VVS-Qualität gefasst» — bei CJ steht nur «Craftsmanship: Diamond setting», «Color: D-E/VVS, K-Gold» (Fasstechnik
+  und Variantenname, kein Stein) → «Ring mit Steinbesatz», «Goldfarbene Ausführung», Bilder mit. Lab-Grown-Armband: CJ
+  nennt «2 × 2 mm / 0.26 ct» — ein 2-mm-Brillant wiegt ~0.03 ct, die Karat-Zahl ist raus, «Lab-Grown» bleibt
+  (Lieferantenangabe). Zwei Armbänder waren nur wegen «18-Karat-Vergoldung» ausgenommen → Ausnahme greift jetzt nur bei
+  einer Zahl + Karat, die NICHT Gold meint (3 neue Kanarien, 58/58, py=js 452/0).
 - Wächter `automation/versprechen_wache.py` (täglich, alle Textfelder), Importer `versprechenDiamant` in
   `cj_copy_prompt.mjs` (`textPolieren`), Gleichlauf-Test `versprechen_gleichlauf_test.mjs`.
 
