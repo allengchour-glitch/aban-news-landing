@@ -5622,3 +5622,5 @@ atmungsaktive-wanderschuhe-623100	2509200255391623300	16	11.23	ok	landeseite
 schwarze-sneaker-fur-herren-606500	2509170712431606800	16	14.96	ok	landeseite
 retro-business-schuhe-615100	2509130813281615600	16	19.99	ok	landeseite
 sommerschuhe-mit-unsichtbarer-hohenverstarkung-609000	2508290956011609200	16	13.88	ok	landeseite
+retro-sneakers-herren-45-46-621600	2508170223271621800	16	11.12	ok	landeseite
+weisse-platform-schuhe-fur-herren-610100	2508050845281610300	16	11.37	ok	landeseite

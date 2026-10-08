@@ -651,10 +651,12 @@ export function kleidRockTag(katTag,title){
 // data/spielzeug_trennung.json. rc bleibt nur bei RC- oder Elektronik-Wort; Bau-/Puzzlewort ohne Elektronik → «Spielzeug & Spiele».
 const _ST=JSON.parse(fs.readFileSync(new URL('./data/spielzeug_trennung.json', import.meta.url),'utf8'));
 const ST_RC=new RegExp(_ST.rc,'i'), ST_EL=new RegExp(_ST.el,'i'), ST_BAU=new RegExp(_ST.bau,'i');
+const ST_RCB=new RegExp(_ST.rc_bau,'i'), ST_ELB=new RegExp(_ST.el_bau,'i');   // Bau-/Puzzletitel: Modellform ≠ Elektronik
 export function spielzeugTrennung(title,type,tags){
- const t=title||'';
- const tg=tags.filter(x=>!(x==='rc'&&!ST_RC.test(t)&&!ST_EL.test(t)));
- const ty=(type===_ST.typ_alt&&ST_BAU.test(t)&&!ST_EL.test(t))?_ST.typ_neu:type;
+ const t=title||'', bau=ST_BAU.test(t);
+ const rc=(bau?ST_RCB:ST_RC).test(t), el=(bau?ST_ELB:ST_EL).test(t);
+ const tg=tags.filter(x=>!(x==='rc'&&!rc&&!el));
+ const ty=(type===_ST.typ_alt&&bau&&!el)?_ST.typ_neu:type;
  return {type:ty,tags:tg};
 }
 const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP');process.exit(1);}

@@ -208,7 +208,90 @@
    [
     "rc"
    ]
+  ],
+  [
+   "Transporthelikopter Bausteine Modell",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "Retro Kamera Bausteine",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "Dinosaurier-Roboter Bausatz",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "3D Holzpuzzle Lasercut-Bausatz",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spielzeug & Spiele",
+   []
+  ],
+  [
+   "Programmierbarer Roboter Bausatz für Kinder",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "Modellauto Bausatz mit Fernsteuerung",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "14-in-1 Solar Roboter Bausatz",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
+  ],
+  [
+   "3D Holzpuzzle \"Baker Street\" mit Beleuchtung",
+   "Spass-Elektronik",
+   [
+    "rc"
+   ],
+   "Spass-Elektronik",
+   [
+    "rc"
+   ]
   ]
  ],
- "_regel_rc": "Tag rc (Kollektion «RC-Autos, Drohnen & Spass-Elektronik») bleibt bei RC-Wort ODER Elektronik-Wort; weg nur bei reinem Spielzeug"
+ "_regel_rc": "Tag rc (Kollektion «RC-Autos, Drohnen & Spass-Elektronik») bleibt bei RC-Wort ODER Elektronik-Wort; weg nur bei reinem Spielzeug",
+ "rc_bau": "ferngesteuert|fernsteuer|fernbedien|\\brc\\b|r/c|2[,.]4 ?ghz|remote",
+ "el_bau": "ferngesteuert|fernsteuer|fernbedien|\\brc\\b|programmier|\\bapp\\b|akku|batterie|usb|\\bled\\b|beleucht|leucht|solar|\\bmotor\\b|elektromotor|sound|bluetooth|sensor|elektrisch|elektronisch",
+ "_regel_bau": "Bei Bau-/Puzzletiteln beschreiben Helikopter/Kamera/Roboter/Laser(cut)/Musik(dose) oft nur das MODELL — dort zählen nur rc_bau/el_bau"
 }

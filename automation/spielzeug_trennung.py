@@ -25,6 +25,16 @@ REGEL = json.load(open(os.path.join(HIER, "data", "spielzeug_trennung.json"), en
 RC = re.compile(REGEL["rc"], re.I)
 EL = re.compile(REGEL["el"], re.I)
 BAU = re.compile(REGEL["bau"], re.I)
+RC_BAU = re.compile(REGEL["rc_bau"], re.I)      # 08.10.: bei Bau-/Puzzletiteln nennt «Helikopter/Kamera/Roboter» oft nur das Modell
+EL_BAU = re.compile(REGEL["el_bau"], re.I)
+
+
+def ist_rc(t):
+    return bool((RC_BAU if BAU.search(t) else RC).search(t))
+
+
+def ist_el(t):
+    return bool((EL_BAU if BAU.search(t) else EL).search(t))
 ALT, NEU = REGEL["typ_alt"], REGEL["typ_neu"]
 LEDGER = os.path.join(REPO, "dropship", "_spielzeug_trennung.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
@@ -33,8 +43,8 @@ SCHARF = os.environ.get("SCHARF") == "1"
 def import_regel(titel, typ, tags):
     """Wie spielzeugTrennung() im Importer (nur Titel bekannt) → (typ, tags)."""
     t = titel or ""
-    tags = [x for x in tags if not (x == "rc" and not RC.search(t) and not EL.search(t))]
-    if typ == ALT and BAU.search(t) and not EL.search(t):
+    tags = [x for x in tags if not (x == "rc" and not ist_rc(t) and not ist_el(t))]
+    if typ == ALT and BAU.search(t) and not ist_el(t):
         typ = NEU
     return typ, tags
 
@@ -42,9 +52,9 @@ def import_regel(titel, typ, tags):
 def waechter_regel(titel, typ, tags, kategorie):
     """Bestand: Kategorie ist gesetzt und stimmt (Building Toys, Puzzles …) → sie ersetzt das Bauwort."""
     t = titel or ""
-    neu_tags = [x for x in tags if not (x == "rc" and not RC.search(t) and not EL.search(t))]
+    neu_tags = [x for x in tags if not (x == "rc" and not ist_rc(t) and not ist_el(t))]
     neu_typ = typ
-    if typ == ALT and (kategorie or "").startswith("Toys & Games") and not EL.search(t):
+    if typ == ALT and (kategorie or "").startswith("Toys & Games") and not ist_el(t):
         neu_typ = NEU
     return neu_typ, neu_tags
 
@@ -82,6 +92,11 @@ def main():
         if typ != n["productType"] or weg:
             plan.append((pid, n["title"], n["productType"], typ, weg))
             st["typ"] += typ != n["productType"]; st["rc-weg"] += bool(weg)
+    # 08.10.: Die RC-Kollektion hatte zusätzlich «Titel enthält Bausteine» — Tag weg half nichts. Regeln mitprüfen (nur melden).
+    rs = (gql('{collectionByHandle(handle:"spass-elektronik"){ruleSet{rules{column condition}}}}')["collectionByHandle"] or {}).get("ruleSet") or {}
+    for r_ in rs.get("rules") or []:
+        if r_["column"] == "TITLE" and BAU.search(r_["condition"]) and not RC.search(r_["condition"]):
+            print(f"⚠️ RC-Kollektion zieht Bau-/Puzzle-Titel: «{r_['condition']}» (Regel entfernen, Altregel _spass_elektronik_regel_alt_2026-10-08.json)")
     print(f"Kandidaten {len(kand)} · Plan {len(plan)} · {dict(st)}")
     for x in plan[:12]:
         print(f"  {x[1][:55]:55} {x[2]} → {x[3]} · −{x[4]}")
