@@ -708,3 +708,12 @@ gid://shopify/Product/15500905709953	ok	USB-Ladebares Lithium-Batterie-Set AA
 gid://shopify/Product/15500909805953	ok	Kabelloser Glättkamm mit Negativ-Ionen
 gid://shopify/Product/15500929663361	ok	Sportliche Herrenuhr mit Chronograph
 gid://shopify/Product/15500929761665	ok	USB AA/AAA Lithium-Akku, 1.5V
+gid://shopify/Product/15500933366145	ok	Hundestraining-Kollektiv
+gid://shopify/Product/15500935496065	ok	Leuchthalsband für Hunde mit USB-Ladefunktion
+gid://shopify/Product/15500936282497	ok	3D Acryl Notiztafel mit LED-Beleuchtung
+gid://shopify/Product/15500955419009	ok	Fussheberorthese mit Airbag
+gid://shopify/Product/15500959809921	ok	Aroma Diffuser mit Fernbedienung
+gid://shopify/Product/15500972065153	ok	Automatischer Futterspender (5L)
+gid://shopify/Product/15501023084929	ok	Automatischer Lockenstab mit Temperaturregelung
+gid://shopify/Product/15501656752513	ok	Intelligente Hundeball
+gid://shopify/Product/15501657964929	ok	Automatisches Springball für Katzen
