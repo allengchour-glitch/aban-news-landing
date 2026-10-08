@@ -5952,3 +5952,12 @@ lenkradbezug-holzpragung-637600	2605261030211638300	16	11.00	ok	landeseite
 carbon-lenkradbezug-611100	2605191144061611800	16	13.42	ok	landeseite
 lenkradgriff-abdeckung-623100	2605151006061623800	16	13.42	ok	landeseite
 lenkradbezug-aus-kunstleder-633600	2605150314441634200	16	12.81	ok	landeseite
+suede-lenkradbezug-622300	2605120640251622800	16	12.21	ok	landeseite
+carbon-faser-lenkradbezug-615700	2605111044321616400	16	12.81	ok	landeseite
+lenkradbezug-universal-610100	2605080954531610700	16	8.79	ok	landeseite
+notstarter-akku-619700	2605151242511611800	0	-	KEINE CH-Option → DRAFT	landeseite
+tragbarer-reifenpump-597185	1978674841977483265	0	-	KEINE CH-Option → DRAFT	landeseite
+auto-notstarter-734913	1978660648558981121	0	-	KEINE CH-Option → DRAFT	landeseite
+auto-notstarter-12v-296258	1948993838596542466	0	-	KEINE CH-Option → DRAFT	landeseite
+carbon-zundschalter-608000	2507080538041608200	16	4.92	ok	landeseite
+auto-booster-800a-852098	1941034973008875522	0	-	KEINE CH-Option → DRAFT	landeseite
