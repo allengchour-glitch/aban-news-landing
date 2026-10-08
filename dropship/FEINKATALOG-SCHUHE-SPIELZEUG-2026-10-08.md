@@ -54,5 +54,21 @@ Taxonomie-Lücken (Version 2021): keine eigene Klasse für Küchenwaagen, Food-P
 - 1'662 Produkte ohne Google-Kategorie: 1'561 davon sind Kostüme, absichtlich nicht im Google-Kanal.
 - Die fünf Kollektionen «spielzeug-…» (Regel TYPE=Spielzeug) sind nicht im Onlineshop veröffentlicht.
 
-## Nachmessung
-(folgt)
+## Nachmessung (08.10. 10:55 UTC)
+
+| Messgrösse | vorher | nachher |
+|---|---:|---:|
+| Kollektion «Spass-Elektronik & RC» (alle / aktiv) | 1'446 / – | **726 / 466** |
+| Produkte mit Tag `rc` (aktiv) | 1'040 | **309** |
+| Typ «Spass-Elektronik» (aktiv) | 1'026 | **377** |
+| Typ «Spielzeug & Spiele» (aktiv) | 655 | **1'304** |
+| Oberklassen-Reste per Einzelurteil | 772 | **727 gesetzt / 0 Fehler** (Rücklesen 15/15), 39 «?», 6 Regel-Vorrang |
+| Schuhe auf grobem «Shoes» | 5'646 | 2'725 von 4'939 gesetzt / 0 Fehler (Lauf geht nach dem Container-Neustart weiter) |
+
+**Nachbefund beim Messen:** Die RC-Kollektion hatte zusätzlich die Regel «Titel enthält ‹Bausteine›». Damit wären alle
+Bausteine trotz entferntem Tag drin geblieben. Die Bedingung ist entfernt, die Altregel liegt in
+`_spass_elektronik_regel_alt_2026-10-08.json`. Der Wächter meldet künftig jede Bau-/Puzzle-Titelregel in dieser Kollektion.
+**Zweiter Nachbefund:** Bei Bau- und Puzzletiteln nennen «Helikopter», «Kamera», «Roboter», «Lasercut» und «Musik(dose)» meist
+nur das MODELL. Für diese Titel zählen deshalb nur echte Elektronik-Merkmale (`rc_bau`/`el_bau`: Fernsteuerung, programmierbar,
+Akku/USB, LED/Beleuchtung, Solar, Motor). Ergebnis: Kanarien 27/27, Gleichlauf 1'040/0, 23 Nachzügler gesetzt. Die
+22 Restfälle in der Kollektion wurden erst Sekunden vorher umgetaggt; Shopify berechnet die Mitgliedschaft im Hintergrund nach.
