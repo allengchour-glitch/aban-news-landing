@@ -5968,3 +5968,5 @@ notstart-hilfe-903680	1621777357608595456	0	-	KEINE CH-Option → DRAFT	landesei
 notstarter-12v-271424	1620265953768517632	0	-	KEINE CH-Option → DRAFT	landeseite
 auto-diebstahlschutz-630336	1530398613854236672	7	17.94	ok	landeseite
 doppel-ladegerat-567104	1509879568663064576	7	7.20	ok	landeseite
+uberspannungsschutz-686976	1384781088911659008	16	5.85	ok	landeseite
+auto-diebstahlalarm-198464	1354984023792947200	7	6.90	ok	landeseite

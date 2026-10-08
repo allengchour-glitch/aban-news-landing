@@ -53,12 +53,16 @@ ZEIT_S=1200`. Notbremse: Datei `dropship/_auswahl_scharf_aus`.
 
 ## Ergebnis heute (GEMESSEN)
 
-- **46 Produkte umgebaut, 0 Fehler, 0 Rückbau** (Ledger `dropship/_auswahl_nachgeruestet.txt`): 25 Farbe, 7 Farbe ×
+- **Stand 19:55 UTC: 131 Produkte umgebaut, 0 Fehler, 0 Rückbau** (drei scharfe Chargen 5 + 40 + 85). Erste Charge im Detail: **46 Produkte** (Ledger `dropship/_auswahl_nachgeruestet.txt`): 25 Farbe, 7 Farbe ×
   Grösse, je 1 Farbe × Typ / × Menge / × Akku / × Ausführung × Grösse, 14 mit KI-Werten.
 - Live (WebFetch luxestyle.ch): «Futterspender-Kreisel für Katze» zeigt Farbe Grün/Orange + Grösse M/L, Warenkorb aktiv;
   Admin: 4 Varianten mit CJ-SKU `CJYD2144249…`, eigenes Bild, Google color/size je Variante.
 - Von Hand nachgebessert: «Pedal» → «Fusshocker» (Sitzsack-Bezug), «100×80CM» → «100×80 cm» (Tatami-Bezug); Regeln
   nachgezogen (Einheiten-Normalisierung, «Pedal» kein Lehnwort).
+
+- Nachgezogen: Grössen in Grössenfolge (S, M, L statt «L, XL, M»; 11 Produkte nachsortiert); «104 key» wurde nach dem
+  Kürzen zu «Modell N» (Bedeutung weg) → Einheit «Tasten», keine Modell-Nummern aus weggekürzten Wörtern; Titel, der genau
+  einen Optionswert nennt («Tastatur mit 104 Tasten»), → MANUELL (Titel zuerst).
 
 ## Offen
 
