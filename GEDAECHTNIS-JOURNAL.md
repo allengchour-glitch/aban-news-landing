@@ -44,6 +44,27 @@
 
 
 
+## 2026-10-08 21:00 UTC · 🚚 «verbessere alles und sauber»: Versprechen ohne Beleg + Büro-Sammelkorb
+
+**Messung zuerst an der Seite mit Kaufwillen ohne Kauf** (Leinen-Set, 41 Sitzungen / 2 Warenkörbe / 0 Käufe): Google-
+Beschreibung «Schweizer Shop, schnelle Lieferung» bei «10–20 Werktage» im Text. Katalog: 106 SEO-Beschreibungen (alle 7–20
+Werktage), 1 «Sofort Lieferbar», 4 «Qualität geprüft», 6 «meistverkauft» → **118/0 bereinigt**, Regel
+`data/versprechen_regel.json` (19 Kanarien, py=js), Wächter `versprechen_wache.py` täglich + Importer `versprechenSicher`;
+5 Generatoren an der Quelle korrigiert. «Schweizer Lager» (174) war richtig — alles Fortura.
+**Büro & Home Office:** KERN-Typ machte Badebomben/Gartenfee/Golf-Adventskalender zu Menü-Mitgliedern → KERN aus,
+Bürowörter erweitert: 25 raus / 2 rein; `buero_korb_typ.py` 14 Typen nachgezogen; «Büro & Schreibwaren» auf `kat-buero`.
+
+**Lehren:**
+1. **Ein Einmal-Fix ohne Wächter kommt zurück.** `lieferzeit_widerspruch.py` (12.08.) las nur Titel/Text, lief einmal —
+   der Importer brachte «Sofort Lieferbar» als NEUES Produkt, und 5 Generatoren schrieben «schnelle Lieferung» in die
+   SEO-Felder. Jede Text-Klasse: Regeldatei + Wächter über ALLE Textfelder (Titel, Text, SEO-Titel, SEO-Beschreibung) +
+   Importer-Hook.
+2. **Ein Typ aus einer Sammelgruppe ist kein Beleg.** Der Typ wurde aus der groben Google-Kategorie abgeleitet; wer die
+   Kategorie korrigiert, muss den Typ UND jede Regel, die den Typ als Beleg nimmt (KERN), mitziehen.
+3. **Erst die Gegenprobe, dann die Regel:** «Schweizer Lager» klang wie dieselbe Klasse — gemessen 174/174 Fortura, richtig.
+
+→ `dropship/VERSPRECHEN-BUERO-2026-10-08.md`
+
 ## 2026-10-08 19:45 UTC · 🎨 «rot oder pink auswahl … ja fix das alles sehr sauber ganze katalog»: echte Auswahl statt Versprechen
 
 **Anlass:** Adventskalender-Geschenkbox — Text «in Rot oder Pink», im Shop EINE Variante. Gemessen: **5'511 aktive
@@ -18688,6 +18709,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-07 · 💳 **«bei bestellung sofort … paylink schicken»: CJ-Anlage lief schon (createOrderV2), Meldung nur im Log → `betreiber_push.py` (ntfy, Thema nie im Repo) aus `cj_order_engine.py` (angelegt + jeder Fehlerfall) + tägliche Erinnerung `cj_zahlung_offen.py`; Runner 20 → 5 min.** Link = CJ-Konsole (Bestellseiten-URL unbelegt) → Journal 07.10. 16:35
 - 2026-10-07 · 🧰 **Verbesserungsrunde: CJ-Gruppe «Werkzeug» stempelt alles als Hardware > Tools (110/490 Neuimporte in 4 h, 1'188 aktive, nur 566 mit Werkzeugwort: Kalimba, Regenschirm, Kerzenhalter, Auto-Diagnose) → `google_kategorie_umzug.py` Werkzeugwort-Schutz + 15 Kreuzregeln, Kanarien 65/65, 70 umgezogen/0 Fehler; Shop-Seite (Typ, Shopify-Kategorie, Tags) per `werkzeug_korb_shop.py` 80/0 nachgezogen, Aufseher direkt danach; an der Quelle: eine Regeldatei `data/werkzeug_korb.json` für Importer + Wächter, Gleichlauf 1'253 Titel 0 Abweichungen.** Ein Feld korrigiert = Geschwisterfelder prüfen; Sammelgruppe ≠ Warenurteil → `dropship/GOOGLE-WERKZEUG-SAMMELKORB-2026-10-07.md`
 - 2026-10-07 · 🖼️ **«das bild ist verzogen?»: IG-Karussell-Slide = Lieferanten-Infografik, von CJ auf 800×800 gestaucht (unser grund() hält das Verhältnis) → `automation/fremdtext.py` (OCR Grau + Schwellwert, ≥4 Wörter = raus) in Karussell, Einzelbild-Nachschub, Story, Bild-Reel; 15/48 fertige Sets `fremdtext-skip`. Nach Neustart erst Keepalive abwarten (Reset löschte die neue Datei).** Verzerrung zuerst am Quellbild messen → Journal 07.10. 10:30
 - 2026-10-06 · 🏷️ **Verbesserungsrunde: Search Console «shippingDetails/hasMerchantReturnPolicy fehlt» — Offer ohne beide Felder → Shop-weite Regel im Header-Organization (`google_org_richtlinien.py`: 30 T Rückgabe, CHF 7 / gratis ab 45), live gültig, Wächter gegen Versandtarif.** Globale Regel statt je Offer → `dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md`
