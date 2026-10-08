@@ -6313,3 +6313,9 @@ gid://shopify/Product/15455678103937	zugeordnet	18	Blumiges Kleid mit Schnürung
 gid://shopify/Product/15455678726529	zugeordnet	8	Dünn transparente Feinstrumpfhose – Casual und tailliert
 gid://shopify/Product/15455680266625	zugeordnet	12	Herren-PU-Jacke, wärmend & stylisch für Frühling/Autumn
 gid://shopify/Product/15455680659841	zugeordnet	30	Sport-Hoodie für Herren
+gid://shopify/Product/15455682134401	zugeordnet	98	Kinder-Cartoon-Outdoor-Schuhe
+gid://shopify/Product/15455682167169	zugeordnet	36	LED Leuchtschuhe 26-37 USB aufladbar Klettverschluss
+gid://shopify/Product/15455682199937	zugeordnet	36	Jungen Sneakers 7-16 Jahre
+gid://shopify/Product/15455682265473	zugeordnet	33	Handgestrickte Baby-Boots mit Weichsohlen
+gid://shopify/Product/15455682298241	zugeordnet	27	Warme Schneeschuhe für Kinder
+gid://shopify/Product/15455682396545	zugeordnet	51	Winter Plus Velours Kinder-Schneestiefel
