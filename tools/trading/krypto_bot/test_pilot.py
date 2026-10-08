@@ -64,10 +64,28 @@ pruefe("Schliessen wird nie gekappt", BF.plane(cfg2, 20000, 0.2, 50000, R, 0.0) 
 pruefe("Testnetz ist Standard", cfg["basis"] == BF.TESTNETZ_URL and not cfg["echtgeld"])
 pruefe("Echtgeld nur doppelt", not BF.einstellungen({"BINANCE_FUTURES_TESTNET": "false"})["echtgeld"]
        and BF.einstellungen({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["echtgeld"])
-pruefe("eingestellter Hebel 5 → 2", BF.einstellungen({"KRYPTO_MAX_HEBEL": "5"})["max_hebel"] == 2.0)
+pruefe("eingestellter Hebel 5 → 2", BF.einstellungen({"KRYPTO_MAX_HEBEL": "5"})["max_hebel"] == 2.0 and BF.einstellungen({"KRYPTO_RISIKO": "5"})["max_hebel"] == 2.0)
 
 pruefe("Gewicht 0.5: halbe Position je Markt", BF.plane(cfg, 20000, 0.0, 50000, R, 1.0, gewicht=0.5) == [("BUY", 0.1, False)],
        BF.plane(cfg, 20000, 0.0, 50000, R, 1.0, gewicht=0.5))
+
+# ── Risiko-Stufe (Hebel) ──
+import tempfile as _tf  # noqa: E402
+pruefe("Standard: Stufe 1, Ziel 40 %, Deckel 1", K.risiko({}) == {"stufe": 1.0, "ziel_vol": 0.40, "max_hebel": 1.0})
+pruefe("Stufe 2: Ziel 80 %, Deckel 2", K.risiko({"KRYPTO_RISIKO": "2"}) == {"stufe": 2.0, "ziel_vol": 0.80, "max_hebel": 2.0})
+pruefe("Stufe 10 wird auf 2 gekappt", K.risiko({"KRYPTO_RISIKO": "10"})["max_hebel"] == 2.0)
+pruefe("Unsinn → Stufe 1", K.risiko({"KRYPTO_RISIKO": "viel"})["stufe"] == 1.0 and K.risiko({"KRYPTO_RISIKO": "-3"})["max_hebel"] == 1.0)
+pruefe("altes KRYPTO_MAX_HEBEL wirkt nur als Deckel", K.risiko({"KRYPTO_MAX_HEBEL": "2"}) == {"stufe": 1.0, "ziel_vol": 0.40, "max_hebel": 2.0})
+with _tf.TemporaryDirectory() as _td:
+    _f = Path(_td) / "e.json"
+    _f.write_text('{"risiko": 1.5}')
+    pruefe("Cockpit-Einstellung wird gelesen", K.risiko({}, _f)["max_hebel"] == 1.5 and K.risiko({"KRYPTO_RISIKO": "1"}, _f)["stufe"] == 1.0)
+    _f.write_text("kaputt")
+    pruefe("kaputte Einstellungsdatei → Stufe 1", K.risiko({}, _f)["stufe"] == 1.0)
+pruefe("Broker übernimmt den Deckel der Stufe", BF.einstellungen({"KRYPTO_RISIKO": "1.5"})["max_hebel"] == 1.5)
+mittel = [100 * (1.001 ** i) * (1 + 0.0078 * ((-1) ** i)) for i in range(400)]  # rund 30 % Jahresschwankung
+h1, h_deckel, h2 = K.roh_hebel(mittel)[-1], K.roh_hebel(mittel, max_hebel=2.0)[-1], K.roh_hebel(mittel, max_hebel=2.0, ziel_vol=0.8)[-1]
+pruefe("Stufe 2 = alles doppelt: 1× → 1, nur Deckel 2 → ~1,3, Stufe 2 → 2", h1 == 1.0 and 1.1 < h_deckel < 1.6 and h2 == 2.0, (h1, h_deckel, h2))
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

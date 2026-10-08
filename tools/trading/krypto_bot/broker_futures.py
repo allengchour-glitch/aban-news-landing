@@ -6,7 +6,7 @@ Sicherungen:
   • Testnetz ist Standard (testnet.binancefuture.com). Echtes Geld NUR, wenn BEIDES gesetzt ist:
         BINANCE_FUTURES_TESTNET=false   und   KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"
   • Echtgeld: Erlaubt der Schlüssel Auszahlungen, handelt der Pilot NICHT (Rechteprüfung vor jedem Lauf).
-  • Hebel: KRYPTO_MAX_HEBEL (Standard 1), hart gedeckelt auf 2. Margin-Art ISOLATED: Verlust höchstens das Pfand der Position.
+  • Hebel: Risiko-Stufe 1 / 1,5 / 2 (Cockpit oder KRYPTO_RISIKO; altes KRYPTO_MAX_HEBEL wirkt als Deckel), hart gedeckelt auf 2. Margin-Art ISOLATED: Verlust höchstens das Pfand der Position.
   • Nur Einweg-Modus (kein Hedge), nur Marktaufträge; Verkleinern immer mit reduceOnly.
   • Stop an der Börse: STOP_MARKET closePosition auf den Markpreis, nach jedem Lauf neu gesetzt.
   • Höchstens KI_BOT_ANTEIL (Standard 0.5) des Kontos, je Auftrag höchstens KI_BOT_MAX_AUFTRAG USDT (Standard 1000).
@@ -44,10 +44,8 @@ class BinanceFehler(urllib.error.HTTPError):
 def einstellungen(env=None):
     env = os.environ if env is None else env
     echt = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == ECHTGELD_SATZ
-    try:
-        hebel = float(env.get("KRYPTO_MAX_HEBEL") or "1")
-    except ValueError:
-        hebel = 1.0
+    import pilot_kern as K
+    hebel = K.risiko(None if env is os.environ else env)["max_hebel"]
     return {
         "key": env.get("BINANCE_FUTURES_API_KEY", ""), "secret": env.get("BINANCE_FUTURES_API_SECRET", ""),
         "basis": env.get("BINANCE_FUTURES_URL") or (ECHT_URL if echt else TESTNETZ_URL),

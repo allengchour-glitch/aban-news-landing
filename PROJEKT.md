@@ -43,6 +43,11 @@
   Terminal. `POST /api/aktion` nur Whitelist `AKTIONEN`, Start als Prozess (`sys.executable`, `PYTHONIOENCODING=utf-8`) **im
   Hintergrund-Thread → 202**, Browser pollt `/api/protokoll` (Erstlauf lädt alle Markt-Infos > 2 min, das hält kein Request).
   Tests 49 (Mutation 3/3).
+- **„Hoher Hebel" (2026-10-08) → bleibt 1× Standard, 2× hart:** `hebel_pruefung.py` (Regel vorab): alles × L ab 2019
+  1× +36 %/−35 %, 1,5× +50 %/−51 %, 2× +56 %/−67 %, 3× +57 %/−86 %, 5× −99 %, 10× −100 %; nur Deckel höher ≈ nichts.
+  Keine Stufe bestanden. Dafür **Risiko-Stufe 1 / 1,5 / 2** als Nutzer-Wahl: `pilot_kern.risiko()` (KRYPTO_RISIKO >
+  `data/krypto-einstellungen.json` vom Cockpit > altes KRYPTO_MAX_HEBEL als Deckel), Pilot UND Broker lesen dieselbe Funktion
+  (sonst kappt der Broker auf 1×!). Datei nur lesen, wenn env nicht explizit übergeben (Tests bleiben vom PC unabhängig).
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

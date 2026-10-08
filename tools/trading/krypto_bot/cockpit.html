@@ -91,6 +91,13 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .knoepfe button.primaer small{color:rgba(255,255,255,.8)}
 .knoepfe button:hover:not(:disabled){border-color:var(--ink-3)}
 .knoepfe button:disabled{opacity:.55;cursor:progress}
+.risiko{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 12px}
+.stufen{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-s);overflow:hidden;flex-wrap:wrap}
+.stufen button{border:0;border-radius:0;padding:8px 12px;text-align:left;background:transparent;display:flex;flex-direction:column;gap:1px;min-width:150px}
+.stufen button small{color:var(--ink-3);font-size:11.5px}
+.stufen button[aria-pressed="true"]{background:var(--grid);font-weight:800}
+.stufen button[data-s="2"][aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--critical)}
+.stufen button[data-s="1.5"][aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--warning)}
 .konsole{margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-s);max-height:300px;overflow:auto;
   font:12.5px/1.45 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;padding:8px 10px}
 .konsole .ekopf{color:var(--ink-2);font-weight:700;margin-top:6px}
@@ -123,6 +130,15 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
       <h2 style="margin:0">Steuerung</h2>
       <button type="button" id="auto" class="schalter" role="switch" aria-checked="true"><span class="bahn" aria-hidden="true"></span><span id="autoText">Auto-Handel AN</span></button>
       <span class="unter" id="autoInfo">Täglich über krypto-auto.bat bzw. die Aufgabenplanung.</span>
+    </div>
+    <div class="risiko">
+      <span class="unter" style="font-weight:700;color:var(--ink-2)">Risiko-Stufe (Hebel)</span>
+      <div class="stufen" id="stufen">
+        <button type="button" data-s="1" aria-pressed="true">1× Standard<small id="st-1">im Test am besten</small></button>
+        <button type="button" data-s="1.5" aria-pressed="false">1,5× mehr Risiko<small id="st-1.5"></small></button>
+        <button type="button" data-s="2" aria-pressed="false">2× hohes Risiko<small id="st-2"></small></button>
+      </div>
+      <span class="unter">Mehr als 2× gibt es nicht: 3× fiel im Test um −86 %, 5× um −99 %, 10× war das Konto weg.</span>
     </div>
     <div class="knoepfe">
       <button type="button" data-a="probe">▶ Probelauf<small>zeigt Aufträge, handelt nicht</small></button>
@@ -252,6 +268,13 @@ function zeichne(d) {
   $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";
+  const ri = d.risiko || {stufe: 1, test: {}};
+  document.querySelectorAll("#stufen button").forEach(b => {
+    b.setAttribute("aria-pressed", String(+b.dataset.s === ri.stufe));
+    const t = ri.test[b.dataset.s];
+    if (t && t["2019–heute"]) $("st-" + b.dataset.s).textContent =
+      `Test ab 2019: ${fmtPct(t["2019–heute"].cagr)}/J · Einbruch ${fmtZahl(t["2019–heute"].einbruch * 100)} %`;
+  });
   $("auto").setAttribute("aria-checked", String(!d.notaus));
   $("autoText").textContent = d.notaus ? "Auto-Handel AUS" : "Auto-Handel AN";
   $("autoInfo").textContent = d.notaus ? "Die Bots handeln nicht. Offene Positionen behalten ihren Stop an der Börse."
@@ -367,6 +390,15 @@ async function knopf(name) {
 }
 document.querySelector(".knoepfe").addEventListener("click", e => { const b = e.target.closest("button[data-a]"); if (b && !b.disabled) knopf(b.dataset.a); });
 $("auto").addEventListener("click", () => knopf(letzterStand && letzterStand.notaus ? "auto_an" : "auto_aus"));
+$("stufen").addEventListener("click", e => {
+  const b = e.target.closest("button[data-s]"); if (!b) return;
+  const s = +b.dataset.s, ri = (letzterStand && letzterStand.risiko) || {stufe: 1, test: {}};
+  if (s === ri.stufe) return;
+  const t = ri.test[b.dataset.s] && ri.test[b.dataset.s]["2019–heute"], t22 = ri.test[b.dataset.s] && ri.test[b.dataset.s]["2022–heute"];
+  if (s > 1 && !confirm(`Risiko-Stufe ${b.dataset.s.replace(".", ",")}× wählen?\n\nIm Test ab 2019: ${t ? fmtPct(t.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t.einbruch * 100) + " %" : "—"}` +
+      `${t22 ? "\nab 2022: " + fmtPct(t22.cagr) + " pro Jahr, Einbruch " + fmtZahl(t22.einbruch * 100) + " %" : ""}\n\nMit 1× war das Verhältnis Rendite zu Einbruch besser. Gilt ab dem nächsten Lauf.`)) return;
+  knopf({"1": "risiko_1", "1.5": "risiko_1_5", "2": "risiko_2"}[b.dataset.s]);
+});
 ladeProtokoll();
 addEventListener("resize", () => letzterStand && zeichne(letzterStand));
 laden(); setInterval(laden, 60000);

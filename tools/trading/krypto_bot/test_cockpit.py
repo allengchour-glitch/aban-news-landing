@@ -192,6 +192,19 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Jetzt handeln bei Auto aus: verweigert (würde sonst schliessen)", not e["ok"] and len(gestartet) == 1)
         e = C.aktion("auto_an", starter)
         pruefe("Auto an: STOP weg", not C.STOP.exists() and "Auto-Handel an" in e["text"])
+        import pilot_kern as Km
+        alt_einst = Km.EINSTELLUNGEN
+        Km.EINSTELLUNGEN = Path(tmp) / "krypto-einstellungen.json"
+        try:
+            __import__("os").environ.pop("KRYPTO_RISIKO", None)
+            e = C.aktion("risiko_2", starter)
+            pruefe("Knopf Risiko 2×: Einstellung gespeichert, Pilot liest sie", e["ok"] and json.loads(Km.EINSTELLUNGEN.read_text())["risiko"] == 2.0
+                   and Km.risiko()["max_hebel"] == 2.0 and "Achtung" in e["text"], e["text"])
+            pruefe("Cockpit zeigt die Stufe", C.stand(env={})["risiko"]["stufe"] == 2.0)
+            C.aktion("risiko_1", starter)
+            pruefe("zurück auf 1×, Stufen-Knöpfe starten kein Skript", Km.risiko()["stufe"] == 1.0 and len(gestartet) == 1)
+        finally:
+            Km.EINSTELLUNGEN = alt_einst
         C.aktion("handeln", starter)
         pruefe("Jetzt handeln startet pilot.py --lauf", gestartet[-1] == ["pilot.py", "--lauf"])
         e = C.aktion("selbsttest", starter)
