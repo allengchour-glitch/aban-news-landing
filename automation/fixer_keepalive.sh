@@ -956,13 +956,19 @@ while true; do
   RV2=/tmp/cj_reviews_import.log
   if [ -f "$REPO/automation/cj_reviews_import.mjs" ] && [ -f /tmp/judgeme.env ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$RV2" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$RV2"; then
+    # 08.10.2026 (Plan Tag 9): GEMESSEN — die letzten zwei Tagesläufe starben am stündlichen Container-Neustart nach 31 bzw.
+    # 38 von 150 Produkten und kamen erst 24 h später wieder; von 2'695 Neuimporten waren 107 geprüft. Jetzt: START-Marke,
+    # Schlusszeile FERTIG, still_gestorben holt nach; und solange eine volle Charge echten Fortschritt meldet («WEITER»,
+    # rohe pids kosten keine CJ-Punkte), folgt nach einer Stunde die nächste Charge.
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$RV2" || still_gestorben "$RV2" \
+       || { [ "$ALTER" -gt 3600 ] && letzter_lauf "$RV2" | grep -q "^FERTIG: .*WEITER"; }; then
       touch "$RV2"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
+      echo "START $(date -u +%FT%TZ) cj_reviews_import" >> "$RV2"
       # 05.09.2026: ERST die sichtbare Ware. Der alte Lauf nahm eine Zufallsscheibe aus 53'000
       # Produkten (Trefferchance auf ein sichtbares ~0,3 %); von 187 Produkten in den Startseiten-
       # Reihen hatten nur 23 eine Bewertung. bewertungen_prio.py baut die Arbeitsliste, der Ledger
       # des Importers macht sie über Container-Neustarts hinweg fortsetzbar.
-      ( cd "$REPO" && setsid sh -c 'python3 automation/bewertungen_prio.py >> "'"$RV2"'" 2>&1; . /tmp/judgeme.env; . /tmp/cj_creds.env 2>/dev/null; . /tmp/dienste.env 2>/dev/null; . /tmp/secrets_env.sh 2>/dev/null; export CJ_EMAIL="${CJ_EMAIL:-$(cat /tmp/cj_email 2>/dev/null)}" CJ_API_KEY="${CJ_API_KEY:-$(cat /tmp/cj_apikey 2>/dev/null)}"; P=dropship/_bewertungen_prio.txt; if [ -s "$P" ]; then ONLY="$(head -150 "$P" | paste -sd, -)" LIMIT=150 MIN_SCORE=1 PER=8 /opt/node22/bin/node automation/cj_reviews_import.mjs; else LIMIT=120 MIN_SCORE=1 PER=6 /opt/node22/bin/node automation/cj_reviews_import.mjs; fi' >> "$RV2" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid sh -c 'python3 automation/bewertungen_prio.py >> "'"$RV2"'" 2>&1; . /tmp/judgeme.env; . /tmp/cj_creds.env 2>/dev/null; . /tmp/dienste.env 2>/dev/null; . /tmp/secrets_env.sh 2>/dev/null; export CJ_EMAIL="${CJ_EMAIL:-$(cat /tmp/cj_email 2>/dev/null)}" CJ_API_KEY="${CJ_API_KEY:-$(cat /tmp/cj_apikey 2>/dev/null)}"; P=dropship/_bewertungen_prio.txt; if [ -s "$P" ]; then ONLY="$(head -400 "$P" | paste -sd, -)" LIMIT=400 MIN_SCORE=1 PER=8 /opt/node22/bin/node automation/cj_reviews_import.mjs; else LIMIT=120 MIN_SCORE=1 PER=6 /opt/node22/bin/node automation/cj_reviews_import.mjs; fi' >> "$RV2" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) cj-bewertungen gestartet"
     fi
   fi
