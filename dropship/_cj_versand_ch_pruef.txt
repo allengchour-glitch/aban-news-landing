@@ -5862,3 +5862,10 @@ naturstein-verzierung-622500	2411290149241622700	16	5.27	ok	landeseite
 sonnengelbe-holz-untersetzer-mit-glitzerdiaman-075456	1797197658952572928	16	7.43	ok	landeseite
 gips-dekoration-geometrie-390272	1762435994059542528	16	8.79	ok	landeseite
 holz-haken-fur-garderobe-180096	1742838480423620608	16	8.11	ok	landeseite
+ol-gemalde-zum-selbermachen-028672	1735603644264886272	3	16.75	ok	landeseite
+5-kamera-fahrzeugrecorder-276993	2058093978134106114	7	12.57	ok	landeseite
+1080p-autorekorder-mit-4-linsen-und-nachtsicht-605505	2058085333173628930	7	12.57	ok	landeseite
+1080p-dashcam-mit-4-kameras-und-nachtsicht-212930	2058173049894264833	7	12.57	ok	landeseite
+1080p-hd-fahrzeugrekorder-mit-4-kameras-hd-nac-523970	2058088789527158786	7	12.57	ok	landeseite
+5-kamera-fahrzeugaufzeichner-1080p-hd-nachtsic-642050	2058120076921499649	7	12.57	ok	landeseite
+5-kamera-fahrt-recorder-438210	2058123033113907201	7	12.57	ok	landeseite

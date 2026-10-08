@@ -48637,3 +48637,18 @@ bar-design-geldklappe-clutch-aus-pvc-642100	lb	Taschen	2026-10-08T14:14Z
 schmuckbeutel-mit-regenbogenmuster-627200	lb	Taschen	2026-10-08T15:11Z
 multifunktionale-kopflayer-geldborse-aus-rinds-613600	lb	Taschen	2026-10-08T15:11Z
 grosses-lederportemonnaie-mit-diebstahlschutz-625300	lb	Taschen	2026-10-08T15:11Z
+tungstenstahl-dreiecksholzbohrer-20-94-mm-581c9d	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+multifunktionaler-drehschraubendreher-aus-chro-2e90a0	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+usb-elektro-schraubenzieher-mit-magnetbox-7fc376	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+hangespann-mit-pulley-4-stuck-weiss-cc76e1	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+wasserdichter-3d-door-sticker-0aa724	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+temperaturregulierender-steckdosenanschluss-101c79	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+glock-holster-mit-infrarot-ziel-c1f827	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+transparent-selbstklebende-tasche-aus-opp-76294b	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+aluminium-bracket-fur-kartenhalter-7bef48	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+blumentopf-simulation-64faf5	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+elektrische-polier-und-schleifkopf-fur-holz-78a6b5	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+marble-muster-wasserdichter-aufkleber-641092	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+kinder-cartoon-wandaufkleber-gross-wasserdicht-dd9919	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
+leichtes-mesh-sneaker-fur-herren-606500	aa-8	Herrenschuhe	2026-10-08T18:06Z
+zange-mit-kaliper-rohre-d87c9c	ha-15	Werkzeug & Heimwerken	2026-10-08T18:06Z
