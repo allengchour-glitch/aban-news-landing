@@ -6077,3 +6077,8 @@ sonnenschutz-fur-fahrerseite-403586	1990607288522678274	0	-	KEINE CH-Option → 
 universeller-lenkradbezug-aus-faserleder-14-5-160898	1990615094537658369	0	-	KEINE CH-Option → DRAFT	landeseite
 heizbare-auto-sitzauflage-12v-mit-2-stufen-reg-516353	1990663832880402433	0	-	KEINE CH-Option → DRAFT	landeseite
 armlehnen-schutzbezug-410049	1990620001857101825	0	-	KEINE CH-Option → DRAFT	landeseite
+4er-set-pvc-fussmatten-fur-auto-suv-truck-schn-525954	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+3-in-1-auto-becherhalter-691521	1990620093434994690	0	-	KEINE CH-Option → DRAFT	landeseite
+warmende-sitzauflage-fur-model-3-y-vorderreihe-610300	2509040910091610500	11	29.00	ok	landeseite
+universelle-auto-sitzauflage-fur-kinder-614300	2508030610481614600	16	12.07	ok	landeseite
+armaturenbrettmatte-fur-dodge-ram-1500-2500-35-002817	1941744034252083201	0	-	KEINE CH-Option → DRAFT	landeseite
