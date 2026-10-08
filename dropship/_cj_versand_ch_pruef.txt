@@ -5942,3 +5942,5 @@ natur-agarholz-anhanger-080962	2039690333410578434	16	8.53	ok	landeseite
 premium-sojawachskerze-mit-rotwein-leder-espre-287874	2038148367961477122	0	-	KEINE CH-Option → DRAFT	landeseite
 zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 luftfrischer-fur-auto-ventile-618626	2014167660300447746	16	5.08	ok	landeseite
+sportlenkradbezug-604800	2606190347421605300	16	17.25	ok	landeseite
+lenkradbezug-carbon-faser-635900	2606030822301636600	16	11.31	ok	landeseite
