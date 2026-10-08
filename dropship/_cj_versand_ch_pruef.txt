@@ -6050,3 +6050,6 @@ elektroplattierter-schaltknuppel-fur-toyota-co-609900	2408160704481600200	16	6.0
 luxus-auto-parfum-spray-627100	2408020644431627400	3	8.42	ok	landeseite
 kohlenstofffaser-schaltkopf-universal-627600	2406190749381627900	16	7.11	ok	landeseite
 glanz-carbon-faser-lenkradbezug-039680	1791700760703537152	16	7.25	ok	landeseite
+steuerungshulle-vier-jahreszeiten-sportstil-985216	1769930696967065600	16	12.44	ok	landeseite
+woll-lenkradbezug-mit-handgriff-bezugen-418176	1723965327337332736	16	9.57	ok	landeseite
+universal-lederlenkradbezug-492352	1694537817822601216	16	11.00	ok	landeseite
