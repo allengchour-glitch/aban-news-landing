@@ -1,6 +1,6 @@
-# SEO-Voll-Audit · 07.10.2026 00:18 UTC
+# SEO-Voll-Audit · 08.10.2026 00:34 UTC
 
-Aktive Produkte im Onlineshop: **50919** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
+Aktive Produkte im Onlineshop: **51511** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
 
 | Klasse | Produkte | Beispiele |
 |---|---:|---|
@@ -11,7 +11,7 @@ Aktive Produkte im Onlineshop: **50919** · Prüfungen wie Semrush Site Audit, l
 | titel_lang | 0 |  |
 | meta_lang | 0 |  |
 | text_duenn | 36 | stilvoller-tragbarer-zigarrenaschenbecher-au-618100, kristall-aschenbecher-fur-zigarren-633700, winddichter-edelstahl-aschenbecher-mit-drehb-638900, keramik-aschenbecher-dekorativ-hochwertig-624900 |
-| alt_leer | 9 | bequemer-riesen-sitzsack-3918d2, kapuzenjacke-mit-doppelreissverschluss-fur-her-604400, kinder-pyjama-set-aus-baumwolle-603400, turkischer-handvoll-kaffeemuhle-195008 |
+| alt_leer | 3 | multifunktionale-trainingskleidung-270720, waschvorhang-aus-polyester-mit-digitalem-druck-347776, strickpullover-mit-laternenarmeln-615200 |
 
 ## Grösste Titel-Gruppen
 - 2× «quarz-armbanduhr mit grossem zifferblatt | luxestyle ch»

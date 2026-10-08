@@ -647,3 +647,15 @@ gid://shopify/Product/15495238320513	ok	Kabelloser Glätt- und Lockenstab-Kamm
 gid://shopify/Product/15495319585153	ok	Mini USB Lockenstab & Glätteisen
 gid://shopify/Product/15495319847297	ok	Audio-Adapter iPhone auf USB-C (Digital)
 gid://shopify/Product/15517578985857	ok-lokal
+gid://shopify/Product/15481981403521	ok	W108 Mini Funkmikrofon mit USB-C-Anschluss
+gid://shopify/Product/15484355838337	ok	Smart Roboter-Hund
+gid://shopify/Product/15485455106433	ok	Stick-Set Blumen & Tiere für Anfänger
+gid://shopify/Product/15493152309633	ok	Faltbare Make-up Pinsel Reinigungs-Schale
+gid://shopify/Product/15493258641793	ok	Benshang Glaswischer für hohe Fenster
+gid://shopify/Product/15493277745537	ok	Tragbarer USB Fusselrasierer
+gid://shopify/Product/15493750391169	ok	Handheld Mini Nähmaschine
+gid://shopify/Product/15493908660609	ok	Puzzle-Kissen – Modern & dekorativ
+gid://shopify/Product/15493919768961	ok	Kabelloser Glättkamm für unterwegs
+gid://shopify/Product/15494120440193	ok	Business Rucksack Herren mit Hartschale
+gid://shopify/Product/15494223856001	ok	Dinosaurier-Ei Futterspender & Kauspielzeug
+gid://shopify/Product/15494392381825	ok	Minimalistischer Multifunktions-Reiserucksack
