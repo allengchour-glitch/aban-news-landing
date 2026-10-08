@@ -1067,6 +1067,7 @@ while true; do
           SCHARF=1 ZEIGEN=0 timeout 600 python3 automation/aroma_kategorie.py 2>&1 | grep -E '^(PLAN|FERTIG|ABBRUCH)'; \
           SCHARF=1 timeout 1800 python3 automation/haar_fein.py 2>&1 | grep -E '^(HAAR-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 2400 python3 automation/kosmetik_fein.py 2>&1 | grep -E '^(KOSMETIK-FEIN|Kanarien|Google-Pfad)'; \
+          SCHARF=1 timeout 900 python3 automation/nagel_fein.py 2>&1 | grep -E '^(NAGEL|FERTIG)'; \
           SCHARF=1 timeout 900 python3 automation/rc_fein.py 2>&1 | grep -E '^(RC-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 1500 python3 automation/uhren_fein.py 2>&1 | grep -E '^(UHREN-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 1500 python3 automation/titelprobe_fein.py 2>&1 | grep -E '^(TITELPROBE|Google-Pfad|Kanarien)'; \
@@ -1075,6 +1076,9 @@ while true; do
           SCHARF=1 timeout 1800 python3 automation/spielzeug_trennung.py 2>&1 | grep -E '^(SPIELZEUG|FERTIG)'; \
           SCHARF=1 timeout 2400 python3 automation/shopify_fein.py 2>&1 | grep -E '^(SHOPIFY-FEIN|FERTIG|⚠️)'; \
           SCHARF=1 timeout 600 python3 automation/google_id_zu_name.py 2>&1 | grep -E '^(GOOGLE-ID|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+    # 08.10.2026 (Betreiber «ordne alles sauber ein»): nagel_fein.py NACH kosmetik_fein — CJ nennt Press-on-Sets (Grössen XS–L,
+    # Jelly-Kleber) «Nagelsticker»; nur Grössenoption/Beschreibung trennen sie von echten Stickern (96 + 34 gesetzt). kosmetik_fein
+    # überspringt die hier gesetzten Press-on-Produkte und vergröbert seit heute nie (shopify-feiner/google-feiner).
     # 08.10.2026 (Betreiber «weiter feinkategorie verbessern»): shopify_fein.py — 27'897 aktive standen in Shopify auf einer Klasse
     # MIT Unterklassen, Google hat darunter kein Blatt (Clothing Tops 4'671, Handbags 880, Pants 772, Ladegeräte 742, Halsbänder 733,
     # Leinen 727, Jacken 715, Näpfe 544, Kissen 250) → Titelregeln je Elternklasse aus data/shopify_fein.json (Kanarien 164/164),

@@ -57,7 +57,7 @@ Betreiber 08.10.: «weiter feinkategorie verbessern».
   `rueckfall-grob`).
 - Kein Betreiber-Klick nötig.
 
-## Runde 2 (08.10.2026, 16:20–17:30 UTC, Betreiber «weiter»)
+## Runde 2 (08.10.2026, 16:20–16:45 UTC, Betreiber «weiter»)
 
 **GEMESSEN** (frischer Export 51'701 aktive): Auf einer Shopify-Klasse mit Unterklassen stehen noch 20'561 Produkte. Darin
 924 Hemden, die richtig auf «Shirts» stehen; darunter gibt es nur Henley und Dress Shirts.
@@ -90,9 +90,61 @@ NUR die Shopify-Kategorie; die Kostüme haben bewusst keinen Google-Wert, die al
 
 **Nachbefunde (andere Zweige — `shopify_fein` zieht nur Eltern → Kind, nie über Zweige):**
 - ~95 **Dirndl/Lederhosen/Trachten** stehen unter «Kostüme»; richtig wäre «Traditional & Ceremonial Clothing».
-- Die meisten **«Nagelsticker»** in «Nail Art» sind laut Beschreibung **Press-on-Nägel** (Grössen XS–L, «10 Nägel + Kleber»), also «False Nails».
+- Viele **«Nagelsticker»** in «Nail Art» sind laut Beschreibung **Press-on-Nägel** (Grössen XS–L, «10 Nägel + Kleber»), also «False Nails». *(Korrektur Runde 3: «die meisten» war geschätzt; gemessen sind es 51 von 145, über alle Nagelklassen 96.)*
 - «Fitnessgeräte» und «Hundebedarf» enthalten Fremdware (Helme, EMS-Bauchgurte, Autogurte, Gehhilfen).
 Das sind Kandidaten für einen Zweig-Umzug mit eigener Regel (wie `google_kategorie_umzug` auf der Google-Seite).
 
 **Stand nach Runde 2:** Von den 20'561 groben Shopify-Klassen sind 1'839 verfeinert, also ~18'700. Davon ist ein grosser Teil
 richtig grob (Mode-Rucksäcke, Modeschmuck-Ringe, Freizeithemden, Reisetaschen, Kostüme ohne Formwort).
+
+## Runde 3 «ordne alles sauber ein» (08.10.2026, 16:55–17:50 UTC)
+
+**GEMESSEN** (Export 16:21 + Ledger, dann frischer Export 17:03): 18'990 Produkte auf einer Shopify-Klasse mit Unterklassen, 6'457
+bei Google auf einer Oberklasse, 76 Zweig-Widersprüche Google↔Shopify, 13 «keine Zuordnung», 3 ohne Shopify-Kategorie. Am 07.10.
+waren die meisten Oberklassen schon einzeln beurteilt worden, aber **mit verbotenem Zweigwechsel**. Darum stand dort oft «bleibt»,
+wo «falscher Zweig» die Antwort war: Fusspumpe für Autos unter Werkzeug, Feuerzeug unter Fitness, Haustierpullover unter
+«Pet Supplies», Portemonnaie unter Handtaschen.
+
+**Nebenbefund mit Folgen: der tägliche Kosmetik-Lauf hätte die Arbeit von heute zurückgesetzt.** `kosmetik_fein.lauf` (auch
+`haar_fein`, `uhren_fein`, `rc_fein`) kannte nur «gleich». Eine feinere Shopify-Klasse, z. B. «Lidschatten-Paletten» unter
+«Eye Shadow», galt als Abweichung und wäre am nächsten Morgen um 09:15 auf die Elternklasse zurückgesetzt worden. Dasselbe galt für
+einen feineren Google-Wert. `shopify_fein` läuft in der Kette danach und hätte wegen seines Ledgers nicht nachgezogen. Betroffen
+waren **262 Shopify- und 82 Google-Werte**. Behoben: Der Lauf vergröbert jetzt nie (`shopify-feiner`, `google-feiner`). Seine
+Geräte-Wortfallen sind nachgeschärft: Porenreiniger-Gerät ≠ Reinigungsmittel, Gesichtsreinigungsgerät, Dampf, Wimpernkleber-
+Entferner, Duschhauben-Set. Kanarien 98/98, **14 gesetzt / 0 Fehler**.
+
+**GETAN**
+| Schritt | Werkzeug | Ergebnis |
+|---|---|---|
+| Trachten aus «Kostüme» (Dirndl → Dirndls, Lederhose/Trachtenhemd/-bluse → Traditional Clothing, Kniestrümpfe, Ketten, Hüte, Tasche) | `shopify_fein` neuer Block «umzug» (Zweigwechsel nur ausdrücklich gelistet, wird beim Laden geprüft) | **91 / 0** |
+| Press-on-Nägel, die CJ «Nagelsticker» nennt: Grössenoption XS–L oder starke Beschreibungsmerkmale (künstliche Nägel, Nagelstücke, Jelly-Kleber …); Feile/Alkoholtupfer zählen nicht | `nagel_fein.py` neu, Kanarien 12/12, Vorrang vor der Titelregel in `kosmetik_fein` | **96 → False Nails, 34 → Nail Stickers & Decals, 0 Fehler** |
+| Einzelurteile über 6'054 Produkte (Google-Oberklasse + Widersprüche), **Zweigwechsel erlaubt**; 10 Prüfer, jeder Pfad gegen die Taxonomie geprüft | `kategorie_urteile_anwenden.py` (Runde 5) mit Schutzregeln und Regel-Vorrang; Midi-Röcke verworfen (Prüfer uneinig, Google kennt kein Midi), nichts gröber | 2'719 Urteile → **2'662 gesetzt / 0 Fehler, Rücklesen 30/30** (39 Regel-Vorrang, 18 inzwischen geändert) |
+| Neu verschobene Produkte in die Shopify-Unterklassen | `shopify_fein` | **167 / 0** |
+| 12 Google-Blätter ohne Shopify-Zuordnung, 2 Zweigpaare (Wassersport-Helm, Motorrad-Protektorenjacke), 3D-Drucker-Zubehör unter «3D Printers», Kinder-Pyjama/-Overall | `kategorie_fein` ZUSATZ / KREUZ / GLEICHWERTIG | **35 / 0** |
+| Lerndaten der Oberklassen-Regeln um die neuen Urteile ergänzt (neues Urteil ersetzt altes zum selben Titel) | `data/oberklasse_training.jsonl` 16'351 → 18'045 | Gegenprobe **97,4 %** (≥ 95 % Pflicht), 221 Regeln |
+
+Schreibweg: Die Urteile liefen zuerst einzeln mit ~25 Produkten pro Minute, weil ein Lese-Scan den Eimer belegte. Danach lief der
+Rest als EINE Bulk-Mutation (`kosmetik_fein.bulk_schreiben`: Kategorie + Google-Metafeld in einem `productUpdate`). Die Probe
+bestätigte, dass `productUpdate` das Metafeld per namespace/key überschreibt (gleiche ID). 2'587 Produkte in ~2 min.
+
+**Nachher** (frischer Export 17:40 + Ledger)
+| Messgrösse | vorher | nachher |
+|---|---:|---:|
+| Google auf Oberklasse | 6'457 | **4'194** |
+| Shopify auf Klasse mit Unterklassen | 18'990 | **~17'630** |
+| Zweig-Widerspruch Google↔Shopify | 76 | **49** |
+
+**Was bewusst grob bleibt** (Taxonomie hat nichts Feineres oder Titel zu vage): Röcke ohne Längenangabe und Midi 274, Sportbekleidung
+258 (Google kennt keine Sporthose), RC-Spielzeug 201 (gehört `rc_fein`), Velo-Lichter 145 (Google 2021 hat keine Klasse),
+LED-/EMS-Hautgeräte 133, Tierspielzeug/-betten «für Hund und Katze» (keine tierübergreifende Klasse), Diffuser (gehören
+`aroma_kategorie`), Kostüme ohne Formwort.
+
+**Wächter (erfassen Neuimporte):** `nagel_fein` täglich in der Kategorie-Kette nach `kosmetik_fein`. `shopify_fein` mit «umzug»,
+`kosmetik_fein` mit Nie-vergröbern-Schutz und Vorrang-Liste. `oberklasse_lernen` lernt aus den neuen Urteilen. `kategorie_fein`
+läuft stündlich mit den neuen Zuordnungen.
+
+**OFFEN** (kein Betreiber-Klick nötig)
+- 49 Widersprüche sind Einzelfälle mit vagem Titel («Reparatur-Box», «Kaninchenbeutel»). 14 «keine Zuordnung» sind neue Google-Blätter
+  (Fischernetze, Volleyballnetze, Kostüm-Umhänge) und lassen sich bei Bedarf als ZUSATZ nachtragen.
+- Press-on-Sets heissen im Titel weiter «Nagelsticker». Die Kategorie stimmt jetzt, der Titel führt Käuferinnen aber in die Irre.
+  Das ist ein Kandidat für eine eigene Runde (Titel ehrlich machen).
