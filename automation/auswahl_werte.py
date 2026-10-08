@@ -125,9 +125,10 @@ EINHEIT_DE = {"cm": ("cm", "Grösse"), "mm": ("mm", "Grösse"), "m": ("m", "Län
               "pairs": ("Paar", "Menge"), "pair": ("Paar", "Menge"), "pack": ("er-Pack", "Menge"), "packs": ("er-Pack", "Menge"),
               "yards": ("", "Grösse"), "yard": ("", "Grösse"), "m²": ("m²", "Grösse"), "box": ("Box", "Menge"),
               "boxes": ("Boxen", "Menge"), "bottle": ("Flasche", "Menge"), "bottles": ("Flaschen", "Menge"),
-              "roll": ("Rolle", "Menge"), "rolls": ("Rollen", "Menge"), "bag": ("Beutel", "Menge"), "bags": ("Beutel", "Menge")}
+              "roll": ("Rolle", "Menge"), "rolls": ("Rollen", "Menge"), "bag": ("Beutel", "Menge"), "bags": ("Beutel", "Menge"),
+              "key": ("Tasten", "Tastenzahl"), "keys": ("Tasten", "Tastenzahl")}
 _Z = r"\d+(?:[.,]\d+)?"
-_E = r"(?:cm|mm|m|inch(?:es)?|in|\"|zoll|l|ml|g|kg|w|mah|v|gb|tb|pcs|pc|pieces?|stück|sets?|pairs?|packs?|yards?|m²|box(?:es)?|bottles?|rolls?|bags?)"
+_E = r"(?:cm|mm|m|inch(?:es)?|in|\"|zoll|l|ml|g|kg|w|mah|v|gb|tb|pcs|pc|pieces?|stück|sets?|pairs?|packs?|yards?|m²|box(?:es)?|bottles?|rolls?|bags?|keys?)"
 MASS_EINZEL = re.compile(rf"^({_Z})\s*({_E})?$", re.I)
 MASS_SPANNE = re.compile(rf"^(?:below\s+|under\s+|up\s+to\s+)?({_Z})\s*(?:to|or|~|–|/)\s*({_Z})\s*({_E})$", re.I)
 MASS_BIS = re.compile(rf"^(?:below|under|up\s+to|within)\s+({_Z})\s*({_E})$", re.I)
@@ -326,7 +327,9 @@ def dim_de(werte, titel=""):
               _gemeinsam_kuerzen(werte, vorne=False)):
         if k not in formen:
             formen.append(k)
-    for kandidat in formen:
+    for nr, kandidat in enumerate(formen):
+        # Nach dem Kürzen nur noch Zahlen («104 key» → «104»): das weggekürzte Wort trug die Bedeutung — keine «Modell N»
+        nur_zahl_gekuerzt = nr > 0 and all(re.fullmatch(r"\d+(?:[.,]\d+)?", w) for w in kandidat)
         f = [farbe(w) for w in kandidat]
         if all(f) and _eindeutig(f):
             return "Farbe", f
@@ -343,6 +346,8 @@ def dim_de(werte, titel=""):
             if all(16 <= z <= 60 for z in zs) or all(80 <= z <= 190 for z in zs) or (
                     re.search(r"\bring", titel, re.I) and all(3 <= z <= 14 for z in zs)):
                 return "Grösse", [w.replace(",", ".") for w in kandidat]
+        if nur_zahl_gekuerzt:
+            continue
         if all(ist_zaehl(w) for w in kandidat) and _eindeutig(kandidat):
             buchst = [ZAEHL.match(w.strip()) for w in kandidat]
             if all(re.fullmatch(r"[A-H]", (b.group(1) or b.group(2) or "")) for b in buchst):
@@ -762,6 +767,7 @@ KANARIEN = [
     (_v("Short Ellipse XS", "Long Almond M"), [("Ausführung", ["Kurz Oval · XS", "Lang Mandel · M"])]),
     (_v("Gold-17 Yards", "Gold-18 Yards"), [("Grösse", ["Gr. 17", "Gr. 18"])]),
     (_v("L", "XL", "M"), [("Grösse", ["M", "L", "XL"])]),
+    (_v("Black-104 key", "Black-87 key", "White-104 key", "White-87 key"), [("Farbe", ["Schwarz", "Weiss"]), ("Tastenzahl", ["104 Tasten", "87 Tasten"])]),
     (_v("Red-L", "Red-M", "Blue-L", "Blue-M"), [("Farbe", ["Rot", "Blau"]), ("Grösse", ["M", "L"])]),
     (_v("Red-L", "Blue-M"), [("Farbe", ["Rot", "Blau"]), ("Grösse", ["L", "M"])]),     # Rot·M fehlt → L bleibt vorn
     (_v("Type A-Single basket", "Type B-Single basket"), [("Typ", ["Typ A", "Typ B"])]),

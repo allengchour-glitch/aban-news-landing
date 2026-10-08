@@ -73,7 +73,8 @@ except Exception:
 GR = r"(?:X{0,3}S|M|X{0,3}L)"
 MENGE = re.compile(r"\b(\d{1,3})\s*(?:-\s*)?(?:Farben|Designs?|Motive|Stück|Stk\.?|teilig\w*|tlg\.?|pcs?|er[- ]?(?:Set|Pack)|x)(?!\w)"
                    r"|\bSet\s+(?:mit|aus|à)\s+(\d{1,3})\b", re.I)
-SKU_ALT = re.compile(r"^CJ-(?:\d{10,}|[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12})$")
+# 08.10.2026: auch die Produkt-SKU-Form «CJ-CJYD2852650» (ohne Varianten-Endung) — sie ist so unbestimmt wie die pid
+SKU_ALT = re.compile(r"^CJ-(?:\d{10,}|[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}|CJ[A-Z]{2}\d{7,10})$")
 SKU_BESTELLBAR = re.compile(r"[A-Za-z0-9._ -]{6,40}")        # = cj_order_engine.vid_fuer, Form (b)
 STECKER = {"EU", "US", "UK", "AU", "JP", "KR", "CN", "BR", "IN"}
 # 08.10.2026: Optionen mit Bildpflicht — wer «Modell 3» oder «Hase · Blau» wählt, muss es SEHEN.
@@ -194,6 +195,14 @@ def plane(zeile):
         raster *= len(ws)
     if raster > 250:
         return None, f"Raster {raster} Kombinationen — productOptionsCreate legt jede an"
+    # 08.10.2026: Der Titel legt sich auf EINEN Wert fest («Mechanische Tastatur mit 104 Tasten») — eine Auswahl 87/61
+    # widerspräche ihm. Dann erst den Titel ändern (Mensch), nicht die Auswahl anbieten.
+    tl = p["title"].lower().replace(" ", "")
+    for name, ws in op["optionen"]:
+        if name != "Farbe" and len(ws) > 1:
+            treffer = [w for w in ws if len(w) >= 2 and w.lower().replace(" ", "") in tl]
+            if len(treffer) == 1:
+                return None, f"Titel nennt nur «{treffer[0]}» ({name}: {ws[:4]}) → Titel prüfen (Mensch)"
     m = MENGE.search(p["title"])
     if m:
         n = int(m.group(1) or m.group(2))

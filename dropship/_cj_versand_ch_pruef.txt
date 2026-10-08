@@ -5965,3 +5965,6 @@ auto-heizer-627000	2409230751491627300	7	11.13	ok	landeseite
 notstart-powerbank-12v-147136	1776781120416256000	0	-	KEINE CH-Option → DRAFT	landeseite
 fernbedienungsschlussel-901760	1637003427748261888	16	5.18	ok	landeseite
 notstart-hilfe-903680	1621777357608595456	0	-	KEINE CH-Option → DRAFT	landeseite
+notstarter-12v-271424	1620265953768517632	0	-	KEINE CH-Option → DRAFT	landeseite
+auto-diebstahlschutz-630336	1530398613854236672	7	17.94	ok	landeseite
+doppel-ladegerat-567104	1509879568663064576	7	7.20	ok	landeseite
