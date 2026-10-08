@@ -636,3 +636,4 @@ gid://shopify/Product/15495114752385	ok	Interaktiver Plüschvogel für Katzen
 gid://shopify/Product/15495115178369	ok	Hunde-Plüschtier mit Beissring
 gid://shopify/Product/15495115407745	ok	Kleine Möwe LED-Nachtlicht
 gid://shopify/Product/15495125336449	ok	Schnellladegerät Auto
+gid://shopify/Product/15495126352257	ok	3-in-1 Wireless Charger mit Nachtlicht
