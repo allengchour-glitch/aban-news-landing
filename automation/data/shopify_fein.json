@@ -1,0 +1,1081 @@
+{
+ "_hinweis": "08.10.2026 (Betreiber «weiter feinkategorie verbessern»): Shopify-Oberklassen mit Unterklassen, unter denen Google KEIN feineres Blatt hat — kategorie_fein (Weg über Google) kommt dort nie weiter (wie bei Schuhen, schuhe_fein.py). Je Elternklasse: Titelregeln, erste gewinnt; «nicht» = Ausschluss (bleibt grob); Unklares bleibt grob (grob ist besser als falsch). Werkzeug: automation/shopify_fein.py (Kanarien vor jedem Lauf, Google-Wert bleibt). Regeln nur hier ändern.",
+ "klassen": {
+  "aa-1-13": {
+   "name": "Clothing Tops",
+   "nicht": "zweiteiler|zweiteilig|\\bset\\b|\\banzug\\b|kleid|unterhemd|nachthemd|schlafanzug|pyjama|kost[üu]m|shaper|shapewear|\\bjacke\\b|\\w+jacke\\b(?<!strickjacke)|body ?chain|k[öo]rperkette",
+   "regeln": [
+    [
+     "hoodie|kapuzen-?(?:pullover|pulli|sweat\\w*|shirt)",
+     "aa-1-13-13"
+    ],
+    [
+     "cardigan|strickjacke|strick-?cardigan",
+     "aa-1-13-3"
+    ],
+    [
+     "sweatshirt|sweat-?shirt",
+     "aa-1-13-14"
+    ],
+    [
+     "overshirt|hemdjacke|shacket",
+     "aa-1-13-5"
+    ],
+    [
+     "polo",
+     "aa-1-13-6"
+    ],
+    [
+     "korsett|corsage|corset|bustier",
+     "aa-1-13-15"
+    ],
+    [
+     "bluse|blouse",
+     "aa-1-13-1"
+    ],
+    [
+     "tunika|tunic",
+     "aa-1-13-11"
+    ],
+    [
+     "\\bbody\\b|bodysuit|\\bbodys\\b",
+     "aa-1-13-2"
+    ],
+    [
+     "pullover|\\bpulli\\b|sweater|rollkragen-?(?:pulli|oberteil|shirt)|\\w*strickpulli\\w*",
+     "aa-1-13-12"
+    ],
+    [
+     "tank-?top|tanktop|tr[äa]gertop|camisole|\\bcami\\b|spaghetti-?top|muskelshirt|achselshirt",
+     "aa-1-13-9"
+    ],
+    [
+     "\\w*hemd\\b|\\w*hemden\\b",
+     "aa-1-13-7"
+    ],
+    [
+     "t-?shirt|\\btee\\b|\\w*shirt\\b",
+     "aa-1-13-8"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Streetwear Hoodie mit Herz-Augenmaske",
+     "aa-1-13-13"
+    ],
+    [
+     "Herren Halbzipfel Pullover Hoodie",
+     "aa-1-13-13"
+    ],
+    [
+     "Pullover Hoodie mit Schleifen-Detail",
+     "aa-1-13-13"
+    ],
+    [
+     "Eleganter Damen-Cardigan ohne Ärmel",
+     "aa-1-13-3"
+    ],
+    [
+     "Gestreiftes V-Neck Polo-Shirt für Herren",
+     "aa-1-13-6"
+    ],
+    [
+     "Polohemd Herren Business Ice Silk",
+     "aa-1-13-6"
+    ],
+    [
+     "Damen-Bluse mit Laternenärmeln",
+     "aa-1-13-1"
+    ],
+    [
+     "Damen Strickpullover mit Reverskragen",
+     "aa-1-13-12"
+    ],
+    [
+     "Herren Pullover mit Reissverschluss",
+     "aa-1-13-12"
+    ],
+    [
+     "Damen Camisole aus Ramie-Baumwolle",
+     "aa-1-13-9"
+    ],
+    [
+     "Kurzes Baumwollhemd für Herren",
+     "aa-1-13-7"
+    ],
+    [
+     "Herren Langarmhemd gestreift, bügelfrei",
+     "aa-1-13-7"
+    ],
+    [
+     "Leinenhemd Kurzarm mit Stehkragen",
+     "aa-1-13-7"
+    ],
+    [
+     "Lässiges V-Neck T-Shirt mit kurzen Ärmeln",
+     "aa-1-13-8"
+    ],
+    [
+     "Freizeit-Langarmshirt mit Reverskragen",
+     "aa-1-13-8"
+    ],
+    [
+     "Bedrucktes Mid-Sleeve Shirt mit Schnürung",
+     "aa-1-13-8"
+    ],
+    [
+     "Herren Kurzarmshirt",
+     "aa-1-13-8"
+    ],
+    [
+     "Pullover und weite Hose im Set",
+     null
+    ],
+    [
+     "Loose ICE Cotton Zweiteiler Hemd",
+     null
+    ],
+    [
+     "Asymmetrisches Off-Shoulder Top",
+     null
+    ],
+    [
+     "Elegantes Langarm-Spitzentop für Damen",
+     null
+    ],
+    [
+     "Bodycon-Top mit Rüschen",
+     null
+    ],
+    [
+     "Herren Unterhemd aus Baumwolle",
+     null
+    ],
+    [
+     "Fleece-gefütterte Herrenjacke mit Kapuze",
+     null
+    ],
+    [
+     "Strickjacke mit Zopfmuster",
+     "aa-1-13-3"
+    ],
+    [
+     "Sweaterkleid mit Rollkragen",
+     null
+    ],
+    [
+     "Body Shaper mit Spitze",
+     null
+    ],
+    [
+     "Damen Nachthemd aus Baumwolle",
+     null
+    ],
+    [
+     "Schnelltrocknendes Crewneck T-Shirt für Damen",
+     "aa-1-13-8"
+    ],
+    [
+     "Body Chain Top mit Perlen – Rosarot",
+     null
+    ]
+   ]
+  },
+  "aa-1-12": {
+   "name": "Pants",
+   "nicht": "sch[üu]rze|shorts|\\bkurze hose|bermuda|rock\\b|kleid|unterhose|badehose|strumpfhose|latzhose|overall|\\btop\\b|-top\\b|weste|jacke|bluse|hemd|shirt|latz|schneehose|skihose",
+   "regeln": [
+    [
+     "jeggings",
+     "aa-1-12-5"
+    ],
+    [
+     "\\bjeans\\b|jeanshose|denim",
+     "aa-1-12-4"
+    ],
+    [
+     "leggings|\\bleggins\\b",
+     "aa-1-12-8"
+    ],
+    [
+     "jogger|jogginghose|jogging-?hose|sweatpants|sweathose|trainingshose",
+     "aa-1-12-7"
+    ],
+    [
+     "cargo",
+     "aa-1-12-2"
+    ],
+    [
+     "chino",
+     "aa-1-12-3"
+    ],
+    [
+     "harem|pumphose|aladdin",
+     "aa-1-12-12"
+    ],
+    [
+     "palazzo",
+     "aa-1-12-13"
+    ],
+    [
+     "\\w*hose\\b|\\w*hosen\\b|\\bpants\\b|trousers",
+     "aa-1-12-11"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Distressed Slim-Fit Jeans",
+     "aa-1-12-4"
+    ],
+    [
+     "Retro-Blau Jeanshose",
+     "aa-1-12-4"
+    ],
+    [
+     "Edgy-Cool Denim-Hose für Herren",
+     "aa-1-12-4"
+    ],
+    [
+     "Stylishe Cargo Jeans für Herren",
+     "aa-1-12-4"
+    ],
+    [
+     "Retro-Cargo-Hosen",
+     "aa-1-12-2"
+    ],
+    [
+     "Slim-Fit Harem Jeans für Damen",
+     "aa-1-12-4"
+    ],
+    [
+     "Vintage Relaxed-Fit Stoffhose für Herren",
+     "aa-1-12-11"
+    ],
+    [
+     "Gerippte Strickhose für Damen",
+     "aa-1-12-11"
+    ],
+    [
+     "Taktische Winterhose mit Fleece-Futter",
+     "aa-1-12-11"
+    ],
+    [
+     "Weite Cropped-Hosen",
+     "aa-1-12-11"
+    ],
+    [
+     "Jeans-Schürze für Erwachsene",
+     null
+    ],
+    [
+     "Knöchelgerissene Kurzbeine für Damen",
+     null
+    ],
+    [
+     "Damen Jogginghose mit Kordelzug",
+     "aa-1-12-7"
+    ],
+    [
+     "High-Waist Leggings mit Taschen",
+     "aa-1-12-8"
+    ],
+    [
+     "Haremshose mit Elefantenmuster",
+     "aa-1-12-12"
+    ],
+    [
+     "Ärmelloses Jeans-Top mit V-Ausschnitt",
+     null
+    ],
+    [
+     "Jeans-Top mit Revers und Trägern",
+     null
+    ]
+   ]
+  },
+  "aa-1-10-2": {
+   "name": "Coats & Jackets",
+   "nicht": "\\bhose\\b|\\bweste\\b|kost[üu]m|sonnenschutz|uv-schutz",
+   "regeln": [
+    [
+     "bolero",
+     "aa-1-10-2-1"
+    ],
+    [
+     "\\bcape\\b|cape-|umhang",
+     "aa-1-10-2-3"
+    ],
+    [
+     "poncho",
+     "aa-1-10-2-8"
+    ],
+    [
+     "bomber|fliegerjacke|pilotenjacke",
+     "aa-1-10-2-2"
+    ],
+    [
+     "varsity|college-?jacke|baseball-?jacke|baseball jacke",
+     "aa-1-10-2-15"
+    ],
+    [
+     "trench",
+     "aa-1-10-2-13"
+    ],
+    [
+     "parka",
+     "aa-1-10-2-6"
+    ],
+    [
+     "blazer|sakko|jackett",
+     "aa-1-10-2-18"
+    ],
+    [
+     "daunen|puffer|steppjacke|stepp-?mantel|wattierte? jacke",
+     "aa-1-10-2-9"
+    ],
+    [
+     "regenjacke|regenmantel|rain ?coat",
+     "aa-1-10-2-10"
+    ],
+    [
+     "windbreaker|windjacke|windschutzjacke",
+     "aa-1-10-2-16"
+    ],
+    [
+     "trainingsjacke|track ?jacket",
+     "aa-1-10-2-12"
+    ],
+    [
+     "jeansjacke|denimjacke|denim-jacke|trucker",
+     "aa-1-10-2-14"
+    ],
+    [
+     "caban|peacoat|pea coat",
+     "aa-1-10-2-7"
+    ],
+    [
+     "wickelmantel|wrap ?coat",
+     "aa-1-10-2-17"
+    ],
+    [
+     "\\w*mantel\\b|overcoat",
+     "aa-1-10-2-5"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Eleganter Doubleface-Wollmantel für Damen",
+     "aa-1-10-2-5"
+    ],
+    [
+     "Langer Damen-Mantel im Casual-Look",
+     "aa-1-10-2-5"
+    ],
+    [
+     "Herren-Kapuzen Cape-Style Mantel",
+     "aa-1-10-2-3"
+    ],
+    [
+     "Windschutzjacke · Herren",
+     "aa-1-10-2-16"
+    ],
+    [
+     "Schlanke Jeansjacke für Herren",
+     "aa-1-10-2-14"
+    ],
+    [
+     "Einfache Denimjacke",
+     "aa-1-10-2-14"
+    ],
+    [
+     "Flight Zip-Up Baseball Jacke",
+     "aa-1-10-2-15"
+    ],
+    [
+     "Kurze Daunenjacke mit Patchwork-Ärmeln für Damen",
+     "aa-1-10-2-9"
+    ],
+    [
+     "Herren Biker-Jacke im Retro-Look",
+     null
+    ],
+    [
+     "Wind- & wasserdichte Outdoor-Jacke für Herren",
+     null
+    ],
+    [
+     "Thermal Sportjacke",
+     null
+    ],
+    [
+     "Herren Mantel Wasserfest & Wattiert",
+     "aa-1-10-2-5"
+    ],
+    [
+     "Damen Trenchcoat mit Gürtel",
+     "aa-1-10-2-13"
+    ],
+    [
+     "Herren Blazer Slim-Fit",
+     "aa-1-10-2-18"
+    ]
+   ]
+  },
+  "ap-2-17": {
+   "name": "Pet Collars & Harnesses",
+   "nicht": "\\bleine\\b(?!.*(?:halsband|geschirr))|spielzeug|\\bnapf",
+   "regeln": [
+    [
+     "\\bled\\b|leucht|blink",
+     "ap-2-17-5"
+    ],
+    [
+     "\\bgps\\b|tracker|airtag|ortung",
+     "ap-2-17-3"
+    ],
+    [
+     "floh|zecken",
+     "ap-2-17-2"
+    ],
+    [
+     "trainingshalsband|erziehungs|w[üu]rge|stachel|kettenhalsband|zughalsband|halsband mit kette|choke",
+     "ap-2-17-9"
+    ],
+    [
+     "martingale|zugstopp",
+     "ap-2-17-6"
+    ],
+    [
+     "personalisiert|mit namen|namens|gravur|graviert|adressanh[äa]nger",
+     "ap-2-17-7"
+    ],
+    [
+     "sicherheitsverschluss|breakaway|sicherheits-?halsband|panikverschluss",
+     "ap-2-17-1"
+    ],
+    [
+     "geschirr|brustgurt|brust- und r[üu]ckengurt|harness",
+     "ap-2-17-4"
+    ],
+    [
+     "\\w*weste\\b",
+     "ap-2-17-10"
+    ],
+    [
+     "halsband|halsb[äa]nder|katzenkragen|\\bkragen\\b|collar",
+     "ap-2-17-8"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Reflektierendes Halsband für Haustiere",
+     "ap-2-17-8"
+    ],
+    [
+     "Hundehalsband, PVC, verschiedene Farben",
+     "ap-2-17-8"
+    ],
+    [
+     "Personalisiertes Hunde- und Katzenhalsband",
+     "ap-2-17-7"
+    ],
+    [
+     "Reflektierendes Haustiergeschirr aus Oxford-Gewebe",
+     "ap-2-17-4"
+    ],
+    [
+     "Verstellbares Trainingshalsband für Hunde",
+     "ap-2-17-9"
+    ],
+    [
+     "Automatische Brust- und Rückengurt-Set",
+     "ap-2-17-4"
+    ],
+    [
+     "Hunde-Brustgeschirr im Weste-Stil",
+     "ap-2-17-4"
+    ],
+    [
+     "ISPET Hundegeschirr",
+     "ap-2-17-4"
+    ],
+    [
+     "Katzenkragen",
+     "ap-2-17-8"
+    ],
+    [
+     "10er-Pack verstellbare PU-Hundehalsbänder mit Glöckchen",
+     "ap-2-17-8"
+    ],
+    [
+     "Halskette für Hunde aus Edelstahl mit Doppelring",
+     null
+    ],
+    [
+     "Beruhigendes Halsband für Hunde (4er-Pack)",
+     "ap-2-17-8"
+    ],
+    [
+     "LED-Leuchthalsband für Hunde, USB",
+     "ap-2-17-5"
+    ],
+    [
+     "Floh- und Zeckenhalsband für Katzen",
+     "ap-2-17-2"
+    ],
+    [
+     "Outdoor-Hundegurt mit Leinenhalter",
+     null
+    ]
+   ]
+  },
+  "ap-2-31": {
+   "name": "Pet Leashes",
+   "nicht": "automatisch|roll-?leine|rollleine|rollmechanismus|ausziehbar|teleskop|flexi|einziehbar|retract|automatik|r[üu]ckzug",
+   "regeln": [
+    [
+     "doppelleine|doppel-?haken|f[üu]r zwei hunde|2 hunde|zwei hunde|doppelte leine|double",
+     "ap-2-31-1"
+    ],
+    [
+     "hands-?free|freihand|jogging-?leine|bauchgurt|h[üu]ftgurt|joggen",
+     "ap-2-31-2"
+    ],
+    [
+     "anti-?zug|no-?pull|zugstopp",
+     "ap-2-31-3"
+    ],
+    [
+     "retriever|moxon|slip-?leine|\\bslip\\b",
+     "ap-2-31-4"
+    ],
+    [
+     "schleppleine|trainingsleine|ausbildungsleine|\\d{2} ?m\\b|1\\d m\\b",
+     "ap-2-31-6"
+    ],
+    [
+     "\\w*leine\\b|\\w*leinen\\b|\\w*leinen-|leash",
+     "ap-2-31-5"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Rindsleder-Doppelhaken-Leine für zwei Hunde",
+     "ap-2-31-1"
+    ],
+    [
+     "Verstellbare Hands-Free Hundeleine",
+     "ap-2-31-2"
+    ],
+    [
+     "Doppelleine für Hunde",
+     "ap-2-31-1"
+    ],
+    [
+     "Hundeleine, grau",
+     "ap-2-31-5"
+    ],
+    [
+     "Hundeleine 4.5m",
+     "ap-2-31-5"
+    ],
+    [
+     "Hundeleine mit Karabinerverschluss",
+     "ap-2-31-5"
+    ],
+    [
+     "Halsband- und Leinen-Set mit Schleife",
+     "ap-2-31-5"
+    ],
+    [
+     "Hundeleine und Halsband Set",
+     "ap-2-31-5"
+    ],
+    [
+     "Automatische Hundeleine mit Rollmechanismus",
+     null
+    ],
+    [
+     "Hundeleine Teleskop Doppelfarbig",
+     null
+    ],
+    [
+     "Hundeleine Okinawa, elastisch und ausziehbar",
+     null
+    ],
+    [
+     "Schleppleine 15 m für Hundetraining",
+     "ap-2-31-6"
+    ],
+    [
+     "Hundegeschirr mit Leine (S-M-L)",
+     "ap-2-31-5"
+    ],
+    [
+     "Retractierbare Leine mit Automatikbremse für kleine Hunde",
+     null
+    ]
+   ]
+  },
+  "el-7-15-5": {
+   "name": "Power Adapters & Chargers",
+   "nicht": "mirroring|hdmi|kabel\\b(?!.*ladeger[äa]t)|handw[äa]rmer(?!.*power)|gamepad|controller|\\bps\\d\\b|xbox|li-ion|\\bakkus?\\b|e-fahrzeug|e-?bike|sleeve|tasse|hammer|solar|notstart|starthilfe|jump|elektro-|balance|scooter|schubkarre|lampe",
+   "regeln": [
+    [
+     "power-?bank|powerbank",
+     "el-7-15-5-1"
+    ],
+    [
+     "\\bauto\\b|auto-|autolade|kfz|fahrzeug|zigarettenanz[üu]nder|car charger",
+     "el-7-15-5-4"
+    ],
+    [
+     "wireless|wirelos\\w*|kabellos\\w*|induktiv\\w*|magsafe|\\bqi\\b|qi-|ladepad|lade-?pad",
+     "el-7-15-5-2"
+    ],
+    [
+     "laptop[- ]?(?:netzteil|ladeger[äa]t|lade\\w*|charger)|notebook-?netzteil|(?:netzteil|ladeger[äa]t)\\s+f[üu]r\\s+(?:laptop|notebook|macbook)",
+     "el-7-15-5-5"
+    ],
+    [
+     "reiseadapter|steckdosenadapter|steckeradapter|universal-?adapter|reisestecker|adapterstecker",
+     "el-7-15-5-3"
+    ],
+    [
+     "ladeger[äa]t|schnelllader|netzteil|\\blader\\b|charger|ladeadapter|ladestecker|\\bgan\\b",
+     "el-7-15-5-6"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Powerbank 20000 mAh, 120W, 4 Anschlüsse",
+     "el-7-15-5-1"
+    ],
+    [
+     "USB Handwärmer & Powerbank",
+     "el-7-15-5-1"
+    ],
+    [
+     "Kabellose Powerbank für Apple Watch",
+     "el-7-15-5-1"
+    ],
+    [
+     "3-in-1 Wireless Ladestation für mehrere Geräte",
+     "el-7-15-5-2"
+    ],
+    [
+     "Faltbares 4-in-1 Wireless-Ladegerät, 18W",
+     "el-7-15-5-2"
+    ],
+    [
+     "USB-C MagSafe Lader",
+     "el-7-15-5-2"
+    ],
+    [
+     "Kabelloses Magsafe Auto-Ladegerät",
+     "el-7-15-5-4"
+    ],
+    [
+     "Dual-USB-Autoladegerät",
+     "el-7-15-5-4"
+    ],
+    [
+     "Universelles Laptop-Netzteil",
+     "el-7-15-5-5"
+    ],
+    [
+     "65W USB-C PD Laptop Ladeadapter",
+     "el-7-15-5-5"
+    ],
+    [
+     "45W GaN Ladegerät für Tablets, Smartphones & Laptops",
+     "el-7-15-5-6"
+    ],
+    [
+     "Gelber Schnelllader",
+     "el-7-15-5-6"
+    ],
+    [
+     "Schnellladegerät 5V/3A · passend für Samsung Note10",
+     "el-7-15-5-6"
+    ],
+    [
+     "Type-C Wireless Mirroring Adapter für PCs",
+     null
+    ],
+    [
+     "Solare Ladestation",
+     null
+    ],
+    [
+     "Dual-Ladestation für PS5 Wireless Gamepads",
+     null
+    ],
+    [
+     "Faltbarer Sechs-in-Ein-Wireloser Ladegerät",
+     "el-7-15-5-2"
+    ],
+    [
+     "USB Li-ion Ladegerät für 3.7V Akkus",
+     null
+    ],
+    [
+     "Smart-Ladegerät-Adapterkabel",
+     null
+    ],
+    [
+     "Netzteil für Xbox 360 E",
+     null
+    ],
+    [
+     "Faltbares 10W Solar-Ladegerät",
+     null
+    ],
+    [
+     "Gelbe Auto-Notstart-Powerbank",
+     null
+    ],
+    [
+     "Wasserdichtes USB-Ladegerät für Fahrzeuge",
+     "el-7-15-5-4"
+    ],
+    [
+     "Multifunktionale Pilzlampe mit USB-Ladegerät",
+     null
+    ],
+    [
+     "Ladegerät für Elektro-Schubkarre & Balance Car",
+     null
+    ]
+   ]
+  },
+  "ap-2-14": {
+   "name": "Pet Bowls, Feeders & Waterers",
+   "nicht": "klettergerüst|kratz|spielzeug|schnüffel|futterball|\\bball\\b|^(?!.*flasche).*(?:kotbeutel|m[üu]llbeutel)",
+   "regeln": [
+    [
+     "brunnen|fountain",
+     "ap-2-14-8"
+    ],
+    [
+     "(?:automatisch|smart|intelligent)\\w*\\s+(?:\\w+\\s+)?(?:trink|wasser)",
+     "ap-2-14-7"
+    ],
+    [
+     "futterautomat|(?:automatisch|smart|intelligent)\\w*\\s+(?:\\w+\\s+)?futter|futterspender.*(?:mahlzeit|timer|app|kamera)|kamera|mahlzeiten",
+     "ap-2-14-1"
+    ],
+    [
+     "reise|unterwegs|faltbar|zusammenklappbar|trinkflasche|\\bflasche\\b|tragbar",
+     "ap-2-14-6"
+    ],
+    [
+     "schwerkraft|vorratsspender|gravity",
+     "ap-2-14-4"
+    ],
+    [
+     "wasserspender|trinkspender",
+     "ap-2-14-7"
+    ],
+    [
+     "anti-?schling|slow ?feed|langsam|schleck|labyrinth",
+     "ap-2-14-5"
+    ],
+    [
+     "erh[öo]ht|h[öo]henverstellbar|napfst[äa]nder|futtertisch|futterbar|gestell|\\bst[äa]nder\\b|hohe[mrn]? fu(?:ss|ß)|mit fu(?:ss|ß)",
+     "ap-2-14-3"
+    ],
+    [
+     "(?<!saug)napf|(?<!saug)n[äa]pfe|sch[üu]ssel|futterschale|trinkschale|\\bschale\\b|\\bbowl\\b",
+     "ap-2-14-2"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Keramik-Futternapf mit Bambusgestell",
+     "ap-2-14-3"
+    ],
+    [
+     "Katzenklettergerüst mit Saugnapf",
+     null
+    ],
+    [
+     "Futterspender für Hunde",
+     null
+    ],
+    [
+     "Schnüffelring gegen Langeweile für Haustiere",
+     null
+    ],
+    [
+     "Keramik Futternapf für Katzen, 350 ml",
+     "ap-2-14-2"
+    ],
+    [
+     "Kleine Keramikschüssel für Haustiere",
+     "ap-2-14-2"
+    ],
+    [
+     "Schräge Keramik Futterschale für Haustiere",
+     "ap-2-14-2"
+    ],
+    [
+     "Automatischer Futterspender für 6 Mahlzeiten",
+     "ap-2-14-1"
+    ],
+    [
+     "Intelligente Futternapf-Kamera",
+     "ap-2-14-1"
+    ],
+    [
+     "Verstellbarer Futtertisch mit Doppel-Napf",
+     "ap-2-14-3"
+    ],
+    [
+     "3-in-1 Pet-Flasche mit Wasser, Futter & Müllbeutel",
+     "ap-2-14-6"
+    ],
+    [
+     "Anti-Rutsch Silikon Schleckschale für Haustiere",
+     "ap-2-14-5"
+    ],
+    [
+     "Faltbarer, wasserdichter Futternapf für Unterwegs",
+     "ap-2-14-6"
+    ],
+    [
+     "Anti-Schlingnapf aus Silikon mit Saugnapf",
+     "ap-2-14-5"
+    ],
+    [
+     "Reise-Trinkflasche für Haustiere mit Futterfach",
+     "ap-2-14-6"
+    ],
+    [
+     "Automatischer Trinknapf für Hunde",
+     "ap-2-14-7"
+    ],
+    [
+     "Futter- und Trinkbrunnen für Haustiere",
+     "ap-2-14-8"
+    ],
+    [
+     "Futterball mit Saugnapf zur Zahnreinigung",
+     null
+    ],
+    [
+     "Beheizbarer Futternapf mit Temperaturkontrolle",
+     "ap-2-14-2"
+    ],
+    [
+     "Keramik Futternapf mit hohem Fuss",
+     "ap-2-14-3"
+    ]
+   ]
+  },
+  "aa-5-4": {
+   "name": "Handbags",
+   "nicht": "skort|\\bhose\\b|stoffhose|haustier|\\bhunde|katzen|kleid|rock\\b|portemonnaie|geldb[öo]rse|brieftasche",
+   "regeln": [
+    [
+     "rucksack|backpack",
+     "aa-5-4-23"
+    ],
+    [
+     "g[üu]rteltasche|bauchtasche|h[üu]fttasche|belt ?bag|waist ?bag|fanny",
+     "aa-5-4-22"
+    ],
+    [
+     "clutch|abendtasche|unterarmtasche|envelope",
+     "aa-5-4-5"
+    ],
+    [
+     "strand-?tasche|beach ?bag",
+     "aa-5-4-3"
+    ],
+    [
+     "bucket|beuteltasche|eimertasche|drawstring",
+     "aa-5-4-4"
+    ],
+    [
+     "\\bhobo\\b",
+     "aa-5-4-12"
+    ],
+    [
+     "baguette",
+     "aa-5-4-1"
+    ],
+    [
+     "satteltasche|saddle",
+     "aa-5-4-15"
+    ],
+    [
+     "halbmond|half-?moon",
+     "aa-5-4-11"
+    ],
+    [
+     "\\btote\\b|tote-?bag|shopper|einkaufstasche",
+     "aa-5-4-18"
+    ],
+    [
+     "crossbody|cross-?body|umh[äa]ngetasche|brusttasche|brustbeutel|sling",
+     "aa-5-4-7"
+    ],
+    [
+     "schultertasche|shoulder ?bag",
+     "aa-5-4-19"
+    ],
+    [
+     "satchel|aktentasche",
+     "aa-5-4-16"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Männer Schultertasche aus Leder",
+     "aa-5-4-19"
+    ],
+    [
+     "Sommer-Strand-Tasche",
+     "aa-5-4-3"
+    ],
+    [
+     "Umhängetasche für Herren, multifunktional",
+     "aa-5-4-7"
+    ],
+    [
+     "Crossbody-Tasche mit Innenfach",
+     "aa-5-4-7"
+    ],
+    [
+     "Trendige Crossbody Bag mit viel Stauraum",
+     "aa-5-4-7"
+    ],
+    [
+     "Leder-Brusttasche",
+     "aa-5-4-7"
+    ],
+    [
+     "Taktischer Brustbeutel",
+     "aa-5-4-7"
+    ],
+    [
+     "Herren Clutch Bag für Freizeit und Reisen",
+     "aa-5-4-5"
+    ],
+    [
+     "Männer Leder Clutch",
+     "aa-5-4-5"
+    ],
+    [
+     "Leichter Skort mit Taschen",
+     null
+    ],
+    [
+     "Loose Fit Stoffhose mit Taschen",
+     null
+    ],
+    [
+     "Faltbare Haustiertasche mit Rollen",
+     null
+    ],
+    [
+     "Bullcaptain Leder Businesstasche",
+     null
+    ],
+    [
+     "Punk Motorrad-Seiten-Taschen",
+     null
+    ],
+    [
+     "Damen Tote Bag aus Canvas",
+     "aa-5-4-18"
+    ],
+    [
+     "Gürteltasche für Damen mit Kette",
+     "aa-5-4-22"
+    ],
+    [
+     "Handtasche mit Totenkopf-Nieten",
+     null
+    ]
+   ]
+  },
+  "hg-15-1-9": {
+   "name": "Pillows",
+   "nicht": "baby|kinder|haustier|hunde|katzen|sitzkissen|r[üu]ckenkissen|dekokissen|kissenbezug|kissenh[üu]lle",
+   "regeln": [
+    [
+     "schwangerschaft|still-?kissen|stillkissen|umstands|maternity|pregnancy",
+     "hg-15-1-9-4"
+    ],
+    [
+     "keilkissen|keil-|\\bkeil\\b|wedge",
+     "hg-15-1-9-5"
+    ],
+    [
+     "knie|beinkissen|bein- und|beine\\b|leg pillow",
+     "hg-15-1-9-2"
+    ],
+    [
+     "nacken|zervikal|hws|halskissen|hals-?kissen|neck|u-form",
+     "hg-15-1-9-3"
+    ],
+    [
+     "k[öo]rperkissen|seitenschl[äa]ferkissen|body ?pillow|langes kissen|stillschlange",
+     "hg-15-1-9-1"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Tragbares Nackenkissen für erholsamen Schlaf",
+     "hg-15-1-9-3"
+    ],
+    [
+     "Plüsch-Stützkissen für Seitenschläfer",
+     null
+    ],
+    [
+     "Waschbares Seitenschläfer-Beinkissen",
+     "hg-15-1-9-2"
+    ],
+    [
+     "Baby-Kopfkissen für schöne Kopfform",
+     null
+    ],
+    [
+     "Seiden-Nackenkissen in U-Form",
+     "hg-15-1-9-3"
+    ],
+    [
+     "Memory-Schaum-Kissen für Nackenstütze",
+     "hg-15-1-9-3"
+    ],
+    [
+     "Bein- und Kniekissen für Seitenschläfer",
+     "hg-15-1-9-2"
+    ],
+    [
+     "Halskissen Memory Foam",
+     "hg-15-1-9-3"
+    ],
+    [
+     "Herzförmiges Beinkissen für Bett",
+     "hg-15-1-9-2"
+    ],
+    [
+     "Schulterkissen",
+     null
+    ],
+    [
+     "Memory Foam Kissen für Nacken und Bauchschläfer",
+     "hg-15-1-9-3"
+    ],
+    [
+     "Ohrlochkissen aus Memory-Schaum",
+     null
+    ]
+   ]
+  }
+ }
+}
