@@ -746,3 +746,5 @@ gid://shopify/Product/15504106619265	ok	Pizzaroller und Teiglocher
 gid://shopify/Product/15504120578433	ok	LED Schminkspiegel, doppelseitig mit Licht
 gid://shopify/Product/15504120709505	ok	Elektrische Wimpernzange mit Temperaturanzeige
 gid://shopify/Product/15504137879937	ok	Beauty Kit Lidschatten Rouge Lippenstift Set
+gid://shopify/Product/15504138174849	ok	78 Farben Make-up Set Lidschatten Lippenstift
+gid://shopify/Product/15504172712321	ok	Sydney Gemüsehobel für Gurken und Salate
