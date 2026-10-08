@@ -1,0 +1,408 @@
+{
+ "_zweck": "Handverlesene Fassungen und Kanarien für material_widerspruch.py (08.10.2026). von_hand[handle] gewinnt vor der automatischen Umschreibung; skip = bewusst nicht anfassen.",
+ "von_hand": {
+  "gothic-ledergurtel-mit-herzschnalle-619600": {
+   "titel": "Gothic-Gürtel aus Kunstleder mit Herzschnalle",
+   "text": [
+    [
+     "Dieser vielseitige Ledergürtel",
+     "Dieser vielseitige Kunstledergürtel"
+    ],
+    [
+     "Material:  Leder",
+     "Material:  Kunstleder (PU)"
+    ]
+   ]
+  },
+  "schultertasche-aus-gewaschenem-leder-284608": {
+   "titel": "Schultertasche aus gewaschenem Kunstleder"
+  },
+  "nordic-strick-kissenbezug-aus-wolle-2b1fd5": {
+   "titel": "Nordic Strick-Kissenbezug aus Acryl",
+   "text": [
+    [
+     "Kissenbezug aus Wolle",
+     "Kissenbezug aus Acryl-Strick"
+    ]
+   ]
+  },
+  "kabelloses-ladegerat-aus-holz-7d414e": {
+   "titel": "Kabelloses Ladegerät in Holzoptik"
+  },
+  "manner-flachledertasche-294912": {
+   "titel": "Flache Herrentasche aus Kunstleder",
+   "text": [
+    [
+     "Die Männer-Flachledertasche",
+     "Die flache Herrentasche"
+    ]
+   ]
+  },
+  "leder-schultertasche-mit-diamanten-171456": {
+   "titel": "Schultertasche aus Kunstleder mit Strass",
+   "text": [
+    [
+     "mit funkelnden Diamanten verziert",
+     "mit funkelnden Strasssteinen verziert"
+    ]
+   ]
+  },
+  "leder-tischset-wasser-und-olfest-263168": {
+   "titel": "Tischset aus Kunstleder, wasser- und ölfest"
+  },
+  "spitzenbesetztes-seiden-slipdress-616900": {
+   "titel": "Spitzenbesetztes Satin-Slipdress"
+  },
+  "schmuckige-ledersandalen-mit-kristall-und-tran-274560": {
+   "titel": "Sandalen aus Kunstleder mit Kristall- und Transparenzband"
+  },
+  "prinzessinnen-lederschuhe-fur-kinder-605696": {
+   "titel": "Prinzessinnen-Schuhe aus Kunstleder für Kinder",
+   "text": [
+    [
+     "Diese Prinzessinnen-Lederschuhe",
+     "Diese Prinzessinnen-Schuhe"
+    ]
+   ]
+  },
+  "leder-aktenkoffer-mit-zahlenschloss-038848": {
+   "titel": "Aktenkoffer aus Kunstleder mit Zahlenschloss",
+   "text": [
+    [
+     "ein Leder Aktenkoffer",
+     "ein Aktenkoffer aus Kunstleder"
+    ]
+   ]
+  },
+  "modische-lederstiefel-mit-weicher-sohle-854848": {
+   "titel": "Modische Stiefel aus Kunstleder mit weicher Sohle"
+  },
+  "leder-gurteltasche-fur-falt-smartphones-925568": {
+   "titel": "Gürteltasche aus Kunstleder für Falt-Smartphones",
+   "text": [
+    [
+     "eine Ledertasche",
+     "eine Tasche aus Kunstleder"
+    ]
+   ]
+  },
+  "madchen-lederschuhe-mit-weicher-sohle-230912": {
+   "titel": "Mädchen-Schuhe aus Kunstleder mit weicher Sohle",
+   "text": [
+    [
+     "Diese Lederschuhe",
+     "Diese Schuhe"
+    ],
+    [
+     "Das Obermaterial besteht aus zweilagigem Rindsleder.",
+     "Das Obermaterial besteht aus Kunstleder (PU)."
+    ]
+   ]
+  },
+  "pferde-taschenanhanger-aus-leder-617200": {
+   "titel": "Bulldoggen-Taschenanhänger aus Kunstleder"
+  },
+  "reisepasshalter-aus-vollschale-rindleder-615800": {
+   "skip": true,
+   "_grund": "Text nennt Vollschale-Rindleder UND PU-Füllung — Materialzeile meint vermutlich die Füllung; nicht raten"
+  },
+  "golfschuhtasche-aus-leder-litchi-muster-614700": {
+   "titel": "Golfschuhtasche aus Kunstleder, Litchi-Muster",
+   "text": [
+    [
+     "diese Leder-Golfschuhtasche",
+     "diese Golfschuhtasche aus Kunstleder"
+    ],
+    [
+     "Das Material ist Leder,",
+     "Das Material ist Kunstleder (PU),"
+    ]
+   ]
+  },
+  "kleine-madchen-kristall-leder-schuhe-275456": {
+   "titel": "Mädchen-Schuhe aus Kunstleder mit Kristall-Deko"
+  },
+  "madchen-lederschuhe-mit-blumen-und-schleife-808960": {
+   "titel": "Mädchen-Schuhe aus Kunstleder mit Blumen und Schleife",
+   "text": [
+    [
+     "diese Lederschuhe",
+     "diese Schuhe"
+    ]
+   ]
+  },
+  "crossbody-tasche-mit-schloss-lychee-leder-604400": {
+   "titel": "Umhängetasche mit Schloss – Kunstleder mit Lychee-Narbung"
+  },
+  "kurze-lederjacke-im-american-style-629900": {
+   "titel": "Kurze Kunstlederjacke im American Style"
+  },
+  "lederhandtasche-mit-mehreren-fachern-987200": {
+   "titel": "Handtasche aus Kunstleder mit mehreren Fächern"
+  },
+  "herren-clutch-wallet-leder-tasche-628200": {
+   "titel": "Herren-Clutch aus Kunstleder",
+   "text": [
+    [
+     "Die Herren Clutch Wallet Leder Tasche",
+     "Diese Herren-Clutch aus Kunstleder"
+    ]
+   ]
+  },
+  "leder-kartenhalter-fur-herren-623300": {
+   "titel": "Kartenhalter aus Kunstleder für Herren"
+  },
+  "leder-kartenetui-mit-knopf-und-elastischem-ban-636400": {
+   "titel": "Kartenetui aus Kunstleder mit Knopf und elastischem Band",
+   "text": [
+    [
+     "aus glattem Leder",
+     "aus glattem Kunstleder"
+    ]
+   ]
+  },
+  "retro-booties-mit-lederriemen-und-falten-631300": {
+   "titel": "Retro-Booties mit Riemen und Falten",
+   "text": [
+    [
+     "auffälligem Lederriemen",
+     "auffälligem Riemen"
+    ]
+   ]
+  },
+  "spitzschuhe-mit-stiletto-absatz-aus-leder-fur-633300": {
+   "titel": "Spitzschuhe mit Stiletto-Absatz für Damen",
+   "text": [
+    [
+     "sind aus hochwertigem Leder gefertigt",
+     "sind aus Kunstleder gefertigt"
+    ],
+    [
+     "Leder- und PU-Materialien",
+     "PU-Kunstleder"
+    ]
+   ]
+  },
+  "schwarze-schnurschuhe-aus-leder-639800": {
+   "titel": "Schwarze Schnürschuhe aus Kunstleder"
+  },
+  "dunkelbraune-mary-jane-halbschuhe-aus-leder-614800": {
+   "titel": "Dunkelbraune Mary-Jane-Halbschuhe für Damen",
+   "text": [
+    [
+     "aus hochwertigem Echtleder gefertigt",
+     "aus Kunstleder gefertigt"
+    ],
+    [
+     "Obermaterial aus echtem Rindsleder",
+     "Obermaterial aus Kunstleder (PU)"
+    ]
+   ]
+  },
+  "plateau-wedge-heels-aus-lackleder-602100": {
+   "titel": "Plateau-Wedge-Heels in Lackoptik"
+  },
+  "leder-slipper-mit-metallschnalle-610500": {
+   "titel": "Slipper aus Kunstleder mit Metallschnalle"
+  },
+  "japan-inspirierte-leder-halbschuhe-mit-absatz-635200": {
+   "titel": "Japan-inspirierte Halbschuhe mit Absatz",
+   "text": [
+    [
+     "Das Obermaterial aus Leder sorgt",
+     "Das Obermaterial aus Kunstleder sorgt"
+    ]
+   ]
+  },
+  "herren-leder-strandschuhe-atmungsaktiv-625800": {
+   "titel": "Atmungsaktive Herren-Strandschuhe",
+   "text": [
+    [
+     "sind aus echtem Rindsleder gefertigt und bieten",
+     "bieten"
+    ]
+   ]
+  },
+  "elegante-slip-on-lederschuhe-fur-herren-625400": {
+   "titel": "Elegante Slip-on-Schuhe aus Kunstleder für Herren"
+  },
+  "herren-casual-lederschuhe-mit-metallschnallen-605800": {
+   "titel": "Herren-Casual-Schuhe aus Kunstleder mit Metallschnallen",
+   "text": [
+    [
+     "Runde Zehenkappe aus Leder",
+     "Runde Zehenkappe aus Kunstleder"
+    ]
+   ]
+  },
+  "business-casual-lederschuhe-fur-herren-626900": {
+   "titel": "Business-Casual-Schuhe aus Kunstleder für Herren",
+   "text": [
+    [
+     "Lederschuhen für Herren",
+     "Schuhen aus Kunstleder für Herren"
+    ]
+   ]
+  },
+  "airtag-leder-portemonnaie-mit-rfid-schutz-026048": {
+   "titel": "AirTag-Portemonnaie mit RFID-Schutz",
+   "text": [
+    [
+     "aus echtem Leder und Aluminium",
+     "aus Kunstleder und Aluminium"
+    ]
+   ]
+  },
+  "einfache-leder-schuhe-fur-madchen-634800": {
+   "titel": "Einfache Mädchen-Schuhe",
+   "text": [
+    [
+     "Schuhe aus Leder eignen",
+     "Schuhe eignen"
+    ],
+    [
+     "Material:  Leder",
+     "Material:  Kunstleder (PU)"
+    ]
+   ]
+  },
+  "susser-lederbluten-prinzessinnenschuhe-611700": {
+   "titel": "Süsse Prinzessinnenschuhe mit Kunstlederblüten",
+   "text": [
+    [
+     "Diese süssen Lederblüten-Schuhe",
+     "Diese süssen Schuhe mit Kunstlederblüten"
+    ]
+   ]
+  },
+  "diy-armband-mit-kupfer-925-silber-anhangern-605900": {
+   "titel": "DIY-Armband mit versilberten Kupfer-Anhängern",
+   "text": [
+    [
+     "mit kupferplattierten 925 Silber-Anhängern",
+     "mit versilberten Kupfer-Anhängern"
+    ],
+    [
+     "Kupferplattiert mit 925 Silber",
+     "Kupfer, versilbert"
+    ]
+   ]
+  },
+  "nachtlicht-aus-holz-und-resin-600200": {
+   "titel": "Nachtlicht in Holzoptik mit Resin"
+  },
+  "geflochtenes-lederarmband-aus-titanstahl-625000": {
+   "titel": "Geflochtenes Kunstleder-Armband mit Titanstahl",
+   "text": [
+    [
+     "mit geschmeidigem Leder",
+     "mit geschmeidigem Kunstleder"
+    ]
+   ]
+  }
+ },
+ "kanarien_titel": [
+  [
+   "Mädchen Lederschuhe mit weicher Sohle",
+   "Mädchen Kunstlederschuhe mit weicher Sohle"
+  ],
+  [
+   "Schultertasche aus gewaschenem Leder",
+   "Schultertasche aus gewaschenem Kunstleder"
+  ],
+  [
+   "Leder-Kartenhalter für Herren",
+   "Kunstleder-Kartenhalter für Herren"
+  ],
+  [
+   "Leder Aktenkoffer mit Zahlenschloss",
+   "Kunstleder Aktenkoffer mit Zahlenschloss"
+  ],
+  [
+   "Reisepasshülle aus Vollnarben-Rindleder",
+   "Reisepasshülle aus Kunstleder"
+  ],
+  [
+   "Männer-Flachledertasche",
+   "Männer-Flach-Kunstledertasche"
+  ],
+  [
+   "Kurze Lederjacke im American Style",
+   "Kurze Kunstlederjacke im American Style"
+  ],
+  [
+   "Plateau-Wedge-Heels aus Lackleder",
+   "Plateau-Wedge-Heels aus Lack-Kunstleder"
+  ]
+ ],
+ "kanarien_text": [
+  [
+   "Diese Schuhe sind aus echtem Rindsleder gefertigt.",
+   "Diese Schuhe sind aus Kunstleder gefertigt."
+  ],
+  [
+   "Die Halbschuhe sind aus hochwertigem Echtleder gefertigt.",
+   "Die Halbschuhe sind aus Kunstleder gefertigt."
+  ],
+  [
+   "Das Obermaterial besteht aus zweilagigem Rindsleder.",
+   "Das Obermaterial besteht aus Kunstleder."
+  ],
+  [
+   "Futter aus Imitationsleder, Sohle aus TPR.",
+   "Futter aus Imitationsleder, Sohle aus TPR."
+  ]
+ ],
+ "kanarien_befund": [
+  [
+   "Mädchen Lederschuhe mit weicher Sohle",
+   "PU-Leder",
+   "leder"
+  ],
+  [
+   "Herren Umhängetasche PU Leder",
+   "PU-Leder",
+   null
+  ],
+  [
+   "Damen-High-Top-Stiefel aus Wildleder",
+   "hochwertiges Wildleder-Obermaterial und synthetisches PU",
+   null
+  ],
+  [
+   "Lederrucksack für Herren",
+   "Polyester, Leder",
+   null
+  ],
+  [
+   "Lederpflege-Set für Schuhe",
+   "Kunststoff",
+   null
+  ],
+  [
+   "Nordic Strick-Kissenbezug aus Wolle",
+   "100 % Acryl",
+   "wolle"
+  ],
+  [
+   "Hundehalsband- und Leinen-Set",
+   "Polyester",
+   null
+  ],
+  [
+   "Retro-Schal mit Kaschmir-Gefühl",
+   "Polyester",
+   null
+  ],
+  [
+   "Kabelloses Ladegerät aus Holz",
+   "ABS und PU-Leder",
+   "holz"
+  ],
+  [
+   "Ledertasche aus Rindsleder",
+   "Rindsleder, PU-Futter",
+   null
+  ]
+ ]
+}

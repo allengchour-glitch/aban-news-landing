@@ -1,6 +1,6 @@
-# Material-Widerspruch Titel ↔ Materialangabe — Stand 2026-10-08 20:49 UTC
+# Material-Widerspruch Titel ↔ Materialangabe — Stand 2026-10-08 20:50 UTC
 
-Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). Zu ändern: 41 · Fehler: 0 · nur gemeldet: 1
+Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). Geändert: 41 · Fehler: 0 · nur gemeldet: 1
 
 ## Änderungen
 
@@ -9,7 +9,7 @@ Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). 
 - `nordic-strick-kissenbezug-aus-wolle-2b1fd5` (wolle, Material «100 % acryl»): «Nordic Strick-Kissenbezug aus Wolle» → «Nordic Strick-Kissenbezug aus Acryl» · Text angepasst
 - `kabelloses-ladegerat-aus-holz-7d414e` (holz, Material «abs und pu-leder»): «Kabelloses Ladegerät aus Holz» → «Kabelloses Ladegerät in Holzoptik»
 - `manner-flachledertasche-294912` (leder, Material «pu-leder»): «Männer-Flachledertasche» → «Flache Herrentasche aus Kunstleder» · Text angepasst
-- `leder-schultertasche-mit-diamanten-171456` (leder, Material «pu»): «Leder Schultertasche mit Diamanten» → «Schultertasche aus Kunstleder mit Strass»
+- `leder-schultertasche-mit-diamanten-171456` (leder, Material «pu»): «Leder Schultertasche mit Diamanten» → «Schultertasche aus Kunstleder mit Strass» · Text angepasst
 - `leder-tischset-wasser-und-olfest-263168` (leder, Material «hochwertiges lederimitat»): «Leder-Tischset, wasser- und ölfest» → «Tischset aus Kunstleder, wasser- und ölfest»
 - `spitzenbesetztes-seiden-slipdress-616900` (seide, Material «hauptsächlich polyester»): «Spitzenbesetztes Seiden-Slipdress» → «Spitzenbesetztes Satin-Slipdress»
 - `schmuckige-ledersandalen-mit-kristall-und-tran-274560` (leder, Material «pu-leder»): «Schmuckige Ledersandalen mit Kristall- und Transparenzband» → «Sandalen aus Kunstleder mit Kristall- und Transparenzband»

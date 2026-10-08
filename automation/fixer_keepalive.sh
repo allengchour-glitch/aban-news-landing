@@ -1319,6 +1319,8 @@ while true; do
       touch "$VSW"
       ( cd "$REPO" && timeout 2400 python3 automation/versprechen_wache.py >> "$VSW" 2>&1 )
       echo "$(date -u +%H:%M) VERSPRECHEN: $(grep -E '^FERTIG|Kanarien rot|Bulk' "$VSW" | tail -1)"
+      # 08.10.2026: Titel verspricht Leder, Materialangabe sagt PU (38 gemessen) — liest denselben Export, Leder automatisch, Rest gemeldet
+      [ -f "$REPO/automation/material_widerspruch.py" ] && ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/material_widerspruch.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:
