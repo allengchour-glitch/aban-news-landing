@@ -5593,3 +5593,5 @@ herren-derby-schuhe-mit-dicker-sohle-608000	2603150435031608400	16	22.80	ok	land
 wanderschuhe-fur-herren-623500	2603120759221624100	16	15.56	ok	landeseite
 distressed-biker-schuhe-mit-stollen-632500	2603120152041633200	16	25.95	ok	landeseite
 camo-python-stiefel-622900	2602260635311623200	16	19.65	ok	landeseite
+warme-herren-schuhe-mit-kunstfell-futterung-600000	2602260620481600300	16	14.96	ok	landeseite
+herren-stiefel-hoch-britischer-stil-613300	2602260255131613600	16	12.56	ok	landeseite
