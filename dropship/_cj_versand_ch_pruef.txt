@@ -5778,3 +5778,9 @@ stickereikit-pflanzen-blumen-636300	2604281229031636800	16	6.48	ok	landeseite
 dmc-kreuzstich-set-pullover-tier-hase-394944	1626146173440503808	16	8.79	ok	landeseite
 diy-set-handgestrickter-schal-aus-wolle-121280	1604030389813784576	1	7.39	ok	landeseite
 aufbugler-buchstaben-und-zahlen-430977	2031176679285231617	0	-	KEINE CH-Option → DRAFT	landeseite
+stickset-blumenwiese-fur-einsteiger-277568	1603620959330775040	16	6.17	ok	landeseite
+boho-geometrie-decke-620000	2602121520051620400	16	15.20	ok	landeseite
+europaische-3d-stickerei-fur-anfanger-996608	1603620252649271296	16	6.01	ok	landeseite
+romantisches-kissenbezuge-mit-ruschen-632500	2602050754371632900	16	6.17	ok	landeseite
+leinwandbild-weg-der-wahrheit-und-des-lebens-648192	1603367644118396928	16	13.79	ok	landeseite
+kinder-knitting-set-610700	2601290209491611000	16	9.47	ok	landeseite
