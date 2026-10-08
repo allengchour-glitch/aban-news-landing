@@ -5948,3 +5948,5 @@ lenkrad-abdeckung-604600	2605280727331605200	16	16.16	ok	landeseite
 lenkradbezug-suede-613400	2605270921161613900	16	14.48	ok	landeseite
 lenkradbezug-618400	2605270912191619000	16	11.00	ok	landeseite
 winter-steuerrad-abdeckung-617200	2605261102231617900	16	12.21	ok	landeseite
+lenkradbezug-holzpragung-637600	2605261030211638300	16	11.00	ok	landeseite
+carbon-lenkradbezug-611100	2605191144061611800	16	13.42	ok	landeseite
