@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-08T18:06Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-08T19:05Z
 
 Aktive gescannt: 18 · ohne Kategorie: 18 · heute gesetzt: 15 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- tungstenstahl-dreiecksholzbohrer-20-94-mm-581c9d · Werkzeug & Heimwerken → Hardware > Tools
-- multifunktionaler-drehschraubendreher-aus-chro-2e90a0 · Werkzeug & Heimwerken → Hardware > Tools
-- usb-elektro-schraubenzieher-mit-magnetbox-7fc376 · Werkzeug & Heimwerken → Hardware > Tools
-- hangespann-mit-pulley-4-stuck-weiss-cc76e1 · Werkzeug & Heimwerken → Hardware > Tools
-- wasserdichter-3d-door-sticker-0aa724 · Werkzeug & Heimwerken → Hardware > Tools
+- aluminium-handtuchhalter-417041-matt-68cb42 · Werkzeug & Heimwerken → Hardware > Tools
+- sportliche-alltagsschuhe-mit-breiter-sohle-602600 · Herrenschuhe → Apparel & Accessories > Shoes
+- fahrrad-mountainbike-reparatur-tool-set-aus-ed-de0adb · Werkzeug & Heimwerken → Hardware > Tools
+- canvas-loafers-herren-plus-size-613100 · Herrenschuhe → Apparel & Accessories > Shoes
+- reifenreparaturset-fur-rad-ohne-kleber-f9a9a1 · Werkzeug & Heimwerken → Hardware > Tools
 
