@@ -141,7 +141,15 @@ with tempfile.TemporaryDirectory() as tmp:
         basis = f"http://127.0.0.1:{srv.server_port}"
         with urllib.request.urlopen(basis + "/") as r:
             html = r.read().decode()
-        pruefe("Seite wird ausgeliefert", "Krypto-Cockpit" in html and "/api/stand" in html)
+        pruefe("Seite wird ausgeliefert", "Krypto-Cockpit" in html and "/api/stand" in html and 'href="/markt"' in html)
+        with urllib.request.urlopen(basis + "/markt") as r:
+            markt = r.read().decode()
+        import re as _re
+        hosts = set(_re.findall(r"(?:https|wss)://([a-z0-9.-]+)", markt))
+        pruefe("Markt-Seite: nur Binance-Marktdaten + Chart-Bibliothek mit Prüfsumme", "integrity=\"sha384-" in markt
+               and hosts <= {"data-api.binance.vision", "api.binance.com", "data-stream.binance.vision", "stream.binance.com", "cdn.jsdelivr.net"}, hosts)
+        pruefe("Markt-Seite: Kerzen, Volumen, RSI, MACD, Orderbuch, Markttiefe, Trades", all(x in markt for x in
+               ("addCandlestickSeries", "addHistogramSeries", "function rsi", "function macd", "@depth20", "/api/v3/depth", "@aggTrade")))
         with urllib.request.urlopen(basis + "/api/stand") as r:
             pruefe("API liefert Stand", json.load(r)["maerkte"][0]["markt"] == "BTC")
 

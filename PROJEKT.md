@@ -25,6 +25,13 @@
   Pilot/Halten — kein Backtest möglich (Modell kennt die Geschichte). SDK-Anfrage gegen lokalen Fake-Server geprüft.
   Tests `test_cockpit.py` 33 (Mutation 3/3). Bildschirmfotos mit Beispieldaten: keine JS-Fehler, kein Querüberlauf 390 px.
   **Falle:** `pkill -f "<muster>"` trifft die eigene Shell, wenn das Muster im Befehl steht (Exit 144) → per PID beenden.
+- **„Live-Chart / viele Grafiken wie Binance" (2026-10-08):** `markt.html` unter `/markt` (Cockpit-Server): Lightweight Charts
+  4.2.3 (jsdelivr + SRI), Kerzen+Volumen, MA7/25/99, BOLL, RSI/MACD als eigene gekoppelte Charts (**Lücken als Whitespace-Punkte,
+  sonst verrutschen die Panes**), Orderbuch (`@depth20@100ms`), Markttiefe (REST depth 500, SVG), `@aggTrade`, 16 Coins
+  `@miniTicker` + 7-T-Sparklines, Bot-Ebene. Daten: `data-api.binance.vision` / `wss://data-stream.binance.vision` (aus der Cloud
+  erreichbar, CORS *), Fallback api/stream.binance.com (Cloud 451). **Playwright durch den Agent-Proxy:** `args:
+  --proxy-server=$HTTPS_PROXY --proxy-bypass-list=127.0.0.1;localhost --ignore-certificate-errors` (Playwrights `proxy`-Option
+  schickte localhost an den Proxy → «plain-HTTP request»).
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
