@@ -11,7 +11,7 @@ Der Shop-Filter «Kategorie» kann so Hoodies nicht von Blusen oder Powerbanks n
 REGEL (EINE Datei automation/data/shopify_fein.json, je Elternklasse):
   «nicht» trifft → bleibt grob · sonst erste passende Titelregel → Unterklasse · keine Regel → bleibt grob.
   NUR Produkte, deren Shopify-Kategorie GENAU die Elternklasse ist (eine schon feine Klasse wird nie überschrieben).
-  Google-Wert bleibt unverändert (kosmetik_fein.schreiben schreibt ihn gleich zurück). Ziel-IDs werden vor dem Schreiben gegen
+  Geschrieben wird NUR die Shopify-Kategorie; der Google-Wert bleibt unberührt (auch leer, z. B. Kostüme). Ziel-IDs werden vor dem Schreiben gegen
   die Taxonomie des Shops geprüft (kategorie_fein.ids_pruefen). Kanarien je Klasse aus echten Titeln vor jedem Lauf.
   Neue Klasse = Block in der JSON-Datei, kein neues Skript.
 Ledger dropship/_shopify_fein.tsv (pid, Stand, Google, Ziel, Zeit, Fehler, alt). Täglich im Aufseher (Kategorie-Kette) →
@@ -62,6 +62,21 @@ def kanarien():
                 print(f"  ✗ [{k['name']}] {t!r} → {ist} (soll {s})")
     print(f"SHOPIFY-FEIN-KANARIEN {ok}/{n}")
     return ok == n
+
+
+def kat_schreiben(charge):
+    """Nur die Shopify-Kategorie (Google bleibt unberührt, auch wenn leer): aliasierte productUpdate, Rücklesen aus der Antwort."""
+    from kaufwille_zeile import gql
+    teile = [f'p{i}: productUpdate(product:{{id:"{pid}", category:"gid://shopify/TaxonomyCategory/{sid}"}})'
+             f'{{product{{id category{{id}}}} userErrors{{message}}}}' for i, (pid, _, sid) in enumerate(charge)]
+    r = gql("mutation{" + " ".join(teile) + "}")
+    aus = []
+    for i, (pid, g, sid) in enumerate(charge):
+        x = r.get(f"p{i}") or {}
+        cat = ((x.get("product") or {}).get("category") or {}).get("id", "")
+        fehler = "; ".join(e["message"] for e in (x.get("userErrors") or []))[:120]
+        aus.append((pid, "gesetzt" if cat.endswith("/" + sid) and not fehler else "fehler", g, sid, fehler))
+    return aus
 
 
 def bulk_schreiben(plan, alt):
@@ -131,7 +146,6 @@ def bulk_schreiben(plan, alt):
 
 def main():
     import kategorie_fein as kf
-    import kosmetik_fein as kos
     if not kanarien():
         raise SystemExit("Kanarienvögel gescheitert — nichts geschrieben")
     kf.export_holen()
@@ -147,9 +161,9 @@ def main():
             continue
         name = K[cid]["name"]
         st[(name, "grob")] += 1
-        g = (p.get("metafield") or {}).get("value") or ""
+        g = (p.get("metafield") or {}).get("value") or ""   # nur fürs Ledger — geschrieben wird allein die Shopify-Kategorie
         if not g:
-            st[(name, "ohne-google")] += 1; continue
+            st[(name, "ohne-google")] += 1                     # 08.10.: Kostüme sind bewusst ohne Google-Kanal → trotzdem verfeinern
         sid = ziel(cid, p["title"])
         if not sid:
             st[(name, "bleibt")] += 1
@@ -180,7 +194,7 @@ def main():
     elif SCHARF and plan:
         with open(LEDGER, "a", encoding="utf-8") as f:
             for i in range(0, len(plan), CHARGE):
-                for pid, s_, g_, sid, feh in kos.schreiben(plan[i:i + CHARGE]):
+                for pid, s_, g_, sid, feh in kat_schreiben(plan[i:i + CHARGE]):
                     f.write(f"{pid}\t{s_}\t{g_}\t{sid}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{feh}\t{alt.get(pid, '')}\n")
                     ok += s_ == "gesetzt"; fe += s_ == "fehler"
                 f.flush()

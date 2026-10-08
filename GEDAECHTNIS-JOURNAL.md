@@ -44,6 +44,19 @@
 
 
 
+## 2026-10-08 17:30 UTC · 🧥² «weiter»: Feinkategorie Runde 2 — 15 Klassen, 1'839 Produkte, Entwurf parallel, Urteil selbst
+
+**GEMESSEN:** frischer Export: 20'561 auf Shopify-Klassen mit Unterklassen (924 davon Hemden, die richtig auf «Shirts» stehen).
+**GETAN:** 15 Klassen (Rucksäcke, Sportbekleidung, Hundekleidung, Kostüme, Velozubehör, Lidschatten, Portemonnaies, Katzenspielzeug,
+Hundebedarf, Hemden, Nageldeko, Aufbewahrung, Sporttaschen, Fitness, Ringe). Vier Helfer entwarfen je Klasse Regeln + Kanarien aus
+echten Titeln mit einem gemeinsamen Prüfskript (`pruefe.py`: Kanarien + 8 Zufallstitel je Ziel). Ich habe jede Klasse an Stichproben
+geprüft und eine Grenze verschärft (Kurzarmhemd ≠ Dress Shirt). Kanarien 510/510, **1'839 gesetzt / 0 Fehler, Rücklesen 30/30**.
+**LEHRE:** (1) Der Schreibweg darf nur das Feld schreiben, das er ändern will: `kosmetik_fein.schreiben` schrieb den Google-Wert mit
+und verlangte ihn deshalb, und 1'557 Kostüme ohne Google-Kanal fielen still heraus («ohne Google» stand nur als Zähler da). (2) Regel-
+Entwürfe lassen sich gut parallelisieren, wenn alle dasselbe Prüfskript nutzen; das Urteil (Stichproben, Grenzfälle) bleibt beim
+Hauptlauf. (3) Viele «grobe» Reste sind falsche ZWEIGE (Dirndl unter Kostümen, Press-on-Nägel unter Nageldeko, Helme unter Fitness)
+— die nächste Stufe ist ein Zweig-Umzug, nicht noch feinere Regeln. Bericht `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`.
+
 ## 2026-10-08 16:00 UTC · 🧥 «weiter feinkategorie verbessern»: 8'279 Produkte in Shopifys Unterklassen — per Bulk statt Eimer
 
 **GEMESSEN:** Google steht bei 45'239 von 51'683 auf einem Blatt, Shopify aber bei 27'897 auf einer Klasse MIT Unterklassen

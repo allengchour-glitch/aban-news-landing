@@ -1,5 +1,5 @@
 {
- "_hinweis": "08.10.2026 (Betreiber «weiter feinkategorie verbessern»): Shopify-Oberklassen mit Unterklassen, unter denen Google KEIN feineres Blatt hat — kategorie_fein (Weg über Google) kommt dort nie weiter (wie bei Schuhen, schuhe_fein.py). Je Elternklasse: Titelregeln, erste gewinnt; «nicht» = Ausschluss (bleibt grob); Unklares bleibt grob (grob ist besser als falsch). Werkzeug: automation/shopify_fein.py (Kanarien vor jedem Lauf, Google-Wert bleibt). Regeln nur hier ändern.",
+ "_hinweis": "08.10.2026 (Betreiber «weiter feinkategorie verbessern»): Shopify-Oberklassen mit Unterklassen, unter denen Google KEIN feineres Blatt hat — kategorie_fein (Weg über Google) kommt dort nie weiter (wie bei Schuhen, schuhe_fein.py). Je Elternklasse: Titelregeln, erste gewinnt; «nicht» = Ausschluss (bleibt grob); Unklares bleibt grob (grob ist besser als falsch). Werkzeug: automation/shopify_fein.py (Kanarien vor jedem Lauf, Google-Wert bleibt). Regeln nur hier ändern. Runde 2 (08.10. 16:30): 15 weitere Klassen (Rucksäcke, Kostüme, Aufbewahrung, Hundekleidung, Sportbekleidung, Fitness, Nageldeko, Lidschatten, Katzenspielzeug, Velozubehör, Portemonnaies, Hundebedarf, Sporttaschen, Ringe, Hemden); Entwürfe je Klasse mit Kanarien + Stichproben, py=js 0 Abweichungen.",
  "klassen": {
   "aa-1-13": {
    "name": "Clothing Tops",
@@ -1073,6 +1073,2006 @@
     ],
     [
      "Ohrlochkissen aus Memory-Schaum",
+     null
+    ]
+   ]
+  },
+  "aa-1-1": {
+   "name": "Activewear",
+   "nicht": "\\bSet\\b|Zweiteiler(?!-Look)|(?:trainings|sport|rad|jogging|freizeit|haus|bade|schlaf)anzug|(?<![a-zäöü])anzug\\b|Motorrad|Protektor|Fischer|Angler|Boxer|Unterhose|Unterw[äa]sche|Bikini|Badeanzug|Schwimm|Pyjama|Rockhose|Sch[üu]rze|(?:BH|(?<![a-zäöü])Bra|Top|Shirt|Jacke|Weste|Hoodie)\\b.{0,40}\\b(?:und|&|\\+|mit)\\s.{0,25}(?:Hose|Leggings|Shorts|Pants)\\b|(?:Hose|Leggings|Shorts|Pants)\\b.{0,40}\\b(?:und|&|\\+|mit)\\s.{0,25}(?:BH|(?<![a-zäöü])Bra|Top|Shirt|Jacke|Weste|Hoodie)\\b",
+   "regeln": [
+    [
+     "(?:Boxing|Boxsport|Kickbox(?:ing)?|Muay[\\s-]?Thai|MMA)[\\s-]?(?:Shorts|Hose|Trunks)|Boxhose",
+     "aa-1-1-4"
+    ],
+    [
+     "Tanzkleid|Tanzrock|Ballettrock|Ballettkleid|\\bTutu\\b|Latein(?:tanz)?kleid|Dance[\\s-]?(?:Dress|Skirt)|Tanzkost[üu]m|Ballett-?Kost[üu]m",
+     "aa-1-1-5"
+    ],
+    [
+     "(?<![a-zäöü])Body(?:suits?|anzug)?\\b(?![\\s-]*(?:shap|lift|scul|con|wrap|wear|lotion))|Jumpsuit|Gymnastikanzug|Turnanzug|Ballettanzug|Leotard|Unitard|Catsuit|Triathlon|(?:Turn|Ballett|Gymnastik|Tanz)[\\s-]?Trikot",
+     "aa-1-1-9"
+    ],
+    [
+     "(?:Sport|Yoga|Fitness|Lauf|Training)[\\s-]?(?:BH|Bra)\\b|Sports[\\s-]?Bra\\b",
+     "aa-1-1-6"
+    ],
+    [
+     "Hoodie|Kapuzenpull|Kapuzensweat|Sweatshirt|Sweatjacke|Trainingsjacke|Track[\\s-]?Jacket|Pullover|Pulli\\b",
+     "aa-1-1-7"
+    ],
+    [
+     "jacke\\b|Windbreaker|Laufweste|Softshell-?weste|Fleece-?weste|Daunenweste|Weste mit (?:Reissverschluss|Zip)",
+     "aa-1-1-8"
+    ],
+    [
+     "shirts?\\b|tanktop|(?<![a-zäöü])tops?\\b|(?<![a-zäöü])tank\\b|crop[\\s-]?top",
+     "aa-1-1-2"
+    ],
+    [
+     "leggings?\\b|leggins\\b|(?<!unter)(?<!bade)hosen?\\b|pants\\b|tights\\b|(?<!boxer)(?<!boxer-)shorts\\b|culottes?\\b|jogger\\b|joggers\\b",
+     "aa-1-1-1"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Halter Sport-BH für Workout & Yoga",
+     "aa-1-1-6"
+    ],
+    [
+     "Yoga-Sport-BH mit dünnen Trägern",
+     "aa-1-1-6"
+    ],
+    [
+     "Fitness-Bodyanzug",
+     "aa-1-1-9"
+    ],
+    [
+     "Yoga Bodysuit Shorts-Stil",
+     "aa-1-1-9"
+    ],
+    [
+     "Sport-Yoga Jumpsuit",
+     "aa-1-1-9"
+    ],
+    [
+     "Fitness-Hoodie für Herren",
+     "aa-1-1-7"
+    ],
+    [
+     "Outdoor Laufjacke aus Polyester",
+     "aa-1-1-8"
+    ],
+    [
+     "Herren Sport-Fitness Weste mit Reissverschluss",
+     "aa-1-1-8"
+    ],
+    [
+     "Yoga Tanktop mit integriertem BH",
+     "aa-1-1-2"
+    ],
+    [
+     "Ärmelloses T-Shirt für Outdoor-Training, Fitness & Basketball",
+     "aa-1-1-2"
+    ],
+    [
+     "Laufshirt fur Maenner",
+     "aa-1-1-2"
+    ],
+    [
+     "Lange Yoga- und Laufhose mit Seitenfächern",
+     "aa-1-1-1"
+    ],
+    [
+     "High-Waist Yoga Shorts im Zweiteiler-Look",
+     "aa-1-1-1"
+    ],
+    [
+     "Damen Radhose mit Polster",
+     "aa-1-1-1"
+    ],
+    [
+     "Pilates Yoga Culotte für Damen",
+     "aa-1-1-1"
+    ],
+    [
+     "Leggings mit Mesh-Einsätzen und Cutouts",
+     "aa-1-1-1"
+    ],
+    [
+     "Nahtloses Yoga-Set mit Sport-BH",
+     null
+    ],
+    [
+     "Kapuzenjacke und Hose Sportanzug",
+     null
+    ],
+    [
+     "Motorrad-Protektorenjacke mit Aufprallschutz",
+     null
+    ],
+    [
+     "Outdoor Fischer- und Sportweste",
+     null
+    ],
+    [
+     "High-Waist Yoga Zweiteiler",
+     null
+    ],
+    [
+     "Radbekleidung Herren-Anzug",
+     null
+    ],
+    [
+     "Colorblock Weste & High-Waist Yoga-Hose Set",
+     null
+    ],
+    [
+     "Sommer-Print-Westen für Sport & Fitness",
+     null
+    ],
+    [
+     "Atmungsaktiver Yoga Skort – schnelltrocknend & figurbetont",
+     null
+    ],
+    [
+     "Yoga-Rockhose-Set für grosse Grössen",
+     null
+    ]
+   ]
+  },
+  "aa-1-13-7": {
+   "name": "Shirts",
+   "nicht": "",
+   "regeln": [
+    [
+     "Henley|Grandad",
+     "aa-1-13-7-1"
+    ],
+    [
+     "^(?!.*(Casual|Freizeit|Kurzarm|kurze Ärmel|Hawai|Strand|Strick|Cord|Flanell|Jeans|Denim|Cargo|Western|Golf)).*(Business|Anzug|Formell|Formal|Bügelfrei|Smoking|Hochzeitshemd|Bräutigam|Windsor|Haifischkragen|Manschettenkn|mit Krawatte\\b)",
+     "aa-1-13-7-2"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Business Hemd Langarm Slim-Fit Gestreift",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Formeller Business-Hemd in Grau",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Businesshemd Slim Fit, bügelfrei, reine Baumwolle",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Oxford Langarmhemd für Herren, Baumwolle, bügelfrei",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Herren Stretchhemd mit Windsor-Kragen",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Herren Hemd Slim Fit mit Manschettenknöpfen",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Langarmhemd mit Krawatte – verschiedene Farben",
+     "aa-1-13-7-2"
+    ],
+    [
+     "Business-Casual Stretch Hemd für Herren",
+     null
+    ],
+    [
+     "Vielseitiges knitterfreies Business-Freizeit-Hemd",
+     null
+    ],
+    [
+     "Kultur-Shirt – Freizeit- und Businesshemd",
+     null
+    ],
+    [
+     "Herren Hemd mit Schneeflocken-Krawatten-Print",
+     null
+    ],
+    [
+     "Herren Langarmhemd mit Krawatten-Optik",
+     null
+    ],
+    [
+     "Plaid-Krawattenhemd",
+     null
+    ],
+    [
+     "Herren-Langarmhemd mit Feder-Manschette",
+     null
+    ],
+    [
+     "Gestreiftes Oxford-Hemd mit langen Ärmeln",
+     null
+    ],
+    [
+     "Herren Hemd Slim Fit Langarm",
+     null
+    ],
+    [
+     "Herren Hemd mit Knopfleiste",
+     null
+    ],
+    [
+     "Bügelfreies Kurzarmhemd für Herren",
+     null
+    ]
+   ]
+  },
+  "aa-3-3": {
+   "name": "Costumes",
+   "nicht": "dirndl|tracht|lederhose|oktoberfest|wiesn|\\bT-Shirt\\s+(Algerien|England|Frankreich|Deutschland|Schweiz|Portugal|Spanien|Brasilien|Italien)\\b",
+   "regeln": [
+    [
+     "kostüm.*\\b\\d+-teilig\\b|^Kostüm\\b.*\\bSet\\b|\\bRaver Set\\b|\\b(Kleid|Hemd|Shirt|Hose|Shorts|Jupe|Rock|Robe|Anzug|Umhang|Mütze|Hut)\\s*(,|&|und)\\s*(Hut|Mütze|Weste|Hose|Shirt|Jacke|Umhang|Maske|Jabot|Foulard|Kopfteil|Gürtel)\\b|\\bKappe\\s*&\\s*Maske\\b",
+     "aa-3-3-2"
+    ],
+    [
+     "overall|jumpsuit|onesie|onsie|kigurumi",
+     "aa-3-3-5"
+    ],
+    [
+     "kleid\\b|\\bdress\\b",
+     "aa-3-3-1"
+    ],
+    [
+     "umhang|\\bcape\\b|kapuzenmantel|königsmantel|\\brobe mit kapuze",
+     "aa-3-3-3"
+    ],
+    [
+     "(?<!nacht)hemd\\b|shirt|bluse\\b|oberteil|\\btop\\b(?!\\s*gun)|pulli\\b",
+     "aa-3-3-4"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Kostüm Hexe Kleid und Hut",
+     "aa-3-3-2"
+    ],
+    [
+     "Kinderkostüm Pirat · Hemd, Hose, Gurt & Stirnband (Widmann)",
+     "aa-3-3-2"
+    ],
+    [
+     "Kinderkostüm Pirat · 7-teilig mit Jacke & Überziehschuhen (Widmann)",
+     "aa-3-3-2"
+    ],
+    [
+     "Raver Set Damen Hose & Shirt",
+     "aa-3-3-2"
+    ],
+    [
+     "Kostüm Astronaut Overall · Kindergrösse",
+     "aa-3-3-5"
+    ],
+    [
+     "Kigurumi Onesie Lama",
+     "aa-3-3-5"
+    ],
+    [
+     "Kostüm Charleston Kleid silber",
+     "aa-3-3-1"
+    ],
+    [
+     "Langes Hippiekleid · Gr. M",
+     "aa-3-3-1"
+    ],
+    [
+     "Kinderkostüm Peppa Fairy Dress",
+     "aa-3-3-1"
+    ],
+    [
+     "Schwarzer Kapuzenumhang",
+     "aa-3-3-3"
+    ],
+    [
+     "Cape Carmilla schwarz",
+     "aa-3-3-3"
+    ],
+    [
+     "Roter Königsmantel",
+     "aa-3-3-3"
+    ],
+    [
+     "Super-Muskelshirt",
+     "aa-3-3-4"
+    ],
+    [
+     "Matrosen Ringelpulli blau/weiss",
+     "aa-3-3-4"
+    ],
+    [
+     "Piratinnenhemd",
+     "aa-3-3-4"
+    ],
+    [
+     "Top Boho Grösse M-L",
+     "aa-3-3-4"
+    ],
+    [
+     "Kostüm Top Gun Maverick",
+     null
+    ],
+    [
+     "Nachthemd Vintage mit Mütze",
+     null
+    ],
+    [
+     "Dirndlbluse Spitze weiss",
+     null
+    ],
+    [
+     "Trachtenhemd rot/weiss",
+     null
+    ],
+    [
+     "Kleiderteile-Set Entdecker,Hut",
+     null
+    ],
+    [
+     "Set Pilot Mütze und Brille",
+     null
+    ],
+    [
+     "Umhängetasche Hippie – Jeans mit Blumen",
+     null
+    ],
+    [
+     "Perücke und Schnurrbart",
+     null
+    ],
+    [
+     "Kostüm Vampir",
+     null
+    ],
+    [
+     "T-Shirt England",
+     null
+    ],
+    [
+     "Clown Latzhose rot",
+     null
+    ]
+   ]
+  },
+  "aa-5-5": {
+   "name": "Wallets & Money Clips",
+   "nicht": "Handy|Gürtel|Quarzuhr|Necessaire|\\bSet\\b|\\bKombi\\b|Hose|Jacke|Brillenetui|Reisekarten",
+   "regeln": [
+    [
+     "Münz(börse|beutel|tasche|portemonnaie|geldbörse)|Kleingeld|Coin ?Purse",
+     "aa-5-5-3"
+    ],
+    [
+     "Geldklammer|Money ?Clip",
+     "aa-5-5-9"
+    ],
+    [
+     "Schlüssel(etui|tasche|mäppchen|börse)|Key ?Case",
+     "aa-5-5-4"
+    ],
+    [
+     "Brustbeutel|Neck ?Pouch",
+     "aa-5-5-5"
+    ],
+    [
+     "Reise-?(geldbeutel|geldbörse|portemonnaie|brieftasche|wallet)|Travel ?Wallet|Reisepass(hülle|etui|tasche|halter)",
+     "aa-5-5-6"
+    ],
+    [
+     "^(?!.*(Geldbörse|Portemonnaie|Brieftasche|Geldbeutel|Wallet|börse)).*(Karten(etui|halter|tasche|hülle)|Kartenhalter|Cardholder|Card ?Case|Ausweishalter|Karten- und Ausweis)",
+     "aa-5-5-2"
+    ],
+    [
+     "^(?!.*(Kartenhalter|Kartenetui|Cardholder|Card-Tasche)).*(Geldbörse|Lederbörse|Portemonnaie|Portmonee|Brieftasche|Geldbeutel|Wallet)",
+     "aa-5-5-7"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Damen-Münzbörse",
+     "aa-5-5-3"
+    ],
+    [
+     "Mehrschichtiges Münzportemonnaie",
+     "aa-5-5-3"
+    ],
+    [
+     "RFID-Kartenetui mit Münzfach aus PU-Leder",
+     "aa-5-5-2"
+    ],
+    [
+     "Kartenhalter & ID-Tasche",
+     "aa-5-5-2"
+    ],
+    [
+     "Anti-Diebstahl Karten- und Ausweishalter Leder",
+     "aa-5-5-2"
+    ],
+    [
+     "Männer-Kartentasche",
+     "aa-5-5-2"
+    ],
+    [
+     "Retro-Reise-Geldbeutel",
+     "aa-5-5-6"
+    ],
+    [
+     "Herren-Geldbörse aus Rindsleder",
+     "aa-5-5-7"
+    ],
+    [
+     "Vintage Lederbörse",
+     "aa-5-5-7"
+    ],
+    [
+     "Hochfunktionale RFID-Sicherheitsbrieftasche für Herren",
+     "aa-5-5-7"
+    ],
+    [
+     "Grosses Kartenportemonnaie",
+     "aa-5-5-7"
+    ],
+    [
+     "US Dollar Clip Portemonnaie aus Leder",
+     "aa-5-5-7"
+    ],
+    [
+     "Kartenhalter Geldbörse",
+     null
+    ],
+    [
+     "Flip Wallet – Multifunktionaler Kartenhalter",
+     null
+    ],
+    [
+     "Magnetischer Handyhalter Wallet",
+     null
+    ],
+    [
+     "Captain Bull Handy-Portemonnaie aus Leder",
+     null
+    ],
+    [
+     "Herren Gürtel-Portemonnaie Kombi",
+     null
+    ],
+    [
+     "Business-Geldbeutel mit Quarzuhr Set",
+     null
+    ],
+    [
+     "Retro Canvas Portemonnaie und Necessaire",
+     null
+    ],
+    [
+     "Kohlefaser-Klapp-Clip Doppelt gefaltet Kurz",
+     null
+    ],
+    [
+     "Reisekartenhalter",
+     null
+    ],
+    [
+     "Anti-Magnetische Damen-Trifold-Card-Tasche",
+     null
+    ]
+   ]
+  },
+  "aa-6-9": {
+   "name": "Rings",
+   "nicht": "Smart.?Ring|Gesundheitsring|Schrittzähler|Fernbedienung|Bluetooth",
+   "regeln": [
+    [
+     "Verlobung|Heiratsantrag|Antragsring|Engagement",
+     "aa-6-9-2"
+    ],
+    [
+     "(?<![a-zäöüß])(Ehe|Trau|Hochzeits)ring|Wedding ?Band",
+     "aa-6-9-1"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Moissanit-Verlobungsring «Solitär» 1 ct · 925 Silber D-VVS1",
+     "aa-6-9-2"
+    ],
+    [
+     "Moissanit-Verlobungsring 2 Karat, 3 Steine, Silber",
+     "aa-6-9-2"
+    ],
+    [
+     "Prinzessschliff Moissanit Verlobungsring-Set",
+     "aa-6-9-2"
+    ],
+    [
+     "Moissanite Verlobungsring",
+     "aa-6-9-2"
+    ],
+    [
+     "Runder Ehering aus 925 Sterling Silber",
+     "aa-6-9-1"
+    ],
+    [
+     "Europäisch-Amerikanischer Prinzessin-Trauring",
+     "aa-6-9-1"
+    ],
+    [
+     "Partner-Ring «Chain» · Titanstahl, 18K vergoldet (Unisex)",
+     null
+    ],
+    [
+     "Partner-Ring-Set «Sword of Love» · Herz & Schwert (2 Ringe)",
+     null
+    ],
+    [
+     "Grüner Moissanit Solitär Ring",
+     null
+    ],
+    [
+     "Doppelbandring mit 54 Moissanit-Steinen, Platin vergoldet",
+     null
+    ],
+    [
+     "Liebesring · Damen",
+     null
+    ],
+    [
+     "Ring-Stack-Set «Eternità» · 2-teilig",
+     null
+    ],
+    [
+     "Unisex-Ringe mit doppellagigem Knotendesign für Paare – modisch",
+     null
+    ],
+    [
+     "Smart Ring mit Fitness- und Gesundheits-Tracking",
+     null
+    ],
+    [
+     "Klassischer Schulring mit Zirkonia-Einlage",
+     null
+    ]
+   ]
+  },
+  "ap-2-2-5": {
+   "name": "Cat Toys",
+   "nicht": "",
+   "regeln": [
+    [
+     "laser",
+     "ap-2-2-5-6"
+    ],
+    [
+     "katzenminze|catnip",
+     "ap-2-2-5-2"
+    ],
+    [
+     "futterspielzeug|futterball|futter-feeder|katzenfutter-play|leckerli|puzzle|intelligenz",
+     "ap-2-2-5-7"
+    ],
+    [
+     "^(?!.*kugelbahn).*tunnel",
+     "ap-2-2-5-11"
+    ],
+    [
+     "ersatzfeder|feder-spielzeug|federspielzeug",
+     "ap-2-2-5-4"
+    ],
+    [
+     "katzenangel|spielstab|spielzeug-stab",
+     "ap-2-2-5-12"
+    ],
+    [
+     "(?<!mit )\\b[\\w-]*ball\\b(?!-teaser)|kugel|\\bcat track\\b|\\brollende\\b",
+     "ap-2-2-5-1"
+    ],
+    [
+     "interaktiv|elektri|elektron|automatisch|\\bsmarte?s?\\b|intelligent|ferngesteuert|fernbedienung|fernsteuerung|\\busb\\b|ladefunktion|(?<!roter )\\bLED\\b|leucht|simulation|induktiv|sound",
+     "ap-2-2-5-5"
+    ],
+    [
+     "\\bfeder|(?<!mit )\\b[\\w-]*teaser",
+     "ap-2-2-5-4"
+    ],
+    [
+     "beissspielzeug|kauspielzeug|zum zahnen",
+     "ap-2-2-5-3"
+    ],
+    [
+     "plüsch",
+     "ap-2-2-5-10"
+    ],
+    [
+     "quietsch",
+     "ap-2-2-5-9"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Elektrisches Katzenspielzeug mit Feder und Laser",
+     "ap-2-2-5-6"
+    ],
+    [
+     "Plüsch-Katzenspielzeug mit Katzenminze",
+     "ap-2-2-5-2"
+    ],
+    [
+     "Lick 'n' Spin Katzenspielball mit Katzenminze",
+     "ap-2-2-5-2"
+    ],
+    [
+     "Owl Puzzle Futterspielzeug für Katzen",
+     "ap-2-2-5-7"
+    ],
+    [
+     "Futterball – Katzenspielzeug gegen Langeweile",
+     "ap-2-2-5-7"
+    ],
+    [
+     "Weihnachtlicher Katzen Tunnel",
+     "ap-2-2-5-11"
+    ],
+    [
+     "Katzen-Kugelbahn mit Ball und Tunnel",
+     "ap-2-2-5-1"
+    ],
+    [
+     "Ersatzfedern für Katzenangel",
+     "ap-2-2-5-4"
+    ],
+    [
+     "Lustiges Entenküken Katzenangel-Spielzeug",
+     "ap-2-2-5-12"
+    ],
+    [
+     "Plüsch-Liebes-Quaste Katzenangel",
+     "ap-2-2-5-12"
+    ],
+    [
+     "Automatischer Katzenspielball",
+     "ap-2-2-5-1"
+    ],
+    [
+     "Intelligente Katzenkugel",
+     "ap-2-2-5-1"
+    ],
+    [
+     "Fellball-Teaser für Katzen, auf- und abwippend",
+     "ap-2-2-5-4"
+    ],
+    [
+     "Interaktiver Katzen-Teaser mit Fernbedienung",
+     "ap-2-2-5-5"
+    ],
+    [
+     "Elektrischer Specht Plüsch-Katzenspielzeug",
+     "ap-2-2-5-5"
+    ],
+    [
+     "Katzenspielzeug mit Feder und Glöckchen",
+     "ap-2-2-5-4"
+    ],
+    [
+     "Sisal-Rettich Beissspielzeug für Katzen",
+     "ap-2-2-5-3"
+    ],
+    [
+     "Minz-Trauben-Katzenspielzeug zum Zahnen",
+     "ap-2-2-5-3"
+    ],
+    [
+     "Regenbogen Maus – Beissfestes Plüsch Katzenspielzeug",
+     "ap-2-2-5-10"
+    ],
+    [
+     "Katzen Spielzeug mit roter LED",
+     null
+    ],
+    [
+     "Interaktives Katzenspielzeug mit Ball und Versteck",
+     "ap-2-2-5-5"
+    ],
+    [
+     "Katzen Spielzeug Set",
+     null
+    ],
+    [
+     "Abnehmbares Kratzspielzeug für Katzen",
+     null
+    ],
+    [
+     "Kätzchen-Spiel-Turm",
+     null
+    ],
+    [
+     "Spielzeug-Set für Katzen: Stöcke und Mäuse",
+     null
+    ],
+    [
+     "Holz-Drehteller mit Teaser-Stab für Katzen",
+     null
+    ],
+    [
+     "360° Rollende Maus mit Feder für Katzen",
+     "ap-2-2-5-1"
+    ],
+    [
+     "Boxspiel Katzen-Teaser aus Silikon",
+     "ap-2-2-5-4"
+    ],
+    [
+     "Elektrisches Katzenspielzeug mit Feder",
+     "ap-2-2-5-5"
+    ]
+   ]
+  },
+  "ap-2-3": {
+   "name": "Dog Supplies",
+   "nicht": "wasser-spielmatte|kissen",
+   "regeln": [
+    [
+     "spielzeug|spielball|plüsch|quietsch|kauholz|beissring|spielmatte zum riechen",
+     "ap-2-3-7"
+    ]
+   ],
+   "kanarien": [
+    [
+     "5er-Pack Quietsch-Plüschtiere für Hunde",
+     "ap-2-3-7"
+    ],
+    [
+     "Langlebiges Latex-Kauspielzeug für Hunde",
+     "ap-2-3-7"
+    ],
+    [
+     "Plüsch Ball mit Sound für Hunde",
+     "ap-2-3-7"
+    ],
+    [
+     "Hundespielball Plüsch mit Sound",
+     "ap-2-3-7"
+    ],
+    [
+     "Robustes Baumwoll-Seilspielzeug für Hunde",
+     "ap-2-3-7"
+    ],
+    [
+     "Ochsenhorn-Kauholz für Hunde",
+     "ap-2-3-7"
+    ],
+    [
+     "Hundespielmatte zum Riechen",
+     "ap-2-3-7"
+    ],
+    [
+     "Sprechende Plüschmaus für Hunde",
+     "ap-2-3-7"
+    ],
+    [
+     "Leckschale mit Ball für Hunde",
+     null
+    ],
+    [
+     "Futtermatte mit Spielfunktion für Hunde",
+     null
+    ],
+    [
+     "Rutschfester Wasser-Spielmatte für Kinder & Hunde",
+     null
+    ],
+    [
+     "Hundesnackbox",
+     null
+    ],
+    [
+     "Hundefutter-Becher",
+     null
+    ],
+    [
+     "Einweg-Bettwäsche für Hunde",
+     null
+    ],
+    [
+     "Teleskop-Trainingsstab für Hunde und Katzen",
+     null
+    ],
+    [
+     "Kuschelkissen Lamm, Welpe & Kätzchen",
+     null
+    ],
+    [
+     "Herzschlag-Kissen für Hund & Katze",
+     null
+    ]
+   ]
+  },
+  "ap-2-6": {
+   "name": "Pet Apparel",
+   "nicht": "beruhig|angst|emotional",
+   "regeln": [
+    [
+     "regenmantel|regenjacke|regenponcho|wasserdichter? poncho",
+     "ap-2-6-10"
+    ],
+    [
+     "sicherheitsweste|warnweste|led-weste|leuchtweste|schwimmweste",
+     "ap-2-6-11"
+    ],
+    [
+     "hoodie|kapuzenpullover|pullover mit kapuze",
+     "ap-2-6-8"
+    ],
+    [
+     "(?<!mit )\\b\\w*(mütze|hut)\\b",
+     "ap-2-6-7"
+    ],
+    [
+     "pullover|sweater|sweatshirt|cardigan",
+     "ap-2-6-17"
+    ],
+    [
+     "(?<!bade)mantel\\b",
+     "ap-2-6-3"
+    ],
+    [
+     "jacke\\b|windbreaker",
+     "ap-2-6-9"
+    ],
+    [
+     "kleid\\b",
+     "ap-2-6-6"
+    ],
+    [
+     "shirt|hemd\\b",
+     "ap-2-6-13"
+    ],
+    [
+     "schuhe\\b",
+     "ap-2-6-14"
+    ],
+    [
+     "(?<!mit )\\b\\w*schal\\b",
+     "ap-2-6-12"
+    ],
+    [
+     "(?<!mit )\\b\\w*schleife\\b",
+     "ap-2-6-2"
+    ],
+    [
+     "(?<!mit )\\b[\\w-]*(fliege|krawatten?)\\b",
+     "ap-2-6-4"
+    ],
+    [
+     "bandana",
+     "ap-2-6-1"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Reflektierender Hunde-Regenmantel",
+     "ap-2-6-10"
+    ],
+    [
+     "Regenponcho für Hunde",
+     "ap-2-6-10"
+    ],
+    [
+     "Dünne Hunde-Weste Regenjacke",
+     "ap-2-6-10"
+    ],
+    [
+     "LED-Leuchtweste für Hunde und Katzen",
+     "ap-2-6-11"
+    ],
+    [
+     "Hunde-Schwimmweste für den Alltag",
+     "ap-2-6-11"
+    ],
+    [
+     "Hundepullover mit Kapuze, Weihnachtsbaum-Design",
+     "ap-2-6-8"
+    ],
+    [
+     "Hundemütze aus Wollpullover",
+     "ap-2-6-7"
+    ],
+    [
+     "Sonnenhut für Hunde und Katzen",
+     "ap-2-6-7"
+    ],
+    [
+     "Hundewärmer Sweatshirt aus Baumwolle",
+     "ap-2-6-17"
+    ],
+    [
+     "Hundeschalier Weihnachtsschrift Winterpullover",
+     "ap-2-6-17"
+    ],
+    [
+     "Hundemantel mit Schleifenknopf – Herbst & Winter",
+     "ap-2-6-3"
+    ],
+    [
+     "Warmmantel für Hund und Katze",
+     "ap-2-6-3"
+    ],
+    [
+     "Lederjacke für mittelgrosse bis grosse Hunde",
+     "ap-2-6-9"
+    ],
+    [
+     "Hund- und Katzenkleid «Tausendfüssler»",
+     "ap-2-6-6"
+    ],
+    [
+     "Katzen-T-Shirt mit Krawatte und Kopfbedeckung",
+     "ap-2-6-13"
+    ],
+    [
+     "Verstellbare, rutschfeste Hunde-Outdoorschuhe",
+     "ap-2-6-14"
+    ],
+    [
+     "Wollschal für Hunde",
+     "ap-2-6-12"
+    ],
+    [
+     "Weihnachtsschleife für Hunde",
+     "ap-2-6-2"
+    ],
+    [
+     "Hübsche Katzen-Fliege mit Glöckchen",
+     "ap-2-6-4"
+    ],
+    [
+     "Hundefreundliche Krawatten",
+     "ap-2-6-4"
+    ],
+    [
+     "Hundebademantel",
+     null
+    ],
+    [
+     "Hundekleidung mit Wollmütze",
+     null
+    ],
+    [
+     "Plüsch-Hundeweste mit Fliege, grau/weiss",
+     null
+    ],
+    [
+     "Beruhigende Hundejacke – Grün, Blau, XS-XXXL",
+     null
+    ],
+    [
+     "Taktische Hundeweste für grosse Hunde",
+     null
+    ],
+    [
+     "Wärmeschutz Weste für Hunde",
+     null
+    ],
+    [
+     "Gestricktes Hundehalstuch im Weihnachtslook",
+     null
+    ],
+    [
+     "Wasserdichter Hundeoverall",
+     null
+    ]
+   ]
+  },
+  "hb-3-2-6-3-2": {
+   "name": "Eye Shadows",
+   "nicht": "Pinsel|Brush|Applikator|Schablone|Stencil|Primer|(?<![a-zäöü])Base\\b|Eyeliner|Mascara|Wimpern|Augenbrau|Kajal|Concealer|Highlighter|Contour|Kontur|Foundation|Lippen|Lipgloss",
+   "regeln": [
+    [
+     "fl[üu]ssig|liquid",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "stift(?!palett)|stifte\\b|stick\\b|sticks\\b|\\bpen\\b|crayon",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "palett|platte\\b|Lidschatten-Buch|Kombination|\\bQuad\\b|Schatten-Set\\b|(?<!\\d)(?:[2-9]|[1-9]\\d+)\\s*(?:er[\\s-])?[\\s-]*(?:Farben|farbig)|(?:vier|f[üu]nf|sechs|sieben|acht|neun|zehn|elf|zw[öo]lf)[\\s-]?(?:Farben|farbig)",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "creme|cream|cremig|mousse|\\bgel\\b",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "\\blose[rsn]?\\b|\\bloose\\b|\\bpigment(?:e|pulver|puder)?\\b|glitzer[\\s-]?(?:puder|pulver|pigment)|glitter[\\s-]?(?:puder|pulver|powder|pigment)|lidschatten[\\s-]?puder|puder[\\s-]?lidschatten|chunky",
+     "hb-3-2-6-3-2-3"
+    ],
+    [
+     "\\bmono\\b|einzel|\\bsingle\\b|\\bsolo\\b|\\b1[\\s-]Farbe\\b|\\beine\\s+Farbe\\b",
+     "hb-3-2-6-3-2-4"
+    ]
+   ],
+   "kanarien": [
+    [
+     "18 Farben Lidschatten-Palette",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "72 Farben Langanhaltendes Lidschatten-Buch",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "8-Farben-Eye-Shadow-Platte",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "Innovativer Pearlescent Matte Quad Lidschatten",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "Braunes Augen-Schatten-Set",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "Twelve Constellation Augenstiftpalette",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "Monochromatische Lidschattenpalette",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "POPFEEL 6-Farben-Glitzer-Lidschatten",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "Sechsfarben Augen-Schatten-Palette",
+     "hb-3-2-6-3-2-1"
+    ],
+    [
+     "Chamäleon Glitzer Flüssig-Lidschatten",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "QIBEST Diamond Liquid Lidschatten",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "3-Farben-Liquid-Augen-Schatten",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "Doppelter Seidiger Lidschatten-Stick",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "Lidschatten-Stift-Set 8 Farben",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "12-Farben-Eye-Shadow-Stift-Set · 12 Stück",
+     "hb-3-2-6-3-2-2"
+    ],
+    [
+     "Lidschatten mit Glitzerpuder",
+     "hb-3-2-6-3-2-3"
+    ],
+    [
+     "Mineral Glitter-Eye-Shadows",
+     null
+    ],
+    [
+     "Compact für Augenstiche – 15,6×10,5×2,4 cm",
+     null
+    ],
+    [
+     "3D Lidschatten Rose Gold",
+     null
+    ],
+    [
+     "Pearlescent Eyeshadow",
+     null
+    ],
+    [
+     "Glitter Augen-Schatten",
+     null
+    ],
+    [
+     "Luminöser Lidschatten für Augen und Gesicht",
+     null
+    ]
+   ]
+  },
+  "hb-3-2-7-4": {
+   "name": "Nail Art Kits & Accessories",
+   "nicht": "Kleber|Klebstoff|Glue|Infiltration|Farbverl[äa]uf|Gradient|Press[\\s-]?On|Kunstn[äa]gel|k[üu]nstliche\\s+N[äa]gel|tragbar|Wear(?:ing)?[\\s-]?Nails?|Nagelspitzen|Fake[\\s-]?Nails?|Mandel|Almond|\\bKurz\\b|\\bShort\\b|Handgemacht|Handgefertigt|Handbemalt|Wiederverwendbar|abnehmbar|Stempel",
+   "regeln": [
+    [
+     "semi[\\s-]?(?:cured?|curing|baked|geh[äa]rtet)|halb(?:geh[äa]rtet|gebacken|ausgeh[äa]rtet)|Gel[\\s-]?Nagel[\\s-]?Sticker|Nagelsticker\\s+UV[\\s-]?Gel|Nagelfolie|Transferfolie|(?:Nagel|Nail)[\\s-]?(?:Wraps?|Foils?|Folien?)\\b",
+     "hb-3-2-7-4-3"
+    ],
+    [
+     "Wasserzeichen|Wasser[\\s-]?transfer|Water[\\s-]?(?:Decal|Transfer|Slide)|Decals?\\b|Abziehbild|Schiebebild",
+     "hb-3-2-7-4-2"
+    ],
+    [
+     "^(?!.*(?:sticker|aufkleb|patch)).*(?:Strass|Rhinestone|Zirkon|Zircon|Diamant|Diamond|Glasstein|Kristallperle|Perlen?\\b|Charms?\\b|Anh[äa]nger|Nagelschmuck|Nagel-Schmuck|Schmuckstein|Nagel-?Ornament|\\bGems?\\b|Edelstein|Nieten|Studs\\b)",
+     "hb-3-2-7-4-4"
+    ],
+    [
+     "Pinsel|Brush|Dotting|Punktier|Linienzieher|Mink[\\s-]?Haar|Nerz[\\s-]?Haar|Kolinsky",
+     "hb-3-2-7-4-1"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Farbige Nagel-Transferfolien (12er-Set)",
+     "hb-3-2-7-4-3"
+    ],
+    [
+     "Semi-cured UV Nagelfolien",
+     "hb-3-2-7-4-3"
+    ],
+    [
+     "Halbgehärtete Gel-Nagelsticker (Semi-Cured) im koreanischen Stil",
+     "hb-3-2-7-4-3"
+    ],
+    [
+     "Nagelsticker UV-Gel",
+     "hb-3-2-7-4-3"
+    ],
+    [
+     "Sommer Gel Nagel Sticker UV (halbgebacken)",
+     "hb-3-2-7-4-3"
+    ],
+    [
+     "Schmetterling Blumen Feder Spitze Wasserzeichen Sticker",
+     "hb-3-2-7-4-2"
+    ],
+    [
+     "21-Gitter-Box mit Nageldiamanten",
+     "hb-3-2-7-4-4"
+    ],
+    [
+     "Nailart Strass-Set mit Applikator",
+     "hb-3-2-7-4-4"
+    ],
+    [
+     "Nail Art Anhänger-Set mit Perlen & Quasten",
+     "hb-3-2-7-4-4"
+    ],
+    [
+     "Maniküre AB Diamond 3-teiliges Set",
+     "hb-3-2-7-4-4"
+    ],
+    [
+     "Black Wolf Nail Art Pinselset",
+     "hb-3-2-7-4-1"
+    ],
+    [
+     "Maniküre-Linienzieher Stifte-Set · 5-teilig",
+     "hb-3-2-7-4-1"
+    ],
+    [
+     "Mink-Haar Nagelpen",
+     "hb-3-2-7-4-1"
+    ],
+    [
+     "Handgemachte Strass-Nagelsticker",
+     null
+    ],
+    [
+     "Purple Phantom Zircon Strass-Nagelsticker",
+     null
+    ],
+    [
+     "Naughty Dog UV-Nagelsticker für Kinder",
+     null
+    ],
+    [
+     "Super starker Schmuck- und Diamantkleber",
+     null
+    ],
+    [
+     "Iridiszierendes Transluzentes Diamantkleber Set",
+     null
+    ],
+    [
+     "Nail Art Infiltration Suit Dust Brush",
+     null
+    ],
+    [
+     "Nailart-Pinsel für Farbverläufe",
+     null
+    ],
+    [
+     "Wassermelonen-Nagelaufkleber",
+     null
+    ],
+    [
+     "Erdbeer Kristall Nageldesign Set",
+     null
+    ],
+    [
+     "Handgemachte abnehmbare Mandel-Nagelsticker",
+     null
+    ],
+    [
+     "Nail Art Set: Schleife, Perle & Farbverlauf",
+     null
+    ],
+    [
+     "DIY Nail Art Doodle Pen",
+     null
+    ]
+   ]
+  },
+  "hg-10-16": {
+   "name": "Storage & Organization",
+   "nicht": "Schmuck|Münz|Medaill|Sammel|karten|Figur|Medikament|Tennisball|Flip$|Obst|Süssigkeit|Schleifk|Feuchttüch|für Wäsche|Wäsche-Box|Wäschekorb|Keramik Korb|Brotkorb|Fahrradkorb|Papierkorb|Geschenkkorb|Picknick|Hundekorb|Katzenkorb|Einkaufskorb|Dry Bag|Vakuumier|Lebensmittel|Fotoalbum-Maschine|Reise|Poolrand",
+   "regeln": [
+    [
+     "Kleider-?Organizer|Kleiderständer|Kleiderstange|Kleiderbügel|Garderobenständer|Schuhschrank|Schuhregal|Schuh-?Organizer|Schuhaufbewahrung|Unterwäsche-.*box|Strumpfbox|Sockenbox|Hutschachtel|Hutbox|Kleidersack|Kleiderschutzhülle|Unterbett-?Aufbewahrung|Unter-?Bett-?Aufbewahrung",
+     "hg-10-16-1"
+    ],
+    [
+     "Besteckkasten|Besteckkoffer|Besteckschatulle|Besteckkiste",
+     "hg-10-16-2"
+    ],
+    [
+     "Schubladen-?Organizer|Schubladeneinsatz|Schubladeneinsätze|Schubladentrenner|Schubladenteiler|Schubladen-?Ordnungssystem",
+     "hg-10-16-3"
+    ],
+    [
+     "mit Schubladen|Schubladenschrank|Schubladenturm|Schubladencontainer|Schubladenbox mit",
+     "hg-10-16-7"
+    ],
+    [
+     "Fotoalbum|Foto-?Aufbewahrung|Fotoaufbewahrungsbox|Fotohüllen|Fototaschen",
+     "hg-10-16-8"
+    ],
+    [
+     "Wandhaken|Hakenleiste|Hakenschiene|Klebehaken|Mehrzweckhaken|Türhaken|Tür-Haken|Schirmständer|Regenschirmständer|Bügelbretthalter|Bügelbrett-Halter",
+     "hg-10-16-9"
+    ],
+    [
+     "Vakuum-?beutel|Vakuum-?Aufbewahrungsbeutel|Wand-Aufbewahrungstasche|Wand-Hängetasche|Aufbewahrungssack|Aufbewahrungssäcke",
+     "hg-10-16-4"
+    ],
+    [
+     "Organi[sz](?:er|ator) für Fernbedienungen|Fernbedienungs-?(?:Halter|Organizer|Caddy)",
+     "hg-10-16-5"
+    ],
+    [
+     "Aufbewahrungs-?Caddy|Putzmittel-?Caddy|Reinigungs-?Caddy|Utensilien-?Caddy",
+     "hg-10-16-5"
+    ],
+    [
+     "korb\\b|körbe\\b",
+     "hg-10-16-10"
+    ],
+    [
+     "(?<!Schubladen-)Aufbewahrungsbox|Aufbewahrungsboxen|Sortierbox|Ablagebox|Organizer-?box|Aufbewahrungsbehälter|Box mit Fächern|Stapelbox",
+     "hg-10-16-6"
+    ]
+   ],
+   "kanarien": [
+    [
+     "4er-Set Stapelbare Kleider-Organizer",
+     "hg-10-16-1"
+    ],
+    [
+     "Verstellbarer Kleiderständer auf Rollen",
+     "hg-10-16-1"
+    ],
+    [
+     "Staubdichter Tür-Schuhschrank (10 Schichten)",
+     "hg-10-16-1"
+    ],
+    [
+     "Unterwäsche- & Strumpfbox (Standard/High)",
+     "hg-10-16-1"
+    ],
+    [
+     "Schubladen-Organizer für Kosmetik",
+     "hg-10-16-3"
+    ],
+    [
+     "XL Make-up Organizer mit Schubladen",
+     "hg-10-16-7"
+    ],
+    [
+     "Wand-Aufbewahrungstasche für Kinderspielzeug",
+     "hg-10-16-4"
+    ],
+    [
+     "Leder-Organizer für Fernbedienungen",
+     "hg-10-16-5"
+    ],
+    [
+     "Organisator für Fernbedienungen",
+     "hg-10-16-5"
+    ],
+    [
+     "Eingangskorb",
+     "hg-10-16-10"
+    ],
+    [
+     "Grosser Metallregalkorb für die Küche",
+     "hg-10-16-10"
+    ],
+    [
+     "Schwarzer Desktop-Korb aus Eisen",
+     "hg-10-16-10"
+    ],
+    [
+     "2er-Set Sortierboxen mit je 28 Fächern",
+     "hg-10-16-6"
+    ],
+    [
+     "Staubdichte Make-up-Pinsel Aufbewahrungsbox mit Deckel",
+     "hg-10-16-6"
+    ],
+    [
+     "Durchsichtige Kosmetik-Organizerbox für Schminktisch",
+     "hg-10-16-6"
+    ],
+    [
+     "Transparente Box mit Fächern",
+     "hg-10-16-6"
+    ],
+    [
+     "Japanische Schubladen-Aufbewahrungsbox, verschiedene Grössen",
+     null
+    ],
+    [
+     "Silberne BH-Körbchen-Halter",
+     null
+    ],
+    [
+     "Obst- und Gemüsekorb",
+     null
+    ],
+    [
+     "Keramik Korb – geflochtene Optik",
+     null
+    ],
+    [
+     "Acryl Aufbewahrungsbox für Figuren",
+     null
+    ],
+    [
+     "Transparente Karten-Aufbewahrungsbox",
+     null
+    ],
+    [
+     "Münz-Aufbewahrungsbox aus Nussholz",
+     null
+    ],
+    [
+     "Aufbewahrungsbox für Wäsche",
+     null
+    ],
+    [
+     "Wasserdichte Aufbewahrungsbox für Flip",
+     null
+    ],
+    [
+     "Luminous Handkurbel-Fotoalbum-Maschine",
+     null
+    ],
+    [
+     "Haken Roller Polyester Einkaufstasche",
+     null
+    ],
+    [
+     "Ringschmuckboxen",
+     null
+    ],
+    [
+     "Mehrzweck-Tennisball-Aufbewahrungsbehälter",
+     null
+    ],
+    [
+     "Reise-Aufbewahrungsbeutel",
+     null
+    ],
+    [
+     "Hängekorb für Poolrand",
+     null
+    ],
+    [
+     "Hängekorb Space Aluminium (doppellagig)",
+     "hg-10-16-10"
+    ]
+   ]
+  },
+  "lb-1": {
+   "name": "Backpacks",
+   "nicht": "Kamera|Foto|SLR|Drohne|Trinkrucksack|Weste|Brustrucksack|Hüftrucksack|Kühlrucksack|Isolierrucksack|Thermorucksack|Picknick|Wickelrucksack|Haustier|Hunde|Angelrucksack|Buggy|Kinderwagen|Rucksack-Clip",
+   "regeln": [
+    [
+     "Taktisch|Taktik|Tactical|Milit(ä|ae)r(?!canvas)|Military|\\bMOLLE\\b|\\bArmy\\b|Assault|Kampfrucksack",
+     "lb-1-17"
+    ],
+    [
+     "Schul(rucksack|ranzen|tasche)|Schülerrucksack|Grundschul|Primarschul|Schulranzen",
+     "lb-1-12"
+    ],
+    [
+     "Laptop|Notebook|Computer|MacBook|(?<![\\d.,])1[3-7]([.,]\\d)?\\s?(-\\s?)?(Zoll|\"|”|Inch)",
+     "lb-1-16"
+    ],
+    [
+     "(?<![a-zäöü])Schule\\b|Schüler",
+     "lb-1-12"
+    ],
+    [
+     "Wander|Trekking|Bergsteig|(?<![a-zäöü])Berg-|Bergrucksack|Bergtour|Mountaineering|Hiking|Kletterrucksack",
+     "lb-1-15"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Business Rucksack für 14-Zoll-Laptops",
+     "lb-1-16"
+    ],
+    [
+     "Rucksack Computer-Tasche Grosses Fassungsvermögen",
+     "lb-1-16"
+    ],
+    [
+     "Business Rucksack 15.6\" – wasserabweisend",
+     "lb-1-16"
+    ],
+    [
+     "Trendiger Rucksack für Laptop und Schule",
+     "lb-1-16"
+    ],
+    [
+     "Schulrucksack mit Laptopfach",
+     "lb-1-12"
+    ],
+    [
+     "Kinder-Schulranzen für die Primarschule",
+     "lb-1-12"
+    ],
+    [
+     "Leichter Rucksack mit Rillen-Schutz für Grundschüler",
+     "lb-1-12"
+    ],
+    [
+     "Retro-Schulranzen für Mädchen – 18\" Nylon",
+     "lb-1-12"
+    ],
+    [
+     "Wanderrucksack 24L",
+     "lb-1-15"
+    ],
+    [
+     "Outdoor-Rucksack zum Wandern und Bergsteigen",
+     "lb-1-15"
+    ],
+    [
+     "Grosser Berg- und Reise-Rucksack",
+     "lb-1-15"
+    ],
+    [
+     "39L Taktischer Militär-Rucksack",
+     "lb-1-17"
+    ],
+    [
+     "Assault Tactics Rucksack 25L",
+     "lb-1-17"
+    ],
+    [
+     "Multifunktionaler Rucksack mit doppelten Schultergurten",
+     null
+    ],
+    [
+     "Canvas Schulter-Rucksack",
+     null
+    ],
+    [
+     "Outdoor Rucksack für Uni, Reise und Berg",
+     null
+    ],
+    [
+     "Outdoor Camouflage Rucksack",
+     null
+    ],
+    [
+     "Taktischer Brustrucksack",
+     null
+    ],
+    [
+     "Taktischer Angelrucksack, 85 cm",
+     null
+    ],
+    [
+     "SLR Kamera- und Laptop-Rucksack",
+     null
+    ],
+    [
+     "PC Hardcase Business Rucksack",
+     null
+    ],
+    [
+     "Oxford Travel Rucksack 20 Zoll",
+     null
+    ],
+    [
+     "Outdoor-Trinkrucksack 2.5L",
+     null
+    ],
+    [
+     "Business Rucksack",
+     null
+    ]
+   ]
+  },
+  "lb-6": {
+   "name": "Duffel Bags",
+   "nicht": "Kletterausrüstung|Transporttasche",
+   "regeln": [
+    [
+     "\\bGym\\b|Fitness|Trainingstasche|Yoga|Gewichtheb",
+     "lb-6-1"
+    ],
+    [
+     "^(?!.*(Reise|Outdoor|Crossbody|Wander|Berg|Taktisch|Velo|Camping)).*Sports?-?(Freizeit)?tasche",
+     "lb-6-1"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Sporttasche für Fitness und Wandern",
+     "lb-6-1"
+    ],
+    [
+     "Gym Bag – Die stylische Sporttasche für Alltag und Reise",
+     "lb-6-1"
+    ],
+    [
+     "Camo Sporttasche für Fitness & Gewichtheben",
+     "lb-6-1"
+    ],
+    [
+     "Cowhide Trainingstasche mit Polyesterfutter",
+     "lb-6-1"
+    ],
+    [
+     "Leichte Yoga-Tasche mit grossem Fassungsvermögen",
+     "lb-6-1"
+    ],
+    [
+     "Sporttasche mit Nass-Trocken-Trennung",
+     "lb-6-1"
+    ],
+    [
+     "Retro Sportstasche",
+     "lb-6-1"
+    ],
+    [
+     "Sport-Tasche",
+     "lb-6-1"
+    ],
+    [
+     "Sport-Freizeittasche – Robust & Vielseitig",
+     "lb-6-1"
+    ],
+    [
+     "Sporttasche für Outdoor & Gym",
+     "lb-6-1"
+    ],
+    [
+     "Faltbare Reise- und Sporttasche, wasserdicht",
+     null
+    ],
+    [
+     "Grosse Reise-Sporttasche mit Nass-Trocken-Trennung",
+     null
+    ],
+    [
+     "Wander- und Bergsporttasche mit grossem Volumen",
+     null
+    ],
+    [
+     "Leder Crossbody Sporttasche für Herren",
+     null
+    ],
+    [
+     "Taktische Sporttasche",
+     null
+    ],
+    [
+     "Leichte Outdoor-Sporttasche",
+     null
+    ],
+    [
+     "Transporttasche für Kletterausrüstung",
+     null
+    ],
+    [
+     "Weekender-Reisetasche «Voyage» · faltbar, mit Extra-Fach 🧳",
+     null
+    ],
+    [
+     "Amalek Wochenendtasche aus Leder",
+     null
+    ]
+   ]
+  },
+  "sg-2": {
+   "name": "Fitness & General Exercise Equipment",
+   "nicht": "aufblasbar|helm|Outdoor-Matte|Faltmatte|Camping|Hüpfball|Stimulation|Vibrationsgürtel|Bauchmuskelgürtel|Schlankheit|Sauna|Fettreduktion|Fettverlust|Tracker|Smartwatch|Pulsuhr",
+   "regeln": [
+    [
+     "Fitness-?Set\\b|Trainingsgeräte-?Set|Home-?Gym-?Set",
+     "sg-2-9"
+    ],
+    [
+     "Gewichtsmanschette|Gewichtsarmband|Gewichtsweste|Fussgewicht|Knöchelgewicht|Handgelenkgewicht|Gewichtsmanschetten",
+     "sg-2-25"
+    ],
+    [
+     "Pedaltrainer|Mini[- ]?Stepper|Springseil|Seilspringen|Rudergerät|Laufband|Crosstrainer|Ellipsentrainer|Minitrampolin|Fitness-?Trampolin",
+     "sg-2-4"
+    ],
+    [
+     "Hantelbank|Trainingsbank|Sit-?up-?Bank|Bauchtrainer-?Bank",
+     "sg-2-7"
+    ],
+    [
+     "Bench Press|Kurzhantel|Langhantel|Hantelscheibe|Kettlebell|Gewichtheber|Zughilfe|Fussgelenk-Manschette|Hantelstange|\\bHanteln?\\b",
+     "sg-2-24"
+    ],
+    [
+     "Yogamatte|Yoga-Matte|Pilatesmatte|Pilates-Matte|Fitnessmatte|Gymnastikmatte|Yogablock|Yoga-Block|Yogarad|Yoga-Rad|Pilates-?Ring|Yogagurt|Yoga-Gurt",
+     "sg-2-26"
+    ],
+    [
+     "Gleitpads|Gleitscheiben|Sliding Disc|Balance-?Board|Balancekissen|Balance-?Pad|Wackelbrett|Therapiekreisel",
+     "sg-2-3"
+    ],
+    [
+     "Widerstandsband|Widerstandsbänder|Fitnessband|Fitnessbänder|Gymnastikband|Gymnastikbänder|Resistance Band|Loop-?Band|Expander-?Band|Theraband",
+     "sg-2-6"
+    ],
+    [
+     "Faszienrolle|Schaumstoffrolle|Foam Roller|Massagerolle aus Schaum",
+     "sg-2-12"
+    ],
+    [
+     "Bauchroller|Bauchrad|Ab-?Roller|Ab Wheel|Bauchmuskelrad",
+     "sg-2-1"
+    ],
+    [
+     "Gymnastikball|Sitzball|Pezziball|Fitnessball|Swiss Ball",
+     "sg-2-5"
+    ],
+    [
+     "Medizinball|Slamball|Slam Ball",
+     "sg-2-15"
+    ],
+    [
+     "Handtrainer|Fingertrainer|Griffkraft-?Trainer|Handmuskeltrainer|Power Twister|Unterarmtrainer|Fingerhantel",
+     "sg-2-13"
+    ],
+    [
+     "Klimmzugstange|Klimmzug-Stange|Liegestützgriff|Liegestütz-Griff|Liegestützbrett|Dipstation|Dip-Station|Parallettes",
+     "sg-2-17"
+    ],
+    [
+     "Schlingentrainer|Suspension Trainer|Sling-?Trainer",
+     "sg-2-22"
+    ],
+    [
+     "Battle Rope|Kampfseil",
+     "sg-2-28"
+    ],
+    [
+     "Shaker-?Flasche|Protein-?Shaker|Eiweiss-?Shaker",
+     "sg-2-29"
+    ],
+    [
+     "Plyo-?Box|Sprungbox|Sprungkasten",
+     "sg-2-31"
+    ],
+    [
+     "Eisbad|Eistonne|Cold Plunge|Kältebecken",
+     "sg-2-27"
+    ],
+    [
+     "Stoppuhr",
+     "sg-2-21"
+    ],
+    [
+     "Aerobic-?Step|Stepbrett|Step-Brett",
+     "sg-2-2"
+    ],
+    [
+     "Vibrationsplatte|Vibrationstrainer|Rüttelplatte für Fitness",
+     "sg-2-23"
+    ],
+    [
+     "Inversionsbank|Inversionstisch|Schwerkrafttrainer|Inversionsstiefel",
+     "sg-2-14"
+    ],
+    [
+     "Reaktionsball",
+     "sg-2-18"
+    ],
+    [
+     "Laufschirm|Widerstandsfallschirm|Sprintfallschirm",
+     "sg-2-19"
+    ]
+   ],
+   "kanarien": [
+    [
+     "Multifunktionales 7-teiliges Fitness-Set",
+     "sg-2-9"
+    ],
+    [
+     "Gewichtsmanschetten für Reha und Training",
+     "sg-2-25"
+    ],
+    [
+     "Silikon-Gewichtsarmband für Sport & Fitness",
+     "sg-2-25"
+    ],
+    [
+     "Mini-Pedaltrainer für Beine",
+     "sg-2-4"
+    ],
+    [
+     "Mini Stepper Office Bicycle für Reha und Training",
+     "sg-2-4"
+    ],
+    [
+     "Bench Press Brick – Kraft- und Trainingshilfe",
+     "sg-2-24"
+    ],
+    [
+     "Fussgelenk-Manschette für Beintraining",
+     "sg-2-24"
+    ],
+    [
+     "Rutschfeste Fitnessmatte für Einsteiger",
+     "sg-2-26"
+    ],
+    [
+     "Gleitpads für Core-Training",
+     "sg-2-3"
+    ],
+    [
+     "Aufblasbare Gymnastikmatte",
+     null
+    ],
+    [
+     "Fitness-Rollenzug-Set für Zuhause",
+     null
+    ],
+    [
+     "Hüpfball für Kinder und Erwachsene",
+     null
+    ],
+    [
+     "Sicherheitshelm mit Licht",
+     null
+    ],
+    [
+     "Bauchmuskel-Stimulationsgürtel",
+     null
+    ],
+    [
+     "Gel-Pads für Bauchmuskelgürtel",
+     null
+    ],
+    [
+     "Rutschfeste Fitness-Unterlage (20mm)",
+     null
+    ],
+    [
+     "Kabelose Trainingsseile",
+     null
+    ],
+    [
+     "Aufbewahrungstasche aus Oxford-Gewebe",
+     null
+    ],
+    [
+     "Gymnastikring 80 cm Durchmesser – Trainingsring",
+     null
+    ],
+    [
+     "Galaxy Red Heart Trainingsball (100 Stk.)",
+     null
+    ]
+   ]
+  },
+  "sg-4-4-1": {
+   "name": "Bicycle Accessories",
+   "nicht": "Veloschutz|Velo-Alarm mit|Alarmanlage mit|Laufrad-Tasche|Lenkertasche für Scooter|Schweissfänger|Lenkerendkappe|Aufbewahrungsbeutel",
+   "regeln": [
+    [
+     "tasche|pannier|satteltasche",
+     "sg-4-4-1-1"
+    ],
+    [
+     "(handy|mobiltelefon|smartphone|telefon)-?halt(erung|er)",
+     "sg-4-4-1-31"
+    ],
+    [
+     "(licht|leuchte|lampe|scheinwerfer|blinker|strahler|beleuchtung|taillight|rücklich\\b)",
+     "sg-4-4-1-30"
+    ],
+    [
+     "(fahrrad|velo)-?klingel|(fahrrad|velo)-?glocke",
+     "sg-4-4-1-3"
+    ],
+    [
+     "(fahrrad|velo)-?schloss|bügelschloss|kettenschloss|faltschloss",
+     "sg-4-4-1-13"
+    ],
+    [
+     "(fahrrad|velo)-?korb",
+     "sg-4-4-1-2"
+    ],
+    [
+     "(fahrrad|velo)-?spiegel|rückspiegel",
+     "sg-4-4-1-14"
+    ],
+    [
+     "schutzblech",
+     "sg-4-4-1-10"
+    ],
+    [
+     "(fahrrad|velo)-?pumpe|luftpumpe für (fahrrad|velo)",
+     "sg-4-4-1-15"
+    ],
+    [
+     "flaschenhalter|trinkflaschenhalter|flaschenkäfig",
+     "sg-4-4-1-4"
+    ],
+    [
+     "(fahrrad|velo)-?computer|(fahrrad|velo)-?tacho\\b",
+     "sg-4-4-1-8"
+    ],
+    [
+     "sattelbezug|sattelüberzug|sattelpolster|sattelkissen",
+     "sg-4-4-1-16"
+    ],
+    [
+     "speichenperle",
+     "sg-4-4-1-18"
+    ],
+    [
+     "(fahrrad|velo)-?ständer|wandhalterung für (fahrrad|velo)|(fahrrad|velo)-?wandhalter",
+     "sg-4-4-1-19"
+    ],
+    [
+     "flickzeug|reifenheber|flickset",
+     "sg-4-4-1-20"
+    ],
+    [
+     "(fahrrad|velo)-?anhänger",
+     "sg-4-4-1-23"
+    ],
+    [
+     "stützräder|stützrad",
+     "sg-4-4-1-25"
+    ],
+    [
+     "(fahrrad|velo)-?abdeckung|(fahrrad|velo)-?garage|(fahrrad|velo)-?schutzhülle",
+     "sg-4-4-1-9"
+    ],
+    [
+     "kindersitz",
+     "sg-4-4-1-6"
+    ],
+    [
+     "rahmenschutz|kettenstrebenschutz",
+     "sg-4-4-1-32"
+    ]
+   ],
+   "kanarien": [
+    [
+     "600-Lumen Fahrrad-Frontlicht schwarz/gra",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Rücklich fürs Bike",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Frontstrahler für E-Bike",
+     "sg-4-4-1-30"
+    ],
+    [
+     "WEST BIKING Velo-Fernbedienungs-Blinker",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Starke USB-Aussenbeleuchtung fürs Mountainbike",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Farbige LED-Speichenlichter für Mountainbikes",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Intelligentes USB-Rücklicht mit Alarm",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Velo-Scheinwerfer mit drahtlosem Tacho",
+     "sg-4-4-1-30"
+    ],
+    [
+     "Velo-Hecktasche mit Rücklicht",
+     "sg-4-4-1-1"
+    ],
+    [
+     "Faltbares Fahrrad-Pannier",
+     "sg-4-4-1-1"
+    ],
+    [
+     "Velo-Trinkflaschentasche aus Polyester",
+     "sg-4-4-1-1"
+    ],
+    [
+     "Fahrradtasche mit Touchscreen für Mobiltelefon",
+     "sg-4-4-1-1"
+    ],
+    [
+     "Wasserdichte Lenkertasche für Velo & Scooter",
+     "sg-4-4-1-1"
+    ],
+    [
+     "Mobiltelefonhalterung mit starkem Licht für Radsport",
+     "sg-4-4-1-31"
+    ],
+    [
+     "Ausziehbarer Veloschutz mit Rücklicht",
+     null
+    ],
+    [
+     "A8 Velo-Alarm mit Rücklicht",
+     null
+    ],
+    [
+     "Intelligente Velo-Alarmanlage mit Rücklicht",
+     null
+    ],
+    [
+     "Fahrrad- und Laufrad-Tasche",
+     null
+    ],
+    [
+     "Faltbare, wasserdichte Lenkertasche für Scooter",
+     null
+    ],
+    [
+     "Velo-Schweissfänger für Rollentrainer",
+     null
+    ],
+    [
+     "Velo-Lenkerendkappen mit Blinklicht",
+     null
+    ],
+    [
+     "Fahrrad-Aufbewahrungsbeutel",
      null
     ]
    ]
