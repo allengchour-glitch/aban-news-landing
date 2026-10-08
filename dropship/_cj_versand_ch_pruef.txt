@@ -6020,3 +6020,6 @@ notstartgerat-12v-af0b9e	DF9921CC-0115-4723-B031-8893DF294F88	7	23.13	ok	landese
 autositzschutz-967490	2072216033173602306	0	-	KEINE CH-Option → DRAFT	landeseite
 sitzkissen-mit-hohenverstellung-615200	2605100510401615800	16	9.47	ok	landeseite
 kombi-abfalleimer-papiertuchbox-fur-auto-608400	2605091151411608900	16	7.43	ok	landeseite
+kuhl-seidenkissen-sitzauflage-609800	2605080909261600700	0	-	KEINE CH-Option → DRAFT	landeseite
+leder-sitzauflage-atmungsaktiv-608700	2605070342301609300	16	8.92	ok	landeseite
+dickschale-memory-foam-sitze-621300	2605060712011621800	16	14.35	ok	landeseite
