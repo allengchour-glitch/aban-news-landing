@@ -692,3 +692,19 @@ gid://shopify/Product/15497452978561	ok	Beissfester Spielball zur Zahnreinigung
 gid://shopify/Product/15497457860993	ok	Ball Spinner
 gid://shopify/Product/15499700142465	ok	Magnetische 3-in-1-Ladestation
 gid://shopify/Product/15499784880513	ok	Auto-Ladegerät 115W
+gid://shopify/Product/15499805491585	ok	Weisser Bluetooth-Lautsprecher mit Ladefunktion
+gid://shopify/Product/15499808014721	ok	Mini-Ladegerät für schnelle Auto-Ladung
+gid://shopify/Product/15499995447681	ok	Dreifach-Ladestation mit Kabellosem Aufladen
+gid://shopify/Product/15500070191489	ok	Magnetische WLAN-Ladestation
+gid://shopify/Product/15500254019969	ok	Glattstahler mit Edelsteinen
+gid://shopify/Product/15500255166849	ok	Haarschleuder
+gid://shopify/Product/15500259131777	ok	Dreifach-Wireless-Ladestation
+gid://shopify/Product/15500350128513	ok	Smart Hundespielzeug
+gid://shopify/Product/15500486869377	ok	Mini-Drehschleuder
+gid://shopify/Product/15500486967681	ok	Haarroller und Haarschneider
+gid://shopify/Product/15500487983489	ok	Mini-Heizplatte
+gid://shopify/Product/15500509675905	ok	Tierpflegehandschuh zur Fellreinigung
+gid://shopify/Product/15500905709953	ok	USB-Ladebares Lithium-Batterie-Set AA
+gid://shopify/Product/15500909805953	ok	Kabelloser Glättkamm mit Negativ-Ionen
+gid://shopify/Product/15500929663361	ok	Sportliche Herrenuhr mit Chronograph
+gid://shopify/Product/15500929761665	ok	USB AA/AAA Lithium-Akku, 1.5V
