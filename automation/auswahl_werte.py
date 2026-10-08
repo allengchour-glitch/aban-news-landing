@@ -123,9 +123,11 @@ EINHEIT_DE = {"cm": ("cm", "Grösse"), "mm": ("mm", "Grösse"), "m": ("m", "Län
               "tb": ("TB", "Speicher"), "pcs": ("Stück", "Menge"), "pc": ("Stück", "Menge"), "pieces": ("Stück", "Menge"),
               "piece": ("Stück", "Menge"), "stück": ("Stück", "Menge"), "sets": ("Sets", "Menge"), "set": ("Set", "Menge"),
               "pairs": ("Paar", "Menge"), "pair": ("Paar", "Menge"), "pack": ("er-Pack", "Menge"), "packs": ("er-Pack", "Menge"),
-              "yards": ("", "Grösse"), "yard": ("", "Grösse"), "m²": ("m²", "Grösse")}
+              "yards": ("", "Grösse"), "yard": ("", "Grösse"), "m²": ("m²", "Grösse"), "box": ("Box", "Menge"),
+              "boxes": ("Boxen", "Menge"), "bottle": ("Flasche", "Menge"), "bottles": ("Flaschen", "Menge"),
+              "roll": ("Rolle", "Menge"), "rolls": ("Rollen", "Menge"), "bag": ("Beutel", "Menge"), "bags": ("Beutel", "Menge")}
 _Z = r"\d+(?:[.,]\d+)?"
-_E = r"(?:cm|mm|m|inch(?:es)?|in|\"|zoll|l|ml|g|kg|w|mah|v|gb|tb|pcs|pc|pieces?|stück|sets?|pairs?|packs?|yards?|m²)"
+_E = r"(?:cm|mm|m|inch(?:es)?|in|\"|zoll|l|ml|g|kg|w|mah|v|gb|tb|pcs|pc|pieces?|stück|sets?|pairs?|packs?|yards?|m²|box(?:es)?|bottles?|rolls?|bags?)"
 MASS_EINZEL = re.compile(rf"^({_Z})\s*({_E})?$", re.I)
 MASS_SPANNE = re.compile(rf"^(?:below\s+|under\s+|up\s+to\s+)?({_Z})\s*(?:to|or|~|–|/)\s*({_Z})\s*({_E})$", re.I)
 MASS_BIS = re.compile(rf"^(?:below|under|up\s+to|within)\s+({_Z})\s*({_E})$", re.I)
@@ -163,6 +165,8 @@ def mass(wert):
             return (f"Gr. {_zahl(m.group(1))}", "Grösse")
         if e == "er-Pack":
             return (f"{_zahl(m.group(1))}er-Pack", name)
+        if e in ("Box", "Flasche", "Rolle") and m.group(1) not in ("1", "1.0"):
+            e = {"Box": "Boxen", "Flasche": "Flaschen", "Rolle": "Rollen"}[e]
         return (f"{_zahl(m.group(1))} {e}".strip(), name)
     return None
 
@@ -472,13 +476,29 @@ def _zusammensetzen(vs, dims, fertig, n_st, titel, ki):
 KI_LEDGER = os.path.join(os.path.dirname(HIER), "dropship", "_auswahl_uebersetzt.jsonl")
 EN_REST = re.compile(r"\b(?:with|without|and|or|size|sized|colou?r|style|pcs|pieces?|black|white|red|blue|green|yellow|grey|gray"
                      r"|purple|brown|silver|golden|light|dark|deep|small|large|big|single|double|package|bag|cover|version"
-                     r"|upgraded?|classic|fashion|sports?|plug|standard|cushion|seat|pillow|core|basket|pendant|no|type|set of)\b",
+                     r"|upgraded|classic|fashion|sports?|plug|standard|cushion|seat|pillow|core|basket|pendant|no|type|set of)\b",
                      re.I)
 CJK = re.compile(r"[぀-ヿ㐀-鿿가-힯]")
 
 
 def _zahlen(s):
     return sorted(re.sub(r"[.,]0+$", "", z.replace(",", ".")) for z in re.findall(r"\d+(?:[.,]\d+)?", s or ""))
+
+
+def _mal(s):
+    return len(re.findall(r"\d\s*[x×*]\s*\d", s or "", re.I))
+
+
+def _bereich(s):
+    return bool(re.search(r"\d\s*(?:to|~|–|bis)\s*\d|\d\s*(?:to|~)\s*\d", s or "", re.I))
+
+
+def normalisiere_ki(name, werte):
+    """Sonderzeichen-Bindestriche (U+2010–2015) → «-», «Grosse» → «Grösse» (das Modell schreibt ss auch im Namen)."""
+    name = {"Grosse": "Grösse", "Groesse": "Grösse", "Size": "Grösse", "Color": "Farbe"}.get(name, name)
+    werte = [re.sub(r"[\u2010\u2011\u2012\u2013\u2014\u2015](?=\S)", "-", str(w)).strip() for w in werte]
+    werte = [re.sub(r"(\d)-(\d)", r"\1–\2", w) for w in werte]          # Zahlenbereich mit Halbgeviertstrich
+    return name, werte
 
 
 def pruefe_ki(original, name, werte):
@@ -495,6 +515,10 @@ def pruefe_ki(original, name, werte):
             return f"Wert ungültig: {w!r}"
         if _zahlen(o) != _zahlen(w):
             return f"Zahl verändert: {o!r} → {w!r}"
+        if _mal(o) != _mal(w):
+            return f"Mass-«×» verändert: {o!r} → {w!r}"
+        if _bereich(o) and not _bereich(w):
+            return f"Bereich ging verloren: {o!r} → {w!r}"
         if EN_REST.search(w):
             return f"englisches Restwort: {w!r}"
         # wörtlich übernommene Originalwörter sind unübersetzt — ausser Kürzel (USB, LED), Codes und gleich geschriebene
@@ -528,19 +552,73 @@ FAMILIE = {"black": ("schwarz", "anthrazit"), "white": ("weiss", "creme", "elfen
            "orange": ("orange",), "khaki": ("khaki",), "navy": ("marine", "blau")}
 
 
+KI_VERSION = 2          # 08.10.2026 19:55: v1 liess «Bean paste → Bohnenpaste» und «90to140 → 90×140» durch → Zweitprüfer
+
+
 def _ki_ledger_lesen():
     d = {}
     try:
         for z in open(KI_LEDGER, encoding="utf-8"):
             r = json.loads(z)
-            d[json.dumps(r["original"], ensure_ascii=False)] = r
+            if r.get("v", 1) >= KI_VERSION:
+                d[json.dumps(r["original"], ensure_ascii=False)] = r
     except FileNotFoundError:
         pass
     return d
 
 
-def uebersetze_ki(titel, dims, frage=None):
-    """dims = [[werte…], …] → [(name, [werte…]) | None, …]. Ein Aufruf je Produkt; Ledger zuerst."""
+PRUEFER_MODELL = os.environ.get("AUSWAHL_PRUEFER", "qwen/qwen3.8-27b")   # andere Modellfamilie als der Übersetzer
+
+
+def _groq(modell, text):
+    import time
+    import urllib.request
+    k = os.environ.get("GROQ_API_KEY", "")
+    if not k:
+        raise RuntimeError("GROQ_API_KEY fehlt")
+    body = {"model": modell, "temperature": 0, "messages": [{"role": "user", "content": text}],
+            "response_format": {"type": "json_object"}}
+    letzter = ""
+    for a in range(4):
+        try:
+            r = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=json.dumps(body).encode(),
+                                       headers={"Content-Type": "application/json", "Authorization": "Bearer " + k,
+                                                "User-Agent": "luxestyle-auswahl/1"})      # ohne User-Agent 403
+            j = json.load(urllib.request.urlopen(r, timeout=120))
+            inhalt = j["choices"][0]["message"]["content"]
+            return json.loads(re.search(r"\{.*\}", inhalt, re.S).group(0))
+        except Exception as e:
+            letzter = f"{type(e).__name__}: {str(e)[:150]}"
+            time.sleep(10 * (a + 1))
+    raise RuntimeError("Groq ohne Antwort — " + letzter)
+
+
+def zweitpruefung(titel, paare, frage=None):
+    """paare = [(original, deutsch), …] → None (alle gut) | Grund. Anderes Modell, nur Urteil, keine eigene Übersetzung."""
+    frage = frage or (lambda t: _groq(PRUEFER_MODELL, t))
+    text = ("Du prüfst Übersetzungen von Lieferanten-Variantennamen (Englisch, oft holprig aus dem Chinesischen) in deutsche "
+            f"Auswahlwerte eines Schweizer Onlineshops. Produkt: «{titel}».\n"
+            "Für JEDES Paar: Ist der deutsche Wert eine richtige, für Kundinnen verständliche Wiedergabe dessen, was gemeint "
+            "ist? Typische Fehler, die du ablehnen musst: chinesische Farbnamen wörtlich übersetzt (Bean paste → «Bohnenpaste» "
+            "statt Altrosa; Lotus root → «Lotuswurzel» statt Altrosa), ein Bereich als Mass geschrieben (90to140 → «90×140» "
+            "statt «90–140»), etwas hinzugefügt oder weggelassen, sinnlose Wortbildungen, englische Reste. Gleich geschriebene "
+            "Wörter (Khaki, Beige, Pink, Upgrade, USB) sind richtig.\n"
+            "Antworte NUR mit JSON: {\"urteile\": [{\"ok\": true|false, \"grund\": \"…\"}, …]} — ein Urteil je Paar, gleiche "
+            "Reihenfolge.\nPaare:\n" + json.dumps([{"original": o, "deutsch": d} for o, d in paare], ensure_ascii=False))
+    a = frage(text)
+    u = (a or {}).get("urteile") or []
+    if len(u) != len(paare):
+        raise RuntimeError(f"Zweitprüfer-Antwort unvollständig ({len(u)} statt {len(paare)})")
+    schlecht = [(paare[i], (x or {}).get("grund", "")) for i, x in enumerate(u) if not (x or {}).get("ok")]
+    if schlecht:
+        (o, d), g = schlecht[0]
+        return f"Zweitprüfer: {o!r} → {d!r} abgelehnt ({str(g)[:120]})" + (f" +{len(schlecht) - 1}" if len(schlecht) > 1 else "")
+    return None
+
+
+def uebersetze_ki(titel, dims, frage=None, pruefer=None):
+    """dims = [[werte…], …] → [(name, [werte…]) | None, …]. Ein Übersetzer-Aufruf + ein Prüfer-Aufruf je Produkt;
+    Ledger zuerst. Modell nicht erreichbar → RuntimeError (der Aufrufer zählt das als vorübergehend, kein Ledger)."""
     ledger = _ki_ledger_lesen()
     out, offen = [None] * len(dims), []
     for i, d in enumerate(dims):
@@ -558,10 +636,13 @@ def uebersetze_ki(titel, dims, frage=None):
             f"Produkt: «{titel}»\n"
             "Regeln:\n"
             "- Reihenfolge und Anzahl je Liste genau beibehalten; jeder Wert höchstens 32 Zeichen; Werte eindeutig.\n"
-            "- Jede Zahl unverändert übernehmen (37x26 → 37×26, inch → Zoll, L/ml/cm/mm bleiben).\n"
-            "- Farben als deutsche Farbwörter (Sky Blue → Himmelblau, Khaki bleibt Khaki).\n"
-            "- Motiv-/Figurnamen sinngemäss deutsch (Purple Bunny → Lila Hase); Marken, Modellcodes und USB/LED bleiben.\n"
-            "- Kein englisches Wort stehen lassen, keine Erklärungen, nichts erfinden, was nicht im Original steht.\n"
+            "- Jede Zahl unverändert übernehmen. Masse mit ×: 37x26 → 37×26. Bereiche mit –: 90to140 → 90–140. inch → Zoll; "
+            "L, ml, cm, mm, W, V bleiben.\n"
+            "- Farben: den gemeinten Farbton nennen, NICHT wörtlich übersetzen (Bean paste → Altrosa, Lotus root → Altrosa, "
+            "Wathet → Hellblau, Haze blue → Rauchblau, Army green → Armeegrün, Coffee → Kaffeebraun).\n"
+            "- Enthält ein Wert ein Ding UND eine Farbe, schreibe «Ding · Farbe» (Purple Bunny → «Hase · Lila», Red Single Bag "
+            "→ «Einzeltasche · Rot»). Motiv-/Figurnamen sinngemäss deutsch; Marken, Modellcodes, USB/LED bleiben.\n"
+            "- Kein englisches Wort stehen lassen, keine Erklärungen, nichts hinzufügen, was nicht im Original steht.\n"
             "- Optionsname je Liste genau einer von: Farbe, Grösse, Ausführung, Modell, Typ, Motiv, Variante, Volumen, "
             "Länge, Menge, Material, Muster, Stil, Form, Set.\n"
             "Antworte NUR mit JSON: {\"listen\": [{\"name\": \"…\", \"werte\": [\"…\"]}, …]} — eine Liste je Eingabeliste.\n"
@@ -569,22 +650,34 @@ def uebersetze_ki(titel, dims, frage=None):
     try:
         a = frage(text)
         listen = (a or {}).get("listen") or []
-    except Exception as e:                                   # Modell weg/gedrosselt: kein Ledger-Eintrag, später erneut
-        print(f"  KI nicht erreichbar: {str(e)[:100]}", flush=True)
-        return out
+    except Exception as e:                                   # Modell weg/gedrosselt: kein Ledger-Eintrag, später erneut —
+        raise RuntimeError(f"KI nicht erreichbar: {str(e)[:100]}")   # der Aufrufer zählt das als vorübergehend
     if len(listen) != len(offen):
-        return out
+        raise RuntimeError(f"KI-Antwort unvollständig ({len(listen)} statt {len(offen)} Listen)")
     try:
         import zweitmodell
         wer = getattr(zweitmodell, "LETZTES_MODELL", "") or "?"
     except Exception:
         wer = "?"
+    ergebnisse = []
+    for i, l in zip(offen, listen):
+        name, werte = normalisiere_ki(str((l or {}).get("name") or "").strip(), (l or {}).get("werte") or [])
+        ergebnisse.append((i, name, werte, pruefe_ki(dims[i], name, werte)))
+    # Zweitprüfer nur über das, was die harte Prüfung bestanden hat (ein Aufruf je Produkt)
+    paare = [(o, w) for i, _, werte, g in ergebnisse if g is None for o, w in zip(dims[i], werte)]
+    zweit = None
+    if paare:
+        try:
+            zweit = zweitpruefung(titel, paare, pruefer)
+        except Exception as e:
+            raise RuntimeError(f"Zweitprüfer nicht erreichbar: {str(e)[:100]}")
     with open(KI_LEDGER, "a", encoding="utf-8") as fh:
-        for i, l in zip(offen, listen):
-            name, werte = str((l or {}).get("name") or "").strip(), [str(w).strip() for w in ((l or {}).get("werte") or [])]
-            grund = pruefe_ki(dims[i], name, werte)
-            fh.write(json.dumps({"original": dims[i], "name": name, "werte": werte, "ok": grund is None,
-                                 "grund": grund, "titel": titel, "modell": wer}, ensure_ascii=False) + "\n")
+        for i, name, werte, grund in ergebnisse:
+            if grund is None and zweit:
+                grund = zweit                                 # das Produkt als Ganzes fällt (Werte hängen zusammen)
+            fh.write(json.dumps({"v": KI_VERSION, "original": dims[i], "name": name, "werte": werte, "ok": grund is None,
+                                 "grund": grund, "titel": titel, "modell": wer, "pruefer": PRUEFER_MODELL},
+                                ensure_ascii=False) + "\n")
             out[i] = (name, werte) if grund is None else None
     return out
 

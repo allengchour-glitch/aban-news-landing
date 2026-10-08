@@ -48,8 +48,16 @@ except Exception:
 
 
 def _cache_speichern():
+    """Zwei Schreiber (Messung + Nachrüsten): erst die Datei einmischen, dann atomar ersetzen — sonst löscht jeder die
+    Einträge des anderen (08.10.2026)."""
     try:
-        json.dump(CACHE, open(CACHE_DATEI + ".teil", "w")); os.replace(CACHE_DATEI + ".teil", CACHE_DATEI)
+        try:
+            for k, v in json.load(open(CACHE_DATEI)).items():
+                CACHE.setdefault(k, v)
+        except Exception:
+            pass
+        teil = f"{CACHE_DATEI}.{os.getpid()}.teil"
+        json.dump(CACHE, open(teil, "w")); os.replace(teil, CACHE_DATEI)
     except Exception:
         pass
 

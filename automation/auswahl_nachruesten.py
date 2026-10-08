@@ -46,11 +46,22 @@ from auswahl_werte import (farbe, ausfuehrung, plane_optionen,  # noqa: E402,F40
 
 MESSUNG = os.environ.get("MESSUNG", "dropship/_auswahl_fehlt.jsonl")
 LEDGER = "dropship/_auswahl_nachgeruestet.txt"
+# 08.10.2026 (ganzer Katalog, ~5'000 Kandidaten, stündlich): bekannte MANUELL-Fälle und Schreibfehler werden gemerkt und
+# MANUELL_TAGE lang übersprungen — sonst plant jeder Lauf dieselben 1'000 Fälle neu und kommt nie zu neuen; ein Produkt,
+# dessen Schreiben scheiterte (zurückgebaut), würde jede Stunde als erstes wieder versucht und den Lauf abbrechen.
+MANUELL_LEDGER = "dropship/_auswahl_manuell.tsv"
+FEHLER_LEDGER = "dropship/_auswahl_fehler.tsv"
+MANUELL_TAGE = int(os.environ.get("MANUELL_TAGE", "7"))
+VORUEBERGEHEND = re.compile(r"Cache|nicht erreichbar|ungültig|Lesefehler|Tagesbudget", re.I)
 BERICHT = os.environ.get("BERICHT", "dropship/AUSWAHL-NACHRUESTEN.md")
 SCHARF = os.environ.get("SCHARF") == "1"
 NUR = os.environ.get("NUR_HANDLE")
 CAP = int(os.environ.get("CAP", "40"))
 MAX_FEHLER = int(os.environ.get("MAX_FEHLER", "1"))
+# 08.10.2026: Zeitbudget statt hartem `timeout` — ein SIGTERM mitten in schreibe() hinterliesse ein halb umgebautes Produkt
+# (Optionen da, Varianten ohne SKU/Preis), ohne Rückbau. Nach ZEIT_S wird kein NEUES Produkt mehr begonnen.
+ZEIT_S = float(os.environ.get("ZEIT_S", "0")) or None
+_START = time.time()
 BILDER_NACHLADEN = os.environ.get("BILDER_NACHLADEN", "1") == "1"   # 08.10.: Speicher frei seit Grow-Plan
 HEUTE = time.strftime("%Y-%m-%d")
 CACHE_DATEI = "/tmp/auswahl_cj_cache.json"
@@ -84,8 +95,16 @@ def rund90(x):
 def cj_varianten(sku):
     """CJ-Varianten mit 3-Tage-Cache. Gecacht wird NUR eine gültige Antwort (code 200, data-Objekt) — eine Token-/
     Serverstörung sonst drei Tage lang als «CJ führt 0 Varianten» (Prüfer-Befund)."""
+    if sku not in CACHE:                          # die Messung läuft parallel und füllt die Datei laufend
+        try:
+            for k, v in json.load(open(CACHE_DATEI)).items():
+                CACHE.setdefault(k, v)
+        except Exception:
+            pass
     if sku in CACHE and time.time() - CACHE[sku]["t"] < 3 * 86400:
         return CACHE[sku]["d"], None
+    if os.environ.get("NUR_CACHE") == "1":
+        return None, "nicht im Cache (NUR_CACHE=1)"
     url = cj_url(sku)
     if not url:
         return None, "SKU-Form ohne CJ-Abfrage"
@@ -95,7 +114,13 @@ def cj_varianten(sku):
     if d.get("code") != 200 or not isinstance(d.get("data"), dict):
         return None, f"CJ-Antwort ungültig (code {d.get('code')}: {str(d.get('message'))[:60]})"
     CACHE[sku] = {"t": time.time(), "d": d}
-    json.dump(CACHE, open(CACHE_DATEI, "w"))
+    try:                                          # einmischen + atomar ersetzen (zwei Schreiber, 08.10.2026)
+        for k, v in json.load(open(CACHE_DATEI)).items():
+            CACHE.setdefault(k, v)
+    except Exception:
+        pass
+    teil = f"{CACHE_DATEI}.{os.getpid()}.teil"
+    json.dump(CACHE, open(teil, "w")); os.replace(teil, CACHE_DATEI)
     return d, None
 
 
@@ -391,8 +416,31 @@ def schreibe(pl):
     return None
 
 
+def _gemerkt(datei, tage):
+    """Handles aus einem «handle\tdatum\tgrund»-Ledger, die jünger als `tage` sind."""
+    out = set()
+    if not os.path.exists(datei):
+        return out
+    grenze = time.strftime("%Y-%m-%d", time.gmtime(time.time() - tage * 86400))
+    for z in open(datei, encoding="utf-8"):
+        t = z.rstrip("\n").split("\t")
+        if len(t) >= 2 and t[1] >= grenze:
+            out.add(t[0])
+    return out
+
+
+def _merken(datei, handle, grund):
+    if not SCHARF:                                # Trockenläufe merken nichts (sonst sperrt ein Test den echten Lauf)
+        return
+    with open(datei, "a", encoding="utf-8") as fh:
+        sauber = re.sub(r"[\t\n]+", " ", str(grund))[:300]
+        fh.write(f"{handle}\t{HEUTE}\t{sauber}\n")
+
+
 def main():
     erledigt = {z.split("\t")[3].strip() for z in open(LEDGER) if z.count("\t") >= 3} if os.path.exists(LEDGER) else set()
+    if not NUR:
+        erledigt |= _gemerkt(MANUELL_LEDGER, MANUELL_TAGE) | _gemerkt(FEHLER_LEDGER, 30)
     rows = [json.loads(z) for z in open(MESSUNG)] if os.path.exists(MESSUNG) else []
     kand = [r for r in rows if (r.get("cj") or 0) > 1 and r["handle"] not in erledigt and (not NUR or r["handle"] == NUR)]
     # 08.10.2026: jüngste Messungen zuerst — deren CJ-Antwort liegt schon im Cache (auswahl_fehlt_messen schreibt ihn), die alten
@@ -403,6 +451,9 @@ def main():
     for r in kand:
         if versuche >= CAP:
             break
+        if ZEIT_S and time.time() - _START > ZEIT_S:
+            print(f"Zeitbudget {ZEIT_S:.0f} s erreicht — Rest im nächsten Lauf", flush=True)
+            break
         try:
             pl, grund = plane(r)
         except SystemExit as e:                  # CJ-Tagesbudget leer: Bericht trotzdem schreiben, dann aufhören
@@ -410,7 +461,10 @@ def main():
         except Exception as e:                   # Lesefehler bei EINEM Produkt: melden, weiter
             manuell.append((r, f"Lesefehler: {str(e)[:120]}")); continue
         if not pl:
-            manuell.append((r, grund)); print(f"  ❔ {r['titel'][:55]} — {grund}", flush=True); continue
+            manuell.append((r, grund)); print(f"  ❔ {r['titel'][:55]} — {grund}", flush=True)
+            if not VORUEBERGEHEND.search(grund or ""):
+                _merken(MANUELL_LEDGER, r["handle"], grund)
+            continue
         versuche += 1
         kopf = " × ".join(f"{n}({len(ws)})" for n, ws in pl["optionen"]) or "EU-SKU"
         zeile = f"{r['titel'][:50]} — {kopf}{' [KI]' if pl.get('ki') else ''}: " + \
@@ -424,6 +478,7 @@ def main():
             f = f"Ausnahme: {str(e)[:160]}"
         if f:
             fehler.append((r, f)); print(f"  ⛔ {r['titel'][:50]} — {f}", flush=True)
+            _merken(FEHLER_LEDGER, r["handle"], f)
             if len(fehler) >= MAX_FEHLER:
                 pause = f"Abbruch nach {len(fehler)} Schreibfehler(n) — ein systematischer Fehler darf nicht alle Produkte anfassen"
                 print(pause, flush=True); break
