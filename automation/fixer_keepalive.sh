@@ -1073,7 +1073,12 @@ while true; do
           SCHARF=1 timeout 2400 python3 automation/kleid_rock_tags.py 2>&1 | grep -E '^(KLEID-ROCK|Kanarien)'; \
           SCHARF=1 timeout 2400 python3 automation/schuhe_fein.py 2>&1 | grep -E '^(SCHUH|FERTIG)'; \
           SCHARF=1 timeout 1800 python3 automation/spielzeug_trennung.py 2>&1 | grep -E '^(SPIELZEUG|FERTIG)'; \
+          SCHARF=1 timeout 2400 python3 automation/shopify_fein.py 2>&1 | grep -E '^(SHOPIFY-FEIN|FERTIG|⚠️)'; \
           SCHARF=1 timeout 600 python3 automation/google_id_zu_name.py 2>&1 | grep -E '^(GOOGLE-ID|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+    # 08.10.2026 (Betreiber «weiter feinkategorie verbessern»): shopify_fein.py — 27'897 aktive standen in Shopify auf einer Klasse
+    # MIT Unterklassen, Google hat darunter kein Blatt (Clothing Tops 4'671, Handbags 880, Pants 772, Ladegeräte 742, Halsbänder 733,
+    # Leinen 727, Jacken 715, Näpfe 544, Kissen 250) → Titelregeln je Elternklasse aus data/shopify_fein.json (Kanarien 164/164),
+    # nur exakt die Elternklasse wird angefasst, Google bleibt; neue Klasse = JSON-Block, kein neues Skript.
     # 08.10.2026 (Betreiber «saubere trennung»): spielzeug_trennung.py — Bausteine/Holzpuzzles trugen Typ «Spass-Elektronik» + Tag rc
     # (841/1'040 rc nicht ferngesteuert, alle in der RC-Kollektion) → rc nur bei RC-/Elektronik-Wort, Typ «Spielzeug & Spiele»;
     # dieselbe Regel im Importer (cj_category_fill.mjs spielzeugTrennung, data/spielzeug_trennung.json, Gleichlauf 1'040/0).

@@ -44,6 +44,21 @@
 
 
 
+## 2026-10-08 16:00 UTC · 🧥 «weiter feinkategorie verbessern»: 8'279 Produkte in Shopifys Unterklassen — per Bulk statt Eimer
+
+**GEMESSEN:** Google steht bei 45'239 von 51'683 auf einem Blatt, Shopify aber bei 27'897 auf einer Klasse MIT Unterklassen
+(Clothing Tops 4'671, Handbags 880, Pants 772, Ladegeräte 742, Halsbänder 733, Leinen 727, Jacken 715, Näpfe 544, Kissen 250).
+Google hat darunter kein Blatt → `kategorie_fein` (Weg über Google) kommt nie weiter, wie bei den Schuhen am Morgen.
+**GETAN:** `shopify_fein.py` + EINE Regeldatei `data/shopify_fein.json` (je Elternklasse: nicht/Regeln/Kanarien), Kanarien 164/164
+(Saug-napf, Toten-kopf, Sweater-kleid, Body Chain, Jeans-Top, Rollleine «Automatikbremse», PS5-Station, Solar-Lader), Stichprobe
+300 Titel; **8'279 gesetzt / 0 Fehler, Rücklesen 30/30 + 12/12**, Live-Zählung je Klasse = Rest des Laufs. Täglich in der Kette.
+**LEHRE:** (1) «Feiner» heisst je Taxonomie etwas anderes: die Blatt-Prüfung muss beide Seiten getrennt zählen, sonst ist die Hälfte
+unsichtbar. (2) Nicht jede Klasse mit Unterklassen ist grob: ein Modering ist kein Ehering, ein Mode-Rucksack kein Wanderrucksack.
+Vor der Regel die Kinderliste lesen. (3) Massen-Schreiben neben einem Lese-Scan: einzeln 20/min (Eimer ~120/2000) → Bulk-Mutation
+(kein Eimer) 8'090 in einem Lauf, verfolgt über die eigene ID. Ab ~200 Produkten ist Bulk der Standardweg.
+(4) `productsCount(query:"category_id:…")` zählt live je Shopify-Kategorie — ein Messgerät ohne Export.
+Bericht `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`.
+
 ## 2026-10-08 13:15 UTC · 🗄️ Verbesserungsrunde: Sammelkorb «Büro & Home Office» — Tastatur bei Google unter «Office Supplies»
 
 **GEMESSEN:** Von 33 Neuimporten in 4 h kamen 11 aus der CJ-Gruppe «Büro & Home Office», alle auf Google «Office Supplies»
@@ -18953,3 +18968,4 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · 🔒 **DENY sperrt nichts ohne tracked+Menge 0 (Lehre 08.09., Betreiber «schaue memory») — und 427'616 CJ-Varianten stehen ab Import auf DENY und sind kaufbar → `ausverkauft.py` (sperren/freigeben, Rücklesen availableForSale); cj_varianten_wache sperrte 177/179 wirkungslos; Grind 3 Runner, Lagerabgleich stündlich.** «gesperrt?» = availableForSale → Journal 06.10. 21:30
 - 2026-10-06 · 🖥️ **«hetzner verbessern»: Server-CJ-Runner ohne Text-KI = 3'903× skip(gemini), 0 angelegt, ~39k Punkte/Tag nach bezahlter Abfrage; /tmp 97 %, numpy/PIL fehlten → Keepalive lädt /etc/luxe/secrets.env, /tmp-Hygiene, apt, `KI_DA=0` → Grind+Such-Runner aus, Importer bricht VOR CJ ab.** Voraussetzung vor der bezahlten Abfrage prüfen → `dropship/HETZNER-AUTOMATION-2026-10-06.md`
 - 2026-10-06 · 📦 **«fix fortuna»: Bestand 26 h eingefroren (2× rc=2 «Shopify antwortete nicht») — Token gültig, Eimer leer (kategorie_fein zeitgleich «40x gedrosselt»), JS-`gql()` gab nach 20 Kurzversuchen ohne Grund auf → throttleStatus-Warten max(Anfrage,600), 40 Runden, Grund im Log; 1'117 Varianten nachgeführt (12 auf 0).** Drossel-Regel gilt auch für .mjs → Journal 06.10. 22:25
+- 2026-10-07 · 🧾 **Verbesserungsrunde (Tag 7): repo_vorspulen vereinigte nur *.txt — 85 .tsv-Ledger verloren bei jedem Rewind die ungepushten Zeilen (Bildtausch 17:17 weg → 20:43 doppelt getauscht) → `ledger_union.py` Schwanz-Union (Purges bleiben draussen, 8/8, 0 Zombies); «Page unavailable» 60/60 kaufbar, Anstupser wirkt.** Neuer Ledger-Typ = Rewind-Union mitprüfen → `dropship/LEDGER-UNION-TSV-2026-10-07.md`

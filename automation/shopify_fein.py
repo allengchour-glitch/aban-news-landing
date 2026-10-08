@@ -17,7 +17,9 @@ REGEL (EINE Datei automation/data/shopify_fein.json, je Elternklasse):
 Ledger dropship/_shopify_fein.tsv (pid, Stand, Google, Ziel, Zeit, Fehler, alt). Täglich im Aufseher (Kategorie-Kette) →
 erfasst auch Neuimporte.
 
-  python3 automation/shopify_fein.py --kanarien  ·  python3 automation/shopify_fein.py  ·  SCHARF=1 [NUR=aa-1-13] …
+  python3 automation/shopify_fein.py --kanarien  ·  python3 automation/shopify_fein.py  ·  SCHARF=1 [NUR=aa-1-13] [BULK=1] …
+Schreibweg: ab 200 Produkten (oder BULK=1) eine Bulk-Mutation productUpdate(category) — kostet keinen Eimer; gemessen 08.10.:
+einzeln 20/min neben einem Lese-Scan (Eimer ~120/2000), Bulk 109 in ~2 min. Darunter 10er-Chargen (CHARGE).
 """
 import collections, json, os, re, sys, time
 
@@ -28,6 +30,8 @@ REGELN = os.path.join(HIER, "data", "shopify_fein.json")
 LEDGER = os.path.join(REPO, "dropship", "_shopify_fein.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 NUR = {x for x in os.environ.get("NUR", "").split(",") if x}
+# 08.10.: 25 je Anfrage kam neben einem Lese-Scan (textbild_fix, Eimer ~120/2000) 6 min lang nicht durch → kleinere Charge
+CHARGE = int(os.environ.get("CHARGE", "10"))
 
 _D = json.load(open(REGELN, encoding="utf-8"))["klassen"]
 K = {cid: {"name": k["name"],
@@ -58,6 +62,71 @@ def kanarien():
                 print(f"  ✗ [{k['name']}] {t!r} → {ist} (soll {s})")
     print(f"SHOPIFY-FEIN-KANARIEN {ok}/{n}")
     return ok == n
+
+
+def bulk_schreiben(plan, alt):
+    """08.10.: Massenweg ohne Eimer — stagedUpload JSONL → bulkOperationRunMutation productUpdate(category).
+    Verfolgt den EIGENEN Lauf über node(id:) (Lehre 07.10. «fremder-bulk»), liest jede Ergebniszeile zurück.
+    Google-Wert wird nicht angefasst. Gibt (gesetzt, fehler) und schreibt das Ledger."""
+    import subprocess
+    from kaufwille_zeile import gql
+    os.makedirs("/tmp/shopify_fein", exist_ok=True)
+    pfad = "/tmp/shopify_fein/plan.jsonl"
+    with open(pfad, "w", encoding="utf-8") as fh:
+        for pid, _, sid in plan:
+            fh.write(json.dumps({"product": {"id": pid, "category": "gid://shopify/TaxonomyCategory/" + sid}}) + "\n")
+    st = gql('mutation{stagedUploadsCreate(input:[{resource:BULK_MUTATION_VARIABLES,filename:"shopify_fein.jsonl",'
+             'mimeType:"text/jsonl",httpMethod:POST}]){stagedTargets{url resourceUrl parameters{name value}} userErrors{message}}}')
+    t = st["stagedUploadsCreate"]["stagedTargets"][0]
+    form = []
+    for q in t["parameters"]:
+        form += ["-F", f"{q['name']}={q['value']}"]
+    key = next(q["value"] for q in t["parameters"] if q["name"] == "key")
+    r = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "--max-time", "600", "-X", "POST", t["url"]]
+                       + form + ["-F", f"file=@{pfad}"], capture_output=True, text=True)
+    if r.stdout.strip() not in ("200", "201", "204"):
+        raise RuntimeError(f"Upload HTTP {r.stdout}")
+    for _ in range(360):   # nur EINE Bulk-Mutation je App gleichzeitig — eine laufende (eigene/fremde) abwarten, nie abbrechen
+        c = gql('{currentBulkOperation(type:MUTATION){status}}')["currentBulkOperation"]
+        if not c or c["status"] not in ("CREATED", "RUNNING", "CANCELING"):
+            break
+        time.sleep(10)
+    m = gql('mutation($p:String!){bulkOperationRunMutation(mutation:"mutation call($product: ProductUpdateInput!) { productUpdate(product: $product) '
+            '{ product { id category { id } } userErrors { message } } }",stagedUploadPath:$p){bulkOperation{id status} userErrors{message}}}', {"p": key})
+    if m["bulkOperationRunMutation"]["userErrors"]:
+        raise RuntimeError(f"Bulk nicht gestartet: {m['bulkOperationRunMutation']['userErrors']}")
+    bid = m["bulkOperationRunMutation"]["bulkOperation"]["id"]
+    print(f"BULK gestartet {bid} · {len(plan)} Produkte", flush=True)
+    for _ in range(720):
+        n = gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})["node"]
+        if n["status"] not in ("CREATED", "RUNNING", "CANCELING"):
+            break
+        time.sleep(10)
+    print(f"BULK {n['status']} · {n.get('objectCount')} Objekte · {n.get('errorCode') or ''}", flush=True)
+    soll = {pid: sid for pid, _, sid in plan}
+    google = {pid: g for pid, g, _ in plan}
+    ok = fe = 0
+    gesehen = set()
+    out = subprocess.run(["curl", "-sL", "--max-time", "600", n["url"]], capture_output=True, text=True).stdout if n.get("url") else ""
+    with open(LEDGER, "a", encoding="utf-8") as f:
+        for z in out.splitlines():
+            d = json.loads(z)
+            pu = ((d.get("data") or {}).get("productUpdate") or {})
+            pr = pu.get("product") or {}
+            pid = pr.get("id") or ""
+            cat = ((pr.get("category") or {}).get("id") or "").split("/")[-1]
+            ue = "; ".join(e.get("message", "") for e in (pu.get("userErrors") or []))[:120] or str(d.get("errors") or "")[:120]
+            if not pid:
+                fe += 1; continue
+            gesehen.add(pid)
+            gut = cat == soll.get(pid) and not ue
+            ok += gut; fe += not gut
+            f.write(f"{pid}\t{'gesetzt' if gut else 'fehler'}\t{google.get(pid, '')}\t{soll.get(pid, '')}\t"
+                    f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{ue}\t{alt.get(pid, '')}\n")
+    fehlend = len(soll) - len(gesehen)
+    if fehlend:
+        print(f"⚠️ {fehlend} Produkte ohne Ergebniszeile (nicht im Ledger — nächster Lauf nimmt sie wieder)")
+    return ok, fe
 
 
 def main():
@@ -106,10 +175,12 @@ def main():
         for k, v in bsp.items():
             print(f"    {k[0]} → {k[1]}: {v}")
     ok = fe = 0
-    if SCHARF and plan:
+    if SCHARF and plan and (os.environ.get("BULK") == "1" or len(plan) >= 200):   # ab 200: Bulk (Eimer frei für andere)
+        ok, fe = bulk_schreiben(plan, alt)
+    elif SCHARF and plan:
         with open(LEDGER, "a", encoding="utf-8") as f:
-            for i in range(0, len(plan), 25):
-                for pid, s_, g_, sid, feh in kos.schreiben(plan[i:i + 25]):
+            for i in range(0, len(plan), CHARGE):
+                for pid, s_, g_, sid, feh in kos.schreiben(plan[i:i + CHARGE]):
                     f.write(f"{pid}\t{s_}\t{g_}\t{sid}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{feh}\t{alt.get(pid, '')}\n")
                     ok += s_ == "gesetzt"; fe += s_ == "fehler"
                 f.flush()
