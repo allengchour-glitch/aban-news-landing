@@ -659,3 +659,9 @@ gid://shopify/Product/15493919768961	ok	Kabelloser Glättkamm für unterwegs
 gid://shopify/Product/15494120440193	ok	Business Rucksack Herren mit Hartschale
 gid://shopify/Product/15494223856001	ok	Dinosaurier-Ei Futterspender & Kauspielzeug
 gid://shopify/Product/15494392381825	ok	Minimalistischer Multifunktions-Reiserucksack
+gid://shopify/Product/15494496321921	ok	Lederrucksack Vintage Herren Rindsleder
+gid://shopify/Product/15494643417473	ok	Multifunktionaler Gemüseschneider mit Spiralschneider
+gid://shopify/Product/15494693585281	ok	Magisches Katzenkratzbrett mit Orgel-Design
+gid://shopify/Product/15495048495489	ok	Kabellose 5-in-1 Ladestation mit Wecker
+gid://shopify/Product/15495720796545	ok	U-förmiges Seitenschläferkissen mit Beinstütze
+gid://shopify/Product/15495725449601	ok	V17 RC-Kampfjet Drohne aus Schaumstoff
