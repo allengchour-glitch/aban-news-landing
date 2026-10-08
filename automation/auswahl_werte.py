@@ -475,8 +475,8 @@ def _zusammensetzen(vs, dims, fertig, n_st, titel, ki):
 # ── Sprachmodell (nur für Reste) ────────────────────────────────────────────────────────────────────────────────
 KI_LEDGER = os.path.join(os.path.dirname(HIER), "dropship", "_auswahl_uebersetzt.jsonl")
 EN_REST = re.compile(r"\b(?:with|without|and|or|size|sized|colou?r|style|pcs|pieces?|black|white|red|blue|green|yellow|grey|gray"
-                     r"|purple|brown|silver|golden|light|dark|deep|small|large|big|single|double|package|bag|cover|version"
-                     r"|upgraded|classic|fashion|sports?|plug|standard|cushion|seat|pillow|core|basket|pendant|no|type|set of)\b",
+                     r"|purple|brown|silver|golden|light|dark|deep|small|large|big|single|double|package|bag|cover|edition"
+                     r"|upgraded|classic|fashion|sports?|plug|cushion|seat|pillow|core|basket|pendant|no|type|set of)\b",
                      re.I)
 CJK = re.compile(r"[぀-ヿ㐀-鿿가-힯]")
 
@@ -500,6 +500,7 @@ def normalisiere_ki(name, werte):
     werte = [re.sub(r"(\d)-(\d)", r"\1–\2", w) for w in werte]          # Zahlenbereich mit Halbgeviertstrich
     werte = [w.replace("ß", "ss") for w in werte]                          # Schweizer Schreibweise
     werte = [re.sub(r"\s*·\s*", " · ", w) for w in werte]                   # «Hase·Lila» → «Hase · Lila»
+    werte = [re.sub(r"(\d)\s*(cm|mm|ml|kg)\b", lambda m: f"{m.group(1)} {m.group(2).lower()}", w, flags=re.I) for w in werte]
     return name, werte
 
 
@@ -517,7 +518,9 @@ def pruefe_ki(original, name, werte):
             return f"Wert ungültig: {w!r}"
         if _zahlen(o) != _zahlen(w):
             return f"Zahl verändert: {o!r} → {w!r}"
-        if _mal(o) != _mal(w):
+        # «Width 45cm Height 130cm» → «45×130 cm» ist richtig (Masse benannt statt mit x) — sonst bleibt «×» wie es war
+        if _mal(o) != _mal(w) and not (_mal(w) > _mal(o) and re.search(r"\b(?:width|height|length|depth|wide|high|long|"
+                                                                    r"diameter|thick(?:ness)?)\b", o, re.I)):
             return f"Mass-«×» verändert: {o!r} → {w!r}"
         if _bereich(o) and not _bereich(w):
             return f"Bereich ging verloren: {o!r} → {w!r}"
@@ -543,7 +546,7 @@ GLEICH_DE = {"khaki", "beige", "orange", "pink", "gold", "mini", "set", "oval", 
              "panda", "koala", "dinosaur", "tiger", "zebra", "lama", "alpaka", "flamingo", "einhorn", "unicorn", "elefant",
              "rose", "lotus", "jasmin", "vanille", "kaktus", "kakadu", "pinguin", "delfin", "hamster", "film", "led", "usb",
              "hd", "rgb", "ring", "bluetooth", "wifi", "smart", "mix", "neon", "metall", "nylon", "polyester", "silikon",
-             "upgrade", "highlight", "pedal", "laser", "turbo", "mini", "power", "display", "touch", "spray", "gel",
+             "upgrade", "highlight", "laser", "turbo", "mini", "power", "display", "touch", "spray", "gel",
              "velvet", "denim", "jeans", "leder", "holz", "bambus", "edelstahl", "kristall", "glitter", "satin", "rattan",
              "monster", "robot", "roboter", "astronaut", "safari", "comic", "emoji", "boho", "vintage", "retro"}
 
@@ -627,8 +630,10 @@ def uebersetze_ki(titel, dims, frage=None, pruefer=None):
     out, offen = [None] * len(dims), []
     for i, d in enumerate(dims):
         r = ledger.get(json.dumps(d, ensure_ascii=False))
-        if r:
-            out[i] = (r["name"], r["werte"]) if r.get("ok") else None
+        # Abgelehnte Einträge zählen nur, wenn der ZWEITPRÜFER sie verworfen hat — eine harte Prüfregel kann sich ändern
+        # (08.10. 20:50: «Standard»/«Version» galten als englisch), dann wird neu gefragt.
+        if r and (r.get("ok") or "Zweitprüfer" in (r.get("grund") or "")):
+            out[i] = normalisiere_ki(r["name"], r["werte"]) if r.get("ok") else None
         else:
             offen.append(i)
     if not offen:

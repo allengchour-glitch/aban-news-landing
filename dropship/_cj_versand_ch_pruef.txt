@@ -5939,3 +5939,5 @@ gps-locator-mit-90-tage-batterie-mini-design-u-21579f	196EFE95-A9A9-47F9-93DB-88
 mini-gps-tracker-fur-outdoor-auto-b7cf0e	1A5E8AD7-6B62-4440-BB42-671321C4826E	7	6.66	ok	landeseite
 intelligenter-auto-duftverteiler-632200	2606231133301632900	3	7.93	ok	landeseite
 natur-agarholz-anhanger-080962	2039690333410578434	16	8.53	ok	landeseite
+premium-sojawachskerze-mit-rotwein-leder-espre-287874	2038148367961477122	0	-	KEINE CH-Option → DRAFT	landeseite
+zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite

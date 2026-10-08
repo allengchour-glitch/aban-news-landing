@@ -449,14 +449,29 @@ gefixt = 0
 # Variante kennt — dann ist das Versprechen falsch. Führt CJ mehrere, rüstet auswahl_nachruesten.py die Auswahl nach; ein vorher
 # gestrichener Satz hätte der Kundin die Information genommen, ohne ihr die Wahl zu geben. Ungemessen = nur melden.
 _CJ_EINS = set()
+_HANDLE_ID = {}
 try:
     for _z in open('dropship/_auswahl_fehlt.jsonl', encoding='utf-8'):
         _d = json.loads(_z)
-        if (_d.get('cj') or 0) <= 1:
+        _HANDLE_ID[_d.get('handle')] = _d['id'].split('/')[-1]
+        # 08.10.2026 20:40: «cj» None = CJ NICHT erreicht (keine Aussage) — vorher zählte das als «≤ 1 Variante» und der
+        # Text wäre gestrichen worden, obwohl CJ vielleicht zehn Farben führt.
+        if _d.get('cj') is not None and _d['cj'] <= 1:
             _CJ_EINS.add(_d['id'].split('/')[-1])
         else:
             _CJ_EINS.discard(_d['id'].split('/')[-1])
 except Exception:
+    pass
+# 08.10.2026 (Betreiber «ja fix das alles sehr sauber ganze katalog»): Wo CJ zwar mehrere Varianten führt, der Umbau aber
+# dauerhaft MANUELL bleibt (dropship/_auswahl_manuell.tsv, Grund nicht vorübergehend, seit ≥ 3 Tagen), verspricht der Text
+# eine Wahl, die im Shop nicht geht → Text ebenfalls ehrlich machen. Drei Tage Frist, damit ein besserer Umbau zuerst kommt.
+try:
+    _grenze = time.strftime('%Y-%m-%d', time.gmtime(time.time() - 3 * 86400))
+    for _z in open('dropship/_auswahl_manuell.tsv', encoding='utf-8'):
+        _t = _z.rstrip('\n').split('\t')
+        if len(_t) >= 2 and _t[1] <= _grenze and _HANDLE_ID.get(_t[0]):
+            _CJ_EINS.add(_HANDLE_ID[_t[0]])
+except FileNotFoundError:
     pass
 if FIX and treffer:
     with open(LEDGER, 'a') as led:
