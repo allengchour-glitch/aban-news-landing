@@ -6105,3 +6105,9 @@ western-ankle-boots-mit-fransen-613000	2604230149401613500	16	11.82	ok	landeseit
 mesh-sandalen-stiefeletten-mit-chunky-heel-614300	2604220801361614900	16	13.76	ok	landeseite
 martin-boots-mit-nieten-und-klobigem-absatz-610800	2604220217371611600	16	18.83	ok	landeseite
 denim-stiefeletten-mit-eckiger-spitze-630600	2604201006341631600	16	14.48	ok	landeseite
+martin-boots-aus-leder-mit-schnurung-632000	2604200936551632600	16	22.34	ok	landeseite
+overknee-peep-toe-stiletto-stiefel-aus-denim-752705	2046053691993776130	16	11.23	ok	landeseite
+chunky-mid-calf-boots-mit-plateau-604000	2604190850271604600	16	23.38	ok	landeseite
+warme-mid-calf-winterstiefel-fur-damen-627700	2604180406161628300	16	13.52	ok	landeseite
+plateau-all-match-stiefeletten-625100	2604171228571625700	16	11.37	ok	landeseite
+weinrote-sandalen-mit-kreuzriemen-635400	2607070812441636100	16	12.56	ok	landeseite
