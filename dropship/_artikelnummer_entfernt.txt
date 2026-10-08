@@ -18,3 +18,5 @@ gid://shopify/Product/15524873240961	FOCALLURE Dreiecks-Augenbrauenstift
 gid://shopify/Product/15525462835585	Windmühlen-Spieluhr aus Klemmbausteinen
 gid://shopify/Product/16606112678279	Babytrage mit Hüftsitz
 gid://shopify/Product/16606123655559	Aluminium-Reifenreparatur-Werkzeug
+gid://shopify/Product/16608567263623	Sushi-Rohrform zum Formen von Sushi
+gid://shopify/Product/16611762405767	Stahlsatz mit Sternmuster, 6-teilig
