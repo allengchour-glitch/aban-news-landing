@@ -36,6 +36,13 @@ def paare():
         t = l.rstrip("\n").split("\t")
         if len(t) >= 4 and t[3].startswith("→ "):
             out[t[0]] = (nz(t[2]), nz(t[3][2:]))
+    # 08.10.: material_widerspruch.py (Leder → Kunstleder, Wolle → Acryl …) korrigiert Titel — Ledger id, alt, neu, datum
+    m = os.path.join(REPO, "dropship/_material_widerspruch.tsv")
+    if os.path.exists(m):
+        for l in open(m, encoding="utf-8"):
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 3 and t[0].startswith("gid://") and t[1] != t[2]:
+                out[t[0]] = (nz(t[1]), nz(t[2]))
     j = os.path.join(REPO, "dropship/_titel_nachbesserung_2026-10-05.json")
     if os.path.exists(j):
         for e in json.load(open(j, encoding="utf-8")):

@@ -44,6 +44,32 @@
 
 
 
+## 2026-10-08 21:40 UTC · 💎 «weiter sauber machen»: Material, Diamanten, Bild-Alt-Texte mit altem Titel
+
+**Material:** 41 Titel versprachen Leder/Wolle/Seide/Holz, der eigene Text sagte PU/Acryl/Polyester → `material_widerspruch.py`
+(Leder automatisch, Rest handgeprüft per Regeldatei, 22 Kanarien) 41/0, täglich.
+**Diamanten:** 622 aktive nennen «Diamant», teuerstes CHF 150.90 (Moissanit) → Abschnitt `diamant` in
+`data/versprechen_regel.json` (55 Kanarien, py=js 616/616): nur Verzierung → «Strasssteine»/«Zirkonia», mit Dativ und
+Einzahl; Vergleiche, Formen, Verneinungen, Techniknamen, Diamond Painting, Werkzeug, Tester und Karat/VVS/Labor bleiben.
+**212/0** (112 Titel, 180 Texte, 108 SEO), live geprüft.
+**Bild-Alts:** Live-Check zeigte H1 «Strasssteinen», Bilder «Diamanten» → GEMESSEN 11'730 Alts an 1'604 Produkten mit
+altem Titel, darunter entfernte Messversprechen («& Blutdruckmessung», «zur Blutzuckermessung»). Versprechen-Wächter liest
+jetzt Alts (817/0), `alt_nach_titel.py` + Material-Ledger (617/0), neu `alt_titel_abgleich.py` (Alt-Titel := Titel, live,
+täglich).
+
+**Lehren:**
+1. **Ein Name steht an sechs Stellen** (Titel, Text, SEO-Titel, SEO-Beschreibung, Handle, Bild-Alts). Ein Wächter, der nur
+   einen Teil liest, lässt die Behauptung woanders stehen — die Bilder hatten das Messversprechen noch Wochen später.
+2. **Ist-Abgleich statt Ledger-Kette:** `alt_nach_titel.py` kannte zwei Ledger, Titel ändern mindestens sechs Werkzeuge.
+   Wer gegen den Ist-Zustand vergleicht («Alt-Titel = Titel?»), braucht keine Liste der Verursacher.
+3. **Ein Wort ersetzen braucht Grammatik und Ausnahmen:** «Diamanten» ist Plural UND schwache Einzahl, Nominativ UND Dativ,
+   und in «Diamant-Design», «Diamond Painting», «Diamant-Tester», «keine Diamanten» kein Versprechen. Erst die 600 Treffer
+   nach Paaren (Wort davor + Form) zählen, dann die Regel; jeder Fund aus der Durchsicht wird ein Kanarienvogel.
+4. **`| head` tötet den Schreiber:** ein Diff-Skript mit `| head -3` starb an SIGPIPE vor `json.dump` — die Auswertung las
+   danach die ALTE Datei. Ausgaben, die man weiterverarbeitet, nie über eine abgeschnittene Pipe erzeugen.
+
+→ `dropship/SAUBER-MATERIAL-DIAMANT-ALT-2026-10-08.md`
+
 ## 2026-10-08 21:00 UTC · 🚚 «verbessere alles und sauber»: Versprechen ohne Beleg + Büro-Sammelkorb
 
 **Messung zuerst an der Seite mit Kaufwillen ohne Kauf** (Leinen-Set, 41 Sitzungen / 2 Warenkörbe / 0 Käufe): Google-
@@ -19066,3 +19092,5 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🪣 **Verbesserungsrunde: 8 Werkzeuge (u. a. preis_senken) lasen Bulk-Status/URL über `currentBulkOperation` (= fremder Export möglich), 2 brachen fremde Exporte per bulkOperationCancel ab → eigene ID `node(id:)`, kein Abbruch; Gehirn-Regel erkennt jetzt `(type:…)` (erste Fassung sah 5/8), 0 NEU.** Neue Regel gegen alle Schreibweisen kalibrieren → `dropship/FREMDER-BULK-2026-10-07.md`
 - 2026-10-07 · 🔪 **Verbesserungsrunde: Keramikmesser-Set «…und Schäler» + Boningmesser «ohne Schutzhülle» ACTIVE (Ausnahmewort hinten kippte das Urteil) → Kopfwort-Regel py+mjs (70/70, Voll-Export 2/0); Klingen-Wache meldete «0», weil `currentBulkOperation` einen FREMDEN Export lieferte (47k statt 81k) → eigene Bulk-ID + Vollständigkeit, Gehirn-Regel `fremder-bulk`.** «0 Befunde» nur mit geprüfter Grundgesamtheit → `dropship/KLINGEN-KOPFWORT-2026-10-07.md`
 - 2026-10-07 · 📦 **CJ-Lager Fensterlauf: nur 840/4'000 (Lauf starb am Neustart, 55-min-Anspruch sperrte) → 10 min nach Tod/im Fenster; 8 ACTIVE voll kaufbar trotz CJ 1602002 «removed from shelves» → `cj_entfernt()` sperrt (131 Varianten, umkehrbar); Stichprobe 12/12 korrekt gesperrt.** «unklar» mit eindeutigem Code = eigene Regel → Journal 07.10. 01:55
+- 2026-10-07 · 📘 **«fb zu wenig follower»: 7 Follower, Reels 659 Aufrufe/0 Follows — FB bekam IG-Caption mit «Link in Bio» ohne Folge-Aufforderung → `lib/fb_text.mjs` (klickbarer Link + Folge-Zeile) für Reel/Bild/Karussell, IG+FB getrennt geplant; Gemini `blockReason` liess EIN Reel vorne liegen → 0 Reels 12:21–17:39 → `GeminiSperre` → Zweitprüfer/Exit 4.** Deterministisches «kein Urteil» muss die Warteschlange freigeben → `dropship/FB-FOLLOWER-2026-10-07.md`
+- 2026-10-07 · 🌫️ **Verbesserungsrunde: 154 Diffuser/Luftbefeuchter bei Google «Hair Care», im Shop «Cosmetic Tools» (Typ 05.10. korrigiert, Geschwisterfelder nie) → `aroma_kategorie.py` 154/0, Kanarien 12/12; `kategorie_wache.typen_abgleich()` meldet jeden vergebenen unbekannten Typ.** Feld neu vergeben = alle ableitenden Tabellen abgleichen → `dropship/AROMA-KATEGORIE-2026-10-07.md`

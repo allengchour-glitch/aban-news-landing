@@ -1321,6 +1321,9 @@ while true; do
       echo "$(date -u +%H:%M) VERSPRECHEN: $(grep -E '^FERTIG|Kanarien rot|Bulk' "$VSW" | tail -1)"
       # 08.10.2026: Titel verspricht Leder, Materialangabe sagt PU (38 gemessen) — liest denselben Export, Leder automatisch, Rest gemeldet
       [ -f "$REPO/automation/material_widerspruch.py" ] && ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/material_widerspruch.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
+      # 08.10.2026 abends: Bild-Alts trugen alte Titel (11'730 an 1'604 Produkten, darunter «& Blutdruckmessung», «Diamanten»)
+      # — egal welches Werkzeug den Titel änderte. Kandidaten aus demselben Export, live entschieden, Rücklesen.
+      [ -f "$REPO/automation/alt_titel_abgleich.py" ] && ( cd "$REPO" && SCHARF=1 timeout 2400 python3 automation/alt_titel_abgleich.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:

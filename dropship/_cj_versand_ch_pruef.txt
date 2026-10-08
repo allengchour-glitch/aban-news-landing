@@ -6038,3 +6038,5 @@ perforierter-gripp-steuerungshulle-636700	2604270751271637600	16	9.47	ok	landese
 universal-lenkradbezug-636200	2604260740511636700	16	7.85	ok	landeseite
 universal-echtleder-lenkradbezug-631400	2604260628111632000	16	11.00	ok	landeseite
 universal-antibakterieller-lenkradbezug-610300	2604240947201610900	16	11.60	ok	landeseite
+ultra-dunn-lenkradschutz-fur-toyota-es300h-nx2-629200	2604240907501629700	16	11.60	ok	landeseite
+ultraflacher-lenkradbezug-aus-echtleder-608600	2604230438481609000	16	11.60	ok	landeseite

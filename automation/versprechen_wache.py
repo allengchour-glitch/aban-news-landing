@@ -14,7 +14,8 @@ bleiben nur bei Ware mit Schweizer Lager stehen (Tag `ch-lager`, Fortura) — f�
 wahre, neutrale Aussage «Lieferung in die ganze Schweiz».
 
 REGEL: automation/data/versprechen_regel.json — EINE Datei, auch für die Importer (cj_copy_prompt.mjs versprechenSicher).
-Schreibt Titel, Beschreibung und SEO-Titel/-Beschreibung (immer BEIDE SEO-Felder, Lehre 30.09.), liest zurück.
+Schreibt Titel, Beschreibung, SEO-Titel/-Beschreibung (immer BEIDE SEO-Felder, Lehre 30.09.) und Bild-Alt-Texte (seit
+08.10. abends: nach dem Diamant-Lauf trugen die Bilder noch «… mit Diamanten – Bild 2», live gesehen), liest zurück.
 Handles bleiben (Umbenennen braucht 301) — sie stehen im Bericht.
 DRY=1 zeigt nur. CACHE_NUTZEN=1 nimmt den letzten Export. --selbsttest prüft die Kanarien.
 """
@@ -29,7 +30,10 @@ CACHE = "/tmp/versprechen_export.jsonl"
 LEDGER = os.path.join(REPO, "dropship", "_versprechen_wache.tsv")
 BERICHT = os.path.join(REPO, "dropship", "VERSPRECHEN-WACHE.md")
 BULK = ('{ products(query: "status:active") { edges { node { id handle title tags descriptionHtml seo { title description } '
-        'variants(first: 1) { edges { node { sku } } } } } } }')
+        'variants(first: 1) { edges { node { sku } } } media(first: 40) { edges { node { id alt } } } } } } }')
+ALT_LEDGER = os.path.join(REPO, "dropship", "_versprechen_alt.tsv")
+M_ALT = ('mutation($id:ID!,$m:[UpdateMediaInput!]!){productUpdateMedia(productId:$id,media:$m){media{id alt} '
+         'mediaUserErrors{message}}}')
 
 
 def _regeln(name, flags=re.I):
@@ -166,16 +170,34 @@ def export():
 
 
 def produkte():
-    alle, sku = {}, {}
+    alle, sku, medien = {}, {}, {}
     for z in open(CACHE, encoding="utf-8"):
         o = json.loads(z)
         if "__parentId" in o:
-            sku.setdefault(o["__parentId"], o.get("sku") or "")
+            if "/ProductVariant/" in o.get("id", ""):
+                sku.setdefault(o["__parentId"], o.get("sku") or "")
+            elif "alt" in o:
+                medien.setdefault(o["__parentId"], []).append(o)
         elif "handle" in o:
             alle[o["id"]] = o
     for pid, p in alle.items():
         p["_sku"] = sku.get(pid, "")
+        p["_medien"] = medien.get(pid, [])
         yield p
+
+
+def alts_schreiben(p, aend):
+    """Bild-Alt-Texte (Schema «<Titel> – Bild N | LuxeStyle») — dieselbe Regel wie der Titel; Rücklesen auf Gleichheit."""
+    r = gql(M_ALT, {"id": p["id"], "m": [{"id": i, "alt": n} for i, _, n in aend]})["productUpdateMedia"]
+    live = {x["id"]: x["alt"] for x in (r.get("media") or [])}
+    ok = 0
+    with open(ALT_LEDGER, "a", encoding="utf-8") as f:
+        for i, a, n in aend:
+            gut = not r.get("mediaUserErrors") and live.get(i) == n
+            ok += gut
+            f.write("\t".join([time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), p["id"], i, (a or "").replace("\t", " "), n,
+                                "ok" if gut else f"FEHLER {str(r.get('mediaUserErrors'))[:60]}"]) + "\n")
+    return ok, len(aend) - ok
 
 
 def main():
@@ -205,6 +227,22 @@ def main():
         sd_neu = sd if not sd else diamant(sd if lager else seo(sd), ctx)
         if (st_neu, sd_neu) != (st, sd):
             neu["seo"] = {"title": st_neu, "description": sd_neu}
+        alt_aend = []
+        for m in p.get("_medien") or []:
+            a = m.get("alt") or ""
+            if a:
+                a_neu = diamant(a if lager else titel(a), ctx)
+                if a_neu != a and a_neu:
+                    alt_aend.append((m["id"], a, a_neu))
+        if alt_aend:
+            zaehl["alt"] = zaehl.get("alt", 0) + len(alt_aend)
+            if DRY:
+                print(f"  {p['handle'][:55]:55} {len(alt_aend)} Alt-Texte", flush=True)
+            else:
+                a_ok, a_fehl = alts_schreiben(p, alt_aend)
+                fehl += a_fehl
+                if a_fehl:
+                    print(f"    ⛔ Alt-Texte {p['handle']}: {a_fehl} Fehler", flush=True)
         if re.search(r"[Dd]iamant", ctx) and re.search(r"vvs|karat|\bct\b|lab[- ]?grown|labor", ctx, re.I) \
                 and not re.search(r"moissanit", ctx, re.I):
             echt.append((p["handle"], p["title"]))
