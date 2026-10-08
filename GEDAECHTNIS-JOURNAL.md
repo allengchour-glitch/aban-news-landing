@@ -44,6 +44,25 @@
 
 
 
+## 2026-10-08 12:15 UTC · ⚡ «mehr verbesserung» (Tag 11 vorgezogen): Startseite lud 150 Bilder beim Öffnen — ein Standard-Skript nahm das lazy weg
+
+**GEMESSEN:** Die Startseite (390 px, DPR 2, ohne Scrollen) lud 150 Bilddateien / 9'390 KB, übertragen insgesamt 10'817 KB; der
+erste Bildschirm zeigt 2 Bilder. Jede der 16 Karussell-Reihen lud sofort 8 Bilder, auch bei y = 8'790 px, jedes `width=832` für eine
+172-px-Karte. Im Server-HTML stand `loading="lazy"`, im Browser fehlte es beim ZWEITEN Bild jeder Karte: Horizon
+`assets/product-card.js` `#preloadNextPreviewImage()` nimmt es jeder Karte in einem Karussell beim connectedCallback weg, «damit beim
+Wischen nichts blitzt». Ohne lazy ist `sizes="auto, …"` ungültig → 832. Dazu kamen die Kollektions-Cover (`resource-image.liquid`), die bei grid/carousel
+immer eager geladen wurden, mobil mit 100vw; die Sektion rendert doppelt (grid + carousel_on_mobile).
+**GETAN:** `mobil_tempo_patch_2.py`: Das Zweitbild lädt erst nach dem Laden des Erstbildes, `sizes` = gemessene Kartenbreite (→ 352).
+Die Cover laden ab Sektion 3 lazy, mobil mit 50vw, mit Stufen 480/600. Vor dem Live-Schreiben ersetzte ich die Datei nur im Testbrowser
+(Playwright `route`): 150 → 54 Dateien. Live: **38 Dateien / 1'008 KB**, übertragen ~2'300 KB, Scroll-Test 0 leere von 85, Überbreite 0,
+CLS 0,03. Wächter `startseite_bildlast.mjs` + Patch idempotent täglich im Aufseher.
+**LEHRE:** (1) Server-HTML ≠ DOM: Ein Theme-Skript kann ein korrektes `lazy` nach dem Laden entfernen. Darum im Browser messen,
+WELCHE `<img>` geladen wurden, nicht nur die Attribute im Quelltext lesen. (2) Ein JS-Fix lässt sich vor dem Live-Schreiben im
+Testbrowser per `route` gegen die echte Seite prüfen, ohne dass der Shop sich ändert. (3) Bilder je URL zählen, nicht je `<img>`:
+Mobil-/Desktop-Galerie und doppelt gerenderte Sektionen tragen dieselbe Datei, und meine erste Zählung machte die Produktseite
+1'113 statt 285 KB schwer. (4) Shopify liefert Theme-JS verkleinert aus, die Kommentar-Marke fehlt dort. Live-Prüfung über ein Stück Code
+(`vorladen`) + `last-modified`. Bericht `dropship/MOBIL-TEMPO-2-2026-10-08.md`.
+
 ## 2026-10-08 10:30 UTC · 👟🧸 «verbessere feinkataloge» + «saubere trennung»: Schuhe, Spielzeug ≠ RC, Oberklassen mit Zweigwechsel
 
 **GEMESSEN:** Die grösste grobe Klasse war Shopify «Shoes» mit 5'646 Produkten. Google hat darunter kein Blatt, also kam
@@ -18917,3 +18936,5 @@ Verschoben am 04.10.2026:
 - 2026-10-06 · 👗 **«neue feinkategorien und filter»: Kollektionen gibt es schon (549); Filter nur per S&D-Klick, Werte per API → Standardfelder Kleider-/Rocklänge + Ärmellänge aktiviert (pin geht nicht), `kleider_merkmale.py` aus eindeutigen Titelwörtern, 484 gesetzt.** Werte füllen, Filter schaltet der Betreiber → Journal 06.10. 20:35
 - 2026-10-06 · 👶 **Verbesserungsrunde: 42 Kinderprodukte mit Alter im einzigen Farbwert («White-6 TO 9M») → `alter_im_farbwert.py` (Option «Grösse» + Variantenwerte, Kanarie «Pink-MS»), Aufseher täglich.** Eine Option, zwei Merkmale = teilen → `dropship/ALTER-IM-FARBWERT-2026-10-06.md`
 - 2026-10-06 · 📦 **«cj lagerstatus … alle produkten»: Bestand nur in cj_stock_guard (nie gestartet), Existenz-Wächter ohne CJ-Punkte → `cj_lager_abgleich.py` (product/query + `features=enable_inventory` — Doku falsch, ohne = None), 0 → «ausverkauft» (DENY, umkehrbar), Vorrang-Fenster CAP 2000; Filter Kategorie/Länge/Ärmel live geprüft.** → Journal 06.10. 21:00
+- 2026-10-06 · 🔒 **DENY sperrt nichts ohne tracked+Menge 0 (Lehre 08.09., Betreiber «schaue memory») — und 427'616 CJ-Varianten stehen ab Import auf DENY und sind kaufbar → `ausverkauft.py` (sperren/freigeben, Rücklesen availableForSale); cj_varianten_wache sperrte 177/179 wirkungslos; Grind 3 Runner, Lagerabgleich stündlich.** «gesperrt?» = availableForSale → Journal 06.10. 21:30
+- 2026-10-06 · 🖥️ **«hetzner verbessern»: Server-CJ-Runner ohne Text-KI = 3'903× skip(gemini), 0 angelegt, ~39k Punkte/Tag nach bezahlter Abfrage; /tmp 97 %, numpy/PIL fehlten → Keepalive lädt /etc/luxe/secrets.env, /tmp-Hygiene, apt, `KI_DA=0` → Grind+Such-Runner aus, Importer bricht VOR CJ ab.** Voraussetzung vor der bezahlten Abfrage prüfen → `dropship/HETZNER-AUTOMATION-2026-10-06.md`

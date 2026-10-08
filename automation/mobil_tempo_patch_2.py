@@ -4,7 +4,7 @@
 mobil_tempo_patch_2.py — Plan-Tag 11 «Tempo & Mobil», zweite Runde (08.10.2026, Betreiber «mehr verbesserung»).
 
 GEMESSEN VORHER (390 px, DPR 2, tools/browser.mjs, Startseite, OHNE zu scrollen, 08.10. 11:36 UTC):
-  10'817 KB übertragen, davon 9'658 KB Bilder — 171 von 398 <img> geladen, obwohl der erste Bildschirm 2 Bilder zeigt.
+  10'817 KB übertragen, davon 9'658 KB Bilder — 150 Bilddateien (in 171 von 398 <img>) geladen, obwohl der erste Bildschirm 2 Bilder zeigt.
   (05.10. nach Patch 1 waren es 3'014 KB.) Zwei Klassen:
 
   1. Karten-Vorladen (≈ 8 MB): Horizon `assets/product-card.js` #preloadNextPreviewImage() nimmt bei JEDER Karte in einem

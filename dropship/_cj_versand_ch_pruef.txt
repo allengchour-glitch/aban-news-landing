@@ -5702,3 +5702,8 @@ ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
 anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
 mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+kinder-laufschuhe-mit-mesh-613700	2502080147591613900	16	13.76	ok	landeseite
+leichte-rutschfeste-sneaker-606200	2502070620151606500	16	16.52	ok	landeseite
+drehbare-laufschuhe-602800	2411300200361603900	16	10.15	ok	landeseite
+leichte-mesh-sneaker-611000	2411070650151611300	16	9.61	ok	landeseite
+sticken-kit-625100	2509040727281625400	16	7.17	ok	landeseite

@@ -1,8 +1,8 @@
 // startseite_bildlast.mjs — Wächter «Bildlast beim Öffnen» (Plan-Tag 11, 08.10.2026, Betreiber «mehr verbesserung»).
 // Misst eine Seite in 390 px / DPR 2 OHNE zu scrollen: wie viele <img> geladen wurden und wie viele KB, je Sektion.
-// Anlass: 08.10. lud die Startseite beim Öffnen 171 Bilder / 10'759 KB, obwohl der erste Bildschirm 2 zeigt —
+// Anlass: 08.10. lud die Startseite beim Öffnen 150 Bilddateien / 9'390 KB, obwohl der erste Bildschirm 2 zeigt —
 // Horizon product-card.js nahm jedem Karussell-Zweitbild das lazy weg, resource-image setzte Cover immer eager.
-// Nach mobil_tempo_patch_2.py: 38 Bilder / 1'008 KB. Jede neue Reihe, App oder Theme-Aktualisierung, die wieder
+// Nach mobil_tempo_patch_2.py: 38 / 1'008 KB. Jede neue Reihe, App oder Theme-Aktualisierung, die wieder
 // Bilder unter dem Bildschirm sofort lädt, fällt hier auf (Grenze GRENZE_KB, GRENZE_N).
 // Aufruf: /opt/node22/bin/node automation/startseite_bildlast.mjs [url]  → eine Zeile «BILDLAST: …», Ledger dropship/_startseite_bildlast.tsv
 // ⚠️ Unsere IP kann eine ältere Cache-Kopie bekommen (CLAUDE.md 19.08.) — ein Ausreisser wird mit WebFetch/Admin-API gegengeprüft.
@@ -24,10 +24,11 @@ try {
   await p.waitForTimeout(4000);
   r = await p.evaluate(() => {
     const res = {}; for (const e of performance.getEntriesByType('resource')) res[e.name] = e.transferSize || 0;
-    const sek = {}; let n = 0, kb = 0, alle = 0;
+    const sek = {}; let n = 0, kb = 0, alle = 0; const gesehen = new Set();
     for (const im of document.images) {
       const cur = im.currentSrc || im.src; if (!cur) continue; alle++;
-      if (!(cur in res)) continue;
+      // 08.10.: dieselbe Datei steckt oft in 2-3 <img> (Mobil-/Desktop-Galerie, grid+carousel) — nur einmal zählen
+      if (!(cur in res) || gesehen.has(cur)) continue; gesehen.add(cur);
       const s = (im.closest('.shopify-section')?.id || '').replace(/^shopify-section-(template|sections)--\d+__/, '') || '(ohne)';
       const k = Math.round(res[cur] / 1024); n++; kb += k;
       sek[s] = sek[s] || { n: 0, kb: 0 }; sek[s].n++; sek[s].kb += k;

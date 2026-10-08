@@ -55,12 +55,12 @@ aus (Kommentare entfernt, Marke darum nicht sichtbar); die neue Funktion `vorlad
 | Bild-KB beim Öffnen | 9'390 | **1'008** |
 | Kartenbilder | 132 / 8'583 KB | **36 / 920 KB** |
 | Kollektions-Cover | 16 / 719 KB | **0** (laden beim Scrollen) |
-| übertragen gesamt (alle Ressourcen, `transferSize`) | 10'817 KB | **2'358 · 2'350 · 2'186 KB** (3 Läufe) |
+| übertragen gesamt (alle Ressourcen, `transferSize`) | 10'817 KB | **2'358 · 2'350 · 2'186 · 4'201 KB** (4 Läufe; der vierte fing nachladende lazy-Bilder im Vorlade-Abstand des Browsers ein) |
 | CLS · Überbreite | 0,04 · 0 | **0,03 · 0** (scrollWidth 390) |
 | ganze Seite durchgescrollt (16 Halte à 700 px) | 223 Bilder / 10'162 KB | **194 / 3'934 KB** |
 | sichtbare Bilder leer nach dem Scrollen (2,5 s je Halt) | 0 von 85 (Original-Skript) | **0 von 85** |
 
-**LCP** (Hero-Hintergrund, vorgeladen): vorher 3'520 ms (1 Lauf), nachher 4'264 · 2'160 · 2'316 ms. Über den Proxy hier stark
+**LCP** (Hero-Hintergrund, vorgeladen): vorher 3'520 ms (1 Lauf), nachher 4'264 · 2'160 · 2'316 · 2'408 ms. Über den Proxy hier stark
 schwankend, darum nur als Tendenz lesen: Das Hero-Bild konkurriert nicht mehr mit ~150 gleichzeitigen Bild-Downloads.
 
 Weitere Seiten (Wächter, 390 px, ohne Scrollen): `/collections/halloween` 9 von 81 Bildern / 242 KB, Produktseite

@@ -1598,7 +1598,7 @@ if [ "$ALTER" -gt 86400 ]; then
   ( cd "$REPO" && SCHARF=1 timeout 300 python3 automation/mobil_tempo_patch.py >> "$LOG" 2>&1 )
   echo "MOBIL-TEMPO: $(grep -c 'schon gepatcht' "$LOG" | tail -1) Patches geprüft · $(tail -1 "$LOG" | cut -c1-120)"
 fi
-# ── Bildlast beim Öffnen (08.10.2026, Plan-Tag 11): Startseite 390 px OHNE Scrollen. Vorher 171 Bilder / 10'759 KB
+# ── Bildlast beim Öffnen (08.10.2026, Plan-Tag 11): Startseite 390 px OHNE Scrollen. Vorher 150 Bilddateien / 9'390 KB
 #    (Horizon product-card.js nahm jedem Karussell-Zweitbild das lazy weg; Cover immer eager) → mobil_tempo_patch_2.py: 38 / 1'008 KB.
 #    Täglich: Patch idempotent halten (Theme-Update überschreibt assets/product-card.js) + messen (Grenze 60 Bilder / 3'000 KB → ⚠️).
 BLL=/tmp/startseite_bildlast.log
