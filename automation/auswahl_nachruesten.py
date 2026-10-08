@@ -9,7 +9,8 @@ Vorbild ist die Netzstecker-Klasse vom 21.09. (`cj_stecker_eu_varianten.py`): Au
 AUTOMATISCH NUR, WAS BELEGT IST (alles andere steht im Bericht als «MANUELL» mit Grund):
   * Das Produkt hat genau die Platzhalter-Option «Title / Default Title» und die SKU `CJ-<pid>` (sonst ist es schon
     umgebaut oder trägt eine echte Option — productOptionsCreate würde ein Kreuzprodukt anlegen).
-  * JEDES CJ-Variantenbild hängt schon als Medium am Produkt (Dateispeicher voll bis zum Grow-Plan); bei Farbe/Design
+  * JEDES CJ-Variantenbild hängt am Produkt — seit 08.10.2026 (Grow-Plan, Speicher frei) lädt der scharfe Lauf fehlende
+    Bilder aus CJ nach (HTTP-200-Prüfung, FAILED → Medien wieder weg, Produkt bleibt unverändert); bei Farbe/Design
     müssen die Bilder zudem VERSCHIEDEN sein — eine Design-Auswahl mit fünfmal demselben Bild ist keine.
   * Preisspreizung ≤ 2×; der Titel verspricht keine Menge, die CJ als Einzelvarianten führt («36 Farben … Set»,
     «3-teiliges Set», «10 pcs»).
@@ -42,6 +43,7 @@ SCHARF = os.environ.get("SCHARF") == "1"
 NUR = os.environ.get("NUR_HANDLE")
 CAP = int(os.environ.get("CAP", "40"))
 MAX_FEHLER = int(os.environ.get("MAX_FEHLER", "1"))
+BILDER_NACHLADEN = os.environ.get("BILDER_NACHLADEN", "1") == "1"   # 08.10.: Speicher frei seit Grow-Plan
 HEUTE = time.strftime("%Y-%m-%d")
 CACHE_DATEI = "/tmp/auswahl_cj_cache.json"
 try:
@@ -227,9 +229,19 @@ def plane(zeile):
         if n >= 2 and (n >= 0.8 * len(vs) or re.search(r"\b(Set|Kit)\b", p["title"], re.I)):
             return None, f"Titel verspricht «{m.group(0)}», CJ führt {len(vs)} Einzelvarianten → Titel prüfen (Mensch)"
     medien = {stamm(n["image"]["url"]): n["id"] for n in p["media"]["nodes"] if n.get("image")}
-    fehlt = [v.get("variantKey") for v in vs if not v.get("variantImage") or stamm(v["variantImage"]) not in medien]
-    if fehlt:
-        return None, f"{len(fehlt)} von {len(vs)} Variantenbildern nicht am Produkt (Speicher voll): {fehlt[:3]}"
+    ohne_bild = [v.get("variantKey") for v in vs if not v.get("variantImage")]
+    if ohne_bild:
+        return None, f"{len(ohne_bild)} von {len(vs)} CJ-Varianten ohne eigenes Bild: {ohne_bild[:3]}"
+    # 08.10.2026 (Betreiber «rot oder pink auswahl, checke das auch bei anderen produkten»): Seit dem Grow-Plan (01.10.) ist der
+    # Dateispeicher frei — fehlende Variantenbilder werden aus CJ nachgeladen statt das Produkt auf MANUELL zu legen. Im
+    # Trockenlauf nur gezählt; im scharfen Lauf erst die Prüfungen unten, dann hochladen (bilder_nachladen in schreibe()).
+    fehlt = {}
+    for v in vs:
+        k = stamm(v["variantImage"])
+        if k not in medien:
+            fehlt[k] = v["variantImage"]
+    if fehlt and not BILDER_NACHLADEN:
+        return None, f"{len(fehlt)} von {len(vs)} Variantenbildern nicht am Produkt (BILDER_NACHLADEN=0)"
     if max(preis(v) for v in vs) > 2 * cmin:
         return None, f"Preisspreizung > 2× ({cmin}–{max(preis(v) for v in vs)})"
     optname, ws = werte([v.get("variantKey") for v in vs])
@@ -244,12 +256,13 @@ def plane(zeile):
     for w, v in zip(ws, vs):
         faktor = 1.0 if preis(v) <= cmin * 1.15 else preis(v) / cmin
         vk = heute if faktor == 1.0 else max(heute, rund90(heute * faktor))
-        plan.append({"wert": w, "sku": v["variantSku"], "media": medien[stamm(v["variantImage"])], "preis": f"{vk:.2f}",
+        plan.append({"wert": w, "sku": v["variantSku"], "media": medien.get(stamm(v["variantImage"])), "bild": stamm(v["variantImage"]),
+                     "preis": f"{vk:.2f}",
                      "ek": f"{ek * preis(v) / cmin:.2f}" if ek else None,
                      "streich": f"{(rund90(streich * faktor) if faktor != 1.0 else streich):.2f}" if streich and streich > heute else None})
     if len({x["sku"] for x in plan}) != len(plan):
         return None, "CJ-SKUs nicht eindeutig"
-    return {"p": p, "var": var, "optname": optname, "plan": plan}, None
+    return {"p": p, "var": var, "optname": optname, "plan": plan, "nachladen": fehlt}, None
 
 
 def tag(pid, t):
@@ -302,6 +315,45 @@ def sperren(pl, grund):
         return f"{grund} — ⚠️ AUCH DAS SPERREN SCHEITERTE ({str(e)[:120]}) — SOFORT VON HAND PRÜFEN"
 
 
+
+def bilder_nachladen(pl):
+    """Fehlende CJ-Variantenbilder ans Produkt hängen (vor productOptionsCreate). Jede URL vorher auf HTTP 200 prüfen
+    (cj_variantenbild-Lehre: ein FAILED-Medium hängt sonst dauerhaft am Produkt). productCreateMedia gibt die IDs in der
+    Reihenfolge der Eingabe zurück; die Zuordnung zur Variante läuft über den Dateistamm. Gibt (ok, grund) zurück."""
+    import subprocess
+    fehlt = pl.get("nachladen") or {}
+    if not fehlt:
+        return True, ""
+    quellen = []
+    for k, url in fehlt.items():
+        code = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "-L", "--max-time", "30", url],
+                              capture_output=True, text=True).stdout.strip()
+        if code != "200":
+            return False, f"CJ-Variantenbild HTTP {code}: {url[:80]}"
+        quellen.append((k, url))
+    titel = pl["p"]["title"]
+    r = gql('mutation($p:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$p,media:$m){media{id status} mediaUserErrors{message}}}',
+            {"p": pl["p"]["id"], "m": [{"originalSource": u, "mediaContentType": "IMAGE", "alt": titel} for _, u in quellen]})
+    pcm = r["productCreateMedia"]
+    if pcm["mediaUserErrors"] or len(pcm["media"] or []) != len(quellen):
+        return False, f"Bild-Upload: {pcm['mediaUserErrors'] or 'Anzahl stimmt nicht'}"
+    ids = [m["id"] for m in pcm["media"]]
+    for _ in range(20):                          # bis keines mehr PROCESSING/UPLOADED ist oder 40 s
+        st = gql('query($i:[ID!]!){nodes(ids:$i){... on MediaImage{id status}}}', {"i": ids})["nodes"]
+        if any((n or {}).get("status") == "FAILED" for n in st):
+            gql('mutation($p:ID!,$m:[ID!]!){productDeleteMedia(productId:$p,mediaIds:$m){deletedMediaIds}}', {"p": pl["p"]["id"], "m": ids})
+            return False, "Bild-Upload FAILED (Medien wieder entfernt)"
+        if all((n or {}).get("status") == "READY" for n in st):
+            break
+        time.sleep(2)
+    neu = {k: i for (k, _), i in zip(quellen, ids)}
+    for x in pl["plan"]:
+        if not x.get("media"):
+            x["media"] = neu.get(x.get("bild"))
+    if any(not x.get("media") for x in pl["plan"] if x.get("bild")):
+        return False, "Bild-Zuordnung nach Upload unvollständig"
+    return True, f"{len(ids)} Bilder nachgeladen"
+
 def schreibe(pl):
     p, plan, optname, var = pl["p"], pl["plan"], pl["optname"], pl["var"]
     if optname is None:                       # Stecker: nur die EU-SKU setzen
@@ -315,6 +367,9 @@ def schreibe(pl):
         with open(LEDGER, "a") as fh:
             fh.write(f"{p['id'].split('/')[-1]}\tstecker-eu\t{HEUTE}\t{p['handle']}\n")
         return None
+    ok_b, grund_b = bilder_nachladen(pl)                 # 08.10.: fehlende Variantenbilder (vor jeder Optionsänderung)
+    if not ok_b:
+        return f"Bilder: {grund_b}"
     werte_soll = [x["wert"] for x in plan]
     try:
         r = gql('mutation($id:ID!,$o:[OptionCreateInput!]!){productOptionsCreate(productId:$id,options:$o,variantStrategy:CREATE){'
@@ -377,7 +432,7 @@ def schreibe(pl):
 def main():
     erledigt = {z.split("\t")[3].strip() for z in open(LEDGER) if z.count("\t") >= 3} if os.path.exists(LEDGER) else set()
     rows = [json.loads(z) for z in open(MESSUNG)] if os.path.exists(MESSUNG) else []
-    kand = [r for r in rows if r.get("cj", 0) > 1 and r["handle"] not in erledigt and (not NUR or r["handle"] == NUR)]
+    kand = [r for r in rows if (r.get("cj") or 0) > 1 and r["handle"] not in erledigt and (not NUR or r["handle"] == NUR)]
     print(f"{len(kand)} Kandidaten aus {MESSUNG}{' [SCHARF]' if SCHARF else ' [DRY]'}", flush=True)
     ok, manuell, fehler, pause, versuche = [], [], [], "", 0
     for r in kand:

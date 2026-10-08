@@ -21,7 +21,7 @@ from kollektionstexte_nachbessern import gql         # noqa: E402
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(REPO)
 AUS = "dropship/_auswahl_fehlt.jsonl"
-BERICHT = "dropship/AUSWAHL-FEHLT.md"
+BERICHT = os.environ.get("BERICHT", "dropship/AUSWAHL-FEHLT.md")
 QUERY = os.environ.get("QUERY", 'status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR '
                                  'title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)')
 LIMIT = int(os.environ.get("LIMIT", "400"))
@@ -35,7 +35,41 @@ def stamm(url):
     return (m.group(0) if m else n).lower()
 
 
+FELDER = ('id handle title variantsCount{count} mediaCount{count} variants(first:1){nodes{sku price}} '
+          'media(first:60){nodes{... on MediaImage{image{url}}}}')
+# 08.10.2026: LISTE=<Datei> (Zeilen «<Produkt-ID>\t<Titel>», z. B. die Klassenliste aus wahlversprechen) statt QUERY — die
+# Shopify-Suche kann «Text verspricht eine Auswahl» nicht ausdrücken, die Klassenliste schon.
+LISTE = os.environ.get("LISTE", "")
+CACHE_DATEI = "/tmp/auswahl_cj_cache.json"          # dieselbe Datei wie auswahl_nachruesten.py
+try:
+    CACHE = json.load(open(CACHE_DATEI))
+except Exception:
+    CACHE = {}
+
+
+def _cache_speichern():
+    try:
+        json.dump(CACHE, open(CACHE_DATEI + ".teil", "w")); os.replace(CACHE_DATEI + ".teil", CACHE_DATEI)
+    except Exception:
+        pass
+
+
+def _passt(n):
+    sku = (n["variants"]["nodes"] or [{}])[0].get("sku") or ""
+    return n["variantsCount"]["count"] == 1 and n["mediaCount"]["count"] >= MIN_BILDER and sku.upper().startswith("CJ-")
+
+
 def kandidaten():
+    if LISTE:
+        ids = [z.split("\t")[0].strip() for z in open(LISTE, encoding="utf-8") if z.strip() and not z.startswith("#")]
+        ids = [i if i.startswith("gid://") else "gid://shopify/Product/" + i for i in ids]
+        out = []
+        for k in range(0, len(ids), 50):
+            r = gql('query($i:[ID!]!){nodes(ids:$i){... on Product{status ' + FELDER + '}}}', {"i": ids[k:k + 50]})
+            out += [n for n in r["nodes"] if n and n.get("status") == "ACTIVE" and _passt(n)]
+            if len(out) >= LIMIT:
+                break
+        return out[:LIMIT]
     after, out = None, []
     while len(out) < LIMIT:
         r = gql('query($q:String!,$a:String){products(first:100,query:$q,after:$a){pageInfo{hasNextPage endCursor} '
@@ -70,6 +104,13 @@ def main():
             print(f"PAUSE: CJ antwortet nicht ({n['handle']})"); break
         data = d.get("data") if isinstance(d.get("data"), dict) else {}
         vs = data.get("variants") or []
+        if d.get("code") == 200 and data:
+            # 08.10.2026: schlanke Kopie für auswahl_nachruesten (gleiches Cache-Format, 3 Tage gültig) — sonst fragt das
+            # Nachrüsten CJ ein zweites Mal, und das Tagesbudget (16900500) war am 08.10. schon um 18:40 UTC leer.
+            CACHE[sku] = {"t": time.time(), "d": {"code": 200, "data": {"variants": [
+                {k: v.get(k) for k in ("vid", "variantSku", "variantKey", "variantImage", "variantSellPrice")} for v in vs]}}}
+            if len(CACHE) % 25 == 0:
+                _cache_speichern()
         if not vs:
             zeile = {"id": n["id"], "handle": n["handle"], "titel": n["title"], "cj": 0, "grund": d.get("message") or "keine Varianten"}
         else:
@@ -84,6 +125,7 @@ def main():
         fertig[n["id"]] = zeile
         if i % 25 == 0:
             print(f"{i}/{len(ks)} gemessen", flush=True)
+    _cache_speichern()
     bericht([fertig[k["id"]] for k in ks if k["id"] in fertig])
 
 

@@ -15,6 +15,11 @@ dort hat ein eindeutiges Warenwort ohne Werkzeugwort entschieden (Kanarien 65/65
     kein Typ → Produkt wird NICHT angefasst (nie raten).
   * Tags `werkzeug`, `heimwerken` weg.
   * Angefasst wird nur, wer HEUTE noch Typ «Werkzeug & Heimwerken»/«Werkzeug» trägt (idempotent, überschreibt keine spätere Hand).
+ZWEITE QUELLE (08.10.2026 abends, Betreiber «weiter»): die Einzelurteile (dropship/_kategorie_urteile*.tsv) zogen 2'662 Produkte
+in ihren richtigen Zweig — 158 davon standen danach weiter mit Tag `werkzeug` in «Werkzeug & Maschinen» (Transferpapier,
+Schuhpflege-Stift, Lautsprecher-Bausatz). Für sie gilt: Kategorie steht schon (nicht anfassen), Tags `werkzeug`/`heimwerken` weg,
+Typ nur, wenn er noch «Werkzeug & Heimwerken» ist und typ_fuer() einen Wert hat. Echte Werkzeuge bleiben: Titel mit einem Wort aus
+data/werkzeug_korb.json «werkzeugwort» (Uhrenöffner, Multitool, Rettungsschere) werden nicht angefasst.
 DRY (Standard) zeigt den Plan; SCHARF=1 schreibt (productUpdate + tagsRemove, Rücklesen aus der Antwort).
 Ledger dropship/_werkzeug_korb_shop.tsv (handle, alt_typ, alt_kat, neu_typ, neu_kat) — Rückweg: Spalten 2/3 zurückschreiben,
 Tags `werkzeug,heimwerken` wieder anhängen. Täglich im Aufseher direkt nach dem Google-Umzug.
@@ -31,6 +36,9 @@ from kaufwille_zeile import gql  # noqa: E402  (Eimer-Etikette eingebaut)
 import produkttyp_vereinheitlichen as ptv  # noqa: E402
 
 UMZUG = os.path.join(REPO, "dropship", "_google_kategorie_umzug.tsv")
+import glob, re  # noqa: E402
+URTEILE = sorted(glob.glob(os.path.join(REPO, "dropship", "_kategorie_urteile*.tsv")))
+WERKZEUGWORT = re.compile(json.load(open(os.path.join(HIER, "data", "werkzeug_korb.json"), encoding="utf-8"))["werkzeugwort"], re.I)
 LEDGER = os.path.join(REPO, "dropship", "_werkzeug_korb_shop.tsv")
 KARTE = os.path.join(HIER, "data", "google_zu_shopify_kategorie.json")
 SCHARF = os.environ.get("SCHARF") == "1"
@@ -65,6 +73,63 @@ def kandidaten():
     return out
 
 
+
+def kandidaten_urteile():
+    """Produkt-ID → Shopify-Kategorie aus den Urteils-Ledgern (letztes gesetztes Urteil gewinnt), nur ausserhalb Hardware."""
+    erledigt = {l.split("\t")[0] for l in open(LEDGER)} if os.path.exists(LEDGER) else set()
+    out = {}
+    for f in URTEILE:
+        for l in open(f, encoding="utf-8"):
+            t = l.rstrip("\n").split("\t")
+            if len(t) < 4 or t[1] != "gesetzt" or not t[0].startswith("gid://"):
+                continue
+            out[t[0]] = (t[2], t[3])
+    return {k: v for k, v in out.items() if k not in erledigt and not v[0].startswith("Hardware")
+            and not v[1].split("-")[0] in ("ha", "bi")}
+
+
+def zweite_quelle():
+    plan = kandidaten_urteile(); tun = []; schutz = ohne = gesperrt = 0
+    regeln = ptv.typ_regeln() if plan else []      # Kollektionen mit TYPE-Regel: ein Produkt darf durch den Typwechsel nicht herausfallen
+    ids = list(plan)
+    for i in range(0, len(ids), 100):
+        r = gql("query($i:[ID!]!){nodes(ids:$i){... on Product{id title productType tags status category{id}}}}", {"i": ids[i:i + 100]})
+        for p in r["nodes"]:
+            if not p or p["status"] != "ACTIVE" or not set(WZ_TAGS) & set(p["tags"]):
+                continue
+            kat = ((p.get("category") or {}).get("id") or "").replace(TC, "")
+            if kat.split("-")[0] in ("ha", "bi"):
+                continue                                   # inzwischen wieder Werkzeug
+            if WERKZEUGWORT.search(p["title"]):
+                schutz += 1; continue                      # echtes Werkzeug (Uhrenöffner, Multitool) bleibt im Regal
+            typ = typ_fuer(kat, p["title"]) if p["productType"] in WZ_TYPEN else p["productType"]
+            if not typ:
+                ohne += 1; continue                        # kein Typ ableitbar (Uhrmacher-Werkzeug, Pool-Teil) → nie raten, bleibt
+            if typ != p["productType"] and ptv.sperrgrund(p["productType"], typ, regeln, pid=p["id"]):
+                gesperrt += 1; continue
+            tun.append((p, typ, kat))
+    print(f"ZWEITE QUELLE (Urteile): {len(tun)} Produkte · {schutz} mit Werkzeugwort geschützt · {ohne} ohne ableitbaren Typ (bleiben) · {gesperrt} Kollektionssperre · "
+          f"Typ neu {sum(1 for p, t, _ in tun if t != p['productType'])}")
+    for p, t, k in tun[:int(os.environ.get("ZEIGEN", "30"))]:
+        print(f"   {p['title'][:50]:50s} {p['productType'][:22]:22s} → {t:22s} {k}")
+    if not SCHARF:
+        return 0, 0
+    ok = fehl = 0
+    with open(LEDGER, "a", encoding="utf-8") as f:
+        for p, typ, kat in tun:
+            r = gql('mutation($p:ProductUpdateInput!,$id:ID!,$t:[String!]!){'
+                    'u:productUpdate(product:$p){product{productType tags} userErrors{message}} '
+                    'r:tagsRemove(id:$id,tags:$t){userErrors{message}}}',
+                    {"p": {"id": p["id"], "productType": typ}, "id": p["id"], "t": WZ_TAGS})
+            u = (r.get("u") or {}); pr = u.get("product") or {}
+            fehler = (u.get("userErrors") or []) + ((r.get("r") or {}).get("userErrors") or [])
+            if not fehler and pr.get("productType") == typ:
+                ok += 1
+                f.write(f"{p['id']}\t{p['productType']}\t{kat}\t{typ}\t{kat}\n"); f.flush()
+            else:
+                fehl += 1; print(f"   ⚠️ {p['title'][:40]}: {fehler or pr}")
+    return ok, fehl
+
 def main():
     plan = kandidaten()
     ids = sorted({k for _, k in plan.values()})
@@ -92,6 +157,7 @@ def main():
         print(f"   {p['title'][:52]:52s} → {typ:22s} {kat}")
     for t in ohne_typ[:10]:
         print(f"   ohne Typ: {t[:60]}")
+    ok2, fehl2 = zweite_quelle()
     if not SCHARF:
         print("FERTIG (trocken)"); return 0
     ok = fehl = 0
@@ -110,7 +176,7 @@ def main():
             else:
                 fehl += 1
                 print(f"   ⚠️ {h}: {fehler or pr}")
-    print(f"FERTIG: {ok} nachgezogen, {fehl} Fehler")
+    print(f"FERTIG: {ok} nachgezogen, {fehl} Fehler · Urteile: {ok2} nachgezogen, {fehl2} Fehler")
     return 0
 
 
@@ -124,6 +190,9 @@ def selbsttest():
         (typ_fuer("hg-11-8", "Eierschneider aus Edelstahl") == "Küche & Bar", "Eierschneider → Küche & Bar"),
         (typ_fuer("hg-8-11", "Staubsauger-Adapter") == "Haushalt & Wohnen", "Staubsauger-Zubehör → Haushalt (Ergänzung)"),
         (typ_fuer("zz-9", "Unbekannt") is None, "unbekannter Zweig → kein Typ (nicht anfassen)"),
+        (bool(WERKZEUGWORT.search("Multifunktionswerkzeug aus Edelstahl")), "Multitool = Werkzeugwort (bleibt im Regal)"),
+        (not WERKZEUGWORT.search("Transferpapier A4 – dunkel und hell"), "Transferpapier ohne Werkzeugwort (Tag weg)"),
+        (not WERKZEUGWORT.search("Bluetooth Lautsprecher Bausatz zum Selberbauen"), "Lautsprecher-Bausatz ohne Werkzeugwort"),
     ]
     for ok, n in t:
         print(("✓ " if ok else "✗ ") + n)
