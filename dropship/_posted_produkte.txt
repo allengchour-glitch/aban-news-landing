@@ -175,3 +175,4 @@ slug:herren-pullover-langarm-strickpullover
 slug:jacquard-cashew-fransen-schal-fur-damen
 slug:kabelloser-mini-staubsauger-mit-geblase-616100
 name:kabelloserministaubsaugermitgebläse
+slug:overknee-stiefel-mit-stretch-und-klobigem-absa
