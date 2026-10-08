@@ -1,15 +1,15 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-08T03:10Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-08T04:06Z
 
-Aktive gescannt: 13 · ohne Kategorie: 13 · heute gesetzt: 13 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 33 · ohne Kategorie: 33 · heute gesetzt: 33 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- keramik-topf-fur-katzen-mit-blumenmuster-494336 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- weisses-wollpullover-fur-hunde-und-katzen-239296 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- runde-zehen-buckle-sandalen-291968 · Damenschuhe → Apparel & Accessories > Shoes
-- diy-teppichstickerei-100-60-cm-a1a9da · Basteln & DIY → Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts
-- keramik-futternapf-fur-katze-200-ml-dunkelgrun-655680 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- vier-jahreszeiten-pullover-fur-haustiere-471936 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- lace-up-high-heels-in-beige-447040 · Damenschuhe → Apparel & Accessories > Shoes
+- kuschelschmuck-katzen-und-hundesweater-in-lila-899840 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- malen-nach-zahlen-kreatives-entspannungs-set-fb7bb3 · Basteln & DIY → Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts
+- schicke-chunky-heel-pumps-in-beige-976320 · Damenschuhe → Apparel & Accessories > Shoes
 
