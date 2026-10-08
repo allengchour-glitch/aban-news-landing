@@ -126,6 +126,7 @@ tools/trading/daten/*_ohlc.json
 tools/trading/daten/*_hlc.json
 tools/trading/daten/ETH-USD.json
 tools/trading/daten/info_*.json
+tools/trading/daten/binance_1d/
 data/krypto-pilot.json
 data/eth-sammler.json
 data/ki-trader.json

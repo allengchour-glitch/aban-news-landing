@@ -32,6 +32,12 @@
   erreichbar, CORS *), Fallback api/stream.binance.com (Cloud 451). **Playwright durch den Agent-Proxy:** `args:
   --proxy-server=$HTTPS_PROXY --proxy-bypass-list=127.0.0.1;localhost --ignore-certificate-errors` (Playwrights `proxy`-Option
   schickte localhost an den Proxy → «plain-HTTP request»).
+- **„Top-Krypto traden, Gewinnern folgen" (2026-10-08) → VERLIERT, kein Bot gebaut:** `binance_daten.py` lädt ALLE 685
+  USDT-Paare inkl. 214 abgemeldeter (Status BREAK liefert weiter Klines — LUNA, FTT …) über `data-api.binance.vision`
+  (Symbole URL-kodieren: es gibt `币安人生USDT`). `gewinner_pruefung.py` (Regel vorab, Universum Top 20 nach 30-T-Volumen
+  point-in-time, Lücken > 5 T. = neuer Coin): G1 Top-3-Momentum **×0,02 seit 2018** (−67,6 %/J ab 2022), G2/G3 mit Filter
+  0,72/1,27, Top 20 gleich ×0,12, BTC halten ×9,02, BTC Trend 150 ×8,28 (−28 % Einbruch ab 2022). Zufallsprobe 44–72 %.
+  Tests `test_gewinner.py` 12 (Mutation 3/3). Daten-Cache `tools/trading/daten/binance_1d/` gitignored.
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
