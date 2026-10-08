@@ -13,7 +13,7 @@ async function sperren() {
 }
 // 24.09.2026 VORRANG (siehe cj_takt.py): solange cj_kosten_backfill arbeitet (frischt /tmp/cj_vorrang je Aufruf auf),
 // warten alle ausser Bestell-/Zahlungs-/Versandwaechtern; Datei > 120 s = Leiche; hoechstens VORRANG_MAX_S warten.
-const VORRANG_DATEI = '/tmp/cj_vorrang', VORRANG_SKRIPTE = ['cj_kosten_backfill', 'cj_video_backfill', 'auswahl_fehlt_messen'];   // 07.10.: Video-Nachtrag (siehe cj_takt.py)
+const VORRANG_DATEI = '/tmp/cj_vorrang', VORRANG_SKRIPTE = ['cj_kosten_backfill', 'cj_video_backfill', 'auswahl_fehlt_messen', 'auswahl_nachruesten'];   // 07.10.: Video-Nachtrag (siehe cj_takt.py)
 const IMMER_FREI = ['cj_fulfill', 'cj_order', 'cj_zahlung', 'versand_stillstand', 'bestell', 'cj_takt', 'cj_ausgelistet', 'cj_ersatz', 'besuchte_seiten'];
 const VORRANG_MAX_S = parseFloat(process.env.VORRANG_MAX_S || '5400');
 const ANTEIL = ['cj_video_reel_engine'];   // 28.09.: fester kleiner Anteil trotz Vorrang (siehe vorrangWarten)
