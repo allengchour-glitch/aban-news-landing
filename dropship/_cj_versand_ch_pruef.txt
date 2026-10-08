@@ -6031,3 +6031,5 @@ kunstleder-lenkradbezug-607800	2605050142051608700	16	12.21	ok	landeseite
 universeller-15-zoll-lenkradbezug-613300	2605030237581613900	16	15.40	ok	landeseite
 leder-lenkradbezug-608100	2605020510201608700	16	12.21	ok	landeseite
 sport-lederlenkradbezug-628100	2605020145351628600	16	15.87	ok	landeseite
+carbon-faser-lenkradgriffe-mit-leder-623500	2605010841281624000	16	16.16	ok	landeseite
+leder-lenkradbezug-rutschfest-627700	2604300229501628200	16	12.81	ok	landeseite

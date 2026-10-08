@@ -213,3 +213,5 @@
 15495126057345	Farbe:3+Grösse:4:12	2026-10-08	kreative-insekten-kletterwand-smart-steckdose-868608
 15495121895809	Farbe:2:2	2026-10-08	faltbare-3-in-1-wireless-ladestation-562048
 15495121699201	Grösse:4:4	2026-10-08	schneidebrett-aus-vollbambus-mit-karbongriff-622600
+15495120388481	Farbe:2:2	2026-10-08	induktionskochfeld-3500w-energiesparend-621000
+15495119536513	Farbe:3:3	2026-10-08	business-rucksack-mit-grosser-kapazitat-078208
