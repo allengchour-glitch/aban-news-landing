@@ -6626,3 +6626,4 @@ brogue-plateau-schuhe-aus-leder-mit-absatzerho-614700	2510180606441615500	16	15.
 plateau-sneaker-zum-schnuren-609600	2510090614011609800	16	12.93	ok	landeseite
 outdoor-sneaker-fur-damen-605800	2510070632331606100	16	11.96	ok	landeseite
 dopamine-plateau-schnurschuhe-aus-leder-605300	2509291108031605600	16	13.76	ok	landeseite
+vintage-schnurschuhe-mit-weicher-sohle-614300	2606260947011615101	16	11.37	ok	landeseite

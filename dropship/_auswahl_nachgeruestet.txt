@@ -644,3 +644,5 @@
 15453779034497	Menge:2:2	2026-10-09	magnetische-kuhlschrank-marker-631500
 15454089642369	Ausführung:8:8+ki	2026-10-09	mehrfarben-armbanduhr-620400
 15500485886337	Farbe:15:15	2026-10-09	10er-pack-verstellbare-pu-hundehalsbander-mit-001792
+15449178472833	Grösse:4:4	2026-10-09	weicher-halskragen-fur-katzen-welpen-214658
+15453743022465	Farbe:4+Grösse:5:20	2026-10-09	asymmetrisches-knopfkleid-mit-seitlichen-tasch-617700
