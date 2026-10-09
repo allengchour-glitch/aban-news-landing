@@ -567,3 +567,4 @@
 15493720473985	Farbe:2+Grösse:2:4	2026-10-09	gestreifter-kissenbezug-aus-kaninchenhaar-680512
 15493718409601	Modell:5+Grösse:2:10	2026-10-09	samtkissenbezug-mit-digitaldruck-133504
 15519735710081	Farbe:17+Grösse:4:48+ki	2026-10-09	doppelseitiger-seiden-kissenbezug-mit-reissver-1401d1
+15502590017921	Modell:9:9	2026-10-09	smarter-vorhangmotor-mit-fernbedienung-689088
