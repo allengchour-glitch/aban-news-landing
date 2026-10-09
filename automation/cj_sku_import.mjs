@@ -21,6 +21,7 @@ import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSic
 import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
+import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
 import { takt as cjTakt } from './cj_takt.mjs';  // 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
@@ -220,10 +221,15 @@ for (const item of ITEMS) {
   // standen 14 Schock-/Sprüh-Geräte aktiv in allen sechs Kanälen, zwölf davon in den sieben
   // Tagen davor neu importiert.
   const tsch = tierschutzGeraet(title, g.html);
+  // 🍬 09.10.2026: Essbares aus China (Ergänzungsfutter, Tier-Snacks aus Fleisch, Supplements, Koffein-Beutel) ist ohne
+  // Registrierung/BLV-Bewilligung nicht einführbar — dieselbe Klasse wie die zurückgeschickte Klinge #1017. Geprüft: Titel +
+  // CJ-Name (englisch), nie der Text. Regel automation/data/essbar_regel.json (Bestand: essbar_wache.py).
+  const ess = essbar(title, d.productNameEn || '', '', 'CJ-' + pid);
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : []),
       ...(tsch ? [tsch.tag || 'tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
-      ...((med || tsch) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
+      ...(ess ? ['essbar-nicht-ch', 'essbar-' + ess] : []),
+      ...((med || tsch || ess) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`),
       ...saisonTags(title, d.productNameEn || '')])];   // Halloween-Reihe (02.10.), nur Titel/EN-Name
@@ -232,7 +238,7 @@ for (const item of ITEMS) {
   const gkatImport = googleKategorie(title, tagsFinal, 'Trend-Produkt');
   const typImport = typAusKategorie(gkatImport, title) || 'Trend-Produkt';
   const input = { title, handle: slug, productType: typImport, vendor: 'LuxeStyle',
-    status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
+    status: (med || tsch || ess) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
     descriptionHtml: (g.html + '\n' + produktdetails(d, title) + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
     seo: { title: seoTitel(title),   // 05.10.: 70er-Grenze an der Wortgrenze, nie halbe Marke (seo_titel.mjs)
@@ -274,6 +280,8 @@ for (const item of ITEMS) {
   //     Status steht ohnehin schon oben auf DRAFT und die Tags stehen in tagsFinal; hier wird
   //     nichts mehr überschrieben.
   if (tsch) { console.log(`🐾 Tierschutz TSchV 76 (${tsch.grund}, «${tsch.muster}») → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
+            fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  if (ess) { console.log(`🍬 Essbares aus China (${ess}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
   // Regel seit 29.08.2026 EINMAL in klingenregel.json (vorher fuenf Kopien).

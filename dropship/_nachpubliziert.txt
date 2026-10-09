@@ -325,3 +325,9 @@ gid://shopify/Product/16611903177095	japanische-holzsandalen-mit-stoffoberteil-2
 gid://shopify/Product/16611903963527	wollpullover-fur-hund-herbst-winter-900672	Wollpullover für Hund – Herbst/Winter
 gid://shopify/Product/16611917726087	hundepullover-aus-acryl-mehrfarbig-851648	Hundepullover aus Acryl, mehrfarbig
 gid://shopify/Product/16612324344199	glock-holster-mit-infrarot-ziel-c1f827	Glock-Holster mit Infrarot-Ziel
+gid://shopify/Product/16612707795335	intelligenter-haustierfutterer-mit-kamera-610000	Intelligenter Haustierfütterer mit Kamera
+gid://shopify/Product/16612712317319	smart-wasserautomat-fur-hund-katze-8-l-605500	Smart-Wasserautomat für Hund & Katze 8 L
+gid://shopify/Product/16612712350087	beinrehabilitations-pedalbike-952000	Beinrehabilitations-Pedalbike
+gid://shopify/Product/16612717298055	grosser-canvas-kamerarucksack-mit-diebstahlsch-992576	Grosser Canvas Kamerarucksack mit Diebstahlschutz
+gid://shopify/Product/16612758552967	wasserdichte-schulter-umhangetasche-aus-pvc-667136	Wasserdichte Schulter-Umhängetasche aus PVC
+gid://shopify/Product/16612758585735	massage-roller-fur-rucken-yoga-pilates-085888	Massage-Roller für Rücken – Yoga & Pilates

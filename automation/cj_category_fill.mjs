@@ -22,6 +22,7 @@ import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
+import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
 import { heikelZweck } from './heikel_zweck.mjs';
 // ⚠️ 21.08.2026: Diese Zeile FEHLTE, während `echoVomLieferanten` an drei Stellen (708/710/714)
 // schon aufgerufen wurde. Folge: `ReferenceError: echoVomLieferanten is not defined` beim
@@ -805,6 +806,9 @@ for(const [cat,label] of grp.cats){
    // «Puls-proportionale Stimulation». Das Muster hängt deshalb an der WIRKMECHANIK.
    // Muster: automation/tierschutz_geraet.json (derselbe Text liest auch tierschutz_guard.py).
    const tsch=tierschutzGeraet(title, g.html);
+   // 🍬 09.10.2026: Essbares aus China (Ergänzungsfutter, Tier-Snacks, Supplements, Koffein-Beutel) — ohne Registrierung/
+   // BLV-Bewilligung nicht einführbar (Klasse Klinge #1017). Titel + CJ-Name, nie der Text. Regel data/essbar_regel.json.
+   const ess=essbar(title, d.productNameEn||p.productNameEn||'', '', 'CJ-'+p.pid);
    // 🕵️ VERDECKTE ÜBERWACHUNG UND WAFFEN (14.08.2026), derselbe Fehler eine Warengruppe
    // weiter. Der Säuberungslauf vom 12.08. nahm 88 Produkte aus dem Google-Kanal; zwei Tage
    // später standen 13 wieder drin, zwei davon frisch importiert. Google führt verdeckte
@@ -815,7 +819,7 @@ for(const [cat,label] of grp.cats){
    // der Produktbezeichnung des Verkäufers — «Abwehrstock» statt Teleskopschlagstock,
    // «lässt sich diskret platzieren» statt «versteckte Kamera»).
    const heik=heikelZweck(title, g.html);
-   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${tsch?' 🐾DRAFT('+tsch.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
+   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${tsch?' 🐾DRAFT('+tsch.grund+')':''}${ess?' 🍬DRAFT('+ess+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=slugStamm(title)+'-'+String(p.pid).slice(-6);
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    // ⚠️ 07.09.2026: Ohne `fash` legen wir EINE Variante «Standard» an — dann darf der Text
@@ -915,10 +919,11 @@ for(const [cat,label] of grp.cats){
      const tk=typAusKategorie(googleKategorie(title,tagsFinal,typeFinal),title); if(tk) typeFinal=tk;
    }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
-    status:(med||tsch)?'DRAFT':'ACTIVE',
+    status:(med||tsch||ess)?'DRAFT':'ACTIVE',
     tags:[...tagsFinal,
           ...(med?['medizinprodukt-pruefen','medizin-zweck-'+med.grund]:[]),
-          ...(tsch?[tsch.tag||'tierschutz-tschv76','tierschutz-'+tsch.grund]:[])],
+          ...(tsch?[tsch.tag||'tierschutz-tschv76','tierschutz-'+tsch.grund]:[]),
+          ...(ess?['essbar-nicht-ch','essbar-'+ess]:[])],
     descriptionHtml:html,
     seo:{title:seoTitel(title),   // 05.10.: 70er-Grenze (seo_titel.mjs)
      description:snippet(html,title).slice(0,320)},
@@ -1150,6 +1155,8 @@ for(const [cat,label] of grp.cats){
    // Ein nach TSchV Art. 76 unzulässiges Erziehungsgerät ebenso: in KEINEN Kanal, am wenigsten
    // in «Google & YouTube». Nicht löschen — als Entwurf nachvollziehbar und freischaltbar.
    if(tsch){ console.log(`  🐾 Tierschutz TSchV 76 (${tsch.grund}, «${tsch.muster}») → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
+            fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue; }
+   if(ess){ console.log(`  🍬 Essbares aus China (${ess}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue; }
    // Nach Schweizer Waffenrecht verbotene Ware (Art. 4 Abs. 1 Bst. c-e WG: Schmetterlings-
    // messer, Schlagstock/Tonfa/Nunchaku, Elektroschockgeraet) wird gar nicht erst aktiv
