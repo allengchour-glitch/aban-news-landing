@@ -6313,3 +6313,4 @@ leichte-mesh-sneaker-fur-herren-609400	2507250710221609600	16	14.18	ok	landeseit
 atmungsaktive-canvas-freizeitschuhe-621000	2507090704591621200	16	11.72	ok	landeseite
 trendige-canvas-sneakers-fur-herren-607400	2507080135471607700	16	13.52	ok	landeseite
 freizeit-sneaker-aus-canvas-606700	2505270246011607000	16	14.96	ok	landeseite
+atmungsaktive-herren-freizeitschuhe-aus-eissei-622900	2505261256301623200	16	13.16	ok	landeseite
