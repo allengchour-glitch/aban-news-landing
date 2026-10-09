@@ -91,6 +91,16 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .knoepfe button.primaer small{color:rgba(255,255,255,.8)}
 .knoepfe button:hover:not(:disabled){border-color:var(--ink-3)}
 .knoepfe button:disabled{opacity:.55;cursor:progress}
+.profit .gross{font-size:40px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
+.profit .gross small{font-size:18px;font-weight:700}
+.plus{color:var(--good)}.minus{color:var(--critical)}.null{color:var(--ink-2)}
+.perioden{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
+@media (max-width:860px){.perioden{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.perioden div{border:1px solid var(--line);border-radius:var(--r-s);padding:8px 10px}
+.perioden span{display:block;color:var(--ink-3);font-size:12px}
+.perioden b{font-size:18px;font-variant-numeric:tabular-nums}
+.teile{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--ink-2);font-size:13px;font-variant-numeric:tabular-nums}
+.balken svg{display:block;width:100%;height:auto}
 .risiko{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 12px}
 .stufen{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-s);overflow:hidden;flex-wrap:wrap}
 .stufen button{border:0;border-radius:0;padding:8px 12px;text-align:left;background:transparent;display:flex;flex-direction:column;gap:1px;min-width:150px}
@@ -117,6 +127,12 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
     <button id="notaus" class="stop" type="button">Not-Aus</button>
   </header>
   <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — die Bots handeln nicht.</div>
+
+  <section class="karte profit" aria-label="Profit" style="margin-bottom:12px">
+    <div class="steuerkopf" style="margin-bottom:4px"><h2 style="margin:0">💰 Profit</h2><span class="pill" id="p-modus">—</span>
+      <span class="unter" id="p-stand">lädt …</span></div>
+    <div id="p-inhalt"><p class="leer">Profit wird geladen …</p></div>
+  </section>
 
   <section class="raster" aria-label="Konto">
     <div class="karte kpi w3"><h2>Konto</h2><div class="zahl" id="k-wert">—</div><div class="unter" id="k-start"></div></div>
@@ -149,7 +165,10 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
       <button type="button" data-a="infos">🔄 Markt-Infos<small>Angst&amp;Gier, Funding, MVRV …</small></button>
       <button type="button" data-a="backtest">📊 Backtest<small>Regel seit 2019 rechnen</small></button>
       <button type="button" data-a="selbsttest">🧪 Selbsttest<small>alle Prüfungen laufen lassen</small></button>
+      <button type="button" data-a="aufgabe">🗓️ Täglich automatisch<small>Windows-Aufgabe 02:30 einrichten</small></button>
+      <button type="button" data-a="update">⬇️ Update holen<small>neueste Version laden (git pull)</small></button>
     </div>
+    <details style="margin-top:10px" id="g-box" open><summary><b>🩺 Gesundheit</b> <span id="g-kurz" class="unter"></span></summary><ul id="gesund" style="margin:8px 0 0;padding-left:0;list-style:none"></ul></details>
     <div class="konsole" id="konsole" aria-live="polite"><div class="ekopf">Bereit. Ausgaben der Knöpfe erscheinen hier.</div></div>
   </section>
 
@@ -258,6 +277,67 @@ function linie(host, reihen, opt = {}) {
 }
 
 const relPct = v => fmtPct(v - 1);
+
+// ───────── Profit ─────────
+const vz = x => x == null ? "—" : (x > 0 ? "+" : x < 0 ? "−" : "±") + fmtZahl(Math.abs(x), 2);
+const kl = x => x > 0 ? "plus" : x < 0 ? "minus" : "null";
+const pfeil = x => x > 0 ? "▲ " : x < 0 ? "▼ " : "";
+function balken(host, punkte) {
+  host.innerHTML = "";
+  if (!punkte || !punkte.length) { host.innerHTML = `<p class="leer">Noch keine Tage mit Gewinn oder Verlust.</p>`; return; }
+  const W = Math.max(280, host.clientWidth), H = 150, L = 58, R = 8, T = 8, B = 22;
+  const max = Math.max(...punkte.map(p => Math.abs(p[1])), 0.01);
+  const Y = v => T + (H - T - B) / 2 * (1 - v / max), bw = (W - L - R) / punkte.length;
+  let s = `<line x1="${L}" x2="${W - R}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--ink-3)" stroke-width="1"/>`;
+  for (const v of [max, -max]) s += `<text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="var(--ink-3)">${esc(vz(v))}</text>`;
+  punkte.forEach(([t, v], i) => {
+    const y = Math.min(Y(v), Y(0)), h = Math.max(1, Math.abs(Y(v) - Y(0)));
+    s += `<rect x="${(L + i * bw + 1).toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(1, bw - 2).toFixed(1)}" height="${h.toFixed(1)}" rx="2"
+      fill="var(--${v >= 0 ? "good" : "critical"})"><title>${esc(t)}: ${esc(vz(v))} USDT</title></rect>`;
+  });
+  s += `<text x="${L}" y="${H - 5}" font-size="11" fill="var(--ink-3)">${esc(punkte[0][0])}</text><text x="${W - R}" y="${H - 5}" font-size="11" fill="var(--ink-3)" text-anchor="end">${esc(punkte.at(-1)[0])}</text>`;
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gewinn oder Verlust pro Tag">${s}</svg>`;
+}
+let letzterProfit = null;
+function zeigeProfit(p) {
+  letzterProfit = p;
+  $("p-stand").textContent = "Stand " + new Date().toLocaleTimeString("de-CH") + " · alle 15 s";
+  if (!p || p.hinweis) {
+    $("p-modus").textContent = "—";
+    $("p-inhalt").innerHTML = `<p class="leer">${esc(p ? p.hinweis : "Cockpit-Server nicht erreichbar")}</p>`;
+    return;
+  }
+  $("p-modus").textContent = p.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
+  $("p-modus").className = "pill" + (p.modus === "ECHTGELD" ? " echt" : "");
+  const z = p.zeitraeume, g = z.gesamt;
+  const proz = x => x == null ? "" : ` (${fmtPct(x)})`;
+  const periode = (name, w) => `<div><span>${name}</span><b class="${kl(w.netto)}">${pfeil(w.netto)}${vz(w.netto)}</b><span>${proz(w.prozent).replace(/[()]/g, "") || "&nbsp;"}</span></div>`;
+  const pos = p.positionen.length ? `<div class="tabelle"><table><tr><th>Markt</th><th>Seite</th><th>Menge</th><th>Einstieg</th><th>Jetzt</th><th>Gewinn USDT</th><th>auf das Pfand</th><th>Liquidation</th></tr>${p.positionen.map(x => `
+      <tr><td>${esc(x.symbol)}</td><td class="${x.seite === "LONG" ? "plus" : "minus"}">${x.seite === "LONG" ? "▲" : "▼"} ${x.seite}</td><td>${fmtZahl(x.menge, 4)}</td>
+      <td>${fmtZahl(x.einstieg, 2)}</td><td>${fmtZahl(x.mark, 2)}</td><td class="${kl(x.gewinn)}"><b>${vz(x.gewinn)}</b></td>
+      <td class="${kl(x.gewinn)}">${x.gewinn_prozent == null ? "—" : fmtPct(x.gewinn_prozent)}</td><td>${x.liquidation ? fmtZahl(x.liquidation, 2) : "—"}</td></tr>`).join("")}</table></div>`
+    : `<p class="leer">Keine offene Position.</p>`;
+  const ki = letzterStand && letzterStand.ki && letzterStand.ki.vergleich && letzterStand.ki.vergleich.Claude;
+  const kiText = ki && ki.length > 1 ? ` · 🤖 Claude (Schattenkonto) ${fmtPct(ki.at(-1)[1] - 1)} seit ${esc(ki[0][0])}` : "";
+  $("p-inhalt").innerHTML = `
+    <div class="gross ${kl(g.netto)}">${pfeil(g.netto)}${vz(g.netto)} <small>USDT${proz(g.prozent)}</small></div>
+    <div class="unter">Gewinn seit ${esc(p.seit)} · Konto ${fmtZahl(p.gesamt, 2)} USDT · Ein- und Auszahlungen zählen nicht${kiText}</div>
+    <div class="perioden">${periode("Heute", z.heute)}${periode("7 Tage", z["7_tage"])}${periode("30 Tage", z["30_tage"])}${periode("Seit Start", g)}</div>
+    <div class="teile"><span>Realisiert <b class="${kl(g.realisiert)}">${vz(g.realisiert)}</b></span><span>Offen <b class="${kl(g.offen)}">${vz(g.offen)}</b></span>
+      <span>Funding <b class="${kl(g.funding)}">${vz(g.funding)}</b></span><span>Gebühren <b class="${kl(g.gebuehren)}">${vz(g.gebuehren)}</b></span>
+      ${Object.entries(p.pro_markt).map(([m, v]) => `<span>${esc(m)} <b class="${kl(v)}">${vz(v)}</b></span>`).join("")}</div>
+    <div class="raster" style="margin-top:12px">
+      <div class="w6"><h2>Gewinn kumuliert (abgeschlossen)</h2><div id="p-kurve" class="chart"></div></div>
+      <div class="w6"><h2>Gewinn pro Tag (letzte 60)</h2><div id="p-tage" class="balken"></div></div>
+    </div>
+    <h2 style="margin-top:12px">Offene Positionen</h2>${pos}`;
+  linie($("p-kurve"), [{name: "Gewinn", farbe: "--s-pilot", punkte: p.kumuliert}], {fmt: x => vz(x) + " USDT", achse: x => vz(x), kurz: true,
+    titel: "Gewinn kumuliert", leer: "Noch kein realisierter Gewinn oder Verlust."});
+  balken($("p-tage"), p.tage);
+}
+async function ladeProfit() {
+  try { zeigeProfit(await (await fetch("/api/profit", {cache: "no-store"})).json()); } catch (e) { zeigeProfit(null); }
+}
 let letzterStand = null;
 
 function zeichne(d) {
@@ -268,6 +348,11 @@ function zeichne(d) {
   $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";
+  const g = d.gesundheit || [];
+  const zeichen = ok => ok === true ? `<span class="plus">✓</span>` : ok === false ? `<span class="minus">✗</span>` : `<span class="null">○</span>`;
+  $("gesund").innerHTML = g.map(x => `<li style="padding:3px 0">${zeichen(x.ok)} <b>${esc(x.name)}</b> — <span class="unter">${esc(x.text)}</span></li>`).join("");
+  const probleme = g.filter(x => x.ok === false).length;
+  $("g-kurz").textContent = probleme ? `${probleme} Punkt${probleme > 1 ? "e" : ""} brauchen Aufmerksamkeit` : "alles in Ordnung";
   const ri = d.risiko || {stufe: 1, test: {}};
   document.querySelectorAll("#stufen button").forEach(b => {
     b.setAttribute("aria-pressed", String(+b.dataset.s === ri.stufe));
@@ -336,8 +421,13 @@ function zeichne(d) {
 
   const s = d.sammler;
   $("sammler").innerHTML = s ? `<dl><dt>Käufe</dt><dd>${s.kaeufe}</dd><dt>Eingesetzt</dt><dd>${fmtZahl(s.eingesetzt, 2)} USDT</dd>
-      <dt>Gesammelt</dt><dd>${fmtZahl(s.eth, 5)} ETH</dd><dt>Ø-Preis</dt><dd>${fmtZahl(s.schnitt, 2)}</dd><dt>Gestakt</dt><dd>${fmtZahl(s.gestakt, 4)} ETH</dd></dl>`
+      <dt>Gesammelt</dt><dd>${fmtZahl(s.eth, 5)} ETH</dd><dt>Ø-Preis</dt><dd>${fmtZahl(s.schnitt, 2)}</dd><dt>Gestakt</dt><dd>${fmtZahl(s.gestakt, 4)} ETH</dd>
+      <dt>Wert jetzt</dt><dd id="s-wert">…</dd></dl>`
     : `<p class="leer">Noch keine Käufe. Start: py tools\\trading\\krypto_bot\\eth_sammler.py --lauf --trocken</p>`;
+  if (s) fetch("https://data-api.binance.vision/api/v3/ticker/price?symbol=ETHUSDT").then(r => r.json()).then(t => {
+    const wert = s.eth * +t.price, g = wert - s.eingesetzt;
+    $("s-wert").innerHTML = `${fmtZahl(wert, 2)} USDT · <b class="${kl(g)}">${pfeil(g)}${vz(g)} (${fmtPct(g / s.eingesetzt)})</b>`;
+  }).catch(() => { $("s-wert").textContent = "Kurs nicht erreichbar"; });
 }
 
 async function laden() {
@@ -358,6 +448,8 @@ const FRAGE = {
   handeln: d => `Pilot jetzt handeln lassen?\nModus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz (Spielgeld)"}\nEr kauft oder verkauft nur, wenn die Position nicht im Zielbereich liegt.`,
   ki: () => "Claude jetzt fragen?\nKostet etwa 4–10 US-Cent. Pro Tag gibt es eine Einschätzung (ein zweiter Klick am selben Tag kostet nichts).",
   sparplan: d => "ETH-Sparplan jetzt ausführen?\nEr kauft nur, wenn der nächste Termin fällig ist.",
+  aufgabe: () => "Windows-Aufgabe einrichten?\nDann startet krypto-auto.bat jeden Tag um 02:30 (der PC muss laufen). Eine bestehende Aufgabe «Krypto-Pilot» wird ersetzt.",
+  update: () => "Neueste Version holen (git pull)?\nDanach das Cockpit neu starten.",
   auto_aus: () => "Auto-Handel ausschalten?\nDie Bots handeln dann nicht mehr. Offene Positionen bleiben stehen (Stop an der Börse bleibt).",
 };
 const uhr = z => new Date(z).toLocaleTimeString("de-CH");
@@ -402,6 +494,8 @@ $("stufen").addEventListener("click", e => {
 ladeProtokoll();
 addEventListener("resize", () => letzterStand && zeichne(letzterStand));
 laden(); setInterval(laden, 60000);
+ladeProfit(); setInterval(ladeProfit, 15000);
+addEventListener("resize", () => letzterProfit && zeigeProfit(letzterProfit));
 </script>
 </body>
 </html>

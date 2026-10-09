@@ -11,6 +11,7 @@ Ein höherer Hebel als heute (Deckel 2×) wird NUR erlaubt, wenn ALLES gilt:
   1) keine Liquidation in keinem Teilkonto, 2) schlimmster Einbruch nie tiefer als −50 %,
   3) Rendite ÷ Einbruch in jedem Abschnitt (2019–2021, 2022–heute) besser als mit 1×.
 Aufruf: python3 tools/trading/krypto_bot/hebel_pruefung.py   → Tabelle + data/krypto-hebel-pruefung.json
+        python3 tools/trading/krypto_bot/hebel_pruefung.py --minuten   → wie lange 2×–100× mit echten Minutenkursen überleben
 """
 from __future__ import annotations
 
@@ -88,5 +89,47 @@ def main():
     AUSGABE.write_text(json.dumps(erg, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
+def ueberleben(tage=30, versuche=3000, symbol="BTCUSDT"):
+    """Wie lange überlebt eine Hebel-Position? Echte Minutenkerzen der letzten `tage` Tage (Binance, öffentlich), zufälliger
+    Einstieg, Liquidation bei 1/Hebel − 0,4 % Wartungsmarge − 0,05 % Gebühr Gegenbewegung (Binance BTCUSDT, unterste Stufe)."""
+    import random
+    import statistics
+    import time
+    import urllib.request
+    ende = int(time.time() * 1000)
+    t, kerzen = ende - tage * 86400 * 1000, []
+    while t < ende:
+        url = f"https://data-api.binance.vision/api/v3/klines?symbol={symbol}&interval=1m&startTime={t}&limit=1000"
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "aban-krypto"}), timeout=30) as r:
+            k = json.load(r)
+        if not k:
+            break
+        kerzen += k
+        t = k[-1][0] + 60000
+    o, h, l = ([float(x[i]) for x in kerzen] for i in (1, 2, 3))
+    rnd, out = random.Random(1), {}
+    print(f"{symbol}, {len(kerzen)} Minuten ({tage} Tage), {versuche} zufällige Einstiege je Zeile:")
+    for hebel in (2, 5, 10, 20, 50, 100):
+        schwelle = 1 / hebel - 0.004 - 0.0005
+        for seite in ("long", "short"):
+            dauern = []
+            for _ in range(versuche):
+                i = rnd.randrange(0, len(o) - 1)
+                liq = o[i] * (1 - schwelle) if seite == "long" else o[i] * (1 + schwelle)
+                for j in range(i, len(o)):
+                    if (seite == "long" and l[j] <= liq) or (seite == "short" and h[j] >= liq):
+                        dauern.append(j - i)
+                        break
+            med = statistics.median(dauern) if dauern else None
+            out[f"{hebel}x_{seite}"] = {"schwelle": schwelle, "liquidiert": len(dauern) / versuche, "median_minuten": med}
+            print(f"  {hebel:>4}× {seite:5} liquidiert bei {schwelle * 100:5.2f} % Gegenbewegung · {len(dauern) / versuche * 100:5.1f} % liquidiert"
+                  + (f" · Median nach {med / 60:.1f} Std." if med is not None else ""))
+    print("  (Einstiege spät im Zeitraum haben weniger Zeit — die Anteile sind eher zu tief als zu hoch.)")
+    return out
+
+
 if __name__ == "__main__":
-    main()
+    if "--minuten" in sys.argv:
+        ueberleben()
+    else:
+        main()

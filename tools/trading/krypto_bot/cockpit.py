@@ -10,7 +10,7 @@ der Browser holt die Kurse direkt bei Binance (öffentliche Marktdaten, ohne Sch
 Es lauscht nur auf diesem PC (127.0.0.1), nicht im Netzwerk.
 
 Telegram-Steuerung (läuft mit, wenn TELEGRAM_BOT_TOKEN und TELEGRAM_CHAT_ID gesetzt sind). Befehle nur aus deinem Chat:
-  /status  Pilot heute · /konto  Wochenbericht · /ki  Claude-Einschätzung · /lage  Markt-Infos
+  /profit  Gewinn + offene Positionen · /status  Pilot heute · /konto  Wochenbericht · /ki  Claude-Einschätzung · /lage  Markt-Infos
   /stop    Not-Aus: Positionen schliessen, alle Bots stoppen · /weiter  Not-Aus aufheben · /hilfe
 """
 from __future__ import annotations
@@ -39,7 +39,7 @@ DATA = ROOT / "data"
 STOP = HIER.parent / "ki_bot" / "STOP"
 SEITE = HIER / "cockpit.html"
 MARKT = HIER / "markt.html"
-HILFE = ("Befehle: /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
+HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
 
@@ -90,6 +90,8 @@ AKTIONEN = {
     "infos": (["infos.py"], 600, "Markt-Infos aktualisieren"),
     "backtest": (["pilot.py", "--backtest"], 600, "Backtest rechnen"),
     "selbsttest": ([], 900, "Selbsttest"),
+    "aufgabe": ([], 60, "Täglich automatisch einrichten"),
+    "update": ([], 180, "Update holen"),
     "bericht": ([], 120, "Wochenbericht aufs Handy"),
     "auto_an": ([], 10, "Auto-Handel an"),
     "risiko_1": ([], 10, "Risiko-Stufe 1× (Standard)"),
@@ -97,7 +99,7 @@ AKTIONEN = {
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
-SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py"]
+SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py"]
 PROTOKOLL = deque(maxlen=40)
 _LAUFEND, _SPERRE = {}, threading.Lock()  # Name → Startzeit
 
@@ -113,7 +115,35 @@ def _skript(args, zeit):
         return False, f"Abgebrochen: länger als {zeit} Sekunden."
 
 
-def aktion(name, starter=None):
+AUFGABE = "Krypto-Pilot"
+
+
+def _befehl(cmd, zeit):
+    """Fester Befehl (Liste, keine Shell) mit gesammelter Ausgabe."""
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=zeit, cwd=str(ROOT))
+        return r.returncode == 0, (r.stdout + ("\n" + r.stderr if r.stderr.strip() else "")).strip() or "(keine Ausgabe)"
+    except FileNotFoundError as ex:
+        return False, f"Programm nicht gefunden: {ex.filename}"
+    except subprocess.TimeoutExpired:
+        return False, f"Abgebrochen: länger als {zeit} Sekunden."
+
+
+def aufgabe_befehl():
+    """Windows-Aufgabenplanung: täglich 02:30 (kurz nach Tagesschluss 00:00 UTC) krypto-auto.bat mit «auto» (ohne Pause)."""
+    bat = HIER / "krypto-auto.bat"
+    return ["schtasks", "/create", "/sc", "daily", "/st", "02:30", "/tn", AUFGABE, "/tr", f'"{bat}" auto', "/f"]
+
+
+def aufgabe_da(befehl=None):
+    """True/False auf Windows, None anderswo."""
+    if os.name != "nt" and befehl is None:
+        return None
+    ok, _ = (befehl or _befehl)(["schtasks", "/query", "/tn", AUFGABE], 20)
+    return ok
+
+
+def aktion(name, starter=None, befehl=None):
     """Führt eine Knopf-Aktion aus → Protokoll-Eintrag {zeit, aktion, titel, ok, text}. starter: für Tests."""
     if name not in AKTIONEN:
         raise KeyError(name)
@@ -149,6 +179,20 @@ def aktion(name, starter=None):
                 ok = ok and o
                 teile.append(f"{t}: {out.strip().splitlines()[-1] if out.strip() else 'keine Ausgabe'}")
             text = "\n".join(teile)
+        elif name == "aufgabe":
+            if os.name != "nt" and befehl is None:
+                ok, text = False, ("Die Aufgabenplanung gibt es nur unter Windows. Linux/Mac: crontab -e und eintragen:\n"
+                                   f"30 2 * * * cd {ROOT} && {sys.executable} tools/trading/krypto_bot/pilot.py --lauf")
+            else:
+                ok, text = (befehl or _befehl)(aufgabe_befehl(), zeit)
+                text = (f"✅ Eingerichtet: täglich 02:30 startet krypto-auto.bat (Aufgabe «{AUFGABE}»). Der PC muss dann laufen.\n" if ok
+                        else "❌ Einrichten fehlgeschlagen:\n") + text
+        elif name == "update":
+            ok, text = (befehl or _befehl)(["git", "pull", "--ff-only"], zeit)
+            if ok and "Already up to date" not in text and "Bereits aktuell" not in text:
+                text += "\n\n→ Neue Version geladen. Cockpit-Fenster schliessen und cockpit.bat neu starten, damit alles wirkt."
+            elif not ok:
+                text = "Update fehlgeschlagen (eigene Änderungen im Ordner? Internet? Anmeldung bei GitHub?):\n" + text
         elif name == "bericht":
             import pilot as PI
             import signale as SG
@@ -164,6 +208,25 @@ def aktion(name, starter=None):
     e = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "aktion": name, "titel": titel, "ok": ok, "text": text[-6000:]}
     PROTOKOLL.appendleft(e)
     return e
+
+
+# ───────────────────────── Profit (Binance-Konto, nur lesen) ─────────────────────────
+_PROFIT, _PROFIT_SPERRE = {"zeit": 0.0, "daten": None}, threading.Lock()
+
+
+def profit_stand(max_alter=8.0, abrufen=None):
+    """Profit vom Konto, höchstens alle max_alter Sekunden neu abgefragt (mehrere offene Fenster teilen sich den Abruf)."""
+    with _PROFIT_SPERRE:
+        if _PROFIT["daten"] is None or time.time() - _PROFIT["zeit"] > max_alter:
+            if abrufen is None:
+                import profit as PR
+                abrufen = PR.abrufen
+            try:
+                _PROFIT["daten"] = abrufen()
+            except Exception as ex:  # noqa: BLE001
+                _PROFIT["daten"] = {"hinweis": f"Profit nicht lesbar: {type(ex).__name__}"}
+            _PROFIT["zeit"] = time.time()
+        return _PROFIT["daten"]
 
 
 # ───────────────────────── Daten fürs Cockpit ─────────────────────────
@@ -258,12 +321,50 @@ def stand(env=None):
         usdt, eth = sum(k["usdt"] for k in kaeufe), sum(k["eth"] for k in kaeufe)
         sammler = {"kaeufe": len(kaeufe), "eingesetzt": round(usdt, 2), "eth": round(eth, 6), "schnitt": round(usdt / eth, 2) if eth else None,
                    "gestakt": round(sum(s["eth"] for s in buch.get("gestakt", [])), 4), "letzte": kaeufe[-8:]}
+    gesund = gesundheit(env, lb, ki)
     return {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": "ECHTGELD" if echt_futures else "TESTNETZ",
+            "gesundheit": gesund,
             "notaus": STOP.exists(), "maerkte": [maerkte[m] for m in PI.MAERKTE if m in maerkte], "konto": konto,
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
             "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID"))}
+
+
+_AUFGABE_CACHE = {"zeit": 0.0, "wert": None}
+
+
+def gesundheit(env, lb, ki, heute=None):
+    """Ampel-Liste: was läuft, was fehlt. Jeder Punkt: {name, ok (True/False/None = Info), text}."""
+    heute = heute or datetime.now(timezone.utc).date()
+    punkte = []
+
+    def p(name, ok, text):
+        punkte.append({"name": name, "ok": ok, "text": text})
+
+    p("Futures-Schlüssel (Pilot)", bool(env.get("BINANCE_FUTURES_API_KEY") and env.get("BINANCE_FUTURES_API_SECRET")),
+      "gesetzt" if env.get("BINANCE_FUTURES_API_KEY") else "fehlt — ohne Schlüssel nur Probeläufe")
+    p("Spot-Schlüssel (ETH-Sammler)", True if env.get("BINANCE_API_KEY") else None, "gesetzt" if env.get("BINANCE_API_KEY") else "nicht gesetzt (nur nötig für den Sparplan)")
+    p("Claude (KI-Trader)", True if env.get("ANTHROPIC_API_KEY") else None, "gesetzt" if env.get("ANTHROPIC_API_KEY") else "nicht gesetzt (optional)")
+    p("Handy-Nachrichten", True if (env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")) or env.get("KI_BOT_NTFY") else None,
+      "Telegram" if env.get("TELEGRAM_BOT_TOKEN") else "ntfy" if env.get("KI_BOT_NTFY") else "nicht eingerichtet (optional)")
+    letzte = max((e.get("stand", "") for e in lb.get("entscheide", [])), default="")
+    if letzte:
+        alt = (heute - datetime.fromisoformat(letzte).date()).days
+        p("Letzter Pilot-Lauf", alt <= 2, f"Tagesstand {letzte}" + ("" if alt <= 2 else f" — {alt} Tage alt: läuft der tägliche Start?"))
+    else:
+        p("Letzter Pilot-Lauf", False, "noch nie — Knopf «Probelauf» oder krypto-auto.bat starten")
+    p("Not-Aus", not STOP.exists(), "aus (Bots dürfen handeln)" if not STOP.exists() else "AKTIV — die Bots handeln nicht")
+    if os.name == "nt":
+        if time.time() - _AUFGABE_CACHE["zeit"] > 300:
+            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da()})
+        da = _AUFGABE_CACHE["wert"]
+        p("Täglicher Start (Aufgabenplanung)", da, "eingerichtet (02:30)" if da else "fehlt — Knopf «Täglich automatisch einrichten»")
+    mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
+    if mvrv.exists():
+        stunden = (time.time() - mvrv.stat().st_mtime) / 3600
+        p("Markt-Infos", stunden < 72, f"vor {stunden:.0f} Std. geladen" + ("" if stunden < 72 else " — Knopf «Markt-Infos»"))
+    return punkte
 
 
 # ───────────────────────── Webserver (nur 127.0.0.1) ─────────────────────────
@@ -285,6 +386,8 @@ class Cockpit(BaseHTTPRequestHandler):
             return self._senden(200, SEITE.read_bytes(), "text/html; charset=utf-8")
         if pfad in ("/markt", "/markt.html"):
             return self._senden(200, MARKT.read_bytes(), "text/html; charset=utf-8")
+        if pfad == "/api/profit":
+            return self._senden(200, profit_stand())
         if pfad == "/api/protokoll":
             jetzt = time.time()
             return self._senden(200, {"protokoll": list(PROTOKOLL), "laufend": [
@@ -335,6 +438,9 @@ def befehl(text):
     b = (text or "").strip().split()[0].split("@")[0].lower() if (text or "").strip() else ""
     if b in ("/start", "/hilfe", "/help"):
         return HILFE
+    if b == "/profit":
+        import profit as PR
+        return PR.text(PR.abrufen())
     if b == "/stop":
         return notaus_an()
     if b == "/weiter":

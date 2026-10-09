@@ -152,6 +152,19 @@ with tempfile.TemporaryDirectory() as tmp:
                ("addCandlestickSeries", "addHistogramSeries", "function rsi", "function macd", "@depth20", "/api/v3/depth", "@aggTrade")))
         with urllib.request.urlopen(basis + "/api/stand") as r:
             pruefe("API liefert Stand", json.load(r)["maerkte"][0]["markt"] == "BTC")
+        abrufe = []
+        alt_ps = C.profit_stand
+        C._PROFIT.update({"zeit": 0.0, "daten": None})
+        C.profit_stand = lambda: alt_ps(abrufen=lambda: abrufe.append(1) or {"modus": "TESTNETZ", "zeitraeume": {}, "positionen": []})
+        for _ in range(3):
+            with urllib.request.urlopen(basis + "/api/profit") as r:
+                pj = json.load(r)
+        C.profit_stand = alt_ps
+        pruefe("Profit-API: drei Aufrufe, nur ein Abruf beim Konto (Zwischenspeicher)", pj["modus"] == "TESTNETZ" and len(abrufe) == 1, abrufe)
+        C._PROFIT.update({"zeit": 0.0, "daten": None})
+        pruefe("Profit-API: Fehler beim Abruf → Hinweis statt Absturz", "nicht lesbar" in C.profit_stand(abrufen=lambda: 1 / 0)["hinweis"])
+        C._PROFIT.update({"zeit": 0.0, "daten": None})
+        pruefe("Cockpit-Seite hat die Profit-Anzeige", 'aria-label="Profit"' in html and "/api/profit" in html)
 
         def post(kopf, an=True):
             req = urllib.request.Request(basis + "/api/notaus", data=json.dumps({"an": an}).encode(), method="POST", headers=kopf)
@@ -208,12 +221,46 @@ with tempfile.TemporaryDirectory() as tmp:
         C.aktion("handeln", starter)
         pruefe("Jetzt handeln startet pilot.py --lauf", gestartet[-1] == ["pilot.py", "--lauf"])
         e = C.aktion("selbsttest", starter)
-        pruefe("Selbsttest: alle Testdateien, letzte Zeile je Datei", [g[0] for g in gestartet[-4:]] == C.SELBSTTESTS
-               and e["text"].count("9 bestanden") == 4)
+        n_t = len(C.SELBSTTESTS)
+        pruefe("Selbsttest: alle Testdateien, letzte Zeile je Datei", [g[0] for g in gestartet[-n_t:]] == C.SELBSTTESTS
+               and e["text"].count("9 bestanden") == n_t and "test_profit.py" in C.SELBSTTESTS)
         C._LAUFEND["ki"] = 0
         e = C.aktion("ki", starter)
         pruefe("Doppelklick: läuft schon → besetzt, kein zweiter Start", e.get("besetzt") and gestartet[-1][0] != "ki_trader.py")
         C._LAUFEND.pop("ki")
+
+        befehle = []
+
+        def fake_befehl(cmd, zeit):
+            befehle.append(cmd)
+            return True, "ERFOLG: Die geplante Aufgabe wurde erstellt." if cmd[0] == "schtasks" else "Already up to date."
+
+        e = C.aktion("aufgabe", befehl=fake_befehl)
+        cmd = befehle[-1]
+        pruefe("Aufgabe: schtasks täglich 02:30, Name Krypto-Pilot, krypto-auto.bat mit «auto», ersetzt (/f)",
+               cmd[:2] == ["schtasks", "/create"] and cmd[cmd.index("/sc") + 1] == "daily" and cmd[cmd.index("/st") + 1] == "02:30"
+               and cmd[cmd.index("/tn") + 1] == "Krypto-Pilot" and cmd[cmd.index("/tr") + 1].endswith('krypto-auto.bat" auto')
+               and cmd[cmd.index("/tr") + 1].startswith('"') and "/f" in cmd and e["ok"] and "02:30" in e["text"], cmd)
+        e = C.aktion("update", befehl=fake_befehl)
+        pruefe("Update: nur git pull --ff-only", befehle[-1] == ["git", "pull", "--ff-only"] and e["ok"] and "neu starten" not in e["text"])
+        e = C.aktion("update", befehl=lambda c, z: (True, "Updating abc..def\nFast-forward"))
+        pruefe("Update mit neuer Version: Hinweis Cockpit neu starten", "neu starten" in e["text"])
+        e = C.aktion("update", befehl=lambda c, z: (False, "error: Your local changes would be overwritten"))
+        pruefe("Update gescheitert: verständlicher Hinweis", not e["ok"] and "eigene Änderungen" in e["text"])
+        pruefe("Aufgabe vorhanden? (schtasks /query)", C.aufgabe_da(lambda c, z: (c[:2] == ["schtasks", "/query"], "")) is True)
+        ok_b, out_b = C._befehl(["programm-das-es-nicht-gibt-xyz"], 5)
+        pruefe("unbekanntes Programm: Meldung statt Absturz", not ok_b and "nicht gefunden" in out_b)
+        heute = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
+        g = C.gesundheit({}, {"entscheide": [{"stand": tag(5)}]}, {}, heute)
+        gd = {x["name"]: x for x in g}
+        pruefe("Gesundheit: fehlender Futures-Schlüssel = rot, alter Lauf = rot, optionale = grau",
+               gd["Futures-Schlüssel (Pilot)"]["ok"] is False and gd["Letzter Pilot-Lauf"]["ok"] is False and "Tage alt" in gd["Letzter Pilot-Lauf"]["text"]
+               and gd["Claude (KI-Trader)"]["ok"] is None and gd["Not-Aus"]["ok"] is True, g)
+        g2 = {x["name"]: x for x in C.gesundheit({"BINANCE_FUTURES_API_KEY": "k", "BINANCE_FUTURES_API_SECRET": "s", "KI_BOT_NTFY": "t"},
+                                                  {"entscheide": [{"stand": "2026-01-19"}]}, {}, heute)}
+        pruefe("Gesundheit: Schlüssel da, Lauf frisch, ntfy erkannt", g2["Futures-Schlüssel (Pilot)"]["ok"] and g2["Letzter Pilot-Lauf"]["ok"]
+               and g2["Handy-Nachrichten"]["text"] == "ntfy", g2)
+        pruefe("Gesundheit: Schlüssel selbst nie in der Anzeige", '"s"' not in json.dumps(g2) and "KEY" not in json.dumps(C.stand(env={"BINANCE_FUTURES_API_KEY": "KEY-XYZ"})["gesundheit"]))
 
         def http_aktion(kopf, name):
             req = urllib.request.Request(basis + "/api/aktion", data=json.dumps({"aktion": name}).encode(), method="POST", headers=kopf)
