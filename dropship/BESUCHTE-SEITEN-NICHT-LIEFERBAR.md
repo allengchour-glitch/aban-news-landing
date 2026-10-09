@@ -10,3 +10,5 @@ Quelle: `automation/besuchte_seiten_lieferbar.py`. DRAFT erst nach zwei unabhän
 | `ubersetzer-kopfhorer-144-sprachen-echtzeit-bluetooth-5-3` | ✅ DRAFT gesetzt 2026-10-05 (zweites NEIN) | KEINE Versandoption (Gewicht 101.0 g) · 2. Messung bestaetigt | `CJFU29004820001` |
 | `seidenkissenbezug-aus-100-maulbeerseide-128704` | ⏳ erstes NEIN (2026-10-08) — Draft beim nächsten NEIN (≥ 12 h später) | vom Lieferanten ausgelistet | `CJ-1386943568765128704` |
 | `workout-set-active-2-teilig-geripptes-tank-damen` | ⏳ erstes NEIN (2026-10-08) — Draft beim nächsten NEIN (≥ 12 h später) | KEINE Versandoption (Gewicht 270.0 g) · 2. Messung bestaetigt | `CJTZ292404401AZ` |
+| `seidenkissenbezug-aus-100-maulbeerseide-128704` | ✅ DRAFT gesetzt 2026-10-09 (zweites NEIN) | vom Lieferanten ausgelistet | `CJ-1386943568765128704` |
+| `workout-set-active-2-teilig-geripptes-tank-damen` | ✅ DRAFT gesetzt 2026-10-09 (zweites NEIN) | KEINE Versandoption (Gewicht 270.0 g) · 2. Messung bestaetigt | `CJTZ292404401AZ` |
