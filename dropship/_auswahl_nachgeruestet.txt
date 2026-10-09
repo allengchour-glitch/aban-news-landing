@@ -269,3 +269,7 @@
 15500954435969	Farbe:5:5	2026-10-09	business-rucksack-mit-usb-ladeanschluss-591360
 15500948013441	Farbe:3:3	2026-10-09	faltbare-haustiertasche-mit-rollen-588160
 15500946899329	Farbe:2:2	2026-10-09	ballistic-nylon-laptop-rucksack-168256
+15500940935553	Farbe:2:2	2026-10-09	retro-canvas-rucksack-20l-410240
+15500940378497	Farbe:5:5	2026-10-09	damen-crossbody-rucksack-eine-schulter-926272
+15500939723137	Farbe:3:3	2026-10-09	purierpresse-fur-babynahrung-und-fruchtmus-617300
+15500939362689	Farbe:2:2	2026-10-09	kuchenregal-fur-schusseln-und-geschirr-613900

@@ -6496,3 +6496,5 @@ gid://shopify/Product/15458674246017	bild-urls-tot
 gid://shopify/Product/15458674377089	zugeordnet	56	Einfache Denimjacke
 gid://shopify/Product/15458674508161	zugeordnet	20	Punktierter Anzugjacke für Herren
 gid://shopify/Product/15458675753345	zugeordnet	15	Winterjacke im chinesischen Retro-Stil
+gid://shopify/Product/15458677850497	zugeordnet	30	Herren Kurzoberteil mit Hohlraum
+gid://shopify/Product/15458681946497	zugeordnet	35	Lässige Damen-Midi-Kleid
