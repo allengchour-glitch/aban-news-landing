@@ -1,0 +1,475 @@
+{
+  "anlass": "09.10.2026 (Betreiber «weiter», Lehre aus 穿戴甲): CJ übersetzt chinesische Händlerwörter wörtlich. GEMESSEN am Export 05:01 UTC (51'904 aktive): 75 Produkte «explosionsgeschützt/explosionssicher/Explosionsschutz» (防爆 = reissfest/berstsicher; 50 Hundeleinen/Halsbänder, dazu Schraubendreher, Powerbanks, Reissverschlüsse, Glasdeckel — bei Werkzeug und Akkus eine falsche Sicherheitsangabe), 5 Titel «Explosive …» (爆款 = Verkaufsschlager), 7 «Ins Wind/Ins Style» (ins风), 12 «All-match» (百搭), 1 «Koreanische Version» (韩版), und 5 Uhren mit Modellnamen fremder Marken (Submariner, Daytona, Datejust = Rolex; Nautilus = Patek Philippe).",
+  "grenze_vor": "(?<![A-Za-zÄÖÜäöüß])",
+  "grenze_nach": "(?![A-Za-zÄÖÜäöüß])",
+  "explosion_wort": "explosions?-?(?:geschützt|geschuetzt|sicher|fest|resistent|beständig|dicht|schutz)|anti-?explosions?",
+  "reissfest_kontext": "hund|katze|haustier|welpe|leine|halsband|geschirr|reissverschluss|zipper",
+  "reissfest": [
+    [
+      "{V}für\\s+explosions?-?(?:geschützt|geschuetzt|sicher|fest)e[ns]?\\s+Gehen{N}",
+      "für sicheres Gehen"
+    ],
+    [
+      "{V}explosions?-?(?:geschützt|geschuetzt|sicher|fest|resistent|beständig|dicht)(e[nmrs]?)?{N}",
+      "reissfest\\1"
+    ],
+    [
+      "{V}Explosions?-?(?:geschützt|geschuetzt|sicher|fest|resistent|beständig|dicht)(e[nmrs]?)?{N}",
+      "Reissfest\\1"
+    ],
+    [
+      "{V}Explosionsschutz{N}",
+      "Reissfestigkeit"
+    ],
+    [
+      "{V}explosionsschutz{N}",
+      "Reissfestigkeit"
+    ]
+  ],
+  "weg_attributiv": [
+    [
+      "{V}[Ee]xplosions?-?(?:geschützt|geschuetzt|sicher|fest|resistent|beständig|dicht)e[nmrs]?\\s+(?:Ausführung|Eigenschaften?|Bauweise|Konstruktion|Design){N}[^.!?<]*",
+      ""
+    ],
+    [
+      ",\\s*{V}[Ee]xplosions?-?(?:geschützt|geschuetzt|sicher|fest|resistent|beständig|dicht)e[nmrs]?\\s+(?=[A-ZÄÖÜ])",
+      " "
+    ],
+    [
+      ",\\s*{V}explosions?-?(?:geschützt|geschuetzt|sicher|fest){N}\\s*(?=,)",
+      ""
+    ],
+    [
+      "{V}[Ee]xplosions?-?(?:geschützt|geschuetzt|sicher|fest|resistent|beständig|dicht)e[nmrs]?,?\\s+(?:und\\s+)?(?=[A-ZÄÖÜa-zäöü])",
+      ""
+    ],
+    [
+      "{V}[Ii]ntegrierte[rnms]?\\s+Explosionsschutz{N}",
+      ""
+    ],
+    [
+      "\\s*(?:und\\s+)?{V}[Ee]xplosions?-?(?:geschützt|geschuetzt|sicher|fest)\\s+und\\s+(?!(?:bietet|hat|ist|sorgt|schützt|verfügt|eignet|kann|wird|lässt|macht|gewährleistet|somit|daher|dadurch|deshalb|damit)\\b)",
+      " "
+    ],
+    [
+      "\\s+und\\s+{V}explosions?-?(?:geschützt|geschuetzt|sicher|fest){N}",
+      ""
+    ]
+  ],
+  "explosiv_titel": [
+    [
+      "^\\s*Explosion\\s+Money\\s*[–-]\\s*",
+      ""
+    ],
+    [
+      "^\\s*Explosive[snrm]?\\s+(?!Kraft|Training|Sprung|Power)",
+      ""
+    ],
+    [
+      "\\s+Explosion\\s*$",
+      ""
+    ],
+    [
+      "\\s*Anti-Explosions-\\s*und\\s+Antipuncture\\s*$",
+      ""
+    ]
+  ],
+  "haendlerwort": [
+    [
+      "\\s*{V}im\\s+Nordic\\s+Ins\\s+(?:Stil|Style|Wind){N}",
+      " im nordischen Stil"
+    ],
+    [
+      "\\s*{V}(?:im|mit)\\s+[«\"„]?(?:wild\\s+)?ins[\\s-]?(?:wind|style|stil)[»\"“]?(?:-design)?{N}",
+      ""
+    ],
+    [
+      "\\s*[–-]\\s*(?:korean\\s+)?ins\\s+(?:style|stil|wind)\\s*$",
+      ""
+    ],
+    [
+      "[«\"„]?{V}(?:wild\\s+)?ins[\\s-](?:wind|style|stil){N}[»\"“]?\\s*",
+      ""
+    ],
+    [
+      "\\s*[«\"„]{V}all-?match(?:ing)?{N}[»\"“]",
+      ""
+    ],
+    [
+      "{V}all-?match(?:ing)?{N}\\s*",
+      ""
+    ],
+    [
+      "\\s*[–-]\\s*Koreanische\\s+Version\\s*$",
+      " im koreanischen Stil"
+    ],
+    [
+      "{V}Fauler\\s+Handy",
+      "Flexibler Handy"
+    ]
+  ],
+  "uhr_kontext": "uhr|watch|chronograph|zifferblatt",
+  "uhr_modell": "Datejust|Day-?Date|Submariner|Daytona|GMT-?Master(?:\\s*II)?|Yacht-?Master|Sky-?Dweller|Milgauss|Oyster\\s+Perpetual|Nautilus|Aquanaut|Royal\\s+Oak(?:\\s+Offshore)?|Speedmaster|Seamaster|Ballon\\s+Bleu|Big\\s+Bang|Navitimer|Luminor|Reverso",
+  "uhr_kompatibel": "(?:für|fuer|passend\\s+für|kompatibel\\s+mit|for)\\s+(?:die\\s+|das\\s+|den\\s+)?(?:[A-Z][\\w-]*\\s+)?(?:{M})",
+  "uhr_regeln": [
+    [
+      "{V}Explosive[snrm]?\\s+(?=(?:{M}){N})",
+      ""
+    ],
+    [
+      "{V}(Die|Diese|Der|Dieser|Das|Dieses)\\s+(?:{M}){N}(?=\\s+(?:ist|hat|bietet|verfügt|überzeugt|besticht|kommt|eignet))",
+      "\\1 Uhr"
+    ],
+    [
+      "\\s*{V}im\\s+(?:{M})[-\\s]?(?:Stil|Style|Look|Design){N}",
+      ""
+    ],
+    [
+      "{V}(?:{M})[-\\s]Stil{N}\\s*",
+      ""
+    ],
+    [
+      "{V}(?:{M}){N}[-\\s]?",
+      ""
+    ]
+  ],
+  "kanarien": [
+    [
+      "Explosionsgeschütztes, bissfestes Haustierhalsband",
+      "Reissfestes, bissfestes Haustierhalsband",
+      "titel"
+    ],
+    [
+      "Explosionsgeschützte Outdoor-Hundeleine mit Bauchgurt",
+      "Reissfeste Outdoor-Hundeleine mit Bauchgurt",
+      "titel"
+    ],
+    [
+      "Halsband und Leine für Hunde, explosionsgeschützt",
+      "Halsband und Leine für Hunde, reissfest",
+      "titel"
+    ],
+    [
+      "Explosionssichere 6-in-1 Hundeleine",
+      "Reissfeste 6-in-1 Hundeleine",
+      "titel"
+    ],
+    [
+      "Explosive Y2HDMAX Retro-Gaming Konsole",
+      "Y2HDMAX Retro-Gaming Konsole",
+      "titel"
+    ],
+    [
+      "Explosive Datejust Automatikuhr für Herren",
+      "Automatikuhr für Herren",
+      "titel"
+    ],
+    [
+      "Explosives Auto Modell zum Zusammenbauen",
+      "Auto Modell zum Zusammenbauen",
+      "titel"
+    ],
+    [
+      "Explosion Money – Retro-Herren-Umhängetasche",
+      "Retro-Herren-Umhängetasche",
+      "titel"
+    ],
+    [
+      "Tragbarer Holzofen Explosion",
+      "Tragbarer Holzofen",
+      "titel"
+    ],
+    [
+      "Explosives Krafttraining Widerstandsband",
+      "Explosives Krafttraining Widerstandsband",
+      "titel"
+    ],
+    [
+      "Messenger Bag «Wild Ins Wind»",
+      "Messenger Bag",
+      "titel"
+    ],
+    [
+      "Bohemian Kissenhülle mit «Ins Wind»-Design",
+      "Bohemian Kissenhülle",
+      "titel"
+    ],
+    [
+      "Nordic Ins Wind Kissenhülle für Sofa",
+      "Nordic Kissenhülle für Sofa",
+      "titel"
+    ],
+    [
+      "Hundehalsband & Leine Set im INS-Wind-Design",
+      "Hundehalsband & Leine Set",
+      "titel"
+    ],
+    [
+      "Hundeleine Macaron Ins Wind",
+      "Hundeleine Macaron",
+      "titel"
+    ],
+    [
+      "Eisblau Zirkonia Armreif – Korean Ins Style",
+      "Eisblau Zirkonia Armreif",
+      "titel"
+    ],
+    [
+      "Ins Style Cartoon Nischendesign zum Aufkleben · Press-on-Nägel",
+      "Cartoon Nischendesign zum Aufkleben · Press-on-Nägel",
+      "titel"
+    ],
+    [
+      "Sequins-Makeup-Palette",
+      "Sequins-Makeup-Palette",
+      "titel"
+    ],
+    [
+      "Fünf-in-eins-Ladestation",
+      "Fünf-in-eins-Ladestation",
+      "titel"
+    ],
+    [
+      "Canvas Schultertasche \"All-match\" mit grosser Kapazität",
+      "Canvas Schultertasche mit grosser Kapazität",
+      "titel"
+    ],
+    [
+      "Elegante All-Match Knöchelriemen-Sandalen",
+      "Elegante Knöchelriemen-Sandalen",
+      "titel"
+    ],
+    [
+      "Herren Sneaker «All-Match»",
+      "Herren Sneaker",
+      "titel"
+    ],
+    [
+      "Retro Canvas Schuhe All-Matching",
+      "Retro Canvas Schuhe",
+      "titel"
+    ],
+    [
+      "Kinder Martin Boots – Koreanische Version",
+      "Kinder Martin Boots im koreanischen Stil",
+      "titel"
+    ],
+    [
+      "Fauler Handy-Halter 203B",
+      "Flexibler Handy-Halter 203B",
+      "titel"
+    ],
+    [
+      "Submariner Quarz-Herrenuhr, Grün, Leuchtzeiger",
+      "Quarz-Herrenuhr, Grün, Leuchtzeiger",
+      "titel"
+    ],
+    [
+      "Daytona Multifunktionsuhr – Drei Augen, sechs Zeiger",
+      "Multifunktionsuhr – Drei Augen, sechs Zeiger",
+      "titel"
+    ],
+    [
+      "Herren-Quarzuhr im Nautilus-Stil",
+      "Herren-Quarzuhr",
+      "titel"
+    ],
+    [
+      "Nautilus Herrenuhr mit Stahlarmband",
+      "Herrenuhr mit Stahlarmband",
+      "titel"
+    ],
+    [
+      "Nautilus Stofftier mit Perlen-Effekt",
+      "Nautilus Stofftier mit Perlen-Effekt",
+      "titel"
+    ],
+    [
+      "Silikonarmband für Aquanaut Serie 21mm",
+      "Silikonarmband für Aquanaut Serie 21mm",
+      "titel"
+    ],
+    [
+      "Kabelloses Ladegerät für Apple Watch",
+      "Kabelloses Ladegerät für Apple Watch",
+      "titel"
+    ],
+    [
+      "Daytona Beach Strandtuch",
+      "Daytona Beach Strandtuch",
+      "titel"
+    ],
+    [
+      "Explosionsgeschützter Polymer-Lithium-Akku mit 5200 mAh",
+      "Polymer-Lithium-Akku mit 5200 mAh",
+      "text:Mini Handwärmer Powerbank"
+    ],
+    [
+      "Das Set ist explosionsgeschützt und magnetisch, sodass Schrauben sicher halten.",
+      "Das Set ist magnetisch, sodass Schrauben sicher halten.",
+      "text:Handy-Demontage-Werkzeugset"
+    ],
+    [
+      "Explosionsgeschützt und isoliert für sicheres Arbeiten.",
+      "Isoliert für sicheres Arbeiten.",
+      "text:Ratschen-Schraubendreher"
+    ],
+    [
+      "Mit seinem explosionssicheren Glasdeckel ist er hitzebeständig.",
+      "Mit seinem Glasdeckel ist er hitzebeständig.",
+      "text:Dampfgarer"
+    ],
+    [
+      "Er besteht aus hochfester, explosionsfestem und umweltfreundlichem ABS-Plastik.",
+      "Er besteht aus hochfester und umweltfreundlichem ABS-Plastik.",
+      "text:Drohnenflieger"
+    ],
+    [
+      "Das explosionsgeschützte Design sorgt für zusätzliche Sicherheit.",
+      "Das reissfeste Design sorgt für zusätzliche Sicherheit.",
+      "text:Halsband für Hunde"
+    ],
+    [
+      "Sicherheit durch Explosionsschutz",
+      "Sicherheit durch Reissfestigkeit",
+      "text:Sicherheitsleine für Hunde"
+    ],
+    [
+      "mit einem speziell zertifizierten, explosionsgeschützten Reissverschluss ausgestattet",
+      "mit einem speziell zertifizierten, reissfesten Reissverschluss ausgestattet",
+      "text:Mini-Handgepäck mit Reissverschluss"
+    ],
+    [
+      "Integrierter Explosionsschutz für erhöhte Sicherheit.",
+      "",
+      "text:2.4A USB-Schnellladeadapter"
+    ],
+    [
+      "Explosionsgeschützte Ausführung für mehr Sicherheit",
+      "",
+      "text:Schraubenzieher-Set"
+    ],
+    [
+      "Explosionsgeschützte Eigenschaften",
+      "",
+      "text:Kabelbinder-Zange"
+    ],
+    [
+      "Blumen-Kissenbezug im Nordic Ins Stil",
+      "Blumen-Kissenbezug im nordischen Stil",
+      "titel"
+    ],
+    [
+      "Labor-Schutzschuhe Herren Anti-Explosions- und Antipuncture",
+      "Labor-Schutzschuhe Herren",
+      "titel"
+    ],
+    [
+      "Die Explosive Datejust ist eine elegante Herrenuhr.",
+      "Die Uhr ist eine elegante Herrenuhr.",
+      "text:Automatikuhr für Herren"
+    ],
+    [
+      "Seine robuste Bauweise ist explosionsgeschützt, was zusätzliche Sicherheit bietet.",
+      "",
+      "text:Verstellbarer Ratschenschlüssel"
+    ],
+    [
+      "Komfortables Westen-Design für explosionssicheres Gehen",
+      "Komfortables Westen-Design für sicheres Gehen",
+      "text:Hundegeschirr mit Leine"
+    ],
+    [
+      "Das Werkzeug ist explosionsgeschützt und isoliert, wodurch es sicher ist.",
+      "Das Werkzeug ist isoliert, wodurch es sicher ist.",
+      "text:Handy-Werkzeug"
+    ],
+    [
+      "Sie sind aus Polyurethan und explosionsgeschütztem Leder gefertigt.",
+      "Sie sind aus Polyurethan und Leder gefertigt.",
+      "text:Boxhandschuhe"
+    ],
+    [
+      "Dank ihrer robusten Bauweise ist die Box explosionsgeschützt und bietet optimalen Schutz.",
+      "",
+      "text:Wasserdichte Aufbewahrungsbox für Flip"
+    ],
+    [
+      "Explosionsgeschütztes Design für maximale Sicherheit",
+      "",
+      "text:Wasserdichte Aufbewahrungsbox für Flip"
+    ],
+    [
+      "Das Set ist explosionsgeschützt und somit auch für anspruchsvollere Umgebungen geeignet.",
+      "",
+      "text:Ratschen-Schraubendreher-Set"
+    ],
+    [
+      "Flache Backe, explosionsgeschützt, geeignet für Nieten.",
+      "Flache Backe, geeignet für Nieten.",
+      "text:Rostfreie Zange"
+    ],
+    [
+      "mit einem speziell zertifizierten, explosionsgeschützten Reissverschluss ausgestattet.",
+      "mit einem speziell zertifizierten, reissfesten Reissverschluss ausgestattet.",
+      "text:Mini-Handgepäck mit Ladefunktion"
+    ],
+    [
+      "Explosionsgeschützter Nylon-Reissverschluss (50'000 Zyklen)",
+      "Reissfester Nylon-Reissverschluss (50'000 Zyklen)",
+      "text:Kamera-Umhängetasche aus Canvas"
+    ],
+    [
+      "Das Design im angesagten «INS-Wind»-Stil macht es zu einem echten Hingucker.",
+      "Das Design im angesagten Trend-Stil macht es zu einem echten Hingucker.",
+      "text:Hundehalsband & Leine Set aus Polyester"
+    ],
+    [
+      "Die Messenger Bag «Wild Ins Wind» ist eine stilvolle Umhängetasche.",
+      "Die Messenger Bag Trend-Stil ist eine stilvolle Umhängetasche.",
+      "text:Messenger Bag"
+    ],
+    [
+      "Dieses runde Stuhlkissen im nordischen Ins-Stil bietet Komfort.",
+      "Dieses runde Stuhlkissen im nordischen Trend-Stil bietet Komfort.",
+      "text:Rundes Kissen"
+    ],
+    [
+      "Das Design ist vom beliebten „Nordic Ins Wind“-Stil inspiriert.",
+      "Das Design ist vom beliebten nordischen Trend-Stil inspiriert.",
+      "text:Luna Kissenhülle"
+    ],
+    [
+      "Stile: süss, leuchtend, eisig, frisch, einfach, Ins-Stil, Pure Desire",
+      "Stile: süss, leuchtend, eisig, frisch, einfach, Trend-Stil, Pure Desire",
+      "text:Press-on-Nägel"
+    ],
+    [
+      "Das Casual All-Match Denim Shirt ist bequem.",
+      "Das Casual Denim Shirt ist bequem.",
+      "text:Los-Gewand"
+    ]
+  ],
+  "handtitel_hinweis": "Neuer Titel wäre eine Dublette eines bestehenden Titels (dup_title_fix würde draften) → Hand-Titel aus der Beschreibung. Gilt nur, solange der Live-Titel noch der alte ist.",
+  "handtitel": {
+    "Herren Sneaker «All-Match»": "Herren Sneaker mit Mesh-Futter und Farbakzenten",
+    "Explosive Datejust Automatikuhr für Herren": "Automatikuhr für Herren mit Saphirglas und Kalender",
+    "Hundehalsband & Leine Set im INS-Wind-Design": "Hundehalsband & Leine Set aus Polyester",
+    "Explosive Business Quarzuhr für Herren": "Business Quarzuhr für Herren mit Lederarmband"
+  },
+  "haendlerwort_text_hinweis": "Im Fliesstext wird ersetzt, nicht gestrichen (Streichen zerreisst «im angesagten Ins-Stil gehalten»). ins风 → «Trend-Stil» (maskulin wie «Stil»), 百搭 fällt (steht nur in englischen Lieferanten-Namen).",
+  "haendlerwort_text": [
+    [
+      "[„\"«]?{V}Nordic\\s+Ins[\\s-]Wind[“\"»]?-?Stil{N}",
+      "nordischen Trend-Stil"
+    ],
+    [
+      "[„\"«]?{V}(?:Wild\\s+)?Ins[\\s-]?(?:Wind|Style|Stil)[“\"»]?(?:-(?:Stil|Style|Design))?{N}",
+      "Trend-Stil"
+    ],
+    [
+      "{V}all-?match(?:ing)?{N}\\s*",
+      ""
+    ]
+  ]
+}

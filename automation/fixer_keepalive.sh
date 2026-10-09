@@ -1340,6 +1340,9 @@ while true; do
       # 09.10.2026: Essbares aus China (Ergänzungsfutter, Tier-Snacks, Supplements) → DRAFT (12 gefunden, Klasse Klinge #1017).
       # Importer sperren selbst (essbar.mjs); dieser Lauf fängt Altbestand und Kategorie-Treffer. Regel data/essbar_regel.json.
       [ -f "$REPO/automation/essbar_wache.py" ] && ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/essbar_wache.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
+      # 09.10.2026: wörtlich übersetzte Händlerwörter (防爆 «explosionsgeschützt» bei Leinen/Werkzeug/Akkus, 爆款 «Explosive …», ins风, 百搭)
+      # + Rolex-/Patek-Modellnamen im Uhrentitel — 200/0 am 09.10.; Importer filtern selbst (haendlerwort.mjs in fallenSicher).
+      [ -f "$REPO/automation/haendlerwort.py" ] && ( cd "$REPO" && SCHARF=1 timeout 1500 python3 automation/haendlerwort.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:
