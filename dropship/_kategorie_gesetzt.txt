@@ -48682,3 +48682,5 @@ modegurtel-quarz-uhr-a4eee7	aa-6-11	Uhren	2026-10-08T20:09Z
 one-shoulder-outdoor-rucksack-444288	lb	Taschen	2026-10-08T21:05Z
 kinderrucksack-44x30x15-cm-fur-grundschule-564096	lb	Taschen	2026-10-09T00:09Z
 business-rucksack-fur-herren-aus-leder-838336	lb	Taschen	2026-10-09T00:09Z
+automatischer-wasserspender-fur-haustiere-34cfb6	ap-2	Haustierbedarf	2026-10-09T01:11Z
+doppelter-schussel-mit-schragem-m-30aa2c	ap-2	Haustierbedarf	2026-10-09T01:11Z
