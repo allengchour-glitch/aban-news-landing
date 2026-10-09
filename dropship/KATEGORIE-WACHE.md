@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-09T02:15Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-09T03:14Z
 
-Aktive gescannt: 26 · ohne Kategorie: 26 · heute gesetzt: 23 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 24 · ohne Kategorie: 24 · heute gesetzt: 21 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- automatischer-trinkbrunnen-fur-katze-2-8-l-2c31fc · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- bobo-doppelmahlschussel-fur-katzen-c1efd5 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- doppelschale-mit-trinkwasserautomat-8c9076 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- hundeschussel-anti-rutsch-m-mittel-7380b5 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- flexible-futter-und-wasserschussel-mit-klappve-6e4fef · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- doppelkorb-aus-edelstahl-fur-hunde-d171ab · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- slackline-balancierseil-10-m-aus-polyester-und-165312 · Sport & Outdoor → Sporting Goods
+- silicone-hundeschussel-doppel-618730 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- yoga-matte-aus-wildleder-183-68-cm-940160 · Sport & Outdoor → Sporting Goods
+- sports-bounce-trainingsgerat-292800 · Sport & Outdoor → Sporting Goods
 
