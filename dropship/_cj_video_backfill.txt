@@ -806,3 +806,9 @@ gid://shopify/Product/15445272428929	kein-video-beim-lieferanten
 gid://shopify/Product/15445273379201	kein-video-beim-lieferanten
 gid://shopify/Product/15445274919297	kein-video-beim-lieferanten
 gid://shopify/Product/15445275771265	kein-video-beim-lieferanten
+gid://shopify/Product/15508463616385	ok	Hundehalskrause für die Genesung
+gid://shopify/Product/15508716290433	ok	Automatischer Futterspender für Haustiere
+gid://shopify/Product/15508716683649	ok	Fressnapf für Katzen & kleine Hunde
+gid://shopify/Product/15509364277633	ok	K9 Metall Schmetterling Nägel
+gid://shopify/Product/15509385085313	ok	Anti-Schling Napf für Haustiere
+gid://shopify/Product/15509520712065	ok	Orthopädisches Schaumstoff-Kissen für Babys

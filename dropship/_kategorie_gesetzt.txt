@@ -48684,3 +48684,26 @@ kinderrucksack-44x30x15-cm-fur-grundschule-564096	lb	Taschen	2026-10-09T00:09Z
 business-rucksack-fur-herren-aus-leder-838336	lb	Taschen	2026-10-09T00:09Z
 automatischer-wasserspender-fur-haustiere-34cfb6	ap-2	Haustierbedarf	2026-10-09T01:11Z
 doppelter-schussel-mit-schragem-m-30aa2c	ap-2	Haustierbedarf	2026-10-09T01:11Z
+automatischer-trinkbrunnen-fur-katze-2-8-l-2c31fc	ap-2	Haustierbedarf	2026-10-09T02:15Z
+bobo-doppelmahlschussel-fur-katzen-c1efd5	ap-2	Haustierbedarf	2026-10-09T02:15Z
+doppelschale-mit-trinkwasserautomat-8c9076	ap-2	Haustierbedarf	2026-10-09T02:15Z
+hundeschussel-anti-rutsch-m-mittel-7380b5	ap-2	Haustierbedarf	2026-10-09T02:15Z
+flexible-futter-und-wasserschussel-mit-klappve-6e4fef	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramik-schussel-fur-haustiermahlzeiten-3846df	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramische-hundeschussel-mit-ablage-09bbbb	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramische-katzenmahlzeit-schussel-mit-hohem-r-779040	ap-2	Haustierbedarf	2026-10-09T02:15Z
+grosse-anti-rutsch-hundeschussel-mit-stand-faa45d	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramik-nistschussel-fur-katzen-7984cd	ap-2	Haustierbedarf	2026-10-09T02:15Z
+sniffing-matte-fur-hunde-und-katzen-619800	ap-2	Haustierbedarf	2026-10-09T02:15Z
+automatischer-2-in-1-hund-und-katzenfutterer-603600	ap-2	Haustierbedarf	2026-10-09T02:15Z
+hutzeln-schlauch-fur-langsames-fressen-609900	ap-2	Haustierbedarf	2026-10-09T02:15Z
+intelligenter-futternapf-mit-fernsteuerung-617700	ap-2	Haustierbedarf	2026-10-09T02:15Z
+intelligenter-haustierfutterer-mit-kamera-610000	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramik-nahrungsbehalter-fur-katzen-5af328	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramische-haustier-schussel-s-4383b6	ap-2	Haustierbedarf	2026-10-09T02:15Z
+keramik-pet-schussel-800-ml-anti-rutsch-f31808	ap-2	Haustierbedarf	2026-10-09T02:15Z
+hundeschussel-pet-dowble-6b18fe	ap-2	Haustierbedarf	2026-10-09T02:15Z
+edelstahl-hundeschussel-6129b2	ap-2	Haustierbedarf	2026-10-09T02:15Z
+magnetisches-bauchband-034432	sg	Sport & Outdoor	2026-10-09T02:15Z
+doppelschale-fur-hund-katze-aus-edelstahl-2b4bd2	ap-2	Haustierbedarf	2026-10-09T02:15Z
+armkraft-trainingsgerat-mit-verstellbarem-grif-388160	sg	Sport & Outdoor	2026-10-09T02:15Z
