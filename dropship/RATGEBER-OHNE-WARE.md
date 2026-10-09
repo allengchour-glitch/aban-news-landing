@@ -9,27 +9,12 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
 | [Schweizer Wohlfühl-Geheimnisse — 7 Rituale, die wir aus den ](/blogs/ratgeber/schweizer-wohlfuhl-geheimnisse) | 0 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
-| [Aroma-Diffuser kaufen: Der grosse Ratgeber 2026](/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026) | 0 |
 | [Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass](/blogs/ratgeber/geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass) | 0 |
-| [Smartwatch kaufen 2026: Ratgeber, Funktionen & Vergleich](/blogs/ratgeber/smartwatch-kaufen-2026-ratgeber-funktionen-vergleich) | 0 |
-| [Sommerschuhe 2026: Sandalen, Sneaker & Espadrilles im Trend](/blogs/ratgeber/sommerschuhe-2026-sandalen-sneaker-espadrilles-im-trend) | 0 |
-| [Sonnenbrillen-Trends 2026: Welche Form passt zu dir?](/blogs/ratgeber/sonnenbrillen-trends-2026-welche-form-passt-zu-dir) | 0 |
-| [Stimmungslicht & LED-Deko: gemütliches Zuhause 2026](/blogs/ratgeber/stimmungslicht-led-deko-gemutliches-zuhause-2026) | 0 |
 | [Partner-Geschenke & Couple-Sets: Ideen für Verliebte 2026](/blogs/ratgeber/partner-geschenke-couple-sets-ideen-fur-verliebte-2026) | 0 |
 | [Taschen-Trends 2026: von Crossbody bis Henkeltasche](/blogs/ratgeber/taschen-trends-2026-von-crossbody-bis-henkeltasche) | 0 |
-| [Bademode 2026: Bikini & Badeanzug richtig finden](/blogs/ratgeber/bademode-2026-bikini-badeanzug-richtig-finden) | 0 |
-| [Moissanite vs. Diamant: Der ehrliche Vergleich 2026](/blogs/ratgeber/moissanite-vs-diamant-vergleich) | 0 |
-| [Herren Sommer-Look 2026: Leinenhemd, Leinenhose & leichte St](/blogs/ratgeber/herren-sommer-look-leinen-2026) | 0 |
-| [Ventilator gegen die Sommerhitze: Hand-, Tisch- oder Camping](/blogs/ratgeber/ventilator-sommerhitze-ratgeber) | 0 |
-| [Süsswasserperlen-Schmuck: echt erkennen, kombinieren & pfleg](/blogs/ratgeber/suesswasserperlen-schmuck-echt-erkennen-pflege) | 0 |
 | [Open-Ear Kopfhörer: Die bessere Wahl für Sport, Velo & Büro?](/blogs/ratgeber/open-ear-kopfhoerer-sport-velo-ratgeber) | 0 |
-| [1. August feiern: Schweizer Edition Looks, Deko & Geschenke ](/blogs/ratgeber/erste-august-schweiz-edition-looks-deko-2026) | 0 |
-| [Herren-Sommerschuhe 2026: Sneaker, Sandalen & Co. im Guide](/blogs/ratgeber/herren-sneaker-sommerschuhe-guide-2026) | 0 |
 | [Strohtaschen & Beach-Bags 2026: die schönsten Sommer-Looks](/blogs/ratgeber/strohtaschen-beach-bags-sommer-looks-2026) | 0 |
 | [Leinen pflegen: knitterfrei waschen, trocknen & bügeln](/blogs/ratgeber/leinen-pflegen-knitterfrei-material-guide) | 0 |
-| [Capsule Wardrobe Sommer 2026: 10 Teile, unzählige Looks](/blogs/ratgeber/capsule-wardrobe-sommer-10-teile) | 0 |
-| [1. August Geschenke & Gastgeschenke 2026: die schönsten Schw](/blogs/ratgeber/1-august-geschenke-gastgeschenke-schweiz-2026) | 0 |
-| [Selbst gestalten: dein eigenes Schweiz-Design auf Tasse, Shi](/blogs/ratgeber/schweiz-design-selbst-gestalten-tasse-shirt-tasche) | 0 |
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
 | [Handy-Zubehör Ratgeber: Hülle, Halterung & schnelles Laden](/blogs/ratgeber/handy-zubehoer-ratgeber-huelle-halterung-laden) | 0 |
 | [Haustierzubehör 2026: Das Wichtigste für Hund & Katze](/blogs/ratgeber/haustierzubehoer-2026-hund-katze-ratgeber) | 0 |
@@ -139,7 +124,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Waffeleisen-Ratgeber: knusprige Waffeln wie vom Markt](/blogs/ratgeber/waffeleisen-ratgeber-knusprige-waffeln-wie-vom-markt) | 0 |
 | [Heissluftfritteuse kaufen: der grosse Airfryer-Guide](/blogs/ratgeber/heissluftfritteuse-kaufen-der-grosse-airfryer-guide) | 0 |
 | [Nähzubehör für Einsteiger: die richtige Grundausstattung](/blogs/ratgeber/nahzubehor-fur-einsteiger-die-richtige-grundausstattung) | 0 |
-| [Modellbau für Einsteiger: das richtige Set & Werkzeug](/blogs/ratgeber/modellbau-fur-einsteiger-das-richtige-set-werkzeug) | 0 |
 | [Mechanische Tastatur kaufen: Switches, Layout & Formfaktor e](/blogs/ratgeber/mechanische-tastatur-kaufen-switches-layout-formfaktor-erklart) | 0 |
 | [Monitor kaufen: Auflösung, Grösse & Bildwiederholrate verstä](/blogs/ratgeber/monitor-kaufen-auflosung-grosse-bildwiederholrate-verstandlich-erklart) | 0 |
 | [SSD oder Festplatte? Der richtige Speicher für deinen PC](/blogs/ratgeber/ssd-oder-festplatte-der-richtige-speicher-fur-deinen-pc) | 0 |

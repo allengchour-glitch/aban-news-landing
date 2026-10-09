@@ -17487,3 +17487,10 @@ gid://shopify/Product/16613732254087	11->0	Hollow Jacquard Sommer-Casual Kurzarm
 gid://shopify/Product/16613732385159	93->0	Cardigan mit kontrastierendem Farbkontrast
 gid://shopify/Product/16613732712839	14->0	Leinen-Shirt in Hellblau – locker geschnitten
 gid://shopify/Product/16613732778375	90->0	Männerlangarmshirt Corduroy Aprikose
+gid://shopify/Product/16612711301511	11->0	Magnetisches Bauchband
+gid://shopify/Product/16612717265287	51->3	Katzen-Futternapf-Ständer mit schrägem Hals
+gid://shopify/Product/16612740727175	32->0	Keramische Futternapf mit Holzsockel
+gid://shopify/Product/16612761698695	14->0	Trainingselastikseil mit Stab
+gid://shopify/Product/16612769890695	26->2	Keramik-Blumentopf aus Lila Ton
+gid://shopify/Product/16612770316679	43->2	Schweissband für Schlägergriffe, 60 Stück
+gid://shopify/Product/16612771824007	20->3	Brustpresse Expander für Krafttraining
