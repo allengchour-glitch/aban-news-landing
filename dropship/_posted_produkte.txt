@@ -186,3 +186,4 @@ slug:warme-lederhandschuhe-mit-fleecefutter
 slug:lange-damenstiefel-mit-schnallen-und-nieten
 slug:tragbarer-mini-projektor-mit-wifi-720p-nativ-366976
 name:tragbarerminiprojektormitwifi
+slug:color-block-kapuzen-sweatshirt-mit-halbem-reis
