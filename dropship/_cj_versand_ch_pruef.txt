@@ -6489,3 +6489,6 @@ keilabsatz-sandalen-im-koreanischen-stil-615700	2606110643561616200	16	11.37	ok	
 ultrahohe-sandalen-mit-uberkreuzten-riemen-623100	2606110528591623700	16	10.55	ok	landeseite
 high-heel-latin-sandalen-mit-glitzer-604200	2606110355371605000	16	10.83	ok	landeseite
 minimalistische-wildleder-flip-flops-636000	2606100838201636700	16	9.88	ok	landeseite
+plateau-sandalen-mit-elastikriemen-615400	2606100743531616200	16	9.33	ok	landeseite
+casual-peep-toe-plateau-sandalen-631400	2606100720301632000	16	11.12	ok	landeseite
+polka-dot-keilsandalen-mit-schleife-619100	2606100643011619800	16	11.60	ok	landeseite
