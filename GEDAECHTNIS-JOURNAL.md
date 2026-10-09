@@ -44,6 +44,19 @@
 
 
 
+## 2026-10-09 00:40 UTC · 🔔 Verbesserungsrunde: Tag 9 nachgemessen, Ampel-Fehlalarm «still: Pinterest»
+
+**Tag 9:** 2'161 von 2'881 Neuimporten seit 01.10. auf Bewertungen geprüft (75 %, Ziel ≥ 1'500 ✅), 313 Produkte mit echten
+CJ-Bewertungen im Import-Log. **Klasse:** Die Ampel («BRAUCHT DICH») meldete «still: Pinterest», obwohl der Autopilot
+Pinterest seit 06.10. absichtlich nur alle 48 h bedient — sie prüfte fest auf 24 h. → `metricool_takt()` liest den Takt aus
+`social_autopilot.sh`, `kanal_still()` = Takt + Spielraum (7 Kanarien), Meldung nennt «letzter vor N h, Takt M h»;
+Gegenprobe 12-h-Takt zeigt «still» wieder.
+
+**Lehre:** Ein Wächter, der eine Kadenz prüft, liest sie aus der Quelle, die sie festlegt — nie eine eigene Zahl. Sonst wird
+jede bewusste Drosselung zum Alarm, und der Betreiber lernt, die Ampel zu überlesen.
+
+→ `dropship/AMPEL-KADENZ-2026-10-09.md`
+
 ## 2026-10-08 21:40 UTC · 💎 «weiter sauber machen»: Material, Diamanten, Bild-Alt-Texte mit altem Titel
 
 **Material:** 41 Titel versprachen Leder/Wolle/Seide/Holz, der eigene Text sagte PU/Acryl/Polyester → `material_widerspruch.py`
@@ -19096,3 +19109,4 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 📦 **CJ-Lager Fensterlauf: nur 840/4'000 (Lauf starb am Neustart, 55-min-Anspruch sperrte) → 10 min nach Tod/im Fenster; 8 ACTIVE voll kaufbar trotz CJ 1602002 «removed from shelves» → `cj_entfernt()` sperrt (131 Varianten, umkehrbar); Stichprobe 12/12 korrekt gesperrt.** «unklar» mit eindeutigem Code = eigene Regel → Journal 07.10. 01:55
 - 2026-10-07 · 📘 **«fb zu wenig follower»: 7 Follower, Reels 659 Aufrufe/0 Follows — FB bekam IG-Caption mit «Link in Bio» ohne Folge-Aufforderung → `lib/fb_text.mjs` (klickbarer Link + Folge-Zeile) für Reel/Bild/Karussell, IG+FB getrennt geplant; Gemini `blockReason` liess EIN Reel vorne liegen → 0 Reels 12:21–17:39 → `GeminiSperre` → Zweitprüfer/Exit 4.** Deterministisches «kein Urteil» muss die Warteschlange freigeben → `dropship/FB-FOLLOWER-2026-10-07.md`
 - 2026-10-07 · 🌫️ **Verbesserungsrunde: 154 Diffuser/Luftbefeuchter bei Google «Hair Care», im Shop «Cosmetic Tools» (Typ 05.10. korrigiert, Geschwisterfelder nie) → `aroma_kategorie.py` 154/0, Kanarien 12/12; `kategorie_wache.typen_abgleich()` meldet jeden vergebenen unbekannten Typ.** Feld neu vergeben = alle ableitenden Tabellen abgleichen → `dropship/AROMA-KATEGORIE-2026-10-07.md`
+- 2026-10-07 · 🌐 **«lerne im internet»: Meta testet 2 Link-Posts/Monat für Seiten; GEMESSEN 27 FB-Reels mit https-Link 0–4 Aufrufe vs 3 ohne 206–232 → `fbText()` schreibt die Adresse als Text (kein https/UTM), Folge-Zeile bleibt; Hype: Schleckmatte neu, 8 von 9 Oktober-Trends am Bestand/Preisboden gescheitert.** Vor einer Plattform-Regel die eigene Historie nach der Variable aufteilen → `dropship/LERNEN-FB-UND-TRENDS-2026-10-07.md`

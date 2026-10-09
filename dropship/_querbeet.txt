@@ -105,3 +105,17 @@ gid://shopify/Product/16605481795975	2026-10-07	Haustierwelt
 gid://shopify/Product/16603766030727	2026-10-07	Kinder & Baby
 gid://shopify/Product/16603904803207	2026-10-07	Taschen & Rucksäcke
 gid://shopify/Product/15493857051009	2026-10-07	Auto & KFZ-Zubehör
+gid://shopify/Product/16611920478599	2026-10-09	Damen-Mode
+gid://shopify/Product/16612342563207	2026-10-09	Herren-Mode
+gid://shopify/Product/16609739800967	2026-10-09	Schuhe
+gid://shopify/Product/16603590033799	2026-10-09	Beauty & Pflege
+gid://shopify/Product/16610147107207	2026-10-09	Wohnen & Dekoration
+gid://shopify/Product/16609948041607	2026-10-09	Küche & Kochen
+gid://shopify/Product/16607205884295	2026-10-09	Elektronik & Technik
+gid://shopify/Product/16604867559815	2026-10-09	Smartwatches & Wearables
+gid://shopify/Product/16605480911239	2026-10-09	Haustierwelt
+gid://shopify/Product/16604929524103	2026-10-09	Kinder & Baby
+gid://shopify/Product/16606172643719	2026-10-09	Sport, Fitness & Outdoor
+gid://shopify/Product/16604909502855	2026-10-09	Taschen & Rucksäcke
+gid://shopify/Product/16608494158215	2026-10-09	Auto & KFZ-Zubehör
+gid://shopify/Product/15503164047745	2026-10-09	Handy-Zubehör

@@ -553,28 +553,69 @@ def kollektion_doppel_offen():
     return None if n == 0 else f"KOLL-DOPPEL: {n} Kollektionen mit gleicher Regel offen (dropship/KOLLEKTION-DOPPEL.md)"
 
 
+# 09.10.2026 (Verbesserungsrunde): «still: Pinterest» stand in «BRAUCHT DICH», obwohl der Autopilot Pinterest seit 06.10.
+# bewusst nur alle 48 h bedient (Median 1 Aufruf je Pin) — die Ampel prüfte jeden Kanal fest auf 24 h. Der Takt kommt jetzt
+# aus EINER Quelle, social_autopilot.sh (TIKTOK_/YOUTUBE_/PINTEREST_ABSTAND); still = letzter Post älter als Takt + Spielraum.
+_TAKT_STANDARD = {"tiktok": 21600, "youtube": 43200, "pinterest": 172800}
+
+
+def metricool_takt():
+    """{kanal: Sekunden} aus den Standardwerten in automation/social_autopilot.sh (FALLBACK _TAKT_STANDARD)."""
+    import re as _re
+    takt = dict(_TAKT_STANDARD)
+    try:
+        sh = open(os.path.join(REPO, "automation/social_autopilot.sh"), encoding="utf-8").read()
+        for k in takt:
+            m = _re.search(rf"^{k.upper()}_ABSTAND=\$\{{{k.upper()}_ABSTAND:-(\d+)\}}", sh, _re.M)
+            if m:
+                takt[k] = int(m.group(1))
+    except OSError:
+        pass
+    return takt
+
+
+def kanal_still(alter_s, takt_s):
+    """Still = kein Post seit Takt + Spielraum (25 % des Takts, mindestens 2 h: Autopilot-Runden, Neustarts, Planzeit).
+    alter_s None = noch nie gepostet → still."""
+    return alter_s is None or alter_s > takt_s + max(7200, takt_s // 4)
+
+
 def metricool_kanaele():
     """23.09.2026 «metricool maximal nutzen»: je Metricool-Kanal, wie viel in 24 h geplant wurde, und Fehler.
-    Ein Kanal mit 0 in 24 h ist ein Befund (Autopilot: TikTok/YouTube 12 h, Pinterest 6 h)."""
+    Ein Kanal ist «still», wenn sein letzter Post älter ist als sein Takt aus social_autopilot.sh + Spielraum (09.10.)."""
     try:
         import csv, datetime as dt
-        grenze = dt.datetime.utcnow() - dt.timedelta(hours=24)
-        def jung(t):
-            try: return dt.datetime.fromisoformat(t.replace("Z", "")[:19]) >= grenze
-            except Exception: return False
-        n = {"tiktok": 0, "youtube": 0}; fehler = []
+        jetzt = dt.datetime.utcnow()
+        grenze = jetzt - dt.timedelta(hours=24)
+        def zeit(t):
+            try: return dt.datetime.fromisoformat((t or "").replace("Z", "")[:19])
+            except Exception: return None
+        n = {"tiktok": 0, "youtube": 0}; fehler = []; letzt = {"tiktok": None, "youtube": None, "pinterest": None}
         rows = list(csv.DictReader(open(os.path.join(REPO, "automation/reels_seed.csv"), newline="")))
         for r in rows:
             st = (r.get("status") or "").strip()
             for k in n:
-                if st == f"posted-{k}" and jung(r.get("posted_at") or ""): n[k] += 1
+                if st == f"posted-{k}":
+                    t = zeit(r.get("posted_at"))
+                    if t:
+                        n[k] += t >= grenze
+                        letzt[k] = max(letzt[k] or t, t)
                 if st == f"{k}-fehler": fehler.append(k)
         pins = 0
         lp = os.path.join(REPO, "dropship/_pinterest_pins.txt")
         if os.path.exists(lp):
-            pins = sum(1 for z in open(lp) if z.strip() and jung(z.split("\t")[0]))
+            for z in open(lp):
+                t = zeit(z.split("\t")[0]) if z.strip() else None
+                if t:
+                    pins += t >= grenze
+                    letzt["pinterest"] = max(letzt["pinterest"] or t, t)
+        takt = metricool_takt()
         teile = [f"TikTok {n['tiktok']}", f"YouTube {n['youtube']}", f"Pinterest {pins}"]
-        warn = [k for k, v in (("TikTok", n["tiktok"]), ("YouTube", n["youtube"]), ("Pinterest", pins)) if v == 0]
+        warn = []
+        for name, k in (("TikTok", "tiktok"), ("YouTube", "youtube"), ("Pinterest", "pinterest")):
+            alter = (jetzt - letzt[k]).total_seconds() if letzt[k] else None
+            if kanal_still(alter, takt[k]):
+                warn.append(f"{name} (letzter vor {int(alter // 3600)} h, Takt {takt[k] // 3600} h)" if alter else f"{name} (nie)")
         txt = "METRICOOL 24 h: " + " · ".join(teile)
         if fehler: txt += f" · ⚠️ {len(fehler)} Fehler ({', '.join(sorted(set(fehler)))})"
         if warn: txt += f" · still: {', '.join(warn)}"
