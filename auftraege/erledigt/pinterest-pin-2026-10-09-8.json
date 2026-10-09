@@ -1,0 +1,25 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-09-8",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 8 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-09T03:17:33.727Z",
+  "dauer_s": 22.1,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 42, offen 123",
+      "Boards auf dem Profil: /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Wellness & Beauty» (https://ch.pinterest.com/luxestyleCH/wellness-beauty/, 124 Z.): Titel nicht da",
+      "Bild 22425 Bytes (image/jpeg)",
+      "Bildfeld #storyboard-upload-input fehlt"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-09-8-kein-bildfeld.png"
+    ],
+    "knoepfe": []
+  }
+}
