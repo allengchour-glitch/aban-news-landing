@@ -44,6 +44,26 @@
 
 
 
+## 2026-10-09 14:50 UTC · 🔍 «nur 18 google suche ist wenig warum»: CH-Google 127 → 104 → 75 → ~77/Mt, Snippet doppelt escaped
+
+**GEMESSEN (ShopifyQL):** Google-Sitzungen aus der Schweiz: Jul 127, Aug 104, Sep 75, Okt ~77/Mt. Die Juli-Spitze der
+Wochenkurve (183) bestand zu über der Hälfte aus Besuchen aus USA, PL, CA usw.
+- 30 Tage: 71 von 91 auf Produktseiten (Gratis-Einträge), 0 auf Ratgeber.
+- Juli-Treiber «Rizinusöl-Wickel-Set» (34 Besuche) ist DRAFT, weil CJ es nicht in die CH liefert. Dazu Sommer- und
+  1.-August-Ware.
+- Search Console zeichnet erst seit 05.10. auf. robots.txt, Canonical und Sitemap sind in Ordnung.
+- `<meta name="description">` war doppelt escaped («&amp;amp;»): `page_description` kommt schon escaped. Der og-Fix
+  hatte diese Zeile als «korrekt» bezeichnet.
+
+**GETAN:**
+- `meta_beschreibung_escape.py`: erst zurück, dann einmal escapen. Kanarien 3/3, live, ausgeliefert 6/6 einfach.
+- Wächter täglich.
+- Bericht `dropship/GOOGLE-VERKEHR-WARUM-2026-10-09.md` mit Hebeln (Betreiber: GSC-Leistung, Lieferzeit im GMC).
+
+**Lehre:** **Eine Wochenkurve ohne Land täuscht.** Die Juli-Spitze war zu über der Hälfte Ausland, der Rückgang in der
+Schweiz ist kleiner und hat einen Namen (Rizinusöl-Set gedraftet, Saisonende). **Ein Kommentar «ist korrekt» ist ein
+Datum, kein Beweis.** Die ausgelieferte Seite mit einem Produkt mit «&» hat es widerlegt.
+
 ## 2026-10-09 12:50 UTC · ⌚ Verbesserungsrunde: «Uhrenarmband» las der Uhren-Wächter als Uhr
 
 **GEMESSEN:** Neuimporte 4 h: 40 Stück, alle mit 3 Bildern, aber Uhrarmbänder bei Google als «Watches». Im Katalog standen
@@ -19282,3 +19302,4 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🗂️ **«das muss perfekt sein»: Taschen fertig (Google 9 + Shopify 124, Rücklesen 30/30); 3'553 «Widersprüche» waren Sammelkörbe (Google «Cosmetics»/«Hair Care» grob, Shopify-Feinklasse oft falsch) → `kosmetik_fein.py` (82 Kanarien) + `haar_fein.py` (51) setzen BEIDE Felder aus dem Titel, Plan 2'293 + 910, täglich im Aufseher.** Feld nie aus dem anderen ableiten, volle Liste je Ziel lesen → `dropship/KATALOG-TASCHEN-2026-10-07.md`
 - 2026-10-08 · 🧠 **Verbesserungsrunde (Tag 8 ✅ 106 Videos): 483 Neuimporte seit 01.10. auf Google-Oberklassen, alte KI-Stufe war Einmal-Lauf → `oberklasse_lernen.py` (Regeln aus 16'351 Urteilen; Merkmal Kopfwort vor «mit/für/aus»: 92,1 → 97,7 %; 6/0) + Rest täglich an `google_fein_ki` (Massen-Modell gpt-oss-20b, 120b/qwen bleiben für Bestellungen/SEO).** Bereinigung ohne Wächter füllt sich wieder → `dropship/OBERKLASSE-NEUIMPORT-2026-10-08.md`
 - 2026-10-08 · ⭐ **«weiter verbessern» (Tag 9 vorgezogen): Bewertungs-Import erreichte 107/2'695 Neuimporte — pid stand in der SKU, der Nachschlag kostete 10 CJ-Punkte und scheiterte ab ~04 UTC, Läufe starben am Neustart → rohe pid direkt, Neuware im Reissverschluss, still_gestorben + «WEITER»-Kette (19 Bewertungen in der ersten Charge); Versandseite «spart CO2» + 11 Produkte «klimaneutral» → `data/klima_regel.json` für Wächter + Importer (11/0, py=js).** Gratis ab 50 vs 45 ist gewollt → `dropship/VERTRAUEN-TAG9-2026-10-08.md`
+- 2026-10-08 · 👗 **«weiter fein katalog verbessern»: Titelprobe-Ablehnungen (233) waren meist Google-Fehler (142 «Dresses» = Röcke/Blusen/Nachthemden) → `titelprobe_fein.py` 172/0; Kollektion Kleider/Röcke hing am CJ-Kategorienamen → `kleid_rock_tags.py` 453/0 + Importer `kleidRockTag()` (eine Wortregel, py=js 0 Abw.); 328 Einzelurteile 245/0 mit Regel-Vorrang; Zweig 243→69, Titelprobe 233→5; Printful fällt auf Grobklasse zurück (363/432) → Zähler `rueckfall-grob`.** → `dropship/FEINKATALOG-KLEID-ROCK-2026-10-08.md`
