@@ -1,5 +1,15 @@
 # BigBuy: EUR 1'000.00 zurückholen — Stand 15.09.2026
 
+> **Nachtrag 09.10.2026 07:52 UTC (Routine «BigBuy-Ticket Nachkontrolle», Gmail gelesen, nichts gesendet):**
+> - **HT60802 «RETIRADA ID 966388»:** BigBuy schreibt am 08.10. 10:14 UTC, das Wallet-Guthaben sei auf das Bankkonto
+>   überwiesen («we have proceeded to transfer the balance of your Wallet to your bank account»). Die Gutschrift kommt
+>   innert höchstens 15 Tagen, also bis etwa 23.10.2026. Eine Einzahlungs-Bestätigung per Mail soll folgen.
+> - **HT182055** (das Ticket vom 07.10.) wurde als Duplikat von HT60802 geschlossen.
+> - **Offen:** Ob das Geld ankommt, zeigt nur das Bankkonto des Betreibers. Diesmal ist die richtige 21-stellige IBAN
+>   hinterlegt (08.09.). Im BigBuy-Kontrollpanel muss der Vorgang von «Pending Movements» zu «Transactions Confirmed»
+>   wechseln. Per API habe ich es nicht gemessen, weil in dieser Sitzung kein BigBuy-Schlüssel vorhanden ist.
+>   **Nächste Prüfung: ~23.10.** Ist bis dann nichts gutgeschrieben, auf HT60802 antworten (nicht neu eröffnen).
+
 > Zweite Fassung. Die erste lag als **nicht committete** Datei im Arbeitsbaum und wurde von
 > `automation/repo_vorspulen.sh` gelöscht (`git stash -u` … `git stash drop`, Zeilen 21/34).
 > **Lehre: Ein Bericht, der nicht committet ist, existiert nicht** — beim nächsten Neustart
