@@ -1343,6 +1343,9 @@ while true; do
       # 09.10.2026: wörtlich übersetzte Händlerwörter (防爆 «explosionsgeschützt» bei Leinen/Werkzeug/Akkus, 爆款 «Explosive …», ins风, 百搭)
       # + Rolex-/Patek-Modellnamen im Uhrentitel — 200/0 am 09.10.; Importer filtern selbst (haendlerwort.mjs in fallenSicher).
       [ -f "$REPO/automation/haendlerwort.py" ] && ( cd "$REPO" && SCHARF=1 timeout 1500 python3 automation/haendlerwort.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
+      # 09.10.2026: «dein … Design» am Satzanfang (596 Texte) — um() machte jedes «Ihr» zu «dein», auch «ihr Design» (= der Ware).
+      # Quelle repariert (dein_bezug.ihr_satzanfang in um()); dieser Lauf fängt Altbestand und Texte aus anderen Wegen.
+      [ -f "$REPO/automation/dein_bezug.py" ] && ( cd "$REPO" && SCHARF=1 timeout 1500 python3 automation/dein_bezug.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:

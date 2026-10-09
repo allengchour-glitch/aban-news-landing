@@ -311,6 +311,10 @@ def um(t):
     t=_lauf_2j(t); t=_reflexiv(t)
     t=re.sub(r'\b(finde|wähle|suche|entdecke|sichere|hol|hole|kaufe|bestelle|reserviere|gönne|nimm) für sich\b', r'\1 für dich', t)
     # 4) Possessiv/Objekt
+    # 09.10.2026: «Ihr» am SATZANFANG ist oft «ihr/sein» = der Ware («Ihr minimalistisches Design …») — der pauschale Tausch
+    # machte daraus 596× «dein … Design» (klein, falscher Bezug). Satzanfang zuerst: Ware → Artikel, Kundin → «Dein».
+    from dein_bezug import ihr_satzanfang
+    t=ihr_satzanfang(t)
     t=re.sub(r'\bIhnen\b','dir',t); t=re.sub(r'\bIhr(e|en|em|er|es)?\b',lambda m:'dein'+(m.group(1) or ''),t)
     t=re.sub(r'\bsich selbst\b','dich selbst',t); t=t.replace('ß','ss')
     # 5) Nachbesserungen aus der Lektüre (03.09.): Modalverb-Ketten, Imperativ nach «und»/«–», Umlaute

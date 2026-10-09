@@ -1,6 +1,6 @@
-# «dein» am Satzanfang — Stand 2026-10-09 07:19 UTC
+# «dein» am Satzanfang — Stand 2026-10-09 07:38 UTC
 
-Werkzeug `automation/dein_bezug.py`, Regel `automation/data/dein_bezug_regel.json`, Quelle repariert in `kollektionstexte_du_form.um()` (`ihr_satzanfang`). Zu ändern: {'produkte': 590, 'stellen': 593}
+Werkzeug `automation/dein_bezug.py`, Regel `automation/data/dein_bezug_regel.json`, Quelle repariert in `kollektionstexte_du_form.um()` (`ihr_satzanfang`). Geändert: {'produkte': 625, 'stellen': 628, 'ok': 625}
 
 ## Beispiele
 
@@ -20,6 +20,7 @@ Werkzeug `automation/dein_bezug.py`, Regel `automation/data/dein_bezug_regel.jso
 - «dein schlankes Design» → «Das schlanke Design» (MINI Blue – Elektrische Zahnbürste)
 - «deine kompakte Grösse» → «Die kompakte Grösse» (Körperanalysewaage mit Bluetooth)
 - «dein minimalistisches Design» → «Das minimalistische Design» (Minimalistische Halskette aus reinem Kup)
+- «dein einzigartiger und individueller Stil» → «Der einzigartige und individuelle Stil» (Taktische Sportuhr mit vielen Funktionen)
 - «dein Quarz-Uhrwerk» → «Das Quarz-Uhrwerk» (Minimalistische Armbanduhr im Koreanisch)
 - «dein schlanker Schnitt» → «Der schlanke Schnitt» (Outdoor Shell Jacke für Herren)
 - «dein einzigartiges erweiterbares Design» → «Das einzigartige erweiterbare Design» (Multifunktionale, wasserdichte Umhängeta)
@@ -28,8 +29,7 @@ Werkzeug `automation/dein_bezug.py`, Regel `automation/data/dein_bezug_regel.jso
 - «dein minimalistisches Design» → «Das minimalistische Design» (Einfache Umhängetasche)
 - «dein Haustier» → «Dein Haustier» (Erhöhtes Haustierbett mit atmungsaktivem)
 - «deine kompakte Grösse» → «Die kompakte Grösse» (Magnetische Powerbank Weiss)
-- «dein gerader Schnitt» → «Der gerade Schnitt» (Elegante High-Waist Cropped Hose mit Spi)
 
 ## Unklar (bleibt, Nomen in die Regeldatei aufnehmen)
 
-
+- Ausweis (1×)
