@@ -17427,3 +17427,7 @@ gid://shopify/Product/16612775264647	24->0	High-Top Sneaker mit Tiermuster
 gid://shopify/Product/16612775330183	107->0	Einfarbiger Schal aus Baumwoll-Modal-Mischung
 gid://shopify/Product/16612776247687	24->0	Kühlschrankmagnet mit Musikfunktion
 gid://shopify/Product/16612776477063	32->1	Herren Lederschuhe mit Schnalle
+gid://shopify/Product/16612777787783	29->3	Prinzessinnen Sandalen für Kinder
+gid://shopify/Product/16612778377607	39->1	Kinder-Sneakers aus Strick
+gid://shopify/Product/16612778770823	29->0	Baby- und Kinderschuhe mit Lichtern
+gid://shopify/Product/16612779983239	147->0	LED Sternenhimmel Projektionslampe
