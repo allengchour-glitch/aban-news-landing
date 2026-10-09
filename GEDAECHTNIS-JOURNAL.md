@@ -44,6 +44,18 @@
 
 
 
+## 2026-10-09 05:10 UTC · 🧭 «weiter»: Kanäle gemessen, Headless-Kanal notiert, «LuxeStyle-Netzwerk» raus
+
+- **0 Kanäle** ist keine Klasse: 1 von 51'805, angelegt Minuten vorher (Importer publizieren nach dem Anlegen).
+- **«Luxe Style Headless» (391626359175):** bis 27.09. allen Produkten gegeben, seit 01.10. keinem Neuimport (PUBS kennt ihn
+  nicht); Zweck unbekannt, keine App. Tokenlose Storefront-API sieht Neuimporte trotzdem (4/4) → nichts geändert. **Nicht
+  erneut untersuchen**, ausser jemand nennt den Zweck.
+- **«🇨🇭 Versand aus dem LuxeStyle-Netzwerk»** (22, 0 mit CH/EU-Lager) → «🇨🇭 Schweizer Shop» über `versprechen_regel.json`,
+  22 + 1 / 0 Fehler, live geprüft.
+- **Offen:** Masstabellen für Mode (Provence: nur Theme-Richtwerte; 31× «eine Grösse grösser wählen»).
+
+→ `dropship/WEITER-2026-10-09-MORGEN.md`
+
 ## 2026-10-09 04:45 UTC · 🍬 Verbesserungsrunde: Essbares aus China nicht mehr im Verkauf
 
 **Gemessen:** Neuimport «Hundegesundheits-Tabletten 200 g» (Kautabletten mit Nicotinamid-Ribosid, Quercetin, Vitamin C) ACTIVE in
