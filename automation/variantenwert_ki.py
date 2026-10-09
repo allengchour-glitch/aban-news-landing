@@ -43,8 +43,14 @@ LEER_WERT = re.compile(r"(?i)^\s*(farbe|farben|ausführung|variante|modell|stil|
 
 
 def braucht_ki(werte):
-    """Englischer Wert, den die Tabellen nicht übersetzen können?"""
+    """Englischer Wert, den die Tabellen nicht übersetzen können?
+    09.10.2026: Felder, in denen JEDER Wert «Farbe-Alter» ist («Purple-0 to 3M», «Blue-0to3m»), gehören alter_im_farbwert.py
+    (teilt in Farbe + Grösse, Grössenfilter + Google size). Übersetzte die KI sie vorher zu «Lila · 0–3 Monate», fände der
+    Aufteiler sein Muster nie mehr — das Alter fehlte dauerhaft im Filter."""
     import variant_value_clean as vvc
+    import alter_im_farbwert as aif
+    if werte and all(aif.teilen(w) for w in werte):
+        return False
     kx = vvc.option_kontext(werte)
     return any(vvc.englisch(w) and vvc.wert_de(w, kx)[0] is None for w in werte)
 

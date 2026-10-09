@@ -1,5 +1,98 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 15:54 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 20:06 UTC
 
-Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Geändert: {'hand': 1, 'ok': 1}
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'fremdwort': 93, 'dublette-titel-bleibt': 1}
 
-- hand: «Herren-Halbbereiz-Hooded Sweatshirt» → «Herren-Sweatshirt mit Stehkragen und Aufsatztasche»
+- fremdwort: «Dünne Martin-Boots mit Suede» → «Dünne Worker-Boots mit Suede»
+- fremdwort: «Frauen Martin Stiefel mit niedrigem Absatz» → «Frauen Worker-Stiefel mit niedrigem Absatz»
+- fremdwort: «Retro-Höhenverstärkende Mid-Calf Martin-Boots» → «Retro-Höhenverstärkende Mid-Calf Worker-Boots»
+- fremdwort: «Herren-Martin-Stiefel» → «Herren-Worker-Stiefel»
+- fremdwort: «Martin Boots mit Nieten und klobigem Absatz» → «Worker-Boots mit Nieten und klobigem Absatz»
+- fremdwort: «Martin Boots aus Leder mit Schnürung» → «Worker-Boots aus Leder mit Schnürung»
+- fremdwort: «Herren Outdoor Fashion Martin Boots» → «Herren Outdoor Fashion Worker-Boots»
+- fremdwort: «Retro Matte Martin Boots für Herren» → «Retro Matte Worker-Boots für Herren»
+- fremdwort: «Amekaji Martin Boots aus echtem Leder» → «Amekaji Worker-Boots aus echtem Leder»
+- fremdwort: «Martin Boots mit hohem Schaft und runder Zehenpartie» → «Worker-Boots mit hohem Schaft und runder Zehenpartie»
+- fremdwort: «Martin Boots mit Schnürung & Plateau-Sohle» → «Worker-Boots mit Schnürung & Plateau-Sohle»
+- fremdwort: «Retro Vintage Martin Boots für Herren» → «Retro Vintage Worker-Boots für Herren»
+- fremdwort: «Herren Octopus High-top Retro Martin Boots» → «Herren Octopus High-top Retro Worker-Boots»
+- fremdwort: «High-top Octopus Martin Boots» → «High-top Octopus Worker-Boots»
+- fremdwort: «Kinder Martin Boots» → «Kinder Worker-Boots»
+- fremdwort: «Martin Boots für Herren, Mid-Top» → «Worker-Boots für Herren, Mid-Top»
+- fremdwort: «Einfache Casual Übergrössen Leder Martin Boots» → «Einfache Casual Übergrössen Leder Worker-Boots»
+- fremdwort: «Kinder Martin Boots im koreanischen Stil» → «Kinder Worker-Boots im koreanischen Stil»
+- fremdwort: «Kinder Martin Boots für Herbst & Winter» → «Kinder Worker-Boots für Herbst & Winter»
+- fremdwort: «Slip-on Martin Boots für Herren» → «Slip-on Worker-Boots für Herren»
+- fremdwort: «Kinder Martin Boots im Britischen Stil» → «Kinder Worker-Boots im Britischen Stil»
+- fremdwort: «Kinder Martin Boots mit Kette» → «Kinder Worker-Boots mit Kette»
+- fremdwort: «Kinder Martin Boots – Freizeit-Lederstiefel» → «Kinder Worker-Boots – Freizeit-Lederstiefel»
+- fremdwort: «Kinder Martin Boots mit weicher Sohle» → «Kinder Worker-Boots mit weicher Sohle»
+- fremdwort: «Kinder Martin Boots aus Mikrofaser-Leder» → «Kinder Worker-Boots aus Mikrofaser-Leder»
+- fremdwort: «Martin Boots für Mädchen mit Reissverschluss» → «Worker-Boots für Mädchen mit Reissverschluss»
+- fremdwort: «Britische Martin Boots für Damen» → «Britische Worker-Boots für Damen»
+- fremdwort: «Martin Boots für Kinder» → «Worker-Boots für Kinder»
+- fremdwort: «Kinder Leder Martin Boots mit Schnürung» → «Kinder Leder Worker-Boots mit Schnürung»
+- fremdwort: «Retro Martin Boots für Herren» → «Retro Worker-Boots für Herren»
+- fremdwort: «Kinder Martin Boots – Schwarz oder Weiss» → «Kinder Worker-Boots – Schwarz oder Weiss»
+- fremdwort: «Mädchen Martin Boots mit Erdbeer-Muster» → «Mädchen Worker-Boots mit Erdbeer-Muster»
+- fremdwort: «Kinder Martin Boots mit Fleece-Futter» → «Kinder Worker-Boots mit Fleece-Futter»
+- fremdwort: «Mädchen Prinzessin Martin Boots aus Glanzleder» → «Mädchen Prinzessin Worker-Boots aus Glanzleder»
+- fremdwort: «Mädchen Martin Boots Korean Style» → «Mädchen Worker-Boots Korean Style»
+- fremdwort: «Kinder Martin Boots aus Leder, rutschfest» → «Kinder Worker-Boots aus Leder, rutschfest»
+- fremdwort: «Unisex Kinder Martin Boots» → «Unisex Kinder Worker-Boots»
+- fremdwort: «Octopus Martin Boots für Herren» → «Octopus Worker-Boots für Herren»
+- fremdwort: «Martin Boots mit Schnürung und leichter Erhöhung» → «Worker-Boots mit Schnürung und leichter Erhöhung»
+- fremdwort: «Martin Boots für Herren» → «Worker-Boots für Herren»
+- fremdwort: «Retro Martin Boots im Brit-Style» → «Retro Worker-Boots im Brit-Style»
+- fremdwort: «Retro Plattform Martin Boots für Herren» → «Retro Plattform Worker-Boots für Herren»
+- fremdwort: «Warme Winter Martin Boots für Herren» → «Warme Winter Worker-Boots für Herren»
+- fremdwort: «Herren Martin Boots mit leichter Erhöhung» → «Herren Worker-Boots mit leichter Erhöhung»
+- fremdwort: «Herren Winter Martin Boots» → «Herren Winter Worker-Boots»
+- fremdwort: «Kinder Martin Boots aus Rindsleder» → «Kinder Worker-Boots aus Rindsleder»
+- fremdwort: «Herren Platform Martin Boots» → «Herren Platform Worker-Boots»
+- fremdwort: «Kleine Kunstleder Martin-Stiefel – Koreanischer Stil» → «Kleine Kunstleder Worker-Stiefel – Koreanischer Stil»
+- fremdwort: «Kinder Plateau Martin Boots im Brit-Stil» → «Kinder Plateau Worker-Boots im Brit-Stil»
+- fremdwort: «Martin Boots aus Rindsleder für Herren» → «Worker-Boots aus Rindsleder für Herren»
+- fremdwort: «Spitze Workwear Martin Boots» → «Spitze Workwear Worker-Boots»
+- fremdwort: «Lässige High-Top Leder Martin Boots für Herren» → «Lässige High-Top Leder Worker-Boots für Herren»
+- fremdwort: «Herren Martin Boots mit runder Zehenkappe» → «Herren Worker-Boots mit runder Zehenkappe»
+- fremdwort: «Kinder Leder Martin-Stiefel» → «Kinder Leder Worker-Stiefel»
+- fremdwort: «Martin Boots Herren Retro High-Top» → «Worker-Boots Herren Retro High-Top»
+- fremdwort: «Martin Boots Herren Plattform High-Top, rutschfest» → «Worker-Boots Herren Plattform High-Top, rutschfest»
+- fremdwort: «Western Denim Farbwechsel Martin Schuhe Herren» → «Western Denim Farbwechsel Worker-Schuhe Herren»
+- fremdwort: «Kinder Martin Stiefel» → «Kinder Worker-Stiefel»
+- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Kinder-Martin-Stiefel» → «Kinder-Worker-Stiefel»
+- fremdwort: «Mädchen Martin Boots mit Schnürsenkeln» → «Mädchen Worker-Boots mit Schnürsenkeln»
+- fremdwort: «Trendige Martin Boots für Herren» → «Trendige Worker-Boots für Herren»
+- fremdwort: «Martin Boots mit Rundspitze und Blockabsatz» → «Worker-Boots mit Rundspitze und Blockabsatz»
+- fremdwort: «Business- und Freizeit Martin Boots» → «Business- und Freizeit Worker-Boots»
+- fremdwort: «Britische Leder Martin Boots mit Reissverschluss» → «Britische Leder Worker-Boots mit Reissverschluss»
+- fremdwort: «Herren Martin Boots aus Rindsleder» → «Herren Worker-Boots aus Rindsleder»
+- fremdwort: «Schwarze Leder High-Top Martin Boots» → «Schwarze Leder High-Top Worker-Boots»
+- fremdwort: «Herren High-top Slip-on Martin Boots» → «Herren High-top Slip-on Worker-Boots»
+- fremdwort: «Lässige Mid-Top Martin Boots aus Leder» → «Lässige Mid-Top Worker-Boots aus Leder»
+- fremdwort: «Vintage Martin Boots aus Echtleder» → «Vintage Worker-Boots aus Echtleder»
+- fremdwort: «Martin Booties im Britischen Stil» → «Worker-Booties im Britischen Stil»
+- fremdwort: «Rutschfeste Retro Martin Boots für Herren» → «Rutschfeste Retro Worker-Boots für Herren»
+- fremdwort: «Britische Wildleder-Martin Boots für Herren» → «Britische Wildleder-Worker-Boots für Herren»
+- fremdwort: «Martin Boots – Hohe Arbeitsstiefel für Herren» → «Worker-Boots – Hohe Arbeitsstiefel für Herren»
+- fremdwort: «Herren Martin Boots mit Absatzerhöhung» → «Herren Worker-Boots mit Absatzerhöhung»
+- fremdwort: «Martin Boots Leder High-Top» → «Worker-Boots Leder High-Top»
+- fremdwort: «Chelsea Low-Top Martin Boots für Herren» → «Chelsea Low-Top Worker-Boots für Herren»
+- fremdwort: «Bestickte knöchelhohe Martin Boots für Herren» → «Bestickte knöchelhohe Worker-Boots für Herren»
+- fremdwort: «Martin Boots im Punk-Stil» → «Worker-Boots im Punk-Stil»
+- fremdwort: «Wasserdichte Martin Stiefel» → «Wasserdichte Worker-Stiefel»
+- fremdwort: «Retro Britische Martin Boots für Herren» → «Retro Britische Worker-Boots für Herren»
+- fremdwort: «Kinder Martin Boots aus Kunstleder» → «Kinder Worker-Boots aus Kunstleder»
+- fremdwort: «Kinder Martin Boots aus Leder und Samt» → «Kinder Worker-Boots aus Leder und Samt»
+- fremdwort: «Kinder Martin Boots aus Leder» → «Kinder Worker-Boots aus Leder»
+- fremdwort: «Baby Martin Boots für Jungen und Mädchen» → «Baby Worker-Boots für Jungen und Mädchen»
+- fremdwort: «Herren High-Top Martin Boots» → «Herren High-Top Worker-Boots»
+- fremdwort: «Outdoor Casual Martin Boots» → «Outdoor Casual Worker-Boots»
+- fremdwort: «Kinder Martin Boots aus Schafleder» → «Kinder Worker-Boots aus Schafleder»
+- fremdwort: «Hobby Bear Kinder Martin Boots» → «Hobby Bear Kinder Worker-Boots»
+- fremdwort: «Martin Booties für Kinder» → «Worker-Booties für Kinder»
+- fremdwort: «Trendige Martin Boots mit dicker Sohle» → «Trendige Worker-Boots mit dicker Sohle»
+- fremdwort: «Warme Martin Boots im Britischen Stil» → «Warme Worker-Boots im Britischen Stil»
+- fremdwort: «Martin Boots Outdoor Mountaineering Canvas Schuhe» → «Worker-Boots Outdoor Mountaineering Canvas Schuhe»
+- fremdwort: «Port Workwear Martin Boots» → «Port Workwear Worker-Boots»
+- fremdwort: «Leder Martin Boots mit spitzer Zehenkappe» → «Leder Worker-Boots mit spitzer Zehenkappe»
