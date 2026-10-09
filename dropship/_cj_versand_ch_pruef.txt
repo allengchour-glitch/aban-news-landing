@@ -6237,3 +6237,6 @@ herren-outdoor-fashion-martin-boots-617600	2601080842051617800	16	17.66	ok	lande
 vintage-denim-boots-mit-metallschnalle-625600	2601080437321625800	16	17.84	ok	landeseite
 robuste-leder-boots-fur-herren-627300	2601080431501627600	16	17.28	ok	landeseite
 warme-retro-stiefeletten-aus-samt-fur-herren-613500	2601070347291613700	16	12.44	ok	landeseite
+herren-motorradstiefel-mit-rundspitze-607400	2601051120461607700	16	15.81	ok	landeseite
+vintage-casual-leder-boots-fur-herren-606400	2601050944351607000	16	19.06	ok	landeseite
+herren-outdoor-boots-mit-extra-langem-plusch-618400	2601050941151618600	16	14.48	ok	landeseite
