@@ -1,1 +1,4 @@
-Ticket gesendet 2026-10-07 ~10:15 UTC vom Betreiber (Contact Area > Administration > «Enquiry about Topping up/Withdrawing from your Moneybox»), Referenznummer folgt
+Ticket gesendet 2026-10-07 ~10:15 UTC vom Betreiber (Contact Area > Administration > «Enquiry about Topping up/Withdrawing from your Moneybox»)
+Referenz: HT182055 — von BigBuy am 08.10. 10:15 UTC als DUPLIKAT geschlossen; massgeblich ist der ältere Fall HT60802 («RETIRADA ID 966388»).
+HT60802: BigBuy bestätigt 08.10.2026 10:14 UTC «we have proceeded to transfer the balance of your Wallet to your bank account», Gutschrift innert max. 15 Tagen (bis ~23.10.2026), Bestätigungsmail der Einzahlung folgt. Im Kontrollpanel wechselt der Vorgang von «Pending Movements» zu «Transactions Confirmed».
+Nachkontrolle 09.10. 07:52 UTC (Gmail from:bigbuygroup.com nach 07.10.): nur diese 2 Mails, noch keine Einzahlungs-Bestätigung. Guthaben per API nicht messbar (kein BigBuy-Schlüssel in der Sitzung).
