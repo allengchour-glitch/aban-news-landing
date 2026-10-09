@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-09T09:26Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-09T11:19Z
 
-Aktive gescannt: 15 · ohne Kategorie: 15 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 21 · ohne Kategorie: 21 · heute gesetzt: 18 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- langarmliges-polo-shirt-mit-standkragen-611200 · Herrenmode → Apparel & Accessories > Clothing
-- loose-casual-shirtcoat-in-schwarz-weiss-grau-g-600100 · Herrenmode → Apparel & Accessories > Clothing
-- amerikanisches-retro-long-sleeve-denim-shirt-625700 · Herrenmode → Apparel & Accessories > Clothing
-- mannliches-denim-shirt-mit-langen-armeln-600200 · Herrenmode → Apparel & Accessories > Clothing
-- manner-shirt-mit-druck-lange-armel-614800 · Herrenmode → Apparel & Accessories > Clothing
+- weisses-baby-schlafsack-mit-kapuze-612500 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Sleepwear
+- babybettdecke-mit-cartoon-motive-80-cm-610400 · Baby & Kinder → Baby & Toddler > Swaddling & Receiving Blankets
+- fleecegefutterter-skianzug-fur-kinder-606700 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing
+- weihnachtsbaum-print-bodysuit-mit-hose-und-mut-613000 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Bottoms
+- baumwoll-bodysuit-fur-neugeborene-610000 · Baby & Kinder → Baby & Toddler
 
