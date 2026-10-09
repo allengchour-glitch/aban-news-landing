@@ -646,3 +646,5 @@
 15500485886337	Farbe:15:15	2026-10-09	10er-pack-verstellbare-pu-hundehalsbander-mit-001792
 15449178472833	Grösse:4:4	2026-10-09	weicher-halskragen-fur-katzen-welpen-214658
 15453743022465	Farbe:4+Grösse:5:20	2026-10-09	asymmetrisches-knopfkleid-mit-seitlichen-tasch-617700
+15496229454209	Ausführung:2:2+ki	2026-10-09	elektrischer-flaschenoffner-mit-zubehor-701952
+15522442543489	Farbe:2+Modell:2:3	2026-10-09	memory-nackenkissen-schmetterlingsform-2690ad
