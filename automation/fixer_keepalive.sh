@@ -237,6 +237,16 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_modell.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_modell.py" >> "$FC" 2>&1 9>&- & )
   fi
+  # GRUPPENSTEMPEL-TYP (09.10.2026, Verbesserungsrunde): CJ-Gruppe «elektronik» stempelte Uhren/Uhrenarmbänder mit Typ «Elektronik»
+  # → 1'089 fehlten in der Menü-Kollektion «Schmuck & Uhren» (Typ-Regel). Typ aus Shopify-Kategorie aa-6 + Titelwort, Sperre wie
+  # produkttyp_vereinheitlichen; Selbsttest = Kanarien + py=js. Importer korrigiert selbst (gruppenstempel_typ.mjs).
+  GS=/tmp/gruppenstempel_typ.log
+  if [ -f "$REPO/automation/gruppenstempel_typ.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 600 python3 automation/gruppenstempel_typ.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$GS"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_gruppenstempel_typ.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/gruppenstempel_typ.py" >> "$GS" 2>&1 9>&- & )
+  fi
   # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
   # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
   KM=/tmp/kleider_merkmale.log

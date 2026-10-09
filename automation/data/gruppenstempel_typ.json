@@ -1,0 +1,210 @@
+{
+  "_zweck": "CJ-Gruppen stempeln JEDEM Import ihren Gruppentyp (09.10.2026). Gemessen: 1'089 aktive Uhren, Uhrenarmbänder und Armbänder mit Produkttyp «Elektronik» (Gruppe cj elektronik in cj_category_fill.mjs) — die Menü-Kollektion «Schmuck & Uhren» filtert nach TYP (Schmuck/Uhren/…), alle 1'089 fehlten dort; 196 ohne Tag «uhren» fehlten auch in «Uhren». EINE Regel für automation/gruppenstempel_typ.py (Bestand, täglich) und den Importer (cj_category_fill.mjs, Funktion typAusStempel).",
+  "stempel": "Elektronik",
+  "shopify_praefix": "aa-6",
+  "google_praefix": "Apparel & Accessories > Jewelry",
+  "geraet_wort": "ladestation|ladegerät|ladekabel|ladedock|ladepad|halterung|ständer|wireless charg|kabellos(es)? lad|powerbank|magnethalter",
+  "uhr_wort": "uhr|watch|chronograph|zifferblatt",
+  "smart_wort": "smart|intelligent|fitness|herzfrequenz|herzmess|puls|schrittz|pedometer|tracker|bluetooth|blutdruck|blutsauerstoff|spo2|gesundheit|temperatur|\\bgps\\b|\\bnfc\\b|anruf|telefon|pager|schlaf|wecker|vibration|display|antistatik",
+  "uhren_tags": [
+    "uhren",
+    "kategorie-uhr"
+  ],
+  "uhren_tag_neu": "uhren",
+  "_regel": "Nur Typ «Elektronik» UND Kategorie unter Schmuck (Shopify aa-6 / Google Jewelry). Reihenfolge: Gerätewort (Ladestation, Halterung …) → bleibt Elektronik; Uhrwort (uhr, watch, chronograph, zifferblatt — ohne Wortgrenze: Uhrband, Uhrwerk, Quarzuhr) → «Uhren»; Smart-/Fitness-/Messwort ohne Uhrwort (Fitness-Armband, Smart Ring, Pedometer, Antistatik-Armband) → bleibt Elektronik; Uhren-Zweig der Kategorie (Watch Bands/Accessories, Watches, Smart Watches: «Lederarmband für Fitbit Charge») → «Uhren»; sonst → «Schmuck». Tag «uhren» kommt dazu, wenn keiner der Uhren-Tags da ist. Tag «elektronik» bleibt. Kollektions-Sperre aus produkttyp_vereinheitlichen.py; eine ODER-Kollektion sperrt nicht, wenn das Produkt über einen ihrer Tags drin bleibt.",
+  "kanarien": [
+    [
+      "Smartwatch Pro 1.78″ AMOLED – Herzfrequenz",
+      "Uhren",
+      false
+    ],
+    [
+      "Mechanische Herrenuhr, wasserdicht, leuchtend",
+      "Uhren",
+      false
+    ],
+    [
+      "Armband für Smartwatch – Böhmischer Stil",
+      "Uhren",
+      false
+    ],
+    [
+      "Gebogene Uhrenarmband-Federstege aus Edelstahl",
+      "Uhren",
+      false
+    ],
+    [
+      "Apple Watch Schutzcase 44/45 mm – Polycarbonat",
+      "Uhren",
+      false
+    ],
+    [
+      "Quarzuhr-Set mit römischen Ziffern · 3 Stück",
+      "Uhren",
+      false
+    ],
+    [
+      "Kinder-Telefonuhr mit vielen Sprachen",
+      "Uhren",
+      false
+    ],
+    [
+      "3-in-1 Ladestation mit Uhr & Wireless Charging",
+      null,
+      false
+    ],
+    [
+      "3-in-1 Magnethalterung für iPhone, Apple Watch",
+      null,
+      false
+    ],
+    [
+      "Fitness Smart Armband mit Schrittzähler und LED",
+      null,
+      false
+    ],
+    [
+      "Smart Ring mit Fitness- und Gesundheits-Tracking",
+      null,
+      false
+    ],
+    [
+      "G69 Armband für Herzfrequenz & Blutsauerstoff",
+      null,
+      false
+    ],
+    [
+      "Doppelketten-Armband mit Blütenmotiv",
+      "Schmuck",
+      false
+    ],
+    [
+      "Ohr-Accessoires aus Edelstahl (18mm)",
+      "Schmuck",
+      false
+    ],
+    [
+      "Türkisfarbener Boho-Handgelenk-Band",
+      "Schmuck",
+      false
+    ],
+    [
+      "Lederarmband für Fitbit Charge 3/4",
+      "Uhren",
+      true
+    ],
+    [
+      "QuickFit Silikonarmband für Garmin Fenix",
+      "Uhren",
+      true
+    ],
+    [
+      "Silikon-Uhrarmband 41-45 mm",
+      "Uhren",
+      false
+    ],
+    [
+      "Leuchtendes Zifferblatt für NH35/NH36 Uhrwerk",
+      "Uhren",
+      true
+    ],
+    [
+      "Herren Chronograph, wasserdichtes Stahlarmband",
+      "Uhren",
+      true
+    ],
+    [
+      "Pulsmesser Dual-Modus Armband für Sport",
+      null,
+      false
+    ],
+    [
+      "Intelligentes Wecker-Armband mit Vibrationsalarm",
+      null,
+      false
+    ],
+    [
+      "Wasserdichtes Farbdisplay Pedometer Armband",
+      null,
+      true
+    ],
+    [
+      "Antistatik-Armband für Herren und Damen",
+      null,
+      false
+    ],
+    [
+      "Smart-Armband mit Herzfrequenz- & Schlaf-Tracking",
+      null,
+      true
+    ],
+    [
+      "Multifunktionales Sport-Armband",
+      "Uhren",
+      true
+    ],
+    [
+      "Silberner Edelstahl-Armband",
+      "Schmuck",
+      false
+    ]
+  ],
+  "shopify_uhrzweig": [
+    "aa-6-10",
+    "aa-6-11",
+    "aa-6-12"
+  ],
+  "google_uhrzweig": [
+    "Apparel & Accessories > Jewelry > Watches",
+    "Apparel & Accessories > Jewelry > Watch Accessories"
+  ],
+  "nicht_uhr": "wecker|wanduhr|tischuhr|standuhr|kuckucksuhr|digitaluhr|weckuhr|uhrzeit|projektionsuhr|sanduhr|stoppuhr|eieruhr|küchenuhr|parkuhr",
+  "_importer": "Im Importer kennt googleKategorie() die feine Kategorie oft noch nicht («Electronics» für Uhrenarmband/Quarzuhr). Darum dort zusätzlich: Typ = Stempel UND Uhrwort im Titel UND kein Gerätewort UND kein Nicht-Uhr-Wort (Wecker, Wanduhr, Stoppuhr …) → «Uhren». Der Bestand braucht das nicht (Shopify-Kategorie ist gesetzt).",
+  "importer_kanarien": [
+    [
+      "Tigerauge Uhrenarmband im Bohème-Stil",
+      "Electronics",
+      "Uhren"
+    ],
+    [
+      "Armband für Apple Watch, Leder, schmal",
+      "Electronics",
+      "Uhren"
+    ],
+    [
+      "Quarzuhr-Set mit römischen Ziffern · 3 Stück",
+      "Electronics",
+      "Uhren"
+    ],
+    [
+      "Heim-Projektor mit Sprachsteuerung",
+      "Electronics",
+      null
+    ],
+    [
+      "LED Digitaluhr Wecker mit Temperaturanzeige",
+      "Electronics",
+      null
+    ],
+    [
+      "Smartwatch-Ladegerät magnetisch",
+      "Electronics",
+      null
+    ],
+    [
+      "Smartwatch mit Herzfrequenz & Sportmodi",
+      "Apparel & Accessories > Jewelry > Watches",
+      "Uhren"
+    ],
+    [
+      "Fitness-Armband mit Herzfrequenz & Schrittzähler",
+      "Apparel & Accessories > Jewelry > Watches",
+      null
+    ],
+    [
+      "Doppelketten-Armband mit Blütenmotiv",
+      "Apparel & Accessories > Jewelry > Bracelets",
+      "Schmuck"
+    ]
+  ]
+}
