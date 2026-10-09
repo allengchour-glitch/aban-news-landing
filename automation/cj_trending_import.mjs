@@ -293,8 +293,10 @@ for(const p of cand){
  // ⚠️ 07.09.2026: Ohne `fash` entsteht EINE Variante «Standard» — dann darf der Text keine
  // Auswahl versprechen. Deterministisch statt als Prompt-Bitte (Lehre 04.09.); dieselbe
  // Pruefung steckt in cj_category_fill und cj_sku_import (Geschwister-Lehre 29.08.).
- const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
- const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+ // 09.10.2026: Platzhalter = Shopifys «Title / Default Title» (hasOnlyDefaultVariant) — «Variante / Standard» zeigte
+   // der Kundin ein Wahlfeld mit einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus.
+   const productOptions=fash?fash.productOptions:[{name:'Title',values:[{name:'Default Title'}]}];
+ const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
  // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — `buildFashion` liefert aber auch bei
  // EINER CJ-Variante ein Objekt. Gefragt wird jetzt die VARIANTENZAHL selbst.
  if(variants.length===1) g=wahlSicher(g);

@@ -243,8 +243,9 @@ for (const item of ITEMS) {
     descriptionHtml: (g.html + '\n' + produktdetails(d, title) + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
     seo: { title: seoTitel(title),   // 05.10.: 70er-Grenze an der Wortgrenze, nie halbe Marke (seo_titel.mjs)
            description: snippet(g.html, title).slice(0, 320) },
-    productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
-    variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],
+    // 09.10.2026: «Title / Default Title» statt «Variante / Standard» (Wahlfeld mit einem Knopf, Nachrüster gesperrt)
+    productOptions: [{ name: 'Title', values: [{ name: 'Default Title' }] }],
+    variants: [{ optionValues: [{ optionName: 'Title', name: 'Default Title' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],
     // ⚠️ GOOGLE-FELDER GEHÖREN IN DEN IMPORTER, nicht in einen Backfill (15.08.2026: die 30
     // neuesten Produkte hatten genau 3 ohne condition/custom_product — alle drei aus DIESEM
     // Skript. cj_category_fill schreibt sie seit dem 11.08., hier fehlten sie: die Abdeckung

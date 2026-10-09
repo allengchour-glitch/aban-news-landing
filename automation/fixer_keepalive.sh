@@ -237,6 +237,18 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_modell.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_modell.py" >> "$FC" 2>&1 9>&- & )
   fi
+  # PLATZHALTER-OPTION (09.10.2026, «verbessere mehr»): Ein-Varianten-Ware mit «Variante / Standard» zeigte ein Wahlfeld mit
+  # einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus → Option weg (Default Title), Rücklesen ID/SKU/Preis.
+  # Importer legen seit 09.10. selbst «Title / Default Title» an; dieser Lauf fängt Nachzügler. Liest denselben Optionen-Export.
+  PH=/tmp/platzhalter_option.log
+  if [ -f "$REPO/automation/platzhalter_option.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$PH" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+    touch "$PH"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_platzhalter_option.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/platzhalter_option.py" >> "$PH" 2>&1 9>&- & )
+  elif [ -s "$PH" ]; then
+    Z=$(grep '^PLATZHALTER' "$PH" | tail -n 1); [ -n "$Z" ] && echo "$(date -u +%H:%M) $Z"
+  fi
   # GRUPPENSTEMPEL-TYP (09.10.2026, Verbesserungsrunde): CJ-Gruppe «elektronik» stempelte Uhren/Uhrenarmbänder mit Typ «Elektronik»
   # → 1'089 fehlten in der Menü-Kollektion «Schmuck & Uhren» (Typ-Regel). Typ aus Shopify-Kategorie aa-6 + Titelwort, Sperre wie
   # produkttyp_vereinheitlichen; Selbsttest = Kanarien + py=js. Importer korrigiert selbst (gruppenstempel_typ.mjs).

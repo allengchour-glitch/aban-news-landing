@@ -834,8 +834,10 @@ for(const [cat,label] of grp.cats){
    // keine Auswahl versprechen. Der Prompt verbietet das seit dem 03.09.; gemessen versprechen
    // trotzdem 52 von 1'205 seither angelegten Ein-Varianten-Produkten eine Auswahl (4,3 %).
    // Ein Modell kann eine Anweisung ignorieren, eine Pruefung nicht (Lehre 04.09.).
-   const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
-   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+   // 09.10.2026: Platzhalter = Shopifys «Title / Default Title» (hasOnlyDefaultVariant) — «Variante / Standard» zeigte
+   // der Kundin ein Wahlfeld mit einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus.
+   const productOptions=fash?fash.productOptions:[{name:'Title',values:[{name:'Default Title'}]}];
+   const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
    // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — aber `buildFashion` liefert auch dann
    // ein Objekt, wenn CJ nur EINE Variante hat. Ein Rucksack und ein Smartwatch-Armband gelten
    // als Mode, bekamen genau eine Variante und versprachen im Text trotzdem «erhältlich in

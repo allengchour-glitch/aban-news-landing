@@ -191,3 +191,5 @@ slug:herren-octopus-high-top-retro-martin-boots
 slug:umhangetasche-17-5x5x34-cm-fgack14511
 name:umhängetasche175x5x34cm
 slug:totenkopf-30x20cm-fga907104
+slug:ballentransportanhanger-mit-8-rundballen-fga02220
+name:ballentransportanhängermit8rundballen
