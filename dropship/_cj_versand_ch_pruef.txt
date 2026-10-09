@@ -6605,3 +6605,5 @@ jazz-tanzschuhe-aus-echtleder-fur-kinder-625300	2601061211461625600	16	8.93	ok	l
 bequeme-slip-on-running-schuhe-fur-damen-600900	2601061032271601200	16	11.00	ok	landeseite
 damen-sneaker-mit-mesh-und-verstecktem-absatz-632500	2512310649411632800	16	8.66	ok	landeseite
 platform-loafers-im-brit-stil-632300	2512301139461632500	16	11.10	ok	landeseite
+gefutterte-high-top-baumwollschuhe-614000	2601200000321614300	16	13.76	ok	landeseite
+slipper-aus-wildleder-mit-niedrigem-absatz-609300	2512300634211609500	16	11.37	ok	landeseite
