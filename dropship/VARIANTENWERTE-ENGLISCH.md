@@ -6,13 +6,13 @@
 
 ## Zahlen
 
-- Produkte gesehen: **50'400**
-- Optionen mit englischen Werten (Kandidaten): 3'000
+- Produkte gesehen: **51'600**
+- Optionen mit englischen Werten (Kandidaten): 3'018
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 15'627
+- Werte mit unbekanntem Wort (unverändert): 15'693
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 76
+- übersprungen «kleidungsstueck-im-wert»: 78
 - übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -136,5 +136,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 572, `light` 449, `color` 404, `shell` 162, `degrees` 159, `size` 153, `⟨satzbau:material-vor-farbe⟩` 149, `core` 137, `surface` 130, `powder` 126, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 113, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `belt` 96, `three` 96, `four` 95, `bag` 93, `french` 89, `rain` 88, `yards` 88, `case` 87, `dinosaur` 86, `code` 85, `dark` 83, `opp` 81, `to` 79, `buckle` 78, `cloth` 78, `spring` 75, `rope` 75, `bottom` 75, `dual` 71, `chain` 70, `autumn` 69, `petal` 68, `half` 67, `little` 66, `hat` 66, `net` 64, `base` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `bear` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 58, `electric` 56, `rice` 55, `rainbow` 55, `night` 54
+`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 573, `light` 451, `color` 407, `shell` 162, `degrees` 159, `size` 153, `⟨satzbau:material-vor-farbe⟩` 149, `core` 137, `surface` 130, `powder` 126, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 113, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `belt` 96, `three` 96, `four` 95, `bag` 93, `french` 89, `rain` 88, `yards` 88, `case` 87, `dinosaur` 86, `code` 85, `dark` 83, `opp` 81, `to` 79, `buckle` 78, `cloth` 78, `bottom` 78, `cherry` 76, `spring` 75, `rope` 75, `dual` 71, `chain` 70, `autumn` 69, `half` 69, `petal` 68, `little` 67, `hat` 66, `bear` 64, `net` 64, `base` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 58, `electric` 56, `rice` 55, `rainbow` 55, `night` 54
 
