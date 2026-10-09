@@ -1,70 +1,9 @@
-# Klassen-Kontrolle (VOLLSCAN, 51652 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 52033 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
-
-## «Produktdetails» doppelt — 33 (waehrend des Laufs 144 gezaehlt, seither repariert)
-
-Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
-
-Reparatur: `automation/produktdetails_vereinen.py`
-
-Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
-
-- `15448542478721` Jumpsuit mit weitem Bein und Rüschensaum
-- `15448542708097` Ärmelloser Denim-Overall mit weitem Bein
-- `15448543003009` Denim Jumpsuit schulterfrei mit Bindebändern
-- `15448544117121` Ärmelloser Leinen-Jumpsuit mit V-Ausschnitt
-- `15448546017665` Eleganter Spitzen-Jumpsuit mit Print
-- `15448546312577` Jumpsuit mit Spaghettiträgern
-- `15448546967937` Ärmelloser Jumpsuit mit weitem Bein – XS-White
-- `15448547852673` Kurzarm-Jumpsuit mit weitem Bein
-- `15448548376961` Casual Romper-Set mit Spaghettiträger-Top
-- `15448548868481` Französisches A-Linien Kleid mit Lochstickerei
-- `15448549261697` Trägerloses Nachthemd mit Spitze – auch für Draussen
-- `15448549687681` Loungewear-Kleid-Set mit Rundhals und 3/4-Ärmeln
-- `15448550146433` Ärmelloses A-Linien-Kleid aus Leinenmix
-- `15448550441345` Langes A-Linien Kleid mit Quasten
-- `15448550867329` Jeans-Look Top mit Tupfenkleid
-- `15448551326081` V-Ausschnitt Laternenärmel Maxikleid
-- `15448551719297` Midilanges Damen-Strickkleid mit halbem Reissverschluss
-- `15448552178049` Damen Off-Shoulder Puffärmel Midikleid
-- `15448552505729` Wickelkleid mit Taillierung und Plissees
-- `15448552833409` Leinenkleid mit Schnürung und V-Ausschnitt
-- `15448553161089` High-Waist Halterneck A-Linien Kleid
-- `15448553488769` Gestreiftes ärmelloses Midikleid
-- `15448553849217` Spitzen-Häkelkleid mit Taillenbetonung
-- `15448554176897` Figurbetontes Trägerloses Spitzenkleid
-- `15448554504577` Gemustertes Langarmkleid mit Rundhals
-- … und 8 weitere
-
-## Floskel «hochwertiges Material» — 17 (waehrend des Laufs 26 gezaehlt, seither repariert)
-
-Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
-
-Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
-
-Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
-
-- `15448546312577` Jumpsuit mit Spaghettiträgern
-- `15448546967937` Ärmelloser Jumpsuit mit weitem Bein – XS-White
-- `15448547852673` Kurzarm-Jumpsuit mit weitem Bein
-- `15448548376961` Casual Romper-Set mit Spaghettiträger-Top
-- `15448548868481` Französisches A-Linien Kleid mit Lochstickerei
-- `15448549687681` Loungewear-Kleid-Set mit Rundhals und 3/4-Ärmeln
-- `15448550441345` Langes A-Linien Kleid mit Quasten
-- `15448551326081` V-Ausschnitt Laternenärmel Maxikleid
-- `15448552178049` Damen Off-Shoulder Puffärmel Midikleid
-- `15448553161089` High-Waist Halterneck A-Linien Kleid
-- `15448553488769` Gestreiftes ärmelloses Midikleid
-- `15448554504577` Gemustertes Langarmkleid mit Rundhals
-- `15448554865025` Maxikleid mit Rundhals und 3/4-Ärmeln
-- `15448555553153` Pailletten One-Shoulder Meerjungfrauenkleid
-- `15448567972225` Gym Therapy T-Shirt für junge Erwachsene
-- `15448573346177` Yoga-Jumpsuit mit Reissverschluss und kurzem Arm
-- `15448573378945` Gemustertes Sommerkleid mit Stickereien
 
 ## Sie-Anrede im Produkttext — 5
 
@@ -80,7 +19,18 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Auswahl-Versprechen bei EINER Variante — 1744
+## Mess-Versprechen an Wearables — 2
+
+Kein optisches Armband misst Blutdruck, EKG oder Blutzucker (Lehre 11.08.).
+
+Reparatur: `automation/wearable_messversprechen.py  (QUELLE=live)`
+
+Vollstaendige Liste: `dropship/_klassen/mess-versprechen-an-wearables.txt`
+
+- `16612790567303` Smart Touch Sport Armband
+- `16612790894983` Kinder Smartwatch 4G mit Herzfrequenz
+
+## Auswahl-Versprechen bei EINER Variante — 1684
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -113,5 +63,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448914592129` Freizeit-Schultertasche
 - `15448918622593` Ma Pi Brusttasche aus Echtleder
 - `15448921571713` Minimalistischer Teppich, schmutzabweisend
-- … und 1719 weitere
+- … und 1659 weitere
 
