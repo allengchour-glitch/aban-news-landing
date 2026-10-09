@@ -46,6 +46,16 @@
 
 
 
+
+## 🏃 Feinlauf liest nur seinen Zweig — Fitness-Armbänder unter «Bracelets» (2026-10-09, 18:45 UTC, «weiter»)
+**Gemessen:** Fitness-/Smart-Armbänder (C33, G69 Herzfrequenz, Pulsmesser, Pedometer) standen bei Google unter «Jewelry >
+Bracelets»; `uhren_fein.py` liest nur den Watches-Zweig und sah sie nie. Bracelets-Zweig: 1'122 aktive, fast alles Schmuck.
+**Getan:** zweiter Durchgang `UHREN-FEIN-ARMBAND` mit EINGESCHRÄNKTER Regel (nur Smartwatch/Uhrenarmband/-zubehör, nie
+«Watches» aus Regel 4 — «quar[zt]» = Rosenquarz, «automatik» = Schliesse; Smartwatch nur mit Mess-/Smart-Wort, weil
+«Sportarmband mit Botschaft» = Spruchband). Kanarien 14/14 + 39/39, **18/0 live**, Rücklesen 8/8; Tageslauf nimmt beide
+Zweige. Bericht `dropship/ARMBAND-SMART-ZWEIG-2026-10-09.md`.
+**Lehre:** Ein Feinlauf, der nur seinen Zweig liest, findet falsch einsortierte Ware im Nachbarzweig nie — zweiter Blick
+dorthin, aber mit eingeschränkter Regel: was im eigenen Zweig harmlos ist (Quarz, Automatik), richtet im Nachbarzweig Schaden an.
 ## ⌚ Gruppenstempel «Elektronik» nahm 1'089 Uhren aus «Schmuck & Uhren» (2026-10-09, 16:45 UTC, Verbesserungsrunde)
 **Gemessen:** Neuimporte 4 h: 79 mit Typ «Elektronik», nur 11 bei Google Elektronik. Bestand: 3'006 aktive «Elektronik», davon
 1'089 unter Schmuck (875 Watches, 186 Watch Accessories, 26 Bracelets). Die Menü-Kollektion «Schmuck & Uhren» filtert nach
@@ -19354,3 +19364,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🔎 **«weiter»: Google-Wächter zählte 291 «Personalized advertising»-Meldungen (Ziel `[]`, Regel betrifft nur Zielgruppen) als Gratis-Eintrag-Blocker → `nur_personalisiert`, 1'114 → 823, Bildtausch-Bilanz unverändert; `[]` auch bei Bild-/Adult-Klassen = unbelegt, nur gezählt.** Meldung ≠ Blocker: was regelt die Regel? → Journal 08.10. 07:30
 - 2026-10-08 · 📝 **«verbessere weiter» (Tag 10 ✅): Mengen in Kollektionstexten veraltet («über 7'000» bei 4'913 aktiven, «rund 160» bei 250) → `kollektion_mengen_wache.py` täglich (3/0); 7 Saison-/Geschenkwelt-Texte nach Messung (Weihnachten «grösster Teil Pullover» falsch, «garantiert/handverlesen» raus); Ratgeber Herbst-Deko 1'085 → 3'200 Z. + Weihnachten→Geschenkwelten; tote Ratgeber-Links 2 → 0; «Winter & Kälte» per Tag (27 Fremdartikel).** Zahl im Text = Behauptung mit Verfallsdatum; vor Regelwechsel Mitglieder abgleichen → `dropship/SEO-TAG10-2026-10-08.md`
 - 2026-10-08 · 🚚 **«verbessere alles und sauber»: Leinen-Set (41 Sitz./2 Warenkörbe/0 Käufe) versprach bei Google «schnelle Lieferung» bei 10–20 Werktagen → 118/0 bereinigt (107 SEO, 4 «Qualität geprüft», 6 «meistverkauft», 1 «sofort lieferbar»), `versprechen_wache.py` täglich + Importer-Hook (py=js 19/19), 5 Generatoren an der Quelle; Büro-Menü: Typ als Beleg (CJ-Sammelkorb) → 25 Fremdartikel raus, 14 Typen (`buero_korb_typ.py`).** Einmal-Fix ohne Wächter kommt zurück; Typ aus Sammelgruppe ist kein Beleg → `dropship/VERSPRECHEN-BUERO-2026-10-08.md`
+- 2026-10-08 · 🎨 **«rot oder pink auswahl … ganze katalog»: 5'511 aktive mit EINER Variante versprechen eine Wahl, CJ führt bei ~87 % mehrere → `auswahl_werte.py` (45 Kanarien: Stecker → EU, bis 3 Optionen, Masse/Codes, Rest KI mit harter Prüfung + Zweitprüfer qwen) + `auswahl_nachruesten.py` (Raster anlegen, Fehlkombis löschen, Google-Farbe/Grösse je Variante, Rückbau getestet) → 131 scharf/0 Fehler, Aufseher stündlich messen + 150 umbauen (Notbremse `dropship/_auswahl_scharf_aus`).** KI-Werte für Kundinnen nur mit Zweitprüfer («Bean paste → Bohnenpaste» war formal gültig); `cj: null` ist keine 1 → `dropship/AUSWAHL-NACHRUESTEN-2026-10-08.md`
