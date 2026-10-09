@@ -87,8 +87,21 @@ gesichert:
 
 ## Live-Nachweis
 
-Nach den Testkörben antwortete der Shop unserer IP mit **HTTP 429 «Verifying your connection»**. Der Testkorb läuft deshalb
-nach, sobald der Shop wieder antwortet. Das Ergebnis steht unten.
+Nach den Testkörben antwortete der Shop unserer IP mit **HTTP 429 «Verifying your connection»**. Den Testkorb habe ich
+nachgeholt, sobald der Shop wieder antwortete.
+
+**✅ 09.10. 11:53 UTC, `warenkorb_einig.py --pruefen --live`, Handy-Browser:**
+
+| Korb | Warenwert → nach Rabatt | «noch»-Zahlen auf der Seite | Regel |
+|---|---|---|---|
+| 1× Leinen | 39.90 → 39.90 | nur **10.10** (Balken und Hinweis gleich) | 10.10 |
+| 2× Leinen | 79.80 → 71.82 | keine, Gratisversand | gratis |
+
+In beiden Körben steht das Lieferdatum, und «CH-Lager 1–2 Werktage» kommt nicht mehr vor. Die leere Warenkorb-Seite, per
+WebFetch über einen anderen Ausgang geprüft, zeigt die Ersatzzeile «📦 Lieferdatum steht auf jeder Produktseite».
+
+Den ersten Versuch hatte der Wächter als «live ok» gemeldet, obwohl der Test wegen 429 gar nicht gelaufen war. Das ist
+behoben. Ohne Messung meldet er jetzt «Testkorb NICHT gelaufen», und der Testkorb wartet zwischen den Abrufen je 2,5 s.
 
 ## Offen
 
