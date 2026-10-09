@@ -14,6 +14,7 @@ echo Selbsttest ...
 %PY% tools\trading\krypto_bot\test_sammler.py >nul || (echo Selbsttest Sammler fehlgeschlagen - nichts gehandelt. & goto ende)
 %PY% tools\trading\krypto_bot\test_infos.py >nul || (echo Selbsttest Infos fehlgeschlagen - nichts gehandelt. & goto ende)
 %PY% tools\trading\krypto_bot\test_cockpit.py >nul || (echo Selbsttest Cockpit/KI fehlgeschlagen - nichts gehandelt. & goto ende)
+%PY% tools\trading\krypto_bot\test_profit.py >nul || (echo Selbsttest Profit fehlgeschlagen - nichts gehandelt. & goto ende)
 if not "%BINANCE_FUTURES_API_KEY%"=="" (
   echo Krypto-Pilot ^(BTC + ETH, Futures^) ...
   %PY% tools\trading\krypto_bot\pilot.py --lauf

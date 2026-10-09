@@ -175,11 +175,22 @@ Konto, BTC/ETH mit Richtung, Trend, Stop, MVRV und Bremse, Claudes Einschätzung
 ETH-Sammler. Dazu ein **Not-Aus-Knopf**: Er schliesst die Pilot-Positionen sofort (nur verkleinern) und stoppt alle Bots.
 Das Cockpit liest nur die Logbücher auf deinem PC, lauscht nur auf 127.0.0.1 und lehnt Anfragen fremder Webseiten ab.
 
+**💰 Profit-Anzeige** (ganz oben im Cockpit, alle 15 Sekunden): Gewinn seit Start in USDT und Prozent, dazu Heute,
+7 Tage, 30 Tage; aufgeteilt in realisiert, offen, Funding und Gebühren sowie pro Markt; Kurve des abgeschlossenen
+Gewinns, Balken pro Tag und die offenen Positionen mit Einstieg, aktuellem Preis, Gewinn und Liquidationspreis.
+Die Zahlen kommen direkt vom Binance-Konto (`/fapi/v1/income`, nur lesen). **Ein- und Auszahlungen zählen nicht als
+Gewinn.** Weil Binance die Geschichte nur einige Monate herausgibt, speichert `profit.py` jeden Eintrag in
+`data/krypto-profit.json` (ohne Schlüssel). Auch per Telegram: `/profit`. Im Terminal: `py tools\trading\krypto_bot\profit.py`.
+Der ETH-Sammler zeigt zusätzlich seinen Wert und Gewinn zum aktuellen Kurs.
+
 **🎛️ Steuerung im Cockpit** — Knöpfe wie in den Bot-Videos, mit Terminal-Fenster für die Ausgabe:
 **Auto-Handel AN/AUS** (aus = die Bots handeln nicht, offene Positionen bleiben mit ihrem Börsen-Stop stehen) ·
 **▶ Probelauf** (zeigt, was der Pilot tun würde) · **⚡ Jetzt handeln** · **🤖 Claude fragen** · **🪙 Sparplan** ·
-**📨 Bericht aufs Handy** · **🔄 Markt-Infos** · **📊 Backtest** · **🧪 Selbsttest** · und rot **🛑 Not-Aus** (schliesst
-sofort alle Pilot-Positionen und stoppt alles). Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
+**📨 Bericht aufs Handy** · **🔄 Markt-Infos** · **📊 Backtest** · **🧪 Selbsttest** · **🗓️ Täglich automatisch** (legt die
+Windows-Aufgabe «Krypto-Pilot» für 02:30 an — kein schtasks-Befehl mehr von Hand) · **⬇️ Update holen** (`git pull --ff-only`,
+danach Cockpit neu starten) · und rot **🛑 Not-Aus** (schliesst
+sofort alle Pilot-Positionen und stoppt alles). Darunter die **🩺 Gesundheit**: Schlüssel gesetzt? letzter Lauf frisch? tägliche Aufgabe eingerichtet? Not-Aus? Markt-Infos
+aktuell? — rot heisst handeln, grau ist optional. Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
 im Hintergrund, mit Rückfrage vor Handel und Kosten. «Jetzt handeln» geht nicht, solange Auto-Handel aus ist (der Lauf
 würde sonst die Positionen schliessen). Echtes Geld bleibt doppelt gesperrt wie überall. Nur feste Aktionen, kein
 beliebiger Befehl, nur von diesem PC aus (127.0.0.1) und nicht von fremden Webseiten.
@@ -256,6 +267,19 @@ Der Pilot (BTC 150 + ETH 200, MVRV-Bremse, Stop 4σ) im Futures-Modell mit Gebü
 - Nur den Deckel höher stellen (Schwankungsziel bleibt) ändert fast nichts: Das Schwankungsziel hält den Hebel ohnehin klein.
 - Regel vorab: mehr Hebel nur, wenn nie liquidiert, Einbruch nie tiefer als −50 % und Rendite ÷ Einbruch überall besser
   als 1×. **Keine Stufe hat bestanden.** Darum bleibt 1× Standard und 2× die harte Grenze.
+- **100× («x100 Futures»)**: `hebel_pruefung.py --minuten` mit echten Bitcoin-Minutenkursen (09.09.–09.10.2026,
+  3000 zufällige Einstiege je Zeile). Liquidation bei 1/Hebel − 0,4 % Wartungsmarge − Gebühr:
+
+  | Hebel | liquidiert bei Gegenbewegung von | Long: liquidiert / Median | Short: liquidiert / Median |
+  |---|---|---|---|
+  | 10× | 9,55 % | 0 % | 30 % / nach 170 Std. |
+  | 20× | 4,55 % | 36 % / nach 142 Std. | 42 % / nach 78 Std. |
+  | 50× | 1,55 % | 78 % / nach 42 Std. | 80 % / nach 30 Std. |
+  | **100×** | **0,55 %** | **92 % / nach 7,7 Std.** | **93 % / nach 6,4 Std.** |
+
+  Bei 100× reicht eine Bewegung von gut einem halben Prozent — das schafft Bitcoin fast jeden Tag, in beide Richtungen.
+  Ob Long oder Short ist dabei fast egal: Das Rauschen liquidiert die Position, bevor die Richtung zählt. Darum gibt es
+  im Pilot kein 100× (und nichts über 2×).
 - Wer bewusst mehr Risiko will: im Cockpit **Risiko-Stufe 1,5× oder 2×** wählen (oder `setx KRYPTO_RISIKO "1.5"`), mit
   Rückfrage und den Zahlen oben. Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
   die Prozente oben gelten für diesen Teil.
@@ -344,7 +368,8 @@ python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mech
 python3 tools/trading/krypto_bot/test_pilot.py    # 48 Tests, inkl. Risiko-Stufen und nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 34 Tests, inkl. nachgebautem Binance-Server mit Staking
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
-python3 tools/trading/krypto_bot/test_cockpit.py  # 52 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Risiko-Stufe, Live-Markt, Not-Aus, Telegram
+python3 tools/trading/krypto_bot/test_profit.py   # 20 Tests: Profit nach Zeitraum, Einzahlungen ausgeschlossen, Seiten, keine Doppelzählung
+python3 tools/trading/krypto_bot/test_cockpit.py  # 55 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Risiko-Stufe, Live-Markt, Not-Aus, Telegram
 python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos

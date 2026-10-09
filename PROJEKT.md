@@ -48,6 +48,12 @@
   Keine Stufe bestanden. Dafür **Risiko-Stufe 1 / 1,5 / 2** als Nutzer-Wahl: `pilot_kern.risiko()` (KRYPTO_RISIKO >
   `data/krypto-einstellungen.json` vom Cockpit > altes KRYPTO_MAX_HEBEL als Deckel), Pilot UND Broker lesen dieselbe Funktion
   (sonst kappt der Broker auf 1×!). Datei nur lesen, wenn env nicht explizit übergeben (Tests bleiben vom PC unabhängig).
+- **Profit-Anzeige + Gesundheit + Aufgabe/Update-Knöpfe (2026-10-09):** `profit.py` liest `/fapi/v1/income` (Wochen-Fenster,
+  1000er-Seiten, nach tranId entdoppelt, TRANSFER zählt NICHT), `/fapi/v2/account`, `/fapi/v2/positionRisk`; speichert Einkommen +
+  offenen Gewinn alle 15 min in `data/krypto-profit.json` (sonst wäre «heute» falsch). Cockpit `/api/profit` (8 s Zwischenspeicher),
+  Telegram `/profit`. Knöpfe «Täglich automatisch» (`schtasks /create … /tr "\"…krypto-auto.bat\" auto" /f`) und «Update holen»
+  (`git pull --ff-only`). **100× gemessen** (`hebel_pruefung.py --minuten`, echte BTC-Minuten): 92 % liquidiert, Median 6–8 Std.
+  → nie eingebaut. Tests: test_profit 20, test_cockpit 64 (Mutation je 3/3).
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
