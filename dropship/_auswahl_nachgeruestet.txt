@@ -517,3 +517,5 @@
 15454090592641	Modell:6+Grösse:2:12	2026-10-09	nordic-sofakissen-639200
 15454049567105	Farbe:3:3	2026-10-09	bike-ruckenfach-doppelgurteltasche-938880
 15454038720897	Farbe:3+Grösse:2:6	2026-10-09	wasserdichter-atmungsaktiver-brustbeutel-fur-h-612900
+15454013194625	Grösse:4:4	2026-10-09	hundehalsung-mit-kniegelenk-unterstutzung-613600
+15454001168769	Farbe:3:3	2026-10-09	flexibler-streifenreinigungsgriff-602700
