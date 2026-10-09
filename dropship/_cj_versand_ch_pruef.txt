@@ -6601,3 +6601,7 @@ damen-high-top-sneaker-mit-verstecktem-keilabs-628200	2601130620581628400	16	15.
 unisex-schneestiefel-mit-warmfutter-634100	2601070758011634300	16	11.84	ok	landeseite
 damen-schneestiefel-mit-weicher-sohle-603300	2601070752361603500	16	9.88	ok	landeseite
 chunky-sohle-slip-on-sneaker-fur-damen-614900	2601070717091615100	16	10.55	ok	landeseite
+jazz-tanzschuhe-aus-echtleder-fur-kinder-625300	2601061211461625600	16	8.93	ok	landeseite
+bequeme-slip-on-running-schuhe-fur-damen-600900	2601061032271601200	16	11.00	ok	landeseite
+damen-sneaker-mit-mesh-und-verstecktem-absatz-632500	2512310649411632800	16	8.66	ok	landeseite
+platform-loafers-im-brit-stil-632300	2512301139461632500	16	11.10	ok	landeseite
