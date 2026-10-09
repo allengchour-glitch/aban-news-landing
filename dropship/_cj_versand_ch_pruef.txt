@@ -6591,3 +6591,7 @@ franzosische-mid-heel-mary-jane-schuhe-603000	2602070843241603300	16	11.37	ok	la
 retro-pumps-mit-schnurung-und-blockabsatz-628900	2602070707581629300	16	15.92	ok	landeseite
 chunky-pumps-mit-schnurung-aus-wildleder-618200	2602040550431618500	16	11.16	ok	landeseite
 vintage-loafer-mit-leoparden-print-und-schnall-603800	2601310752521606300	16	11.96	ok	landeseite
+mary-jane-schuhe-mit-weicher-sohle-607800	2601280832051608200	16	14.37	ok	landeseite
+atmungsaktive-mesh-sneakers-fur-damen-613300	2601260912221613600	16	13.76	ok	landeseite
+gefutterte-high-top-baumwollschuhe-fur-damen-607700	2601260833441608100	16	15.44	ok	landeseite
+winter-high-top-sneaker-mit-keilabsatz-608700	2601230952581609000	16	13.16	ok	landeseite
