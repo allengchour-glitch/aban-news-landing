@@ -3,6 +3,19 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-09-10",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 10 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-09T03:16:09.345Z",
+  "dauer_s": 6.1,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 42, offen 123",
+      "Boards auf dem Profil: —",
+      "Pinnwand «Wellness & Beauty» (null, 0 Z.): Titel nicht da",
+      "Pinnwand «Wellness & Beauty» nicht auf dem Profil gefunden — kein Pin"
+    ],
+    "bilder": []
+  }
 }
