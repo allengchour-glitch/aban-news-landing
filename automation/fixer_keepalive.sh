@@ -817,6 +817,14 @@ while true; do
     # der Ware, die auf der Startseite steht, nicht der naechstbesten in Anlegereihenfolge.
     echo "$(date -u +%H:%M) start cj_video_backfill (PRIO sichtbare Ware, 250/Tag im Vorrang-Fenster — User 19.08.: «überall mit videos, mache auch bei uns»)"
   fi
+  # 📏 09.10.2026: Masstabellen-Stichprobe (nur lesen) — liefert CJ für unsere Mode eine cm-Tabelle als Beschreibungsbild, die wir
+  # nicht zeigen? 40 CJ-Abrufe im Vorrang-Fenster (Tagesbudget ist sonst ab ~04 UTC leer). Bericht dropship/MASSTABELLE-PROBE.md.
+  if [ "$VORRANGZEIT" = "1" ] && [ -f "$REPO/automation/masstabelle_probe.py" ] && [ ! -f /tmp/masstabelle_$(date -u +%F) ]; then
+    touch "/tmp/masstabelle_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_masstabelle_probe.lock; flock -n 9 || exit 0; N=40 timeout 2400 python3 automation/masstabelle_probe.py" \
+        >> /tmp/masstabelle_probe.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start masstabelle_probe (40 CJ-Mode, OCR der Beschreibungsbilder)"
+  fi
   # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
   # vorbei produkt ändern»). Der Lauf nimmt abgelaufene Artikel aus der Reihe und füllt aus den
   # hinterlegten Themen nach — das ist der Teil, der ohne Zutun laufen muss, damit die Reihe
