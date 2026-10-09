@@ -1,25 +1,25 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 15:27 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 15:35 UTC
 
-Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'hand': 34, 'dublette-titel-bleibt': 8, 'fremdwort': 51}
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'hand': 51, 'fremdwort': 41, 'dublette-titel-bleibt': 1}
 
 - hand: «Hooded Drawstring Sweater aus Strick» → «Strick-Kapuzenpullover mit Kordelzug»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Hooded Pullover Sweater für Damen» → «Kapuzenpullover für Damen»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Casual Waterproof Umhängetasche für Herren» → «Wasserdichte Umhängetasche für Herren»
+- hand: «Hooded Pullover Sweater für Damen» → «Uni-Kapuzenpullover für Damen»
+- hand: «Casual Waterproof Umhängetasche für Herren» → «Wasserdichte Freizeit-Umhängetasche für Herren»
 - fremdwort: «3-teiliges Cozy Pajama Set» → «3-teiliges Cozy Pyjama Set»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Magnetische Bausteine für Kids» → «Magnetische Bausteine für Kinder»
+- hand: «Magnetische Bausteine für Kids» → «Magnetische DIY-Bausteine für Kinder, 110–142 Teile»
 - hand: «Portable Hundeharness» → «Hundegeschirr für Ausflüge»
 - fremdwort: «Grosses, tragbares Wasser Glas für Kids» → «Grosses, tragbares Wasser Glas für Kinder»
 - hand: «Adjustable Silberringe» → «Verstellbare Silberringe»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Silicone-Armband» → «Silikon-Armband»
+- hand: «Silicone-Armband» → «Silikon-Armband für Apple Watch, viele Farben»
 - fremdwort: «Geflochtene Cowhide-Flachsandale» → «Geflochtene Rindsleder-Flachsandale»
-- fremdwort: «Cowhide-Minimalist-Vielseitige Schuhe» → «Rindsleder-Minimalist-Vielseitige Schuhe»
+- hand: «Cowhide-Minimalist-Vielseitige Schuhe» → «Minimalistische Rindsleder-Schuhe für Damen»
 - fremdwort: «Trainings-Schuhe für Kids und Teens» → «Trainings-Schuhe für Kinder und Teens»
 - hand: «Edles Silber-Pendant mit Moissanit» → «Edler Silber-Anhänger mit Moissanit»
 - hand: «Slim Wallet mit RFID-Schutz und Kartenautomatik» → «Schlankes Portemonnaie mit RFID-Schutz und Kartenautomatik»
 - hand: «Geometrisches Pendant» → «Geometrischer Anhänger an geflochtener Kette»
 - hand: «Liebes-Pendant Puppe» → «Valentins-Puppe zum Basteln»
 - fremdwort: «Stainless Steel Duschkopf» → «Edelstahl-Duschkopf»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Stainless Stahl Lunchbox» → «Edelstahl-Lunchbox»
+- hand: «Stainless Stahl Lunchbox» → «Edelstahl-Lunchbox aus 304-Stahl»
 - hand: «Vogelfeder-Scarf» → «Vogelfeder-Schärpe»
 - hand: «Genuine-Laufschuhe» → «Laufschuhe aus Velours-Stoff»
 - fremdwort: «Cowhides Messenger-Tasche» → «Rindsleder-Messenger-Tasche»
@@ -28,8 +28,8 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - hand: «Fake Two-piece Vest Dress» → «Kleid in Zweiteiler-Optik mit Westen-Einsatz»
 - hand: «Outdoor Portable Speaker-Schutzhülle» → «Outdoor-Schutzhülle für tragbare Lautsprecher»
 - hand: «Grosses USB-Computer-Backpack 32L» → «Grosser Laptop-Rucksack mit USB-Anschluss, 32 L»
-- fremdwort: «Basketball “Cowhide Texture” Grösse 7» → «Basketball “Rindsleder-Texture” Grösse 7»
-- fremdwort: «Silicone Chronograph Quarz-Uhr mit Armband» → «Silikon-Chronograph Quarz-Uhr mit Armband»
+- hand: «Basketball “Cowhide Texture” Grösse 7» → «Basketball mit Leder-Textur, Grösse 7»
+- hand: «Silicone Chronograph Quarz-Uhr mit Armband» → «Chronograph-Quarzuhr mit Silikonarmband»
 - hand: «Elegantes Zebra-Print A-Linien Vest-Kleid» → «Elegantes Westenkleid in A-Linie mit Zebra-Print»
 - hand: «Staubdichter, faltbarer Reise-Backpack – wasserfest» → «Staubdichter, faltbarer Reise-Rucksack – wasserfest»
 - fremdwort: «Vintage Cowhide Rucksack – Unisex» → «Vintage Rindsleder-Rucksack – Unisex»
@@ -38,25 +38,25 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - hand: «Mini-Portable CCD-Kamera-Insert-Tasche» → «Mini-Tasche für CCD-Kameras»
 - fremdwort: «Grosser Vintage-Cowhide-Rucksack mit 16-Zoll-Laptopfach» → «Grosser Vintage-Rindsleder-Rucksack mit 16-Zoll-Laptopfach»
 - fremdwort: «Silicone Kochspatel mit Holzgriff» → «Silikon-Kochspatel mit Holzgriff»
-- fremdwort: «Stainless Steel Chopper Set mit Cut-Resistant Handschuhen» → «Edelstahl-Chopper Set mit Cut-Resistant Handschuhen»
-- fremdwort: «Cowhide-Messenger Tasche mit Magnetverschluss» → «Rindsleder-Messenger Tasche mit Magnetverschluss»
-- fremdwort: «Smart Silicone Uhr mit Bluetooth-Anruf» → «Smart Silikon-Uhr mit Bluetooth-Anruf»
-- fremdwort: «Silicone Herrenquarz-Uhr» → «Silikon-Herrenquarz-Uhr»
+- hand: «Stainless Steel Chopper Set mit Cut-Resistant Handschuhen» → «Gemüsezerkleinerer-Set mit schnittfesten Handschuhen»
+- hand: «Cowhide-Messenger Tasche mit Magnetverschluss» → «Rindsleder-Messenger-Tasche mit Magnetverschluss»
+- hand: «Smart Silicone Uhr mit Bluetooth-Anruf» → «Smartwatch mit Silikonarmband und Bluetooth-Anruf»
+- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Silicone Herrenquarz-Uhr» → «Herren-Quarzuhr mit Silikonarmband»
 - fremdwort: «Baby-Romper mit Hut, lange Ärmel, Spitzenakzent» → «Baby-Strampler mit Hut, lange Ärmel, Spitzenakzent»
 - fremdwort: «Lotusblätter-Kragen-Romper für Neugeborene» → «Lotusblätter-Kragen-Strampler für Neugeborene»
 - fremdwort: «Baby-Romper Halloween mit Kapuze» → «Baby-Strampler Halloween mit Kapuze»
-- fremdwort: «Lange Cowhide Ledergeldbörse» → «Lange Rindsleder-Ledergeldbörse»
+- hand: «Lange Cowhide Ledergeldbörse» → «Lange Rindsleder-Geldbörse»
 - fremdwort: «Genuine Leather Cowhide Wallet mit Blumenprägung» → «Rindsleder-Portemonnaie mit Blumenprägung»
 - fremdwort: «Studenten-Stiftetui aus Cowhide» → «Studenten-Stiftetui aus Rindsleder»
 - hand: «Männer Casual Glossy Draping Anti-Falten Shirt» → «Glänzendes Herren-Shirt, bügelfrei»
-- fremdwort: «Cowhide Retro Zehen Sandalen» → «Rindsleder-Retro Zehen Sandalen»
+- hand: «Cowhide Retro Zehen Sandalen» → «Retro-Zehensandalen aus Rindsleder»
 - fremdwort: «Stainless-Steel Herzschmuckarmband» → «Edelstahl-Herzschmuckarmband»
 - fremdwort: «Cowhide Trainingstasche mit Polyesterfutter» → «Rindsleder-Trainingstasche mit Polyesterfutter»
 - fremdwort: «Baby-Olympia-Fleece-Romper, warm & dick» → «Baby-Olympia-Fleece-Strampler, warm & dick»
 - fremdwort: «Silicone-Bubble-Milchschüssel 150 ml» → «Silikon-Bubble-Milchschüssel 150 ml»
 - hand: «Puppy-Vest mit Felloptik» → «Welpen-Weste mit Felloptik»
 - fremdwort: «Silicone-Hundeschüssel Doppel» → «Silikon-Hundeschüssel Doppel»
-- fremdwort: «Cowhide Messenger Bag – Retro-Design» → «Rindsleder-Messenger Bag – Retro-Design»
+- hand: «Cowhide Messenger Bag – Retro-Design» → «Messenger-Tasche aus Rindsleder – Retro-Design»
 - hand: «Silicone-Tier-Schlankesschüssel mit Lickmatte» → «Silikon-Anti-Schling-Napf mit Leckmatte»
 - fremdwort: «Silikon-Lickmatte für Haustiere» → «Silikon-Leckmatte für Haustiere»
 - fremdwort: «Silicone Uhrarmband 41-45 mm – Schwarz, Weiss, Blau, Rot, Gelb, Grün» → «Silikon-Uhrarmband 41-45 mm – Schwarz, Weiss, Blau, Rot, Gelb, Grün»
@@ -68,14 +68,14 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - fremdwort: «Lässige Cowhide-Schuhe» → «Lässige Rindsleder-Schuhe»
 - fremdwort: «Warmes Coral-Fleece-Pajama» → «Warmes Coral-Fleece-Pyjama»
 - hand: «Weisses Quadratto-Toe Sandal mit Einsteckerfessel» → «Weisse Vintage-Sandalen mit eckiger Zehenpartie»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Laufschuhe für Kids» → «Laufschuhe für Kinder»
+- hand: «Laufschuhe für Kids» → «Laufschuhe für Kinder, Lila und Grau»
 - fremdwort: «Stainless Steel Armband mit 5 Perlen» → «Edelstahl-Armband mit 5 Perlen»
 - hand: «Oktopoden-Pendant mit Türkisen Perlenkette» → «Oktopus-Anhänger an türkiser Perlenkette»
 - fremdwort: «Silicone Armband für Apple Watch» → «Silikon-Armband für Apple Watch»
 - hand: «Portable Haarkräusler» → «Haarkräusler mit Infrarot»
 - hand: «Pfau-Pendant · Damen» → «Pfauen-Anhänger · Damen»
 - hand: «Flip Wallet – Multifunktionaler Kartenhalter» → «Klapp-Kartenhalter, multifunktional»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Stainless Steel Armband» → «Edelstahl-Armband»
+- hand: «Stainless Steel Armband» → «Edelstahl-Armband im Retro-Stil»
 - fremdwort: «Wanderschuhe für Kids» → «Wanderschuhe für Kinder»
 - hand: «Strassbesetztes Letter-Pendant» → «Buchstaben-Anhänger mit Strass»
 - fremdwort: «Hooded Cardigan aus Strick» → «Kapuzen-Cardigan aus Strick»
@@ -93,5 +93,5 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - fremdwort: «Hooded Strickpullover mit 3D-Print» → «Kapuzen-Strickpullover mit 3D-Print»
 - hand: «Street Vest Style Schulter-Brusttasche» → «Schulter-Brusttasche im Street-Style»
 - hand: «Portable Auto-Waschbürste, 4-teilig» → «Auto-Waschbürste mit 4-teiligem Stiel»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Stainless Steel Armbanduhr» → «Edelstahl-Armbanduhr»
+- hand: «Stainless Steel Armbanduhr» → «Edelstahl-Armbanduhr mit Schraubkrone, 40,5 mm»
 - fremdwort: «Stainless-Steel-Mondarmband» → «Edelstahl-Mondarmband»
