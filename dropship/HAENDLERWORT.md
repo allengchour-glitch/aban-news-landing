@@ -1,6 +1,6 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 15:35 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 15:38 UTC
 
-Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'hand': 51, 'fremdwort': 41, 'dublette-titel-bleibt': 1}
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Geändert: {'hand': 52, 'ok': 93, 'fremdwort': 41}
 
 - hand: «Hooded Drawstring Sweater aus Strick» → «Strick-Kapuzenpullover mit Kordelzug»
 - hand: «Hooded Pullover Sweater für Damen» → «Uni-Kapuzenpullover für Damen»
@@ -41,7 +41,7 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - hand: «Stainless Steel Chopper Set mit Cut-Resistant Handschuhen» → «Gemüsezerkleinerer-Set mit schnittfesten Handschuhen»
 - hand: «Cowhide-Messenger Tasche mit Magnetverschluss» → «Rindsleder-Messenger-Tasche mit Magnetverschluss»
 - hand: «Smart Silicone Uhr mit Bluetooth-Anruf» → «Smartwatch mit Silikonarmband und Bluetooth-Anruf»
-- ⚠️ Dublette, Titel bleibt (Hand-Titel in der Regeldatei nachtragen): «Silicone Herrenquarz-Uhr» → «Herren-Quarzuhr mit Silikonarmband»
+- hand: «Silicone Herrenquarz-Uhr» → «Silikonarmband-Quarzuhr für Herren»
 - fremdwort: «Baby-Romper mit Hut, lange Ärmel, Spitzenakzent» → «Baby-Strampler mit Hut, lange Ärmel, Spitzenakzent»
 - fremdwort: «Lotusblätter-Kragen-Romper für Neugeborene» → «Lotusblätter-Kragen-Strampler für Neugeborene»
 - fremdwort: «Baby-Romper Halloween mit Kapuze» → «Baby-Strampler Halloween mit Kapuze»
