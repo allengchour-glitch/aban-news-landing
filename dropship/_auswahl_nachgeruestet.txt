@@ -660,3 +660,5 @@
 15453791322497	Ausführung:6+Grösse:2:12+ki	2026-10-09	akita-pluschhund-629700
 15453997269377	Modell:8:8	2026-10-09	retro-bunt-oltropfenohrringe-619700
 15454111105409	Farbe:3+Grösse:6:18	2026-10-09	warmende-hundekleidung-fur-herbst-und-winter-628400
+15453671752065	Variante:3:3+ki	2026-10-09	vintageschmuck-kollier-630500
+15453770482049	Grösse:4:4	2026-10-09	olbild-druck-rock-617000

@@ -6665,3 +6665,8 @@ unisex-sneaker-all-black-mit-mesh-design-608200	2606220954271608800	16	9.88	ok	l
 retro-loafers-im-franzosischen-stil-602302	2606220939201602900	16	10.55	ok	landeseite
 keilsneaker-high-top-mit-perforiertem-design-631300	2606200552571631900	16	14.84	ok	landeseite
 koreanische-slip-on-loafers-mit-runder-zehenpa-629700	2606200400021620500	16	9.20	ok	landeseite
+vintage-leder-flats-618300	2606200334591618900	16	13.76	ok	landeseite
+damen-flyknit-mesh-sneaker-mit-luftpolster-609900	2606190946561600500	16	13.16	ok	landeseite
+peep-toe-pumps-mit-t-riemen-625900	2606190230171626600	16	9.20	ok	landeseite
+damen-wildleder-ballerinas-mit-runder-kappe-630600	2606190118101631200	16	15.44	ok	landeseite
+retro-mokassins-aus-wildleder-637900	2606181206181638500	16	13.76	ok	landeseite
