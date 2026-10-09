@@ -220,10 +220,13 @@ await p.goto('https://luxestyle.ch/cart', { waitUntil: 'domcontentloaded', timeo
 const erg = {};
 for (const [name, items] of Object.entries(JSON.parse(process.argv[2]))) {
   const c = await p.evaluate(async (items) => {
-    await fetch('/cart/clear.js', { method: 'POST' });
-    for (const [id, q] of items) await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, quantity: q }) });
-    return await (await fetch('/cart.js')).json();
+    const warte = (ms) => new Promise(r => setTimeout(r, ms));   // Shopify-Bot-Schutz (429) bei schnellen Folgeabrufen
+    await fetch('/cart/clear.js', { method: 'POST' }); await warte(2500);
+    for (const [id, q] of items) { await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, quantity: q }) }); await warte(2500); }
+    const r = await fetch('/cart.js'); if (r.status !== 200) throw new Error('cart.js HTTP ' + r.status);
+    return await r.json();
   }, items);
+  await p.waitForTimeout(4000);
   await p.goto('https://luxestyle.ch/cart?einig=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 60000 });
   await p.waitForTimeout(3500);
   erg[name] = { sub: c.items_subtotal_price, tot: c.total_price, text: await p.evaluate(() => document.body.innerText) };
@@ -241,10 +244,13 @@ def live_test():
     pfad = "/tmp/warenkorb_einig_live.mjs"
     open(pfad, "w").write(LIVE_JS % REPO)
     try:
-        out = subprocess.run(["/opt/node22/bin/node", pfad, json.dumps(faelle)], capture_output=True, text=True, timeout=180).stdout
-        erg = json.loads(out.strip().splitlines()[-1])
+        pr = subprocess.run(["/opt/node22/bin/node", pfad, json.dumps(faelle)], capture_output=True, text=True, timeout=180)
+        zeilen = [z for z in pr.stdout.strip().splitlines() if z.startswith("{")]
+        if not zeilen:
+            raise RuntimeError("keine Ausgabe · " + " ".join(z for z in pr.stderr.splitlines() if "Error" in z)[:200])
+        erg = json.loads(zeilen[-1])
     except Exception as e:  # noqa: BLE001
-        print(f"  Live-Test nicht möglich: {type(e).__name__}: {str(e)[:120]}")
+        print(f"  Live-Test nicht möglich: {type(e).__name__}: {str(e)[:240]}")
         return None
     befunde = []
     for name, e in erg.items():
@@ -279,13 +285,17 @@ def pruefen():
     std, gratis = tarif()
     if std != VERSAND / 100 or gratis != TARIF / 100:
         befunde.append(f"Tarif geändert: Versand {std} / gratis ab {gratis} ≠ {VERSAND/100:.2f} / {TARIF/100:.2f} → Regel anpassen")
+    live = ""
     if "--live" in sys.argv:
         lb = live_test()
-        befunde += lb if lb is not None else []
+        if lb is None:
+            live = " · Testkorb NICHT gelaufen (Shop/Browser) — nur statisch geprüft"   # nie «ok» ohne Messung
+        else:
+            befunde += lb
+            live = " · Testkorb live ok"
     if befunde:
         print("⚠️ WARENKORB-EINIG: " + " · ".join(befunde)); return 1
-    print(f"WARENKORB-EINIG ✓: 3 Stellen ein Rechenweg · Tarif {std:.2f}/gratis ab {gratis:.0f} · Kanarien {len(KANARIEN)}/{len(KANARIEN)}"
-          + (" · Testkorb live ok" if "--live" in sys.argv else ""))
+    print(f"WARENKORB-EINIG ✓: 3 Stellen ein Rechenweg · Tarif {std:.2f}/gratis ab {gratis:.0f} · Kanarien {len(KANARIEN)}/{len(KANARIEN)}" + live)
     return 0
 
 
