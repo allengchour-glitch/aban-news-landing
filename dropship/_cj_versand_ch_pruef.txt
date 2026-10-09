@@ -6670,3 +6670,10 @@ damen-flyknit-mesh-sneaker-mit-luftpolster-609900	2606190946561600500	16	13.16	o
 peep-toe-pumps-mit-t-riemen-625900	2606190230171626600	16	9.20	ok	landeseite
 damen-wildleder-ballerinas-mit-runder-kappe-630600	2606190118101631200	16	15.44	ok	landeseite
 retro-mokassins-aus-wildleder-637900	2606181206181638500	16	13.76	ok	landeseite
+keilsandalen-aus-wildleder-mit-strohgeflecht-600600	2606180255101601200	16	14.96	ok	landeseite
+atmungsaktive-sommer-stiefeletten-631500	2606180103041632200	16	12.68	ok	landeseite
+britische-leder-loafer-fur-damen-635600	2606170907431636300	16	15.68	ok	landeseite
+mesh-sneakers-mit-luftpolsterung-629400	2606161048001620100	16	14.00	ok	landeseite
+elegante-pumps-mit-eckiger-zehenpartie-618300	2606160803371618900	16	11.23	ok	landeseite
+mary-jane-slingback-mit-spitzem-zeh-602800	2606160659591603500	16	13.76	ok	landeseite
+retro-ballerinas-bequem-und-vielseitig-627600	2606160523461628300	16	10.55	ok	landeseite
