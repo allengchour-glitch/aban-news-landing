@@ -17348,3 +17348,39 @@ gid://shopify/Product/16612196942215	23->0	Keramik-Naschschale für Katze 300 ml
 gid://shopify/Product/16612199661959	36->3	Weiche Lederhandtasche für Damen
 gid://shopify/Product/16612200874375	63->1	Multifunktionale Kopflayer-Geldbörse aus Rindsleder
 gid://shopify/Product/16612201202055	29->2	Grosses Lederportemonnaie mit Diebstahlschutz
+gid://shopify/Product/16612061806983	68->0	Kinder-Schreibtraining-Set
+gid://shopify/Product/16612323983751	66->0	Temperaturregulierender Steckdosenanschluss
+gid://shopify/Product/16612337811847	13->0	Leichtes Mesh-Sneaker für Herren
+gid://shopify/Product/16612337877383	13->0	Zange mit Kaliper-Rohre
+gid://shopify/Product/16612342563207	13->0	Winterstiefel mit Fleece-Einlage – Retro-Plateau
+gid://shopify/Product/16612342759815	136->0	Hexagon-Schärfer – universell
+gid://shopify/Product/16612343021959	78->2	Keramische Blumenvase für den Schreibtisch
+gid://shopify/Product/16612446699911	41->2	Stahlmesh-Wasserfeste Armbanduhr mit Zeiger
+gid://shopify/Product/16612452565383	42->1	Modegürtel-Quarz-Uhr
+gid://shopify/Product/16612695343495	10->0	Doppelter Schüssel mit schrägem M
+gid://shopify/Product/16612707369351	28->3	Hundeschüssel Anti-Rutsch – M (mittel)
+gid://shopify/Product/16612707500423	12->0	Keramische Katzenmahlzeit-Schüssel mit hohem Rand
+gid://shopify/Product/16612707697031	18->1	Automatischer 2-in-1 Hund- und Katzenfütterer
+gid://shopify/Product/16612707762567	55->1	Intelligenter Futternapf mit Fernsteuerung
+gid://shopify/Product/16612707795335	51->0	Intelligenter Haustierfütterer mit Kamera
+gid://shopify/Product/16612710777223	13->1	Keramik-Nahrungsbehälter für Katzen
+gid://shopify/Product/16612711367047	9->0	Armkraft-Trainingsgerät mit verstellbarem Griff
+gid://shopify/Product/16612711465351	15->0	Silicone-Hundeschüssel Doppel
+gid://shopify/Product/16612711498119	18->0	Yoga-Matte aus Wildleder 183 × 68 cm
+gid://shopify/Product/16612711596423	52->0	Sports Bounce Trainingsgerät
+gid://shopify/Product/16612712153479	28->0	Keramik-Hunde- und Katzenschüssel mit Stützrahmen
+gid://shopify/Product/16612716315015	59->2	Rucksack für Reisen und Alltag 20 L
+gid://shopify/Product/16612716478855	13->1	Mini-Schulranzen für Schüler/innen
+gid://shopify/Product/16612717166983	8->0	Bambus-Holz-Bett für zwei Hundebowlen
+gid://shopify/Product/16612717232519	57->0	Armdrehkraftgerät mit einstellbarer Last
+gid://shopify/Product/16612717265287	51->3	Katzen-Futternapf-Ständer mit schrägem Hals
+gid://shopify/Product/16612717298055	12->0	Grosser Canvas Kamerarucksack mit Diebstahlschutz
+gid://shopify/Product/16612740497799	14->0	Edelstahl-Futternapf mit bunten Kugeln
+gid://shopify/Product/16612740759943	51->0	Erhöhte Keramikschüssel mit Katzenohr-Design
+gid://shopify/Product/16612740923783	27->0	Holz-Bett für Futter- und Wassernäpfe, 2-fach
+gid://shopify/Product/16612741022087	29->0	Verstellbare Haustierkamera mit automatischer Futterstation
+gid://shopify/Product/16612741185927	175->0	Holz-Insektenhaus zum Aufhängen
+gid://shopify/Product/16612741677447	22->0	Bauchrad mit vier Rollen – leises Training
+gid://shopify/Product/16612741972359	27->0	Fitness Power-Assisted Haken für Klimmzüge
+gid://shopify/Product/16612742005127	84->0	Balance Board für Fitness und Yoga
+gid://shopify/Product/16612757537159	22->0	Militärische Taillentasche mit Zorro-Motiv
