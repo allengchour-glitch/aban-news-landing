@@ -98,3 +98,43 @@ Partner-Artikel zeigt den Amulett-Link, Nagellack-Karte den neuen Text, Produkts
 **Fehler auf dem Weg:** `--scharf` versehentlich zweimal gestartet — zweiter Lauf schrieb nichts (0 Treffer), überschrieb aber
 die Vorher-Dateien mit dem Nachher-Stand; aus den Rohdumps (`stern_artikel.json`, `alle_artikel.json` 06:23, Trockenlauf-Protokoll)
 rekonstruiert (10/10 mit Alt-Marker). Lehre: Vorher-Datei nie überschreiben, wenn sie schon existiert.
+
+## Nachtrag 09.10.2026, 20:15–20:30 UTC — Seidenkissenbezug (8 Artikel)
+
+**GEMESSEN:** Ampel «BLOG-LINKS: 1 tote Ziele in 8 Artikeln». Das Ziel war `seidenkissenbezug-aus-100-maulbeerseide-128704`
+(DRAFT; `besuchte_seiten_lieferbar` 4× «vom Lieferanten ausgelistet»). Verlinkt war es in: Silk-Pillowcase-Ratgeber,
+9 Geschenkideen, Anti-Aging-Routine, Cashmere-Decke, Einschlaf-Ritual, Geschenkboxen, Geschenke für Frauen, Hochzeitsgeschenke.
+Die Preise in den Artikeln waren schon uneinheitlich (CHF 21.90 bzw. 32.90).
+
+**Ersatz-Auswahl:** 11 aktive Seidenkissen-Produkte angesehen. Gewählt wurde `doppelseitiger-seiden-kissenbezug-mit-reissver-1401d1`,
+weil er **jede** Angabe der Artikel erfüllt: 100 % Maulbeerseide, 19 Momme, doppelseitig. Die anderen Kandidaten nennen kein
+Momme oder sind einseitig.
+
+**Befund am Ersatz:** Alle vier geprüften Kandidaten hatten im Shop **eine** Variante. Bei CJ haben sie aber mehrere:
+- 1401d1: 48 Varianten (17 Farben × 3 Grössen)
+- 600400: 13 Farben
+
+Eine Bestellung über den Blog hätte der Bestell-Automat nicht ausführen können («manuell prüfen»).
+
+**Getan:**
+1. 1401d1 bei CJ gemessen (`LISTE=… auswahl_fehlt_messen.py`, Vorrang-Weg).
+2. Auswahl nachgerüstet (`NUR_HANDLE=… auswahl_nachruesten.py`): Farbe (17) × Grösse (3), 48 Varianten, CHF 31.90–43.90 je
+   nach Lieferantenkosten, Bilder je Variante.
+3. Ein Makel aus dem Nachrüster behoben: CJ schreibt «Sky blue-51x66» ohne Einheit, deshalb standen «51×66 cm» und «51×66»
+   nebeneinander. Die Variante wurde umgehängt, jetzt gibt es 3 Grössen.
+   - An der Quelle: `auswahl_werte.einheit_angleichen()`. Masse ohne Einheit bekommen die EINE Einheit der Liste, aber nur,
+     wenn dadurch keine zwei CJ-Varianten zusammenfallen.
+   - 3 neue Kanarien, Selbsttest 52/52.
+   - Bestand (Export 04:28, 51'805 Produkte): 0 weitere Fälle.
+4. 8 Artikel umgeschrieben: href getauscht, Preis «ab CHF 31.90» (auch in der h3 «2. Seidenkissenbezug … — ab CHF 31.90»).
+   Ergebnis 8/8, je Artikel zurückgelesen. Ledger `_blog_tote_links.txt`, Vorher-Bodies `_blog_preise_vorher/*_seide.html`.
+5. Werkzeug fürs nächste Mal: `automation/blog_link_ersetzen.py` (ALT/NEU, trocken/`--scharf`, Blog-Lock, Live-Preis,
+   Rücklesen, Vorher-Datei wird nie überschrieben). Der Kommentar der Wache zeigt darauf.
+
+**Fehler auf dem Weg:** Mein Einzel-Trockenlauf `NUR_HANDLE=… auswahl_nachruesten.py` hat den Tagesbericht
+`AUSWAHL-NACHRUESTEN.md` überschrieben, denn BERICHT hat einen Standardwert. Der Autocommitter hat den falschen Stand schon
+committet. Wiederhergestellt aus `259f876f3^` und gepusht.
+
+**Lehre:** Ein Ersatzprodukt muss zwei Prüfungen bestehen.
+- Stimmen die Fakten im Text auch für den Ersatz?
+- Ist es ohne Rückfrage bestellbar? Eine Variante im Shop gegen 48 bei CJ heisst nein.
