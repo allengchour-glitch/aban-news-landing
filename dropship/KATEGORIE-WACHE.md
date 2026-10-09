@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-09T13:24Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-09T15:12Z
 
-Aktive gescannt: 20 · ohne Kategorie: 20 · heute gesetzt: 16 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
+Aktive gescannt: 21 · ohne Kategorie: 21 · heute gesetzt: 17 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -12,9 +12,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- langarm-t-shirt-mit-asymmetrischem-streifen-pa-625200 · Herrenmode → Apparel & Accessories > Clothing
-- langarmpullover-mit-v-ausschnitt-625300 · Herrenmode → Apparel & Accessories > Clothing
-- langarmliges-herren-t-shirt-mit-print-619300 · Herrenmode → Apparel & Accessories > Clothing
-- herren-halbbereiz-hooded-sweatshirt-603100 · Herrenmode → Apparel & Accessories > Clothing
-- langarmliges-sportshirt-mit-standkragen-618200 · Herrenmode → Apparel & Accessories > Clothing
+- weihnachtsgirlande-mit-bogenkranz-pvc-624700 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- komfortable-keilabsatz-sandalen-625600 · Damenschuhe → Apparel & Accessories > Shoes
+- roter-lkw-ornament-fur-weihnachten-619900 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- runde-sandalen-mit-fischmund-schnur-728768 · Damenschuhe → Apparel & Accessories > Shoes
+- sandalen-mit-schleife-grun-schwarz-aprikose-385792 · Damenschuhe → Apparel & Accessories > Shoes
 
