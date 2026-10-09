@@ -6,6 +6,7 @@ import hashlib
 import hmac
 import json
 import sys
+import tempfile
 import threading
 import urllib.parse
 from datetime import datetime, timezone
@@ -67,6 +68,7 @@ GEHEIM = "spot-geheim"
 
 class Fake(BaseHTTPRequestHandler):
     log, usdt, eth, rechte, stake_fehler = [], 1000.0, 0.5, {"enableWithdrawals": False}, False
+    abbrechen = None  # "kauf" oder "stake": ausführen, dann Verbindung ohne Antwort schliessen
 
     def _a(self, o, code=200):
         bb = json.dumps(o).encode()
@@ -97,6 +99,11 @@ class Fake(BaseHTTPRequestHandler):
                 {"filterType": "LOT_SIZE", "stepSize": "0.0001", "minQty": "0.0001"}, {"filterType": "NOTIONAL", "minNotional": "5"}]}]})
         if pfad == "/api/v3/order":
             menge = float(p["quoteOrderQty"]) / 2500
+            if Fake.abbrechen == "kauf":
+                Fake.usdt -= float(p["quoteOrderQty"])
+                Fake.eth += menge * 0.999
+                self.close_connection = True
+                return
             Fake.usdt -= float(p["quoteOrderQty"])
             Fake.eth += menge * 0.999
             return self._a({"orderId": 7, "status": "FILLED", "executedQty": f"{menge:.8f}", "cummulativeQuoteQty": p["quoteOrderQty"],
@@ -105,6 +112,9 @@ class Fake(BaseHTTPRequestHandler):
             if Fake.stake_fehler:
                 return self._a({"code": -6011, "msg": "Quota exceeded"}, 400)
             Fake.eth -= float(p["amount"])
+            if Fake.abbrechen == "stake":
+                self.close_connection = True
+                return
             return self._a({"success": True, "wbethAmount": str(float(p["amount"]) * 0.95), "conversionRatio": "1.05"})
         return self._a({"code": -1, "msg": "unbekannt"}, 404)
 
@@ -171,6 +181,38 @@ Fake.stake_fehler = False
 S.lauf(env=echt, jetzt=datetime(2026, 10, 16, 3, tzinfo=timezone.utc), logbuch=lb)
 pruefe("nächster Lauf holt das Staking nach (ohne neuen Kauf)", len(lb["echtgeld"]["kaeufe"]) == 2 and len(lb["echtgeld"]["gestakt"]) == 2
        and S.offen(lb["echtgeld"]) < 0.0001, lb["echtgeld"])
+# ── Funde der Code-Prüfung: verlorene Antworten, Adresse, Pause ──
+lb2 = {"testnetz": leeres_buch(), "echtgeld": leeres_buch()}
+Fake.abbrechen = "kauf"
+n = len(Fake.log)
+e = S.lauf(env=env, jetzt=jetzt, logbuch=lb2)
+Fake.abbrechen = None
+pruefe("Kauf-Antwort verloren: kein Absturz, als «unklar» gebucht", "verloren" in e["hinweis"] and lb2["testnetz"]["kaeufe"][-1].get("unklar")
+       and lb2["testnetz"]["kaeufe"][-1]["eth"] == 0.0, (e, lb2["testnetz"]))
+n = len(Fake.log)
+S.lauf(env=env, jetzt=datetime(2026, 10, 9, 3, tzinfo=timezone.utc), logbuch=lb2)
+pruefe("…und am nächsten Tag wird NICHT nochmals gekauft", not auftraege(n), auftraege(n))
+lb3 = {"testnetz": leeres_buch(), "echtgeld": {"kaeufe": [{"tag": "2026-10-01", "usdt": 50.0, "eth": 0.02}], "gestakt": []}}
+Fake.abbrechen = "stake"
+eth_vorher = Fake.eth
+e = S.lauf(env=echt, jetzt=datetime(2026, 10, 3, 3, tzinfo=timezone.utc), logbuch=lb3)
+Fake.abbrechen = None
+pruefe("Staking-Antwort verloren: als «unklar» gestakt gebucht", lb3["echtgeld"]["gestakt"] and lb3["echtgeld"]["gestakt"][-1].get("unklar")
+       and "verloren" in e["hinweis"], (e, lb3["echtgeld"]))
+n = len(Fake.log)
+S.lauf(env=echt, jetzt=datetime(2026, 10, 4, 3, tzinfo=timezone.utc), logbuch=lb3)
+pruefe("…und es werden keine fremden ETH des Nutzers nachgestakt", not [x for x in Fake.log[n:] if x[1] == "/sapi/v2/eth-staking/eth/stake"])
+n = len(Fake.log)
+e = S.lauf(env=dict(env, BINANCE_BASIS_URL="https://api.binance.com"), jetzt=jetzt, logbuch=lb2)
+pruefe("echte Binance-Adresse ohne Doppel-Freigabe: nichts gemacht", "BINANCE_BASIS_URL" in e["hinweis"] and len(Fake.log) == n)
+_pause_alt = S.PAUSE
+with tempfile.TemporaryDirectory() as _pd:
+    S.PAUSE = Path(_pd) / "PAUSE"
+    S.PAUSE.write_text("x")
+    n = len(Fake.log)
+    e = S.lauf(env=env, jetzt=datetime(2026, 11, 1, 3, tzinfo=timezone.utc), logbuch=lb2)
+    S.PAUSE = _pause_alt
+pruefe("Pause: kein Kauf", "Pause" in e["hinweis"] and len(Fake.log) == n)
 pruefe("keine Schlüssel im Logbuch", GEHEIM not in json.dumps(lb) and "KEY-S" not in json.dumps(lb))
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")

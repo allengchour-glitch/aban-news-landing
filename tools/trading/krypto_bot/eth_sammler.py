@@ -22,6 +22,7 @@ selbst gekauft hat — andere ETH im Konto fasst er nicht an. Logbuch: data/eth-
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import math
 import os
@@ -38,6 +39,8 @@ import broker_binance as BB  # noqa: E402
 
 ROOT = HIER.parents[2]
 LOGBUCH = ROOT / "data" / "eth-sammler.json"
+PAUSE = HIER.parent / "ki_bot" / "PAUSE"
+NETZFEHLER = (OSError, http.client.HTTPException)  # Zeitlimit, abgerissene Verbindung: ob ausgeführt, ist unklar
 MIN_STAKE = 0.0001       # Binance nimmt Staking-Beträge mit höchstens 4 Nachkommastellen
 GEBUEHR = 0.001          # Spot-Gebühr 0,1 % (Backtest)
 
@@ -110,7 +113,8 @@ def netto_eth(antwort, basis="ETH"):
 
 
 def offen(buch):
-    """Selbst gekaufte ETH, die noch nicht im Staking liegen."""
+    """Selbst gekaufte ETH, die noch nicht im Staking liegen. Ein «unklarer» Staking-Versuch (Antwort verloren) zählt als
+    gestakt — lieber einmal zu wenig staken als ETH des Nutzers, die der Bot nicht gekauft hat."""
     return max(0.0, sum(k["eth"] for k in buch["kaeufe"]) - sum(s["eth"] for s in buch["gestakt"]))
 
 
@@ -182,7 +186,15 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
         return ende("keine Schlüssel (BINANCE_API_KEY/SECRET) gesetzt — nichts zu tun.")
     if cfg["stop"]:
         return ende("Not-Aus aktiv — kein Kauf, kein Staking.")
+    if PAUSE.exists() and not trocken:
+        return ende("Auto-Handel ist aus (Pause) — kein Kauf, kein Staking.")
+    if cfg.get("url_fehler"):
+        return ende(cfg["url_fehler"])
     lb = lies() if logbuch is None else logbuch
+
+    def sichern():
+        if logbuch is None and not trocken:
+            schreibe(lb)
     buch = lb[modus]
     c = client or Sammler(cfg)
     if cfg["echtgeld"]:
@@ -203,13 +215,21 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
             kurs = c.kurs(cfg["eth_symbol"])
             print(f"{'(trocken) ' if trocken else ''}Kauf {betrag:.2f} {cfg['quote']} → ca. {betrag / kurs:.5f} ETH zu {fmt_zahl(kurs, 2)}")
             if not trocken:
-                antwort = c.kaufen(cfg["eth_symbol"], betrag)
+                try:
+                    antwort = c.kaufen(cfg["eth_symbol"], betrag)
+                except NETZFEHLER as ex:
+                    # Ob Binance gekauft hat, ist offen. Als «unklar» buchen: so kauft der nächste Lauf nicht doppelt.
+                    buch["kaeufe"].append({"tag": heute, "usdt": round(betrag, 2), "eth": 0.0, "kurs": round(kurs, 2), "unklar": True})
+                    sichern()
+                    return ende(f"Antwort auf den Kauf verloren ({type(ex).__name__}) — bitte im Binance-Konto prüfen. "
+                                "Als «unklar» gebucht, damit nicht doppelt gekauft wird.")
                 menge = netto_eth(antwort)
                 bezahlt = float(antwort.get("cummulativeQuoteQty") or betrag)
                 k = {"tag": heute, "usdt": round(bezahlt, 2), "eth": round(menge, 8),
                      "kurs": round(bezahlt / float(antwort.get("executedQty") or 1), 2), "id": antwort.get("orderId")}
                 buch["kaeufe"].append(k)
                 erg["kauf"] = k
+                sichern()  # sofort: geht danach etwas schief, ist der Kauf trotzdem gebucht
         else:
             print(f"ETH-Sammler: kein Kauf — {grund}.")
         if cfg["staken"] and not cfg["echtgeld"]:
@@ -230,15 +250,19 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
                 except BB.BinanceFehler as ex:
                     erg["hinweis"] = f"Staking abgelehnt (HTTP {ex.code}): {ex.msg} — ETH bleiben im Spot-Konto, nächster Lauf versucht es wieder."
                     print("ETH-Sammler: " + erg["hinweis"])
+                except NETZFEHLER as ex:
+                    buch["gestakt"].append({"tag": heute, "eth": menge, "wbeth": 0.0, "unklar": True})
+                    erg["hinweis"] = (f"Antwort auf das Staking verloren ({type(ex).__name__}) — als «unklar» gebucht, damit nicht doppelt "
+                                      "gestakt wird. Bitte im Binance-Konto (Earn → ETH-Staking) prüfen.")
+                    print("ETH-Sammler: " + erg["hinweis"])
     except BB.BinanceFehler as ex:
         erg["hinweis"] = ("Binance sperrt deinen Standort (HTTP 451)." if ex.code == 451 else
                           "Schlüssel ungültig (HTTP 401)." if ex.code == 401 else f"Binance lehnt ab (HTTP {ex.code}): {ex.msg}")
         print("ETH-Sammler: " + erg["hinweis"])
-    except (urllib.error.URLError, KeyError, ValueError, IndexError) as ex:
+    except (*NETZFEHLER, KeyError, ValueError, IndexError) as ex:
         erg["hinweis"] = f"Binance nicht erreichbar oder Antwort unerwartet: {type(ex).__name__}"
         print("ETH-Sammler: " + erg["hinweis"])
-    if logbuch is None and not trocken:
-        schreibe(lb)
+    sichern()
     return erg
 
 

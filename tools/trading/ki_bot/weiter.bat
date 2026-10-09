@@ -1,5 +1,6 @@
 @echo off
-REM Hebt den Not-Aus auf.
+REM Hebt Not-Aus und Pause auf.
 if exist "%~dp0STOP" del "%~dp0STOP"
-echo Not-Aus aufgehoben. Starten mit start-auto.bat
+if exist "%~dp0PAUSE" del "%~dp0PAUSE"
+echo Not-Aus und Pause aufgehoben. Der naechste Lauf handelt wieder.
 pause

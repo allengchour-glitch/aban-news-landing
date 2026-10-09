@@ -87,6 +87,42 @@ mittel = [100 * (1.001 ** i) * (1 + 0.0078 * ((-1) ** i)) for i in range(400)]  
 h1, h_deckel, h2 = K.roh_hebel(mittel)[-1], K.roh_hebel(mittel, max_hebel=2.0)[-1], K.roh_hebel(mittel, max_hebel=2.0, ziel_vol=0.8)[-1]
 pruefe("Stufe 2 = alles doppelt: 1× → 1, nur Deckel 2 → ~1,3, Stufe 2 → 2", h1 == 1.0 and 1.1 < h_deckel < 1.6 and h2 == 2.0, (h1, h_deckel, h2))
 
+# ── Lauf-Sperre: nie zwei Läufe gleichzeitig ──
+import os as _os  # noqa: E402
+import sperre as SP  # noqa: E402
+import time as _time  # noqa: E402
+with _tf.TemporaryDirectory() as _sd:
+    with SP.lauf_sperre(ordner=_sd):
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=0):
+                zweiter = "lief"
+        except SP.Besetzt:
+            zweiter = "gesperrt"
+    pruefe("Sperre: zweiter Lauf während des ersten wird abgewiesen", zweiter == "gesperrt")
+    with SP.lauf_sperre(ordner=_sd, warten=0):
+        frei = True
+    pruefe("Sperre: nach dem ersten Lauf wieder frei", frei and not (Path(_sd) / "krypto-lauf.lock").exists())
+    _lk = Path(_sd) / "krypto-lauf.lock"
+    _lk.write_text("1 0")
+    _os.utime(_lk, (_time.time() - 2000, _time.time() - 2000))
+    with SP.lauf_sperre(ordner=_sd, warten=0):
+        verwaist = True
+    pruefe("Sperre: verwaiste Sperre (Absturz) wird nach 15 Min. übernommen", verwaist)
+    erg_w = []
+
+    def _halten():
+        with SP.lauf_sperre(ordner=_sd):
+            _time.sleep(0.6)
+
+    _t = threading.Thread(target=_halten)
+    _t.start()
+    _time.sleep(0.1)
+    _t0 = _time.time()
+    with SP.lauf_sperre(ordner=_sd, warten=5):
+        erg_w.append(_time.time() - _t0)
+    _t.join()
+    pruefe("Sperre mit Warten: läuft nach dem ersten (nicht gleichzeitig)", 0.3 < erg_w[0] < 3, erg_w)
+
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402
 
@@ -120,6 +156,7 @@ GEHEIM = "futures-geheim"
 
 class Fake(BaseHTTPRequestHandler):
     log, pos, hedge, rechte = [], 0.0, False, {"enableWithdrawals": False}
+    stops, markt_fehler, stop_fehler, mark = [], None, None, "50000"
 
     def _a(self, o, code=200):
         b = json.dumps(o).encode()
@@ -154,10 +191,25 @@ class Fake(BaseHTTPRequestHandler):
         if pfad == "/fapi/v2/positionRisk":
             return self._a([{"symbol": "BTCUSDT", "positionAmt": str(Fake.pos)}])
         if pfad == "/fapi/v1/premiumIndex":
-            return self._a({"markPrice": "50000", "lastFundingRate": "0.0001"})
+            return self._a({"markPrice": Fake.mark, "lastFundingRate": "0.0001"})
+        if pfad == "/fapi/v1/openOrders":
+            return self._a([{"orderId": i + 100, "type": "STOP_MARKET", "closePosition": "true", "side": x["side"], "stopPrice": x["stopPrice"]}
+                            for i, x in enumerate(Fake.stops)])
+        if pfad == "/fapi/v1/allOpenOrders" and methode == "DELETE":
+            Fake.stops = []
+            return self._a({"code": 200, "msg": "ok"})
+        if pfad == "/fapi/v1/order" and p.get("type") == "STOP_MARKET":
+            if Fake.stop_fehler and Fake.stop_fehler.get("preis") in (None, p["stopPrice"]):
+                return self._a({k: v for k, v in Fake.stop_fehler.items() if k != "preis"}, 400)
+            if any(x["side"] == p["side"] for x in Fake.stops):
+                return self._a({"code": -4130, "msg": "closePosition in the direction is existing"}, 400)
+            Fake.stops.append({"side": p["side"], "stopPrice": p["stopPrice"]})
+            return self._a({"orderId": 2, "status": "NEW"})
         if pfad == "/fapi/v1/marginType":
             return self._a({"code": -4046, "msg": "No need to change margin type."}, 400)
         if pfad == "/fapi/v1/order" and p.get("type") == "MARKET":
+            if Fake.markt_fehler:
+                return self._a(Fake.markt_fehler, 503)
             q2 = float(p["quantity"]) * (1 if p["side"] == "BUY" else -1)
             Fake.pos = round(Fake.pos + q2, 6)
             return self._a({"orderId": 1, "status": "FILLED"})
@@ -192,10 +244,15 @@ pruefe("ISOLATED-Margin und Hebel 1 gesetzt", any(x[1] == "/fapi/v1/leverage" an
 stops = [x for x in orders if x[2].get("type") == "STOP_MARKET"]
 pruefe("Börsen-Stop gesetzt, auf Tick gerundet, Markpreis", stops and stops[-1][2]["stopPrice"] == "45000" and stops[-1][2]["closePosition"] == "true"
        and stops[-1][2]["workingType"] == "MARK_PRICE", stops[-1:])
-pruefe("alte Stops vorher gelöscht", any(x[0] == "DELETE" and x[1] == "/fapi/v1/allOpenOrders" for x in Fake.log))
+pruefe("ohne alten Stop wird nichts gelöscht", not any(x[0] == "DELETE" for x in Fake.log) and len(Fake.stops) == 1)
+n_lev = len(Fake.log)
 n0 = len([x for x in Fake.log if x[1] == "/fapi/v1/order" and x[2].get("type") == "MARKET"])
 BF.ausfuehren(dict(ent, hebel=-1.0), env=env, protokolliere=prot.append)
 neu = [x[2] for x in Fake.log if x[1] == "/fapi/v1/order" and x[2].get("type") == "MARKET"][n0:]
+pruefe("Richtungswechsel: alter Stop ersetzt, neuer Stop auf der Short-Seite", Fake.stops == [{"side": "BUY", "stopPrice": "55000"}], Fake.stops)
+wechsel_log = [x[1] for x in Fake.log[n_lev:] if x[1] in ("/fapi/v1/order", "/fapi/v1/leverage", "/fapi/v1/marginType")]
+pruefe("Richtungswechsel: vor der Gegenposition Margin-Art und Hebel neu gesetzt", wechsel_log[:4] == ["/fapi/v1/order", "/fapi/v1/marginType", "/fapi/v1/leverage", "/fapi/v1/order"],
+       wechsel_log)
 pruefe("Richtungswechsel: schliessen (reduceOnly) + short", len(neu) == 2 and neu[0].get("reduceOnly") == "true" and neu[1]["side"] == "SELL"
        and Fake.pos == -0.2, (neu, Fake.pos))
 BF.ausfuehren(ent, env=dict(env, KI_BOT_STOP="1"), protokolliere=prot.append)
@@ -211,6 +268,76 @@ n2 = len(Fake.log)
 BF.ausfuehren(ent, env=echt, protokolliere=prot.append)
 pruefe("Echtgeld + Auszahlungsrecht: verweigert", "Auszahlungen" in prot[-1]["hinweis"] and not [x for x in Fake.log[n2:] if x[1] == "/fapi/v1/order"])
 pruefe("keine Schlüssel im Protokoll", GEHEIM not in json.dumps(prot) and "KEY-F" not in json.dumps(prot))
+Fake.rechte = {"enableWithdrawals": False}
+
+# ── Funde der Code-Prüfung: Not-Aus bei Börsenfehler, Netzabbruch, Kurs jenseits des Stops, Stop abgelehnt, Adresse ──
+Fake.pos, Fake.stops = 0.0, []
+BF.ausfuehren(ent, env=env, protokolliere=prot.append)  # long 0.2 mit Stop 45000
+Fake.markt_fehler = {"code": -1001, "msg": "Internal error"}
+e_na = {"hebel": 0.0, "stand": "2026-10-07"}
+BF.ausfuehren(e_na, env=dict(env, KI_BOT_STOP="1"), protokolliere=prot.append)
+Fake.markt_fehler = None
+pruefe("Not-Aus scheitert an Börse: Position bleibt, alter Stop BLEIBT stehen", Fake.pos == 0.2 and Fake.stops == [{"side": "SELL", "stopPrice": "45000"}],
+       (Fake.pos, Fake.stops))
+pruefe("…und das Ergebnis sagt es (Position 0.2, Fehler)", e_na["broker"]["position"] == 0.2 and e_na["broker"]["fehler"] and not e_na["broker"]["ohne_stop"],
+       e_na["broker"])
+
+
+class Abbruch(Fake):
+    """Führt den Auftrag aus, schliesst dann die Verbindung ohne Antwort (wie ein Zeitlimit nach Ausführung)."""
+    def _route(self, methode):
+        pfad, _, q = self.path.partition("?")
+        p = dict(urllib.parse.parse_qsl(q))
+        if pfad == "/fapi/v1/order" and p.get("type") == "MARKET" and Fake.abbrechen:
+            Fake.pos = round(Fake.pos + float(p["quantity"]) * (1 if p["side"] == "BUY" else -1), 6)
+            self.close_connection = True
+            return
+        return super()._route(methode)
+
+
+Fake.abbrechen = False
+srv2 = HTTPServer(("127.0.0.1", 0), Abbruch)
+threading.Thread(target=srv2.serve_forever, daemon=True).start()
+env2 = dict(env, BINANCE_FUTURES_URL=f"http://127.0.0.1:{srv2.server_port}", BINANCE_SPOT_URL=f"http://127.0.0.1:{srv2.server_port}")
+Fake.pos, Fake.stops, Fake.abbrechen = 0.0, [], True
+e_ab = dict(ent)
+try:
+    BF.ausfuehren(e_ab, env=env2, protokolliere=prot.append)
+    absturz = None
+except Exception as ex:  # noqa: BLE001
+    absturz = ex
+Fake.abbrechen = False
+pruefe("Netzabbruch nach Ausführung: kein Absturz, Stop passend zur echten Position", absturz is None and Fake.pos == 0.2
+       and Fake.stops == [{"side": "SELL", "stopPrice": "45000"}] and e_ab["broker"]["fehler"], (absturz, Fake.pos, Fake.stops))
+srv2.shutdown()
+Fake.pos, Fake.stops, Fake.mark = 0.0, [], "44000"
+e_tief = dict(ent)
+BF.ausfuehren(e_tief, env=env, protokolliere=prot.append)
+Fake.mark = "50000"
+pruefe("Kurs schon unter dem Stop: kein Long (Stop würde sofort auslösen)", Fake.pos == 0.0 and "kein Long" in e_tief["broker"]["hinweis"], e_tief["broker"])
+Fake.pos, Fake.stops = 0.2, [{"side": "SELL", "stopPrice": "44000"}]
+Fake.stop_fehler = {"code": -2021, "msg": "Order would immediately trigger.", "preis": "45000"}  # nur der neue Preis
+e_sf = dict(ent, hebel=1.0)
+BF.ausfuehren(e_sf, env=env, protokolliere=prot.append)
+Fake.stop_fehler = None
+pruefe("Neuer Stop abgelehnt: alter Stop wird wieder gesetzt, nicht schutzlos", Fake.stops == [{"side": "SELL", "stopPrice": "44000"}]
+       and not e_sf["broker"]["ohne_stop"] and "wieder gesetzt" in e_sf["broker"]["hinweis"], (Fake.stops, e_sf["broker"]))
+Fake.stops, Fake.stop_fehler = [], {"code": -1001, "msg": "Internal error"}
+e_os = dict(ent, hebel=1.0)
+BF.ausfuehren(e_os, env=env, protokolliere=prot.append)
+Fake.stop_fehler = None
+pruefe("Stop unmöglich und kein alter da: laut gemeldet (OHNE Stop)", e_os["broker"]["ohne_stop"] and "OHNE Stop" in e_os["broker"]["hinweis"], e_os["broker"])
+n_url = len(Fake.log)
+e_url = dict(ent)
+BF.ausfuehren(e_url, env=dict(env, BINANCE_FUTURES_URL="https://fapi.binance.com"), protokolliere=prot.append)
+pruefe("Adresse allein schaltet nie auf echtes Geld: echte Binance-Adresse ohne Doppel-Freigabe → abgelehnt",
+       "BINANCE_FUTURES_URL" in e_url["broker"]["hinweis"] and len(Fake.log) == n_url)
+pruefe("Demo-Adresse im Testnetz erlaubt, echte Adresse bei Echtgeld erlaubt",
+       not BF.einstellungen({"BINANCE_FUTURES_URL": "https://demo-fapi.binance.com"})["url_fehler"]
+       and not BF.einstellungen({"BINANCE_FUTURES_URL": "https://fapi.binance.com", "BINANCE_FUTURES_TESTNET": "false",
+                                 "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["url_fehler"]
+       and BF.einstellungen({"BINANCE_FUTURES_URL": "https://demo-fapi.binance.com", "BINANCE_FUTURES_TESTNET": "false",
+                             "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["url_fehler"])
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

@@ -36,7 +36,8 @@ sys.path.insert(0, str(HIER.parent / "ki_bot"))
 
 ROOT = HIER.parents[2]
 DATA = ROOT / "data"
-STOP = HIER.parent / "ki_bot" / "STOP"
+STOP = HIER.parent / "ki_bot" / "STOP"    # Not-Aus: nichts eröffnen, der Pilot schliesst seine Positionen
+PAUSE = HIER.parent / "ki_bot" / "PAUSE"  # Auto-Handel aus: nichts handeln, Positionen bleiben
 SEITE = HIER / "cockpit.html"
 MARKT = HIER / "markt.html"
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
@@ -53,30 +54,63 @@ def _json(name, standard):
 
 # ───────────────────────── Aktionen (Cockpit-Knopf und Telegram) ─────────────────────────
 def notaus_an(schliessen=True, ausfuehren=None):
-    """Not-Aus setzen und die Pilot-Positionen sofort schliessen (reduceOnly). Gibt eine Meldung zurück."""
+    """Not-Aus setzen und die Pilot-Positionen sofort schliessen (reduceOnly). Meldet je Markt, was WIRKLICH zu ist:
+    «geschlossen» nur, wenn die Position danach 0 ist. Scheitert das Schliessen, bleibt der bisherige Stop an der Börse."""
     STOP.parent.mkdir(parents=True, exist_ok=True)
     STOP.write_text(datetime.now(timezone.utc).isoformat(timespec="seconds") + " Not-Aus (Cockpit/Telegram)\n", encoding="utf-8")
     if not schliessen:
         return "🛑 Not-Aus aktiv."
     import pilot as PI
+    import sperre
     if ausfuehren is None:
         import broker_futures as BF
         ausfuehren = BF.ausfuehren
     ms = PI.maerkte()
-    erledigt = []
-    for m in ms:
-        try:
-            a = ausfuehren({"hebel": 0.0, "stand": datetime.now(timezone.utc).date().isoformat()},
-                           symbol=PI.MAERKTE[m][0], gewicht=1 / len(ms))
-            erledigt += [f"{m}: {x['seite']} {x['menge']}" for x in a or []]
-        except Exception as ex:  # noqa: BLE001
-            erledigt.append(f"{m}: Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
-    return "🛑 Not-Aus aktiv. " + ("Geschlossen: " + ", ".join(erledigt) if erledigt else "Keine offenen Positionen (oder keine Futures-Schlüssel).")
+    zeilen, alles_zu = [], True
+    try:
+        gesperrt = sperre.lauf_sperre(warten=60)
+        gesperrt.__enter__()
+    except sperre.Besetzt:
+        gesperrt = None
+        zeilen.append("(ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt)")
+    try:
+        for m in ms:
+            e = {"hebel": 0.0, "stand": datetime.now(timezone.utc).date().isoformat()}
+            try:
+                a = ausfuehren(e, symbol=PI.MAERKTE[m][0], gewicht=1 / len(ms)) or []
+            except Exception as ex:  # noqa: BLE001
+                zeilen.append(f"❌ {m}: Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
+                alles_zu = False
+                continue
+            b = e.get("broker") or {}
+            pos, hinweis = b.get("position"), (b.get("hinweis") or "").replace("Not-Aus aktiv — keine neuen Positionen, bestehende werden geschlossen.", "").strip()
+            if b.get("hinweis") == "keine Futures-Schlüssel":
+                zeilen.append(f"{m}: keine Futures-Schlüssel — nichts zu schliessen")
+            elif pos is None:
+                zeilen.append(f"❌ {m}: unklar — {hinweis or 'keine Antwort'} Bitte im Binance-Konto prüfen!")
+                alles_zu = False
+            elif pos:
+                zeilen.append(f"❌ {m}: NICHT geschlossen, Position {pos:g} noch offen. {hinweis} Der bisherige Stop bleibt. Bitte im Binance-Konto prüfen!")
+                alles_zu = False
+            else:
+                zu = [f"{x['seite']} {x['menge']}" for x in a if x.get("id")]
+                zeilen.append(f"✅ {m}: geschlossen ({', '.join(zu)})" if zu else f"✅ {m}: keine offene Position")
+    finally:
+        if gesperrt is not None:
+            gesperrt.__exit__(None, None, None)
+    return ("🛑 Not-Aus aktiv." if alles_zu else "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!") + "\n" + "\n".join(zeilen)
+
+
+def pause_an():
+    PAUSE.parent.mkdir(parents=True, exist_ok=True)
+    PAUSE.write_text(datetime.now(timezone.utc).isoformat(timespec="seconds") + " Pause (Cockpit)\n", encoding="utf-8")
+    return "⏸ Auto-Handel aus. Die Bots handeln nicht mehr; offene Positionen bleiben stehen, ihr Stop an der Börse bleibt aktiv. Sofort schliessen: roter Not-Aus-Knopf."
 
 
 def notaus_aus():
-    if STOP.exists():
-        STOP.unlink()
+    for d in (STOP, PAUSE):
+        if d.exists():
+            d.unlink()
     return "✅ Not-Aus aufgehoben. Der nächste Lauf handelt wieder."
 
 
@@ -157,8 +191,7 @@ def aktion(name, starter=None, befehl=None):
         if name == "auto_an":
             ok, text = True, notaus_aus().replace("Not-Aus aufgehoben", "Auto-Handel an")
         elif name == "auto_aus":
-            ok, text = True, notaus_an(schliessen=False).replace("🛑 Not-Aus aktiv.", "⏸ Auto-Handel aus.") + \
-                " Offene Positionen bleiben stehen, ihr Stop an der Börse bleibt aktiv. Sofort schliessen: roter Not-Aus-Knopf."
+            ok, text = True, pause_an()
         elif name.startswith("risiko_"):
             import pilot_kern as K
             stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_2": 2.0}[name]
@@ -170,8 +203,9 @@ def aktion(name, starter=None, befehl=None):
                               "Gilt ab dem nächsten Lauf." + ("" if stufe == 1 else " Achtung: im Test deutlich tiefere Einbrüche als mit 1×."))
             if os.environ.get("KRYPTO_RISIKO"):
                 ok, text = False, f"KRYPTO_RISIKO={os.environ['KRYPTO_RISIKO']} ist als Umgebungsvariable gesetzt und hat Vorrang. Erst entfernen (setx KRYPTO_RISIKO \"\")."
-        elif name == "handeln" and STOP.exists():
-            ok, text = False, "Auto-Handel ist aus (Not-Aus aktiv). Erst einschalten — sonst würde dieser Lauf die Positionen schliessen."
+        elif name == "handeln" and (STOP.exists() or PAUSE.exists()):
+            ok, text = False, ("Not-Aus ist aktiv — erst Auto-Handel einschalten." if STOP.exists()
+                               else "Auto-Handel ist aus (Pause) — erst einschalten.")
         elif name == "selbsttest":
             teile, ok = [], True
             for t in SELBSTTESTS:
@@ -324,7 +358,7 @@ def stand(env=None):
     gesund = gesundheit(env, lb, ki)
     return {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": "ECHTGELD" if echt_futures else "TESTNETZ",
             "gesundheit": gesund,
-            "notaus": STOP.exists(), "maerkte": [maerkte[m] for m in PI.MAERKTE if m in maerkte], "konto": konto,
+            "notaus": STOP.exists(), "pause": PAUSE.exists(), "maerkte": [maerkte[m] for m in PI.MAERKTE if m in maerkte], "konto": konto,
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
@@ -354,7 +388,8 @@ def gesundheit(env, lb, ki, heute=None):
         p("Letzter Pilot-Lauf", alt <= 2, f"Tagesstand {letzte}" + ("" if alt <= 2 else f" — {alt} Tage alt: läuft der tägliche Start?"))
     else:
         p("Letzter Pilot-Lauf", False, "noch nie — Knopf «Probelauf» oder krypto-auto.bat starten")
-    p("Not-Aus", not STOP.exists(), "aus (Bots dürfen handeln)" if not STOP.exists() else "AKTIV — die Bots handeln nicht")
+    p("Not-Aus", not STOP.exists(), "aus" if not STOP.exists() else "AKTIV — der Pilot schliesst seine Positionen, nichts Neues")
+    p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
         if time.time() - _AUFGABE_CACHE["zeit"] > 300:
             _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da()})

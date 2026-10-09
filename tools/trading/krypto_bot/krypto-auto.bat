@@ -5,8 +5,13 @@ REM Braucht kein Alpaca. Mit Argument "auto" ohne Pause am Ende (fuer die Window
 cd /d "%~dp0\..\..\.."
 set PY=py
 where py >nul 2>nul || set PY=python
+if exist "tools\trading\ki_bot\PAUSE" (
+  echo Auto-Handel ist aus ^(Pause^): nichts gehandelt, Positionen bleiben. Einschalten im Cockpit oder mit weiter.bat.
+  goto ende
+)
 if exist "tools\trading\ki_bot\STOP" (
-  echo Not-Aus ist aktiv. Zum Weiterhandeln tools\trading\ki_bot\weiter.bat starten.
+  echo Not-Aus ist aktiv: der Pilot schliesst nur noch seine Positionen ^(nichts Neues^). Weiterhandeln: weiter.bat
+  if not "%BINANCE_FUTURES_API_KEY%"=="" %PY% tools\trading\krypto_bot\pilot.py --lauf
   goto ende
 )
 echo Selbsttest ...

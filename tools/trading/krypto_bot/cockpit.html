@@ -126,7 +126,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
     <span class="zeit" id="zeit"></span>
     <button id="notaus" class="stop" type="button">Not-Aus</button>
   </header>
-  <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — die Bots handeln nicht.</div>
+  <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — der Pilot schliesst seine Positionen und eröffnet nichts Neues.</div>
 
   <section class="karte profit" aria-label="Profit" style="margin-bottom:12px">
     <div class="steuerkopf" style="margin-bottom:4px"><h2 style="margin:0">💰 Profit</h2><span class="pill" id="p-modus">—</span>
@@ -360,9 +360,11 @@ function zeichne(d) {
     if (t && t["2019–heute"]) $("st-" + b.dataset.s).textContent =
       `Test ab 2019: ${fmtPct(t["2019–heute"].cagr)}/J · Einbruch ${fmtZahl(t["2019–heute"].einbruch * 100)} %`;
   });
-  $("auto").setAttribute("aria-checked", String(!d.notaus));
-  $("autoText").textContent = d.notaus ? "Auto-Handel AUS" : "Auto-Handel AN";
-  $("autoInfo").textContent = d.notaus ? "Die Bots handeln nicht. Offene Positionen behalten ihren Stop an der Börse."
+  const aus = d.notaus || d.pause;
+  $("auto").setAttribute("aria-checked", String(!aus));
+  $("autoText").textContent = aus ? "Auto-Handel AUS" : "Auto-Handel AN";
+  $("autoInfo").textContent = d.notaus ? "Not-Aus aktiv: der Pilot schliesst seine Positionen, nichts Neues. Einschalten hebt ihn auf."
+    : d.pause ? "Pause: die Bots handeln nicht. Offene Positionen behalten ihren Stop an der Börse."
     : "Täglich über krypto-auto.bat bzw. die Aufgabenplanung.";
   const k = d.konto;
   $("k-wert").textContent = k ? fmtZahl(k.wert, 2) + " USDT" : "—";
@@ -481,7 +483,7 @@ async function knopf(name) {
   laden();
 }
 document.querySelector(".knoepfe").addEventListener("click", e => { const b = e.target.closest("button[data-a]"); if (b && !b.disabled) knopf(b.dataset.a); });
-$("auto").addEventListener("click", () => knopf(letzterStand && letzterStand.notaus ? "auto_an" : "auto_aus"));
+$("auto").addEventListener("click", () => knopf(letzterStand && (letzterStand.notaus || letzterStand.pause) ? "auto_an" : "auto_aus"));
 $("stufen").addEventListener("click", e => {
   const b = e.target.closest("button[data-s]"); if (!b) return;
   const s = +b.dataset.s, ri = (letzterStand && letzterStand.risiko) || {stufe: 1, test: {}};
