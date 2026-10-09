@@ -442,3 +442,7 @@
 15502593524097	Farbe:3:3+ki	2026-10-09	faltbares-e-keyboard-mit-49-tasten-lautspreche-621504
 15502591984001	Farbe:4:4+ki	2026-10-09	niedliches-auto-sitzkissen-929920
 15502591820161	Farbe:5+Grösse:3:15	2026-10-09	halsband-hot-dog-glitzernd-7f3aa9
+15502591263105	Muster:6+Grösse:3:18+ki	2026-10-09	halsband-mit-metallverschluss-163db1
+15502590968193	Farbe:2+Grösse:2:4	2026-10-09	kissenhulle-mit-blumenmuster-b564b3
+15502590771585	Farbe:2+Grösse:4:8	2026-10-09	aufblasbarer-schutzkragen-fur-haustiere-6b25ef
+15502590214529	Farbe:2+Grösse:2:4	2026-10-09	anti-leckring-fur-haustiere-56c713
