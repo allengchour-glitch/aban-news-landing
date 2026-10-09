@@ -44,6 +44,22 @@
 
 
 
+## 2026-10-09 15:45 UTC · 🔤 «verbesser weiter»: Cowhide, Pendant, Baby-Romper im Titel — Google findet sie deutsch nicht
+
+**GEMESSEN:** 52'082 Titel. Eingebürgert und gesucht: Sneaker 640, Hoodie 387, Cardigan 294, Jumpsuit 255 (bleiben).
+Eindeutig fremd: Cowhide 15, Silicone 10, Stainless 10, Hooded 9, Kids 8, Pendant 7, Baby-Romper 6, Vest, Portable,
+Wallet, Pajama, Backpack. Dazu zwei Neuimporte mit Kauderwelsch («Wege-Sandalen», «Halbbereiz-Hooded»).
+
+**GETAN:**
+- `fremdwort_titel` in `haendlerwort_regel.json`: 25 Muster, Romper nur mit Baby-Kontext.
+- 57 Handtitel aus den Beschreibungen gelesen (Geschlechtswechsel, Mehrdeutiges, 8 Dubletten).
+- Kanarien 91/91, py=js 52'082/0. SCHARF 93/0, Rücklesen 10/10.
+- SEO-Titel laufen durch dieselbe Regel. Quelle: Importer (`fallenSicher`) + täglicher Wächter.
+- Bericht `dropship/FREMDWORT-TITEL-2026-10-09.md`.
+
+**Lehre:** **Die Grenze zieht die Suchgewohnheit, nicht die Sprache.** Sneaker bleibt, Cowhide nicht. Wechselt mit dem
+Wort das Geschlecht («Grosses Backpack» → «Grosser Rucksack»), ist eine Regel falsch und ein gelesener Handtitel richtig.
+
 ## 2026-10-09 14:50 UTC · 🔍 «nur 18 google suche ist wenig warum»: CH-Google 127 → 104 → 75 → ~77/Mt, Snippet doppelt escaped
 
 **GEMESSEN (ShopifyQL):** Google-Sitzungen aus der Schweiz: Jul 127, Aug 104, Sep 75, Okt ~77/Mt. Die Juli-Spitze der
@@ -19303,3 +19319,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🧠 **Verbesserungsrunde (Tag 8 ✅ 106 Videos): 483 Neuimporte seit 01.10. auf Google-Oberklassen, alte KI-Stufe war Einmal-Lauf → `oberklasse_lernen.py` (Regeln aus 16'351 Urteilen; Merkmal Kopfwort vor «mit/für/aus»: 92,1 → 97,7 %; 6/0) + Rest täglich an `google_fein_ki` (Massen-Modell gpt-oss-20b, 120b/qwen bleiben für Bestellungen/SEO).** Bereinigung ohne Wächter füllt sich wieder → `dropship/OBERKLASSE-NEUIMPORT-2026-10-08.md`
 - 2026-10-08 · ⭐ **«weiter verbessern» (Tag 9 vorgezogen): Bewertungs-Import erreichte 107/2'695 Neuimporte — pid stand in der SKU, der Nachschlag kostete 10 CJ-Punkte und scheiterte ab ~04 UTC, Läufe starben am Neustart → rohe pid direkt, Neuware im Reissverschluss, still_gestorben + «WEITER»-Kette (19 Bewertungen in der ersten Charge); Versandseite «spart CO2» + 11 Produkte «klimaneutral» → `data/klima_regel.json` für Wächter + Importer (11/0, py=js).** Gratis ab 50 vs 45 ist gewollt → `dropship/VERTRAUEN-TAG9-2026-10-08.md`
 - 2026-10-08 · 👗 **«weiter fein katalog verbessern»: Titelprobe-Ablehnungen (233) waren meist Google-Fehler (142 «Dresses» = Röcke/Blusen/Nachthemden) → `titelprobe_fein.py` 172/0; Kollektion Kleider/Röcke hing am CJ-Kategorienamen → `kleid_rock_tags.py` 453/0 + Importer `kleidRockTag()` (eine Wortregel, py=js 0 Abw.); 328 Einzelurteile 245/0 mit Regel-Vorrang; Zweig 243→69, Titelprobe 233→5; Printful fällt auf Grobklasse zurück (363/432) → Zähler `rueckfall-grob`.** → `dropship/FEINKATALOG-KLEID-ROCK-2026-10-08.md`
+- 2026-10-08 · 🔎 **«weiter»: Google-Wächter zählte 291 «Personalized advertising»-Meldungen (Ziel `[]`, Regel betrifft nur Zielgruppen) als Gratis-Eintrag-Blocker → `nur_personalisiert`, 1'114 → 823, Bildtausch-Bilanz unverändert; `[]` auch bei Bild-/Adult-Klassen = unbelegt, nur gezählt.** Meldung ≠ Blocker: was regelt die Regel? → Journal 08.10. 07:30

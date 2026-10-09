@@ -448,6 +448,146 @@
       "Das Casual All-Match Denim Shirt ist bequem.",
       "Das Casual Denim Shirt ist bequem.",
       "text:Los-Gewand"
+    ],
+    [
+      "Geflochtene Cowhide-Flachsandale",
+      "Geflochtene Rindsleder-Flachsandale",
+      "titel"
+    ],
+    [
+      "Cowhideschnur für Hunde",
+      "Rindslederschnur für Hunde",
+      "titel"
+    ],
+    [
+      "Cowhides Messenger-Tasche",
+      "Rindsleder-Messenger-Tasche",
+      "titel"
+    ],
+    [
+      "Genuine Leather Cowhide Wallet mit Blumenprägung",
+      "Rindsleder-Portemonnaie mit Blumenprägung",
+      "titel"
+    ],
+    [
+      "Silicone Kochspatel mit Holzgriff",
+      "Silikon-Kochspatel mit Holzgriff",
+      "titel"
+    ],
+    [
+      "Silicone-Armband",
+      "Silikon-Armband",
+      "titel"
+    ],
+    [
+      "Stainless Steel Duschkopf",
+      "Edelstahl-Duschkopf",
+      "titel"
+    ],
+    [
+      "Stainless Stahl Lunchbox",
+      "Edelstahl-Lunchbox",
+      "titel"
+    ],
+    [
+      "Hooded Pullover Sweater für Damen",
+      "Kapuzenpullover für Damen",
+      "titel"
+    ],
+    [
+      "Hooded Sweatshirt",
+      "Kapuzensweatshirt",
+      "titel"
+    ],
+    [
+      "Hooded Cardigan · Herren",
+      "Kapuzen-Cardigan · Herren",
+      "titel"
+    ],
+    [
+      "Hooded Dress · Damen",
+      "Kapuzenkleid · Damen",
+      "titel"
+    ],
+    [
+      "Baby-Romper mit Hut, lange Ärmel, Spitzenakzent",
+      "Baby-Strampler mit Hut, lange Ärmel, Spitzenakzent",
+      "titel"
+    ],
+    [
+      "Lotusblätter-Kragen-Romper für Neugeborene",
+      "Lotusblätter-Kragen-Strampler für Neugeborene",
+      "titel"
+    ],
+    [
+      "Casual Romper-Set mit Spaghettiträger-Top",
+      "Casual Romper-Set mit Spaghettiträger-Top",
+      "titel"
+    ],
+    [
+      "Romper-Pyjama · Damen",
+      "Romper-Pyjama · Damen",
+      "titel"
+    ],
+    [
+      "Kinder Sommer-Rompel für Mädchen",
+      "Kinder Sommer-Strampler für Mädchen",
+      "titel"
+    ],
+    [
+      "Magnetische Bausteine für Kids",
+      "Magnetische Bausteine für Kinder",
+      "titel"
+    ],
+    [
+      "Trainings-Schuhe für Kids und Teens",
+      "Trainings-Schuhe für Kinder und Teens",
+      "titel"
+    ],
+    [
+      "Dino-Kids-T-Shirt",
+      "Dino-Kinder-T-Shirt",
+      "titel"
+    ],
+    [
+      "K15 Kids 4G GPS Videoanruf-Uhr",
+      "K15 Kids 4G GPS Videoanruf-Uhr",
+      "titel"
+    ],
+    [
+      "3-teiliges Cozy Pajama Set",
+      "3-teiliges Cozy Pyjama Set",
+      "titel"
+    ],
+    [
+      "Zuckersüss Mädchenstil Langarm-Einfarbiges Pajama-Nachthemd",
+      "Zuckersüss Mädchenstil Langarm-Einfarbiges Pyjama-Nachthemd",
+      "titel"
+    ],
+    [
+      "Silikon-Lickmatte für Haustiere",
+      "Silikon-Leckmatte für Haustiere",
+      "titel"
+    ],
+    [
+      "Frucht-Necklace · Damen",
+      "Frucht-Halskette · Damen",
+      "titel"
+    ],
+    [
+      "Lidschatten-Palette «Star Necklace»",
+      "Lidschatten-Palette «Star Necklace»",
+      "titel"
+    ],
+    [
+      "Herren Hemd mit Vier-Wege-Stretch und Polka-Dots",
+      "Herren Hemd mit Vier-Wege-Stretch und Polka-Dots",
+      "titel"
+    ],
+    [
+      "Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt",
+      "Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt",
+      "titel"
     ]
   ],
   "handtitel_hinweis": "Neuer Titel wäre eine Dublette eines bestehenden Titels (dup_title_fix würde draften) → Hand-Titel aus der Beschreibung. Gilt nur, solange der Live-Titel noch der alte ist.",
@@ -455,7 +595,60 @@
     "Herren Sneaker «All-Match»": "Herren Sneaker mit Mesh-Futter und Farbakzenten",
     "Explosive Datejust Automatikuhr für Herren": "Automatikuhr für Herren mit Saphirglas und Kalender",
     "Hundehalsband & Leine Set im INS-Wind-Design": "Hundehalsband & Leine Set aus Polyester",
-    "Explosive Business Quarzuhr für Herren": "Business Quarzuhr für Herren mit Lederarmband"
+    "Explosive Business Quarzuhr für Herren": "Business Quarzuhr für Herren mit Lederarmband",
+    "Hooded Drawstring Sweater aus Strick": "Strick-Kapuzenpullover mit Kordelzug",
+    "Hooded Cardigan Sweatshirt mit Fledermausärmeln": "Kapuzen-Sweatjacke mit Fledermausärmeln",
+    "Herren-Halbbereiz-Hooded Sweatshirt": "Herren-Sweatshirt mit Stehkragen und Aufsatztasche",
+    "Wege-Sandalen mit Riemen, Plus Size": "Sandalen mit gekreuzten Riemen, Plus Size",
+    "Silicone-Tier-Schlankesschüssel mit Lickmatte": "Silikon-Anti-Schling-Napf mit Leckmatte",
+    "Edles Silber-Pendant mit Moissanit": "Edler Silber-Anhänger mit Moissanit",
+    "Geometrisches Pendant": "Geometrischer Anhänger an geflochtener Kette",
+    "Liebes-Pendant Puppe": "Valentins-Puppe zum Basteln",
+    "Oktopoden-Pendant mit Türkisen Perlenkette": "Oktopus-Anhänger an türkiser Perlenkette",
+    "Pfau-Pendant · Damen": "Pfauen-Anhänger · Damen",
+    "Strassbesetztes Letter-Pendant": "Buchstaben-Anhänger mit Strass",
+    "Ozean-Pendant Choker": "Ozean-Choker mit Anhänger",
+    "Slim Wallet mit RFID-Schutz und Kartenautomatik": "Schlankes Portemonnaie mit RFID-Schutz und Kartenautomatik",
+    "Magnetischer Handyhalter Wallet": "Magnetischer Handyhalter mit Geldbörse",
+    "Flip Wallet – Multifunktionaler Kartenhalter": "Klapp-Kartenhalter, multifunktional",
+    "Grosses USB-Computer-Backpack 32L": "Grosser Laptop-Rucksack mit USB-Anschluss, 32 L",
+    "Staubdichter, faltbarer Reise-Backpack – wasserfest": "Staubdichter, faltbarer Reise-Rucksack – wasserfest",
+    "Grosses Outdoor-Backpack mit 15 kg Tragkraft": "Grosser Outdoor-Rucksack mit 15 kg Tragkraft",
+    "Casual Waterproof Umhängetasche für Herren": "Wasserdichte Freizeit-Umhängetasche für Herren",
+    "Adjustable Silberringe": "Verstellbare Silberringe",
+    "Männer Casual Glossy Draping Anti-Falten Shirt": "Glänzendes Herren-Shirt, bügelfrei",
+    "Genuine-Laufschuhe": "Laufschuhe aus Velours-Stoff",
+    "Weisses Quadratto-Toe Sandal mit Einsteckerfessel": "Weisse Vintage-Sandalen mit eckiger Zehenpartie",
+    "Vogelfeder-Scarf": "Vogelfeder-Schärpe",
+    "Fake Two-piece Vest Dress": "Kleid in Zweiteiler-Optik mit Westen-Einsatz",
+    "Elegantes Zebra-Print A-Linien Vest-Kleid": "Elegantes Westenkleid in A-Linie mit Zebra-Print",
+    "Sommerlicher Retro-Crochet-Vest für Damen": "Sommerliches Retro-Häkeltop für Damen",
+    "Puppy-Vest mit Felloptik": "Welpen-Weste mit Felloptik",
+    "Strapless-Vest · Damen": "Trägerloses Westen-Top · Damen",
+    "Street Vest Style Schulter-Brusttasche": "Schulter-Brusttasche im Street-Style",
+    "Portable Hundeharness": "Hundegeschirr für Ausflüge",
+    "Outdoor Portable Speaker-Schutzhülle": "Outdoor-Schutzhülle für tragbare Lautsprecher",
+    "Mini-Portable CCD-Kamera-Insert-Tasche": "Mini-Tasche für CCD-Kameras",
+    "Portable Haarkräusler": "Haarkräusler mit Infrarot",
+    "Kabellose, portable Luftpumpe fürs Auto": "Kabellose, tragbare Luftpumpe fürs Auto",
+    "Portable Auto-Waschbürste, 4-teilig": "Auto-Waschbürste mit 4-teiligem Stiel",
+    "Hooded Pullover Sweater für Damen": "Uni-Kapuzenpullover für Damen",
+    "Magnetische Bausteine für Kids": "Magnetische DIY-Bausteine für Kinder, 110–142 Teile",
+    "Silicone-Armband": "Silikon-Armband für Apple Watch, viele Farben",
+    "Stainless Stahl Lunchbox": "Edelstahl-Lunchbox aus 304-Stahl",
+    "Laufschuhe für Kids": "Laufschuhe für Kinder, Lila und Grau",
+    "Stainless Steel Armband": "Edelstahl-Armband im Retro-Stil",
+    "Stainless Steel Armbanduhr": "Edelstahl-Armbanduhr mit Schraubkrone, 40,5 mm",
+    "Lange Cowhide Ledergeldbörse": "Lange Rindsleder-Geldbörse",
+    "Cowhide-Minimalist-Vielseitige Schuhe": "Minimalistische Rindsleder-Schuhe für Damen",
+    "Stainless Steel Chopper Set mit Cut-Resistant Handschuhen": "Gemüsezerkleinerer-Set mit schnittfesten Handschuhen",
+    "Basketball “Cowhide Texture” Grösse 7": "Basketball mit Leder-Textur, Grösse 7",
+    "Silicone Chronograph Quarz-Uhr mit Armband": "Chronograph-Quarzuhr mit Silikonarmband",
+    "Smart Silicone Uhr mit Bluetooth-Anruf": "Smartwatch mit Silikonarmband und Bluetooth-Anruf",
+    "Silicone Herrenquarz-Uhr": "Silikonarmband-Quarzuhr für Herren",
+    "Cowhide Retro Zehen Sandalen": "Retro-Zehensandalen aus Rindsleder",
+    "Cowhide Messenger Bag – Retro-Design": "Messenger-Tasche aus Rindsleder – Retro-Design",
+    "Cowhide-Messenger Tasche mit Magnetverschluss": "Rindsleder-Messenger-Tasche mit Magnetverschluss"
   },
   "haendlerwort_text_hinweis": "Im Fliesstext wird ersetzt, nicht gestrichen (Streichen zerreisst «im angesagten Ins-Stil gehalten»). ins风 → «Trend-Stil» (maskulin wie «Stil»), 百搭 fällt (steht nur in englischen Lieferanten-Namen).",
   "haendlerwort_text": [
@@ -469,6 +662,134 @@
     ],
     [
       "{V}all-?match(?:ing)?{N}\\s*",
+      ""
+    ]
+  ],
+  "fremdwort_titel_hinweis": "09.10.2026 (Betreiber «verbesser weiter», Google-Analyse): eindeutig fremde Wörter im Titel, die Schweizer Kundinnen deutsch suchen (Rindsleder, Silikon, Edelstahl, Kapuzen-, Strampler, Kinder, Pyjama, Leckmatte). Eingebürgerte Wörter (Sneaker, Hoodie, Cardigan, Jumpsuit, Loafer, Crossbody, Leggings, Bikini) bleiben. [Muster, Ersatz, Kontext] — Kontext leer = immer. Fälle mit Geschlechtswechsel (Pendant → Anhänger, Backpack → Rucksack, Wallet → Portemonnaie) stehen als Handtitel.",
+  "fremdwort_titel": [
+    [
+      "{V}Genuine\\s+Leather\\s+Cowhide\\s+Wallet{N}",
+      "Rindsleder-Portemonnaie",
+      ""
+    ],
+    [
+      "{V}Genuine\\s+Leather{N}",
+      "Echtleder",
+      ""
+    ],
+    [
+      "{V}Cowhides?-(?=[A-Za-zÄÖÜäöü])",
+      "Rindsleder-",
+      ""
+    ],
+    [
+      "{V}Cowhides?\\s+(?=[A-ZÄÖÜ])",
+      "Rindsleder-",
+      ""
+    ],
+    [
+      "{V}Cowhide(?=[a-zäöü])",
+      "Rindsleder",
+      ""
+    ],
+    [
+      "{V}Cowhides?{N}",
+      "Rindsleder",
+      ""
+    ],
+    [
+      "{V}Silicone-",
+      "Silikon-",
+      ""
+    ],
+    [
+      "{V}Silicone\\s+(?=[A-ZÄÖÜ])",
+      "Silikon-",
+      ""
+    ],
+    [
+      "{V}Silicone{N}",
+      "Silikon",
+      ""
+    ],
+    [
+      "{V}Stainless[\\s-]+(?:Steel|Stahl)[\\s-]+(?=[A-ZÄÖÜ])",
+      "Edelstahl-",
+      ""
+    ],
+    [
+      "{V}Stainless[\\s-]+(?:Steel|Stahl){N}",
+      "Edelstahl",
+      ""
+    ],
+    [
+      "{V}Hooded\\s+Pullover\\s+Sweater{N}",
+      "Kapuzenpullover",
+      ""
+    ],
+    [
+      "{V}Hooded\\s+Sweater{N}",
+      "Kapuzenpullover",
+      ""
+    ],
+    [
+      "{V}Hooded\\s+Sweatshirt{N}",
+      "Kapuzensweatshirt",
+      ""
+    ],
+    [
+      "{V}Hooded\\s+Dress{N}",
+      "Kapuzenkleid",
+      ""
+    ],
+    [
+      "{V}Hooded\\s+(?=[A-ZÄÖÜ])",
+      "Kapuzen-",
+      ""
+    ],
+    [
+      "{V}Romper{N}",
+      "Strampler",
+      "baby|neugeboren|säugling|kleinkind"
+    ],
+    [
+      "{V}Rompel{N}",
+      "Strampler",
+      ""
+    ],
+    [
+      "{V}für\\s+Kids{N}",
+      "für Kinder",
+      ""
+    ],
+    [
+      "{V}Kids\\s+und{N}",
+      "Kinder und",
+      ""
+    ],
+    [
+      "-Kids-",
+      "-Kinder-",
+      ""
+    ],
+    [
+      "{V}Pajamas?(?=[\\s-]|$)",
+      "Pyjama",
+      ""
+    ],
+    [
+      "{V}Lick-?matte{N}",
+      "Leckmatte",
+      ""
+    ],
+    [
+      "-Necklace{N}",
+      "-Halskette",
+      ""
+    ],
+    [
+      "-Scarf{N}",
+      "-Schal",
       ""
     ]
   ]

@@ -333,3 +333,4 @@ gid://shopify/Product/16612758552967	wasserdichte-schulter-umhangetasche-aus-pvc
 gid://shopify/Product/16612758585735	massage-roller-fur-rucken-yoga-pilates-085888	Massage-Roller für Rücken – Yoga & Pilates
 gid://shopify/Product/16612766646663	einpersonenschlafsackzelt-4-jahreszeiten-army-608900	Einpersonenschlafsackzelt 4-Jahreszeiten, Army Green
 gid://shopify/Product/16612795351431	kurzmantel-aus-kunstfell-mit-kragen-600600	Kurzmantel aus Kunstfell mit Kragen
+gid://shopify/Product/16613278581127	mutze-schal-handschuhe-set-fur-kinder-648900	Mütze, Schal & Handschuhe Set für Kinder

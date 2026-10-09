@@ -44,6 +44,8 @@ HAENDLER_TEXT = [(re.compile(_s(p), re.I), r) for p, r in R["haendlerwort_text"]
 UHR_KTX = re.compile(R["uhr_kontext"], re.I)
 UHR_KOMP = re.compile(_s(R["uhr_kompatibel"]), re.I)
 UHR = [(re.compile(_s(p), re.I), r) for p, r in R["uhr_regeln"]]
+# 09.10.2026: eindeutig fremde Wörter im Titel (Cowhide, Silicone, Hooded, Baby-Romper …) → deutsch; [Muster, Ersatz, Kontext]
+FREMD = [(re.compile(_s(x[0]), re.I), x[1], re.compile(x[2], re.I) if len(x) > 2 and x[2] else None) for x in R.get("fremdwort_titel", [])]
 PRAEP = re.compile(r"^(?:für|mit|zur|zum|und|oder|durch|bei|von|aus)\b", re.I)
 HAENGT = re.compile(r"\b(?:seine|ihre|die|der|das|durch|mit|und|eine|einen|einer|für)\s*[.!?]?\s*$", re.I)
 
@@ -87,6 +89,12 @@ def titel_fix(t, hand=True):
     n2 = _sub(HAENDLER, neu)
     if n2 != neu:
         gr.append("haendlerwort"); neu = n2
+    n2 = neu
+    for rx, r, ktx in FREMD:
+        if ktx is None or ktx.search(n2):
+            n2 = rx.sub(r, n2)
+    if n2 != neu:
+        gr.append("fremdwort"); neu = n2
     if not gr:
         return t, []
     return _gross(_glatt(neu)), gr
@@ -227,6 +235,8 @@ def main():
         seo = p.get("seo") or {}
         st_ = seo.get("title") or ""; sd = seo.get("description") or ""
         stn = st_.replace(t, tn) if tn != t else st_
+        if stn:                                    # 09.10.: SEO-Titel weicht oft ab («… | LuxeStyle CH») → dieselben Regeln
+            stn = titel_fix(stn, hand=False)[0]
         sdn = text_fix(sd.replace(t, tn) if tn != t else sd, tn)
         h_neu = neuer_handle(p["handle"], tn) if tn != t and HANDLE_WORT.search(p["handle"]) else p["handle"]
         if (tn, dn, stn, sdn) == (t, d, st_, sd):

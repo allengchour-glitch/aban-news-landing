@@ -340,3 +340,5 @@ gid://shopify/Product/15484594815361	draft-ausverkauft	Leoparden-Maxikleid mit V
 gid://shopify/Product/15491418194305	draft-ausverkauft	Elegantes Schnürkleid aus Baumwoll-Leinen
 gid://shopify/Product/15491418882433	draft-ausverkauft	Tie-Dye Maxikleid mit tiefem V-Ausschnitt
 gid://shopify/Product/15493912166785	draft-ausverkauft	Carbon-Plate Popcorn Marathon-Sneaker
+gid://shopify/Product/15469960102273	draft-ausverkauft	Kostüm ALF
+gid://shopify/Product/15470023803265	draft-ausverkauft	Zubehör: Amazone Düngerstreuer

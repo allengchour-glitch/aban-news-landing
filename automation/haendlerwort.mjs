@@ -14,6 +14,8 @@ const REISS = L(R.reissfest, 'gu'), WEG = L(R.weg_attributiv, 'giu'), EXPLOSIV_T
 const HAENDLER = L(R.haendlerwort, 'giu'), HAENDLER_TEXT = L(R.haendlerwort_text, 'giu');
 const UHR_KTX = new RegExp(R.uhr_kontext, 'iu'), UHR_KOMP = new RegExp(S(R.uhr_kompatibel), 'iu'), UHR = L(R.uhr_regeln, 'giu');
 const UHR_MOD = new RegExp(S(R.uhr_modell), 'iu');
+// 09.10.2026: eindeutig fremde Wörter im Titel → deutsch; [Muster, Ersatz, Kontext] (Kontext leer = immer)
+const FREMD = (R.fremdwort_titel || []).map(([p, r, k]) => [new RegExp(S(p), 'giu'), rep(r), k ? new RegExp(k, 'iu') : null]);
 export const HAENDLER_WORT = /(?<![a-zäöü])(?:ins[\s-](?:wind|style|stil)|all-?match(?:ing)?)(?![a-zäöü])/iu;
 const PRAEP = /^(?:für|mit|zur|zum|und|oder|durch|bei|von|aus)(?![\wäöüß])/iu;
 const HAENGT = /(?<![\wäöüß])(?:seine|ihre|die|der|das|durch|mit|und|eine|einen|einer|für)\s*[.!?]?\s*$/iu;
@@ -33,6 +35,7 @@ export function titelFix(t, hand = true) {
   if (UHR_KTX.test(neu) && !UHR_KOMP.test(neu)) { n2 = sub(UHR, neu); if (n2 !== neu) { gr.push('uhr-modell'); neu = n2; } }
   if (EXPL.test(neu)) { n2 = REISS_KTX.test(neu) ? sub(REISS, neu) : sub(WEG, neu); if (n2 !== neu) { gr.push('explosion'); neu = n2; } }
   n2 = sub(HAENDLER, neu); if (n2 !== neu) { gr.push('haendlerwort'); neu = n2; }
+  n2 = FREMD.reduce((x, [rx, r, k]) => (!k || k.test(x)) ? x.replace(rx, r) : x, neu); if (n2 !== neu) { gr.push('fremdwort'); neu = n2; }
   if (!gr.length) return [t, []];
   return [gross(glatt(neu)), gr];
 }
