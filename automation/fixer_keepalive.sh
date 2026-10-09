@@ -1596,6 +1596,17 @@ if [ -f "$REPO/automation/warenkorb_einig.py" ] && [ ! -f /tmp/warenkorb_einig_$
   esac
   echo "$(date -u +%FT%H:%M) $WE" >> /tmp/warenkorb_einig.log
 fi
+# META-ESCAPE (09.10.2026, Betreiber «nur 18 google suche ist wenig warum»): <meta name="description"> — der Text unter
+#     dem Google-Link — war doppelt escaped («Hemd &amp;amp; Wide-Leg-Hose»), weil page_description schon escaped kommt.
+#     Täglich: Formel live? Fehlt sie (Theme-Update) → einmal neu schreiben.
+if [ -f "$REPO/automation/meta_beschreibung_escape.py" ] && [ ! -f /tmp/meta_escape_$(date -u +%F).stamp ]; then
+  touch /tmp/meta_escape_$(date -u +%F).stamp
+  ME=$(cd "$REPO" && timeout 120 python3 automation/meta_beschreibung_escape.py --pruefen 2>&1 | tail -1)
+  case "$ME" in
+    *"fehlt"*) ( cd "$REPO" && SCHARF=1 timeout 120 python3 automation/meta_beschreibung_escape.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) meta-escape neu: /" ;;
+    *"⚠️"*) echo "$(date -u +%H:%M) $ME" ;;
+  esac
+fi
 # --- Google: Rückgabe-/Versandregel als Organization-Markup (06.10.2026, dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md) — täglich:
 #     Markup noch im Live-Header? Tarif (CHF 7 / gratis ab 45) = Markup? Fehlt nur das Markup → einmal neu einfügen.
 if [ -f "$REPO/automation/google_org_richtlinien.py" ] && [ ! -f /tmp/google_org_richtlinien_$(date -u +%F).stamp ]; then
