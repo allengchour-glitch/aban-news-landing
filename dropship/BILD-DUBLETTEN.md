@@ -27,15 +27,15 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 6 insgesamt, 100%)
   - 15430491275649 · 2026-06-14 · CHF 44.90 · CJLY293294401AZ · Damen Chiffon-Kleid «Capri» · Resort, fliessend
   - 15509360411009 · 2026-08-22 · CHF 31.90 · CJ-CJLY293294401AZ · Luftiges Chiffon-Kleid mit Leoparden-Print
-- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 7 insgesamt, 100%)
-  - 15430491373953 · 2026-06-14 · CHF 54.90 · CJLY293259701AZ · Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
-  - 15509363687809 · 2026-08-22 · CHF 42.90 · CJ-CJLY293259701AZ · A-Linien Kleid mit Neckholder und Stickerei
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 15 insgesamt, 100%)
   - 15430491439489 · 2026-06-14 · CHF 32.90 · CJLY293250501AZ · Damen Sommerkleid «Bloom» · Träger, Print
   - 15509363949953 · 2026-08-22 · CHF 23.90 · CJ-CJLY293250501AZ · Bodycon Trägerkleid mit Blumenmuster
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
   - 15430491668865 · 2026-06-14 · CHF 34.90 · CJLY293241101AZ · Damen Kleid «Aria» · Cut-out, einfarbig
   - 15509372240257 · 2026-08-22 · CHF 25.90 · CJ-CJLY293241101AZ · Etuikleid mit hohem Bund und Cut-Outs
+- **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
+  - 15448836276609 · 2026-07-04 · CHF 22.90 · CJ-2005570463020249089 · Planet Diamond Star Fake Nails
+  - 15449134104961 · 2026-07-05 · CHF 26.90 · CJ-2049382114122821633 · 24er Set «Planet Diamond Star» Press-On Nägel
 - **DUBLETTE** · 4 gemeinsame Bilder (7 bzw. 4 insgesamt, 100%)
   - 15449070240129 · 2026-07-05 · CHF 29.90 · CJ-2601310817171633900 · Reisetasche mit Nass- und Trockenfach
   - 15453776052609 · 2026-07-11 · CHF 30.90 · CJ-CJYD275024501AZ · Fitness-Tasche für unterwegs
@@ -77,7 +77,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15499954946433 · 2026-08-15 · CHF 30.90 · CJ-CJTZ296501101AZ · Schwungige Sport-Röcke
 - **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
   - 15500109283713 · 2026-08-15 · CHF 17.90 · CJ-2503211406241602800 · Händchenkunst
-  - 15500411306369 · 2026-08-15 · CHF 17.90 · CJ-2503060538551620300 · Handbemalte Unterwasserwelt-Maniküre
+  - 15500411306369 · 2026-08-15 · CHF 17.90 · CJ-2503060538551620300 · Handbemalte Unterwasserwelt-Maniküre · Press-on-Nägel
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
   - 15500897616257 · 2026-08-16 · CHF 15.90 · CJ-1428887835427082240 · Marine-Halsband
   - 15500900532609 · 2026-08-16 · CHF 15.90 · CJ-1407156871940411392 · Marine Hundehalsband
@@ -114,6 +114,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 3 gemeinsame Bilder (5 bzw. 3 insgesamt, 100%)
   - 15510928261505 · 2026-08-24 · CHF 39.90 · CJ-1372520026904596480 · Leckmatte für Hunde & Katzen
   - 15524858331521 · 2026-09-04 · CHF 39.90 · CJ-204F602B-5A59-48E5-B01C-7522C85DD089 · Doppelseitige Schleckmatte für Hunde und Katzen
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 6 insgesamt, 100%)
+  - 15510929179009 · 2026-08-24 · CHF 20.90 · CJ-1367461817110106112 · Mikro-Schaufelgriff für Goldschmiedearbeiten
+  - 16608491700615 · 2026-10-06 · CHF 16.90 · CJ-0063ADC4-0448-4511-BFC2-7B68C6115481 · Teleskopischer Schaufelgriff
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
   - 15517582492033 · 2026-08-27 · CHF 22.90 · CJ-2601221030441630600 · Armband «Hohles Herz» mit Zirkonia · Gravur für die Herzenss
   - 15520299024769 · 2026-08-29 · CHF 22.90 · CJ-2601221027191603000 · Herzarmband mit Zirkonia-Steinen
@@ -135,9 +138,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 8 gemeinsame Bilder (10 bzw. 9 insgesamt, 89%)
   - 15416343986561 · 2026-06-03 · CHF 34.90 · CJLY291990701AZ · Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (
   - 15516234416513 · 2026-08-26 · CHF 24.90 · CJ-CJLY291990701AZ · Geblümtes Mini-Kleid mit Puffärmeln
-- **DUBLETTE** · 7 gemeinsame Bilder (8 bzw. 9 insgesamt, 88%)
-  - 15422937563521 · 2026-06-08 · CHF 49.90 · CJDK292568901AZ · Tennis-Kleid «Match» · Plissee, integrierte Shorts
-  - 15512365302145 · 2026-08-25 · CHF 29.90 · CJ-CJDK292568901AZ · Zweiteiliges Tennis-Fitnesskleid für Damen
 - **DUBLETTE** · 7 gemeinsame Bilder (9 bzw. 8 insgesamt, 88%)
   - 15483877425537 · 2026-08-03 · CHF 25.90 · CJ-CJZBNSSY00795-Black · Sportuhr Chronograph
   - 15524777230721 · 2026-09-04 · CHF 31.90 · CJ-F43165FA-7AD0-4C99-98F3-86DF2A61D897 · Karin 8291 Herrenkalenderuhr
@@ -186,6 +186,15 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15454058152321 · 2026-07-12 · CHF 15.90 · CJ-1397507123809751040 · Weisser Weihnachten mit Engel - Malen nach Zahlen
   - 15454058250625 · 2026-07-12 · CHF 15.90 · CJ-1397505371513425920 · Water Lambo DIY-Zahlen-Mal-Set
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 18.90 · CJ-1423334511374110720 · Malen nach Zahlen – drei Kreuze
+  - 15493908693377 · 2026-08-11 · CHF 18.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 18.90 · CJ-1423334511374110720 · Malen nach Zahlen – drei Kreuze
+  - 15501383696769 · 2026-08-16 · CHF 18.90 · CJ-1423331183227441152 · Malen nach Zahlen – Vintage-Paar
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15493908693377 · 2026-08-11 · CHF 18.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+  - 15501383696769 · 2026-08-16 · CHF 18.90 · CJ-1423331183227441152 · Malen nach Zahlen – Vintage-Paar
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
   - 15495120486785 · 2026-08-12 · CHF 26.90 · CJ-1433319879871696896 · DIY Diamond Painting Set – Quadratische Steine
   - 15495120585089 · 2026-08-12 · CHF 20.90 · CJ-1433316211676024832 · DIY Diamond Painting: Vier Bilder in Serie
@@ -378,6 +387,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15503955919233 · 2026-08-19 · CHF 60.90 · CJ-DE0003ED-14FD-499F-A38F-86F79AC15CA3 · DODO DEER Holz-Kalenderuhr
   - 15525501108609 · 2026-09-05 · CHF 37.90 · CJ-9E3DDD6D-3FE8-4F64-B28B-46B18869CA72 · Ebenholz-Holzuhr mit Kalenderfunktion
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15510926786945 · 2026-08-24 · CHF 29.90 · CJ-1424969353576714240 · Smartes EMS-Muskelstimulationsgerät für Zuhause
+  - 16612712284551 · 2026-10-09 · CHF 52.90 · CJ-1379004237563957248 · Abdominal Belt Trainingsgürtel mit Silikonbändern
 - **Bildfamilie — von Hand ansehen** · 6 gemeinsame Bilder (8 bzw. 13 insgesamt, 75%)
   - 15449070109057 · 2026-07-05 · CHF 40.90 · CJ-2602050942401631500 · Handgewobene Schultertasche im lässigen Design
   - 15453775724929 · 2026-07-11 · CHF 41.90 · CJ-CJYD275526901AZ · Elegante Umhängetasche
@@ -555,26 +567,14 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
   - 15422935007617 · 2026-06-08 · CHF 39.90 · CJLX292557401AZ · Zirkonia-Kette «Stella» · Kleeblatt-Anhänger, Silber-Optik
   - 15452618686849 · 2026-07-09 · CHF 52.90 · SET-KLEE-2 · Kleeblatt-Glücks-Duo · 2-teilig
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
-  - 15447935385985 · 2026-07-03 · CHF 28.90 · CJ-CJWZ278248601AZ · 3 Paar 20D Ultra-Sheer Strumpfhosen mit Shaping-Top
-  - 15447935517057 · 2026-07-03 · CHF 39.90 · CJ-CJWZ278251701AZ · 6 Paar 20D Ultra Sheer Tights mit Shaping-Höschenteil
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 6 insgesamt, 50%)
   - 15450252804481 · 2026-07-07 · CHF 23.90 · CJ-96A4EEB9-46D1-4F42-96F4-0DB786075EF0 · Faltbare Fernbedienungsschlüssel
   - 15450252837249 · 2026-07-07 · CHF 15.90 · CJ-B54763F5-ECB2-4D92-8EA3-3F4B581EF019 · 2-Tasten Auto-Schlüssel
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
-  - 15454002971009 · 2026-07-12 · CHF 14.90 · CJ-1599322210488037376 · Malen nach Zahlen – Landschaft (rahmenlos)
-  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (6 bzw. 4 insgesamt, 50%)
-  - 15454056710529 · 2026-07-12 · CHF 14.90 · CJ-1624224484330844160 · Malen nach Zahlen – Frau mit Rose (rahmenlos)
-  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
-  - 15454115660161 · 2026-07-12 · CHF 15.90 · CJ-CJHB115784901AZ · Malen nach Zahlen – chinesische Berglandschaft
-  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 7 insgesamt, 50%)
   - 15454107566465 · 2026-07-12 · CHF 39.90 · CJ-70ECF0C8-6741-47C7-84F0-BFC38E96BA85 · Einfacher Feldfahrer-Helm
   - 15495026049409 · 2026-08-11 · CHF 18.90 · CJ-183522B1-5D64-486D-A04D-96B251BCB7DB · Leichter taktischer Helm
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 12 insgesamt, 50%)
-  - 15495112688001 · 2026-08-12 · CHF 36.90 · CJ-2501190620211628100 · Man Pair Kalender Quarz-Uhr mit Diamanten
+  - 15495112688001 · 2026-08-12 · CHF 36.90 · CJ-2501190620211628100 · Man Pair Kalender Quarz-Uhr mit Strasssteinen
   - 15497494167937 · 2026-08-14 · CHF 36.90 · CJ-1751826853603581952 · Outside The Watch Business Quarzuhr
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 6 insgesamt, 50%)
   - 15503287484801 · 2026-08-18 · CHF 20.90 · CJ-9E242742-C1D5-470E-82C2-12FFF4B10F27 · Hundehalsband- und Leinen-Set «Red Cowboy»
@@ -582,3 +582,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 15 insgesamt, 50%)
   - 15504178643329 · 2026-08-19 · CHF 14.90 · CJ-1600416533564633088 · Anti-Schling Napf für Hunde
   - 15525499470209 · 2026-09-05 · CHF 21.90 · CJ-F5BA858E-89C8-4A3C-8DDD-4211AEBC09F6 · Futterspender für Hunde
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 8 insgesamt, 50%)
+  - 15523185459585 · 2026-09-02 · CHF 51.90 · CJ-1400287571547918336 · Fitnessstange für vielseitiges Training
+  - 16612741808519 · 2026-10-09 · CHF 87.90 · CJ-1377510000557166592 · Fitness-Bar mit Stange 96 cm

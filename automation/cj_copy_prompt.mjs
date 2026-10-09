@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { nagelTitel, hart as nagelHart } from './nagel_titel.mjs';
 // cj_copy_prompt.mjs — EINE Quelle fuer den Beschreibungs-Prompt aller drei CJ-Importer
 // (cj_category_fill, cj_sku_import, cj_trending_import). Bis 02.09.2026 trug jeder Importer
 // seine eigene Fassung («Beauty-Shop», «Online-Shop», mit/ohne Umlaut-Regel) — dieselbe
@@ -32,7 +33,7 @@ VERBOTEN sind diese Wörter und Wendungen: ${VERBOTEN.join(', ')}.
 Kategorie: ${kat || '-'}  (benenne die Ware mit dem deutschen Warenwort, das zu dieser Kategorie passt — z. B. «Down Jackets» → Daunenjacke, nicht «Kissenmantel»)
 Name (EN): ${nameEn}
 Features (EN): ${(feats || '').slice(0, 700)}
-Bekannte Übersetzungsfallen: «digital oil painting»/«DIY painting»/«pure hand-painted … coloring» = ein Malen-nach-Zahlen-Set (Titel «Malen nach Zahlen – Motiv», nie «Digitales Ölgemälde» oder «handgemalt» — man malt selbst); «Suit» bei Kosmetik = «Set»; «flush trim bit» = «Bündigfräser».
+Bekannte Übersetzungsfallen: «digital oil painting»/«DIY painting»/«pure hand-painted … coloring» = ein Malen-nach-Zahlen-Set (Titel «Malen nach Zahlen – Motiv», nie «Digitales Ölgemälde» oder «handgemalt» — man malt selbst); «Suit» bei Kosmetik = «Set»; «flush trim bit» = «Bündigfräser»; bei Nägeln: «wear armor», «wearing armor», «wearable nails/manicure», «nail patch», «nail tablets/pieces» = Press-on-Nägel (künstliche Nägel zum Aufkleben; Titel «Press-on-Nägel …», nie «Rüstung», «Panzer», «Tabletten», «Stifte», «Pflaster»); «nail polishing machine/pen» = Nagelfräse, nie «Nagelpiercing»; «rhinestone glue» = Strass-Kleber.
 Titel: max. 60 Zeichen, deutsch, benennt die Ware (kein Werbeton) und trägt KEIN Wirkversprechen — nicht «Wachstumsserum», «gegen Falten», «Anti-Aging Facelift», «dauerhafte Haarentfernung»; stattdessen «Wimpernserum», «Haaröl», «IPL-Haarentfernungsgerät». Ebenso KEINE Messwerte aus der Verbotsliste im Titel — nicht «Smartwatch mit Blutdruckmessung», sondern «Smartwatch mit Herzfrequenz & Blutsauerstoff».
 Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß, keine Markdown-Fences).`;
 }
@@ -193,6 +194,12 @@ const ANDERE_MAT_SATZ_RE = /^\s*(?:er|sie|es|der\s+\w+|die\s+\w+|das\s+\w+)\s+(?
 // handgemalt auf Baumwolle», «Linen-Ölgemälde Blumen» — alle drei Bilder zeigen eine Leinwand mit Zahlenfeldern.
 const MNZ_EN = /digital\s+(?:oil\s+)?painting|diy\s+(?:oil\s+)?painting|drawing\s+digital|paint(?:ing)?\s+by\s+numbers?|number\s+painting/i;
 export function fallenSicher(o, nameEn) {
+  // 💅 09.10.2026: 穿戴甲 (tragbarer Nagel; 甲 = Nagel UND Panzer) kam als «Long Wear Armor», «Rüstung», «Nagelarmor»,
+  // «Nagelverstärkungstabletten» (Google: Nahrungsergänzung) in den Shop. Regel data/nagel_titel_regel.json (= nagel_titel.py).
+  if (o && o.title) {
+    const [nt, ng] = nagelTitel(o.title, nameEn || '');
+    if (ng.length) { o.title = nt; if (o.html) o.html = nagelHart(o.html)[0]; }
+  }
   if (!o || !o.title || !MNZ_EN.test(nameEn || '') || /nach\s+zahlen/i.test(o.title)) return o;
   let t = o.title.replace(/\s*[–-]\s*handgemalt[^–·|]*/i, '').replace(/\bhandgemalt\w*\s*/gi, '')
     .replace(/\b(?:digital(?:es|e)?\s+|linen-|leinen-)/gi, '').trim().replace(/^(?:Öl)?gemälde\b\s*/i, '').trim();
