@@ -528,7 +528,7 @@ while true; do
     ( cd "$REPO" && flock -n /tmp/lock_hype_export.lock python3 automation/hype_export_bauen.py >> /tmp/hype_export_bauen.log 2>&1 )
     echo "$(date -u +%H:%M) export.jsonl im falschen Format → neu gebaut"
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -585,6 +585,9 @@ while true; do
     # fuellmenge_nachtragen (25.09.2026): schreibt NUR ml+oz-bestätigte Werte und dropship/_fuellmenge_gesichtet.json;
     # nimmt die Text-Sperre selbst (LOCK_NB) — deshalb nicht in der TXTLOCK-Liste.
     [ "$L" = fuellmenge_nachtragen ] && EXP="WRITE=1"
+    # ⛔ 09.10.2026: liechtenstein_raus ist AUS der Liste oben genommen — Betreiber «ändere per api»: Markt CH + LI,
+    # Versandzone «Liechtenstein» CHF 14.90 (Testkorb LI 1 Option, CH unverändert 2). Der Lauf würde LI sonst täglich
+    # wieder aus Seiten und Rechtstexten streichen. Nicht wieder einhängen, solange LI im Markt ist.
     # liechtenstein_raus (22.09.2026, Weg B): Seiten + Rechtstexte jeden Lauf (Wache gegen Rueckkehr der
     # Phrase), Produkte in Tagesscheiben; steht VOR produkttexte_du_form, damit es nach einem Neustart den
     # Text-Lock zuerst bekommt — der Du-Form-Lauf haelt ihn sonst die ganze Stunde.

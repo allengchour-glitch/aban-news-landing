@@ -88,13 +88,13 @@ if ergebnis.get("CH") in (0, None):
     print("⛔ KANARIENVOGEL STUMM — der CH-Korb liefert keine Optionen. Der Test misst nichts;")
     print("   die DE/US-Ergebnisse sind BEDEUTUNGSLOS und duerfen nicht als 'kein Auslandsversand' gelten.")
 else:
-    aus = [l for l in ("DE","US","LI") if ergebnis.get(l)]
+    # 09.10.2026: Liechtenstein ist freigegeben (Markt CH + LI, Zone «Liechtenstein» CHF 14.90) — Alarm nur noch für DE/US.
+    aus = [l for l in ("DE","US") if ergebnis.get(l)]
     if aus:
         print(f"⚠️ AUSLANDSVERSAND IST BESTELLBAR: {', '.join(aus)} bekommen echte Versandoptionen.")
     else:
-        print("✅ Nur die Schweiz bekommt Versandoptionen — DE und US werden im Korb abgewiesen,")
-        print("   obwohl die 'International'-Zone im Versandprofil aktiv ist. Der Markt sperrt sie.")
-    if not ergebnis.get("LI") and ergebnis.get("CH"):
-        print("⚠️ LIECHTENSTEIN: zugesagt, aber nicht bestellbar — 0 Versandoptionen.")
-        print("   13 sichtbare Stellen nennen LI, 6 davon in den Rechtstexten im Checkout.")
-        print("   Entscheid steht aus: einschalten oder aus den Texten streichen (COWORK-BEFEHL Punkt 5).")
+        print("✅ DE und US werden im Korb abgewiesen (Markt sperrt sie).")
+    if ergebnis.get("CH") and ergebnis.get("LI"):
+        print("✅ Liechtenstein bestellbar (freigegeben 09.10.2026).")
+    elif ergebnis.get("CH"):
+        print("⚠️ LIECHTENSTEIN: freigegeben, aber 0 Versandoptionen — Zone «Liechtenstein» im General profile prüfen.")

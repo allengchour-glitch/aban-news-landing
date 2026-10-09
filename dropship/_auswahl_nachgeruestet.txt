@@ -654,3 +654,4 @@
 15522214576513	Farbe:2:2	2026-10-09	business-rucksack-fur-reise-und-alltag-879296
 15525494161793	Farbe:2:2	2026-10-09	keramik-servierplatte-schachbrettmuster-355264
 15453997662593	Farbe:6:6+ki	2026-10-09	herrenuhr-multifunktional-wasserdicht-leuchten-174272
+15453792076161	Motiv:2:2+ki	2026-10-09	katzenspielzeug-mit-katzenminze-628300
