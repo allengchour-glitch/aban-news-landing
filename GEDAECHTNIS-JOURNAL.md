@@ -44,6 +44,33 @@
 
 
 
+## 2026-10-09 12:15 UTC · 🛒 «verbessere mehr»: Der Warenkorb sagte «noch 5.10» und «noch 10.10» untereinander
+
+**GEMESSEN:** 14 Tage, 827 Sitzungen. 563 davon kamen auf die drei TikTok-Seiten (Sirène, Leinen-Set, Aurora), dort
+8 Warenkörbe, 6 Kassen und 0 Käufe. Abbrüche: 3× Leinen-Set 39.90 (mit Versand 46.90). Ein eigener Testkorb im Handy-Browser
+(1× Leinen) zeigte drei Aussagen:
+- Balken (`theme.liquid`, 09.09.): «Noch CHF 5.10». Falsch, denn jeder Zusatzartikel löst −10 % aus: 45.80 → 41.22 →
+  CHF 7.
+- Hinweis (`cart-summary`, 06.10.): «noch CHF 10.10 (ab CHF 50)». Richtig, im 2er-Korb aber zu hoch.
+- Liste (`cart.json`): «CH-Lager 1–2 Werktage» bei Asien-Ware.
+
+`/cart.js`: `items_subtotal_price` ist der Wert vor dem Korb-Rabatt (2× Leinen: 7980 → 7182).
+
+**GETAN:** `warenkorb_einig.py` schreibt eine Regel an alle drei Stellen:
+- Gratis bei «nach Rabatt ≥ 45». «noch» = max(50 − Wert vor Rabatt, ⌈(45 − nach Rabatt)·10/9⌉).
+- Die Lieferzeile zeigt das Datum der langsamsten Ware, mit denselben Tags/Tagen wie `lux_delivery` auf der Produktseite.
+- Kanarien 7/7 mit Gegenprobe (genau X dazulegen ⇒ gratis). JS offline in Node 7/7.
+- Live geschrieben und zurückgelesen, Sicherungen in /tmp.
+- `warenkorb_gratisversand.py`-Block auf dieselbe Formel gebracht.
+- Wächter täglich mit echtem Testkorb (`--live`).
+
+Nach den Testkörben lieferte der Shop HTTP 429 «Verifying your connection». Der Live-Nachweis läuft nach.
+
+**Lehre:** **Zwei Bausteine für dieselbe Zahl sind ein Widerspruch mit Zeitverzug.** Beide waren je für sich gemessen und
+geprüft. Erst die ganze Seite, so wie die Kundin sie sieht, zeigte 5.10 und 10.10 untereinander. Eine Zahl an mehreren
+Stellen braucht EINE Formel und einen Test, der die fertige Seite liest. Und zu viele Storefront-Testabrufe von unserer IP
+lösen Shopifys Bot-Schutz (429) aus: Testkörbe sparsam fahren.
+
 ## 2026-10-09 09:00 UTC · 🔁 Verbesserungsrunde: KI-Urteile flossen nie in die Lerndaten — Neuimporte bleiben grob
 
 **GEMESSEN:** 459 aktive Neuimporte (14 T) auf Google-Oberklassen, 426 ohne gelernte Regel. Die KI-Stufe ruht, weil OpenAI
@@ -19237,3 +19264,4 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🧠 **«knowledge installiert»: App-Vorschläge falsch («ohne Zwischenhändler», «50–70 % unter Boutiquen», Gutscheine/Geschenkverpackung ja = gemessen 0) → `knowledge_base_fakten.py` 10 belegte Fakten veröffentlicht + `--wache` täglich; «Über uns» ohne Prüf-/Premium-Versprechen.** KI-Ableitungen über den Shop sind Behauptungen → `dropship/KNOWLEDGE-BASE-2026-10-07.md`
 - 2026-10-07 · 🗂️ **«alles perfekt, alles andere auch»: Zähler meldete Absicht als Widerspruch (Shopify feiner → `shopify-feiner`); Uhren `uhren_fein` 1'030/0, Google-Nummern `google_id_zu_name` 39/0; 3'954 Widersprüche + 12'583 grobe Oberklassen per Einzelurteil (Prüfer + Taxonomie-Validierung + Schutzregeln), Runde 1 3'534/0, Rücklesen 30/30.** Zwei Massen-Schreiber = Drossel → warten statt abbrechen → `dropship/KATALOG-TASCHEN-2026-10-07.md`
 - 2026-10-07 · 🗂️ **«das muss perfekt sein»: Taschen fertig (Google 9 + Shopify 124, Rücklesen 30/30); 3'553 «Widersprüche» waren Sammelkörbe (Google «Cosmetics»/«Hair Care» grob, Shopify-Feinklasse oft falsch) → `kosmetik_fein.py` (82 Kanarien) + `haar_fein.py` (51) setzen BEIDE Felder aus dem Titel, Plan 2'293 + 910, täglich im Aufseher.** Feld nie aus dem anderen ableiten, volle Liste je Ziel lesen → `dropship/KATALOG-TASCHEN-2026-10-07.md`
+- 2026-10-08 · 🧠 **Verbesserungsrunde (Tag 8 ✅ 106 Videos): 483 Neuimporte seit 01.10. auf Google-Oberklassen, alte KI-Stufe war Einmal-Lauf → `oberklasse_lernen.py` (Regeln aus 16'351 Urteilen; Merkmal Kopfwort vor «mit/für/aus»: 92,1 → 97,7 %; 6/0) + Rest täglich an `google_fein_ki` (Massen-Modell gpt-oss-20b, 120b/qwen bleiben für Bestellungen/SEO).** Bereinigung ohne Wächter füllt sich wieder → `dropship/OBERKLASSE-NEUIMPORT-2026-10-08.md`

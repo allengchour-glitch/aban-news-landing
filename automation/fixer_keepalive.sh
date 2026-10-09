@@ -1582,6 +1582,20 @@ if [ -f "$REPO/automation/warenkorb_gratisversand.py" ] && [ ! -f /tmp/warenkorb
   esac
   echo "$WV" >> /tmp/warenkorb_versand.log
 fi
+# WARENKORB-EINIG (09.10.2026, Betreiber «verbessere mehr»): Versandbalken (theme.liquid), Hinweis (cart-summary) und
+#     Lieferzeile (cart.json) sagten im selben Korb «noch 5.10» / «noch 10.10» / «CH-Lager 1–2 Werktage» (Asien-Ware).
+#     EIN Rechenweg: gratis ab 45 nach Rabatt, «noch» = 50 − Warenwert vor Rabatt; Lieferdatum der langsamsten Ware.
+#     Täglich: Marken live? Tarif unverändert? Kanarien? + echter Testkorb im Handy-Browser (alle «noch»-Zahlen gleich).
+#     Marke fehlt (Theme-Update) → einmal neu schreiben; sonst nur melden. 429 vom Shop = Live-Test übersprungen, kein Befund.
+if [ -f "$REPO/automation/warenkorb_einig.py" ] && [ ! -f /tmp/warenkorb_einig_$(date -u +%F).stamp ]; then
+  touch /tmp/warenkorb_einig_$(date -u +%F).stamp
+  WE=$(cd "$REPO" && timeout 240 python3 automation/warenkorb_einig.py --pruefen --live 2>&1 | tail -1)
+  case "$WE" in
+    *"Marke fehlt"*) ( cd "$REPO" && SCHARF=1 timeout 200 bash automation/shopify_schranke.sh python3 automation/warenkorb_einig.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) warenkorb-einig neu: /" ;;
+    *"⚠️"*) echo "$(date -u +%H:%M) $WE" ;;
+  esac
+  echo "$(date -u +%FT%H:%M) $WE" >> /tmp/warenkorb_einig.log
+fi
 # --- Google: Rückgabe-/Versandregel als Organization-Markup (06.10.2026, dropship/GOOGLE-ORG-RICHTLINIEN-2026-10-06.md) — täglich:
 #     Markup noch im Live-Header? Tarif (CHF 7 / gratis ab 45) = Markup? Fehlt nur das Markup → einmal neu einfügen.
 if [ -f "$REPO/automation/google_org_richtlinien.py" ] && [ ! -f /tmp/google_org_richtlinien_$(date -u +%F).stamp ]; then
