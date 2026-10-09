@@ -719,3 +719,16 @@
 15449582764417	keine-linie	gerade-geschnittene-herren-hosen-913858
 15449582797185	keine-linie	gerade-geschnittene-herren-hosen-445186
 15449582829953	keine-linie	gerade-geschnittene-herren-hosen-859714
+15449582928257	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-833985
+15449582961025	keine-linie	stretch-hosen-slim-straight-258945
+15449582993793	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-724482
+15449583059329	keine-linie	stretch-hosen-slim-straight-874881
+15449583092097	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-788353
+15449583157633	keine-linie	gerade-herren-hosen-ohne-stretch-252866
+15449583190401	keine-linie	stretch-hosen-fur-herren-schmal-geschnitten-310273
+15449583354241	keine-linie	kompressions-tight-leggings-013185
+15449583419777	keine-linie	gerade-herren-hosen-653377
+15449583485313	keine-linie	gerade-geschnittene-herren-hose-146113
+15449583550849	keine-linie	gerade-geschnittene-herren-hosen-664770
+15449587286401	keine-linie	minimalistisches-airtag-geldborse-fur-herren-757377
+15449587581313	keine-linie	minimales-kartenhalter-wallet-mit-rfid-schutz-720065
