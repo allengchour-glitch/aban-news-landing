@@ -6488,3 +6488,11 @@ gid://shopify/Product/15458673197441	zugeordnet	24	Lockere, dehnbare Sommer-Maxi
 gid://shopify/Product/15458673361281	zugeordnet	18	Herren-Jacke mit Stehkragen & Reissverschluss
 gid://shopify/Product/15458673394049	zugeordnet	16	Fleece-gefütterte Herrenjacke
 gid://shopify/Product/15458673459585	zugeordnet	30	Cordsjacke für Herren
+gid://shopify/Product/15458673623425	zugeordnet	28	Lederjacke für Herren, lässig
+gid://shopify/Product/15458673721729	zugeordnet	21	Arbeitsjacke aus Denim für Herren
+gid://shopify/Product/15458673820033	zugeordnet	18	Leichte Herrenjacke mit Linen-Futter
+gid://shopify/Product/15458674114945	zugeordnet	21	Weite Outdoor-Jacke mit Hut
+gid://shopify/Product/15458674246017	bild-urls-tot
+gid://shopify/Product/15458674377089	zugeordnet	56	Einfache Denimjacke
+gid://shopify/Product/15458674508161	zugeordnet	20	Punktierter Anzugjacke für Herren
+gid://shopify/Product/15458675753345	zugeordnet	15	Winterjacke im chinesischen Retro-Stil

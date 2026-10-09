@@ -6166,3 +6166,5 @@ lackleder-flats-mit-eckiger-zehenpartie-266753	2074323616348930049	16	11.23	ok	l
 elegante-mary-jane-sandalen-mit-eckiger-zehenp-782337	2074324687972360193	16	11.23	ok	landeseite
 mary-jane-flats-mit-strass-schleifen-119554	2074374766234337281	16	11.23	ok	landeseite
 retro-star-damen-sneaker-167042	2074384467998957570	16	11.23	ok	landeseite
+plateau-sneaker-fur-damen-613500	2607020212511614300	16	10.88	ok	landeseite
+atmungsaktive-mesh-sneaker-fur-damen-068098	2072225994104537090	16	11.23	ok	landeseite
