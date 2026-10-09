@@ -251,7 +251,7 @@
     ],
     [
       "Kinder Martin Boots – Koreanische Version",
-      "Kinder Martin Boots im koreanischen Stil",
+      "Kinder Worker-Boots im koreanischen Stil",
       "titel"
     ],
     [
@@ -588,6 +588,31 @@
       "Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt",
       "Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt",
       "titel"
+    ],
+    [
+      "Martin Boots mit Nieten und klobigem Absatz",
+      "Worker-Boots mit Nieten und klobigem Absatz",
+      "titel"
+    ],
+    [
+      "Herren-Martin-Stiefel",
+      "Herren-Worker-Stiefel",
+      "titel"
+    ],
+    [
+      "Kinder Martin Stiefel",
+      "Kinder Worker-Stiefel",
+      "titel"
+    ],
+    [
+      "Retro-Höhenverstärkende Mid-Calf Martin-Boots",
+      "Retro-Höhenverstärkende Mid-Calf Worker-Boots",
+      "titel"
+    ],
+    [
+      "Martini-Gläser im 4er-Set",
+      "Martini-Gläser im 4er-Set",
+      "titel"
     ]
   ],
   "handtitel_hinweis": "Neuer Titel wäre eine Dublette eines bestehenden Titels (dup_title_fix würde draften) → Hand-Titel aus der Beschreibung. Gilt nur, solange der Live-Titel noch der alte ist.",
@@ -665,7 +690,7 @@
       ""
     ]
   ],
-  "fremdwort_titel_hinweis": "09.10.2026 (Betreiber «verbesser weiter», Google-Analyse): eindeutig fremde Wörter im Titel, die Schweizer Kundinnen deutsch suchen (Rindsleder, Silikon, Edelstahl, Kapuzen-, Strampler, Kinder, Pyjama, Leckmatte). Eingebürgerte Wörter (Sneaker, Hoodie, Cardigan, Jumpsuit, Loafer, Crossbody, Leggings, Bikini) bleiben. [Muster, Ersatz, Kontext] — Kontext leer = immer. Fälle mit Geschlechtswechsel (Pendant → Anhänger, Backpack → Rucksack, Wallet → Portemonnaie) stehen als Handtitel.",
+  "fremdwort_titel_hinweis": "09.10.2026 (Betreiber «verbesser weiter», Google-Analyse): eindeutig fremde Wörter im Titel, die Schweizer Kundinnen deutsch suchen (Rindsleder, Silikon, Edelstahl, Kapuzen-, Strampler, Kinder, Pyjama, Leckmatte). Eingebürgerte Wörter (Sneaker, Hoodie, Cardigan, Jumpsuit, Loafer, Crossbody, Leggings, Bikini) bleiben. [Muster, Ersatz, Kontext] — Kontext leer = immer. Fälle mit Geschlechtswechsel (Pendant → Anhänger, Backpack → Rucksack, Wallet → Portemonnaie) stehen als Handtitel. 09.10.2026: «Martin Boots/Stiefel/Schuhe» = wörtlich 马丁靴 (Dr.-Martens-Stil, Markenanklang; Google sperrte «Kinder Martin Boots» als Inappropriate title) → «Worker-Boots/-Stiefel/-Schuhe» (Zalando-Kategorie «Worker Boots»).",
   "fremdwort_titel": [
     [
       "{V}Genuine\\s+Leather\\s+Cowhide\\s+Wallet{N}",
@@ -790,6 +815,31 @@
     [
       "-Scarf{N}",
       "-Schal",
+      ""
+    ],
+    [
+      "{V}Martin[- ]Boots{N}",
+      "Worker-Boots",
+      ""
+    ],
+    [
+      "{V}Martin[- ]Booties{N}",
+      "Worker-Booties",
+      ""
+    ],
+    [
+      "{V}Martin[- ]Stiefeletten{N}",
+      "Worker-Stiefeletten",
+      ""
+    ],
+    [
+      "{V}Martin[- ]Stiefel{N}",
+      "Worker-Stiefel",
+      ""
+    ],
+    [
+      "{V}Martin[- ]Schuhe{N}",
+      "Worker-Schuhe",
       ""
     ]
   ]

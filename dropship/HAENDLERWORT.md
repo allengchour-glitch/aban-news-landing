@@ -1,6 +1,6 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 20:06 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 20:09 UTC
 
-Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'fremdwort': 93, 'dublette-titel-bleibt': 1}
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Geändert: {'fremdwort': 93, 'ok': 93, 'dublette-titel-bleibt': 1}
 
 - fremdwort: «Dünne Martin-Boots mit Suede» → «Dünne Worker-Boots mit Suede»
 - fremdwort: «Frauen Martin Stiefel mit niedrigem Absatz» → «Frauen Worker-Stiefel mit niedrigem Absatz»

@@ -48,6 +48,19 @@
 
 
 
+
+## 🥾 Titel-Wache ohne Prüfer = 452 ungeprüfte Neuimporte; «uneinig» bestätigen; Martin → Worker-Boots (2026-10-09, 20:15 UTC, «weiter»)
+**Gemessen:** Titel-Kauderwelsch-Wache PAUSIERTE heute 09:14 + 15:20 (OpenAI leer + Groq-Tageskontingent leer) → 452 Neuimporte
+ungeprüft («Patentreifen» = Lackleder, «Rhabarber-Bänder», «Einheitsbalken», «Vollnette»); Ledger trug 354 «uneinig» seit 01.10.
+(meist «G: —»: beide markieren dasselbe Wort, nur EINES liefert eine Korrektur); «Martin Boots/Stiefel» (马丁靴, Dr.-Martens-
+Anklang) in 100+ Titeln, Google sperrte «Kinder Martin Boots» schon einmal.
+**Getan:** Wache nachgeholt 452/21 korrigiert; Bestätigungsweg (das ANDERE Modell bestätigt die eine Korrektur, falsches Wort muss
+weg, Länge 60–160 %) + `--uneinig` Rückstand (Aufseher je 6 h, MAX 120, Status uneinig-2); `fremdwort_titel` Martin → Worker-
+Boots/-Stiefel/-Schuhe (Kanarien 96/96, py=js 52'144/0) 93/93 live; `variantenwert_ki` lässt Farbe-Alter-Felder dem Aufteiler.
+**Lehren:** (1) Eine Vier-Augen-Wache, die bei fehlendem Kontingent pausiert, braucht einen Nachhol-Lauf — sonst ist jede Pause
+ein Loch im Import-Strom. (2) «uneinig» darf kein Endzustand sein: «eines hat keine Korrektur» ist etwas anderes als «beide
+widersprechen sich». (3) Zwei Werkzeuge an denselben Werten (KI-Übersetzer, Struktur-Aufteiler) brauchen eine Reihenfolge — der
+Strukturwandel zuerst, sonst zerstört die Übersetzung das Muster.
 ## 📱 Facebook nur Reels, Produkt-Reels zuerst, Lernen ohne Meta · KI für englische Auswahlwerte (2026-10-09, 19:20 UTC)
 **Betreiber:** FB-Dashboard-Screenshot (Fotos 1 Aufruf/Beitrag, Reels 29), «fb, zeige weniger asiaten», «shorts youtune?»,
 «open ai geld drauf», «weiter alles sauber verbessern».
@@ -19384,3 +19397,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🚚 **«verbessere alles und sauber»: Leinen-Set (41 Sitz./2 Warenkörbe/0 Käufe) versprach bei Google «schnelle Lieferung» bei 10–20 Werktagen → 118/0 bereinigt (107 SEO, 4 «Qualität geprüft», 6 «meistverkauft», 1 «sofort lieferbar»), `versprechen_wache.py` täglich + Importer-Hook (py=js 19/19), 5 Generatoren an der Quelle; Büro-Menü: Typ als Beleg (CJ-Sammelkorb) → 25 Fremdartikel raus, 14 Typen (`buero_korb_typ.py`).** Einmal-Fix ohne Wächter kommt zurück; Typ aus Sammelgruppe ist kein Beleg → `dropship/VERSPRECHEN-BUERO-2026-10-08.md`
 - 2026-10-08 · 🎨 **«rot oder pink auswahl … ganze katalog»: 5'511 aktive mit EINER Variante versprechen eine Wahl, CJ führt bei ~87 % mehrere → `auswahl_werte.py` (45 Kanarien: Stecker → EU, bis 3 Optionen, Masse/Codes, Rest KI mit harter Prüfung + Zweitprüfer qwen) + `auswahl_nachruesten.py` (Raster anlegen, Fehlkombis löschen, Google-Farbe/Grösse je Variante, Rückbau getestet) → 131 scharf/0 Fehler, Aufseher stündlich messen + 150 umbauen (Notbremse `dropship/_auswahl_scharf_aus`).** KI-Werte für Kundinnen nur mit Zweitprüfer («Bean paste → Bohnenpaste» war formal gültig); `cj: null` ist keine 1 → `dropship/AUSWAHL-NACHRUESTEN-2026-10-08.md`
 - 2026-10-08 · 🗂️ **«ordne alles sauber ein»: Einzelurteile vom 07.10. hatten Zweigwechsel verboten → 6'054 neu MIT Zweigwechsel (10 Prüfer, Midi verworfen, nie gröber) 2'662/0 per Bulk-Mutation inkl. Metafeld (Rücklesen 30/30); Trachten aus Kostümen per `shopify_fein`-«umzug» 91/0; `nagel_fein.py` Press-on nach Grössenoption/Beschreibung 130/0; `kosmetik_fein.lauf` hätte 262 Shopify- + 82 Google-Feinwerte täglich vergröbert → nie vergröbern; Nachtrag «weiter»: 109 Press-on-Titel ehrlich («Nagelsticker» → «Press-on-Nägel», nur mit Beschreibungs-Beleg), keine-zuordnung 14 → 1.** Jeder Wächter braucht «feiner = einig» für beide Felder → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
+- 2026-10-08 · 🧥 **«weiter feinkategorie verbessern»: Shopify bei 27'897 auf Klassen MIT Unterklassen, Google darunter ohne Blatt (Oberteile 4'671, Taschen, Hosen, Ladegeräte, Halsbänder, Leinen, Jacken, Näpfe, Kissen) → `shopify_fein.py` + EINE Regeldatei `data/shopify_fein.json`, Kanarien 164/164, 8'279/0 + Runde 2 «weiter» 15 Klassen 1'839/0 (Kanarien 510/510, Rücklesen 30/30+30/30, Kostüme ohne Google mitgenommen) per Bulk-Mutation (einzeln 20/min neben Lese-Scan); Ringe/Rucksäcke/Kostüme bewusst grob.** Blatt-Prüfung je Taxonomie; ab ~200 Produkten Bulk → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
