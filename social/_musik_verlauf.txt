@@ -445,3 +445,4 @@
 2026-10-08T18:50:06.621Z	luxe-epic-elegant.wav	48	haustier	cjreel-1404251568693448704	stimme:ja	azure:de-CH-JanNeural
 2026-10-08T19:05:17.862Z	luxe-epic-hybrid.wav	22.5	haustier	cjreel-1440849121463373824	stimme:ja	azure:de-CH-JanNeural
 2026-10-09T04:14:22.053Z	luxe-epic-hero.wav	43	allgemein	cjreel-1378317838233767936	stimme:nein	anteil
+2026-10-09T08:54:15.745Z	luxe-adventure-uplift.wav	45.5	home	cjreel-2607040852081633100	stimme:nein	anteil
