@@ -331,3 +331,5 @@ gid://shopify/Product/16612712350087	beinrehabilitations-pedalbike-952000	Beinre
 gid://shopify/Product/16612717298055	grosser-canvas-kamerarucksack-mit-diebstahlsch-992576	Grosser Canvas Kamerarucksack mit Diebstahlschutz
 gid://shopify/Product/16612758552967	wasserdichte-schulter-umhangetasche-aus-pvc-667136	Wasserdichte Schulter-Umhängetasche aus PVC
 gid://shopify/Product/16612758585735	massage-roller-fur-rucken-yoga-pilates-085888	Massage-Roller für Rücken – Yoga & Pilates
+gid://shopify/Product/16612766646663	einpersonenschlafsackzelt-4-jahreszeiten-army-608900	Einpersonenschlafsackzelt 4-Jahreszeiten, Army Green
+gid://shopify/Product/16612795351431	kurzmantel-aus-kunstfell-mit-kragen-600600	Kurzmantel aus Kunstfell mit Kragen
