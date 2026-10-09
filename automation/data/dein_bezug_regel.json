@@ -1,0 +1,239 @@
+{
+  "anlass": "09.10.2026 («weiter»): 596 aktive Beschreibungen beginnen einen Satz mit kleinem «dein/deine» — Spur von kollektionstexte_du_form.um(): «Ihr» am Satzanfang wurde immer zu «dein», auch wo es «sein/ihr» (= der Ware) hiess. 223× «dein … Design», «dein schlanker Schnitt», «deine kompakte Grösse», «dein Gehäuse», «dein mechanisches Uhrwerk». Nur ~15 % sprechen wirklich die Kundin an («deine Katze», «dein Kunstdruck wird ungerahmt geliefert»).",
+  "kundin": [
+    "Katze",
+    "Katzen",
+    "Haustier",
+    "Haustiere",
+    "Hund",
+    "Hunde",
+    "Vierbeiner",
+    "Liebling",
+    "Lieblinge",
+    "Kunstdruck",
+    "Kreativität",
+    "Fantasie",
+    "Phantasie",
+    "Haut",
+    "Freunde",
+    "Freundin",
+    "Freundinnen",
+    "Füsse",
+    "Füße",
+    "Baby",
+    "Babys",
+    "Kind",
+    "Kinder",
+    "Kleines",
+    "Kleinen",
+    "Brauen",
+    "Augenbrauen",
+    "Wimpern",
+    "Hamster",
+    "Kaninchen",
+    "Vogel",
+    "Vögel",
+    "Fische",
+    "Aufnahmen",
+    "Taschenlampe",
+    "Zuhause",
+    "Garten",
+    "Auto",
+    "Fahrzeug",
+    "Smartphone",
+    "Handy",
+    "Outfit",
+    "Outfits",
+    "Gesicht",
+    "Haar",
+    "Haare",
+    "Lippen",
+    "Augen",
+    "Nägel",
+    "Küche",
+    "Wohnung",
+    "Partner",
+    "Partnerin",
+    "Familie",
+    "Gäste",
+    "Körper",
+    "Hände",
+    "Hand",
+    "Rücken",
+    "Nacken",
+    "Schlaf",
+    "Alltag",
+    "Training",
+    "Workout",
+    "Lieblingsgetränk",
+    "Getränk",
+    "Getränke",
+    "Kaffee",
+    "Fahrrad",
+    "Kleidung",
+    "Wäsche",
+    "Bett",
+    "Sofa",
+    "Schreibtisch",
+    "Büro",
+    "Pflanzen",
+    "Pflanze",
+    "Wohnzimmer",
+    "Schlafzimmer",
+    "Badezimmer",
+    "Balkon",
+    "Terrasse",
+    "Gerät",
+    "Geräte",
+    "Laptop",
+    "Tablet",
+    "Kopfhörer",
+    "Schlüssel",
+    "Geldbörse",
+    "Make-up",
+    "Look",
+    "Style",
+    "Stil-Statement",
+    "Geschenk",
+    "Liebsten",
+    "Mann",
+    "Frau",
+    "Tochter",
+    "Sohn",
+    "Mama",
+    "Papa",
+    "Gesundheit",
+    "Wohlbefinden",
+    "Zeit",
+    "Reise",
+    "Reisen",
+    "Abenteuer",
+    "Fotos",
+    "Daten",
+    "Ohren",
+    "Zähne",
+    "Beine",
+    "Arme",
+    "Kopf",
+    "Sneaker",
+    "Schuhe",
+    "Teufel",
+    "Engel",
+    "Prinzessin",
+    "Held",
+    "Superheld",
+    "Pirat",
+    "Kreditkarten",
+    "Ausweis",
+    "Münzen"
+  ],
+  "kundin_hinweis": "«Look»/«Style» sind meist die Kundin («dein Look für den Abend») — bei «dein nostalgischer Look macht sie …» bleibt es dann orthografisch richtig, nur der Bezug ist schief; lieber «Dein» als ein falscher Artikel.",
+  "neutrum_endung": "(?:design|gebiet|gehäuse|gehaeuse|werk|material|muster|system|fach|blatt|band|format|profil|gewicht|vermögen|merkmal|bein|leder|gewebe|innenfutter|futter|licht|display|zubehör|set|modell|motiv|logo|kabel|netz|polster|obermaterial|oberteil|teil|volumen|finish|gestell|glas|metall|holz|aroma|parfum|spray|öl|serum|shampoo|zeichen|element|detail|interieur)",
+  "maskulin_endung": "(?:stil|pegel|kern|becher|bund|betrieb|schnitt|look|schaft|griff|bereich|komfort|tragekomfort|durchmesser|mechanismus|verschluss|boden|rahmen|deckel|kopf|akku|motor|stoff|bezug|absatz|kragen|ärmel|saum|riemen|gurt|träger|henkel|reissverschluss|duft|farbton|ton|glanz|effekt|aufbau|sitz|halt|schutz|filter|sensor|knopf|schalter|stecker|anschluss|behälter|inhalt|umfang|hingucker|charme|charakter)",
+  "kanarien": [
+    [
+      "Sie fügt sich in jede Garderobe ein. dein minimalistisches Design und die Bedeckung schützen.",
+      "Sie fügt sich in jede Garderobe ein. Das minimalistische Design und die Bedeckung schützen."
+    ],
+    [
+      "Angenehmer Tragekomfort. dein schlanker Schnitt sorgt für eine moderne Silhouette.",
+      "Angenehmer Tragekomfort. Der schlanke Schnitt sorgt für eine moderne Silhouette."
+    ],
+    [
+      "Komfortabel. deine kompakte Grösse erleichtert die Aufbewahrung.",
+      "Komfortabel. Die kompakte Grösse erleichtert die Aufbewahrung."
+    ],
+    [
+      "Mit Kreuzdesign. deine grosszügigen Masse von 25 × 17 cm bieten Platz.",
+      "Mit Kreuzdesign. Die grosszügigen Masse von 25 × 17 cm bieten Platz."
+    ],
+    [
+      "Für unterwegs. dein Gehäuse aus ABS und PC ist robust.",
+      "Für unterwegs. Das Gehäuse aus ABS und PC ist robust."
+    ],
+    [
+      "Zeitlos. dein automatisches Uhrwerk wird durch ein Gehäuse geschützt.",
+      "Zeitlos. Das automatische Uhrwerk wird durch ein Gehäuse geschützt."
+    ],
+    [
+      "Für 1-2 Personen. dein geringes Gewicht von nur ca. 85g macht sie leicht.",
+      "Für 1-2 Personen. Das geringe Gewicht von nur ca. 85g macht sie leicht."
+    ],
+    [
+      "Mit Mesh. dein Low-Top-Schaft und das einfarbige Design machen ihn schlicht.",
+      "Mit Mesh. Der Low-Top-Schaft und das einfarbige Design machen ihn schlicht."
+    ],
+    [
+      "Für Buffets. dein koreanischer Stil verleiht ihr Ästhetik.",
+      "Für Buffets. Der koreanische Stil verleiht ihr Ästhetik."
+    ],
+    [
+      "Robust.</p><p>deine robuste Konstruktion macht sie widerstandsfähig.",
+      "Robust.</p><p>Die robuste Konstruktion macht sie widerstandsfähig."
+    ],
+    [
+      "<li>dein Armband ist aus Resin gefertigt.</li>",
+      "<li>Das Armband ist aus Resin gefertigt.</li>"
+    ],
+    [
+      "<li>deine Luminous-Uhrzeiger leuchten.</li>",
+      "<li>Die Luminous-Uhrzeiger leuchten.</li>"
+    ],
+    [
+      "inkl. Produktion</span></p> <p>deine Katze liebt es, mit Federspielzeug zu jagen.",
+      "inkl. Produktion</span></p> <p>Deine Katze liebt es, mit Federspielzeug zu jagen."
+    ],
+    [
+      "<h4>Gut zu wissen</h4> <p>dein Kunstdruck wird ungerahmt geliefert.",
+      "<h4>Gut zu wissen</h4> <p>Dein Kunstdruck wird ungerahmt geliefert."
+    ],
+    [
+      "Ein Accessoire. deiner Kreativität sind keine Grenzen gesetzt.",
+      "Ein Accessoire. Deiner Kreativität sind keine Grenzen gesetzt."
+    ],
+    [
+      "Kein Film. deine Haut fühlt sich weich an.",
+      "Kein Film. Deine Haut fühlt sich weich an."
+    ],
+    [
+      "Für Hunde. dein Hund kann so auf einfache Weise lernen.",
+      "Für Hunde. Dein Hund kann so auf einfache Weise lernen."
+    ],
+    [
+      "Ein Blickfang. dein nostalgischer Look macht sie besonders.",
+      "Ein Blickfang. Dein nostalgischer Look macht sie besonders."
+    ],
+    [
+      "Mit Mechanik. dein Unbekanntes Ding macht Spass.",
+      "Mit Mechanik. Dein Unbekanntes Ding macht Spass."
+    ],
+    [
+      "Für dich und dein Zuhause.",
+      "Für dich und dein Zuhause."
+    ],
+    [
+      "Damit dein Hund sicher ist.",
+      "Damit dein Hund sicher ist."
+    ],
+    [
+      "Für den modernen Mann. dein markantes D-förmiges Grosszifferblatt verleiht Stil.",
+      "Für den modernen Mann. Das markante D-förmige Grosszifferblatt verleiht Stil."
+    ],
+    [
+      "Gegen Schmutz. deine Sneaker sehen wieder aus wie neu.",
+      "Gegen Schmutz. Deine Sneaker sehen wieder aus wie neu."
+    ],
+    [
+      "<p>dein kleiner Teufel soll ruhig zeigen, was in ihm steckt!",
+      "<p>Dein kleiner Teufel soll ruhig zeigen, was in ihm steckt!"
+    ],
+    [
+      "Leise. dein Geräuschpegel liegt unter 40 dB.",
+      "Leise. Der Geräuschpegel liegt unter 40 dB."
+    ],
+    [
+      "Mit Fächern. dein Seltsamwort ist da.",
+      "Mit Fächern. Dein Seltsamwort ist da."
+    ]
+  ]
+}

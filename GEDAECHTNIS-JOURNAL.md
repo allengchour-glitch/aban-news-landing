@@ -44,6 +44,26 @@
 
 
 
+## 2026-10-09 07:45 UTC · ✍️ «weiter»: «dein … Design» am Satzanfang — um() machte jedes «Ihr» zu «dein»
+
+**Anlass:** Beim Lesen der Uhrentexte stand «dein mechanisches Uhrwerk garantiert Präzision», klein am Satzanfang, und die
+Kundin wurde als Besitzerin des Uhrwerks angesprochen.
+
+**GEMESSEN:** 596 Beschreibungen (599 Stellen). Davon 223× «dein … Design», 33× «… Schnitt», 26× «deine … Grösse».
+~85 % meinen die Ware. 624 von 625 Produkten liefen durch `kollektionstexte_du_form.um()` (Ihr→dein ohne
+Satzanfang-Prüfung); der Importer ist nicht die Quelle.
+
+**GETAN:** Regel `data/dein_bezug_regel.json`:
+- Nomen der Kundin → «Dein»; Merkmal der Ware → Artikel nach Adjektivendung oder Nomen-Endung («Das minimalistische
+  Design», «Der schlanke Schnitt», «Die kompakte Grösse»); unklar → «Dein» gross. 31 Kanarien.
+- Quelle in `um()` repariert (`ihr_satzanfang` vor dem Tausch). Damit gilt es für produkttexte_du_form,
+  besuchte_seiten, ratgeber_du_form und die Reparaturläufe.
+- Bestand per `dein_bezug.py` SCHARF, täglich im Aufseher. Bericht `dropship/DEIN-BEZUG-2026-10-09.md`.
+
+**Lehre:** **Ein Wortersatz ohne Bedeutung braucht die Stellung im Satz.** «Ihr» ist Höflichkeitsform, Possessiv der
+Ware und Personalpronomen. Am Satzanfang sind alle drei gross. Die Warnmuster des Laufs (Pluralverben) sahen nichts, weil die
+Grammatik formal stimmte. Gefunden wurde der Fehler nur beim Lesen eines Satzes aus einer anderen Runde.
+
 ## 2026-10-09 07:15 UTC · 🧨 «weiter»: Händlerwörter (防爆, 爆款, ins风, 百搭) + Rolex-/Patek-Modellnamen
 
 **Anlass:** Die Lehre aus 穿戴甲 habe ich auf den ganzen Katalog angewendet.
@@ -19192,3 +19212,6 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🤖 **«entwickle eine bot für automation»: `handy_bot.py` — Befehle status/bestellungen/umsatz/social über ntfy-Thema «<thema>-befehl» (nur lesen, keine Kundennamen), Tagesbericht 06:00 UTC, Aufseher-Rundenbeginn; Probe zugestellt.** Betreiber-Meldungen in den Bot, nicht in neue Logs → `dropship/HANDY-BOT-2026-10-07.md`
 - 2026-10-07 · 🔎 **«google merchant push»: 49'666/51'458 im Google-Kanal, 1'789 der 1'792 draussen sind bewusst draussen (heikle Ware + Ausschluss-Tags) → 3 Kleider nachgezogen; «semrush ausnützen»: API 0 Einheiten → aus gespeicherter Ernte /collections/schneidebretter (2'400/Mt, 73) + wandteppiche (720/Mt, 63), Kanarien 189/0.** «draussen» ≠ «ohne Grund» → Journal 07.10. 19:10
 - 2026-10-07 · 🎬 **«verbessere» (Tag 8): Video-Nachtrag 27/0/17 statt 250/Tag — im CJ-Vorrang-Fenster lief der Grind weiter (cj_category_fill 377 Aufrufe), Vorrang hatte nur der Kosten-Nachtrag, ein am Neustart gestorbener Lauf kam nicht wieder → `cj_video_backfill` in `VORRANG_SKRIPTE` (py+mjs), `besuchte_seiten` frei, Neustart im Fenster per `still_gestorben`.** Wer im Fenster Aufrufe macht, zählen → `dropship/VIDEO-VORRANG-2026-10-07.md`
+- 2026-10-07 · 🤖 **«bing microsoft»: Agentic Storefronts LÄUFT (Admin-Screenshot: CHF 155.62 / 113 Besuche in 30 T, ChatGPT 74.80, Shop 80.82, Copilot 0; Knowledge Base fehlt → `KNOWLEDGE-BASE-ANTWORTEN.md` nur aus Richtlinien). Meine UCP-Probe mit Test-Profil fand luxestyle.ch nicht = falscher Messweg; IndexNow läuft; Microsoft-Merchant-Neuprüfung = Betreiber.** Sichtbarkeit an der Plattform-Auswertung messen, nicht an einer Test-Probe → `dropship/BING-MICROSOFT-2026-10-07.md`
+- 2026-10-07 · 🍪 **«verbessere mehr»: TikTok-Landeseiten 563 Sitzungen → 8 Warenkörbe → 0 Käufe; eigener Cookie-Banner lag nach 0,8 s auf dem Handy über Titel + Preis → Produktseiten erst nach Scrollen (Rückfall 20 s), mobil kompakt, Nachher-Bild Preis frei.** Bei hohem Absprung zuerst den ersten Handy-Bildschirm ansehen → `dropship/COOKIE-BANNER-PREIS-2026-10-07.md`
+- 2026-10-07 · 🧠 **«knowledge installiert»: App-Vorschläge falsch («ohne Zwischenhändler», «50–70 % unter Boutiquen», Gutscheine/Geschenkverpackung ja = gemessen 0) → `knowledge_base_fakten.py` 10 belegte Fakten veröffentlicht + `--wache` täglich; «Über uns» ohne Prüf-/Premium-Versprechen.** KI-Ableitungen über den Shop sind Behauptungen → `dropship/KNOWLEDGE-BASE-2026-10-07.md`
