@@ -1,6 +1,6 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 07:00 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 07:07 UTC
 
-Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'nur-text': 146, 'explosiv': 6, 'haendlerwort': 20, 'uhr-modell': 4, 'explosion': 20, 'hand': 4}
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Geändert: {'nur-text': 146, 'ok': 200, 'explosiv': 6, 'haendlerwort': 20, 'uhr-modell': 4, 'explosion': 20, 'hand': 4}
 
 - nur-text: «Bestickter Kissenbezug aus Baumwollleinen» (Text)
 - nur-text: «Nordisches Kissen mit Baumwollquasten» (Text)
