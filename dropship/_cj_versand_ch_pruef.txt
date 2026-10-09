@@ -6486,3 +6486,6 @@ sandalen-mit-eckiger-kappe-und-absatz-618300	2606130751431619000	16	10.01	ok	lan
 sandalen-mit-schleife-und-bezogenem-absatz-623400	2606130041011624200	16	12.81	ok	landeseite
 bequeme-plateau-sandalen-612200	2606110711231612900	16	11.37	ok	landeseite
 keilabsatz-sandalen-im-koreanischen-stil-615700	2606110643561616200	16	11.37	ok	landeseite
+ultrahohe-sandalen-mit-uberkreuzten-riemen-623100	2606110528591623700	16	10.55	ok	landeseite
+high-heel-latin-sandalen-mit-glitzer-604200	2606110355371605000	16	10.83	ok	landeseite
+minimalistische-wildleder-flip-flops-636000	2606100838201636700	16	9.88	ok	landeseite
