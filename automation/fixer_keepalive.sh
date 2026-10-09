@@ -1539,7 +1539,8 @@ fi
   # luxestyle.ch-Links — 49 Stueck in den Artikeln, einer war echt tot und wurde uebersehen). blog_linkziele_wache.py misst AM URSPRUNG
   # (Admin-API, nicht der Bot-Cache unserer IP; Filterrouten /collections/<k>/<tag> und Redirects gelten als lebendig) und schreibt
   # NICHTS — Ampel «BLOG-LINKS: N tote Ziele …», Details /tmp/blog_linkziele.json; tote Ziele → Hand-Zuordnung
-  # (dropship/BLOG-BEWERTUNGEN-2026-10-05.md, Muster scratchpad/blog_nachbesserung_fix.py), nie Entwürfe republizieren.
+  # (dropship/BLOG-BEWERTUNGEN-2026-10-05.md; seit 09.10. Werkzeug automation/blog_link_ersetzen.py — den Ersatz vorher auf
+  # Fakten UND fehlende CJ-Auswahl prüfen, siehe Kopf des Skripts), nie Entwürfe republizieren.
   # blog_preise_aktualisieren.py SCHREIBT (articleUpdate ersetzt den ganzen Body → nie parallel zu anderen Blog-Schreibern,
   # darum shopify_schranke + eigener flock): Live-Preis in Anker/Karte, «(Stand …)» auf heute, Ledger
   # dropship/_blog_preise_ledger.tsv + Vorher-Bodies dropship/_blog_preise_vorher/. Beide ~20–60 s, einmal am Tag.

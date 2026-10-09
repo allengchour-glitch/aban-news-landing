@@ -43,6 +43,8 @@ Wireless, Hoodie, LED, USB, Set, Indoor, Outdoor, Halloween, Yacht, Camping, Mak
 Stil- oder Grammatikfragen.
 Antworte NUR als JSON: {"titel": [{"nr": <Nummer>, "falsch": ["<Wort genau wie im Titel>"], "korrektur": "<ganzer korrigierter Titel>"}]}
 Nur Titel mit mindestens einem Nicht-Wort aufführen. Leere Liste, wenn alles korrekt ist.
+Steht unter einem Titel «(Ware: …)», muss die Korrektur zu DIESER Ware passen — keine wörtliche Übersetzung, die etwas
+anderes bezeichnet («Mummy-Rucksack» für Mütter = Wickelrucksack, nicht «Mumien-Rucksack»).
 
 """
 
@@ -183,12 +185,14 @@ BESTAETIGEN = """Ein Shop-Titel enthält ein Wort, das es im Deutschen nicht gib
 Ein anderes Modell schlägt eine Korrektur vor. Prüfe NUR: Ist die Korrektur richtig — ersetzt sie genau die falschen Wörter
 durch das gängige deutsche Wort, erfindet nichts dazu, lässt nichts Wichtiges weg (Material, Mass, Zielgruppe bleiben) und
 ist selbst fehlerfrei? Antworte NUR als JSON: {"ok": true|false, "grund": "<kurz>"}
+Passt die Korrektur zur beschriebenen Ware? Eine wörtliche Übersetzung, die etwas anderes bezeichnet, ist falsch.
 Original: «%s»
 Falsche Wörter: %s
-Korrektur: «%s»"""
+Korrektur: «%s»
+Ware laut Beschreibung: «%s»"""
 
 
-def bestaetigt(modell, titel, falsch, korrektur):
+def bestaetigt(modell, titel, falsch, korrektur, ware=""):
     """09.10.2026: «uneinig» hiess oft nur: ein Modell markierte das Wort, lieferte aber keine Korrektur («G: —»). 354 Titel
     lagen so seit dem 01.10. im Ledger («Patentreifen» statt Lackleder, «Einheitsbalken» statt Riemen). Jetzt bestätigt das
     ANDERE Modell die Korrektur des einen — weiterhin zwei Modelle, eines schlägt vor, eines prüft."""
@@ -196,16 +200,29 @@ def bestaetigt(modell, titel, falsch, korrektur):
         return False
     if any(norm(w) and norm(w) in norm(korrektur) for w in falsch):
         return False                                   # das falsche Wort steht noch drin
-    a = (gemini if modell == "gemini" else gpt)(BESTAETIGEN % (titel, ", ".join(sorted(falsch)), korrektur))
+    a = (gemini if modell == "gemini" else gpt)(BESTAETIGEN % (titel, ", ".join(sorted(falsch)), korrektur, ware or "—"))
     return bool(a.get("ok")) is True
 
 
-def pruefen(titel):
-    """titel: Liste von Strings → Liste von (index, falsch_set, korrektur) mit Einigkeit beider Modelle."""
+def ware(html, n=180):
+    """09.10.2026: Auszug aus der Beschreibung für die Prüfer. Rückstand-Durchgang 113 Vorschläge, davon ~8 wörtlich falsch
+    («Mummy-Rucksack» → «Mumien-Rucksack», «Kaucher» → «Kocher» bei einem Hunde-Trinknapf) — die Beschreibung hätte es
+    gesagt («für werdende Mütter … Babybedarf»). Ohne Beschreibung (Kanarien) bleibt alles wie vorher."""
+    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html or "")).strip()
+    t = t.split("Das zeichnet es aus")[0].split("🛡️")[0].strip()
+    return t[:n]
+
+
+def pruefen(titel, waren=None):
+    """titel: Liste von Strings → Liste von (index, falsch_set, korrektur) mit Einigkeit beider Modelle.
+    waren: optional gleich lange Liste von Beschreibungs-Auszügen (ware())."""
+    waren = waren or [""] * len(titel)
+    zeile = lambda i, t, w: f"{i}. {t}" + (f"\n   (Ware: {w})" if w else "")
     ergebnis = []
     for start in range(0, len(titel), 40):
         block = titel[start:start + 40]
-        g = gemini(PROMPT + "\n".join(f"{i + 1}. {t}" for i, t in enumerate(block)))
+        wblock = waren[start:start + 40]
+        g = gemini(PROMPT + "\n".join(zeile(i + 1, t, wblock[i]) for i, t in enumerate(block)))
         for e in g.get("titel") or []:
             try:
                 i = int(e["nr"]) - 1
@@ -220,7 +237,7 @@ def pruefen(titel):
                   if norm(x) and norm(x) in norm(t)}
             if not gf:
                 continue
-            o = gpt(PROMPT + "1. " + t)
+            o = gpt(PROMPT + zeile(1, t, wblock[i]))
             oe = (o.get("titel") or [{}])[0] if o.get("titel") else {}
             of = {norm(x) for w in (oe.get("falsch") or []) for x in str(w).split() if norm(x)}
             gemeinsam = gf & of
@@ -237,9 +254,9 @@ def pruefen(titel):
                 einig = bool(neu_g) and all(w in o_flach for w in neu_g) and 0.6 <= len(korr) / max(1, len(t)) <= 1.4
             # 09.10.2026: beide markieren dasselbe Wort, aber nur EINES liefert eine (brauchbare) Korrektur → das andere bestätigt
             if not einig and gemeinsam:
-                if okorr and bestaetigt("gemini", t, gemeinsam, okorr):
+                if okorr and bestaetigt("gemini", t, gemeinsam, okorr, wblock[i]):
                     korr, einig = okorr, True
-                elif korr and bestaetigt("gpt", t, gemeinsam, korr):
+                elif korr and bestaetigt("gpt", t, gemeinsam, korr, wblock[i]):
                     einig = True
             ergebnis.append((start + i, gemeinsam or gf, korr if einig else "", okorr, einig))
     return ergebnis
@@ -284,13 +301,13 @@ def rueckstand():
           f"diesmal {len(offen)} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
     prod = []
     for z in offen:
-        p = gql('query($i:ID!){product(id:$i){id title status}}', {"i": z[0]})["product"]
+        p = gql('query($i:ID!){product(id:$i){id title status descriptionHtml}}', {"i": z[0]})["product"]
         if p and p["status"] == "ACTIVE" and p["title"] == z[2]:
             prod.append(p)
     if not prod:
         print("FERTIG: 0"); return 0
     try:
-        befunde = pruefen([p["title"] for p in prod])
+        befunde = pruefen([p["title"] for p in prod], [ware(p.get("descriptionHtml")) for p in prod])
     except RuntimeError as e:
         print(f"PAUSE: kein Prüfer-Kontingent — {str(e)[:200]}"); return 0
     bef = {i: (f, k, ok_, e) for i, f, k, ok_, e in befunde}
@@ -324,7 +341,7 @@ def main():
     prod, c = [], None
     while True:
         d = gql('query($c:String,$q:String!){products(first:100,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
-                'nodes{id handle title status}}}', {"c": c, "q": f"created_at:>='{seit}' AND status:active"})["products"]
+                'nodes{id handle title status descriptionHtml}}}', {"c": c, "q": f"created_at:>='{seit}' AND status:active"})["products"]
         prod += [p for p in d["nodes"] if p["id"] not in fertig]
         if not d["pageInfo"]["hasNextPage"]:
             break
@@ -334,7 +351,7 @@ def main():
     if not prod:
         print("FERTIG: 0 geprüft"); return 0
     try:
-        befunde = pruefen([p["title"] for p in prod])
+        befunde = pruefen([p["title"] for p in prod], [ware(p.get("descriptionHtml")) for p in prod])
     except RuntimeError as e:
         # 04.10.2026 22:50 gemessen: Gemini 402, ChatGPT leer, Groq qwen/gpt-oss-20b Tageslimit in BEIDEN Organisationen —
         # ohne zwei Modelle wird nichts geändert (Vier-Augen-Regel). Der Lauf endet sichtbar, nicht mit Traceback;

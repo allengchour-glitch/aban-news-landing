@@ -449,6 +449,19 @@ def plane_optionen(vs, titel="", ki=None):
     return _zusammensetzen(vs2, dims, [None] * len(dims), n_st, titel, ki)
 
 
+MASS_OHNE = re.compile(r"^\d+(?:[.,]\d+)?(?:\s*×\s*\d+(?:[.,]\d+)?){1,2}$")
+MASS_MIT = re.compile(r"^\d+(?:[.,]\d+)?(?:\s*×\s*\d+(?:[.,]\d+)?){1,2}\s?(cm|mm|m)$")
+
+
+def einheit_angleichen(werte):
+    """{«51×66»: «51×66 cm»}, wenn die übrigen Masse der Liste genau EINE Einheit tragen; sonst {}."""
+    einh = {MASS_MIT.match(w).group(1) for w in werte if MASS_MIT.match(w)}
+    if len(einh) != 1:
+        return {}
+    u = einh.pop()
+    return {w: f"{w} {u}" for w in werte if MASS_OHNE.match(w)}
+
+
 def _zusammensetzen(vs, dims, fertig, n_st, titel, ki):
     if len(dims) > 3:
         return None, f"{len(dims)} Dimensionen — Shopify erlaubt drei"
@@ -472,6 +485,18 @@ def _zusammensetzen(vs, dims, fertig, n_st, titel, ki):
             distinct = list(dict.fromkeys(dims[i]))
             namen[i] = name; abb[i] = dict(zip(distinct, werte))
         ki_benutzt = True
+    # 09.10.2026: CJ schreibt dieselbe Masszahl mal mit, mal ohne Einheit («51x66cm», «51x66» beim Himmelblau) → die
+    # Auswahl zeigte «51×66 cm» UND «51×66». Masse ohne Einheit bekommen die EINE Einheit der Liste — nur, wenn dadurch
+    # keine zwei CJ-Varianten zusammenfallen.
+    for i in range(len(dims)):
+        if fertig[i]:
+            continue
+        erg = einheit_angleichen(list(abb[i].values()))
+        if erg:
+            kand = {x: erg.get(w, w) for x, w in abb[i].items()}
+            test = {tuple((kand if k == i else abb[k])[dims[k][j]] for k in range(len(dims))) for j in range(len(vs))}
+            if len(test) == len({tuple(dims[k][j] for k in range(len(dims))) for j in range(len(vs))}):
+                abb[i] = kand
     # Optionsnamen eindeutig machen (zwei «Farbe»-Dimensionen: die zweite heisst «Ausführung», dann «Variante»)
     gesehen = set()
     for i, n in enumerate(namen):
@@ -746,6 +771,11 @@ KANARIEN = [
     (_v("Black-16inch", "Khaki-16inch", "Beige-16inch"), [("Farbe", ["Schwarz", "Khaki", "Beige"])]),
     (_v("Black-12 inch", "Black-13 inch", "Gray-12 inch", "Gray-13 inch"), [("Farbe", ["Schwarz", "Grau"]), ("Grösse", ["12 Zoll", "13 Zoll"])]),
     (_v("400ml", "800ml"), [("Volumen", ["400 ml", "800 ml"])]),
+    # 09.10.2026: dieselbe Masszahl mal mit, mal ohne Einheit (Seiden-Kissenbezug «Sky blue-51x66») → eine Einheit;
+    # gäbe es beide Schreibweisen bei derselben Farbe, bleibt es stehen (sonst fielen zwei CJ-Varianten zusammen)
+    (_v("Pink-51x76cm", "Pink-51x66cm", "Blue-51x76cm", "Blue-51x66"), [("Farbe", ["Rosa", "Blau"]), ("Grösse", ["51×76 cm", "51×66 cm"])]),
+    (_v("Pink-51x66cm", "Pink-51x66", "Blue-51x66cm"), [("Farbe", ["Rosa", "Blau"]), ("Grösse", ["51×66 cm", "51×66"])]),
+    (_v("Red-40x40", "Red-45x45", "Blue-40x40"), [("Farbe", ["Rot", "Blau"]), ("Grösse", ["40×40", "45×45"])]),
     (_v("60x40x2.5cm", "45x30x2.5cm"), [("Grösse", ["45×30×2.5 cm", "60×40×2.5 cm"])]),
     (_v("Black Large", "Black Small", "Gray Large", "Gray Small Size"), [("Farbe", ["Schwarz", "Grau"]), ("Grösse", ["Klein", "Gross"])]),
     (_v("Large Blue", "Small Size Black"), [("Farbe", ["Blau", "Schwarz"]), ("Grösse", ["Gross", "Klein"])]),

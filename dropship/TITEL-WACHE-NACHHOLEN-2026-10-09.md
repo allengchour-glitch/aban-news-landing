@@ -53,6 +53,46 @@
 `alter_im_farbwert.py`. Der teilt sie in Farbe und Grösse auf. Übersetzt die KI vorher, findet der Teiler sein Muster nie
 mehr, und das Alter fehlt dauerhaft im Filter.
 
+## Nachtrag 20:00–20:45 UTC — Rückstand 354 im Trockenlauf, von Hand gesichtet
+
+**GEMESSEN:** `--uneinig` trocken über den ganzen Rückstand.
+- 258 Titel waren live noch unverändert und aktiv.
+- Davon bekamen **113 eine Korrektur**, bei der sich beide Modelle einig waren.
+
+**Sichtung:** Rund 100 Korrekturen sind gut (z. B. «Patentreifen» → Lackriemen, «Wutanhölz» → Holz, «Eel» → Aal). Etwa
+8 waren **wörtlich übersetzt und falsch für die Ware**:
+
+| Titel | KI-Korrektur | Ware laut Beschreibung |
+|---|---|---|
+| «Mummy-Rucksack» | «Mumien-Rucksack» | Rucksack für werdende Mütter, Babybedarf |
+| «Kaucher aus Keramik» | «Kocher» | Hunde-Trinknapf |
+| «Bauchschuhe» | «Barfussschuhe» | High-Top-Sneaker |
+| «Auto Abat Vent» | «Windabweiser» | Sonnenschutz-Aufkleber aus Mesh |
+
+Dazu kamen grammatisch holprige Ersatzwörter: «Gerades Fräser», «Kleine … Laubsägeblatt».
+
+**Getan:**
+- **111 Titel geschrieben, 0 Fehler.** Davon 89 KI-Vorschläge unverändert, 22 als Handtitel aus der Beschreibung (z. B.
+  «Grosser Wickelrucksack für unterwegs», «Keramik-Trinknapf für Hunde mit hohem Fuss», «Auto-Sonnenschutz aus Mesh zum
+  Aufkleben · 2 Stück»).
+- Ausgelassen:
+  - «Handzangen-Set … Tschim-Zange»: unklar, braucht eine Bildsichtung. Ledger «uneinig-2».
+  - «Bambus- und Leinen-Herrenschirt»: die Korrektur wäre eine Titel-Dublette. Vermutlich ein doppeltes Produkt, offen.
+- Den scharfen KI-Lauf habe ich bewusst nicht gestartet. Er hätte die Modelle neu gefragt, und die gesichteten Vorschläge
+  wären durch neue, ungesichtete ersetzt worden.
+
+**An der Quelle:** Die Prüfer sehen jetzt die Ware. `titel_kauderwelsch_wache.ware()` gibt einen Auszug der Beschreibung
+mit (bis 180 Zeichen, ohne Faktenblock):
+- Beide Modelle bekommen ihn unter jedem Titel als «(Ware: …)».
+- Der Bestätiger fragt zusätzlich: «Passt die Korrektur zur beschriebenen Ware?»
+- Gegenprobe mit den drei Fehlgriffen: «Mummy-Rucksack» → «Grosser Wickelrucksack für unterwegs», «Kaucher» → «Trinknapf aus
+  Keramik», «Bauchschuhe» → «Freizeitschuhe Herren». Alle drei sind jetzt richtig.
+- Kanarien (ohne Beschreibung) in drei Läufen: 10/11, 11/11, 11/11. Das ist die bekannte Schwankung der Modelle, kein
+  Regelbruch.
+
 ## Offen
 
-- Der Rückstand von 354 Titeln läuft ab jetzt im Aufseher, 120 Titel je 6 Stunden.
+- Den Rest (145 ohne Einigkeit, 96 nicht mehr aktiv oder inzwischen umbenannt) prüft der Aufseher ab jetzt mit Beschreibung,
+  120 Titel je 6 Stunden.
+- Eine Stichprobe der nächsten 20 scharfen Korrekturen gegen die Beschreibung lesen. Wenn sie sauber sind, bleibt es beim
+  Automaten.

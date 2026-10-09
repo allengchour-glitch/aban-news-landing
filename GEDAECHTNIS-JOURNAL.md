@@ -49,6 +49,37 @@
 
 
 
+## 🪡 Ersatz und Korrektur brauchen die Ware: toter Blog-Link (8 Artikel) + Titel-Rückstand 111 (2026-10-09, 20:45 UTC, «weiter»)
+
+**Was war:**
+- Die Ampel meldete «BLOG-LINKS: 1 tote Ziele in 8 Artikeln». Der Seidenkissenbezug war von CJ ausgelistet und DRAFT.
+- Der Titel-Rückstand («uneinig», 354) ergab im Trockenlauf 113 einige Korrekturen. Rund 8 davon waren wörtlich übersetzt
+  und für die Ware falsch («Mummy-Rucksack» → «Mumien-Rucksack», «Kaucher» → «Kocher» bei einem Hunde-Trinknapf).
+
+**Getan:**
+- Ersatz `doppelseitiger-seiden-kissenbezug-mit-reissver-1401d1`. Er erfüllt jede Angabe der Artikel (100 % Maulbeerseide,
+  19 Momme, doppelseitig).
+- Er hatte aber bei CJ 48 Varianten und im Shop eine. Das gilt für alle vier Kandidaten. Darum zuerst über den Vorrang-Weg
+  gemessen und die Auswahl nachgerüstet (17 Farben × 3 Grössen, CHF 31.90–43.90). Dann 8 Artikel umgeschrieben, «ab CHF
+  31.90», 8/8 zurückgelesen.
+- Nachrüster-Makel «51×66» neben «51×66 cm» an der Quelle behoben: `auswahl_werte.einheit_angleichen()`, Kanarien 52/52,
+  Bestand 0.
+- Werkzeug `automation/blog_link_ersetzen.py` angelegt.
+- 111 Titel gesichtet geschrieben, 22 davon als Handtitel. Die Titel-Wache gibt den Prüfern jetzt einen Auszug der
+  Beschreibung mit («(Ware: …)», auch dem Bestätiger). Gegenprobe: Wickelrucksack, Trinknapf und Freizeitschuhe sind richtig.
+
+**Lehren:**
+1. **Ein Ersatzprodukt prüft man zweimal.** Stimmen die Fakten im Text? Ist es ohne Rückfrage bestellbar? Eine Variante im
+   Shop gegen 48 bei CJ heisst nein.
+2. **Ein Wortprüfer ohne die Ware übersetzt wörtlich.** Zwei Modelle können sich auf dieselbe falsche Übersetzung einigen.
+   Die Beschreibung ist der Schiedsrichter.
+3. **Einen gesichteten Trockenlauf schreibt man selbst.** Ein neuer scharfer KI-Lauf fragt neu und ersetzt Gesichtetes durch
+   Ungesichtetes.
+4. **Einzelläufe von Berichts-Skripten bekommen immer ein eigenes BERICHT=.** Sonst überschreiben sie den Tagesbericht, und
+   der Autocommitter committet den falschen Stand.
+
+→ `dropship/BLOG-BEWERTUNGEN-2026-10-05.md` (Nachtrag 09.10.), `dropship/TITEL-WACHE-NACHHOLEN-2026-10-09.md` (Nachtrag 20:00)
+
 ## 🥾 Titel-Wache ohne Prüfer = 452 ungeprüfte Neuimporte; «uneinig» bestätigen; Martin → Worker-Boots (2026-10-09, 20:15 UTC, «weiter»)
 **Gemessen:** Titel-Kauderwelsch-Wache PAUSIERTE heute 09:14 + 15:20 (OpenAI leer + Groq-Tageskontingent leer) → 452 Neuimporte
 ungeprüft («Patentreifen» = Lackleder, «Rhabarber-Bänder», «Einheitsbalken», «Vollnette»); Ledger trug 354 «uneinig» seit 01.10.
@@ -19398,3 +19429,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🎨 **«rot oder pink auswahl … ganze katalog»: 5'511 aktive mit EINER Variante versprechen eine Wahl, CJ führt bei ~87 % mehrere → `auswahl_werte.py` (45 Kanarien: Stecker → EU, bis 3 Optionen, Masse/Codes, Rest KI mit harter Prüfung + Zweitprüfer qwen) + `auswahl_nachruesten.py` (Raster anlegen, Fehlkombis löschen, Google-Farbe/Grösse je Variante, Rückbau getestet) → 131 scharf/0 Fehler, Aufseher stündlich messen + 150 umbauen (Notbremse `dropship/_auswahl_scharf_aus`).** KI-Werte für Kundinnen nur mit Zweitprüfer («Bean paste → Bohnenpaste» war formal gültig); `cj: null` ist keine 1 → `dropship/AUSWAHL-NACHRUESTEN-2026-10-08.md`
 - 2026-10-08 · 🗂️ **«ordne alles sauber ein»: Einzelurteile vom 07.10. hatten Zweigwechsel verboten → 6'054 neu MIT Zweigwechsel (10 Prüfer, Midi verworfen, nie gröber) 2'662/0 per Bulk-Mutation inkl. Metafeld (Rücklesen 30/30); Trachten aus Kostümen per `shopify_fein`-«umzug» 91/0; `nagel_fein.py` Press-on nach Grössenoption/Beschreibung 130/0; `kosmetik_fein.lauf` hätte 262 Shopify- + 82 Google-Feinwerte täglich vergröbert → nie vergröbern; Nachtrag «weiter»: 109 Press-on-Titel ehrlich («Nagelsticker» → «Press-on-Nägel», nur mit Beschreibungs-Beleg), keine-zuordnung 14 → 1.** Jeder Wächter braucht «feiner = einig» für beide Felder → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
 - 2026-10-08 · 🧥 **«weiter feinkategorie verbessern»: Shopify bei 27'897 auf Klassen MIT Unterklassen, Google darunter ohne Blatt (Oberteile 4'671, Taschen, Hosen, Ladegeräte, Halsbänder, Leinen, Jacken, Näpfe, Kissen) → `shopify_fein.py` + EINE Regeldatei `data/shopify_fein.json`, Kanarien 164/164, 8'279/0 + Runde 2 «weiter» 15 Klassen 1'839/0 (Kanarien 510/510, Rücklesen 30/30+30/30, Kostüme ohne Google mitgenommen) per Bulk-Mutation (einzeln 20/min neben Lese-Scan); Ringe/Rucksäcke/Kostüme bewusst grob.** Blatt-Prüfung je Taxonomie; ab ~200 Produkten Bulk → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
+- 2026-10-08 · 👟🧸 **«verbessere feinkataloge» / «saubere trennung»: 5'646 Schuhe nur auf Shopify «Shoes» (Google hat kein Blatt darunter → kategorie_fein kam nie weiter) → `schuhe_fein.py` (13 Klassen, 52/52); CJ-Gruppe stempelte Bausteinen Typ «Spass-Elektronik» + Tag rc (841/1'040 rc nicht ferngesteuert, alle in der RC-Kollektion) → `spielzeug_trennung.py` + Importer-Regel (eine JSON, py=js 1'040/0); 772 Oberklassen per Einzelurteil MIT Zweigwechsel (07.10. verboten → «bleibt»).** «Einig» ≠ «fein»; Gruppen-Stempel ≠ Warenurteil → `dropship/FEINKATALOG-SCHUHE-SPIELZEUG-2026-10-08.md`
