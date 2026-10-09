@@ -45,6 +45,7 @@ from auswahl_werte import (farbe, ausfuehrung, plane_optionen,  # noqa: E402,F40
                            uebersetze_ki)
 
 MESSUNG = os.environ.get("MESSUNG", "dropship/_auswahl_fehlt.jsonl")
+VORRANG = os.environ.get("VORRANG", "")
 LEDGER = "dropship/_auswahl_nachgeruestet.txt"
 # 08.10.2026 (ganzer Katalog, ~5'000 Kandidaten, stündlich): bekannte MANUELL-Fälle und Schreibfehler werden gemerkt und
 # MANUELL_TAGE lang übersprungen — sonst plant jeder Lauf dieselben 1'000 Fälle neu und kommt nie zu neuen; ein Produkt,
@@ -490,6 +491,11 @@ def main():
     # 08.10.2026: jüngste Messungen zuerst — deren CJ-Antwort liegt schon im Cache (auswahl_fehlt_messen schreibt ihn), die alten
     # Nagel-Zeilen vom 24.09. kosten je eine neue CJ-Anfrage. Doppelte Zeilen (Nachmessung) → nur die jüngste.
     kand = list({r["handle"]: r for r in kand}.values())[::-1]
+    # 09.10.2026: VORRANG=<Liste> (z. B. dropship/_klassen/auswahl-besuchte-seiten.txt, Sitzungen absteigend) → diese Produkte
+    # zuerst, in Listenfolge; der Rest bleibt «jüngste Messung zuerst» (stabile Sortierung).
+    if VORRANG and os.path.exists(VORRANG):
+        rang = {z.split("\t")[0].strip(): i for i, z in enumerate(open(VORRANG, encoding="utf-8")) if z.strip()}
+        kand.sort(key=lambda r: rang.get(r["id"], len(rang)))
     print(f"{len(kand)} Kandidaten aus {MESSUNG}{' [SCHARF]' if SCHARF else ' [DRY]'}", flush=True)
     ok, manuell, fehler, pause, versuche = [], [], [], "", 0
     for r in kand:
