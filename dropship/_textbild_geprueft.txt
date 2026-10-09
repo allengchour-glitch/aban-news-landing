@@ -60352,3 +60352,4 @@ gid://shopify/Product/15503165882753	gid://shopify/MediaImage/70571449975169	bil
 gid://shopify/Product/15503259664769	gid://shopify/MediaImage/70574921875841	bildtausch-sperre
 gid://shopify/Product/15503892545921	gid://shopify/MediaImage/70580689600897
 gid://shopify/Product/15506298962305	gid://shopify/MediaImage/70602968826241	bildtausch-sperre
+gid://shopify/Product/15508418724225	gid://shopify/MediaImage/70614875963777	bildtausch-sperre
