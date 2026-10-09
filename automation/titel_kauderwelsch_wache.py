@@ -179,6 +179,27 @@ def norm(w):
     return re.sub(r"[^a-zäöüß]", "", w.lower())
 
 
+BESTAETIGEN = """Ein Shop-Titel enthält ein Wort, das es im Deutschen nicht gibt, oder ein stehengebliebenes englisches Wort.
+Ein anderes Modell schlägt eine Korrektur vor. Prüfe NUR: Ist die Korrektur richtig — ersetzt sie genau die falschen Wörter
+durch das gängige deutsche Wort, erfindet nichts dazu, lässt nichts Wichtiges weg (Material, Mass, Zielgruppe bleiben) und
+ist selbst fehlerfrei? Antworte NUR als JSON: {"ok": true|false, "grund": "<kurz>"}
+Original: «%s»
+Falsche Wörter: %s
+Korrektur: «%s»"""
+
+
+def bestaetigt(modell, titel, falsch, korrektur):
+    """09.10.2026: «uneinig» hiess oft nur: ein Modell markierte das Wort, lieferte aber keine Korrektur («G: —»). 354 Titel
+    lagen so seit dem 01.10. im Ledger («Patentreifen» statt Lackleder, «Einheitsbalken» statt Riemen). Jetzt bestätigt das
+    ANDERE Modell die Korrektur des einen — weiterhin zwei Modelle, eines schlägt vor, eines prüft."""
+    if not korrektur or not (0.6 <= len(korrektur) / max(1, len(titel)) <= 1.6):
+        return False
+    if any(norm(w) and norm(w) in norm(korrektur) for w in falsch):
+        return False                                   # das falsche Wort steht noch drin
+    a = (gemini if modell == "gemini" else gpt)(BESTAETIGEN % (titel, ", ".join(sorted(falsch)), korrektur))
+    return bool(a.get("ok")) is True
+
+
 def pruefen(titel):
     """titel: Liste von Strings → Liste von (index, falsch_set, korrektur) mit Einigkeit beider Modelle."""
     ergebnis = []
@@ -214,6 +235,12 @@ def pruefen(titel):
                 # jedes neue Wort Geminis muss in ChatGPTs Korrektur vorkommen, die ohne Leerzeichen gelesen wird.
                 o_flach = norm(okorr)
                 einig = bool(neu_g) and all(w in o_flach for w in neu_g) and 0.6 <= len(korr) / max(1, len(t)) <= 1.4
+            # 09.10.2026: beide markieren dasselbe Wort, aber nur EINES liefert eine (brauchbare) Korrektur → das andere bestätigt
+            if not einig and gemeinsam:
+                if okorr and bestaetigt("gemini", t, gemeinsam, okorr):
+                    korr, einig = okorr, True
+                elif korr and bestaetigt("gpt", t, gemeinsam, korr):
+                    einig = True
             ergebnis.append((start + i, gemeinsam or gf, korr if einig else "", okorr, einig))
     return ergebnis
 
@@ -244,9 +271,54 @@ def kanarienvogel():
     return 0 if ok == len(faelle) else 1
 
 
+def rueckstand():
+    """--uneinig: Titel, die im Ledger als «uneinig» stehen und live unverändert sind, noch einmal prüfen (mit Bestätigung).
+    Ledger-Status danach «korrigiert» oder «uneinig-2» (wird nicht ein drittes Mal gefragt). MAX (Std. 120) je Lauf."""
+    mx = int(os.environ.get("MAX") or 120)
+    zeilen = [l.rstrip("\n").split("\t") for l in open(LEDGER, encoding="utf-8") if l.count("\t") >= 2]
+    letzter = {}
+    for z in zeilen:
+        letzter[z[0]] = z
+    offen = [z for z in letzter.values() if z[1] == "uneinig"][:mx]
+    print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: Rückstand {sum(1 for z in letzter.values() if z[1] == 'uneinig')} uneinig · "
+          f"diesmal {len(offen)} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
+    prod = []
+    for z in offen:
+        p = gql('query($i:ID!){product(id:$i){id title status}}', {"i": z[0]})["product"]
+        if p and p["status"] == "ACTIVE" and p["title"] == z[2]:
+            prod.append(p)
+    if not prod:
+        print("FERTIG: 0"); return 0
+    try:
+        befunde = pruefen([p["title"] for p in prod])
+    except RuntimeError as e:
+        print(f"PAUSE: kein Prüfer-Kontingent — {str(e)[:200]}"); return 0
+    bef = {i: (f, k, ok_, e) for i, f, k, ok_, e in befunde}
+    led = open(LEDGER, "a", encoding="utf-8"); geaendert = rest = 0
+    for i, p in enumerate(prod):
+        falsch, korr, okorr, einig = bef.get(i, (set(), "", "", False))
+        if einig and SCHARF:
+            r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{title} userErrors{message}}}',
+                    {"i": {"id": p["id"], "title": korr}})["productUpdate"]
+            if not r["userErrors"] and r["product"]["title"] == korr:
+                geaendert += 1
+                led.write(f"{p['id']}\tkorrigiert\t{p['title']}\t→ {korr}\t{','.join(sorted(falsch))}\n")
+                print(f"  ✏️ {p['title']}  →  {korr}", flush=True); continue
+        rest += 1
+        if SCHARF:
+            led.write(f"{p['id']}\t{'ok' if i not in bef else 'uneinig-2'}\t{p['title']}\t{korr or okorr}\t{','.join(sorted(falsch))}\n")
+        if einig and not SCHARF:
+            print(f"  (trocken) {p['title']}  →  {korr}", flush=True)
+    led.flush()
+    print(f"FERTIG Rückstand: {len(prod)} geprüft, {geaendert} korrigiert, {rest} bleiben", flush=True)
+    return 0
+
+
 def main():
     if "--kanarienvogel" in sys.argv:
         return kanarienvogel()
+    if "--uneinig" in sys.argv:
+        return rueckstand()
     seit = (datetime.now(timezone.utc) - timedelta(hours=STUNDEN)).strftime("%Y-%m-%dT%H:%M:%SZ")
     fertig = {l.split("\t")[0] for l in open(LEDGER)} if os.path.exists(LEDGER) else set()
     prod, c = [], None

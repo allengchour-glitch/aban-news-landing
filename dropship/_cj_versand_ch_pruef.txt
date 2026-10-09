@@ -6544,3 +6544,6 @@ sandalen-im-retro-stil-mit-uberkreuzten-riemen-637500	2606061006171638000	16	10.
 riemchensandalen-mit-chunky-absatz-618300	2606050723561619000	16	12.32	ok	landeseite
 riemchensandalen-mit-eckiger-spitze-absatz-602500	2606050713121603400	16	14.00	ok	landeseite
 atmungsaktive-open-toe-sandalen-mit-blockabsat-601900	2606050706451602700	16	10.42	ok	landeseite
+sandalen-mit-schnallenverschluss-615800	2606050306201616400	16	11.10	ok	landeseite
+modische-freizeit-sandalen-mit-weicher-sohle-636800	2606050122431637300	16	11.37	ok	landeseite
+sommer-sandalen-mit-schnurung-617100	2606041258191617900	16	10.55	ok	landeseite

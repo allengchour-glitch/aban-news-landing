@@ -1273,7 +1273,10 @@ while true; do
     if [ "$ALTER" -gt 21600 ] || absturz_nachholen "$TK"; then
       touch "$TK"
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_titel_kauderwelsch.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
-          SCHARF=1 exec timeout 1800 python3 automation/titel_kauderwelsch_wache.py" >> "$TK" 2>&1 9>&- & )
+          SCHARF=1 timeout 1800 python3 automation/titel_kauderwelsch_wache.py; \
+          SCHARF=1 MAX=120 timeout 1500 python3 automation/titel_kauderwelsch_wache.py --uneinig" >> "$TK" 2>&1 9>&- & )
+    # 09.10.2026: «uneinig» (ein Modell markiert, nur eines korrigiert) wird jetzt vom anderen Modell bestätigt — Rückstand
+    # (354 seit 01.10.) läuft mit MAX 120 je 6-h-Lauf hinterher; Ledger-Status danach korrigiert / uneinig-2.
     fi
     tail -n 1 "$TK" 2>/dev/null | grep -q "korrigiert" && tail -n 1 "$TK" | grep -qv " 0 korrigiert, 0 gemeldet" \
       && echo "$(date -u +%H:%M) titel_kauderwelsch: $(tail -n 1 "$TK")"
