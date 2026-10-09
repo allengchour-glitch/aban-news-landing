@@ -52,7 +52,9 @@
   erneut untersuchen**, ausser jemand nennt den Zweck.
 - **«🇨🇭 Versand aus dem LuxeStyle-Netzwerk»** (22, 0 mit CH/EU-Lager) → «🇨🇭 Schweizer Shop» über `versprechen_regel.json`,
   22 + 1 / 0 Fehler, live geprüft.
-- **Offen:** Masstabellen für Mode (Provence: nur Theme-Richtwerte; 31× «eine Grösse grösser wählen»).
+- **Masstabellen:** CJ liefert sie als BILD in der Beschreibung (Importer nimmt nur `productImageSet`). OCR braucht ×4 +
+  Schwelle 150 + `--psm 11` (386×205-px-Bild: sonst 0 Treffer). Stichprobe `masstabelle_probe.py` läuft täglich im
+  CJ-Vorrang-Fenster (Budget ab ~04 UTC leer) → `dropship/MASSTABELLE-PROBE.md`, dann Nachrüst-Entscheid.
 
 → `dropship/WEITER-2026-10-09-MORGEN.md`
 

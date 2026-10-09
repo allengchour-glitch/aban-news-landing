@@ -57,7 +57,8 @@ VORRANG_DATEI = "/tmp/cj_vorrang"
 # 07.10.2026 (Plan Tag 8 «≥ 50 Produktvideos»): GEMESSEN im Vorrang-Fenster 00:00–01:30 — 06.10. 763 CJ-Aufrufe, davon
 # cj_category_fill 377 / cj_perpetual 42 / cj_sku_import 23 (Grind ausserhalb der pausierten Runner 2–5), der Video-Nachtrag
 # meldete sofort «Tagesbudget erschöpft» (0 Videos); 05.10. 27 Videos, 07.10. 17 (Ziel 250). Jetzt Vorrang wie der Kosten-Nachtrag.
-VORRANG_SKRIPTE = ("cj_kosten_backfill", "cj_video_backfill", "auswahl_fehlt_messen", "auswahl_nachruesten")
+VORRANG_SKRIPTE = ("cj_kosten_backfill", "cj_video_backfill", "auswahl_fehlt_messen", "auswahl_nachruesten",
+                   "masstabelle_probe")   # 09.10.2026: Masstabellen-Stichprobe (40 Abrufe/Tag, nur lesen)
 # 08.10.2026 (Betreiber «rot oder pink auswahl, checke das auch bei anderen produkten»): 5'511 Produkte versprechen im Text eine
 # Auswahl, die es nicht gibt; die Messung braucht je Produkt EINE CJ-Anfrage und lief am 08.10. um 18:40 UTC ins leere
 # Tagesbudget (die Runner hatten es verbraucht). Kundenschutz vor Neuimport — begrenzter Job (~5'300 Aufrufe einmalig,

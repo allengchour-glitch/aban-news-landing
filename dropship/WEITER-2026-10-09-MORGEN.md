@@ -22,6 +22,17 @@ Schweizer Versand an. GEMESSEN 22 aktive, **0** davon mit Schweizer/EU-Lager. Re
 (`eigen_text` → «🇨🇭 Schweizer Shop», Kanarie 59/59 py=js) → `versprechen_wache.py` **22 + 1 geändert, 0 Fehler**
 (das +1: Schlangenketten-Armband, gestern nur wegen «18-Karat-Vergoldung» ausgenommen). Live geprüft.
 
+## 4. Masstabellen — Ursache gefunden, Messung läuft heute Nacht
+
+Bei CJ liegt die echte Masstabelle als **Bild in der Produktbeschreibung** (Provence: Bust 103–131, Length 62–67, Waist 64–92,
+Relax 100–128, Sleeve 99–104 cm für S–3XL); unser Importer übernimmt nur `productImageSet`, nicht die Beschreibungsbilder.
+Texterkennung musste kalibriert werden: das Bild ist 386 × 205 px, tesseract las ohne Vergrösserung **nichts**; mit ×4,
+Schwelle 150 und `--psm 11` 5 Messwörter + 30 Zahlen, die 4 Fotos daneben 0.
+Die Stichprobe (40 CJ-Modeprodukte) konnte heute nicht laufen: **CJ-Tagesbudget seit ~04 UTC leer**. Deshalb
+`automation/masstabelle_probe.py` (nur lesen) in `VORRANG_SKRIPTE` (py + mjs) und im Aufseher einmal täglich im Fenster
+00:00–01:30 UTC → `dropship/MASSTABELLE-PROBE.md`. Danach Entscheid: Tabellenbild als letztes Produktbild nachrüsten +
+Importer übernimmt es künftig.
+
 ## Offen (nächste Klasse, kein Betreiber-Klick)
 
 **Masse fehlen bei Mode:** Provence zeigt nur die allgemeine Theme-Tabelle (Richtwerte, ohne Länge) und «Asiatische
