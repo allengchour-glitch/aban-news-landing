@@ -10,6 +10,9 @@ CHF 45 und bekamen im Checkout erstmals «Versand CHF 7.00» zu sehen. Der Waren
 Regel (dieselbe wie der Produktseiten-Block `lux_trust`): Versprechen «gratis ab CHF 50», Tarif greift bewusst schon ab
 CHF 45 (Puffer für den automatischen 10-%-Rabatt ab 2 Artikeln; Cowork-Punkt 1 vom 15.09. zurückgezogen).
   Korb ≥ 45 → «Gratisversand inklusive»; darunter → «Versand CHF 7 · noch X bis zum Gratisversand (ab CHF 50)».
+  ⚠️ 09.10.2026: X = 50 − Warenwert VOR Rabatt (warenkorb_einig.py, ein Rechenweg mit dem Versandbalken); vorher 50 −
+  Betrag NACH Rabatt (im 2er-Korb zu hoch). Der BLOCK unten trägt die neue Formel, damit ein Wieder-Einfügen sie nicht
+  zurückdreht.
 `cart.total_price` ist nach Rabatt, wie die Tarifbedingung; der Drawer rendert `cart-summary` bei jeder Änderung neu.
 
   python3 automation/warenkorb_gratisversand.py            # Trockenlauf: zeigt, was eingefügt würde
@@ -38,7 +41,11 @@ BLOCK = """    {%- comment -%} LUX-GRATISVERSAND-HINWEIS (06.10.2026, automation
         {%- if cart.total_price >= 4500 -%}
           <span>🚚 <strong>Gratisversand inklusive</strong> · Lieferung in der Schweiz</span>
         {%- else -%}
-          {%- assign lux_gv_rest = 5000 | minus: cart.total_price -%}
+          {%- comment -%} LUX-WARENKORB-EINIG (09.10.2026): 50 − Warenwert VOR Rabatt (jeder Zusatzartikel = −10 %),
+              mindestens ⌈(45 − Betrag nach Rabatt) · 10/9⌉ — derselbe Rechenweg wie der Versandbalken. {%- endcomment -%}
+          {%- assign lux_gv_rest = 5000 | minus: cart.items_subtotal_price -%}
+          {%- assign lux_gv_rest2 = 4500 | minus: cart.total_price | times: 10 | plus: 8 | divided_by: 9 -%}
+          {%- if lux_gv_rest2 > lux_gv_rest -%}{%- assign lux_gv_rest = lux_gv_rest2 -%}{%- endif -%}
           <span>🚚 Versand CHF 7 · noch <strong>{{ lux_gv_rest | money }}</strong> bis zum Gratisversand (ab CHF 50)</span>
         {%- endif -%}
       </div>
