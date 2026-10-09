@@ -49,6 +49,32 @@
 
 
 
+## 🔘 «Variante: Standard» — ein Platzhalter, den die Plattform nicht kennt (2026-10-09, 21:45 UTC, «verbessere mehr»)
+
+**Gemessen:**
+- Besuchte Seiten (90 T) ohne Auswahl: 812 Seiten mit 1'036 Sitzungen, davon 16 gemessen.
+- Die Messung brach an EINEM Produkt ab: `cj_url` kannte `CJ-CJJJJTJT22925` nicht, `cj(None)` lief achtmal ins Leere, dann
+  PAUSE für den ganzen Lauf.
+- Der Nachrüster lehnte Neuimporte als «echte Option: Variante» ab (19/40). Die Importer legen den Platzhalter
+  «Variante / Standard» an. Shopify kennt nur «Title / Default Title» als «keine Auswahl».
+- Folge: Die Produktseite zeigte ein Wahlfeld mit EINEM Knopf (WebFetch), betroffen sind 1'063 Produkte.
+
+**Getan:**
+- Die Importer legen jetzt Default Title an (Wegwerf-Test `hasOnlyDefaultVariant`).
+- `platzhalter_option.py` räumt den Bestand: Rücklesen von ID, SKU und Preis, Stichprobe 5/5, live ohne Wahlfeld. Dazu ein
+  täglicher Wächter im Aufseher.
+- Der Nachrüster entfernt den Platzhalter vor `productOptionsCreate` (Hundeschüssel 3×2 ✓).
+- Besuchte Seiten kommen zuerst: Liste, Messung zuerst, `VORRANG=`.
+- `cj_url` kennt jetzt drei weitere Formen (22/22). Eine unbekannte Form überspringt nur das eine Produkt.
+
+**Lehren:**
+1. **Platzhalter in der Form, die die Plattform als Platzhalter kennt.** Sonst sieht die Kundin ein Wahlfeld, und jedes
+   korrekte Werkzeug schliesst die Ware aus.
+2. **Ein unbekannter Datensatz beendet keinen Lauf.** «Nicht erreicht» ist nicht dasselbe wie «nicht verstanden».
+3. **Zwillinge prüfen.** Versandprüfung und Bestell-Automat kannten die SKU-Formen längst, die Auswahl-Messung nicht.
+
+→ `dropship/AUSWAHL-PLATZHALTER-2026-10-09.md`
+
 ## 🧩 Neuware ohne Auswahl: der Wächter sah sie nie (2026-10-09, 20:55 UTC, Verbesserungsrunde)
 
 **Gemessen:**
@@ -19455,3 +19481,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🧥 **«weiter feinkategorie verbessern»: Shopify bei 27'897 auf Klassen MIT Unterklassen, Google darunter ohne Blatt (Oberteile 4'671, Taschen, Hosen, Ladegeräte, Halsbänder, Leinen, Jacken, Näpfe, Kissen) → `shopify_fein.py` + EINE Regeldatei `data/shopify_fein.json`, Kanarien 164/164, 8'279/0 + Runde 2 «weiter» 15 Klassen 1'839/0 (Kanarien 510/510, Rücklesen 30/30+30/30, Kostüme ohne Google mitgenommen) per Bulk-Mutation (einzeln 20/min neben Lese-Scan); Ringe/Rucksäcke/Kostüme bewusst grob.** Blatt-Prüfung je Taxonomie; ab ~200 Produkten Bulk → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
 - 2026-10-08 · 👟🧸 **«verbessere feinkataloge» / «saubere trennung»: 5'646 Schuhe nur auf Shopify «Shoes» (Google hat kein Blatt darunter → kategorie_fein kam nie weiter) → `schuhe_fein.py` (13 Klassen, 52/52); CJ-Gruppe stempelte Bausteinen Typ «Spass-Elektronik» + Tag rc (841/1'040 rc nicht ferngesteuert, alle in der RC-Kollektion) → `spielzeug_trennung.py` + Importer-Regel (eine JSON, py=js 1'040/0); 772 Oberklassen per Einzelurteil MIT Zweigwechsel (07.10. verboten → «bleibt»).** «Einig» ≠ «fein»; Gruppen-Stempel ≠ Warenurteil → `dropship/FEINKATALOG-SCHUHE-SPIELZEUG-2026-10-08.md`
 - 2026-10-08 · ⚡ **«mehr verbesserung» (Tag 11 ✅): Startseite lud beim Öffnen 150 Bilddateien / 9'390 KB (sichtbar 2) — Horizon `product-card.js` nahm jedem Karussell-Zweitbild das lazy weg (16 Reihen, `width=832`), Cover immer eager → `mobil_tempo_patch_2.py` (Zweitbild nach Erstbild, sizes = Kartenbreite; Cover lazy ab Sektion 3), vorher per Playwright-`route` getestet; live 38 / 1'008 KB, Scroll 0 leer; Wächter `startseite_bildlast.mjs`.** Server-HTML ≠ DOM; Bilder je URL zählen → `dropship/MOBIL-TEMPO-2-2026-10-08.md`
+- 2026-10-08 · 🗄️ **Verbesserungsrunde: CJ-Gruppe «Büro & Home Office» stempelt alles als Google «Office Supplies» (11/11 Neuimporte in 4 h: Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender; KI verfeinert nur innerhalb der Oberklasse) → `data/buero_korb.json` für Importer `bueroKorb()` + Umzug, Kanarien 120/120, py=js 51'586/0, 13/0 (13/13 zurückgelesen).** Neue CJ-Gruppe = möglicher Sammelkorb; Log-Fehler nur mit aktuellem Zeitstempel → `dropship/GOOGLE-BUERO-SAMMELKORB-2026-10-08.md`
