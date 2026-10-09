@@ -1,8 +1,8 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-08 00:42 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 185 s
+Stand: 2026-10-09 03:10 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 173 s
 
-**JUDGEME: 0 verdaechtig · 12 Namen unmaskiert · 1 ausgeblendet · 13910 von 13910 gelesen**
+**JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 3 Namen unmaskiert · 14355 von 15498 gelesen**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
@@ -37,9 +37,9 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 | Feld | Wert | updatedAt |
 |---|---|---|
-| all_reviews_count | 11006 | 2026-10-08T00:16:31Z |
-| all_reviews_rating | 4.90 | 2026-10-02T16:42:58Z |
-| reviews_grid.metafield_updated_at | 2026-10-08T00:19:34Z | 2026-10-08T00:19:37Z |
+| all_reviews_count | 12594 | 2026-10-09T02:28:14Z |
+| all_reviews_rating | 4.84 | 2026-10-08T12:31:39Z |
+| reviews_grid.metafield_updated_at | 2026-10-09T02:31:22Z | 2026-10-09T02:31:24Z |
 | shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
 | shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
 
@@ -47,22 +47,13 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 _keine_
 
-## Namen unmaskiert — veroeffentlicht (12)
+## Namen unmaskiert — veroeffentlicht (3)
 
 | ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
 |---|---|---|---|---|---|---|---|---|
 | 1316672656 | 2026-08-31T16:12 | 5 | 15451638038913 | AliExpress Müşterisi | cj…@luxestyle.ch | «excelente vale la pena por el precio .graba super bien en la» | veröffentlicht | Name unmaskiert «AliExpress Müşterisi» |
 | 1315625975 | 2026-08-30T20:23 | 5 | 15450858062209 | Darksin | cj…@luxestyle.ch | «Phofay is one of those brands where you question how it isn'» | veröffentlicht | Name unmaskiert «Darksin» |
 | 1313874473 | 2026-08-29T02:17 | 5 | 15450852786561 | Unishkhyaju | cj…@luxestyle.ch | «Das Produkt sieht nicht neu aus. Auf dem Gehäuse sind Kratze» | veröffentlicht | Name unmaskiert «Unishkhyaju» |
-| 1288261379 | 2026-08-07T14:11 | 5 | 15450840531329 | crugggzz | cj…@luxestyle.ch | «Hat etwas gedauert, war aber sehr gut.» | veröffentlicht | Name unmaskiert «crugggzz» |
-| 1287668857 | 2026-08-07T03:16 | 5 | 15450833060225 | entiretyboutique | cj…@luxestyle.ch | «Kam in der schwarzen Box, die ich für Kunden bestellt habe. » | veröffentlicht | Name unmaskiert «entiretyboutique» |
-| 1287667782 | 2026-08-07T03:13 | 5 | 15450832798081 | R3D2 | cj…@luxestyle.ch | «Super, dabei zu sein!» | veröffentlicht | Name unmaskiert «R3D2» |
-| 1287641354 | 2026-08-07T02:12 | 5 | 15450830799233 | Adeebay | cj…@luxestyle.ch | «Schnelle Lieferung, Produkt gut, aber der Karton war beschäd» | veröffentlicht | Name unmaskiert «Adeebay» |
-| 1287640531 | 2026-08-07T02:10 | 5 | 15450830176641 | jingan | cj…@luxestyle.ch | «Die Kleidung ist sehr warm und passt super. Ich bin total zu» | veröffentlicht | Name unmaskiert «jingan» |
-| 1286443803 | 2026-08-06T04:12 | 5 | 15449425445249 | jeaneneE | cj…@luxestyle.ch | «Die sind ausgezeichnet und das Design ist super clever. Wirk» | veröffentlicht | Name unmaskiert «jeaneneE» |
-| 1286443638 | 2026-08-06T04:11 | 5 | 15449425412481 | UKStyleStore | cj…@luxestyle.ch | «Ich brauche eine Rechnung.» | veröffentlicht | Name unmaskiert «UKStyleStore» |
-| 1286441206 | 2026-08-06T04:08 | 5 | 15449424953729 | Darksin | cj…@luxestyle.ch | «Es ist sehr süß und ästhetisch. Es dreht sich nicht, wie in » | veröffentlicht | Name unmaskiert «Darksin» |
-| 1286441197 | 2026-08-06T04:08 | 5 | 15449424953729 | junru | cj…@luxestyle.ch | «Wir haben es gerade geöffnet, und es war beschädigt.» | veröffentlicht | Name unmaskiert «junru» |
 
 ## Bereits ausgeblendet / unveroeffentlicht mit Befund (1)
 
