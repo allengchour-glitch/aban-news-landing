@@ -657,3 +657,6 @@
 15453792076161	Motiv:2:2+ki	2026-10-09	katzenspielzeug-mit-katzenminze-628300
 15454035870081	Grösse:4:4	2026-10-09	perlenarmband-aus-susswasserperlen-439a4d
 15484390048129	Farbe:3:3	2026-10-09	schmuck-set-mit-halskette-armband-und-ohrringe-612600
+15453791322497	Ausführung:6+Grösse:2:12+ki	2026-10-09	akita-pluschhund-629700
+15453997269377	Modell:8:8	2026-10-09	retro-bunt-oltropfenohrringe-619700
+15454111105409	Farbe:3+Grösse:6:18	2026-10-09	warmende-hundekleidung-fur-herbst-und-winter-628400
