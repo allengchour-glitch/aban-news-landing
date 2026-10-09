@@ -6677,3 +6677,5 @@ mesh-sneakers-mit-luftpolsterung-629400	2606161048001620100	16	14.00	ok	landesei
 elegante-pumps-mit-eckiger-zehenpartie-618300	2606160803371618900	16	11.23	ok	landeseite
 mary-jane-slingback-mit-spitzem-zeh-602800	2606160659591603500	16	13.76	ok	landeseite
 retro-ballerinas-bequem-und-vielseitig-627600	2606160523461628300	16	10.55	ok	landeseite
+echtleder-pumps-mit-klobigem-absatz-631700	2606160247241632200	16	11.37	ok	landeseite
+pumps-mit-mesh-strass-keilabsatz-606900	2606150855331607400	16	11.96	ok	landeseite
