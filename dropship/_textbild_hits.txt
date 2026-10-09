@@ -17484,3 +17484,6 @@ gid://shopify/Product/16613723079047	12->0	6-Stift-Beutel – schlicht weiss
 gid://shopify/Product/16613723144583	81->0	Stützkissen für Bürostuhl – 40×40×8 cm
 gid://shopify/Product/16613723373959	34->1	Wasserfestes Notizbuch für Prüfungsanmeldungen
 gid://shopify/Product/16613732254087	11->0	Hollow Jacquard Sommer-Casual Kurzarmshirt
+gid://shopify/Product/16613732385159	93->0	Cardigan mit kontrastierendem Farbkontrast
+gid://shopify/Product/16613732712839	14->0	Leinen-Shirt in Hellblau – locker geschnitten
+gid://shopify/Product/16613732778375	90->0	Männerlangarmshirt Corduroy Aprikose
