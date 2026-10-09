@@ -1074,6 +1074,7 @@ while true; do
           SCHARF=1 ZEIGEN=0 timeout 900 python3 automation/werkzeug_korb_shop.py 2>&1 | grep -v '^   '; \
           SCHARF=1 ZEIGEN=0 timeout 600 python3 automation/aroma_kategorie.py 2>&1 | grep -E '^(PLAN|FERTIG|ABBRUCH)'; \
           SCHARF=1 timeout 1800 python3 automation/haar_fein.py 2>&1 | grep -E '^(HAAR-FEIN|Kanarien|Google-Pfad)'; \
+          SCHARF=1 timeout 900 python3 automation/nagel_titel.py 2>&1 | grep -E '^(NAGEL-TITEL|FERTIG|Kanarien)'; \
           SCHARF=1 timeout 2400 python3 automation/kosmetik_fein.py 2>&1 | grep -E '^(KOSMETIK-FEIN|Kanarien|Google-Pfad)'; \
           SCHARF=1 timeout 900 python3 automation/nagel_fein.py 2>&1 | grep -E '^(NAGEL|FERTIG)'; \
           SCHARF=1 timeout 900 python3 automation/rc_fein.py 2>&1 | grep -E '^(RC-FEIN|Kanarien|Google-Pfad)'; \
@@ -1084,6 +1085,10 @@ while true; do
           SCHARF=1 timeout 1800 python3 automation/spielzeug_trennung.py 2>&1 | grep -E '^(SPIELZEUG|FERTIG)'; \
           SCHARF=1 timeout 2400 python3 automation/shopify_fein.py 2>&1 | grep -E '^(SHOPIFY-FEIN|FERTIG|⚠️)'; \
           SCHARF=1 timeout 600 python3 automation/google_id_zu_name.py 2>&1 | grep -E '^(GOOGLE-ID|Google-Pfad)'" >> "$GKU" 2>&1 9>&- & )
+    # 09.10.2026 (Betreiber «weiter»): nagel_titel.py VOR kosmetik_fein/nagel_fein — 穿戴甲 kam als «Wear Armor», «Rüstung»,
+    # «Nagelverstärkungstabletten» (Google: Vitamine) in den Shop; 83 Titel nach Bildsichtung + 3 per Regel + 20 Fremdartikel im
+    # Nagel-Korb (Mauspad, MP3, Angelhaken …). Regel data/nagel_titel_regel.json = Importer (fallenSicher). Neue Titel «Press-on-Nägel»
+    # ordnet kosmetik_fein danach selbst auf False Nails.
     # 08.10.2026 (Betreiber «ordne alles sauber ein»): nagel_fein.py NACH kosmetik_fein — CJ nennt Press-on-Sets (Grössen XS–L,
     # Jelly-Kleber) «Nagelsticker»; nur Grössenoption/Beschreibung trennen sie von echten Stickern (96 + 34 gesetzt). kosmetik_fein
     # überspringt die hier gesetzten Press-on-Produkte und vergröbert seit heute nie (shopify-feiner/google-feiner).

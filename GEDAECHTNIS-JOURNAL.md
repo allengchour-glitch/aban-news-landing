@@ -44,6 +44,31 @@
 
 
 
+## 2026-10-09 05:50 UTC · 💅 «weiter»: 穿戴甲 — «Rüstung», «Tabletten», «Nagelstifte» sind Press-on-Nägel
+
+**Anlass:** «Nagelverstärkungstabletten» (aus der Essbar-Runde) lag bei Google unter «Vitamine & Nahrungsergänzung». Auf dem
+Bild ist ein Press-on-Set mit rosa Herzen. CJ übersetzt 穿戴甲 («tragbarer Nagel») wörtlich, und 甲 heisst Nagel UND Panzer.
+
+**GEMESSEN** (Export 05:01): 1'039 aktive Nagel-Produkte, davon 120 ohne ehrliches Warenwort im Titel. Die Bildsichtung
+(3 Kontaktbögen) ergab rund 70 Press-on-Sets und 12 Geräte mit falschem Wort («Nagelreiniger» = Staubabsauger,
+«Nagelpiercing» = Fräse). Dazu 21 Fremdartikel mit Typ «Nageldesign» (Mauspad, MP3, Angelhaken, Tattoo-Geräte) und der Tag
+«ring» aus «Augenringe».
+
+**GETAN:** 86 Titel (83 handgeprüft, 3 per Regel), dazu Beschreibung und SEO, 51 neue Adressen mit 301, 596 Alt-Texte,
+20 Fremdartikel umgetypt, 1 Kategorie Vitamine → Künstliche Nägel, 1 Hauptbild (Model → Nägel). 0 Fehler. Regel
+`data/nagel_titel_regel.json` = Wächter `nagel_titel.py` (Aufseher, vor kosmetik_fein) = Importer `nagel_titel.mjs` in
+`fallenSicher` (alle drei CJ-Importer, Kontext auch aus dem CJ-Namen), dazu ein Prompt-Glossar. Gleichlauf py=js 51'933/0.
+Bericht `dropship/NAGEL-TITEL-2026-10-09.md`.
+
+**Lehren:**
+1. **Ein Schriftzeichen mit zwei Bedeutungen gibt eine Wortfamilie von Fehlern.** Es waren zehn Wörter (Armor, Rüstung,
+   Tabletten, Stifte, Pflaster, Überzug, Geflecht, Kunst, Eyeline, Patch). Eine Suche nach einem Wort findet ein Zehntel.
+   Gefunden hat sie die umgekehrte Frage: **Welcher Titel nennt KEIN ehrliches Warenwort?** Danach kommt das Bild.
+2. **Ledger-Namen vor dem Anlegen prüfen** (`git grep`): `_nagel_titel.tsv` gehörte schon nagel_fein. Meine Zeilen landeten
+   im fremden Ledger, und der Autocommitter hatte 38 davon schon committet. Ich habe sie getrennt in `_nagel_korb.tsv`.
+3. **Ein Trockenlauf nach dem scharfen Lauf überschreibt den Bericht mit «Nichts zu tun».** Deshalb gehört der Bericht des
+   scharfen Laufs in eine datierte Datei.
+
 ## 2026-10-09 05:10 UTC · 🧭 «weiter»: Kanäle gemessen, Headless-Kanal notiert, «LuxeStyle-Netzwerk» raus
 
 - **0 Kanäle** ist keine Klasse: 1 von 51'805, angelegt Minuten vorher (Importer publizieren nach dem Anlegen).
@@ -19140,3 +19165,4 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🌫️ **Verbesserungsrunde: 154 Diffuser/Luftbefeuchter bei Google «Hair Care», im Shop «Cosmetic Tools» (Typ 05.10. korrigiert, Geschwisterfelder nie) → `aroma_kategorie.py` 154/0, Kanarien 12/12; `kategorie_wache.typen_abgleich()` meldet jeden vergebenen unbekannten Typ.** Feld neu vergeben = alle ableitenden Tabellen abgleichen → `dropship/AROMA-KATEGORIE-2026-10-07.md`
 - 2026-10-07 · 🌐 **«lerne im internet»: Meta testet 2 Link-Posts/Monat für Seiten; GEMESSEN 27 FB-Reels mit https-Link 0–4 Aufrufe vs 3 ohne 206–232 → `fbText()` schreibt die Adresse als Text (kein https/UTM), Folge-Zeile bleibt; Hype: Schleckmatte neu, 8 von 9 Oktober-Trends am Bestand/Preisboden gescheitert.** Vor einer Plattform-Regel die eigene Historie nach der Variable aufteilen → `dropship/LERNEN-FB-UND-TRENDS-2026-10-07.md`
 - 2026-10-07 · 🤖 **«entwickle eine bot für automation»: `handy_bot.py` — Befehle status/bestellungen/umsatz/social über ntfy-Thema «<thema>-befehl» (nur lesen, keine Kundennamen), Tagesbericht 06:00 UTC, Aufseher-Rundenbeginn; Probe zugestellt.** Betreiber-Meldungen in den Bot, nicht in neue Logs → `dropship/HANDY-BOT-2026-10-07.md`
+- 2026-10-07 · 🔎 **«google merchant push»: 49'666/51'458 im Google-Kanal, 1'789 der 1'792 draussen sind bewusst draussen (heikle Ware + Ausschluss-Tags) → 3 Kleider nachgezogen; «semrush ausnützen»: API 0 Einheiten → aus gespeicherter Ernte /collections/schneidebretter (2'400/Mt, 73) + wandteppiche (720/Mt, 63), Kanarien 189/0.** «draussen» ≠ «ohne Grund» → Journal 07.10. 19:10

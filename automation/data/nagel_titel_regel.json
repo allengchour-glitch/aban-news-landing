@@ -1,0 +1,679 @@
+{
+  "anlass": "09.10.2026 (Betreiber «weiter»): CJ übersetzt 穿戴甲 (tragbarer Nagel; 甲 = Nagel UND Panzer) wörtlich — «Wear Armor», «Rüstung», «Nagelarmor», «Nagelverstärkungstabletten», «Nagelstifte». GEMESSEN 09.10. 05:40 UTC: 1'039 aktive Nagel-Produkte, 120 ohne ehrliches Warenwort, per Bildsichtung ~60 davon Press-on-Sets; dazu 25 Titel mit «Wear Armor». Kundinnen lesen «Rüstung» und «Tabletten», Google sortierte die Tabletten unter Nahrungsergänzung.",
+  "grenze_vor": "(?<![A-Za-zÄÖÜäöüß])",
+  "grenze_nach": "(?![A-Za-zÄÖÜäöüß])",
+  "nagel_kontext": "nagel|nägel|naegel|{V}nails?{N}|maniküre|manikuere|manicure|{V}french{N}|press[\\s-]?on|wear(?:ing|able)?\\s+armou?r",
+  "nagel_nomen": "press[\\s-]?on|nägel|naegel|{V}nails{N}|nail\\s?tips|nagelspitzen|nagel-?tipp?s{N}|kunstnägel|kunstnagel",
+  "sticker": "nagel-?stickers?|nail-?stickers?|nagel-?aufkleber|nagel-?patch(?:es)?|{V}stickers?{N}",
+  "hart": [
+    [
+      "\\s*[\"„“«]?{V}(?:long\\s+)?wear(?:ing|able)?\\s+armou?r{N}[\"“”»]?",
+      "",
+      "wear-armor"
+    ],
+    [
+      "{V}wear(?:ing|able)\\s+nails?{N}",
+      "Press-on-Nägel",
+      "wearable-nails"
+    ],
+    [
+      "{V}nagelarmor{N}",
+      "Press-on-Nägel",
+      "nagelarmor"
+    ],
+    [
+      "{V}[a-zäöüß]*nagel[a-zäöüß]*tabletten{N}",
+      "Press-on-Nägel",
+      "tabletten"
+    ],
+    [
+      "{V}rüstungs-",
+      "",
+      "ruestung"
+    ],
+    [
+      "{V}rüstung{N}",
+      "Press-on-Nägel",
+      "ruestung"
+    ],
+    [
+      "\\s*{V}armou?r{N}(?=\\s+(?:nägel|naegel|nagel))",
+      "",
+      "armor"
+    ]
+  ],
+  "adjektiv_ende": "(?:ig|lich|isch|bar|sam|haft|ell|iv|weiss|schwarz|rot|blau|grün|gelb|braun|gross|klein|lang|kurz|edel|fein|zart|süss|wild|elegant|handgemacht|handbemalt)(?:e|es|er|en){N}$",
+  "adjektiv_plural": "{V}([A-Za-zÄÖÜäöüß-]*(?:ig|lich|isch|bar|sam|haft|ell|iv|weiss|schwarz|rot|blau|grün|gelb|braun|gross|klein|lang|kurz|edel|fein|zart|süss|wild|elegant|handgemacht|handbemalt))(?:es|er)(\\s+Press-on-Nägel)",
+  "junk_handle": "armou?r|rustung|tabletten|nagelstift|handpflaster|uberzug|schutzgeflecht|handchenkunst|eyeline|wearable|nagelpiercing|nagelstecher|nagelreiniger|nageldesign-blatt|viskose|manicure|nagelpatch|nail-patch",
+  "kanarien": [
+    [
+      "Handgemachte Wear Armor Press-on-Nägel",
+      "Handgemachte Press-on-Nägel"
+    ],
+    [
+      "Wear Armor Cat's Eye Nagel-Set · Press-on-Nägel",
+      "Cat's Eye Nagel-Set · Press-on-Nägel"
+    ],
+    [
+      "Wear Armor Lange Weisse Kunstnägel",
+      "Lange Weisse Kunstnägel"
+    ],
+    [
+      "French Advanced Rose Wear Armor Nagel-Tips",
+      "French Advanced Rose Nagel-Tips"
+    ],
+    [
+      "Handgemachte Wear Armor French Milk-in-water Nägel",
+      "Handgemachte French Milk-in-water Nägel"
+    ],
+    [
+      "Leopard French Style Long Wear Armor",
+      "Leopard French Style · Press-on-Nägel"
+    ],
+    [
+      "Handbemalte Halo Lotus \"Wearing Armor\" Nägel",
+      "Handbemalte Halo Lotus Nägel"
+    ],
+    [
+      "Herbst/Winter Wearable Armor Nägel",
+      "Herbst/Winter Nägel"
+    ],
+    [
+      "Nagelarmor",
+      "Press-on-Nägel"
+    ],
+    [
+      "Nagelverstärkungstabletten",
+      "Press-on-Nägel"
+    ],
+    [
+      "Long Almond Metallprägte Handgemachte Rüstung",
+      "Long Almond Metallprägte Handgemachte Press-on-Nägel",
+      true
+    ],
+    [
+      "Handgemachte schwarze Rüstungs-Nagelpatches · Press-on-Nägel",
+      "Handgemachte schwarze Nagelpatches · Press-on-Nägel"
+    ],
+    [
+      "Handgemachte Wearable Nails – Blau-Pinker Farbverlauf",
+      "Handgemachte Press-on-Nägel – Blau-Pinker Farbverlauf"
+    ],
+    [
+      "Aufhellende handgemachte Wearable Nails",
+      "Aufhellende handgemachte Press-on-Nägel"
+    ],
+    [
+      "Xinghai Wear Armor Nagelsticker",
+      "Xinghai Press-on-Nägel"
+    ],
+    [
+      "Langlebiger Wear Armor",
+      "Langlebige Press-on-Nägel"
+    ],
+    [
+      "Weisses Wear Armor",
+      "Weisse Press-on-Nägel"
+    ],
+    [
+      "Super Wear Armor",
+      "Super · Press-on-Nägel"
+    ],
+    [
+      "Nagellackstift für Haustiere – 12er-Set",
+      "Nagellackstift für Haustiere – 12er-Set"
+    ],
+    [
+      "Herzliche Nagelstifte",
+      "Herzliche Nagelstifte"
+    ],
+    [
+      "Brust- und Rückenschutz «Night Armor»",
+      "Brust- und Rückenschutz «Night Armor»"
+    ],
+    [
+      "Mechanisches 3D-Puzzle Schaufel-Rüstung",
+      "Mechanisches 3D-Puzzle Schaufel-Rüstung"
+    ],
+    [
+      "Hundegesundheits-Tabletten 200 g",
+      "Hundegesundheits-Tabletten 200 g"
+    ],
+    [
+      "Press-on-Nägel mit Herzen in Rosa",
+      "Press-on-Nägel mit Herzen in Rosa"
+    ],
+    [
+      "Handgemachte schwarze Rüstungs-Nagelpatches",
+      "Handgemachte schwarze Press-on-Nägel"
+    ],
+    [
+      "Fünfnageltabletten-Set",
+      "Press-on-Nägel-Set"
+    ],
+    [
+      "Elektrischer Nagelentferner Steam Armour",
+      "Elektrischer Nagelentferner Steam Armour"
+    ],
+    [
+      "Gebackene Nagelsticker «Soft Armor»",
+      "Gebackene Nagelsticker «Soft Armor»"
+    ],
+    [
+      "Late Night Scorpion Sub-culture Armor Nägel",
+      "Late Night Scorpion Sub-culture Nägel"
+    ]
+  ],
+  "handgeprueft_hinweis": "Titel nach Bildsichtung 09.10.2026 (Kontaktbogen aller 120 Nagel-Titel ohne Warenwort + Detailbogen 12 unklare Fälle). Schlüssel = Handle; [alter Titel, neuer Titel]. Gesetzt wird nur, solange der Live-Titel noch der alte ist — kein Kampf mit späteren Änderungen.",
+  "handgeprueft": {
+    "3d-blumen-manikure-zum-aufkleben-623300": [
+      "3D Blumen-Maniküre zum Aufkleben",
+      "Press-on-Nägel mit 3D-Blumen",
+      "p"
+    ],
+    "3d-manikure-zum-aufkleben-mittellang-622100": [
+      "3D-Maniküre zum Aufkleben, mittellang",
+      "Press-on-Nägel mit 3D-Motiven, mittellang",
+      "p"
+    ],
+    "3d-nageldesign-rot-615900": [
+      "3D-Nageldesign Rot",
+      "Rote Press-on-Nägel mit 3D-Design",
+      "p"
+    ],
+    "3d-relief-nageldesign-fur-tragbare-manikure-608600": [
+      "3D-Relief Nageldesign für tragbare Maniküre",
+      "Press-on-Nägel mit 3D-Relief",
+      "p"
+    ],
+    "abnehmbare-manikure-im-japanischen-stil-693376": [
+      "Abnehmbare Maniküre im japanischen Stil",
+      "Kurze Press-on-Nägel im japanischen Stil",
+      "p"
+    ],
+    "aufhellende-handgemachte-wearable-nails-637800": [
+      "Aufhellende handgemachte Wearable Nails",
+      "Handgemachte Press-on-Nägel im Gothic-Stil",
+      "p"
+    ],
+    "aurora-muschel-manikure-606700": [
+      "Aurora Muschel-Maniküre",
+      "Aurora Press-on-Nägel mit Muschel-Design",
+      "p"
+    ],
+    "baby-nagelstecher-611300": [
+      "Baby Nagelstecher",
+      "Elektrischer Baby-Nagelknipser mit Licht",
+      "g"
+    ],
+    "barocke-schmetterlings-manikure-zum-aufkleben-772992": [
+      "Barocke Schmetterlings-Maniküre zum Aufkleben",
+      "Barocke Schmetterlings-Press-on-Nägel",
+      "p"
+    ],
+    "blumenwelt-manikure-604000": [
+      "Blumenwelt Maniküre",
+      "Blumenwelt Press-on-Nägel",
+      "p"
+    ],
+    "butterfly-manikure-614100": [
+      "Butterfly-Maniküre",
+      "Lange Butterfly-Press-on-Nägel",
+      "p"
+    ],
+    "balle-handpflaster-625900": [
+      "Bälle-Handpflaster",
+      "Press-on-Nägel mit Schleifen und Strass",
+      "p"
+    ],
+    "diamond-girl-pure-desire-wind-mush-ice-white-m-627900": [
+      "Diamond Girl Pure Desire Wind Mush Ice White Manicure",
+      "Eisweisse Press-on-Nägel mit Strass",
+      "p"
+    ],
+    "elegante-nagelgestaltung-618100": [
+      "Elegante Nagelgestaltung",
+      "Elegante Press-on-Nägel in Pastell",
+      "p"
+    ],
+    "elektrisches-manikure-und-nagelpiercing-gerat-782272": [
+      "Elektrisches Maniküre- und Nagelpiercing-Gerät",
+      "Elektrische Nagelfeile mit 360°-Schleifkopf",
+      "g"
+    ],
+    "elektrisches-usb-nagelpiercing-gerat-625300": [
+      "Elektrisches USB-Nagelpiercing-Gerät",
+      "Elektrische Nagelfräse mit Ladestation",
+      "g"
+    ],
+    "erdbeer-kaninchen-design-zum-aufkleben-403648": [
+      "Erdbeer-Kaninchen-Design zum Aufkleben",
+      "Press-on-Nägel «Erdbeer-Kaninchen»",
+      "p"
+    ],
+    "false-nail-patch-camellia-10-stuck-562688": [
+      "False Nail Patch Camellia – 10 Stück",
+      "Press-on-Nägel Kamelie – 10 Stück",
+      "p"
+    ],
+    "fortschrittliche-nagelspitzen-zum-aufkleben-607100": [
+      "Fortschrittliche Nagelspitzen zum Aufkleben",
+      "French Press-on-Nägel mit Karo-Spitzen",
+      "p"
+    ],
+    "franzosisches-nageldesign-mit-leopardenmuster-608900": [
+      "Französisches Nageldesign mit Leopardenmuster",
+      "French Press-on-Nägel mit Leopardenmuster",
+      "p"
+    ],
+    "handbemalte-3d-manikure-zum-aufkleben-627300": [
+      "Handbemalte 3D-Maniküre zum Aufkleben",
+      "Handbemalte Press-on-Nägel mit 3D-Blumen",
+      "p"
+    ],
+    "handbemalte-mandarinente-french-magic-mirror-600000": [
+      "Handbemalte Mandarinente French Magic Mirror",
+      "Handbemalte French Press-on-Nägel mit Spiegeleffekt",
+      "p"
+    ],
+    "handgemachte-custom-wear-manikure-619100": [
+      "Handgemachte Custom Wear Maniküre",
+      "Handgemachte French Press-on-Nägel in Gelb",
+      "p"
+    ],
+    "handgemachte-manikure-zum-aufkleben-416704": [
+      "Handgemachte Maniküre zum Aufkleben",
+      "Handgemachte Press-on-Nägel in Lila",
+      "p"
+    ],
+    "handgemachte-wearable-nails-638600": [
+      "Handgemachte Wearable Nails",
+      "Handgemachte Press-on-Nägel mit Meeres-Design",
+      "p"
+    ],
+    "herzliche-nagelstifte-522112": [
+      "Herzliche Nagelstifte",
+      "Press-on-Nägel mit Tulpen-Design",
+      "p"
+    ],
+    "hochwertige-handpainted-nagelstifte-608100": [
+      "Hochwertige Handpainted-Nagelstifte",
+      "Handbemalte Press-on-Nägel mit Schmetterlingen",
+      "p"
+    ],
+    "hot-girl-sternenhimmel-nagelpatches-953856": [
+      "Hot Girl Sternenhimmel-Nagelpatches",
+      "Press-on-Nägel «Sternenhimmel» mit Strass",
+      "p"
+    ],
+    "handchenkunst-602800": [
+      "Händchenkunst",
+      "Bunte Press-on-Nägel mit 3D-Deko",
+      "p"
+    ],
+    "kamellien-nageldesign-mit-farbverlauf-473728": [
+      "Kamellien-Nageldesign mit Farbverlauf",
+      "Press-on-Nägel mit Kamelien und Farbverlauf",
+      "p"
+    ],
+    "katzenaugen-manikure-619800": [
+      "Katzenaugen-Maniküre",
+      "Cat-Eye Press-on-Nägel mit Herz",
+      "p"
+    ],
+    "katzchen-eyeline-621300": [
+      "Kätzchen-Eyeline",
+      "Press-on-Nägel mit Katzenaugen-Effekt",
+      "p"
+    ],
+    "kuhlwasser-blumen-manikure-604700": [
+      "Kühlwasser-Blumen-Maniküre",
+      "Lange Press-on-Nägel in Eisblau",
+      "p"
+    ],
+    "langlebige-nagelstifte-626300": [
+      "Langlebige Nagelstifte",
+      "Press-on-Nägel mit Silberlinien",
+      "p"
+    ],
+    "leopard-french-style-long-wear-armor-626300": [
+      "Leopard French Style Long Wear Armor",
+      "French Press-on-Nägel mit Leopard-Design",
+      "p"
+    ],
+    "lichtluxus-fee-hemd-weiss-nagelpatch-047936": [
+      "Lichtluxus-Fee-Hemd-weiss Nagelpatch",
+      "Lange Press-on-Nägel in Nude",
+      "p"
+    ],
+    "long-almond-metallpragte-handgemachte-rustung-609100": [
+      "Long Almond Metallprägte Handgemachte Rüstung",
+      "Handgemachte Mandel-Press-on-Nägel mit Metallic-Prägung",
+      "p"
+    ],
+    "magnolia-design-zum-aufkleben-977792": [
+      "Magnolia-Design zum Aufkleben",
+      "Press-on-Nägel mit Magnolien-Design",
+      "p"
+    ],
+    "maillard-farbverlauf-manikure-zum-aufkleben-626300": [
+      "Maillard Farbverlauf Maniküre zum Aufkleben",
+      "Press-on-Nägel mit braunem Farbverlauf",
+      "p"
+    ],
+    "mandelformige-french-manicure-zum-aufkleben-611100": [
+      "Mandelförmige French Manicure zum Aufkleben",
+      "Mandelförmige French Press-on-Nägel mit Türkis-Spitzen",
+      "p"
+    ],
+    "nagelarmor-565632": [
+      "Nagelarmor",
+      "Lange Press-on-Nägel mit Strass",
+      "p"
+    ],
+    "nagelart-blumen-motiv-609600": [
+      "Nagelart Blumen Motiv",
+      "Press-on-Nägel mit Blumenmotiv",
+      "p"
+    ],
+    "nagelblumen-muster-616000": [
+      "Nagelblumen-Muster",
+      "Bunte Press-on-Nägel mit Blumenmuster",
+      "p"
+    ],
+    "nagelglatter-600200": [
+      "Nagelglätter",
+      "Elektrische Nagelfräse mit Aufsätzen",
+      "g"
+    ],
+    "nagelpatch-mit-beerenmuster-10-stuck-840128": [
+      "Nagelpatch mit Beerenmuster – 10 Stück",
+      "Press-on-Nägel mit Beerenmuster – 10 Stück",
+      "p"
+    ],
+    "nagelreiniger-611800": [
+      "Nagelreiniger",
+      "Nagelstaub-Absauger für die Maniküre",
+      "g"
+    ],
+    "nagelstift-mit-butterfly-muster-617000": [
+      "Nagelstift mit Butterfly-Muster",
+      "Press-on-Nägel mit Schmetterlingen",
+      "p"
+    ],
+    "nagelverstarkungspaste-607600": [
+      "Nagelverstärkungspaste",
+      "Gel-Nagelsticker, halb ausgehärtet",
+      "g"
+    ],
+    "nagelverstarkungstabletten-434560": [
+      "Nagelverstärkungstabletten",
+      "Press-on-Nägel mit Herzen in Rosa",
+      "p"
+    ],
+    "nail-beauty-patch-susser-style-605200": [
+      "Nail Beauty Patch – Süsser Style",
+      "Press-on-Nägel mit Erdbeeren",
+      "p"
+    ],
+    "porzellanweiss-nageldesign-blatt-702400": [
+      "Porzellanweiss Nageldesign-Blatt",
+      "Soft-Gel-Tips zur Nagelverlängerung",
+      "g"
+    ],
+    "qianjinmingyuan-sanfte-manikure-140608": [
+      "Qianjinmingyuan Sanfte Maniküre",
+      "Lange Press-on-Nägel in Rosa-Gold",
+      "p"
+    ],
+    "retro-exquisite-feeling-manicure-613100": [
+      "Retro Exquisite Feeling Manicure",
+      "Press-on-Nägel im Ägypten-Look",
+      "p"
+    ],
+    "schwarz-weiss-tulpen-und-sternen-design-zum-au-305600": [
+      "Schwarz-Weiss Tulpen- und Sternen-Design zum Aufkleben",
+      "Kurze Press-on-Nägel Schwarz-Weiss mit Tulpen und Sternen",
+      "p"
+    ],
+    "spider-uberzug-027264": [
+      "Spider-Überzug",
+      "Press-on-Nägel mit Spinnen-Design",
+      "p"
+    ],
+    "sweet-spicy-french-star-patches-613300": [
+      "Sweet & Spicy French Star Patches",
+      "French Press-on-Nägel mit Sternen",
+      "p"
+    ],
+    "sweet-cool-pearl-edge-french-manicure-614900": [
+      "Sweet Cool Pearl Edge French Manicure",
+      "French Press-on-Nägel mit Perlen-Rand",
+      "p"
+    ],
+    "viskose-nagelstift-624400": [
+      "Viskose Nagelstift",
+      "Strass-Kleber für Nägel",
+      "g"
+    ],
+    "wasserfeste-manikure-806080": [
+      "Wasserfeste Maniküre",
+      "Gel-Nagelstreifen zum Aufkleben",
+      "g"
+    ],
+    "weinroter-fake-nail-patch-173248": [
+      "Weinroter Fake Nail Patch",
+      "Weinrote Press-on-Nägel",
+      "p"
+    ],
+    "weisses-schutzgeflecht-607500": [
+      "Weisses Schutzgeflecht",
+      "Schwarze French Press-on-Nägel mit Gold-Deko",
+      "p"
+    ],
+    "zebra-lilie-handgeschnitztes-nageldesign-602200": [
+      "Zebra Lilie Handgeschnitztes Nageldesign",
+      "Press-on-Nägel mit Lilien-Design",
+      "p"
+    ],
+    "handgemachte-wear-armor-french-milk-in-water-n-619400": [
+      "Handgemachte Wear Armor French Milk-in-water Nägel",
+      "Handgemachte French Press-on-Nägel in Milchrosa",
+      "p"
+    ],
+    "cartoon-nische-wear-armor-nagel-614700": [
+      "Cartoon Nische Wear Armor Nägel",
+      "Press-on-Nägel mit Cartoon-Motiven",
+      "p"
+    ],
+    "handgemachte-uv-nagelpatches-schmetterling-628992": [
+      "Handgemachte UV-Nagelpatches Schmetterling",
+      "Handgemachte Press-on-Nägel mit Schmetterlingen",
+      "p"
+    ],
+    "xinghai-wear-armor-nagelsticker-687040": [
+      "Xinghai Wear Armor Nagelsticker",
+      "Blaue Press-on-Nägel mit Glitzer",
+      "p"
+    ],
+    "3a-common-style-add-resin-jelly-glue-wear-armo-627800": [
+      "3A Common Style Add Resin Jelly Glue Wear Armor · Press-on-Nägel",
+      "Jelly-Klebepads für Press-on-Nägel",
+      "g"
+    ],
+    "handgemachte-meerjungfrauen-nagelpatches-607100": [
+      "Handgemachte Meerjungfrauen-Nagelpatches · Press-on-Nägel",
+      "Handgemachte Press-on-Nägel im Meerjungfrauen-Look",
+      "p"
+    ],
+    "french-wear-armor-love-strass-set-610400": [
+      "French Wear Armor Love Strass-Set",
+      "French Press-on-Nägel mit Strass und Herzen",
+      "p"
+    ],
+    "late-night-scorpion-sub-culture-armor-nagel-609800": [
+      "Late Night Scorpion Sub-culture Armor Nägel",
+      "Lange Press-on-Nägel mit Skorpion-Design",
+      "p"
+    ],
+    "handgemachte-wear-armor-nagelsticker-604800": [
+      "Handgemachte Wear Armor Press-on-Nägel",
+      "Kurze Press-on-Nägel mit Mond und Sternen",
+      "p"
+    ],
+    "cold-cat-eye-white-fairy-niche-handmade-wearab-625400": [
+      "Cold Cat Eye White Fairy Niche Handmade Wearable Manicure Fake Nail · Press-on-Nägel",
+      "Weisse Cat-Eye Press-on-Nägel, handgemacht",
+      "p"
+    ],
+    "french-advanced-rose-wear-armor-nagel-tips-831552": [
+      "French Advanced Rose Wear Armor Nagel-Tips",
+      "Kurze Press-on-Nägel mit Rosen",
+      "p"
+    ],
+    "douji-wear-armor-turmalin-feenkrone-k9-edelste-534272": [
+      "Douji Wear Armor Turmalin Feenkrone K9 Edelstein Aurora Maniküre · Press-on-Nägel",
+      "Press-on-Nägel mit Aurora-Schmucksteinen",
+      "p"
+    ],
+    "pure-hand-drawing-armor-minimalistische-nagel-543168": [
+      "Pure Hand Drawing Armor Minimalistische Nägel",
+      "Minimalistische Press-on-Nägel, handbemalt",
+      "p"
+    ],
+    "morandi-farbton-advanced-wear-armor-953600": [
+      "Morandi Farbton Advanced Wear Armor · Press-on-Nägel",
+      "Press-on-Nägel in Morandi-Farbtönen",
+      "p"
+    ],
+    "handbemalte-halo-lotus-wearing-armor-nagel-708032": [
+      "Handbemalte Halo Lotus \"Wearing Armor\" Nägel",
+      "Handbemalte Press-on-Nägel mit Lotus",
+      "p"
+    ],
+    "herbst-winter-wearable-armor-nagel-484736": [
+      "Herbst/Winter Wearable Armor Nägel",
+      "Press-on-Nägel für Herbst und Winter",
+      "p"
+    ],
+    "handgemachte-schwarze-rustungs-nagelpatches-941504": [
+      "Handgemachte schwarze Rüstungs-Nagelpatches · Press-on-Nägel",
+      "Handgemachte schwarze Press-on-Nägel",
+      "p"
+    ],
+    "wear-armor-nagel-patch-set-928064": [
+      "Wear Armor Nagel-Patch Set",
+      "Lange Press-on-Nägel mit Gold- und Strass-Deko",
+      "p"
+    ],
+    "gebackene-nagelsticker-soft-armor-173568": [
+      "Gebackene Nagelsticker «Soft Armor»",
+      "Gel-Nagelstreifen mit Farbverlauf, halb ausgehärtet",
+      "g"
+    ],
+    "elektrischer-nagelentferner-steam-armour-524928": [
+      "Elektrischer Nagelentferner Steam Armour",
+      "Elektrischer Dampf-Entferner für Gel-Nagellack",
+      "g"
+    ],
+    "tweed-schleifen-nagelpatch-406144": [
+      "Tweed Schleifen Nagelpatch · Press-on-Nägel",
+      "Press-on-Nägel mit Tweed-Schleifen",
+      "p"
+    ]
+  },
+  "fremd_hinweis": "Fremdware mit Typ «Nageldesign»/Nagel-Tags aus der CJ-Suchgruppe (09.10.2026 gemessen). Nagel-Tags weg, Typ nach der Ware.",
+  "fremd": {
+    "massagegerat-gegen-augenringe-624700": {
+      "typ": "Massagegerät",
+      "extra": [
+        "ring"
+      ],
+      "grund": "Augenmassage-Gerät; «ring» aus «Augenringe» (Kompositum-Falle)"
+    },
+    "lockige-cosplay-perucke-fur-den-ganzen-kopf-619200": {
+      "typ": "Haar-Accessoire",
+      "grund": "Perücke"
+    },
+    "leder-armband-fur-22mm-uhren-43cc63": {
+      "typ": "Accessoires",
+      "beauty_weg": true,
+      "grund": "Uhrenarmband"
+    },
+    "12er-set-insekten-angelhaken-42867e": {
+      "typ": "Angelsport",
+      "beauty_weg": true,
+      "grund": "Angelhaken"
+    },
+    "glarifit-epoxidharz-fur-diy-kreationen-587290": {
+      "typ": "Basteln & DIY",
+      "beauty_weg": true,
+      "grund": "Bastelharz"
+    },
+    "kabelloses-gaming-mauspad-mit-schnellladefunkt-810880": {
+      "typ": "Mauspad",
+      "beauty_weg": true,
+      "grund": "Mauspad"
+    },
+    "bartpflege-set-fur-den-mann-719296": {
+      "typ": "Rasur & Haarpflege",
+      "grund": "Bartpflege"
+    },
+    "pflanzliches-permanent-make-up-pigment-fur-aug-028480": {
+      "typ": "Make-up",
+      "grund": "PMU-Pigment"
+    },
+    "totenkopf-tattoo-maschinen-set-356032": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo"
+    },
+    "diy-rubik-s-cube-diamond-aufbewahrungsbox-043072": {
+      "typ": "Basteln & DIY",
+      "beauty_weg": true,
+      "grund": "Diamond-Painting-Box"
+    },
+    "rasierhobel-fur-augenbrauen-und-korperhaar-267072": {
+      "typ": "Rasur & Haarpflege",
+      "grund": "Rasierhobel"
+    },
+    "professionelle-tattoo-maschine-147584": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo"
+    },
+    "tattoo-hautreinigungs-flussigkeit-grunalgen-288576": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo"
+    },
+    "tattoo-pen-set-mit-motor-und-zubehor-564352": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo"
+    },
+    "tattoo-und-augenbrauen-maschine-433280": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo/PMU"
+    },
+    "mini-tattoo-pen-mit-usb-ladekabel-866432": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo"
+    },
+    "danhui-hand-tattoo-stift-set-001088": {
+      "typ": "Beauty-Tools",
+      "grund": "Tattoo"
+    },
+    "ohrlochstech-set-mit-ohrsteckern-489600": {
+      "typ": "Beauty-Tools",
+      "grund": "Ohrloch"
+    },
+    "mp3-player-mit-touch-display-075584": {
+      "typ": "Elektronik",
+      "beauty_weg": true,
+      "grund": "MP3-Player"
+    },
+    "kuhlschrank-seitenregal-zur-aufbewahrung-937280": {
+      "typ": "Haushalt & Küche",
+      "beauty_weg": true,
+      "grund": "Küchenregal"
+    }
+  },
+  "kanarien_hinweis": "[alt, soll, nagel_ware] — nagel_ware=true: der Aufrufer weiss schon, dass es Nagel-Ware ist (Wächter: Typ/Tag; Importer: CJ-Name), dann zählt der Titel-Kontext nicht."
+}
