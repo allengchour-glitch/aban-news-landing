@@ -41,10 +41,25 @@ NICHT = R(r"mücken|insekten|uhrenbox|uhrenbeweger|aufbewahrung|ladestation mit 
 ZIELE = sorted({z[0] for _, z in REGELN})
 
 
+# 09.10.2026 (Verbesserungsrunde): «Uhrenarmband aus Edelstahl, dreireihig» stand bei Google als «Watches» — Regel 4 traf
+# «uhren» IN «Uhrenarmband» (Kompositum-Falle, Regel 9b), Regel 1 nur «… für … Watch». Gemessen 28 von 43 Uhrenarmband-Titeln
+# bei Google «Watches», darunter jeder neue CJ-Import mit diesem Kopfwort. Jetzt zuerst: Kopfwort Uhren-/Uhrarmband → Band;
+# Steg/Federsteg/Perlen/Zubehör → Watch Accessories; Werkzeug → bleibt; «Herrenuhr mit Uhrenarmband» (Uhrwort ausserhalb
+# des Kompositums) → weiter zu den Uhr-Regeln.
+BAND = R(r"uhre?n?armb(and|änder)")
+BAND_ZUBEHOER = R(r"federsteg|verbindungssteg|positionierungsperle|uhre?n?armband-?zubehör")
+BAND_WERKZEUG = R(r"werkzeug|schraubenzieher|schraubendreher|zange|stiftaustreiber")
+UHR_SONST = R(r"uhr\b|uhren\b|watch|chronograph|quar[zt]|automatik|mechanisch")   # «watch» ohne \b: auch Smartwatch
+
+
 def ziel(titel):
     t = titel or ""
     if NICHT.search(t):
         return None
+    if BAND.search(t) and not UHR_SONST.search(BAND.sub(" ", t)):
+        if BAND_WERKZEUG.search(t):
+            return None
+        return (ZU, "aa-6-10") if BAND_ZUBEHOER.search(t) else (ZU + " > Watch Bands", "aa-6-10-1")
     for rx, z in REGELN:
         if rx.search(t):
             return z
@@ -76,6 +91,22 @@ KANARIEN = [
     ("Vintage-Lederarmband für Xiaomi-Armbänder", (ZU + " > Watch Bands", "aa-6-10-1")),
     ("Ultraschall Mückenarmband für Schwangerschaft & Baby", None),
     ("Business Herrenuhr, Lederarmband, Multifunktion", (W, "aa-6-11")),
+    # 09.10.2026: Kopfwort Uhrenarmband (gemessen 28× «Watches»)
+    ("Uhrenarmband aus Edelstahl, dreireihig", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Leder-Uhrenarmband im Vintage-Stil", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Silicone Uhrarmband 41-45 mm – Schwarz, Weiss", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Hymeide SKX007 Edelstahl-Uhrenarmband gebogen", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Love Bracelet Uhrenarmband mit Perlenkette", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Uhrenarmband aus Kautschuk mit Zubehör", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Transparentes Uhrenarmband für Apple Watch", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("T-Sport Uhrenarmband-Verbindungssteg", (ZU, "aa-6-10")),
+    ("Gebogene Uhrenarmband-Federstege aus Edelstahl", (ZU, "aa-6-10")),
+    ("Uhrenarmband-Positionierungsperlen aus Metall", (ZU, "aa-6-10")),
+    ("Uhrenarmband Schraubenzieher", None),
+    ("Uhrenarmband-Werkzeug zum Wechseln", None),
+    ("Herrenuhr mit Uhrenarmband aus Leder", (W, "aa-6-11")),
+    ("Quarzuhr mit Edelstahl-Uhrenarmband", (W, "aa-6-11")),
+    ("Smartwatch mit Ersatz-Uhrenarmband", (W, "aa-6-12")),
 ]
 
 

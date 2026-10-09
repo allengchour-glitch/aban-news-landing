@@ -44,6 +44,22 @@
 
 
 
+## 2026-10-09 12:50 UTC · ⌚ Verbesserungsrunde: «Uhrenarmband» las der Uhren-Wächter als Uhr
+
+**GEMESSEN:** Neuimporte 4 h: 40 Stück, alle mit 3 Bildern, aber Uhrarmbänder bei Google als «Watches». Im Katalog standen
+28 von 43 Uhren-/Uhrarmband-Titeln bei «Watches». `uhren_fein.py` erkannte Bänder nur mit «für … Watch». Seine Uhr-Regel
+`uhren` traf «**Uhren**armband», also zählten 28 als «stimmt».
+
+**GETAN:**
+- Neue Regel vor den übrigen: Kopfwort Uhrenarmband → Watch Bands; Steg/Perlen/Zubehör → Watch Accessories; Werkzeug → bleibt;
+  Uhrwort ausserhalb des Kompositums → Uhr.
+- 15 Kanarien, gesamt 39/39. Der erste Lauf fand noch «Smart**watch**» ohne Wortgrenze.
+- SCHARF 45/0 (33 Bänder, 2 Zubehör, 10 Shopify feiner), zurückgelesen 10/10.
+- Wächter: der bestehende Tageslauf. Bericht `dropship/UHRENARMBAND-KATEGORIE-2026-10-09.md`.
+
+**Lehre:** **«stimmt» kann einen Fehler festschreiben.** Die eigene Regel las das Kompositum als Kopfwort. Kanarien brauchen
+immer auch das Kompositum, in dem das Regelwort nur ein Bestandteil ist (Regel 9b, hier in einer Kategorie-Regel).
+
 ## 2026-10-09 12:15 UTC · 🛒 «verbessere mehr»: Der Warenkorb sagte «noch 5.10» und «noch 10.10» untereinander
 
 **GEMESSEN:** 14 Tage, 827 Sitzungen. 563 davon kamen auf die drei TikTok-Seiten (Sirène, Leinen-Set, Aurora), dort
@@ -19265,3 +19281,4 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🗂️ **«alles perfekt, alles andere auch»: Zähler meldete Absicht als Widerspruch (Shopify feiner → `shopify-feiner`); Uhren `uhren_fein` 1'030/0, Google-Nummern `google_id_zu_name` 39/0; 3'954 Widersprüche + 12'583 grobe Oberklassen per Einzelurteil (Prüfer + Taxonomie-Validierung + Schutzregeln), Runde 1 3'534/0, Rücklesen 30/30.** Zwei Massen-Schreiber = Drossel → warten statt abbrechen → `dropship/KATALOG-TASCHEN-2026-10-07.md`
 - 2026-10-07 · 🗂️ **«das muss perfekt sein»: Taschen fertig (Google 9 + Shopify 124, Rücklesen 30/30); 3'553 «Widersprüche» waren Sammelkörbe (Google «Cosmetics»/«Hair Care» grob, Shopify-Feinklasse oft falsch) → `kosmetik_fein.py` (82 Kanarien) + `haar_fein.py` (51) setzen BEIDE Felder aus dem Titel, Plan 2'293 + 910, täglich im Aufseher.** Feld nie aus dem anderen ableiten, volle Liste je Ziel lesen → `dropship/KATALOG-TASCHEN-2026-10-07.md`
 - 2026-10-08 · 🧠 **Verbesserungsrunde (Tag 8 ✅ 106 Videos): 483 Neuimporte seit 01.10. auf Google-Oberklassen, alte KI-Stufe war Einmal-Lauf → `oberklasse_lernen.py` (Regeln aus 16'351 Urteilen; Merkmal Kopfwort vor «mit/für/aus»: 92,1 → 97,7 %; 6/0) + Rest täglich an `google_fein_ki` (Massen-Modell gpt-oss-20b, 120b/qwen bleiben für Bestellungen/SEO).** Bereinigung ohne Wächter füllt sich wieder → `dropship/OBERKLASSE-NEUIMPORT-2026-10-08.md`
+- 2026-10-08 · ⭐ **«weiter verbessern» (Tag 9 vorgezogen): Bewertungs-Import erreichte 107/2'695 Neuimporte — pid stand in der SKU, der Nachschlag kostete 10 CJ-Punkte und scheiterte ab ~04 UTC, Läufe starben am Neustart → rohe pid direkt, Neuware im Reissverschluss, still_gestorben + «WEITER»-Kette (19 Bewertungen in der ersten Charge); Versandseite «spart CO2» + 11 Produkte «klimaneutral» → `data/klima_regel.json` für Wächter + Importer (11/0, py=js).** Gratis ab 50 vs 45 ist gewollt → `dropship/VERTRAUEN-TAG9-2026-10-08.md`
