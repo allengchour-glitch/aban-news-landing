@@ -44,6 +44,31 @@
 
 
 
+## 2026-10-09 07:15 UTC · 🧨 «weiter»: Händlerwörter (防爆, 爆款, ins风, 百搭) + Rolex-/Patek-Modellnamen
+
+**Anlass:** Die Lehre aus 穿戴甲 habe ich auf den ganzen Katalog angewendet.
+
+**GEMESSEN** (Export 05:01, 51'904 aktive):
+- 75 Produkte mit «explosionsgeschützt/explosionssicher/Explosionsschutz» (防爆 = reissfest; 50 Tierleinen). Bei
+  Schraubendrehern und Akkus ist das eine falsche ATEX-Sicherheitsangabe.
+- 8 Titel «Explosive …» (爆款), ins风 «Ins Wind» in 7 Titeln und rund 90 Texten, 12 «All-match» (百搭).
+- 5 Uhren mit Rolex-/Patek-Modellnamen. Die Bilder zeigen Eigenmarken (OLEVS, FAIRWHALE, CADISEN, SHIRLEY), also keine
+  Fälschungen.
+
+**GETAN:** 200 Produkte, 0 Fehler. 54 Titel (4 von Hand, weil sonst Dubletten entstanden wären), dazu Texte und SEO,
+55 Adressen mit 301, 414 Alt-Texte. Regel `data/haendlerwort_regel.json` = Wächter `haendlerwort.py` (Aufseher, VSW) =
+Importer `haendlerwort.mjs` in `fallenSicher`, dazu Prompt-Glossar. 63 Kanarien, py=js 52'094/0. Live per WebFetch geprüft.
+Bericht `dropship/HAENDLERWORT-2026-10-09.md`.
+
+**Lehren:**
+1. **Ein Wort aus der Quellsprache trägt mehrere Bedeutungen.** «Explosion» hiess hier reissfest, berstsicher,
+   Verkaufsschlager oder gehärtetes Glas. Erst die Bedeutung klären, dann entscheiden: ersetzen, streichen oder umschreiben.
+2. **Im Fliesstext ersetzen, nicht streichen.** «im angesagten Ins-Stil gehalten» wird ohne das Wort zu «im angesagten
+   gehalten». Ein Ersatz derselben Wortart («Trend-Stil», maskulin wie «Stil») hält den Satz ganz. Der Prüfsatz dafür: gibt
+   es nach der Änderung mehr verwaiste Bindestriche oder leere Anführungszeichen als vorher, fällt der Satz.
+3. **Vor dem Kürzen von Titeln nach Dubletten fragen.** «Herren Sneaker «All-Match»» → «Herren Sneaker» gab es schon zweimal,
+   dup_title_fix hätte gedraftet. Deshalb gibt es jetzt eine Dubletten-Wache im Lauf und eine Hand-Titelliste.
+
 ## 2026-10-09 05:50 UTC · 💅 «weiter»: 穿戴甲 — «Rüstung», «Tabletten», «Nagelstifte» sind Press-on-Nägel
 
 **Anlass:** «Nagelverstärkungstabletten» (aus der Essbar-Runde) lag bei Google unter «Vitamine & Nahrungsergänzung». Auf dem
@@ -19166,3 +19191,4 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🌐 **«lerne im internet»: Meta testet 2 Link-Posts/Monat für Seiten; GEMESSEN 27 FB-Reels mit https-Link 0–4 Aufrufe vs 3 ohne 206–232 → `fbText()` schreibt die Adresse als Text (kein https/UTM), Folge-Zeile bleibt; Hype: Schleckmatte neu, 8 von 9 Oktober-Trends am Bestand/Preisboden gescheitert.** Vor einer Plattform-Regel die eigene Historie nach der Variable aufteilen → `dropship/LERNEN-FB-UND-TRENDS-2026-10-07.md`
 - 2026-10-07 · 🤖 **«entwickle eine bot für automation»: `handy_bot.py` — Befehle status/bestellungen/umsatz/social über ntfy-Thema «<thema>-befehl» (nur lesen, keine Kundennamen), Tagesbericht 06:00 UTC, Aufseher-Rundenbeginn; Probe zugestellt.** Betreiber-Meldungen in den Bot, nicht in neue Logs → `dropship/HANDY-BOT-2026-10-07.md`
 - 2026-10-07 · 🔎 **«google merchant push»: 49'666/51'458 im Google-Kanal, 1'789 der 1'792 draussen sind bewusst draussen (heikle Ware + Ausschluss-Tags) → 3 Kleider nachgezogen; «semrush ausnützen»: API 0 Einheiten → aus gespeicherter Ernte /collections/schneidebretter (2'400/Mt, 73) + wandteppiche (720/Mt, 63), Kanarien 189/0.** «draussen» ≠ «ohne Grund» → Journal 07.10. 19:10
+- 2026-10-07 · 🎬 **«verbessere» (Tag 8): Video-Nachtrag 27/0/17 statt 250/Tag — im CJ-Vorrang-Fenster lief der Grind weiter (cj_category_fill 377 Aufrufe), Vorrang hatte nur der Kosten-Nachtrag, ein am Neustart gestorbener Lauf kam nicht wieder → `cj_video_backfill` in `VORRANG_SKRIPTE` (py+mjs), `besuchte_seiten` frei, Neustart im Fenster per `still_gestorben`.** Wer im Fenster Aufrufe macht, zählen → `dropship/VIDEO-VORRANG-2026-10-07.md`

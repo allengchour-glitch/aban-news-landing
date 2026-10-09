@@ -1,62 +1,136 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 06:55 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 07:07 UTC
 
-Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'explosiv': 6, 'haendlerwort': 22, 'uhr-modell': 4, 'nur-text': 53, 'explosion': 20, 'explosiv+uhr-modell': 1}
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Geändert: {'nur-text': 146, 'ok': 200, 'explosiv': 6, 'haendlerwort': 20, 'uhr-modell': 4, 'explosion': 20, 'hand': 4}
 
+- nur-text: «Bestickter Kissenbezug aus Baumwollleinen» (Text)
+- nur-text: «Nordisches Kissen mit Baumwollquasten» (Text)
+- nur-text: «Handgemachte Goldpuder-Nägel mit Tulpenmuster» (Text)
 - explosiv: «Explosive Y2HDMAX Retro-Gaming Konsole» → «Y2HDMAX Retro-Gaming Konsole» · Adresse → `y2hdmax-retro-gaming-konsole-3b78d0`
 - haendlerwort: «Canvas Schultertasche "All-match" mit grosser Kapazität» → «Canvas Schultertasche mit grosser Kapazität» · Adresse → `canvas-schultertasche-mit-grosser-kapazitat-644608`
+- nur-text: «Keramik Pfeffer- und Gewürzmühle» (Text)
+- nur-text: «Rundes Memory Foam Kissen aus Kaninchenhaarimitat» (Text)
+- nur-text: «Hundehalsband, PVC, verschiedene Farben» (Text)
+- nur-text: «Kissenbezug mit Rüschen aus Baumwolle» (Text)
 - haendlerwort: «Fauler Handy-Halter 203B» → «Flexibler Handy-Halter 203B» · Adresse → `flexibler-handy-halter-203b-057216`
 - uhr-modell: «Submariner Quarz-Herrenuhr, Grün, Leuchtzeiger» → «Quarz-Herrenuhr, Grün, Leuchtzeiger» · Adresse → `quarz-herrenuhr-grun-leuchtzeiger-939840`
+- nur-text: «Handgemachte Mandel-Nägel «Devil Flower»» (Text)
+- nur-text: «Bunte 3D-Blumen & Schmetterlinge zum Aufkleben · Press-on-Nägel» (Text)
+- nur-text: «Make-up Geschenkset» (Text)
+- nur-text: «Samt-Kissenbezug mit Wollbommel» (Text)
+- nur-text: «Abnehmbare Nägel im Cat's Eye-Stil» (Text)
 - nur-text: «Reflektierendes P-Kettenhalsband für Hunde» (Text)
 - nur-text: «2.4A USB-Schnellladeadapter» (Text)
+- nur-text: «Luna Kissenhülle mit Fransen» (Text)
 - nur-text: «Sicherheitsleine für Hunde» (Text)
 - nur-text: «Faltbarer Drohnenflieger» (Text)
 - nur-text: «Schutz-Hand-Rohr-Reflexions-Leine» (Text)
+- nur-text: «Los-Gewand» (Text)
 - uhr-modell: «Daytona Multifunktionsuhr – Drei Augen, sechs Zeiger» → «Multifunktionsuhr – Drei Augen, sechs Zeiger» · Adresse → `multifunktionsuhr-drei-augen-sechs-zeiger-894592`
+- nur-text: «Burgunder Leder Sneaker» (Text)
+- nur-text: «Lebkuchenmann Teppich» (Text)
+- nur-text: «Loose-Fit Hemd» (Text)
 - nur-text: «Kabelbinder-Zange manuell» (Text)
 - haendlerwort: «Elegante All-Match Knöchelriemen-Sandalen» → «Elegante Knöchelriemen-Sandalen» · Adresse → `elegante-knochelriemen-sandalen-602700`
 - haendlerwort: «Metal Punk Hot Girl All-Match Nagelsticker» → «Metal Punk Hot Girl Nagelsticker» · Adresse → `metal-punk-hot-girl-nagelsticker-611500`
+- nur-text: «Samt-Kissenbezug mit Schlaufenmuster» (Text)
+- nur-text: «Loop Samt Bestickter Kissenbezug» (Text)
+- nur-text: «Kissenbezug Weinrot Hahnentritt mit Quaste» (Text)
 - explosion: «Explosionsgeschütztes, bissfestes Haustierhalsband» → «Reissfestes, bissfestes Haustierhalsband» · Adresse → `reissfestes-bissfestes-haustierhalsband-016640`
+- nur-text: «Atmungsaktive Wildleder-Freizeitschuhe für Herren» (Text)
+- nur-text: «Britische Business-Schuhe» (Text)
 - haendlerwort: «Four Seasons All-match Sneaker» → «Four Seasons Sneaker» · Adresse → `four-seasons-sneaker-624700`
 - haendlerwort: «Leder All-Match Freizeit-Sneaker Schwarz» → «Leder Freizeit-Sneaker Schwarz» · Adresse → `leder-freizeit-sneaker-schwarz-351360`
+- nur-text: «Breathable Sportschuhe» (Text)
+- nur-text: «Minimalistischer Zirkon-Ring mit drei Steinen» (Text)
+- nur-text: «Eisweisse Press-on-Nägel mit Strass» (Text)
+- nur-text: «Liquid Metal Apricot Nagelsticker» (Text)
 - uhr-modell: «Herren-Quarzuhr im Nautilus-Stil» → «Herren-Quarzuhr» · Adresse → `herren-quarzuhr-636736`
-- haendlerwort: «Herren Sneaker «All-Match»» → «Herren Sneaker» · Adresse → `herren-sneaker-613400`
+- hand: «Herren Sneaker «All-Match»» → «Herren Sneaker mit Mesh-Futter und Farbakzenten» · Adresse → `herren-sneaker-mit-mesh-futter-und-farbakzenten-613400`
 - nur-text: «Ratschen-Teleskop-Schraubendreher magnetisch» (Text)
 - nur-text: «Magnetisches 7-teiliges Schraubenzieher-Set» (Text)
 - explosion: «Explosionsgeschützte Outdoor-Hundeleine mit Bauchgurt» → «Reissfeste Outdoor-Hundeleine mit Bauchgurt» · Adresse → `reissfeste-outdoor-hundeleine-mit-bauchgurt-363264`
 - nur-text: «Kamera-Umhängetasche aus Canvas» (Text)
+- nur-text: «Multicolor Make-up Palette für Damen» (Text)
 - nur-text: «3-stöckiger Dampfgarer aus Edelstahl» (Text)
+- nur-text: «Ovales Zirkon-Armband, 18K vergoldet» (Text)
+- nur-text: «Rundes Zirkon-Armband im Vintage-Stil» (Text)
 - haendlerwort: «Eisblau Zirkonia Armreif – Korean Ins Style» → «Eisblau Zirkonia Armreif» · Adresse → `eisblau-zirkonia-armreif-946945`
+- nur-text: «Armreif mit gefrosteten blauen Zirkonia» (Text)
+- nur-text: «Armreif mit mattblauen Zirkonia» (Text)
 - nur-text: «Mini Handwärmer Powerbank 2-in-1» (Text)
+- nur-text: «Makramee Kissenbezug aus Baumwolle» (Text)
+- nur-text: «French Press-on-Nägel mit Sternen» (Text)
+- nur-text: «Mädchenhafte Schleifen-Press-on-Nägel» (Text)
 - haendlerwort: «Kinder Martin Boots – Koreanische Version» → «Kinder Martin Boots im koreanischen Stil» · Adresse → `kinder-martin-boots-im-koreanischen-stil-2bcf64`
+- nur-text: «XXL Organizer für Kleider und Duvets» (Text)
 - nur-text: «Hundeleine für mittelgrosse bis grosse Hunde» (Text)
 - nur-text: «Ratschen-Schraubendreher-Set RT-1639» (Text)
+- nur-text: «Blush Pleated French – handgemachte Fake Nails» (Text)
+- nur-text: «Multicolor Lidschatten-Palette» (Text)
+- nur-text: «Lidschatten-Palette "Blue Petals"» (Text)
 - explosion: «Explosionsgeschütztes Haustierhalsband» → «Reissfestes Haustierhalsband» · Adresse → `reissfestes-haustierhalsband-603100`
 - nur-text: «Adapter-Set für Sechskant auf Vierkant» (Text)
 - nur-text: «Halsband für kleine und mittelgrosse Hunde» (Text)
+- nur-text: «Zirkon Schmetterling Press-on Nägel» (Text)
 - haendlerwort: «Ins Style Cartoon Nischendesign zum Aufkleben · Press-on-Nägel» → «Cartoon Nischendesign zum Aufkleben · Press-on-Nägel» · Adresse → `cartoon-nischendesign-zum-aufkleben-press-on-nagel-615000`
+- nur-text: «Aufklebbare Handbemalte Kristallnägel» (Text)
 - nur-text: «Reflektierendes Outdoor-Geschirrset für Haustiere» (Text)
 - haendlerwort: «Messenger Bag «Wild Ins Wind»» → «Messenger Bag» · Adresse → `messenger-bag-398464`
+- nur-text: «Runder Antirutsch-Teppich "Haig Cake"» (Text)
 - nur-text: «Verstellbarer Ratschenschlüssel, einklappbar» (Text)
 - nur-text: «Freihand-Hundeleine für grosse und mittelgrosse Hunde» (Text)
-- explosiv+uhr-modell: «Explosive Datejust Automatikuhr für Herren» → «Automatikuhr für Herren» · Adresse → `automatikuhr-fur-herren-729216`
+- nur-text: «Iced Tea Grau Cat's Eye Nägel» (Text)
+- nur-text: «Sommerliche blaue French Nägel zum Aufkleben» (Text)
+- nur-text: «Handgefertigte, abnehmbare Nägel im Kühlen Weiss» (Text)
+- hand: «Explosive Datejust Automatikuhr für Herren» → «Automatikuhr für Herren mit Saphirglas und Kalender» · Adresse → `automatikuhr-fur-herren-mit-saphirglas-und-kalender-729216`
+- nur-text: «Camellia Serie – Abnehmbare Press-on-Nägel» (Text)
 - haendlerwort: «Bohemian Kissenhülle mit «Ins Wind»-Design» → «Bohemian Kissenhülle» · Adresse → `bohemian-kissenhulle-416640`
 - haendlerwort: «Nordic Ins Wind Kissenhülle für Sofa» → «Nordic Kissenhülle für Sofa» · Adresse → `nordic-kissenhulle-fur-sofa-791488`
-- haendlerwort: «Hundehalsband & Leine Set im INS-Wind-Design» → «Hundehalsband & Leine Set» · Adresse → `hundehalsband-leine-set-730880`
+- hand: «Hundehalsband & Leine Set im INS-Wind-Design» → «Hundehalsband & Leine Set aus Polyester» · Adresse → `hundehalsband-leine-set-aus-polyester-730880`
+- nur-text: «Halsband für grosse Hunde, Zinklegierung» (Text)
+- nur-text: «Venice Cat Eye Micro Glasperlen Nägel» (Text)
+- nur-text: «Kurze Press-on-Nägel mit Rosen» (Text)
+- nur-text: «Bucheriti Nagelsticker Kurz Hellviolett» (Text)
+- nur-text: «Sunset Afterglow Retro-Nägel» (Text)
+- nur-text: «Halsband für Hunde mit Rose Gold Schnalle» (Text)
+- nur-text: «Halsband aus Baumwolle im Tie-Dye-Stil mit Schleife» (Text)
 - explosiv: «Tragbarer Holzofen Explosion» → «Tragbarer Holzofen» · Adresse → `tragbarer-holzofen-910144`
 - nur-text: «Wasserdichte Aufbewahrungsbox für Flip» (Text)
 - haendlerwort: «Retro Canvas Schuhe All-Matching» → «Retro Canvas Schuhe» · Adresse → `retro-canvas-schuhe-606300`
+- nur-text: «Rattan-Aufbewahrungskorb mit Deckel» (Text)
+- nur-text: «Minimalistische Press-on-Nägel, handbemalt» (Text)
+- nur-text: «Kurze Press-on-Nägel Schwarz-Weiss mit Tulpen und Sternen» (Text)
 - explosiv: «Explosives Auto Modell zum Zusammenbauen» → «Auto Modell zum Zusammenbauen» · Adresse → `auto-modell-zum-zusammenbauen-230976`
+- nur-text: «Fairy Light Luxury Crystal Wear Nägel» (Text)
+- nur-text: «Blutroter Guokui-Nagel-Set · Press-on-Nägel» (Text)
+- nur-text: «Handgemachte Sommer-Kühlnagelspitzen» (Text)
+- nur-text: «Sweet Peach Rum Nagel-Tips für individuelles Design» (Text)
+- nur-text: «Fingertip Star River Short Wear Nagel-Tips» (Text)
+- nur-text: «K9 Metall Schmetterling Nägel» (Text)
+- nur-text: «Caramel Foam Polo Design Nagel-Tips» (Text)
+- nur-text: «Peach Blush Beige Nagel-Set · Press-on-Nägel» (Text)
+- nur-text: «Opal-Look Press-on Nägel mit Herzmuster» (Text)
+- nur-text: «Chenille Sofaüberwurf «Schwarz-Weiss»» (Text)
+- nur-text: «Föhn-Aufbewahrungstasche» (Text)
 - explosiv: «Explosion Money – Retro-Herren-Umhängetasche» → «Retro-Herren-Umhängetasche» · Adresse → `retro-herren-umhangetasche-64ee3f`
+- nur-text: «Handgemachte Nagel-Patches Schwarz-Weiss · Press-on-Nägel» (Text)
+- nur-text: «Rote Rose Magic Mirror Effekt Nägel» (Text)
+- nur-text: «Weinrote Press-on-Nägel» (Text)
+- nur-text: «Handgemachte Fake Nails für Maniküre» (Text)
 - explosion: «Halsband und Leine für Hunde, explosionsgeschützt» → «Halsband und Leine für Hunde, reissfest» · Adresse → `halsband-und-leine-fur-hunde-reissfest-122496`
 - nur-text: «Mini-Handgepäck mit Ladefunktion» (Text)
 - nur-text: «Tuyi Körperwaage mit LCD-Nachtsicht» (Text)
+- nur-text: «Lange Press-on-Nägel mit Gold- und Strass-Deko» (Text)
+- nur-text: «Barocke Schildpatt-Nagelsticker» (Text)
 - explosion: «Hunde-Zugweste atmungsaktiv, explosionsgeschützt» → «Hunde-Zugweste atmungsaktiv, reissfest» · Adresse → `hunde-zugweste-atmungsaktiv-reissfest-593856`
 - nur-text: «Taktisches Nylon-Brustgeschirr für Hunde» (Text)
 - nur-text: «Hundegeschirr-Set mit Leine und Tasche» (Text)
 - nur-text: «Freihändige, reflektierende Hundeleine mit Bauchgurt» (Text)
 - nur-text: «Hände-frei-Leine für Hunde» (Text)
+- nur-text: «Multifunktionale Reisetasche mit grossem Fassungsvermögen» (Text)
 - explosion: «Explosionsgeschütztes Hunde-Geschirr-Set» → «Reissfestes Hunde-Geschirr-Set» · Adresse → `reissfestes-hunde-geschirr-set-107840`
 - nur-text: «Isolierter Schraubenzieher-Satz, 7-teilig» (Text)
+- nur-text: «New Year White And Red Cat's Eye Nägel» (Text)
 - nur-text: «Reflektierende Hundeleine mit Frosch-Schnalle» (Text)
 - explosion: «LED Leucht-Brustgeschirr explosionsgeschützt» → «LED Leucht-Brustgeschirr reissfest» · Adresse → `led-leucht-brustgeschirr-reissfest-933632`
 - explosion: «Explosionssichere 6-in-1 Hundeleine» → «Reissfeste 6-in-1 Hundeleine» · Adresse → `reissfeste-6-in-1-hundeleine-285248`
@@ -70,12 +144,15 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - nur-text: «Multifunktions-Schleppleine für Hunde» (Text)
 - nur-text: «Stossdämpfende Hundeleine mit Farbblock/Streifen» (Text)
 - nur-text: «Elastische Hunde-Zugleine, stossdämpfend» (Text)
+- nur-text: «Atmungsaktives Hundegeschirr "Miha" Blueberry» (Text)
 - nur-text: «Reflektierende Hunde-Leine Okinawa» (Text)
 - explosion: «Explosionsgeschütztes Brustgeschirr fürs Auto» → «Reissfestes Brustgeschirr fürs Auto» · Adresse → `reissfestes-brustgeschirr-furs-auto-283072`
 - nur-text: «Freihand-Hundeleine für mittelgrosse und grosse Hunde» (Text)
 - explosion: «Pure Color explosionssichere, einziehbare Hundeleine» → «Pure Color reissfeste, einziehbare Hundeleine» · Adresse → `pure-color-reissfeste-einziehbare-hundeleine-334c31`
+- nur-text: «Semi-cured Gel-Nagelsticker mit 3D-Effekt» (Text)
 - explosion: «Hundegeschirr Okinawa, explosionsgeschützt» → «Hundegeschirr Okinawa, reissfest» · Adresse → `hundegeschirr-okinawa-reissfest-961664`
-- explosiv: «Explosive Business Quarzuhr für Herren» → «Business Quarzuhr für Herren» · Adresse → `business-quarzuhr-fur-herren-399936`
+- nur-text: «Semi-cured Gel-Nagelsticker 3D-Bronzing» (Text)
+- hand: «Explosive Business Quarzuhr für Herren» → «Business Quarzuhr für Herren mit Lederarmband» · Adresse → `business-quarzuhr-fur-herren-mit-lederarmband-399936`
 - explosion: «Explosionsgeschütztes Hundegeschirr» → «Reissfestes Hundegeschirr» · Adresse → `reissfestes-hundegeschirr-19ab46`
 - explosion: «Explosionsgeschütztes Brustgeschirr für Haustiere» → «Reissfestes Brustgeschirr für Haustiere» · Adresse → `reissfestes-brustgeschirr-fur-haustiere-49c36a`
 - nur-text: «Hundegeschirr mit Leine, diverse Grössen» (Text)
@@ -84,7 +161,7 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - nur-text: «Automatische, einziehbare Leine (3m)» (Text)
 - nur-text: «Reflektierendes Hunde-Geschirr mit Leine» (Text)
 - haendlerwort: «All-Match Point-toe Hochabsatz-Sandale» → «Point-toe Hochabsatz-Sandale» · Adresse → `point-toe-hochabsatz-sandale-848832`
-- nur-text: «Labor-Schutzschuhe Herren Anti-Explosions- und Antipuncture» (Text)
+- explosiv: «Labor-Schutzschuhe Herren Anti-Explosions- und Antipuncture» → «Labor-Schutzschuhe Herren» · Adresse → `labor-schutzschuhe-herren-613300`
 - nur-text: «Boxhandschuhe mit halben Fingern» (Text)
 - uhr-modell: «Nautilus Herrenuhr mit Stahlarmband» → «Herrenuhr mit Stahlarmband» · Adresse → `herrenuhr-mit-stahlarmband-628000`
 - explosion: «Hundegeschirr, explosionssicher» → «Hundegeschirr, reissfest» · Adresse → `hundegeschirr-reissfest-630700`
@@ -99,12 +176,29 @@ Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel
 - nur-text: «Einzelführleine für Hunde» (Text)
 - haendlerwort: «Plateau All-Match Stiefeletten» → «Plateau Stiefeletten» · Adresse → `plateau-stiefeletten-625100`
 - nur-text: «3-Stöckiger Induktions-Dampfgarer aus Edelstahl» (Text)
+- nur-text: «Handgemachte Wear Nägel "Sternenhimmel"» (Text)
+- nur-text: «Maniküre-Set «American Star»» (Text)
+- nur-text: «Eisblauer Zirkonia-Armband» (Text)
+- nur-text: «Farbenfroher Ring für jeden Anlass» (Text)
+- nur-text: «Leichte Damen-Sneaker mit Mesh» (Text)
+- nur-text: «Hüfttasche mit Nischenfach» (Text)
 - nur-text: «Sicheres Hundehalsband» (Text)
 - nur-text: «LED-Weste für Hunde» (Text)
 - nur-text: «Taktisches Brustgeschirr für Hunde» (Text)
+- nur-text: «Kürbisfarbener Kapuzenpullover für Eltern & Kind» (Text)
 - nur-text: «Multifunktionaler Laufgurt mit Leine» (Text)
+- nur-text: «Kürbisförmiger Korb aus Baumwollseil» (Text)
 - nur-text: «Reflektierendes Tarn-Brustgeschirr für Hunde» (Text)
+- nur-text: «Handgemachte French Press-on-Nägel in Milchrosa» (Text)
 - nur-text: «Hochdruck-Autowaschpistole mit Teleskopdüse» (Text)
+- nur-text: «Semi-cured UV Nagelfolien» (Text)
+- nur-text: «Semi-cured Gel-Nagelsticker «Ice Transparent Nude»» (Text)
+- nur-text: «Nagelsticker «Schwanensee»» (Text)
+- nur-text: «Weinroter Cat-Eye-Nagellack für Herbst/Winter» (Text)
 - haendlerwort: «Kreative bedruckte All-Match Flach-Sneaker» → «Kreative bedruckte Flach-Sneaker» · Adresse → `kreative-bedruckte-flach-sneaker-605000`
 - haendlerwort: «Chenyue All-Match Casual Ohrringe» → «Chenyue Casual Ohrringe» · Adresse → `chenyue-casual-ohrringe-615400`
-- haendlerwort: «Blumen-Kissenbezug im Nordic Ins Stil» → «Blumen-Kissenbezug im Nordic» · Adresse → `blumen-kissenbezug-im-nordic-851392`
+- nur-text: «Magnetarmband mit Strass & Zinklegierung» (Text)
+- nur-text: «Kissenbezug mit Tiger-Motiv» (Text)
+- nur-text: «Philodendron Kissen» (Text)
+- nur-text: «U-förmiges Nackenkissen aus Memory-Schaum» (Text)
+- haendlerwort: «Blumen-Kissenbezug im Nordic Ins Stil» → «Blumen-Kissenbezug im nordischen Stil» · Adresse → `blumen-kissenbezug-im-nordischen-stil-851392`
