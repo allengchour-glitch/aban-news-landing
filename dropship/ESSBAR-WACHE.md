@@ -1,6 +1,6 @@
-# Essbares aus China im Verkauf — Stand 2026-10-09 04:35 UTC
+# Essbares aus China im Verkauf — Stand 2026-10-09 04:36 UTC
 
-Regel: `automation/data/essbar_regel.json` (Wächter `essbar_wache.py`, Importer `essbar.mjs`). Geprüft: 51814 aktive · Treffer: 11 · würden gedraftet: 11 · Fehler: 0
+Regel: `automation/data/essbar_regel.json` (Wächter `essbar_wache.py`, Importer `essbar.mjs`). Geprüft: 51814 aktive · Treffer: 11 · gedraftet: 11 · Fehler: 0
 
 - `probiotische-verdauungschuechli-fur-hunde-074050` — Probiotische Verdauungschüechli für Hunde (kategorie; Animals & Pet Supplies > Pet Supplies > Pet Vitamins & Supplements)
 - `gelenk-supplement-fur-hunde-katzen-169537` — Gelenk-Supplement für Hunde & Katzen (kategorie; Animals & Pet Supplies > Pet Supplies > Pet Vitamins & Supplements)

@@ -1538,3 +1538,6 @@ gid://shopify/Product/16610239873415	ok	Acryl-Vitrine mit Schloss
 gid://shopify/Product/16612762386823	ok	Verstellbare Zement-Hantel mit Gummibeschichtung
 gid://shopify/Product/16612711367047	ok	Armkraft-Trainingsgerät mit verstellbarem Griff
 gid://shopify/Product/16612761698695	ok	Trainingselastikseil mit Stab
+gid://shopify/Product/16612712186247	ok	Pectoral Trainingsgerät – 36 kg bis 90 kg
+gid://shopify/Product/16612741120391	ok	Intelligente Futter- und Wasserschale für Katzen
+gid://shopify/Product/16612717101447	ok	Multifunktionales Bauchmuskelrad für Home Gym
