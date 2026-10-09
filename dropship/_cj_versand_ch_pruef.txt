@@ -6610,3 +6610,9 @@ slipper-aus-wildleder-mit-niedrigem-absatz-609300	2512300634211609500	16	11.37	o
 mesh-tanzschuhe-fur-damen-625700	2512180227051625900	16	11.37	ok	landeseite
 retro-plateau-halbschuhe-im-britischen-stil-628600	2512160811391628800	16	10.88	ok	landeseite
 gefutterte-winterschuhe-mit-schnurung-627800	2512160226001628000	16	11.60	ok	landeseite
+warme-winter-loafers-fur-damen-625800	2512130917451626200	16	11.24	ok	landeseite
+sportliche-low-top-sneakers-mit-schnurung-627100	2512120948121627300	16	13.65	ok	landeseite
+leichte-freizeitschuhe-mit-dicker-sohle-625500	2512100622391625700	16	13.65	ok	landeseite
+retro-leder-sneaker-fur-damen-613400	2511300950381613600	16	11.23	ok	landeseite
+damen-sneaker-korean-style-618700	2511300405391619000	16	14.37	ok	landeseite
+sportliche-walking-schuhe-mit-weicher-sohle-602600	2511250950461602800	16	11.37	ok	landeseite
