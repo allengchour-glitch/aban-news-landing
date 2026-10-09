@@ -6539,3 +6539,8 @@ portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 P
 handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 4er-set-pvc-fussmatten-fur-auto-suv-truck-schn-525954	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+fairy-sandalen-im-koreanischen-stil-624700	2606080103501625300	16	11.37	ok	landeseite
+sandalen-im-retro-stil-mit-uberkreuzten-riemen-637500	2606061006171638000	16	10.55	ok	landeseite
+riemchensandalen-mit-chunky-absatz-618300	2606050723561619000	16	12.32	ok	landeseite
+riemchensandalen-mit-eckiger-spitze-absatz-602500	2606050713121603400	16	14.00	ok	landeseite
+atmungsaktive-open-toe-sandalen-mit-blockabsat-601900	2606050706451602700	16	10.42	ok	landeseite
