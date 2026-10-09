@@ -393,3 +393,7 @@
 15500899647873	Farbe:3+Grösse:3:8	2026-10-09	hundeleine-953856
 15500898042241	Farbe:2+Grösse:2:4	2026-10-09	badezimmertresen-602000
 15500897616257	Grösse:5:5	2026-10-09	marine-halsband-082240
+15500892307841	Farbe:2:2	2026-10-09	romantische-atmosphare-ef00a8
+15500891652481	Farbe:8:8	2026-10-09	nordische-dots-kissenbezug-105216
+15500780437889	Farbe:5+Grösse:17:85	2026-10-09	sofa-kissen-jahreszeiten-051648
+15500717523329	Farbe:5:5	2026-10-09	blatterkissen-536576
