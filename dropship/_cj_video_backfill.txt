@@ -766,3 +766,16 @@ gid://shopify/Product/15508420854145	ok	Wasserdichte Handybox zur Wandmontage
 gid://shopify/Product/15508423016833	ok	Anti-Rutsch Gummifüsse für Waschmaschinen
 gid://shopify/Product/15451636334977	ok-lokal
 gid://shopify/Product/16604909240711	ok-lokal
+gid://shopify/Product/15523179921793	ok	Multifunktions Smart Adapter & Kabelbox
+gid://shopify/Product/15523817914753	ok	Reise-Tasche für Hunde mit abnehmbarem Trennwand
+gid://shopify/Product/15523842228609	ok	Schwarze Totenkopf-Placemat für Halloween
+gid://shopify/Product/15523850649985	ok	Frucht- und Gemüseabtropfkorb mit Deckel
+gid://shopify/Product/15523864117633	ok	Steamed Bun Form für kleine Teigtaschen
+gid://shopify/Product/15523864871297	ok	Ölfilterbehälter 304 Edelstahl – Grosser Filter
+gid://shopify/Product/15523920380289	ok	Elektrisches induktives Schlangen-Spielzeug für Katzen
+gid://shopify/Product/15523986080129	ok	Tragbarer Fotodrucker
+gid://shopify/Product/15523990864257	ok	LED Leuchtcollar mit Zugleine, wiederaufladbar
+gid://shopify/Product/15523995386241	ok	Intelligente elektrische Fritteuse
+gid://shopify/Product/15524697014657	ok	Smartwatch mit Touchscreen, Herzfrequenz und SpO2
+gid://shopify/Product/15524864983425	ok	11-teiliges Fitnessband-Set
+gid://shopify/Product/15524893294977	ok	Blumenstrauss-Bausatz aus Klemmbausteinen
