@@ -1,6 +1,6 @@
 # SEO-Autopilot — Wirkung
 
-Stand 2026-10-09 08:14 UTC · Quelle ShopifyQL (human, 90 T)
+Stand 2026-10-09 08:34 UTC · Quelle ShopifyQL (human, 90 T)
 
 | Datum | Artikel | Phrase | Sitzungen | Warenkörbe | Urteil |
 |---|---|---|---|---|---|
@@ -11,3 +11,4 @@ Stand 2026-10-09 08:14 UTC · Quelle ShopifyQL (human, 90 T)
 | 2026-10-06 | [make-up-reife-haut-ab-60-guide](https://luxestyle.ch/blogs/ratgeber/make-up-reife-haut-ab-60-guide) | make-up für reife haut ab 60 testsieger | 0 | 0 | zu jung (3 T) |
 | 2026-10-07 | [jeans-kaufen-damen-guide](https://luxestyle.ch/blogs/ratgeber/jeans-kaufen-damen-guide) | jeans kaufen damen | 0 | 0 | zu jung (2 T) |
 | 2026-10-08 | [beamer-test-ratgeber-heimkino-mobile-praesentationen](https://luxestyle.ch/blogs/ratgeber/beamer-test-ratgeber-heimkino-mobile-praesentationen) | beamer test | 0 | 0 | zu jung (1 T) |
+| 2026-10-09 | [ringe-kaufen-herren-guide](https://luxestyle.ch/blogs/ratgeber/ringe-kaufen-herren-guide) | ringe kaufen herren | 0 | 0 | zu jung (0 T) |
