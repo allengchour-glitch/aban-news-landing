@@ -2028,6 +2028,10 @@ fi
   # 08.10.2026 20:00 (ganzer Katalog): bis zu drei Optionen (Farbe × Grösse …), Stecker → EU, Reste per KI + Zweitprüfer;
   # CAP 150/h, MANUELL- und Fehlerfälle werden gemerkt (dropship/_auswahl_manuell.tsv, _auswahl_fehler.tsv) und übersprungen.
   # Notbremse: Datei dropship/_auswahl_scharf_aus anlegen → nur noch messen.
+  # 09.10.2026 (Verbesserungsrunde): Die Klassenliste fängt NEUIMPORTE nie — der Importer baut Varianten nur für Mode-Gruppen
+  # (`buildFashion` nur bei grp.fashion) und macht den Text jeder Ein-Varianten-Ware wahlSicher, also verspricht er keine
+  # Wahl mehr. 320/452 aktive Neuimporte (24 h) hatten eine Variante. Darum misst der zweite Lauf jede aktive Ein-Varianten-
+  # CJ-Ware der letzten 3 Tage (idempotent über _auswahl_fehlt.jsonl); der Nachrüster baut, wo CJ mehrere Varianten führt.
   AN=/tmp/auswahl_nachruesten.log
   if [ -f "$REPO/automation/auswahl_nachruesten.py" ] && [ -s "$REPO/dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$AN" 2>/dev/null || echo 0) ))
@@ -2037,6 +2041,8 @@ fi
           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
           LISTE=dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt MIN_BILDER=1 LIMIT=6000 \
             timeout 1800 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
+          QUERY=\"status:active AND created_at:>=\$(date -u -d '3 days ago' +%F)\" MIN_BILDER=1 LIMIT=1500 \
+            BERICHT=dropship/AUSWAHL-FEHLT-NEUIMPORTE.md timeout 1200 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
           if [ -e dropship/_auswahl_scharf_aus ]; then echo 'SCHARF aus (dropship/_auswahl_scharf_aus)'; exit 0; fi; \
           SCHARF=1 CAP=150 MAX_FEHLER=3 ZEIT_S=1200 timeout 2400 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -200" 9>&- & )
       if [ -s "$AN" ] && tail -n 30 "$AN" | grep -q "Traceback\|⛔"; then
