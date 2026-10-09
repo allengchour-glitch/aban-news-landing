@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-09T00:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-09T01:11Z
 
 Aktive gescannt: 5 · ohne Kategorie: 5 · heute gesetzt: 2 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
@@ -11,6 +11,6 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- kinderrucksack-44x30x15-cm-fur-grundschule-564096 · Taschen → Luggage & Bags
-- business-rucksack-fur-herren-aus-leder-838336 · Taschen → Luggage & Bags
+- automatischer-wasserspender-fur-haustiere-34cfb6 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
+- doppelter-schussel-mit-schragem-m-30aa2c · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
 
