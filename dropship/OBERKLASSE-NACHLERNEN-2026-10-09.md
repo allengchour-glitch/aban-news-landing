@@ -39,7 +39,16 @@ Export 05:01 UTC, Neuimporte der letzten 14 Tage:
 
 ## Ergebnis Schreiblauf
 
-(wird nach dem Lauf eingetragen)
+Der erste Schreibversuch um 08:50 UTC scheiterte. Drei Wächter liefen nach dem Container-Neustart gleichzeitig, und der
+Lauf brach mit «Throttled (40x gedrosselt)» ab. Der zweite Lauf ging über `shopify_schranke.sh`, das die
+Shopify-Zugriffe der Wächter in eine Warteschlange stellt.
+
+**22 gesetzt, 0 Fehler** (08:54 UTC, Ledger `dropship/_oberklasse_lernen.tsv`). Per Admin-API zurückgelesen: 8 von 8
+Metafeldern stimmen, z. B. «Hundeschüssel Anti-Rutsch» → Pet Bowls, Feeders & Waterers und «Bauchmuskelrad» → Ab Wheels &
+Rollers.
+
+Beim Zurücklesen gesehen: Einige Neuimport-Titel sind halb englisch, z. B. «Silicone-Tier-Schlankesschüssel mit
+Lickmatte». Das ist eine eigene Klasse. Der KI-Titelwächter dafür ruht ebenfalls ohne Kontingent.
 
 ## Offen
 
