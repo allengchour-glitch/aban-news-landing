@@ -6609,3 +6609,21 @@ gefutterte-high-top-baumwollschuhe-614000	2601200000321614300	16	13.76	ok	landes
 slipper-aus-wildleder-mit-niedrigem-absatz-609300	2512300634211609500	16	11.37	ok	landeseite
 mesh-tanzschuhe-fur-damen-625700	2512180227051625900	16	11.37	ok	landeseite
 retro-plateau-halbschuhe-im-britischen-stil-628600	2512160811391628800	16	10.88	ok	landeseite
+gefutterte-winterschuhe-mit-schnurung-627800	2512160226001628000	16	11.60	ok	landeseite
+warme-winter-loafers-fur-damen-625800	2512130917451626200	16	11.24	ok	landeseite
+sportliche-low-top-sneakers-mit-schnurung-627100	2512120948121627300	16	13.65	ok	landeseite
+leichte-freizeitschuhe-mit-dicker-sohle-625500	2512100622391625700	16	13.65	ok	landeseite
+retro-leder-sneaker-fur-damen-613400	2511300950381613600	16	11.23	ok	landeseite
+damen-sneaker-korean-style-618700	2511300405391619000	16	14.37	ok	landeseite
+sportliche-walking-schuhe-mit-weicher-sohle-602600	2511250950461602800	16	11.37	ok	landeseite
+atmungsaktive-freizeitschuhe-fur-paare-623600	2511250857001624000	16	9.75	ok	landeseite
+plateaustiefel-mit-sternenmuster-605100	2511250152471605300	16	14.96	ok	landeseite
+damen-skateboard-sneaker-aus-nubukleder-631500	2511191104461631700	16	13.76	ok	landeseite
+atmungsaktive-mesh-sneaker-mit-klettverschluss-627900	2511120757171628100	16	11.84	ok	landeseite
+dopamine-color-matching-preppy-style-damen-boa-624700	2511010200441625000	16	14.96	ok	landeseite
+bequeme-slip-on-sneaker-mit-paisley-print-293890	1981293493283094533	-	-	unklar 1602002 Product has been removed from  rest=99	landeseite
+brogue-plateau-schuhe-aus-leder-mit-absatzerho-614700	2510180606441615500	16	15.20	ok	landeseite
+plateau-sneaker-zum-schnuren-609600	2510090614011609800	16	12.93	ok	landeseite
+outdoor-sneaker-fur-damen-605800	2510070632331606100	16	11.96	ok	landeseite
+dopamine-plateau-schnurschuhe-aus-leder-605300	2509291108031605600	16	13.76	ok	landeseite
+vintage-schnurschuhe-mit-weicher-sohle-614300	2606260947011615101	16	11.37	ok	landeseite
