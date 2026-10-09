@@ -21,6 +21,7 @@
  */
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
+const FORMATE = (()=>{ try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url),'utf8')); } catch { return {}; } })();
 import { execFileSync as _exf } from 'node:child_process';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
@@ -379,7 +380,8 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   const fbCaption = mitFolgen(fbTextLib(caption, pa.url, 'bild'));   // 07.10. «fb zu wenig follower»
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
-  const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
+  // 09.10.2026: Fotos auf Facebook = 1 Aufruf je Beitrag (Dashboard), Reels 29 → Bildposts nur noch auf Instagram (data/kanal_formate.json)
+  const wantFB = (!plat.trim() || /facebook|\bfb\b/.test(plat)) && FORMATE.facebook?.bild !== false;
   const wantTH = !SKIP_THREADS && (!plat.trim() || /threads/.test(plat));
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
   if(DRY){

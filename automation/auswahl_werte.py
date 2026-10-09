@@ -579,7 +579,7 @@ def pruefe_ki(original, name, werte):
 
 
 # Wörter, die im Deutschen gleich geschrieben werden (dürfen aus dem Original übernommen werden)
-GLEICH_DE = {"khaki", "beige", "orange", "pink", "gold", "mini", "set", "oval", "transparent", "leopard", "camel", "nude",
+GLEICH_DE = {"generation", "version", "edition", "khaki", "beige", "orange", "pink", "gold", "mini", "set", "oval", "transparent", "leopard", "camel", "nude",
              "bordeaux", "champagne", "lavendel", "magenta", "indigo", "taupe", "fuchsia", "bronze", "platin", "titan", "classic",
              "premium", "standard", "pro", "max", "plus", "basic", "deluxe", "sport", "auto", "baby", "kids", "cartoon",
              "panda", "koala", "dinosaur", "tiger", "zebra", "lama", "alpaka", "flamingo", "einhorn", "unicorn", "elefant",

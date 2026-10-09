@@ -118,6 +118,11 @@ while true; do
     fi
     touch "$MARKE_NACHSCHUB.chlager"
   fi
+  # LERNEN (22.09.; 09.10.: aus dem Meta-Zweig herausgezogen — seit dem Meta-Ablauf 05.10. lief es 4 Tage gar nicht).
+  # Liest Instagram (Graph oder Metricool), TikTok, Pinterest, Facebook-Reels, YouTube → social/_lernen.json + Bericht.
+  if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
+    $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
+  fi
   if [ "$META_OK" = 1 ]; then
     export IG_USER_ID="$(cat /tmp/meta_ig_id 2>/dev/null)"
     export FB_PAGE_ID="${FB_PAGE_ID:-1049840534888592}"
@@ -126,10 +131,6 @@ while true; do
     export FB_PAGE_ACCESS_TOKEN="$TOKEN"
     export SKIP_THREADS=1                  # Threads bleibt aus, bis dort Publikum da ist.
 
-    # LERNEN (22.09.): Zahlen der letzten Posts lesen → social/_lernen.json (Hook-/Themen-Gewichte) + Bericht
-    if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
-      $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
-    fi
     if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
       echo "$(date -u +%H:%M) Bildpost fällig"
       MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; rc=$?
@@ -209,6 +210,12 @@ while true; do
     fi
   fi   # META_OK
 
+  # 09.10.2026 (Betreiber «fb, zeige weniger asiaten»): neue ready-Reels auf Gesichter messen (gleich wessen — keine Einordnung
+  # nach Herkunft); der Reel-Poster stellt Model-Clips für Instagram+Facebook hinten an (data/kanal_formate.json → reel_gesicht).
+  if faellig /tmp/_autopilot_reel_gesicht 21600; then
+    timeout 1200 python3 automation/reel_gesicht.py --max 40 2>&1 | grep -E '^REEL-GESICHT' || true
+    touch /tmp/_autopilot_reel_gesicht
+  fi
   # 23.09.: Nachmessen — «posted-tiktok» heisst nur GEPLANT; der Planer sagt, ob es veroeffentlicht wurde.
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig /tmp/_autopilot_letztes_tiktok_pruefen 7200; then
     PRUEFEN=1 $NODE automation/metricool_tiktok_post.mjs || echo "$(date -u +%H:%M) TikTok-Pruefung: Fehler gemeldet (siehe reels_seed.csv tiktok-fehler)"

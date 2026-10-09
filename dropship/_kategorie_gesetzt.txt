@@ -49116,3 +49116,8 @@ high-top-sneaker-mit-rutschfester-sohle-602900	aa-8	Herrenschuhe	2026-10-09T18:1
 atmungsaktive-ledersneaker-mit-plateausohle-605700	aa-8	Herrenschuhe	2026-10-09T18:10Z
 sneaker-mit-mesh-obermaterial-flache-sohle-613500	aa-8	Herrenschuhe	2026-10-09T18:10Z
 kinder-stiefeletten-mit-weicher-sohle-schwarz-603300	aa-8	Kinderschuhe	2026-10-09T18:10Z
+pferdebrosche-aus-kupfer-636500	aa-6	Schmuck	2026-10-09T19:09Z
+kinderlaufschuhe-aus-vollnette-tiermuster-630900	aa-8	Kinderschuhe	2026-10-09T19:09Z
+ananaspullover-aus-baumwolle-0271c7	ap-2	Haustierbedarf	2026-10-09T19:09Z
+hund-regenbogen-streifen-cardigan-b5e137	ap-2	Haustierbedarf	2026-10-09T19:09Z
+weihnachtspullover-fur-hund-s-9ceb36	ap-2	Haustierbedarf	2026-10-09T19:09Z

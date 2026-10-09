@@ -21,6 +21,7 @@
  */
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
+const FORMATE = (() => { try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url), 'utf8')); } catch { return {}; } })();
 import { execFileSync } from 'node:child_process';
 import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen, modelSperre } from './post_guard.mjs';
 
@@ -254,7 +255,8 @@ if (VIA_MC) {
     for (const t of familienDesSets(cand, caption, handles).values()) familieMerken(t, 'karussell');
     setzen(cand, 'status', 'posted-ig'); setzen(cand, 'post_url', `metricool:${igPid}`); writeLedger();
     console.log(`✅ IG-Karussell ueber Metricool geplant ${igPid}`);
-    try {
+    // 09.10.2026: Facebook bekommt keine Foto-Karussells mehr (Fotos 1 Aufruf je Beitrag, data/kanal_formate.json)
+    if (FORMATE.facebook?.karussell !== false) try {
       const fbPid = await mcPlan(media, fbCaption, 'facebook');
       setzen(cand, 'status', 'posted-ig-fb'); setzen(cand, 'post_url', `metricool:${igPid} metricool:${fbPid}`); writeLedger();
       console.log(`✅ FB-Beitrag ueber Metricool geplant ${fbPid}`);

@@ -39,7 +39,9 @@ const RAUSCH = 5;                   // Rauschboden: kleine Zahlen (Pins mit 0–
 const MIN_ALTER_H = parseFloat(process.env.MIN_ALTER_H || '24');   // jüngere Posts zählen nicht (Zahlen wachsen noch)
 const TOK = (process.env.META_ACCESS_TOKEN || (fs.existsSync('/tmp/meta_page_token') ? fs.readFileSync('/tmp/meta_page_token', 'utf8') : '')).trim();
 const IG = (process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id', 'utf8') : '')).trim();
-if (!TOK || !IG) { console.log('Kein Meta-Token/IG-ID → No-op.'); process.exit(0); }
+// 09.10.2026: Meta-Datenzugang endete 05.10. — vorher hiess «kein Token» No-op, und der Autopilot rief das Lernen nur im
+// Meta-Zweig auf: 4 Tage ohne Lernen. Jetzt: Instagram über Metricool, wenn die Graph-API nichts liefert; dazu FB-Reels + YouTube.
+const META = !!(TOK && IG);
 const V = 'v21.0';
 const JETZT = Date.now();
 const AB = JETZT - TAGE * 86400000;
@@ -135,10 +137,10 @@ function musikFuer(reelId, ersterPost) {
 
 // ---------------------------------------------------------------- Messungen lesen
 const obs = [];      // {kanal, format, t, caption, score, reach, likes, comments, saved, shares, views, url, reelId}
-const quellen = { instagram: 0, tiktok: 0, pinterest: 0, fehler: [] };
+const quellen = { instagram: 0, tiktok: 0, pinterest: 0, facebook: 0, youtube: 0, fehler: [] };
 
 // Instagram (Graph API, paginiert bis TAGE oder N)
-{
+if (META) {
   let url = graphUrl(`${IG}/media`, { fields: 'id,caption,media_type,media_product_type,timestamp,like_count,comments_count,permalink', limit: '50' });
   const medien = [];
   for (let s = 0; s < 8 && url && medien.length < N_MAX; s++) {
@@ -176,7 +178,8 @@ if (MC) {
   async function mc(netz) {
     for (let a = 0; a < 3; a++) {
       try {
-        const r = await fetch(`https://app.metricool.com/api/v2/analytics/posts/${netz}?${q}`, { headers: { 'X-Mc-Auth': MC } });
+        const pfad = netz.includes('/') ? netz : `posts/${netz}`;   // 09.10.: auch reels/instagram, reels/facebook, posts/youtube
+        const r = await fetch(`https://app.metricool.com/api/v2/analytics/${pfad}?${q}`, { headers: { 'X-Mc-Auth': MC } });
         const j = await r.json(); if (Array.isArray(j.data)) return j.data;
         quellen.fehler.push(`Metricool ${netz}: HTTP ${r.status}`); return [];
       } catch { await schlaf(2000 * (a + 1)); }
@@ -189,6 +192,46 @@ if (MC) {
     obs.push({ kanal: 'tiktok', format: 'reel', t, caption: p.videoDescription || p.title || '', reach: Number(p.reach || 0), likes, comments, saved: 0, shares, views,
       score: views + 3 * likes + 5 * comments + 5 * shares, url: `https://www.tiktok.com/@luxestyle.ch/video/${p.videoId}`, reelId: reelVon.get('tt:' + p.videoId) || null });
     quellen.tiktok++;
+  }
+  // Metricool-Zeit {dateTime, timezone:"Europe/Madrid"} → ms (Madrid = Zürich-Zeitzone; Offset über Intl, Sommer-/Winterzeit)
+  const mcZeit = d => {
+    if (!d) return 0; if (typeof d === 'string') return Date.parse(d);
+    const roh = Date.parse((d.dateTime || '') + 'Z'); if (!roh) return 0;
+    const tz = d.timezone || 'Europe/Zurich';
+    const teil = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(roh));
+    const g = Object.fromEntries(teil.map(x => [x.type, x.value]));
+    const alsUtc = Date.UTC(+g.year, +g.month - 1, +g.day, +g.hour, +g.minute, +g.second);
+    return roh - (alsUtc - roh);
+  };
+  // 09.10.2026: Instagram über Metricool, wenn die Graph-API nichts geliefert hat (Meta-Datenzugang seit 05.10. aus)
+  if (!quellen.instagram) {
+    for (const [ep, fmt] of [['posts/instagram', null], ['reels/instagram', 'reel']]) {
+      for (const p of await mc(ep)) {
+        const t = mcZeit(p.publishedAt); if (!t || t < AB) continue;
+        if (!fmt && /REEL/.test(p.type || '')) continue;            // Reels kommen aus reels/instagram
+        const format = fmt || (/CAROUSEL/.test(p.type || '') ? 'karussell' : 'bild');
+        const reach = Number(p.reach || 0), likes = Number(p.likes || 0), comments = Number(p.comments || 0), saved = Number(p.saved || 0), shares = Number(p.shares || 0), views = Number(p.views || 0);
+        const kc = kurzcode(p.url);
+        obs.push({ kanal: 'instagram', format, t, caption: p.content || '', reach, likes, comments, saved, shares, views,
+          score: reach + 3 * likes + 5 * comments + 5 * saved + 5 * shares + 0.2 * views, url: p.url || '', reelId: (kc && reelVon.get('ig:' + kc)) || null });
+        quellen.instagram++;
+      }
+    }
+  }
+  // 09.10.2026: Facebook-Reels (seit 06.10. über Metricool 140–205 Plays, vorher 0–5) und YouTube Shorts (Median ~170)
+  for (const p of await mc('reels/facebook')) {
+    const t = mcZeit(p.created); if (!t || t < AB) continue;
+    const views = Number(p.blueReelsPlayCount || 0), likes = Number(p.postVideoReactions || 0), shares = Number(p.postVideoSocialActions || 0);
+    obs.push({ kanal: 'facebook', format: 'reel', t, caption: p.description || '', reach: Number(p.postImpressionsUnique || 0), likes, comments: 0, saved: 0, shares, views,
+      score: views + 5 * likes + 5 * shares, url: p.reelUrl || '', reelId: null });
+    quellen.facebook++;
+  }
+  for (const p of await mc('posts/youtube')) {
+    const t = mcZeit(p.publishedAt); if (!t || t < AB) continue;
+    const views = Number(p.views || 0), likes = Number(p.likes || 0), comments = Number(p.comments || 0), shares = Number(p.shares || 0);
+    obs.push({ kanal: 'youtube', format: 'reel', t, caption: `${p.title || ''}\n${p.description || ''}`, reach: 0, likes, comments, saved: 0, shares, views,
+      score: views + 3 * likes + 5 * comments + 5 * shares, url: p.watchUrl || '', reelId: null });
+    quellen.youtube++;
   }
   for (const p of await mc('pinterest')) {
     const t = Date.parse(p.createdAt); if (!t || t < AB) continue;
@@ -282,7 +325,7 @@ const ergebnis = {
   stand: new Date(JETZT).toISOString(),
   methode: `Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+${RAUSCH})/(Median+${RAUSCH}), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + ${K})) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ ${MIN_N}. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter ${MIN_ALTER_H} h zählen nicht.`,
   fenster_tage: TAGE, k_glaettung: K, min_n: MIN_N,
-  beobachtungen: { instagram: reif.filter(o => o.kanal === 'instagram').length, tiktok: reif.filter(o => o.kanal === 'tiktok').length, pinterest: reif.filter(o => o.kanal === 'pinterest').length, zu_jung: zuJung },
+  beobachtungen: { instagram: reif.filter(o => o.kanal === 'instagram').length, tiktok: reif.filter(o => o.kanal === 'tiktok').length, pinterest: reif.filter(o => o.kanal === 'pinterest').length, facebook: reif.filter(o => o.kanal === 'facebook').length, youtube: reif.filter(o => o.kanal === 'youtube').length, zu_jung: zuJung },
   inhalte: C.length, posts: reif.length,
   musik_verlauf: { zeilen: verlaufZeilen, verknuepfte_inhalte: musikVerknuepft },
   quellen_fehler: quellen.fehler,
@@ -301,7 +344,7 @@ const postZeile = o => `- ×${Math.exp(o.l).toFixed(2)} (Score ${Math.round(o.sc
 const vorl = Object.values(hooksDetail).filter(v => !v.belastbar).length;
 const md = [
   `# Social-Lernen — Stand ${new Date(JETZT).toISOString().slice(0, 16).replace('T', ' ')} UTC`, '',
-  `Gelesen (letzte ${TAGE} Tage, Posts ab ${MIN_ALTER_H} h Alter): Instagram ${ergebnis.beobachtungen.instagram} · TikTok ${ergebnis.beobachtungen.tiktok} · Pinterest ${ergebnis.beobachtungen.pinterest} → **${C.length} Inhalte**; ${zuJung} zu junge Posts nicht gezählt.${quellen.fehler.length ? ' Lücken: ' + quellen.fehler.join('; ') + '.' : ''}`, '',
+  `Gelesen (letzte ${TAGE} Tage, Posts ab ${MIN_ALTER_H} h Alter): Instagram ${ergebnis.beobachtungen.instagram} · TikTok ${ergebnis.beobachtungen.tiktok} · Pinterest ${ergebnis.beobachtungen.pinterest} · Facebook-Reels ${ergebnis.beobachtungen.facebook} · YouTube ${ergebnis.beobachtungen.youtube} → **${C.length} Inhalte**; ${zuJung} zu junge Posts nicht gezählt.${quellen.fehler.length ? ' Lücken: ' + quellen.fehler.join('; ') + '.' : ''}`, '',
   `**So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +${RAUSCH} als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + ${K})): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×${Math.exp(KAPPE / (1 + K)).toFixed(2)}. **n** = Inhalte. **Belastbar erst ab n ≥ ${MIN_N}** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.`, '',
   '## Belastbar (n ≥ ' + MIN_N + ')', '',
   ...tabelle('Themen', themen, true), ...tabelle('Hooks', hooksDetail, true), ...tabelle('Zeitfenster (Schweizer Zeit, je Kanal)', zeitfenster, true), ...tabelle('Hashtags', hashtags, true),
@@ -320,7 +363,7 @@ const md = [
 ].join('\n');
 
 const kurz = (o, n = 8) => Object.entries(o).slice(0, n).map(([k, v]) => `${k} ${v.gewicht} (n=${v.n}${v.belastbar ? '' : ', vorläufig'})`).join(' · ');
-console.log(`Gelernt aus ${reif.length} Posts = ${C.length} Inhalten (IG ${ergebnis.beobachtungen.instagram}, TikTok ${ergebnis.beobachtungen.tiktok}, Pinterest ${ergebnis.beobachtungen.pinterest}; zu jung ${zuJung})`);
+console.log(`Gelernt aus ${reif.length} Posts = ${C.length} Inhalten (IG ${ergebnis.beobachtungen.instagram}, TikTok ${ergebnis.beobachtungen.tiktok}, Pinterest ${ergebnis.beobachtungen.pinterest}, FB ${ergebnis.beobachtungen.facebook}, YouTube ${ergebnis.beobachtungen.youtube}; zu jung ${zuJung})`);
 console.log(`Themen: ${kurz(themen, 10)}`);
 console.log(`Belastbare Hooks für den Reel-Motor: ${Object.keys(hooks).length ? Object.entries(hooks).map(([k, v]) => `${k} ${v}`).join(' · ') : 'keiner (alle n < ' + MIN_N + ') → Motor wählt neutral'}`);
 console.log(`Zeitfenster belastbar: ${kurz(Object.fromEntries(Object.entries(zeitfenster).filter(([, v]) => v.belastbar)), 8) || '—'}`);
