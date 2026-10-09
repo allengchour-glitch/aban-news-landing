@@ -6582,3 +6582,7 @@ sportliche-mesh-sneaker-mit-blumenmuster-629200	2603040103361629600	16	12.32	ok	
 atmungsaktive-high-top-sneaker-mit-chunky-sohl-608500	2603010255341608900	16	13.76	ok	landeseite
 schnurschuhe-mit-klobigem-absatz-600800	2602260032241601200	16	8.39	ok	landeseite
 silberne-chunky-dad-sneaker-im-color-block-des-637700	2602190938141638100	16	11.24	ok	landeseite
+atmungsaktive-chunky-sneakers-mit-seitenreissv-636300	2602190306491636700	16	11.12	ok	landeseite
+damen-casual-hollow-weave-schuhe-mit-dicker-so-633600	2602160140211633900	16	16.40	ok	landeseite
+damen-sneaker-mit-dicker-sohle-625500	2602111129101626000	16	14.37	ok	landeseite
+high-top-schuhe-mit-riemenschnalle-604700	2602110440381605100	16	13.04	ok	landeseite
