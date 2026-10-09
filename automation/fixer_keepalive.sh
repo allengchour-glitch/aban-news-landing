@@ -2032,6 +2032,8 @@ fi
   # (`buildFashion` nur bei grp.fashion) und macht den Text jeder Ein-Varianten-Ware wahlSicher, also verspricht er keine
   # Wahl mehr. 320/452 aktive Neuimporte (24 h) hatten eine Variante. Darum misst der zweite Lauf jede aktive Ein-Varianten-
   # CJ-Ware der letzten 3 Tage (idempotent über _auswahl_fehlt.jsonl); der Nachrüster baut, wo CJ mehrere Varianten führt.
+  # 09.10.2026 21:15 («verbessere mehr»): ZUERST die besuchten Seiten (90 T, auswahl_besucht_liste.py, täglich neu) — 812 aktive
+  # Ein-Varianten-CJ-Seiten mit 1'036 Sitzungen, 16 gemessen; der Nachrüster nimmt sie per VORRANG vor allen anderen.
   AN=/tmp/auswahl_nachruesten.log
   if [ -f "$REPO/automation/auswahl_nachruesten.py" ] && [ -s "$REPO/dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$AN" 2>/dev/null || echo 0) ))
@@ -2039,12 +2041,17 @@ fi
       touch "$AN"
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_auswahl.lock; flock -n 9 || exit 0; exec >> \"$AN\" 2>&1; \
           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          BL=dropship/_klassen/auswahl-besuchte-seiten.txt; \
+          if [ ! -s \$BL ] || [ \$(( \$(date +%s) - \$(stat -c %Y \$BL) )) -gt 72000 ]; then \
+            timeout 300 python3 automation/auswahl_besucht_liste.py 2>&1 | tail -1; fi; \
+          LISTE=\$BL MIN_BILDER=1 LIMIT=1500 BERICHT=dropship/AUSWAHL-FEHLT-BESUCHT.md \
+            timeout 900 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
           LISTE=dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt MIN_BILDER=1 LIMIT=6000 \
             timeout 1800 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
           QUERY=\"status:active AND created_at:>=\$(date -u -d '3 days ago' +%F)\" MIN_BILDER=1 LIMIT=1500 \
             BERICHT=dropship/AUSWAHL-FEHLT-NEUIMPORTE.md timeout 1200 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
           if [ -e dropship/_auswahl_scharf_aus ]; then echo 'SCHARF aus (dropship/_auswahl_scharf_aus)'; exit 0; fi; \
-          SCHARF=1 CAP=150 MAX_FEHLER=3 ZEIT_S=1200 timeout 2400 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -200" 9>&- & )
+          VORRANG=dropship/_klassen/auswahl-besuchte-seiten.txt SCHARF=1 CAP=150 MAX_FEHLER=3 ZEIT_S=1200 timeout 2400 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -200" 9>&- & )
       if [ -s "$AN" ] && tail -n 30 "$AN" | grep -q "Traceback\|⛔"; then
         echo "$(date -u +%H:%M) ⚠️ auswahl_nachruesten: letzter Lauf mit Fehler ($AN)"
       else
