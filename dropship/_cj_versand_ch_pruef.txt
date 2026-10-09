@@ -6658,3 +6658,5 @@ sommer-mesh-mules-mit-perlen-schnalle-401346	2069671898457870337	16	10.55	ok	lan
 bestickte-mesh-mules-mit-blumenmuster-263234	2069674653457367042	16	11.23	ok	landeseite
 orientalische-bestickte-mesh-mary-jane-flats-885378	2069670768315240450	16	9.88	ok	landeseite
 leichte-leinen-slipper-mit-stickerei-527425	2069664106422910977	16	11.96	ok	landeseite
+sommer-mesh-bestickte-flats-160385	2069665760291373057	16	9.88	ok	landeseite
+bestickte-mesh-flats-im-hanfu-stil-576514	2069662759723765761	16	9.88	ok	landeseite
