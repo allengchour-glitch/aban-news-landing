@@ -6230,3 +6230,4 @@ herren-winterstiefel-mit-rutschfester-sohle-604400	2601210327121604900	16	11.84	
 militar-sicherheitsstiefel-mit-stahlkappe-639100	2601200419281639600	16	19.42	ok	landeseite
 herren-retro-thermostiefel-mit-reissverschluss-615100	2601190448021615500	16	19.06	ok	landeseite
 gefutterte-british-style-plattform-boots-600100	2601180732161600400	16	19.99	ok	landeseite
+gefutterte-outdoor-winterstiefel-aus-schaffell-634800	2601111003591635000	16	17.89	ok	landeseite
