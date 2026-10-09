@@ -6609,3 +6609,4 @@ gefutterte-high-top-baumwollschuhe-614000	2601200000321614300	16	13.76	ok	landes
 slipper-aus-wildleder-mit-niedrigem-absatz-609300	2512300634211609500	16	11.37	ok	landeseite
 mesh-tanzschuhe-fur-damen-625700	2512180227051625900	16	11.37	ok	landeseite
 retro-plateau-halbschuhe-im-britischen-stil-628600	2512160811391628800	16	10.88	ok	landeseite
+gefutterte-winterschuhe-mit-schnurung-627800	2512160226001628000	16	11.60	ok	landeseite
