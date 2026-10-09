@@ -147,6 +147,19 @@ if (process.env.PRUEFEN === '1') {
 const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'));
 const _alle = rows.slice(1).filter(passt);
 const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))], r => get(r, 'caption')), r => get(r, 'id'));   // 25.09. Saison-Vorrang (Herbst) zuerst
+// 09.10.2026 (Betreiber «fb, zeige weniger asiaten»): Instagram+Facebook bekommen zuerst Reels, die das PRODUKT zeigen —
+// Reels mit Gesicht in ≥ max_anteil der Bilder (reel_gesicht.py, gleich wessen Gesicht) werden hinten angestellt, nicht gesperrt.
+// Nach Herkunft/Aussehen wird nicht sortiert. Regel data/kanal_formate.json → reel_gesicht.
+{
+  let _rg = {}; try { _rg = JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url), 'utf8')).reel_gesicht || {}; } catch {}
+  if ((_rg.netze || []).includes(NETZ)) {
+    const _g = new Map(); try { for (const z of fs.readFileSync(new URL('../dropship/_reel_gesicht.tsv', import.meta.url), 'utf8').split('\n')) { const [id, a] = z.split('\t'); if (id && a) _g.set(id, +a); } } catch {}
+    const _hinten = r => (_g.get(get(r, 'id')) ?? 0) >= (_rg.max_anteil ?? 0.3);
+    const _vorn = _reihe.filter(r => !_hinten(r)), _rest = _reihe.filter(_hinten);
+    if (_rest.length) console.log(`   Gesicht-Regel: ${_rest.length} Model-Reel(s) hinten angestellt (${NETZ})`);
+    _reihe.splice(0, _reihe.length, ..._vorn, ..._rest);
+  }
+}
 // DRY schreibt nichts (23.09.: vorher setzte schon der DRY-Lauf tote Adressen auf archived-deadurl).
 const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { if (DRY) return; r[idx.status] = st; writeLedger(); });
 // 05.10.2026: Exit 3 statt 0 — «kein Kandidat» ist KEIN Post. Mit 0 setzte social_autopilot.sh die Kanal-Marke (TikTok 8 h,

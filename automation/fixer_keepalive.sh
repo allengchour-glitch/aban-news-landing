@@ -247,6 +247,17 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_gruppenstempel_typ.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/gruppenstempel_typ.py" >> "$GS" 2>&1 9>&- & )
   fi
+  # VARIANTENWERT-KI (09.10.2026, «weiter»): englische Auswahlwerte, die keine Tabelle kennt («Black Without Chest Pad») →
+  # auswahl_werte.uebersetze_ki (harte Prüfung + Zweitprüfer, Ledger). Besuchte Seiten zuerst, MAX 60/Tag (Groq-Kontingent
+  # teilt sich der Bestell-Bildvergleich). Optionen-Export wie alter_im_farbwert; Selbsttest beider Bausteine als Tor.
+  VK=/tmp/variantenwert_ki.log
+  if [ -f "$REPO/automation/variantenwert_ki.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$VK" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 300 python3 automation/variantenwert_ki.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$VK"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_variantenwert_ki.lock; flock -n 9 || exit 0; \
+        SCHARF=1 MAX=60 timeout 3300 bash automation/shopify_schranke.sh python3 automation/variantenwert_ki.py" >> "$VK" 2>&1 9>&- & )
+  fi
   # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
   # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
   KM=/tmp/kleider_merkmale.log

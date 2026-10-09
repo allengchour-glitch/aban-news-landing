@@ -47,6 +47,24 @@
 
 
 
+
+## 📱 Facebook nur Reels, Produkt-Reels zuerst, Lernen ohne Meta · KI für englische Auswahlwerte (2026-10-09, 19:20 UTC)
+**Betreiber:** FB-Dashboard-Screenshot (Fotos 1 Aufruf/Beitrag, Reels 29), «fb, zeige weniger asiaten», «shorts youtune?»,
+«open ai geld drauf», «weiter alles sauber verbessern».
+**Gemessen (Metricool 30 T):** FB-Reels über Metricool seit 06.10. 140–205 Plays (vorher Graph-API 0–5); YouTube Shorts Median
+~170 (Spitze 929), laufen weiter (letzter 09.10. 16:05; Metricool-Statistik hinkt 3–4 T); 50 ready-Reels: nur 5 mit Gesicht
+in ≥ 30 % der Bilder. `social_lernen` lief seit 05.10. NICHT: Aufruf stand im Meta-Zweig, Meta-Zugang endete 05.10.
+**Getan:** (1) `data/kanal_formate.json`: FB bekommt keine Bilder/Karussells mehr (nur Reels + Stories), Kadenz unverändert.
+(2) `reel_gesicht.py` misst Gesichter (gleich wessen — KEINE Sortierung nach Herkunft/Aussehen; OpenCV 4.10 Haar, 5.x hat keine
+Kaskaden) → Reel-Poster stellt Model-Clips für IG+FB hinten an, Autopilot misst alle 6 h. (3) `social_lernen.mjs` liest IG
+über Metricool wenn Graph leer, dazu FB-Reels + YouTube; Aufruf aus dem Meta-Zweig gezogen → 316 Inhalte (FB 89, YT 20).
+(4) OpenAI-Leer-Marke gelöscht, Probe gpt-5.5 ok; Oberklassen-KI nachgeholt 21/0. (5) `variantenwert_ki.py`: englische
+Werte ohne Tabellenwort → `auswahl_werte.uebersetze_ki` (harte Prüfung + Zweitprüfer), nur der unbekannte Rest an die KI
+(18/20 Ablehnungen kamen von deutschen Nachbarwerten), 30/0 live, Aufseher 60/Tag.
+**Lehren:** (a) Ein Lern-/Wächter-Aufruf, der im Zweig einer Zugangsart steht, stirbt mit dem Zugang — Messen gehört vor die
+Weiche. (b) Eine Prüfung «Originalwort = unübersetzt» setzt voraus, dass das Original ganz fremdsprachig ist; gemischte Listen
+nur mit dem fremden Rest prüfen. (c) Wunsch nach «weniger X-Menschen» → nie nach Herkunft sortieren; die neutrale Ursache
+(Lieferanten-Model-Clips wirken fremd) über «Produkt statt Gesicht» lösen.
 ## 🏃 Feinlauf liest nur seinen Zweig — Fitness-Armbänder unter «Bracelets» (2026-10-09, 18:45 UTC, «weiter»)
 **Gemessen:** Fitness-/Smart-Armbänder (C33, G69 Herzfrequenz, Pulsmesser, Pedometer) standen bei Google unter «Jewelry >
 Bracelets»; `uhren_fein.py` liest nur den Watches-Zweig und sah sie nie. Bracelets-Zweig: 1'122 aktive, fast alles Schmuck.
@@ -19365,3 +19383,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 📝 **«verbessere weiter» (Tag 10 ✅): Mengen in Kollektionstexten veraltet («über 7'000» bei 4'913 aktiven, «rund 160» bei 250) → `kollektion_mengen_wache.py` täglich (3/0); 7 Saison-/Geschenkwelt-Texte nach Messung (Weihnachten «grösster Teil Pullover» falsch, «garantiert/handverlesen» raus); Ratgeber Herbst-Deko 1'085 → 3'200 Z. + Weihnachten→Geschenkwelten; tote Ratgeber-Links 2 → 0; «Winter & Kälte» per Tag (27 Fremdartikel).** Zahl im Text = Behauptung mit Verfallsdatum; vor Regelwechsel Mitglieder abgleichen → `dropship/SEO-TAG10-2026-10-08.md`
 - 2026-10-08 · 🚚 **«verbessere alles und sauber»: Leinen-Set (41 Sitz./2 Warenkörbe/0 Käufe) versprach bei Google «schnelle Lieferung» bei 10–20 Werktagen → 118/0 bereinigt (107 SEO, 4 «Qualität geprüft», 6 «meistverkauft», 1 «sofort lieferbar»), `versprechen_wache.py` täglich + Importer-Hook (py=js 19/19), 5 Generatoren an der Quelle; Büro-Menü: Typ als Beleg (CJ-Sammelkorb) → 25 Fremdartikel raus, 14 Typen (`buero_korb_typ.py`).** Einmal-Fix ohne Wächter kommt zurück; Typ aus Sammelgruppe ist kein Beleg → `dropship/VERSPRECHEN-BUERO-2026-10-08.md`
 - 2026-10-08 · 🎨 **«rot oder pink auswahl … ganze katalog»: 5'511 aktive mit EINER Variante versprechen eine Wahl, CJ führt bei ~87 % mehrere → `auswahl_werte.py` (45 Kanarien: Stecker → EU, bis 3 Optionen, Masse/Codes, Rest KI mit harter Prüfung + Zweitprüfer qwen) + `auswahl_nachruesten.py` (Raster anlegen, Fehlkombis löschen, Google-Farbe/Grösse je Variante, Rückbau getestet) → 131 scharf/0 Fehler, Aufseher stündlich messen + 150 umbauen (Notbremse `dropship/_auswahl_scharf_aus`).** KI-Werte für Kundinnen nur mit Zweitprüfer («Bean paste → Bohnenpaste» war formal gültig); `cj: null` ist keine 1 → `dropship/AUSWAHL-NACHRUESTEN-2026-10-08.md`
+- 2026-10-08 · 🗂️ **«ordne alles sauber ein»: Einzelurteile vom 07.10. hatten Zweigwechsel verboten → 6'054 neu MIT Zweigwechsel (10 Prüfer, Midi verworfen, nie gröber) 2'662/0 per Bulk-Mutation inkl. Metafeld (Rücklesen 30/30); Trachten aus Kostümen per `shopify_fein`-«umzug» 91/0; `nagel_fein.py` Press-on nach Grössenoption/Beschreibung 130/0; `kosmetik_fein.lauf` hätte 262 Shopify- + 82 Google-Feinwerte täglich vergröbert → nie vergröbern; Nachtrag «weiter»: 109 Press-on-Titel ehrlich («Nagelsticker» → «Press-on-Nägel», nur mit Beschreibungs-Beleg), keine-zuordnung 14 → 1.** Jeder Wächter braucht «feiner = einig» für beide Felder → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`

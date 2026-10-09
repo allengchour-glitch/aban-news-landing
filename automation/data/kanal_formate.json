@@ -1,0 +1,22 @@
+{
+  "_zweck": "Welche Formate je Kanal gepostet werden (09.10.2026, Betreiber-Screenshot Facebook Professional-Dashboard «Aufschlüsselung der Aufrufe»: Fotos 1 Aufruf je Beitrag, Reels 29 — «Versuche, diese Woche mehr Reels zu posten»). Gemessen über Metricool 09.09.–09.10.: FB-Reels seit 06.10. (über Metricool) 140–205 Aufrufe, Fotos ~1. Fotos auf Facebook verbrauchen Kadenz und Seitenreichweite ohne Wirkung → Facebook bekommt nur Reels (und Stories). Instagram behält Bild + Karussell. Gelesen von social-autopost-meta.mjs (Bild) und ig_karussell_post.mjs (Karussell).",
+  "facebook": {
+    "bild": false,
+    "karussell": false,
+    "reel": true,
+    "story": true
+  },
+  "instagram": {
+    "bild": true,
+    "karussell": true,
+    "reel": true,
+    "story": true
+  },
+  "reel_gesicht": {
+    "netze": [
+      "instagram"
+    ],
+    "max_anteil": 0.3,
+    "_regel": "Reels für Instagram+Facebook (NETZ=instagram): Anteil Bilder mit Gesicht ≥ max_anteil → hinten anstellen (nicht sperren). Gemessen wird NUR ob ein Gesicht im Bild ist, nie wessen (keine Einordnung nach Herkunft/Aussehen). Quelle dropship/_reel_gesicht.tsv (reel_gesicht.py)."
+  }
+}
