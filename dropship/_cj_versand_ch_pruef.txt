@@ -6461,3 +6461,7 @@ kurze-stiefel-mit-reissverschluss-602800	2603120337301603500	16	13.76	ok	landese
 gothic-chunky-high-heel-boots-609900	2603120315221600300	16	23.38	ok	landeseite
 overknee-stiefel-mit-chunky-absatz-und-nieten-609300	2603120154131609700	16	23.38	ok	landeseite
 chunky-heeled-non-slip-soft-leather-pumps-slip-609900	2603120113201600300	16	12.56	ok	landeseite
+echtleder-mid-calf-vintage-reitstiefel-606900	2603110902531607300	16	23.50	ok	landeseite
+sneaker-mit-sternmuster-600800	2606090800141601600	16	11.24	ok	landeseite
+damen-sneaker-american-retro-skateboarding-696770	2058739904129388546	16	11.23	ok	landeseite
+retro-forrest-trainingsschuhe-fur-damen-113026	2058032176721416194	16	11.23	ok	landeseite
