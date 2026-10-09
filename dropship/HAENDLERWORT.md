@@ -1,0 +1,110 @@
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-09 06:55 UTC
+
+Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Zu ändern: {'explosiv': 6, 'haendlerwort': 22, 'uhr-modell': 4, 'nur-text': 53, 'explosion': 20, 'explosiv+uhr-modell': 1}
+
+- explosiv: «Explosive Y2HDMAX Retro-Gaming Konsole» → «Y2HDMAX Retro-Gaming Konsole» · Adresse → `y2hdmax-retro-gaming-konsole-3b78d0`
+- haendlerwort: «Canvas Schultertasche "All-match" mit grosser Kapazität» → «Canvas Schultertasche mit grosser Kapazität» · Adresse → `canvas-schultertasche-mit-grosser-kapazitat-644608`
+- haendlerwort: «Fauler Handy-Halter 203B» → «Flexibler Handy-Halter 203B» · Adresse → `flexibler-handy-halter-203b-057216`
+- uhr-modell: «Submariner Quarz-Herrenuhr, Grün, Leuchtzeiger» → «Quarz-Herrenuhr, Grün, Leuchtzeiger» · Adresse → `quarz-herrenuhr-grun-leuchtzeiger-939840`
+- nur-text: «Reflektierendes P-Kettenhalsband für Hunde» (Text)
+- nur-text: «2.4A USB-Schnellladeadapter» (Text)
+- nur-text: «Sicherheitsleine für Hunde» (Text)
+- nur-text: «Faltbarer Drohnenflieger» (Text)
+- nur-text: «Schutz-Hand-Rohr-Reflexions-Leine» (Text)
+- uhr-modell: «Daytona Multifunktionsuhr – Drei Augen, sechs Zeiger» → «Multifunktionsuhr – Drei Augen, sechs Zeiger» · Adresse → `multifunktionsuhr-drei-augen-sechs-zeiger-894592`
+- nur-text: «Kabelbinder-Zange manuell» (Text)
+- haendlerwort: «Elegante All-Match Knöchelriemen-Sandalen» → «Elegante Knöchelriemen-Sandalen» · Adresse → `elegante-knochelriemen-sandalen-602700`
+- haendlerwort: «Metal Punk Hot Girl All-Match Nagelsticker» → «Metal Punk Hot Girl Nagelsticker» · Adresse → `metal-punk-hot-girl-nagelsticker-611500`
+- explosion: «Explosionsgeschütztes, bissfestes Haustierhalsband» → «Reissfestes, bissfestes Haustierhalsband» · Adresse → `reissfestes-bissfestes-haustierhalsband-016640`
+- haendlerwort: «Four Seasons All-match Sneaker» → «Four Seasons Sneaker» · Adresse → `four-seasons-sneaker-624700`
+- haendlerwort: «Leder All-Match Freizeit-Sneaker Schwarz» → «Leder Freizeit-Sneaker Schwarz» · Adresse → `leder-freizeit-sneaker-schwarz-351360`
+- uhr-modell: «Herren-Quarzuhr im Nautilus-Stil» → «Herren-Quarzuhr» · Adresse → `herren-quarzuhr-636736`
+- haendlerwort: «Herren Sneaker «All-Match»» → «Herren Sneaker» · Adresse → `herren-sneaker-613400`
+- nur-text: «Ratschen-Teleskop-Schraubendreher magnetisch» (Text)
+- nur-text: «Magnetisches 7-teiliges Schraubenzieher-Set» (Text)
+- explosion: «Explosionsgeschützte Outdoor-Hundeleine mit Bauchgurt» → «Reissfeste Outdoor-Hundeleine mit Bauchgurt» · Adresse → `reissfeste-outdoor-hundeleine-mit-bauchgurt-363264`
+- nur-text: «Kamera-Umhängetasche aus Canvas» (Text)
+- nur-text: «3-stöckiger Dampfgarer aus Edelstahl» (Text)
+- haendlerwort: «Eisblau Zirkonia Armreif – Korean Ins Style» → «Eisblau Zirkonia Armreif» · Adresse → `eisblau-zirkonia-armreif-946945`
+- nur-text: «Mini Handwärmer Powerbank 2-in-1» (Text)
+- haendlerwort: «Kinder Martin Boots – Koreanische Version» → «Kinder Martin Boots im koreanischen Stil» · Adresse → `kinder-martin-boots-im-koreanischen-stil-2bcf64`
+- nur-text: «Hundeleine für mittelgrosse bis grosse Hunde» (Text)
+- nur-text: «Ratschen-Schraubendreher-Set RT-1639» (Text)
+- explosion: «Explosionsgeschütztes Haustierhalsband» → «Reissfestes Haustierhalsband» · Adresse → `reissfestes-haustierhalsband-603100`
+- nur-text: «Adapter-Set für Sechskant auf Vierkant» (Text)
+- nur-text: «Halsband für kleine und mittelgrosse Hunde» (Text)
+- haendlerwort: «Ins Style Cartoon Nischendesign zum Aufkleben · Press-on-Nägel» → «Cartoon Nischendesign zum Aufkleben · Press-on-Nägel» · Adresse → `cartoon-nischendesign-zum-aufkleben-press-on-nagel-615000`
+- nur-text: «Reflektierendes Outdoor-Geschirrset für Haustiere» (Text)
+- haendlerwort: «Messenger Bag «Wild Ins Wind»» → «Messenger Bag» · Adresse → `messenger-bag-398464`
+- nur-text: «Verstellbarer Ratschenschlüssel, einklappbar» (Text)
+- nur-text: «Freihand-Hundeleine für grosse und mittelgrosse Hunde» (Text)
+- explosiv+uhr-modell: «Explosive Datejust Automatikuhr für Herren» → «Automatikuhr für Herren» · Adresse → `automatikuhr-fur-herren-729216`
+- haendlerwort: «Bohemian Kissenhülle mit «Ins Wind»-Design» → «Bohemian Kissenhülle» · Adresse → `bohemian-kissenhulle-416640`
+- haendlerwort: «Nordic Ins Wind Kissenhülle für Sofa» → «Nordic Kissenhülle für Sofa» · Adresse → `nordic-kissenhulle-fur-sofa-791488`
+- haendlerwort: «Hundehalsband & Leine Set im INS-Wind-Design» → «Hundehalsband & Leine Set» · Adresse → `hundehalsband-leine-set-730880`
+- explosiv: «Tragbarer Holzofen Explosion» → «Tragbarer Holzofen» · Adresse → `tragbarer-holzofen-910144`
+- nur-text: «Wasserdichte Aufbewahrungsbox für Flip» (Text)
+- haendlerwort: «Retro Canvas Schuhe All-Matching» → «Retro Canvas Schuhe» · Adresse → `retro-canvas-schuhe-606300`
+- explosiv: «Explosives Auto Modell zum Zusammenbauen» → «Auto Modell zum Zusammenbauen» · Adresse → `auto-modell-zum-zusammenbauen-230976`
+- explosiv: «Explosion Money – Retro-Herren-Umhängetasche» → «Retro-Herren-Umhängetasche» · Adresse → `retro-herren-umhangetasche-64ee3f`
+- explosion: «Halsband und Leine für Hunde, explosionsgeschützt» → «Halsband und Leine für Hunde, reissfest» · Adresse → `halsband-und-leine-fur-hunde-reissfest-122496`
+- nur-text: «Mini-Handgepäck mit Ladefunktion» (Text)
+- nur-text: «Tuyi Körperwaage mit LCD-Nachtsicht» (Text)
+- explosion: «Hunde-Zugweste atmungsaktiv, explosionsgeschützt» → «Hunde-Zugweste atmungsaktiv, reissfest» · Adresse → `hunde-zugweste-atmungsaktiv-reissfest-593856`
+- nur-text: «Taktisches Nylon-Brustgeschirr für Hunde» (Text)
+- nur-text: «Hundegeschirr-Set mit Leine und Tasche» (Text)
+- nur-text: «Freihändige, reflektierende Hundeleine mit Bauchgurt» (Text)
+- nur-text: «Hände-frei-Leine für Hunde» (Text)
+- explosion: «Explosionsgeschütztes Hunde-Geschirr-Set» → «Reissfestes Hunde-Geschirr-Set» · Adresse → `reissfestes-hunde-geschirr-set-107840`
+- nur-text: «Isolierter Schraubenzieher-Satz, 7-teilig» (Text)
+- nur-text: «Reflektierende Hundeleine mit Frosch-Schnalle» (Text)
+- explosion: «LED Leucht-Brustgeschirr explosionsgeschützt» → «LED Leucht-Brustgeschirr reissfest» · Adresse → `led-leucht-brustgeschirr-reissfest-933632`
+- explosion: «Explosionssichere 6-in-1 Hundeleine» → «Reissfeste 6-in-1 Hundeleine» · Adresse → `reissfeste-6-in-1-hundeleine-285248`
+- haendlerwort: «Hundeleine Macaron Ins Wind» → «Hundeleine Macaron» · Adresse → `hundeleine-macaron-970304`
+- explosion: «Explosionsgeschützte, elastische Hundeleine» → «Reissfeste, elastische Hundeleine» · Adresse → `reissfeste-elastische-hundeleine-073728`
+- explosion: «Lederleine mit Halsband, explosionsgeschützt» → «Lederleine mit Halsband, reissfest» · Adresse → `lederleine-mit-halsband-reissfest-621568`
+- explosion: «Hunde-Leine aus PU-Leder, explosionsgeschützt» → «Hunde-Leine aus PU-Leder, reissfest» · Adresse → `hunde-leine-aus-pu-leder-reissfest-104128`
+- explosiv: «Explosive Six-Pin Quarzuhr für Herren» → «Six-Pin Quarzuhr für Herren» · Adresse → `six-pin-quarzuhr-fur-herren-840448`
+- explosion: «Doppelkopf-Haustierleine, explosionsgeschützt» → «Doppelkopf-Haustierleine, reissfest» · Adresse → `doppelkopf-haustierleine-reissfest-472448`
+- explosion: «Hundeleine Regenbogen, explosionsgeschützt & verstellbar» → «Hundeleine Regenbogen, reissfest & verstellbar» · Adresse → `hundeleine-regenbogen-reissfest-verstellbar-771712`
+- nur-text: «Multifunktions-Schleppleine für Hunde» (Text)
+- nur-text: «Stossdämpfende Hundeleine mit Farbblock/Streifen» (Text)
+- nur-text: «Elastische Hunde-Zugleine, stossdämpfend» (Text)
+- nur-text: «Reflektierende Hunde-Leine Okinawa» (Text)
+- explosion: «Explosionsgeschütztes Brustgeschirr fürs Auto» → «Reissfestes Brustgeschirr fürs Auto» · Adresse → `reissfestes-brustgeschirr-furs-auto-283072`
+- nur-text: «Freihand-Hundeleine für mittelgrosse und grosse Hunde» (Text)
+- explosion: «Pure Color explosionssichere, einziehbare Hundeleine» → «Pure Color reissfeste, einziehbare Hundeleine» · Adresse → `pure-color-reissfeste-einziehbare-hundeleine-334c31`
+- explosion: «Hundegeschirr Okinawa, explosionsgeschützt» → «Hundegeschirr Okinawa, reissfest» · Adresse → `hundegeschirr-okinawa-reissfest-961664`
+- explosiv: «Explosive Business Quarzuhr für Herren» → «Business Quarzuhr für Herren» · Adresse → `business-quarzuhr-fur-herren-399936`
+- explosion: «Explosionsgeschütztes Hundegeschirr» → «Reissfestes Hundegeschirr» · Adresse → `reissfestes-hundegeschirr-19ab46`
+- explosion: «Explosionsgeschütztes Brustgeschirr für Haustiere» → «Reissfestes Brustgeschirr für Haustiere» · Adresse → `reissfestes-brustgeschirr-fur-haustiere-49c36a`
+- nur-text: «Hundegeschirr mit Leine, diverse Grössen» (Text)
+- nur-text: «Brustgeschirr für Hunde» (Text)
+- nur-text: «Multifunktions-Waschpistole mit Universalgelenk» (Text)
+- nur-text: «Automatische, einziehbare Leine (3m)» (Text)
+- nur-text: «Reflektierendes Hunde-Geschirr mit Leine» (Text)
+- haendlerwort: «All-Match Point-toe Hochabsatz-Sandale» → «Point-toe Hochabsatz-Sandale» · Adresse → `point-toe-hochabsatz-sandale-848832`
+- nur-text: «Labor-Schutzschuhe Herren Anti-Explosions- und Antipuncture» (Text)
+- nur-text: «Boxhandschuhe mit halben Fingern» (Text)
+- uhr-modell: «Nautilus Herrenuhr mit Stahlarmband» → «Herrenuhr mit Stahlarmband» · Adresse → `herrenuhr-mit-stahlarmband-628000`
+- explosion: «Hundegeschirr, explosionssicher» → «Hundegeschirr, reissfest» · Adresse → `hundegeschirr-reissfest-630700`
+- explosion: «Reflektierender, explosionssicherer Hundeharnisch aus Polyester» → «Reflektierender, reissfester Hundeharnisch aus Polyester» · Adresse → `reflektierender-reissfester-hundeharnisch-aus-polyester-429312`
+- nur-text: «Doppelseitiger Metallschraubenzieher für Demontage» (Text)
+- nur-text: «Rostfreie Zange mit flacher Backe» (Text)
+- nur-text: «Multifunktions-Schraubendreher-Set für Handyreparatur» (Text)
+- nur-text: «21-teiliges Handy-Demontage-Werkzeugset» (Text)
+- nur-text: «Kinder Rollkoffer mit Sitz- und Reifemöglichkeit» (Text)
+- haendlerwort: «All-Match Rucksack für Uni & Reisen» → «Rucksack für Uni & Reisen» · Adresse → `rucksack-fur-uni-reisen-096640`
+- nur-text: «Verstellbare Blumen-Halsband für Haustiere» (Text)
+- nur-text: «Einzelführleine für Hunde» (Text)
+- haendlerwort: «Plateau All-Match Stiefeletten» → «Plateau Stiefeletten» · Adresse → `plateau-stiefeletten-625100`
+- nur-text: «3-Stöckiger Induktions-Dampfgarer aus Edelstahl» (Text)
+- nur-text: «Sicheres Hundehalsband» (Text)
+- nur-text: «LED-Weste für Hunde» (Text)
+- nur-text: «Taktisches Brustgeschirr für Hunde» (Text)
+- nur-text: «Multifunktionaler Laufgurt mit Leine» (Text)
+- nur-text: «Reflektierendes Tarn-Brustgeschirr für Hunde» (Text)
+- nur-text: «Hochdruck-Autowaschpistole mit Teleskopdüse» (Text)
+- haendlerwort: «Kreative bedruckte All-Match Flach-Sneaker» → «Kreative bedruckte Flach-Sneaker» · Adresse → `kreative-bedruckte-flach-sneaker-605000`
+- haendlerwort: «Chenyue All-Match Casual Ohrringe» → «Chenyue Casual Ohrringe» · Adresse → `chenyue-casual-ohrringe-615400`
+- haendlerwort: «Blumen-Kissenbezug im Nordic Ins Stil» → «Blumen-Kissenbezug im Nordic» · Adresse → `blumen-kissenbezug-im-nordic-851392`
