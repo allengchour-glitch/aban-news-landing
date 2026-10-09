@@ -6168,3 +6168,4 @@ mary-jane-flats-mit-strass-schleifen-119554	2074374766234337281	16	11.23	ok	land
 retro-star-damen-sneaker-167042	2074384467998957570	16	11.23	ok	landeseite
 plateau-sneaker-fur-damen-613500	2607020212511614300	16	10.88	ok	landeseite
 atmungsaktive-mesh-sneaker-fur-damen-068098	2072225994104537090	16	11.23	ok	landeseite
+leichte-mesh-sneaker-mit-klettverschluss-018242	2072211147704070145	16	11.23	ok	landeseite

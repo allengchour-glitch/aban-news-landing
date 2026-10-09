@@ -267,3 +267,5 @@
 15500955222401	Farbe:4:4	2026-10-09	high-street-style-canvas-rucksack-361216
 15500954829185	Farbe:4:4	2026-10-09	solar-powerbank-20000-mah-mit-schnellladefunkt-dc4d85
 15500954435969	Farbe:5:5	2026-10-09	business-rucksack-mit-usb-ladeanschluss-591360
+15500948013441	Farbe:3:3	2026-10-09	faltbare-haustiertasche-mit-rollen-588160
+15500946899329	Farbe:2:2	2026-10-09	ballistic-nylon-laptop-rucksack-168256
