@@ -46,7 +46,7 @@ Reparatur-Läufe. Alle bekommen die Korrektur damit automatisch.
 
 ## Getan
 
-Der Bestandslauf ist SCHARF gestartet (Ledger `dropship/_dein_bezug.tsv`); Endzahlen unten. Zurückgelesen per Admin-API:
+**625 Produkte, 628 Stellen, 0 Fehler** (07:20–07:38 UTC, Ledger `dropship/_dein_bezug.tsv`); 1 unklarer Fall («Ausweis») wurde nur gross geschrieben. Zurückgelesen per Admin-API:
 «Maulbeerseiden-Gesichtsmaske für Damen» → «… Das minimalistische Design und die vollständige Gesichtsbedeckung machen sie
 …». Der Wächter läuft täglich im Aufseher (VSW-Block).
 
