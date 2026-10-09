@@ -1,0 +1,33 @@
+Ziffern-Vorlagen - EIN SATZ JE SCHRIFTART
+=========================================
+
+Hier liegen die Ziffern des FORTSCHRITTSBALKENS (weisse Schrift mit dunkler
+Kontur, wie in "2,109,940/2,200,000"). Geschnitten aus austausch/stadt.png.
+
+Vorhanden: 0 1 2 4 9        Fehlen: 3 5 6 7 8
+Der Satz reicht also nur fuer Zahlen aus genau diesen Ziffern.
+
+WICHTIG, gemessen am 04.08.: Ziffern-Saetze sind NICHT austauschbar. Dieselbe
+Ziffer aus dem Timer ("23:58:18", gruen auf dunkel) erreicht gegen die hiesige
+nur eine Aehnlichkeit von 0.37 bis 0.49. Wer einen Satz ueberall benutzt, liest
+entweder nichts oder etwas Falsches - und mit einer falsch gelesenen Zahl wird
+danach gerechnet.
+
+Darum: je Schriftart ein eigener Ordner, und in der Regel/Aufgabe angeben,
+welcher gemeint ist:
+
+  {"zahl": {"ordner": "ziffern-timer", "region": [...], "mindestens": 20}}
+
+Bisherige Saetze:
+  ziffern/         Fortschrittsbalken, weiss auf gruen   (0 1 2 4 9)
+  ziffern-timer/   Timer, gruen auf dunkel               (1 2 3 5 8)
+
+NOCH OFFEN: die HUD-Leiste der Stadt (Ausdauer/Energie). Welche Schrift die
+benutzt, ist ungeprueft - moeglicherweise eine dritte. Dafuer fehlt ein Bild;
+'teilen hud' steht als Auftrag bereit.
+
+Neuen Satz schneiden: Bildschirmfoto holen, die Ziffern-Spalten automatisch
+suchen (helle bzw. farbige Pixel je Spalte zaehlen, zusammenhaengende Gruppen
+= Zeichen), jede Ziffer einzeln ablegen. Danach IMMER zurueeklesen: dieselbe
+Zahl aus demselben Bild wieder herausholen. Besteht die Probe nicht, taugt der
+Satz nichts.

@@ -1,0 +1,17 @@
+Quelle: hud.png  (1440x2560)
+
+Kachel      x0     y0   Breite   Hoehe
+z1s1.png        0      0      480     640
+z1s2.png      480      0      480     640
+z1s3.png      960      0      480     640
+z2s1.png        0    640      480     640
+z2s2.png      480    640      480     640
+z2s3.png      960    640      480     640
+z3s1.png        0   1280      480     640
+z3s2.png      480   1280      480     640
+z3s3.png      960   1280      480     640
+z4s1.png        0   1920      480     640
+z4s2.png      480   1920      480     640
+z4s3.png      960   1920      480     640
+
+Ein Fund in einer Kachel liegt im Gesamtbild bei x0+x, y0+y.

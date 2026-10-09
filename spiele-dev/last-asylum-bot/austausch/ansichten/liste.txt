@@ -1,0 +1,30 @@
+01-04070305.png	2026-08-14 22:06:56	Schritt 17	bekannt	{'wirkungslos': 17, 'taps': 10, 'drags': 8}
+01-04070305.png	2026-08-14 23:18:41	Schritt 0	bekannt	{}
+01-09090a0a.png	2026-08-23 18:55:36	Schritt 3	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:ansichten-sammeln': 1}
+02-03030403.png	2026-08-23 18:57:40	Schritt 9	bekannt	{'task:ansichten-sammeln': 3, 'taps': 2, 'task:kalibrieren': 1}
+03-03030403.png	2026-08-23 18:58:49	Schritt 11	bekannt	{'task:ansichten-sammeln': 4, 'taps': 3, 'ansicht-gesammelt': 2}
+04-09090909.png	2026-08-28 17:19:32	Schritt 3	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:ansichten-sammeln': 1}
+05-09090909.png	2026-08-28 17:21:33	Schritt 1	bekannt	{'task:ansichten-sammeln': 1}
+06-00000000.png	2026-08-28 17:22:46	Schritt 4	bekannt	{'task:ansichten-sammeln': 2, 'rule:ladebildschirm-abwarten': 2, 'ansicht-gesammelt': 1}
+07-03030403.png	2026-08-28 17:23:55	Schritt 7	bekannt	{'task:ansichten-sammeln': 3, 'taps': 3, 'ansicht-gesammelt': 2}
+08-02040202.png	2026-08-28 17:25:51	Schritt 10	bekannt	{'taps': 7, 'task:ansichten-sammeln': 5, 'ansicht-gesammelt': 3}
+09-02010201.png	2026-08-28 17:33:05	Schritt 16	bekannt	{'taps': 10, 'task:ansichten-sammeln': 8, 'ansicht-gesammelt': 4}
+10-04030303.png	2026-08-28 17:37:20	Schritt 20	bekannt	{'taps': 12, 'task:ansichten-sammeln': 10, 'ansicht-gesammelt': 5}
+11-03030303.png	2026-08-28 17:48:18	Schritt 23	bekannt	{'taps': 13, 'task:ansichten-sammeln': 11, 'drags': 8}
+12-04030403.png	2026-08-28 17:52:40	Schritt 28	bekannt	{'taps': 17, 'task:ansichten-sammeln': 13, 'drags': 8}
+13-04070305.png	2026-08-28 18:02:21	Schritt 31	bekannt	{'taps': 19, 'drags': 16, 'task:ansichten-sammeln': 15}
+14-04030403.png	2026-08-28 18:04:50	Schritt 35	bekannt	{'taps': 20, 'task:ansichten-sammeln': 16, 'drags': 16}
+15-04070305.png	2026-08-28 18:07:25	Schritt 42	bekannt	{'taps': 25, 'task:ansichten-sammeln': 19, 'drags': 16}
+16-04070305.png	2026-08-28 18:15:59	Schritt 46	bekannt	{'taps': 28, 'drags': 24, 'task:ansichten-sammeln': 21}
+17-04070305.png	2026-08-28 18:19:34	Schritt 49	bekannt	{'taps': 29, 'drags': 24, 'task:ansichten-sammeln': 22}
+18-04070305.png	2026-08-28 18:48:59	Schritt 83	bekannt	{'taps': 46, 'task:ansichten-sammeln': 35, 'drags': 32}
+19-04070305.png	2026-08-28 18:51:16	Schritt 89	bekannt	{'taps': 49, 'task:ansichten-sammeln': 37, 'drags': 32}
+20-04070305.png	2026-08-28 19:08:37	Schritt 102	bekannt	{'taps': 67, 'task:ansichten-sammeln': 43, 'drags': 40}
+21-01010102.png	2026-08-28 19:11:46	Schritt 104	bekannt	{'taps': 68, 'task:ansichten-sammeln': 44, 'drags': 40}
+22-04030403.png	2026-08-28 19:21:29	Schritt 108	bekannt	{'taps': 71, 'drags': 48, 'task:ansichten-sammeln': 45}
+23-04030403.png	2026-08-28 19:37:46	Schritt 131	bekannt	{'taps': 83, 'task:ansichten-sammeln': 56, 'drags': 48}
+24-04070305.png	2026-08-28 19:39:52	Schritt 133	bekannt	{'taps': 88, 'task:ansichten-sammeln': 57, 'drags': 48}
+25-02030202.png	2026-08-28 20:15:09	Schritt 170	bekannt	{'taps': 106, 'task:ansichten-sammeln': 73, 'drags': 64}
+26-04070305.png	2026-08-28 23:39:45	Schritt 8	bekannt	{'task:ansichten-sammeln': 3, 'taps': 2, 'task:kalibrieren': 1}
+27-03020303.png	2026-08-29 00:03:53	Schritt 26	bekannt	{'taps': 23, 'task:ansichten-sammeln': 10, 'drags': 8}
+28-04030403.png	2026-08-29 16:23:50	Schritt 4	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:selbst-aktualisieren': 1}
