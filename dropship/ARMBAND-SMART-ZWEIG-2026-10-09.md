@@ -36,11 +36,22 @@ eingeschränkt:
 Neuimporte, die als «Bracelets» ankommen, werden am nächsten Morgen umsortiert. Mit `--nur-armband` läuft nur der zweite
 Durchgang.
 
+## Nachtrag 19:00 UTC: Ladegeräte im Watches-Zweig
+
+13 Produkte im Watches-Zweig enthalten ein Lade- oder Halterungswort. Zwei Fehler in der Regel:
+- **Ladegeräte wurden zu Smartwatches.** Die Zubehör-Regel kannte Charger, Powerbank und Ladestation nicht. Deshalb wurden
+  «Weisser Magnet-Charger für Smartwatches», «Smartwatch-Ladestation» und «Kabellose Powerbank für Smartwatches» als
+  Smartwatch eingeordnet.
+- **Smartwatches blieben grobe «Watches».** Das Ausschlusswort «wireless charging» hielt «Smartwatch mit … Wireless Charging»
+  dort fest.
+
+Beides ist behoben, und die Kanarien sind von 39 auf 46 gestiegen, alle 46/46 bestanden. **Live 5/0.**
+
+Bleibt unverändert und wird nur gemeldet: «3-in-1 Magnethalterung für iPhone, Apple Watch & AirPods» und «3-in-1 Ladestation
+mit Uhr». Beides sind Mehrgeräte-Halter; ihre Einordnung (Elektronik > Power) gehört nicht in die Uhrenregel.
+
 ## Offen
 
-- **Ladegeräte mit Uhren-Kategorie:** Ladestationen und Halterungen für mehrere Geräte stehen noch unter Watches, z. B.
-  «3-in-1 Ladestation mit Uhr» und «3-in-1 Magnethalterung für iPhone, Apple Watch». Richtig wäre Electronics > Power. Diese
-  Grenze gehört nicht in die Uhrenregel, sondern in eine Elektronik-Regel.
 - **Smart Ring:** Steht unter «Rings». Google hat keine passende Klasse.
 
 ## Lehre
