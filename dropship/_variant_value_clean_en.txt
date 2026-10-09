@@ -20125,3 +20125,83 @@ gid://shopify/Product/16611920478599	Farbe	gid://shopify/ProductOptionValue/5835
 gid://shopify/Product/16611920478599	Farbe	gid://shopify/ProductOptionValue/58359849353607	Gold 6CM	Gold 6 cm	2026-10-08T16:41Z
 gid://shopify/Product/16611920478599	Farbe	gid://shopify/ProductOptionValue/58359849386375	Gold 8.5CM	Gold 8.5 cm	2026-10-08T16:41Z
 gid://shopify/Product/16612097884551	Farbe	gid://shopify/ProductOptionValue/58366819402119	Deep Coffee	Dunkelkaffeebraun	2026-10-08T16:41Z
+gid://shopify/Product/16612342366599	Farbe	gid://shopify/ProductOptionValue/58370980086151	461 Red	461 Rot	2026-10-09T15:52Z
+gid://shopify/Product/16612342366599	Farbe	gid://shopify/ProductOptionValue/58370980118919	461 Brown	461 Braun	2026-10-09T15:52Z
+gid://shopify/Product/16612342366599	Farbe	gid://shopify/ProductOptionValue/58370980151687	461 Gray	461 Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982379911	38-Gray	38-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982412679	38-Black	38-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982543751	38-Black Plus Velvet	38-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982576519	38-Yellow With Fleece Lining	38-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982609287	38-Khaki With Velvet Lining	38-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982642055	39-Gray	39-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982674823	39-Black	39-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982805895	39-Black Plus Velvet	39-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982838663	39-Yellow With Fleece Lining	39-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982871431	39-Khaki With Velvet Lining	39-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982904199	41-Gray	41-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370982936967	41-Black	41-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983068039	41-Black Plus Velvet	41-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983100807	41-Yellow With Fleece Lining	41-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983133575	41-Khaki With Velvet Lining	41-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983166343	42-Gray	42-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983199111	42-Black	42-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983330183	42-Black Plus Velvet	42-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983362951	42-Yellow With Fleece Lining	42-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983395719	42-Khaki With Velvet Lining	42-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983428487	43-Gray	43-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983461255	43-Black	43-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983592327	43-Black Plus Velvet	43-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983625095	43-Yellow With Fleece Lining	43-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983657863	43-Khaki With Velvet Lining	43-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983690631	44-Gray	44-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983723399	44-Black	44-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983854471	44-Black Plus Velvet	44-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983887239	44-Yellow With Fleece Lining	44-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983920007	44-Khaki With Velvet Lining	44-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983952775	45-Gray	45-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370983985543	45-Black	45-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984116615	45-Black Plus Velvet	45-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984149383	45-Yellow With Fleece Lining	45-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984182151	45-Khaki With Velvet Lining	45-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984214919	46-Gray	46-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984247687	46-Black	46-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984378759	46-Black Plus Velvet	46-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984411527	46-Yellow With Fleece Lining	46-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984444295	46-Khaki With Velvet Lining	46-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984477063	47-Gray	47-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984509831	47-Black	47-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984640903	47-Black Plus Velvet	47-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984673671	47-Yellow With Fleece Lining	47-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984706439	47-Khaki With Velvet Lining	47-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984739207	48-Gray	48-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984771975	48-Black	48-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984903047	48-Black Plus Velvet	48-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984935815	48-Yellow With Fleece Lining	48-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370984968583	48-Khaki With Velvet Lining	48-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370985001351	40-Gray	40-Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370985034119	40-Black	40-Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370985165191	40-Black Plus Velvet	40-Schwarz, gefüttert	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370985197959	40-Yellow With Fleece Lining	40-Gelb mit Fleecefutter	2026-10-09T15:52Z
+gid://shopify/Product/16612342563207	Farbe	gid://shopify/ProductOptionValue/58370985230727	40-Khaki With Velvet Lining	40-Khaki mit Samtfutter	2026-10-09T15:52Z
+gid://shopify/Product/16612773593479	Farbe	gid://shopify/ProductOptionValue/58373276959111	099 Black	099 Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16612773593479	Farbe	gid://shopify/ProductOptionValue/58373276991879	099 grey	099 Grau	2026-10-09T15:52Z
+gid://shopify/Product/16612773593479	Farbe	gid://shopify/ProductOptionValue/58373277024647	099 khaki	099 Khaki	2026-10-09T15:52Z
+gid://shopify/Product/16612791746951	Farbe	gid://shopify/ProductOptionValue/58373768085895	Apricot-3XS	Aprikose-3XS	2026-10-09T15:52Z
+gid://shopify/Product/16612791746951	Farbe	gid://shopify/ProductOptionValue/58373768151431	White-3XS	Weiss-3XS	2026-10-09T15:52Z
+gid://shopify/Product/16612791746951	Farbe	gid://shopify/ProductOptionValue/58373768216967	Sapphire Blue-3XS	Saphirblau-3XS	2026-10-09T15:52Z
+gid://shopify/Product/16612791746951	Farbe	gid://shopify/ProductOptionValue/58373768282503	Rose Red-3XS	Rosarot-3XS	2026-10-09T15:52Z
+gid://shopify/Product/16613406474631	Farbe	gid://shopify/ProductOptionValue/58380487688583	Red-3Y	Rot-3Y	2026-10-09T15:52Z
+gid://shopify/Product/16613406474631	Farbe	gid://shopify/ProductOptionValue/58380487852423	Purple-3Y	Lila-3Y	2026-10-09T15:52Z
+gid://shopify/Product/16613406474631	Farbe	gid://shopify/ProductOptionValue/58380488016263	Light Green-3Y	Hellgrün-3Y	2026-10-09T15:52Z
+gid://shopify/Product/16613406474631	Farbe	gid://shopify/ProductOptionValue/58380488180103	Dark Pink Q-3Y	Dunkelrosa Q-3Y	2026-10-09T15:52Z
+gid://shopify/Product/16613406474631	Farbe	gid://shopify/ProductOptionValue/58380488343943	Yellow-3Y	Gelb-3Y	2026-10-09T15:52Z
+gid://shopify/Product/16613406867847	Farbe	gid://shopify/ProductOptionValue/58380492767623	Brown Brown Plaid	Braun kariert	2026-10-09T15:52Z
+gid://shopify/Product/16613449138567	Farbe	gid://shopify/ProductOptionValue/58380912492935	Black Mixed With Light Gray	Schwarz gemischt mit Hellgrau	2026-10-09T15:52Z
+gid://shopify/Product/16613449138567	Farbe	gid://shopify/ProductOptionValue/58380912525703	Light Gray Mixed With White	Hellgrau gemischt mit Weiss	2026-10-09T15:52Z
+gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/58380914327943	8899 Black	8899 Schwarz	2026-10-09T15:52Z
+gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/58380914360711	8899 Dark Gray	8899 Dunkelgrau	2026-10-09T15:52Z
+gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/58380914393479	8899 Haze Blue	8899 Dunstblau	2026-10-09T15:52Z
+gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/58380914426247	8899 Medium Gray	8899 Mittelgrau	2026-10-09T15:52Z
+gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/58380914459015	8899 Purplish Blue	8899 Violettblau	2026-10-09T15:52Z
+gid://shopify/Product/16613495996807	Farbe	gid://shopify/ProductOptionValue/58381324419463	Black A	Schwarz A	2026-10-09T15:52Z
+gid://shopify/Product/16613495996807	Farbe	gid://shopify/ProductOptionValue/58381324452231	Black B	Schwarz B	2026-10-09T15:52Z

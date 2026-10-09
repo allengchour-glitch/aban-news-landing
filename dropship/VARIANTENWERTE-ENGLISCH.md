@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-09 13:22 UTC, Stand 2026-10-09 15:44 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-09 13:22 UTC, Stand 2026-10-09 15:52 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **50'400**
-- Optionen mit englischen Werten (Kandidaten): 3'000
-- Optionen übersetzt: **0** · Werte übersetzt: **0**
-- Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 15'627
+- Produkte gesehen: **52'127**
+- Optionen mit englischen Werten (Kandidaten): 3'048
+- Optionen übersetzt: **9** · Werte übersetzt: **80**
+- Optionen nur codebereinigt: 1
+- Werte mit unbekanntem Wort (unverändert): 15'783
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 76
+- übersprungen «kleidungsstueck-im-wert»: 82
 - übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -52,6 +52,8 @@
 - `16603331658119` [Farbe] **Lange Steppweste mit Kapuze** — jacke, weste: Black Vest Jacket | Khaki Cotton Jacket Vest Coat | Brown Cotton Coat Vest Coat
 - `16603338408327` [Farbe] **Slim-Fit Daunenjacke mit weisser Federfüllung** — pullover: Beige Hooded | Light Purple Hoodie | Black Hooded | Navy Blue Hooded | Rose Red Hooded | White Hooded | Bean Green Hooded
 - `16603765899655` [Farbe] **Baby Strick-Set mit Hose und Haarband · 3 Stück** — hose, pullover · Titel nennt Set: Cardigan Sweater | Knitted Pants | Hair Band | Three Piece Set
+- `16613406179719` [Farbe] **Strick-Set für Mädchen – Pullover & Shorts** — jacke, overall · Titel nennt Set: Romper Grape Red | Coat Grape Red | Romper Apricot | Coat Apricot
+- `16613406966151` [Farbe] **Baby-Overall aus Baumwolle** — overall, weste: Beige Romper | Coffee Color Romper | Beige Vest | Coffee Vest | Pink | Hellgrau | Grün | Blau
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -136,5 +138,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 572, `light` 449, `color` 404, `shell` 162, `degrees` 159, `size` 153, `⟨satzbau:material-vor-farbe⟩` 149, `core` 137, `surface` 130, `powder` 126, `⟨satzbau:nomen-nomen⟩` 117, `shoes` 113, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `belt` 96, `three` 96, `four` 95, `bag` 93, `french` 89, `rain` 88, `yards` 88, `case` 87, `dinosaur` 86, `code` 85, `dark` 83, `opp` 81, `to` 79, `buckle` 78, `cloth` 78, `spring` 75, `rope` 75, `bottom` 75, `dual` 71, `chain` 70, `autumn` 69, `petal` 68, `half` 67, `little` 66, `hat` 66, `net` 64, `base` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `bear` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 58, `electric` 56, `rice` 55, `rainbow` 55, `night` 54
+`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 584, `light` 451, `color` 409, `shell` 162, `degrees` 159, `size` 153, `⟨satzbau:material-vor-farbe⟩` 151, `core` 137, `surface` 130, `powder` 127, `⟨satzbau:nomen-nomen⟩` 118, `shoes` 113, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `belt` 96, `three` 96, `four` 95, `bag` 93, `french` 89, `rain` 88, `yards` 88, `case` 87, `dinosaur` 87, `to` 87, `code` 85, `dark` 83, `opp` 81, `buckle` 78, `cloth` 78, `bottom` 78, `cherry` 76, `spring` 75, `rope` 75, `dual` 71, `chain` 70, `autumn` 69, `half` 69, `bear` 68, `net` 68, `petal` 68, `little` 67, `hat` 66, `base` 63, `strap` 62, `feet` 62, `mother` 61, `insole` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 58, `rainbow` 57, `electric` 56, `rice` 55, `background` 54
 
