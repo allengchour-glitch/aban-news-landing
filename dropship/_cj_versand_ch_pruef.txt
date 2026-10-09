@@ -6225,3 +6225,7 @@ franzosische-mary-janes-mit-verstecktem-platea-228418	2070745642363891713	16	11.
 plateau-fashion-sneakers-608100	2606260957371608800	16	13.16	ok	landeseite
 herren-casual-boots-aus-leder-604800	2607070228201605500	16	23.15	ok	landeseite
 chelsea-boots-fur-herren-631700	2603110530481632100	16	14.37	ok	landeseite
+chelsea-boots-wildleder-high-top-602400	2603030755191602800	16	16.16	ok	landeseite
+herren-winterstiefel-mit-rutschfester-sohle-604400	2601210327121604900	16	11.84	ok	landeseite
+militar-sicherheitsstiefel-mit-stahlkappe-639100	2601200419281639600	16	19.42	ok	landeseite
+herren-retro-thermostiefel-mit-reissverschluss-615100	2601190448021615500	16	19.06	ok	landeseite
