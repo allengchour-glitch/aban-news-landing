@@ -49,6 +49,30 @@
 
 
 
+## 🧩 Neuware ohne Auswahl: der Wächter sah sie nie (2026-10-09, 20:55 UTC, Verbesserungsrunde)
+
+**Gemessen:**
+- 452 aktive Neuimporte in 24 h, davon 320 mit EINER Variante (alle `cj-real`).
+- Stichprobe 40 bei CJ: 30 davon mit mehreren Varianten (Hundepulli «– S», Napf «– M», Yogamatte 3 Farben).
+
+**Ursache:**
+- `cj_category_fill.mjs` baut Varianten nur bei `grp.fashion`.
+- `wahlSicher()` entfernt das Wahl-Versprechen aus dem Text.
+- Die Klassenliste des Nachrüsters besteht aus Produkten MIT Wahl-Versprechen, also kam Neuware nie hinein.
+- Folge: Die Kundin kann nicht wählen, und der Bestell-Automat stellt auf «manuell prüfen».
+
+**Getan:** Der Aufseher misst jetzt stündlich jede aktive Ein-Varianten-CJ-Ware der letzten 3 Tage
+(`QUERY created_at:>=heute−3`, LIMIT 1500, eigener BERICHT). Der Nachrüster baut die Auswahl aus derselben Messdatei.
+
+**Lehre:** Die Eingangsliste eines Wächters darf nicht aus einem Merkmal bestehen, das der Importer selbst entfernt. Gefragt
+wird am Bestand («wie viele Varianten führt CJ?»), nicht am Text.
+
+**Offen:**
+- Altbestand ~30k ungemessen (95 % mehrfach in der bisherigen Messung).
+- Importer an der Quelle: `plane_optionen`-Logik nach JS portieren.
+
+→ `dropship/AUSWAHL-NEUIMPORTE-2026-10-09.md`
+
 ## 🪡 Ersatz und Korrektur brauchen die Ware: toter Blog-Link (8 Artikel) + Titel-Rückstand 111 (2026-10-09, 20:45 UTC, «weiter»)
 
 **Was war:**
@@ -19430,3 +19454,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🗂️ **«ordne alles sauber ein»: Einzelurteile vom 07.10. hatten Zweigwechsel verboten → 6'054 neu MIT Zweigwechsel (10 Prüfer, Midi verworfen, nie gröber) 2'662/0 per Bulk-Mutation inkl. Metafeld (Rücklesen 30/30); Trachten aus Kostümen per `shopify_fein`-«umzug» 91/0; `nagel_fein.py` Press-on nach Grössenoption/Beschreibung 130/0; `kosmetik_fein.lauf` hätte 262 Shopify- + 82 Google-Feinwerte täglich vergröbert → nie vergröbern; Nachtrag «weiter»: 109 Press-on-Titel ehrlich («Nagelsticker» → «Press-on-Nägel», nur mit Beschreibungs-Beleg), keine-zuordnung 14 → 1.** Jeder Wächter braucht «feiner = einig» für beide Felder → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
 - 2026-10-08 · 🧥 **«weiter feinkategorie verbessern»: Shopify bei 27'897 auf Klassen MIT Unterklassen, Google darunter ohne Blatt (Oberteile 4'671, Taschen, Hosen, Ladegeräte, Halsbänder, Leinen, Jacken, Näpfe, Kissen) → `shopify_fein.py` + EINE Regeldatei `data/shopify_fein.json`, Kanarien 164/164, 8'279/0 + Runde 2 «weiter» 15 Klassen 1'839/0 (Kanarien 510/510, Rücklesen 30/30+30/30, Kostüme ohne Google mitgenommen) per Bulk-Mutation (einzeln 20/min neben Lese-Scan); Ringe/Rucksäcke/Kostüme bewusst grob.** Blatt-Prüfung je Taxonomie; ab ~200 Produkten Bulk → `dropship/FEINKATALOG-SHOPIFY-UNTERKLASSEN-2026-10-08.md`
 - 2026-10-08 · 👟🧸 **«verbessere feinkataloge» / «saubere trennung»: 5'646 Schuhe nur auf Shopify «Shoes» (Google hat kein Blatt darunter → kategorie_fein kam nie weiter) → `schuhe_fein.py` (13 Klassen, 52/52); CJ-Gruppe stempelte Bausteinen Typ «Spass-Elektronik» + Tag rc (841/1'040 rc nicht ferngesteuert, alle in der RC-Kollektion) → `spielzeug_trennung.py` + Importer-Regel (eine JSON, py=js 1'040/0); 772 Oberklassen per Einzelurteil MIT Zweigwechsel (07.10. verboten → «bleibt»).** «Einig» ≠ «fein»; Gruppen-Stempel ≠ Warenurteil → `dropship/FEINKATALOG-SCHUHE-SPIELZEUG-2026-10-08.md`
+- 2026-10-08 · ⚡ **«mehr verbesserung» (Tag 11 ✅): Startseite lud beim Öffnen 150 Bilddateien / 9'390 KB (sichtbar 2) — Horizon `product-card.js` nahm jedem Karussell-Zweitbild das lazy weg (16 Reihen, `width=832`), Cover immer eager → `mobil_tempo_patch_2.py` (Zweitbild nach Erstbild, sizes = Kartenbreite; Cover lazy ab Sektion 3), vorher per Playwright-`route` getestet; live 38 / 1'008 KB, Scroll 0 leer; Wächter `startseite_bildlast.mjs`.** Server-HTML ≠ DOM; Bilder je URL zählen → `dropship/MOBIL-TEMPO-2-2026-10-08.md`

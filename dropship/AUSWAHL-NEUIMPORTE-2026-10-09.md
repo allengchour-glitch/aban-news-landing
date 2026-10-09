@@ -10,7 +10,7 @@
   Näpfe, Yogamatte, Smartwatch-Armbänder.
 
 **Stichprobe:** 40 zufällig gezogene dieser 320 bei CJ gemessen (`LISTE=… auswahl_fehlt_messen.py`, Vorrang-Weg). Ergebnis:
-STICHPROBE_ERGEBNIS. Beispiele mit mehreren CJ-Varianten:
+**30 von 40 (75 %) mit mehreren CJ-Varianten**, bei 28 davon hängen alle Variantenbilder schon am Produkt (hochgerechnet ~240 der 320 aus 24 h). Beispiele mit mehreren CJ-Varianten:
 
 | Shop-Produkt | CJ-Varianten | Beispiel-Schlüssel |
 |---|---|---|
