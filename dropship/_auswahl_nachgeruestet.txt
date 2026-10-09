@@ -603,3 +603,5 @@
 15497457533313	Muster:4:4+ki	2026-10-09	faltbarer-mini-spiegel-mit-kamm-629400
 15497431974273	Farbe:7:7+ki	2026-10-09	herrenuhr-stahlband-leuchtend-wasserdicht-846016
 16612711465351	Farbe:3+Grösse:2:6	2026-10-09	silicone-hundeschussel-doppel-618730
+16604954591623	Ausführung:2:2+ki	2026-10-09	weihnachtsgirlande-handschuh-design-mit-lichte-647500
+15491048472961	Farbe:2:2+ki	2026-10-09	babybett-im-uterus-design-aus-reiner-baumwolle-626500
