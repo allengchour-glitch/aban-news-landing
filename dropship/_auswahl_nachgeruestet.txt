@@ -507,3 +507,4 @@
 15502252048769	Farbe:3:3+ki	2026-10-09	wasserdichte-sport-quarzuhr-fur-herren-250816
 15502185464193	Motiv:3+Grösse:3:9+ki	2026-10-09	herren-lederarmband-im-wikinger-stil-636800
 15502181925249	Modell:9:9+ki	2026-10-09	programmierbarer-roboter-bausteine-600100
+15502138605953	Farbe:4:4+ki	2026-10-09	multifunktionales-fitness-board-upgrade-625800
