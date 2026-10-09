@@ -6560,3 +6560,7 @@ vielseitige-chunky-heel-sandalen-605800	2606110231511606500	16	11.96	ok	landesei
 glanzende-mesh-mules-mit-spitzer-zehenpartie-615200	2606110223261616500	16	11.37	ok	landeseite
 bequeme-stiletto-sandalen-mit-eckiger-spitze-616200	2606110203571616700	16	12.56	ok	landeseite
 schicke-sandalen-fur-den-alltag-605700	2606100846271606300	16	8.39	ok	landeseite
+minimalistische-espadrille-sandalen-628000	2606100742191628800	16	13.40	ok	landeseite
+elegante-leder-pumps-fur-fruhling-und-herbst-600700	2606100620221601400	16	11.96	ok	landeseite
+lackleder-plateau-sandalen-fur-damen-607100	2606100500561607700	16	11.96	ok	landeseite
+elegante-riemchen-stilettos-aus-leder-603500	2606091038331604200	16	13.65	ok	landeseite
