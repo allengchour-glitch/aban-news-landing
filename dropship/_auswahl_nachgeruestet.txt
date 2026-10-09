@@ -558,3 +558,4 @@
 15500343705985	Farbe:3:3	2026-10-09	rc-mini-flugzeug-mit-induktionssteuerung-138240
 15500282659201	Farbe:2+Leistung:2:4	2026-10-09	kabelloses-ladegerat-fur-smartphone-vertikal-541312
 15500280594817	Farbe:4+Grösse:7:28	2026-10-09	seiden-kissenbezug-mit-reissverschluss-080384
+15493811700097	Ausführung:2:2+ki	2026-10-09	ukulele-gurt-mit-stickerei-608500
