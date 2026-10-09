@@ -6207,3 +6207,15 @@ ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite
 anime-figur-27bb4e	-	-	-	unklar keine CJ-SKU	landeseite
 mini-drohne-aerox-mit-hd-kamera-934401	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 interaktiver-ball-mit-seilen-fur-hunde-357633	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+4er-set-pvc-fussmatten-fur-auto-suv-truck-schn-525954	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+damen-leder-slipper-mit-weicher-sohle-636600	2606300801391637300	16	11.37	ok	landeseite
+keile-absatz-mules-mit-weicher-sohle-626600	2606300758161627200	16	13.76	ok	landeseite
+keilabsatz-schuhe-fur-damen-mit-reissverschlus-611200	2606300756031611900	16	12.56	ok	landeseite
+britische-slip-on-loafer-mit-chunky-absatz-624300	2606300713361624900	16	11.27	ok	landeseite
+mary-jane-strick-ballerinas-604800	2606300535161605400	16	10.55	ok	landeseite
+damen-color-block-freizeit-sneaker-614300	2606300140301614900	16	13.16	ok	landeseite
+ballet-flats-mary-jane-wildleder-555137	2071408030671024130	16	11.23	ok	landeseite
+mary-jane-plateau-schuhe-mit-blockabsatz-782658	2071412152803635202	16	11.23	ok	landeseite
