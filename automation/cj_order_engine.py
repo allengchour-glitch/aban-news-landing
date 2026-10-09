@@ -283,13 +283,19 @@ def vid_fuer(sku, variant_title):
                   f"({len(treffer)} Treffer unter {len(vs)}: {keys}) — manuell bestellen")
 
 
-def fracht(produkte):
+LAENDER = {"CH": ("Switzerland", "Bern"), "LI": ("Liechtenstein", "Liechtenstein")}   # 09.10.2026: Markt CH + LI
+
+
+def fracht(produkte, land="CH"):
     """Fracht fuer ALLE Artikel der Bestellung zusammen.
+    09.10.2026: Ziel = Lieferland der Bestellung. Liechtenstein ist seit heute im Markt; CJ fuehrt dorthin andere
+    Linien (gemessen: 4 Optionen ab USD 13.89, 15–60 Tage) als in die Schweiz (16 ab USD 8.66) — mit festem «CH»
+    haette der Automat eine Linie gewaehlt, die es nach Vaduz gar nicht gibt.
     ⚠️ Frueher wurde nur der erste Artikel uebergeben — bei Mehrpositions-Bestellungen war die
     Fracht dadurch zu niedrig angesetzt, die Marge zu optimistisch, und CJ verlangte spaeter den
     echten (hoeheren) Betrag."""
     d = cj("/api2.0/v1/logistic/freightCalculate",
-           {"startCountryCode": "CN", "endCountryCode": "CH", "products": produkte})
+           {"startCountryCode": "CN", "endCountryCode": land, "products": produkte})
     return [o for o in (d.get("data") or []) if o.get("logisticPrice") is not None]
 
 
@@ -446,10 +452,15 @@ def main():
             melde(f"{o['name']}-variante", f"⚠️ Bestellung {o['name']}: Variante nicht gefunden", f"{fehler[:180]}")
             continue
 
-        opts = fracht(produkte)
+        land = (sa.get("countryCodeV2") or "CH").upper()
+        if land not in LAENDER:
+            print(f"  {o['name']}: ⚠️ Lieferland {land} ist nicht freigegeben", flush=True)
+            melde(f"{o['name']}-land", f"⚠️ Bestellung {o['name']}: Lieferland {land}", "Nur CH und LI sind freigegeben — manuell prüfen.")
+            continue
+        opts = fracht(produkte, land)
         if not opts:
-            print(f"  {o['name']}: ⚠️ keine Versandoption in die CH", flush=True)
-            melde(f"{o['name']}-versand", f"⚠️ Bestellung {o['name']}: kein CJ-Versand in die CH", "CJ bietet für diese Ware keine Versandoption in die Schweiz — Kunde informieren oder erstatten.")
+            print(f"  {o['name']}: ⚠️ keine Versandoption nach {land}", flush=True)
+            melde(f"{o['name']}-versand", f"⚠️ Bestellung {o['name']}: kein CJ-Versand nach {LAENDER[land][0]}", f"CJ bietet für diese Ware keine Versandoption nach {LAENDER[land][0]} — Kunde informieren oder erstatten.")
             continue
         vk = float(o["totalPriceSet"]["shopMoney"]["amount"])
         wahl, hinweise = waehle_versand(opts, ware_usd, vk)
@@ -464,9 +475,9 @@ def main():
         body = {
             "orderNumber": f"LX{nr}",
             "shippingZip": sa.get("zip") or "",
-            "shippingCountryCode": sa.get("countryCodeV2") or "CH",
-            "shippingCountry": "Switzerland",
-            "shippingProvince": sa.get("province") or "Bern",
+            "shippingCountryCode": land,
+            "shippingCountry": LAENDER[land][0],
+            "shippingProvince": sa.get("province") or LAENDER[land][1],
             "shippingCity": sa.get("city") or "",
             "shippingAddress": " ".join(x for x in [sa.get("address1"), sa.get("address2")] if x),
             "shippingCustomerName": sa.get("name") or "",
