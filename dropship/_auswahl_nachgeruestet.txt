@@ -253,3 +253,4 @@
 15500972589441	Modell:4:4	2026-10-09	sofa-kissenbezug-mit-geometrischem-muster-598400
 15500971901313	Farbe:2:2	2026-10-09	multifunktionales-fitness-board-faltbar-608400
 15500971704705	Farbe:3:3	2026-10-09	fressnapf-aus-edelstahl-mit-erhohtem-rand-611000
+15500971671937	Farbe:2:2	2026-10-09	reise-schmuckbox-aus-samt-612700
