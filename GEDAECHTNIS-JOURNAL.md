@@ -45,6 +45,22 @@
 
 
 
+
+## ⌚ Gruppenstempel «Elektronik» nahm 1'089 Uhren aus «Schmuck & Uhren» (2026-10-09, 16:45 UTC, Verbesserungsrunde)
+**Gemessen:** Neuimporte 4 h: 79 mit Typ «Elektronik», nur 11 bei Google Elektronik. Bestand: 3'006 aktive «Elektronik», davon
+1'089 unter Schmuck (875 Watches, 186 Watch Accessories, 26 Bracelets). Die Menü-Kollektion «Schmuck & Uhren» filtert nach
+TYP → keines davon sichtbar; 196 ohne Tag «uhren» fehlten auch in «Uhren». Ursache: CJ-Gruppe «elektronik» in
+cj_category_fill.mjs stempelt type:'Elektronik' auf jeden Import; typAusKategorie greift nur bei Sammeltypen.
+**Getan:** EINE Regel `data/gruppenstempel_typ.json` = `gruppenstempel_typ.py` (Bestand, täglich, Sperre aus
+produkttyp_vereinheitlichen + ODER-Kollektion hält über Tag) = `gruppenstempel_typ.mjs` im Importer (zusätzlich Uhrwort-Weg,
+weil googleKategorie() beim Import «Electronics» liefert; Wecker/Wanduhr/Stoppuhr ausgenommen). Kanarien 27/27 + 9/9, py=js
+6'012/0. **883/883 Typ (877 Uhren, 6 Schmuck) + 91/91 Tag «uhren»**; «Schmuck & Uhren» 6'499 → 7'382, «Elektronik & Gadgets»
+unverändert 6'051. Bericht `dropship/GRUPPENSTEMPEL-TYP-2026-10-09.md`.
+**Lehren:** (1) Eine Typ-Kollektion verliert jedes Produkt mit Gruppenstempel — sichtbar nur an der Kollektion, nie am
+Produkt. Bei jedem Gruppenstempel fragen: welche Kollektionen hängen am TYP? (2) Eine Kollektions-Sperre, die nur
+TYPE-Regeln liest, sperrt zu viel: «Elektronik & Gadgets» = TYPE ODER Tag — ohne Tag-Prüfung wären alle 883 gesperrt
+geblieben. (3) Die Sichtung der 60 «Schmuck»-Fälle fand Uhrenarmbänder ohne Uhrwort und Pulsmesser — die Kategorie (Uhren-
+Zweig) ist dort der bessere Zeuge als der Titel.
 ## 🏷️ Lieferantencodes im Farbfeld — «alle oder keiner» lässt gemischte Listen durch (2026-10-09, 16:20 UTC, «weiter»)
 **Gemessen:** 124 aktive Produkte mit reinen Lieferantencodes im Auswahlfeld «Farbe»/«Ausführung» («QW121», «YT6419113017»,
 «040401», «MFH3IUW75B08E11» neben «Blau», «ZQ202201025» neben «Muster 13–19»); 12 davon Importe seit September.
@@ -19337,3 +19353,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 👗 **«weiter fein katalog verbessern»: Titelprobe-Ablehnungen (233) waren meist Google-Fehler (142 «Dresses» = Röcke/Blusen/Nachthemden) → `titelprobe_fein.py` 172/0; Kollektion Kleider/Röcke hing am CJ-Kategorienamen → `kleid_rock_tags.py` 453/0 + Importer `kleidRockTag()` (eine Wortregel, py=js 0 Abw.); 328 Einzelurteile 245/0 mit Regel-Vorrang; Zweig 243→69, Titelprobe 233→5; Printful fällt auf Grobklasse zurück (363/432) → Zähler `rueckfall-grob`.** → `dropship/FEINKATALOG-KLEID-ROCK-2026-10-08.md`
 - 2026-10-08 · 🔎 **«weiter»: Google-Wächter zählte 291 «Personalized advertising»-Meldungen (Ziel `[]`, Regel betrifft nur Zielgruppen) als Gratis-Eintrag-Blocker → `nur_personalisiert`, 1'114 → 823, Bildtausch-Bilanz unverändert; `[]` auch bei Bild-/Adult-Klassen = unbelegt, nur gezählt.** Meldung ≠ Blocker: was regelt die Regel? → Journal 08.10. 07:30
 - 2026-10-08 · 📝 **«verbessere weiter» (Tag 10 ✅): Mengen in Kollektionstexten veraltet («über 7'000» bei 4'913 aktiven, «rund 160» bei 250) → `kollektion_mengen_wache.py` täglich (3/0); 7 Saison-/Geschenkwelt-Texte nach Messung (Weihnachten «grösster Teil Pullover» falsch, «garantiert/handverlesen» raus); Ratgeber Herbst-Deko 1'085 → 3'200 Z. + Weihnachten→Geschenkwelten; tote Ratgeber-Links 2 → 0; «Winter & Kälte» per Tag (27 Fremdartikel).** Zahl im Text = Behauptung mit Verfallsdatum; vor Regelwechsel Mitglieder abgleichen → `dropship/SEO-TAG10-2026-10-08.md`
+- 2026-10-08 · 🚚 **«verbessere alles und sauber»: Leinen-Set (41 Sitz./2 Warenkörbe/0 Käufe) versprach bei Google «schnelle Lieferung» bei 10–20 Werktagen → 118/0 bereinigt (107 SEO, 4 «Qualität geprüft», 6 «meistverkauft», 1 «sofort lieferbar»), `versprechen_wache.py` täglich + Importer-Hook (py=js 19/19), 5 Generatoren an der Quelle; Büro-Menü: Typ als Beleg (CJ-Sammelkorb) → 25 Fremdartikel raus, 14 Typen (`buero_korb_typ.py`).** Einmal-Fix ohne Wächter kommt zurück; Typ aus Sammelgruppe ist kein Beleg → `dropship/VERSPRECHEN-BUERO-2026-10-08.md`

@@ -23,7 +23,9 @@ import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
-import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';   // 09.10.2026: Codes im Farbfeld → «Modell N»
+import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';
+import { stempelKorrigieren, kanarienGruen as stempelKanarien } from './gruppenstempel_typ.mjs';   // 09.10.2026: Uhren nicht als «Elektronik»
+const GRUPPENSTEMPEL_OK=stempelKanarien(); if(!GRUPPENSTEMPEL_OK)console.error('gruppenstempel_typ: Kanarien rot — Typ bleibt');   // 09.10.2026: Codes im Farbfeld → «Modell N»
 const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
 import { heikelZweck } from './heikel_zweck.mjs';
 // ⚠️ 21.08.2026: Diese Zeile FEHLTE, während `echoVomLieferanten` an drei Stellen (708/710/714)
@@ -924,6 +926,10 @@ for(const [cat,label] of grp.cats){
    if(['Trend-Produkt','Trend-Gadget','Gadget','Gadgets'].includes(typeFinal)){
      const tk=typAusKategorie(googleKategorie(title,tagsFinal,typeFinal),title); if(tk) typeFinal=tk;
    }
+   // 09.10.2026: Gruppenstempel «Elektronik» auf Uhren/Armbändern — 1'089 aktive fehlten in «Schmuck & Uhren» (Typ-Regel).
+   // Regel data/gruppenstempel_typ.json (= Bestand-Wächter gruppenstempel_typ.py); Tag «elektronik» bleibt.
+   if(GRUPPENSTEMPEL_OK){ const sk=stempelKorrigieren(typeFinal,googleKategorie(title,tagsFinal,typeFinal),title,tagsFinal);
+     if(sk){ typeFinal=sk.typ; tagsFinal=sk.tags; } }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
     status:(med||tsch||ess)?'DRAFT':'ACTIVE',
     tags:[...tagsFinal,
