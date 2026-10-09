@@ -114,8 +114,11 @@ with tempfile.TemporaryDirectory() as tmp:
 
 # ── Cockpit: Daten, Webserver, Not-Aus ──
 with tempfile.TemporaryDirectory() as tmp:
-    alt = (C.DATA, C.STOP)
-    C.DATA, C.STOP = Path(tmp), Path(tmp) / "STOP"
+    alt = (C.DATA, C.STOP, C.PAUSE)
+    C.DATA, C.STOP, C.PAUSE = Path(tmp), Path(tmp) / "STOP", Path(tmp) / "PAUSE"
+    import sperre as Sp
+    alt_sperre = Sp.ORDNER
+    Sp.ORDNER = Path(tmp)
     try:
         (Path(tmp) / "krypto-pilot.json").write_text(json.dumps({"entscheide": [
             {"markt": "BTC", "stand": tag(5), "kurs": 60000, "hebel": 0.8, "trend_tage": 150, "schnitt": 55000},
@@ -199,12 +202,12 @@ with tempfile.TemporaryDirectory() as tmp:
         BFm.ausfuehren = lambda *a, **k: geschlossen.append(k) or []
         e = C.aktion("auto_aus", starter)
         BFm.ausfuehren = alt_bf
-        pruefe("Auto aus: STOP gesetzt, nichts geschlossen, kein Skript", C.STOP.exists() and "Auto-Handel aus" in e["text"]
-               and len(gestartet) == 1 and geschlossen == [], (e["text"], geschlossen))
+        pruefe("Auto aus: PAUSE gesetzt (nicht Not-Aus), nichts geschlossen, kein Skript", C.PAUSE.exists() and not C.STOP.exists()
+               and "Auto-Handel aus" in e["text"] and len(gestartet) == 1 and geschlossen == [], (e["text"], geschlossen))
         e = C.aktion("handeln", starter)
-        pruefe("Jetzt handeln bei Auto aus: verweigert (würde sonst schliessen)", not e["ok"] and len(gestartet) == 1)
+        pruefe("Jetzt handeln bei Auto aus: verweigert", not e["ok"] and len(gestartet) == 1 and "Pause" in e["text"])
         e = C.aktion("auto_an", starter)
-        pruefe("Auto an: STOP weg", not C.STOP.exists() and "Auto-Handel an" in e["text"])
+        pruefe("Auto an: PAUSE und STOP weg", not C.STOP.exists() and not C.PAUSE.exists() and "Auto-Handel an" in e["text"])
         import pilot_kern as Km
         alt_einst = Km.EINSTELLUNGEN
         Km.EINSTELLUNGEN = Path(tmp) / "krypto-einstellungen.json"
@@ -312,9 +315,23 @@ with tempfile.TemporaryDirectory() as tmp:
         # echter Not-Aus-Ablauf mit nachgebautem Broker: schliesst je Markt, Gewicht 1/2
         aufrufe = []
         __import__("os").environ["KRYPTO_PILOT_MAERKTE"] = "BTC,ETH"  # unabhängig von der Einstellung auf dem PC
-        meldung = C.notaus_an(ausfuehren=lambda e, symbol, gewicht: aufrufe.append((e["hebel"], symbol, gewicht)) or [{"seite": "SELL", "menge": 0.05}])
-        pruefe("Not-Aus schliesst BTC und ETH (Ziel 0)", aufrufe == [(0.0, "BTCUSDT", 0.5), (0.0, "ETHUSDT", 0.5)] and C.STOP.exists()
-               and "Geschlossen" in meldung, aufrufe)
+
+        def schliesst(e, symbol, gewicht):
+            aufrufe.append((e["hebel"], symbol, gewicht))
+            e["broker"] = {"position": 0.0, "hinweis": ""}
+            return [{"seite": "SELL", "menge": 0.05, "id": 1}]
+        meldung = C.notaus_an(ausfuehren=schliesst)
+        pruefe("Not-Aus schliesst BTC und ETH (Ziel 0), meldet «geschlossen»", aufrufe == [(0.0, "BTCUSDT", 0.5), (0.0, "ETHUSDT", 0.5)] and C.STOP.exists()
+               and meldung.count("✅") == 2 and "NICHT" not in meldung, (aufrufe, meldung))
+
+        def scheitert(e, symbol, gewicht):
+            e["broker"] = {"position": 0.2 if symbol == "BTCUSDT" else None, "hinweis": "Binance lehnt ab (HTTP 503)"}
+            return [{"seite": "SELL", "menge": 0.2, "fehler": "HTTP 503"}]
+        meldung = C.notaus_an(ausfuehren=scheitert)
+        pruefe("Not-Aus scheitert: sagt «NICHT geschlossen» bzw. «unklar», nie «geschlossen»", "NICHT ALLES GESCHLOSSEN" in meldung
+               and "BTC: NICHT geschlossen, Position 0.2" in meldung and "ETH: unklar" in meldung and "✅" not in meldung, meldung)
+        meldung = C.notaus_an(ausfuehren=lambda e, symbol, gewicht: (e.update(broker={"hinweis": "keine Futures-Schlüssel"}), [])[1])
+        pruefe("Not-Aus ohne Schlüssel: ehrlich «keine Schlüssel»", "keine Futures-Schlüssel" in meldung and "NICHT ALLES" not in meldung, meldung)
         C.STOP.unlink()
 
         # ── Telegram: nur eigener Chat, alte Nachrichten übersprungen ──
@@ -359,7 +376,8 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Telegram: unbekannter Text wird ignoriert", C.befehl("hallo") is None and C.befehl("") is None)
         tg.shutdown()
     finally:
-        C.DATA, C.STOP = alt
+        C.DATA, C.STOP, C.PAUSE = alt
+        Sp.ORDNER = alt_sperre
 
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

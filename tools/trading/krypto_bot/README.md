@@ -108,7 +108,19 @@ besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzt
 
 **Echtes Geld** nur mit `BINANCE_FUTURES_TESTNET=false` **und** `KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"`, nur mit einem
 Schlüssel **ohne** Auszahlungsrecht (wird geprüft) und erst nach Monaten im Testnetz. Futures können in deinem Land
-eingeschränkt sein. Not-Aus `stop.bat`: Der Pilot schliesst dann die Positionen und eröffnet keine neuen.
+eingeschränkt sein. Not-Aus `stop.bat` (oder der rote Cockpit-Knopf): Der Pilot schliesst dann seine Positionen und eröffnet
+keine neuen; danach meldet er je Markt, ob die Position WIRKLICH zu ist. **Pause** (Cockpit-Schalter «Auto-Handel aus») ist
+etwas anderes: nichts wird gehandelt, offene Positionen bleiben mit ihrem Stop stehen. `weiter.bat` hebt beides auf.
+
+**Sicherungen bei Fehlern** (aus einer Code-Prüfung mit nachgebautem Binance-Server, alle getestet):
+- Ein alter Stop wird nie ersatzlos gelöscht. Lehnt Binance den neuen Stop ab, wird der alte wieder gesetzt; geht beides nicht,
+  steht «OHNE Stop» in der Handy-Nachricht.
+- Zeitüberschreitung oder abgerissene Verbindung: kein Absturz, der Stop wird passend zur tatsächlichen Position gesetzt.
+- Liegt der Kurs schon jenseits des heutigen Stops, eröffnet der Pilot nichts (der Stop würde sofort auslösen).
+- Nie zwei Läufe gleichzeitig (Sperre in `data/`), auch nicht Aufgabenplanung + Cockpit-Knopf.
+- Eine einzelne Adress-Variable (`BINANCE_FUTURES_URL`, `BINANCE_BASIS_URL`) kann nie auf echtes Geld umschalten.
+- ETH-Sammler: jeder Kauf wird sofort gebucht; geht eine Antwort verloren, wird «unklar» gebucht statt doppelt zu kaufen
+  oder ETH zu staken, die der Bot nicht gekauft hat.
 
 ## 🪙 ETH-Sammler (Sparplan + Staking)
 
@@ -172,7 +184,8 @@ und Steuerung per Handy. Der Unterschied liegt in den Zahlen:
 **Cockpit** (`cockpit.bat` oder `py tools\trading\krypto_bot\cockpit.py`) öffnet `http://127.0.0.1:8765`:
 Konto, BTC/ETH mit Richtung, Trend, Stop, MVRV und Bremse, Claudes Einschätzung mit Begründung, die Kurve
 «Claude gegen Pilot gegen Halten», der Kontostand, der Backtest seit 2019, das Lagebild, die letzten Aufträge und der
-ETH-Sammler. Dazu ein **Not-Aus-Knopf**: Er schliesst die Pilot-Positionen sofort (nur verkleinern) und stoppt alle Bots.
+ETH-Sammler. Dazu ein **Not-Aus-Knopf**: Er schliesst die Pilot-Positionen sofort (nur verkleinern), stoppt alle Bots und
+meldet je Markt ehrlich «geschlossen», «NICHT geschlossen» oder «unklar».
 Das Cockpit liest nur die Logbücher auf deinem PC, lauscht nur auf 127.0.0.1 und lehnt Anfragen fremder Webseiten ab.
 
 **💰 Profit-Anzeige** (ganz oben im Cockpit, alle 15 Sekunden): Gewinn seit Start in USDT und Prozent, dazu Heute,
@@ -365,11 +378,11 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
-python3 tools/trading/krypto_bot/test_pilot.py    # 48 Tests, inkl. Risiko-Stufen und nachgebautem Binance-Futures-Server
-python3 tools/trading/krypto_bot/test_sammler.py  # 34 Tests, inkl. nachgebautem Binance-Server mit Staking
+python3 tools/trading/krypto_bot/test_pilot.py    # 62 Tests, inkl. Risiko-Stufen, Sperre und nachgebautem Binance-Futures-Server mit Fehlerfällen
+python3 tools/trading/krypto_bot/test_sammler.py  # 40 Tests, inkl. nachgebautem Binance-Server mit Staking und verlorenen Antworten
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 20 Tests: Profit nach Zeitraum, Einzahlungen ausgeschlossen, Seiten, keine Doppelzählung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 55 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Risiko-Stufe, Live-Markt, Not-Aus, Telegram
+python3 tools/trading/krypto_bot/test_cockpit.py  # 66 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Risiko-Stufe, Live-Markt, Not-Aus, Telegram
 python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos

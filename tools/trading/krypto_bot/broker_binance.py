@@ -37,9 +37,15 @@ def einstellungen(env=None):
     env = os.environ if env is None else env
     echt = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == ECHTGELD_SATZ
     quote = (env.get("KRYPTO_QUOTE") or "USDT").strip().upper()
+    url = env.get("BINANCE_BASIS_URL")  # nur für Tests
+    host = urllib.parse.urlparse(url).hostname if url else None
+    erlaubt = ({"api.binance.com", "api1.binance.com", "api2.binance.com", "api3.binance.com", "api4.binance.com"} if echt
+               else {"testnet.binance.vision"}) | {"127.0.0.1", "localhost"}
     return {
         "key": env.get("BINANCE_API_KEY", ""), "secret": env.get("BINANCE_API_SECRET", ""),
-        "basis": env.get("BINANCE_BASIS_URL") or (ECHT_URL if echt else TESTNETZ_URL),  # BINANCE_BASIS_URL nur für Tests
+        "url_fehler": (f"BINANCE_BASIS_URL zeigt auf «{host}» — passt nicht zum Modus {'Echtgeld' if echt else 'Testnetz'}. "
+                       "Aus Sicherheit nichts gemacht.") if url and host not in erlaubt else "",
+        "basis": url or (ECHT_URL if echt else TESTNETZ_URL),
         "echtgeld": echt, "quote": quote, "symbol": "BTC" + quote,
         "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
         "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
@@ -156,6 +162,11 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
          "trocken": trocken, "auftraege": [], "hinweis": ""}
     if not cfg["key"] or not cfg["secret"]:
         print("Binance: keine Schlüssel gesetzt — nichts zu tun.")
+        return []
+    if cfg.get("url_fehler"):
+        e["hinweis"] = cfg["url_fehler"]
+        print("Binance: " + e["hinweis"])
+        protokolliere(e)
         return []
     if cfg["stop"]:
         e["hinweis"] = "Not-Aus aktiv — keine Aufträge."

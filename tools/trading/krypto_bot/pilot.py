@@ -33,6 +33,9 @@ import pilot_kern as K  # noqa: E402
 
 ROOT = HIER.parents[2]
 LOGBUCH = ROOT / "data" / "krypto-pilot.json"
+# Pause (Cockpit-Schalter «Auto-Handel aus»): nichts handeln, Positionen bleiben. Nicht zu verwechseln mit STOP (Not-Aus):
+# bei STOP schliesst der Pilot seine Positionen (broker_futures, nur reduceOnly).
+PAUSE = HIER.parent / "ki_bot" / "PAUSE"
 # Kürzel → (Futures-Symbol, Yahoo-Kürzel, Trend-Schnitt in Tagen)
 MAERKTE = {"BTC": ("BTCUSDT", "BTC-USD", 150), "ETH": ("ETHUSDT", "ETH-USD", 200)}
 
@@ -213,25 +216,49 @@ def main():
     print(lage)
     if a.status:
         return 0
+    if PAUSE.exists() and not a.trocken:
+        print("Auto-Handel ist aus (Pause) — nichts gehandelt. Einschalten im Cockpit oder mit weiter.bat.")
+        return 0
+    import sperre
+    try:
+        with sperre.lauf_sperre(warten=0 if a.trocken else 120):
+            return handeln(ents, lage, a.trocken)
+    except sperre.Besetzt as ex:
+        print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
+        return 0
+
+
+def handeln(ents, lage, trocken):
+    """Aufträge je Markt. Ein Fehler in einem Markt hält den anderen nicht auf; Warnungen kommen immer aufs Handy."""
     import broker_futures as BF
     lb = lies()
-    zeilen, wechsel_da, alle = [], False, []
+    zeilen, wechsel_da, alle, warnung = [], False, [], False
     for e in ents:
         vorher = letzter(lb, e["markt"])
         if not vorher or vorher["stand"] != e["stand"]:
             lb["entscheide"] = (lb["entscheide"] + [e])[-4000:]
-        auftraege = BF.ausfuehren(e, trocken=a.trocken, symbol=e["symbol"], gewicht=1 / len(ents))
+        try:
+            auftraege = BF.ausfuehren(e, trocken=trocken, symbol=e["symbol"], gewicht=1 / len(ents))
+        except Exception as ex:  # noqa: BLE001 — darf den nächsten Markt und die Nachricht nie verhindern
+            auftraege = []
+            e["broker"] = {"hinweis": f"⚠️ Lauf abgebrochen ({type(ex).__name__}: {str(ex)[:150]}) — bitte im Binance-Konto prüfen!",
+                           "position": None, "ohne_stop": None, "fehler": True}
         alle += auftraege
+        b = e.get("broker") or {}
+        hinweis = b.get("hinweis") if b.get("hinweis") and b.get("hinweis") != "keine Futures-Schlüssel" else ""
+        warnung = warnung or bool(b.get("ohne_stop") or b.get("fehler") or "⚠️" in hinweis)
         wechsel = vorher is None or (vorher["hebel"] > 0) != (e["hebel"] > 0) or (vorher["hebel"] < 0) != (e["hebel"] < 0) \
             or vorher["detektor"]["ok"] != e["detektor"]["ok"]
         wechsel_da = wechsel_da or wechsel
-        zeilen.append(text(e) + ("\n   Aufträge: " + ", ".join(f"{x['seite']} {x['menge']}" for x in auftraege) if auftraege else ""))
-    if not a.trocken:
+        zeilen.append(text(e) + ("\n   Aufträge: " + ", ".join(f"{x['seite']} {x['menge']}" + (" ✗" if x.get("fehler") else "")
+                                                             for x in auftraege) if auftraege else "")
+                      + (f"\n   {hinweis}" if hinweis else ""))
+    if not trocken:
         kontostand_merken(lb, ents[0]["stand"], ents[0].get("kapital"))
-    bericht = None if a.trocken else wochenbericht(lb, date.today().isoformat())
+    bericht = None if trocken else wochenbericht(lb, date.today().isoformat())
     LOGBUCH.parent.mkdir(exist_ok=True)
     LOGBUCH.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    if alle or wechsel_da or bericht:
+    if alle or wechsel_da or bericht or warnung:
         import signale as SG
         SG.push("\n".join(zeilen) + f"\n{lage}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
     return 0

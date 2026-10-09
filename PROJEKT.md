@@ -54,6 +54,14 @@
   Telegram `/profit`. Knöpfe «Täglich automatisch» (`schtasks /create … /tr "\"…krypto-auto.bat\" auto" /f`) und «Update holen»
   (`git pull --ff-only`). **100× gemessen** (`hebel_pruefung.py --minuten`, echte BTC-Minuten): 92 % liquidiert, Median 6–8 Std.
   → nie eingebaut. Tests: test_profit 20, test_cockpit 64 (Mutation je 3/3).
+- **Code-Prüfung «Geld» (2026-10-09, Prüfer-Agent mit nachgebautem Binance-Server) → 9 Funde behoben:** Not-Aus löschte Stops auch
+  wenn das Schliessen scheiterte und meldete «Geschlossen» → jetzt `stops_nachfuehren`: Stop nie ersatzlos löschen (Binance: nur
+  1 closePosition-Stop je Richtung, -4130 → alt löschen, neu setzen, bei Ablehnung alten wieder setzen), Ergebnis in
+  `entscheid["broker"]` (position/ohne_stop/fehler), `notaus_an` meldet «NICHT geschlossen/unklar». Netzfehler = `(OSError,
+  http.client.HTTPException)` (TimeoutError/RemoteDisconnected sind KEIN URLError!). Kein Aufbau, wenn Kurs jenseits des Stops
+  (-2021). **PAUSE ≠ STOP**: Cockpit-Schalter = `ki_bot/PAUSE` (Positionen bleiben), Not-Aus/stop.bat = `STOP` (Pilot schliesst,
+  krypto-auto.bat lässt bei STOP nur den Pilot laufen). `sperre.py` (O_EXCL-Datei in data/, verwaist nach 15 min). URL-Variable
+  nur zum Modus passend. Sammler bucht sofort, «unklar» statt doppelt kaufen/staken. einrichten() vor jedem Aufbau.
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
