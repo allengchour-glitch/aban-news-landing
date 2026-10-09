@@ -145,7 +145,14 @@ def plane(zeile):
         return None, "nicht mehr aktiv"
     if p["variantsCount"]["count"] != 1:
         return None, "hat inzwischen mehrere Varianten"
-    if [(o["name"], o["values"]) for o in p["options"]] != [("Title", ["Default Title"])]:
+    # 09.10.2026: cj_category_fill legt Nicht-Mode-Ware mit der Platzhalter-Option «Variante / Standard» an (nicht Shopifys
+    # «Title / Default Title») — alle Neuimporte galten hier als «echte Option» und wurden nie umgebaut (Probelauf: 19 von 40
+    # besuchten Seiten). «Variante / Standard» ist kein Wahlfeld; schreibe() entfernt es zuerst (→ Default Title).
+    opts = [(o["name"], o["values"]) for o in p["options"]]
+    platzhalter = None
+    if opts == [("Variante", ["Standard"])]:
+        platzhalter = p["options"][0]["id"]
+    elif opts != [("Title", ["Default Title"])]:
         return None, f"Produkt trägt schon eine echte Option: {[o['name'] for o in p['options']]}"
     if any(t.lower() in ("selbst-gestalten", "pod", "printful") for t in p["tags"]):
         return None, "Editor/POD — nie anfassen"
@@ -257,7 +264,7 @@ def plane(zeile):
     if len({x["sku"] for x in plan}) != len(plan):
         return None, "CJ-SKUs nicht eindeutig"
     return {"p": p, "var": var, "optionen": op["optionen"], "plan": plan, "nachladen": fehlt, "ki": op["ki"],
-            "stecker_gefiltert": op["stecker_gefiltert"]}, None
+            "stecker_gefiltert": op["stecker_gefiltert"], "platzhalter": platzhalter}, None
 
 
 def tag(pid, t):
@@ -366,6 +373,13 @@ def schreibe(pl):
     ok_b, grund_b = bilder_nachladen(pl)                 # 08.10.: fehlende Variantenbilder (vor jeder Optionsänderung)
     if not ok_b:
         return f"Bilder: {grund_b}"
+    if pl.get("platzhalter"):                            # 09.10.: «Variante / Standard» des Importers zuerst weg
+        r0 = gql('mutation($p:ID!,$o:[ID!]!){productOptionsDelete(productId:$p,options:$o,strategy:POSITION){userErrors{message}}}',
+                 {"p": p["id"], "o": [pl["platzhalter"]]})["productOptionsDelete"]
+        live0 = gql('query($id:ID!){product(id:$id){options{name values} variants(first:3){nodes{id}}}}', {"id": p["id"]})["product"]
+        if [(o["name"], o["values"]) for o in live0["options"]] != [("Title", ["Default Title"])] \
+                or [v["id"] for v in live0["variants"]["nodes"]] != [var["id"]]:
+            return f"Platzhalter «Variante / Standard» nicht entfernt: {r0['userErrors']} {live0['options']}"
     namen = [n for n, _ in optionen]
     try:
         r = gql('mutation($id:ID!,$o:[OptionCreateInput!]!){productOptionsCreate(productId:$id,options:$o,variantStrategy:CREATE){'

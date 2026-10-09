@@ -107,7 +107,10 @@ def main():
         if n["id"] in fertig:
             continue
         sku = n["variants"]["nodes"][0]["sku"]
-        d = cj(cj_url(sku))
+        url = cj_url(sku)
+        if not url:                          # 09.10.: unbekannte SKU-Form → nur dieses Produkt auslassen, nicht den Lauf
+            print(f"  ⏭ SKU-Form unbekannt: {sku} ({n['handle']})"); continue
+        d = cj(url)
         if d is None:
             print(f"PAUSE: CJ antwortet nicht ({n['handle']})"); break
         data = d.get("data") if isinstance(d.get("data"), dict) else {}

@@ -101,7 +101,9 @@ def cj(url):
 
 
 def cj_url(sku):
-    s = re.sub(r"^CJ-", "", sku or "")
+    # 09.10.2026: «cj-CJLX2935543» (klein geschrieben) und «CJ-CJJJJTJT22925-default» gaben None — 22 von 812 besuchten
+    # Ein-Varianten-Seiten; auswahl_fehlt_messen rief cj(None) achtmal und brach den GANZEN Lauf ab.
+    s = re.sub(r"^CJ-", "", (sku or "").strip(), flags=re.I)
     if re.fullmatch(r"\d{10,}", s):
         return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid={s}"
     # CJ-<UUID>: die pid-Form der aelteren Importe (zehntausende Produkte) — vorher als «keine
@@ -113,6 +115,11 @@ def cj_url(sku):
         return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?productSku={m.group(1)}"
     if re.fullmatch(r"CJ[A-Z]{2}\d+", s):
         return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?productSku={s[:13]}"
+    # Produkt-SKU mit längerem Buchstabenteil («CJJJJTJT22925», «CJSJSJSJ00250»), auch mit Varianten-Anhang («-default»,
+    # «-Brown», «-EU plug»): productSku = der Kern (gemessen 09.10.: CJJJJTJT22925 → «Wood grain aroma diffuser», 16 Varianten)
+    m = re.fullmatch(r"(CJ[A-Z]{2}\d{7})(?:\d{2}[A-Z]{2})?-.+", s) or re.fullmatch(r"(CJ[A-Z]{3,10}\d{3,})(?:-.+)?", s)
+    if m:
+        return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?productSku={m.group(1)}"
     return None
 
 
