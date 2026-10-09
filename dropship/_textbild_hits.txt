@@ -17378,3 +17378,9 @@ gid://shopify/Product/16612717298055	12->0	Grosser Canvas Kamerarucksack mit Die
 gid://shopify/Product/16612740497799	14->0	Edelstahl-Futternapf mit bunten Kugeln
 gid://shopify/Product/16612740759943	51->0	Erhöhte Keramikschüssel mit Katzenohr-Design
 gid://shopify/Product/16612740923783	27->0	Holz-Bett für Futter- und Wassernäpfe, 2-fach
+gid://shopify/Product/16612741022087	29->0	Verstellbare Haustierkamera mit automatischer Futterstation
+gid://shopify/Product/16612741185927	175->0	Holz-Insektenhaus zum Aufhängen
+gid://shopify/Product/16612741677447	22->0	Bauchrad mit vier Rollen – leises Training
+gid://shopify/Product/16612741972359	27->0	Fitness Power-Assisted Haken für Klimmzüge
+gid://shopify/Product/16612742005127	84->0	Balance Board für Fitness und Yoga
+gid://shopify/Product/16612757537159	22->0	Militärische Taillentasche mit Zorro-Motiv
