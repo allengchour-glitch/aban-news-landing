@@ -6492,3 +6492,6 @@ minimalistische-wildleder-flip-flops-636000	2606100838201636700	16	9.88	ok	lande
 plateau-sandalen-mit-elastikriemen-615400	2606100743531616200	16	9.33	ok	landeseite
 casual-peep-toe-plateau-sandalen-631400	2606100720301632000	16	11.12	ok	landeseite
 polka-dot-keilsandalen-mit-schleife-619100	2606100643011619800	16	11.60	ok	landeseite
+sommerliche-kreuzriemen-schuhe-mit-rundspitze-622600	2606100555471623400	16	13.52	ok	landeseite
+glitzer-sandalen-mit-plateau-und-hohem-absatz-627300	2606100143351627900	16	17.66	ok	landeseite
+peep-toe-sandalen-mit-blockabsatz-615700	2606090844491616300	16	8.62	ok	landeseite
