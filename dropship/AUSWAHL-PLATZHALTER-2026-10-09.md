@@ -55,7 +55,7 @@ besuchten Seiten traf das 19 von 40.
   Sitzungen.
 - Der Aufseher erneuert die Liste täglich und misst sie **vor** allen anderen Listen.
 - Der Nachrüster nimmt diese Produkte per `VORRANG=` zuerst, der Rest bleibt «jüngste Messung zuerst».
-- Lauf in dieser Session: BESUCHT_ERGEBNIS.
+- Lauf in dieser Session: Messung und Umbau besuchte Seiten 21:35–23:07 UTC: 246 von 812 gemessen (Zeitgrenze), davon **190 mit mehreren CJ-Varianten (77 %)**; **62 umgebaut, 40 MANUELL, 0 Fehler** (z. B. Weisse Vintage-Sandalen Farbe 2 × Grösse 6, Smartwatch Outdoor 4 Farben, Duschvorhang 6 Modelle × 2 Grössen). Die MANUELL-Fälle sind meist «KI-Übersetzung abgelehnt» oder «schon umgestellt?». Der Aufseher macht stündlich weiter.
 
 **SKU-Formen:** `cj_url()` kennt jetzt alle drei neuen Formen, 22/22 werden aufgelöst. Die alten Formen geben dieselbe Adresse
 wie vorher. Getestet an `CJJJJTJT22925`: CJ antwortet «Wood grain aroma diffuser», 16 Varianten.

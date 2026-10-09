@@ -1,38 +1,46 @@
-# Auswahl nachrüsten — scharf 2026-10-09 20:56 UTC
+# Auswahl nachrüsten — scharf 2026-10-09 23:06 UTC
 
-umgebaut: 35 · MANUELL: 28 · Fehler: 1
-
-## Fehler (zuerst lesen)
-
-- Magnetische Bausteine für die frühkindliche Entwicklung (`magnetische-bausteine-fur-die-fruhkindliche-en-609000`): Bilder: Bild-Upload FAILED (Medien wieder entfernt)
+umgebaut: 62 · MANUELL: 40 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- Armkraft-Trainingsstab (`armkraft-trainingsstab-212544`): KI-Übersetzung fehlt/abgelehnt: ['Resistance', 'No Resistance']
-- Kreatives Bausteine-Set: Welle oder Sternennacht (`kreatives-bausteine-set-welle-oder-sternennach-615300`): KI-Übersetzung fehlt/abgelehnt: ['The Great Wave Off Kanagawa', 'Van Gogh Starry Sky Painting']
-- Tarnfarbener Outdoor-Rucksack (36-55L) (`tarnfarbener-outdoor-rucksack-36-55l-561408`): KI-Übersetzung fehlt/abgelehnt: ['Desert camouflage', 'Jungle camouflage', 'Three sand camouflage', 'Black']
-- Niedlicher Haustier-Kissenbezug (`niedlicher-haustier-kissenbezug-922624`): Titel nennt nur «Kissenbezug» (Ausführung: ['Kissenbezug', 'Mit Kissenfüllung']) → Titel prüfen (Mensch)
-- Zirkon Edelstahl Armband mit Federverschluss (`zirkon-edelstahl-armband-mit-federverschluss-613000`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Taktischer Outdoor-Rucksack Medium 3P Attack (`taktischer-outdoor-rucksack-medium-3p-attack-179648`): KI-Übersetzung fehlt/abgelehnt: ['Khaki', 'Black', 'Green', 'CP camouflage']
-- LED-Deckenlampe E27, superhell (`led-deckenlampe-e27-superhell-603900`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Keramik-Trinkbrunnen für Katzen & Hunde (`keramik-trinkbrunnen-fur-katzen-hunde-609600`): Stecker-Teil nicht in jedem Schlüssel genau einmal
-- Kleider-Organisator-Set · 3-teilig (`kleider-organisator-set-603600`): Titel verspricht «3-teilig», CJ führt 2 Einzelvarianten → Titel prüfen (Mensch)
-- 3D Retro Nagel-Zirkon – 5er-Set (`3d-retro-nagel-zirkon-5er-set-276864`): Titel verspricht «5er-Set», CJ führt 2 Einzelvarianten → Titel prüfen (Mensch)
-- Rundes Kürbis-Kissen, handgemacht (`rundes-kurbis-kissen-handgemacht-994240`): KI-Übersetzung fehlt/abgelehnt: ['Morandi Moonlight Blue', 'Morandi Pink', 'Morandi Light Green', 'Morandi Light Gray']
-- Mehrschichtiges Lederarmband für Herren (`mehrschichtiges-lederarmband-fur-herren-613600`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Lumbar Kissenbezug (`lumbar-kissenbezug-620000`): KI-Übersetzung fehlt/abgelehnt: ['Moss Green 45x45cm', 'Futon 50x50cm', 'Tassel 45x45cm', 'Square Pillow 50 X50cm']
-- Haarkurllinie (`haarkurllinie-612300`): KI-Übersetzung fehlt/abgelehnt: ['Pink 20mm', 'Pink 22mm', 'Pink 25mm', 'Pink 28mm']
-- Faltbare Anti-Rutsch Yoga- und Fitnessmatte (`faltbare-anti-rutsch-yoga-und-fitnessmatte-612900`): KI-Übersetzung fehlt/abgelehnt: ['Sunset Yellow', 'Colorful', 'Colored Lines', 'Pink Galaxy']
-- Handyhalter mit Ladefunktion (`handyhalter-mit-ladefunktion-620000`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Robuste Leuchtende Quarzuhr für Herren (`robuste-leuchtende-quarzuhr-fur-herren-208704`): KI-Übersetzung fehlt/abgelehnt: ['LILUOKE Fine Steel', 'LILUOKE All Black', 'Stainless Steel Black Surface', 'All Black Surface']
-- Sakura Optisch Variables Stickgarn 150D (`sakura-optisch-variables-stickgarn-150d-881728`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Natürliche Kreuzfaser-Wimpern (`naturliche-kreuzfaser-wimpern-957056`): Preisspreizung > 4× (3.45–16.7)
-- Vergoldeter Moissanit-Ring (`vergoldeter-moissanit-ring-627600`): kein EU-Stecker bei CJ
-- Konjac Gesichtsreinigungs-Puff (`konjac-gesichtsreinigungs-puff-598976`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Keramik-Schmortopf für eine Person (`keramik-schmortopf-fur-eine-person-440832`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
-- Lederrucksack «Crazy Horse» im Retro-Stil (`lederrucksack-crazy-horse-im-retro-stil-959488`): KI-Übersetzung fehlt/abgelehnt: ['Crazy Horse Leather Grey Green', 'Oily skin coffee']
-- Handgeflochtenes Armband mit Wolfskopf (`handgeflochtenes-armband-mit-wolfskopf-636000`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
-- Cushion-Foundation mit leichtem Finish (`water-light-cushion-foundation-614400`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
-- Bambus-Käsebrett mit Gabel-Set (`bambus-kasebrett-mit-gabel-set-923776`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
-- Gewichtsmanschetten für Handgelenke, 2er-Set (`gewichtsmanschetten-fur-handgelenke-2er-set-600400`): Titel verspricht «2er-Set», CJ führt 5 Einzelvarianten → Titel prüfen (Mensch)
-- Hitzebeständiges Antihaft-Küchenhelfer-Set (`hitzebestandiges-antihaft-kuchenhelfer-set-401920`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Herzschlag-Kissen für Hund & Katze (`herzschlag-kissen-fur-hund-katze-600500`): KI-Übersetzung fehlt/abgelehnt: ['Brown', 'Beagle']
+- Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben (`aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben`): SKU ist nicht mehr CJ-<pid> ('CJ-CJJJJTJT22925') — schon umgestellt?
+- Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`): SKU ist nicht mehr CJ-<pid> ('CJ-CJJJJTJT35117') — schon umgestellt?
+- Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf (`mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf`): SKU ist nicht mehr CJ-<pid> ('CJ-CJYP117078804DW') — schon umgestellt?
+- Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`): SKU ist nicht mehr CJ-<pid> ('CJ-CJJT172393804DW') — schon umgestellt?
+- Handmixer mit 5 Geschwindigkeiten (`handmixer-mit-5-geschwindigkeiten-694c50`): Typ-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`): KI-Übersetzung fehlt/abgelehnt: ['Double Spring Dog', 'Double Sausage Dog']
+- Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling (`rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling`): SKU ist nicht mehr CJ-<pid> ('CJ-CJJX235873303CX') — schon umgestellt?
+- Edelstahl-Armband «Amore» · Herz & Geburtsstein, Gold (`edelstahl-armband-amore-herz-geburtsstein-gold`): SKU ist nicht mehr CJ-<pid> ('cj-CJLX2935543') — schon umgestellt?
+- Elegante Zirkon-Halskettenanhänger (`elegante-zirkon-halskettenanhanger-601700`): Lesefehler: Zweitprüfer nicht erreichbar: Zweitprüfer-Antwort unvollständig (29 statt 28)
+- Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`): KI-Übersetzung fehlt/abgelehnt: ['Deep Wood Grain', 'White', 'Cartoon Print', 'Wansheng Bat']
+- Mini-Heizplatte (`mini-heizplatte-497152`): KI-Übersetzung fehlt/abgelehnt: ['Cherry Blossom Powder', 'Fresh Green', 'Taro Purple']
+- Feuchtigkeitsspendender Lippen-Gloss (`feuchtigkeitsspendender-lippen-gloss-699520`): KI-Übersetzung fehlt/abgelehnt: ['White Tea Oolong', 'Cold Extract Sweet Cherry']
+- Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt (`vulkan-aroma-diffuser-mit-flammen-quallen-effe-771200`): kein EU-Stecker bei CJ
+- Magnetischer Telefonhalter (`magnetischer-telefonhalter-610000`): KI-Übersetzung fehlt/abgelehnt: ['Bean Purple', 'Qingshan Jade', 'Fog Purple', 'Silver'] | ['Ordinary Bag', 'Exquisite Boxed']
+- Handkurbel-Schäler für Äpfel und Birnen (`handkurbel-schaler-fur-apfel-und-birnen-5235a8`): CJ-variantSku passt nicht zum Bestell-Automaten: 'CJJJCFCF01639-8Generation With Fruit Cutter'
+- Sternenhimmel-Projektor mit USB (`starkenhimmel-wandlampe-609100`): KI-Übersetzung fehlt/abgelehnt: ['Northern Lights', 'Star Light', 'Star Xuan', 'Water Ripple']
+- USB-Stick Lippenstift-Design (`usb-stick-lippenstift-design-9a6739`): Preisspreizung > 4× (2.89–11.58)
+- 3D Glas Aroma Diffusor mit Farblicht (`3d-glas-aroma-diffusor-mit-farblicht-677613`): Stecker-Teil nicht in jedem Schlüssel genau einmal
+- Blumendruck-Kardigan für Frauen (`blumendruck-kardigan-fur-frauen-628400`): KI-Übersetzung fehlt/abgelehnt: ['Green', 'Pink', 'Coconut Bird', 'Black']
+- Perlenkette mit Blüten und Seestern-Anhänger, goldfarben (`keramik-perlenkette-in-goldenem-finish-638100`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Hundegeschirr-Set für kleine bis mittelgrosse Hunde (`hundegeschirr-set-fur-kleine-bis-mittelgrosse-e4d174`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Soccer-Stiefel- Transport-Beutel (`soccer-stiefel-transport-beutel-620700`): KI-Übersetzung fehlt/abgelehnt: ['Black Neutral Without Label', 'Gray No Neutral No Label', 'Dark blue without markings', 'Wine Red Neutral Without Label'] | ['Extra Large Three Layer', 'Medium three story', 'Small Size Single Layer', 'Single layer large']
+- Mini LED Beamer für Handy & Heimkino (`mini-led-beamer-fur-handy-heimkino-150016`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Astronauten-Handyhülle mit 3D-Motiv (`astronaut-phone-case-298816`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Grosse automatische leuchtende wasserdichte Uhr (`gro-e-automatische-leuchtende-wasserdichte-uhr-603400`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Herz- und Sternschmuckkette (`herz-und-sternschmuckkette-603000`): Titel nennt nur «Herz» (Motiv: ['Herz', 'Kreuz']) → Titel prüfen (Mensch)
+- Stern-Bodysuit-Kit (`stern-bodysuit-kit-606900`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Vintage Kleid mit Slim-Strap (`vintage-kleid-mit-slim-strap-624601`): KI-Übersetzung fehlt/abgelehnt: ['Yellow', 'Light Green', 'Light Pink', 'White Polka Dot']
+- Magnetischer Türvorhang, schwarz (`magnetischer-turvorhang-schwarz-509633`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Badezimmerhahn (`badezimmerhahn-600900`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Herz-Hängeschmuck mit Fotoalbum (`herz-hangeschmuck-mit-fotoalbum-619700`): KI-Übersetzung fehlt/abgelehnt: ['Heart Rabbit Hand Necklace', 'Love Rabbit Hug Necklace', 'Love Strawberry Necklace', 'Oval Flower Necklace']
+- Gedrehter Keramik-Blumenbecher (`gedrehter-keramik-blumenbecher-619300`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Katzenhalsband mit Gravur, Leder (`katzenhalsband-mit-gravur-leder-600400`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Grosses Rückenkissen für Erker und Bett (`grosses-ruckenkissen-fur-erker-und-bett-625000`): KI-Übersetzung fehlt/abgelehnt: ['Smoky Gray', 'Lake Blue', 'Hemp Color', 'Luxury Elegant Blue']
+- Klassische Herren-Armbanduhr (`klassische-herren-armbanduhr-780416`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Breites Edelstahlarmband für Damen (`breites-edelstahlarmband-fur-damen-631400`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Herren Kanvas-Sneaker atmungsaktiv, vielseitig (`herren-kanvas-sneaker-atmungsaktiv-vielseitig-116032`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Automatischer Katzen-Kugelspielball (`automatischer-katzen-kugelspielball-602000`): KI-Übersetzung fehlt/abgelehnt: ['Blue Normal Style', 'Fan Ordinary Style']
+- Multifunktionale Sportuhr mit Dual-Uhrwerk für Herren (`multifunktionale-sportuhr-mit-dual-uhrwerk-fur-638500`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests

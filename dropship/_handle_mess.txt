@@ -236,3 +236,6 @@ gid://shopify/Product/16606217142663	klassischer-lederrucksack-fur-manner-960896
 gid://shopify/Product/16607164465543	kleine-madchen-kristall-leder-schuhe-275456	madchen-schuhe-aus-kunstleder-mit-kristall-deko-275456	301
 gid://shopify/Product/16610124890503	madchen-lederschuhe-mit-blumen-und-schleife-808960	madchen-schuhe-aus-kunstleder-mit-blumen-und-schleife-808960	301
 gid://shopify/Product/16612105486727	crossbody-tasche-mit-schloss-lychee-leder-604400	umhangetasche-mit-schloss-kunstleder-mit-lychee-narbung-604400	301
+gid://shopify/Product/15521323614593	schlangenketten-armband-mit-runden-diamanten-625200	schlangenketten-armband-mit-runden-strasssteinen-625200	301
+gid://shopify/Product/16607606604167	lange-cowhide-ledergeldborse-621700	lange-rindsleder-geldborse-621700	301
+gid://shopify/Product/16613637095815	atmungsaktive-ledersneaker-mit-plateausohle-605700	atmungsaktive-kunstledersneaker-mit-plateausohle-605700	301
