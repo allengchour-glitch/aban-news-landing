@@ -43,7 +43,7 @@ besuchten Seiten traf das 19 von 40.
 - Dann `productOptionsDelete(POSITION)` und Rücklesen: `hasOnlyDefaultVariant`, dieselbe Varianten-ID, SKU und Preis
   unverändert.
 - Stichprobe 5/5 ok. Live per WebFetch: kein Wahlfeld mehr, Preis CHF 41.90 und Warenkorb-Knopf unverändert.
-- Dann der ganze Bestand: PLATZHALTER_ERGEBNIS.
+- Dann der ganze Bestand: **1'062 ok, 0 Fehler** (21:37–22:07 UTC). Einer war schon «live anders», die Hundeschüssel, die zuvor umgebaut worden war.
 - Wächter im Aufseher läuft täglich und fängt Nachzügler (Runner mit altem Code).
 
 **Nachrüster:** `auswahl_nachruesten.py` erkennt «Variante / Standard» als Platzhalter und entfernt ihn vor
