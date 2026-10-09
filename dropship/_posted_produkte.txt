@@ -184,3 +184,5 @@ slug:bodenstativ-mit-led-ringlicht-fur-livestreams-083200
 name:bodenstativmitledringlichtfür
 slug:warme-lederhandschuhe-mit-fleecefutter
 slug:lange-damenstiefel-mit-schnallen-und-nieten
+slug:tragbarer-mini-projektor-mit-wifi-720p-nativ-366976
+name:tragbarerminiprojektormitwifi
