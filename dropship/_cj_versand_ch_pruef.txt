@@ -6598,3 +6598,6 @@ winter-high-top-sneaker-mit-keilabsatz-608700	2601230952581609000	16	13.16	ok	la
 chunky-heel-pumps-mit-metallkette-623900	2601222343451625000	16	10.83	ok	landeseite
 sneaker-mit-leoparden-print-und-schnurung-631900	2601160547081632200	16	10.15	ok	landeseite
 damen-high-top-sneaker-mit-verstecktem-keilabs-628200	2601130620581628400	16	15.56	ok	landeseite
+unisex-schneestiefel-mit-warmfutter-634100	2601070758011634300	16	11.84	ok	landeseite
+damen-schneestiefel-mit-weicher-sohle-603300	2601070752361603500	16	9.88	ok	landeseite
+chunky-sohle-slip-on-sneaker-fur-damen-614900	2601070717091615100	16	10.55	ok	landeseite
