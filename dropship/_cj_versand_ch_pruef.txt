@@ -6622,3 +6622,7 @@ damen-skateboard-sneaker-aus-nubukleder-631500	2511191104461631700	16	13.76	ok	l
 atmungsaktive-mesh-sneaker-mit-klettverschluss-627900	2511120757171628100	16	11.84	ok	landeseite
 dopamine-color-matching-preppy-style-damen-boa-624700	2511010200441625000	16	14.96	ok	landeseite
 bequeme-slip-on-sneaker-mit-paisley-print-293890	1981293493283094533	-	-	unklar 1602002 Product has been removed from  rest=99	landeseite
+brogue-plateau-schuhe-aus-leder-mit-absatzerho-614700	2510180606441615500	16	15.20	ok	landeseite
+plateau-sneaker-zum-schnuren-609600	2510090614011609800	16	12.93	ok	landeseite
+outdoor-sneaker-fur-damen-605800	2510070632331606100	16	11.96	ok	landeseite
+dopamine-plateau-schnurschuhe-aus-leder-605300	2509291108031605600	16	13.76	ok	landeseite
