@@ -1324,6 +1324,9 @@ while true; do
       # 08.10.2026 abends: Bild-Alts trugen alte Titel (11'730 an 1'604 Produkten, darunter «& Blutdruckmessung», «Diamanten»)
       # — egal welches Werkzeug den Titel änderte. Kandidaten aus demselben Export, live entschieden, Rücklesen.
       [ -f "$REPO/automation/alt_titel_abgleich.py" ] && ( cd "$REPO" && SCHARF=1 timeout 2400 python3 automation/alt_titel_abgleich.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
+      # 09.10.2026: Essbares aus China (Ergänzungsfutter, Tier-Snacks, Supplements) → DRAFT (12 gefunden, Klasse Klinge #1017).
+      # Importer sperren selbst (essbar.mjs); dieser Lauf fängt Altbestand und Kategorie-Treffer. Regel data/essbar_regel.json.
+      [ -f "$REPO/automation/essbar_wache.py" ] && ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/essbar_wache.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:
