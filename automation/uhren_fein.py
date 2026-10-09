@@ -30,14 +30,16 @@ REGELN = [
     (R(rf"(ersatz-?armband|uhrenarmband|armbänder|armband|band|strap|kette|loop)[\w\s,-]*\bfür\b[\w\s-]*{WORT}|"
        rf"smartwatch-?armband|watch-?armband|watch ?band|armband-?kit|multi-?armband|iwatch|\b\d{{2}}\s?mm\b.*armband|"
        rf"armband mit schnellverschluss|für xiaomi|sportarmband im"), (ZU + " > Watch Bands", "aa-6-10-1")),
-    (R(rf"(hülle|displayschutz|schutzfolie|ladekabel|ladegerät|ladestation|ladedock|gehäuse|bumper|halterung|ständer)[\w\s,/-]*\bfür\b[\w\s-]*{WORT}|"
-       rf"smartwatch[\s-](schutzhülle|gehäuse|ladegerät)|uhrenschutzhülle|watch[\s-]schutzhülle|armband mit gehäuse"), (ZU, "aa-6-10")),
+    (R(rf"(hülle|displayschutz|schutzfolie|ladekabel|ladegerät|ladestation|ladedock|ladepad|ladeständer|charger|powerbank|gehäuse|bumper|halterung|ständer)[\w\s,/-]*\bfür\b[\w\s-]*{WORT}|"
+       rf"smartwatch[\s-](schutzhülle|gehäuse|ladegerät|ladestation|ladekabel|ladedock|charger|halterung|ständer)|uhrenschutzhülle|watch[\s-]schutzhülle|armband mit gehäuse"), (ZU, "aa-6-10")),
     (R(r"smartwatch|smart[\s-]?watch|smart-?uhr|smartes?\b|smart[\s-]?(sport-?)?armband|smart ?band|smart\s+sport|fitness-?(armband|tracker|uhr)|"
        r"sport-?armband mit|sportarmband mit|herzfrequenz|herzmess|pulsmess|blutdruck|pedometer|schrittzähler|bluetooth|"
        r"amoled|\bgps\b|anruf|smart pager|tracker"), (W, "aa-6-12")),
     (R(r"uhr\b|uhren|\bwatch|chronograph|quar[zt]|automatik|mechanisch|armbanduhr|taschenuhr|tourbillon"), (W, "aa-6-11")),
 ]
-NICHT = R(r"mücken|insekten|uhrenbox|uhrenbeweger|aufbewahrung|ladestation mit uhr|wireless charging|uhrwerk\b|uhrmacher|uhrgürtel|lautsprecher|wecker")
+# 09.10.2026: «wireless charging» stand hier und blockierte «Smartwatch mit … Wireless Charging» (bleib Watches statt Smartwatch);
+# Ladestationen fängt jetzt Regel 2 (Charger/Powerbank/Ladestation für Smartwatch) bzw. «ladestation mit uhr» / Mehrgeräte-Halter hier.
+NICHT = R(r"mücken|insekten|uhrenbox|uhrenbeweger|aufbewahrung|ladestation mit uhr|für iphone, apple watch|uhrwerk\b|uhrmacher|uhrgürtel|lautsprecher|wecker")
 ZIELE = sorted({z[0] for _, z in REGELN})
 
 
@@ -107,6 +109,14 @@ KANARIEN = [
     ("Herrenuhr mit Uhrenarmband aus Leder", (W, "aa-6-11")),
     ("Quarzuhr mit Edelstahl-Uhrenarmband", (W, "aa-6-11")),
     ("Smartwatch mit Ersatz-Uhrenarmband", (W, "aa-6-12")),
+    # 09.10.2026: Ladegeräte für Smartwatches = Zubehör; Smartwatch MIT Wireless Charging = Smartwatch
+    ("Weisser Magnet-Charger für Smartwatches", (ZU, "aa-6-10")),
+    ("Smartwatch-Ladestation", (ZU, "aa-6-10")),
+    ("Kabellose Powerbank für Smartwatches", (ZU, "aa-6-10")),
+    ("Smartwatch Exklusivmodell mit Wireless Charging", (W, "aa-6-12")),
+    ("Smartwatch mit Bluetooth-Telefonie und Wireless Charging", (W, "aa-6-12")),
+    ("Smartwatch mit Bluetooth-Anruf und NFC-Ladegerät", (W, "aa-6-12")),
+    ("3-in-1 Magnethalterung für iPhone, Apple Watch & AirPods", None),
 ]
 
 
