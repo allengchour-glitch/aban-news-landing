@@ -44,6 +44,22 @@
 
 
 
+
+## 🏷️ Lieferantencodes im Farbfeld — «alle oder keiner» lässt gemischte Listen durch (2026-10-09, 16:20 UTC, «weiter»)
+**Gemessen:** 124 aktive Produkte mit reinen Lieferantencodes im Auswahlfeld «Farbe»/«Ausführung» («QW121», «YT6419113017»,
+«040401», «MFH3IUW75B08E11» neben «Blau», «ZQ202201025» neben «Muster 13–19»); 12 davon Importe seit September.
+**Ursache:** beide CJ-Importer machten Codes nur zu «Modell N», wenn JEDER Wert ein Code war (`codeOpt`) und mit Buchstabe
+begann; `variant_value_clean.py` behält einen Code, wenn sonst nichts übrig bliebe.
+**Getan:** EINE Regel `automation/data/farbcode_modell_regel.json` → `farbcode_modell.py` (Bestand + täglich im Aufseher,
+Selbsttest = 54 Kanarien + py=js über 17'028 Optionen, 0 Abweichungen) und `farbcode_modell.mjs` in beiden Importern
+(Harness-Test `buildFashion`). Codes → nächste Nummer der vorhandenen Serie, sonst «Modell N»; alle «Modell N» → Option
+«Ausführung». **166/0 live** (Rücklesen je Option, Stichprobe 12/12, Google-Farbfelder 0 Codes). Bewusst stehen: Nummer+Tonname
+(«101CLEAR»), Code+Anhang («C3101-3XS», «GZ2794-110», Wimpern «-CC»), Code+Grösse ohne Strich («Y043S/M/L»), runde Zahlen
+(«AR2000»), Masse («C22X33CM»), Einzelwerte, Fach-/Gerätetitel — 49 Optionen, Bericht `dropship/FARBCODE-MODELL-2026-10-09.md`.
+**Lehren:** (1) Ein Wächter, der «alle oder keiner» prüft, lässt jede gemischte Liste durch — die Regel gehört auf den
+einzelnen Wert, die Liste entscheidet nur den Ersatznamen und ob sie tabu ist. (2) Wortprüfung für GROSS geschriebene Folgen
+braucht eine Mindestlänge: bei 4 Buchstaben ist «HAXC» so «aussprechbar» wie «NUDE» (11 Optionen blockiert, nachgezogen).
+(3) Der Trockenlauf über ALLE Kandidaten (nicht nur Stichprobe) fand 6 Fallen-Klassen, die keine Kanarienliste vorher kannte.
 ## 2026-10-09 15:45 UTC · 🔤 «verbesser weiter»: Cowhide, Pendant, Baby-Romper im Titel — Google findet sie deutsch nicht
 
 **GEMESSEN:** 52'082 Titel. Eingebürgert und gesucht: Sneaker 640, Hoodie 387, Cardigan 294, Jumpsuit 255 (bleiben).
@@ -19320,3 +19336,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · ⭐ **«weiter verbessern» (Tag 9 vorgezogen): Bewertungs-Import erreichte 107/2'695 Neuimporte — pid stand in der SKU, der Nachschlag kostete 10 CJ-Punkte und scheiterte ab ~04 UTC, Läufe starben am Neustart → rohe pid direkt, Neuware im Reissverschluss, still_gestorben + «WEITER»-Kette (19 Bewertungen in der ersten Charge); Versandseite «spart CO2» + 11 Produkte «klimaneutral» → `data/klima_regel.json` für Wächter + Importer (11/0, py=js).** Gratis ab 50 vs 45 ist gewollt → `dropship/VERTRAUEN-TAG9-2026-10-08.md`
 - 2026-10-08 · 👗 **«weiter fein katalog verbessern»: Titelprobe-Ablehnungen (233) waren meist Google-Fehler (142 «Dresses» = Röcke/Blusen/Nachthemden) → `titelprobe_fein.py` 172/0; Kollektion Kleider/Röcke hing am CJ-Kategorienamen → `kleid_rock_tags.py` 453/0 + Importer `kleidRockTag()` (eine Wortregel, py=js 0 Abw.); 328 Einzelurteile 245/0 mit Regel-Vorrang; Zweig 243→69, Titelprobe 233→5; Printful fällt auf Grobklasse zurück (363/432) → Zähler `rueckfall-grob`.** → `dropship/FEINKATALOG-KLEID-ROCK-2026-10-08.md`
 - 2026-10-08 · 🔎 **«weiter»: Google-Wächter zählte 291 «Personalized advertising»-Meldungen (Ziel `[]`, Regel betrifft nur Zielgruppen) als Gratis-Eintrag-Blocker → `nur_personalisiert`, 1'114 → 823, Bildtausch-Bilanz unverändert; `[]` auch bei Bild-/Adult-Klassen = unbelegt, nur gezählt.** Meldung ≠ Blocker: was regelt die Regel? → Journal 08.10. 07:30
+- 2026-10-08 · 📝 **«verbessere weiter» (Tag 10 ✅): Mengen in Kollektionstexten veraltet («über 7'000» bei 4'913 aktiven, «rund 160» bei 250) → `kollektion_mengen_wache.py` täglich (3/0); 7 Saison-/Geschenkwelt-Texte nach Messung (Weihnachten «grösster Teil Pullover» falsch, «garantiert/handverlesen» raus); Ratgeber Herbst-Deko 1'085 → 3'200 Z. + Weihnachten→Geschenkwelten; tote Ratgeber-Links 2 → 0; «Winter & Kälte» per Tag (27 Fremdartikel).** Zahl im Text = Behauptung mit Verfallsdatum; vor Regelwechsel Mitglieder abgleichen → `dropship/SEO-TAG10-2026-10-08.md`

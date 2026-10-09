@@ -23,6 +23,8 @@ import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
+import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';   // 09.10.2026: Codes im Farbfeld → «Modell N»
+const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
 import { heikelZweck } from './heikel_zweck.mjs';
 // ⚠️ 21.08.2026: Diese Zeile FEHLTE, während `echoVomLieferanten` an drei Stellen (708/710/714)
 // schon aufgerufen wurde. Folge: `ReferenceError: echoVomLieferanten is not defined` beim
@@ -172,9 +174,13 @@ function buildFashion(d){
 const GROESSE_OK=/^(?:[0-9]?X{0,5}(?:S|M|L)|XXS|XS|[0-9]{1,3}(?:[.,][05])?|[0-9]{2,3}\s?cm|[0-9]{1,2}\s?(?:Y|J(?:ahre)?|M(?:onate)?)|EU\s?[0-9]{2}|US\s?[0-9]{1,2}|UK\s?[0-9]{1,2}|One\s?Size|Einheitsgr[\u00f6o]sse|Freie\s?Gr[\u00f6o]sse)$/i;
 const groesseSauber=w=>!!w&&GROESSE_OK.test(String(w).trim());
 const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
- const cName=(codeOpt||(zaehlOpt&&!nurFarbe))?'Ausführung':'Farbe';
+ // 09.10.2026: auch GEMISCHTE Listen («Blau», «MFH3IUW75B08E11», «Aprikose 1») und Codes mit Ziffer vorn («040401»,
+ // «70000EU») — codeOpt greift nur, wenn JEDER Wert ein Code ist. Regel data/farbcode_modell_regel.json (= Bestand-Wächter).
+ const fcNeu=useC&&!codeOpt&&!zaehlOpt&&FARBCODE_OK?codesNummerieren(eff):null;
+ const cName=(codeOpt||(zaehlOpt&&!nurFarbe)||(fcNeu&&fcNeu.every(x=>/^Modell \d+$/.test(x))))?'Ausführung':'Farbe';
  const cMap=(codeOpt||zaehlOpt)
-   ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):sMap;
+   ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)]))
+   :fcNeu?new Map(colors.map((c,i)=>[c,fcNeu[i]])):sMap;
  const cVal=c=>cMap?(cMap.get(c)||c):c;
  // Dreiteilige variantKeys («Beige-L-Vest», «Blue-M-Thin») tragen hinten eine echte Wahl.
  // Ohne eigene Option würden «…-Thin» und «…-Thick» beim Dedup zu EINER Variante verschmelzen —

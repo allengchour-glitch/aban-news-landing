@@ -1,0 +1,638 @@
+{
+  "_zweck": "Lieferanten-Artikelcodes als Wert einer Farb-/Ausführungs-Option (09.10.2026). Gemessen 124 aktive: «QW121», «YT6419113017», «040401», «MFH3IUW75B08E11» neben «Blau», «ZQ202201025» neben «Muster 13–19». Die Importer erkannten Codes nur, wenn ALLE Werte Codes waren, und nur mit Buchstaben vorn. EINE Regel für automation/farbcode_modell.py (Bestand, täglich) und automation/farbcode_modell.mjs (beide CJ-Importer).",
+  "optionen": "^(farbe|color|colou?r|ausf(ü|ue)hrung|muster|design|stil|style|variante)$",
+  "zeichen": "^[A-Za-z0-9]+(?:[-._#][A-Za-z0-9]+)*$",
+  "min_laenge": 5,
+  "max_laenge": 24,
+  "min_ziffern": 3,
+  "nur_ziffern_min": 6,
+  "segment_einheit": "^(?:\\d+(?:[.,]\\d+)?(?:v|w|kw|ml|l|cl|cm|mm|m|km|kg|g|mg|lb|lbs|oz|db|hz|khz|mhz|ghz|mah|ah|a|k|p|gb|tb|mb|pcs|pc|stk|inch|zoll|in|ft|y|yr|yrs|t|mo|x|er|st|nd|rd|th|w)|\\d+(?:[.,]\\d+)?[x×*]\\d+(?:[.,]\\d+)?(?:[x×*]\\d+(?:[.,]\\d+)?)?(?:cm|mm|m|in)?|(?:\\d?x{0,5}[sml]|[2-9]?xl|xxs|xs)|(?:eu|us|uk|au|cn|jp|kr)\\d{1,3}w?|\\d{1,3}(?:eu|us|uk))$",
+  "bekannt": "^(?:s9[0-9]{2}|ip[0-9]{2}|cr[0-9]{4}|lr[0-9]{2,4}|sr[0-9]{3,4}|ag[0-9]{1,2}|xt[0-9]{2}|rj[0-9]{2}|gu[0-9]{2}|mr[0-9]{2}|e[0-9]{2}|usb.*|type-?c.*|hdmi.*|wifi.*|10440|14500|16340|18650|21700|26650|32650|20[0-9]{2}|19[0-9]{2})$",
+  "zaehlwort": "^(?:style|styles|color|colour|model|models|pattern|patterns|design|no|nr|type|item|sku)$",
+  "wortsperre": "^(?:black|white|red|blue|green|yellow|grey|gray|pink|purple|brown|beige|gold|silver|orange|navy|khaki|rose|apricot|wine|coffee|ivory|cream|camel|mint|teal|coral|army|dark|light|sky|lake|schwarz|weiss|rot|blau|gruen|grün|gelb|grau|braun|lila|rosa|silber|creme)$",
+  "serien": "^(Modell|Muster|Farbton|Design|Typ|Ausführung) (\\d{1,3})$",
+  "neu_wort": "Modell",
+  "optionsname_wenn_alle": "Ausführung",
+  "_hinweis": "Ein Code wird zur nächsten Nummer der vorhandenen Serie («Muster 13–19» → «Muster 20»), sonst «Modell N» in Galerie-Reihenfolge. Werden ALLE Werte einer «Farbe» so zu «Modell N», heisst die Option «Ausführung» (wie der Importer seit 14.08.). NICHT angefasst: Werte mit Leerzeichen, Einheiten-Segmenten («TP136-3M» = Code + Alter, «XT30-15.2V-850mAh»), bekannte Kennungen (S925, IP68, 18650, XT60), Wörter mit Kleinbuchstaben («007SupremeAir»), Optionen mit linkedMetafield, Grösse/Speicher/Inhalt. Fach-/Gerätebezug im Titel (fach_titel: Hülle, Akku, Wimpern …) → nur melden: dort kann «A2337» das Gerätemodell sein. Nicht als Code: GROSS geschriebene Wörter ab 5 Buchstaben (Vokalanteil ≥ 34 %, höchstens 3 Konsonanten am Stück; 4-Buchstaben-Teile wie «HAXC», «OCCS», «FHET» sind Codes: «101CLEAR», «112HONEY» = Lippenbalsam-Töne), Masse irgendwo im Wert («C22X33CM»), runde Zahlen in ALLEN Codes («AR2000–AR7000» = Rollengrössen). Steht ein Code mit Anhang (Grösse, Kurve, Alter: «C3101-3XS», «GZ2794-110», «3D40D60D-CC») in der Option, bleibt die ganze Option. Ebenso bleibt die Option bei nur EINEM Wert (keine Wahl), bei Code+Grösse ohne Strich («Y043S/Y043M/Y043L») und bei Nummer+Wort («114BLISS» neben «101CLEAR»).",
+  "kanarien": [
+    [
+      [
+        "QW121",
+        "QW123",
+        "QW124"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3"
+      ]
+    ],
+    [
+      [
+        "Blau",
+        "MFH3IUW75B08E11",
+        "HWELIGR",
+        "Aprikose 1",
+        "YP723"
+      ],
+      [
+        "Blau",
+        "Modell 1",
+        "HWELIGR",
+        "Aprikose 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "Muster 13",
+        "Muster 14",
+        "ZQ202201025"
+      ],
+      [
+        "Muster 13",
+        "Muster 14",
+        "Muster 15"
+      ]
+    ],
+    [
+      [
+        "Farbton 1",
+        "Farbton 2",
+        "ZY25030630",
+        "CXCSY423D"
+      ],
+      [
+        "Farbton 1",
+        "Farbton 2",
+        "Farbton 3",
+        "Farbton 4"
+      ]
+    ],
+    [
+      [
+        "040401",
+        "040402"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "70000EU",
+        "70000EV",
+        "70000F1"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3"
+      ]
+    ],
+    [
+      [
+        "OLD5236C3",
+        "KD5232",
+        "Style5321",
+        "8108style"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3",
+        "Modell 4"
+      ]
+    ],
+    [
+      [
+        "ML251711441",
+        "Pink",
+        "CCS 1688XC 133"
+      ],
+      [
+        "Modell 1",
+        "Pink",
+        "CCS 1688XC 133"
+      ]
+    ],
+    [
+      [
+        "A18TZDZ79197",
+        "A18TZDZ79197Q"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "NO.1895",
+        "NO.1997"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "TP136-3M",
+        "TP136-6M"
+      ],
+      [
+        "TP136-3M",
+        "TP136-6M"
+      ]
+    ],
+    [
+      [
+        "TB840-100X160CM",
+        "TB841-200X300CM"
+      ],
+      [
+        "TB840-100X160CM",
+        "TB841-200X300CM"
+      ]
+    ],
+    [
+      [
+        "YW4191-180x70",
+        "YW4211-180x70"
+      ],
+      [
+        "YW4191-180x70",
+        "YW4211-180x70"
+      ]
+    ],
+    [
+      [
+        "XT30-15.2V-850mAh",
+        "XT60-15.2V-850mAh"
+      ],
+      [
+        "XT30-15.2V-850mAh",
+        "XT60-15.2V-850mAh"
+      ]
+    ],
+    [
+      [
+        "150LB",
+        "200LB"
+      ],
+      [
+        "150LB",
+        "200LB"
+      ]
+    ],
+    [
+      [
+        "S925",
+        "S999"
+      ],
+      [
+        "S925",
+        "S999"
+      ]
+    ],
+    [
+      [
+        "18650",
+        "21700"
+      ],
+      [
+        "18650",
+        "21700"
+      ]
+    ],
+    [
+      [
+        "007SupremeAir",
+        "007flagship"
+      ],
+      [
+        "007SupremeAir",
+        "007flagship"
+      ]
+    ],
+    [
+      [
+        "Balck-64G-US",
+        "Balck-64G-EU"
+      ],
+      [
+        "Balck-64G-US",
+        "Balck-64G-EU"
+      ]
+    ],
+    [
+      [
+        "2XL",
+        "3XL",
+        "US16W"
+      ],
+      [
+        "2XL",
+        "3XL",
+        "US16W"
+      ]
+    ],
+    [
+      [
+        "1000g",
+        "500g"
+      ],
+      [
+        "1000g",
+        "500g"
+      ]
+    ],
+    [
+      [
+        "Black123",
+        "White456"
+      ],
+      [
+        "Black123",
+        "White456"
+      ]
+    ],
+    [
+      [
+        "IP68",
+        "IP67"
+      ],
+      [
+        "IP68",
+        "IP67"
+      ]
+    ],
+    [
+      [
+        "2024",
+        "2025"
+      ],
+      [
+        "2024",
+        "2025"
+      ]
+    ],
+    [
+      [
+        "1080P",
+        "4K"
+      ],
+      [
+        "1080P",
+        "4K"
+      ]
+    ],
+    [
+      [
+        "Rot",
+        "Blau"
+      ],
+      [
+        "Rot",
+        "Blau"
+      ]
+    ],
+    [
+      [
+        "Modell 1",
+        "Modell 2",
+        "AB1234"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3"
+      ]
+    ],
+    [
+      [
+        "3N5Z12A",
+        "3N5Z12B",
+        "3N5Z128"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3"
+      ]
+    ],
+    [
+      [
+        "128GB",
+        "256GB"
+      ],
+      [
+        "128GB",
+        "256GB"
+      ]
+    ],
+    [
+      [
+        "Color26",
+        "Blau"
+      ],
+      [
+        "Color26",
+        "Blau"
+      ]
+    ],
+    [
+      [
+        "HQ24799-XXS",
+        "HQ24799-XL"
+      ],
+      [
+        "HQ24799-XXS",
+        "HQ24799-XL"
+      ]
+    ],
+    [
+      [
+        "DX8102",
+        "DM8103",
+        "8108style",
+        "DX8109"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3",
+        "Modell 4"
+      ]
+    ],
+    [
+      [
+        "101CLEAR",
+        "102NAKED",
+        "112HONEY",
+        "109PUMPKIN"
+      ],
+      [
+        "101CLEAR",
+        "102NAKED",
+        "112HONEY",
+        "109PUMPKIN"
+      ]
+    ],
+    [
+      [
+        "SXCTMB3344",
+        "SXCTMB3345"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "AR2000",
+        "AR3000",
+        "AR4000"
+      ],
+      [
+        "AR2000",
+        "AR3000",
+        "AR4000"
+      ]
+    ],
+    [
+      [
+        "XL7500",
+        "XL7501"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "C22X33CM",
+        "C30X40CM"
+      ],
+      [
+        "C22X33CM",
+        "C30X40CM"
+      ]
+    ],
+    [
+      [
+        "C3101-3XS",
+        "C3101",
+        "C3102-3XS",
+        "C3102"
+      ],
+      [
+        "C3101-3XS",
+        "C3101",
+        "C3102-3XS",
+        "C3102"
+      ]
+    ],
+    [
+      [
+        "GZ2794",
+        "GZ2794-110",
+        "GZ2794-120"
+      ],
+      [
+        "GZ2794",
+        "GZ2794-110",
+        "GZ2794-120"
+      ]
+    ],
+    [
+      [
+        "3D40D60D-CC",
+        "3D40D60D-D"
+      ],
+      [
+        "3D40D60D-CC",
+        "3D40D60D-D"
+      ]
+    ],
+    [
+      [
+        "AI233COLOR",
+        "AI231"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "CSXSTBRIGHTDEW733",
+        "CS2024AQ6552"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "MFHFWUZ5KQMW801",
+        "MFHFWUZ5KQMW802"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "Y043S",
+        "Y043M",
+        "Y043L",
+        "Y043XL"
+      ],
+      [
+        "Y043S",
+        "Y043M",
+        "Y043L",
+        "Y043XL"
+      ]
+    ],
+    [
+      [
+        "101CLEAR",
+        "114BLISS"
+      ],
+      [
+        "101CLEAR",
+        "114BLISS"
+      ]
+    ],
+    [
+      [
+        "K305BU3S"
+      ],
+      [
+        "K305BU3S"
+      ]
+    ],
+    [
+      [
+        "TXS0030L",
+        "TXS0030N",
+        "TXS0030O"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3"
+      ]
+    ],
+    [
+      [
+        "OLD5236C3",
+        "KD5232",
+        "Muster 136",
+        "Muster 138",
+        "Gelb 312"
+      ],
+      [
+        "Muster 139",
+        "Muster 140",
+        "Muster 136",
+        "Muster 138",
+        "Gelb 312"
+      ]
+    ],
+    [
+      [
+        "YTB0019",
+        "YTB 0012",
+        "YTB0013"
+      ],
+      [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3"
+      ]
+    ],
+    [
+      [
+        "EB018C4 Peony",
+        "AC124C6",
+        "AC124C8"
+      ],
+      [
+        "EB018C4 Peony",
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "Gelb 312",
+        "KD5232",
+        "KD5237"
+      ],
+      [
+        "Gelb 312",
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "CD2024018333SD",
+        "CD20240666TREE990",
+        "Weiss",
+        "Muster 1",
+        "Muster 2"
+      ],
+      [
+        "Muster 3",
+        "Muster 4",
+        "Weiss",
+        "Muster 1",
+        "Muster 2"
+      ]
+    ],
+    [
+      [
+        "FQHD0L3XQG8PT7",
+        "FQHD1HAXC5O9XC"
+      ],
+      [
+        "Modell 1",
+        "Modell 2"
+      ]
+    ],
+    [
+      [
+        "101CLEAR",
+        "104Flirty",
+        "107NUDE",
+        "109PUMPKIN"
+      ],
+      [
+        "101CLEAR",
+        "104Flirty",
+        "107NUDE",
+        "109PUMPKIN"
+      ]
+    ]
+  ],
+  "fach_titel": "(hülle|wimpern|\\blash|huelle|\\bcase\\b|\\bcover\\b(?!-up)|schutzfolie|panzerglas|kompatib|ersatz|akku|batterie|ladegerät|ladekabel|adapter|netzteil|filter|kartusche|patrone|toner|tinte|leuchtmittel|glühbirne|sockel|\\bfür (iphone|samsung|galaxy|xiaomi|huawei|macbook|ipad|apple watch|garmin|fitbit|dyson|philips|bosch))",
+  "teil_segment": "^(?:\\d{2,3}|[A-Za-z]{1,3}|\\d?x{0,3}[sml])$",
+  "wort_min": 5,
+  "wort_vokal_min": 0.34,
+  "wort_konsonantenlauf_max": 3,
+  "rund": 100,
+  "groesse_ende": "(?:XXS|XS|XXXL|XXL|XL|[2-6]XL|S|M|L)$",
+  "luecke": "^([A-Z]{1,6}) (\\d[A-Za-z0-9]*)$",
+  "_flags": "Alle Muster ohne Inline-Flags: Python und JS kompilieren segment_einheit, bekannt, zaehlwort, wortsperre, optionen, fach_titel mit «i»; die übrigen gross-/kleinschreibungsempfindlich."
+}

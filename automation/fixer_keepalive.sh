@@ -226,6 +226,17 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_alter_im_farbwert.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 3000 python3 automation/alter_im_farbwert.py" >> "$AF" 2>&1 9>&- & )
   fi
+  # FARBCODE-MODELL (09.10.2026, «weiter»): Lieferanten-Artikelcodes im Farb-/Ausführungsfeld («QW121», «040401», gemischt mit
+  # «Blau») → «Modell N» bzw. nächste Nummer der vorhandenen Serie; 155/0 am 09.10. Liest denselben Optionen-Export, Selbsttest
+  # = Kanarien + py=js über alle Optionswerte (Importer filtern selbst: farbcode_modell.mjs). Regel data/farbcode_modell_regel.json.
+  FC=/tmp/farbcode_modell.log
+  if [ -f "$REPO/automation/farbcode_modell.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FC" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 300 python3 automation/farbcode_modell.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$FC"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_modell.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_modell.py" >> "$FC" 2>&1 9>&- & )
+  fi
   # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
   # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
   KM=/tmp/kleider_merkmale.log
