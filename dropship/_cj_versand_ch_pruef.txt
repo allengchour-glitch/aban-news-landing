@@ -6679,3 +6679,5 @@ mary-jane-slingback-mit-spitzem-zeh-602800	2606160659591603500	16	13.76	ok	lande
 retro-ballerinas-bequem-und-vielseitig-627600	2606160523461628300	16	10.55	ok	landeseite
 echtleder-pumps-mit-klobigem-absatz-631700	2606160247241632200	16	11.37	ok	landeseite
 pumps-mit-mesh-strass-keilabsatz-606900	2606150855331607400	16	11.96	ok	landeseite
+atmungsaktive-mesh-sneaker-mit-flacher-sohle-601900	2606150814571602600	16	10.42	ok	landeseite
+bequeme-freizeitschuhe-fur-damen-639700	2606150810271630600	16	13.76	ok	landeseite
