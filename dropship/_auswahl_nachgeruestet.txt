@@ -432,3 +432,6 @@
 15500403769729	Farbe:2+Grösse:4:8	2026-10-09	h-formiges-brustgeschirr-fur-haustiere-996352
 15500403704193	Farbe:7:7	2026-10-09	peak-racket-silikon-handschlaufe-618000
 15500403605889	Farbe:2:2	2026-10-09	sockenhilfe-fur-senioren-417216
+15502612922753	Farbe:2:2	2026-10-09	automatisches-katzenspielzeug-elf-ball-9f1f4f
+15502611972481	Farbe:7+Grösse:4:19+ki	2026-10-09	leuchtender-beissball-fur-hunde-b9f575
+15502611546497	Farbe:3:3	2026-10-09	retro-pu-leder-rucksack-fur-herren-063232
