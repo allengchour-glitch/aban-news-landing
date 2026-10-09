@@ -1541,3 +1541,10 @@ gid://shopify/Product/16612761698695	ok	Trainingselastikseil mit Stab
 gid://shopify/Product/16612712186247	ok	Pectoral Trainingsgerät – 36 kg bis 90 kg
 gid://shopify/Product/16612741120391	ok	Intelligente Futter- und Wasserschale für Katzen
 gid://shopify/Product/16612717101447	ok	Multifunktionales Bauchmuskelrad für Home Gym
+gid://shopify/Product/16612775952775	ok	Holz-Fotorahmen aus schwarzer Walnuss, rechteckig
+gid://shopify/Product/16612766286215	ok	Gusseiserne Kettlebell 4-24 kg
+gid://shopify/Product/16612768481671	ok	Gummierte Kurzhantel mit Stange
+gid://shopify/Product/16612769497479	ok	Boxen Trainingsziel
+gid://shopify/Product/16612766187911	ok	Hantelset mit Gummibeschichtung
+gid://shopify/Product/16612763959687	ok	Fitness-Trapezband aus Nylon, 9 m
+gid://shopify/Product/16612780704135	ok	Überwachungskamera mit Auto-Tracking
