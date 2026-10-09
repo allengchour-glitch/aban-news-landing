@@ -44,6 +44,26 @@
 
 
 
+## 2026-10-09 09:00 UTC · 🔁 Verbesserungsrunde: KI-Urteile flossen nie in die Lerndaten — Neuimporte bleiben grob
+
+**GEMESSEN:** 459 aktive Neuimporte (14 T) auf Google-Oberklassen, 426 ohne gelernte Regel. Die KI-Stufe ruht, weil OpenAI
+seit 05:43 UTC leer ist und Groq erschöpft. Im Ledger `_google_fein_ki.tsv` lagen 807× «ok» und 1'219× «keiner». Der
+Regel-Lerner las sie nie, er kannte nur die Einzelurteile vom 07./08.10. Dazu sperrte die SPERRE ohne Wortgrenzen rund
+300 harmlose Titel (Unisex, Waffeleisen, Türklingel, Pulloverkleid, Durchmesser), und «Anti-Rutsch-…» lieferte
+«Anti» als Kopfwort.
+
+**GETAN:**
+- `oberklasse_nachlernen.py`: «ok» wird ein Beispiel, «keiner» ein Veto-Beispiel, «uneinig» nie.
+  Ziel `data/oberklasse_training_ki.jsonl`, +1'032 Beispiele, idempotent.
+- `oberklasse_lernen.py` liest beide Lerndateien. Die SPERRE hat Wortgrenzen und 21 Kanarien, die bei jedem Start laufen.
+  Anti-Ketten werden vor der Kopfwort-Suche entfernt.
+- Gegenprobe 97,5 % (229 Regeln). Täglich im Aufseher vor oberklasse_lernen.
+- Bericht `dropship/OBERKLASSE-NACHLERNEN-2026-10-09.md`.
+
+**Lehre:** **Ein Prüfer, dessen Urteil nicht zurückfliesst, prüft jeden Tag dasselbe.** Ohne Kontingent fiel die Neuware
+zurück auf grob, obwohl die Antwort für «Hundeschüssel» geprüft im Ledger lag. Geprüfte Urteile gehören in die
+Lerndaten. Die Gegenprobe bleibt die Sperre vor dem Schreiben.
+
 ## 2026-10-09 07:45 UTC · ✍️ «weiter»: «dein … Design» am Satzanfang — um() machte jedes «Ihr» zu «dein»
 
 **Anlass:** Beim Lesen der Uhrentexte stand «dein mechanisches Uhrwerk garantiert Präzision», klein am Satzanfang, und die
@@ -19215,3 +19235,5 @@ Verschoben am 04.10.2026:
 - 2026-10-07 · 🤖 **«bing microsoft»: Agentic Storefronts LÄUFT (Admin-Screenshot: CHF 155.62 / 113 Besuche in 30 T, ChatGPT 74.80, Shop 80.82, Copilot 0; Knowledge Base fehlt → `KNOWLEDGE-BASE-ANTWORTEN.md` nur aus Richtlinien). Meine UCP-Probe mit Test-Profil fand luxestyle.ch nicht = falscher Messweg; IndexNow läuft; Microsoft-Merchant-Neuprüfung = Betreiber.** Sichtbarkeit an der Plattform-Auswertung messen, nicht an einer Test-Probe → `dropship/BING-MICROSOFT-2026-10-07.md`
 - 2026-10-07 · 🍪 **«verbessere mehr»: TikTok-Landeseiten 563 Sitzungen → 8 Warenkörbe → 0 Käufe; eigener Cookie-Banner lag nach 0,8 s auf dem Handy über Titel + Preis → Produktseiten erst nach Scrollen (Rückfall 20 s), mobil kompakt, Nachher-Bild Preis frei.** Bei hohem Absprung zuerst den ersten Handy-Bildschirm ansehen → `dropship/COOKIE-BANNER-PREIS-2026-10-07.md`
 - 2026-10-07 · 🧠 **«knowledge installiert»: App-Vorschläge falsch («ohne Zwischenhändler», «50–70 % unter Boutiquen», Gutscheine/Geschenkverpackung ja = gemessen 0) → `knowledge_base_fakten.py` 10 belegte Fakten veröffentlicht + `--wache` täglich; «Über uns» ohne Prüf-/Premium-Versprechen.** KI-Ableitungen über den Shop sind Behauptungen → `dropship/KNOWLEDGE-BASE-2026-10-07.md`
+- 2026-10-07 · 🗂️ **«alles perfekt, alles andere auch»: Zähler meldete Absicht als Widerspruch (Shopify feiner → `shopify-feiner`); Uhren `uhren_fein` 1'030/0, Google-Nummern `google_id_zu_name` 39/0; 3'954 Widersprüche + 12'583 grobe Oberklassen per Einzelurteil (Prüfer + Taxonomie-Validierung + Schutzregeln), Runde 1 3'534/0, Rücklesen 30/30.** Zwei Massen-Schreiber = Drossel → warten statt abbrechen → `dropship/KATALOG-TASCHEN-2026-10-07.md`
+- 2026-10-07 · 🗂️ **«das muss perfekt sein»: Taschen fertig (Google 9 + Shopify 124, Rücklesen 30/30); 3'553 «Widersprüche» waren Sammelkörbe (Google «Cosmetics»/«Hair Care» grob, Shopify-Feinklasse oft falsch) → `kosmetik_fein.py` (82 Kanarien) + `haar_fein.py` (51) setzen BEIDE Felder aus dem Titel, Plan 2'293 + 910, täglich im Aufseher.** Feld nie aus dem anderen ableiten, volle Liste je Ziel lesen → `dropship/KATALOG-TASCHEN-2026-10-07.md`

@@ -40,8 +40,30 @@ MIN_BELEG, MIN_REIN = 4, 0.92
 MIN_BELEG_X, MIN_REIN_X = 8, 0.95          # Zweigwechsel
 MIN_BELEG_K, MIN_REIN_K = 3, 0.90          # Rückfall Kopfwort (nur Verfeinerung unterhalb der heutigen Klasse)
 BLEIBT = "="
-SPERRE = re.compile(r"kostüm|cosplay|verkleid|tabak|zigar|shisha|vape|klinge|messer|schwert|dolch|machete|axt\b|erotik|"
-                    r"sex|dessous|vibrator|waffe|munition", re.I)
+# 09.10.2026: Wortgrenzen. Ohne sie sperrte die Liste ~300 harmlose Titel von jeder Verfeinerung: «Unisex» (163, «sex»),
+# «Waffelstrick/Waffeleisen» (~50, «waffe»), «Türklingel» («klinge»), «Puls-/Höhen-/Winkelmesser», «Durchmesser» (~40,
+# «messer» = Messgerät), «Pulloverkleid» («verkleid»), «Zigarettenanzünder» (Auto-Zubehör). Kanarien: SPERRE_KANARIEN.
+_L = r"(?<![a-zäöüß])"
+SPERRE = re.compile(
+    r"kostüm|cosplay|" + _L + r"verkleid|tabak|zigar(?!ettenanzünder|renanzünder)|shisha|vape|klinge(?!l)|"
+    r"" + _L + r"messer|(?:küchen|taschen|jagd|steak|brot|obst|schnitz|klapp|survival|kampf|wurf|butterfly|filet|santoku|"
+    r"chef|koch|gemüse|schäl|fleisch|käse|tomaten|pizza|keramik|damast|camping|outdoor)messer|"
+    r"schwert|dolch|machete|axt\b|erotik|" + _L + r"sex|dessous|vibrator|waffe(?!l)|munition", re.I)
+SPERRE_KANARIEN = [
+    ("Unisex Baseball-Cap", False), ("Waffelstrick Henley", False), ("Herzli-Waffeleisen", False),
+    ("WLAN Video-Türklingel", False), ("Smart-Armband mit Herzfrequenzmesser", False), ("Gymnastikring 80 cm Durchmesser", False),
+    ("Pailletten-Pulloverkleid", False), ("Auto-Zigarettenanzünder mit USB", False), ("Infrarot-Laser-Entfernungsmesser", False),
+    ("Kinderkostüm Hexe", True), ("Küchenmesser-Schärfer 12 Zoll", True), ("Messerblock aus Akazienholz", True),
+    ("Sparschäler mit Zirkonia-Klinge", True), ("Metall-Kohlezange für Shisha", True), ("Halloween Verkleidung Vampir", True),
+    ("Spitzen-Dessous-Set", True), ("Sexy Spitzen-Body", True), ("Wasserpistole Waffe", True), ("Zigarren-Hygrometer", True),
+    ("Taschenmesser mit 12 Funktionen", True), ("USB-Mini-Blender mit 6 Messern", True)]
+
+
+def sperre_kanarien():
+    f = [(t, s) for t, s in SPERRE_KANARIEN if bool(SPERRE.search(t)) != s]
+    for t, s in f:
+        print(f"  ✗ SPERRE {t!r}: soll {'gesperrt' if s else 'frei'}")
+    return not f
 SCHUTZ_SHOPIFY = ("tg-5-12-2", "aa-1-25", "el-13")
 
 
@@ -61,6 +83,8 @@ def woerter(titel):
     darin das letzte Nomen, bei Bindestrich-Ketten der letzte Teil («Pizza-Schaufel-Set» → Schaufel, «Set» ist Füllwort).
     Gegenprobe 07.10.: alle Titelwörter 92,1 %, nur Nomen 93,0 % — Nebenwörter («Ball», «Set», «handgemacht») führten."""
     kopf = TRENNER.split(" " + (titel or "") + " ")[0]
+    # 09.10.2026: «Hundeschüssel Anti-Rutsch» → Kopfwort war «Rutsch». Anti-Ketten (Anti-Rutsch, Anti-Kratz …) sind Merkmale.
+    kopf = re.sub(r"(?<![A-Za-zÄÖÜäöüß])Anti-[A-Za-zÄÖÜäöüß-]+", " ", kopf)
     teile = [t for w in re.findall(r"[A-Za-zÄÖÜäöüß-]+", kopf) for t in w.split("-") if t]
     nomen = [t.lower() for t in teile if len(t) >= 4 and t[0].isupper() and t.lower() not in FUELL and not ENDUNG.search(t.lower())]
     return nomen[-1:] if nomen else []
@@ -132,8 +156,14 @@ def urteil(modell, alt, titel, schatz=None):
     return k.pop() if len(k) == 1 else None
 
 
+TRAIN_KI = os.path.join(HIER, "data", "oberklasse_training_ki.jsonl")   # 09.10.: KI-Urteile (beide Modelle einig), oberklasse_nachlernen.py
+
+
 def lade_training():
-    return [json.loads(l) for l in open(TRAIN, encoding="utf-8")]
+    alle = [json.loads(l) for l in open(TRAIN, encoding="utf-8")]
+    if os.path.exists(TRAIN_KI):
+        alle += [json.loads(l) for l in open(TRAIN_KI, encoding="utf-8")]
+    return alle
 
 
 def pruefen(drucken=True):
@@ -166,6 +196,8 @@ def main():
     import kategorie_fein as kf
     import kosmetik_fein as kos
     from kaufwille_zeile import gql
+    if not sperre_kanarien():
+        raise SystemExit("SPERRE-Kanarien rot — nichts geschrieben")
     praez = pruefen(drucken=True)
     if praez < 0.95:
         raise SystemExit(f"Präzision {praez:.1%} < 95 % — nichts geschrieben")
@@ -239,7 +271,7 @@ if __name__ == "__main__":
             if (m := re.match(r"\d+ - (.+)", l.strip()))] if os.path.exists(os.environ.get("TAXO", "/tmp/gtaxo.txt")) else []
     _hat_kinder = {t.rsplit(" > ", 1)[0] for t in _tax if " > " in t}
     # nur echte OBERKLASSEN (Google-Klassen mit Unterklassen) — Schuhe/Rucksäcke/Jacken sind Blätter (Messung 08.10.)
-    ALTE = {json.loads(l)["alt"] for l in open(TRAIN, encoding="utf-8")} & _hat_kinder
+    ALTE = {b["alt"] for b in lade_training()} & _hat_kinder        # 09.10.: auch Oberklassen aus den KI-Lerndaten
     if "--pruefen" in sys.argv:
         sys.exit(0 if pruefen() >= 0.95 else 1)
     main()
