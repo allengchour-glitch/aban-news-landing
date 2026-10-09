@@ -1,12 +1,13 @@
 {
- "stand": "2026-10-09T11:19Z",
- "gescannt": 21,
- "ohne_kategorie_vorher": 21,
+ "stand": "2026-10-09T12:27Z",
+ "gescannt": 22,
+ "ohne_kategorie_vorher": 22,
  "gesetzt": 18,
- "ohne_kategorie_nachher": 3,
+ "ohne_kategorie_nachher": 4,
  "fehler": 0,
  "unbekannte_typen": {
-  "Büro & Home Office": 3
+  "Büro & Home Office": 3,
+  "Baby & Kinder": 1
  },
  "scharf": true
 }

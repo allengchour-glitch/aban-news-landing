@@ -1576,3 +1576,14 @@ gid://shopify/Product/16610076656007	w	Kleinteile	Weihnachtszug Bausteine-Set zu
 gid://shopify/Product/16608567525767	a	toddler
 gid://shopify/Product/16610104410503	a	toddler
 gid://shopify/Product/16610122400135	a	toddler
+gid://shopify/Product/16609961181575	a	kids
+gid://shopify/Product/16610232435079	a	kids
+gid://shopify/Product/16610237153671	a	kids
+gid://shopify/Product/16611659612551	a	toddler
+gid://shopify/Product/16611682058631	a	kids
+gid://shopify/Product/16611748315527	a	kids
+gid://shopify/Product/16611760341383	a	toddler
+gid://shopify/Product/16612061806983	a	kids
+gid://shopify/Product/16612337648007	a	kids
+gid://shopify/Product/16612778770823	a	toddler
+gid://shopify/Product/16613436785031	a	toddler
