@@ -6220,3 +6220,8 @@ damen-color-block-freizeit-sneaker-614300	2606300140301614900	16	13.16	ok	landes
 ballet-flats-mary-jane-wildleder-555137	2071408030671024130	16	11.23	ok	landeseite
 mary-jane-plateau-schuhe-mit-blockabsatz-782658	2071412152803635202	16	11.23	ok	landeseite
 plateau-mules-mit-verdecktem-absatz-725378	2071416143738417153	16	11.23	ok	landeseite
+franzosische-mary-janes-mit-lochmuster-819842	2070777983706705922	16	11.23	ok	landeseite
+franzosische-mary-janes-mit-verstecktem-platea-228418	2070745642363891713	16	11.23	ok	landeseite
+plateau-fashion-sneakers-608100	2606260957371608800	16	13.16	ok	landeseite
+herren-casual-boots-aus-leder-604800	2607070228201605500	16	23.15	ok	landeseite
+chelsea-boots-fur-herren-631700	2603110530481632100	16	14.37	ok	landeseite
