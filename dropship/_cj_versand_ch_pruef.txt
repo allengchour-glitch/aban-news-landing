@@ -6476,3 +6476,5 @@ peep-toe-sandalen-mit-chunky-absatz-612400	2606171057221613300	16	9.75	ok	landes
 arrival-damen-sandalen-mit-klobigem-absatz-616800	2606170831231617900	16	11.23	ok	landeseite
 bequeme-sandalen-mit-dicker-sohle-601400	2606170720091602100	16	11.49	ok	landeseite
 atmungsaktive-mid-heel-sandalen-639600	2606170717031630200	16	12.44	ok	landeseite
+rhinestone-stiletto-sandalen-636600	2606170633021637200	16	9.20	ok	landeseite
+atmungsaktive-roman-sandalen-fur-damen-609000	2606170354201609700	16	13.76	ok	landeseite
