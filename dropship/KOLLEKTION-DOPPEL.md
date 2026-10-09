@@ -1,6 +1,6 @@
-# Kollektionen mit gleicher Regel — Stand 2026-10-08T08:35:06Z
+# Kollektionen mit gleicher Regel — Stand 2026-10-09T05:39:14Z
 
-OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 9 · Gruppen: 9 · SCHARF
+OFFEN: 0 · erledigt heute: 1 · übersprungen (Zahlen ungleich): 9 · Gruppen: 10 · SCHARF
 
 Regel: eine Bleiberin je Gruppe (Menü > Startseite > Rotation > Kanäle > Text), die anderen abgemeldet + 301. Ledger `dropship/_kollektion_doppel.txt`. Rückweg: Redirect löschen + publizieren.
 
@@ -10,6 +10,11 @@ Regel: eine Bleiberin je Gruppe (Menü > Startseite > Rotation > Kanäle > Text)
 - ⏭️ kein Mitglied im Online Store publiziert — keine Web-Adresse, nichts zusammenzulegen
 - `bar-wein` «Bar & Wein» · 6 P. (3 kanäle, text 2)
 - `bar-tools` «Bar-Tools» · 5 P. (2 kanäle, text 2)
+
+### UND TAG EQUALS «kat-buero»
+
+- `buro-home-office` «Büro & Home Office» · 112 Produkte · 314 P. (online store, menü, 10 kanäle, text 3) · **BLEIBT**
+- `buero-schreibwaren` «Büro & Schreibwaren» · 112 Produkte · 263 P. (online store, rotation, 10 kanäle, text 2) · **→ 301**
 
 ### UND VENDOR EQUALS «puma»
 

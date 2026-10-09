@@ -6460,3 +6460,7 @@ gid://shopify/Product/15455957156225	zugeordnet	33	Schnürschuhe mit Haarband un
 gid://shopify/Product/15455957254529	bild-urls-tot
 gid://shopify/Product/15455957320065	bild-urls-tot
 gid://shopify/Product/15455957451137	zugeordnet	36	Weiche Kinderschuhe mit Klettverschluss
+gid://shopify/Product/15455981994369	zugeordnet	24	Shapewear Bodysuit
+gid://shopify/Product/15456004473217	zugeordnet	2	Männer Geldbörse aus Leder und Metall
+gid://shopify/Product/15456004833665	zugeordnet	35	Universeller Katzenkratzer-Schutz für Sofa
+gid://shopify/Product/15456005685633	zugeordnet	8	Grüner Sofa-Kissen in Pflanzen-Optik
