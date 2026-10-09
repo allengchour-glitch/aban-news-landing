@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-08T11:20:14Z",
+ "stand": "2026-10-09T11:18:19Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Gesetz gegen digitale Gewalt: Kabinett beschließt Strafen für Deepfakes und GPS-Tracking",
-   "u": "https://www.golem.de/news/gesetz-gegen-digitale-gewalt-kabinett-beschliesst-strafen-fuer-deepfakes-und-gps-tracking-2610-213868.html",
+   "t": "KI: Anthropic verbietet Nutzern, zu gemein zu Claude zu sein",
+   "u": "https://www.golem.de/news/ki-anthropic-verbietet-nutzern-zu-gemein-zu-claude-zu-sein-2610-213924.html",
    "q": "Golem",
-   "d": "2026-10-08T11:01:01Z",
-   "s": "Die sexualisierte Aufnahme eines bekleideten Pos kann künftig strafbar sein. Vor allem Frauen sollen vor digitaler Gewalt besser geschützt werden. (Deepfake, KI)",
+   "d": "2026-10-09T10:41:01Z",
+   "s": "Künftig kann Claude Chats beenden, wenn Nutzer die KI beleidigen. In der neuen Nutzervereinbarung werden auch Propaganda und Waffenentwicklung geregelt. (Anthropic, KI)",
    "sprache": "de"
   },
   {
-   "t": "Entdeckung oder Routine? Was Anthropics KI-Labor für die Bewertung echter Forschungsdurchbrüche bedeutet",
-   "u": "https://t3n.de/news/entdeckung-routine-anthropic-ki-labor-1765931/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "\"OpenAI kann KI nicht allein sicher machen\": Ex-Mitarbeiter veröffentlichen kritischen Brief",
+   "u": "https://t3n.de/news/openai-ex-mitarbeiter-brief-ki-sicherheit-1767427/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-08T10:55:00Z",
-   "s": "KI-Firmen bestehen darauf, dass ihre Agenten und Sprachmodelle bahnbrechende Fortschritte erzielen. Jüngstes Beispiel aus der Biologie ist ein Vorstoß von Anthrweiterlesen auf t3n.de",
+   "d": "2026-10-09T10:30:05Z",
+   "s": "OpenAI hat drei Mitarbeiter:innen mit sofortiger Wirkung entlassen, weil sie angeblich vertrauliche Informationen weitergegeben hätten. Jetzt setzen sich die Ex-Mitarbeiter:innen mit einem kritischen …",
    "sprache": "de"
   },
   {
-   "t": "Gods Don't Give Gifts: Erster KI-generierter Spielfilm will Oscar gewinnen",
-   "u": "https://www.golem.de/news/gods-don-t-give-gifts-erster-ki-generierter-film-will-einen-oscar-gewinnen-2610-213872.html",
+   "t": "Fortschritte in der KI-Mathematik: Forscher sehen Gefahren für Kryptowährungen",
+   "u": "https://www.golem.de/news/fortschritte-in-der-ki-mathematik-forscher-sehen-gefahren-fuer-kryptowaehrungen-2610-213922.html",
    "q": "Golem",
-   "d": "2026-10-08T10:34:02Z",
-   "s": "Spektakuläre Bilder: Die Macher eines mit KI erstellen Films hoffen ganz offiziell auf einen Oscar. (Filme & Serien, KI)",
+   "d": "2026-10-09T10:10:02Z",
+   "s": "Forscher erwarten, dass KI noch vor Quantencomputern eine ernste Gefahr für die Kryptografie von Blockchains darstellt. (Ethereum, KI)",
    "sprache": "de"
   },
   {
-   "t": "40 Milliarden Dollar für Nvidia-Chips: SpaceX soll riesige Finanzierung planen",
-   "u": "https://t3n.de/news/40-milliarden-dollar-fuer-nvidia-chips-spacex-soll-riesige-finanzierung-planen-1767184/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "heise-Angebot: AI Beyond the Hype: Was KI in echten Software-Teams wirklich verändert",
+   "u": "https://www.heise.de/news/AI-Beyond-the-Hype-Was-KI-in-echten-Software-Teams-wirklich-veraendert-11481191.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-09T10:00:00Z",
+   "s": "Was bleibt vom KI-Versprechen in der Praxis? Der OOP-Track „AI Beyond the Hype“ beschäftigt sich mit echten Erfahrungen, Zahlen und Trade-offs aus Softwareteams",
+   "sprache": "de"
+  },
+  {
+   "t": "Fünf Jahre Pause: Bootstrap bekommt großes Upgrade auf Version 6",
+   "u": "https://www.heise.de/news/Bootstrap-6-Erste-Alpha-Version-des-CSS-Frameworks-erschienen-11482120.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-09T09:50:00Z",
+   "s": "Fünf Jahre nach Bootstrap 5 bringt das Team die erste Alpha von Bootstrap 6 heraus – mit modernen Webstandards und KI-Unterstützung.",
+   "sprache": "de"
+  },
+  {
+   "t": "We’re putting too much faith in AI’s ability to say no",
+   "u": "https://www.technologyreview.com/2026/10/09/1145728/we-are-putting-too-much-faith-in-ai-to-say-no/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-09T09:00:00Z",
+   "s": "Ever since people first seriously contemplated giving machines an intelligence modeled on our own, there has never been any question that they would, like us, be able to say no. The sci-fi canon is fu…",
+   "sprache": "en"
+  },
+  {
+   "t": "3 KI-Figuren, ein Konsens: Claude Skills als Sparringsteam für Selbstständige",
+   "u": "https://t3n.de/news/claude-skills-ki-sparringspartner-1767372/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-08T10:30:52Z",
-   "s": "Elon Musks Raumfahrtunternehmen will offenbar Milliarden aufnehmen, um den Kauf von Nvidia-Chips zu finanzieren. Gleichzeitig wächst bei Anlegern die Skepsis gegenüber schuldenfinanzierten KI-Investit…",
+   "d": "2026-10-09T08:40:54Z",
+   "s": "Wer allein arbeitet, hat niemanden, der Entscheidungen sofort hinterfragt. Ein Solo-Selbstständiger hat sich mit Claude-Skills drei KI-Sparringspartner gebaut, im Gespräch mit Claude statt mit Code.we…",
    "sprache": "de"
   },
   {
-   "t": "KI-Features für Webex-Telefonie: Persönliche Assistenz und Echtzeitübersetzung",
-   "u": "https://www.heise.de/news/KI-Features-fuer-Webex-Telefonie-Persoenliche-Assistenz-und-Echtzeituebersetzung-11480604.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-08T10:18:00Z",
-   "s": "Cisco stellt auf der WebexOne-Konferenz zahlreiche KI-Features für Webex Calling vor, darunter einen Anruf-Assistenten und Echtzeitübersetzung.",
-   "sprache": "de"
+   "t": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
+   "u": "https://openai.com/index/sophos",
+   "q": "OpenAI",
+   "d": "2026-10-09T07:00:00Z",
+   "s": "Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
+   "sprache": "en"
   },
   {
-   "t": "heise-Angebot: M365 Copilot im Unternehmen – Agents mit Copilot Studio und Foundry entwickeln",
-   "u": "https://www.heise.de/news/M365-Copilot-im-Unternehmen-Agents-mit-Copilot-Studio-und-Foundry-entwickeln-11458173.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-08T10:00:00Z",
-   "s": "M365 Copilot ist mehr als ein KI-Assistent in Office. Agents lassen sich produktiv entwickeln und mit Copilot Studio und Foundry unternehmensweit skalieren.",
-   "sprache": "de"
-  },
-  {
-   "t": "AI breakthroughs in robotics won’t change your life any time soon",
-   "u": "https://www.technologyreview.com/2026/10/08/1145923/ai-breakthroughs-in-robotics-wont-change-your-life-any-time-soon/",
+   "t": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
+   "u": "https://www.technologyreview.com/2026/10/08/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
    "q": "MIT Tech Review",
-   "d": "2026-10-08T09:00:00Z",
-   "s": "The story is a collaboration between MIT Technology Review and Aventine, a non-profit research foundation that creates and supports content about how technology and science are changing the way we liv…",
+   "d": "2026-10-09T00:08:24Z",
+   "s": "Friday, October 16, 2026 Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose genetic blue…",
    "sprache": "en"
   },
   {
-   "t": "Building a safer path to autonomous industrial AI",
-   "u": "https://www.technologyreview.com/2026/10/08/1144020/building-a-safer-path-to-autonomous-industrial-ai/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-08T08:17:32Z",
-   "s": "Industrial AI is entering a new phase. After decades of predictive analytics and other specialized applications, advances in foundation models, physical AI, and agentic AI are making it possible to au…",
-   "sprache": "en"
-  },
-  {
-   "t": "Nous Research confirms it hit $1.5B valuation, launches AI agents for business users",
-   "u": "https://techcrunch.com/2026/10/07/nous-research-confirms-it-hit-1-5b-valuation-launches-ai-agents-for-business-users/",
+   "t": "Pretend you’re sitting at Elizabeth Holmes’ desk on this weirdly detailed website",
+   "u": "https://techcrunch.com/2026/10/08/pretend-youre-sitting-at-elizabeth-holmes-desk-on-this-weirdly-detailed-website/",
    "q": "TechCrunch AI",
-   "d": "2026-10-07T20:48:45Z",
-   "s": "The developer of Hermes Agent raised a $90 million Series B.",
-   "sprache": "en"
-  },
-  {
-   "t": "Microsoft releases new Nvidia-chip AI PCs with revamped Windows 11",
-   "u": "https://techcrunch.com/2026/10/07/microsoft-releases-new-nvidia-chip-ai-pcs-with-revamped-windows-11/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-07T20:22:37Z",
-   "s": "Microsoft revealed the specs and price for its Surface Laptop Ultra, AI PCs that run on Nvidia chips that are designed to run AI models and agents.",
+   "d": "2026-10-08T21:00:00Z",
+   "s": "With over a thousand emails, slides, texts, and documents from the United States v. Elizabeth Holmes trial, Extend engineer Bo Lau created a website that simulates what it might have been like to rifl…",
    "sprache": "en"
   }
  ]
