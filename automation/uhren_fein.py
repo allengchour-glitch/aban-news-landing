@@ -30,14 +30,16 @@ REGELN = [
     (R(rf"(ersatz-?armband|uhrenarmband|armbänder|armband|band|strap|kette|loop)[\w\s,-]*\bfür\b[\w\s-]*{WORT}|"
        rf"smartwatch-?armband|watch-?armband|watch ?band|armband-?kit|multi-?armband|iwatch|\b\d{{2}}\s?mm\b.*armband|"
        rf"armband mit schnellverschluss|für xiaomi|sportarmband im"), (ZU + " > Watch Bands", "aa-6-10-1")),
-    (R(rf"(hülle|displayschutz|schutzfolie|ladekabel|ladegerät|ladestation|ladedock|gehäuse|bumper|halterung|ständer)[\w\s,/-]*\bfür\b[\w\s-]*{WORT}|"
-       rf"smartwatch[\s-](schutzhülle|gehäuse|ladegerät)|uhrenschutzhülle|watch[\s-]schutzhülle|armband mit gehäuse"), (ZU, "aa-6-10")),
+    (R(rf"(hülle|displayschutz|schutzfolie|ladekabel|ladegerät|ladestation|ladedock|ladepad|ladeständer|charger|powerbank|gehäuse|bumper|halterung|ständer)[\w\s,/-]*\bfür\b[\w\s-]*{WORT}|"
+       rf"smartwatch[\s-](schutzhülle|gehäuse|ladegerät|ladestation|ladekabel|ladedock|charger|halterung|ständer)|uhrenschutzhülle|watch[\s-]schutzhülle|armband mit gehäuse"), (ZU, "aa-6-10")),
     (R(r"smartwatch|smart[\s-]?watch|smart-?uhr|smartes?\b|smart[\s-]?(sport-?)?armband|smart ?band|smart\s+sport|fitness-?(armband|tracker|uhr)|"
        r"sport-?armband mit|sportarmband mit|herzfrequenz|herzmess|pulsmess|blutdruck|pedometer|schrittzähler|bluetooth|"
        r"amoled|\bgps\b|anruf|smart pager|tracker"), (W, "aa-6-12")),
     (R(r"uhr\b|uhren|\bwatch|chronograph|quar[zt]|automatik|mechanisch|armbanduhr|taschenuhr|tourbillon"), (W, "aa-6-11")),
 ]
-NICHT = R(r"mücken|insekten|uhrenbox|uhrenbeweger|aufbewahrung|ladestation mit uhr|wireless charging|uhrwerk\b|uhrmacher|uhrgürtel|lautsprecher|wecker")
+# 09.10.2026: «wireless charging» stand hier und blockierte «Smartwatch mit … Wireless Charging» (bleib Watches statt Smartwatch);
+# Ladestationen fängt jetzt Regel 2 (Charger/Powerbank/Ladestation für Smartwatch) bzw. «ladestation mit uhr» / Mehrgeräte-Halter hier.
+NICHT = R(r"mücken|insekten|uhrenbox|uhrenbeweger|aufbewahrung|ladestation mit uhr|für iphone, apple watch|uhrwerk\b|uhrmacher|uhrgürtel|lautsprecher|wecker")
 ZIELE = sorted({z[0] for _, z in REGELN})
 
 
@@ -107,6 +109,14 @@ KANARIEN = [
     ("Herrenuhr mit Uhrenarmband aus Leder", (W, "aa-6-11")),
     ("Quarzuhr mit Edelstahl-Uhrenarmband", (W, "aa-6-11")),
     ("Smartwatch mit Ersatz-Uhrenarmband", (W, "aa-6-12")),
+    # 09.10.2026: Ladegeräte für Smartwatches = Zubehör; Smartwatch MIT Wireless Charging = Smartwatch
+    ("Weisser Magnet-Charger für Smartwatches", (ZU, "aa-6-10")),
+    ("Smartwatch-Ladestation", (ZU, "aa-6-10")),
+    ("Kabellose Powerbank für Smartwatches", (ZU, "aa-6-10")),
+    ("Smartwatch Exklusivmodell mit Wireless Charging", (W, "aa-6-12")),
+    ("Smartwatch mit Bluetooth-Telefonie und Wireless Charging", (W, "aa-6-12")),
+    ("Smartwatch mit Bluetooth-Anruf und NFC-Ladegerät", (W, "aa-6-12")),
+    ("3-in-1 Magnethalterung für iPhone, Apple Watch & AirPods", None),
 ]
 
 
@@ -122,7 +132,58 @@ def kanarien(gueltig=None):
     return ok == len(KANARIEN)
 
 
+# 09.10.2026 (Betreiber «weiter»): Fitness-/Smart-Armbänder standen bei Google unter «Jewelry > Bracelets» — gemessen 26
+# Produkte mit Typ «Elektronik» allein (C33 Smart-Armband, G69 Armband für Herzfrequenz, Pulsmesser, Pedometer). Der Lauf oben
+# liest nur den Watches-Zweig und sah sie nie. Zweiter Durchgang über Bracelets mit EINGESCHRÄNKTER Regel: nur Smartwatch
+# (aa-6-12), Uhrenarmband (aa-6-10-1) und Uhrenzubehör (aa-6-10) — NIE «Watches» aus Regel 4: dort trifft «quar[zt]» jedes
+# Rosenquarz-Armband und «automatik» jede Automatik-Schliesse.
+ARMBAND_ZWEIG = J + " > Bracelets"
+ARMBAND_ERLAUBT = {"aa-6-12", "aa-6-10-1", "aa-6-10"}
+
+
+# Regel 3 kennt «sportarmband mit» — im Watches-Zweig harmlos, im Bracelets-Zweig ein Spruchband («Sportarmband mit Botschaft»).
+# Smartwatch-Ziel hier nur mit echtem Mess-/Smart-Wort.
+SMART_MESS = R(r"smart|fitness|herzfrequenz|herzmess|puls|blutdruck|blutsauerstoff|spo2|schrittz|pedometer|bluetooth|\bgps\b|"
+               r"display|tracker|schlaf|anruf|körperfett|sturzalarm")
+
+
+def ziel_armband(titel):
+    z = ziel(titel)
+    if not z or z[1] not in ARMBAND_ERLAUBT:
+        return None
+    return z if z[1] != "aa-6-12" or SMART_MESS.search(titel or "") else None
+
+
+ARMBAND_KANARIEN = [
+    ("C33 Smart-Armband mit Körperfett-Messung", (W, "aa-6-12")),
+    ("G69 Armband für Herzfrequenz & Blutsauerstoff", (W, "aa-6-12")),
+    ("Smart-Armband M16 zur Schlafunterstützung", (W, "aa-6-12")),
+    ("Pulsmesser Dual-Modus Armband für Sport", (W, "aa-6-12")),
+    ("Fitness Smart Armband mit Schrittzähler und LED", (W, "aa-6-12")),
+    ("Lederarmband für Apple Watch, Vintage", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Rosenquarz-Armband mit Edelsteinperlen", None),
+    ("Edelstahl-Armband mit Automatik-Schliesse", None),
+    ("Herren Lederarmband geflochten", None),
+    ("Tigerauge Perlenarmband für Damen", None),
+    ("Antistatik-Armband für Herren und Damen", None),
+    ("Kupfer Magnetarmband für Damen", None),
+    ("Verstellbares Sportarmband mit Botschaft", None),
+    ("GPS SOS Armband mit Herzfrequenz- und Sturzalarm", (W, "aa-6-12")),
+]
+
+
+def armband_kanarien(gueltig=None):
+    f = [(t, s, ziel_armband(t)) for t, s in ARMBAND_KANARIEN if ziel_armband(t) != s]
+    for t, s, i in f:
+        print(f"  ✗ {t!r} → {i} (soll {s})")
+    print(f"Kanarienvögel Armband-Zweig {len(ARMBAND_KANARIEN) - len(f)}/{len(ARMBAND_KANARIEN)}")
+    return not f and kanarien(gueltig)
+
+
 if __name__ == "__main__":
     if "--kanarien" in sys.argv:
-        sys.exit(0 if kanarien(kos.google_taxonomie()) else 1)
-    kos.lauf("UHREN-FEIN", W, ziel, ZIELE, kanarien, LEDGER)
+        g = kos.google_taxonomie()
+        sys.exit(0 if kanarien(g) and armband_kanarien(g) else 1)
+    if "--nur-armband" not in sys.argv:
+        kos.lauf("UHREN-FEIN", W, ziel, ZIELE, kanarien, LEDGER)
+    kos.lauf("UHREN-FEIN-ARMBAND", ARMBAND_ZWEIG, ziel_armband, ZIELE, armband_kanarien, LEDGER)
