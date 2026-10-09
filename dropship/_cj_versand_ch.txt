@@ -1548,3 +1548,11 @@ gid://shopify/Product/16612769497479	ok	Boxen Trainingsziel
 gid://shopify/Product/16612766187911	ok	Hantelset mit Gummibeschichtung
 gid://shopify/Product/16612763959687	ok	Fitness-Trapezband aus Nylon, 9 m
 gid://shopify/Product/16612780704135	ok	Überwachungskamera mit Auto-Tracking
+gid://shopify/Product/16612765991303	nicht-versendbar	Aufblasbare Gymnastikmatte aus gebürstetem Stoff
+gid://shopify/Product/16612777656711	nicht-versendbar	Dekoration «Festival High»
+gid://shopify/Product/16612777755015	nicht-versendbar	Phönix-Figur aus Kunstharz
+gid://shopify/Product/16612764057991	ok	Fusstarget für Taekwondo, Sanda, Muay Thai
+gid://shopify/Product/16612764516743	ok	Faszien-Massagegerät
+gid://shopify/Product/16612770218375	ok	Elektrischer Ofen mit Heissluftfrittierfunktion
+gid://shopify/Product/16612772086151	ok	Sandwich- und Frühstücksmaschine
+gid://shopify/Product/16613403656583	ok	Männer-Skelett-Uhr mit mechanischem Zeiger
