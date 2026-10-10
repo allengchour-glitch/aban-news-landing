@@ -17547,3 +17547,10 @@ gid://shopify/Product/16613836128647	16->0	OBD2 Diagnosegerät für Fahrzeuge
 gid://shopify/Product/16613836456327	51->0	Retro Keramik-Kaffeetasse mit Tiermotiv
 gid://shopify/Product/16613846778247	23->0	Holzfeuchtigkeitsprüfer mit LCD
 gid://shopify/Product/16613846811015	18->0	Notebook-Kühler 294×65×65 cm
+gid://shopify/Product/16613851300231	37->0	Weiches Memory-Foam-Kissen 46×39×25 cm
+gid://shopify/Product/16613855068551	196->0	Seestern-Kissen
+gid://shopify/Product/16613855428999	44->0	Kuscheliges Katzen-Kissen
+gid://shopify/Product/16613864964487	20->0	Katzenbaum mit Sisal-Säule und Schlafplatz
+gid://shopify/Product/16613867782535	30->0	Reflektierendes Geschirr für Hunde und Katzen
+gid://shopify/Product/16613869650311	44->0	Hundegeschirr mit Leine, reflektierend
+gid://shopify/Product/16613869781383	14->1	Hundegeschirr für Hinter- oder Vorderbeine
