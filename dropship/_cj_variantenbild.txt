@@ -6652,3 +6652,5 @@ gid://shopify/Product/15459806380417	zugeordnet	20	Faltenrock Kleid Lang
 gid://shopify/Product/15459806478721	zugeordnet	25	Herren-Langarm-Shirt Business-Casual Mehrfarbig
 gid://shopify/Product/15459806544257	zugeordnet	30	Sommerhemd Herren Kurzarm Casual
 gid://shopify/Product/15459837116801	zugeordnet	25	Herren-Pullover
+gid://shopify/Product/15459837149569	zugeordnet	96	Langarm-Hemd mit Streifen
+gid://shopify/Product/15459837313409	zugeordnet	4	Polka Dot Armreif
