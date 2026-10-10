@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-10T00:52Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-10T01:15Z
 
-Aktive gescannt: 6 · ohne Kategorie: 6 · heute gesetzt: 2 (SCHARF, CAP 3000) · danach offen: 4 · Fehler: 0
+Aktive gescannt: 29 · ohne Kategorie: 29 · heute gesetzt: 25 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,6 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- vintage-leder-armbanduhr-gurtschiene-retro-495296 · Uhren → Apparel & Accessories > Jewelry > Watches
-- mosaik-schachbrett-resin-armband-22-mm-788928 · Uhren → Apparel & Accessories > Jewelry > Watches
+- zinn-glasperlen-armband-fur-apple-watch-425088 · Uhren → Apparel & Accessories > Jewelry > Watches
+- t-formige-atmungsaktive-armbanduhr-gurtel-aus-635520 · Uhren → Apparel & Accessories > Jewelry > Watches
+- silikon-loop-magnetische-armbanduhr-gurtel-637504 · Uhren → Apparel & Accessories > Jewelry > Watches
+- smartwatch-gehause-set-mit-tpu-case-859584 · Uhren → Apparel & Accessories > Jewelry > Watches
+- smartwatch-haarring-loop-set-fur-apple-watch-909952 · Uhren → Apparel & Accessories > Jewelry > Watches
 
