@@ -549,3 +549,13 @@ winterschuhe	ok	29	Winterschuhe & Winterstiefel
 bauchtaschen	ok	29	Bauchtaschen & Gürteltaschen
 schneidebretter	ok	29	Schneidebretter
 wandteppiche	ok	29	Wandteppiche & Wandbehänge
+handstaubsauger	ok	24	Handstaubsauger
+schminkspiegel	ok	29	Schminkspiegel
+schlafmasken	ok	24	Schlafmasken
+kleiderstaender	ok	15	Kleiderständer & Garderoben
+gps-tracker	unveroeffentlicht	0	GPS-Tracker & Ortungsgeräte
+sicherheitsschuhe	ok	29	Sicherheitsschuhe
+holzuhren	ok	29	Holzuhren
+camisole-traegertops	ok	29	Camisole & Trägertops
+smart-ring	ok	14	Smart Rings
+schrank-organizer	ok	12	Schrank-Organizer

@@ -29,6 +29,7 @@ const PHRASEN = [
   ['Picture Color', 'Wie abgebildet'], ['As Picture', 'Wie abgebildet'], ['As shown', 'Wie abgebildet'],
   ['Leopard Print Yellow', 'Leopardenmuster Gelb'], ['Navy Blue', 'Marineblau'],
   ['Striped Suit', 'Gestreift'], ['Rose Red', 'Rosarot'],
+  ['Mixed Color', 'Farben gemischt'], ['Mixed Colour', 'Farben gemischt'],   // 10.10.2026 (Familien-Sets)
   ['Black', 'Schwarz'], ['White', 'Weiss'], ['Red', 'Rot'], ['Blue', 'Blau'],
   ['Green', 'Grün'], ['Yellow', 'Gelb'], ['Brown', 'Braun'], ['Purple', 'Lila'],
   ['Grey', 'Grau'], ['Gray', 'Grau'],
@@ -41,9 +42,10 @@ const PHRASEN = [
   ['Women', 'Damen'], ['Female', 'Damen'], ['Men', 'Herren'], ['Male', 'Herren'],
   ['Puppy', 'Hund'], ['Dog', 'Hund'],
   ['Romper', 'Strampler'], ['Bodysuit', 'Body'], ['Adult', 'Erwachsene'],
+  ['Girls', 'Mädchen'], ['Girl', 'Mädchen'], ['Boys', 'Jungen'], ['Boy', 'Jungen'],   // 10.10.2026 («Picture Color-BOY 3 to 4Y»)
 ];
 /** Woerter, die einen Traeger bezeichnen — nach der Uebersetzung. */
-const TRAEGER_DE = new Set(['Papa', 'Mama', 'Kind', 'Baby', 'Hund', 'Herren', 'Damen',
+const TRAEGER_DE = new Set(['Papa', 'Mama', 'Kind', 'Baby', 'Hund', 'Herren', 'Damen', 'Mädchen', 'Junge', 'Jungen',
   'Grossmama', 'Grosspapa', 'Erwachsene', 'Strampler', 'Body', 'Haustier-Kleidung', 'Hunde-Halstuch']);
 /** Fuellwoerter der Lieferantentexte ("Xl For Father", "Mother's Size L"). */
 const FUELLER = new Set(['for', 'size', 'für', 'the']);
@@ -82,8 +84,9 @@ function uebersetzeAbschnitt(roh) {
     if (re.test(s)) s = s.replace(re, (_m, p1) => p1 + de);
   }
   // Schreibweise der Buchstaben-Groessen vereinheitlichen: "Xl" → "XL", "xxl" → "XXL"
+  // 10.10.2026: «Baby 9 m» = neun MONATE — ein einzelnes «m» direkt nach einer Zahl bleibt klein (sonst «9 M» = Grösse M?)
   let teile = s.split(/\s+/).filter(Boolean)
-    .map(t => BUCHSTABEN_GROESSE.test(t) ? t.toUpperCase() : t);
+    .map((t, i, a) => BUCHSTABEN_GROESSE.test(t) && !(i > 0 && /^\d+$/.test(a[i - 1]) && /^[sml]$/.test(t)) ? t.toUpperCase() : t);
 
   // Umstellen: "S For Mother" / "Mother's Size L" / "2XL Father" → "Mama S" / "Mama L" / "Papa 2XL".
   // Nur wenn es genau EINEN Traeger und genau EINE Groesse gibt und sonst nur Fuellwoerter
@@ -202,6 +205,7 @@ function selbsttest() {
   pruefe('Red-Baby6m', 'Rot · Baby 6m', '   (Monate bleiben klein)');
   pruefe('Red-Baby12m', 'Rot · Baby 12m');
   pruefe('Red-Baby3M', 'Rot · Baby 3M');
+  pruefe('Schwarz-Weiss-Baby 9 m', 'Schwarz · Weiss · Baby 9 m', '   (10.10.: Monat mit Leerzeichen bleibt klein)');
   // 3) Kleidungsstuecke und Masse
   pruefe('New Flower Deer-Puppy Scarf XL', 'New Flower Deer · Hunde-Halstuch XL');
   pruefe('JJF111889color-Pet Clothes L', 'JJF111889color · Haustier-Kleidung L');

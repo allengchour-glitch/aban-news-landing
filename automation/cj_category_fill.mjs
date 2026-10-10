@@ -26,6 +26,8 @@ import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
 import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';
 import { praefixWeg, kanarienGruen as farbpraefixKanarien } from './farbcode_praefix.mjs';   // 10.10.2026: «2350 Black» → «Schwarz»
+import { familienWerte, kanarienGruen as familiensetKanarien } from './familienset_werte.mjs';   // 10.10.2026: «Gray-Father S» → «Grau · Papa S»
+const FAMSET_OK=familiensetKanarien(); if(!FAMSET_OK)console.error('familienset_werte: Kanarien rot — Familien-Sets bleiben roh');
 const FARBPRAEFIX_OK=farbpraefixKanarien(); if(!FARBPRAEFIX_OK)console.error('farbcode_praefix: Kanarien rot — Code vor Farbe bleibt');
 import { stempelKorrigieren, kanarienGruen as stempelKanarien } from './gruppenstempel_typ.mjs';   // 09.10.2026: Uhren nicht als «Elektronik»
 const GRUPPENSTEMPEL_OK=stempelKanarien(); if(!GRUPPENSTEMPEL_OK)console.error('gruppenstempel_typ: Kanarien rot — Typ bleibt');   // 09.10.2026: Codes im Farbfeld → «Modell N»
@@ -187,17 +189,22 @@ const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
  // 09.10.2026: auch GEMISCHTE Listen («Blau», «MFH3IUW75B08E11», «Aprikose 1») und Codes mit Ziffer vorn («040401»,
  // «70000EU») — codeOpt greift nur, wenn JEDER Wert ein Code ist. Regel data/farbcode_modell_regel.json (= Bestand-Wächter).
  const fcNeu=useC&&!codeOpt&&!zaehlOpt&&FARBCODE_OK?codesNummerieren(eff):null;
- const cName=(codeOpt||(zaehlOpt&&!nurFarbe)||(fcNeu&&fcNeu.every(x=>/^Modell \d+$/.test(x))))?'Ausführung':'Farbe';
- const cMap=(codeOpt||zaehlOpt)
+ const cName0=(codeOpt||(zaehlOpt&&!nurFarbe)||(fcNeu&&fcNeu.every(x=>/^Modell \d+$/.test(x))))?'Ausführung':'Farbe';
+ const cMap0=(codeOpt||zaehlOpt)
    ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)]))
    :fcNeu?new Map(colors.map((c,i)=>[c,fcNeu[i]])):sMap;
+ // 10.10.2026: Familien-/Partnerlook-Sets («Gray-Father S», «Hat Print-S For Mother») → «Grau · Papa S», Option
+ // «Ausführung & Grösse»; streng (kein englischer Rest, kein Code, Grössen gleich), sonst roh. Regel = familienset_auswahl.py.
+ const fam=useC&&FAMSET_OK&&cName0==='Farbe'?familienWerte(colors.map(c=>cMap0?(cMap0.get(c)||c):c),d.productNameEn||'','Farbe'):null;
+ const cName=fam?fam.name:cName0;
+ const cMap=fam?new Map(colors.map((c,i)=>[c,fam.werte[i]])):cMap0;
  const cVal=c=>cMap?(cMap.get(c)||c):c;
  // Dreiteilige variantKeys («Beige-L-Vest», «Blue-M-Thin») tragen hinten eine echte Wahl.
  // Ohne eigene Option würden «…-Thin» und «…-Thick» beim Dedup zu EINER Variante verschmelzen —
  // die Kundin verlöre die Wahl, statt sie besser zu sehen (14.08.2026).
  const extras=[...new Set(vs.map(v=>v.extra).filter(Boolean))];
  const useE=extras.length>1&&useC&&useS;              // Shopify erlaubt höchstens 3 Optionen
- const eName=cName==='Ausführung'?'Variante':'Ausführung';
+ const eName=cName.startsWith('Ausführung')?'Variante':'Ausführung';
  const opts=[]; if(useC)opts.push({name:cName,values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
  if(useE)opts.push({name:eName,values:extras});
  if(!opts.length)return null;

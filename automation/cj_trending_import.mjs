@@ -50,6 +50,8 @@ import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
 import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE Quelle
 import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';   // 09.10.2026: Codes im Farbfeld → «Modell N»
 import { praefixWeg, kanarienGruen as farbpraefixKanarien } from './farbcode_praefix.mjs';   // 10.10.2026: «2350 Black» → «Schwarz»
+import { familienWerte, kanarienGruen as familiensetKanarien } from './familienset_werte.mjs';   // 10.10.2026: «Gray-Father S» → «Grau · Papa S»
+const FAMSET_OK=familiensetKanarien(); if(!FAMSET_OK)console.error('familienset_werte: Kanarien rot — Familien-Sets bleiben roh');
 const FARBPRAEFIX_OK=farbpraefixKanarien(); if(!FARBPRAEFIX_OK)console.error('farbcode_praefix: Kanarien rot — Code vor Farbe bleibt');
 const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
 // Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
@@ -95,12 +97,16 @@ function buildFashion(d){
  // 09.10.2026: Lieferantencodes im Farbfeld («QW121», «040401», gemischt mit «Blau») → «Modell N»; Regel = Bestand-Wächter
  // (data/farbcode_modell_regel.json). Die Option heisst hier immer «Farbe» (Dedup/Varianten unten hängen daran).
  const fcNeu=useC&&FARBCODE_OK?codesNummerieren(colors.map(c=>sMap0?(sMap0.get(c)||c):c)):null;
- const sMap=fcNeu?new Map(colors.map((c,i)=>[c,fcNeu[i]])):sMap0;
+ const sMap1=fcNeu?new Map(colors.map((c,i)=>[c,fcNeu[i]])):sMap0;
+ // 10.10.2026: Familien-/Partnerlook-Sets → «Grau · Papa S», Option «Ausführung & Grösse» (Regel = familienset_auswahl.py)
+ const fam=useC&&FAMSET_OK?familienWerte(colors.map(c=>sMap1?(sMap1.get(c)||c):c),d.productNameEn||'','Farbe'):null;
+ const sMap=fam?new Map(colors.map((c,i)=>[c,fam.werte[i]])):sMap1;
+ const cName=fam?fam.name:'Farbe';
  const cVal=c=>sMap?(sMap.get(c)||c):c;
- const opts=[]; if(useC)opts.push({name:'Farbe',values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
+ const opts=[]; if(useC)opts.push({name:cName,values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
  if(!opts.length)return null;
  const seen=new Set(),variants=[];
- for(const v of vs){const ov=[]; if(useC)ov.push({optionName:'Farbe',name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
+ for(const v of vs){const ov=[]; if(useC)ov.push({optionName:cName,name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
   const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
   variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false,cost:kosten(v.price, v.weight||v.variantWeight),...gewicht(v.weight||v.variantWeight)},inventoryPolicy:'CONTINUE'});
   if(variants.length>=100)break;}
