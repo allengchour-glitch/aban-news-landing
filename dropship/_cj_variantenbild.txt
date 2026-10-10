@@ -6568,3 +6568,4 @@ gid://shopify/Product/15458991112577	zugeordnet	9	Winter-Kinderschuhe mit Cartoo
 gid://shopify/Product/15458991145345	zugeordnet	65	Tiger-Druck T-Shirt
 gid://shopify/Product/15458991505793	zugeordnet	2	Asymmetrisches Top mit Bogen-Detail
 gid://shopify/Product/15458991964545	zugeordnet	2	Lace-Kragen-Pullover
+gid://shopify/Product/15458992062849	zugeordnet	98	Kinder High Heel Schuhe
