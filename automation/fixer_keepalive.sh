@@ -248,6 +248,17 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_praefix.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_praefix.py" >> "$FP" 2>&1 9>&- & )
   fi
+  # FAMILIENSET-AUSWAHL (10.10.2026, «weiter»): Familien-/Partnerlook-Sets («Gray-Father S», «Mother's Size L») → «Grau · Papa S»,
+  # Option «Ausführung & Grösse»; streng über familienset_werte.mjs (= Importer). Search Console: «familien-weihnachtspyjama»
+  # Pos. 26, Saison bis Dezember. Selbsttest = Übersetzer (tools/varianten_deutsch.mjs) + Kanarien.
+  FS=/tmp/familienset_auswahl.log
+  if [ -f "$REPO/automation/familienset_auswahl.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FS" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 120 python3 automation/familienset_auswahl.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$FS"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_familienset_auswahl.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/familienset_auswahl.py" >> "$FS" 2>&1 9>&- & )
+  fi
   # PLATZHALTER-OPTION (09.10.2026, «verbessere mehr»): Ein-Varianten-Ware mit «Variante / Standard» zeigte ein Wahlfeld mit
   # einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus → Option weg (Default Title), Rücklesen ID/SKU/Preis.
   # Importer legen seit 09.10. selbst «Title / Default Title» an; dieser Lauf fängt Nachzügler. Liest denselben Optionen-Export.

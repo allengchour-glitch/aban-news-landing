@@ -49,6 +49,19 @@
 
 
 
+## 👨‍👩‍👧 Familien-Weihnachtspyjamas: Auswahl «Gray-Father S» — ein Werkzeug ohne Wächter ist eine einmalige Reparatur (2026-10-10, 13:25 UTC, «weiter»)
+**Gemessen:** Search Console (OpenSEO, gratis): «familien-weihnachtspyjama» Pos. 26, «partner weihnachtspyjama» Pos. 22 — Saison bis
+Dezember. Genau diese Sets zeigten «Gray-Father S», «Hat Print-S For Mother», «White-DadS» (43 Optionen im Export). Das Werkzeug
+`tools/varianten_deutsch.mjs` (12.09.) hatte 13 Produkte EINMAL übersetzt — kein Wächter, kein Importer-Anschluss. Dazu stand der rohe
+Variantenschlüssel weiter im Faktenblock «Produktdetails» (WebFetch), weil `produktdetails_wahrheit.py` ohne Farb-Option nichts anfasst.
+**Getan:** strenger Aufsatz `familienset_werte.mjs` (nur Familien-Titel/Elternwörter, kein englischer Rest, kein Code, Grössen gleich,
+keine Kollision) = Bestand `familienset_auswahl.py` (Aufseher täglich) = beide CJ-Importer; 13/0 Optionen, 21/0 Faktenblock-Zeilen,
+23 Kanarien. Übersetzer-Fehler gefunden: «Baby 9 m» (Monate) → «9 M» (Grösse?) — einzelnes m nach Zahl bleibt klein.
+**Lehren:** (1) Ein Werkzeug, das einmal von Hand lief, repariert den Bestand von damals — Neuimporte brauchen Wächter + Importer.
+(2) Ein Übersetzer, der für EINE Klasse gebaut wurde, liefert auf dem ganzen Katalog Denglisch («Lemon Gelb Half Rice», «Schwarz And
+Weiss») → Geltungsbereich eng + «kein englischer Rest» als Ablehnungsgrund. (3) Dieselbe Rohliste steht oft an ZWEI Orten (Option +
+Faktenblock) — nach einem Umbau die Beschreibung mitlesen.
+
 ## 🎨 Code VOR der Farbe im Auswahlfeld — die Regel vom Vortag prüfte nur Werte ohne Leerzeichen (2026-10-10, 13:00 UTC, Verbesserungsrunde)
 **Gemessen:** Stichprobe Neuimporte (4 h, 286) zeigte «2350 Black · 2350 Brown», «GS8111G Black … 2GS8111G Brown»; im Bestand
 396 aktive mit Code vorn im Farb-/Ausführungsfeld, davon 193 Optionen mit einer Farbe dahinter («646 Schwarz», «8919 Armeegrün»,
@@ -19719,3 +19732,5 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · ⌚ **Verbesserungsrunde: CJ-Gruppe «elektronik» stempelte Typ «Elektronik» auf 1'089 Uhren/Armbänder — die Menü-Kollektion «Schmuck & Uhren» filtert nach TYP, keines sichtbar → `data/gruppenstempel_typ.json` = `gruppenstempel_typ.py` (Aufseher täglich, Sperre: ODER-Kollektion hält über Tag) = `.mjs` im Importer (Uhrwort-Weg, Wecker aus); 883/883 + 91 Tag «uhren», Kollektion 6'499 → 7'382.** Gruppenstempel → Typ-Kollektionen prüfen → `dropship/GRUPPENSTEMPEL-TYP-2026-10-09.md`
 - 2026-10-09 · 🏷️ **«weiter»: 124 aktive mit Lieferantencodes im Farbfeld («QW121», «040401», «MFH3IUW75B08E11» neben «Blau»; 12 seit Sept.) — Importer prüften «alle Werte Code» (`codeOpt`) → gemischte Listen durch; EINE Regel `data/farbcode_modell_regel.json` = `farbcode_modell.py` (Aufseher täglich) = `farbcode_modell.mjs` in beiden Importern (54 Kanarien, py=js 17'028/0) → 166/0 «Modell N»/laufende Serie; Tonnamen, Code+Grösse, Rollengrössen bleiben (49 gemeldet).** Regel auf den Wert, nicht auf die Liste → `dropship/FARBCODE-MODELL-2026-10-09.md`
 - 2026-10-09 · 🏃 **«weiter»: Fitness-/Smart-Armbänder bei Google unter «Bracelets» — `uhren_fein.py` las nur den Watches-Zweig → zweiter Durchgang `UHREN-FEIN-ARMBAND` mit eingeschränkter Regel (nie «Watches»: Quarz = Rosenquarz; Smartwatch nur mit Messwort), Kanarien 14/14, 18/0, Tageslauf nimmt beide Zweige.** Nachbarzweig prüfen, Regel dort einschränken → `dropship/ARMBAND-SMART-ZWEIG-2026-10-09.md`
+- 2026-10-09 · 📱 **Betreiber FB-Screenshot/«weniger asiaten»/«shorts»/«weiter»: FB nur noch Reels (`data/kanal_formate.json`, Fotos 1 Aufruf), Reel-Poster stellt Gesicht-Clips für IG+FB hinten an (`reel_gesicht.py`, gleich wessen Gesicht — nie nach Herkunft), `social_lernen` lief seit 05.10. nicht (im Meta-Zweig) → vor die Weiche + FB/YouTube über Metricool; `variantenwert_ki.py` 30/0 (nur unbekannter englischer Rest an KI, Aufseher 60/Tag); OpenAI wieder da (Oberklassen 21/0).** Messen vor die Zugangs-Weiche → `dropship/SOCIAL-FB-REELS-2026-10-09.md`, `dropship/VARIANTENWERT-KI-2026-10-09.md`
+- 2026-10-09 · 🥾 **«weiter»: Titel-Wache pausierte 2× ohne Prüfer (OpenAI + Groq leer) → 452 Neuimporte ungeprüft («Patentreifen», «Rhabarber-Bänder») → nachgeholt 21 korrigiert; 354 «uneinig» (nur EIN Modell korrigierte) → das andere bestätigt + `--uneinig` im Aufseher; «Martin Boots» (马丁靴, Markenanklang) → «Worker-Boots» 93/93 (Kanarien 96/96, py=js 52'144/0); Farbe-Alter-Felder bleiben dem Aufteiler.** Pausen brauchen Nachholläufe; «uneinig» ist kein Endzustand → `dropship/TITEL-WACHE-NACHHOLEN-2026-10-09.md`
