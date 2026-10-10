@@ -55,12 +55,12 @@
 keine Zahlung): Preis erst bei y=910 (Brotkrumen 2 Zeilen + Titel 3 Zeilen h3); Leinen-Set unter «🎁 Geschenke & Weihnachten › Sets»
 (Brotkrumen schlossen «Geschenke» nur im UNTERmenü aus); Warenkorb «Cart»/«Auschecken»; Versandkosten klar («+ CHF 7 = …»); **Kasse
 «Voraussichtliche Zustellung Di., 20. Okt», Produktseite «26. Okt – 9. Nov»** — `deliveryPromiseSettings.processingTime` P1D, CJ versendet
-gemessen nach 4–7 T; schreibbar nur im Admin (`deliverySettingUpdate` in `unstable` ohne Felder). `tools/werbetest_trichter.py`
+nach Median 2, höchstens 5 Werktagen (Korrektur 16:40: «4–7» waren Kalendertage); schreibbar nur im Admin (`deliverySettingUpdate` in `unstable` ohne Felder). `tools/werbetest_trichter.py`
 (ShopifyQL je utm_campaign): TikTok-Lernkampagne 548 → 8 Warenkorb → **6 Kasse → 0 Kauf**; ChatGPT 112 → 6 → 2 → 1.
 **Getan:** Handy-CSS (Titel 1.5rem, Produktname nicht doppelt in Brotkrumen) → Preis im 1. Bildschirm; Elternmenü-Ausschluss; deutsche
 Warenkorb-Texte; Sirène/Aurora/Provence: Lieferumfang («Tasche/Schmuck nicht dabei»), Anlässe Q4, Lieferung mit Bestellfrist, EU-Tabelle
 XS–3XL bei S–XL-Kleid entfernt, Aurora-Liste repariert; `damenmode-favoriten` (12, MANUAL) als erste Startseiten-Reihe (Trend jetzt Platz 2);
-Werbetest-Plan mit Gewinnschwelle + Abbruchregeln; Betreiber-Klick Bearbeitungszeit 4 T; CJ-Masse nach Reset (send_later 01:05 UTC).
+Werbetest-Plan mit Gewinnschwelle + Abbruchregeln; Betreiber-Klick Bearbeitungszeit 3 T + Wächter `kassen_lieferdatum_wache.py` (Ampel «KASSEN-DATUM»); CJ-Masse nach Reset (send_later 01:05 UTC).
 **Lehre:** Das Lieferdatum in der Kasse ist ein Versprechen, das wir nicht selbst schreiben — es entsteht aus Bearbeitungszeit +
 Transitzeit. Nach jeder Änderung an Lieferzeiten den Kaufweg bis in die Kasse gehen, nicht nur die Produktseite ansehen. Und: eine
 Kampagne mit Kassen-Abbrechern und 0 Käufen braucht eine geprüfte Kasse, nicht mehr Budget. → `dropship/KAUFWEG-HANDY-2026-10-10.md`

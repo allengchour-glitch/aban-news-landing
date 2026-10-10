@@ -478,6 +478,20 @@ def google_feedback():
     return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}"
 
 
+
+def kassen_lieferdatum():
+    """KASSEN-DATUM (10.10.2026): Kasse zeigte «Zustellung 20. Okt», Produktseite «26. Okt – 9. Nov» — Bearbeitungszeit P1D, CJ
+    versendet nach Median 2 / bis 5 Werktagen. Nur im Admin änderbar → Betreiber. Liest dropship/_kassen_lieferdatum.json
+    (automation/kassen_lieferdatum_wache.py, Aufseher täglich)."""
+    try:
+        s = json.load(open(os.path.join(REPO, "dropship", "_kassen_lieferdatum.json"), encoding="utf-8"))
+    except Exception:
+        return None
+    if not s.get("zu_frueh"):
+        return None
+    return (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
+            f"Werktagen → Admin: Einstellungen → Versand und Zustellung → Bearbeitungszeit {s.get('empfohlen')} Werktage")
+
 def kategorie_offen():
     """KATEGORIE: N aktive ohne Taxonomie-Kategorie — Stand von automation/kategorie_wache.py (23.09.2026, Task #101).
     Der Shop-Kanal zeigt nur Produkte MIT Kategorie (33'863 «nicht auffindbar» gemessen). Liest den STAND (Datei)."""
@@ -897,7 +911,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

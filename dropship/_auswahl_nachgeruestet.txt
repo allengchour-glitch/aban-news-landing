@@ -781,3 +781,6 @@
 15460760289665	Farbe:3:3	2026-10-10	retro-brusttasche-fur-herren-606500
 15452707422593	Variante:4:4+ki	2026-10-10	kindersmartphone-silikon-pinguin-spielzeug-626500
 15453744464257	Grösse:3:3	2026-10-10	europaisch-amerikanische-damenmode-606300
+15453745185153	Modell:16+Grösse:3:48	2026-10-10	quilted-paper-malset-283392
+15453791289729	Farbe:5:5	2026-10-10	fitness-handtuch-fur-herren-und-damen-623300
+15503131312513	Farbe:2:2	2026-10-10	multifunktionaler-chronograph-fur-herren-693888

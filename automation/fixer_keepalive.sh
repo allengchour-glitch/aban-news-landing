@@ -272,6 +272,15 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_marke_als_ware.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/marke_als_ware.py" >> "$MW" 2>&1 9>&- & )
   fi
+  # KASSEN-LIEFERDATUM (10.10.2026, Kaufweg-Test): Kasse «Zustellung 20. Okt» vs Produktseite «26. Okt – 9. Nov» — Bearbeitungszeit
+  # P1D, CJ versendet nach Median 2 / bis 5 Werktagen. Nur lesen; Stand → dropship/_kassen_lieferdatum.json → Ampel «KASSEN-DATUM».
+  KL=/tmp/kassen_lieferdatum.log
+  if [ -f "$REPO/automation/kassen_lieferdatum_wache.py" ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+    touch "$KL"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kassen_lieferdatum.lock; flock -n 9 || exit 0; \
+        timeout 300 python3 automation/kassen_lieferdatum_wache.py" >> "$KL" 2>&1 9>&- & )
+  fi
   # KOLLEKTION-MITGLIEDSCHAFT (10.10.2026): «Geschenke bis CHF 30» zeigte 9'259 statt 400 Artikel — Shopify hatte die Mitgliedschaft
   # nach dem Regelwechsel vom 05.10. nie neu berechnet. Nur lesen: Tag-Kollektionen, Stichprobe nach Titel + teuerste gegen die
   # eigene Regel → dropship/KOLLEKTION-MITGLIEDSCHAFT.md; Reparatur von Hand mit kollektion_neu_anlegen.py (neue Kollektions-ID).

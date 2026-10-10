@@ -15,7 +15,7 @@ Betreiber leitete vier Empfehlungen von Shopify Sidekick weiter. Reihenfolge der
 | Falsche Brotkrumen | Leinen-Set unter «🎁 Geschenke & Weihnachten › Sets & Bundles»: der Ausschluss prüfte nur Untermenüs, nicht den Elternpunkt | Elternmenüs mit «Geschenke» ausgeschlossen → «Home › Damen-Mode» |
 | Englisch im Warenkorb | Überschrift «Cart», Knopf «Auschecken» | «Warenkorb» (templates/cart.json), «Zur Kasse» (locales/de.json `content.checkout`) |
 | Versandkosten | Warenkorb: «Noch CHF 10.10 bis zum Gratis-Versand · CHF 39.90 + CHF 7.00 Versand = CHF 46.90» | in Ordnung, keine späte Überraschung |
-| **Lieferdatum widersprüchlich** | Produktseite «26. Okt. – 9. Nov.» (heute + 14–28 T), Kasse «Voraussichtliche Zustellung **Di., 20. Okt**». `deliveryPromiseSettings.processingTime` = P1D; CJ versendet gemessen nach 4–7 Tagen | **Betreiber-Klick** (API kann es nicht schreiben, auch `unstable` nicht): Bearbeitungszeit 4 Werktage → `COWORK-BEFEHL.md` |
+| **Lieferdatum widersprüchlich** | Produktseite «26. Okt. – 9. Nov.» (heute + 14–28 T), Kasse «Voraussichtliche Zustellung **Di., 20. Okt**». `deliveryPromiseSettings.processingTime` = P1D; CJ versendet nach Median 2, bis 5 Werktagen (9 Bestellungen) | **Betreiber-Klick** (API kann es nicht schreiben, auch `unstable` nicht): Bearbeitungszeit **3 Werktage** → `COWORK-BEFEHL.md`; Wächter `kassen_lieferdatum_wache.py` + Ampel «KASSEN-DATUM» |
 | Cookie-Banner | Startseite: im ersten Bildschirm unten (104 px), Produktseite erst nach Scrollen (seit 07.10.) | unverändert (Einwilligung nötig) |
 | Variantenwahl | Farben + Grössen klar, Hinweis «fällt kleiner aus», Mass-Tabelle; Kaufknopf aktiv | in Ordnung |
 
@@ -67,7 +67,7 @@ Plan mit Voraussetzungen, Gewinnschwelle (Sirène ~CHF 26 je Kauf), Budgetvorsch
 
 ## Offen
 
-- **Betreiber:** Bearbeitungszeit 4 Werktage (Kasse), danach Kaufweg nachmessen.
+- **Betreiber:** Bearbeitungszeit 3 Werktage (Kasse), danach Kaufweg nachmessen. ⚠️ Korrektur 16:40: «4–7 Tage» bis Versand waren Kalendertage; in Werktagen Median 2, höchstens 5.
 - **CJ-Reset 00:00 UTC:** echte Masse je Grösse und Material für die drei Kleider holen und eintragen. Sirène hat kein Material.
 - **Preisfrage Sirène:** CHF 49.90 liegt 10 Rappen unter der Gratis-Versand-Schwelle. Betreiber entscheidet.
 - **Kristall-Set:** Adresse `kristall-set-3-teilig`, Titel «8-teilig», verkauft als «3-teilig» für CHF 36.90, heute CHF 29.90. Prüfen, ob Ware und Bild noch zusammenpassen.

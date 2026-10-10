@@ -16,7 +16,7 @@ Dieser Plan legt fest, was vorher erledigt sein muss, was getestet wird und wann
 
 ## Vor dem Start (Voraussetzungen)
 
-1. ⏳ **Betreiber-Klick:** Bearbeitungszeit 1 → 4 Werktage, damit das Kassen-Datum zur Produktseite passt (`COWORK-BEFEHL.md`, oberster Punkt). Ohne ihn verspricht die Kasse ~20.10., die Seite 26.10.–9.11.
+1. ⏳ **Betreiber-Klick:** Bearbeitungszeit 1 → 3 Werktage, damit das Kassen-Datum zur Produktseite passt (`COWORK-BEFEHL.md`, oberster Punkt). Ohne ihn verspricht die Kasse ~20.10., die Seite 26.10.–9.11.
 2. ✅ Produktseiten «Sirène», «Aurora», «Provence» überarbeitet: Lieferumfang, Anlässe, Lieferung, keine irreführende Grössentabelle.
 3. ✅ Preis und Lieferzeit stehen jetzt im ersten Handy-Bildschirm (Titel kleiner, Brotkrumen kürzer).
 4. ✅ Startseite: «Damenmode – unsere Favoriten» direkt unter dem Hero.
