@@ -6869,3 +6869,5 @@ outdoor-leder-sandalen-615800	2606150613251616400	16	10.88	ok	landeseite
 herren-sandalen-im-romischen-stil-605300	2606120952411606000	16	9.88	ok	landeseite
 herren-slip-on-sandalen-mit-klettverschluss-618900	2606110815381619500	16	11.49	ok	landeseite
 leichte-casual-sandalen-mit-schaumsohle-606000	2606080244591606700	16	12.68	ok	landeseite
+bequeme-hausschuhe-mit-weicher-sohle-615800	2606050942561616500	16	10.83	ok	landeseite
+herren-leder-sandalen-636000	2606010946581636600	16	12.56	ok	landeseite
