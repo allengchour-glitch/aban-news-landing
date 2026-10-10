@@ -6921,3 +6921,6 @@ outdoor-strandsandalen-fur-herren-631000	2604271236531631400	16	11.23	ok	landese
 herren-casual-pantoletten-rutschfest-620600	2604271054241621200	16	9.88	ok	landeseite
 atmungsaktive-freizeit-sandalen-fur-herren-607600	2604270529401609400	16	11.60	ok	landeseite
 handgenahte-sandalen-mit-klettverschluss-fur-h-604800	2604240228441605300	16	11.23	ok	landeseite
+herren-outdoor-sandalen-602700	2604200910391603200	16	11.23	ok	landeseite
+handgenahte-geschlossene-sandalen-626200	2604160758321626700	16	13.76	ok	landeseite
+herren-strandsandalen-aus-leder-mit-zehenschut-607000	2604160745091607600	16	13.14	ok	landeseite
