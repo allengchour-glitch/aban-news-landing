@@ -760,3 +760,5 @@
 15453744333185	Farbe:4+Grösse:8:32	2026-10-10	boho-chic-langarm-kleid-617400
 15453762617729	Farbe:13+Grösse:5:65+ki	2026-10-10	pastellfarbener-casual-pullover-630900
 15453772644737	Farbe:3:3+ki	2026-10-10	kauspielzeug-fur-hunde-zahnpflege-620300
+15453792207233	Ausführung:4+Grösse:12:48+ki	2026-10-10	leder-laufschuhe-fur-kinder-627000
+15454057431425	Typ:2:2	2026-10-10	liebesbaum-landschaftsolgemalde-729024
