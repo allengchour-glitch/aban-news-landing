@@ -10,6 +10,7 @@ import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { nurAltnetz, DRAFT_TAG as MOBILFUNK_TAG } from './mobilfunk.mjs';   // 10.10.2026: nur 2G/3G = in CH ohne Netz
 import { schonBeansprucht } from './cj_claim.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
+import { markeAlsWare } from './marke_als_ware.mjs';   // 10.10.2026: Fremdmarke als Ware («Harrods Keramik-Tasse», «iPhone 12» = Smartwatch)
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
@@ -279,6 +280,7 @@ for(const p of cand){
  const ms=produktSaeubern(g.title, g.html);
  if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
  g.title=ms.title; g.html=ms.html;
+ if(markeAlsWare(g.title)){console.log('  skip(marke-als-ware)',String(g.title).slice(0,40));continue;}
  // 🇩🇪 Titel-Sprachwache (20.08.2026), Begründung + Testfälle: automation/titel_sprache.mjs.
  if(echoVomLieferanten(g.title,nm)){
   const g2=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);

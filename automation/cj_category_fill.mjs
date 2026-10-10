@@ -21,6 +21,7 @@ import {typAusKategorie} from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ
 import {seoTitel} from './seo_titel.mjs';   // 05.10.: SEO-Titel ≤ 70 ohne stille Kappung
 import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
+import { markeAlsWare } from './marke_als_ware.mjs';   // 10.10.2026: Fremdmarke als Ware («Harrods Keramik-Tasse», «iPhone 12» = Smartwatch)
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
@@ -768,6 +769,7 @@ for(const [cat,label] of grp.cats){
    const ms=produktSaeubern(g.title, g.html);
    if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
    g.title=ms.title; g.html=ms.html;
+   if(markeAlsWare(g.title)){console.log('  skip(marke-als-ware)',String(g.title).slice(0,40));continue;}
    // 🇩🇪 Titel-Sprachwache (20.08.2026): der Übersetzer liefert die Beschreibung deutsch, den
    // TITEL aber manchmal roh aus dem CJ-Listing — sechs Fälle standen am 20.08. aktiv im
    // Google-Kanal. Begründung, Fehlalarm-Abgrenzung und Testfälle: automation/titel_sprache.mjs.

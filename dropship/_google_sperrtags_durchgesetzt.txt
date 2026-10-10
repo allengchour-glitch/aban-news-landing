@@ -810,3 +810,16 @@
 2026-10-05T04:29:44Z	gid://shopify/Product/15446267199873	18plus, adult-nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	date-night-drinking-creative-brettspiel-602600
 2026-10-05T04:29:45Z	gid://shopify/Product/15469986546049	kostuem	Google & YouTube	plusch-angler-hut-neon-grun-fga965104
 2026-10-07T20:37:16Z	gid://shopify/Product/15413739684225	niedrig-bewertet-nicht-bewerben	Google & YouTube	sommerkleid-armellos-damen-tailliert-elegant-schwarz
+2026-10-10T14:45:37Z	gid://shopify/Product/15454332780929	marken-pruefen	Google & YouTube	ps4-fernbedienung-mit-bluetooth-3-0-43ccd8
+2026-10-10T14:45:38Z	gid://shopify/Product/15479338271105	marken-pruefen	Google & YouTube	drahtloser-ps4-controller-612200
+2026-10-10T14:45:39Z	gid://shopify/Product/15480828264833	marken-pruefen	Google & YouTube	mi-band-6-runway-smartwatch-775616
+2026-10-10T14:45:40Z	gid://shopify/Product/15495401931137	marken-pruefen	Google & YouTube	ps4-bluetooth-controller-0188d9
+2026-10-10T14:45:41Z	gid://shopify/Product/15496289223041	marken-pruefen	Google & YouTube	ps3-arcade-joystick-mit-turbo-funktion-e17717
+2026-10-10T14:45:42Z	gid://shopify/Product/15496307343745	marken-pruefen	Google & YouTube	kabelloser-ps4-controller-eb86aa
+2026-10-10T14:45:43Z	gid://shopify/Product/15496849490305	marken-pruefen	Google & YouTube	kabelloses-ps4-gamepad-mit-touch-vibration-05d291
+2026-10-10T14:45:44Z	gid://shopify/Product/15496851161473	marken-pruefen	Google & YouTube	kabelloser-ps4-gamepad-2af3d9
+2026-10-10T14:45:45Z	gid://shopify/Product/15500954665345	marken-pruefen	Google & YouTube	xiaomi-mijia-tragbare-luftpumpe-79ea2d
+2026-10-10T14:45:46Z	gid://shopify/Product/15504198238593	marken-pruefen	Google & YouTube	xiaomi-mi-band-3-fitness-tracker-258d59
+2026-10-10T14:45:47Z	gid://shopify/Product/15519838110081	marken-pruefen	Google & YouTube	xiaomi-mi-band-2-smartwatch-mit-pulsmesser-052d71
+2026-10-10T14:45:48Z	gid://shopify/Product/15519838142849	marken-pruefen	Google & YouTube	xiaomi-mi-band-1s-smart-armband-mit-herzfreque-941151
+2026-10-10T14:45:49Z	gid://shopify/Product/15523952132481	marken-pruefen	Google & YouTube	bausteinmodell-audi-rs7-330176

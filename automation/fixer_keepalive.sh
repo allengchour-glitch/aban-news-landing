@@ -259,6 +259,19 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_familienset_auswahl.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/familienset_auswahl.py" >> "$FS" 2>&1 9>&- & )
   fi
+  # MARKE-ALS-WARE (10.10.2026, «weiter»): Fremdmarke als Ware im Titel («Harrods Keramik-Tasse» mit Logo, seit 24.09. bekannt,
+  # nur aus der Herbst-Reihe genommen; «Xbox 360 Wireless Controller» in Fake-Verpackung; «iPhone 12» = Smartwatch). Neue Treffer
+  # (ohne Kompatibilität, ohne Lizenz-SKU) → Tag marken-pruefen (google_sperrtags_durchsetzen nimmt sie aus Google) + Liste
+  # dropship/MARKE-ALS-WARE.md zum Sichten. Importer sperren selbst (marke_als_ware.mjs). Selbsttest = Kanarien py + js.
+  MW=/tmp/marke_als_ware.log
+  if [ -f "$REPO/automation/marke_als_ware.py" ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$MW" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 60 python3 automation/marke_als_ware.py --kanarien > /dev/null 2>&1 \
+          && timeout 60 /opt/node22/bin/node automation/marke_als_ware.mjs --test > /dev/null 2>&1 ); then
+    touch "$MW"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_marke_als_ware.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/marke_als_ware.py" >> "$MW" 2>&1 9>&- & )
+  fi
   # PLATZHALTER-OPTION (09.10.2026, «verbessere mehr»): Ein-Varianten-Ware mit «Variante / Standard» zeigte ein Wahlfeld mit
   # einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus → Option weg (Default Title), Rücklesen ID/SKU/Preis.
   # Importer legen seit 09.10. selbst «Title / Default Title» an; dieser Lauf fängt Nachzügler. Liest denselben Optionen-Export.

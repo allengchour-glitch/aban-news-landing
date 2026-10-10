@@ -33,7 +33,9 @@ SPERR_TAGS = re.compile(r"^(tierschutz|biozid|medizin|duplikat|klinge|handklinge
                         r"bild-fremdpreis|kostuem|erotik)", re.I)
 SPERR_TITEL = re.compile(r"kostüm|kostuem|perücke|verkleidung|fasnacht|halloween|erotik|dessous|tabak|vape|shisha|messer|"
                          r"klinge|serum|creme|massage|therapie|schmerz|magnet|wellness|ersatz|adapter|kabel|halterung|"
-                         r"\bteile?\b|zubehör für|spalter|\bbeil\b|\baxt\b|machete|schwert|dolch|skalpell", re.I)
+                         r"\bteile?\b|zubehör für|spalter|\bbeil\b|\baxt\b|machete|schwert|dolch|skalpell|"
+                         # 10.10.: Fremdmarke als Ware (Harrods-Logo auf der Tasse, seit 24.09. bekannt, war in «bis CHF 30»)
+                         r"harrods|burberry|starbucks|chanel|gucci|louis vuitton|disney|hello kitty|sanrio|pok[eé]mon|labubu", re.I)
 
 WELTEN = {
     "sie": {"handle": "geschenke-fuer-sie", "nicht": re.compile(r"herren|männer|\bmen\b|jungen|kinder|baby", re.I),
@@ -78,13 +80,31 @@ WELTEN = {
                 "arten": [
                     ("schmuck", r"ohrring|halskette|anhänger|armband(?!uhr)|armreif|\bring\b"),
                     ("duft", r"duftkerze|kerze|diffuser|duftstäbchen|kerzenwärmer"),
-                    ("tasse", r"tasse|thermobecher|kaffeebecher|trinkflasche|teekanne|teeset"),
+                    ("tasse", r"tasse(?!l)|thermobecher|kaffeebecher|trinkflasche|teekanne|teeset"),
                     ("deko", r"weihnachtsfigur|weihnachtskugel|weihnachtsdeko|adventskranz|lichterkette|schneekugel|"
                              r"nachtlicht|sternenhimmel|sternenprojektor"),
                     ("spiel", r"puzzle|kartenspiel|brettspiel|würfelspiel|plüschtier|kuscheltier|stofftier"),
                     ("kuschel", r"kuscheldecke|fleecedecke|wärmflasche|wärmekissen|kuschelsocken"),
                     ("beauty", r"kosmetiktasche|make-?up-?pinsel|schminkspiegel|haarspange|haarklammer|scrunchie|nagelset"),
                     ("gadget", r"schlüsselanhänger|handyständer|mini-?staubsauger|mini-?ventilator|notizbuch|tagebuch"),
+                ]},
+    # 10.10.2026: «Kleine Geschenke & Mitbringsel unter CHF 20» (Menü «Geschenke & Weihnachten», 9 Kanäle) war die Regel
+    # Preis < 20 → 27'033 Produkte, BEST_SELLING, oben Rändelwerkzeug, Laborbrille, Schneidmatte, Lochschneider. Suchbegriff
+    # «wichtelgeschenke» = 2'400/Mt (CH, KD 0), keine Seite dafür → dieselbe Klasse wie «unter30», eigenes Preisband.
+    "wichtel": {"handle": "kleine-geschenke-mitbringsel", "preis": (7, 19.95), "nicht": re.compile(r"baby|strampler", re.I),
+                "deckel": {"schmuck": 60},   # Schmuck gibt es unter CHF 20 vier Mal so oft wie alles andere
+                "arten": [
+                    ("tasse", r"tasse(?!l)|thermobecher|kaffeebecher|trinkflasche|teekanne|teeset|teesieb|tee-?ei"),
+                    ("duft", r"duftkerze|kerze|diffuser|duftstäbchen|kerzenwärmer"),
+                    ("deko", r"weihnachtsfigur|weihnachtskugel|weihnachtsdeko|lichterkette|schneekugel|nachtlicht|"
+                             r"sternenhimmel|wichtel|lebkuchen|schneemann|rentier|nussknacker"),
+                    ("kuschel", r"kuscheldecke|fleecedecke|wärmflasche|wärmekissen|kuschelsocken|handwärmer"),
+                    ("schmuck", r"ohrring|halskette|anhänger|armband(?!uhr)|armreif|\bring\b"),
+                    ("spiel", r"puzzle|kartenspiel|brettspiel|würfelspiel|plüschtier|kuscheltier|stofftier|zauberwürfel|"
+                              r"anti-?stress|knautschball|stressball"),
+                    ("beauty", r"kosmetiktasche|make-?up-?pinsel|schminkspiegel|haarspange|haarklammer|scrunchie"),
+                    ("gadget", r"schlüsselanhänger|handyständer|notizbuch|tagebuch|lesezeichen|"
+                               r"flaschenöffner|eiskratzer|kartenetui"),
                 ]},
 }
 
@@ -106,7 +126,10 @@ TIER = re.compile(r"hund|katze|katzen|haustier|nager|vögel|vogel|leine|aquarium
 KLEIDUNG = re.compile(r"kleid|hose|hemd|shirt|bluse|anzug|bikini|jacke|mantel|pullover|hoodie|\brock\b|jeans|leggings|"
                       r"\btop\b|weste|overall|jumpsuit|cardigan", re.I)
 ART_NICHT = {
-    "schmuck": r"schlüssel|fidget|spinner|uhrenarmband|werkzeug|smart|watch|uhr|herzfrequenz|sportarmband|silikon|trainer|grip|kautschuk",
+    "schmuck": r"schlüssel|fidget|spinner|uhrenarmband|werkzeug|smart|watch|uhr|herzfrequenz|sport-?armband|silikon|trainer|grip|kautschuk|"
+               # 10.10. (Welt «wichtel»): Mücken-Armbänder, Uhrenbänder ohne das Wort «Uhr», Quarz-«Armband» = Uhr, Zubehör
+               r"mücke|insekt|ultraschall|schnellwechsel|schirmverschluss|\b(?:18|20|22|24|26) ?mm\b|quarz|aufbewahrung|"
+               r"anziehhilfe|usb|vorhang|personalisiert|gravur|schnellverschluss|ventilator",
     "tech": r"armband|hülle|case|kabel|ersatz|kopfband|oculus",
     "licht": r"office|büro|heimkino|home-?kino|beamer|hd |uhr|rucksack|schul|gemälde|nagel|nägel|charger|feuchttuch|luftbefeuchter|diffus|lade|speaker|lautsprecher|wecker|halskette|ring|hoodie|traumfänger|wohnräume|harz|holz|silikon|tischlampe|nachttischlampe|feuerwerk|bluetooth",
     "plüsch": r"kissen|auto|winter-plüsch|sitz|rucksack",
@@ -115,18 +138,21 @@ ART_NICHT = {
     "leder": r"weiblich|damen|trench|mantel",
     "bar": r"backform|gasbrenner|brenner",
     "schal": r"box|einweg|sommer|\bski|velo|arbeits|koch|augen|beheizbar",
-    "duft": r"solar|outdoor|öl|nachfüll|kerzenform|form\b|vorratsglas",
+    "duft": r"solar|outdoor|öl|nachfüll|kerzenform|form\b|vorratsglas|zünd|locken|haar|kürbis|geist|balsam|hautfrische",
     "pflege": r"rasen|mäh|garten|echthaar|augenbrauen|bartender|nadel|roller|serum",
     "rc": r"kissen|wurst|reise",
-    "spiel": r"quietsch|zähne|knirsch|eiswürfel|form\b|behälter|meilenstein",
+    "spiel": r"quietsch|zähne|knirsch|eiswürfel|form\b|behälter|meilenstein|mäuse|glöckchen|militär|gangster",
     "spielzeug": r"quietsch|beiss|laser|futter|schnüffel|kau|pistole|sprüh|badeball|beagle|feder|zerr|seil",
     "kreativ": r"nagel|werkzeugset|stift set|stiftset|diffuser",
     "draussen": r"abnehmen|fitness|stahlseil",
     "beauty": r"wecker",
     # Welt «unter30» (Trockenlauf 03.10.: Nagelset «Sternenhimmel», Herrenuhr/WC-Licht mit Nachtlicht, Perlenring,
     # Taschenuhr mit Lupe, Gewichts-Notizbuch, Oster-Decke im Oktober)
-    "deko": r"nagel|uhr|\bring\b|perlen|\bwc\b|bewegungs|sensor|luftbefeuchter|charger|lade",
-    "gadget": r"uhr|gewicht|stirnband|klemme|leuchte",
+    "deko": r"nagel|nägel|press-on|maniküre|tattoo|uhr|\bring\b|perlen|\bwc\b|bewegungs|sensor|luftbefeuchter|luftreiniger|"
+            r"charger|lade|fahrrad|velo|solar|garten|aufbewahrung|halskette|ventilator",
+    "gadget": r"uhr|gewicht|stirnband|klemme|leuchte|kältemittel|schwanger",
+    # 10.10. (Welt «wichtel»): «Tassel»-Schmuck traf «tasse» (jetzt tasse(?!l)), Reiniger/Hüllen/Halter, Editor-Ware nie anfassen
+    "tasse": r"reiniger|hülle|halter|silikonform|form\b|selbst gestalten|bedrucken|futter",
     "kuschel": r"oster",
 }
 
@@ -173,6 +199,10 @@ def auswahl():
                 if je[a]:
                     reihe.append(je[a].pop(0))
             i += 1
+        deckel = WELTEN[w].get("deckel", {})
+        if deckel:
+            zaehl = collections.Counter()
+            reihe = [k for k in reihe if (zaehl.update([k["art"]]) or zaehl[k["art"]] <= deckel.get(k["art"], MAX_JE_WELT))]
         kand[w] = reihe[:MAX_JE_WELT]
     return kand
 

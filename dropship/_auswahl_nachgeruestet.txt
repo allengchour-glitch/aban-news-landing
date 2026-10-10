@@ -680,3 +680,6 @@
 15502557610369	Motiv:2:2+ki	2026-10-10	kirschbluten-saison-bausteine-modell-623100
 15502384103809	Farbe:4:4+ki	2026-10-10	tarnfarbene-umhangetasche-fur-freizeit-outdoor-403648
 15495192641921	Farbe:11:11+ki	2026-10-10	wasserdichte-superleuchtende-herrenuhr-616100
+15484355838337	Farbe:2:2	2026-10-10	smart-roboter-hund-573504
+15454089806209	Farbe:5:5+ki	2026-10-10	gro-e-automatische-leuchtende-wasserdichte-uhr-603400
+15477467283841	Variante:12+Ausführung:2:16+ki	2026-10-10	stern-bodysuit-kit-606900
