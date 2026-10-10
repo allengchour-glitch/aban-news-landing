@@ -1556,3 +1556,5 @@ gid://shopify/Product/16612764516743	ok	Faszien-Massagegerät
 gid://shopify/Product/16612770218375	ok	Elektrischer Ofen mit Heissluftfrittierfunktion
 gid://shopify/Product/16612772086151	ok	Sandwich- und Frühstücksmaschine
 gid://shopify/Product/16613403656583	ok	Männer-Skelett-Uhr mit mechanischem Zeiger
+gid://shopify/Product/16613793464711	ok	Wandkalender mit WiFi-Digitaluhr
+gid://shopify/Product/16613802082695	ok	Smart-Wecker mit Nachtlicht und Audio-Monitor
