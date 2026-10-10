@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-09T11:18:19Z",
+ "stand": "2026-10-10T10:35:02Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "KI: Anthropic verbietet Nutzern, zu gemein zu Claude zu sein",
-   "u": "https://www.golem.de/news/ki-anthropic-verbietet-nutzern-zu-gemein-zu-claude-zu-sein-2610-213924.html",
-   "q": "Golem",
-   "d": "2026-10-09T10:41:01Z",
-   "s": "Künftig kann Claude Chats beenden, wenn Nutzer die KI beleidigen. In der neuen Nutzervereinbarung werden auch Propaganda und Waffenentwicklung geregelt. (Anthropic, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "\"OpenAI kann KI nicht allein sicher machen\": Ex-Mitarbeiter veröffentlichen kritischen Brief",
-   "u": "https://t3n.de/news/openai-ex-mitarbeiter-brief-ki-sicherheit-1767427/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Openclaw: Zwei KI-Agenten sorgen sich sechs Stunden lang um ihren schlafenden User",
+   "u": "https://t3n.de/news/openclaw-ki-agenten-sorgen-sich-um-schlafenden-user-1766686/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-09T10:30:05Z",
-   "s": "OpenAI hat drei Mitarbeiter:innen mit sofortiger Wirkung entlassen, weil sie angeblich vertrauliche Informationen weitergegeben hätten. Jetzt setzen sich die Ex-Mitarbeiter:innen mit einem kritischen …",
+   "d": "2026-10-10T09:00:00Z",
+   "s": "Ein X-User berichtet von einem kuriosen Zwischenfall mit zwei Openclaw-Agenten. Während einer längeren Abwesenheit haben sich die beiden Tools zusammengerauft, um herauszufinden, ob ihrem Nutzer etwas…",
    "sprache": "de"
   },
   {
-   "t": "Fortschritte in der KI-Mathematik: Forscher sehen Gefahren für Kryptowährungen",
-   "u": "https://www.golem.de/news/fortschritte-in-der-ki-mathematik-forscher-sehen-gefahren-fuer-kryptowaehrungen-2610-213922.html",
-   "q": "Golem",
-   "d": "2026-10-09T10:10:02Z",
-   "s": "Forscher erwarten, dass KI noch vor Quantencomputern eine ernste Gefahr für die Kryptografie von Blockchains darstellt. (Ethereum, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: AI Beyond the Hype: Was KI in echten Software-Teams wirklich verändert",
-   "u": "https://www.heise.de/news/AI-Beyond-the-Hype-Was-KI-in-echten-Software-Teams-wirklich-veraendert-11481191.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Photokina-Comeback und KI-Skandal – die Fotonews der Woche 41/2026",
+   "u": "https://www.heise.de/news/Photokina-Comeback-und-KI-Skandal-die-Fotonews-der-Woche-41-2026-11482204.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-09T10:00:00Z",
-   "s": "Was bleibt vom KI-Versprechen in der Praxis? Der OOP-Track „AI Beyond the Hype“ beschäftigt sich mit echten Erfahrungen, Zahlen und Trade-offs aus Softwareteams",
+   "d": "2026-10-10T08:00:00Z",
+   "s": "Die Imaging World zieht nach Köln, Nikon prüft KI-Betrug bei einem Wettbewerb und Leica ehrt Graciela Iturbide.",
    "sprache": "de"
   },
   {
-   "t": "Fünf Jahre Pause: Bootstrap bekommt großes Upgrade auf Version 6",
-   "u": "https://www.heise.de/news/Bootstrap-6-Erste-Alpha-Version-des-CSS-Frameworks-erschienen-11482120.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-09T09:50:00Z",
-   "s": "Fünf Jahre nach Bootstrap 5 bringt das Team die erste Alpha von Bootstrap 6 heraus – mit modernen Webstandards und KI-Unterstützung.",
-   "sprache": "de"
-  },
-  {
-   "t": "We’re putting too much faith in AI’s ability to say no",
-   "u": "https://www.technologyreview.com/2026/10/09/1145728/we-are-putting-too-much-faith-in-ai-to-say-no/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-09T09:00:00Z",
-   "s": "Ever since people first seriously contemplated giving machines an intelligence modeled on our own, there has never been any question that they would, like us, be able to say no. The sci-fi canon is fu…",
-   "sprache": "en"
-  },
-  {
-   "t": "3 KI-Figuren, ein Konsens: Claude Skills als Sparringsteam für Selbstständige",
-   "u": "https://t3n.de/news/claude-skills-ki-sparringspartner-1767372/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Gehirnscan zu Bild: KI rekonstruiert, was Menschen gerade sehen",
+   "u": "https://t3n.de/news/ki-gehirnscan-bilder-rekonstruieren-1766379/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-09T08:40:54Z",
-   "s": "Wer allein arbeitet, hat niemanden, der Entscheidungen sofort hinterfragt. Ein Solo-Selbstständiger hat sich mit Claude-Skills drei KI-Sparringspartner gebaut, im Gespräch mit Claude statt mit Code.we…",
+   "d": "2026-10-10T07:40:00Z",
+   "s": "Eine Forschergruppe hat einen Decoder fürs Gehirn entwickelt. Dazu trainierten sie ein KI-Modell mit Daten von Proband:innen, die in einem MRT-Scanner lagen undweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
-   "u": "https://openai.com/index/sophos",
-   "q": "OpenAI",
-   "d": "2026-10-09T07:00:00Z",
-   "s": "Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
-   "sprache": "en"
+   "t": "Agil und strukturiert: eine Umgebung für KI-gestütztes Lernen",
+   "u": "https://www.heise.de/hintergrund/Agil-und-strukturiert-eine-Umgebung-fuer-KI-gestuetztes-Lernen-11480376.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-10T06:00:00Z",
+   "s": "KI hilft beim Einstieg in fremde Fachgebiete, irrt dabei aber unbemerkt. Wie sieht ein agiler Lernprozess aus, der davor schützt?",
+   "sprache": "de"
   },
   {
-   "t": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
-   "u": "https://www.technologyreview.com/2026/10/08/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-09T00:08:24Z",
-   "s": "Friday, October 16, 2026 Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose genetic blue…",
-   "sprache": "en"
+   "t": "Mini-PCs im KI-Test: Apple vs. AMD und Intel mit lokalen LLMs",
+   "u": "https://www.golem.de/news/mini-pcs-im-ki-test-apple-vs-amd-und-intel-mit-lokalen-llms-2610-213894.html",
+   "q": "Golem",
+   "d": "2026-10-10T05:30:02Z",
+   "s": "Ein Schreibtisch voller Mini-PCs und ein automatisierter Benchmark für lokale LLMs sind ein Fest für jeden Golem-Redakteur. Ein Test von Mike Faust (PC & Notebooks, Mac)",
+   "sprache": "de"
   },
   {
-   "t": "Pretend you’re sitting at Elizabeth Holmes’ desk on this weirdly detailed website",
-   "u": "https://techcrunch.com/2026/10/08/pretend-youre-sitting-at-elizabeth-holmes-desk-on-this-weirdly-detailed-website/",
+   "t": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+   "u": "https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/",
    "q": "TechCrunch AI",
-   "d": "2026-10-08T21:00:00Z",
-   "s": "With over a thousand emails, slides, texts, and documents from the United States v. Elizabeth Holmes trial, Extend engineer Bo Lau created a website that simulates what it might have been like to rifl…",
+   "d": "2026-10-10T00:18:32Z",
+   "s": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice.",
+   "sprache": "en"
+  },
+  {
+   "t": "The maker of non-text AI model Jev valued at $7.5B just weeks after launch",
+   "u": "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-09T21:41:29Z",
+   "s": "What has users and large corporations so excited about Jev is TypeSafe’s claim that it works significantly faster and uses far fewer tokens than LLMs.",
+   "sprache": "en"
+  },
+  {
+   "t": "(g+) Künstliche Intelligenz: Warum mich meine Gespräche mit ChatGPT for Teens sehr beunruhigen",
+   "u": "https://www.golem.de/news/kuenstliche-intelligenz-warum-mich-meine-gespraeche-mit-chatgpt-for-teens-sehr-beunruhigen-2610-213942.html",
+   "q": "Golem",
+   "d": "2026-10-09T16:00:02Z",
+   "s": "Unser Lesetipp: New-York-Times-Autor Brian X. Cheng hat ChatGPT for Teens getestet und gravierende Lücken bei Jugendschutz und Lernhilfe gefunden. Von Brian X. Chen (Jugendschutz, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Impactful scheduling for GPU clusters",
+   "u": "https://huggingface.co/blog/allenai/impactful-scheduling",
+   "q": "Hugging Face",
+   "d": "2026-10-09T15:20:29Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "The Download: AI’s refusal problem and weight-loss drug side effects",
+   "u": "https://www.technologyreview.com/2026/10/09/1146250/the-download-ai-refusal-problem-weight-loss-drug-side-effects/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-09T12:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. We’re putting too much faith in AI’s ability to say no Today’s…",
    "sprache": "en"
   }
  ]
