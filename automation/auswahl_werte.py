@@ -563,6 +563,9 @@ def normalisiere_ki(name, werte):
     werte = [re.sub(r"[\u2010\u2011\u2012\u2013\u2014\u2015](?=\S)", "-", str(w)).strip() for w in werte]
     werte = [re.sub(r"(\d)-(\d)", r"\1–\2", w) for w in werte]          # Zahlenbereich mit Halbgeviertstrich
     werte = [w.replace("ß", "ss") for w in werte]                          # Schweizer Schreibweise
+    # «Gruen»/«Matchagruen»/«Tuerkis» → ü: die Schweiz schreibt ss, aber ü bleibt (10.10.: 4 Listen «Farbe fehlt» abgelehnt)
+    werte = [re.sub(r"(?i)(gr|t)ue(n|rkis)", lambda m: m.group(1) + ("Ü" if m.group(0)[len(m.group(1))].isupper() else "ü")
+                    + m.group(2), w) for w in werte]
     werte = [re.sub(r"\s*·\s*", " · ", w) for w in werte]                   # «Hase·Lila» → «Hase · Lila»
     werte = [re.sub(r"(\d)\s*(cm|mm|ml|kg)\b", lambda m: f"{m.group(1)} {m.group(2).lower()}", w, flags=re.I) for w in werte]
     return name, werte
@@ -593,7 +596,8 @@ def pruefe_ki(original, name, werte):
         # wörtlich übernommene Originalwörter sind unübersetzt — ausser Kürzel (USB, LED), Codes und gleich geschriebene
         orig_w = {t.lower() for t in re.findall(r"[A-Za-zÄÖÜäöü']+", o)}
         for t in re.findall(r"[A-Za-zÄÖÜäöü']+", w):
-            if len(t) >= 3 and t.lower() in orig_w and not t.isupper() and t.lower() not in GLEICH_DE:
+            if len(t) >= 3 and t.lower() in orig_w and not t.isupper() and t.lower() not in GLEICH_DE \
+                    and not schon_deutsch(t):
                 return f"englisches Restwort {t!r} in {w!r}"
         # jede Grundfarbe des Originals muss übersetzt drinstehen (Familie: «Purple» = Lila ODER Violett)
         for t in re.split(r"[\s\-/]+", o.lower()):
@@ -612,7 +616,41 @@ GLEICH_DE = {"generation", "version", "edition", "khaki", "beige", "orange", "pi
              "hd", "rgb", "ring", "bluetooth", "wifi", "smart", "mix", "neon", "metall", "nylon", "polyester", "silikon",
              "upgrade", "highlight", "laser", "turbo", "mini", "power", "display", "touch", "spray", "gel",
              "velvet", "denim", "jeans", "leder", "holz", "bambus", "edelstahl", "kristall", "glitter", "satin", "rattan",
-             "monster", "robot", "roboter", "astronaut", "safari", "comic", "emoji", "boho", "vintage", "retro"}
+             "monster", "robot", "roboter", "astronaut", "safari", "comic", "emoji", "boho", "vintage", "retro",
+             # 10.10.2026: im KI-Ledger zu Unrecht als «englisches Restwort» abgelehnt — im Deutschen gleich geschrieben (Duden)
+             # oder feste Eigennamen, die die Kundin so kennt. NICHT hier: Body (Kleid ODER Gehäuse), Roland (罗兰 = Violett),
+             # Pinyin-Reste (Xuan, Fanghua, Huayu, Penglai), Splicing, Crazy, Mason, Macron — die bleiben abgelehnt.
+             "box", "pedal", "avocado", "wok", "taro", "wolf", "sakura", "digital", "polaroid", "osmanthus", "apricot",
+             "jacquard", "sand", "futon", "elegant", "beagle", "neutral", "extra", "greige", "oolong", "hand",
+             "morandi", "kanagawa", "tiangong"}
+
+# Schon deutsch im Original (CJ liefert manche Werte deutsch: «Schwarz», «Grün geblümt», «Dunkelkaffeebraun», «Gepunktet»)
+# — exakter Treffer im eigenen Farbwortschatz oder ein Kompositum, das GANZ aus deutschen Teilen besteht und auf einen
+# Farbstamm endet. Nie «endet auf» allein: Carrot endet auf «rot», Parrot auch («car»/«par» sind keine deutschen Teile).
+_DE_STAMM = {w.lower() for w in farblexikon.BASIS} | {w.lower() for w in farblexikon.DE_SOLO}
+_DE_FARBWORT = (_DE_STAMM | {v.lower() for v in FARBE_EXTRA.values()} | {v.lower() for v in farblexikon.EN2DE.values()})
+_DE_TEIL = (_DE_FARBWORT | {v.lower() for v in farblexikon.MODIFIER.values()}
+            | {"dunst", "nebel", "rauch", "himmel", "marine", "wein", "senf", "moos", "eis", "puder", "kaffee", "königs",
+               "koenigs", "mitternachts", "zucker", "alt", "zart", "tief", "stein", "erd", "sand", "schoko", "kirsch", "pastell"})
+_DE_MUSTER = {"gepunktet", "gestreift", "kariert", "einfarbig", "meliert", "bedruckt", "gemustert", "geblümt", "uni"}
+
+
+def _de_kompositum(tl):
+    """«dunkelkaffeebraun» = dunkel + kaffee + braun → True; «carrot» = car + rot → False."""
+    geht = [False] * (len(tl) + 1)
+    geht[0] = True
+    for i in range(len(tl)):
+        if geht[i]:
+            for j in range(i + 2, len(tl) + 1):
+                if tl[i:j] in _DE_TEIL:
+                    geht[j] = True
+    return geht[-1] and any(tl.endswith(s) for s in _DE_STAMM)
+
+
+def schon_deutsch(t):
+    tl = t.lower()
+    return (bool(re.search(r"[äöü]", tl)) or tl in _DE_FARBWORT or tl in _DE_MUSTER
+            or any(tl in fam for fam in FAMILIE.values()) or _de_kompositum(tl))
 
 FAMILIE = {"black": ("schwarz", "anthrazit"), "white": ("weiss", "creme", "elfenbein"), "red": ("rot", "bordeaux"),
            "blue": ("blau", "marine", "türkis", "petrol"), "green": ("grün", "oliv", "mint", "petrol"), "yellow": ("gelb",),
@@ -691,17 +729,49 @@ def uebersetze_ki(titel, dims, frage=None, pruefer=None):
     """dims = [[werte…], …] → [(name, [werte…]) | None, …]. Ein Übersetzer-Aufruf + ein Prüfer-Aufruf je Produkt;
     Ledger zuerst. Modell nicht erreichbar → RuntimeError (der Aufrufer zählt das als vorübergehend, kein Ledger)."""
     ledger = _ki_ledger_lesen()
-    out, offen = [None] * len(dims), []
+    out, offen, nachpruefen = [None] * len(dims), [], []
     for i, d in enumerate(dims):
         r = ledger.get(json.dumps(d, ensure_ascii=False))
         # Abgelehnte Einträge zählen nur, wenn der ZWEITPRÜFER sie verworfen hat — eine harte Prüfregel kann sich ändern
         # (08.10. 20:50: «Standard»/«Version» galten als englisch), dann wird neu gefragt.
         if r and (r.get("ok") or "Zweitprüfer" in (r.get("grund") or "")):
             out[i] = normalisiere_ki(r["name"], r["werte"]) if r.get("ok") else None
+        elif r and isinstance(r.get("werte"), list):
+            # 10.10.: erst die gespeicherte Übersetzung gegen die HEUTIGE harte Regel prüfen — besteht sie, braucht es nur
+            # noch den Zweitprüfer, keinen neuen Übersetzer-Aufruf (Groq/OpenAI waren am 09.10. leer).
+            name, werte = normalisiere_ki(r.get("name") or "", r["werte"])
+            if pruefe_ki(d, name, werte) is None:
+                nachpruefen.append((i, name, werte, None, r.get("modell") or "?"))
+            else:
+                offen.append(i)
         else:
             offen.append(i)
-    if not offen:
+    if not offen and not nachpruefen:
         return out
+    ergebnisse = list(nachpruefen)
+    if offen:
+        ergebnisse += _uebersetzen(titel, dims, offen, frage)
+    # Zweitprüfer nur über das, was die harte Prüfung bestanden hat (ein Aufruf je Produkt)
+    paare = [(o, w) for i, _, werte, g, _m in ergebnisse if g is None for o, w in zip(dims[i], werte)]
+    zweit = None
+    if paare:
+        try:
+            zweit = zweitpruefung(titel, paare, pruefer)
+        except Exception as e:
+            raise RuntimeError(f"Zweitprüfer nicht erreichbar: {str(e)[:100]}")
+    with open(KI_LEDGER, "a", encoding="utf-8") as fh:
+        for i, name, werte, grund, wer in ergebnisse:
+            if grund is None and zweit:
+                grund = zweit                                 # das Produkt als Ganzes fällt (Werte hängen zusammen)
+            fh.write(json.dumps({"v": KI_VERSION, "original": dims[i], "name": name, "werte": werte, "ok": grund is None,
+                                 "grund": grund, "titel": titel, "modell": wer, "pruefer": PRUEFER_MODELL},
+                                ensure_ascii=False) + "\n")
+            out[i] = (name, werte) if grund is None else None
+    return out
+
+
+def _uebersetzen(titel, dims, offen, frage=None):
+    """Ein Übersetzer-Aufruf für die offenen Listen → [(i, name, werte, grund_harte_prüfung, modell), …]."""
     if frage is None:
         from zweitmodell import chat_json as frage           # noqa: E402  (OpenAI → Groq gpt-oss-120b)
     text = ("Du übersetzt Lieferanten-Variantennamen (Englisch, oft holprig aus dem Chinesischen) in kurze deutsche "
@@ -735,24 +805,8 @@ def uebersetze_ki(titel, dims, frage=None, pruefer=None):
     ergebnisse = []
     for i, l in zip(offen, listen):
         name, werte = normalisiere_ki(str((l or {}).get("name") or "").strip(), (l or {}).get("werte") or [])
-        ergebnisse.append((i, name, werte, pruefe_ki(dims[i], name, werte)))
-    # Zweitprüfer nur über das, was die harte Prüfung bestanden hat (ein Aufruf je Produkt)
-    paare = [(o, w) for i, _, werte, g in ergebnisse if g is None for o, w in zip(dims[i], werte)]
-    zweit = None
-    if paare:
-        try:
-            zweit = zweitpruefung(titel, paare, pruefer)
-        except Exception as e:
-            raise RuntimeError(f"Zweitprüfer nicht erreichbar: {str(e)[:100]}")
-    with open(KI_LEDGER, "a", encoding="utf-8") as fh:
-        for i, name, werte, grund in ergebnisse:
-            if grund is None and zweit:
-                grund = zweit                                 # das Produkt als Ganzes fällt (Werte hängen zusammen)
-            fh.write(json.dumps({"v": KI_VERSION, "original": dims[i], "name": name, "werte": werte, "ok": grund is None,
-                                 "grund": grund, "titel": titel, "modell": wer, "pruefer": PRUEFER_MODELL},
-                                ensure_ascii=False) + "\n")
-            out[i] = (name, werte) if grund is None else None
-    return out
+        ergebnisse.append((i, name, werte, pruefe_ki(dims[i], name, werte), wer))
+    return ergebnisse
 
 
 # ── Selbsttest ──────────────────────────────────────────────────────────────────────────────────────────────────
@@ -839,13 +893,51 @@ def selbsttest():
                  ((["38x31x16CM", "40x30CM"], "Grösse", ["38×31×16 cm", "40×31 cm"]), "Zahl"),
                  ((["Red Single Bag", "Blue Single Bag"], "Ausführung", ["Einzeltasche", "Blaue Einzeltasche"]), "Farbe"),
                  ((["Blue Mind Machine", "Red Big Mouth Monster"], "Motiv", ["Blaue Denkmaschine", "Rotes Grossmaul-Monster"]), None),
-                 ((["A", "B"], "Wunschname", ["A", "B"]), "nicht erlaubt")]
+                 ((["A", "B"], "Wunschname", ["A", "B"]), "nicht erlaubt"),
+                 # 10.10.2026: schon deutsche Originale und gleich geschriebene Wörter sind kein «englischer Rest» …
+                 ((["Schwarz", "Weiss", "Angora Red"], "Farbe", ["Schwarz", "Weiss", "Rot"]), None),
+                 ((["Grün geblümt", "Blue Dyed"], "Muster", ["Grün geblümt", "Blau gefärbt"]), None),
+                 ((["Wok 22cm", "Deep Soup Pot 20cm"], "Ausführung", ["Wok 22 cm", "Tiefer Suppentopf 20 cm"]), None),
+                 ((["Brown", "Beagle"], "Motiv", ["Braun", "Beagle"]), None),
+                 ((["Morandi Pink", "Morandi Light Gray"], "Farbe", ["Morandi-Rosa", "Morandi-Hellgrau"]), None),
+                 ((["Green", "Matcha Green"], "Farbe", ["Gruen", "Matchagruen"]), None),        # → Grün/Matchagrün
+                 ((["Dunkelkaffeebraun", "Dunstblau", "Gepunktet"], "Farbe", ["Dunkelkaffeebraun", "Dunstblau", "Gepunktet"]), None),
+                 # … echte Reste bleiben abgelehnt
+                 ((["Black Leather", "White Leather"], "Material", ["Leather · Schwarz", "Leder · Weiss"]), "englisch"),
+                 ((["30x50 splicing", "30x50 nonsplicing"], "Ausführung", ["30×50 mit Splicing", "30×50 ohne Splicing"]), "englisch"),
+                 ((["Carrot", "Parrot"], "Motiv", ["Carrot", "Papagei"]), "englisch"),            # endet auf «rot» ≠ deutsch
+                 ((["Roland Purple", "Navy Blue"], "Farbe", ["Roland-Lila", "Marineblau"]), "englisch"),   # 罗兰 = Violett
+                 ((["Star Xuan", "Star Light"], "Motiv", ["Stern Xuan", "Sternenlicht"]), "englisch"),
+                 ((["Red Body", "Green Body"], "Ausführung", ["Body · Rot", "Body · Grün"]), "englisch")]
     for (orig, name, werte), soll in ki_faelle:
-        g = pruefe_ki(orig, name, werte)
+        g = pruefe_ki(orig, *normalisiere_ki(name, werte))
         if (soll is None) != (g is None) or (soll and soll.lower() not in (g or "").lower()):
             fehler += 1
             print(f"  ✗ KI-Prüfung {orig} → {werte}: {g!r} (soll {soll!r})")
-    print(f"Selbsttest: {len(KANARIEN) + len(ki_faelle) - fehler}/{len(KANARIEN) + len(ki_faelle)} ok")
+    # Ledger: eine früher hart abgelehnte Übersetzung, die die heutige Regel besteht, geht nur noch an den Zweitprüfer —
+    # kein neuer Übersetzer-Aufruf (frage darf nicht gerufen werden)
+    import tempfile
+    global KI_LEDGER
+    alt_ledger = KI_LEDGER
+    with tempfile.TemporaryDirectory() as td:
+        KI_LEDGER = os.path.join(td, "l.jsonl")
+        with open(KI_LEDGER, "w", encoding="utf-8") as fh:
+            fh.write(json.dumps({"v": KI_VERSION, "original": ["Brown", "Beagle"], "name": "Motiv", "werte": ["Braun", "Beagle"],
+                                 "ok": False, "grund": "englisches Restwort 'Beagle' in 'Beagle'"}, ensure_ascii=False) + "\n")
+
+        def frage_verboten(_t):
+            raise AssertionError("Übersetzer gerufen")
+        try:
+            r = uebersetze_ki("Hundepulli", [["Brown", "Beagle"]], frage=frage_verboten,
+                              pruefer=lambda _t: {"urteile": [{"ok": True}, {"ok": True}]})
+            ok = r == [("Motiv", ["Braun", "Beagle"])]
+        except AssertionError as e:
+            ok, r = False, str(e)
+        KI_LEDGER = alt_ledger
+    if not ok:
+        fehler += 1
+        print(f"  ✗ Ledger-Nachprüfung: {r!r}")
+    print(f"Selbsttest: {len(KANARIEN) + len(ki_faelle) + 1 - fehler}/{len(KANARIEN) + len(ki_faelle) + 1} ok")
     return fehler == 0
 
 
