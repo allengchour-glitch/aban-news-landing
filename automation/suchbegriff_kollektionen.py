@@ -96,6 +96,8 @@ def kollektionen(gql, scharf):
                 'ruleSet{rules{column relation condition}} resourcePublications(first:20){nodes{publication{id}}}}}',
                 {"h": k["handle"]})["collectionByHandle"]
         regel = [{"column": "TAG", "relation": "EQUALS", "condition": k["tag"]}]
+        if k.get("zusatz_tag"):   # UND-Verknüpfung: z. B. GPS-Tracker nur mit netz-geprueft (mobilfunk_netz_pruefen.py, 2G-Prüfung)
+            regel.append({"column": "TAG", "relation": "EQUALS", "condition": k["zusatz_tag"]})
         felder = {"title": k["titel"], "descriptionHtml": k["html"], "sortOrder": "BEST_SELLING",
                   "seo": {"title": k["seo_title"], "description": k["seo_desc"]}}
         if not c:
@@ -125,6 +127,12 @@ def kollektionen(gql, scharf):
                     if r["userErrors"]:
                         print("   ⚠️", r["userErrors"])
         fehlt = [p for p in KANAELE if p not in pubs]
+        # Leere Kollektion nicht veröffentlichen (dünne Seite für Google): GPS-Tracker füllt sich erst nach der CJ-Netzprüfung
+        aktiv = sum(1 for n in gql('query($id:ID!){collection(id:$id){products(first:50){nodes{status}}}}', {"id": cid})
+                    ["collection"]["products"]["nodes"] if n["status"] == "ACTIVE") if scharf or c else 0
+        if fehlt and aktiv == 0:
+            print(f"   wartet auf Ware (0 aktive Produkte) — noch nicht publiziert")
+            continue
         if fehlt and scharf:
             r = gql('mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{message}}}',
                     {"id": cid, "i": [{"publicationId": p} for p in fehlt]})["publishablePublish"]

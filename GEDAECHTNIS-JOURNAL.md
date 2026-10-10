@@ -49,6 +49,47 @@
 
 
 
+## 📵 2G ist in der Schweiz seit 2023 aus — GPS-Tracker und Kinderuhren mit SOS ohne Netz; dazu 5 Suchbegriff-Kollektionen (2026-10-10, 11:20 UTC, «weiter»)
+
+**Kollektionen** (OpenSEO: grosse Begriffe ohne Kollektion, Google zeigte ein Einzelprodukt auf Seite 6–9):
+- Neu: Handstaubsauger 19, Schminkspiegel 32, Schlafmasken 20, Kleiderständer 10. Tag `such-…` per Ja-/Nein-Muster auf den Titel (75 Kanarien), 8 Kanäle, in «Alle Kategorien» verlinkt, Aufseher täglich.
+- Fotodrucker bewusst nicht: Wir haben nur Thermodrucker in Schwarz-Weiss, die Suche meint Farb-Fotodrucker.
+
+**2G (beim Bau der GPS-Kollektion gefunden):**
+- 5 Tracker nannten im eigenen Text nur GSM/GPRS. In der Schweiz ist 2G seit 01/2023 bei allen drei Anbietern aus.
+- 173 Kandidaten. Eindeutig aus dem eigenen Text: 6 → Entwurf (5 Tracker, 1 Kinderuhr «2G-Netzwerke von Mobile und Unicom»).
+- **Falle:** «FDD-Bänder B1/B3/B20» ist LTE. Die erste Regel hielt eine LTE-Telefonuhr für 2G. Ausserdem «2.4G» (RC-Funk) und «2.4G/5G» (WLAN) ≠ Mobilfunk.
+- Das CJ-Budget war leer (37 Punkte). Darum Nachtlauf 00:10 UTC über die Kandidatenliste, `cj_takt` lässt `mobilfunk_netz` wie die Bestell-Wächter vor.
+- Die GPS-Kollektion verlangt UND-Tag `netz-geprueft` (nur mit CJ-Beleg) und veröffentlicht sich erst mit Ware.
+- Importer: `mobilfunk.mjs` (py=js 193/193).
+
+**Lehren:**
+- **Eine Ware kann einwandfrei geliefert werden und trotzdem im Zielland nicht funktionieren.** Netzstandard, Stecker, Frequenzen, Zulassung: «kommt an» ≠ «tut, was versprochen ist». Vor dem Bewerben einer Gerätegruppe die Funktion im Zielland prüfen.
+- **Kurze Kürzel brauchen Grenzen nach beiden Seiten:** «4G» in «2.4G», «5G» in «2.4G/5G».
+- **Ein leeres Tagesbudget ist kein Grund zu raten.** Eindeutige Fälle jetzt, der Rest im nächsten Budgetfenster, und nie «in Ordnung» ohne Beleg.
+
+→ `dropship/MOBILFUNK-2G-2026-10-10.md`, `dropship/SUCHBEGRIFF-KOLLEKTIONEN-2026-10-10.md`
+
+## 🇱🇮 Zwei Tagesläufe schrieben «Versand nur in die Schweiz» weiter — die Freigabe vom 09.10. kam nie bei den Schreibern an (2026-10-10, 10:40 UTC, «weiter»)
+
+**Gemessen:**
+- Beim Zählen für die Suchbegriff-Kollektionen fiel auf: 458 Produkttexte (Export 06:39) trugen im Lieferzeit-Kasten `<p class="ls-liefer">` den Satz «Versand nur in die Schweiz».
+- Live waren es um 10:10 schon **1'005**. `versand_jenachland.py` ersetzte bis 09:08 alte «(je nach Land)»-Kästen durch die Form ohne LI, gleich 548 Stück.
+- **`versandaussagen_wahrheit.kopfblock()` hatte denselben Satz.** Dessen `umschreiben()` ersetzt JEDEN vorhandenen Kasten. Jeder Lauf hätte eine LI-Reparatur also wieder zurückgesetzt.
+- Ausserdem: Die Knowledge-Base-Fakten für KI-Assistenten (ChatGPT/Copilot/Shop) sagten «liefert ausschliesslich in die Schweiz». Zwei FAQ-/AGB-Reparateure hatten Ersatztexte «ausschliesslich in die Schweiz».
+
+**Getan:**
+- Beide Schreiber nennen jetzt LI, in derselben Form wie der Importer-Baustein `delivery_block.mjs`.
+- Neues Werkzeug `lieferblock_li.py` (5 Kanarien) fasst nur den Kasten an. Es liest den Text live und hält das gemeinsame Produkttext-Schloss. Es läuft über den Bestand und täglich im Aufseher.
+- Knowledge Base: 2 Fakten gesetzt, Wache 10/10.
+- FAQ-/AGB-Ersatztexte auf CH + LI.
+
+**Lehre:**
+- **Eine Freigabe ist erst umgesetzt, wenn jeder SCHREIBER sie kennt, nicht nur jeder Text.** Die Texte vom Vormittag waren richtig. Zwei Tagesläufe hätten sie aber binnen Stunden wieder überschrieben.
+- Suche nach dem Satz in `automation/` (Schreiber) UND im Bestand (Texte). Ein Schreiber, der vorhandene Blöcke «normalisiert», ist der gefährlichste.
+
+→ `dropship/OPENSEO-START-2026-10-10.md`, `automation/lieferblock_li.py`
+
 ## 🕷️ OpenSEO-Audit fand in 12 Minuten, was die eigene Wache übersah: «nur in der Schweiz» im Theme (2026-10-10, 09:40 UTC, «obenseo verbunden» / Crawler-Signatur «gespeichert»)
 
 **Gemessen** (Audit 35 Seiten, 0 Credits; die Signatur wirkt, nach 35 Seiten 429):
@@ -19643,3 +19684,5 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · ⌚ **Verbesserungsrunde: 28/43 Uhrenarmbänder bei Google «Watches» (auch Neuimporte von heute) — `uhren_fein.py` erkannte Bänder nur mit «für … Watch», seine Uhr-Regel `uhren` traf «Uhrenarmband» → «stimmt» → Kopfwort-Regel Band/Zubehör/Werkzeug, Uhrwort ausserhalb → Uhr; Kanarien 39/39, 45/0, Rücklesen 10/10, Tageslauf trägt die Regel.** «stimmt» kann einen Fehler festschreiben; Kanarien mit Kompositum → `dropship/UHRENARMBAND-KATEGORIE-2026-10-09.md`
 - 2026-10-09 · 🔤 **«verbesser weiter»: Fremdwörter im Titel, die die Schweiz deutsch sucht (Cowhide 15, Silicone 10, Stainless 10, Hooded 9, Kids 8, Pendant 7, Baby-Romper 6 …; Sneaker/Hoodie/Jumpsuit bleiben) → `fremdwort_titel` in `haendlerwort_regel.json` (25 Muster, Romper nur mit Baby-Kontext) + 57 gelesene Handtitel (Geschlechtswechsel, Dubletten); Kanarien 91/91, py=js 52'082/0, 93/0, SEO-Titel mit.** Grenze = Suchgewohnheit; Geschlechtswechsel = Handtitel → `dropship/FREMDWORT-TITEL-2026-10-09.md`
 - 2026-10-09 · 🔍 **«nur 18 google suche ist wenig warum»: CH-Google Jul 127 → Aug 104 → Sep 75 → Okt ~77/Mt (Juli-Wochenspitze zur Hälfte Ausland), 71/91 auf Produktseiten, Ratgeber 0; Juli-Treiber Rizinusöl-Set (34) DRAFT (CJ nicht CH), Saisonende; GSC erst seit 05.10.; `<meta name="description">` doppelt escaped («&amp;amp;», page_description kommt schon escaped) → `meta_beschreibung_escape.py` live 6/6 + Wächter.** Wochenkurve nach Land trennen; «ist korrekt» im Kommentar ist kein Beweis → `dropship/GOOGLE-VERKEHR-WARUM-2026-10-09.md`
+- 2026-10-09 · ⌚ **Verbesserungsrunde: CJ-Gruppe «elektronik» stempelte Typ «Elektronik» auf 1'089 Uhren/Armbänder — die Menü-Kollektion «Schmuck & Uhren» filtert nach TYP, keines sichtbar → `data/gruppenstempel_typ.json` = `gruppenstempel_typ.py` (Aufseher täglich, Sperre: ODER-Kollektion hält über Tag) = `.mjs` im Importer (Uhrwort-Weg, Wecker aus); 883/883 + 91 Tag «uhren», Kollektion 6'499 → 7'382.** Gruppenstempel → Typ-Kollektionen prüfen → `dropship/GRUPPENSTEMPEL-TYP-2026-10-09.md`
+- 2026-10-09 · 🏷️ **«weiter»: 124 aktive mit Lieferantencodes im Farbfeld («QW121», «040401», «MFH3IUW75B08E11» neben «Blau»; 12 seit Sept.) — Importer prüften «alle Werte Code» (`codeOpt`) → gemischte Listen durch; EINE Regel `data/farbcode_modell_regel.json` = `farbcode_modell.py` (Aufseher täglich) = `farbcode_modell.mjs` in beiden Importern (54 Kanarien, py=js 17'028/0) → 166/0 «Modell N»/laufende Serie; Tonnamen, Code+Grösse, Rollengrössen bleiben (49 gemeldet).** Regel auf den Wert, nicht auf die Liste → `dropship/FARBCODE-MODELL-2026-10-09.md`

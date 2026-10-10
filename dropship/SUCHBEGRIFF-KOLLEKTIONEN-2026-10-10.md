@@ -57,7 +57,10 @@
 ## Bewusst nicht
 
 - **Fotodrucker:** Im Sortiment stehen nur Mini-Thermodrucker in Schwarz-Weiss. Die Suche «fotodrucker» meint Farb-Fotodrucker, eine Kollektion würde enttäuschen.
-- **GPS-Tracker:** Erst nach der 2G-Prüfung (`dropship/MOBILFUNK-2G-2026-10-10.md`). In der Schweiz ist 2G seit Januar 2023 abgeschaltet. Eine Kollektion, die 2G-Tracker bewirbt, würde nicht funktionierende Geräte nach oben bringen.
+- **GPS-Tracker:** Angelegt als `/collections/gps-tracker`, aber **noch nicht veröffentlicht**.
+  - Regel: Tag `such-gps-tracker` (61 Tracker) UND `netz-geprueft`.
+  - Den zweiten Tag setzt die 2G-Prüfung erst mit CJ-Beleg 4G/LTE oder Bluetooth (Nachtlauf 11.10.). Danach veröffentlicht der Aufseher die Kollektion automatisch.
+  - In der Schweiz ist 2G seit Januar 2023 abgeschaltet. 6 reine 2G-Geräte stehen schon als Entwurf (`dropship/MOBILFUNK-2G-2026-10-10.md`).
 
 ## Offen
 

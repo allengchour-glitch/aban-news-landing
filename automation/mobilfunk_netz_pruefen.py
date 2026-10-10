@@ -21,6 +21,9 @@ WAS ES TUT (Regeln: automation/data/mobilfunk_netz_regel.json):
     python3 automation/mobilfunk_netz_pruefen.py --kanarien
     python3 automation/mobilfunk_netz_pruefen.py --export DATEI.jsonl            # Trockenlauf über einen Voll-Export
     python3 automation/mobilfunk_netz_pruefen.py --export DATEI.jsonl --scharf   # nur-2g-3g → Entwurf
+    python3 automation/mobilfunk_netz_pruefen.py --export DATEI.jsonl --liste-schreiben   # Kandidaten → dropship/_klassen/mobilfunk-kandidaten.txt
+    python3 automation/mobilfunk_netz_pruefen.py --liste dropship/_klassen/mobilfunk-kandidaten.txt --scharf   # Nachtlauf (CJ-Punkte)
+    … --ohne-cj   nur eigener Text: entscheidet nur eindeutige 2G/3G-Fälle, alles andere bleibt «offen» für den CJ-Lauf
     TAGE=3 python3 automation/mobilfunk_netz_pruefen.py --scharf                # Wächter: Neuimporte (Aufseher, täglich)
 Ledger: dropship/_mobilfunk_netz.tsv (Zeit, Produkt-ID, Urteil, Beleg, Titel). Bericht: dropship/MOBILFUNK-NETZ-STAND.md.
 """
@@ -119,9 +122,21 @@ def main():
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = {z.split("\t")[1] for z in open(LEDGER, encoding="utf-8") if "\t" in z}
-    if "--export" in sys.argv:
+    ohne_cj = "--ohne-cj" in sys.argv   # 10.10.: CJ-Tagesbudget leer (37 Punkte) → nur eigener Text, nur eindeutige Fälle
+    if "--liste" in sys.argv:
+        pfad = sys.argv[sys.argv.index("--liste") + 1]
+        ids = [z.strip() if z.strip().startswith("gid:") else f"gid://shopify/Product/{z.strip()}"
+               for z in open(pfad, encoding="utf-8") if z.strip() and not z.startswith("#")]
+    elif "--export" in sys.argv:
         pfad = sys.argv[sys.argv.index("--export") + 1]
         ids = [json.loads(z)["id"] for z in open(pfad, encoding="utf-8") if ist_kandidat(json.loads(z).get("title"))]
+        if "--liste-schreiben" in sys.argv:
+            ziel = os.path.join(REPO, "dropship", "_klassen", "mobilfunk-kandidaten.txt")
+            with open(ziel, "w", encoding="utf-8") as fh:
+                fh.write("# Kandidaten für automation/mobilfunk_netz_pruefen.py --liste (Titel = SIM-fähiges Gerät), aus " + os.path.basename(pfad) + "\n")
+                fh.write("\n".join(i.rsplit("/", 1)[-1] for i in ids) + "\n")
+            print(f"{len(ids)} Kandidaten → {ziel}")
+            return 0
     else:
         seit = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - float(os.environ.get("TAGE", "3")) * 86400))
         ids, after = [], None
@@ -141,11 +156,13 @@ def main():
             continue
         skus = [v["sku"] for v in p["variants"]["nodes"] if v["sku"]]
         eigen = p["title"] + " " + re.sub(r"<[^>]+>", " ", p["descriptionHtml"] or "")
-        cjtext, var = cj_belege(S, skus)
+        cjtext, var = (None, None) if ohne_cj else cj_belege(S, skus)
         u = (varianten_urteil(var, skus) if var else None) or urteil(p["title"], eigen + " " + (cjtext or ""))
         u, beleg = u
         if cjtext is None and u in ("4g", "bluetooth", "unklar"):
-            u, beleg = "unklar", "CJ nicht erreicht"
+            u, beleg = "unklar", "ohne CJ" if ohne_cj else "CJ nicht erreicht"
+        if ohne_cj and u != "nur-2g-3g":
+            u, beleg = "offen", f"{u} (eigener Text) — CJ-Prüfung folgt"
         zaehl[u] = zaehl.get(u, 0) + 1
         zeilen.append((u, beleg, p["title"], p["handle"]))
         tat = ""
@@ -154,7 +171,11 @@ def main():
                     {"p": {"id": pid, "status": "DRAFT"}})["productUpdate"]
             gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": pid, "t": [R["draft_tag"]]})
             tat = "DRAFT" if not r["userErrors"] and (r["product"] or {}).get("status") == "DRAFT" else f"FEHLER {r['userErrors']}"
-        if scharf and not (cjtext is None and u == "unklar"):
+        if u in ("4g", "bluetooth") and cjtext is not None and scharf:
+            # 10.10.: nur CJ-belegte Geräte tragen den Tag — die Kollektion «GPS-Tracker» verlangt ihn (Tag such-gps-tracker UND netz-geprueft)
+            gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": pid, "t": [R["ok_tag"]]})
+            tat = R["ok_tag"]
+        if scharf and not (cjtext is None and u in ("unklar", "offen")):
             with open(LEDGER, "a", encoding="utf-8") as fh:
                 fh.write(f"{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{pid.rsplit('/', 1)[-1]}\t{u}\t{beleg}\t{p['title']}\t{tat}\n")
         print(f"  {u:13s} {beleg[:28]:28s} {p['title'][:70]} {tat}")

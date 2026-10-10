@@ -14,6 +14,7 @@ const PLUESCH_SPIELZEUG=new RegExp(_plt.spielzeug,'i');
 const PLUESCH_TEXTIL=new RegExp(_plt.textil,'i');
 const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
+import { nurAltnetz, DRAFT_TAG as MOBILFUNK_TAG } from './mobilfunk.mjs';   // 10.10.2026: nur 2G/3G = in CH ohne Netz
 import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie, werkzeugKorb, WERKZEUG_TYPEN} from './google_kategorie.mjs';
 import {typAusKategorie} from './produkttyp_aus_kategorie.mjs';   // 05.10.: Typ statt Sammeltyp
@@ -787,6 +788,13 @@ for(const [cat,label] of grp.cats){
    // Publizieren. Zubehoer ohne Klinge im Paket bleibt erlaubt (istHandklinge trennt das).
    if(istHandklinge(title)){
      console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) uebersprungen: ${title.slice(0,60)}`);
+     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+   }
+   // 📵 10.10.2026: Geräte mit SIM, die nur 2G/3G können (GSM/GPRS/WCDMA), funken in der Schweiz nicht — 2G seit 01/2023 aus,
+   // 3G 2025/26. Ein 2G-Tracker ortet nichts, eine 2G-Kinderuhr setzt keinen Notruf ab. Regel data/mobilfunk_netz_regel.json
+   // (= Bestand-Wächter mobilfunk_netz_pruefen.py); Urteil aus Titel + CJ-Name/-Beschreibung/-Varianten, 4G/LTE schlägt GSM.
+   if(nurAltnetz(title, `${d.productNameEn||''} ${String(d.description||'').replace(/<[^>]+>/g,' ')} ${(d.variants||[]).map(v=>v.variantNameEn||'').join(' ')}`)){
+     console.log(`  📵 nur 2G/3G — in der Schweiz ohne Netz, uebersprungen: ${title.slice(0,60)}`);
      fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
    }
    { const tw=technikWache(title, g.html||'');
