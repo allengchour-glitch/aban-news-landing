@@ -643,6 +643,46 @@
       "Gurtschiene für Dachträger",
       "Gurtschiene für Dachträger",
       "titel"
+    ],
+    [
+      "Diese Schnauzer sind zeitlos. Die Mindestbestellmenge beträgt 6 Stück. Modell nicht wählbar. Preis pro Stück. Details",
+      "Diese Schnauzer sind zeitlos. Modell nicht wählbar. Details",
+      "text:Schnauz schwarz · 6 Stück"
+    ],
+    [
+      "Es misst 25 mm. Für 10 Paare beträgt der Preis 40 yuan, für 50 Paare 35 yuan. Im Lieferumfang sind Schrauben.",
+      "Es misst 25 mm. Im Lieferumfang sind Schrauben.",
+      "text:Herrenarmband 25 mm"
+    ],
+    [
+      "Grössen 34 bis 40; für Sondergrössen wird ein Aufpreis von 10 Yuan erhoben, eine Rückgabe ist ausgeschlossen. Im Lieferumfang ein Paar.",
+      "Im Lieferumfang ein Paar.",
+      "text:Plateau Sandalen"
+    ],
+    [
+      "Ohne Programm und ohne Mindestbestellmenge. Lade dein Foto hoch.",
+      "Ohne Programm und ohne Mindestbestellmenge. Lade dein Foto hoch.",
+      "text:T-Shirt bedrucken"
+    ],
+    [
+      "Dieses Set enthält 100 weisse NFC-Karten und 100 Yuan Coin Chips.",
+      "Dieses Set enthält 100 weisse NFC-Karten und 100 Yuan Coin Chips.",
+      "text:NFC Chipkarten-Set"
+    ],
+    [
+      "Das POPFEEL Yuan Make-up Set ist umfassend.",
+      "Das POPFEEL Yuan Make-up Set ist umfassend.",
+      "text:POPFEEL Yuan Make-up Set"
+    ],
+    [
+      "Der Akku hat 5000 mAh. Preis: CHF 19.90.",
+      "Der Akku hat 5000 mAh. Preis: CHF 19.90.",
+      "text:Powerbank"
+    ],
+    [
+      "Bitte beachte, dass dieses Produkt eine Mindestbestellmenge von 100 Stück hat.",
+      "",
+      "text:Rucksack"
     ]
   ],
   "handtitel_hinweis": "Neuer Titel wäre eine Dublette eines bestehenden Titels (dup_title_fix würde draften) → Hand-Titel aus der Beschreibung. Gilt nur, solange der Live-Titel noch der alte ist.",
@@ -878,5 +918,15 @@
       "Uhrenriemen",
       ""
     ]
-  ]
+  ],
+  "bedingung_hinweis": "10.10.2026: Händlerbedingungen aus dem Lieferantentext gehören nicht in die Beschreibung — Mindestbestellmenge/MOQ, Preise in Yuan/RMB/¥ («Für 10 Paare beträgt der Preis 40 yuan»), «Preis pro Stück» bei Packungstiteln (Fortura). Der ganze Satz fällt. GEMESSEN 10.10. (52'348 aktive): 13 Treffer; «ohne Mindestbestellmenge» (eigener POD-Text) bleibt, «Yuan Coin»/«POPFEEL Yuan» (Namen) bleiben. Wo die Bedingung die VERKAUFSEINHEIT beschreibt (Stoff «10 Meter pro Muster» = CJ-Variante 10M), gehört die Menge in den Titel — Handarbeit.",
+  "bedingung_satz": [
+    "Mindestbestellmenge",
+    "(?<![A-Za-z])MOQ\\s?\\d*(?![A-Za-z])",
+    "\\d[\\d.,]*\\s*(?:Yuan|RMB)(?![A-Za-z])(?!\\s+Coin)",
+    "(?<![A-Za-z])(?:Yuan|RMB)\\s*\\d",
+    "[¥￥]\\s?\\d",
+    "Preis\\s+pro\\s+(?:Stück|Stk\\.?|Paar)(?![A-Za-zäöü])"
+  ],
+  "bedingung_ausnahme": "ohne\\s+Mindestbestellmenge"
 }

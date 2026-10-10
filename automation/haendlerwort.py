@@ -68,6 +68,13 @@ def _gross(t):
 
 
 HAENDLER_WORT = re.compile(r"(?<![a-zäöü])(?:ins[\s-](?:wind|style|stil)|all-?match(?:ing)?)(?![a-zäöü])", re.I)
+# 10.10.2026: Händlerbedingungen (Mindestbestellmenge, Yuan-Preise, «Preis pro Stück») — der ganze Satz fällt
+BED = re.compile("|".join(f"(?:{p})" for p in R.get("bedingung_satz", [])) or r"(?!x)x", re.I)
+BED_AUS = re.compile(R.get("bedingung_ausnahme") or r"(?!x)x", re.I)
+
+
+def bedingung(t):
+    return bool(BED.search(BED_AUS.sub(" ", t or "")))
 
 
 def titel_fix(t, hand=True):
@@ -115,7 +122,7 @@ def satz_fix(s, reiss, im_li):
 
 def text_fix(html, titel):
     """Beschreibung (HTML) oder SEO-Text → neuer Text. Kontext «reissfest» kommt aus dem Titel."""
-    if not html or not (EXPL.search(html) or HAENDLER_WORT.search(html) or
+    if not html or not (EXPL.search(html) or HAENDLER_WORT.search(html) or bedingung(html) or
                         (UHR_KTX.search(titel or "") and re.search(_s(R["uhr_modell"]), html, re.I))):
         return html
     reiss = bool(REISS_KTX.search(titel or ""))
@@ -130,6 +137,11 @@ def text_fix(html, titel):
             continue
         if UHR_KTX.search(titel or "") and not UHR_KOMP.search(tk):
             tk = _sub(UHR, tk)
+        if bedingung(tk):
+            saetze = re.split(r"(?<=[.!?])(\s+)", tk)
+            n = re.sub(r"(\s)\s+", r"\1", "".join("" if (not x.isspace() and bedingung(x)) else x for x in saetze))
+            n = n if tk[:1].isspace() else n.lstrip()            # gefallener erster/letzter Satz hinterlässt kein Leerzeichen
+            tk = n if tk[-1:].isspace() else n.rstrip()
         if HAENDLER_WORT.search(tk):          # «Ins Wind», «All-match» im Text: umschreiben oder Satz fällt (kein «im angesagten -Stil»)
             saetze = re.split(r"(?<=[.!?])(\s+)", tk)
             waise = re.compile(r"(?<![\wäöüÄÖÜ])-[A-Za-zÄÖÜäöü]|[«»\"„“]\s*[«»\"„“]")   # «im angesagten -Stil», leere «»

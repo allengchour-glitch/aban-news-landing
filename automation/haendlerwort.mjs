@@ -17,6 +17,10 @@ const UHR_MOD = new RegExp(S(R.uhr_modell), 'iu');
 // 09.10.2026: eindeutig fremde Wörter im Titel → deutsch; [Muster, Ersatz, Kontext] (Kontext leer = immer)
 const FREMD = (R.fremdwort_titel || []).map(([p, r, k]) => [new RegExp(S(p), 'giu'), rep(r), k ? new RegExp(k, 'iu') : null]);
 export const HAENDLER_WORT = /(?<![a-zäöü])(?:ins[\s-](?:wind|style|stil)|all-?match(?:ing)?)(?![a-zäöü])/iu;
+// 10.10.2026: Händlerbedingungen (Mindestbestellmenge, Yuan-Preise, «Preis pro Stück») — der ganze Satz fällt
+const BED = new RegExp((R.bedingung_satz || []).map((p) => `(?:${p})`).join('|') || '(?!x)x', 'iu');
+const BED_AUS = new RegExp(R.bedingung_ausnahme || '(?!x)x', 'giu');
+export const bedingung = (t) => BED.test(String(t || '').replace(BED_AUS, ' '));
 const PRAEP = /^(?:für|mit|zur|zum|und|oder|durch|bei|von|aus)(?![\wäöüß])/iu;
 const HAENGT = /(?<![\wäöüß])(?:seine|ihre|die|der|das|durch|mit|und|eine|einen|einer|für)\s*[.!?]?\s*$/iu;
 const WAISE = /(?<![\wäöüÄÖÜ])-[A-Za-zÄÖÜäöü]|[«»"„“]\s*[«»"„“]/gu;
@@ -51,7 +55,7 @@ function satzFix(s, reiss, imLi) {
 
 export function textFix(html, titel) {
   titel = String(titel || '');
-  if (!html || !(EXPL.test(html) || HAENDLER_WORT.test(html) || (UHR_KTX.test(titel) && UHR_MOD.test(html)))) return html;
+  if (!html || !(EXPL.test(html) || HAENDLER_WORT.test(html) || bedingung(html) || (UHR_KTX.test(titel) && UHR_MOD.test(html)))) return html;
   const reiss = REISS_KTX.test(titel);
   const teile = html.split(/(<[^>]+>)/);
   const offen = [];
@@ -63,6 +67,12 @@ export function textFix(html, titel) {
       continue;
     }
     if (UHR_KTX.test(titel) && !UHR_KOMP.test(tk)) tk = sub(UHR, tk);
+    if (bedingung(tk)) {
+      let n = tk.split(/(?<=[.!?])(\s+)/).map((x) => (x && !/^\s+$/.test(x) && bedingung(x)) ? '' : x).join('').replace(/(\s)\s+/g, '$1');
+      if (!/^\s/.test(tk)) n = n.replace(/^\s+/, '');          // gefallener erster/letzter Satz hinterlässt kein Leerzeichen
+      if (!/\s$/.test(tk)) n = n.replace(/\s+$/, '');
+      tk = n;
+    }
     if (HAENDLER_WORT.test(tk)) {
       tk = tk.split(/(?<=[.!?])(\s+)/).map((x) => {
         if (!x || /^\s+$/.test(x) || !HAENDLER_WORT.test(x)) return x;

@@ -49,6 +49,21 @@
 
 
 
+## 🧾 «Mindestbestellmenge» ist oft die Verkaufseinheit — Händlerbedingungen im Text (2026-10-10, 06:55 UTC, «weiter»)
+
+**Gemessen:** frischer Export mit Beschreibungen (52'348 aktive), 13 Produkte mit Händlerbedingungen: «Für 10 Paare beträgt der
+Preis 40 yuan», «Aufpreis von 10 Yuan … Rückgabe ausgeschlossen», «Mindestbestellmenge 10 Meter pro Muster» (CJ-Variante = 10M,
+Titel ohne Menge), «MOQ100 Custom USB Rucksack», Fortura-Packungen «· 6 Stück» mit «Preis pro Stück». Nebenbei: 3 Pin-Aufträge
+hingen «laufend» → `auftrag_haenger_schliessen.py` (spätere Läufe lasen die Pinnwand) 3/3 geschlossen.
+
+**Getan:** `bedingung_satz`/`bedingung_ausnahme` in `haendlerwort_regel.json` → py + mjs (Satz fällt; «ohne Mindestbestellmenge»,
+«Yuan Coin», «POPFEEL Yuan» bleiben), Kanarien 110/110 + JS 36/36, py=js 52'364/0; Importer-Anweisung (Bedingungen weg,
+Verkaufseinheit in den Titel); Stoffe «· 10 m»/«· 110 × 45 cm» von Hand, MOQ100-Rucksack DRAFT (`cj-moq-100`), 5 Texte per
+Wächter → `dropship/HAENDLERBEDINGUNG-2026-10-10.md`. «Rückgabe ausgeschlossen» NICHT in der Regel (eigene Hygiene-Hinweise).
+
+**Lehre:** Bevor ein Bedingungssatz fällt, beim Lieferanten nachsehen, was eine Einheit ist — die Menge gehört dann in den Titel,
+sonst erwartet die Kundin einen Meter, wo zehn geliefert werden.
+
 ## ⌚ 表带 = Uhrband, 皮带表 = Uhr — «…gürtel» braucht das Bild als Schiedsrichter (2026-10-10, 04:50 UTC, Verbesserungsrunde)
 
 **Gemessen:** 128 Neuimporte in 4 h, davon 9 Uhrenarmbänder/Uhr-Zubehör bei Google + Shopify unter «Watches»; 3 mit Titel
@@ -19522,3 +19537,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 🗄️ **Verbesserungsrunde: CJ-Gruppe «Büro & Home Office» stempelt alles als Google «Office Supplies» (11/11 Neuimporte in 4 h: Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender; KI verfeinert nur innerhalb der Oberklasse) → `data/buero_korb.json` für Importer `bueroKorb()` + Umzug, Kanarien 120/120, py=js 51'586/0, 13/0 (13/13 zurückgelesen).** Neue CJ-Gruppe = möglicher Sammelkorb; Log-Fehler nur mit aktuellem Zeitstempel → `dropship/GOOGLE-BUERO-SAMMELKORB-2026-10-08.md`
 - 2026-10-08 · 💎 **«weiter sauber machen»: 41 Titel «Leder/Wolle/Seide» bei PU/Acryl/Polyester im eigenen Text → `material_widerspruch.py` 41/0; 622 aktive mit «Diamant» (teuerstes CHF 150.90 Moissanit) → Regel `diamant` in `data/versprechen_regel.json` (Strass/Zirkonia, Dativ+Einzahl, Vergleich/Form/Painting/Werkzeug/Karat bleiben; 55 Kanarien, py=js 616/0) 212/0; Live-Check fand Bild-Alts mit altem Titel: 11'730 an 1'604 Produkten (u. a. «& Blutdruckmessung») → Wächter liest Alts (817/0), `alt_titel_abgleich.py` täglich (Alt-Titel := Titel); Adressen 155 mit 301 (`handle_messversprechen.py` + diamant/leder).** Ein Name steht an sechs Stellen; Ist-Abgleich statt Ledger-Kette → `dropship/SAUBER-MATERIAL-DIAMANT-ALT-2026-10-08.md`
 - 2026-10-09 · 🔔 **Verbesserungsrunde: Tag 9 ✅ (2'161/2'881 Neuimporte auf Bewertungen geprüft, Ziel 1'500); Ampel meldete «still: Pinterest» trotz gewolltem 48-h-Takt (fest 24 h geprüft) → `metricool_takt()` liest TIKTOK_/YOUTUBE_/PINTEREST_ABSTAND aus `social_autopilot.sh`, `kanal_still()` Takt + Spielraum, 7 Kanarien + Gegenprobe.** Kadenz-Wächter liest die Kadenz aus ihrer Quelle → `dropship/AMPEL-KADENZ-2026-10-09.md`
+- 2026-10-09 · 🍬 **Verbesserungsrunde: «Hundegesundheits-Tabletten» (CJ-Neuimport) ACTIVE in 6 Kanälen; Bestand 11 essbare CJ-Produkte (Tier-Supplements, Hühnchen-Snacks, Koffein-Beutel) — ohne Registrierung/BLV nicht einführbar (Klasse Klinge #1017) → `data/essbar_regel.json` (25 Kanarien, Titel+CJ-Name+Kategorie, Fortura bleibt), `essbar_wache.py` 12 DRAFT täglich, Importer-Sperre `essbar.mjs` (py=js 25/25).** Warengruppe mit Einfuhrregel = Sperre im Importer VOR dem Anlegen → `dropship/ESSBAR-CJ-2026-10-09.md`
