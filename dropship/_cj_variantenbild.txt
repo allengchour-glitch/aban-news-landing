@@ -6516,3 +6516,5 @@ gid://shopify/Product/15458723660161	zugeordnet	25	Elegante Damenrobe mit Taille
 gid://shopify/Product/15458723955073	zugeordnet	20	V-Ausschnitt Tailliertes Langarmkleid Damen
 gid://shopify/Product/15458724086145	zugeordnet	20	Dreiviertelärmel Taille betonendes Midi-Abendkleid
 gid://shopify/Product/15458725167489	zugeordnet	90	Loose Fit Printed Cardigan Herren
+gid://shopify/Product/15458765144449	zugeordnet	6	Damen Langarmlos Kleid Einzelseiten
+gid://shopify/Product/15458765275521	zugeordnet	16	Sommer-Kragen-Retrogedrucktes Kleid
