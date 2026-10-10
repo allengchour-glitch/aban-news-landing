@@ -194,3 +194,4 @@ slug:totenkopf-30x20cm-fga907104
 slug:ballentransportanhanger-mit-8-rundballen-fga02220
 name:ballentransportanhängermit8rundballen
 slug:samt-kurbis-kissen-95e02d
+slug:hut-handschuhe-schal-3-in-1-set
