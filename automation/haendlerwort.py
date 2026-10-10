@@ -178,7 +178,8 @@ def slug(t):
 
 
 HANDLE_WORT = re.compile(r"explosion|explosiv|(?:^|-)ins-(?:wind|style|stil)|all-?match|datejust|submariner|daytona|nautilus|"
-                         r"day-?date|gmt-?master|yacht-?master|royal-oak|speedmaster|seamaster|koreanische-version|fauler", re.I)
+                         r"day-?date|gmt-?master|yacht-?master|royal-oak|speedmaster|seamaster|koreanische-version|fauler|"
+                         r"armbanduhr-gurt|uhrgurtel", re.I)                         # 10.10.: 表带/皮带表 als «Gürtel»
 
 
 def neuer_handle(alt, titel):

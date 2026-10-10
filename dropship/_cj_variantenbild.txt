@@ -6559,3 +6559,12 @@ gid://shopify/Product/15458987639169	zugeordnet	15	Kleines A-Linien-Kleid mit Bu
 gid://shopify/Product/15458987803009	zugeordnet	14	Weiche Indoor-Schuhe für Kleinkinder
 gid://shopify/Product/15458988097921	zugeordnet	80	Tiedye-Kleid mit lockerem Sitz
 gid://shopify/Product/15458988228993	zugeordnet	30	Süsse Lauflernschuhe für Babys
+gid://shopify/Product/15458988622209	zugeordnet	22	Kinder-Kuschelschuhe mit Anti-Kick-Technik
+gid://shopify/Product/15458989146497	zugeordnet	17	Trendige Sequin-Kinderschuhe
+gid://shopify/Product/15458989670785	zugeordnet	36	Weisse Baby Quietschschuhe mit weicher Sohle für Frühling/He
+gid://shopify/Product/15458990195073	zugeordnet	10	Bluse mit Blumenmuster, langärmlig
+gid://shopify/Product/15458990457217	zugeordnet	15	Weiche Sohle Anti-Rutsch Kinderlaufschuhe
+gid://shopify/Product/15458991112577	zugeordnet	9	Winter-Kinderschuhe mit Cartoon-Muster
+gid://shopify/Product/15458991145345	zugeordnet	65	Tiger-Druck T-Shirt
+gid://shopify/Product/15458991505793	zugeordnet	2	Asymmetrisches Top mit Bogen-Detail
+gid://shopify/Product/15458991964545	zugeordnet	2	Lace-Kragen-Pullover
