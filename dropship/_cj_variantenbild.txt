@@ -6580,3 +6580,7 @@ gid://shopify/Product/15459128148353	zugeordnet	42	Herren-T-Shirt, kurzärmlig, 
 gid://shopify/Product/15459128738177	zugeordnet	8	Nine-Grid Print Kurzarm T-Shirt Herren
 gid://shopify/Product/15459273343361	zugeordnet	48	Herren-Tie-Dye-Hemd
 gid://shopify/Product/15459273703809	zugeordnet	24	Langer Hemd mit Revers
+gid://shopify/Product/15459553313153	zugeordnet	80	Herren Kurzarm-Casual-Shirt Sommer Sandgewaschen
+gid://shopify/Product/15459595190657	zugeordnet	6	Striped Hoodie · Herren
+gid://shopify/Product/15459596927361	zugeordnet	24	Herren Kurzarm-Shirt im American-Stil
+gid://shopify/Product/15459599352193	zugeordnet	48	Luxuriöse Sofabezüge mit rutschfesten Kissen
