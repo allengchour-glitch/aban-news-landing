@@ -2,7 +2,7 @@
 
 ## Eingerichtet (ohne Credits)
 
-- Konto: hosted, **500 Credits** zu Beginn, nach der Übersicht (14) und der Keyword-Liste (28) noch **458**.
+- Konto: hosted, **500 Credits** zu Beginn, nach der Übersicht (14) und der Keyword-Liste (28) noch **458** (wenig später 430 — die Abrechnung der Keyword-Liste kam verzögert).
 - Projekt **«LuxeStyle CH»** `443c940c-93c9-4feb-9d0c-1e4d1d88c6cf`, Domain luxestyle.ch, Markt **Schweiz / Deutsch** (Location 2756).
 - Projekt-Gedächtnis gefüllt: Geschäft, Ziel, Positionierung und Schreibregeln (ss, du-Form, keine Verknappung, keine Fake-Bewertungen). Dazu 5 Schlüsselseiten.
 - **Search Console und GA4 sind in OpenSEO NICHT verbunden** (`get_search_console_performance` → `not_connected`).
