@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-10 14:25 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-10 16:11 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1569 · **1501 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1282, teilweise: 178, keine: 41; Preisspanne > 2×: 167) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1567 · **1499 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1281, teilweise: 177, keine: 41; Preisspanne > 2×: 167) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -428,7 +428,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Weicher Hundemäntel in Blau und Rot (`weicher-hundemantel-in-blau-und-rot-614912`) | 10 | 10 | 3.2–3.2 | 16.90 | Blue-S, Blue-M, Blue-L, Blue-XL |
 | Herbst-Winter-Set für Haustier mit Pullover (`herbst-winter-set-fur-haustier-mit-pullover-089856`) | 10 | 10 | 5.3–5.3 | 16.90 | Grey-XS, Grey-S, Grey-M, Grey-L |
 | Mikrojet-Reispapier für Kunstreproduktionen (`mikrojet-reispapier-fur-kunstreproduktionen-168000`) | 9 | 5 | 38.05–164.28 | 76.90 | Waterproof 0.61x50m, Waterproof 0.914x50m, Waterproof 1.118x50m, Weak solvent 0.61x50m |
-| Herren Sportuhr mit grossem Zifferblatt (`herren-sportuhr-mit-grossem-zifferblatt-604000`) | 9 | 8 | 3.69–3.69 | 15.90 | Green Belt, Khaki, Blue Ribbon, Black And Blue |
 | Halsband für mittelgrosse Hunde (`halsband-fur-mittelgrosse-hunde-616100`) | 9 | 9 | 7.01–8.34 | 16.90 | Navy Blue-L, Navy Blue-M, Navy Blue-S, Pomegranate Red-L |
 | Lammfell-Kissenbezug aus Kunstfell (`lammfell-kissenbezug-aus-kunstfell-637500`) | 9 | 9 | 2.28–2.28 | 15.90 | White-45×45cm, Black-45×45cm, Khaki-45×45cm, Moss Green-45×45cm |
 | Windspiel Kolibri für Garten & Balkon (`windspiel-kolibri-fur-garten-balkon-630300`) | 9 | 9 | 3.46–3.46 | 15.90 | Hummingbird Style A-17x30cm, Hummingbird Style B-17x30cm, Gold Wing Finch-17x30cm, Robin-17x30cm |
@@ -519,7 +518,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale Anti-Diebstahl Umhängetasche (`multifunktionale-anti-diebstahl-umhangetasche-024064`) | 8 | 7 | 4.36–4.53 | 14.90 | Blue, Dark Gray, Pure Black, Dark Green |
 | Business Commute Umhängetasche (`business-commute-umhangetasche-021312`) | 8 | 5 | 6.1–6.1 | 18.90 | Black, Gray, Dark Blue, Dark Purple |
 | Kartoon-Kissen (`kartoon-kissen-605300`) | 8 | 0 | 5.64–7.96 | 51.90 | Blue Whale-60X50CM, Blue Whale-70X60CM, Pink Elk-60X50CM, Pink Elk-70X60CM |
-| Wollschal für Hunde (`wollschal-fur-hunde-993024`) | 8 | 8 | 2.36–2.8 | 15.90 | Pink-XS, Pink-S, Pink-M, Pink-L |
 | Panyi DIY Baustein-Bilderrahmen (`panyi-diy-baustein-bilderrahmen-627300`) | 8 | 8 | 2.43–3.52 | 14.90 | Pure Building Blocks-6 inches, Pure Building Blocks-7 inches, 2 person style-6 inches, 2 person style-7 inches |
 | Gusseisen Teppanyaki Grillpfanne (`gusseisen-teppanyaki-grillpfanne-601900`) | 8 | 8 | 5.08–7.73 | 34.90 | Bamboo Bottom-20cm, Bamboo Bottom-22cm, Bamboo Bottom-24cm, Bamboo Bottom-26cm |
 | Luxuriöses 6 mm Blau-Glasur-Armband (`luxurioses-6-mm-blau-glasur-armband-626900`) | 8 | 4 | 7.46–19.07 | 20.90 | Gold-7inch18cm, Gold-8 Inches 20cm, Gold-16inch40cm, Gold-18inch45cm |

@@ -3,6 +3,13 @@
 
 
 
+## 🆕 10.10. 16:30 UTC — Kasse verspricht zu frühes Lieferdatum: Bearbeitungszeit 1 → 4 Werktage (~1 Min, nur im Admin möglich)
+**Gemessen (Kaufweg-Test am Handy, `tools/kaufweg_handy.mjs`):** Die Produktseite sagt «Lieferung voraussichtlich 26. Okt. – 9. Nov.», die Kasse beim Tarif
+Standard CHF 7.00 dagegen «Voraussichtliche Zustellung **Di., 20. Okt**». Grund: `deliveryPromiseSettings.processingTime` = **P1D** (1 Werktag). CJ braucht bis zum
+Versand gemessen 4–7 Tage (#1021: 7, #1022: 4, #1014: 4, #1013: 5–7). Die API kann den Wert NICHT schreiben (auch `unstable` nicht).
+**Klickweg:** Shopify-Admin → Einstellungen → **Versand und Zustellung** → Abschnitt **«Lieferdaten» / «Bearbeitungszeit»** → **4 Werktage** → Speichern.
+Danach zeigt die Kasse ~26. Okt (= Produktseite). Ich messe mit `tools/kaufweg_handy.mjs` nach.
+
 ## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (Stand 17:40: alle 3 ✅ — 1: Betreiber lud die Muster hoch → Stufe 2 live, `FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`)
 1. **Fortura hat die Bestell-Muster geschickt** (Papini, 06.10. 14:56: `Opacc_Orders_Muster.xml`, `Opacc_Orders_Template.xml`,
    `Opacc_Delvry_Template.xml`, `Art_DataFeed (Beispiel).CSV`). Der Gmail-Zugang hier kann **keine Anhänge herunterladen**.
