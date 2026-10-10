@@ -449,3 +449,6 @@ gid://shopify/Product/16611920216455	Schwarz
 gid://shopify/Product/16611925328263	Schwarz
 gid://shopify/Product/16612105257351	Marineblau
 gid://shopify/Product/16613404410247	Transparent
+gid://shopify/Product/16613792383367	Marineblau
+gid://shopify/Product/16613793202567	Beige
+gid://shopify/Product/16613794447751	Braun
