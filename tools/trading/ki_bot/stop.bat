@@ -2,6 +2,8 @@
 chcp 65001 >nul
 REM Not-Aus: legt die Datei STOP an. Danach eroeffnet kein Bot mehr etwas; der Krypto-Pilot schliesst seine Futures-Positionen.
 type nul > "%~dp0STOP"
+set PYTHONUTF8=1
+set PYTHONIOENCODING=utf-8
 cd /d "%~dp0\..\..\.."
 set PY=py
 where py >nul 2>nul || set PY=python

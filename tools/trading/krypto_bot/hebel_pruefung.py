@@ -64,7 +64,7 @@ def main():
                 we, liq_e = lauf_mit_liq(ze, he, le, ce, a, b)
                 soll = b - max(a, 1) + 1  # nach einer Liquidation bleibt das Teilkonto bei 0
                 wb, we = wb + [0.0] * (soll - len(wb)), we + [0.0] * (soll - len(we))
-                mix = [0.5 * x + 0.5 * y for x, y in zip(wb, we)]
+                mix = P.mix_taeglich(wb, we)  # täglich neu aufgeteilt, wie live
                 k = P.kennz(mix)
                 schnitt_hebel = sum(abs(x) for x in zb[a:b]) / max(1, b - a)
                 res[fname] = {**k, "liquidiert": liq_b or liq_e, "liq_btc": liq_b, "liq_eth": liq_e, "mittlerer_hebel_btc": schnitt_hebel}

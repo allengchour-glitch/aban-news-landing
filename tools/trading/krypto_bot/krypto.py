@@ -90,7 +90,7 @@ def ausfuehren(e, trocken=False, env=None, client=None):
         print("Broker: keine Alpaca-Schlüssel gesetzt — nichts zu tun.")
         return []
     if cfg["stop"]:
-        eintrag["hinweis"] = "Not-Aus aktiv — keine Aufträge."
+        eintrag["hinweis"] = "Not-Aus oder Pause aktiv — keine Aufträge."
         print("Broker: " + eintrag["hinweis"])
         B._protokolliere(eintrag)
         return []

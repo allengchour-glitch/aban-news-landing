@@ -62,6 +62,27 @@
   (-2021). **PAUSE ≠ STOP**: Cockpit-Schalter = `ki_bot/PAUSE` (Positionen bleiben), Not-Aus/stop.bat = `STOP` (Pilot schliesst,
   krypto-auto.bat lässt bei STOP nur den Pilot laufen). `sperre.py` (O_EXCL-Datei in data/, verwaist nach 15 min). URL-Variable
   nur zum Modus passend. Sammler bucht sofort, «unklar» statt doppelt kaufen/staken. einrichten() vor jedem Aufbau.
+- **Code-Prüfung Teil 2 (2026-10-10, 43 Funde, alle behoben ausser lokaler Anmeldung #23):** KRITISCH: **Börsen-Stop ging seit
+  09.12.2025 nie durch** — Binance nimmt STOP_MARKET nur noch über den Algo-Dienst: `POST /fapi/v1/algoOrder` (algoType=CONDITIONAL,
+  triggerPrice, closePosition, workingType=MARK_PRICE), lesen `GET /fapi/v1/openAlgoOrders` (algoId/orderType/triggerPrice),
+  löschen `DELETE /fapi/v1/algoOpenOrders`; alter Weg = −4120. Geprüft am offiziellen SDK `binance-sdk-derivatives-trading-usds-futures`
+  17.6.0 (PyPI, isoliert gelesen) — Firecrawl hatte keine Credits. **User soll den 1. Testnetz-Lauf unter «Bedingt» kontrollieren.**
+  KRITISCH 2: `krypto-auto.bat` leitete Selbsttests nach `nul` → Windows-cp1252 → Emoji = UnicodeEncodeError → täglicher Lauf
+  handelte NIE. Jetzt `PYTHONUTF8=1`, Log `data\krypto-auto.log` (bei «auto» ruft sich die .bat selbst mit Umleitung auf),
+  `meldung.py` → `data/krypto-auto-status.json` + Push; Rückgabe **3 = Warnung schon gemeldet**, 1 = Absturz. **.bat immer CRLF**
+  (Python `write_text` macht LF → goto-Sprünge brechen). Weitere: Not-Aus Vorrang vor PAUSE + ohne Yahoo + ALLE Märkte
+  (`pilot.schliessen_alle`, auch Cockpit) + STOP-Prüfung vor jedem Aufbau-Auftrag; PAUSE stoppt auch Spot/Alpaca; jeder Abbruch =
+  `fehler` (Push + rote Ampel); Ampel aus `letzter_lauf` (Probelauf zählt nicht); Kontostand je Modus + «inkl. Ein-/Auszahlungen».
+  **Profit v2:** Bücher je Modus, `abgerufen_bis` + 1×/Min., 429/418-Bremse, atomar + `.kaputt-`, BNB-Gebühr per Markpreis,
+  COMMISSION_REBATE, Seitengrenze gleiche ms, offen nur mit Stand ±6 h/24 h (sonst «offen ?»), Modified Dietz, URL-Sperre; Pilot
+  merkt offen VOR seinen Aufträgen (`PR.offen_notieren`). Zeitbombe test_profit (echte Uhr) → JETZT 2031. Cockpit: Host-Prüfung
+  (DNS-Rebinding), X-Frame-Options/CSP + JS-Rahmenbremse, Rückfrage «Auto an», Telegram verwirft Rückstau per `offset=-1` (statt
+  PC-Uhr), schtasks per XML (Akku + StartWhenAvailable, Rückfall einfach), Update setzt `tools/trading/daten` zurück. Sammler:
+  4xx = «nicht gekauft», 5xx/Netz = «unklar», Sperre «eth-sammler». Tests isoliert von echten STOP/PAUSE (`testumgebung.py`).
+  **Backtests jetzt täglich neu 50/50 (`P.mix_taeglich`)** wie live: ab 2019 +38,4 %/−33 % (vorher +36,3/−35), ab 2022
+  +30,4/−27; Hebel 1,5× +55/−49, 2× +66/−65, 3× +81/−83, 5× −97 % Einbruch → Urteile unverändert (nur MVRV besteht, kein Hebel).
+  Dollar-Index 7 T. Verzug (FRED wöchentlich). Tests: pilot 76, cockpit 94, profit 40, sammler 44, binance 21, ki_bot 44 — alle
+  Änderungen mit Gegenprobe (alter Code fällt durch). **Falle:** `pkill -f` erneut eigene Shell getroffen → PID nehmen.
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

@@ -180,12 +180,17 @@ def vergleich(ki, pilot_entscheide, kurse):
         if vorher:
             pos_pi[c].setdefault(start, pos_pi[c].get(vorher[-1]["stand"], vorher[-1]["hebel"]))
 
-    def mix(pos, funding=True):
+    def mix(pos, funding=True, gewicht=None):
+        gewicht = gewicht or {"btc": 0.5, "eth": 0.5}
         a, b = (kurve(pos[c], kurse[c], start, funding) for c in ("btc", "eth"))
         tage_b = dict(b)
-        return [(t, round(0.5 * w + 0.5 * tage_b[t], 6)) for t, w in a if t in tage_b]
+        return [(t, round(gewicht["btc"] * w + gewicht["eth"] * tage_b[t], 6)) for t, w in a if t in tage_b]
 
-    return {"Claude": mix(pos_ki), "Pilot": mix(pos_pi), "Halten": mix({c: {start: 1.0} for c in COINS}, funding=False)}
+    # Der Pilot teilt sein Konto auf die Märkte auf, die er WIRKLICH handelt (KRYPTO_PILOT_MAERKTE=BTC → alles in Bitcoin)
+    seit = [e for e in pilot_entscheide if e["stand"] >= start] or pilot_entscheide
+    aktiv = {e.get("markt", "BTC").lower() for e in seit} & set(COINS) or set(COINS)
+    g_pi = {c: (1 / len(aktiv) if c in aktiv else 0.0) for c in COINS}
+    return {"Claude": mix(pos_ki), "Pilot": mix(pos_pi, gewicht=g_pi), "Halten": mix({c: {start: 1.0} for c in COINS}, funding=False)}
 
 
 def kurse_laden(offline=False, jetzt=None):

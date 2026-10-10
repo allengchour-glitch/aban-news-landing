@@ -14,6 +14,9 @@ from pathlib import Path
 HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 import broker_binance as BB  # noqa: E402
+import testumgebung  # noqa: E402
+
+testumgebung.schalter_umbiegen(BB)
 
 OK, FEHLER = 0, []
 
@@ -138,5 +141,9 @@ class Abgelehnt(BB.Binance):
 BB.ausfuehren(e, env=env, client=Abgelehnt(BB.einstellungen(env)), protokolliere=prot.append)
 pruefe("HTTP 400 mit Binance-Grund gemeldet", "-1021" in prot[-1]["hinweis"] and "HTTP 400" in prot[-1]["hinweis"], prot[-1])
 srv.shutdown()
+BB.PAUSE_DATEI.write_text("x")  # Cockpit «Auto-Handel aus»
+pruefe("Pause (Cockpit «Auto-Handel aus») stoppt auch diesen Bot", BB.einstellungen({})["stop"] is True)
+BB.PAUSE_DATEI.unlink()
+pruefe("ohne Pause und Not-Aus: läuft", BB.einstellungen({})["stop"] is False)
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

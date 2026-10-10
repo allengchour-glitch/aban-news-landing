@@ -108,6 +108,17 @@ def lauf(z, h, l, c, a, b, stop_k=None):
     return werte, stops
 
 
+def mix_taeglich(*kurven, gewichte=None):
+    """Konto, das jeden Tag neu auf die Märkte aufgeteilt wird — wie live, wo jede Position aus dem GESAMTEN Konto
+    bemessen wird (Kapital × Anteil × Gewicht). Näherung über die Tagesrenditen der Teilkonten; ein liquidiertes
+    Teilkonto bleibt danach flach (sein Anteil liegt als Bargeld da)."""
+    g = gewichte or [1 / len(kurven)] * len(kurven)
+    m = [1.0]
+    for i in range(1, min(len(k) for k in kurven)):
+        m.append(m[-1] * sum(gj * (k[i] / k[i - 1] if k[i - 1] > 0 else 1.0) for gj, k in zip(g, kurven)))
+    return m
+
+
 def kennz(werte):
     spitze, dd = werte[0], 0.0
     for w in werte:
@@ -173,7 +184,7 @@ def main():
                   f"  |  200: {zeile[200]['cagr'] * 100:6.1f} %/J MAR {zeile[200]['mar']:5.2f}")
     erg["tests"]["2b) Trendlänge getrennte Abschnitte"] = res
 
-    # 4) Ethereum dazu: zwei getrennte Teilkonten à 50 %, gleiche Regel je Coin
+    # 4) Ethereum dazu: je 50 %, jeden Tag neu aufgeteilt (wie live), gleiche Regel je Coin
     zeiten2 = {"ab 2019": "2019-01-01", "ab 2022": "2022-01-01"}
     print("\n== 4) Bitcoin allein vs. Bitcoin + Ethereum (je 50 %)")
     res = {}
@@ -181,7 +192,7 @@ def main():
         a = next(i for i, t in enumerate(tage) if t >= start)
         wb, _ = lauf(hebel(cb), hb, lb, cb, a, len(cb))
         we, _ = lauf(hebel(ce), he, le, ce, a, len(ce))
-        mix = [0.5 * x + 0.5 * y for x, y in zip(wb, we)]
+        mix = mix_taeglich(wb, we)
         kb, km = kennz(wb), kennz(mix)
         res[zn] = {"btc": kb, "btc_eth": km}
         print(f"  {zn}: BTC allein {kb['cagr'] * 100:6.1f}% Einbruch {kb['einbruch'] * 100:4.0f}% MAR {kb['mar']:.2f} | "

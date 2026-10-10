@@ -132,6 +132,7 @@ th{color:var(--ink-3);font-weight:600;text-align:left;font-size:11.5px}
   integrity="sha384-stKllnUqA9AD0gsKCuUtf5XlqAW7PwIgDagoNsTWkjkBmJ/GZ/uHTgEBxdLV2VSK" crossorigin="anonymous"></script>
 <script>
 "use strict";
+if (window.top !== window.self) { document.documentElement.innerHTML = ""; throw new Error("eingebettet"); }
 const $ = id => document.getElementById(id);
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
@@ -281,7 +282,7 @@ function botEbene() {
     if (stop) st.linien.push(C.kerzen.createPriceLine({price: stop, color: css("--critical"), lineWidth: 1, lineStyle: 2, axisLabelVisible: true, title: "Stop"}));
   }
   const sek = SEK[st.iv], erste = st.bars[0]?.time ?? 0, zeiten = new Set(st.bars.map(b => b.time));
-  C.kerzen.setMarkers((st.bot.auftraege || []).filter(a => a.symbol === st.sym && a.seite && !a.trocken).map(a => {
+  C.kerzen.setMarkers((st.bot.auftraege || []).filter(a => a.symbol === st.sym && a.seite && !a.trocken && !a.fehler).map(a => {
     const kauf = a.seite === "BUY", ms = Date.parse(a.zeit);
     return {time: lokal(Math.floor(ms / 1000 / sek) * sek * 1000), position: kauf ? "belowBar" : "aboveBar", color: kauf ? css("--good") : css("--critical"),
       shape: kauf ? "arrowUp" : "arrowDown", text: `${kauf ? "Bot kauft" : "Bot verkauft"} ${a.menge}`};

@@ -30,6 +30,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
+STOP_DATEI = HIER / "STOP"    # Not-Aus
+PAUSE_DATEI = HIER / "PAUSE"  # Cockpit «Auto-Handel aus»
 ROOT = HIER.parents[2]
 PROTOKOLL = ROOT / "data" / "ki-bot-broker.json"
 PAPIER_URL = "https://paper-api.alpaca.markets"
@@ -49,7 +51,7 @@ def einstellungen(env=None):
         "strategie": env.get("KI_BOT_STRATEGIE") or "Ausgleich",
         "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
         "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
-        "stop": env.get("KI_BOT_STOP", "") == "1" or (HIER / "STOP").exists(),
+        "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists() or PAUSE_DATEI.exists(),
     }
 
 
@@ -129,7 +131,7 @@ def ausfuehren(lb, trocken=False, env=None, client=None):
         print("Broker: keine Alpaca-Schlüssel gesetzt — nichts zu tun.")
         return 0
     if cfg["stop"]:
-        eintrag["hinweis"] = "Not-Aus aktiv (KI_BOT_STOP oder Datei STOP) — keine Aufträge."
+        eintrag["hinweis"] = "Not-Aus oder Pause aktiv (KI_BOT_STOP, Datei STOP oder PAUSE) — keine Aufträge."
         print("Broker: " + eintrag["hinweis"])
         _protokolliere(eintrag)
         return 0
@@ -225,7 +227,7 @@ def daytrade(signale, trocken=False, env=None, client=None):
     if not cfg["key"] or not cfg["secret"] or not signale:
         return 0
     if cfg["stop"]:
-        eintrag["hinweis"] = "Not-Aus aktiv — keine Aufträge."
+        eintrag["hinweis"] = "Not-Aus oder Pause aktiv — keine Aufträge."
         print("Broker: " + eintrag["hinweis"])
         _protokolliere(eintrag)
         return 0

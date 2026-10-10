@@ -35,6 +35,7 @@ SPOT_URL = "https://api.binance.com"  # Rechteprüfung des Schlüssels (nur Echt
 ECHTGELD_SATZ = "JA, MIT ECHTEM GELD"
 HEBEL_HART = 2.0
 BAND = 0.25
+STOP_DATEI = HIER.parent / "ki_bot" / "STOP"  # Not-Aus: nichts eröffnen, bestehende Positionen schliessen
 MIN_AUFTRAG = 20.0
 
 
@@ -79,7 +80,7 @@ def einstellungen(env=None):
         "max_hebel": max(0.0, min(HEBEL_HART, hebel)),
         "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
         "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
-        "stop": env.get("KI_BOT_STOP", "") == "1" or (HIER.parent / "ki_bot" / "STOP").exists(),
+        "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists(),
     }
 
 
@@ -158,18 +159,38 @@ class Futures:
         return self._req("POST", "/fapi/v1/order", p, signiert=True)
 
     def offene_stops(self, symbol):
-        """Stop-Aufträge des Bots (closePosition) für dieses Symbol: [{orderId, side, stopPrice}]."""
-        return [{"orderId": o.get("orderId"), "side": o.get("side"), "stopPrice": float(o.get("stopPrice") or 0)}
-                for o in (self._req("GET", "/fapi/v1/openOrders", {"symbol": symbol}, signiert=True) or [])
-                if isinstance(o, dict) and o.get("type") in ("STOP_MARKET", "STOP") and str(o.get("closePosition")).lower() == "true"]
+        """Stop-Aufträge (closePosition) für dieses Symbol: [{algoId|orderId, side, stopPrice}].
+        Seit 09.12.2025 führt Binance bedingte Aufträge im Algo-Service (/fapi/v1/openAlgoOrders). Ältere Stops aus der Zeit
+        davor stehen noch in /fapi/v1/openOrders — beide werden gelesen."""
+        def wahr(x):
+            return str(x).lower() == "true"
+        out = []
+        for o in (self._req("GET", "/fapi/v1/openAlgoOrders", {"symbol": symbol}, signiert=True) or []):
+            if isinstance(o, dict) and o.get("orderType", o.get("type")) in ("STOP_MARKET", "STOP") and wahr(o.get("closePosition")):
+                out.append({"algoId": o.get("algoId"), "side": o.get("side"), "stopPrice": float(o.get("triggerPrice") or 0)})
+        try:
+            alte = self._req("GET", "/fapi/v1/openOrders", {"symbol": symbol}, signiert=True) or []
+        except BinanceFehler:
+            alte = []
+        for o in alte:
+            if isinstance(o, dict) and o.get("type") in ("STOP_MARKET", "STOP") and wahr(o.get("closePosition")):
+                out.append({"orderId": o.get("orderId"), "side": o.get("side"), "stopPrice": float(o.get("stopPrice") or 0)})
+        return out
 
     def stops_loeschen(self, symbol):
-        return self._req("DELETE", "/fapi/v1/allOpenOrders", {"symbol": symbol}, signiert=True)
+        """Alle offenen Algo-Stops und (alte) normale offenen Aufträge dieses Symbols löschen."""
+        self._req("DELETE", "/fapi/v1/algoOpenOrders", {"symbol": symbol}, signiert=True)
+        try:
+            self._req("DELETE", "/fapi/v1/allOpenOrders", {"symbol": symbol}, signiert=True)
+        except BinanceFehler:
+            pass  # keine normalen offenen Aufträge: kein Fehler
 
     def stop(self, symbol, seite, preis):
-        return self._req("POST", "/fapi/v1/order", {"symbol": symbol, "side": seite, "type": "STOP_MARKET", "stopPrice": fmt(preis),
-                                                    "closePosition": "true", "workingType": "MARK_PRICE", "priceProtect": "TRUE"},
-                         signiert=True)
+        """Börsen-Stop als Algo-Auftrag (Binance seit 09.12.2025: bedingte Aufträge nur noch über /fapi/v1/algoOrder,
+        der alte Weg über /fapi/v1/order antwortet mit −4120). closePosition schliesst die ganze Position, Auslöser Markpreis."""
+        return self._req("POST", "/fapi/v1/algoOrder", {"algoType": "CONDITIONAL", "symbol": symbol, "side": seite, "type": "STOP_MARKET",
+                                                        "triggerPrice": fmt(preis), "closePosition": "true", "workingType": "MARK_PRICE",
+                                                        "priceProtect": "TRUE"}, signiert=True)
 
 
 def fmt(x):
@@ -283,12 +304,14 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
     e = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "broker": "binance-futures",
          "modus": "ECHTGELD" if cfg["echtgeld"] else "testnetz", "strategie": "krypto-pilot", "trocken": trocken,
          "ziel_hebel": entscheid.get("hebel"), "auftraege": [], "hinweis": ""}
-    erg = {"hinweis": "", "position": None, "stop": None, "ohne_stop": False, "fehler": False, "geprueft": False}
+    erg = {"hinweis": "", "position": None, "stop": None, "ohne_stop": False, "fehler": False, "geprueft": False,
+           "modus": "echtgeld" if cfg["echtgeld"] else "testnetz"}
     entscheid["broker"] = erg
 
     def abbruch(text):
         e["hinweis"] = (e["hinweis"] + " " + text).strip()
         erg["hinweis"] = e["hinweis"]
+        erg["fehler"] = True  # ein abgebrochener Lauf ist immer eine Warnung (Handy), nie still
         print("Futures: " + text)
         protokolliere(e)
         return []
@@ -319,6 +342,8 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
             return abbruch(f"{sym} ist nicht handelbar.")
         konto = c.konto()
         kapital = float(konto.get("totalWalletBalance", 0)) + float(konto.get("totalUnrealizedProfit", 0))
+        # Stand des offenen Gewinns VOR den Aufträgen: Ausgangswert für «Gewinn heute» in der Profit-Anzeige
+        erg["offen"], erg["offen_ms"] = float(konto.get("totalUnrealizedProfit", 0) or 0), int(time.time() * 1000)
         menge = c.position(sym)
         mark, funding = c.markpreis(sym)
         e.update({"kapital": round(kapital, 2), "position": menge, "mark": mark, "funding_8h": funding})
@@ -344,6 +369,10 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
             e["auftraege"].append(a)
             if trocken:
                 continue
+            if not red and STOP_DATEI.exists():  # Not-Aus kam WÄHREND des Laufs: nichts mehr aufbauen
+                e["hinweis"] = (e["hinweis"] + " ⚠️ Not-Aus während des Laufs — kein Aufbau mehr.").strip()
+                a["fehler"] = "nicht gesendet (Not-Aus)"
+                break
             try:
                 if not red and not eingerichtet:  # vor JEDEM Aufbau, auch nach einem Schliessauftrag (Richtungswechsel)
                     c.einrichten(sym, cfg["max_hebel"])

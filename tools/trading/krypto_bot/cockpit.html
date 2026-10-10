@@ -136,8 +136,8 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 
   <section class="raster" aria-label="Konto">
     <div class="karte kpi w3"><h2>Konto</h2><div class="zahl" id="k-wert">—</div><div class="unter" id="k-start"></div></div>
-    <div class="karte kpi w3"><h2>Seit Start</h2><div class="zahl" id="k-seit">—</div><div class="unter">Futures-Konto (Pilot)</div></div>
-    <div class="karte kpi w3"><h2>Seit Vorwoche</h2><div class="zahl" id="k-woche">—</div><div class="unter">7 Tage</div></div>
+    <div class="karte kpi w3"><h2>Konto seit Start</h2><div class="zahl" id="k-seit">—</div><div class="unter">inkl. Ein-/Auszahlungen — echter Gewinn: 💰 Profit</div></div>
+    <div class="karte kpi w3"><h2>Konto seit Vorwoche</h2><div class="zahl" id="k-woche">—</div><div class="unter">7 Tage, inkl. Ein-/Auszahlungen</div></div>
     <div class="karte kpi w3"><h2>Unter Höchststand</h2><div class="zahl" id="k-hoch">—</div><div class="unter">Abstand zum besten Kontostand</div></div>
   </section>
 
@@ -194,6 +194,8 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
   <footer>Aktualisiert jede Minute aus den Logbüchern auf diesem PC. Backtest = Vergangenheit, keine Garantie. Keine Anlageberatung.</footer>
 </main>
 <script>
+// Nie in einem fremden Rahmen anzeigen (Clickjacking); der Server sendet zusätzlich X-Frame-Options/CSP
+if (window.top !== window.self) { document.documentElement.innerHTML = ""; throw new Error("eingebettet"); }
 const $ = id => document.getElementById(id);
 const fmtZahl = (x, s = 0) => x == null ? "—" : x.toLocaleString("de-CH", {minimumFractionDigits: s, maximumFractionDigits: s});
 const fmtPct = x => x == null ? "—" : (x >= 0 ? "+" : "") + fmtZahl(x * 100, 1) + " %";
@@ -311,7 +313,11 @@ function zeigeProfit(p) {
   $("p-modus").className = "pill" + (p.modus === "ECHTGELD" ? " echt" : "");
   const z = p.zeitraeume, g = z.gesamt;
   const proz = x => x == null ? "" : ` (${fmtPct(x)})`;
-  const periode = (name, w) => `<div><span>${name}</span><b class="${kl(w.netto)}">${pfeil(w.netto)}${vz(w.netto)}</b><span>${proz(w.prozent).replace(/[()]/g, "") || "&nbsp;"}</span></div>`;
+  const periode = (name, w) => `<div title="${w.offen == null ? "Kein gemerkter Stand der offenen Positionen zu Beginn — nur der abgeschlossene Teil gezählt" : "ab " + esc(w.ab).replace("T", " ")}"><span>${name}${w.offen == null ? " *" : ""}</span><b class="${kl(w.netto)}">${pfeil(w.netto)}${vz(w.netto)}</b><span>${proz(w.prozent).replace(/[()]/g, "") || "&nbsp;"}</span></div>`;
+  const offenUnbekannt = ["heute", "7_tage", "30_tage"].some(n => z[n].offen == null);
+  const hinweise = (offenUnbekannt ? `<div class="unter">* offene Positionen ohne gemerkten Stand zu Beginn: nur der abgeschlossene Teil gezählt (der tägliche Lauf merkt den Stand automatisch)</div>` : "")
+    + (p.nicht_umgerechnet && p.nicht_umgerechnet.length ? `<div class="unter">⚠️ Nicht in USDT umrechenbar, darum NICHT enthalten: ${esc(p.nicht_umgerechnet.join(", "))}</div>` : "")
+    + (p.warnung ? `<div class="unter">⚠️ ${esc(p.warnung)}</div>` : "");
   const pos = p.positionen.length ? `<div class="tabelle"><table><tr><th>Markt</th><th>Seite</th><th>Menge</th><th>Einstieg</th><th>Jetzt</th><th>Gewinn USDT</th><th>auf das Pfand</th><th>Liquidation</th></tr>${p.positionen.map(x => `
       <tr><td>${esc(x.symbol)}</td><td class="${x.seite === "LONG" ? "plus" : "minus"}">${x.seite === "LONG" ? "▲" : "▼"} ${x.seite}</td><td>${fmtZahl(x.menge, 4)}</td>
       <td>${fmtZahl(x.einstieg, 2)}</td><td>${fmtZahl(x.mark, 2)}</td><td class="${kl(x.gewinn)}"><b>${vz(x.gewinn)}</b></td>
@@ -322,7 +328,7 @@ function zeigeProfit(p) {
   $("p-inhalt").innerHTML = `
     <div class="gross ${kl(g.netto)}">${pfeil(g.netto)}${vz(g.netto)} <small>USDT${proz(g.prozent)}</small></div>
     <div class="unter">Gewinn seit ${esc(p.seit)} · Konto ${fmtZahl(p.gesamt, 2)} USDT · Ein- und Auszahlungen zählen nicht${kiText}</div>
-    <div class="perioden">${periode("Heute", z.heute)}${periode("7 Tage", z["7_tage"])}${periode("30 Tage", z["30_tage"])}${periode("Seit Start", g)}</div>
+    <div class="perioden">${periode("Heute", z.heute)}${periode("7 Tage", z["7_tage"])}${periode("30 Tage", z["30_tage"])}${periode("Seit Start", g)}</div>${hinweise}
     <div class="teile"><span>Realisiert <b class="${kl(g.realisiert)}">${vz(g.realisiert)}</b></span><span>Offen <b class="${kl(g.offen)}">${vz(g.offen)}</b></span>
       <span>Funding <b class="${kl(g.funding)}">${vz(g.funding)}</b></span><span>Gebühren <b class="${kl(g.gebuehren)}">${vz(g.gebuehren)}</b></span>
       ${Object.entries(p.pro_markt).map(([m, v]) => `<span>${esc(m)} <b class="${kl(v)}">${vz(v)}</b></span>`).join("")}</div>
@@ -368,7 +374,7 @@ function zeichne(d) {
     : "Täglich über krypto-auto.bat bzw. die Aufgabenplanung.";
   const k = d.konto;
   $("k-wert").textContent = k ? fmtZahl(k.wert, 2) + " USDT" : "—";
-  $("k-start").textContent = k ? "seit " + k.start_tag : "noch kein Lauf mit Schlüssel";
+  $("k-start").textContent = k ? (k.modus === "echtgeld" ? "Echtgeld" : "Testnetz") + " · seit " + k.start_tag : "noch kein Lauf mit Schlüssel";
   $("k-seit").textContent = k ? fmtPct(k.seit_start) : "—";
   $("k-woche").textContent = k ? fmtPct(k.seit_woche) : "—";
   $("k-hoch").textContent = k ? fmtPct(k.unter_hoch) : "—";
@@ -450,8 +456,9 @@ const FRAGE = {
   handeln: d => `Pilot jetzt handeln lassen?\nModus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz (Spielgeld)"}\nEr kauft oder verkauft nur, wenn die Position nicht im Zielbereich liegt.`,
   ki: () => "Claude jetzt fragen?\nKostet etwa 4–10 US-Cent. Pro Tag gibt es eine Einschätzung (ein zweiter Klick am selben Tag kostet nichts).",
   sparplan: d => "ETH-Sparplan jetzt ausführen?\nEr kauft nur, wenn der nächste Termin fällig ist.",
-  aufgabe: () => "Windows-Aufgabe einrichten?\nDann startet krypto-auto.bat jeden Tag um 02:30 (der PC muss laufen). Eine bestehende Aufgabe «Krypto-Pilot» wird ersetzt.",
+  aufgabe: () => "Windows-Aufgabe einrichten?\nDann startet krypto-auto.bat jeden Tag um 02:30 — auch auf Akku; war der PC aus, holt er den Lauf beim nächsten Start nach. Eine bestehende Aufgabe «Krypto-Pilot» wird ersetzt.",
   update: () => "Neueste Version holen (git pull)?\nDanach das Cockpit neu starten.",
+  auto_an: d => `Auto-Handel wieder EINSCHALTEN?\n${d.notaus ? "Der Not-Aus wird aufgehoben. " : ""}Der nächste Lauf handelt wieder (Modus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}).`,
   auto_aus: () => "Auto-Handel ausschalten?\nDie Bots handeln dann nicht mehr. Offene Positionen bleiben stehen (Stop an der Börse bleibt).",
 };
 const uhr = z => new Date(z).toLocaleTimeString("de-CH");

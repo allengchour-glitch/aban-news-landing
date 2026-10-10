@@ -44,26 +44,31 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 - **Wochenbericht:** einmal pro Woche kommt der Kontostand aufs Handy (seit Start, seit Vorwoche, Abstand zum Höchststand).
   Jederzeit: `pilot.py --bericht`.
 
-`pilot.py --backtest` (Futures-Modell mit Gebühren, Funding, Stop mit 0,1 % Schlupf, Liquidation; Stand 07.10.2026):
+`pilot.py --backtest` (Futures-Modell mit Gebühren, Funding, Stop mit 0,1 % Schlupf, Liquidation; BTC und ETH jeden Tag
+neu 50/50 aus dem Gesamtkonto aufgeteilt — wie live; Stand 09.10.2026):
 
 | ab | Variante | pro Jahr | schlimmster Einbruch | Rendite ÷ Einbruch |
 |---|---|---|---|---|
-| 2019 | **+ MVRV-Bremse (live)** | **+36,3 %** | **−35 %** | **1,04** |
-| 2019 | BTC 150 + ETH 200 | +28,3 % | −41 % | 0,70 |
-| 2019 | nur BTC 150 | +29,3 % | −48 % | 0,62 |
-| 2019 | nur BTC 200 (bisher) | +14,4 % | −70 % | 0,21 |
-| 2019 | BTC long 1× halten | +34,9 % | −82 % | 0,43 |
-| 2022 | **+ MVRV-Bremse (live)** | **+29,3 %** | **−28 %** | **1,03** |
-| 2022 | BTC 150 + ETH 200 | +24,1 % | −28 % | 0,85 |
-| 2022 | nur BTC 150 | +27,7 % | −36 % | 0,76 |
-| 2022 | nur BTC 200 (bisher) | +30,4 % | −44 % | 0,69 |
-| 2022 | BTC long 1× halten | +0,9 % | −73 % | 0,01 |
+| 2019 | **+ MVRV-Bremse (live)** | **+38,4 %** | **−33 %** | **1,15** |
+| 2019 | BTC 150 + ETH 200 | +30,3 % | −40 % | 0,76 |
+| 2019 | nur BTC 150 | +29,2 % | −48 % | 0,61 |
+| 2019 | nur BTC 200 (bisher) | +14,3 % | −70 % | 0,20 |
+| 2019 | BTC long 1× halten | +34,7 % | −82 % | 0,43 |
+| 2022 | **+ MVRV-Bremse (live)** | **+30,4 %** | **−27 %** | **1,13** |
+| 2022 | BTC 150 + ETH 200 | +25,1 % | −27 % | 0,93 |
+| 2022 | nur BTC 150 | +27,4 % | −36 % | 0,75 |
+| 2022 | nur BTC 200 (bisher) | +30,1 % | −44 % | 0,69 |
+| 2022 | BTC long 1× halten | +0,7 % | −73 % | 0,01 |
+
+Bis 08.10.2026 rechneten alle Backtests BTC und ETH als zwei getrennte Töpfe, die nie ausgeglichen werden (ab 2019:
++36,3 %, −35 %). Live bemisst der Pilot aber jede Position aus dem ganzen Konto — das ist eine tägliche Neuaufteilung.
+Seither rechnen Backtest, Prüfstände und Cockpit-Kurve so (Näherung über die Tagesrenditen); die Urteile blieben gleich.
 
 **Prüfstand** (`pilot_pruefung.py`, Regel vorab festgelegt: ein Standardwert ändert sich nur, wenn die Alternative in
 **allen** Zeiträumen ein besseres Verhältnis Rendite ÷ Einbruch hat):
 - **Trendlänge Bitcoin 150 statt 200:** auf drei getrennten Abschnitten jedes Mal besser (2015–18: 2,85 vs. 2,59;
-  2018–22: 0,78 vs. −0,05; 2022–heute: 0,78 vs. 0,70). Bei **Ethereum** war 200 in beiden Abschnitten besser → bleibt 200.
-- **Ethereum dazu:** in beiden Zeiträumen kleinerer Einbruch (ab 2019 −54 statt −66 %, ab 2022 −32 statt −42 %).
+  2018–22: 0,78 vs. −0,05; 2022–heute: 0,77 vs. 0,69). Bei **Ethereum** war 200 in beiden Abschnitten besser → bleibt 200.
+- **Ethereum dazu:** in beiden Zeiträumen kleinerer Einbruch (ab 2019 −52 statt −66 %, ab 2022 −27 statt −42 %).
 - **Stop 4σ bleibt:** 3σ war ab 2015/2018 besser, ab 2022 nicht → nach der Regel keine Änderung.
 - **Schwankungsziel 40 % bleibt:** keine Alternative war überall besser.
 - Ehrlich: Die Trendlänge wurde aus 5 Kandidaten gewählt. Diese Auswahl schönt die Zahlen etwas, getrennte Abschnitte
@@ -72,25 +77,26 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 **Alle Infos** (`info_pruefung.py`, Regel vorab festgelegt): 13 freie Markt-Infos als Filter auf die Pilot-Position.
 Übernommen wird eine Info nur, wenn sie in **allen vier Feldern** (Bitcoin und Ethereum × 2018–2021 und 2022–heute) ein
 besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzten Kopien derselben Info schlägt
-(sonst ist der «Vorteil» nur weniger Risiko, das jede beliebige Bremse auch gebracht hätte). Stand 07.10.2026:
+(sonst ist der «Vorteil» nur weniger Risiko, das jede beliebige Bremse auch gebracht hätte). Stand 09.10.2026:
 
 | Info (Quelle) | Regel | Felder besser | Zufallsprobe | Urteil |
 |---|---|---|---|---|
 | **MVRV tief** (CoinMetrics) | MVRV < 1 → kein Short | **4 von 4** | **93 %** | **übernommen** |
-| Funding negativ (BitMEX/OKX) | Funding 7 T. < 0 → kein Short | 2 von 4 | 100 % | nein, ab 2022 schlechter |
-| Dollar (FRED) | Dollar über 200-T.-Schnitt → Long halb | 3 von 4 | 98 % | nein |
+| Funding negativ (BitMEX/OKX) | Funding 7 T. < 0 → kein Short | 2 von 4 | 99 % | nein, ab 2022 schlechter |
+| Dollar (FRED, wöchentlich → 7 Tage Verzug) | Dollar über 200-T.-Schnitt → Long halb | 3 von 4 | 98 % | nein |
 | Alle zusammen (Abstimmung) | ≥ 3 Long- bzw. ≥ 2 Short-Bremsen | 2 von 4 | 94 % | nein, ab 2022 schlechter |
-| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 79 % | nein |
-| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 16 % | nein |
-| VIX (FRED) | > 30 → Long halb | 2 von 4 | 89 % | nein |
-| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 2 von 2 (nur BTC) | 69 % | nein |
-| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–2 von 4 | 11–90 % | nein |
+| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 80 % | nein |
+| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 22 % | nein |
+| VIX (FRED) | > 30 → Long halb | 2 von 4 | 90 % | nein |
+| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 2 von 2 (nur BTC) | 80 % | nein |
+| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–2 von 4 | 10–91 % | nein |
 
 - Die MVRV-Bremse ist nicht an die Schwelle 1 gebunden: von 0,8 bis 1,2 war sie jedes Mal in allen 4 Feldern besser.
   Sie wirkt nur auf Shorts: Unter dem Einstandswert aller Coins ist der Ausverkauf meist schon weit fortgeschritten.
 - **Ehrlich:** 13 Kandidaten getestet. Bei einer 90-%-Schwelle besteht rein zufällig etwa einer die Zufallsprobe —
   93 % liegt knapp darüber. Darum zusätzlich die Bedingung «alle vier Felder besser». Ein Beweis ist das nicht.
-- Keine Zukunftsdaten: jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz zwei Tage), getestet in
+- Keine Zukunftsdaten: jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz zwei Tage, Dollar-Index sieben —
+  FRED veröffentlicht ihn nur wöchentlich), getestet in
   `test_infos.py`. Fehlt MVRV oder ist es älter als 5 Tage, handelt der Pilot nach der Grundregel ohne Bremse.
 - Daten: alternative.me, BitMEX + OKX, CoinMetrics Community, FRED, DefiLlama — alle gratis, ohne Konto. Zwischenspeicher
   in `tools/trading/daten/info_*.json`, täglich nachgeladen. `py tools\trading\krypto_bot\infos.py` zeigt das Lagebild.
@@ -102,25 +108,42 @@ besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzt
    (`setx` wirkt nur in neuen Fenstern).
 3. `py tools\trading\krypto_bot\pilot.py --status`, dann `--lauf --trocken`, dann `--lauf`.
 4. Im Futures-Konto muss der **Einweg-Modus** eingestellt sein (kein Hedge-Modus), sonst verweigert der Pilot.
-5. **Täglich automatisch:** `krypto-auto.bat` (braucht kein Alpaca) startet Pilot, ETH-Sammler und KI-Trader. Einmal einrichten:
-   `schtasks /create /sc daily /st 02:30 /tn "Krypto-Pilot" /tr "C:\…\tools\trading\krypto_bot\krypto-auto.bat auto"`.
-   Die Tageskerze schliesst um 00:00 UTC (02:00 Sommerzeit), darum kurz danach.
+5. **Täglich automatisch:** `krypto-auto.bat` (braucht kein Alpaca) startet Pilot, ETH-Sammler und KI-Trader. Am einfachsten
+   im Cockpit mit **🗓️ Täglich automatisch**: Die Aufgabe läuft dann um 02:30 **auch auf Akku**, und war der PC aus oder im
+   Ruhezustand, holt Windows den Lauf beim nächsten Start nach. Von Hand (ohne diese beiden Einstellungen) — die inneren
+   Anführungszeichen sind nötig, sobald der Pfad ein Leerzeichen enthält (`C:\Users\Max Muster\…`, OneDrive):
+   `schtasks /create /sc daily /st 02:30 /tn "Krypto-Pilot" /tr "\"C:\…\tools\trading\krypto_bot\krypto-auto.bat\" auto" /f`.
+   Die Tageskerze schliesst um 00:00 UTC (02:00 Sommerzeit), darum kurz danach. Mit «auto» schreibt die Datei alles in
+   `data\krypto-auto.log`; scheitert ein Selbsttest oder stürzt ein Bot ab, kommt eine Nachricht aufs Handy und die
+   Cockpit-Ampel «Täglicher Lauf» wird rot.
 
 **Echtes Geld** nur mit `BINANCE_FUTURES_TESTNET=false` **und** `KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"`, nur mit einem
 Schlüssel **ohne** Auszahlungsrecht (wird geprüft) und erst nach Monaten im Testnetz. Futures können in deinem Land
-eingeschränkt sein. Not-Aus `stop.bat` (oder der rote Cockpit-Knopf): Der Pilot schliesst dann seine Positionen und eröffnet
-keine neuen; danach meldet er je Markt, ob die Position WIRKLICH zu ist. **Pause** (Cockpit-Schalter «Auto-Handel aus») ist
-etwas anderes: nichts wird gehandelt, offene Positionen bleiben mit ihrem Stop stehen. `weiter.bat` hebt beides auf.
+eingeschränkt sein. Not-Aus `stop.bat` (oder der rote Cockpit-Knopf, Telegram `/stop`): Der Pilot schliesst dann seine
+Positionen und eröffnet keine neuen; danach meldet er je Markt, ob die Position WIRKLICH zu ist. Der Not-Aus hat Vorrang vor
+der Pause, braucht keine Kurse von Yahoo (schliessen geht auch, wenn Yahoo ausfällt), schliesst **alle** Märkte — auch einen,
+den du inzwischen abgewählt hast — und greift auch mitten in einem laufenden Handel (nichts Neues wird mehr eröffnet).
+**Pause** (Cockpit-Schalter «Auto-Handel aus») ist etwas anderes: nichts wird gehandelt — Pilot, ETH-Sammler, Spot-Bot und
+Alpaca-Bots —, offene Positionen bleiben mit ihrem Stop stehen. `weiter.bat` hebt beides auf.
 
 **Sicherungen bei Fehlern** (aus einer Code-Prüfung mit nachgebautem Binance-Server, alle getestet):
+- Der Börsen-Stop geht über den **Algo-Auftragsdienst** (`POST /fapi/v1/algoOrder`, `algoType=CONDITIONAL`): Seit dem
+  09.12.2025 lehnt Binance Stop-Aufträge über den alten Weg `/fapi/v1/order` ab (Fehler −4120) — ohne diese Umstellung
+  stünde jede Position ohne Stop. Geprüft gegen das offizielle Binance-SDK; den ersten echten Testnetz-Lauf trotzdem
+  im Binance-Konto unter «Offene Aufträge → Bedingt» kontrollieren.
 - Ein alter Stop wird nie ersatzlos gelöscht. Lehnt Binance den neuen Stop ab, wird der alte wieder gesetzt; geht beides nicht,
   steht «OHNE Stop» in der Handy-Nachricht.
+- Jeder Abbruch (Schlüssel ungültig, Standort gesperrt, Hedge-Modus, falsche Adresse, Netz) ist eine Warnung aufs Handy und
+  macht die Cockpit-Ampel rot — nie still.
 - Zeitüberschreitung oder abgerissene Verbindung: kein Absturz, der Stop wird passend zur tatsächlichen Position gesetzt.
 - Liegt der Kurs schon jenseits des heutigen Stops, eröffnet der Pilot nichts (der Stop würde sofort auslösen).
 - Nie zwei Läufe gleichzeitig (Sperre in `data/`), auch nicht Aufgabenplanung + Cockpit-Knopf.
 - Eine einzelne Adress-Variable (`BINANCE_FUTURES_URL`, `BINANCE_BASIS_URL`) kann nie auf echtes Geld umschalten.
-- ETH-Sammler: jeder Kauf wird sofort gebucht; geht eine Antwort verloren, wird «unklar» gebucht statt doppelt zu kaufen
-  oder ETH zu staken, die der Bot nicht gekauft hat.
+- ETH-Sammler: jeder Kauf wird sofort gebucht; geht eine Antwort verloren (oder antwortet Binance mit einem Serverfehler),
+  wird «unklar» gebucht statt doppelt zu kaufen oder ETH zu staken, die der Bot nicht gekauft hat. Eine klare Ablehnung
+  (z. B. zu wenig Guthaben) heisst «nicht gekauft»: Warnung aufs Handy, der nächste Lauf kauft normal weiter.
+- Logbücher werden atomar geschrieben (erst Zwischendatei, dann umbenennen); eine beschädigte Datei wird beiseitegelegt
+  (`….kaputt-Datum`) statt still überschrieben.
 
 ## 🪙 ETH-Sammler (Sparplan + Staking)
 
@@ -194,6 +217,13 @@ Gewinns, Balken pro Tag und die offenen Positionen mit Einstieg, aktuellem Preis
 Die Zahlen kommen direkt vom Binance-Konto (`/fapi/v1/income`, nur lesen). **Ein- und Auszahlungen zählen nicht als
 Gewinn.** Weil Binance die Geschichte nur einige Monate herausgibt, speichert `profit.py` jeden Eintrag in
 `data/krypto-profit.json` (ohne Schlüssel). Auch per Telegram: `/profit`. Im Terminal: `py tools\trading\krypto_bot\profit.py`.
+Ehrlich gerechnet: **Testnetz und Echtgeld haben getrennte Bücher** (Spielgeld-Gewinne erscheinen nie als echter Gewinn).
+Gebühren in BNB werden in USDT umgerechnet, Rückvergütungen senken die Gebühren. Der offene Gewinn eines Zeitraums braucht
+einen gemerkten Stand an dessen Beginn (der tägliche Lauf merkt ihn vor seinen Aufträgen, das offene Cockpit alle 15 Min.);
+fehlt er, steht «*»/«offen ?» und nur der abgeschlossene Teil zählt — statt einer erfundenen Zahl. Die Prozente beziehen sich
+auf das eingesetzte Kapital, Ein- und Auszahlungen nach ihrer Verweildauer gewichtet. Binance wird höchstens einmal pro
+Minute nach neuen Einträgen gefragt; bremst Binance (HTTP 429/418), pausiert die Anzeige, damit Pilot und Not-Aus nicht
+gesperrt werden. Die Kacheln «Konto seit Start/Vorwoche» darunter sind der reine Kontostand — inklusive Ein- und Auszahlungen.
 Der ETH-Sammler zeigt zusätzlich seinen Wert und Gewinn zum aktuellen Kurs.
 
 **🎛️ Steuerung im Cockpit** — Knöpfe wie in den Bot-Videos, mit Terminal-Fenster für die Ausgabe:
@@ -203,10 +233,13 @@ Der ETH-Sammler zeigt zusätzlich seinen Wert und Gewinn zum aktuellen Kurs.
 Windows-Aufgabe «Krypto-Pilot» für 02:30 an — kein schtasks-Befehl mehr von Hand) · **⬇️ Update holen** (`git pull --ff-only`,
 danach Cockpit neu starten) · und rot **🛑 Not-Aus** (schliesst
 sofort alle Pilot-Positionen und stoppt alles). Darunter die **🩺 Gesundheit**: Schlüssel gesetzt? letzter Lauf frisch? tägliche Aufgabe eingerichtet? Not-Aus? Markt-Infos
-aktuell? — rot heisst handeln, grau ist optional. Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
+aktuell? letzter Lauf mit Aufträgen ohne Warnung? tägliche Datei `krypto-auto.bat` gelaufen? — rot heisst handeln, grau ist optional. Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
 im Hintergrund, mit Rückfrage vor Handel und Kosten. «Jetzt handeln» geht nicht, solange Auto-Handel aus ist (der Lauf
 würde sonst die Positionen schliessen). Echtes Geld bleibt doppelt gesperrt wie überall. Nur feste Aktionen, kein
-beliebiger Befehl, nur von diesem PC aus (127.0.0.1) und nicht von fremden Webseiten.
+beliebiger Befehl, nur von diesem PC aus (127.0.0.1) und nicht von fremden Webseiten: Das Cockpit prüft Herkunft und
+Host-Namen (gegen DNS-Rebinding) und lässt sich nicht in fremde Seiten einbetten (gegen Klick-Fallen); auch «Auto-Handel an»
+fragt nach. Nicht geschützt ist es gegen Programme oder andere Benutzer **auf demselben PC** — wer dort mitarbeitet, braucht
+ein eigenes Windows-Konto ohne Zugriff auf deinen Benutzerordner und sollte das Cockpit nur bei Bedarf starten.
 
 **📈 Live-Markt** (Knopf oben im Cockpit, `http://127.0.0.1:8765/markt`) — die Börsen-Ansicht wie bei Binance:
 Live-Kerzen (1 Minute bis 1 Woche) mit Volumen, MA 7/25/99 und Bollinger-Bändern, RSI und MACD darunter (gekoppelt
@@ -230,8 +263,9 @@ sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernim
 
 **Telegram-Steuerung** läuft mit dem Cockpit, sobald `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` gesetzt sind
 (Einrichtung: `tools/trading/ki_bot/README.md`). Befehle nur aus deinem eigenen Chat: `/status`, `/konto`, `/ki`, `/lage`,
-`/stop` (Not-Aus mit Schliessen), `/weiter`, `/hilfe`. Nachrichten von vor dem Start werden ignoriert, damit ein altes
-`/stop` nicht plötzlich wirkt.
+`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/hilfe`. Was ankam, während das Cockpit aus war, wird **nicht**
+ausgeführt (sonst könnte ein altes `/weiter` einen Not-Aus aufheben); der Bot antwortet dann «bitte nochmals senden».
+Das hängt nicht an der PC-Uhr.
 
 ## 🏆 «Top-Krypto traden, Gewinnern folgen» — ehrlich getestet: verliert
 
@@ -263,20 +297,22 @@ Stand 07.10.2026 (1 = Startkapital Februar 2018):
 
 ## ⚡ Mehr Hebel? — ehrlich getestet (`hebel_pruefung.py`)
 
-Der Pilot (BTC 150 + ETH 200, MVRV-Bremse, Stop 4σ) im Futures-Modell mit Gebühren, Funding und Liquidation, Stand 07.10.2026.
-«Alles × L» heisst: Schwankungsziel und Deckel L-mal so gross (jede Position L-mal so gross):
+Der Pilot (BTC 150 + ETH 200, MVRV-Bremse, Stop 4σ) im Futures-Modell mit Gebühren, Funding und Liquidation, BTC/ETH täglich
+neu aufgeteilt wie live, Stand 09.10.2026. «Alles × L» heisst: Schwankungsziel und Deckel L-mal so gross (jede Position
+L-mal so gross):
 
 | Hebel | ab 2019 pro Jahr | schlimmster Einbruch | ab 2022 pro Jahr | Einbruch ab 2022 |
 |---|---|---|---|---|
-| **1× (Standard)** | **+36,3 %** | **−35 %** | **+29,3 %** | **−28 %** |
-| 1,5× | +49,8 % | −51 % | +38,4 % | −42 % |
-| 2× | +56,2 % | −67 % | +43,4 % | −62 % |
-| 3× | +56,5 % | −86 % | +36,6 % | −86 % |
-| 5× | +8,2 % | −99 % | −18,6 % | −99 % |
-| 10× | −98,6 % | **−100 %** | −99,2 % | −100 % |
+| **1× (Standard)** | **+38,4 %** | **−33 %** | **+30,4 %** | **−27 %** |
+| 1,5× | +55,0 % | −49 % | +42,3 % | −40 % |
+| 2× | +65,9 % | −65 % | +50,4 % | −50 % |
+| 3× | +81,4 % | −83 % | +54,2 % | −77 % |
+| 5× | +55,8 % | −97 % | +20,3 % | −97 % |
+| 10× | −92,3 % | **−100 %** | −94,0 % | −100 % |
 
-- Mehr Hebel bringt bis 2× mehr Rendite, aber die Einbrüche wachsen schneller als der Gewinn. Ab 3× sinkt sogar die
-  Rendite, ab 5× ist das Konto praktisch weg — schon eine einzige schlechte Woche reicht.
+- Mehr Hebel bringt bis 3× mehr Rendite, aber die Einbrüche wachsen schneller als der Gewinn: Rendite ÷ Einbruch ist bei
+  1× am besten (1,15), bei 3× fällt das Konto zwischendurch um 83 %. Ab 5× bleiben vom Höchststand zeitweise nur 3 %
+  übrig, ab 10× ist das Konto weg — schon eine einzige schlechte Woche reicht.
 - Nur den Deckel höher stellen (Schwankungsziel bleibt) ändert fast nichts: Das Schwankungsziel hält den Hebel ohnehin klein.
 - Regel vorab: mehr Hebel nur, wenn nie liquidiert, Einbruch nie tiefer als −50 % und Rendite ÷ Einbruch überall besser
   als 1×. **Keine Stufe hat bestanden.** Darum bleibt 1× Standard und 2× die harte Grenze.
@@ -378,12 +414,12 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
-python3 tools/trading/krypto_bot/test_pilot.py    # 62 Tests, inkl. Risiko-Stufen, Sperre und nachgebautem Binance-Futures-Server mit Fehlerfällen
-python3 tools/trading/krypto_bot/test_sammler.py  # 40 Tests, inkl. nachgebautem Binance-Server mit Staking und verlorenen Antworten
+python3 tools/trading/krypto_bot/test_pilot.py    # 76 Tests, inkl. Risiko-Stufen, Sperre, Not-Aus mitten im Lauf, Algo-Stops und nachgebautem Binance-Futures-Server
+python3 tools/trading/krypto_bot/test_sammler.py  # 44 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten und Ablehnungen
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
-python3 tools/trading/krypto_bot/test_profit.py   # 20 Tests: Profit nach Zeitraum, Einzahlungen ausgeschlossen, Seiten, keine Doppelzählung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 66 Tests: Claude-Antwort, Schattenkonto, Cockpit, Knöpfe, Risiko-Stufe, Live-Markt, Not-Aus, Telegram
-python3 tools/trading/krypto_bot/test_binance.py  # 19 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
+python3 tools/trading/krypto_bot/test_profit.py   # 40 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
+python3 tools/trading/krypto_bot/test_cockpit.py  # 94 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos
 python3 tools/trading/krypto_bot/hebel_pruefung.py   # Prüfstand: 1× bis 10× Hebel

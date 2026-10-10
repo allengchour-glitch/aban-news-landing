@@ -17,6 +17,10 @@ sys.path.insert(0, str(HIER))
 sys.path.insert(0, str(HIER.parent))
 import bot  # noqa: E402
 import broker_alpaca as B  # noqa: E402
+sys.path.insert(0, str(HIER.parent / 'krypto_bot'))
+import testumgebung  # noqa: E402
+
+testumgebung.schalter_umbiegen(B)
 import kern as K  # noqa: E402
 import signale as SG  # noqa: E402
 
@@ -223,5 +227,9 @@ pruefe("Bericht: Woche gegen Stand vor 7 Tagen", "+2.0 % Woche" in txt, txt)
 pruefe("Bericht: ehrlich ohne Siegel", "kein Markt" in txt and "papier" in txt and "2 Aufträge" in txt, txt)
 
 srv.shutdown()
+B.PAUSE_DATEI.write_text("x")  # Cockpit «Auto-Handel aus»
+pruefe("Pause (Cockpit «Auto-Handel aus») stoppt auch diesen Bot", B.einstellungen({})["stop"] is True)
+B.PAUSE_DATEI.unlink()
+pruefe("ohne Pause und Not-Aus: läuft", B.einstellungen({})["stop"] is False)
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

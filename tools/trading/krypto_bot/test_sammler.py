@@ -16,6 +16,9 @@ from pathlib import Path
 HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 import eth_sammler as S  # noqa: E402
+import testumgebung  # noqa: E402
+
+testumgebung.schalter_umbiegen(S, S.BB)
 
 OK, FEHLER = 0, []
 
@@ -69,6 +72,7 @@ GEHEIM = "spot-geheim"
 class Fake(BaseHTTPRequestHandler):
     log, usdt, eth, rechte, stake_fehler = [], 1000.0, 0.5, {"enableWithdrawals": False}, False
     abbrechen = None  # "kauf" oder "stake": ausführen, dann Verbindung ohne Antwort schliessen
+    kauf_fehler = None  # (HTTP-Code, Binance-Code, Meldung): Kauf mit diesem Fehler beantworten
 
     def _a(self, o, code=200):
         bb = json.dumps(o).encode()
@@ -99,6 +103,8 @@ class Fake(BaseHTTPRequestHandler):
                 {"filterType": "LOT_SIZE", "stepSize": "0.0001", "minQty": "0.0001"}, {"filterType": "NOTIONAL", "minNotional": "5"}]}]})
         if pfad == "/api/v3/order":
             menge = float(p["quoteOrderQty"]) / 2500
+            if Fake.kauf_fehler:
+                return self._a({"code": Fake.kauf_fehler[1], "msg": Fake.kauf_fehler[2]}, Fake.kauf_fehler[0])
             if Fake.abbrechen == "kauf":
                 Fake.usdt -= float(p["quoteOrderQty"])
                 Fake.eth += menge * 0.999
@@ -202,6 +208,23 @@ pruefe("Staking-Antwort verloren: als «unklar» gestakt gebucht", lb3["echtgeld
 n = len(Fake.log)
 S.lauf(env=echt, jetzt=datetime(2026, 10, 4, 3, tzinfo=timezone.utc), logbuch=lb3)
 pruefe("…und es werden keine fremden ETH des Nutzers nachgestakt", not [x for x in Fake.log[n:] if x[1] == "/sapi/v2/eth-staking/eth/stake"])
+# Ablehnung (4xx) heisst «nicht gekauft» — nur Serverfehler (5xx) und verlorene Antworten sind «unklar»
+lb4 = {"testnetz": leeres_buch(), "echtgeld": leeres_buch()}
+Fake.kauf_fehler = (400, -2010, "Account has insufficient balance for requested action.")
+e = S.lauf(env=env, jetzt=jetzt, logbuch=lb4)
+pruefe("Kauf abgelehnt (400): NICHT als gekauft/unklar gebucht, Warnung", not lb4["testnetz"]["kaeufe"] and e["warnung"]
+       and "abgelehnt" in e["hinweis"] and "insufficient" in e["hinweis"], (e, lb4["testnetz"]))
+Fake.kauf_fehler = None
+n = len(Fake.log)
+S.lauf(env=env, jetzt=datetime(2026, 10, 9, 3, tzinfo=timezone.utc), logbuch=lb4)
+pruefe("…und der nächste Lauf kauft wieder (Sparplan läuft weiter)", len(auftraege(n)) == 1 and len(lb4["testnetz"]["kaeufe"]) == 1)
+lb5 = {"testnetz": leeres_buch(), "echtgeld": leeres_buch()}
+Fake.kauf_fehler = (503, -1001, "Unknown error, please check your request or try again later.")
+e = S.lauf(env=env, jetzt=jetzt, logbuch=lb5)
+Fake.kauf_fehler = None
+pruefe("Serverfehler (503) beim Kauf: «unklar» gebucht (kein Doppelkauf), Warnung", lb5["testnetz"]["kaeufe"]
+       and lb5["testnetz"]["kaeufe"][-1].get("unklar") and e["warnung"], (e, lb5["testnetz"]))
+pruefe("Normaler Lauf ohne Fehler: keine Warnung", not S.lauf(env=env, jetzt=datetime(2026, 11, 1, 3, tzinfo=timezone.utc), logbuch=lb4)["warnung"])
 n = len(Fake.log)
 e = S.lauf(env=dict(env, BINANCE_BASIS_URL="https://api.binance.com"), jetzt=jetzt, logbuch=lb2)
 pruefe("echte Binance-Adresse ohne Doppel-Freigabe: nichts gemacht", "BINANCE_BASIS_URL" in e["hinweis"] and len(Fake.log) == n)

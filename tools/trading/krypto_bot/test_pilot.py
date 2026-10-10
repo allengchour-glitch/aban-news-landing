@@ -17,6 +17,10 @@ HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 import broker_futures as BF  # noqa: E402
 import pilot_kern as K  # noqa: E402
+import sperre as _SP0  # noqa: E402
+import testumgebung  # noqa: E402
+
+testumgebung.schalter_umbiegen(BF, _SP0)  # echte STOP/PAUSE-Dateien des Nutzers dürfen den Test nicht beeinflussen
 
 OK, FEHLER = 0, []
 
@@ -87,6 +91,14 @@ mittel = [100 * (1.001 ** i) * (1 + 0.0078 * ((-1) ** i)) for i in range(400)]  
 h1, h_deckel, h2 = K.roh_hebel(mittel)[-1], K.roh_hebel(mittel, max_hebel=2.0)[-1], K.roh_hebel(mittel, max_hebel=2.0, ziel_vol=0.8)[-1]
 pruefe("Stufe 2 = alles doppelt: 1× → 1, nur Deckel 2 → ~1,3, Stufe 2 → 2", h1 == 1.0 and 1.1 < h_deckel < 1.6 and h2 == 2.0, (h1, h_deckel, h2))
 
+# ── Backtest-Mischung wie live: jeden Tag neu 50/50 aus dem Gesamtkonto ──
+import pilot_pruefung as PP  # noqa: E402
+m = PP.mix_taeglich([1.0, 2.0, 1.0], [1.0, 1.0, 1.0])
+pruefe("tägliche Neuaufteilung: +100 % dann −50 % auf der Hälfte → 1,5 dann 1,125 (getrennte Töpfe hätten 1,0)",
+       abs(m[1] - 1.5) < 1e-12 and abs(m[2] - 1.125) < 1e-12, m)
+m = PP.mix_taeglich([1.0, 0.0, 0.0], [1.0, 1.1, 1.21])
+pruefe("liquidiertes Teilkonto: Hälfte weg, danach flach, Rest läuft weiter", abs(m[1] - 0.55) < 1e-12 and abs(m[2] - 0.5775) < 1e-12, m)
+
 # ── Lauf-Sperre: nie zwei Läufe gleichzeitig ──
 import os as _os  # noqa: E402
 import sperre as SP  # noqa: E402
@@ -126,6 +138,8 @@ with _tf.TemporaryDirectory() as _sd:
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402
 
+testumgebung.schalter_umbiegen(PI)
+
 pruefe("Standard: Bitcoin + Ethereum", PI.maerkte({}) == ["BTC", "ETH"])
 pruefe("nur BTC einstellbar, Unsinn ignoriert", PI.maerkte({"KRYPTO_PILOT_MAERKTE": "btc, doge"}) == ["BTC"]
        and PI.maerkte({"KRYPTO_PILOT_MAERKTE": "xyz"}) == ["BTC"])
@@ -157,6 +171,7 @@ GEHEIM = "futures-geheim"
 class Fake(BaseHTTPRequestHandler):
     log, pos, hedge, rechte = [], 0.0, False, {"enableWithdrawals": False}
     stops, markt_fehler, stop_fehler, mark = [], None, None, "50000"
+    nach_markt = None  # wird nach jedem ausgeführten Marktauftrag aufgerufen (z. B. Not-Aus mitten im Lauf)
 
     def _a(self, o, code=200):
         b = json.dumps(o).encode()
@@ -192,19 +207,28 @@ class Fake(BaseHTTPRequestHandler):
             return self._a([{"symbol": "BTCUSDT", "positionAmt": str(Fake.pos)}])
         if pfad == "/fapi/v1/premiumIndex":
             return self._a({"markPrice": Fake.mark, "lastFundingRate": "0.0001"})
+        # Binance seit 09.12.2025: bedingte Aufträge nur noch im Algo-Service
+        if pfad == "/fapi/v1/openAlgoOrders":
+            return self._a([{"algoId": i + 100, "algoType": "CONDITIONAL", "orderType": "STOP_MARKET", "closePosition": True,
+                             "side": x["side"], "triggerPrice": x["stopPrice"], "algoStatus": "NEW"} for i, x in enumerate(Fake.stops)])
         if pfad == "/fapi/v1/openOrders":
-            return self._a([{"orderId": i + 100, "type": "STOP_MARKET", "closePosition": "true", "side": x["side"], "stopPrice": x["stopPrice"]}
-                            for i, x in enumerate(Fake.stops)])
-        if pfad == "/fapi/v1/allOpenOrders" and methode == "DELETE":
+            return self._a([])
+        if pfad == "/fapi/v1/algoOpenOrders" and methode == "DELETE":
             Fake.stops = []
+            return self._a({"code": 200, "msg": "The operation of cancel all open order is done."})
+        if pfad == "/fapi/v1/allOpenOrders" and methode == "DELETE":
             return self._a({"code": 200, "msg": "ok"})
         if pfad == "/fapi/v1/order" and p.get("type") == "STOP_MARKET":
-            if Fake.stop_fehler and Fake.stop_fehler.get("preis") in (None, p["stopPrice"]):
+            return self._a({"code": -4120, "msg": "Order type not supported for this endpoint. Please use the Algo Order API endpoints instead."}, 400)
+        if pfad == "/fapi/v1/algoOrder" and methode == "POST":
+            if p.get("algoType") != "CONDITIONAL" or p.get("type") != "STOP_MARKET" or "quantity" in p:
+                return self._a({"code": -1102, "msg": "falsche Parameter"}, 400)
+            if Fake.stop_fehler and Fake.stop_fehler.get("preis") in (None, p["triggerPrice"]):
                 return self._a({k: v for k, v in Fake.stop_fehler.items() if k != "preis"}, 400)
             if any(x["side"] == p["side"] for x in Fake.stops):
                 return self._a({"code": -4130, "msg": "closePosition in the direction is existing"}, 400)
-            Fake.stops.append({"side": p["side"], "stopPrice": p["stopPrice"]})
-            return self._a({"orderId": 2, "status": "NEW"})
+            Fake.stops.append({"side": p["side"], "stopPrice": p["triggerPrice"]})
+            return self._a({"algoId": 2, "algoStatus": "NEW"})
         if pfad == "/fapi/v1/marginType":
             return self._a({"code": -4046, "msg": "No need to change margin type."}, 400)
         if pfad == "/fapi/v1/order" and p.get("type") == "MARKET":
@@ -212,6 +236,8 @@ class Fake(BaseHTTPRequestHandler):
                 return self._a(Fake.markt_fehler, 503)
             q2 = float(p["quantity"]) * (1 if p["side"] == "BUY" else -1)
             Fake.pos = round(Fake.pos + q2, 6)
+            if Fake.nach_markt:
+                Fake.nach_markt()
             return self._a({"orderId": 1, "status": "FILLED"})
         return self._a({"ok": True})
 
@@ -241,9 +267,11 @@ BF.ausfuehren(ent, env=env, protokolliere=prot.append)
 orders = [x for x in Fake.log if x[1] == "/fapi/v1/order"]
 pruefe("Kauf 0.2 BTC mit gültiger Signatur", orders and orders[0][2]["side"] == "BUY" and orders[0][2]["quantity"] == "0.2" and orders[0][3], orders[:1])
 pruefe("ISOLATED-Margin und Hebel 1 gesetzt", any(x[1] == "/fapi/v1/leverage" and x[2]["leverage"] == "1" for x in Fake.log))
-stops = [x for x in orders if x[2].get("type") == "STOP_MARKET"]
-pruefe("Börsen-Stop gesetzt, auf Tick gerundet, Markpreis", stops and stops[-1][2]["stopPrice"] == "45000" and stops[-1][2]["closePosition"] == "true"
-       and stops[-1][2]["workingType"] == "MARK_PRICE", stops[-1:])
+stops = [x for x in Fake.log if x[1] == "/fapi/v1/algoOrder"]
+pruefe("Börsen-Stop als Algo-Auftrag gesetzt, auf Tick gerundet, Markpreis", stops and stops[-1][2]["triggerPrice"] == "45000"
+       and stops[-1][2]["closePosition"] == "true" and stops[-1][2]["workingType"] == "MARK_PRICE" and stops[-1][2]["algoType"] == "CONDITIONAL"
+       and stops[-1][3], stops[-1:])
+pruefe("kein Stop mehr über den alten Weg (/fapi/v1/order, Binance −4120)", not [x for x in orders if x[2].get("type") == "STOP_MARKET"])
 pruefe("ohne alten Stop wird nichts gelöscht", not any(x[0] == "DELETE" for x in Fake.log) and len(Fake.stops) == 1)
 n_lev = len(Fake.log)
 n0 = len([x for x in Fake.log if x[1] == "/fapi/v1/order" and x[2].get("type") == "MARKET"])
@@ -338,6 +366,77 @@ pruefe("Demo-Adresse im Testnetz erlaubt, echte Adresse bei Echtgeld erlaubt",
                                  "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["url_fehler"]
        and BF.einstellungen({"BINANCE_FUTURES_URL": "https://demo-fapi.binance.com", "BINANCE_FUTURES_TESTNET": "false",
                              "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["url_fehler"])
+pruefe("Abbruch ist immer eine Warnung (Fehler-Flag) und nennt den Modus", e_url["broker"]["fehler"] and e_url["broker"]["modus"] == "testnetz")
+pruefe("ohne Schlüssel: keine Warnung", (lambda x: (BF.ausfuehren(x, env={}, protokolliere=prot.append), x["broker"])[1])(dict(ent))["fehler"] is False)
+
+# Not-Aus kommt WÄHREND des Laufs (nach dem Schliessen, vor dem Gegen-Auftrag): nichts Neues mehr aufbauen
+Fake.pos, Fake.stops = -0.2, [{"side": "BUY", "stopPrice": "55000"}]
+Fake.nach_markt = lambda: BF.STOP_DATEI.write_text("x")
+e_mitten = dict(ent, hebel=1.0)
+n_m = len(Fake.log)
+BF.ausfuehren(e_mitten, env=env, protokolliere=prot.append)
+Fake.nach_markt = None
+BF.STOP_DATEI.unlink()
+markt_m = [x[2] for x in Fake.log[n_m:] if x[1] == "/fapi/v1/order" and x[2].get("type") == "MARKET"]
+pruefe("Not-Aus mitten im Lauf: Short geschlossen, KEIN Long mehr eröffnet", Fake.pos == 0.0 and len(markt_m) == 1
+       and markt_m[0].get("reduceOnly") == "true" and "Not-Aus während des Laufs" in e_mitten["broker"]["hinweis"], (Fake.pos, markt_m))
+pruefe("…ohne Position kein Stop übrig, Warnung gesetzt", Fake.stops == [] and "⚠️" in e_mitten["broker"]["hinweis"], (Fake.stops, e_mitten["broker"]))
+
+# ── Not-Aus aus dem Pilot: schliesst ALLE bekannten Märkte, sagt ehrlich, was zu ist ──
+aufrufe_na = []
+
+
+def _zu(e, symbol, gewicht):
+    aufrufe_na.append(symbol)
+    e["broker"] = {"position": 0.0, "hinweis": ""}
+    return [{"seite": "SELL", "menge": 0.1, "id": 5}]
+
+
+_env_alt = __import__("os").environ.get("KRYPTO_PILOT_MAERKTE")
+__import__("os").environ["KRYPTO_PILOT_MAERKTE"] = "BTC"  # ETH wurde abgewählt, hat aber vielleicht noch eine Position
+zu, zeilen_na = PI.schliessen_alle(_zu, heute="2026-10-08")
+pruefe("Not-Aus schliesst auch abgewählte Märkte (BTC und ETH)", zu and aufrufe_na == ["BTCUSDT", "ETHUSDT"]
+       and sum(z.startswith("✅") for z in zeilen_na) == 2, (aufrufe_na, zeilen_na))
+if _env_alt is None:
+    del __import__("os").environ["KRYPTO_PILOT_MAERKTE"]
+else:
+    __import__("os").environ["KRYPTO_PILOT_MAERKTE"] = _env_alt
+
+
+def _teil(e, symbol, gewicht):
+    if symbol == "ETHUSDT":
+        raise TimeoutError("weg")
+    e["broker"] = {"position": 0.3, "hinweis": "Binance lehnt ab"}
+    return []
+
+
+zu, zeilen_na = PI.schliessen_alle(_teil, heute="2026-10-08")
+pruefe("Not-Aus scheitert: nie «geschlossen», Stop bleibt erwähnt", not zu and "NICHT geschlossen" in zeilen_na[0] and "Stop bleibt" in zeilen_na[0]
+       and "Fehler TimeoutError" in zeilen_na[1] and not any(z.startswith("✅") for z in zeilen_na), zeilen_na)
+
+# ── Logbuch: letzter echter Lauf, kaputte Datei, atomar, Testnetz/Echtgeld getrennt ──
+with _tf.TemporaryDirectory() as _ld:
+    _lb = Path(_ld) / "pilot.json"
+    PI.lauf_merken(False, ["", "❌ BTC: unklar"], logbuch=_lb)
+    PI.lauf_merken(True, ["x"], trocken=True, logbuch=_lb)
+    _ll = json.loads(_lb.read_text())["letzter_lauf"]
+    pruefe("letzter echter Lauf gemerkt, Probelauf überschreibt ihn nicht", _ll["ok"] is False and _ll["hinweise"] == ["❌ BTC: unklar"], _ll)
+    _lb.write_text('{"entscheide": [ {"stand"')  # Strom weg beim Schreiben
+    _neu = PI.lies(_lb)
+    pruefe("kaputtes Logbuch: beiseitegelegt, neues begonnen (kein Absturz bei jedem Lauf)", _neu["entscheide"] == []
+           and len(list(Path(_ld).glob("pilot.json.kaputt-*"))) == 1 and not _lb.exists())
+    PI.schreiben({"a": 1}, _lb)
+    pruefe("atomar geschrieben, keine Zwischendatei übrig", json.loads(_lb.read_text()) == {"a": 1} and not list(Path(_ld).glob("*.tmp*")))
+lb_m = {"entscheide": [], "kontostand": []}
+PI.kontostand_merken(lb_m, "2026-10-01", 10000)            # alter Eintrag ohne Modus = Testnetz
+PI.kontostand_merken(lb_m, "2026-10-02", 15000, "testnetz")
+PI.kontostand_merken(lb_m, "2026-10-03", 500, "echtgeld")   # Wechsel auf echtes Geld
+PI.kontostand_merken(lb_m, "2026-10-10", 520, "echtgeld")
+pruefe("Kontostand je Modus: Echtgeld nie mit Testnetz vermischt", [x["kapital"] for x in PI.kontostand_modus(lb_m["kontostand"])] == [500.0, 520.0])
+w_m = PI.wochenbericht(lb_m, "2026-10-10", erzwingen=True)
+pruefe("Wochenbericht: Echtgeld-Start statt −97 %, ehrlich «inkl. Ein-/Auszahlungen»", "+4.0 %" in w_m and "Echtgeld" in w_m
+       and "inkl. Ein-/Auszahlungen" in w_m and "-96" not in w_m and "/profit" in w_m, w_m)
+
 srv.shutdown()
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)
