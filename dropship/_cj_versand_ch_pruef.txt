@@ -6729,3 +6729,5 @@ handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has be
 zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 4er-set-pvc-fussmatten-fur-auto-suv-truck-schn-525954	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 bequeme-slip-on-sneaker-mit-paisley-print-293890	1981293493283094533	-	-	unklar 1602002 Product has been removed from  rest=48047	landeseite
+slip-on-sandalen-mit-blockabsatz-629700	2607050504571620300	16	8.33	ok	landeseite
+keile-sandalen-mit-eckiger-zehenpartie-636482	2073588489901465602	16	11.23	ok	landeseite
