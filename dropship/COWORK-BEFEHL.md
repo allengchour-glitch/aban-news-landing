@@ -3,12 +3,13 @@
 
 
 
-## 🆕 10.10. 16:30 UTC — Kasse verspricht zu frühes Lieferdatum: Bearbeitungszeit 1 → 3 Werktage (~1 Min, nur im Admin möglich)
+## ✅ 10.10. 16:30 UTC — Kasse verspricht zu frühes Lieferdatum: Bearbeitungszeit 1 → 3 Werktage — ERLEDIGT 17:24 (Betreiber: «Manuell» + 3 Werktage; API P3D; Kasse jetzt 29. Okt – 12. Nov)
 **Gemessen (Kaufweg-Test am Handy, `tools/kaufweg_handy.mjs`):** Die Produktseite sagt «Lieferung voraussichtlich 26. Okt. – 9. Nov.», die Kasse beim Tarif
 Standard CHF 7.00 dagegen «Voraussichtliche Zustellung **Di., 20. Okt**». Grund: `deliveryPromiseSettings.processingTime` = **P1D** (1 Werktag). CJ versendet gemessen nach **Median 2, bis 5 Werktagen**
 (9 CJ-Bestellungen, `automation/kassen_lieferdatum_wache.py`; meine erste Angabe «4–7» waren Kalendertage). Die API kann den Wert NICHT schreiben (auch `unstable` nicht).
-**Klickweg:** Shopify-Admin → Einstellungen → **Versand und Zustellung** → Abschnitt **«Lieferdaten» / «Bearbeitungszeit»** → **3 Werktage** → Speichern.
-Danach zeigt die Kasse ~23./24. Okt (Produktseite: ab 26. Okt). Die Ampel meldet «KASSEN-DATUM», bis es stimmt. Ich messe mit `tools/kaufweg_handy.mjs` nach.
+**Klickweg (am Handy des Betreibers geprüft 10.10. 17:30):** Einstellungen → **Versand und Zustellung** → Abschnitt «Voraussichtliche Lieferdaten» → **«Voraussichtliche Zustellung»** (›) → **«Manuell»** statt «Automatisiert» → Fulfillment-Zeit **3 Werktage** → Speichern. «Shop Promise» bleibt aus.
+⚠️ Ursache war der Modus: **«Automatisiert» schätzt aus dem Fulfillment-Verlauf und ERSETZT die Transportzeit** (die 10–20 T am Tarif zählten nicht). Den Modus zeigt die API nicht (`DeliveryPromiseSetting` hat nur `deliveryDatesEnabled` + `processingTime`) — erst `processingTime` = P3D belegt die Umstellung.
+Danach zeigt die Kasse eine Spanne ~28. Okt – 11. Nov (Produktseite 26. Okt – 9. Nov). Die Ampel meldet «KASSEN-DATUM», bis es stimmt. Ich messe mit `tools/kaufweg_handy.mjs` nach.
 
 ## 🆕 06.10. 16:00 UTC — Mail-Durchsicht (Stand 17:40: alle 3 ✅ — 1: Betreiber lud die Muster hoch → Stufe 2 live, `FORTURA-BESTELLAUTOMAT-STUFE2-2026-10-06.md`)
 1. **Fortura hat die Bestell-Muster geschickt** (Papini, 06.10. 14:56: `Opacc_Orders_Muster.xml`, `Opacc_Orders_Template.xml`,

@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-10 16:11 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-10 17:28 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1567 · **1499 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1281, teilweise: 177, keine: 41; Preisspanne > 2×: 167) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1566 · **1498 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1280, teilweise: 177, keine: 41; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -1324,7 +1324,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Fitness Gürtel für Kniebeugen und Krafttraining (`fitness-gurtel-fur-kniebeugen-und-krafttrainin-945152`) | 3 | 3 | 4.45–4.45 | 23.90 | Red-M, Red-L, Red-XL |
 | Magnetische Bausteine Dinosaurier-Welt (`magnetische-bausteine-dinosaurier-welt-313728`) | 3 | 3 | 6.67–13.51 | 40.90 | X5109, X5108, X5107 |
 | Nagelknipser-Set aus Edelstahl (`nagelknipser-set-aus-edelstahl-754816`) | 3 | 3 | 3.08–3.24 | 22.90 | Regular-Silver, Regular-Silver Gray, Regular-Golden Gray |
-| Rundes handgemachtes Tablett aus Stroh (`rundes-handgemachtes-tablett-aus-stroh-613600`) | 3 | 3 | 13.68–33.43 | 34.90 | Red-16cm, Red-20cm, Yellow-11cm |
 | Nordische Eisen-Obstschale (`nordische-eisen-obstschale-9d0d65`) | 3 | 0 | 5.84–7.51 | 31.90 | White, Gold, Black |
 | Vergoldetes Jade Armband mit Glückswolken (`vergoldetes-jade-armband-mit-gluckswolken-613000`) | 3 | 3 | 3.1–3.1 | 22.90 | Bracelet-58mm, Bracelet-60mm, Bracelet-62mm |
 | Computer Rucksack Gross – Wasserdicht & Multifunktional (`computer-rucksack-gross-wasserdicht-multifunkt-602200`) | 3 | 3 | 19.97–21.7 | 46.90 | Black-17 Inches, Black-20 Inches, Black-22 Inches |
