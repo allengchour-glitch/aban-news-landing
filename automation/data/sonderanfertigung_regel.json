@@ -1,0 +1,29 @@
+{
+  "zweck": "Grössen, die der Lieferant als Sonderanfertigung/Massanfertigung ohne Rückgabe führt, verkaufen wir nicht (Betreiber 10.10.2026 «2 aus dem angebot»; dropship/SONDERANFERTIGUNG-2026-10-10.md). Unser Versprechen ist 30 Tage Rückgabe — der Lieferant nimmt diese Grössen nicht zurück. Prüfer/Schreiber: automation/sonderanfertigung_wache.py.",
+  "satz_muster": "(Sonderanfertigung|Massanfertigung|auf Bestellung (an)?gefertigt|individuell (an)?gefertigt|auf Mass gefertigt|vom Umtausch ausgeschlossen|keine? (Rückgaben?|Umtausch)( oder (Umtausch|Rückgabe))?( möglich| erlauben)?|Kein Umtausch)",
+  "satz_ausnahme": "(Hygiene|Versiegelung)",
+  "alle_muster": "(alle Grössen|individuell (an)?gefertigt|auf Mass gefertigt)",
+  "teilbereich_hinweis": "(wobei|Hinweis|beachte|für Grössen|Grössen über|Grössen ab|\\d\\d\\s*(-|–|bis)\\s*\\d\\d\\s*(sind|gelten|auf Bestellung|keine))",
+  "standard_ab_unbestimmt": 41,
+  "grossen_option": "(gr(ö|oe)sse|size|schuhgr)",
+  "draft_tag": "sonderanfertigung-keine-rueckgabe",
+  "ledger": "dropship/_sonderanfertigung_entfernt.tsv",
+  "kanarien": [
+    {"satz": "Verfügbare Grössen: 34-40 (Grössen 41-48 sind Sonderanfertigungen und vom Umtausch ausgeschlossen)", "werte": "34-48", "soll": "41-48"},
+    {"satz": "Bitte beachte, dass alle Grössen von 33 bis 48 auf Bestellung gefertigt werden und daher vom Umtausch ausgeschlossen sind.", "werte": "33-48", "soll": "alle"},
+    {"satz": "Hinweis: Grössen 41-48 sind Sonderanfertigungen und vom Umtausch ausgeschlossen.", "werte": "35-48", "soll": "41-48"},
+    {"satz": "Erhältlich sind die Stiefel in den Grössen 34 bis 48. Bitte beachte, dass die Grössen 41 bis 48 auf Bestellung gefertigt werden und vom Umtausch ausgeschlossen sind.", "werte": "34-48", "soll": "41-48"},
+    {"satz": "Das Modell ist in verschiedenen Grössen erhältlich, wobei einige Spezialgrössen (34, 35, 36, 37, 38, 39, 40, 41, 45, 46, 47, 48) als Sonderanfertigungen gelten und vom Umtausch ausgeschlossen sind.", "werte": "34-48", "soll": "unklar"},
+    {"satz": "Die Grössen reichen von 34 bis 45, wobei kundenspezifische Übergrössen vom Umtausch ausgeschlossen sind.", "werte": "34-46", "soll": "41-46"},
+    {"satz": "Plus-Grössen 34 bis 44 erhältlich Kein Umtausch möglich für Grössen 42–44 bei Nicht-Qualitätsproblemen", "werte": "34-44", "soll": "42-44"},
+    {"satz": "Die Schuhe sind in Grössen 34 bis 43 erhältlich, wobei Grössen 41 bis 43 keine Rückgabe oder Umtausch erlauben.", "werte": "34-43", "soll": "41-43"},
+    {"satz": "Grössen 32–43, individuell angefertigt, keine Rückgaben oder Umtausch möglich.", "werte": "32-43", "soll": "alle"},
+    {"satz": "Grössen 34 bis 43 (individuell gefertigt, keine Rückgabe möglich)", "werte": "34-43", "soll": "alle"},
+    {"satz": "Beachte, dass Grössen über 40 Massanfertigungen sind und vom Umtausch ausgeschlossen sind.", "werte": "34-48", "soll": "41-48"},
+    {"satz": "Verfügbare Grössen: 34-45 (Massanfertigungen sind vom Umtausch ausgeschlossen)", "werte": "34-45", "soll": "41-45"},
+    {"satz": "Sonderanfertigung: Grössen 42–46.", "werte": "35-46", "soll": "42-46"},
+    {"satz": "Sonderanfertigung: alle Grössen.", "werte": "35-42", "soll": "alle"},
+    {"satz": "Bitte beachte, dass kundenspezifische Anpassungen vom Umtausch ausgeschlossen sind.", "werte": "XS,S,M,L", "soll": "keine"},
+    {"satz": "Aus Hygienegründen ist Bademode von der Rückgabe ausgeschlossen, sobald die Versiegelung entfernt wurde.", "werte": "S,M,L", "soll": "nichts"}
+  ]
+}

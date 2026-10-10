@@ -37,7 +37,7 @@
 
 ## Offen
 
-- **Rückgabe-Ausschluss für Sonderanfertigungen** (CJ-Schuhe «Grössen 41–48 auf Bestellung gefertigt … vom Umtausch ausgeschlossen», mehrere Produkte) widerspricht der pauschalen 30-Tage-Zusage im Vertrauensblock. Dazu braucht es einen Entscheid: Ausnahme in der Rückgabe-Policy aufnehmen, oder diese Grössen nicht anbieten.
+- ✅ **ERLEDIGT 10.10. (Betreiber «2 aus dem angebot», `dropship/SONDERANFERTIGUNG-2026-10-10.md`):** **Rückgabe-Ausschluss für Sonderanfertigungen** (CJ-Schuhe «Grössen 41–48 auf Bestellung gefertigt … vom Umtausch ausgeschlossen», mehrere Produkte) widerspricht der pauschalen 30-Tage-Zusage im Vertrauensblock. Dazu braucht es einen Entscheid: Ausnahme in der Rückgabe-Policy aufnehmen, oder diese Grössen nicht anbieten.
 - «Kinder-Martin-Stiefel» → «Kinder-Worker-Stiefel» wäre eine Titel-Dublette. Ein Handtitel aus der Beschreibung steht noch aus (alter Fall vom 09.10.).
 - «Mini Matt Dragon … Herrenarmband 25 mm» ist laut Beschreibung (Schrauben, Canvas, 25 mm) ein Uhrenband, steht aber im Schmuck-Zweig. Die Breitenregel greift dort absichtlich nur mit Uhrbezug.
 

@@ -1,0 +1,7 @@
+{
+  "zweck": "Liefergebiet in Seiten und Rechtstexten = Markt «Switzerland» [CH, LI] (Liechtenstein freigegeben 09.10.2026, Texte angepasst 10.10.2026, dropship/LIECHTENSTEIN-FREIGABE-2026-10-09.md). Prüfer: automation/liefergebiet_text_wache.py.",
+  "laender_ausser_ch": ["Liechtenstein"],
+  "nur_ch_satz": "(ausschliesslich|nur)\\s+(nach|in die|innerhalb der|in der)\\s+(<strong>)?Schweiz",
+  "pflicht_in_versandrichtlinie": ["Liechtenstein", "CHF 14.90", "15–45 Tage"],
+  "pflicht_in_rueckgaberichtlinie": ["Liechtenstein", "14 Tagen"]
+}

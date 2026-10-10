@@ -1613,6 +1613,23 @@ fi
 #     keine falsche Verknappung. Die Shell hat keinen Klaviyo-Schlüssel → Stand > 7 T = «Messung fällig» (Session misst).
 KV=$(cd "$REPO" && timeout 30 python3 automation/klaviyo_flow_pruefen.py 2>&1 | tail -1)
 case "$KV" in *"⚠️"*|*"fällig"*) echo "$(date -u +%H:%M) $KV" ;; esac
+# --- Lieferzeit je Versandtarif + Liefergebiet in Texten (10.10.2026, dropship/VERSAND-LIEFERZEIT-2026-10-10.md) — täglich:
+#     Transitzeit CH 10–20 / LI 15–45 Tage (API «unstable»; vorher zeigte die Kasse 3–5, Google 2–6 Tage); neue Tarife ohne
+#     Zeit werden SCHARF nachgezogen (Preis bleibt). Texte: kein «nur Schweiz» ohne Liechtenstein, Richtlinien nennen LI + FAGG.
+if [ ! -f /tmp/versand_lieferzeit_$(date -u +%F).stamp ]; then
+  touch /tmp/versand_lieferzeit_$(date -u +%F).stamp
+  ( cd "$REPO" && timeout 120 python3 automation/versand_transit_wache.py --scharf 2>&1 | tail -1 | tee -a /tmp/versand_lieferzeit.log )
+  ( cd "$REPO" && timeout 170 python3 automation/liefergebiet_text_wache.py 2>&1 | tail -1 | tee -a /tmp/liefergebiet_texte.log )
+fi
+# --- Sonderanfertigungs-Grössen (10.10.2026, Betreiber «2 aus dem angebot», dropship/SONDERANFERTIGUNG-2026-10-10.md) — alle 6 h
+#     über die Neuimporte der letzten 2 Tage: Lieferantensatz «Grössen 41–48 sind Sonderanfertigungen … vom Umtausch
+#     ausgeschlossen» (bzw. Importer-Marke «Sonderanfertigung: Grössen X–Y.») → diese Grössen löschen, alle/unklar → Entwurf.
+#     Selbsttest (16 Kanarien) läuft im Skript vor jedem Lauf; rot = kein Lauf.
+SA_STAMP=/tmp/sonderanf_$(date -u +%F)_$(( $(date -u +%H) / 6 )).stamp
+if [ -f "$REPO/automation/sonderanfertigung_wache.py" ] && [ ! -f "$SA_STAMP" ]; then
+  touch "$SA_STAMP"
+  ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/sonderanfertigung_wache.py --scharf 2>&1 | tail -1 | tee -a /tmp/sonderanfertigung.log )
+fi
 # --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
 #     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
 #     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).

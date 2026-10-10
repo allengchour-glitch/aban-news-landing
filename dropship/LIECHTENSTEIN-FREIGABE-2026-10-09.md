@@ -31,7 +31,18 @@
    gestrichen.
 5. **Testkorb-Werkzeug:** `tools/testkorb_ausland.py` meldet LI jetzt als freigegeben. Alarm nur noch für DE/US.
 
-## Offen: Texte (Betreiber-Klick)
+## ✅ Texte erledigt 10.10.2026 08:30 UTC (Betreiber «3 erledige du»)
+
+Geschrieben per API (`shopPolicyUpdate`, `pageUpdate`), Zählprüfung je Stelle, zurückgelesen, WebFetch der Versandrichtlinie
+zeigt den neuen Stand. Über die Liste unten hinaus: **Liechtenstein ist EWR — dort gilt das gesetzliche Rücktrittsrecht von
+14 Tagen (Fern- und Auswärtsgeschäfte-Gesetz FAGG, LGBl. 2015 Nr. 276).** Deshalb steht in Rückgaberichtlinie, AGB und den
+live-Seiten `rueckgabe`, `faq-rueckgabe-umtausch`, `faq` und `schweizer-vs-deutsche-marken` neben «in der Schweiz gibt es kein
+gesetzliches Widerrufsrecht» jetzt der LI-Hinweis (inkl. Erstattung der ursprünglichen Standard-Versandkosten bei Rücktritt).
+Dazu: Versandrichtlinie «Nach Liechtenstein: in der Regel 15–45 Tage», `faq-luxestyle` (unveröffentlicht) korrigiert — dort
+stand auch «JEDES Produkt kommt in einer Premium-Geschenkbox» (falsch, ersetzt). Wächter `automation/liefergebiet_text_wache.py`
+(täglich, 222 Seiten + 6 Richtlinien, Kanarien 6/6). Lieferzeit je Tarif: `dropship/VERSAND-LIEFERZEIT-2026-10-10.md`.
+
+### Ursprünglicher Auftrag (Betreiber-Klick)
 
 Die Textänderung wurde in dieser Sitzung vom Klassifikator abgelehnt und **nicht** umgangen. Die Rechtstexte und Seiten
 sagen also noch «nur Schweiz». Exakte Ersetzungen:

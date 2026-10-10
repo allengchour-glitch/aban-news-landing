@@ -1,0 +1,268 @@
+{
+ "data": {
+  "deliveryProfiles": {
+   "nodes": [
+    {
+     "id": "gid://shopify/DeliveryProfile/132124180865",
+     "name": "General profile",
+     "default": true,
+     "profileLocationGroups": [
+      {
+       "locationGroup": {
+        "id": "gid://shopify/DeliveryLocationGroup/134126436737"
+       },
+       "locationGroupZones": {
+        "nodes": [
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/608365379969",
+           "name": "Domestic",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "CH",
+              "restOfWorld": false
+             }
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/1108712784257",
+             "name": "Standard",
+             "active": true,
+             "methodConditions": [],
+             "rateGroups": {
+              "nodes": [
+               {
+                "id": "gid://shopify/DeliveryRateGroup/406461415809",
+                "rateProviders": {
+                 "nodes": [
+                  {
+                   "__typename": "DeliveryRateDefinition",
+                   "id": "gid://shopify/DeliveryRateDefinition/1032124268929",
+                   "price": {
+                    "amount": "7.0"
+                   },
+                   "minTransitTime": 259200,
+                   "maxTransitTime": 432000
+                  }
+                 ]
+                }
+               }
+              ]
+             }
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/1527737287047",
+             "name": "Kostenloser Versand",
+             "active": true,
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "operator": "GREATER_THAN_OR_EQUAL_TO",
+               "conditionCriteria": {
+                "__typename": "MoneyV2",
+                "amount": "45.0"
+               }
+              }
+             ],
+             "rateGroups": {
+              "nodes": [
+               {
+                "id": "gid://shopify/DeliveryRateGroup/727325606279",
+                "rateProviders": {
+                 "nodes": [
+                  {
+                   "__typename": "DeliveryRateDefinition",
+                   "id": "gid://shopify/DeliveryRateDefinition/1459186925959",
+                   "price": {
+                    "amount": "0.0"
+                   },
+                   "minTransitTime": null,
+                   "maxTransitTime": null
+                  }
+                 ]
+                }
+               }
+              ]
+             }
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/608365412737",
+           "name": "International",
+           "countries": [
+            {
+             "code": {
+              "countryCode": null,
+              "restOfWorld": true
+             }
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/1108712817025",
+             "name": "International",
+             "active": true,
+             "methodConditions": [],
+             "rateGroups": {
+              "nodes": [
+               {
+                "id": "gid://shopify/DeliveryRateGroup/406461448577",
+                "rateProviders": {
+                 "nodes": [
+                  {
+                   "__typename": "DeliveryRateDefinition",
+                   "id": "gid://shopify/DeliveryRateDefinition/1032124301697",
+                   "price": {
+                    "amount": "15.0"
+                   },
+                   "minTransitTime": null,
+                   "maxTransitTime": null
+                  }
+                 ]
+                }
+               }
+              ]
+             }
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/742738297223",
+           "name": "Liechtenstein",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "LI",
+              "restOfWorld": false
+             }
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/1538225242503",
+             "name": "Standard Liechtenstein",
+             "active": true,
+             "methodConditions": [],
+             "rateGroups": {
+              "nodes": [
+               {
+                "id": "gid://shopify/DeliveryRateGroup/737814282631",
+                "rateProviders": {
+                 "nodes": [
+                  {
+                   "__typename": "DeliveryRateDefinition",
+                   "id": "gid://shopify/DeliveryRateDefinition/1469669736839",
+                   "price": {
+                    "amount": "14.9"
+                   },
+                   "minTransitTime": null,
+                   "maxTransitTime": null
+                  }
+                 ]
+                }
+               }
+              ]
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/DeliveryProfile/132143251841",
+     "name": "Zendrop",
+     "default": false,
+     "profileLocationGroups": [
+      {
+       "locationGroup": {
+        "id": "gid://shopify/DeliveryLocationGroup/134145606017"
+       },
+       "locationGroupZones": {
+        "nodes": [
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/608446513537",
+           "name": "[Zendrop \u2014 Worldwide Zone]",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "CH",
+              "restOfWorld": false
+             }
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/1108903461249",
+             "name": "[Free Shipping]",
+             "active": true,
+             "methodConditions": [],
+             "rateGroups": {
+              "nodes": [
+               {
+                "id": "gid://shopify/DeliveryRateGroup/406652092801",
+                "rateProviders": {
+                 "nodes": [
+                  {
+                   "__typename": "DeliveryRateDefinition",
+                   "id": "gid://shopify/DeliveryRateDefinition/1032314716545",
+                   "price": {
+                    "amount": "0.0"
+                   },
+                   "minTransitTime": null,
+                   "maxTransitTime": null
+                  }
+                 ]
+                }
+               }
+              ]
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/DeliveryProfile/132495966593",
+     "name": "Shopify Collective",
+     "default": false,
+     "profileLocationGroups": []
+    }
+   ]
+  }
+ },
+ "extensions": {
+  "cost": {
+   "requestedQueryCost": 228,
+   "actualQueryCost": 24,
+   "throttleStatus": {
+    "maximumAvailable": 2000.0,
+    "currentlyAvailable": 1127,
+    "restoreRate": 100.0
+   }
+  }
+ }
+}
