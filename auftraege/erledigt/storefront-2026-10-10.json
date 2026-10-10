@@ -1,11 +1,11 @@
 {
+  "id": "storefront-2026-10-10",
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
-  "id": "storefront-2026-10-10",
-  "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]",
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
   "stand": "ok",
-  "begonnen": "2026-10-10T00:05:10.234Z",
-  "dauer_s": 65.5,
+  "begonnen": "2026-10-10T19:17:10.137Z",
+  "dauer_s": 63.5,
   "ergebnis": {
     "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
     "befunde": [
@@ -24,10 +24,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 5494,
+        "zeichen": 5364,
         "zeichen_spanne": [
-          5473,
-          5494
+          5364,
+          5364
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-10-startseite.png"
       },
@@ -46,10 +46,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 3776,
+        "zeichen": 3864,
         "zeichen_spanne": [
-          3776,
-          3776
+          3864,
+          3864
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-10-kollektion.png"
       },
@@ -68,10 +68,10 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 3027,
+        "zeichen": 3107,
         "zeichen_spanne": [
-          3027,
-          3027
+          3107,
+          3107
         ],
         "bild": "auftraege/ergebnis/storefront-2026-10-10-faq.png"
       }
