@@ -65,3 +65,11 @@ sagen also noch «nur Schweiz». Exakte Ersetzungen:
 
 **«Rest der Welt» deckt ein neues Marktland nicht ab.** Erst eine eigene Zone mit dem Land macht es lieferbar. Gemessen wurde
 das am Testkorb, nicht an der Konfiguration: Im LI-Kontext galt jedes Produkt als «ausverkauft».
+
+## Nachtrag 10.10.2026 07:10 UTC — Google sieht Liechtenstein, aber noch keinen Versand
+
+- **Google-Diagnosen 10.10. 06:58 (52'383 aktive): «Missing shipping info in some countries [LI]» bei 28'195 Produkten.** Am 09.10. um 11:43, also vor der Freigabe, waren es 785.
+- Die Markt-Erweiterung macht Liechtenstein für Google zum Zielland. Die Versandzone «Liechtenstein» (CHF 14.90) liegt im Standardprofil, in dem fast alle Produkte stecken (gemessen per `deliveryProfiles`). Die App «Google & YouTube» übernimmt Versand-Einstellungen zeitversetzt. 8 h nach der Freigabe war der Abgleich noch nicht durch.
+- **Die Schweiz ist davon NICHT betroffen.** Die Meldung gilt nur für [LI].
+- Nachmessen am 11.10. mit `google_feedback_wache.py` (täglich im Aufseher). Steht die Zahl nach 48 h noch hoch, braucht es einen Betreiber-Klick im Merchant Center: Versand-Einstellungen neu importieren bzw. die automatische Übernahme prüfen.
+- Profil «Zendrop» (40 Varianten) hat nur eine CH-Zone, LI fehlt dort. Gering, Zendrop-Ware ist Altbestand.

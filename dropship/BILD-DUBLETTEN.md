@@ -55,10 +55,10 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15470022099329 · 2026-07-23 · CHF 25.90 · fortura-33034 · Fahne Schweiz
   - 15470036091265 · 2026-07-23 · CHF 19.90 · fortura-21137 · Flagge Schweiz 90x90 cm
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
-  - 15479484416385 · 2026-07-31 · CHF 15.90 · CJ-2505110311451627300 · Handbemalte 3D-Maniküre zum Aufkleben
-  - 15500410814849 · 2026-08-15 · CHF 17.90 · CJ-2503060637151601000 · Rose-Design-Nagel
+  - 15479484416385 · 2026-07-31 · CHF 15.90 · CJ-2505110311451627300 · Handbemalte Press-on-Nägel mit 3D-Blumen
+  - 15500410814849 · 2026-08-15 · CHF 17.90 · CJYD231723501AZ · Rose-Design-Nagel
 - **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 3 insgesamt, 100%)
-  - 15480488493441 · 2026-07-31 · CHF 15.90 · CJ-CJYD203748401AZ · Kamellien-Nageldesign mit Farbverlauf
+  - 15480488493441 · 2026-07-31 · CHF 15.90 · CJ-CJYD203748401AZ · Press-on-Nägel mit Kamelien und Farbverlauf
   - 15497429713281 · 2026-08-14 · CHF 15.90 · CJ-2505080609491601000 · Grüne Full Diamond Camellia Gradient Chain Nägel
 - **DUBLETTE** · 10 gemeinsame Bilder (11 bzw. 10 insgesamt, 100%)
   - 15480631067009 · 2026-07-31 · CHF 27.90 · CJ-CJYD297856901AZ · Modische Mules mit Blockabsatz
@@ -76,11 +76,11 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15499947901313 · 2026-08-15 · CHF 30.90 · CJ-CJTZ296545001AZ · Sportliche Minirock
   - 15499954946433 · 2026-08-15 · CHF 30.90 · CJ-CJTZ296501101AZ · Schwungige Sport-Röcke
 - **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
-  - 15500109283713 · 2026-08-15 · CHF 17.90 · CJ-2503211406241602800 · Händchenkunst
-  - 15500411306369 · 2026-08-15 · CHF 17.90 · CJ-2503060538551620300 · Handbemalte Unterwasserwelt-Maniküre · Press-on-Nägel
+  - 15500109283713 · 2026-08-15 · CHF 17.90 · CJ-2503211406241602800 · Bunte Press-on-Nägel mit 3D-Deko
+  - 15500411306369 · 2026-08-15 · CHF 17.90 · CJYD231711101AZ · Handbemalte Unterwasserwelt-Maniküre · Press-on-Nägel
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
-  - 15500897616257 · 2026-08-16 · CHF 15.90 · CJ-1428887835427082240 · Marine-Halsband
-  - 15500900532609 · 2026-08-16 · CHF 15.90 · CJ-1407156871940411392 · Marine Hundehalsband
+  - 15500897616257 · 2026-08-16 · CHF 15.90 · CJGX125854701AZ · Marine-Halsband
+  - 15500900532609 · 2026-08-16 · CHF 15.90 · CJGX118510201AZ · Marine Hundehalsband
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
   - 15500905349505 · 2026-08-16 · CHF 19.90 · CJ-CJWJXDNY00391-Pink-26 · Gefütterte Prinzessinnen-Winterschuhe für Kinder
   - 15512291213697 · 2026-08-25 · CHF 24.90 · CJ-CJWJXDNY00750-Black-29 · Mädchen Plüsch-Winterstiefel
@@ -89,7 +89,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15502485586305 · 2026-08-17 · CHF 17.90 · CJ-CJDS273885001AZ · Seidenweiches, knitterarmes Hemd mit Kühl-Effekt
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
   - 15501033013633 · 2026-08-16 · CHF 66.90 · CJ-1485799704976560128 · Kaffeebraune Leder-Rucksack
-  - 15523116876161 · 2026-09-02 · CHF 69.90 · CJ-1621104239554605056 · Vintage Cowhide Rucksack – Unisex
+  - 15523116876161 · 2026-09-02 · CHF 69.90 · CJ-1621104239554605056 · Vintage Rindsleder-Rucksack – Unisex
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
   - 15501883605377 · 2026-08-17 · CHF 15.90 · CJ-A306A914-71C4-4B7F-8BCE-1FEEB828952D · Malen nach Zahlen für Erwachsene – Kunstklassiker
   - 16606536008071 · 2026-10-04 · CHF 21.90 · CJ-9DE73A3A-5FBC-49DD-8345-ED480F6E2676 · Malen nach Zahlen 40×50 cm Leinwand ohne Rahmen
@@ -389,7 +389,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15525501108609 · 2026-09-05 · CHF 37.90 · CJ-9E3DDD6D-3FE8-4F64-B28B-46B18869CA72 · Ebenholz-Holzuhr mit Kalenderfunktion
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15510926786945 · 2026-08-24 · CHF 29.90 · CJ-1424969353576714240 · Smartes EMS-Muskelstimulationsgerät für Zuhause
-  - 16612712284551 · 2026-10-09 · CHF 52.90 · CJ-1379004237563957248 · Abdominal Belt Trainingsgürtel mit Silikonbändern
+  - 16612712284551 · 2026-10-09 · CHF 52.90 · CJ-1379004237563957248 · Bauch-Trainingsgürtel mit Silikonbändern
 - **Bildfamilie — von Hand ansehen** · 6 gemeinsame Bilder (8 bzw. 13 insgesamt, 75%)
   - 15449070109057 · 2026-07-05 · CHF 40.90 · CJ-2602050942401631500 · Handgewobene Schultertasche im lässigen Design
   - 15453775724929 · 2026-07-11 · CHF 41.90 · CJ-CJYD275526901AZ · Elegante Umhängetasche
@@ -503,7 +503,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15500926157185 · 2026-08-16 · CHF 39.90 · CJ-93C478CD-2465-487E-8E97-C20AEA932C2C · Malen nach Zahlen – Katze
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15499781702017 · 2026-08-15 · CHF 21.90 · CJ-2412300112351620300 · Schwarzes Kopfstützenkissen
-  - 15502587625857 · 2026-08-17 · CHF 23.90 · CJ-1677596975652417536 · Black Eight Billiards Plüschkissen
+  - 15502587625857 · 2026-08-17 · CHF 23.90 · CJZT179618701AZ · Black Eight Billiards Plüschkissen
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15501882261889 · 2026-08-17 · CHF 24.90 · CJ-DBB1341E-E781-44DF-9467-351E2722B506 · Malen nach Zahlen - Boote
   - 15502048428417 · 2026-08-17 · CHF 24.90 · CJ-7D8AE4F8-4387-464C-A7C6-F5C72660F3A3 · Malen nach Zahlen – Winterlandschaft
@@ -584,4 +584,4 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15525499470209 · 2026-09-05 · CHF 21.90 · CJ-F5BA858E-89C8-4A3C-8DDD-4211AEBC09F6 · Futterspender für Hunde
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 8 insgesamt, 50%)
   - 15523185459585 · 2026-09-02 · CHF 51.90 · CJ-1400287571547918336 · Fitnessstange für vielseitiges Training
-  - 16612741808519 · 2026-10-09 · CHF 87.90 · CJ-1377510000557166592 · Fitness-Bar mit Stange 96 cm
+  - 16612741808519 · 2026-10-09 · CHF 87.90 · CJ-1377510000557166592 · Fitness-Stange 96 cm
