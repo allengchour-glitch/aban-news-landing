@@ -7000,3 +7000,6 @@ loafer-im-retro-look-fur-herren-628600	2605110327321629300	16	17.66	ok	landeseit
 herren-sandalen-mit-geschlossenem-zehenbereich-610900	2605100938111611500	16	12.56	ok	landeseite
 elegante-business-lederschuhe-fur-herren-618200	2605081241091618800	16	19.76	ok	landeseite
 herren-low-top-leder-sneaker-626800	2605070719581627400	16	10.83	ok	landeseite
+business-oxford-schuhe-aus-leder-611600	2605010315391612100	16	15.92	ok	landeseite
+business-casual-leder-slipper-fur-herren-613400	2604240226161614000	16	19.18	ok	landeseite
+lassige-leder-loafer-fur-herren-602800	2604240222041603400	16	14.96	ok	landeseite
