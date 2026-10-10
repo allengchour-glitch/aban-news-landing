@@ -24,15 +24,16 @@ LEDGER = os.path.join(REPO, "dropship", "_knowledge_base_fakten.tsv")
 FAKTEN = {   # handle → (feld, wert, beleg)
     "business_dna_business_overview": ("value_string",
         "LuxeStyle CH ist ein Einzelunternehmen von Alleng Chour aus Belp, gegründet 2026. Der Shop bietet eine Auswahl von über "
-        "40'000 Artikeln aus Mode, Schmuck & Uhren, Beauty, Technik und Wohnen und liefert ausschliesslich in die Schweiz. "
-        "Der grösste Teil wird direkt ab Lieferantenlager verschickt (10–20 Werktage); Artikel ab Schweizer Lager kommen in "
-        "1–2 Werktagen, ab EU-Lager in 2–7 Werktagen — die Angabe steht auf jeder Produktseite. Bezahlung mit TWINT, Klarna, "
-        "Karte, PayPal, Apple Pay oder Google Pay; 30 Tage Rückgabe.",
-        "Versand-/Rückgabe-Richtlinie, AGB (Zahlungsmittel), Impressum, /pages/ueber-uns"),
+        "40'000 Artikeln aus Mode, Schmuck & Uhren, Beauty, Technik und Wohnen und liefert in die Schweiz und nach Liechtenstein. "
+        "Der grösste Teil wird direkt ab Lieferantenlager verschickt (in die Schweiz 10–20 Werktage); Artikel ab Schweizer Lager "
+        "kommen in 1–2 Werktagen, ab EU-Lager in 2–7 Werktagen — die Angabe steht auf jeder Produktseite. Nach Liechtenstein "
+        "kostet der Versand CHF 14.90 und dauert 15–45 Tage. Bezahlung mit TWINT, Klarna, Karte, PayPal, Apple Pay oder "
+        "Google Pay; 30 Tage Rückgabe.",
+        "Versand-/Rückgabe-Richtlinie (CH + LI seit 09.10.2026), AGB (Zahlungsmittel), Impressum, /pages/ueber-uns"),
     "target_audience": ("value_string",
-        "Erwachsene in der Schweiz, die online Mode, Schmuck & Uhren, Beauty, Technik und Wohnideen zu fairen Preisen kaufen "
-        "und Lieferzeit, Rückgabe und Endpreis vor dem Kauf klar sehen wollen.",
-        "Markt nur Schweiz (Shopify Markets), Sortiment 20 Welten"),
+        "Erwachsene in der Schweiz und in Liechtenstein, die online Mode, Schmuck & Uhren, Beauty, Technik und Wohnideen zu "
+        "fairen Preisen kaufen und Lieferzeit, Rückgabe und Endpreis vor dem Kauf klar sehen wollen.",
+        "Markt «Switzerland» = [CH, LI] (Shopify Markets, 09.10.2026), Sortiment 20 Welten"),
     "brand_info_main_brands": ("value_string_list", ["LuxeStyle"],
         "productVendors: 51'475 von 51'476 aktiven Produkten tragen den Hersteller «LuxeStyle» (07.10.)"),
     "business_dna_brand_values": ("value_string_list",

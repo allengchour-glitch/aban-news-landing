@@ -158,6 +158,10 @@ STIL = ('style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;'
 def kopfblock(w):
     return (f'<p class="ls-liefer" data-tier="{w}" {STIL}>📦 <strong>Lieferzeit</strong> '
             f'Schweiz: <strong>{SPANNE[w]} Werktage</strong> '
+            # ✅ 10.10.2026: «und nach Liechtenstein» WIEDER drin — Betreiber hat LI am 09.10. freigegeben
+            # (Markt «Switzerland» = [CH, LI], Testkorb LI 1 Option). Ohne diese Zeile setzte jeder Lauf den
+            # Kasten auf «nur Schweiz» zurück (umschreiben() ersetzt jeden vorhandenen Kasten). Wächter:
+            # automation/lieferblock_li.py. Die Zeilen darunter sind die Geschichte vom 24.08.:
             # ⚠️ 24.08.2026: «und nach Liechtenstein» entfernt. Der Checkout kennt genau
             # EINEN Markt (Switzerland, ['CH']) — ein echter Test mit Lieferland LI gab
             # {"shipping_rates":[]} (FEHLERSUCHE-14-08.json). Die LI-Formel stammt aus der
@@ -166,7 +170,7 @@ def kopfblock(w):
             # Schweiz» bleibt auch dann wahr, wenn der Betreiber LI spaeter freischaltet —
             # die umgekehrte Zusage waere ein Versprechen, das der Checkout heute bricht.
             f'<span style="opacity:.7;">· {WEGNAME[w]} · Versand nur in die '
-            f'Schweiz</span></p>\n')
+            f'Schweiz und nach Liechtenstein</span></p>\n')
 
 
 def regeln(w):
@@ -560,13 +564,13 @@ SEITEN = {
         '<p>Die Lieferung erfolgt direkt vom Hersteller (Versand ab Werk). Die Lieferzeit '
         'beträgt 10–20 Werktage. Bei Lieferungen ins Ausland können Zölle und Einfuhrabgaben '
         'anfallen, die vom Kunden zu tragen sind.</p>',
-        '<p>Wir liefern ausschliesslich in die Schweiz; ein Versand in '
+        '<p>Wir liefern in die Schweiz und nach Liechtenstein; ein Versand in '
         'andere Länder ist nicht möglich. Ein grosser Teil der Ware wird direkt ab dem Lager '
         'des Herstellers versendet. Die Lieferzeit hängt vom Bezugsweg ab: ab Schweizer Lager '
         '1–2 Werktage, ab EU-Lager 2–7 Werktage, bei Druck auf Bestellung 7–14 Werktage, im '
         'Direktversand ab Lieferantenlager 10–20 Werktage. Massgeblich ist die Angabe auf der '
         'jeweiligen Produktseite. Zoll- oder Einfuhrabgaben fallen für Lieferungen in die '
-        'Schweiz nicht zusätzlich an.</p>')],
+        'Schweiz und nach Liechtenstein nicht zusätzlich an.</p>')],
     698055360897: [(  # agb-luxestyle — rechtlich bindend
         '<p>Lieferzeit: <strong>7-14 Werktage</strong> ab Zahlungseingang, innerhalb der '
         'Schweiz.</p>',
@@ -580,8 +584,8 @@ SEITEN = {
          'EU-Lager-Artikel in 3–7 Tagen, international versendete Artikel in 7–14 Tagen.',
          '🇨🇭 Blitzversand-Artikel kommen in 1–2 Werktagen aus dem Schweizer Lager, Ware ab '
          'EU-Lager in 2–7 Werktagen, Druck-auf-Bestellung-Artikel in 7–14 Werktagen und Ware '
-         'im Direktversand ab Lieferantenlager in 10–20 Werktagen. Geliefert wird ausschliesslich '
-         'in die Schweiz.'),
+         'im Direktversand ab Lieferantenlager in 10–20 Werktagen. Geliefert wird in die Schweiz '
+         'und nach Liechtenstein.'),
         ('Lieferzeit je nach Produkt in der Regel ca. 10–20 Werktage '
          '(personalisierte/Print-on-Demand- und Übersee-Artikel ca. 7–14 Werktage).',
          'Lieferzeit je nach Bezugsweg: ab Schweizer Lager 1–2 Werktage, ab EU-Lager 2–7 '

@@ -46,17 +46,20 @@ LISTE  = os.environ.get('LISTE')
 STIL = ('background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;'
         'padding:10px 14px;font-size:13px;margin:0 0 14px;')
 
+# ⚠️ 10.10.2026: Liechtenstein ist seit 09.10. Lieferland — der Zusatz lautet wie im Importer-Baustein
+# (delivery_block.mjs) «Versand nur in die Schweiz und nach Liechtenstein». Ohne LI schrieb dieser Lauf am 10.10.
+# 548 neue Kästen mit falscher Ausschluss-Aussage (Reparatur + Wächter: automation/lieferblock_li.py).
 # Die Zuordnung folgt der bereits appliziertem Form (tier=pod / tier=direkt im Bestand),
 # damit im Shop EINE Formulierung steht und nicht eine fünfte Variante entsteht.
 STUFE = {
-    'eu-druck': ('7–14 Werktage',  'Druck auf Bestellung · Versand nur in die Schweiz'),
-    'pod':      ('7–14 Werktage',  'Druck auf Bestellung · Versand nur in die Schweiz'),
-    'china':    ('10–20 Werktage', 'Direktversand ab Lieferantenlager · Versand nur in die Schweiz'),
-    'direkt':   ('10–20 Werktage', 'Direktversand ab Lieferantenlager · Versand nur in die Schweiz'),
+    'eu-druck': ('7–14 Werktage',  'Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein'),
+    'pod':      ('7–14 Werktage',  'Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein'),
+    'china':    ('10–20 Werktage', 'Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein'),
+    'direkt':   ('10–20 Werktage', 'Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein'),
     # «standard» sind ~67 handkuratierte Altprodukte ohne Herkunftstag. Die Stufe ist nicht
     # belegbar, der alte Text sagte 8–16 Tage — also eine lange Laufzeit. Gewählt wird die
     # LÄNGSTE Zusage: wer früher liefert als versprochen, enttäuscht niemanden.
-    'standard': ('10–20 Werktage', 'Versand nur in die Schweiz'),
+    'standard': ('10–20 Werktage', 'Versand nur in die Schweiz und nach Liechtenstein'),
 }
 
 try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
