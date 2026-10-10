@@ -6754,3 +6754,4 @@ gid://shopify/Product/15460667261313	zugeordnet	15	Strick-Cardigan mit Herzmotiv
 gid://shopify/Product/15460667294081	zugeordnet	99	Rundhals-Pullover mit Farbblock-Design
 gid://shopify/Product/15460667326849	zugeordnet	18	Kuscheliger Strickpullover mit Reverskragen
 gid://shopify/Product/15460667359617	zugeordnet	10	Vielseitiger Langarm-Strickpullover mit Rippenmuster
+gid://shopify/Product/15460667392385	zugeordnet	32	Strick-Cardigan mit Knöpfen
