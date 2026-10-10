@@ -11,6 +11,7 @@ def gql(q,v=None):
 # 7–14 · Direktversand ab Werk 10–20 Werktage. Versand CHF 7.00, gratis ab CHF 50.
 # Es gibt genau EINEN aktiven Markt (Switzerland, ['CH']) — live nachgezaehlt: DE, AT und
 # Liechtenstein koennen gar nicht auschecken, jede Zusage dorthin ist unerfuellbar.
+# ✅ 10.10.2026: ÜBERHOLT für Liechtenstein — seit 09.10. Lieferland (Markt [CH, LI]); Ersatztexte unten nennen CH + LI.
 REG = {
  'faq-luxestyle': [
   ('🇨🇭 Schweiz: 7-12 Werktage · 🇩🇪 DE/AT: 8-14 Werktage',
@@ -18,14 +19,14 @@ REG = {
    'Direktversand ab Werk 10–20 Werktage. Welche Stufe gilt, steht auf jeder Produktseite'),
   ('CHF 4.90 für CH · 9.90 EUR für DE/AT. Gratis ab CHF 50 / 99 EUR mit Code SHIP50.',
    'CHF 7.00 innerhalb der Schweiz. Gratis ab CHF 50 — automatisch, ohne Code. '
-   'Wir liefern ausschliesslich in die Schweiz.'),
+   'Wir liefern in die Schweiz und nach Liechtenstein.'),
   ('<li>Launch-Woche: 30% mit LAUNCH30</li>', ''),
  ],
  'faq-en': [
   ('Flat CHF 4.90 within Switzerland. Free shipping over CHF 50.',
    'Flat CHF 7.00 within Switzerland. Free shipping from CHF 50 — applied automatically, no code needed.'),
   ('2-7 business days within Switzerland (incl. Liechtenstein)',
-   '1-2 business days from our Swiss warehouse, 2-7 from the EU warehouse. We ship to Switzerland only'),
+   '1-2 business days from our Swiss warehouse, 2-7 from the EU warehouse. We ship to Switzerland and Liechtenstein'),
  ],
 }
 j=gql('{ pages(first:10, query:"handle:faq-luxestyle OR handle:faq-en"){nodes{id handle body}} }')

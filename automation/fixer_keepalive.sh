@@ -1630,6 +1630,14 @@ if [ -f "$REPO/automation/sonderanfertigung_wache.py" ] && [ ! -f "$SA_STAMP" ];
   touch "$SA_STAMP"
   ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/sonderanfertigung_wache.py --scharf 2>&1 | tail -1 | tee -a /tmp/sonderanfertigung.log )
 fi
+# --- Lieferzeit-Kasten nennt Liechtenstein (10.10.2026, dropship/OPENSEO-START-2026-10-10.md) — täglich über die in
+#     2 Tagen geänderten Produkte: «Versand nur in die Schweiz» ohne «und nach Liechtenstein» im <p class="ls-liefer">
+#     → ergänzen (LI ist seit 09.10. Lieferland). Am 10.10. schrieben versand_jenachland + versandaussagen_wahrheit noch
+#     die Form ohne LI (beide korrigiert); Kanarien (5) im Skript vor jedem Lauf.
+if [ -f "$REPO/automation/lieferblock_li.py" ] && [ ! -f /tmp/lieferblock_li_$(date -u +%F).stamp ] && [ "$(date -u +%H)" -ge 5 ]; then
+  touch /tmp/lieferblock_li_$(date -u +%F).stamp
+  ( cd "$REPO" && TAGE=2 timeout 1500 bash automation/shopify_schranke.sh python3 automation/lieferblock_li.py --scharf 2>&1 | tail -1 | tee -a /tmp/lieferblock_li.log )
+fi
 # --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
 #     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
 #     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).
