@@ -49,6 +49,34 @@
 
 
 
+## 🧭 Drei Betreiber-Klicks selbst erledigt: Lieferzeit je Tarif, Liechtenstein-Texte, Sonderanfertigungen (2026-10-10, 08:45 UTC, «2 aus dem angebot. 3 und 1 erledige du»)
+
+**(1) Lieferzeit:**
+- Gemessen: Die Kasse zeigte beim Standard-Tarif 3–5 T, Google 2–6 T, die Versandrichtlinie sagt 10–20 Werktage.
+- Die Transitzeit stand als «nur im Admin, Betreiber-Klick» in der Liste. In 2026-01 und 2026-10 fehlt das Feld in `DeliveryMethodDefinitionInput`. **In `unstable` gibt es `rateGroupsToUpdate.rateDefinitionsToUpdate.minTransitTime/maxTransitTime`** (Shopify-Changelog 24.02.2026, gefunden über `search_docs_chunks`).
+- Gesetzt: CH 10–20, LI 15–45, International und Zendrop 10–20. Zendrop rechnet in USD, mit CHF kam der Fehler «multiple currencies».
+- Die 27 Gelato-App-Profile (POD) bleiben unberührt.
+- Wächter `versand_transit_wache.py` (täglich, `--scharf` zieht neue Tarife nach).
+
+**(3) Liechtenstein-Texte:**
+- 3 Richtlinien + 9 Seiten. Zusätzlich: LI ist EWR, dort gilt das FAGG mit 14 Tagen Rücktritt (LGBl. 2015 Nr. 276). Der Satz «in der Schweiz kein gesetzliches Widerrufsrecht» bekam überall den LI-Hinweis.
+- Die live-Rückgabeseite ist `rueckgabe` (Weiterleitung von `widerruf`), nicht `widerruf`. WebFetch zeigte das, weil die Seite einen anderen Text zeigte als der geänderte Seiteninhalt.
+- Beifang: `faq-luxestyle` (unveröffentlicht) versprach «JEDES Produkt kommt in einer Premium-Geschenkbox».
+- Wächter `liefergebiet_text_wache.py` (täglich, Kanarien 6/6).
+
+**(2) Sonderanfertigungen:**
+- 17 Schuhe mit «Grössen 41–48 sind Sonderanfertigungen und vom Umtausch ausgeschlossen».
+- 11 auf ≤ 40 gekürzt (Varianten gelöscht, Text und Faktenblock-Liste gekürzt), 5 als Entwurf (alle Grössen oder unklar), 1 nur Satz.
+- «Plus-Grössen»-Titel korrigiert, weil die Plus-Grössen weg sind.
+- Die Importer-Regel von heute früh («Rückgabe-Ausschlüsse weglassen») hätte die Grössen versteckt. Jetzt schreibt der Importer die Marke «Sonderanfertigung: Grössen X–Y.», und `sonderanfertigung_wache.py` (16 Kanarien, alle 6 h) räumt sie ab.
+
+**Lehren:**
+- **«Geht nicht per API» gilt nur für die geprüfte Version.** Introspektion über alle Versionen und die Doku vor jedem Betreiber-Klick.
+- **Weglassen ist nicht Beheben.** Eine Händlerbedingung fällt weg, eine Eigenschaft der Ware wird zur Marke.
+- **Erst die Seite prüfen, die Besucher sehen** (Weiterleitung, Theme-Vorlage), dann die geänderte Datei.
+
+→ `dropship/VERSAND-LIEFERZEIT-2026-10-10.md`, `dropship/SONDERANFERTIGUNG-2026-10-10.md`, `dropship/LIECHTENSTEIN-FREIGABE-2026-10-09.md`
+
 ## 📧 Warenkorb-Mail kam während des Bezahlens — die Wartezeit stand hinter der Mail (2026-10-10, 08:20 UTC, «was soll ich machen? sonst verbessere weiter»)
 
 **Gemessen:**
@@ -19581,3 +19609,5 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · 🛒 **«verbessere mehr»: TikTok-Seiten 563 Sitzungen → 6 Kassen → 0 Käufe; derselbe Testkorb (1× Leinen 39.90) sagte «noch CHF 5.10» (Balken theme.liquid, falsch: jeder Zusatzartikel = −10 %, 45.80 → 41.22 → CHF 7) UND «noch CHF 10.10» (cart-summary) UND «CH-Lager 1–2 Werktage» (Asien-Ware) → `warenkorb_einig.py`: EIN Rechenweg (gratis ab 45 nach Rabatt, noch = 50 − Wert vor Rabatt), Lieferdatum der langsamsten Ware wie `lux_delivery`, Kanarien 7/7, Wächter mit echtem Testkorb.** Zwei Bausteine für dieselbe Zahl = Widerspruch mit Zeitverzug; Testkörbe sparsam (429) → `dropship/WARENKORB-EINIG-2026-10-09.md`
 - 2026-10-09 · 💅 **«weiter»: «Nagelverstärkungstabletten» (Google: Vitamine) = Press-on-Set — CJ übersetzt 穿戴甲 wörtlich (甲 = Nagel UND Panzer: «Wear Armor», «Rüstung», «Nagelstifte», «Handpflaster»); 120/1'039 Nagel-Titel ohne Warenwort, Bildsichtung → 86 Titel + Text/SEO, 51 Adressen 301, 596 Alts, 20 Fremdartikel im Nagel-Korb (Mauspad, MP3, Tattoo) umgetypt, 0 Fehler; `data/nagel_titel_regel.json` = `nagel_titel.py` (Aufseher) = `nagel_titel.mjs` in `fallenSicher` (py=js 51'933/0).** Nach «kein ehrliches Warenwort» suchen statt nach einem Fehlwort → `dropship/NAGEL-TITEL-2026-10-09.md`
 - 2026-10-09 · 🧨 **«weiter»: Lehre 穿戴甲 katalogweit — 防爆 «explosionsgeschützt» bei 75 (50 Leinen = reissfest; Werkzeug/Akkus = falsche ATEX-Angabe), 爆款 «Explosive …», ins风 «Ins Wind», 百搭 «All-match», Rolex/Patek-Modellnamen (Submariner/Daytona/Datejust/Nautilus, Bilder = Eigenmarken) → 200/0 (54 Titel, 55 Adressen 301, 414 Alts); `data/haendlerwort_regel.json` = `haendlerwort.py` (Aufseher) = `haendlerwort.mjs` in `fallenSicher` (63 Kanarien, py=js 52'094/0).** Im Fliesstext ersetzen statt streichen; vor dem Kürzen Dubletten prüfen → `dropship/HAENDLERWORT-2026-10-09.md`
+- 2026-10-09 · ✍️ **«weiter»: 596 Beschreibungen mit kleinem «dein … Design/Schnitt/Gehäuse» am Satzanfang — `kollektionstexte_du_form.um()` tauschte jedes «Ihr» → «dein», auch «ihr Design» (= der Ware; 624/625 aus du_form) → `data/dein_bezug_regel.json` (Kundin → «Dein», Ware → Artikel nach Adjektiv-/Nomen-Endung, 31 Kanarien), Quelle `um()` repariert, Bestand `dein_bezug.py` SCHARF + Aufseher täglich.** Ersatz ohne Bedeutung braucht die Stellung im Satz → `dropship/DEIN-BEZUG-2026-10-09.md`
+- 2026-10-09 · 🔁 **Verbesserungsrunde: 459 Neuimporte (14 T) auf Google-Oberklassen, KI-Stufe ruht (OpenAI leer, Groq erschöpft) — 807 «ok» + 1'219 «keiner» im KI-Ledger flossen NIE in die Lerndaten → `oberklasse_nachlernen.py` (+1'032 Beispiele, «uneinig» nie, täglich vor dem Lerner); SPERRE ohne Wortgrenzen sperrte ~300 (Unisex/Waffel/Türklingel/Durchmesser) → Wortgrenzen + 21 Kanarien; Gegenprobe 97,5 %.** Geprüfte Urteile gehören in die Lerndaten → `dropship/OBERKLASSE-NACHLERNEN-2026-10-09.md`

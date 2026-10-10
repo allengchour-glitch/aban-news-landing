@@ -1,0 +1,27 @@
+{
+  "zweck": "Lieferzeit je Versandtarif (10.10.2026, dropship/VERSAND-LIEFERZEIT-2026-10-10.md). Google übernimmt die Transitzeit des Shopify-Tarifs; ohne sie zeigte Google 2–6 Tage, die Kasse zeigte beim Standard-Tarif 3–5 Tage — die Versandrichtlinie sagt 10–20 Werktage (Direktversand, grösster Teil des Sortiments). Prüfer: automation/versand_transit_wache.py (API-Version unstable, Felder minTransitTime/maxTransitTime in Sekunden).",
+  "api_version": "unstable",
+  "zonen": {
+    "CH": {
+      "min_tage": 10,
+      "max_tage": 20,
+      "richtlinie_satz": "10&ndash;20 Werktage"
+    },
+    "LI": {
+      "min_tage": 15,
+      "max_tage": 45,
+      "richtlinie_satz": "15–45 Tage"
+    },
+    "REST": {
+      "min_tage": 10,
+      "max_tage": 20,
+      "richtlinie_satz": null
+    }
+  },
+  "toleranz_tage": 0,
+  "ausnahme_profile_praefix": [
+    "Gelato:",
+    "Shopify Collective"
+  ],
+  "ausnahme_grund": "App-verwaltete Profile (Gelato = Druck auf Bestellung, Regel «Editor/POD heilig»; Collective = Partnerware). Die App setzt dort Preise und Zeiten selbst; Gelato hatte 10.10. 18 + 24 Varianten (T-Shirts, Hoodies) — in der Richtlinie gilt dafür «7–14 Werktage»."
+}
