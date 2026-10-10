@@ -861,3 +861,9 @@ gid://shopify/Product/15446063612289	ok	Haftcreme für Zahnprothesen 28g
 gid://shopify/Product/15446065021313	kein-video-beim-lieferanten
 gid://shopify/Product/15446065611137	kein-video-beim-lieferanten
 gid://shopify/Product/15446065873281	kein-video-beim-lieferanten
+gid://shopify/Product/15446066299265	kein-video-beim-lieferanten
+gid://shopify/Product/15446066954625	kein-video-beim-lieferanten
+gid://shopify/Product/15446067937665	kein-video-beim-lieferanten
+gid://shopify/Product/15446069510529	kein-video-beim-lieferanten
+gid://shopify/Product/15446069936513	kein-video-beim-lieferanten
+gid://shopify/Product/15446070329729	kein-video-beim-lieferanten
