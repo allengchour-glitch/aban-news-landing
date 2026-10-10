@@ -358,3 +358,5 @@
 2026-10-08	gid://shopify/Product/16612105126279	natel	Handtasche für Handy – Einfarbig, PU-Leder
 2026-10-09	gid://shopify/Product/16612779393415	finken	Kinder-Hausschuhe mit Fersenriemen
 2026-10-10	gid://shopify/Product/16608454771079	natel	Aluminium-Handyhalter mit Klappmechanismus
+2026-10-10	gid://shopify/Product/16613794152839	natel	Schutzfolie für iPhone 11 – Blaulicht- und Fingerabdruckschutz
+2026-10-10	gid://shopify/Product/16613794513287	natel	WLAN-Smart-Fernbedienung für iPhone & Android
