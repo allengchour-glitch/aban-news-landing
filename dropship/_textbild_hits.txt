@@ -17501,3 +17501,4 @@ gid://shopify/Product/16613760663943	72->1	Mosaik-Schachbrett-Kunstharz-Armband 
 gid://shopify/Product/16613763678599	40->2	Zinn-Glasperlen Armband für Apple Watch
 gid://shopify/Product/16613763744135	10->0	Atmungsaktives Leder-Uhrenarmband in T-Form für Apple Watch
 gid://shopify/Product/16613763940743	15->0	Smart-Headset-Uhr mit Bluetooth 5.0
+gid://shopify/Product/16613781864839	49->0	Intelligenter Staubsaugerroboter mit Wischfunktion
