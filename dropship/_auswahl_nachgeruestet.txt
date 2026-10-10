@@ -757,3 +757,6 @@
 15453792633217	Farbe:6:6	2026-10-10	einfarbiges-baumwoll-krepp-tuch-fur-babys-605500
 15454105502081	Farbe:2:2+ki	2026-10-10	kinderschutzhelm-mit-cartoon-design-6dec35
 15503948677505	Farbe:3:3+ki	2026-10-10	mittelalterlicher-doppel-schwertgurt-aus-pu-le-394304
+15453744333185	Farbe:4+Grösse:8:32	2026-10-10	boho-chic-langarm-kleid-617400
+15453762617729	Farbe:13+Grösse:5:65+ki	2026-10-10	pastellfarbener-casual-pullover-630900
+15453772644737	Farbe:3:3+ki	2026-10-10	kauspielzeug-fur-hunde-zahnpflege-620300
