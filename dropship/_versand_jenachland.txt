@@ -8900,3 +8900,6 @@ gid://shopify/Product/15427238068609	ersetzt
 gid://shopify/Product/15427238101377	ersetzt
 gid://shopify/Product/15427238134145	ersetzt
 gid://shopify/Product/15427238166913	ersetzt
+gid://shopify/Product/15427238199681	ersetzt
+gid://shopify/Product/15427238232449	ersetzt
+gid://shopify/Product/15427238265217	ersetzt
