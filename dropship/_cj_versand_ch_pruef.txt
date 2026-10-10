@@ -6985,3 +6985,6 @@ britische-casual-lederschuhe-im-retro-stil-617900	2607030503161618600	16	18.83	o
 herrenschuhe-aus-weichem-leder-mit-glanz-finis-615600	2606180624421616100	16	17.66	ok	landeseite
 business-lederschuhe-im-drachenschuppen-muster-618800	2606160223221619500	16	15.44	ok	landeseite
 business-freizeitschuh-im-korean-style-620700	2606150608251621700	16	19.06	ok	landeseite
+herren-lederschuhe-im-britischen-stil-631700	2606140116541632300	16	12.81	ok	landeseite
+business-lederschuhe-mit-spitzer-zehe-619500	2606080617061610100	16	15.68	ok	landeseite
+herren-high-top-lederstiefel-mit-spitzer-kappe-612500	2606070654011613400	16	14.78	ok	landeseite
