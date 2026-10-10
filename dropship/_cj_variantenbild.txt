@@ -6654,3 +6654,4 @@ gid://shopify/Product/15459806544257	zugeordnet	30	Sommerhemd Herren Kurzarm Cas
 gid://shopify/Product/15459837116801	zugeordnet	25	Herren-Pullover
 gid://shopify/Product/15459837149569	zugeordnet	96	Langarm-Hemd mit Streifen
 gid://shopify/Product/15459837313409	zugeordnet	4	Polka Dot Armreif
+gid://shopify/Product/15459837346177	zugeordnet	2	Vintage-Ginkgo-Blatt Armband
