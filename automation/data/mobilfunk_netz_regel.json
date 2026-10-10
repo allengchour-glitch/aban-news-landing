@@ -5,7 +5,7 @@
   "neu": "(?<![\\d.,])\\b4G\\b|\\b5G[- ]?(NR|network|netz|mobilfunk)\\b|\\b(LTE|Cat[- ]?M1?|NB[- ]?IoT|VoLTE)\\b|all[- ]?net(com)?\\b|full[- ]?net(com)?\\b|alle netze|全网通|\\b(FDD|TDD)(-?LTE)?\\b|LTE-?(FDD|TDD)",
   "alt": "(?<![\\d.,])\\b(2G|3G)\\b|\\b(GSM|GPRS|WCDMA|UMTS|CDMA)\\b",
   "sim": "\\bSIM\\b|nano[- ]?SIM|micro[- ]?SIM|SIM[- ]?(card|karte)|插卡|Telefonkarte",
-  "bluetooth": "bluetooth|find[- ]?my|BLE\\b|anti[- ]?lost|anti[- ]?verlust|airtag|itag",
+  "bluetooth": "bluetooth|find[- ]?my|\\bBLE\\b|anti[- ]?lost|anti[- ]?verlust|airtag|\\bitag\\b",
   "draft_tag": "mobilfunk-nur-2g-3g",
   "kanarien": [
     {
@@ -63,6 +63,15 @@
     {
       "text": "Die Uhr unterstützt FDD-Bänder: B1/B3/B20, WCDMA-Bänder: B1/B8 und GSM-Bänder: B3/B8",
       "soll": "4g"
+    },
+    {
+      "text": "Kinder-Telefonuhr mit vielen Sprachen, suitable for children, available in 3 colors",
+      "soll": "unklar"
+    },
+    {
+      "titel": "Smartwatch für Kinder mit Video & Anruf",
+      "text": "Kids smart watch with video call, bluetooth music",
+      "soll": "unklar-sim"
     }
   ],
   "wlan": "\\b(wi-?fi|wlan)\\b",

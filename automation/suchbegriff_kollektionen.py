@@ -133,6 +133,12 @@ def kollektionen(gql, scharf):
         if fehlt and aktiv == 0:
             print(f"   wartet auf Ware (0 aktive Produkte) — noch nicht publiziert")
             continue
+        if aktiv == 0 and pubs and scharf:
+            # 10.10.: GPS-Tracker ging mit EINEM Fehlgriff (Leitungssucher) online; nach dessen Korrektur wäre die Seite leer
+            r = gql('mutation($id:ID!,$i:[PublicationInput!]!){publishableUnpublish(id:$id,input:$i){userErrors{message}}}',
+                    {"id": cid, "i": [{"publicationId": p} for p in pubs]})["publishableUnpublish"]
+            print(f"   leer → aus {len(pubs)} Kanälen genommen", r["userErrors"] or "")
+            continue
         if fehlt and scharf:
             r = gql('mutation($id:ID!,$i:[PublicationInput!]!){publishablePublish(id:$id,input:$i){userErrors{message}}}',
                     {"id": cid, "i": [{"publicationId": p} for p in fehlt]})["publishablePublish"]

@@ -8,6 +8,7 @@ const R = JSON.parse(fs.readFileSync(new URL('./data/mobilfunk_netz_regel.json',
 const rx = s => new RegExp(s, 'i');
 const KAND = rx(R.kandidat_titel), NICHT = rx(R.nicht_titel), NEU = rx(R.neu), ALT = rx(R.alt), SIM = rx(R.sim);
 const BT = rx(R.bluetooth), WLAN = rx(R.wlan), PERSON = /kinder|kids?\b|child|senior|elderly|baby/i;
+const TELEFON = /telefon|anruf|video|\bsos\b|\bcall/i;
 
 export function istKandidat(titel) { return KAND.test(titel || '') && !NICHT.test(titel || ''); }
 
@@ -21,6 +22,7 @@ export function urteil(titel, text) {
     return 'nur-2g-3g';
   }
   if (SIM.test(x)) return 'unklar-sim';
+  if (TELEFON.test(t) && BT.test(x)) return 'unklar-sim';   // Uhr mit Anruf/Video/SOS: «Bluetooth» belegt kein Netz (10.10.)
   if (BT.test(x)) return 'bluetooth';
   return 'unklar';
 }
@@ -34,7 +36,7 @@ export const DRAFT_TAG = R.draft_tag;
 if (process.argv[1] && process.argv[1].endsWith('mobilfunk.mjs') && process.argv.includes('--test')) {
   let f = 0;
   for (const k of R.kanarien) {
-    const u = urteil(k.text, k.text);
+    const u = urteil(k.titel || k.text, k.text);
     if (u !== k.soll) { f++; console.log(`  ✗ ${k.text.slice(0, 60)} → ${u} (soll ${k.soll})`); }
   }
   console.log(f ? `MOBILFUNK-JS ${R.kanarien.length - f}/${R.kanarien.length}` : `MOBILFUNK-JS OK ${R.kanarien.length}/${R.kanarien.length}`);
