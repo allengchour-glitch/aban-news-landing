@@ -6706,3 +6706,11 @@ gid://shopify/Product/15460185506177	zugeordnet	9	Damen-Weisses Leinenhemd im Fr
 gid://shopify/Product/15460186521985	zugeordnet	30	Damen Velourspulli mit Schleife
 gid://shopify/Product/15460186947969	zugeordnet	30	Damen Hoodie Bequem mit Taschen und Langarm
 gid://shopify/Product/15460187308417	zugeordnet	64	Kapuzen-Schlauchzug-Sweatshirt mit Beuteltasche
+gid://shopify/Product/15460187668865	zugeordnet	96	Druckfreie Fitnesshose für Laufsport
+gid://shopify/Product/15460189798785	zugeordnet	19	Weiches Mini-Puppenfigur
+gid://shopify/Product/15460190716289	zugeordnet	2	Keramischer Dekowal für Wohnzimmer
+gid://shopify/Product/15460190912897	zugeordnet	24	Weiche Anti-Rutsch Sofa-Decke
+gid://shopify/Product/15460287250817	zugeordnet	6	Französisch-stil Deckenleuchte mit Sand-Textur & Wellenrand
+gid://shopify/Product/15460288037249	bild-urls-tot
+gid://shopify/Product/15460439589249	zugeordnet	60	Sonnenschutzplane
+gid://shopify/Product/15460439622017	zugeordnet	60	Sofa-Kissen
