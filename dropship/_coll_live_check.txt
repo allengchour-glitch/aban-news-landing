@@ -562,3 +562,5 @@ schrank-organizer	ok	12	Schrank-Organizer
 weihnachtspyjama-familie	ok	29	Weihnachtspyjamas für die ganze Familie
 weihnachtspullover	ok	29	Weihnachtspullover & Christmas Sweater
 handwaermer	ok	17	Handwärmer
+🎁-geschenke-bis-chf-30-alt-20261010	unveroeffentlicht	0	Geschenke bis CHF 30 (alt)
+damenmode-favoriten	ok	17	Damenmode – unsere Favoriten
