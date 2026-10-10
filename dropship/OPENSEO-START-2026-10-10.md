@@ -63,3 +63,35 @@
   Erneuern: dieselbe Mutation mit `timeToLive: 7776000`, Werte in OpenSEO → Settings → Crawler access einfügen.
 - Idee: Mit einer eigenen Signatur könnten auch unsere Prüfwerkzeuge die echte Storefront sehen, statt der stundenalten
   Bot-Cache-Kopie (CLAUDE.md «von unserer IP aus nicht prüfbar»). Das ist noch nicht gebaut.
+
+## Erster Audit 10.10. 08:59–09:11 UTC (0 Credits, Guthaben weiter 430)
+
+- **Die Crawler-Signatur wirkt:** 35 Seiten mit HTTP 200, keine «blocked». Nach 35 Seiten kam ein 429 (Shopify-Drossel,
+  `/collections/jeans-denim`), der Audit endete dort. Auch mit `curl` und denselben Kopfzeilen kommt die echte Seite.
+- **Befunde, die zählen:**
+
+| Befund | Ursache | Getan |
+|---|---|---|
+| Startseite (Google-Text) und Fusszeile jeder Seite: «Versand nur in der Schweiz» | Liechtenstein ist seit 09.10. Lieferland. Die Wache von gestern las Seiten + Richtlinien, **nicht das Theme** | 4 Stellen in `meta-tags.liquid` + `footer-group.json` → «in die Schweiz und nach Liechtenstein» (bei /collections/all: «in der Schweiz gratis ab CHF 50», LI hat keinen Gratisversand). Live per curl geprüft |
+| `/pages/alle-kategorien`: Beschreibung 323 Zeichen mit «Kostüme &amp;amp; Fasnacht» (auch og:description) | Seite ohne SEO-Text → Shopify nimmt einen Auszug aus dem Inhalt, der kommt **zweifach** escaped. Die Formel vom 09.10. klappt nur einmal zurück | SEO-Text gesetzt (155 Z.); im Theme `LUX-META-DOPPEL` (meta + og) klappt «&amp;amp;» einmal ein |
+| `/blogs/ratgeber` ohne Beschreibung | Blogs hatten nie `global.description_tag` | Ratgeber (152 Z.) + Magazin (142 Z.) gesetzt |
+| — (beim Nachzählen) | `tiktok-callback` und `merkliste` öffentlich ohne Inhalt | `seo.hidden = 1` (noindex, aus der Sitemap) |
+
+- **Nur Info, nicht angefasst:**
+  - Überschriften springen (30 Seiten, H1 → H3): kommt aus dem Theme-Raster.
+  - 5 Titel über 60 Zeichen: der Zusatz « – LuxeStyle» zählt mit.
+  - Emoji-Adressen werden kanonisch klein geschrieben (`%f0` statt `%F0`): ist dieselbe Adresse.
+  - Eine langsame Antwort (1,8 s).
+- **Nebenfund:** Shopify `shop.description` verspricht weiter «Versand … nach Deutschland». Ändern kann das nur der Betreiber,
+  `COWORK-BEFEHL.md` Punkt 5 hat den neuen Text (CH + LI, 147 Zeichen).
+
+**Wächter:**
+- `liefergebiet_text_wache.py` liest jetzt auch die 429 Theme-Dateien (Kanarien: die 4 alten Stellen werden gefunden; jetzt 0 Befunde).
+- `meta_beschreibung_escape.py --pruefen` (Kanarien 4/4) meldet fehlendes `LUX-META-DOPPEL` und veröffentlichte Seiten oder Blogs ohne SEO-Text.
+- Beide laufen täglich im Aufseher.
+- **Offen:** 219 von 328 Ratgeber-Artikeln haben keinen eigenen SEO-Text. Google bekommt dann die ersten 320 Zeichen des
+  Artikels, zum Beispiel «Der Sommer 2026 steht vor der Tür …» im Oktober. Das ist ein Kandidat für die nächste Runde.
+
+**Lehre:** Eine Wache für «Text X überall» muss alle Orte kennen, an denen Text steht: Seiten, Richtlinien, **Theme**
+(Fusszeile, Meta-Texte, Ersatztexte), Shop-Feld. Die Messung vom 10.10. hatte das Theme ausgelassen, ein externer Crawler fand
+es in 12 Minuten.

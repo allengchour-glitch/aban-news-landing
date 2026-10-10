@@ -438,3 +438,4 @@
 2026-10-09T11:44:05Z	SCHREIB	gid://shopify/Product/15455730794881	damenblau-arbeitshose-aus-baumwoll-mischung-ge-639500	USED	bild_alt	Blaue Damen-Jeans, gerader weiter Schnitt, Used-Look – Bild 4 | LuxeStyle	Blaue Damen-Jeans, gerader weiter Schnitt, Vintage-Look – Bild 4 | LuxeStyle	ok
 2026-10-09T11:44:05Z	SCHREIB	gid://shopify/Product/15455730794881	damenblau-arbeitshose-aus-baumwoll-mischung-ge-639500	USED	bild_alt	Blaue Damen-Jeans, gerader weiter Schnitt, Used-Look – Bild 5 | LuxeStyle	Blaue Damen-Jeans, gerader weiter Schnitt, Vintage-Look – Bild 5 | LuxeStyle	ok
 2026-10-09T11:44:06Z	SCHREIB	gid://shopify/Product/15504006873473	baustein-luxuslimousine-auf-raedern-334528	EINZEL	kategorie	gid://shopify/TaxonomyCategory/tg-5-7-12	gid://shopify/TaxonomyCategory/tg-5-7	ok
+2026-10-10T09:17:06Z	NACHMESSUNG	gid://shopify/Product/15455730794881	damenblau-arbeitshose-aus-baumwoll-mischung-ge-639500	-	google		Missing shipping info in some countries	ok

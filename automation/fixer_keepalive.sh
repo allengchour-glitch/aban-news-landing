@@ -1673,6 +1673,7 @@ fi
 # META-ESCAPE (09.10.2026, Betreiber «nur 18 google suche ist wenig warum»): <meta name="description"> — der Text unter
 #     dem Google-Link — war doppelt escaped («Hemd &amp;amp; Wide-Leg-Hose»), weil page_description schon escaped kommt.
 #     Täglich: Formel live? Fehlt sie (Theme-Update) → einmal neu schreiben.
+#     10.10.2026 (OpenSEO-Audit): dazu LUX-META-DOPPEL (Inhalts-Auszug kam zweifach escaped) und Seiten/Blogs ohne SEO-Text.
 if [ -f "$REPO/automation/meta_beschreibung_escape.py" ] && [ ! -f /tmp/meta_escape_$(date -u +%F).stamp ]; then
   touch /tmp/meta_escape_$(date -u +%F).stamp
   ME=$(cd "$REPO" && timeout 120 python3 automation/meta_beschreibung_escape.py --pruefen 2>&1 | tail -1)
