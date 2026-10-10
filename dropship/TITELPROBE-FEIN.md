@@ -1,7 +1,8 @@
-# Titelprobe-Fein — Stand 2026-10-09 09:18 UTC
+# Titelprobe-Fein — Stand 2026-10-10 09:32 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 2 · gesetzt 2 · fehler 0.
 
+- 2 → Shirts & Tops
 
 ## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (0)
 
@@ -35,8 +36,8 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Langtrench mit Slim-Fit  [G: Coats & Jackets]
 - Mittellanger Damen-Trench mit Taschen  [G: Coats & Jackets]
 - Mesh Maxi Cape mit Fledermausärmeln  [G: Dresses]
-- V-förmiges Stickdresch mit Puffärmel  [G: Dresses]
 - Acryl-Hängeornament  [G: Necklaces]
+- Langarm-Base-Layer für Herren  [G: Activewear]
 - Blaues Denim für Herren  [G: Pants]
 - Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
