@@ -49,6 +49,22 @@
 
 
 
+## 🎨 Code VOR der Farbe im Auswahlfeld — die Regel vom Vortag prüfte nur Werte ohne Leerzeichen (2026-10-10, 13:00 UTC, Verbesserungsrunde)
+**Gemessen:** Stichprobe Neuimporte (4 h, 286) zeigte «2350 Black · 2350 Brown», «GS8111G Black … 2GS8111G Brown»; im Bestand
+396 aktive mit Code vorn im Farb-/Ausführungsfeld, davon 193 Optionen mit einer Farbe dahinter («646 Schwarz», «8919 Armeegrün»,
+«P0448H Schwarz», «9311 Schwarz · Gr. 37»). **Ursache:** `farbcode_modell` (09.10.) prüft nur Werte OHNE Leerzeichen; der
+Importer-Helfer `ohneCode()` kennt nur Codes mit GROSSBUCHSTABEN vorn — «2350», «646», «2GS8111G» kamen durch.
+**Getan:** EINE Regel `data/farbcode_praefix_regel.json` = `farbcode_praefix.py` (Bestand + Aufseher täglich) = `.mjs` in beiden
+CJ-Importern (Harness `buildFashion` grün); 45 Kanarien, py=js 16'677/0; Bestand 193/0 mit Rücklesen (WebFetch: «Schwarz/Aprikose» statt «646 …»); Bericht
+`dropship/FARBCODE-PRAEFIX-2026-10-10.md`. Nebenbei: stale Keepalive-Zeile «GOOGLE-VERSUCH» (A/B vom 29.09., B längst
+nachgezogen) ausgebaut; «Product page unavailable» 49 = Wächter wirkt (352/401 frei), 19 bleiben nach Neuprüfung.
+**Lehren:** (1) Eine Klasse ist erst zu, wenn ALLE Schreibformen eines Lecks geprüft sind — «Code», «Code + Farbe», «Code+Farbe
+angeklebt»; die Regel vom Vortag hiess «Lieferantencodes im Farbfeld» und deckte eine von drei Formen. (2) Trockenlauf über ALLE
+Kandidaten fand drei Fallen, die keine Kanarienliste kannte: angeklebtes Wort («3237Dark Brown» → «Braun» verlöre «Dark»),
+Mass als Code («45x45cm»), Silber-Kennung `9xx` schluckte Artikelnummer «933». (3) Nach einem Anstoss ist die Google-Meldung
+LEER, bis Google neu prüft — «keine Meldung» direkt nach dem Anstoss heisst nicht «frei»; erst `feedbackGeneratedAt` nach dem
+Anstoss sagt, ob Google wirklich neu geurteilt hat.
+
 ## 🥾 Runde 2 Suchbegriff-Kollektionen + ein Tageslauf, der zu schnell «in Ordnung» sagte (2026-10-10, 11:45 UTC, «verbessere mehr»)
 
 - **Neu:** Sicherheitsschuhe 104, Holzuhren 99, Camisole & Trägertops 42, Smart Rings 9, Schrank-Organizer 7. Dazu `schuhe-absatz` → «Stilettos & High Heels». Es gab zwei fast gleiche Heels-Kollektionen; eine dritte hätte nur Kannibalisierung gebracht.
@@ -19702,3 +19718,4 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · 🔍 **«nur 18 google suche ist wenig warum»: CH-Google Jul 127 → Aug 104 → Sep 75 → Okt ~77/Mt (Juli-Wochenspitze zur Hälfte Ausland), 71/91 auf Produktseiten, Ratgeber 0; Juli-Treiber Rizinusöl-Set (34) DRAFT (CJ nicht CH), Saisonende; GSC erst seit 05.10.; `<meta name="description">` doppelt escaped («&amp;amp;», page_description kommt schon escaped) → `meta_beschreibung_escape.py` live 6/6 + Wächter.** Wochenkurve nach Land trennen; «ist korrekt» im Kommentar ist kein Beweis → `dropship/GOOGLE-VERKEHR-WARUM-2026-10-09.md`
 - 2026-10-09 · ⌚ **Verbesserungsrunde: CJ-Gruppe «elektronik» stempelte Typ «Elektronik» auf 1'089 Uhren/Armbänder — die Menü-Kollektion «Schmuck & Uhren» filtert nach TYP, keines sichtbar → `data/gruppenstempel_typ.json` = `gruppenstempel_typ.py` (Aufseher täglich, Sperre: ODER-Kollektion hält über Tag) = `.mjs` im Importer (Uhrwort-Weg, Wecker aus); 883/883 + 91 Tag «uhren», Kollektion 6'499 → 7'382.** Gruppenstempel → Typ-Kollektionen prüfen → `dropship/GRUPPENSTEMPEL-TYP-2026-10-09.md`
 - 2026-10-09 · 🏷️ **«weiter»: 124 aktive mit Lieferantencodes im Farbfeld («QW121», «040401», «MFH3IUW75B08E11» neben «Blau»; 12 seit Sept.) — Importer prüften «alle Werte Code» (`codeOpt`) → gemischte Listen durch; EINE Regel `data/farbcode_modell_regel.json` = `farbcode_modell.py` (Aufseher täglich) = `farbcode_modell.mjs` in beiden Importern (54 Kanarien, py=js 17'028/0) → 166/0 «Modell N»/laufende Serie; Tonnamen, Code+Grösse, Rollengrössen bleiben (49 gemeldet).** Regel auf den Wert, nicht auf die Liste → `dropship/FARBCODE-MODELL-2026-10-09.md`
+- 2026-10-09 · 🏃 **«weiter»: Fitness-/Smart-Armbänder bei Google unter «Bracelets» — `uhren_fein.py` las nur den Watches-Zweig → zweiter Durchgang `UHREN-FEIN-ARMBAND` mit eingeschränkter Regel (nie «Watches»: Quarz = Rosenquarz; Smartwatch nur mit Messwort), Kanarien 14/14, 18/0, Tageslauf nimmt beide Zweige.** Nachbarzweig prüfen, Regel dort einschränken → `dropship/ARMBAND-SMART-ZWEIG-2026-10-09.md`

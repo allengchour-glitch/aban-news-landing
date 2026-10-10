@@ -25,6 +25,8 @@ import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { essbar } from './essbar.mjs';   // 09.10.2026: Essbares aus China nicht verkaufen (data/essbar_regel.json)
 import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';
+import { praefixWeg, kanarienGruen as farbpraefixKanarien } from './farbcode_praefix.mjs';   // 10.10.2026: «2350 Black» → «Schwarz»
+const FARBPRAEFIX_OK=farbpraefixKanarien(); if(!FARBPRAEFIX_OK)console.error('farbcode_praefix: Kanarien rot — Code vor Farbe bleibt');
 import { stempelKorrigieren, kanarienGruen as stempelKanarien } from './gruppenstempel_typ.mjs';   // 09.10.2026: Uhren nicht als «Elektronik»
 const GRUPPENSTEMPEL_OK=stempelKanarien(); if(!GRUPPENSTEMPEL_OK)console.error('gruppenstempel_typ: Kanarien rot — Typ bleibt');   // 09.10.2026: Codes im Farbfeld → «Modell N»
 const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
@@ -165,7 +167,12 @@ function buildFashion(d){
  // Reine Lieferanten-Artikelnummern sind keine Farbe: Option «Ausführung», Werte «Modell N»
  // in der Reihenfolge der Bildergalerie. Sonst steht der fremde Code im Kaufbereich und die
  // Kundin wählt blind zwischen «JM721» und «JM722» (14.08.2026).
- const sMap=useC?codeMap(colors):null;                 // «A039 Black» → «Schwarz»
+ const sMap0=useC?codeMap(colors):null;                // «A039 Black» → «Schwarz»
+ // 10.10.2026: Code mit ZIFFER vorn vor der Farbe («2350 Black», «646 Schwarz», «2GS8111G Brown») kennt ohneCode() nicht
+ // (CODETOKEN verlangt einen Grossbuchstaben) → Regel data/farbcode_praefix_regel.json (= Bestand-Wächter farbcode_praefix.py).
+ const eff0=colors.map(c=>sMap0?sMap0.get(c):c);
+ const pr=useC&&FARBPRAEFIX_OK?praefixWeg(eff0,d.productNameEn||''):null;
+ const sMap=pr?new Map(colors.map((c,i)=>[c,pr[i]])):sMap0;
  const eff=colors.map(c=>sMap?sMap.get(c):c);          // was die Kundin am Ende sähe
  const codeOpt=useC&&eff.filter(istCode).length>=2
    &&eff.every(c=>istCode(c)||LETTERSIZE.test(c));
