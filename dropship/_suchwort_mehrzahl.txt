@@ -3892,3 +3892,5 @@ gid://shopify/Product/16612997169543	kleider	Formelles Paillettenkleid mit Doppe
 gid://shopify/Product/16612998480263	kleider	Halterkleid mit Rückenausschnitt und Schleife
 gid://shopify/Product/16613002084743	kleider	Rosa A-Linien-Partykleid mit hohem Taillenbund
 gid://shopify/Product/16613447270791	taschen	Herren-Sweatshirt mit Stehkragen und Aufsatztasche
+gid://shopify/Product/15470351679873	ketten	Frucht-Halskette · Damen
+gid://shopify/Product/15474482479489	kleider	Kapuzenkleid · Damen
