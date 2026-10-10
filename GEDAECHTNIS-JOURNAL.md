@@ -49,6 +49,19 @@
 
 
 
+## 🛏️ Hype-Reihe 10.10. + Google nach der LI-Freigabe (2026-10-10, 07:15 UTC, «weiter»)
+
+**Hype:** Sell The Trend Oktober (Beauty/Pflege + Saison-Deko; «DreamDuo Support Pillow» — Umsatzzahlen = BEHAUPTUNG) →
+Thema «Schlaf-Stützkissen» (Bestand GEMESSEN 20; Bezüge ausgeschlossen, Kanarien 7/7). Der Trockenlauf zeigte zwei Fehlgriffe
+alter Themen: «MagSafe» allein traf eine iPhone-Hülle zum Selbstgestalten («Ladestation 3-in-1»), «Oversize Hoodie» allein
+traf Mode-Hoodies («Hoodie-Decke») → beide Muster an ein Warenwort gebunden (Lade-/Powerbank-Wort bzw. «-Decke»). Lauf: 16 neu,
+12 abgelaufen, Kollektion 61. **Lehre:** Ein Merkmalwort (MagSafe, Oversize) ist kein Warenwort — Themenmuster brauchen das Ding.
+
+**Google 06:58:** Blocker CH 752 → 1'050 (Image under review 400, Inappropriate 332, Unable to show image 2 → 109). Die 109:
+25/25 Bilder HTTP 200 auch für Googlebot-Image, fast alle Produkte am 06.–10.10. geändert (Alttext-Abgleich) → Google lädt die
+neu versionierten Bilder nach, nichts zu tun. **«Missing shipping info [LI]» 785 → 28'195** — LI-Zone im Standardprofil, App
+gleicht zeitversetzt ab → nachmessen 11.10. (`LIECHTENSTEIN-FREIGABE-2026-10-09.md`).
+
 ## 🧾 «Mindestbestellmenge» ist oft die Verkaufseinheit — Händlerbedingungen im Text (2026-10-10, 06:55 UTC, «weiter»)
 
 **Gemessen:** frischer Export mit Beschreibungen (52'348 aktive), 13 Produkte mit Händlerbedingungen: «Für 10 Paare beträgt der
@@ -19538,3 +19551,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 💎 **«weiter sauber machen»: 41 Titel «Leder/Wolle/Seide» bei PU/Acryl/Polyester im eigenen Text → `material_widerspruch.py` 41/0; 622 aktive mit «Diamant» (teuerstes CHF 150.90 Moissanit) → Regel `diamant` in `data/versprechen_regel.json` (Strass/Zirkonia, Dativ+Einzahl, Vergleich/Form/Painting/Werkzeug/Karat bleiben; 55 Kanarien, py=js 616/0) 212/0; Live-Check fand Bild-Alts mit altem Titel: 11'730 an 1'604 Produkten (u. a. «& Blutdruckmessung») → Wächter liest Alts (817/0), `alt_titel_abgleich.py` täglich (Alt-Titel := Titel); Adressen 155 mit 301 (`handle_messversprechen.py` + diamant/leder).** Ein Name steht an sechs Stellen; Ist-Abgleich statt Ledger-Kette → `dropship/SAUBER-MATERIAL-DIAMANT-ALT-2026-10-08.md`
 - 2026-10-09 · 🔔 **Verbesserungsrunde: Tag 9 ✅ (2'161/2'881 Neuimporte auf Bewertungen geprüft, Ziel 1'500); Ampel meldete «still: Pinterest» trotz gewolltem 48-h-Takt (fest 24 h geprüft) → `metricool_takt()` liest TIKTOK_/YOUTUBE_/PINTEREST_ABSTAND aus `social_autopilot.sh`, `kanal_still()` Takt + Spielraum, 7 Kanarien + Gegenprobe.** Kadenz-Wächter liest die Kadenz aus ihrer Quelle → `dropship/AMPEL-KADENZ-2026-10-09.md`
 - 2026-10-09 · 🍬 **Verbesserungsrunde: «Hundegesundheits-Tabletten» (CJ-Neuimport) ACTIVE in 6 Kanälen; Bestand 11 essbare CJ-Produkte (Tier-Supplements, Hühnchen-Snacks, Koffein-Beutel) — ohne Registrierung/BLV nicht einführbar (Klasse Klinge #1017) → `data/essbar_regel.json` (25 Kanarien, Titel+CJ-Name+Kategorie, Fortura bleibt), `essbar_wache.py` 12 DRAFT täglich, Importer-Sperre `essbar.mjs` (py=js 25/25).** Warengruppe mit Einfuhrregel = Sperre im Importer VOR dem Anlegen → `dropship/ESSBAR-CJ-2026-10-09.md`
+- 2026-10-09 · 🛒 **«verbessere mehr»: TikTok-Seiten 563 Sitzungen → 6 Kassen → 0 Käufe; derselbe Testkorb (1× Leinen 39.90) sagte «noch CHF 5.10» (Balken theme.liquid, falsch: jeder Zusatzartikel = −10 %, 45.80 → 41.22 → CHF 7) UND «noch CHF 10.10» (cart-summary) UND «CH-Lager 1–2 Werktage» (Asien-Ware) → `warenkorb_einig.py`: EIN Rechenweg (gratis ab 45 nach Rabatt, noch = 50 − Wert vor Rabatt), Lieferdatum der langsamsten Ware wie `lux_delivery`, Kanarien 7/7, Wächter mit echtem Testkorb.** Zwei Bausteine für dieselbe Zahl = Widerspruch mit Zeitverzug; Testkörbe sparsam (429) → `dropship/WARENKORB-EINIG-2026-10-09.md`

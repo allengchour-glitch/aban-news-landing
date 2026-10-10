@@ -6751,3 +6751,6 @@ gid://shopify/Product/15460665426305	zugeordnet	24	Langarm-Shirt mit Schlitz –
 gid://shopify/Product/15460665491841	zugeordnet	20	Leichte Bluse mit Spitze und Bindedetail
 gid://shopify/Product/15460665524609	zugeordnet	8	Ärmelloses Jeanshemd mit Knotenfront
 gid://shopify/Product/15460667261313	zugeordnet	15	Strick-Cardigan mit Herzmotiv
+gid://shopify/Product/15460667294081	zugeordnet	99	Rundhals-Pullover mit Farbblock-Design
+gid://shopify/Product/15460667326849	zugeordnet	18	Kuscheliger Strickpullover mit Reverskragen
+gid://shopify/Product/15460667359617	zugeordnet	10	Vielseitiger Langarm-Strickpullover mit Rippenmuster
