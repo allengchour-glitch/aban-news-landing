@@ -6802,3 +6802,5 @@ mules-mit-geschlossener-zehenpartie-618300	2606130020441619100	16	9.75	ok	landes
 stoff-hausschuhe-mit-schleife-und-weicher-sohl-629200	2606120110571620400	16	8.53	ok	landeseite
 elegante-sandalette-im-franzosischen-stil-619100	2606110721151619700	16	11.37	ok	landeseite
 schafsfell-sandalen-mit-metallschnalle-639300	2606110214531630000	16	11.37	ok	landeseite
+geflochtene-pantoletten-mit-chunky-absatz-629100	2606110210331629800	16	11.37	ok	landeseite
+herren-flip-flops-aus-rindsleder-624100	2606100742291625100	16	10.69	ok	landeseite
