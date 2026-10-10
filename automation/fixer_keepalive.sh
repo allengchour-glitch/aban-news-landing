@@ -272,6 +272,16 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_marke_als_ware.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/marke_als_ware.py" >> "$MW" 2>&1 9>&- & )
   fi
+  # KOLLEKTION-MITGLIEDSCHAFT (10.10.2026): «Geschenke bis CHF 30» zeigte 9'259 statt 400 Artikel — Shopify hatte die Mitgliedschaft
+  # nach dem Regelwechsel vom 05.10. nie neu berechnet. Nur lesen: Tag-Kollektionen, Stichprobe nach Titel + teuerste gegen die
+  # eigene Regel → dropship/KOLLEKTION-MITGLIEDSCHAFT.md; Reparatur von Hand mit kollektion_neu_anlegen.py (neue Kollektions-ID).
+  KM=/tmp/kollektion_mitgliedschaft.log
+  if [ -f "$REPO/automation/kollektion_mitgliedschaft_wache.py" ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$KM" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+    touch "$KM"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektion_mitgliedschaft.lock; flock -n 9 || exit 0; \
+        timeout 1500 python3 automation/kollektion_mitgliedschaft_wache.py" >> "$KM" 2>&1 9>&- & )
+  fi
   # PLATZHALTER-OPTION (09.10.2026, «verbessere mehr»): Ein-Varianten-Ware mit «Variante / Standard» zeigte ein Wahlfeld mit
   # einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus → Option weg (Default Title), Rücklesen ID/SKU/Preis.
   # Importer legen seit 09.10. selbst «Title / Default Title» an; dieser Lauf fängt Nachzügler. Liest denselben Optionen-Export.
