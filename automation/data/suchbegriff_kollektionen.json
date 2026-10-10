@@ -317,6 +317,58 @@
           "Weihnachtssocken für die ganze Familie"
         ]
       }
+    },
+    {
+      "handle": "weihnachtspullover",
+      "titel": "Weihnachtspullover & Christmas Sweater",
+      "tag": "such-weihnachtspullover",
+      "ja": "(?=.*(pullover|sweater|sweatshirt|strickpulli|hoodie|jumper|strickjacke|cardigan))(?=.*(weihnacht|christmas|xmas|rentier|\\belch|schneemann|santa|lebkuchen|schneeflocke|nikolaus))",
+      "nein": "hund|haustier|f(ü|ue)r katzen|katzenpullover|kost(ü|ue)m|deko|kissen|tasse",
+      "seo_title": "Weihnachtspullover & Ugly Christmas Sweater | LuxeStyle",
+      "seo_desc": "Weihnachtspullover für Damen und Herren: Strick mit Schneeflocken, Hoodies mit Rentier, Elch und Lebkuchenmann, Christmas Sweater. Versand in die Schweiz.",
+      "html": "<p>Weihnachtspullover für Damen und Herren – vom klassischen Strickpullover mit Schneeflocken bis zum Hoodie mit Rentier, Elch, Schneemann oder Lebkuchenmann. Auch lustige «Ugly Christmas Sweater» für die Weihnachtsfeier sind dabei.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Strick und Jacquard sind klassisch, Flanell und Fleece wärmen mehr, Sweatshirts aus Baumwollmischung sind leicht. Das Material steht bei jedem Artikel.</li><li><strong>Passform:</strong> Asiatische Konfektion fällt oft kleiner aus – im Zweifel eine Nummer grösser. Die Mass-Tabelle steht auf der Produktseite.</li><li><strong>Partnerlook:</strong> Gleiche Motive für die ganze Familie findest du bei den <a href=\"/collections/weihnachtspyjama-familie\">Weihnachtspyjamas für die Familie</a>.</li><li><strong>Lieferzeit:</strong> Die meisten Pullover kommen per Direktversand in 10–20 Werktagen. Für Weihnachten am besten bis Mitte November bestellen.</li></ul><p>Rückgabe innerhalb von 30 Tagen, Bezahlung mit TWINT, Karte oder Klarna.</p>",
+      "kanarien": {
+        "ja": [
+          "Vintage Jacquard Weihnachtspullover",
+          "Weihnachts-Hoodie mit 3D-Print",
+          "Glitzer-Hoodie mit Lebkuchenmann-Motiv",
+          "Damen Rollkragenpullover mit Schneeflockenmuster",
+          "Jacquard Christmas Pullover für Herren",
+          "Weihnachts-Katze Crew-Neck Pullover Damen",
+          "Herren Hoodie mit Santa- und Biermuster"
+        ],
+        "nein": [
+          "Roter Weihnachtspullover für Hunde",
+          "Haustierpullover Weihnachten Kirsche",
+          "Elch-Pullover für Haustiere – Farbe & Grösse frei",
+          "Weihnachtspullover für Hund – S",
+          "Weihnachtskissen mit Rentier",
+          "Damen Strickpullover mit V-Ausschnitt"
+        ]
+      }
+    },
+    {
+      "handle": "handwaermer",
+      "titel": "Handwärmer",
+      "tag": "such-handwaermer",
+      "ja": "handw(ä|ae)rmer|hand-w(ä|ae)rmer|taschenw(ä|ae)rmer",
+      "nein": "handschuh|socke|kost(ü|ue)m",
+      "seo_title": "Handwärmer kaufen: USB-Akku, Powerbank & Einweg | LuxeStyle",
+      "seo_desc": "Handwärmer für kalte Tage: wiederaufladbar per USB, als Powerbank fürs Handy oder zum einmaligen Gebrauch. Klein für die Jackentasche. Versand in die Schweiz.",
+      "html": "<p>Handwärmer für den Arbeitsweg, das Stadion, die Skipiste oder den Spaziergang mit dem Hund. Hier findest du wiederaufladbare Akku-Handwärmer, Modelle mit Powerbank-Funktion und Wärmer zum einmaligen Gebrauch.</p><h2>Worauf achten?</h2><ul><li><strong>Akku oder Einweg:</strong> Akku-Handwärmer laden per USB und lassen sich immer wieder nutzen; Einweg-Wärmer brauchen keinen Strom.</li><li><strong>Powerbank:</strong> Viele Akku-Modelle laden auch das Handy – praktisch unterwegs.</li><li><strong>Grösse:</strong> Mini-Modelle passen in jede Jackentasche, grössere wärmen länger.</li><li><strong>Wärmestufen und Laufzeit:</strong> stehen beim jeweiligen Produkt, wenn der Hersteller sie angibt.</li></ul><p>Mehr gegen Kälte: <a href=\"/collections/winter-kaelte\">Winter &amp; Kälte</a>.</p>",
+      "kanarien": {
+        "ja": [
+          "Mini-Handwärmer & Powerbank",
+          "OUHOE Einweg-Handwärmer",
+          "USB-Handwärmer \"Warm Treasure\"",
+          "Niedliches Plüsch-Lendenkissen mit Handwärmer"
+        ],
+        "nein": [
+          "Beheizbare Handschuhe mit Akku",
+          "Touchscreen-Handschuhe aus Wolle",
+          "Wärmflasche mit Strickbezug"
+        ]
+      }
     }
   ]
 }
