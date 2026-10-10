@@ -1,17 +1,17 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-10T07:06Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-10T09:13Z
 
-Gescannt: 52383 aktive Produkte in 210 Seiten (vollständig), 664 s. Meldungen nur für Shopping Ads (ignoriert): 32693.
+Gescannt: 52442 aktive Produkte in 210 Seiten (vollständig), 321 s. Meldungen nur für Shopping Ads (ignoriert): 32574.
 
-## Free-Listings-Blocker: 1050
+## Free-Listings-Blocker: 1068
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Image under review | 400 | 0 | 400 |
-| Inappropriate image | 332 | 0 | 332 |
-| Restricted adult content | 110 | 0 | 110 |
-| Unable to show image | 109 | 0 | – |
+| Image under review | 421 | 0 | 421 |
+| Inappropriate image | 330 | 0 | 330 |
+| Unable to show image | 110 | 0 | – |
+| Restricted adult content | 109 | 0 | 109 |
 | Product page unavailable | 49 | 0 | – |
-| Promotional overlay on image | 35 | 0 | – |
+| Promotional overlay on image | 34 | 0 | – |
 | Image too small | 7 | 0 | – |
 | Adult-oriented content | 3 | 0 | 3 |
 | Title under review | 2 | 0 | 2 |
@@ -22,24 +22,24 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 ## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
 
-- Missing shipping info in some countries [LI]: 28195
+- Missing shipping info in some countries [LI]: 27957
 - Alcoholic beverages [LI]: 4
 
 Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: Sexual interests: 110
-- Personalized advertising: personal hardships: 88
+- Personalized advertising: Sexual interests: 109
+- Personalized advertising: personal hardships: 91
 - Personalized advertising: legal restrictions: 8
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 18
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 3
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Unable to show image (109)
+### Unable to show image (110)
 
 - tech-hero-geschenkbox-smartwatch-anc-ladestation
 - prodigi-poster-gruezi
@@ -103,13 +103,14 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - color-block-pullover-mit-kettenmuster-611200
 - …
 
-### Image under review (400)
+### Image under review (421)
 
 - rosenquarz-gua-sha-set
 - solar-camping-laterne-im-vintage-look-wiederaufladbar-ip44-wetterfest
 - phone-makeover-set-charms-grip-magsafe-holder
 - sunset-projection-lamp-16-colors-adjustable
 - sommer-armband-evil-schmetterling-nazar-auge-vergoldet
+- fransen-minirock-santa-fe-wildleder-optik-2-lagig
 - transparente-iphone®-hulle-selbst-gestalten
 - recycelter-unisex-allover-pullover-selbst-gestalten
 - schweiz-poster-alpsee-see-spiegelung-kunstdruck
@@ -120,10 +121,15 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - pod-sticker-ice-hockey
 - pod-sticker-kiwi
 - pod-sticker-ladybug2
+- pod-sticker-pixel-mushroom
+- pod-sticker-tattoo-anchor
+- pod-sticker-zebra
+- tasse-braunvieh
+- tasse-chalet
+- tasse-feierabig
 - tote-zum-selbstgestalten
 - reise-tasche-wasserdicht-xl
 - canvas-shopper-tote-nachhaltig
-- partner-ring-bar-vintage-edelstahl-unisex
 - rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren-💡
 - x2-dual-elektro-display-2-8-zoll-335169
 - edelstahl-anhanger-sternzeichen-und-monate-620600
@@ -159,22 +165,15 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - schonheitspflaster-628100
 - kottensack-fur-wohnzimmer-623000
 - katzenspielzeug-622200
-- liebes-pendant-puppe-629400
-- dehnbare-yoga-hose-aus-ice-silk-622700
-- bienchen-figur-aus-wolle-606200
-- kristall-samt-kissen-fur-seitenschlafer-623100
-- ruckenstutzkissen-fur-burostuhle-615400
-- wasserdichte-sportuhr-627700
 - …
 
-### Inappropriate image (332)
+### Inappropriate image (330)
 
 - herren-ring-vintage-edelstahl-retro
-- retro-flammen-tischlampe-led
+- pod-sticker-pumpkin-jack
+- pod-sticker-tattoo-skull-rose
 - herren-cargo-hose-trail-multi-pocket-outdoor
-- vertikaler-gaming-pistolengriff-mit-trigger-610900
 - rc-fernsteuerung-fur-modellautos-boote-600600
-- abendkleid-mit-perlen-ruschen-604000
 - punk-motorrad-seiten-taschen-602000
 - gedruckter-baumwoll-leinen-schal-fur-herbst-wi-626100
 - vielseitiger-dreiecksschal-mit-bindebandern-616400
@@ -229,11 +228,11 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - verdunkelungsvorhange-mit-osen-2-stuck-340353
 - ultraschall-luftbefeuchter-mit-aromatherapie-327744
 - personalisierbarer-zugfreier-reflektierender-h-4ce320
+- antigravitations-nebel-feuchter-580ml-354048
 - …
 
-### Promotional overlay on image (35)
+### Promotional overlay on image (34)
 
-- painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
 - magnetische-lesebrille-zum-umhangen-601100
 - 10-paar-unsichtbare-socken-fur-damen-195841
@@ -269,7 +268,7 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
 
-### Restricted adult content (110)
+### Restricted adult content (109)
 
 - seidenmaske-mit-halsbedeckung-fur-damen-628900
 - nahtlose-hauchdunne-seiden-strumpfhose-605000
