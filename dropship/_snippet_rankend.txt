@@ -6883,3 +6883,22 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15450557579649	Dieser bequeme Herren-Sneaker überzeugt mit seinem atmungsaktiven Mesh-Obermaterial und ist in verschiedenen Farben erhältlich, darunter Weiss-Schwarz …
 15450557743489	Der vielseitige Mid-Top Schuh für Herren eignet sich ideal für diverse Outdoor-Aktivitäten wie Wandern oder Klettern. Erhältlich in den Grössen 37 bis 48.
 15450557907329	Dieser vielseitige Herrenschuh ist ideal für Outdoor-Aktivitäten im Herbst. Niedriger Absatz (1-3 cm).
+15450558071169	Diese vielseitigen High-Top Schuhe eignen sich ideal für diverse Outdoor-Aktivitäten wie Wandern, Camping oder einfach für die Freizeit.
+15450558235009	Der klassische Outdoor Wanderschuh ist der ideale Begleiter für deine Abenteuer in der Natur. Obermaterial aus Kunststoff und Gummizwischensohle.
+15450558562689	Diese leichten und komfortablen Sicherheits-Sneaker sind ideal für diverse Arbeitsumgebungen. Obermaterial aus Mikrofaserleder.
+15450558923137	Robuste und stylische Hi-Top Wander-Sneaker für Herren, die sich ideal für diverse Outdoor-Aktivitäten eignen. Atmungsaktives Obermaterial aus Rindsleder.
+15450559218049	Diese stylischen Cosplay Stiefel aus hochwertigem Kunstleder sind die perfekte Ergänzung für jedes Outfit. Stylisches Design aus Kunstleder.
+15450559447425	Diese leichten Wander- und Sportschuhe für Herren sind ideal für Frühling und Herbst. Wasserdicht und stossfest.
+15450559938945	Diese stylischen Fussballschuhe wurden für Komfort und Leistung auf dem Spielfeld entwickelt. Robuste TPU-Gummi-Sohle für optimalen Halt.
+15450560299393	Dieser knöchelhohe Wanderschuh ist ideal für Outdoor-Abenteuer. Atmungsaktives Obermaterial aus Synthetikleder.
+15450560594305	Die Outdoor Schnee- und Bergwanderschuhe sind die idealen Begleiter für alle, die gerne in den Bergen unterwegs sind.
+15450560987521	Dieser vielseitige Sportschuh ist für Männer im Alter von 18 bis 40 Jahren konzipiert und eignet sich für alle Jahreszeiten.
+15450561413505	Diese Outdoor-Wanderschuhe für Herren sind ideal für Training und Freizeitaktivitäten. Rutschfeste Gummiaussensohle.
+15450561773953	Robuste und warme Winterstiefel für Herren, ideal für die kalte Jahreszeit. Obermaterial: Erste Schicht Rindsleder.
+15450561970561	Dieser sportliche Sneaker mit Luftpolster-Sohle ist der ideale Begleiter für alle, die Wert auf Komfort und Stil legen. Mittelhoher Keilabsatz (3-5 cm).
+15450562134401	Die leichten und tragbaren Watschuhe sind ideal für diverse Wasseraktivitäten. Wasserdichtes Material.
+15450608992641	Diese vielseitigen Stiefeletten sind ein modisches Statement für jede Jahreszeit. Obermaterial aus PU mit Leder-Patchwork.
+15450609058177	Diese eleganten Ankle Boots für Damen sind die ideale Wahl für die Übergangszeit und den Winter. Obermaterial aus Wildleder.
+15450609156481	Die Martin Boots im neuen Design für den Sommer 2026 vereinen Komfort mit modernem Stil. Absatzhöhe: Niedriger Absatz (weniger als 3 cm).
+15450609287553	Diese stilvollen Stiefeletten für Damen sind die perfekte Ergänzung für deine Herbst- und Wintergarderobe. In den Grössen 36 bis 42 erhältlich.
+15450609418625	Diese eleganten Langschaft-Stiefeletten mit spitzer Zehenpartie sind ein echter Hingucker. Hoher Stiletto-Absatz (6–8 cm).
