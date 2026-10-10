@@ -25,3 +25,4 @@
 15477425176961	waffe	schusswaffen-zubehoer	google-kanal-entfernt,tag:waffe-pruefen	Nylon Gewehrriemen, 2-Punkt, verstellbar
 16608572670343	waffe	schusswaffen-laser	tag:waffe-pruefen	Laser-Boresight für Gewehr und Flinte
 16608572670343	2026-10-06	DRAFT	schusswaffen-laser (Bild geprüft)
+16612324344199	waffe	waffennachbildung-schusswaffe	tag:waffe-pruefen	Glock-Holster mit Infrarot-Ziel
