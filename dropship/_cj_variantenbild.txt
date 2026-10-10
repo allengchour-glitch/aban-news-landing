@@ -6760,3 +6760,5 @@ gid://shopify/Product/15460667490689	zugeordnet	54	Cardigan aus Kunstwolle
 gid://shopify/Product/15460667523457	zugeordnet	45	Geripptes Langarmshirt für Damen
 gid://shopify/Product/15460672405889	zugeordnet	10	Bedrucktes Mini-Kleid mit langen Ärmeln
 gid://shopify/Product/15460672438657	zugeordnet	8	Elegantes Strickkleid mit Perlen-Details
+gid://shopify/Product/15460672471425	zugeordnet	95	Tang-Anzug Top mit 3D-Digitaldruck
+gid://shopify/Product/15460672504193	zugeordnet	16	Damen Strickpullover mit Farbblock-Muster
