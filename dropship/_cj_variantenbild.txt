@@ -6776,3 +6776,8 @@ gid://shopify/Product/15460673094017	zugeordnet	24	Vintage T-Shirt mit Rundhals 
 gid://shopify/Product/15460673159553	zugeordnet	28	Retro T-Shirt aus Wildlederimitat für Herren
 gid://shopify/Product/15460673192321	zugeordnet	40	Loose-fit Herren-Shirt im japanischen Stil
 gid://shopify/Product/15460701634945	bild-urls-tot
+gid://shopify/Product/15460701667713	zugeordnet	9	Elegantes Satin-Trägerkleid
+gid://shopify/Product/15460701798785	zugeordnet	8	Herren Retro Jacquard Cardigan
+gid://shopify/Product/15460709663105	zugeordnet	20	V-Ausschnitt Midi-Kleid
+gid://shopify/Product/15460709695873	zugeordnet	60	Strick-Cardigan mit Rundhals und langen Ärmeln
+gid://shopify/Product/15460759798145	zugeordnet	8	Leichtes Ramie-Kleid
