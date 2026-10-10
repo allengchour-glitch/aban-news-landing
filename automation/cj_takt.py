@@ -67,8 +67,10 @@ VORRANG_SKRIPTE = ("cj_kosten_backfill", "cj_video_backfill", "auswahl_fehlt_mes
 # dem Kosten-Nachtrag (Vorrang, bis 90 min) und kam nie an die Reihe. ≤ ~700 Aufrufe/Tag.
 # 28.09.2026: cj_ersatz_suche (Einzelsuche für besuchte, nicht lieferbare Seiten, wenige Aufrufe).
 # 07.10.2026: besuchte_seiten_lieferbar (Seiten mit Besuchern auf Lieferbarkeit) ist Kundenschutz wie cj_ausgelistet.
+# 10.10.2026: mobilfunk_netz (Geräte nur 2G/3G funken in der Schweiz nicht — 2G aus seit 01/2023, Kinderuhren mit SOS) ist
+# Kundenschutz wie cj_ausgelistet; einmalig ~150 Aufrufe, danach nur Neuimporte.
 IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bestell", "cj_takt", "cj_ausgelistet", "cj_ersatz",
-              "besuchte_seiten")
+              "besuchte_seiten", "mobilfunk_netz")
 VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
 
 

@@ -1,0 +1,57 @@
+{
+  "zweck": "Geräte mit SIM-Karte, die nur 2G (GSM/GPRS) oder 3G (WCDMA/UMTS) können, funktionieren in der Schweiz nicht: 2G ist seit Januar 2023 bei allen drei Anbietern abgeschaltet (Swisscom 2022, Salt Anfang 2022, Sunrise 03.01.2023), 3G folgt 2025/2026. Betroffen sind GPS-Tracker, Kinder- und Senioren-Uhren mit SOS-Knopf und GSM-Alarmanlagen — bei Kinderuhren wäre ein Notruf stumm. Prüfer: automation/mobilfunk_netz_pruefen.py (CJ-Angaben + eigener Text), Bericht dropship/MOBILFUNK-2G-2026-10-10.md.",
+  "kandidat_titel": "gps|ortung|locator|lokator|tracker|telefonuhr|telefon-uhr|kinder[- ]?(smart)?watch|smartwatch (f(ü|ue)r )?kinder|kinder[- ]?uhr|senioren|smartwatch.*(sim|4g|videoanruf|video-ortung|sos|ortung|alle netze)|\\bgsm\\b|alarm(anlage|system)|\\b4g\\b|\\bsim\\b|wildkamera|notruf",
+  "nicht_titel": "drohne|quadrocopter|fitness-tracker|fitness tracker|blutsauerstoff|herzfrequenz-tracker|lese(zähler|zaehler)|h(ü|ue)lle|halter\\b|halterung|st(ä|ae)nder|ladekabel|kabel\\b|ladeger(ä|ae)t|ladestation|charger|powerbank|tasche|\\bbag\\b|\\bcase\\b|schutzfolie|panzerglas|kost(ü|ue)m|k(ü|ue)hler|clicker|klicker|drucker|beamer|projektor|mikrofon|stativ|gimbal|werkzeug|organizer|portemonnaie|lanyard|weste|kartenleser|festplatte|speicherkarte|tf card|reiniger|sterilisator|netzteil|signalverst(ä|ae)rker|detektor|isolation|sperrbox|kontrollbox|spielzeug|uhrenarmband|armband f(ü|ue)r|fahrradcomputer|velo-alarmanlage|anzeigeger(ä|ae)t|geschwindigkeitsmesser|kopf-display|motorrad-kamera|halsband f(ü|ue)r gps|brustgeschirr",
+  "neu": "\\b(4G|5G|LTE|Cat[- ]?M1?|NB[- ]?IoT|VoLTE)\\b|all[- ]?net(com)?\\b|full[- ]?net(com)?\\b|alle netze|全网通",
+  "alt": "\\b(2G|GSM|GPRS|3G|WCDMA|UMTS|CDMA)\\b",
+  "sim": "\\bSIM\\b|nano[- ]?SIM|micro[- ]?SIM|SIM[- ]?(card|karte)|插卡|Telefonkarte",
+  "bluetooth": "bluetooth|find[- ]?my|BLE\\b|anti[- ]?lost|anti[- ]?verlust|airtag|itag",
+  "draft_tag": "mobilfunk-nur-2g-3g",
+  "kanarien": [
+    {
+      "text": "GPS Tracker GSM/GPRS quad band 850/900/1800/1900MHz, insert nano SIM card",
+      "soll": "nur-2g-3g"
+    },
+    {
+      "text": "Kids smart watch 2G SOS call, supports SIM card",
+      "soll": "nur-2g-3g"
+    },
+    {
+      "text": "4G LTE kids watch video call, GSM/WCDMA/LTE all netcom",
+      "soll": "4g"
+    },
+    {
+      "text": "Supports 4G full netcom SIM card",
+      "soll": "4g"
+    },
+    {
+      "text": "Bluetooth 5.0 anti-lost tracker, works with Apple Find My",
+      "soll": "bluetooth"
+    },
+    {
+      "text": "GPS locator, insert SIM card, real-time positioning via app",
+      "soll": "unklar-sim"
+    },
+    {
+      "text": "Pet GPS collar waterproof IP67",
+      "soll": "unklar"
+    },
+    {
+      "text": "Network: WCDMA 3G 850/2100, SIM card required",
+      "soll": "nur-2g-3g"
+    },
+    {
+      "text": "Alarm system WiFi + GSM, SIM card for SMS alarm",
+      "soll": "teilweise-2g"
+    },
+    {
+      "text": "WiFi + 4G alarm host, GSM backup",
+      "soll": "4g"
+    },
+    {
+      "text": "A1 smartwatch bluetooth call, camera, supports 2G SIM card",
+      "soll": "teilweise-2g"
+    }
+  ],
+  "wlan": "\\b(wi-?fi|wlan)\\b"
+}
