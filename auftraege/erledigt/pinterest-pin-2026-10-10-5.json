@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-10-5",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 5 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-10T04:27:34.245Z",
+  "dauer_s": 60.8,
+  "ergebnis": {
+    "gepinnt": [
+      "ultraschall-reinigungsmaschine-fur-nagelwerkze-947840"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 47, offen 118",
+      "Boards auf dem Profil: /luxestyleCH/schuhe-sandalen/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/wellness-beauty/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Wellness & Beauty» (https://ch.pinterest.com/luxestyleCH/wellness-beauty/, 777 Z.): Titel nicht da",
+      "Bild 58549 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (847 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-10-5-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-10-5-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-10-5-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "ultraschall-reinigungsmaschine-fur-nagelwerkze-947840",
+      "board": "Wellness & Beauty",
+      "title": "Ultraschall‑Reinigungsmaschine für Nagelwerkzeuge"
+    }
+  }
 }
