@@ -192,7 +192,8 @@ private fun SuggestionList(s: Suggestions, typed: String, onQuery: (String) -> U
                 Modifier.fillMaxWidth().clickable { nav.product(p.handle) }.padding(horizontal = 20.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Box(Modifier.size(52.dp, 64.dp).clip(Radius.Small).background(LocalLuxe.current.card)) {
+                // feine Kontur: weisse Stücke auf weissem Grund verschwinden sonst
+                Box(Modifier.size(52.dp, 64.dp).clip(Radius.Small).background(LocalLuxe.current.card).border(1.dp, LocalLuxe.current.line, Radius.Small)) {
                     p.image?.let { AsyncImage(it.sized(160), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
                 }
                 Spacer(Modifier.width(14.dp))
@@ -258,8 +259,7 @@ private fun Results(
                         Spacer(Modifier.height(10.dp))
                         CategoryChips(categories)
                     }
-                    SortRow(sort, listOf(Sort.FEATURED, Sort.PRICE_ASC, Sort.PRICE_DESC), edge = 0.dp, onSort = onSort)
-                    FilterRow(filters, edge = 0.dp, onChange = onFilters)
+                    ListControls(sort, listOf(Sort.FEATURED, Sort.PRICE_ASC, Sort.PRICE_DESC), onSort, filters, onFilters)
                 }
             }
         },
