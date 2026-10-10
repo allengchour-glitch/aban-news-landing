@@ -6571,3 +6571,5 @@ gid://shopify/Product/15458991964545	zugeordnet	2	Lace-Kragen-Pullover
 gid://shopify/Product/15458992062849	zugeordnet	98	Kinder High Heel Schuhe
 gid://shopify/Product/15458992488833	zugeordnet	12	Rückenfreie Figurumspielende Halter-Neck Camisole
 gid://shopify/Product/15458992783745	zugeordnet	15	Rutschfeste Weichsohle Lauflernschuhe
+gid://shopify/Product/15458993504641	zugeordnet	20	Jungen Sommer Sandalen Anti-Rutsch
+gid://shopify/Product/15458993897857	zugeordnet	24	Kinderregenstiefel mit Bären- & Tier-Muster, rutschsicher
