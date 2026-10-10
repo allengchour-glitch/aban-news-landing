@@ -1559,3 +1559,4 @@ gid://shopify/Product/16613403656583	ok	Männer-Skelett-Uhr mit mechanischem Zei
 gid://shopify/Product/16613793464711	ok	Wandkalender mit WiFi-Digitaluhr
 gid://shopify/Product/16613802082695	ok	Smart-Wecker mit Nachtlicht und Audio-Monitor
 gid://shopify/Product/16613864964487	nicht-versendbar	Katzenbaum mit Sisal-Säule und Schlafplatz
+gid://shopify/Product/16613835997575	ok	Bluetooth Grillthermometer-Fühler
