@@ -1,0 +1,66 @@
+# Auswahl nachrüsten — scharf 2026-10-10 01:11 UTC
+
+umgebaut: 15 · MANUELL: 60 · Fehler: 0
+
+## MANUELL (Grund)
+
+- Automatischer Katzen-Kugelspielball (`automatischer-katzen-kugelspielball-602000`): KI-Übersetzung fehlt/abgelehnt: ['Blue Normal Style', 'Fan Ordinary Style']
+- Herz-Hängeschmuck mit Fotoalbum (`herz-hangeschmuck-mit-fotoalbum-619700`): KI-Übersetzung fehlt/abgelehnt: ['Heart Rabbit Hand Necklace', 'Love Rabbit Hug Necklace', 'Love Strawberry Necklace', 'Oval Flower Necklace']
+- Vintage Kleid mit Slim-Strap (`vintage-kleid-mit-slim-strap-624601`): KI-Übersetzung fehlt/abgelehnt: ['Yellow', 'Light Green', 'Light Pink', 'White Polka Dot']
+- Blumendruck-Kardigan für Frauen (`blumendruck-kardigan-fur-frauen-628400`): KI-Übersetzung fehlt/abgelehnt: ['Green', 'Pink', 'Coconut Bird', 'Black']
+- Sternenhimmel-Projektor mit USB (`starkenhimmel-wandlampe-609100`): KI-Übersetzung fehlt/abgelehnt: ['Northern Lights', 'Star Light', 'Star Xuan', 'Water Ripple']
+- Magnetischer Telefonhalter (`magnetischer-telefonhalter-610000`): KI-Übersetzung fehlt/abgelehnt: ['Bean Purple', 'Qingshan Jade', 'Fog Purple', 'Silver'] | ['Ordinary Bag', 'Exquisite Boxed']
+- Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`): KI-Übersetzung fehlt/abgelehnt: ['Double Spring Dog', 'Double Sausage Dog']
+- Armkraft-Trainingsstab (`armkraft-trainingsstab-212544`): KI-Übersetzung fehlt/abgelehnt: ['Resistance', 'No Resistance']
+- Kreatives Bausteine-Set: Welle oder Sternennacht (`kreatives-bausteine-set-welle-oder-sternennach-615300`): KI-Übersetzung fehlt/abgelehnt: ['The Great Wave Off Kanagawa', 'Van Gogh Starry Sky Painting']
+- Tarnfarbener Outdoor-Rucksack (36-55L) (`tarnfarbener-outdoor-rucksack-36-55l-561408`): KI-Übersetzung fehlt/abgelehnt: ['Desert camouflage', 'Jungle camouflage', 'Three sand camouflage', 'Black']
+- Taktischer Outdoor-Rucksack Medium 3P Attack (`taktischer-outdoor-rucksack-medium-3p-attack-179648`): KI-Übersetzung fehlt/abgelehnt: ['Khaki', 'Black', 'Green', 'CP camouflage']
+- Haarkurllinie (`haarkurllinie-612300`): KI-Übersetzung fehlt/abgelehnt: ['Pink 20mm', 'Pink 22mm', 'Pink 25mm', 'Pink 28mm']
+- Faltbare Anti-Rutsch Yoga- und Fitnessmatte (`faltbare-anti-rutsch-yoga-und-fitnessmatte-612900`): Lesefehler: Zweitprüfer nicht erreichbar: Zweitprüfer-Antwort unvollständig (30 statt 31)
+- Robuste Leuchtende Quarzuhr für Herren (`robuste-leuchtende-quarzuhr-fur-herren-208704`): KI-Übersetzung fehlt/abgelehnt: ['LILUOKE Fine Steel', 'LILUOKE All Black', 'Stainless Steel Black Surface', 'All Black Surface']
+- Lederrucksack «Crazy Horse» im Retro-Stil (`lederrucksack-crazy-horse-im-retro-stil-959488`): KI-Übersetzung fehlt/abgelehnt: ['Crazy Horse Leather Grey Green', 'Oily skin coffee']
+- OneMo Kamera-Umhängetasche 7L/11L (`onemo-kamera-umhangetasche-7l-11l-607700`): KI-Übersetzung fehlt/abgelehnt: ['7L Deep Space Black', '7L Camouflage Gray', '11L Deep Space Black', '11L Camouflage Gray']
+- Kampfrucksack für Outdoor und Wandern (`kampfrucksack-fur-outdoor-und-wandern-604300`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Mud Color', 'CP', 'ACU']
+- Moppstiel-Adapter für US-Grobgewinde (`moppstiel-adapter-fur-us-grobgewinde-622300`): KI-Übersetzung fehlt/abgelehnt: ['New American Style', 'New German Style']
+- Gerüschtes Baumwoll-Bettwäsche-Set (`geruschtes-baumwoll-bettwasche-set-615400`): KI-Übersetzung fehlt/abgelehnt: ['Prosperous', 'Flat White', 'Furui Blue', 'Rose Manor'] | ['1.2m 3pcs', '1.5m 4pcs', '1.8m 4pcs', '2.0m 4pcs']
+- Kissenbezug mit Jacquard-Muster (`kissenbezug-mit-jacquard-muster-899712`): KI-Übersetzung fehlt/abgelehnt: ['30x50 nonsplicing', '30x50 splicing', '48x48 nonsplicing', '48x48 splicing']
+- Kamera Bausteine mit Ewiger Blume Deko (`kamera-bausteine-mit-ewiger-blume-deko-614700`): KI-Übersetzung fehlt/abgelehnt: ['Huayu Polaroid', 'Huayu Instant Camera Gift Box', 'Huayu Polaroid Greeting Card']
+- Retro Flip Halsketten-Taschenuhr (`retro-flip-halsketten-taschenuhr-327936`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Red Bronze', 'Silver', 'Black Style 2']
+- Soccer-Stiefel- Transport-Beutel (`soccer-stiefel-transport-beutel-620700`): KI-Übersetzung fehlt/abgelehnt: ['Black Neutral Without Label', 'Gray No Neutral No Label', 'Dark blue without markings', 'Wine Red Neutral Without Label'] | ['Extra Large Three Layer', 'Medium three story', 'Small Size Single Layer', 'Single layer large']
+- Dekokissen mit Pflanzenmuster (`dekokissen-mit-pflanzenmuster-648960`): KI-Übersetzung fehlt/abgelehnt: ['Dew Leaf 30 × 50', 'Color Taro Leaf 30 × 50', 'Back Of Turtle 50 × 40', 'Sun 30 × 45']
+- 3D-Puzzle Eule (`3d-puzzle-eule-627200`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Baukasten für Kinder: Kleine Partikel (`baukasten-fur-kinder-kleine-partikel-619500`): KI-Übersetzung fehlt/abgelehnt: ['Hey Hey', 'Xiao PA']
+- Fussgelenk-Manschette für Beintraining (`fussgelenk-manschette-fur-beintraining-520512`): KI-Übersetzung fehlt/abgelehnt: ['Black single hoist button', 'Gray Pair', 'Black Pair', 'Pink Pair']
+- Infrarot-Photonen-LED-Gesichtsmaske (`infrarot-photonen-led-gesichtsmaske-600300`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Retro Armband aus Titanstahl (`retro-armband-aus-titanstahl-611700`): KI-Übersetzung fehlt/abgelehnt: ['Black Bracelet', 'Black Blue And Gold Bracelet', 'Water Ripple Gold Bracelet', 'Black Textured Gold Bracelet']
+- Wimpern- & Augenbrauenserum (`wimpern-augenbrauenserum-691136`): KI-Übersetzung fehlt/abgelehnt: ['RapidLash eyelash', 'RapidBrow eyebrow']
+- Retro Filmkamera Bausteine (`retro-filmkamera-bausteine-600800`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Prinzessinnen-Geschirr mit Leine für Katzen (`prinzessinnen-geschirr-mit-leine-fur-katzen-312512`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Hundehalsband mit Schriftzug (`hundehalsband-mit-schriftzug-60c17d`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Leder-Leinen-Set für Hunde (`leder-leinen-set-fur-hunde-394304`): KI-Übersetzung fehlt/abgelehnt: ['Collar', 'Collar traction']
+- Rostrotes Kristall-Kissen (`rostrotes-kristall-kissen-983552`): Variante-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Multifunktions-Herrenuhr Wasserdicht Leuchtend (`multifunktions-herrenuhr-wasserdicht-leuchtend-506752`): KI-Übersetzung fehlt/abgelehnt: ['Rose gold black face', 'Silver shell black surface', 'Silver Shell Blue Noodle', 'Black shell black surface'] | ['Steel Belt', 'Belt style']
+- Mini-Metallauto-Set zum Schieben (`mini-metallauto-set-zum-schieben-626100`): KI-Übersetzung fehlt/abgelehnt: ['Project Payment', 'Color']
+- Edelstahl-Armband mit Medizin-Symbol, verstellbar (`edelstahl-armband-mit-medizin-symbol-verstellb-626100`): KI-Übersetzung fehlt/abgelehnt: ['Black Magnetic', 'Rose Gold Magnetic', 'Silver Magnetic', 'Golden Magnetic Suction']
+- Musik-Boxwand für intelligentes Heimtraining (`musik-boxwand-fur-intelligentes-heimtraining-623400`): KI-Übersetzung fehlt/abgelehnt: ['Bluetooth Music Boxing Target', 'Target Adult Gloves', 'Target Children Adult Gloves']
+- Professionelles Berggepäck (`professionelles-berggepack-518720`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Khaki', 'Green', 'Jungle Digital']
+- Reise-Rucksack Outdoor (`reise-rucksack-outdoor-806016`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Khaki', 'Green', 'CP camouflage']
+- Halsband- und Leinen-Set aus geflochtener Baumwolle (`halsband-und-leinen-set-aus-geflochtener-baumw-847808`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Grosses Rückenkissen für Erker und Bett (`grosses-ruckenkissen-fur-erker-und-bett-625000`): KI-Übersetzung fehlt/abgelehnt: ['Smoky Gray', 'Lake Blue', 'Hemp Color', 'Luxury Elegant Blue']
+- Canvas Schultertasche "All-match" mit grosser Kapazität (`canvas-schultertasche-all-match-mit-grosser-ka-644608`): nicht mehr aktiv
+- Hohl-Spielball für Hunde & Katzen (`hohl-spielball-fur-hunde-katzen-123328`): KI-Übersetzung fehlt/abgelehnt: ['Red Body', 'Green Body', 'Red And Green Body', 'Blue']
+- Kratzbaum mit Sisal und Spielball (`kratzbaum-mit-sisal-und-spielball-214016`): KI-Übersetzung fehlt/abgelehnt: ['Yellow chicken climbing frame', 'Dinosaur climbing frame', 'Flamingo small climbing frame', 'Dog climbing frame']
+- Interaktiver Spielball für Haustiere mit Fernbedienung (`interaktiver-spielball-fur-haustiere-mit-fernb-268032`): KI-Übersetzung fehlt/abgelehnt: ['Self Hi', 'Remote Control']
+- Minimalistisches Kissen mit Katzen-Stickerei (`minimalistisches-kissen-mit-katzen-stickerei-611000`): KI-Übersetzung fehlt/abgelehnt: ['Square Black Cat', 'Rectangular Black Cat', 'Tassel Knitted Yellow Dots', 'White Knitted Fabric Round'] | ['Pillowcase', 'Pillow']
+- Elastischer Sofabezug für alle Jahreszeiten (`elastischer-sofabezug-fur-alle-jahreszeiten-953536`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Kaffeebohnen-Vorratsdose (`kaffeebohnen-vorratsdose-661120`): KI-Übersetzung fehlt/abgelehnt: ['CC50H Small Size Gray', 'CC51H Medium Coffee Pot Gray', 'CC50BK Small Size Black', 'CC51BK Medium Black']
+- Ultraschall-Reiniger für Früchte & Gemüse (`ultraschall-reiniger-fur-fruchte-gemuse-199296`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Anti-Kick-Decke mit Ärmeln (`anti-kick-decke-mit-armeln-558976`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Nordische Strickdecke mit Quasten (`nordische-strickdecke-mit-quasten-002112`): KI-Übersetzung fehlt/abgelehnt: ['Grey', 'Beige', 'Dark green', 'Beige and yellow']
+- Quarz-Business-Uhr mit 3 kleinen Zeigern (`quarz-business-uhr-mit-3-kleinen-zeigern-627200`): KI-Übersetzung fehlt/abgelehnt: ['White Steel Blue Face', 'White Steel Black Noodles', 'Golden And Blue Surface', 'Golden Black Noodles']
+- Multifunktionale Herren-Quarzuhr, leuchtend (`multifunktionale-herren-quarzuhr-leuchtend-624100`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Kopfbedeckung für Outdoor-Aktivitäten · 27 × 32 cm (`shadow-warrior-headgear-3babaa`): KI-Übersetzung fehlt/abgelehnt: ['Green', 'Black', 'Mud']
+- Mini Handventilator mit Sprühbefeuchtung & Powerbank (`mini-handventilator-mit-spruhbefeuchtung-power-470016`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Sofa-Kissenbezug mit Weihnachts-Digitaldruck (`sofa-kissenbezug-mit-weihnachts-digitaldruck-888832`): KI-Übersetzung fehlt/abgelehnt: ['Santa Claus', 'Christmas flowers'] | ['Individual', 'Double', 'Multiplayer']
+- Erhöhter, verstellbarer Futternapf für Hunde (`erhohter-verstellbarer-futternapf-fur-hunde-603200`): KI-Übersetzung fehlt/abgelehnt: ['Double Stainless Steel', 'Slow Food']
+- Herren Chronograph Sportuhr mit PU-Armband (`herren-chronograph-sportuhr-mit-pu-armband-613100`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
