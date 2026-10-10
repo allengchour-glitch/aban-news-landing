@@ -6741,3 +6741,13 @@ gid://shopify/Product/15460660511105	zugeordnet	24	Etuikleid mit Spaghettiträge
 gid://shopify/Product/15460664770945	zugeordnet	18	Elegantes Langarm-Kleid mit V-Ausschnitt
 gid://shopify/Product/15460664803713	zugeordnet	8	Mini-Kleid aus Satin-Polyester mit Schlitz
 gid://shopify/Product/15460664836481	zugeordnet	21	Sommerliches Trägerkleid – figurbetont & schlank
+gid://shopify/Product/15460665000321	zugeordnet	27	Atmungsaktives Faltenrock-Set
+gid://shopify/Product/15460665065857	zugeordnet	21	Enges Sommerkleid mit Spaghettiträgern und eckigem Ausschnit
+gid://shopify/Product/15460665098625	zugeordnet	8	Sommerliches Schlitz-Slipdress im French-Stil
+gid://shopify/Product/15460665164161	zugeordnet	77	Bedrucktes Maxikleid mit Kapuze
+gid://shopify/Product/15460665196929	zugeordnet	30	Plissiertes Batwing-Maxikleid mit asymmetrischem Saum
+gid://shopify/Product/15460665295233	zugeordnet	9	Französisches V-Neck Shirt mit Raffung
+gid://shopify/Product/15460665426305	zugeordnet	24	Langarm-Shirt mit Schlitz – Baumwoll-Mix
+gid://shopify/Product/15460665491841	zugeordnet	20	Leichte Bluse mit Spitze und Bindedetail
+gid://shopify/Product/15460665524609	zugeordnet	8	Ärmelloses Jeanshemd mit Knotenfront
+gid://shopify/Product/15460667261313	zugeordnet	15	Strick-Cardigan mit Herzmotiv
