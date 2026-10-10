@@ -30,8 +30,8 @@ Dieser Plan legt fest, was vorher erledigt sein muss, was getestet wird und wann
 | **Versand** | ~~Preisfrage: 49.90 liege 10 Rappen unter der Schwelle~~ — **FALSCH, korrigiert 17:30:** der Tarif «Kostenloser Versand» greift in der Kasse ab **CHF 45** (nach Rabatt, `warenkorb_einig.py` 09.10.; das Band sagt bewusst «ab CHF 50»). Gemessen: Warenkorb «Gratis-Versand gesichert · Du zahlst CHF 49.90», Kasse «Kostenloser Versand». Keine Preisänderung nötig. Alternative Produkt: «Aurora» CHF 69.90, Gewinn ~CHF 40, aber 0 Warenkörbe aus 159 TikTok-Besuchen |
 | **Gewinnschwelle** | Preis 49.90 (versandfrei) − Einkauf (~CHF 20.75) − Fracht (~CHF 8) − Zahlgebühr (~1.75) ≈ **CHF 19 je Kauf** (die frühere «26» rechnete die CHF 7 Versand als Einnahme mit) |
 | **Budget** | CHF 70: 7 Tage à CHF 10 |
-| **Kanal** | TikTok (neues Werbekonto «Luxestyle_adv», Vertrag noch offen, 0 Pixel) oder Meta; Messung läuft über Shopify, nicht über das Pixel |
-| **Link** | `https://luxestyle.ch/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe?utm_source=tiktok&utm_medium=paid&utm_campaign=sirene-test` |
+| **Kanal** | **Google Shopping zuerst** (Messung 10.10. 17:45, ShopifyQL 90 T nach Herkunft: Google-Suche 404 Sitzungen → 12 Warenkorb → 9 Kasse → **3 Käufe**; TikTok 910 → 4 → 2 → 0; Facebook 815 → 0; Pinterest 115 → 3 → 1 → 0). Sirène ist im Kanal «Google & YouTube». Kampagne in Google Ads als Standard-Shopping, Produktgruppe nur Sirène (bzw. Tag `fokus-damenmode`), Suffix `utm_source=google&utm_medium=cpc&utm_campaign=sirene-test`. TikTok (Werbekonto «Luxestyle_adv», Vertrag offen) erst als zweiter Test. ⚠️ ungeprüft: ob ein Google-Ads-Konto existiert |
+| **Link** | Google: Shopping-Anzeige führt auf die Produktseite + Suffix oben. TikTok (falls zweiter Test): `https://luxestyle.ch/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe?utm_source=tiktok&utm_medium=paid&utm_campaign=sirene-test` |
 | **Zielgruppe** | Frauen 25–54, Schweiz, Interessen Mode / Party / Hochzeit |
 | **Inhalt** | Reel aus den Produktbildern (Werkzeug `automation/reel/schnitt.py`), Hook «Abendkleid für die Weihnachtsfeier», Preis im Bild |
 
