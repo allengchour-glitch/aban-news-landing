@@ -5,6 +5,8 @@ ANLASS (Kaufweg-Test am Handy, tools/kaufweg_handy.mjs): Produktseite «Lieferun
 «Voraussichtliche Zustellung Di., 20. Okt». Das Kassen-Datum entsteht aus `deliveryPromiseSettings.processingTime` (stand P1D) +
 Transitzeit des Tarifs. Die TikTok-Lernkampagne brachte 6 Besucherinnen bis in die Kasse, 0 kauften. Schreibbar ist die
 Bearbeitungszeit NUR im Admin (Einstellungen → Versand und Zustellung) — auch `unstable` hat dafür keine Mutation.
+NACHTRAG 10.10. 17:30 (Handy-Bilder des Betreibers): Modus stand auf «Automatisiert» = Prognose aus dem Fulfillment-Verlauf, ERSETZT die
+Transportzeit. Richtig ist «Manuell» (Fulfillment-Zeit + Transportzeit 10–20 T). Der Modus ist per API NICHT lesbar; P3D belegt die Umstellung.
 
 MISST: Bearbeitungszeit (Shopify) gegen die echte Versanddauer = Werktage von Bestellung bis zur ersten Sendung mit
 Sendungsnummer, über die letzten Bestellungen mit CJ-Ware (SKU CJ…/Zusteller CJPacket/YunExpress; ohne Druck-auf-Bestellung,

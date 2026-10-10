@@ -490,7 +490,7 @@ def kassen_lieferdatum():
     if not s.get("zu_frueh"):
         return None
     return (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
-            f"Werktagen → Admin: Einstellungen → Versand und Zustellung → Bearbeitungszeit {s.get('empfohlen')} Werktage")
+            f"Werktagen → Admin: Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung → «Manuell» + {s.get('empfohlen')} Werktage")
 
 def kategorie_offen():
     """KATEGORIE: N aktive ohne Taxonomie-Kategorie — Stand von automation/kategorie_wache.py (23.09.2026, Task #101).
