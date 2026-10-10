@@ -17494,3 +17494,8 @@ gid://shopify/Product/16612761698695	14->0	Trainingselastikseil mit Stab
 gid://shopify/Product/16612769890695	26->2	Keramik-Blumentopf aus Lila Ton
 gid://shopify/Product/16612770316679	43->2	Schweissband für Schlägergriffe, 60 Stück
 gid://shopify/Product/16612771824007	20->3	Brustpresse Expander für Krafttraining
+gid://shopify/Product/16613723079047	51->0	6-Stift-Beutel – schlicht weiss
+gid://shopify/Product/16613760041351	46->0	Smartwatch mit Bluetooth-Anruf-Info
+gid://shopify/Product/16613760631175	27->2	Vintage-Uhrenarmband aus Leder für Apple Watch
+gid://shopify/Product/16613760663943	72->1	Mosaik-Schachbrett-Kunstharz-Armband 22 mm
+gid://shopify/Product/16613763678599	40->2	Zinn-Glasperlen Armband für Apple Watch
