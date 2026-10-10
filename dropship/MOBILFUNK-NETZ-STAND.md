@@ -176,3 +176,15 @@
 | offen | unklar (eigener Text) — CJ-Prüfung folgt | [i9L Kinder 4G Videoanruf-Uhr](https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264) |
 | offen | unklar-sim (eigener Text) — CJ-Prüfung folgt | [Senioren-Telefonuhr mit Ortungsfunktion](https://luxestyle.ch/products/senioren-telefonuhr-mit-ortungsfunktion-448640) |
 | offen | unklar-sim (eigener Text) — CJ-Prüfung folgt | [Smartwatch mit rundem Display und SIM-Karten-Funktion](https://luxestyle.ch/products/smartwatch-mit-rundem-display-und-sim-karten-f-042176) |
+
+## Lauf 2026-10-10 10:52 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| 4g | 4G | [Kinder Smartwatch 4G mit Herzfrequenz](https://luxestyle.ch/products/kinder-smartwatch-4g-mit-herzfrequenz-521792) |
+| 4g | 4G | [Kinder Smartwatch A63 – GPS, Kamera, 1,44" Display](https://luxestyle.ch/products/kinder-smartwatch-a63-gps-kamera-1-44-display-305472) |
+| bluetooth | Anti-lost | [Kinder-Smartwatch mit Musik und Foto](https://luxestyle.ch/products/kinder-smartwatch-mit-musik-und-foto-610880) |
+| bluetooth | Bluetooth | [Smartwatch für Kinder mit Video & Anruf](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-video-anruf-979072) |
+| bluetooth | ble | [GPS Sport-Smartwatch mit LCD-Display](https://luxestyle.ch/products/gps-sport-smartwatch-mit-lcd-display-558656) |
+| bluetooth | ble | [Kinder-Telefonuhr mit vielen Sprachen](https://luxestyle.ch/products/kinder-telefonuhr-mit-vielen-sprachen-186112) |
+| bluetooth | ble | [Ortungsgerät für Wandobjekte](https://luxestyle.ch/products/ortungsgerat-fur-wandobjekte-5d03fe) |
