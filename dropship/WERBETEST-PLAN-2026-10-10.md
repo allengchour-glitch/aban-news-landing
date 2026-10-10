@@ -52,3 +52,8 @@ Täglich: `BUDGET=<ausgegeben> MARGE=19 python3 tools/werbetest_trichter.py sire
 - Kampagne: Standard-Shopping (nicht Performance Max), Schweiz, CHF 10/Tag, «Klicks maximieren» mit CPC-Limit CHF 0.60, Ende 17.10., Suchnetzwerk-Partner aus, Suffix `utm_source=google&utm_medium=cpc&utm_campaign=sirene-test`.
 - **18:50 UTC: Kampagne «Sales-Shopping-1» (ID 24340093418) angelegt**, CHF 10/Tag, Status «Ausstehend – Anzeigen werden überprüft», 0 Kosten. Artikel-IDs im Feed = `shopify_zz_15412915110273_<variant>` (8 Stück).
   ⚠️ Erste Unterteilung war VERKEHRT herum: die 8 Sirène-IDs «Ausgeschlossen», «Alles andere» aktiv → Betreiber angewiesen umzudrehen (Sirène einschliessen, Rest ausschliessen). Vor dem ersten Ausspielen nachprüfen.
+- **19:15 UTC GEMESSEN (ShopifyQL, utm_campaign=sirene-test):** Kampagne lief in der Stunde 19:00 schon aus — **10 bezahlte Klicks, alle auf FREMDEN Produkten**
+  (Gel-Nagellackstift 2, Nachtlicht, Baustellenset, Heizgerät, Nagelclipper, Katzennapf, Stuhlhusse, PKW-Service-Center, Stoppuhr), weil «Alles andere» beim
+  Umbauen kurz aktiv war. Gute Nachricht: der URL-Suffix wirkt (utm_source=google, utm_medium=cpc). Ausgabe dafür ≤ CHF ~6 (geschätzt, Konto zeigt den Betrag).
+- **Ampel-Zeile «WERBETEST»** (`betreiber_ampel.werbetest()`, Steuerdatei `dropship/_werbetest_aktiv.json` bis 17.10. + 3 T): Trichter seit Start, Obergrenze
+  Ausgaben = Tagesbudget × Tage, Stopp-Regel CHF 30 ohne Warenkorb, ⚠️ Sitzungen auf fremden Produkten (Landeseite ≠ Sirène-Handle).
