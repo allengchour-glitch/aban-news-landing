@@ -1,41 +1,24 @@
-# Feinkategorie (automatisch, 2026-10-10 07:58 UTC)
+# Feinkategorie (automatisch, 2026-10-10 08:39 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 34581 |
-| shopify-feiner | 15037 |
+| gleich | 34718 |
+| shopify-feiner | 15032 |
 | kein-google | 1636 |
-| rueckfall-grob | 784 |
+| rueckfall-grob | 709 |
 | anderer-zweig | 226 |
-| verfeinern | 25 |
-| ohne-kategorie | 14 |
+| ohne-kategorie | 107 |
 | titelprobe-nein | 8 |
 | kreuz | 4 |
 | schon-im-ledger | 4 |
 | keine-zuordnung | 1 |
-| **geschrieben** | 25 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 3 → Clothing > Shirts & Tops
-- 2 → Exercise & Fitness > Exercise Bands
-- 2 → Lighting > Night Lights & Ambient Lighting
-- 2 → Pet Supplies > Dog Supplies > Dog Apparel
-- 2 → Video > Projectors > Multimedia Projectors
-- 2 → Electronics Accessories > Power > Power Adapters & Chargers
-- 2 → Vehicle Parts & Accessories > Vehicle Storage & Cargo > Vehicle Organizers
-- 1 → Exercise & Fitness > Balance Trainers
-- 1 → Exercise & Fitness > Exercise Equipment Mats
-- 1 → Kitchen & Dining > Kitchen Appliances > Toasters & Grills > Toasters
-- 1 → Kitchen & Dining > Kitchen Appliances
-- 1 → Exercise & Fitness > Suspension Trainers
-- 1 → Exercise & Fitness > Weight Lifting > Weight Lifting Machine & Exercise Bench Accessories
-- 1 → Video Game Console Accessories > Portable Game Console Accessories
-- 1 → Vehicle Parts & Accessories > Vehicle Maintenance, Care & Decor
-- 1 → Circuit Boards & Components > Printed Circuit Boards > Development Boards
-- 1 → Video
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
