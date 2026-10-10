@@ -44,3 +44,9 @@ Täglich: `BUDGET=<ausgegeben> MARGE=19 python3 tools/werbetest_trichter.py sire
 - **Erfolg**, wenn Kosten je Kauf ≤ CHF 19. Dann vorsichtig verdoppeln.
 - **Wenn die Kasse wieder Abbrecher hat, aber keine Käufe:** Kasse prüfen (`tools/kaufweg_handy.mjs`), nicht mehr Budget.
 - **Vergleichsmassstab:** ChatGPT-Besucher (5.4 % Warenkorb, 0.9 % Kauf, gratis).
+
+## Stand 10.10. 18:30 UTC
+
+- **Google-Ads-Konto 719-826-3241** (allengchour@gmail.com), neu; Betreiber hat am 10.10. **CHF 70.00 manuell eingezahlt** (Mastercard ••1878), Guthaben 70.00, Kosten 0. Die Shopify-App «Google & YouTube» zeigt «Problem mit Google Ads-Konto», ihr Einrichtungsschritt «Verknüpfung mit Google Ads-Konto» ist **übersprungen**; installierte Tags AW-18174567886, GT-WVRZQPLZ.
+- **Sirène trägt `mm-google-shopping.custom_label_0 = werbetest`** (gesetzt 18:30 per API) → in Google Ads Produktgruppe «Benutzerdefiniertes Label 0 = werbetest», Rest ausschliessen (sichtbar nach Feed-Abgleich, einige Stunden).
+- Kampagne: Standard-Shopping (nicht Performance Max), Schweiz, CHF 10/Tag, «Klicks maximieren» mit CPC-Limit CHF 0.60, Ende 17.10., Suchnetzwerk-Partner aus, Suffix `utm_source=google&utm_medium=cpc&utm_campaign=sirene-test`.
