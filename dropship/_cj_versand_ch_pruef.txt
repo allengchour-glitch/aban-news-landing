@@ -6991,3 +6991,15 @@ herren-high-top-lederstiefel-mit-spitzer-kappe-612500	2606070654011613400	16	14.
 herren-loafer-aus-weichem-leder-606500	2605300748421607100	16	13.65	ok	landeseite
 glanzende-business-lederschuhe-fur-herren-628800	2605280141291629400	16	13.16	ok	landeseite
 herren-business-schuhe-mit-schnallen-613500	2605250920271614600	16	15.20	ok	landeseite
+herren-loafer-mit-weicher-sohle-628500	2605210353521629100	16	10.01	ok	landeseite
+lassige-leder-slipper-fur-herren-624900	2605210302231625600	16	21.16	ok	landeseite
+herren-slipper-vielseitige-mokassins-625400	2605200620531625900	16	10.55	ok	landeseite
+herren-lederschuhe-mit-weicher-sohle-637300	2605190634481637900	16	14.96	ok	landeseite
+elegante-business-schuhe-fur-herren-627300	2605111206071628000	16	19.29	ok	landeseite
+loafer-im-retro-look-fur-herren-628600	2605110327321629300	16	17.66	ok	landeseite
+herren-sandalen-mit-geschlossenem-zehenbereich-610900	2605100938111611500	16	12.56	ok	landeseite
+elegante-business-lederschuhe-fur-herren-618200	2605081241091618800	16	19.76	ok	landeseite
+herren-low-top-leder-sneaker-626800	2605070719581627400	16	10.83	ok	landeseite
+business-oxford-schuhe-aus-leder-611600	2605010315391612100	16	15.92	ok	landeseite
+business-casual-leder-slipper-fur-herren-613400	2604240226161614000	16	19.18	ok	landeseite
+lassige-leder-loafer-fur-herren-602800	2604240222041603400	16	14.96	ok	landeseite
