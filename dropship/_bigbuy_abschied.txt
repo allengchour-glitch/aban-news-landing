@@ -283,3 +283,4 @@ gid://shopify/Product/16608700170631	Schweisserschutzbrille mit LCD-Anzeige
 gid://shopify/Product/16609720959367	Messing dekorative Schnalle
 gid://shopify/Product/16610081046919	Quarzuhr mit Stahlband
 gid://shopify/Product/16612342989191	Telescopischer Seilspannmechanismus
+gid://shopify/Product/16613835309447	Sitzbezug-Organizer mit USB-Anschluss
