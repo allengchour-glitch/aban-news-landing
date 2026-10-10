@@ -285,7 +285,14 @@ def schliessen_alle(ausfuehren=None, heute=None):
         ausfuehren = BF.ausfuehren
     heute = heute or datetime.now(timezone.utc).date().isoformat()
     zeilen, alles_zu = [], True
-    for m, (sym, _, _) in MAERKTE.items():
+    ziele = [(m, sym) for m, (sym, _, _) in MAERKTE.items()]
+    try:  # kopierte Telegram-Calls schliesst der Not-Aus auch
+        import calls_kopierer as CK
+        ziele += [(f"Call {s}", s) for s in CK.offene_symbole() if s not in {x[1] for x in ziele}]
+    except Exception as ex:  # noqa: BLE001
+        zeilen.append(f"⚠️ Telegram-Calls nicht lesbar ({type(ex).__name__}) — kopierte Calls bitte im Binance-Konto prüfen!")
+        alles_zu = False
+    for m, sym in ziele:
         e = {"hebel": 0.0, "stand": heute}
         try:
             a = ausfuehren(e, symbol=sym, gewicht=1 / len(MAERKTE)) or []

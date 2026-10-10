@@ -267,6 +267,44 @@ sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernim
 ausgeführt (sonst könnte ein altes `/weiter` einen Not-Aus aufheben); der Bot antwortet dann «bitte nochmals senden».
 Das hängt nicht an der PC-Uhr.
 
+## 📣 Telegram-Call-Gruppen kopieren — erst ehrlich prüfen, dann (vielleicht) kopieren
+
+Viele Call-Gruppen zeigen nur ihre Gewinner, löschen Verlierer oder sind Pump-Gruppen. Darum geht es in drei Stufen:
+**1. Mitlesen → 2. an den eigenen alten Calls messen → 3. kopieren** (erst Schatten, dann Testnetz, echtes Geld nur nach
+bestandener Prüfung). Alles läuft auf deinem PC; aus der Cloud kann niemand deine Gruppen lesen.
+
+**Einrichten (einmal):**
+1. https://my.telegram.org → «API development tools» → App anlegen → `api_id` und `api_hash`.
+2. `setx TELEGRAM_API_ID "…"` und `setx TELEGRAM_API_HASH "…"`, `py -m pip install telethon`, **neues Fenster**.
+3. `py tools\trading\krypto_bot\calls_leser.py --login` (Telefonnummer, Code aus Telegram, ggf. 2FA-Passwort).
+   Ein Bot kann fremde Gruppen nicht lesen — darum liest das Skript mit deinem Konto (nur lesen, es schreibt nie).
+   ⚠️ `data\telegram-calls.session` ist ein voller Zugang zu deinem Telegram-Konto: nie weitergeben (ist in .gitignore).
+4. `…\calls_leser.py --gruppen` zeigt deine Gruppen mit Nummer → `setx TELEGRAM_CALL_GRUPPEN "-100…,-100…"`.
+
+**Prüfen:** `…\calls_leser.py --verlauf --tage 365` holt die alten Nachrichten, `…\calls_pruefung.py` spielt jeden Call
+mit echten Binance-Kursen (15 Minuten) nach. Regeln vorher festgelegt und für jede Gruppe gleich: Einstieg frühestens 1 Min.
+nach der Nachricht, Zone 24 Std. gültig, Stop wie angegeben (sonst 10 %), Ziele zu gleichen Teilen, nach 7 Tagen zu,
+Stop vor Ziel in derselben Kerze, Gebühren, Schlupf und Funding. **«Kopierwürdig» nur mit ≥ 30 abgeschlossenen Calls, Plus
+in beiden zeitlichen Hälften und ≥ 90 % von 200 Zufallskopien geschlagen** (gleiche Calls zu verschobenen Zeitpunkten —
+sonst war es Glück mit dem Markt). Gelöschte Nachrichten zählen mit, bearbeitete Calls zählen in ihrer ersten Fassung.
+Ehrlich: Im Verlauf fehlen Calls, die die Gruppe schon früher gelöscht hat — die Schatten-Bilanz ab heute ist ehrlicher.
+
+**Mitlesen und kopieren:** `calls.bat` (Fenster offen lassen, startet bei Netz-Ausfall neu). Jeder erkannte Call kommt
+aufs Handy und ins Cockpit-Feld «📣 Telegram-Calls». `CALLS_MODUS`:
+- `schatten` (Standard): nur mitrechnen, nie Aufträge.
+- `testnetz`: kopiert mit den Futures-Testnetz-Schlüsseln des Piloten (Spielgeld), jede Gruppe
+  (`CALLS_NUR_GEPRUEFT=1` = nur bestandene).
+- `echtgeld`: nur mit der Echtgeld-Freigabe des Piloten **und** `CALLS_ECHTGELD_GRUPPEN` **und** bestandener Prüfung
+  (höchstens 30 Tage alt).
+
+Sicherungen: Börsen-Stop sofort nach dem Einstieg — klappt er nicht, wird die Position sofort geschlossen. Ziele als
+Teil-Gewinnmitnahmen an der Börse. 1 % Risiko je Call (`CALLS_RISIKO`, höchstens 3 %), **Hebel höchstens 2×, auch wenn der
+Call 50× sagt**, höchstens 25 % des Kontos (`CALLS_ANTEIL`) und 1000 USDT (`CALLS_MAX_AUFTRAG`) je Call, höchstens 3 Calls
+gleichzeitig (`CALLS_MAX_OFFEN`), je Coin einer. Bitcoin und Ethereum gehören dem Pilot (nur Schatten). Not-Aus schliesst
+auch kopierte Calls, Pause = keine neuen. Telegram `/calls` zeigt die Bilanz. Unlesbare Formate kann Claude lesen
+(`CALLS_CLAUDE=1`, ein paar Zehntel-Cent je Nachricht) — Claude liest nur ab, entscheidet nichts.
+`…\calls_kopierer.py --probe "LONG #SOLUSDT Entry 145-148 TP 152 SL 140"` zeigt, was mit einer Nachricht passieren würde.
+
 ## 🏆 «Top-Krypto traden, Gewinnern folgen» — ehrlich getestet: verliert
 
 `gewinner_pruefung.py` testet die beliebteste YouTube-Idee: jede Woche die Coins mit dem stärksten Anstieg kaufen.
@@ -418,7 +456,8 @@ python3 tools/trading/krypto_bot/test_pilot.py    # 76 Tests, inkl. Risiko-Stufe
 python3 tools/trading/krypto_bot/test_sammler.py  # 44 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten und Ablehnungen
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 40 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 94 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 99 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_calls.py    # 72 Tests: Call-Formate, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos

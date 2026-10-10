@@ -190,7 +190,23 @@ class Futures:
         der alte Weg über /fapi/v1/order antwortet mit −4120). closePosition schliesst die ganze Position, Auslöser Markpreis."""
         return self._req("POST", "/fapi/v1/algoOrder", {"algoType": "CONDITIONAL", "symbol": symbol, "side": seite, "type": "STOP_MARKET",
                                                         "triggerPrice": fmt(preis), "closePosition": "true", "workingType": "MARK_PRICE",
-                                                        "priceProtect": "TRUE"}, signiert=True)
+                                                        "priceProtect": "true"}, signiert=True)
+
+    def limit(self, symbol, seite, menge, preis, bis_ms):
+        """Limit-Einstieg, der von selbst verfällt (GTD; Binance: frühestens 10 Min. nach jetzt). Für Telegram-Calls mit Zone."""
+        return self._req("POST", "/fapi/v1/order", {"symbol": symbol, "side": seite, "type": "LIMIT", "quantity": fmt(menge),
+                                                    "price": fmt(preis), "timeInForce": "GTD", "goodTillDate": int(bis_ms),
+                                                    "newOrderRespType": "RESULT"}, signiert=True)
+
+    def ziel(self, symbol, seite, menge, preis):
+        """Teil-Gewinnmitnahme als Algo-Auftrag: TAKE_PROFIT_MARKET mit Menge, nur verkleinern (reduceOnly), Auslöser Markpreis."""
+        return self._req("POST", "/fapi/v1/algoOrder", {"algoType": "CONDITIONAL", "symbol": symbol, "side": seite,
+                                                        "type": "TAKE_PROFIT_MARKET", "quantity": fmt(menge), "triggerPrice": fmt(preis),
+                                                        "reduceOnly": "true", "workingType": "MARK_PRICE", "priceProtect": "true"},
+                                     signiert=True)
+
+    def auftrag_status(self, symbol, order_id):
+        return self._req("GET", "/fapi/v1/order", {"symbol": symbol, "orderId": order_id}, signiert=True)
 
 
 def fmt(x):

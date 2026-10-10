@@ -20,6 +20,9 @@ HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 import cockpit as C  # noqa: E402
 import ki_trader as KT  # noqa: E402
+import testumgebung  # noqa: E402
+
+testumgebung.schalter_umbiegen()  # offene Telegram-Calls des Nutzers dürfen den Not-Aus-Test nicht ändern
 
 OK, FEHLER = 0, []
 
@@ -428,6 +431,23 @@ with tempfile.TemporaryDirectory() as tmp:
         finally:
             M.DATEI = alt_datei
 
+        # ── Telegram-Calls im Cockpit ──
+        pruefe("Calls: ohne Einrichtung keine Tafel und ehrliche /calls-Antwort", C.calls_stand() is None and "nicht eingerichtet" in C.befehl("/calls"))
+        gl = {x["name"]: x for x in C.gesundheit({"TELEGRAM_CALL_GRUPPEN": "-1001"}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Calls: Leser nie gelaufen = rot", gl["Telegram-Calls mitlesen"]["ok"] is False, gl.get("Telegram-Calls mitlesen"))
+        (Path(tmp) / "calls").mkdir(exist_ok=True)
+        (Path(tmp) / "calls" / "leser-lebt.json").write_text(json.dumps({"zeit": datetime.now(timezone.utc).isoformat(), "gruppen": ["VIP"]}))
+        gl = {x["name"]: x for x in C.gesundheit({"TELEGRAM_CALL_GRUPPEN": "-1001"}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Calls: Leser lebt = grün", gl["Telegram-Calls mitlesen"]["ok"] is True and "VIP" in gl["Telegram-Calls mitlesen"]["text"])
+        import calls_kopierer as CK
+        CK.schreiben({"calls": [{"id": "-1001:1", "gruppe": "-1001", "gruppe_name": "VIP", "zeit": "2026-03-02T10:00:00+00:00", "zeit_ms": 1,
+                                 "call": {"symbol": "SOLUSDT", "richtung": "LONG", "einstieg": [], "ziele": [110.0], "stop": 95.0, "hebel": None},
+                                 "status": "schatten", "schatten": {"status": "geschlossen", "r": 0.05, "r_risiko": 1.0, "abstand_stop": 0.05,
+                                                                    "grund": "ziele", "t_ende": 2}}]}, Path(tmp) / "calls-kopierer.json")
+        cs = C.calls_stand()
+        pruefe("Calls: Tafel mit Schatten-Bilanz, /calls antwortet", cs and cs["gruppen"]["-1001"]["schatten"]["n"] == 1
+               and "VIP" in C.befehl("/calls") and "zeigeCalls" in C.SEITE.read_text(encoding="utf-8"), cs)
+
         # ── Telegram: nur eigener Chat, alte Nachrichten übersprungen ──
         jetzt = int(datetime.now(timezone.utc).timestamp())
 
@@ -490,7 +510,7 @@ import re as _re  # noqa: E402
 ziele = set(_re.findall(r"(?:goto|call) :?(\w+)", txt, flags=_re.I)) - {"eof"}
 marken = set(_re.findall(r"^:(\w+)", txt, flags=_re.M))
 pruefe("krypto-auto.bat: jedes Sprungziel existiert", ziele <= marken, (ziele, marken))
-for _n in ("cockpit.bat", "../ki_bot/stop.bat", "../ki_bot/start-auto.bat", "../ki_bot/weiter.bat"):
+for _n in ("cockpit.bat", "calls.bat", "../ki_bot/stop.bat", "../ki_bot/start-auto.bat", "../ki_bot/weiter.bat"):
     _b = (HIER / _n).read_bytes()
     pruefe(f"{_n}: Windows-Zeilenenden", _b.count(b"\n") == _b.count(b"\r\n"))
 _sa = (HIER / "../ki_bot/start-auto.bat").read_text(encoding="ascii")

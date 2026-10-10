@@ -191,6 +191,12 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
     <div class="karte w4"><h2>🪙 ETH-Sammler</h2><div id="sammler"></div></div>
   </section>
 
+  <section class="karte" style="margin-top:12px" id="calls-karte" hidden aria-label="Telegram-Calls">
+    <div class="steuerkopf" style="margin-bottom:4px"><h2 style="margin:0">📣 Telegram-Calls</h2><span class="pill" id="calls-modus">—</span>
+      <span class="unter">Schatten-Bilanz ab Mitlesen (echte Kurse, gleiche Regeln wie der Prüfstand) · Prüfung = alte Calls der Gruppe</span></div>
+    <div id="calls"></div>
+  </section>
+
   <footer>Aktualisiert jede Minute aus den Logbüchern auf diesem PC. Backtest = Vergangenheit, keine Garantie. Keine Anlageberatung.</footer>
 </main>
 <script>
@@ -346,11 +352,31 @@ async function ladeProfit() {
 }
 let letzterStand = null;
 
+function zeigeCalls(c) {
+  $("calls-karte").hidden = !c;
+  if (!c) return;
+  $("calls-modus").textContent = c.hinweis ? "—" : c.modus === "echtgeld" ? "⚠️ ECHTGELD" : c.modus === "testnetz" ? "kopiert im Testnetz" : "nur Schatten";
+  $("calls-modus").className = "pill" + (c.modus === "echtgeld" ? " echt" : "");
+  const gr = Object.values(c.gruppen || {});
+  const pr = x => x == null ? "—" : fmtPct(x);
+  const tab = gr.length ? `<div class="tabelle"><table><tr><th>Gruppe</th><th>Calls</th><th>kopiert</th><th>abgeschlossen</th><th>Ø je Call</th><th>Treffer</th><th>Konto bei 1 % Risiko</th><th>Prüfung</th></tr>${gr.map(g => `
+      <tr><td>${esc(g.name)}</td><td>${g.calls}</td><td>${g.kopiert}</td><td>${g.schatten.n || 0}</td><td class="${kl(g.schatten.schnitt)}">${pr(g.schatten.schnitt)}</td>
+      <td>${g.schatten.n ? fmtZahl(g.schatten.treffer * 100) + " %" : "—"}</td><td class="${kl(g.schatten.summe)}">${pr(g.schatten.summe)}</td>
+      <td>${g.pruefung === "kopierwürdig" ? '<span class="plus">bestanden</span>' : g.pruefung ? '<span class="minus">nicht bestanden</span>' : "noch keine"}</td></tr>`).join("")}</table></div>`
+    : `<p class="leer">${esc(c.hinweis || "Noch keine Calls erkannt — läuft calls.bat?")}</p>`;
+  const letzte = (c.letzte || []).length ? `<h2 style="margin-top:10px">Letzte Calls</h2><div class="tabelle"><table><tr><th>Zeit</th><th>Gruppe</th><th>Call</th><th>Status</th><th>Schatten</th></tr>${c.letzte.map(x => `
+      <tr><td>${esc(new Date(x.zeit).toLocaleString("de-CH"))}</td><td>${esc(x.gruppe)}</td><td>${esc(x.call)}</td>
+      <td>${esc(x.status)}${x.hinweis ? `<br><span class="unter">${esc(x.hinweis)}</span>` : ""}</td>
+      <td class="${kl(x.r)}">${x.r == null ? esc(x.schatten || "—") : fmtPct(x.r)}</td></tr>`).join("")}</table></div>` : "";
+  $("calls").innerHTML = tab + letzte;
+}
+
 function zeichne(d) {
   letzterStand = d;
   $("modus").textContent = d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
   $("modus").className = "pill" + (d.modus === "ECHTGELD" ? " echt" : "");
   $("tg").hidden = !d.telegram;
+  zeigeCalls(d.calls);
   $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";

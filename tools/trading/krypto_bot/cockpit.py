@@ -41,6 +41,7 @@ PAUSE = HIER.parent / "ki_bot" / "PAUSE"  # Auto-Handel aus: nichts handeln, Pos
 SEITE = HIER / "cockpit.html"
 MARKT = HIER / "markt.html"
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
+         "/calls Telegram-Calls (Schatten-Bilanz) · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
 
@@ -113,7 +114,7 @@ AKTIONEN = {
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
-SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py"]
+SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py", "test_calls.py"]
 PROTOKOLL = deque(maxlen=40)
 _LAUFEND, _SPERRE = {}, threading.Lock()  # Name → Startzeit
 
@@ -399,7 +400,19 @@ def stand(env=None):
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
-            "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID"))}
+            "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")),
+            "calls": calls_stand()}
+
+
+def calls_stand():
+    """Telegram-Calls fürs Cockpit: Schatten-Bilanz je Gruppe, letzte Calls, Prüfung (None, wenn nie eingerichtet)."""
+    import calls_kopierer as CK
+    if not ((DATA / "calls-kopierer.json").exists() or (DATA / "calls-pruefung.json").exists()):
+        return None
+    try:
+        return CK.stand(DATA / "calls-kopierer.json", DATA / "calls-pruefung.json")
+    except Exception as ex:  # noqa: BLE001
+        return {"hinweis": f"Calls nicht lesbar: {type(ex).__name__}", "gruppen": {}, "letzte": []}
 
 
 _AUFGABE_CACHE = {"zeit": 0.0, "wert": None}
@@ -440,6 +453,14 @@ def gesundheit(env, lb, ki, heute=None):
         p("Täglicher Lauf (krypto-auto.bat)", bool(auto.get("ok")) and alt <= 2,
           f"{auto['zeit'][:16].replace('T', ' ')} UTC — " + (auto.get("text") or ("ok" if auto.get("ok") else "Fehler"))[:200]
           + ("" if alt <= 2 else f" — {alt} Tage alt: läuft der PC um 02:30?"))
+    if env.get("TELEGRAM_CALL_GRUPPEN"):
+        lebt = _json("calls/leser-lebt.json", None)
+        if isinstance(lebt, dict) and lebt.get("zeit"):
+            minuten = (datetime.now(timezone.utc) - datetime.fromisoformat(lebt["zeit"])).total_seconds() / 60
+            p("Telegram-Calls mitlesen", minuten < 15, f"läuft ({', '.join(lebt.get('gruppen', []))})" if minuten < 15
+              else f"seit {minuten / 60:.0f} Std. still — calls.bat läuft nicht?")
+        else:
+            p("Telegram-Calls mitlesen", False, "noch nie gelaufen — calls.bat starten")
     p("Not-Aus", not STOP.exists(), "aus" if not STOP.exists() else "AKTIV — der Pilot schliesst seine Positionen, nichts Neues")
     p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
@@ -555,6 +576,10 @@ def befehl(text):
     if b == "/lage":
         import infos as I
         return "Lagebild (nur Info): " + I.text(I.lagebild())
+    if b == "/calls":
+        import calls_kopierer as CK
+        s = calls_stand()
+        return CK.stand_text(s) if s and s.get("gruppen") is not None else "📣 Telegram-Calls: noch nicht eingerichtet (calls_leser.py)."
     return None
 
 
