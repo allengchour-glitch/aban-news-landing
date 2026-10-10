@@ -6714,3 +6714,18 @@ gid://shopify/Product/15460287250817	zugeordnet	6	Französisch-stil Deckenleucht
 gid://shopify/Product/15460288037249	bild-urls-tot
 gid://shopify/Product/15460439589249	zugeordnet	60	Sonnenschutzplane
 gid://shopify/Product/15460439622017	zugeordnet	60	Sofa-Kissen
+gid://shopify/Product/15460522361217	zugeordnet	5	Patchwork-Faux-Sweater
+gid://shopify/Product/15460522393985	zugeordnet	3	Farbblock-Sweater
+gid://shopify/Product/15460522426753	zugeordnet	3	Korean Style Cardigan
+gid://shopify/Product/15460522492289	zugeordnet	2	Farbblock-Strickcardigan
+gid://shopify/Product/15460522525057	zugeordnet	6	Kabelmuster-Pullover
+gid://shopify/Product/15460584522113	zugeordnet	9	Sommerrock · Damen
+gid://shopify/Product/15460584587649	zugeordnet	12	Kurzrock · Damen
+gid://shopify/Product/15460584653185	bild-urls-tot
+gid://shopify/Product/15460584751489	zugeordnet	16	Powerbank mit Kabel
+gid://shopify/Product/15460584849793	zugeordnet	4	Sternen-Schmuckset
+gid://shopify/Product/15460645863809	zugeordnet	30	Locken-Pulloverkleid
+gid://shopify/Product/15460648845697	zugeordnet	20	Maxi-Kleid mit Taillen-Gurt
+gid://shopify/Product/15460653728129	zugeordnet	24	Elegantes Leopard-Kleid
+gid://shopify/Product/15460655104385	zugeordnet	12	Pleated Midi-Kleid
+gid://shopify/Product/15460655333761	zugeordnet	12	Sleeveless Vestkleid
