@@ -12,6 +12,7 @@ import { nurAltnetz, DRAFT_TAG as MOBILFUNK_TAG } from './mobilfunk.mjs';   // 1
 import { schonBeansprucht } from './cj_claim.mjs';
 import { catTags, saisonTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
+import { markeAlsWare } from './marke_als_ware.mjs';   // 10.10.2026: Fremdmarke als Ware («Harrods Keramik-Tasse», «iPhone 12» = Smartwatch)
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
@@ -168,6 +169,7 @@ for (const item of ITEMS) {
   const ms = produktSaeubern(g.title, g.html);
   if (ms.verdacht) { console.log('✗ Markenbezug, übersprungen:', item); continue; }
   g.title = ms.title; g.html = ms.html;
+  if (markeAlsWare(g.title)) { console.log('✗ Fremdmarke als Ware, übersprungen:', String(g.title).slice(0, 50)); continue; }
   // 🇩🇪 Titel-Sprachwache (20.08.2026): der Übersetzer liefert die Beschreibung deutsch, den
   // Titel aber manchmal roh aus dem CJ-Listing. Begründung + Testfälle: automation/titel_sprache.mjs.
   // Erst ein zweiter Versuch, dann überspringen (kein Ledger-Eintrag → kommt später erneut dran).
