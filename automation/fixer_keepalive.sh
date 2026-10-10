@@ -1625,7 +1625,7 @@ fi
 #     über die Neuimporte der letzten 2 Tage: Lieferantensatz «Grössen 41–48 sind Sonderanfertigungen … vom Umtausch
 #     ausgeschlossen» (bzw. Importer-Marke «Sonderanfertigung: Grössen X–Y.») → diese Grössen löschen, alle/unklar → Entwurf.
 #     Selbsttest (16 Kanarien) läuft im Skript vor jedem Lauf; rot = kein Lauf.
-SA_STAMP=/tmp/sonderanf_$(date -u +%F)_$(( $(date -u +%H) / 6 )).stamp
+SA_STAMP=/tmp/sonderanf_$(date -u +%F)_$(( 10#$(date -u +%H) / 6 )).stamp
 if [ -f "$REPO/automation/sonderanfertigung_wache.py" ] && [ ! -f "$SA_STAMP" ]; then
   touch "$SA_STAMP"
   ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/sonderanfertigung_wache.py --scharf 2>&1 | tail -1 | tee -a /tmp/sonderanfertigung.log )
