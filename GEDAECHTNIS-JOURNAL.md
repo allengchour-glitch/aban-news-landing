@@ -65,6 +65,9 @@ Werbetest-Plan mit Gewinnschwelle + Abbruchregeln; Betreiber-Klick Bearbeitungsz
 Transitzeit. Nach jeder Änderung an Lieferzeiten den Kaufweg bis in die Kasse gehen, nicht nur die Produktseite ansehen. Und: eine
 Kampagne mit Kassen-Abbrechern und 0 Käufen braucht eine geprüfte Kasse, nicht mehr Budget. → `dropship/KAUFWEG-HANDY-2026-10-10.md`
 
+
+**NACHTRAG 17:30 UTC (Betreiber-Handybilder + Nachmessung):** Der Betreiber fand die Einstellung unter Versand und Zustellung → «Voraussichtliche Lieferdaten» → **«Voraussichtliche Zustellung»** (›). Dort stand der Modus **«Automatisiert» (Empfohlen)** = Prognose aus dem Fulfillment-Verlauf, die **die Transportzeit ERSETZT** — deshalb wirkten die am 10.10. gesetzten 10–20 T am Tarif in der Kasse nicht. Umgestellt auf **«Manuell» + 3 Werktage** → API `processingTime` P3D, Kaufweg Sirène: Kasse «Do., 29. Okt – Do., 12. Nov» (Seite 26. Okt – 9. Nov). Der Modus ist per API NICHT lesbar (`DeliveryPromiseSetting` = nur `deliveryDatesEnabled`, `processingTime`). **Zweite Korrektur:** «Sirène 49.90 liegt 10 Rappen unter der Gratis-Schwelle» war falsch — der Tarif «Kostenloser Versand» greift ab CHF 45 nach Rabatt (seit 09.10. so dokumentiert, `warenkorb_einig.py`); gemessen: Kasse «Kostenloser Versand». Gewinnschwelle damit ~CHF 19, nicht 26. **Lehre:** Eine Schwelle aus dem Band-Text («ab CHF 50») ist nicht die Schwelle der Kasse — vor jeder Preis-/Margenrechnung `deliveryProfiles.methodConditions` lesen.
+
 ## 🏷️ Harrods-Tasse: ein Fund aus einer Auswahl wurde als Auswahl-Regel gelöst, nicht als Warenurteil — und Wichtelgeschenke (2026-10-10, 15:10 UTC, «weiter»)
 **Anlass:** Beim Kuratieren der Wichtel-Seite (OpenSEO «wichtelgeschenke» CH 2'400/Mt, KD 0) stand die «Harrods Keramik-Tasse»
 (CJ, CHF 19.90, Harrods-Logo auf jedem Bild) in der Auswahl. **Am 24.09. war sie schon aufgefallen** — damals kam «Harrods» nur in

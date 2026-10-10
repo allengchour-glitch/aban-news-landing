@@ -3,7 +3,7 @@
 
 
 
-## 🆕 10.10. 16:30 UTC — Kasse verspricht zu frühes Lieferdatum: Bearbeitungszeit 1 → 3 Werktage (~1 Min, nur im Admin möglich)
+## ✅ 10.10. 16:30 UTC — Kasse verspricht zu frühes Lieferdatum: Bearbeitungszeit 1 → 3 Werktage — ERLEDIGT 17:24 (Betreiber: «Manuell» + 3 Werktage; API P3D; Kasse jetzt 29. Okt – 12. Nov)
 **Gemessen (Kaufweg-Test am Handy, `tools/kaufweg_handy.mjs`):** Die Produktseite sagt «Lieferung voraussichtlich 26. Okt. – 9. Nov.», die Kasse beim Tarif
 Standard CHF 7.00 dagegen «Voraussichtliche Zustellung **Di., 20. Okt**». Grund: `deliveryPromiseSettings.processingTime` = **P1D** (1 Werktag). CJ versendet gemessen nach **Median 2, bis 5 Werktagen**
 (9 CJ-Bestellungen, `automation/kassen_lieferdatum_wache.py`; meine erste Angabe «4–7» waren Kalendertage). Die API kann den Wert NICHT schreiben (auch `unstable` nicht).

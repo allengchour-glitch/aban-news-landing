@@ -59,7 +59,7 @@ Bilder je 8–12 in allen Farben, Bildprüfung ohne Befund.
 
 ## 4. Werbetest
 
-Plan mit Voraussetzungen, Gewinnschwelle (Sirène ~CHF 26 je Kauf), Budgetvorschlag CHF 70 und Abbruchregeln: `dropship/WERBETEST-PLAN-2026-10-10.md`.
+Plan mit Voraussetzungen, Gewinnschwelle (Sirène ~CHF 19 je Kauf, versandfrei), Budgetvorschlag CHF 70 und Abbruchregeln: `dropship/WERBETEST-PLAN-2026-10-10.md`.
 
 **Messgerät** `tools/werbetest_trichter.py` (ShopifyQL je `utm_campaign`): Sitzungen → Warenkorb → Kasse → Kauf.
 - Befund: TikTok-Lernkampagne 548 → 8 → **6 Kasse → 0 Kauf**
@@ -67,7 +67,7 @@ Plan mit Voraussetzungen, Gewinnschwelle (Sirène ~CHF 26 je Kauf), Budgetvorsch
 
 ## Offen
 
-- **Betreiber:** Bearbeitungszeit 3 Werktage (Kasse), danach Kaufweg nachmessen. ⚠️ Korrektur 16:40: «4–7 Tage» bis Versand waren Kalendertage; in Werktagen Median 2, höchstens 5.
+- ✅ **Betreiber 17:24:** «Manuell» + 3 Werktage. Kaufweg nachgemessen: Kasse «Do., 29. Okt – Do., 12. Nov» (Produktseite 26. Okt – 9. Nov). Ursache war der Modus «Automatisiert» — er ersetzt die Transportzeit durch eine Prognose aus dem Fulfillment-Verlauf; per API nicht lesbar. ⚠️ Korrektur 16:40: «4–7 Tage» bis Versand waren Kalendertage; in Werktagen Median 2, höchstens 5.
 - **CJ-Reset 00:00 UTC:** echte Masse je Grösse und Material für die drei Kleider holen und eintragen. Sirène hat kein Material.
-- **Preisfrage Sirène:** CHF 49.90 liegt 10 Rappen unter der Gratis-Versand-Schwelle. Betreiber entscheidet.
+- ~~**Preisfrage Sirène:** 49.90 liege 10 Rappen unter der Schwelle~~ — falsch: Kassen-Schwelle ist CHF 45 (nach Rabatt), Sirène ist versandfrei (Kaufweg 17:30 gemessen).
 - **Kristall-Set:** Adresse `kristall-set-3-teilig`, Titel «8-teilig», verkauft als «3-teilig» für CHF 36.90, heute CHF 29.90. Prüfen, ob Ware und Bild noch zusammenpassen.

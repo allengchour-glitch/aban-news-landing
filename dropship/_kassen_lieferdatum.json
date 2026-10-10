@@ -1,7 +1,7 @@
 {
- "stand": "2026-10-10T16:50Z",
+ "stand": "2026-10-10T17:24Z",
  "datum_in_kasse": true,
- "bearbeitungszeit_tage": 1,
+ "bearbeitungszeit_tage": 3,
  "versand_werktage": [
   [
    "#1022",
@@ -43,5 +43,5 @@
  "median": 2.0,
  "p80": 2.4000000000000004,
  "empfohlen": 3,
- "zu_frueh": true
+ "zu_frueh": false
 }
