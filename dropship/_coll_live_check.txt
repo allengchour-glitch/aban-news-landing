@@ -559,3 +559,6 @@ holzuhren	ok	29	Holzuhren
 camisole-traegertops	ok	29	Camisole & Trägertops
 smart-ring	ok	14	Smart Rings
 schrank-organizer	ok	12	Schrank-Organizer
+weihnachtspyjama-familie	ok	29	Weihnachtspyjamas für die ganze Familie
+weihnachtspullover	ok	29	Weihnachtspullover & Christmas Sweater
+handwaermer	ok	17	Handwärmer
