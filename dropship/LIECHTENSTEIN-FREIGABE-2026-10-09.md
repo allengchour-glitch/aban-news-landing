@@ -85,3 +85,8 @@ das am Testkorb, nicht an der Konfiguration: Im LI-Kontext galt jedes Produkt al
   - Das ist ein falsches Versprechen in den Gratis-Einträgen, Kundenärger und ein Risiko «Misrepresentation».
   - Herkunft der Zeiten klären (Shopify-Versandzeit-Einstellung? App-Vorgabe?) und richtig setzen. Bei gemischter Ware eventuell per `shipping_label` CH-Lager vs. Asien trennen.
   - Nicht von Hand im Merchant Center ändern, der Sync aus Shopify überschreibt es womöglich.
+- **10.10. ~07:55 UTC, Herkunft der Google-Lieferzeit geklärt:**
+  - Laut Shopify-Hilfe übernimmt die Google-App die **Transitzeit des einzelnen Versandtarifs** (Einstellungen → Versand und Zustellung). Ohne Transitzeit setzt Google typische Landes-Lieferzeiten ein (→ 2–5 Tage); die Bearbeitungszeit kommt aus dem Shopify-Durchschnitt.
+  - **Über die Admin-API nicht setzbar.** Per Introspektion gemessen: `DeliveryMethodDefinitionInput` = id, name, description, active, rateDefinition, participant, Bedingungen — kein Transitzeit-Feld.
+  - Also ein Betreiber-Klick: General profile → Zone Domestic → jeden Tarif bearbeiten → «Transitzeit» so lang wie ehrlich möglich (CJ 10–20 Werktage), dazu LI + International.
+  - Der Betreiber sendet einen Screenshot der Auswahl. App-Einstellung «Versandinformationen automatisch importieren» bleibt (Screenshot 07:50 bestätigt).
