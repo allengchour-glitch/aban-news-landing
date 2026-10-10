@@ -237,6 +237,17 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_modell.lock; flock -n 9 || exit 0; \
         SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_modell.py" >> "$FC" 2>&1 9>&- & )
   fi
+  # FARBCODE-PRAEFIX (10.10.2026, Verbesserungsrunde): Code VOR der Farbe («646 Schwarz», «2350 Black», «2GS8111G Brown») →
+  # nur die Farbe; farbcode_modell prüft nur Werte ohne Leerzeichen, der Importer-Helfer ohneCode() nur Codes mit Grossbuchstaben
+  # vorn. 396 aktive gemessen. Selbsttest = Kanarien + py=js; Importer filtern selbst (farbcode_praefix.mjs).
+  FP=/tmp/farbcode_praefix.log
+  if [ -f "$REPO/automation/farbcode_praefix.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$FP" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ( cd "$REPO" && timeout 300 python3 automation/farbcode_praefix.py --selbsttest > /dev/null 2>&1 ); then
+    touch "$FP"
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_praefix.lock; flock -n 9 || exit 0; \
+        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_praefix.py" >> "$FP" 2>&1 9>&- & )
+  fi
   # PLATZHALTER-OPTION (09.10.2026, «verbessere mehr»): Ein-Varianten-Ware mit «Variante / Standard» zeigte ein Wahlfeld mit
   # einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus → Option weg (Default Title), Rücklesen ID/SKU/Preis.
   # Importer legen seit 09.10. selbst «Title / Default Title» an; dieser Lauf fängt Nachzügler. Liest denselben Optionen-Export.

@@ -1,0 +1,467 @@
+{
+  "_zweck": "Lieferanten-Artikelcode VOR der Farbe im Farb-/Ausführungsfeld (10.10.2026): «646 Schwarz», «8919 Armeegrün», «P0448H Schwarz», «2350 Black», «GS8111G Black» neben «2GS8111G Brown». Gemessen 396 aktive Produkte mit Code vorn (2'532 Werte), darunter Neuimporte vom selben Tag. farbcode_modell (09.10.) prüft nur Werte OHNE Leerzeichen; der Importer-Helfer ohneCode() verlangt einen GROSSBUCHSTABEN vorn — «2350 Black» und «2GS8111G Brown» kamen durch. EINE Regel für automation/farbcode_praefix.py (Bestand, täglich im Aufseher) und automation/farbcode_praefix.mjs (CJ-Importer).",
+  "optionen": "^(farbe|color|colou?r|ausf(ü|ue)hrung|muster|design|stil|style|variante)$",
+  "code": "^(?=(?:[^0-9]*[0-9]){3})(?!.*[0-9]\\s*[x×*]\\s*[0-9])[A-Za-z]{0,4}[0-9](?:[A-Za-z0-9]*[0-9])?[A-Za-z]{0,2}$",
+  "einheit": "^[0-9]+(?:[.,][0-9]+)?(?:ml|cl|l|mah|ah|w|kw|v|gb|tb|mb|mm|cm|m|g|kg|mg|pcs|pc|stk|st|hz|khz|db|k|p|inch|zoll|in|ft|oz|lb|lbs|d|x|t|y|yr|yrs|er|cc|lm|rpm|psi|bar|mhz|ghz)$",
+  "bekannt": "^(?:s9[0-9]{2}|925|999|[0-9]{2}k|ip[0-9]{2}|cr[0-9]{4}|lr[0-9]{2,4}|sr[0-9]{3,4}|10440|14500|16340|18650|21700|26650|32650|usb.*|type-?c.*|hdmi.*|rgb.*)$",
+  "farbe_endung": "(schwarz|weiss|weiß|rot|blau|grün|gruen|gelb|grau|braun|rosa|lila|violett|beige|orange|gold|silber|khaki|türkis|tuerkis|bordeaux|creme|oliv|pink|marine|aprikose|kaffee|camel|cognac|mint|koralle|magenta|fuchsia|ocker|taupe|anthrazit|petrol|weinrot|bunt)$",
+  "modifikator": "^(light|dark|deep|bright|pale|neon|fluorescent|matte|hell(?:es|e|er)?|dunkel|dunkl(?:es|e|er)|leuchtend(?:es|e|er)?|blass(?:es|e|er)?|matt(?:es|e|er)?|tief|zart(?:es|e|er)?|sky|navy|army|wine|rose|lake|royal|ink|off)$",
+  "wort_min": 3,
+  "fach_titel_aus": "farbcode_modell_regel.json",
+  "_hinweis": "Ein Wert «CODE REST» (erstes Leerzeichen) wird zu REST (englisch → deutsch über farben_de.json, unbekannt bleibt wie es ist), wenn: CODE ≥ 3 Ziffern hat, höchstens 4 Buchstaben vorn und höchstens 2 hinten («3237Dark Brown», «2303Wine Red» = angeklebtes Wort → bleibt, sonst ginge «Dark»/«Wine» verloren), kein Mass («45x45cm»), keine Einheit ist («300ml Orange», «135W …», «6500 mAh» bleiben), keine bekannte Kennung (S925 = Sterlingsilber, 18K, IP68, 18650), und das ERSTE Wort von REST ein Farbwort ist (Farbtabelle, deutsche Farbendung «Armeegrün», «Schwärzlichblau», oder Modifikator + Farbwort «Light Lilac»). «61060 C6», «100 degrees-Black», «1110827 SX2143», «8627 Stil» bleiben (REST ist keine Farbe). Reine Zahlen mit ≤ 3 Ziffern («110 Rot» = Kindergrösse 110?) nur, wenn ALLE codierten Werte denselben Code tragen und die Option ≥ 2 Werte hat. Kollision nach dem Abschneiden (zwei Werte gleich, auch mit einem Wert ohne Code) → ganze Option bleibt. Gerätebezug im Titel (fach_titel aus farbcode_modell_regel.json: Hülle, Akku, Ersatz …) → nur melden: dort kann «A2337» das Gerätemodell sein.",
+  "kanarien": [
+    [
+      [
+        "646 Schwarz",
+        "646 Aprikose"
+      ],
+      [
+        "Schwarz",
+        "Aprikose"
+      ]
+    ],
+    [
+      [
+        "933 Gelb",
+        "933 Lila",
+        "933 Marineblau"
+      ],
+      [
+        "Gelb",
+        "Lila",
+        "Marineblau"
+      ]
+    ],
+    [
+      [
+        "8919 Armeegrün",
+        "8919 Marineblau",
+        "8919 Dunkelgrau"
+      ],
+      [
+        "Armeegrün",
+        "Marineblau",
+        "Dunkelgrau"
+      ]
+    ],
+    [
+      [
+        "P0448H Schwarz",
+        "P0448H Kaffeebraun"
+      ],
+      [
+        "Schwarz",
+        "Kaffeebraun"
+      ]
+    ],
+    [
+      [
+        "2350 Black",
+        "2350 Brown"
+      ],
+      [
+        "Schwarz",
+        "Braun"
+      ]
+    ],
+    [
+      [
+        "GS8111G Black",
+        "GS8111G Gray",
+        "GS8111G Brown",
+        "2GS8111G Brown"
+      ],
+      [
+        "GS8111G Black",
+        "GS8111G Gray",
+        "GS8111G Brown",
+        "2GS8111G Brown"
+      ]
+    ],
+    [
+      [
+        "GS8111G Black",
+        "GS8111G Gray",
+        "2GS8111G Brown"
+      ],
+      [
+        "Schwarz",
+        "Grau",
+        "Braun"
+      ]
+    ],
+    [
+      [
+        "2255 Grün mit Weiss",
+        "2255 Schwarz mit Rot"
+      ],
+      [
+        "Grün mit Weiss",
+        "Schwarz mit Rot"
+      ]
+    ],
+    [
+      [
+        "2040 Silber-Grau",
+        "2108 Light Lilac",
+        "2001 Leuchtendes Rot"
+      ],
+      [
+        "Silber-Grau",
+        "Helllila",
+        "Leuchtendes Rot"
+      ]
+    ],
+    [
+      [
+        "R6563 Blau-Weiss"
+      ],
+      [
+        "Blau-Weiss"
+      ]
+    ],
+    [
+      [
+        "31095 Color",
+        "28309 Braun"
+      ],
+      [
+        "31095 Color",
+        "Braun"
+      ]
+    ],
+    [
+      [
+        "300ml Orange",
+        "350ml Dunkelgrün"
+      ],
+      [
+        "300ml Orange",
+        "350ml Dunkelgrün"
+      ]
+    ],
+    [
+      [
+        "135W Gallium Nitride Charger-AU",
+        "135W Gallium Nitride Charger-EU"
+      ],
+      [
+        "135W Gallium Nitride Charger-AU",
+        "135W Gallium Nitride Charger-EU"
+      ]
+    ],
+    [
+      [
+        "6500 mAh-1 Stück",
+        "6500 mAh-2 Stück"
+      ],
+      [
+        "6500 mAh-1 Stück",
+        "6500 mAh-2 Stück"
+      ]
+    ],
+    [
+      [
+        "61060 C6",
+        "61060 C2"
+      ],
+      [
+        "61060 C6",
+        "61060 C2"
+      ]
+    ],
+    [
+      [
+        "100 degrees-Black",
+        "100 degrees-Red"
+      ],
+      [
+        "100 degrees-Black",
+        "100 degrees-Red"
+      ]
+    ],
+    [
+      [
+        "1110827 SX2143",
+        "1110827 SX2745"
+      ],
+      [
+        "1110827 SX2143",
+        "1110827 SX2745"
+      ]
+    ],
+    [
+      [
+        "8627 Stil",
+        "8628 Stil"
+      ],
+      [
+        "8627 Stil",
+        "8628 Stil"
+      ]
+    ],
+    [
+      [
+        "S925 Silver",
+        "S925 Gold"
+      ],
+      [
+        "S925 Silver",
+        "S925 Gold"
+      ]
+    ],
+    [
+      [
+        "18K Gold",
+        "18K Rose Gold"
+      ],
+      [
+        "18K Gold",
+        "18K Rose Gold"
+      ]
+    ],
+    [
+      [
+        "110 Rot",
+        "120 Rot",
+        "130 Blau"
+      ],
+      [
+        "110 Rot",
+        "120 Rot",
+        "130 Blau"
+      ]
+    ],
+    [
+      [
+        "110 Rot",
+        "120 Blau"
+      ],
+      [
+        "110 Rot",
+        "120 Blau"
+      ]
+    ],
+    [
+      [
+        "110 Rot"
+      ],
+      [
+        "110 Rot"
+      ]
+    ],
+    [
+      [
+        "129 Khaki-Beige",
+        "108 Schwärzlichblau"
+      ],
+      [
+        "129 Khaki-Beige",
+        "108 Schwärzlichblau"
+      ]
+    ],
+    [
+      [
+        "A63 Black",
+        "A65 Black"
+      ],
+      [
+        "A63 Black",
+        "A65 Black"
+      ]
+    ],
+    [
+      [
+        "Schwarz",
+        "646 Schwarz"
+      ],
+      [
+        "Schwarz",
+        "646 Schwarz"
+      ]
+    ],
+    [
+      [
+        "Schwarz",
+        "646 Aprikose"
+      ],
+      [
+        "Schwarz",
+        "Aprikose"
+      ]
+    ],
+    [
+      [
+        "W001 BeigeLeaf Yellow",
+        "W001 BeigeJujube Red"
+      ],
+      [
+        "W001 BeigeLeaf Yellow",
+        "W001 BeigeJujube Red"
+      ]
+    ],
+    [
+      [
+        "9216 Pink Ski Gloves",
+        "9216 Yellow Ski Gloves"
+      ],
+      [
+        "Pink Ski Gloves",
+        "Yellow Ski Gloves"
+      ]
+    ],
+    [
+      [
+        "Size 36696 Black And Red-36-696 Black And Red"
+      ],
+      [
+        "Size 36696 Black And Red-36-696 Black And Red"
+      ]
+    ],
+    [
+      [
+        "Schwarz",
+        "Weiss"
+      ],
+      [
+        "Schwarz",
+        "Weiss"
+      ]
+    ],
+    [
+      [
+        "2026 Schwarz",
+        "2026 Weiss"
+      ],
+      [
+        "Schwarz",
+        "Weiss"
+      ]
+    ],
+    [
+      [
+        "HD5813133101 Navy Blue",
+        "HD5813133102 Wine Red"
+      ],
+      [
+        "Marineblau",
+        "Weinrot"
+      ]
+    ],
+    [
+      [
+        "128GBP3 Rechargeable Handle",
+        "256GBP3 Rechargeable Handle"
+      ],
+      [
+        "128GBP3 Rechargeable Handle",
+        "256GBP3 Rechargeable Handle"
+      ]
+    ],
+    [
+      [
+        "0122 Smart Brake Seat Pole",
+        "0122 Smart Brake Cushion"
+      ],
+      [
+        "0122 Smart Brake Seat Pole",
+        "0122 Smart Brake Cushion"
+      ]
+    ],
+    [
+      [
+        "5562 Pinkish",
+        "5562 Brotkorb"
+      ],
+      [
+        "5562 Pinkish",
+        "5562 Brotkorb"
+      ]
+    ],
+    [
+      [
+        "3237Dark Brown"
+      ],
+      [
+        "3237Dark Brown"
+      ]
+    ],
+    [
+      [
+        "2303Wine Red",
+        "2303Wine Red-Size43"
+      ],
+      [
+        "2303Wine Red",
+        "2303Wine Red-Size43"
+      ]
+    ],
+    [
+      [
+        "45x45cm Brown Square Pillow-Pillowcase",
+        "30x50cm Brown Lumbar Pillow"
+      ],
+      [
+        "45x45cm Brown Square Pillow-Pillowcase",
+        "30x50cm Brown Lumbar Pillow"
+      ]
+    ],
+    [
+      [
+        "S999 Silber-Silber"
+      ],
+      [
+        "S999 Silber-Silber"
+      ]
+    ],
+    [
+      [
+        "8J301 Black",
+        "8J301 Gray"
+      ],
+      [
+        "Schwarz",
+        "Grau"
+      ]
+    ],
+    [
+      [
+        "6009A Gold White Noodles",
+        "6009A Silver Case White"
+      ],
+      [
+        "Gold White Noodles",
+        "Silver Case White"
+      ]
+    ]
+  ],
+  "kanarien_titel": [
+    [
+      "Schutzhülle für iPhone",
+      [
+        "A2337 Black",
+        "A2338 Black"
+      ],
+      null
+    ],
+    [
+      "Ersatz-Akku für Staubsauger",
+      [
+        "2350 Black",
+        "2350 Grey"
+      ],
+      null
+    ],
+    [
+      "Weite Hose mit hohem Bund",
+      [
+        "646 Schwarz",
+        "646 Aprikose"
+      ],
+      [
+        "Schwarz",
+        "Aprikose"
+      ]
+    ]
+  ]
+}

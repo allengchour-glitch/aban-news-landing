@@ -49,6 +49,8 @@ import { SIZESET, SORDER } from './cj_groessen.mjs';
 import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
 import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE Quelle
 import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';   // 09.10.2026: Codes im Farbfeld → «Modell N»
+import { praefixWeg, kanarienGruen as farbpraefixKanarien } from './farbcode_praefix.mjs';   // 10.10.2026: «2350 Black» → «Schwarz»
+const FARBPRAEFIX_OK=farbpraefixKanarien(); if(!FARBPRAEFIX_OK)console.error('farbcode_praefix: Kanarien rot — Code vor Farbe bleibt');
 const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
 // Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
@@ -86,7 +88,10 @@ function buildFashion(d){
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
  const sizes=[...new Set(vs.map(v=>v.size).filter(Boolean))].sort((a,b)=>{const ia=SORDER.indexOf(a),ib=SORDER.indexOf(b);if(ia>=0&&ib>=0)return ia-ib;return (parseInt(a)||99)-(parseInt(b)||99)||a.localeCompare(b);});
  const useC=colors.length>1||(colors.length===1&&!sizes.length), useS=sizes.length>0;
- const sMap0=useC?codeMap(colors):null;                // «A039 Black» → «Schwarz»
+ const sMapC=useC?codeMap(colors):null;                // «A039 Black» → «Schwarz»
+ // 10.10.2026: Code mit ZIFFER vorn vor der Farbe («2350 Black», «646 Schwarz») kennt ohneCode() nicht → data/farbcode_praefix_regel.json
+ const prC=useC&&FARBPRAEFIX_OK?praefixWeg(colors.map(c=>sMapC?(sMapC.get(c)||c):c),d.productNameEn||''):null;
+ const sMap0=prC?new Map(colors.map((c,i)=>[c,prC[i]])):sMapC;
  // 09.10.2026: Lieferantencodes im Farbfeld («QW121», «040401», gemischt mit «Blau») → «Modell N»; Regel = Bestand-Wächter
  // (data/farbcode_modell_regel.json). Die Option heisst hier immer «Farbe» (Dedup/Varianten unten hängen daran).
  const fcNeu=useC&&FARBCODE_OK?codesNummerieren(colors.map(c=>sMap0?(sMap0.get(c)||c):c)):null;

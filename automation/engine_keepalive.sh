@@ -538,7 +538,9 @@ python3 "$REPO_AUTO/verkauf_ziel.py" 2>/dev/null || echo "VERKAUF-ZIEL: unklar (
 python3 "$REPO_AUTO/cj_reset_wache.py" 2>/dev/null || echo "CJ-RESET: unklar (Wache fehlt)"
 # 01.10.2026 (Grow-Verhaltensberichte): Produktseiten mit Warenkorb ohne Kauf, 14 T — kürzester Weg zum nächsten Verkauf.
 TAGE=14 timeout 60 python3 "$REPO_AUTO/kaufwille_zeile.py" 2>/dev/null || echo "KAUFWILLE: unklar (Skript fehlt)"
-[ -f "$REPO_AUTO/../dropship/_gfeed_nachpruefen_2909.json" ] && python3 "$REPO_AUTO/gfeed_nachpruefen.py" --auswerten 2>/dev/null | sed 's/^/GOOGLE-VERSUCH /'
+# GOOGLE-VERSUCH (A/B «Product page unavailable» vom 29.09.) am 10.10. ausgebaut: ausgewertet am 29.09. (A 27 % frei vs. B 1,6 %),
+# danach wurde B nachgezogen — die Zeile verglich seither zwei gleich behandelte Gruppen («A 21/128 · B 23/128») und las sich
+# wie «Anstupsen wirkt nicht». Die Klasse misst google_feedback_wache.py; Bilanz dropship/FARBCODE-PRAEFIX-2026-10-10.md.
 
 # 🪣 CJ-TAKT-BERICHT (24.09.2026): Server und Container teilen EIN CJ-Konto, sehen aber nur ihre eigenen Aufrufe.
 # Jede Maschine legt stündlich dropship/_cj_takt_<host>.json ab (Aufrufe je Skript, letzte 60 min); hier werden
