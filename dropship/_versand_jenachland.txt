@@ -9149,3 +9149,4 @@ gid://shopify/Product/15427280503169	ersetzt
 gid://shopify/Product/15427280535937	ersetzt
 gid://shopify/Product/15427280568705	ersetzt
 gid://shopify/Product/15427280601473	ersetzt
+gid://shopify/Product/15427280634241	ersetzt
