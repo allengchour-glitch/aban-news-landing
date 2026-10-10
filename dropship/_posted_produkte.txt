@@ -197,3 +197,4 @@ slug:samt-kurbis-kissen-95e02d
 slug:hut-handschuhe-schal-3-in-1-set
 slug:bruder-deutz-8280-ttv-fga03160
 name:bruderdeutz8280ttv
+slug:kerzenstander-aus-glas-im-modernen-design
