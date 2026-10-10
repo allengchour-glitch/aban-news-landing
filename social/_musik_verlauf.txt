@@ -447,3 +447,4 @@
 2026-10-09T04:14:22.053Z	luxe-epic-hero.wav	43	allgemein	cjreel-1378317838233767936	stimme:nein	anteil
 2026-10-09T08:54:15.745Z	luxe-adventure-uplift.wav	45.5	home	cjreel-2607040852081633100	stimme:nein	anteil
 2026-10-10T03:09:50.186Z	luxe-orchestra.wav	15	mode	cjreel-5AAFB6F9-167B-43D9-AE12-C667648CF308	stimme:ja	azure:de-CH-JanNeural
+2026-10-10T08:43:13.834Z	luxe-epic-anime.wav	10.5	beauty	cjreel-2408220906591608200	stimme:nein	anteil
