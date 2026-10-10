@@ -733,3 +733,5 @@
 15500254216577	Farbe:2+Grösse:4:8	2026-10-10	wollschal-fur-hunde-993024
 15509388165505	Typ:3:3	2026-10-10	diy-ohrring-set-aus-pu-leder-00df42
 15449176146305	Farbe:3:3	2026-10-10	ultraschall-gesichtsreiniger-aus-silikon-628100
+15453790896513	Typ:2:2	2026-10-10	abstrakte-olgemalde-dekoration-634400
+15453892739457	Farbe:4:4+ki	2026-10-10	sportuhr-612000

@@ -1,6 +1,7 @@
 {
  "title": "Geschenke bis CHF 30",
  "handle": "🎁-geschenke-bis-chf-30",
+ "descriptionHtml": "<p>Suchst du ein passendes Präsent, das Freude bereitet und dein Budget schont? Hier entdeckst du vielfältige Geschenkideen: Von einer stylischen Retro-Quarzuhr und cleveren Smart Rings bis hin zu praktischen kabellosen Ladegeräten. Auch Werkzeug wie Handsägen und Sägeblätter wartet darauf, von dir verschenkt zu werden.</p><p>✔ Geprüfte Angaben · 🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->\n<!-- ls-verwandt --><p class=\"ls-verwandt-eltern\">Zur Übersicht: <a href=\"/collections/premium-geschenke\">Geschenke &amp; Weihnachten</a></p><!-- /ls-verwandt -->",
  "sortOrder": "BEST_SELLING",
  "templateSuffix": null,
  "image": {
@@ -10,6 +11,32 @@
  "seo": {
   "title": "Geschenke bis CHF 30 kaufen | LuxeStyle Schweiz",
   "description": "Geschenke bis CHF 30 online kaufen bei LuxeStyle: grosse Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+ },
+ "metafields": {
+  "nodes": [
+   {
+    "namespace": "global",
+    "key": "title_tag",
+    "type": "string",
+    "value": "Geschenke bis CHF 30 kaufen | LuxeStyle Schweiz"
+   },
+   {
+    "namespace": "global",
+    "key": "description_tag",
+    "type": "string",
+    "value": "Geschenke bis CHF 30 online kaufen bei LuxeStyle: grosse Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+   }
+  ]
+ },
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "geschenkwelt-unter30"
+   }
+  ]
  },
  "resourcePublicationsV2": {
   "nodes": [
