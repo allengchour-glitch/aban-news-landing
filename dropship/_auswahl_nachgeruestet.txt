@@ -788,3 +788,4 @@
 15453743382913	Grösse:8:8	2026-10-10	digitale-druck-damenkleid-639100
 15453780345217	Typ:4+Grösse:2:8	2026-10-10	rektangulares-kissen-mit-einlage-627900
 15454092263809	Farbe:5:5	2026-10-10	kinder-balance-bike-helm-955072
+15523850125697	Ausführung:4:4+ki	2026-10-10	kuchenregal-in-form-eines-ventilators-gewurzau-614600
