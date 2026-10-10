@@ -20205,3 +20205,60 @@ gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/5838
 gid://shopify/Product/16613449367943	Farbe	gid://shopify/ProductOptionValue/58380914459015	8899 Purplish Blue	8899 Violettblau	2026-10-09T15:52Z
 gid://shopify/Product/16613495996807	Farbe	gid://shopify/ProductOptionValue/58381324419463	Black A	Schwarz A	2026-10-09T15:52Z
 gid://shopify/Product/16613495996807	Farbe	gid://shopify/ProductOptionValue/58381324452231	Black B	Schwarz B	2026-10-09T15:52Z
+gid://shopify/Product/16613434098055	Farbe	gid://shopify/ProductOptionValue/58384628482439	Light Blue	Hellblau	2026-10-10T12:49Z
+gid://shopify/Product/16613434098055	Farbe	gid://shopify/ProductOptionValue/58384628515207	Light Green	Hellgrün	2026-10-10T12:49Z
+gid://shopify/Product/16613436391815	Farbe	gid://shopify/ProductOptionValue/58384629072263	Blue	Blau	2026-10-10T12:49Z
+gid://shopify/Product/16613436785031	Farbe	gid://shopify/ProductOptionValue/58384629596551	Purple	Lila	2026-10-10T12:49Z
+gid://shopify/Product/16613637947783	Farbe	gid://shopify/ProductOptionValue/58382747206023	White-21to26	Weiss-21/26	2026-10-10T12:50Z
+gid://shopify/Product/16613637947783	Farbe	gid://shopify/ProductOptionValue/58382747238791	White-27to32	Weiss-27/32	2026-10-10T12:50Z
+gid://shopify/Product/16613637947783	Farbe	gid://shopify/ProductOptionValue/58382747304327	Light Brown-21to26	Hellbraun-21/26	2026-10-10T12:50Z
+gid://shopify/Product/16613665767815	Farbe	gid://shopify/ProductOptionValue/58384631398791	Dark Gray	Dunkelgrau	2026-10-10T12:50Z
+gid://shopify/Product/16613665767815	Farbe	gid://shopify/ProductOptionValue/58384631431559	Yellowish Brown	Gelbbraun	2026-10-10T12:50Z
+gid://shopify/Product/16613665767815	Farbe	gid://shopify/ProductOptionValue/58384631529863	Blue	Blau	2026-10-10T12:50Z
+gid://shopify/Product/16613665767815	Farbe	gid://shopify/ProductOptionValue/58384631562631	Gray	Grau	2026-10-10T12:50Z
+gid://shopify/Product/16613665767815	Farbe	gid://shopify/ProductOptionValue/58384631628167	Beige Gray	Beige-Grau	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333046151	Black-45to46	Schwarz-45/46	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333078919	Black-47to48	Schwarz-47/48	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333144455	Beige-45to46	Beige-45/46	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333177223	Beige-47to48	Beige-47/48	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333242759	Light Brown-45to46	Hellbraun-45/46	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333275527	Light Brown-47to48	Hellbraun-47/48	2026-10-10T12:50Z
+gid://shopify/Product/16613781897607	Farbe	gid://shopify/ProductOptionValue/58384333308295	Black 2	Schwarz 2	2026-10-10T12:50Z
+gid://shopify/Product/16613782258055	Farbe	gid://shopify/ProductOptionValue/58384336224647	White Velvet	Weiss Samt	2026-10-10T12:50Z
+gid://shopify/Product/16613782258055	Farbe	gid://shopify/ProductOptionValue/58384336257415	Black Velvet	Schwarz Samt	2026-10-10T12:50Z
+gid://shopify/Product/16613782356359	Farbe	gid://shopify/ProductOptionValue/58384336683399	GS8111G Black	Schwarz	2026-10-10T12:50Z
+gid://shopify/Product/16613782356359	Farbe	gid://shopify/ProductOptionValue/58384336716167	GS8111G Gray	Grau	2026-10-10T12:50Z
+gid://shopify/Product/16613782356359	Farbe	gid://shopify/ProductOptionValue/58384336748935	GS8111G Brown	Braun	2026-10-10T12:50Z
+gid://shopify/Product/16613785371015	Farbe	gid://shopify/ProductOptionValue/58384364175751	2350 Black	2350 Schwarz	2026-10-10T12:50Z
+gid://shopify/Product/16613785371015	Farbe	gid://shopify/ProductOptionValue/58384364208519	2350 Brown	2350 Braun	2026-10-10T12:50Z
+gid://shopify/Product/16613785862535	Farbe	gid://shopify/ProductOptionValue/58384366797191	8821 Black	8821 Schwarz	2026-10-10T12:50Z
+gid://shopify/Product/16613785862535	Farbe	gid://shopify/ProductOptionValue/58384366829959	8821 Dark Blue	8821 Dunkelblau	2026-10-10T12:50Z
+gid://shopify/Product/16613788221831	Farbe	gid://shopify/ProductOptionValue/58384371712391	3287 Black	3287 Schwarz	2026-10-10T12:50Z
+gid://shopify/Product/16613788221831	Farbe	gid://shopify/ProductOptionValue/58384371745159	3287 Brown	3287 Braun	2026-10-10T12:50Z
+gid://shopify/Product/16613788221831	Farbe	gid://shopify/ProductOptionValue/58384371777927	3287 Blue	3287 Blau	2026-10-10T12:50Z
+gid://shopify/Product/16613825970567	Farbe	gid://shopify/ProductOptionValue/58384642539911	Red plus velvet	Rot gefüttert	2026-10-10T12:50Z
+gid://shopify/Product/16613825970567	Farbe	gid://shopify/ProductOptionValue/58384642605447	Pink plus velvet	Pink gefüttert	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384666919303	Light Grey-22 23	Hellgrau-22 23	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384666952071	Purple-28 29	Lila-28 29	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667083143	Light Grey-28 29	Hellgrau-28 29	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667148679	Dark Grey-22 23	Dunkelgrau-22 23	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667279751	Purple-26 27	Lila-26 27	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667312519	Dark Grey-20 21	Dunkelgrau-20 21	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667345287	Dark Grey-24 25	Dunkelgrau-24 25	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667443591	Light Grey-26 27	Hellgrau-26 27	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667574663	Purple-20 21	Lila-20 21	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667640199	Light Grey-24 25	Hellgrau-24 25	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667705735	Purple-24 25	Lila-24 25	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667738503	Light Grey-20 21	Hellgrau-20 21	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667771271	Dark Grey-26 27	Dunkelgrau-26 27	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667804039	Purple-22 23	Lila-22 23	2026-10-10T12:50Z
+gid://shopify/Product/16613828362631	Farbe	gid://shopify/ProductOptionValue/58384667869575	Dark Grey-28 29	Dunkelgrau-28 29	2026-10-10T12:50Z
+gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/58384757981575	Blue-14.5cm	Blau-14.5 cm	2026-10-10T12:50Z
+gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/58384758014343	Blue-15.5cm	Blau-15.5 cm	2026-10-10T12:50Z
+gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/58384758079879	Blue-16.5cm	Blau-16.5 cm	2026-10-10T12:50Z
+gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/58384758112647	Pink-16.5cm	Pink-16.5 cm	2026-10-10T12:50Z
+gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/58384758145415	Pink-14.5cm	Pink-14.5 cm	2026-10-10T12:50Z
+gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/58384758178183	Pink-15.5cm	Pink-15.5 cm	2026-10-10T12:50Z
+gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964551047	White navy A	Weiss-Marineblau A	2026-10-10T12:50Z
+gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964583815	White purple powder A	Weiss-Lila-Rosa A	2026-10-10T12:50Z
+gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964616583	White red A	Weiss-Rot A	2026-10-10T12:50Z

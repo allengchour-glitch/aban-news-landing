@@ -6843,3 +6843,12 @@ portabel-mini-elektrosewingmaschine-multifunkt-810113	-	-	-	unklar pid 1602002 P
 handgemaltes-abstraktes-olgemalde-984064	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 4er-set-pvc-fussmatten-fur-auto-suv-truck-schn-525954	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+bequeme-slip-on-sneaker-mit-paisley-print-293890	1981293493283094533	-	-	unklar 1602002 Product has been removed from  rest=105	landeseite
+keilsandalen-mit-leopardenmuster-und-eckiger-s-600900	2606090838131601800	16	11.37	ok	landeseite
+sommerliche-pantoletten-mit-weicher-sohle-618900	2606090827531619600	16	11.37	ok	landeseite
+retro-plateau-schuhe-im-ethno-stil-607400	2606090750181608000	16	11.96	ok	landeseite
+damen-pantoletten-mit-farbigen-strass-steinen-614700	2606080815481615500	16	9.88	ok	landeseite
+zehentrenner-sandalen-mit-mittlerem-absatz-617600	2606050928051618300	16	13.76	ok	landeseite
+retro-mori-style-zehenfreie-outdoor-slipper-614100	2606050658281614800	16	10.15	ok	landeseite
+plateau-slipper-mit-leopardenmuster-und-quaste-621600	2606050550131622200	16	9.20	ok	landeseite
+keile-sandalen-mit-dicker-sohle-611000	2606050351581611800	16	10.15	ok	landeseite
