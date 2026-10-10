@@ -17501,3 +17501,18 @@ gid://shopify/Product/16613760663943	72->1	Mosaik-Schachbrett-Kunstharz-Armband 
 gid://shopify/Product/16613763678599	40->2	Zinn-Glasperlen Armband für Apple Watch
 gid://shopify/Product/16613763744135	10->0	Atmungsaktives Leder-Uhrenarmband in T-Form für Apple Watch
 gid://shopify/Product/16613763940743	15->0	Smart-Headset-Uhr mit Bluetooth 5.0
+gid://shopify/Product/16613781864839	49->0	Intelligenter Staubsaugerroboter mit Wischfunktion
+gid://shopify/Product/16613782028679	53->1	Rindsleder-Halbschuh Business Casual
+gid://shopify/Product/16613782487431	22->0	Warme Winterstiefel für Herren
+gid://shopify/Product/16613782520199	72->0	Thermische Fensterisolierfolie für Auto
+gid://shopify/Product/16613782651271	20->0	Nackenkissen für Autositz-Kopfstütze
+gid://shopify/Product/16613785305479	64->0	Haarschneider 5W mit Akku
+gid://shopify/Product/16613785371015	30->0	Plus Size Wildleder-Sneaker Herren
+gid://shopify/Product/16613785698695	22->0	Auto-Heizkissen mit 12V Stromversorgung
+gid://shopify/Product/16613785764231	18->1	Herrenschuhe Casual Sneaker aus Rindsleder
+gid://shopify/Product/16613785829767	19->1	C-Band und Ku-Band Empfänger-Tuner
+gid://shopify/Product/16613786386823	38->1	Gommino Slip-On Lederschuhe für Herren
+gid://shopify/Product/16613787468167	21->0	Anti-statischer Arbeitsschuh mit Flyknit-Oberteil
+gid://shopify/Product/16613788057991	115->0	Aufbewahrungstasche für Auto, Würfelform
+gid://shopify/Product/16613788090759	17->1	Faltbarer Laptopständer aus Aluminium
+gid://shopify/Product/16613788156295	32->0	Kabellose Tastatur und Maus
