@@ -6858,3 +6858,5 @@ stylische-stiletto-flip-flops-mit-mittlerem-ab-611500	2606030855511612300	16	10.
 keilsandalen-mit-plateau-und-offener-spitze-631000	2606030528041631700	16	14.37	ok	landeseite
 korean-style-leder-flip-flops-622600	2606030525381623400	16	9.88	ok	landeseite
 outdoor-sandalen-mit-schleife-603300	2606030522371603900	16	10.55	ok	landeseite
+sandalen-mit-schleife-und-hohem-absatz-622000	2606020723101622600	16	12.56	ok	landeseite
+mules-mit-chunky-absatz-608900	2606010915491609600	16	10.01	ok	landeseite
