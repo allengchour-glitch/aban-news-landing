@@ -1,4 +1,4 @@
-# Kollektionen mit gleicher Regel — Stand 2026-10-10T02:14:49Z
+# Kollektionen mit gleicher Regel — Stand 2026-10-10T23:12:30Z
 
 OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 9 · Gruppen: 9 · SCHARF
 
