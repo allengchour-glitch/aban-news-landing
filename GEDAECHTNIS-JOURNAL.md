@@ -49,6 +49,17 @@
 
 
 
+## 🎄 Saison-Kollektionen + Kleidung mit fremdem Typ — ein Filter auf einer neuen Seite verrät eine ganze Klasse (2026-10-10, 14:45 UTC, «weiter»)
+**Gemessen:** OpenSEO CH: «weihnachtspullover» 2'400 (+Damen 1'900, Herren 1'000, «ugly christmas sweater» 1'900), «handwärmer» 2'400,
+alle KD 0; Bestand 41 Pullover (ohne Tierkleidung) / 12 Handwärmer, keine Kollektion. Beim Live-Check der neuen Pullover-Seite zeigte
+der Filter «Haustierbedarf» → Typ-Messung über Kategorie Clothing: 49 Kleidungsstücke mit fremdem Typ (Dessous = «Spass-Elektronik»,
+Jeansjacke = «Werkzeug», Westen = «Taschen» …). **Getan:** 2 Kollektionen (Suchbegriff-Regel, Tierkleidung ausgeschlossen, Links aus
+«Weihnachten»/«Winter & Kälte»); `produkttyp_vereinheitlichen.py` + Durchgang «Kleidung mit Fremdtyp» (nur aa-1/aa-8, 14 Fremdtypen,
+Kostüme nie, Titel-Schutz Tasche/Matte/Sohle) → 43/43, 5 durch Kollektions-Sperre gehalten.
+**Lehren:** (1) Nach dem Anlegen einer Kollektion die Filter-Facetten lesen — ein Fremdwert dort ist ein Datenfehler in der Ware,
+nicht in der Seite. (2) Typ und Kategorie widersprechen sich in BEIDE Richtungen: «Denim-Tasche» unter Clothing ist ein
+Kategorie-Fehler, «Jeansjacke» als «Werkzeug» ein Typ-Fehler — der Titel entscheidet, welche Seite stimmt.
+
 ## 👨‍👩‍👧 Familien-Weihnachtspyjamas: Auswahl «Gray-Father S» — ein Werkzeug ohne Wächter ist eine einmalige Reparatur (2026-10-10, 13:25 UTC, «weiter»)
 **Gemessen:** Search Console (OpenSEO, gratis): «familien-weihnachtspyjama» Pos. 26, «partner weihnachtspyjama» Pos. 22 — Saison bis
 Dezember. Genau diese Sets zeigten «Gray-Father S», «Hat Print-S For Mother», «White-DadS» (43 Optionen im Export). Das Werkzeug
@@ -19739,3 +19750,4 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · 🏃 **«weiter»: Fitness-/Smart-Armbänder bei Google unter «Bracelets» — `uhren_fein.py` las nur den Watches-Zweig → zweiter Durchgang `UHREN-FEIN-ARMBAND` mit eingeschränkter Regel (nie «Watches»: Quarz = Rosenquarz; Smartwatch nur mit Messwort), Kanarien 14/14, 18/0, Tageslauf nimmt beide Zweige.** Nachbarzweig prüfen, Regel dort einschränken → `dropship/ARMBAND-SMART-ZWEIG-2026-10-09.md`
 - 2026-10-09 · 📱 **Betreiber FB-Screenshot/«weniger asiaten»/«shorts»/«weiter»: FB nur noch Reels (`data/kanal_formate.json`, Fotos 1 Aufruf), Reel-Poster stellt Gesicht-Clips für IG+FB hinten an (`reel_gesicht.py`, gleich wessen Gesicht — nie nach Herkunft), `social_lernen` lief seit 05.10. nicht (im Meta-Zweig) → vor die Weiche + FB/YouTube über Metricool; `variantenwert_ki.py` 30/0 (nur unbekannter englischer Rest an KI, Aufseher 60/Tag); OpenAI wieder da (Oberklassen 21/0).** Messen vor die Zugangs-Weiche → `dropship/SOCIAL-FB-REELS-2026-10-09.md`, `dropship/VARIANTENWERT-KI-2026-10-09.md`
 - 2026-10-09 · 🥾 **«weiter»: Titel-Wache pausierte 2× ohne Prüfer (OpenAI + Groq leer) → 452 Neuimporte ungeprüft («Patentreifen», «Rhabarber-Bänder») → nachgeholt 21 korrigiert; 354 «uneinig» (nur EIN Modell korrigierte) → das andere bestätigt + `--uneinig` im Aufseher; «Martin Boots» (马丁靴, Markenanklang) → «Worker-Boots» 93/93 (Kanarien 96/96, py=js 52'144/0); Farbe-Alter-Felder bleiben dem Aufteiler.** Pausen brauchen Nachholläufe; «uneinig» ist kein Endzustand → `dropship/TITEL-WACHE-NACHHOLEN-2026-10-09.md`
+- 2026-10-09 · 🪡 **«weiter»: toter Blog-Link (Seidenkissenbezug, CJ ausgelistet, 8 Artikel) → Ersatz mit allen Fakten (19 Momme, beidseitig) hatte 48 CJ-Varianten/1 im Shop (alle 4 Kandidaten!) → Auswahl nachgerüstet (17×3, «51×66»→cm an der Quelle, 52/52), Artikel 8/8 «ab CHF 31.90», Werkzeug `blog_link_ersetzen.py`; Titel-Rückstand 111 gesichtet geschrieben (22 Handtitel: «Mummy»≠Mumie, «Kaucher»=Trinknapf) + Prüfer sehen jetzt «(Ware: …)».** Ersatz/Korrektur gegen die Ware prüfen; Einzelläufe mit eigenem BERICHT= → `dropship/BLOG-BEWERTUNGEN-2026-10-05.md`, `dropship/TITEL-WACHE-NACHHOLEN-2026-10-09.md`

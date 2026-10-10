@@ -62,6 +62,20 @@ KARTE = {
 }
 
 SAMMEL = ("Trend-Gadget", "Trend-Produkt")
+# 10.10.2026 («weiter»): Kleidung/Schuhe mit FREMDEM Warentyp — gemessen 49 aktive mit Kategorie «Clothing», aber Typ
+# «Haustierbedarf» (Damenpullover mit Katzenmotiv), «Partydeko & Ballone» (Weihnachts-Sweatshirt), «Spass-Elektronik»
+# (Dessous-Set, Kinder-Pyjama), «Basteln & DIY» (Yoga-Hose, Cardigan), «Werkzeug & Heimwerken» (Jeansjacke),
+# «Beauty-Tools» (Kinder-Socken) … Folge: falsche Filter-Facetten (die neue Kollektion «Weihnachtspullover» zeigte
+# «Haustierbedarf») und Ware in typbasierten Menü-Kollektionen am falschen Ort. Nur bei Shopify-Kategorie aa-1/aa-8
+# (Kleidung/Schuhe) und nur für Typen ohne Kleidungsbezug; Ziel über aus_kategorie() (VORRANG Tierwort → Haustierbedarf
+# bleibt), dieselbe Kollektions-Sperre. Kostüme bewusst NICHT (Google-Kanal-Ausschluss hängt am Kostüm-Urteil).
+FREMD = ("Haustierbedarf", "Spielzeug & Spiele", "Basteln & DIY", "Spass-Elektronik", "Wohnen & Deko",
+         "Werkzeug & Heimwerken", "Partydeko & Ballone", "Beauty-Tools", "Aufbewahrung & Organizer", "Taschen",
+         "Elektronik", "Küche & Bar", "Gadget", "Haushalt & Wohnen")
+FREMD_KAT = ("aa-1", "aa-8")
+# Titel sagt, dass der alte Typ stimmt und die KATEGORIE falsch ist (Trockenlauf 10.10.: «Denim-Tasche», «Henkeltasche»,
+# «Coral Fleece Küchenmatte», «Schuh-Unterstuetzung» stehen unter Clothing/Shoes) → bleibt. «Weste mit Taschen» (Plural) zählt nicht.
+FREMD_BLEIBT = re.compile(r"\w*tasche\b|\w*matte\b|teppich|unterst(ü|ue)tzung|einlage|sohle|kissen|\bdecke\b", re.I)
 
 
 # 04.10.2026 (Verbesserungsrunde «kategorie-typ»): nach dem ersten Lauf blieben 84 Kleider + 35 Schuhe als «Trend-Gadget»,
@@ -269,6 +283,27 @@ def main():
             if led:
                 led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{LAUF}\n")
     print("  Sammeltypen →", dict(sorted(zahl.items(), key=lambda x: -x[1])))
+    # Kleidung/Schuhe mit fremdem Warentyp (10.10.2026)
+    fz = {}
+    for alt in FREMD:
+        for p in produkte(alt, nur_aktiv=True):
+            k = ((p.get("category") or {}).get("id") or "").split("/")[-1]
+            if not any(k == f or k.startswith(f + "-") for f in FREMD_KAT) or POD.search(" ".join(p["tags"])) \
+                    or FREMD_BLEIBT.search(p["title"]):
+                continue
+            neu = aus_kategorie(k, p["title"])
+            g = sperrgrund(alt, neu, regeln, pid=p["id"]) if neu and neu != alt else None
+            if not neu or neu == alt or g:
+                fz["bleibt" if not g else "gesperrt"] = fz.get("bleibt" if not g else "gesperrt", 0) + 1
+                if g:
+                    print(f"  ✗ {p['title'][:50]} ({alt}) → {neu}: {g}")
+                continue
+            fz[f"{alt} → {neu}"] = fz.get(f"{alt} → {neu}", 0) + 1
+            print(f"  ✓ {p['title'][:60]} · {alt} → {neu}")
+            paare.append((p["id"], neu))
+            if led:
+                led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{LAUF}\n")
+    print("  Kleidung mit Fremdtyp →", dict(sorted(fz.items(), key=lambda x: -x[1])))
     if led:
         led.flush()
     ok = schreiben(paare) if SCHARF else 0
