@@ -6557,3 +6557,5 @@ gid://shopify/Product/15458987082113	zugeordnet	35	Elegantes Schlankheitskleid m
 gid://shopify/Product/15458987344257	zugeordnet	16	Prinzessen-Laufschuhe mit weicher Sohle
 gid://shopify/Product/15458987639169	zugeordnet	15	Kleines A-Linien-Kleid mit Buchstabenmuster
 gid://shopify/Product/15458987803009	zugeordnet	14	Weiche Indoor-Schuhe für Kleinkinder
+gid://shopify/Product/15458988097921	zugeordnet	80	Tiedye-Kleid mit lockerem Sitz
+gid://shopify/Product/15458988228993	zugeordnet	30	Süsse Lauflernschuhe für Babys
