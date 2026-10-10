@@ -6995,3 +6995,8 @@ herren-loafer-mit-weicher-sohle-628500	2605210353521629100	16	10.01	ok	landeseit
 lassige-leder-slipper-fur-herren-624900	2605210302231625600	16	21.16	ok	landeseite
 herren-slipper-vielseitige-mokassins-625400	2605200620531625900	16	10.55	ok	landeseite
 herren-lederschuhe-mit-weicher-sohle-637300	2605190634481637900	16	14.96	ok	landeseite
+elegante-business-schuhe-fur-herren-627300	2605111206071628000	16	19.29	ok	landeseite
+loafer-im-retro-look-fur-herren-628600	2605110327321629300	16	17.66	ok	landeseite
+herren-sandalen-mit-geschlossenem-zehenbereich-610900	2605100938111611500	16	12.56	ok	landeseite
+elegante-business-lederschuhe-fur-herren-618200	2605081241091618800	16	19.76	ok	landeseite
+herren-low-top-leder-sneaker-626800	2605070719581627400	16	10.83	ok	landeseite
