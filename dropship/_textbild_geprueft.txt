@@ -61252,3 +61252,4 @@ gid://shopify/Product/15455766872449	gid://shopify/MediaImage/69953886388609	bil
 gid://shopify/Product/15455894733185	gid://shopify/MediaImage/69955166372225	bildtausch-sperre
 gid://shopify/Product/15459786490241	gid://shopify/MediaImage/69985522909569	bildtausch-sperre
 gid://shopify/Product/15465842606465	gid://shopify/MediaImage/70080790200705	bildtausch-sperre
+gid://shopify/Product/15497378201985	gid://shopify/MediaImage/70522046677377	bildtausch-sperre
