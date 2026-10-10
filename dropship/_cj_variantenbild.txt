@@ -6569,3 +6569,5 @@ gid://shopify/Product/15458991145345	zugeordnet	65	Tiger-Druck T-Shirt
 gid://shopify/Product/15458991505793	zugeordnet	2	Asymmetrisches Top mit Bogen-Detail
 gid://shopify/Product/15458991964545	zugeordnet	2	Lace-Kragen-Pullover
 gid://shopify/Product/15458992062849	zugeordnet	98	Kinder High Heel Schuhe
+gid://shopify/Product/15458992488833	zugeordnet	12	Rückenfreie Figurumspielende Halter-Neck Camisole
+gid://shopify/Product/15458992783745	zugeordnet	15	Rutschfeste Weichsohle Lauflernschuhe
