@@ -772,3 +772,5 @@
 15510325854593	Farbe:2:2	2026-10-10	super-racing-bausteine-us-muscle-car-155840
 15449076859265	Farbe:6:6	2026-10-10	quarz-armbanduhr-fur-herren-602200
 15449079841153	Grösse:5:5	2026-10-10	magnetischer-fliegengitter-vorhang-mit-streife-015554
+15452709224833	Farbe:15:15+ki	2026-10-10	kamm-mit-stahlklinge-704960
+15453743612289	Modell:8+Grösse:5:40	2026-10-10	sommerliches-vintage-kleid-636500
