@@ -57,3 +57,8 @@ Täglich: `BUDGET=<ausgegeben> MARGE=19 python3 tools/werbetest_trichter.py sire
   Umbauen kurz aktiv war. Gute Nachricht: der URL-Suffix wirkt (utm_source=google, utm_medium=cpc). Ausgabe dafür ≤ CHF ~6 (geschätzt, Konto zeigt den Betrag).
 - **Ampel-Zeile «WERBETEST»** (`betreiber_ampel.werbetest()`, Steuerdatei `dropship/_werbetest_aktiv.json` bis 17.10. + 3 T): Trichter seit Start, Obergrenze
   Ausgaben = Tagesbudget × Tage, Stopp-Regel CHF 30 ohne Warenkorb, ⚠️ Sitzungen auf fremden Produkten (Landeseite ≠ Sirène-Handle).
+- **19:58 UTC:** Shop zeigt heute 19 bezahlte Klicks (utm_campaign=sirene-test), **alle auf fremden Produkten, 0 auf dem Kleid**. Seit der Messung um ~19:55 sind 3 neue dazugekommen
+  → die Produktgruppen-Umstellung wirkt noch nicht (oder ist nicht gespeichert). Die Google-Ads-App zeigt 0 Klicks, das ist Verzögerung (Google: «Berichterstellung erfolgt nicht in Echtzeit»).
+  Entscheid bis zum Bild der Produktgruppen: Kampagne pausieren.
+- **Pausiert** (Betreiber bestätigt, ~20:05 UTC). Google-Ads-App zeigte kurz davor 10 Klicks / 262 Anzeigen heute, alle in der Stunde 21–22 Uhr Zeitzone Berlin.
+  Entscheid: Kampagne bleibt pausiert, bis die Produktgruppe nur die 8 Sirène-Zeilen enthält. Andere Produkte nur in einer eigenen Kampagne mit eigenem Budget (Betreiber-Entscheid).
