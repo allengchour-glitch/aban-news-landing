@@ -6912,3 +6912,5 @@ zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed fr
 4er-set-pvc-fussmatten-fur-auto-suv-truck-schn-525954	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 bequeme-slip-on-sneaker-mit-paisley-print-293890	1981293493283094533	-	-	unklar 1602002 Product has been removed from  rest=407	landeseite
 herren-freizeit-sandalen-aus-kunstleder-610100	2606010707371610800	16	13.40	ok	landeseite
+herren-sandalen-mit-klettverschluss-621900	2606010256341622700	16	12.32	ok	landeseite
+herren-non-slip-casual-beach-sandalen-638800	2605300644021639500	16	11.37	ok	landeseite
