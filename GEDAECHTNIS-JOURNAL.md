@@ -49,6 +49,23 @@
 
 
 
+## ⌚ 表带 = Uhrband, 皮带表 = Uhr — «…gürtel» braucht das Bild als Schiedsrichter (2026-10-10, 04:50 UTC, Verbesserungsrunde)
+
+**Gemessen:** 128 Neuimporte in 4 h, davon 9 Uhrenarmbänder/Uhr-Zubehör bei Google + Shopify unter «Watches»; 3 mit Titel
+«Armbanduhr-Gürtel/-Gurtschiene». Katalog: 5 «…gürtel»-Titel — 4 Apple-Watch-Bänder (Bild + «passt zu 38–49 mm»), 1 Uhr
+(«Business-Uhrgürtel» = 皮带表, Bild Herrenuhr; darum stand «uhrgürtel» in `uhren_fein.NICHT`). `uhren_fein` übersah dazu
+«Lade-Station» mit Bindestrich und Stegbreite NACH dem Wort («Lederarmband 22mm») → Trockenlauf 29 umzuordnen.
+
+**Getan:** Importer-Anweisung (`cj_copy_prompt.mjs`, Übersetzungsfallen: watch strap/band/belt = Uhrenarmband; belt watch =
+Uhr mit Lederarmband); Titelregel `fremdwort_titel` «Armbanduhr-Gürtel/-Gurt/-Gurtschiene» → «Uhrenriemen» (männlich wie
+Gürtel — Adjektive bleiben richtig), Handtitel «Business-Uhrgürtel», HANDLE_WORT (301), Kanarien 102/102; `uhren_fein`
+BAND + Lade-Station + Breite 12–26 mm (im Schmuck-Zweig nur mit Uhrbezug: «Panzerkette Armband 12 mm» bleibt), 56/56 +
+17/17; Bestand 5/5 Titel/SEO/Text/Adresse 301, Kategorien 29 gesetzt 0 Fehler, Rücklesen + WebFetch ✓ →
+`dropship/UHRBAND-GUERTEL-2026-10-10.md`.
+
+**Lehre:** Ein Zeichen mit zwei Bedeutungen (带 = Band/Gürtel) → nur die eindeutige Form per Regel umbenennen, die
+mehrdeutige per gesichtetem Handtitel. Ein Ersatzwort trägt das Geschlecht des alten, sonst zerbricht jedes Adjektiv davor.
+
 ## 🈯 «Schwarz» → «Schwarz» ist kein englischer Rest: KI-Prüfung lehnte richtige Übersetzungen ab (2026-10-10, 00:50 UTC, Verbesserungsrunde)
 
 **Gemessen:** 83/177 gemerkte MANUELL-Fälle im Auswahl-Nachrüster = «KI-Übersetzung fehlt/abgelehnt» (7 Tage gesperrt,
@@ -19504,3 +19521,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · ⚡ **«mehr verbesserung» (Tag 11 ✅): Startseite lud beim Öffnen 150 Bilddateien / 9'390 KB (sichtbar 2) — Horizon `product-card.js` nahm jedem Karussell-Zweitbild das lazy weg (16 Reihen, `width=832`), Cover immer eager → `mobil_tempo_patch_2.py` (Zweitbild nach Erstbild, sizes = Kartenbreite; Cover lazy ab Sektion 3), vorher per Playwright-`route` getestet; live 38 / 1'008 KB, Scroll 0 leer; Wächter `startseite_bildlast.mjs`.** Server-HTML ≠ DOM; Bilder je URL zählen → `dropship/MOBIL-TEMPO-2-2026-10-08.md`
 - 2026-10-08 · 🗄️ **Verbesserungsrunde: CJ-Gruppe «Büro & Home Office» stempelt alles als Google «Office Supplies» (11/11 Neuimporte in 4 h: Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender; KI verfeinert nur innerhalb der Oberklasse) → `data/buero_korb.json` für Importer `bueroKorb()` + Umzug, Kanarien 120/120, py=js 51'586/0, 13/0 (13/13 zurückgelesen).** Neue CJ-Gruppe = möglicher Sammelkorb; Log-Fehler nur mit aktuellem Zeitstempel → `dropship/GOOGLE-BUERO-SAMMELKORB-2026-10-08.md`
 - 2026-10-08 · 💎 **«weiter sauber machen»: 41 Titel «Leder/Wolle/Seide» bei PU/Acryl/Polyester im eigenen Text → `material_widerspruch.py` 41/0; 622 aktive mit «Diamant» (teuerstes CHF 150.90 Moissanit) → Regel `diamant` in `data/versprechen_regel.json` (Strass/Zirkonia, Dativ+Einzahl, Vergleich/Form/Painting/Werkzeug/Karat bleiben; 55 Kanarien, py=js 616/0) 212/0; Live-Check fand Bild-Alts mit altem Titel: 11'730 an 1'604 Produkten (u. a. «& Blutdruckmessung») → Wächter liest Alts (817/0), `alt_titel_abgleich.py` täglich (Alt-Titel := Titel); Adressen 155 mit 301 (`handle_messversprechen.py` + diamant/leder).** Ein Name steht an sechs Stellen; Ist-Abgleich statt Ledger-Kette → `dropship/SAUBER-MATERIAL-DIAMANT-ALT-2026-10-08.md`
+- 2026-10-09 · 🔔 **Verbesserungsrunde: Tag 9 ✅ (2'161/2'881 Neuimporte auf Bewertungen geprüft, Ziel 1'500); Ampel meldete «still: Pinterest» trotz gewolltem 48-h-Takt (fest 24 h geprüft) → `metricool_takt()` liest TIKTOK_/YOUTUBE_/PINTEREST_ABSTAND aus `social_autopilot.sh`, `kanal_still()` Takt + Spielraum, 7 Kanarien + Gegenprobe.** Kadenz-Wächter liest die Kadenz aus ihrer Quelle → `dropship/AMPEL-KADENZ-2026-10-09.md`

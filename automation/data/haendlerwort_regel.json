@@ -613,6 +613,36 @@
       "Martini-Gläser im 4er-Set",
       "Martini-Gläser im 4er-Set",
       "titel"
+    ],
+    [
+      "Silikon-Loop Magnetische Armbanduhr-Gürtel",
+      "Silikon-Loop Magnetische Uhrenriemen",
+      "titel"
+    ],
+    [
+      "Nylon-Farbenpassender Armbanduhr-Gürtel",
+      "Nylon-Farbenpassender Uhrenriemen",
+      "titel"
+    ],
+    [
+      "Vintage Leder Armbanduhr-Gurtschiene Retro",
+      "Vintage Leder Uhrenriemen Retro",
+      "titel"
+    ],
+    [
+      "Business-Uhrgürtel",
+      "Business-Uhrgürtel",
+      "titel"
+    ],
+    [
+      "Herrengürtel aus Leder mit Schnalle",
+      "Herrengürtel aus Leder mit Schnalle",
+      "titel"
+    ],
+    [
+      "Gurtschiene für Dachträger",
+      "Gurtschiene für Dachträger",
+      "titel"
     ]
   ],
   "handtitel_hinweis": "Neuer Titel wäre eine Dublette eines bestehenden Titels (dup_title_fix würde draften) → Hand-Titel aus der Beschreibung. Gilt nur, solange der Live-Titel noch der alte ist.",
@@ -673,7 +703,8 @@
     "Silicone Herrenquarz-Uhr": "Silikonarmband-Quarzuhr für Herren",
     "Cowhide Retro Zehen Sandalen": "Retro-Zehensandalen aus Rindsleder",
     "Cowhide Messenger Bag – Retro-Design": "Messenger-Tasche aus Rindsleder – Retro-Design",
-    "Cowhide-Messenger Tasche mit Magnetverschluss": "Rindsleder-Messenger-Tasche mit Magnetverschluss"
+    "Cowhide-Messenger Tasche mit Magnetverschluss": "Rindsleder-Messenger-Tasche mit Magnetverschluss",
+    "Business-Uhrgürtel": "Business-Herrenuhr mit braunem Lederarmband"
   },
   "haendlerwort_text_hinweis": "Im Fliesstext wird ersetzt, nicht gestrichen (Streichen zerreisst «im angesagten Ins-Stil gehalten»). ins风 → «Trend-Stil» (maskulin wie «Stil»), 百搭 fällt (steht nur in englischen Lieferanten-Namen).",
   "haendlerwort_text": [
@@ -690,7 +721,7 @@
       ""
     ]
   ],
-  "fremdwort_titel_hinweis": "09.10.2026 (Betreiber «verbesser weiter», Google-Analyse): eindeutig fremde Wörter im Titel, die Schweizer Kundinnen deutsch suchen (Rindsleder, Silikon, Edelstahl, Kapuzen-, Strampler, Kinder, Pyjama, Leckmatte). Eingebürgerte Wörter (Sneaker, Hoodie, Cardigan, Jumpsuit, Loafer, Crossbody, Leggings, Bikini) bleiben. [Muster, Ersatz, Kontext] — Kontext leer = immer. Fälle mit Geschlechtswechsel (Pendant → Anhänger, Backpack → Rucksack, Wallet → Portemonnaie) stehen als Handtitel. 09.10.2026: «Martin Boots/Stiefel/Schuhe» = wörtlich 马丁靴 (Dr.-Martens-Stil, Markenanklang; Google sperrte «Kinder Martin Boots» als Inappropriate title) → «Worker-Boots/-Stiefel/-Schuhe» (Zalando-Kategorie «Worker Boots»).",
+  "fremdwort_titel_hinweis": "09.10.2026 (Betreiber «verbesser weiter», Google-Analyse): eindeutig fremde Wörter im Titel, die Schweizer Kundinnen deutsch suchen (Rindsleder, Silikon, Edelstahl, Kapuzen-, Strampler, Kinder, Pyjama, Leckmatte). Eingebürgerte Wörter (Sneaker, Hoodie, Cardigan, Jumpsuit, Loafer, Crossbody, Leggings, Bikini) bleiben. [Muster, Ersatz, Kontext] — Kontext leer = immer. Fälle mit Geschlechtswechsel (Pendant → Anhänger, Backpack → Rucksack, Wallet → Portemonnaie) stehen als Handtitel. 09.10.2026: «Martin Boots/Stiefel/Schuhe» = wörtlich 马丁靴 (Dr.-Martens-Stil, Markenanklang; Google sperrte «Kinder Martin Boots» als Inappropriate title) → «Worker-Boots/-Stiefel/-Schuhe» (Zalando-Kategorie «Worker Boots»). 10.10.2026: 表带 (Uhrband) kam als «Armbanduhr-Gürtel/-Gurt/-Gurtschiene» (4 aktive, alle Armbänder für die Apple Watch, Bild geprüft) → «Uhrenriemen» (männlich wie «Gürtel»: die Adjektive davor bleiben richtig; «Uhrenarmband» wäre sächlich). «Uhrgürtel» allein bleibt — das ist 皮带表 = Uhr mit Lederband (Bild: Herrenuhr) → Handtitel.",
   "fremdwort_titel": [
     [
       "{V}Genuine\\s+Leather\\s+Cowhide\\s+Wallet{N}",
@@ -840,6 +871,11 @@
     [
       "{V}Martin[- ]Schuhe{N}",
       "Worker-Schuhe",
+      ""
+    ],
+    [
+      "{V}Armbanduhr-(?:Gürtel|Gurtschiene|Gurte?){N}",
+      "Uhrenriemen",
       ""
     ]
   ]

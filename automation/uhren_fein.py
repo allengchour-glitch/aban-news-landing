@@ -29,9 +29,12 @@ WORT = r"(watch|smartwatch|uhr\b|uhren)"
 REGELN = [
     (R(rf"(ersatz-?armband|uhrenarmband|armbänder|armband|band|strap|kette|loop)[\w\s,-]*\bfür\b[\w\s-]*{WORT}|"
        rf"smartwatch-?armband|watch-?armband|watch ?band|armband-?kit|multi-?armband|iwatch|\b\d{{2}}\s?mm\b.*armband|"
-       rf"armband mit schnellverschluss|für xiaomi|sportarmband im"), (ZU + " > Watch Bands", "aa-6-10-1")),
+       rf"armband mit schnellverschluss|für xiaomi|sportarmband im|"
+       # 10.10.2026: Bandbreite nach dem Wort («Lederarmband 22mm», «Kunstharz-Armband 22 mm») — 12–26 mm sind Stegbreiten;
+       # «Armbanduhr … 42 mm» trifft nicht (\b nach «armband»), Gehäuse-Durchmesser liegen darüber
+       rf"armband\b[^,·]{{0,30}}?\b(1[2-9]|2[0-6])\s?mm\b"), (ZU + " > Watch Bands", "aa-6-10-1")),
     (R(rf"(hülle|displayschutz|schutzfolie|ladekabel|ladegerät|ladestation|ladedock|ladepad|ladeständer|charger|powerbank|gehäuse|bumper|halterung|ständer)[\w\s,/-]*\bfür\b[\w\s-]*{WORT}|"
-       rf"smartwatch[\s-](schutzhülle|gehäuse|ladegerät|ladestation|ladekabel|ladedock|charger|halterung|ständer)|uhrenschutzhülle|watch[\s-]schutzhülle|armband mit gehäuse"), (ZU, "aa-6-10")),
+       rf"smartwatch[\s-](schutzhülle|gehäuse|ladegerät|lade-?station|ladekabel|ladedock|charger|halterung|ständer)|uhrenschutzhülle|watch[\s-]schutzhülle|armband mit gehäuse"), (ZU, "aa-6-10")),
     (R(r"smartwatch|smart[\s-]?watch|smart-?uhr|smartes?\b|smart[\s-]?(sport-?)?armband|smart ?band|smart\s+sport|fitness-?(armband|tracker|uhr)|"
        r"sport-?armband mit|sportarmband mit|herzfrequenz|herzmess|pulsmess|blutdruck|pedometer|schrittzähler|bluetooth|"
        r"amoled|\bgps\b|anruf|smart pager|tracker"), (W, "aa-6-12")),
@@ -48,7 +51,10 @@ ZIELE = sorted({z[0] for _, z in REGELN})
 # bei Google «Watches», darunter jeder neue CJ-Import mit diesem Kopfwort. Jetzt zuerst: Kopfwort Uhren-/Uhrarmband → Band;
 # Steg/Federsteg/Perlen/Zubehör → Watch Accessories; Werkzeug → bleibt; «Herrenuhr mit Uhrenarmband» (Uhrwort ausserhalb
 # des Kompositums) → weiter zu den Uhr-Regeln.
-BAND = R(r"uhre?n?armb(and|änder)")
+# 10.10.2026: CJ übersetzt 表带 (Uhrband) als «Armbanduhr-Gürtel/-Gurt/-Gurtschiene»; die Titelregel (haendlerwort_regel.json)
+# macht daraus «Uhrenriemen» (männlich wie «Gürtel», Adjektive bleiben richtig). «Uhrgürtel» allein = 皮带表 = UHR mit
+# Lederband (Bild geprüft) → bleibt in NICHT.
+BAND = R(r"uhre?n?armb(and|änder)|uhre?n?riemen|armbanduhr-(gürtel|gurt)")
 BAND_ZUBEHOER = R(r"federsteg|verbindungssteg|positionierungsperle|uhre?n?armband-?zubehör")
 BAND_WERKZEUG = R(r"werkzeug|schraubenzieher|schraubendreher|zange|stiftaustreiber")
 UHR_SONST = R(r"uhr\b|uhren\b|watch|chronograph|quar[zt]|automatik|mechanisch")   # «watch» ohne \b: auch Smartwatch
@@ -117,6 +123,17 @@ KANARIEN = [
     ("Smartwatch mit Bluetooth-Telefonie und Wireless Charging", (W, "aa-6-12")),
     ("Smartwatch mit Bluetooth-Anruf und NFC-Ladegerät", (W, "aa-6-12")),
     ("3-in-1 Magnethalterung für iPhone, Apple Watch & AirPods", None),
+    # 10.10.2026: 表带 als «Gürtel» übersetzt, Lade-Station mit Bindestrich, Bandbreite nach dem Wort
+    ("Silikon-Loop Magnetische Uhrenriemen", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Nylon-Farbenpassender Armbanduhr-Gürtel", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Vintage Leder Armbanduhr-Gurtschiene Retro", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Business-Uhrgürtel", None),
+    ("Smartwatch-Lade-Station aus Silikon", (ZU, "aa-6-10")),
+    ("Mosaik-Schachbrett-Kunstharz-Armband 22 mm", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Lederarmband 26mm", (ZU + " > Watch Bands", "aa-6-10-1")),
+    ("Business Quartz Herrenarmbanduhr – Luminisch, wasserdicht, 42 mm", (W, "aa-6-11")),
+    ("Damen-Armbanduhr 26 mm mit Lederband", (W, "aa-6-11")),
+    ("Smartwatch 1,3 Zoll mit Armband, 45 mm", (W, "aa-6-12")),
 ]
 
 
@@ -147,9 +164,15 @@ SMART_MESS = R(r"smart|fitness|herzfrequenz|herzmess|puls|blutdruck|blutsauersto
                r"display|tracker|schlaf|anruf|körperfett|sturzalarm")
 
 
+UHR_BEZUG = R(r"watch|uhr|apple|samsung|galaxy|garmin|xiaomi|huawei|fitbit|amazfit|steg")
+
+
 def ziel_armband(titel):
     z = ziel(titel)
     if not z or z[1] not in ARMBAND_ERLAUBT:
+        return None
+    # 10.10.2026: im Schmuck-Zweig zählt die Bandbreite allein nicht («Panzerkette Armband 12 mm» = Schmuck) — Uhrband nur mit Uhrbezug
+    if z[1] == "aa-6-10-1" and not UHR_BEZUG.search(titel or ""):
         return None
     return z if z[1] != "aa-6-12" or SMART_MESS.search(titel or "") else None
 
@@ -169,6 +192,9 @@ ARMBAND_KANARIEN = [
     ("Kupfer Magnetarmband für Damen", None),
     ("Verstellbares Sportarmband mit Botschaft", None),
     ("GPS SOS Armband mit Herzfrequenz- und Sturzalarm", (W, "aa-6-12")),
+    ("Kubanische Panzerkette Armband 12 mm", None),
+    ("Mini Matt Dragon Canvas Wasserfestes Herrenarmband 25 mm", None),
+    ("Lederarmband 22 mm für Samsung Galaxy Watch", (ZU + " > Watch Bands", "aa-6-10-1")),
 ]
 
 
