@@ -6975,3 +6975,6 @@ zehen-sandalen-aus-echtem-leder-626900	2511240657181627100	16	12.56	ok	landeseit
 herren-outdoor-sandalen-mit-lochmuster-616700	2511230621171616900	16	12.04	ok	landeseite
 herren-casual-sandalen-614100	2509260118101614300	16	10.96	ok	landeseite
 atmungsaktive-leder-sandalen-fur-herren-604500	2509110927141604700	16	13.76	ok	landeseite
+herren-outdoor-sandalen-mit-klettverschluss-621300	2508280850051621700	16	11.23	ok	landeseite
+atmungsaktive-mesh-sandalen-fur-herren-616500	2508260839171616800	16	13.52	ok	landeseite
+rutschfeste-arbeits-freizeitschuhe-620300	2508230806181620500	16	10.55	ok	landeseite
