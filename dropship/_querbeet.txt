@@ -119,3 +119,7 @@ gid://shopify/Product/16606172643719	2026-10-09	Sport, Fitness & Outdoor
 gid://shopify/Product/16604909502855	2026-10-09	Taschen & Rucksäcke
 gid://shopify/Product/16608494158215	2026-10-09	Auto & KFZ-Zubehör
 gid://shopify/Product/15503164047745	2026-10-09	Handy-Zubehör
+gid://shopify/Product/16612997169543	2026-10-10	Damen-Mode
+gid://shopify/Product/16613634474375	2026-10-10	Herren-Mode
+gid://shopify/Product/16610391982471	2026-10-10	Wohnen & Dekoration
+gid://shopify/Product/16610067644807	2026-10-10	Küche & Kochen
