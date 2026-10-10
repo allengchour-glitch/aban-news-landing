@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-10T00:16Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-10T00:52Z
 
-Aktive gescannt: 9 · ohne Kategorie: 9 · heute gesetzt: 5 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
+Aktive gescannt: 6 · ohne Kategorie: 6 · heute gesetzt: 2 (SCHARF, CAP 3000) · danach offen: 4 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,6 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- smartwatch-mit-bluetooth-anruf-info-682112 · Uhren → Apparel & Accessories > Jewelry > Watches
-- smartwatch-mit-nfc-offline-call-sportfunktione-729216 · Uhren → Apparel & Accessories > Jewelry > Watches
-- quadratische-quarz-uhr-mit-metallband-703424 · Uhren → Apparel & Accessories > Jewelry > Watches
-- smartwatch-business-casual-wasserdicht-812160 · Uhren → Apparel & Accessories > Jewelry > Watches
-- quarz-uhr-mit-3d-diamant-design-wasserdicht-447552 · Uhren → Apparel & Accessories > Jewelry > Watches
+- vintage-leder-armbanduhr-gurtschiene-retro-495296 · Uhren → Apparel & Accessories > Jewelry > Watches
+- mosaik-schachbrett-resin-armband-22-mm-788928 · Uhren → Apparel & Accessories > Jewelry > Watches
 
