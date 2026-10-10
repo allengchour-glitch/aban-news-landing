@@ -1647,6 +1647,19 @@ if [ -f "$REPO/automation/suchbegriff_kollektionen.py" ] && [ ! -f /tmp/suchbegr
   ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/suchbegriff_kollektionen.py --scharf 2>&1 | tail -1 | tee -a /tmp/suchbegriff_kollektionen.log
     timeout 300 python3 automation/suchbegriff_kollektionen.py --kollektionen --scharf 2>&1 | grep -E "NEU|ANGLEICHEN|⚠️" | tee -a /tmp/suchbegriff_kollektionen.log )
 fi
+# --- 📵 Mobilfunkgeräte nur 2G/3G (10.10.2026, dropship/MOBILFUNK-2G-2026-10-10.md) — in der Schweiz ist 2G seit 01/2023 aus,
+#     3G folgt 2025/26: 2G-Tracker orten nichts, 2G-Kinderuhren setzen keinen Notruf ab. Je Gerät EINE CJ-Abfrage (10 Punkte)
+#     → deshalb (a) einmal je Nacht nach dem Punkte-Reset (00:10 UTC) die Kandidatenliste dropship/_klassen/mobilfunk-kandidaten.txt
+#     (Geprüftes steht im Ledger und wird übersprungen), (b) täglich die Neuimporte der letzten 3 Tage. Importer sperren seit
+#     10.10. selbst (mobilfunk.mjs). Kanarien (14) im Skript vor jedem Lauf; «nur-2g-3g» → Entwurf, Rest wird gemeldet.
+if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" = "00" ] && [ "$(date -u +%M)" -ge 10 ] && [ ! -f /tmp/mobilfunk_nacht_$(date -u +%F).stamp ]; then
+  touch /tmp/mobilfunk_nacht_$(date -u +%F).stamp
+  ( cd "$REPO" && timeout 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste dropship/_klassen/mobilfunk-kandidaten.txt --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log ) &
+fi
+if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" -ge 2 ] && [ ! -f /tmp/mobilfunk_neu_$(date -u +%F).stamp ]; then
+  touch /tmp/mobilfunk_neu_$(date -u +%F).stamp
+  ( cd "$REPO" && TAGE=3 timeout 1200 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log )
+fi
 # --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
 #     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
 #     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).

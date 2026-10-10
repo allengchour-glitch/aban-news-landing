@@ -8,6 +8,7 @@
 import fs from 'node:fs';
 import { nachlauf } from './eimer_etikette.mjs';   // 02.10.: Eimer-Boden für Massen-Schreiber
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
+import { nurAltnetz, DRAFT_TAG as MOBILFUNK_TAG } from './mobilfunk.mjs';   // 10.10.2026: nur 2G/3G = in CH ohne Netz
 import { schonBeansprucht } from './cj_claim.mjs';
 import { catTags, saisonTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
@@ -297,6 +298,15 @@ for (const item of ITEMS) {
     await sgql(t, `mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
       { i: { id: spid, status: 'DRAFT', tags: [...tagsFinal, 'cj-nicht-versendbar-ch', 'handklinge-kein-ch-versand'] } });
     console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) → DRAFT: ${title.slice(0,50)}`);
+    fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue;
+  }
+  // 📵 10.10.2026: Geräte mit SIM, die nur 2G/3G können (GSM/GPRS/WCDMA), funken in der Schweiz nicht — 2G seit 01/2023 aus,
+  // 3G 2025/26. Ein 2G-Tracker ortet nichts, eine 2G-Kinderuhr setzt keinen Notruf ab. Regel data/mobilfunk_netz_regel.json
+  // (= Bestand-Wächter mobilfunk_netz_pruefen.py); Urteil aus Titel + CJ-Name/-Beschreibung/-Varianten, 4G/LTE schlägt GSM.
+  if (nurAltnetz(title, `${d.productNameEn||''} ${String(d.description||'').replace(/<[^>]+>/g,' ')} ${(d.variants||[]).map(v=>v.variantNameEn||'').join(' ')}`)) {
+    await sgql(t, `mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
+      { i: { id: spid, status: 'DRAFT', tags: [...tagsFinal, MOBILFUNK_TAG] } });
+    console.log(`  📵 nur 2G/3G — in der Schweiz ohne Netz → DRAFT: ${title.slice(0,50)}`);
     fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue;
   }
   const klinge = istKlinge(title);
