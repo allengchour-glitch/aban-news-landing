@@ -1,4 +1,4 @@
-# Klassen-Kontrolle (VOLLSCAN, 52033 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 52442 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
@@ -30,7 +30,7 @@ Vollstaendige Liste: `dropship/_klassen/mess-versprechen-an-wearables.txt`
 - `16612790567303` Smart Touch Sport Armband
 - `16612790894983` Kinder Smartwatch 4G mit Herzfrequenz
 
-## Auswahl-Versprechen bei EINER Variante — 1684
+## Auswahl-Versprechen bei EINER Variante — 1576
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -52,16 +52,16 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448665850241` Colorblock Strickjacke im Oversize-Look
 - `15448801509761` Matter Lipliner
 - `15448837030273` Pizza- und Teigrädchen aus Kunststoff
-- `15448903713153` SKMEI Sportuhr für Herren
 - `15448905220481` Mechanische Armbanduhr mit Mondphase
 - `15448905908609` Mechanische Armbanduhr mit Skelett-Design
 - `15448906662273` Wasserdichte Automatikuhr für Herren
-- `15448910659969` Multifunktionale Sportuhr im Tonneau-Design
-- `15448911020417` Bluetooth MP3-Player mit Touchscreen
 - `15448912363905` Aromatherapie-Uhrenarmband aus Metall
 - `15448913871233` Lederrucksack für Herren
 - `15448914592129` Freizeit-Schultertasche
 - `15448918622593` Ma Pi Brusttasche aus Echtleder
 - `15448921571713` Minimalistischer Teppich, schmutzabweisend
-- … und 1659 weitere
+- `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
+- `15448927175041` Nackenstützkissen mit Massageperlen
+- `15448927666561` Wolkenkissen im französischen Stil
+- … und 1551 weitere
 
