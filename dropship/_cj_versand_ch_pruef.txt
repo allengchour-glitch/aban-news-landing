@@ -7003,3 +7003,7 @@ herren-low-top-leder-sneaker-626800	2605070719581627400	16	10.83	ok	landeseite
 business-oxford-schuhe-aus-leder-611600	2605010315391612100	16	15.92	ok	landeseite
 business-casual-leder-slipper-fur-herren-613400	2604240226161614000	16	19.18	ok	landeseite
 lassige-leder-loafer-fur-herren-602800	2604240222041603400	16	14.96	ok	landeseite
+business-schuhe-aus-echtleder-603200	2604230623251603700	16	16.76	ok	landeseite
+bullock-derby-business-schuhe-mit-8cm-erhohung-612200	2604220024381612700	16	15.92	ok	landeseite
+mesh-low-top-sneaker-fur-herren-619400	2410130209481619700	16	8.93	ok	landeseite
+high-top-wrestling-schuhe-608700	2410120256241608900	16	17.40	ok	landeseite
