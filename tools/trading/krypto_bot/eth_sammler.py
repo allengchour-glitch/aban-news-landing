@@ -78,8 +78,11 @@ def lies():
 
 
 def schreibe(lb):
+    """Atomar (Zwischendatei + Umbenennen): ein Absturz beim Schreiben darf die gebuchten Käufe nie zerstören."""
     LOGBUCH.parent.mkdir(exist_ok=True)
-    LOGBUCH.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    tmp = LOGBUCH.with_name(LOGBUCH.name + f".tmp{os.getpid()}")
+    tmp.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    os.replace(tmp, LOGBUCH)
 
 
 # ───────────────────────── reine Rechnung (testbar) ─────────────────────────
@@ -175,10 +178,10 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
     cfg = einstellungen(env)
     heute = (jetzt or datetime.now(timezone.utc)).date().isoformat()
     modus = "echtgeld" if cfg["echtgeld"] else "testnetz"
-    erg = {"modus": modus, "kauf": None, "stake": None, "hinweis": ""}
+    erg = {"modus": modus, "kauf": None, "stake": None, "hinweis": "", "warnung": False}
 
-    def ende(hinweis):
-        erg["hinweis"] = hinweis
+    def ende(hinweis, warnung=False):
+        erg["hinweis"], erg["warnung"] = hinweis, warnung
         print("ETH-Sammler: " + hinweis)
         return erg
 
@@ -189,7 +192,7 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
     if PAUSE.exists() and not trocken:
         return ende("Auto-Handel ist aus (Pause) — kein Kauf, kein Staking.")
     if cfg.get("url_fehler"):
-        return ende(cfg["url_fehler"])
+        return ende(cfg["url_fehler"], True)
     lb = lies() if logbuch is None else logbuch
 
     def sichern():
@@ -204,11 +207,11 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
             r = c.rechte()
             if r.get("enableWithdrawals") or r.get("enableFutures") or r.get("enableMargin"):
                 return ende("Schlüssel erlaubt Auszahlungen, Futures oder Margin — aus Sicherheitsgründen nichts gemacht. "
-                            "Neuen Schlüssel nur mit «Spot-Handel» anlegen.")
+                            "Neuen Schlüssel nur mit «Spot-Handel» anlegen.", True)
         konto = c.konto()
         regeln = c.regeln(cfg["eth_symbol"])
         if regeln.get("status") not in (None, "TRADING"):
-            return ende(f"{cfg['eth_symbol']} ist nicht handelbar ({regeln.get('status')}).")
+            return ende(f"{cfg['eth_symbol']} ist nicht handelbar ({regeln.get('status')}).", True)
         frei_quote, _ = BB.bestand(konto, cfg["quote"])
         betrag, grund = plane_kauf(cfg, buch, frei_quote, heute, regeln["min_notional"])
         if betrag:
@@ -217,12 +220,16 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
             if not trocken:
                 try:
                     antwort = c.kaufen(cfg["eth_symbol"], betrag)
-                except NETZFEHLER as ex:
-                    # Ob Binance gekauft hat, ist offen. Als «unklar» buchen: so kauft der nächste Lauf nicht doppelt.
+                except (BB.BinanceFehler, *NETZFEHLER) as ex:
+                    # BinanceFehler ist auch ein OSError — darum zuerst unterscheiden: eine klare Ablehnung (4xx) heisst
+                    # «nicht gekauft»; nur ein Serverfehler (5xx) oder eine verlorene Antwort lässt offen, ob gekauft wurde.
+                    if isinstance(ex, BB.BinanceFehler) and ex.code < 500:
+                        return ende(f"Kauf abgelehnt (HTTP {ex.code}): {ex.msg} — nichts gekauft, der nächste Lauf versucht es wieder.", True)
+                    # Als «unklar» buchen: so kauft der nächste Lauf nicht doppelt.
                     buch["kaeufe"].append({"tag": heute, "usdt": round(betrag, 2), "eth": 0.0, "kurs": round(kurs, 2), "unklar": True})
                     sichern()
-                    return ende(f"Antwort auf den Kauf verloren ({type(ex).__name__}) — bitte im Binance-Konto prüfen. "
-                                "Als «unklar» gebucht, damit nicht doppelt gekauft wird.")
+                    return ende(f"Antwort auf den Kauf verloren ({getattr(ex, 'msg', None) or type(ex).__name__}) — bitte im "
+                                "Binance-Konto prüfen. Als «unklar» gebucht, damit nicht doppelt gekauft wird.", True)
                 menge = netto_eth(antwort)
                 bezahlt = float(antwort.get("cummulativeQuoteQty") or betrag)
                 k = {"tag": heute, "usdt": round(bezahlt, 2), "eth": round(menge, 8),
@@ -249,18 +256,22 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
                         print(f"Gestakt: {menge:.4f} ETH → {s['wbeth']:.6f} WBETH")
                 except BB.BinanceFehler as ex:
                     erg["hinweis"] = f"Staking abgelehnt (HTTP {ex.code}): {ex.msg} — ETH bleiben im Spot-Konto, nächster Lauf versucht es wieder."
+                    erg["warnung"] = True
                     print("ETH-Sammler: " + erg["hinweis"])
                 except NETZFEHLER as ex:
                     buch["gestakt"].append({"tag": heute, "eth": menge, "wbeth": 0.0, "unklar": True})
                     erg["hinweis"] = (f"Antwort auf das Staking verloren ({type(ex).__name__}) — als «unklar» gebucht, damit nicht doppelt "
                                       "gestakt wird. Bitte im Binance-Konto (Earn → ETH-Staking) prüfen.")
+                    erg["warnung"] = True
                     print("ETH-Sammler: " + erg["hinweis"])
     except BB.BinanceFehler as ex:
         erg["hinweis"] = ("Binance sperrt deinen Standort (HTTP 451)." if ex.code == 451 else
                           "Schlüssel ungültig (HTTP 401)." if ex.code == 401 else f"Binance lehnt ab (HTTP {ex.code}): {ex.msg}")
+        erg["warnung"] = True
         print("ETH-Sammler: " + erg["hinweis"])
     except (*NETZFEHLER, KeyError, ValueError, IndexError) as ex:
         erg["hinweis"] = f"Binance nicht erreichbar oder Antwort unerwartet: {type(ex).__name__}"
+        erg["warnung"] = True
         print("ETH-Sammler: " + erg["hinweis"])
     sichern()
     return erg
@@ -331,7 +342,16 @@ def main():
     if not a.lauf:
         ap.print_help()
         return 0
-    erg = lauf(trocken=a.trocken)
+    import sperre
+    try:
+        with sperre.lauf_sperre("eth-sammler", warten=0 if a.trocken else 120):
+            erg = lauf(trocken=a.trocken)
+    except sperre.Besetzt as ex:
+        print(f"ETH-Sammler: {ex} Dieser Lauf kauft nicht — einfach später nochmals starten.")
+        return 0
+    if erg["warnung"] and not a.trocken:
+        import signale as SG
+        SG.push(f"⚠️ ETH-Sammler ({erg['modus']}): {erg['hinweis']}\nKeine Anlageberatung.")
     if erg["kauf"] or erg["stake"]:
         import signale as SG
         z = zusammenfassung(lies()[erg["modus"]], erg["kauf"]["kurs"] if erg["kauf"] else None)
@@ -341,7 +361,7 @@ def main():
             t += f": {k['usdt']:.2f} USDT → {k['eth']:.5f} ETH zu {fmt_zahl(k['kurs'], 2)}"
         t += f"\nGesamt {z['eth']:.5f} ETH für {fmt_zahl(z['eingesetzt'], 2)} USDT (Ø {fmt_zahl(z['schnitt'] or 0, 2)}) · gestakt {z['gestakt']:.4f} ETH"
         SG.push(t + "\nKeine Anlageberatung.")
-    return 0
+    return 3 if erg["warnung"] else 0  # 3 = Warnung, schon aufs Handy gemeldet (krypto-auto.bat unterscheidet das vom Absturz)
 
 
 if __name__ == "__main__":

@@ -110,12 +110,31 @@ def text(e):
     return zeile
 
 
-def lies():
-    lb = json.loads(LOGBUCH.read_text(encoding="utf-8")) if LOGBUCH.exists() else {}
+def lies(datei=None):
+    """Logbuch lesen. Ist es kaputt (z. B. Strom weg beim Schreiben), wird es beiseitegelegt statt jeden Lauf abstürzen zu lassen."""
+    datei = Path(datei) if datei else LOGBUCH
+    try:
+        lb = json.loads(datei.read_text(encoding="utf-8")) if datei.exists() else {}
+        if not isinstance(lb, dict):
+            raise ValueError("kein Objekt")
+    except (ValueError, UnicodeDecodeError) as ex:
+        kaputt = datei.with_name(datei.name + f".kaputt-{datetime.now(timezone.utc):%Y%m%d-%H%M%S}")
+        datei.replace(kaputt)
+        print(f"⚠️ Logbuch {datei.name} war unlesbar ({type(ex).__name__}) — beiseitegelegt als {kaputt.name}, neues Logbuch begonnen.")
+        lb = {}
     lb.setdefault("entscheide", [])
     lb.setdefault("kontostand", [])
     lb["version"] = 2
     return lb
+
+
+def schreiben(lb, datei=None):
+    """Atomar schreiben: erst eine Zwischendatei, dann umbenennen — ein Absturz mittendrin lässt das alte Logbuch heil."""
+    datei = Path(datei) if datei else LOGBUCH
+    datei.parent.mkdir(parents=True, exist_ok=True)
+    tmp = datei.with_name(datei.name + f".tmp{os.getpid()}")
+    tmp.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    os.replace(tmp, datei)
 
 
 def letzter(lb, markt):
@@ -126,16 +145,27 @@ def letzter(lb, markt):
     return None
 
 
-def kontostand_merken(lb, tag, kapital):
+def kontostand_merken(lb, tag, kapital, modus=None):
     if kapital is None:
         return
     ks = [x for x in lb["kontostand"] if x["tag"] != tag]
-    lb["kontostand"] = (ks + [{"tag": tag, "kapital": round(float(kapital), 2)}])[-1500:]
+    eintrag = {"tag": tag, "kapital": round(float(kapital), 2)}
+    if modus:
+        eintrag["modus"] = modus
+    lb["kontostand"] = (ks + [eintrag])[-1500:]
+
+
+def kontostand_modus(ks):
+    """Nur die Einträge im Modus des letzten Eintrags (Testnetz und Echtgeld nie mischen; alte Einträge ohne Modus = Testnetz)."""
+    if not ks:
+        return []
+    m = ks[-1].get("modus", "testnetz")
+    return [x for x in ks if x.get("modus", "testnetz") == m]
 
 
 def wochenbericht(lb, heute, erzwingen=False):
     """Text mit Kontostand gegen Start, Vorwoche und Höchststand — höchstens alle 7 Tage (sonst None)."""
-    ks = lb["kontostand"]
+    ks = kontostand_modus(lb["kontostand"])
     if not ks:
         return None
     letzt = lb.get("letzter_bericht")
@@ -148,18 +178,21 @@ def wochenbericht(lb, heute, erzwingen=False):
     def pct(a, b):
         return f"{(a / b - 1) * 100:+.1f} %" if b else "—"
 
-    t = f"📒 Krypto-Pilot Wochenbericht {heute}\nKonto: {fmt_zahl(jetzt, 2)} USDT"
-    t += f"\nseit Start ({ks[0]['tag']}): {pct(jetzt, start)}"
+    modus = "Echtgeld" if ks[-1].get("modus") == "echtgeld" else "Testnetz"
+    t = f"📒 Krypto-Pilot Wochenbericht {heute}\nKonto ({modus}): {fmt_zahl(jetzt, 2)} USDT"
+    t += f"\nKonto seit Start ({ks[0]['tag']}): {pct(jetzt, start)}"
     if vor7:
         t += f" · seit Vorwoche: {pct(jetzt, vor7[-1]['kapital'])}"
     t += f" · unter Höchststand: {pct(jetzt, spitze)}"
+    t += "\n(Kontostand inkl. Ein-/Auszahlungen — der echte Gewinn steht unter /profit)"
     if not erzwingen:
         lb["letzter_bericht"] = heute
     return t
 
 
 def backtest():
-    """BTC 150 + ETH 200 (je 50 %) mit und ohne MVRV-Bremse, gegen nur Bitcoin und Halten — mit Börsen-Stop und Schlupf."""
+    """BTC 150 + ETH 200 (je 50 %, täglich neu aufgeteilt wie live) mit und ohne MVRV-Bremse, gegen nur Bitcoin und Halten —
+    mit Börsen-Stop und Schlupf."""
     import info_pruefung as IP
     import pilot_pruefung as P
     btc, eth = P.ohlc("BTC-USD"), P.ohlc("ETH-USD")
@@ -176,8 +209,8 @@ def backtest():
         wem, _ = P.lauf(ze_m, he, le, ce, a, len(ce), K.STOP_SIGMA)
         alt, _ = P.lauf(zb200, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
         halten, _ = P.lauf([1.0] * len(cb), hb, lb_, cb, a, len(cb))
-        varianten = {"+ MVRV-Bremse (live)": [0.5 * x + 0.5 * y for x, y in zip(wbm, wem)],
-                     "BTC 150 + ETH 200": [0.5 * x + 0.5 * y for x, y in zip(wb, we)], "nur BTC 150": wb,
+        varianten = {"+ MVRV-Bremse (live)": P.mix_taeglich(wbm, wem),
+                     "BTC 150 + ETH 200": P.mix_taeglich(wb, we), "nur BTC 150": wb,
                      "nur BTC 200 (bisher)": alt, "BTC long 1× halten": halten}
         print(f"\n  ab {start} bis {tage[-1]}:")
         for name, w in varianten.items():
@@ -205,6 +238,23 @@ def main():
     if not (a.status or a.lauf):
         ap.print_help()
         return 0
+    import broker_futures as BF
+    import sperre
+    if a.lauf and not a.trocken and BF.STOP_DATEI.exists():
+        # Not-Aus hat Vorrang (auch vor der Pause) und braucht keine Kurse von Yahoo: nur schliessen, alle Märkte
+        try:
+            with sperre.lauf_sperre(warten=120):
+                alles_zu, zeilen = schliessen_alle()
+        except sperre.Besetzt as ex:
+            print(f"{ex} Not-Aus trotzdem: schliesse ohne Sperre.")
+            alles_zu, zeilen = schliessen_alle()
+        text_na = ("🛑 Not-Aus aktiv." if alles_zu else "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!") + "\n" + "\n".join(zeilen)
+        print(text_na)
+        lauf_merken(alles_zu, ["Not-Aus-Lauf"] + zeilen)
+        if any(z.startswith(("✅", "❌")) and "keine offene Position" not in z for z in zeilen):
+            import signale as SG
+            SG.push(text_na + "\nKeine Anlageberatung.")
+        return 0 if alles_zu else 3  # 3 = Warnung, schon gemeldet (1 bleibt für Abstürze)
     ents = [entscheid(m, a.offline) for m in maerkte()]
     for e in ents:
         print(text(e))
@@ -219,13 +269,56 @@ def main():
     if PAUSE.exists() and not a.trocken:
         print("Auto-Handel ist aus (Pause) — nichts gehandelt. Einschalten im Cockpit oder mit weiter.bat.")
         return 0
-    import sperre
     try:
         with sperre.lauf_sperre(warten=0 if a.trocken else 120):
             return handeln(ents, lage, a.trocken)
     except sperre.Besetzt as ex:
         print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
         return 0
+
+
+def schliessen_alle(ausfuehren=None, heute=None):
+    """Not-Aus: ALLE bekannten Märkte schliessen (auch solche, die gerade nicht eingestellt sind). → (alles_zu, Zeilen).
+    «geschlossen» nur, wenn die Position danach wirklich 0 ist."""
+    if ausfuehren is None:
+        import broker_futures as BF
+        ausfuehren = BF.ausfuehren
+    heute = heute or datetime.now(timezone.utc).date().isoformat()
+    zeilen, alles_zu = [], True
+    for m, (sym, _, _) in MAERKTE.items():
+        e = {"hebel": 0.0, "stand": heute}
+        try:
+            a = ausfuehren(e, symbol=sym, gewicht=1 / len(MAERKTE)) or []
+        except Exception as ex:  # noqa: BLE001
+            zeilen.append(f"❌ {m}: Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
+            alles_zu = False
+            continue
+        b = e.get("broker") or {}
+        pos = b.get("position")
+        hinweis = (b.get("hinweis") or "").replace("Not-Aus aktiv — keine neuen Positionen, bestehende werden geschlossen.", "").strip()
+        if b.get("hinweis") == "keine Futures-Schlüssel":
+            zeilen.append(f"{m}: keine Futures-Schlüssel — nichts zu schliessen")
+        elif pos is None:
+            zeilen.append(f"❌ {m}: unklar — {hinweis or 'keine Antwort'} Bitte im Binance-Konto prüfen!")
+            alles_zu = False
+        elif pos:
+            zeilen.append(f"❌ {m}: NICHT geschlossen, Position {pos:g} noch offen. {hinweis} Der bisherige Stop bleibt. Bitte im Binance-Konto prüfen!")
+            alles_zu = False
+        else:
+            zu = [f"{x['seite']} {x['menge']}" for x in a if x.get("id")]
+            zeilen.append(f"✅ {m}: geschlossen ({', '.join(zu)})" if zu else f"✅ {m}: keine offene Position")
+    return alles_zu, zeilen
+
+
+def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
+    """Ergebnis des letzten ECHTEN Laufs (für die Gesundheits-Ampel; ein Probelauf zählt nicht)."""
+    if trocken:
+        return
+    datei = Path(logbuch) if logbuch else LOGBUCH
+    lb = lies(datei)
+    lb["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ok": bool(ok),
+                          "hinweise": [h for h in hinweise if h][:10]}
+    schreiben(lb, datei)
 
 
 def handeln(ents, lage, trocken):
@@ -254,14 +347,25 @@ def handeln(ents, lage, trocken):
                                                              for x in auftraege) if auftraege else "")
                       + (f"\n   {hinweis}" if hinweis else ""))
     if not trocken:
-        kontostand_merken(lb, ents[0]["stand"], ents[0].get("kapital"))
+        modus = next(((e.get("broker") or {}).get("modus") for e in ents if (e.get("broker") or {}).get("modus")), None)
+        kontostand_merken(lb, ents[0]["stand"], ents[0].get("kapital"), modus)
+        erst = next((e["broker"] for e in ents if (e.get("broker") or {}).get("offen") is not None), None)
+        if erst:
+            try:  # nur für die Anzeige: darf den Lauf nie stören
+                import profit as PR
+                PR.offen_notieren(erst["modus"], erst["offen"], erst["offen_ms"])
+            except Exception as ex:  # noqa: BLE001
+                print(f"Profit-Stand nicht gemerkt: {type(ex).__name__}")
     bericht = None if trocken else wochenbericht(lb, date.today().isoformat())
-    LOGBUCH.parent.mkdir(exist_ok=True)
-    LOGBUCH.write_text(json.dumps(lb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if not trocken:
+        lb["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ok": not warnung,
+                              "hinweise": [((e.get("broker") or {}).get("hinweis") or "") for e in ents
+                                           if (e.get("broker") or {}).get("hinweis") not in (None, "", "keine Futures-Schlüssel")][:10]}
+    schreiben(lb)
     if alle or wechsel_da or bericht or warnung:
         import signale as SG
         SG.push("\n".join(zeilen) + f"\n{lage}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
-    return 0
+    return 3 if warnung else 0  # 3 = Warnung, schon aufs Handy gemeldet (1 bleibt für Abstürze)
 
 
 if __name__ == "__main__":

@@ -76,7 +76,8 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
 7. **Wochenbericht:** Einmal pro Woche schickt der Tageslauf automatisch einen Stand aufs Handy (Telegram oder ntfy):
    jede Strategie seit Start und gegen die Vorwoche, wie viel investiert ist, welche Märkte das Gütesiegel haben und was der
    Broker zuletzt gemacht hat. Sofort abrufen: `python tools/trading/ki_bot/bot.py --bericht`.
-8. **Not-Aus:** Doppelklick auf `stop.bat`. Danach gehen keine neuen Aufträge mehr raus. Mit `weiter.bat` wieder freigeben.
+8. **Not-Aus:** Doppelklick auf `stop.bat`. Danach gehen keine neuen Aufträge mehr raus. Auch der Schalter «Auto-Handel aus»
+   im Krypto-Cockpit (Datei `PAUSE`) hält diese Bots an. Mit `weiter.bat` wieder freigeben.
 9. **Automatisch jeden Tag:** Windows-Aufgabenplanung → „Einfache Aufgabe erstellen“ → täglich 15:00 (US-Börse öffnet
    15:30 Schweizer Zeit) → Programm `start-auto.bat`.
 
@@ -130,6 +131,6 @@ aussteigt, verpasst die stärksten Erholungstage. Darum kommen diese Daten **nic
 ## Prüfen
 
 ```
-python3 tools/trading/ki_bot/test_ki_bot.py   # 42 Tests, inkl. nachgebautem Alpaca-Server
+python3 tools/trading/ki_bot/test_ki_bot.py   # 44 Tests, inkl. nachgebautem Alpaca-Server
 python3 tools/trading/ki_bot/bot.py --pruefen  # Gegenproben: Wahrsager ~100 %, Zufallsmarkt nicht extrem
 ```

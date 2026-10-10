@@ -31,6 +31,8 @@ TESTNETZ_URL = "https://testnet.binance.vision"
 ECHT_URL = "https://api.binance.com"
 ECHTGELD_SATZ = "JA, MIT ECHTEM GELD"
 MIN_AUFTRAG = 20.0
+STOP_DATEI = HIER.parent / "ki_bot" / "STOP"
+PAUSE_DATEI = HIER.parent / "ki_bot" / "PAUSE"  # Cockpit «Auto-Handel aus»: keine Aufträge
 
 
 def einstellungen(env=None):
@@ -49,7 +51,7 @@ def einstellungen(env=None):
         "echtgeld": echt, "quote": quote, "symbol": "BTC" + quote,
         "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
         "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
-        "stop": env.get("KI_BOT_STOP", "") == "1" or (HIER.parent / "ki_bot" / "STOP").exists(),
+        "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists() or PAUSE_DATEI.exists(),
     }
 
 
@@ -169,7 +171,7 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
         protokolliere(e)
         return []
     if cfg["stop"]:
-        e["hinweis"] = "Not-Aus aktiv — keine Aufträge."
+        e["hinweis"] = "Not-Aus oder Pause aktiv — keine Aufträge."
         print("Binance: " + e["hinweis"])
         protokolliere(e)
         return []

@@ -134,3 +134,8 @@ data/eth-sammler.json
 data/ki-trader.json
 data/krypto-einstellungen.json
 data/krypto-profit.json
+data/krypto-auto.log
+data/krypto-auto-status.json
+data/selbsttest-*.log
+data/*.kaputt-*
+data/*.tmp*

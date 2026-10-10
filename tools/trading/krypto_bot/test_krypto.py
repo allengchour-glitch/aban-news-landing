@@ -16,6 +16,10 @@ HIER = Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 sys.path.insert(0, str(HIER.parent / "ki_bot"))
 import broker_alpaca as B  # noqa: E402
+import broker_binance as _BB0  # noqa: E402
+import testumgebung  # noqa: E402
+
+testumgebung.schalter_umbiegen(B, _BB0)
 import krypto as KR  # noqa: E402
 import analyse as AN  # noqa: E402
 

@@ -20,7 +20,7 @@ Jede Info ist ein Filter auf die Pilot-Position (BTC Trend 150, ETH Trend 200, S
     hash_kapitulation  Bitcoin-Hashrate 30-Tage-Schnitt unter 60-Tage-Schnitt (Miner verkaufen; nur Bitcoin)
   alle  Abstimmung: Long × 0,5 bei ≥ 3 Long-Bremsen gleichzeitig, Short → 0 bei ≥ 2 Short-Bremsen
 
-Keine Zukunftsdaten: Jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz: zwei Tage), die Entscheidung von
+Keine Zukunftsdaten: Jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz: zwei Tage, Dollar-Index: sieben — erscheint nur wöchentlich), die Entscheidung von
 Tag i gilt ab Tag i+1 (wie im Pilot).
 
 Übernommen wird eine Info NUR, wenn BEIDES gilt:
@@ -86,7 +86,8 @@ def flaggen(coin, tage, schwellen=None, nur_speicher=False):
 
     fg, f7 = r("angst_gier"), schnitt(r(f"funding_{coin}"), 7)
     mvrv, vix = r(f"mvrv_{coin}"), r("vix")
-    dol, zins = r("dollar"), r("zins10")
+    # Dollar-Index (FRED DTWEXBGS) erscheint nur wöchentlich (H.10, montags für die Vorwoche): bis 7 Tage Verzug
+    dol, zins = r("dollar", 7), r("zins10")
     dol200, zins200 = schnitt(dol, 200), schnitt(zins, 200)
     bil, stab = aenderung(r("bilanz", 2), 91), aenderung(r("stablecoins"), 30)
     hr = r("hashrate")
@@ -147,7 +148,7 @@ def main():
 
     def mar_mix(zs):
         w = konto(zs, start, len(tage))
-        return P.kennz([0.5 * x + 0.5 * y for x, y in zip(w["btc"], w["eth"])])
+        return P.kennz(P.mix_taeglich(w["btc"], w["eth"]))  # täglich neu aufgeteilt, wie live
 
     basis = {coin: m[3] for coin, m in maerkte.items()}
     erg = {"stand": tage[-1], "regel": __doc__.split("Übernommen")[1].split("Aufruf")[0].strip(), "basis": {}, "infos": {}}

@@ -2,6 +2,8 @@
 chcp 65001 >nul
 REM KI-Bot vollautomatisch ueber Alpaca. Standard: PAPIERKONTO (Spielgeld).
 REM Echtes Geld nur mit ALPACA_PAPER=false UND KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD".
+set PYTHONUTF8=1
+set PYTHONIOENCODING=utf-8
 cd /d "%~dp0\..\..\.."
 set PY=py
 where py >nul 2>nul || set PY=python
@@ -12,6 +14,11 @@ if "%ALPACA_KEY_ID%"=="" (
 )
 if exist "%~dp0STOP" (
   echo Not-Aus ist aktiv. Zum Weiterhandeln weiter.bat starten.
+  pause
+  exit /b 1
+)
+if exist "%~dp0PAUSE" (
+  echo Auto-Handel ist aus ^(Pause^). Einschalten im Cockpit oder mit weiter.bat.
   pause
   exit /b 1
 )

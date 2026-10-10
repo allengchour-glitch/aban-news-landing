@@ -62,42 +62,22 @@ def notaus_an(schliessen=True, ausfuehren=None):
         return "🛑 Not-Aus aktiv."
     import pilot as PI
     import sperre
-    if ausfuehren is None:
-        import broker_futures as BF
-        ausfuehren = BF.ausfuehren
-    ms = PI.maerkte()
-    zeilen, alles_zu = [], True
+    vorab, alles_zu = [], True
     try:
         gesperrt = sperre.lauf_sperre(warten=60)
         gesperrt.__enter__()
     except sperre.Besetzt:
         gesperrt = None
-        zeilen.append("(ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt)")
+        alles_zu = False  # ein anderer Lauf könnte gleichzeitig noch etwas aufgebaut haben → nicht «alles zu» melden
+        vorab.append("⚠️ Ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt. In 5 Minuten nochmals «Not-Aus» drücken.")
     try:
-        for m in ms:
-            e = {"hebel": 0.0, "stand": datetime.now(timezone.utc).date().isoformat()}
-            try:
-                a = ausfuehren(e, symbol=PI.MAERKTE[m][0], gewicht=1 / len(ms)) or []
-            except Exception as ex:  # noqa: BLE001
-                zeilen.append(f"❌ {m}: Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
-                alles_zu = False
-                continue
-            b = e.get("broker") or {}
-            pos, hinweis = b.get("position"), (b.get("hinweis") or "").replace("Not-Aus aktiv — keine neuen Positionen, bestehende werden geschlossen.", "").strip()
-            if b.get("hinweis") == "keine Futures-Schlüssel":
-                zeilen.append(f"{m}: keine Futures-Schlüssel — nichts zu schliessen")
-            elif pos is None:
-                zeilen.append(f"❌ {m}: unklar — {hinweis or 'keine Antwort'} Bitte im Binance-Konto prüfen!")
-                alles_zu = False
-            elif pos:
-                zeilen.append(f"❌ {m}: NICHT geschlossen, Position {pos:g} noch offen. {hinweis} Der bisherige Stop bleibt. Bitte im Binance-Konto prüfen!")
-                alles_zu = False
-            else:
-                zu = [f"{x['seite']} {x['menge']}" for x in a if x.get("id")]
-                zeilen.append(f"✅ {m}: geschlossen ({', '.join(zu)})" if zu else f"✅ {m}: keine offene Position")
+        zu, zeilen = PI.schliessen_alle(ausfuehren)
+        alles_zu = alles_zu and zu
     finally:
         if gesperrt is not None:
             gesperrt.__exit__(None, None, None)
+    zeilen = vorab + zeilen
+    PI.lauf_merken(alles_zu, ["Not-Aus (Cockpit/Telegram)"] + zeilen, logbuch=DATA / "krypto-pilot.json")
     return ("🛑 Not-Aus aktiv." if alles_zu else "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!") + "\n" + "\n".join(zeilen)
 
 
@@ -164,9 +144,59 @@ def _befehl(cmd, zeit):
 
 
 def aufgabe_befehl():
-    """Windows-Aufgabenplanung: täglich 02:30 (kurz nach Tagesschluss 00:00 UTC) krypto-auto.bat mit «auto» (ohne Pause)."""
+    """Einfacher Rückfall: täglich 02:30 krypto-auto.bat «auto» (Windows-Standard: nicht auf Akku, verpasst = verpasst)."""
     bat = HIER / "krypto-auto.bat"
     return ["schtasks", "/create", "/sc", "daily", "/st", "02:30", "/tn", AUFGABE, "/tr", f'"{bat}" auto', "/f"]
+
+
+def aufgabe_xml():
+    """Aufgabe als XML: täglich 02:30, AUCH AUF AKKU, und ein verpasster Lauf (PC aus/Schlaf) wird beim nächsten Start
+    nachgeholt (StartWhenAvailable). Läuft nur, wenn der Benutzer angemeldet ist — wie die einfache Variante."""
+    from xml.sax.saxutils import escape
+    bat = escape(str(HIER / "krypto-auto.bat"))
+    return f"""<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo><Description>Krypto-Pilot: täglicher Lauf (krypto-auto.bat auto)</Description></RegistrationInfo>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>2026-01-01T02:30:00</StartBoundary>
+      <Enabled>true</Enabled>
+      <ScheduleByDay><DaysInterval>1</DaysInterval></ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+  <Principals><Principal id="Author"><LogonType>InteractiveToken</LogonType><RunLevel>LeastPrivilege</RunLevel></Principal></Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <ExecutionTimeLimit>PT1H</ExecutionTimeLimit>
+    <Enabled>true</Enabled>
+  </Settings>
+  <Actions Context="Author">
+    <Exec><Command>{bat}</Command><Arguments>auto</Arguments></Exec>
+  </Actions>
+</Task>
+"""
+
+
+def aufgabe_einrichten(befehl=None, ordner=None):
+    """Erst die XML-Variante (Akku + nachholen); geht die nicht, die einfache. → (ok, Text)."""
+    befehl = befehl or _befehl
+    import tempfile
+    with tempfile.TemporaryDirectory(dir=ordner) as td:
+        datei = Path(td) / "krypto-pilot-aufgabe.xml"
+        datei.write_text(aufgabe_xml(), encoding="utf-16")
+        ok, text = befehl(["schtasks", "/create", "/tn", AUFGABE, "/xml", str(datei), "/f"], 60)
+    if ok:
+        return True, ("✅ Eingerichtet: täglich 02:30 startet krypto-auto.bat (Aufgabe «" + AUFGABE + "»), auch auf Akku. "
+                      "War der PC aus oder im Ruhezustand, läuft er beim nächsten Start nach.\n" + text)
+    ok2, text2 = befehl(aufgabe_befehl(), 60)
+    if ok2:
+        return True, ("✅ Eingerichtet (einfache Variante): täglich 02:30 startet krypto-auto.bat. Achtung: Windows startet sie dann "
+                      "nicht auf Akku und holt verpasste Läufe nicht nach.\n" + text2)
+    return False, "❌ Einrichten fehlgeschlagen:\n" + text + "\n" + text2
 
 
 def aufgabe_da(befehl=None):
@@ -218,10 +248,12 @@ def aktion(name, starter=None, befehl=None):
                 ok, text = False, ("Die Aufgabenplanung gibt es nur unter Windows. Linux/Mac: crontab -e und eintragen:\n"
                                    f"30 2 * * * cd {ROOT} && {sys.executable} tools/trading/krypto_bot/pilot.py --lauf")
             else:
-                ok, text = (befehl or _befehl)(aufgabe_befehl(), zeit)
-                text = (f"✅ Eingerichtet: täglich 02:30 startet krypto-auto.bat (Aufgabe «{AUFGABE}»). Der PC muss dann laufen.\n" if ok
-                        else "❌ Einrichten fehlgeschlagen:\n") + text
+                ok, text = aufgabe_einrichten(befehl)
+                _AUFGABE_CACHE["zeit"] = 0.0  # Ampel sofort neu prüfen, nicht erst nach 5 Minuten
         elif name == "update":
+            # Die Bots schreiben eingecheckte Kursdateien (tools/trading/daten) bei jedem Lauf neu; als «lokale Änderung»
+            # würden sie git pull blockieren. Es sind nur Zwischenspeicher — der nächste Lauf lädt sie frisch.
+            (befehl or _befehl)(["git", "checkout", "--", "tools/trading/daten"], 60)
             ok, text = (befehl or _befehl)(["git", "pull", "--ff-only"], zeit)
             if ok and "Already up to date" not in text and "Bereits aktuell" not in text:
                 text += "\n\n→ Neue Version geladen. Cockpit-Fenster schliessen und cockpit.bat neu starten, damit alles wirkt."
@@ -236,6 +268,8 @@ def aktion(name, starter=None, befehl=None):
                 SG.push(t + "\nKeine Anlageberatung.")
         else:
             ok, text = starter(args, zeit)
+            if name == "backtest":
+                _BACKTEST.clear()  # neue Kursdateien: Diagramm beim nächsten Abruf neu rechnen (nicht erst nach Neustart)
     finally:
         with _SPERRE:
             _LAUFEND.pop(name, None)
@@ -248,7 +282,7 @@ def aktion(name, starter=None, befehl=None):
 _PROFIT, _PROFIT_SPERRE = {"zeit": 0.0, "daten": None}, threading.Lock()
 
 
-def profit_stand(max_alter=8.0, abrufen=None):
+def profit_stand(max_alter=14.0, abrufen=None):
     """Profit vom Konto, höchstens alle max_alter Sekunden neu abgefragt (mehrere offene Fenster teilen sich den Abruf)."""
     with _PROFIT_SPERRE:
         if _PROFIT["daten"] is None or time.time() - _PROFIT["zeit"] > max_alter:
@@ -288,7 +322,8 @@ def backtest_kurven():
         halten, _ = P.lauf([1.0] * len(cb), hb, lb, cb, a, len(cb))
         t = tage[a:]
         schritt = max(1, len(t) // 400)  # höchstens ~400 Punkte
-        _BACKTEST["k"] = {"Pilot": [[t[i], round(0.5 * wb[i] + 0.5 * we[i], 4)] for i in range(0, len(t), schritt)],
+        mix = P.mix_taeglich(wb, we)  # täglich neu aufgeteilt, wie live
+        _BACKTEST["k"] = {"Pilot": [[t[i], round(mix[i], 4)] for i in range(0, len(t), schritt)],
                           "BTC halten": [[t[i], round(halten[i], 4)] for i in range(0, len(t), schritt)]}
     except Exception:  # noqa: BLE001
         _BACKTEST["k"] = None
@@ -305,14 +340,15 @@ def stand(env=None):
     maerkte = {}
     for e in lb["entscheide"]:
         maerkte[e.get("markt", "BTC")] = e
-    ks = lb["kontostand"]
+    ks = PI.kontostand_modus(lb["kontostand"])  # Testnetz und Echtgeld nie mischen
     konto = None
     if ks:
         jetzt, start, spitze = ks[-1]["kapital"], ks[0]["kapital"], max(x["kapital"] for x in ks)
         vor7 = [x for x in ks if (datetime.fromisoformat(ks[-1]["tag"]) - datetime.fromisoformat(x["tag"])).days >= 7]
         konto = {"wert": jetzt, "seit_start": jetzt / start - 1 if start else None,
                  "seit_woche": jetzt / vor7[-1]["kapital"] - 1 if vor7 and vor7[-1]["kapital"] else None,
-                 "unter_hoch": jetzt / spitze - 1 if spitze else None, "start_tag": ks[0]["tag"]}
+                 "unter_hoch": jetzt / spitze - 1 if spitze else None, "start_tag": ks[0]["tag"],
+                 "modus": ks[-1].get("modus", "testnetz")}
     auftraege = []
     for p in reversed(_json("ki-bot-broker.json", [])):
         if p.get("broker") != "binance-futures":
@@ -320,7 +356,8 @@ def stand(env=None):
         for a in p.get("auftraege", []):
             auftraege.append({"zeit": p["zeit"], "symbol": p.get("symbol"), "modus": p.get("modus"), "trocken": p.get("trocken"),
                               "seite": a.get("seite"), "menge": a.get("menge"), "nur_verkleinern": a.get("reduce_only"),
-                              "status": a.get("status") or a.get("fehler") or ("trocken" if p.get("trocken") else "")})
+                              "status": a.get("status") or a.get("fehler") or ("trocken" if p.get("trocken") else ""),
+                              "fehler": bool(a.get("fehler"))})
         if p.get("hinweis") and not p.get("auftraege"):
             auftraege.append({"zeit": p["zeit"], "symbol": p.get("symbol"), "modus": p.get("modus"), "hinweis": p["hinweis"]})
         if len(auftraege) >= 25:
@@ -388,6 +425,21 @@ def gesundheit(env, lb, ki, heute=None):
         p("Letzter Pilot-Lauf", alt <= 2, f"Tagesstand {letzte}" + ("" if alt <= 2 else f" — {alt} Tage alt: läuft der tägliche Start?"))
     else:
         p("Letzter Pilot-Lauf", False, "noch nie — Knopf «Probelauf» oder krypto-auto.bat starten")
+    ll = lb.get("letzter_lauf")
+    if ll and ll.get("zeit"):
+        alt = (heute - datetime.fromisoformat(ll["zeit"]).date()).days
+        warn = next((h for h in ll.get("hinweise", []) if "⚠️" in h or "❌" in h), "") or "Warnung (siehe Handy-Nachricht)"
+        p("Letzter Lauf mit Aufträgen", bool(ll.get("ok")) and alt <= 2,
+          f"{ll['zeit'][:16].replace('T', ' ')} UTC — " + ("ohne Warnung" if ll.get("ok") else warn[:200])
+          + ("" if alt <= 2 else f" — {alt} Tage alt"))
+    elif env.get("BINANCE_FUTURES_API_KEY"):
+        p("Letzter Lauf mit Aufträgen", None, "noch keiner — kommt mit dem ersten Lauf ohne «Probe»")
+    auto = _json("krypto-auto-status.json", None)
+    if isinstance(auto, dict) and auto.get("zeit"):
+        alt = (heute - datetime.fromisoformat(auto["zeit"]).date()).days
+        p("Täglicher Lauf (krypto-auto.bat)", bool(auto.get("ok")) and alt <= 2,
+          f"{auto['zeit'][:16].replace('T', ' ')} UTC — " + (auto.get("text") or ("ok" if auto.get("ok") else "Fehler"))[:200]
+          + ("" if alt <= 2 else f" — {alt} Tage alt: läuft der PC um 02:30?"))
     p("Not-Aus", not STOP.exists(), "aus" if not STOP.exists() else "AKTIV — der Pilot schliesst seine Positionen, nichts Neues")
     p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
@@ -412,10 +464,19 @@ class Cockpit(BaseHTTPRequestHandler):
         self.send_header("Content-Type", typ)
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")  # keine fremde Seite darf das Cockpit einbetten (Clickjacking)
+        self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
+        self.send_header("Referrer-Policy", "no-referrer")
         self.end_headers()
         self.wfile.write(b)
 
+    def _host_ok(self):
+        """DNS-Rebinding: eine fremde Seite, deren Name plötzlich auf 127.0.0.1 zeigt, schickt ihren eigenen Host-Kopf."""
+        return (self.headers.get("Host") or "").lower() in {f"127.0.0.1:{self.port}", f"localhost:{self.port}"}
+
     def do_GET(self):
+        if not self._host_ok():
+            return self._senden(403, {"fehler": "falscher Host — Cockpit nur über http://127.0.0.1"})
         pfad = urllib.parse.urlparse(self.path).path
         if pfad in ("/", "/index.html"):
             return self._senden(200, SEITE.read_bytes(), "text/html; charset=utf-8")
@@ -438,7 +499,7 @@ class Cockpit(BaseHTTPRequestHandler):
         # Schutz gegen fremde Webseiten: eigener Kopf (löst im Browser eine Vorabfrage aus, die wir nicht beantworten)
         herkunft = self.headers.get("Origin")
         erlaubt = {f"http://127.0.0.1:{self.port}", f"http://localhost:{self.port}"}
-        if self.headers.get("X-Cockpit") != "1" or (herkunft and herkunft not in erlaubt):
+        if not self._host_ok() or self.headers.get("X-Cockpit") != "1" or (herkunft and herkunft not in erlaubt):
             return self._senden(403, {"fehler": "verboten"})
         pfad = urllib.parse.urlparse(self.path).path
         if pfad not in ("/api/notaus", "/api/aktion"):
@@ -475,7 +536,7 @@ def befehl(text):
         return HILFE
     if b == "/profit":
         import profit as PR
-        return PR.text(PR.abrufen())
+        return PR.text(profit_stand())  # gemeinsamer Zwischenspeicher + Sperre mit den Cockpit-Fenstern
     if b == "/stop":
         return notaus_an()
     if b == "/weiter":
@@ -504,7 +565,27 @@ def telegram_schleife(env=None, basis="https://api.telegram.org", runden=None, w
     if not token or not chat:
         return
     url = f"{basis.rstrip('/')}/bot{token}"
-    start, offset, n = time.time(), None, 0
+    offset, n = None, 0
+    # Was ankam, während das Cockpit aus war, wird NICHT ausgeführt (ein altes /weiter dürfte sonst einen Not-Aus aufheben).
+    # Statt Telegram-Datum gegen PC-Uhr zu vergleichen (falsche Uhr = falsches Ergebnis): Rückstau beim Start überspringen.
+    for _ in range(3):
+        try:
+            with urllib.request.urlopen(f"{url}/getUpdates?{urllib.parse.urlencode({'offset': -1, 'timeout': 0})}", timeout=20) as r:
+                letzte = json.load(r).get("result", [])
+            if letzte:
+                offset = letzte[-1]["update_id"] + 1
+                m = letzte[-1].get("message") or {}
+                if str((m.get("chat") or {}).get("id")) == chat and (m.get("text") or "").startswith("/"):
+                    hinweis = (f"⏳ «{m['text'][:40]}» kam, als das Cockpit aus war — aus Sicherheit NICHT ausgeführt. "
+                               "Bitte jetzt nochmals senden.")
+                    try:
+                        urllib.request.urlopen(urllib.request.Request(f"{url}/sendMessage", data=urllib.parse.urlencode(
+                            {"chat_id": chat, "text": hinweis}).encode()), timeout=15).close()
+                    except Exception:  # noqa: BLE001
+                        pass
+            break
+        except Exception:  # noqa: BLE001 — Netz weg: kurz warten
+            time.sleep(2 if runden is None else 0)
     while runden is None or n < runden:
         n += 1
         try:
@@ -517,7 +598,7 @@ def telegram_schleife(env=None, basis="https://api.telegram.org", runden=None, w
         for u in updates:
             offset = u["update_id"] + 1
             m = u.get("message") or {}
-            if str((m.get("chat") or {}).get("id")) != chat or m.get("date", 0) < start - 60:
+            if str((m.get("chat") or {}).get("id")) != chat:
                 continue
             try:
                 antwort = befehl(m.get("text", ""))
