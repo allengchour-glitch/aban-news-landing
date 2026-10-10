@@ -66,3 +66,48 @@
 
 - **In 4 Wochen (~07.11.) nachmessen:** Positionen der 5 Begriffe (OpenSEO `get_ranked_keywords` oder Search Console).
 - **Die nächsten Kandidaten** aus der Liste: «schrank organizer» (33), «bluetooth tastatur» (34), «handtuchhalter ohne bohren» (36), «neckholder-kleid» (35).
+
+## Runde 2 (10.10. ~11:40 UTC, «verbessere mehr»)
+
+Begriffe aus derselben OpenSEO-Liste (Suchen/Mt, bisherige Position):
+
+| Begriff | Suchen/Mt | Position |
+|---|---|---|
+| «stahlkappenschuhe» | 1'000 | 85 |
+| «schrank organizer» | 1'000 | 33 |
+| «camisole» | 1'000 | 60 |
+| «fitness ring» | 590 | 58 |
+| «holzuhren» | 480 | 58 |
+| «stiletto» | 1'900 | 84 |
+
+**Neu (Regel-Datei, 145 Kanarien, Aufseher täglich):**
+
+| Kollektion | Produkte |
+|---|---|
+| `/collections/sicherheitsschuhe` | 104 |
+| `/collections/holzuhren` | 99 |
+| `/collections/camisole-traegertops` | 42 |
+| `/collections/smart-ring` | 9 |
+| `/collections/schrank-organizer` | 7 |
+
+- **Fehlgriffe im Trockenlauf, jetzt Nein:**
+  - **Sicherheitsschuhe:** «Arbeitsstiefel» ohne Schutz (Worker-Boots, Wildleder, Motorrad), «Schutzschuhe für Senioren/Fussverletzungen». Die Regel verlangt jetzt ein Schutzmerkmal im Titel (Stahlkappe, Durchtritt-/Stichschutz, Zehenschutz …), sonst wäre «Sicherheitsschuh» ein falsches Versprechen. 122 → 104.
+  - **Camisole:** Jumpsuit, Slip Dress, Herren-Unterhemd, Top-&-Rock-Set.
+  - **Smart Ring:** Fernbedienungs-Ringe, NFC-Ring.
+  - **Schrank-Organizer:** Kühlschrank-, Büro- und Küchen-Organizer.
+- **Text:** Sicherheitsschuhe nennen keine Norm, die nicht belegt ist («S1/S3 steht auf der Produktseite, wenn der Hersteller sie angibt»). Smart Ring: «Fitness-Geräte, keine Medizinprodukte».
+- **Stiletto:** Es gab schon 2 fast gleiche Kollektionen («Pumps & High Heels» 273 / «High Heels & Pumps» 296). Statt einer dritten heisst `schuhe-absatz` jetzt «Stilettos & High Heels», mit SEO-Titel «Stilettos & High Heels für Damen kaufen». «Pumps & High Heels» bleibt bei Pumps/Blockabsatz/Mary Janes. Der vorherige Stand liegt in `dropship/_schuhe_absatz_vorher_2026-10-10.json`.
+- **Sternenhimmel-Projektor:** Keine neue Kollektion. «Nachtlicht & Projektoren» (92) zielt schon im SEO-Titel darauf.
+- **«Alle Kategorien»:** neu gebaut (385), alle 5 verlinkt.
+- **Live** (WebFetch): `/collections/sicherheitsschuhe` zeigt H1, «104 Artikel» und den Text.
+
+**GPS-Tracker, Zwischenfall:**
+- Der erste Tageslauf der 2G-Prüfung (Aufseher, 11:0x) gab 5 Geräten «bluetooth».
+  - Das Muster `BLE\b` hatte vorne keine Wortgrenze und traf «suitable/available». Dadurch galt eine Kinder-Telefonuhr als «in Ordnung».
+  - Ein «Ortungsgerät für Wandobjekte» (Leitungssucher) stand per «ortungsgerät» in der GPS-Regel. Es bekam beide Tags, und die Kollektion ging mit genau diesem einen Fehlgriff online.
+- **Behoben:**
+  - `\bBLE\b`.
+  - Uhren mit Anruf/Video/SOS brauchen einen 4G-Beleg («Bluetooth» reicht nicht).
+  - Die GPS-Regel schliesst Wand/Leitung/Metall aus.
+  - Die 5 Urteile sind zurückgenommen (Tag weg, Ledger-Zeile weg → der Nachtlauf prüft neu).
+  - Neu: Eine leere Kollektion wird aus allen Kanälen genommen. Die GPS-Kollektion ist wieder offline, bis CJ-belegte Tracker da sind.

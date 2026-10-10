@@ -49,6 +49,22 @@
 
 
 
+## 🥾 Runde 2 Suchbegriff-Kollektionen + ein Tageslauf, der zu schnell «in Ordnung» sagte (2026-10-10, 11:45 UTC, «verbessere mehr»)
+
+- **Neu:** Sicherheitsschuhe 104, Holzuhren 99, Camisole & Trägertops 42, Smart Rings 9, Schrank-Organizer 7. Dazu `schuhe-absatz` → «Stilettos & High Heels». Es gab zwei fast gleiche Heels-Kollektionen; eine dritte hätte nur Kannibalisierung gebracht.
+- **Sicherheitsschuhe:** Erst mit Schutzmerkmal im Titel. Sonst landen modische «Arbeitsstiefel» unter einem Sicherheitsversprechen.
+- **2G-Tageslauf nach dem Neustart:**
+  - `BLE\b` ohne Wortgrenze vorne traf «suitable/available». 5 Geräte galten als «bluetooth = in Ordnung», darunter eine Kinder-Telefonuhr.
+  - Ein Leitungssucher («Ortungsgerät für Wandobjekte») landete in der GPS-Regel. Die Kollektion ging mit genau diesem Fehlgriff online.
+  - Behoben: `\bBLE\b`, Anruf-/Video-Uhren brauchen einen 4G-Beleg, die GPS-Regel schliesst Wand/Leitung aus, die Urteile sind zurückgenommen, leere Kollektionen gehen offline.
+
+**Lehren:**
+- **Ein positives Urteil («in Ordnung») braucht dieselbe Strenge wie ein negatives.** Ein falsches «ok» setzt einen Freigabe-Tag und schaltet eine Seite frei. Ein falsches «2G» würde nur einen Entwurf erzeugen.
+- **Kürzel brauchen Wortgrenzen auf BEIDEN Seiten.** «BLE» steckt in «suitable», «4G» in «2.4G».
+- **Eine automatisch veröffentlichte Kollektion braucht auch den Rückweg:** leer → offline.
+
+→ `dropship/SUCHBEGRIFF-KOLLEKTIONEN-2026-10-10.md`, `dropship/MOBILFUNK-2G-2026-10-10.md`
+
 ## 📵 2G ist in der Schweiz seit 2023 aus — GPS-Tracker und Kinderuhren mit SOS ohne Netz; dazu 5 Suchbegriff-Kollektionen (2026-10-10, 11:20 UTC, «weiter»)
 
 **Kollektionen** (OpenSEO: grosse Begriffe ohne Kollektion, Google zeigte ein Einzelprodukt auf Seite 6–9):

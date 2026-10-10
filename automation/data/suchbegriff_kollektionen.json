@@ -122,7 +122,7 @@
       "tag": "such-gps-tracker",
       "zusatz_tag": "netz-geprueft",
       "ja": "gps[- ]?(tracker|ortung|locator|lokator|finder|sender)|ortungsger(ä|ae)t|ortungstracker|(haustier|hunde|katzen|kinder|fahrzeug|auto)[- ]?(gps[- ]?)?(tracker|ortung)|gps-?halsband|halsband mit gps|anti-?verlust[- ]?(tracker|locator|alarm)|bluetooth-?(ortungs)?tracker|itemfinder|schl(ü|ue)sselfinder|find-?my|suchtracker|tierortung|katzenortung|hundefreund-ortung|\\blocator\\b",
-      "nein": "uhr|watch|fitness|drohne|blutsauerstoff|herzfrequenz|lesez|h(ü|ue)lle|halter|ladekarte|detektor|kamera|anzeigeger|geschwindigkeit|fahrradcomputer|brustgeschirr|halsband f(ü|ue)r gps|kollektivset",
+      "nein": "uhr|watch|fitness|drohne|blutsauerstoff|herzfrequenz|lesez|h(ü|ue)lle|halter|ladekarte|detektor|kamera|anzeigeger|geschwindigkeit|fahrradcomputer|brustgeschirr|halsband f(ü|ue)r gps|kollektivset|wand|leitung|metall|balken|stud",
       "seo_title": "GPS-Tracker kaufen: Auto, Hund, Katze & Gepäck | LuxeStyle",
       "seo_desc": "GPS-Tracker und Ortungsgeräte mit 4G/LTE oder Bluetooth für Auto, Hund, Katze, Kinder und Gepäck – ohne 2G-Geräte, die in der Schweiz kein Netz haben.",
       "html": "<p>Ein GPS-Tracker zeigt dir in der App, wo Auto, Hund, Katze oder Koffer gerade sind. Hier findest du Tracker mit SIM-Karte für die Ortung über weite Strecken und Bluetooth-Anhänger, die über Handys in der Nähe orten – zum Beispiel am Schlüsselbund.</p><h2>Nur Geräte, die in der Schweiz funken</h2><p>In der Schweiz ist das 2G-Netz seit Januar 2023 abgeschaltet, 3G folgt. Tracker, die nur 2G (GSM/GPRS) können, haben wir deshalb aus dem Sortiment genommen. In dieser Kollektion stehen nur Geräte, für die der Hersteller 4G/LTE oder Bluetooth angibt.</p><h2>Worauf achten?</h2><ul><li><strong>SIM oder Bluetooth:</strong> Tracker mit SIM brauchen eine SIM-Karte mit Datenvolumen. Bluetooth-Anhänger brauchen keine SIM, orten aber nur über Handys in der Nähe.</li><li><strong>Akku:</strong> Laufzeit und Ladeart stehen auf der Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Wasserschutz:</strong> Für Halsbänder und Aussenmontage lohnt ein wasserdichtes Gerät.</li><li><strong>App:</strong> Die Ortung läuft über die App des Herstellers.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
@@ -143,7 +143,147 @@
           "Halsband für GPS-Tracker mit Diebstahlschutz",
           "Motorrad-Kamera mit GPS",
           "iGS50E GPS-Fahrradcomputer",
-          "Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk"
+          "Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk",
+          "Ortungsgerät für Wandobjekte"
+        ]
+      }
+    },
+    {
+      "handle": "sicherheitsschuhe",
+      "titel": "Sicherheitsschuhe",
+      "tag": "such-sicherheitsschuhe",
+      "ja": "sicherheits-?(schuh|stiefel)|sicherheitschuh|stahlkappe|stahlplatte|durchtritt(schutz|sicher)|stich(fest|schutz)|zehenschutz|anti-?piercing|schutzschuh|kunststoffkappe|aufprallschutz|schweisser",
+      "nein": "kinder|spielzeug|socken|einlage|(ü|ue)berzieher|wander|senioren|fussverletz|deo|motorrad",
+      "seo_title": "Sicherheitsschuhe & Stahlkappenschuhe kaufen | LuxeStyle",
+      "seo_desc": "Sicherheitsschuhe und Arbeitsschuhe mit Stahlkappe, Durchtrittschutz und rutschfester Sohle – als Halbschuh oder Stiefel. Versand in die Schweiz.",
+      "html": "<p>Sicherheitsschuhe schützen die Zehen mit einer Stahlkappe, viele haben zusätzlich eine durchtrittsichere Sohle gegen Nägel und Scherben. Hier findest du nur Schuhe mit Schutzmerkmal – Sicherheitsschuhe und -stiefel für Werkstatt, Lager, Garten und Baustelle – als leichten Halbschuh oder als hohen Stiefel.</p><h2>Worauf achten?</h2><ul><li><strong>Schutz:</strong> Stahlkappe für die Zehen, durchtrittsichere Sohle gegen spitze Gegenstände.</li><li><strong>Norm:</strong> Ob ein Schuh einer Schutzklasse wie S1 oder S3 entspricht, steht auf der Produktseite, wenn der Hersteller sie angibt. Schreibt dein Arbeitgeber eine Norm vor, prüfe sie vor dem Kauf.</li><li><strong>Gewicht und Luft:</strong> Für lange Tage lohnt ein leichter, atmungsaktiver Schuh.</li><li><strong>Grösse:</strong> Sicherheitsschuhe fallen oft anders aus – die Grössentabelle steht auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Rückgabe innerhalb von 30 Tagen.</p>",
+      "kanarien": {
+        "ja": [
+          "Sicherheits-Schuhe mit Stahlkappe",
+          "Militär-Sicherheitsstiefel mit Stahlkappe",
+          "Sicherheitsschuhe mit Stich- und Aufprallschutz",
+          "Leichte, atmungsaktive Sicherheitsschuhe",
+          "Leichte Arbeitsschuhe mit Durchtrittschutz",
+          "Herrenleichtgewichtige Arbeitsschuhe mit Stoss- und Stichschutz",
+          "Feuerfeste Schweisser-Schutzschuhe",
+          "Leichte Industrieschutzschuhe"
+        ],
+        "nein": [
+          "Wanderschuhe für Damen",
+          "Kinder-Arbeitsschuhe Spielzeug",
+          "Schuhüberzieher für Arbeitsschuhe",
+          "Socken für Arbeitsschuhe",
+          "Abriebfeste rutschfeste Arbeitsschuhe Herren",
+          "Herren Arbeitsstiefel Suede",
+          "Worker-Boots – Hohe Arbeitsstiefel für Herren",
+          "Schutzschuhe für Senioren",
+          "Schutzschuhe für Fussverletzungen",
+          "Leichte Motorrad-Arbeitsstiefel"
+        ]
+      }
+    },
+    {
+      "handle": "holzuhren",
+      "titel": "Holzuhren",
+      "tag": "such-holzuhren",
+      "ja": "holz-?(armband)?uhr|holzarmbanduhr|uhr aus (holz|bambus)|bambus-?(holz-?)?uhr|holzuhr",
+      "nein": "wanduhr|wecker|tischuhr|standuhr|kuckuck|uhren-?box|uhrenbox|uhren-?st(ä|ae)nder|aufbewahrung",
+      "seo_title": "Holzuhren für Herren & Damen kaufen | LuxeStyle",
+      "seo_desc": "Armbanduhren aus Holz und Bambus: leicht, mit Holzarmband, für Herren und Damen – mit Quarz-, Multifunktions- oder mechanischem Werk. Versand in die Schweiz.",
+      "html": "<p>Eine Holzuhr ist leichter als eine Metalluhr und fühlt sich warm am Handgelenk an. Hier findest du Armbanduhren mit Gehäuse und Armband aus Holz oder Bambus – schlicht, sportlich oder mit Multifunktionswerk, für Herren und Damen.</p><h2>Worauf achten?</h2><ul><li><strong>Holz:</strong> Jedes Stück hat eine eigene Maserung, Farbe und Zeichnung weichen leicht ab.</li><li><strong>Werk:</strong> Quarz läuft mit Batterie, ein mechanisches Werk ohne – die Angabe steht auf der Produktseite.</li><li><strong>Wasser:</strong> Holzuhren sind meist spritzwassergeschützt, nicht zum Schwimmen gemacht.</li><li><strong>Armband:</strong> Holzglieder lassen sich kürzen, oft liegt ein kleines Werkzeug bei.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+      "kanarien": {
+        "ja": [
+          "Holzarmbanduhr",
+          "Mechanische Holzuhr mit grauem Armband",
+          "Bambus-Holz-Uhr mit digitalem Goldzifferblatt",
+          "Herren-Armbanduhr aus Holz, Sportlich Elegant",
+          "Holz-Armbanduhr mit Sandelholz-Armband"
+        ],
+        "nein": [
+          "Holz-Uhrenbox mit Glasdach",
+          "Holz-Wanduhr rund",
+          "Holzwecker digital",
+          "Uhrenständer aus Holz"
+        ]
+      }
+    },
+    {
+      "handle": "camisole-traegertops",
+      "titel": "Camisole & Trägertops",
+      "tag": "such-camisole",
+      "ja": "camisole|tr(ä|ae)gertop|tr(ä|ae)ger-top|spaghetti-?tr(ä|ae)ger[- ]?top|spaghettitr(ä|ae)ger-?top|\\bcami\\b",
+      "nein": "kleid|\\bset\\b|schlafanzug|pyjama|\\bbody\\b|\\bbh\\b|kinder|jumpsuit|overall|dress\\b|herren|\\brock\\b",
+      "seo_title": "Camisole & Trägertops für Damen kaufen | LuxeStyle",
+      "seo_desc": "Camisoles und Trägertops für Damen aus Satin, Spitze oder Strick – mit Spaghettiträgern oder Neckholder, solo oder zum Layering. Versand in die Schweiz.",
+      "html": "<p>Ein Camisole ist ein leichtes Top mit dünnen Trägern – im Sommer allein, im Herbst unter Blazer, Strickjacke oder Hemd. Hier findest du Trägertops aus Satin, Spitze, Mesh und Strick, schlicht oder mit Print.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Satin glänzt und fällt fliessend, Spitze wirkt verspielt, Strick ist wärmer.</li><li><strong>Träger:</strong> Spaghettiträger, breitere Träger oder Neckholder – je nach BH darunter.</li><li><strong>Länge:</strong> Kurze Tops zur hohen Hose, längere zum Reinstecken.</li><li><strong>Grösse:</strong> Die Masse stehen in der Grössentabelle auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Rückgabe innerhalb von 30 Tagen.</p>",
+      "kanarien": {
+        "ja": [
+          "Satin-Camisole mit Neckholder",
+          "Spitzen-Trägertop «Lacey» – feminines Sommer-Basic",
+          "Gehäkeltes Spaghetti-Träger Top mit Quasten",
+          "Trägertop für den Sommer",
+          "Y2K Lace Camisole Top mit Polka Dots"
+        ],
+        "nein": [
+          "Trägerkleid aus Satin",
+          "Pyjama-Set mit Camisole",
+          "Camisole-Body mit Spitze",
+          "Kinder Trägertop",
+          "Kurzer rückenfreier Cami Jumpsuit",
+          "Samt Camisole Slip Dress mit Spitze",
+          "Herren Camisole Unterhemd Slim-Fit",
+          "Retro Polka-Dot Träger-Top & Rock"
+        ]
+      }
+    },
+    {
+      "handle": "smart-ring",
+      "titel": "Smart Rings",
+      "tag": "such-smart-ring",
+      "ja": "smart[- ]?ring|gesundheits-?ring|fitness-?ring|intelligenter gesundheitsring",
+      "nein": "fernbedienung|ringlicht|schl(ü|ue)sselring|nfc-funktion",
+      "seo_title": "Smart Ring kaufen: Schlaf, Puls & Schritte | LuxeStyle",
+      "seo_desc": "Smart Rings mit Bluetooth-App: Schritte, Schlaf und Puls im Blick, wasserdicht und leichter als eine Uhr. Keine Medizinprodukte. Versand in die Schweiz.",
+      "html": "<p>Ein Smart Ring zeichnet Schritte, Schlaf und Puls auf – ohne Display, leichter als eine Smartwatch und auch nachts angenehm zu tragen. Die Werte siehst du in der App auf dem Handy.</p><h2>Worauf achten?</h2><ul><li><strong>Grösse:</strong> Ein Ring muss eng genug sitzen, damit der Sensor misst. Die Grössen stehen auf der Produktseite – miss deinen Finger vorher.</li><li><strong>App:</strong> Die Auswertung läuft über die App des Herstellers (iPhone und Android, wenn angegeben).</li><li><strong>Akku:</strong> Laufzeit und Ladeschale stehen auf der Produktseite.</li><li><strong>Messwerte:</strong> Smart Rings sind Fitness-Geräte, keine Medizinprodukte – für Diagnosen ist die Ärztin da.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+      "kanarien": {
+        "ja": [
+          "Smart Ring mit Fitness- und Gesundheits-Tracking",
+          "Q520 Gesundheitsring für Schlaf, Herzfrequenz und Sauerstoff",
+          "R6 Smart Ring – Wasserdicht mit Stressüberwachung",
+          "Intelligenter Gesundheitsring",
+          "Multifunktionaler Smart-Ring"
+        ],
+        "nein": [
+          "Universal Smart Ring Fernbedienung",
+          "Smart Ring Bluetooth-Fernbedienung",
+          "Smart Ring mit NFC-Funktion",
+          "LED-Ringlicht mit Stativ"
+        ]
+      }
+    },
+    {
+      "handle": "schrank-organizer",
+      "titel": "Schrank-Organizer",
+      "tag": "such-schrank-organizer",
+      "ja": "(kleider)?schrank-?organizer|kleider-?organizer|unterw(ä|ae)sche-?organizer|aufbewahrungsbox(en)? f(ü|ue)r (kleider|kleidung|textilien)|schubladen-?organizer f(ü|ue)r (unterw(ä|ae)sche|socken|kleider)",
+      "nein": "k(ü|ue)hlschrank|k(ü|ue)che|b(ü|ue)ro|auto|kosmetik|kabel|bad",
+      "seo_title": "Schrank-Organizer & Kleider-Aufbewahrung | LuxeStyle",
+      "seo_desc": "Schrank-Organizer für Kleider, Pullover und Unterwäsche: stapelbare Boxen, Schubladen-Einsätze und Aufbewahrungsboxen aus Stoff für den Kleiderschrank.",
+      "html": "<p>Ordnung im Kleiderschrank beginnt mit festen Plätzen: Pullover in stapelbaren Boxen, Socken und Unterwäsche in Fächern, Saisonkleidung in grossen Aufbewahrungsboxen. Hier findest du Organizer aus Stoff zum Hineinstellen und Stapeln.</p><h2>Worauf achten?</h2><ul><li><strong>Masse:</strong> Miss Fachbreite und -tiefe, die Masse der Boxen stehen auf der Produktseite.</li><li><strong>Fächer:</strong> Kleine Fächer für Socken und Unterwäsche, grosse Boxen für Pullover und Bettwäsche.</li><li><strong>Stapeln:</strong> Feste Böden halten die Form, wenn mehrere Boxen übereinander stehen.</li><li><strong>Faltbar:</strong> Stoff-Organizer lassen sich flach verstauen, wenn du sie nicht brauchst.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+      "kanarien": {
+        "ja": [
+          "4er-Set Stapelbare Kleider-Organizer",
+          "2er-Set Schrank-Organizer für Kleider & Accessoires",
+          "Schubladen-Organizer für Unterwäsche",
+          "Kleiderschrank-Organizer",
+          "Grosse Aufbewahrungsbox für Kleidung",
+          "3er-Set Unterwäsche-Organizer aus Stoff"
+        ],
+        "nein": [
+          "Kühlschrank-Organizer für Snacks & Trockenfrüchte",
+          "Büro-Schubladen-Organizer",
+          "Bambus Schubladen-Organizer für Küchenutensilien",
+          "Auto-Kofferraum-Organizer"
         ]
       }
     }

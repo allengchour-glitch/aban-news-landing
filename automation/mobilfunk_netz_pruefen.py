@@ -41,6 +41,7 @@ KAND, NICHT = re.compile(R["kandidat_titel"], re.I), re.compile(R["nicht_titel"]
 NEU, ALT, SIM = re.compile(R["neu"], re.I), re.compile(R["alt"], re.I), re.compile(R["sim"], re.I)
 BT, WLAN = re.compile(R["bluetooth"], re.I), re.compile(R["wlan"], re.I)
 PERSON = re.compile(r"kinder|kids?\b|child|senior|elderly|baby", re.I)
+TELEFON = re.compile(r"telefon|anruf|video|\bsos\b|\bcall", re.I)
 LEDGER = os.path.join(REPO, "dropship", "_mobilfunk_netz.tsv")
 BERICHT = os.path.join(REPO, "dropship", "MOBILFUNK-NETZ-STAND.md")
 
@@ -60,6 +61,9 @@ def urteil(titel, text):
         return "nur-2g-3g", a.group(0)
     if SIM.search(text):
         return "unklar-sim", "SIM ohne Netz"
+    # 10.10.: Eine Uhr mit Anruf/Video/SOS braucht Mobilfunk — «Bluetooth» im Text (Musik, Koppeln) belegt das Netz nicht
+    if TELEFON.search(titel) and BT.search(text):
+        return "unklar-sim", "Anruf/Video ohne Netzangabe"
     if BT.search(text):
         return "bluetooth", BT.search(text).group(0)
     return "unklar", ""
@@ -68,7 +72,7 @@ def urteil(titel, text):
 def kanarien():
     f = 0
     for k in R["kanarien"]:
-        u, _ = urteil(k["text"], k["text"])
+        u, _ = urteil(k.get("titel", k["text"]), k["text"])
         if u != k["soll"]:
             f += 1
             print(f"  ✗ {k['text'][:60]} → {u} (soll {k['soll']})")
