@@ -17554,3 +17554,4 @@ gid://shopify/Product/16613864964487	20->0	Katzenbaum mit Sisal-Säule und Schla
 gid://shopify/Product/16613867782535	30->0	Reflektierendes Geschirr für Hunde und Katzen
 gid://shopify/Product/16613869650311	44->0	Hundegeschirr mit Leine, reflektierend
 gid://shopify/Product/16613869781383	14->1	Hundegeschirr für Hinter- oder Vorderbeine
+gid://shopify/Product/16613871747463	34->0	Katzengeschirr mit Leine – reissfest & reflektierend
