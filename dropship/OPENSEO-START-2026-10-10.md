@@ -52,3 +52,14 @@
    - Domain-Übersicht 14 Credits; die Keyword-Liste kostet pro Abruf.
    - Keyword-Recherche ~54 Credits je Startbegriff.
    - Ab 2'000 Credits je Paket fragt die Session vorher den Betreiber (OpenSEO-Regel).
+
+## Nachtrag 10.10. ~08:55 UTC
+
+- **Search Console ist in OpenSEO verbunden** (`get_search_console_performance` → ok, Property `https://luxestyle.ch/`).
+- **Audit-Crawler-Zugang:** Shopify lässt Crawler nur mit Signatur durch (Onlineshop → Einstellungen → Crawler-Zugang). Die Signatur
+  wurde per Admin-API erzeugt (`storefrontCrawlerSignatureGenerate`, Version `unstable`, Name «OpenSEO Audit», Domain luxestyle.ch).
+  Die Gültigkeit ist **auf 90 Tage begrenzt** (1 Jahr wurde abgelehnt: «cannot exceed 90 days»), sie **läuft am 08.01.2027 ab**.
+  Die Werte stehen NICHT im Repo; sie wurden dem Betreiber zum Einfügen in OpenSEO gegeben.
+  Erneuern: dieselbe Mutation mit `timeToLive: 7776000`, Werte in OpenSEO → Settings → Crawler access einfügen.
+- Idee: Mit einer eigenen Signatur könnten auch unsere Prüfwerkzeuge die echte Storefront sehen, statt der stundenalten
+  Bot-Cache-Kopie (CLAUDE.md «von unserer IP aus nicht prüfbar»). Das ist noch nicht gebaut.
