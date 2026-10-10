@@ -6785,3 +6785,5 @@ gid://shopify/Product/15460760420737	zugeordnet	24	Colorblock Kapuzenpullover mi
 gid://shopify/Product/15460760519041	zugeordnet	20	Asymmetrischer Midi-Rock aus Woll-Mix
 gid://shopify/Product/15460761731457	zugeordnet	9	Tube Top & Shorts Zweiteiler
 gid://shopify/Product/15460772610433	zugeordnet	15	V-Neck Slim-Fit T-Shirt für Damen
+gid://shopify/Product/15461729796481	zugeordnet	28	Kardigan-Kleid · Damen
+gid://shopify/Product/15461729829249	zugeordnet	45	Karottenmuster-Jacke

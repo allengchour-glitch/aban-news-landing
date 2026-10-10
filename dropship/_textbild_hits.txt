@@ -17499,3 +17499,5 @@ gid://shopify/Product/16613760041351	46->0	Smartwatch mit Bluetooth-Anruf-Info
 gid://shopify/Product/16613760631175	27->2	Vintage-Uhrenarmband aus Leder für Apple Watch
 gid://shopify/Product/16613760663943	72->1	Mosaik-Schachbrett-Kunstharz-Armband 22 mm
 gid://shopify/Product/16613763678599	40->2	Zinn-Glasperlen Armband für Apple Watch
+gid://shopify/Product/16613763744135	10->0	Atmungsaktives Leder-Uhrenarmband in T-Form für Apple Watch
+gid://shopify/Product/16613763940743	15->0	Smart-Headset-Uhr mit Bluetooth 5.0
