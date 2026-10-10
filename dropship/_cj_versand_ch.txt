@@ -1558,3 +1558,4 @@ gid://shopify/Product/16612772086151	ok	Sandwich- und Frühstücksmaschine
 gid://shopify/Product/16613403656583	ok	Männer-Skelett-Uhr mit mechanischem Zeiger
 gid://shopify/Product/16613793464711	ok	Wandkalender mit WiFi-Digitaluhr
 gid://shopify/Product/16613802082695	ok	Smart-Wecker mit Nachtlicht und Audio-Monitor
+gid://shopify/Product/16613864964487	nicht-versendbar	Katzenbaum mit Sisal-Säule und Schlafplatz
