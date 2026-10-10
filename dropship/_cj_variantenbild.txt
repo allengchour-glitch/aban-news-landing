@@ -6537,3 +6537,6 @@ gid://shopify/Product/15458793816449	zugeordnet	12	Herren-Kurzarm-T-Shirt im ame
 gid://shopify/Product/15458793914753	zugeordnet	15	Herren Grau American-Style Ripp-Tanktop
 gid://shopify/Product/15458793980289	zugeordnet	48	Weicher Cardigan mit Cartoon-Muster
 gid://shopify/Product/15458794144129	zugeordnet	55	Oberteil mit verstellbaren Trägern und leichtem Stoff
+gid://shopify/Product/15458794275201	zugeordnet	12	Damen Locker Crew-Neck Strickpullover
+gid://shopify/Product/15458794766721	zugeordnet	21	Herren Weste mit Drachen-Skala Muster
+gid://shopify/Product/15458842411393	zugeordnet	6	Elegantes Kleid mit Herz-Muster
