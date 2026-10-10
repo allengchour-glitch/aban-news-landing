@@ -49,6 +49,33 @@
 
 
 
+## 📧 Warenkorb-Mail kam während des Bezahlens — die Wartezeit stand hinter der Mail (2026-10-10, 08:20 UTC, «was soll ich machen? sonst verbessere weiter»)
+
+**Gemessen:**
+- Der Klaviyo-Flow «Abandoned Checkout» `Vse76a` hatte als `entry_action_id` die Mail «Dein Einkauf wartet auf dich». Die Wartezeiten 1 h + 23 h kamen erst danach.
+- Die Vorlage heisst «Warenkorb 1 (nach 1 Std)», und der Bericht vom 05.10. schrieb «1 h warten → Mail 1». Beides stimmte nicht mit der Verdrahtung überein.
+- Zeitstempel Checkout Started → Received Email: Median **25 s** (14 s, 18 s, 25 s, 32 s, 7 min, 44 min).
+- **2 von 6 Empfängerinnen bezahlten gerade** (#1020, #1021). Klaviyo buchte #1021 als «zurückgeholt».
+
+**Dazu die Messung der Abbrüche** (Shopify 25.09.–06.10., 10 Körbe):
+- 3 eigene Prüfkörbe (`…@example.com`, Provence-Set/Sirène 03.10. 02:2x)
+- 1 Eigenkorb des Betreibers
+- 4 Wegwerf- oder ungültige Adressen
+- **2 echte**
+- Der Bericht vom 05.10. zählte «7 fremde».
+
+**Getan:**
+- Neuer Flow `XEGbTB` mit 1 h → Mail 1 → 23 h → Mail 2, live. Der alte `Vse76a` ist jetzt Entwurf. Die API kann die Einstiegsaktion nicht umhängen, darum ein neuer Flow.
+- Texte ohne «reserviert», ohne «nur für kurze Zeit» (WELCOME10 läuft bis 2027), ohne ß, mit «Hallo,» ohne Vornamen. Dazu TWINT/Klarna und 30 Tage Rückgabe.
+- Wächter: `klaviyo_flow_pruefen.py` + `data/klaviyo_flow_regel.json` (Selbsttest 8/8) prüfen den Stand `dropship/_klaviyo_flow_stand.json`. Der Aufseher läuft stündlich und meldet «Messung fällig» nach 7 T, weil die Shell keinen Klaviyo-Schlüssel hat.
+- `checkout_abbruch_messen.py` zählt jetzt echt/Test/eigen/Wegwerf.
+
+**Lehre:**
+- Die Reihenfolge eines Ablaufs liest man an der Einstiegsaktion und an Zeitstempeln ab, nicht am Namen einer Vorlage oder an einem älteren Bericht.
+- Eine Wartezeit hinter einer Mail verzögert nur die nächste Mail.
+- Vor jeder Abbruch-Statistik die eigenen Prüfkörbe abziehen. Prüfkörbe nur mit `…@example.com` oder `test…`/`qa…`, dann erkennt die Messung sie.
+→ `dropship/WARENKORB-MAIL-2026-10-10.md`
+
 ## 🛏️ Hype-Reihe 10.10. + Google nach der LI-Freigabe (2026-10-10, 07:15 UTC, «weiter»)
 
 **Hype:** Sell The Trend Oktober (Beauty/Pflege + Saison-Deko; «DreamDuo Support Pillow» — Umsatzzahlen = BEHAUPTUNG) →
@@ -19552,3 +19579,5 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · 🔔 **Verbesserungsrunde: Tag 9 ✅ (2'161/2'881 Neuimporte auf Bewertungen geprüft, Ziel 1'500); Ampel meldete «still: Pinterest» trotz gewolltem 48-h-Takt (fest 24 h geprüft) → `metricool_takt()` liest TIKTOK_/YOUTUBE_/PINTEREST_ABSTAND aus `social_autopilot.sh`, `kanal_still()` Takt + Spielraum, 7 Kanarien + Gegenprobe.** Kadenz-Wächter liest die Kadenz aus ihrer Quelle → `dropship/AMPEL-KADENZ-2026-10-09.md`
 - 2026-10-09 · 🍬 **Verbesserungsrunde: «Hundegesundheits-Tabletten» (CJ-Neuimport) ACTIVE in 6 Kanälen; Bestand 11 essbare CJ-Produkte (Tier-Supplements, Hühnchen-Snacks, Koffein-Beutel) — ohne Registrierung/BLV nicht einführbar (Klasse Klinge #1017) → `data/essbar_regel.json` (25 Kanarien, Titel+CJ-Name+Kategorie, Fortura bleibt), `essbar_wache.py` 12 DRAFT täglich, Importer-Sperre `essbar.mjs` (py=js 25/25).** Warengruppe mit Einfuhrregel = Sperre im Importer VOR dem Anlegen → `dropship/ESSBAR-CJ-2026-10-09.md`
 - 2026-10-09 · 🛒 **«verbessere mehr»: TikTok-Seiten 563 Sitzungen → 6 Kassen → 0 Käufe; derselbe Testkorb (1× Leinen 39.90) sagte «noch CHF 5.10» (Balken theme.liquid, falsch: jeder Zusatzartikel = −10 %, 45.80 → 41.22 → CHF 7) UND «noch CHF 10.10» (cart-summary) UND «CH-Lager 1–2 Werktage» (Asien-Ware) → `warenkorb_einig.py`: EIN Rechenweg (gratis ab 45 nach Rabatt, noch = 50 − Wert vor Rabatt), Lieferdatum der langsamsten Ware wie `lux_delivery`, Kanarien 7/7, Wächter mit echtem Testkorb.** Zwei Bausteine für dieselbe Zahl = Widerspruch mit Zeitverzug; Testkörbe sparsam (429) → `dropship/WARENKORB-EINIG-2026-10-09.md`
+- 2026-10-09 · 💅 **«weiter»: «Nagelverstärkungstabletten» (Google: Vitamine) = Press-on-Set — CJ übersetzt 穿戴甲 wörtlich (甲 = Nagel UND Panzer: «Wear Armor», «Rüstung», «Nagelstifte», «Handpflaster»); 120/1'039 Nagel-Titel ohne Warenwort, Bildsichtung → 86 Titel + Text/SEO, 51 Adressen 301, 596 Alts, 20 Fremdartikel im Nagel-Korb (Mauspad, MP3, Tattoo) umgetypt, 0 Fehler; `data/nagel_titel_regel.json` = `nagel_titel.py` (Aufseher) = `nagel_titel.mjs` in `fallenSicher` (py=js 51'933/0).** Nach «kein ehrliches Warenwort» suchen statt nach einem Fehlwort → `dropship/NAGEL-TITEL-2026-10-09.md`
+- 2026-10-09 · 🧨 **«weiter»: Lehre 穿戴甲 katalogweit — 防爆 «explosionsgeschützt» bei 75 (50 Leinen = reissfest; Werkzeug/Akkus = falsche ATEX-Angabe), 爆款 «Explosive …», ins风 «Ins Wind», 百搭 «All-match», Rolex/Patek-Modellnamen (Submariner/Daytona/Datejust/Nautilus, Bilder = Eigenmarken) → 200/0 (54 Titel, 55 Adressen 301, 414 Alts); `data/haendlerwort_regel.json` = `haendlerwort.py` (Aufseher) = `haendlerwort.mjs` in `fallenSicher` (63 Kanarien, py=js 52'094/0).** Im Fliesstext ersetzen statt streichen; vor dem Kürzen Dubletten prüfen → `dropship/HAENDLERWORT-2026-10-09.md`

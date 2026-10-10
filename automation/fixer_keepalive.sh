@@ -1607,6 +1607,12 @@ if [ -f "$REPO/automation/checkout_abbruch_messen.py" ] && [ ! -f /tmp/checkout_
   touch /tmp/checkout_abbruch_$(date -u +%F).stamp
   ( cd "$REPO" && timeout 170 python3 automation/checkout_abbruch_messen.py 2>&1 | tail -1 | tee -a /tmp/checkout_abbruch.log )
 fi
+# --- Warenkorb-Mail in Klaviyo (10.10.2026, dropship/WARENKORB-MAIL-2026-10-10.md) — stündlich, < 1 s, ohne Netz:
+#     Mail 1 ging im Median 25 s nach Kassenstart raus (Mail war erste Aktion, Wartezeit danach). Prüft den Stand aus
+#     dropship/_klaviyo_flow_stand.json: genau 1 live-Flow je «Checkout Started», erste Aktion Wartezeit ≥ 30 min,
+#     keine falsche Verknappung. Die Shell hat keinen Klaviyo-Schlüssel → Stand > 7 T = «Messung fällig» (Session misst).
+KV=$(cd "$REPO" && timeout 30 python3 automation/klaviyo_flow_pruefen.py 2>&1 | tail -1)
+case "$KV" in *"⚠️"*|*"fällig"*) echo "$(date -u +%H:%M) $KV" ;; esac
 # --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
 #     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
 #     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).
