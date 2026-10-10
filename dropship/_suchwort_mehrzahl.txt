@@ -3878,3 +3878,9 @@ gid://shopify/Product/16612105781639	taschen	Leopardenmuster-Umhängetasche
 gid://shopify/Product/16612199661959	taschen	Weiche Lederhandtasche für Damen
 gid://shopify/Product/15454333108609	kleider	Elegantes ärmelloses Maxikleid mit Rundhals
 gid://shopify/Product/15492129030529	kleider	Minikleid mit Spaghettiträgern in A-Linie
+gid://shopify/Product/15516199846273	kleider	Elegantes Westenkleid in A-Linie mit Zebra-Print
+gid://shopify/Product/16608028688775	kleider	V-förmiges Stickkleid mit Puffärmeln
+gid://shopify/Product/16608156287367	taschen	Antimagnetische dreifach faltbare Damen-Kartentasche
+gid://shopify/Product/16611682058631	taschen	Wasserabweisende Kinder-Reisetasche, 20–35 L
+gid://shopify/Product/16612757537159	taschen	Militärische Taillentasche mit Zorro-Motiv
+gid://shopify/Product/16612758552967	taschen	Wasserdichte Schulter-Umhängetasche aus PVC
