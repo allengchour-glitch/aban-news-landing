@@ -6512,3 +6512,6 @@ gid://shopify/Product/15458722447745	zugeordnet	15	Elegantes Midi-Kleid mit Fron
 gid://shopify/Product/15458722775425	zugeordnet	4	Retro-Kleid mit Print
 gid://shopify/Product/15458723234177	zugeordnet	30	Damen-V-Ausschnitt-Maxi in A-Linie
 gid://shopify/Product/15458723496321	zugeordnet	8	Elegant Samt Langarmkleid Damen
+gid://shopify/Product/15458723660161	zugeordnet	25	Elegante Damenrobe mit Taillenweite und V-Ausschnitt
+gid://shopify/Product/15458723955073	zugeordnet	20	V-Ausschnitt Tailliertes Langarmkleid Damen
+gid://shopify/Product/15458724086145	zugeordnet	20	Dreiviertelärmel Taille betonendes Midi-Abendkleid
