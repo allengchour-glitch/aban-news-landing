@@ -6978,3 +6978,10 @@ atmungsaktive-leder-sandalen-fur-herren-604500	2509110927141604700	16	13.76	ok	l
 herren-outdoor-sandalen-mit-klettverschluss-621300	2508280850051621700	16	11.23	ok	landeseite
 atmungsaktive-mesh-sandalen-fur-herren-616500	2508260839171616800	16	13.52	ok	landeseite
 rutschfeste-arbeits-freizeitschuhe-620300	2508230806181620500	16	10.55	ok	landeseite
+herren-ultra-leichte-eva-trekkingschuhe-625900	2508200907561626100	16	12.56	ok	landeseite
+herren-leder-schnurschuhe-casual-business-628200	2607040507341628900	16	16.16	ok	landeseite
+leder-business-schuhe-fur-herren-625600	2607031030201626400	16	23.50	ok	landeseite
+britische-casual-lederschuhe-im-retro-stil-617900	2607030503161618600	16	18.83	ok	landeseite
+herrenschuhe-aus-weichem-leder-mit-glanz-finis-615600	2606180624421616100	16	17.66	ok	landeseite
+business-lederschuhe-im-drachenschuppen-muster-618800	2606160223221619500	16	15.44	ok	landeseite
+business-freizeitschuh-im-korean-style-620700	2606150608251621700	16	19.06	ok	landeseite

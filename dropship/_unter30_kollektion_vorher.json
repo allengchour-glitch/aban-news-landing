@@ -1,0 +1,72 @@
+{
+ "title": "Geschenke bis CHF 30",
+ "handle": "🎁-geschenke-bis-chf-30",
+ "sortOrder": "BEST_SELLING",
+ "templateSuffix": null,
+ "image": {
+  "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/jade-roller-gua-sha-set-rosenquarz-premi_c75e1484-1121-4a0b-9eed-251ae7fff354.jpg?v=1781979574",
+  "altText": "Geschenke bis CHF 30"
+ },
+ "seo": {
+  "title": "Geschenke bis CHF 30 kaufen | LuxeStyle Schweiz",
+  "description": "Geschenke bis CHF 30 online kaufen bei LuxeStyle: grosse Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+ },
+ "resourcePublicationsV2": {
+  "nodes": [
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/301970915713",
+     "name": "Online Store"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/301970981249",
+     "name": "Point of Sale"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/301971014017",
+     "name": "Shop"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/302032716161",
+     "name": "TikTok"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/302566834561",
+     "name": "Facebook & Instagram"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/302872297857",
+     "name": "Google & YouTube"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/302994456961",
+     "name": "Pinterest"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/305570283905",
+     "name": "Inbox"
+    }
+   },
+   {
+    "publication": {
+     "id": "gid://shopify/Publication/391626359175",
+     "name": "Luxe Style Headless"
+    }
+   }
+  ]
+ }
+}
