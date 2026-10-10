@@ -6729,3 +6729,15 @@ gid://shopify/Product/15460648845697	zugeordnet	20	Maxi-Kleid mit Taillen-Gurt
 gid://shopify/Product/15460653728129	zugeordnet	24	Elegantes Leopard-Kleid
 gid://shopify/Product/15460655104385	zugeordnet	12	Pleated Midi-Kleid
 gid://shopify/Product/15460655333761	zugeordnet	12	Sleeveless Vestkleid
+gid://shopify/Product/15460655530369	zugeordnet	80	Herren Kurzarmhemd Casual Gestreift
+gid://shopify/Product/15460655563137	zugeordnet	3	Herzförmige Ohrringe für Frauen
+gid://shopify/Product/15460655595905	zugeordnet	35	Retro Kurzarmhemd mit Knopfleiste für Herren
+gid://shopify/Product/15460655628673	zugeordnet	2	Langohrringe mit Quasten
+gid://shopify/Product/15460659822977	zugeordnet	2	Halskette mit Kreuz-Anhänger
+gid://shopify/Product/15460659888513	zugeordnet	2	Halskette & Ohrringe Set mit Sternen, Mond & Wolken
+gid://shopify/Product/15460659921281	zugeordnet	7	Drohne mit GPS & Follow-Me-Funktion
+gid://shopify/Product/15460660347265	zugeordnet	20	Elegantes Strickkleid mit Rundhals und langen Ärmeln
+gid://shopify/Product/15460660511105	zugeordnet	24	Etuikleid mit Spaghettiträgern
+gid://shopify/Product/15460664770945	zugeordnet	18	Elegantes Langarm-Kleid mit V-Ausschnitt
+gid://shopify/Product/15460664803713	zugeordnet	8	Mini-Kleid aus Satin-Polyester mit Schlitz
+gid://shopify/Product/15460664836481	zugeordnet	21	Sommerliches Trägerkleid – figurbetont & schlank
