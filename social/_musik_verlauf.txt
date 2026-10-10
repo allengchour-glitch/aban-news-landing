@@ -450,3 +450,4 @@
 2026-10-10T08:43:13.834Z	luxe-epic-anime.wav	10.5	beauty	cjreel-2408220906591608200	stimme:nein	anteil
 2026-10-10T09:24:14.362Z	luxe-epic-winter.wav	21.5	kueche	cjreel-22733DDC-9769-400C-9FA4-2F00F5553F4F	stimme:nein	anteil
 2026-10-10T13:05:53.855Z	luxe-epic-elegant.wav	39.5	home	cjreel-2FE133D4-DF2B-4E08-9083-F77BED472299	stimme:nein	anteil
+2026-10-10T13:25:44.581Z	luxe-epic-hero.wav	46	allgemein	cjreel-5299A031-CCDE-4BA2-881A-13BE7E63AB0E	stimme:nein	anteil
