@@ -52,7 +52,21 @@ im Repo. Danach ein eigener Nachrüster-Lauf (`BERICHT=dropship/AUSWAHL-KI-LAUF-
 
 ## Lauf über die 83 Fälle
 
-(wird nach Laufende eingetragen)
+00:41–01:11 UTC, Zeitbudget 30 Min. Ausgewertet wurden 75 von 83 Fällen, die übrigen 8 nimmt der stündliche Aufseher.
+
+- **15 umgebaut, 0 Fehler.** Darunter Herzschlag-Kissen «Braun / Beagle», Widerstandsband «Pedal · Schwarz / Pink»,
+  Kürbis-Kissen 8× «Morandi-…», Lippen-Gloss «Weisser Tee Oolong», Tarn-Umhängetasche «Dschungel-Digital», Hundeleine
+  14×2×2, Flanell-Kissenbezug 8×6×3.
+- Stichprobe live (Admin-API) an 2 Produkten: Optionen wie geplant, exakte CJ-SKU je Variante, Preis gleich, kaufbar.
+- **60 bleiben MANUELL**, davon 45 «KI abgelehnt». Die meisten sind ältere Ablehnungen des Zweitprüfers, die endgültig
+  bleiben.
+- In diesem Lauf kamen 34 neue Ledger-Einträge dazu: 17 ok, 10 echte Reste nach der harten Regel (Xuan, Huayu, Sansha …)
+  und **7 neue Ablehnungen des Zweitprüfers, alle zu Recht.**
+  - «Red Body» → «Körper» bei einem Spielball. Das bestätigt, dass «Body» bewusst nicht in `GLEICH_DE` steht.
+  - «Drei-Sand-Tarn» ist wörtlich aus dem Chinesischen übernommen.
+  - «Herz-Hase-Hand», «Apricot geblümt» und «Grau · unneutral».
+
+Die Sinnprüfung arbeitet also weiter. Gelockert wurde nur die Wortregel davor.
 
 ## Offen
 
