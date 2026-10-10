@@ -6737,3 +6737,4 @@ mesh-sandalen-mit-runder-zehenkappe-615100	2607040820051616700	16	12.09	ok	lande
 outdoor-sandalen-mit-chunky-absatz-617900	2607030318431619200	16	10.93	ok	landeseite
 bequeme-rutschfeste-zehensteg-sandalen-603300	2607010813551603900	16	11.84	ok	landeseite
 plateau-slipper-fur-damen-266497	2072193539834417154	16	11.23	ok	landeseite
+outdoor-sandalen-im-roma-stil-622200	2606300243251623100	16	9.20	ok	landeseite
