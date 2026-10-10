@@ -49426,3 +49426,17 @@ hundegeschirr-rot-fur-kleine-bis-grosse-hunde-657472	ap-2	Haustierbedarf	2026-10
 hundegeschirr-mit-leine-reflektierend-838272	ap-2	Haustierbedarf	2026-10-10T08:42Z
 reflektierendes-geschirr-aus-wildleder-fur-hau-605568	ap-2	Haustierbedarf	2026-10-10T08:42Z
 reflektierendes-hundegeschirr-953536	ap-2	Haustierbedarf	2026-10-10T08:42Z
+hotel-pure-cotton-badewandertuch-40x60-cm-625300	sg	Haushalt & Wohnen	2026-10-10T13:05Z
+kanguru-formiges-katzenspielzeug-mit-katzenmin-629900	ap-2	Haustierbedarf	2026-10-10T13:05Z
+12-zoll-aluminium-dreieck-winkelmesser-9d8fe6	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+holzfeuchtigkeitsmessgerat-gm605-de91ee	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+stahl-nagelfeile-zum-entfernen-von-nagelschmut-788e41	hb-3-2-6	Make-up	2026-10-10T13:05Z
+zange-zum-nageln-von-huhnerkafigen-6f7afd	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+universal-8mm-autopush-nieten-set-100-stuck-552b64	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+klappbare-stahlkabelschraube-316-b3cb02	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+spiral-klemmschraube-p1-p6-158-stuck-cdb37f	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+zange-mit-langer-nadel-280-mm-98f2cc	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+207-stuck-kuchenrotationsplatte-set-207-stuck-3785f1	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+ovalformiger-lochschneider-set-c5e578	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+schubladenschloss-mit-fortune-bird-design-81d95d	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z
+lederstichwerkzeug-3-mm-zahn-41cfd3	ha-15	Werkzeug & Heimwerken	2026-10-10T13:05Z

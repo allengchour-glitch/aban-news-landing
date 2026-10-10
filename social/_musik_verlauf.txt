@@ -449,3 +449,4 @@
 2026-10-10T03:09:50.186Z	luxe-orchestra.wav	15	mode	cjreel-5AAFB6F9-167B-43D9-AE12-C667648CF308	stimme:ja	azure:de-CH-JanNeural
 2026-10-10T08:43:13.834Z	luxe-epic-anime.wav	10.5	beauty	cjreel-2408220906591608200	stimme:nein	anteil
 2026-10-10T09:24:14.362Z	luxe-epic-winter.wav	21.5	kueche	cjreel-22733DDC-9769-400C-9FA4-2F00F5553F4F	stimme:nein	anteil
+2026-10-10T13:05:53.855Z	luxe-epic-elegant.wav	39.5	home	cjreel-2FE133D4-DF2B-4E08-9083-F77BED472299	stimme:nein	anteil
