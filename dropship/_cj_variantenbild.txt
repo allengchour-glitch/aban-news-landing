@@ -6503,3 +6503,10 @@ gid://shopify/Product/15458700296577	zugeordnet	15	Herren Lappli-Stil Strandmode
 gid://shopify/Product/15458700820865	bild-urls-tot
 gid://shopify/Product/15458700886401	zugeordnet	60	Mädchenlederschuhe mit Perlenverschluss und weicher Sohle
 gid://shopify/Product/15458700919169	zugeordnet	45	Mädchen-Pumps mit Glitzer und weicher Sohle
+gid://shopify/Product/15456006603137	zugeordnet	5	Weiches Baumwollhandtuch-Set
+gid://shopify/Product/15458720579969	zugeordnet	30	Rotes Polka-Punkt Kleid
+gid://shopify/Product/15458721563009	zugeordnet	10	Elegantes Langarm-Kleid mit Stickerei
+gid://shopify/Product/15458721956225	zugeordnet	10	Eleganter Sommersaumkleider für Damen
+gid://shopify/Product/15458722152833	zugeordnet	15	Leichte Jacke mit Druckmuster
+gid://shopify/Product/15458722447745	zugeordnet	15	Elegantes Midi-Kleid mit Front-Reissverschluss
+gid://shopify/Product/15458722775425	zugeordnet	4	Retro-Kleid mit Print

@@ -6652,3 +6652,143 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15450164101505	Der 1080P Autorekorder mit 4 Linsen und Nachtsicht ermöglicht eine klare Aufzeichnung in HD-Qualität.
 15450164330881	Die 1080P Dashcam mit 4 Kameras bietet eine hochauflösende Aufzeichnung vorne, hinten, links und rechts.
 15450164560257	Der 1080P HD-Fahrzeugrekorder mit 4 Kameras bietet umfassenden Schutz durch gleichzeitige Aufzeichnung in Vorder-, Rück-, Seitenkamera und HD-Nachtsicht.
+15450165019009	Dieser Fahrrecorder zeichnet das Verkehrsgeschehen mit fünf Kameras auf und bietet eine hohe Bildqualität von 1080p, auch bei Nacht.
+15450165182849	Diese Dashcam bietet eine hohe Auflösung von 1080p und ermöglicht die Aufnahme von allen Seiten des Fahrzeugs dank vier Linsen.
+15450167083393	Dieser Bluetooth-Player ermöglicht es, Musik und Anrufe im Auto hands-free zu geniessen. Kompakte Grösse: 1.1 Zoll.
+15450167312769	Dieses Heads-Up-Display ist speziell für Tesla Model 3 und Y entwickelt worden und bietet eine praktische Zusatzfunktion für die Fahrt. Gewicht: ca. 80 g.
+15450167705985	Diese kompakte Dashcam bietet eine hohe Bildqualität, auch bei Nachtfahrten. 140° Aufnahmewinkel für eine breite Erfassung der Fahrbahn.
+15450167935361	Diese kompakte Dashcam bietet eine 2K-Auflösung und kann sowohl vorne als auch hinten aufnehmen.
+15450168131969	Diese portable Mini-Dashcam bietet eine breite Aufnahme von 140° und ist somit ideal für die Überwachung der Umgebung während der Fahrt.
+15450168361345	Dieser Auto-MP5-Player verfügt über einen 7-Zoll-Bildschirm mit einer Auflösung von bis zu 720P (1080P bei einigen Formaten).
+15450168525185	Das 7-Zoll-Rückfahrdisplay bietet eine praktische Lösung für die Überwachung beim Rückwärtsfahren. 24Bit DAC für eine präzise Soundqualität.
+15450168918401	Der Smart Card Tracker ist ein kleiner, dünner Tracker, der sich in Geldbörsen, Reisepässe oder Gepäckanhänger einfügen lässt. 90-Tage-Akkulaufzeit.
+15450169344385	Das T100 ist ein universelles GPS-Navigationssystem fürs Auto mit einem 9-Zoll-Bildschirm.
+15450170065281	Dieses kompakte GPS-Ortungsgerät ist ideal für den Einsatz in Fahrzeugen. Genauigkeit von 1-20 Metern.
+15450170392961	Dieser Bluetooth-GPS-Tracker ermöglicht die genaue Ortung von wertvollen Gegenständen wie Taschen, Flaschen, Karten, Portemonnaies, Fahrrädern und …
+15450170786177	Der GPS-Auto-Ortungstracker ermöglicht eine präzise Ortung deines Fahrzeugs mit einer Genauigkeit von 5-50 Metern.
+15450170982785	Dieser 2-in-1 Wireless Auto-Adapter ermöglicht eine einfache Verbindung von Geräten im Fahrzeug. USB-Schnittstelle für problemlose Verbindungen.
+15450171179393	Das Laser-Geschwindigkeitsmessgerät ermöglicht präzise Geschwindigkeitsmessungen von Fahrzeugen. Messgenauigkeit: 300 m - 1000 m.
+15450171572609	Der Mini GPS Locator ist ein kompaktes Gerät, das für die Ortung von Gegenständen oder Personen verwendet werden kann.
+15450171769217	Der OBD-GPS-Locator ermöglicht eine präzise Ortung von Fahrzeugen mit einer Genauigkeit von 5 Metern.
+15450171998593	Das HUD-Display ist ein innovatives Produkt für dein Fahrzeug. 3.5 Zoll LED-Display.
+15450172195201	Das GPS-Ortungsgerät ermöglicht eine präzise Ortung mit einer Genauigkeit von 5 Metern.
+15450172326273	Das Car Head Up GPS Speedometer ist ein nützliches Accessoire für Autofahrer. Gewicht: ca. 170 g.
+15450172719489	Das GPS vehicle wireless locator ermöglicht eine einfache Ortung deines Fahrzeugs. Gewicht: ca. 204 g.
+15450213908865	Diese Dashcam bietet eine hochauflösende Aufzeichnung in 1080P und verfügt über vier Linsen für eine umfassende Überwachung.
+15450214072705	Der GPS-Lokator ist ein zuverlässiges Gerät für die Ortung deines Fahrzeugs. Wasserdicht und robust durch ABS-Material.
+15450214269313	Der GPS-Locator eignet sich ideal zur Fahrzeugüberwachung. Mini-Design mit 90 x 74 x 25 mm.
+15450214498689	Der kompakte Mini-GPS-Tracker ist ideal für Outdoor-Aktivitäten und Auto-Nutzung. Abmessungen: 65*52*21 mm.
+15450214629761	Dieser Auto-Duftverteiler sorgt für ein angenehmes Raumklima im Fahrzeug. Gewicht: ca. 160 g – 230 g (je nach Variante).
+15450214662529	Natur-Agarholz-Anhänger, handgeschnitzt aus sorgfältig ausgewähltem, ölreichem Kernholz von künstlich kultivierten Agarholz-Bäumen. Material: Holz.
+15450214826369	Diese Kerze bietet eine erfrischende, kräuterartige Note mit einer Mischung aus Zitrus, Kräutern und Hölzern.
+15450214891905	Erfrische deine Fahrt mit diesem schicken Luftfrischer, der einfach an deinem Auto-Ventil befestigt wird. Langanhaltender Duft: bis zu 60 Tage.
+15450214924673	Der Sportlenkradbezug ist ein praktisches Accessoire für das Auto. Gewicht: ca. 650 g.
+15450214957441	Dieser Lenkradbezug aus synthetischen Fasern im Carbon-Faser-Design bringt einen sportlichen Touch in dein Auto.
+15450215022977	Die Lenkrad-Abdeckung ist aus kunstlichem Leder gefertigt und passt universell auf Lenkrader mit einem Durchmesser von 38cm.
+15450215055745	Der Lenkradbezug aus Suede bietet eine moderne, minimalistische Optik für dein Fahrzeug. Material: Leder.
+15450215088513	Dieser Lenkradbezug ist eine praktische und stylische Ergänzung für dein Auto. Material: Leder.
+15450215154049	Diese Steering Wheel Cover bietet einen sportlichen Stil und hält dein Lenkrad warm während der kalten Wintermonate. Gewicht: ca. 600 g.
+15450215186817	Dieser Lenkradbezug mit Holzprägung bietet eine elegante Lösung für dein Fahrzeug. Oberfläche aus Pfirsichholz.
+15450215252353	Dieser Lenkradbezug aus synthetischem Leder bietet eine universelle Passform für Lenkräder mit einem Durchmesser von 36 cm oder 38 cm. Gewicht: ca. 500 g.
+15450215285121	Diese Lenkradgriff-Abdeckung bietet eine rutschfeste und schweissabsorbierende Oberfläche für ein sicheres Fahrerlebnis.
+15450215383425	Dieser Lenkradbezug aus Kunstleder bietet einen optimalen Schutz für dein Lenkrad und ein angenehmes Fahrerlebnis.
+15450215514497	Dieser Lenkradbezug aus Suede bringt einen Hauch von Luxus in deinen Wagen. Material: Leder.
+15450215547265	Der Carbon-Faser Lenkradbezug ist ein universelles Accessoire für dein Auto. Gewicht: ca. 650 g.
+15450215645569	Dieser Lenkradbezug ist universell einsetzbar und eignet sich für alle Jahreszeiten. Gewicht: ca. 300 g.
+15450252083585	Dieser Zündschalter ist aus 100% echtem Carbon gefertigt und wiegt nur 30g.
+15450252149121	Der Auto-Heizer ist ein praktisches Gerät, um dein Auto schnell und effizient zu enteisen und zu entnebeln. Leistung: 150W.
+15450252214657	Dieser Fernbedienungsschlüssel ist speziell für BMW-Modelle konzipiert und besteht aus Metallkupfer und Kunststoff. Anzahl der Schlüssel: 3.
+15450252476801	Der Auto Diebstahlschutz ist ein drahtloses Bluetooth-Gerät, das deinen Wagen vor unbefugtem Zugriff schützt. Kompatibilität mit allen 12V-Fahrzeugen.
+15450252607873	Dieses Doppel-Ladegerät ist ideal für den Einsatz im Auto. Gewicht: ca. 99 g.
+15450252640641	Der Überspannungsschutz ist ein wichtiger Bestandteil für die Sicherheit deines Fahrzeugs. Gewicht: ca. 90 g.
+15450252673409	Der Auto-Diebstahlalarm ist ein kompaktes und leichtes Gerät, das deinen Wagen vor Einbrüchen schützt.
+15450252771713	Dieser Batterie-Schalter ist ideal fuer den Einsatz in Autos, Yachten und Wohnmobilen. Gewicht: ca. 28 g – 70 g (je nach Variante).
+15450252804481	Dieser Faltbare Fernbedienungsschlüssel ist speziell für ältere Peugeot- und Citroen-Modelle konzipiert. Frequenz: 433 MHz.
+15450252837249	Dieser 2-Tasten Auto-Schlüssel ist ein Nachbau-Schlüssel für bestimmte Peugeot-Modelle. 100% neu und unbenutzt.
+15450252870017	Der Bluetooth-Transmitter ermöglicht es dir, Musik und Anrufe über dein Autoradio zu hören. Gewicht: ca. 150 g.
+15450252902785	Der Peugeot Auto-Schlüssel ist ein hochwertiger Ersatzschlüssel für dein Fahrzeug. Gewicht: ca. 40 g.
+15450253033857	Dieses Gerät ist ein vielseitiges Hilfsmittel für den Notfall. Hammerfunktion für das Zerbrechen von Glas.
+15450253197697	Dieses Sitzkissen bietet eine praktische Lösung für ein erhöhtes Sitzgefühl im Auto. Gewicht: ca. 350 g.
+15450253230465	Praktische Kombi-Lösung für Auto: Verbindet Abfalleimer und Papiertuchbox in einem. Verfügt über wasserdichte Materialien.
+15450253328769	Die atmungsaktive Leder-Sitzauflage sorgt für angenehmes Sitzen im Auto. Material: Umweltfreundliches Nappa-Leder.
+15450253361537	Die dicken Memory-Foam-Sitze sorgen für maximalen Komfort im Auto. Gewicht: ca. 340 g – 465 g (je nach Variante).
+15450258047361	Der Carbon-Faser Lenkradschutz bietet ein sportliches Aussehen und Schutz für dein Fahrzeug. Gewicht: ca. 700 g.
+15450258080129	Der Lederlenkradbezug im Sportstil sorgt für ein modernes und komfortables Fahrerlebnis. Aus echtem Leder.
+15450258112897	Die Lenkergriffe sorgen mit ihrer kohlefaserverstärkten Oberfläche für sicheren Halt und Langlebigkeit. Kompatibel mit 38 cm Lenkraddurchmesser.
+15450258145665	Der handgenähte Lenkradbezug im Sporty-Style sorgt für ein individuelles Fahrerlebnis. Sportlicher Style mit 38 mm Breite.
+15450258178433	Dieser Lenkradbezug aus Kunstleder passt auf Lenkräder mit einem Durchmesser von 38cm. Oberflächenmaterial: Kunstleder.
+15450258211201	Der universelle 15-Zoll-Lenkradbezug aus Synthesefaser passt an Lenkräder mit 38 cm Durchmesser.
+15450258243969	Dieser Lenkradbezug aus hochwertigem Rindsleder bietet eine optimale Passform für Lenkräder mit einem Durchmesser von 38 cm. Obermaterial aus Rindsleder.
+15450258276737	Dieser Lederlenkradbezug aus echtem Rindsleder überzeugt mit sportlichem Stil und perfekter Passform. Echtes Rindsleder für Langlebigkeit.
+15450258309505	Diese Lenkradgriffe kombinieren echtes Leder mit Carbon-Faser-Optik. Echtleder-Optik mit Carbon-Faser-Muster.
+15450258440577	Der Leder-Lenkradbezug bietet eine sportliche Optik und ist für alle Jahreszeiten geeignet. rutschfeste Oberfläche aus Leder.
+15450258637185	Der Carbon-Faser Lenkradbezug mit Clip-on Griffe bietet ein sportliches Aussehen und sicheren Halt. Material: Synthesleder.
+15450258669953	Der perforierte Gripp-Steuerungshülle sorgt mit seiner rutschfesten Oberfläche für sicheren Halt und bessere Ventilation. Material: PU-Leder.
+15450258702721	Dieser Lenkradbezug ist für die meisten Lenkräder mit einem Durchmesser von 38 cm geeignet. Material: synthetisches Leder.
+15450258735489	Der Universal Echtleder Lenkradbezug passt sich dank universellem Design jedem Fahrzeug an. Enthält 1 Lenkradbezug in der Verpackung.
+15450258768257	Der Universal Antibakterielle Lenkradbezug schützt hygienisch und stylisch. Echtleder für Langlebigkeit und Premium-Optik.
+15450258801025	Der ultra-dünn Lenkradschutz passt perfekt zu Toyota ES300h, NX260 und RX350h.
+15450258833793	Der ultraflache Lenkradbezug aus Echtleder sorgt fuer optimalen Grip und ein angenehmes Fahrgefuhr. Echtleder-Oberflaeche fuer eleganten Auftritt.
+15450258932097	Der Voll-Leder Lenkradbezug mit Kohlefaser bietet ein elegantes und sportliches Aussehen. Im Lieferumfang: 1 Lenkradbezug.
+15450259095937	Der Lenkradschutz aus Leder ist elastisch und verfügt über keinen Rand. Elastisches, randloses Lederdesign.
+15450259128705	Der Camellia Lenkradbezug aus PU-Leder verleiht deinem Fahrzeug einen individuellen Look. Material: Strapazierfähiges PU-Leder.
+15450259161473	Der Lenkradschutz aus Carbon-Faser-Optik schützt vor Schweiss und bietet ein angenehmes Griffgefühl. Universell für 38 cm/40 cm Lenkräder.
+15450259259777	Der universelle Lenkradbezug aus Leder und Silikon sorgt für ein angenehmes Fahrerlebnis. Inklusive 1 Lenkradbezug.
+15450259325313	Der Elektroplattierter Schaltknüppel für Toyota Corolla ist ein hochwertiges Auto-Zubehör, das für 5- und 6-Gang-Modelle kompatibel ist.
+15450259358081	Der Luxus Auto Parfüm Spray bietet eine hochwertige Duftlösung für dein Fahrzeug. 3- oder 5-Stufen-Düsenregelung.
+15450259423617	Der Kohlenstofffaser Schaltkopf Universal ist ein universelles Upgradefutter für Schaltgetriebe. Erhältlich in 5- und 6-Gang-Ausführung.
+15450259456385	Der universelle Glanz Carbon-Faser Lenkradbezug verleiht deinem Auto ein sportliches, modernes Aussehen. Gewicht: ca. 160 g – 190 g (je nach Variante).
+15450259521921	Steuerungshülle mit Sportstil und Vier-Jahreszeiten-Design. Universeller Adapter für Lenkraddurchmesser 38 cm.
+15450259587457	Der Woll-Lenkradbezug mit Handgriff-Bezügen ist ein dreiteiliges Set aus feinem Woll- oder Kaschmir-Material.
+15450259620225	Der Universal Lederlenkradbezug aus Nappaleder-Optik bietet einen sicheren Griff durch die gummierte Innenkante.
+15450259685761	Die universelle Lenkradabdeckung aus Suedo bietet optimalen Grip und Komfort für deine Tesla Model 3/Y. Farben: Grau, Rot, Schwarz, Braun, Himmelblau.
+15450259751297	Der Kleiner Holzperlen-Lenkradbezug Sommerstil veredelt dein Fahrzeug mit natürlichen Holzperlen und passt sich optimal an Lenkräder mit 38 cm Durchmesser …
+15450259784065	Der Fell-Lenkradschoner sorgt für sicheren Halt und stilvolles Erscheinungsbild. 2 Stück im Set.
+15450259816833	Dieses 3er-Set Lenkradverzierung passt perfekt zum Tesla Model 3.
+15450259849601	Das Autolosetuch in Rund-D-Form mit Carbon-Optik schützt das Lenkrad vor Verschmutzung und bietet ein angenehmes Griffgefühl. Material: Mikrofaserleder.
+15450259947905	Das atmungsaktive Lenkradbezug schützt und gestaltet dein Fahrzeuginnere. Im Lieferumfang: Lenkradbezug*1.
+15450259980673	Der flanellbestickte Lenkradgriff mit Schmetterling, Kirsche und Marienkäfer verbindet weichen Komfort mit elegantem Design.
+15450260013441	Praktisches Lenkrad speziell für Vierradkarts. Modell: 27 cm Durchmesser.
+15450260144513	Universal-Steuerhebelabdeckung für Yachten, Speedboote und Angelboote. Durchmesser: 320mm und 350mm.
+15450300907905	Die Kopfstütze aus Nappaleder bietet optimalen Komfort und Halt während der Fahrt. Material: Leder.
+15450301038977	Dieses Autositzkissen bietet optimalen Komfort und Schutz für deinen Autositz. Hochwertiges Nappa-Leder und Down-Cotton-Füllung.
+15450301071745	Die Kopfstütze mit Lendenstütze bietet optimalen Komfort und Unterstützung während der Fahrt. Material: Leder.
+15450301170049	Dieses Sitzkissen bietet optimalen Komfort und Unterstuetzung fuer Ruecken und Lendenwirbelsaeule. Gewicht: ca. 600 g.
+15450301432193	Diese Rückenstütze sorgt für optimalen Komfort und Entlastung während der Fahrt. Gewicht: ca. 1.7 kg.
+15450301628801	Der Ruecklehnenhaenger ist ein praktischer Organizer fuer dein Auto. Wasserdichtes Leder.
+15450301759873	Der Hochsteller ist ein praktisches Zubehör für dein Auto. Masse: 37 x 49 cm.
+15450301792641	Die Auto-Nackenstuetze bietet optimalen Komfort und Unterstuetzung fuer den Nacken waehrend der Fahrt. Praktische Verpackung mit 1 x Auto-Nackenstuetze.
+15450302513537	Robuste PVC-Fussmatten schützen den Fahrzeugboden vor Schmutz, Dreck und Flüssigkeiten. Mit Schere trimmbar auf individuelle Grösse.
+15450302644609	Die wärmende Sitzauflage für Model 3/Y Vorderreihen bietet Komfort und Stil.
+15450302677377	Die universelle Auto-Sitzauflage für Kinder bietet bequemen Sitzkomfort im Fahrzeug. Enthält 1 Stück Auto-Sitzauflage.
+15450302841217	Das 3D Decompression Air Cushion Airbag ist ein einfaches und modernes Luftkissen aus Spandex. Grösse: 44x44x4,5cm.
+15450303168897	Das Heizkissen für Autositze sorgt für wohlige Wärme während der kalten Wintermonate. Gewicht: ca. 400 g – 800 g (je nach Variante).
+15450303201665	Das Hüft- & Taille-Sitzpolster sorgt für optimalen Komfort bei langer Sitzung. Gewicht: ca. 1.7 kg.
+15450303234433	Das 3er-Set aus Leder-Autoreisekissen für Winter mit schmutzabweisender Oberfläche. Anti-fouling Leder-Oberfläche.
+15450303332737	Diese Nackenstütze bietet optimalen Komfort auf langen Autofahrten. Gewicht: ca. 330 g – 670 g (je nach Variante).
+15450429391233	Diese eleganten Sandalen sind die perfekte Wahl für den Sommer 2026. Absatzhöhe: 6-8 cm Stiletto-Absatz.
+15450429424001	Diese eleganten Sommer-Sandalen im französischen Stil sind die perfekte Ergänzung für deine Garderobe. Mittelhoher Keilabsatz (3-5 cm).
+15450429555073	Diese stilvollen High Heel Slides sind die perfekte Ergänzung für deine Sommergarderobe 2026. Absatzhöhe: Hoher Absatz (6-8 cm).
+15450429653377	Diese eleganten Plateau-Sandalen im koreanischen Stil sind die perfekte Ergänzung für deine Sommergarderobe 2026. Mittelhoher Blockabsatz (3-5 cm).
+15450429751681	Diese Slingback Stiletto Sandalen vereinen Eleganz mit einem Hauch Boho-Chic. Erscheinungsjahr & Saison: Sommer 2026.
+15450429882753	Diese aufregenden High-Top Sandalen mit Peep-Toe und Cut-Outs bringen dich stilvoll durch den Sommer 2026. Absatzhöhe: Hoher Absatz (6-8 cm).
+15450429981057	Diese minimalistischen Stiefeletten für Damen sind die idealen Begleiter für den Alltag. Flacher Absatz (1-3 cm) und spitze Zehenpartie.
+15450430210433	Diese stilvollen Mid-Calf Boots für Damen sind die perfekte Wahl für Herbst und Winter. Absatzhöhe: Mid Heel (3–5 cm).
+15450430341505	Diese eleganten Langschaftstiefel für Damen vereinen koreanischen Stil mit rockigen Details. Obermaterial aus Mikrofaser, Innenfutter aus Leder.
+15450430439809	Diese knöchelhohen Sandalen für Damen vereinen lässigen Stil mit Vintage-Charme. Obermaterial aus Wildleder, Innenfutter aus Mikrofaser.
+15450430538113	Diese hohen Chunky Boots für Damen sind in den Farben Schwarz, Gelb, Apricot und Braun erhältlich. Verfügbar in den Grössen 34–48.
+15450430636417	Diese stilvollen Mid-Calf Boots für Damen sind die perfekte Ergänzung für deine Herbst- und Wintergarderobe. Obermaterial aus Wildleder.
+15450430833025	Diese kniehohen Damenstiefel im europäisch-amerikanischen Stil sind perfekt für den Winter. Absatzhöhe: Super hoher Absatz (8 cm oder höher).
+15450430996865	Der kniehohe Denim-Stiefel im Retro-Stil ist ein echter Hingucker. Erhältlich in den Grössen 35 bis 41.
+15450431062401	Diese stylischen Ankle Boots im Western-Stil sind ein echter Hingucker für modebewusste Kinder und Jugendliche. Grösse: 29, 30, 31, 32, 33, 34, 35.
+15450431160705	Diese stilvollen Stiefeletten vereinen das luftige Design von Sandalen mit dem Halt von Boots. Absatzhöhe: Mid Heel (3–5 cm).
+15450431226241	Diese stylischen Martin Boots sind die perfekte Ergänzung für deine Garderobe. Rutschfeste Gummilaufsohle.
+15450431422849	Diese stilvollen Stiefeletten für Damen präsentieren sich in einem ansprechenden Denim-Look und verfügen über eine moderne, eckige Spitze.
+15450431521153	Diese stilvollen Martin Boots für Damen sind die perfekte Ergänzung für deine Garderobe. Sohlenmaterial: Rutschfester Gummi.
+15450431586689	Diese modischen Overknee-Stiefel aus Stretch-Denim vereinen kühnen Stil mit hohem Tragekomfort. Ultrahoher Stiletto-Absatz (>8 cm).
+15450431684993	Diese stylischen Mid-Calf Boots für Damen sind die perfekte Ergänzung für deine Garderobe in der kalten Jahreszeit. Absatzhöhe: Mid Heel (3–5 cm).
+15450431750529	Diese warmen Mid-Calf Winterstiefel für Damen sind die idealen Begleiter für kalte Tage. Aussensohlenmaterial: Gummi.
+15450431816065	Diese vielseitigen Stiefeletten für Damen sind die perfekte Ergänzung für jede Garderobe. Absatzhöhe: Mid Heel (3-5 cm).
+15450518258049	Diese eleganten High Heels für Damen präsentieren sich in einem stilvollen weinroten Design. Absatzhöhe: 6-8 cm.
+15450518651265	Der Rome bestickte Retro Casual Schuh für Damen vereint Vintage-Charme mit modernem Komfort. Obermaterial aus Synthetikleder mit Stickerei.
+15450519077249	Der Chuyu 2026 ist ein vielseitiger Schuh für den Frühling und Sommer, der sowohl als flacher Schuh als auch als High Heel getragen werden kann.
