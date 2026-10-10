@@ -16,14 +16,12 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-09T11:44:06Z — SCHARF
+## Letzter Lauf 2026-10-10T09:17:06Z — SCHARF
 
-Gescannt 52071 aktive von 52071 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 52442 aktive von 52442 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| damenblau-arbeitshose-aus-baumwoll-mischung-ge-639500 | USED | Titel «Blaue Damen-Jeans, gerader weiter Schnitt, Used-Look» → «Blaue Damen-Jeans, gerader weiter Schnitt, Vintage-Look»; 5 Bild-Alt-Texte | ok |
-| baustein-luxuslimousine-auf-raedern-334528 | EINZEL | Kategorie → tg-5-7 | ok |
 
 ## Ledger gesamt
 
@@ -88,3 +86,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
+
+## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
+
+- damenblau-arbeitshose-aus-baumwoll-mischung-ge-639500: Missing shipping info in some countries

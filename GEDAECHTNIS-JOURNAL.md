@@ -49,6 +49,35 @@
 
 
 
+## 🕷️ OpenSEO-Audit fand in 12 Minuten, was die eigene Wache übersah: «nur in der Schweiz» im Theme (2026-10-10, 09:40 UTC, «obenseo verbunden» / Crawler-Signatur «gespeichert»)
+
+**Gemessen** (Audit 35 Seiten, 0 Credits; die Signatur wirkt, nach 35 Seiten 429):
+- Fusszeile jeder Seite und Google-Text der Startseite: «Versand nur in der Schweiz».
+  - Die Liechtenstein-Wache von 08:45 las Seiten + Richtlinien, nicht das Theme.
+  - Im Theme standen 4 Stellen (`footer-group.json`, `meta-tags.liquid`: Startseite, Ersatztext für Richtlinien und für /collections/all).
+- `/pages/alle-kategorien`: 323 Zeichen Auszug mit «Kostüme &amp;amp; Fasnacht» in meta UND og.
+  - Ohne SEO-Text nimmt Shopify einen Auszug aus dem Inhalt, und der kommt **zweifach** escaped.
+  - Die Formel vom 09.10. klappt nur einmal zurück.
+- Blogs ohne Beschreibung. Dazu `tiktok-callback` und `merkliste` öffentlich, aber leer.
+
+**Getan:**
+- 4 Theme-Stellen auf CH + LI. Bei /collections/all steht «in der Schweiz gratis ab CHF 50», weil LI keinen Gratisversand hat.
+- `LUX-META-DOPPEL` (meta + og) eingebaut.
+- SEO-Texte für alle-kategorien, Ratgeber und Magazin. `seo.hidden` für die 2 leeren Seiten.
+- Live per curl: 6/6.
+- Wächter:
+  - `liefergebiet_text_wache.py` liest 429 Theme-Dateien (Kanarien: die 4 alten Stellen werden gefunden).
+  - `meta_beschreibung_escape.py --pruefen` meldet das fehlende Einklappen und Seiten/Blogs ohne SEO-Text.
+- Nebenbei: Der Aufseher brach seit dem Sonderanfertigungs-Stempel um 08 und 09 Uhr ab: `$(( $(date +%H) / 6 ))` liest «08» als Oktalzahl. Jetzt `10#`.
+- `shop.description` («… nach Deutschland»): kein API-Weg, `COWORK-BEFEHL.md` Punkt 5 mit neuem Text.
+
+**Lehren:**
+- **Eine Wache «Text X überall» muss alle Orte aufzählen, an denen Text steht:** Seiten, Richtlinien, Theme (Fusszeile, Meta, Ersatztexte), Shop-Felder, Kollektionen, Artikel. Der externe Crawler sieht die Seite so, wie Besucher sie sehen, die eigene Wache sah nur die Quellen, die sie kannte.
+- **Bash: Stunden und Minuten aus `date` nie ohne `10#` rechnen.**
+- **Ein Auszug, den die Plattform selbst baut, kann anders escaped sein als ein gespeichertes Feld.** Beide Wege prüfen.
+
+→ `dropship/OPENSEO-START-2026-10-10.md`
+
 ## 🧭 Drei Betreiber-Klicks selbst erledigt: Lieferzeit je Tarif, Liechtenstein-Texte, Sonderanfertigungen (2026-10-10, 08:45 UTC, «2 aus dem angebot. 3 und 1 erledige du»)
 
 **(1) Lieferzeit:**
@@ -19612,3 +19641,5 @@ Verschoben am 04.10.2026:
 - 2026-10-09 · ✍️ **«weiter»: 596 Beschreibungen mit kleinem «dein … Design/Schnitt/Gehäuse» am Satzanfang — `kollektionstexte_du_form.um()` tauschte jedes «Ihr» → «dein», auch «ihr Design» (= der Ware; 624/625 aus du_form) → `data/dein_bezug_regel.json` (Kundin → «Dein», Ware → Artikel nach Adjektiv-/Nomen-Endung, 31 Kanarien), Quelle `um()` repariert, Bestand `dein_bezug.py` SCHARF + Aufseher täglich.** Ersatz ohne Bedeutung braucht die Stellung im Satz → `dropship/DEIN-BEZUG-2026-10-09.md`
 - 2026-10-09 · 🔁 **Verbesserungsrunde: 459 Neuimporte (14 T) auf Google-Oberklassen, KI-Stufe ruht (OpenAI leer, Groq erschöpft) — 807 «ok» + 1'219 «keiner» im KI-Ledger flossen NIE in die Lerndaten → `oberklasse_nachlernen.py` (+1'032 Beispiele, «uneinig» nie, täglich vor dem Lerner); SPERRE ohne Wortgrenzen sperrte ~300 (Unisex/Waffel/Türklingel/Durchmesser) → Wortgrenzen + 21 Kanarien; Gegenprobe 97,5 %.** Geprüfte Urteile gehören in die Lerndaten → `dropship/OBERKLASSE-NACHLERNEN-2026-10-09.md`
 - 2026-10-09 · ⌚ **Verbesserungsrunde: 28/43 Uhrenarmbänder bei Google «Watches» (auch Neuimporte von heute) — `uhren_fein.py` erkannte Bänder nur mit «für … Watch», seine Uhr-Regel `uhren` traf «Uhrenarmband» → «stimmt» → Kopfwort-Regel Band/Zubehör/Werkzeug, Uhrwort ausserhalb → Uhr; Kanarien 39/39, 45/0, Rücklesen 10/10, Tageslauf trägt die Regel.** «stimmt» kann einen Fehler festschreiben; Kanarien mit Kompositum → `dropship/UHRENARMBAND-KATEGORIE-2026-10-09.md`
+- 2026-10-09 · 🔤 **«verbesser weiter»: Fremdwörter im Titel, die die Schweiz deutsch sucht (Cowhide 15, Silicone 10, Stainless 10, Hooded 9, Kids 8, Pendant 7, Baby-Romper 6 …; Sneaker/Hoodie/Jumpsuit bleiben) → `fremdwort_titel` in `haendlerwort_regel.json` (25 Muster, Romper nur mit Baby-Kontext) + 57 gelesene Handtitel (Geschlechtswechsel, Dubletten); Kanarien 91/91, py=js 52'082/0, 93/0, SEO-Titel mit.** Grenze = Suchgewohnheit; Geschlechtswechsel = Handtitel → `dropship/FREMDWORT-TITEL-2026-10-09.md`
+- 2026-10-09 · 🔍 **«nur 18 google suche ist wenig warum»: CH-Google Jul 127 → Aug 104 → Sep 75 → Okt ~77/Mt (Juli-Wochenspitze zur Hälfte Ausland), 71/91 auf Produktseiten, Ratgeber 0; Juli-Treiber Rizinusöl-Set (34) DRAFT (CJ nicht CH), Saisonende; GSC erst seit 05.10.; `<meta name="description">` doppelt escaped («&amp;amp;», page_description kommt schon escaped) → `meta_beschreibung_escape.py` live 6/6 + Wächter.** Wochenkurve nach Land trennen; «ist korrekt» im Kommentar ist kein Beweis → `dropship/GOOGLE-VERKEHR-WARUM-2026-10-09.md`

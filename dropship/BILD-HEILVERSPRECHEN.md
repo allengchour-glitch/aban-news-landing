@@ -1,6 +1,6 @@
-# Hauptbilder mit Krankheits-/Heilversprechen — Stand 2026-10-09 11:32 UTC
+# Hauptbilder mit Krankheits-/Heilversprechen — Stand 2026-10-10 09:13 UTC
 
-Geprüft (Ledger): 2498 · getauscht: 4 · ohne sauberes Ersatzbild: 5 · unlesbar: 1
+Geprüft (Ledger): 2555 · getauscht: 4 · ohne sauberes Ersatzbild: 5 · unlesbar: 1
 
 ## Befunde dieses Laufs
 

@@ -1016,14 +1016,15 @@ Zahl «Missing shipping info» vorher/nachher melden (zuletzt ~1'700).
 Google-Gratis-Einträge sind der einzige Kanal mit belegten Verkäufen.
 
 **5. STARTSEITEN-META-BESCHREIBUNG.** Gemessen 15.09. über `shop { description }`: **211
-Zeichen**, endend mit «… und nach Deutschland». Der Shop liefert **nur in die Schweiz**.
+Zeichen**, endend mit «… und nach Deutschland». Der Shop liefert in die **Schweiz und seit 09.10. nach Liechtenstein**, nicht nach Deutschland.
 Keine Mutation vorhanden (`shopUpdate` existiert nicht) — nur im Admin:
 Onlineshop → Einstellungen → «Titel und Meta-Beschreibung» → ersetzen durch:
 
 ```
-Mode, Schmuck, Beauty & Gadgets aus der Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Kauf auf Rechnung mit Klarna oder TWINT.
+Mode, Schmuck, Beauty & Gadgets aus Belp. Versand in die Schweiz und nach Liechtenstein, 30 Tage Rückgabe, Kauf auf Rechnung mit Klarna oder TWINT.
 ```
-(133 Zeichen, keine Deutschland-Zusage.) Speichern, Zeichenzahl melden.
+(147 Zeichen, keine Deutschland-Zusage.) Speichern, Zeichenzahl melden.
+*10.10.: Die Startseite zeigt Google schon einen wahren Text (das Theme überschreibt das Feld). Andere Kanäle lesen das Feld aber direkt, zum Beispiel Microsoft Merchant (01.10. «irreführend»).*
 
 **7. CHAT EINSCHALTEN.** Installiert sind **zwei** Chat-Apps («Messaging»/Shopify Inbox und
 «Chatty»/Avada). Auf luxestyle.ch ist **kein Chat-Knopf sichtbar**, im Theme steht **kein**

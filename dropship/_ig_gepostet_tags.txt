@@ -57,3 +57,14 @@
 2026-10-08T15:38Z	gid://shopify/Product/15491420684673	+	ig-seit-2026-10-07	herren-pullover-langarm-strickpullover-611700
 2026-10-09T11:39Z	gid://shopify/Product/15412408615297	+	ig-seit-2026-10-08	monitor-lichtleiste-mit-bewegungssensor-blendfreies-schreibtischlicht-usb
 2026-10-09T11:39Z	gid://shopify/Product/15447922803073	+	ig-seit-2026-10-09	warme-lederhandschuhe-mit-fleecefutter-626600
+2026-10-10T09:14Z	gid://shopify/Product/15522140324225	+	ig-seit-2026-10-10	samt-kurbis-kissen-95e02d
+2026-10-10T09:14Z	gid://shopify/Product/15480284578177	-	ig-gepostet,ig-seit-2026-09-25	farbprojektionslampe-619700
+2026-10-10T09:14Z	gid://shopify/Product/15495898268033	-	ig-gepostet,ig-seit-2026-10-03	plusch-entenkuken-mit-quietschelement-584064
+2026-10-10T09:14Z	gid://shopify/Product/15496229454209	-	ig-gepostet,ig-seit-2026-10-03	elektrischer-flaschenoffner-mit-zubehor-701952
+2026-10-10T09:14Z	gid://shopify/Product/15497436332417	-	ig-gepostet,ig-seit-2026-10-03	tragbarer-mini-entsafter-227840
+2026-10-10T09:14Z	gid://shopify/Product/15500073533825	-	ig-gepostet,ig-seit-2026-09-29	vegetarische-schredder-box-342016
+2026-10-10T09:15Z	gid://shopify/Product/15500485886337	-	ig-gepostet,ig-seit-2026-09-30	10er-pack-verstellbare-pu-hundehalsbander-mit-001792
+2026-10-10T09:15Z	gid://shopify/Product/15506224939393	-	ig-gepostet,ig-seit-2026-10-01	multifunktionaler-manueller-massageroller-851904
+2026-10-10T09:15Z	gid://shopify/Product/15522214576513	-	ig-gepostet,ig-seit-2026-10-05	business-rucksack-fur-reise-und-alltag-879296
+2026-10-10T09:15Z	gid://shopify/Product/15524856365441	-	ig-gepostet,ig-seit-2026-10-01	katzen-spielzeug-mit-futterspender-190208
+2026-10-10T09:15Z	gid://shopify/Product/16604954591623	-	ig-gepostet,ig-seit-2026-10-04	weihnachtsgirlande-handschuh-design-mit-lichte-647500
