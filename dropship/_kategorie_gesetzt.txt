@@ -49143,3 +49143,8 @@ blaue-arbeitsshirt-mit-schmetterlingsmuster-628500	aa-1	Herrenmode	2026-10-09T21
 langarmliges-loose-shirt-in-blau-607200	aa-1	Herrenmode	2026-10-09T21:59Z
 leinen-shirt-in-hellblau-locker-geschnitten-602800	aa-1	Herrenmode	2026-10-09T21:59Z
 mannerlangarmshirt-corduroy-aprikose-629200	aa-1	Herrenmode	2026-10-09T21:59Z
+smartwatch-mit-bluetooth-anruf-info-682112	aa-6-11	Uhren	2026-10-10T00:16Z
+smartwatch-mit-nfc-offline-call-sportfunktione-729216	aa-6-11	Uhren	2026-10-10T00:16Z
+quadratische-quarz-uhr-mit-metallband-703424	aa-6-11	Uhren	2026-10-10T00:16Z
+smartwatch-business-casual-wasserdicht-812160	aa-6-11	Uhren	2026-10-10T00:16Z
+quarz-uhr-mit-3d-diamant-design-wasserdicht-447552	aa-6-11	Uhren	2026-10-10T00:16Z
