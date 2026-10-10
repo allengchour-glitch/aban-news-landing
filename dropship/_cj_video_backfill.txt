@@ -931,3 +931,20 @@ gid://shopify/Product/15446271951233	kein-video-beim-lieferanten
 gid://shopify/Product/15446271984001	kein-video-beim-lieferanten
 gid://shopify/Product/15446272016769	kein-video-beim-lieferanten
 gid://shopify/Product/15446272082305	kein-video-beim-lieferanten
+gid://shopify/Product/15446272639361	kein-video-beim-lieferanten
+gid://shopify/Product/15446272672129	ok	LED-Fahrradtasche mit Fernbedienung
+gid://shopify/Product/15446272737665	ok	LED-Velo-Blinklicht mit smarter Richtungsanzeige
+gid://shopify/Product/15446272770433	ok	LED-Sportweste für Outdoor-Aktivitäten
+gid://shopify/Product/15446272803201	kein-video-beim-lieferanten
+gid://shopify/Product/15446272835969	kein-video-beim-lieferanten
+gid://shopify/Product/15446272934273	kein-video-beim-lieferanten
+gid://shopify/Product/15446272967041	kein-video-beim-lieferanten
+gid://shopify/Product/15446272999809	kein-video-beim-lieferanten
+gid://shopify/Product/15446273065345	kein-video-beim-lieferanten
+gid://shopify/Product/15446273098113	kein-video-beim-lieferanten
+gid://shopify/Product/15446273196417	kein-video-beim-lieferanten
+gid://shopify/Product/15446273917313	kein-video-beim-lieferanten
+gid://shopify/Product/15446273950081	ok	Bluetooth Grip Ring Handtrainer
+gid://shopify/Product/15446274670977	kein-video-beim-lieferanten
+gid://shopify/Product/15446274802049	kein-video-beim-lieferanten
+gid://shopify/Product/15446274834817	kein-video-beim-lieferanten

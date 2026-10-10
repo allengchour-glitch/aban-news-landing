@@ -1,9 +1,8 @@
-# Klimaaussagen — Stand 2026-10-08T04:22Z
+# Klimaaussagen — Stand 2026-10-10T00:43Z
 
 Regel: `automation/data/klima_regel.json` (Art. 3 Abs. 1 lit. x UWG). Produkte bereinigt `klimaaussagen_wache.py` selbst; Seiten unten bitte von Hand (mit Sicherung).
 
-Produkte: (11, 11, 0)
+Produkte: (0, 0, 0)
 
-## Veröffentlichte Seiten/Texte mit Klimaaussage (1)
+## Veröffentlichte Seiten/Texte mit Klimaaussage (0)
 
-- Artikel `e-scooter-velo-die-richtige-wahl-furs-pendeln`: «Umweltfreundlichkeit: Absolut emissionsfrei und nachhaltig.»
