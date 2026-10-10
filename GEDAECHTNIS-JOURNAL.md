@@ -61,6 +61,11 @@ keine Kollision) = Bestand `familienset_auswahl.py` (Aufseher täglich) = beide 
 (2) Ein Übersetzer, der für EINE Klasse gebaut wurde, liefert auf dem ganzen Katalog Denglisch («Lemon Gelb Half Rice», «Schwarz And
 Weiss») → Geltungsbereich eng + «kein englischer Rest» als Ablehnungsgrund. (3) Dieselbe Rohliste steht oft an ZWEI Orten (Option +
 Faktenblock) — nach einem Umbau die Beschreibung mitlesen.
+**Nachtrag 14:00 (Runde 2):** «weihnachtspyjama» CH Nov. 3'600, «… familie» 1'600, KD 0 (OpenSEO) → Kollektion
+`/collections/weihnachtspyjama-familie` (30 Sets, Suchbegriff-Regel, Links aus «Weihnachten 🎄» + «Alle Kategorien»). Beim Prüfen der 30:
+die strenge Regel war an zwei Stellen ZU streng (Zahlenpaar «Kinder 3 4» stand schon im Original; gleiche Nummer «5562-» vor allen Werten
+unterscheidet nichts) → +4 Sets. Lehre: Eine Ablehnungsregel gegen eine Kollektion prüfen, deren Ware man sieht — die Kanarien hatten
+nur erfundene Fälle.
 
 ## 🎨 Code VOR der Farbe im Auswahlfeld — die Regel vom Vortag prüfte nur Werte ohne Leerzeichen (2026-10-10, 13:00 UTC, Verbesserungsrunde)
 **Gemessen:** Stichprobe Neuimporte (4 h, 286) zeigte «2350 Black · 2350 Brown», «GS8111G Black … 2GS8111G Brown»; im Bestand

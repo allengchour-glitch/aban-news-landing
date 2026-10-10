@@ -104,6 +104,9 @@ def bearbeiten(pid):
 # NUR eine Farbe-Zeile mit englischem Rollenwort; die Wahl steht im Auswahlfeld.
 FARB_LI = re.compile(r"<li>\s*<strong>(?:Farbe|Color|Farben):</strong>([^<]*)</li>\s*", re.I)
 ROLLE_EN = re.compile(r"\b(dad|daddy|mom|mommy|mother|father|kid|kids|child|children|romper)\b|\b(dad|mom)(?=[SMLX0-9])", re.I)
+# Rohliste in der Faktenzeile kann auch schon deutsche Rollen tragen («5562-Herren M, 5562-Damen S …») — gestrichen wird sie nur,
+# wenn das Auswahlfeld NICHT mehr «Farbe» heisst (oben geprüft), also die Wahl dort steht.
+ROLLE_ZEILE = re.compile(ROLLE_EN.pattern + r"|\b(herren|damen|kinder|baby|papa|mama)\b", re.I)
 
 
 def details_bereinigen(pid):
@@ -112,7 +115,11 @@ def details_bereinigen(pid):
     if any(o["name"].lower() in ("farbe", "color") and sum(1 for v in o["values"] if ROLLE_EN.search(v)) >= 2 for o in p["options"]):
         return None                                   # Option selbst noch roh → Zeile spiegelt die Wahrheit, bleibt
     alt = p["descriptionHtml"] or ""
-    neu = FARB_LI.sub(lambda m: "" if len(ROLLE_EN.findall(m.group(1))) >= 2 else m.group(0), alt)
+    if any(o["name"].lower() in ("farbe", "color") for o in p["options"]):
+        rolle = ROLLE_EN                              # Farb-Option existiert noch → nur englische Rohliste streichen
+    else:
+        rolle = ROLLE_ZEILE
+    neu = FARB_LI.sub(lambda m: "" if len(rolle.findall(m.group(1))) >= 2 else m.group(0), alt)
     if neu == alt:
         return None
     if not SCHARF:
@@ -121,7 +128,7 @@ def details_bereinigen(pid):
     if r["userErrors"]:
         return "FEHLER " + r["userErrors"][0]["message"][:60]
     zur = gql('query($i:ID!){product(id:$i){descriptionHtml}}', {"i": pid})["product"]["descriptionHtml"] or ""
-    return "ok" if not any(len(ROLLE_EN.findall(m.group(1))) >= 2 for m in FARB_LI.finditer(zur)) else "RÜCKLESEN ABWEICHEND"
+    return "ok" if not any(len(rolle.findall(m.group(1))) >= 2 for m in FARB_LI.finditer(zur)) else "RÜCKLESEN ABWEICHEND"
 
 
 def main():
