@@ -6807,3 +6807,5 @@ gid://shopify/Product/15461980373377	zugeordnet	20	Mädchen Leder Prinzessinnen-
 gid://shopify/Product/15461980438913	zugeordnet	27	Baby Lauflernschuhe aus Wolle und Baumwolle
 gid://shopify/Product/15461980471681	zugeordnet	36	Cartoon Baby-Sandalen mit weicher Sohle
 gid://shopify/Product/15461980537217	zugeordnet	30	Martin Black Bright Skin Boots
+gid://shopify/Product/15458624307585	keine-passende-sku
+gid://shopify/Product/15462220136833	zugeordnet	99	Langarm-Sweater · Damen
