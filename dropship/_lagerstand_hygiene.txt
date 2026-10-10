@@ -342,3 +342,7 @@ gid://shopify/Product/15491418882433	draft-ausverkauft	Tie-Dye Maxikleid mit tie
 gid://shopify/Product/15493912166785	draft-ausverkauft	Carbon-Plate Popcorn Marathon-Sneaker
 gid://shopify/Product/15469960102273	draft-ausverkauft	Kostüm ALF
 gid://shopify/Product/15470023803265	draft-ausverkauft	Zubehör: Amazone Düngerstreuer
+gid://shopify/Product/15469948207489	draft-ausverkauft	Hippie Batik Shirt
+gid://shopify/Product/15469959905665	draft-ausverkauft	Kostüm Happy Diva
+gid://shopify/Product/15469995884929	draft-ausverkauft	Perücke Crazy Clown
+gid://shopify/Product/15470023803265	reaktiviert	Zubehör: Amazone Düngerstreuer
