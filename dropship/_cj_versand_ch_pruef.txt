@@ -6753,3 +6753,6 @@ retro-sandalen-mit-eckiger-spitze-622300	2606221335191623400	16	11.37	ok	landese
 rhinestone-riemchensandalen-im-french-stil-639200	2606220608081639800	16	9.88	ok	landeseite
 koreanische-sandalen-mit-strass-616400	2606220605351617000	16	9.88	ok	landeseite
 trend-keilsandalen-mit-nieten-604200	2606191322471604800	16	10.96	ok	landeseite
+damen-plateau-sandalen-mit-riemen-612800	2606190924391613400	16	8.53	ok	landeseite
+flache-zehensteg-sandalen-aus-schafsleder-625100	2606181007321625800	16	13.76	ok	landeseite
+espadrille-sandalen-mit-plateau-617000	2606170646061617800	16	11.37	ok	landeseite
