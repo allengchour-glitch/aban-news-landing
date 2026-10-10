@@ -6809,3 +6809,9 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15450527105409	Der leichte Damen-Sneaker ist ideal für den Sommer 2026.
 15450527465857	Der leichte Sneaker für Damen ist perfekt für Frühling und Sommer 2026. Absatzhöhe: Mittelhoher Absatz (3-5 cm).
 15450528055681	Dieser lässige Damenschuh kombiniert Komfort mit Stil für den Alltag. Innenfutter aus Kunstleder.
+15450528547201	Dieser Damen-Slipper aus hochwertigem Spaltleder (kein Wildleder) bietet optimalen Komfort für den Alltag.
+15450528874881	Diese schwarzen Mules für Damen sind die idealen Begleiter für den Alltag. Flacher Keilabsatz (max. 3 cm).
+15450529300865	Die schwarzen Keilabsatz-Schuhe für Damen sind die ideale Wahl für den Alltag. Mid-Heel (3–5 cm) mit flachem Keilabsatz.
+15450529726849	Diese eleganten Slip-on Loafer für Damen sind im britischen Stil gehalten und überzeugen durch ihr schlichtes, einfarbiges Design.
+15450530087297	Diese eleganten Mary Jane Flats für Damen präsentieren sich mit einer modischen Karree-Spitze und einem praktischen Riemenverschluss mit Schnalle.
+15450530546049	Diese modischen Damen-Sneaker im Color-Block-Design sind die idealen Begleiter für jede Jahreszeit. Obermaterial aus Synthetikleder.

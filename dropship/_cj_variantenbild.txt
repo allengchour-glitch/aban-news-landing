@@ -6511,3 +6511,4 @@ gid://shopify/Product/15458722152833	zugeordnet	15	Leichte Jacke mit Druckmuster
 gid://shopify/Product/15458722447745	zugeordnet	15	Elegantes Midi-Kleid mit Front-Reissverschluss
 gid://shopify/Product/15458722775425	zugeordnet	4	Retro-Kleid mit Print
 gid://shopify/Product/15458723234177	zugeordnet	30	Damen-V-Ausschnitt-Maxi in A-Linie
+gid://shopify/Product/15458723496321	zugeordnet	8	Elegant Samt Langarmkleid Damen
