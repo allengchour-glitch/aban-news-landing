@@ -1,0 +1,61 @@
+{
+  "zweck": "Kollektionen für grosse, kaufnahe Suchbegriffe, für die Google bisher nur ein einzelnes Produkt auf Seite 6–9 zeigte (OpenSEO 10.10.2026: «handstaubsauger» 5'400/Mt Pos 72, «spiegel für schminktisch» 2'900 Pos 65, «schlafmaske» 2'400 Pos 66, «kleiderständer holz» ~3'000 Pos 48–53). Zuordnung über Tag `such-…` (Titel-Regel ja/nein mit Wortformen, nie nur Stichwort), Werkzeug automation/suchbegriff_kollektionen.py (Aufseher täglich über Neuimporte). Fotodrucker bewusst NICHT: im Sortiment nur Mini-Thermodrucker in Schwarz-Weiss, die Suche meint Farb-Fotodrucker. GPS-Tracker erst nach der 2G-Prüfung (dropship/MOBILFUNK-2G-2026-10-10.md).",
+  "kollektionen": [
+    {
+      "handle": "handstaubsauger",
+      "titel": "Handstaubsauger",
+      "tag": "such-handstaubsauger",
+      "ja": "hand-?staubsauger|handsauger|akku-?staubsauger|akkusauger|tisch-?staubsauger|tischsauger|b(ü|ue)ro-?staubsauger|staubsauger-stick|(mini|auto|usb|kabellose[rs]?|tragbare[rs]?|handliche[rs]?)[- ]((mini|auto|usb)[- ])?staubsauger|(mini|auto|usb)-staubsauger",
+      "nein": "roboter|filter|ersatz|d(ü|ue)se|beutel|aufsatz|zubeh(ö|oe)r|b(ü|ue)rstenkopf|halter|adapter|ladeger(ä|ae)t|akku f(ü|ue)r|lithium-ionen-akku|nagel|bohr|wischmopp|schlauch",
+      "seo_title": "Handstaubsauger kabellos & mit Akku kaufen | LuxeStyle",
+      "seo_desc": "Handstaubsauger mit Akku: kabellose Mini-Sauger für Auto, Sofa, Tastatur und Tisch, viele mit Blasfunktion und USB-Ladung. Versand in die Schweiz.",
+      "html": "<p>Ein Handstaubsauger ist schnell zur Hand, wenn Krümel auf dem Sofa, Sand im Auto oder Staub auf der Tastatur liegen. Hier findest du kabellose Modelle mit Akku – vom Mini-Sauger für den Schreibtisch bis zum Auto-Staubsauger mit Blasfunktion.</p><h2>Worauf achten?</h2><ul><li><strong>Akku und Laden:</strong> Die meisten Geräte laden per USB. Laufzeit und Ladezeit stehen auf der Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Saugkraft:</strong> Für Tierhaare und Autositze lohnt ein kräftigeres Modell, für Tastatur und Tisch reicht ein Mini-Sauger.</li><li><strong>Filter:</strong> Ein auswaschbarer Filter spart Ersatzteile.</li><li><strong>Düsen:</strong> Fugen- und Bürstendüse erreichen die Ritzen im Auto.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+      "kanarien": {
+        "ja": ["Kabelloser Handstaubsauger mit Blasfunktion", "Akku-Handsauger für Auto & Heim", "Mini USB Tisch-Staubsauger", "Kabelloser Auto-Staubsauger mit Reifendruckmesser", "Handlicher Mini Auto Staubsauger – kraftvoll & kompakt", "Tragbarer Akku-Staubsauger", "Auto- und Bürostaubsauger"],
+        "nein": ["Roboter-Staubsauger mit Mop-Funktion", "Staubbeutel für Staubsauger", "Ladegerät für Dyson V6, V7, V8 Staubsauger", "Nagelstaubsauger 80W", "Elektrischer Bohrstaubsauger mit Laser", "Hochleistungs-Lithium-Ionen-Akku für Staubsauger", "Multifunktionaler Staubsauger-Aufsatz, 8-teilig"]
+      }
+    },
+    {
+      "handle": "schminkspiegel",
+      "titel": "Schminkspiegel",
+      "tag": "such-schminkspiegel",
+      "ja": "(schmink|kosmetik|make-?up|vergr(ö|oe)sserungs)-?spiegel|(led|tisch|reise)-?(tisch)?spiegel mit (led|licht|beleuchtung)|spiegel mit (led|licht|dimmbarem licht)|(led|reise)-(make-?up-?|schmink)?spiegel",
+      "nein": "uhr|wecker|r(ü|ue)ckspiegel|auto|powerbank|kissenf(ü|ue)llung|bluetooth|wand",
+      "seo_title": "Schminkspiegel mit LED & Vergrösserung | LuxeStyle",
+      "seo_desc": "Schminkspiegel mit Licht: LED-Kosmetikspiegel zum Aufstellen, faltbare Reisespiegel und Spiegel mit 2- bis 10-facher Vergrösserung. Versand in die Schweiz.",
+      "html": "<p>Ein guter Schminkspiegel bringt Licht dorthin, wo du es beim Make-up brauchst. Hier findest du LED-Kosmetikspiegel für den Schminktisch, faltbare Spiegel für unterwegs und Modelle mit Vergrösserung für Details wie Augenbrauen oder Eyeliner.</p><h2>Worauf achten?</h2><ul><li><strong>Licht:</strong> Dimmbares LED-Licht hilft am Tag und am Abend.</li><li><strong>Vergrösserung:</strong> 2-fach für den Alltag, bis 10-fach für Details – manche Spiegel haben beide Seiten.</li><li><strong>Strom:</strong> Akku mit USB-Ladung oder Batterien, die Angabe steht auf der Produktseite.</li><li><strong>Grösse:</strong> Tischspiegel für zu Hause, flache Klappspiegel für die Handtasche.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+      "kanarien": {
+        "ja": ["LED Schminkspiegel mit 10x Vergrösserung", "Dimmbarer Kosmetikspiegel mit Akku", "Reise-Makeup-Spiegel mit LED-Licht", "Aufklappbarer LED-Tischspiegel mit Licht · 175×11×36cm", "Holz-Schminkspiegel", "LED-Spiegel mit dimmbarem Licht", "Doppeltes Kosmetikspiegel"],
+        "nein": ["LED-Spiegeluhr minimalistisch · Wecker & Temperatur", "Digitaler LED-Spiegelwecker", "Powerbank mit Schminkspiegel", "Kosmetikspiegel mit Kissenfüllung", "Bluetooth LED Spiegel mit virtueller Beleuchtung", "Auto-Rückspiegel mit LED"]
+      }
+    },
+    {
+      "handle": "schlafmasken",
+      "titel": "Schlafmasken",
+      "tag": "such-schlafmaske",
+      "ja": "schlafmaske|schlafbrille|augenmaske|augenbinde",
+      "nein": "domino|teufel|rabe|harlekin|kost(ü|ue)m|halloween|hoodie|kapuzenpullover|pullover|organizer|silikon-set|augenmasken ·|\\d+ st(ü|ue)ck|dunkle ringe|feuchtigkeit|jade|massageger(ä|ae)t|latex|sch(ö|oe)nheit",
+      "seo_title": "Schlafmaske kaufen: Seide, 3D & mit Wärme | LuxeStyle",
+      "seo_desc": "Schlafmasken zum Abdunkeln: aus Seide, in 3D-Form ohne Druck auf die Augen, gewichtet oder mit Wärme – auch für Reisen. Versand in die Schweiz.",
+      "html": "<p>Eine Schlafmaske dunkelt ab, wenn es im Schlafzimmer, im Zug oder im Flugzeug nicht dunkel genug ist. Hier findest du Masken aus Seide, 3D-Formen mit Raum für die Wimpern, gewichtete Masken und Modelle mit Wärmefunktion.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Seide fühlt sich glatt an, Schaum und 3D-Formen drücken nicht auf die Augen.</li><li><strong>Abdunkelung:</strong> Eine breite Form mit Nasenpolster lässt weniger Licht durch.</li><li><strong>Wärme:</strong> Beheizbare Masken laden per USB, Dampf-Augenmasken sind für den einmaligen Gebrauch.</li><li><strong>Band:</strong> Ein verstellbares Band hält, ohne zu drücken.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+      "kanarien": {
+        "ja": ["Seidene Schlafmaske für angenehme Nächte", "3D Gravity Schlafmaske", "Gewichtete Schlafmaske mit Ohrstöpseln", "Beheizte USB-Augenmaske mit Dampffunktion", "Tiefschlaf-Augenmaske für lückenlose Abdunkelung", "Seiden-Set: Kissenbezug, Schlafmaske, Haargummi"],
+        "nein": ["Domino / Augenmaske – Harlekin bunt", "Augenmaske Teufel", "Kapuzenpullover mit Augenmaske und Fleecefutter", "AloeRosePomegranate Augenmasken · 60 Stück (30 Paar)", "Feuchtigkeitsspendende Augenmaske gegen dunkle Ringe", "ESM Beauty Augenmasken-Massagegerät", "Latex Augenmaske", "Seiden-Organizer für Augenmaske & Schmuck"]
+      }
+    },
+    {
+      "handle": "kleiderstaender",
+      "titel": "Kleiderständer & Garderoben",
+      "tag": "such-kleiderstaender",
+      "ja": "kleiderst(ä|ae)nder|garderobenst(ä|ae)nder|kleiderstange|kleiderbaum|(holz|wand)-?garderobe|garderobenleiste|hutst(ä|ae)nder",
+      "nein": "kinder|haken|puppe|miniatur|t(ü|ue)rgarderobe",
+      "seo_title": "Kleiderständer & Garderoben aus Holz und Metall | LuxeStyle",
+      "seo_desc": "Kleiderständer auf Rollen, drehbar oder mit Ablagen, dazu Garderoben aus Holz und Metall für Flur und Schlafzimmer. Versand in die Schweiz.",
+      "html": "<p>Ein Kleiderständer schafft Platz, wo der Schrank nicht reicht – im Flur, im Schlafzimmer oder im Gästezimmer. Hier findest du Ständer auf Rollen, drehbare Modelle, Ständer mit mehreren Ebenen und Wandgarderoben aus Holz und Metall.</p><h2>Worauf achten?</h2><ul><li><strong>Stabilität:</strong> Für Wintermäntel lohnt ein Ständer mit breitem Fuss.</li><li><strong>Platz:</strong> Rollen helfen beim Umstellen, eine Wandgarderobe spart Bodenfläche.</li><li><strong>Ablage:</strong> Untere Ebenen nehmen Schuhe oder Taschen auf.</li><li><strong>Masse:</strong> Höhe und Breite stehen auf der Produktseite, wenn der Hersteller sie angibt.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+      "kanarien": {
+        "ja": ["Verstellbarer Kleiderständer auf Rollen", "Drehbarer Kleiderständer", "Holz-Garderobe mit Rattan", "Faltbare Garderobenleiste aus Buchenholz", "Wandgarderobe aus Metall für Mäntel und Hüte", "Hutständer mit quadratischem Rohr"],
+        "nein": ["Faltbarer Kleiderständer für Kinder", "Garderobenhaken aus Walnussholz", "Türgarderobe mit Haken – Nagel-frei", "Holz-Haken für Garderobe"]
+      }
+    }
+  ]
+}

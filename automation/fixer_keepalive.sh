@@ -1638,6 +1638,15 @@ if [ -f "$REPO/automation/lieferblock_li.py" ] && [ ! -f /tmp/lieferblock_li_$(d
   touch /tmp/lieferblock_li_$(date -u +%F).stamp
   ( cd "$REPO" && TAGE=2 timeout 1500 bash automation/shopify_schranke.sh python3 automation/lieferblock_li.py --scharf 2>&1 | tail -1 | tee -a /tmp/lieferblock_li.log )
 fi
+# --- Kollektionen für grosse Suchbegriffe (10.10.2026, OpenSEO: «handstaubsauger» 5'400/Mt auf Pos 72 ohne Kollektion,
+#     dropship/SUCHBEGRIFF-KOLLEKTIONEN-2026-10-10.md) — täglich: Neuimporte der letzten 2 Tage bekommen/verlieren den Tag
+#     `such-…` nach automation/data/suchbegriff_kollektionen.json (Ja/Nein auf den Titel), dann Kollektionen angleichen
+#     (Titel, SEO, Regel, 8 Kanäle). Kanarien (59) im Skript vor jedem Lauf.
+if [ -f "$REPO/automation/suchbegriff_kollektionen.py" ] && [ ! -f /tmp/suchbegriff_koll_$(date -u +%F).stamp ] && [ "$(date -u +%H)" -ge 6 ]; then
+  touch /tmp/suchbegriff_koll_$(date -u +%F).stamp
+  ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/suchbegriff_kollektionen.py --scharf 2>&1 | tail -1 | tee -a /tmp/suchbegriff_kollektionen.log
+    timeout 300 python3 automation/suchbegriff_kollektionen.py --kollektionen --scharf 2>&1 | grep -E "NEU|ANGLEICHEN|⚠️" | tee -a /tmp/suchbegriff_kollektionen.log )
+fi
 # --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
 #     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
 #     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).
