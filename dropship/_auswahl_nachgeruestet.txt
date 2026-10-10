@@ -770,3 +770,5 @@
 15453783392641	Ausführung:4+Grösse:10:40+ki	2026-10-10	tarnmuster-skate-613568
 15460702945665	Modell:2:2	2026-10-10	led-stirnlampe-mit-bewegungssensor-627200
 15510325854593	Farbe:2:2	2026-10-10	super-racing-bausteine-us-muscle-car-155840
+15449076859265	Farbe:6:6	2026-10-10	quarz-armbanduhr-fur-herren-602200
+15449079841153	Grösse:5:5	2026-10-10	magnetischer-fliegengitter-vorhang-mit-streife-015554
