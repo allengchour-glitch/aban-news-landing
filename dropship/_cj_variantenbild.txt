@@ -6755,3 +6755,8 @@ gid://shopify/Product/15460667294081	zugeordnet	99	Rundhals-Pullover mit Farbblo
 gid://shopify/Product/15460667326849	zugeordnet	18	Kuscheliger Strickpullover mit Reverskragen
 gid://shopify/Product/15460667359617	zugeordnet	10	Vielseitiger Langarm-Strickpullover mit Rippenmuster
 gid://shopify/Product/15460667392385	zugeordnet	32	Strick-Cardigan mit Knöpfen
+gid://shopify/Product/15460667425153	zugeordnet	80	Damen Rollkragenpullover – Eleganter Strick
+gid://shopify/Product/15460667490689	zugeordnet	54	Cardigan aus Kunstwolle
+gid://shopify/Product/15460667523457	zugeordnet	45	Geripptes Langarmshirt für Damen
+gid://shopify/Product/15460672405889	zugeordnet	10	Bedrucktes Mini-Kleid mit langen Ärmeln
+gid://shopify/Product/15460672438657	zugeordnet	8	Elegantes Strickkleid mit Perlen-Details
