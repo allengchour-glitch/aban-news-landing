@@ -675,3 +675,6 @@
 15455515771265	Farbe:8:8+ki	2026-10-10	haustier-keramik-mundspulbecher-fur-den-hausha-611400
 15502594474369	Ausführung:2:2+ki	2026-10-10	solar-gartenleuchte-mit-warmweissem-licht-993664
 15502593425793	Variante:14+Farbe:2+Grösse:2:56+ki	2026-10-10	multifunktionale-geflochtene-hundeleine-330496
+15502592442753	Farbe:8+Grösse:6+Menge:3:47+ki	2026-10-10	gestreifter-flanell-kissenbezug-162752
+15502586151297	Ausführung:2:2+ki	2026-10-10	fitness-widerstandsband-fur-beintraining-440192
+15502557610369	Motiv:2:2+ki	2026-10-10	kirschbluten-saison-bausteine-modell-623100
