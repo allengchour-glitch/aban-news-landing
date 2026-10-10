@@ -10218,3 +10218,6 @@ gid://shopify/Product/15459761455489	1791605522	ok	3 Shop / 3 CJ / 0 fehlend / 0
 gid://shopify/Product/15459769123201	1791605522	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15459769221505	1791605522	ok	21 Shop / 21 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15459769254273	1791605522	ok	16 Shop / 16 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15459769319809	1791605522	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15459769352577	1791605522	ok	25 Shop / 46 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15459769385345	1791605522	ok	25 Shop / 25 CJ / 0 fehlend / 0 DENY
