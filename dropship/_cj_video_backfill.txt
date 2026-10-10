@@ -812,3 +812,12 @@ gid://shopify/Product/15508716683649	ok	Fressnapf für Katzen & kleine Hunde
 gid://shopify/Product/15509364277633	ok	K9 Metall Schmetterling Nägel
 gid://shopify/Product/15509385085313	ok	Anti-Schling Napf für Haustiere
 gid://shopify/Product/15509520712065	ok	Orthopädisches Schaumstoff-Kissen für Babys
+gid://shopify/Product/15445276197249	kein-video-beim-lieferanten
+gid://shopify/Product/15445277016449	kein-video-beim-lieferanten
+gid://shopify/Product/15445279474049	kein-video-beim-lieferanten
+gid://shopify/Product/15445297136001	ok	Nail Art Pen World Cup
+gid://shopify/Product/15445298774401	kein-video-beim-lieferanten
+gid://shopify/Product/15445299364225	kein-video-beim-lieferanten
+gid://shopify/Product/15445300674945	kein-video-beim-lieferanten
+gid://shopify/Product/15445301428609	kein-video-beim-lieferanten
+gid://shopify/Product/15445798814081	kein-video-beim-lieferanten
