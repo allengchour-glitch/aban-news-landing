@@ -6800,3 +6800,5 @@ keilsandalen-mit-hanfseil-plateau-600200	2606170642001600800	16	14.37	ok	landese
 keile-zehensteg-sandalen-aus-wildleder-618800	2606160526361619400	16	10.55	ok	landeseite
 mules-mit-geschlossener-zehenpartie-618300	2606130020441619100	16	9.75	ok	landeseite
 stoff-hausschuhe-mit-schleife-und-weicher-sohl-629200	2606120110571620400	16	8.53	ok	landeseite
+elegante-sandalette-im-franzosischen-stil-619100	2606110721151619700	16	11.37	ok	landeseite
+schafsfell-sandalen-mit-metallschnalle-639300	2606110214531630000	16	11.37	ok	landeseite
