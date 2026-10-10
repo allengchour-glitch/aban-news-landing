@@ -6988,3 +6988,6 @@ business-freizeitschuh-im-korean-style-620700	2606150608251621700	16	19.06	ok	la
 herren-lederschuhe-im-britischen-stil-631700	2606140116541632300	16	12.81	ok	landeseite
 business-lederschuhe-mit-spitzer-zehe-619500	2606080617061610100	16	15.68	ok	landeseite
 herren-high-top-lederstiefel-mit-spitzer-kappe-612500	2606070654011613400	16	14.78	ok	landeseite
+herren-loafer-aus-weichem-leder-606500	2605300748421607100	16	13.65	ok	landeseite
+glanzende-business-lederschuhe-fur-herren-628800	2605280141291629400	16	13.16	ok	landeseite
+herren-business-schuhe-mit-schnallen-613500	2605250920271614600	16	15.20	ok	landeseite
