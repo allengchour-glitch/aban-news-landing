@@ -6655,3 +6655,12 @@ gid://shopify/Product/15459837116801	zugeordnet	25	Herren-Pullover
 gid://shopify/Product/15459837149569	zugeordnet	96	Langarm-Hemd mit Streifen
 gid://shopify/Product/15459837313409	zugeordnet	4	Polka Dot Armreif
 gid://shopify/Product/15459837346177	zugeordnet	2	Vintage-Ginkgo-Blatt Armband
+gid://shopify/Product/15459837510017	zugeordnet	21	Goldene Kreuzkette
+gid://shopify/Product/15459837575553	zugeordnet	12	Kniebandage für Hunde
+gid://shopify/Product/15459838230913	zugeordnet	18	Robuster Brustgurt für Haustier
+gid://shopify/Product/15459838886273	zugeordnet	16	Hundeleine mit Rückenreflektor
+gid://shopify/Product/15459839279489	zugeordnet	25	Hundegurt zur Fluchtsicherung Medium/Large
+gid://shopify/Product/15459839574401	zugeordnet	11	Outdoor-Hundegurt mit Leinenhalter
+gid://shopify/Product/15459843375489	bild-urls-tot
+gid://shopify/Product/15459845669249	zugeordnet	6	Plüsch-Sesselkissen 60x225 cm
+gid://shopify/Product/15459845833089	zugeordnet	12	V-Ausschnitt 3/4-Ärmel Midi-Kleid mit Tasseln und asymmetris
