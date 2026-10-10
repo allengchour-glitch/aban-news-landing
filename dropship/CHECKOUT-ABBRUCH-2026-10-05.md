@@ -1,5 +1,11 @@
 # Checkout-Abbrüche 21.09.–05.10.2026 — Messung, Hürden, Massnahmen
 
+> ⚠️ **KORREKTUR 10.10.2026** (`dropship/WARENKORB-MAIL-2026-10-10.md`): (1) Der Flow `Vse76a` schickte Mail 1 als ERSTE
+> Aktion (Median 25 s nach Kassenstart), nicht «1 h warten → Mail 1» wie unten in §4 steht; die «Conversion» #1021 bezahlte
+> gerade. Ersetzt durch Flow `XEGbTB` (1 h → Mail 1 → 23 h → Mail 2). (2) Die Körbe 03.10. 02:24/02:30/02:40 waren **eigene
+> Prüfkörbe** (`…@example.com`), die zwei Steakpressplatten-Körbe eine Wegwerf-Adresse — echt waren 2 der «7 fremden».
+
+
 Stand 05.10.2026 ~05:40 UTC. Alle Zahlen aus der Shopify-Admin-API (GraphQL 2026-01, `automation/kaufwille_zeile.gql`),
 ShopifyQL, der Klaviyo-API und einem WebFetch der Live-Produktseite. **Keine Personendaten** — nur Produkte, Beträge,
 Zeiten, Land. Plan: `dropship/FIX-12H-PLAN.md` Punkt 3.

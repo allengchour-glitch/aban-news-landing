@@ -1,0 +1,16 @@
+{
+  "zweck": "Warenkorb-Erinnerung in Klaviyo (10.10.2026, dropship/WARENKORB-MAIL-2026-10-10.md). Der Flow «Abandoned Checkout» Vse76a schickte Mail 1 als ERSTE Aktion, im Median 25 s nach Kassenstart — 2 von 6 Empfängerinnen bezahlten gerade. Prüfer: automation/klaviyo_flow_pruefen.py.",
+  "abbruch_trigger_metriken": {
+    "XhnJPv": "Checkout Started (Shopify)"
+  },
+  "min_wartezeit_minuten": 30,
+  "genau_ein_live_flow_je_trigger": true,
+  "verbotene_saetze": [
+    {"muster": "nur f(ü|ue)r kurze Zeit", "grund": "WELCOME10 läuft bis 31.12.2027 — falsche Verknappung (UWG)"},
+    {"muster": "reserviert", "grund": "Dropshipping reserviert nichts — der Warenkorb ist nur gespeichert"},
+    {"muster": "ß", "grund": "Schweizer Schreibweise: ss"},
+    {"muster": "Hey \\{\\{ ?first_name\\|default:''", "grund": "ohne Vorname steht «Hey ,» — {% if first_name %} benutzen"}
+  ],
+  "stand_datei": "dropship/_klaviyo_flow_stand.json",
+  "max_alter_tage": 7
+}

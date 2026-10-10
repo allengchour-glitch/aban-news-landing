@@ -1,0 +1,62 @@
+{
+ "gemessen": "2026-10-10T08:15:51Z",
+ "quelle": "Klaviyo-Konnektor: get_flows_triggered_by_metric(XhnJPv), get_flow(definition), get_email_template(html, Textteile ohne Stil-Markup) — keine Personendaten",
+ "flows": [
+  {
+   "id": "XEGbTB",
+   "name": "Abandoned Checkout · 1 Std",
+   "status": "live",
+   "trigger_metric": "XhnJPv",
+   "entry": {
+    "type": "time-delay",
+    "minuten": 60
+   },
+   "mails": [
+    {
+     "name": "Email 1",
+     "template_id": "RfQt4V",
+     "nach_minuten": 60,
+     "betreff": "Dein Einkauf wartet auf dich",
+     "text": "<p>{% if first_name %}Hey {{ first_name }},{% else %}Hallo,{% endif %}<br/><br/>dein Warenkorb ist gespeichert. Mit einem Klick bist du wieder an der Kasse – Bezahlen mit TWINT, Karte oder Klarna (Kauf auf Rechnung).</p> <a href=\"{{ event.extra.checkout_url|default:'https://luxestyle.ch' }}\">Jetzt abschliessen</a> <p>Fragen zur Grösse oder Lieferung? Antworte einfach auf diese Mail. Bis gleich, dein LuxeStyle-Team</p> {% unsubscribe 'Abmelden' %}"
+    },
+    {
+     "name": "Email 2",
+     "template_id": "RNefka",
+     "nach_minuten": 1440,
+     "betreff": "Noch unschlüssig? 10% auf deinen Warenkorb",
+     "text": "<h1>-10 % auf deinen Warenkorb</h1><p>{% if first_name %}Hey {{ first_name }},{% else %}Hallo,{% endif %}<br/><br/>noch unschlüssig? Mit diesem Code bekommst du 10 % auf deinen Warenkorb – ohne Mindestbestellwert. Gib ihn einfach an der Kasse ein.</p> WELCOME10 <a href=\"{{ event.extra.checkout_url|default:'https://luxestyle.ch' }}\">Jetzt einlösen</a> <p>30 Tage Rückgabe · Bezahlen mit TWINT, Karte oder Klarna. Bis gleich, dein LuxeStyle-Team</p> {% unsubscribe 'Abmelden' %}"
+    }
+   ]
+  },
+  {
+   "id": "Vse76a",
+   "name": "Abandoned Checkout",
+   "status": "draft",
+   "trigger_metric": "XhnJPv",
+   "seit": "2026-10-10T08:13:07Z",
+   "entry": {
+    "type": "send-email"
+   },
+   "mails": [
+    {
+     "name": "Email 1",
+     "template_id": "TTQSWH",
+     "nach_minuten": 0,
+     "text": "Hey {{ first_name|default:'' }}, dein Warenkorb wartet noch auf dich. Wir haben deine Lieblingsstücke reserviert – aber nicht ewig. Jetzt abschließen"
+    },
+    {
+     "name": "Email 2",
+     "template_id": "TDX7Ux",
+     "nach_minuten": 1440,
+     "text": "Hey {{ first_name|default:'' }}, noch unschlüssig? Hier sind 10 % Rabatt – nur für kurze Zeit. WELCOME10 Jetzt einlösen"
+    }
+   ]
+  },
+  {
+   "id": "UXEjv2",
+   "name": "Abandoned Cart · EN/US",
+   "status": "draft",
+   "trigger_metric": "XhnJPv"
+  }
+ ]
+}
