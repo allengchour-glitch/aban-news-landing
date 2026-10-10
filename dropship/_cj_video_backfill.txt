@@ -905,3 +905,9 @@ gid://shopify/Product/15446268019073	kein-video-beim-lieferanten
 gid://shopify/Product/15446268117377	kein-video-beim-lieferanten
 gid://shopify/Product/15446268150145	kein-video-beim-lieferanten
 gid://shopify/Product/15446268215681	kein-video-beim-lieferanten
+gid://shopify/Product/15446268248449	kein-video-beim-lieferanten
+gid://shopify/Product/15446268346753	kein-video-beim-lieferanten
+gid://shopify/Product/15446268379521	kein-video-beim-lieferanten
+gid://shopify/Product/15446268412289	kein-video-beim-lieferanten
+gid://shopify/Product/15446268477825	kein-video-beim-lieferanten
+gid://shopify/Product/15446268510593	kein-video-beim-lieferanten

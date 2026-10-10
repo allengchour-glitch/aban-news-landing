@@ -665,3 +665,4 @@
 15454109204865	Farbe:2+Grösse:6:12	2026-10-09	wei-es-quadratto-toe-sandal-mit-einsteckerfess-604700
 15517644456321	Farbe:4:4	2026-10-09	smartwatch-outdoor-sport-laufen-502336
 15524854563201	Modell:6+Grösse:2:12	2026-10-09	duschvorhang-mit-blumenmuster-929600
+15525458313601	Variante:2:2+ki	2026-10-10	feuchtigkeitsspendender-lippen-gloss-699520
