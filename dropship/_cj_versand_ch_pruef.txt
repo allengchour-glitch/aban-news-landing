@@ -6917,3 +6917,5 @@ herren-non-slip-casual-beach-sandalen-638800	2605300644021639500	16	11.37	ok	lan
 herren-slip-on-sandalen-fur-jeden-tag-627500	2605250550201628100	16	12.56	ok	landeseite
 herren-casual-sandalen-mit-weicher-sohle-619600	2605190921451610300	16	12.44	ok	landeseite
 rutschfeste-beach-sandalen-fur-herren-618300	2604290917171618900	16	16.04	ok	landeseite
+outdoor-strandsandalen-fur-herren-631000	2604271236531631400	16	11.23	ok	landeseite
+herren-casual-pantoletten-rutschfest-620600	2604271054241621200	16	9.88	ok	landeseite
