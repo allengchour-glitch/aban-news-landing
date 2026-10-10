@@ -2066,6 +2066,8 @@ fi
           QUERY=\"status:active AND created_at:>=\$(date -u -d '3 days ago' +%F)\" MIN_BILDER=1 LIMIT=1500 \
             BERICHT=dropship/AUSWAHL-FEHLT-NEUIMPORTE.md timeout 1200 python3 automation/auswahl_fehlt_messen.py 2>&1 | tail -2; \
           if [ -e dropship/_auswahl_scharf_aus ]; then echo 'SCHARF aus (dropship/_auswahl_scharf_aus)'; exit 0; fi; \
+          if ! timeout 120 python3 automation/auswahl_werte.py --selbsttest > /tmp/auswahl_werte_selbsttest.log 2>&1; then \
+            echo '  ⛔ auswahl_werte Selbsttest rot (KI-Prüfung/Kanarien, /tmp/auswahl_werte_selbsttest.log) — kein SCHARF-Lauf'; exit 0; fi; \
           VORRANG=dropship/_klassen/auswahl-besuchte-seiten.txt SCHARF=1 CAP=150 MAX_FEHLER=3 ZEIT_S=1200 timeout 2400 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -200" 9>&- & )
       if [ -s "$AN" ] && tail -n 30 "$AN" | grep -q "Traceback\|⛔"; then
         echo "$(date -u +%H:%M) ⚠️ auswahl_nachruesten: letzter Lauf mit Fehler ($AN)"
