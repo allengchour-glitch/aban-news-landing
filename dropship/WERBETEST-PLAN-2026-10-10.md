@@ -60,3 +60,5 @@ Täglich: `BUDGET=<ausgegeben> MARGE=19 python3 tools/werbetest_trichter.py sire
 - **19:58 UTC:** Shop zeigt heute 19 bezahlte Klicks (utm_campaign=sirene-test), **alle auf fremden Produkten, 0 auf dem Kleid**. Seit der Messung um ~19:55 sind 3 neue dazugekommen
   → die Produktgruppen-Umstellung wirkt noch nicht (oder ist nicht gespeichert). Die Google-Ads-App zeigt 0 Klicks, das ist Verzögerung (Google: «Berichterstellung erfolgt nicht in Echtzeit»).
   Entscheid bis zum Bild der Produktgruppen: Kampagne pausieren.
+- **Pausiert** (Betreiber bestätigt, ~20:05 UTC). Google-Ads-App zeigte kurz davor 10 Klicks / 262 Anzeigen heute, alle in der Stunde 21–22 Uhr Zeitzone Berlin.
+  Entscheid: Kampagne bleibt pausiert, bis die Produktgruppe nur die 8 Sirène-Zeilen enthält. Andere Produkte nur in einer eigenen Kampagne mit eigenem Budget (Betreiber-Entscheid).
