@@ -6762,3 +6762,4 @@ gid://shopify/Product/15460672405889	zugeordnet	10	Bedrucktes Mini-Kleid mit lan
 gid://shopify/Product/15460672438657	zugeordnet	8	Elegantes Strickkleid mit Perlen-Details
 gid://shopify/Product/15460672471425	zugeordnet	95	Tang-Anzug Top mit 3D-Digitaldruck
 gid://shopify/Product/15460672504193	zugeordnet	16	Damen Strickpullover mit Farbblock-Muster
+gid://shopify/Product/15460672536961	zugeordnet	42	V-Neck Strick-Cardigan mit Knopfleiste
