@@ -74,3 +74,14 @@ das am Testkorb, nicht an der Konfiguration: Im LI-Kontext galt jedes Produkt al
 - Nachmessen am 11.10. mit `google_feedback_wache.py` (täglich im Aufseher). Steht die Zahl nach 48 h noch hoch, braucht es einen Betreiber-Klick im Merchant Center: Versand-Einstellungen neu importieren bzw. die automatische Übernahme prüfen.
 - Profil «Zendrop» (40 Varianten) hat nur eine CH-Zone, LI fehlt dort. Gering, Zendrop-Ware ist Altbestand.
 - **10.10. ~07:30 UTC, Betreiber-Screenshots der App «Google & YouTube» → Einstellungen:** Produktsynchronisierung, «Länder und Sprachen» und **«Versandinformationen» stehen auf «Aktiviert»**. Die automatische Übernahme der Versandzonen ist also an, für den Abgleich ist kein Klick nötig. Produkttitel/-beschreibungen stehen auf «Deaktiviert» und bleiben so (sonst nähme Google die SEO-Titel mit «| LuxeStyle CH»). Nächster Schritt: 11.10. nachmessen. Bleibt «Missing shipping info [LI]» hoch, im Merchant Center unter «Shipping and returns» nachsehen, ob der LI-Service angekommen ist.
+- **10.10. ~07:40 UTC, Betreiber-Screenshot Merchant Center → Shipping and returns:** 4 Regeln, alle «Complete», Land Switzerland (Spalte abgeschnitten):
+  - flat_7.00 CHF, **4–6 Tage**
+  - price_based ×2, **2–5 Tage** (gratis ab CHF 45 / ab CHF 65)
+  - flat_15.00 CHF, **2–5 Tage** (Shopify-Zone «International», Rest der Welt)
+
+  **Die LI-Regel (flat_14.90) fehlt noch**, sie ist nicht synchronisiert. Am 11.10. nachsehen.
+
+  **⚠️ NEUER BEFUND, Lieferzeit:** Google führt 2–6 Tage, die Produktseiten der CJ-Ware sagen «Lieferung 10–20 Werktage» (CJ CN→CH 7–20 Tage). Nur Fortura (CH-Lager) schafft 1–2 Tage.
+  - Das ist ein falsches Versprechen in den Gratis-Einträgen, Kundenärger und ein Risiko «Misrepresentation».
+  - Herkunft der Zeiten klären (Shopify-Versandzeit-Einstellung? App-Vorgabe?) und richtig setzen. Bei gemischter Ware eventuell per `shipping_label` CH-Lager vs. Asien trennen.
+  - Nicht von Hand im Merchant Center ändern, der Sync aus Shopify überschreibt es womöglich.
