@@ -492,6 +492,44 @@ def kassen_lieferdatum():
     return (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
             f"Werktagen → Admin: Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung → «Manuell» + {s.get('empfohlen')} Werktage")
 
+def werbetest():
+    """WERBETEST (10.10.2026, Sidekick-Empfehlung 4 «miss nicht nur Klicks»): solange eine Testkampagne läuft, steht ihr Trichter
+    (Sitzungen → Warenkorb → Kasse → Kauf, ShopifyQL je utm_campaign) in jeder Ampel — mit den Abbruchregeln aus
+    dropship/WERBETEST-PLAN-2026-10-10.md. Ausgaben kennt der Shop nicht (kein Google-Ads-Zugang): CHF-Angabe = Obergrenze
+    Tagesbudget × Tage. Steuerdatei dropship/_werbetest_aktiv.json {kampagne, start, ende, budget_tag, marge}."""
+    try:
+        w = json.load(open(os.path.join(REPO, "dropship", "_werbetest_aktiv.json"), encoding="utf-8"))
+        heute = datetime.date.today()
+        start, ende = datetime.date.fromisoformat(w["start"]), datetime.date.fromisoformat(w["ende"])
+        if heute > ende + datetime.timedelta(days=3):
+            return None
+        sys.path.insert(0, os.path.join(REPO, "tools"))
+        from werbetest_trichter import ql, FELDER
+        tage = max(1, (min(heute, ende) - start).days + 1)
+        r = ql(f"FROM sessions SHOW {FELDER} WHERE utm_campaign = '{w['kampagne']}' SINCE {start.isoformat()} UNTIL today")
+        r = r[0] if r else {}
+        s, k, c, b = (int(r.get(x) or 0) for x in ("sessions", "sessions_with_cart_additions",
+                                                    "sessions_that_reached_checkout", "sessions_that_completed_checkout"))
+        fremd = 0
+        if w.get("handle"):                      # 10.10. 19:00: 10 bezahlte Klicks landeten auf Nagellack, Heizgerät … (Produktgruppe offen)
+            for z in ql(f"FROM sessions SHOW sessions GROUP BY landing_page_path WHERE utm_campaign = '{w['kampagne']}' "
+                        f"SINCE {start.isoformat()} UNTIL today"):
+                if w["handle"] not in (z.get("landing_page_path") or ""):
+                    fremd += int(z.get("sessions") or 0)
+    except Exception as e:
+        return f"WERBETEST: unklar ({type(e).__name__})" if os.path.exists(os.path.join(REPO, "dropship", "_werbetest_aktiv.json")) else None
+    hoechst = tage * float(w.get("budget_tag", 0))
+    regel = ""
+    if b and hoechst / b <= float(w.get("marge", 0)):
+        regel = " → lohnt (Kosten je Kauf ≤ Marge)"
+    elif hoechst >= 30 and not k:
+        regel = " → ⚠️ STOPP-REGEL: ~CHF 30 ohne Warenkorb → Kampagne pausieren"
+    elif tage >= 1 and not s:
+        regel = " → ⚠️ 0 Sitzungen mit dieser utm_campaign: Suffix der finalen URL fehlt oder Anzeigen laufen noch nicht"
+    if fremd:
+        regel += f" · ⚠️ {fremd} Sitzungen auf FREMDEN Produkten → Google Ads: Produktgruppe «Alles andere» ausschliessen"
+    return (f"WERBETEST {w['kampagne']} Tag {tage} (≤ CHF {hoechst:.0f}): {s} Sitz. · {k} Korb · {c} Kasse · {b} Kauf{regel}")
+
 def kategorie_offen():
     """KATEGORIE: N aktive ohne Taxonomie-Kategorie — Stand von automation/kategorie_wache.py (23.09.2026, Task #101).
     Der Shop-Kanal zeigt nur Produkte MIT Kategorie (33'863 «nicht auffindbar» gemessen). Liest den STAND (Datei)."""
@@ -911,7 +949,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
