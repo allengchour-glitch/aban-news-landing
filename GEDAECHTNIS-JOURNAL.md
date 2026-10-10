@@ -55,7 +55,7 @@
 «P0448H Schwarz», «9311 Schwarz · Gr. 37»). **Ursache:** `farbcode_modell` (09.10.) prüft nur Werte OHNE Leerzeichen; der
 Importer-Helfer `ohneCode()` kennt nur Codes mit GROSSBUCHSTABEN vorn — «2350», «646», «2GS8111G» kamen durch.
 **Getan:** EINE Regel `data/farbcode_praefix_regel.json` = `farbcode_praefix.py` (Bestand + Aufseher täglich) = `.mjs` in beiden
-CJ-Importern (Harness `buildFashion` grün); 45 Kanarien, py=js 16'677/0; Bestand mit Rücklesen; Bericht
+CJ-Importern (Harness `buildFashion` grün); 45 Kanarien, py=js 16'677/0; Bestand 193/0 mit Rücklesen (WebFetch: «Schwarz/Aprikose» statt «646 …»); Bericht
 `dropship/FARBCODE-PRAEFIX-2026-10-10.md`. Nebenbei: stale Keepalive-Zeile «GOOGLE-VERSUCH» (A/B vom 29.09., B längst
 nachgezogen) ausgebaut; «Product page unavailable» 49 = Wächter wirkt (352/401 frei), 19 bleiben nach Neuprüfung.
 **Lehren:** (1) Eine Klasse ist erst zu, wenn ALLE Schreibformen eines Lecks geprüft sind — «Code», «Code + Farbe», «Code+Farbe

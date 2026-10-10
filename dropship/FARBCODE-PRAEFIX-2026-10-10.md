@@ -42,7 +42,8 @@
   - 45 Kanarien
   - **py = js über 16'677 Optionen, 0 Abweichungen**
   - Harness-Test `buildFashion()` in beiden Importern: «2350 Black» → «Schwarz», «646 Apricot» → «Aprikose», «GS8111G …/2GS8111G Brown» → «Schwarz/Grau/Braun». Handyhülle «A2337 Black» und «300ml Orange» bleiben unverändert.
-- **Bestand:** scharfer Lauf mit Rücklesen je Option (`productOptionUpdate`, `LEAVE_AS_IS`), Ledger `dropship/_farbcode_praefix.tsv` (Ergebnis unten).
+- **Bestand: 193/0 live** (12:53–13:01 UTC). Jede Option wurde zurückgelesen (`productOptionUpdate`, `LEAVE_AS_IS`), 0 Gerätetitel, 0 Fehler. Ledger `dropship/_farbcode_praefix.tsv`.
+  - **Live geprüft** (WebFetch): `/products/weite-hose-mit-hohem-bund-fur-kleine-grossen-629100` zeigt «Schwarz» und «Aprikose», kein «646».
 - **Wächter:** Block FARBCODE-PRAEFIX im Aufseher (`fixer_keepalive.sh`), täglich.
   - liest denselben Optionen-Export
   - startet nur bei grünem Selbsttest
