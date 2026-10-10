@@ -49,6 +49,27 @@
 
 
 
+## 🈯 «Schwarz» → «Schwarz» ist kein englischer Rest: KI-Prüfung lehnte richtige Übersetzungen ab (2026-10-10, 00:50 UTC, Verbesserungsrunde)
+
+**Gemessen:** 83/177 gemerkte MANUELL-Fälle im Auswahl-Nachrüster = «KI-Übersetzung fehlt/abgelehnt» (7 Tage gesperrt,
+Kundin sieht keine Auswahl). KI-Ledger (309 Listen): 170 ok, 53 Zweitprüfer, 85 harte Regel — davon 61 «englisches
+Restwort». Die Regel lehnt jedes wörtlich übernommene Originalwort ab, ausser `GLEICH_DE`. Gesichtet: meist RICHTIG —
+16× war das Original schon deutsch (CJ liefert «Schwarz», «Grün geblümt», «Dunkelkaffeebraun», «Gepunktet»), 24× ein
+im Deutschen gleich geschriebenes Wort (Wok, Beagle, Pedal, Jacquard, Futon, Hand, Extra …), 4× «Gruen» (Farbprüfung
+sucht «grün»). Zweiter Fehler: eine hart abgelehnte Liste wurde nie gegen die HEUTIGE Regel nachgeprüft, sondern neu
+übersetzt — mit leerem Groq/OpenAI blieb sie hängen.
+
+**Getan:** `auswahl_werte.schon_deutsch()` (Umlaut, exakter eigener Farbwortschatz, Musterwörter, Kompositum ganz aus
+deutschen Teilen mit Farbstamm am Ende — nie «endet auf»: Carrot/Parrot), `GLEICH_DE` +24 (bewusst NICHT: Body, Roland
+= 罗兰 Violett, Pinyin-Reste, Splicing, Crazy, Mason, Macron), «Gruen» → «Grün» in `normalisiere_ki`, Ledger-Nachprüfung
+→ nur noch Zweitprüfer, kein neuer Übersetzer-Aufruf. Gegenprobe: 40/85 bestehen, 0/170 gute kippen; Selbsttest 66/66
+(13 neue Kanarien + Ledger-Probe). Wächter: Aufseher fährt SCHARF nur bei grünem Selbsttest. 83 Fälle aus dem
+7-Tage-Gedächtnis genommen + eigener Lauf → `dropship/AUSWAHL-KI-PRUEFUNG-2026-10-10.md`.
+
+**Lehre:** Eine Regel «gleich wie das Original = unübersetzt» braucht die Frage, in welcher Sprache das Original steht.
+Und eine Ablehnung aus einer änderbaren Regel wird vor dem Neu-Fragen gegen die heutige Regel nachgeprüft — sonst hängt
+das Ergebnis an der Verfügbarkeit eines Modells statt an der Richtigkeit.
+
 ## 🔘 «Variante: Standard» — ein Platzhalter, den die Plattform nicht kennt (2026-10-09, 21:45 UTC, «verbessere mehr»)
 
 **Gemessen:**
@@ -19482,3 +19503,4 @@ Verschoben am 04.10.2026:
 - 2026-10-08 · 👟🧸 **«verbessere feinkataloge» / «saubere trennung»: 5'646 Schuhe nur auf Shopify «Shoes» (Google hat kein Blatt darunter → kategorie_fein kam nie weiter) → `schuhe_fein.py` (13 Klassen, 52/52); CJ-Gruppe stempelte Bausteinen Typ «Spass-Elektronik» + Tag rc (841/1'040 rc nicht ferngesteuert, alle in der RC-Kollektion) → `spielzeug_trennung.py` + Importer-Regel (eine JSON, py=js 1'040/0); 772 Oberklassen per Einzelurteil MIT Zweigwechsel (07.10. verboten → «bleibt»).** «Einig» ≠ «fein»; Gruppen-Stempel ≠ Warenurteil → `dropship/FEINKATALOG-SCHUHE-SPIELZEUG-2026-10-08.md`
 - 2026-10-08 · ⚡ **«mehr verbesserung» (Tag 11 ✅): Startseite lud beim Öffnen 150 Bilddateien / 9'390 KB (sichtbar 2) — Horizon `product-card.js` nahm jedem Karussell-Zweitbild das lazy weg (16 Reihen, `width=832`), Cover immer eager → `mobil_tempo_patch_2.py` (Zweitbild nach Erstbild, sizes = Kartenbreite; Cover lazy ab Sektion 3), vorher per Playwright-`route` getestet; live 38 / 1'008 KB, Scroll 0 leer; Wächter `startseite_bildlast.mjs`.** Server-HTML ≠ DOM; Bilder je URL zählen → `dropship/MOBIL-TEMPO-2-2026-10-08.md`
 - 2026-10-08 · 🗄️ **Verbesserungsrunde: CJ-Gruppe «Büro & Home Office» stempelt alles als Google «Office Supplies» (11/11 Neuimporte in 4 h: Bluetooth-Tastatur, Maus, Diskettenlaufwerk, Tischtennis-Kleber, Golf-Adventskalender; KI verfeinert nur innerhalb der Oberklasse) → `data/buero_korb.json` für Importer `bueroKorb()` + Umzug, Kanarien 120/120, py=js 51'586/0, 13/0 (13/13 zurückgelesen).** Neue CJ-Gruppe = möglicher Sammelkorb; Log-Fehler nur mit aktuellem Zeitstempel → `dropship/GOOGLE-BUERO-SAMMELKORB-2026-10-08.md`
+- 2026-10-08 · 💎 **«weiter sauber machen»: 41 Titel «Leder/Wolle/Seide» bei PU/Acryl/Polyester im eigenen Text → `material_widerspruch.py` 41/0; 622 aktive mit «Diamant» (teuerstes CHF 150.90 Moissanit) → Regel `diamant` in `data/versprechen_regel.json` (Strass/Zirkonia, Dativ+Einzahl, Vergleich/Form/Painting/Werkzeug/Karat bleiben; 55 Kanarien, py=js 616/0) 212/0; Live-Check fand Bild-Alts mit altem Titel: 11'730 an 1'604 Produkten (u. a. «& Blutdruckmessung») → Wächter liest Alts (817/0), `alt_titel_abgleich.py` täglich (Alt-Titel := Titel); Adressen 155 mit 301 (`handle_messversprechen.py` + diamant/leder).** Ein Name steht an sechs Stellen; Ist-Abgleich statt Ledger-Kette → `dropship/SAUBER-MATERIAL-DIAMANT-ALT-2026-10-08.md`

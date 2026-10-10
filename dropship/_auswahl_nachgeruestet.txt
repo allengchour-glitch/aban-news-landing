@@ -666,3 +666,7 @@
 15517644456321	Farbe:4:4	2026-10-09	smartwatch-outdoor-sport-laufen-502336
 15524854563201	Modell:6+Grösse:2:12	2026-10-09	duschvorhang-mit-blumenmuster-929600
 15525458313601	Variante:2:2+ki	2026-10-10	feuchtigkeitsspendender-lippen-gloss-699520
+15500487983489	Farbe:3:3+ki	2026-10-10	mini-heizplatte-497152
+15453894279553	Variante:2:2+ki	2026-10-10	herzschlag-kissen-fur-hund-katze-600500
+15500930220417	Farbe:8:8+ki	2026-10-10	rundes-kurbis-kissen-handgemacht-994240
+15500261982593	Ausführung:4:4+ki	2026-10-10	lumbar-kissenbezug-620000
