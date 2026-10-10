@@ -57,3 +57,44 @@
 
 - Für die 30 rohen Optionen bräuchte es Musternamen pro Set (Bild ansehen: «Mützen-Print» statt «Hat Print»). Das wäre eine eigene Runde mit Sichtprüfung.
 - Positionen «familien weihnachtspyjama» in 4 Wochen nachmessen (Search Console).
+
+## Runde 2 (10.10. ~13:45–14:00 UTC, «weiter»): eigene Kollektion zum Suchbegriff
+
+**Gemessen** (OpenSEO, Schweiz/de, ~12 Credits):
+
+| Suchbegriff | Okt. 2025 | Nov. 2025 | Dez. 2025 | KD |
+|---|---|---|---|---|
+| «weihnachtspyjama» | 1'000 | 3'600 | 2'900 | 0 |
+| «weihnachtspyjama familie» | 590 | 1'600 | 1'000 | 0 |
+| «partner pyjama» | 260 | 480 | 390 | 0 |
+
+- In den Vorjahren lag «weihnachtspyjama» im November bei bis zu 4'400 Suchen.
+- Eine eigene Seite zum Begriff gab es nicht. «Weihnachten 🎄» (339 Artikel) nennt Pyjamas nur im Fliesstext.
+
+**Getan:**
+- **Neue Kollektion `/collections/weihnachtspyjama-familie`** «Weihnachtspyjamas für die ganze Familie».
+  - Eintrag in `automation/data/suchbegriff_kollektionen.json`, Tag `such-weihnachtspyjama`, 7 Ja- und 7 Nein-Kanarien (162/162 gesamt).
+  - **Ja-Regel:** Pyjama-/Hausanzug-Wort UND Weihnachts- oder Familienwort, oder Weihnachten UND Familie/Partnerlook.
+  - **Nein-Regel:** Hund/Katze, Kostüm, Tasse, Deko, Socken.
+  - 30 aktive Sets getaggt, veröffentlicht, SEO-Titel «Weihnachtspyjama für die Familie & Partnerlook».
+  - Seitentext mit «Worauf achten?»: Grösse je Person, Passform, Material, Lieferzeit. Die Lieferzeit ist ehrlich angegeben: 10–20 Werktage, «bis Mitte November bestellen», wie im Weihnachts-Text.
+  - **Live** (WebFetch): H1, «30 Artikel», Text.
+- **Interne Links:**
+  - «Weihnachten 🎄» verlinkt die Kollektion zweimal: im Satz über die Pyjamas und in «Mehr Ideen». Die Vorlage `saison_texte_2026_10_08.py` ist mitgezogen.
+  - «Alle Kategorien» neu gebaut (386).
+- **Wächter:** Der Aufseher-Lauf von `suchbegriff_kollektionen.py` (täglich, Neuimporte) nimmt die Regel automatisch mit.
+- **Auswahl der 30 Sets geprüft:** 11 waren noch roh. Zwei Regeln waren zu streng bzw. fehlten:
+  - **Zahlenpaar:** «Rot-Kinder 3 4» und «White-Baby 60 0to3M» fielen durch. Ein Zahlenpaar zählt jetzt nur, wenn die Übersetzung es NEU erzeugt.
+  - **Artikelnummer vor allen Werten:** Dieselbe reine Nummer («5562-Herren M, 5562-Baby 3») fällt weg, sie unterscheidet nichts.
+  - **Codes:** Buchstaben+Ziffern-Codes («SD60-Dad 3XL» → «SD 60 · Papa 3XL») werden abgelehnt.
+  - Danach **+4 Sets** (gesamt 17/0) und **+3 Faktenblock-Zeilen** (gesamt 24/0). Gestrichen werden auch deutsche Rollen, wenn die Wahl schon umgebaut ist. Kanarien 27/27.
+
+**Offen:** 7 der 30 Sets in der Kollektion zeigen noch Rohwerte:
+- 3× Lieferanten-Kennung «JJF…»
+- «Hat Print-…»
+- «Picture Color-BOY 3 to 4Y»
+- «Color Lighting Chain»
+- «Mushroom Hat»
+- «Crawling Suit»
+
+Sie brauchen Musternamen nach Sichtprüfung des Bildes, weil die Kennung das Muster unterscheidet. Nachmessen der Positionen «weihnachtspyjama» Mitte November (Search Console).

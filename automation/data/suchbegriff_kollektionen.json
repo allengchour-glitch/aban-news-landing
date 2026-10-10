@@ -286,6 +286,37 @@
           "Auto-Kofferraum-Organizer"
         ]
       }
+    },
+    {
+      "handle": "weihnachtspyjama-familie",
+      "titel": "Weihnachtspyjamas für die ganze Familie",
+      "tag": "such-weihnachtspyjama",
+      "ja": "(?=.*(pyjama|schlafanzug|hausanzug|homewear|loungewear|nachtw(ä|ae)sche))(?=.*(weihnacht|christmas|xmas|\\belch|rentier|santa|nikolaus|schneemann|lebkuchen|familie|partnerlook|eltern|mutter|vater))|(?=.*(weihnacht|christmas|xmas))(?=.*(familie|partnerlook|eltern))",
+      "nein": "hund|katze|haustier|puppe|kost(ü|ue)m|tasse|keramik|deko|kugel|kerze|stoffpuppe|socken",
+      "seo_title": "Weihnachtspyjama für die Familie & Partnerlook | LuxeStyle",
+      "seo_desc": "Weihnachtspyjamas im Partnerlook für Papa, Mama, Kinder und Baby: Elch, Karo, Streifen und Weihnachtsbaum. Versand in die Schweiz und nach Liechtenstein.",
+      "html": "<p>Gleiche Pyjamas für die ganze Familie – für den Weihnachtsmorgen, das Familienfoto oder als Geschenk. Die Sets gibt es in Grössen für Papa, Mama, Kinder und Baby, meist im selben Muster: Elch, Karo, Streifen oder Weihnachtsbaum.</p><h2>Worauf achten?</h2><ul><li><strong>Grösse:</strong> Jede Person wählt ihre eigene Grösse im Auswahlfeld («Papa M», «Mama S», «Kind 4Y»). Die Mass-Tabelle steht auf der Produktseite.</li><li><strong>Passform:</strong> Asiatische Konfektion fällt oft kleiner aus – im Zweifel eine Nummer grösser.</li><li><strong>Material:</strong> Baumwolle und Baumwollmischungen sind atmungsaktiv, Fleece und Flanell wärmen mehr. Das Material steht bei jedem Set.</li><li><strong>Lieferzeit:</strong> Die meisten Sets kommen per Direktversand in 10–20 Werktagen. Wer sicher vor Weihnachten liefern lassen will, bestellt am besten bis Mitte November.</li></ul><p>Rückgabe innerhalb von 30 Tagen, Bezahlung mit TWINT, Karte oder Klarna.</p>",
+      "kanarien": {
+        "ja": [
+          "Weihnachts-Pyjama für die ganze Familie",
+          "Kariertes Familien-Pyjama-Set mit Hirschgeweih",
+          "Weihnachts-Homewear im Partnerlook",
+          "Weihnachts-Pyjama für Mutter & Tochter",
+          "Dino-Weihnachtsbaum-Pyjama für die ganze Familie",
+          "Weihnachts-Partnerlook Blau-Weiss Gestreift",
+          "Familien-Weihnachtsanzüge mit Streifen",
+          "Weihnachtsbaum-Print Hausanzug"
+        ],
+        "nein": [
+          "Keramiktasse für Paare – Weihnachtsmotiv",
+          "Weihnachts-Hundepyjama mit Rentier",
+          "Damen Pyjama aus Seide",
+          "Weihnachtskugeln Set 24 Stück",
+          "Pyjama-Set für Damen mit Spitze",
+          "Weihnachtsmann Kostüm für Erwachsene",
+          "Weihnachtssocken für die ganze Familie"
+        ]
+      }
     }
   ]
 }

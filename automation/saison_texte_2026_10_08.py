@@ -37,12 +37,13 @@ TEXTE = {
     "weihnachten-2026": dict(
         kopf=("<p>Weihnachten 2026 bei LuxeStyle: rund 250 Artikel, die du heute bestellen kannst, die meisten unter CHF 30. Den grössten Teil "
               "macht die Deko aus: LED-Kerzen, Glocken mit Tannenzweig, Girlanden, Christbaumschmuck zum Selbermachen und Stuhlhussen im "
-              "Schneemann-Look. Dazu kommen Weihnachtspullover, Hoodies und Pyjamas im Partnerlook für die ganze Familie, Kissenbezüge fürs "
+              "Schneemann-Look. Dazu kommen Weihnachtspullover, Hoodies und <a href=\"/collections/weihnachtspyjama-familie\">Pyjamas im Partnerlook für die ganze Familie</a>, Kissenbezüge fürs "
               "Sofa und für Hund und Katze Halsbänder mit Schleife, Spielzeug und ein Countdown-Kalender.</p>"
               "<h2>Rechtzeitig bestellen</h2><p>Viele Artikel kommen per Direktversand. Die genaue Lieferzeit steht auf jeder Produktseite. "
               "Wer alles bis Weihnachten zu Hause haben will, bestellt am besten bis Mitte November.</p>"
               + mehr(("/collections/geschenke-fuer-sie", "Geschenke für sie"), ("/collections/geschenke-fuer-ihn", "Geschenke für ihn"),
                      ("/collections/geschenke-fuer-kinder", "Geschenke für Kinder"), ("/collections/adventskalender", "Adventskalender"),
+                     ("/collections/weihnachtspyjama-familie", "Weihnachtspyjamas für die Familie"),
                      (R + "weihnachtsgeschenke-2026-schweiz-ideen", "Ratgeber: Weihnachtsgeschenke 2026"))
               + VERSAND),
         seo="Weihnachtsdeko, Weihnachtspullover und Familien-Pyjamas, Kissenbezüge und Geschenke für Hund und Katze. Rechtzeitig bestellen, Versand in die Schweiz."),
