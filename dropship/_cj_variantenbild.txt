@@ -6791,3 +6791,7 @@ gid://shopify/Product/15460759470465	zugeordnet	9	Kleides mit Tasseln
 gid://shopify/Product/15461731959169	zugeordnet	15	Lockere Herren-Hemd
 gid://shopify/Product/15461979488641	zugeordnet	30	Lauflernschuhe mit LED-Licht
 gid://shopify/Product/15461979554177	zugeordnet	24	Fröhliche Kinder-Regenstiefel
+gid://shopify/Product/15461979586945	zugeordnet	72	Regenstiefel für Kinder mit Tier-Motiven
+gid://shopify/Product/15461979685249	zugeordnet	30	Warme Britische Kinder-Stiefeletten mit Fleece
+gid://shopify/Product/15461979783553	zugeordnet	24	Niedliche Anti-Rutsch Kinder-Regenstiefel
+gid://shopify/Product/15461979849089	zugeordnet	18	Baby Lauflernschuhe mit Klettverschluss
