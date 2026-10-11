@@ -60,7 +60,7 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KI-Sichtbarkeits-Audit — selbst prüfen, ob ChatGPT &amp; Co. dich nennen · aban news</title>
+<title>KI-Sichtbarkeits-Audit — nennen ChatGPT &amp; Co. dich? · aban news</title>
 <meta name="description" content="Das KI-Sichtbarkeits-Audit: ein anpassbares Workbook, mit dem du in ~2 Stunden selbst prüfst, ob ChatGPT, Perplexity &amp; Google AI deine Firma nennen — plus 90-Tage-Maßnahmenplan. Einmalig, kein Abo.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/ki-sichtbarkeit-audit.html">

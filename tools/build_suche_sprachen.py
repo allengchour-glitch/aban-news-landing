@@ -23,7 +23,7 @@ SPRACHEN = {
     "en": {
         "datei": "en/search.html",
         "lang": "en",
-        "titel": "Search — find anything on abannews.com | aban",
+        "titel": "Search — find anything on abannews.com | aban news",
         "beschreibung": "Search all AI guides, tools and explainers on abannews.com. Fast full-text search, instant results.",
         "ogtitel": "aban search — find anything",
         "ogbeschreibung": "Fast full-text search across every AI guide and tool on abannews.com.",
@@ -50,7 +50,7 @@ SPRACHEN = {
     "fr": {
         "datei": "fr/recherche.html",
         "lang": "fr",
-        "titel": "Recherche — trouvez tout sur abannews.com | aban",
+        "titel": "Recherche — trouvez tout sur abannews.com | aban news",
         "beschreibung": "Cherchez dans tous les guides IA, outils et explications d'abannews.com. Recherche plein texte rapide, résultats immédiats.",
         "ogtitel": "Recherche aban — trouvez tout",
         "ogbeschreibung": "Recherche plein texte rapide dans tous les guides IA et outils d'abannews.com.",
@@ -77,7 +77,7 @@ SPRACHEN = {
     "it": {
         "datei": "it/ricerca.html",
         "lang": "it",
-        "titel": "Ricerca — trova tutto su abannews.com | aban",
+        "titel": "Ricerca — trova tutto su abannews.com | aban news",
         "beschreibung": "Cerca in tutte le guide IA, gli strumenti e le spiegazioni di abannews.com. Ricerca full-text veloce, risultati immediati.",
         "ogtitel": "Ricerca aban — trova tutto",
         "ogbeschreibung": "Ricerca full-text veloce in tutte le guide IA e gli strumenti di abannews.com.",
@@ -119,7 +119,7 @@ def ersetze(html, alt, neu, wo):
 def baue(code, cfg, vorlage):
     h = vorlage
     h = ersetze(h, '<html lang="de">', f'<html lang="{cfg["lang"]}">', "html lang")
-    h = ersetze(h, "<title>Suche — alle Inhalte von abannews.com durchsuchen | aban</title>",
+    h = ersetze(h, "<title>Suche — alle Inhalte von abannews.com durchsuchen | aban news</title>",
                 f"<title>{cfg['titel']}</title>", "title")
     h = ersetze(h, '<meta name="description" content="Durchsuche alle Inhalte von abannews.com: '
                    'KI-Ratgeber, Tools, Kaufberater und mehr. Schnelle Volltextsuche, sofort Ergebnisse '
