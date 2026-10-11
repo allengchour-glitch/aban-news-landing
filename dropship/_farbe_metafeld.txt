@@ -452,3 +452,12 @@ gid://shopify/Product/16613404410247	Transparent
 gid://shopify/Product/16613792383367	Marineblau
 gid://shopify/Product/16613793202567	Beige
 gid://shopify/Product/16613794447751	Braun
+gid://shopify/Product/16614811500935	Schwarz
+gid://shopify/Product/16614818611591	Braun
+gid://shopify/Product/16614825099655	Schwarz
+gid://shopify/Product/16614835552647	Schwarz
+gid://shopify/Product/16614835847559	Schwarz
+gid://shopify/Product/16614837780871	Schwarz
+gid://shopify/Product/16614856917383	Schwarz
+gid://shopify/Product/16614857015687	Violett
+gid://shopify/Product/16614874743175	Khaki
