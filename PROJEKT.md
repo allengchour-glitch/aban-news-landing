@@ -84,6 +84,30 @@
   Dollar-Index 7 T. Verzug (FRED wöchentlich). Tests: pilot 76, cockpit 94, profit 40, sammler 44, binance 21, ki_bot 44 — alle
   Änderungen mit Gegenprobe (alter Code fällt durch). **Falle:** `pkill -f` erneut eigene Shell getroffen → PID nehmen.
 
+## 📣 2026-10-10/11 — Telegram-Call-Gruppen kopieren + Code-Prüfung Teil 3 (`tools/trading/krypto_bot/calls_*.py`)
+- **User: «habe 2 Telegramm-Gruppen für Calls, kannst du das kopieren».** Gebaut in Stufen (Ehrlichkeit vor Kopieren):
+  `calls_leser.py` (Telethon 1.45 mit DEM Nutzer-Konto — ein Bot kann fremde Gruppen nicht lesen; api_id/hash von
+  my.telegram.org, `--login`, `--gruppen`, `--verlauf`, `--live`; speichert nur Text/Zeit/IDs, auch Bearbeitungen und
+  Löschungen; Session = Vollzugang → gitignored), `calls_parser.py` (Regeln für EN/DE/Emoji/Dezimalkomma/Ziele untereinander/
+  1000PEPE/Markt; Erfolgsmeldungen ≠ Call; optional Claude-Rückfall `CALLS_CLAUDE=1`, nur ablesen), `calls_pruefung.py`
+  (jeden alten Call mit Binance-15m-Kerzen nachspielen: Einstieg +1 Min, Zone 24 h, Stop sonst 10 %, Ziele gleich verteilt,
+  7 Tage, Stop vor Ziel, Kosten; «kopierwürdig» nur ≥ 30 Calls + beide Hälften im Plus + ≥ 90 % von 200 zeitversetzten
+  Kopien; bearbeitete Calls zählen in der ERSTEN Fassung, gelöschte zählen mit), `calls_kopierer.py` (Schatten immer;
+  `CALLS_MODUS=testnetz|echtgeld`; Echtgeld nur bestandene Gruppe + `CALLS_ECHTGELD_GRUPPEN` + Pilot-Doppelfreigabe; Stop
+  sofort, sonst SOFORT schliessen; TP als `TAKE_PROFIT_MARKET` quantity+reduceOnly; 1 % Risiko, Hebel ≤ 2×, 25 %/1000 USDT
+  Deckel, 3 offen, je Coin einer; BTC/ETH nur Schatten; Not-Aus schliesst kopierte Calls mit), `calls.bat`, Cockpit-Feld,
+  `/calls`, Ampel «mitlesen» (Lebenszeichen `data/calls/leser-lebt.json`). Kerzen: data-api.binance.vision geht aus der
+  Cloud (fapi nicht). **Falle:** `testumgebung.schalter_umbiegen()` biegt jetzt auch `calls_kopierer.BUCH` um — sonst
+  ändern offene Calls des Nutzers den Not-Aus-Selbsttest (→ täglicher Lauf handelt nicht). **Offen:** Der User muss auf
+  seinem PC einloggen + `--verlauf` + `calls_pruefung.py` laufen lassen; Format seiner Gruppen unbekannt → erste Ergebnisse
+  ansehen, Parser ggf. nachschärfen.
+- **Code-Prüfung Teil 3 (Workflow, Sitzungslimit-Abbrüche, mit resumeFromRunId fortgesetzt):** behoben u. a. Cockpit liest
+  `HKCU\Environment` (setx) statt Startumgebung (Not-Aus prüfte nach Echtgeld-Wechsel das alte Testnetz-Konto!), Auftrags-
+  Kennung + Nachfragen bei 503/Netz (Binance: «Unknown error» ist KEIN Fehlschlag), Telegram-Rückstau auch bei Netz-Ausfall
+  beim Start nie ausführen, /stop vor /lage, ETH-Sparplan nur mit `ETH_SPARPLAN_BETRAG` (kaufte sonst wegen Spot-Schlüssel),
+  `start-auto.bat auto` (endete nie → Aufgabenplanung übersprang Folgetage), −4161, Pfand = isolatedWallet, DST-Mitternacht.
+  **cmd-Falle:** In `(… & %X% & exit /b 1)` darf X NICHT `rem` sein (frisst den Rest der Zeile samt «)») → `cd .` als No-op.
+
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,
   gesetze-im-internet.de, Bundesbank, europa.eu): AHV/IV/EO AN 5,3 % · Selbständige 10,0 % mit sinkender Skala 10'100–60'500
