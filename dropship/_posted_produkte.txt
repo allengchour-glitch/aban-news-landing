@@ -204,3 +204,4 @@ slug:eleganter-strickpullover-mit-farbstreifen
 slug:trolli-dracula-fga49350
 slug:bruder-mb-sprinter-ambulanz-m-fga02676
 name:brudermbsprinterambulanzm
+slug:automatischer-futter-und-wasserspender-fur-hau

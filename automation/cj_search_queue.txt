@@ -766,11 +766,11 @@
 #done search:hot water bottle silicone
 #done search:thermal underwear set women
 #done search:thermal underwear set men
-search:ski base layer thermal
-search:advent wreath artificial
-search:christmas wreath door decoration
-search:ugly christmas sweater
-search:christmas sweater women knitted
-search:christmas sweater men knitted
-search:rechargeable hand warmer usb
-search:hand warmer power bank
+#done search:ski base layer thermal
+#done search:advent wreath artificial
+#done search:christmas wreath door decoration
+#done search:ugly christmas sweater
+#done search:christmas sweater women knitted
+#done search:christmas sweater men knitted
+#done search:rechargeable hand warmer usb
+#done search:hand warmer power bank
