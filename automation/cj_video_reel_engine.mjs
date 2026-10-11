@@ -1,4 +1,5 @@
-/* cj_video_reel_engine.mjs (v2, 22.09.2026) — CJ-Produktvideos → gebrandete 9:16-Reels → Reel-Queue.
+/* cj_video_reel_engine.mjs (v3, 11.10.2026: Schnitt, Hook und Fremdmaterial-Tor über automation/reel/schnitt.py, Stimme danach
+ *   gelegt — make_reel.sh ist im Motor nicht mehr im Pfad) — CJ-Produktvideos → gebrandete 9:16-Reels → Reel-Queue.
  *
  * WARUM v2 (gemessen 22.09.): Die v1 suchte «tag:video-hit MIT VIDEO-media» — der Tag steht an JEDEM
  * Import, echte Videos hatten 144 von 34'824 Produkten; der Motor meldete seit Wochen «neue Reels: 0».
@@ -26,6 +27,7 @@ import { takt as cjTakt } from './cj_takt.mjs';
 import { catKey, tagsFor, balanceByCategory } from './lib/reel-category.mjs';
 import { hashtagText } from './lib/hashtags.mjs';
 import { seen as postSeen, produktGepostet } from './post_guard.mjs';
+import { reelBauen } from './reel/schnitt_motor.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const BATCH = parseInt(process.env.BATCH || '3', 10);
@@ -39,11 +41,7 @@ const KEINVIDEO = 'dropship/_cj_reel_kein_video.txt';      // pid → CJ hat kei
 // des Tages (HOOK < 3,0). Jetzt: Einstieg = bewegteste Sekunde der Quelle (reel/hook_start.py), fertiges Reel durchs Tor,
 // Durchgefallene kommen nicht in die Queue, sondern hierher (pid\tdatum\tgründe) und werden nicht erneut gefragt.
 const TOR_ABGELEHNT = 'dropship/_reel_tor_abgelehnt.txt';
-function hookStart(src, fallback) {
-  try { const r = JSON.parse(execFileSync('python3', ['automation/reel/hook_start.py', src], { encoding: 'utf8', timeout: 180000 }).trim().split('\n').pop());
-    if (typeof r.start === 'number') return r; } catch {}
-  return { start: fallback };
-}
+// 11.10.2026: den Einstieg wählt jetzt schnitt.py selbst (Intro-Sperre, Hook-Fenster, Kick) — hook_start.py ist nicht mehr im Pfad.
 function torPruefen(datei, preis) {
   const t = spawnSync('python3', ['automation/meisterwerk_tor.py', datei], { encoding: 'utf8', timeout: 240000, env: { ...process.env, PREIS_SOLL: preis.toFixed(2) } });
   let g = []; try { g = JSON.parse((t.stdout || '').trim().split('\n').pop()).gruende || []; } catch { g = [`nicht messbar: ${(t.stderr || '').slice(-120)}`]; }
@@ -164,7 +162,8 @@ function thema(t) {
   if (/kind|baby|kleinkind|spielzeug|lern/.test(s)) return 'kinder';
   if (/lampe|licht|\bled\b|deko|vase|kerze|diffuser|aroma|kissen|decke|organizer|regal/.test(s)) return 'home';
   if (/beamer|projektor|kopfhörer|kopfhoerer|lautsprecher|ladegerät|kabel|usb|bluetooth|smart|kamera|drohne|gadget|tracker|hülle|huelle/.test(s)) return 'gadget';
-  if (/serum|\bgua\b|roller|creme|pflege|haar|nagel|wimper|augenbraue|makeup|make-up|massage|beauty|glätt/.test(s)) return 'beauty';
+  // 11.10.2026: «Multicolor Lidschatten-Palette» fiel in «allgemein» → Hook «Wusstest du das schon?» auf einem Make-up-Reel
+  if (/serum|\bgua\b|roller|creme|pflege|haar|nagel|wimper|augenbraue|makeup|make-up|massage|beauty|glätt|lidschatten|lippenstift|lipgloss|lippen|rouge|mascara|eyeliner|lidstrich|parfum|palette|puder/.test(s)) return 'beauty';
   if (/kette|ohrring|ohrhänger|armreif|armband|\bring\b|schmuck|anhänger|uhr/.test(s)) return 'schmuck';
   if (/kleid|rock\b|bluse|hose|jacke|mantel|hoodie|shirt|hemd|pullover|cardigan|strick|sneaker|schuh|stiefel|sandal|ballerina|tasche|rucksack|gürtel|schal|cap\b|mütze/.test(s)) return 'mode';
   return 'allgemein';
@@ -187,6 +186,9 @@ function hookFuer(th, pid, title = '') {
   // Tierart beachten (22.09.: «Für die Katze, die alles darf» stand auf dem Futterspender für Hunde)
   if (/hund|welpe|gassi/i.test(title)) list = list.filter(h => !/katze/i.test(h));
   else if (/katze|kater|kitten/i.test(title)) list = list.filter(h => !/hund|gassi/i.test(h));
+  if (!list.length) list = HOOKS.allgemein;
+  // 11.10.2026: schnitt.py nimmt bis 31 Zeichen (Bild 0 = LUXESTYLE + Hook ≤ 40); über 30 liest sich der Hook im Band schwer
+  list = list.filter(h => h.length <= 30);
   if (!list.length) list = HOOKS.allgemein;
   const gew = (L.hooks || {});                                   // {hookText: score}
   const best = [...list].sort((a, b) => (gew[b] || 0) - (gew[a] || 0));
@@ -338,8 +340,9 @@ if (process.env.NEU_RENDERN === '1') {
         let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
         const mw = musikWahl(thema(k.title), pid), musik = mw.datei;
         st = stimmeBauen(pid, th, hook, k, '');
-        const hs = hookStart(src, Math.min(2, dur / 4 || 0));
-        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(hs.start), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
+        const rb = reelBauen({ src, out, musik, einstieg: mw.start, titel: z1, titel2: z2, preis: `CHF ${k.price.toFixed(2)}`, hook, stimme: st });
+        if (!rb.ok) { console.log(`   ${pid}: schnitt Exit ${rb.code} — ${rb.grund}`); continue; }
+        st = rb.st;
         // OHNE_PUSH = Sichtpruefung: nichts veroeffentlicht → auch kein Verlaufseintrag (sonst zaehlt die Lernschleife Test-Renders)
         if (process.env.OHNE_PUSH !== '1') musikMerken(`cjreel-${pid}`, mw, thema(k.title), st);
         if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log(`   ${pid}: Render fehlgeschlagen`); continue; }
@@ -527,9 +530,14 @@ for (const k of reihe) {
     const mw = musikWahl(th, k.pid), musik = mw.datei;
     console.log(`   Musik: ${musik} ab ${mw.start}s [${th}]`);
     st = stimmeBauen(k.pid, th, hook, k, benefit);
-    const hs = hookStart(src, Math.min(2, dur / 4 || 0));
-    console.log(`   Einstieg: ${hs.start}s (Hook Quelle ${hs.hook_quelle ?? '?'} · Standard ${hs.start_standard ?? '?'}s = ${hs.hook_standard ?? '?'})`);
-    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(hs.start), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
+    const rb = reelBauen({ src, out, musik, einstieg: mw.start, titel: z1, titel2: z2, preis: `CHF ${k.price.toFixed(2)}`, hook, stimme: st });
+    if (!rb.ok) {
+      console.log(`   ⛔ schnitt Exit ${rb.code}: ${rb.grund} → nicht in die Queue`);
+      // 3 = Quelle ungeeignet, 4 = Ausgabetor: dauerhaft → Ledger (nicht erneut fragen); 1 = Fehler (OCR, Musik) → vorübergehend
+      if (rb.code === 3 || rb.code === 4) fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\tschnitt ${rb.code}: ${rb.grund}\n`);
+      continue;
+    }
+    st = rb.st;
     if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log('   Render fehlgeschlagen'); continue; }
     const tor = torPruefen(out, k.price);
     if (tor.rc !== 0) {

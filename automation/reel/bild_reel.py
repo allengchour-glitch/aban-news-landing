@@ -28,6 +28,16 @@ BOX_W, BOX_H, MITTE_Y = 1080, 1060, 740      # Produktfeld 210–1270 (Kopf 200�
 BLENDE = 0.35
 
 
+def freisteller(im, rand=0.06, schwelle=0.80):
+    """Katalog-Freisteller = weisser Grund: am Bildrand sind mindestens `schwelle` der Pixel fast weiss (alle Kanaele >= 235).
+    REEL-REGELN Regel 1 (03.06.2026): «KEINE weissen Katalog-Freisteller». Gemessen 11.10. am Sneaker-Reel: 0–4 s und 9–11 s
+    zeigten Freisteller auf weissem Grund; die Model-Fotos dazwischen nicht."""
+    g = im.convert("RGB").resize((120, 120))
+    b = max(1, int(120 * rand)); px = g.load()
+    rahmen = [px[x, y] for y in range(120) for x in range(120) if x < b or x >= 120 - b or y < b or y >= 120 - b]
+    return sum(1 for p in rahmen if min(p) >= 235) / len(rahmen) >= schwelle
+
+
 def produkt(handle):
     d = gql('query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id title status onlineStoreUrl tags '
             'priceRangeV2{minVariantPrice{amount}} media(first:10){nodes{mediaContentType ... on MediaImage{image{url width height}}}} } }',
@@ -42,6 +52,11 @@ def produkt(handle):
     bilder = [b for b in bilder if (lambda n: n is None or n < FREMDTEXT_GRENZE)(fremdtext_woerter(b["url"]))]
     if len(bilder) < vorher:
         print(f"  {handle}: {vorher - len(bilder)} Bild(er) mit montiertem Text ausgelassen")
+    # 11.10.2026: Katalog-Freisteller (weisser Grund) raus — REEL-REGELN Regel 1. Gilt vor dem Mindestwert von 2 Bildern.
+    vorher = len(bilder)
+    bilder = [b for b in bilder if not freisteller(lade(b["url"]))]
+    if len(bilder) < vorher:
+        print(f"  {handle}: {vorher - len(bilder)} Freisteller (weisser Grund) ausgelassen")
     if len(bilder) < 2:
         sys.exit(f"⛔ {handle}: weniger als 2 Bilder ≥ 600 px ohne montierten Text")
     return d, bilder

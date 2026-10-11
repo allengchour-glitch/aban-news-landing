@@ -364,7 +364,14 @@ def main():
         ok('Fremdpreis per echter OCR gelesen', bool(fb['preise']), f"OCR {[x[0] for x in (w_ or [])]}")
         mt = os.path.join(arbeit, 'tp_probe'); os.makedirs(mt, exist_ok=True)
         Rt = dict(einstieg=0.2138, pfad=S.musik_pfad('luxe-house2.wav')); Dt = 11.4343
-        mix = S._ton_normiert(Rt, Dt, mt); vt = os.path.join(mt, 'v.mp4')
+        mix0 = S._ton_normiert(Rt, Dt, mt); vt = os.path.join(mt, 'v.mp4')
+        # Vorbedingung (11.10.2026): AAC muss hier einen Ueberschwinger erzeugen, sonst prueft der Fall nichts. Der Musikmix
+        # allein blieb bei -2,85 dBTP (AAC hob nichts); ein 3-ms-Klick wurde vom Codec geglaettet (-2,15 dBTP). Ein 50-ms-
+        # Impuls bei 0,97 bei 5 s (LUFS-Einfluss unter 0,5 LU, Toleranz ±1) erzwingt den Ueberschwinger; die Nachregelung
+        # muss ihn wieder unter -1,5 bringen.
+        mix = os.path.join(mt, 'mix_klick.wav')
+        ff('-i', mix0, '-f', 'lavfi', '-i', f'aevalsrc=0.97*between(t\\,5\\,5.05):s=48000:d={Dt:.4f}',
+           '-filter_complex', '[0:a][1:a]amix=inputs=2:duration=first:normalize=0', '-ar', '48000', '-ac', '2', mix)
         ff('-f', 'lavfi', '-i', f'color=c=black:s=320x568:r=25:d={Dt}', '-i', mix, '-map', '0:v', '-map', '1:a', '-c:v', 'libx264',
            '-preset', 'ultrafast', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2', '-t', f'{Dt:.4f}', vt)
         verlauf = S._tp_nachregeln(vt, mix, Dt, mt)

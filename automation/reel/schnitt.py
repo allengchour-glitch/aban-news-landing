@@ -1916,6 +1916,49 @@ def _tp_nachregeln(out, mix, D, tmp, versuche=3):
     return verlauf
 
 
+def _dauer_av(p):
+    import av
+    with av.open(p) as c:
+        return float(c.duration) / 1e6 if c.duration else 0.0
+
+
+def stimme_legen(video, stimme, out, arbeit, start=0.4):
+    """Legt eine fertige Sprache (voiceover.py-WAV, ab STIMME_START) UEBER ein fertiges Reel, ohne das Bild anzufassen.
+    Musikbett = Tonspur des Reels auf -20 LUFS, per Sidechain unter der Sprache geduckt (Werte wie make_reel.sh), die
+    Summe zweistufig auf -14 LUFS / TP -1,5; Mux mit Video copy; dann _tp_nachregeln am MP4 (bis -1,6 dBTP).
+    Eingefuehrt 11.10.2026: schnitt.py kennt keine Sprache. Ohne diese Stufe waere der A/B-Arm «Stimme» ein anderer
+    Schnitt als der Arm «ohne Stimme» — der Vergleich misst dann den Schnitt, nicht die Stimme.
+    Rueckgabe: {ok, lufs, true_peak, verlauf, grund}."""
+    D = _dauer_av(video)
+    if D <= 0:
+        return dict(ok=False, grund='Dauer des Reels unbekannt')
+    vms = int(round(start * 1000))
+    duck = 'threshold=0.03:ratio=8:attack=15:release=350:knee=3'
+    mix1 = os.path.join(arbeit, 'stimme_mix1.wav')
+    _run([FF, '-y', '-v', 'error', *_thr(), '-i', video, '-i', stimme, '-filter_complex',
+          '[0:a]aresample=48000,aformat=channel_layouts=stereo,loudnorm=I=-20:TP=-3:LRA=11,apad[m0];'
+          f'[1:a]aresample=48000,aformat=channel_layouts=stereo,adelay={vms}|{vms},apad[v];'
+          f'[v]asplit=2[vm][vsc];[m0][vsc]sidechaincompress={duck}[md];'
+          '[md][vm]amix=inputs=2:duration=longest:normalize=0[mix]',
+          '-map', '[mix]', '-t', f'{D:.4f}', '-ar', '48000', '-ac', '2', mix1])
+    e = subprocess.run([FF, '-hide_banner', '-nostats', '-i', mix1, '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json',
+                        '-f', 'null', '-'], capture_output=True, text=True).stderr
+    m = json.loads(e[e.rindex('{'):e.rindex('}') + 1])
+    ln = (f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+          f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+    mix = os.path.join(arbeit, 'stimme_mix.wav')
+    _run([FF, '-y', '-v', 'error', *_thr(), '-i', mix1, '-af', f'{ln},aresample=48000', '-ar', '48000', '-ac', '2', mix])
+    tmp_out = os.path.join(arbeit, 'stimme_reel.mp4')
+    _run([FF, '-y', '-v', 'error', *_thr(), '-i', video, *_thr(), '-i', mix, '-map', '0:v', '-map', '1:a', '-c:v', 'copy',
+          *_thr(), '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2', '-t', f'{D:.4f}', '-movflags', '+faststart', tmp_out])
+    shutil.move(tmp_out, out)
+    verlauf = _tp_nachregeln(out, mix, D, arbeit)
+    I_, tp = verlauf[-1]['lufs'], verlauf[-1]['true_peak']
+    ok = tp is not None and tp <= TOR['tp_max'] and I_ is not None and abs(I_ - TOR['lufs']) <= TOR['lufs_tol']
+    return dict(ok=ok, lufs=I_, true_peak=tp, verlauf=verlauf,
+                grund='' if ok else f'nach dem Mischen LUFS {I_}, TP {tp}')
+
+
 def render(P_, out, text=None, arbeitsordner=None, crf=23, preset='medium'):
     """Rendert den Plan. text = dict(titel1, titel2, preis, hook) oder None (nur Bild + Musik).
     Rueckgabe: Pruefung (gemessen am Ergebnis, mit ok/verstoesse — das Tor wertet main() aus)."""
@@ -2182,6 +2225,7 @@ def main(argv=None):
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument('--analyse', metavar='QUELLE'); g.add_argument('--plan', metavar='QUELLE')
     g.add_argument('--render', metavar='QUELLE'); g.add_argument('--kontaktbogen', metavar='VIDEO')
+    g.add_argument('--stimme-legen', metavar='VIDEO', help='fertige Sprache ueber ein fertiges Reel legen (braucht --stimme, --out)')
     g.add_argument('--tessdata-holen', metavar='ORDNER', help='chi_sim.traineddata nach ORDNER laden (fuer SCHNITT_TESSDATA)')
     ap.add_argument('--musik'); ap.add_argument('--out'); ap.add_argument('--ziel', type=float, default=12.0)
     ap.add_argument('--einstieg', type=float); ap.add_argument('--zone', default='organisch', choices=list(ZONEN))
@@ -2191,12 +2235,20 @@ def main(argv=None):
     ap.add_argument('--kein-cache', action='store_true'); ap.add_argument('--crf', type=int, default=23)
     ap.add_argument('--hook-ab', type=float, help='Hook-Fenster ab dieser Quellsekunde (Sichtpruefung)')
     ap.add_argument('--sperren', default='', help='Quellsekunden nach Sichtpruefung sperren, z. B. "6.7-9.0,20.1-21.3"')
+    ap.add_argument('--stimme', metavar='WAV', help='--stimme-legen: fertige Sprache (voiceover.py-WAV)')
     ap.add_argument('--arbeitsordner', help='Ordner fuer Analyse-Cache, Beat-Cache, Render-Temp und Log '
                                             '(Standard: neben Quelle bzw. Ausgabe); nach dem Posten loeschen')
     a = ap.parse_args(argv)
     try:
         if a.tessdata_holen:
             print(tessdata_holen(a.tessdata_holen)); return 0
+        if a.stimme_legen:
+            if not a.stimme or not a.out:
+                raise SystemExit('--stimme-legen braucht --stimme WAV und --out MP4')
+            ao = a.arbeitsordner or os.path.dirname(os.path.abspath(a.out))
+            os.makedirs(ao, exist_ok=True)
+            r = stimme_legen(a.stimme_legen, a.stimme, a.out, ao)
+            print(json.dumps(r, ensure_ascii=False)); return 0 if r['ok'] else 4
         if a.kontaktbogen:
             print(kontaktbogen(a.kontaktbogen, a.bogen_out)); return 0
         quelle = a.analyse or a.plan or a.render
