@@ -61560,3 +61560,4 @@ gid://shopify/Product/16614844727687	gid://shopify/MediaImage/77494266855815
 gid://shopify/Product/16614844858759	gid://shopify/MediaImage/77494267380103
 gid://shopify/Product/16614845055367	gid://shopify/MediaImage/77494268035463
 gid://shopify/Product/16614845153671	gid://shopify/MediaImage/77494268232071
+gid://shopify/Product/15470367670657	gid://shopify/MediaImage/70137851543937	bildtausch-sperre
