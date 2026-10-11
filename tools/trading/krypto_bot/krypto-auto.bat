@@ -20,7 +20,11 @@ where py >nul 2>nul || set PY=python
 set "FEHLER="
 set "WARN="
 REM Not-Aus hat Vorrang vor der Pause: schliessen muss auch bei ausgeschaltetem Auto-Handel gehen.
-if exist "tools\trading\ki_bot\STOP" (
+REM Not-Aus: Datei STOP (stop.bat, Cockpit, /stop) oder Variable KI_BOT_STOP=1
+set "NOTAUS="
+if exist "tools\trading\ki_bot\STOP" set NOTAUS=1
+if "%KI_BOT_STOP%"=="1" set NOTAUS=1
+if defined NOTAUS (
   echo Not-Aus ist aktiv: der Pilot schliesst nur noch seine Positionen ^(nichts Neues^). Weiterhandeln: weiter.bat
   if not "%BINANCE_FUTURES_API_KEY%"=="" call :schritt Pilot-Not-Aus pilot.py --lauf
   goto bilanz
@@ -43,10 +47,11 @@ if not "%BINANCE_FUTURES_API_KEY%"=="" (
 ) else (
   echo Krypto-Pilot uebersprungen: BINANCE_FUTURES_API_KEY fehlt.
 )
-if not "%BINANCE_API_KEY%"=="" (
+REM ETH-Sparplan nur mit ausdruecklicher Freigabe (Betrag gesetzt) - der Spot-Schluessel allein reicht nicht
+if not "%ETH_SPARPLAN_BETRAG%"=="" (
   call :schritt ETH-Sammler eth_sammler.py --lauf
 ) else (
-  echo ETH-Sammler uebersprungen: BINANCE_API_KEY fehlt.
+  echo ETH-Sammler uebersprungen: Sparplan nicht eingeschaltet ^(ETH_SPARPLAN_BETRAG fehlt^).
 )
 if not "%ANTHROPIC_API_KEY%"=="" (
   call :schritt KI-Trader ki_trader.py --lauf

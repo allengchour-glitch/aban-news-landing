@@ -79,7 +79,9 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
 8. **Not-Aus:** Doppelklick auf `stop.bat`. Danach gehen keine neuen Aufträge mehr raus. Auch der Schalter «Auto-Handel aus»
    im Krypto-Cockpit (Datei `PAUSE`) hält diese Bots an. Mit `weiter.bat` wieder freigeben.
 9. **Automatisch jeden Tag:** Windows-Aufgabenplanung → „Einfache Aufgabe erstellen“ → täglich 15:00 (US-Börse öffnet
-   15:30 Schweizer Zeit) → Programm `start-auto.bat`.
+   15:30 Schweizer Zeit) → Programm `start-auto.bat`, **Argumente hinzufügen: `auto`**. Mit `auto` wartet die Datei nie auf
+   eine Taste, und der Tageswächter endet nach 8 Stunden — ohne das liefe er weiter, und Windows liesse die Aufgabe am
+   nächsten Tag still aus (eine Aufgabe startet nicht, solange die alte noch läuft).
 
 Läuft er mindestens **3 Monate** im Papierkonto, vergleiche mit `python tools/trading/ki_bot/signale.py --rueckblick`
 und mit einfachem Halten. Erst dann über echtes Geld nachdenken. Ein automatischer Lauf auf GitHub ist bewusst

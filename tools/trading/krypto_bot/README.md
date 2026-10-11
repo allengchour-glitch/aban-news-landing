@@ -30,7 +30,7 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 ## 🛩️ Krypto-Pilot (Bitcoin + Ethereum Futures)
 
 `pilot.py` handelt die einzige Regel, die alle Prüfungen überstanden hat, auf **Bitcoin und Ethereum je zur Hälfte**
-(`KRYPTO_PILOT_MAERKTE=BTC` = nur Bitcoin):
+(`KRYPTO_PILOT_MAERKTE=BTC` = nur Bitcoin; eine noch offene Position im abgewählten Markt schliesst der nächste Lauf):
 - **Richtung:** über dem Trend-Schnitt long, darunter short (`KRYPTO_SHORT=0` = nur long).
   **Bitcoin 150 Tage, Ethereum 200 Tage** (siehe Prüfstand unten).
 - **Grösse:** Schwankungsziel 40 % pro Jahr, also bei wildem Markt automatisch kleiner. Höchstens `KRYPTO_MAX_HEBEL`
@@ -135,7 +135,17 @@ Alpaca-Bots —, offene Positionen bleiben mit ihrem Stop stehen. `weiter.bat` h
   steht «OHNE Stop» in der Handy-Nachricht.
 - Jeder Abbruch (Schlüssel ungültig, Standort gesperrt, Hedge-Modus, falsche Adresse, Netz) ist eine Warnung aufs Handy und
   macht die Cockpit-Ampel rot — nie still.
-- Zeitüberschreitung oder abgerissene Verbindung: kein Absturz, der Stop wird passend zur tatsächlichen Position gesetzt.
+- Zeitüberschreitung, abgerissene Verbindung oder Binance-Antwort «Unknown error» (HTTP 503 — laut Binance KEIN Fehlschlag):
+  Jeder Auftrag hat eine eigene Kennung, der Pilot fragt nach, ob er ausgeführt wurde. Bleibt es unklar, werden die Stops
+  nicht gelöscht, und es kommt eine Warnung. Der Stop wird passend zur tatsächlichen Position gesetzt.
+- Risiko-Stufe senken bei offener Position: Binance lässt den Hebel dann nicht senken (−4161) — der Pilot handelt trotzdem
+  mit der kleineren Grösse weiter, der Börsen-Hebel sinkt, sobald die Position flach ist.
+- Das Cockpit liest bei jedem Not-Aus, Knopf und Seitenaufruf die aktuellen Einstellungen (`setx` landet in der
+  Windows-Registry): Nach einem Wechsel auf Echtgeld prüft der Not-Aus das richtige Konto und nennt es in jeder Zeile.
+- Not-Aus geht auch über die Variable `KI_BOT_STOP=1` (gleiche Wirkung wie die Datei STOP). Zahlen in Einstellungen dürfen
+  ein Komma haben (`0,5`, `1'000`).
+- Handels-Knöpfe im Cockpit werden nie nach Minuten abgebrochen (ein Abbruch zwischen Auftrag und Stop wäre gefährlich);
+  das Lagebild holt der Pilot erst nach den Aufträgen. Lange Läufe halten ihre Sperre frisch.
 - Liegt der Kurs schon jenseits des heutigen Stops, eröffnet der Pilot nichts (der Stop würde sofort auslösen).
 - Nie zwei Läufe gleichzeitig (Sperre in `data/`), auch nicht Aufgabenplanung + Cockpit-Knopf.
 - Eine einzelne Adress-Variable (`BINANCE_FUTURES_URL`, `BINANCE_BASIS_URL`) kann nie auf echtes Geld umschalten.
@@ -153,14 +163,16 @@ gekauft hat (andere ETH im Konto fasst er nicht an).
 
 | Einstellung | Standard | Bedeutung |
 |---|---|---|
-| `ETH_SPARPLAN_BETRAG` | 50 | USDT je Kauf (höchstens `KI_BOT_MAX_AUFTRAG`) |
+| `ETH_SPARPLAN_BETRAG` | — | **schaltet den Sparplan ein**: USDT je Kauf (z. B. 50, höchstens `KI_BOT_MAX_AUFTRAG`). Ohne diese Variable kauft er nie — der Spot-Schlüssel allein (z. B. für `krypto.py`) reicht nicht |
 | `ETH_SPARPLAN_TAGE` | 7 | Abstand der Käufe in Tagen |
 | `ETH_SPARPLAN_MAX` | 5000 | Obergrenze für den gesamten Einsatz, danach kauft er nicht mehr |
 | `ETH_STAKEN` | 0 | 1 = gekaufte ETH ins Binance-Staking legen (nur echtes Geld) |
 
 Schlüssel: dieselben **Spot**-Schlüssel wie `krypto.py` (`BINANCE_API_KEY` / `BINANCE_API_SECRET`). Testnetz ist Standard,
 dort gibt es **kein Staking**, die ETH bleiben im Spot-Konto. Test- und Echtgeld-Käufe werden getrennt gebucht
-(`data/eth-sammler.json`). Täglich starten ist richtig: Er kauft nur, wenn der nächste Termin fällig ist.
+(`data/eth-sammler.json`). Täglich starten ist richtig: Er kauft nur, wenn der nächste Termin fällig ist. Echtes Geld:
+`BINANCE_TESTNET=false` **und** `KI_BOT_ECHTGELD` (gilt für alle Spot-Bots); `ETH_STAKEN` steuert nur das Staking.
+Ein Kauf mit verlorener Antwort wird «unklar» gebucht und aus Ø-Preis und Ergebnis herausgehalten (Cockpit zeigt ihn getrennt).
 
 ```
 py tools\trading\krypto_bot\eth_sammler.py --status            # Bestand, Ø-Preis, nächster Kauf, Staking-Ertrag
@@ -263,9 +275,11 @@ sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernim
 
 **Telegram-Steuerung** läuft mit dem Cockpit, sobald `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` gesetzt sind
 (Einrichtung: `tools/trading/ki_bot/README.md`). Befehle nur aus deinem eigenen Chat: `/status`, `/konto`, `/ki`, `/lage`,
-`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/hilfe`. Was ankam, während das Cockpit aus war, wird **nicht**
-ausgeführt (sonst könnte ein altes `/weiter` einen Not-Aus aufheben); der Bot antwortet dann «bitte nochmals senden».
-Das hängt nicht an der PC-Uhr.
+`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/calls`, `/hilfe`. Was ankam, während das Cockpit aus war, wird
+**nicht** ausgeführt (sonst könnte ein altes `/weiter` einen Not-Aus aufheben); der Bot antwortet dann «bitte nochmals
+senden». Das hängt nicht an der PC-Uhr und gilt auch, wenn beim Start das Netz noch fehlt (dann wird bis dahin nichts
+ausgeführt). `/stop` und `/weiter` laufen sofort — langsame Info-Befehle (`/lage`, `/status`, `/profit`) laufen nebenher
+und halten den Not-Aus nie auf.
 
 ## 📣 Telegram-Call-Gruppen kopieren — erst ehrlich prüfen, dann (vielleicht) kopieren
 
@@ -452,11 +466,11 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
-python3 tools/trading/krypto_bot/test_pilot.py    # 76 Tests, inkl. Risiko-Stufen, Sperre, Not-Aus mitten im Lauf, Algo-Stops und nachgebautem Binance-Futures-Server
-python3 tools/trading/krypto_bot/test_sammler.py  # 44 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten und Ablehnungen
+python3 tools/trading/krypto_bot/test_pilot.py    # 82 Tests, inkl. Risiko-Stufen, Sperre, Not-Aus mitten im Lauf, Algo-Stops und nachgebautem Binance-Futures-Server
+python3 tools/trading/krypto_bot/test_sammler.py  # 46 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten und Ablehnungen
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
-python3 tools/trading/krypto_bot/test_profit.py   # 40 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 99 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
+python3 tools/trading/krypto_bot/test_cockpit.py  # 112 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
 python3 tools/trading/krypto_bot/test_calls.py    # 72 Tests: Call-Formate, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum

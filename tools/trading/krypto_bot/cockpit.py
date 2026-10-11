@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import queue
 import os
 import subprocess
 import sys
@@ -43,6 +44,52 @@ MARKT = HIER / "markt.html"
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
          "/calls Telegram-Calls (Schatten-Bilanz) · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
+
+
+UMGEBUNG_PRAEFIXE = ("BINANCE_", "KI_BOT_", "KRYPTO_", "CALLS_", "TELEGRAM_", "ANTHROPIC_", "ETH_", "ALPACA_")
+
+
+def _registry_lesen():
+    """Windows: die Benutzer-Variablen, wie setx sie gerade gespeichert hat (HKCU\\Environment)."""
+    import winreg
+    out = {}
+    with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment") as k:
+        i = 0
+        while True:
+            try:
+                name, wert, _ = winreg.EnumValue(k, i)
+            except OSError:
+                break
+            out[name] = str(wert)
+            i += 1
+    return out
+
+
+def umgebung(basis=None, lesen=None):
+    """Umgebung für Not-Aus, Knöpfe und Anzeige: os.environ, darüber die AKTUELLEN Benutzer-Variablen aus der Registry.
+    Ein seit Tagen laufendes Cockpit sähe sonst einen Wechsel auf Echtgeld oder neue Schlüssel nicht (setx wirkt nur in
+    neuen Prozessen) — und der Not-Aus würde das falsche Konto prüfen und «alles zu» melden."""
+    env = dict(os.environ if basis is None else basis)
+    if lesen is None:
+        if os.name != "nt":
+            return env
+        lesen = _registry_lesen
+    try:
+        werte = lesen() or {}
+    except OSError:
+        return env
+    for name, wert in werte.items():
+        if name.upper().startswith(UMGEBUNG_PRAEFIXE):
+            if wert:
+                env[name.upper()] = wert
+            else:
+                env.pop(name.upper(), None)  # setx NAME "" = entfernt
+    return env
+
+
+def notaus_env_aktiv(env=None):
+    env = umgebung() if env is None else env
+    return STOP.exists() or env.get("KI_BOT_STOP", "") == "1"
 
 
 def _json(name, standard):
@@ -72,6 +119,12 @@ def notaus_an(schliessen=True, ausfuehren=None):
         alles_zu = False  # ein anderer Lauf könnte gleichzeitig noch etwas aufgebaut haben → nicht «alles zu» melden
         vorab.append("⚠️ Ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt. In 5 Minuten nochmals «Not-Aus» drücken.")
     try:
+        if ausfuehren is None:
+            import broker_futures as BF
+            env = umgebung()
+
+            def ausfuehren(e, symbol, gewicht):
+                return BF.ausfuehren(e, env=env, symbol=symbol, gewicht=gewicht)
         zu, zeilen = PI.schliessen_alle(ausfuehren)
         alles_zu = alles_zu and zu
     finally:
@@ -99,9 +152,11 @@ def notaus_aus():
 # Name → (Skript und Argumente, Zeitlimit in Sekunden, Titel)
 AKTIONEN = {
     "probe": (["pilot.py", "--lauf", "--trocken"], 300, "Pilot – Probelauf ohne Aufträge"),
-    "handeln": (["pilot.py", "--lauf"], 300, "Pilot – jetzt handeln"),
-    "ki": (["ki_trader.py", "--lauf"], 300, "Claude fragen"),
-    "sparplan": (["eth_sammler.py", "--lauf"], 300, "ETH-Sparplan ausführen"),
+    # Handels-Läufe nie nach Minuten hart beenden (ein Abbruch zwischen Auftrag und Stop liesse eine Position ohne Schutz);
+    # die Skripte haben eigene Zeitlimits je Anfrage. 1 Std. ist nur das Netz unter dem Netz.
+    "handeln": (["pilot.py", "--lauf"], 3600, "Pilot – jetzt handeln"),
+    "ki": (["ki_trader.py", "--lauf"], 900, "Claude fragen"),
+    "sparplan": (["eth_sammler.py", "--lauf"], 3600, "ETH-Sparplan ausführen"),
     "infos": (["infos.py"], 600, "Markt-Infos aktualisieren"),
     "backtest": (["pilot.py", "--backtest"], 600, "Backtest rechnen"),
     "selbsttest": ([], 900, "Selbsttest"),
@@ -121,7 +176,7 @@ _LAUFEND, _SPERRE = {}, threading.Lock()  # Name → Startzeit
 
 def _skript(args, zeit):
     """Ein Bot-Skript als eigenen Prozess starten (wie von Hand), Ausgabe einsammeln."""
-    env = dict(os.environ, PYTHONIOENCODING="utf-8")
+    env = dict(umgebung(), PYTHONIOENCODING="utf-8", PYTHONUTF8="1")
     try:
         r = subprocess.run([sys.executable, str(HIER / args[0]), *args[1:]], capture_output=True, text=True, encoding="utf-8",
                            errors="replace", timeout=zeit, cwd=str(ROOT), env=env)
@@ -226,16 +281,19 @@ def aktion(name, starter=None, befehl=None):
         elif name.startswith("risiko_"):
             import pilot_kern as K
             stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_2": 2.0}[name]
-            K.EINSTELLUNGEN.parent.mkdir(parents=True, exist_ok=True)
-            K.EINSTELLUNGEN.write_text(json.dumps({"risiko": stufe, "geaendert": datetime.now(timezone.utc).isoformat(timespec="seconds")}) + "\n",
-                                       encoding="utf-8")
-            r = K.risiko()
-            ok, text = True, (f"Risiko-Stufe {r['stufe']:g}×: Schwankungsziel {r['ziel_vol'] * 100:.0f} %, Hebel höchstens {r['max_hebel']:g}×. "
-                              "Gilt ab dem nächsten Lauf." + ("" if stufe == 1 else " Achtung: im Test deutlich tiefere Einbrüche als mit 1×."))
-            if os.environ.get("KRYPTO_RISIKO"):
-                ok, text = False, f"KRYPTO_RISIKO={os.environ['KRYPTO_RISIKO']} ist als Umgebungsvariable gesetzt und hat Vorrang. Erst entfernen (setx KRYPTO_RISIKO \"\")."
-        elif name == "handeln" and (STOP.exists() or PAUSE.exists()):
-            ok, text = False, ("Not-Aus ist aktiv — erst Auto-Handel einschalten." if STOP.exists()
+            gesetzt = umgebung().get("KRYPTO_RISIKO")
+            if gesetzt:  # zuerst prüfen: sonst läge eine nie bestätigte Stufe gespeichert und wirkte später still
+                ok, text = False, (f"KRYPTO_RISIKO={gesetzt} ist als Umgebungsvariable gesetzt und hat Vorrang — NICHTS geändert. "
+                                   "Erst entfernen (setx KRYPTO_RISIKO \"\"), dann nochmals wählen.")
+            else:
+                K.EINSTELLUNGEN.parent.mkdir(parents=True, exist_ok=True)
+                K.EINSTELLUNGEN.write_text(json.dumps({"risiko": stufe, "geaendert": datetime.now(timezone.utc).isoformat(timespec="seconds")}) + "\n",
+                                           encoding="utf-8")
+                r = K.risiko({}, K.EINSTELLUNGEN)
+                ok, text = True, (f"Risiko-Stufe {r['stufe']:g}×: Schwankungsziel {r['ziel_vol'] * 100:.0f} %, Hebel höchstens {r['max_hebel']:g}×. "
+                                  "Gilt ab dem nächsten Lauf." + ("" if stufe == 1 else " Achtung: im Test deutlich tiefere Einbrüche als mit 1×."))
+        elif name == "handeln" and (notaus_env_aktiv() or PAUSE.exists()):
+            ok, text = False, ("Not-Aus ist aktiv — erst Auto-Handel einschalten." if notaus_env_aktiv()
                                else "Auto-Handel ist aus (Pause) — erst einschalten.")
         elif name == "selbsttest":
             teile, ok = [], True
@@ -332,7 +390,7 @@ def backtest_kurven():
 
 
 def stand(env=None):
-    env = os.environ if env is None else env
+    env = umgebung() if env is None else env
     import ki_trader as KT
     import pilot as PI
     lb = _json("krypto-pilot.json", {"entscheide": [], "kontostand": []})
@@ -390,13 +448,19 @@ def stand(env=None):
     kaeufe = buch.get("kaeufe", [])
     sammler = None
     if kaeufe:
-        usdt, eth = sum(k["usdt"] for k in kaeufe), sum(k["eth"] for k in kaeufe)
+        # «unklar» gebuchte Käufe (Antwort verloren) haben 0 ETH: aus Ø-Preis und Gewinn heraushalten, getrennt zeigen
+        klar = [k for k in kaeufe if not k.get("unklar")]
+        unklar = [k for k in kaeufe if k.get("unklar")]
+        usdt, eth = sum(k["usdt"] for k in klar), sum(k["eth"] for k in klar)
         sammler = {"kaeufe": len(kaeufe), "eingesetzt": round(usdt, 2), "eth": round(eth, 6), "schnitt": round(usdt / eth, 2) if eth else None,
-                   "gestakt": round(sum(s["eth"] for s in buch.get("gestakt", [])), 4), "letzte": kaeufe[-8:]}
+                   "gestakt": round(sum(s["eth"] for s in buch.get("gestakt", [])), 4), "letzte": kaeufe[-8:],
+                   "unklar": len(unklar), "unklar_usdt": round(sum(k["usdt"] for k in unklar), 2),
+                   "modus": "ECHTGELD" if echt_spot else "TESTNETZ"}
     gesund = gesundheit(env, lb, ki)
     return {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": "ECHTGELD" if echt_futures else "TESTNETZ",
+            "modus_spot": "ECHTGELD" if echt_spot else "TESTNETZ",
             "gesundheit": gesund,
-            "notaus": STOP.exists(), "pause": PAUSE.exists(), "maerkte": [maerkte[m] for m in PI.MAERKTE if m in maerkte], "konto": konto,
+            "notaus": notaus_env_aktiv(env), "pause": PAUSE.exists(), "maerkte": [maerkte[m] for m in PI.MAERKTE if m in maerkte], "konto": konto,
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
@@ -428,8 +492,18 @@ def gesundheit(env, lb, ki, heute=None):
 
     p("Futures-Schlüssel (Pilot)", bool(env.get("BINANCE_FUTURES_API_KEY") and env.get("BINANCE_FUTURES_API_SECRET")),
       "gesetzt" if env.get("BINANCE_FUTURES_API_KEY") else "fehlt — ohne Schlüssel nur Probeläufe")
-    p("Spot-Schlüssel (ETH-Sammler)", True if env.get("BINANCE_API_KEY") else None, "gesetzt" if env.get("BINANCE_API_KEY") else "nicht gesetzt (nur nötig für den Sparplan)")
-    p("Claude (KI-Trader)", True if env.get("ANTHROPIC_API_KEY") else None, "gesetzt" if env.get("ANTHROPIC_API_KEY") else "nicht gesetzt (optional)")
+    if env.get("ETH_SPARPLAN_BETRAG"):
+        p("ETH-Sparplan", bool(env.get("BINANCE_API_KEY")), f"an: {env['ETH_SPARPLAN_BETRAG']} USDT" if env.get("BINANCE_API_KEY")
+          else "eingeschaltet, aber BINANCE_API_KEY (Spot) fehlt")
+    else:
+        p("ETH-Sparplan", None, "aus (einschalten: setx ETH_SPARPLAN_BETRAG \"50\")")
+    if env.get("ANTHROPIC_API_KEY"):
+        letzte_ki = max((x.get("stand", "") for x in (ki or {}).get("entscheide", [])), default="")
+        alt_ki = (heute - datetime.fromisoformat(letzte_ki).date()).days if letzte_ki else None
+        p("Claude (KI-Trader)", alt_ki is not None and alt_ki <= 2, f"letzte Einschätzung {letzte_ki}" if letzte_ki and alt_ki <= 2
+          else (f"letzte Einschätzung {alt_ki} Tage alt — Guthaben/Schlüssel prüfen" if letzte_ki else "noch keine Einschätzung"))
+    else:
+        p("Claude (KI-Trader)", None, "nicht gesetzt (optional)")
     p("Handy-Nachrichten", True if (env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")) or env.get("KI_BOT_NTFY") else None,
       "Telegram" if env.get("TELEGRAM_BOT_TOKEN") else "ntfy" if env.get("KI_BOT_NTFY") else "nicht eingerichtet (optional)")
     letzte = max((e.get("stand", "") for e in lb.get("entscheide", [])), default="")
@@ -461,7 +535,9 @@ def gesundheit(env, lb, ki, heute=None):
               else f"seit {minuten / 60:.0f} Std. still — calls.bat läuft nicht?")
         else:
             p("Telegram-Calls mitlesen", False, "noch nie gelaufen — calls.bat starten")
-    p("Not-Aus", not STOP.exists(), "aus" if not STOP.exists() else "AKTIV — der Pilot schliesst seine Positionen, nichts Neues")
+    na = notaus_env_aktiv(env)
+    p("Not-Aus", not na, "aus" if not na else "AKTIV — der Pilot schliesst seine Positionen, nichts Neues"
+      + (" (Variable KI_BOT_STOP=1 — aufheben: setx KI_BOT_STOP \"\")" if env.get("KI_BOT_STOP") == "1" and not STOP.exists() else ""))
     p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
         if time.time() - _AUFGABE_CACHE["zeit"] > 300:
@@ -542,7 +618,7 @@ class Cockpit(BaseHTTPRequestHandler):
         an = bool(daten.get("an"))
         meldung = notaus_an() if an else notaus_aus()
         PROTOKOLL.appendleft({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "aktion": "notaus" if an else "auto_an",
-                              "titel": "Not-Aus" if an else "Not-Aus aufgehoben", "ok": True, "text": meldung})
+                              "titel": "Not-Aus" if an else "Not-Aus aufgehoben", "ok": "NICHT ALLES" not in meldung, "text": meldung})
         return self._senden(200, {"meldung": meldung, "notaus": STOP.exists()})
 
     def log_message(self, *a):
@@ -564,7 +640,7 @@ def befehl(text):
         return notaus_aus()
     if b == "/status":
         import pilot as PI
-        teile = [PI.text(PI.entscheid(m)) for m in PI.maerkte()]
+        teile = [PI.text(PI.entscheid(m, offline=True)) for m in PI.maerkte()]  # Kurse aus dem Speicher: schnell
         return "\n".join(teile) + ("\n🛑 Not-Aus ist aktiv." if STOP.exists() else "")
     if b == "/konto":
         import pilot as PI
@@ -575,7 +651,7 @@ def befehl(text):
         return KT.stand_text(ki, KT.vergleich(ki, KT.pilot_entscheide(), {c: dict(r) for c, r in KT.kurse_laden(offline=True).items()}))
     if b == "/lage":
         import infos as I
-        return "Lagebild (nur Info): " + I.text(I.lagebild())
+        return "Lagebild (nur Info, Stand des letzten Laufs): " + I.text(I.lagebild(nur_speicher=True))
     if b == "/calls":
         import calls_kopierer as CK
         s = calls_stand()
@@ -583,36 +659,66 @@ def befehl(text):
     return None
 
 
+SOFORT = {"/stop", "/weiter", "/hilfe", "/help", "/start"}  # Not-Aus nie hinter langsamen Info-Befehlen einreihen
+
+
+def _tg_senden(url, chat, text):
+    daten = urllib.parse.urlencode({"chat_id": chat, "text": text[:4000]}).encode()
+    try:
+        urllib.request.urlopen(urllib.request.Request(f"{url}/sendMessage", data=daten), timeout=15).close()
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def _rueckstau_ueberspringen(url, chat):
+    """Was ankam, während das Cockpit aus war, wird NICHT ausgeführt (ein altes /weiter dürfte sonst einen Not-Aus
+    aufheben) — unabhängig von der PC-Uhr: der letzte Eintrag (offset=-1) gibt die Stelle, ab der gelesen wird.
+    Wirft bei Netzfehler: dann wird es später nochmals versucht und bis dahin NICHTS ausgeführt."""
+    with urllib.request.urlopen(f"{url}/getUpdates?{urllib.parse.urlencode({'offset': -1, 'timeout': 0})}", timeout=20) as r:
+        letzte = json.load(r).get("result", [])
+    if not letzte:
+        return None
+    m = letzte[-1].get("message") or {}
+    if str((m.get("chat") or {}).get("id")) == chat and (m.get("text") or "").startswith("/"):
+        _tg_senden(url, chat, f"⏳ «{m['text'][:40]}» kam, als das Cockpit aus war — aus Sicherheit NICHT ausgeführt. "
+                              "Bitte jetzt nochmals senden.")
+    return letzte[-1]["update_id"] + 1
+
+
 def telegram_schleife(env=None, basis="https://api.telegram.org", runden=None, warte=50):
-    """Liest Befehle per getUpdates. Nur Nachrichten aus TELEGRAM_CHAT_ID; alte Nachrichten (vor dem Start) werden übersprungen."""
+    """Liest Befehle per getUpdates. Nur Nachrichten aus TELEGRAM_CHAT_ID; der Rückstau vor dem Start wird übersprungen.
+    /stop und /weiter laufen sofort; Info-Befehle (/lage, /status, /profit …) nebenher, einer nach dem anderen."""
     env = os.environ if env is None else env
     token, chat = env.get("TELEGRAM_BOT_TOKEN", ""), str(env.get("TELEGRAM_CHAT_ID", ""))
     if not token or not chat:
         return
     url = f"{basis.rstrip('/')}/bot{token}"
-    offset, n = None, 0
-    # Was ankam, während das Cockpit aus war, wird NICHT ausgeführt (ein altes /weiter dürfte sonst einen Not-Aus aufheben).
-    # Statt Telegram-Datum gegen PC-Uhr zu vergleichen (falsche Uhr = falsches Ergebnis): Rückstau beim Start überspringen.
-    for _ in range(3):
+    offset, n, bereit = None, 0, False
+    nebenher = runden is None  # in Tests alles der Reihe nach
+    arbeit = queue.Queue()
+
+    def ausfuehren(text):
         try:
-            with urllib.request.urlopen(f"{url}/getUpdates?{urllib.parse.urlencode({'offset': -1, 'timeout': 0})}", timeout=20) as r:
-                letzte = json.load(r).get("result", [])
-            if letzte:
-                offset = letzte[-1]["update_id"] + 1
-                m = letzte[-1].get("message") or {}
-                if str((m.get("chat") or {}).get("id")) == chat and (m.get("text") or "").startswith("/"):
-                    hinweis = (f"⏳ «{m['text'][:40]}» kam, als das Cockpit aus war — aus Sicherheit NICHT ausgeführt. "
-                               "Bitte jetzt nochmals senden.")
-                    try:
-                        urllib.request.urlopen(urllib.request.Request(f"{url}/sendMessage", data=urllib.parse.urlencode(
-                            {"chat_id": chat, "text": hinweis}).encode()), timeout=15).close()
-                    except Exception:  # noqa: BLE001
-                        pass
-            break
-        except Exception:  # noqa: BLE001 — Netz weg: kurz warten
-            time.sleep(2 if runden is None else 0)
+            antwort = befehl(text)
+        except Exception as ex:  # noqa: BLE001
+            antwort = f"Fehler: {type(ex).__name__}"
+        if antwort:
+            _tg_senden(url, chat, antwort)
+
+    def arbeiter():
+        while True:
+            ausfuehren(arbeit.get())
+
+    if nebenher:
+        threading.Thread(target=arbeiter, daemon=True).start()
     while runden is None or n < runden:
         n += 1
+        if not bereit:
+            try:
+                offset, bereit = _rueckstau_ueberspringen(url, chat), True
+            except Exception:  # noqa: BLE001 — Netz noch nicht da: warten, NICHTS ausführen
+                time.sleep(5 if runden is None else 0)
+                continue
         try:
             q = {"timeout": warte} | ({"offset": offset} if offset is not None else {})
             with urllib.request.urlopen(f"{url}/getUpdates?{urllib.parse.urlencode(q)}", timeout=warte + 15) as r:
@@ -625,16 +731,12 @@ def telegram_schleife(env=None, basis="https://api.telegram.org", runden=None, w
             m = u.get("message") or {}
             if str((m.get("chat") or {}).get("id")) != chat:
                 continue
-            try:
-                antwort = befehl(m.get("text", ""))
-            except Exception as ex:  # noqa: BLE001
-                antwort = f"Fehler: {type(ex).__name__}"
-            if antwort:
-                daten = urllib.parse.urlencode({"chat_id": chat, "text": antwort[:4000]}).encode()
-                try:
-                    urllib.request.urlopen(urllib.request.Request(f"{url}/sendMessage", data=daten), timeout=15).close()
-                except Exception:  # noqa: BLE001
-                    pass
+            text = m.get("text", "") or ""
+            b = text.strip().split()[0].split("@")[0].lower() if text.strip() else ""
+            if b in SOFORT or not nebenher:
+                ausfuehren(text)
+            else:
+                arbeit.put(text)
 
 
 def main():

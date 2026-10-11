@@ -58,6 +58,8 @@ b2 = {"kaeufe": [{"tag": "x", "usdt": 50, "eth": 0.03}], "gestakt": [{"tag": "x"
 pruefe("staken: nur eigene offene ETH", S.zu_staken(b2, 5.0) == 0.02, S.zu_staken(b2, 5.0))
 pruefe("staken: nie mehr als frei", S.zu_staken(b2, 0.01519) == 0.0151)
 pruefe("staken: unter Minimum nichts", S.zu_staken(b2, 0.00004) == 0.0)
+zu = S.zusammenfassung({"kaeufe": [{"usdt": 50, "eth": 0.02}, {"usdt": 50, "eth": 0.0, "unklar": True}], "gestakt": []}, 2500)
+pruefe("unklarer Kauf verfälscht Ø-Preis und Ergebnis nicht (2500, ±0 %)", zu["schnitt"] == 2500.0 and zu["ergebnis"] == 0.0 and zu["unklar"] == 1, zu)
 z = S.zusammenfassung({"kaeufe": [{"usdt": 100, "eth": 0.05}, {"usdt": 100, "eth": 0.1}], "gestakt": []}, 2000)
 pruefe("Durchschnittspreis = Einsatz / Menge", z["schnitt"] == round(200 / 0.15, 2) and z["wert"] == 300.0 and z["ergebnis"] == 0.5, z)
 reihe = [("2020-01-%02d" % (i + 1), 100.0 if i < 7 else 50.0) for i in range(14)]
@@ -147,6 +149,10 @@ def auftraege(ab=0):
 
 lb = {"testnetz": leeres_buch(), "echtgeld": leeres_buch()}
 pruefe("ohne Schlüssel: nichts", S.lauf(env={}, logbuch=lb)["hinweis"].startswith("keine Schlüssel"))
+_n0 = len(Fake.log)
+_e0 = S.lauf(env={k: v for k, v in env.items() if k != "ETH_SPARPLAN_BETRAG"}, jetzt=jetzt, logbuch=lb)
+pruefe("Spot-Schlüssel allein (für den Spot-Bot) startet NIE einen Sparplan", "nicht eingeschaltet" in _e0["hinweis"]
+       and not lb["testnetz"]["kaeufe"] and len(Fake.log) == _n0, _e0)
 S.lauf(trocken=True, env=env, jetzt=jetzt, logbuch=lb)
 pruefe("trocken: kein Auftrag, nichts gebucht", not auftraege() and not lb["testnetz"]["kaeufe"])
 e = S.lauf(env=env, jetzt=jetzt, logbuch=lb)

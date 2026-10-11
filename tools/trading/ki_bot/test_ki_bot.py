@@ -87,9 +87,9 @@ def sig(stand, kurs_a, kurs_b):
 
 bot.signale_heute = lambda offline: sig("2026-10-01", 100.0, 50.0)
 bot.lauf(True, "2026-10-01")
-eins = bot.LOGBUCH.read_text()
+eins = bot.LOGBUCH.read_text(encoding="utf-8")
 bot.lauf(True, "2026-10-02")
-pruefe("Logbuch idempotent ohne neuen Kurs", bot.LOGBUCH.read_text() == eins)
+pruefe("Logbuch idempotent ohne neuen Kurs", bot.LOGBUCH.read_text(encoding="utf-8") == eins)
 bot.signale_heute = lambda offline: sig("2026-10-02", 110.0, 50.0)
 lb = bot.lauf(True, "2026-10-02")
 aus = lb["strategien"]["Ausgleich"]["eintraege"]
@@ -171,7 +171,7 @@ posts = [x for x in Fake.log if x[0] == "POST"]
 pruefe("Aufträge an /v2/orders mit Betrag", posts and all(x[1] == "/v2/orders" and float(x[2]["notional"]) <= 1000 for x in posts))
 gets = [x for x in Fake.log if x[0] == "GET"]
 pruefe("Schlüssel im Header", gets and {k.lower(): v for k, v in gets[0][2].items()}.get("apca-api-key-id") == "SCHLUESSEL-ID")
-pruefe("Keine Schlüssel im Protokoll", "GEHEIM-123" not in B.PROTOKOLL.read_text() and "SCHLUESSEL-ID" not in B.PROTOKOLL.read_text())
+pruefe("Keine Schlüssel im Protokoll", "GEHEIM-123" not in B.PROTOKOLL.read_text(encoding="utf-8") and "SCHLUESSEL-ID" not in B.PROTOKOLL.read_text(encoding="utf-8"))
 vorher = len([x for x in Fake.log if x[0] == "POST"])
 B.ausfuehren(lb_test, trocken=False, env=dict(env, KI_BOT_STOP="1"))
 pruefe("Not-Aus: keine Aufträge", len([x for x in Fake.log if x[0] == "POST"]) == vorher)

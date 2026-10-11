@@ -41,6 +41,20 @@ SYMBOLE = {"S&P 500": "SPY", "SMI": "EWL", "Gold": "GLD", "Silber": "SLV", "Bitc
 MIN_AUFTRAG = 50.0
 
 
+
+def env_zahl(env, name, standard):
+    """Zahl aus einer Umgebungsvariable: «0,5», «1'000», « 0.5 » gehen; Unsinn → Standard mit Hinweis (nie ein Absturz,
+    der auch den Not-Aus lahmlegen würde)."""
+    roh = (env.get(name) or "").strip().replace("'", "").replace("’", "")
+    if not roh:
+        return float(standard)
+    roh = roh.replace(",", ".") if "," in roh and "." not in roh else roh.replace(",", "")
+    try:
+        return float(roh)
+    except ValueError:
+        print(f"⚠️ {name}={env.get(name)!r} ist keine Zahl — nehme {standard}.")
+        return float(standard)
+
 def einstellungen(env=None):
     env = os.environ if env is None else env
     echt = env.get("ALPACA_PAPER", "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == ECHTGELD_SATZ
@@ -49,8 +63,8 @@ def einstellungen(env=None):
         "basis": env.get("ALPACA_BASIS_URL") or (ECHT_URL if echt else PAPIER_URL),  # ALPACA_BASIS_URL nur für Tests
         "echtgeld": echt,
         "strategie": env.get("KI_BOT_STRATEGIE") or "Ausgleich",
-        "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
-        "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
+        "anteil": max(0.0, min(1.0, env_zahl(env, "KI_BOT_ANTEIL", 0.5))),
+        "max_auftrag": max(0.0, env_zahl(env, "KI_BOT_MAX_AUFTRAG", 1000)),
         "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists() or PAUSE_DATEI.exists(),
     }
 
@@ -168,10 +182,24 @@ def ausfuehren(lb, trocken=False, env=None, client=None):
 
 
 def _protokolliere(eintrag):
-    alt = json.loads(PROTOKOLL.read_text(encoding="utf-8")) if PROTOKOLL.exists() else []
-    alt.append(eintrag)
-    PROTOKOLL.parent.mkdir(exist_ok=True)
-    PROTOKOLL.write_text(json.dumps(alt[-500:], ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    """Auftrags-Protokoll (ohne Schlüssel). Wirft NIE: ein Protokollfehler darf einen Lauf nach den Aufträgen nicht als
+    «abgebrochen» melden. Atomar geschrieben; eine kaputte Datei wird beiseitegelegt statt jeden Lauf scheitern zu lassen."""
+    try:
+        try:
+            alt = json.loads(PROTOKOLL.read_text(encoding="utf-8")) if PROTOKOLL.exists() else []
+            if not isinstance(alt, list):
+                raise ValueError("keine Liste")
+        except (ValueError, UnicodeDecodeError):
+            PROTOKOLL.replace(PROTOKOLL.with_name(PROTOKOLL.name + f".kaputt-{datetime.now(timezone.utc):%Y%m%d-%H%M%S}"))
+            print("⚠️ Auftrags-Protokoll war unlesbar — beiseitegelegt, neues begonnen.")
+            alt = []
+        alt.append(eintrag)
+        PROTOKOLL.parent.mkdir(exist_ok=True)
+        tmp = PROTOKOLL.with_name(PROTOKOLL.name + f".tmp{os.getpid()}")
+        tmp.write_text(json.dumps(alt[-500:], ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        os.replace(tmp, PROTOKOLL)
+    except Exception as ex:  # noqa: BLE001
+        print(f"⚠️ Auftrags-Protokoll nicht geschrieben ({type(ex).__name__}: {ex}) — die Aufträge selbst sind davon nicht betroffen.")
 
 
 # ───────────── Daytrading: Bracket-Aufträge aus Signalen mit Gütesiegel ─────────────
@@ -221,7 +249,7 @@ def plane_daytrade(cfg, konto, signal, kurs, risiko_pct):
 def daytrade(signale, trocken=False, env=None, client=None):
     cfg = einstellungen(env)
     env = os.environ if env is None else env
-    risiko_pct = float(env.get("KI_BOT_RISIKO") or "1")
+    risiko_pct = env_zahl(env, "KI_BOT_RISIKO", 1)
     eintrag = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "art": "daytrade",
                "modus": "ECHTGELD" if cfg["echtgeld"] else "papier", "trocken": trocken, "auftraege": [], "hinweis": ""}
     if not cfg["key"] or not cfg["secret"] or not signale:

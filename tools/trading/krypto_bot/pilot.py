@@ -240,7 +240,7 @@ def main():
         return 0
     import broker_futures as BF
     import sperre
-    if a.lauf and not a.trocken and BF.STOP_DATEI.exists():
+    if a.lauf and not a.trocken and BF.einstellungen()["stop"]:  # Datei STOP oder KI_BOT_STOP=1
         # Not-Aus hat Vorrang (auch vor der Pause) und braucht keine Kurse von Yahoo: nur schliessen, alle Märkte
         try:
             with sperre.lauf_sperre(warten=120):
@@ -258,13 +258,18 @@ def main():
     ents = [entscheid(m, a.offline) for m in maerkte()]
     for e in ents:
         print(text(e))
-    try:
-        import infos as I
-        lage = "Lagebild (nur Info, handelt nicht danach): " + I.text(I.lagebild())
-    except Exception as ex:  # noqa: BLE001
-        lage = f"Lagebild nicht verfügbar ({type(ex).__name__})"
-    print(lage)
+
+    def lage():
+        """Erst NACH den Aufträgen geholt: bis zu 11 Quellen mit Zeitlimits dürfen den Handel nicht verzögern."""
+        try:
+            import infos as I
+            t = "Lagebild (nur Info, handelt nicht danach): " + I.text(I.lagebild())
+        except Exception as ex:  # noqa: BLE001
+            t = f"Lagebild nicht verfügbar ({type(ex).__name__})"
+        print(t)
+        return t
     if a.status:
+        lage()
         return 0
     if PAUSE.exists() and not a.trocken:
         print("Auto-Handel ist aus (Pause) — nichts gehandelt. Einschalten im Cockpit oder mit weiter.bat.")
@@ -314,6 +319,8 @@ def schliessen_alle(ausfuehren=None, heute=None):
         else:
             zu = [f"{x['seite']} {x['menge']}" for x in a if x.get("id")]
             zeilen.append(f"✅ {m}: geschlossen ({', '.join(zu)})" if zu else f"✅ {m}: keine offene Position")
+        if b.get("modus") and b.get("hinweis") != "keine Futures-Schlüssel":
+            zeilen[-1] += f" · Konto: {'⚠️ ECHTGELD' if b['modus'] == 'echtgeld' else 'Testnetz'}"  # welches Konto geprüft wurde
     return alles_zu, zeilen
 
 
@@ -329,7 +336,8 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
 
 
 def handeln(ents, lage, trocken):
-    """Aufträge je Markt. Ein Fehler in einem Markt hält den anderen nicht auf; Warnungen kommen immer aufs Handy."""
+    """Aufträge je Markt. Ein Fehler in einem Markt hält den anderen nicht auf; Warnungen kommen immer aufs Handy.
+    lage: Text oder Funktion (wird erst nach den Aufträgen aufgerufen)."""
     import broker_futures as BF
     lb = lies()
     zeilen, wechsel_da, alle, warnung = [], False, [], False
@@ -353,6 +361,25 @@ def handeln(ents, lage, trocken):
         zeilen.append(text(e) + ("\n   Aufträge: " + ", ".join(f"{x['seite']} {x['menge']}" + (" ✗" if x.get("fehler") else "")
                                                              for x in auftraege) if auftraege else "")
                       + (f"\n   {hinweis}" if hinweis else ""))
+    # Abgewählte Märkte (KRYPTO_PILOT_MAERKTE): eine noch offene Position würde sonst nie mehr verwaltet (kein Trend-Ausstieg,
+    # Stop nie nachgeführt) → mit Ziel 0 schliessen (nur verkleinern) und melden.
+    gewaehlt = {e["markt"] for e in ents}
+    for m, (sym, _, _) in MAERKTE.items():
+        if m in gewaehlt:
+            continue
+        e_ab = {"hebel": 0.0, "stand": ents[0]["stand"]}
+        try:
+            a_ab = BF.ausfuehren(e_ab, trocken=trocken, symbol=sym, gewicht=1 / len(ents)) or []
+        except Exception as ex:  # noqa: BLE001
+            a_ab, e_ab["broker"] = [], {"fehler": True, "hinweis": f"{type(ex).__name__}"}
+        b_ab = e_ab.get("broker") or {}
+        if a_ab or b_ab.get("fehler") or b_ab.get("position"):
+            alle += a_ab
+            warnung = warnung or bool(b_ab.get("fehler") or b_ab.get("position"))
+            zeilen.append(f"{m} ist abgewählt (KRYPTO_PILOT_MAERKTE) — offene Position wird geschlossen: "
+                          + (", ".join(f"{x['seite']} {x['menge']}" + (" ✗" if x.get("fehler") else "") for x in a_ab) or "—")
+                          + (f" · ⚠️ noch offen: {b_ab['position']:g}" if b_ab.get("position") else "")
+                          + (f" · {b_ab.get('hinweis')}" if b_ab.get("fehler") else ""))
     if not trocken:
         modus = next(((e.get("broker") or {}).get("modus") for e in ents if (e.get("broker") or {}).get("modus")), None)
         kontostand_merken(lb, ents[0]["stand"], ents[0].get("kapital"), modus)
@@ -369,9 +396,10 @@ def handeln(ents, lage, trocken):
                               "hinweise": [((e.get("broker") or {}).get("hinweis") or "") for e in ents
                                            if (e.get("broker") or {}).get("hinweis") not in (None, "", "keine Futures-Schlüssel")][:10]}
     schreiben(lb)
+    lage_text = lage() if callable(lage) else lage  # erst jetzt: nach allen Aufträgen
     if alle or wechsel_da or bericht or warnung:
         import signale as SG
-        SG.push("\n".join(zeilen) + f"\n{lage}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
+        SG.push("\n".join(zeilen) + f"\n{lage_text}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
     return 3 if warnung else 0  # 3 = Warnung, schon aufs Handy gemeldet (1 bleibt für Abstürze)
 
 

@@ -112,7 +112,7 @@ with tempfile.TemporaryDirectory() as tmp:
     try:
         fc = FakeClaude(gut)
         e = KT.lauf(client=fc, logbuch=lbp, kurse=reihen, lage_text="Angst&Gier 50", push=False)
-        pruefe("Lauf: Entscheid gespeichert", e and json.loads(lbp.read_text())["entscheide"][0]["stand"] == tag(399))
+        pruefe("Lauf: Entscheid gespeichert", e and json.loads(lbp.read_text(encoding="utf-8"))["entscheide"][0]["stand"] == tag(399))
         KT.lauf(client=fc, logbuch=lbp, kurse=reihen, lage_text="x", push=False)
         pruefe("zweiter Lauf am selben Stand fragt Claude nicht nochmal", len(fc.aufrufe) == 1)
         pruefe("Lagebericht enthält das Lagebild", "Angst&Gier 50" in fc.aufrufe[0]["messages"][0]["content"])
@@ -220,7 +220,13 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Not-Aus aus dem Cockpit: STOP gesetzt", code == 200 and j["notaus"] and C.STOP.exists())
         code, j = post({"X-Cockpit": "1"}, an=False)
         pruefe("Not-Aus aufheben", code == 200 and not j["notaus"] and not C.STOP.exists())
+        C.notaus_an = lambda: "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!\n❌ BTC: unklar"
+        post({"X-Cockpit": "1"})
+        pruefe("gescheiterter Not-Aus steht im Protokoll NICHT als Erfolg", C.PROTOKOLL[0]["aktion"] == "notaus" and C.PROTOKOLL[0]["ok"] is False,
+               C.PROTOKOLL[0])
+        post({"X-Cockpit": "1"}, an=False)
         C.notaus_an = alt_an
+        pruefe("Not-Aus-Knopf: Fehler laut statt stumm (Server weg)", "Not-Aus NICHT ausgelöst" in html and "knopf.disabled = true" in html)
 
         # ── Knöpfe ──
         gestartet = []
@@ -249,7 +255,7 @@ with tempfile.TemporaryDirectory() as tmp:
         try:
             __import__("os").environ.pop("KRYPTO_RISIKO", None)
             e = C.aktion("risiko_2", starter)
-            pruefe("Knopf Risiko 2×: Einstellung gespeichert, Pilot liest sie", e["ok"] and json.loads(Km.EINSTELLUNGEN.read_text())["risiko"] == 2.0
+            pruefe("Knopf Risiko 2×: Einstellung gespeichert, Pilot liest sie", e["ok"] and json.loads(Km.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 2.0
                    and Km.risiko()["max_hebel"] == 2.0 and "Achtung" in e["text"], e["text"])
             pruefe("Cockpit zeigt die Stufe", C.stand(env={})["risiko"]["stufe"] == 2.0)
             C.aktion("risiko_1", starter)
@@ -397,7 +403,7 @@ with tempfile.TemporaryDirectory() as tmp:
                and "BTC: NICHT geschlossen, Position 0.2" in meldung and "ETH: unklar" in meldung and "✅" not in meldung, meldung)
         meldung = C.notaus_an(ausfuehren=lambda e, symbol, gewicht: (e.update(broker={"hinweis": "keine Futures-Schlüssel"}), [])[1])
         pruefe("Not-Aus ohne Schlüssel: ehrlich «keine Schlüssel»", "keine Futures-Schlüssel" in meldung and "NICHT ALLES" not in meldung, meldung)
-        _ll = json.loads((Path(tmp) / "krypto-pilot.json").read_text()).get("letzter_lauf", {})
+        _ll = json.loads((Path(tmp) / "krypto-pilot.json").read_text(encoding="utf-8")).get("letzter_lauf", {})
         pruefe("Not-Aus aus dem Cockpit landet als «letzter Lauf» im Logbuch des Cockpits", "Not-Aus (Cockpit/Telegram)" in _ll.get("hinweise", []), _ll)
         with Sp.lauf_sperre(warten=0):  # ein Pilot-Lauf hält gerade die Sperre
             alt_warten = Sp.lauf_sperre
@@ -430,6 +436,60 @@ with tempfile.TemporaryDirectory() as tmp:
             pruefe("Täglicher Start ok: grün, ohne Push", ga["Täglicher Lauf (krypto-auto.bat)"]["ok"] is True and len(gesendet_m) == 1)
         finally:
             M.DATEI = alt_datei
+
+        # ── Umgebung: aktuelle Benutzer-Variablen (setx) statt der Startumgebung des Cockpits ──
+        reg = {"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD", "BINANCE_FUTURES_API_KEY": "NEU",
+               "PATH": "C:\\boese", "KI_BOT_STOP": ""}
+        u = C.umgebung({"BINANCE_FUTURES_API_KEY": "ALT", "KI_BOT_STOP": "1", "PATH": "/bin"}, lesen=lambda: reg)
+        pruefe("Umgebung: Wechsel auf Echtgeld/neue Schlüssel sofort sichtbar, fremde Variablen unberührt, leer = entfernt",
+               u["BINANCE_FUTURES_TESTNET"] == "false" and u["BINANCE_FUTURES_API_KEY"] == "NEU" and u["PATH"] == "/bin" and "KI_BOT_STOP" not in u, u)
+        pruefe("Umgebung: Registry nicht lesbar → Startumgebung", C.umgebung({"A": "1"}, lesen=lambda: (_ for _ in ()).throw(OSError("x"))) == {"A": "1"})
+        import broker_futures as _BF
+        alt_umg, alt_ausf = C.umgebung, _BF.ausfuehren
+        gesehen = []
+        C.umgebung = lambda *a_, **k_: {"BINANCE_FUTURES_API_KEY": "NEU", "BINANCE_FUTURES_TESTNET": "false"}
+
+        def _ausf(e_, env=None, symbol=None, gewicht=1.0, **k_):
+            gesehen.append((symbol, (env or {}).get("BINANCE_FUTURES_API_KEY")))
+            e_["broker"] = {"position": 0.0, "hinweis": "", "modus": "echtgeld"}
+            return []
+        _BF.ausfuehren = _ausf
+        try:
+            meldung = C.notaus_an()
+        finally:
+            C.umgebung, _BF.ausfuehren = alt_umg, alt_ausf
+            C.STOP.unlink()
+        pruefe("Not-Aus prüft das Konto der AKTUELLEN Einstellungen und sagt welches", gesehen and all(k == "NEU" for _, k in gesehen)
+               and "ECHTGELD" in meldung, (gesehen, meldung))
+        gn = {x["name"]: x for x in C.gesundheit({"KI_BOT_STOP": "1"}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Not-Aus über die Variable KI_BOT_STOP=1 zeigt die Ampel als aktiv", gn["Not-Aus"]["ok"] is False and "KI_BOT_STOP" in gn["Not-Aus"]["text"])
+
+        # ── Risiko-Knopf bei gesetzter Variable: nichts speichern ──
+        import pilot_kern as _K
+        alt_einst, alt_umg2 = _K.EINSTELLUNGEN, C.umgebung
+        _K.EINSTELLUNGEN = Path(tmp) / "einst.json"
+        C.umgebung = lambda *a_, **k_: {"KRYPTO_RISIKO": "1"}
+        try:
+            e_r = C.aktion("risiko_2")
+            pruefe("Risiko-Knopf mit KRYPTO_RISIKO gesetzt: abgelehnt UND nichts gespeichert (wirkt nie später still)",
+                   not e_r["ok"] and not _K.EINSTELLUNGEN.exists(), e_r)
+            C.umgebung = lambda *a_, **k_: {}
+            e_r = C.aktion("risiko_1_5")
+            pruefe("Risiko-Knopf ohne Variable: gespeichert und richtig gemeldet", e_r["ok"] and "1.5×" in e_r["text"]
+                   and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 1.5, e_r)
+        finally:
+            _K.EINSTELLUNGEN, C.umgebung = alt_einst, alt_umg2
+        # ── ETH-Sammler-Karte: «unklar» nicht im Ø-Preis ──
+        (Path(tmp) / "eth-sammler.json").write_text(json.dumps({"testnetz": {"kaeufe": [{"tag": "2026-01-01", "usdt": 50.0, "eth": 0.02},
+                                                                                       {"tag": "2026-01-08", "usdt": 50.0, "eth": 0.0, "unklar": True}],
+                                                                            "gestakt": []}}), encoding="utf-8")
+        sm = C.stand(env={})["sammler"]
+        pruefe("Sammler-Karte: unklarer Kauf getrennt, Ø-Preis 2500 statt 5000", sm["schnitt"] == 2500.0 and sm["unklar"] == 1
+               and sm["eingesetzt"] == 50.0, sm)
+        gk = {x["name"]: x for x in C.gesundheit({"ANTHROPIC_API_KEY": "k"}, {"entscheide": []}, {"entscheide": [{"stand": "2026-01-01"}]},
+                                                 datetime(2026, 1, 20, tzinfo=timezone.utc).date())}
+        pruefe("KI-Ampel: rot, wenn die letzte Einschätzung alt ist (nicht nur «Schlüssel gesetzt»)", gk["Claude (KI-Trader)"]["ok"] is False
+               and "19 Tage" in gk["Claude (KI-Trader)"]["text"], gk["Claude (KI-Trader)"])
 
         # ── Telegram-Calls im Cockpit ──
         pruefe("Calls: ohne Einrichtung keine Tafel und ehrliche /calls-Antwort", C.calls_stand() is None and "nicht eingerichtet" in C.befehl("/calls"))
@@ -493,6 +553,31 @@ with tempfile.TemporaryDirectory() as tmp:
                [x["chat_id"] for x in TG.gesendet] == ["42", "42", "42"] and "/status" in texte[1] and "aufgehoben" in texte[2], texte)
         pruefe("Telegram: /weiter hebt Not-Aus auf, fremdes /stop wirkte nicht", not C.STOP.exists())
         pruefe("Telegram: unbekannter Text wird ignoriert", C.befehl("hallo") is None and C.befehl("") is None)
+
+        class TGNetz(TG):
+            """Netz beim Start 3× weg: der Rückstau (altes /weiter) darf trotzdem NIE ausgeführt werden."""
+            fehler_noch = 3
+
+            def do_GET(self):
+                q = dict(urllib.parse.parse_qsl(urllib.parse.urlparse(self.path).query))
+                if q.get("offset") == "-1" and TGNetz.fehler_noch > 0:
+                    TGNetz.fehler_noch -= 1
+                    self.send_response(502)
+                    self.end_headers()
+                    return
+                return super().do_GET()
+
+        TG.gesendet, TG.abrufe = [], []
+        TG.rueckstau = [{"update_id": 7, "message": {"chat": {"id": 42}, "date": jetzt, "text": "/weiter"}}]
+        TG.neu = []
+        tg2 = HTTPServer(("127.0.0.1", 0), TGNetz)
+        threading.Thread(target=tg2.serve_forever, daemon=True).start()
+        C.STOP.write_text("x")
+        C.telegram_schleife(env={"TELEGRAM_BOT_TOKEN": "T0KEN", "TELEGRAM_CHAT_ID": "42"}, basis=f"http://127.0.0.1:{tg2.server_port}", runden=5, warte=0)
+        pruefe("Telegram: Netz beim Start weg → altes /weiter trotzdem NICHT ausgeführt (Not-Aus bleibt)", C.STOP.exists()
+               and any("NICHT ausgeführt" in x["text"] for x in TG.gesendet), (TG.abrufe, TG.gesendet))
+        C.STOP.unlink()
+        tg2.shutdown()
         tg.shutdown()
     finally:
         C.DATA, C.STOP, C.PAUSE = alt
@@ -515,6 +600,10 @@ for _n in ("cockpit.bat", "calls.bat", "../ki_bot/stop.bat", "../ki_bot/start-au
     pruefe(f"{_n}: Windows-Zeilenenden", _b.count(b"\n") == _b.count(b"\r\n"))
 _sa = (HIER / "../ki_bot/start-auto.bat").read_text(encoding="ascii")
 pruefe("start-auto.bat: beachtet die Pause", 'PAUSE"' in _sa and "PYTHONUTF8" in _sa)
+pruefe("start-auto.bat auto: ohne Pause, Tageswächter mit Ende (sonst blockiert er die Aufgabe am nächsten Tag)",
+       '"%~1"=="auto"' in _sa and "--stunden" in _sa and "\npause" not in _sa.replace("\r", "") and "WARTE=rem" not in _sa)
+pruefe("krypto-auto.bat: ETH-Sparplan nur mit ausdrücklicher Freigabe (ETH_SPARPLAN_BETRAG), nicht schon wegen des Spot-Schlüssels",
+       '"%ETH_SPARPLAN_BETRAG%"==""' in txt and 'if not "%BINANCE_API_KEY%"=="" (\r\n  call :schritt ETH-Sammler' not in txt)
 
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

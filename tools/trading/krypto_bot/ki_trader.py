@@ -245,6 +245,9 @@ def lauf(neu=False, client=None, jetzt=None, logbuch=None, kurse=None, lage_text
     d, info = frage_claude(lagebericht(reihen, lage_text, ki["entscheide"]), client)
     if d is None:
         print("KI-Trader: " + info["hinweis"])
+        if push:  # nie still: sonst fehlen dem Schattenkonto wochenlang Daten, ohne dass es jemand merkt
+            import signale as SG
+            SG.push(f"⚠️ KI-Trader: keine Einschätzung für {stand} — {info['hinweis']}")
         return None
     e = {"stand": stand, "zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), **info, **d,
          "kurse": {c: reihen[c][-1][1] for c in COINS}}
@@ -266,7 +269,7 @@ def main():
     ap.add_argument("--stand", action="store_true")
     a = ap.parse_args()
     if a.lauf:
-        lauf(a.neu)
+        return 0 if lauf(a.neu) is not None else 3  # 3 = Warnung (schon gemeldet), für krypto-auto.bat
     elif a.stand:
         ki = lies()
         reihen = kurse_laden(offline=True)

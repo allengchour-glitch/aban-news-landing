@@ -21,6 +21,7 @@ import sperre as _SP0  # noqa: E402
 import testumgebung  # noqa: E402
 
 testumgebung.schalter_umbiegen(BF, _SP0)  # echte STOP/PAUSE-Dateien des Nutzers dürfen den Test nicht beeinflussen
+BF.NACHFRAGE_WARTEN = (0.0, 0.0, 0.0)  # im Test nicht warten
 
 OK, FEHLER = 0, []
 
@@ -164,6 +165,35 @@ w2 = PI.wochenbericht(lb, "2026-10-08")
 pruefe("Wochenbericht: seit Start, Vorwoche, unter Höchststand", w2 and "-5.0 %" in w2 and "seit Vorwoche: -5.0 %" in w2
        and "unter Höchststand: -8.6 %" in w2, w2)
 
+# ── Tageslauf: abgewählter Markt mit offener Position wird geschlossen, Lagebild erst nach den Aufträgen ──
+sys.path.insert(0, str(HIER.parent / "ki_bot"))
+import signale as _SG  # noqa: E402
+with _tf.TemporaryDirectory() as _hd:
+    alt_lb, alt_ausf, alt_push = PI.LOGBUCH, BF.ausfuehren, _SG.push
+    PI.LOGBUCH = Path(_hd) / "pilot.json"
+    reihenfolge, gesendet = [], []
+
+    def _ausf(e_, trocken=False, symbol=None, gewicht=1.0, **k_):
+        reihenfolge.append(("auftrag", symbol))
+        if symbol == "ETHUSDT":
+            e_["broker"] = {"position": 0.0, "hinweis": "", "fehler": False, "modus": "testnetz"}
+            return [{"seite": "SELL", "menge": 1.5, "reduce_only": True, "id": 7}]
+        e_["broker"] = {"position": 0.1, "hinweis": "", "fehler": False, "modus": "testnetz"}
+        return []
+
+    def _lage():
+        reihenfolge.append(("lage", None))
+        return "Lagebild: test"
+
+    BF.ausfuehren, _SG.push = _ausf, gesendet.append
+    try:
+        rc = PI.handeln([dict(eb)], _lage, trocken=False)
+    finally:
+        PI.LOGBUCH, BF.ausfuehren, _SG.push = alt_lb, alt_ausf, alt_push
+    pruefe("abgewählter Markt (nur BTC gewählt): offene ETH-Position wird geschlossen und gemeldet",
+           ("auftrag", "ETHUSDT") in reihenfolge and gesendet and "ETH ist abgewählt" in gesendet[0] and "SELL 1.5" in gesendet[0], (reihenfolge, gesendet))
+    pruefe("Lagebild erst NACH allen Aufträgen geholt", reihenfolge[-1] == ("lage", None) and "Lagebild: test" in gesendet[0], reihenfolge)
+
 # ── nachgebauter Binance-Futures-Server ──
 GEHEIM = "futures-geheim"
 
@@ -172,6 +202,7 @@ class Fake(BaseHTTPRequestHandler):
     log, pos, hedge, rechte = [], 0.0, False, {"enableWithdrawals": False}
     stops, markt_fehler, stop_fehler, mark = [], None, None, "50000"
     nach_markt = None  # wird nach jedem ausgeführten Marktauftrag aufgerufen (z. B. Not-Aus mitten im Lauf)
+    cids, ausgefuehrt_503, hebel_fehler = {}, False, False  # Auftragskennungen; «503 aber ausgeführt»; −4161 beim Hebel
 
     def _a(self, o, code=200):
         b = json.dumps(o).encode()
@@ -231,11 +262,22 @@ class Fake(BaseHTTPRequestHandler):
             return self._a({"algoId": 2, "algoStatus": "NEW"})
         if pfad == "/fapi/v1/marginType":
             return self._a({"code": -4046, "msg": "No need to change margin type."}, 400)
+        if pfad == "/fapi/v1/order" and methode == "GET" and p.get("origClientOrderId"):
+            if p["origClientOrderId"] in Fake.cids:
+                return self._a({"orderId": 1, "status": Fake.cids[p["origClientOrderId"]]})
+            return self._a({"code": -2013, "msg": "Order does not exist."}, 400)
+        if pfad == "/fapi/v1/leverage" and Fake.hebel_fehler:
+            return self._a({"code": -4161, "msg": "Leverage reduction is not supported in Isolated Margin Mode with open positions."}, 400)
         if pfad == "/fapi/v1/order" and p.get("type") == "MARKET":
+            if Fake.ausgefuehrt_503:
+                Fake.pos = round(Fake.pos + float(p["quantity"]) * (1 if p["side"] == "BUY" else -1), 6)
+                Fake.cids[p.get("newClientOrderId")] = "FILLED"
+                return self._a({"code": -1001, "msg": "Unknown error, please check your request or try again later."}, 503)
             if Fake.markt_fehler:
                 return self._a(Fake.markt_fehler, 503)
             q2 = float(p["quantity"]) * (1 if p["side"] == "BUY" else -1)
             Fake.pos = round(Fake.pos + q2, 6)
+            Fake.cids[p.get("newClientOrderId")] = "FILLED"
             if Fake.nach_markt:
                 Fake.nach_markt()
             return self._a({"orderId": 1, "status": "FILLED"})
@@ -309,6 +351,27 @@ pruefe("Not-Aus scheitert an Börse: Position bleibt, alter Stop BLEIBT stehen",
        (Fake.pos, Fake.stops))
 pruefe("…und das Ergebnis sagt es (Position 0.2, Fehler)", e_na["broker"]["position"] == 0.2 and e_na["broker"]["fehler"] and not e_na["broker"]["ohne_stop"],
        e_na["broker"])
+# Binance: «Unknown error» (503) heisst Status UNBEKANNT — der Auftrag kann ausgeführt sein
+Fake.pos, Fake.stops, Fake.ausgefuehrt_503 = 0.0, [], True
+e_503 = dict(ent)
+BF.ausfuehren(e_503, env=env, protokolliere=prot.append)
+Fake.ausgefuehrt_503 = False
+pruefe("503 «Unknown error», aber ausgeführt: nachgefragt, Position mit Stop, kein falscher Fehler", Fake.pos == 0.2
+       and Fake.stops == [{"side": "SELL", "stopPrice": "45000"}] and not e_503["broker"]["fehler"], (Fake.pos, Fake.stops, e_503["broker"]))
+Fake.pos, Fake.stops = 0.0, [{"side": "SELL", "stopPrice": "44000"}]
+Fake.markt_fehler = {"code": -1001, "msg": "Unknown error"}
+e_unk = dict(ent)
+BF.ausfuehren(e_unk, env=env, protokolliere=prot.append)
+Fake.markt_fehler = None
+pruefe("Status bleibt unklar und Position (noch) 0: Stops werden NICHT gelöscht, laut gemeldet", Fake.stops == [{"side": "SELL", "stopPrice": "44000"}]
+       and e_unk["broker"]["fehler"] and "unklar" in e_unk["broker"]["hinweis"], (Fake.stops, e_unk["broker"]))
+Fake.pos, Fake.stops, Fake.hebel_fehler = 0.1, [], True
+e_hb = dict(ent)
+BF.ausfuehren(e_hb, env=env, protokolliere=prot.append)
+Fake.hebel_fehler = False
+pruefe("Hebel senken bei offener Position (−4161) blockiert das Aufstocken nicht", Fake.pos == 0.2 and not e_hb["broker"]["fehler"], (Fake.pos, e_hb["broker"]))
+pruefe("Komma in Einstellungen legt nichts lahm", BF.einstellungen({"KI_BOT_ANTEIL": "0,4", "KI_BOT_MAX_AUFTRAG": "1'500"})["anteil"] == 0.4
+       and BF.einstellungen({"KI_BOT_MAX_AUFTRAG": "1'500"})["max_auftrag"] == 1500.0 and BF.einstellungen({"KI_BOT_ANTEIL": "viel"})["anteil"] == 0.5)
 
 
 class Abbruch(Fake):
@@ -318,6 +381,7 @@ class Abbruch(Fake):
         p = dict(urllib.parse.parse_qsl(q))
         if pfad == "/fapi/v1/order" and p.get("type") == "MARKET" and Fake.abbrechen:
             Fake.pos = round(Fake.pos + float(p["quantity"]) * (1 if p["side"] == "BUY" else -1), 6)
+            Fake.cids[p.get("newClientOrderId")] = "FILLED"
             self.close_connection = True
             return
         return super()._route(methode)
@@ -335,8 +399,9 @@ try:
 except Exception as ex:  # noqa: BLE001
     absturz = ex
 Fake.abbrechen = False
-pruefe("Netzabbruch nach Ausführung: kein Absturz, Stop passend zur echten Position", absturz is None and Fake.pos == 0.2
-       and Fake.stops == [{"side": "SELL", "stopPrice": "45000"}] and e_ab["broker"]["fehler"], (absturz, Fake.pos, Fake.stops))
+pruefe("Netzabbruch nach Ausführung: per Kennung nachgefragt → ausgeführt, Stop passend, ehrlich gemeldet", absturz is None and Fake.pos == 0.2
+       and Fake.stops == [{"side": "SELL", "stopPrice": "45000"}] and not e_ab["broker"]["fehler"] and "nachgefragt" in e_ab["broker"]["hinweis"],
+       (absturz, Fake.pos, Fake.stops, e_ab.get("broker")))
 srv2.shutdown()
 Fake.pos, Fake.stops, Fake.mark = 0.0, [], "44000"
 e_tief = dict(ent)
@@ -419,14 +484,14 @@ with _tf.TemporaryDirectory() as _ld:
     _lb = Path(_ld) / "pilot.json"
     PI.lauf_merken(False, ["", "❌ BTC: unklar"], logbuch=_lb)
     PI.lauf_merken(True, ["x"], trocken=True, logbuch=_lb)
-    _ll = json.loads(_lb.read_text())["letzter_lauf"]
+    _ll = json.loads(_lb.read_text(encoding="utf-8"))["letzter_lauf"]
     pruefe("letzter echter Lauf gemerkt, Probelauf überschreibt ihn nicht", _ll["ok"] is False and _ll["hinweise"] == ["❌ BTC: unklar"], _ll)
     _lb.write_text('{"entscheide": [ {"stand"')  # Strom weg beim Schreiben
     _neu = PI.lies(_lb)
     pruefe("kaputtes Logbuch: beiseitegelegt, neues begonnen (kein Absturz bei jedem Lauf)", _neu["entscheide"] == []
            and len(list(Path(_ld).glob("pilot.json.kaputt-*"))) == 1 and not _lb.exists())
     PI.schreiben({"a": 1}, _lb)
-    pruefe("atomar geschrieben, keine Zwischendatei übrig", json.loads(_lb.read_text()) == {"a": 1} and not list(Path(_ld).glob("*.tmp*")))
+    pruefe("atomar geschrieben, keine Zwischendatei übrig", json.loads(_lb.read_text(encoding="utf-8")) == {"a": 1} and not list(Path(_ld).glob("*.tmp*")))
 lb_m = {"entscheide": [], "kontostand": []}
 PI.kontostand_merken(lb_m, "2026-10-01", 10000)            # alter Eintrag ohne Modus = Testnetz
 PI.kontostand_merken(lb_m, "2026-10-02", 15000, "testnetz")

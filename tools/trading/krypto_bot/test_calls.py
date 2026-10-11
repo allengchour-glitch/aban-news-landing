@@ -433,7 +433,7 @@ pruefe("Schatten: keine Aufträge, Ergebnis mit echten Kursen gerechnet", "auftr
 s = CK.stand(CK.BUCH, CK.PRUEFUNG)
 pruefe("Bilanz je Gruppe", s["gruppen"]["-1001"]["calls"] >= 5 and s["gruppen"]["-1001"]["schatten"]["n"] >= 1 and s["letzte"]
        and "VIP Calls" in CK.stand_text(s), s["gruppen"])
-pruefe("keine Schlüssel im Buch", GEHEIM not in CK.BUCH.read_text() and "KEY-C" not in CK.BUCH.read_text())
+pruefe("keine Schlüssel im Buch", GEHEIM not in CK.BUCH.read_text(encoding="utf-8") and "KEY-C" not in CK.BUCH.read_text(encoding="utf-8"))
 
 # Not-Aus des Piloten schliesst auch kopierte Calls
 import pilot as PI  # noqa: E402

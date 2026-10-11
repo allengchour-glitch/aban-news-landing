@@ -21,6 +21,7 @@ import http.client
 import json
 import math
 import os
+import random
 import time
 import urllib.error
 import urllib.parse
@@ -43,6 +44,13 @@ class BinanceFehler(urllib.error.HTTPError):
     """HTTP-Fehler mit Binance-Code und -Meldung (enthält nie Schlüssel)."""
 
 
+class UnklarFehler(OSError):
+    """Auftrag gesendet, aber auch nach Nachfragen unklar, ob ausgeführt — Stops dann nie löschen."""
+
+
+NACHFRAGE_WARTEN = (1.0, 2.0, 4.0)  # Sekunden zwischen den Nachfragen nach einem Auftrag mit unklarem Status
+
+
 # Alles, was beim Netz schiefgehen kann: URLError, Zeitüberschreitung (TimeoutError), abgerissene Verbindung
 # (RemoteDisconnected/IncompleteRead). Nach so einem Fehler ist offen, ob Binance den Auftrag ausgeführt hat.
 NETZFEHLER = (OSError, http.client.HTTPException)
@@ -59,6 +67,19 @@ def fehlertext(ex):
     if code:
         return f"Binance lehnt ab (HTTP {code}): {getattr(ex, 'msg', '')}"
     return f"Binance nicht erreichbar: {type(ex).__name__}"
+
+
+def env_zahl(env, name, standard):
+    """«0,5», «1'000» gehen; Unsinn → Standard mit Hinweis. Nie ein Absturz vor dem Not-Aus."""
+    roh = (env.get(name) or "").strip().replace("'", "").replace("’", "")
+    if not roh:
+        return float(standard)
+    roh = roh.replace(",", ".") if "," in roh and "." not in roh else roh.replace(",", "")
+    try:
+        return float(roh)
+    except ValueError:
+        print(f"⚠️ {name}={env.get(name)!r} ist keine Zahl — nehme {standard}.")
+        return float(standard)
 
 
 def einstellungen(env=None):
@@ -78,8 +99,8 @@ def einstellungen(env=None):
         "spot": env.get("BINANCE_SPOT_URL") or SPOT_URL,
         "echtgeld": echt, "symbol": (env.get("KRYPTO_FUTURES_SYMBOL") or "BTCUSDT").upper(),
         "max_hebel": max(0.0, min(HEBEL_HART, hebel)),
-        "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
-        "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
+        "anteil": max(0.0, min(1.0, env_zahl(env, "KI_BOT_ANTEIL", 0.5))),
+        "max_auftrag": max(0.0, env_zahl(env, "KI_BOT_MAX_AUFTRAG", 1000)),
         "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists(),
     }
 
@@ -150,13 +171,38 @@ class Futures:
         except BinanceFehler as ex:
             if "-4046" not in str(ex.msg):  # «No need to change margin type» ist kein Fehler
                 raise
-        self._req("POST", "/fapi/v1/leverage", {"symbol": symbol, "leverage": max(1, math.ceil(hebel))}, signiert=True)
+        try:
+            self._req("POST", "/fapi/v1/leverage", {"symbol": symbol, "leverage": max(1, math.ceil(hebel))}, signiert=True)
+        except BinanceFehler as ex:
+            # −4161: Hebel senken geht bei offener Isolated-Position nicht. Harmlos: der Börsen-Hebel bleibt höher, die
+            # Positionsgrösse begrenzt plane() trotzdem auf die gewählte Risiko-Stufe; gesenkt wird, sobald flach.
+            if "-4161" not in str(ex.msg):
+                raise
 
     def auftrag(self, symbol, seite, menge, reduce_only):
-        p = {"symbol": symbol, "side": seite, "type": "MARKET", "quantity": fmt(menge), "newOrderRespType": "RESULT"}
+        """Marktauftrag mit eigener Kennung. Antwortet Binance «unbekannt» (5xx, 408) oder reisst die Verbindung ab, wird per
+        Kennung nachgefragt — laut Binance ist das KEIN Fehlschlag, der Auftrag kann ausgeführt sein."""
+        cid = f"kp{int(time.time() * 1000)}{random.randint(0, 999999):06d}"
+        p = {"symbol": symbol, "side": seite, "type": "MARKET", "quantity": fmt(menge), "newOrderRespType": "RESULT",
+             "newClientOrderId": cid}
         if reduce_only:
             p["reduceOnly"] = "true"
-        return self._req("POST", "/fapi/v1/order", p, signiert=True)
+        try:
+            return self._req("POST", "/fapi/v1/order", p, signiert=True)
+        except (BinanceFehler, *NETZFEHLER) as ex:
+            if isinstance(ex, BinanceFehler) and ex.code < 500 and ex.code != 408:
+                raise  # klare Ablehnung: nicht ausgeführt
+            for warte in NACHFRAGE_WARTEN:
+                time.sleep(warte)
+                try:
+                    o = self._req("GET", "/fapi/v1/order", {"symbol": symbol, "origClientOrderId": cid}, signiert=True) or {}
+                except (BinanceFehler, *NETZFEHLER):
+                    continue  # (noch) nicht bekannt oder wieder keine Antwort
+                if o.get("status") in ("FILLED", "PARTIALLY_FILLED"):
+                    return {**o, "nachgefragt": True}
+                if o.get("status") in ("CANCELED", "EXPIRED", "REJECTED", "EXPIRED_IN_MATCH"):
+                    raise ex
+            raise UnklarFehler(f"Status unklar nach {type(ex).__name__}: {getattr(ex, 'msg', '') or ex}") from ex
 
     def offene_stops(self, symbol):
         """Stop-Aufträge (closePosition) für dieses Symbol: [{algoId|orderId, side, stopPrice}].
@@ -263,6 +309,10 @@ def stops_nachfuehren(c, sym, regeln, entscheid, e, erg):
         melde(f"⚠️ Position/Stops nicht lesbar ({fehlertext(ex)}) — Stops unverändert gelassen, bitte im Konto prüfen!")
         return
     if not neu:
+        if alte and erg.get("unklar"):
+            melde("⚠️ Ein Auftrag hat einen unklaren Status — die Stops bleiben stehen (falls er doch ausgeführt wird). "
+                  "Bitte im Binance-Konto prüfen!")
+            return
         if alte:
             try:
                 c.stops_loeschen(sym)
@@ -356,10 +406,11 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
         regeln = c.regeln(sym)
         if regeln.get("status") not in (None, "TRADING"):
             return abbruch(f"{sym} ist nicht handelbar.")
+        stand_ms = c._zeit() if hasattr(c, "_zeit") else int(time.time() * 1000)  # Börsenzeit, nicht PC-Uhr
         konto = c.konto()
         kapital = float(konto.get("totalWalletBalance", 0)) + float(konto.get("totalUnrealizedProfit", 0))
         # Stand des offenen Gewinns VOR den Aufträgen: Ausgangswert für «Gewinn heute» in der Profit-Anzeige
-        erg["offen"], erg["offen_ms"] = float(konto.get("totalUnrealizedProfit", 0) or 0), int(time.time() * 1000)
+        erg["offen"], erg["offen_ms"] = float(konto.get("totalUnrealizedProfit", 0) or 0), stand_ms
         menge = c.position(sym)
         mark, funding = c.markpreis(sym)
         e.update({"kapital": round(kapital, 2), "position": menge, "mark": mark, "funding_8h": funding})
@@ -395,10 +446,17 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
                     eingerichtet = True
                 antwort = c.auftrag(sym, seite, m, red)
                 a["id"], a["status"] = (antwort or {}).get("orderId"), (antwort or {}).get("status")
+                if (antwort or {}).get("nachgefragt"):
+                    a["nachgefragt"] = True
+                    e["hinweis"] = (e["hinweis"] + f" Antwort auf {seite} {m} kam nicht an — nachgefragt: ausgeführt.").strip()
+            except UnklarFehler as ex:
+                a["fehler"] = f"Status unklar ({ex}) — ob ausgeführt, zeigt die Position"
+                erg["unklar"] = True
             except BinanceFehler as ex:
                 a["fehler"] = f"HTTP {ex.code}: {ex.msg}"
             except NETZFEHLER as ex:
                 a["fehler"] = f"Antwort verloren ({type(ex).__name__}) — ob ausgeführt, zeigt die Position danach"
+                erg["unklar"] = True
             if a.get("fehler"):
                 erg["fehler"] = True
                 break  # nach einem Fehler nichts mehr nachschieben (z. B. keine Gegenposition, wenn das Schliessen scheiterte)

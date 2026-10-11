@@ -373,7 +373,9 @@ function zeigeCalls(c) {
 
 function zeichne(d) {
   letzterStand = d;
-  $("modus").textContent = d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
+  $("modus").textContent = d.modus_spot && d.modus_spot !== d.modus
+    ? `Futures: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"} · Spot: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}`
+    : (d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)");
   $("modus").className = "pill" + (d.modus === "ECHTGELD" ? " echt" : "");
   $("tg").hidden = !d.telegram;
   zeigeCalls(d.calls);
@@ -456,7 +458,8 @@ function zeichne(d) {
   const s = d.sammler;
   $("sammler").innerHTML = s ? `<dl><dt>Käufe</dt><dd>${s.kaeufe}</dd><dt>Eingesetzt</dt><dd>${fmtZahl(s.eingesetzt, 2)} USDT</dd>
       <dt>Gesammelt</dt><dd>${fmtZahl(s.eth, 5)} ETH</dd><dt>Ø-Preis</dt><dd>${fmtZahl(s.schnitt, 2)}</dd><dt>Gestakt</dt><dd>${fmtZahl(s.gestakt, 4)} ETH</dd>
-      <dt>Wert jetzt</dt><dd id="s-wert">…</dd></dl>`
+      <dt>Wert jetzt</dt><dd id="s-wert">…</dd><dt>Modus</dt><dd>${s.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}</dd></dl>`
+      + (s.unklar ? `<p class="unter">⚠️ ${s.unklar} Kauf/Käufe unklar (${fmtZahl(s.unklar_usdt, 2)} USDT, Antwort verloren) — nicht im Ø-Preis; bitte im Binance-Konto prüfen.</p>` : "")
     : `<p class="leer">Noch keine Käufe. Start: py tools\\trading\\krypto_bot\\eth_sammler.py --lauf --trocken</p>`;
   if (s) fetch("https://data-api.binance.vision/api/v3/ticker/price?symbol=ETHUSDT").then(r => r.json()).then(t => {
     const wert = s.eth * +t.price, g = wert - s.eingesetzt;
@@ -472,16 +475,29 @@ async function laden() {
 }
 
 $("notaus").addEventListener("click", async () => {
-  if (!confirm("Not-Aus: Pilot-Positionen sofort schliessen und alle Bots stoppen?")) return;
-  const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an: true})});
-  const j = await r.json(); alert(j.meldung || j.fehler); laden(); ladeProtokoll();
+  const konto = letzterStand && letzterStand.modus === "ECHTGELD" ? "⚠️ ECHTGELD-Konto" : "Testnetz-Konto";
+  if (!confirm(`Not-Aus: Pilot-Positionen und kopierte Calls sofort schliessen und alle Bots stoppen?\n(${konto})`)) return;
+  const knopf = $("notaus");
+  knopf.disabled = true; knopf.textContent = "Not-Aus läuft …";
+  try {
+    const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an: true})});
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.fehler || ("HTTP " + r.status));
+    alert(j.meldung);
+  } catch (e) {
+    // Der wichtigste Knopf darf nie stumm scheitern
+    alert("❌ Not-Aus NICHT ausgelöst — Cockpit-Server nicht erreichbar (" + e.message + ").\nSofort stop.bat starten oder Telegram /stop senden!");
+  } finally {
+    knopf.disabled = false; knopf.textContent = "🛑 Not-Aus";
+    laden(); ladeProtokoll();
+  }
 });
 
 // ───────── Knöpfe + Terminal ─────────
 const FRAGE = {
   handeln: d => `Pilot jetzt handeln lassen?\nModus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz (Spielgeld)"}\nEr kauft oder verkauft nur, wenn die Position nicht im Zielbereich liegt.`,
   ki: () => "Claude jetzt fragen?\nKostet etwa 4–10 US-Cent. Pro Tag gibt es eine Einschätzung (ein zweiter Klick am selben Tag kostet nichts).",
-  sparplan: d => "ETH-Sparplan jetzt ausführen?\nEr kauft nur, wenn der nächste Termin fällig ist.",
+  sparplan: d => `ETH-Sparplan jetzt ausführen?\nModus: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD (Spot)" : "Testnetz (Spielgeld)"}\nEr kauft nur, wenn der nächste Termin fällig ist.`,
   aufgabe: () => "Windows-Aufgabe einrichten?\nDann startet krypto-auto.bat jeden Tag um 02:30 — auch auf Akku; war der PC aus, holt er den Lauf beim nächsten Start nach. Eine bestehende Aufgabe «Krypto-Pilot» wird ersetzt.",
   update: () => "Neueste Version holen (git pull)?\nDanach das Cockpit neu starten.",
   auto_an: d => `Auto-Handel wieder EINSCHALTEN?\n${d.notaus ? "Der Not-Aus wird aufgehoben. " : ""}Der nächste Lauf handelt wieder (Modus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}).`,

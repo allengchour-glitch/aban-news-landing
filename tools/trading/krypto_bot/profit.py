@@ -23,7 +23,7 @@ import sys
 import threading
 import time
 import urllib.error
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, time as dtime, timedelta, timezone
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -66,7 +66,9 @@ def lies(pfad=None):
         warnung = (f"Profit-Logbuch war beschädigt — beiseitegelegt als {kaputt.name}, neu begonnen "
                    "(Binance liefert nur die letzten 90 Tage nach).")
         print("⚠️ " + warnung)
-        lb = {}
+        # bleibt im Buch stehen (Cockpit, /profit), bis die beiseitegelegte Datei gelöscht wird — auch wenn der tägliche
+        # Lauf die Beschädigung zuerst findet
+        lb = {"warnung_kaputt": {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "datei": kaputt.name}}
     if "einkommen" in lb:  # Version 1: ein Topf für alles (damals lief nur das Testnetz)
         lb = {"testnetz": {"einkommen": lb.get("einkommen", {}), "offen_verlauf": lb.get("offen_verlauf", [])}}
     lb["version"] = 2
@@ -74,8 +76,12 @@ def lies(pfad=None):
         b = lb.setdefault(m, {})
         for k, v in leeres_buch().items():
             b.setdefault(k, v)
-    if warnung:
-        lb["_warnung"] = warnung
+    w = lb.get("warnung_kaputt")
+    if w and (pfad.parent / w.get("datei", "")).exists():
+        lb["_warnung"] = (f"Profit-Logbuch war am {w['zeit'][:10]} beschädigt — «seit Start» enthält nur, was Binance noch "
+                          f"lieferte (90 Tage). Die alte Datei liegt als data/{w['datei']} (löschen = Hinweis weg).")
+    elif w:
+        lb.pop("warnung_kaputt")
     return lb
 
 
@@ -152,8 +158,11 @@ def nachfuehren(buch, c, jetzt_ms=None, max_tage=90):
         if art == "TRANSFER":
             buch["transfers"][key] = {"zeit": int(e["time"]), "betrag": float(e["income"]), "asset": asset}
             continue
-        if art not in GEWINN_ARTEN or key in buch["einkommen"]:
+        if art not in GEWINN_ARTEN:
             continue
+        alt = buch["einkommen"].get(key)
+        if alt and (alt.get("asset", "USDT") in STABIL or alt.get("kurs_usdt")):
+            continue  # schon da (und umgerechnet)
         eintrag = {"zeit": int(e["time"]), "art": GEWINN_ARTEN[art], "symbol": e.get("symbol") or "",
                    "betrag": float(e["income"]), "asset": asset}
         if asset not in STABIL:  # z. B. Gebühren in BNB: zum Kurs beim Abholen umrechnen
@@ -164,6 +173,17 @@ def nachfuehren(buch, c, jetzt_ms=None, max_tage=90):
                     kurse[asset] = None
             eintrag["kurs_usdt"] = kurse[asset]
         buch["einkommen"][key] = eintrag
+    # Früher nicht umrechenbar (Kurs-Aussetzer)? Jetzt nachtragen — sonst fehlten diese Gebühren für immer.
+    for e in buch["einkommen"].values():
+        asset = e.get("asset", "USDT")
+        if asset not in STABIL and not e.get("kurs_usdt"):
+            if asset not in kurse:
+                try:
+                    kurse[asset] = c.markpreis(f"{asset}USDT")[0]
+                except (BF.BinanceFehler, *BF.NETZFEHLER, KeyError, ValueError):
+                    kurse[asset] = None
+            if kurse[asset]:
+                e["kurs_usdt"] = kurse[asset]
     buch["abgerufen_bis"] = jetzt_ms
     return buch
 
@@ -172,7 +192,8 @@ def auswerten(buch, konto, positionen, jetzt=None):
     """Reine Rechnung (testbar): Gewinn nach Zeitraum und Art, offene Positionen."""
     jetzt = jetzt or datetime.now().astimezone()
     jetzt_ms = jetzt.timestamp() * 1000
-    mitternacht = jetzt.replace(hour=0, minute=0, second=0, microsecond=0)
+    # Über das Datum neu bestimmen: an den Umstell-Tagen hat Mitternacht einen anderen UTC-Versatz als «jetzt»
+    mitternacht = datetime.combine(jetzt.astimezone().date(), dtime()).astimezone()
     grenzen = {"heute": mitternacht, "7_tage": jetzt - timedelta(days=7), "30_tage": jetzt - timedelta(days=30), "gesamt": None}
     wallet = float(konto.get("totalWalletBalance", 0) or 0)
     offen = float(konto.get("totalUnrealizedProfit", 0) or 0)
@@ -217,7 +238,11 @@ def auswerten(buch, konto, positionen, jetzt=None):
             continue
         einstieg, mark = float(p.get("entryPrice", 0) or 0), float(p.get("markPrice", 0) or 0)
         pnl = float(p.get("unRealizedProfit", 0) or 0)
-        marge = float(p.get("isolatedMargin", 0) or 0) or (abs(menge) * einstieg / max(1.0, float(p.get("leverage", 1) or 1)))
+        # Pfand: isolatedWallet. isolatedMargin enthält bei Binance den offenen Gewinn schon (Pfand + Gewinn) — damit wären
+        # Verluste zu gross und Gewinne zu klein. Ohne isolatedWallet: isolatedMargin − Gewinn, bei Cross: Wert ÷ Hebel.
+        marge = (float(p.get("isolatedWallet") or 0)
+                 or (float(p.get("isolatedMargin") or 0) - pnl if float(p.get("isolatedMargin") or 0) else 0)
+                 or abs(menge) * einstieg / max(1.0, float(p.get("leverage", 1) or 1)))
         pro_markt[p["symbol"]] = round(pro_markt.get(p["symbol"], 0.0) + pnl, 4)
         pos.append({"symbol": p["symbol"], "seite": "LONG" if menge > 0 else "SHORT", "menge": abs(menge), "einstieg": einstieg,
                     "mark": mark, "gewinn": round(pnl, 4), "gewinn_prozent": pnl / marge if marge else None,
@@ -249,11 +274,13 @@ def abrufen(env=None, client=None, logbuch=None, jetzt=None):
                            "damit Pilot und Not-Aus nicht gesperrt werden."}
     modus = "echtgeld" if cfg["echtgeld"] else "testnetz"
     c = client or BF.Futures(cfg)
-    jetzt_ms = int(jetzt.timestamp() * 1000) if jetzt else int(time.time() * 1000)
     try:
         with _SPERRE, sperre.lauf_sperre("krypto-profit", warten=20, ordner=Path(logbuch).parent if logbuch else None):
             lb = lies(logbuch)
             buch = lb[modus]
+            # Börsenzeit (nicht PC-Uhr): Binance stempelt die Einkommen mit ihrer Uhr — eine vorgehende PC-Uhr würde
+            # einen eben realisierten Gewinn vor den gemerkten Stand legen und ihn aus «heute» fallen lassen
+            jetzt_ms = int(jetzt.timestamp() * 1000) if jetzt else c._zeit()
             konto = c.konto()
             positionen = c._req("GET", "/fapi/v2/positionRisk", signiert=True) or []
             if jetzt_ms - (buch.get("abgerufen_bis") or 0) >= EINKOMMEN_ALLE_MS:
