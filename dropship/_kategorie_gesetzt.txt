@@ -49460,3 +49460,16 @@ farbbilder-photosensitivdrum-fur-tonerkartusch-626700	hb-3-2-6	Make-up	2026-10-1
 langarmpullover-mit-asymmetrischem-rundknopf-625400	aa-1	Trend-Produkt	2026-10-10T17:11Z
 weinroter-strickpullover-mit-seitenschlaufen-602900	aa-1	Trend-Produkt	2026-10-10T19:11Z
 klassisches-strickset-mit-cape-und-hose-629300	aa-1	Mode	2026-10-11T00:08Z
+plusch-hoodie-set-mit-kapuze-626400	aa-1	Mode	2026-10-11T01:09Z
+langarmliges-rundhals-t-shirt-fur-alltag-605500	aa-1	Mode	2026-10-11T01:09Z
+weihnachtskranz-aus-kiefernnadeln-50-cm-618800	hg-3	Wohnen & Deko	2026-10-11T01:09Z
+weihnachtsstrumpf-geschenkbeutel-anhanger-623500	aa-6	Schmuck	2026-10-11T01:09Z
+weihnachtsbaum-print-pullover-mit-langen-armel-624500	aa-1	Mode	2026-10-11T01:09Z
+wollpullover-mit-hohlgewebtem-design-635000	aa-1	Trend-Produkt	2026-10-11T01:09Z
+hundebreitschiene-fur-spaziergange-607900	ap-2	Haustierbedarf	2026-10-11T01:09Z
+halsband-mit-zugseil-fur-hunde-777920	ap-2	Haustierbedarf	2026-10-11T01:09Z
+halsband-und-leine-polyester-einfarbig-572032	ap-2	Haustierbedarf	2026-10-11T01:09Z
+hundekorperweste-mit-reflektoren-3m-draht-ce812b	ap-2	Haustierbedarf	2026-10-11T01:09Z
+hundekamera-body-mit-brust-und-ruckenhalterung-37612f	ap-2	Haustierbedarf	2026-10-11T01:09Z
+retractable-hundeleine-mit-led-leuchte-073fd3	ap-2	Haustierbedarf	2026-10-11T01:09Z
+teddy-chihuahua-umhang-fur-kleine-hunde-593f54	ap-2	Haustierbedarf	2026-10-11T01:09Z
