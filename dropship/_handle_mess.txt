@@ -239,3 +239,6 @@ gid://shopify/Product/16612105486727	crossbody-tasche-mit-schloss-lychee-leder-6
 gid://shopify/Product/15521323614593	schlangenketten-armband-mit-runden-diamanten-625200	schlangenketten-armband-mit-runden-strasssteinen-625200	301
 gid://shopify/Product/16607606604167	lange-cowhide-ledergeldborse-621700	lange-rindsleder-geldborse-621700	301
 gid://shopify/Product/16613637095815	atmungsaktive-ledersneaker-mit-plateausohle-605700	atmungsaktive-kunstledersneaker-mit-plateausohle-605700	301
+gid://shopify/Product/16615392051591	britische-brogue-lederschuhe-fur-herren-603600	britische-brogue-kunstlederschuhe-fur-herren-603600	301
+gid://shopify/Product/16615522664839	business-schuhe-aus-leder-621500	business-schuhe-aus-kunstleder-621500	301
+gid://shopify/Product/16615692108167	prinzessin-leder-schuhe-fur-madchen-031040	prinzessin-kunstleder-schuhe-fur-madchen-031040	301
