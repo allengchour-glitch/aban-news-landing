@@ -13,7 +13,7 @@ Regel (vorab festgelegt, aus futures.py die einzige, die den Zufallstest bestand
   Stop:     Abstand = STOP_SIGMA × Tages-Schwankung × Kurs (als Sicherung an der Börse gegen Crash-Tage).
             3σ statt bisher 4σ: auf der Live-Konfiguration (BTC 150 + ETH 200 + MVRV) in allen Feldern besser.
   MVRV-Bremse: Liegt der Kurs unter dem Einstandswert aller Coins (MVRV < 1, CoinMetrics, Stand Vortag), kein Short —
-            die einzige von 13 freien Markt-Infos, die info_pruefung.py bestand (alle 4 Felder besser, Zufallsprobe 93 %).
+            die einzige von 13 freien Markt-Infos, die info_pruefung.py bestand (alle 4 Felder besser, Zufallsprobe 94 %).
 Alle Werte nur aus abgeschlossenen Tagen; die Entscheidung von Tag i gilt ab Tag i+1.
 """
 from __future__ import annotations

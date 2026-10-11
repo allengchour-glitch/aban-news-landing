@@ -1,7 +1,7 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 ## 🛩️ 2026-10-08 — Krypto-Pilot (BTC + ETH Futures) + ETH-Sammler mit Staking (`tools/trading/krypto_bot/`, README.md)
-- **Pilot** (`pilot.py`): Trend Long/Short + Schwankungsziel 40 % + Börsen-Stop 4σ, **BTC 150 Tage + ETH 200 Tage je 50 %**,
+- **Pilot** (`pilot.py`): Trend Long/Short + Schwankungsziel 40 % + Börsen-Stop **3σ (seit 11.10., vorher 4σ)**, **BTC 150 Tage + ETH 200 Tage je 50 %**,
   Lügendetektor nur Warnung (als Abschalter kostete er >20 Pp./J), Wochenbericht Kontostand per Push. Binance USDⓈ-M, Testnetz
   Standard, Echtgeld doppelt gesperrt, Schlüssel mit Auszahlungsrecht verweigert, Einweg-Modus Pflicht, ISOLATED, reduceOnly.
   Backtest mit Stop+Schlupf: ab 2019 +28 %/J, Einbruch −41 % (BTC halten −82 %); ab 2022 +24 %/J, −28 %.
@@ -107,6 +107,23 @@
   beim Start nie ausführen, /stop vor /lage, ETH-Sparplan nur mit `ETH_SPARPLAN_BETRAG` (kaufte sonst wegen Spot-Schlüssel),
   `start-auto.bat auto` (endete nie → Aufgabenplanung übersprang Folgetage), −4161, Pfand = isolatedWallet, DST-Mitternacht.
   **cmd-Falle:** In `(… & %X% & exit /b 1)` darf X NICHT `rem` sein (frisst den Rest der Zeile samt «)») → `cd .` als No-op.
+- **11.10. — Parser-Korpus + ehrlichere Backtests (PR #2626, Branch `claude/bot-pruefung-3`):** Prüfer-Korpus von 40 typischen
+  Call-Formaten (`calls_korpus.py`): alter Parser las 11/40 falsch («Short-term» drehte die Richtung, Recap-/Hashtag-Symbole,
+  1️⃣ und «#1» als Ziele, Sell/Buy back bei Shorts vertauscht) → Neubau (`_normal` NFKC/Keycaps/$/Tausender-Leerzeichen,
+  genau EINE Richtung, Coin von der Richtungszeile, Abschnitte mit ZUORDNUNG je Richtung, Fortsetzung nur reine Zahlenzeilen,
+  Prozent-Ziele ab Einstiegsmitte, `ausbruch`/`unvollstaendig` → nie kopiert, `RE_UPDATE` = keine Calls). Plausibilität gegen den
+  Kurs (Einstieg/Stop 1,5×, Ziele 3× — `SPANNE` 3, weil Mid-Term-Ziele weit liegen). Prüfung: Antworten/Wiederholungen
+  (gleiche Werte 7 T.)/im Verlauf > 5 Min. später bearbeitete Calls nicht werten (Telegram-Verlauf kennt nur die letzte
+  Fassung!), > 10 % unlesbar/unplausibel → nicht kopierwürdig. Kopierer findet `1000PEPEUSDT` (Faktor 1000/1e6).
+  **Stop 3σ:** alte Prüfung lief auf BTC 200 allein; Live-Konfig 3σ in allen 3 Feldern besser (1,30/2,01/1,07 vs 1,03/1,60/
+  1,00), 3,5σ auch → Regel sagt ändern. Ehrlich: ab 2022 «kein Stop» am besten (1,12), Prüfer kannte 3σ vorher.
+  **Backtests strenger:** Shorts bekommen KEIN Funding gutgeschrieben, «Halten» = Spot. Neu ab 2019: Pilot +37,4 %/−29 %
+  (MAR 1,30), Halten Spot **+48,9 %**/−77 % (Halten verdiente seit 2019 mehr!), ab 2022 Pilot +28,1/−26 vs Halten +13,0/−67.
+  Hebel: 1,5× +51/−44, 2× +62,7/−60, 3× +80/−81. Alpaca: Glattstellung nur Daytrade-Teil (`?qty=`), 404 bei Kennung = nie
+  angekommen (kein Fehlalarm), offene Aufträge zählen. Vergleich Claude/Pilot täglich 50/50. Tests: pilot 82, cockpit 113,
+  calls 84, sammler 48, ki_bot 48. **Shell-Falle:** `cd /home/user/aban-p3 && (A) & (B) & (C) &` — das `cd` läuft nur im
+  Hintergrund-Teil von A; B und C liefen im HAUPT-Checkout mit ALTEM Code (und schrieben dort `data/*.json`). Aufgefallen an
+  alten Etiketten in der Ausgabe. → Jeden Hintergrundlauf mit eigenem `cd` oder absolutem Pfad starten, Etiketten prüfen.
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

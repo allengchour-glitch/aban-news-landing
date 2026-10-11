@@ -98,20 +98,20 @@ besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzt
 
 | Info (Quelle) | Regel | Felder besser | Zufallsprobe | Urteil |
 |---|---|---|---|---|
-| **MVRV tief** (CoinMetrics) | MVRV < 1 → kein Short | **4 von 4** | **93 %** | **übernommen** |
+| **MVRV tief** (CoinMetrics) | MVRV < 1 → kein Short | **4 von 4** | **94 %** | **übernommen** |
 | Funding negativ (BitMEX/OKX) | Funding 7 T. < 0 → kein Short | 2 von 4 | 100 % | nein, ab 2022 schlechter |
-| Dollar (FRED, wöchentlich → 7 Tage Verzug) | Dollar über 200-T.-Schnitt → Long halb | 3 von 4 | 99 % | nein |
-| Alle zusammen (Abstimmung) | ≥ 3 Long- bzw. ≥ 2 Short-Bremsen | 2 von 4 | 94 % | nein, ab 2022 schlechter |
-| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 82 % | nein |
-| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 18 % | nein |
-| VIX (FRED) | > 30 → Long halb | 2 von 4 | 88 % | nein |
-| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 2 von 2 (nur BTC) | 72 % | nein |
-| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–2 von 4 | 11–92 % | nein |
+| Dollar (FRED, wöchentlich → 7 Tage Verzug) | Dollar über 200-T.-Schnitt → Long halb | 2 von 4 | 100 % | nein, 2018–2021 schlechter |
+| Alle zusammen (Abstimmung) | ≥ 3 Long- bzw. ≥ 2 Short-Bremsen | 2 von 4 | 98 % | nein, ab 2022 schlechter |
+| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 84 % | nein |
+| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 68 % | nein |
+| VIX (FRED) | > 30 → Long halb | 1 von 4 | 72 % | nein |
+| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 2 von 2 (nur BTC) | 80 % | nein |
+| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–1 von 4 | 23–91 % | nein |
 
 - Die MVRV-Bremse ist nicht an die Schwelle 1 gebunden: von 0,8 bis 1,2 war sie jedes Mal in allen 4 Feldern besser.
   Sie wirkt nur auf Shorts: Unter dem Einstandswert aller Coins ist der Ausverkauf meist schon weit fortgeschritten.
 - **Ehrlich:** 13 Kandidaten getestet. Bei einer 90-%-Schwelle besteht rein zufällig etwa einer die Zufallsprobe —
-  93 % liegt knapp darüber. Darum zusätzlich die Bedingung «alle vier Felder besser». Ein Beweis ist das nicht.
+  94 % liegt knapp darüber. Darum zusätzlich die Bedingung «alle vier Felder besser». Ein Beweis ist das nicht.
 - Keine Zukunftsdaten: jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz zwei Tage, Dollar-Index sieben —
   FRED veröffentlicht ihn nur wöchentlich), getestet in
   `test_infos.py`. Fehlt MVRV oder ist es älter als 5 Tage, handelt der Pilot nach der Grundregel ohne Bremse.
