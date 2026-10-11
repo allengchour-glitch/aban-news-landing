@@ -762,10 +762,10 @@
 #   Pullover 41, Handwärmer 12 (dropship/SAISON-KOLLEKTIONEN-2026-10-10.md). KEINE Heizdecke/Heizgeräte mit Netzstecker
 #   (CH-Stecker, Sicherheit); USB-Wärmer ok. Treffer gegen Bild prüfen — Kollektionen weihnachtspullover/handwaermer füllen sich
 #   über die Suchbegriff-Regel selbst (Aufseher täglich).
-search:hot water bottle with knitted cover
-search:hot water bottle silicone
-search:thermal underwear set women
-search:thermal underwear set men
+#done search:hot water bottle with knitted cover
+#done search:hot water bottle silicone
+#done search:thermal underwear set women
+#done search:thermal underwear set men
 search:ski base layer thermal
 search:advent wreath artificial
 search:christmas wreath door decoration
