@@ -346,3 +346,4 @@ gid://shopify/Product/15469948207489	draft-ausverkauft	Hippie Batik Shirt
 gid://shopify/Product/15469959905665	draft-ausverkauft	Kostüm Happy Diva
 gid://shopify/Product/15469995884929	draft-ausverkauft	Perücke Crazy Clown
 gid://shopify/Product/15470023803265	reaktiviert	Zubehör: Amazone Düngerstreuer
+gid://shopify/Product/15470077477249	draft-ausverkauft	Skelett, lebensgross
