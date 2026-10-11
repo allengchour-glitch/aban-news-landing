@@ -1,18 +1,18 @@
-# Feinkategorie (automatisch, 2026-10-11 21:08 UTC)
+# Feinkategorie (automatisch, 2026-10-11 21:52 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 34677 |
-| shopify-feiner | 15124 |
+| gleich | 34853 |
+| shopify-feiner | 15123 |
 | kein-google | 1635 |
-| rueckfall-grob | 915 |
-| anderer-zweig | 332 |
-| ohne-kategorie | 316 |
-| kreuz | 12 |
-| schon-im-ledger | 12 |
-| titelprobe-nein | 9 |
+| rueckfall-grob | 1146 |
+| anderer-zweig | 388 |
+| kreuz | 36 |
+| schon-im-ledger | 36 |
+| titelprobe-nein | 13 |
+| ohne-kategorie | 2 |
 | keine-zuordnung | 1 |
 | verfeinern | 0 |
 | **geschrieben** | 0 (Fehler 0) |
@@ -22,9 +22,9 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
-- 3 × Bracelets
+- 4 × Bracelets
+- 4 × Necklaces
 - 3 × Dresses
-- 1 × Necklaces
 - 1 × Activewear
 - 1 × Pants
   - «Grasformband» → Bracelets
@@ -35,4 +35,5 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
   - «Acryl-Hängeornament» → Necklaces
   - «Langarm-Base-Layer für Herren» → Activewear
   - «Velours-Kolbenrock mit V-Ausschnitt» → Dresses
-  - «Blaues Denim für Herren» → Pants
+  - «Edelstahl-Armband mit Geburtsstein für Kinder» → Necklaces
+  - «Doppellagiges Armband-Set» → Necklaces
