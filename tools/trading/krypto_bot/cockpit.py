@@ -167,6 +167,8 @@ AKTIONEN = {
     "risiko_1": ([], 10, "Risiko-Stufe 1× (Standard)"),
     "risiko_1_5": ([], 10, "Risiko-Stufe 1,5×"),
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
+    "anteil_50": ([], 10, "Konto-Anteil 50 %"),
+    "anteil_100": ([], 10, "Konto-Anteil 100 %"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
 SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py", "test_calls.py"]
@@ -263,6 +265,21 @@ def aufgabe_da(befehl=None):
     return ok
 
 
+def einstellung_setzen(schluessel, wert):
+    """Eine Cockpit-Einstellung ändern, die anderen behalten (Risiko-Stufe und Konto-Anteil liegen in derselben Datei). Atomar."""
+    import pilot_kern as K
+    try:
+        alt = json.loads(K.EINSTELLUNGEN.read_text(encoding="utf-8"))
+        alt = alt if isinstance(alt, dict) else {}
+    except (OSError, ValueError):
+        alt = {}
+    alt.update({schluessel: wert, "geaendert": datetime.now(timezone.utc).isoformat(timespec="seconds")})
+    K.EINSTELLUNGEN.parent.mkdir(parents=True, exist_ok=True)
+    tmp = K.EINSTELLUNGEN.with_name(K.EINSTELLUNGEN.name + f".tmp{os.getpid()}")
+    tmp.write_text(json.dumps(alt) + "\n", encoding="utf-8")
+    os.replace(tmp, K.EINSTELLUNGEN)
+
+
 def aktion(name, starter=None, befehl=None):
     """Führt eine Knopf-Aktion aus → Protokoll-Eintrag {zeit, aktion, titel, ok, text}. starter: für Tests."""
     if name not in AKTIONEN:
@@ -286,12 +303,22 @@ def aktion(name, starter=None, befehl=None):
                 ok, text = False, (f"KRYPTO_RISIKO={gesetzt} ist als Umgebungsvariable gesetzt und hat Vorrang — NICHTS geändert. "
                                    "Erst entfernen (setx KRYPTO_RISIKO \"\"), dann nochmals wählen.")
             else:
-                K.EINSTELLUNGEN.parent.mkdir(parents=True, exist_ok=True)
-                K.EINSTELLUNGEN.write_text(json.dumps({"risiko": stufe, "geaendert": datetime.now(timezone.utc).isoformat(timespec="seconds")}) + "\n",
-                                           encoding="utf-8")
+                einstellung_setzen("risiko", stufe)
                 r = K.risiko({}, K.EINSTELLUNGEN)
                 ok, text = True, (f"Risiko-Stufe {r['stufe']:g}×: Schwankungsziel {r['ziel_vol'] * 100:.0f} %, Hebel höchstens {r['max_hebel']:g}×. "
                                   "Gilt ab dem nächsten Lauf." + ("" if stufe == 1 else " Achtung: im Test deutlich tiefere Einbrüche als mit 1×."))
+        elif name.startswith("anteil_"):
+            import pilot_kern as K
+            anteil = {"anteil_50": 0.5, "anteil_100": 1.0}[name]
+            gesetzt = umgebung().get("KI_BOT_ANTEIL")
+            if gesetzt:
+                ok, text = False, (f"KI_BOT_ANTEIL={gesetzt} ist als Umgebungsvariable gesetzt und hat Vorrang — NICHTS geändert. "
+                                   "Erst entfernen (setx KI_BOT_ANTEIL \"\"), dann nochmals wählen.")
+            else:
+                einstellung_setzen("anteil", anteil)
+                ok, text = True, (f"Konto-Anteil {K.anteil({}, K.EINSTELLUNGEN) * 100:.0f} %: so viel des Futures-Kontos setzt der Pilot ein, "
+                                  "der Rest liegt ohne Zins da. Gilt ab dem nächsten Lauf."
+                                  + (" Gewinne UND Einbrüche des ganzen Kontos werden etwa doppelt so gross wie mit 50 %." if anteil == 1.0 else ""))
         elif name == "handeln" and (notaus_env_aktiv() or PAUSE.exists()):
             ok, text = False, ("Not-Aus ist aktiv — erst Auto-Handel einschalten." if notaus_env_aktiv()
                                else "Auto-Handel ist aus (Pause) — erst einschalten.")
@@ -376,8 +403,9 @@ def backtest_kurven():
         zb = IP.filter_z(K.roh_hebel(cb, n_sma=150), *IP.bremsen("mvrv_tief", IP.flaggen("btc", tage, nur_speicher=True)))
         ze = IP.filter_z(K.roh_hebel(ce, n_sma=200), *IP.bremsen("mvrv_tief", IP.flaggen("eth", tage, nur_speicher=True)))
         a = next(i for i, t in enumerate(tage) if t >= "2019-01-01")
-        wb, _ = P.lauf(zb, hb, lb, cb, a, len(cb), K.STOP_SIGMA)
-        we, _ = P.lauf(ze, he, le, ce, a, len(ce), K.STOP_SIGMA)
+        bx = P.boerse(tage, nur_speicher=True)  # nichts herunterladen: fehlende Monate rechnen mit dem Ersatzmodell
+        wb, _ = P.lauf(zb, hb, lb, cb, a, len(cb), K.STOP_SIGMA, **bx["btc"])
+        we, _ = P.lauf(ze, he, le, ce, a, len(ce), K.STOP_SIGMA, **bx["eth"])
         halten = [cb[i] / cb[a - 1] for i in range(a - 1, len(cb))]  # echtes Halten (Spot), kein Perpetual mit Funding
         t = tage[a:]
         schritt = max(1, len(t) // 400)  # höchstens ~400 Punkte
@@ -440,7 +468,9 @@ def stand(env=None):
     for st, name in ((1.0, "B alles × 1×"), (1.5, "B alles × 1.5×"), (2.0, "B alles × 2×")):
         v = hb.get(name, {})
         stufen[f"{st:g}"] = {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
-    risiko = {"stufe": K.risiko()["stufe"], "test": stufen}
+    konto_test = {schluessel: {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
+                  for schluessel, v in _json("krypto-hebel-pruefung.json", {}).get("konto", {}).items()}
+    risiko = {"stufe": K.risiko()["stufe"], "test": stufen, "anteil": K.anteil(env, K.EINSTELLUNGEN), "konto": konto_test}
     sam = _json("eth-sammler.json", {})
     echt_futures = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
     echt_spot = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"

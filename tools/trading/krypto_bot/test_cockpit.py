@@ -483,6 +483,16 @@ with tempfile.TemporaryDirectory() as tmp:
             e_r = C.aktion("risiko_1_5")
             pruefe("Risiko-Knopf ohne Variable: gespeichert und richtig gemeldet", e_r["ok"] and "1.5×" in e_r["text"]
                    and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 1.5, e_r)
+            e_a = C.aktion("anteil_100")
+            einst = json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))
+            pruefe("Konto-Anteil 100 %: gespeichert, Risiko-Stufe bleibt erhalten, Pilot liest beides",
+                   e_a["ok"] and einst["anteil"] == 1.0 and einst["risiko"] == 1.5 and _K.anteil({}, _K.EINSTELLUNGEN) == 1.0
+                   and _K.risiko({}, _K.EINSTELLUNGEN)["stufe"] == 1.5 and "doppelt" in e_a["text"], (e_a, einst))
+            pruefe("Cockpit zeigt den Anteil", C.stand(env={})["risiko"]["anteil"] == 1.0)
+            C.umgebung = lambda *a_, **k_: {"KI_BOT_ANTEIL": "0.5"}
+            e_a = C.aktion("anteil_50")
+            pruefe("Anteil-Knopf mit KI_BOT_ANTEIL gesetzt: abgelehnt UND nichts geändert",
+                   not e_a["ok"] and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["anteil"] == 1.0, e_a)
         finally:
             _K.EINSTELLUNGEN, C.umgebung = alt_einst, alt_umg2
         # ── ETH-Sammler-Karte: «unklar» nicht im Ø-Preis ──

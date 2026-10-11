@@ -5,9 +5,10 @@ Entscheidungsregel (VOR dem Rechnen festgelegt): Ein Standardwert wird nur geän
 geprüften Zeiträumen ein besseres Verhältnis von Jahresrendite zu schlimmstem Einbruch hat (MAR = Rendite ÷ |Einbruch|).
 Sonst bleibt der bisherige Wert — auch wenn eine Variante in einem Zeitraum glänzt.
 
-Modell wie futures.py (Gebühr 0,05 %, Funding 0,01 % je 8 h, Liquidation über Tagestief/-hoch), zusätzlich:
+Modell (Gebühr 0,05 %; ab 2020 echtes Binance-Funding und Stop/Liquidation auf dem Binance-Markpreis, davor Funding
+0,01 % je 8 h nur für Longs und Yahoo-Hoch/Tief), zusätzlich:
   • Börsen-Stop wie live: jeden Tag neu, Abstand = k × Tages-Schwankung × Schlusskurs des Vortags; wird er im Tagesverlauf
-    erreicht, endet die Position zum Stop-Kurs minus 0,1 % Schlupf. Am nächsten Tag steigt der Pilot gemäss Signal wieder ein.
+    erreicht, endet die Position zum Stop-Kurs minus 0,45 % Schlupf (gemessen). Am nächsten Tag steigt der Pilot gemäss Signal wieder ein.
 Aufruf: python3 tools/trading/krypto_bot/pilot_pruefung.py [--neu]
 """
 from __future__ import annotations
@@ -23,7 +24,10 @@ from pathlib import Path
 HIER = Path(__file__).resolve().parent
 ROOT = HIER.parents[2]
 AUSGABE = ROOT / "data" / "krypto-pilot-pruefung.json"
-GEBUEHR, FUNDING, MARGE_MIN, BAND, SCHLUPF = 0.0005, 0.0001, 0.005, 0.25, 0.001
+GEBUEHR, FUNDING, MARGE_MIN, BAND = 0.0005, 0.0001, 0.005, 0.25
+# Stop-Schlupf: an 81 echten Stops seit 2019 gemessen (Markpreis löst aus, Perp-Schluss der Minute = Ausführung), Mittel 0,45 %
+# (Median 0,16 %, 90 % ≤ 1,5 %). Bis 11.10.2026 pauschal 0,1 % — zu günstig (Profit-Prüfung 11.10.2026).
+SCHLUPF = 0.0045
 
 
 def ohlc(sym):
@@ -86,8 +90,11 @@ def hebel(c, n_sma=200, ziel_vol=0.40, short=True, max_hebel=1.0):
     return z
 
 
-def lauf(z, h, l, c, a, b, stop_k=None):
-    """Kontowert-Verlauf (Start 1.0) von Tag a bis b. Gibt Liste der Tageswerte und Anzahl Stop-Auslösungen zurück."""
+def lauf(z, h, l, c, a, b, stop_k=None, funding=None, stop_hl=None):
+    """Kontowert-Verlauf (Start 1.0) von Tag a bis b. Gibt Liste der Tageswerte und Anzahl Stop-Auslösungen zurück.
+    funding: echtes Binance-Funding je Tag (Liste wie c; positiv = Longs zahlen, Shorts erhalten). stop_hl: Binance-Markpreis
+    (Hoch, Tief) je Tag — darauf lösen Stop und Liquidation live aus. Fehlt ein Tag (None), gilt das Ersatzmodell:
+    Longs zahlen 0,01 % je 8 h, Shorts erhalten nichts, Stop/Liquidation über Yahoo-Hoch/Tief (glättet die Ausschläge)."""
     v = vol(c)
     E, N, werte, stops = 1.0, 0.0, [1.0], 0
     for i in range(max(a, 1), b):
@@ -99,22 +106,25 @@ def lauf(z, h, l, c, a, b, stop_k=None):
             N = neu
         if N != 0:
             ref = c[i - 1]
+            hl = stop_hl[i] if stop_hl else None
+            hoch, tief = hl if hl else (h[i], l[i])
             if stop_k and v[i - 1]:
                 abstand = stop_k * v[i - 1] / math.sqrt(365) * ref
                 stop = ref - abstand if N > 0 else ref + abstand
-                if (N > 0 and l[i] <= stop) or (N < 0 and h[i] >= stop):
+                if (N > 0 and tief <= stop) or (N < 0 and hoch >= stop):
                     aus = stop * (1 - SCHLUPF) if N > 0 else stop * (1 + SCHLUPF)
                     E += N * (aus / ref - 1) - abs(N) * GEBUEHR
                     N, stops = 0.0, stops + 1
                     werte.append(E)
                     continue
-            extrem = l[i] if N > 0 else h[i]
+            extrem = tief if N > 0 else hoch
             if E + N * (extrem / ref - 1) <= MARGE_MIN * abs(N * extrem / ref):
                 werte.append(0.0)
                 return werte, stops
-            # Funding: Longs zahlen 0,01 % je 8 Std. Shorts bekommen bewusst NICHTS gutgeschrieben — in Baissen (wenn der
-            # Pilot short ist) lag das echte Funding meist nahe 0; eine pauschale Gutschrift schönte die Tests um 2–4 Pp./J.
-            E += N * (c[i] / ref - 1) - (abs(N) * FUNDING * 3 if N > 0 else 0.0)
+            f = funding[i] if funding else None
+            # Echtes Funding: Longs zahlen es, Shorts erhalten es (negativ: umgekehrt). Ersatz ohne Daten (vor 2020): Longs
+            # 0,01 % je 8 h, Shorts NICHTS — eine pauschale Gutschrift schönte die Tests früher um 2–4 Pp./J.
+            E += N * (c[i] / ref - 1) - (N * f if f is not None else (abs(N) * FUNDING * 3 if N > 0 else 0.0))
             N *= c[i] / ref
         werte.append(E)
     return werte, stops
@@ -141,6 +151,13 @@ def kennz(werte):
     return {"cagr": cagr, "einbruch": dd, "mar": cagr / abs(dd) if dd < 0 else float("inf")}
 
 
+def boerse(tage, coins=("btc", "eth"), nur_speicher=False):
+    """Echtes Binance-Funding und Markpreis-Hoch/Tief, ausgerichtet auf die Backtest-Tage: {coin: {funding, stop_hl}} —
+    als **kwargs an lauf() geben. Ohne Netz/Daten {} → Ersatzmodell."""
+    import binance_archiv as BA
+    return {c: BA.fuer_tage(f"{c.upper()}USDT", tage, nur_speicher) for c in coins}
+
+
 def ausrichten(daten):
     tage = sorted(set.intersection(*[set(d) for d in daten]))
     return tage, [([d[t][0] for t in tage], [d[t][1] for t in tage], [d[t][2] for t in tage]) for d in daten]
@@ -151,6 +168,7 @@ def main():
     erg = {"stand": max(btc), "regel": "Änderung nur, wenn MAR in allen Zeiträumen besser", "tests": {}}
     tage_b = sorted(btc)
     h, l, c = [btc[t][0] for t in tage_b], [btc[t][1] for t in tage_b], [btc[t][2] for t in tage_b]
+    bx_b = boerse(tage_b, ("btc",))["btc"]  # echtes Funding + Markpreis-Stops (ab 2020), davor Ersatzmodell
     zeiten = {"ab 2015": "2015-01-01", "ab 2018": "2018-01-01", "ab 2022": "2022-01-01"}
 
     def block(name, varianten, h, l, c, tage, zeiten):
@@ -161,7 +179,7 @@ def main():
             zeile, res[vname] = f"{vname:28}", {}
             for zn, start in zeiten.items():
                 a = next(i for i, t in enumerate(tage) if t >= start)
-                w, n_stop = lauf(z, h, l, c, a, len(c), stop_k)
+                w, n_stop = lauf(z, h, l, c, a, len(c), stop_k, **bx_b)
                 k = kennz(w)
                 res[vname][zn] = {**k, "stops": n_stop}
                 zeile += f"{k['cagr'] * 100:8.1f}% {k['einbruch'] * 100:5.0f}% MAR {k['mar']:4.2f}"
@@ -184,13 +202,14 @@ def main():
     try:
         import info_pruefung as IP
         tage_l, ((hb_l, lb_l, cb_l), (he_l, le_l, ce_l)) = ausrichten([btc, eth])
+        bx_l = boerse(tage_l)
         brems = {coin: IP.bremsen("mvrv_tief", IP.flaggen(coin, tage_l)) for coin in ("btc", "eth")}
 
         def live(stop_k, ziel_vol, a, b):
             zb = IP.filter_z(K.roh_hebel(cb_l, n_sma=150, ziel_vol=ziel_vol), *brems["btc"])
             ze = IP.filter_z(K.roh_hebel(ce_l, n_sma=200, ziel_vol=ziel_vol), *brems["eth"])
-            wb, _ = lauf(zb, hb_l, lb_l, cb_l, a, b, stop_k)
-            we, _ = lauf(ze, he_l, le_l, ce_l, a, b, stop_k)
+            wb, _ = lauf(zb, hb_l, lb_l, cb_l, a, b, stop_k, **bx_l["btc"])
+            we, _ = lauf(ze, he_l, le_l, ce_l, a, b, stop_k, **bx_l["eth"])
             return kennz(mix_taeglich(wb, we))
 
         felder = {"ab 2019": ("2019-01-01", "9999"), "2019–2021": ("2019-01-01", "2022-01-01"),
@@ -200,8 +219,8 @@ def main():
             return (next(i for i, t in enumerate(tage_l) if t >= von), next((i for i, t in enumerate(tage_l) if t >= bis), len(tage_l)))
 
         for name, varianten, bisher in (
-                ("1L) Börsen-Stop, Live-Konfiguration", {"kein Stop": (None, K.ZIEL_VOL), **{
-                    f"Stop {k:g}σ" + (" (live)" if k == K.STOP_SIGMA else ""): (k, K.ZIEL_VOL) for k in (3, 4, 6)}},
+                ("1L) Börsen-Stop, Live-Konfiguration", {"kein Stop (nur Vergleich)": (None, K.ZIEL_VOL), **{
+                    f"Stop {k:g}σ" + (" (live)" if k == K.STOP_SIGMA else ""): (k, K.ZIEL_VOL) for k in (3, 4, 6, 8)}},
                  f"Stop {K.STOP_SIGMA:g}σ (live)"),
                 ("3L) Schwankungsziel, Live-Konfiguration", {f"Ziel {int(v * 100)} %" + (" (live)" if v == K.ZIEL_VOL else ""):
                                                              (K.STOP_SIGMA, v) for v in (0.30, 0.40, 0.50)}, "Ziel 40 % (live)")):
@@ -211,7 +230,9 @@ def main():
             for vname, (stop_k, zv) in varianten.items():
                 res[vname] = {f: live(stop_k, zv, *idx(*bereich)) for f, bereich in felder.items()}
                 print(f"{vname:22}" + "".join(f"     MAR {res[vname][f]['mar']:5.2f}" for f in felder))
-            besser = [v for v in res if v != bisher and all(res[v][f]["mar"] > res[bisher][f]["mar"] for f in felder)]
+            # «kein Stop» ist nur Vergleichszeile: der Börsen-Stop bleibt als Crash-Sicherung (Ausfall, PC aus, Liquidation)
+            besser = [v for v in res if v != bisher and "nur Vergleich" not in v
+                      and all(res[v][f]["mar"] > res[bisher][f]["mar"] for f in felder)]
             urteil = (f"ÄNDERN auf {besser[0]} (in allen {len(felder)} Feldern besser)" if len(besser) == 1 else
                       f"mehrere Alternativen überall besser: {', '.join(besser)} — nicht eindeutig" if besser else "bleibt")
             print(f"  Regel (vorab: nur ändern, wenn in ALLEN Feldern besser): {urteil}")
@@ -222,17 +243,18 @@ def main():
 
     # 2b) Trendlänge 150 gegen 200 auf GETRENNTEN Abschnitten (keine Überlappung → kein Mehrfachzählen derselben Jahre)
     tage, ((hb, lb, cb), (he, le, ce)) = ausrichten([btc, eth])
+    bx = boerse(tage)
     abschnitte = [("2015-01-01", "2018-01-01"), ("2018-01-01", "2022-01-01"), ("2022-01-01", "9999")]
     print("\n== 2b) Trendlänge 150 vs. 200 auf getrennten Abschnitten (MAR)")
     res = {}
-    for coin, (hh, ll, cc, tt) in {"BTC": (h, l, c, tage_b), "ETH": (he, le, ce, tage)}.items():
+    for coin, (hh, ll, cc, tt, xx) in {"BTC": (h, l, c, tage_b, bx_b), "ETH": (he, le, ce, tage, bx["eth"])}.items():
         res[coin] = {}
         for von, bis in abschnitte:
             if von < tt[0]:
                 continue
             a = next(i for i, t in enumerate(tt) if t >= von)
             b = next((i for i, t in enumerate(tt) if t >= bis), len(cc))
-            zeile = {n: kennz(lauf(hebel(cc, n_sma=n), hh, ll, cc, a, b)[0]) for n in (150, 200)}
+            zeile = {n: kennz(lauf(hebel(cc, n_sma=n), hh, ll, cc, a, b, **xx)[0]) for n in (150, 200)}
             res[coin][f"{von[:4]}–{bis[:4] if bis != '9999' else 'heute'}"] = zeile
             print(f"  {coin} {von[:4]}–{bis[:4] if bis != '9999' else 'heute':5}  150: {zeile[150]['cagr'] * 100:6.1f} %/J MAR {zeile[150]['mar']:5.2f}"
                   f"  |  200: {zeile[200]['cagr'] * 100:6.1f} %/J MAR {zeile[200]['mar']:5.2f}")
@@ -244,8 +266,8 @@ def main():
     res = {}
     for zn, start in zeiten2.items():
         a = next(i for i, t in enumerate(tage) if t >= start)
-        wb, _ = lauf(hebel(cb), hb, lb, cb, a, len(cb))
-        we, _ = lauf(hebel(ce), he, le, ce, a, len(ce))
+        wb, _ = lauf(hebel(cb), hb, lb, cb, a, len(cb), **bx["btc"])
+        we, _ = lauf(hebel(ce), he, le, ce, a, len(ce), **bx["eth"])
         mix = mix_taeglich(wb, we)
         kb, km = kennz(wb), kennz(mix)
         res[zn] = {"btc": kb, "btc_eth": km}

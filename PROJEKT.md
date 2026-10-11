@@ -1,7 +1,7 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
 ## 🛩️ 2026-10-08 — Krypto-Pilot (BTC + ETH Futures) + ETH-Sammler mit Staking (`tools/trading/krypto_bot/`, README.md)
-- **Pilot** (`pilot.py`): Trend Long/Short + Schwankungsziel 40 % + Börsen-Stop **3σ (seit 11.10., vorher 4σ)**, **BTC 150 Tage + ETH 200 Tage je 50 %**,
+- **Pilot** (`pilot.py`): Trend Long/Short + Schwankungsziel 40 % + Börsen-Stop **6σ (seit 11.10. abends; vorher 4σ, kurz 3σ)**, **BTC 150 Tage + ETH 200 Tage je 50 %**,
   Lügendetektor nur Warnung (als Abschalter kostete er >20 Pp./J), Wochenbericht Kontostand per Push. Binance USDⓈ-M, Testnetz
   Standard, Echtgeld doppelt gesperrt, Schlüssel mit Auszahlungsrecht verweigert, Einweg-Modus Pflicht, ISOLATED, reduceOnly.
   Backtest mit Stop+Schlupf: ab 2019 +28 %/J, Einbruch −41 % (BTC halten −82 %); ab 2022 +24 %/J, −28 %.
@@ -124,6 +124,29 @@
   calls 84, sammler 48, ki_bot 48. **Shell-Falle:** `cd /home/user/aban-p3 && (A) & (B) & (C) &` — das `cd` läuft nur im
   Hintergrund-Teil von A; B und C liefen im HAUPT-Checkout mit ALTEM Code (und schrieben dort `data/*.json`). Aufgefallen an
   alten Etiketten in der Ausgabe. → Jeden Hintergrundlauf mit eigenem `cd` oder absolutem Pfad starten, Etiketten prüfen.
+
+## 💰 2026-10-11 — „Maximaler Profit“ (Workflow profit-hebel, 3 Studien × 2 Gegenprüfer)
+- **User: «ich will maximaler Profit rausholen».** Ehrliche Antwort: der grösste Hebel war NICHT mehr Hebel, sondern
+  (1) **Konto-Anteil** (Standard 50 % → die Hälfte des Futures-Kontos lag ohne Zins; Konto bekam nur ~halbe Backtest-Rendite)
+  und (2) der **feste Auftragsdeckel 1000 USDT/Lauf** (ab 5000 USDT Konto baute der Pilot über Wochen auf: −10…−50 Pp./J).
+- **Umgesetzt:** Cockpit-Knopf Konto-Anteil 50 %/100 % (`krypto-einstellungen.json` "anteil", `K.anteil()`, env
+  `KI_BOT_ANTEIL` geht vor; `cockpit.einstellung_setzen` merged risiko+anteil atomar). Deckel jetzt relativ
+  `KRYPTO_MAX_AUFTRAG_ANTEIL` (Std. 1,0 × Konto), fest nur wenn gesetzt (`KRYPTO_MAX_AUFTRAG` > `KI_BOT_MAX_AUFTRAG`).
+  Börsen-Hebel immer 2 isoliert (`K.BOERSEN_HEBEL`; mit 1 fehlte bei Anteil 100 % Margin), `plane(frei=availableBalance)`
+  kauft nie mehr als die Margin trägt (Flip gibt Margin frei). Tests pilot 91 (Mutation 5/5), cockpit 116.
+- **Backtest-Modell realistisch (`binance_archiv.py`, Cache `tools/trading/daten/binance_archiv/` gitignored):** echtes
+  Binance-USDT-M-Funding (data.binance.vision monthly fundingRate, ab 2020-01; BTC 2021 ≈ 30 %/J statt pauschal 11 %) und
+  Stop/Liquidation auf Markpreis-Tageskerzen (markPriceKlines 1d ab 2020-01), Schlupf 0,45 % (an 81 Stops gemessen).
+  `P.lauf(..., funding=, stop_hl=)`, `P.boerse(tage)`; Cockpit nur aus Speicher. Vor 2020 Ersatzmodell.
+- **Stop 6σ:** unter dem realistischen Modell waren 3σ/4σ in ALLEN Feldern schlechter (Docht-Auslöser + Schlupf; bei 2×
+  ~10 Pp./J), ab 5σ Plateau, «kein Stop» minimal besser → bleibt nur Vergleichszeile (Crash-Sicherung bei PC aus/Ausfall).
+  **Lehre: Stop-Abstand ist modellabhängig, nicht robust** — 4σ→3σ→6σ an einem Tag; Entscheid erst mit dem realistischsten
+  Modell treffen.
+- **Ehrliche Kontozahlen (ab 2019 / Einbruch):** 50 %·1× +18 %/−18 · 100 %·1× +37 %/−35 · 100 %·1,5× +51 %/−49 ·
+  100 %·2× +58 %/−66 · Halten +49 %/−77. Ab 2022: 100 %·1× +30 % vs Halten +13 %.
+- **Verworfen:** mehr Coins (Top-5/10 point-in-time inkl. abgemeldeter, 685 Paare): ab 2019 +11/+1 %/J statt +37 %, Alt-Teil
+  schlägt nur 84/40/21 % der Zufallskopien. Funding-Carry: ~6 %/J historisch, seit 2022 ~3 %, letzte 12 M ~1,5 % → nicht bauen.
+- **Shell-Falle wiederholt bewusst vermieden:** Prüfstände nur im Vordergrund und in `/home/user/aban-p3`.
 
 ## 🧾 2026-10-06 — „Alles verbessern“: amtliche Werte + alle 149 Tools geprüft und repariert
 - **Faktenblatt** aus Primärquellen (ahv-iv.ch Merkblätter 2.01/2.02/2.08/3.01, BSV, fedlex, ESTV, BWO, Bundesrat 02.10.2026,

@@ -2,14 +2,17 @@
 """Prüfstand «mehr Hebel» für den Krypto-Pilot — was passiert bei 1,5×, 2×, 3×, 5×, 10×?
 
 VORAB FESTGELEGT (vor dem ersten Rechenlauf):
-Strategie wie live: BTC Trend 150 + ETH Trend 200 (je 50 %), Schwankungsziel, MVRV-Bremse, Börsen-Stop wie live (pilot_kern.STOP_SIGMA) mit 0,1 % Schlupf,
-Futures-Modell mit Gebühr 0,05 %, Funding 0,01 % je 8 h und Liquidation über Tagestief/-hoch (pilot_pruefung.lauf).
+Strategie wie live: BTC Trend 150 + ETH Trend 200 (je 50 %), Schwankungsziel, MVRV-Bremse, Börsen-Stop wie live (pilot_kern.STOP_SIGMA),
+Futures-Modell pilot_pruefung.lauf (Gebühr 0,05 %, Liquidation; seit 11.10.2026: ab 2020 echtes Binance-Funding, Stop und
+Liquidation auf dem Binance-Markpreis, gemessener Stop-Schlupf 0,45 % — vorher 0,01 % je 8 h, Yahoo-Hoch/Tief, 0,1 %).
 Zwei Arten, den Hebel zu erhöhen:
   A «nur Deckel höher»   Schwankungsziel bleibt 40 %, der Deckel steigt auf L (mehr Hebel nur in ruhigen Phasen)
   B «alles × L»           Schwankungsziel 40 % × L und Deckel L (jede Position L-mal so gross)
 Ein höherer Hebel als heute (Deckel 2×) wird NUR erlaubt, wenn ALLES gilt:
   1) keine Liquidation in keinem Teilkonto, 2) schlimmster Einbruch nie tiefer als −50 %,
   3) Rendite ÷ Einbruch in jedem Abschnitt (2019–2021, 2022–heute) besser als mit 1×.
+Zusätzlich (nur Information, entscheidet nichts): die KONTO-Zahl für KI_BOT_ANTEIL 50 % / 100 % — der Rest liegt als USDT
+ohne Zins da. Die Tabelle oben gilt für den Pilot-Teil (Anteil 100 %).
 Aufruf: python3 tools/trading/krypto_bot/hebel_pruefung.py   → Tabelle + data/krypto-hebel-pruefung.json
         python3 tools/trading/krypto_bot/hebel_pruefung.py --minuten   → wie lange 2×–100× mit echten Minutenkursen überleben
 """
@@ -31,8 +34,8 @@ HEBEL = [1.0, 1.5, 2.0, 3.0, 5.0, 10.0]
 ABSCHNITTE = [("2019-01-01", "2022-01-01"), ("2022-01-01", "9999")]
 
 
-def lauf_mit_liq(z, h, l, c, a, b):
-    w, _ = P.lauf(z, h, l, c, a, b, K.STOP_SIGMA)
+def lauf_mit_liq(z, h, l, c, a, b, **boerse):
+    w, _ = P.lauf(z, h, l, c, a, b, K.STOP_SIGMA, **boerse)
     return w, (len(w) < b - max(a, 1) + 1 or w[-1] == 0.0)
 
 
@@ -40,6 +43,7 @@ def main():
     btc, eth = P.ohlc("BTC-USD"), P.ohlc("ETH-USD")
     tage, ((hb, lb, cb), (he, le, ce)) = P.ausrichten([btc, eth])
     brems = {"btc": IP.bremsen("mvrv_tief", IP.flaggen("btc", tage)), "eth": IP.bremsen("mvrv_tief", IP.flaggen("eth", tage))}
+    bx = P.boerse(tage)
     fenster = []
     for von, bis in [("2019-01-01", "9999")] + ABSCHNITTE:
         a = next(i for i, t in enumerate(tage) if t >= von)
@@ -60,14 +64,20 @@ def main():
             name = f"{art} {'Deckel' if art == 'A' else 'alles ×'} {L:g}×"
             zeile, res = f"{name:26}", {}
             for fname, a, b in fenster:
-                wb, liq_b = lauf_mit_liq(zb, hb, lb, cb, a, b)
-                we, liq_e = lauf_mit_liq(ze, he, le, ce, a, b)
+                wb, liq_b = lauf_mit_liq(zb, hb, lb, cb, a, b, **bx["btc"])
+                we, liq_e = lauf_mit_liq(ze, he, le, ce, a, b, **bx["eth"])
                 soll = b - max(a, 1) + 1  # nach einer Liquidation bleibt das Teilkonto bei 0
                 wb, we = wb + [0.0] * (soll - len(wb)), we + [0.0] * (soll - len(we))
                 mix = P.mix_taeglich(wb, we)  # täglich neu aufgeteilt, wie live
                 k = P.kennz(mix)
                 schnitt_hebel = sum(abs(x) for x in zb[a:b]) / max(1, b - a)
                 res[fname] = {**k, "liquidiert": liq_b or liq_e, "liq_btc": liq_b, "liq_eth": liq_e, "mittlerer_hebel_btc": schnitt_hebel}
+                if art == "B" and L <= K.HEBEL_HART:
+                    for anteil in K.ANTEILE:  # Konto-Zahl: nur dieser Anteil arbeitet, der Rest liegt ohne Zins da
+                        konto = [1.0]
+                        for i in range(1, len(mix)):
+                            konto.append(konto[-1] * (1 + anteil * (mix[i] / mix[i - 1] - 1 if mix[i - 1] > 0 else 0.0)))
+                        erg.setdefault("konto", {}).setdefault(f"{anteil:g}|{L:g}", {})[fname] = P.kennz(konto)
                 zeile += (f"{k['cagr'] * 100:8.1f} %/J {k['einbruch'] * 100:5.0f} % MAR {k['mar']:5.2f}"
                           + (" LIQ" if liq_b or liq_e else "    "))
             erg["varianten"][name] = res
@@ -86,6 +96,11 @@ def main():
             "Rendite÷Einbruch nicht überall besser als 1×" if not mar_besser else ""]
         res["urteil"] = "erlaubt" if ok else "nein"
         print(f"  {name:26} {'ERLAUBT' if ok else 'nein'}  {' · '.join(x for x in grund if x)}")
+    print("\nKonto-Ebene (KI_BOT_ANTEIL × Risiko-Stufe; der Rest liegt als USDT ohne Zins — nur Information):")
+    for schluessel, res in erg.get("konto", {}).items():
+        anteil, L = schluessel.split("|")
+        print(f"  Anteil {float(anteil) * 100:3.0f} % · Stufe {L}×   " + "   ".join(
+            f"{f}: {res[f]['cagr'] * 100:5.1f} %/J {res[f]['einbruch'] * 100:4.0f} %" for f, _, _ in fenster))
     AUSGABE.write_text(json.dumps(erg, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 

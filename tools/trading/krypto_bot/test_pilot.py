@@ -8,6 +8,7 @@ import json
 import math
 import random
 import sys
+import tempfile
 import threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -66,6 +67,44 @@ pruefe("Hebel-Deckel greift in der Planung", BF.plane(cfg, 20000, 0.0, 50000, R,
 cfg2 = BF.einstellungen({"KI_BOT_ANTEIL": "0.5", "KI_BOT_MAX_AUFTRAG": "1000"})
 pruefe("Aufbau je Lauf höchstens Max-Auftrag", BF.plane(cfg2, 20000, 0.0, 50000, R, 1.0) == [("BUY", 0.02, False)], BF.plane(cfg2, 20000, 0.0, 50000, R, 1.0))
 pruefe("Schliessen wird nie gekappt", BF.plane(cfg2, 20000, 0.2, 50000, R, 0.0) == [("SELL", 0.2, True)])
+# Backtest-Modell: echtes Funding (Longs zahlen, Shorts erhalten) und Stop/Liquidation auf dem Binance-Markpreis
+import pilot_pruefung as PP  # noqa: E402
+c_f = [100.0] * 6
+long_f = PP.lauf([1.0] * 6, c_f, c_f, c_f, 1, 6, funding=[None, 0.001, 0.001, 0.001, 0.001, 0.001])[0]
+long_e = PP.lauf([1.0] * 6, c_f, c_f, c_f, 1, 6)[0]
+short_f = PP.lauf([-1.0] * 6, c_f, c_f, c_f, 1, 6, funding=[None, 0.001, 0.001, 0.001, 0.001, 0.001])[0]
+short_e = PP.lauf([-1.0] * 6, c_f, c_f, c_f, 1, 6)[0]
+pruefe("Backtest: echtes Funding — Long zahlt mehr als der Ersatz, Short erhält es (Ersatz: Short erhält nichts)",
+       long_f[-1] < long_e[-1] < 1.0 and short_f[-1] > short_e[-1] and abs(short_e[-1] - (1 - 0.0005)) < 1e-9, (long_f[-1], long_e[-1], short_f[-1], short_e[-1]))
+rnd_f = random.Random(3)
+c_s = [100.0 * (1 + 0.01 * rnd_f.uniform(-1, 1)) for _ in range(60)]
+hl_mark = [None] * 59 + [(c_s[58] * 1.01, c_s[58] * 0.80)]  # Markpreis-Docht −20 % am letzten Tag, Yahoo sieht ihn nicht
+_, n_yahoo = PP.lauf([1.0] * 60, c_s, c_s, c_s, 1, 60, 3)
+_, n_mark = PP.lauf([1.0] * 60, c_s, c_s, c_s, 1, 60, 3, stop_hl=hl_mark)
+pruefe("Backtest: der Stop löst auf dem Markpreis aus (Yahoo glättet den Docht weg)", n_yahoo == 0 and n_mark == 1, (n_yahoo, n_mark))
+
+# Profit-Prüfung 11.10.2026: fester 1000-USDT-Deckel kostete ab 5000 USDT Konto 10–50 Pp./Jahr → relativ zum Konto
+cfg_r = BF.einstellungen({"KI_BOT_ANTEIL": "1"})
+pruefe("ohne gesetzten Deckel: kein fester 1000-USDT-Deckel mehr, Zukauf bis 1× Konto", cfg_r["max_auftrag"] == float("inf")
+       and cfg_r["max_auftrag_anteil"] == 1.0 and BF.plane(cfg_r, 20000, 0.0, 50000, R, 1.0) == [("BUY", 0.4, False)],
+       BF.plane(cfg_r, 20000, 0.0, 50000, R, 1.0))
+pruefe("eigener KRYPTO_MAX_AUFTRAG geht vor KI_BOT_MAX_AUFTRAG (gilt auch für Alpaca)",
+       BF.einstellungen({"KRYPTO_MAX_AUFTRAG": "500", "KI_BOT_MAX_AUFTRAG": "1000"})["max_auftrag"] == 500.0)
+cfg_q = BF.einstellungen({"KI_BOT_ANTEIL": "1", "KRYPTO_MAX_AUFTRAG_ANTEIL": "0,25"})
+pruefe("relativer Deckel: 25 % des Kontos je Lauf", BF.plane(cfg_q, 20000, 0.0, 50000, R, 1.0) == [("BUY", 0.1, False)],
+       BF.plane(cfg_q, 20000, 0.0, 50000, R, 1.0))
+pruefe("Zukauf nie grösser als die freie Margin trägt (1000 frei × Börsen-Hebel 2 × 95 %)",
+       BF.plane(cfg_r, 20000, 0.0, 50000, R, 1.0, frei=1000.0) == [("BUY", 0.038, False)], BF.plane(cfg_r, 20000, 0.0, 50000, R, 1.0, frei=1000.0))
+pruefe("Richtungswechsel: die geschlossene Position gibt ihre Margin frei",
+       BF.plane(cfg_r, 20000, 0.2, 50000, R, -1.0, frei=0.0) == [("SELL", 0.2, True), ("SELL", 0.19, False)],
+       BF.plane(cfg_r, 20000, 0.2, 50000, R, -1.0, frei=0.0))
+pruefe("ohne freie Margin: kein Zukauf (statt Ablehnung und Warnung)", BF.plane(cfg_r, 20000, 0.0, 50000, R, 1.0, frei=0.0) == [])
+with tempfile.TemporaryDirectory() as tmp_a:
+    datei_a = Path(tmp_a) / "einst.json"
+    datei_a.write_text(json.dumps({"anteil": 1.0, "risiko": 1.5}), encoding="utf-8")
+    pruefe("Konto-Anteil aus dem Cockpit, Umgebung geht vor, Unsinn → 0,5",
+           K.anteil({}, datei_a) == 1.0 and K.anteil({"KI_BOT_ANTEIL": "0,7"}, datei_a) == 0.7 and K.anteil({}) == 0.5
+           and K.anteil({"KI_BOT_ANTEIL": "viel"}) == 0.5 and K.anteil({"KI_BOT_ANTEIL": "3"}) == 1.0)
 pruefe("Testnetz ist Standard", cfg["basis"] == BF.TESTNETZ_URL and not cfg["echtgeld"])
 pruefe("Echtgeld nur doppelt", not BF.einstellungen({"BINANCE_FUTURES_TESTNET": "false"})["echtgeld"]
        and BF.einstellungen({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ})["echtgeld"])
@@ -308,7 +347,8 @@ pruefe("trocken: keine Aufträge", not [x for x in Fake.log if x[1] == "/fapi/v1
 BF.ausfuehren(ent, env=env, protokolliere=prot.append)
 orders = [x for x in Fake.log if x[1] == "/fapi/v1/order"]
 pruefe("Kauf 0.2 BTC mit gültiger Signatur", orders and orders[0][2]["side"] == "BUY" and orders[0][2]["quantity"] == "0.2" and orders[0][3], orders[:1])
-pruefe("ISOLATED-Margin und Hebel 1 gesetzt", any(x[1] == "/fapi/v1/leverage" and x[2]["leverage"] == "1" for x in Fake.log))
+pruefe("ISOLATED-Margin und Börsen-Hebel 2 gesetzt (die Grösse bestimmt plane(), nicht der Börsen-Hebel)",
+       any(x[1] == "/fapi/v1/leverage" and x[2]["leverage"] == "2" for x in Fake.log))
 stops = [x for x in Fake.log if x[1] == "/fapi/v1/algoOrder"]
 pruefe("Börsen-Stop als Algo-Auftrag gesetzt, auf Tick gerundet, Markpreis", stops and stops[-1][2]["triggerPrice"] == "45000"
        and stops[-1][2]["closePosition"] == "true" and stops[-1][2]["workingType"] == "MARK_PRICE" and stops[-1][2]["algoType"] == "CONDITIONAL"

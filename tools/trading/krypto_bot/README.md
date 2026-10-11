@@ -33,10 +33,10 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 (`KRYPTO_PILOT_MAERKTE=BTC` = nur Bitcoin; eine noch offene Position im abgewählten Markt schliesst der nächste Lauf):
 - **Richtung:** über dem Trend-Schnitt long, darunter short (`KRYPTO_SHORT=0` = nur long).
   **Bitcoin 150 Tage, Ethereum 200 Tage** (siehe Prüfstand unten).
-- **Grösse:** Schwankungsziel 40 % pro Jahr, also bei wildem Markt automatisch kleiner. Höchstens `KRYPTO_MAX_HEBEL`
-  (Standard 1×, hart gedeckelt auf 2×).
-- **Stop an der Börse:** 3 Tages-Schwankungen unter bzw. über dem Kurs (bis 11.10.2026: 4), auf den Markpreis, nach
-  jedem Lauf neu gesetzt.
+- **Grösse:** Schwankungsziel 40 % pro Jahr, also bei wildem Markt automatisch kleiner. Risiko-Stufe 1× / 1,5× / 2×
+  (Cockpit, hart gedeckelt auf 2×) auf den **Konto-Anteil** (Cockpit 50 % / 100 % oder `KI_BOT_ANTEIL`, Standard 50 %).
+- **Stop an der Börse:** 6 Tages-Schwankungen unter bzw. über dem Kurs, auf den Markpreis, nach jedem Lauf neu gesetzt —
+  eine weite Crash-Sicherung (engere Stops kosteten Rendite, siehe Prüfstand).
 - **Lügendetektor:** misst täglich, ob die Regel in den letzten 2 Jahren besser war als Zufall, und meldet es aufs Handy.
   Er handelt bewusst **nicht**: Als Abschalter getestet, kostete er ab 2022 über 20 Prozentpunkte Rendite pro Jahr.
 - **MVRV-Bremse:** kein Short, solange der Kurs unter dem Einstandswert aller Coins liegt (MVRV < 1, CoinMetrics). Die
@@ -45,29 +45,60 @@ Handelstagen frei. Entwickelt bis Ende 2021, gezählt wird nur der ungesehene Te
 - **Wochenbericht:** einmal pro Woche kommt der Kontostand aufs Handy (seit Start, seit Vorwoche, Abstand zum Höchststand).
   Jederzeit: `pilot.py --bericht`.
 
-`pilot.py --backtest` (Futures-Modell mit Gebühren, Funding für Longs, Stop 3σ mit 0,1 % Schlupf, Liquidation; BTC und ETH
-jeden Tag neu 50/50 aus dem Gesamtkonto aufgeteilt — wie live; Stand 11.10.2026):
+### 💰 Maximaler Profit — was das ganze Konto im Test brachte
+
+Die Backtests rechnen seit 11.10.2026 so nah am Live-Betrieb wie möglich: **echtes Binance-Funding** (2020/21 oft das
+1,5- bis 3-Fache der früheren Pauschale; Longs zahlen, Shorts erhalten), **Stop und Liquidation auf dem Binance-Markpreis**
+(Yahoo-Tageskerzen glätteten die Dochte weg) und ein **an 81 echten Stops gemessener Schlupf von 0,45 %**. Vor 2020 gibt es
+diese Archive nicht — dort gilt das Ersatzmodell (Pauschale nur für Longs, Yahoo-Hoch/Tief). Stand 11.10.2026, Pilot mit
+MVRV-Bremse und Stop 6σ, **ganzes Konto** (der nicht eingesetzte Anteil liegt als USDT ohne Zins da):
+
+| Konto-Anteil | Risiko-Stufe | ab 2019 pro Jahr | schlimmster Einbruch | ab 2022 pro Jahr | Einbruch ab 2022 |
+|---|---|---|---|---|---|
+| 50 % (Standard) | 1× (Standard) | +18,4 % | −18 % | +15,6 % | −14 % |
+| 50 % | 2× | +32,0 % | −38 % | +26,4 % | −28 % |
+| **100 %** | **1×** | **+36,6 %** | **−35 %** | **+30,4 %** | **−28 %** |
+| 100 % | 1,5× | +51,0 % | −49 % | +39,9 % | −40 % |
+| 100 % | 2× (Maximum) | +57,6 % | −66 % | +45,1 % | −54 % |
+| — | Bitcoin halten (Spot) | +48,9 % | −77 % | +13,0 % | −67 % |
+
+- **Der grösste Hebel ist der Konto-Anteil, nicht der Hebel.** Mit dem Standard 50 % arbeitet nur die Hälfte des
+  Futures-Kontos. Liegt dort nur Geld für den Pilot, verdoppelt «100 %» (Cockpit) Gewinn **und** Einbrüche — Rendite ÷
+  Einbruch bleibt gleich. Das ist dieselbe Strategie, nur nicht mehr halb im Leerlauf.
+- **Stufe 1,5× / 2×** bringen mehr, aber die Einbrüche wachsen schneller: 2× fiel zwischendurch um zwei Drittel.
+  Ein Prüfer liess die Tagesrenditen zufällig neu zusammenwürfeln (Block-Bootstrap, damals mit Stop 3σ): Schon 1,5× mit
+  ganzem Konto erreichte in rund 60 % der Verläufe −50 %. Im echten Verlauf waren es −49 %.
+- **Auftragsdeckel:** Bis 11.10.2026 kaufte der Pilot höchstens 1000 USDT je Lauf zu. Ab 5000 USDT Konto baute er seine
+  Position darum über Wochen auf und verpasste die Trends — das kostete im Test 10–50 Prozentpunkte pro Jahr. Jetzt gilt
+  höchstens 1× das Konto je Lauf (`KRYPTO_MAX_AUFTRAG_ANTEIL`), ein fester Deckel nur, wenn du ihn setzt
+  (`KRYPTO_MAX_AUFTRAG`, sonst `KI_BOT_MAX_AUFTRAG`). Zukäufe sind nie grösser, als die freie Margin trägt
+  (Börsen-Hebel 2, isoliert: Liquidation rund 49 % vom Einstieg, weit hinter dem Stop).
+- **Ehrlich:** Seit 2019 verdiente einfaches Bitcoin-Halten mehr als der Pilot mit 1× (+48,9 % gegen +36,6 % pro Jahr) —
+  mit −77 % Einbruch. Der Pilot gewinnt vor allem in Baissen (ab 2022 +30,4 % gegen +13,0 %). Alle Stellschrauben
+  (Trendlänge, MVRV, Stop) wurden auf denselben Jahren gewählt; künftige Zahlen sind eher tiefer. Live handelt der Pilot
+  erst rund eine Stunde nach Tagesschluss — auch das kostet etwas. Keine Anlageberatung.
+- **Geprüft und verworfen (11.10.2026):** mehr Coins im Pilot (Top-5/Top-10 nach Volumen, damalige Daten inkl. abgemeldeter
+  Coins): ab 2019 nur +11 % bzw. +1 % pro Jahr — die Alts verdünnen die beiden Märkte, auf denen die Regel funktioniert.
+  Funding-Carry (Spot long + Perp short) für freies Kapital: historisch +6 % pro Jahr, seit 2022 nur +3 %, zuletzt +1,5 %
+  — für ein zweites Konto mit Transfers und doppeltem Börsenrisiko zu wenig.
+
+`pilot.py --backtest` (gleiches Modell, Anteil 100 %, Stufe 1×; BTC und ETH jeden Tag neu 50/50 aufgeteilt):
 
 | ab | Variante | pro Jahr | schlimmster Einbruch | Rendite ÷ Einbruch |
 |---|---|---|---|---|
-| 2019 | **+ MVRV-Bremse (live)** | **+37,4 %** | **−29 %** | **1,30** |
-| 2019 | BTC 150 + ETH 200 | +29,5 % | −35 % | 0,84 |
-| 2019 | nur BTC 150 | +27,0 % | −44 % | 0,62 |
-| 2019 | nur BTC 200 (bisher) | +13,2 % | −65 % | 0,20 |
+| 2019 | **+ MVRV-Bremse (live)** | **+36,6 %** | **−35 %** | **1,04** |
+| 2019 | BTC 150 + ETH 200 | +26,4 % | −45 % | 0,58 |
+| 2019 | nur BTC 150 | +24,6 % | −49 % | 0,50 |
+| 2019 | nur BTC 200 (bisher) | +8,3 % | −73 % | 0,11 |
 | 2019 | Bitcoin halten (Spot) | **+48,9 %** | −77 % | 0,64 |
-| 2022 | **+ MVRV-Bremse (live)** | **+28,1 %** | **−26 %** | **1,07** |
-| 2022 | BTC 150 + ETH 200 | +22,8 % | −26 % | 0,87 |
-| 2022 | nur BTC 150 | +25,8 % | −41 % | 0,63 |
-| 2022 | nur BTC 200 (bisher) | +27,2 % | −49 % | 0,55 |
+| 2022 | **+ MVRV-Bremse (live)** | **+30,4 %** | **−28 %** | **1,10** |
+| 2022 | BTC 150 + ETH 200 | +23,4 % | −28 % | 0,84 |
+| 2022 | nur BTC 150 | +24,9 % | −38 % | 0,65 |
+| 2022 | nur BTC 200 (bisher) | +27,1 % | −44 % | 0,62 |
 | 2022 | Bitcoin halten (Spot) | +13,0 % | −67 % | 0,19 |
 
-**Ehrlich: Seit 2019 verdiente einfaches Bitcoin-Halten mehr** (+48,9 % statt +37,4 % pro Jahr) — mit einem Einbruch von
-−77 % statt −29 %. Der Pilot ist ein Risiko-Werkzeug; er gewann vor allem in den Baissen (ab 2022 +28,1 % gegen +13,0 %).
-
-Seit 11.10.2026 rechnen alle Backtests strenger: **Shorts bekommen kein Funding gutgeschrieben** (vorher ja — echtes Funding
-ist zeitweise negativ, dann zahlen Shorts), und **«Halten» ist Bitcoin auf Spot** ohne Funding. Vorher stand dort ein
-Long-Future 1× mit Funding (ab 2019 +34,7 %) — das machte Halten schlechter, als es ist. Der Pilot fiel dadurch ab 2019 von
-+38,4 % auf +36,0 % (mit Stop 4σ); der Wechsel auf 3σ (unten) brachte +37,4 %.
+Frühere Stände: Bis 11.10.2026 bekamen Shorts pauschal Funding gutgeschrieben und «Halten» war ein Long-Future mit Funding
+(ab 2019 +34,7 % statt +48,9 % — Halten sah schlechter aus, als es ist); Stops liefen auf Yahoo-Kerzen mit 0,1 % Schlupf.
 
 Bis 08.10.2026 rechneten alle Backtests BTC und ETH als zwei getrennte Töpfe, die nie ausgeglichen werden (ab 2019:
 +36,3 %, −35 %). Live bemisst der Pilot aber jede Position aus dem ganzen Konto — das ist eine tägliche Neuaufteilung.
@@ -76,18 +107,18 @@ Seither rechnen Backtest, Prüfstände und Cockpit-Kurve so (Näherung über die
 **Prüfstand** (`pilot_pruefung.py`, Regel vorab festgelegt: ein Standardwert ändert sich nur, wenn die Alternative in
 **allen** Zeiträumen ein besseres Verhältnis Rendite ÷ Einbruch hat):
 - **Trendlänge Bitcoin 150 statt 200:** auf drei getrennten Abschnitten jedes Mal besser (2015–18: 2,74 vs. 2,49;
-  2018–22: 0,69 vs. −0,06; 2022–heute: 0,62 vs. 0,58). Bei **Ethereum** war 200 in beiden Abschnitten besser → bleibt 200.
-- **Ethereum dazu:** in beiden Zeiträumen kleinerer Einbruch (ab 2019 −54 statt −66 %, ab 2022 −30 statt −44 %).
-- **Stop 3σ statt 4σ (seit 11.10.2026):** Die frühere Prüfung lief nur auf der alten Einzel-Regel (BTC 200 allein) und
-  ergab «4σ bleibt». Auf der **Live-Konfiguration** (BTC 150 + ETH 200 + MVRV-Bremse, täglich neu aufgeteilt) war 3σ in
-  allen drei Feldern besser: ab 2019 1,30 statt 1,03, 2019–2021 2,01 statt 1,60, 2022–heute 1,07 statt 1,00.
-  Der Nachbarwert 3,5σ war ebenfalls überall besser als 4σ (1,19 / 1,99 / 1,07) — 3σ ist also kein einzelner Glückstreffer.
-  Ehrlich: Ab 2022 ist der Vorsprung klein, und **ohne Stop** war es dort sogar am besten (1,12) — der Stop half vor allem
-  im Crash vom März 2020. Ein Prüfer hatte 3σ auf denselben Daten schon gesehen, bevor die Prüfung lief; eine unabhängige
-  Bestätigung ist das nicht. Der engere Stop löst öfter aus (seit 2019 84-mal statt 36-mal, jedes Mal mit Gebühr und
-  0,1 % Schlupf — eingerechnet).
-- **Schwankungsziel 40 % bleibt** (auch auf der Live-Konfiguration): 30 % war ab 2022 schlechter (0,79 statt 1,07),
-  50 % überall schlechter.
+  2018–22: 0,51 vs. −0,12; 2022–heute: 0,75 vs. 0,70). Bei **Ethereum** war 200 in beiden Abschnitten besser → bleibt 200.
+- **Ethereum dazu:** in beiden Zeiträumen kleinerer Einbruch (ab 2019 −51 statt −68 %, ab 2022 −28 statt −42 %).
+- **Stop 6σ (seit 11.10.2026, vorher 4σ, für ein paar Stunden 3σ):** Der Stop-Abstand ist **nicht robust** — je nach
+  Modell gewann eine andere Stufe. Mit Yahoo-Kerzen und 0,1 % Schlupf schien 3σ am besten. Mit dem realistischen Modell
+  (Markpreis, echtes Funding, 0,45 % Schlupf) sind enge Stops in **allen** Feldern schlechter (Live-Konfiguration, Rendite ÷
+  Einbruch ab 2019 / 2019–21 / 2022–heute: 3σ 0,97 / 1,36 / 0,89 · 4σ 0,90 / 1,32 / 0,98 · **6σ 1,04 / 1,36 / 1,10** ·
+  8σ 1,05 / 1,40 / 1,07 · ohne Stop 1,09 / 1,40 / 1,20). Enge Stops lösen an kurzen Dochten aus und kaufen am nächsten Tag
+  teurer zurück; bei Stufe 2× kostete 3σ rund 10 Prozentpunkte pro Jahr. Ab 5σ liegen alle nahe beieinander (kein
+  Einzeltreffer). **Ganz ohne Stop** war minimal besser, bleibt aber Vergleichszeile: Der Stop ist die Sicherung, wenn
+  der PC aus ist, die Börse hängt oder ein Absturz die Liquidationsgrenze erreicht.
+- **Schwankungsziel 40 % bleibt** (auch auf der Live-Konfiguration): 30 % war überall schlechter, 50 % ab 2019 und
+  2019–2021 schlechter (0,97 / 1,24 statt 1,04 / 1,36).
 - Ehrlich: Die Trendlänge wurde aus 5 Kandidaten gewählt. Diese Auswahl schönt die Zahlen etwas, getrennte Abschnitte
   mildern das nur. In der Hausse 2019–2021 verdiente einfaches Halten mehr, der Pilot gewinnt vor allem in Baissen.
 
@@ -98,20 +129,20 @@ besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzt
 
 | Info (Quelle) | Regel | Felder besser | Zufallsprobe | Urteil |
 |---|---|---|---|---|
-| **MVRV tief** (CoinMetrics) | MVRV < 1 → kein Short | **4 von 4** | **94 %** | **übernommen** |
-| Funding negativ (BitMEX/OKX) | Funding 7 T. < 0 → kein Short | 2 von 4 | 100 % | nein, ab 2022 schlechter |
-| Dollar (FRED, wöchentlich → 7 Tage Verzug) | Dollar über 200-T.-Schnitt → Long halb | 2 von 4 | 100 % | nein, 2018–2021 schlechter |
-| Alle zusammen (Abstimmung) | ≥ 3 Long- bzw. ≥ 2 Short-Bremsen | 2 von 4 | 98 % | nein, ab 2022 schlechter |
-| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 84 % | nein |
-| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 68 % | nein |
-| VIX (FRED) | > 30 → Long halb | 1 von 4 | 72 % | nein |
-| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 2 von 2 (nur BTC) | 80 % | nein |
-| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–1 von 4 | 23–91 % | nein |
+| **MVRV tief** (CoinMetrics) | MVRV < 1 → kein Short | **4 von 4** | **97 %** | **übernommen** |
+| Funding negativ (BitMEX/OKX) | Funding 7 T. < 0 → kein Short | 2 von 4 | 96 % | nein, ab 2022 schlechter |
+| Dollar (FRED, wöchentlich → 7 Tage Verzug) | Dollar über 200-T.-Schnitt → Long halb | 3 von 4 | 99 % | nein |
+| Alle zusammen (Abstimmung) | ≥ 3 Long- bzw. ≥ 2 Short-Bremsen | 2 von 4 | 94 % | nein, ab 2022 schlechter |
+| Angst & Gier (alternative.me) | ≤ 20 → kein Short | 3 von 4 | 90 % | nein |
+| Angst & Gier | ≥ 80 → Long halb | 1 von 4 | 55 % | nein |
+| VIX (FRED) | > 30 → Long halb | 0 von 4 | 47 % | nein |
+| Hashrate (CoinMetrics) | 30 T. unter 60 T. → kein Short | 1 von 2 (nur BTC) | 72 % | nein |
+| Funding hoch, MVRV hoch, US-Zins, Notenbank-Bilanz, Stablecoins | Long halb | 0–1 von 4 | 7–96 % | nein |
 
 - Die MVRV-Bremse ist nicht an die Schwelle 1 gebunden: von 0,8 bis 1,2 war sie jedes Mal in allen 4 Feldern besser.
   Sie wirkt nur auf Shorts: Unter dem Einstandswert aller Coins ist der Ausverkauf meist schon weit fortgeschritten.
 - **Ehrlich:** 13 Kandidaten getestet. Bei einer 90-%-Schwelle besteht rein zufällig etwa einer die Zufallsprobe —
-  94 % liegt knapp darüber. Darum zusätzlich die Bedingung «alle vier Felder besser». Ein Beweis ist das nicht.
+  97 % liegt knapp darüber. Darum zusätzlich die Bedingung «alle vier Felder besser». Ein Beweis ist das nicht.
 - Keine Zukunftsdaten: jede Info zählt erst einen Tag nach ihrem Datum (Notenbank-Bilanz zwei Tage, Dollar-Index sieben —
   FRED veröffentlicht ihn nur wöchentlich), getestet in
   `test_infos.py`. Fehlt MVRV oder ist es älter als 5 Tage, handelt der Pilot nach der Grundregel ohne Bremse.
@@ -155,8 +186,10 @@ Alpaca-Bots —, offene Positionen bleiben mit ihrem Stop stehen. `weiter.bat` h
 - Zeitüberschreitung, abgerissene Verbindung oder Binance-Antwort «Unknown error» (HTTP 503 — laut Binance KEIN Fehlschlag):
   Jeder Auftrag hat eine eigene Kennung, der Pilot fragt nach, ob er ausgeführt wurde. Bleibt es unklar, werden die Stops
   nicht gelöscht, und es kommt eine Warnung. Der Stop wird passend zur tatsächlichen Position gesetzt.
-- Risiko-Stufe senken bei offener Position: Binance lässt den Hebel dann nicht senken (−4161) — der Pilot handelt trotzdem
-  mit der kleineren Grösse weiter, der Börsen-Hebel sinkt, sobald die Position flach ist.
+- Der Börsen-Hebel steht immer auf 2 (isolierte Margin) — er bestimmt nur das Pfand, nicht die Grösse. Die Grösse kommt
+  allein aus Schwankungsziel, Risiko-Stufe und Konto-Anteil. Zukäufe sind nie grösser, als die freie Margin trägt (sonst
+  lehnt Binance ab und es käme eine Warnung). Ein älteres Konto mit höherem Börsen-Hebel (−4161 beim Senken) handelt
+  trotzdem weiter.
 - Das Cockpit liest bei jedem Not-Aus, Knopf und Seitenaufruf die aktuellen Einstellungen (`setx` landet in der
   Windows-Registry): Nach einem Wechsel auf Echtgeld prüft der Not-Aus das richtige Konto und nennt es in jeder Zeile.
 - Not-Aus geht auch über die Variable `KI_BOT_STOP=1` (gleiche Wirkung wie die Datei STOP). Zahlen in Einstellungen dürfen
@@ -378,24 +411,25 @@ Stand 07.10.2026 (1 = Startkapital Februar 2018):
 
 ## ⚡ Mehr Hebel? — ehrlich getestet (`hebel_pruefung.py`)
 
-Der Pilot (BTC 150 + ETH 200, MVRV-Bremse, Stop 3σ) im Futures-Modell mit Gebühren, Funding für Longs und Liquidation,
-BTC/ETH täglich neu aufgeteilt wie live, Stand 11.10.2026. «Alles × L» heisst: Schwankungsziel und Deckel L-mal so gross (jede Position
-L-mal so gross):
+Der Pilot (BTC 150 + ETH 200, MVRV-Bremse, Stop 6σ) im realistischen Futures-Modell (ab 2020 echtes Binance-Funding, Stop
+und Liquidation auf dem Markpreis, 0,45 % Stop-Schlupf), BTC/ETH täglich neu aufgeteilt wie live, Pilot-Teil = 100 %,
+Stand 11.10.2026. «Alles × L» heisst: Schwankungsziel und Deckel L-mal so gross (jede Position L-mal so gross):
 
 | Hebel | ab 2019 pro Jahr | schlimmster Einbruch | ab 2022 pro Jahr | Einbruch ab 2022 |
 |---|---|---|---|---|
-| **1× (Standard)** | **+37,4 %** | **−29 %** | **+28,1 %** | **−26 %** |
-| 1,5× | +51,0 % | −44 % | +35,6 % | −40 % |
-| 2× | +62,7 % | −60 % | +41,9 % | −57 % |
-| 3× | +80,1 % | −81 % | +43,6 % | −81 % |
-| 5× | +56,5 % | −97 % | +9,3 % | −97 % |
-| 10× | −88,5 % | **−100 %** | −93,6 % | −100 % |
+| **1× (Standard)** | **+36,6 %** | **−35 %** | **+30,4 %** | **−28 %** |
+| 1,5× | +51,0 % | −49 % | +39,9 % | −40 % |
+| 2× | +57,6 % | −66 % | +45,1 % | −54 % |
+| 3× | +71,4 % | −82 % | +46,4 % | −80 % |
+| 5× | +39,4 % | −98 % | +7,9 % | −98 % |
+| 10× | **liquidiert** | **−100 %** | **liquidiert** | −98 % |
 
-- Mehr Hebel bringt bis 3× mehr Rendite, aber die Einbrüche wachsen schneller als der Gewinn: Rendite ÷ Einbruch ist bei
-  1× am besten (1,30), bei 3× fällt das Konto zwischendurch um 81 %. Ab 5× bleiben vom Höchststand zeitweise nur 3 %
-  übrig, ab 10× ist das Konto weg — schon eine einzige schlechte Woche reicht.
-- Nur den Deckel höher stellen (Schwankungsziel bleibt) bringt nichts: ab 2022 sogar schlechter (0,78 statt 1,07), weil
+- Mehr Hebel bringt bis 3× mehr Rendite, aber die Einbrüche wachsen schneller als der Gewinn: Rendite ÷ Einbruch ist bis
+  1,5× etwa gleich (1,04), bei 2× schon tiefer (0,87), bei 3× fällt das Konto zwischendurch um 82 %. Ab 5× bleiben vom
+  Höchststand zeitweise nur 2 % übrig, 10× wird auf dem Markpreis liquidiert — eine einzige schlechte Woche reicht.
+- Nur den Deckel höher stellen (Schwankungsziel bleibt) bringt nichts: ab 2022 sogar schlechter (0,68 statt 1,10), weil
   der Pilot dann in ruhigen Phasen grösser wird — und ruhige Phasen endeten oft mit einem Einbruch.
+- Die Zahlen gelten für den eingesetzten Teil. Fürs ganze Konto mit Konto-Anteil 50 % siehe «Maximaler Profit» oben.
 - Regel vorab: mehr Hebel nur, wenn nie liquidiert, Einbruch nie tiefer als −50 % und Rendite ÷ Einbruch überall besser
   als 1×. **Keine Stufe hat bestanden.** Darum bleibt 1× Standard und 2× die harte Grenze.
 - **100× («x100 Futures»)**: `hebel_pruefung.py --minuten` mit echten Bitcoin-Minutenkursen (09.09.–09.10.2026,
@@ -412,8 +446,8 @@ L-mal so gross):
   Ob Long oder Short ist dabei fast egal: Das Rauschen liquidiert die Position, bevor die Richtung zählt. Darum gibt es
   im Pilot kein 100× (und nichts über 2×).
 - Wer bewusst mehr Risiko will: im Cockpit **Risiko-Stufe 1,5× oder 2×** wählen (oder `setx KRYPTO_RISIKO "1.5"`), mit
-  Rückfrage und den Zahlen oben. Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
-  die Prozente oben gelten für diesen Teil.
+  Rückfrage und den Zahlen oben. Die Prozente gelten für den eingesetzten Teil — mit Konto-Anteil 50 % (Standard) bekommt
+  das ganze Konto rund die Hälfte; «💰 Maximaler Profit» oben zeigt die Kontozahlen.
 
 ## Futures (Hebel) — ehrlich gerechnet
 
@@ -496,11 +530,11 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
-python3 tools/trading/krypto_bot/test_pilot.py    # 82 Tests, inkl. Risiko-Stufen, Sperre, Not-Aus mitten im Lauf, Algo-Stops und nachgebautem Binance-Futures-Server
+python3 tools/trading/krypto_bot/test_pilot.py    # 91 Tests, inkl. Risiko-Stufen, Konto-Anteil, Auftragsdeckel/Margin, Funding/Markpreis-Backtest, Sperre, Not-Aus, Algo-Stops und nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 113 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 116 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
