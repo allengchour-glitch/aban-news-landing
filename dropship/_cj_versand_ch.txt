@@ -1560,3 +1560,13 @@ gid://shopify/Product/16613793464711	ok	Wandkalender mit WiFi-Digitaluhr
 gid://shopify/Product/16613802082695	ok	Smart-Wecker mit Nachtlicht und Audio-Monitor
 gid://shopify/Product/16613864964487	nicht-versendbar	Katzenbaum mit Sisal-Säule und Schlafplatz
 gid://shopify/Product/16613835997575	ok	Bluetooth Grillthermometer-Fühler
+gid://shopify/Product/16615672742279	nicht-versendbar	Ganzkörperspiegel zur Wandmontage
+gid://shopify/Product/16615698203015	ok	Abstrakte Wandbilder Morandi – 3er-Set
+gid://shopify/Product/16615662092679	ok	Cremeweisse Pfingstrosen-Blumen Ölgemälde
+gid://shopify/Product/16614846103943	ok	Rollkoffer mit grossem Fassungsvermögen
+gid://shopify/Product/16615387431303	ok	Trinkwasserfilter aus Edelstahl
+gid://shopify/Product/16615390314887	ok	Heissluftfritteuse mit Sichtfenster
+gid://shopify/Product/16615706820999	nicht-versendbar	Moderne leichte Luxusfigur aus Kunststoff
+gid://shopify/Product/16614845383047	ok	Hantel für Armtraining
+gid://shopify/Product/16615661994375	ok	Minimalistisches Wandbild – Schwarz-Weiss, Leinwand
+gid://shopify/Product/16614567575943	ok	Ultraschall-Fettabbaugerät
