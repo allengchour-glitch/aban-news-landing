@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-11 09:20 UTC, Stand 2026-10-11 09:31 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-11 09:20 UTC, Stand 2026-10-11 09:33 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **6'013**
-- Optionen mit englischen Werten (Kandidaten): 728
+- Produkte gesehen: **6'609**
+- Optionen mit englischen Werten (Kandidaten): 762
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'104
+- Werte mit unbekanntem Wort (unverändert): 3'247
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 28
+- übersprungen «kleidungsstueck-im-wert»: 31
 - übersprungen «kollision-nach-uebersetzung»: 17
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -31,6 +31,9 @@
 - `15448718180737` [Farbe] **Gestreifter Business-Anzug für Herren** — jacke, weste · Titel nennt Set: Caramel Jacket | Sugar Coffee Vest | Set
 - `15449055854977` [Farbe] **Kapuzen-Sweatshirt-Set, Fleece-gefüttert · Modell 2** — hose, pullover · Titel nennt Set: Blue-Hoodie | Blue-Pants | Grayish Brown-Hoodie | Grayish Brown-Pants | Navy Blue-Hoodie | Navy Blue-Pants | Leafy Gray-Hoodie | Leafy Gray-Pants
 - `15449066766721` [Farbe] **Vintage Patchwork Distressed Jeansjacke für Herren** — hose, jacke: Single Jacket | Single Pants
+- `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Long sleeves | Vest | Off shoulder
+- `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
+- `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -78,5 +81,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 159, `light` 138, `color` 100, `⟨satzbau:adjektiv-vor-nomen⟩` 70, `core` 53, `shell` 50, `hat` 46, `rope` 44, `lens` 38, `high` 37, `case` 35, `generation` 33, `powder` 33, `surface` 30, `mother` 30, `no` 29, `adjustable` 29, `to` 27, `of` 26, `bag` 26, `insert` 26, `crotch` 26, `carbon` 25, `tea` 24, `batteries` 24, `⟨satzbau:nomen-vor-farbe⟩` 23, `ice` 22, `face` 22, `electric` 22, `housing` 22, `suit` 21, `nail` 21, `one` 21, `bear` 21, `yadan` 21, `stone` 20, `belt` 20, `handle` 20, `cocoa` 20, `comfortable` 20, `number` 19, `deer` 19, `noodles` 18, `⟨satzbau:material-vor-farbe⟩` 18, `father` 18, `clothing` 18, `background` 17, `waist` 17, `for` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `milk` 16, `three` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `grid` 15, `buckle` 15, `pumpkin` 15
+`degrees` 159, `light` 147, `color` 102, `⟨satzbau:adjektiv-vor-nomen⟩` 70, `core` 53, `shell` 50, `hat` 46, `rope` 44, `lens` 38, `high` 37, `case` 35, `generation` 33, `powder` 33, `surface` 30, `mother` 30, `no` 29, `adjustable` 29, `to` 27, `of` 26, `bag` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `carbon` 25, `cocoa` 25, `tea` 24, `batteries` 24, `perforated` 24, `ice` 22, `face` 22, `electric` 22, `housing` 22, `suit` 21, `belt` 21, `nail` 21, `one` 21, `bear` 21, `yadan` 21, `stone` 20, `handle` 20, `comfortable` 20, `number` 19, `deer` 19, `milk` 18, `three` 18, `noodles` 18, `⟨satzbau:material-vor-farbe⟩` 18, `father` 18, `clothing` 18, `background` 17, `waist` 17, `for` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `gallium` 16, `nitride` 16, `cloud` 16, `sunglasses` 16, `parent` 16, `grid` 15
 
