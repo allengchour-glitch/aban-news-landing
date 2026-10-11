@@ -205,3 +205,6 @@ slug:trolli-dracula-fga49350
 slug:bruder-mb-sprinter-ambulanz-m-fga02676
 name:brudermbsprinterambulanzm
 slug:automatischer-futter-und-wasserspender-fur-hau
+slug:dekostoff-horror-fga901377
+slug:sportlicher-taillenformer-mit-reissverschluss-633000
+name:sportlichertaillenformermit
