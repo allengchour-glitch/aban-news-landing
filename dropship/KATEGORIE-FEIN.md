@@ -1,18 +1,18 @@
-# Feinkategorie (automatisch, 2026-10-11 14:41 UTC)
+# Feinkategorie (automatisch, 2026-10-11 15:08 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 34478 |
-| shopify-feiner | 15124 |
+| gleich | 34514 |
+| shopify-feiner | 15123 |
 | kein-google | 1635 |
-| rueckfall-grob | 1091 |
-| anderer-zweig | 329 |
-| ohne-kategorie | 146 |
-| kreuz | 13 |
-| schon-im-ledger | 13 |
-| titelprobe-nein | 9 |
+| rueckfall-grob | 901 |
+| anderer-zweig | 321 |
+| ohne-kategorie | 145 |
+| titelprobe-nein | 8 |
+| kreuz | 4 |
+| schon-im-ledger | 4 |
 | keine-zuordnung | 1 |
 | verfeinern | 0 |
 | **geschrieben** | 0 (Fehler 0) |
@@ -23,7 +23,7 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 ## Titelprobe hat abgelehnt (bleibt grob)
 
 - 3 × Bracelets
-- 3 × Dresses
+- 2 × Dresses
 - 1 × Necklaces
 - 1 × Activewear
 - 1 × Pants
@@ -34,5 +34,4 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
   - «Mesh Maxi Cape mit Fledermausärmeln» → Dresses
   - «Acryl-Hängeornament» → Necklaces
   - «Langarm-Base-Layer für Herren» → Activewear
-  - «Velours-Kolbenrock mit V-Ausschnitt» → Dresses
   - «Blaues Denim für Herren» → Pants
