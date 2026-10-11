@@ -20262,3 +20262,4 @@ gid://shopify/Product/16613835637127	Farbe	gid://shopify/ProductOptionValue/5838
 gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964551047	White navy A	Weiss-Marineblau A	2026-10-10T12:50Z
 gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964583815	White purple powder A	Weiss-Lila-Rosa A	2026-10-10T12:50Z
 gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964616583	White red A	Weiss-Rot A	2026-10-10T12:50Z
+gid://shopify/Product/15494642794881	Farbe	gid://shopify/ProductOptionValue/12336277127553	Lilac	Flieder	2026-10-11T10:14Z
