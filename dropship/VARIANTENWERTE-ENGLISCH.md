@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-11 09:20 UTC, Stand 2026-10-11 09:40 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-11 09:20 UTC, Stand 2026-10-11 09:41 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **15'608**
-- Optionen mit englischen Werten (Kandidaten): 1'746
+- Produkte gesehen: **18'649**
+- Optionen mit englischen Werten (Kandidaten): 1'842
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 9'340
+- Werte mit unbekanntem Wort (unverändert): 10'018
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 41
-- übersprungen «kollision-nach-uebersetzung»: 31
+- übersprungen «kleidungsstueck-im-wert»: 42
+- übersprungen «kollision-nach-uebersetzung»: 32
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -73,6 +73,7 @@
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 - `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
+- `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -98,5 +99,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 413, `light` 338, `inner` 325, `color` 218, `degrees` 159, `surface` 108, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 100, `skin` 98, `core` 92, `powder` 90, `three` 85, `high` 73, `rope` 69, `case` 64, `bag` 62, `feet` 62, `dual` 60, `dark` 58, `no` 57, `net` 57, `of` 56, `belt` 56, `size` 54, `electric` 54, `code` 52, `chain` 50, `lens` 50, `line` 49, `bear` 49, `to` 49, `hat` 46, `about` 46, `clock` 45, `buckle` 44, `acupuncture` 43, `little` 42, `four` 42, `perforated` 42, `face` 41, `button` 41, `cat` 39, `opp` 39, `camera` 39, `ice` 38, `carbon` 38, `star` 38, `suit` 37, `cherry` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `autumn` 37, `tea` 36, `magnetic` 36, `generation` 36, `⟨satzbau:nomen-vor-farbe⟩` 36, `person` 36, `⟨satzbau:nomen-nomen⟩` 35
+`⟨satzbau:adjektiv-vor-nomen⟩` 421, `light` 358, `inner` 325, `color` 240, `degrees` 159, `shell` 133, `surface` 108, `diamond` 107, `⟨satzbau:material-vor-farbe⟩` 104, `skin` 98, `powder` 97, `core` 92, `rain` 87, `three` 85, `high` 76, `rope` 69, `case` 68, `petal` 68, `to` 65, `belt` 64, `bag` 62, `feet` 62, `no` 61, `of` 60, `dual` 60, `dark` 59, `half` 58, `net` 57, `size` 54, `electric` 54, `code` 52, `chain` 50, `lens` 50, `line` 49, `bear` 49, `four` 48, `space` 47, `hat` 46, `about` 46, `clock` 45, `buckle` 44, `little` 43, `acupuncture` 43, `perforated` 42, `face` 41, `button` 41, `hook` 40, `⟨satzbau:menge-vor-nomen⟩` 40, `camera` 40, `cat` 39, `⟨satzbau:nomen-nomen⟩` 39, `opp` 39, `ice` 38, `carbon` 38, `star` 38, `⟨satzbau:adjektivfolge⟩` 38, `suit` 37, `cherry` 37, `full` 37, `handle` 37
 
