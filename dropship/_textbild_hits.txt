@@ -17577,3 +17577,6 @@ gid://shopify/Product/16614567608711	67->0	Holz 3D Interaktives Puzzlemodell
 gid://shopify/Product/16614567707015	141->1	PVC-Box für Fitness-Boxing, 1,6 m hoch
 gid://shopify/Product/16614567772551	15->0	Elastische Laufleine für Hunde – 85 cm
 gid://shopify/Product/16614568624519	9->3	Fleece-Corset für kleine und mittelgrosse Hunde
+gid://shopify/Product/16614569247111	22->0	Katzenhalsband mit Kapuzenvest – 2 Grössen
+gid://shopify/Product/16614569279879	163->1	Anti-Rutsch Katzengeschirr
+gid://shopify/Product/16614605816199	76->0	Halsband für Hund – 1–2 Grössen kleiner als EU/US
