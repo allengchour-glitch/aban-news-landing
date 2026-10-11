@@ -69,12 +69,12 @@ Exit-Codes: **0** ok (Tor bestanden, letzte stdout-Zeile JSON mit `pruefung.ok =
 **1** Fehler (u. a. Musik: nicht in automation/music, keine CREDITS-Zeile, < 6 s ab Einstieg; Bild 0 > 40 Zeichen).
 Das Entscheidungslog liegt als `<out>.schnitt.json` (oder im `--arbeitsordner`) — nach dem Posten loeschen, nie ins Repo.
 
-**Reel-Motor** (`automation/cj_video_reel_engine.mjs`, noch nicht umgestellt): Schnittstelle im Kopf von `schnitt.py` —
-statt `make_reel.sh` `spawnSync('python3', ['automation/reel/schnitt.py','--render',src,'--musik',musik,'--einstieg',
-String(mw.start),'--out',out,'--titel',z1,'--titel2',z2,'--preis',`CHF ${k.price.toFixed(2)}`,'--hook',hook,
-'--arbeitsordner','/tmp/reelbuild/schnitt','--json'], {timeout: 300000, env: {...process.env, SCHNITT_TESSDATA: '/tmp/schnitt_tessdata'}})`;
-Status 3 -> naechster Clip, 4 -> Ledger «schnitt-pruefung». Die heutigen HOOKS des Motors sind generisch und bis 36 Zeichen
-lang — die Umstellung braucht eine eigene Hook-Funktion (Produktwort + Nutzen, <= 24 Zeichen).
+**Reel-Motor** (`automation/cj_video_reel_engine.mjs`, SEIT 11.10.2026 UMGESTELLT): der Motor ruft `reelBauen()` aus
+`automation/reel/schnitt_motor.mjs` — das ruft `schnitt.py --render` (ohne Sprache) und danach bei gewollter Stimme
+`schnitt.py --stimme-legen` (Stimme ueber das fertige Reel, Bild unberuehrt, TP per `_tp_nachregeln`). Exit 3 und 4 →
+Ledger `dropship/_reel_tor_abgelehnt.txt` (nie erneut fragen), Exit 1 (OCR, Musik) voruebergehend. Der alte Tor-Lauf
+`automation/meisterwerk_tor.py` bleibt als zweites Tor (der Poster verwirft nach ihm). Hook: `hookFuer()` nur <= 30 Zeichen.
+`make_reel.sh` ist im Motor nicht mehr im Pfad (andere Skripte nutzen es weiter).
 
 ## Rezepte (ffmpeg 7.0.2 static, gemessen)
 
