@@ -337,3 +337,5 @@ gid://shopify/Product/16613278581127	mutze-schal-handschuhe-set-fur-kinder-64890
 gid://shopify/Product/16613637947783	kinder-stiefeletten-mit-weicher-sohle-schwarz-603300	Kinder Stiefeletten mit weicher Sohle – Schwarz
 gid://shopify/Product/16613788516743	mechanische-tastatur-keycaps-104-teilig-19efb2	Tastenkappen für mechanische Tastaturen 104-teilig
 gid://shopify/Product/16613788549511	sitzlucken-organizer-9e8e33	Sitzlücken-Organizer
+gid://shopify/Product/16614566527367	sommerkleid-mit-puffarmel-offener-rucken-a-lin-610700	Sommerkleid mit Puffärmel, offener Rücken, A-Linien
+gid://shopify/Product/16614566592903	kleine-bausteine-city-building-set-201728	Kleine Bausteine City Building Set
