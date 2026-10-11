@@ -461,3 +461,8 @@ gid://shopify/Product/16614837780871	Schwarz
 gid://shopify/Product/16614856917383	Schwarz
 gid://shopify/Product/16614857015687	Violett
 gid://shopify/Product/16614874743175	Khaki
+gid://shopify/Product/16615073448327	Schwarz
+gid://shopify/Product/16615200227719	Braun
+gid://shopify/Product/16615218217351	Silber
+gid://shopify/Product/16615275528583	Mehrfarbig
+gid://shopify/Product/16615327957383	Silber
