@@ -17580,3 +17580,6 @@ gid://shopify/Product/16614568624519	9->3	Fleece-Corset für kleine und mittelgr
 gid://shopify/Product/16614569247111	22->0	Katzenhalsband mit Kapuzenvest – 2 Grössen
 gid://shopify/Product/16614569279879	163->1	Anti-Rutsch Katzengeschirr
 gid://shopify/Product/16614605816199	76->0	Halsband für Hund – 1–2 Grössen kleiner als EU/US
+gid://shopify/Product/16614606045575	75->2	Einzelarmband zur Schulterhebelhilfe für Hunde
+gid://shopify/Product/16614615744903	145->1	Hundehindbeinschutzgurt – schwarzer Polyestergurt
+gid://shopify/Product/16614615908743	96->0	Hundegeschirr ohne Zugleine, Polyester
