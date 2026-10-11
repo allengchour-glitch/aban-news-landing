@@ -30,7 +30,7 @@ from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drosse
 try:
     from betreiber_push import senden as _push, CJ_BESTELLUNGEN
 except Exception:          # Push darf den Bestell-Automaten nie aufhalten
-    _push, CJ_BESTELLUNGEN = None, "https://www.cjdropshipping.com/my.html"
+    _push, CJ_BESTELLUNGEN = None, "https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5"
 
 
 def melde(schluessel, titel, text):

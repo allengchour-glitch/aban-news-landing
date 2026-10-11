@@ -945,11 +945,30 @@ def ki_guthaben():
     return "KI-Guthaben leer: " + " + ".join(leer) + " → Zweitprüfer-Wachen pausieren/laufen auf Groq (aufladen)"
 
 
+def verkauf_gewinn():
+    """VERKAUF-GEWINN (11.10.2026, Betreiber «preisanpassung … wenig gewinn»): Stand von automation/verkauf_gewinn_wache.py.
+    Zeigt, wie viele verkaufte Varianten unter dem Gewinnziel lagen (angehoben) und welche keinen Einkaufspreis tragen
+    (dann ist ihr Gewinn unbekannt). Kein Stand = «unklar», nie «0»."""
+    p = os.path.join(REPO, "dropship", "_verkauf_gewinn_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+        tage = (datetime.date.today() - datetime.date.fromisoformat(s["stand"][:10])).days
+    except Exception:
+        return "VERKAUF-GEWINN: unklar (kein Stand — automation/verkauf_gewinn_wache.py nie gelaufen?)"
+    ohne = int(s.get("ohne_ek_anzahl") or 0)
+    if tage >= 2:
+        return f"VERKAUF-GEWINN: Stand {tage} T alt — Wache läuft nicht"
+    if s.get("zu_heben") or ohne:
+        return (f"VERKAUF-GEWINN: {s.get('geaendert', 0)} angehoben, {s.get('zu_heben', 0)} offen, "
+                f"{ohne} verkaufte Variante(n) ohne Einkaufspreis (Gewinn unbekannt)")
+    return None
+
+
 def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
