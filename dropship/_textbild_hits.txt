@@ -17585,3 +17585,5 @@ gid://shopify/Product/16614615744903	145->1	Hundehindbeinschutzgurt – schwarze
 gid://shopify/Product/16614615908743	96->0	Hundegeschirr ohne Zugleine, Polyester
 gid://shopify/Product/16614722699655	19->2	I-Shape Traktionsgeschirr für Hunde
 gid://shopify/Product/16614723191175	24->0	Hundelaufgeschirr für Welpen
+gid://shopify/Product/16614801932679	49->0	Trittbann mit Brustgurt für Katzen
+gid://shopify/Product/16614802030983	94->0	Hundehalsband mit Brustgurt und Leine

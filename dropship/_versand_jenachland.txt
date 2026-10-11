@@ -9619,3 +9619,4 @@ gid://shopify/Product/15412915110273	ersetzt
 gid://shopify/Product/15412915339649	ersetzt
 gid://shopify/Product/15412915470721	ersetzt
 gid://shopify/Product/15412916060545	ersetzt
+gid://shopify/Product/15412918190465	ersetzt
