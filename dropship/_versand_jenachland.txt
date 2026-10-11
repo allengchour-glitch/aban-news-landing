@@ -10322,3 +10322,4 @@ gid://shopify/Product/15430444122497	ersetzt
 gid://shopify/Product/15430444155265	ersetzt
 gid://shopify/Product/15430444253569	ersetzt
 gid://shopify/Product/15430444286337	ersetzt
+gid://shopify/Product/15430444319105	ersetzt
