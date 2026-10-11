@@ -209,3 +209,5 @@ slug:dekostoff-horror-fga901377
 slug:sportlicher-taillenformer-mit-reissverschluss-633000
 name:sportlichertaillenformermit
 pid:15412677607809
+slug:perucke-vampirin-schwarz-weiss-fga929103
+name:perückevampirinschwarzweiss
