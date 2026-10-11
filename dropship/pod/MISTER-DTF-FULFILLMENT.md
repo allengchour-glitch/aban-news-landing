@@ -31,3 +31,9 @@ OEKO-TEX®, ab 1 Stück, 3–5 Werktage, Express möglich). Printful kann lose B
   (a) App-Entwurf OHNE Design, (b) unser API-Sync-Entwurf MIT Druckdatei (`printful_sync.mjs`, Gemini-geprüft).
   → **Den (b) mit Design bestätigen, (a) löschen.** Beide sind Entwürfe → kein Auto-Abbuchen.
 - Beim 1. echten Test (nach `PRINTFUL_API_KEY`) gemeinsam verifizieren; falls störend, App-Order-Import ganz abschalten.
+
+## Nachtrag 11.10.2026: erste Bestellung #1024 (manuell, Betreiber hat abgeschickt und bezahlt)
+- Auftrag: 2 × A3 Premium Transfer Öko-Tex 100 (Bild 27 cm, Feivel 14.8 cm mittig), Versand A-Post, Lieferung direkt an die Kundin.
+- **Einkauf 38.60 CHF, Verkauf 40.12 CHF, Gewinn ca. 2 CHF.** Das ist zu knapp. Die manuelle Abwicklung (Formular, Captcha, Zahlung von Hand) kostet zusätzlich Zeit.
+- Künftige Bügeltransfer-Bestellungen: vor dem Verkauf rechnen (Einkauf pro A3-Bogen 12.90 + Versand 9.90). Preis oder Produkt entscheidet der Betreiber.
+- Offen: Versandmail von Mister DTF (Trackingnummer) abwarten, dann Shopify #1024 als versandt markieren und die Trackingnummer eintragen.
