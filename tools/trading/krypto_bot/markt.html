@@ -281,12 +281,16 @@ function botEbene() {
     const stop = m.hebel > 0 ? m.stop_long : m.hebel < 0 ? m.stop_short : null;
     if (stop) st.linien.push(C.kerzen.createPriceLine({price: stop, color: css("--critical"), lineWidth: 1, lineStyle: 2, axisLabelVisible: true, title: "Stop"}));
   }
-  const sek = SEK[st.iv], erste = st.bars[0]?.time ?? 0, zeiten = new Set(st.bars.map(b => b.time));
+  // Marker auf die Kerze, in die der Auftrag fällt (letzte Kerze mit Beginn ≤ Auftragszeit) — statt zu runden:
+  // Wochenkerzen beginnen bei Binance am Montag, gerundete Epochen-Wochen am Donnerstag
+  const kerzeVon = t => { let lo = 0, hi = st.bars.length - 1, r = null;
+    while (lo <= hi) { const m = (lo + hi) >> 1; if (st.bars[m].time <= t) { r = st.bars[m].time; lo = m + 1; } else hi = m - 1; }
+    return r; };
   C.kerzen.setMarkers((st.bot.auftraege || []).filter(a => a.symbol === st.sym && a.seite && !a.trocken && !a.fehler).map(a => {
     const kauf = a.seite === "BUY", ms = Date.parse(a.zeit);
-    return {time: lokal(Math.floor(ms / 1000 / sek) * sek * 1000), position: kauf ? "belowBar" : "aboveBar", color: kauf ? css("--good") : css("--critical"),
+    return {time: kerzeVon(lokal(ms)), position: kauf ? "belowBar" : "aboveBar", color: kauf ? css("--good") : css("--critical"),
       shape: kauf ? "arrowUp" : "arrowDown", text: `${kauf ? "Bot kauft" : "Bot verkauft"} ${a.menge}`};
-  }).filter(x => x.time >= erste && zeiten.has(x.time)).sort((a, b) => a.time - b.time));
+  }).filter(x => x.time != null).sort((a, b) => a.time - b.time));
 }
 
 // ───────── Daten laden + live ─────────

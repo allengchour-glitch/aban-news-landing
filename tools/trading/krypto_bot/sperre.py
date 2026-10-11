@@ -8,6 +8,7 @@ liegen, gilt sie nach ALT_NACH Sekunden als verwaist und wird übernommen.
 from __future__ import annotations
 
 import os
+import threading
 import time
 from contextlib import contextmanager
 from pathlib import Path
@@ -45,9 +46,22 @@ def lauf_sperre(name="krypto-lauf", warten=0.0, ordner=None, alt_nach=ALT_NACH):
             if time.time() - start >= warten:
                 raise Besetzt(f"Ein anderer Lauf handelt gerade (seit {alter:.0f} s).") from None
             time.sleep(0.25)
+    # Lebenszeichen: solange der Lauf dauert, wird die Sperre jede Minute «angefasst» — ein langer Lauf (z. B. langsame
+    # Kursquellen) gilt so nie als verwaist, und ein zweiter Lauf startet nicht mittendrin.
+    fertig = threading.Event()
+
+    def auffrischen():
+        while not fertig.wait(60):
+            try:
+                os.utime(datei)
+            except OSError:
+                return
+
+    threading.Thread(target=auffrischen, daemon=True).start()
     try:
         yield
     finally:
+        fertig.set()
         try:
             datei.unlink()
         except FileNotFoundError:

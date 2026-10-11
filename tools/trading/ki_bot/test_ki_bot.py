@@ -87,9 +87,9 @@ def sig(stand, kurs_a, kurs_b):
 
 bot.signale_heute = lambda offline: sig("2026-10-01", 100.0, 50.0)
 bot.lauf(True, "2026-10-01")
-eins = bot.LOGBUCH.read_text()
+eins = bot.LOGBUCH.read_text(encoding="utf-8")
 bot.lauf(True, "2026-10-02")
-pruefe("Logbuch idempotent ohne neuen Kurs", bot.LOGBUCH.read_text() == eins)
+pruefe("Logbuch idempotent ohne neuen Kurs", bot.LOGBUCH.read_text(encoding="utf-8") == eins)
 bot.signale_heute = lambda offline: sig("2026-10-02", 110.0, 50.0)
 lb = bot.lauf(True, "2026-10-02")
 aus = lb["strategien"]["Ausgleich"]["eintraege"]
@@ -171,7 +171,7 @@ posts = [x for x in Fake.log if x[0] == "POST"]
 pruefe("Aufträge an /v2/orders mit Betrag", posts and all(x[1] == "/v2/orders" and float(x[2]["notional"]) <= 1000 for x in posts))
 gets = [x for x in Fake.log if x[0] == "GET"]
 pruefe("Schlüssel im Header", gets and {k.lower(): v for k, v in gets[0][2].items()}.get("apca-api-key-id") == "SCHLUESSEL-ID")
-pruefe("Keine Schlüssel im Protokoll", "GEHEIM-123" not in B.PROTOKOLL.read_text() and "SCHLUESSEL-ID" not in B.PROTOKOLL.read_text())
+pruefe("Keine Schlüssel im Protokoll", "GEHEIM-123" not in B.PROTOKOLL.read_text(encoding="utf-8") and "SCHLUESSEL-ID" not in B.PROTOKOLL.read_text(encoding="utf-8"))
 vorher = len([x for x in Fake.log if x[0] == "POST"])
 B.ausfuehren(lb_test, trocken=False, env=dict(env, KI_BOT_STOP="1"))
 pruefe("Not-Aus: keine Aufträge", len([x for x in Fake.log if x[0] == "POST"]) == vorher)
@@ -195,6 +195,47 @@ B.daytrade([{"id": "x", "richtung": 1, "symbol": "ES=F", "einstieg": 5000, "stop
 br = [x for x in Fake.log if x[0] == "POST" and x[2].get("order_class") == "bracket"]
 pruefe("Daytrade: Bracket mit Stop und Ziel", br and "stop_loss" in br[-1][2] and "take_profit" in br[-1][2])
 pruefe("Kurz vor Schluss erkannt", B.kurz_vor_schluss(env=env, client=fd))
+
+# Glattstellen: nur den Daytrade-Teil (der Ausgleich hält dasselbe Symbol!), offene Bracket-Beine vorher stornieren
+class FakeSchluss(Fake):
+    def do_GET(self):
+        Fake.log.append(("GET", self.path, {}))
+        if self.path.startswith("/v2/orders:by_client_order_id"):  # Bracket mit verlorener Antwort kam nie an
+            self.send_response(404)
+            self.end_headers()
+            return
+        if self.path.startswith("/v2/orders/auftrag-1"):
+            return self._antwort({"id": "auftrag-1", "symbol": "SPY", "filled_qty": "2", "legs": [
+                {"id": "bein-ziel", "status": "new", "filled_qty": "0"}, {"id": "bein-stop", "status": "held", "filled_qty": "0"}]})
+        return super().do_GET()
+
+    def do_DELETE(self):
+        Fake.log.append(("DELETE", self.path, {}))
+        self._antwort({})
+
+
+srv_s = HTTPServer(("127.0.0.1", 0), FakeSchluss)
+threading.Thread(target=srv_s.serve_forever, daemon=True).start()
+env_s = dict(env, ALPACA_BASIS_URL=f"http://127.0.0.1:{srv_s.server_port}")
+heute_s = datetime.now(timezone.utc).date().isoformat()
+B._protokolliere({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "art": "daytrade", "trocken": False,
+                  "auftraege": [{"symbol": "QQQ", "kennung": "kb-nie-angekommen", "unklar": True}]})
+n_s = len(Fake.log)
+B.schliesse_daytrades(heute_s, env=env_s, client=FakeDaten(B.einstellungen(env_s)))
+schluss = [e for e in json.loads(B.PROTOKOLL.read_text(encoding="utf-8")) if e.get("art") == "daytrade-schluss"]
+pruefe("Glattstellen: Bracket mit verlorener Antwort, das nie ankam (404) → kein Fehlalarm, nichts verkauft",
+       schluss and not schluss[-1]["hinweis"] and not [x for x in Fake.log[n_s:] if x[0] == "DELETE" and "QQQ" in x[1]], schluss[-1:])
+dels = [x[1] for x in Fake.log[n_s:] if x[0] == "DELETE"]
+pruefe("Glattstellen: Beine storniert, dann NUR 2 Stück verkauft (Ausgleich-Bestand bleibt)",
+       "/v2/orders/bein-ziel" in dels and "/v2/orders/bein-stop" in dels and "/v2/positions/SPY?qty=2" in dels
+       and "/v2/positions/SPY" not in dels, dels)
+srv_s.shutdown()
+offen_t = [{"symbol": "SPY", "type": "market", "side": "buy", "notional": "2500", "order_class": "simple"},
+           {"symbol": "SPY", "type": "limit", "side": "sell", "notional": None, "order_class": "bracket"}]
+plan2 = B.plane(cfg, {"equity": "10000", "cash": "10000"}, {}, {"SPY": 0.5}, offen_t)
+pruefe("vorgemerkter Kauf (Börse zu) zählt schon: zweiter Lauf kauft nicht nochmals", plan2 == [], plan2)
+pruefe("Alpaca-Adresse allein schaltet nie auf echtes Geld", B.einstellungen({"ALPACA_BASIS_URL": "https://api.alpaca.markets"})["url_fehler"]
+       and not B.einstellungen({"ALPACA_BASIS_URL": "https://paper-api.alpaca.markets"})["url_fehler"])
 
 # ───────────── Signale ─────────────
 tag = [(100, 101, 0), (101, 102, 0), (102, 101.5, 0)]

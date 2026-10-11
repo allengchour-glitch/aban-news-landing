@@ -35,6 +35,20 @@ STOP_DATEI = HIER.parent / "ki_bot" / "STOP"
 PAUSE_DATEI = HIER.parent / "ki_bot" / "PAUSE"  # Cockpit «Auto-Handel aus»: keine Aufträge
 
 
+
+def env_zahl(env, name, standard):
+    """Zahl aus einer Umgebungsvariable: «0,5», «1'000», « 0.5 » gehen; Unsinn → Standard mit Hinweis (nie ein Absturz,
+    der auch den Not-Aus lahmlegen würde)."""
+    roh = (env.get(name) or "").strip().replace("'", "").replace("’", "")
+    if not roh:
+        return float(standard)
+    roh = roh.replace(",", ".") if "," in roh and "." not in roh else roh.replace(",", "")
+    try:
+        return float(roh)
+    except ValueError:
+        print(f"⚠️ {name}={env.get(name)!r} ist keine Zahl — nehme {standard}.")
+        return float(standard)
+
 def einstellungen(env=None):
     env = os.environ if env is None else env
     echt = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == ECHTGELD_SATZ
@@ -49,8 +63,8 @@ def einstellungen(env=None):
                        "Aus Sicherheit nichts gemacht.") if url and host not in erlaubt else "",
         "basis": url or (ECHT_URL if echt else TESTNETZ_URL),
         "echtgeld": echt, "quote": quote, "symbol": "BTC" + quote,
-        "anteil": max(0.0, min(1.0, float(env.get("KI_BOT_ANTEIL") or "0.5"))),
-        "max_auftrag": max(0.0, float(env.get("KI_BOT_MAX_AUFTRAG") or "1000")),
+        "anteil": max(0.0, min(1.0, env_zahl(env, "KI_BOT_ANTEIL", 0.5))),
+        "max_auftrag": max(0.0, env_zahl(env, "KI_BOT_MAX_AUFTRAG", 1000)),
         "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists() or PAUSE_DATEI.exists(),
     }
 

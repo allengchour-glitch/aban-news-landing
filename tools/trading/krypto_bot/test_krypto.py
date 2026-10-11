@@ -125,7 +125,7 @@ pruefe("Ziel 0 → verkauft, nie mehr als vorhanden", verkauf["side"] == "sell" 
 vorher = len([x for x in Fake.log if x[0] == "POST"])
 KR.ausfuehren(e, env=dict(env, KI_BOT_STOP="1"))
 pruefe("Not-Aus: keine Aufträge", len([x for x in Fake.log if x[0] == "POST"]) == vorher)
-prot = B.PROTOKOLL.read_text()
+prot = B.PROTOKOLL.read_text(encoding="utf-8")
 pruefe("keine Schlüssel im Protokoll", "GEHEIM-9" not in prot and "ID-1" not in prot)
 pruefe("Papier ist Standard", B.einstellungen({"ALPACA_PAPER": "false"})["echtgeld"] is False)
 srv.shutdown()

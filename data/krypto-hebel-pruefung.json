@@ -1,362 +1,362 @@
 {
- "stand": "2026-10-09",
+ "stand": "2026-10-10",
  "regel": "Hebel als heute (Deckel 2×) wird NUR erlaubt, wenn ALLES gilt:\n  1) keine Liquidation in keinem Teilkonto, 2) schlimmster Einbruch nie tiefer als −50 %,\n  3) Rendite ÷ Einbruch in jedem Abschnitt (2019–2021, 2022–heute) besser als mit 1×.",
  "varianten": {
   "A Deckel 1×": {
    "2019–heute": {
-    "cagr": 0.3839591284081558,
-    "einbruch": -0.3343117554886047,
-    "mar": 1.1485062134503476,
+    "cagr": 0.3738778783138348,
+    "einbruch": -0.2881193010950218,
+    "mar": 1.2976495392460006,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.6828079078797537
+    "mittlerer_hebel_btc": 0.682919595236134
    },
    "2019–2021": {
-    "cagr": 0.5216272321561115,
-    "einbruch": -0.30906492816596975,
-    "mar": 1.6877593819897756,
+    "cagr": 0.5352141118465683,
+    "einbruch": -0.26588236511839947,
+    "mar": 2.01297333731868,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5649667587150737
    },
    "2022–heute": {
-    "cagr": 0.3037560800177457,
-    "einbruch": -0.2696908642343693,
-    "mar": 1.1263120865442915,
+    "cagr": 0.2813895835947,
+    "einbruch": -0.2626828014788386,
+    "mar": 1.071214339159423,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7569065306476763
+    "mittlerer_hebel_btc": 0.7570459191048737
    }
   },
   "A Deckel 1.5×": {
    "2019–heute": {
-    "cagr": 0.36683420241886067,
-    "einbruch": -0.3343117554886068,
-    "mar": 1.0972817928066014,
+    "cagr": 0.35787340608488094,
+    "einbruch": -0.3054209628302399,
+    "mar": 1.1717381897057122,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7261633714264888
+    "mittlerer_hebel_btc": 0.726309116574656
    },
    "2019–2021": {
-    "cagr": 0.5569834817533865,
-    "einbruch": -0.3090649281655743,
-    "mar": 1.8021568641233718,
+    "cagr": 0.5726301983547131,
+    "einbruch": -0.2658823651180926,
+    "mar": 2.1536975500438977,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5736291411264517
    },
    "2022–heute": {
-    "cagr": 0.2592616423863703,
-    "einbruch": -0.29649122792623195,
-    "mar": 0.8744327587690908,
+    "cagr": 0.2382897839557785,
+    "einbruch": -0.30542096283023856,
+    "mar": 0.7802011418850334,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.8220770354590997
+    "mittlerer_hebel_btc": 0.8222593763746744
    },
    "urteil": "nein"
   },
   "A Deckel 2×": {
    "2019–heute": {
-    "cagr": 0.36285986861581976,
-    "einbruch": -0.3343117554886068,
-    "mar": 1.0853936861582656,
+    "cagr": 0.35460605412400925,
+    "einbruch": -0.317355885904811,
+    "mar": 1.1173766420401958,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7289645506821738
+    "mittlerer_hebel_btc": 0.7291093094996172
    },
    "2019–2021": {
-    "cagr": 0.5569834817533865,
-    "einbruch": -0.3090649281655743,
-    "mar": 1.8021568641233718,
+    "cagr": 0.5726301983547131,
+    "einbruch": -0.2658823651180926,
+    "mar": 2.1536975500438977,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5736291411264517
    },
    "2022–heute": {
-    "cagr": 0.2533031671998196,
-    "einbruch": -0.303669557645989,
-    "mar": 0.8341407981866743,
+    "cagr": 0.23344134200527522,
+    "einbruch": -0.3173558859048099,
+    "mar": 0.7355822039969833,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.8266395988021228
+    "mittlerer_hebel_btc": 0.8268193235689917
    },
    "urteil": "nein"
   },
   "A Deckel 3×": {
    "2019–heute": {
-    "cagr": 0.36285986861581976,
-    "einbruch": -0.3343117554886068,
-    "mar": 1.0853936861582656,
+    "cagr": 0.35460605412400925,
+    "einbruch": -0.317355885904811,
+    "mar": 1.1173766420401958,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7289645506821738
+    "mittlerer_hebel_btc": 0.7291093094996172
    },
    "2019–2021": {
-    "cagr": 0.5569834817533865,
-    "einbruch": -0.3090649281655743,
-    "mar": 1.8021568641233718,
+    "cagr": 0.5726301983547131,
+    "einbruch": -0.2658823651180926,
+    "mar": 2.1536975500438977,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5736291411264517
    },
    "2022–heute": {
-    "cagr": 0.2533031671998196,
-    "einbruch": -0.303669557645989,
-    "mar": 0.8341407981866743,
+    "cagr": 0.23344134200527522,
+    "einbruch": -0.3173558859048099,
+    "mar": 0.7355822039969833,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.8266395988021228
+    "mittlerer_hebel_btc": 0.8268193235689917
    },
    "urteil": "nein"
   },
   "A Deckel 5×": {
    "2019–heute": {
-    "cagr": 0.36285986861581976,
-    "einbruch": -0.3343117554886068,
-    "mar": 1.0853936861582656,
+    "cagr": 0.35460605412400925,
+    "einbruch": -0.317355885904811,
+    "mar": 1.1173766420401958,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7289645506821738
+    "mittlerer_hebel_btc": 0.7291093094996172
    },
    "2019–2021": {
-    "cagr": 0.5569834817533865,
-    "einbruch": -0.3090649281655743,
-    "mar": 1.8021568641233718,
+    "cagr": 0.5726301983547131,
+    "einbruch": -0.2658823651180926,
+    "mar": 2.1536975500438977,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5736291411264517
    },
    "2022–heute": {
-    "cagr": 0.2533031671998196,
-    "einbruch": -0.303669557645989,
-    "mar": 0.8341407981866743,
+    "cagr": 0.23344134200527522,
+    "einbruch": -0.3173558859048099,
+    "mar": 0.7355822039969833,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.8266395988021228
+    "mittlerer_hebel_btc": 0.8268193235689917
    },
    "urteil": "nein"
   },
   "A Deckel 10×": {
    "2019–heute": {
-    "cagr": 0.36285986861581976,
-    "einbruch": -0.3343117554886068,
-    "mar": 1.0853936861582656,
+    "cagr": 0.35460605412400925,
+    "einbruch": -0.317355885904811,
+    "mar": 1.1173766420401958,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7289645506821738
+    "mittlerer_hebel_btc": 0.7291093094996172
    },
    "2019–2021": {
-    "cagr": 0.5569834817533865,
-    "einbruch": -0.3090649281655743,
-    "mar": 1.8021568641233718,
+    "cagr": 0.5726301983547131,
+    "einbruch": -0.2658823651180926,
+    "mar": 2.1536975500438977,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5736291411264517
    },
    "2022–heute": {
-    "cagr": 0.2533031671998196,
-    "einbruch": -0.303669557645989,
-    "mar": 0.8341407981866743,
+    "cagr": 0.23344134200527522,
+    "einbruch": -0.3173558859048099,
+    "mar": 0.7355822039969833,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.8266395988021228
+    "mittlerer_hebel_btc": 0.8268193235689917
    },
    "urteil": "nein"
   },
   "B alles × 1×": {
    "2019–heute": {
-    "cagr": 0.3839591284081558,
-    "einbruch": -0.3343117554886047,
-    "mar": 1.1485062134503476,
+    "cagr": 0.3738778783138348,
+    "einbruch": -0.2881193010950218,
+    "mar": 1.2976495392460006,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.6828079078797537
+    "mittlerer_hebel_btc": 0.682919595236134
    },
    "2019–2021": {
-    "cagr": 0.5216272321561115,
-    "einbruch": -0.30906492816596975,
-    "mar": 1.6877593819897756,
+    "cagr": 0.5352141118465683,
+    "einbruch": -0.26588236511839947,
+    "mar": 2.01297333731868,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.5649667587150737
    },
    "2022–heute": {
-    "cagr": 0.3037560800177457,
-    "einbruch": -0.2696908642343693,
-    "mar": 1.1263120865442915,
+    "cagr": 0.2813895835947,
+    "einbruch": -0.2626828014788386,
+    "mar": 1.071214339159423,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 0.7569065306476763
+    "mittlerer_hebel_btc": 0.7570459191048737
    }
   },
   "B alles × 1.5×": {
    "2019–heute": {
-    "cagr": 0.550248497726807,
-    "einbruch": -0.49026180874091385,
-    "mar": 1.1223564387769678,
+    "cagr": 0.5103968318457461,
+    "einbruch": -0.4392132746158043,
+    "mar": 1.1620705960952766,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 1.0242118618196292
+    "mittlerer_hebel_btc": 1.0243793928541998
    },
    "2019–2021": {
-    "cagr": 0.7660280532430774,
-    "einbruch": -0.42237386548789246,
-    "mar": 1.8136255953199736,
+    "cagr": 0.7828040682235229,
+    "einbruch": -0.38379803165319915,
+    "mar": 2.039625020617267,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 0.8474501380726097
    },
    "2022–heute": {
-    "cagr": 0.42278496653896225,
-    "einbruch": -0.39539387197980536,
-    "mar": 1.0692754655554093,
+    "cagr": 0.3562889968753187,
+    "einbruch": -0.4036689457762236,
+    "mar": 0.8826267182634101,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 1.1353597959715147
+    "mittlerer_hebel_btc": 1.1355688786573108
    },
    "urteil": "nein"
   },
   "B alles × 2×": {
    "2019–heute": {
-    "cagr": 0.6590926154926464,
-    "einbruch": -0.6526852668000744,
-    "mar": 1.009816904132041,
+    "cagr": 0.6271592211414723,
+    "einbruch": -0.5952722463369794,
+    "mar": 1.0535670443241896,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 1.3656158157595073
+    "mittlerer_hebel_btc": 1.365839190472268
    },
    "2019–2021": {
-    "cagr": 0.9320773333287189,
-    "einbruch": -0.5601437787570487,
-    "mar": 1.6639965820864522,
+    "cagr": 1.0076601884492469,
+    "einbruch": -0.49434359375155834,
+    "mar": 2.0383801897828686,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 1.1299335174301475
    },
    "2022–heute": {
-    "cagr": 0.5042870839446503,
-    "einbruch": -0.5015256276096343,
-    "mar": 1.0055061121166982,
+    "cagr": 0.41931895139946884,
+    "einbruch": -0.5654112647840761,
+    "mar": 0.7416176109607611,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 1.5138130612953526
+    "mittlerer_hebel_btc": 1.5140918382097475
    },
    "urteil": "nein"
   },
   "B alles × 3×": {
    "2019–heute": {
-    "cagr": 0.8143918842610094,
-    "einbruch": -0.8323909433239641,
-    "mar": 0.9783766759990449,
+    "cagr": 0.8011821528121152,
+    "einbruch": -0.8144292534199704,
+    "mar": 0.983734498052191,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 2.0484237236392584
+    "mittlerer_hebel_btc": 2.0487587857083995
    },
    "2019–2021": {
-    "cagr": 1.3486908625564094,
-    "einbruch": -0.7284699638726769,
-    "mar": 1.8514021571823318,
+    "cagr": 1.5808408655291766,
+    "einbruch": -0.6501512308432082,
+    "mar": 2.4314971510227217,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 1.6949002761452194
    },
    "2022–heute": {
-    "cagr": 0.5417686893235718,
-    "einbruch": -0.769921549312794,
-    "mar": 0.7036673928754641,
+    "cagr": 0.43608888557075587,
+    "einbruch": -0.81442925341997,
+    "mar": 0.5354533665625607,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 2.2707195919430294
+    "mittlerer_hebel_btc": 2.2711377573146216
    },
    "urteil": "nein"
   },
   "B alles × 5×": {
    "2019–heute": {
-    "cagr": 0.5578900963453306,
-    "einbruch": -0.9728911500494102,
-    "mar": 0.5734352669535508,
+    "cagr": 0.5654986141340514,
+    "einbruch": -0.973974800293183,
+    "mar": 0.580609081429855,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 3.4140395393987686
+    "mittlerer_hebel_btc": 3.4145979761806706
    },
    "2019–2021": {
-    "cagr": 1.3504224518146382,
-    "einbruch": -0.9197977942403228,
-    "mar": 1.4681731792257404,
+    "cagr": 1.7739203022536634,
+    "einbruch": -0.8771750995517221,
+    "mar": 2.0223103724219036,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 2.824833793575372
    },
    "2022–heute": {
-    "cagr": 0.20260940713943398,
-    "einbruch": -0.9661605345396806,
-    "mar": 0.20970573718990249,
+    "cagr": 0.09251113133697064,
+    "einbruch": -0.973974800293183,
+    "mar": 0.09498308509534664,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 3.7845326532383807
+    "mittlerer_hebel_btc": 3.7852295955243678
    },
    "urteil": "nein"
   },
   "B alles × 10×": {
    "2019–heute": {
-    "cagr": -0.923312817599022,
-    "einbruch": -0.9999999999921558,
-    "mar": -0.9233128176062646,
+    "cagr": -0.8852792501587992,
+    "einbruch": -0.9999999997799501,
+    "mar": -0.8852792503536048,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 6.828079078797537
+    "mittlerer_hebel_btc": 6.829195952361341
    },
    "2019–2021": {
-    "cagr": -0.8857580359083317,
-    "einbruch": -0.9999810256751068,
-    "mar": -0.8857748428879828,
+    "cagr": -0.7094214045035202,
+    "einbruch": -0.999686353739529,
+    "mar": -0.7096439816846414,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
     "mittlerer_hebel_btc": 5.649667587150744
    },
    "2022–heute": {
-    "cagr": -0.9403676308593089,
-    "einbruch": -0.9999999095836887,
-    "mar": -0.940367715883889,
+    "cagr": -0.936086010608677,
+    "einbruch": -0.9999998873445168,
+    "mar": -0.9360861160639107,
     "liquidiert": false,
     "liq_btc": false,
     "liq_eth": false,
-    "mittlerer_hebel_btc": 7.5690653064767615
+    "mittlerer_hebel_btc": 7.5704591910487355
    },
    "urteil": "nein"
   }

@@ -55,7 +55,7 @@ def einstellungen(env=None):
 
     def zahl(name, standard):
         try:
-            return float(env.get(name) or standard)
+            return BB.env_zahl(env, name, standard)
         except ValueError:
             return float(standard)
 
@@ -63,7 +63,9 @@ def einstellungen(env=None):
                 "betrag": max(0.0, min(zahl("ETH_SPARPLAN_BETRAG", 50), cfg["max_auftrag"])),
                 "tage": max(1, int(zahl("ETH_SPARPLAN_TAGE", 7))),
                 "max_gesamt": max(0.0, zahl("ETH_SPARPLAN_MAX", 5000)),
-                "staken": (env.get("ETH_STAKEN") or "0").strip() == "1"})
+                "staken": (env.get("ETH_STAKEN") or "0").strip() == "1",
+                # ausdrücklich eingeschaltet? Der Spot-Schlüssel allein (z. B. für krypto.py) darf nie einen Sparplan starten
+                "eingeschaltet": bool((env.get("ETH_SPARPLAN_BETRAG") or "").strip())})
     return cfg
 
 
@@ -128,10 +130,14 @@ def zu_staken(buch, frei_eth):
 
 
 def zusammenfassung(buch, kurs=None):
-    usdt = sum(k["usdt"] for k in buch["kaeufe"])
-    eth = sum(k["eth"] for k in buch["kaeufe"])
+    """Ø-Preis und Ergebnis nur aus bestätigten Käufen: ein «unklar» gebuchter Kauf (Antwort verloren) hat 0 ETH und würde
+    den Ø-Preis verdoppeln. Er steht getrennt da (für die Obergrenze zählt er trotzdem mit, siehe plane_kauf)."""
+    klar = [k for k in buch["kaeufe"] if not k.get("unklar")]
+    usdt = sum(k["usdt"] for k in klar)
+    eth = sum(k["eth"] for k in klar)
     z = {"kaeufe": len(buch["kaeufe"]), "eingesetzt": round(usdt, 2), "eth": round(eth, 8),
-         "schnitt": round(usdt / eth, 2) if eth else None, "gestakt": round(sum(s["eth"] for s in buch["gestakt"]), 8)}
+         "schnitt": round(usdt / eth, 2) if eth else None, "gestakt": round(sum(s["eth"] for s in buch["gestakt"]), 8),
+         "unklar": len(buch["kaeufe"]) - len(klar)}
     if kurs and eth:
         z["wert"] = round(eth * kurs, 2)
         z["ergebnis"] = round(eth * kurs / usdt - 1, 4) if usdt else None
@@ -187,6 +193,8 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
 
     if not cfg["key"] or not cfg["secret"]:
         return ende("keine Schlüssel (BINANCE_API_KEY/SECRET) gesetzt — nichts zu tun.")
+    if not cfg["eingeschaltet"]:
+        return ende("Sparplan nicht eingeschaltet (ETH_SPARPLAN_BETRAG fehlt) — nichts gekauft. Einschalten: setx ETH_SPARPLAN_BETRAG \"50\"")
     if cfg["stop"]:
         return ende("Not-Aus aktiv — kein Kauf, kein Staking.")
     if PAUSE.exists() and not trocken:
@@ -230,6 +238,8 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
                     sichern()
                     return ende(f"Antwort auf den Kauf verloren ({getattr(ex, 'msg', None) or type(ex).__name__}) — bitte im "
                                 "Binance-Konto prüfen. Als «unklar» gebucht, damit nicht doppelt gekauft wird.", True)
+                if float(antwort.get("executedQty") or 0) <= 0:  # z. B. EXPIRED bei leerem Orderbuch: nichts gekauft
+                    return ende(f"Kauf nicht ausgeführt (Status {antwort.get('status')}) — nichts gekauft, nächster Lauf versucht es wieder.", True)
                 menge = netto_eth(antwort)
                 bezahlt = float(antwort.get("cummulativeQuoteQty") or betrag)
                 k = {"tag": heute, "usdt": round(bezahlt, 2), "eth": round(menge, 8),
@@ -255,7 +265,12 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
                         erg["stake"] = s
                         print(f"Gestakt: {menge:.4f} ETH → {s['wbeth']:.6f} WBETH")
                 except BB.BinanceFehler as ex:
-                    erg["hinweis"] = f"Staking abgelehnt (HTTP {ex.code}): {ex.msg} — ETH bleiben im Spot-Konto, nächster Lauf versucht es wieder."
+                    if ex.code >= 500:  # Status unbekannt (Binance: «could have been a success») → wie verlorene Antwort
+                        buch["gestakt"].append({"tag": heute, "eth": menge, "wbeth": 0.0, "unklar": True})
+                        erg["hinweis"] = (f"Staking: Binance meldet {ex.code} (Status unbekannt) — als «unklar» gebucht, damit nicht "
+                                          "doppelt (mit deinen eigenen ETH) gestakt wird. Bitte im Binance-Konto prüfen.")
+                    else:
+                        erg["hinweis"] = f"Staking abgelehnt (HTTP {ex.code}): {ex.msg} — ETH bleiben im Spot-Konto, nächster Lauf versucht es wieder."
                     erg["warnung"] = True
                     print("ETH-Sammler: " + erg["hinweis"])
                 except NETZFEHLER as ex:

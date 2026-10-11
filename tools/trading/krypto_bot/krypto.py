@@ -94,6 +94,11 @@ def ausfuehren(e, trocken=False, env=None, client=None):
         print("Broker: " + eintrag["hinweis"])
         B._protokolliere(eintrag)
         return []
+    if cfg["url_fehler"]:
+        eintrag["hinweis"] = cfg["url_fehler"]
+        print("Broker: " + eintrag["hinweis"])
+        B._protokolliere(eintrag)
+        return []
     c = client or B.Alpaca(cfg)
     konto = c.konto()
     if konto.get("trading_blocked") or konto.get("account_blocked") or konto.get("crypto_status") not in (None, "ACTIVE"):
@@ -152,10 +157,16 @@ def main():
         plan = BB.ausfuehren(e, trocken=a.trocken)
     else:
         plan = ausfuehren(e, trocken=a.trocken)
+    abgelehnt = [x for x in plan if x.get("fehler")]
     if plan or vorher is None or abs(e["quote"] - vorher) >= 0.05:
         import signale as SG
-        SG.push(text + ("\n" + "\n".join(f"{x['seite']} ca. {x.get('notional', x.get('quote_betrag', x.get('ca_betrag', 0))):.0f} ({broker})" for x in plan) if plan else "") + "\nKeine Anlageberatung.")
-    return 0
+
+        def zeile(x):
+            betrag = x.get("notional", x.get("quote_betrag", x.get("ca_betrag", 0)))
+            return (f"❌ {x['seite']} ca. {betrag:.0f} ({broker}) ABGELEHNT: {x['fehler']}" if x.get("fehler")
+                    else f"{x['seite']} ca. {betrag:.0f} ({broker})")
+        SG.push(text + ("\n" + "\n".join(zeile(x) for x in plan) if plan else "") + "\nKeine Anlageberatung.")
+    return 3 if abgelehnt else 0  # 3 = Warnung (schon gemeldet): ein abgelehnter Auftrag ist kein «alles gut»
 
 
 if __name__ == "__main__":

@@ -58,6 +58,8 @@ b2 = {"kaeufe": [{"tag": "x", "usdt": 50, "eth": 0.03}], "gestakt": [{"tag": "x"
 pruefe("staken: nur eigene offene ETH", S.zu_staken(b2, 5.0) == 0.02, S.zu_staken(b2, 5.0))
 pruefe("staken: nie mehr als frei", S.zu_staken(b2, 0.01519) == 0.0151)
 pruefe("staken: unter Minimum nichts", S.zu_staken(b2, 0.00004) == 0.0)
+zu = S.zusammenfassung({"kaeufe": [{"usdt": 50, "eth": 0.02}, {"usdt": 50, "eth": 0.0, "unklar": True}], "gestakt": []}, 2500)
+pruefe("unklarer Kauf verfälscht Ø-Preis und Ergebnis nicht (2500, ±0 %)", zu["schnitt"] == 2500.0 and zu["ergebnis"] == 0.0 and zu["unklar"] == 1, zu)
 z = S.zusammenfassung({"kaeufe": [{"usdt": 100, "eth": 0.05}, {"usdt": 100, "eth": 0.1}], "gestakt": []}, 2000)
 pruefe("Durchschnittspreis = Einsatz / Menge", z["schnitt"] == round(200 / 0.15, 2) and z["wert"] == 300.0 and z["ergebnis"] == 0.5, z)
 reihe = [("2020-01-%02d" % (i + 1), 100.0 if i < 7 else 50.0) for i in range(14)]
@@ -73,6 +75,7 @@ class Fake(BaseHTTPRequestHandler):
     log, usdt, eth, rechte, stake_fehler = [], 1000.0, 0.5, {"enableWithdrawals": False}, False
     abbrechen = None  # "kauf" oder "stake": ausführen, dann Verbindung ohne Antwort schliessen
     kauf_fehler = None  # (HTTP-Code, Binance-Code, Meldung): Kauf mit diesem Fehler beantworten
+    kauf_verfallen, stake_503 = False, False
 
     def _a(self, o, code=200):
         bb = json.dumps(o).encode()
@@ -105,6 +108,8 @@ class Fake(BaseHTTPRequestHandler):
             menge = float(p["quoteOrderQty"]) / 2500
             if Fake.kauf_fehler:
                 return self._a({"code": Fake.kauf_fehler[1], "msg": Fake.kauf_fehler[2]}, Fake.kauf_fehler[0])
+            if Fake.kauf_verfallen:
+                return self._a({"orderId": 8, "status": "EXPIRED", "executedQty": "0.00000000", "cummulativeQuoteQty": "0.00000000", "fills": []})
             if Fake.abbrechen == "kauf":
                 Fake.usdt -= float(p["quoteOrderQty"])
                 Fake.eth += menge * 0.999
@@ -117,6 +122,9 @@ class Fake(BaseHTTPRequestHandler):
         if pfad == "/sapi/v2/eth-staking/eth/stake":
             if Fake.stake_fehler:
                 return self._a({"code": -6011, "msg": "Quota exceeded"}, 400)
+            if Fake.stake_503:
+                Fake.eth -= float(p["amount"])  # Binance hat trotzdem gestakt
+                return self._a({"code": -1001, "msg": "Unknown error"}, 503)
             Fake.eth -= float(p["amount"])
             if Fake.abbrechen == "stake":
                 self.close_connection = True
@@ -147,6 +155,10 @@ def auftraege(ab=0):
 
 lb = {"testnetz": leeres_buch(), "echtgeld": leeres_buch()}
 pruefe("ohne Schlüssel: nichts", S.lauf(env={}, logbuch=lb)["hinweis"].startswith("keine Schlüssel"))
+_n0 = len(Fake.log)
+_e0 = S.lauf(env={k: v for k, v in env.items() if k != "ETH_SPARPLAN_BETRAG"}, jetzt=jetzt, logbuch=lb)
+pruefe("Spot-Schlüssel allein (für den Spot-Bot) startet NIE einen Sparplan", "nicht eingeschaltet" in _e0["hinweis"]
+       and not lb["testnetz"]["kaeufe"] and len(Fake.log) == _n0, _e0)
 S.lauf(trocken=True, env=env, jetzt=jetzt, logbuch=lb)
 pruefe("trocken: kein Auftrag, nichts gebucht", not auftraege() and not lb["testnetz"]["kaeufe"])
 e = S.lauf(env=env, jetzt=jetzt, logbuch=lb)
@@ -224,6 +236,20 @@ e = S.lauf(env=env, jetzt=jetzt, logbuch=lb5)
 Fake.kauf_fehler = None
 pruefe("Serverfehler (503) beim Kauf: «unklar» gebucht (kein Doppelkauf), Warnung", lb5["testnetz"]["kaeufe"]
        and lb5["testnetz"]["kaeufe"][-1].get("unklar") and e["warnung"], (e, lb5["testnetz"]))
+lb6 = {"testnetz": leeres_buch(), "echtgeld": leeres_buch()}
+Fake.kauf_verfallen = True
+e6 = S.lauf(env=env, jetzt=jetzt, logbuch=lb6)
+Fake.kauf_verfallen = False
+pruefe("Kauf verfallen (executedQty 0): kein Absturz, nichts gebucht, Warnung", not lb6["testnetz"]["kaeufe"] and e6["warnung"]
+       and "nicht ausgeführt" in e6["hinweis"], e6)
+lb7 = {"testnetz": leeres_buch(), "echtgeld": {"kaeufe": [{"tag": "2026-10-01", "usdt": 50.0, "eth": 0.02}], "gestakt": []}}
+Fake.stake_503 = True
+e7 = S.lauf(env=echt, jetzt=datetime(2026, 10, 3, 3, tzinfo=timezone.utc), logbuch=lb7)
+Fake.stake_503 = False
+n7 = len(Fake.log)
+S.lauf(env=echt, jetzt=datetime(2026, 10, 4, 3, tzinfo=timezone.utc), logbuch=lb7)
+pruefe("Staking-Antwort 503 (Status unbekannt): «unklar» gebucht — kein zweites Staking mit fremden ETH", lb7["echtgeld"]["gestakt"]
+       and lb7["echtgeld"]["gestakt"][-1].get("unklar") and not [x for x in Fake.log[n7:] if "eth-staking/eth/stake" in x[1]], (e7, lb7["echtgeld"]))
 pruefe("Normaler Lauf ohne Fehler: keine Warnung", not S.lauf(env=env, jetzt=datetime(2026, 11, 1, 3, tzinfo=timezone.utc), logbuch=lb4)["warnung"])
 n = len(Fake.log)
 e = S.lauf(env=dict(env, BINANCE_BASIS_URL="https://api.binance.com"), jetzt=jetzt, logbuch=lb2)

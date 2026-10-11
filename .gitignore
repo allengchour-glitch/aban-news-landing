@@ -135,6 +135,13 @@ data/ki-trader.json
 data/krypto-einstellungen.json
 data/krypto-profit.json
 data/krypto-auto.log
+data/telegram-calls.session*
+data/*.session
+data/*.session-journal
+data/calls/
+data/calls-kopierer.json
+data/calls-pruefung.json
+tools/trading/daten/calls_kerzen/
 data/krypto-auto-status.json
 data/selbsttest-*.log
 data/*.kaputt-*

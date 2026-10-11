@@ -322,6 +322,8 @@ def main() -> int:
     ap.add_argument("--einmal", action="store_true")
     ap.add_argument("--dauer", action="store_true")
     ap.add_argument("--minuten", type=int, default=15)
+    ap.add_argument("--stunden", type=float, help="Dauerlauf nach so vielen Stunden beenden (für die Aufgabenplanung: sonst "
+                                                   "blockiert der Lauf von gestern den von heute)")
     ap.add_argument("--rueckblick", action="store_true")
     ap.add_argument("--test-push", action="store_true")
     ap.add_argument("--offline", action="store_true")
@@ -337,13 +339,16 @@ def main() -> int:
         runde(a)
         return 0
     if a.dauer:
-        print(f"Läuft — prüft alle {a.minuten} Minuten. Stoppen mit Ctrl+C.")
-        while True:
+        print(f"Läuft — prüft alle {a.minuten} Minuten" + (f", endet nach {a.stunden:g} Std." if a.stunden else "") + ". Stoppen mit Ctrl+C.")
+        ende = time.time() + a.stunden * 3600 if a.stunden else None
+        while ende is None or time.time() < ende:
             try:
                 runde(a)
             except Exception as e:  # noqa: BLE001  (Netzfehler dürfen den Dauerlauf nicht beenden)
                 print(f"Fehler in dieser Runde: {type(e).__name__}: {e}")
             time.sleep(max(60, a.minuten * 60))
+        print("Dauerlauf beendet (--stunden).")
+        return 0
     ap.print_help()
     return 0
 

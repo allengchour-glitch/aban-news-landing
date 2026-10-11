@@ -3,7 +3,7 @@
 
 VORAB FESTGELEGT (vor dem ersten Rechenlauf, nicht nachträglich angepasst):
 
-Jede Info ist ein Filter auf die Pilot-Position (BTC Trend 150, ETH Trend 200, Schwankungsziel 40 %, Stop 4σ):
+Jede Info ist ein Filter auf die Pilot-Position (BTC Trend 150, ETH Trend 200, Schwankungsziel 40 %, Stop wie live):
   Bremse für Long  (Long-Position × 0,5, wenn die Bedingung gilt):
     gier          Angst-&-Gier-Index ≥ 80 (extreme Gier)
     funding_hoch  Funding im 7-Tage-Schnitt ≥ 0,05 % je 8 h (Long-Seite überfüllt)

@@ -46,9 +46,9 @@ lb = {"einkommen": {
 }, "offen_verlauf": [[MS(JETZT - timedelta(days=2)), 10.0], [MS(MITTERNACHT - timedelta(hours=1)), 15.0]]}
 konto = {"totalWalletBalance": "10106.5", "totalUnrealizedProfit": "25"}
 pos = [{"symbol": "BTCUSDT", "positionAmt": "0.05", "entryPrice": "80000", "markPrice": "81000", "unRealizedProfit": "50",
-        "isolatedMargin": "4000", "leverage": "1", "liquidationPrice": "0"},
+        "isolatedMargin": "4050", "isolatedWallet": "4000", "leverage": "1", "liquidationPrice": "0"},
        {"symbol": "ETHUSDT", "positionAmt": "-1", "entryPrice": "2500", "markPrice": "2525", "unRealizedProfit": "-25",
-        "isolatedMargin": "2500", "leverage": "1", "liquidationPrice": "4900"},
+        "isolatedMargin": "2475", "isolatedWallet": "2500", "leverage": "1", "liquidationPrice": "4900"},
        {"symbol": "SOLUSDT", "positionAmt": "0", "entryPrice": "0", "markPrice": "100", "unRealizedProfit": "0"}]
 a = PR.auswerten(lb, konto, pos, JETZT)
 z = a["zeitraeume"]
@@ -96,9 +96,30 @@ pruefe("nur offene Positionen, Long/Short richtig", [(p["symbol"], p["seite"]) f
 eth = a["positionen"][1]
 pruefe("Short: Kurs steigt → Kursbewegung negativ, Gewinn auf das Pfand", abs(eth["kursbewegung"] + 0.01) < 1e-12 and abs(eth["gewinn_prozent"] + 0.01) < 1e-12
        and eth["liquidation"] == 4900.0, eth)
+p_alt = PR.auswerten({"einkommen": {}, "offen_verlauf": []}, {"totalWalletBalance": "3000", "totalUnrealizedProfit": "-1200"},
+                     [{"symbol": "BTCUSDT", "positionAmt": "0.1", "entryPrice": "60000", "markPrice": "48000", "unRealizedProfit": "-1200",
+                       "isolatedMargin": "1800", "leverage": "2"}], JETZT)["positionen"][0]
+pruefe("auf das Pfand: isolatedMargin enthält den Verlust schon → −1200 auf 3000 Pfand = −40 % (nicht −67 %)",
+       abs(p_alt["gewinn_prozent"] + 0.40) < 1e-9, p_alt)
 pruefe("pro Markt: realisiert + offen", a["pro_markt"] == {"BTCUSDT": 40 - 2 + 100 + 50, "ETHUSDT": -1.5 - 30 - 25}, a["pro_markt"])
 pruefe("Verlauf kumuliert, nach Tagen", a["kumuliert"][-1][1] == 106.5 and len(a["tage"]) == 4, a["kumuliert"])
 leer = PR.auswerten({"einkommen": {}, "offen_verlauf": []}, {"totalWalletBalance": "0", "totalUnrealizedProfit": "0"}, [], JETZT)
+import os as _os, time as _time  # noqa: E401,E402
+_tz_alt = _os.environ.get("TZ")
+_os.environ["TZ"] = "Europe/Zurich"
+_time.tzset()
+try:
+    umst = datetime(2026, 10, 25, 14, 0, tzinfo=timezone.utc).astimezone()  # 15:00 Winterzeit, Umstell-Tag
+    frueh = int(datetime(2026, 10, 24, 22, 30, tzinfo=timezone.utc).timestamp() * 1000)  # 00:30 Sommerzeit am 25.10.
+    h_u = PR.auswerten({"einkommen": {"1": {"zeit": frueh, "art": "realisiert", "symbol": "BTCUSDT", "betrag": 7.0, "asset": "USDT"}},
+                        "offen_verlauf": []}, {"totalWalletBalance": "100", "totalUnrealizedProfit": "0"}, [], umst)["zeitraeume"]["heute"]
+    pruefe("Umstell-Tag (25.10.): Gewinn um 00:30 Ortszeit zählt zu «heute»", h_u["realisiert"] == 7.0, h_u)
+finally:
+    if _tz_alt is None:
+        _os.environ.pop("TZ", None)
+    else:
+        _os.environ["TZ"] = _tz_alt
+    _time.tzset()
 pruefe("leeres Konto: kein Absturz, Prozent leer", leer["zeitraeume"]["gesamt"]["netto"] == 0 and leer["zeitraeume"]["gesamt"]["prozent"] is None)
 
 # ── nachgebauter Binance-Server: Einkommen in Seiten, Einzahlung zählt nicht ──
@@ -162,7 +183,7 @@ env = {"BINANCE_FUTURES_API_KEY": "KEY-P", "BINANCE_FUTURES_API_SECRET": GEHEIM,
 with tempfile.TemporaryDirectory() as td:
     pfad = Path(td) / "profit.json"
     r = PR.abrufen(env=env, logbuch=pfad, jetzt=JETZT)
-    gespeichert = json.loads(pfad.read_text())
+    gespeichert = json.loads(pfad.read_text(encoding="utf-8"))
     gespeichert = gespeichert["testnetz"]
     pruefe("alle 2500 Einträge über mehrere Seiten geholt", sum(1 for k in gespeichert["einkommen"] if k.endswith("REALIZED_PNL-BTCUSDT")) == 2500)
     pruefe("Seitengrenze: alle 30 Einträge mit gleicher Millisekunde da (keiner verloren)",
@@ -184,11 +205,11 @@ with tempfile.TemporaryDirectory() as td:
     inc_neu = [p for pf, p, _ in Fake.log if pf == "/fapi/v1/income"][n_inc:]
     pruefe("nach 2 Min.: nur EIN Fenster ab dem letzten Abruf, nicht wieder 90 Tage", len(inc_neu) == 1
            and int(inc_neu[0]["startTime"]) >= MS(JETZT) - 3600 * 1000, inc_neu)
-    pruefe("zweiter Abruf: keine Doppelzählung", len(json.loads(pfad.read_text())["testnetz"]["einkommen"]) == n1)
+    pruefe("zweiter Abruf: keine Doppelzählung", len(json.loads(pfad.read_text(encoding="utf-8"))["testnetz"]["einkommen"]) == n1)
     pruefe("nur lesende Abfragen (kein Auftrag)", all(pf in ("/fapi/v1/time", "/fapi/v2/account", "/fapi/v2/positionRisk", "/fapi/v1/income",
                                                              "/fapi/v1/premiumIndex")
                                                        for pf, _, _ in Fake.log))
-    pruefe("keine Schlüssel im Logbuch oder in der Antwort", GEHEIM not in pfad.read_text() and "KEY-P" not in json.dumps(r))
+    pruefe("keine Schlüssel im Logbuch oder in der Antwort", GEHEIM not in pfad.read_text(encoding="utf-8") and "KEY-P" not in json.dumps(r))
     t = PR.text(r)
     pruefe("Text: Heute/7 Tage/30 Tage/seit Start + Positionen", all(x in t for x in ("Heute", "7 Tage", "30 Tage", "Seit", "LONG", "SHORT")), t)
     # Echtgeld hat ein EIGENES Buch: Spielgeld-Gewinne erscheinen nie als echter Gewinn
@@ -198,7 +219,7 @@ with tempfile.TemporaryDirectory() as td:
     n_e = len(Fake.log)
     re_ = PR.abrufen(env=echt, logbuch=pfad, jetzt=JETZT + timedelta(minutes=3))
     EINKOMMEN[:], Fake.extra = alt_e, []
-    lb_e = json.loads(pfad.read_text())
+    lb_e = json.loads(pfad.read_text(encoding="utf-8"))
     pruefe("Echtgeld: eigenes Buch, nur echte Einträge, Testnetz unverändert", re_["modus"] == "ECHTGELD"
            and re_["zeitraeume"]["gesamt"]["realisiert"] == 7.0 and len(lb_e["echtgeld"]["einkommen"]) == 1
            and len(lb_e["testnetz"]["einkommen"]) == n1, re_["zeitraeume"]["gesamt"])
@@ -219,6 +240,21 @@ with tempfile.TemporaryDirectory() as td:
     pruefe("kaputtes Logbuch: gesichert (.kaputt-…), Warnung im Ergebnis, kein stilles Leeren", "beschädigt" in rk.get("warnung", "")
            and len(list(Path(td).glob("profit.json.kaputt-*"))) == 1 and "⚠️" in PR.text(rk), rk.get("warnung"))
     pruefe("atomar geschrieben: keine Zwischendateien übrig", not list(Path(td).glob("*.tmp*")))
+    rk2 = PR.abrufen(env=env, logbuch=pfad, jetzt=JETZT + timedelta(minutes=9))
+    pruefe("Warnung «beschädigt» bleibt sichtbar (auch beim nächsten Abruf), bis die alte Datei gelöscht ist", "beschädigt" in rk2.get("warnung", ""))
+    for k_ in Path(td).glob("profit.json.kaputt-*"):
+        k_.unlink()
+    pruefe("…und verschwindet, wenn die alte Datei weg ist", "warnung" not in PR.abrufen(env=env, logbuch=pfad, jetzt=JETZT + timedelta(minutes=11)))
+    # BNB-Kurs fehlte beim ersten Abholen → beim nächsten Abruf nachgetragen
+    lb_b = PR.lies(pfad)
+    for e_ in lb_b["testnetz"]["einkommen"].values():
+        if e_.get("asset") == "BNB":
+            e_["kurs_usdt"] = None
+    lb_b["testnetz"]["abgerufen_bis"] = MS(JETZT) - 10 * 86400 * 1000
+    PR.schreibe(lb_b, pfad)
+    PR.abrufen(env=env, logbuch=pfad, jetzt=JETZT + timedelta(minutes=13))
+    pruefe("BNB-Kurs fehlte (Aussetzer) → später nachgetragen statt für immer «nicht umrechenbar»",
+           all(e_.get("kurs_usdt") == 600.0 for e_ in PR.lies(pfad)["testnetz"]["einkommen"].values() if e_.get("asset") == "BNB"))
     # altes Logbuch (Version 1, ein Topf) → Testnetz-Buch
     pfad.write_text(json.dumps({"version": 1, "einkommen": {"x": {"zeit": T0, "art": "realisiert", "symbol": "BTCUSDT", "betrag": 3.0}},
                                 "offen_verlauf": [[T0, 1.0]]}))

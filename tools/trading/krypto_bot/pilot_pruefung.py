@@ -17,7 +17,7 @@ import math
 import sys
 import time
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -28,17 +28,27 @@ GEBUEHR, FUNDING, MARGE_MIN, BAND, SCHLUPF = 0.0005, 0.0001, 0.005, 0.25, 0.001
 
 def ohlc(sym):
     datei = HIER.parent / "daten" / f"{sym}_hlc.json"  # eigenes Format (Tag, Hoch, Tief, Schluss) — futures.py nutzt *_ohlc.json
-    if not datei.exists() or "--neu" in sys.argv:
-        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?period1=1410912000&period2={int(time.time())}&interval=1d"
-        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=30) as r:
-            d = json.load(r)["chart"]["result"][0]
-        q = d["indicators"]["quote"][0]
-        rows = [(datetime.fromtimestamp(t, timezone.utc).date().isoformat(), hh, ll, cc)
-                for t, hh, ll, cc in zip(d["timestamp"], q["high"], q["low"], q["close"]) if None not in (hh, ll, cc)]
-        heute = datetime.now(timezone.utc).date().isoformat()
-        rows = [r for r in rows if r[0] < heute]  # laufender Tag zählt nicht
-        datei.parent.mkdir(exist_ok=True)
-        datei.write_text(json.dumps(rows))
+    gestern = (datetime.now(timezone.utc).date() - timedelta(days=1)).isoformat()
+    try:
+        veraltet = json.loads(datei.read_text())[-1][0] < gestern if datei.exists() else True
+    except (ValueError, IndexError):
+        veraltet = True
+    if veraltet or "--neu" in sys.argv:  # sonst rechneten Backtest und Cockpit-Kurve für immer mit den Kursen vom ersten Lauf
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?period1=1410912000&period2={int(time.time())}&interval=1d"
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=30) as r:
+                d = json.load(r)["chart"]["result"][0]
+            q = d["indicators"]["quote"][0]
+            rows = [(datetime.fromtimestamp(t, timezone.utc).date().isoformat(), hh, ll, cc)
+                    for t, hh, ll, cc in zip(d["timestamp"], q["high"], q["low"], q["close"]) if None not in (hh, ll, cc)]
+            heute = datetime.now(timezone.utc).date().isoformat()
+            rows = [r for r in rows if r[0] < heute]  # laufender Tag zählt nicht
+            datei.parent.mkdir(exist_ok=True)
+            datei.write_text(json.dumps(rows))
+        except Exception as ex:  # noqa: BLE001 — Netz weg: mit dem gespeicherten Stand weiterrechnen (falls vorhanden)
+            if not datei.exists():
+                raise
+            print(f"{sym}: Kurse nicht aktualisiert ({type(ex).__name__}) — rechne mit dem gespeicherten Stand.")
     rows = json.loads(datei.read_text())
     return {r[0]: (r[1], r[2], r[3]) for r in rows}
 
@@ -102,7 +112,9 @@ def lauf(z, h, l, c, a, b, stop_k=None):
             if E + N * (extrem / ref - 1) <= MARGE_MIN * abs(N * extrem / ref):
                 werte.append(0.0)
                 return werte, stops
-            E += N * (c[i] / ref - 1) - abs(N) * FUNDING * 3 * (1 if N > 0 else -1)
+            # Funding: Longs zahlen 0,01 % je 8 Std. Shorts bekommen bewusst NICHTS gutgeschrieben — in Baissen (wenn der
+            # Pilot short ist) lag das echte Funding meist nahe 0; eine pauschale Gutschrift schönte die Tests um 2–4 Pp./J.
+            E += N * (c[i] / ref - 1) - (abs(N) * FUNDING * 3 if N > 0 else 0.0)
             N *= c[i] / ref
         werte.append(E)
     return werte, stops
@@ -157,14 +169,56 @@ def main():
         erg["tests"][name] = res
         return res
 
+    import pilot_kern as K
     basis = hebel(c)
-    block("1) Börsen-Stop (k × Tages-Schwankung)", {
-        "kein Stop": (basis, None), "Stop 3σ": (basis, 3), "Stop 4σ (bisher live)": (basis, 4), "Stop 6σ": (basis, 6),
-        "Stop 8σ": (basis, 8)}, h, l, c, tage_b, zeiten)
+    block("1) Börsen-Stop (k × Tages-Schwankung) — nur BTC 200, alte Einzel-Regel", {
+        "kein Stop": (basis, None), **{f"Stop {k}σ" + (" (live)" if k == K.STOP_SIGMA else ""): (basis, k) for k in (3, 4, 6, 8)}},
+        h, l, c, tage_b, zeiten)
     block("2) Robustheit Trendlänge", {f"Schnitt {n} Tage": (hebel(c, n_sma=n), None) for n in (100, 150, 200, 250, 300)},
           h, l, c, tage_b, zeiten)
     block("3) Robustheit Schwankungsziel", {f"Ziel {int(v * 100)} %": (hebel(c, ziel_vol=v), None) for v in (0.30, 0.40, 0.50, 0.60)},
           h, l, c, tage_b, zeiten)
+
+    # 1L/3L) Stop und Schwankungsziel auf der LIVE-Konfiguration: BTC 150 + ETH 200 + MVRV-Bremse, 50/50 täglich neu aufgeteilt.
+    # (Die Blöcke 1–3 oben rechnen noch die alte Einzel-Regel BTC 200 — ihr Urteil gilt nicht automatisch für das Live-Konto.)
+    try:
+        import info_pruefung as IP
+        tage_l, ((hb_l, lb_l, cb_l), (he_l, le_l, ce_l)) = ausrichten([btc, eth])
+        brems = {coin: IP.bremsen("mvrv_tief", IP.flaggen(coin, tage_l)) for coin in ("btc", "eth")}
+
+        def live(stop_k, ziel_vol, a, b):
+            zb = IP.filter_z(K.roh_hebel(cb_l, n_sma=150, ziel_vol=ziel_vol), *brems["btc"])
+            ze = IP.filter_z(K.roh_hebel(ce_l, n_sma=200, ziel_vol=ziel_vol), *brems["eth"])
+            wb, _ = lauf(zb, hb_l, lb_l, cb_l, a, b, stop_k)
+            we, _ = lauf(ze, he_l, le_l, ce_l, a, b, stop_k)
+            return kennz(mix_taeglich(wb, we))
+
+        felder = {"ab 2019": ("2019-01-01", "9999"), "2019–2021": ("2019-01-01", "2022-01-01"),
+                  "2022–heute": ("2022-01-01", "9999")}
+
+        def idx(von, bis):
+            return (next(i for i, t in enumerate(tage_l) if t >= von), next((i for i, t in enumerate(tage_l) if t >= bis), len(tage_l)))
+
+        for name, varianten, bisher in (
+                ("1L) Börsen-Stop, Live-Konfiguration", {"kein Stop": (None, K.ZIEL_VOL), **{
+                    f"Stop {k:g}σ" + (" (live)" if k == K.STOP_SIGMA else ""): (k, K.ZIEL_VOL) for k in (3, 4, 6)}},
+                 f"Stop {K.STOP_SIGMA:g}σ (live)"),
+                ("3L) Schwankungsziel, Live-Konfiguration", {f"Ziel {int(v * 100)} %" + (" (live)" if v == K.ZIEL_VOL else ""):
+                                                             (K.STOP_SIGMA, v) for v in (0.30, 0.40, 0.50)}, "Ziel 40 % (live)")):
+            print(f"\n== {name}")
+            print(f"{'Variante':22}" + "".join(f"{f:>14}" for f in felder))
+            res = {}
+            for vname, (stop_k, zv) in varianten.items():
+                res[vname] = {f: live(stop_k, zv, *idx(*bereich)) for f, bereich in felder.items()}
+                print(f"{vname:22}" + "".join(f"     MAR {res[vname][f]['mar']:5.2f}" for f in felder))
+            besser = [v for v in res if v != bisher and all(res[v][f]["mar"] > res[bisher][f]["mar"] for f in felder)]
+            urteil = (f"ÄNDERN auf {besser[0]} (in allen {len(felder)} Feldern besser)" if len(besser) == 1 else
+                      f"mehrere Alternativen überall besser: {', '.join(besser)} — nicht eindeutig" if besser else "bleibt")
+            print(f"  Regel (vorab: nur ändern, wenn in ALLEN Feldern besser): {urteil}")
+            res["urteil"] = urteil
+            erg["tests"][name] = res
+    except Exception as ex:  # noqa: BLE001 — ohne MVRV-Daten (Netz) diesen Teil auslassen
+        print(f"\n(Live-Konfiguration nicht geprüft: {type(ex).__name__}: {ex})")
 
     # 2b) Trendlänge 150 gegen 200 auf GETRENNTEN Abschnitten (keine Überlappung → kein Mehrfachzählen derselben Jahre)
     tage, ((hb, lb, cb), (he, le, ce)) = ausrichten([btc, eth])

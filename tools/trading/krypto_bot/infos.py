@@ -16,6 +16,7 @@ from __future__ import annotations
 import csv
 import io
 import json
+import os
 import sys
 import time
 import urllib.parse
@@ -131,25 +132,44 @@ QUELLEN = {
 }
 
 
-def reihe(name, neu=False, max_alter_h=20, nur_speicher=False):
-    """{Datum: Wert} aus dem Zwischenspeicher, sonst aus dem Netz. Fällt das Netz aus, gilt der alte Stand."""
-    datei = DATEN / f"info_{name}.json"
-    if nur_speicher:
-        return json.loads(datei.read_text()) if datei.exists() else {}
-    frisch = datei.exists() and time.time() - datei.stat().st_mtime < max_alter_h * 3600
-    if datei.exists() and (frisch and not neu):
-        return json.loads(datei.read_text())
+def _lesen(datei):
+    """Zwischenspeicher lesen; eine kaputte Datei (abgebrochenes Schreiben) wird beiseitegelegt → None (= neu laden)."""
+    if not datei.exists():
+        return None
     try:
-        d = QUELLEN[name](json.loads(datei.read_text()) if datei.exists() and not neu else None)
+        d = json.loads(datei.read_text(encoding="utf-8"))
+        if isinstance(d, dict):
+            return d
+        raise ValueError("kein Objekt")
+    except (ValueError, UnicodeDecodeError):
+        datei.replace(datei.with_name(datei.name + f".kaputt-{datetime.now(timezone.utc):%Y%m%d-%H%M%S}"))
+        print(f"Info {datei.stem}: Zwischenspeicher war beschädigt — beiseitegelegt, lade neu.")
+        return None
+
+
+def reihe(name, neu=False, max_alter_h=20, nur_speicher=False):
+    """{Datum: Wert} aus dem Zwischenspeicher, sonst aus dem Netz. Fällt das Netz aus, gilt der alte Stand.
+    Atomar geschrieben; eine beschädigte Datei schaltet so nie dauerhaft eine Bremse (MVRV) ab."""
+    datei = DATEN / f"info_{name}.json"
+    alt = _lesen(datei)
+    if nur_speicher:
+        return alt or {}
+    frisch = alt is not None and time.time() - datei.stat().st_mtime < max_alter_h * 3600
+    if frisch and not neu:
+        return alt
+    try:
+        d = QUELLEN[name](alt if alt is not None and not neu else None)
         if not d:
             raise ValueError("leer")
         DATEN.mkdir(exist_ok=True)
-        datei.write_text(json.dumps(d, sort_keys=True))
+        tmp = datei.with_name(datei.name + f".tmp{os.getpid()}")
+        tmp.write_text(json.dumps(d, sort_keys=True), encoding="utf-8")
+        os.replace(tmp, datei)
         return d
     except Exception as ex:  # noqa: BLE001
-        if datei.exists():
+        if alt is not None:
             print(f"Info {name}: Netz-Fehler ({type(ex).__name__}), nehme gespeicherten Stand.")
-            return json.loads(datei.read_text())
+            return alt
         print(f"Info {name}: nicht verfügbar ({type(ex).__name__}).")
         return {}
 

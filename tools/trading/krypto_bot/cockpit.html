@@ -154,7 +154,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
         <button type="button" data-s="1.5" aria-pressed="false">1,5× mehr Risiko<small id="st-1.5"></small></button>
         <button type="button" data-s="2" aria-pressed="false">2× hohes Risiko<small id="st-2"></small></button>
       </div>
-      <span class="unter">Mehr als 2× gibt es nicht: 3× fiel im Test um −86 %, 5× um −99 %, 10× war das Konto weg.</span>
+      <span class="unter">Mehr als 2× gibt es nicht: 3× fiel im Test um −81 %, 5× um −97 %, 10× war das Konto weg.</span>
     </div>
     <div class="knoepfe">
       <button type="button" data-a="probe">▶ Probelauf<small>zeigt Aufträge, handelt nicht</small></button>
@@ -189,6 +189,12 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
   <section class="raster" style="margin-top:12px">
     <div class="karte w8"><h2>Letzte Aufträge</h2><div class="tabelle" id="auftraege"></div></div>
     <div class="karte w4"><h2>🪙 ETH-Sammler</h2><div id="sammler"></div></div>
+  </section>
+
+  <section class="karte" style="margin-top:12px" id="calls-karte" hidden aria-label="Telegram-Calls">
+    <div class="steuerkopf" style="margin-bottom:4px"><h2 style="margin:0">📣 Telegram-Calls</h2><span class="pill" id="calls-modus">—</span>
+      <span class="unter">Schatten-Bilanz ab Mitlesen (echte Kurse, gleiche Regeln wie der Prüfstand) · Prüfung = alte Calls der Gruppe</span></div>
+    <div id="calls"></div>
   </section>
 
   <footer>Aktualisiert jede Minute aus den Logbüchern auf diesem PC. Backtest = Vergangenheit, keine Garantie. Keine Anlageberatung.</footer>
@@ -346,11 +352,33 @@ async function ladeProfit() {
 }
 let letzterStand = null;
 
+function zeigeCalls(c) {
+  $("calls-karte").hidden = !c;
+  if (!c) return;
+  $("calls-modus").textContent = c.hinweis ? "—" : c.modus === "echtgeld" ? "⚠️ ECHTGELD" : c.modus === "testnetz" ? "kopiert im Testnetz" : "nur Schatten";
+  $("calls-modus").className = "pill" + (c.modus === "echtgeld" ? " echt" : "");
+  const gr = Object.values(c.gruppen || {});
+  const pr = x => x == null ? "—" : fmtPct(x);
+  const tab = gr.length ? `<div class="tabelle"><table><tr><th>Gruppe</th><th>Calls</th><th>kopiert</th><th>abgeschlossen</th><th>Ø je Call</th><th>Treffer</th><th>Konto bei 1 % Risiko</th><th>Prüfung</th></tr>${gr.map(g => `
+      <tr><td>${esc(g.name)}</td><td>${g.calls}</td><td>${g.kopiert}</td><td>${g.schatten.n || 0}</td><td class="${kl(g.schatten.schnitt)}">${pr(g.schatten.schnitt)}</td>
+      <td>${g.schatten.n ? fmtZahl(g.schatten.treffer * 100) + " %" : "—"}</td><td class="${kl(g.schatten.summe)}">${pr(g.schatten.summe)}</td>
+      <td>${g.pruefung === "kopierwürdig" ? '<span class="plus">bestanden</span>' : g.pruefung ? '<span class="minus">nicht bestanden</span>' : "noch keine"}</td></tr>`).join("")}</table></div>`
+    : `<p class="leer">${esc(c.hinweis || "Noch keine Calls erkannt — läuft calls.bat?")}</p>`;
+  const letzte = (c.letzte || []).length ? `<h2 style="margin-top:10px">Letzte Calls</h2><div class="tabelle"><table><tr><th>Zeit</th><th>Gruppe</th><th>Call</th><th>Status</th><th>Schatten</th></tr>${c.letzte.map(x => `
+      <tr><td>${esc(new Date(x.zeit).toLocaleString("de-CH"))}</td><td>${esc(x.gruppe)}</td><td>${esc(x.call)}</td>
+      <td>${esc(x.status)}${x.hinweis ? `<br><span class="unter">${esc(x.hinweis)}</span>` : ""}</td>
+      <td class="${kl(x.r)}">${x.r == null ? esc(x.schatten || "—") : fmtPct(x.r)}</td></tr>`).join("")}</table></div>` : "";
+  $("calls").innerHTML = tab + letzte;
+}
+
 function zeichne(d) {
   letzterStand = d;
-  $("modus").textContent = d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
+  $("modus").textContent = d.modus_spot && d.modus_spot !== d.modus
+    ? `Futures: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"} · Spot: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}`
+    : (d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)");
   $("modus").className = "pill" + (d.modus === "ECHTGELD" ? " echt" : "");
   $("tg").hidden = !d.telegram;
+  zeigeCalls(d.calls);
   $("zeit").textContent = "Stand " + new Date(d.zeit).toLocaleString("de-CH");
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";
@@ -430,7 +458,8 @@ function zeichne(d) {
   const s = d.sammler;
   $("sammler").innerHTML = s ? `<dl><dt>Käufe</dt><dd>${s.kaeufe}</dd><dt>Eingesetzt</dt><dd>${fmtZahl(s.eingesetzt, 2)} USDT</dd>
       <dt>Gesammelt</dt><dd>${fmtZahl(s.eth, 5)} ETH</dd><dt>Ø-Preis</dt><dd>${fmtZahl(s.schnitt, 2)}</dd><dt>Gestakt</dt><dd>${fmtZahl(s.gestakt, 4)} ETH</dd>
-      <dt>Wert jetzt</dt><dd id="s-wert">…</dd></dl>`
+      <dt>Wert jetzt</dt><dd id="s-wert">…</dd><dt>Modus</dt><dd>${s.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}</dd></dl>`
+      + (s.unklar ? `<p class="unter">⚠️ ${s.unklar} Kauf/Käufe unklar (${fmtZahl(s.unklar_usdt, 2)} USDT, Antwort verloren) — nicht im Ø-Preis; bitte im Binance-Konto prüfen.</p>` : "")
     : `<p class="leer">Noch keine Käufe. Start: py tools\\trading\\krypto_bot\\eth_sammler.py --lauf --trocken</p>`;
   if (s) fetch("https://data-api.binance.vision/api/v3/ticker/price?symbol=ETHUSDT").then(r => r.json()).then(t => {
     const wert = s.eth * +t.price, g = wert - s.eingesetzt;
@@ -446,16 +475,29 @@ async function laden() {
 }
 
 $("notaus").addEventListener("click", async () => {
-  if (!confirm("Not-Aus: Pilot-Positionen sofort schliessen und alle Bots stoppen?")) return;
-  const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an: true})});
-  const j = await r.json(); alert(j.meldung || j.fehler); laden(); ladeProtokoll();
+  const konto = letzterStand && letzterStand.modus === "ECHTGELD" ? "⚠️ ECHTGELD-Konto" : "Testnetz-Konto";
+  if (!confirm(`Not-Aus: Pilot-Positionen und kopierte Calls sofort schliessen und alle Bots stoppen?\n(${konto})`)) return;
+  const knopf = $("notaus");
+  knopf.disabled = true; knopf.textContent = "Not-Aus läuft …";
+  try {
+    const r = await fetch("/api/notaus", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an: true})});
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.fehler || ("HTTP " + r.status));
+    alert(j.meldung);
+  } catch (e) {
+    // Der wichtigste Knopf darf nie stumm scheitern
+    alert("❌ Not-Aus NICHT ausgelöst — Cockpit-Server nicht erreichbar (" + e.message + ").\nSofort stop.bat starten oder Telegram /stop senden!");
+  } finally {
+    knopf.disabled = false; knopf.textContent = "🛑 Not-Aus";
+    laden(); ladeProtokoll();
+  }
 });
 
 // ───────── Knöpfe + Terminal ─────────
 const FRAGE = {
   handeln: d => `Pilot jetzt handeln lassen?\nModus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz (Spielgeld)"}\nEr kauft oder verkauft nur, wenn die Position nicht im Zielbereich liegt.`,
   ki: () => "Claude jetzt fragen?\nKostet etwa 4–10 US-Cent. Pro Tag gibt es eine Einschätzung (ein zweiter Klick am selben Tag kostet nichts).",
-  sparplan: d => "ETH-Sparplan jetzt ausführen?\nEr kauft nur, wenn der nächste Termin fällig ist.",
+  sparplan: d => `ETH-Sparplan jetzt ausführen?\nModus: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD (Spot)" : "Testnetz (Spielgeld)"}\nEr kauft nur, wenn der nächste Termin fällig ist.`,
   aufgabe: () => "Windows-Aufgabe einrichten?\nDann startet krypto-auto.bat jeden Tag um 02:30 — auch auf Akku; war der PC aus, holt er den Lauf beim nächsten Start nach. Eine bestehende Aufgabe «Krypto-Pilot» wird ersetzt.",
   update: () => "Neueste Version holen (git pull)?\nDanach das Cockpit neu starten.",
   auto_an: d => `Auto-Handel wieder EINSCHALTEN?\n${d.notaus ? "Der Not-Aus wird aufgehoben. " : ""}Der nächste Lauf handelt wieder (Modus: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}).`,

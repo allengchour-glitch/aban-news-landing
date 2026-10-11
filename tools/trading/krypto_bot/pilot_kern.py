@@ -11,8 +11,9 @@ Regel (vorab festgelegt, aus futures.py die einzige, die den Zufallstest bestand
                  oder lag sie im letzten Jahr mehr als EINBRUCH_MAX im Minus vom Hoch, gibt es eine WARNUNG.
                  Als Notbremse (flach gehen) kostete er im Test Rendite — darum handelt der Pilot live trotzdem.
   Stop:     Abstand = STOP_SIGMA × Tages-Schwankung × Kurs (als Sicherung an der Börse gegen Crash-Tage).
+            3σ statt bisher 4σ: auf der Live-Konfiguration (BTC 150 + ETH 200 + MVRV) in allen Feldern besser.
   MVRV-Bremse: Liegt der Kurs unter dem Einstandswert aller Coins (MVRV < 1, CoinMetrics, Stand Vortag), kein Short —
-            die einzige von 13 freien Markt-Infos, die info_pruefung.py bestand (alle 4 Felder besser, Zufallsprobe 93 %).
+            die einzige von 13 freien Markt-Infos, die info_pruefung.py bestand (alle 4 Felder besser, Zufallsprobe 94 %).
 Alle Werte nur aus abgeschlossenen Tagen; die Entscheidung von Tag i gilt ab Tag i+1.
 """
 from __future__ import annotations
@@ -29,10 +30,10 @@ HEBEL_HART = 2.0          # nie mehr, egal was eingestellt ist
 FENSTER = 730
 SKILL_MIN = 0.60
 EINBRUCH_MAX = -0.45
-STOP_SIGMA = 4.0
+STOP_SIGMA = 3.0          # pilot_pruefung.py 1L: 3σ auf der Live-Konfiguration in allen Feldern besser als 4σ (11.10.2026)
 MVRV_TIEF = 1.0
 # Risiko-Stufe (hebel_pruefung.py): 1 = Standard und im Test am besten (Rendite ÷ Einbruch). 1,5 und 2 = alles grösser
-# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber Einbrüche bis −51 % bzw. −67 %. Über 2: Konto im Test vernichtet.
+# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber Einbrüche bis −44 % bzw. −60 %. Ab 5×: −97 %, 10×: Konto weg.
 STUFEN = (1.0, 1.5, 2.0)
 EINSTELLUNGEN = Path(__file__).resolve().parents[3] / "data" / "krypto-einstellungen.json"
 GEBUEHR = 0.0005
