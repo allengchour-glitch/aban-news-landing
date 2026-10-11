@@ -466,3 +466,4 @@ gid://shopify/Product/16615200227719	Braun
 gid://shopify/Product/16615218217351	Silber
 gid://shopify/Product/16615275528583	Mehrfarbig
 gid://shopify/Product/16615327957383	Silber
+gid://shopify/Product/16615344439687	Silber
