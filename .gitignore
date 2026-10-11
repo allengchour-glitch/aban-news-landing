@@ -58,3 +58,4 @@ printful_key.txt
 # Ordner neu gebaut (automation/tiktok_video.py), wiegen aber 2-3 MB je Stueck — bei taeglichem
 # Lauf waeren das rund 1,7 GB im Jahr in einem oeffentlichen Repo. Die Slides sind die Quelle.
 social/tiktok/**/*.mp4
+dropship/pod/_DRUCK_1024/
