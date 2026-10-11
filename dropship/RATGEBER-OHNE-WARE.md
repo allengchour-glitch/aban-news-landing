@@ -16,8 +16,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Strohtaschen & Beach-Bags 2026: die schönsten Sommer-Looks](/blogs/ratgeber/strohtaschen-beach-bags-sommer-looks-2026) | 0 |
 | [Leinen pflegen: knitterfrei waschen, trocknen & bügeln](/blogs/ratgeber/leinen-pflegen-knitterfrei-material-guide) | 0 |
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
-| [Handy-Zubehör Ratgeber: Hülle, Halterung & schnelles Laden](/blogs/ratgeber/handy-zubehoer-ratgeber-huelle-halterung-laden) | 0 |
-| [Haustierzubehör 2026: Das Wichtigste für Hund & Katze](/blogs/ratgeber/haustierzubehoer-2026-hund-katze-ratgeber) | 0 |
 | [Fitness zuhause 2026: Die richtige Ausrüstung für dein Heimt](/blogs/ratgeber/fitness-zuhause-2026-heimtraining-ausruestung) | 0 |
 | [Bartpflege & Rasur 2026: Der komplette Ratgeber für gepflegt](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | 0 |
 | [Make-up & Beauty Basics 2026: Die wichtigsten Produkte für j](/blogs/ratgeber/make-up-beauty-basics-2026) | 0 |
@@ -124,6 +122,7 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Waffeleisen-Ratgeber: knusprige Waffeln wie vom Markt](/blogs/ratgeber/waffeleisen-ratgeber-knusprige-waffeln-wie-vom-markt) | 0 |
 | [Heissluftfritteuse kaufen: der grosse Airfryer-Guide](/blogs/ratgeber/heissluftfritteuse-kaufen-der-grosse-airfryer-guide) | 0 |
 | [Nähzubehör für Einsteiger: die richtige Grundausstattung](/blogs/ratgeber/nahzubehor-fur-einsteiger-die-richtige-grundausstattung) | 0 |
+| [Modellbau für Einsteiger: das richtige Set & Werkzeug](/blogs/ratgeber/modellbau-fur-einsteiger-das-richtige-set-werkzeug) | 0 |
 | [Mechanische Tastatur kaufen: Switches, Layout & Formfaktor e](/blogs/ratgeber/mechanische-tastatur-kaufen-switches-layout-formfaktor-erklart) | 0 |
 | [Monitor kaufen: Auflösung, Grösse & Bildwiederholrate verstä](/blogs/ratgeber/monitor-kaufen-auflosung-grosse-bildwiederholrate-verstandlich-erklart) | 0 |
 | [SSD oder Festplatte? Der richtige Speicher für deinen PC](/blogs/ratgeber/ssd-oder-festplatte-der-richtige-speicher-fur-deinen-pc) | 0 |
