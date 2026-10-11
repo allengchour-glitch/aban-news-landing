@@ -49,5 +49,9 @@
   "cj_sub": "SD2610110914560648000",
   "cj_betrag_usd": 59.52,
   "quelle": "Betreiber-Screenshot CJ-App 11.10.2026, Zahlung durch Betreiber"
+ },
+ "#1024": {
+  "status": "MANUELL_MISTER_DTF",
+  "quelle": "Bügeltransfer, Lieferant Mister DTF (manuell), kein CJ-Auftrag nötig"
  }
 }

@@ -3894,3 +3894,6 @@ gid://shopify/Product/16613002084743	kleider	Rosa A-Linien-Partykleid mit hohem 
 gid://shopify/Product/16613447270791	taschen	Herren-Sweatshirt mit Stehkragen und Aufsatztasche
 gid://shopify/Product/15470351679873	ketten	Frucht-Halskette · Damen
 gid://shopify/Product/15474482479489	kleider	Kapuzenkleid · Damen
+gid://shopify/Product/16613782290823	taschen	Aufbewahrungstasche für Autositze
+gid://shopify/Product/16613788057991	taschen	Aufbewahrungstasche für Auto, Würfelform
+gid://shopify/Product/16614287606151	brillen	Transparente Schutzbrille für Labor
