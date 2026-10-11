@@ -17576,3 +17576,4 @@ gid://shopify/Product/16614567543175	19->0	Rüschen-V-Ausschnitt Midi-Kleid mit 
 gid://shopify/Product/16614567608711	67->0	Holz 3D Interaktives Puzzlemodell
 gid://shopify/Product/16614567707015	141->1	PVC-Box für Fitness-Boxing, 1,6 m hoch
 gid://shopify/Product/16614567772551	15->0	Elastische Laufleine für Hunde – 85 cm
+gid://shopify/Product/16614568624519	9->3	Fleece-Corset für kleine und mittelgrosse Hunde
