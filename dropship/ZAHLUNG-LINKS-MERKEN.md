@@ -20,3 +20,9 @@
 - `_cj_order_watch_state.json` hat **keinen Eintrag** für #1023 → die Sitzung kann CJ-Auftrag und Shopify-Bestellung nicht verknüpfen.
 - Offen: CJ-Bestellnummer vom Betreiber, dann Eintrag in die Überwachung, damit die Sendungsnummer zurück zu Shopify geht.
 - **CJ-Bestellnummer #1023 = CJ2610115452995745998** (Teil SD2610110914560648000, Subtotal $59.52, Status «Pending» = bezahlt, noch nicht verschickt). In `_cj_order_watch_state.json` eingetragen, damit die Sendungsnummer zurück zu Shopify geht und nichts doppelt bestellt wird.
+
+## Nachtrag 11.10.2026 14:56 UTC: Shopify #1024 (Bügeltransfer, Mister DTF — KEIN CJ)
+- #1024 bezahlt CHF 40.12, Schweiz. Zwei Bügeltransfers: TRANSFER-A3 (Design «Bild») und TRANSFER-A5 (Text «Feivel»).
+- **Lieferant ist Mister DTF (misterdtf.ch), manuell** — `dropship/pod/MISTER-DTF-FULFILLMENT.md`. Die CJ-Automatik legt sie nicht an (`#1024: keine CJ-Artikel`).
+- Druckdateien liegen NICHT im Repo (Kundendesign, enthält einen Namen). Sie wurden dem Betreiber direkt geschickt; Ablage `scratchpad/druck1024/`, nicht versionieren.
+- Nächster Schritt Betreiber: Dateien auf misterdtf.ch hochladen (A3 + A5), bestellen, Shopify-Bestellung als erledigt markieren.
