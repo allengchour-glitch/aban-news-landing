@@ -17583,3 +17583,5 @@ gid://shopify/Product/16614605816199	76->0	Halsband für Hund – 1–2 Grössen
 gid://shopify/Product/16614606045575	75->2	Einzelarmband zur Schulterhebelhilfe für Hunde
 gid://shopify/Product/16614615744903	145->1	Hundehindbeinschutzgurt – schwarzer Polyestergurt
 gid://shopify/Product/16614615908743	96->0	Hundegeschirr ohne Zugleine, Polyester
+gid://shopify/Product/16614722699655	19->2	I-Shape Traktionsgeschirr für Hunde
+gid://shopify/Product/16614723191175	24->0	Hundelaufgeschirr für Welpen
