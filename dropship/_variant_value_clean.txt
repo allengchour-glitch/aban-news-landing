@@ -3610,3 +3610,12 @@ gid://shopify/Product/16613828362631	Farbe	15
 gid://shopify/Product/16613835637127	Farbe	6
 gid://shopify/Product/16613842780551	Farbe	3
 gid://shopify/Product/15494642794881	Farbe	1
+gid://shopify/Product/16614841516423	Farbe	1
+gid://shopify/Product/16615354892679	Farbe	1
+gid://shopify/Product/16615360496007	Farbe	1
+gid://shopify/Product/16615361708423	Farbe	10
+gid://shopify/Product/16615377797511	Farbe	1
+gid://shopify/Product/16615384285575	Farbe	1
+gid://shopify/Product/16615387726215	Farbe	1
+gid://shopify/Product/16615388250503	Farbe	6
+gid://shopify/Product/16615389495687	Farbe	1
