@@ -20263,3 +20263,26 @@ gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/5838
 gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964583815	White purple powder A	Weiss-Lila-Rosa A	2026-10-10T12:50Z
 gid://shopify/Product/16613842780551	Farbe	gid://shopify/ProductOptionValue/58384964616583	White red A	Weiss-Rot A	2026-10-10T12:50Z
 gid://shopify/Product/15494642794881	Farbe	gid://shopify/ProductOptionValue/12336277127553	Lilac	Flieder	2026-10-11T10:14Z
+gid://shopify/Product/16614841516423	Farbe	gid://shopify/ProductOptionValue/58395562377607	Rose Print	Rosé bedruckt	2026-10-11T16:20Z
+gid://shopify/Product/16615354892679	Farbe	gid://shopify/ProductOptionValue/58400069845383	Olive	Oliv	2026-10-11T16:20Z
+gid://shopify/Product/16615360496007	Farbe	gid://shopify/ProductOptionValue/58400108478855	Khaki stripes	Khaki gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134136199	Light Gray Stripes	Hellgrau gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134168967	A Light Blue Stripe	A Hellblau gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134201735	B Coffee	B Kaffeebraun	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134300039	F Black And White Stripes	F Schwarz-Weiss gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134332807	J Blue Stripe	J Blau gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134398343	I Army Green	I Armeegrün	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134431111	G Blue	G Blau	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134463879	K Yellowish White Stripe	K Gelblichweiss gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134496647	L Green And White Stripes	L Grün-Weiss gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615361708423	Farbe	gid://shopify/ProductOptionValue/58400134529415	M Red Stripe	M Rot gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615377797511	Farbe	gid://shopify/ProductOptionValue/58400209207687	Leopard print	Leopardenmuster	2026-10-11T16:20Z
+gid://shopify/Product/16615384285575	Farbe	gid://shopify/ProductOptionValue/58400270516615	Black Pu	Schwarz PU	2026-10-11T16:20Z
+gid://shopify/Product/16615387726215	Farbe	gid://shopify/ProductOptionValue/58400277070215	Dark Black	Dunkelschwarz	2026-10-11T16:20Z
+gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278020487	39080 Dark Gray Striped	39080 Dunkelgrau gestreift	2026-10-11T16:20Z
+gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278053255	39309 Brown	39309 Braun	2026-10-11T16:20Z
+gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278086023	37388 Black	37388 Schwarz	2026-10-11T16:20Z
+gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278118791	37388 Brown	37388 Braun	2026-10-11T16:20Z
+gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278151559	37388 Gray	37388 Grau	2026-10-11T16:20Z
+gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278184327	37388 Purple	37388 Lila	2026-10-11T16:20Z
+gid://shopify/Product/16615389495687	Farbe	gid://shopify/ProductOptionValue/58400280904071	Black Upgrade	Schwarz Upgrade	2026-10-11T16:20Z
