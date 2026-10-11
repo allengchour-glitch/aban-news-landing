@@ -26,3 +26,8 @@
 - **Lieferant ist Mister DTF (misterdtf.ch), manuell** — `dropship/pod/MISTER-DTF-FULFILLMENT.md`. Die CJ-Automatik legt sie nicht an (`#1024: keine CJ-Artikel`).
 - Druckdateien liegen NICHT im Repo (Kundendesign, enthält einen Namen). Sie wurden dem Betreiber direkt geschickt; Ablage `scratchpad/druck1024/`, nicht versionieren.
 - Nächster Schritt Betreiber: Dateien auf misterdtf.ch hochladen (A3 + A5), bestellen, Shopify-Bestellung als erledigt markieren.
+
+## Merkzettel 11.10.2026: Preise später anpassen (Betreiber «preise anpassen später»)
+- **Noch nicht geändert.** Nur auf Auftrag des Betreibers.
+- Vermutlich gemeint: **Bügeltransfer** (Marge knapp, #1024 ca. 2 CHF). Aktuell A3 CHF 24.90, A5 CHF 11.90 im Shop. Einkauf Mister DTF: A3 Öko-Tex 12.90 pro Bogen, Versand A-Post 9.90 extra.
+- Rückfrage offen: welche Preise gemeint sind (Bügeltransfer, Sirène, andere).
