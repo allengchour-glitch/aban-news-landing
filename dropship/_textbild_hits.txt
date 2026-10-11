@@ -17571,3 +17571,8 @@ gid://shopify/Product/16614566134151	15->0	Hip Ring mit Widerstand – 66/76/86 
 gid://shopify/Product/16614566166919	27->0	Hundeharnisch mit Zugseil – rosa/ grau/ himmelblau
 gid://shopify/Product/16614566396295	16->0	Maskenball-Kleid für Kostümparty
 gid://shopify/Product/16614566461831	45->0	Waschtes Denim-Kleidungskostüm für Haustiere
+gid://shopify/Product/16614567477639	11->0	Velours-Kolbenrock mit V-Ausschnitt
+gid://shopify/Product/16614567543175	19->0	Rüschen-V-Ausschnitt Midi-Kleid mit Seitenschlitz
+gid://shopify/Product/16614567608711	67->0	Holz 3D Interaktives Puzzlemodell
+gid://shopify/Product/16614567707015	141->1	PVC-Box für Fitness-Boxing, 1,6 m hoch
+gid://shopify/Product/16614567772551	15->0	Elastische Laufleine für Hunde – 85 cm
