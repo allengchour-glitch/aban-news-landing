@@ -11,6 +11,7 @@ import random
 import sys
 import tempfile
 import threading
+import urllib.error
 import urllib.parse
 from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -80,7 +81,32 @@ w = P("LONG #SOLUSDT Entry 145-148 TP 140 SL 150")
 pruefe("widersprüchlicher Call (Long mit Ziel unter dem Einstieg) wird erkannt", w and not w["stimmig"], w)
 pruefe("Zahlen: 1.234,5 · 0,00001234 · 1'234 · 28,40", CP.zahl("1.234,5") == 1234.5 and CP.zahl("0,00001234") == 0.00001234
        and CP.zahl("1'234") == 1234.0 and CP.zahl("28,40") == 28.4 and CP.zahl("1,234") == 1234.0)
-pruefe("Stopwörter sind keine Coins", CP._symbol(CP._normal("#LONG ENTRY TARGET")) is None)
+pruefe("Stopwörter sind keine Coins", CP._symbol(CP._normal("#LONG ENTRY TARGET"), "LONG") is None)
+
+
+# 40 echte Formate (Prüfer-Korpus): jede Nachricht exakt wie ein Mensch sie liest — oder bewusst kein Call
+import calls_korpus as KO  # noqa: E402
+falsch = []
+for name, text, soll in KO.N:
+    c = CP.parse(text)
+    if soll is None:
+        ok_ = c is None
+    else:
+        ok_ = (c is not None and c["symbol"] == soll[0] and c["richtung"] == soll[1] and c["einstieg"] == soll[2]
+               and [round(x, 10) for x in c["ziele"]] == sorted(soll[3], reverse=soll[1] == "SHORT") and c["stop"] == soll[4]
+               and (c.get("ausbruch", False) == ("ausbruch" in soll[5:])) and (c["stimmig"] or "mehrdeutig" in soll[5:]))
+    if not ok_:
+        falsch.append((name, c))
+pruefe("Korpus: alle 40 echten Formate richtig gelesen (oder bewusst kein Call)", not falsch, falsch)
+mehr = CP.parse(dict((x[0], x[1]) for x in KO.N)["11 Deutsch Komma 3 Stellen"])
+pruefe("mehrdeutiges «1,250» bei Kurs 1,25: Kursprüfung lehnt ab statt falsch zu handeln", not CP.plausibel(mehr, 1.25))
+pruefe("LONG und SHORT zugleich (ohne «-term»): kein Call, statt nach «buy/sell» zu raten",
+       CP.parse("#SOL LONG Entry 145-148 TP 150 SL 140\nshort sellers will buy back soon") is None)
+ab = CP.parse("#SOL LONG\nEntry: 145-148\nTP: 150 / 155\nPosition size in percent of account:\n2\nSL: 140")
+pruefe("eine Textzeile beendet die Zielliste: eine Zahl darunter ist kein Ziel", ab and ab["ziele"] == [150.0, 155.0] and ab["stop"] == 140.0, ab)
+pruefe("Kursprüfung: Markt-Call mit Ziel schon unter dem Kurs → nicht plausibel",
+       not CP.plausibel({"richtung": "LONG", "einstieg": [], "ziele": [9.4], "stop": None, "stimmig": True}, 9.6)
+       and CP.plausibel({"richtung": "LONG", "einstieg": [], "ziele": [9.9], "stop": 9.0, "stimmig": True}, 9.6))
 
 
 class FakeClaude:
@@ -206,6 +232,12 @@ with tempfile.TemporaryDirectory() as td:
     cs = CQ.calls_aus(n)
     pruefe("Wiederholung binnen 6 Std. zählt einmal, gelöschter Call zählt mit", [c_[2] for c_ in cs] == [1, 2], cs)
     pruefe("nachträglich geänderter Stop (95 → 90) zählt NICHT — gerechnet wird der ursprüngliche Call", cs[0][1]["stop"] == 95.0, cs[0])
+    f2 = Path(td) / "verlauf.jsonl"
+    f2.write_text(json.dumps({"id": 9, "zeit": "2026-03-02T10:00:00+00:00", "text": "LONG #SOLUSDT Entry 100 TP 110 SL 85", "art": "neu",
+                              "bearbeitet": "2026-03-02T13:00:00+00:00"}) + "\n", encoding="utf-8")
+    zl = {}
+    pruefe("aus dem Verlauf, Stunden später bearbeitet (erste Fassung unbekannt): NICHT gewertet, aber gezählt",
+           CQ.calls_aus(CQ.lies_nachrichten(f2), zaehler=zl) == [] and zl.get("bearbeitet") == 1, zl)
 
 # Kerzen holen: Futures zuerst, sonst Spot, «1000PEPE» = PEPE × 1000; nur abgeschlossene Tage im Speicher
 geholt = []
@@ -214,7 +246,7 @@ geholt = []
 def fake_holen(url):
     geholt.append(url)
     if "fapi" in url:
-        raise OSError("HTTP 451")
+        raise urllib.error.HTTPError(url, 451, "gesperrt", {}, None)
     sym = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)["symbol"][0]
     if sym == "PEPEUSDT":
         return [[T0, "0.0000035", "0.0000036", "0.0000034", "0.0000035", "1"]]
@@ -228,6 +260,14 @@ with tempfile.TemporaryDirectory() as td:
     CQ.tag_kerzen("1000PEPEUSDT", T0 // CQ.TAG * CQ.TAG, holen=fake_holen, ordner=td)
     pruefe("vergangener Tag aus dem Speicher (kein neuer Abruf)", len(geholt) == n0)
     pruefe("unbekanntes Symbol: leer, kein Absturz", CQ.tag_kerzen("GIBTSNICHTUSDT", T0 // CQ.TAG * CQ.TAG, holen=fake_holen, ordner=td) == [])
+
+    def netz_weg(url):
+        raise urllib.error.URLError("timed out")
+
+    pruefe("Netz weg: None statt «leer» (ein fehlender Tag würde einen Stop überspringen)",
+           CQ.tag_kerzen("SOLUSDT", T0 // CQ.TAG * CQ.TAG - 5 * CQ.TAG, holen=netz_weg, ordner=td) is None
+           and CQ.kerzen("SOLUSDT", T0 - 6 * CQ.TAG, T0 - 4 * CQ.TAG, holen=netz_weg, ordner=td) is None
+           and CQ.simuliere(long_, T0, None)["status"] == "keine_kurse")
 
 # ───────────────────────── Leser (ohne Telegram) ─────────────────────────
 pruefe("Gruppen-Kennung: Nummer, Link, @name", CL.gruppen_kennung("-1001234") == -1001234 and CL.gruppen_kennung("https://t.me/calls_vip") == "calls_vip"
@@ -391,7 +431,9 @@ pruefe("Pflege: Position 0 → geschlossen, restliche Algo-Aufträge gelöscht, 
 
 # Stop abgelehnt → Position sofort zu
 Fake.stop_fehler = True
-rec2 = neu("#SOLUSDT LONG Entry 99-101 TP 110 SL 95", 3, zeit=JETZT + timedelta(hours=7))
+pruefe("derselbe Call 7 Std. später nochmals gepostet (gleiche Niveaus): ignoriert",
+       neu("#SOLUSDT LONG Entry 99-101 TP 110 SL 95", 30, zeit=JETZT + timedelta(hours=7)) is None)
+rec2 = neu("#SOLUSDT LONG Entry 98-100 TP 110 SL 94", 3, zeit=JETZT + timedelta(hours=14))
 Fake.stop_fehler = None
 pruefe("Stop abgelehnt: Position SOFORT geschlossen, laut gemeldet", Fake.pos == 0.0 and rec2["auftrag"].get("fehler")
        and "sofort geschlossen" in rec2["auftrag"]["hinweis"], rec2.get("auftrag"))
@@ -399,10 +441,10 @@ CK.pflegen(env=ENV, kerzen_fn=lambda *a_: [], push=gepusht.append, buch_datei=CK
 
 # Limit an der Zone: Kurs über der Zone → GTD-Limit, Stop vorab; nach Füllung setzt die Pflege die Ziele
 Fake.algo, Fake.mark = [], "105"
-rec3 = neu("#SOLUSDT LONG Entry 99-101 TP 110/120 SL 95", 4, zeit=JETZT + timedelta(hours=14))
+rec3 = neu("#SOLUSDT LONG Entry 97-99 TP 110/120 SL 93", 4, zeit=JETZT + timedelta(hours=21))
 lim = [x[2] for x in Fake.log if x[1] == "/fapi/v1/order" and x[2].get("type") == "LIMIT"]
 pruefe("Kurs über der Zone: Limit am oberen Rand, verfällt nach 24 Std., Stop schon gesetzt", rec3["status"] == "wartet" and lim
-       and lim[-1]["price"] == "101" and lim[-1]["timeInForce"] == "GTD"
+       and lim[-1]["price"] == "99" and lim[-1]["timeInForce"] == "GTD"
        and abs(int(lim[-1]["goodTillDate"]) - (rec3["auftrag"]["zeit_ms"] + 24 * 3600 * 1000)) < 5000
        and [x["type"] for x in Fake.algo] == ["STOP_MARKET"], (rec3, lim[-1:], Fake.algo))
 Fake.pos = float(rec3["auftrag"]["menge"])
@@ -423,13 +465,33 @@ CK.pflegen(env=ENV, kerzen_fn=lambda *a_: [], push=gepusht.append, buch_datei=CK
 b5 = [r_ for r_ in CK.lies(CK.BUCH)["calls"] if r_["id"].endswith(":5")][0]
 pruefe("Limit verfallen: nicht ausgelöst, vorab gesetzter Stop gelöscht", b5["status"] == "nicht_ausgeloest" and Fake.algo == [], (b5["status"], Fake.algo))
 # Schattenkonto
-rec6 = neu("#SOLUSDT LONG Entry 99-101 TP 110/120 SL 95", 6, env={**ENV, "CALLS_MODUS": "schatten"}, zeit=JETZT + timedelta(days=10))
+rec6 = neu("#SOLUSDT LONG Entry 96-98 TP 110/120 SL 92", 6, env={**ENV, "CALLS_MODUS": "schatten"}, zeit=JETZT + timedelta(days=10))
 t6 = rec6["zeit_ms"]
-schatten_ks = [(t6 // M * M + M, 100, 101, 99, 100), (t6 // M * M + 2 * M, 100, 121, 100, 120)]
+schatten_ks = [(t6 // M * M + M, 97, 98, 96.5, 97), (t6 // M * M + 2 * M, 97, 121, 97, 120)]
 CK.pflegen(env=ENV, kerzen_fn=lambda *a_: schatten_ks, push=gepusht.append, buch_datei=CK.BUCH)
 b6 = [r_ for r_ in CK.lies(CK.BUCH)["calls"] if r_["id"].endswith(":6")][0]
 pruefe("Schatten: keine Aufträge, Ergebnis mit echten Kursen gerechnet", "auftrag" not in b6 and b6["schatten"]["status"] == "geschlossen"
        and b6["schatten"]["r"] > 0.1, b6)
+pruefe("Antwort auf eine frühere Nachricht ist nie ein neuer Call", CK.neue_nachricht(
+    "-1001", "VIP Calls", {**nachricht("#SOLUSDT LONG Entry 80-82 TP 90 SL 76", 60, JETZT + timedelta(days=20)), "antwort_auf": 1},
+    env=ENV, push=gepusht.append, buch_datei=CK.BUCH) is None)
+Fake.mark, n_auf = "100", len([x for x in Fake.log if x[1] == "/fapi/v1/order"])
+falsch = neu("#SOLUSDT LONG Entry: CMP Targets 1.60 - 1.70 SL 1.45", 61, zeit=JETZT + timedelta(days=21))
+pruefe("Preise passen nicht zum Kurs (falsch gelesen): NICHT gehandelt", falsch["status"] == "abgelehnt" and "passen nicht" in falsch["hinweis"]
+       and len([x for x in Fake.log if x[1] == "/fapi/v1/order"]) == n_auf, falsch)
+aus = neu("#SOLUSDT LONG Buy above 102 TP 110 SL 97", 62, zeit=JETZT + timedelta(days=22))
+pruefe("Ausbruchs-Einstieg («above»): nicht kopiert", "auftrag" not in aus and "Durchbruch" in aus["hinweis"], aus)
+
+
+class _Stub:
+    def regeln(self, sym):
+        if sym != "1000PEPEUSDT":
+            raise StopIteration
+        return {"step": 1.0, "tick": 1e-7, "min_qty": 1.0, "min_notional": 5.0}
+
+
+pruefe("Meme-Coin: PEPE wird als Future 1000PEPEUSDT gefunden (Preise × 1000)", CK.future_finden(_Stub(), "PEPEUSDT")[:2] == ("1000PEPEUSDT", 1000.0)
+       and CK.future_finden(_Stub(), "GIBTSNICHTUSDT")[0] is None)
 s = CK.stand(CK.BUCH, CK.PRUEFUNG)
 pruefe("Bilanz je Gruppe", s["gruppen"]["-1001"]["calls"] >= 5 and s["gruppen"]["-1001"]["schatten"]["n"] >= 1 and s["letzte"]
        and "VIP Calls" in CK.stand_text(s), s["gruppen"])

@@ -34,6 +34,7 @@ import math
 import random
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -80,30 +81,39 @@ def tag_kerzen(symbol, tag_ms, holen=None, ordner=None):
     ordner = Path(ordner) if ordner else KERZEN_ORDNER
     datei = ordner / symbol / f"{datetime.fromtimestamp(tag_ms / 1000, timezone.utc):%Y-%m-%d}.json"
     if datei.exists():
-        return [tuple(x) for x in json.loads(datei.read_text())]
-    out = []
+        return [tuple(x) for x in json.loads(datei.read_text(encoding="utf-8"))]
+    out, netz = [], False
     for quelle, sym, faktor in _quellen(symbol):
         basis = ("https://fapi.binance.com/fapi/v1/klines" if quelle == "fapi" else "https://data-api.binance.vision/api/v3/klines")
         q = urllib.parse.urlencode({"symbol": sym, "interval": "15m", "startTime": tag_ms, "endTime": tag_ms + TAG - 1, "limit": 100})
         try:
             roh = holen(f"{basis}?{q}")
+        except urllib.error.HTTPError as ex:
+            netz = netz or ex.code in (408, 418, 429) or ex.code >= 500  # 400 = Symbol unbekannt (endgültig), 451 = gesperrt
+            continue
         except NETZFEHLER:
+            netz = True
             continue
         if isinstance(roh, list) and roh:
             out = [(int(k[0]), float(k[1]) * faktor, float(k[2]) * faktor, float(k[3]) * faktor, float(k[4]) * faktor) for k in roh]
             break
-    if out and tag_ms + TAG < time.time() * 1000 - 3600 * 1000:  # nur abgeschlossene Tage speichern
+    if not out and netz:
+        return None  # NICHT «keine Kurse»: ein fehlender Tag würde einen Stop überspringen — der Aufrufer wertet den Call nicht
+    if tag_ms + TAG < time.time() * 1000 - 3600 * 1000:  # nur abgeschlossene Tage speichern (auch «leer»)
         datei.parent.mkdir(parents=True, exist_ok=True)
-        datei.write_text(json.dumps(out))
+        datei.write_text(json.dumps(out), encoding="utf-8")
     return out
 
 
 def kerzen(symbol, von_ms, bis_ms, holen=None, ordner=None):
-    tag0 = von_ms // TAG * TAG
-    out = []
-    t = tag0
+    """Kerzen von–bis (höchstens bis jetzt). None, wenn ein Tag wegen eines Netzfehlers fehlt (lieber nicht werten als lückenhaft)."""
+    bis_ms = min(bis_ms, int(time.time() * 1000))
+    out, t = [], von_ms // TAG * TAG
     while t <= bis_ms:
-        out += [k for k in tag_kerzen(symbol, t, holen, ordner) if von_ms <= k[0] <= bis_ms]
+        tag = tag_kerzen(symbol, t, holen, ordner)
+        if tag is None:
+            return None
+        out += [k for k in tag if von_ms <= k[0] <= bis_ms]
         t += TAG
     return out
 
@@ -113,12 +123,13 @@ def simuliere(call, zeit_ms, ks):
     """call (calls_parser) + Nachrichtenzeit + Kerzen ab dann → Ergebnis-dict. Reine Rechnung, testbar."""
     lang = call["richtung"] == "LONG"
     start = zeit_ms + VERZUG_MS
-    ks = [k for k in ks if k[0] >= start - start % MIN15 + MIN15]  # erste ganze Kerze nach der Nachricht
+    if call.get("ausbruch") or call.get("unvollstaendig"):
+        return {"status": "nicht_kopierbar"}  # wird nie kopiert → auch nicht gewertet (gleiche Calls wie im Handel)
+    ks = [k for k in (ks or []) if k[0] >= start - start % MIN15 + MIN15]  # erste ganze Kerze nach der Nachricht
     if not ks:
         return {"status": "keine_kurse"}
     kurs0 = ks[0][1]
-    alle = [p for p in call["einstieg"] + call["ziele"] + ([call["stop"]] if call["stop"] else []) if p]
-    if not call.get("stimmig", True) or any(p / kurs0 > 3 or kurs0 / p > 3 for p in alle):
+    if not CP.plausibel(call, kurs0, seiten=False):  # dieselbe Preis-Prüfung wie vor jedem echten Auftrag
         return {"status": "unplausibel", "kurs": kurs0}
     # Einstieg
     i_fill, fill, am_open = None, None, False
@@ -141,6 +152,8 @@ def simuliere(call, zeit_ms, ks):
     if (lang and stop >= fill) or (not lang and stop <= fill):
         return {"status": "nicht_ausgeloest", "kurs": kurs0, "grund": "Stop schon durch"}
     ziele = [z for z in call["ziele"] if (z > fill if lang else z < fill)]
+    if call["ziele"] and not ziele:
+        return {"status": "nicht_ausgeloest", "kurs": kurs0, "grund": "Ziele schon erreicht"}  # der Kopierer handelt das nicht
     rest, anteil = 1.0, (1.0 / len(ziele) if ziele else 0.0)
     erloes, t_fill = 0.0, ks[i_fill][0]
     ende_ms = t_fill + HALTEN_TAGE * TAG
@@ -194,6 +207,12 @@ def lies_nachrichten(datei):
             continue
         alt = out.get(n["id"], {})
         neu = {**alt, **n, "geloescht": alt.get("geloescht", False)}
+        if not alt.get("text") and n.get("bearbeitet") and n.get("zeit"):
+            # Aus dem Verlauf geholt und schon bearbeitet: Telegram gibt nur die LETZTE Fassung — die erste ist unbekannt.
+            # Mehr als 5 Min. nach dem Senden bearbeitet = nicht werten (sonst rechnet der Prüfstand mit nachträglich
+            # verschobenem Stop oder Ziel).
+            abstand = (datetime.fromisoformat(n["bearbeitet"]) - datetime.fromisoformat(n["zeit"])).total_seconds()
+            neu["original_unbekannt"] = abstand > 300
         # Ursprungstext bleibt: ein Kopierer hätte auf die erste Fassung reagiert (Verlauf liefert nur die letzte Fassung)
         neu["text_original"] = alt.get("text_original") or alt.get("text") or n.get("text", "")
         if alt.get("zeit"):
@@ -202,21 +221,45 @@ def lies_nachrichten(datei):
     return out
 
 
-def calls_aus(nachrichten, claude=False):
-    """Nachrichten → [(zeit_ms, call, id)], ohne Wiederholungen (gleicher Coin + Richtung binnen 6 Std. = derselbe Call)."""
+def gleiche_niveaus(a, b, toleranz=0.005):
+    """Derselbe Call nochmals gepostet? Gleicher Stop und gleicher Einstieg (±0,5 %)."""
+    def nah(x, y):
+        return x is None and y is None or (x is not None and y is not None and abs(x - y) <= toleranz * max(abs(x), abs(y)))
+    return nah(a.get("stop"), b.get("stop")) and nah((a["einstieg"] or [None])[0], (b["einstieg"] or [None])[0])
+
+
+def calls_aus(nachrichten, claude=False, zaehler=None):
+    """Nachrichten → [(zeit_ms, call, id)]. Nicht gewertet: Antworten auf frühere Nachrichten, Wiederholungen (gleicher Coin
+    + Richtung binnen 6 Std. ab der LETZTEN Wiederholung, oder gleiche Niveaus binnen 7 Tagen) und Calls, deren erste Fassung
+    unbekannt ist (im Verlauf später bearbeitet — Telegram liefert nur die letzte Fassung, das wären Zukunftsdaten)."""
+    zaehler = {} if zaehler is None else zaehler
     out, letzte = [], {}
     for n in sorted(nachrichten.values(), key=lambda x: x.get("zeit", "")):
         if not n.get("text") or not n.get("zeit"):
             continue
         # Massgeblich ist der URSPRÜNGLICHE Text: nachträglich «verbesserte» Calls zählen wie zuerst gesendet
-        c = CP.lesen(n.get("text_original") or n["text"], claude=claude)
+        text = n.get("text_original") or n["text"]
+        c = CP.lesen(text, claude=claude)
         if not c:
+            if CP.sieht_aus_wie_call(text):
+                zaehler["unlesbar"] = zaehler.get("unlesbar", 0) + 1
+            continue
+        if n.get("antwort_auf"):
+            zaehler["antworten"] = zaehler.get("antworten", 0) + 1
+            continue
+        if n.get("original_unbekannt"):
+            zaehler["bearbeitet"] = zaehler.get("bearbeitet", 0) + 1
             continue
         t = int(datetime.fromisoformat(n["zeit"]).timestamp() * 1000)
         schluessel = (c["symbol"], c["richtung"])
-        if schluessel in letzte and t - letzte[schluessel] < 6 * 3600 * 1000:
+        vorher = letzte.get(schluessel)
+        if vorher and (t - vorher[0] < 6 * 3600 * 1000 or (t - vorher[0] < 7 * TAG and gleiche_niveaus(c, vorher[1]))):
+            letzte[schluessel] = (t, vorher[1])  # Fenster gleitet: Erinnerungen alle 4 Std. bleiben Wiederholungen
+            zaehler["wiederholungen"] = zaehler.get("wiederholungen", 0) + 1
             continue
-        letzte[schluessel] = t
+        letzte[schluessel] = (t, c)
+        if not c.get("stimmig", True):
+            zaehler["unlesbar"] = zaehler.get("unlesbar", 0) + 1
         out.append((t, c, n["id"]))
     return out
 
@@ -249,8 +292,10 @@ def verschieben(call, faktor):
             "stop": f(call["stop"]) if call["stop"] else None}
 
 
-def zufallsprobe(calls, kerzen_fn, echt_schnitt, kopien=200, saat=7):
-    """Gleiche Calls zu zufällig verschobenen Zeitpunkten (±3–30 Tage); Abstände relativ zum damaligen Kurs. → Anteil geschlagen."""
+def zufallsprobe(calls, kerzen_fn, echt_schnitt, kopien=200, saat=7, jetzt_ms=None):
+    """Gleiche Calls zu zufällig verschobenen Zeitpunkten (±3–30 Tage); Abstände relativ zum damaligen Kurs. → Anteil geschlagen.
+    Verschiebungen in die Zukunft (Fenster endet nach jetzt) werden verworfen."""
+    jetzt_ms = jetzt_ms or int(time.time() * 1000)
     rnd = random.Random(saat)
     schnitte = []
     for _ in range(kopien):
@@ -258,6 +303,8 @@ def zufallsprobe(calls, kerzen_fn, echt_schnitt, kopien=200, saat=7):
         for t, c, _id in calls:
             tag = rnd.randint(3, 30) * rnd.choice((-1, 1))
             t2 = t + tag * TAG + rnd.randint(0, 95) * MIN15
+            if t2 + (HALTEN_TAGE + 2) * TAG > jetzt_ms:
+                continue
             ks0 = kerzen_fn(c["symbol"], t, t + 2 * 3600 * 1000)
             ks2 = kerzen_fn(c["symbol"], t2, t2 + (HALTEN_TAGE + 2) * TAG)
             if not ks0 or not ks2:
@@ -274,7 +321,8 @@ def zufallsprobe(calls, kerzen_fn, echt_schnitt, kopien=200, saat=7):
 
 def pruefe_gruppe(nachrichten, kerzen_fn, kopien=REGEL["kopien"], claude=False, jetzt_ms=None):
     jetzt_ms = jetzt_ms or int(time.time() * 1000)
-    calls = calls_aus(nachrichten, claude=claude)
+    nicht = {}
+    calls = calls_aus(nachrichten, claude=claude, zaehler=nicht)
     ergebnisse = []
     for t, c, nid in calls:
         e = simuliere(c, t, kerzen_fn(c["symbol"], t, min(t + (HALTEN_TAGE + 2) * TAG, jetzt_ms)))
@@ -284,11 +332,12 @@ def pruefe_gruppe(nachrichten, kerzen_fn, kopien=REGEL["kopien"], claude=False, 
     h = len(zu) // 2
     haelften = [kennzahlen(zu[:h]), kennzahlen(zu[h:])] if h else [{"n": 0}, {"n": 0}]
     k = kennzahlen(zu)
-    zaehler = {s: sum(e["status"] == s for e in ergebnisse) for s in ("geschlossen", "offen", "nicht_ausgeloest", "unplausibel", "keine_kurse")}
+    zaehler = {s: sum(e["status"] == s for e in ergebnisse) for s in ("geschlossen", "offen", "nicht_ausgeloest", "unplausibel",
+                                                                       "nicht_kopierbar", "keine_kurse")}
     skill = None
     if k["n"] >= REGEL["min_calls"]:
         echte = [(t, c, i) for (t, c, i), e in zip(calls, ergebnisse) if e["status"] == "geschlossen"]
-        skill = zufallsprobe(echte, kerzen_fn, k["schnitt"], kopien=kopien)
+        skill = zufallsprobe(echte, kerzen_fn, k["schnitt"], kopien=kopien, jetzt_ms=jetzt_ms)
     gruende = []
     if k["n"] < REGEL["min_calls"]:
         gruende.append(f"erst {k['n']} von {REGEL['min_calls']} nötigen abgeschlossenen Calls")
@@ -296,8 +345,12 @@ def pruefe_gruppe(nachrichten, kerzen_fn, kopien=REGEL["kopien"], claude=False, 
         gruende.append("nicht in beiden Hälften im Plus")
     if skill is None or skill < REGEL["skill"]:
         gruende.append("Zufallsprobe nicht bestanden" + (f" ({skill * 100:.0f} %)" if skill is not None else ""))
+    # Liest der Parser diese Gruppe überhaupt richtig? Sonst bewertet der Prüfstand nur eine (womöglich geschönte) Teilmenge.
+    unlesbar = nicht.get("unlesbar", 0) + zaehler["unplausibel"]
+    if unlesbar > 0.10 * max(1, len(calls) + nicht.get("unlesbar", 0)):
+        gruende.append(f"{unlesbar} Calls unlesbar oder unplausibel (> 10 %) — Format dieser Gruppe zuerst prüfen")
     geloescht = sum(1 for n in nachrichten.values() if n.get("geloescht"))
-    return {"nachrichten": len(nachrichten), "calls": len(calls), "status": zaehler, "gesamt": k, "haelften": haelften,
+    return {"nachrichten": len(nachrichten), "calls": len(calls), "status": zaehler, "nicht_gewertet": nicht, "gesamt": k, "haelften": haelften,
             "zufallsprobe": skill, "geloescht": geloescht, "urteil": "kopierwürdig" if not gruende else "nicht kopieren",
             "gruende": gruende, "ergebnisse": ergebnisse[-500:]}
 
@@ -315,6 +368,11 @@ def text(name, g):
               f"\n   Konto mit 1 % Risiko je Call: {k['summe'] * 100:+.1f} %, schlimmster Rückgang {k['schlimmster_rueckgang'] * 100:.1f} %"
               f"\n   Hälften: {' / '.join(_pct(h) for h in g['haelften'])}"
               + (f" · Zufallsprobe: schlägt {g['zufallsprobe'] * 100:.0f} % der Kopien" if g["zufallsprobe"] is not None else ""))
+    nicht = g.get("nicht_gewertet") or {}
+    if nicht:
+        z += "\n   Nicht gewertet: " + " · ".join(f"{v} {ns}" for ns, v in (
+            ("unlesbar", nicht.get("unlesbar")), ("Antworten", nicht.get("antworten")), ("Wiederholungen", nicht.get("wiederholungen")),
+            ("nachträglich bearbeitet (erste Fassung unbekannt)", nicht.get("bearbeitet"))) if v)
     if g["geloescht"]:
         z += f"\n   ⚠️ {g['geloescht']} Nachrichten wurden von der Gruppe GELÖSCHT (oft die Verlierer)."
     z += f"\n   Urteil: {g['urteil'].upper()}" + (f" — {'; '.join(g['gruende'])}" if g["gruende"] else "")

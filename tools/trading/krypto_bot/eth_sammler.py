@@ -238,6 +238,8 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
                     sichern()
                     return ende(f"Antwort auf den Kauf verloren ({getattr(ex, 'msg', None) or type(ex).__name__}) — bitte im "
                                 "Binance-Konto prüfen. Als «unklar» gebucht, damit nicht doppelt gekauft wird.", True)
+                if float(antwort.get("executedQty") or 0) <= 0:  # z. B. EXPIRED bei leerem Orderbuch: nichts gekauft
+                    return ende(f"Kauf nicht ausgeführt (Status {antwort.get('status')}) — nichts gekauft, nächster Lauf versucht es wieder.", True)
                 menge = netto_eth(antwort)
                 bezahlt = float(antwort.get("cummulativeQuoteQty") or betrag)
                 k = {"tag": heute, "usdt": round(bezahlt, 2), "eth": round(menge, 8),
@@ -263,7 +265,12 @@ def lauf(trocken=False, env=None, client=None, jetzt=None, logbuch=None):
                         erg["stake"] = s
                         print(f"Gestakt: {menge:.4f} ETH → {s['wbeth']:.6f} WBETH")
                 except BB.BinanceFehler as ex:
-                    erg["hinweis"] = f"Staking abgelehnt (HTTP {ex.code}): {ex.msg} — ETH bleiben im Spot-Konto, nächster Lauf versucht es wieder."
+                    if ex.code >= 500:  # Status unbekannt (Binance: «could have been a success») → wie verlorene Antwort
+                        buch["gestakt"].append({"tag": heute, "eth": menge, "wbeth": 0.0, "unklar": True})
+                        erg["hinweis"] = (f"Staking: Binance meldet {ex.code} (Status unbekannt) — als «unklar» gebucht, damit nicht "
+                                          "doppelt (mit deinen eigenen ETH) gestakt wird. Bitte im Binance-Konto prüfen.")
+                    else:
+                        erg["hinweis"] = f"Staking abgelehnt (HTTP {ex.code}): {ex.msg} — ETH bleiben im Spot-Konto, nächster Lauf versucht es wieder."
                     erg["warnung"] = True
                     print("ETH-Sammler: " + erg["hinweis"])
                 except NETZFEHLER as ex:

@@ -2,7 +2,7 @@
 """Prüfstand «mehr Hebel» für den Krypto-Pilot — was passiert bei 1,5×, 2×, 3×, 5×, 10×?
 
 VORAB FESTGELEGT (vor dem ersten Rechenlauf):
-Strategie wie live: BTC Trend 150 + ETH Trend 200 (je 50 %), Schwankungsziel, MVRV-Bremse, Börsen-Stop 4σ mit 0,1 % Schlupf,
+Strategie wie live: BTC Trend 150 + ETH Trend 200 (je 50 %), Schwankungsziel, MVRV-Bremse, Börsen-Stop wie live (pilot_kern.STOP_SIGMA) mit 0,1 % Schlupf,
 Futures-Modell mit Gebühr 0,05 %, Funding 0,01 % je 8 h und Liquidation über Tagestief/-hoch (pilot_pruefung.lauf).
 Zwei Arten, den Hebel zu erhöhen:
   A «nur Deckel höher»   Schwankungsziel bleibt 40 %, der Deckel steigt auf L (mehr Hebel nur in ruhigen Phasen)
@@ -46,7 +46,7 @@ def main():
         b = next((i for i, t in enumerate(tage) if t >= bis), len(tage))
         fenster.append((f"{von[:4]}–{'heute' if bis == '9999' else str(int(bis[:4]) - 1)}", a, b))
     erg = {"stand": tage[-1], "regel": __doc__.split("Ein höherer")[1].split("Aufruf")[0].strip(), "varianten": {}}
-    print(f"Pilot BTC 150 + ETH 200 + MVRV-Bremse + Stop 4σ, Futures-Modell, Stand {tage[-1]}\n")
+    print(f"Pilot BTC 150 + ETH 200 + MVRV-Bremse + Stop {K.STOP_SIGMA:g}σ, Futures-Modell, Stand {tage[-1]}\n")
     print(f"{'Variante':26}" + "".join(f"{n:>40}" for n, _, _ in fenster))
     for art in ("A", "B"):
         for L in HEBEL:

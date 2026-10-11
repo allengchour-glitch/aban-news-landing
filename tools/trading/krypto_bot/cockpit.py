@@ -378,7 +378,7 @@ def backtest_kurven():
         a = next(i for i, t in enumerate(tage) if t >= "2019-01-01")
         wb, _ = P.lauf(zb, hb, lb, cb, a, len(cb), K.STOP_SIGMA)
         we, _ = P.lauf(ze, he, le, ce, a, len(ce), K.STOP_SIGMA)
-        halten, _ = P.lauf([1.0] * len(cb), hb, lb, cb, a, len(cb))
+        halten = [cb[i] / cb[a - 1] for i in range(a - 1, len(cb))]  # echtes Halten (Spot), kein Perpetual mit Funding
         t = tage[a:]
         schritt = max(1, len(t) // 400)  # höchstens ~400 Punkte
         mix = P.mix_taeglich(wb, we)  # täglich neu aufgeteilt, wie live

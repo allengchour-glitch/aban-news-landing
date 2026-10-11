@@ -72,7 +72,10 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
 5. **Trocken testen:** `python tools/trading/ki_bot/bot.py --lauf --broker alpaca --trocken` zeigt die Aufträge, sendet nichts.
 6. **Starten:** Doppelklick auf `start-auto.bat`. Er macht den Selbsttest, schichtet einmal am Tag das Depot um
    (Strategie „Ausgleich“) und handelt tagsüber nur Signale mit Gütesiegel als Bracket-Auftrag (Stop + Ziel). 20 Minuten
-   vor US-Börsenschluss stellt er alles glatt. Fenster schliessen = Bot aus.
+   vor US-Börsenschluss storniert er offene Stop-/Ziel-Aufträge und verkauft **nur die Stücke aus den Tages-Aufträgen** —
+   das Tages-Depot im selben Symbol bleibt. Fenster schliessen = Bot aus.
+   Den Bitcoin-Spot-Bot (`krypto.py`) startet die Datei nur mit `setx KRYPTO_BROKER "binance"`: Im Alpaca-Konto handelt
+   die Ausgleich-Strategie Bitcoin schon — zwei Bots im selben Konto würden täglich gegeneinander kaufen und verkaufen.
 7. **Wochenbericht:** Einmal pro Woche schickt der Tageslauf automatisch einen Stand aufs Handy (Telegram oder ntfy):
    jede Strategie seit Start und gegen die Vorwoche, wie viel investiert ist, welche Märkte das Gütesiegel haben und was der
    Broker zuletzt gemacht hat. Sofort abrufen: `python tools/trading/ki_bot/bot.py --bericht`.
@@ -90,7 +93,10 @@ Hinweis: Hat kein Markt das Gütesiegel, handelt der Daytrading-Teil nicht. Das 
 
 **Sicherungen:** Papier ist Standard. Echtes Geld nur, wenn `ALPACA_PAPER=false` **und**
 `KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"` gesetzt sind. Höchstens `KI_BOT_ANTEIL` (Standard 0.5) des Kontos investiert, jeder
-Auftrag höchstens `KI_BOT_MAX_AUFTRAG` USD (Standard 1000), kein Leerverkauf, kein Margin. **Not-Aus:** `KI_BOT_STOP=1`
+Auftrag höchstens `KI_BOT_MAX_AUFTRAG` USD (Standard 1000), kein Leerverkauf, kein Margin. Noch offene Kaufaufträge
+(z. B. vorgemerkt, während die Börse zu ist) zählen schon mit — ein zweiter Lauf kauft nicht nochmals. Jeder Tages-Auftrag
+trägt eine eigene Kennung: Geht die Antwort verloren, fragt die Glattstellung damit nach, statt zu raten.
+`ALPACA_BASIS_URL` allein schaltet nie auf echtes Geld (nur die zwei Alpaca-Adressen sind erlaubt). **Not-Aus:** `KI_BOT_STOP=1`
 oder eine leere Datei `STOP` in diesem Ordner. Protokoll ohne Schlüssel: `data/ki-bot-broker.json`.
 Strategie für Tages-Aufträge: `KI_BOT_STRATEGIE` = `Ausgleich` (Standard), `KI-Bot` oder `Trendfilter 200`.
 
@@ -133,6 +139,6 @@ aussteigt, verpasst die stärksten Erholungstage. Darum kommen diese Daten **nic
 ## Prüfen
 
 ```
-python3 tools/trading/ki_bot/test_ki_bot.py   # 44 Tests, inkl. nachgebautem Alpaca-Server
+python3 tools/trading/ki_bot/test_ki_bot.py   # 48 Tests, inkl. nachgebautem Alpaca-Server
 python3 tools/trading/ki_bot/bot.py --pruefen  # Gegenproben: Wahrsager ~100 %, Zufallsmarkt nicht extrem
 ```

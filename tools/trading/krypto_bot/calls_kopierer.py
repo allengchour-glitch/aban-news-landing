@@ -151,10 +151,15 @@ def darf_kopieren(rec, cfg, bf_cfg, buch, pruefung=None, stop=None, pause=None):
         return False, f"{c['symbol']} handelt der Pilot — nur Schatten"
     if not c.get("stimmig", True):
         return False, "Call widersprüchlich (Stop/Einstieg/Ziele passen nicht zusammen)"
+    if c.get("ausbruch"):
+        return False, "Einstieg erst nach Durchbruch («above/below») — wird nicht kopiert"
+    if c.get("unvollstaendig"):
+        return False, "Stop nur in Prozent ohne Einstiegspreis — nicht raten"
     aktiv = [r for r in buch["calls"] if r.get("auftrag") is not None and r.get("status") in ("wartet", "offen")]
     if len(aktiv) >= cfg["max_offen"]:
         return False, f"schon {len(aktiv)} kopierte Calls offen (CALLS_MAX_OFFEN)"
-    if any(r["call"]["symbol"] == c["symbol"] for r in aktiv):
+    if any(c["symbol"] in (r["call"]["symbol"], (r.get("auftrag") or {}).get("symbol", "").replace("1000000", "").replace("1000", ""))
+           for r in aktiv):
         return False, f"{c['symbol']} ist schon mit einem anderen Call belegt"
     return True, ""
 
@@ -177,7 +182,7 @@ def schutz_setzen(rec, c):
     """Stop (ganze Position) + Ziele (Teilmengen) an der Börse. Klappt der Stop nicht: Position sofort schliessen."""
     import broker_futures as BF
     a, call = rec["auftrag"], rec["call"]
-    sym, lang = call["symbol"], call["richtung"] == "LONG"
+    sym, lang = a.get("symbol", call["symbol"]), call["richtung"] == "LONG"  # Future-Symbol (z. B. 1000PEPEUSDT)
     gegen = "SELL" if lang else "BUY"
     pos = c.position(sym)
     if not pos:
@@ -196,7 +201,7 @@ def schutz_setzen(rec, c):
             return
     if a.get("ziele_gesetzt") is None:
         r = c.regeln(sym)
-        ziele = [z for z in call["ziele"] if (z > a["einstieg"] if lang else z < a["einstieg"])]
+        ziele = [z for z in a.get("ziele", call["ziele"]) if (z > a["einstieg"] if lang else z < a["einstieg"])]
         rest, gesetzt = abs(pos), []
         for i, z in enumerate(ziele):
             m = rest if i == len(ziele) - 1 else BF.runde(abs(pos) / len(ziele), r["step"])
@@ -211,25 +216,41 @@ def schutz_setzen(rec, c):
         a["ziele_gesetzt"] = gesetzt
 
 
+def future_finden(c, symbol):
+    """Binance-Future zum Call-Symbol: direkt, sonst 1000…/1000000… (Meme-Coins). → (symbol, preis_faktor, regeln) oder (None, 1, {})."""
+    for vor, faktor in (("", 1.0), ("1000", 1e3), ("1000000", 1e6)):
+        try:
+            return vor + symbol, faktor, c.regeln(vor + symbol)
+        except StopIteration:
+            continue
+    return None, 1.0, {}
+
+
 def kopieren(rec, cfg, c, jetzt_ms=None):
     """Einstieg (Markt oder Limit an der Zone, 24 Std. gültig) + Schutz. Schreibt rec['auftrag'] und rec['status']."""
     import broker_futures as BF
     jetzt_ms = jetzt_ms or int(time.time() * 1000)
     call = rec["call"]
-    sym, lang = call["symbol"], call["richtung"] == "LONG"
+    lang = call["richtung"] == "LONG"
     try:
-        regeln = c.regeln(sym)
+        sym, faktor, regeln = future_finden(c, call["symbol"])
+        if sym is None:
+            rec.update(status="abgelehnt", hinweis=f"{call['symbol']} gibt es nicht als Binance-Future")
+            return
+        if faktor != 1:  # «PEPE» heisst als Future 1000PEPEUSDT: alle Preise × 1000
+            call = CQ.verschieben(call, faktor)
+            rec["call_future"] = {"symbol": sym, "faktor": faktor}
         if regeln.get("status") not in (None, "TRADING"):
             raise ValueError(f"{sym} nicht handelbar")
         if c.position(sym):
             raise ValueError(f"in {sym} ist schon eine Position offen (von Hand?) — nichts gemacht")
         mark = c.markpreis(sym)[0]
         wallet = float(c.konto().get("totalWalletBalance", 0))
-    except StopIteration:
-        rec.update(status="abgelehnt", hinweis=f"{sym} gibt es nicht als Binance-Future")
-        return
     except (BF.BinanceFehler, *BF.NETZFEHLER, KeyError, ValueError) as ex:
         rec.update(status="abgelehnt", hinweis=BF.fehlertext(ex) if isinstance(ex, (BF.BinanceFehler, OSError)) else str(ex))
+        return
+    if not CP.plausibel(call, mark):  # dieselbe Prüfung wie im Prüfstand: gehandelt wird nur, was auch gewertet wird
+        rec.update(status="abgelehnt", hinweis=f"Preise passen nicht zum Kurs {fmt_preis(mark)} (falsch gelesen oder veraltet) — nicht kopiert")
         return
     stop = call["stop"] or mark * (1 - CQ.STOP_OHNE_ANGABE if lang else 1 + CQ.STOP_OHNE_ANGABE)
     if (lang and mark <= stop) or (not lang and mark >= stop):
@@ -250,6 +271,7 @@ def kopieren(rec, cfg, c, jetzt_ms=None):
         return
     seite = "BUY" if lang else "SELL"
     a = {"symbol": sym, "menge": menge, "stop": BF.runde(stop, regeln["tick"]) or stop, "markt": markt, "einstieg": ref,
+         "ziele": list(call["ziele"]),  # in Future-Preisen (bei 1000PEPE × 1000)
          "zeit_ms": jetzt_ms}
     rec["auftrag"] = a
     try:
@@ -289,6 +311,8 @@ def kopieren(rec, cfg, c, jetzt_ms=None):
 # ───────────────────────── neue Nachricht ─────────────────────────
 def neue_nachricht(gruppe, name, eintrag, env=None, client=None, push=None, buch_datei=None, jetzt_ms=None):
     """Von calls_leser --live für jede neue Nachricht aufgerufen. → Datensatz oder None (kein Call)."""
+    if eintrag.get("antwort_auf"):
+        return None  # Antwort auf eine frühere Nachricht (Update, Nachtrag) — nie ein neuer Call
     c = CP.lesen(eintrag.get("text", ""))
     if not c:
         return None
@@ -298,9 +322,13 @@ def neue_nachricht(gruppe, name, eintrag, env=None, client=None, push=None, buch
     t = int(datetime.fromisoformat(eintrag["zeit"]).timestamp() * 1000)
     with sperre.lauf_sperre("calls", warten=30, ordner=Path(buch_datei).parent if buch_datei else None):
         b = lies(buch_datei)
-        if any(r["gruppe"] == str(gruppe) and r["call"]["symbol"] == c["symbol"] and r["call"]["richtung"] == c["richtung"]
-               and 0 <= t - r["zeit_ms"] < WIEDERHOLUNG_MS for r in b["calls"]):
-            return None  # Wiederholung desselben Calls
+        for r in b["calls"]:
+            if r["gruppe"] == str(gruppe) and r["call"]["symbol"] == c["symbol"] and r["call"]["richtung"] == c["richtung"]:
+                zuletzt = r.get("zuletzt_ms", r["zeit_ms"])
+                if 0 <= t - zuletzt < WIEDERHOLUNG_MS or (0 <= t - r["zeit_ms"] < 7 * CQ.TAG and CQ.gleiche_niveaus(c, r["call"])):
+                    r["zuletzt_ms"] = t  # gleitend: Erinnerungen alle paar Stunden bleiben Wiederholungen
+                    schreiben(b, buch_datei)
+                    return None
         rec = {"id": f"{gruppe}:{eintrag['id']}", "gruppe": str(gruppe), "gruppe_name": name, "zeit_ms": t,
                "zeit": eintrag["zeit"], "call": c, "status": "schatten", "schatten": {"status": "offen"}, "modus": cfg["modus"]}
         ok, grund = darf_kopieren(rec, cfg, bf_cfg, b)
@@ -345,7 +373,7 @@ def pflegen(env=None, client=None, kerzen_fn=None, push=None, buch_datei=None, j
             if not a or rec.get("status") not in ("wartet", "offen"):
                 continue
             c = c or client or BF.Futures(BF.einstellungen(env))
-            sym = rec["call"]["symbol"]
+            sym = a.get("symbol", rec["call"]["symbol"])
             try:
                 pos = c.position(sym)
                 if rec["status"] == "wartet":
@@ -385,7 +413,8 @@ def offene_symbole(buch_datei=None):
         b = lies(buch_datei)
     except OSError:
         return []
-    return sorted({r["call"]["symbol"] for r in b["calls"] if r.get("auftrag") is not None and r.get("status") in ("wartet", "offen")})
+    return sorted({r["auftrag"].get("symbol", r["call"]["symbol"]) for r in b["calls"]
+                   if r.get("auftrag") is not None and r.get("status") in ("wartet", "offen")})
 
 
 # ───────────────────────── Bilanz ─────────────────────────

@@ -103,6 +103,12 @@ pruefe("Vergleich: drei Kurven ab Claudes Start", set(vgl) == {"Claude", "Pilot"
 pi_btc = [{"markt": "BTC", "stand": tag(0), "hebel": 1.0}]  # KRYPTO_PILOT_MAERKTE=BTC: ganzes Konto in Bitcoin
 v_btc = KT.vergleich(ki, pi_btc, {"btc": kurse, "eth": {t: 50.0 for t in kurse}})
 pruefe("Pilot nur Bitcoin: volles Gewicht auf BTC (nicht halbiert mit flacher ETH-Hälfte)", abs((v_btc["Pilot"][1][1] - 1) - 2 * (vgl["Claude"][1][1] - 1)) < 1e-9, (v_btc["Pilot"][:2], vgl["Claude"][:2]))
+kurse_hz = {tag(0): 100.0, tag(1): 100.0, tag(2): 200.0, tag(3): 100.0}  # BTC verdoppelt sich und fällt zurück, ETH ruhig
+pi_hz = [{"markt": "BTC", "stand": tag(0), "hebel": 1.0}, {"markt": "ETH", "stand": tag(0), "hebel": 1.0}]
+v_hz = KT.vergleich({"entscheide": [{"stand": tag(0), "btc": {"position": 0.0}, "eth": {"position": 0.0}}]}, pi_hz,
+                    {"btc": kurse_hz, "eth": {t: 50.0 for t in kurse_hz}})
+pruefe("Vergleich: Pilot jeden Tag 50/50 neu aufgeteilt wie live (+50 %, dann −25 %), Halten bleibt liegen (zurück auf 1)",
+       abs(v_hz["Pilot"][3][1] / v_hz["Pilot"][1][1] - 1.5 * 0.75) < 0.002 and abs(v_hz["Halten"][3][1] - v_hz["Halten"][1][1]) < 1e-9, v_hz)
 
 # ── ganzer Lauf: einmal pro Tag, Logbuch ohne Schlüssel ──
 with tempfile.TemporaryDirectory() as tmp:

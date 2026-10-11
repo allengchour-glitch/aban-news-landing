@@ -34,8 +34,14 @@ echo Selbsttest ...
 %PY% tools\trading\ki_bot\test_ki_bot.py || (echo Selbsttest fehlgeschlagen - nichts gehandelt. & %WARTE% & exit /b 1)
 echo Tages-Depot (einmal pro Tag, ein zweiter Lauf am selben Tag aendert nichts) ...
 %PY% tools\trading\ki_bot\bot.py --lauf --broker alpaca
-echo Krypto-Bot (einmal pro Tag) ...
-%PY% tools\trading\krypto_bot\krypto.py --lauf
+REM Krypto-Bot nur ueber Binance: ueber Alpaca handelt die Ausgleich-Strategie (bot.py) Bitcoin schon im selben Konto -
+REM beide zusammen wuerden jeden Tag gegeneinander kaufen und verkaufen.
+if /i "%KRYPTO_BROKER%"=="binance" (
+  echo Krypto-Bot ^(Binance, einmal pro Tag^) ...
+  %PY% tools\trading\krypto_bot\krypto.py --lauf
+) else (
+  echo Krypto-Bot uebersprungen: Bitcoin handelt im Alpaca-Konto schon die Ausgleich-Strategie ^(KRYPTO_BROKER=binance fuer den Spot-Bot^).
+)
 if not "%BINANCE_FUTURES_API_KEY%"=="" (
   echo Krypto-Pilot ^(Futures, einmal pro Tag^) ...
   %PY% tools\trading\krypto_bot\pilot.py --lauf

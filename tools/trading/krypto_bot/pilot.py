@@ -200,7 +200,7 @@ def backtest():
     zb150, zb200, ze = K.roh_hebel(cb, n_sma=150), K.roh_hebel(cb, n_sma=200), K.roh_hebel(ce, n_sma=200)
     zb_m = IP.filter_z(zb150, *IP.bremsen("mvrv_tief", IP.flaggen("btc", tage)))
     ze_m = IP.filter_z(ze, *IP.bremsen("mvrv_tief", IP.flaggen("eth", tage)))
-    print("Krypto-Pilot im Futures-Modell (Gebühr 0,05 %, Funding 0,01 % je 8 h, Stop 4σ mit 0,1 % Schlupf, Liquidation):")
+    print(f"Krypto-Pilot im Futures-Modell (Gebühr 0,05 %, Funding 0,01 % je 8 h nur für Longs, Stop {K.STOP_SIGMA:g}σ mit 0,1 % Schlupf, Liquidation):")
     for start in ("2019-01-01", "2022-01-01"):
         a = next(i for i, t in enumerate(tage) if t >= start)
         wb, _ = P.lauf(zb150, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
@@ -208,10 +208,10 @@ def backtest():
         wbm, _ = P.lauf(zb_m, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
         wem, _ = P.lauf(ze_m, he, le, ce, a, len(ce), K.STOP_SIGMA)
         alt, _ = P.lauf(zb200, hb, lb_, cb, a, len(cb), K.STOP_SIGMA)
-        halten, _ = P.lauf([1.0] * len(cb), hb, lb_, cb, a, len(cb))
+        halten = [cb[i] / cb[a - 1] for i in range(a - 1, len(cb))]  # echtes Halten (Spot): kein Funding, keine Gebühr
         varianten = {"+ MVRV-Bremse (live)": P.mix_taeglich(wbm, wem),
                      "BTC 150 + ETH 200": P.mix_taeglich(wb, we), "nur BTC 150": wb,
-                     "nur BTC 200 (bisher)": alt, "BTC long 1× halten": halten}
+                     "nur BTC 200 (bisher)": alt, "BTC halten (Spot)": halten}
         print(f"\n  ab {start} bis {tage[-1]}:")
         for name, w in varianten.items():
             k = P.kennz(w)
