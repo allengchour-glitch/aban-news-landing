@@ -339,3 +339,4 @@ gid://shopify/Product/16613788516743	mechanische-tastatur-keycaps-104-teilig-19e
 gid://shopify/Product/16613788549511	sitzlucken-organizer-9e8e33	Sitzlücken-Organizer
 gid://shopify/Product/16614566527367	sommerkleid-mit-puffarmel-offener-rucken-a-lin-610700	Sommerkleid mit Puffärmel, offener Rücken, A-Linien
 gid://shopify/Product/16614566592903	kleine-bausteine-city-building-set-201728	Kleine Bausteine City Building Set
+gid://shopify/Product/16614566625671	reflektierender-brustgurt-fur-hunde-0c4513	Reflektierender Brustgurt für Hunde
