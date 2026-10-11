@@ -6,7 +6,7 @@ Stand: 2026-10-11 (Europe/Zurich) · Modus: DRY (nichts gespeichert, Ledger unve
 
 - Quelle: Meta-Werbebibliothek (Land CH, eine Suche je Konkurrent). Status: blockiert (HTTP 403): Quelle beendet, kein Umgehen.
 - Meta-API: Graph-Fehler 10/2332004.
-- Anfragen: 2 von 20. Laufzeit: 2 s.
+- Anfragen: 2 von 20. Laufzeit: 1 s.
 - Anzeigen gesehen: 0. Zu Konkurrenten zugeordnet: 0. Neu klassifiziert: 0 (nur DRY, nicht gespeichert). Dubletten: 0. Nicht zuordenbar: 0. Ohne Anzeigen-ID: 0.
 - Offen (Betreiber): Meta sperrt den Zugang bzw. die API hat keine Berechtigung (Graph-Fehler 10 / 2332004). Betreiber: App-Freigabe für die Werbebibliothek im Meta-Developer-Konto prüfen oder die Quelle wechseln. Bis dahin bleibt der Bericht ohne Anzeigen.
 
