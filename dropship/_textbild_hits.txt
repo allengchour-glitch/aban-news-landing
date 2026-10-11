@@ -17639,3 +17639,4 @@ gid://shopify/Product/16614841155975	41->0	Digitales Sprungseil mit Zähler
 gid://shopify/Product/16614841516423	56->0	Rückenfreies Bodycon-Midi-Kleid mit Muster
 gid://shopify/Product/16614844137863	70->0	Umhängetasche aus PU-Leder für Herren
 gid://shopify/Product/16614845055367	25->0	Magnetisches Holzpuzzle für Kinder
+gid://shopify/Product/16613765153159	36->0	Baby Nachtlicht mit beruhigenden Klängen
