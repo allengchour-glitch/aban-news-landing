@@ -19,7 +19,7 @@ import os, sys, time, urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "dropship", "_betreiber_push.txt")
-CJ_BESTELLUNGEN = "https://www.cjdropshipping.com/my.html"   # CJ-Konsole (belegt); genaue Bestellseite erst, wenn der Betreiber sie schickt
+CJ_BESTELLUNGEN = "https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5"   # Liste der Bestellungen, die auf Zahlung warten (Betreiber-Link 11.10.)
 
 
 def thema():

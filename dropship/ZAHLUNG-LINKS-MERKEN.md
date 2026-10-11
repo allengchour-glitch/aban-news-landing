@@ -31,3 +31,10 @@
 - **Noch nicht geändert.** Nur auf Auftrag des Betreibers.
 - Vermutlich gemeint: **Bügeltransfer** (Marge knapp, #1024 ca. 2 CHF). Aktuell A3 CHF 24.90, A5 CHF 11.90 im Shop. Einkauf Mister DTF: A3 Öko-Tex 12.90 pro Bogen, Versand A-Post 9.90 extra.
 - Rückfrage offen: welche Preise gemeint sind (Bügeltransfer, Sirène, andere).
+
+## Nachtrag 11.10.2026 20:30 UTC (Betreiber «cj pay link verbessern bei bestellung»)
+- Zahllink-ID `P2109213079232450560` steht in keinem Feld der CJ-API und ist nicht gleich einer Bestell-ID. Ein direkter Link
+  pro Bestellung ist daher nicht erzeugbar.
+- Handy-Benachrichtigung zeigt jetzt direkt die Liste der wartenden Bestellungen: `orderList?orderType=5`.
+- #1023 ist bezahlt (CJ UNSHIPPED, Zahlung 09:24 UTC), kein Zahllink mehr offen.
+- Leere CJ-Hüllen (`DP…`, CREATED, ohne Betrag) kommen vom CJ-Shopify-Connector, nicht vom Automaten. Nie bezahlen; der Betreiber entfernt sie.
