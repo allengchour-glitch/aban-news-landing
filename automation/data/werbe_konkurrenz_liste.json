@@ -1,0 +1,20 @@
+{
+  "stand": "2026-10-11",
+  "quelle": "KONKURRENTEN-Recherche vom 11.10.2026 (Startseiten-Befunde). Alle 13 Einträge mit reachable = true sind übernommen.",
+  "hinweis": "Nur für die Werbe-Auswertung (automation/werbe_konkurrenz.mjs). Aliase = Schreibweisen, die als Seitenname auf einer Anzeige vorkommen können. Vergleich: klein, ohne Satzzeichen, & = and. Keine Kundendaten.",
+  "konkurrenten": [
+    { "name": "enjoymedia.ch (Luzern)", "domain": "enjoymedia.ch", "nische": "Geschenke & Wichtel (auch Haushalt- und Beauty-Gadgets)", "erreichbar": true, "aliase": ["enjoymedia"] },
+    { "name": "Apfelkiste", "domain": "apfelkiste.ch", "nische": "Gadgets & Tech (Ladestationen, Zubehör)", "erreichbar": true, "aliase": ["apfelkiste"] },
+    { "name": "Baby-Geschenk.ch (bebe-cadeau.ch)", "domain": "baby-geschenk.ch", "nische": "Geschenke (Baby und Kinder)", "erreichbar": true, "aliase": ["baby geschenk", "bebe cadeau"] },
+    { "name": "3DJake Schweiz", "domain": "3djake.ch", "nische": "Bügeltransfer (Silhouette-Transferfolien)", "erreichbar": true, "aliase": ["3djake"] },
+    { "name": "Post online shop (Die Post)", "domain": "shop.post.ch", "nische": "Bügelfolie und Bastelbedarf", "erreichbar": true, "aliase": ["post online shop"] },
+    { "name": "Breuninger Schweiz", "domain": "breuninger.com/ch", "nische": "Kette", "erreichbar": true, "aliase": ["breuninger"] },
+    { "name": "Zalando Schweiz", "domain": "zalando.ch", "nische": "Kette", "erreichbar": true, "aliase": ["zalando"] },
+    { "name": "Manor", "domain": "manor.ch", "nische": "Kette", "erreichbar": true, "aliase": ["manor"] },
+    { "name": "Walbusch Schweiz", "domain": "walbusch.ch", "nische": "Strickmode und Damenmode", "erreichbar": true, "aliase": ["walbusch"] },
+    { "name": "Cloud 10 Beauty", "domain": "cloud10beauty.com/de-ch", "nische": "Haarstyling-Geräte (Beauty)", "erreichbar": true, "aliase": ["cloud 10", "cloud10"] },
+    { "name": "C&A Schweiz", "domain": "c-and-a.com/ch", "nische": "Kette", "erreichbar": true, "aliase": ["c&a"] },
+    { "name": "Bon'a Parte (de-ch)", "domain": "bonaparteshop.com/de-ch", "nische": "Damenmode und Partykleider", "erreichbar": true, "aliase": ["bona parte", "bonaparte"] },
+    { "name": "Dinschrift GmbH", "domain": "dinschrift.ch", "nische": "Textildruck (T-Shirt-Druck, Zürich)", "erreichbar": true, "aliase": ["dinschrift"] }
+  ]
+}
