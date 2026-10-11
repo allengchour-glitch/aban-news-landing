@@ -19,3 +19,4 @@
 - Shopify #1023: weiterhin PAID / UNFULFILLED, keine Sendungsnummer.
 - `_cj_order_watch_state.json` hat **keinen Eintrag** für #1023 → die Sitzung kann CJ-Auftrag und Shopify-Bestellung nicht verknüpfen.
 - Offen: CJ-Bestellnummer vom Betreiber, dann Eintrag in die Überwachung, damit die Sendungsnummer zurück zu Shopify geht.
+- **CJ-Bestellnummer #1023 = CJ2610115452995745998** (Teil SD2610110914560648000, Subtotal $59.52, Status «Pending» = bezahlt, noch nicht verschickt). In `_cj_order_watch_state.json` eingetragen, damit die Sendungsnummer zurück zu Shopify geht und nichts doppelt bestellt wird.
