@@ -1786,6 +1786,10 @@ if [ -f "$REPO/automation/hype_recherche.py" ] && [ ! -f /tmp/hype_recherche_$(d
   echo "$(date -u +%F\ %H:%M) $HR" >> /tmp/hype_recherche.log
   case "$HR" in *FEHLER*|*kaputt*) echo "$(date -u +%H:%M) ⚠️ $HR" ;; esac
 fi
+# --- Werbe-Konkurrenz (11.10.2026, Betreiber «werbe analyse von andere konkurenten»): täglich einmal, nur KLASSEN (Hook/Angebot/Format),
+#     nie Texte oder Bilder. Quelle Meta-Werbebibliothek im Browser; wird sie gesperrt, endet der Lauf nach der ersten Anfrage.
+#     DRY=0 schreibt nur dropship/_werbe_konkurrenz.csv und dropship/WERBE-KONKURRENZ.md. Stempel = höchstens ein Lauf je Tag.
+if [ -f "$REPO/automation/werbe_konkurrenz.mjs" ] && [ ! -f /tmp/werbe_konkurrenz_$(date -u +%F).stamp ]; then touch /tmp/werbe_konkurrenz_$(date -u +%F).stamp; ( exec 9>&-; cd "$REPO" && DRY=0 timeout 900 /opt/node22/bin/node automation/werbe_konkurrenz.mjs >> /tmp/werbe_konkurrenz.log 2>&1 & ); fi
   # 05.10.2026 (Fixlauf preis-marge): EK-Lücke CJ + Neuware-Verlustschutz, täglich. 87 aktive CJ-Produkte ohne EK waren für
   # preis_verlustschutz unsichtbar (10 echte Verlustbringer, 47 bei CJ ausgelistet); Neuimporte kennt der Tagesläufer erst mit dem
   # nächsten Voll-Export (371 Varianten unter Boden am 05.10.). ek_luecke_cj.py: Backfill/Nachtrag NUR_IDS → Verlustschutz live →
