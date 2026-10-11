@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-10T10:35:02Z",
+ "stand": "2026-10-11T10:47:38Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,67 +18,67 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Openclaw: Zwei KI-Agenten sorgen sich sechs Stunden lang um ihren schlafenden User",
-   "u": "https://t3n.de/news/openclaw-ki-agenten-sorgen-sich-um-schlafenden-user-1766686/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-10T09:00:00Z",
-   "s": "Ein X-User berichtet von einem kuriosen Zwischenfall mit zwei Openclaw-Agenten. Während einer längeren Abwesenheit haben sich die beiden Tools zusammengerauft, um herauszufinden, ob ihrem Nutzer etwas…",
-   "sprache": "de"
-  },
-  {
-   "t": "Photokina-Comeback und KI-Skandal – die Fotonews der Woche 41/2026",
-   "u": "https://www.heise.de/news/Photokina-Comeback-und-KI-Skandal-die-Fotonews-der-Woche-41-2026-11482204.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-10T08:00:00Z",
-   "s": "Die Imaging World zieht nach Köln, Nikon prüft KI-Betrug bei einem Wettbewerb und Leica ehrt Graciela Iturbide.",
-   "sprache": "de"
-  },
-  {
-   "t": "Gehirnscan zu Bild: KI rekonstruiert, was Menschen gerade sehen",
-   "u": "https://t3n.de/news/ki-gehirnscan-bilder-rekonstruieren-1766379/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-10T07:40:00Z",
-   "s": "Eine Forschergruppe hat einen Decoder fürs Gehirn entwickelt. Dazu trainierten sie ein KI-Modell mit Daten von Proband:innen, die in einem MRT-Scanner lagen undweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Agil und strukturiert: eine Umgebung für KI-gestütztes Lernen",
-   "u": "https://www.heise.de/hintergrund/Agil-und-strukturiert-eine-Umgebung-fuer-KI-gestuetztes-Lernen-11480376.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-10T06:00:00Z",
-   "s": "KI hilft beim Einstieg in fremde Fachgebiete, irrt dabei aber unbemerkt. Wie sieht ein agiler Lernprozess aus, der davor schützt?",
-   "sprache": "de"
-  },
-  {
-   "t": "Mini-PCs im KI-Test: Apple vs. AMD und Intel mit lokalen LLMs",
-   "u": "https://www.golem.de/news/mini-pcs-im-ki-test-apple-vs-amd-und-intel-mit-lokalen-llms-2610-213894.html",
+   "t": "Softwareentwicklung: KI-Flut bringt mehr Code und weniger Fortschritt",
+   "u": "https://www.golem.de/news/softwareentwicklung-ki-flut-bringt-mehr-code-und-weniger-fortschritt-2610-213961.html",
    "q": "Golem",
-   "d": "2026-10-10T05:30:02Z",
-   "s": "Ein Schreibtisch voller Mini-PCs und ein automatisierter Benchmark für lokale LLMs sind ein Fest für jeden Golem-Redakteur. Ein Test von Mike Faust (PC & Notebooks, Mac)",
+   "d": "2026-10-11T10:04:02Z",
+   "s": "Eine Harvard-Studie zeigt: KI-Coding-Tools vermehren den Code, doch die Review-Zeit steigt massiv. Die Software entsteht nicht schneller. (Software, KI)",
    "sprache": "de"
   },
   {
-   "t": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
-   "u": "https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/",
+   "t": "Neue macOS-Sicherheit: So schützt Apple deinen Mac vor gefährlichen KI-Agenten",
+   "u": "https://t3n.de/news/macos-schutz-ki-agenten-1766634/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-11T09:25:00Z",
+   "s": "Obwohl die Risiken wachsen, würden viele Nutzer:innen den Zugriff auf ihre Systeme zu leichtfertig erlauben. Um die Sicherheit zu erhöhen, verschärft Apple die Kontrollen für den Vollzugriff auf die F…",
+   "sprache": "de"
+  },
+  {
+   "t": "Warum Microsoft und Meta ihre Entwickler von Claude Code abziehen",
+   "u": "https://t3n.de/news/microsoft-meta-claude-code-einschraenkung-grund-1766817/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-11T09:00:00Z",
+   "s": "Entwickler:innen bei Microsoft und Meta sollen künftig seltener auf Claude Code zurückgreifen. Das ist zumindest der Plan der beiden Unternehmen. Warum sie Anthropics KI jetzt wieder zurückfahren. wei…",
+   "sprache": "de"
+  },
+  {
+   "t": "(g+) Siri-Ersatz im Eigenbau: Apple lässt Europa auf Siri AI warten, also bauen wir sie selbst!",
+   "u": "https://www.golem.de/news/siri-ersatz-im-eigenbau-apple-laesst-europa-auf-siri-ai-warten-also-bauen-wir-sie-selbst-2610-213921.html",
+   "q": "Golem",
+   "d": "2026-10-11T08:00:01Z",
+   "s": "Apples KI-Siri bleibt auf dem iPhone in der EU draußen. Ein eigener Assistent kostet Geld, Strom und Geduld. Ein Erfahrungsbericht von Jan Gruber (Siri, Apple)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | Pilze sammeln mit KI: Experten warnen vor tödlichen Fehlern",
+   "u": "https://www.heise.de/hintergrund/Pilze-sammeln-mit-KI-Experten-warnen-vor-toedlichen-Fehlern-11461413.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-11T06:30:00Z",
+   "s": "Die Pilzsaison läuft. Fragt man Apps und KI, ob man ein leckeres Stockschwämmchen oder einen Gifthäubling gesammelt hat, folgen mitunter tödliche Ratschläge.",
+   "sprache": "de"
+  },
+  {
+   "t": "Microsoft’s Satya Nadella says AI models need an ‘emergency brake’",
+   "u": "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
    "q": "TechCrunch AI",
-   "d": "2026-10-10T00:18:32Z",
-   "s": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice.",
+   "d": "2026-10-10T21:47:51Z",
+   "s": "In a Saturday morning post, Microsoft's CEO wrote that it’s time “to step back and assess the trust architecture” of AI.",
    "sprache": "en"
   },
   {
-   "t": "The maker of non-text AI model Jev valued at $7.5B just weeks after launch",
-   "u": "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/",
+   "t": "Apple discloses deal to hire team and license tech from personalized podcast startup Huxe",
+   "u": "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/",
    "q": "TechCrunch AI",
-   "d": "2026-10-09T21:41:29Z",
-   "s": "What has users and large corporations so excited about Jev is TypeSafe’s claim that it works significantly faster and uses far fewer tokens than LLMs.",
+   "d": "2026-10-10T19:50:00Z",
+   "s": "Is Apple hoping to get into the AI-generated podcast business?",
    "sprache": "en"
   },
   {
-   "t": "(g+) Künstliche Intelligenz: Warum mich meine Gespräche mit ChatGPT for Teens sehr beunruhigen",
-   "u": "https://www.golem.de/news/kuenstliche-intelligenz-warum-mich-meine-gespraeche-mit-chatgpt-for-teens-sehr-beunruhigen-2610-213942.html",
-   "q": "Golem",
-   "d": "2026-10-09T16:00:02Z",
-   "s": "Unser Lesetipp: New-York-Times-Autor Brian X. Cheng hat ChatGPT for Teens getestet und gravierende Lücken bei Jugendschutz und Lernhilfe gefunden. Von Brian X. Chen (Jugendschutz, KI)",
+   "t": "Open-Source-Office OpenDesk: Zendis bringt agentische KI und Air-Gap-Modus",
+   "u": "https://www.heise.de/news/Open-Source-Office-OpenDesk-Zendis-bringt-agentische-KI-und-Air-Gap-Modus-11483419.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-10T16:21:00Z",
+   "s": "Das Zentrum für digitale Souveränität zeigt auf der Smart Country Convention neue Funktionen für die Open-Source-Suite OpenDesk mit KI und Offline-Betrieb.",
    "sprache": "de"
   },
   {
