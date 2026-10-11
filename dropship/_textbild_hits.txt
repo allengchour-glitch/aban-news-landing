@@ -17570,3 +17570,4 @@ gid://shopify/Product/16614565937543	116->0	Tierpuzzle aus Stoff für Babys
 gid://shopify/Product/16614566134151	15->0	Hip Ring mit Widerstand – 66/76/86 cm
 gid://shopify/Product/16614566166919	27->0	Hundeharnisch mit Zugseil – rosa/ grau/ himmelblau
 gid://shopify/Product/16614566396295	16->0	Maskenball-Kleid für Kostümparty
+gid://shopify/Product/16614566461831	45->0	Waschtes Denim-Kleidungskostüm für Haustiere
