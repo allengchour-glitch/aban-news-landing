@@ -17734,3 +17734,5 @@ gid://shopify/Product/16615353319815	24->0	V-Ausschnitt Kleid mit Print
 gid://shopify/Product/16615375470983	49->0	Wasserdichte Kühltasche
 gid://shopify/Product/16615376880007	9->0	USB-Soundkarte mit Multifunktion
 gid://shopify/Product/16615378059655	10->0	Edelstahl-Spritzpistole für Nassstrahlen
+gid://shopify/Product/16615382221191	19->0	Umhängetasche aus Vollnarben-Rindsleder
+gid://shopify/Product/16615384973703	12->1	Damen Mesh Langarmshirt mit Rundhalsausschnitt
