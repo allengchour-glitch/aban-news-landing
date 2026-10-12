@@ -1,0 +1,223 @@
+{
+  "_zweck": "Such-Boosts der Shop-Suche (12.10.2026, automation/such_boost.py). Je Familie: Suchbegriffe (klein geschrieben, wie Kundinnen tippen — Varianten ausdrücklich, ob Shopify Teilwörter trifft, ist nicht dokumentiert), eine Quelle (Kollektion in ihrer Reihenfolge oder Admin-Suche) und Titel-Muster. Höchstens max_je_familie Produkte je Familie, höchstens 10 Begriffe je Produkt (Metafeld-Validierung list.max = 10). Reihenfolge der Familien = Vorrang, wenn ein Produkt mehr als 10 Begriffe bekäme. anlass = Datum JJJJ-MM-TT: danach fällt die Familie weg; ist Direktversand nicht mehr rechtzeitig (data/anlass_kollektionen.json lieferung_werktage), nur Ware ab Schweizer Lager.",
+  "_quelle_befund": "Workflow Messrunde 12.10. (Prüfer «Suche & Navigation»): 14 Begriffe mit Fremdware in den ersten 8 der Enter-Suche; «halloween» 0/8 ab Schweizer Lager, «kostüm» Platz 1–4 Zubehör aus China, «geschenk für frau» Platz 4 Intim-Pflegeserum, «powerbank» 3/8, «tshirt männer» 2/8. Metafeld shopify--discovery--product_search_boost.queries metafieldsCount 0.",
+  "max_je_familie": 8,
+  "familien": [
+    {
+      "name": "halloween",
+      "begriffe": [
+        "halloween",
+        "halloween kostüm",
+        "halloween kostüme"
+      ],
+      "quelle": {
+        "kollektion": "halloween"
+      },
+      "titel_ja": [
+        "kostüm|verkleidung|overall|robe"
+      ],
+      "titel_nein": "handschuh|zubehör|kinder.*perücke",
+      "anlass": "2026-10-31",
+      "schnell_zuerst": true,
+      "vielfalt_max": 2
+    },
+    {
+      "name": "kostueme",
+      "begriffe": [
+        "kostüm",
+        "kostüme",
+        "kostüm mit perücke",
+        "verkleidung",
+        "cosplay",
+        "fasnacht kostüm",
+        "karneval kostüm"
+      ],
+      "quelle": {
+        "kollektion": "kostueme-ch-lager",
+        "sortierung": "BEST_SELLING",
+        "tiefe": 1500
+      },
+      "titel_ja": [
+        "kostüm|verkleidung"
+      ],
+      "titel_nein": "handschuh|zubehör|perücke$|maske$|baby",
+      "schnell_zuerst": true,
+      "vielfalt_max": 2
+    },
+    {
+      "name": "geschenk-frau",
+      "begriffe": [
+        "geschenk für frau",
+        "geschenk für sie",
+        "geschenke für frauen",
+        "geschenk für freundin",
+        "geschenk für mama"
+      ],
+      "quelle": {
+        "kollektion": "geschenke-fuer-sie"
+      }
+    },
+    {
+      "name": "geschenk-mann",
+      "begriffe": [
+        "geschenk für mann",
+        "geschenk für ihn",
+        "geschenke für männer",
+        "geschenk für freund",
+        "geschenk für papa"
+      ],
+      "quelle": {
+        "kollektion": "geschenke-fuer-ihn"
+      }
+    },
+    {
+      "name": "wichteln",
+      "begriffe": [
+        "wichteln",
+        "wichtelgeschenk",
+        "wichtelgeschenke",
+        "mitbringsel",
+        "kleines geschenk"
+      ],
+      "quelle": {
+        "kollektion": "kleine-geschenke-mitbringsel"
+      }
+    },
+    {
+      "name": "powerbank",
+      "begriffe": [
+        "powerbank",
+        "power bank",
+        "powerbanks"
+      ],
+      "quelle": {
+        "suche": "powerbank OR \"power bank\""
+      },
+      "titel_ja": [
+        "power ?bank"
+      ],
+      "titel_nein": "hülle|case|tasche|ersatz|kabel\\b|starthilfe"
+    },
+    {
+      "name": "staubsauger",
+      "begriffe": [
+        "staubsauger",
+        "handstaubsauger",
+        "akku staubsauger",
+        "mini staubsauger",
+        "autostaubsauger"
+      ],
+      "quelle": {
+        "kollektion": "handstaubsauger",
+        "sortierung": "BEST_SELLING"
+      },
+      "titel_ja": [
+        "staubsauger|sauger"
+      ],
+      "titel_nein": "nagel|akku für|ersatz|filter|düse|bürste"
+    },
+    {
+      "name": "tshirt-herren",
+      "begriffe": [
+        "tshirt männer",
+        "t-shirt männer",
+        "t-shirt herren",
+        "tshirt herren",
+        "herren t-shirt",
+        "männer t-shirt"
+      ],
+      "quelle": {
+        "suche": "t-shirt (herren OR männer)"
+      },
+      "titel_ja": [
+        "t-?shirt",
+        "herren|männer"
+      ],
+      "titel_nein": "damen|frauen|kinder|mädchen|hemd\\b|bluse|langärm|langarm|holland"
+    },
+    {
+      "name": "handwaermer",
+      "begriffe": [
+        "handwärmer",
+        "handwaermer",
+        "usb handwärmer",
+        "taschenwärmer"
+      ],
+      "quelle": {
+        "kollektion": "handwaermer",
+        "sortierung": "BEST_SELLING"
+      },
+      "titel_ja": [
+        "handwärmer|taschenwärmer"
+      ]
+    },
+    {
+      "name": "kerze",
+      "begriffe": [
+        "kerze",
+        "kerzen",
+        "duftkerze",
+        "duftkerzen"
+      ],
+      "quelle": {
+        "suche": "kerze OR kerzen OR duftkerze"
+      },
+      "titel_ja": [
+        "kerze\\b|kerzen\\b|duftkerze"
+      ],
+      "titel_nein": "form\\b|formen|ständer|halter|wärmer|docht|giess|silikon|leuchter|zubehör|herstellung|wachs\\b"
+    }
+  ],
+  "veto": {
+    "Verpackungsbild mit spanischem Herstellertext (Fyasa)": [
+      "kostum-gotische-vampir-fgaeu706665ml"
+    ],
+    "Englischer Werbetext im Hauptbild": [
+      "magnetische-10000mah-powerbank-mit-20w-967745",
+      "kabellose-powerbank-mit-magnet-und-stander-635300",
+      "handstaubsauger-mit-saug-und-stossfunktion-604100"
+    ],
+    "Bild ≠ Titel (Akku-Hülle statt Powerbank, Polo statt T-Shirt, Smiley statt Streifen)": [
+      "handy-powerbank-622700",
+      "herren-t-shirt-aus-eisseide-mit-kurzarm-291200",
+      "herren-t-shirt-mit-streifenmuster-622900"
+    ],
+    "Collage aus zwei Bildern, wirkt billig": [
+      "tragbarer-akku-staubsauger-7f21be"
+    ],
+    "Wikinger-Totenkopf-Print als erstes T-Shirt — Basis-Shirts zuerst": [
+      "herren-kurzarm-sportshirt-mit-rundhals-613100"
+    ],
+    "Lieferanten-Wasserzeichen (1688.com)": [
+      "usb-powerbank-mit-handwarmer-und-massage-45aeb2"
+    ],
+    "Fremdmarke auf der Verpackung (Ninfe Home)": [
+      "zitrus-krauter-kerze-163266"
+    ]
+  },
+  "vielfalt_staemme": [
+    "hexe|witch",
+    "vampir|dracula",
+    "batman",
+    "catwoman",
+    "ninja",
+    "pirat",
+    "geist|ghost",
+    "skelett|skeleton",
+    "zombie",
+    "teufel|devil",
+    "clown|joker",
+    "fledermaus|\\bbat\\b",
+    "kürbis|pumpkin",
+    "mumie",
+    "paw patrol",
+    "pokemon|pikachu",
+    "prinzessin|princess",
+    "polizei",
+    "feuerwehr",
+    "nikolaus|weihnachtsmann",
+    "schneewittchen",
+    "harry potter|hagrid|hogwarts"
+  ],
+  "_veto_quelle": "Kontaktbogen 12.10.2026 22:10 UTC (automation/such_boost.py --kontaktbogen), Sichtprüfung aller 73 Soll-Produkte."
+}

@@ -49,6 +49,16 @@
 
 
 
+## 🔎 Such-Boosts: Search & Discovery per Metafeld, ohne App-Klick (2026-10-12 spät, «weiter verbessern»)
+- Wer sucht, kommt 4,4× eher in den Warenkorb (90 T: 6,1 % gegen 1,4 %), aber die Enter-Suche zeigte bei «halloween» 0/8 ab
+  Schweizer Lager, «kostüm» Zubehör vorn, «geschenk für frau» ein Intim-Serum. Hebel: Metafeld
+  `shopify--discovery--product_search_boost.queries` (list.max 10, Admin lesen+schreiben) — die App gleicht es ab, metafieldsCount war 0.
+  «Boosts = Betreiber-Klick» (05.10.) war falsch: erst die Metafeld-Definition lesen, dann «geht nicht» sagen.
+- `such_boost.py` + `data/such_boosts.json`: 10 Familien × ≤ 8; schreibt NUR eigene Begriffe (Stand-Datei), fremde bleiben; Anlass-
+  Familien fallen nach dem Datum weg; Jury + Kontaktbogen (11 Vetos: englischer Werbetext, Bild ≠ Titel, 1688-Wasserzeichen,
+  Fremdmarke). Fallen: Bestseller-Sortierung der Kostüm-Kollektion zeigt oben Perücken/Handschuhe (Tiefe 1'500 nötig);
+  «Sportshirt» enthält «tshirt»; fünf Hexen nebeneinander → Vielfalt-Stämme ≤ 2. → `dropship/SUCH-BOOSTS-2026-10-12.md`
+
 ## 📏 Masstabellen des Modells, Kassen-Lieferdatum, Werbe-Kontingent (2026-10-12 abends, «weiter verbessern alles mögliche»)
 - Masstabellen: CJ-Tabellenbilder per Workflow (10 Vision-Agenten) gefunden und DOPPELT gelesen; `masstabelle_schreiben.py` schreibt
   nur bei «hoch»/«hoch», gleicher Bedeutung der Spalten (Rocklänge = Länge; Falle: «Länge (Bustier)» enthält «bust»), ≤ 1 cm Abweichung,
