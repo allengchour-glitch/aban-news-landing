@@ -1643,3 +1643,32 @@ gid://shopify/Product/16615684571527	a	toddler
 gid://shopify/Product/16615708197255	a	toddler
 gid://shopify/Product/16615770030471	a	toddler
 gid://shopify/Product/16615771537799	a	toddler
+gid://shopify/Product/16615811744135	w	Kleinteile	Ferngesteuertes Baustein-Fahrzeug
+gid://shopify/Product/16615811907975	w	Kleinteile	Modellbausatz Villa «Meer der Liebe»
+gid://shopify/Product/16615812137351	w	Kleinteile	Baustein-Spielzeugauto mit kleinen Partikeln
+gid://shopify/Product/16615818854791	w	Kleinteile	Weltraum-Bausteine für Kinder
+gid://shopify/Product/16615819968903	w	Kleinteile	Bausteine für Kinder – kleine Partikel
+gid://shopify/Product/16615820132743	w	Kleinteile	Holzbausteine mit Perlen – Tiermodell
+gid://shopify/Product/16615820886407	w	Kleinteile	Bauklötze-Anhänger für die frühkindliche Bildung
+gid://shopify/Product/16615821246855	w	Kleinteile	Bausteine – Lernspielzeug
+gid://shopify/Product/16615822098823	w	Kleinteile	Dreidimensionales Holz-Puzzle mit Musik
+gid://shopify/Product/16615782187399	a	toddler
+gid://shopify/Product/16615782252935	a	toddler
+gid://shopify/Product/16615782384007	a	toddler
+gid://shopify/Product/16615783039367	a	toddler
+gid://shopify/Product/16615783137671	a	toddler
+gid://shopify/Product/16615783530887	a	toddler
+gid://shopify/Product/16615797850503	a	toddler
+gid://shopify/Product/16615801946503	a	toddler
+gid://shopify/Product/16615802044807	a	toddler
+gid://shopify/Product/16615808631175	a	toddler
+gid://shopify/Product/16615808663943	a	toddler
+gid://shopify/Product/16615809024391	a	toddler
+gid://shopify/Product/16615809614215	a	toddler
+gid://shopify/Product/16615809712519	a	toddler
+gid://shopify/Product/16615809843591	a	toddler
+gid://shopify/Product/16615809941895	a	toddler
+gid://shopify/Product/16615810040199	a	toddler
+gid://shopify/Product/16615810335111	a	toddler
+gid://shopify/Product/16615810433415	a	toddler
+gid://shopify/Product/16615814562183	a	toddler
