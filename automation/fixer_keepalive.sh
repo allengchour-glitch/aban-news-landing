@@ -2259,6 +2259,21 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 12.10.2026: Instagram-Feed-Format der wartenden Bild-Posts (0,8 … 1,91, ≥ 320 px breit). Anlass: «Media container not
+  # created» bei 209×666; 3 weitere wartende Posts lagen ausserhalb. Der Poster prüft selbst (zwölfte Schicht); der Wächter
+  # räumt die Queue vorab, damit «ready» ehrlich zählt (neue Zeilen kommen alle 12 h aus queue_new_products.mjs).
+  IGF=/tmp/ig_bildformat.log
+  if [ -f "$REPO/automation/ig_bildformat.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$IGF" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 21600 ] || absturz_nachholen "$IGF" || still_gestorben "$IGF"; then
+      touch "$IGF"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_ig_bildformat.lock; flock -n 9 || exit 0; exec >> \"$IGF\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; SCHARF=1 python3 -u automation/ig_bildformat.py --queue; \
+           echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+    fi
+  fi
+
   # ⭐ UNECHTE BEWERTUNGEN BEI JUDGE.ME — taeglicher LESE-Waechter (22.09.2026). Anlass: Bewertung
   # 1335720164 («Test»/«Probelauf», 5★, Shop-Ebene) stand seit 14.09. veroeffentlicht und zaehlte in
   # der Startseiten-Zahl mit; angelegt von einer fremden Session mit dem OEFFENTLICHEN Token.

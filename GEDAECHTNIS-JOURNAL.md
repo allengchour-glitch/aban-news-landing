@@ -49,6 +49,15 @@
 
 
 
+## 📐 Instagram «Media container not created»: das Bildformat, nicht der Zufall (2026-10-12, Verbesserungsrunde 12:30)
+- Bild-Post 209×666 (0,31) scheiterte bei Instagram über Metricool. Feed nimmt 0,8 … 1,91 (4:5 … 1.91:1), Breite ≥ 320 px.
+  3 von 42 wartenden Posts lagen ebenfalls ausserhalb. Der Poster prüfte Doppelpost, Text im Bild, Jury, Kaufbarkeit — nie das Format.
+- Fix: `automation/ig_bildformat.py` (Regel + `--queue`-Wächter + Selbsttest 11/11 mit Ladeweg-Gegenprobe), zwölfte Schicht in
+  `social-autopost-meta.mjs` (Exit 3 → `format-skip`, unmessbar → bleibt ready), Aufseher alle 6 h. Queue 42 → 39 ready, alle postbar.
+- Falle: `csv.DictWriter` setzt `\r\n` als Zeilenende. Die Queue hat `\n` → ein Lauf änderte alle 627 Zeilen. Beim Zurückstellen die
+  AKTUELLE Datei normalisieren, nicht vom Commit holen (Poster schreiben laufend). Gegenprobe an einer Kopie: byte-gleich.
+- Lehre: Eine Fehlermeldung «unknown cause» zuerst an den messbaren Eigenschaften der Eingabe prüfen (Masse, Format, Grösse).
+
 ## 🎨 Editor v5 live: Profi-Bedienung auf allen 34 Selbst-gestalten-Produkten (2026-10-12, «bearbeiten für profis … alles einstellen kann und sieht», «verbessere alles viel toller»)
 - **Was neu ist:** Zahlenfelder X/Y/Grösse/Drehung/Deckkraft, Rückgängig/Wiederholen (Strg+Z/Y), Ebenen-Liste mit ▲▼,
   mehrzeiliger Text (4 Zeilen), Fett/Kursiv, Ausrichtung, Zeilenabstand, Mitte-Hilfslinien, Pfeiltasten/Entf.

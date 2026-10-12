@@ -332,6 +332,26 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
     next[idx.status] = 'skipped-nonjpg'; if(!DRY) fs.writeFileSync(CSV, serialize(rows)); continue;   // gespeichert, sonst blockiert die Zeile jeden Lauf
   }
+  // ⛔ ZWÖLFTE SCHICHT (12.10.2026): Instagram-Feed-Format. «Media container not created by unknown cause» bei einem
+  // 209×666-Bild — keine Schicht prüfte das Seitenverhältnis, und Bild-Posts gehen seit 09.10. nur auf Instagram.
+  // ig_bildformat.py: 0,8 … 1,91 und ≥ 320 px breit. Exit 3 → «format-skip»; nicht messbar (2) → Zeile bleibt ready.
+  {
+    const platF = (next[idx.platforms]||'').toLowerCase();
+    if (!platF.trim() || /instagram|\big\b/.test(platF)) {
+      let rc = 2, grund = '';
+      try {
+        grund = String(_exf('python3', [new URL('./ig_bildformat.py', import.meta.url).pathname, '--url', imageUrl],
+          { encoding: 'utf8', timeout: 90000 })).trim();
+        rc = 0;
+      } catch (e) { rc = (e && typeof e.status === 'number') ? e.status : 2; grund = String((e && e.stdout) || '').trim(); }
+      if (rc === 3) {
+        console.log(`   ⛔ Instagram-Format: ${grund} → format-skip: ${next[idx.id]}`);
+        if(!DRY){ next[idx.status] = 'format-skip'; fs.writeFileSync(CSV, serialize(rows)); }
+        continue;
+      }
+      if (rc !== 0) { console.log(`   ⚠️ Bildformat nicht messbar → Zeile bleibt ready: ${next[idx.id]}`); continue; }
+    }
+  }
   // Optionale Kanal-Auswahl pro Zeile über die Spalte 'platforms' (leer = alle konfigurierten).
   // 23.09.2026 ACHTE SCHICHT — ist die WARE noch kaufbar? Gemessen: 3 von 73 «ready»-Zeilen (August-Queue)
   // bewarben Produkte, die Waechter seit dem Bau der Queue gedraftet hatten (kein onlineStoreUrl → Link = 404).
