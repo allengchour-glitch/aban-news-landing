@@ -269,9 +269,13 @@ while true; do
       elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) YouTube: Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
       else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
     fi
-    if faellig "$MARKE_PINTEREST" "$PINTEREST_ABSTAND"; then
+    # 12.10.2026: Exit 3 = «kein Kandidat» (Jury lehnte alle ab) → Marke bleibt alt, neuer Versuch nach 2 h statt 48 h Stille.
+    if faellig "$MARKE_PINTEREST" "$PINTEREST_ABSTAND" && faellig /tmp/_autopilot_pin_retry 7200; then
       echo "$(date -u +%H:%M) Pinterest-Pin faellig (Metricool)"
-      if $NODE automation/metricool_pinterest_pin.mjs; then touch "$MARKE_PINTEREST"; else echo "$(date -u +%H:%M) Pin fehlgeschlagen (Marke bleibt alt)"; fi
+      $NODE automation/metricool_pinterest_pin.mjs; RC=$?
+      if [ "$RC" = 0 ]; then touch "$MARKE_PINTEREST"
+      elif [ "$RC" = 3 ]; then touch /tmp/_autopilot_pin_retry; echo "$(date -u +%H:%M) Pinterest: kein Kandidat — neuer Versuch in 2 h (Marke bleibt alt)"
+      else echo "$(date -u +%H:%M) Pin fehlgeschlagen (Marke bleibt alt)"; fi
     fi
   fi
   # 23.09.2026 (Betreiber «direktlinks kommentieren bei jedem post»): Facebook-Posts/Reels der letzten 2 Tage

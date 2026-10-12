@@ -203,7 +203,8 @@ async function pinFassung(k) {
 }
 
 const kandidaten = [];
-const ZIEL = NUR_LISTE || 5;   // 23.09. 22:58: bis zu 5, damit ein Text-Hauptbild ohne 2:3-Fassung uebersprungen werden kann
+const ZIEL = NUR_LISTE || 25;   // 23.09.: 5 · 12.10.2026: 25 — am 11.10. lehnte die Gemini-Jury alle 5 ab (Halloween-Titel passten nicht
+                                // zum Bild), der Poster meldete Erfolg und schwieg 67 h. Urteile sind gecacht (_gemini_jury.tsv): Abgelehnte kosten nichts.
 for (const quelle of QUELLEN) {
   const d = await gql(`query($h:String!,$p:ID!){ collectionByHandle(handle:$h){ products(first:100, sortKey:BEST_SELLING){ nodes{
     id handle title productType tags status onlineStoreUrl descriptionHtml publishedOnPublication(publicationId:$p)
@@ -238,7 +239,9 @@ for (const k of kandidaten) {   // 23.09. 22:58: Text-Hauptbild nie als Rohbild 
     log(`   ✅ Gemini-Jury: ${j.info}`); }
   kandidat = k; fassung = f; break;
 }
-if (!kandidat) { console.log('Kein Pin-Kandidat (alle Quellen erschöpft, gesperrt oder Text im Bild).'); process.exit(0); }
+// 12.10.2026: Exit 3 statt 0 — «kein Kandidat» ist KEIN Erfolg. Mit 0 setzte social_autopilot.sh die 48-h-Marke und der
+// Kanal stand still, ohne dass ein Log «fehlgeschlagen» sagte (Ampel: «still: Pinterest, letzter vor 67 h»).
+if (!kandidat) { console.log(`Kein Pin-Kandidat (${kandidaten.length} geprüft, alle abgelehnt; Quellen: ${QUELLEN.join(', ')}).`); process.exit(3); }
 
 const suchtext = `${kandidat.title} ${kandidat.productType}`;
 const boardName = (BOARDS.find(([rx]) => rx.test(suchtext)) || [null, 'Geschenkideen Schweiz'])[1];
