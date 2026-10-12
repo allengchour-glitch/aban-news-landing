@@ -20,12 +20,14 @@ Gescannt: 53418 aktive Produkte in 214 Seiten (vollständig), 477 s. Meldungen n
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
-## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
+## Weiteres Lieferland betroffen (Lieferländer gemessen in Shopify Markets: CH, LI)
+
+Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
 - Missing shipping info in some countries [LI]: 28226
 - Alcoholic beverages [LI]: 4
 
-Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.
+«Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 

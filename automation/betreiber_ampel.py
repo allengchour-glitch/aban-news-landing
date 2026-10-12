@@ -475,7 +475,16 @@ def google_feedback():
     voll = "" if s.get("vollstaendig", True) else " · ⚠️ Scan unvollstaendig"
     shop = sum(v for k, v in (s.get("andere_apps") or {}).items() if k.startswith("[Shop]"))
     shopz = f" · Shop-Kanal: {shop} Meldungen" if shop else ""
-    return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}"
+    # 12.10.2026: Liechtenstein ist seit 09.10. Lieferland (Markets CH+LI). Meldungen nur für ein weiteres Lieferland blockieren
+    # die Schweiz nicht, aber die Gratis-Einträge dort → eigene Zahl (Lieferländer stehen gemessen im Stand, nie aus einer Notiz).
+    weitere = set(s.get("lieferlaender") or ()) - {"CH"}
+    li = 0
+    for k, v in (s.get("nur_ausland") or {}).items():
+        m = re.search(r"\[([A-Z, ]+)\]\s*$", k)
+        if m and {x.strip() for x in m.group(1).split(",")} & weitere:
+            li += v
+    liz = f" · {'/'.join(sorted(weitere))}: {li} ohne Google-Versandangabe (Lieferland → GOOGLE-FEEDBACK.md)" if li else ""
+    return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}{liz}"
 
 
 

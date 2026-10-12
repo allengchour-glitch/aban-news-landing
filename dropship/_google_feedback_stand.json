@@ -1154,5 +1154,9 @@
    "edelstahl-ruhrspaten-fur-maische-und-wurze-168000"
   ]
  },
- "dauer_s": 477
+ "dauer_s": 477,
+ "lieferlaender": [
+  "CH",
+  "LI"
+ ]
 }

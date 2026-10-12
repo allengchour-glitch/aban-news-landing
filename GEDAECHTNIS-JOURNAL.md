@@ -49,6 +49,17 @@
 
 
 
+## 👗 Kauf-Strecke Tag 1: Abendkleider scheitern am Verkehr, nicht an der Seite — und Google kennt Liechtenstein nicht (2026-10-12, «weiter verbessern»)
+- GEMESSEN: Sirène 69 / Aurora 54 Sitzungen in 90 T, davon 104 aus EINER TikTok-Welle 01.–04.10. → 0 Warenkorb; seit 05.10. 0 Sitzungen.
+  Search Console: Sirène «Crawled – currently not indexed» (letzter Crawl 18.08., vor der Textüberarbeitung 10.10.), beide 0 Impressionen in 3 Mt.
+- Gegenprobe statt Bildtausch: Hochformat-Hauptbild (Preis unter dem Rand) hatte bei den Top-60 sogar MEHR Warenkörbe (2/114 vs 2/202) →
+  keine Wirkung belegt, nichts geändert. Vermutung am eigenen Bestand prüfen, bevor man Hauptbilder tauscht (löst Google-Bildprüfung aus).
+- Klasse behoben: `google_feedback_wache.py` hielt «Shop liefert nur CH» (Notiz 22.09.) fest und riet, LI im Merchant Center zu ENTFERNEN —
+  seit 09.10. ist LI Lieferland. 28'226 Produkte «Missing shipping info [LI]». Jetzt `lieferlaender()` live aus Shopify Markets +
+  `teile_ausland()` (Kanarien 11/11), Ampel «LI: 28230 ohne Google-Versandangabe». Betreiber-Klick: Google & YouTube → Versand neu importieren.
+- Lehre: Eine Einordnung, die auf einem Geschäftsentscheid beruht («nur CH»), gehört gemessen, nicht in einen Docstring — sonst rät der
+  Bericht nach dem nächsten Entscheid das Gegenteil. → `dropship/KAUFSTRECKE-ABENDKLEIDER-2026-10-12.md`
+
 ## 📐 Instagram «Media container not created»: das Bildformat, nicht der Zufall (2026-10-12, Verbesserungsrunde 12:30)
 - Bild-Post 209×666 (0,31) scheiterte bei Instagram über Metricool. Feed nimmt 0,8 … 1,91 (4:5 … 1.91:1), Breite ≥ 320 px.
   3 von 42 wartenden Posts lagen ebenfalls ausserhalb. Der Poster prüfte Doppelpost, Text im Bild, Jury, Kaufbarkeit — nie das Format.
