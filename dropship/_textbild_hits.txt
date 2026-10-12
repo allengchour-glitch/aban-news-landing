@@ -17660,3 +17660,10 @@ gid://shopify/Product/16614857474439	27->0	Flache sportliche Plattform-Sandalen
 gid://shopify/Product/16614857671047	12->2	Flache Strick-Fischmund Sandalen
 gid://shopify/Product/16614858097031	35->0	Sportrucksack für Yoga und Fitness
 gid://shopify/Product/16614858523015	27->3	Messenger Rucksack für den Alltag
+gid://shopify/Product/16614874448263	13->3	Grosses wasserdichtes Rucksack für Outdoor
+gid://shopify/Product/16614874481031	32->0	Camping- und Wanderrucksack aus Oxford-Stoff
+gid://shopify/Product/16614874644871	9->0	Kabelloses Tastatur- und Mausset
+gid://shopify/Product/16614875300231	19->2	Mini Metall-USB-Stick 8 GB
+gid://shopify/Product/16614875398535	52->1	Sandalen mit dickem Absatz und Plateau
+gid://shopify/Product/16614884835719	19->0	Reiserucksack 36-55L mit Anti-Diebstahl-Funktion
+gid://shopify/Product/16614885065095	49->1	Cross-Country Rucksack 22x48 cm
