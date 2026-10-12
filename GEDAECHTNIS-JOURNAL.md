@@ -49,6 +49,21 @@
 
 
 
+## 💳 Zahlungs-Wächter sah «UNPAID» nicht (2026-10-12)
+- `cj_zahlung_offen.py` zählte nur `IN_CART` als zahlbar. CJ führt den per API angelegten Auftrag LX1025 aber als `UNPAID` → «nichts offen»,
+  Bericht `CJ-ZAHLUNG-OFFEN.md` gelöscht, keine Handy-Erinnerung — während $73.29 warteten. Gemessen auf Seite 1: UNPAID LX 1, CREATED «#…» 4
+  (Connector-Hüllen, ohne Betrag).
+- Fix: `ist_zahlbar()` = IN_CART/UNPAID, oder CREATED nur mit LX-Nummer und Betrag > 0 (Selbsttest 7/7). Live: «1 zu bezahlen ($73.29): LX1025».
+- Lehre: Ein Status-Filter auf EINEN Wert ist eine Wette, dass der Lieferant nie umbenennt — Gegenprobe gehört an den echten Fall (heute #1025).
+
+## 🎃 Anlass-Kollektion zeigte oben Ware, die erst nach dem Anlass ankommt (2026-10-12, «weiter verbessern»)
+- GEMESSEN: «Halloween» 19 Tage vorher: oben 12/12 CJ-Direktversand (Zusage bis 12.11.), 132 Kostüme ab Schweizer Lager (1–2 WT) darunter.
+  Ursache: «neueste zuerst» + Grind importiert gerade Halloween-Ware. ChatGPT schickt dorthin (14 Sitz., 0 Körbe); ChatGPT wächst auf 17–32/Woche.
+- Fix: `automation/anlass_lieferzeit_wache.py` + `data/anlass_kollektionen.json` (Selbsttest 10/10, Aufseher täglich): Direktversand
+  zu spät → MANUAL, Lager-Ware oben; nach dem Anlass Sortierung zurück. Live zurückgelesen: oben 12 = 12 Lager.
+- Lehre: «neueste zuerst» ist eine gute Voreinstellung — ausser vor einem Datum. Eine Saison-Kollektion braucht eine Frist pro
+  Lieferweg, sonst verkauft sie, was nicht rechtzeitig kommt (Reklamation statt Kunde). → `dropship/ANLASS-LIEFERZEIT-2026-10-12.md`
+
 ## 💳 Bestell-Ampel: «KEIN CJ-Auftrag», obwohl LX1025 längst auf Zahlung wartete (2026-10-12, Verbesserungsrunde 16:25)
 - Zwei Automaten, zwei Wahrheiten: der Bestell-Automat schreibt sein Ledger sofort, der Abgleich (cj_order_watch, alle 2 h) den Zustand,
   den die Ampel liest. Die Lücke von bis zu 2 h zeigte genau dann Falsches, wenn der Betreiber handeln muss (bezahlen).
