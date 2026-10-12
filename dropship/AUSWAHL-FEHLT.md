@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 16:55 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 18:34 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1576 · **1508 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1287, teilweise: 177, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1571 · **1504 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1283, teilweise: 177, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -426,7 +426,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Frischhaltedose für Mikrowelle, Silikon (`frischhaltedose-fur-mikrowelle-silikon-622500`) | 10 | 10 | 2.02–2.46 | 21.90 | Mintcream 700ml, Pink 700ml, Gray 700ml, Gray Blue 700ml |
 | Vorhang einfarbig für Schlafzimmer (`vorhang-einfarbig-fur-schlafzimmer-621900`) | 10 | 10 | 3.51–4.74 | 22.90 | Rice-90x200cm, Rice-100x200cm, Gray-90x200cm, Gray-100x200cm |
 | Taktische Hundeweste (`taktische-hundeweste-128064`) | 10 | 10 | 3.1–3.1 | 22.90 | Black-S, Black-L, Khaki-S, Khaki-L |
-| Hundegeschirr im Westen-Stil, verstellbar (`hundegeschirr-im-westen-stil-verstellbar-926592`) | 10 | 10 | 24.49–32.95 | 46.90 | Blue red-XS, Blue red-S, Blue red-M, Blue red-L |
 | Halsband und Leine für Hunde, Samt, Hellviolett (`halsband-und-leine-fur-hunde-samt-hellviolett-0c2212`) | 10 | 10 | 4.93–9.14 | 24.90 | Light purple suit-M, Light purple Collar-M, Light purple Collar-XS, Light purple Collar-S |
 | Kinderrucksack, atmungsaktiv & entlastend (`kinderrucksack-atmungsaktiv-entlastend-490880`) | 10 | 10 | 7.48–7.93 | 27.90 | Black-Large, Black-Small Size, Dark Blue-Large, Dark Blue-Small Size |
 | Anti-Diebstahl Lederrucksack für Damen (`anti-diebstahl-lederrucksack-fur-damen-844928`) | 10 | 10 | 18.55–18.55 | 39.90 | Wine Red, Khaki, Black, Grey |
@@ -635,7 +634,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Reise-Rucksack aus Canvas (`reise-rucksack-aus-canvas-245440`) | 7 | 7 | 9.29–10.42 | 35.90 | Black, Khaki, Dark Blue, Brown |
 | Vertikale Umhängetasche aus Rindsleder (`vertikale-umhangetasche-aus-rindsleder-490432`) | 7 | 7 | 5.26–12.4 | 24.90 | Coffee, Coffee2, Coffee3, Coffee4 |
 | Elektrisches Nagelpflege-Set (`elektrisches-nagelpflege-set-904960`) | 7 | 7 | 5.52–5.52 | 23.90 | Black US, Rose EU, Rose US, White EU |
-| Elegante Quarzuhr mit Silikonarmband (`elegante-quarzuhr-mit-silikonarmband-605800`) | 6 | 6 | 4.86–4.86 | 15.90 | Black Belt Black Shell, Brown With Black Shell, Black Belt Silver Case, Gray Belt Silver Case |
 | Wasserdichte Automatikuhr für Herren (`wasserdichte-automatikuhr-fur-herren-626300`) | 6 | 6 | 17.8–17.8 | 39.90 | Golden White, Golden Black, Full Gold, Natural Black |
 | Smart Beissfester Hundeball mit Zahnreinigung (`smart-beissfester-hundeball-mit-zahnreinigung-628600`) | 6 | 6 | 2.81–3.34 | 19.90 | Paw Print Blue, Paw Print Orange, Paw Print In Blue 1 Rope, Red Paw Print 1 Rope |
 | Tiefes Salatschalen-Set (`tiefes-salatschalen-set-603300`) | 6 | 6 | 7.6–8.76 | 33.90 | Upgraded version 2.0-Emerald green, Upgraded version 2.0-Yellow, Upgraded version 2.0-Blue, Export version 3.0-Emerald green |
@@ -659,7 +657,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Business-Automatikschirm mit Holzgriff (`business-automatikschirm-mit-holzgriff-603700`) | 6 | 6 | 3.51–4.92 | 23.90 | 12 Bone Wood Black, 12 Bone Wood Wine Red, 12 Bone Wood Hidden Blue, Wooden Handle Obsidian Black |
 | Tauchgurt mit Schnallen-Gewichtstasche (`tauchgurt-mit-schnallen-gewichtstasche-631500`) | 6 | 6 | 4.17–4.17 | 16.90 | Snap on-Black, Snap on-Digital Camouflage, Snap on-Land Camouflage, Snap on-British Camouflage |
 | Kissenbezug mit Kordelzug, Leinen-Baumwoll-Mix (`kissenbezug-mit-kordelzug-leinen-baumwoll-mix-600700`) | 6 | 6 | 3.15–4.83 | 17.90 | Green Rice Cut Pile-30x50cm, Green Rice Cut Pile-45x45cm, Green Wool Drawstring-30x50cm, Green Wool Drawstring-45x45cm |
-| Faltbare Make-up Pinsel Reinigungs-Schale (`faltbare-make-up-pinsel-reinigungs-schale-461056`) | 6 | 6 | 3.01–3.55 | 15.90 | Grey, Pink, Light Blue, Dark Purple |
 | Minimalistischer Edelstahlring (`minimalistischer-edelstahlring-622300`) | 6 | 6 | 2.34–2.34 | 15.90 | Steel Color-No 8, Steel Color-No 7, Steel Color-No 9, Steel Color-No 10 |
 | Mini-Uhr-Ladegerät (`mini-uhr-ladegerat-290698`) | 6 | 2 | 2.15–2.35 | 14.90 | Green-2400mah, Pink-3600mah, Pink-2400mah, Green-3600mah |
 | Business-Armbanduhr im koreanischen Stil (`business-armbanduhr-im-koreanischen-stil-620900`) | 6 | 6 | 4.28–4.28 | 16.90 | Black Shell Black Strap, Black Shell Deep Coffee Strap, White Shell Black Strap, White Shell Coffee Strap |
@@ -918,7 +915,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Motorrad-Rucksack mit grosser Kapazität (`motorrad-rucksack-mit-grosser-kapazitat-612700`) | 5 | 5 | 19.68–19.68 | 44.90 | Yellow, Blue, Army Green, Orange |
 | Brusttasche für Herren im Camouflage-Look (`brusttasche-fur-herren-im-camouflage-look-618600`) | 5 | 5 | 9.62–9.62 | 29.90 | Black, Army Green, Brown, Black CP |
 | I19 Smart Armband mit Herzfrequenzmessung (`i19-smart-armband-mit-herzfrequenzmessung-568064`) | 5 | 5 | 23.91–25.99 | 45.90 | Silver head steel belt, Silver head brown leather, Silver head blue, Blackhead vinyl |
-| Eleganter Marquise-Ring mit Zirkonia (`eleganter-marquise-ring-mit-zirkonia-606900`) | 5 | 5 | 2.25–2.25 | 21.90 | Papalacha-5, Papalacha-6, Papalacha-7, Papalacha-8 |
 | Craft Engine Whiskyflasche (`craft-engine-whiskyflasche-633400`) | 5 | 5 | 3.35–3.86 | 22.90 | Style 1, Style 2, Style 3, Style 4 |
 | Handbemalte Keramikschale, 6 Zoll (`handbemalte-keramikschale-6-zoll-616600`) | 5 | 5 | 3.02–11.94 | 22.90 | Yellow Apricot-6 Inches, Red With Red Painting-6 Inches, Olive Branch-6 Inches, Red Flower-6 Inches |
 | Edelstahl-Eis-Sieb für Cocktails (`edelstahl-eis-sieb-fur-cocktails-630600`) | 5 | 5 | 5.64–7.76 | 25.90 | Wolf Head Ice Filter, Skull Ice Filter, Pineapple Ice Filter, Mechanical Ice Filter |
