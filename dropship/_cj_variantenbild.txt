@@ -6812,3 +6812,6 @@ gid://shopify/Product/15462220136833	zugeordnet	99	Langarm-Sweater · Damen
 gid://shopify/Product/15462220169601	zugeordnet	5	Retro-Cardigan · Damen
 gid://shopify/Product/15462220202369	zugeordnet	12	Texturierte Strickjacke
 gid://shopify/Product/15462220267905	zugeordnet	24	Wollfutter-Mantel
+gid://shopify/Product/15462220333441	bild-urls-tot
+gid://shopify/Product/15462220464513	zugeordnet	10	Top in Kaschmir-Optik · Herren
+gid://shopify/Product/15462220497281	bild-urls-tot
