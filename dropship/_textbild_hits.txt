@@ -17757,3 +17757,4 @@ gid://shopify/Product/16615514014087	57->0	Samt-Trägerkleid mit offener Rücken
 gid://shopify/Product/16615515423111	136->0	Leichter Strick-Schal
 gid://shopify/Product/16615516275079	32->0	Damen-Kleid mit V-Ausschnitt und Rüschenärmeln
 gid://shopify/Product/16615517258119	90->0	Leinen-Dreieckstuch
+gid://shopify/Product/16615518765447	16->0	Gestrickter Dreieckschal mit Streifenmuster
