@@ -117,3 +117,9 @@ Falschalarme wieder einstellen, sobald Google die Klasse nicht mehr meldet. Tite
 - Latzstoff-Top mit Fransen, knappe Passform · Damenmode · `latzstoff-top-mit-fransen-knappe-passform-604000`
 - Wasserdichte Quarz-Uhr für Damen · Uhren · `wasserdichte-quarz-uhr-fur-damen-5be954`
 - Ketten-Details Sandalen mit spitzer Zehen · Damenschuhe · `ketten-details-sandalen-mit-spitzer-zehen-111168`
+
+## Nachtrag: Klassen «Adult-oriented content» (3) und «Tobacco products» (2) — ebenfalls aus dem Google-Kanal
+- Körperschmuck-Kette (Schmuck) · Porenreiniger mit Vakuumfunktion (Beauty-Tools) · Plüsch-Hundegeschirr mit Leine (Haustier)
+- Katzenspielzeug mit Drehkopf (Haustier) · Magnetischer Seitenhalter für Monitor & Handy (Haushalt)
+- Gemessen: Alle 5 im Google-Kanal, aktiv. Entfernt und zurückgelesen (Onlineshop unverändert).
+- Vermutlich Falschalarme (Hundegeschirr, Drehkopf, Seitenhalter): nach Bildwechsel prüfen, dann wieder einstellen.
