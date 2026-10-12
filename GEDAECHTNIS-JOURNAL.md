@@ -49,6 +49,40 @@
 
 
 
+## 🧹 Auftrag 1–8 und «sauber fertig»: Farbe per Printful-Blank, Preis nach Formel, Liechtenstein-Satz am Ort (2026-10-12, «1 ja erledige alles … 7 du, 8 mach du», «verbessere weiter, ultracode»)
+
+**Gemessen, nicht geraten:**
+- Die Taschen-Vorschau («Stofftasche zum Selbstgestalten») zeigte eine naturfarbene Tasche mit naturfarbenen Henkeln.
+  Printful führt die Variante «All-Over Tote» nur als WEISSEN Körper mit schwarzen, roten oder gelben Henkeln (GET
+  `products/variant/4533` + Bild). Keine Farbvariante passte zur Vorschau → DRAFT. Nach dem Entscheid «Farbe behalten, die
+  zur Vorschau passt» ist die Vorschau auf das Schwarz-Blank umgestellt, Rot/Gelb entfernt, Produkt bleibt DRAFT (Versand und
+  Preis fehlen).
+- Jutebeutel-Vorlage: Die Printful-Katalogfotos haben eine andere Grösse als der Editor-Hintergrund. Ein Blank passt erst,
+  wenn die Begrenzungsbox des Bags (Helligkeit ≥ 235 bzw. Abstand zu Weiss > 40) gemessen und skaliert wird.
+  Mit dieser Methode: Jute 1024² (Abweichung 1 px), Baumwolltasche 864×1184 (12 Farben, Kontaktbogen geprüft).
+- **Die Repricer-Formel senkt Preise.** `printful_reprice.mjs` (Kosten × 2,3) hätte das Unisex-Shirt von 27,90 auf 24,90
+  gesetzt. Ich habe nur das Shirt angewendet (9/9 gelesen) und die 290 übrigen Varianten NICHT angefasst.
+- **Liechtenstein-Satz:** «Gratis-Versand ab CHF 50» galt in 3'720 Produktbeschreibungen auch für Liechtenstein
+  (dort gibt es keinen Gratisversand). Geändert auf «in der Schweiz» mit Lookbehind, idempotent, je Produkt live gelesen und
+  zurückgelesen. **Die Theme-Stellen** (Kopfleiste, Startseite, Kollektion, Warenkorb, Produktvorlage) bleiben: das aktive
+  Theme wird aus dem Assistenten nicht geschrieben. Ersetzungen stehen wörtlich in `dropship/LI-THEME-PATCH-2026-10-12.md`.
+  ~60 Automaten-Skripte schreiben den alten Satz weiter — eigene Runde nötig.
+- **Verkauf ohne EK:** `LX-23-KRISTALL-SET-3-TEILIG` (verkauft mit #1020) hatte keinen Einkaufspreis. Eingetragen CHF 16,50
+  aus der dokumentierten Messung (Schätzung, nicht Rechnung). Rücklesen ok. Die Wache meldet jetzt 0 ohne EK.
+
+**Lehren (teuer):**
+1. **`pkill -f "<Text>"` im selben Bash-Aufruf tötet die eigene Shell** (Exit 144), weil der Befehlstext den Muster-Text enthält.
+   Nur über die PID töten, die man in einem SEPARATEN Aufruf gelesen hat.
+2. **Shopify `inventoryItemUpdate` nimmt `InventoryItemInput`, nicht `InventoryItemUpdateInput`** (Fehler `variableRequiresValidType`).
+3. **Monitor-Watches laufen nach 5 Minuten ab**, auch wenn der Job noch läuft. Für lange Läufe die PID prüfen (`kill -0`), nie
+   `pgrep -f` mit dem eigenen Befehlstext (trifft die eigene Shell). Einen Lauf nach 5 min neu anstossen ist nicht nötig.
+4. **Der Container-Neustart beendet Hintergrundläufe.** Idempotente Läufe mit Ledger je Produkt neu starten, nicht von vorn
+   ausrechnen. Das Ledger pro Produkt zu schreiben (statt am Ende) hat den Verlust auf null gesenkt.
+5. **Live-Schreiber machen den Stop-Hook dauerhaft unsauber.** Jede Commit-Runde (`dropship/`) erzeugt nach dem Push neue
+   Änderungen. Das ist eine strukturelle Lücke (Hook oder Schreiber), keine Frage der Hygiene.
+6. **Ein Schreiber-Lauf auf 12 Schreibern hat die Shopify-Anfragen gestaut** (ein Lesebefehl lief in den 120-s-Timeout).
+   Der Liechtenstein-Lauf läuft trotzdem sauber durch; Lesebefehle bei laufendem Schreiblauf mit Timeout planen.
+
 ## 🎨 «Selbst gestalten»: Farbe ja, Material nein — und die Vorschau eines Produkts zeigte für alle Farben dasselbe Bild (2026-10-12, «verbessere weiter … material auswahl? … a5 weg»)
 
 **GEMESSEN** (Analyse über Printful-Katalog, Shopify-GraphQL, Editor-Quelltext; alles nur lesend): Printful kennt
