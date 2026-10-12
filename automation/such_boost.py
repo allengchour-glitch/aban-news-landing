@@ -298,7 +298,7 @@ BERICHT = os.path.join(REPO, "dropship", "SUCH-BOOSTS.md")
 def messen(gql, regel):
     """Enter-Suche (/search?type=product) je Familie, die ersten zwei Begriffe: wie viele der ersten 8 sind Soll-Ware.
     Schreibt dropship/SUCH-BOOSTS.md (erste fette Zeile = Ampel). Shopify zieht den Index mit Verzug nach — erst
-    ≥ 10 min nach dem Schreiben messen (der Aufseher wartet 15 min)."""
+    ≥ 60 min nach dem Schreiben messen (gemessen 12.10.: nach 30 min standen oben noch die Boosts des VORLETZTEN Laufs; der Aufseher wartet 60 min)."""
     soll, info = soll_berechnen(gql, regel, log=lambda *_: None)
     unten, zeilen = [], []
     for fam in regel["familien"]:
