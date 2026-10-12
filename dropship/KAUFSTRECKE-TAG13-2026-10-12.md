@@ -30,8 +30,8 @@ Messbar fertig: je Seite ein Ursachenbefund mit Zahl. Alle Zahlen **GEMESSEN** m
 ## 2. Befunde
 
 **F1 — BESTÄTIGT, Fehler im Text.** Das Sirène (49,90) schreibt «Versand CHF 7, ab CHF 50 gratis — mit einem
-zweiten Artikel ist er bei diesem Kleid also inklusive.» Die Kasse verlangt für das Kleid **keine** 7 CHF.
-Der Satz kostet also Kaufbereitschaft (7 CHF Versand scheint dazuzukommen) und ist sachlich falsch.
+zweiten Artikel ist er bei diesem Kleid also inklusive.» Die Kasse bietet für das Kleid den **kostenlosen Versand** an (Option «Kostenloser Versand 0,00»,
+gemessen). Der Satz nennt also einen Versandbetrag, den die Kasse so nicht verlangt — er ist sachlich falsch.
 Gleiche Klasse: das Wecker-Armband (49,90) schreibt in der FAQ «darunter kostet der Versand CHF 7».
 Klassengröße (Voll-Export 53'568 aktive Produkte): 1'464 in der Spanne 45–49,99 CHF, davon **2** mit dem Fehler.
 Unter 45 CHF sind 10 Texte mit «Versand CHF 7» richtig. → Regel und Wächter: `automation/versand_band_wache.py`.
@@ -40,8 +40,10 @@ Unter 45 CHF sind 10 Texte mit «Versand CHF 7» richtig. → Regel und Wächter
 Das Wort steht im Theme nur als `visually-hidden`-Text für Screenreader (`snippets/price.liquid`,
 Schlüssel `content.price_sale`). Für Käufer sichtbar ist es nicht. Kein Handlungsbedarf für den Verkauf.
 
-**F3 — BESTÄTIGT, Quelle außerhalb des Themes.** «No reviews» (Englisch) und «⭐ Bestbewertet» stehen nicht im
-Theme. Die Bewertungs-Blöcke `shopify://apps/judge-me-reviews/…` (in `templates/product.json`) rendern sie.
+**F3 — Quelle außerhalb des Themes (Zuordnung vermutlich, nicht im Theme gefunden).** «No reviews» (Englisch) und
+«⭐ Bestbewertet» stehen in keiner Theme-Datei (Suche über 429 Dateien). Vermutlich rendern sie die Judge.me-Blöcke
+`shopify://apps/judge-me-reviews/…` aus `templates/product.json`; das ist nicht direkt gesehen, sondern aus dem Befund
+«nicht im Theme» geschlossen.
 Textänderung nur im Judge.me-Admin → **Betreiber-Klick**. «Bestbewertet» ohne Bewertungen ist eine unbelegte
 Aussage; sie gehört weg, solange keine Bewertung vorliegt.
 
