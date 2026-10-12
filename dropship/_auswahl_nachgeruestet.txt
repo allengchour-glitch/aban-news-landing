@@ -852,3 +852,5 @@
 15454106648961	Farbe:3:3	2026-10-12	kinder-schutzhelm-8a33ca
 15522436579713	Farbe:11:11	2026-10-12	dreieckiges-bettkissen-2332b1
 15452683993473	Farbe:3:3+ki	2026-10-12	universelles-auto-nackenkissen-mit-memory-foam-900096
+15453742694785	Farbe:5:5+ki	2026-10-12	4-achsen-halter-621000
+15453778182529	Modell:4:4+ki	2026-10-12	anti-diebstahl-karten-und-ausweishalter-leder-626300
