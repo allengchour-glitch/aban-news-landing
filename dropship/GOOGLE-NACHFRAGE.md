@@ -1,4 +1,4 @@
-# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-12T15:54Z (120 Tage)
+# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-12T16:12Z (120 Tage)
 
 Produkte mit Google-Besuch: 197 · heute nicht mehr bei Google: 60 · mit aktivem Ersatz: 8 · **ohne Ersatz: 52** (davon mit Warenkorb 11, behebbar 14)
 
