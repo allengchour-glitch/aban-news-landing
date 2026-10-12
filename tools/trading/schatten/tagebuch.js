@@ -21,6 +21,8 @@
     var k0 = t[0].kapital, b0 = (t[0].maerkte.BTC || {}).kurs;
     var p = { name: "Krypto-Pilot", punkte: t.map(function (x) { return { tag: x.stand, wert: x.kapital / k0 * START }; }) };
     var r = [p];
+    var t2 = lb.tage_p2 || [];
+    if (t2.length) r.push({ name: "Pilot 2.0", punkte: t2.map(function (x) { return { tag: x.stand, wert: x.kapital / t2[0].kapital * START }; }) });
     if (b0) r.push({ name: "Bitcoin halten", punkte: t.filter(function (x) { return x.maerkte.BTC; }).map(function (x) { return { tag: x.stand, wert: x.maerkte.BTC.kurs / b0 * START }; }) });
     return r;
   }
