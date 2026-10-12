@@ -49,6 +49,31 @@
 
 
 
+## 📊 Die 12-Tage-Bilanz: mehr Sitzungen, weniger Warenkörbe — die Quelle entscheidet, nicht die Zahl (2026-10-12, Tag 12 «Webseite pimpen», Verbesserungsrunde 00:25 UTC)
+
+**GEMESSEN** (`tools/webseite_bilanz.py`, nur Menschen): 19.–30.09. → 01.10.–heute (je 12 Tage): Sitzungen 190 → 508,
+Warenkörbe 10 → 7 (5,3 % → 1,4 %), Kasse 6 → 5, Käufe 3 → 2 (Sitzungen) bzw. 2 → 3 (Bestellungen, CHF 82.80 → 184.75).
+Bewertungen auf den 29 meistbesuchten Produktseiten 2 → 5. Startseite 52 → 54 (12 T), 46 → 34 (7 T).
+
+Was die Zahl verdeckt hat: **TikTok** (Werbetest 01.–04.10.) brachte 144 Produktsitzungen auf drei Seiten, Sirène 58
+und Aurora 46 ohne Warenkorb, Provence 40 mit zwei. **189 Produktsitzungen ohne `utm_source`** und **0 Warenkörbe**
+(`referrer_name`: 130 ohne Angabe, 35 Facebook, 22 Google, 2 Pinterest), Spitze 01.10. (59) und 02.10. (36).
+
+Zwei Fehler, die beim Schreiben passiert sind — beide vor dem Abschluss gefunden:
+1. Die Gruppierung nach `utm_source` **und** `landing_page_type` zeigte «direkt 189 Produktsitzungen» und ließ vermuten,
+   sie lägen auf drei Seiten. Gruppiert nach `utm_source` **und** Pfad lag die Häufung bei TikTok; die «direkten» verteilen
+   sich auf viele Seiten (größte Einzelseite 3). Erst die Pfad-Abfrage hat das klargestellt.
+2. Ein Satz im Bericht («Eigene Testkäufe nicht gezählt») widersprach der leeren Kundenliste. Korrigiert: nicht herausgerechnet,
+   und alle sechs Kunden haben genau eine Bestellung.
+
+**Lehre:** (a) Eine Bilanz gilt erst, wenn die **Quelle** je Zahl steht (utm, Referrer, Seite) — Sitzungen allein sagen
+nichts über Wirkung. (b) Bei 2–3 Käufen je Fenster ist jede Quote Rauschen: ein Kauf verschiebt sie um 0,2–0,5 Prozentpunkte;
+also zählen Warenkörbe und Kasse-Erreichungen als Frühindikator, nicht die Käufe. (c) Eine Gruppierung, die zwei Dimensionen
+nicht trennt, erzeugt Muster, die es nicht gibt — **vor jedem Schluss die Gegenprobe mit dem Pfad** («liegen
+auf drei Seiten» gilt nur, wenn die Zeilen das zeigen).
+**Bleibt offen:** ob die 189 Sitzungen Menschen sind (Vorschau-Links, In-App-Browser, Bots, die Shopify als Mensch zählt) —
+Plan-Punkt 14.10. Nachfolger «Kauf-Strecke» 13.–24.10. → `dropship/WEBSEITE-12-TAGE-BILANZ.md` §6.
+
 ## 💶 Verkauf mit wenig Gewinn: der Verlustschutz war blind für Varianten ohne Einkaufspreis (2026-10-11, «preisanpassung … wenig gewinn», «alles automatisieren»)
 - **Anlass:** zwei Verkäufe heute, kaum Gewinn. #1023 Ladestation (EK 48.73 inkl. Fracht, Kundin zahlte 63.81 nach WELCOME10) ca. CHF 12; #1024 Bügeltransfer ca. CHF 1.50. Die Transfer-Varianten hatten KEINEN EK (`unitCost` null) — `preis_verlustschutz` überspringt sie. A5 (11.90) verlor je Verkauf ca. CHF 7, obwohl Mister DTF nur A3-Bögen verkauft.
 - **Getan:** Ladestation 71.90 → 75.90; Transfer A3/A5 24.90/11.90 → 35.90; EK Transfer 22.80 (Bogen 12.90 + A-Post 9.90). Neue Wache `automation/verkauf_gewinn_wache.py` (täglich im Aufseher): hebt VERKAUFTE Varianten auf CHF 12 Gewinn bei 15 % Rabatt, nie senken, +50 % je Lauf, höchstens 20 Änderungen; Ampel-Zeile «VERKAUF-GEWINN». Die Handy-Nachricht zu CJ-Bestellungen verlinkt jetzt direkt die Liste der wartenden Bestellungen.
