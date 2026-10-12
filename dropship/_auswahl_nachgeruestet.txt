@@ -1007,3 +1007,4 @@
 15453744628097	Farbe:2:2	2026-10-12	kamera-drohne-mit-hinderniserkennung-844288
 15453792338305	Farbe:2+Grösse:3:6	2026-10-12	halblederhalsband-mit-edelstahl-kette-619200
 15454091149697	Farbe:3:3	2026-10-12	mountainbike-helm-fur-outdoor-fahrten-e0d1d3
+15459553476993	Modell:5+Grösse:7:35+ki	2026-10-12	weihnachtspantoffeln-aus-flanell-630400
