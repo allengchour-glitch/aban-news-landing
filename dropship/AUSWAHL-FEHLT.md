@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 15:38 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 16:55 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1577 · **1509 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1288, teilweise: 177, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1576 · **1508 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1287, teilweise: 177, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -456,7 +456,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Taktischer Outdoor-Rucksack Medium 3P Attack (`taktischer-outdoor-rucksack-medium-3p-attack-179648`) | 9 | 9 | 6.94–6.94 | 30.90 | Khaki, Black, Green, CP camouflage |
 | Holzstruktur-Prägestab für Keramik (`holzstruktur-pragestab-fur-keramik-359296`) | 9 | 9 | 2.3–2.3 | 15.90 | Fivepointed star, Corrugated, Snowflake, Puppy Footprint |
 | Rosenherz Kissen (`rosenherz-kissen-3e7d9f`) | 9 | 3 | 2.74–5.14 | 16.90 | Red-50X40cm, Rose red-40X35cm, Pink-40X35cm, Pink-27X25cm |
-| Multifunktionale Kultur- & Aufbewahrungstasche (`multifunktionale-kultur-aufbewahrungstasche-607100`) | 9 | 9 | 2.62–5.24 | 16.90 | Pink-1pcs, Black-1pcs, White-1pcs, Blue-1pcs |
 | Wander- und Bergsteiger-Rucksack 15L (`wander-und-bergsteiger-rucksack-15l-002816`) | 9 | 9 | 5.44–5.44 | 18.90 | Black, Mud color, Army Green, Sansha camouflage |
 | Reflektierendes Hunde-Halsband mit Metallschnalle (`reflektierendes-hunde-halsband-mit-metallschna-629300`) | 9 | 9 | 3.86–3.86 | 16.90 | Black-M  , Black-L, Black-XL , Brown-M   |
 | Anti-Schling Napf für Hunde (`anti-schling-napf-fur-hunde-633088`) | 9 | 1 | 2.36–2.36 | 14.90 | Pink-Circular Section, Green-Circular Section, Blue-Circular Section, Pink-Hexagonal |
