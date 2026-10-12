@@ -17862,3 +17862,36 @@ gid://shopify/Product/16615803552135	123->0	Gefütterter Damen-Mantel mit Streif
 gid://shopify/Product/16615803617671	22->0	Gefütterter Mantel mit Kapuze
 gid://shopify/Product/16615803683207	10->0	Locker geschnittener Lammwollmantel
 gid://shopify/Product/16615803814279	33->0	Kapuzen-Cardigan mit 3D-Tiermuster
+gid://shopify/Product/16615803978119	19->0	Gepolsterte Daunenjacke mit Kapuze
+gid://shopify/Product/16615804043655	24->0	Kurze Baumwolljacke mit Gürtel
+gid://shopify/Product/16615804207495	126->0	Winter-Pufferjacke mit asymmetrischem Schnitt
+gid://shopify/Product/16615804371335	14->3	Nachtlicht aus Kunstharz und Holz
+gid://shopify/Product/16615804830087	59->2	LED Schminkspiegel mit 9 Lichtern
+gid://shopify/Product/16615805092231	29->0	Mond Wandlampe für stimmungsvolles Licht
+gid://shopify/Product/16615805256071	17->0	Hängelampe Schlafzimmer – Modern & Minimalistisch
+gid://shopify/Product/16615805321607	16->1	Retro Wandlampe aus Glas und Messing
+gid://shopify/Product/16615805583751	19->0	Wandlampe für Wohnzimmerhintergr
+gid://shopify/Product/16615805878663	19->0	Wandlampe modern 1- oder 2-Kopf 220 V
+gid://shopify/Product/16615806075271	20->2	Nordische Wandlampe für stimmungsvolles Licht
+gid://shopify/Product/16615806435719	21->0	Babykleid-Set aus Baumwolle, 0-3 Monate
+gid://shopify/Product/16615806861703	87->0	Baby-Strampler Unisex Dick Gefüttert
+gid://shopify/Product/16615807123847	27->0	Baby-Badeanzug mit UV-Schutz
+gid://shopify/Product/16615807156615	137->0	Baby-Set: Weste mit Hose und Rüschenärmeln
+gid://shopify/Product/16615807189383	13->0	Kinder Sommer-Outfit mit Blumenmuster
+gid://shopify/Product/16615807320455	25->2	Kleines Set: Pullover und Hose für Babys
+gid://shopify/Product/16615807943047	8->3	Herren Langarmshirt mit Streifen und Druck
+gid://shopify/Product/16615808336263	99->0	Baby-Set mit Blumenstickerei
+gid://shopify/Product/16615808369031	49->0	Kaschmir-Pullover für Herren
+gid://shopify/Product/16615808663943	44->0	Baby Anzug mit Krawatte – Herbst & Winter
+gid://shopify/Product/16615809122695	8->0	Retro Pilotenjacke für Herren
+gid://shopify/Product/16615809810823	19->0	Uhrenarmband aus Legierung mit Strass und Quicksand
+gid://shopify/Product/16615809909127	37->0	Sport-Smartwatch mit Herzfrequenz & Schlafüberwachung
+gid://shopify/Product/16615809941895	25->0	Atmungsaktive rutschfeste Baby-Lauflernschuhe
+gid://shopify/Product/16615810072967	144->0	Woll-Baseballjacke
+gid://shopify/Product/16615810236807	23->0	Funktionsschuhe für Kinder mit weicher Sohle
+gid://shopify/Product/16615810924935	91->3	Filz-Weihnachtsbaum- & Schneemann-Deko · 12 Stück
+gid://shopify/Product/16615811056007	14->0	Langarm-Shirt mit Farbverlauf
+gid://shopify/Product/16615811121543	19->0	Langarmshirt Polyester
+gid://shopify/Product/16615811547527	17->0	Miniatur-Puppenhaus «Glückliches Zuhause»
+gid://shopify/Product/16615811776903	113->0	Langarmshirt aus reiner Baumwolle für Herren
+gid://shopify/Product/16615811809671	170->2	Herren-Rucksack aus PU-Leder

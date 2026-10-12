@@ -6845,3 +6845,17 @@ gid://shopify/Product/15463491830145	zugeordnet	91	Herren T-Shirt mit Streifenmu
 gid://shopify/Product/15463492551041	zugeordnet	96	Kurzarm Fitness-Shirt mit Kragen
 gid://shopify/Product/15463581680001	bild-urls-tot
 gid://shopify/Product/15463582040449	zugeordnet	80	Figurbetontes A-Linien Maxikleid mit V-Ausschnitt
+gid://shopify/Product/15463582368129	zugeordnet	98	Minimalistisches One-Shoulder Abendkleid
+gid://shopify/Product/15463582663041	zugeordnet	96	V-Ausschnitt Freizeitkleid Kurzarm
+gid://shopify/Product/15463583187329	zugeordnet	12	Enganliegendes Strickkleid mit Rollkragen
+gid://shopify/Product/15463583711617	zugeordnet	12	Strandkleid mit Schnürung und Print
+gid://shopify/Product/15463584498049	zugeordnet	78	Figurbetonter Freizeit-Cardigan mit Reissverschluss
+gid://shopify/Product/15463584989569	zugeordnet	12	Gestreifter Pullover im Casual Loose Fit
+gid://shopify/Product/15463585284481	zugeordnet	49	Freizeit-Pullover mit Rundhals und langen Ärmeln
+gid://shopify/Product/15463585644929	zugeordnet	40	Unifarbener Hoodie mit doppelter Kapuze
+gid://shopify/Product/15463586890113	zugeordnet	8	A-Linien Rock mit Gürtel im Hahnentrittmuster
+gid://shopify/Product/15463669694849	zugeordnet	56	Damen Fleece Rollkragenpullover
+gid://shopify/Product/15463671005569	zugeordnet	3	Ultraschall-Hautschaufel Reinigungsgerät
+gid://shopify/Product/15463688864129	zugeordnet	11	Halter-Top Kleid · Damen
+gid://shopify/Product/15463689355649	zugeordnet	9	Ärmelloses A-Linien Maxikleid für Damen
+gid://shopify/Product/15463689552257	zugeordnet	25	Geblümtes V-Ausschnitt Kleid
