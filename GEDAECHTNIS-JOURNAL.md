@@ -49,6 +49,15 @@
 
 
 
+## 🗓️ Messrunde mit 5 Prüfern + Skeptikern: die zwei Spitzenreiter fielen, ein schmaler Rest war echt (2026-10-12 abends)
+- Workflow (5 Dimensionen → Richter → je 3 Skeptiker): Platz 1 «Saison-Tags» (8 Pkt) und Platz 2 «Bestellschluss» (7) wurden
+  WIDERLEGT — kaum Verkehr auf Saisonseiten (28 von 1'016 Einstiegen in 30 T), Halloween-Wächter existiert, Produktseite zeigt schon
+  ein Lieferdatum (`lux_delivery`), und der Fix-Weg über `tags_angleichen` hätte in beide Richtungen gelöscht.
+- Bestätigt und erledigt: 12 Adventskalender (Importe 02.–12.10.) ausserhalb der Kollektion → Advent-Regel in `saison_tags_nachtragen.py`
+  (Freitext-Vorfilter: `title:*kalender*` fand 5 von 6 Komposita nicht) + Importer-Spiegel `cat_tags.mjs`; Kollektion 15 → 27.
+- Lehre: Eine Rangliste ohne Gegenprüfung hätte heute zwei Fixes ohne Wirkung (und einen mit Schaden) gebaut. Erst Skeptiker, dann
+  bauen — und vom Befund nur das behalten, was die Gegenprüfung nachgemessen hat. Rest-Liste: `dropship/KLASSEN-RANGLISTE-2026-10-12.md`.
+
 ## 🎁 Geschenke-Einstieg, Google-Ads-Sperre, Pinterest-Stille (2026-10-12 abends, «weiter verbessern» + «warum google ads 0 klicks»)
 - GEMESSEN: Hauptmenü Platz 1 «Geschenke & Weihnachten» = Regel `geschenk` (4'735), Median der ersten 24 CHF 16.90, oben Strickblumen —
   `cjpartydeko` stempelt `geschenk` überall. Fix: Welt «alle» in `geschenk_unterwelten.py` (15 Arten reihum, 400), Titel/SEO deutsch,

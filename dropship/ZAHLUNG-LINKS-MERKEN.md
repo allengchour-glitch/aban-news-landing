@@ -49,3 +49,11 @@
 - **Betreiber 12.10. ~16:45 UTC: «bezahle morgen, KK gesperrt»** → LX1025 wird am 13.10. bezahlt. Geprüft: kein eigener Automat
   storniert unbezahlte CJ-Aufträge (cj_zahlung_offen.py meldet nur, cj_fulfill_engine zahlt nie, Guthaben $0). Die Ampel zeigt
   bis zur Zahlung «LX1025: UNBEZAHLT → 💳 zahlen». Am 13.10. nachprüfen: Status UNSHIPPED = bezahlt.
+
+## 12.10.2026 19:56 UTC: Shopify #1026 → CJ LX1026 wartet auf Zahlung (Betreiber «1026 push»)
+- Shopify #1026 (19:53 UTC): bezahlt CHF 29.41, Zell (CH), 1 × LED Wasserwellen-Projektionsleuchte (3W, 16 Farben, Stecker, 2 Stück).
+- Von Hand angestossen (`cj_order_engine.py`, der 5-min-Lauf hatte sie noch nicht gesehen): angelegt **LX1026 = SD2610121956040669300**,
+  Ware $3.82 + CJPacket EQ Sensitive $16.12 = **$19.94**, Marge ~CHF 12.80, 6–10 Tage. Keine Kunden-Telefonnummer → Händler-Nummer als Kontakt.
+  Ledger 1 Eintrag (kein Doppel), `cj_zahlung_offen.py`: «2 zu bezahlen ($93.23): LX1025 LX1026».
+- Zahllink: https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5 — dort **SD2610121602510642100 / LX1025 $73.29** und
+  **SD2610121956040669300 / LX1026 $19.94** bezahlen, zusammen **$93.23**; leere `DP…`/«#…»-Hüllen ohne Betrag nie.

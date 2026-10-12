@@ -98,7 +98,12 @@ export const PARFUM_NEIN = /\bauto\b|\bcar\b|lufterfrischer|diffuser|duftstab|ke
 // (gleiche Regel, Tageswächter).
 export function saisonTags(titel, nameEn = '') {
   const s = normTitel(titel + ' ' + nameEn);
-  return /halloween/.test(s) ? ['halloween'] : [];
+  const t = /halloween/.test(s) ? ['halloween'] : [];
+  // 12.10.2026: Spiegel von saison_tags_nachtragen.py (Advent) — 12 Kalender standen ausserhalb der Kollektion.
+  // Halloween-/Eid-Countdowns und Beauty-Kalender nie (die Kollektionsregel schliesst «Beauty» aus).
+  if (/advent-?s?kalender|weihnachtskalender|weihnachts-?countdown|schlittenkalender|advent calendar|christmas countdown/.test(s)
+      && !/halloween|\beid\b|ramadan|beauty/.test(s)) t.push('adventskalender');
+  return t;
 }
 
 export function catTags(text) {
