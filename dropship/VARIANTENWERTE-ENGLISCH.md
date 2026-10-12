@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **21'643**
-- Optionen mit englischen Werten (Kandidaten): 2'134
+- Produkte gesehen: **22'241**
+- Optionen mit englischen Werten (Kandidaten): 2'173
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 11'861
+- Werte mit unbekanntem Wort (unverändert): 12'149
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 46
 - übersprungen «kollision-nach-uebersetzung»: 33
@@ -100,5 +100,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 464, `light` 415, `inner` 327, `color` 278, `degrees` 159, `shell` 156, `core` 137, `surface` 122, `⟨satzbau:material-vor-farbe⟩` 111, `diamond` 108, `powder` 107, `high` 101, `skin` 98, `three` 94, `rain` 88, `bag` 85, `case` 84, `french` 84, `four` 76, `belt` 75, `no` 71, `rope` 70, `dual` 69, `petal` 68, `chain` 67, `to` 67, `dark` 63, `feet` 62, `of` 60, `base` 59, `half` 58, `size` 57, `net` 57, `buckle` 56, `tea` 55, `plush` 55, `electric` 54, `code` 53, `face` 52, `strap` 52, `one` 52, `person` 51, `opp` 51, `little` 50, `line` 50, `lens` 50, `bear` 49, `ice` 48, `hat` 47, `space` 47, `cloud` 46, `sheet` 46, `about` 46, `warped` 46, `milk` 45, `clock` 45, `tip` 44, `⟨satzbau:adjektivfolge⟩` 44, `bed` 44, `⟨satzbau:menge-vor-nomen⟩` 44
+`⟨satzbau:adjektiv-vor-nomen⟩` 505, `light` 425, `inner` 327, `color` 280, `shell` 159, `degrees` 159, `core` 137, `surface` 123, `⟨satzbau:material-vor-farbe⟩` 111, `diamond` 108, `powder` 108, `no` 106, `high` 101, `skin` 98, `three` 96, `bag` 91, `rain` 88, `case` 84, `french` 84, `opp` 81, `four` 76, `belt` 75, `rope` 70, `dual` 69, `petal` 68, `chain` 67, `to` 67, `dark` 64, `base` 62, `feet` 62, `half` 62, `of` 60, `size` 57, `net` 57, `buckle` 56, `little` 55, `tea` 55, `one` 55, `plush` 55, `electric` 54, `code` 53, `face` 52, `strap` 52, `person` 51, `fold` 51, `line` 50, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `space` 47, `cat` 46, `cloud` 46, `sheet` 46, `about` 46, `warped` 46, `milk` 45, `clock` 45
 
