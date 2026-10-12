@@ -46,6 +46,10 @@ SCHARF = os.environ.get("SCHARF") == "1"
 N = int(os.environ.get("N", "40"))
 KONTROLLE = int(os.environ.get("KONTROLLE", "0"))
 KLASSE = os.environ.get("KLASSE", "Inappropriate image")
+# 12.10.2026: Waffenzubehör nie per Bildtausch an Google vorbeischieben (siehe main). Wortgrenzen, damit «Hochdruckreiniger-
+# Pistole» oder «Heissluftpistole» nicht getroffen werden; «Holster» gilt auch im Wortinneren («Pistolenholster»).
+WAFFENZUBEHOER = re.compile(r"holster|\b(waffen\w*|waffe|gewehr\w*|munition|schlagring\w*|schlagst[oö]ck\w*|"
+                            r"elektroschocker|taser|pfefferspray|zielfernrohr\w*|airsoft\w*)\b", re.I)
 MODELL_GPT = os.environ.get("MODELL_GPT", "gpt-5.5")
 
 PROMPT = """Du prüfst Produktbilder für Google Merchant (Gratis-Einträge, Schweiz). Google hat das HAUPTBILD (Bild 1) dieses
@@ -161,6 +165,14 @@ def main():
         if not p.get("publishedOnPublication"):
             # 05.10.2026: aus dem Google-Kanal genommene Ware (Sperr-Tags) kostet kein Vision-Kontingent mehr.
             zaehl["nicht_in_google"] += 1; continue
+        if WAFFENZUBEHOER.search(p.get("title") or ""):
+            # 12.10.2026: Bei Waffenzubehör (z. B. «Bauchtasche mit Holster») ist der Artikel selbst der Grund. Ein anderes
+            # Hauptbild würde Googles Regel nur umgehen → nie tauschen, als «motiv» quittieren.
+            zaehl["motiv"] += 1
+            if led:
+                led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tmotiv\t\t\tRegel Waffenzubehör im Titel: {p['title'][:80]}\n")
+            print(f"  motiv     {h:<55} Regel Waffenzubehör im Titel", flush=True)
+            continue
         med = [m for m in p["media"]["nodes"] if (m.get("image") or {}).get("url")]
         if len(med) < 2:
             zaehl["zu_wenig_bilder"] += 1; continue
