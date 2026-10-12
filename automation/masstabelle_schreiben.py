@@ -55,6 +55,17 @@ def rang(g):
         return None
 
 
+# Reihenfolge zählt: «Länge (Bustier)» enthält «bust» → «länge» vor «bust» prüfen; «fusslänge» vor «länge»
+KANON = [("brust", "brust"), ("fuss", "fusslänge"), ("innenbein", "innenbein"), ("körper", "körpergrösse"), ("länge", "länge"),
+         ("laenge", "länge"), ("taille", "taille"), ("hüfte", "hüfte"), ("huefte", "hüfte"), ("saum", "saumweite"),
+         ("schulter", "schulter"), ("ärmel", "ärmel"), ("bust", "brust")]
+
+
+def kanon(name):
+    n = name.strip().lower()
+    return next((k for w, k in KANON if w in n), n)
+
+
 def in_cm(t):
     f = 2.54 if t.get("einheit") == "inch" else 1.0
     return {norm_gr(z["groesse"]): [round(w * f * 2) / 2 for w in z["werte"]] for z in t.get("zeilen") or []}
@@ -69,9 +80,14 @@ def urteil(eintrag, shop_groessen):
         return False, "keine Zweitlesung", None
     if a.get("einheit") not in ("cm", "inch") or b.get("einheit") not in ("cm", "inch"):
         return False, f"Einheit unklar ({a.get('einheit')}/{b.get('einheit')})", None
-    sa, sb = [s.strip().lower() for s in a["spalten"]], [s.strip().lower() for s in b["spalten"]]
+    if a.get("sicherheit") != "hoch" or b.get("sicherheit") != "hoch":
+        return False, f"Lesung nicht sicher ({a.get('sicherheit')}/{b.get('sicherheit')}) — {a.get('bemerkung', '')[:90]}", None
+    # 12.10.: Spalten nach Grundbedeutung vergleichen («Rocklänge» = «Länge», «Brust (Bluse)» = «Brust») — die ZAHLEN entscheiden
+    sa, sb = [kanon(x) for x in a["spalten"]], [kanon(x) for x in b["spalten"]]
     if sa != sb:
         return False, f"Spalten verschieden: {a['spalten']} / {b['spalten']}", None
+    if any("unklar" in x.lower() for x in a["spalten"] + b["spalten"]):
+        return False, f"Spalte unklar: {a['spalten']} / {b['spalten']}", None
     ta, tb = in_cm(a), in_cm(b)
     if set(ta) != set(tb):
         return False, f"Grössen verschieden: {sorted(ta)} / {sorted(tb)}", None
@@ -82,9 +98,10 @@ def urteil(eintrag, shop_groessen):
             if abs(x - y) > TOLERANZ:
                 return False, f"{g}/{a['spalten'][i]}: {x} ≠ {y}", None
     shop = {norm_gr(g) for g in shop_groessen}
-    fremd = sorted(set(ta) - shop)
-    if shop and fremd:
-        return False, f"Grössen nicht im Shop: {fremd}", None
+    if shop:   # Zeilen, die der Shop nicht verkauft, fallen weg; mind. 2 Zeilen und ≥ 50 % der Shop-Grössen müssen bleiben
+        ta = {g: w for g, w in ta.items() if g in shop}
+        if len(ta) < 2 or len(ta) < 0.5 * len(shop):
+            return False, f"Tabelle passt nicht zu den Shop-Grössen (Tabelle {sorted(in_cm(a))}, Shop {sorted(shop)})", None
     reihe = sorted(ta, key=lambda g: (rang(g) is None, rang(g) or 0))
     if any(rang(g) is None for g in reihe):
         return False, f"Grösse nicht einordenbar: {[g for g in reihe if rang(g) is None]}", None
@@ -109,6 +126,11 @@ def block_html(t):
             "</div><!--/ls-masstabelle-->")
 
 
+def gleich(x, y):
+    n = lambda h: re.sub(r">\s+<", "><", re.sub(r"<!--.*?-->", "", h or "", flags=re.S)).strip()
+    return n(x) == n(y)
+
+
 def einsetzen(alt, block):
     neu = BLOCK.sub("", alt)
     neu = GENERISCH.sub("", neu) if "84–88" in alt or "84-88" in alt else neu
@@ -120,9 +142,9 @@ def einsetzen(alt, block):
 
 
 def selbsttest():
-    t = {"leser": {"gefunden": True, "einheit": "cm", "messart": "flach", "spalten": ["Brust", "Länge"],
+    t = {"leser": {"gefunden": True, "sicherheit": "hoch", "einheit": "cm", "messart": "flach", "spalten": ["Brust", "Länge"],
                    "zeilen": [{"groesse": "S", "werte": [40, 120]}, {"groesse": "M", "werte": [42, 121]}]},
-         "pruefer": {"gefunden": True, "einheit": "cm", "messart": "flach", "spalten": ["Brust", "Länge"],
+         "pruefer": {"gefunden": True, "sicherheit": "hoch", "einheit": "cm", "messart": "flach", "spalten": ["Rocklänge" if False else "Brust", "Länge"],
                      "zeilen": [{"groesse": "M", "werte": [42.5, 121]}, {"groesse": "S", "werte": [40, 120]}]}}
     faelle = [
         (urteil(t, ["S", "M", "L"])[0], True),
@@ -134,6 +156,9 @@ def selbsttest():
                  "pruefer": {**t["pruefer"], "zeilen": [{"groesse": "S", "werte": [44, 120]}, {"groesse": "M", "werte": [42, 121]}]}},
                 ["S", "M"])[0], False),                                                         # Spalte fällt
         (norm_gr("xxl") == "2XL", True),
+        (gleich('<div>\n<p>a</p>\n</div><!--x-->', '<div><p>a</p></div>'), True),
+        (kanon("Rocklänge") == kanon("Länge") and kanon("Brust (Bluse)") == "brust" and kanon("Länge (Bustier)") == "länge", True),
+        (urteil({**t, "pruefer": {**t["pruefer"], "sicherheit": "mittel"}}, ["S", "M"])[0], False),     # unsicher → nie
         ("ls-masstabelle" in einsetzen('<p>x</p><div class="ls-produktdetails">y</div>', block_html(urteil(t, ["S", "M"])[2])), True),
         (einsetzen('<h4>📏 Grössentabelle (Damen, cm)</h4><table><tr><td>84–88</td></tr></table><p>z</p>', "B").count("84–88"), 0),
         (einsetzen(einsetzen('<p>x</p><div class="ls-produktdetails">y</div>', block_html(urteil(t, ["S", "M"])[2])).replace("<!--/ls-masstabelle-->", ""),
@@ -160,7 +185,7 @@ def main():
             continue
         alt = p["descriptionHtml"] or ""
         neu = einsetzen(alt, block_html(t))
-        if neu == alt:
+        if gleich(neu, alt):   # Shopify setzt Zeilenumbrüche zwischen Tags und entfernt Kommentare → bereinigt vergleichen
             continue
         if not SCHARF:
             print(f"  (trocken) {h}: {len(t['reihe'])} Grössen × {len(t['spalten'])} Masse"); continue

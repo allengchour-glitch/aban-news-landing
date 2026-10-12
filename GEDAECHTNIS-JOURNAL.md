@@ -49,6 +49,16 @@
 
 
 
+## 📏 Masstabellen des Modells, Kassen-Lieferdatum, Werbe-Kontingent (2026-10-12 abends, «weiter verbessern alles mögliche»)
+- Masstabellen: CJ-Tabellenbilder per Workflow (10 Vision-Agenten) gefunden und DOPPELT gelesen; `masstabelle_schreiben.py` schreibt
+  nur bei «hoch»/«hoch», gleicher Bedeutung der Spalten (Rocklänge = Länge; Falle: «Länge (Bustier)» enthält «bust»), ≤ 1 cm Abweichung,
+  steigenden Werten → 7 von 21 live (Aurora live per WebFetch geprüft), 6 ehrlich ohne Tabelle, 8 bewusst nicht (unsicher/unklar).
+  Falle: Shopify setzt Zeilenumbrüche und entfernt Kommentare → bereinigt vergleichen, sonst schreibt der Wächter täglich neu.
+- Kassen-Lieferdatum: Kasse = Bearbeitung P3D + Transit; Wache setzte Transit = Zusage → Kasse 3 WT später als Seite. Jetzt Transit =
+  Zusage − Bearbeitung (live gelesen), CH 7–17 / LI 12–42.
+- Werbe-Kontingent: Aurora 19:23 Label → 19:55 «Over capacity» — jede Produktänderung schickt neu an Google; bei vollem Kontingent fällt
+  das Produkt aus der Werbung. Kampagne pausiert (Betreiber). → `dropship/MASSTABELLEN-2026-10-12.md`
+
 ## 🗓️ Messrunde mit 5 Prüfern + Skeptikern: die zwei Spitzenreiter fielen, ein schmaler Rest war echt (2026-10-12 abends)
 - Workflow (5 Dimensionen → Richter → je 3 Skeptiker): Platz 1 «Saison-Tags» (8 Pkt) und Platz 2 «Bestellschluss» (7) wurden
   WIDERLEGT — kaum Verkehr auf Saisonseiten (28 von 1'016 Einstiegen in 30 T), Halloween-Wächter existiert, Produktseite zeigt schon
