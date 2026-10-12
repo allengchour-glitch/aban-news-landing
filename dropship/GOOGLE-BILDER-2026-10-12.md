@@ -33,3 +33,11 @@ nur 1 Handle mit Sonderzeichen. Kein Fehler auf unserer Seite → Abruf-/Prüfst
 
 ## 5. «Image under review» (439)
 Googles laufende Prüfung (u. a. nach Bildwechseln). Kein Handgriff möglich, ausser keine unnötigen Bildwechsel auszulösen.
+
+## Nachtrag 12:15 UTC — scharfer Bildtausch über die 39 offenen «Inappropriate image»
+- Ergebnis: **17 getauscht** (11 beide Modelle einig, 6 Nachrunde «tausch-u») · 12 Motiv (Artikel selbst der Grund, u. a.
+  Holster-Tasche per Regel, taktischer Helm, Totenkopf-Messerhalter, RC-Panzer mit Schussfunktion) · 1 behalten · 2 uneinig ·
+  7 nur ein Bild · 0 Fehler. Nichts gelöscht, jeder Tausch per `--rueckweg` umkehrbar.
+- Rücklese aller Tausche (`--ruecklesen`): geprüft 548 · **live korrekt 540** · 2 abweichend (beide nicht mehr im Google-Kanal) ·
+  6 nicht aktiv.
+- Wirkung bei Google: erst nach dem nächsten Vollscan messbar (`google_bildtausch_bilanz.py`, Zeile «BILDTAUSCH-QUOTE»).
