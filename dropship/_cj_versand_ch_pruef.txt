@@ -7288,3 +7288,14 @@ herren-canvas-schuhe-mit-weicher-sohle-680384	1378972972672487424	16	11.24	ok	la
 gestreiftes-langarm-top-tragerrock-set-922176	1714942237123031040	16	10.55	ok	landeseite
 fidget-spinner-schlusselanhanger-der-stresskil-693888	1564876306281025536	16	4.29	ok	landeseite
 elektrischer-augenbrauenentferner-0e6332	05E46045-9168-43B0-A78D-D17B21A44188	6	5.78	ok	landeseite
+kreatives-sturmfeuerzeug-mit-doppelflamme-190080	1535875882005573632	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetisches-leder-kartenetui-mit-stander-645696	1580751289514995712	7	5.69	ok	landeseite
+selbstreinigende-katzenburste-aus-stahl-200576	1427861989371285504	16	7.25	ok	landeseite
+baby-plusch-overall-mit-kapuze-231232	1458308117736591360	16	12.94	ok	landeseite
+5-in-1-magnetisches-wireless-ladegerat-mit-nac-274304	1384449598243868672	7	9.86	ok	landeseite
+tassen-und-glaserreiniger-fur-die-kuche-617152	1521684503813697536	16	8.78	ok	landeseite
+kabelloser-mini-entsafter-fur-fruchte-gemuse-545600	1677565240755625984	7	23.75	ok	landeseite
+mattierendes-concealer-make-up-olregulierend-53f732	05425EE9-A8F5-49EB-BEF7-00B613E013D0	3	5.69	ok	landeseite
+haltungs-korrektor-fur-rucken-und-schlusselbei-5da7b0	059C3277-A787-4FA1-BD6F-31DB223B1394	16	7.79	ok	landeseite
+schmetterling-ohrclip-ohrhaken-486336	1496063290286149632	16	4.50	ok	landeseite
+kuhlende-liegematte-fur-haustiere-5ce301	05C49FCD-CAB2-47F3-A6A7-027C3699C82C	16	6.01	ok	landeseite
