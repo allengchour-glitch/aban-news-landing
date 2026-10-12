@@ -62755,3 +62755,4 @@ gid://shopify/Product/16615822131591	gid://shopify/MediaImage/77496839700871
 gid://shopify/Product/16615822459271	gid://shopify/MediaImage/77496841535879
 gid://shopify/Product/16615822524807	gid://shopify/MediaImage/77496841568647
 gid://shopify/Product/16615965917575	gid://shopify/MediaImage/77497628033415
+gid://shopify/Product/15447919722881	gid://shopify/MediaImage/77497741181319	bildtausch-sperre
