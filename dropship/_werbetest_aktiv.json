@@ -1,11 +1,16 @@
 {
  "kampagne": "sirene-test",
- "start": "2026-10-10",
+ "start": "2026-10-13",
  "ende": "2026-10-17",
  "budget_tag": 10,
  "marge": 19,
  "google_ads": "Kampagne «Sales-Shopping-1» (24340093418), Konto 719-826-3241",
  "plan": "dropship/WERBETEST-PLAN-2026-10-10.md",
- "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
- "status": "aktiviert (Betreiber bestätigt 20:29 UTC) · AI Max: Erweiterung der finalen URL aus"
+ "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+ "status": "aktiviert · Label «werbetest» am 12.10. ~19:40 UTC von Sirène auf Aurora umgestellt (Betreiber «umstellen»); Aurora ohne Google-Meldung, 30/30 Varianten verfügbar, CHF 69.90",
+ "vorher": {
+  "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+  "start": "2026-10-10",
+  "ergebnis": "10.–12.10.: 25 Sitz., alle auf fremden Produkten, 0 Korb; Sirène bei Google «Over capacity for Shopping ads (in CSS program) [CH]» = nicht bewerbbar"
+ }
 }

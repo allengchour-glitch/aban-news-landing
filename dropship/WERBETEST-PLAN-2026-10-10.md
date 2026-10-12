@@ -62,3 +62,16 @@ Täglich: `BUDGET=<ausgegeben> MARGE=19 python3 tools/werbetest_trichter.py sire
   Entscheid bis zum Bild der Produktgruppen: Kampagne pausieren.
 - **Pausiert** (Betreiber bestätigt, ~20:05 UTC). Google-Ads-App zeigte kurz davor 10 Klicks / 262 Anzeigen heute, alle in der Stunde 21–22 Uhr Zeitzone Berlin.
   Entscheid: Kampagne bleibt pausiert, bis die Produktgruppe nur die 8 Sirène-Zeilen enthält. Andere Produkte nur in einer eigenen Kampagne mit eigenem Budget (Betreiber-Entscheid).
+
+## 12.10.2026 ~19:40 UTC — Testprodukt gewechselt: Sirène → Aurora (Betreiber «umstellen»)
+- **Warum 0 Klicks:** Die Produktgruppe enthielt nur Sirène (Label `werbetest`), und Sirène trägt bei Google
+  «Over capacity for Shopping ads (in CSS program) [CH]» — das Merchant-Konto hat mehr Produkte als Werbe-Kontingent in der
+  Schweiz (rund 21'000 von 53'000 betroffen, Stand 22.09.). Die Kampagne hatte kein bewerbbares Produkt: 23 Sitzungen am 10.10.
+  (alle auf fremden Produkten, vor der Einschränkung), danach 1 pro Tag.
+- **Umgestellt:** `mm-google-shopping.custom_label_0 = werbetest` auf Aurora gesetzt (CHF 69.90, 30/30 Varianten, keine Google-Meldung,
+  2 Google-Gratis-Besuche in 90 T), bei Sirène gelöscht, beides zurückgelesen. Google übernimmt das nach dem nächsten Feed-Abgleich (einige Stunden).
+  Kampagne, Budget (CHF 10/Tag) und Suffix `utm_campaign=sirene-test` bleiben gleich → Messung läuft unter demselben Namen weiter.
+- **Ampel:** misst jetzt die Google-Meldung am Testprodukt (⛔ «nicht bewerbbar») und die Sitzungen gestern+heute.
+  Steuerdatei `_werbetest_aktiv.json`: Handle Aurora, Zählung ab 13.10.; der Sirène-Abschnitt steht unter `vorher`.
+- **Offen (Betreiber):** Werbe-Kontingent im Merchant Center erhöhen lassen (Formular «additional quota»), sonst sind ~40 % des
+  Sortiments in Shopping-Anzeigen unsichtbar. Gratis-Einträge sind davon nicht betroffen.

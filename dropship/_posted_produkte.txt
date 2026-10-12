@@ -220,3 +220,5 @@ name:hydro
 slug:tragbarer-mixer-mit-usb-c-ladefunktion-794304
 name:tragbarermixermitusbcladefunktion
 slug:kaschmir-strickpullover-fur-damen
+slug:ultradunne-magsafe-powerbank-10-000-mah-627600
+name:ultradünnemagsafepowerbank10000mah

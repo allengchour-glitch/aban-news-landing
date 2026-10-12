@@ -1,0 +1,89 @@
+{
+ "_zweck": "Geschenk-Schaufenster (geschenk_unterwelten.py): diese Produkte nie in eine Geschenkwelt (Kontaktbogen-Befund). Ware bleibt im Shop.",
+ "veto": [
+  {
+   "id": "gid://shopify/Product/15454180409729",
+   "handle": "sportliches-armband-612300",
+   "titel": "Sportliches Armband",
+   "grund": "Bild zeigt eine Uhr im Stil einer Luxusmarke (Titel «Armband») — Titel/Bild passen nicht, Markenanlehnung",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15454180770177",
+   "handle": "tassen-fur-heissen-tee-619300",
+   "titel": "Tassen für heissen Tee",
+   "grund": "Lieferantentext im Bild («Frog Shinoshiba Beaker», Massangaben)",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15525463261569",
+   "handle": "blumen-topf-bausteine-458880",
+   "titel": "Blumen Topf Bausteine",
+   "grund": "Bild zeigt einen Drachen, Titel «Blumen Topf» — Bild passt nicht",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15508421509505",
+   "handle": "makeup-set-fur-einsteiger-mit-concealer-eyelin-298240",
+   "titel": "Makeup-Set für Einsteiger mit Concealer & Eyeliner",
+   "grund": "Lieferantencode «KIT04B» im Bild",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15497533981057",
+   "handle": "tongqu-kung-fu-teeset-mit-purpursand-ornament-594240",
+   "titel": "Tongqu Kung Fu Teeset mit Purpursand-Ornament",
+   "grund": "Bild zeigt drei Mönchsfiguren, Titel «Teeset» — Bild passt nicht",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/16604912648583",
+   "handle": "chiffon-schal-set-mit-kapuze-620700",
+   "titel": "Chiffon-Schal-Set mit Kapuze",
+   "grund": "Lieferantencode «#13» im Bild, Ware am Bügel kaum erkennbar",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/16604911305095",
+   "handle": "atmungsaktiver-viskose-schal-fur-damen-630300",
+   "titel": "Atmungsaktiver Viskose-Schal für Damen",
+   "grund": "Lieferantencode «53#» im Bild",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15493861245313",
+   "handle": "keramik-haarglatter-lockenstab-086208",
+   "titel": "Keramik Haarglätter & Lockenstab",
+   "grund": "Bild zeigt britischen Stecker (Typ G) — in der Schweiz unbrauchbar ohne Adapter",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15477388378497",
+   "handle": "tulpen-diffuser-aus-getrockneten-blumen-635900",
+   "titel": "Tulpen Diffuser aus getrockneten Blumen",
+   "grund": "Collage mit fremdem Text («Gardenia»), Ware kaum erkennbar",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15483935949185",
+   "handle": "herzanhanger-mit-kristall-402304",
+   "titel": "Herzanhänger mit Kristall",
+   "grund": "Bild zeigt eine Rose in der Box, Titel «Herzanhänger» — Bild passt nicht",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15450848428417",
+   "handle": "flammen-vulkan-luftbefeuchter-mit-aroma-diffus-915456",
+   "titel": "Flammen-Vulkan-Luftbefeuchter mit Aroma-Diffusor",
+   "grund": "Englischer Werbetext im Bild («Purified air, fragrant smell»)",
+   "datum": "2026-10-12"
+  },
+  {
+   "id": "gid://shopify/Product/15510333882753",
+   "handle": "mini-bubble-armband-kupfer-vergoldet-606500",
+   "titel": "Mini Bubble-Armband – Kupfer, vergoldet",
+   "grund": "Bild zeigt Namens-Armbänder (ELLIE/JACKY/LAURA) — wirkt personalisierbar, ist es nicht",
+   "datum": "2026-10-12"
+  }
+ ]
+}
