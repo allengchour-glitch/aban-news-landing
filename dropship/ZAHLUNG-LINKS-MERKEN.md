@@ -46,3 +46,6 @@
 - Zahllink (Liste der wartenden Zahlungen): https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5
   Dort nur die Bestellung **SD2610121602510642100 / LX1025 über $73.29** bezahlen; leere `DP…`-Hüllen ohne Betrag nie.
 - Nach der Zahlung holt `cj_order_watch.py` die Sendungsnummer und meldet sie an Shopify zurück (nichts von Hand nötig).
+- **Betreiber 12.10. ~16:45 UTC: «bezahle morgen, KK gesperrt»** → LX1025 wird am 13.10. bezahlt. Geprüft: kein eigener Automat
+  storniert unbezahlte CJ-Aufträge (cj_zahlung_offen.py meldet nur, cj_fulfill_engine zahlt nie, Guthaben $0). Die Ampel zeigt
+  bis zur Zahlung «LX1025: UNBEZAHLT → 💳 zahlen». Am 13.10. nachprüfen: Status UNSHIPPED = bezahlt.
