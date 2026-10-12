@@ -1,6 +1,6 @@
 {
   "_zweck": "Fremdmarke als WARE im Titel (nicht Anlehnung «im Chanel-Stil» = marken_filter.mjs, nicht Kompatibilität «für iPhone»). Anlass 10.10.2026: «Harrods Keramik-Tasse» (Harrods-Logo auf jedem Bild, CJ, CHF 19.90) seit 24.09. bekannt, aber nur aus der Herbst-Reihe genommen — weiter aktiv und im Google-Kanal; «Xbox 360 Wireless Controller» in nachgemachter Xbox-Verpackung; «iPhone 12» = Billig-Smartwatch mit iPhone-Text. Gelesen von marke_als_ware.py (Bestand/Aufseher) und marke_als_ware.mjs (CJ-Importer).",
-  "marken": "harrods|starbucks|burberry|disney|mickey mouse|minnie mouse|marvel|spider-?man|batman|hello kitty|sanrio|kuromi|my melody|cinnamoroll|pok[eé]mon|pikachu|harry potter|hogwarts|star wars|one piece|naruto|dragon ball|demon slayer|labubu|pop mart|jellycat|squishmallows?|stanley|owala|hydro ?flask|dyson|lego|xbox|playstation|ps[345]|nintendo|switch pro|iphone|ipad|airpods|apple watch|apple|samsung|galaxy (?:s\\d+|watch|buds|tab)|xiaomi|mijia|mi band|huawei|tesla|audi|bmw|mercedes(?:-benz)?|porsche|ferrari|lamborghini|coca-?cola|nasa|nba|fifa",
+  "marken": "harrods|starbucks|burberry|disney|mickey mouse|minnie mouse|marvel|spider-?man|batman|hello kitty|sanrio|kuromi|my melody|cinnamoroll|pok[eé]mon|pikachu|harry potter|hogwarts|star wars|one piece|naruto|dragon ball|demon slayer|labubu|pop mart|jellycat|squishmallows?|stanley|owala|hydro ?flask|dyson|lego|xbox|playstation|ps[345]|nintendo|switch pro|iphone|ipad|airpods|apple watch|apple|samsung|galaxy (?:s\\d+|watch|buds|tab)|xiaomi|mijia|mi band|huawei|tesla|audi|bmw|mercedes(?:-benz)?|porsche|ferrari|lamborghini|coca-?cola|nasa|nba|fifa|hot ?wheels|barbie|mattel|hasbro|nerf|playmobil|paw patrol|peppa pig|minecraft|fortnite|roblox",
   "kompat": "(?:f(?:ü|ue)rs?|for|kompatibel(?: mit)?|compatible(?: with)?|passend (?:f(?:ü|ue)r|zu)|fits|geeignet f(?:ü|ue)r|zu|und|&|/|,)\\s*(?:den |die |das |dein |deine |alle |ihr |ihre )?(?:[\\w/.-]*\\d[\\w/.-]*\\s)?$",
   "kompat_nach": "^.{0,40}?(?:kompatib|zubeh(?:ö|oe)r|ersatz|h(?:ü|ue)lle|case|(?<!smart-)(?<!smart )armband|lade|charger|kabel|adapter|halter|schutz|folie|st(?:ä|ae)nder|netzteil|akku|batterie|schraube|werkzeug|display|reparatur|anschluss|geh(?:ä|ae)use|controller-halt|l(?:ü|ue)fter|k(?:ü|ue)hl|button|taste|tastatur|sticker|aufkleber|skin|aufsatz|erweiterung)",
   "lizenz_lieferanten": "^(fortura-|bb-|printful|pf-|gelato)",
@@ -27,7 +27,10 @@
       "Drahtloser PS4-Controller",
       "Mi Band 6 Runway Smartwatch",
       "Kabelloser PS4 Controller",
-      "Xiaomi Mi Band 1S Smart-Armband mit Herzfrequenz"
+      "Xiaomi Mi Band 1S Smart-Armband mit Herzfrequenz",
+      "Hot Wheels Messbecher & Cocktailshaker",
+      "Hot Wheels Drift Board Skateboard",
+      "Barbie Puppenhaus"
     ],
     "frei": [
       "Stossfeste iPhone-Hülle aus Silikon, transparent",

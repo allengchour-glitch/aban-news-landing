@@ -366,11 +366,15 @@ def main():
                                    "rules": [{"column": "TAG", "relation": "EQUALS", "condition": tag}]}}})["collectionUpdate"]
         print("   Kollektion:", r["collection"], r["userErrors"], flush=True)
         # Smart-Kollektionen füllen sich asynchron — kurz warten, dann die ersten 48 reihum setzen
-        for _ in range(20):
+        # 12.10.: 20 × 15 s reichten nicht — «unter 50» stand nach 5 min noch bei 36'317 (alte Preis-Regel), die gesetzte
+        # Reihenfolge galt dem alten Bestand (Kontaktbogen: Kugelhahn, Crimpzange). Jetzt bis 20 min, sonst Warnung.
+        for _ in range(80):
             n = gql('query($id:ID!){c:collection(id:$id){productsCount{count}}}', {"id": col["id"]})["c"]["productsCount"]["count"]
             if abs(n - len(soll)) <= len(soll) * 0.1:   # alter Bestand (z. B. 2'743) zählt nicht als «gefüllt»
                 break
             time.sleep(15)
+        else:
+            print(f"   ⚠️ Kollektion nach 20 min noch nicht neu berechnet ({n} statt {len(soll)}) — Reihenfolge im nächsten Lauf erneut setzen", flush=True)
         reihe = schaufenster(reihe)
         moves = [{"id": k["id"], "newPosition": str(i)} for i, k in enumerate(reihe[:48])]
         r = gql('mutation($id:ID!,$m:[MoveInput!]!){collectionReorderProducts(id:$id,moves:$m){job{id} userErrors{message}}}',

@@ -42,3 +42,20 @@ NUR=alle SCHARF=1 python3 automation/geschenk_unterwelten.py
 JURY=0 …                                                   # ohne Bildjury
 python3 -c "import sys;sys.path.insert(0,'automation');import betreiber_ampel as b;print(b.werbetest())"
 ```
+
+## Nachtrag 12.10. spät: alle Geschenk-Seiten kuratiert und per Bild geprüft
+
+- **Lauf:** `geschenk_unterwelten.py` über alle 11 Welten (sie, ihn, kinder, unter30, wichtel, alle, unter50, unter100, preishits, hochzeit, sets). Die Gemini-Jury warf 263 + 85 Kandidaten von den ersten 48 Plätzen.
+- **Falle (GEMESSEN):** Nach dem Umstellen der Regel von «Preis < 50» auf «Tag geschenkwelt-…» rechnet Shopify die Kollektion asynchron neu. Bei «unter 50» stand der Zähler 5 Minuten später noch bei 36'317, bei «unter 100» bei 51'425. Die Reihenfolge, die in dieser Phase gesetzt wurde, galt auf dem alten Bestand: Der Kontaktbogen zeigte Messing-Kugelhahn, Crimpzange und Schuhe. **Lösung:** nach dem Konvergieren (400/400/400/189/217) die Reihenfolge ein zweites Mal setzen. Das Warten im Skript (20 × 15 s) reicht für grosse Kollektionen nicht.
+- **«Sets & Bundles»:** von 2'826 Titel-Treffern («-set», «teilig») auf 217 kuratierte Sets (beauty ≤ 60, Geschenksets, Schmuck, Tee, Bettwäsche).
+- **Kontaktbogen der ersten 24 je Seite, 21 neue Vetos** (`data/geschenk_veto.json`, jetzt 35):
+  - Englischer oder chinesischer Text im Bild («pillowcase», «2pcs», «HD screen E88PRO», «1 gold hairband», Massangaben)
+  - Adventskalender «National Parks … 2025» (falsches Jahr)
+  - Fremdmarken (HiVi, DUNUF, WISE HAWK)
+  - «Hot Wheels» im Titel
+  - Doppelbild (Riesen-Weihnachtsmütze)
+  - Stoff ab Meter als Hochzeitsgeschenk
+- **Nebenfund «Hot Wheels» → Klasse:**
+  - `marke_als_ware_regel.json` kennt jetzt auch Spielzeugmarken: Hot Wheels, Barbie, Mattel, Hasbro, Nerf, Playmobil, Paw Patrol, Peppa Pig, Minecraft, Fortnite, Roblox. Lizenzware von Fortura bleibt über das SKU-Präfix frei.
+  - Prüfung: Kanarien 63/63, Python und JS urteilen gleich über 53'418 Titel.
+  - Die 2 Treffer zeigen auf keinem Bild eine Marke. Deshalb nur umbenannt («Dreifach-Messbecher für Cocktails (15 / 22,5 / 28 ml)», «Drift Board – 2-Rad-Freestyle-Skateboard»), nicht gedraftet.
