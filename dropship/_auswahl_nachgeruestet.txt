@@ -1190,3 +1190,4 @@
 16612786176391	Farbe:5:5	2026-10-12	smart-armband-mit-grossem-display-und-anrufben-792768
 16612785619335	Farbe:2:2	2026-10-12	bluetooth-lautsprecher-mit-dual-horn-und-rgb-b-608800
 16612785488263	Farbe:3:3	2026-10-12	handheld-mini-led-projektor-f59a5c
+16614808584583	Farbe:6+Grösse:4:24	2026-10-12	dreiteiliges-hundegeschirr-aus-kunstleder-57d787
