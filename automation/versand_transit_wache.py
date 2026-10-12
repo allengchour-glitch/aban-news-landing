@@ -18,6 +18,7 @@ Neue Tarife/Zonen ohne Transitzeit fallen damit am nächsten Tag auf.
 """
 import json
 import os
+import re
 import sys
 import urllib.request
 
@@ -65,6 +66,17 @@ def main():
         print(f"⚠️ VERSAND-LIEFERZEIT: unklar ({type(e).__name__}: {str(e)[:100]})")
         return 1
     versand = next((p["body"] for p in pol if p["type"] == "SHIPPING_POLICY"), "")
+    # 12.10.2026: Kasse = Bearbeitungszeit + Transit. Die Regel nennt die GESAMT-Zusage; Transit = Zusage − Bearbeitung.
+    bearb = 0
+    if REGEL.get("abzug_bearbeitung"):
+        try:
+            pt = gql("{deliveryPromiseSettings{processingTime}}", ver="2026-01")["deliveryPromiseSettings"]["processingTime"] or ""
+            m = re.fullmatch(r"P(\d+)D", pt)
+            bearb = int(m.group(1)) if m else 0
+            if not m:
+                print(f"⚠️ VERSAND-LIEFERZEIT: Bearbeitungszeit «{pt}» nicht lesbar — rechne ohne Abzug", file=sys.stderr)
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ VERSAND-LIEFERZEIT: Bearbeitungszeit unklar ({type(e).__name__}) — rechne ohne Abzug", file=sys.stderr)
     befunde, ok, gesetzt = [], 0, 0
     for k, z in REGEL["zonen"].items():
         if z.get("richtlinie_satz") and z["richtlinie_satz"] not in versand:
@@ -74,7 +86,8 @@ def main():
         for g in p["profileLocationGroups"]:
             zs = []
             for zn in g["locationGroupZones"]["nodes"]:
-                soll = REGEL["zonen"][zonen_schluessel(zn["zone"])]
+                gesamt = REGEL["zonen"][zonen_schluessel(zn["zone"])]
+                soll = {"min_tage": max(1, gesamt["min_tage"] - bearb), "max_tage": max(1, gesamt["max_tage"] - bearb)}
                 mds = []
                 for m in zn["methodDefinitions"]["nodes"]:
                     if not m["active"]:
@@ -114,7 +127,8 @@ def main():
         print(f"⚠️ VERSAND-LIEFERZEIT: {ok} Tarife ok · {len(befunde)} Befunde: " + " | ".join(befunde[:5])
               + (f" · gesetzt {gesetzt}" if gesetzt else ""))
         return 1
-    print(f"VERSAND-LIEFERZEIT: {ok} Tarife mit ehrlicher Lieferzeit" + (f" · gesetzt {gesetzt}" if gesetzt else ""))
+    print(f"VERSAND-LIEFERZEIT: {ok} Tarife mit ehrlicher Lieferzeit (Bearbeitung {bearb} T + Transit = Zusage)"
+          + (f" · gesetzt {gesetzt}" if gesetzt else ""))
     return 0
 
 
