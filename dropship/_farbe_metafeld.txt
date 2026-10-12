@@ -468,3 +468,5 @@ gid://shopify/Product/16615275528583	Mehrfarbig
 gid://shopify/Product/16615327957383	Silber
 gid://shopify/Product/16615344439687	Silber
 gid://shopify/Product/16615782515079	Schwarz
+gid://shopify/Product/16615815709063	Mehrfarbig
+gid://shopify/Product/16615816266119	Türkis
