@@ -49,6 +49,13 @@
 
 
 
+## 💳 Zahlungs-Wächter sah «UNPAID» nicht (2026-10-12)
+- `cj_zahlung_offen.py` zählte nur `IN_CART` als zahlbar. CJ führt den per API angelegten Auftrag LX1025 aber als `UNPAID` → «nichts offen»,
+  Bericht `CJ-ZAHLUNG-OFFEN.md` gelöscht, keine Handy-Erinnerung — während $73.29 warteten. Gemessen auf Seite 1: UNPAID LX 1, CREATED «#…» 4
+  (Connector-Hüllen, ohne Betrag).
+- Fix: `ist_zahlbar()` = IN_CART/UNPAID, oder CREATED nur mit LX-Nummer und Betrag > 0 (Selbsttest 7/7). Live: «1 zu bezahlen ($73.29): LX1025».
+- Lehre: Ein Status-Filter auf EINEN Wert ist eine Wette, dass der Lieferant nie umbenennt — Gegenprobe gehört an den echten Fall (heute #1025).
+
 ## 🎃 Anlass-Kollektion zeigte oben Ware, die erst nach dem Anlass ankommt (2026-10-12, «weiter verbessern»)
 - GEMESSEN: «Halloween» 19 Tage vorher: oben 12/12 CJ-Direktversand (Zusage bis 12.11.), 132 Kostüme ab Schweizer Lager (1–2 WT) darunter.
   Ursache: «neueste zuerst» + Grind importiert gerade Halloween-Ware. ChatGPT schickt dorthin (14 Sitz., 0 Körbe); ChatGPT wächst auf 17–32/Woche.

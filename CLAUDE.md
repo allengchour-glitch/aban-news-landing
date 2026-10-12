@@ -507,6 +507,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-12 · 💳 **`cj_zahlung_offen.py` zählte nur IN_CART → LX1025 (UNPAID, $73.29) = «nichts offen», Bericht gelöscht → `ist_zahlbar()` IN_CART/UNPAID + CREATED nur mit LX + Betrag (Hüllen nie), Selbsttest 7/7.**
 - 2026-10-12 · 🎃 **Halloween-Kollektion oben 12/12 CJ-Direktversand (Ankunft bis 12.11.) statt 132 Kostüme ab Schweizer Lager → `anlass_lieferzeit_wache.py` + `data/anlass_kollektionen.json` (MANUAL, Lager oben, nach Anlass zurück; Aufseher täglich); ChatGPT-Verkehr 1 → 17–32/Woche.** → `dropship/ANLASS-LIEFERZEIT-2026-10-12.md`
 - 2026-10-12 · 💳 **Bestell-Ampel zeigte «KEIN CJ-Auftrag» für LX1025 (wartete auf Zahlung): Abgleich nur alle 2 h → Ampel liest das Bestell-Ledger + hängt bei UNPAID den Zahllink an; Abgleich startet sofort, wenn das Ledger jünger ist (`-nt`).** → `dropship/BESTELL-AMPEL-ZAHLUNG-2026-10-12.md`
 - 2026-10-12 · 🔎 **Google-Gratis-Einträge = bester Kanal (44 → 6 Körbe → 1 Kauf), aber Juli 7–27/Woche → seit Aug 0–4: 34 von 48 Juli-Sitzungen auf heute gedrafteten Produkten → `google_nachfrage_wache.py` (197 mit Google-Besuch, 60 weg, 52 ohne Ersatz; Aufseher täglich; Prioritätsquelle für `cj_versand_ch_revive.py`).**

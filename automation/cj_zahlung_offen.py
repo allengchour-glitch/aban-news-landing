@@ -32,7 +32,18 @@ SPERRE = os.path.join(REPO, "dropship", "_cj_nicht_bezahlen.txt")
 MINDEST_EINZAHLUNG = 2000.0     # gemessen/Betreiber 07.09.2026
 # Welche CJ-Status gelten als zahlbar. Konfigurierbar, damit der Waechter in BEIDE
 # Richtungen pruefbar ist und eine CJ-Umbenennung nicht stillschweigend alles verschluckt.
-STATUS_ZAHLBAR = [x.strip() for x in os.environ.get("STATUS_ZAHLBAR", "IN_CART").split(",") if x.strip()]
+# 12.10.2026 (#1025): CJ führt einen API-angelegten, unbezahlten Auftrag als «UNPAID» (LX1025, $73.29) — mit nur
+# «IN_CART» meldete der Wächter «nichts offen» und löschte seinen Bericht, während das Geld wartete.
+STATUS_ZAHLBAR = [x.strip() for x in os.environ.get("STATUS_ZAHLBAR", "IN_CART,UNPAID").split(",") if x.strip()]
+
+
+def ist_zahlbar(o):
+    """Zahlbar = Status in STATUS_ZAHLBAR, oder «CREATED» MIT eigener LX-Nummer UND Betrag > 0.
+    «CREATED» mit «#…»-Nummer ohne Betrag = leere Hülle des CJ-Shopify-Connectors → nie (ZAHLUNG-LINKS-MERKEN.md)."""
+    st, nr = o.get("orderStatus"), str(o.get("orderNum") or "").upper()
+    if st in STATUS_ZAHLBAR:
+        return True
+    return st == "CREATED" and nr.startswith("LX") and float(o.get("orderAmount") or 0) > 0
 
 
 def token():
@@ -97,7 +108,7 @@ def main():
         if not lst:
             break
         for o in lst:
-            if o.get("orderStatus") not in STATUS_ZAHLBAR:
+            if not ist_zahlbar(o):
                 continue
             oid = str(o.get("orderId") or "")
             eintrag = {"id": oid,
@@ -151,7 +162,26 @@ def main():
     print("CJ-ZAHLUNG: " + " · ".join(teile) + f" · Guthaben ${bal:.2f}")
 
 
+def selbsttest():
+    faelle = [({"orderStatus": "UNPAID", "orderNum": "LX1025", "orderAmount": 73.29}, True),
+              ({"orderStatus": "IN_CART", "orderNum": "LX1030", "orderAmount": 20}, True),
+              ({"orderStatus": "CREATED", "orderNum": "#1025", "orderAmount": None}, False),   # Connector-Hülle
+              ({"orderStatus": "CREATED", "orderNum": "LX1031", "orderAmount": 12.5}, True),
+              ({"orderStatus": "CREATED", "orderNum": "LX1032", "orderAmount": 0}, False),
+              ({"orderStatus": "UNSHIPPED", "orderNum": "LX1023", "orderAmount": 59.52}, False),  # bezahlt
+              ({"orderStatus": "TRASH", "orderNum": "LX1016", "orderAmount": 10}, False)]
+    f = 0
+    for o, soll in faelle:
+        ok = ist_zahlbar(o) == soll
+        f += not ok
+        print(f"  {'OK  ' if ok else 'FEHL'} {o['orderNum']} {o['orderStatus']} → {ist_zahlbar(o)}")
+    print("SELBSTTEST", "OK" if not f else f"FEHLER ({f})")
+    return 0 if not f else 1
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
     try:
         main()
     except Exception as e:
