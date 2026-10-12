@@ -735,6 +735,40 @@ rep(r"""      checkVar2();
   }
   function initAll() {""")
 
+# ── 13b. Feinschliff nach Sichtprüfung (12.10.): Griffe aus dem Text, Farbfelder in eine Zeile, Regler-Zeilen ─
+rep(r"""position:absolute;inset:-6px;border:1.5px dashed #16151a;""",
+    r"""position:absolute;inset:-8px;border:1.5px dashed #16151a;""")
+rep(r"""position:absolute;right:-13px;bottom:-13px;width:26px;height:26px;""",
+    r"""position:absolute;right:-21px;bottom:-21px;width:26px;height:26px;""")
+rep(r"""position:absolute;left:-13px;top:-13px;width:26px;height:26px;""",
+    r"""position:absolute;left:-21px;top:-21px;width:26px;height:26px;""")
+rep(r"""width:32px;height:32px;border-radius:50%;border:2px solid #e3e3e3;background:""",
+    r"""width:28px;height:28px;border-radius:50%;border:2px solid #e3e3e3;background:""")
+rep(r"""width:32px;height:32px;border:2px solid #e3e3e3;border-radius:50%;background:none;""",
+    r"""width:28px;height:28px;border:2px solid #e3e3e3;border-radius:50%;background:none;""")
+rep(r"""display:flex;flex-wrap:wrap;gap:8px;""", r"""display:flex;flex-wrap:wrap;gap:6px;""")
+rep(r"""      textBar.appendChild(ctxLh),
+      body.appendChild(textBar));""", r"""      textBar.appendChild(ctxLh),
+      body.appendChild(textBar));
+    // Abstand / Kontur / Zeilen je eine eigene Zeile mit gleich breiter Beschriftung
+    (function () {
+      var k = Array.prototype.slice.call(textBar.children);
+      textBar.style.flexDirection = "column";
+      textBar.style.alignItems = "stretch";
+      [
+        [k[0], k[1]],
+        [k[2], k[3], k[4]],
+        [k[5], k[6]],
+      ].forEach(function (g) {
+        var row = el("div", { style: "display:flex;align-items:center;gap:10px;width:100%;" });
+        g.forEach(function (n) {
+          n && row.appendChild(n);
+        });
+        g[0] && (g[0].style.minWidth = "64px");
+        textBar.appendChild(row);
+      });
+    })();""")
+
 # ── 14. Kopf, Quellverweis entfernen ─────────────────────────────────────────
 lines = [l for l in s.split("\n") if not l.startswith("//# sourceMappingURL")]
 s = "\n".join(lines)
