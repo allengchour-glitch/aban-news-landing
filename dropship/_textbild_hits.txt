@@ -17904,6 +17904,8 @@ gid://shopify/Product/16615814955399	34->2	Silberne Hufeisen-Brosche
 gid://shopify/Product/16615815545223	71->0	Brosche aus echtem Leder mit Kristall
 gid://shopify/Product/16615815807367	13->0	Plüsch-Panda-Anhänger
 gid://shopify/Product/16615815840135	60->3	Kreatives Schlüsselanhänger-Set · 10 Stück
+gid://shopify/Product/16615818396039	93->0	Neon LED Schild für Weihnachtsdeko
+gid://shopify/Product/16615818887559	27->1	Fahrrad-Handytasche mit Touchscreen
 gid://shopify/Product/16615816003975	27->0	Halskette und Armband aus Edelstahl mit Zirkonia
 gid://shopify/Product/16615816233351	18->0	Halskette & Ohrringe – Titanstahl mit Zirkon
 gid://shopify/Product/16615816364423	17->1	Damen Schmuckset mit Zirkonia
