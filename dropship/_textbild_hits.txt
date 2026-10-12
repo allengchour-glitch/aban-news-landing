@@ -17646,3 +17646,6 @@ gid://shopify/Product/16613788320135	13->1	Bluetooth-Diagnosegerät für Auto
 gid://shopify/Product/16613793268103	19->1	Smart Eye Massagegerät mit Luftdruck und Wärme
 gid://shopify/Product/16613801722247	30->0	Lüfterbasis für PS4 Slim Pro
 gid://shopify/Product/16613865816455	22->0	Haustierhalsband aus Silikon mit Buchstaben
+gid://shopify/Product/16614845251975	37->1	Grosses Crossbody für Herren – urbanes Minimaldesign
+gid://shopify/Product/16614845874567	49->0	Abendkleid mit V-Ausschnitt
+gid://shopify/Product/16614846103943	15->1	Rollkoffer mit grossem Fassungsvermögen
