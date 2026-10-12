@@ -354,3 +354,4 @@ gid://shopify/Product/16615398211975	blumiges-sweatshirt-mit-rundhalsausschnitt-
 gid://shopify/Product/16615527055751	mesh-kleid-mit-neckholder-und-bugel-609000	Mesh-Kleid mit Neckholder und Bügel
 gid://shopify/Product/16615562150279	beiges-a-linien-kleid-mit-reissverschluss-616000	Beiges A-Linien Kleid mit Reissverschluss
 gid://shopify/Product/16615611859335	einfarbiges-damenkleid-mit-puffarmel-und-v-aus-610200	Einfarbiges Damenkleid mit Puffärmel und V-Ausschnitt
+gid://shopify/Product/16615770161543	lauflernschuh-mit-schnalle-und-stickerei-55ef6d	Lauflernschuh mit Schnalle und Stickerei
