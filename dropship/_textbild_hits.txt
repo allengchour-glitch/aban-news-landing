@@ -17659,3 +17659,4 @@ gid://shopify/Product/16614857441671	52->1	Schultertasche aus erster Schicht Rin
 gid://shopify/Product/16614857474439	27->0	Flache sportliche Plattform-Sandalen
 gid://shopify/Product/16614857671047	12->2	Flache Strick-Fischmund Sandalen
 gid://shopify/Product/16614858097031	35->0	Sportrucksack für Yoga und Fitness
+gid://shopify/Product/16614858523015	27->3	Messenger Rucksack für den Alltag
