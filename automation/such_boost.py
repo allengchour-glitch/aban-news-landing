@@ -277,7 +277,10 @@ def anwenden(gql, soll, log=print):
 
 
 def such_top(begriff, n=8):
-    u = "https://luxestyle.ch/search?type=product&options%5Bprefix%5D=last&q=" + urllib.parse.quote(begriff)
+    # _lx = Zeitstempel: ohne ihn liefert der Edge-Cache unserer IP Stunden alte Seiten (12.10.: «kostüm» Zeichen für
+    # Zeichen wie um 19:08); mit ihm rechnet Shopify neu (Platz 5 wechselte). options[prefix]=last wie das Theme-Formular.
+    u = ("https://luxestyle.ch/search?type=product&options%5Bprefix%5D=last&q=" + urllib.parse.quote(begriff)
+         + f"&_lx={int(time.time())}")
     r = subprocess.run(["curl", "-s", "--max-time", "60", u], capture_output=True, text=True)
     h = r.stdout
     i, j = h.find("<main"), h.find("</main>")
