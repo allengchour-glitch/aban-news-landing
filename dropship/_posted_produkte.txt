@@ -217,3 +217,5 @@ slug:caps-tschechien-fga66363
 name:capstschechien
 slug:herren-trenchcoat-im-biker-stil
 name:hydro
+slug:tragbarer-mixer-mit-usb-c-ladefunktion-794304
+name:tragbarermixermitusbcladefunktion
