@@ -50774,3 +50774,5 @@ gid://shopify/Product/16604925034887	ok
 gid://shopify/Product/16604925133191	ok
 gid://shopify/Product/16604925264263	ok
 gid://shopify/Product/16604925297031	ok
+gid://shopify/Product/16604925362567	ok
+gid://shopify/Product/16604925493639	ok
