@@ -17737,3 +17737,12 @@ gid://shopify/Product/16615378059655	10->0	Edelstahl-Spritzpistole für Nassstra
 gid://shopify/Product/16615382221191	19->0	Umhängetasche aus Vollnarben-Rindsleder
 gid://shopify/Product/16615384973703	12->1	Damen Mesh Langarmshirt mit Rundhalsausschnitt
 gid://shopify/Product/16615386612103	13->0	Broschen-Geschenktasche
+gid://shopify/Product/16615387595143	11->0	Aufbewahrungstasche für Reisen & Büro
+gid://shopify/Product/16615389495687	16->3	Atmungsaktiver Freizeitschuh für Herren
+gid://shopify/Product/16615389757831	83->0	Eiswürfelform Würfel für Tischspiele
+gid://shopify/Product/16615390970247	19->0	Sneaker für Herren
+gid://shopify/Product/16615392051591	33->1	Britische Brogue Kunstlederschuhe für Herren
+gid://shopify/Product/16615393460615	80->0	Fensterputzroboter mit geplanter Route
+gid://shopify/Product/16615394017671	50->0	Elektrischer Mini-Zerkleinerer für Küche
+gid://shopify/Product/16615395492231	66->1	Wasserdichte Schnür-Boots
+gid://shopify/Product/16615396508039	92->3	Faltbares Mehrzweck-Gewürzregal
