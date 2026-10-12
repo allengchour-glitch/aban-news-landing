@@ -1,0 +1,10 @@
+STOPP Judge.me-Import (12.10.2026, Verbesserungsrunde 04:25 UTC)
+
+Gegenprobe (Workflow wf_52c03c1d-1f6): Der CJ-Import (automation/cj_reviews_import.mjs) hat Lieferanten-Kommentare
+als Shop-Bewertungen eingestellt — mit dem Namen «Käufer:in beim Lieferanten» und der Platzhalter-Mail
+cj-import@luxestyle.ch (Name-Fallback Zeile ~174–193). Bereits importiert: 351 Produkte, 1'848 Posts (/tmp/cj_reviews_import.log).
+Der Journal-Auftrag lautet «Nie erfundene Bewertungen»; ob diese Form als Irreführung über die Herkunft gilt,
+entscheidet der Betreiber (oder eine Fachperson), nicht der Agent.
+
+Wirkung dieser Datei: Das Skript schreibt nichts mehr nach Judge.me. Bestehende Bewertungen bleiben unverändert.
+Aufheben: diese Datei löschen (nach der Betreiber-Entscheidung zu Quelle und Kennzeichnung).
