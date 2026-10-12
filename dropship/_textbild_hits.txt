@@ -17904,3 +17904,13 @@ gid://shopify/Product/16615814955399	34->2	Silberne Hufeisen-Brosche
 gid://shopify/Product/16615815545223	71->0	Brosche aus echtem Leder mit Kristall
 gid://shopify/Product/16615815807367	13->0	Plüsch-Panda-Anhänger
 gid://shopify/Product/16615815840135	60->3	Kreatives Schlüsselanhänger-Set · 10 Stück
+gid://shopify/Product/16615816003975	27->0	Halskette und Armband aus Edelstahl mit Zirkonia
+gid://shopify/Product/16615816233351	18->0	Halskette & Ohrringe – Titanstahl mit Zirkon
+gid://shopify/Product/16615816364423	17->1	Damen Schmuckset mit Zirkonia
+gid://shopify/Product/16615816692103	119->0	Hundejacke für Winter und Übergangszeit
+gid://shopify/Product/16615817019783	20->1	Katzen-Sweatshirt mit Polokragen
+gid://shopify/Product/16615817118087	23->0	Katzen-Kapuzenpullover mit Fleecefutter
+gid://shopify/Product/16615817707911	8->0	Hundemantel im Britisch-Stil
+gid://shopify/Product/16615817773447	33->0	Reflektierender Hundemantel mit Fleece
+gid://shopify/Product/16615817838983	68->1	Hundemantel wasserdicht und winddicht
+gid://shopify/Product/16615818396039	93->0	Neon LED Schild für Weihnachtsdeko
