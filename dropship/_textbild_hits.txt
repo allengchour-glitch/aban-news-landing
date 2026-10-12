@@ -17731,3 +17731,5 @@ gid://shopify/Product/16615344439687	105->0	Minimalistischer Ring aus Silber mit
 gid://shopify/Product/16615346864519	24->0	Personalisierter Ring
 gid://shopify/Product/16615348568455	90->0	Geometrisches Schmuck-Set, 4-teilig
 gid://shopify/Product/16615353319815	24->0	V-Ausschnitt Kleid mit Print
+gid://shopify/Product/16615375470983	49->0	Wasserdichte Kühltasche
+gid://shopify/Product/16615376880007	9->0	USB-Soundkarte mit Multifunktion
