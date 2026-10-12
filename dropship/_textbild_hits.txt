@@ -17917,3 +17917,7 @@ gid://shopify/Product/16615818396039	93->0	Neon LED Schild für Weihnachtsdeko
 gid://shopify/Product/16615818887559	27->1	Fahrrad-Handytasche mit Touchscreen
 gid://shopify/Product/16615819084167	10->0	Geschenkbox für Halskette und Ring
 gid://shopify/Product/16615819575687	19->0	Magnetische Bauklötze – 2 Stück
+gid://shopify/Product/16615821214087	51->1	Schulrucksack wasserdicht & leicht
+gid://shopify/Product/16615821705607	15->3	Hochzeitskleid-Modell zur Dekoration
+gid://shopify/Product/16615821836679	167->0	Faltbare Sporttasche für Outdoor-Aktivitäten
+gid://shopify/Product/16615822098823	13->3	Dreidimensionales Holz-Puzzle mit Musik
