@@ -6874,3 +6874,17 @@ gid://shopify/Product/15463691780481	zugeordnet	6	Stoff-Tissuebox aus Leinen
 gid://shopify/Product/15463727759745	zugeordnet	4	Yulu Hanf Strandtuch · 70 × 140 cm
 gid://shopify/Product/15463728087425	zugeordnet	8	Rosenstrauss Engel-Geschenk (ewig haltbar)
 gid://shopify/Product/15463782056321	zugeordnet	20	Leichtes Sommer-Top
+gid://shopify/Product/15463783858561	zugeordnet	48	Strandkleid mit V-Ausschnitt und Fledermausärmeln
+gid://shopify/Product/15463784087937	zugeordnet	56	Kapuzen-Sweatshirt mit V-Ausschnitt und Spitze
+gid://shopify/Product/15463784120705	zugeordnet	32	V-Ausschnitt Strick-Cardigan für Herbst und Winter
+gid://shopify/Product/15464043282817	zugeordnet	5	Ausziehbare Wäscheleine, bohrfrei
+gid://shopify/Product/15464121565569	zugeordnet	25	Off-Shoulder Maxi-Kleid
+gid://shopify/Product/15464284553601	zugeordnet	70	Babysnowstiefel
+gid://shopify/Product/15464284651905	zugeordnet	6	Kinder-Snowboots
+gid://shopify/Product/15464284750209	zugeordnet	70	Kinder-Schneestiefel
+gid://shopify/Product/15464284815745	zugeordnet	22	Sommer-Sandalen mit Steinen
+gid://shopify/Product/15464284914049	zugeordnet	90	Baby Booties aus Baumwolle mit weicher Sohle
+gid://shopify/Product/15464371061121	bild-urls-tot
+gid://shopify/Product/15464371880321	zugeordnet	6	Radsport-Rucksack
+gid://shopify/Product/15464373289345	zugeordnet	30	Thermal Sportjacke
+gid://shopify/Product/15464375091585	zugeordnet	2	Tarnweste Set · Herren
