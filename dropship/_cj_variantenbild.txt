@@ -6888,3 +6888,5 @@ gid://shopify/Product/15464371061121	bild-urls-tot
 gid://shopify/Product/15464371880321	zugeordnet	6	Radsport-Rucksack
 gid://shopify/Product/15464373289345	zugeordnet	30	Thermal Sportjacke
 gid://shopify/Product/15464375091585	zugeordnet	2	Tarnweste Set · Herren
+gid://shopify/Product/15465257435521	zugeordnet	4	Reissfeste Outdoor-Hundeleine, reflektierend
+gid://shopify/Product/15465834348929	zugeordnet	16	A-Linien Minirock mit Rüschen
