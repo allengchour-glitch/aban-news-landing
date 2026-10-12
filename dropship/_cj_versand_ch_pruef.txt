@@ -7408,3 +7408,7 @@ drahtloses-dual-ladegerat-fur-smartphones-8c3055	4DC005A9-7190-428A-915B-977DB32
 led-sensor-lichtleiste-5e2d3d	1485899905007489024	7	5.62	ok	landeseite
 interaktives-slow-feeder-spielzeug-fur-hunde-k-820672	1598557924585123840	16	8.79	ok	landeseite
 rollkragen-strickkleid-fur-damen-2858ce	0DBA3A83-7F14-4CC2-8EA7-F3F777D2B13F	16	12.09	ok	landeseite
+intelligenter-rollball-fur-katzen-776896	1532624040291217408	7	5.73	ok	landeseite
+5-in-1-manicure-und-pedicure-set-kabellos-432576	1595297559478808576	7	6.26	ok	landeseite
+wild-eyebrow-pinsel-702784	1610466900188868608	16	5.41	ok	landeseite
+schmuckset-pflanzen-blumen-746927	49886C26-6321-4E18-9B56-77FE89EBC4E5	16	5.02	ok	landeseite
