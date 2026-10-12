@@ -596,7 +596,7 @@
         (o.style.fontFamily = f.v),
         ctxFont.appendChild(o));
     });
-    var ctxCw = el("div", { style: "display:flex;flex-wrap:wrap;gap:8px;" });
+    var ctxCw = el("div", { style: "display:flex;flex-wrap:wrap;gap:6px;" });
     COLORS.forEach(function (c) {
       ctxCw.appendChild(
         el(
@@ -605,7 +605,7 @@
             type: "button",
             "data-c": c,
             style:
-              "width:32px;height:32px;border-radius:50%;border:2px solid #e3e3e3;background:" +
+              "width:28px;height:28px;border-radius:50%;border:2px solid #e3e3e3;background:" +
               c +
               ";cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);color:" +
               (c.toLowerCase() === "#ffffff" || c === "#c1922f"
@@ -622,7 +622,7 @@
       value: "#111111",
       title: EN ? "Custom color" : "Eigene Farbe",
       style:
-        "width:32px;height:32px;border:2px solid #e3e3e3;border-radius:50%;background:none;cursor:pointer;padding:0;",
+        "width:28px;height:28px;border:2px solid #e3e3e3;border-radius:50%;background:none;cursor:pointer;padding:0;",
     });
     (ctxCw.appendChild(ctxPick),
       ctx.appendChild(ctxIn),
@@ -799,6 +799,24 @@
       ),
       textBar.appendChild(ctxLh),
       body.appendChild(textBar));
+    // Abstand / Kontur / Zeilen je eine eigene Zeile mit gleich breiter Beschriftung
+    (function () {
+      var k = Array.prototype.slice.call(textBar.children);
+      textBar.style.flexDirection = "column";
+      textBar.style.alignItems = "stretch";
+      [
+        [k[0], k[1]],
+        [k[2], k[3], k[4]],
+        [k[5], k[6]],
+      ].forEach(function (g) {
+        var row = el("div", { style: "display:flex;align-items:center;gap:10px;width:100%;" });
+        g.forEach(function (n) {
+          n && row.appendChild(n);
+        });
+        g[0] && (g[0].style.minWidth = "64px");
+        textBar.appendChild(row);
+      });
+    })();
     var presetBar = el("div", {
       style: "display:none;gap:6px;margin-bottom:10px;flex-wrap:wrap;",
     });
@@ -1299,13 +1317,13 @@
         root.appendChild(content));
       var frame = el("div", {
           style:
-            "position:absolute;inset:-6px;border:1.5px dashed #16151a;border-radius:6px;display:none;pointer-events:none;",
+            "position:absolute;inset:-8px;border:1.5px dashed #16151a;border-radius:6px;display:none;pointer-events:none;",
         }),
         handle = el(
           "div",
           {
             style:
-              "position:absolute;right:-13px;bottom:-13px;width:26px;height:26px;border-radius:50%;background:#16151a;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:none;cursor:nwse-resize;touch-action:none;color:#fff;font-size:12px;line-height:22px;text-align:center;",
+              "position:absolute;right:-21px;bottom:-21px;width:26px;height:26px;border-radius:50%;background:#16151a;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:none;cursor:nwse-resize;touch-action:none;color:#fff;font-size:12px;line-height:22px;text-align:center;",
           },
           "\u2921",
         ),
@@ -1313,7 +1331,7 @@
           "div",
           {
             style:
-              "position:absolute;left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:#b3122b;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:none;cursor:pointer;font-size:13px;line-height:22px;text-align:center;font-weight:900;touch-action:none;",
+              "position:absolute;left:-21px;top:-21px;width:26px;height:26px;border-radius:50%;background:#b3122b;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:none;cursor:pointer;font-size:13px;line-height:22px;text-align:center;font-weight:900;touch-action:none;",
           },
           "\u2715",
         );

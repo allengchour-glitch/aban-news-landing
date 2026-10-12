@@ -49,6 +49,29 @@
 
 
 
+## 🎨 Editor v5 live: Profi-Bedienung auf allen 34 Selbst-gestalten-Produkten (2026-10-12, «bearbeiten für profis … alles einstellen kann und sieht», «verbessere alles viel toller»)
+- **Was neu ist:** Zahlenfelder X/Y/Grösse/Drehung/Deckkraft, Rückgängig/Wiederholen (Strg+Z/Y), Ebenen-Liste mit ▲▼,
+  mehrzeiliger Text (4 Zeilen), Fett/Kursiv, Ausrichtung, Zeilenabstand, Mitte-Hilfslinien, Pfeiltasten/Entf.
+  Vorschau (DOM) und Druckdatei (Canvas) nutzen dieselben Helfer (`opOf/lhOf/alignOf/canvasFont`) — sonst weicht der Druck ab.
+- **Weg:** v4 war minifiziert ohne Quelle → mit Prettier entminifiziert (`pod/lspod-designer-v4.src.js`), Umbau als Patch mit
+  Ankern, die GENAU einmal vorkommen müssen (`automation/pod_patch_v5.py`, 34 Ersetzungen) — kein Neuschreiben von 46 KB.
+- **Messgerät:** `automation/pod_test_v5.mjs` 15/15 (Gegenprobe: gegen v4 bricht er beim mehrzeiligen Feld ab),
+  `pod_test_v5_seiten.mjs` 6/6 (Vorne/Hinten, Rückgängig über den Seitenwechsel), `pod_test_live_kaufweg.mjs` echter Warenkorb
+  auf luxestyle.ch (Bügeltransfer, T-Shirt, Jutebeutel): Variante, «🎨 Design», «🖼️ Druckdatei» (Cloudinary 1200 px) — Korb danach geleert.
+- **Vorher/Nachher:** 34 Produkte auf v4 → 32 aktive + 2 Entwürfe auf v5 (`automation/pod_editor_umstellen.py`, Rücklesen je Produkt,
+  Protokoll `dropship/_lspod_v3_switch.tsv`). `pod_editor_qa.mjs` 29 Produkte, 0 Befunde. Rest: 3 Entwürfe v2, 2 Entwürfe alter Editor.
+- **Fallen:** (1) Nach Rückgängig war die Auswahl weg → Zahlenfelder verschwanden; jetzt bleibt die Ebene gewählt. (2) Ein Selektor
+  «Pillenform» zählte Druck-Vorschau und Warenkorb mit — im Test nach Container zählen, nie nach Stil. (3) Upload-Helfer kannte `.js`
+  nicht (wäre `octet-stream` = Browser lädt nicht) → ergänzt; mit gesetzter Client-ID nimmt er den Token-Eintrag nicht → `env -u`.
+  (4) Gewählte Ebene erzwang `z-index 5` → Reihenfolge war beim Bearbeiten falsch; jetzt `z-index` = Platz in der Liste.
+- **Rückweg:** `python3 automation/pod_editor_umstellen.py --alt <v5-URL> --neu <v4-URL>` (SCHARF=1). v4 liegt weiter auf dem CDN.
+
+## 🚦 Bestell-Ampel: manueller Eintrag #1024 wurde bei jedem CJ-Lauf gelöscht (2026-10-12)
+- `cj_order_watch.py` baute den Zustand nur aus der CJ-Liste neu → `#1024 MANUELL_MISTER_DTF_BESTELLT` verschwand (heute 2×,
+  zuletzt 08:40), die Ampel meldete «KEIN CJ-Auftrag ⚠️». Jetzt `behalte_manuell()`: Einträge mit Status `MANUELL…` bleiben,
+  verschwundene CJ-Aufträge nicht (`--selbsttest`). Nachher: echter CJ-Lauf, Eintrag bleibt, Ampel ohne ⚠️.
+- Lehre: Ein Wächter, der seinen Zustand komplett neu schreibt, löscht alles, was er nicht selbst kennt. Fremde Einträge brauchen ein Merkmal.
+
 ## 🖼️ Google-Restklassen: das ERSTE Bild entscheidet — Streifen als Hauptbild (2026-10-12, Verbesserungsrunde 09:30)
 
 **Gemessen:** «Image too small» bei brustgeschirr-und-leine-fur-katzen: das Hauptbild war ein 720×72-Banner-Streifen,

@@ -11,6 +11,27 @@ from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drosse
 STATE = "dropship/_cj_order_watch_state.json"
 FERTIG = {"DELIVERED", "CLOSED", "CANCELLED"}
 
+
+def behalte_manuell(alt, neu):
+    """12.10.2026: Von Hand eingetragene Bestellungen (Status «MANUELL_…», z. B. #1024 bei Mister DTF) stehen
+    in keiner CJ-Liste. Bisher baute jeder Lauf den Zustand nur aus der CJ-Liste neu und löschte sie — dreimal an
+    einem Tag, danach meldete die Bestell-Ampel «KEIN CJ-Auftrag ⚠️». Solche Einträge werden übernommen."""
+    for k, v in alt.items():
+        if k not in neu and isinstance(v, dict) and str(v.get("status", "")).startswith("MANUELL"):
+            neu[k] = v
+    return neu
+
+
+if "--selbsttest" in __import__("sys").argv:
+    a = {"#1024": {"status": "MANUELL_MISTER_DTF_BESTELLT", "tracking": ""}, "LX1": {"status": "SHIPPED", "tracking": "x"},
+         "LX9": {"status": "UNSHIPPED", "tracking": ""}}
+    n = behalte_manuell(a, {"LX1": {"status": "DELIVERED", "tracking": "x"}})
+    ok = "#1024" in n and n["LX1"]["status"] == "DELIVERED" and "LX9" not in n
+    gegen = "#1024" not in {"LX1": {}}  # Gegenprobe: ohne die Übernahme fehlt der Eintrag
+    print("SELBSTTEST", "OK" if ok and gegen else "FEHLER", "· manuell behalten:", "#1024" in n,
+          "· CJ-Stand gewinnt:", n["LX1"]["status"], "· verschwundene CJ-Aufträge bleiben weg:", "LX9" not in n)
+    raise SystemExit(0 if ok and gegen else 1)
+
 tok = json.load(open("/tmp/cj_token.json"))["accessToken"]
 req = urllib.request.Request(
     "https://developers.cjdropshipping.com/api2.0/v1/shopping/order/list?pageNum=1&pageSize=50",
@@ -43,5 +64,5 @@ for o in d.get("data", {}).get("list", []):
                               if vorher["tracking"] != jetzt["tracking"] else ""))
     elif not vorher and jetzt["status"] not in FERTIG:
         aenderungen.append(f"NEU {n}: {jetzt['status']} · Tracking {jetzt['tracking'] or '–'}")
-json.dump(neu, open(STATE, "w"), indent=1)
+json.dump(behalte_manuell(alt, neu), open(STATE, "w"), indent=1)
 print("\n".join(aenderungen) if aenderungen else "KEINE ÄNDERUNG")
