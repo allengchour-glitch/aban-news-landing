@@ -823,3 +823,5 @@
 2026-10-10T14:45:47Z	gid://shopify/Product/15519838110081	marken-pruefen	Google & YouTube	xiaomi-mi-band-2-smartwatch-mit-pulsmesser-052d71
 2026-10-10T14:45:48Z	gid://shopify/Product/15519838142849	marken-pruefen	Google & YouTube	xiaomi-mi-band-1s-smart-armband-mit-herzfreque-941151
 2026-10-10T14:45:49Z	gid://shopify/Product/15523952132481	marken-pruefen	Google & YouTube	bausteinmodell-audi-rs7-330176
+2026-10-12T05:27:14Z	gid://shopify/Product/16615390740871	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	zigarrenschneider-011392
+2026-10-12T05:27:15Z	gid://shopify/Product/16615391560071	raucher, smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	zigarrenschneider-gezackt-und-doppelklingig-769728

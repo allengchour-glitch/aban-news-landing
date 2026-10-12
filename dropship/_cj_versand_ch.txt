@@ -1570,3 +1570,9 @@ gid://shopify/Product/16615706820999	nicht-versendbar	Moderne leichte Luxusfigur
 gid://shopify/Product/16614845383047	ok	Hantel für Armtraining
 gid://shopify/Product/16615661994375	ok	Minimalistisches Wandbild – Schwarz-Weiss, Leinwand
 gid://shopify/Product/16614567575943	ok	Ultraschall-Fettabbaugerät
+gid://shopify/Product/16615678673287	ok	Automatische Herren-Armbanduhr aus Edelstahl
+gid://shopify/Product/16614835945863	ok	Outdoor-Sofa aus Oxford-Gewebe
+gid://shopify/Product/16615235879303	ok	Lederrucksack
+gid://shopify/Product/16614885327239	ok	Business-Rucksack mit Solarladefunktion
+gid://shopify/Product/16615231947143	ok	Grosses Leder-Outdoor-Rucksack
+gid://shopify/Product/16615227720071	ok	Leder-Reiserucksack für Herren
