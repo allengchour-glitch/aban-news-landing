@@ -1193,3 +1193,4 @@
 16614808584583	Farbe:6+Grösse:4:24	2026-10-12	dreiteiliges-hundegeschirr-aus-kunstleder-57d787
 16614808486279	Farbe:6+Grösse:5:30	2026-10-12	brustgeschirr-mit-leine-schwarz-rot-camouflage-0ec96e
 16614804160903	Farbe:3+Grösse:5:15	2026-10-12	katzen-zugleine-aus-polyester-canvas-d3d0a5
+16614804095367	Farbe:4+Grösse:4:15	2026-10-12	brustgeschirr-fur-hunde-polyester-7d8626
