@@ -7501,3 +7501,6 @@ cd-pattern-magsafe-hulle-mit-stander-201408	1658020926698561536	7	5.52	ok	landes
 turbo-jet-fan-kabelloser-staubblaser-736832	1730143215841452032	7	11.64	ok	landeseite
 multifunktionaler-runder-gemuseschneider-be2e21	5ADF9BF4-147F-4F6F-92D4-A9B65DA75928	16	15.75	ok	landeseite
 3d-planeten-kristallkugel-nachtlicht-397312	1555129918697254912	16	9.88	ok	landeseite
+selbst-ruhrende-tasse-fur-kaffee-mehr-519616	1669879866436628480	7	12.89	ok	landeseite
+4-in-1-ladestation-fur-alle-gerate-8ebcc2	84F216C2-6FE8-475C-AB18-F483A76E23DC	16	8.50	ok	landeseite
+koreanische-freizeitschuhe-fur-damen-221504	1379254580210176000	16	11.49	ok	landeseite
