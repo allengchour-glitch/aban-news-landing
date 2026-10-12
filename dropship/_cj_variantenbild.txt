@@ -6938,3 +6938,7 @@ gid://shopify/Product/15466023387521	zugeordnet	80	Jacquard Kurzarmhemd für Her
 gid://shopify/Product/15466023518593	zugeordnet	56	Herren Half-Zip Stehkragen Langarm-Sweatshirt
 gid://shopify/Product/15466023715201	zugeordnet	18	V-Neck Strickpullover für Herren
 gid://shopify/Product/15466023813505	zugeordnet	15	Freizeit-Pullover mit Dackel-Design
+gid://shopify/Product/15466023846273	zugeordnet	30	Herren Strickjacke mit Stehkragen und Reissverschluss
+gid://shopify/Product/15466023879041	zugeordnet	24	Cardigan mit Farbverlauf-Strickmuster
+gid://shopify/Product/15466023977345	zugeordnet	20	Gerippter Strickpullover mit Wellenmuster
+gid://shopify/Product/15466024010113	zugeordnet	8	Besticktes Blumenkleid für Damen
