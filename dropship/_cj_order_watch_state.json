@@ -47,6 +47,10 @@
   "status": "UNPAID",
   "tracking": ""
  },
+ "LX1026": {
+  "status": "CREATED",
+  "tracking": ""
+ },
  "#1024": {
   "status": "MANUELL_MISTER_DTF_BESTELLT",
   "tracking": "",
