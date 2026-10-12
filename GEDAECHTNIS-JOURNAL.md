@@ -49,6 +49,14 @@
 
 
 
+## 🖼️ Google-Restklassen: das ERSTE Bild entscheidet — Streifen als Hauptbild (2026-10-12, Verbesserungsrunde 09:30)
+
+**Gemessen:** «Image too small» bei brustgeschirr-und-leine-fur-katzen: das Hauptbild war ein 720×72-Banner-Streifen,
+die übrigen Bilder 800×800. Google liest NUR das erste Bild. **Behoben:** Quadrat nach vorne (`productReorderMedia`),
+zurückgelesen. **Gelernt:** Eine Restklasse prüft zuerst die Abmessung des ERSTEN Bildes, nicht der Galerie.
+Die übrigen Bilder der Galerie sind nicht schuld. Bei «Product page unavailable» hat Google eine ALTE Diagnose
+(00:35 UTC), 20 von 23 Seiten antworten 200 → nachmessen statt blind ändern. Bericht: `dropship/GOOGLE-REST-2026-10-12.md`.
+
 ## 🛡️ Google-Kanal: 107 erotik-nahe Artikel (Restricted adult content) aus dem Google-Kanal genommen (2026-10-12, Verbesserungsrunde 08:25)
 
 **Gemessen:** Die Google-Diagnose «Restricted adult content» traf 107 aktive Produkte, alle im Google-Kanal veröffentlicht
