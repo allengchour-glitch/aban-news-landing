@@ -75,3 +75,15 @@ Täglich: `BUDGET=<ausgegeben> MARGE=19 python3 tools/werbetest_trichter.py sire
   Steuerdatei `_werbetest_aktiv.json`: Handle Aurora, Zählung ab 13.10.; der Sirène-Abschnitt steht unter `vorher`.
 - **Offen (Betreiber):** Werbe-Kontingent im Merchant Center erhöhen lassen (Formular «additional quota»), sonst sind ~40 % des
   Sortiments in Shopping-Anzeigen unsichtbar. Gratis-Einträge sind davon nicht betroffen.
+
+### 12.10.2026 20:30 UTC — Nachmessung: Aurora jetzt ebenfalls «Over capacity»
+- Label gesetzt 19:23 UTC → Google-Rückmeldung 19:55 UTC: «Over capacity for Shopping ads (in CSS program) [CH]» und zusätzlich
+  «Shopping ads quota limit reached (outside of CSS program) [LI]». **Jede Produktänderung schickt das Produkt neu an Google;
+  bei vollem Kontingent fällt es dabei aus der Werbung.** Ein anderes Testprodukt zu wählen hilft deshalb nicht.
+- Folge auch für die Wächter: Jeder Massen-Schreiber (Texte, Tags, Metafelder) kann Produkte aus dem Werbe-Kontingent
+  schieben. Die Gratis-Einträge betrifft das nicht (eigenes Kontingent, keine Meldung).
+- **Betreiber-Entscheid nötig:** (a) im Merchant Center ein höheres Kontingent beantragen (Formular «additional quota for
+  items»; Konto von Shopify angelegt → ggf. über Shopify/Google-Support) oder (b) Kampagne bis dahin pausieren — CHF 10/Tag
+  laufen sonst ohne bewerbbares Produkt.
+- **12.10. ~20:35 UTC: Kampagne «Sales-Shopping-1» pausiert (Betreiber «pausiert»).** Wieder einschalten erst, wenn das
+  Werbe-Kontingent erhöht ist und das Testprodukt keine «Over capacity»-Meldung mehr trägt (Ampel zeigt das).
