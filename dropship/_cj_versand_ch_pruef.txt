@@ -7276,3 +7276,4 @@ tarnnetz-us-woodland-4x4-m-mit-packsack-765441	1990542200487063553	0	-	KEINE CH-
 mausefallen-set-4-stuck-155650	1990497008052510722	0	-	KEINE CH-Option → DRAFT	landeseite
 basketballkorb-mit-netz-45-cm-539201	1990541857716363266	0	-	KEINE CH-Option → DRAFT	landeseite
 vulkan-flammen-aroma-diffusor-luftbefeuchter-860288	1602125961246552064	7	10.81	ok	landeseite
+3-in-1-wireless-ladestation-fur-mehrere-gerate-9b0c4e	00F6465B-208F-4366-9494-F201CE9DBEE8	7	10.01	ok	landeseite

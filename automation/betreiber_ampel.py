@@ -514,6 +514,8 @@ def werbetest():
             return None
         sys.path.insert(0, os.path.join(REPO, "tools"))
         from werbetest_trichter import ql, FELDER
+        # 12.10.: Start in der Zukunft (Produktwechsel, Zählung ab morgen) → ShopifyQL «UNTIL before SINCE» beendete die ganze Ampel
+        start = min(start, heute)
         tage = max(1, (min(heute, ende) - start).days + 1)
         r = ql(f"FROM sessions SHOW {FELDER} WHERE utm_campaign = '{w['kampagne']}' SINCE {start.isoformat()} UNTIL today")
         r = r[0] if r else {}
