@@ -17898,3 +17898,9 @@ gid://shopify/Product/16615811809671	170->2	Herren-Rucksack aus PU-Leder
 gid://shopify/Product/16615812235655	62->1	Faltbarer wasserdichter Rucksack
 gid://shopify/Product/16615812661639	83->1	Retro Feder-Schulterharnisch
 gid://shopify/Product/16615812759943	58->2	Geschenkbox mit Decke und Wellness-Produkten
+gid://shopify/Product/16615814431111	78->0	Trockenblumenstrauss für Dekoration
+gid://shopify/Product/16615814693255	8->0	Zahn-Brosche aus Edelstahl
+gid://shopify/Product/16615814955399	34->2	Silberne Hufeisen-Brosche
+gid://shopify/Product/16615815545223	71->0	Brosche aus echtem Leder mit Kristall
+gid://shopify/Product/16615815807367	13->0	Plüsch-Panda-Anhänger
+gid://shopify/Product/16615815840135	60->3	Kreatives Schlüsselanhänger-Set · 10 Stück
