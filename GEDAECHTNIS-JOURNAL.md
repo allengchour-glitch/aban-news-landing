@@ -49,6 +49,19 @@
 
 
 
+## 🛡️ Google-Kanal: 107 erotik-nahe Artikel (Restricted adult content) aus dem Google-Kanal genommen (2026-10-12, Verbesserungsrunde 08:25)
+
+**Gemessen:** Die Google-Diagnose «Restricted adult content» traf 107 aktive Produkte, alle im Google-Kanal veröffentlicht
+(transparente Strumpfhosen, Mesh-Jumpsuits, Shapewear-Strings). Die Regel «Erotik nie in den Google-Kanal» war verletzt.
+
+**Getan:** nur der Google-Kanal (`publishableUnpublish`, Publication 302872297857), 107/107 zurückgelesen. Onlineshop
+unverändert (Stichprobe 5/5). Rückweg: `publishablePublish`. Protokoll `dropship/_google_adult_unpub.tsv`, Liste
+`dropship/GOOGLE-ADULT-ENTFERNT-2026-10-12.md`.
+
+**Lehren:** (1) Google bestraft das KONTO, nicht nur das Produkt — Restricted-Klassen zuerst aus dem Feed nehmen, dann prüfen.
+(2) Ein Kanal-Entzug ist reversibel und ist der richtige Schritt; Löschen oder Umbenennen wäre es nicht.
+(3) Falschalarme möglich (Halsband, Herren-Pullover, Haube): nach Prüfung wieder einstellen.
+
 ## 🧹 Auftrag 1–8 und «sauber fertig»: Farbe per Printful-Blank, Preis nach Formel, Liechtenstein-Satz am Ort (2026-10-12, «1 ja erledige alles … 7 du, 8 mach du», «verbessere weiter, ultracode»)
 
 **Gemessen, nicht geraten:**

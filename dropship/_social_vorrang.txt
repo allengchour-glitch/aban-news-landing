@@ -2457,7 +2457,6 @@ rabe-mit-federn-fga93063	2026-11-30
 plusch-panda-fga85739	2026-11-30
 gruner-papagei-fga930742	2026-11-30
 plusch-pfau-fga85829	2026-11-30
-skelett-lebensgross-fga97800	2026-11-30
 spinnenset-mini-fga98238	2026-11-30
 schweizer-lampion-set-fga86780	2026-11-30
 pluschkamel-fga87227	2026-11-30
