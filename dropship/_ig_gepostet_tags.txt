@@ -73,3 +73,6 @@
 2026-10-12T00:38Z	gid://shopify/Product/15504178086273	+	ig-seit-2026-10-11	automatischer-futter-und-wasserspender-fur-hau-748928
 2026-10-12T00:38Z	gid://shopify/Product/15451605303681	-	ig-gepostet,ig-seit-2026-09-26	sicherheitsgurt-fur-hund-katze-528768
 2026-10-12T00:38Z	gid://shopify/Product/15525501337985	-	ig-gepostet,ig-seit-2026-09-23	wasserdichte-damenuhr-mit-metallarmband-2a910e
+2026-10-12T20:43Z	gid://shopify/Product/15450045940097	+	ig-seit-2026-10-12	trendy-knochelstiefel-fur-herren-631700
+2026-10-12T20:43Z	gid://shopify/Product/15504106619265	-	ig-gepostet,ig-seit-2026-09-25	pizzaroller-und-teiglocher-279296
+2026-10-12T20:43Z	gid://shopify/Product/15524697014657	-	ig-gepostet,ig-seit-2026-09-24	smartwatch-mit-touchscreen-herzfrequenz-und-sp-118592

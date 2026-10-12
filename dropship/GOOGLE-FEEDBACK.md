@@ -1,22 +1,20 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-12T00:35Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-12T20:43Z
 
-Gescannt: 53418 aktive Produkte in 214 Seiten (vollständig), 477 s. Meldungen nur für Shopping Ads (ignoriert): 32808.
+Gescannt: 53882 aktive Produkte in 216 Seiten (vollständig), 319 s. Meldungen nur für Shopping Ads (ignoriert): 33319.
 
-## Free-Listings-Blocker: 1035
+## Free-Listings-Blocker: 1082
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Image under review | 439 | 0 | 439 |
-| Inappropriate image | 318 | 0 | 318 |
-| Unable to show image | 107 | 0 | – |
-| Restricted adult content | 107 | 0 | 107 |
-| Promotional overlay on image | 31 | 0 | – |
-| Product page unavailable | 23 | 0 | – |
-| Adult-oriented content | 3 | 0 | 3 |
-| Title under review | 2 | 0 | 2 |
-| Tobacco products & related equipment | 2 | 0 | – |
-| Image too small | 2 | 0 | – |
-| Additional text found | 1 | 0 | – |
+| Image under review | 638 | 0 | 638 |
+| Inappropriate image | 284 | 0 | 284 |
+| Unable to show image | 113 | 0 | – |
+| Promotional overlay on image | 30 | 0 | – |
+| Product page unavailable | 6 | 0 | – |
+| Title under review | 5 | 0 | 5 |
+| Image too small | 4 | 0 | – |
+| Adult-oriented content | 1 | 0 | 1 |
+| Image not processed | 1 | 0 | – |
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
@@ -24,28 +22,26 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 28226
+- Missing shipping info in some countries [LI]: 28585
 - Alcoholic beverages [LI]: 4
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: Sexual interests: 107
-- Personalized advertising: personal hardships: 91
-- Personalized advertising: legal restrictions: 8
+- Personalized advertising: personal hardships: 90
+- Personalized advertising: legal restrictions: 9
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 5
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 3
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Unable to show image (107)
+### Unable to show image (113)
 
 - tech-hero-geschenkbox-smartwatch-anc-ladestation
 - hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten
-- prodigi-poster-gruezi
 - toilettenpapier-6-rollen-schwarz-ft52304sw
 - steyr-6300-terrus-cvt-mit-frontlader-fga03181
 - sommerliche-off-shoulder-bluse-in-grossen-gros-638400
@@ -103,32 +99,52 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - kabelstrick-pullover-620500
 - gestreiftes-hemd-601400
 - color-block-pullover-mit-kettenmuster-611200
+- herren-bootcut-jeans-mit-schmalem-schnitt-637600
 - …
 
-### Image under review (439)
+### Image under review (638)
 
-- kristall-set-3-teilig
+- kristallspitzen-set-8-teilig-holzbox
+- solar-camping-laterne-im-vintage-look-wiederaufladbar-ip44-wetterfest
+- sonnenbrille-carre-retro-small-square
 - phone-makeover-set-charms-grip-magsafe-holder
+- sunset-projection-lamp-16-colors-adjustable
+- sommer-armband-evil-schmetterling-nazar-auge-vergoldet
+- fransen-minirock-santa-fe-wildleder-optik-2-lagig
 - hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten
 - transparente-iphone®-hulle-selbst-gestalten
 - recycelter-unisex-allover-pullover-selbst-gestalten
 - schweiz-poster-alpsee-see-spiegelung-kunstdruck
 - poster-zum-selbstgestalten
+- magnet-zum-selbstgestalten
 - schweiz-sticker-swiss-cross-badge
+- schweiz-sticker-steinbock
 - pod-sticker-art-veggies
 - pod-sticker-burger-cute
 - pod-sticker-cactus-sunset
 - pod-sticker-checker-heart
+- pod-sticker-cocktail
+- pod-sticker-dumbbell
+- pod-sticker-grapes
 - pod-sticker-ice-hockey
 - pod-sticker-kiwi
 - pod-sticker-ladybug2
+- pod-sticker-moon-face
 - pod-sticker-parrot-cute
+- pod-sticker-pastel-mushroom
+- pod-sticker-pine-forest
 - pod-sticker-pixel-mushroom
-- pod-sticker-planet-earth
+- pod-sticker-retro-arcade
 - pod-sticker-seal
 - pod-sticker-seashell
-- pod-sticker-star-cluster
+- pod-sticker-shark-cute
+- pod-sticker-shooting-star
+- pod-sticker-swiss-cowbell
 - pod-sticker-tattoo-anchor
+- pod-sticker-text-goodday
+- pod-sticker-text-staywild
+- pod-sticker-text-youmatter
+- pod-sticker-vinyl-record
 - pod-sticker-zodiac-sagittarius
 - tasse-basel
 - tasse-braunvieh
@@ -136,40 +152,21 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - tasse-enzian
 - tasse-feierabig
 - tasse-gaell
-- tote-zum-selbstgestalten
+- tasse-merci-vilmal
 - reise-tasche-wasserdicht-xl
 - canvas-shopper-tote-nachhaltig
 - partner-ring-bar-vintage-edelstahl-unisex
 - rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren-💡
 - echtleder-henkeltasche-milano-weiches-rindsleder
+- edelstahl-armband-amore-herz-geburtsstein-gold
 - x2-dual-elektro-display-2-8-zoll-335169
 - hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
 - paisley-jacquard-schal-mit-quasten-600200
-- retro-zip-up-hoodie-mit-3d-digitalprint-614100
 - ruckenfreies-top-mit-rundhals-und-3-4-armeln-602500
 - weisse-bluse-mit-flatterndem-kragen-615900
-- strukturierte-bluse-mit-ruschenmanschetten-606500
-- strickpullover-mit-laternenarmeln-615200
-- retro-kissenbezug-mit-botanischem-jacquard-mus-610100
-- business-freizeit-jacke-fur-herren-616200
-- gleitende-pizza-schaufel-aus-holz-799360
-- tragbarer-kabelloser-flaschenwarmer-mit-usb-079104
-- kabellose-multifunktions-reinigungsburste-622500
-- smart-armband-1-3-zoll-display-tpu-band-e49535
-- h88-4k-mini-action-kamera-fur-sport-outdoor-608500
-- verdunkelungsvorhang-samt-mit-osen-982785
-- usb-hd-kamera-064832
-- slim-fit-herrenweste-korean-style-603700
-- sandalen-mit-riemchen-und-nieten-5cm-keilabsat-111425
-- kinder-retro-sneakers-mit-klettverschluss-611200
-- faltbares-edelstahl-futtergeschirr-606700
-- hundepflegeol-mit-zitronenmelisse-969345
-- wetterfestes-zelt-636000
-- hd-quadrocopter-mit-fernbedienung-622700
-- katzenfestes-einheitssofauberwurf-603200
 - …
 
-### Inappropriate image (318)
+### Inappropriate image (284)
 
 - herren-ring-vintage-edelstahl-retro
 - pod-sticker-flame-graffiti
@@ -177,7 +174,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - pod-sticker-tattoo-skull-rose
 - retro-flammen-tischlampe-led
 - herren-cargo-hose-trail-multi-pocket-outdoor
-- vertikaler-gaming-pistolengriff-mit-trigger-610900
 - rc-fernsteuerung-fur-modellautos-boote-600600
 - punk-motorrad-seiten-taschen-602000
 - gedruckter-baumwoll-leinen-schal-fur-herbst-wi-626100
@@ -207,8 +203,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - nahtloser-leopard-jumpsuit-fur-yoga-fitness-466946
 - sportlicher-jumpsuit-mit-v-ausschnitt-und-knop-615900
 - sexy-bikini-jumpsuit-mit-tiefem-v-601500
-- figurbetontes-tragerloses-spitzenkleid-614500
-- eleganter-jumpsuit-mit-cut-outs-615900
 - gerippter-bodycon-jumpsuit-mit-spaghettitrager-604100
 - overall-playsuit-mit-spaghettitragern-654594
 - a-linien-tennisrock-mit-anti-expositions-unter-618900
@@ -216,8 +210,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - high-waist-yoga-pants-huftstraffend-schnelltro-607900
 - legging-tights-621800
 - kurze-wattierte-jacke-mit-karomuster-607300
-- nachthemd-aus-polyester-606600
-- nachthemd-602300
 - taillierte-jeansjacke-fur-herren-824321
 - horror-maske-blutung-totenkopf-285312
 - tyrant-rotten-face-mask-861120
@@ -231,9 +223,18 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - silikon-photon-maske-led-620400
 - verdunkelungsvorhange-mit-osen-2-stuck-340353
 - ultraschall-luftbefeuchter-mit-aromatherapie-327744
+- personalisierbarer-zugfreier-reflektierender-h-4ce320
+- antigravitations-nebel-feuchter-580ml-354048
+- damen-loose-sweatshirt-mit-3d-digitaldruck-634800
+- casual-pullover-mit-print-614300
+- casual-polyester-pullover-609400
 - …
 
-### Promotional overlay on image (31)
+### Adult-oriented content (1)
+
+- schweiz-sticker-alphorn
+
+### Promotional overlay on image (30)
 
 - painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
@@ -256,7 +257,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - bluetooth-audio-empfanger-furs-auto-a0dc61
 - hautfarbenkorektur-fur-die-stirnlinie-622500
 - happy-mary-kinder-und-lauflernschuhe-99e12e
-- herren-quarz-armbanduhr-mit-kalender-058624
 - leinenhemd-fur-herren-stehkragen-langarm-639300
 - langanhaltender-lidschatten-pen-12er-set-836480
 - bambusfaser-stretch-businesshemd-fur-herren-656400
@@ -267,118 +267,31 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
 
-### Restricted adult content (107)
+### Title under review (5)
 
-- seidenmaske-mit-halsbedeckung-fur-damen-628900
-- nahtlose-hauchdunne-seiden-strumpfhose-605000
-- overknee-strumpfe-in-leder-optik-639401
-- 3er-pack-ultra-soft-sheer-tights-382018
-- 3er-pack-sheer-tights-40d-mit-t-crotch-082753
-- 6-paar-20d-ultra-sheer-tights-mit-shaping-hosc-791425
-- figurbetonendes-tanktop-mit-u-ausschnitt-628900
-- glitzerndes-dekollete-kettentop-616700
-- strand-kimono-mit-v-ausschnitt-seitenschlitz-012290
-- mesh-cardigan-mit-laternenarmeln-637500
-- nahtloser-casual-jumpsuit-mit-thong-boden-639600
-- damen-jumpsuit-mit-spitze-und-ruckenausschnitt-608000
-- figurbetontes-tragerloses-spitzenkleid-614500
-- eleganter-jumpsuit-mit-cut-outs-615900
-- mesh-jumpsuit-fur-damen-607200
-- color-block-jumpsuit-mit-langen-armeln-602600
-- nahtloser-body-shaping-thong-625900
-- semi-transparente-mesh-haremshose-603600
-- nachthemd-aus-polyester-606600
-- nachthemd-602300
-- pu-haube-fur-den-ganzen-kopf-637900
-- ruckenfreier-mesh-hoodie-in-solid-color-fur-st-635800
-- herren-pullover-mit-kapuze-617300
-- fitness-leggings-mit-po-push-up-effekt-609216
-- elegante-square-toe-thong-sandalen-135042
-- lace-up-jumpsuit-slim-fit-durchsichtiges-spitz-617800
-- velour-strumpfhosen-4-farben-609600
-- sexy-3d-digital-gedruckte-slim-fit-leggings-634500
-- mesh-patchwork-jumpsuit-619500
-- high-waist-leggings-schlank-machend-611600
-- dunne-durchsichtige-leggings-605400
-- peach-yoga-pants-mit-bauch-und-huftformung-613400
-- retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
-- durchsichtige-nachtrobe-613300
-- elegantes-mesh-maxikleid-in-grossen-grossen-637100
-- retro-thong-sandalen-fur-damen-629700
-- halsband-mit-leine-aus-leder-602200
-- herren-mesh-top-mit-strass-steinen-620400
-- figurbetontes-halterneck-schnur-top-625400
-- geblumtes-neckholder-kleid-mit-v-ausschnitt-606100
-- eleganter-jumpsuit-mit-quasten-und-einzelsleev-638700
-- vogelbeobachtungsteleskop-58684d
-- silikonabdeckungen-974976
-- silberner-pancake-clip-666432
-- kurzes-a-linien-lederkleid-mit-v-ausschnitt-624600
-- neckholder-mini-kleid-aus-chiffon-627800
-- koreanische-fashion-laufschuhe-fur-madchen-bdca35
-- langes-tragerkleid-mit-kordelzug-626100
-- gestreiftes-slim-fit-strick-polohemd-fur-herre-609000
-- retro-doppelring-sonne-aus-edelstahl-614700
-- kleid-pure-wind-mit-v-ausschnitt-und-blumenmus-619700
-- elegantes-off-shoulder-asymmetrisches-kleid-630700
-- bedrucktes-neckholder-kleid-mit-ruckenausschni-630300
-- quadratische-zehenpartie-sandalen-im-europaisc-621300
-- transparenter-mesh-v-neck-cardigan-fur-herren-618300
-- flip-toe-sandalen-im-romischen-stil-610400
-- transparente-mid-heel-pantoletten-mit-kristall-619600
-- transparente-high-heel-sandalette-604800
-- mesh-kleid-mit-digitaldruck-615900
-- damen-maxikleid-mit-print-619100
-- …
-
-### Title under review (2)
-
-- warme-lederhandschuhe-mit-fleecefutter-626600
+- interaktiver-hunde-spielball-aus-e-tpu-757633
 - distressed-jeans-fur-herren-632300
+- schnelltrocknende-wasserschuhe-613600
+- strickkleid-mit-langen-armeln-616500
+- jacquard-kleid-set-mit-schleife-609700
 
-### Adult-oriented content (3)
+### Image too small (4)
 
-- korperschmuck-kette-384896
-- porenreiniger-mit-vakuumfunktion-1d414d
-- plusch-hundegeschirr-mit-leine-744320
+- geraffter-pullover-schal-fur-damen-623100
+- madchen-prinzessin-leder-ballerinas-mit-klettv-927552
+- baby-overall-aus-baumwolle-600600
+- langarmliges-damenhemd-mit-3d-muster-618700
 
-### Tobacco products & related equipment (2)
-
-- katzenspielzeug-mit-drehkopf-618400
-- doppeldisplay-halter-bcc975
-
-### Product page unavailable (23)
+### Product page unavailable (6)
 
 - chunky-ankle-boots-mit-reissverschluss-636900
-- armelloses-v-neck-top-mit-schleife-637200
 - martin-boots-fur-herren-mid-top-608100
-- keramik-futternapf-fur-katzen-erhoht-065024
-- cardigan-mit-blumenstickerei-636300
-- kariertes-langarmhemd-aus-baumwolle-fur-herren-618000
-- businesshemd-langarm-bugelfrei-629800
 - tragerloses-chiffon-maxi-kleid-613100
-- madchen-leder-prinzessinnen-schuhe-598400
 - octopus-martin-boots-fur-herren-619100
-- gefaltetes-patchwork-bandeau-abendkleid-616700
-- kurzarmhemd-aus-baumwolle-fur-herren-609900
-- kurzarm-t-shirt-aus-baumwolle-fur-herren-614500
-- business-t-shirt-aus-eisseide-624500
-- kurzarm-polohemd-aus-baumwollmischung-605600
-- polo-shirt-aus-gewaschener-baumwolle-627100
-- retro-leinen-baumwoll-cardigan-bestickt-621500
 - herren-sommer-t-shirt-mit-reverskragen-606700
-- retro-streifen-fake-zweiteiler-shirt-fur-damen-634700
-- vintage-leder-halbschuhe-fur-madchen-337728
 - herren-strickjacke-mit-revers-612400
-- damen-shirt-mit-schnurung-und-ruschen-608600
-- herren-fitness-shirt-kurzarm-627400
 
-### Additional text found (1)
+### Image not processed (1)
 
-- herren-fleece-sport-freizeitschuhe-483776
-
-### Image too small (2)
-
-- brustgeschirr-und-leine-fur-katzen-645632
-- kinder-freizeitschuhe-e3de89
+- kochfeld-feuerabdeckung-aus-kupfer-e3007a
 
