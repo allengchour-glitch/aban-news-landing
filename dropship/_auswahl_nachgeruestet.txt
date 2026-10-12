@@ -1074,3 +1074,6 @@
 16613802148231	Farbe:2:2	2026-10-12	solar-multifunktionsradio-mit-handkurbel-129600
 16613802115463	Farbe:3:3	2026-10-12	gestreifter-auto-aufkleber-628400
 16613800575367	Modell:16:16	2026-10-12	katzenkopfstutzkissen-fur-den-autositz-117e15
+16614565511559	Modell:3:3	2026-10-12	traction-rope-hundeleine-120-cm-224000
+16614563840391	Farbe:4+Grösse:3:11	2026-10-12	teddy-chihuahua-umhang-fur-kleine-hunde-593f54
+16614563807623	Farbe:2:2	2026-10-12	retractable-hundeleine-mit-led-leuchte-073fd3
