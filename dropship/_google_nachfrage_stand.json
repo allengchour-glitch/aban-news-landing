@@ -1,0 +1,973 @@
+{
+ "stand": "2026-10-12T15:51Z",
+ "tage": 120,
+ "mit_nachfrage": 197,
+ "weg": 60,
+ "ersatz": 7,
+ "ohne_ersatz": 53,
+ "ohne_ersatz_korb": 11,
+ "behebbar": 15,
+ "zeilen": [
+  {
+   "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
+   "titel": "Rizinusöl-Wickel-Set mit Bio-Öl",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 56,
+   "korb": 2,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche",
+    "Gratis-Eintrag"
+   ],
+   "grund": "nicht in die Schweiz lieferbar",
+   "behebbar": false,
+   "ersatz": "rizinusol-wickel-wiederverwendbar-bauch-nacken",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "kompakte-kuhlung-angenehme-frische-fur-sie-1193638",
+   "titel": "Kompakte Kühlung: Angenehme Frische für Sie!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 3,
+   "korb": 2,
+   "kauf": 1,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "mobile-klimaanlage-kuhle-wo-sie-wollen-550253",
+   "titel": "Mobile Klimaanlage: Kühle, wo Sie wollen!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 4,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "flexible-raumkuhlung-angenehmes-klima-mobil-1145529",
+   "titel": "Flexible Raumkühlung: Angenehmes Klima mobil!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 3,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "damenparfum-rubin-kostbare-eleganz-fur-frauen-640621",
+   "titel": "Alvarez Gómez Rubí Femme Agua de Perfume",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schlauchboot-intex-excursion-5-5-personen-366-cm",
+   "titel": "Schlauchboot «Intex Excursion 5» · 5 Personen, 366 cm",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 1,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rollstuhl-fur-hunde-mit-hinterbein-lahmung-629100",
+   "titel": "Rollstuhl für Hunde mit Hinterbein-Lähmung",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "nicht in die Schweiz lieferbar",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "elektrischer-fleischwolf-5l-kuchenmaschine-656962",
+   "titel": "Elektrischer Fleischwolf 5L – Küchenmaschine",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "nicht in die Schweiz lieferbar",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "chiffon-stola-soiree-eleganter-abend-schal",
+   "titel": "Chiffon-Stola «Soirée» · Eleganter Abend-Schal",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "smartes-raumklima-kraftvolle-kuhlung-einfach-per-a-1194795",
+   "titel": "Smartes Raumklima: Kraftvolle Kühlung, einfach per App!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "u-formiges-schwangerschaftskissen-aus-eisseide-004544",
+   "titel": "U-förmiges Schwangerschaftskissen aus Eisseide",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Verlust → Preis/EK prüfen",
+   "behebbar": true,
+   "ersatz": "u-formiges-schwangerschaftskissen-679488",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.67)"
+  },
+  {
+   "handle": "warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094",
+   "titel": "Warmer Campingschlafsack – Für kühle Nächte bis -8°C!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "2-in-1-wendegurtel-fur-damen-236417",
+   "titel": "2-in-1 Wendegürtel für Damen",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "aufblasbare-pool-liege-lounge-xl",
+   "titel": "Aufblasbare Pool-Liege · Lounge XL",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 4,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "aufblasbare-wasserliege-fur-pool-und-see-629800",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "kuhlmatte-fur-haustiere-petitto-blau-941211",
+   "titel": "Kühlmatte für Haustiere Petitto Blau",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "morgenstern-71-cm-fgabo73235",
+   "titel": "Morgenstern 71 cm",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "silikon-abtropfmatte-fur-geschirr-637442",
+   "titel": "Silikon-Abtropfmatte für Geschirr",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "abtropfmatte-aus-silikon-selbstentleerend-214145",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
+  },
+  {
+   "handle": "3d-drucker-tisch-mit-filamenthalterung-781569",
+   "titel": "3D-Drucker-Tisch mit Filamenthalterung",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Sortiment-Entscheid",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schwarzer-standventilator-kraftvolle-kuhle-im-desi-551512",
+   "titel": "Schwarzer Standventilator – Kraftvolle Kühle im Design",
+   "status": "ARCHIVED",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "bladeless-nackenventilator-usb-akku-5-stufen-flusterleise",
+   "titel": "Bladeless Nackenventilator – USB-Akku, 5 Stufen, flüsterleise",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Dublette → Zwilling muss aktiv sein",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "freistehender-ventilator-esperanza-ehf001ww-weiss-681837",
+   "titel": "Freistehender Ventilator Esperanza EHF001WW Weiss 50 W",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "dreirad-ociotrends-zwillinge-restauriert-d-v0710203",
+   "titel": "Dreirad Ociotrends Zwillinge (Restauriert D)",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rc-motorrad-1-10-erlebe-spannende-verfolgungsjagde-812004",
+   "titel": "RC Motorrad 1:10 – Erlebe spannende Verfolgungsjagden",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "damenparfum-calyx-clinique-edp-edp-47377",
+   "titel": "Damenparfüm Calyx Clinique EDP",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "bikini-ysabel-mora-blau",
+   "titel": "Bikini «Ysabel Mora» · Blau",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kostum-marsupilami-fgssck4764f",
+   "titel": "Kostüm Marsupilami",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "wandkunst-metall-sonne-boho-statement",
+   "titel": "Wandkunst Metall-Sonne · Boho Statement",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "endless-hoop-ohrringe-titan-hypoallergen",
+   "titel": "Endless Hoop Ohrringe · Titan hypoallergen",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "tischventilator-domo-do154a-weiss-6-w-902226",
+   "titel": "Tischventilator DOMO DO154A Weiss 6 W",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schwimminsel-mit-haltern-dein-luxus-im-pool-659332",
+   "titel": "Luftmatratze Intex 18 Gläser Silberfarben 188 x 30 x 71 cm",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "strand-sonnenschirm-uv-schutz-mit-erdanker",
+   "titel": "Strand-Sonnenschirm · UV-Schutz mit Erdanker",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rundes-strandtuch-xl-mandala-mikrofaser",
+   "titel": "Rundes Strandtuch XL · Mandala Mikrofaser",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kompakte-klimaanlage-angenehme-kuhle-uberall-1099314",
+   "titel": "Kompakte Klimaanlage: Angenehme Kühle überall!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schaum-abflussreiniger-604000",
+   "titel": "Schaum-Abflussreiniger",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "nicht in die Schweiz lieferbar",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "sandfreie-strandmatte-xl-wasserdicht",
+   "titel": "Sandfreie Strandmatte XL · Wasserdicht",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "universal-ladegerat-fur-60v-e-scooter-bike-580481",
+   "titel": "Universal-Ladegerät für 60V E-Scooter/Bike",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "nicht in die Schweiz lieferbar",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "effiziente-mobil-klima-frische-fur-ihr-zuhause-565413",
+   "titel": "Effiziente Mobil-Klima: Frische für Ihr Zuhause!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schlauchboot-intex-challenger-3-3-personen-295-cm",
+   "titel": "Schlauchboot «Intex Challenger 3» · 3 Personen, 295 cm",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "trinkbrunnen-fur-haustiere-innovagoods-gener-v0800005",
+   "titel": "Trinkbrunnen für Haustiere InnovaGoods · Generalüberholt (Note B)",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "zitruspresse-orbegozo-18269-s9916470",
+   "titel": "Zitruspresse «Orbegozo» 18269",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "tennis-armband-zirkonia-316l-edelstahl",
+   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "floating-cooler-xl-schwimmende-kuhlbox",
+   "titel": "Floating Cooler XL Schwimmende Kühlbox",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "sport-trinkflasche-isoliert-mit-strohhalm-1l",
+   "titel": "Sport-Trinkflasche · Isoliert mit Strohhalm 1L",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "strand-sandalen-doree-metallic-riemchen-flach",
+   "titel": "Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Saison (Sommerware)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "mr-mrs-partner-shirts-couple-t-shirts-zur-hochzeit-%F0%9F%92%8D",
+   "titel": "",
+   "status": "WEG",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Handle existiert nicht mehr",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "trinkglas-luminarc-maine-grau-glas-320-ml-6-stuc-bb1196852",
+   "titel": "Trinkglas Luminarc Maine Grau Glas 320 ml (6 Stück)",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "lidschatten-deborah-n-05-bb265249",
+   "titel": "Lidschatten Deborah Nº 05",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "strand-poncho-kapuzen-badetuch-mikrofaser",
+   "titel": "Strand-Poncho · Kapuzen-Badetuch Mikrofaser",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rotes-schaumstoff-flugzeug-mit-elektromotor-860418",
+   "titel": "Rotes Schaumstoff-Flugzeug mit Elektromotor",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "blaues-schaumstoff-flugzeug-mit-elektromotor-239681",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.6)"
+  },
+  {
+   "handle": "galaxy-aurora-led-projektor-360-sternenhimmel",
+   "titel": "Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht mit Fernbedienung",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "marmor-optik-vase-luxe-30-cm",
+   "titel": "Marmor-Optik Vase Luxe 30 cm",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "signet-ring-edelstahl-matt-geburstet-unisex",
+   "titel": "Signet-Ring · Edelstahl matt gebürstet Unisex",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "siegelring-marmor-gold",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "industrie-deckenventilator-stark-stilvoll-kuhlen-565238",
+   "titel": "Industrie Deckenventilator – Stark & Stilvoll Kühlen",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rotlicht-therapie-gurt-fur-katzen-hunde-612900",
+   "titel": "Rotlicht-Therapie-Gurt für Katzen & Hunde",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "rechtlich ausgeschlossen (Heilaussage)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "damenuhr-bellevue-b39-35-mm-295895",
+   "titel": "Damenuhr Bellevue B39 (Ø 35 mm)",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-sonnenbrille-robuster-schutz-fur-starke-man-80688",
+   "titel": "Herrensonnenbrille Timberland · Modell 317884",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kostum-prinzessin-rosalia-fgssck4660",
+   "titel": "Kostüm Prinzessin Rosalia",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "waschmaschinen-untergestell-mit-rollen-2-stk-306370",
+   "titel": "Waschmaschinen-Untergestell mit Rollen (2 Stk.)",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kabelloser-spliss-trimmer-fur-langes-haar-353346",
+   "titel": "Kabelloser Spliss-Trimmer für langes Haar",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "nicht in die Schweiz lieferbar",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "paul-hewitt-armband-r-23m-s0397548",
+   "titel": "Paul Hewitt Armband «R-23M»",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  }
+ ]
+}
