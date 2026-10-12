@@ -49,3 +49,12 @@ OEKO-TEX®, ab 1 Stück, 3–5 Werktage, Express möglich). Printful kann lose B
 - ✅ **12.10.2026:** Mister-DTF-Bestellung für **#1024** (A3 «Bild» + A5 «Feivel») vom Betreiber von Hand erledigt.
   Im Wächter steht #1024 als `MANUELL_MISTER_DTF_BESTELLT` (`dropship/_cj_order_watch_state.json`, Ampel ohne ⚠️).
   Offen: Shopify-Erfüllung und Versandbenachrichtigung an die Kundin erst mit Sendungsnummer.
+
+---
+## Update 2026-10-12: Spiegeln, A4 und Preise (gemessen, Auftrag «fix du alles»)
+- **Druckdatei NICHT spiegeln:** misterdtf.ch schreibt «Sie muss weder gespiegelt, noch sonst speziell bearbeitet werden».
+  Der Editor-Export bleibt unverändert.
+- **A4 aus dem Verkauf genommen:** Anbieter führt nur A3 und Meterware auf der Seite. Variante `TRANSFER-A4` gelöscht
+  (0 Bestellungen mit A4). Editor-Standard auf `TRANSFER-A3`. Editor-QA 29 Produkte, 0 Befunde.
+- **Anbieterpreise A3 (12.10., exkl. MwSt.):** Öko-Tex 100: 1 Bogen 12.90 · ab 5 11.90 · ab 10 10.90 · ab 25 8.90 · ab 50 7.90.
+  Normal (ohne Öko-Tex): 11.90 / 10.90 / 9.90 / 8.50 / 7.50. Die Juni-Angaben (12.90 / 11.90 / 7.90) sind damit veraltet.
