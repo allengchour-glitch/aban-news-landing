@@ -17736,3 +17736,4 @@ gid://shopify/Product/16615376880007	9->0	USB-Soundkarte mit Multifunktion
 gid://shopify/Product/16615378059655	10->0	Edelstahl-Spritzpistole für Nassstrahlen
 gid://shopify/Product/16615382221191	19->0	Umhängetasche aus Vollnarben-Rindsleder
 gid://shopify/Product/16615384973703	12->1	Damen Mesh Langarmshirt mit Rundhalsausschnitt
+gid://shopify/Product/16615386612103	13->0	Broschen-Geschenktasche
