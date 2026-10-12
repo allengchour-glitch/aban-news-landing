@@ -17649,3 +17649,5 @@ gid://shopify/Product/16613865816455	22->0	Haustierhalsband aus Silikon mit Buch
 gid://shopify/Product/16614845251975	37->1	Grosses Crossbody für Herren – urbanes Minimaldesign
 gid://shopify/Product/16614845874567	49->0	Abendkleid mit V-Ausschnitt
 gid://shopify/Product/16614846103943	15->1	Rollkoffer mit grossem Fassungsvermögen
+gid://shopify/Product/16614847218055	128->3	Damenkleid mit Stehkragen und Falten
+gid://shopify/Product/16614849151367	66->1	Stiefeletten mit hohem Absatz
