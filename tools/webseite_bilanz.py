@@ -104,6 +104,20 @@ def main():
         print(f"   {name:22} {s:>6} {z['sessions_with_cart_additions']:>5} {z['sessions_that_reached_checkout']:>6} "
               f"{z['sessions_that_completed_checkout']:>5}  {q('sessions_with_cart_additions')}  "
               f"{q('sessions_that_reached_checkout')}  {q('sessions_that_completed_checkout')}  {startseite(fenster):>6}")
+        # 12.10.2026: Wellen automatischer Produktaufrufe (Shopify zählt sie als Mensch) getrennt ausweisen —
+        # Regel und Messung in tools/botwellen.py. Wellen haben per Regel 0 Warenkörbe → nur der Nenner sinkt.
+        try:
+            from botwellen import wellen
+            w, in_w, _ = wellen(fenster)
+        except SystemExit:
+            w, in_w = [], 0
+        if in_w:
+            s2 = s - in_w
+            q2 = lambda k: f"{100 * z[k] / s2:5.1f} %" if s2 else "    –"
+            print(f"   {'  ohne Bot-Wellen':22} {s2:>6} {z['sessions_with_cart_additions']:>5} "
+                  f"{z['sessions_that_reached_checkout']:>6} {z['sessions_that_completed_checkout']:>5}  "
+                  f"{q2('sessions_with_cart_additions')}  {q2('sessions_that_reached_checkout')}  "
+                  f"{q2('sessions_that_completed_checkout')}  ({len(w)} Wellen-Stunden, −{in_w})")
 
     print("\n2) Bestellungen (ohne Test/Storno; Erstattung und eigene Kunden getrennt)")
     alle = bestellungen()

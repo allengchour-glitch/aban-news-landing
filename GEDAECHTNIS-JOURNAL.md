@@ -49,6 +49,15 @@
 
 
 
+## 🤖 Kauf-Strecke Tag 2: Ein Drittel der «Sitzungen ohne Herkunft» sind Abgraser, die Shopify als Mensch zählt (2026-10-12)
+- GEMESSEN: 01.10. 21h 41 Sitzungen auf 41 verschiedenen Produktseiten (je 1×), 25 iOS / 25 Android, Orte Aarau–Madrid–Istanbul–USA,
+  0 Warenkörbe; nicht korreliert mit TikTok (r = −0,01). Seit 01.09. 10 solche Stunden = 143 von 438 Produktsitzungen ohne Herkunft.
+- Wächter `tools/botwellen.py` (≥ 6 Sitz., ≥ 80 % verschiedene Seiten, 0 Korb; Selbsttest 8/8), Bilanz-Zeile «ohne Bot-Wellen».
+  Wirkung auf die Bilanz klein: 1,3 % → 1,5 % Warenkorb-Quote. Der Rückgang bleibt TikTok-Werbeverkehr.
+- Lehre: `human_or_bot_session = 'human'` reicht nicht. Ein Abgraser mit Handy-Kennung erkennt man an der FORM (eine Stunde,
+  jede Seite einmal, kein Korb), nicht an einem Feld. Eine Anomalie erst stundengenau gegen den bekannten Verkehr legen, dann urteilen.
+  → `dropship/KAUFSTRECKE-ABENDKLEIDER-2026-10-12.md` (Tag 2)
+
 ## 👗 Kauf-Strecke Tag 1: Abendkleider scheitern am Verkehr, nicht an der Seite — und Google kennt Liechtenstein nicht (2026-10-12, «weiter verbessern»)
 - GEMESSEN: Sirène 69 / Aurora 54 Sitzungen in 90 T, davon 104 aus EINER TikTok-Welle 01.–04.10. → 0 Warenkorb; seit 05.10. 0 Sitzungen.
   Search Console: Sirène «Crawled – currently not indexed» (letzter Crawl 18.08., vor der Textüberarbeitung 10.10.), beide 0 Impressionen in 3 Mt.
