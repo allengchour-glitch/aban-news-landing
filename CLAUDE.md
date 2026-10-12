@@ -70,7 +70,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 (`data/krypto-pilot-schatten.json`, Vorwärtstest der Pilot-Entscheide, ohne Stops/Liquidation; 9 Tests, Mutationsprobe 2/2).
 **Jede Session:** beide Logbücher lesen (`pilot_schatten.py --bericht`), gegen Halten vergleichen, Code/Tests pflegen.
 **NIE:** echtes Geld, Broker-Schlüssel als Secrets, Auto-Classifier blockt lokale `bot.py --lauf` → nur über den Workflow.
-Bot-Doku: `tools/trading/ki_bot/README.md`, `tools/trading/krypto_bot/README.md`. Prüfung frühestens nach 3 Monaten (Jan 2027).
+**Öffentliche Seite `ki-bot-tagebuch.html`** (Tabelle + Diagramm aus beiden Logbüchern, `tools/trading/schatten/tagebuch.js` + `build_tagebuch.py`, 4 Tests); der Job startet nach dem Commit `cf-deploy-mainsite.yml`. Bot-Doku: `tools/trading/ki_bot/README.md`, `tools/trading/krypto_bot/README.md`. Prüfung frühestens nach 3 Monaten (Jan 2027).
 
 **📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
 - **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**
