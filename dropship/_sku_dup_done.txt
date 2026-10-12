@@ -712,3 +712,4 @@ gid://shopify/Product/15522211201409	CJ-CJYD280092101AZ	Damen Plissiertes Hemd m
 gid://shopify/Product/15522211594625	CJ-CJYD280080801AZ	Patchwork Floral Baumwoll-Leinen Hemd
 gid://shopify/Product/15522211987841	CJ-CJYD280079701AZ	Plissiertes Baumwoll-Shirt mit Umlegekragen
 gid://shopify/Product/15522212151681	CJ-CJCS280077401AZ	Distressed Baumwoll-Shirt für Damen
+gid://shopify/Product/15447589028225	CJNS291439601AZ	Elegante Quarzuhr mit Silikonarmband
