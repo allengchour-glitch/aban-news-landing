@@ -1275,3 +1275,5 @@
 16612770775431	Farbe:6+Menge:3:10	2026-10-12	reise-organizer-fur-kosmetik-und-digitalzubeho-639700
 16612770742663	Typ:3:3	2026-10-12	multifunktionale-ruderstange-fur-krafttraining-345920
 16612770644359	Grösse:2:2	2026-10-12	rfid-schutzbox-fur-autoschlussel-611300
+16612768514439	Farbe:2:2	2026-10-12	yoga-matte-aus-naturkautschuk-605056
+16612768481671	Gewicht:2:2	2026-10-12	gummierte-kurzhantel-mit-stange-978112
