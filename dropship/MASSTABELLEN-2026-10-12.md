@@ -17,6 +17,11 @@ Massen des Modells; shopweit 14'187 von 14'367 CJ-Mode-Produkten ohne Massangabe
   Pullover (Grössen «0XL/1XL» passen nicht).
 - Aufseher täglich (idempotent, hält die Blöcke stehen). Daten `dropship/_masstabellen.json`, Rückweg `_masstabellen_ledger.tsv`.
 - Nebenfund: Plateau-Sneaker wirbt im Bild mit «6CM», Titel sagt 8 cm (CJ-Farbname «increased by 8CM») — offen.
+- **Nachtrag 21:40 UTC:** Provence (meistbesuchte Seite mit Warenkörben) per Hand-Freigabe: nur Brust (Hemd) und Länge (Hemd),
+  von beiden Lesern identisch gelesen; «Relax»/«Sleeve 99–104» (wohl Hose) bleiben weg (`freigabe` im Datensatz) → **8 live**.
+- **14 Kopien des allgemeinen Guides entfernt** (`data/masstabelle_generische_kopien.json`) — sie standen als «📏 Grössentabelle»
+  auf Kleiderseiten und wirkten wie Herstellerangaben (Lumea: XS–3XL, verkauft XS–L). Der allgemeine Guide bleibt im Theme.
+- Folgeauftrag 13.10. 00:20 UTC (`trig_014zHKmizBso5zeZgkFQj9ZK`): nächste ~25 Top-Mode-Seiten mit frischen CJ-Punkten.
 **NÄCHSTER SCHRITT:** weitere Top-Seiten im CJ-Vorrang-Fenster (00:00–01:30 UTC, CJ-Punkte 10/Produkt) holen und gleich lesen.
 
 ## 2. Kassen-Lieferdatum = Produktseite

@@ -520,6 +520,17 @@
    ],
    "bemerkung": "Bild ist nur ein Tabellenausschnitt (386x205 px), ohne Produktbild, ohne Einheit und ohne Hinweistext. Einheit cm aus den Werten geschlossen (Brust 103 bei S = ganzer Umfang). Englische Kopfzeile: Size, Bust, Length, Waist, Relax, Sleeve. 'Relax' ist im Bild nicht erklärt (liegt konstant 36 cm über Waist - evtl. Taille gedehnt oder Hüfte, NICHT belegt). 'Sleeve' 99-104 ist für einen Hemdärmel unplausibel lang - vermutlich eigentlich Hosenlänge, im Bild aber als Sleeve beschriftet; Bezeichnung so übernommen. Welche Masse zum Hemd und welche zur Hose gehören, sagt das Bild nicht (Bust/Length vermutlich Hemd, Waist/Relax/'Sleeve' vermutlich Hose).",
    "sicherheit": "mittel"
+  },
+  "freigabe": {
+   "spalten": [
+    "Brust",
+    "Länge"
+   ],
+   "namen": {
+    "Brust": "Brust (Hemd)",
+    "Länge": "Länge (Hemd)"
+   },
+   "grund": "12.10.: beide Lesungen identisch; «Relax» und «Sleeve 99–104» unklar (wohl Hose) → nur die Hemd-Masse, Taille/Relax/Ärmel weg"
   }
  },
  {

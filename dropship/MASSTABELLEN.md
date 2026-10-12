@@ -1,6 +1,6 @@
-# Masstabellen des Modells — Stand 2026-10-12 21:10 UTC
+# Masstabellen des Modells — Stand 2026-10-12 21:39 UTC
 
-21 Produkte mit Doppellesung · 7 bestanden · 14 nicht geschrieben (Grund unten). Regel: `automation/masstabelle_schreiben.py`, Daten `dropship/_masstabellen.json`.
+21 Produkte mit Doppellesung · 8 bestanden · 13 nicht geschrieben (Grund unten). Regel: `automation/masstabelle_schreiben.py`, Daten `dropship/_masstabellen.json`.
 
 | Produkt | Urteil |
 |---|---|
@@ -10,7 +10,7 @@
 | `thermoaktive-farbwechsel-herrenjacke-627300` | — kein Tabellenbild gefunden |
 | `abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe` | — kein Tabellenbild gefunden |
 | `abendkleid-aurora-satin-spaghettitrager-schlitz` | ✅ ok |
-| `2-teiliges-leinen-set-provence-hemd-wide-leg-hose` | — Lesung nicht sicher (mittel/mittel) — Tabelle in 01.jpg (klein, 386x205, aber gut lesbar). Spalten im Bild: Size, Bust, Length,  |
+| `2-teiliges-leinen-set-provence-hemd-wide-leg-hose` | ✅ ok |
 | `herren-sneaker-mit-8-cm-plateausohle-610100` | — Lesung nicht sicher (mittel/mittel) — In 01.jpg steht eine «Size comparison table»: Shoe size (male) 38–48 und Foot length (mm)  |
 | `blumen-maxikleid-fleurette-neckholder-mit-fishtail` | — Lesung nicht sicher (hoch/mittel) — Tabelle in 01.jpg («Size Guide», Reiter «Product Size», Schalter auf CM, Fit type zwischen |
 | `halterneck-patchwork-kleid-floral-604500` | ✅ ok |
