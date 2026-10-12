@@ -10478,3 +10478,22 @@ gid://shopify/Product/15431385121153	1791778126	unklar	SKU-DOPPELT: 4 Shop-Varia
 gid://shopify/Product/15445274263937	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15447892492673	1791778126	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448834736513	1791778126	ok	17 Shop / 17 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448887001473	1791778126	unklar	CJ-Code 1602003: Variant has been removed from shelves, vid: 203889
+gid://shopify/Product/15448903713153	1791778126	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448910659969	1791778126	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448911020417	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448922915201	1791778126	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448923013505	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448930255233	1791778126	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448944673153	1791778126	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448959910273	1791778126	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448961188225	1791778126	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449027641729	1791778126	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449069289857	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449076859265	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449077055873	1791778126	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449077383553	1791778126	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449077449089	1791778126	ok	16 Shop / 16 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449077809537	1791778126	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449077940609	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449077973377	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
