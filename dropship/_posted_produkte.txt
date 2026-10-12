@@ -213,3 +213,5 @@ slug:perucke-vampirin-schwarz-weiss-fga929103
 name:perückevampirinschwarzweiss
 pid:15412752155009
 slug:trendy-knochelstiefel-fur-herren
+slug:caps-tschechien-fga66363
+name:capstschechien
