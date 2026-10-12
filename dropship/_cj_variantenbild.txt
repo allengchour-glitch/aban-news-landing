@@ -6861,3 +6861,7 @@ gid://shopify/Product/15463689355649	zugeordnet	9	Ärmelloses A-Linien Maxikleid
 gid://shopify/Product/15463689552257	zugeordnet	25	Geblümtes V-Ausschnitt Kleid
 gid://shopify/Product/15463689683329	zugeordnet	42	Gemustertes Tüllkleid mit V-Ausschnitt
 gid://shopify/Product/15463690207617	zugeordnet	6	Off-Shoulder Camisole mit Schnürung
+gid://shopify/Product/15463690371457	zugeordnet	10	V-Ausschnitt Hemd mit kurzem Arm
+gid://shopify/Product/15463690633601	zugeordnet	1	Fressnapf Nackenstütze Edelstahl
+gid://shopify/Product/15463690699137	zugeordnet	21	S925 Silber Halskette mit Boxkette
+gid://shopify/Product/15463690862977	bild-urls-tot
