@@ -32,10 +32,13 @@ UNTER, OBEN = 45.0, 50.0
 
 # Exakte Ersetzungen. Jede Zeile: (alter Satz, neuer Satz). Nur was hier steht, wird geschrieben.
 RUECKSCHREIBEN = [
+    # Gegenprobe 12.10. (wf_52c03c1d): Die Kasse gibt Einzelbestellungen ab 45 CHF gratis, die Zusage bleibt
+    # «ab 50». Der neue Satz verspricht nicht mehr als die Zusage und nennt die Schweiz (Liechtenstein hat
+    # keinen Gratisversand: 14,90 CHF bei 49,90 und 50,00 gemessen).
     ("Versand CHF 7, ab CHF 50 gratis — mit einem zweiten Artikel ist er bei diesem Kleid also inklusive.",
-     "Versand bei diesem Kleid gratis."),
-    ("darunter kostet der Versand CHF 7.",
-     "bei diesem Artikel ist der Versand gratis."),
+     "Versand in der Schweiz ab CHF 50 gratis."),
+    ("Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF 50 gratis, darunter kostet der Versand CHF 7.",
+     "Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF 50 gratis."),
 ]
 
 INNER = ('{ products(query: "status:active") { edges { node { id handle priceRangeV2 { minVariantPrice { amount } } '
