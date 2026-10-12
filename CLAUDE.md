@@ -507,6 +507,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-10-12 · 🎁 **Google Ads 0 Klicks = Testprodukt Sirène «Over capacity for Shopping ads (in CSS program) [CH]» (Merchant-Kontingent voll, ~21k/53k) → Label auf Aurora (Betreiber), Ampel prüft die Meldung; Geschenke-Einstieg (Menü 1, Median CHF 16.90, Strickblumen) → Welt «alle» + 12 Vetos + Gemini-Jury Plätze 1–48; Pinterest «kein Kandidat» = Exit 3 statt 0 (67 h Stille).** → `dropship/GESCHENKE-EINSTIEG-2026-10-12.md`
 - 2026-10-12 · 🎄 **Weihnachts-Reihe zeigte oben 5/8 Kunstblumen/Tortenformen/Halloween-Deko: Gruppe `cjpartydeko` stempelte `weihnachten` auf alle 6 CJ-Kategorien → Tag nur mit Weihnachtswort im TITEL (`data/weihnachten_tag_regel.json`, 17 Kanarien py=js), 56 entfernt, Importer + Aufseher täglich; oben jetzt 12/12.** → `dropship/WEIHNACHTEN-TAG-2026-10-12.md`
 - 2026-10-12 · 💳 **`cj_zahlung_offen.py` zählte nur IN_CART → LX1025 (UNPAID, $73.29) = «nichts offen», Bericht gelöscht → `ist_zahlbar()` IN_CART/UNPAID + CREATED nur mit LX + Betrag (Hüllen nie), Selbsttest 7/7.**
 - 2026-10-12 · 🎃 **Halloween-Kollektion oben 12/12 CJ-Direktversand (Ankunft bis 12.11.) statt 132 Kostüme ab Schweizer Lager → `anlass_lieferzeit_wache.py` + `data/anlass_kollektionen.json` (MANUAL, Lager oben, nach Anlass zurück; Aufseher täglich); ChatGPT-Verkehr 1 → 17–32/Woche.** → `dropship/ANLASS-LIEFERZEIT-2026-10-12.md`

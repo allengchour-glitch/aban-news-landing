@@ -194,9 +194,67 @@ def art_von(welt, titel):
     return None
 
 
+# 12.10.2026: Veto aus dem Kontaktbogen (Titel ≠ Bild, Lieferantentext im Bild, Markenanlehnung) — gilt für alle Welten.
+VETO_DATEI = os.path.join(REPO, "data", "geschenk_veto.json")
+
+
+def veto_ids():
+    try:
+        return {v["id"] for v in json.load(open(VETO_DATEI, encoding="utf-8"))["veto"]}
+    except (OSError, ValueError, KeyError):
+        return set()
+
+
+# 12.10.2026: Bildprüfung der sichtbaren Plätze. Der Kontaktbogen des Geschenke-Einstiegs zeigte 12 von 30 Karten mit
+# Titel ≠ Bild («Herzanhänger» = Rose, «Blumen Topf» = Drache), Lieferantencodes («KIT04B», «53#») oder britischem Stecker.
+# Die Gemini-Jury der Social-Poster (gemini_jury.py, Cache dropship/_gemini_jury.tsv) entscheidet jetzt über die ersten 48:
+# Exit 4 = durchgefallen → nach hinten (bleibt in der Kollektion), Exit 2 = kein Urteil → bleibt (kein Urteil ist hier kein Nein,
+# sonst stünde bei leerem Kontingent ein leeres Schaufenster). Zeitdeckel je Lauf, weil der Aufseher 40 min gibt.
+JURY_SEKUNDEN = int(os.environ.get("SCHAUFENSTER_JURY_SEKUNDEN", "900"))
+_jury_start = [None]
+
+
+def bild_url(pid):
+    p = gql('query($id:ID!){product(id:$id){featuredImage{url}}}', {"id": pid}).get("product") or {}
+    return ((p.get("featuredImage") or {}).get("url")) or ""
+
+
+def jury(k):
+    """0 = ok, 4 = durchgefallen, 2 = kein Urteil / Zeitdeckel."""
+    if os.environ.get("JURY") == "0":
+        return 2
+    if _jury_start[0] is None:
+        _jury_start[0] = time.time()
+    url = bild_url(k["id"])
+    if not url:
+        return 2
+    args = ["python3", os.path.join(HIER, "gemini_jury.py"), url, "--caption", f"{k['titel']}\nCHF {k['preis']:.2f}", "--typ", "bild"]
+    if time.time() - _jury_start[0] > JURY_SEKUNDEN:
+        args.append("--nur-cache")          # nach dem Deckel nur noch gecachte Urteile, nichts Neues kaufen
+    try:
+        r = subprocess.run(args, capture_output=True, text=True, timeout=240)
+    except subprocess.TimeoutExpired:
+        return 2
+    if r.returncode == 4:
+        print(f"   ⛔ Jury: {k['titel'][:60]} — {(r.stdout.strip().splitlines() or [''])[-1][:160]}", flush=True)
+    return r.returncode if r.returncode in (0, 4) else 2
+
+
+def schaufenster(reihe, plaetze=48):
+    oben, hinten = [], []
+    for k in reihe:
+        if len(oben) >= plaetze:
+            hinten.append(k); continue
+        (hinten if jury(k) == 4 else oben).append(k)
+    return oben + hinten
+
+
 def auswahl():
     kand = {w: [] for w in WELTEN}
+    veto = veto_ids()
     for d in export_laden():
+        if d["id"] in veto:
+            continue
         t, tags = d["title"], d.get("tags") or []
         preis = float(d["priceRangeV2"]["minVariantPrice"]["amount"])
         if not d.get("g") or d["mediaCount"]["count"] < 2:
@@ -275,6 +333,7 @@ def main():
             if abs(n - len(soll)) <= len(soll) * 0.1:   # alter Bestand (z. B. 2'743) zählt nicht als «gefüllt»
                 break
             time.sleep(15)
+        reihe = schaufenster(reihe)
         moves = [{"id": k["id"], "newPosition": str(i)} for i, k in enumerate(reihe[:48])]
         r = gql('mutation($id:ID!,$m:[MoveInput!]!){collectionReorderProducts(id:$id,moves:$m){job{id} userErrors{message}}}',
                 {"id": col["id"], "m": moves})["collectionReorderProducts"]

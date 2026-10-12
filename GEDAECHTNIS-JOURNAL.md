@@ -49,6 +49,17 @@
 
 
 
+## 🎁 Geschenke-Einstieg, Google-Ads-Sperre, Pinterest-Stille (2026-10-12 abends, «weiter verbessern» + «warum google ads 0 klicks»)
+- GEMESSEN: Hauptmenü Platz 1 «Geschenke & Weihnachten» = Regel `geschenk` (4'735), Median der ersten 24 CHF 16.90, oben Strickblumen —
+  `cjpartydeko` stempelt `geschenk` überall. Fix: Welt «alle» in `geschenk_unterwelten.py` (15 Arten reihum, 400), Titel/SEO deutsch,
+  Links auf 7 Unterseiten; Kontaktbogen 3× → 12 Vetos (`data/geschenk_veto.json`); Gemini-Bildjury entscheidet jetzt über Plätze 1–48.
+- Google Ads 0 Klicks: Testprodukt Sirène trägt «Over capacity for Shopping ads (in CSS program) [CH]» (Merchant-Kontingent voll,
+  ~21'000 von 53'000) → Produktgruppe ohne bewerbbares Produkt. Label auf Aurora umgestellt (Betreiber «umstellen»); Ampel misst die
+  Meldung am Testprodukt. Pinterest: «kein Kandidat» gab Exit 0 → 48-h-Marke, 67 h Stille → Exit 3 + 25 Kandidaten.
+- Lehren: (1) Ein Schaufenster braucht AUGEN — Regeln wählten 12 von 30 Karten mit Titel ≠ Bild; Kontaktbogen vor «fertig».
+  (2) Bevor eine Kampagne auf EIN Produkt verengt wird: dessen Google-Meldungen lesen (Shopping_ads [CH]). (3) «Nichts gefunden» ist
+  nie Exit 0 — sonst setzt der Aufrufer die Erfolgsmarke. → `dropship/GESCHENKE-EINSTIEG-2026-10-12.md`
+
 ## 🎄 Weihnachts-Reihe voller Kunstblumen: Gruppen-Tag ohne Bezug (2026-10-12, «weiter und verbesser»)
 - GEMESSEN: «Weihnachten 🎄» (Startseite, Menü) 62 von 344 ohne Weihnachtsbezug, oben 5 von 8 Karten (Strickblumen, Hochzeitskleid-Modell,
   Mona-Lisa-Sisal). Ursache: Gruppe `cjpartydeko` stempelt `weihnachten` auf alle sechs CJ-Kategorien (Blumen, Tortendeko, Masken).
