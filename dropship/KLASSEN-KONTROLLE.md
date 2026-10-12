@@ -1,11 +1,81 @@
-# Klassen-Kontrolle (VOLLSCAN, 52442 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 53897 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## Sie-Anrede im Produkttext — 5
+## «Produktdetails» doppelt — 146
+
+Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
+
+Reparatur: `automation/produktdetails_vereinen.py`
+
+Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
+
+- `15448593236353` Grobstick-Pullover mit V-Ausschnitt
+- `15448593269121` Dicker Strickpullover mit Puppenkragen
+- `15448593432961` Strickpullover mit Rundhals und langen Ärmeln
+- `15448593564033` Kuscheliger Strickpullover mit Ballonärmeln
+- `15448593760641` Strick-Cardigan für Damen
+- `15448593858945` Strickpullover Rundhals Loose-Fit
+- `15448593924481` Eleganter Colorblock Strickpullover mit Rundhals
+- `15448593957249` Elegantes Langarmshirt mit Reverskragen
+- `15448594055553` Strick-Cardigan mit 3D-Blumen und Stickereien
+- `15448594088321` V-Neck Colorblock Strickpullover für Damen
+- `15448594186625` Damen Rollkragen Strickpullover – Loose Fit
+- `15448594383233` Strickpullover mit Laternenärmeln
+- `15448594416001` Eleganter Strickpullover mit Rollkragen
+- `15448594612609` Gestreifter Strick-Cardigan Grün-Weiss
+- `15448594710913` Polo-Rollkragenpullover für Damen
+- `15448594907521` Damen Pullover Rundhals Loose Fit
+- `15448595169665` Vielseitiger, weicher Damenpullover
+- `15448595267969` Dünner Langarm V-Pullover
+- `15448595300737` Colorblock Strickpullover mit Rundhals für Damen
+- `15448595333505` Eleganter Strickpullover mit Spitzen-Puffärmeln
+- `15448595366273` Herren Rollkragenpullover aus Modal
+- `15448595562881` Gerippter Rundhals-Pullover für Herbst/Winter
+- `15448595595649` Gepolsterter Cardigan im koreanischen Stil
+- `15448595628417` Unifarbener Oversize Rollkragenpullover für Damen
+- `15448595661185` Herz-Pullover mit Rundhals und ausgestellten Ärmeln
+- … und 121 weitere
+
+## Floskel «hochwertiges Material» — 78
+
+Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
+
+Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
+
+Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
+
+- `15448593236353` Grobstick-Pullover mit V-Ausschnitt
+- `15448593957249` Elegantes Langarmshirt mit Reverskragen
+- `15448594710913` Polo-Rollkragenpullover für Damen
+- `15448594907521` Damen Pullover Rundhals Loose Fit
+- `15448595169665` Vielseitiger, weicher Damenpullover
+- `15448595267969` Dünner Langarm V-Pullover
+- `15448595366273` Herren Rollkragenpullover aus Modal
+- `15448595562881` Gerippter Rundhals-Pullover für Herbst/Winter
+- `15448595595649` Gepolsterter Cardigan im koreanischen Stil
+- `15448595628417` Unifarbener Oversize Rollkragenpullover für Damen
+- `15448595661185` Herz-Pullover mit Rundhals und ausgestellten Ärmeln
+- `15448596119937` Shirt-Set mit Digitaldruck
+- `15448599331201` Damen T-Shirt Set mit 3D-Effekt Print
+- `15448657527169` Damen Langarm-Top mit Knöpfen in Übergrössen
+- `15448657625473` Elegante Bluse mit Laternenärmeln und Blumenmuster
+- `15448657723777` Retro Fransen-Top für Damen
+- `15448657756545` Commuter Cardigan Plus-Size Langarmshirt
+- `15448657854849` Asymmetrisches Off-Shoulder Top
+- `15448657887617` Damen Halterneck Crop Top mit 3D-Print
+- `15448658018689` Damen Freizeit-Top mit langen Ärmeln und Paneel-Design
+- `15448658116993` Damen V-Neck Top mit Rüschen und ausgestellten Ärmeln
+- `15448659001729` Damen Freizeit-Top mit Rundhals und 7/8-Ärmeln
+- `15448659034497` Vielseitiger Häkel-Cardigan für Damen
+- `15448659198337` Retro Mock-Neck Top aus Ramie
+- `15448659263873` Gestreiftes Halterneck-Top mit Knoten
+- … und 53 weitere
+
+## Sie-Anrede im Produkttext — 10 (waehrend des Laufs 5 gezaehlt, seither repariert)
 
 Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.
 
@@ -18,8 +88,13 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15503233745281` Manueller Eisrasierer für Zuhause
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
+- `15480281497985` Hochdruckreiniger-Schaumkanone aus Messing
+- `15497457566081` RC Quadcopter Drohne für Luft, Land und Wasser
+- `15503233745281` Manueller Eisrasierer für Zuhause
+- `15509400781185` Wimpernkleber-Entferner mit Schallvibration
+- `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Mess-Versprechen an Wearables — 2
+## Mess-Versprechen an Wearables — 4 (waehrend des Laufs 2 gezaehlt, seither repariert)
 
 Kein optisches Armband misst Blutdruck, EKG oder Blutzucker (Lehre 11.08.).
 
@@ -29,8 +104,10 @@ Vollstaendige Liste: `dropship/_klassen/mess-versprechen-an-wearables.txt`
 
 - `16612790567303` Smart Touch Sport Armband
 - `16612790894983` Kinder Smartwatch 4G mit Herzfrequenz
+- `16612790567303` Smart Touch Sport Armband
+- `16612790894983` Kinder Smartwatch 4G mit Herzfrequenz
 
-## Auswahl-Versprechen bei EINER Variante — 1576
+## Auswahl-Versprechen bei EINER Variante — 1584
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -63,5 +140,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
 - `15448927175041` Nackenstützkissen mit Massageperlen
 - `15448927666561` Wolkenkissen im französischen Stil
-- … und 1551 weitere
+- … und 1559 weitere
 

@@ -17850,3 +17850,15 @@ gid://shopify/Product/16615801684359	123->0	Kinder Strick-Overall
 gid://shopify/Product/16615801782663	14->1	Gestrickter Schal mit Stickerei
 gid://shopify/Product/16615801815431	140->0	Baby Strampler mit Katzenstickerei
 gid://shopify/Product/16615801946503	43->0	Baby-Lauflernschuhe für Frühling und Herbst
+gid://shopify/Product/16615802241415	91->0	Bestickter Winter-Schal für Damen
+gid://shopify/Product/16615802405255	59->2	Faux-Kaschmir Schal für Herbst und Winter
+gid://shopify/Product/16615802929543	9->2	Schwarzer Strickschal aus Wolle – 230 × 20 cm
+gid://shopify/Product/16615803027847	12->0	Breiter Ledergürtel für Kleider
+gid://shopify/Product/16615803060615	38->0	Ledergürtel mit Dornschliesse
+gid://shopify/Product/16615803158919	42->1	Damen-Ledergürtel mit schmalem Riemen
+gid://shopify/Product/16615803486599	58->1	Daunenmantel über dem Knie
+gid://shopify/Product/16615803519367	90->1	Gefütterter Baumwollmantel mit Kapuze
+gid://shopify/Product/16615803552135	123->0	Gefütterter Damen-Mantel mit Streifenmuster
+gid://shopify/Product/16615803617671	22->0	Gefütterter Mantel mit Kapuze
+gid://shopify/Product/16615803683207	10->0	Locker geschnittener Lammwollmantel
+gid://shopify/Product/16615803814279	33->0	Kapuzen-Cardigan mit 3D-Tiermuster

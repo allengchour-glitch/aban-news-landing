@@ -6842,3 +6842,6 @@ gid://shopify/Product/15463489831297	zugeordnet	8	Blumenprint V-Ausschnitt Badea
 gid://shopify/Product/15463490093441	zugeordnet	8	Bedrucktes Langarm-Minikleid mit Rundhals
 gid://shopify/Product/15463491076481	zugeordnet	42	Leinenhemd V-Ausschnitt Langarm für Herren
 gid://shopify/Product/15463491830145	zugeordnet	91	Herren T-Shirt mit Streifenmuster
+gid://shopify/Product/15463492551041	zugeordnet	96	Kurzarm Fitness-Shirt mit Kragen
+gid://shopify/Product/15463581680001	bild-urls-tot
+gid://shopify/Product/15463582040449	zugeordnet	80	Figurbetontes A-Linien Maxikleid mit V-Ausschnitt
