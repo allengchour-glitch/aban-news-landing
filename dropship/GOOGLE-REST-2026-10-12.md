@@ -17,3 +17,10 @@
   nicht belegt). Google hat die Diagnose also nicht aktualisiert. **Nachmessen:** nächster Google-Wächter-Lauf und die 3
   Handles (`keramik-futternapf-fur-katzen-erhoht-065024`, `herren-sommer-t-shirt-mit-reverskragen-606700`,
   `vintage-leder-halbschuhe-fur-madchen-337728`) später erneut abrufen.
+
+## Nachtrag 10:xx — Kinder-Freizeitschuhe: Quelle geprüft
+- GEMESSEN: CJ-Produktabfrage (`product/query?productSku=CJWJXDNY00138`) liefert 9 Bilder, grösstes 527×351 px.
+  Im Shop liegen dieselben Dateien (grösstes 527×351). **Kein grösseres Bild beim Lieferanten.**
+- Hochrechnen würde unscharf und ist keine Verbesserung. Nicht getan.
+- Entscheid nötig: Produkt ohne Google-Eintrag lassen (Ware bleibt im Shop) ODER Bildqualität beim Lieferanten anfragen.
+- Ein Entzug aus dem Google-Kanal wäre hier keine Policy-Massnahme (Qualitätsklasse), deshalb nicht gemacht.
