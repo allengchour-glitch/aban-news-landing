@@ -17667,3 +17667,11 @@ gid://shopify/Product/16614875300231	19->2	Mini Metall-USB-Stick 8 GB
 gid://shopify/Product/16614875398535	52->1	Sandalen mit dickem Absatz und Plateau
 gid://shopify/Product/16614884835719	19->0	Reiserucksack 36-55L mit Anti-Diebstahl-Funktion
 gid://shopify/Product/16614885065095	49->1	Cross-Country Rucksack 22x48 cm
+gid://shopify/Product/16614885228935	24->0	Multifunktionale Sneaker-Aufbewahrungstasche
+gid://shopify/Product/16614885327239	9->0	Business-Rucksack mit Solarladefunktion
+gid://shopify/Product/16614886179207	18->2	Retro-Rucksack aus Canvas
+gid://shopify/Product/16614886277511	9->0	Multifunktionale Hüfttasche für unterwegs
+gid://shopify/Product/16614886965639	66->0	Oxford-Travelrucksack für Herren
+gid://shopify/Product/16614887096711	18->0	Sporttasche mit Trocken-Nass-Trennung
+gid://shopify/Product/16614887293319	14->0	Reise- und Freizeitrucksack
+gid://shopify/Product/16614887326087	36->1	Grosser Rucksack für Herren
