@@ -980,3 +980,4 @@
 15453743284609	Grösse:3:3	2026-10-12	blumen-druck-strick-damenkleid-610000
 15453790929281	Menge:6:6+ki	2026-10-12	kuchenhandtuch-mit-tier-stickerei-623600
 15453825401217	Modell:4:4	2026-10-12	diy-einzelne-cluster-individuelle-falsche-wimp-624300
+15454107140481	Ausführung:3:3+ki	2026-10-12	goldene-haarscheren-fur-dunnes-haar-901504
