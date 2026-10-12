@@ -198,6 +198,26 @@ def main():
         with open(LEDGER, "a", encoding="utf-8") as f:
             f.write(f"{h}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{json.dumps(alt, ensure_ascii=False)}\n")
         time.sleep(0.4)
+    # 12.10.2026: 14 Produkte trugen eine KOPIE des allgemeinen Guides als «📏 Grössentabelle (Damen, cm)» — der Guide sagt
+    # «steht eine eigene Tabelle auf der Seite, gilt diese»; bei Lumea XS–3XL, verkauft XS–L. Kopie weg, Guide bleibt (Theme).
+    kopien = json.load(open(os.path.join(REPO, "data", "masstabelle_generische_kopien.json"), encoding="utf-8"))
+    weg = 0
+    for h in kopien:
+        p = gql('query($h:String!){productByHandle(handle:$h){id descriptionHtml}}', {"h": h}).get("productByHandle")
+        if not p or not GENERISCH.search(p["descriptionHtml"] or "") or "84–88" not in (p["descriptionHtml"] or ""):
+            continue
+        neu = GENERISCH.sub("", p["descriptionHtml"])
+        if not SCHARF:
+            print(f"  (trocken) Kopie weg: {h}"); weg += 1; continue
+        r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{descriptionHtml} userErrors{message}}}',
+                {"i": {"id": p["id"], "descriptionHtml": neu}})["productUpdate"]
+        if r["userErrors"] or GENERISCH.search(((r.get("product") or {}).get("descriptionHtml")) or ""):
+            fehler += 1; continue
+        weg += 1
+        with open(LEDGER, "a", encoding="utf-8") as f:
+            f.write(f"{h}\t{time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}\t{json.dumps(p['descriptionHtml'], ensure_ascii=False)}\n")
+    if weg:
+        print(f"  allgemeine Kopien entfernt: {weg}")
     gut = sum(1 for z in zeilen if z[1])
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# Masstabellen des Modells — Stand {time.strftime('%Y-%m-%d %H:%M')} UTC\n\n"
