@@ -2245,6 +2245,20 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 12.10.2026: Liechtenstein-Satz «Gratis-Versand ab CHF N» → «in der Schweiz». Idempotent (Lookbehind), liest jedes
+  # Produkt live und schreibt nur den Satz. Taeglich, damit neue aktive Importe den Satz nicht dauerhaft behalten.
+  LIW=/tmp/li_gratis_text.log
+  if [ -f "$REPO/automation/li_gratis_text.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$LIW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$LIW" || still_gestorben "$LIW"; then
+      touch "$LIW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_li_gratis.lock; flock -n 9 || exit 0; exec >> \"$LIW\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; SCHARF=1 python3 -u automation/li_gratis_text.py; \
+           echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+    fi
+  fi
+
   # ⭐ UNECHTE BEWERTUNGEN BEI JUDGE.ME — taeglicher LESE-Waechter (22.09.2026). Anlass: Bewertung
   # 1335720164 («Test»/«Probelauf», 5★, Shop-Ebene) stand seit 14.09. veroeffentlicht und zaehlte in
   # der Startseiten-Zahl mit; angelegt von einer fremden Session mit dem OEFFENTLICHEN Token.
@@ -2255,10 +2269,14 @@ KLT=/tmp/test_klingen_tor.log
   JMW=/tmp/judgeme_fake_wache.log
   if [ -f "$REPO/automation/judgeme_fake_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$JMW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$JMW"; then
+    # 12.10.2026: still_gestorben() ergänzt (wie in den neun anderen Tageswächtern). Ohne sie blieb ein Lauf, der um
+    # 01:15 starb, bis zum Ablauf der 24-h-Uhr liegen. START-Marke vor dem Python-Aufruf, sonst prüft still_gestorben
+    # nur die letzten drei Zeilen und findet das alte FERTIG.
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$JMW" || still_gestorben "$JMW"; then
       touch "$JMW"   # Anspruch VOR dem Start — Tor-Frage ist das Log-Alter, der Lauf schreibt erst nach ~2 Min (Lehre 21.09.)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_judgeme_wache.lock; flock -n 9 || exit 0; exec >> \"$JMW\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
            exec python3 automation/judgeme_fake_wache.py" 9>&- & )
       # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.). «unklar» MUSS sichtbar werden.
       if [ -s "$JMW" ] && tail -n 5 "$JMW" | grep -q "Traceback\|JUDGEME: unklar"; then
