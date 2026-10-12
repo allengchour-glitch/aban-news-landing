@@ -57,6 +57,20 @@
 | Lieferanten-Wasserzeichen 1688.com | 1 |
 | Fremdmarke auf der Verpackung | 1 |
 
+## Was die Shopify-Hilfe sagt (QUELLE, help.shopify.com «Modifying search with Search & Discovery», gelesen 12.10. 22:40 UTC)
+
+- «Changes to the metafield sync with the app's product boosts» — das Metafeld ist der offizielle Weg, auch für Flow und Apps (Matrixify nutzt dasselbe Feld).
+- Bis zu 10 Begriffe je Produkt. Mehrwort-Begriffe sind erlaubt. Plural und häufige Tippfehler muss man **nicht** einzeln boosten, das übernimmt Shopify. Die Varianten in der Regel schaden nicht, sind aber überzählig.
+- Boosts gelten nur für verfügbare Produkte und **nicht, wenn die Suchanfrage Suchsyntax enthält**. Shopify rät, nur wenige Produkte je Begriff zu boosten (bei uns ≤ 8).
+- Wie lange es dauert, bis ein Boost wirkt, ist **nicht dokumentiert**.
+
+## Erste Messung (12.10. 22:45 UTC, ~25 min nach dem Schreiben)
+
+- Bei unserer IP (curl) sind «halloween» und «kostüm» Zeichen für Zeichen dieselben Seiten wie um 19:08: die bekannte veraltete Bot-Cache-Kopie.
+- WebFetch (anderer Ausgang) zeigt bei «kostüm» ebenfalls noch die alte Reihenfolge, der Boost greift also noch nicht.
+- Bei Begriffen, die vorher nie abgerufen wurden, stehen geboostete Produkte schon oben: «wichteln» 3/8 (Aroma-Diffuser, Sternzeichen-Anhänger, Kartenetui), «geschenk für frau» Platz 1 das geboostete Doppel-Armband.
+- Nachmessung folgt; der Aufseher misst täglich 15 min nach dem Schreiben.
+
 ## Offen / Risiken
 
 - **Treffer-Logik:** Nicht dokumentiert ist, ob ein Boost nur bei genau gleicher Suchanfrage greift (VERMUTUNG). Deshalb stehen die Varianten ausdrücklich in der Liste (kostüm/kostüme, tshirt männer/t-shirt männer …). Die Messung nach 15 Minuten zeigt es.
