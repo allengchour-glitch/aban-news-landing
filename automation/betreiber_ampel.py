@@ -525,6 +525,20 @@ def werbetest():
                         f"SINCE {start.isoformat()} UNTIL today"):
                 if w["handle"] not in (z.get("landing_page_path") or ""):
                     fremd += int(z.get("sessions") or 0)
+        # 12.10.2026 (Betreiber «warum google ads 0 klicks»): Sirène trug bei Google «Over capacity for Shopping ads (in CSS
+        # program) [CH]» — das Merchant-Konto hat mehr Produkte als Werbe-Kontingent, das Testprodukt war nicht bewerbbar. Die
+        # Kampagne (Produktgruppe nur Label «werbetest») lief damit ins Leere: 23 Sitz. am 10.10., danach 1/Tag. Gemessen wird
+        # jetzt (a) die Google-Meldung am Testprodukt, (b) die Sitzungen der letzten 2 Tage.
+        sperre = []
+        if w.get("handle"):
+            p = gql('query($h:String!){productByHandle(handle:$h){feedback{details{app{title} messages{message}}}}}',
+                    {"h": w["handle"]}).get("data", {}).get("productByHandle") or {}
+            for det in ((p.get("feedback") or {}).get("details") or []):
+                for m in det.get("messages") or []:
+                    if "Shopping_ads" in m["message"] and "[CH]" in m["message"]:
+                        sperre.append(m["message"].split(" in [")[0])
+        r2 = ql(f"FROM sessions SHOW sessions WHERE utm_campaign = '{w['kampagne']}' SINCE -1d UNTIL today")   # gestern + heute
+        s2 = int((r2[0] if r2 else {}).get("sessions") or 0)
     except Exception as e:
         return f"WERBETEST: unklar ({type(e).__name__})" if os.path.exists(os.path.join(REPO, "dropship", "_werbetest_aktiv.json")) else None
     hoechst = tage * float(w.get("budget_tag", 0))
@@ -537,6 +551,10 @@ def werbetest():
         regel = " → ⚠️ 0 Sitzungen mit dieser utm_campaign: Suffix der finalen URL fehlt oder Anzeigen laufen noch nicht"
     if fremd:
         regel += f" · ⚠️ {fremd} Sitzungen auf FREMDEN Produkten → Google Ads: Produktgruppe «Alles andere» ausschliessen"
+    if sperre:
+        regel += f" · ⛔ Testprodukt bei Google NICHT bewerbbar ({'; '.join(sorted(set(sperre)))}) → Label «werbetest» auf ein Produkt ohne Meldung"
+    if tage >= 2 and s2 <= 2:
+        regel += f" · ⚠️ gestern+heute {s2} Sitz. — Kampagne pausiert oder ohne Auslieferung"
     return (f"WERBETEST {w['kampagne']} Tag {tage} (≤ CHF {hoechst:.0f}): {s} Sitz. · {k} Korb · {c} Kasse · {b} Kauf{regel}")
 
 def _kategorie_live():
