@@ -6919,3 +6919,22 @@ gid://shopify/Product/15465883697537	zugeordnet	14	Herren Kurzarmhemd mit Revers
 gid://shopify/Product/15465883763073	zugeordnet	35	Langarm-Compression-Shirt
 gid://shopify/Product/15465885860225	zugeordnet	40	American Henry Langarmshirt mit Stehkragen
 gid://shopify/Product/15465983017345	zugeordnet	64	Herren Jacquard Pullover Langarm
+gid://shopify/Product/15466005660033	zugeordnet	32	Elegantes Samtkleid mit V-Ausschnitt
+gid://shopify/Product/15466006020481	zugeordnet	16	Elegantes Trägerkleid mit Seitenschlitz
+gid://shopify/Product/15466006315393	zugeordnet	15	Elegantes Hemdkleid mit Seitenschlitz
+gid://shopify/Product/15466008215937	zugeordnet	42	Herren Fleecejacke mit Stehkragen und Reissverschluss
+gid://shopify/Product/15466010050945	zugeordnet	28	Mädchen-Babyschuhe mit weicher Sohle
+gid://shopify/Product/15466010608001	zugeordnet	30	Mädchen Lederimitat-Schuhe mit Klettverschluss
+gid://shopify/Product/15466010902913	zugeordnet	40	Mädchen Prinzessin Leder-Ballerinas mit Klettverschluss
+gid://shopify/Product/15466011197825	zugeordnet	30	Gestreifte Winterstiefel für Kinder mit Klettverschluss
+gid://shopify/Product/15466011558273	zugeordnet	16	Warme Winter-Hausschuhe für Kinder
+gid://shopify/Product/15466011853185	zugeordnet	30	Atmungsaktive Mesh-Schuhe für Mädchen
+gid://shopify/Product/15466022404481	zugeordnet	35	Sommerliches ärmelloses Print-Kleid
+gid://shopify/Product/15466022601089	zugeordnet	21	Loungedress Plus-Size aus Baumwolle
+gid://shopify/Product/15466022666625	zugeordnet	9	Pailletten-Minikleid mit Fransenkragen
+gid://shopify/Product/15466022732161	zugeordnet	42	Hoodie im Casual-Look
+gid://shopify/Product/15466022928769	zugeordnet	11	Puffy Bloom Minirock für Damen
+gid://shopify/Product/15466023387521	zugeordnet	80	Jacquard Kurzarmhemd für Herren
+gid://shopify/Product/15466023518593	zugeordnet	56	Herren Half-Zip Stehkragen Langarm-Sweatshirt
+gid://shopify/Product/15466023715201	zugeordnet	18	V-Neck Strickpullover für Herren
+gid://shopify/Product/15466023813505	zugeordnet	15	Freizeit-Pullover mit Dackel-Design
