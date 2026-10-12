@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **22'241**
-- Optionen mit englischen Werten (Kandidaten): 2'173
+- Produkte gesehen: **22'838**
+- Optionen mit englischen Werten (Kandidaten): 2'214
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 12'149
+- Werte mit unbekanntem Wort (unverändert): 12'306
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 46
-- übersprungen «kollision-nach-uebersetzung»: 33
+- übersprungen «kleidungsstueck-im-wert»: 47
+- übersprungen «kollision-nach-uebersetzung»: 34
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -37,6 +37,7 @@
 - `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 - `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
 - `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
+- `15489629618561` [Ausführung] **Herren Kapuzen-Mantel, dick wattiert** — weste: Conventional | Hooded | Vest
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -75,6 +76,7 @@
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 - `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
 - `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: Black-US9 → Schwarz-US9; Black → Schwarz; White-US9 → Weiss-US9; White → Weiss
+- `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -100,5 +102,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 505, `light` 425, `inner` 327, `color` 280, `shell` 159, `degrees` 159, `core` 137, `surface` 123, `⟨satzbau:material-vor-farbe⟩` 111, `diamond` 108, `powder` 108, `no` 106, `high` 101, `skin` 98, `three` 96, `bag` 91, `rain` 88, `case` 84, `french` 84, `opp` 81, `four` 76, `belt` 75, `rope` 70, `dual` 69, `petal` 68, `chain` 67, `to` 67, `dark` 64, `base` 62, `feet` 62, `half` 62, `of` 60, `size` 57, `net` 57, `buckle` 56, `little` 55, `tea` 55, `one` 55, `plush` 55, `electric` 54, `code` 53, `face` 52, `strap` 52, `person` 51, `fold` 51, `line` 50, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `space` 47, `cat` 46, `cloud` 46, `sheet` 46, `about` 46, `warped` 46, `milk` 45, `clock` 45
+`⟨satzbau:adjektiv-vor-nomen⟩` 507, `light` 425, `inner` 368, `color` 289, `shell` 159, `degrees` 159, `core` 137, `surface` 124, `⟨satzbau:material-vor-farbe⟩` 113, `diamond` 108, `powder` 108, `no` 106, `high` 101, `skin` 98, `three` 96, `bag` 91, `rain` 88, `case` 84, `french` 84, `opp` 81, `four` 76, `belt` 75, `rope` 70, `dual` 69, `petal` 68, `chain` 67, `to` 67, `dark` 65, `base` 62, `feet` 62, `half` 62, `of` 60, `buckle` 58, `size` 57, `net` 57, `little` 55, `tea` 55, `one` 55, `plush` 55, `electric` 54, `code` 53, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `space` 47, `cat` 46, `cloud` 46, `sheet` 46, `about` 46, `warped` 46, `milk` 45, `night` 45
 
