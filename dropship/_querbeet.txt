@@ -129,3 +129,10 @@ gid://shopify/Product/15524696359297	2026-10-11	Smartwatches & Wearables
 gid://shopify/Product/16612694131079	2026-10-11	Haustierwelt
 gid://shopify/Product/16607167283591	2026-10-11	Kinder & Baby
 gid://shopify/Product/16612688822663	2026-10-11	Taschen & Rucksäcke
+gid://shopify/Product/16615706722695	2026-10-12	Damen-Mode
+gid://shopify/Product/16615657996679	2026-10-12	Herren-Mode
+gid://shopify/Product/16614569312647	2026-10-12	Haustierwelt
+gid://shopify/Product/16611760341383	2026-10-12	Kinder & Baby
+gid://shopify/Product/16604878602631	2026-10-12	Spielzeug & Plüsch
+gid://shopify/Product/16612762386823	2026-10-12	Sport, Fitness & Outdoor
+gid://shopify/Product/16614885065095	2026-10-12	Taschen & Rucksäcke
