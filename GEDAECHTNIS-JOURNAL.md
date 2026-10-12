@@ -49,6 +49,30 @@
 
 
 
+## 🎨 «Selbst gestalten»: Farbe ja, Material nein — und die Vorschau eines Produkts zeigte für alle Farben dasselbe Bild (2026-10-12, «verbessere weiter … material auswahl? … a5 weg»)
+
+**GEMESSEN** (Analyse über Printful-Katalog, Shopify-GraphQL, Editor-Quelltext; alles nur lesend): Printful kennt
+**keine** Option «Material». Die Stoffmischung hängt bei den vier Textilien an der **Farbe** (Bella+Canvas 3001: 55 Farben
+100 % Baumwolle, 21 Farben 52/48, …). Unser Shop hat bei 25 von 38 Produkten nur «Grösse», Farbe bei 2, Material bei keinem.
+Die Lücke ist also **Farbe**, nicht Material; die Mischung muss pro Farbe auf der Seite stehen.
+
+**Live-Fehler gefunden:** `tote-zum-selbstgestalten` (ACTIVE) hat Schwarz, Rot und Gelb, aber **keine Farb-Map**. Der Editor
+zeigt für alle drei dasselbe cremefarbene Bild. Das verletzt die Regel «Vorschau = echtes Produkt» (CLAUDE.md, Punkt 4).
+Die Farbkette funktioniert nur bei `shirt-zum-selbstgestalten` (15 von 15 Farben gemappt). Entscheidung offen (Betreiber).
+
+**Gegenprobe-Korrekturen:** «Der Editor hat für jede Farbe ein Blank» war **widerlegt** — die fünf Blanks in
+`gen_editor_blanks.mjs` sind pro Produkttyp, nicht pro Farbe, und nirgends verdrahtet. Der Injektor
+`pod_inject_designer.mjs` schreibt die Farb-Map nur für T-Shirts und nur für Weiss, Schwarz und Navy.
+
+**Umgesetzt:** Notizbuch-Text «A5-Format (14 × 21,6 cm)» ist falsch (ISO A5 = 148 × 210 mm, die Variante ist 5,5 × 8,5 Zoll)
+→ «Format 5,5 × 8,5 Zoll (14 × 21,6 cm)». Die Handy-Hülle hat die Option «Grösse» mit iPhone-Modellen → umbenannt in
+«Handymodell» (16 Werte, Varianten und SKUs unverändert). Editor-QA danach: 30 Produkte, 0 Befunde.
+
+**Offen (Betreiber):** Farbpilot und Preisstaffel (welche Farben zuerst), Tote-Entscheidung (Farbe passend zur Vorschau
+oder Entwurf bis Farbbilder), 3XL–5XL nur EU-lagernd oder aus den USA, Dubletten bei Printful-Varianten (8 Nummern in zwei
+Produkten), Fertigung der Bügeltransfers (Printful kann sie nicht), A5 shopweit (Katzen-Schüssel, Hemd, T-Shirt).
+**Risiko, das bleibt:** `printful_sync.mjs` setzt Varianten ohne Printful-Nummer (WM-Trikot 20, Transfer A3/A4) auf Prüfen.
+
 ## 🧾 Versandsatz gegen die Kasse: «Versand CHF 7» stimmte für 45–49,99 CHF nicht — gemessen, geprüft, Wächter (2026-10-12, Verbesserungsrunde 04:25 UTC, «weiter machen»)
 
 **GEMESSEN:** Die Kasse gibt Einzelbestellungen ab **45,00 CHF** gratis (`draftOrderCalculate`, nur lesend: 44,90 → Standard 7,00;
