@@ -6865,3 +6865,10 @@ gid://shopify/Product/15463690371457	zugeordnet	10	V-Ausschnitt Hemd mit kurzem 
 gid://shopify/Product/15463690633601	zugeordnet	1	Fressnapf Nackenstütze Edelstahl
 gid://shopify/Product/15463690699137	zugeordnet	21	S925 Silber Halskette mit Boxkette
 gid://shopify/Product/15463690862977	bild-urls-tot
+gid://shopify/Product/15463691321729	zugeordnet	24	Loose-Fit Rundhals-Sweatshirt
+gid://shopify/Product/15463691452801	zugeordnet	2	Extra-dickes Leinenhandtuch – sehr saugfähig · 38 × 55 cm
+gid://shopify/Product/15463691551105	zugeordnet	24	Stofftissuebox Tierform
+gid://shopify/Product/15463691616641	zugeordnet	9	Fatima Nachtlicht aus Holz
+gid://shopify/Product/15463691682177	bild-urls-tot
+gid://shopify/Product/15463691780481	zugeordnet	6	Stoff-Tissuebox aus Leinen
+gid://shopify/Product/15463727759745	zugeordnet	4	Yulu Hanf Strandtuch · 70 × 140 cm
