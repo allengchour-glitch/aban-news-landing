@@ -46,3 +46,6 @@ OEKO-TEX®, ab 1 Stück, 3–5 Werktage, Express möglich). Printful kann lose B
 - Alte Beschreibung gesichert: `scratchpad/transfer_bild_beschreibung_vorher.json` (nicht im Repo).
 - ⚠️ Bestellung **#1024** (CHF 40.12) enthält noch einen A5-Bogen («Feivel»). Die Auftragszeile bleibt in Shopify
   erhalten; der Mister-DTF-Auftrag für A5 ist ein Betreiber-Klick (Druckdatei aus der Bestell-Eigenschaft «🖼️ Druckdatei»).
+- ✅ **12.10.2026:** Mister-DTF-Bestellung für **#1024** (A3 «Bild» + A5 «Feivel») vom Betreiber von Hand erledigt.
+  Im Wächter steht #1024 als `MANUELL_MISTER_DTF_BESTELLT` (`dropship/_cj_order_watch_state.json`, Ampel ohne ⚠️).
+  Offen: Shopify-Erfüllung und Versandbenachrichtigung an die Kundin erst mit Sendungsnummer.
