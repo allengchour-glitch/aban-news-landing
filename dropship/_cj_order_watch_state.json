@@ -46,5 +46,11 @@
  "LX1023": {
   "status": "UNSHIPPED",
   "tracking": "EQKPT8613048701YQ"
+ },
+ "#1024": {
+  "status": "MANUELL_MISTER_DTF_BESTELLT",
+  "tracking": "",
+  "notiz": "Bügeltransfer (A3 + A5 «Feivel») bei Mister DTF von Hand bestellt, Betreiber 12.10.2026. Versand an Kundin offen: Sendungsnummer fehlt.",
+  "stand": "2026-10-12T05:16Z"
  }
 }
