@@ -49,6 +49,14 @@
 
 
 
+## 💳 Bestell-Ampel: «KEIN CJ-Auftrag», obwohl LX1025 längst auf Zahlung wartete (2026-10-12, Verbesserungsrunde 16:25)
+- Zwei Automaten, zwei Wahrheiten: der Bestell-Automat schreibt sein Ledger sofort, der Abgleich (cj_order_watch, alle 2 h) den Zustand,
+  den die Ampel liest. Die Lücke von bis zu 2 h zeigte genau dann Falsches, wenn der Betreiber handeln muss (bezahlen).
+- Fix: Ampel liest bei fehlendem Abgleich das Ledger (`ledger_eintrag`, Selbsttest 4/4) und hängt bei UNPAID/CREATED den Zahllink an;
+  Aufseher startet den Abgleich sofort, wenn das Ledger jünger ist als das Log (`-nt`). → `dropship/BESTELL-AMPEL-ZAHLUNG-2026-10-12.md`
+- Lehre: Liest eine Anzeige den Zustand von Automat B, muss sie auch wissen, was Automat A seit B's letztem Lauf getan hat — sonst zeigt
+  sie in der Lücke das Gegenteil. Auslöser «Quelle jünger als Abgleich» statt fester Takt.
+
 ## 🔎 Google-Gratis-Einträge: bester Kanal, aber die Nachfrage-Produkte verschwanden (2026-10-12, «weiter verbessern»)
 - GEMESSEN (ShopifyQL 90 T, Menschen): sag_organic 44 Sitz. → 6 Körbe → 5 Kasse → 1 Kauf (TikTok-Werbung 144 → 2 → 2 → 0). Wöchentlich:
   Juli 7–27, seit August 0–4. Von 48 Juli-Sitzungen landeten 34 auf heute gedrafteten Produkten (BigBuy-Ende, nicht CH-lieferbar,
@@ -20027,3 +20035,4 @@ Verschoben am 04.10.2026:
 - 2026-10-10 · 🛏️ **«weiter»: Hype-Recherche → Thema «Schlaf-Stützkissen» (Bestand 20), 16 neu in der Reihe; Trockenlauf fand Fehlgriffe «MagSafe» = Handyhülle zum Selbstgestalten, «Oversize Hoodie» = Mode → Muster an Warenwort gebunden. Google 06:58: CH-Blocker 1'050 («Unable to show image» 109 = neu versionierte Bilder, 25/25 HTTP 200), «Missing shipping [LI]» 28'195 nach der LI-Freigabe → nachmessen 11.10.** Merkmalwort ≠ Warenwort → Journal 10.10. 07:15
 - 2026-10-10 · 🧾 **«weiter»: 13 Produkte mit Händlerbedingungen im Text («Preis 40 yuan», «Aufpreis 10 Yuan … Rückgabe ausgeschlossen», «Mindestbestellmenge 10 Meter» = CJ-Einheit 10M ohne Menge im Titel, «MOQ100 Rucksack», Fortura «· 6 Stück» + «Preis pro Stück») → `bedingung_satz` in `haendlerwort_regel.json` (py + mjs, Satz fällt, 110/110, py=js 52'364/0), Importer-Anweisung, Stoffe «· 10 m» von Hand, MOQ100 DRAFT, 5 Texte per Wächter.** Mindestmenge = oft Verkaufseinheit → in den Titel → `dropship/HAENDLERBEDINGUNG-2026-10-10.md`
 - 2026-10-10 · 🎨 **Verbesserungsrunde: Code VOR der Farbe im Auswahlfeld («2350 Black», «646 Schwarz», «2GS8111G Brown»; 396 aktive, 193 Optionen mit Farbe dahinter) — `farbcode_modell` (09.10.) prüft nur Werte ohne Leerzeichen, Importer-`ohneCode()` nur Codes mit Grossbuchstaben vorn → `data/farbcode_praefix_regel.json` = `farbcode_praefix.py` (Aufseher täglich) = `.mjs` in beiden Importern (45 Kanarien, py=js 16'677/0) → 193/0 live; Fallen: angeklebtes Wort «3237Dark», Mass «45x45cm», `9xx` schluckte «933»; stale «GOOGLE-VERSUCH»-Zeile ausgebaut; Anstoss leert die Google-Meldung bis zur Neuprüfung.** Alle Schreibformen eines Lecks prüfen → `dropship/FARBCODE-PRAEFIX-2026-10-10.md`  ← (aus dem CLAUDE.md-Index verschoben am 12.10. 16:10)
+- 2026-10-10 · 👨‍👩‍👧 **«weiter»: Search Console «familien-weihnachtspyjama» Pos. 26 (Saison bis Dez.), aber Auswahl «Gray-Father S», «Hat Print-S For Mother» (43 Optionen) — `tools/varianten_deutsch.mjs` (12.09.) lief nur EINMAL von Hand → strenger Aufsatz `familienset_werte.mjs` (kein engl. Rest/Code, Grössen gleich) = `familienset_auswahl.py` (Aufseher) = beide Importer; 13/0 Optionen («Grau · Papa S», Option «Ausführung & Grösse»), 21/0 Faktenblock-Zeilen «Farbe: Black-Father …» gestrichen; Übersetzer-Fehler «9 m»→«9 M» behoben; Runde 2: Kollektion `weihnachtspyjama-familie` (CH Nov. 3'600 Suchen, KD 0; 30 Sets, verlinkt), Regel war zu streng («Kinder 3 4» stand schon im Original) → 17/0.** Einmal-Werkzeug ≠ Klasse zu; Rohliste steht oft an zwei Orten → `dropship/FAMILIENSETS-AUSWAHL-2026-10-10.md`  ← (aus dem CLAUDE.md-Index verschoben am 12.10. 16:40)

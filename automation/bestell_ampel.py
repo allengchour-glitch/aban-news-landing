@@ -18,6 +18,37 @@ SHOP = "au3j0y-hq.myshopify.com"
 CJ_STATUS = {"CREATED": "angelegt, UNBEZAHLT", "IN_CART": "im CJ-Warenkorb, UNBEZAHLT", "UNPAID": "UNBEZAHLT",
              "UNSHIPPED": "bezahlt, wartet auf Versand", "SHIPPED": "versandt", "DELIVERED": "zugestellt",
              "TRASH": "verworfen", "CANCELLED": "storniert"}
+ZAHLLISTE = "https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5"   # wartende Zahlungen (ZAHLUNG-LINKS-MERKEN.md)
+LEDGER = os.path.join(REPO, "dropship/_cj_orders_done.txt")
+
+
+def ledger_eintrag(nr, pfad=LEDGER):
+    """Bestell-Ledger des Automaten (cj_order_engine): «#1025\tSD…\tLX1025\t$73.29» → {'sd','lx','betrag'}; sonst None.
+    «(bereits-bei-cj)» ohne SD-Nummer zählt nicht als frischer Auftrag (Zustand kommt dann aus dem Abgleich)."""
+    try:
+        for z in open(pfad, encoding="utf-8"):
+            t = z.rstrip("\n").split("\t")
+            if t and t[0].strip() == f"#{nr}" and len(t) >= 3 and t[1].startswith("SD"):
+                return {"sd": t[1], "lx": t[2], "betrag": t[3].strip() if len(t) > 3 else ""}
+    except OSError:
+        pass
+    return None
+
+
+def selbsttest():
+    import tempfile
+    with tempfile.NamedTemporaryFile("w", delete=False, suffix=".txt") as f:
+        f.write("#1023\t(bereits-bei-cj)\tLX1023\n#1025\tSD2610121602510642100\tLX1025\t$73.29\n")
+    faelle = [(ledger_eintrag("1025", f.name), {"sd": "SD2610121602510642100", "lx": "LX1025", "betrag": "$73.29"}),
+              (ledger_eintrag("1023", f.name), None),      # schon bei CJ, kein frischer Auftrag
+              (ledger_eintrag("1026", f.name), None),      # nicht im Ledger
+              (ledger_eintrag("102", f.name), None)]       # kein Präfix-Treffer (#102 ≠ #1025)
+    os.unlink(f.name)
+    ok = all(a == b for a, b in faelle)
+    for i, (a, b) in enumerate(faelle):
+        print(f"  {'OK  ' if a == b else 'FEHL'} Fall {i + 1}: {a}")
+    print("SELBSTTEST", "OK" if ok else "FEHLER")
+    return 0 if ok else 1
 
 
 def main():
@@ -103,9 +134,20 @@ def main():
             st = ", ".join(f"{k}: {CJ_STATUS.get(watch[k].get('status'), watch[k].get('status', '?'))}"
                            + (f" ({watch[k]['tracking']})" if watch[k].get("tracking") else "") for k in lx) \
                 if lx else "KEIN CJ-Auftrag"
+            if any(watch[k].get("status") in ("CREATED", "IN_CART", "UNPAID") for k in lx):
+                st += f" → 💳 zahlen: {ZAHLLISTE}"          # 12.10.: die Zeile führt direkt zum Bezahlen (Dauerauftrag 11.10.)
             warn = " ⚠️" if (not lx and h > 2) or any(watch[k].get("status") in ("TRASH", "CANCELLED") for k in lx) else ""
+            # 12.10.2026 (#1025): Der Bestell-Automat legt den CJ-Auftrag sofort an und schreibt ihn ins Ledger; der
+            # Abgleich (cj_order_watch, Zustand oben) lief nur alle 2 h. Die Ampel zeigte «KEIN CJ-Auftrag», obwohl
+            # LX1025 seit Minuten auf ZAHLUNG wartete — genau die Zeile, die der Betreiber zum Bezahlen braucht.
+            if not lx:
+                le = ledger_eintrag(nr)
+                if le:
+                    st = (f"{le['lx']} angelegt ({le['sd']}{', ' + le['betrag'] if le['betrag'] else ''}), CJ-Abgleich folgt — "
+                          f"falls unbezahlt: 💳 {ZAHLLISTE}")
+                    warn = " ⚠️" if h > 6 else ""
         teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
     print(f"BESTELLUNGEN: {len(nodes)} offen · " + " | ".join(teile))
 
 if __name__ == "__main__":
-    main()
+    sys.exit(selbsttest()) if "--selbsttest" in sys.argv else main()
