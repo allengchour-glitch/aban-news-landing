@@ -7205,3 +7205,5 @@ wimpernlifting-kit-iconsign-lifting-perm-000192	1551510789260464128	0	-	KEINE CH
 duschschlauch-1-5m-mit-brause-6-strahlarten-725762	2062422637297000450	0	-	KEINE CH-Option → DRAFT	landeseite
 befestigungsriemen-fur-pool-abdeckungsroller-8-456321	1990724469568425985	0	-	KEINE CH-Option → DRAFT	landeseite
 duschwand-stabilisierungsstange-edelstahl-70-1-109186	1990689400866852865	0	-	KEINE CH-Option → DRAFT	landeseite
+handtuchstander-aluminium-47x280-cm-531714	1990690582291861505	0	-	KEINE CH-Option → DRAFT	landeseite
+poolschlauch-adapter-2-stk-882497	1990724408784572418	0	-	KEINE CH-Option → DRAFT	landeseite
