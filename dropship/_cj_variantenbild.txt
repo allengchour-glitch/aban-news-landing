@@ -6916,3 +6916,6 @@ gid://shopify/Product/15465857941889	zugeordnet	35	Kurzarm-Strickpullover für H
 gid://shopify/Product/15465858007425	zugeordnet	10	Atmungsaktives Kurzarm-Shirt für Herren
 gid://shopify/Product/15465883500929	zugeordnet	28	Herren Langarmhemd
 gid://shopify/Product/15465883697537	zugeordnet	14	Herren Kurzarmhemd mit Revers und Print
+gid://shopify/Product/15465883763073	zugeordnet	35	Langarm-Compression-Shirt
+gid://shopify/Product/15465885860225	zugeordnet	40	American Henry Langarmshirt mit Stehkragen
+gid://shopify/Product/15465983017345	zugeordnet	64	Herren Jacquard Pullover Langarm
